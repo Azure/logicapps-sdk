@@ -1,31 +1,28 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pureleads
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class PureleadsActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pureleads")]
-        [WorkflowExpressionFactory(nameof(__BuildNewLeadSubmission))]
-        public IWorkflowAction NewLeadSubmission([WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodymobileNo = null, [WorkflowExpression] Func<string> bodysecondaryEmail = null, [WorkflowExpression] Func<int> bodylifecycleStageName = null)
+        public IWorkflowAction NewLeadSubmission(Expression<Func<string>> bodyemail, Expression<Func<string>> bodyname, Expression<Func<string>> bodymobileNo = null, Expression<Func<string>> bodysecondaryEmail = null, Expression<Func<int>> bodylifecycleStageName = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildNewLeadSubmission(WorkflowExpression<string> bodyemail, WorkflowExpression<string> bodyname, WorkflowExpression<string> bodymobileNo = null, WorkflowExpression<string> bodysecondaryEmail = null, WorkflowExpression<int> bodylifecycleStageName = null)
-        {
-            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: true);
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
-            WorkflowExpression.Validate(bodymobileNo, nameof(bodymobileNo), required: false);
-            WorkflowExpression.Validate(bodysecondaryEmail, nameof(bodysecondaryEmail), required: false);
-            WorkflowExpression.Validate(bodylifecycleStageName, nameof(bodylifecycleStageName), required: false);
+            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
+            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
+            var __workflow_bodymobileNo = bodymobileNo == null ? null : WorkflowExpression.Compile(bodymobileNo);
+            WorkflowExpression.Validate(__workflow_bodymobileNo, nameof(bodymobileNo), required: false);
+            var __workflow_bodysecondaryEmail = bodysecondaryEmail == null ? null : WorkflowExpression.Compile(bodysecondaryEmail);
+            WorkflowExpression.Validate(__workflow_bodysecondaryEmail, nameof(bodysecondaryEmail), required: false);
+            var __workflow_bodylifecycleStageName = bodylifecycleStageName == null ? null : WorkflowExpression.Compile(bodylifecycleStageName);
+            WorkflowExpression.Validate(__workflow_bodylifecycleStageName, nameof(bodylifecycleStageName), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/contacts";
@@ -34,26 +31,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pureleads
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
                 bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                if (bodymobileNo != null)
+                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
+                if (__workflow_bodymobileNo != null)
                 {
-                    body["mobile_no"] = ExpressionConverter.ConvertO(bodymobileNo);
+                    body["mobile_no"] = ExpressionConverter.ConvertO(__workflow_bodymobileNo);
                     bodypropCount++;
                 }
 
-                if (bodysecondaryEmail != null)
+                if (__workflow_bodysecondaryEmail != null)
                 {
-                    body["secondary_email"] = ExpressionConverter.ConvertO(bodysecondaryEmail);
+                    body["secondary_email"] = ExpressionConverter.ConvertO(__workflow_bodysecondaryEmail);
                     bodypropCount++;
                 }
 
-                if (bodylifecycleStageName != null)
+                if (__workflow_bodylifecycleStageName != null)
                 {
-                    if (bodylifecycleStageName != null)
+                    if (__workflow_bodylifecycleStageName != null)
                     {
-                        body["lifecycle_stage_name"] = ExpressionConverter.ConvertO(bodylifecycleStageName);
+                        body["lifecycle_stage_name"] = ExpressionConverter.ConvertO(__workflow_bodylifecycleStageName);
                         bodypropCount++;
                     }
 

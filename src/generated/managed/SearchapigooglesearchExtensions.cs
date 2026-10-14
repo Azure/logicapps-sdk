@@ -1,74 +1,80 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Searchapigooglesearch
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class SearchapigooglesearchActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "searchapigooglesearch")]
-        [WorkflowExpressionFactory(nameof(__BuildSearchGet))]
-        public IBodyWorkflowAction<SearchGetResponse> SearchGet([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<deviceInput> device = null, [WorkflowExpression] Func<string> location = null, [WorkflowExpression] Func<string> uule = null, [WorkflowExpression] Func<string> googleDomain = null, [WorkflowExpression] Func<string> gl = null, [WorkflowExpression] Func<string> hl = null, [WorkflowExpression] Func<string> lr = null, [WorkflowExpression] Func<string> cr = null, [WorkflowExpression] Func<nfprInput> nfpr = null, [WorkflowExpression] Func<filterInput> filter = null, [WorkflowExpression] Func<safeInput> safe = null, [WorkflowExpression] Func<int> num = null, [WorkflowExpression] Func<int> page = null)
+        public IBodyWorkflowAction<SearchGetResponse> SearchGet(Expression<Func<string>> q, Expression<Func<deviceInput>> device = null, Expression<Func<string>> location = null, Expression<Func<string>> uule = null, Expression<Func<string>> googleDomain = null, Expression<Func<string>> gl = null, Expression<Func<string>> hl = null, Expression<Func<string>> lr = null, Expression<Func<string>> cr = null, Expression<Func<nfprInput>> nfpr = null, Expression<Func<filterInput>> filter = null, Expression<Func<safeInput>> safe = null, Expression<Func<int>> num = null, Expression<Func<int>> page = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SearchGetResponse> __BuildSearchGet(WorkflowExpression<string> q, WorkflowExpression<deviceInput> device = null, WorkflowExpression<string> location = null, WorkflowExpression<string> uule = null, WorkflowExpression<string> googleDomain = null, WorkflowExpression<string> gl = null, WorkflowExpression<string> hl = null, WorkflowExpression<string> lr = null, WorkflowExpression<string> cr = null, WorkflowExpression<nfprInput> nfpr = null, WorkflowExpression<filterInput> filter = null, WorkflowExpression<safeInput> safe = null, WorkflowExpression<int> num = null, WorkflowExpression<int> page = null)
-        {
-            WorkflowExpression.Validate(q, nameof(q), required: true);
-            WorkflowExpression.Validate(device, nameof(device), required: false);
-            WorkflowExpression.Validate(location, nameof(location), required: false);
-            WorkflowExpression.Validate(uule, nameof(uule), required: false);
-            WorkflowExpression.Validate(googleDomain, nameof(googleDomain), required: false);
-            WorkflowExpression.Validate(gl, nameof(gl), required: false);
-            WorkflowExpression.Validate(hl, nameof(hl), required: false);
-            WorkflowExpression.Validate(lr, nameof(lr), required: false);
-            WorkflowExpression.Validate(cr, nameof(cr), required: false);
-            WorkflowExpression.Validate(nfpr, nameof(nfpr), required: false);
-            WorkflowExpression.Validate(filter, nameof(filter), required: false);
-            WorkflowExpression.Validate(safe, nameof(safe), required: false);
-            WorkflowExpression.Validate(num, nameof(num), required: false);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
+            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
+            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
+            var __workflow_device = device == null ? null : WorkflowExpression.Compile(device);
+            WorkflowExpression.Validate(__workflow_device, nameof(device), required: false);
+            var __workflow_location = location == null ? null : WorkflowExpression.Compile(location);
+            WorkflowExpression.Validate(__workflow_location, nameof(location), required: false);
+            var __workflow_uule = uule == null ? null : WorkflowExpression.Compile(uule);
+            WorkflowExpression.Validate(__workflow_uule, nameof(uule), required: false);
+            var __workflow_googleDomain = googleDomain == null ? null : WorkflowExpression.Compile(googleDomain);
+            WorkflowExpression.Validate(__workflow_googleDomain, nameof(googleDomain), required: false);
+            var __workflow_gl = gl == null ? null : WorkflowExpression.Compile(gl);
+            WorkflowExpression.Validate(__workflow_gl, nameof(gl), required: false);
+            var __workflow_hl = hl == null ? null : WorkflowExpression.Compile(hl);
+            WorkflowExpression.Validate(__workflow_hl, nameof(hl), required: false);
+            var __workflow_lr = lr == null ? null : WorkflowExpression.Compile(lr);
+            WorkflowExpression.Validate(__workflow_lr, nameof(lr), required: false);
+            var __workflow_cr = cr == null ? null : WorkflowExpression.Compile(cr);
+            WorkflowExpression.Validate(__workflow_cr, nameof(cr), required: false);
+            var __workflow_nfpr = nfpr == null ? null : WorkflowExpression.Compile(nfpr);
+            WorkflowExpression.Validate(__workflow_nfpr, nameof(nfpr), required: false);
+            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
+            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
+            var __workflow_safe = safe == null ? null : WorkflowExpression.Compile(safe);
+            WorkflowExpression.Validate(__workflow_safe, nameof(safe), required: false);
+            var __workflow_num = num == null ? null : WorkflowExpression.Compile(num);
+            WorkflowExpression.Validate(__workflow_num, nameof(num), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
             return new DeferredBodyAction<SearchGetResponse>(() =>
             {
                 var apiCallPath = "/search";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["engine"] = Convert.ToString("google");
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
                 callPayload.Queries["device"] = Convert.ToString("desktop");
-                if (device != null)
-                    callPayload.Queries["device"] = ExpressionConverter.Convert(device);
-                if (location != null)
-                    callPayload.Queries["location"] = ExpressionConverter.Convert(location);
-                if (uule != null)
-                    callPayload.Queries["uule"] = ExpressionConverter.Convert(uule);
-                if (googleDomain != null)
-                    callPayload.Queries["google_domain"] = ExpressionConverter.Convert(googleDomain);
-                if (gl != null)
-                    callPayload.Queries["gl"] = ExpressionConverter.Convert(gl);
-                if (hl != null)
-                    callPayload.Queries["hl"] = ExpressionConverter.Convert(hl);
-                if (lr != null)
-                    callPayload.Queries["lr"] = ExpressionConverter.Convert(lr);
-                if (cr != null)
-                    callPayload.Queries["cr"] = ExpressionConverter.Convert(cr);
-                if (nfpr != null)
-                    callPayload.Queries["nfpr"] = ExpressionConverter.Convert(nfpr);
-                if (filter != null)
-                    callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-                if (safe != null)
-                    callPayload.Queries["safe"] = ExpressionConverter.Convert(safe);
-                if (num != null)
-                    callPayload.Queries["num"] = ExpressionConverter.Convert(num);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (__workflow_device != null)
+                    callPayload.Queries["device"] = ExpressionConverter.Convert(__workflow_device);
+                if (__workflow_location != null)
+                    callPayload.Queries["location"] = ExpressionConverter.Convert(__workflow_location);
+                if (__workflow_uule != null)
+                    callPayload.Queries["uule"] = ExpressionConverter.Convert(__workflow_uule);
+                if (__workflow_googleDomain != null)
+                    callPayload.Queries["google_domain"] = ExpressionConverter.Convert(__workflow_googleDomain);
+                if (__workflow_gl != null)
+                    callPayload.Queries["gl"] = ExpressionConverter.Convert(__workflow_gl);
+                if (__workflow_hl != null)
+                    callPayload.Queries["hl"] = ExpressionConverter.Convert(__workflow_hl);
+                if (__workflow_lr != null)
+                    callPayload.Queries["lr"] = ExpressionConverter.Convert(__workflow_lr);
+                if (__workflow_cr != null)
+                    callPayload.Queries["cr"] = ExpressionConverter.Convert(__workflow_cr);
+                if (__workflow_nfpr != null)
+                    callPayload.Queries["nfpr"] = ExpressionConverter.Convert(__workflow_nfpr);
+                if (__workflow_filter != null)
+                    callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
+                if (__workflow_safe != null)
+                    callPayload.Queries["safe"] = ExpressionConverter.Convert(__workflow_safe);
+                if (__workflow_num != null)
+                    callPayload.Queries["num"] = ExpressionConverter.Convert(__workflow_num);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 return new ApiConnectionAction<SearchGetResponse>(callPayload);
             });
         }

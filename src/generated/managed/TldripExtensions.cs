@@ -1,30 +1,26 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class TldripActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tldrip")]
-        [WorkflowExpressionFactory(nameof(__BuildArticleHuman))]
-        public IBodyWorkflowAction<ArticleHumanPostResponse> ArticleHuman([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<int> bodyminLength = null, [WorkflowExpression] Func<int> bodymaxLength = null, [WorkflowExpression] Func<bool> bodyisDetailed = null)
+        public IBodyWorkflowAction<ArticleHumanPostResponse> ArticleHuman(Expression<Func<string>> bodyurl, Expression<Func<int>> bodyminLength = null, Expression<Func<int>> bodymaxLength = null, Expression<Func<bool>> bodyisDetailed = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ArticleHumanPostResponse> __BuildArticleHuman(WorkflowExpression<string> bodyurl, WorkflowExpression<int> bodyminLength = null, WorkflowExpression<int> bodymaxLength = null, WorkflowExpression<bool> bodyisDetailed = null)
-        {
-            WorkflowExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            WorkflowExpression.Validate(bodyminLength, nameof(bodyminLength), required: false);
-            WorkflowExpression.Validate(bodymaxLength, nameof(bodymaxLength), required: false);
-            WorkflowExpression.Validate(bodyisDetailed, nameof(bodyisDetailed), required: false);
+            var __workflow_bodyurl = bodyurl == null ? null : WorkflowExpression.Compile(bodyurl);
+            WorkflowExpression.Validate(__workflow_bodyurl, nameof(bodyurl), required: true);
+            var __workflow_bodyminLength = bodyminLength == null ? null : WorkflowExpression.Compile(bodyminLength);
+            WorkflowExpression.Validate(__workflow_bodyminLength, nameof(bodyminLength), required: false);
+            var __workflow_bodymaxLength = bodymaxLength == null ? null : WorkflowExpression.Compile(bodymaxLength);
+            WorkflowExpression.Validate(__workflow_bodymaxLength, nameof(bodymaxLength), required: false);
+            var __workflow_bodyisDetailed = bodyisDetailed == null ? null : WorkflowExpression.Compile(bodyisDetailed);
+            WorkflowExpression.Validate(__workflow_bodyisDetailed, nameof(bodyisDetailed), required: false);
             return new DeferredBodyAction<ArticleHumanPostResponse>(() =>
             {
                 var apiCallPath = "/model/abstractive/summarize-url/";
@@ -33,12 +29,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["url"] = ExpressionConverter.ConvertO(bodyurl);
-                if (bodyminLength != null)
+                body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
+                if (__workflow_bodyminLength != null)
                 {
-                    if (bodyminLength != null)
+                    if (__workflow_bodyminLength != null)
                     {
-                        body["min_length"] = ExpressionConverter.ConvertO(bodyminLength);
+                        body["min_length"] = ExpressionConverter.ConvertO(__workflow_bodyminLength);
                         bodypropCount++;
                     }
 
@@ -50,11 +46,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
                     bodypropCount++;
                 }
 
-                if (bodymaxLength != null)
+                if (__workflow_bodymaxLength != null)
                 {
-                    if (bodymaxLength != null)
+                    if (__workflow_bodymaxLength != null)
                     {
-                        body["max_length"] = ExpressionConverter.ConvertO(bodymaxLength);
+                        body["max_length"] = ExpressionConverter.ConvertO(__workflow_bodymaxLength);
                         bodypropCount++;
                     }
 
@@ -66,9 +62,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
                     bodypropCount++;
                 }
 
-                if (bodyisDetailed != null)
+                if (__workflow_bodyisDetailed != null)
                 {
-                    body["is_detailed"] = ExpressionConverter.ConvertO(bodyisDetailed);
+                    body["is_detailed"] = ExpressionConverter.ConvertO(__workflow_bodyisDetailed);
                     bodypropCount++;
                 }
 
@@ -82,18 +78,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tldrip")]
-        [WorkflowExpressionFactory(nameof(__BuildExtractArticle))]
-        public IBodyWorkflowAction<ExtractArticlePostResponse> ExtractArticle([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<int> bodynumSentences = null, [WorkflowExpression] Func<bool> bodyisDetailed = null)
+        public IBodyWorkflowAction<ExtractArticlePostResponse> ExtractArticle(Expression<Func<string>> bodyurl, Expression<Func<int>> bodynumSentences = null, Expression<Func<bool>> bodyisDetailed = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ExtractArticlePostResponse> __BuildExtractArticle(WorkflowExpression<string> bodyurl, WorkflowExpression<int> bodynumSentences = null, WorkflowExpression<bool> bodyisDetailed = null)
-        {
-            WorkflowExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            WorkflowExpression.Validate(bodynumSentences, nameof(bodynumSentences), required: false);
-            WorkflowExpression.Validate(bodyisDetailed, nameof(bodyisDetailed), required: false);
+            var __workflow_bodyurl = bodyurl == null ? null : WorkflowExpression.Compile(bodyurl);
+            WorkflowExpression.Validate(__workflow_bodyurl, nameof(bodyurl), required: true);
+            var __workflow_bodynumSentences = bodynumSentences == null ? null : WorkflowExpression.Compile(bodynumSentences);
+            WorkflowExpression.Validate(__workflow_bodynumSentences, nameof(bodynumSentences), required: false);
+            var __workflow_bodyisDetailed = bodyisDetailed == null ? null : WorkflowExpression.Compile(bodyisDetailed);
+            WorkflowExpression.Validate(__workflow_bodyisDetailed, nameof(bodyisDetailed), required: false);
             return new DeferredBodyAction<ExtractArticlePostResponse>(() =>
             {
                 var apiCallPath = "/model/extractive/summarize-url/";
@@ -102,18 +94,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["url"] = ExpressionConverter.ConvertO(bodyurl);
-                if (bodynumSentences != null)
+                body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
+                if (__workflow_bodynumSentences != null)
                 {
-                    body["num_sentences"] = ExpressionConverter.ConvertO(bodynumSentences);
+                    body["num_sentences"] = ExpressionConverter.ConvertO(__workflow_bodynumSentences);
                     bodypropCount++;
                 }
 
-                if (bodyisDetailed != null)
+                if (__workflow_bodyisDetailed != null)
                 {
-                    if (bodyisDetailed != null)
+                    if (__workflow_bodyisDetailed != null)
                     {
-                        body["is_detailed"] = ExpressionConverter.ConvertO(bodyisDetailed);
+                        body["is_detailed"] = ExpressionConverter.ConvertO(__workflow_bodyisDetailed);
                         bodypropCount++;
                     }
 
@@ -135,18 +127,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tldrip")]
-        [WorkflowExpressionFactory(nameof(__BuildTextHuman))]
-        public IBodyWorkflowAction<TextHumanPostResponse> TextHuman([WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<int> bodyminLength = null, [WorkflowExpression] Func<int> bodymaxLength = null)
+        public IBodyWorkflowAction<TextHumanPostResponse> TextHuman(Expression<Func<string>> bodytext, Expression<Func<int>> bodyminLength = null, Expression<Func<int>> bodymaxLength = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TextHumanPostResponse> __BuildTextHuman(WorkflowExpression<string> bodytext, WorkflowExpression<int> bodyminLength = null, WorkflowExpression<int> bodymaxLength = null)
-        {
-            WorkflowExpression.Validate(bodytext, nameof(bodytext), required: true);
-            WorkflowExpression.Validate(bodyminLength, nameof(bodyminLength), required: false);
-            WorkflowExpression.Validate(bodymaxLength, nameof(bodymaxLength), required: false);
+            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
+            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: true);
+            var __workflow_bodyminLength = bodyminLength == null ? null : WorkflowExpression.Compile(bodyminLength);
+            WorkflowExpression.Validate(__workflow_bodyminLength, nameof(bodyminLength), required: false);
+            var __workflow_bodymaxLength = bodymaxLength == null ? null : WorkflowExpression.Compile(bodymaxLength);
+            WorkflowExpression.Validate(__workflow_bodymaxLength, nameof(bodymaxLength), required: false);
             return new DeferredBodyAction<TextHumanPostResponse>(() =>
             {
                 var apiCallPath = "/model/abstractive/summarize-text/";
@@ -155,12 +143,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
-                if (bodyminLength != null)
+                body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
+                if (__workflow_bodyminLength != null)
                 {
-                    if (bodyminLength != null)
+                    if (__workflow_bodyminLength != null)
                     {
-                        body["min_length"] = ExpressionConverter.ConvertO(bodyminLength);
+                        body["min_length"] = ExpressionConverter.ConvertO(__workflow_bodyminLength);
                         bodypropCount++;
                     }
 
@@ -172,11 +160,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
                     bodypropCount++;
                 }
 
-                if (bodymaxLength != null)
+                if (__workflow_bodymaxLength != null)
                 {
-                    if (bodymaxLength != null)
+                    if (__workflow_bodymaxLength != null)
                     {
-                        body["max_length"] = ExpressionConverter.ConvertO(bodymaxLength);
+                        body["max_length"] = ExpressionConverter.ConvertO(__workflow_bodymaxLength);
                         bodypropCount++;
                     }
 
@@ -198,17 +186,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tldrip")]
-        [WorkflowExpressionFactory(nameof(__BuildExtractText))]
-        public IBodyWorkflowAction<ExtractTextPostResponse> ExtractText([WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<int> bodynumSentences = null)
+        public IBodyWorkflowAction<ExtractTextPostResponse> ExtractText(Expression<Func<string>> bodytext, Expression<Func<int>> bodynumSentences = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ExtractTextPostResponse> __BuildExtractText(WorkflowExpression<string> bodytext, WorkflowExpression<int> bodynumSentences = null)
-        {
-            WorkflowExpression.Validate(bodytext, nameof(bodytext), required: true);
-            WorkflowExpression.Validate(bodynumSentences, nameof(bodynumSentences), required: false);
+            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
+            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: true);
+            var __workflow_bodynumSentences = bodynumSentences == null ? null : WorkflowExpression.Compile(bodynumSentences);
+            WorkflowExpression.Validate(__workflow_bodynumSentences, nameof(bodynumSentences), required: false);
             return new DeferredBodyAction<ExtractTextPostResponse>(() =>
             {
                 var apiCallPath = "/model/extractive/summarize-text/";
@@ -217,10 +200,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
-                if (bodynumSentences != null)
+                body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
+                if (__workflow_bodynumSentences != null)
                 {
-                    body["num_sentences"] = ExpressionConverter.ConvertO(bodynumSentences);
+                    body["num_sentences"] = ExpressionConverter.ConvertO(__workflow_bodynumSentences);
                     bodypropCount++;
                 }
 

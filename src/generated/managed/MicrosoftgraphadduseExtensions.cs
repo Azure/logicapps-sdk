@@ -1,34 +1,34 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftgraphadduse
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class MicrosoftgraphadduseActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftgraphadduse")]
-        [WorkflowExpressionFactory(nameof(__BuildUser))]
-        public IBodyWorkflowAction<UserPostResponse> User([WorkflowExpression] Func<bool> bodyaccountEnabled = null, [WorkflowExpression] Func<string> bodydisplayName = null, [WorkflowExpression] Func<string> bodymailNickname = null, [WorkflowExpression] Func<string> bodyuserPrincipalName = null, [WorkflowExpression] Func<bool> bodypasswordProfileforceChangePasswordNextSignIn = null, [WorkflowExpression] Func<string> bodypasswordProfilepassword = null, [WorkflowExpression] Func<bodyidentitiesInputItem[]> bodyidentities = null, [WorkflowExpression] Func<string> bodyonPremisesImmutableId = null)
+        public IBodyWorkflowAction<UserPostResponse> User(Expression<Func<bool>> bodyaccountEnabled = null, Expression<Func<string>> bodydisplayName = null, Expression<Func<string>> bodymailNickname = null, Expression<Func<string>> bodyuserPrincipalName = null, Expression<Func<bool>> bodypasswordProfileforceChangePasswordNextSignIn = null, Expression<Func<string>> bodypasswordProfilepassword = null, Expression<Func<bodyidentitiesInputItem[]>> bodyidentities = null, Expression<Func<string>> bodyonPremisesImmutableId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UserPostResponse> __BuildUser(WorkflowExpression<bool> bodyaccountEnabled = null, WorkflowExpression<string> bodydisplayName = null, WorkflowExpression<string> bodymailNickname = null, WorkflowExpression<string> bodyuserPrincipalName = null, WorkflowExpression<bool> bodypasswordProfileforceChangePasswordNextSignIn = null, WorkflowExpression<string> bodypasswordProfilepassword = null, WorkflowExpression<bodyidentitiesInputItem[]> bodyidentities = null, WorkflowExpression<string> bodyonPremisesImmutableId = null)
-        {
-            WorkflowExpression.Validate(bodyaccountEnabled, nameof(bodyaccountEnabled), required: false);
-            WorkflowExpression.Validate(bodydisplayName, nameof(bodydisplayName), required: false);
-            WorkflowExpression.Validate(bodymailNickname, nameof(bodymailNickname), required: false);
-            WorkflowExpression.Validate(bodyuserPrincipalName, nameof(bodyuserPrincipalName), required: false);
-            WorkflowExpression.Validate(bodypasswordProfileforceChangePasswordNextSignIn, nameof(bodypasswordProfileforceChangePasswordNextSignIn), required: false);
-            WorkflowExpression.Validate(bodypasswordProfilepassword, nameof(bodypasswordProfilepassword), required: false);
-            WorkflowExpression.Validate(bodyidentities, nameof(bodyidentities), required: false);
-            WorkflowExpression.Validate(bodyonPremisesImmutableId, nameof(bodyonPremisesImmutableId), required: false);
+            var __workflow_bodyaccountEnabled = bodyaccountEnabled == null ? null : WorkflowExpression.Compile(bodyaccountEnabled);
+            WorkflowExpression.Validate(__workflow_bodyaccountEnabled, nameof(bodyaccountEnabled), required: false);
+            var __workflow_bodydisplayName = bodydisplayName == null ? null : WorkflowExpression.Compile(bodydisplayName);
+            WorkflowExpression.Validate(__workflow_bodydisplayName, nameof(bodydisplayName), required: false);
+            var __workflow_bodymailNickname = bodymailNickname == null ? null : WorkflowExpression.Compile(bodymailNickname);
+            WorkflowExpression.Validate(__workflow_bodymailNickname, nameof(bodymailNickname), required: false);
+            var __workflow_bodyuserPrincipalName = bodyuserPrincipalName == null ? null : WorkflowExpression.Compile(bodyuserPrincipalName);
+            WorkflowExpression.Validate(__workflow_bodyuserPrincipalName, nameof(bodyuserPrincipalName), required: false);
+            var __workflow_bodypasswordProfileforceChangePasswordNextSignIn = bodypasswordProfileforceChangePasswordNextSignIn == null ? null : WorkflowExpression.Compile(bodypasswordProfileforceChangePasswordNextSignIn);
+            WorkflowExpression.Validate(__workflow_bodypasswordProfileforceChangePasswordNextSignIn, nameof(bodypasswordProfileforceChangePasswordNextSignIn), required: false);
+            var __workflow_bodypasswordProfilepassword = bodypasswordProfilepassword == null ? null : WorkflowExpression.Compile(bodypasswordProfilepassword);
+            WorkflowExpression.Validate(__workflow_bodypasswordProfilepassword, nameof(bodypasswordProfilepassword), required: false);
+            var __workflow_bodyidentities = bodyidentities == null ? null : WorkflowExpression.Compile(bodyidentities);
+            WorkflowExpression.Validate(__workflow_bodyidentities, nameof(bodyidentities), required: false);
+            var __workflow_bodyonPremisesImmutableId = bodyonPremisesImmutableId == null ? null : WorkflowExpression.Compile(bodyonPremisesImmutableId);
+            WorkflowExpression.Validate(__workflow_bodyonPremisesImmutableId, nameof(bodyonPremisesImmutableId), required: false);
             return new DeferredBodyAction<UserPostResponse>(() =>
             {
                 var apiCallPath = "/users";
@@ -36,41 +36,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftgraphadduse
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyaccountEnabled != null)
+                if (__workflow_bodyaccountEnabled != null)
                 {
-                    body["accountEnabled"] = ExpressionConverter.ConvertO(bodyaccountEnabled);
+                    body["accountEnabled"] = ExpressionConverter.ConvertO(__workflow_bodyaccountEnabled);
                     bodypropCount++;
                 }
 
-                if (bodydisplayName != null)
+                if (__workflow_bodydisplayName != null)
                 {
-                    body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
+                    body["displayName"] = ExpressionConverter.ConvertO(__workflow_bodydisplayName);
                     bodypropCount++;
                 }
 
-                if (bodymailNickname != null)
+                if (__workflow_bodymailNickname != null)
                 {
-                    body["mailNickname"] = ExpressionConverter.ConvertO(bodymailNickname);
+                    body["mailNickname"] = ExpressionConverter.ConvertO(__workflow_bodymailNickname);
                     bodypropCount++;
                 }
 
-                if (bodyuserPrincipalName != null)
+                if (__workflow_bodyuserPrincipalName != null)
                 {
-                    body["userPrincipalName"] = ExpressionConverter.ConvertO(bodyuserPrincipalName);
+                    body["userPrincipalName"] = ExpressionConverter.ConvertO(__workflow_bodyuserPrincipalName);
                     bodypropCount++;
                 }
 
                 var passwordProfileObject = new JObject();
                 var passwordProfileObjectpropCount = 0;
-                if (bodypasswordProfileforceChangePasswordNextSignIn != null)
+                if (__workflow_bodypasswordProfileforceChangePasswordNextSignIn != null)
                 {
-                    passwordProfileObject["forceChangePasswordNextSignIn"] = ExpressionConverter.ConvertO(bodypasswordProfileforceChangePasswordNextSignIn);
+                    passwordProfileObject["forceChangePasswordNextSignIn"] = ExpressionConverter.ConvertO(__workflow_bodypasswordProfileforceChangePasswordNextSignIn);
                     passwordProfileObjectpropCount++;
                 }
 
-                if (bodypasswordProfilepassword != null)
+                if (__workflow_bodypasswordProfilepassword != null)
                 {
-                    passwordProfileObject["password"] = ExpressionConverter.ConvertO(bodypasswordProfilepassword);
+                    passwordProfileObject["password"] = ExpressionConverter.ConvertO(__workflow_bodypasswordProfilepassword);
                     passwordProfileObjectpropCount++;
                 }
 
@@ -80,15 +80,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftgraphadduse
                     bodypropCount++;
                 }
 
-                if (bodyidentities != null)
+                if (__workflow_bodyidentities != null)
                 {
-                    body["identities"] = ExpressionConverter.ConvertO(bodyidentities);
+                    body["identities"] = ExpressionConverter.ConvertO(__workflow_bodyidentities);
                     bodypropCount++;
                 }
 
-                if (bodyonPremisesImmutableId != null)
+                if (__workflow_bodyonPremisesImmutableId != null)
                 {
-                    body["onPremisesImmutableId"] = ExpressionConverter.ConvertO(bodyonPremisesImmutableId);
+                    body["onPremisesImmutableId"] = ExpressionConverter.ConvertO(__workflow_bodyonPremisesImmutableId);
                     bodypropCount++;
                 }
 
@@ -102,17 +102,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftgraphadduse
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftgraphadduse")]
-        [WorkflowExpressionFactory(nameof(__BuildInvite))]
-        public IBodyWorkflowAction<InvitePostResponse> Invite([WorkflowExpression] Func<string> bodyinvitedUserEmailAddress = null, [WorkflowExpression] Func<string> bodyinviteRedirectUrl = null)
+        public IBodyWorkflowAction<InvitePostResponse> Invite(Expression<Func<string>> bodyinvitedUserEmailAddress = null, Expression<Func<string>> bodyinviteRedirectUrl = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<InvitePostResponse> __BuildInvite(WorkflowExpression<string> bodyinvitedUserEmailAddress = null, WorkflowExpression<string> bodyinviteRedirectUrl = null)
-        {
-            WorkflowExpression.Validate(bodyinvitedUserEmailAddress, nameof(bodyinvitedUserEmailAddress), required: false);
-            WorkflowExpression.Validate(bodyinviteRedirectUrl, nameof(bodyinviteRedirectUrl), required: false);
+            var __workflow_bodyinvitedUserEmailAddress = bodyinvitedUserEmailAddress == null ? null : WorkflowExpression.Compile(bodyinvitedUserEmailAddress);
+            WorkflowExpression.Validate(__workflow_bodyinvitedUserEmailAddress, nameof(bodyinvitedUserEmailAddress), required: false);
+            var __workflow_bodyinviteRedirectUrl = bodyinviteRedirectUrl == null ? null : WorkflowExpression.Compile(bodyinviteRedirectUrl);
+            WorkflowExpression.Validate(__workflow_bodyinviteRedirectUrl, nameof(bodyinviteRedirectUrl), required: false);
             return new DeferredBodyAction<InvitePostResponse>(() =>
             {
                 var apiCallPath = "/invitations";
@@ -120,15 +115,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftgraphadduse
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyinvitedUserEmailAddress != null)
+                if (__workflow_bodyinvitedUserEmailAddress != null)
                 {
-                    body["invitedUserEmailAddress"] = ExpressionConverter.ConvertO(bodyinvitedUserEmailAddress);
+                    body["invitedUserEmailAddress"] = ExpressionConverter.ConvertO(__workflow_bodyinvitedUserEmailAddress);
                     bodypropCount++;
                 }
 
-                if (bodyinviteRedirectUrl != null)
+                if (__workflow_bodyinviteRedirectUrl != null)
                 {
-                    body["inviteRedirectUrl"] = ExpressionConverter.ConvertO(bodyinviteRedirectUrl);
+                    body["inviteRedirectUrl"] = ExpressionConverter.ConvertO(__workflow_bodyinviteRedirectUrl);
                     bodypropCount++;
                 }
 
@@ -142,26 +137,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftgraphadduse
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftgraphadduse")]
-        [WorkflowExpressionFactory(nameof(__BuildMembersPatch))]
-        public IBodyWorkflowAction<string> MembersPatch([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string[]> bodymembersOdataBind)
+        public IBodyWorkflowAction<string> MembersPatch(Expression<Func<string>> groupId, Expression<Func<string[]>> bodymembersOdataBind)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildMembersPatch(WorkflowExpression<string> groupId, WorkflowExpression<string[]> bodymembersOdataBind)
-        {
-            WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
-            WorkflowExpression.Validate(bodymembersOdataBind, nameof(bodymembersOdataBind), required: true);
+            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
+            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
+            var __workflow_bodymembersOdataBind = bodymembersOdataBind == null ? null : WorkflowExpression.Compile(bodymembersOdataBind);
+            WorkflowExpression.Validate(__workflow_bodymembersOdataBind, nameof(bodymembersOdataBind), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groups/{0}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groups/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["members@odata.bind"] = ExpressionConverter.ConvertO(bodymembersOdataBind);
+                body["members@odata.bind"] = ExpressionConverter.ConvertO(__workflow_bodymembersOdataBind);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

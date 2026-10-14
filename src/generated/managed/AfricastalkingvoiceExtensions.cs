@@ -1,30 +1,26 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingvoice
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class AfricastalkingvoiceActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingvoice")]
-        [WorkflowExpressionFactory(nameof(__BuildCall))]
-        public IBodyWorkflowAction<CallResponse> Call([WorkflowExpression] Func<string> bodyusername, [WorkflowExpression] Func<string> bodyfrom, [WorkflowExpression] Func<string[]> bodyto, [WorkflowExpression] Func<bodyactionsInputItem[]> bodyactions)
+        public IBodyWorkflowAction<CallResponse> Call(Expression<Func<string>> bodyusername, Expression<Func<string>> bodyfrom, Expression<Func<string[]>> bodyto, Expression<Func<bodyactionsInputItem[]>> bodyactions)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CallResponse> __BuildCall(WorkflowExpression<string> bodyusername, WorkflowExpression<string> bodyfrom, WorkflowExpression<string[]> bodyto, WorkflowExpression<bodyactionsInputItem[]> bodyactions)
-        {
-            WorkflowExpression.Validate(bodyusername, nameof(bodyusername), required: true);
-            WorkflowExpression.Validate(bodyfrom, nameof(bodyfrom), required: true);
-            WorkflowExpression.Validate(bodyto, nameof(bodyto), required: true);
-            WorkflowExpression.Validate(bodyactions, nameof(bodyactions), required: true);
+            var __workflow_bodyusername = bodyusername == null ? null : WorkflowExpression.Compile(bodyusername);
+            WorkflowExpression.Validate(__workflow_bodyusername, nameof(bodyusername), required: true);
+            var __workflow_bodyfrom = bodyfrom == null ? null : WorkflowExpression.Compile(bodyfrom);
+            WorkflowExpression.Validate(__workflow_bodyfrom, nameof(bodyfrom), required: true);
+            var __workflow_bodyto = bodyto == null ? null : WorkflowExpression.Compile(bodyto);
+            WorkflowExpression.Validate(__workflow_bodyto, nameof(bodyto), required: true);
+            var __workflow_bodyactions = bodyactions == null ? null : WorkflowExpression.Compile(bodyactions);
+            WorkflowExpression.Validate(__workflow_bodyactions, nameof(bodyactions), required: true);
             return new DeferredBodyAction<CallResponse>(() =>
             {
                 var apiCallPath = "/call";
@@ -35,13 +31,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingvoice
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["username"] = ExpressionConverter.ConvertO(bodyusername);
+                body["username"] = ExpressionConverter.ConvertO(__workflow_bodyusername);
                 bodypropCount++;
-                body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                body["from"] = ExpressionConverter.ConvertO(__workflow_bodyfrom);
                 bodypropCount++;
-                body["to"] = ExpressionConverter.ConvertO(bodyto);
+                body["to"] = ExpressionConverter.ConvertO(__workflow_bodyto);
                 bodypropCount++;
-                body["actions"] = ExpressionConverter.ConvertO(bodyactions);
+                body["actions"] = ExpressionConverter.ConvertO(__workflow_bodyactions);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

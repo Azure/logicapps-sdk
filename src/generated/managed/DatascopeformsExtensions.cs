@@ -1,12 +1,12 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datascopeforms
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class DatascopeformsActions([ConnectionName] string connectionId)
     {
@@ -14,20 +14,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datascopeforms
 
     public class DatascopeformsTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildFormAnswer))]
-        public IBodyWorkflowTrigger<JToken> FormAnswer([WorkflowExpression] Func<string> formId,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> FormAnswer(Expression<Func<string>> formId, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildFormAnswer(WorkflowExpression<string> formId,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(formId, nameof(formId), required: true);
+            var __workflow_formId = formId == null ? null : WorkflowExpression.Compile(formId);
+            WorkflowExpression.Validate(__workflow_formId, nameof(formId), required: true);
             return new DeferredBodyTrigger<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/hooks_flow/{0}", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/hooks_flow/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_formId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

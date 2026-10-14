@@ -1,35 +1,36 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openexperience
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class OpenexperienceActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openexperience")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateNewProject))]
-        public IBodyWorkflowAction<CreateNewProjectResponse> CreateNewProject([WorkflowExpression] Func<string> projectSettingscustomerId, [WorkflowExpression] Func<string> projectSettingsid, [WorkflowExpression] Func<string> projectSettingsname, [WorkflowExpression] Func<int> projectSettingscontactPhone, [WorkflowExpression] Func<string> projectSettingscontactEmail, [WorkflowExpression] Func<string> projectSettingsresponsible, [WorkflowExpression] Func<string[]> projectSettingsservices, [WorkflowExpression] Func<string> projectSettingsaddress = null, [WorkflowExpression] Func<bool> projectSettingssettingsprojectAdminMembersAccess = null)
+        public IBodyWorkflowAction<CreateNewProjectResponse> CreateNewProject(Expression<Func<string>> projectSettingscustomerId, Expression<Func<string>> projectSettingsid, Expression<Func<string>> projectSettingsname, Expression<Func<int>> projectSettingscontactPhone, Expression<Func<string>> projectSettingscontactEmail, Expression<Func<string>> projectSettingsresponsible, Expression<Func<string[]>> projectSettingsservices, Expression<Func<string>> projectSettingsaddress = null, Expression<Func<bool>> projectSettingssettingsprojectAdminMembersAccess = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateNewProjectResponse> __BuildCreateNewProject(WorkflowExpression<string> projectSettingscustomerId, WorkflowExpression<string> projectSettingsid, WorkflowExpression<string> projectSettingsname, WorkflowExpression<int> projectSettingscontactPhone, WorkflowExpression<string> projectSettingscontactEmail, WorkflowExpression<string> projectSettingsresponsible, WorkflowExpression<string[]> projectSettingsservices, WorkflowExpression<string> projectSettingsaddress = null, WorkflowExpression<bool> projectSettingssettingsprojectAdminMembersAccess = null)
-        {
-            WorkflowExpression.Validate(projectSettingscustomerId, nameof(projectSettingscustomerId), required: true);
-            WorkflowExpression.Validate(projectSettingsid, nameof(projectSettingsid), required: true);
-            WorkflowExpression.Validate(projectSettingsname, nameof(projectSettingsname), required: true);
-            WorkflowExpression.Validate(projectSettingscontactPhone, nameof(projectSettingscontactPhone), required: true);
-            WorkflowExpression.Validate(projectSettingscontactEmail, nameof(projectSettingscontactEmail), required: true);
-            WorkflowExpression.Validate(projectSettingsresponsible, nameof(projectSettingsresponsible), required: true);
-            WorkflowExpression.Validate(projectSettingsservices, nameof(projectSettingsservices), required: true);
-            WorkflowExpression.Validate(projectSettingsaddress, nameof(projectSettingsaddress), required: false);
-            WorkflowExpression.Validate(projectSettingssettingsprojectAdminMembersAccess, nameof(projectSettingssettingsprojectAdminMembersAccess), required: false);
+            var __workflow_projectSettingscustomerId = projectSettingscustomerId == null ? null : WorkflowExpression.Compile(projectSettingscustomerId);
+            WorkflowExpression.Validate(__workflow_projectSettingscustomerId, nameof(projectSettingscustomerId), required: true);
+            var __workflow_projectSettingsid = projectSettingsid == null ? null : WorkflowExpression.Compile(projectSettingsid);
+            WorkflowExpression.Validate(__workflow_projectSettingsid, nameof(projectSettingsid), required: true);
+            var __workflow_projectSettingsname = projectSettingsname == null ? null : WorkflowExpression.Compile(projectSettingsname);
+            WorkflowExpression.Validate(__workflow_projectSettingsname, nameof(projectSettingsname), required: true);
+            var __workflow_projectSettingscontactPhone = projectSettingscontactPhone == null ? null : WorkflowExpression.Compile(projectSettingscontactPhone);
+            WorkflowExpression.Validate(__workflow_projectSettingscontactPhone, nameof(projectSettingscontactPhone), required: true);
+            var __workflow_projectSettingscontactEmail = projectSettingscontactEmail == null ? null : WorkflowExpression.Compile(projectSettingscontactEmail);
+            WorkflowExpression.Validate(__workflow_projectSettingscontactEmail, nameof(projectSettingscontactEmail), required: true);
+            var __workflow_projectSettingsresponsible = projectSettingsresponsible == null ? null : WorkflowExpression.Compile(projectSettingsresponsible);
+            WorkflowExpression.Validate(__workflow_projectSettingsresponsible, nameof(projectSettingsresponsible), required: true);
+            var __workflow_projectSettingsservices = projectSettingsservices == null ? null : WorkflowExpression.Compile(projectSettingsservices);
+            WorkflowExpression.Validate(__workflow_projectSettingsservices, nameof(projectSettingsservices), required: true);
+            var __workflow_projectSettingsaddress = projectSettingsaddress == null ? null : WorkflowExpression.Compile(projectSettingsaddress);
+            WorkflowExpression.Validate(__workflow_projectSettingsaddress, nameof(projectSettingsaddress), required: false);
+            var __workflow_projectSettingssettingsprojectAdminMembersAccess = projectSettingssettingsprojectAdminMembersAccess == null ? null : WorkflowExpression.Compile(projectSettingssettingsprojectAdminMembersAccess);
+            WorkflowExpression.Validate(__workflow_projectSettingssettingsprojectAdminMembersAccess, nameof(projectSettingssettingsprojectAdminMembersAccess), required: false);
             return new DeferredBodyAction<CreateNewProjectResponse>(() =>
             {
                 var apiCallPath = "/connector/createProject";
@@ -38,32 +39,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openexperience
                 var projectSettings = new JObject();
                 var projectSettingspropCount = 0;
                 projectSettingspropCount++;
-                projectSettings["customerId"] = ExpressionConverter.ConvertO(projectSettingscustomerId);
+                projectSettings["customerId"] = ExpressionConverter.ConvertO(__workflow_projectSettingscustomerId);
                 projectSettingspropCount++;
-                projectSettings["id"] = ExpressionConverter.ConvertO(projectSettingsid);
+                projectSettings["id"] = ExpressionConverter.ConvertO(__workflow_projectSettingsid);
                 projectSettingspropCount++;
-                projectSettings["name"] = ExpressionConverter.ConvertO(projectSettingsname);
-                if (projectSettingsaddress != null)
+                projectSettings["name"] = ExpressionConverter.ConvertO(__workflow_projectSettingsname);
+                if (__workflow_projectSettingsaddress != null)
                 {
-                    projectSettings["address"] = ExpressionConverter.ConvertO(projectSettingsaddress);
+                    projectSettings["address"] = ExpressionConverter.ConvertO(__workflow_projectSettingsaddress);
                     projectSettingspropCount++;
                 }
 
                 projectSettingspropCount++;
-                projectSettings["contactPhone"] = ExpressionConverter.ConvertO(projectSettingscontactPhone);
+                projectSettings["contactPhone"] = ExpressionConverter.ConvertO(__workflow_projectSettingscontactPhone);
                 projectSettingspropCount++;
-                projectSettings["contactEmail"] = ExpressionConverter.ConvertO(projectSettingscontactEmail);
+                projectSettings["contactEmail"] = ExpressionConverter.ConvertO(__workflow_projectSettingscontactEmail);
                 projectSettingspropCount++;
-                projectSettings["responsible"] = ExpressionConverter.ConvertO(projectSettingsresponsible);
+                projectSettings["responsible"] = ExpressionConverter.ConvertO(__workflow_projectSettingsresponsible);
                 projectSettingspropCount++;
-                projectSettings["services"] = ExpressionConverter.ConvertO(projectSettingsservices);
+                projectSettings["services"] = ExpressionConverter.ConvertO(__workflow_projectSettingsservices);
                 var settingsObject = new JObject();
                 var settingsObjectpropCount = 0;
-                if (projectSettingssettingsprojectAdminMembersAccess != null)
+                if (__workflow_projectSettingssettingsprojectAdminMembersAccess != null)
                 {
-                    if (projectSettingssettingsprojectAdminMembersAccess != null)
+                    if (__workflow_projectSettingssettingsprojectAdminMembersAccess != null)
                     {
-                        settingsObject["projectAdminMembersAccess"] = ExpressionConverter.ConvertO(projectSettingssettingsprojectAdminMembersAccess);
+                        settingsObject["projectAdminMembersAccess"] = ExpressionConverter.ConvertO(__workflow_projectSettingssettingsprojectAdminMembersAccess);
                         settingsObjectpropCount++;
                     }
 

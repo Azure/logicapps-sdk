@@ -1,252 +1,201 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class StudioghibliipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetFilms))]
-        public IBodyWorkflowAction<Films[]> GetFilms([WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<int> limit = null)
+        public IBodyWorkflowAction<Films[]> GetFilms(Expression<Func<string>> fields = null, Expression<Func<int>> limit = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Films[]> __BuildGetFilms(WorkflowExpression<string> fields = null, WorkflowExpression<int> limit = null)
-        {
-            WorkflowExpression.Validate(fields, nameof(fields), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
+            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
+            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
             return new DeferredBodyAction<Films[]>(() =>
             {
                 var apiCallPath = "/films";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (fields != null)
-                    callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (__workflow_fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction<Films[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetFilm))]
-        public IBodyWorkflowAction<Films[]> GetFilm([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> fields = null)
+        public IBodyWorkflowAction<Films[]> GetFilm(Expression<Func<string>> id, Expression<Func<string>> fields = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Films[]> __BuildGetFilm(WorkflowExpression<string> id, WorkflowExpression<string> fields = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(fields, nameof(fields), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
+            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
             return new DeferredBodyAction<Films[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/films/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/films/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (fields != null)
-                    callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                if (__workflow_fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
                 return new ApiConnectionAction<Films[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetPeople))]
-        public IBodyWorkflowAction<People[]> GetPeople([WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<int> limit = null)
+        public IBodyWorkflowAction<People[]> GetPeople(Expression<Func<string>> fields = null, Expression<Func<int>> limit = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<People[]> __BuildGetPeople(WorkflowExpression<string> fields = null, WorkflowExpression<int> limit = null)
-        {
-            WorkflowExpression.Validate(fields, nameof(fields), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
+            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
+            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
             return new DeferredBodyAction<People[]>(() =>
             {
                 var apiCallPath = "/people";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (fields != null)
-                    callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (__workflow_fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction<People[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetPerson))]
-        public IBodyWorkflowAction<People[]> GetPerson([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> fields = null)
+        public IBodyWorkflowAction<People[]> GetPerson(Expression<Func<string>> id, Expression<Func<string>> fields = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<People[]> __BuildGetPerson(WorkflowExpression<string> id, WorkflowExpression<string> fields = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(fields, nameof(fields), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
+            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
             return new DeferredBodyAction<People[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/people/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/people/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (fields != null)
-                    callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                if (__workflow_fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
                 return new ApiConnectionAction<People[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetLocations))]
-        public IBodyWorkflowAction<Locations[]> GetLocations([WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<int> limit = null)
+        public IBodyWorkflowAction<Locations[]> GetLocations(Expression<Func<string>> fields = null, Expression<Func<int>> limit = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Locations[]> __BuildGetLocations(WorkflowExpression<string> fields = null, WorkflowExpression<int> limit = null)
-        {
-            WorkflowExpression.Validate(fields, nameof(fields), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
+            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
+            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
             return new DeferredBodyAction<Locations[]>(() =>
             {
                 var apiCallPath = "/locations";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (fields != null)
-                    callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (__workflow_fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction<Locations[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetLocation))]
-        public IBodyWorkflowAction<Locations[]> GetLocation([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> fields = null)
+        public IBodyWorkflowAction<Locations[]> GetLocation(Expression<Func<string>> id, Expression<Func<string>> fields = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Locations[]> __BuildGetLocation(WorkflowExpression<string> id, WorkflowExpression<string> fields = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(fields, nameof(fields), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
+            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
             return new DeferredBodyAction<Locations[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/locations/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/locations/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (fields != null)
-                    callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                if (__workflow_fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
                 return new ApiConnectionAction<Locations[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetSpecies))]
-        public IBodyWorkflowAction<Species[]> GetSpecies([WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<int> limit = null)
+        public IBodyWorkflowAction<Species[]> GetSpecies(Expression<Func<string>> fields = null, Expression<Func<int>> limit = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Species[]> __BuildGetSpecies(WorkflowExpression<string> fields = null, WorkflowExpression<int> limit = null)
-        {
-            WorkflowExpression.Validate(fields, nameof(fields), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
+            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
+            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
             return new DeferredBodyAction<Species[]>(() =>
             {
                 var apiCallPath = "/species";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (fields != null)
-                    callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (__workflow_fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction<Species[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetASpecies))]
-        public IBodyWorkflowAction<Species[]> GetASpecies([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> fields = null)
+        public IBodyWorkflowAction<Species[]> GetASpecies(Expression<Func<string>> id, Expression<Func<string>> fields = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Species[]> __BuildGetASpecies(WorkflowExpression<string> id, WorkflowExpression<string> fields = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(fields, nameof(fields), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
+            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
             return new DeferredBodyAction<Species[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/species/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/species/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (fields != null)
-                    callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                if (__workflow_fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
                 return new ApiConnectionAction<Species[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetVehicles))]
-        public IBodyWorkflowAction<Vehicles[]> GetVehicles([WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<int> limit = null)
+        public IBodyWorkflowAction<Vehicles[]> GetVehicles(Expression<Func<string>> fields = null, Expression<Func<int>> limit = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Vehicles[]> __BuildGetVehicles(WorkflowExpression<string> fields = null, WorkflowExpression<int> limit = null)
-        {
-            WorkflowExpression.Validate(fields, nameof(fields), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
+            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
+            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
             return new DeferredBodyAction<Vehicles[]>(() =>
             {
                 var apiCallPath = "/vehicles";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (fields != null)
-                    callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (__workflow_fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction<Vehicles[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetVehicle))]
-        public IBodyWorkflowAction<Vehicles[]> GetVehicle([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> fields = null)
+        public IBodyWorkflowAction<Vehicles[]> GetVehicle(Expression<Func<string>> id, Expression<Func<string>> fields = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Vehicles[]> __BuildGetVehicle(WorkflowExpression<string> id, WorkflowExpression<string> fields = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(fields, nameof(fields), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
+            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
             return new DeferredBodyAction<Vehicles[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/vehicles/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/vehicles/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (fields != null)
-                    callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                if (__workflow_fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
                 return new ApiConnectionAction<Vehicles[]>(callPayload);
             });
         }

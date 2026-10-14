@@ -1,75 +1,57 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class SmartsheetActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
-        [WorkflowExpressionFactory(nameof(__BuildListSheets))]
-        public IBodyWorkflowAction<SmartsheetCollectionSheet> ListSheets([WorkflowExpression] Func<string> optionalFolderId = null)
+        public IBodyWorkflowAction<SmartsheetCollectionSheet> ListSheets(Expression<Func<string>> optionalFolderId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SmartsheetCollectionSheet> __BuildListSheets(WorkflowExpression<string> optionalFolderId = null)
-        {
-            WorkflowExpression.Validate(optionalFolderId, nameof(optionalFolderId), required: false);
+            var __workflow_optionalFolderId = optionalFolderId == null ? null : WorkflowExpression.Compile(optionalFolderId);
+            WorkflowExpression.Validate(__workflow_optionalFolderId, nameof(optionalFolderId), required: false);
             return new DeferredBodyAction<SmartsheetCollectionSheet>(() =>
             {
                 var apiCallPath = "/sheets";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (optionalFolderId != null)
-                    callPayload.Queries["optionalFolderId"] = ExpressionConverter.Convert(optionalFolderId);
+                if (__workflow_optionalFolderId != null)
+                    callPayload.Queries["optionalFolderId"] = ExpressionConverter.Convert(__workflow_optionalFolderId);
                 return new ApiConnectionAction<SmartsheetCollectionSheet>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
-        [WorkflowExpressionFactory(nameof(__BuildGetSheet))]
-        public IBodyWorkflowAction<SheetWithRows> GetSheet([WorkflowExpression] Func<string> sheetId, [WorkflowExpression] Func<string> columns = null)
+        public IBodyWorkflowAction<SheetWithRows> GetSheet(Expression<Func<string>> sheetId, Expression<Func<string>> columns = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SheetWithRows> __BuildGetSheet(WorkflowExpression<string> sheetId, WorkflowExpression<string> columns = null)
-        {
-            WorkflowExpression.Validate(sheetId, nameof(sheetId), required: true);
-            WorkflowExpression.Validate(columns, nameof(columns), required: false);
+            var __workflow_sheetId = sheetId == null ? null : WorkflowExpression.Compile(sheetId);
+            WorkflowExpression.Validate(__workflow_sheetId, nameof(sheetId), required: true);
+            var __workflow_columns = columns == null ? null : WorkflowExpression.Compile(columns);
+            WorkflowExpression.Validate(__workflow_columns, nameof(columns), required: false);
             return new DeferredBodyAction<SheetWithRows>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sheets/{0}", ExpressionConverter.ConvertWithUrlEncoding(sheetId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sheets/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sheetId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (columns != null)
-                    callPayload.Queries["columns"] = ExpressionConverter.Convert(columns);
+                if (__workflow_columns != null)
+                    callPayload.Queries["columns"] = ExpressionConverter.Convert(__workflow_columns);
                 return new ApiConnectionAction<SheetWithRows>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
-        [WorkflowExpressionFactory(nameof(__BuildGetColumns))]
-        public IBodyWorkflowAction<SmartsheetCollectionColumn> GetColumns([WorkflowExpression] Func<string> sheetId)
+        public IBodyWorkflowAction<SmartsheetCollectionColumn> GetColumns(Expression<Func<string>> sheetId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SmartsheetCollectionColumn> __BuildGetColumns(WorkflowExpression<string> sheetId)
-        {
-            WorkflowExpression.Validate(sheetId, nameof(sheetId), required: true);
+            var __workflow_sheetId = sheetId == null ? null : WorkflowExpression.Compile(sheetId);
+            WorkflowExpression.Validate(__workflow_sheetId, nameof(sheetId), required: true);
             return new DeferredBodyAction<SmartsheetCollectionColumn>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sheets/{0}/columns", ExpressionConverter.ConvertWithUrlEncoding(sheetId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sheets/{0}/columns", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sheetId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SmartsheetCollectionColumn>(callPayload);
@@ -77,19 +59,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
-        [WorkflowExpressionFactory(nameof(__BuildGetColumnsSchema))]
-        public IWorkflowAction GetColumnsSchema([WorkflowExpression] Func<string> sheetId)
+        public IWorkflowAction GetColumnsSchema(Expression<Func<string>> sheetId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetColumnsSchema(WorkflowExpression<string> sheetId)
-        {
-            WorkflowExpression.Validate(sheetId, nameof(sheetId), required: true);
+            var __workflow_sheetId = sheetId == null ? null : WorkflowExpression.Compile(sheetId);
+            WorkflowExpression.Validate(__workflow_sheetId, nameof(sheetId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/remove/sheets/{0}/columns", ExpressionConverter.ConvertWithUrlEncoding(sheetId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/remove/sheets/{0}/columns", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sheetId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -97,64 +73,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
-        [WorkflowExpressionFactory(nameof(__BuildGetSheetData))]
-        public IBodyWorkflowAction<RowsList> GetSheetData([WorkflowExpression] Func<string> sheetId, [WorkflowExpression] Func<string> columns = null)
+        public IBodyWorkflowAction<RowsList> GetSheetData(Expression<Func<string>> sheetId, Expression<Func<string>> columns = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<RowsList> __BuildGetSheetData(WorkflowExpression<string> sheetId, WorkflowExpression<string> columns = null)
-        {
-            WorkflowExpression.Validate(sheetId, nameof(sheetId), required: true);
-            WorkflowExpression.Validate(columns, nameof(columns), required: false);
+            var __workflow_sheetId = sheetId == null ? null : WorkflowExpression.Compile(sheetId);
+            WorkflowExpression.Validate(__workflow_sheetId, nameof(sheetId), required: true);
+            var __workflow_columns = columns == null ? null : WorkflowExpression.Compile(columns);
+            WorkflowExpression.Validate(__workflow_columns, nameof(columns), required: false);
             return new DeferredBodyAction<RowsList>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sheets/{0}/rows", ExpressionConverter.ConvertWithUrlEncoding(sheetId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sheets/{0}/rows", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sheetId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (columns != null)
-                    callPayload.Queries["columns"] = ExpressionConverter.Convert(columns);
+                if (__workflow_columns != null)
+                    callPayload.Queries["columns"] = ExpressionConverter.Convert(__workflow_columns);
                 return new ApiConnectionAction<RowsList>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
-        [WorkflowExpressionFactory(nameof(__BuildInsertRow))]
-        public IBodyWorkflowAction<InsertRowResponse> InsertRow([WorkflowExpression] Func<string> sheetId, [WorkflowExpression] Func<object> row = null)
+        public IBodyWorkflowAction<InsertRowResponse> InsertRow(Expression<Func<string>> sheetId, Expression<Func<object>> row = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<InsertRowResponse> __BuildInsertRow(WorkflowExpression<string> sheetId, WorkflowExpression<object> row = null)
-        {
-            WorkflowExpression.Validate(sheetId, nameof(sheetId), required: true);
-            WorkflowExpression.Validate(row, nameof(row), required: false);
+            var __workflow_sheetId = sheetId == null ? null : WorkflowExpression.Compile(sheetId);
+            WorkflowExpression.Validate(__workflow_sheetId, nameof(sheetId), required: true);
+            var __workflow_row = row == null ? null : WorkflowExpression.Compile(row);
+            WorkflowExpression.Validate(__workflow_row, nameof(row), required: false);
             return new DeferredBodyAction<InsertRowResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sheets/{0}/rows", ExpressionConverter.ConvertWithUrlEncoding(sheetId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sheets/{0}/rows", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sheetId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(row);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_row);
                 return new ApiConnectionAction<InsertRowResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
-        [WorkflowExpressionFactory(nameof(__BuildListSubFolders))]
-        public IBodyWorkflowAction<SmartsheetCollectionFolder> ListSubFolders([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<SmartsheetCollectionFolder> ListSubFolders(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SmartsheetCollectionFolder> __BuildListSubFolders(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<SmartsheetCollectionFolder>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/folders/{0}/folders", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/folders/{0}/folders", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SmartsheetCollectionFolder>(callPayload);
@@ -162,19 +122,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
-        [WorkflowExpressionFactory(nameof(__BuildGetDiscussionsForSheet))]
-        public IBodyWorkflowAction<SmartsheetCollectionGetDiscussionResponse> GetDiscussionsForSheet([WorkflowExpression] Func<string> sheetId)
+        public IBodyWorkflowAction<SmartsheetCollectionGetDiscussionResponse> GetDiscussionsForSheet(Expression<Func<string>> sheetId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SmartsheetCollectionGetDiscussionResponse> __BuildGetDiscussionsForSheet(WorkflowExpression<string> sheetId)
-        {
-            WorkflowExpression.Validate(sheetId, nameof(sheetId), required: true);
+            var __workflow_sheetId = sheetId == null ? null : WorkflowExpression.Compile(sheetId);
+            WorkflowExpression.Validate(__workflow_sheetId, nameof(sheetId), required: true);
             return new DeferredBodyAction<SmartsheetCollectionGetDiscussionResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sheets/{0}/discussions", ExpressionConverter.ConvertWithUrlEncoding(sheetId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sheets/{0}/discussions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sheetId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SmartsheetCollectionGetDiscussionResponse>(callPayload);
@@ -182,36 +136,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
-        [WorkflowExpressionFactory(nameof(__BuildAddDiscussionToSheet))]
-        public IBodyWorkflowAction<DiscussionResponse> AddDiscussionToSheet([WorkflowExpression] Func<string> sheetId, [WorkflowExpression] Func<string> discussiontitle = null, [WorkflowExpression] Func<string> discussioncommenttext = null)
+        public IBodyWorkflowAction<DiscussionResponse> AddDiscussionToSheet(Expression<Func<string>> sheetId, Expression<Func<string>> discussiontitle = null, Expression<Func<string>> discussioncommenttext = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DiscussionResponse> __BuildAddDiscussionToSheet(WorkflowExpression<string> sheetId, WorkflowExpression<string> discussiontitle = null, WorkflowExpression<string> discussioncommenttext = null)
-        {
-            WorkflowExpression.Validate(sheetId, nameof(sheetId), required: true);
-            WorkflowExpression.Validate(discussiontitle, nameof(discussiontitle), required: false);
-            WorkflowExpression.Validate(discussioncommenttext, nameof(discussioncommenttext), required: false);
+            var __workflow_sheetId = sheetId == null ? null : WorkflowExpression.Compile(sheetId);
+            WorkflowExpression.Validate(__workflow_sheetId, nameof(sheetId), required: true);
+            var __workflow_discussiontitle = discussiontitle == null ? null : WorkflowExpression.Compile(discussiontitle);
+            WorkflowExpression.Validate(__workflow_discussiontitle, nameof(discussiontitle), required: false);
+            var __workflow_discussioncommenttext = discussioncommenttext == null ? null : WorkflowExpression.Compile(discussioncommenttext);
+            WorkflowExpression.Validate(__workflow_discussioncommenttext, nameof(discussioncommenttext), required: false);
             return new DeferredBodyAction<DiscussionResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sheets/{0}/discussions", ExpressionConverter.ConvertWithUrlEncoding(sheetId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sheets/{0}/discussions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sheetId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var discussion = new JObject();
                 var discussionpropCount = 0;
-                if (discussiontitle != null)
+                if (__workflow_discussiontitle != null)
                 {
-                    discussion["title"] = ExpressionConverter.ConvertO(discussiontitle);
+                    discussion["title"] = ExpressionConverter.ConvertO(__workflow_discussiontitle);
                     discussionpropCount++;
                 }
 
                 var commentObject = new JObject();
                 var commentObjectpropCount = 0;
-                if (discussioncommenttext != null)
+                if (__workflow_discussioncommenttext != null)
                 {
-                    commentObject["text"] = ExpressionConverter.ConvertO(discussioncommenttext);
+                    commentObject["text"] = ExpressionConverter.ConvertO(__workflow_discussioncommenttext);
                     commentObjectpropCount++;
                 }
 
@@ -231,37 +181,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
-        [WorkflowExpressionFactory(nameof(__BuildAddDiscussionToRow))]
-        public IBodyWorkflowAction<DiscussionResponse> AddDiscussionToRow([WorkflowExpression] Func<string> sheetId, [WorkflowExpression] Func<string> rowId, [WorkflowExpression] Func<string> discussiontitle = null, [WorkflowExpression] Func<string> discussioncommenttext = null)
+        public IBodyWorkflowAction<DiscussionResponse> AddDiscussionToRow(Expression<Func<string>> sheetId, Expression<Func<string>> rowId, Expression<Func<string>> discussiontitle = null, Expression<Func<string>> discussioncommenttext = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DiscussionResponse> __BuildAddDiscussionToRow(WorkflowExpression<string> sheetId, WorkflowExpression<string> rowId, WorkflowExpression<string> discussiontitle = null, WorkflowExpression<string> discussioncommenttext = null)
-        {
-            WorkflowExpression.Validate(sheetId, nameof(sheetId), required: true);
-            WorkflowExpression.Validate(rowId, nameof(rowId), required: true);
-            WorkflowExpression.Validate(discussiontitle, nameof(discussiontitle), required: false);
-            WorkflowExpression.Validate(discussioncommenttext, nameof(discussioncommenttext), required: false);
+            var __workflow_sheetId = sheetId == null ? null : WorkflowExpression.Compile(sheetId);
+            WorkflowExpression.Validate(__workflow_sheetId, nameof(sheetId), required: true);
+            var __workflow_rowId = rowId == null ? null : WorkflowExpression.Compile(rowId);
+            WorkflowExpression.Validate(__workflow_rowId, nameof(rowId), required: true);
+            var __workflow_discussiontitle = discussiontitle == null ? null : WorkflowExpression.Compile(discussiontitle);
+            WorkflowExpression.Validate(__workflow_discussiontitle, nameof(discussiontitle), required: false);
+            var __workflow_discussioncommenttext = discussioncommenttext == null ? null : WorkflowExpression.Compile(discussioncommenttext);
+            WorkflowExpression.Validate(__workflow_discussioncommenttext, nameof(discussioncommenttext), required: false);
             return new DeferredBodyAction<DiscussionResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sheets/{0}/rows/{1}/discussions", ExpressionConverter.ConvertWithUrlEncoding(sheetId, 1), ExpressionConverter.ConvertWithUrlEncoding(rowId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sheets/{0}/rows/{1}/discussions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sheetId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_rowId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var discussion = new JObject();
                 var discussionpropCount = 0;
-                if (discussiontitle != null)
+                if (__workflow_discussiontitle != null)
                 {
-                    discussion["title"] = ExpressionConverter.ConvertO(discussiontitle);
+                    discussion["title"] = ExpressionConverter.ConvertO(__workflow_discussiontitle);
                     discussionpropCount++;
                 }
 
                 var commentObject = new JObject();
                 var commentObjectpropCount = 0;
-                if (discussioncommenttext != null)
+                if (__workflow_discussioncommenttext != null)
                 {
-                    commentObject["text"] = ExpressionConverter.ConvertO(discussioncommenttext);
+                    commentObject["text"] = ExpressionConverter.ConvertO(__workflow_discussioncommenttext);
                     commentObjectpropCount++;
                 }
 
@@ -281,28 +228,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
-        [WorkflowExpressionFactory(nameof(__BuildAddCommentToDiscussion))]
-        public IBodyWorkflowAction<CreateCommentResponse> AddCommentToDiscussion([WorkflowExpression] Func<string> sheetId, [WorkflowExpression] Func<string> discussionId, [WorkflowExpression] Func<string> commenttext = null)
+        public IBodyWorkflowAction<CreateCommentResponse> AddCommentToDiscussion(Expression<Func<string>> sheetId, Expression<Func<string>> discussionId, Expression<Func<string>> commenttext = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateCommentResponse> __BuildAddCommentToDiscussion(WorkflowExpression<string> sheetId, WorkflowExpression<string> discussionId, WorkflowExpression<string> commenttext = null)
-        {
-            WorkflowExpression.Validate(sheetId, nameof(sheetId), required: true);
-            WorkflowExpression.Validate(discussionId, nameof(discussionId), required: true);
-            WorkflowExpression.Validate(commenttext, nameof(commenttext), required: false);
+            var __workflow_sheetId = sheetId == null ? null : WorkflowExpression.Compile(sheetId);
+            WorkflowExpression.Validate(__workflow_sheetId, nameof(sheetId), required: true);
+            var __workflow_discussionId = discussionId == null ? null : WorkflowExpression.Compile(discussionId);
+            WorkflowExpression.Validate(__workflow_discussionId, nameof(discussionId), required: true);
+            var __workflow_commenttext = commenttext == null ? null : WorkflowExpression.Compile(commenttext);
+            WorkflowExpression.Validate(__workflow_commenttext, nameof(commenttext), required: false);
             return new DeferredBodyAction<CreateCommentResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sheets/{0}/discussions/{1}/comments", ExpressionConverter.ConvertWithUrlEncoding(sheetId, 1), ExpressionConverter.ConvertWithUrlEncoding(discussionId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sheets/{0}/discussions/{1}/comments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sheetId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_discussionId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var comment = new JObject();
                 var commentpropCount = 0;
-                if (commenttext != null)
+                if (__workflow_commenttext != null)
                 {
-                    comment["text"] = ExpressionConverter.ConvertO(commenttext);
+                    comment["text"] = ExpressionConverter.ConvertO(__workflow_commenttext);
                     commentpropCount++;
                 }
 
@@ -316,20 +259,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
-        [WorkflowExpressionFactory(nameof(__BuildGetDiscussion))]
-        public IBodyWorkflowAction<DiscussionData> GetDiscussion([WorkflowExpression] Func<string> sheetId, [WorkflowExpression] Func<string> discussionId)
+        public IBodyWorkflowAction<DiscussionData> GetDiscussion(Expression<Func<string>> sheetId, Expression<Func<string>> discussionId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DiscussionData> __BuildGetDiscussion(WorkflowExpression<string> sheetId, WorkflowExpression<string> discussionId)
-        {
-            WorkflowExpression.Validate(sheetId, nameof(sheetId), required: true);
-            WorkflowExpression.Validate(discussionId, nameof(discussionId), required: true);
+            var __workflow_sheetId = sheetId == null ? null : WorkflowExpression.Compile(sheetId);
+            WorkflowExpression.Validate(__workflow_sheetId, nameof(sheetId), required: true);
+            var __workflow_discussionId = discussionId == null ? null : WorkflowExpression.Compile(discussionId);
+            WorkflowExpression.Validate(__workflow_discussionId, nameof(discussionId), required: true);
             return new DeferredBodyAction<DiscussionData>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sheets/{0}/discussions/{1}", ExpressionConverter.ConvertWithUrlEncoding(sheetId, 1), ExpressionConverter.ConvertWithUrlEncoding(discussionId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sheets/{0}/discussions/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sheetId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_discussionId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DiscussionData>(callPayload);
@@ -339,145 +277,105 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
 
     public class SmartsheetTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildOnNewSheet))]
-        public IBodyWorkflowTrigger<SmartsheetCollectionSheet> OnNewSheet([WorkflowExpression] Func<string> optionalFolderId = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SmartsheetCollectionSheet> OnNewSheet(Expression<Func<string>> optionalFolderId = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<SmartsheetCollectionSheet> __BuildOnNewSheet(WorkflowExpression<string> optionalFolderId = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(optionalFolderId, nameof(optionalFolderId), required: false);
+            var __workflow_optionalFolderId = optionalFolderId == null ? null : WorkflowExpression.Compile(optionalFolderId);
+            WorkflowExpression.Validate(__workflow_optionalFolderId, nameof(optionalFolderId), required: false);
             return new DeferredBodyTrigger<SmartsheetCollectionSheet>(() =>
             {
                 var apiCallPath = "/new_trigger/sheets";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (optionalFolderId != null)
-                    callPayload.Queries["optionalFolderId"] = ExpressionConverter.Convert(optionalFolderId);
+                if (__workflow_optionalFolderId != null)
+                    callPayload.Queries["optionalFolderId"] = ExpressionConverter.Convert(__workflow_optionalFolderId);
                 return new ApiConnectionTrigger<SmartsheetCollectionSheet>(callPayload, recurrence: recurrence);
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildOnUpdatedSheet))]
-        public IBodyWorkflowTrigger<SmartsheetCollectionSheet> OnUpdatedSheet([WorkflowExpression] Func<string> optionalFolderId = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SmartsheetCollectionSheet> OnUpdatedSheet(Expression<Func<string>> optionalFolderId = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<SmartsheetCollectionSheet> __BuildOnUpdatedSheet(WorkflowExpression<string> optionalFolderId = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(optionalFolderId, nameof(optionalFolderId), required: false);
+            var __workflow_optionalFolderId = optionalFolderId == null ? null : WorkflowExpression.Compile(optionalFolderId);
+            WorkflowExpression.Validate(__workflow_optionalFolderId, nameof(optionalFolderId), required: false);
             return new DeferredBodyTrigger<SmartsheetCollectionSheet>(() =>
             {
                 var apiCallPath = "/updated_trigger/sheets";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (optionalFolderId != null)
-                    callPayload.Queries["optionalFolderId"] = ExpressionConverter.Convert(optionalFolderId);
+                if (__workflow_optionalFolderId != null)
+                    callPayload.Queries["optionalFolderId"] = ExpressionConverter.Convert(__workflow_optionalFolderId);
                 return new ApiConnectionTrigger<SmartsheetCollectionSheet>(callPayload, recurrence: recurrence);
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildOnNewComment))]
-        public IBodyWorkflowTrigger<SmartsheetCollectionDiscussionComment> OnNewComment([WorkflowExpression] Func<string> sheetId,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SmartsheetCollectionDiscussionComment> OnNewComment(Expression<Func<string>> sheetId, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<SmartsheetCollectionDiscussionComment> __BuildOnNewComment(WorkflowExpression<string> sheetId,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(sheetId, nameof(sheetId), required: true);
+            var __workflow_sheetId = sheetId == null ? null : WorkflowExpression.Compile(sheetId);
+            WorkflowExpression.Validate(__workflow_sheetId, nameof(sheetId), required: true);
             return new DeferredBodyTrigger<SmartsheetCollectionDiscussionComment>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/new_comment_trigger/sheets/{0}/discussions", ExpressionConverter.ConvertWithUrlEncoding(sheetId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/new_comment_trigger/sheets/{0}/discussions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sheetId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionTrigger<SmartsheetCollectionDiscussionComment>(callPayload, recurrence: recurrence);
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildOnUpdatedSpecificSheet))]
-        public IBodyWorkflowTrigger<SmartsheetCollectionSheetWithRows> OnUpdatedSpecificSheet([WorkflowExpression] Func<string> sheetId,[WorkflowExpression] Func<string> columns = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SmartsheetCollectionSheetWithRows> OnUpdatedSpecificSheet(Expression<Func<string>> sheetId, Expression<Func<string>> columns = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<SmartsheetCollectionSheetWithRows> __BuildOnUpdatedSpecificSheet(WorkflowExpression<string> sheetId,WorkflowExpression<string> columns = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(sheetId, nameof(sheetId), required: true);
-            WorkflowExpression.Validate(columns, nameof(columns), required: false);
+            var __workflow_sheetId = sheetId == null ? null : WorkflowExpression.Compile(sheetId);
+            WorkflowExpression.Validate(__workflow_sheetId, nameof(sheetId), required: true);
+            var __workflow_columns = columns == null ? null : WorkflowExpression.Compile(columns);
+            WorkflowExpression.Validate(__workflow_columns, nameof(columns), required: false);
             return new DeferredBodyTrigger<SmartsheetCollectionSheetWithRows>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/updated_trigger/sheets/{0}", ExpressionConverter.ConvertWithUrlEncoding(sheetId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/updated_trigger/sheets/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sheetId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (columns != null)
-                    callPayload.Queries["columns"] = ExpressionConverter.Convert(columns);
+                if (__workflow_columns != null)
+                    callPayload.Queries["columns"] = ExpressionConverter.Convert(__workflow_columns);
                 return new ApiConnectionTrigger<SmartsheetCollectionSheetWithRows>(callPayload, recurrence: recurrence);
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildOnRowCreated))]
-        public IBodyWorkflowTrigger<RowResponse> OnRowCreated([WorkflowExpression] Func<string> sheetId,[WorkflowExpression] Func<string> columns = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RowResponse> OnRowCreated(Expression<Func<string>> sheetId, Expression<Func<string>> columns = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<RowResponse> __BuildOnRowCreated(WorkflowExpression<string> sheetId,WorkflowExpression<string> columns = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(sheetId, nameof(sheetId), required: true);
-            WorkflowExpression.Validate(columns, nameof(columns), required: false);
+            var __workflow_sheetId = sheetId == null ? null : WorkflowExpression.Compile(sheetId);
+            WorkflowExpression.Validate(__workflow_sheetId, nameof(sheetId), required: true);
+            var __workflow_columns = columns == null ? null : WorkflowExpression.Compile(columns);
+            WorkflowExpression.Validate(__workflow_columns, nameof(columns), required: false);
             return new DeferredBodyTrigger<RowResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/row_created_trigger/sheets/{0}", ExpressionConverter.ConvertWithUrlEncoding(sheetId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/row_created_trigger/sheets/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sheetId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (columns != null)
-                    callPayload.Queries["columns"] = ExpressionConverter.Convert(columns);
+                if (__workflow_columns != null)
+                    callPayload.Queries["columns"] = ExpressionConverter.Convert(__workflow_columns);
                 return new ApiConnectionTrigger<RowResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildOnCommentAdded))]
-        public IBodyWorkflowTrigger<CommentResponse> OnCommentAdded([WorkflowExpression] Func<string> sheetId,[WorkflowExpression] Func<string> discussionId,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CommentResponse> OnCommentAdded(Expression<Func<string>> sheetId, Expression<Func<string>> discussionId, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<CommentResponse> __BuildOnCommentAdded(WorkflowExpression<string> sheetId,WorkflowExpression<string> discussionId,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(sheetId, nameof(sheetId), required: true);
-            WorkflowExpression.Validate(discussionId, nameof(discussionId), required: true);
+            var __workflow_sheetId = sheetId == null ? null : WorkflowExpression.Compile(sheetId);
+            WorkflowExpression.Validate(__workflow_sheetId, nameof(sheetId), required: true);
+            var __workflow_discussionId = discussionId == null ? null : WorkflowExpression.Compile(discussionId);
+            WorkflowExpression.Validate(__workflow_discussionId, nameof(discussionId), required: true);
             return new DeferredBodyTrigger<CommentResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/comment_added_trigger/sheets/{0}/discussions/{1}", ExpressionConverter.ConvertWithUrlEncoding(sheetId, 1), ExpressionConverter.ConvertWithUrlEncoding(discussionId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/comment_added_trigger/sheets/{0}/discussions/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sheetId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_discussionId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionTrigger<CommentResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildOnDiscussionCreated))]
-        public IBodyWorkflowTrigger<SmartsheetCollectionGetDiscussionResponse> OnDiscussionCreated([WorkflowExpression] Func<string> sheetId,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SmartsheetCollectionGetDiscussionResponse> OnDiscussionCreated(Expression<Func<string>> sheetId, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<SmartsheetCollectionGetDiscussionResponse> __BuildOnDiscussionCreated(WorkflowExpression<string> sheetId,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(sheetId, nameof(sheetId), required: true);
+            var __workflow_sheetId = sheetId == null ? null : WorkflowExpression.Compile(sheetId);
+            WorkflowExpression.Validate(__workflow_sheetId, nameof(sheetId), required: true);
             return new DeferredBodyTrigger<SmartsheetCollectionGetDiscussionResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/discussion_trigger/sheets/{0}/discussions", ExpressionConverter.ConvertWithUrlEncoding(sheetId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/discussion_trigger/sheets/{0}/discussions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sheetId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionTrigger<SmartsheetCollectionGetDiscussionResponse>(callPayload, recurrence: recurrence);

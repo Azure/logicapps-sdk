@@ -1,90 +1,100 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class _1docstopActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        [WorkflowExpressionFactory(nameof(__BuildPalibrariesAdd))]
-        public IBodyWorkflowAction<Library> PalibrariesAdd([WorkflowExpression] Func<int> solutionid = null, [WorkflowExpression] Func<string> solutionkey = null, [WorkflowExpression] Func<int> librarylibraryId = null, [WorkflowExpression] Func<int> libraryrepositoryId = null, [WorkflowExpression] Func<int> libraryrepositoryrepositoryId = null, [WorkflowExpression] Func<string> libraryrepositoryname = null, [WorkflowExpression] Func<string> libraryrepositorydescription = null, [WorkflowExpression] Func<int> libraryrepositoryrepositoryTypeId = null, [WorkflowExpression] Func<int> libraryrepositoryrepositoryTyperepositoryTypeId = null, [WorkflowExpression] Func<string> libraryrepositoryrepositoryTypename = null, [WorkflowExpression] Func<string> libraryrepositoryrepositoryURI = null, [WorkflowExpression] Func<int> librarydocumentTypeId = null, [WorkflowExpression] Func<int> librarydocumentTypedocumentTypeId = null, [WorkflowExpression] Func<string> librarydocumentTypename = null, [WorkflowExpression] Func<string> librarydocumentTypedescription = null, [WorkflowExpression] Func<string> libraryname = null, [WorkflowExpression] Func<string> librarydescription = null, [WorkflowExpression] Func<bool> libraryocr = null)
+        public IBodyWorkflowAction<Library> PalibrariesAdd(Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null, Expression<Func<int>> librarylibraryId = null, Expression<Func<int>> libraryrepositoryId = null, Expression<Func<int>> libraryrepositoryrepositoryId = null, Expression<Func<string>> libraryrepositoryname = null, Expression<Func<string>> libraryrepositorydescription = null, Expression<Func<int>> libraryrepositoryrepositoryTypeId = null, Expression<Func<int>> libraryrepositoryrepositoryTyperepositoryTypeId = null, Expression<Func<string>> libraryrepositoryrepositoryTypename = null, Expression<Func<string>> libraryrepositoryrepositoryURI = null, Expression<Func<int>> librarydocumentTypeId = null, Expression<Func<int>> librarydocumentTypedocumentTypeId = null, Expression<Func<string>> librarydocumentTypename = null, Expression<Func<string>> librarydocumentTypedescription = null, Expression<Func<string>> libraryname = null, Expression<Func<string>> librarydescription = null, Expression<Func<bool>> libraryocr = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Library> __BuildPalibrariesAdd(WorkflowExpression<int> solutionid = null, WorkflowExpression<string> solutionkey = null, WorkflowExpression<int> librarylibraryId = null, WorkflowExpression<int> libraryrepositoryId = null, WorkflowExpression<int> libraryrepositoryrepositoryId = null, WorkflowExpression<string> libraryrepositoryname = null, WorkflowExpression<string> libraryrepositorydescription = null, WorkflowExpression<int> libraryrepositoryrepositoryTypeId = null, WorkflowExpression<int> libraryrepositoryrepositoryTyperepositoryTypeId = null, WorkflowExpression<string> libraryrepositoryrepositoryTypename = null, WorkflowExpression<string> libraryrepositoryrepositoryURI = null, WorkflowExpression<int> librarydocumentTypeId = null, WorkflowExpression<int> librarydocumentTypedocumentTypeId = null, WorkflowExpression<string> librarydocumentTypename = null, WorkflowExpression<string> librarydocumentTypedescription = null, WorkflowExpression<string> libraryname = null, WorkflowExpression<string> librarydescription = null, WorkflowExpression<bool> libraryocr = null)
-        {
-            WorkflowExpression.Validate(solutionid, nameof(solutionid), required: false);
-            WorkflowExpression.Validate(solutionkey, nameof(solutionkey), required: false);
-            WorkflowExpression.Validate(librarylibraryId, nameof(librarylibraryId), required: false);
-            WorkflowExpression.Validate(libraryrepositoryId, nameof(libraryrepositoryId), required: false);
-            WorkflowExpression.Validate(libraryrepositoryrepositoryId, nameof(libraryrepositoryrepositoryId), required: false);
-            WorkflowExpression.Validate(libraryrepositoryname, nameof(libraryrepositoryname), required: false);
-            WorkflowExpression.Validate(libraryrepositorydescription, nameof(libraryrepositorydescription), required: false);
-            WorkflowExpression.Validate(libraryrepositoryrepositoryTypeId, nameof(libraryrepositoryrepositoryTypeId), required: false);
-            WorkflowExpression.Validate(libraryrepositoryrepositoryTyperepositoryTypeId, nameof(libraryrepositoryrepositoryTyperepositoryTypeId), required: false);
-            WorkflowExpression.Validate(libraryrepositoryrepositoryTypename, nameof(libraryrepositoryrepositoryTypename), required: false);
-            WorkflowExpression.Validate(libraryrepositoryrepositoryURI, nameof(libraryrepositoryrepositoryURI), required: false);
-            WorkflowExpression.Validate(librarydocumentTypeId, nameof(librarydocumentTypeId), required: false);
-            WorkflowExpression.Validate(librarydocumentTypedocumentTypeId, nameof(librarydocumentTypedocumentTypeId), required: false);
-            WorkflowExpression.Validate(librarydocumentTypename, nameof(librarydocumentTypename), required: false);
-            WorkflowExpression.Validate(librarydocumentTypedescription, nameof(librarydocumentTypedescription), required: false);
-            WorkflowExpression.Validate(libraryname, nameof(libraryname), required: false);
-            WorkflowExpression.Validate(librarydescription, nameof(librarydescription), required: false);
-            WorkflowExpression.Validate(libraryocr, nameof(libraryocr), required: false);
+            var __workflow_solutionid = solutionid == null ? null : WorkflowExpression.Compile(solutionid);
+            WorkflowExpression.Validate(__workflow_solutionid, nameof(solutionid), required: false);
+            var __workflow_solutionkey = solutionkey == null ? null : WorkflowExpression.Compile(solutionkey);
+            WorkflowExpression.Validate(__workflow_solutionkey, nameof(solutionkey), required: false);
+            var __workflow_librarylibraryId = librarylibraryId == null ? null : WorkflowExpression.Compile(librarylibraryId);
+            WorkflowExpression.Validate(__workflow_librarylibraryId, nameof(librarylibraryId), required: false);
+            var __workflow_libraryrepositoryId = libraryrepositoryId == null ? null : WorkflowExpression.Compile(libraryrepositoryId);
+            WorkflowExpression.Validate(__workflow_libraryrepositoryId, nameof(libraryrepositoryId), required: false);
+            var __workflow_libraryrepositoryrepositoryId = libraryrepositoryrepositoryId == null ? null : WorkflowExpression.Compile(libraryrepositoryrepositoryId);
+            WorkflowExpression.Validate(__workflow_libraryrepositoryrepositoryId, nameof(libraryrepositoryrepositoryId), required: false);
+            var __workflow_libraryrepositoryname = libraryrepositoryname == null ? null : WorkflowExpression.Compile(libraryrepositoryname);
+            WorkflowExpression.Validate(__workflow_libraryrepositoryname, nameof(libraryrepositoryname), required: false);
+            var __workflow_libraryrepositorydescription = libraryrepositorydescription == null ? null : WorkflowExpression.Compile(libraryrepositorydescription);
+            WorkflowExpression.Validate(__workflow_libraryrepositorydescription, nameof(libraryrepositorydescription), required: false);
+            var __workflow_libraryrepositoryrepositoryTypeId = libraryrepositoryrepositoryTypeId == null ? null : WorkflowExpression.Compile(libraryrepositoryrepositoryTypeId);
+            WorkflowExpression.Validate(__workflow_libraryrepositoryrepositoryTypeId, nameof(libraryrepositoryrepositoryTypeId), required: false);
+            var __workflow_libraryrepositoryrepositoryTyperepositoryTypeId = libraryrepositoryrepositoryTyperepositoryTypeId == null ? null : WorkflowExpression.Compile(libraryrepositoryrepositoryTyperepositoryTypeId);
+            WorkflowExpression.Validate(__workflow_libraryrepositoryrepositoryTyperepositoryTypeId, nameof(libraryrepositoryrepositoryTyperepositoryTypeId), required: false);
+            var __workflow_libraryrepositoryrepositoryTypename = libraryrepositoryrepositoryTypename == null ? null : WorkflowExpression.Compile(libraryrepositoryrepositoryTypename);
+            WorkflowExpression.Validate(__workflow_libraryrepositoryrepositoryTypename, nameof(libraryrepositoryrepositoryTypename), required: false);
+            var __workflow_libraryrepositoryrepositoryURI = libraryrepositoryrepositoryURI == null ? null : WorkflowExpression.Compile(libraryrepositoryrepositoryURI);
+            WorkflowExpression.Validate(__workflow_libraryrepositoryrepositoryURI, nameof(libraryrepositoryrepositoryURI), required: false);
+            var __workflow_librarydocumentTypeId = librarydocumentTypeId == null ? null : WorkflowExpression.Compile(librarydocumentTypeId);
+            WorkflowExpression.Validate(__workflow_librarydocumentTypeId, nameof(librarydocumentTypeId), required: false);
+            var __workflow_librarydocumentTypedocumentTypeId = librarydocumentTypedocumentTypeId == null ? null : WorkflowExpression.Compile(librarydocumentTypedocumentTypeId);
+            WorkflowExpression.Validate(__workflow_librarydocumentTypedocumentTypeId, nameof(librarydocumentTypedocumentTypeId), required: false);
+            var __workflow_librarydocumentTypename = librarydocumentTypename == null ? null : WorkflowExpression.Compile(librarydocumentTypename);
+            WorkflowExpression.Validate(__workflow_librarydocumentTypename, nameof(librarydocumentTypename), required: false);
+            var __workflow_librarydocumentTypedescription = librarydocumentTypedescription == null ? null : WorkflowExpression.Compile(librarydocumentTypedescription);
+            WorkflowExpression.Validate(__workflow_librarydocumentTypedescription, nameof(librarydocumentTypedescription), required: false);
+            var __workflow_libraryname = libraryname == null ? null : WorkflowExpression.Compile(libraryname);
+            WorkflowExpression.Validate(__workflow_libraryname, nameof(libraryname), required: false);
+            var __workflow_librarydescription = librarydescription == null ? null : WorkflowExpression.Compile(librarydescription);
+            WorkflowExpression.Validate(__workflow_librarydescription, nameof(librarydescription), required: false);
+            var __workflow_libraryocr = libraryocr == null ? null : WorkflowExpression.Compile(libraryocr);
+            WorkflowExpression.Validate(__workflow_libraryocr, nameof(libraryocr), required: false);
             return new DeferredBodyAction<Library>(() =>
             {
                 var apiCallPath = "/palibraries/add";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (solutionid != null)
-                    callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
-                if (solutionkey != null)
-                    callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(solutionkey);
+                if (__workflow_solutionid != null)
+                    callPayload.Queries["solutionid"] = ExpressionConverter.Convert(__workflow_solutionid);
+                if (__workflow_solutionkey != null)
+                    callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(__workflow_solutionkey);
                 var library = new JObject();
                 var librarypropCount = 0;
-                if (librarylibraryId != null)
+                if (__workflow_librarylibraryId != null)
                 {
-                    library["libraryId"] = ExpressionConverter.ConvertO(librarylibraryId);
+                    library["libraryId"] = ExpressionConverter.ConvertO(__workflow_librarylibraryId);
                     librarypropCount++;
                 }
 
-                if (libraryrepositoryId != null)
+                if (__workflow_libraryrepositoryId != null)
                 {
-                    library["repositoryId"] = ExpressionConverter.ConvertO(libraryrepositoryId);
+                    library["repositoryId"] = ExpressionConverter.ConvertO(__workflow_libraryrepositoryId);
                     librarypropCount++;
                 }
 
-                if (librarydocumentTypeId != null)
+                if (__workflow_librarydocumentTypeId != null)
                 {
-                    library["documentTypeId"] = ExpressionConverter.ConvertO(librarydocumentTypeId);
+                    library["documentTypeId"] = ExpressionConverter.ConvertO(__workflow_librarydocumentTypeId);
                     librarypropCount++;
                 }
 
                 var documentTypeObject = new JObject();
                 var documentTypeObjectpropCount = 0;
-                if (librarydocumentTypedocumentTypeId != null)
+                if (__workflow_librarydocumentTypedocumentTypeId != null)
                 {
-                    documentTypeObject["documentTypeId"] = ExpressionConverter.ConvertO(librarydocumentTypedocumentTypeId);
+                    documentTypeObject["documentTypeId"] = ExpressionConverter.ConvertO(__workflow_librarydocumentTypedocumentTypeId);
                     documentTypeObjectpropCount++;
                 }
 
-                if (librarydocumentTypename != null)
+                if (__workflow_librarydocumentTypename != null)
                 {
-                    documentTypeObject["name"] = ExpressionConverter.ConvertO(librarydocumentTypename);
+                    documentTypeObject["name"] = ExpressionConverter.ConvertO(__workflow_librarydocumentTypename);
                     documentTypeObjectpropCount++;
                 }
 
-                if (librarydocumentTypedescription != null)
+                if (__workflow_librarydocumentTypedescription != null)
                 {
-                    documentTypeObject["description"] = ExpressionConverter.ConvertO(librarydocumentTypedescription);
+                    documentTypeObject["description"] = ExpressionConverter.ConvertO(__workflow_librarydocumentTypedescription);
                     documentTypeObjectpropCount++;
                 }
 
@@ -94,21 +104,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
                     librarypropCount++;
                 }
 
-                if (libraryname != null)
+                if (__workflow_libraryname != null)
                 {
-                    library["name"] = ExpressionConverter.ConvertO(libraryname);
+                    library["name"] = ExpressionConverter.ConvertO(__workflow_libraryname);
                     librarypropCount++;
                 }
 
-                if (librarydescription != null)
+                if (__workflow_librarydescription != null)
                 {
-                    library["description"] = ExpressionConverter.ConvertO(librarydescription);
+                    library["description"] = ExpressionConverter.ConvertO(__workflow_librarydescription);
                     librarypropCount++;
                 }
 
-                if (libraryocr != null)
+                if (__workflow_libraryocr != null)
                 {
-                    library["ocr"] = ExpressionConverter.ConvertO(libraryocr);
+                    library["ocr"] = ExpressionConverter.ConvertO(__workflow_libraryocr);
                     librarypropCount++;
                 }
 
@@ -122,120 +132,108 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        [WorkflowExpressionFactory(nameof(__BuildPasolutionsGet))]
-        public IBodyWorkflowAction<Solution> PasolutionsGet([WorkflowExpression] Func<string> solutionkey, [WorkflowExpression] Func<int> solutionid = null)
+        public IBodyWorkflowAction<Solution> PasolutionsGet(Expression<Func<string>> solutionkey, Expression<Func<int>> solutionid = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Solution> __BuildPasolutionsGet(WorkflowExpression<string> solutionkey, WorkflowExpression<int> solutionid = null)
-        {
-            WorkflowExpression.Validate(solutionkey, nameof(solutionkey), required: true);
-            WorkflowExpression.Validate(solutionid, nameof(solutionid), required: false);
+            var __workflow_solutionkey = solutionkey == null ? null : WorkflowExpression.Compile(solutionkey);
+            WorkflowExpression.Validate(__workflow_solutionkey, nameof(solutionkey), required: true);
+            var __workflow_solutionid = solutionid == null ? null : WorkflowExpression.Compile(solutionid);
+            WorkflowExpression.Validate(__workflow_solutionid, nameof(solutionid), required: false);
             return new DeferredBodyAction<Solution>(() =>
             {
                 var apiCallPath = "/pasolutions/get";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(solutionkey);
-                if (solutionid != null)
-                    callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
+                callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(__workflow_solutionkey);
+                if (__workflow_solutionid != null)
+                    callPayload.Queries["solutionid"] = ExpressionConverter.Convert(__workflow_solutionid);
                 return new ApiConnectionAction<Solution>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        [WorkflowExpressionFactory(nameof(__BuildPasolutionsList))]
-        public IBodyWorkflowAction<Solution[]> PasolutionsList([WorkflowExpression] Func<int> solutionid = null)
+        public IBodyWorkflowAction<Solution[]> PasolutionsList(Expression<Func<int>> solutionid = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Solution[]> __BuildPasolutionsList(WorkflowExpression<int> solutionid = null)
-        {
-            WorkflowExpression.Validate(solutionid, nameof(solutionid), required: false);
+            var __workflow_solutionid = solutionid == null ? null : WorkflowExpression.Compile(solutionid);
+            WorkflowExpression.Validate(__workflow_solutionid, nameof(solutionid), required: false);
             return new DeferredBodyAction<Solution[]>(() =>
             {
                 var apiCallPath = "/pasolutions/list";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (solutionid != null)
-                    callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
+                if (__workflow_solutionid != null)
+                    callPayload.Queries["solutionid"] = ExpressionConverter.Convert(__workflow_solutionid);
                 return new ApiConnectionAction<Solution[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        [WorkflowExpressionFactory(nameof(__BuildPasolutionsDepartmentList))]
-        public IBodyWorkflowAction<Solution[]> PasolutionsDepartmentList([WorkflowExpression] Func<string> departmentkey, [WorkflowExpression] Func<int> solutionid = null)
+        public IBodyWorkflowAction<Solution[]> PasolutionsDepartmentList(Expression<Func<string>> departmentkey, Expression<Func<int>> solutionid = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Solution[]> __BuildPasolutionsDepartmentList(WorkflowExpression<string> departmentkey, WorkflowExpression<int> solutionid = null)
-        {
-            WorkflowExpression.Validate(departmentkey, nameof(departmentkey), required: true);
-            WorkflowExpression.Validate(solutionid, nameof(solutionid), required: false);
+            var __workflow_departmentkey = departmentkey == null ? null : WorkflowExpression.Compile(departmentkey);
+            WorkflowExpression.Validate(__workflow_departmentkey, nameof(departmentkey), required: true);
+            var __workflow_solutionid = solutionid == null ? null : WorkflowExpression.Compile(solutionid);
+            WorkflowExpression.Validate(__workflow_solutionid, nameof(solutionid), required: false);
             return new DeferredBodyAction<Solution[]>(() =>
             {
                 var apiCallPath = "/pasolutions/department/list";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["departmentkey"] = ExpressionConverter.Convert(departmentkey);
-                if (solutionid != null)
-                    callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
+                callPayload.Queries["departmentkey"] = ExpressionConverter.Convert(__workflow_departmentkey);
+                if (__workflow_solutionid != null)
+                    callPayload.Queries["solutionid"] = ExpressionConverter.Convert(__workflow_solutionid);
                 return new ApiConnectionAction<Solution[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        [WorkflowExpressionFactory(nameof(__BuildPasolutionsAdd))]
-        public IBodyWorkflowAction<Solution> PasolutionsAdd([WorkflowExpression] Func<int> solutionid = null, [WorkflowExpression] Func<int> solutionsolutionId = null, [WorkflowExpression] Func<string> solutionsolutionKey = null, [WorkflowExpression] Func<int> solutiondepartmentdepartmentId = null, [WorkflowExpression] Func<string> solutiondepartmentdepartmentKey = null, [WorkflowExpression] Func<int> solutiondepartmentcustomerId = null, [WorkflowExpression] Func<int> solutiondepartmentcustomercustomerId = null, [WorkflowExpression] Func<string> solutiondepartmentcustomercustomerKey = null, [WorkflowExpression] Func<string> solutiondepartmentcustomername = null, [WorkflowExpression] Func<string> solutiondepartmentname = null, [WorkflowExpression] Func<string> solutionname = null)
+        public IBodyWorkflowAction<Solution> PasolutionsAdd(Expression<Func<int>> solutionid = null, Expression<Func<int>> solutionsolutionId = null, Expression<Func<string>> solutionsolutionKey = null, Expression<Func<int>> solutiondepartmentdepartmentId = null, Expression<Func<string>> solutiondepartmentdepartmentKey = null, Expression<Func<int>> solutiondepartmentcustomerId = null, Expression<Func<int>> solutiondepartmentcustomercustomerId = null, Expression<Func<string>> solutiondepartmentcustomercustomerKey = null, Expression<Func<string>> solutiondepartmentcustomername = null, Expression<Func<string>> solutiondepartmentname = null, Expression<Func<string>> solutionname = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Solution> __BuildPasolutionsAdd(WorkflowExpression<int> solutionid = null, WorkflowExpression<int> solutionsolutionId = null, WorkflowExpression<string> solutionsolutionKey = null, WorkflowExpression<int> solutiondepartmentdepartmentId = null, WorkflowExpression<string> solutiondepartmentdepartmentKey = null, WorkflowExpression<int> solutiondepartmentcustomerId = null, WorkflowExpression<int> solutiondepartmentcustomercustomerId = null, WorkflowExpression<string> solutiondepartmentcustomercustomerKey = null, WorkflowExpression<string> solutiondepartmentcustomername = null, WorkflowExpression<string> solutiondepartmentname = null, WorkflowExpression<string> solutionname = null)
-        {
-            WorkflowExpression.Validate(solutionid, nameof(solutionid), required: false);
-            WorkflowExpression.Validate(solutionsolutionId, nameof(solutionsolutionId), required: false);
-            WorkflowExpression.Validate(solutionsolutionKey, nameof(solutionsolutionKey), required: false);
-            WorkflowExpression.Validate(solutiondepartmentdepartmentId, nameof(solutiondepartmentdepartmentId), required: false);
-            WorkflowExpression.Validate(solutiondepartmentdepartmentKey, nameof(solutiondepartmentdepartmentKey), required: false);
-            WorkflowExpression.Validate(solutiondepartmentcustomerId, nameof(solutiondepartmentcustomerId), required: false);
-            WorkflowExpression.Validate(solutiondepartmentcustomercustomerId, nameof(solutiondepartmentcustomercustomerId), required: false);
-            WorkflowExpression.Validate(solutiondepartmentcustomercustomerKey, nameof(solutiondepartmentcustomercustomerKey), required: false);
-            WorkflowExpression.Validate(solutiondepartmentcustomername, nameof(solutiondepartmentcustomername), required: false);
-            WorkflowExpression.Validate(solutiondepartmentname, nameof(solutiondepartmentname), required: false);
-            WorkflowExpression.Validate(solutionname, nameof(solutionname), required: false);
+            var __workflow_solutionid = solutionid == null ? null : WorkflowExpression.Compile(solutionid);
+            WorkflowExpression.Validate(__workflow_solutionid, nameof(solutionid), required: false);
+            var __workflow_solutionsolutionId = solutionsolutionId == null ? null : WorkflowExpression.Compile(solutionsolutionId);
+            WorkflowExpression.Validate(__workflow_solutionsolutionId, nameof(solutionsolutionId), required: false);
+            var __workflow_solutionsolutionKey = solutionsolutionKey == null ? null : WorkflowExpression.Compile(solutionsolutionKey);
+            WorkflowExpression.Validate(__workflow_solutionsolutionKey, nameof(solutionsolutionKey), required: false);
+            var __workflow_solutiondepartmentdepartmentId = solutiondepartmentdepartmentId == null ? null : WorkflowExpression.Compile(solutiondepartmentdepartmentId);
+            WorkflowExpression.Validate(__workflow_solutiondepartmentdepartmentId, nameof(solutiondepartmentdepartmentId), required: false);
+            var __workflow_solutiondepartmentdepartmentKey = solutiondepartmentdepartmentKey == null ? null : WorkflowExpression.Compile(solutiondepartmentdepartmentKey);
+            WorkflowExpression.Validate(__workflow_solutiondepartmentdepartmentKey, nameof(solutiondepartmentdepartmentKey), required: false);
+            var __workflow_solutiondepartmentcustomerId = solutiondepartmentcustomerId == null ? null : WorkflowExpression.Compile(solutiondepartmentcustomerId);
+            WorkflowExpression.Validate(__workflow_solutiondepartmentcustomerId, nameof(solutiondepartmentcustomerId), required: false);
+            var __workflow_solutiondepartmentcustomercustomerId = solutiondepartmentcustomercustomerId == null ? null : WorkflowExpression.Compile(solutiondepartmentcustomercustomerId);
+            WorkflowExpression.Validate(__workflow_solutiondepartmentcustomercustomerId, nameof(solutiondepartmentcustomercustomerId), required: false);
+            var __workflow_solutiondepartmentcustomercustomerKey = solutiondepartmentcustomercustomerKey == null ? null : WorkflowExpression.Compile(solutiondepartmentcustomercustomerKey);
+            WorkflowExpression.Validate(__workflow_solutiondepartmentcustomercustomerKey, nameof(solutiondepartmentcustomercustomerKey), required: false);
+            var __workflow_solutiondepartmentcustomername = solutiondepartmentcustomername == null ? null : WorkflowExpression.Compile(solutiondepartmentcustomername);
+            WorkflowExpression.Validate(__workflow_solutiondepartmentcustomername, nameof(solutiondepartmentcustomername), required: false);
+            var __workflow_solutiondepartmentname = solutiondepartmentname == null ? null : WorkflowExpression.Compile(solutiondepartmentname);
+            WorkflowExpression.Validate(__workflow_solutiondepartmentname, nameof(solutiondepartmentname), required: false);
+            var __workflow_solutionname = solutionname == null ? null : WorkflowExpression.Compile(solutionname);
+            WorkflowExpression.Validate(__workflow_solutionname, nameof(solutionname), required: false);
             return new DeferredBodyAction<Solution>(() =>
             {
                 var apiCallPath = "/pasolutions/add";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (solutionid != null)
-                    callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
+                if (__workflow_solutionid != null)
+                    callPayload.Queries["solutionid"] = ExpressionConverter.Convert(__workflow_solutionid);
                 var solution = new JObject();
                 var solutionpropCount = 0;
-                if (solutionsolutionId != null)
+                if (__workflow_solutionsolutionId != null)
                 {
-                    solution["solutionId"] = ExpressionConverter.ConvertO(solutionsolutionId);
+                    solution["solutionId"] = ExpressionConverter.ConvertO(__workflow_solutionsolutionId);
                     solutionpropCount++;
                 }
 
-                if (solutionsolutionKey != null)
+                if (__workflow_solutionsolutionKey != null)
                 {
-                    solution["solutionKey"] = ExpressionConverter.ConvertO(solutionsolutionKey);
+                    solution["solutionKey"] = ExpressionConverter.ConvertO(__workflow_solutionsolutionKey);
                     solutionpropCount++;
                 }
 
-                if (solutionname != null)
+                if (__workflow_solutionname != null)
                 {
-                    solution["name"] = ExpressionConverter.ConvertO(solutionname);
+                    solution["name"] = ExpressionConverter.ConvertO(__workflow_solutionname);
                     solutionpropCount++;
                 }
 
@@ -249,53 +247,58 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        [WorkflowExpressionFactory(nameof(__BuildPasolutionsUpdate))]
-        public IBodyWorkflowAction<Solution> PasolutionsUpdate([WorkflowExpression] Func<int> solutionid = null, [WorkflowExpression] Func<int> functionsolutionid = null, [WorkflowExpression] Func<int> solutionsolutionId = null, [WorkflowExpression] Func<string> solutionsolutionKey = null, [WorkflowExpression] Func<int> solutiondepartmentdepartmentId = null, [WorkflowExpression] Func<string> solutiondepartmentdepartmentKey = null, [WorkflowExpression] Func<int> solutiondepartmentcustomerId = null, [WorkflowExpression] Func<int> solutiondepartmentcustomercustomerId = null, [WorkflowExpression] Func<string> solutiondepartmentcustomercustomerKey = null, [WorkflowExpression] Func<string> solutiondepartmentcustomername = null, [WorkflowExpression] Func<string> solutiondepartmentname = null, [WorkflowExpression] Func<string> solutionname = null)
+        public IBodyWorkflowAction<Solution> PasolutionsUpdate(Expression<Func<int>> solutionid = null, Expression<Func<int>> functionsolutionid = null, Expression<Func<int>> solutionsolutionId = null, Expression<Func<string>> solutionsolutionKey = null, Expression<Func<int>> solutiondepartmentdepartmentId = null, Expression<Func<string>> solutiondepartmentdepartmentKey = null, Expression<Func<int>> solutiondepartmentcustomerId = null, Expression<Func<int>> solutiondepartmentcustomercustomerId = null, Expression<Func<string>> solutiondepartmentcustomercustomerKey = null, Expression<Func<string>> solutiondepartmentcustomername = null, Expression<Func<string>> solutiondepartmentname = null, Expression<Func<string>> solutionname = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Solution> __BuildPasolutionsUpdate(WorkflowExpression<int> solutionid = null, WorkflowExpression<int> functionsolutionid = null, WorkflowExpression<int> solutionsolutionId = null, WorkflowExpression<string> solutionsolutionKey = null, WorkflowExpression<int> solutiondepartmentdepartmentId = null, WorkflowExpression<string> solutiondepartmentdepartmentKey = null, WorkflowExpression<int> solutiondepartmentcustomerId = null, WorkflowExpression<int> solutiondepartmentcustomercustomerId = null, WorkflowExpression<string> solutiondepartmentcustomercustomerKey = null, WorkflowExpression<string> solutiondepartmentcustomername = null, WorkflowExpression<string> solutiondepartmentname = null, WorkflowExpression<string> solutionname = null)
-        {
-            WorkflowExpression.Validate(solutionid, nameof(solutionid), required: false);
-            WorkflowExpression.Validate(functionsolutionid, nameof(functionsolutionid), required: false);
-            WorkflowExpression.Validate(solutionsolutionId, nameof(solutionsolutionId), required: false);
-            WorkflowExpression.Validate(solutionsolutionKey, nameof(solutionsolutionKey), required: false);
-            WorkflowExpression.Validate(solutiondepartmentdepartmentId, nameof(solutiondepartmentdepartmentId), required: false);
-            WorkflowExpression.Validate(solutiondepartmentdepartmentKey, nameof(solutiondepartmentdepartmentKey), required: false);
-            WorkflowExpression.Validate(solutiondepartmentcustomerId, nameof(solutiondepartmentcustomerId), required: false);
-            WorkflowExpression.Validate(solutiondepartmentcustomercustomerId, nameof(solutiondepartmentcustomercustomerId), required: false);
-            WorkflowExpression.Validate(solutiondepartmentcustomercustomerKey, nameof(solutiondepartmentcustomercustomerKey), required: false);
-            WorkflowExpression.Validate(solutiondepartmentcustomername, nameof(solutiondepartmentcustomername), required: false);
-            WorkflowExpression.Validate(solutiondepartmentname, nameof(solutiondepartmentname), required: false);
-            WorkflowExpression.Validate(solutionname, nameof(solutionname), required: false);
+            var __workflow_solutionid = solutionid == null ? null : WorkflowExpression.Compile(solutionid);
+            WorkflowExpression.Validate(__workflow_solutionid, nameof(solutionid), required: false);
+            var __workflow_functionsolutionid = functionsolutionid == null ? null : WorkflowExpression.Compile(functionsolutionid);
+            WorkflowExpression.Validate(__workflow_functionsolutionid, nameof(functionsolutionid), required: false);
+            var __workflow_solutionsolutionId = solutionsolutionId == null ? null : WorkflowExpression.Compile(solutionsolutionId);
+            WorkflowExpression.Validate(__workflow_solutionsolutionId, nameof(solutionsolutionId), required: false);
+            var __workflow_solutionsolutionKey = solutionsolutionKey == null ? null : WorkflowExpression.Compile(solutionsolutionKey);
+            WorkflowExpression.Validate(__workflow_solutionsolutionKey, nameof(solutionsolutionKey), required: false);
+            var __workflow_solutiondepartmentdepartmentId = solutiondepartmentdepartmentId == null ? null : WorkflowExpression.Compile(solutiondepartmentdepartmentId);
+            WorkflowExpression.Validate(__workflow_solutiondepartmentdepartmentId, nameof(solutiondepartmentdepartmentId), required: false);
+            var __workflow_solutiondepartmentdepartmentKey = solutiondepartmentdepartmentKey == null ? null : WorkflowExpression.Compile(solutiondepartmentdepartmentKey);
+            WorkflowExpression.Validate(__workflow_solutiondepartmentdepartmentKey, nameof(solutiondepartmentdepartmentKey), required: false);
+            var __workflow_solutiondepartmentcustomerId = solutiondepartmentcustomerId == null ? null : WorkflowExpression.Compile(solutiondepartmentcustomerId);
+            WorkflowExpression.Validate(__workflow_solutiondepartmentcustomerId, nameof(solutiondepartmentcustomerId), required: false);
+            var __workflow_solutiondepartmentcustomercustomerId = solutiondepartmentcustomercustomerId == null ? null : WorkflowExpression.Compile(solutiondepartmentcustomercustomerId);
+            WorkflowExpression.Validate(__workflow_solutiondepartmentcustomercustomerId, nameof(solutiondepartmentcustomercustomerId), required: false);
+            var __workflow_solutiondepartmentcustomercustomerKey = solutiondepartmentcustomercustomerKey == null ? null : WorkflowExpression.Compile(solutiondepartmentcustomercustomerKey);
+            WorkflowExpression.Validate(__workflow_solutiondepartmentcustomercustomerKey, nameof(solutiondepartmentcustomercustomerKey), required: false);
+            var __workflow_solutiondepartmentcustomername = solutiondepartmentcustomername == null ? null : WorkflowExpression.Compile(solutiondepartmentcustomername);
+            WorkflowExpression.Validate(__workflow_solutiondepartmentcustomername, nameof(solutiondepartmentcustomername), required: false);
+            var __workflow_solutiondepartmentname = solutiondepartmentname == null ? null : WorkflowExpression.Compile(solutiondepartmentname);
+            WorkflowExpression.Validate(__workflow_solutiondepartmentname, nameof(solutiondepartmentname), required: false);
+            var __workflow_solutionname = solutionname == null ? null : WorkflowExpression.Compile(solutionname);
+            WorkflowExpression.Validate(__workflow_solutionname, nameof(solutionname), required: false);
             return new DeferredBodyAction<Solution>(() =>
             {
                 var apiCallPath = "/pasolutions/update";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (solutionid != null)
-                    callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
-                if (functionsolutionid != null)
-                    callPayload.Queries["functionsolutionid"] = ExpressionConverter.Convert(functionsolutionid);
+                if (__workflow_solutionid != null)
+                    callPayload.Queries["solutionid"] = ExpressionConverter.Convert(__workflow_solutionid);
+                if (__workflow_functionsolutionid != null)
+                    callPayload.Queries["functionsolutionid"] = ExpressionConverter.Convert(__workflow_functionsolutionid);
                 var solution = new JObject();
                 var solutionpropCount = 0;
-                if (solutionsolutionId != null)
+                if (__workflow_solutionsolutionId != null)
                 {
-                    solution["solutionId"] = ExpressionConverter.ConvertO(solutionsolutionId);
+                    solution["solutionId"] = ExpressionConverter.ConvertO(__workflow_solutionsolutionId);
                     solutionpropCount++;
                 }
 
-                if (solutionsolutionKey != null)
+                if (__workflow_solutionsolutionKey != null)
                 {
-                    solution["solutionKey"] = ExpressionConverter.ConvertO(solutionsolutionKey);
+                    solution["solutionKey"] = ExpressionConverter.ConvertO(__workflow_solutionsolutionKey);
                     solutionpropCount++;
                 }
 
-                if (solutionname != null)
+                if (__workflow_solutionname != null)
                 {
-                    solution["name"] = ExpressionConverter.ConvertO(solutionname);
+                    solution["name"] = ExpressionConverter.ConvertO(__workflow_solutionname);
                     solutionpropCount++;
                 }
 
@@ -309,69 +312,71 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        [WorkflowExpressionFactory(nameof(__BuildPadocumentsAdd))]
-        public IBodyWorkflowAction<Document> PadocumentsAdd([WorkflowExpression] Func<int> libraryid, [WorkflowExpression] Func<int> solutionid = null, [WorkflowExpression] Func<string> solutionkey = null, [WorkflowExpression] Func<string> documentdocumentKey = null, [WorkflowExpression] Func<string> documentname = null, [WorkflowExpression] Func<int> documentfileSizeBytes = null, [WorkflowExpression] Func<int> documentstatus = null, [WorkflowExpression] Func<PropertyValue[]> documentpropertyValues = null, [WorkflowExpression] Func<string> documenturl = null)
+        public IBodyWorkflowAction<Document> PadocumentsAdd(Expression<Func<int>> libraryid, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null, Expression<Func<string>> documentdocumentKey = null, Expression<Func<string>> documentname = null, Expression<Func<int>> documentfileSizeBytes = null, Expression<Func<int>> documentstatus = null, Expression<Func<PropertyValue[]>> documentpropertyValues = null, Expression<Func<string>> documenturl = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Document> __BuildPadocumentsAdd(WorkflowExpression<int> libraryid, WorkflowExpression<int> solutionid = null, WorkflowExpression<string> solutionkey = null, WorkflowExpression<string> documentdocumentKey = null, WorkflowExpression<string> documentname = null, WorkflowExpression<int> documentfileSizeBytes = null, WorkflowExpression<int> documentstatus = null, WorkflowExpression<PropertyValue[]> documentpropertyValues = null, WorkflowExpression<string> documenturl = null)
-        {
-            WorkflowExpression.Validate(libraryid, nameof(libraryid), required: true);
-            WorkflowExpression.Validate(solutionid, nameof(solutionid), required: false);
-            WorkflowExpression.Validate(solutionkey, nameof(solutionkey), required: false);
-            WorkflowExpression.Validate(documentdocumentKey, nameof(documentdocumentKey), required: false);
-            WorkflowExpression.Validate(documentname, nameof(documentname), required: false);
-            WorkflowExpression.Validate(documentfileSizeBytes, nameof(documentfileSizeBytes), required: false);
-            WorkflowExpression.Validate(documentstatus, nameof(documentstatus), required: false);
-            WorkflowExpression.Validate(documentpropertyValues, nameof(documentpropertyValues), required: false);
-            WorkflowExpression.Validate(documenturl, nameof(documenturl), required: false);
+            var __workflow_libraryid = libraryid == null ? null : WorkflowExpression.Compile(libraryid);
+            WorkflowExpression.Validate(__workflow_libraryid, nameof(libraryid), required: true);
+            var __workflow_solutionid = solutionid == null ? null : WorkflowExpression.Compile(solutionid);
+            WorkflowExpression.Validate(__workflow_solutionid, nameof(solutionid), required: false);
+            var __workflow_solutionkey = solutionkey == null ? null : WorkflowExpression.Compile(solutionkey);
+            WorkflowExpression.Validate(__workflow_solutionkey, nameof(solutionkey), required: false);
+            var __workflow_documentdocumentKey = documentdocumentKey == null ? null : WorkflowExpression.Compile(documentdocumentKey);
+            WorkflowExpression.Validate(__workflow_documentdocumentKey, nameof(documentdocumentKey), required: false);
+            var __workflow_documentname = documentname == null ? null : WorkflowExpression.Compile(documentname);
+            WorkflowExpression.Validate(__workflow_documentname, nameof(documentname), required: false);
+            var __workflow_documentfileSizeBytes = documentfileSizeBytes == null ? null : WorkflowExpression.Compile(documentfileSizeBytes);
+            WorkflowExpression.Validate(__workflow_documentfileSizeBytes, nameof(documentfileSizeBytes), required: false);
+            var __workflow_documentstatus = documentstatus == null ? null : WorkflowExpression.Compile(documentstatus);
+            WorkflowExpression.Validate(__workflow_documentstatus, nameof(documentstatus), required: false);
+            var __workflow_documentpropertyValues = documentpropertyValues == null ? null : WorkflowExpression.Compile(documentpropertyValues);
+            WorkflowExpression.Validate(__workflow_documentpropertyValues, nameof(documentpropertyValues), required: false);
+            var __workflow_documenturl = documenturl == null ? null : WorkflowExpression.Compile(documenturl);
+            WorkflowExpression.Validate(__workflow_documenturl, nameof(documenturl), required: false);
             return new DeferredBodyAction<Document>(() =>
             {
                 var apiCallPath = "/padocuments/add";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["libraryid"] = ExpressionConverter.Convert(libraryid);
-                if (solutionid != null)
-                    callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
-                if (solutionkey != null)
-                    callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(solutionkey);
+                callPayload.Queries["libraryid"] = ExpressionConverter.Convert(__workflow_libraryid);
+                if (__workflow_solutionid != null)
+                    callPayload.Queries["solutionid"] = ExpressionConverter.Convert(__workflow_solutionid);
+                if (__workflow_solutionkey != null)
+                    callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(__workflow_solutionkey);
                 var document = new JObject();
                 var documentpropCount = 0;
-                if (documentdocumentKey != null)
+                if (__workflow_documentdocumentKey != null)
                 {
-                    document["documentKey"] = ExpressionConverter.ConvertO(documentdocumentKey);
+                    document["documentKey"] = ExpressionConverter.ConvertO(__workflow_documentdocumentKey);
                     documentpropCount++;
                 }
 
-                if (documentname != null)
+                if (__workflow_documentname != null)
                 {
-                    document["name"] = ExpressionConverter.ConvertO(documentname);
+                    document["name"] = ExpressionConverter.ConvertO(__workflow_documentname);
                     documentpropCount++;
                 }
 
-                if (documentfileSizeBytes != null)
+                if (__workflow_documentfileSizeBytes != null)
                 {
-                    document["fileSizeBytes"] = ExpressionConverter.ConvertO(documentfileSizeBytes);
+                    document["fileSizeBytes"] = ExpressionConverter.ConvertO(__workflow_documentfileSizeBytes);
                     documentpropCount++;
                 }
 
-                if (documentstatus != null)
+                if (__workflow_documentstatus != null)
                 {
-                    document["status"] = ExpressionConverter.ConvertO(documentstatus);
+                    document["status"] = ExpressionConverter.ConvertO(__workflow_documentstatus);
                     documentpropCount++;
                 }
 
-                if (documentpropertyValues != null)
+                if (__workflow_documentpropertyValues != null)
                 {
-                    document["propertyValues"] = ExpressionConverter.ConvertO(documentpropertyValues);
+                    document["propertyValues"] = ExpressionConverter.ConvertO(__workflow_documentpropertyValues);
                     documentpropCount++;
                 }
 
-                if (documenturl != null)
+                if (__workflow_documenturl != null)
                 {
-                    document["url"] = ExpressionConverter.ConvertO(documenturl);
+                    document["url"] = ExpressionConverter.ConvertO(__workflow_documenturl);
                     documentpropCount++;
                 }
 
@@ -385,129 +390,131 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        [WorkflowExpressionFactory(nameof(__BuildPadocumenttypesGet))]
-        public IBodyWorkflowAction<DocumentType> PadocumenttypesGet([WorkflowExpression] Func<int> documenttypeid, [WorkflowExpression] Func<int> solutionid = null, [WorkflowExpression] Func<string> solutionkey = null)
+        public IBodyWorkflowAction<DocumentType> PadocumenttypesGet(Expression<Func<int>> documenttypeid, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DocumentType> __BuildPadocumenttypesGet(WorkflowExpression<int> documenttypeid, WorkflowExpression<int> solutionid = null, WorkflowExpression<string> solutionkey = null)
-        {
-            WorkflowExpression.Validate(documenttypeid, nameof(documenttypeid), required: true);
-            WorkflowExpression.Validate(solutionid, nameof(solutionid), required: false);
-            WorkflowExpression.Validate(solutionkey, nameof(solutionkey), required: false);
+            var __workflow_documenttypeid = documenttypeid == null ? null : WorkflowExpression.Compile(documenttypeid);
+            WorkflowExpression.Validate(__workflow_documenttypeid, nameof(documenttypeid), required: true);
+            var __workflow_solutionid = solutionid == null ? null : WorkflowExpression.Compile(solutionid);
+            WorkflowExpression.Validate(__workflow_solutionid, nameof(solutionid), required: false);
+            var __workflow_solutionkey = solutionkey == null ? null : WorkflowExpression.Compile(solutionkey);
+            WorkflowExpression.Validate(__workflow_solutionkey, nameof(solutionkey), required: false);
             return new DeferredBodyAction<DocumentType>(() =>
             {
                 var apiCallPath = "/padocumenttypes/get";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["documenttypeid"] = ExpressionConverter.Convert(documenttypeid);
-                if (solutionid != null)
-                    callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
-                if (solutionkey != null)
-                    callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(solutionkey);
+                callPayload.Queries["documenttypeid"] = ExpressionConverter.Convert(__workflow_documenttypeid);
+                if (__workflow_solutionid != null)
+                    callPayload.Queries["solutionid"] = ExpressionConverter.Convert(__workflow_solutionid);
+                if (__workflow_solutionkey != null)
+                    callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(__workflow_solutionkey);
                 return new ApiConnectionAction<DocumentType>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        [WorkflowExpressionFactory(nameof(__BuildPadocumenttypesList))]
-        public IBodyWorkflowAction<DocumentType[]> PadocumenttypesList([WorkflowExpression] Func<string> solutionkey, [WorkflowExpression] Func<int> solutionid = null)
+        public IBodyWorkflowAction<DocumentType[]> PadocumenttypesList(Expression<Func<string>> solutionkey, Expression<Func<int>> solutionid = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DocumentType[]> __BuildPadocumenttypesList(WorkflowExpression<string> solutionkey, WorkflowExpression<int> solutionid = null)
-        {
-            WorkflowExpression.Validate(solutionkey, nameof(solutionkey), required: true);
-            WorkflowExpression.Validate(solutionid, nameof(solutionid), required: false);
+            var __workflow_solutionkey = solutionkey == null ? null : WorkflowExpression.Compile(solutionkey);
+            WorkflowExpression.Validate(__workflow_solutionkey, nameof(solutionkey), required: true);
+            var __workflow_solutionid = solutionid == null ? null : WorkflowExpression.Compile(solutionid);
+            WorkflowExpression.Validate(__workflow_solutionid, nameof(solutionid), required: false);
             return new DeferredBodyAction<DocumentType[]>(() =>
             {
                 var apiCallPath = "/padocumenttypes/list";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(solutionkey);
-                if (solutionid != null)
-                    callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
+                callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(__workflow_solutionkey);
+                if (__workflow_solutionid != null)
+                    callPayload.Queries["solutionid"] = ExpressionConverter.Convert(__workflow_solutionid);
                 return new ApiConnectionAction<DocumentType[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        [WorkflowExpressionFactory(nameof(__BuildPadocumenttypesAdd))]
-        public IBodyWorkflowAction<Library> PadocumenttypesAdd([WorkflowExpression] Func<string> solutionkey, [WorkflowExpression] Func<int> solutionid = null, [WorkflowExpression] Func<int> librarylibraryId = null, [WorkflowExpression] Func<int> libraryrepositoryId = null, [WorkflowExpression] Func<int> libraryrepositoryrepositoryId = null, [WorkflowExpression] Func<string> libraryrepositoryname = null, [WorkflowExpression] Func<string> libraryrepositorydescription = null, [WorkflowExpression] Func<int> libraryrepositoryrepositoryTypeId = null, [WorkflowExpression] Func<int> libraryrepositoryrepositoryTyperepositoryTypeId = null, [WorkflowExpression] Func<string> libraryrepositoryrepositoryTypename = null, [WorkflowExpression] Func<string> libraryrepositoryrepositoryURI = null, [WorkflowExpression] Func<int> librarydocumentTypeId = null, [WorkflowExpression] Func<int> librarydocumentTypedocumentTypeId = null, [WorkflowExpression] Func<string> librarydocumentTypename = null, [WorkflowExpression] Func<string> librarydocumentTypedescription = null, [WorkflowExpression] Func<string> libraryname = null, [WorkflowExpression] Func<string> librarydescription = null, [WorkflowExpression] Func<bool> libraryocr = null)
+        public IBodyWorkflowAction<Library> PadocumenttypesAdd(Expression<Func<string>> solutionkey, Expression<Func<int>> solutionid = null, Expression<Func<int>> librarylibraryId = null, Expression<Func<int>> libraryrepositoryId = null, Expression<Func<int>> libraryrepositoryrepositoryId = null, Expression<Func<string>> libraryrepositoryname = null, Expression<Func<string>> libraryrepositorydescription = null, Expression<Func<int>> libraryrepositoryrepositoryTypeId = null, Expression<Func<int>> libraryrepositoryrepositoryTyperepositoryTypeId = null, Expression<Func<string>> libraryrepositoryrepositoryTypename = null, Expression<Func<string>> libraryrepositoryrepositoryURI = null, Expression<Func<int>> librarydocumentTypeId = null, Expression<Func<int>> librarydocumentTypedocumentTypeId = null, Expression<Func<string>> librarydocumentTypename = null, Expression<Func<string>> librarydocumentTypedescription = null, Expression<Func<string>> libraryname = null, Expression<Func<string>> librarydescription = null, Expression<Func<bool>> libraryocr = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Library> __BuildPadocumenttypesAdd(WorkflowExpression<string> solutionkey, WorkflowExpression<int> solutionid = null, WorkflowExpression<int> librarylibraryId = null, WorkflowExpression<int> libraryrepositoryId = null, WorkflowExpression<int> libraryrepositoryrepositoryId = null, WorkflowExpression<string> libraryrepositoryname = null, WorkflowExpression<string> libraryrepositorydescription = null, WorkflowExpression<int> libraryrepositoryrepositoryTypeId = null, WorkflowExpression<int> libraryrepositoryrepositoryTyperepositoryTypeId = null, WorkflowExpression<string> libraryrepositoryrepositoryTypename = null, WorkflowExpression<string> libraryrepositoryrepositoryURI = null, WorkflowExpression<int> librarydocumentTypeId = null, WorkflowExpression<int> librarydocumentTypedocumentTypeId = null, WorkflowExpression<string> librarydocumentTypename = null, WorkflowExpression<string> librarydocumentTypedescription = null, WorkflowExpression<string> libraryname = null, WorkflowExpression<string> librarydescription = null, WorkflowExpression<bool> libraryocr = null)
-        {
-            WorkflowExpression.Validate(solutionkey, nameof(solutionkey), required: true);
-            WorkflowExpression.Validate(solutionid, nameof(solutionid), required: false);
-            WorkflowExpression.Validate(librarylibraryId, nameof(librarylibraryId), required: false);
-            WorkflowExpression.Validate(libraryrepositoryId, nameof(libraryrepositoryId), required: false);
-            WorkflowExpression.Validate(libraryrepositoryrepositoryId, nameof(libraryrepositoryrepositoryId), required: false);
-            WorkflowExpression.Validate(libraryrepositoryname, nameof(libraryrepositoryname), required: false);
-            WorkflowExpression.Validate(libraryrepositorydescription, nameof(libraryrepositorydescription), required: false);
-            WorkflowExpression.Validate(libraryrepositoryrepositoryTypeId, nameof(libraryrepositoryrepositoryTypeId), required: false);
-            WorkflowExpression.Validate(libraryrepositoryrepositoryTyperepositoryTypeId, nameof(libraryrepositoryrepositoryTyperepositoryTypeId), required: false);
-            WorkflowExpression.Validate(libraryrepositoryrepositoryTypename, nameof(libraryrepositoryrepositoryTypename), required: false);
-            WorkflowExpression.Validate(libraryrepositoryrepositoryURI, nameof(libraryrepositoryrepositoryURI), required: false);
-            WorkflowExpression.Validate(librarydocumentTypeId, nameof(librarydocumentTypeId), required: false);
-            WorkflowExpression.Validate(librarydocumentTypedocumentTypeId, nameof(librarydocumentTypedocumentTypeId), required: false);
-            WorkflowExpression.Validate(librarydocumentTypename, nameof(librarydocumentTypename), required: false);
-            WorkflowExpression.Validate(librarydocumentTypedescription, nameof(librarydocumentTypedescription), required: false);
-            WorkflowExpression.Validate(libraryname, nameof(libraryname), required: false);
-            WorkflowExpression.Validate(librarydescription, nameof(librarydescription), required: false);
-            WorkflowExpression.Validate(libraryocr, nameof(libraryocr), required: false);
+            var __workflow_solutionkey = solutionkey == null ? null : WorkflowExpression.Compile(solutionkey);
+            WorkflowExpression.Validate(__workflow_solutionkey, nameof(solutionkey), required: true);
+            var __workflow_solutionid = solutionid == null ? null : WorkflowExpression.Compile(solutionid);
+            WorkflowExpression.Validate(__workflow_solutionid, nameof(solutionid), required: false);
+            var __workflow_librarylibraryId = librarylibraryId == null ? null : WorkflowExpression.Compile(librarylibraryId);
+            WorkflowExpression.Validate(__workflow_librarylibraryId, nameof(librarylibraryId), required: false);
+            var __workflow_libraryrepositoryId = libraryrepositoryId == null ? null : WorkflowExpression.Compile(libraryrepositoryId);
+            WorkflowExpression.Validate(__workflow_libraryrepositoryId, nameof(libraryrepositoryId), required: false);
+            var __workflow_libraryrepositoryrepositoryId = libraryrepositoryrepositoryId == null ? null : WorkflowExpression.Compile(libraryrepositoryrepositoryId);
+            WorkflowExpression.Validate(__workflow_libraryrepositoryrepositoryId, nameof(libraryrepositoryrepositoryId), required: false);
+            var __workflow_libraryrepositoryname = libraryrepositoryname == null ? null : WorkflowExpression.Compile(libraryrepositoryname);
+            WorkflowExpression.Validate(__workflow_libraryrepositoryname, nameof(libraryrepositoryname), required: false);
+            var __workflow_libraryrepositorydescription = libraryrepositorydescription == null ? null : WorkflowExpression.Compile(libraryrepositorydescription);
+            WorkflowExpression.Validate(__workflow_libraryrepositorydescription, nameof(libraryrepositorydescription), required: false);
+            var __workflow_libraryrepositoryrepositoryTypeId = libraryrepositoryrepositoryTypeId == null ? null : WorkflowExpression.Compile(libraryrepositoryrepositoryTypeId);
+            WorkflowExpression.Validate(__workflow_libraryrepositoryrepositoryTypeId, nameof(libraryrepositoryrepositoryTypeId), required: false);
+            var __workflow_libraryrepositoryrepositoryTyperepositoryTypeId = libraryrepositoryrepositoryTyperepositoryTypeId == null ? null : WorkflowExpression.Compile(libraryrepositoryrepositoryTyperepositoryTypeId);
+            WorkflowExpression.Validate(__workflow_libraryrepositoryrepositoryTyperepositoryTypeId, nameof(libraryrepositoryrepositoryTyperepositoryTypeId), required: false);
+            var __workflow_libraryrepositoryrepositoryTypename = libraryrepositoryrepositoryTypename == null ? null : WorkflowExpression.Compile(libraryrepositoryrepositoryTypename);
+            WorkflowExpression.Validate(__workflow_libraryrepositoryrepositoryTypename, nameof(libraryrepositoryrepositoryTypename), required: false);
+            var __workflow_libraryrepositoryrepositoryURI = libraryrepositoryrepositoryURI == null ? null : WorkflowExpression.Compile(libraryrepositoryrepositoryURI);
+            WorkflowExpression.Validate(__workflow_libraryrepositoryrepositoryURI, nameof(libraryrepositoryrepositoryURI), required: false);
+            var __workflow_librarydocumentTypeId = librarydocumentTypeId == null ? null : WorkflowExpression.Compile(librarydocumentTypeId);
+            WorkflowExpression.Validate(__workflow_librarydocumentTypeId, nameof(librarydocumentTypeId), required: false);
+            var __workflow_librarydocumentTypedocumentTypeId = librarydocumentTypedocumentTypeId == null ? null : WorkflowExpression.Compile(librarydocumentTypedocumentTypeId);
+            WorkflowExpression.Validate(__workflow_librarydocumentTypedocumentTypeId, nameof(librarydocumentTypedocumentTypeId), required: false);
+            var __workflow_librarydocumentTypename = librarydocumentTypename == null ? null : WorkflowExpression.Compile(librarydocumentTypename);
+            WorkflowExpression.Validate(__workflow_librarydocumentTypename, nameof(librarydocumentTypename), required: false);
+            var __workflow_librarydocumentTypedescription = librarydocumentTypedescription == null ? null : WorkflowExpression.Compile(librarydocumentTypedescription);
+            WorkflowExpression.Validate(__workflow_librarydocumentTypedescription, nameof(librarydocumentTypedescription), required: false);
+            var __workflow_libraryname = libraryname == null ? null : WorkflowExpression.Compile(libraryname);
+            WorkflowExpression.Validate(__workflow_libraryname, nameof(libraryname), required: false);
+            var __workflow_librarydescription = librarydescription == null ? null : WorkflowExpression.Compile(librarydescription);
+            WorkflowExpression.Validate(__workflow_librarydescription, nameof(librarydescription), required: false);
+            var __workflow_libraryocr = libraryocr == null ? null : WorkflowExpression.Compile(libraryocr);
+            WorkflowExpression.Validate(__workflow_libraryocr, nameof(libraryocr), required: false);
             return new DeferredBodyAction<Library>(() =>
             {
                 var apiCallPath = "/padocumenttypes/add";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(solutionkey);
-                if (solutionid != null)
-                    callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
+                callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(__workflow_solutionkey);
+                if (__workflow_solutionid != null)
+                    callPayload.Queries["solutionid"] = ExpressionConverter.Convert(__workflow_solutionid);
                 var library = new JObject();
                 var librarypropCount = 0;
-                if (librarylibraryId != null)
+                if (__workflow_librarylibraryId != null)
                 {
-                    library["libraryId"] = ExpressionConverter.ConvertO(librarylibraryId);
+                    library["libraryId"] = ExpressionConverter.ConvertO(__workflow_librarylibraryId);
                     librarypropCount++;
                 }
 
-                if (libraryrepositoryId != null)
+                if (__workflow_libraryrepositoryId != null)
                 {
-                    library["repositoryId"] = ExpressionConverter.ConvertO(libraryrepositoryId);
+                    library["repositoryId"] = ExpressionConverter.ConvertO(__workflow_libraryrepositoryId);
                     librarypropCount++;
                 }
 
-                if (librarydocumentTypeId != null)
+                if (__workflow_librarydocumentTypeId != null)
                 {
-                    library["documentTypeId"] = ExpressionConverter.ConvertO(librarydocumentTypeId);
+                    library["documentTypeId"] = ExpressionConverter.ConvertO(__workflow_librarydocumentTypeId);
                     librarypropCount++;
                 }
 
                 var documentTypeObject = new JObject();
                 var documentTypeObjectpropCount = 0;
-                if (librarydocumentTypedocumentTypeId != null)
+                if (__workflow_librarydocumentTypedocumentTypeId != null)
                 {
-                    documentTypeObject["documentTypeId"] = ExpressionConverter.ConvertO(librarydocumentTypedocumentTypeId);
+                    documentTypeObject["documentTypeId"] = ExpressionConverter.ConvertO(__workflow_librarydocumentTypedocumentTypeId);
                     documentTypeObjectpropCount++;
                 }
 
-                if (librarydocumentTypename != null)
+                if (__workflow_librarydocumentTypename != null)
                 {
-                    documentTypeObject["name"] = ExpressionConverter.ConvertO(librarydocumentTypename);
+                    documentTypeObject["name"] = ExpressionConverter.ConvertO(__workflow_librarydocumentTypename);
                     documentTypeObjectpropCount++;
                 }
 
-                if (librarydocumentTypedescription != null)
+                if (__workflow_librarydocumentTypedescription != null)
                 {
-                    documentTypeObject["description"] = ExpressionConverter.ConvertO(librarydocumentTypedescription);
+                    documentTypeObject["description"] = ExpressionConverter.ConvertO(__workflow_librarydocumentTypedescription);
                     documentTypeObjectpropCount++;
                 }
 
@@ -517,21 +524,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
                     librarypropCount++;
                 }
 
-                if (libraryname != null)
+                if (__workflow_libraryname != null)
                 {
-                    library["name"] = ExpressionConverter.ConvertO(libraryname);
+                    library["name"] = ExpressionConverter.ConvertO(__workflow_libraryname);
                     librarypropCount++;
                 }
 
-                if (librarydescription != null)
+                if (__workflow_librarydescription != null)
                 {
-                    library["description"] = ExpressionConverter.ConvertO(librarydescription);
+                    library["description"] = ExpressionConverter.ConvertO(__workflow_librarydescription);
                     librarypropCount++;
                 }
 
-                if (libraryocr != null)
+                if (__workflow_libraryocr != null)
                 {
-                    library["ocr"] = ExpressionConverter.ConvertO(libraryocr);
+                    library["ocr"] = ExpressionConverter.ConvertO(__workflow_libraryocr);
                     librarypropCount++;
                 }
 
@@ -545,48 +552,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        [WorkflowExpressionFactory(nameof(__BuildPadocumenttypesUpdate))]
-        public IBodyWorkflowAction<DocumentType> PadocumenttypesUpdate([WorkflowExpression] Func<int> documenttypeid, [WorkflowExpression] Func<int> solutionid = null, [WorkflowExpression] Func<string> solutionkey = null, [WorkflowExpression] Func<int> documentTypedocumentTypeId = null, [WorkflowExpression] Func<string> documentTypename = null, [WorkflowExpression] Func<string> documentTypedescription = null)
+        public IBodyWorkflowAction<DocumentType> PadocumenttypesUpdate(Expression<Func<int>> documenttypeid, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null, Expression<Func<int>> documentTypedocumentTypeId = null, Expression<Func<string>> documentTypename = null, Expression<Func<string>> documentTypedescription = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DocumentType> __BuildPadocumenttypesUpdate(WorkflowExpression<int> documenttypeid, WorkflowExpression<int> solutionid = null, WorkflowExpression<string> solutionkey = null, WorkflowExpression<int> documentTypedocumentTypeId = null, WorkflowExpression<string> documentTypename = null, WorkflowExpression<string> documentTypedescription = null)
-        {
-            WorkflowExpression.Validate(documenttypeid, nameof(documenttypeid), required: true);
-            WorkflowExpression.Validate(solutionid, nameof(solutionid), required: false);
-            WorkflowExpression.Validate(solutionkey, nameof(solutionkey), required: false);
-            WorkflowExpression.Validate(documentTypedocumentTypeId, nameof(documentTypedocumentTypeId), required: false);
-            WorkflowExpression.Validate(documentTypename, nameof(documentTypename), required: false);
-            WorkflowExpression.Validate(documentTypedescription, nameof(documentTypedescription), required: false);
+            var __workflow_documenttypeid = documenttypeid == null ? null : WorkflowExpression.Compile(documenttypeid);
+            WorkflowExpression.Validate(__workflow_documenttypeid, nameof(documenttypeid), required: true);
+            var __workflow_solutionid = solutionid == null ? null : WorkflowExpression.Compile(solutionid);
+            WorkflowExpression.Validate(__workflow_solutionid, nameof(solutionid), required: false);
+            var __workflow_solutionkey = solutionkey == null ? null : WorkflowExpression.Compile(solutionkey);
+            WorkflowExpression.Validate(__workflow_solutionkey, nameof(solutionkey), required: false);
+            var __workflow_documentTypedocumentTypeId = documentTypedocumentTypeId == null ? null : WorkflowExpression.Compile(documentTypedocumentTypeId);
+            WorkflowExpression.Validate(__workflow_documentTypedocumentTypeId, nameof(documentTypedocumentTypeId), required: false);
+            var __workflow_documentTypename = documentTypename == null ? null : WorkflowExpression.Compile(documentTypename);
+            WorkflowExpression.Validate(__workflow_documentTypename, nameof(documentTypename), required: false);
+            var __workflow_documentTypedescription = documentTypedescription == null ? null : WorkflowExpression.Compile(documentTypedescription);
+            WorkflowExpression.Validate(__workflow_documentTypedescription, nameof(documentTypedescription), required: false);
             return new DeferredBodyAction<DocumentType>(() =>
             {
                 var apiCallPath = "/padocumenttypes/update";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["documenttypeid"] = ExpressionConverter.Convert(documenttypeid);
-                if (solutionid != null)
-                    callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
-                if (solutionkey != null)
-                    callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(solutionkey);
+                callPayload.Queries["documenttypeid"] = ExpressionConverter.Convert(__workflow_documenttypeid);
+                if (__workflow_solutionid != null)
+                    callPayload.Queries["solutionid"] = ExpressionConverter.Convert(__workflow_solutionid);
+                if (__workflow_solutionkey != null)
+                    callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(__workflow_solutionkey);
                 var documentType = new JObject();
                 var documentTypepropCount = 0;
-                if (documentTypedocumentTypeId != null)
+                if (__workflow_documentTypedocumentTypeId != null)
                 {
-                    documentType["documentTypeId"] = ExpressionConverter.ConvertO(documentTypedocumentTypeId);
+                    documentType["documentTypeId"] = ExpressionConverter.ConvertO(__workflow_documentTypedocumentTypeId);
                     documentTypepropCount++;
                 }
 
-                if (documentTypename != null)
+                if (__workflow_documentTypename != null)
                 {
-                    documentType["name"] = ExpressionConverter.ConvertO(documentTypename);
+                    documentType["name"] = ExpressionConverter.ConvertO(__workflow_documentTypename);
                     documentTypepropCount++;
                 }
 
-                if (documentTypedescription != null)
+                if (__workflow_documentTypedescription != null)
                 {
-                    documentType["description"] = ExpressionConverter.ConvertO(documentTypedescription);
+                    documentType["description"] = ExpressionConverter.ConvertO(__workflow_documentTypedescription);
                     documentTypepropCount++;
                 }
 
@@ -600,160 +606,159 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        [WorkflowExpressionFactory(nameof(__BuildPalibrariesGet))]
-        public IBodyWorkflowAction<Library> PalibrariesGet([WorkflowExpression] Func<int> libraryid, [WorkflowExpression] Func<int> solutionid = null, [WorkflowExpression] Func<string> solutionkey = null)
+        public IBodyWorkflowAction<Library> PalibrariesGet(Expression<Func<int>> libraryid, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Library> __BuildPalibrariesGet(WorkflowExpression<int> libraryid, WorkflowExpression<int> solutionid = null, WorkflowExpression<string> solutionkey = null)
-        {
-            WorkflowExpression.Validate(libraryid, nameof(libraryid), required: true);
-            WorkflowExpression.Validate(solutionid, nameof(solutionid), required: false);
-            WorkflowExpression.Validate(solutionkey, nameof(solutionkey), required: false);
+            var __workflow_libraryid = libraryid == null ? null : WorkflowExpression.Compile(libraryid);
+            WorkflowExpression.Validate(__workflow_libraryid, nameof(libraryid), required: true);
+            var __workflow_solutionid = solutionid == null ? null : WorkflowExpression.Compile(solutionid);
+            WorkflowExpression.Validate(__workflow_solutionid, nameof(solutionid), required: false);
+            var __workflow_solutionkey = solutionkey == null ? null : WorkflowExpression.Compile(solutionkey);
+            WorkflowExpression.Validate(__workflow_solutionkey, nameof(solutionkey), required: false);
             return new DeferredBodyAction<Library>(() =>
             {
                 var apiCallPath = "/palibraries/get";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["libraryid"] = ExpressionConverter.Convert(libraryid);
-                if (solutionid != null)
-                    callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
-                if (solutionkey != null)
-                    callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(solutionkey);
+                callPayload.Queries["libraryid"] = ExpressionConverter.Convert(__workflow_libraryid);
+                if (__workflow_solutionid != null)
+                    callPayload.Queries["solutionid"] = ExpressionConverter.Convert(__workflow_solutionid);
+                if (__workflow_solutionkey != null)
+                    callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(__workflow_solutionkey);
                 return new ApiConnectionAction<Library>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        [WorkflowExpressionFactory(nameof(__BuildPalibrariesList))]
-        public IBodyWorkflowAction<Library[]> PalibrariesList([WorkflowExpression] Func<int> solutionid = null, [WorkflowExpression] Func<string> solutionkey = null)
+        public IBodyWorkflowAction<Library[]> PalibrariesList(Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Library[]> __BuildPalibrariesList(WorkflowExpression<int> solutionid = null, WorkflowExpression<string> solutionkey = null)
-        {
-            WorkflowExpression.Validate(solutionid, nameof(solutionid), required: false);
-            WorkflowExpression.Validate(solutionkey, nameof(solutionkey), required: false);
+            var __workflow_solutionid = solutionid == null ? null : WorkflowExpression.Compile(solutionid);
+            WorkflowExpression.Validate(__workflow_solutionid, nameof(solutionid), required: false);
+            var __workflow_solutionkey = solutionkey == null ? null : WorkflowExpression.Compile(solutionkey);
+            WorkflowExpression.Validate(__workflow_solutionkey, nameof(solutionkey), required: false);
             return new DeferredBodyAction<Library[]>(() =>
             {
                 var apiCallPath = "/palibraries/list";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (solutionid != null)
-                    callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
-                if (solutionkey != null)
-                    callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(solutionkey);
+                if (__workflow_solutionid != null)
+                    callPayload.Queries["solutionid"] = ExpressionConverter.Convert(__workflow_solutionid);
+                if (__workflow_solutionkey != null)
+                    callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(__workflow_solutionkey);
                 return new ApiConnectionAction<Library[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        [WorkflowExpressionFactory(nameof(__BuildPalibrariesDocumenttypeList))]
-        public IBodyWorkflowAction<Library[]> PalibrariesDocumenttypeList([WorkflowExpression] Func<int> documenttypeid, [WorkflowExpression] Func<int> solutionid = null, [WorkflowExpression] Func<string> solutionkey = null)
+        public IBodyWorkflowAction<Library[]> PalibrariesDocumenttypeList(Expression<Func<int>> documenttypeid, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Library[]> __BuildPalibrariesDocumenttypeList(WorkflowExpression<int> documenttypeid, WorkflowExpression<int> solutionid = null, WorkflowExpression<string> solutionkey = null)
-        {
-            WorkflowExpression.Validate(documenttypeid, nameof(documenttypeid), required: true);
-            WorkflowExpression.Validate(solutionid, nameof(solutionid), required: false);
-            WorkflowExpression.Validate(solutionkey, nameof(solutionkey), required: false);
+            var __workflow_documenttypeid = documenttypeid == null ? null : WorkflowExpression.Compile(documenttypeid);
+            WorkflowExpression.Validate(__workflow_documenttypeid, nameof(documenttypeid), required: true);
+            var __workflow_solutionid = solutionid == null ? null : WorkflowExpression.Compile(solutionid);
+            WorkflowExpression.Validate(__workflow_solutionid, nameof(solutionid), required: false);
+            var __workflow_solutionkey = solutionkey == null ? null : WorkflowExpression.Compile(solutionkey);
+            WorkflowExpression.Validate(__workflow_solutionkey, nameof(solutionkey), required: false);
             return new DeferredBodyAction<Library[]>(() =>
             {
                 var apiCallPath = "/palibraries/documenttype/list";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["documenttypeid"] = ExpressionConverter.Convert(documenttypeid);
-                if (solutionid != null)
-                    callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
-                if (solutionkey != null)
-                    callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(solutionkey);
+                callPayload.Queries["documenttypeid"] = ExpressionConverter.Convert(__workflow_documenttypeid);
+                if (__workflow_solutionid != null)
+                    callPayload.Queries["solutionid"] = ExpressionConverter.Convert(__workflow_solutionid);
+                if (__workflow_solutionkey != null)
+                    callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(__workflow_solutionkey);
                 return new ApiConnectionAction<Library[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        [WorkflowExpressionFactory(nameof(__BuildPalibrariesUpdate))]
-        public IBodyWorkflowAction<Library> PalibrariesUpdate([WorkflowExpression] Func<int> libraryid, [WorkflowExpression] Func<int> solutionid = null, [WorkflowExpression] Func<string> solutionkey = null, [WorkflowExpression] Func<int> librarylibraryId = null, [WorkflowExpression] Func<int> libraryrepositoryId = null, [WorkflowExpression] Func<int> libraryrepositoryrepositoryId = null, [WorkflowExpression] Func<string> libraryrepositoryname = null, [WorkflowExpression] Func<string> libraryrepositorydescription = null, [WorkflowExpression] Func<int> libraryrepositoryrepositoryTypeId = null, [WorkflowExpression] Func<int> libraryrepositoryrepositoryTyperepositoryTypeId = null, [WorkflowExpression] Func<string> libraryrepositoryrepositoryTypename = null, [WorkflowExpression] Func<string> libraryrepositoryrepositoryURI = null, [WorkflowExpression] Func<int> librarydocumentTypeId = null, [WorkflowExpression] Func<int> librarydocumentTypedocumentTypeId = null, [WorkflowExpression] Func<string> librarydocumentTypename = null, [WorkflowExpression] Func<string> librarydocumentTypedescription = null, [WorkflowExpression] Func<string> libraryname = null, [WorkflowExpression] Func<string> librarydescription = null, [WorkflowExpression] Func<bool> libraryocr = null)
+        public IBodyWorkflowAction<Library> PalibrariesUpdate(Expression<Func<int>> libraryid, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null, Expression<Func<int>> librarylibraryId = null, Expression<Func<int>> libraryrepositoryId = null, Expression<Func<int>> libraryrepositoryrepositoryId = null, Expression<Func<string>> libraryrepositoryname = null, Expression<Func<string>> libraryrepositorydescription = null, Expression<Func<int>> libraryrepositoryrepositoryTypeId = null, Expression<Func<int>> libraryrepositoryrepositoryTyperepositoryTypeId = null, Expression<Func<string>> libraryrepositoryrepositoryTypename = null, Expression<Func<string>> libraryrepositoryrepositoryURI = null, Expression<Func<int>> librarydocumentTypeId = null, Expression<Func<int>> librarydocumentTypedocumentTypeId = null, Expression<Func<string>> librarydocumentTypename = null, Expression<Func<string>> librarydocumentTypedescription = null, Expression<Func<string>> libraryname = null, Expression<Func<string>> librarydescription = null, Expression<Func<bool>> libraryocr = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Library> __BuildPalibrariesUpdate(WorkflowExpression<int> libraryid, WorkflowExpression<int> solutionid = null, WorkflowExpression<string> solutionkey = null, WorkflowExpression<int> librarylibraryId = null, WorkflowExpression<int> libraryrepositoryId = null, WorkflowExpression<int> libraryrepositoryrepositoryId = null, WorkflowExpression<string> libraryrepositoryname = null, WorkflowExpression<string> libraryrepositorydescription = null, WorkflowExpression<int> libraryrepositoryrepositoryTypeId = null, WorkflowExpression<int> libraryrepositoryrepositoryTyperepositoryTypeId = null, WorkflowExpression<string> libraryrepositoryrepositoryTypename = null, WorkflowExpression<string> libraryrepositoryrepositoryURI = null, WorkflowExpression<int> librarydocumentTypeId = null, WorkflowExpression<int> librarydocumentTypedocumentTypeId = null, WorkflowExpression<string> librarydocumentTypename = null, WorkflowExpression<string> librarydocumentTypedescription = null, WorkflowExpression<string> libraryname = null, WorkflowExpression<string> librarydescription = null, WorkflowExpression<bool> libraryocr = null)
-        {
-            WorkflowExpression.Validate(libraryid, nameof(libraryid), required: true);
-            WorkflowExpression.Validate(solutionid, nameof(solutionid), required: false);
-            WorkflowExpression.Validate(solutionkey, nameof(solutionkey), required: false);
-            WorkflowExpression.Validate(librarylibraryId, nameof(librarylibraryId), required: false);
-            WorkflowExpression.Validate(libraryrepositoryId, nameof(libraryrepositoryId), required: false);
-            WorkflowExpression.Validate(libraryrepositoryrepositoryId, nameof(libraryrepositoryrepositoryId), required: false);
-            WorkflowExpression.Validate(libraryrepositoryname, nameof(libraryrepositoryname), required: false);
-            WorkflowExpression.Validate(libraryrepositorydescription, nameof(libraryrepositorydescription), required: false);
-            WorkflowExpression.Validate(libraryrepositoryrepositoryTypeId, nameof(libraryrepositoryrepositoryTypeId), required: false);
-            WorkflowExpression.Validate(libraryrepositoryrepositoryTyperepositoryTypeId, nameof(libraryrepositoryrepositoryTyperepositoryTypeId), required: false);
-            WorkflowExpression.Validate(libraryrepositoryrepositoryTypename, nameof(libraryrepositoryrepositoryTypename), required: false);
-            WorkflowExpression.Validate(libraryrepositoryrepositoryURI, nameof(libraryrepositoryrepositoryURI), required: false);
-            WorkflowExpression.Validate(librarydocumentTypeId, nameof(librarydocumentTypeId), required: false);
-            WorkflowExpression.Validate(librarydocumentTypedocumentTypeId, nameof(librarydocumentTypedocumentTypeId), required: false);
-            WorkflowExpression.Validate(librarydocumentTypename, nameof(librarydocumentTypename), required: false);
-            WorkflowExpression.Validate(librarydocumentTypedescription, nameof(librarydocumentTypedescription), required: false);
-            WorkflowExpression.Validate(libraryname, nameof(libraryname), required: false);
-            WorkflowExpression.Validate(librarydescription, nameof(librarydescription), required: false);
-            WorkflowExpression.Validate(libraryocr, nameof(libraryocr), required: false);
+            var __workflow_libraryid = libraryid == null ? null : WorkflowExpression.Compile(libraryid);
+            WorkflowExpression.Validate(__workflow_libraryid, nameof(libraryid), required: true);
+            var __workflow_solutionid = solutionid == null ? null : WorkflowExpression.Compile(solutionid);
+            WorkflowExpression.Validate(__workflow_solutionid, nameof(solutionid), required: false);
+            var __workflow_solutionkey = solutionkey == null ? null : WorkflowExpression.Compile(solutionkey);
+            WorkflowExpression.Validate(__workflow_solutionkey, nameof(solutionkey), required: false);
+            var __workflow_librarylibraryId = librarylibraryId == null ? null : WorkflowExpression.Compile(librarylibraryId);
+            WorkflowExpression.Validate(__workflow_librarylibraryId, nameof(librarylibraryId), required: false);
+            var __workflow_libraryrepositoryId = libraryrepositoryId == null ? null : WorkflowExpression.Compile(libraryrepositoryId);
+            WorkflowExpression.Validate(__workflow_libraryrepositoryId, nameof(libraryrepositoryId), required: false);
+            var __workflow_libraryrepositoryrepositoryId = libraryrepositoryrepositoryId == null ? null : WorkflowExpression.Compile(libraryrepositoryrepositoryId);
+            WorkflowExpression.Validate(__workflow_libraryrepositoryrepositoryId, nameof(libraryrepositoryrepositoryId), required: false);
+            var __workflow_libraryrepositoryname = libraryrepositoryname == null ? null : WorkflowExpression.Compile(libraryrepositoryname);
+            WorkflowExpression.Validate(__workflow_libraryrepositoryname, nameof(libraryrepositoryname), required: false);
+            var __workflow_libraryrepositorydescription = libraryrepositorydescription == null ? null : WorkflowExpression.Compile(libraryrepositorydescription);
+            WorkflowExpression.Validate(__workflow_libraryrepositorydescription, nameof(libraryrepositorydescription), required: false);
+            var __workflow_libraryrepositoryrepositoryTypeId = libraryrepositoryrepositoryTypeId == null ? null : WorkflowExpression.Compile(libraryrepositoryrepositoryTypeId);
+            WorkflowExpression.Validate(__workflow_libraryrepositoryrepositoryTypeId, nameof(libraryrepositoryrepositoryTypeId), required: false);
+            var __workflow_libraryrepositoryrepositoryTyperepositoryTypeId = libraryrepositoryrepositoryTyperepositoryTypeId == null ? null : WorkflowExpression.Compile(libraryrepositoryrepositoryTyperepositoryTypeId);
+            WorkflowExpression.Validate(__workflow_libraryrepositoryrepositoryTyperepositoryTypeId, nameof(libraryrepositoryrepositoryTyperepositoryTypeId), required: false);
+            var __workflow_libraryrepositoryrepositoryTypename = libraryrepositoryrepositoryTypename == null ? null : WorkflowExpression.Compile(libraryrepositoryrepositoryTypename);
+            WorkflowExpression.Validate(__workflow_libraryrepositoryrepositoryTypename, nameof(libraryrepositoryrepositoryTypename), required: false);
+            var __workflow_libraryrepositoryrepositoryURI = libraryrepositoryrepositoryURI == null ? null : WorkflowExpression.Compile(libraryrepositoryrepositoryURI);
+            WorkflowExpression.Validate(__workflow_libraryrepositoryrepositoryURI, nameof(libraryrepositoryrepositoryURI), required: false);
+            var __workflow_librarydocumentTypeId = librarydocumentTypeId == null ? null : WorkflowExpression.Compile(librarydocumentTypeId);
+            WorkflowExpression.Validate(__workflow_librarydocumentTypeId, nameof(librarydocumentTypeId), required: false);
+            var __workflow_librarydocumentTypedocumentTypeId = librarydocumentTypedocumentTypeId == null ? null : WorkflowExpression.Compile(librarydocumentTypedocumentTypeId);
+            WorkflowExpression.Validate(__workflow_librarydocumentTypedocumentTypeId, nameof(librarydocumentTypedocumentTypeId), required: false);
+            var __workflow_librarydocumentTypename = librarydocumentTypename == null ? null : WorkflowExpression.Compile(librarydocumentTypename);
+            WorkflowExpression.Validate(__workflow_librarydocumentTypename, nameof(librarydocumentTypename), required: false);
+            var __workflow_librarydocumentTypedescription = librarydocumentTypedescription == null ? null : WorkflowExpression.Compile(librarydocumentTypedescription);
+            WorkflowExpression.Validate(__workflow_librarydocumentTypedescription, nameof(librarydocumentTypedescription), required: false);
+            var __workflow_libraryname = libraryname == null ? null : WorkflowExpression.Compile(libraryname);
+            WorkflowExpression.Validate(__workflow_libraryname, nameof(libraryname), required: false);
+            var __workflow_librarydescription = librarydescription == null ? null : WorkflowExpression.Compile(librarydescription);
+            WorkflowExpression.Validate(__workflow_librarydescription, nameof(librarydescription), required: false);
+            var __workflow_libraryocr = libraryocr == null ? null : WorkflowExpression.Compile(libraryocr);
+            WorkflowExpression.Validate(__workflow_libraryocr, nameof(libraryocr), required: false);
             return new DeferredBodyAction<Library>(() =>
             {
                 var apiCallPath = "/palibraries/update";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["libraryid"] = ExpressionConverter.Convert(libraryid);
-                if (solutionid != null)
-                    callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
-                if (solutionkey != null)
-                    callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(solutionkey);
+                callPayload.Queries["libraryid"] = ExpressionConverter.Convert(__workflow_libraryid);
+                if (__workflow_solutionid != null)
+                    callPayload.Queries["solutionid"] = ExpressionConverter.Convert(__workflow_solutionid);
+                if (__workflow_solutionkey != null)
+                    callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(__workflow_solutionkey);
                 var library = new JObject();
                 var librarypropCount = 0;
-                if (librarylibraryId != null)
+                if (__workflow_librarylibraryId != null)
                 {
-                    library["libraryId"] = ExpressionConverter.ConvertO(librarylibraryId);
+                    library["libraryId"] = ExpressionConverter.ConvertO(__workflow_librarylibraryId);
                     librarypropCount++;
                 }
 
-                if (libraryrepositoryId != null)
+                if (__workflow_libraryrepositoryId != null)
                 {
-                    library["repositoryId"] = ExpressionConverter.ConvertO(libraryrepositoryId);
+                    library["repositoryId"] = ExpressionConverter.ConvertO(__workflow_libraryrepositoryId);
                     librarypropCount++;
                 }
 
-                if (librarydocumentTypeId != null)
+                if (__workflow_librarydocumentTypeId != null)
                 {
-                    library["documentTypeId"] = ExpressionConverter.ConvertO(librarydocumentTypeId);
+                    library["documentTypeId"] = ExpressionConverter.ConvertO(__workflow_librarydocumentTypeId);
                     librarypropCount++;
                 }
 
                 var documentTypeObject = new JObject();
                 var documentTypeObjectpropCount = 0;
-                if (librarydocumentTypedocumentTypeId != null)
+                if (__workflow_librarydocumentTypedocumentTypeId != null)
                 {
-                    documentTypeObject["documentTypeId"] = ExpressionConverter.ConvertO(librarydocumentTypedocumentTypeId);
+                    documentTypeObject["documentTypeId"] = ExpressionConverter.ConvertO(__workflow_librarydocumentTypedocumentTypeId);
                     documentTypeObjectpropCount++;
                 }
 
-                if (librarydocumentTypename != null)
+                if (__workflow_librarydocumentTypename != null)
                 {
-                    documentTypeObject["name"] = ExpressionConverter.ConvertO(librarydocumentTypename);
+                    documentTypeObject["name"] = ExpressionConverter.ConvertO(__workflow_librarydocumentTypename);
                     documentTypeObjectpropCount++;
                 }
 
-                if (librarydocumentTypedescription != null)
+                if (__workflow_librarydocumentTypedescription != null)
                 {
-                    documentTypeObject["description"] = ExpressionConverter.ConvertO(librarydocumentTypedescription);
+                    documentTypeObject["description"] = ExpressionConverter.ConvertO(__workflow_librarydocumentTypedescription);
                     documentTypeObjectpropCount++;
                 }
 
@@ -763,21 +768,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
                     librarypropCount++;
                 }
 
-                if (libraryname != null)
+                if (__workflow_libraryname != null)
                 {
-                    library["name"] = ExpressionConverter.ConvertO(libraryname);
+                    library["name"] = ExpressionConverter.ConvertO(__workflow_libraryname);
                     librarypropCount++;
                 }
 
-                if (librarydescription != null)
+                if (__workflow_librarydescription != null)
                 {
-                    library["description"] = ExpressionConverter.ConvertO(librarydescription);
+                    library["description"] = ExpressionConverter.ConvertO(__workflow_librarydescription);
                     librarypropCount++;
                 }
 
-                if (libraryocr != null)
+                if (__workflow_libraryocr != null)
                 {
-                    library["ocr"] = ExpressionConverter.ConvertO(libraryocr);
+                    library["ocr"] = ExpressionConverter.ConvertO(__workflow_libraryocr);
                     librarypropCount++;
                 }
 
@@ -791,136 +796,116 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        [WorkflowExpressionFactory(nameof(__BuildPadatatypesList))]
-        public IBodyWorkflowAction<DataType[]> PadatatypesList([WorkflowExpression] Func<int> solutionid = null, [WorkflowExpression] Func<string> solutionkey = null)
+        public IBodyWorkflowAction<DataType[]> PadatatypesList(Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DataType[]> __BuildPadatatypesList(WorkflowExpression<int> solutionid = null, WorkflowExpression<string> solutionkey = null)
-        {
-            WorkflowExpression.Validate(solutionid, nameof(solutionid), required: false);
-            WorkflowExpression.Validate(solutionkey, nameof(solutionkey), required: false);
+            var __workflow_solutionid = solutionid == null ? null : WorkflowExpression.Compile(solutionid);
+            WorkflowExpression.Validate(__workflow_solutionid, nameof(solutionid), required: false);
+            var __workflow_solutionkey = solutionkey == null ? null : WorkflowExpression.Compile(solutionkey);
+            WorkflowExpression.Validate(__workflow_solutionkey, nameof(solutionkey), required: false);
             return new DeferredBodyAction<DataType[]>(() =>
             {
                 var apiCallPath = "/padatatypes/list";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (solutionid != null)
-                    callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
-                if (solutionkey != null)
-                    callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(solutionkey);
+                if (__workflow_solutionid != null)
+                    callPayload.Queries["solutionid"] = ExpressionConverter.Convert(__workflow_solutionid);
+                if (__workflow_solutionkey != null)
+                    callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(__workflow_solutionkey);
                 return new ApiConnectionAction<DataType[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        [WorkflowExpressionFactory(nameof(__BuildPadocumentsLoadfile))]
-        public IBodyWorkflowAction<string> PadocumentsLoadfile([WorkflowExpression] Func<string> documentkey, [WorkflowExpression] Func<int> solutionid = null, [WorkflowExpression] Func<string> solutionkey = null)
+        public IBodyWorkflowAction<string> PadocumentsLoadfile(Expression<Func<string>> documentkey, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildPadocumentsLoadfile(WorkflowExpression<string> documentkey, WorkflowExpression<int> solutionid = null, WorkflowExpression<string> solutionkey = null)
-        {
-            WorkflowExpression.Validate(documentkey, nameof(documentkey), required: true);
-            WorkflowExpression.Validate(solutionid, nameof(solutionid), required: false);
-            WorkflowExpression.Validate(solutionkey, nameof(solutionkey), required: false);
+            var __workflow_documentkey = documentkey == null ? null : WorkflowExpression.Compile(documentkey);
+            WorkflowExpression.Validate(__workflow_documentkey, nameof(documentkey), required: true);
+            var __workflow_solutionid = solutionid == null ? null : WorkflowExpression.Compile(solutionid);
+            WorkflowExpression.Validate(__workflow_solutionid, nameof(solutionid), required: false);
+            var __workflow_solutionkey = solutionkey == null ? null : WorkflowExpression.Compile(solutionkey);
+            WorkflowExpression.Validate(__workflow_solutionkey, nameof(solutionkey), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/padocuments/loadfile";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["documentkey"] = ExpressionConverter.Convert(documentkey);
-                if (solutionid != null)
-                    callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
-                if (solutionkey != null)
-                    callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(solutionkey);
+                callPayload.Queries["documentkey"] = ExpressionConverter.Convert(__workflow_documentkey);
+                if (__workflow_solutionid != null)
+                    callPayload.Queries["solutionid"] = ExpressionConverter.Convert(__workflow_solutionid);
+                if (__workflow_solutionkey != null)
+                    callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(__workflow_solutionkey);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        [WorkflowExpressionFactory(nameof(__BuildPapropertyvaluesGet))]
-        public IBodyWorkflowAction<PropertyValue[]> PapropertyvaluesGet([WorkflowExpression] Func<string> documentkey, [WorkflowExpression] Func<int> solutionid = null, [WorkflowExpression] Func<string> solutionkey = null)
+        public IBodyWorkflowAction<PropertyValue[]> PapropertyvaluesGet(Expression<Func<string>> documentkey, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PropertyValue[]> __BuildPapropertyvaluesGet(WorkflowExpression<string> documentkey, WorkflowExpression<int> solutionid = null, WorkflowExpression<string> solutionkey = null)
-        {
-            WorkflowExpression.Validate(documentkey, nameof(documentkey), required: true);
-            WorkflowExpression.Validate(solutionid, nameof(solutionid), required: false);
-            WorkflowExpression.Validate(solutionkey, nameof(solutionkey), required: false);
+            var __workflow_documentkey = documentkey == null ? null : WorkflowExpression.Compile(documentkey);
+            WorkflowExpression.Validate(__workflow_documentkey, nameof(documentkey), required: true);
+            var __workflow_solutionid = solutionid == null ? null : WorkflowExpression.Compile(solutionid);
+            WorkflowExpression.Validate(__workflow_solutionid, nameof(solutionid), required: false);
+            var __workflow_solutionkey = solutionkey == null ? null : WorkflowExpression.Compile(solutionkey);
+            WorkflowExpression.Validate(__workflow_solutionkey, nameof(solutionkey), required: false);
             return new DeferredBodyAction<PropertyValue[]>(() =>
             {
                 var apiCallPath = "/papropertyvalues/get";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["documentkey"] = ExpressionConverter.Convert(documentkey);
-                if (solutionid != null)
-                    callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
-                if (solutionkey != null)
-                    callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(solutionkey);
+                callPayload.Queries["documentkey"] = ExpressionConverter.Convert(__workflow_documentkey);
+                if (__workflow_solutionid != null)
+                    callPayload.Queries["solutionid"] = ExpressionConverter.Convert(__workflow_solutionid);
+                if (__workflow_solutionkey != null)
+                    callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(__workflow_solutionkey);
                 return new ApiConnectionAction<PropertyValue[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        [WorkflowExpressionFactory(nameof(__BuildPapropertyvaluesUpdate))]
-        public IBodyWorkflowAction<PropertyValue[]> PapropertyvaluesUpdate([WorkflowExpression] Func<string> documentkey, [WorkflowExpression] Func<int> solutionid = null, [WorkflowExpression] Func<string> solutionkey = null, [WorkflowExpression] Func<PropertyValue[]> propertyValueArray = null)
+        public IBodyWorkflowAction<PropertyValue[]> PapropertyvaluesUpdate(Expression<Func<string>> documentkey, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null, Expression<Func<PropertyValue[]>> propertyValueArray = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PropertyValue[]> __BuildPapropertyvaluesUpdate(WorkflowExpression<string> documentkey, WorkflowExpression<int> solutionid = null, WorkflowExpression<string> solutionkey = null, WorkflowExpression<PropertyValue[]> propertyValueArray = null)
-        {
-            WorkflowExpression.Validate(documentkey, nameof(documentkey), required: true);
-            WorkflowExpression.Validate(solutionid, nameof(solutionid), required: false);
-            WorkflowExpression.Validate(solutionkey, nameof(solutionkey), required: false);
-            WorkflowExpression.Validate(propertyValueArray, nameof(propertyValueArray), required: false);
+            var __workflow_documentkey = documentkey == null ? null : WorkflowExpression.Compile(documentkey);
+            WorkflowExpression.Validate(__workflow_documentkey, nameof(documentkey), required: true);
+            var __workflow_solutionid = solutionid == null ? null : WorkflowExpression.Compile(solutionid);
+            WorkflowExpression.Validate(__workflow_solutionid, nameof(solutionid), required: false);
+            var __workflow_solutionkey = solutionkey == null ? null : WorkflowExpression.Compile(solutionkey);
+            WorkflowExpression.Validate(__workflow_solutionkey, nameof(solutionkey), required: false);
+            var __workflow_propertyValueArray = propertyValueArray == null ? null : WorkflowExpression.Compile(propertyValueArray);
+            WorkflowExpression.Validate(__workflow_propertyValueArray, nameof(propertyValueArray), required: false);
             return new DeferredBodyAction<PropertyValue[]>(() =>
             {
                 var apiCallPath = "/papropertyvalues/update";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["documentkey"] = ExpressionConverter.Convert(documentkey);
-                if (solutionid != null)
-                    callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
-                if (solutionkey != null)
-                    callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(solutionkey);
-                callPayload.Body = ExpressionConverter.ConvertO(propertyValueArray);
+                callPayload.Queries["documentkey"] = ExpressionConverter.Convert(__workflow_documentkey);
+                if (__workflow_solutionid != null)
+                    callPayload.Queries["solutionid"] = ExpressionConverter.Convert(__workflow_solutionid);
+                if (__workflow_solutionkey != null)
+                    callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(__workflow_solutionkey);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_propertyValueArray);
                 return new ApiConnectionAction<PropertyValue[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        [WorkflowExpressionFactory(nameof(__BuildPadocumentpropertiesList))]
-        public IBodyWorkflowAction<DocumentProperty[]> PadocumentpropertiesList([WorkflowExpression] Func<int> documenttypeid, [WorkflowExpression] Func<int> solutionid = null, [WorkflowExpression] Func<string> solutionkey = null)
+        public IBodyWorkflowAction<DocumentProperty[]> PadocumentpropertiesList(Expression<Func<int>> documenttypeid, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DocumentProperty[]> __BuildPadocumentpropertiesList(WorkflowExpression<int> documenttypeid, WorkflowExpression<int> solutionid = null, WorkflowExpression<string> solutionkey = null)
-        {
-            WorkflowExpression.Validate(documenttypeid, nameof(documenttypeid), required: true);
-            WorkflowExpression.Validate(solutionid, nameof(solutionid), required: false);
-            WorkflowExpression.Validate(solutionkey, nameof(solutionkey), required: false);
+            var __workflow_documenttypeid = documenttypeid == null ? null : WorkflowExpression.Compile(documenttypeid);
+            WorkflowExpression.Validate(__workflow_documenttypeid, nameof(documenttypeid), required: true);
+            var __workflow_solutionid = solutionid == null ? null : WorkflowExpression.Compile(solutionid);
+            WorkflowExpression.Validate(__workflow_solutionid, nameof(solutionid), required: false);
+            var __workflow_solutionkey = solutionkey == null ? null : WorkflowExpression.Compile(solutionkey);
+            WorkflowExpression.Validate(__workflow_solutionkey, nameof(solutionkey), required: false);
             return new DeferredBodyAction<DocumentProperty[]>(() =>
             {
                 var apiCallPath = "/padocumentproperties-list";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["documenttypeid"] = ExpressionConverter.Convert(documenttypeid);
-                if (solutionid != null)
-                    callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
-                if (solutionkey != null)
-                    callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(solutionkey);
+                callPayload.Queries["documenttypeid"] = ExpressionConverter.Convert(__workflow_documenttypeid);
+                if (__workflow_solutionid != null)
+                    callPayload.Queries["solutionid"] = ExpressionConverter.Convert(__workflow_solutionid);
+                if (__workflow_solutionkey != null)
+                    callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(__workflow_solutionkey);
                 return new ApiConnectionAction<DocumentProperty[]>(callPayload);
             });
         }

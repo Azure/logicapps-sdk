@@ -1,417 +1,523 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Screenshotoneip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class ScreenshotoneipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "screenshotoneip")]
-        [WorkflowExpressionFactory(nameof(__BuildTakeGet))]
-        public IBodyWorkflowAction<TakeGetResponse> TakeGet([WorkflowExpression] Func<string> url = null, [WorkflowExpression] Func<string> html = null, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<responseTypeInput> responseType = null, [WorkflowExpression] Func<string> selector = null, [WorkflowExpression] Func<bool> captureBeyondViewport = null, [WorkflowExpression] Func<string> scrollIntoView = null, [WorkflowExpression] Func<int> scrollIntoViewAdjustTop = null, [WorkflowExpression] Func<bool> fullPage = null, [WorkflowExpression] Func<bool> fullPageScroll = null, [WorkflowExpression] Func<int> fullPageScrollDelay = null, [WorkflowExpression] Func<int> fullPageScrollBy = null, [WorkflowExpression] Func<int> fullPageMaxHeight = null, [WorkflowExpression] Func<string> viewportDevice = null, [WorkflowExpression] Func<int> viewportWidth = null, [WorkflowExpression] Func<int> viewportHeight = null, [WorkflowExpression] Func<int> deviceScaleFactor = null, [WorkflowExpression] Func<bool> viewportMobile = null, [WorkflowExpression] Func<bool> viewportHasTouch = null, [WorkflowExpression] Func<bool> viewportLandscape = null, [WorkflowExpression] Func<int> imageQuality = null, [WorkflowExpression] Func<int> imageWidth = null, [WorkflowExpression] Func<int> imageHeight = null, [WorkflowExpression] Func<bool> omitBackground = null, [WorkflowExpression] Func<bool> darkMode = null, [WorkflowExpression] Func<bool> reducedMotion = null, [WorkflowExpression] Func<string> mediaType = null, [WorkflowExpression] Func<string> hideSelectors = null, [WorkflowExpression] Func<string> scripts = null, [WorkflowExpression] Func<string> scriptsWaitUntil = null, [WorkflowExpression] Func<string> styles = null, [WorkflowExpression] Func<string> click = null, [WorkflowExpression] Func<bool> blockCookieBanners = null, [WorkflowExpression] Func<bool> blockBannersByHeuristics = null, [WorkflowExpression] Func<bool> blockChats = null, [WorkflowExpression] Func<bool> blockAds = null, [WorkflowExpression] Func<bool> blockTrackers = null, [WorkflowExpression] Func<string> blockRequests = null, [WorkflowExpression] Func<string> blockResources = null, [WorkflowExpression] Func<double> geolocationLatitude = null, [WorkflowExpression] Func<double> geolocationLongitude = null, [WorkflowExpression] Func<int> geolocationAccuracy = null, [WorkflowExpression] Func<ipCountryCodeInput> ipCountryCode = null, [WorkflowExpression] Func<string> proxy = null, [WorkflowExpression] Func<string> userAgent = null, [WorkflowExpression] Func<string> authorization = null, [WorkflowExpression] Func<string> cookies = null, [WorkflowExpression] Func<string> headers = null, [WorkflowExpression] Func<timeZoneInput> timeZone = null, [WorkflowExpression] Func<string> waitUntil = null, [WorkflowExpression] Func<int> delay = null, [WorkflowExpression] Func<int> timeout = null, [WorkflowExpression] Func<int> navigationTimeout = null, [WorkflowExpression] Func<string> waitForSelector = null, [WorkflowExpression] Func<bool> cache = null, [WorkflowExpression] Func<int> cacheTtl = null, [WorkflowExpression] Func<int> cacheKey = null, [WorkflowExpression] Func<bool> store = null, [WorkflowExpression] Func<string> storagePath = null, [WorkflowExpression] Func<string> storageBucket = null, [WorkflowExpression] Func<storageClassInput> storageClass = null, [WorkflowExpression] Func<string> storageAcl = null, [WorkflowExpression] Func<bool> metadataImageSize = null, [WorkflowExpression] Func<bool> ignoreHostErrors = null, [WorkflowExpression] Func<bool> errorOnSelectorNotFound = null)
+        public IBodyWorkflowAction<TakeGetResponse> TakeGet(Expression<Func<string>> url = null, Expression<Func<string>> html = null, Expression<Func<formatInput>> format = null, Expression<Func<responseTypeInput>> responseType = null, Expression<Func<string>> selector = null, Expression<Func<bool>> captureBeyondViewport = null, Expression<Func<string>> scrollIntoView = null, Expression<Func<int>> scrollIntoViewAdjustTop = null, Expression<Func<bool>> fullPage = null, Expression<Func<bool>> fullPageScroll = null, Expression<Func<int>> fullPageScrollDelay = null, Expression<Func<int>> fullPageScrollBy = null, Expression<Func<int>> fullPageMaxHeight = null, Expression<Func<string>> viewportDevice = null, Expression<Func<int>> viewportWidth = null, Expression<Func<int>> viewportHeight = null, Expression<Func<int>> deviceScaleFactor = null, Expression<Func<bool>> viewportMobile = null, Expression<Func<bool>> viewportHasTouch = null, Expression<Func<bool>> viewportLandscape = null, Expression<Func<int>> imageQuality = null, Expression<Func<int>> imageWidth = null, Expression<Func<int>> imageHeight = null, Expression<Func<bool>> omitBackground = null, Expression<Func<bool>> darkMode = null, Expression<Func<bool>> reducedMotion = null, Expression<Func<string>> mediaType = null, Expression<Func<string>> hideSelectors = null, Expression<Func<string>> scripts = null, Expression<Func<string>> scriptsWaitUntil = null, Expression<Func<string>> styles = null, Expression<Func<string>> click = null, Expression<Func<bool>> blockCookieBanners = null, Expression<Func<bool>> blockBannersByHeuristics = null, Expression<Func<bool>> blockChats = null, Expression<Func<bool>> blockAds = null, Expression<Func<bool>> blockTrackers = null, Expression<Func<string>> blockRequests = null, Expression<Func<string>> blockResources = null, Expression<Func<double>> geolocationLatitude = null, Expression<Func<double>> geolocationLongitude = null, Expression<Func<int>> geolocationAccuracy = null, Expression<Func<ipCountryCodeInput>> ipCountryCode = null, Expression<Func<string>> proxy = null, Expression<Func<string>> userAgent = null, Expression<Func<string>> authorization = null, Expression<Func<string>> cookies = null, Expression<Func<string>> headers = null, Expression<Func<timeZoneInput>> timeZone = null, Expression<Func<string>> waitUntil = null, Expression<Func<int>> delay = null, Expression<Func<int>> timeout = null, Expression<Func<int>> navigationTimeout = null, Expression<Func<string>> waitForSelector = null, Expression<Func<bool>> cache = null, Expression<Func<int>> cacheTtl = null, Expression<Func<int>> cacheKey = null, Expression<Func<bool>> store = null, Expression<Func<string>> storagePath = null, Expression<Func<string>> storageBucket = null, Expression<Func<storageClassInput>> storageClass = null, Expression<Func<string>> storageAcl = null, Expression<Func<bool>> metadataImageSize = null, Expression<Func<bool>> ignoreHostErrors = null, Expression<Func<bool>> errorOnSelectorNotFound = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TakeGetResponse> __BuildTakeGet(WorkflowExpression<string> url = null, WorkflowExpression<string> html = null, WorkflowExpression<formatInput> format = null, WorkflowExpression<responseTypeInput> responseType = null, WorkflowExpression<string> selector = null, WorkflowExpression<bool> captureBeyondViewport = null, WorkflowExpression<string> scrollIntoView = null, WorkflowExpression<int> scrollIntoViewAdjustTop = null, WorkflowExpression<bool> fullPage = null, WorkflowExpression<bool> fullPageScroll = null, WorkflowExpression<int> fullPageScrollDelay = null, WorkflowExpression<int> fullPageScrollBy = null, WorkflowExpression<int> fullPageMaxHeight = null, WorkflowExpression<string> viewportDevice = null, WorkflowExpression<int> viewportWidth = null, WorkflowExpression<int> viewportHeight = null, WorkflowExpression<int> deviceScaleFactor = null, WorkflowExpression<bool> viewportMobile = null, WorkflowExpression<bool> viewportHasTouch = null, WorkflowExpression<bool> viewportLandscape = null, WorkflowExpression<int> imageQuality = null, WorkflowExpression<int> imageWidth = null, WorkflowExpression<int> imageHeight = null, WorkflowExpression<bool> omitBackground = null, WorkflowExpression<bool> darkMode = null, WorkflowExpression<bool> reducedMotion = null, WorkflowExpression<string> mediaType = null, WorkflowExpression<string> hideSelectors = null, WorkflowExpression<string> scripts = null, WorkflowExpression<string> scriptsWaitUntil = null, WorkflowExpression<string> styles = null, WorkflowExpression<string> click = null, WorkflowExpression<bool> blockCookieBanners = null, WorkflowExpression<bool> blockBannersByHeuristics = null, WorkflowExpression<bool> blockChats = null, WorkflowExpression<bool> blockAds = null, WorkflowExpression<bool> blockTrackers = null, WorkflowExpression<string> blockRequests = null, WorkflowExpression<string> blockResources = null, WorkflowExpression<double> geolocationLatitude = null, WorkflowExpression<double> geolocationLongitude = null, WorkflowExpression<int> geolocationAccuracy = null, WorkflowExpression<ipCountryCodeInput> ipCountryCode = null, WorkflowExpression<string> proxy = null, WorkflowExpression<string> userAgent = null, WorkflowExpression<string> authorization = null, WorkflowExpression<string> cookies = null, WorkflowExpression<string> headers = null, WorkflowExpression<timeZoneInput> timeZone = null, WorkflowExpression<string> waitUntil = null, WorkflowExpression<int> delay = null, WorkflowExpression<int> timeout = null, WorkflowExpression<int> navigationTimeout = null, WorkflowExpression<string> waitForSelector = null, WorkflowExpression<bool> cache = null, WorkflowExpression<int> cacheTtl = null, WorkflowExpression<int> cacheKey = null, WorkflowExpression<bool> store = null, WorkflowExpression<string> storagePath = null, WorkflowExpression<string> storageBucket = null, WorkflowExpression<storageClassInput> storageClass = null, WorkflowExpression<string> storageAcl = null, WorkflowExpression<bool> metadataImageSize = null, WorkflowExpression<bool> ignoreHostErrors = null, WorkflowExpression<bool> errorOnSelectorNotFound = null)
-        {
-            WorkflowExpression.Validate(url, nameof(url), required: false);
-            WorkflowExpression.Validate(html, nameof(html), required: false);
-            WorkflowExpression.Validate(format, nameof(format), required: false);
-            WorkflowExpression.Validate(responseType, nameof(responseType), required: false);
-            WorkflowExpression.Validate(selector, nameof(selector), required: false);
-            WorkflowExpression.Validate(captureBeyondViewport, nameof(captureBeyondViewport), required: false);
-            WorkflowExpression.Validate(scrollIntoView, nameof(scrollIntoView), required: false);
-            WorkflowExpression.Validate(scrollIntoViewAdjustTop, nameof(scrollIntoViewAdjustTop), required: false);
-            WorkflowExpression.Validate(fullPage, nameof(fullPage), required: false);
-            WorkflowExpression.Validate(fullPageScroll, nameof(fullPageScroll), required: false);
-            WorkflowExpression.Validate(fullPageScrollDelay, nameof(fullPageScrollDelay), required: false);
-            WorkflowExpression.Validate(fullPageScrollBy, nameof(fullPageScrollBy), required: false);
-            WorkflowExpression.Validate(fullPageMaxHeight, nameof(fullPageMaxHeight), required: false);
-            WorkflowExpression.Validate(viewportDevice, nameof(viewportDevice), required: false);
-            WorkflowExpression.Validate(viewportWidth, nameof(viewportWidth), required: false);
-            WorkflowExpression.Validate(viewportHeight, nameof(viewportHeight), required: false);
-            WorkflowExpression.Validate(deviceScaleFactor, nameof(deviceScaleFactor), required: false);
-            WorkflowExpression.Validate(viewportMobile, nameof(viewportMobile), required: false);
-            WorkflowExpression.Validate(viewportHasTouch, nameof(viewportHasTouch), required: false);
-            WorkflowExpression.Validate(viewportLandscape, nameof(viewportLandscape), required: false);
-            WorkflowExpression.Validate(imageQuality, nameof(imageQuality), required: false);
-            WorkflowExpression.Validate(imageWidth, nameof(imageWidth), required: false);
-            WorkflowExpression.Validate(imageHeight, nameof(imageHeight), required: false);
-            WorkflowExpression.Validate(omitBackground, nameof(omitBackground), required: false);
-            WorkflowExpression.Validate(darkMode, nameof(darkMode), required: false);
-            WorkflowExpression.Validate(reducedMotion, nameof(reducedMotion), required: false);
-            WorkflowExpression.Validate(mediaType, nameof(mediaType), required: false);
-            WorkflowExpression.Validate(hideSelectors, nameof(hideSelectors), required: false);
-            WorkflowExpression.Validate(scripts, nameof(scripts), required: false);
-            WorkflowExpression.Validate(scriptsWaitUntil, nameof(scriptsWaitUntil), required: false);
-            WorkflowExpression.Validate(styles, nameof(styles), required: false);
-            WorkflowExpression.Validate(click, nameof(click), required: false);
-            WorkflowExpression.Validate(blockCookieBanners, nameof(blockCookieBanners), required: false);
-            WorkflowExpression.Validate(blockBannersByHeuristics, nameof(blockBannersByHeuristics), required: false);
-            WorkflowExpression.Validate(blockChats, nameof(blockChats), required: false);
-            WorkflowExpression.Validate(blockAds, nameof(blockAds), required: false);
-            WorkflowExpression.Validate(blockTrackers, nameof(blockTrackers), required: false);
-            WorkflowExpression.Validate(blockRequests, nameof(blockRequests), required: false);
-            WorkflowExpression.Validate(blockResources, nameof(blockResources), required: false);
-            WorkflowExpression.Validate(geolocationLatitude, nameof(geolocationLatitude), required: false);
-            WorkflowExpression.Validate(geolocationLongitude, nameof(geolocationLongitude), required: false);
-            WorkflowExpression.Validate(geolocationAccuracy, nameof(geolocationAccuracy), required: false);
-            WorkflowExpression.Validate(ipCountryCode, nameof(ipCountryCode), required: false);
-            WorkflowExpression.Validate(proxy, nameof(proxy), required: false);
-            WorkflowExpression.Validate(userAgent, nameof(userAgent), required: false);
-            WorkflowExpression.Validate(authorization, nameof(authorization), required: false);
-            WorkflowExpression.Validate(cookies, nameof(cookies), required: false);
-            WorkflowExpression.Validate(headers, nameof(headers), required: false);
-            WorkflowExpression.Validate(timeZone, nameof(timeZone), required: false);
-            WorkflowExpression.Validate(waitUntil, nameof(waitUntil), required: false);
-            WorkflowExpression.Validate(delay, nameof(delay), required: false);
-            WorkflowExpression.Validate(timeout, nameof(timeout), required: false);
-            WorkflowExpression.Validate(navigationTimeout, nameof(navigationTimeout), required: false);
-            WorkflowExpression.Validate(waitForSelector, nameof(waitForSelector), required: false);
-            WorkflowExpression.Validate(cache, nameof(cache), required: false);
-            WorkflowExpression.Validate(cacheTtl, nameof(cacheTtl), required: false);
-            WorkflowExpression.Validate(cacheKey, nameof(cacheKey), required: false);
-            WorkflowExpression.Validate(store, nameof(store), required: false);
-            WorkflowExpression.Validate(storagePath, nameof(storagePath), required: false);
-            WorkflowExpression.Validate(storageBucket, nameof(storageBucket), required: false);
-            WorkflowExpression.Validate(storageClass, nameof(storageClass), required: false);
-            WorkflowExpression.Validate(storageAcl, nameof(storageAcl), required: false);
-            WorkflowExpression.Validate(metadataImageSize, nameof(metadataImageSize), required: false);
-            WorkflowExpression.Validate(ignoreHostErrors, nameof(ignoreHostErrors), required: false);
-            WorkflowExpression.Validate(errorOnSelectorNotFound, nameof(errorOnSelectorNotFound), required: false);
+            var __workflow_url = url == null ? null : WorkflowExpression.Compile(url);
+            WorkflowExpression.Validate(__workflow_url, nameof(url), required: false);
+            var __workflow_html = html == null ? null : WorkflowExpression.Compile(html);
+            WorkflowExpression.Validate(__workflow_html, nameof(html), required: false);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
+            var __workflow_responseType = responseType == null ? null : WorkflowExpression.Compile(responseType);
+            WorkflowExpression.Validate(__workflow_responseType, nameof(responseType), required: false);
+            var __workflow_selector = selector == null ? null : WorkflowExpression.Compile(selector);
+            WorkflowExpression.Validate(__workflow_selector, nameof(selector), required: false);
+            var __workflow_captureBeyondViewport = captureBeyondViewport == null ? null : WorkflowExpression.Compile(captureBeyondViewport);
+            WorkflowExpression.Validate(__workflow_captureBeyondViewport, nameof(captureBeyondViewport), required: false);
+            var __workflow_scrollIntoView = scrollIntoView == null ? null : WorkflowExpression.Compile(scrollIntoView);
+            WorkflowExpression.Validate(__workflow_scrollIntoView, nameof(scrollIntoView), required: false);
+            var __workflow_scrollIntoViewAdjustTop = scrollIntoViewAdjustTop == null ? null : WorkflowExpression.Compile(scrollIntoViewAdjustTop);
+            WorkflowExpression.Validate(__workflow_scrollIntoViewAdjustTop, nameof(scrollIntoViewAdjustTop), required: false);
+            var __workflow_fullPage = fullPage == null ? null : WorkflowExpression.Compile(fullPage);
+            WorkflowExpression.Validate(__workflow_fullPage, nameof(fullPage), required: false);
+            var __workflow_fullPageScroll = fullPageScroll == null ? null : WorkflowExpression.Compile(fullPageScroll);
+            WorkflowExpression.Validate(__workflow_fullPageScroll, nameof(fullPageScroll), required: false);
+            var __workflow_fullPageScrollDelay = fullPageScrollDelay == null ? null : WorkflowExpression.Compile(fullPageScrollDelay);
+            WorkflowExpression.Validate(__workflow_fullPageScrollDelay, nameof(fullPageScrollDelay), required: false);
+            var __workflow_fullPageScrollBy = fullPageScrollBy == null ? null : WorkflowExpression.Compile(fullPageScrollBy);
+            WorkflowExpression.Validate(__workflow_fullPageScrollBy, nameof(fullPageScrollBy), required: false);
+            var __workflow_fullPageMaxHeight = fullPageMaxHeight == null ? null : WorkflowExpression.Compile(fullPageMaxHeight);
+            WorkflowExpression.Validate(__workflow_fullPageMaxHeight, nameof(fullPageMaxHeight), required: false);
+            var __workflow_viewportDevice = viewportDevice == null ? null : WorkflowExpression.Compile(viewportDevice);
+            WorkflowExpression.Validate(__workflow_viewportDevice, nameof(viewportDevice), required: false);
+            var __workflow_viewportWidth = viewportWidth == null ? null : WorkflowExpression.Compile(viewportWidth);
+            WorkflowExpression.Validate(__workflow_viewportWidth, nameof(viewportWidth), required: false);
+            var __workflow_viewportHeight = viewportHeight == null ? null : WorkflowExpression.Compile(viewportHeight);
+            WorkflowExpression.Validate(__workflow_viewportHeight, nameof(viewportHeight), required: false);
+            var __workflow_deviceScaleFactor = deviceScaleFactor == null ? null : WorkflowExpression.Compile(deviceScaleFactor);
+            WorkflowExpression.Validate(__workflow_deviceScaleFactor, nameof(deviceScaleFactor), required: false);
+            var __workflow_viewportMobile = viewportMobile == null ? null : WorkflowExpression.Compile(viewportMobile);
+            WorkflowExpression.Validate(__workflow_viewportMobile, nameof(viewportMobile), required: false);
+            var __workflow_viewportHasTouch = viewportHasTouch == null ? null : WorkflowExpression.Compile(viewportHasTouch);
+            WorkflowExpression.Validate(__workflow_viewportHasTouch, nameof(viewportHasTouch), required: false);
+            var __workflow_viewportLandscape = viewportLandscape == null ? null : WorkflowExpression.Compile(viewportLandscape);
+            WorkflowExpression.Validate(__workflow_viewportLandscape, nameof(viewportLandscape), required: false);
+            var __workflow_imageQuality = imageQuality == null ? null : WorkflowExpression.Compile(imageQuality);
+            WorkflowExpression.Validate(__workflow_imageQuality, nameof(imageQuality), required: false);
+            var __workflow_imageWidth = imageWidth == null ? null : WorkflowExpression.Compile(imageWidth);
+            WorkflowExpression.Validate(__workflow_imageWidth, nameof(imageWidth), required: false);
+            var __workflow_imageHeight = imageHeight == null ? null : WorkflowExpression.Compile(imageHeight);
+            WorkflowExpression.Validate(__workflow_imageHeight, nameof(imageHeight), required: false);
+            var __workflow_omitBackground = omitBackground == null ? null : WorkflowExpression.Compile(omitBackground);
+            WorkflowExpression.Validate(__workflow_omitBackground, nameof(omitBackground), required: false);
+            var __workflow_darkMode = darkMode == null ? null : WorkflowExpression.Compile(darkMode);
+            WorkflowExpression.Validate(__workflow_darkMode, nameof(darkMode), required: false);
+            var __workflow_reducedMotion = reducedMotion == null ? null : WorkflowExpression.Compile(reducedMotion);
+            WorkflowExpression.Validate(__workflow_reducedMotion, nameof(reducedMotion), required: false);
+            var __workflow_mediaType = mediaType == null ? null : WorkflowExpression.Compile(mediaType);
+            WorkflowExpression.Validate(__workflow_mediaType, nameof(mediaType), required: false);
+            var __workflow_hideSelectors = hideSelectors == null ? null : WorkflowExpression.Compile(hideSelectors);
+            WorkflowExpression.Validate(__workflow_hideSelectors, nameof(hideSelectors), required: false);
+            var __workflow_scripts = scripts == null ? null : WorkflowExpression.Compile(scripts);
+            WorkflowExpression.Validate(__workflow_scripts, nameof(scripts), required: false);
+            var __workflow_scriptsWaitUntil = scriptsWaitUntil == null ? null : WorkflowExpression.Compile(scriptsWaitUntil);
+            WorkflowExpression.Validate(__workflow_scriptsWaitUntil, nameof(scriptsWaitUntil), required: false);
+            var __workflow_styles = styles == null ? null : WorkflowExpression.Compile(styles);
+            WorkflowExpression.Validate(__workflow_styles, nameof(styles), required: false);
+            var __workflow_click = click == null ? null : WorkflowExpression.Compile(click);
+            WorkflowExpression.Validate(__workflow_click, nameof(click), required: false);
+            var __workflow_blockCookieBanners = blockCookieBanners == null ? null : WorkflowExpression.Compile(blockCookieBanners);
+            WorkflowExpression.Validate(__workflow_blockCookieBanners, nameof(blockCookieBanners), required: false);
+            var __workflow_blockBannersByHeuristics = blockBannersByHeuristics == null ? null : WorkflowExpression.Compile(blockBannersByHeuristics);
+            WorkflowExpression.Validate(__workflow_blockBannersByHeuristics, nameof(blockBannersByHeuristics), required: false);
+            var __workflow_blockChats = blockChats == null ? null : WorkflowExpression.Compile(blockChats);
+            WorkflowExpression.Validate(__workflow_blockChats, nameof(blockChats), required: false);
+            var __workflow_blockAds = blockAds == null ? null : WorkflowExpression.Compile(blockAds);
+            WorkflowExpression.Validate(__workflow_blockAds, nameof(blockAds), required: false);
+            var __workflow_blockTrackers = blockTrackers == null ? null : WorkflowExpression.Compile(blockTrackers);
+            WorkflowExpression.Validate(__workflow_blockTrackers, nameof(blockTrackers), required: false);
+            var __workflow_blockRequests = blockRequests == null ? null : WorkflowExpression.Compile(blockRequests);
+            WorkflowExpression.Validate(__workflow_blockRequests, nameof(blockRequests), required: false);
+            var __workflow_blockResources = blockResources == null ? null : WorkflowExpression.Compile(blockResources);
+            WorkflowExpression.Validate(__workflow_blockResources, nameof(blockResources), required: false);
+            var __workflow_geolocationLatitude = geolocationLatitude == null ? null : WorkflowExpression.Compile(geolocationLatitude);
+            WorkflowExpression.Validate(__workflow_geolocationLatitude, nameof(geolocationLatitude), required: false);
+            var __workflow_geolocationLongitude = geolocationLongitude == null ? null : WorkflowExpression.Compile(geolocationLongitude);
+            WorkflowExpression.Validate(__workflow_geolocationLongitude, nameof(geolocationLongitude), required: false);
+            var __workflow_geolocationAccuracy = geolocationAccuracy == null ? null : WorkflowExpression.Compile(geolocationAccuracy);
+            WorkflowExpression.Validate(__workflow_geolocationAccuracy, nameof(geolocationAccuracy), required: false);
+            var __workflow_ipCountryCode = ipCountryCode == null ? null : WorkflowExpression.Compile(ipCountryCode);
+            WorkflowExpression.Validate(__workflow_ipCountryCode, nameof(ipCountryCode), required: false);
+            var __workflow_proxy = proxy == null ? null : WorkflowExpression.Compile(proxy);
+            WorkflowExpression.Validate(__workflow_proxy, nameof(proxy), required: false);
+            var __workflow_userAgent = userAgent == null ? null : WorkflowExpression.Compile(userAgent);
+            WorkflowExpression.Validate(__workflow_userAgent, nameof(userAgent), required: false);
+            var __workflow_authorization = authorization == null ? null : WorkflowExpression.Compile(authorization);
+            WorkflowExpression.Validate(__workflow_authorization, nameof(authorization), required: false);
+            var __workflow_cookies = cookies == null ? null : WorkflowExpression.Compile(cookies);
+            WorkflowExpression.Validate(__workflow_cookies, nameof(cookies), required: false);
+            var __workflow_headers = headers == null ? null : WorkflowExpression.Compile(headers);
+            WorkflowExpression.Validate(__workflow_headers, nameof(headers), required: false);
+            var __workflow_timeZone = timeZone == null ? null : WorkflowExpression.Compile(timeZone);
+            WorkflowExpression.Validate(__workflow_timeZone, nameof(timeZone), required: false);
+            var __workflow_waitUntil = waitUntil == null ? null : WorkflowExpression.Compile(waitUntil);
+            WorkflowExpression.Validate(__workflow_waitUntil, nameof(waitUntil), required: false);
+            var __workflow_delay = delay == null ? null : WorkflowExpression.Compile(delay);
+            WorkflowExpression.Validate(__workflow_delay, nameof(delay), required: false);
+            var __workflow_timeout = timeout == null ? null : WorkflowExpression.Compile(timeout);
+            WorkflowExpression.Validate(__workflow_timeout, nameof(timeout), required: false);
+            var __workflow_navigationTimeout = navigationTimeout == null ? null : WorkflowExpression.Compile(navigationTimeout);
+            WorkflowExpression.Validate(__workflow_navigationTimeout, nameof(navigationTimeout), required: false);
+            var __workflow_waitForSelector = waitForSelector == null ? null : WorkflowExpression.Compile(waitForSelector);
+            WorkflowExpression.Validate(__workflow_waitForSelector, nameof(waitForSelector), required: false);
+            var __workflow_cache = cache == null ? null : WorkflowExpression.Compile(cache);
+            WorkflowExpression.Validate(__workflow_cache, nameof(cache), required: false);
+            var __workflow_cacheTtl = cacheTtl == null ? null : WorkflowExpression.Compile(cacheTtl);
+            WorkflowExpression.Validate(__workflow_cacheTtl, nameof(cacheTtl), required: false);
+            var __workflow_cacheKey = cacheKey == null ? null : WorkflowExpression.Compile(cacheKey);
+            WorkflowExpression.Validate(__workflow_cacheKey, nameof(cacheKey), required: false);
+            var __workflow_store = store == null ? null : WorkflowExpression.Compile(store);
+            WorkflowExpression.Validate(__workflow_store, nameof(store), required: false);
+            var __workflow_storagePath = storagePath == null ? null : WorkflowExpression.Compile(storagePath);
+            WorkflowExpression.Validate(__workflow_storagePath, nameof(storagePath), required: false);
+            var __workflow_storageBucket = storageBucket == null ? null : WorkflowExpression.Compile(storageBucket);
+            WorkflowExpression.Validate(__workflow_storageBucket, nameof(storageBucket), required: false);
+            var __workflow_storageClass = storageClass == null ? null : WorkflowExpression.Compile(storageClass);
+            WorkflowExpression.Validate(__workflow_storageClass, nameof(storageClass), required: false);
+            var __workflow_storageAcl = storageAcl == null ? null : WorkflowExpression.Compile(storageAcl);
+            WorkflowExpression.Validate(__workflow_storageAcl, nameof(storageAcl), required: false);
+            var __workflow_metadataImageSize = metadataImageSize == null ? null : WorkflowExpression.Compile(metadataImageSize);
+            WorkflowExpression.Validate(__workflow_metadataImageSize, nameof(metadataImageSize), required: false);
+            var __workflow_ignoreHostErrors = ignoreHostErrors == null ? null : WorkflowExpression.Compile(ignoreHostErrors);
+            WorkflowExpression.Validate(__workflow_ignoreHostErrors, nameof(ignoreHostErrors), required: false);
+            var __workflow_errorOnSelectorNotFound = errorOnSelectorNotFound == null ? null : WorkflowExpression.Compile(errorOnSelectorNotFound);
+            WorkflowExpression.Validate(__workflow_errorOnSelectorNotFound, nameof(errorOnSelectorNotFound), required: false);
             return new DeferredBodyAction<TakeGetResponse>(() =>
             {
                 var apiCallPath = "/take";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (url != null)
-                    callPayload.Queries["url"] = ExpressionConverter.Convert(url);
-                if (html != null)
-                    callPayload.Queries["html"] = ExpressionConverter.Convert(html);
+                if (__workflow_url != null)
+                    callPayload.Queries["url"] = ExpressionConverter.Convert(__workflow_url);
+                if (__workflow_html != null)
+                    callPayload.Queries["html"] = ExpressionConverter.Convert(__workflow_html);
                 callPayload.Queries["format"] = Convert.ToString("jpg");
-                if (format != null)
-                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 callPayload.Queries["response_type"] = Convert.ToString("by_format");
-                if (responseType != null)
-                    callPayload.Queries["response_type"] = ExpressionConverter.Convert(responseType);
-                if (selector != null)
-                    callPayload.Queries["selector"] = ExpressionConverter.Convert(selector);
-                if (captureBeyondViewport != null)
-                    callPayload.Queries["capture_beyond_viewport"] = ExpressionConverter.Convert(captureBeyondViewport);
-                if (scrollIntoView != null)
-                    callPayload.Queries["scroll_into_view"] = ExpressionConverter.Convert(scrollIntoView);
-                if (scrollIntoViewAdjustTop != null)
-                    callPayload.Queries["scroll_into_view_adjust_top"] = ExpressionConverter.Convert(scrollIntoViewAdjustTop);
-                if (fullPage != null)
-                    callPayload.Queries["full_page"] = ExpressionConverter.Convert(fullPage);
-                if (fullPageScroll != null)
-                    callPayload.Queries["full_page_scroll"] = ExpressionConverter.Convert(fullPageScroll);
-                if (fullPageScrollDelay != null)
-                    callPayload.Queries["full_page_scroll_delay"] = ExpressionConverter.Convert(fullPageScrollDelay);
-                if (fullPageScrollBy != null)
-                    callPayload.Queries["full_page_scroll_by"] = ExpressionConverter.Convert(fullPageScrollBy);
-                if (fullPageMaxHeight != null)
-                    callPayload.Queries["full_page_max_height"] = ExpressionConverter.Convert(fullPageMaxHeight);
-                if (viewportDevice != null)
-                    callPayload.Queries["viewport_device"] = ExpressionConverter.Convert(viewportDevice);
-                if (viewportWidth != null)
-                    callPayload.Queries["viewport_width"] = ExpressionConverter.Convert(viewportWidth);
-                if (viewportHeight != null)
-                    callPayload.Queries["viewport_height"] = ExpressionConverter.Convert(viewportHeight);
-                if (deviceScaleFactor != null)
-                    callPayload.Queries["device_scale_factor"] = ExpressionConverter.Convert(deviceScaleFactor);
-                if (viewportMobile != null)
-                    callPayload.Queries["viewport_mobile"] = ExpressionConverter.Convert(viewportMobile);
-                if (viewportHasTouch != null)
-                    callPayload.Queries["viewport_has_touch"] = ExpressionConverter.Convert(viewportHasTouch);
-                if (viewportLandscape != null)
-                    callPayload.Queries["viewport_landscape"] = ExpressionConverter.Convert(viewportLandscape);
-                if (imageQuality != null)
-                    callPayload.Queries["image_quality"] = ExpressionConverter.Convert(imageQuality);
-                if (imageWidth != null)
-                    callPayload.Queries["image_width"] = ExpressionConverter.Convert(imageWidth);
-                if (imageHeight != null)
-                    callPayload.Queries["image_height"] = ExpressionConverter.Convert(imageHeight);
-                if (omitBackground != null)
-                    callPayload.Queries["omit_background"] = ExpressionConverter.Convert(omitBackground);
-                if (darkMode != null)
-                    callPayload.Queries["dark_mode"] = ExpressionConverter.Convert(darkMode);
-                if (reducedMotion != null)
-                    callPayload.Queries["reduced_motion"] = ExpressionConverter.Convert(reducedMotion);
-                if (mediaType != null)
-                    callPayload.Queries["media_type"] = ExpressionConverter.Convert(mediaType);
-                if (hideSelectors != null)
-                    callPayload.Queries["hide_selectors"] = ExpressionConverter.Convert(hideSelectors);
-                if (scripts != null)
-                    callPayload.Queries["scripts"] = ExpressionConverter.Convert(scripts);
-                if (scriptsWaitUntil != null)
-                    callPayload.Queries["scripts_wait_until"] = ExpressionConverter.Convert(scriptsWaitUntil);
-                if (styles != null)
-                    callPayload.Queries["styles"] = ExpressionConverter.Convert(styles);
-                if (click != null)
-                    callPayload.Queries["click"] = ExpressionConverter.Convert(click);
-                if (blockCookieBanners != null)
-                    callPayload.Queries["block_cookie_banners"] = ExpressionConverter.Convert(blockCookieBanners);
-                if (blockBannersByHeuristics != null)
-                    callPayload.Queries["block_banners_by_heuristics"] = ExpressionConverter.Convert(blockBannersByHeuristics);
-                if (blockChats != null)
-                    callPayload.Queries["block_chats"] = ExpressionConverter.Convert(blockChats);
-                if (blockAds != null)
-                    callPayload.Queries["block_ads"] = ExpressionConverter.Convert(blockAds);
-                if (blockTrackers != null)
-                    callPayload.Queries["block_trackers"] = ExpressionConverter.Convert(blockTrackers);
-                if (blockRequests != null)
-                    callPayload.Queries["block_requests"] = ExpressionConverter.Convert(blockRequests);
-                if (blockResources != null)
-                    callPayload.Queries["block_resources"] = ExpressionConverter.Convert(blockResources);
-                if (geolocationLatitude != null)
-                    callPayload.Queries["geolocation_latitude"] = ExpressionConverter.Convert(geolocationLatitude);
-                if (geolocationLongitude != null)
-                    callPayload.Queries["geolocation_longitude"] = ExpressionConverter.Convert(geolocationLongitude);
-                if (geolocationAccuracy != null)
-                    callPayload.Queries["geolocation_accuracy"] = ExpressionConverter.Convert(geolocationAccuracy);
+                if (__workflow_responseType != null)
+                    callPayload.Queries["response_type"] = ExpressionConverter.Convert(__workflow_responseType);
+                if (__workflow_selector != null)
+                    callPayload.Queries["selector"] = ExpressionConverter.Convert(__workflow_selector);
+                if (__workflow_captureBeyondViewport != null)
+                    callPayload.Queries["capture_beyond_viewport"] = ExpressionConverter.Convert(__workflow_captureBeyondViewport);
+                if (__workflow_scrollIntoView != null)
+                    callPayload.Queries["scroll_into_view"] = ExpressionConverter.Convert(__workflow_scrollIntoView);
+                if (__workflow_scrollIntoViewAdjustTop != null)
+                    callPayload.Queries["scroll_into_view_adjust_top"] = ExpressionConverter.Convert(__workflow_scrollIntoViewAdjustTop);
+                if (__workflow_fullPage != null)
+                    callPayload.Queries["full_page"] = ExpressionConverter.Convert(__workflow_fullPage);
+                if (__workflow_fullPageScroll != null)
+                    callPayload.Queries["full_page_scroll"] = ExpressionConverter.Convert(__workflow_fullPageScroll);
+                if (__workflow_fullPageScrollDelay != null)
+                    callPayload.Queries["full_page_scroll_delay"] = ExpressionConverter.Convert(__workflow_fullPageScrollDelay);
+                if (__workflow_fullPageScrollBy != null)
+                    callPayload.Queries["full_page_scroll_by"] = ExpressionConverter.Convert(__workflow_fullPageScrollBy);
+                if (__workflow_fullPageMaxHeight != null)
+                    callPayload.Queries["full_page_max_height"] = ExpressionConverter.Convert(__workflow_fullPageMaxHeight);
+                if (__workflow_viewportDevice != null)
+                    callPayload.Queries["viewport_device"] = ExpressionConverter.Convert(__workflow_viewportDevice);
+                if (__workflow_viewportWidth != null)
+                    callPayload.Queries["viewport_width"] = ExpressionConverter.Convert(__workflow_viewportWidth);
+                if (__workflow_viewportHeight != null)
+                    callPayload.Queries["viewport_height"] = ExpressionConverter.Convert(__workflow_viewportHeight);
+                if (__workflow_deviceScaleFactor != null)
+                    callPayload.Queries["device_scale_factor"] = ExpressionConverter.Convert(__workflow_deviceScaleFactor);
+                if (__workflow_viewportMobile != null)
+                    callPayload.Queries["viewport_mobile"] = ExpressionConverter.Convert(__workflow_viewportMobile);
+                if (__workflow_viewportHasTouch != null)
+                    callPayload.Queries["viewport_has_touch"] = ExpressionConverter.Convert(__workflow_viewportHasTouch);
+                if (__workflow_viewportLandscape != null)
+                    callPayload.Queries["viewport_landscape"] = ExpressionConverter.Convert(__workflow_viewportLandscape);
+                if (__workflow_imageQuality != null)
+                    callPayload.Queries["image_quality"] = ExpressionConverter.Convert(__workflow_imageQuality);
+                if (__workflow_imageWidth != null)
+                    callPayload.Queries["image_width"] = ExpressionConverter.Convert(__workflow_imageWidth);
+                if (__workflow_imageHeight != null)
+                    callPayload.Queries["image_height"] = ExpressionConverter.Convert(__workflow_imageHeight);
+                if (__workflow_omitBackground != null)
+                    callPayload.Queries["omit_background"] = ExpressionConverter.Convert(__workflow_omitBackground);
+                if (__workflow_darkMode != null)
+                    callPayload.Queries["dark_mode"] = ExpressionConverter.Convert(__workflow_darkMode);
+                if (__workflow_reducedMotion != null)
+                    callPayload.Queries["reduced_motion"] = ExpressionConverter.Convert(__workflow_reducedMotion);
+                if (__workflow_mediaType != null)
+                    callPayload.Queries["media_type"] = ExpressionConverter.Convert(__workflow_mediaType);
+                if (__workflow_hideSelectors != null)
+                    callPayload.Queries["hide_selectors"] = ExpressionConverter.Convert(__workflow_hideSelectors);
+                if (__workflow_scripts != null)
+                    callPayload.Queries["scripts"] = ExpressionConverter.Convert(__workflow_scripts);
+                if (__workflow_scriptsWaitUntil != null)
+                    callPayload.Queries["scripts_wait_until"] = ExpressionConverter.Convert(__workflow_scriptsWaitUntil);
+                if (__workflow_styles != null)
+                    callPayload.Queries["styles"] = ExpressionConverter.Convert(__workflow_styles);
+                if (__workflow_click != null)
+                    callPayload.Queries["click"] = ExpressionConverter.Convert(__workflow_click);
+                if (__workflow_blockCookieBanners != null)
+                    callPayload.Queries["block_cookie_banners"] = ExpressionConverter.Convert(__workflow_blockCookieBanners);
+                if (__workflow_blockBannersByHeuristics != null)
+                    callPayload.Queries["block_banners_by_heuristics"] = ExpressionConverter.Convert(__workflow_blockBannersByHeuristics);
+                if (__workflow_blockChats != null)
+                    callPayload.Queries["block_chats"] = ExpressionConverter.Convert(__workflow_blockChats);
+                if (__workflow_blockAds != null)
+                    callPayload.Queries["block_ads"] = ExpressionConverter.Convert(__workflow_blockAds);
+                if (__workflow_blockTrackers != null)
+                    callPayload.Queries["block_trackers"] = ExpressionConverter.Convert(__workflow_blockTrackers);
+                if (__workflow_blockRequests != null)
+                    callPayload.Queries["block_requests"] = ExpressionConverter.Convert(__workflow_blockRequests);
+                if (__workflow_blockResources != null)
+                    callPayload.Queries["block_resources"] = ExpressionConverter.Convert(__workflow_blockResources);
+                if (__workflow_geolocationLatitude != null)
+                    callPayload.Queries["geolocation_latitude"] = ExpressionConverter.Convert(__workflow_geolocationLatitude);
+                if (__workflow_geolocationLongitude != null)
+                    callPayload.Queries["geolocation_longitude"] = ExpressionConverter.Convert(__workflow_geolocationLongitude);
+                if (__workflow_geolocationAccuracy != null)
+                    callPayload.Queries["geolocation_accuracy"] = ExpressionConverter.Convert(__workflow_geolocationAccuracy);
                 callPayload.Queries["ip_country_code"] = Convert.ToString("us");
-                if (ipCountryCode != null)
-                    callPayload.Queries["ip_country_code"] = ExpressionConverter.Convert(ipCountryCode);
-                if (proxy != null)
-                    callPayload.Queries["proxy"] = ExpressionConverter.Convert(proxy);
-                if (userAgent != null)
-                    callPayload.Queries["user_agent"] = ExpressionConverter.Convert(userAgent);
-                if (authorization != null)
-                    callPayload.Queries["authorization"] = ExpressionConverter.Convert(authorization);
-                if (cookies != null)
-                    callPayload.Queries["cookies"] = ExpressionConverter.Convert(cookies);
-                if (headers != null)
-                    callPayload.Queries["headers"] = ExpressionConverter.Convert(headers);
-                if (timeZone != null)
-                    callPayload.Queries["time_zone"] = ExpressionConverter.Convert(timeZone);
-                if (waitUntil != null)
-                    callPayload.Queries["wait_until"] = ExpressionConverter.Convert(waitUntil);
-                if (delay != null)
-                    callPayload.Queries["delay"] = ExpressionConverter.Convert(delay);
-                if (timeout != null)
-                    callPayload.Queries["timeout"] = ExpressionConverter.Convert(timeout);
-                if (navigationTimeout != null)
-                    callPayload.Queries["navigation_timeout"] = ExpressionConverter.Convert(navigationTimeout);
-                if (waitForSelector != null)
-                    callPayload.Queries["wait_for_selector"] = ExpressionConverter.Convert(waitForSelector);
-                if (cache != null)
-                    callPayload.Queries["cache"] = ExpressionConverter.Convert(cache);
-                if (cacheTtl != null)
-                    callPayload.Queries["cache_ttl"] = ExpressionConverter.Convert(cacheTtl);
-                if (cacheKey != null)
-                    callPayload.Queries["cache_key"] = ExpressionConverter.Convert(cacheKey);
-                if (store != null)
-                    callPayload.Queries["store"] = ExpressionConverter.Convert(store);
-                if (storagePath != null)
-                    callPayload.Queries["storage_path"] = ExpressionConverter.Convert(storagePath);
-                if (storageBucket != null)
-                    callPayload.Queries["storage_bucket"] = ExpressionConverter.Convert(storageBucket);
-                if (storageClass != null)
-                    callPayload.Queries["storage_class"] = ExpressionConverter.Convert(storageClass);
-                if (storageAcl != null)
-                    callPayload.Queries["storage_acl"] = ExpressionConverter.Convert(storageAcl);
-                if (metadataImageSize != null)
-                    callPayload.Queries["metadata_image_size"] = ExpressionConverter.Convert(metadataImageSize);
-                if (ignoreHostErrors != null)
-                    callPayload.Queries["ignore_host_errors"] = ExpressionConverter.Convert(ignoreHostErrors);
-                if (errorOnSelectorNotFound != null)
-                    callPayload.Queries["error_on_selector_not_found"] = ExpressionConverter.Convert(errorOnSelectorNotFound);
+                if (__workflow_ipCountryCode != null)
+                    callPayload.Queries["ip_country_code"] = ExpressionConverter.Convert(__workflow_ipCountryCode);
+                if (__workflow_proxy != null)
+                    callPayload.Queries["proxy"] = ExpressionConverter.Convert(__workflow_proxy);
+                if (__workflow_userAgent != null)
+                    callPayload.Queries["user_agent"] = ExpressionConverter.Convert(__workflow_userAgent);
+                if (__workflow_authorization != null)
+                    callPayload.Queries["authorization"] = ExpressionConverter.Convert(__workflow_authorization);
+                if (__workflow_cookies != null)
+                    callPayload.Queries["cookies"] = ExpressionConverter.Convert(__workflow_cookies);
+                if (__workflow_headers != null)
+                    callPayload.Queries["headers"] = ExpressionConverter.Convert(__workflow_headers);
+                if (__workflow_timeZone != null)
+                    callPayload.Queries["time_zone"] = ExpressionConverter.Convert(__workflow_timeZone);
+                if (__workflow_waitUntil != null)
+                    callPayload.Queries["wait_until"] = ExpressionConverter.Convert(__workflow_waitUntil);
+                if (__workflow_delay != null)
+                    callPayload.Queries["delay"] = ExpressionConverter.Convert(__workflow_delay);
+                if (__workflow_timeout != null)
+                    callPayload.Queries["timeout"] = ExpressionConverter.Convert(__workflow_timeout);
+                if (__workflow_navigationTimeout != null)
+                    callPayload.Queries["navigation_timeout"] = ExpressionConverter.Convert(__workflow_navigationTimeout);
+                if (__workflow_waitForSelector != null)
+                    callPayload.Queries["wait_for_selector"] = ExpressionConverter.Convert(__workflow_waitForSelector);
+                if (__workflow_cache != null)
+                    callPayload.Queries["cache"] = ExpressionConverter.Convert(__workflow_cache);
+                if (__workflow_cacheTtl != null)
+                    callPayload.Queries["cache_ttl"] = ExpressionConverter.Convert(__workflow_cacheTtl);
+                if (__workflow_cacheKey != null)
+                    callPayload.Queries["cache_key"] = ExpressionConverter.Convert(__workflow_cacheKey);
+                if (__workflow_store != null)
+                    callPayload.Queries["store"] = ExpressionConverter.Convert(__workflow_store);
+                if (__workflow_storagePath != null)
+                    callPayload.Queries["storage_path"] = ExpressionConverter.Convert(__workflow_storagePath);
+                if (__workflow_storageBucket != null)
+                    callPayload.Queries["storage_bucket"] = ExpressionConverter.Convert(__workflow_storageBucket);
+                if (__workflow_storageClass != null)
+                    callPayload.Queries["storage_class"] = ExpressionConverter.Convert(__workflow_storageClass);
+                if (__workflow_storageAcl != null)
+                    callPayload.Queries["storage_acl"] = ExpressionConverter.Convert(__workflow_storageAcl);
+                if (__workflow_metadataImageSize != null)
+                    callPayload.Queries["metadata_image_size"] = ExpressionConverter.Convert(__workflow_metadataImageSize);
+                if (__workflow_ignoreHostErrors != null)
+                    callPayload.Queries["ignore_host_errors"] = ExpressionConverter.Convert(__workflow_ignoreHostErrors);
+                if (__workflow_errorOnSelectorNotFound != null)
+                    callPayload.Queries["error_on_selector_not_found"] = ExpressionConverter.Convert(__workflow_errorOnSelectorNotFound);
                 return new ApiConnectionAction<TakeGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "screenshotoneip")]
-        [WorkflowExpressionFactory(nameof(__BuildTakeAnimatedGet))]
-        public IBodyWorkflowAction<TakeAnimatedGetResponse> TakeAnimatedGet([WorkflowExpression] Func<string> url = null, [WorkflowExpression] Func<string> scenario = null, [WorkflowExpression] Func<int> scrollDelay = null, [WorkflowExpression] Func<int> scrollDuration = null, [WorkflowExpression] Func<int> scrollBy = null, [WorkflowExpression] Func<bool> scrollStartImmediately = null, [WorkflowExpression] Func<bool> scrollBack = null, [WorkflowExpression] Func<int> scrollBackAfterDuration = null, [WorkflowExpression] Func<bool> scrollComplete = null, [WorkflowExpression] Func<int> scrollStopAfterDuration = null, [WorkflowExpression] Func<scrollEasingInput> scrollEasing = null, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<int> duration = null, [WorkflowExpression] Func<int> width = null, [WorkflowExpression] Func<int> height = null, [WorkflowExpression] Func<string> aspectRatio = null, [WorkflowExpression] Func<string> viewportDevice = null, [WorkflowExpression] Func<int> viewportWidth = null, [WorkflowExpression] Func<int> viewportHeight = null, [WorkflowExpression] Func<int> deviceScaleFactor = null, [WorkflowExpression] Func<bool> viewportMobile = null, [WorkflowExpression] Func<bool> viewportHasTouch = null, [WorkflowExpression] Func<bool> viewportLandscape = null, [WorkflowExpression] Func<bool> blockCookieBanners = null, [WorkflowExpression] Func<bool> blockBannersByHeuristics = null, [WorkflowExpression] Func<bool> blockChats = null, [WorkflowExpression] Func<bool> blockAds = null, [WorkflowExpression] Func<bool> blockTrackers = null, [WorkflowExpression] Func<string> blockRequests = null, [WorkflowExpression] Func<string> blockResources = null, [WorkflowExpression] Func<double> geolocationLatitude = null, [WorkflowExpression] Func<double> geolocationLongitude = null, [WorkflowExpression] Func<int> geolocationAccuracy = null, [WorkflowExpression] Func<ipCountryCodeInput> ipCountryCode = null, [WorkflowExpression] Func<string> proxy = null, [WorkflowExpression] Func<string> userAgent = null, [WorkflowExpression] Func<string> authorization = null, [WorkflowExpression] Func<string> cookies = null, [WorkflowExpression] Func<string> headers = null, [WorkflowExpression] Func<timeZoneInput> timeZone = null, [WorkflowExpression] Func<string> waitUntil = null, [WorkflowExpression] Func<int> delay = null, [WorkflowExpression] Func<int> timeout = null, [WorkflowExpression] Func<int> navigationTimeout = null, [WorkflowExpression] Func<string> waitForSelector = null, [WorkflowExpression] Func<bool> cache = null, [WorkflowExpression] Func<int> cacheTtl = null, [WorkflowExpression] Func<int> cacheKey = null, [WorkflowExpression] Func<bool> store = null, [WorkflowExpression] Func<string> storagePath = null, [WorkflowExpression] Func<string> storageBucket = null, [WorkflowExpression] Func<storageClassInput> storageClass = null, [WorkflowExpression] Func<string> storageAcl = null, [WorkflowExpression] Func<bool> metadataImageSize = null, [WorkflowExpression] Func<bool> ignoreHostErrors = null, [WorkflowExpression] Func<bool> errorOnSelectorNotFound = null)
+        public IBodyWorkflowAction<TakeAnimatedGetResponse> TakeAnimatedGet(Expression<Func<string>> url = null, Expression<Func<string>> scenario = null, Expression<Func<int>> scrollDelay = null, Expression<Func<int>> scrollDuration = null, Expression<Func<int>> scrollBy = null, Expression<Func<bool>> scrollStartImmediately = null, Expression<Func<bool>> scrollBack = null, Expression<Func<int>> scrollBackAfterDuration = null, Expression<Func<bool>> scrollComplete = null, Expression<Func<int>> scrollStopAfterDuration = null, Expression<Func<scrollEasingInput>> scrollEasing = null, Expression<Func<formatInput>> format = null, Expression<Func<int>> duration = null, Expression<Func<int>> width = null, Expression<Func<int>> height = null, Expression<Func<string>> aspectRatio = null, Expression<Func<string>> viewportDevice = null, Expression<Func<int>> viewportWidth = null, Expression<Func<int>> viewportHeight = null, Expression<Func<int>> deviceScaleFactor = null, Expression<Func<bool>> viewportMobile = null, Expression<Func<bool>> viewportHasTouch = null, Expression<Func<bool>> viewportLandscape = null, Expression<Func<bool>> blockCookieBanners = null, Expression<Func<bool>> blockBannersByHeuristics = null, Expression<Func<bool>> blockChats = null, Expression<Func<bool>> blockAds = null, Expression<Func<bool>> blockTrackers = null, Expression<Func<string>> blockRequests = null, Expression<Func<string>> blockResources = null, Expression<Func<double>> geolocationLatitude = null, Expression<Func<double>> geolocationLongitude = null, Expression<Func<int>> geolocationAccuracy = null, Expression<Func<ipCountryCodeInput>> ipCountryCode = null, Expression<Func<string>> proxy = null, Expression<Func<string>> userAgent = null, Expression<Func<string>> authorization = null, Expression<Func<string>> cookies = null, Expression<Func<string>> headers = null, Expression<Func<timeZoneInput>> timeZone = null, Expression<Func<string>> waitUntil = null, Expression<Func<int>> delay = null, Expression<Func<int>> timeout = null, Expression<Func<int>> navigationTimeout = null, Expression<Func<string>> waitForSelector = null, Expression<Func<bool>> cache = null, Expression<Func<int>> cacheTtl = null, Expression<Func<int>> cacheKey = null, Expression<Func<bool>> store = null, Expression<Func<string>> storagePath = null, Expression<Func<string>> storageBucket = null, Expression<Func<storageClassInput>> storageClass = null, Expression<Func<string>> storageAcl = null, Expression<Func<bool>> metadataImageSize = null, Expression<Func<bool>> ignoreHostErrors = null, Expression<Func<bool>> errorOnSelectorNotFound = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TakeAnimatedGetResponse> __BuildTakeAnimatedGet(WorkflowExpression<string> url = null, WorkflowExpression<string> scenario = null, WorkflowExpression<int> scrollDelay = null, WorkflowExpression<int> scrollDuration = null, WorkflowExpression<int> scrollBy = null, WorkflowExpression<bool> scrollStartImmediately = null, WorkflowExpression<bool> scrollBack = null, WorkflowExpression<int> scrollBackAfterDuration = null, WorkflowExpression<bool> scrollComplete = null, WorkflowExpression<int> scrollStopAfterDuration = null, WorkflowExpression<scrollEasingInput> scrollEasing = null, WorkflowExpression<formatInput> format = null, WorkflowExpression<int> duration = null, WorkflowExpression<int> width = null, WorkflowExpression<int> height = null, WorkflowExpression<string> aspectRatio = null, WorkflowExpression<string> viewportDevice = null, WorkflowExpression<int> viewportWidth = null, WorkflowExpression<int> viewportHeight = null, WorkflowExpression<int> deviceScaleFactor = null, WorkflowExpression<bool> viewportMobile = null, WorkflowExpression<bool> viewportHasTouch = null, WorkflowExpression<bool> viewportLandscape = null, WorkflowExpression<bool> blockCookieBanners = null, WorkflowExpression<bool> blockBannersByHeuristics = null, WorkflowExpression<bool> blockChats = null, WorkflowExpression<bool> blockAds = null, WorkflowExpression<bool> blockTrackers = null, WorkflowExpression<string> blockRequests = null, WorkflowExpression<string> blockResources = null, WorkflowExpression<double> geolocationLatitude = null, WorkflowExpression<double> geolocationLongitude = null, WorkflowExpression<int> geolocationAccuracy = null, WorkflowExpression<ipCountryCodeInput> ipCountryCode = null, WorkflowExpression<string> proxy = null, WorkflowExpression<string> userAgent = null, WorkflowExpression<string> authorization = null, WorkflowExpression<string> cookies = null, WorkflowExpression<string> headers = null, WorkflowExpression<timeZoneInput> timeZone = null, WorkflowExpression<string> waitUntil = null, WorkflowExpression<int> delay = null, WorkflowExpression<int> timeout = null, WorkflowExpression<int> navigationTimeout = null, WorkflowExpression<string> waitForSelector = null, WorkflowExpression<bool> cache = null, WorkflowExpression<int> cacheTtl = null, WorkflowExpression<int> cacheKey = null, WorkflowExpression<bool> store = null, WorkflowExpression<string> storagePath = null, WorkflowExpression<string> storageBucket = null, WorkflowExpression<storageClassInput> storageClass = null, WorkflowExpression<string> storageAcl = null, WorkflowExpression<bool> metadataImageSize = null, WorkflowExpression<bool> ignoreHostErrors = null, WorkflowExpression<bool> errorOnSelectorNotFound = null)
-        {
-            WorkflowExpression.Validate(url, nameof(url), required: false);
-            WorkflowExpression.Validate(scenario, nameof(scenario), required: false);
-            WorkflowExpression.Validate(scrollDelay, nameof(scrollDelay), required: false);
-            WorkflowExpression.Validate(scrollDuration, nameof(scrollDuration), required: false);
-            WorkflowExpression.Validate(scrollBy, nameof(scrollBy), required: false);
-            WorkflowExpression.Validate(scrollStartImmediately, nameof(scrollStartImmediately), required: false);
-            WorkflowExpression.Validate(scrollBack, nameof(scrollBack), required: false);
-            WorkflowExpression.Validate(scrollBackAfterDuration, nameof(scrollBackAfterDuration), required: false);
-            WorkflowExpression.Validate(scrollComplete, nameof(scrollComplete), required: false);
-            WorkflowExpression.Validate(scrollStopAfterDuration, nameof(scrollStopAfterDuration), required: false);
-            WorkflowExpression.Validate(scrollEasing, nameof(scrollEasing), required: false);
-            WorkflowExpression.Validate(format, nameof(format), required: false);
-            WorkflowExpression.Validate(duration, nameof(duration), required: false);
-            WorkflowExpression.Validate(width, nameof(width), required: false);
-            WorkflowExpression.Validate(height, nameof(height), required: false);
-            WorkflowExpression.Validate(aspectRatio, nameof(aspectRatio), required: false);
-            WorkflowExpression.Validate(viewportDevice, nameof(viewportDevice), required: false);
-            WorkflowExpression.Validate(viewportWidth, nameof(viewportWidth), required: false);
-            WorkflowExpression.Validate(viewportHeight, nameof(viewportHeight), required: false);
-            WorkflowExpression.Validate(deviceScaleFactor, nameof(deviceScaleFactor), required: false);
-            WorkflowExpression.Validate(viewportMobile, nameof(viewportMobile), required: false);
-            WorkflowExpression.Validate(viewportHasTouch, nameof(viewportHasTouch), required: false);
-            WorkflowExpression.Validate(viewportLandscape, nameof(viewportLandscape), required: false);
-            WorkflowExpression.Validate(blockCookieBanners, nameof(blockCookieBanners), required: false);
-            WorkflowExpression.Validate(blockBannersByHeuristics, nameof(blockBannersByHeuristics), required: false);
-            WorkflowExpression.Validate(blockChats, nameof(blockChats), required: false);
-            WorkflowExpression.Validate(blockAds, nameof(blockAds), required: false);
-            WorkflowExpression.Validate(blockTrackers, nameof(blockTrackers), required: false);
-            WorkflowExpression.Validate(blockRequests, nameof(blockRequests), required: false);
-            WorkflowExpression.Validate(blockResources, nameof(blockResources), required: false);
-            WorkflowExpression.Validate(geolocationLatitude, nameof(geolocationLatitude), required: false);
-            WorkflowExpression.Validate(geolocationLongitude, nameof(geolocationLongitude), required: false);
-            WorkflowExpression.Validate(geolocationAccuracy, nameof(geolocationAccuracy), required: false);
-            WorkflowExpression.Validate(ipCountryCode, nameof(ipCountryCode), required: false);
-            WorkflowExpression.Validate(proxy, nameof(proxy), required: false);
-            WorkflowExpression.Validate(userAgent, nameof(userAgent), required: false);
-            WorkflowExpression.Validate(authorization, nameof(authorization), required: false);
-            WorkflowExpression.Validate(cookies, nameof(cookies), required: false);
-            WorkflowExpression.Validate(headers, nameof(headers), required: false);
-            WorkflowExpression.Validate(timeZone, nameof(timeZone), required: false);
-            WorkflowExpression.Validate(waitUntil, nameof(waitUntil), required: false);
-            WorkflowExpression.Validate(delay, nameof(delay), required: false);
-            WorkflowExpression.Validate(timeout, nameof(timeout), required: false);
-            WorkflowExpression.Validate(navigationTimeout, nameof(navigationTimeout), required: false);
-            WorkflowExpression.Validate(waitForSelector, nameof(waitForSelector), required: false);
-            WorkflowExpression.Validate(cache, nameof(cache), required: false);
-            WorkflowExpression.Validate(cacheTtl, nameof(cacheTtl), required: false);
-            WorkflowExpression.Validate(cacheKey, nameof(cacheKey), required: false);
-            WorkflowExpression.Validate(store, nameof(store), required: false);
-            WorkflowExpression.Validate(storagePath, nameof(storagePath), required: false);
-            WorkflowExpression.Validate(storageBucket, nameof(storageBucket), required: false);
-            WorkflowExpression.Validate(storageClass, nameof(storageClass), required: false);
-            WorkflowExpression.Validate(storageAcl, nameof(storageAcl), required: false);
-            WorkflowExpression.Validate(metadataImageSize, nameof(metadataImageSize), required: false);
-            WorkflowExpression.Validate(ignoreHostErrors, nameof(ignoreHostErrors), required: false);
-            WorkflowExpression.Validate(errorOnSelectorNotFound, nameof(errorOnSelectorNotFound), required: false);
+            var __workflow_url = url == null ? null : WorkflowExpression.Compile(url);
+            WorkflowExpression.Validate(__workflow_url, nameof(url), required: false);
+            var __workflow_scenario = scenario == null ? null : WorkflowExpression.Compile(scenario);
+            WorkflowExpression.Validate(__workflow_scenario, nameof(scenario), required: false);
+            var __workflow_scrollDelay = scrollDelay == null ? null : WorkflowExpression.Compile(scrollDelay);
+            WorkflowExpression.Validate(__workflow_scrollDelay, nameof(scrollDelay), required: false);
+            var __workflow_scrollDuration = scrollDuration == null ? null : WorkflowExpression.Compile(scrollDuration);
+            WorkflowExpression.Validate(__workflow_scrollDuration, nameof(scrollDuration), required: false);
+            var __workflow_scrollBy = scrollBy == null ? null : WorkflowExpression.Compile(scrollBy);
+            WorkflowExpression.Validate(__workflow_scrollBy, nameof(scrollBy), required: false);
+            var __workflow_scrollStartImmediately = scrollStartImmediately == null ? null : WorkflowExpression.Compile(scrollStartImmediately);
+            WorkflowExpression.Validate(__workflow_scrollStartImmediately, nameof(scrollStartImmediately), required: false);
+            var __workflow_scrollBack = scrollBack == null ? null : WorkflowExpression.Compile(scrollBack);
+            WorkflowExpression.Validate(__workflow_scrollBack, nameof(scrollBack), required: false);
+            var __workflow_scrollBackAfterDuration = scrollBackAfterDuration == null ? null : WorkflowExpression.Compile(scrollBackAfterDuration);
+            WorkflowExpression.Validate(__workflow_scrollBackAfterDuration, nameof(scrollBackAfterDuration), required: false);
+            var __workflow_scrollComplete = scrollComplete == null ? null : WorkflowExpression.Compile(scrollComplete);
+            WorkflowExpression.Validate(__workflow_scrollComplete, nameof(scrollComplete), required: false);
+            var __workflow_scrollStopAfterDuration = scrollStopAfterDuration == null ? null : WorkflowExpression.Compile(scrollStopAfterDuration);
+            WorkflowExpression.Validate(__workflow_scrollStopAfterDuration, nameof(scrollStopAfterDuration), required: false);
+            var __workflow_scrollEasing = scrollEasing == null ? null : WorkflowExpression.Compile(scrollEasing);
+            WorkflowExpression.Validate(__workflow_scrollEasing, nameof(scrollEasing), required: false);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
+            var __workflow_duration = duration == null ? null : WorkflowExpression.Compile(duration);
+            WorkflowExpression.Validate(__workflow_duration, nameof(duration), required: false);
+            var __workflow_width = width == null ? null : WorkflowExpression.Compile(width);
+            WorkflowExpression.Validate(__workflow_width, nameof(width), required: false);
+            var __workflow_height = height == null ? null : WorkflowExpression.Compile(height);
+            WorkflowExpression.Validate(__workflow_height, nameof(height), required: false);
+            var __workflow_aspectRatio = aspectRatio == null ? null : WorkflowExpression.Compile(aspectRatio);
+            WorkflowExpression.Validate(__workflow_aspectRatio, nameof(aspectRatio), required: false);
+            var __workflow_viewportDevice = viewportDevice == null ? null : WorkflowExpression.Compile(viewportDevice);
+            WorkflowExpression.Validate(__workflow_viewportDevice, nameof(viewportDevice), required: false);
+            var __workflow_viewportWidth = viewportWidth == null ? null : WorkflowExpression.Compile(viewportWidth);
+            WorkflowExpression.Validate(__workflow_viewportWidth, nameof(viewportWidth), required: false);
+            var __workflow_viewportHeight = viewportHeight == null ? null : WorkflowExpression.Compile(viewportHeight);
+            WorkflowExpression.Validate(__workflow_viewportHeight, nameof(viewportHeight), required: false);
+            var __workflow_deviceScaleFactor = deviceScaleFactor == null ? null : WorkflowExpression.Compile(deviceScaleFactor);
+            WorkflowExpression.Validate(__workflow_deviceScaleFactor, nameof(deviceScaleFactor), required: false);
+            var __workflow_viewportMobile = viewportMobile == null ? null : WorkflowExpression.Compile(viewportMobile);
+            WorkflowExpression.Validate(__workflow_viewportMobile, nameof(viewportMobile), required: false);
+            var __workflow_viewportHasTouch = viewportHasTouch == null ? null : WorkflowExpression.Compile(viewportHasTouch);
+            WorkflowExpression.Validate(__workflow_viewportHasTouch, nameof(viewportHasTouch), required: false);
+            var __workflow_viewportLandscape = viewportLandscape == null ? null : WorkflowExpression.Compile(viewportLandscape);
+            WorkflowExpression.Validate(__workflow_viewportLandscape, nameof(viewportLandscape), required: false);
+            var __workflow_blockCookieBanners = blockCookieBanners == null ? null : WorkflowExpression.Compile(blockCookieBanners);
+            WorkflowExpression.Validate(__workflow_blockCookieBanners, nameof(blockCookieBanners), required: false);
+            var __workflow_blockBannersByHeuristics = blockBannersByHeuristics == null ? null : WorkflowExpression.Compile(blockBannersByHeuristics);
+            WorkflowExpression.Validate(__workflow_blockBannersByHeuristics, nameof(blockBannersByHeuristics), required: false);
+            var __workflow_blockChats = blockChats == null ? null : WorkflowExpression.Compile(blockChats);
+            WorkflowExpression.Validate(__workflow_blockChats, nameof(blockChats), required: false);
+            var __workflow_blockAds = blockAds == null ? null : WorkflowExpression.Compile(blockAds);
+            WorkflowExpression.Validate(__workflow_blockAds, nameof(blockAds), required: false);
+            var __workflow_blockTrackers = blockTrackers == null ? null : WorkflowExpression.Compile(blockTrackers);
+            WorkflowExpression.Validate(__workflow_blockTrackers, nameof(blockTrackers), required: false);
+            var __workflow_blockRequests = blockRequests == null ? null : WorkflowExpression.Compile(blockRequests);
+            WorkflowExpression.Validate(__workflow_blockRequests, nameof(blockRequests), required: false);
+            var __workflow_blockResources = blockResources == null ? null : WorkflowExpression.Compile(blockResources);
+            WorkflowExpression.Validate(__workflow_blockResources, nameof(blockResources), required: false);
+            var __workflow_geolocationLatitude = geolocationLatitude == null ? null : WorkflowExpression.Compile(geolocationLatitude);
+            WorkflowExpression.Validate(__workflow_geolocationLatitude, nameof(geolocationLatitude), required: false);
+            var __workflow_geolocationLongitude = geolocationLongitude == null ? null : WorkflowExpression.Compile(geolocationLongitude);
+            WorkflowExpression.Validate(__workflow_geolocationLongitude, nameof(geolocationLongitude), required: false);
+            var __workflow_geolocationAccuracy = geolocationAccuracy == null ? null : WorkflowExpression.Compile(geolocationAccuracy);
+            WorkflowExpression.Validate(__workflow_geolocationAccuracy, nameof(geolocationAccuracy), required: false);
+            var __workflow_ipCountryCode = ipCountryCode == null ? null : WorkflowExpression.Compile(ipCountryCode);
+            WorkflowExpression.Validate(__workflow_ipCountryCode, nameof(ipCountryCode), required: false);
+            var __workflow_proxy = proxy == null ? null : WorkflowExpression.Compile(proxy);
+            WorkflowExpression.Validate(__workflow_proxy, nameof(proxy), required: false);
+            var __workflow_userAgent = userAgent == null ? null : WorkflowExpression.Compile(userAgent);
+            WorkflowExpression.Validate(__workflow_userAgent, nameof(userAgent), required: false);
+            var __workflow_authorization = authorization == null ? null : WorkflowExpression.Compile(authorization);
+            WorkflowExpression.Validate(__workflow_authorization, nameof(authorization), required: false);
+            var __workflow_cookies = cookies == null ? null : WorkflowExpression.Compile(cookies);
+            WorkflowExpression.Validate(__workflow_cookies, nameof(cookies), required: false);
+            var __workflow_headers = headers == null ? null : WorkflowExpression.Compile(headers);
+            WorkflowExpression.Validate(__workflow_headers, nameof(headers), required: false);
+            var __workflow_timeZone = timeZone == null ? null : WorkflowExpression.Compile(timeZone);
+            WorkflowExpression.Validate(__workflow_timeZone, nameof(timeZone), required: false);
+            var __workflow_waitUntil = waitUntil == null ? null : WorkflowExpression.Compile(waitUntil);
+            WorkflowExpression.Validate(__workflow_waitUntil, nameof(waitUntil), required: false);
+            var __workflow_delay = delay == null ? null : WorkflowExpression.Compile(delay);
+            WorkflowExpression.Validate(__workflow_delay, nameof(delay), required: false);
+            var __workflow_timeout = timeout == null ? null : WorkflowExpression.Compile(timeout);
+            WorkflowExpression.Validate(__workflow_timeout, nameof(timeout), required: false);
+            var __workflow_navigationTimeout = navigationTimeout == null ? null : WorkflowExpression.Compile(navigationTimeout);
+            WorkflowExpression.Validate(__workflow_navigationTimeout, nameof(navigationTimeout), required: false);
+            var __workflow_waitForSelector = waitForSelector == null ? null : WorkflowExpression.Compile(waitForSelector);
+            WorkflowExpression.Validate(__workflow_waitForSelector, nameof(waitForSelector), required: false);
+            var __workflow_cache = cache == null ? null : WorkflowExpression.Compile(cache);
+            WorkflowExpression.Validate(__workflow_cache, nameof(cache), required: false);
+            var __workflow_cacheTtl = cacheTtl == null ? null : WorkflowExpression.Compile(cacheTtl);
+            WorkflowExpression.Validate(__workflow_cacheTtl, nameof(cacheTtl), required: false);
+            var __workflow_cacheKey = cacheKey == null ? null : WorkflowExpression.Compile(cacheKey);
+            WorkflowExpression.Validate(__workflow_cacheKey, nameof(cacheKey), required: false);
+            var __workflow_store = store == null ? null : WorkflowExpression.Compile(store);
+            WorkflowExpression.Validate(__workflow_store, nameof(store), required: false);
+            var __workflow_storagePath = storagePath == null ? null : WorkflowExpression.Compile(storagePath);
+            WorkflowExpression.Validate(__workflow_storagePath, nameof(storagePath), required: false);
+            var __workflow_storageBucket = storageBucket == null ? null : WorkflowExpression.Compile(storageBucket);
+            WorkflowExpression.Validate(__workflow_storageBucket, nameof(storageBucket), required: false);
+            var __workflow_storageClass = storageClass == null ? null : WorkflowExpression.Compile(storageClass);
+            WorkflowExpression.Validate(__workflow_storageClass, nameof(storageClass), required: false);
+            var __workflow_storageAcl = storageAcl == null ? null : WorkflowExpression.Compile(storageAcl);
+            WorkflowExpression.Validate(__workflow_storageAcl, nameof(storageAcl), required: false);
+            var __workflow_metadataImageSize = metadataImageSize == null ? null : WorkflowExpression.Compile(metadataImageSize);
+            WorkflowExpression.Validate(__workflow_metadataImageSize, nameof(metadataImageSize), required: false);
+            var __workflow_ignoreHostErrors = ignoreHostErrors == null ? null : WorkflowExpression.Compile(ignoreHostErrors);
+            WorkflowExpression.Validate(__workflow_ignoreHostErrors, nameof(ignoreHostErrors), required: false);
+            var __workflow_errorOnSelectorNotFound = errorOnSelectorNotFound == null ? null : WorkflowExpression.Compile(errorOnSelectorNotFound);
+            WorkflowExpression.Validate(__workflow_errorOnSelectorNotFound, nameof(errorOnSelectorNotFound), required: false);
             return new DeferredBodyAction<TakeAnimatedGetResponse>(() =>
             {
                 var apiCallPath = "/animate";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (url != null)
-                    callPayload.Queries["url"] = ExpressionConverter.Convert(url);
-                if (scenario != null)
-                    callPayload.Queries["scenario"] = ExpressionConverter.Convert(scenario);
-                if (scrollDelay != null)
-                    callPayload.Queries["scroll_delay"] = ExpressionConverter.Convert(scrollDelay);
-                if (scrollDuration != null)
-                    callPayload.Queries["scroll_duration"] = ExpressionConverter.Convert(scrollDuration);
-                if (scrollBy != null)
-                    callPayload.Queries["scroll_by"] = ExpressionConverter.Convert(scrollBy);
-                if (scrollStartImmediately != null)
-                    callPayload.Queries["scroll_start_immediately"] = ExpressionConverter.Convert(scrollStartImmediately);
-                if (scrollBack != null)
-                    callPayload.Queries["scroll_back"] = ExpressionConverter.Convert(scrollBack);
-                if (scrollBackAfterDuration != null)
-                    callPayload.Queries["scroll_back_after_duration"] = ExpressionConverter.Convert(scrollBackAfterDuration);
-                if (scrollComplete != null)
-                    callPayload.Queries["scroll_complete"] = ExpressionConverter.Convert(scrollComplete);
-                if (scrollStopAfterDuration != null)
-                    callPayload.Queries["scroll_stop_after_duration"] = ExpressionConverter.Convert(scrollStopAfterDuration);
-                if (scrollEasing != null)
-                    callPayload.Queries["scroll_easing"] = ExpressionConverter.Convert(scrollEasing);
-                if (format != null)
-                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-                if (duration != null)
-                    callPayload.Queries["duration"] = ExpressionConverter.Convert(duration);
-                if (width != null)
-                    callPayload.Queries["width"] = ExpressionConverter.Convert(width);
-                if (height != null)
-                    callPayload.Queries["height"] = ExpressionConverter.Convert(height);
-                if (aspectRatio != null)
-                    callPayload.Queries["aspect_ratio"] = ExpressionConverter.Convert(aspectRatio);
-                if (viewportDevice != null)
-                    callPayload.Queries["viewport_device"] = ExpressionConverter.Convert(viewportDevice);
-                if (viewportWidth != null)
-                    callPayload.Queries["viewport_width"] = ExpressionConverter.Convert(viewportWidth);
-                if (viewportHeight != null)
-                    callPayload.Queries["viewport_height"] = ExpressionConverter.Convert(viewportHeight);
-                if (deviceScaleFactor != null)
-                    callPayload.Queries["device_scale_factor"] = ExpressionConverter.Convert(deviceScaleFactor);
-                if (viewportMobile != null)
-                    callPayload.Queries["viewport_mobile"] = ExpressionConverter.Convert(viewportMobile);
-                if (viewportHasTouch != null)
-                    callPayload.Queries["viewport_has_touch"] = ExpressionConverter.Convert(viewportHasTouch);
-                if (viewportLandscape != null)
-                    callPayload.Queries["viewport_landscape"] = ExpressionConverter.Convert(viewportLandscape);
-                if (blockCookieBanners != null)
-                    callPayload.Queries["block_cookie_banners"] = ExpressionConverter.Convert(blockCookieBanners);
-                if (blockBannersByHeuristics != null)
-                    callPayload.Queries["block_banners_by_heuristics"] = ExpressionConverter.Convert(blockBannersByHeuristics);
-                if (blockChats != null)
-                    callPayload.Queries["block_chats"] = ExpressionConverter.Convert(blockChats);
-                if (blockAds != null)
-                    callPayload.Queries["block_ads"] = ExpressionConverter.Convert(blockAds);
-                if (blockTrackers != null)
-                    callPayload.Queries["block_trackers"] = ExpressionConverter.Convert(blockTrackers);
-                if (blockRequests != null)
-                    callPayload.Queries["block_requests"] = ExpressionConverter.Convert(blockRequests);
-                if (blockResources != null)
-                    callPayload.Queries["block_resources"] = ExpressionConverter.Convert(blockResources);
-                if (geolocationLatitude != null)
-                    callPayload.Queries["geolocation_latitude"] = ExpressionConverter.Convert(geolocationLatitude);
-                if (geolocationLongitude != null)
-                    callPayload.Queries["geolocation_longitude"] = ExpressionConverter.Convert(geolocationLongitude);
-                if (geolocationAccuracy != null)
-                    callPayload.Queries["geolocation_accuracy"] = ExpressionConverter.Convert(geolocationAccuracy);
+                if (__workflow_url != null)
+                    callPayload.Queries["url"] = ExpressionConverter.Convert(__workflow_url);
+                if (__workflow_scenario != null)
+                    callPayload.Queries["scenario"] = ExpressionConverter.Convert(__workflow_scenario);
+                if (__workflow_scrollDelay != null)
+                    callPayload.Queries["scroll_delay"] = ExpressionConverter.Convert(__workflow_scrollDelay);
+                if (__workflow_scrollDuration != null)
+                    callPayload.Queries["scroll_duration"] = ExpressionConverter.Convert(__workflow_scrollDuration);
+                if (__workflow_scrollBy != null)
+                    callPayload.Queries["scroll_by"] = ExpressionConverter.Convert(__workflow_scrollBy);
+                if (__workflow_scrollStartImmediately != null)
+                    callPayload.Queries["scroll_start_immediately"] = ExpressionConverter.Convert(__workflow_scrollStartImmediately);
+                if (__workflow_scrollBack != null)
+                    callPayload.Queries["scroll_back"] = ExpressionConverter.Convert(__workflow_scrollBack);
+                if (__workflow_scrollBackAfterDuration != null)
+                    callPayload.Queries["scroll_back_after_duration"] = ExpressionConverter.Convert(__workflow_scrollBackAfterDuration);
+                if (__workflow_scrollComplete != null)
+                    callPayload.Queries["scroll_complete"] = ExpressionConverter.Convert(__workflow_scrollComplete);
+                if (__workflow_scrollStopAfterDuration != null)
+                    callPayload.Queries["scroll_stop_after_duration"] = ExpressionConverter.Convert(__workflow_scrollStopAfterDuration);
+                if (__workflow_scrollEasing != null)
+                    callPayload.Queries["scroll_easing"] = ExpressionConverter.Convert(__workflow_scrollEasing);
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                if (__workflow_duration != null)
+                    callPayload.Queries["duration"] = ExpressionConverter.Convert(__workflow_duration);
+                if (__workflow_width != null)
+                    callPayload.Queries["width"] = ExpressionConverter.Convert(__workflow_width);
+                if (__workflow_height != null)
+                    callPayload.Queries["height"] = ExpressionConverter.Convert(__workflow_height);
+                if (__workflow_aspectRatio != null)
+                    callPayload.Queries["aspect_ratio"] = ExpressionConverter.Convert(__workflow_aspectRatio);
+                if (__workflow_viewportDevice != null)
+                    callPayload.Queries["viewport_device"] = ExpressionConverter.Convert(__workflow_viewportDevice);
+                if (__workflow_viewportWidth != null)
+                    callPayload.Queries["viewport_width"] = ExpressionConverter.Convert(__workflow_viewportWidth);
+                if (__workflow_viewportHeight != null)
+                    callPayload.Queries["viewport_height"] = ExpressionConverter.Convert(__workflow_viewportHeight);
+                if (__workflow_deviceScaleFactor != null)
+                    callPayload.Queries["device_scale_factor"] = ExpressionConverter.Convert(__workflow_deviceScaleFactor);
+                if (__workflow_viewportMobile != null)
+                    callPayload.Queries["viewport_mobile"] = ExpressionConverter.Convert(__workflow_viewportMobile);
+                if (__workflow_viewportHasTouch != null)
+                    callPayload.Queries["viewport_has_touch"] = ExpressionConverter.Convert(__workflow_viewportHasTouch);
+                if (__workflow_viewportLandscape != null)
+                    callPayload.Queries["viewport_landscape"] = ExpressionConverter.Convert(__workflow_viewportLandscape);
+                if (__workflow_blockCookieBanners != null)
+                    callPayload.Queries["block_cookie_banners"] = ExpressionConverter.Convert(__workflow_blockCookieBanners);
+                if (__workflow_blockBannersByHeuristics != null)
+                    callPayload.Queries["block_banners_by_heuristics"] = ExpressionConverter.Convert(__workflow_blockBannersByHeuristics);
+                if (__workflow_blockChats != null)
+                    callPayload.Queries["block_chats"] = ExpressionConverter.Convert(__workflow_blockChats);
+                if (__workflow_blockAds != null)
+                    callPayload.Queries["block_ads"] = ExpressionConverter.Convert(__workflow_blockAds);
+                if (__workflow_blockTrackers != null)
+                    callPayload.Queries["block_trackers"] = ExpressionConverter.Convert(__workflow_blockTrackers);
+                if (__workflow_blockRequests != null)
+                    callPayload.Queries["block_requests"] = ExpressionConverter.Convert(__workflow_blockRequests);
+                if (__workflow_blockResources != null)
+                    callPayload.Queries["block_resources"] = ExpressionConverter.Convert(__workflow_blockResources);
+                if (__workflow_geolocationLatitude != null)
+                    callPayload.Queries["geolocation_latitude"] = ExpressionConverter.Convert(__workflow_geolocationLatitude);
+                if (__workflow_geolocationLongitude != null)
+                    callPayload.Queries["geolocation_longitude"] = ExpressionConverter.Convert(__workflow_geolocationLongitude);
+                if (__workflow_geolocationAccuracy != null)
+                    callPayload.Queries["geolocation_accuracy"] = ExpressionConverter.Convert(__workflow_geolocationAccuracy);
                 callPayload.Queries["ip_country_code"] = Convert.ToString("us");
-                if (ipCountryCode != null)
-                    callPayload.Queries["ip_country_code"] = ExpressionConverter.Convert(ipCountryCode);
-                if (proxy != null)
-                    callPayload.Queries["proxy"] = ExpressionConverter.Convert(proxy);
-                if (userAgent != null)
-                    callPayload.Queries["user_agent"] = ExpressionConverter.Convert(userAgent);
-                if (authorization != null)
-                    callPayload.Queries["authorization"] = ExpressionConverter.Convert(authorization);
-                if (cookies != null)
-                    callPayload.Queries["cookies"] = ExpressionConverter.Convert(cookies);
-                if (headers != null)
-                    callPayload.Queries["headers"] = ExpressionConverter.Convert(headers);
-                if (timeZone != null)
-                    callPayload.Queries["time_zone"] = ExpressionConverter.Convert(timeZone);
-                if (waitUntil != null)
-                    callPayload.Queries["wait_until"] = ExpressionConverter.Convert(waitUntil);
-                if (delay != null)
-                    callPayload.Queries["delay"] = ExpressionConverter.Convert(delay);
-                if (timeout != null)
-                    callPayload.Queries["timeout"] = ExpressionConverter.Convert(timeout);
-                if (navigationTimeout != null)
-                    callPayload.Queries["navigation_timeout"] = ExpressionConverter.Convert(navigationTimeout);
-                if (waitForSelector != null)
-                    callPayload.Queries["wait_for_selector"] = ExpressionConverter.Convert(waitForSelector);
-                if (cache != null)
-                    callPayload.Queries["cache"] = ExpressionConverter.Convert(cache);
-                if (cacheTtl != null)
-                    callPayload.Queries["cache_ttl"] = ExpressionConverter.Convert(cacheTtl);
-                if (cacheKey != null)
-                    callPayload.Queries["cache_key"] = ExpressionConverter.Convert(cacheKey);
-                if (store != null)
-                    callPayload.Queries["store"] = ExpressionConverter.Convert(store);
-                if (storagePath != null)
-                    callPayload.Queries["storage_path"] = ExpressionConverter.Convert(storagePath);
-                if (storageBucket != null)
-                    callPayload.Queries["storage_bucket"] = ExpressionConverter.Convert(storageBucket);
-                if (storageClass != null)
-                    callPayload.Queries["storage_class"] = ExpressionConverter.Convert(storageClass);
-                if (storageAcl != null)
-                    callPayload.Queries["storage_acl"] = ExpressionConverter.Convert(storageAcl);
-                if (metadataImageSize != null)
-                    callPayload.Queries["metadata_image_size"] = ExpressionConverter.Convert(metadataImageSize);
-                if (ignoreHostErrors != null)
-                    callPayload.Queries["ignore_host_errors"] = ExpressionConverter.Convert(ignoreHostErrors);
-                if (errorOnSelectorNotFound != null)
-                    callPayload.Queries["error_on_selector_not_found"] = ExpressionConverter.Convert(errorOnSelectorNotFound);
+                if (__workflow_ipCountryCode != null)
+                    callPayload.Queries["ip_country_code"] = ExpressionConverter.Convert(__workflow_ipCountryCode);
+                if (__workflow_proxy != null)
+                    callPayload.Queries["proxy"] = ExpressionConverter.Convert(__workflow_proxy);
+                if (__workflow_userAgent != null)
+                    callPayload.Queries["user_agent"] = ExpressionConverter.Convert(__workflow_userAgent);
+                if (__workflow_authorization != null)
+                    callPayload.Queries["authorization"] = ExpressionConverter.Convert(__workflow_authorization);
+                if (__workflow_cookies != null)
+                    callPayload.Queries["cookies"] = ExpressionConverter.Convert(__workflow_cookies);
+                if (__workflow_headers != null)
+                    callPayload.Queries["headers"] = ExpressionConverter.Convert(__workflow_headers);
+                if (__workflow_timeZone != null)
+                    callPayload.Queries["time_zone"] = ExpressionConverter.Convert(__workflow_timeZone);
+                if (__workflow_waitUntil != null)
+                    callPayload.Queries["wait_until"] = ExpressionConverter.Convert(__workflow_waitUntil);
+                if (__workflow_delay != null)
+                    callPayload.Queries["delay"] = ExpressionConverter.Convert(__workflow_delay);
+                if (__workflow_timeout != null)
+                    callPayload.Queries["timeout"] = ExpressionConverter.Convert(__workflow_timeout);
+                if (__workflow_navigationTimeout != null)
+                    callPayload.Queries["navigation_timeout"] = ExpressionConverter.Convert(__workflow_navigationTimeout);
+                if (__workflow_waitForSelector != null)
+                    callPayload.Queries["wait_for_selector"] = ExpressionConverter.Convert(__workflow_waitForSelector);
+                if (__workflow_cache != null)
+                    callPayload.Queries["cache"] = ExpressionConverter.Convert(__workflow_cache);
+                if (__workflow_cacheTtl != null)
+                    callPayload.Queries["cache_ttl"] = ExpressionConverter.Convert(__workflow_cacheTtl);
+                if (__workflow_cacheKey != null)
+                    callPayload.Queries["cache_key"] = ExpressionConverter.Convert(__workflow_cacheKey);
+                if (__workflow_store != null)
+                    callPayload.Queries["store"] = ExpressionConverter.Convert(__workflow_store);
+                if (__workflow_storagePath != null)
+                    callPayload.Queries["storage_path"] = ExpressionConverter.Convert(__workflow_storagePath);
+                if (__workflow_storageBucket != null)
+                    callPayload.Queries["storage_bucket"] = ExpressionConverter.Convert(__workflow_storageBucket);
+                if (__workflow_storageClass != null)
+                    callPayload.Queries["storage_class"] = ExpressionConverter.Convert(__workflow_storageClass);
+                if (__workflow_storageAcl != null)
+                    callPayload.Queries["storage_acl"] = ExpressionConverter.Convert(__workflow_storageAcl);
+                if (__workflow_metadataImageSize != null)
+                    callPayload.Queries["metadata_image_size"] = ExpressionConverter.Convert(__workflow_metadataImageSize);
+                if (__workflow_ignoreHostErrors != null)
+                    callPayload.Queries["ignore_host_errors"] = ExpressionConverter.Convert(__workflow_ignoreHostErrors);
+                if (__workflow_errorOnSelectorNotFound != null)
+                    callPayload.Queries["error_on_selector_not_found"] = ExpressionConverter.Convert(__workflow_errorOnSelectorNotFound);
                 return new ApiConnectionAction<TakeAnimatedGetResponse>(callPayload);
             });
         }

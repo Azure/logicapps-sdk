@@ -1,66 +1,70 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentmerge
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class DocumentmergeActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentmerge")]
-        [WorkflowExpressionFactory(nameof(__BuildValuesDocumentMerge))]
-        public IBodyWorkflowAction<ValuesDocumentMergeResponse> ValuesDocumentMerge([WorkflowExpression] Func<string> linkToItem, [WorkflowExpression] Func<string> preConfigTemplate = null, [WorkflowExpression] Func<string> source = null, [WorkflowExpression] Func<string> destination = null, [WorkflowExpression] Func<bool> saveAsPDF = null, [WorkflowExpression] Func<bool> saveAsPDFOnly = null, [WorkflowExpression] Func<bool> saveAsPDFA = null, [WorkflowExpression] Func<bool> displayImage = null, [WorkflowExpression] Func<string> outputFileName = null, [WorkflowExpression] Func<bool> overWrite = null, [WorkflowExpression] Func<bool> sendMail = null, [WorkflowExpression] Func<string> mailTemplate = null)
+        public IBodyWorkflowAction<ValuesDocumentMergeResponse> ValuesDocumentMerge(Expression<Func<string>> linkToItem, Expression<Func<string>> preConfigTemplate = null, Expression<Func<string>> source = null, Expression<Func<string>> destination = null, Expression<Func<bool>> saveAsPDF = null, Expression<Func<bool>> saveAsPDFOnly = null, Expression<Func<bool>> saveAsPDFA = null, Expression<Func<bool>> displayImage = null, Expression<Func<string>> outputFileName = null, Expression<Func<bool>> overWrite = null, Expression<Func<bool>> sendMail = null, Expression<Func<string>> mailTemplate = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ValuesDocumentMergeResponse> __BuildValuesDocumentMerge(WorkflowExpression<string> linkToItem, WorkflowExpression<string> preConfigTemplate = null, WorkflowExpression<string> source = null, WorkflowExpression<string> destination = null, WorkflowExpression<bool> saveAsPDF = null, WorkflowExpression<bool> saveAsPDFOnly = null, WorkflowExpression<bool> saveAsPDFA = null, WorkflowExpression<bool> displayImage = null, WorkflowExpression<string> outputFileName = null, WorkflowExpression<bool> overWrite = null, WorkflowExpression<bool> sendMail = null, WorkflowExpression<string> mailTemplate = null)
-        {
-            WorkflowExpression.Validate(linkToItem, nameof(linkToItem), required: true);
-            WorkflowExpression.Validate(preConfigTemplate, nameof(preConfigTemplate), required: false);
-            WorkflowExpression.Validate(source, nameof(source), required: false);
-            WorkflowExpression.Validate(destination, nameof(destination), required: false);
-            WorkflowExpression.Validate(saveAsPDF, nameof(saveAsPDF), required: false);
-            WorkflowExpression.Validate(saveAsPDFOnly, nameof(saveAsPDFOnly), required: false);
-            WorkflowExpression.Validate(saveAsPDFA, nameof(saveAsPDFA), required: false);
-            WorkflowExpression.Validate(displayImage, nameof(displayImage), required: false);
-            WorkflowExpression.Validate(outputFileName, nameof(outputFileName), required: false);
-            WorkflowExpression.Validate(overWrite, nameof(overWrite), required: false);
-            WorkflowExpression.Validate(sendMail, nameof(sendMail), required: false);
-            WorkflowExpression.Validate(mailTemplate, nameof(mailTemplate), required: false);
+            var __workflow_linkToItem = linkToItem == null ? null : WorkflowExpression.Compile(linkToItem);
+            WorkflowExpression.Validate(__workflow_linkToItem, nameof(linkToItem), required: true);
+            var __workflow_preConfigTemplate = preConfigTemplate == null ? null : WorkflowExpression.Compile(preConfigTemplate);
+            WorkflowExpression.Validate(__workflow_preConfigTemplate, nameof(preConfigTemplate), required: false);
+            var __workflow_source = source == null ? null : WorkflowExpression.Compile(source);
+            WorkflowExpression.Validate(__workflow_source, nameof(source), required: false);
+            var __workflow_destination = destination == null ? null : WorkflowExpression.Compile(destination);
+            WorkflowExpression.Validate(__workflow_destination, nameof(destination), required: false);
+            var __workflow_saveAsPDF = saveAsPDF == null ? null : WorkflowExpression.Compile(saveAsPDF);
+            WorkflowExpression.Validate(__workflow_saveAsPDF, nameof(saveAsPDF), required: false);
+            var __workflow_saveAsPDFOnly = saveAsPDFOnly == null ? null : WorkflowExpression.Compile(saveAsPDFOnly);
+            WorkflowExpression.Validate(__workflow_saveAsPDFOnly, nameof(saveAsPDFOnly), required: false);
+            var __workflow_saveAsPDFA = saveAsPDFA == null ? null : WorkflowExpression.Compile(saveAsPDFA);
+            WorkflowExpression.Validate(__workflow_saveAsPDFA, nameof(saveAsPDFA), required: false);
+            var __workflow_displayImage = displayImage == null ? null : WorkflowExpression.Compile(displayImage);
+            WorkflowExpression.Validate(__workflow_displayImage, nameof(displayImage), required: false);
+            var __workflow_outputFileName = outputFileName == null ? null : WorkflowExpression.Compile(outputFileName);
+            WorkflowExpression.Validate(__workflow_outputFileName, nameof(outputFileName), required: false);
+            var __workflow_overWrite = overWrite == null ? null : WorkflowExpression.Compile(overWrite);
+            WorkflowExpression.Validate(__workflow_overWrite, nameof(overWrite), required: false);
+            var __workflow_sendMail = sendMail == null ? null : WorkflowExpression.Compile(sendMail);
+            WorkflowExpression.Validate(__workflow_sendMail, nameof(sendMail), required: false);
+            var __workflow_mailTemplate = mailTemplate == null ? null : WorkflowExpression.Compile(mailTemplate);
+            WorkflowExpression.Validate(__workflow_mailTemplate, nameof(mailTemplate), required: false);
             return new DeferredBodyAction<ValuesDocumentMergeResponse>(() =>
             {
                 var apiCallPath = "/api/Values";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["LinkToItem"] = ExpressionConverter.Convert(linkToItem);
-                if (preConfigTemplate != null)
-                    callPayload.Queries["PreConfigTemplate"] = ExpressionConverter.Convert(preConfigTemplate);
-                if (source != null)
-                    callPayload.Queries["Source"] = ExpressionConverter.Convert(source);
-                if (destination != null)
-                    callPayload.Queries["Destination"] = ExpressionConverter.Convert(destination);
-                if (saveAsPDF != null)
-                    callPayload.Queries["SaveAsPDF"] = ExpressionConverter.Convert(saveAsPDF);
-                if (saveAsPDFOnly != null)
-                    callPayload.Queries["SaveAsPDFOnly"] = ExpressionConverter.Convert(saveAsPDFOnly);
-                if (saveAsPDFA != null)
-                    callPayload.Queries["SaveAsPDFA"] = ExpressionConverter.Convert(saveAsPDFA);
-                if (displayImage != null)
-                    callPayload.Queries["DisplayImage"] = ExpressionConverter.Convert(displayImage);
-                if (outputFileName != null)
-                    callPayload.Queries["OutputFileName"] = ExpressionConverter.Convert(outputFileName);
-                if (overWrite != null)
-                    callPayload.Queries["OverWrite"] = ExpressionConverter.Convert(overWrite);
-                if (sendMail != null)
-                    callPayload.Queries["SendMail"] = ExpressionConverter.Convert(sendMail);
-                if (mailTemplate != null)
-                    callPayload.Queries["MailTemplate"] = ExpressionConverter.Convert(mailTemplate);
+                callPayload.Queries["LinkToItem"] = ExpressionConverter.Convert(__workflow_linkToItem);
+                if (__workflow_preConfigTemplate != null)
+                    callPayload.Queries["PreConfigTemplate"] = ExpressionConverter.Convert(__workflow_preConfigTemplate);
+                if (__workflow_source != null)
+                    callPayload.Queries["Source"] = ExpressionConverter.Convert(__workflow_source);
+                if (__workflow_destination != null)
+                    callPayload.Queries["Destination"] = ExpressionConverter.Convert(__workflow_destination);
+                if (__workflow_saveAsPDF != null)
+                    callPayload.Queries["SaveAsPDF"] = ExpressionConverter.Convert(__workflow_saveAsPDF);
+                if (__workflow_saveAsPDFOnly != null)
+                    callPayload.Queries["SaveAsPDFOnly"] = ExpressionConverter.Convert(__workflow_saveAsPDFOnly);
+                if (__workflow_saveAsPDFA != null)
+                    callPayload.Queries["SaveAsPDFA"] = ExpressionConverter.Convert(__workflow_saveAsPDFA);
+                if (__workflow_displayImage != null)
+                    callPayload.Queries["DisplayImage"] = ExpressionConverter.Convert(__workflow_displayImage);
+                if (__workflow_outputFileName != null)
+                    callPayload.Queries["OutputFileName"] = ExpressionConverter.Convert(__workflow_outputFileName);
+                if (__workflow_overWrite != null)
+                    callPayload.Queries["OverWrite"] = ExpressionConverter.Convert(__workflow_overWrite);
+                if (__workflow_sendMail != null)
+                    callPayload.Queries["SendMail"] = ExpressionConverter.Convert(__workflow_sendMail);
+                if (__workflow_mailTemplate != null)
+                    callPayload.Queries["MailTemplate"] = ExpressionConverter.Convert(__workflow_mailTemplate);
                 return new ApiConnectionAction<ValuesDocumentMergeResponse>(callPayload);
             });
         }

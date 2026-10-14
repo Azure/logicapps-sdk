@@ -1,81 +1,64 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class AzuredigitaltwinsActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
-        [WorkflowExpressionFactory(nameof(__BuildAddModels))]
-        public IBodyWorkflowAction<AddModelsResponseItem[]> AddModels([WorkflowExpression] Func<bodyInputItem[]> body = null)
+        public IBodyWorkflowAction<AddModelsResponseItem[]> AddModels(Expression<Func<bodyInputItem[]>> body = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AddModelsResponseItem[]> __BuildAddModels(WorkflowExpression<bodyInputItem[]> body = null)
-        {
-            WorkflowExpression.Validate(body, nameof(body), required: false);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
             return new DeferredBodyAction<AddModelsResponseItem[]>(() =>
             {
                 var apiCallPath = "/models";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2020-10-31");
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<AddModelsResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
-        [WorkflowExpressionFactory(nameof(__BuildListModels))]
-        public IBodyWorkflowAction<ListModelsResponse> ListModels([WorkflowExpression] Func<string> dependenciesFor = null, [WorkflowExpression] Func<string> includeModelDefinition = null, [WorkflowExpression] Func<string> continuationToken = null)
+        public IBodyWorkflowAction<ListModelsResponse> ListModels(Expression<Func<string>> dependenciesFor = null, Expression<Func<string>> includeModelDefinition = null, Expression<Func<string>> continuationToken = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListModelsResponse> __BuildListModels(WorkflowExpression<string> dependenciesFor = null, WorkflowExpression<string> includeModelDefinition = null, WorkflowExpression<string> continuationToken = null)
-        {
-            WorkflowExpression.Validate(dependenciesFor, nameof(dependenciesFor), required: false);
-            WorkflowExpression.Validate(includeModelDefinition, nameof(includeModelDefinition), required: false);
-            WorkflowExpression.Validate(continuationToken, nameof(continuationToken), required: false);
+            var __workflow_dependenciesFor = dependenciesFor == null ? null : WorkflowExpression.Compile(dependenciesFor);
+            WorkflowExpression.Validate(__workflow_dependenciesFor, nameof(dependenciesFor), required: false);
+            var __workflow_includeModelDefinition = includeModelDefinition == null ? null : WorkflowExpression.Compile(includeModelDefinition);
+            WorkflowExpression.Validate(__workflow_includeModelDefinition, nameof(includeModelDefinition), required: false);
+            var __workflow_continuationToken = continuationToken == null ? null : WorkflowExpression.Compile(continuationToken);
+            WorkflowExpression.Validate(__workflow_continuationToken, nameof(continuationToken), required: false);
             return new DeferredBodyAction<ListModelsResponse>(() =>
             {
                 var apiCallPath = "/models";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (dependenciesFor != null)
-                    callPayload.Queries["dependenciesFor"] = ExpressionConverter.Convert(dependenciesFor);
-                if (includeModelDefinition != null)
-                    callPayload.Queries["includeModelDefinition"] = ExpressionConverter.Convert(includeModelDefinition);
+                if (__workflow_dependenciesFor != null)
+                    callPayload.Queries["dependenciesFor"] = ExpressionConverter.Convert(__workflow_dependenciesFor);
+                if (__workflow_includeModelDefinition != null)
+                    callPayload.Queries["includeModelDefinition"] = ExpressionConverter.Convert(__workflow_includeModelDefinition);
                 callPayload.Queries["api-version"] = Convert.ToString("2020-10-31");
-                if (continuationToken != null)
-                    callPayload.Queries["continuationToken"] = ExpressionConverter.Convert(continuationToken);
+                if (__workflow_continuationToken != null)
+                    callPayload.Queries["continuationToken"] = ExpressionConverter.Convert(__workflow_continuationToken);
                 return new ApiConnectionAction<ListModelsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteModel))]
-        public IWorkflowAction DeleteModel([WorkflowExpression] Func<string> modelid)
+        public IWorkflowAction DeleteModel(Expression<Func<string>> modelid)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDeleteModel(WorkflowExpression<string> modelid)
-        {
-            WorkflowExpression.Validate(modelid, nameof(modelid), required: true);
+            var __workflow_modelid = modelid == null ? null : WorkflowExpression.Compile(modelid);
+            WorkflowExpression.Validate(__workflow_modelid, nameof(modelid), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/models/{0}", ExpressionConverter.ConvertWithUrlEncoding(modelid, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/models/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelid, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2020-10-31");
@@ -84,52 +67,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
-        [WorkflowExpressionFactory(nameof(__BuildGetModelById))]
-        public IBodyWorkflowAction<GetModelByIdResponse> GetModelById([WorkflowExpression] Func<string> modelid, [WorkflowExpression] Func<string> includeModelDefinition = null)
+        public IBodyWorkflowAction<GetModelByIdResponse> GetModelById(Expression<Func<string>> modelid, Expression<Func<string>> includeModelDefinition = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetModelByIdResponse> __BuildGetModelById(WorkflowExpression<string> modelid, WorkflowExpression<string> includeModelDefinition = null)
-        {
-            WorkflowExpression.Validate(modelid, nameof(modelid), required: true);
-            WorkflowExpression.Validate(includeModelDefinition, nameof(includeModelDefinition), required: false);
+            var __workflow_modelid = modelid == null ? null : WorkflowExpression.Compile(modelid);
+            WorkflowExpression.Validate(__workflow_modelid, nameof(modelid), required: true);
+            var __workflow_includeModelDefinition = includeModelDefinition == null ? null : WorkflowExpression.Compile(includeModelDefinition);
+            WorkflowExpression.Validate(__workflow_includeModelDefinition, nameof(includeModelDefinition), required: false);
             return new DeferredBodyAction<GetModelByIdResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/models/{0}", ExpressionConverter.ConvertWithUrlEncoding(modelid, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/models/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelid, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (includeModelDefinition != null)
-                    callPayload.Queries["includeModelDefinition"] = ExpressionConverter.Convert(includeModelDefinition);
+                if (__workflow_includeModelDefinition != null)
+                    callPayload.Queries["includeModelDefinition"] = ExpressionConverter.Convert(__workflow_includeModelDefinition);
                 callPayload.Queries["api-version"] = Convert.ToString("2020-10-31");
                 return new ApiConnectionAction<GetModelByIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateModel))]
-        public IWorkflowAction UpdateModel([WorkflowExpression] Func<string> modelid, [WorkflowExpression] Func<string> bodyvalue = null)
+        public IWorkflowAction UpdateModel(Expression<Func<string>> modelid, Expression<Func<string>> bodyvalue = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildUpdateModel(WorkflowExpression<string> modelid, WorkflowExpression<string> bodyvalue = null)
-        {
-            WorkflowExpression.Validate(modelid, nameof(modelid), required: true);
-            WorkflowExpression.Validate(bodyvalue, nameof(bodyvalue), required: false);
+            var __workflow_modelid = modelid == null ? null : WorkflowExpression.Compile(modelid);
+            WorkflowExpression.Validate(__workflow_modelid, nameof(modelid), required: true);
+            var __workflow_bodyvalue = bodyvalue == null ? null : WorkflowExpression.Compile(bodyvalue);
+            WorkflowExpression.Validate(__workflow_bodyvalue, nameof(bodyvalue), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/models/{0}", ExpressionConverter.ConvertWithUrlEncoding(modelid, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/models/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelid, 1));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2020-10-31");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyvalue != null)
+                if (__workflow_bodyvalue != null)
                 {
-                    body["value"] = ExpressionConverter.ConvertO(bodyvalue);
+                    body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
                     bodypropCount++;
                 }
 
@@ -143,19 +116,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
-        [WorkflowExpressionFactory(nameof(__BuildGetTwinById))]
-        public IBodyWorkflowAction<TwinResult> GetTwinById([WorkflowExpression] Func<string> twinid)
+        public IBodyWorkflowAction<TwinResult> GetTwinById(Expression<Func<string>> twinid)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TwinResult> __BuildGetTwinById(WorkflowExpression<string> twinid)
-        {
-            WorkflowExpression.Validate(twinid, nameof(twinid), required: true);
+            var __workflow_twinid = twinid == null ? null : WorkflowExpression.Compile(twinid);
+            WorkflowExpression.Validate(__workflow_twinid, nameof(twinid), required: true);
             return new DeferredBodyAction<TwinResult>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}", ExpressionConverter.ConvertWithUrlEncoding(twinid, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_twinid, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2020-10-31");
@@ -164,19 +131,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteTwin))]
-        public IWorkflowAction DeleteTwin([WorkflowExpression] Func<string> twinid)
+        public IWorkflowAction DeleteTwin(Expression<Func<string>> twinid)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDeleteTwin(WorkflowExpression<string> twinid)
-        {
-            WorkflowExpression.Validate(twinid, nameof(twinid), required: true);
+            var __workflow_twinid = twinid == null ? null : WorkflowExpression.Compile(twinid);
+            WorkflowExpression.Validate(__workflow_twinid, nameof(twinid), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}", ExpressionConverter.ConvertWithUrlEncoding(twinid, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_twinid, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2020-10-31");
@@ -185,28 +146,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
-        [WorkflowExpressionFactory(nameof(__BuildAddTwin))]
-        public IBodyWorkflowAction<TwinResult> AddTwin([WorkflowExpression] Func<string> twinid, [WorkflowExpression] Func<string> bodyvalue = null)
+        public IBodyWorkflowAction<TwinResult> AddTwin(Expression<Func<string>> twinid, Expression<Func<string>> bodyvalue = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TwinResult> __BuildAddTwin(WorkflowExpression<string> twinid, WorkflowExpression<string> bodyvalue = null)
-        {
-            WorkflowExpression.Validate(twinid, nameof(twinid), required: true);
-            WorkflowExpression.Validate(bodyvalue, nameof(bodyvalue), required: false);
+            var __workflow_twinid = twinid == null ? null : WorkflowExpression.Compile(twinid);
+            WorkflowExpression.Validate(__workflow_twinid, nameof(twinid), required: true);
+            var __workflow_bodyvalue = bodyvalue == null ? null : WorkflowExpression.Compile(bodyvalue);
+            WorkflowExpression.Validate(__workflow_bodyvalue, nameof(bodyvalue), required: false);
             return new DeferredBodyAction<TwinResult>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}", ExpressionConverter.ConvertWithUrlEncoding(twinid, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_twinid, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2020-10-31");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyvalue != null)
+                if (__workflow_bodyvalue != null)
                 {
-                    body["value"] = ExpressionConverter.ConvertO(bodyvalue);
+                    body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
                     bodypropCount++;
                 }
 
@@ -220,28 +176,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateTwin))]
-        public IWorkflowAction UpdateTwin([WorkflowExpression] Func<string> twinid, [WorkflowExpression] Func<string> bodyvalue = null)
+        public IWorkflowAction UpdateTwin(Expression<Func<string>> twinid, Expression<Func<string>> bodyvalue = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildUpdateTwin(WorkflowExpression<string> twinid, WorkflowExpression<string> bodyvalue = null)
-        {
-            WorkflowExpression.Validate(twinid, nameof(twinid), required: true);
-            WorkflowExpression.Validate(bodyvalue, nameof(bodyvalue), required: false);
+            var __workflow_twinid = twinid == null ? null : WorkflowExpression.Compile(twinid);
+            WorkflowExpression.Validate(__workflow_twinid, nameof(twinid), required: true);
+            var __workflow_bodyvalue = bodyvalue == null ? null : WorkflowExpression.Compile(bodyvalue);
+            WorkflowExpression.Validate(__workflow_bodyvalue, nameof(bodyvalue), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}", ExpressionConverter.ConvertWithUrlEncoding(twinid, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_twinid, 1));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2020-10-31");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyvalue != null)
+                if (__workflow_bodyvalue != null)
                 {
-                    body["value"] = ExpressionConverter.ConvertO(bodyvalue);
+                    body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
                     bodypropCount++;
                 }
 
@@ -255,20 +206,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
-        [WorkflowExpressionFactory(nameof(__BuildGetComponent))]
-        public IBodyWorkflowAction<GetComponentResult> GetComponent([WorkflowExpression] Func<string> twinid, [WorkflowExpression] Func<string> componentPath)
+        public IBodyWorkflowAction<GetComponentResult> GetComponent(Expression<Func<string>> twinid, Expression<Func<string>> componentPath)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetComponentResult> __BuildGetComponent(WorkflowExpression<string> twinid, WorkflowExpression<string> componentPath)
-        {
-            WorkflowExpression.Validate(twinid, nameof(twinid), required: true);
-            WorkflowExpression.Validate(componentPath, nameof(componentPath), required: true);
+            var __workflow_twinid = twinid == null ? null : WorkflowExpression.Compile(twinid);
+            WorkflowExpression.Validate(__workflow_twinid, nameof(twinid), required: true);
+            var __workflow_componentPath = componentPath == null ? null : WorkflowExpression.Compile(componentPath);
+            WorkflowExpression.Validate(__workflow_componentPath, nameof(componentPath), required: true);
             return new DeferredBodyAction<GetComponentResult>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}/components/{1}", ExpressionConverter.ConvertWithUrlEncoding(twinid, 1), ExpressionConverter.ConvertWithUrlEncoding(componentPath, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}/components/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_twinid, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_componentPath, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2020-10-31");
@@ -277,29 +223,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateComponent))]
-        public IWorkflowAction UpdateComponent([WorkflowExpression] Func<string> twinid, [WorkflowExpression] Func<string> componentPath, [WorkflowExpression] Func<string> bodyvalue = null)
+        public IWorkflowAction UpdateComponent(Expression<Func<string>> twinid, Expression<Func<string>> componentPath, Expression<Func<string>> bodyvalue = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildUpdateComponent(WorkflowExpression<string> twinid, WorkflowExpression<string> componentPath, WorkflowExpression<string> bodyvalue = null)
-        {
-            WorkflowExpression.Validate(twinid, nameof(twinid), required: true);
-            WorkflowExpression.Validate(componentPath, nameof(componentPath), required: true);
-            WorkflowExpression.Validate(bodyvalue, nameof(bodyvalue), required: false);
+            var __workflow_twinid = twinid == null ? null : WorkflowExpression.Compile(twinid);
+            WorkflowExpression.Validate(__workflow_twinid, nameof(twinid), required: true);
+            var __workflow_componentPath = componentPath == null ? null : WorkflowExpression.Compile(componentPath);
+            WorkflowExpression.Validate(__workflow_componentPath, nameof(componentPath), required: true);
+            var __workflow_bodyvalue = bodyvalue == null ? null : WorkflowExpression.Compile(bodyvalue);
+            WorkflowExpression.Validate(__workflow_bodyvalue, nameof(bodyvalue), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}/components/{1}", ExpressionConverter.ConvertWithUrlEncoding(twinid, 1), ExpressionConverter.ConvertWithUrlEncoding(componentPath, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}/components/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_twinid, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_componentPath, 1));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2020-10-31");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyvalue != null)
+                if (__workflow_bodyvalue != null)
                 {
-                    body["value"] = ExpressionConverter.ConvertO(bodyvalue);
+                    body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
                     bodypropCount++;
                 }
 
@@ -313,20 +255,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
-        [WorkflowExpressionFactory(nameof(__BuildGetRelationshipById))]
-        public IBodyWorkflowAction<TwinRelationship> GetRelationshipById([WorkflowExpression] Func<string> twinid, [WorkflowExpression] Func<string> relationshipId)
+        public IBodyWorkflowAction<TwinRelationship> GetRelationshipById(Expression<Func<string>> twinid, Expression<Func<string>> relationshipId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TwinRelationship> __BuildGetRelationshipById(WorkflowExpression<string> twinid, WorkflowExpression<string> relationshipId)
-        {
-            WorkflowExpression.Validate(twinid, nameof(twinid), required: true);
-            WorkflowExpression.Validate(relationshipId, nameof(relationshipId), required: true);
+            var __workflow_twinid = twinid == null ? null : WorkflowExpression.Compile(twinid);
+            WorkflowExpression.Validate(__workflow_twinid, nameof(twinid), required: true);
+            var __workflow_relationshipId = relationshipId == null ? null : WorkflowExpression.Compile(relationshipId);
+            WorkflowExpression.Validate(__workflow_relationshipId, nameof(relationshipId), required: true);
             return new DeferredBodyAction<TwinRelationship>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}/relationships/{1}", ExpressionConverter.ConvertWithUrlEncoding(twinid, 1), ExpressionConverter.ConvertWithUrlEncoding(relationshipId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}/relationships/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_twinid, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_relationshipId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2020-10-31");
@@ -335,20 +272,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteRelationship))]
-        public IWorkflowAction DeleteRelationship([WorkflowExpression] Func<string> twinid, [WorkflowExpression] Func<string> relationshipId)
+        public IWorkflowAction DeleteRelationship(Expression<Func<string>> twinid, Expression<Func<string>> relationshipId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDeleteRelationship(WorkflowExpression<string> twinid, WorkflowExpression<string> relationshipId)
-        {
-            WorkflowExpression.Validate(twinid, nameof(twinid), required: true);
-            WorkflowExpression.Validate(relationshipId, nameof(relationshipId), required: true);
+            var __workflow_twinid = twinid == null ? null : WorkflowExpression.Compile(twinid);
+            WorkflowExpression.Validate(__workflow_twinid, nameof(twinid), required: true);
+            var __workflow_relationshipId = relationshipId == null ? null : WorkflowExpression.Compile(relationshipId);
+            WorkflowExpression.Validate(__workflow_relationshipId, nameof(relationshipId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}/relationships/{1}", ExpressionConverter.ConvertWithUrlEncoding(twinid, 1), ExpressionConverter.ConvertWithUrlEncoding(relationshipId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}/relationships/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_twinid, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_relationshipId, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2020-10-31");
@@ -357,29 +289,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
-        [WorkflowExpressionFactory(nameof(__BuildAddRelationship))]
-        public IBodyWorkflowAction<TwinRelationship> AddRelationship([WorkflowExpression] Func<string> twinid, [WorkflowExpression] Func<string> relationshipId, [WorkflowExpression] Func<string> bodyvalue = null)
+        public IBodyWorkflowAction<TwinRelationship> AddRelationship(Expression<Func<string>> twinid, Expression<Func<string>> relationshipId, Expression<Func<string>> bodyvalue = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TwinRelationship> __BuildAddRelationship(WorkflowExpression<string> twinid, WorkflowExpression<string> relationshipId, WorkflowExpression<string> bodyvalue = null)
-        {
-            WorkflowExpression.Validate(twinid, nameof(twinid), required: true);
-            WorkflowExpression.Validate(relationshipId, nameof(relationshipId), required: true);
-            WorkflowExpression.Validate(bodyvalue, nameof(bodyvalue), required: false);
+            var __workflow_twinid = twinid == null ? null : WorkflowExpression.Compile(twinid);
+            WorkflowExpression.Validate(__workflow_twinid, nameof(twinid), required: true);
+            var __workflow_relationshipId = relationshipId == null ? null : WorkflowExpression.Compile(relationshipId);
+            WorkflowExpression.Validate(__workflow_relationshipId, nameof(relationshipId), required: true);
+            var __workflow_bodyvalue = bodyvalue == null ? null : WorkflowExpression.Compile(bodyvalue);
+            WorkflowExpression.Validate(__workflow_bodyvalue, nameof(bodyvalue), required: false);
             return new DeferredBodyAction<TwinRelationship>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}/relationships/{1}", ExpressionConverter.ConvertWithUrlEncoding(twinid, 1), ExpressionConverter.ConvertWithUrlEncoding(relationshipId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}/relationships/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_twinid, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_relationshipId, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2020-10-31");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyvalue != null)
+                if (__workflow_bodyvalue != null)
                 {
-                    body["value"] = ExpressionConverter.ConvertO(bodyvalue);
+                    body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
                     bodypropCount++;
                 }
 
@@ -393,29 +321,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateRelationship))]
-        public IWorkflowAction UpdateRelationship([WorkflowExpression] Func<string> twinid, [WorkflowExpression] Func<string> relationshipId, [WorkflowExpression] Func<string> bodyvalue = null)
+        public IWorkflowAction UpdateRelationship(Expression<Func<string>> twinid, Expression<Func<string>> relationshipId, Expression<Func<string>> bodyvalue = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildUpdateRelationship(WorkflowExpression<string> twinid, WorkflowExpression<string> relationshipId, WorkflowExpression<string> bodyvalue = null)
-        {
-            WorkflowExpression.Validate(twinid, nameof(twinid), required: true);
-            WorkflowExpression.Validate(relationshipId, nameof(relationshipId), required: true);
-            WorkflowExpression.Validate(bodyvalue, nameof(bodyvalue), required: false);
+            var __workflow_twinid = twinid == null ? null : WorkflowExpression.Compile(twinid);
+            WorkflowExpression.Validate(__workflow_twinid, nameof(twinid), required: true);
+            var __workflow_relationshipId = relationshipId == null ? null : WorkflowExpression.Compile(relationshipId);
+            WorkflowExpression.Validate(__workflow_relationshipId, nameof(relationshipId), required: true);
+            var __workflow_bodyvalue = bodyvalue == null ? null : WorkflowExpression.Compile(bodyvalue);
+            WorkflowExpression.Validate(__workflow_bodyvalue, nameof(bodyvalue), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}/relationships/{1}", ExpressionConverter.ConvertWithUrlEncoding(twinid, 1), ExpressionConverter.ConvertWithUrlEncoding(relationshipId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}/relationships/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_twinid, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_relationshipId, 1));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2020-10-31");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyvalue != null)
+                if (__workflow_bodyvalue != null)
                 {
-                    body["value"] = ExpressionConverter.ConvertO(bodyvalue);
+                    body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
                     bodypropCount++;
                 }
 
@@ -429,57 +353,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
-        [WorkflowExpressionFactory(nameof(__BuildListIncomingRelationships))]
-        public IBodyWorkflowAction<ListIncomingRelationshipsResponse> ListIncomingRelationships([WorkflowExpression] Func<string> twinid, [WorkflowExpression] Func<string> continuationToken = null)
+        public IBodyWorkflowAction<ListIncomingRelationshipsResponse> ListIncomingRelationships(Expression<Func<string>> twinid, Expression<Func<string>> continuationToken = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListIncomingRelationshipsResponse> __BuildListIncomingRelationships(WorkflowExpression<string> twinid, WorkflowExpression<string> continuationToken = null)
-        {
-            WorkflowExpression.Validate(twinid, nameof(twinid), required: true);
-            WorkflowExpression.Validate(continuationToken, nameof(continuationToken), required: false);
+            var __workflow_twinid = twinid == null ? null : WorkflowExpression.Compile(twinid);
+            WorkflowExpression.Validate(__workflow_twinid, nameof(twinid), required: true);
+            var __workflow_continuationToken = continuationToken == null ? null : WorkflowExpression.Compile(continuationToken);
+            WorkflowExpression.Validate(__workflow_continuationToken, nameof(continuationToken), required: false);
             return new DeferredBodyAction<ListIncomingRelationshipsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}/incomingrelationships", ExpressionConverter.ConvertWithUrlEncoding(twinid, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}/incomingrelationships", ExpressionConverter.ConvertWithUrlEncoding(__workflow_twinid, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (continuationToken != null)
-                    callPayload.Queries["continuationToken"] = ExpressionConverter.Convert(continuationToken);
+                if (__workflow_continuationToken != null)
+                    callPayload.Queries["continuationToken"] = ExpressionConverter.Convert(__workflow_continuationToken);
                 callPayload.Queries["api-version"] = Convert.ToString("2020-10-31");
                 return new ApiConnectionAction<ListIncomingRelationshipsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
-        [WorkflowExpressionFactory(nameof(__BuildSendTelemetry))]
-        public IWorkflowAction SendTelemetry([WorkflowExpression] Func<string> twinid, [WorkflowExpression] Func<string> messageId, [WorkflowExpression] Func<string> telemetrySourceTime = null, [WorkflowExpression] Func<string> bodyvalue = null)
+        public IWorkflowAction SendTelemetry(Expression<Func<string>> twinid, Expression<Func<string>> messageId, Expression<Func<string>> telemetrySourceTime = null, Expression<Func<string>> bodyvalue = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildSendTelemetry(WorkflowExpression<string> twinid, WorkflowExpression<string> messageId, WorkflowExpression<string> telemetrySourceTime = null, WorkflowExpression<string> bodyvalue = null)
-        {
-            WorkflowExpression.Validate(twinid, nameof(twinid), required: true);
-            WorkflowExpression.Validate(messageId, nameof(messageId), required: true);
-            WorkflowExpression.Validate(telemetrySourceTime, nameof(telemetrySourceTime), required: false);
-            WorkflowExpression.Validate(bodyvalue, nameof(bodyvalue), required: false);
+            var __workflow_twinid = twinid == null ? null : WorkflowExpression.Compile(twinid);
+            WorkflowExpression.Validate(__workflow_twinid, nameof(twinid), required: true);
+            var __workflow_messageId = messageId == null ? null : WorkflowExpression.Compile(messageId);
+            WorkflowExpression.Validate(__workflow_messageId, nameof(messageId), required: true);
+            var __workflow_telemetrySourceTime = telemetrySourceTime == null ? null : WorkflowExpression.Compile(telemetrySourceTime);
+            WorkflowExpression.Validate(__workflow_telemetrySourceTime, nameof(telemetrySourceTime), required: false);
+            var __workflow_bodyvalue = bodyvalue == null ? null : WorkflowExpression.Compile(bodyvalue);
+            WorkflowExpression.Validate(__workflow_bodyvalue, nameof(bodyvalue), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}/telemetry", ExpressionConverter.ConvertWithUrlEncoding(twinid, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}/telemetry", ExpressionConverter.ConvertWithUrlEncoding(__workflow_twinid, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2020-10-31");
-                callPayload.Headers["Message-Id"] = ExpressionConverter.Convert(messageId);
-                if (telemetrySourceTime != null)
-                    callPayload.Headers["Telemetry-Source-Time"] = ExpressionConverter.Convert(telemetrySourceTime);
+                callPayload.Headers["Message-Id"] = ExpressionConverter.Convert(__workflow_messageId);
+                if (__workflow_telemetrySourceTime != null)
+                    callPayload.Headers["Telemetry-Source-Time"] = ExpressionConverter.Convert(__workflow_telemetrySourceTime);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyvalue != null)
+                if (__workflow_bodyvalue != null)
                 {
-                    body["value"] = ExpressionConverter.ConvertO(bodyvalue);
+                    body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
                     bodypropCount++;
                 }
 
@@ -493,34 +409,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
-        [WorkflowExpressionFactory(nameof(__BuildSendComponentTelemetry))]
-        public IWorkflowAction SendComponentTelemetry([WorkflowExpression] Func<string> twinid, [WorkflowExpression] Func<string> componentPath, [WorkflowExpression] Func<string> messageId, [WorkflowExpression] Func<string> telemetrySourceTime = null, [WorkflowExpression] Func<string> bodyvalue = null)
+        public IWorkflowAction SendComponentTelemetry(Expression<Func<string>> twinid, Expression<Func<string>> componentPath, Expression<Func<string>> messageId, Expression<Func<string>> telemetrySourceTime = null, Expression<Func<string>> bodyvalue = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildSendComponentTelemetry(WorkflowExpression<string> twinid, WorkflowExpression<string> componentPath, WorkflowExpression<string> messageId, WorkflowExpression<string> telemetrySourceTime = null, WorkflowExpression<string> bodyvalue = null)
-        {
-            WorkflowExpression.Validate(twinid, nameof(twinid), required: true);
-            WorkflowExpression.Validate(componentPath, nameof(componentPath), required: true);
-            WorkflowExpression.Validate(messageId, nameof(messageId), required: true);
-            WorkflowExpression.Validate(telemetrySourceTime, nameof(telemetrySourceTime), required: false);
-            WorkflowExpression.Validate(bodyvalue, nameof(bodyvalue), required: false);
+            var __workflow_twinid = twinid == null ? null : WorkflowExpression.Compile(twinid);
+            WorkflowExpression.Validate(__workflow_twinid, nameof(twinid), required: true);
+            var __workflow_componentPath = componentPath == null ? null : WorkflowExpression.Compile(componentPath);
+            WorkflowExpression.Validate(__workflow_componentPath, nameof(componentPath), required: true);
+            var __workflow_messageId = messageId == null ? null : WorkflowExpression.Compile(messageId);
+            WorkflowExpression.Validate(__workflow_messageId, nameof(messageId), required: true);
+            var __workflow_telemetrySourceTime = telemetrySourceTime == null ? null : WorkflowExpression.Compile(telemetrySourceTime);
+            WorkflowExpression.Validate(__workflow_telemetrySourceTime, nameof(telemetrySourceTime), required: false);
+            var __workflow_bodyvalue = bodyvalue == null ? null : WorkflowExpression.Compile(bodyvalue);
+            WorkflowExpression.Validate(__workflow_bodyvalue, nameof(bodyvalue), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}/components/{1}/telemetry", ExpressionConverter.ConvertWithUrlEncoding(twinid, 1), ExpressionConverter.ConvertWithUrlEncoding(componentPath, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}/components/{1}/telemetry", ExpressionConverter.ConvertWithUrlEncoding(__workflow_twinid, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_componentPath, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2020-10-31");
-                callPayload.Headers["Message-Id"] = ExpressionConverter.Convert(messageId);
-                if (telemetrySourceTime != null)
-                    callPayload.Headers["Telemetry-Source-Time"] = ExpressionConverter.Convert(telemetrySourceTime);
+                callPayload.Headers["Message-Id"] = ExpressionConverter.Convert(__workflow_messageId);
+                if (__workflow_telemetrySourceTime != null)
+                    callPayload.Headers["Telemetry-Source-Time"] = ExpressionConverter.Convert(__workflow_telemetrySourceTime);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyvalue != null)
+                if (__workflow_bodyvalue != null)
                 {
-                    body["value"] = ExpressionConverter.ConvertO(bodyvalue);
+                    body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
                     bodypropCount++;
                 }
 
@@ -534,41 +448,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
-        [WorkflowExpressionFactory(nameof(__BuildListRelationships))]
-        public IBodyWorkflowAction<ListRelationshipsResponse> ListRelationships([WorkflowExpression] Func<string> twinid, [WorkflowExpression] Func<string> continuationToken = null)
+        public IBodyWorkflowAction<ListRelationshipsResponse> ListRelationships(Expression<Func<string>> twinid, Expression<Func<string>> continuationToken = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListRelationshipsResponse> __BuildListRelationships(WorkflowExpression<string> twinid, WorkflowExpression<string> continuationToken = null)
-        {
-            WorkflowExpression.Validate(twinid, nameof(twinid), required: true);
-            WorkflowExpression.Validate(continuationToken, nameof(continuationToken), required: false);
+            var __workflow_twinid = twinid == null ? null : WorkflowExpression.Compile(twinid);
+            WorkflowExpression.Validate(__workflow_twinid, nameof(twinid), required: true);
+            var __workflow_continuationToken = continuationToken == null ? null : WorkflowExpression.Compile(continuationToken);
+            WorkflowExpression.Validate(__workflow_continuationToken, nameof(continuationToken), required: false);
             return new DeferredBodyAction<ListRelationshipsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}/relationships", ExpressionConverter.ConvertWithUrlEncoding(twinid, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/digitaltwins/{0}/relationships", ExpressionConverter.ConvertWithUrlEncoding(__workflow_twinid, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (continuationToken != null)
-                    callPayload.Queries["continuationToken"] = ExpressionConverter.Convert(continuationToken);
+                if (__workflow_continuationToken != null)
+                    callPayload.Queries["continuationToken"] = ExpressionConverter.Convert(__workflow_continuationToken);
                 callPayload.Queries["api-version"] = Convert.ToString("2020-10-31");
                 return new ApiConnectionAction<ListRelationshipsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
-        [WorkflowExpressionFactory(nameof(__BuildQueryTwins))]
-        public IBodyWorkflowAction<QueryResult> QueryTwins([WorkflowExpression] Func<string> bodyquery = null, [WorkflowExpression] Func<string> bodycontinuationToken = null)
+        public IBodyWorkflowAction<QueryResult> QueryTwins(Expression<Func<string>> bodyquery = null, Expression<Func<string>> bodycontinuationToken = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<QueryResult> __BuildQueryTwins(WorkflowExpression<string> bodyquery = null, WorkflowExpression<string> bodycontinuationToken = null)
-        {
-            WorkflowExpression.Validate(bodyquery, nameof(bodyquery), required: false);
-            WorkflowExpression.Validate(bodycontinuationToken, nameof(bodycontinuationToken), required: false);
+            var __workflow_bodyquery = bodyquery == null ? null : WorkflowExpression.Compile(bodyquery);
+            WorkflowExpression.Validate(__workflow_bodyquery, nameof(bodyquery), required: false);
+            var __workflow_bodycontinuationToken = bodycontinuationToken == null ? null : WorkflowExpression.Compile(bodycontinuationToken);
+            WorkflowExpression.Validate(__workflow_bodycontinuationToken, nameof(bodycontinuationToken), required: false);
             return new DeferredBodyAction<QueryResult>(() =>
             {
                 var apiCallPath = "/query";
@@ -577,15 +481,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
                 callPayload.Queries["api-version"] = Convert.ToString("2020-10-31");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyquery != null)
+                if (__workflow_bodyquery != null)
                 {
-                    body["query"] = ExpressionConverter.ConvertO(bodyquery);
+                    body["query"] = ExpressionConverter.ConvertO(__workflow_bodyquery);
                     bodypropCount++;
                 }
 
-                if (bodycontinuationToken != null)
+                if (__workflow_bodycontinuationToken != null)
                 {
-                    body["continuationToken"] = ExpressionConverter.ConvertO(bodycontinuationToken);
+                    body["continuationToken"] = ExpressionConverter.ConvertO(__workflow_bodycontinuationToken);
                     bodypropCount++;
                 }
 

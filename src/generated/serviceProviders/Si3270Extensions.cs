@@ -1,7 +1,6 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Si3270
 {
     using System;
@@ -9,29 +8,25 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Si3270
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class Si3270Actions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "si3270")]
-        [WorkflowExpressionFactory(nameof(__BuildExecuteMethod))]
-        public IBodyWorkflowAction<JToken> ExecuteMethod([WorkflowExpression] Func<string> hidx, [WorkflowExpression] Func<string> method, [WorkflowExpression] Func<object> inputParameters)
+        public IBodyWorkflowAction<JToken> ExecuteMethod(Expression<Func<string>> hidx, Expression<Func<string>> method, Expression<Func<object>> inputParameters)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildExecuteMethod(WorkflowExpression<string> hidx, WorkflowExpression<string> method, WorkflowExpression<object> inputParameters)
-        {
-            WorkflowExpression.Validate(hidx, nameof(hidx), required: true);
-            WorkflowExpression.Validate(method, nameof(method), required: true);
-            WorkflowExpression.Validate(inputParameters, nameof(inputParameters), required: true);
+            var __workflow_hidx = hidx == null ? null : WorkflowExpression.Compile(hidx);
+            WorkflowExpression.Validate(__workflow_hidx, nameof(hidx), required: true);
+            var __workflow_method = method == null ? null : WorkflowExpression.Compile(method);
+            WorkflowExpression.Validate(__workflow_method, nameof(method), required: true);
+            var __workflow_inputParameters = inputParameters == null ? null : WorkflowExpression.Compile(inputParameters);
+            WorkflowExpression.Validate(__workflow_inputParameters, nameof(inputParameters), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["hidx"] = ExpressionConverter.ConvertO(hidx);
-                serviceProviderParameters["method"] = ExpressionConverter.ConvertO(method);
-                serviceProviderParameters["inputParameters"] = ExpressionConverter.ConvertO(inputParameters);
+                serviceProviderParameters["hidx"] = ExpressionConverter.ConvertO(__workflow_hidx);
+                serviceProviderParameters["method"] = ExpressionConverter.ConvertO(__workflow_method);
+                serviceProviderParameters["inputParameters"] = ExpressionConverter.ConvertO(__workflow_inputParameters);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/si3270", operationId: "executeMethod", connectionName: connectionId),

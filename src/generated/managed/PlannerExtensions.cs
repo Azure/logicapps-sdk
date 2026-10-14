@@ -1,30 +1,23 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class PlannerActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteTask))]
-        public IWorkflowAction DeleteTask([WorkflowExpression] Func<string> id)
+        public IWorkflowAction DeleteTask(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDeleteTask(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/planner/tasks/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/planner/tasks/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -32,27 +25,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
-        [WorkflowExpressionFactory(nameof(__BuildUnassignUsers))]
-        public IBodyWorkflowAction<GetTaskResponseV2> UnassignUsers([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyremoveAssignedUsers)
+        public IBodyWorkflowAction<GetTaskResponseV2> UnassignUsers(Expression<Func<string>> id, Expression<Func<string>> bodyremoveAssignedUsers)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetTaskResponseV2> __BuildUnassignUsers(WorkflowExpression<string> id, WorkflowExpression<string> bodyremoveAssignedUsers)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(bodyremoveAssignedUsers, nameof(bodyremoveAssignedUsers), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_bodyremoveAssignedUsers = bodyremoveAssignedUsers == null ? null : WorkflowExpression.Compile(bodyremoveAssignedUsers);
+            WorkflowExpression.Validate(__workflow_bodyremoveAssignedUsers, nameof(bodyremoveAssignedUsers), required: true);
             return new DeferredBodyAction<GetTaskResponseV2>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/planner/tasks/{0}/unassignusers", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/planner/tasks/{0}/unassignusers", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["prefer"] = Convert.ToString(" return=representation");
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["assignments"] = ExpressionConverter.ConvertO(bodyremoveAssignedUsers);
+                body["assignments"] = ExpressionConverter.ConvertO(__workflow_bodyremoveAssignedUsers);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -63,27 +51,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
-        [WorkflowExpressionFactory(nameof(__BuildAssignUsers))]
-        public IBodyWorkflowAction<GetTaskResponseV2> AssignUsers([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyassignedUserIds)
+        public IBodyWorkflowAction<GetTaskResponseV2> AssignUsers(Expression<Func<string>> id, Expression<Func<string>> bodyassignedUserIds)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetTaskResponseV2> __BuildAssignUsers(WorkflowExpression<string> id, WorkflowExpression<string> bodyassignedUserIds)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(bodyassignedUserIds, nameof(bodyassignedUserIds), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_bodyassignedUserIds = bodyassignedUserIds == null ? null : WorkflowExpression.Compile(bodyassignedUserIds);
+            WorkflowExpression.Validate(__workflow_bodyassignedUserIds, nameof(bodyassignedUserIds), required: true);
             return new DeferredBodyAction<GetTaskResponseV2>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/planner/tasks/{0}/assignusers", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/planner/tasks/{0}/assignusers", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["prefer"] = Convert.ToString(" return=representation");
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["assignments"] = ExpressionConverter.ConvertO(bodyassignedUserIds);
+                body["assignments"] = ExpressionConverter.ConvertO(__workflow_bodyassignedUserIds);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -94,19 +77,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
-        [WorkflowExpressionFactory(nameof(__BuildListGroupPlans))]
-        public IBodyWorkflowAction<ListMyPlansResponse> ListGroupPlans([WorkflowExpression] Func<string> groupId)
+        public IBodyWorkflowAction<ListMyPlansResponse> ListGroupPlans(Expression<Func<string>> groupId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListMyPlansResponse> __BuildListGroupPlans(WorkflowExpression<string> groupId)
-        {
-            WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
+            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
+            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
             return new DeferredBodyAction<ListMyPlansResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/planner/plans", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/planner/plans", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ListMyPlansResponse>(callPayload);
@@ -114,18 +91,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateBucket))]
-        public IBodyWorkflowAction<CreateBucketResponse> CreateBucket([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodygroupId, [WorkflowExpression] Func<string> bodyplanId)
+        public IBodyWorkflowAction<CreateBucketResponse> CreateBucket(Expression<Func<string>> bodyname, Expression<Func<string>> bodygroupId, Expression<Func<string>> bodyplanId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateBucketResponse> __BuildCreateBucket(WorkflowExpression<string> bodyname, WorkflowExpression<string> bodygroupId, WorkflowExpression<string> bodyplanId)
-        {
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
-            WorkflowExpression.Validate(bodygroupId, nameof(bodygroupId), required: true);
-            WorkflowExpression.Validate(bodyplanId, nameof(bodyplanId), required: true);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
+            var __workflow_bodygroupId = bodygroupId == null ? null : WorkflowExpression.Compile(bodygroupId);
+            WorkflowExpression.Validate(__workflow_bodygroupId, nameof(bodygroupId), required: true);
+            var __workflow_bodyplanId = bodyplanId == null ? null : WorkflowExpression.Compile(bodyplanId);
+            WorkflowExpression.Validate(__workflow_bodyplanId, nameof(bodyplanId), required: true);
             return new DeferredBodyAction<CreateBucketResponse>(() =>
             {
                 var apiCallPath = "/v2/v1.0/planner/buckets";
@@ -134,11 +107,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
                 bodypropCount++;
-                body["groupId"] = ExpressionConverter.ConvertO(bodygroupId);
+                body["groupId"] = ExpressionConverter.ConvertO(__workflow_bodygroupId);
                 bodypropCount++;
-                body["planId"] = ExpressionConverter.ConvertO(bodyplanId);
+                body["planId"] = ExpressionConverter.ConvertO(__workflow_bodyplanId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -149,48 +122,74 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateTask))]
-        public IBodyWorkflowAction<GetTaskResponseV3> CreateTask([WorkflowExpression] Func<string> bodygroupId, [WorkflowExpression] Func<string> bodyplanId, [WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodybucketId = null, [WorkflowExpression] Func<string> bodystartDateTime = null, [WorkflowExpression] Func<string> bodydueDateTime = null, [WorkflowExpression] Func<string> bodyassignedUserIds = null, [WorkflowExpression] Func<bool> bodyappliedCategoriespink = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesred = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesyellow = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesgreen = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesblue = null, [WorkflowExpression] Func<bool> bodyappliedCategoriespurple = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesbronze = null, [WorkflowExpression] Func<bool> bodyappliedCategorieslime = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesaqua = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesgray = null, [WorkflowExpression] Func<bool> bodyappliedCategoriessilver = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesbrown = null, [WorkflowExpression] Func<bool> bodyappliedCategoriescranberry = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesorange = null, [WorkflowExpression] Func<bool> bodyappliedCategoriespeach = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesmarigold = null, [WorkflowExpression] Func<bool> bodyappliedCategorieslightGreen = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesdarkGreen = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesteal = null, [WorkflowExpression] Func<bool> bodyappliedCategorieslightBlue = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesdarkBlue = null, [WorkflowExpression] Func<bool> bodyappliedCategorieslavender = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesplum = null, [WorkflowExpression] Func<bool> bodyappliedCategorieslightGray = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesdarkGray = null, [WorkflowExpression] Func<int> bodypriority = null)
+        public IBodyWorkflowAction<GetTaskResponseV3> CreateTask(Expression<Func<string>> bodygroupId, Expression<Func<string>> bodyplanId, Expression<Func<string>> bodytitle, Expression<Func<string>> bodybucketId = null, Expression<Func<string>> bodystartDateTime = null, Expression<Func<string>> bodydueDateTime = null, Expression<Func<string>> bodyassignedUserIds = null, Expression<Func<bool>> bodyappliedCategoriespink = null, Expression<Func<bool>> bodyappliedCategoriesred = null, Expression<Func<bool>> bodyappliedCategoriesyellow = null, Expression<Func<bool>> bodyappliedCategoriesgreen = null, Expression<Func<bool>> bodyappliedCategoriesblue = null, Expression<Func<bool>> bodyappliedCategoriespurple = null, Expression<Func<bool>> bodyappliedCategoriesbronze = null, Expression<Func<bool>> bodyappliedCategorieslime = null, Expression<Func<bool>> bodyappliedCategoriesaqua = null, Expression<Func<bool>> bodyappliedCategoriesgray = null, Expression<Func<bool>> bodyappliedCategoriessilver = null, Expression<Func<bool>> bodyappliedCategoriesbrown = null, Expression<Func<bool>> bodyappliedCategoriescranberry = null, Expression<Func<bool>> bodyappliedCategoriesorange = null, Expression<Func<bool>> bodyappliedCategoriespeach = null, Expression<Func<bool>> bodyappliedCategoriesmarigold = null, Expression<Func<bool>> bodyappliedCategorieslightGreen = null, Expression<Func<bool>> bodyappliedCategoriesdarkGreen = null, Expression<Func<bool>> bodyappliedCategoriesteal = null, Expression<Func<bool>> bodyappliedCategorieslightBlue = null, Expression<Func<bool>> bodyappliedCategoriesdarkBlue = null, Expression<Func<bool>> bodyappliedCategorieslavender = null, Expression<Func<bool>> bodyappliedCategoriesplum = null, Expression<Func<bool>> bodyappliedCategorieslightGray = null, Expression<Func<bool>> bodyappliedCategoriesdarkGray = null, Expression<Func<int>> bodypriority = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetTaskResponseV3> __BuildCreateTask(WorkflowExpression<string> bodygroupId, WorkflowExpression<string> bodyplanId, WorkflowExpression<string> bodytitle, WorkflowExpression<string> bodybucketId = null, WorkflowExpression<string> bodystartDateTime = null, WorkflowExpression<string> bodydueDateTime = null, WorkflowExpression<string> bodyassignedUserIds = null, WorkflowExpression<bool> bodyappliedCategoriespink = null, WorkflowExpression<bool> bodyappliedCategoriesred = null, WorkflowExpression<bool> bodyappliedCategoriesyellow = null, WorkflowExpression<bool> bodyappliedCategoriesgreen = null, WorkflowExpression<bool> bodyappliedCategoriesblue = null, WorkflowExpression<bool> bodyappliedCategoriespurple = null, WorkflowExpression<bool> bodyappliedCategoriesbronze = null, WorkflowExpression<bool> bodyappliedCategorieslime = null, WorkflowExpression<bool> bodyappliedCategoriesaqua = null, WorkflowExpression<bool> bodyappliedCategoriesgray = null, WorkflowExpression<bool> bodyappliedCategoriessilver = null, WorkflowExpression<bool> bodyappliedCategoriesbrown = null, WorkflowExpression<bool> bodyappliedCategoriescranberry = null, WorkflowExpression<bool> bodyappliedCategoriesorange = null, WorkflowExpression<bool> bodyappliedCategoriespeach = null, WorkflowExpression<bool> bodyappliedCategoriesmarigold = null, WorkflowExpression<bool> bodyappliedCategorieslightGreen = null, WorkflowExpression<bool> bodyappliedCategoriesdarkGreen = null, WorkflowExpression<bool> bodyappliedCategoriesteal = null, WorkflowExpression<bool> bodyappliedCategorieslightBlue = null, WorkflowExpression<bool> bodyappliedCategoriesdarkBlue = null, WorkflowExpression<bool> bodyappliedCategorieslavender = null, WorkflowExpression<bool> bodyappliedCategoriesplum = null, WorkflowExpression<bool> bodyappliedCategorieslightGray = null, WorkflowExpression<bool> bodyappliedCategoriesdarkGray = null, WorkflowExpression<int> bodypriority = null)
-        {
-            WorkflowExpression.Validate(bodygroupId, nameof(bodygroupId), required: true);
-            WorkflowExpression.Validate(bodyplanId, nameof(bodyplanId), required: true);
-            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            WorkflowExpression.Validate(bodybucketId, nameof(bodybucketId), required: false);
-            WorkflowExpression.Validate(bodystartDateTime, nameof(bodystartDateTime), required: false);
-            WorkflowExpression.Validate(bodydueDateTime, nameof(bodydueDateTime), required: false);
-            WorkflowExpression.Validate(bodyassignedUserIds, nameof(bodyassignedUserIds), required: false);
-            WorkflowExpression.Validate(bodyappliedCategoriespink, nameof(bodyappliedCategoriespink), required: false);
-            WorkflowExpression.Validate(bodyappliedCategoriesred, nameof(bodyappliedCategoriesred), required: false);
-            WorkflowExpression.Validate(bodyappliedCategoriesyellow, nameof(bodyappliedCategoriesyellow), required: false);
-            WorkflowExpression.Validate(bodyappliedCategoriesgreen, nameof(bodyappliedCategoriesgreen), required: false);
-            WorkflowExpression.Validate(bodyappliedCategoriesblue, nameof(bodyappliedCategoriesblue), required: false);
-            WorkflowExpression.Validate(bodyappliedCategoriespurple, nameof(bodyappliedCategoriespurple), required: false);
-            WorkflowExpression.Validate(bodyappliedCategoriesbronze, nameof(bodyappliedCategoriesbronze), required: false);
-            WorkflowExpression.Validate(bodyappliedCategorieslime, nameof(bodyappliedCategorieslime), required: false);
-            WorkflowExpression.Validate(bodyappliedCategoriesaqua, nameof(bodyappliedCategoriesaqua), required: false);
-            WorkflowExpression.Validate(bodyappliedCategoriesgray, nameof(bodyappliedCategoriesgray), required: false);
-            WorkflowExpression.Validate(bodyappliedCategoriessilver, nameof(bodyappliedCategoriessilver), required: false);
-            WorkflowExpression.Validate(bodyappliedCategoriesbrown, nameof(bodyappliedCategoriesbrown), required: false);
-            WorkflowExpression.Validate(bodyappliedCategoriescranberry, nameof(bodyappliedCategoriescranberry), required: false);
-            WorkflowExpression.Validate(bodyappliedCategoriesorange, nameof(bodyappliedCategoriesorange), required: false);
-            WorkflowExpression.Validate(bodyappliedCategoriespeach, nameof(bodyappliedCategoriespeach), required: false);
-            WorkflowExpression.Validate(bodyappliedCategoriesmarigold, nameof(bodyappliedCategoriesmarigold), required: false);
-            WorkflowExpression.Validate(bodyappliedCategorieslightGreen, nameof(bodyappliedCategorieslightGreen), required: false);
-            WorkflowExpression.Validate(bodyappliedCategoriesdarkGreen, nameof(bodyappliedCategoriesdarkGreen), required: false);
-            WorkflowExpression.Validate(bodyappliedCategoriesteal, nameof(bodyappliedCategoriesteal), required: false);
-            WorkflowExpression.Validate(bodyappliedCategorieslightBlue, nameof(bodyappliedCategorieslightBlue), required: false);
-            WorkflowExpression.Validate(bodyappliedCategoriesdarkBlue, nameof(bodyappliedCategoriesdarkBlue), required: false);
-            WorkflowExpression.Validate(bodyappliedCategorieslavender, nameof(bodyappliedCategorieslavender), required: false);
-            WorkflowExpression.Validate(bodyappliedCategoriesplum, nameof(bodyappliedCategoriesplum), required: false);
-            WorkflowExpression.Validate(bodyappliedCategorieslightGray, nameof(bodyappliedCategorieslightGray), required: false);
-            WorkflowExpression.Validate(bodyappliedCategoriesdarkGray, nameof(bodyappliedCategoriesdarkGray), required: false);
-            WorkflowExpression.Validate(bodypriority, nameof(bodypriority), required: false);
+            var __workflow_bodygroupId = bodygroupId == null ? null : WorkflowExpression.Compile(bodygroupId);
+            WorkflowExpression.Validate(__workflow_bodygroupId, nameof(bodygroupId), required: true);
+            var __workflow_bodyplanId = bodyplanId == null ? null : WorkflowExpression.Compile(bodyplanId);
+            WorkflowExpression.Validate(__workflow_bodyplanId, nameof(bodyplanId), required: true);
+            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
+            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodybucketId = bodybucketId == null ? null : WorkflowExpression.Compile(bodybucketId);
+            WorkflowExpression.Validate(__workflow_bodybucketId, nameof(bodybucketId), required: false);
+            var __workflow_bodystartDateTime = bodystartDateTime == null ? null : WorkflowExpression.Compile(bodystartDateTime);
+            WorkflowExpression.Validate(__workflow_bodystartDateTime, nameof(bodystartDateTime), required: false);
+            var __workflow_bodydueDateTime = bodydueDateTime == null ? null : WorkflowExpression.Compile(bodydueDateTime);
+            WorkflowExpression.Validate(__workflow_bodydueDateTime, nameof(bodydueDateTime), required: false);
+            var __workflow_bodyassignedUserIds = bodyassignedUserIds == null ? null : WorkflowExpression.Compile(bodyassignedUserIds);
+            WorkflowExpression.Validate(__workflow_bodyassignedUserIds, nameof(bodyassignedUserIds), required: false);
+            var __workflow_bodyappliedCategoriespink = bodyappliedCategoriespink == null ? null : WorkflowExpression.Compile(bodyappliedCategoriespink);
+            WorkflowExpression.Validate(__workflow_bodyappliedCategoriespink, nameof(bodyappliedCategoriespink), required: false);
+            var __workflow_bodyappliedCategoriesred = bodyappliedCategoriesred == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesred);
+            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesred, nameof(bodyappliedCategoriesred), required: false);
+            var __workflow_bodyappliedCategoriesyellow = bodyappliedCategoriesyellow == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesyellow);
+            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesyellow, nameof(bodyappliedCategoriesyellow), required: false);
+            var __workflow_bodyappliedCategoriesgreen = bodyappliedCategoriesgreen == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesgreen);
+            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesgreen, nameof(bodyappliedCategoriesgreen), required: false);
+            var __workflow_bodyappliedCategoriesblue = bodyappliedCategoriesblue == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesblue);
+            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesblue, nameof(bodyappliedCategoriesblue), required: false);
+            var __workflow_bodyappliedCategoriespurple = bodyappliedCategoriespurple == null ? null : WorkflowExpression.Compile(bodyappliedCategoriespurple);
+            WorkflowExpression.Validate(__workflow_bodyappliedCategoriespurple, nameof(bodyappliedCategoriespurple), required: false);
+            var __workflow_bodyappliedCategoriesbronze = bodyappliedCategoriesbronze == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesbronze);
+            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesbronze, nameof(bodyappliedCategoriesbronze), required: false);
+            var __workflow_bodyappliedCategorieslime = bodyappliedCategorieslime == null ? null : WorkflowExpression.Compile(bodyappliedCategorieslime);
+            WorkflowExpression.Validate(__workflow_bodyappliedCategorieslime, nameof(bodyappliedCategorieslime), required: false);
+            var __workflow_bodyappliedCategoriesaqua = bodyappliedCategoriesaqua == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesaqua);
+            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesaqua, nameof(bodyappliedCategoriesaqua), required: false);
+            var __workflow_bodyappliedCategoriesgray = bodyappliedCategoriesgray == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesgray);
+            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesgray, nameof(bodyappliedCategoriesgray), required: false);
+            var __workflow_bodyappliedCategoriessilver = bodyappliedCategoriessilver == null ? null : WorkflowExpression.Compile(bodyappliedCategoriessilver);
+            WorkflowExpression.Validate(__workflow_bodyappliedCategoriessilver, nameof(bodyappliedCategoriessilver), required: false);
+            var __workflow_bodyappliedCategoriesbrown = bodyappliedCategoriesbrown == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesbrown);
+            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesbrown, nameof(bodyappliedCategoriesbrown), required: false);
+            var __workflow_bodyappliedCategoriescranberry = bodyappliedCategoriescranberry == null ? null : WorkflowExpression.Compile(bodyappliedCategoriescranberry);
+            WorkflowExpression.Validate(__workflow_bodyappliedCategoriescranberry, nameof(bodyappliedCategoriescranberry), required: false);
+            var __workflow_bodyappliedCategoriesorange = bodyappliedCategoriesorange == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesorange);
+            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesorange, nameof(bodyappliedCategoriesorange), required: false);
+            var __workflow_bodyappliedCategoriespeach = bodyappliedCategoriespeach == null ? null : WorkflowExpression.Compile(bodyappliedCategoriespeach);
+            WorkflowExpression.Validate(__workflow_bodyappliedCategoriespeach, nameof(bodyappliedCategoriespeach), required: false);
+            var __workflow_bodyappliedCategoriesmarigold = bodyappliedCategoriesmarigold == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesmarigold);
+            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesmarigold, nameof(bodyappliedCategoriesmarigold), required: false);
+            var __workflow_bodyappliedCategorieslightGreen = bodyappliedCategorieslightGreen == null ? null : WorkflowExpression.Compile(bodyappliedCategorieslightGreen);
+            WorkflowExpression.Validate(__workflow_bodyappliedCategorieslightGreen, nameof(bodyappliedCategorieslightGreen), required: false);
+            var __workflow_bodyappliedCategoriesdarkGreen = bodyappliedCategoriesdarkGreen == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesdarkGreen);
+            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesdarkGreen, nameof(bodyappliedCategoriesdarkGreen), required: false);
+            var __workflow_bodyappliedCategoriesteal = bodyappliedCategoriesteal == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesteal);
+            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesteal, nameof(bodyappliedCategoriesteal), required: false);
+            var __workflow_bodyappliedCategorieslightBlue = bodyappliedCategorieslightBlue == null ? null : WorkflowExpression.Compile(bodyappliedCategorieslightBlue);
+            WorkflowExpression.Validate(__workflow_bodyappliedCategorieslightBlue, nameof(bodyappliedCategorieslightBlue), required: false);
+            var __workflow_bodyappliedCategoriesdarkBlue = bodyappliedCategoriesdarkBlue == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesdarkBlue);
+            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesdarkBlue, nameof(bodyappliedCategoriesdarkBlue), required: false);
+            var __workflow_bodyappliedCategorieslavender = bodyappliedCategorieslavender == null ? null : WorkflowExpression.Compile(bodyappliedCategorieslavender);
+            WorkflowExpression.Validate(__workflow_bodyappliedCategorieslavender, nameof(bodyappliedCategorieslavender), required: false);
+            var __workflow_bodyappliedCategoriesplum = bodyappliedCategoriesplum == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesplum);
+            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesplum, nameof(bodyappliedCategoriesplum), required: false);
+            var __workflow_bodyappliedCategorieslightGray = bodyappliedCategorieslightGray == null ? null : WorkflowExpression.Compile(bodyappliedCategorieslightGray);
+            WorkflowExpression.Validate(__workflow_bodyappliedCategorieslightGray, nameof(bodyappliedCategorieslightGray), required: false);
+            var __workflow_bodyappliedCategoriesdarkGray = bodyappliedCategoriesdarkGray == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesdarkGray);
+            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesdarkGray, nameof(bodyappliedCategoriesdarkGray), required: false);
+            var __workflow_bodypriority = bodypriority == null ? null : WorkflowExpression.Compile(bodypriority);
+            WorkflowExpression.Validate(__workflow_bodypriority, nameof(bodypriority), required: false);
             return new DeferredBodyAction<GetTaskResponseV3>(() =>
             {
                 var apiCallPath = "/v2/beta/planner/tasks";
@@ -200,184 +199,184 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["groupId"] = ExpressionConverter.ConvertO(bodygroupId);
+                body["groupId"] = ExpressionConverter.ConvertO(__workflow_bodygroupId);
                 bodypropCount++;
-                body["planId"] = ExpressionConverter.ConvertO(bodyplanId);
+                body["planId"] = ExpressionConverter.ConvertO(__workflow_bodyplanId);
                 bodypropCount++;
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
-                if (bodybucketId != null)
+                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
+                if (__workflow_bodybucketId != null)
                 {
-                    body["bucketId"] = ExpressionConverter.ConvertO(bodybucketId);
+                    body["bucketId"] = ExpressionConverter.ConvertO(__workflow_bodybucketId);
                     bodypropCount++;
                 }
 
-                if (bodystartDateTime != null)
+                if (__workflow_bodystartDateTime != null)
                 {
-                    body["startDateTime"] = ExpressionConverter.ConvertO(bodystartDateTime);
+                    body["startDateTime"] = ExpressionConverter.ConvertO(__workflow_bodystartDateTime);
                     bodypropCount++;
                 }
 
-                if (bodydueDateTime != null)
+                if (__workflow_bodydueDateTime != null)
                 {
-                    body["dueDateTime"] = ExpressionConverter.ConvertO(bodydueDateTime);
+                    body["dueDateTime"] = ExpressionConverter.ConvertO(__workflow_bodydueDateTime);
                     bodypropCount++;
                 }
 
-                if (bodyassignedUserIds != null)
+                if (__workflow_bodyassignedUserIds != null)
                 {
-                    body["assignments"] = ExpressionConverter.ConvertO(bodyassignedUserIds);
+                    body["assignments"] = ExpressionConverter.ConvertO(__workflow_bodyassignedUserIds);
                     bodypropCount++;
                 }
 
                 var appliedCategoriesObject = new JObject();
                 var appliedCategoriesObjectpropCount = 0;
-                if (bodyappliedCategoriespink != null)
+                if (__workflow_bodyappliedCategoriespink != null)
                 {
-                    appliedCategoriesObject["category1"] = ExpressionConverter.ConvertO(bodyappliedCategoriespink);
+                    appliedCategoriesObject["category1"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriespink);
                     appliedCategoriesObjectpropCount++;
                 }
 
-                if (bodyappliedCategoriesred != null)
+                if (__workflow_bodyappliedCategoriesred != null)
                 {
-                    appliedCategoriesObject["category2"] = ExpressionConverter.ConvertO(bodyappliedCategoriesred);
+                    appliedCategoriesObject["category2"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesred);
                     appliedCategoriesObjectpropCount++;
                 }
 
-                if (bodyappliedCategoriesyellow != null)
+                if (__workflow_bodyappliedCategoriesyellow != null)
                 {
-                    appliedCategoriesObject["category3"] = ExpressionConverter.ConvertO(bodyappliedCategoriesyellow);
+                    appliedCategoriesObject["category3"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesyellow);
                     appliedCategoriesObjectpropCount++;
                 }
 
-                if (bodyappliedCategoriesgreen != null)
+                if (__workflow_bodyappliedCategoriesgreen != null)
                 {
-                    appliedCategoriesObject["category4"] = ExpressionConverter.ConvertO(bodyappliedCategoriesgreen);
+                    appliedCategoriesObject["category4"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesgreen);
                     appliedCategoriesObjectpropCount++;
                 }
 
-                if (bodyappliedCategoriesblue != null)
+                if (__workflow_bodyappliedCategoriesblue != null)
                 {
-                    appliedCategoriesObject["category5"] = ExpressionConverter.ConvertO(bodyappliedCategoriesblue);
+                    appliedCategoriesObject["category5"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesblue);
                     appliedCategoriesObjectpropCount++;
                 }
 
-                if (bodyappliedCategoriespurple != null)
+                if (__workflow_bodyappliedCategoriespurple != null)
                 {
-                    appliedCategoriesObject["category6"] = ExpressionConverter.ConvertO(bodyappliedCategoriespurple);
+                    appliedCategoriesObject["category6"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriespurple);
                     appliedCategoriesObjectpropCount++;
                 }
 
-                if (bodyappliedCategoriesbronze != null)
+                if (__workflow_bodyappliedCategoriesbronze != null)
                 {
-                    appliedCategoriesObject["category7"] = ExpressionConverter.ConvertO(bodyappliedCategoriesbronze);
+                    appliedCategoriesObject["category7"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesbronze);
                     appliedCategoriesObjectpropCount++;
                 }
 
-                if (bodyappliedCategorieslime != null)
+                if (__workflow_bodyappliedCategorieslime != null)
                 {
-                    appliedCategoriesObject["category8"] = ExpressionConverter.ConvertO(bodyappliedCategorieslime);
+                    appliedCategoriesObject["category8"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategorieslime);
                     appliedCategoriesObjectpropCount++;
                 }
 
-                if (bodyappliedCategoriesaqua != null)
+                if (__workflow_bodyappliedCategoriesaqua != null)
                 {
-                    appliedCategoriesObject["category9"] = ExpressionConverter.ConvertO(bodyappliedCategoriesaqua);
+                    appliedCategoriesObject["category9"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesaqua);
                     appliedCategoriesObjectpropCount++;
                 }
 
-                if (bodyappliedCategoriesgray != null)
+                if (__workflow_bodyappliedCategoriesgray != null)
                 {
-                    appliedCategoriesObject["category10"] = ExpressionConverter.ConvertO(bodyappliedCategoriesgray);
+                    appliedCategoriesObject["category10"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesgray);
                     appliedCategoriesObjectpropCount++;
                 }
 
-                if (bodyappliedCategoriessilver != null)
+                if (__workflow_bodyappliedCategoriessilver != null)
                 {
-                    appliedCategoriesObject["category11"] = ExpressionConverter.ConvertO(bodyappliedCategoriessilver);
+                    appliedCategoriesObject["category11"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriessilver);
                     appliedCategoriesObjectpropCount++;
                 }
 
-                if (bodyappliedCategoriesbrown != null)
+                if (__workflow_bodyappliedCategoriesbrown != null)
                 {
-                    appliedCategoriesObject["category12"] = ExpressionConverter.ConvertO(bodyappliedCategoriesbrown);
+                    appliedCategoriesObject["category12"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesbrown);
                     appliedCategoriesObjectpropCount++;
                 }
 
-                if (bodyappliedCategoriescranberry != null)
+                if (__workflow_bodyappliedCategoriescranberry != null)
                 {
-                    appliedCategoriesObject["category13"] = ExpressionConverter.ConvertO(bodyappliedCategoriescranberry);
+                    appliedCategoriesObject["category13"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriescranberry);
                     appliedCategoriesObjectpropCount++;
                 }
 
-                if (bodyappliedCategoriesorange != null)
+                if (__workflow_bodyappliedCategoriesorange != null)
                 {
-                    appliedCategoriesObject["category14"] = ExpressionConverter.ConvertO(bodyappliedCategoriesorange);
+                    appliedCategoriesObject["category14"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesorange);
                     appliedCategoriesObjectpropCount++;
                 }
 
-                if (bodyappliedCategoriespeach != null)
+                if (__workflow_bodyappliedCategoriespeach != null)
                 {
-                    appliedCategoriesObject["category15"] = ExpressionConverter.ConvertO(bodyappliedCategoriespeach);
+                    appliedCategoriesObject["category15"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriespeach);
                     appliedCategoriesObjectpropCount++;
                 }
 
-                if (bodyappliedCategoriesmarigold != null)
+                if (__workflow_bodyappliedCategoriesmarigold != null)
                 {
-                    appliedCategoriesObject["category16"] = ExpressionConverter.ConvertO(bodyappliedCategoriesmarigold);
+                    appliedCategoriesObject["category16"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesmarigold);
                     appliedCategoriesObjectpropCount++;
                 }
 
-                if (bodyappliedCategorieslightGreen != null)
+                if (__workflow_bodyappliedCategorieslightGreen != null)
                 {
-                    appliedCategoriesObject["category17"] = ExpressionConverter.ConvertO(bodyappliedCategorieslightGreen);
+                    appliedCategoriesObject["category17"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategorieslightGreen);
                     appliedCategoriesObjectpropCount++;
                 }
 
-                if (bodyappliedCategoriesdarkGreen != null)
+                if (__workflow_bodyappliedCategoriesdarkGreen != null)
                 {
-                    appliedCategoriesObject["category18"] = ExpressionConverter.ConvertO(bodyappliedCategoriesdarkGreen);
+                    appliedCategoriesObject["category18"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesdarkGreen);
                     appliedCategoriesObjectpropCount++;
                 }
 
-                if (bodyappliedCategoriesteal != null)
+                if (__workflow_bodyappliedCategoriesteal != null)
                 {
-                    appliedCategoriesObject["category19"] = ExpressionConverter.ConvertO(bodyappliedCategoriesteal);
+                    appliedCategoriesObject["category19"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesteal);
                     appliedCategoriesObjectpropCount++;
                 }
 
-                if (bodyappliedCategorieslightBlue != null)
+                if (__workflow_bodyappliedCategorieslightBlue != null)
                 {
-                    appliedCategoriesObject["category20"] = ExpressionConverter.ConvertO(bodyappliedCategorieslightBlue);
+                    appliedCategoriesObject["category20"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategorieslightBlue);
                     appliedCategoriesObjectpropCount++;
                 }
 
-                if (bodyappliedCategoriesdarkBlue != null)
+                if (__workflow_bodyappliedCategoriesdarkBlue != null)
                 {
-                    appliedCategoriesObject["category21"] = ExpressionConverter.ConvertO(bodyappliedCategoriesdarkBlue);
+                    appliedCategoriesObject["category21"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesdarkBlue);
                     appliedCategoriesObjectpropCount++;
                 }
 
-                if (bodyappliedCategorieslavender != null)
+                if (__workflow_bodyappliedCategorieslavender != null)
                 {
-                    appliedCategoriesObject["category22"] = ExpressionConverter.ConvertO(bodyappliedCategorieslavender);
+                    appliedCategoriesObject["category22"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategorieslavender);
                     appliedCategoriesObjectpropCount++;
                 }
 
-                if (bodyappliedCategoriesplum != null)
+                if (__workflow_bodyappliedCategoriesplum != null)
                 {
-                    appliedCategoriesObject["category23"] = ExpressionConverter.ConvertO(bodyappliedCategoriesplum);
+                    appliedCategoriesObject["category23"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesplum);
                     appliedCategoriesObjectpropCount++;
                 }
 
-                if (bodyappliedCategorieslightGray != null)
+                if (__workflow_bodyappliedCategorieslightGray != null)
                 {
-                    appliedCategoriesObject["category24"] = ExpressionConverter.ConvertO(bodyappliedCategorieslightGray);
+                    appliedCategoriesObject["category24"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategorieslightGray);
                     appliedCategoriesObjectpropCount++;
                 }
 
-                if (bodyappliedCategoriesdarkGray != null)
+                if (__workflow_bodyappliedCategoriesdarkGray != null)
                 {
-                    appliedCategoriesObject["category25"] = ExpressionConverter.ConvertO(bodyappliedCategoriesdarkGray);
+                    appliedCategoriesObject["category25"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesdarkGray);
                     appliedCategoriesObjectpropCount++;
                 }
 
@@ -387,9 +386,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
                     bodypropCount++;
                 }
 
-                if (bodypriority != null)
+                if (__workflow_bodypriority != null)
                 {
-                    body["priority"] = ExpressionConverter.ConvertO(bodypriority);
+                    body["priority"] = ExpressionConverter.ConvertO(__workflow_bodypriority);
                     bodypropCount++;
                 }
 
@@ -403,19 +402,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
-        [WorkflowExpressionFactory(nameof(__BuildGetTask))]
-        public IBodyWorkflowAction<GetTaskResponseV2> GetTask([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<GetTaskResponseV2> GetTask(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetTaskResponseV2> __BuildGetTask(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<GetTaskResponseV2>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/planner/tasks/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/planner/tasks/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetTaskResponseV2>(callPayload);
@@ -423,19 +416,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
-        [WorkflowExpressionFactory(nameof(__BuildGetTaskDetails))]
-        public IBodyWorkflowAction<GetTaskDetailsResponse> GetTaskDetails([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<GetTaskDetailsResponse> GetTaskDetails(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetTaskDetailsResponse> __BuildGetTaskDetails(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<GetTaskDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/planner/tasks/{0}/details", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/planner/tasks/{0}/details", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetTaskDetailsResponse>(callPayload);
@@ -443,23 +430,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
-        [WorkflowExpressionFactory(nameof(__BuildListBuckets))]
-        public IBodyWorkflowAction<ListBucketsResponse> ListBuckets([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<ListBucketsResponse> ListBuckets(Expression<Func<string>> groupId, Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListBucketsResponse> __BuildListBuckets(WorkflowExpression<string> groupId, WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
+            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<ListBucketsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/v1.0/planner/plans/{0}/buckets", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/v1.0/planner/plans/{0}/buckets", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
+                callPayload.Queries["groupId"] = ExpressionConverter.Convert(__workflow_groupId);
                 return new ApiConnectionAction<ListBucketsResponse>(callPayload);
             });
         }
@@ -474,255 +456,274 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
-        [WorkflowExpressionFactory(nameof(__BuildListTasks))]
-        public IBodyWorkflowAction<ListTasksResponseV2> ListTasks([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<ListTasksResponseV2> ListTasks(Expression<Func<string>> groupId, Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListTasksResponseV2> __BuildListTasks(WorkflowExpression<string> groupId, WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
+            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<ListTasksResponseV2>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/v1.0/planner/plans/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/v1.0/planner/plans/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
+                callPayload.Queries["groupId"] = ExpressionConverter.Convert(__workflow_groupId);
                 return new ApiConnectionAction<ListTasksResponseV2>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateTask))]
-        public IBodyWorkflowAction<GetTaskResponseV2> UpdateTask([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodydueDateTime = null, [WorkflowExpression] Func<string> bodystartDateTime = null, [WorkflowExpression] Func<int> bodypercentComplete = null, [WorkflowExpression] Func<string> bodybucketId = null, [WorkflowExpression] Func<bool> bodyappliedCategoriespink = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesred = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesyellow = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesgreen = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesblue = null, [WorkflowExpression] Func<bool> bodyappliedCategoriespurple = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesbronze = null, [WorkflowExpression] Func<bool> bodyappliedCategorieslime = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesaqua = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesgray = null, [WorkflowExpression] Func<bool> bodyappliedCategoriessilver = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesbrown = null, [WorkflowExpression] Func<bool> bodyappliedCategoriescranberry = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesorange = null, [WorkflowExpression] Func<bool> bodyappliedCategoriespeach = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesmarigold = null, [WorkflowExpression] Func<bool> bodyappliedCategorieslightGreen = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesdarkGreen = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesteal = null, [WorkflowExpression] Func<bool> bodyappliedCategorieslightBlue = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesdarkBlue = null, [WorkflowExpression] Func<bool> bodyappliedCategorieslavender = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesplum = null, [WorkflowExpression] Func<bool> bodyappliedCategorieslightGray = null, [WorkflowExpression] Func<bool> bodyappliedCategoriesdarkGray = null)
+        public IBodyWorkflowAction<GetTaskResponseV2> UpdateTask(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydueDateTime = null, Expression<Func<string>> bodystartDateTime = null, Expression<Func<int>> bodypercentComplete = null, Expression<Func<string>> bodybucketId = null, Expression<Func<bool>> bodyappliedCategoriespink = null, Expression<Func<bool>> bodyappliedCategoriesred = null, Expression<Func<bool>> bodyappliedCategoriesyellow = null, Expression<Func<bool>> bodyappliedCategoriesgreen = null, Expression<Func<bool>> bodyappliedCategoriesblue = null, Expression<Func<bool>> bodyappliedCategoriespurple = null, Expression<Func<bool>> bodyappliedCategoriesbronze = null, Expression<Func<bool>> bodyappliedCategorieslime = null, Expression<Func<bool>> bodyappliedCategoriesaqua = null, Expression<Func<bool>> bodyappliedCategoriesgray = null, Expression<Func<bool>> bodyappliedCategoriessilver = null, Expression<Func<bool>> bodyappliedCategoriesbrown = null, Expression<Func<bool>> bodyappliedCategoriescranberry = null, Expression<Func<bool>> bodyappliedCategoriesorange = null, Expression<Func<bool>> bodyappliedCategoriespeach = null, Expression<Func<bool>> bodyappliedCategoriesmarigold = null, Expression<Func<bool>> bodyappliedCategorieslightGreen = null, Expression<Func<bool>> bodyappliedCategoriesdarkGreen = null, Expression<Func<bool>> bodyappliedCategoriesteal = null, Expression<Func<bool>> bodyappliedCategorieslightBlue = null, Expression<Func<bool>> bodyappliedCategoriesdarkBlue = null, Expression<Func<bool>> bodyappliedCategorieslavender = null, Expression<Func<bool>> bodyappliedCategoriesplum = null, Expression<Func<bool>> bodyappliedCategorieslightGray = null, Expression<Func<bool>> bodyappliedCategoriesdarkGray = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetTaskResponseV2> __BuildUpdateTask(WorkflowExpression<string> id, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodydueDateTime = null, WorkflowExpression<string> bodystartDateTime = null, WorkflowExpression<int> bodypercentComplete = null, WorkflowExpression<string> bodybucketId = null, WorkflowExpression<bool> bodyappliedCategoriespink = null, WorkflowExpression<bool> bodyappliedCategoriesred = null, WorkflowExpression<bool> bodyappliedCategoriesyellow = null, WorkflowExpression<bool> bodyappliedCategoriesgreen = null, WorkflowExpression<bool> bodyappliedCategoriesblue = null, WorkflowExpression<bool> bodyappliedCategoriespurple = null, WorkflowExpression<bool> bodyappliedCategoriesbronze = null, WorkflowExpression<bool> bodyappliedCategorieslime = null, WorkflowExpression<bool> bodyappliedCategoriesaqua = null, WorkflowExpression<bool> bodyappliedCategoriesgray = null, WorkflowExpression<bool> bodyappliedCategoriessilver = null, WorkflowExpression<bool> bodyappliedCategoriesbrown = null, WorkflowExpression<bool> bodyappliedCategoriescranberry = null, WorkflowExpression<bool> bodyappliedCategoriesorange = null, WorkflowExpression<bool> bodyappliedCategoriespeach = null, WorkflowExpression<bool> bodyappliedCategoriesmarigold = null, WorkflowExpression<bool> bodyappliedCategorieslightGreen = null, WorkflowExpression<bool> bodyappliedCategoriesdarkGreen = null, WorkflowExpression<bool> bodyappliedCategoriesteal = null, WorkflowExpression<bool> bodyappliedCategorieslightBlue = null, WorkflowExpression<bool> bodyappliedCategoriesdarkBlue = null, WorkflowExpression<bool> bodyappliedCategorieslavender = null, WorkflowExpression<bool> bodyappliedCategoriesplum = null, WorkflowExpression<bool> bodyappliedCategorieslightGray = null, WorkflowExpression<bool> bodyappliedCategoriesdarkGray = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            WorkflowExpression.Validate(bodydueDateTime, nameof(bodydueDateTime), required: false);
-            WorkflowExpression.Validate(bodystartDateTime, nameof(bodystartDateTime), required: false);
-            WorkflowExpression.Validate(bodypercentComplete, nameof(bodypercentComplete), required: false);
-            WorkflowExpression.Validate(bodybucketId, nameof(bodybucketId), required: false);
-            WorkflowExpression.Validate(bodyappliedCategoriespink, nameof(bodyappliedCategoriespink), required: false);
-            WorkflowExpression.Validate(bodyappliedCategoriesred, nameof(bodyappliedCategoriesred), required: false);
-            WorkflowExpression.Validate(bodyappliedCategoriesyellow, nameof(bodyappliedCategoriesyellow), required: false);
-            WorkflowExpression.Validate(bodyappliedCategoriesgreen, nameof(bodyappliedCategoriesgreen), required: false);
-            WorkflowExpression.Validate(bodyappliedCategoriesblue, nameof(bodyappliedCategoriesblue), required: false);
-            WorkflowExpression.Validate(bodyappliedCategoriespurple, nameof(bodyappliedCategoriespurple), required: false);
-            WorkflowExpression.Validate(bodyappliedCategoriesbronze, nameof(bodyappliedCategoriesbronze), required: false);
-            WorkflowExpression.Validate(bodyappliedCategorieslime, nameof(bodyappliedCategorieslime), required: false);
-            WorkflowExpression.Validate(bodyappliedCategoriesaqua, nameof(bodyappliedCategoriesaqua), required: false);
-            WorkflowExpression.Validate(bodyappliedCategoriesgray, nameof(bodyappliedCategoriesgray), required: false);
-            WorkflowExpression.Validate(bodyappliedCategoriessilver, nameof(bodyappliedCategoriessilver), required: false);
-            WorkflowExpression.Validate(bodyappliedCategoriesbrown, nameof(bodyappliedCategoriesbrown), required: false);
-            WorkflowExpression.Validate(bodyappliedCategoriescranberry, nameof(bodyappliedCategoriescranberry), required: false);
-            WorkflowExpression.Validate(bodyappliedCategoriesorange, nameof(bodyappliedCategoriesorange), required: false);
-            WorkflowExpression.Validate(bodyappliedCategoriespeach, nameof(bodyappliedCategoriespeach), required: false);
-            WorkflowExpression.Validate(bodyappliedCategoriesmarigold, nameof(bodyappliedCategoriesmarigold), required: false);
-            WorkflowExpression.Validate(bodyappliedCategorieslightGreen, nameof(bodyappliedCategorieslightGreen), required: false);
-            WorkflowExpression.Validate(bodyappliedCategoriesdarkGreen, nameof(bodyappliedCategoriesdarkGreen), required: false);
-            WorkflowExpression.Validate(bodyappliedCategoriesteal, nameof(bodyappliedCategoriesteal), required: false);
-            WorkflowExpression.Validate(bodyappliedCategorieslightBlue, nameof(bodyappliedCategorieslightBlue), required: false);
-            WorkflowExpression.Validate(bodyappliedCategoriesdarkBlue, nameof(bodyappliedCategoriesdarkBlue), required: false);
-            WorkflowExpression.Validate(bodyappliedCategorieslavender, nameof(bodyappliedCategorieslavender), required: false);
-            WorkflowExpression.Validate(bodyappliedCategoriesplum, nameof(bodyappliedCategoriesplum), required: false);
-            WorkflowExpression.Validate(bodyappliedCategorieslightGray, nameof(bodyappliedCategorieslightGray), required: false);
-            WorkflowExpression.Validate(bodyappliedCategoriesdarkGray, nameof(bodyappliedCategoriesdarkGray), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
+            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodydueDateTime = bodydueDateTime == null ? null : WorkflowExpression.Compile(bodydueDateTime);
+            WorkflowExpression.Validate(__workflow_bodydueDateTime, nameof(bodydueDateTime), required: false);
+            var __workflow_bodystartDateTime = bodystartDateTime == null ? null : WorkflowExpression.Compile(bodystartDateTime);
+            WorkflowExpression.Validate(__workflow_bodystartDateTime, nameof(bodystartDateTime), required: false);
+            var __workflow_bodypercentComplete = bodypercentComplete == null ? null : WorkflowExpression.Compile(bodypercentComplete);
+            WorkflowExpression.Validate(__workflow_bodypercentComplete, nameof(bodypercentComplete), required: false);
+            var __workflow_bodybucketId = bodybucketId == null ? null : WorkflowExpression.Compile(bodybucketId);
+            WorkflowExpression.Validate(__workflow_bodybucketId, nameof(bodybucketId), required: false);
+            var __workflow_bodyappliedCategoriespink = bodyappliedCategoriespink == null ? null : WorkflowExpression.Compile(bodyappliedCategoriespink);
+            WorkflowExpression.Validate(__workflow_bodyappliedCategoriespink, nameof(bodyappliedCategoriespink), required: false);
+            var __workflow_bodyappliedCategoriesred = bodyappliedCategoriesred == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesred);
+            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesred, nameof(bodyappliedCategoriesred), required: false);
+            var __workflow_bodyappliedCategoriesyellow = bodyappliedCategoriesyellow == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesyellow);
+            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesyellow, nameof(bodyappliedCategoriesyellow), required: false);
+            var __workflow_bodyappliedCategoriesgreen = bodyappliedCategoriesgreen == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesgreen);
+            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesgreen, nameof(bodyappliedCategoriesgreen), required: false);
+            var __workflow_bodyappliedCategoriesblue = bodyappliedCategoriesblue == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesblue);
+            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesblue, nameof(bodyappliedCategoriesblue), required: false);
+            var __workflow_bodyappliedCategoriespurple = bodyappliedCategoriespurple == null ? null : WorkflowExpression.Compile(bodyappliedCategoriespurple);
+            WorkflowExpression.Validate(__workflow_bodyappliedCategoriespurple, nameof(bodyappliedCategoriespurple), required: false);
+            var __workflow_bodyappliedCategoriesbronze = bodyappliedCategoriesbronze == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesbronze);
+            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesbronze, nameof(bodyappliedCategoriesbronze), required: false);
+            var __workflow_bodyappliedCategorieslime = bodyappliedCategorieslime == null ? null : WorkflowExpression.Compile(bodyappliedCategorieslime);
+            WorkflowExpression.Validate(__workflow_bodyappliedCategorieslime, nameof(bodyappliedCategorieslime), required: false);
+            var __workflow_bodyappliedCategoriesaqua = bodyappliedCategoriesaqua == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesaqua);
+            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesaqua, nameof(bodyappliedCategoriesaqua), required: false);
+            var __workflow_bodyappliedCategoriesgray = bodyappliedCategoriesgray == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesgray);
+            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesgray, nameof(bodyappliedCategoriesgray), required: false);
+            var __workflow_bodyappliedCategoriessilver = bodyappliedCategoriessilver == null ? null : WorkflowExpression.Compile(bodyappliedCategoriessilver);
+            WorkflowExpression.Validate(__workflow_bodyappliedCategoriessilver, nameof(bodyappliedCategoriessilver), required: false);
+            var __workflow_bodyappliedCategoriesbrown = bodyappliedCategoriesbrown == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesbrown);
+            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesbrown, nameof(bodyappliedCategoriesbrown), required: false);
+            var __workflow_bodyappliedCategoriescranberry = bodyappliedCategoriescranberry == null ? null : WorkflowExpression.Compile(bodyappliedCategoriescranberry);
+            WorkflowExpression.Validate(__workflow_bodyappliedCategoriescranberry, nameof(bodyappliedCategoriescranberry), required: false);
+            var __workflow_bodyappliedCategoriesorange = bodyappliedCategoriesorange == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesorange);
+            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesorange, nameof(bodyappliedCategoriesorange), required: false);
+            var __workflow_bodyappliedCategoriespeach = bodyappliedCategoriespeach == null ? null : WorkflowExpression.Compile(bodyappliedCategoriespeach);
+            WorkflowExpression.Validate(__workflow_bodyappliedCategoriespeach, nameof(bodyappliedCategoriespeach), required: false);
+            var __workflow_bodyappliedCategoriesmarigold = bodyappliedCategoriesmarigold == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesmarigold);
+            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesmarigold, nameof(bodyappliedCategoriesmarigold), required: false);
+            var __workflow_bodyappliedCategorieslightGreen = bodyappliedCategorieslightGreen == null ? null : WorkflowExpression.Compile(bodyappliedCategorieslightGreen);
+            WorkflowExpression.Validate(__workflow_bodyappliedCategorieslightGreen, nameof(bodyappliedCategorieslightGreen), required: false);
+            var __workflow_bodyappliedCategoriesdarkGreen = bodyappliedCategoriesdarkGreen == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesdarkGreen);
+            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesdarkGreen, nameof(bodyappliedCategoriesdarkGreen), required: false);
+            var __workflow_bodyappliedCategoriesteal = bodyappliedCategoriesteal == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesteal);
+            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesteal, nameof(bodyappliedCategoriesteal), required: false);
+            var __workflow_bodyappliedCategorieslightBlue = bodyappliedCategorieslightBlue == null ? null : WorkflowExpression.Compile(bodyappliedCategorieslightBlue);
+            WorkflowExpression.Validate(__workflow_bodyappliedCategorieslightBlue, nameof(bodyappliedCategorieslightBlue), required: false);
+            var __workflow_bodyappliedCategoriesdarkBlue = bodyappliedCategoriesdarkBlue == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesdarkBlue);
+            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesdarkBlue, nameof(bodyappliedCategoriesdarkBlue), required: false);
+            var __workflow_bodyappliedCategorieslavender = bodyappliedCategorieslavender == null ? null : WorkflowExpression.Compile(bodyappliedCategorieslavender);
+            WorkflowExpression.Validate(__workflow_bodyappliedCategorieslavender, nameof(bodyappliedCategorieslavender), required: false);
+            var __workflow_bodyappliedCategoriesplum = bodyappliedCategoriesplum == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesplum);
+            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesplum, nameof(bodyappliedCategoriesplum), required: false);
+            var __workflow_bodyappliedCategorieslightGray = bodyappliedCategorieslightGray == null ? null : WorkflowExpression.Compile(bodyappliedCategorieslightGray);
+            WorkflowExpression.Validate(__workflow_bodyappliedCategorieslightGray, nameof(bodyappliedCategorieslightGray), required: false);
+            var __workflow_bodyappliedCategoriesdarkGray = bodyappliedCategoriesdarkGray == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesdarkGray);
+            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesdarkGray, nameof(bodyappliedCategoriesdarkGray), required: false);
             return new DeferredBodyAction<GetTaskResponseV2>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/v1.0/planner/tasks/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/v1.0/planner/tasks/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["prefer"] = Convert.ToString(" return=representation");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodytitle != null)
+                if (__workflow_bodytitle != null)
                 {
-                    body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
                     bodypropCount++;
                 }
 
-                if (bodydueDateTime != null)
+                if (__workflow_bodydueDateTime != null)
                 {
-                    body["dueDateTime"] = ExpressionConverter.ConvertO(bodydueDateTime);
+                    body["dueDateTime"] = ExpressionConverter.ConvertO(__workflow_bodydueDateTime);
                     bodypropCount++;
                 }
 
-                if (bodystartDateTime != null)
+                if (__workflow_bodystartDateTime != null)
                 {
-                    body["startDateTime"] = ExpressionConverter.ConvertO(bodystartDateTime);
+                    body["startDateTime"] = ExpressionConverter.ConvertO(__workflow_bodystartDateTime);
                     bodypropCount++;
                 }
 
-                if (bodypercentComplete != null)
+                if (__workflow_bodypercentComplete != null)
                 {
-                    body["percentComplete"] = ExpressionConverter.ConvertO(bodypercentComplete);
+                    body["percentComplete"] = ExpressionConverter.ConvertO(__workflow_bodypercentComplete);
                     bodypropCount++;
                 }
 
-                if (bodybucketId != null)
+                if (__workflow_bodybucketId != null)
                 {
-                    body["bucketId"] = ExpressionConverter.ConvertO(bodybucketId);
+                    body["bucketId"] = ExpressionConverter.ConvertO(__workflow_bodybucketId);
                     bodypropCount++;
                 }
 
                 var appliedCategoriesObject = new JObject();
                 var appliedCategoriesObjectpropCount = 0;
-                if (bodyappliedCategoriespink != null)
+                if (__workflow_bodyappliedCategoriespink != null)
                 {
-                    appliedCategoriesObject["category1"] = ExpressionConverter.ConvertO(bodyappliedCategoriespink);
+                    appliedCategoriesObject["category1"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriespink);
                     appliedCategoriesObjectpropCount++;
                 }
 
-                if (bodyappliedCategoriesred != null)
+                if (__workflow_bodyappliedCategoriesred != null)
                 {
-                    appliedCategoriesObject["category2"] = ExpressionConverter.ConvertO(bodyappliedCategoriesred);
+                    appliedCategoriesObject["category2"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesred);
                     appliedCategoriesObjectpropCount++;
                 }
 
-                if (bodyappliedCategoriesyellow != null)
+                if (__workflow_bodyappliedCategoriesyellow != null)
                 {
-                    appliedCategoriesObject["category3"] = ExpressionConverter.ConvertO(bodyappliedCategoriesyellow);
+                    appliedCategoriesObject["category3"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesyellow);
                     appliedCategoriesObjectpropCount++;
                 }
 
-                if (bodyappliedCategoriesgreen != null)
+                if (__workflow_bodyappliedCategoriesgreen != null)
                 {
-                    appliedCategoriesObject["category4"] = ExpressionConverter.ConvertO(bodyappliedCategoriesgreen);
+                    appliedCategoriesObject["category4"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesgreen);
                     appliedCategoriesObjectpropCount++;
                 }
 
-                if (bodyappliedCategoriesblue != null)
+                if (__workflow_bodyappliedCategoriesblue != null)
                 {
-                    appliedCategoriesObject["category5"] = ExpressionConverter.ConvertO(bodyappliedCategoriesblue);
+                    appliedCategoriesObject["category5"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesblue);
                     appliedCategoriesObjectpropCount++;
                 }
 
-                if (bodyappliedCategoriespurple != null)
+                if (__workflow_bodyappliedCategoriespurple != null)
                 {
-                    appliedCategoriesObject["category6"] = ExpressionConverter.ConvertO(bodyappliedCategoriespurple);
+                    appliedCategoriesObject["category6"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriespurple);
                     appliedCategoriesObjectpropCount++;
                 }
 
-                if (bodyappliedCategoriesbronze != null)
+                if (__workflow_bodyappliedCategoriesbronze != null)
                 {
-                    appliedCategoriesObject["category7"] = ExpressionConverter.ConvertO(bodyappliedCategoriesbronze);
+                    appliedCategoriesObject["category7"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesbronze);
                     appliedCategoriesObjectpropCount++;
                 }
 
-                if (bodyappliedCategorieslime != null)
+                if (__workflow_bodyappliedCategorieslime != null)
                 {
-                    appliedCategoriesObject["category8"] = ExpressionConverter.ConvertO(bodyappliedCategorieslime);
+                    appliedCategoriesObject["category8"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategorieslime);
                     appliedCategoriesObjectpropCount++;
                 }
 
-                if (bodyappliedCategoriesaqua != null)
+                if (__workflow_bodyappliedCategoriesaqua != null)
                 {
-                    appliedCategoriesObject["category9"] = ExpressionConverter.ConvertO(bodyappliedCategoriesaqua);
+                    appliedCategoriesObject["category9"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesaqua);
                     appliedCategoriesObjectpropCount++;
                 }
 
-                if (bodyappliedCategoriesgray != null)
+                if (__workflow_bodyappliedCategoriesgray != null)
                 {
-                    appliedCategoriesObject["category10"] = ExpressionConverter.ConvertO(bodyappliedCategoriesgray);
+                    appliedCategoriesObject["category10"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesgray);
                     appliedCategoriesObjectpropCount++;
                 }
 
-                if (bodyappliedCategoriessilver != null)
+                if (__workflow_bodyappliedCategoriessilver != null)
                 {
-                    appliedCategoriesObject["category11"] = ExpressionConverter.ConvertO(bodyappliedCategoriessilver);
+                    appliedCategoriesObject["category11"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriessilver);
                     appliedCategoriesObjectpropCount++;
                 }
 
-                if (bodyappliedCategoriesbrown != null)
+                if (__workflow_bodyappliedCategoriesbrown != null)
                 {
-                    appliedCategoriesObject["category12"] = ExpressionConverter.ConvertO(bodyappliedCategoriesbrown);
+                    appliedCategoriesObject["category12"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesbrown);
                     appliedCategoriesObjectpropCount++;
                 }
 
-                if (bodyappliedCategoriescranberry != null)
+                if (__workflow_bodyappliedCategoriescranberry != null)
                 {
-                    appliedCategoriesObject["category13"] = ExpressionConverter.ConvertO(bodyappliedCategoriescranberry);
+                    appliedCategoriesObject["category13"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriescranberry);
                     appliedCategoriesObjectpropCount++;
                 }
 
-                if (bodyappliedCategoriesorange != null)
+                if (__workflow_bodyappliedCategoriesorange != null)
                 {
-                    appliedCategoriesObject["category14"] = ExpressionConverter.ConvertO(bodyappliedCategoriesorange);
+                    appliedCategoriesObject["category14"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesorange);
                     appliedCategoriesObjectpropCount++;
                 }
 
-                if (bodyappliedCategoriespeach != null)
+                if (__workflow_bodyappliedCategoriespeach != null)
                 {
-                    appliedCategoriesObject["category15"] = ExpressionConverter.ConvertO(bodyappliedCategoriespeach);
+                    appliedCategoriesObject["category15"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriespeach);
                     appliedCategoriesObjectpropCount++;
                 }
 
-                if (bodyappliedCategoriesmarigold != null)
+                if (__workflow_bodyappliedCategoriesmarigold != null)
                 {
-                    appliedCategoriesObject["category16"] = ExpressionConverter.ConvertO(bodyappliedCategoriesmarigold);
+                    appliedCategoriesObject["category16"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesmarigold);
                     appliedCategoriesObjectpropCount++;
                 }
 
-                if (bodyappliedCategorieslightGreen != null)
+                if (__workflow_bodyappliedCategorieslightGreen != null)
                 {
-                    appliedCategoriesObject["category17"] = ExpressionConverter.ConvertO(bodyappliedCategorieslightGreen);
+                    appliedCategoriesObject["category17"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategorieslightGreen);
                     appliedCategoriesObjectpropCount++;
                 }
 
-                if (bodyappliedCategoriesdarkGreen != null)
+                if (__workflow_bodyappliedCategoriesdarkGreen != null)
                 {
-                    appliedCategoriesObject["category18"] = ExpressionConverter.ConvertO(bodyappliedCategoriesdarkGreen);
+                    appliedCategoriesObject["category18"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesdarkGreen);
                     appliedCategoriesObjectpropCount++;
                 }
 
-                if (bodyappliedCategoriesteal != null)
+                if (__workflow_bodyappliedCategoriesteal != null)
                 {
-                    appliedCategoriesObject["category19"] = ExpressionConverter.ConvertO(bodyappliedCategoriesteal);
+                    appliedCategoriesObject["category19"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesteal);
                     appliedCategoriesObjectpropCount++;
                 }
 
-                if (bodyappliedCategorieslightBlue != null)
+                if (__workflow_bodyappliedCategorieslightBlue != null)
                 {
-                    appliedCategoriesObject["category20"] = ExpressionConverter.ConvertO(bodyappliedCategorieslightBlue);
+                    appliedCategoriesObject["category20"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategorieslightBlue);
                     appliedCategoriesObjectpropCount++;
                 }
 
-                if (bodyappliedCategoriesdarkBlue != null)
+                if (__workflow_bodyappliedCategoriesdarkBlue != null)
                 {
-                    appliedCategoriesObject["category21"] = ExpressionConverter.ConvertO(bodyappliedCategoriesdarkBlue);
+                    appliedCategoriesObject["category21"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesdarkBlue);
                     appliedCategoriesObjectpropCount++;
                 }
 
-                if (bodyappliedCategorieslavender != null)
+                if (__workflow_bodyappliedCategorieslavender != null)
                 {
-                    appliedCategoriesObject["category22"] = ExpressionConverter.ConvertO(bodyappliedCategorieslavender);
+                    appliedCategoriesObject["category22"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategorieslavender);
                     appliedCategoriesObjectpropCount++;
                 }
 
-                if (bodyappliedCategoriesplum != null)
+                if (__workflow_bodyappliedCategoriesplum != null)
                 {
-                    appliedCategoriesObject["category23"] = ExpressionConverter.ConvertO(bodyappliedCategoriesplum);
+                    appliedCategoriesObject["category23"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesplum);
                     appliedCategoriesObjectpropCount++;
                 }
 
-                if (bodyappliedCategorieslightGray != null)
+                if (__workflow_bodyappliedCategorieslightGray != null)
                 {
-                    appliedCategoriesObject["category24"] = ExpressionConverter.ConvertO(bodyappliedCategorieslightGray);
+                    appliedCategoriesObject["category24"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategorieslightGray);
                     appliedCategoriesObjectpropCount++;
                 }
 
-                if (bodyappliedCategoriesdarkGray != null)
+                if (__workflow_bodyappliedCategoriesdarkGray != null)
                 {
-                    appliedCategoriesObject["category25"] = ExpressionConverter.ConvertO(bodyappliedCategoriesdarkGray);
+                    appliedCategoriesObject["category25"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesdarkGray);
                     appliedCategoriesObjectpropCount++;
                 }
 
@@ -742,42 +743,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateTaskDetails))]
-        public IBodyWorkflowAction<GetTaskDetailsResponse> UpdateTaskDetails([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<bodyreferencesInputItem[]> bodyreferences = null, [WorkflowExpression] Func<bodychecklistInputItem[]> bodychecklist = null)
+        public IBodyWorkflowAction<GetTaskDetailsResponse> UpdateTaskDetails(Expression<Func<string>> id, Expression<Func<string>> bodydescription = null, Expression<Func<bodyreferencesInputItem[]>> bodyreferences = null, Expression<Func<bodychecklistInputItem[]>> bodychecklist = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetTaskDetailsResponse> __BuildUpdateTaskDetails(WorkflowExpression<string> id, WorkflowExpression<string> bodydescription = null, WorkflowExpression<bodyreferencesInputItem[]> bodyreferences = null, WorkflowExpression<bodychecklistInputItem[]> bodychecklist = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            WorkflowExpression.Validate(bodyreferences, nameof(bodyreferences), required: false);
-            WorkflowExpression.Validate(bodychecklist, nameof(bodychecklist), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
+            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyreferences = bodyreferences == null ? null : WorkflowExpression.Compile(bodyreferences);
+            WorkflowExpression.Validate(__workflow_bodyreferences, nameof(bodyreferences), required: false);
+            var __workflow_bodychecklist = bodychecklist == null ? null : WorkflowExpression.Compile(bodychecklist);
+            WorkflowExpression.Validate(__workflow_bodychecklist, nameof(bodychecklist), required: false);
             return new DeferredBodyAction<GetTaskDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/planner/tasks/{0}/details", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/planner/tasks/{0}/details", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["prefer"] = Convert.ToString(" return=representation");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodydescription != null)
+                if (__workflow_bodydescription != null)
                 {
-                    body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
                     bodypropCount++;
                 }
 
-                if (bodyreferences != null)
+                if (__workflow_bodyreferences != null)
                 {
-                    body["references"] = ExpressionConverter.ConvertO(bodyreferences);
+                    body["references"] = ExpressionConverter.ConvertO(__workflow_bodyreferences);
                     bodypropCount++;
                 }
 
-                if (bodychecklist != null)
+                if (__workflow_bodychecklist != null)
                 {
-                    body["checklist"] = ExpressionConverter.ConvertO(bodychecklist);
+                    body["checklist"] = ExpressionConverter.ConvertO(__workflow_bodychecklist);
                     bodypropCount++;
                 }
 
@@ -793,45 +791,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
 
     public class PlannerTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildOnCompleteTask))]
-        public IBodyWorkflowTrigger<ListTasksResponseV2> OnCompleteTask([WorkflowExpression] Func<string> groupId,[WorkflowExpression] Func<string> id,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListTasksResponseV2> OnCompleteTask(Expression<Func<string>> groupId, Expression<Func<string>> id, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ListTasksResponseV2> __BuildOnCompleteTask(WorkflowExpression<string> groupId,WorkflowExpression<string> id,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
+            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyTrigger<ListTasksResponseV2>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/v1.0/planner/oncompletetask_trigger/plans/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/v1.0/planner/oncompletetask_trigger/plans/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
+                callPayload.Queries["groupId"] = ExpressionConverter.Convert(__workflow_groupId);
                 return new ApiConnectionTrigger<ListTasksResponseV2>(callPayload, recurrence: recurrence);
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildOnNewTask))]
-        public IBodyWorkflowTrigger<ListTasksResponseV2> OnNewTask([WorkflowExpression] Func<string> groupId,[WorkflowExpression] Func<string> id,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListTasksResponseV2> OnNewTask(Expression<Func<string>> groupId, Expression<Func<string>> id, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ListTasksResponseV2> __BuildOnNewTask(WorkflowExpression<string> groupId,WorkflowExpression<string> id,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
+            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyTrigger<ListTasksResponseV2>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/v1.0/planner/onnewtask_trigger/plans/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/v1.0/planner/onnewtask_trigger/plans/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
+                callPayload.Queries["groupId"] = ExpressionConverter.Convert(__workflow_groupId);
                 return new ApiConnectionTrigger<ListTasksResponseV2>(callPayload, recurrence: recurrence);
             });
         }

@@ -1,39 +1,34 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wttrin
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class WttrinActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wttrin")]
-        [WorkflowExpressionFactory(nameof(__BuildWeatherGet))]
-        public IBodyWorkflowAction<string> WeatherGet([WorkflowExpression] Func<string> location, [WorkflowExpression] Func<viewInput> view = null, [WorkflowExpression] Func<langInput> lang = null)
+        public IBodyWorkflowAction<string> WeatherGet(Expression<Func<string>> location, Expression<Func<viewInput>> view = null, Expression<Func<langInput>> lang = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildWeatherGet(WorkflowExpression<string> location, WorkflowExpression<viewInput> view = null, WorkflowExpression<langInput> lang = null)
-        {
-            WorkflowExpression.Validate(location, nameof(location), required: true);
-            WorkflowExpression.Validate(view, nameof(view), required: false);
-            WorkflowExpression.Validate(lang, nameof(lang), required: false);
+            var __workflow_location = location == null ? null : WorkflowExpression.Compile(location);
+            WorkflowExpression.Validate(__workflow_location, nameof(location), required: true);
+            var __workflow_view = view == null ? null : WorkflowExpression.Compile(view);
+            WorkflowExpression.Validate(__workflow_view, nameof(view), required: false);
+            var __workflow_lang = lang == null ? null : WorkflowExpression.Compile(lang);
+            WorkflowExpression.Validate(__workflow_lang, nameof(lang), required: false);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}", ExpressionConverter.ConvertWithUrlEncoding(location, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_location, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (view != null)
-                    callPayload.Queries["view"] = ExpressionConverter.Convert(view);
+                if (__workflow_view != null)
+                    callPayload.Queries["view"] = ExpressionConverter.Convert(__workflow_view);
                 callPayload.Queries["lang"] = Convert.ToString("en");
-                if (lang != null)
-                    callPayload.Queries["lang"] = ExpressionConverter.Convert(lang);
+                if (__workflow_lang != null)
+                    callPayload.Queries["lang"] = ExpressionConverter.Convert(__workflow_lang);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }

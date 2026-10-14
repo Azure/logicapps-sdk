@@ -1,30 +1,23 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abortionpolicyapiip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class AbortionpolicyapiipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abortionpolicyapiip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetGestationalLimitsbyState))]
-        public IBodyWorkflowAction<GetGestationalLimitsbyStateResponse> GetGestationalLimitsbyState([WorkflowExpression] Func<stateInput> state)
+        public IBodyWorkflowAction<GetGestationalLimitsbyStateResponse> GetGestationalLimitsbyState(Expression<Func<stateInput>> state)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetGestationalLimitsbyStateResponse> __BuildGetGestationalLimitsbyState(WorkflowExpression<stateInput> state)
-        {
-            WorkflowExpression.Validate(state, nameof(state), required: true);
+            var __workflow_state = state == null ? null : WorkflowExpression.Compile(state);
+            WorkflowExpression.Validate(__workflow_state, nameof(state), required: true);
             return new DeferredBodyAction<GetGestationalLimitsbyStateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/gestational_limits/states/{0}", ExpressionConverter.ConvertWithUrlEncoding(state, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/gestational_limits/states/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_state, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetGestationalLimitsbyStateResponse>(callPayload);
@@ -32,19 +25,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abortionpolicyapiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abortionpolicyapiip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetGestationalLimitsbyStatebyZip))]
-        public IBodyWorkflowAction<GetGestationalLimitsbyStatebyZipResponse> GetGestationalLimitsbyStatebyZip([WorkflowExpression] Func<string> zipCode)
+        public IBodyWorkflowAction<GetGestationalLimitsbyStatebyZipResponse> GetGestationalLimitsbyStatebyZip(Expression<Func<string>> zipCode)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetGestationalLimitsbyStatebyZipResponse> __BuildGetGestationalLimitsbyStatebyZip(WorkflowExpression<string> zipCode)
-        {
-            WorkflowExpression.Validate(zipCode, nameof(zipCode), required: true);
+            var __workflow_zipCode = zipCode == null ? null : WorkflowExpression.Compile(zipCode);
+            WorkflowExpression.Validate(__workflow_zipCode, nameof(zipCode), required: true);
             return new DeferredBodyAction<GetGestationalLimitsbyStatebyZipResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/gestational_limits/zips/{0}", ExpressionConverter.ConvertWithUrlEncoding(zipCode, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/gestational_limits/zips/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_zipCode, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetGestationalLimitsbyStatebyZipResponse>(callPayload);
@@ -52,19 +39,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abortionpolicyapiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abortionpolicyapiip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetInsuranceCoveragebyState))]
-        public IBodyWorkflowAction<GetInsuranceCoveragebyStateResponse> GetInsuranceCoveragebyState([WorkflowExpression] Func<stateInput> state)
+        public IBodyWorkflowAction<GetInsuranceCoveragebyStateResponse> GetInsuranceCoveragebyState(Expression<Func<stateInput>> state)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetInsuranceCoveragebyStateResponse> __BuildGetInsuranceCoveragebyState(WorkflowExpression<stateInput> state)
-        {
-            WorkflowExpression.Validate(state, nameof(state), required: true);
+            var __workflow_state = state == null ? null : WorkflowExpression.Compile(state);
+            WorkflowExpression.Validate(__workflow_state, nameof(state), required: true);
             return new DeferredBodyAction<GetInsuranceCoveragebyStateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/insurance_coverage/states/{0}", ExpressionConverter.ConvertWithUrlEncoding(state, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/insurance_coverage/states/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_state, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetInsuranceCoveragebyStateResponse>(callPayload);
@@ -72,19 +53,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abortionpolicyapiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abortionpolicyapiip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetInsuranceCoveragebyZip))]
-        public IBodyWorkflowAction<GetInsuranceCoveragebyZipResponse> GetInsuranceCoveragebyZip([WorkflowExpression] Func<string> zipCode)
+        public IBodyWorkflowAction<GetInsuranceCoveragebyZipResponse> GetInsuranceCoveragebyZip(Expression<Func<string>> zipCode)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetInsuranceCoveragebyZipResponse> __BuildGetInsuranceCoveragebyZip(WorkflowExpression<string> zipCode)
-        {
-            WorkflowExpression.Validate(zipCode, nameof(zipCode), required: true);
+            var __workflow_zipCode = zipCode == null ? null : WorkflowExpression.Compile(zipCode);
+            WorkflowExpression.Validate(__workflow_zipCode, nameof(zipCode), required: true);
             return new DeferredBodyAction<GetInsuranceCoveragebyZipResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/insurance_coverage/zips/{0}", ExpressionConverter.ConvertWithUrlEncoding(zipCode, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/insurance_coverage/zips/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_zipCode, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetInsuranceCoveragebyZipResponse>(callPayload);
@@ -92,19 +67,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abortionpolicyapiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abortionpolicyapiip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetMinorsInfobyState))]
-        public IBodyWorkflowAction<GetMinorsInfobyStateResponse> GetMinorsInfobyState([WorkflowExpression] Func<stateInput> state)
+        public IBodyWorkflowAction<GetMinorsInfobyStateResponse> GetMinorsInfobyState(Expression<Func<stateInput>> state)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetMinorsInfobyStateResponse> __BuildGetMinorsInfobyState(WorkflowExpression<stateInput> state)
-        {
-            WorkflowExpression.Validate(state, nameof(state), required: true);
+            var __workflow_state = state == null ? null : WorkflowExpression.Compile(state);
+            WorkflowExpression.Validate(__workflow_state, nameof(state), required: true);
             return new DeferredBodyAction<GetMinorsInfobyStateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/minors/states/{0}", ExpressionConverter.ConvertWithUrlEncoding(state, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/minors/states/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_state, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetMinorsInfobyStateResponse>(callPayload);
@@ -112,19 +81,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abortionpolicyapiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abortionpolicyapiip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetMinorsInfobyZip))]
-        public IBodyWorkflowAction<GetMinorsInfobyZipResponse> GetMinorsInfobyZip([WorkflowExpression] Func<string> zipCode)
+        public IBodyWorkflowAction<GetMinorsInfobyZipResponse> GetMinorsInfobyZip(Expression<Func<string>> zipCode)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetMinorsInfobyZipResponse> __BuildGetMinorsInfobyZip(WorkflowExpression<string> zipCode)
-        {
-            WorkflowExpression.Validate(zipCode, nameof(zipCode), required: true);
+            var __workflow_zipCode = zipCode == null ? null : WorkflowExpression.Compile(zipCode);
+            WorkflowExpression.Validate(__workflow_zipCode, nameof(zipCode), required: true);
             return new DeferredBodyAction<GetMinorsInfobyZipResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/minors/zips/{0}", ExpressionConverter.ConvertWithUrlEncoding(zipCode, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/minors/zips/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_zipCode, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetMinorsInfobyZipResponse>(callPayload);
@@ -132,19 +95,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abortionpolicyapiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abortionpolicyapiip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetWaitingPeriodsInfobyState))]
-        public IBodyWorkflowAction<GetWaitingPeriodsInfobyStateResponse> GetWaitingPeriodsInfobyState([WorkflowExpression] Func<stateInput> state)
+        public IBodyWorkflowAction<GetWaitingPeriodsInfobyStateResponse> GetWaitingPeriodsInfobyState(Expression<Func<stateInput>> state)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetWaitingPeriodsInfobyStateResponse> __BuildGetWaitingPeriodsInfobyState(WorkflowExpression<stateInput> state)
-        {
-            WorkflowExpression.Validate(state, nameof(state), required: true);
+            var __workflow_state = state == null ? null : WorkflowExpression.Compile(state);
+            WorkflowExpression.Validate(__workflow_state, nameof(state), required: true);
             return new DeferredBodyAction<GetWaitingPeriodsInfobyStateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/waiting_periods/states/{0}", ExpressionConverter.ConvertWithUrlEncoding(state, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/waiting_periods/states/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_state, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetWaitingPeriodsInfobyStateResponse>(callPayload);
@@ -152,19 +109,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abortionpolicyapiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abortionpolicyapiip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetWaitingPeriodsInfobyZip))]
-        public IBodyWorkflowAction<GetWaitingPeriodsInfobyZipResponse> GetWaitingPeriodsInfobyZip([WorkflowExpression] Func<string> zipCode)
+        public IBodyWorkflowAction<GetWaitingPeriodsInfobyZipResponse> GetWaitingPeriodsInfobyZip(Expression<Func<string>> zipCode)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetWaitingPeriodsInfobyZipResponse> __BuildGetWaitingPeriodsInfobyZip(WorkflowExpression<string> zipCode)
-        {
-            WorkflowExpression.Validate(zipCode, nameof(zipCode), required: true);
+            var __workflow_zipCode = zipCode == null ? null : WorkflowExpression.Compile(zipCode);
+            WorkflowExpression.Validate(__workflow_zipCode, nameof(zipCode), required: true);
             return new DeferredBodyAction<GetWaitingPeriodsInfobyZipResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/waiting_periods/zips/{0}", ExpressionConverter.ConvertWithUrlEncoding(zipCode, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/waiting_periods/zips/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_zipCode, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetWaitingPeriodsInfobyZipResponse>(callPayload);

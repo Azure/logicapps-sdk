@@ -1,27 +1,20 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class InoreaderActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inoreader")]
-        [WorkflowExpressionFactory(nameof(__BuildAddSubscription))]
-        public IBodyWorkflowAction<AddSubscriptionResponse> AddSubscription([WorkflowExpression] Func<string> bodyquickadd = null)
+        public IBodyWorkflowAction<AddSubscriptionResponse> AddSubscription(Expression<Func<string>> bodyquickadd = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AddSubscriptionResponse> __BuildAddSubscription(WorkflowExpression<string> bodyquickadd = null)
-        {
-            WorkflowExpression.Validate(bodyquickadd, nameof(bodyquickadd), required: false);
+            var __workflow_bodyquickadd = bodyquickadd == null ? null : WorkflowExpression.Compile(bodyquickadd);
+            WorkflowExpression.Validate(__workflow_bodyquickadd, nameof(bodyquickadd), required: false);
             return new DeferredBodyAction<AddSubscriptionResponse>(() =>
             {
                 var apiCallPath = "/subscription/quickadd";
@@ -29,9 +22,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyquickadd != null)
+                if (__workflow_bodyquickadd != null)
                 {
-                    body["quickadd"] = ExpressionConverter.ConvertO(bodyquickadd);
+                    body["quickadd"] = ExpressionConverter.ConvertO(__workflow_bodyquickadd);
                     bodypropCount++;
                 }
 
@@ -45,27 +38,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inoreader")]
-        [WorkflowExpressionFactory(nameof(__BuildEditSubscription))]
-        public IWorkflowAction EditSubscription([WorkflowExpression] Func<string> streamId, [WorkflowExpression] Func<string> bodyt)
+        public IWorkflowAction EditSubscription(Expression<Func<string>> streamId, Expression<Func<string>> bodyt)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildEditSubscription(WorkflowExpression<string> streamId, WorkflowExpression<string> bodyt)
-        {
-            WorkflowExpression.Validate(streamId, nameof(streamId), required: true);
-            WorkflowExpression.Validate(bodyt, nameof(bodyt), required: true);
+            var __workflow_streamId = streamId == null ? null : WorkflowExpression.Compile(streamId);
+            WorkflowExpression.Validate(__workflow_streamId, nameof(streamId), required: true);
+            var __workflow_bodyt = bodyt == null ? null : WorkflowExpression.Compile(bodyt);
+            WorkflowExpression.Validate(__workflow_bodyt, nameof(bodyt), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/subscription/edit";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["streamId"] = ExpressionConverter.Convert(streamId);
+                callPayload.Queries["streamId"] = ExpressionConverter.Convert(__workflow_streamId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["t"] = ExpressionConverter.ConvertO(bodyt);
+                body["t"] = ExpressionConverter.ConvertO(__workflow_bodyt);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -76,110 +64,82 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inoreader")]
-        [WorkflowExpressionFactory(nameof(__BuildUnsubscribeSubscription))]
-        public IWorkflowAction UnsubscribeSubscription([WorkflowExpression] Func<string> streamId)
+        public IWorkflowAction UnsubscribeSubscription(Expression<Func<string>> streamId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildUnsubscribeSubscription(WorkflowExpression<string> streamId)
-        {
-            WorkflowExpression.Validate(streamId, nameof(streamId), required: true);
+            var __workflow_streamId = streamId == null ? null : WorkflowExpression.Compile(streamId);
+            WorkflowExpression.Validate(__workflow_streamId, nameof(streamId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/unsubscribe/subscription/edit";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["streamId"] = ExpressionConverter.Convert(streamId);
+                callPayload.Queries["streamId"] = ExpressionConverter.Convert(__workflow_streamId);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inoreader")]
-        [WorkflowExpressionFactory(nameof(__BuildRemoveSubscriptionFromFolder))]
-        public IWorkflowAction RemoveSubscriptionFromFolder([WorkflowExpression] Func<string> streamId, [WorkflowExpression] Func<string> tagId)
+        public IWorkflowAction RemoveSubscriptionFromFolder(Expression<Func<string>> streamId, Expression<Func<string>> tagId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildRemoveSubscriptionFromFolder(WorkflowExpression<string> streamId, WorkflowExpression<string> tagId)
-        {
-            WorkflowExpression.Validate(streamId, nameof(streamId), required: true);
-            WorkflowExpression.Validate(tagId, nameof(tagId), required: true);
+            var __workflow_streamId = streamId == null ? null : WorkflowExpression.Compile(streamId);
+            WorkflowExpression.Validate(__workflow_streamId, nameof(streamId), required: true);
+            var __workflow_tagId = tagId == null ? null : WorkflowExpression.Compile(tagId);
+            WorkflowExpression.Validate(__workflow_tagId, nameof(tagId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/remove/subscription/edit";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["streamId"] = ExpressionConverter.Convert(streamId);
-                callPayload.Queries["tagId"] = ExpressionConverter.Convert(tagId);
+                callPayload.Queries["streamId"] = ExpressionConverter.Convert(__workflow_streamId);
+                callPayload.Queries["tagId"] = ExpressionConverter.Convert(__workflow_tagId);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inoreader")]
-        [WorkflowExpressionFactory(nameof(__BuildAddSubscriptionToFolder))]
-        public IWorkflowAction AddSubscriptionToFolder([WorkflowExpression] Func<string> streamId, [WorkflowExpression] Func<string> tagId)
+        public IWorkflowAction AddSubscriptionToFolder(Expression<Func<string>> streamId, Expression<Func<string>> tagId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildAddSubscriptionToFolder(WorkflowExpression<string> streamId, WorkflowExpression<string> tagId)
-        {
-            WorkflowExpression.Validate(streamId, nameof(streamId), required: true);
-            WorkflowExpression.Validate(tagId, nameof(tagId), required: true);
+            var __workflow_streamId = streamId == null ? null : WorkflowExpression.Compile(streamId);
+            WorkflowExpression.Validate(__workflow_streamId, nameof(streamId), required: true);
+            var __workflow_tagId = tagId == null ? null : WorkflowExpression.Compile(tagId);
+            WorkflowExpression.Validate(__workflow_tagId, nameof(tagId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/add/subscription/edit";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["streamId"] = ExpressionConverter.Convert(streamId);
-                callPayload.Queries["tagId"] = ExpressionConverter.Convert(tagId);
+                callPayload.Queries["streamId"] = ExpressionConverter.Convert(__workflow_streamId);
+                callPayload.Queries["tagId"] = ExpressionConverter.Convert(__workflow_tagId);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inoreader")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteTag))]
-        public IWorkflowAction DeleteTag([WorkflowExpression] Func<string> tagId)
+        public IWorkflowAction DeleteTag(Expression<Func<string>> tagId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDeleteTag(WorkflowExpression<string> tagId)
-        {
-            WorkflowExpression.Validate(tagId, nameof(tagId), required: true);
+            var __workflow_tagId = tagId == null ? null : WorkflowExpression.Compile(tagId);
+            WorkflowExpression.Validate(__workflow_tagId, nameof(tagId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/disable-tag";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["tagId"] = ExpressionConverter.Convert(tagId);
+                callPayload.Queries["tagId"] = ExpressionConverter.Convert(__workflow_tagId);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inoreader")]
-        [WorkflowExpressionFactory(nameof(__BuildGetUnreadCountForStream))]
-        public IBodyWorkflowAction<UnreadCount> GetUnreadCountForStream([WorkflowExpression] Func<string> streamId)
+        public IBodyWorkflowAction<UnreadCount> GetUnreadCountForStream(Expression<Func<string>> streamId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UnreadCount> __BuildGetUnreadCountForStream(WorkflowExpression<string> streamId)
-        {
-            WorkflowExpression.Validate(streamId, nameof(streamId), required: true);
+            var __workflow_streamId = streamId == null ? null : WorkflowExpression.Compile(streamId);
+            WorkflowExpression.Validate(__workflow_streamId, nameof(streamId), required: true);
             return new DeferredBodyAction<UnreadCount>(() =>
             {
                 var apiCallPath = "/single/unread-count";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["streamId"] = ExpressionConverter.Convert(streamId);
+                callPayload.Queries["streamId"] = ExpressionConverter.Convert(__workflow_streamId);
                 return new ApiConnectionAction<UnreadCount>(callPayload);
             });
         }
@@ -194,24 +154,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inoreader")]
-        [WorkflowExpressionFactory(nameof(__BuildStreamContents))]
-        public IBodyWorkflowAction<StreamContentsResponseItem[]> StreamContents([WorkflowExpression] Func<string> streamId, [WorkflowExpression] Func<int> n = null)
+        public IBodyWorkflowAction<StreamContentsResponseItem[]> StreamContents(Expression<Func<string>> streamId, Expression<Func<int>> n = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<StreamContentsResponseItem[]> __BuildStreamContents(WorkflowExpression<string> streamId, WorkflowExpression<int> n = null)
-        {
-            WorkflowExpression.Validate(streamId, nameof(streamId), required: true);
-            WorkflowExpression.Validate(n, nameof(n), required: false);
+            var __workflow_streamId = streamId == null ? null : WorkflowExpression.Compile(streamId);
+            WorkflowExpression.Validate(__workflow_streamId, nameof(streamId), required: true);
+            var __workflow_n = n == null ? null : WorkflowExpression.Compile(n);
+            WorkflowExpression.Validate(__workflow_n, nameof(n), required: false);
             return new DeferredBodyAction<StreamContentsResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/stream/contents/{0}", ExpressionConverter.ConvertWithUrlEncoding(streamId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/stream/contents/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_streamId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (n != null)
-                    callPayload.Queries["n"] = ExpressionConverter.Convert(n);
+                if (__workflow_n != null)
+                    callPayload.Queries["n"] = ExpressionConverter.Convert(__workflow_n);
                 return new ApiConnectionAction<StreamContentsResponseItem[]>(callPayload);
             });
         }
@@ -227,24 +182,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
             return new ApiConnectionTrigger<Subscription[]>(callPayload, recurrence: recurrence);
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildOnUnreadItemCountForStreamExceedsTarget))]
-        public IBodyWorkflowTrigger<UnreadCount> OnUnreadItemCountForStreamExceedsTarget([WorkflowExpression] Func<string> streamId,[WorkflowExpression] Func<int> target,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<UnreadCount> OnUnreadItemCountForStreamExceedsTarget(Expression<Func<string>> streamId, Expression<Func<int>> target, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<UnreadCount> __BuildOnUnreadItemCountForStreamExceedsTarget(WorkflowExpression<string> streamId,WorkflowExpression<int> target,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(streamId, nameof(streamId), required: true);
-            WorkflowExpression.Validate(target, nameof(target), required: true);
+            var __workflow_streamId = streamId == null ? null : WorkflowExpression.Compile(streamId);
+            WorkflowExpression.Validate(__workflow_streamId, nameof(streamId), required: true);
+            var __workflow_target = target == null ? null : WorkflowExpression.Compile(target);
+            WorkflowExpression.Validate(__workflow_target, nameof(target), required: true);
             return new DeferredBodyTrigger<UnreadCount>(() =>
             {
                 var apiCallPath = "/trigger/unread-count";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["streamId"] = ExpressionConverter.Convert(streamId);
-                callPayload.Queries["target"] = ExpressionConverter.Convert(target);
+                callPayload.Queries["streamId"] = ExpressionConverter.Convert(__workflow_streamId);
+                callPayload.Queries["target"] = ExpressionConverter.Convert(__workflow_target);
                 return new ApiConnectionTrigger<UnreadCount>(callPayload, recurrence: recurrence);
             });
         }

@@ -1,229 +1,222 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdradarip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class DpirdradaripActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdradarip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetRadars))]
-        public IBodyWorkflowAction<GetRadarsResponse> GetRadars([WorkflowExpression] Func<string> radarCode = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> select = null)
+        public IBodyWorkflowAction<GetRadarsResponse> GetRadars(Expression<Func<string>> radarCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetRadarsResponse> __BuildGetRadars(WorkflowExpression<string> radarCode = null, WorkflowExpression<int> offset = null, WorkflowExpression<int> limit = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> select = null)
-        {
-            WorkflowExpression.Validate(radarCode, nameof(radarCode), required: false);
-            WorkflowExpression.Validate(offset, nameof(offset), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(sort, nameof(sort), required: false);
-            WorkflowExpression.Validate(select, nameof(select), required: false);
+            var __workflow_radarCode = radarCode == null ? null : WorkflowExpression.Compile(radarCode);
+            WorkflowExpression.Validate(__workflow_radarCode, nameof(radarCode), required: false);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
+            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
+            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
             return new DeferredBodyAction<GetRadarsResponse>(() =>
             {
                 var apiCallPath = "/radars";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (radarCode != null)
-                    callPayload.Queries["radarCode"] = ExpressionConverter.Convert(radarCode);
-                if (offset != null)
-                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (sort != null)
-                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                if (__workflow_radarCode != null)
+                    callPayload.Queries["radarCode"] = ExpressionConverter.Convert(__workflow_radarCode);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
                 callPayload.Queries["select"] = Convert.ToString("code,location,state,bounds,online,offline_reason");
-                if (select != null)
-                    callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                if (__workflow_select != null)
+                    callPayload.Queries["select"] = ExpressionConverter.Convert(__workflow_select);
                 return new ApiConnectionAction<GetRadarsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdradarip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetRadar))]
-        public IBodyWorkflowAction<GetRadarResponse> GetRadar([WorkflowExpression] Func<string> radarCode, [WorkflowExpression] Func<string> select = null)
+        public IBodyWorkflowAction<GetRadarResponse> GetRadar(Expression<Func<string>> radarCode, Expression<Func<string>> select = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetRadarResponse> __BuildGetRadar(WorkflowExpression<string> radarCode, WorkflowExpression<string> select = null)
-        {
-            WorkflowExpression.Validate(radarCode, nameof(radarCode), required: true);
-            WorkflowExpression.Validate(select, nameof(select), required: false);
+            var __workflow_radarCode = radarCode == null ? null : WorkflowExpression.Compile(radarCode);
+            WorkflowExpression.Validate(__workflow_radarCode, nameof(radarCode), required: true);
+            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
+            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
             return new DeferredBodyAction<GetRadarResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/radars/{0}", ExpressionConverter.ConvertWithUrlEncoding(radarCode, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/radars/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_radarCode, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["select"] = Convert.ToString("code,location,state,bounds,online,offline_reason");
-                if (select != null)
-                    callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                if (__workflow_select != null)
+                    callPayload.Queries["select"] = ExpressionConverter.Convert(__workflow_select);
                 return new ApiConnectionAction<GetRadarResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdradarip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetNearbyRadar))]
-        public IBodyWorkflowAction<GetNearbyRadarResponse> GetNearbyRadar([WorkflowExpression] Func<double> latitude, [WorkflowExpression] Func<double> longitude, [WorkflowExpression] Func<dataSetInput> dataSet = null)
+        public IBodyWorkflowAction<GetNearbyRadarResponse> GetNearbyRadar(Expression<Func<double>> latitude, Expression<Func<double>> longitude, Expression<Func<dataSetInput>> dataSet = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetNearbyRadarResponse> __BuildGetNearbyRadar(WorkflowExpression<double> latitude, WorkflowExpression<double> longitude, WorkflowExpression<dataSetInput> dataSet = null)
-        {
-            WorkflowExpression.Validate(latitude, nameof(latitude), required: true);
-            WorkflowExpression.Validate(longitude, nameof(longitude), required: true);
-            WorkflowExpression.Validate(dataSet, nameof(dataSet), required: false);
+            var __workflow_latitude = latitude == null ? null : WorkflowExpression.Compile(latitude);
+            WorkflowExpression.Validate(__workflow_latitude, nameof(latitude), required: true);
+            var __workflow_longitude = longitude == null ? null : WorkflowExpression.Compile(longitude);
+            WorkflowExpression.Validate(__workflow_longitude, nameof(longitude), required: true);
+            var __workflow_dataSet = dataSet == null ? null : WorkflowExpression.Compile(dataSet);
+            WorkflowExpression.Validate(__workflow_dataSet, nameof(dataSet), required: false);
             return new DeferredBodyAction<GetNearbyRadarResponse>(() =>
             {
                 var apiCallPath = "/nearby";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["latitude"] = ExpressionConverter.Convert(latitude);
-                callPayload.Queries["longitude"] = ExpressionConverter.Convert(longitude);
+                callPayload.Queries["latitude"] = ExpressionConverter.Convert(__workflow_latitude);
+                callPayload.Queries["longitude"] = ExpressionConverter.Convert(__workflow_longitude);
                 callPayload.Queries["dataSet"] = Convert.ToString("ALL");
-                if (dataSet != null)
-                    callPayload.Queries["dataSet"] = ExpressionConverter.Convert(dataSet);
+                if (__workflow_dataSet != null)
+                    callPayload.Queries["dataSet"] = ExpressionConverter.Convert(__workflow_dataSet);
                 return new ApiConnectionAction<GetNearbyRadarResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdradarip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetRadarRainfall))]
-        public IBodyWorkflowAction<GetRadarRainfallResponse> GetRadarRainfall([WorkflowExpression] Func<double> latitude, [WorkflowExpression] Func<double> longitude, [WorkflowExpression] Func<string> radarCode = null, [WorkflowExpression] Func<dataSetInput> dataSet = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null)
+        public IBodyWorkflowAction<GetRadarRainfallResponse> GetRadarRainfall(Expression<Func<double>> latitude, Expression<Func<double>> longitude, Expression<Func<string>> radarCode = null, Expression<Func<dataSetInput>> dataSet = null, Expression<Func<string>> select = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetRadarRainfallResponse> __BuildGetRadarRainfall(WorkflowExpression<double> latitude, WorkflowExpression<double> longitude, WorkflowExpression<string> radarCode = null, WorkflowExpression<dataSetInput> dataSet = null, WorkflowExpression<string> select = null, WorkflowExpression<int> offset = null, WorkflowExpression<int> limit = null, WorkflowExpression<string> sort = null)
-        {
-            WorkflowExpression.Validate(latitude, nameof(latitude), required: true);
-            WorkflowExpression.Validate(longitude, nameof(longitude), required: true);
-            WorkflowExpression.Validate(radarCode, nameof(radarCode), required: false);
-            WorkflowExpression.Validate(dataSet, nameof(dataSet), required: false);
-            WorkflowExpression.Validate(select, nameof(select), required: false);
-            WorkflowExpression.Validate(offset, nameof(offset), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(sort, nameof(sort), required: false);
+            var __workflow_latitude = latitude == null ? null : WorkflowExpression.Compile(latitude);
+            WorkflowExpression.Validate(__workflow_latitude, nameof(latitude), required: true);
+            var __workflow_longitude = longitude == null ? null : WorkflowExpression.Compile(longitude);
+            WorkflowExpression.Validate(__workflow_longitude, nameof(longitude), required: true);
+            var __workflow_radarCode = radarCode == null ? null : WorkflowExpression.Compile(radarCode);
+            WorkflowExpression.Validate(__workflow_radarCode, nameof(radarCode), required: false);
+            var __workflow_dataSet = dataSet == null ? null : WorkflowExpression.Compile(dataSet);
+            WorkflowExpression.Validate(__workflow_dataSet, nameof(dataSet), required: false);
+            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
+            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
+            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
             return new DeferredBodyAction<GetRadarRainfallResponse>(() =>
             {
                 var apiCallPath = "/rainfall";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["latitude"] = ExpressionConverter.Convert(latitude);
-                callPayload.Queries["longitude"] = ExpressionConverter.Convert(longitude);
-                if (radarCode != null)
-                    callPayload.Queries["radarCode"] = ExpressionConverter.Convert(radarCode);
+                callPayload.Queries["latitude"] = ExpressionConverter.Convert(__workflow_latitude);
+                callPayload.Queries["longitude"] = ExpressionConverter.Convert(__workflow_longitude);
+                if (__workflow_radarCode != null)
+                    callPayload.Queries["radarCode"] = ExpressionConverter.Convert(__workflow_radarCode);
                 callPayload.Queries["dataSet"] = Convert.ToString("ALL");
-                if (dataSet != null)
-                    callPayload.Queries["dataSet"] = ExpressionConverter.Convert(dataSet);
+                if (__workflow_dataSet != null)
+                    callPayload.Queries["dataSet"] = ExpressionConverter.Convert(__workflow_dataSet);
                 callPayload.Queries["select"] = Convert.ToString("dateTime,radar,radarCode,radarDistance,radarLatitude,radarLongitude,rainfall,rainfallCurrentHour,rainfallMonthToDate,rainfallSince9am,rainfallYrarToDate");
-                if (select != null)
-                    callPayload.Queries["select"] = ExpressionConverter.Convert(select);
-                if (offset != null)
-                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (sort != null)
-                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                if (__workflow_select != null)
+                    callPayload.Queries["select"] = ExpressionConverter.Convert(__workflow_select);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
                 return new ApiConnectionAction<GetRadarRainfallResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdradarip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetRadarDailySummaries))]
-        public IBodyWorkflowAction<GetRadarDailySummariesResponse> GetRadarDailySummaries([WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate, [WorkflowExpression] Func<double> latitude, [WorkflowExpression] Func<double> longitude, [WorkflowExpression] Func<dataSetInput> dataSet = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null)
+        public IBodyWorkflowAction<GetRadarDailySummariesResponse> GetRadarDailySummaries(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<double>> latitude, Expression<Func<double>> longitude, Expression<Func<dataSetInput>> dataSet = null, Expression<Func<string>> select = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetRadarDailySummariesResponse> __BuildGetRadarDailySummaries(WorkflowExpression<string> startDate, WorkflowExpression<string> endDate, WorkflowExpression<double> latitude, WorkflowExpression<double> longitude, WorkflowExpression<dataSetInput> dataSet = null, WorkflowExpression<string> select = null, WorkflowExpression<int> offset = null, WorkflowExpression<int> limit = null, WorkflowExpression<string> sort = null)
-        {
-            WorkflowExpression.Validate(startDate, nameof(startDate), required: true);
-            WorkflowExpression.Validate(endDate, nameof(endDate), required: true);
-            WorkflowExpression.Validate(latitude, nameof(latitude), required: true);
-            WorkflowExpression.Validate(longitude, nameof(longitude), required: true);
-            WorkflowExpression.Validate(dataSet, nameof(dataSet), required: false);
-            WorkflowExpression.Validate(select, nameof(select), required: false);
-            WorkflowExpression.Validate(offset, nameof(offset), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(sort, nameof(sort), required: false);
+            var __workflow_startDate = startDate == null ? null : WorkflowExpression.Compile(startDate);
+            WorkflowExpression.Validate(__workflow_startDate, nameof(startDate), required: true);
+            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
+            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: true);
+            var __workflow_latitude = latitude == null ? null : WorkflowExpression.Compile(latitude);
+            WorkflowExpression.Validate(__workflow_latitude, nameof(latitude), required: true);
+            var __workflow_longitude = longitude == null ? null : WorkflowExpression.Compile(longitude);
+            WorkflowExpression.Validate(__workflow_longitude, nameof(longitude), required: true);
+            var __workflow_dataSet = dataSet == null ? null : WorkflowExpression.Compile(dataSet);
+            WorkflowExpression.Validate(__workflow_dataSet, nameof(dataSet), required: false);
+            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
+            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
+            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
             return new DeferredBodyAction<GetRadarDailySummariesResponse>(() =>
             {
                 var apiCallPath = "/summaries/daily";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
-                callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
-                callPayload.Queries["latitude"] = ExpressionConverter.Convert(latitude);
-                callPayload.Queries["longitude"] = ExpressionConverter.Convert(longitude);
+                callPayload.Queries["startDate"] = ExpressionConverter.Convert(__workflow_startDate);
+                callPayload.Queries["endDate"] = ExpressionConverter.Convert(__workflow_endDate);
+                callPayload.Queries["latitude"] = ExpressionConverter.Convert(__workflow_latitude);
+                callPayload.Queries["longitude"] = ExpressionConverter.Convert(__workflow_longitude);
                 callPayload.Queries["dataSet"] = Convert.ToString("ALL");
-                if (dataSet != null)
-                    callPayload.Queries["dataSet"] = ExpressionConverter.Convert(dataSet);
+                if (__workflow_dataSet != null)
+                    callPayload.Queries["dataSet"] = ExpressionConverter.Convert(__workflow_dataSet);
                 callPayload.Queries["select"] = Convert.ToString("radar,radarCode,radarLatitude,radarLongitude,radarDistance,period,periodFrom,periodTo,periodYear,periodMonth,periodDay,periodHour,periodMinute,rainfall");
-                if (select != null)
-                    callPayload.Queries["select"] = ExpressionConverter.Convert(select);
-                if (offset != null)
-                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (sort != null)
-                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                if (__workflow_select != null)
+                    callPayload.Queries["select"] = ExpressionConverter.Convert(__workflow_select);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
                 return new ApiConnectionAction<GetRadarDailySummariesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdradarip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetRadarMonthlySummaries))]
-        public IBodyWorkflowAction<GetRadarMonthlySummariesResponse> GetRadarMonthlySummaries([WorkflowExpression] Func<string> startMonth, [WorkflowExpression] Func<string> endMonth, [WorkflowExpression] Func<double> latitude, [WorkflowExpression] Func<double> longitude, [WorkflowExpression] Func<dataSetInput> dataSet = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null)
+        public IBodyWorkflowAction<GetRadarMonthlySummariesResponse> GetRadarMonthlySummaries(Expression<Func<string>> startMonth, Expression<Func<string>> endMonth, Expression<Func<double>> latitude, Expression<Func<double>> longitude, Expression<Func<dataSetInput>> dataSet = null, Expression<Func<string>> select = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetRadarMonthlySummariesResponse> __BuildGetRadarMonthlySummaries(WorkflowExpression<string> startMonth, WorkflowExpression<string> endMonth, WorkflowExpression<double> latitude, WorkflowExpression<double> longitude, WorkflowExpression<dataSetInput> dataSet = null, WorkflowExpression<string> select = null, WorkflowExpression<int> offset = null, WorkflowExpression<int> limit = null, WorkflowExpression<string> sort = null)
-        {
-            WorkflowExpression.Validate(startMonth, nameof(startMonth), required: true);
-            WorkflowExpression.Validate(endMonth, nameof(endMonth), required: true);
-            WorkflowExpression.Validate(latitude, nameof(latitude), required: true);
-            WorkflowExpression.Validate(longitude, nameof(longitude), required: true);
-            WorkflowExpression.Validate(dataSet, nameof(dataSet), required: false);
-            WorkflowExpression.Validate(select, nameof(select), required: false);
-            WorkflowExpression.Validate(offset, nameof(offset), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(sort, nameof(sort), required: false);
+            var __workflow_startMonth = startMonth == null ? null : WorkflowExpression.Compile(startMonth);
+            WorkflowExpression.Validate(__workflow_startMonth, nameof(startMonth), required: true);
+            var __workflow_endMonth = endMonth == null ? null : WorkflowExpression.Compile(endMonth);
+            WorkflowExpression.Validate(__workflow_endMonth, nameof(endMonth), required: true);
+            var __workflow_latitude = latitude == null ? null : WorkflowExpression.Compile(latitude);
+            WorkflowExpression.Validate(__workflow_latitude, nameof(latitude), required: true);
+            var __workflow_longitude = longitude == null ? null : WorkflowExpression.Compile(longitude);
+            WorkflowExpression.Validate(__workflow_longitude, nameof(longitude), required: true);
+            var __workflow_dataSet = dataSet == null ? null : WorkflowExpression.Compile(dataSet);
+            WorkflowExpression.Validate(__workflow_dataSet, nameof(dataSet), required: false);
+            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
+            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
+            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
             return new DeferredBodyAction<GetRadarMonthlySummariesResponse>(() =>
             {
                 var apiCallPath = "/summaries/monthly";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["startMonth"] = ExpressionConverter.Convert(startMonth);
-                callPayload.Queries["endMonth"] = ExpressionConverter.Convert(endMonth);
-                callPayload.Queries["latitude"] = ExpressionConverter.Convert(latitude);
-                callPayload.Queries["longitude"] = ExpressionConverter.Convert(longitude);
+                callPayload.Queries["startMonth"] = ExpressionConverter.Convert(__workflow_startMonth);
+                callPayload.Queries["endMonth"] = ExpressionConverter.Convert(__workflow_endMonth);
+                callPayload.Queries["latitude"] = ExpressionConverter.Convert(__workflow_latitude);
+                callPayload.Queries["longitude"] = ExpressionConverter.Convert(__workflow_longitude);
                 callPayload.Queries["dataSet"] = Convert.ToString("ALL");
-                if (dataSet != null)
-                    callPayload.Queries["dataSet"] = ExpressionConverter.Convert(dataSet);
+                if (__workflow_dataSet != null)
+                    callPayload.Queries["dataSet"] = ExpressionConverter.Convert(__workflow_dataSet);
                 callPayload.Queries["select"] = Convert.ToString("radar,radarCode,radarLatitude,radarLongitude,radarDistance,period,periodFrom,periodTo,periodYear,periodMonth,periodDay,periodHour,periodMinute,rainfall");
-                if (select != null)
-                    callPayload.Queries["select"] = ExpressionConverter.Convert(select);
-                if (offset != null)
-                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (sort != null)
-                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                if (__workflow_select != null)
+                    callPayload.Queries["select"] = ExpressionConverter.Convert(__workflow_select);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
                 return new ApiConnectionAction<GetRadarMonthlySummariesResponse>(callPayload);
             });
         }

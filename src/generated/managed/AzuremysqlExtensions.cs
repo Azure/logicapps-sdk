@@ -1,31 +1,25 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremysql
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class AzuremysqlActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuremysql")]
-        [WorkflowExpressionFactory(nameof(__BuildGetStoredProcedures))]
-        public IBodyWorkflowAction<ProceduresList> GetStoredProcedures([WorkflowExpression] Func<string> server, [WorkflowExpression] Func<string> database)
+        public IBodyWorkflowAction<ProceduresList> GetStoredProcedures(Expression<Func<string>> server, Expression<Func<string>> database)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ProceduresList> __BuildGetStoredProcedures(WorkflowExpression<string> server, WorkflowExpression<string> database)
-        {
-            WorkflowExpression.Validate(server, nameof(server), required: true);
-            WorkflowExpression.Validate(database, nameof(database), required: true);
+            var __workflow_server = server == null ? null : WorkflowExpression.Compile(server);
+            WorkflowExpression.Validate(__workflow_server, nameof(server), required: true);
+            var __workflow_database = database == null ? null : WorkflowExpression.Compile(database);
+            WorkflowExpression.Validate(__workflow_database, nameof(database), required: true);
             return new DeferredBodyAction<ProceduresList>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0},{1}/procedures", ExpressionConverter.ConvertWithUrlEncoding(server, 2), ExpressionConverter.ConvertWithUrlEncoding(database, 2));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0},{1}/procedures", ExpressionConverter.ConvertWithUrlEncoding(__workflow_server, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_database, 2));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ProceduresList>(callPayload);
@@ -33,44 +27,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremysql
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuremysql")]
-        [WorkflowExpressionFactory(nameof(__BuildExecuteProcedure))]
-        public IBodyWorkflowAction<JToken> ExecuteProcedure([WorkflowExpression] Func<string> server, [WorkflowExpression] Func<string> database, [WorkflowExpression] Func<string> procedure, [WorkflowExpression] Func<object> parameters = null)
+        public IBodyWorkflowAction<JToken> ExecuteProcedure(Expression<Func<string>> server, Expression<Func<string>> database, Expression<Func<string>> procedure, Expression<Func<object>> parameters = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildExecuteProcedure(WorkflowExpression<string> server, WorkflowExpression<string> database, WorkflowExpression<string> procedure, WorkflowExpression<object> parameters = null)
-        {
-            WorkflowExpression.Validate(server, nameof(server), required: true);
-            WorkflowExpression.Validate(database, nameof(database), required: true);
-            WorkflowExpression.Validate(procedure, nameof(procedure), required: true);
-            WorkflowExpression.Validate(parameters, nameof(parameters), required: false);
+            var __workflow_server = server == null ? null : WorkflowExpression.Compile(server);
+            WorkflowExpression.Validate(__workflow_server, nameof(server), required: true);
+            var __workflow_database = database == null ? null : WorkflowExpression.Compile(database);
+            WorkflowExpression.Validate(__workflow_database, nameof(database), required: true);
+            var __workflow_procedure = procedure == null ? null : WorkflowExpression.Compile(procedure);
+            WorkflowExpression.Validate(__workflow_procedure, nameof(procedure), required: true);
+            var __workflow_parameters = parameters == null ? null : WorkflowExpression.Compile(parameters);
+            WorkflowExpression.Validate(__workflow_parameters, nameof(parameters), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0},{1}/procedures/{2}", ExpressionConverter.ConvertWithUrlEncoding(server, 2), ExpressionConverter.ConvertWithUrlEncoding(database, 2), ExpressionConverter.ConvertWithUrlEncoding(procedure, 2));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0},{1}/procedures/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_server, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_database, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_procedure, 2));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(parameters);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_parameters);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuremysql")]
-        [WorkflowExpressionFactory(nameof(__BuildGetTables))]
-        public IBodyWorkflowAction<TablesList> GetTables([WorkflowExpression] Func<string> server, [WorkflowExpression] Func<string> database)
+        public IBodyWorkflowAction<TablesList> GetTables(Expression<Func<string>> server, Expression<Func<string>> database)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TablesList> __BuildGetTables(WorkflowExpression<string> server, WorkflowExpression<string> database)
-        {
-            WorkflowExpression.Validate(server, nameof(server), required: true);
-            WorkflowExpression.Validate(database, nameof(database), required: true);
+            var __workflow_server = server == null ? null : WorkflowExpression.Compile(server);
+            WorkflowExpression.Validate(__workflow_server, nameof(server), required: true);
+            var __workflow_database = database == null ? null : WorkflowExpression.Compile(database);
+            WorkflowExpression.Validate(__workflow_database, nameof(database), required: true);
             return new DeferredBodyAction<TablesList>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0},{1}/tables", ExpressionConverter.ConvertWithUrlEncoding(server, 2), ExpressionConverter.ConvertWithUrlEncoding(database, 2));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0},{1}/tables", ExpressionConverter.ConvertWithUrlEncoding(__workflow_server, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_database, 2));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TablesList>(callPayload);
@@ -78,83 +64,78 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremysql
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuremysql")]
-        [WorkflowExpressionFactory(nameof(__BuildGetItems))]
-        public IBodyWorkflowAction<ItemsList> GetItems([WorkflowExpression] Func<string> server, [WorkflowExpression] Func<string> database, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<string> select = null)
+        public IBodyWorkflowAction<ItemsList> GetItems(Expression<Func<string>> server, Expression<Func<string>> database, Expression<Func<string>> table, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<string>> select = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ItemsList> __BuildGetItems(WorkflowExpression<string> server, WorkflowExpression<string> database, WorkflowExpression<string> table, WorkflowExpression<string> filter = null, WorkflowExpression<string> orderby = null, WorkflowExpression<int> top = null, WorkflowExpression<int> skip = null, WorkflowExpression<string> select = null)
-        {
-            WorkflowExpression.Validate(server, nameof(server), required: true);
-            WorkflowExpression.Validate(database, nameof(database), required: true);
-            WorkflowExpression.Validate(table, nameof(table), required: true);
-            WorkflowExpression.Validate(filter, nameof(filter), required: false);
-            WorkflowExpression.Validate(orderby, nameof(orderby), required: false);
-            WorkflowExpression.Validate(top, nameof(top), required: false);
-            WorkflowExpression.Validate(skip, nameof(skip), required: false);
-            WorkflowExpression.Validate(select, nameof(select), required: false);
+            var __workflow_server = server == null ? null : WorkflowExpression.Compile(server);
+            WorkflowExpression.Validate(__workflow_server, nameof(server), required: true);
+            var __workflow_database = database == null ? null : WorkflowExpression.Compile(database);
+            WorkflowExpression.Validate(__workflow_database, nameof(database), required: true);
+            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
+            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
+            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
+            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
+            var __workflow_orderby = orderby == null ? null : WorkflowExpression.Compile(orderby);
+            WorkflowExpression.Validate(__workflow_orderby, nameof(orderby), required: false);
+            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
+            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_skip = skip == null ? null : WorkflowExpression.Compile(skip);
+            WorkflowExpression.Validate(__workflow_skip, nameof(skip), required: false);
+            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
+            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
             return new DeferredBodyAction<ItemsList>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0},{1}/tables/{2}/items", ExpressionConverter.ConvertWithUrlEncoding(server, 2), ExpressionConverter.ConvertWithUrlEncoding(database, 2), ExpressionConverter.ConvertWithUrlEncoding(table, 2));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0},{1}/tables/{2}/items", ExpressionConverter.ConvertWithUrlEncoding(__workflow_server, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_database, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (filter != null)
-                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-                if (orderby != null)
-                    callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
-                if (top != null)
-                    callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-                if (skip != null)
-                    callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-                if (select != null)
-                    callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                if (__workflow_filter != null)
+                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(__workflow_filter);
+                if (__workflow_orderby != null)
+                    callPayload.Queries["$orderby"] = ExpressionConverter.Convert(__workflow_orderby);
+                if (__workflow_top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
+                if (__workflow_skip != null)
+                    callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
+                if (__workflow_select != null)
+                    callPayload.Queries["$select"] = ExpressionConverter.Convert(__workflow_select);
                 return new ApiConnectionAction<ItemsList>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuremysql")]
-        [WorkflowExpressionFactory(nameof(__BuildPostItem))]
-        public IBodyWorkflowAction<JToken> PostItem([WorkflowExpression] Func<string> server, [WorkflowExpression] Func<string> database, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<object> item = null)
+        public IBodyWorkflowAction<JToken> PostItem(Expression<Func<string>> server, Expression<Func<string>> database, Expression<Func<string>> table, Expression<Func<object>> item = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildPostItem(WorkflowExpression<string> server, WorkflowExpression<string> database, WorkflowExpression<string> table, WorkflowExpression<object> item = null)
-        {
-            WorkflowExpression.Validate(server, nameof(server), required: true);
-            WorkflowExpression.Validate(database, nameof(database), required: true);
-            WorkflowExpression.Validate(table, nameof(table), required: true);
-            WorkflowExpression.Validate(item, nameof(item), required: false);
+            var __workflow_server = server == null ? null : WorkflowExpression.Compile(server);
+            WorkflowExpression.Validate(__workflow_server, nameof(server), required: true);
+            var __workflow_database = database == null ? null : WorkflowExpression.Compile(database);
+            WorkflowExpression.Validate(__workflow_database, nameof(database), required: true);
+            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
+            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
+            var __workflow_item = item == null ? null : WorkflowExpression.Compile(item);
+            WorkflowExpression.Validate(__workflow_item, nameof(item), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0},{1}/tables/{2}/items", ExpressionConverter.ConvertWithUrlEncoding(server, 2), ExpressionConverter.ConvertWithUrlEncoding(database, 2), ExpressionConverter.ConvertWithUrlEncoding(table, 2));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0},{1}/tables/{2}/items", ExpressionConverter.ConvertWithUrlEncoding(__workflow_server, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_database, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(item);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_item);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuremysql")]
-        [WorkflowExpressionFactory(nameof(__BuildGetItem))]
-        public IBodyWorkflowAction<JToken> GetItem([WorkflowExpression] Func<string> server, [WorkflowExpression] Func<string> database, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<JToken> GetItem(Expression<Func<string>> server, Expression<Func<string>> database, Expression<Func<string>> table, Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildGetItem(WorkflowExpression<string> server, WorkflowExpression<string> database, WorkflowExpression<string> table, WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(server, nameof(server), required: true);
-            WorkflowExpression.Validate(database, nameof(database), required: true);
-            WorkflowExpression.Validate(table, nameof(table), required: true);
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_server = server == null ? null : WorkflowExpression.Compile(server);
+            WorkflowExpression.Validate(__workflow_server, nameof(server), required: true);
+            var __workflow_database = database == null ? null : WorkflowExpression.Compile(database);
+            WorkflowExpression.Validate(__workflow_database, nameof(database), required: true);
+            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
+            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0},{1}/tables/{2}/items/{3}", ExpressionConverter.ConvertWithUrlEncoding(server, 2), ExpressionConverter.ConvertWithUrlEncoding(database, 2), ExpressionConverter.ConvertWithUrlEncoding(table, 2), ExpressionConverter.ConvertWithUrlEncoding(id, 2));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0},{1}/tables/{2}/items/{3}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_server, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_database, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 2));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<JToken>(callPayload);
@@ -162,22 +143,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremysql
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuremysql")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteItem))]
-        public IWorkflowAction DeleteItem([WorkflowExpression] Func<string> server, [WorkflowExpression] Func<string> database, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> id)
+        public IWorkflowAction DeleteItem(Expression<Func<string>> server, Expression<Func<string>> database, Expression<Func<string>> table, Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDeleteItem(WorkflowExpression<string> server, WorkflowExpression<string> database, WorkflowExpression<string> table, WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(server, nameof(server), required: true);
-            WorkflowExpression.Validate(database, nameof(database), required: true);
-            WorkflowExpression.Validate(table, nameof(table), required: true);
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_server = server == null ? null : WorkflowExpression.Compile(server);
+            WorkflowExpression.Validate(__workflow_server, nameof(server), required: true);
+            var __workflow_database = database == null ? null : WorkflowExpression.Compile(database);
+            WorkflowExpression.Validate(__workflow_database, nameof(database), required: true);
+            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
+            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0},{1}/tables/{2}/items/{3}", ExpressionConverter.ConvertWithUrlEncoding(server, 2), ExpressionConverter.ConvertWithUrlEncoding(database, 2), ExpressionConverter.ConvertWithUrlEncoding(table, 2), ExpressionConverter.ConvertWithUrlEncoding(id, 2));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0},{1}/tables/{2}/items/{3}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_server, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_database, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 2));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -185,60 +163,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremysql
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuremysql")]
-        [WorkflowExpressionFactory(nameof(__BuildPatchItem))]
-        public IBodyWorkflowAction<JToken> PatchItem([WorkflowExpression] Func<string> server, [WorkflowExpression] Func<string> database, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<object> item = null)
+        public IBodyWorkflowAction<JToken> PatchItem(Expression<Func<string>> server, Expression<Func<string>> database, Expression<Func<string>> table, Expression<Func<string>> id, Expression<Func<object>> item = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildPatchItem(WorkflowExpression<string> server, WorkflowExpression<string> database, WorkflowExpression<string> table, WorkflowExpression<string> id, WorkflowExpression<object> item = null)
-        {
-            WorkflowExpression.Validate(server, nameof(server), required: true);
-            WorkflowExpression.Validate(database, nameof(database), required: true);
-            WorkflowExpression.Validate(table, nameof(table), required: true);
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(item, nameof(item), required: false);
+            var __workflow_server = server == null ? null : WorkflowExpression.Compile(server);
+            WorkflowExpression.Validate(__workflow_server, nameof(server), required: true);
+            var __workflow_database = database == null ? null : WorkflowExpression.Compile(database);
+            WorkflowExpression.Validate(__workflow_database, nameof(database), required: true);
+            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
+            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_item = item == null ? null : WorkflowExpression.Compile(item);
+            WorkflowExpression.Validate(__workflow_item, nameof(item), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0},{1}/tables/{2}/items/{3}", ExpressionConverter.ConvertWithUrlEncoding(server, 2), ExpressionConverter.ConvertWithUrlEncoding(database, 2), ExpressionConverter.ConvertWithUrlEncoding(table, 2), ExpressionConverter.ConvertWithUrlEncoding(id, 2));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0},{1}/tables/{2}/items/{3}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_server, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_database, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 2));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(item);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_item);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuremysql")]
-        [WorkflowExpressionFactory(nameof(__BuildExecutePassThroughNativeQuery))]
-        public IBodyWorkflowAction<JToken> ExecutePassThroughNativeQuery([WorkflowExpression] Func<string> server, [WorkflowExpression] Func<string> database, [WorkflowExpression] Func<object> queryactualParameters = null, [WorkflowExpression] Func<string> queryquery = null)
+        public IBodyWorkflowAction<JToken> ExecutePassThroughNativeQuery(Expression<Func<string>> server, Expression<Func<string>> database, Expression<Func<object>> queryactualParameters = null, Expression<Func<string>> queryquery = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildExecutePassThroughNativeQuery(WorkflowExpression<string> server, WorkflowExpression<string> database, WorkflowExpression<object> queryactualParameters = null, WorkflowExpression<string> queryquery = null)
-        {
-            WorkflowExpression.Validate(server, nameof(server), required: true);
-            WorkflowExpression.Validate(database, nameof(database), required: true);
-            WorkflowExpression.Validate(queryactualParameters, nameof(queryactualParameters), required: false);
-            WorkflowExpression.Validate(queryquery, nameof(queryquery), required: false);
+            var __workflow_server = server == null ? null : WorkflowExpression.Compile(server);
+            WorkflowExpression.Validate(__workflow_server, nameof(server), required: true);
+            var __workflow_database = database == null ? null : WorkflowExpression.Compile(database);
+            WorkflowExpression.Validate(__workflow_database, nameof(database), required: true);
+            var __workflow_queryactualParameters = queryactualParameters == null ? null : WorkflowExpression.Compile(queryactualParameters);
+            WorkflowExpression.Validate(__workflow_queryactualParameters, nameof(queryactualParameters), required: false);
+            var __workflow_queryquery = queryquery == null ? null : WorkflowExpression.Compile(queryquery);
+            WorkflowExpression.Validate(__workflow_queryquery, nameof(queryquery), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0},{1}/query/mysql", ExpressionConverter.ConvertWithUrlEncoding(server, 2), ExpressionConverter.ConvertWithUrlEncoding(database, 2));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0},{1}/query/mysql", ExpressionConverter.ConvertWithUrlEncoding(__workflow_server, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_database, 2));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var query = new JObject();
                 var querypropCount = 0;
-                if (queryactualParameters != null)
+                if (__workflow_queryactualParameters != null)
                 {
-                    query["actualParameters"] = ExpressionConverter.ConvertO(queryactualParameters);
+                    query["actualParameters"] = ExpressionConverter.ConvertO(__workflow_queryactualParameters);
                     querypropCount++;
                 }
 
-                if (queryquery != null)
+                if (__workflow_queryquery != null)
                 {
-                    query["query"] = ExpressionConverter.ConvertO(queryquery);
+                    query["query"] = ExpressionConverter.ConvertO(__workflow_queryquery);
                     querypropCount++;
                 }
 
@@ -262,69 +235,68 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremysql
 
     public class AzuremysqlTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildOnNewItems))]
-        public IBodyWorkflowTrigger<ItemsList> OnNewItems([WorkflowExpression] Func<string> server,[WorkflowExpression] Func<string> database,[WorkflowExpression] Func<string> table,[WorkflowExpression] Func<string> filter = null,[WorkflowExpression] Func<int> top = null,[WorkflowExpression] Func<string> orderby = null,[WorkflowExpression] Func<string> select = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemsList> OnNewItems(Expression<Func<string>> server, Expression<Func<string>> database, Expression<Func<string>> table, Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<string>> orderby = null, Expression<Func<string>> select = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ItemsList> __BuildOnNewItems(WorkflowExpression<string> server,WorkflowExpression<string> database,WorkflowExpression<string> table,WorkflowExpression<string> filter = null,WorkflowExpression<int> top = null,WorkflowExpression<string> orderby = null,WorkflowExpression<string> select = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(server, nameof(server), required: true);
-            WorkflowExpression.Validate(database, nameof(database), required: true);
-            WorkflowExpression.Validate(table, nameof(table), required: true);
-            WorkflowExpression.Validate(filter, nameof(filter), required: false);
-            WorkflowExpression.Validate(top, nameof(top), required: false);
-            WorkflowExpression.Validate(orderby, nameof(orderby), required: false);
-            WorkflowExpression.Validate(select, nameof(select), required: false);
+            var __workflow_server = server == null ? null : WorkflowExpression.Compile(server);
+            WorkflowExpression.Validate(__workflow_server, nameof(server), required: true);
+            var __workflow_database = database == null ? null : WorkflowExpression.Compile(database);
+            WorkflowExpression.Validate(__workflow_database, nameof(database), required: true);
+            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
+            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
+            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
+            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
+            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
+            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_orderby = orderby == null ? null : WorkflowExpression.Compile(orderby);
+            WorkflowExpression.Validate(__workflow_orderby, nameof(orderby), required: false);
+            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
+            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
             return new DeferredBodyTrigger<ItemsList>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0},{1}/tables/{2}/onnewitems", ExpressionConverter.ConvertWithUrlEncoding(server, 2), ExpressionConverter.ConvertWithUrlEncoding(database, 2), ExpressionConverter.ConvertWithUrlEncoding(table, 2));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0},{1}/tables/{2}/onnewitems", ExpressionConverter.ConvertWithUrlEncoding(__workflow_server, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_database, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (filter != null)
-                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-                if (top != null)
-                    callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-                if (orderby != null)
-                    callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
-                if (select != null)
-                    callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                if (__workflow_filter != null)
+                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(__workflow_filter);
+                if (__workflow_top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
+                if (__workflow_orderby != null)
+                    callPayload.Queries["$orderby"] = ExpressionConverter.Convert(__workflow_orderby);
+                if (__workflow_select != null)
+                    callPayload.Queries["$select"] = ExpressionConverter.Convert(__workflow_select);
                 return new ApiConnectionTrigger<ItemsList>(callPayload, recurrence: recurrence);
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildOnUpdatedItems))]
-        public IBodyWorkflowTrigger<ItemsList> OnUpdatedItems([WorkflowExpression] Func<string> server,[WorkflowExpression] Func<string> database,[WorkflowExpression] Func<string> table,[WorkflowExpression] Func<string> filter = null,[WorkflowExpression] Func<int> top = null,[WorkflowExpression] Func<string> orderby = null,[WorkflowExpression] Func<string> select = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemsList> OnUpdatedItems(Expression<Func<string>> server, Expression<Func<string>> database, Expression<Func<string>> table, Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<string>> orderby = null, Expression<Func<string>> select = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ItemsList> __BuildOnUpdatedItems(WorkflowExpression<string> server,WorkflowExpression<string> database,WorkflowExpression<string> table,WorkflowExpression<string> filter = null,WorkflowExpression<int> top = null,WorkflowExpression<string> orderby = null,WorkflowExpression<string> select = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(server, nameof(server), required: true);
-            WorkflowExpression.Validate(database, nameof(database), required: true);
-            WorkflowExpression.Validate(table, nameof(table), required: true);
-            WorkflowExpression.Validate(filter, nameof(filter), required: false);
-            WorkflowExpression.Validate(top, nameof(top), required: false);
-            WorkflowExpression.Validate(orderby, nameof(orderby), required: false);
-            WorkflowExpression.Validate(select, nameof(select), required: false);
+            var __workflow_server = server == null ? null : WorkflowExpression.Compile(server);
+            WorkflowExpression.Validate(__workflow_server, nameof(server), required: true);
+            var __workflow_database = database == null ? null : WorkflowExpression.Compile(database);
+            WorkflowExpression.Validate(__workflow_database, nameof(database), required: true);
+            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
+            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
+            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
+            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
+            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
+            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_orderby = orderby == null ? null : WorkflowExpression.Compile(orderby);
+            WorkflowExpression.Validate(__workflow_orderby, nameof(orderby), required: false);
+            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
+            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
             return new DeferredBodyTrigger<ItemsList>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0},{1}/tables/{2}/onupdateditems", ExpressionConverter.ConvertWithUrlEncoding(server, 2), ExpressionConverter.ConvertWithUrlEncoding(database, 2), ExpressionConverter.ConvertWithUrlEncoding(table, 2));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0},{1}/tables/{2}/onupdateditems", ExpressionConverter.ConvertWithUrlEncoding(__workflow_server, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_database, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (filter != null)
-                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-                if (top != null)
-                    callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-                if (orderby != null)
-                    callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
-                if (select != null)
-                    callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                if (__workflow_filter != null)
+                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(__workflow_filter);
+                if (__workflow_top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
+                if (__workflow_orderby != null)
+                    callPayload.Queries["$orderby"] = ExpressionConverter.Convert(__workflow_orderby);
+                if (__workflow_select != null)
+                    callPayload.Queries["$select"] = ExpressionConverter.Convert(__workflow_select);
                 return new ApiConnectionTrigger<ItemsList>(callPayload, recurrence: recurrence);
             });
         }

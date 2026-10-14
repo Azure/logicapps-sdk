@@ -1,30 +1,26 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robolytix
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class RobolytixActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "robolytix")]
-        [WorkflowExpressionFactory(nameof(__BuildSonar))]
-        public IBodyWorkflowAction<SonarResponse> Sonar([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyprocessid, [WorkflowExpression] Func<string> bodytype, [WorkflowExpression] Func<string> bodyrunid = null)
+        public IBodyWorkflowAction<SonarResponse> Sonar(Expression<Func<string>> bodyname, Expression<Func<string>> bodyprocessid, Expression<Func<string>> bodytype, Expression<Func<string>> bodyrunid = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SonarResponse> __BuildSonar(WorkflowExpression<string> bodyname, WorkflowExpression<string> bodyprocessid, WorkflowExpression<string> bodytype, WorkflowExpression<string> bodyrunid = null)
-        {
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
-            WorkflowExpression.Validate(bodyprocessid, nameof(bodyprocessid), required: true);
-            WorkflowExpression.Validate(bodytype, nameof(bodytype), required: true);
-            WorkflowExpression.Validate(bodyrunid, nameof(bodyrunid), required: false);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
+            var __workflow_bodyprocessid = bodyprocessid == null ? null : WorkflowExpression.Compile(bodyprocessid);
+            WorkflowExpression.Validate(__workflow_bodyprocessid, nameof(bodyprocessid), required: true);
+            var __workflow_bodytype = bodytype == null ? null : WorkflowExpression.Compile(bodytype);
+            WorkflowExpression.Validate(__workflow_bodytype, nameof(bodytype), required: true);
+            var __workflow_bodyrunid = bodyrunid == null ? null : WorkflowExpression.Compile(bodyrunid);
+            WorkflowExpression.Validate(__workflow_bodyrunid, nameof(bodyrunid), required: false);
             return new DeferredBodyAction<SonarResponse>(() =>
             {
                 var apiCallPath = "/messages";
@@ -34,17 +30,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robolytix
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
                 bodypropCount++;
-                body["processid"] = ExpressionConverter.ConvertO(bodyprocessid);
-                if (bodyrunid != null)
+                body["processid"] = ExpressionConverter.ConvertO(__workflow_bodyprocessid);
+                if (__workflow_bodyrunid != null)
                 {
-                    body["runid"] = ExpressionConverter.ConvertO(bodyrunid);
+                    body["runid"] = ExpressionConverter.ConvertO(__workflow_bodyrunid);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
+                body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

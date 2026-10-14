@@ -1,32 +1,30 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Loginllamaip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class LoginllamaipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "loginllamaip")]
-        [WorkflowExpressionFactory(nameof(__BuildLogin))]
-        public IBodyWorkflowAction<LoginPostResponse> Login([WorkflowExpression] Func<string> bodyipAddress, [WorkflowExpression] Func<string> bodyuserAgent, [WorkflowExpression] Func<string> bodyidentityKey, [WorkflowExpression] Func<string> bodygeoCountry = null, [WorkflowExpression] Func<string> bodygeoCity = null, [WorkflowExpression] Func<string> bodyuserTimeOfDay = null)
+        public IBodyWorkflowAction<LoginPostResponse> Login(Expression<Func<string>> bodyipAddress, Expression<Func<string>> bodyuserAgent, Expression<Func<string>> bodyidentityKey, Expression<Func<string>> bodygeoCountry = null, Expression<Func<string>> bodygeoCity = null, Expression<Func<string>> bodyuserTimeOfDay = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<LoginPostResponse> __BuildLogin(WorkflowExpression<string> bodyipAddress, WorkflowExpression<string> bodyuserAgent, WorkflowExpression<string> bodyidentityKey, WorkflowExpression<string> bodygeoCountry = null, WorkflowExpression<string> bodygeoCity = null, WorkflowExpression<string> bodyuserTimeOfDay = null)
-        {
-            WorkflowExpression.Validate(bodyipAddress, nameof(bodyipAddress), required: true);
-            WorkflowExpression.Validate(bodyuserAgent, nameof(bodyuserAgent), required: true);
-            WorkflowExpression.Validate(bodyidentityKey, nameof(bodyidentityKey), required: true);
-            WorkflowExpression.Validate(bodygeoCountry, nameof(bodygeoCountry), required: false);
-            WorkflowExpression.Validate(bodygeoCity, nameof(bodygeoCity), required: false);
-            WorkflowExpression.Validate(bodyuserTimeOfDay, nameof(bodyuserTimeOfDay), required: false);
+            var __workflow_bodyipAddress = bodyipAddress == null ? null : WorkflowExpression.Compile(bodyipAddress);
+            WorkflowExpression.Validate(__workflow_bodyipAddress, nameof(bodyipAddress), required: true);
+            var __workflow_bodyuserAgent = bodyuserAgent == null ? null : WorkflowExpression.Compile(bodyuserAgent);
+            WorkflowExpression.Validate(__workflow_bodyuserAgent, nameof(bodyuserAgent), required: true);
+            var __workflow_bodyidentityKey = bodyidentityKey == null ? null : WorkflowExpression.Compile(bodyidentityKey);
+            WorkflowExpression.Validate(__workflow_bodyidentityKey, nameof(bodyidentityKey), required: true);
+            var __workflow_bodygeoCountry = bodygeoCountry == null ? null : WorkflowExpression.Compile(bodygeoCountry);
+            WorkflowExpression.Validate(__workflow_bodygeoCountry, nameof(bodygeoCountry), required: false);
+            var __workflow_bodygeoCity = bodygeoCity == null ? null : WorkflowExpression.Compile(bodygeoCity);
+            WorkflowExpression.Validate(__workflow_bodygeoCity, nameof(bodygeoCity), required: false);
+            var __workflow_bodyuserTimeOfDay = bodyuserTimeOfDay == null ? null : WorkflowExpression.Compile(bodyuserTimeOfDay);
+            WorkflowExpression.Validate(__workflow_bodyuserTimeOfDay, nameof(bodyuserTimeOfDay), required: false);
             return new DeferredBodyAction<LoginPostResponse>(() =>
             {
                 var apiCallPath = "/login/check";
@@ -35,26 +33,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Loginllamaip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["ip_address"] = ExpressionConverter.ConvertO(bodyipAddress);
+                body["ip_address"] = ExpressionConverter.ConvertO(__workflow_bodyipAddress);
                 bodypropCount++;
-                body["user_agent"] = ExpressionConverter.ConvertO(bodyuserAgent);
+                body["user_agent"] = ExpressionConverter.ConvertO(__workflow_bodyuserAgent);
                 bodypropCount++;
-                body["identity_key"] = ExpressionConverter.ConvertO(bodyidentityKey);
-                if (bodygeoCountry != null)
+                body["identity_key"] = ExpressionConverter.ConvertO(__workflow_bodyidentityKey);
+                if (__workflow_bodygeoCountry != null)
                 {
-                    body["geo_country"] = ExpressionConverter.ConvertO(bodygeoCountry);
+                    body["geo_country"] = ExpressionConverter.ConvertO(__workflow_bodygeoCountry);
                     bodypropCount++;
                 }
 
-                if (bodygeoCity != null)
+                if (__workflow_bodygeoCity != null)
                 {
-                    body["geo_city"] = ExpressionConverter.ConvertO(bodygeoCity);
+                    body["geo_city"] = ExpressionConverter.ConvertO(__workflow_bodygeoCity);
                     bodypropCount++;
                 }
 
-                if (bodyuserTimeOfDay != null)
+                if (__workflow_bodyuserTimeOfDay != null)
                 {
-                    body["user_time_of_day"] = ExpressionConverter.ConvertO(bodyuserTimeOfDay);
+                    body["user_time_of_day"] = ExpressionConverter.ConvertO(__workflow_bodyuserTimeOfDay);
                     bodypropCount++;
                 }
 

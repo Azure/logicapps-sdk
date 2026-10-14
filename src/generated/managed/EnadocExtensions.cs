@@ -1,28 +1,22 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Enadoc
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class EnadocActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "enadoc")]
-        [WorkflowExpressionFactory(nameof(__BuildSendToMyWorkspace))]
-        public IBodyWorkflowAction<SuccessResponse> SendToMyWorkspace([WorkflowExpression] Func<string> document, [WorkflowExpression] Func<string> name)
+        public IBodyWorkflowAction<SuccessResponse> SendToMyWorkspace(Expression<Func<string>> document, Expression<Func<string>> name)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SuccessResponse> __BuildSendToMyWorkspace(WorkflowExpression<string> document, WorkflowExpression<string> name)
-        {
-            WorkflowExpression.Validate(document, nameof(document), required: true);
-            WorkflowExpression.Validate(name, nameof(name), required: true);
+            var __workflow_document = document == null ? null : WorkflowExpression.Compile(document);
+            WorkflowExpression.Validate(__workflow_document, nameof(document), required: true);
+            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
+            WorkflowExpression.Validate(__workflow_name, nameof(name), required: true);
             return new DeferredBodyAction<SuccessResponse>(() =>
             {
                 var apiCallPath = "/api/v3/workspace";

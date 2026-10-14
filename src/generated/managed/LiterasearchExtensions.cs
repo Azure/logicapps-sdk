@@ -1,75 +1,56 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Literasearch
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class LiterasearchActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "literasearch")]
-        [WorkflowExpressionFactory(nameof(__BuildGetMatterList))]
-        public IWorkflowAction GetMatterList([WorkflowExpression] Func<string> request)
+        public IWorkflowAction GetMatterList(Expression<Func<string>> request)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetMatterList(WorkflowExpression<string> request)
-        {
-            WorkflowExpression.Validate(request, nameof(request), required: true);
+            var __workflow_request = request == null ? null : WorkflowExpression.Compile(request);
+            WorkflowExpression.Validate(__workflow_request, nameof(request), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/GetMatterList";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["request"] = ExpressionConverter.Convert(request);
+                callPayload.Queries["request"] = ExpressionConverter.Convert(__workflow_request);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "literasearch")]
-        [WorkflowExpressionFactory(nameof(__BuildGetMatterNarrative))]
-        public IWorkflowAction GetMatterNarrative([WorkflowExpression] Func<string> matterId)
+        public IWorkflowAction GetMatterNarrative(Expression<Func<string>> matterId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetMatterNarrative(WorkflowExpression<string> matterId)
-        {
-            WorkflowExpression.Validate(matterId, nameof(matterId), required: true);
+            var __workflow_matterId = matterId == null ? null : WorkflowExpression.Compile(matterId);
+            WorkflowExpression.Validate(__workflow_matterId, nameof(matterId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/GetMatterNarrative";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["matterId"] = ExpressionConverter.Convert(matterId);
+                callPayload.Queries["matterId"] = ExpressionConverter.Convert(__workflow_matterId);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "literasearch")]
-        [WorkflowExpressionFactory(nameof(__BuildGetMatterDetail))]
-        public IWorkflowAction GetMatterDetail([WorkflowExpression] Func<string> matterId)
+        public IWorkflowAction GetMatterDetail(Expression<Func<string>> matterId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetMatterDetail(WorkflowExpression<string> matterId)
-        {
-            WorkflowExpression.Validate(matterId, nameof(matterId), required: true);
+            var __workflow_matterId = matterId == null ? null : WorkflowExpression.Compile(matterId);
+            WorkflowExpression.Validate(__workflow_matterId, nameof(matterId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/GetMatterDetail";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["matterId"] = ExpressionConverter.Convert(matterId);
+                callPayload.Queries["matterId"] = ExpressionConverter.Convert(__workflow_matterId);
                 return new ApiConnectionAction(callPayload);
             });
         }

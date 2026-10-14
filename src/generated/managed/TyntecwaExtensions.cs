@@ -1,30 +1,23 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class TyntecwaActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        [WorkflowExpressionFactory(nameof(__BuildTestPhoneNumber))]
-        public IBodyWorkflowAction<TestPhoneNumberResponse> TestPhoneNumber([WorkflowExpression] Func<string> whatsAppBusinessNumber)
+        public IBodyWorkflowAction<TestPhoneNumberResponse> TestPhoneNumber(Expression<Func<string>> whatsAppBusinessNumber)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TestPhoneNumberResponse> __BuildTestPhoneNumber(WorkflowExpression<string> whatsAppBusinessNumber)
-        {
-            WorkflowExpression.Validate(whatsAppBusinessNumber, nameof(whatsAppBusinessNumber), required: true);
+            var __workflow_whatsAppBusinessNumber = whatsAppBusinessNumber == null ? null : WorkflowExpression.Compile(whatsAppBusinessNumber);
+            WorkflowExpression.Validate(__workflow_whatsAppBusinessNumber, nameof(whatsAppBusinessNumber), required: true);
             return new DeferredBodyAction<TestPhoneNumberResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/conversations/v3/channels/whatsapp/phone-numbers/{0}", ExpressionConverter.ConvertWithUrlEncoding(whatsAppBusinessNumber, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/conversations/v3/channels/whatsapp/phone-numbers/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_whatsAppBusinessNumber, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TestPhoneNumberResponse>(callPayload);
@@ -32,18 +25,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        [WorkflowExpressionFactory(nameof(__BuildSendWhatsAppText))]
-        public IBodyWorkflowAction<SendWhatsAppTextResponse> SendWhatsAppText([WorkflowExpression] Func<string> bodyfrom, [WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<string> bodycontenttext = null)
+        public IBodyWorkflowAction<SendWhatsAppTextResponse> SendWhatsAppText(Expression<Func<string>> bodyfrom, Expression<Func<string>> bodyto, Expression<Func<string>> bodycontenttext = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SendWhatsAppTextResponse> __BuildSendWhatsAppText(WorkflowExpression<string> bodyfrom, WorkflowExpression<string> bodyto, WorkflowExpression<string> bodycontenttext = null)
-        {
-            WorkflowExpression.Validate(bodyfrom, nameof(bodyfrom), required: true);
-            WorkflowExpression.Validate(bodyto, nameof(bodyto), required: true);
-            WorkflowExpression.Validate(bodycontenttext, nameof(bodycontenttext), required: false);
+            var __workflow_bodyfrom = bodyfrom == null ? null : WorkflowExpression.Compile(bodyfrom);
+            WorkflowExpression.Validate(__workflow_bodyfrom, nameof(bodyfrom), required: true);
+            var __workflow_bodyto = bodyto == null ? null : WorkflowExpression.Compile(bodyto);
+            WorkflowExpression.Validate(__workflow_bodyto, nameof(bodyto), required: true);
+            var __workflow_bodycontenttext = bodycontenttext == null ? null : WorkflowExpression.Compile(bodycontenttext);
+            WorkflowExpression.Validate(__workflow_bodycontenttext, nameof(bodycontenttext), required: false);
             return new DeferredBodyAction<SendWhatsAppTextResponse>(() =>
             {
                 var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/text";
@@ -52,18 +41,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                body["from"] = ExpressionConverter.ConvertO(__workflow_bodyfrom);
                 bodypropCount++;
-                body["to"] = ExpressionConverter.ConvertO(bodyto);
+                body["to"] = ExpressionConverter.ConvertO(__workflow_bodyto);
                 body["channel"] = "whatsapp";
                 bodypropCount++;
                 var contentObject = new JObject();
                 var contentObjectpropCount = 0;
                 contentObject["contentType"] = "text";
                 contentObjectpropCount++;
-                if (bodycontenttext != null)
+                if (__workflow_bodycontenttext != null)
                 {
-                    contentObject["text"] = ExpressionConverter.ConvertO(bodycontenttext);
+                    contentObject["text"] = ExpressionConverter.ConvertO(__workflow_bodycontenttext);
                     contentObjectpropCount++;
                 }
 
@@ -83,18 +72,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        [WorkflowExpressionFactory(nameof(__BuildSendWhatsAppContact))]
-        public IBodyWorkflowAction<SendWhatsAppContactResponse> SendWhatsAppContact([WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<bodycontentcontactsInputItem[]> bodycontentcontacts = null)
+        public IBodyWorkflowAction<SendWhatsAppContactResponse> SendWhatsAppContact(Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyto = null, Expression<Func<bodycontentcontactsInputItem[]>> bodycontentcontacts = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SendWhatsAppContactResponse> __BuildSendWhatsAppContact(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<bodycontentcontactsInputItem[]> bodycontentcontacts = null)
-        {
-            WorkflowExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
-            WorkflowExpression.Validate(bodyto, nameof(bodyto), required: false);
-            WorkflowExpression.Validate(bodycontentcontacts, nameof(bodycontentcontacts), required: false);
+            var __workflow_bodyfrom = bodyfrom == null ? null : WorkflowExpression.Compile(bodyfrom);
+            WorkflowExpression.Validate(__workflow_bodyfrom, nameof(bodyfrom), required: false);
+            var __workflow_bodyto = bodyto == null ? null : WorkflowExpression.Compile(bodyto);
+            WorkflowExpression.Validate(__workflow_bodyto, nameof(bodyto), required: false);
+            var __workflow_bodycontentcontacts = bodycontentcontacts == null ? null : WorkflowExpression.Compile(bodycontentcontacts);
+            WorkflowExpression.Validate(__workflow_bodycontentcontacts, nameof(bodycontentcontacts), required: false);
             return new DeferredBodyAction<SendWhatsAppContactResponse>(() =>
             {
                 var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/contact";
@@ -102,15 +87,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfrom != null)
+                if (__workflow_bodyfrom != null)
                 {
-                    body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                    body["from"] = ExpressionConverter.ConvertO(__workflow_bodyfrom);
                     bodypropCount++;
                 }
 
-                if (bodyto != null)
+                if (__workflow_bodyto != null)
                 {
-                    body["to"] = ExpressionConverter.ConvertO(bodyto);
+                    body["to"] = ExpressionConverter.ConvertO(__workflow_bodyto);
                     bodypropCount++;
                 }
 
@@ -118,9 +103,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 bodypropCount++;
                 var contentObject = new JObject();
                 var contentObjectpropCount = 0;
-                if (bodycontentcontacts != null)
+                if (__workflow_bodycontentcontacts != null)
                 {
-                    contentObject["contacts"] = ExpressionConverter.ConvertO(bodycontentcontacts);
+                    contentObject["contacts"] = ExpressionConverter.ConvertO(__workflow_bodycontentcontacts);
                     contentObjectpropCount++;
                 }
 
@@ -142,21 +127,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        [WorkflowExpressionFactory(nameof(__BuildSendWhatsAppLocation))]
-        public IBodyWorkflowAction<SendWhatsAppLocationResponse> SendWhatsAppLocation([WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<double> bodycontentlocationlongitude = null, [WorkflowExpression] Func<double> bodycontentlocationlatitude = null, [WorkflowExpression] Func<string> bodycontentlocationname = null, [WorkflowExpression] Func<string> bodycontentlocationaddress = null)
+        public IBodyWorkflowAction<SendWhatsAppLocationResponse> SendWhatsAppLocation(Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyto = null, Expression<Func<double>> bodycontentlocationlongitude = null, Expression<Func<double>> bodycontentlocationlatitude = null, Expression<Func<string>> bodycontentlocationname = null, Expression<Func<string>> bodycontentlocationaddress = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SendWhatsAppLocationResponse> __BuildSendWhatsAppLocation(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<double> bodycontentlocationlongitude = null, WorkflowExpression<double> bodycontentlocationlatitude = null, WorkflowExpression<string> bodycontentlocationname = null, WorkflowExpression<string> bodycontentlocationaddress = null)
-        {
-            WorkflowExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
-            WorkflowExpression.Validate(bodyto, nameof(bodyto), required: false);
-            WorkflowExpression.Validate(bodycontentlocationlongitude, nameof(bodycontentlocationlongitude), required: false);
-            WorkflowExpression.Validate(bodycontentlocationlatitude, nameof(bodycontentlocationlatitude), required: false);
-            WorkflowExpression.Validate(bodycontentlocationname, nameof(bodycontentlocationname), required: false);
-            WorkflowExpression.Validate(bodycontentlocationaddress, nameof(bodycontentlocationaddress), required: false);
+            var __workflow_bodyfrom = bodyfrom == null ? null : WorkflowExpression.Compile(bodyfrom);
+            WorkflowExpression.Validate(__workflow_bodyfrom, nameof(bodyfrom), required: false);
+            var __workflow_bodyto = bodyto == null ? null : WorkflowExpression.Compile(bodyto);
+            WorkflowExpression.Validate(__workflow_bodyto, nameof(bodyto), required: false);
+            var __workflow_bodycontentlocationlongitude = bodycontentlocationlongitude == null ? null : WorkflowExpression.Compile(bodycontentlocationlongitude);
+            WorkflowExpression.Validate(__workflow_bodycontentlocationlongitude, nameof(bodycontentlocationlongitude), required: false);
+            var __workflow_bodycontentlocationlatitude = bodycontentlocationlatitude == null ? null : WorkflowExpression.Compile(bodycontentlocationlatitude);
+            WorkflowExpression.Validate(__workflow_bodycontentlocationlatitude, nameof(bodycontentlocationlatitude), required: false);
+            var __workflow_bodycontentlocationname = bodycontentlocationname == null ? null : WorkflowExpression.Compile(bodycontentlocationname);
+            WorkflowExpression.Validate(__workflow_bodycontentlocationname, nameof(bodycontentlocationname), required: false);
+            var __workflow_bodycontentlocationaddress = bodycontentlocationaddress == null ? null : WorkflowExpression.Compile(bodycontentlocationaddress);
+            WorkflowExpression.Validate(__workflow_bodycontentlocationaddress, nameof(bodycontentlocationaddress), required: false);
             return new DeferredBodyAction<SendWhatsAppLocationResponse>(() =>
             {
                 var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/location";
@@ -164,15 +148,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfrom != null)
+                if (__workflow_bodyfrom != null)
                 {
-                    body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                    body["from"] = ExpressionConverter.ConvertO(__workflow_bodyfrom);
                     bodypropCount++;
                 }
 
-                if (bodyto != null)
+                if (__workflow_bodyto != null)
                 {
-                    body["to"] = ExpressionConverter.ConvertO(bodyto);
+                    body["to"] = ExpressionConverter.ConvertO(__workflow_bodyto);
                     bodypropCount++;
                 }
 
@@ -182,27 +166,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 var contentObjectpropCount = 0;
                 var locationObject = new JObject();
                 var locationObjectpropCount = 0;
-                if (bodycontentlocationlongitude != null)
+                if (__workflow_bodycontentlocationlongitude != null)
                 {
-                    locationObject["longitude"] = ExpressionConverter.ConvertO(bodycontentlocationlongitude);
+                    locationObject["longitude"] = ExpressionConverter.ConvertO(__workflow_bodycontentlocationlongitude);
                     locationObjectpropCount++;
                 }
 
-                if (bodycontentlocationlatitude != null)
+                if (__workflow_bodycontentlocationlatitude != null)
                 {
-                    locationObject["latitude"] = ExpressionConverter.ConvertO(bodycontentlocationlatitude);
+                    locationObject["latitude"] = ExpressionConverter.ConvertO(__workflow_bodycontentlocationlatitude);
                     locationObjectpropCount++;
                 }
 
-                if (bodycontentlocationname != null)
+                if (__workflow_bodycontentlocationname != null)
                 {
-                    locationObject["name"] = ExpressionConverter.ConvertO(bodycontentlocationname);
+                    locationObject["name"] = ExpressionConverter.ConvertO(__workflow_bodycontentlocationname);
                     locationObjectpropCount++;
                 }
 
-                if (bodycontentlocationaddress != null)
+                if (__workflow_bodycontentlocationaddress != null)
                 {
-                    locationObject["address"] = ExpressionConverter.ConvertO(bodycontentlocationaddress);
+                    locationObject["address"] = ExpressionConverter.ConvertO(__workflow_bodycontentlocationaddress);
                     locationObjectpropCount++;
                 }
 
@@ -230,24 +214,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        [WorkflowExpressionFactory(nameof(__BuildSendWhatsAppQuickReply))]
-        public IBodyWorkflowAction<SendWhatsAppQuickReplyResponse> SendWhatsAppQuickReply([WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsheadertype = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsheadertext = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsbodytype = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsbodytext = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsfootertype = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsfootertext = null, [WorkflowExpression] Func<bodycontentinteractivecomponentsbuttonsInputItem[]> bodycontentinteractivecomponentsbuttons = null)
+        public IBodyWorkflowAction<SendWhatsAppQuickReplyResponse> SendWhatsAppQuickReply(Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodycontentinteractivecomponentsheadertype = null, Expression<Func<string>> bodycontentinteractivecomponentsheadertext = null, Expression<Func<string>> bodycontentinteractivecomponentsbodytype = null, Expression<Func<string>> bodycontentinteractivecomponentsbodytext = null, Expression<Func<string>> bodycontentinteractivecomponentsfootertype = null, Expression<Func<string>> bodycontentinteractivecomponentsfootertext = null, Expression<Func<bodycontentinteractivecomponentsbuttonsInputItem[]>> bodycontentinteractivecomponentsbuttons = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SendWhatsAppQuickReplyResponse> __BuildSendWhatsAppQuickReply(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodycontentinteractivecomponentsheadertype = null, WorkflowExpression<string> bodycontentinteractivecomponentsheadertext = null, WorkflowExpression<string> bodycontentinteractivecomponentsbodytype = null, WorkflowExpression<string> bodycontentinteractivecomponentsbodytext = null, WorkflowExpression<string> bodycontentinteractivecomponentsfootertype = null, WorkflowExpression<string> bodycontentinteractivecomponentsfootertext = null, WorkflowExpression<bodycontentinteractivecomponentsbuttonsInputItem[]> bodycontentinteractivecomponentsbuttons = null)
-        {
-            WorkflowExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
-            WorkflowExpression.Validate(bodyto, nameof(bodyto), required: false);
-            WorkflowExpression.Validate(bodycontentinteractivecomponentsheadertype, nameof(bodycontentinteractivecomponentsheadertype), required: false);
-            WorkflowExpression.Validate(bodycontentinteractivecomponentsheadertext, nameof(bodycontentinteractivecomponentsheadertext), required: false);
-            WorkflowExpression.Validate(bodycontentinteractivecomponentsbodytype, nameof(bodycontentinteractivecomponentsbodytype), required: false);
-            WorkflowExpression.Validate(bodycontentinteractivecomponentsbodytext, nameof(bodycontentinteractivecomponentsbodytext), required: false);
-            WorkflowExpression.Validate(bodycontentinteractivecomponentsfootertype, nameof(bodycontentinteractivecomponentsfootertype), required: false);
-            WorkflowExpression.Validate(bodycontentinteractivecomponentsfootertext, nameof(bodycontentinteractivecomponentsfootertext), required: false);
-            WorkflowExpression.Validate(bodycontentinteractivecomponentsbuttons, nameof(bodycontentinteractivecomponentsbuttons), required: false);
+            var __workflow_bodyfrom = bodyfrom == null ? null : WorkflowExpression.Compile(bodyfrom);
+            WorkflowExpression.Validate(__workflow_bodyfrom, nameof(bodyfrom), required: false);
+            var __workflow_bodyto = bodyto == null ? null : WorkflowExpression.Compile(bodyto);
+            WorkflowExpression.Validate(__workflow_bodyto, nameof(bodyto), required: false);
+            var __workflow_bodycontentinteractivecomponentsheadertype = bodycontentinteractivecomponentsheadertype == null ? null : WorkflowExpression.Compile(bodycontentinteractivecomponentsheadertype);
+            WorkflowExpression.Validate(__workflow_bodycontentinteractivecomponentsheadertype, nameof(bodycontentinteractivecomponentsheadertype), required: false);
+            var __workflow_bodycontentinteractivecomponentsheadertext = bodycontentinteractivecomponentsheadertext == null ? null : WorkflowExpression.Compile(bodycontentinteractivecomponentsheadertext);
+            WorkflowExpression.Validate(__workflow_bodycontentinteractivecomponentsheadertext, nameof(bodycontentinteractivecomponentsheadertext), required: false);
+            var __workflow_bodycontentinteractivecomponentsbodytype = bodycontentinteractivecomponentsbodytype == null ? null : WorkflowExpression.Compile(bodycontentinteractivecomponentsbodytype);
+            WorkflowExpression.Validate(__workflow_bodycontentinteractivecomponentsbodytype, nameof(bodycontentinteractivecomponentsbodytype), required: false);
+            var __workflow_bodycontentinteractivecomponentsbodytext = bodycontentinteractivecomponentsbodytext == null ? null : WorkflowExpression.Compile(bodycontentinteractivecomponentsbodytext);
+            WorkflowExpression.Validate(__workflow_bodycontentinteractivecomponentsbodytext, nameof(bodycontentinteractivecomponentsbodytext), required: false);
+            var __workflow_bodycontentinteractivecomponentsfootertype = bodycontentinteractivecomponentsfootertype == null ? null : WorkflowExpression.Compile(bodycontentinteractivecomponentsfootertype);
+            WorkflowExpression.Validate(__workflow_bodycontentinteractivecomponentsfootertype, nameof(bodycontentinteractivecomponentsfootertype), required: false);
+            var __workflow_bodycontentinteractivecomponentsfootertext = bodycontentinteractivecomponentsfootertext == null ? null : WorkflowExpression.Compile(bodycontentinteractivecomponentsfootertext);
+            WorkflowExpression.Validate(__workflow_bodycontentinteractivecomponentsfootertext, nameof(bodycontentinteractivecomponentsfootertext), required: false);
+            var __workflow_bodycontentinteractivecomponentsbuttons = bodycontentinteractivecomponentsbuttons == null ? null : WorkflowExpression.Compile(bodycontentinteractivecomponentsbuttons);
+            WorkflowExpression.Validate(__workflow_bodycontentinteractivecomponentsbuttons, nameof(bodycontentinteractivecomponentsbuttons), required: false);
             return new DeferredBodyAction<SendWhatsAppQuickReplyResponse>(() =>
             {
                 var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/quick-reply";
@@ -255,15 +241,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfrom != null)
+                if (__workflow_bodyfrom != null)
                 {
-                    body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                    body["from"] = ExpressionConverter.ConvertO(__workflow_bodyfrom);
                     bodypropCount++;
                 }
 
-                if (bodyto != null)
+                if (__workflow_bodyto != null)
                 {
-                    body["to"] = ExpressionConverter.ConvertO(bodyto);
+                    body["to"] = ExpressionConverter.ConvertO(__workflow_bodyto);
                     bodypropCount++;
                 }
 
@@ -281,15 +267,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 var componentsObjectpropCount = 0;
                 var headerObject = new JObject();
                 var headerObjectpropCount = 0;
-                if (bodycontentinteractivecomponentsheadertype != null)
+                if (__workflow_bodycontentinteractivecomponentsheadertype != null)
                 {
-                    headerObject["type"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsheadertype);
+                    headerObject["type"] = ExpressionConverter.ConvertO(__workflow_bodycontentinteractivecomponentsheadertype);
                     headerObjectpropCount++;
                 }
 
-                if (bodycontentinteractivecomponentsheadertext != null)
+                if (__workflow_bodycontentinteractivecomponentsheadertext != null)
                 {
-                    headerObject["text"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsheadertext);
+                    headerObject["text"] = ExpressionConverter.ConvertO(__workflow_bodycontentinteractivecomponentsheadertext);
                     headerObjectpropCount++;
                 }
 
@@ -301,15 +287,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
 
                 var bodyObject = new JObject();
                 var bodyObjectpropCount = 0;
-                if (bodycontentinteractivecomponentsbodytype != null)
+                if (__workflow_bodycontentinteractivecomponentsbodytype != null)
                 {
-                    bodyObject["type"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsbodytype);
+                    bodyObject["type"] = ExpressionConverter.ConvertO(__workflow_bodycontentinteractivecomponentsbodytype);
                     bodyObjectpropCount++;
                 }
 
-                if (bodycontentinteractivecomponentsbodytext != null)
+                if (__workflow_bodycontentinteractivecomponentsbodytext != null)
                 {
-                    bodyObject["text"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsbodytext);
+                    bodyObject["text"] = ExpressionConverter.ConvertO(__workflow_bodycontentinteractivecomponentsbodytext);
                     bodyObjectpropCount++;
                 }
 
@@ -321,15 +307,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
 
                 var footerObject = new JObject();
                 var footerObjectpropCount = 0;
-                if (bodycontentinteractivecomponentsfootertype != null)
+                if (__workflow_bodycontentinteractivecomponentsfootertype != null)
                 {
-                    footerObject["type"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsfootertype);
+                    footerObject["type"] = ExpressionConverter.ConvertO(__workflow_bodycontentinteractivecomponentsfootertype);
                     footerObjectpropCount++;
                 }
 
-                if (bodycontentinteractivecomponentsfootertext != null)
+                if (__workflow_bodycontentinteractivecomponentsfootertext != null)
                 {
-                    footerObject["text"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsfootertext);
+                    footerObject["text"] = ExpressionConverter.ConvertO(__workflow_bodycontentinteractivecomponentsfootertext);
                     footerObjectpropCount++;
                 }
 
@@ -339,9 +325,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                     componentsObjectpropCount++;
                 }
 
-                if (bodycontentinteractivecomponentsbuttons != null)
+                if (__workflow_bodycontentinteractivecomponentsbuttons != null)
                 {
-                    componentsObject["buttons"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsbuttons);
+                    componentsObject["buttons"] = ExpressionConverter.ConvertO(__workflow_bodycontentinteractivecomponentsbuttons);
                     componentsObjectpropCount++;
                 }
 
@@ -373,25 +359,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        [WorkflowExpressionFactory(nameof(__BuildSendWhatsAppProductList))]
-        public IBodyWorkflowAction<SendWhatsAppProductListResponse> SendWhatsAppProductList([WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsheadertype = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsheadertext = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsbodytype = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsbodytext = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsfootertype = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsfootertext = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsproductListcatalogId = null, [WorkflowExpression] Func<bodycontentinteractivecomponentsproductListsectionsInputItem[]> bodycontentinteractivecomponentsproductListsections = null)
+        public IBodyWorkflowAction<SendWhatsAppProductListResponse> SendWhatsAppProductList(Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodycontentinteractivecomponentsheadertype = null, Expression<Func<string>> bodycontentinteractivecomponentsheadertext = null, Expression<Func<string>> bodycontentinteractivecomponentsbodytype = null, Expression<Func<string>> bodycontentinteractivecomponentsbodytext = null, Expression<Func<string>> bodycontentinteractivecomponentsfootertype = null, Expression<Func<string>> bodycontentinteractivecomponentsfootertext = null, Expression<Func<string>> bodycontentinteractivecomponentsproductListcatalogId = null, Expression<Func<bodycontentinteractivecomponentsproductListsectionsInputItem[]>> bodycontentinteractivecomponentsproductListsections = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SendWhatsAppProductListResponse> __BuildSendWhatsAppProductList(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodycontentinteractivecomponentsheadertype = null, WorkflowExpression<string> bodycontentinteractivecomponentsheadertext = null, WorkflowExpression<string> bodycontentinteractivecomponentsbodytype = null, WorkflowExpression<string> bodycontentinteractivecomponentsbodytext = null, WorkflowExpression<string> bodycontentinteractivecomponentsfootertype = null, WorkflowExpression<string> bodycontentinteractivecomponentsfootertext = null, WorkflowExpression<string> bodycontentinteractivecomponentsproductListcatalogId = null, WorkflowExpression<bodycontentinteractivecomponentsproductListsectionsInputItem[]> bodycontentinteractivecomponentsproductListsections = null)
-        {
-            WorkflowExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
-            WorkflowExpression.Validate(bodyto, nameof(bodyto), required: false);
-            WorkflowExpression.Validate(bodycontentinteractivecomponentsheadertype, nameof(bodycontentinteractivecomponentsheadertype), required: false);
-            WorkflowExpression.Validate(bodycontentinteractivecomponentsheadertext, nameof(bodycontentinteractivecomponentsheadertext), required: false);
-            WorkflowExpression.Validate(bodycontentinteractivecomponentsbodytype, nameof(bodycontentinteractivecomponentsbodytype), required: false);
-            WorkflowExpression.Validate(bodycontentinteractivecomponentsbodytext, nameof(bodycontentinteractivecomponentsbodytext), required: false);
-            WorkflowExpression.Validate(bodycontentinteractivecomponentsfootertype, nameof(bodycontentinteractivecomponentsfootertype), required: false);
-            WorkflowExpression.Validate(bodycontentinteractivecomponentsfootertext, nameof(bodycontentinteractivecomponentsfootertext), required: false);
-            WorkflowExpression.Validate(bodycontentinteractivecomponentsproductListcatalogId, nameof(bodycontentinteractivecomponentsproductListcatalogId), required: false);
-            WorkflowExpression.Validate(bodycontentinteractivecomponentsproductListsections, nameof(bodycontentinteractivecomponentsproductListsections), required: false);
+            var __workflow_bodyfrom = bodyfrom == null ? null : WorkflowExpression.Compile(bodyfrom);
+            WorkflowExpression.Validate(__workflow_bodyfrom, nameof(bodyfrom), required: false);
+            var __workflow_bodyto = bodyto == null ? null : WorkflowExpression.Compile(bodyto);
+            WorkflowExpression.Validate(__workflow_bodyto, nameof(bodyto), required: false);
+            var __workflow_bodycontentinteractivecomponentsheadertype = bodycontentinteractivecomponentsheadertype == null ? null : WorkflowExpression.Compile(bodycontentinteractivecomponentsheadertype);
+            WorkflowExpression.Validate(__workflow_bodycontentinteractivecomponentsheadertype, nameof(bodycontentinteractivecomponentsheadertype), required: false);
+            var __workflow_bodycontentinteractivecomponentsheadertext = bodycontentinteractivecomponentsheadertext == null ? null : WorkflowExpression.Compile(bodycontentinteractivecomponentsheadertext);
+            WorkflowExpression.Validate(__workflow_bodycontentinteractivecomponentsheadertext, nameof(bodycontentinteractivecomponentsheadertext), required: false);
+            var __workflow_bodycontentinteractivecomponentsbodytype = bodycontentinteractivecomponentsbodytype == null ? null : WorkflowExpression.Compile(bodycontentinteractivecomponentsbodytype);
+            WorkflowExpression.Validate(__workflow_bodycontentinteractivecomponentsbodytype, nameof(bodycontentinteractivecomponentsbodytype), required: false);
+            var __workflow_bodycontentinteractivecomponentsbodytext = bodycontentinteractivecomponentsbodytext == null ? null : WorkflowExpression.Compile(bodycontentinteractivecomponentsbodytext);
+            WorkflowExpression.Validate(__workflow_bodycontentinteractivecomponentsbodytext, nameof(bodycontentinteractivecomponentsbodytext), required: false);
+            var __workflow_bodycontentinteractivecomponentsfootertype = bodycontentinteractivecomponentsfootertype == null ? null : WorkflowExpression.Compile(bodycontentinteractivecomponentsfootertype);
+            WorkflowExpression.Validate(__workflow_bodycontentinteractivecomponentsfootertype, nameof(bodycontentinteractivecomponentsfootertype), required: false);
+            var __workflow_bodycontentinteractivecomponentsfootertext = bodycontentinteractivecomponentsfootertext == null ? null : WorkflowExpression.Compile(bodycontentinteractivecomponentsfootertext);
+            WorkflowExpression.Validate(__workflow_bodycontentinteractivecomponentsfootertext, nameof(bodycontentinteractivecomponentsfootertext), required: false);
+            var __workflow_bodycontentinteractivecomponentsproductListcatalogId = bodycontentinteractivecomponentsproductListcatalogId == null ? null : WorkflowExpression.Compile(bodycontentinteractivecomponentsproductListcatalogId);
+            WorkflowExpression.Validate(__workflow_bodycontentinteractivecomponentsproductListcatalogId, nameof(bodycontentinteractivecomponentsproductListcatalogId), required: false);
+            var __workflow_bodycontentinteractivecomponentsproductListsections = bodycontentinteractivecomponentsproductListsections == null ? null : WorkflowExpression.Compile(bodycontentinteractivecomponentsproductListsections);
+            WorkflowExpression.Validate(__workflow_bodycontentinteractivecomponentsproductListsections, nameof(bodycontentinteractivecomponentsproductListsections), required: false);
             return new DeferredBodyAction<SendWhatsAppProductListResponse>(() =>
             {
                 var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/product-list";
@@ -399,15 +388,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfrom != null)
+                if (__workflow_bodyfrom != null)
                 {
-                    body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                    body["from"] = ExpressionConverter.ConvertO(__workflow_bodyfrom);
                     bodypropCount++;
                 }
 
-                if (bodyto != null)
+                if (__workflow_bodyto != null)
                 {
-                    body["to"] = ExpressionConverter.ConvertO(bodyto);
+                    body["to"] = ExpressionConverter.ConvertO(__workflow_bodyto);
                     bodypropCount++;
                 }
 
@@ -425,15 +414,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 var componentsObjectpropCount = 0;
                 var headerObject = new JObject();
                 var headerObjectpropCount = 0;
-                if (bodycontentinteractivecomponentsheadertype != null)
+                if (__workflow_bodycontentinteractivecomponentsheadertype != null)
                 {
-                    headerObject["type"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsheadertype);
+                    headerObject["type"] = ExpressionConverter.ConvertO(__workflow_bodycontentinteractivecomponentsheadertype);
                     headerObjectpropCount++;
                 }
 
-                if (bodycontentinteractivecomponentsheadertext != null)
+                if (__workflow_bodycontentinteractivecomponentsheadertext != null)
                 {
-                    headerObject["text"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsheadertext);
+                    headerObject["text"] = ExpressionConverter.ConvertO(__workflow_bodycontentinteractivecomponentsheadertext);
                     headerObjectpropCount++;
                 }
 
@@ -445,15 +434,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
 
                 var bodyObject = new JObject();
                 var bodyObjectpropCount = 0;
-                if (bodycontentinteractivecomponentsbodytype != null)
+                if (__workflow_bodycontentinteractivecomponentsbodytype != null)
                 {
-                    bodyObject["type"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsbodytype);
+                    bodyObject["type"] = ExpressionConverter.ConvertO(__workflow_bodycontentinteractivecomponentsbodytype);
                     bodyObjectpropCount++;
                 }
 
-                if (bodycontentinteractivecomponentsbodytext != null)
+                if (__workflow_bodycontentinteractivecomponentsbodytext != null)
                 {
-                    bodyObject["text"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsbodytext);
+                    bodyObject["text"] = ExpressionConverter.ConvertO(__workflow_bodycontentinteractivecomponentsbodytext);
                     bodyObjectpropCount++;
                 }
 
@@ -465,15 +454,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
 
                 var footerObject = new JObject();
                 var footerObjectpropCount = 0;
-                if (bodycontentinteractivecomponentsfootertype != null)
+                if (__workflow_bodycontentinteractivecomponentsfootertype != null)
                 {
-                    footerObject["type"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsfootertype);
+                    footerObject["type"] = ExpressionConverter.ConvertO(__workflow_bodycontentinteractivecomponentsfootertype);
                     footerObjectpropCount++;
                 }
 
-                if (bodycontentinteractivecomponentsfootertext != null)
+                if (__workflow_bodycontentinteractivecomponentsfootertext != null)
                 {
-                    footerObject["text"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsfootertext);
+                    footerObject["text"] = ExpressionConverter.ConvertO(__workflow_bodycontentinteractivecomponentsfootertext);
                     footerObjectpropCount++;
                 }
 
@@ -485,15 +474,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
 
                 var productListObject = new JObject();
                 var productListObjectpropCount = 0;
-                if (bodycontentinteractivecomponentsproductListcatalogId != null)
+                if (__workflow_bodycontentinteractivecomponentsproductListcatalogId != null)
                 {
-                    productListObject["catalogId"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsproductListcatalogId);
+                    productListObject["catalogId"] = ExpressionConverter.ConvertO(__workflow_bodycontentinteractivecomponentsproductListcatalogId);
                     productListObjectpropCount++;
                 }
 
-                if (bodycontentinteractivecomponentsproductListsections != null)
+                if (__workflow_bodycontentinteractivecomponentsproductListsections != null)
                 {
-                    productListObject["sections"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsproductListsections);
+                    productListObject["sections"] = ExpressionConverter.ConvertO(__workflow_bodycontentinteractivecomponentsproductListsections);
                     productListObjectpropCount++;
                 }
 
@@ -531,25 +520,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        [WorkflowExpressionFactory(nameof(__BuildSendWhatsAppProduct))]
-        public IBodyWorkflowAction<SendWhatsAppProductResponse> SendWhatsAppProduct([WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsheadertype = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsheadertext = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsbodytype = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsbodytext = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsfootertype = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsfootertext = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsproductcatalogId = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsproductproductId = null)
+        public IBodyWorkflowAction<SendWhatsAppProductResponse> SendWhatsAppProduct(Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodycontentinteractivecomponentsheadertype = null, Expression<Func<string>> bodycontentinteractivecomponentsheadertext = null, Expression<Func<string>> bodycontentinteractivecomponentsbodytype = null, Expression<Func<string>> bodycontentinteractivecomponentsbodytext = null, Expression<Func<string>> bodycontentinteractivecomponentsfootertype = null, Expression<Func<string>> bodycontentinteractivecomponentsfootertext = null, Expression<Func<string>> bodycontentinteractivecomponentsproductcatalogId = null, Expression<Func<string>> bodycontentinteractivecomponentsproductproductId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SendWhatsAppProductResponse> __BuildSendWhatsAppProduct(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodycontentinteractivecomponentsheadertype = null, WorkflowExpression<string> bodycontentinteractivecomponentsheadertext = null, WorkflowExpression<string> bodycontentinteractivecomponentsbodytype = null, WorkflowExpression<string> bodycontentinteractivecomponentsbodytext = null, WorkflowExpression<string> bodycontentinteractivecomponentsfootertype = null, WorkflowExpression<string> bodycontentinteractivecomponentsfootertext = null, WorkflowExpression<string> bodycontentinteractivecomponentsproductcatalogId = null, WorkflowExpression<string> bodycontentinteractivecomponentsproductproductId = null)
-        {
-            WorkflowExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
-            WorkflowExpression.Validate(bodyto, nameof(bodyto), required: false);
-            WorkflowExpression.Validate(bodycontentinteractivecomponentsheadertype, nameof(bodycontentinteractivecomponentsheadertype), required: false);
-            WorkflowExpression.Validate(bodycontentinteractivecomponentsheadertext, nameof(bodycontentinteractivecomponentsheadertext), required: false);
-            WorkflowExpression.Validate(bodycontentinteractivecomponentsbodytype, nameof(bodycontentinteractivecomponentsbodytype), required: false);
-            WorkflowExpression.Validate(bodycontentinteractivecomponentsbodytext, nameof(bodycontentinteractivecomponentsbodytext), required: false);
-            WorkflowExpression.Validate(bodycontentinteractivecomponentsfootertype, nameof(bodycontentinteractivecomponentsfootertype), required: false);
-            WorkflowExpression.Validate(bodycontentinteractivecomponentsfootertext, nameof(bodycontentinteractivecomponentsfootertext), required: false);
-            WorkflowExpression.Validate(bodycontentinteractivecomponentsproductcatalogId, nameof(bodycontentinteractivecomponentsproductcatalogId), required: false);
-            WorkflowExpression.Validate(bodycontentinteractivecomponentsproductproductId, nameof(bodycontentinteractivecomponentsproductproductId), required: false);
+            var __workflow_bodyfrom = bodyfrom == null ? null : WorkflowExpression.Compile(bodyfrom);
+            WorkflowExpression.Validate(__workflow_bodyfrom, nameof(bodyfrom), required: false);
+            var __workflow_bodyto = bodyto == null ? null : WorkflowExpression.Compile(bodyto);
+            WorkflowExpression.Validate(__workflow_bodyto, nameof(bodyto), required: false);
+            var __workflow_bodycontentinteractivecomponentsheadertype = bodycontentinteractivecomponentsheadertype == null ? null : WorkflowExpression.Compile(bodycontentinteractivecomponentsheadertype);
+            WorkflowExpression.Validate(__workflow_bodycontentinteractivecomponentsheadertype, nameof(bodycontentinteractivecomponentsheadertype), required: false);
+            var __workflow_bodycontentinteractivecomponentsheadertext = bodycontentinteractivecomponentsheadertext == null ? null : WorkflowExpression.Compile(bodycontentinteractivecomponentsheadertext);
+            WorkflowExpression.Validate(__workflow_bodycontentinteractivecomponentsheadertext, nameof(bodycontentinteractivecomponentsheadertext), required: false);
+            var __workflow_bodycontentinteractivecomponentsbodytype = bodycontentinteractivecomponentsbodytype == null ? null : WorkflowExpression.Compile(bodycontentinteractivecomponentsbodytype);
+            WorkflowExpression.Validate(__workflow_bodycontentinteractivecomponentsbodytype, nameof(bodycontentinteractivecomponentsbodytype), required: false);
+            var __workflow_bodycontentinteractivecomponentsbodytext = bodycontentinteractivecomponentsbodytext == null ? null : WorkflowExpression.Compile(bodycontentinteractivecomponentsbodytext);
+            WorkflowExpression.Validate(__workflow_bodycontentinteractivecomponentsbodytext, nameof(bodycontentinteractivecomponentsbodytext), required: false);
+            var __workflow_bodycontentinteractivecomponentsfootertype = bodycontentinteractivecomponentsfootertype == null ? null : WorkflowExpression.Compile(bodycontentinteractivecomponentsfootertype);
+            WorkflowExpression.Validate(__workflow_bodycontentinteractivecomponentsfootertype, nameof(bodycontentinteractivecomponentsfootertype), required: false);
+            var __workflow_bodycontentinteractivecomponentsfootertext = bodycontentinteractivecomponentsfootertext == null ? null : WorkflowExpression.Compile(bodycontentinteractivecomponentsfootertext);
+            WorkflowExpression.Validate(__workflow_bodycontentinteractivecomponentsfootertext, nameof(bodycontentinteractivecomponentsfootertext), required: false);
+            var __workflow_bodycontentinteractivecomponentsproductcatalogId = bodycontentinteractivecomponentsproductcatalogId == null ? null : WorkflowExpression.Compile(bodycontentinteractivecomponentsproductcatalogId);
+            WorkflowExpression.Validate(__workflow_bodycontentinteractivecomponentsproductcatalogId, nameof(bodycontentinteractivecomponentsproductcatalogId), required: false);
+            var __workflow_bodycontentinteractivecomponentsproductproductId = bodycontentinteractivecomponentsproductproductId == null ? null : WorkflowExpression.Compile(bodycontentinteractivecomponentsproductproductId);
+            WorkflowExpression.Validate(__workflow_bodycontentinteractivecomponentsproductproductId, nameof(bodycontentinteractivecomponentsproductproductId), required: false);
             return new DeferredBodyAction<SendWhatsAppProductResponse>(() =>
             {
                 var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/product";
@@ -557,15 +549,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfrom != null)
+                if (__workflow_bodyfrom != null)
                 {
-                    body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                    body["from"] = ExpressionConverter.ConvertO(__workflow_bodyfrom);
                     bodypropCount++;
                 }
 
-                if (bodyto != null)
+                if (__workflow_bodyto != null)
                 {
-                    body["to"] = ExpressionConverter.ConvertO(bodyto);
+                    body["to"] = ExpressionConverter.ConvertO(__workflow_bodyto);
                     bodypropCount++;
                 }
 
@@ -583,15 +575,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 var componentsObjectpropCount = 0;
                 var headerObject = new JObject();
                 var headerObjectpropCount = 0;
-                if (bodycontentinteractivecomponentsheadertype != null)
+                if (__workflow_bodycontentinteractivecomponentsheadertype != null)
                 {
-                    headerObject["type"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsheadertype);
+                    headerObject["type"] = ExpressionConverter.ConvertO(__workflow_bodycontentinteractivecomponentsheadertype);
                     headerObjectpropCount++;
                 }
 
-                if (bodycontentinteractivecomponentsheadertext != null)
+                if (__workflow_bodycontentinteractivecomponentsheadertext != null)
                 {
-                    headerObject["text"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsheadertext);
+                    headerObject["text"] = ExpressionConverter.ConvertO(__workflow_bodycontentinteractivecomponentsheadertext);
                     headerObjectpropCount++;
                 }
 
@@ -603,15 +595,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
 
                 var bodyObject = new JObject();
                 var bodyObjectpropCount = 0;
-                if (bodycontentinteractivecomponentsbodytype != null)
+                if (__workflow_bodycontentinteractivecomponentsbodytype != null)
                 {
-                    bodyObject["type"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsbodytype);
+                    bodyObject["type"] = ExpressionConverter.ConvertO(__workflow_bodycontentinteractivecomponentsbodytype);
                     bodyObjectpropCount++;
                 }
 
-                if (bodycontentinteractivecomponentsbodytext != null)
+                if (__workflow_bodycontentinteractivecomponentsbodytext != null)
                 {
-                    bodyObject["text"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsbodytext);
+                    bodyObject["text"] = ExpressionConverter.ConvertO(__workflow_bodycontentinteractivecomponentsbodytext);
                     bodyObjectpropCount++;
                 }
 
@@ -623,15 +615,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
 
                 var footerObject = new JObject();
                 var footerObjectpropCount = 0;
-                if (bodycontentinteractivecomponentsfootertype != null)
+                if (__workflow_bodycontentinteractivecomponentsfootertype != null)
                 {
-                    footerObject["type"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsfootertype);
+                    footerObject["type"] = ExpressionConverter.ConvertO(__workflow_bodycontentinteractivecomponentsfootertype);
                     footerObjectpropCount++;
                 }
 
-                if (bodycontentinteractivecomponentsfootertext != null)
+                if (__workflow_bodycontentinteractivecomponentsfootertext != null)
                 {
-                    footerObject["text"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsfootertext);
+                    footerObject["text"] = ExpressionConverter.ConvertO(__workflow_bodycontentinteractivecomponentsfootertext);
                     footerObjectpropCount++;
                 }
 
@@ -643,15 +635,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
 
                 var productObject = new JObject();
                 var productObjectpropCount = 0;
-                if (bodycontentinteractivecomponentsproductcatalogId != null)
+                if (__workflow_bodycontentinteractivecomponentsproductcatalogId != null)
                 {
-                    productObject["catalogId"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsproductcatalogId);
+                    productObject["catalogId"] = ExpressionConverter.ConvertO(__workflow_bodycontentinteractivecomponentsproductcatalogId);
                     productObjectpropCount++;
                 }
 
-                if (bodycontentinteractivecomponentsproductproductId != null)
+                if (__workflow_bodycontentinteractivecomponentsproductproductId != null)
                 {
-                    productObject["productId"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsproductproductId);
+                    productObject["productId"] = ExpressionConverter.ConvertO(__workflow_bodycontentinteractivecomponentsproductproductId);
                     productObjectpropCount++;
                 }
 
@@ -689,25 +681,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        [WorkflowExpressionFactory(nameof(__BuildSendWhatsAppList))]
-        public IBodyWorkflowAction<SendWhatsAppListResponse> SendWhatsAppList([WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsheadertype = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsheadertext = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsbodytype = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsbodytext = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsfootertype = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsfootertext = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentslisttitle = null, [WorkflowExpression] Func<bodycontentinteractivecomponentslistsectionsInputItem[]> bodycontentinteractivecomponentslistsections = null)
+        public IBodyWorkflowAction<SendWhatsAppListResponse> SendWhatsAppList(Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodycontentinteractivecomponentsheadertype = null, Expression<Func<string>> bodycontentinteractivecomponentsheadertext = null, Expression<Func<string>> bodycontentinteractivecomponentsbodytype = null, Expression<Func<string>> bodycontentinteractivecomponentsbodytext = null, Expression<Func<string>> bodycontentinteractivecomponentsfootertype = null, Expression<Func<string>> bodycontentinteractivecomponentsfootertext = null, Expression<Func<string>> bodycontentinteractivecomponentslisttitle = null, Expression<Func<bodycontentinteractivecomponentslistsectionsInputItem[]>> bodycontentinteractivecomponentslistsections = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SendWhatsAppListResponse> __BuildSendWhatsAppList(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodycontentinteractivecomponentsheadertype = null, WorkflowExpression<string> bodycontentinteractivecomponentsheadertext = null, WorkflowExpression<string> bodycontentinteractivecomponentsbodytype = null, WorkflowExpression<string> bodycontentinteractivecomponentsbodytext = null, WorkflowExpression<string> bodycontentinteractivecomponentsfootertype = null, WorkflowExpression<string> bodycontentinteractivecomponentsfootertext = null, WorkflowExpression<string> bodycontentinteractivecomponentslisttitle = null, WorkflowExpression<bodycontentinteractivecomponentslistsectionsInputItem[]> bodycontentinteractivecomponentslistsections = null)
-        {
-            WorkflowExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
-            WorkflowExpression.Validate(bodyto, nameof(bodyto), required: false);
-            WorkflowExpression.Validate(bodycontentinteractivecomponentsheadertype, nameof(bodycontentinteractivecomponentsheadertype), required: false);
-            WorkflowExpression.Validate(bodycontentinteractivecomponentsheadertext, nameof(bodycontentinteractivecomponentsheadertext), required: false);
-            WorkflowExpression.Validate(bodycontentinteractivecomponentsbodytype, nameof(bodycontentinteractivecomponentsbodytype), required: false);
-            WorkflowExpression.Validate(bodycontentinteractivecomponentsbodytext, nameof(bodycontentinteractivecomponentsbodytext), required: false);
-            WorkflowExpression.Validate(bodycontentinteractivecomponentsfootertype, nameof(bodycontentinteractivecomponentsfootertype), required: false);
-            WorkflowExpression.Validate(bodycontentinteractivecomponentsfootertext, nameof(bodycontentinteractivecomponentsfootertext), required: false);
-            WorkflowExpression.Validate(bodycontentinteractivecomponentslisttitle, nameof(bodycontentinteractivecomponentslisttitle), required: false);
-            WorkflowExpression.Validate(bodycontentinteractivecomponentslistsections, nameof(bodycontentinteractivecomponentslistsections), required: false);
+            var __workflow_bodyfrom = bodyfrom == null ? null : WorkflowExpression.Compile(bodyfrom);
+            WorkflowExpression.Validate(__workflow_bodyfrom, nameof(bodyfrom), required: false);
+            var __workflow_bodyto = bodyto == null ? null : WorkflowExpression.Compile(bodyto);
+            WorkflowExpression.Validate(__workflow_bodyto, nameof(bodyto), required: false);
+            var __workflow_bodycontentinteractivecomponentsheadertype = bodycontentinteractivecomponentsheadertype == null ? null : WorkflowExpression.Compile(bodycontentinteractivecomponentsheadertype);
+            WorkflowExpression.Validate(__workflow_bodycontentinteractivecomponentsheadertype, nameof(bodycontentinteractivecomponentsheadertype), required: false);
+            var __workflow_bodycontentinteractivecomponentsheadertext = bodycontentinteractivecomponentsheadertext == null ? null : WorkflowExpression.Compile(bodycontentinteractivecomponentsheadertext);
+            WorkflowExpression.Validate(__workflow_bodycontentinteractivecomponentsheadertext, nameof(bodycontentinteractivecomponentsheadertext), required: false);
+            var __workflow_bodycontentinteractivecomponentsbodytype = bodycontentinteractivecomponentsbodytype == null ? null : WorkflowExpression.Compile(bodycontentinteractivecomponentsbodytype);
+            WorkflowExpression.Validate(__workflow_bodycontentinteractivecomponentsbodytype, nameof(bodycontentinteractivecomponentsbodytype), required: false);
+            var __workflow_bodycontentinteractivecomponentsbodytext = bodycontentinteractivecomponentsbodytext == null ? null : WorkflowExpression.Compile(bodycontentinteractivecomponentsbodytext);
+            WorkflowExpression.Validate(__workflow_bodycontentinteractivecomponentsbodytext, nameof(bodycontentinteractivecomponentsbodytext), required: false);
+            var __workflow_bodycontentinteractivecomponentsfootertype = bodycontentinteractivecomponentsfootertype == null ? null : WorkflowExpression.Compile(bodycontentinteractivecomponentsfootertype);
+            WorkflowExpression.Validate(__workflow_bodycontentinteractivecomponentsfootertype, nameof(bodycontentinteractivecomponentsfootertype), required: false);
+            var __workflow_bodycontentinteractivecomponentsfootertext = bodycontentinteractivecomponentsfootertext == null ? null : WorkflowExpression.Compile(bodycontentinteractivecomponentsfootertext);
+            WorkflowExpression.Validate(__workflow_bodycontentinteractivecomponentsfootertext, nameof(bodycontentinteractivecomponentsfootertext), required: false);
+            var __workflow_bodycontentinteractivecomponentslisttitle = bodycontentinteractivecomponentslisttitle == null ? null : WorkflowExpression.Compile(bodycontentinteractivecomponentslisttitle);
+            WorkflowExpression.Validate(__workflow_bodycontentinteractivecomponentslisttitle, nameof(bodycontentinteractivecomponentslisttitle), required: false);
+            var __workflow_bodycontentinteractivecomponentslistsections = bodycontentinteractivecomponentslistsections == null ? null : WorkflowExpression.Compile(bodycontentinteractivecomponentslistsections);
+            WorkflowExpression.Validate(__workflow_bodycontentinteractivecomponentslistsections, nameof(bodycontentinteractivecomponentslistsections), required: false);
             return new DeferredBodyAction<SendWhatsAppListResponse>(() =>
             {
                 var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/list";
@@ -715,15 +710,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfrom != null)
+                if (__workflow_bodyfrom != null)
                 {
-                    body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                    body["from"] = ExpressionConverter.ConvertO(__workflow_bodyfrom);
                     bodypropCount++;
                 }
 
-                if (bodyto != null)
+                if (__workflow_bodyto != null)
                 {
-                    body["to"] = ExpressionConverter.ConvertO(bodyto);
+                    body["to"] = ExpressionConverter.ConvertO(__workflow_bodyto);
                     bodypropCount++;
                 }
 
@@ -741,15 +736,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 var componentsObjectpropCount = 0;
                 var headerObject = new JObject();
                 var headerObjectpropCount = 0;
-                if (bodycontentinteractivecomponentsheadertype != null)
+                if (__workflow_bodycontentinteractivecomponentsheadertype != null)
                 {
-                    headerObject["type"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsheadertype);
+                    headerObject["type"] = ExpressionConverter.ConvertO(__workflow_bodycontentinteractivecomponentsheadertype);
                     headerObjectpropCount++;
                 }
 
-                if (bodycontentinteractivecomponentsheadertext != null)
+                if (__workflow_bodycontentinteractivecomponentsheadertext != null)
                 {
-                    headerObject["text"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsheadertext);
+                    headerObject["text"] = ExpressionConverter.ConvertO(__workflow_bodycontentinteractivecomponentsheadertext);
                     headerObjectpropCount++;
                 }
 
@@ -761,15 +756,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
 
                 var bodyObject = new JObject();
                 var bodyObjectpropCount = 0;
-                if (bodycontentinteractivecomponentsbodytype != null)
+                if (__workflow_bodycontentinteractivecomponentsbodytype != null)
                 {
-                    bodyObject["type"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsbodytype);
+                    bodyObject["type"] = ExpressionConverter.ConvertO(__workflow_bodycontentinteractivecomponentsbodytype);
                     bodyObjectpropCount++;
                 }
 
-                if (bodycontentinteractivecomponentsbodytext != null)
+                if (__workflow_bodycontentinteractivecomponentsbodytext != null)
                 {
-                    bodyObject["text"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsbodytext);
+                    bodyObject["text"] = ExpressionConverter.ConvertO(__workflow_bodycontentinteractivecomponentsbodytext);
                     bodyObjectpropCount++;
                 }
 
@@ -781,15 +776,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
 
                 var footerObject = new JObject();
                 var footerObjectpropCount = 0;
-                if (bodycontentinteractivecomponentsfootertype != null)
+                if (__workflow_bodycontentinteractivecomponentsfootertype != null)
                 {
-                    footerObject["type"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsfootertype);
+                    footerObject["type"] = ExpressionConverter.ConvertO(__workflow_bodycontentinteractivecomponentsfootertype);
                     footerObjectpropCount++;
                 }
 
-                if (bodycontentinteractivecomponentsfootertext != null)
+                if (__workflow_bodycontentinteractivecomponentsfootertext != null)
                 {
-                    footerObject["text"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsfootertext);
+                    footerObject["text"] = ExpressionConverter.ConvertO(__workflow_bodycontentinteractivecomponentsfootertext);
                     footerObjectpropCount++;
                 }
 
@@ -801,15 +796,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
 
                 var listObject = new JObject();
                 var listObjectpropCount = 0;
-                if (bodycontentinteractivecomponentslisttitle != null)
+                if (__workflow_bodycontentinteractivecomponentslisttitle != null)
                 {
-                    listObject["title"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentslisttitle);
+                    listObject["title"] = ExpressionConverter.ConvertO(__workflow_bodycontentinteractivecomponentslisttitle);
                     listObjectpropCount++;
                 }
 
-                if (bodycontentinteractivecomponentslistsections != null)
+                if (__workflow_bodycontentinteractivecomponentslistsections != null)
                 {
-                    listObject["sections"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentslistsections);
+                    listObject["sections"] = ExpressionConverter.ConvertO(__workflow_bodycontentinteractivecomponentslistsections);
                     listObjectpropCount++;
                 }
 
@@ -847,19 +842,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        [WorkflowExpressionFactory(nameof(__BuildSendsWhatsAppImage))]
-        public IBodyWorkflowAction<SendsWhatsAppImageResponse> SendsWhatsAppImage([WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<string> bodycontentimageurl = null, [WorkflowExpression] Func<string> bodycontentimagecaption = null)
+        public IBodyWorkflowAction<SendsWhatsAppImageResponse> SendsWhatsAppImage(Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodycontentimageurl = null, Expression<Func<string>> bodycontentimagecaption = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SendsWhatsAppImageResponse> __BuildSendsWhatsAppImage(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodycontentimageurl = null, WorkflowExpression<string> bodycontentimagecaption = null)
-        {
-            WorkflowExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
-            WorkflowExpression.Validate(bodyto, nameof(bodyto), required: false);
-            WorkflowExpression.Validate(bodycontentimageurl, nameof(bodycontentimageurl), required: false);
-            WorkflowExpression.Validate(bodycontentimagecaption, nameof(bodycontentimagecaption), required: false);
+            var __workflow_bodyfrom = bodyfrom == null ? null : WorkflowExpression.Compile(bodyfrom);
+            WorkflowExpression.Validate(__workflow_bodyfrom, nameof(bodyfrom), required: false);
+            var __workflow_bodyto = bodyto == null ? null : WorkflowExpression.Compile(bodyto);
+            WorkflowExpression.Validate(__workflow_bodyto, nameof(bodyto), required: false);
+            var __workflow_bodycontentimageurl = bodycontentimageurl == null ? null : WorkflowExpression.Compile(bodycontentimageurl);
+            WorkflowExpression.Validate(__workflow_bodycontentimageurl, nameof(bodycontentimageurl), required: false);
+            var __workflow_bodycontentimagecaption = bodycontentimagecaption == null ? null : WorkflowExpression.Compile(bodycontentimagecaption);
+            WorkflowExpression.Validate(__workflow_bodycontentimagecaption, nameof(bodycontentimagecaption), required: false);
             return new DeferredBodyAction<SendsWhatsAppImageResponse>(() =>
             {
                 var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/image";
@@ -867,15 +859,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfrom != null)
+                if (__workflow_bodyfrom != null)
                 {
-                    body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                    body["from"] = ExpressionConverter.ConvertO(__workflow_bodyfrom);
                     bodypropCount++;
                 }
 
-                if (bodyto != null)
+                if (__workflow_bodyto != null)
                 {
-                    body["to"] = ExpressionConverter.ConvertO(bodyto);
+                    body["to"] = ExpressionConverter.ConvertO(__workflow_bodyto);
                     bodypropCount++;
                 }
 
@@ -887,15 +879,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 contentObjectpropCount++;
                 var imageObject = new JObject();
                 var imageObjectpropCount = 0;
-                if (bodycontentimageurl != null)
+                if (__workflow_bodycontentimageurl != null)
                 {
-                    imageObject["url"] = ExpressionConverter.ConvertO(bodycontentimageurl);
+                    imageObject["url"] = ExpressionConverter.ConvertO(__workflow_bodycontentimageurl);
                     imageObjectpropCount++;
                 }
 
-                if (bodycontentimagecaption != null)
+                if (__workflow_bodycontentimagecaption != null)
                 {
-                    imageObject["caption"] = ExpressionConverter.ConvertO(bodycontentimagecaption);
+                    imageObject["caption"] = ExpressionConverter.ConvertO(__workflow_bodycontentimagecaption);
                     imageObjectpropCount++;
                 }
 
@@ -921,19 +913,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        [WorkflowExpressionFactory(nameof(__BuildSendWhatsAppVideo))]
-        public IBodyWorkflowAction<SendWhatsAppVideoResponse> SendWhatsAppVideo([WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<string> bodycontentvideourl = null, [WorkflowExpression] Func<string> bodycontentvideocaption = null)
+        public IBodyWorkflowAction<SendWhatsAppVideoResponse> SendWhatsAppVideo(Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodycontentvideourl = null, Expression<Func<string>> bodycontentvideocaption = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SendWhatsAppVideoResponse> __BuildSendWhatsAppVideo(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodycontentvideourl = null, WorkflowExpression<string> bodycontentvideocaption = null)
-        {
-            WorkflowExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
-            WorkflowExpression.Validate(bodyto, nameof(bodyto), required: false);
-            WorkflowExpression.Validate(bodycontentvideourl, nameof(bodycontentvideourl), required: false);
-            WorkflowExpression.Validate(bodycontentvideocaption, nameof(bodycontentvideocaption), required: false);
+            var __workflow_bodyfrom = bodyfrom == null ? null : WorkflowExpression.Compile(bodyfrom);
+            WorkflowExpression.Validate(__workflow_bodyfrom, nameof(bodyfrom), required: false);
+            var __workflow_bodyto = bodyto == null ? null : WorkflowExpression.Compile(bodyto);
+            WorkflowExpression.Validate(__workflow_bodyto, nameof(bodyto), required: false);
+            var __workflow_bodycontentvideourl = bodycontentvideourl == null ? null : WorkflowExpression.Compile(bodycontentvideourl);
+            WorkflowExpression.Validate(__workflow_bodycontentvideourl, nameof(bodycontentvideourl), required: false);
+            var __workflow_bodycontentvideocaption = bodycontentvideocaption == null ? null : WorkflowExpression.Compile(bodycontentvideocaption);
+            WorkflowExpression.Validate(__workflow_bodycontentvideocaption, nameof(bodycontentvideocaption), required: false);
             return new DeferredBodyAction<SendWhatsAppVideoResponse>(() =>
             {
                 var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/video";
@@ -941,15 +930,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfrom != null)
+                if (__workflow_bodyfrom != null)
                 {
-                    body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                    body["from"] = ExpressionConverter.ConvertO(__workflow_bodyfrom);
                     bodypropCount++;
                 }
 
-                if (bodyto != null)
+                if (__workflow_bodyto != null)
                 {
-                    body["to"] = ExpressionConverter.ConvertO(bodyto);
+                    body["to"] = ExpressionConverter.ConvertO(__workflow_bodyto);
                     bodypropCount++;
                 }
 
@@ -961,15 +950,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 contentObjectpropCount++;
                 var videoObject = new JObject();
                 var videoObjectpropCount = 0;
-                if (bodycontentvideourl != null)
+                if (__workflow_bodycontentvideourl != null)
                 {
-                    videoObject["url"] = ExpressionConverter.ConvertO(bodycontentvideourl);
+                    videoObject["url"] = ExpressionConverter.ConvertO(__workflow_bodycontentvideourl);
                     videoObjectpropCount++;
                 }
 
-                if (bodycontentvideocaption != null)
+                if (__workflow_bodycontentvideocaption != null)
                 {
-                    videoObject["caption"] = ExpressionConverter.ConvertO(bodycontentvideocaption);
+                    videoObject["caption"] = ExpressionConverter.ConvertO(__workflow_bodycontentvideocaption);
                     videoObjectpropCount++;
                 }
 
@@ -995,20 +984,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        [WorkflowExpressionFactory(nameof(__BuildSendWhatsAppDocument))]
-        public IBodyWorkflowAction<SendWhatsAppDocumentResponse> SendWhatsAppDocument([WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<string> bodycontentdocumenturl = null, [WorkflowExpression] Func<string> bodycontentdocumentcaption = null, [WorkflowExpression] Func<string> bodycontentdocumentfilename = null)
+        public IBodyWorkflowAction<SendWhatsAppDocumentResponse> SendWhatsAppDocument(Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodycontentdocumenturl = null, Expression<Func<string>> bodycontentdocumentcaption = null, Expression<Func<string>> bodycontentdocumentfilename = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SendWhatsAppDocumentResponse> __BuildSendWhatsAppDocument(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodycontentdocumenturl = null, WorkflowExpression<string> bodycontentdocumentcaption = null, WorkflowExpression<string> bodycontentdocumentfilename = null)
-        {
-            WorkflowExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
-            WorkflowExpression.Validate(bodyto, nameof(bodyto), required: false);
-            WorkflowExpression.Validate(bodycontentdocumenturl, nameof(bodycontentdocumenturl), required: false);
-            WorkflowExpression.Validate(bodycontentdocumentcaption, nameof(bodycontentdocumentcaption), required: false);
-            WorkflowExpression.Validate(bodycontentdocumentfilename, nameof(bodycontentdocumentfilename), required: false);
+            var __workflow_bodyfrom = bodyfrom == null ? null : WorkflowExpression.Compile(bodyfrom);
+            WorkflowExpression.Validate(__workflow_bodyfrom, nameof(bodyfrom), required: false);
+            var __workflow_bodyto = bodyto == null ? null : WorkflowExpression.Compile(bodyto);
+            WorkflowExpression.Validate(__workflow_bodyto, nameof(bodyto), required: false);
+            var __workflow_bodycontentdocumenturl = bodycontentdocumenturl == null ? null : WorkflowExpression.Compile(bodycontentdocumenturl);
+            WorkflowExpression.Validate(__workflow_bodycontentdocumenturl, nameof(bodycontentdocumenturl), required: false);
+            var __workflow_bodycontentdocumentcaption = bodycontentdocumentcaption == null ? null : WorkflowExpression.Compile(bodycontentdocumentcaption);
+            WorkflowExpression.Validate(__workflow_bodycontentdocumentcaption, nameof(bodycontentdocumentcaption), required: false);
+            var __workflow_bodycontentdocumentfilename = bodycontentdocumentfilename == null ? null : WorkflowExpression.Compile(bodycontentdocumentfilename);
+            WorkflowExpression.Validate(__workflow_bodycontentdocumentfilename, nameof(bodycontentdocumentfilename), required: false);
             return new DeferredBodyAction<SendWhatsAppDocumentResponse>(() =>
             {
                 var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/document";
@@ -1016,15 +1003,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfrom != null)
+                if (__workflow_bodyfrom != null)
                 {
-                    body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                    body["from"] = ExpressionConverter.ConvertO(__workflow_bodyfrom);
                     bodypropCount++;
                 }
 
-                if (bodyto != null)
+                if (__workflow_bodyto != null)
                 {
-                    body["to"] = ExpressionConverter.ConvertO(bodyto);
+                    body["to"] = ExpressionConverter.ConvertO(__workflow_bodyto);
                     bodypropCount++;
                 }
 
@@ -1036,21 +1023,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 contentObjectpropCount++;
                 var documentObject = new JObject();
                 var documentObjectpropCount = 0;
-                if (bodycontentdocumenturl != null)
+                if (__workflow_bodycontentdocumenturl != null)
                 {
-                    documentObject["url"] = ExpressionConverter.ConvertO(bodycontentdocumenturl);
+                    documentObject["url"] = ExpressionConverter.ConvertO(__workflow_bodycontentdocumenturl);
                     documentObjectpropCount++;
                 }
 
-                if (bodycontentdocumentcaption != null)
+                if (__workflow_bodycontentdocumentcaption != null)
                 {
-                    documentObject["caption"] = ExpressionConverter.ConvertO(bodycontentdocumentcaption);
+                    documentObject["caption"] = ExpressionConverter.ConvertO(__workflow_bodycontentdocumentcaption);
                     documentObjectpropCount++;
                 }
 
-                if (bodycontentdocumentfilename != null)
+                if (__workflow_bodycontentdocumentfilename != null)
                 {
-                    documentObject["filename"] = ExpressionConverter.ConvertO(bodycontentdocumentfilename);
+                    documentObject["filename"] = ExpressionConverter.ConvertO(__workflow_bodycontentdocumentfilename);
                     documentObjectpropCount++;
                 }
 
@@ -1076,18 +1063,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        [WorkflowExpressionFactory(nameof(__BuildSendWhatsAppAudio))]
-        public IBodyWorkflowAction<SendWhatsAppAudioResponse> SendWhatsAppAudio([WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<string> bodycontentaudiourl = null)
+        public IBodyWorkflowAction<SendWhatsAppAudioResponse> SendWhatsAppAudio(Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodycontentaudiourl = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SendWhatsAppAudioResponse> __BuildSendWhatsAppAudio(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodycontentaudiourl = null)
-        {
-            WorkflowExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
-            WorkflowExpression.Validate(bodyto, nameof(bodyto), required: false);
-            WorkflowExpression.Validate(bodycontentaudiourl, nameof(bodycontentaudiourl), required: false);
+            var __workflow_bodyfrom = bodyfrom == null ? null : WorkflowExpression.Compile(bodyfrom);
+            WorkflowExpression.Validate(__workflow_bodyfrom, nameof(bodyfrom), required: false);
+            var __workflow_bodyto = bodyto == null ? null : WorkflowExpression.Compile(bodyto);
+            WorkflowExpression.Validate(__workflow_bodyto, nameof(bodyto), required: false);
+            var __workflow_bodycontentaudiourl = bodycontentaudiourl == null ? null : WorkflowExpression.Compile(bodycontentaudiourl);
+            WorkflowExpression.Validate(__workflow_bodycontentaudiourl, nameof(bodycontentaudiourl), required: false);
             return new DeferredBodyAction<SendWhatsAppAudioResponse>(() =>
             {
                 var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/audio";
@@ -1095,15 +1078,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfrom != null)
+                if (__workflow_bodyfrom != null)
                 {
-                    body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                    body["from"] = ExpressionConverter.ConvertO(__workflow_bodyfrom);
                     bodypropCount++;
                 }
 
-                if (bodyto != null)
+                if (__workflow_bodyto != null)
                 {
-                    body["to"] = ExpressionConverter.ConvertO(bodyto);
+                    body["to"] = ExpressionConverter.ConvertO(__workflow_bodyto);
                     bodypropCount++;
                 }
 
@@ -1115,9 +1098,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 contentObjectpropCount++;
                 var audioObject = new JObject();
                 var audioObjectpropCount = 0;
-                if (bodycontentaudiourl != null)
+                if (__workflow_bodycontentaudiourl != null)
                 {
-                    audioObject["url"] = ExpressionConverter.ConvertO(bodycontentaudiourl);
+                    audioObject["url"] = ExpressionConverter.ConvertO(__workflow_bodycontentaudiourl);
                     audioObjectpropCount++;
                 }
 
@@ -1143,18 +1126,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        [WorkflowExpressionFactory(nameof(__BuildSendWhatsAppSticker))]
-        public IBodyWorkflowAction<SendWhatsAppStickerResponse> SendWhatsAppSticker([WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<string> bodycontentstickerurl = null)
+        public IBodyWorkflowAction<SendWhatsAppStickerResponse> SendWhatsAppSticker(Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodycontentstickerurl = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SendWhatsAppStickerResponse> __BuildSendWhatsAppSticker(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodycontentstickerurl = null)
-        {
-            WorkflowExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
-            WorkflowExpression.Validate(bodyto, nameof(bodyto), required: false);
-            WorkflowExpression.Validate(bodycontentstickerurl, nameof(bodycontentstickerurl), required: false);
+            var __workflow_bodyfrom = bodyfrom == null ? null : WorkflowExpression.Compile(bodyfrom);
+            WorkflowExpression.Validate(__workflow_bodyfrom, nameof(bodyfrom), required: false);
+            var __workflow_bodyto = bodyto == null ? null : WorkflowExpression.Compile(bodyto);
+            WorkflowExpression.Validate(__workflow_bodyto, nameof(bodyto), required: false);
+            var __workflow_bodycontentstickerurl = bodycontentstickerurl == null ? null : WorkflowExpression.Compile(bodycontentstickerurl);
+            WorkflowExpression.Validate(__workflow_bodycontentstickerurl, nameof(bodycontentstickerurl), required: false);
             return new DeferredBodyAction<SendWhatsAppStickerResponse>(() =>
             {
                 var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/sticker";
@@ -1162,15 +1141,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfrom != null)
+                if (__workflow_bodyfrom != null)
                 {
-                    body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                    body["from"] = ExpressionConverter.ConvertO(__workflow_bodyfrom);
                     bodypropCount++;
                 }
 
-                if (bodyto != null)
+                if (__workflow_bodyto != null)
                 {
-                    body["to"] = ExpressionConverter.ConvertO(bodyto);
+                    body["to"] = ExpressionConverter.ConvertO(__workflow_bodyto);
                     bodypropCount++;
                 }
 
@@ -1182,9 +1161,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 contentObjectpropCount++;
                 var stickerObject = new JObject();
                 var stickerObjectpropCount = 0;
-                if (bodycontentstickerurl != null)
+                if (__workflow_bodycontentstickerurl != null)
                 {
-                    stickerObject["url"] = ExpressionConverter.ConvertO(bodycontentstickerurl);
+                    stickerObject["url"] = ExpressionConverter.ConvertO(__workflow_bodycontentstickerurl);
                     stickerObjectpropCount++;
                 }
 
@@ -1210,21 +1189,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        [WorkflowExpressionFactory(nameof(__BuildSendWhatsAppTemplateText))]
-        public IBodyWorkflowAction<SendWhatsAppTemplateTextResponse> SendWhatsAppTemplateText([WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<string> bodycontenttemplatetemplateId = null, [WorkflowExpression] Func<string> bodycontenttemplatetemplateLanguage = null, [WorkflowExpression] Func<bodycontenttemplatecomponentsheaderInputItem[]> bodycontenttemplatecomponentsheader = null, [WorkflowExpression] Func<bodycontenttemplatecomponentsbodyInputItem[]> bodycontenttemplatecomponentsbody = null)
+        public IBodyWorkflowAction<SendWhatsAppTemplateTextResponse> SendWhatsAppTemplateText(Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodycontenttemplatetemplateId = null, Expression<Func<string>> bodycontenttemplatetemplateLanguage = null, Expression<Func<bodycontenttemplatecomponentsheaderInputItem[]>> bodycontenttemplatecomponentsheader = null, Expression<Func<bodycontenttemplatecomponentsbodyInputItem[]>> bodycontenttemplatecomponentsbody = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SendWhatsAppTemplateTextResponse> __BuildSendWhatsAppTemplateText(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodycontenttemplatetemplateId = null, WorkflowExpression<string> bodycontenttemplatetemplateLanguage = null, WorkflowExpression<bodycontenttemplatecomponentsheaderInputItem[]> bodycontenttemplatecomponentsheader = null, WorkflowExpression<bodycontenttemplatecomponentsbodyInputItem[]> bodycontenttemplatecomponentsbody = null)
-        {
-            WorkflowExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
-            WorkflowExpression.Validate(bodyto, nameof(bodyto), required: false);
-            WorkflowExpression.Validate(bodycontenttemplatetemplateId, nameof(bodycontenttemplatetemplateId), required: false);
-            WorkflowExpression.Validate(bodycontenttemplatetemplateLanguage, nameof(bodycontenttemplatetemplateLanguage), required: false);
-            WorkflowExpression.Validate(bodycontenttemplatecomponentsheader, nameof(bodycontenttemplatecomponentsheader), required: false);
-            WorkflowExpression.Validate(bodycontenttemplatecomponentsbody, nameof(bodycontenttemplatecomponentsbody), required: false);
+            var __workflow_bodyfrom = bodyfrom == null ? null : WorkflowExpression.Compile(bodyfrom);
+            WorkflowExpression.Validate(__workflow_bodyfrom, nameof(bodyfrom), required: false);
+            var __workflow_bodyto = bodyto == null ? null : WorkflowExpression.Compile(bodyto);
+            WorkflowExpression.Validate(__workflow_bodyto, nameof(bodyto), required: false);
+            var __workflow_bodycontenttemplatetemplateId = bodycontenttemplatetemplateId == null ? null : WorkflowExpression.Compile(bodycontenttemplatetemplateId);
+            WorkflowExpression.Validate(__workflow_bodycontenttemplatetemplateId, nameof(bodycontenttemplatetemplateId), required: false);
+            var __workflow_bodycontenttemplatetemplateLanguage = bodycontenttemplatetemplateLanguage == null ? null : WorkflowExpression.Compile(bodycontenttemplatetemplateLanguage);
+            WorkflowExpression.Validate(__workflow_bodycontenttemplatetemplateLanguage, nameof(bodycontenttemplatetemplateLanguage), required: false);
+            var __workflow_bodycontenttemplatecomponentsheader = bodycontenttemplatecomponentsheader == null ? null : WorkflowExpression.Compile(bodycontenttemplatecomponentsheader);
+            WorkflowExpression.Validate(__workflow_bodycontenttemplatecomponentsheader, nameof(bodycontenttemplatecomponentsheader), required: false);
+            var __workflow_bodycontenttemplatecomponentsbody = bodycontenttemplatecomponentsbody == null ? null : WorkflowExpression.Compile(bodycontenttemplatecomponentsbody);
+            WorkflowExpression.Validate(__workflow_bodycontenttemplatecomponentsbody, nameof(bodycontenttemplatecomponentsbody), required: false);
             return new DeferredBodyAction<SendWhatsAppTemplateTextResponse>(() =>
             {
                 var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/template-text";
@@ -1232,15 +1210,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfrom != null)
+                if (__workflow_bodyfrom != null)
                 {
-                    body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                    body["from"] = ExpressionConverter.ConvertO(__workflow_bodyfrom);
                     bodypropCount++;
                 }
 
-                if (bodyto != null)
+                if (__workflow_bodyto != null)
                 {
-                    body["to"] = ExpressionConverter.ConvertO(bodyto);
+                    body["to"] = ExpressionConverter.ConvertO(__workflow_bodyto);
                     bodypropCount++;
                 }
 
@@ -1252,29 +1230,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 contentObjectpropCount++;
                 var templateObject = new JObject();
                 var templateObjectpropCount = 0;
-                if (bodycontenttemplatetemplateId != null)
+                if (__workflow_bodycontenttemplatetemplateId != null)
                 {
-                    templateObject["templateId"] = ExpressionConverter.ConvertO(bodycontenttemplatetemplateId);
+                    templateObject["templateId"] = ExpressionConverter.ConvertO(__workflow_bodycontenttemplatetemplateId);
                     templateObjectpropCount++;
                 }
 
-                if (bodycontenttemplatetemplateLanguage != null)
+                if (__workflow_bodycontenttemplatetemplateLanguage != null)
                 {
-                    templateObject["templateLanguage"] = ExpressionConverter.ConvertO(bodycontenttemplatetemplateLanguage);
+                    templateObject["templateLanguage"] = ExpressionConverter.ConvertO(__workflow_bodycontenttemplatetemplateLanguage);
                     templateObjectpropCount++;
                 }
 
                 var componentsObject = new JObject();
                 var componentsObjectpropCount = 0;
-                if (bodycontenttemplatecomponentsheader != null)
+                if (__workflow_bodycontenttemplatecomponentsheader != null)
                 {
-                    componentsObject["header"] = ExpressionConverter.ConvertO(bodycontenttemplatecomponentsheader);
+                    componentsObject["header"] = ExpressionConverter.ConvertO(__workflow_bodycontenttemplatecomponentsheader);
                     componentsObjectpropCount++;
                 }
 
-                if (bodycontenttemplatecomponentsbody != null)
+                if (__workflow_bodycontenttemplatecomponentsbody != null)
                 {
-                    componentsObject["body"] = ExpressionConverter.ConvertO(bodycontenttemplatecomponentsbody);
+                    componentsObject["body"] = ExpressionConverter.ConvertO(__workflow_bodycontenttemplatecomponentsbody);
                     componentsObjectpropCount++;
                 }
 
@@ -1306,21 +1284,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        [WorkflowExpressionFactory(nameof(__BuildSendWhatsAppTemplateLocation))]
-        public IBodyWorkflowAction<SendWhatsAppTemplateLocationResponse> SendWhatsAppTemplateLocation([WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<string> bodycontenttemplatetemplateId = null, [WorkflowExpression] Func<string> bodycontenttemplatetemplateLanguage = null, [WorkflowExpression] Func<bodycontenttemplatecomponentsheaderInputItem2[]> bodycontenttemplatecomponentsheader = null, [WorkflowExpression] Func<bodycontenttemplatecomponentsbodyInputItem[]> bodycontenttemplatecomponentsbody = null)
+        public IBodyWorkflowAction<SendWhatsAppTemplateLocationResponse> SendWhatsAppTemplateLocation(Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodycontenttemplatetemplateId = null, Expression<Func<string>> bodycontenttemplatetemplateLanguage = null, Expression<Func<bodycontenttemplatecomponentsheaderInputItem2[]>> bodycontenttemplatecomponentsheader = null, Expression<Func<bodycontenttemplatecomponentsbodyInputItem[]>> bodycontenttemplatecomponentsbody = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SendWhatsAppTemplateLocationResponse> __BuildSendWhatsAppTemplateLocation(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodycontenttemplatetemplateId = null, WorkflowExpression<string> bodycontenttemplatetemplateLanguage = null, WorkflowExpression<bodycontenttemplatecomponentsheaderInputItem2[]> bodycontenttemplatecomponentsheader = null, WorkflowExpression<bodycontenttemplatecomponentsbodyInputItem[]> bodycontenttemplatecomponentsbody = null)
-        {
-            WorkflowExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
-            WorkflowExpression.Validate(bodyto, nameof(bodyto), required: false);
-            WorkflowExpression.Validate(bodycontenttemplatetemplateId, nameof(bodycontenttemplatetemplateId), required: false);
-            WorkflowExpression.Validate(bodycontenttemplatetemplateLanguage, nameof(bodycontenttemplatetemplateLanguage), required: false);
-            WorkflowExpression.Validate(bodycontenttemplatecomponentsheader, nameof(bodycontenttemplatecomponentsheader), required: false);
-            WorkflowExpression.Validate(bodycontenttemplatecomponentsbody, nameof(bodycontenttemplatecomponentsbody), required: false);
+            var __workflow_bodyfrom = bodyfrom == null ? null : WorkflowExpression.Compile(bodyfrom);
+            WorkflowExpression.Validate(__workflow_bodyfrom, nameof(bodyfrom), required: false);
+            var __workflow_bodyto = bodyto == null ? null : WorkflowExpression.Compile(bodyto);
+            WorkflowExpression.Validate(__workflow_bodyto, nameof(bodyto), required: false);
+            var __workflow_bodycontenttemplatetemplateId = bodycontenttemplatetemplateId == null ? null : WorkflowExpression.Compile(bodycontenttemplatetemplateId);
+            WorkflowExpression.Validate(__workflow_bodycontenttemplatetemplateId, nameof(bodycontenttemplatetemplateId), required: false);
+            var __workflow_bodycontenttemplatetemplateLanguage = bodycontenttemplatetemplateLanguage == null ? null : WorkflowExpression.Compile(bodycontenttemplatetemplateLanguage);
+            WorkflowExpression.Validate(__workflow_bodycontenttemplatetemplateLanguage, nameof(bodycontenttemplatetemplateLanguage), required: false);
+            var __workflow_bodycontenttemplatecomponentsheader = bodycontenttemplatecomponentsheader == null ? null : WorkflowExpression.Compile(bodycontenttemplatecomponentsheader);
+            WorkflowExpression.Validate(__workflow_bodycontenttemplatecomponentsheader, nameof(bodycontenttemplatecomponentsheader), required: false);
+            var __workflow_bodycontenttemplatecomponentsbody = bodycontenttemplatecomponentsbody == null ? null : WorkflowExpression.Compile(bodycontenttemplatecomponentsbody);
+            WorkflowExpression.Validate(__workflow_bodycontenttemplatecomponentsbody, nameof(bodycontenttemplatecomponentsbody), required: false);
             return new DeferredBodyAction<SendWhatsAppTemplateLocationResponse>(() =>
             {
                 var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/template-location";
@@ -1328,15 +1305,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfrom != null)
+                if (__workflow_bodyfrom != null)
                 {
-                    body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                    body["from"] = ExpressionConverter.ConvertO(__workflow_bodyfrom);
                     bodypropCount++;
                 }
 
-                if (bodyto != null)
+                if (__workflow_bodyto != null)
                 {
-                    body["to"] = ExpressionConverter.ConvertO(bodyto);
+                    body["to"] = ExpressionConverter.ConvertO(__workflow_bodyto);
                     bodypropCount++;
                 }
 
@@ -1348,29 +1325,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 contentObjectpropCount++;
                 var templateObject = new JObject();
                 var templateObjectpropCount = 0;
-                if (bodycontenttemplatetemplateId != null)
+                if (__workflow_bodycontenttemplatetemplateId != null)
                 {
-                    templateObject["templateId"] = ExpressionConverter.ConvertO(bodycontenttemplatetemplateId);
+                    templateObject["templateId"] = ExpressionConverter.ConvertO(__workflow_bodycontenttemplatetemplateId);
                     templateObjectpropCount++;
                 }
 
-                if (bodycontenttemplatetemplateLanguage != null)
+                if (__workflow_bodycontenttemplatetemplateLanguage != null)
                 {
-                    templateObject["templateLanguage"] = ExpressionConverter.ConvertO(bodycontenttemplatetemplateLanguage);
+                    templateObject["templateLanguage"] = ExpressionConverter.ConvertO(__workflow_bodycontenttemplatetemplateLanguage);
                     templateObjectpropCount++;
                 }
 
                 var componentsObject = new JObject();
                 var componentsObjectpropCount = 0;
-                if (bodycontenttemplatecomponentsheader != null)
+                if (__workflow_bodycontenttemplatecomponentsheader != null)
                 {
-                    componentsObject["header"] = ExpressionConverter.ConvertO(bodycontenttemplatecomponentsheader);
+                    componentsObject["header"] = ExpressionConverter.ConvertO(__workflow_bodycontenttemplatecomponentsheader);
                     componentsObjectpropCount++;
                 }
 
-                if (bodycontenttemplatecomponentsbody != null)
+                if (__workflow_bodycontenttemplatecomponentsbody != null)
                 {
-                    componentsObject["body"] = ExpressionConverter.ConvertO(bodycontenttemplatecomponentsbody);
+                    componentsObject["body"] = ExpressionConverter.ConvertO(__workflow_bodycontenttemplatecomponentsbody);
                     componentsObjectpropCount++;
                 }
 
@@ -1402,21 +1379,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        [WorkflowExpressionFactory(nameof(__BuildSendWhatsAppTemplateImage))]
-        public IBodyWorkflowAction<SendWhatsAppTemplateImageResponse> SendWhatsAppTemplateImage([WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<string> bodycontenttemplatetemplateId = null, [WorkflowExpression] Func<string> bodycontenttemplatetemplateLanguage = null, [WorkflowExpression] Func<bodycontenttemplatecomponentsheaderInputItem22[]> bodycontenttemplatecomponentsheader = null, [WorkflowExpression] Func<bodycontenttemplatecomponentsbodyInputItem[]> bodycontenttemplatecomponentsbody = null)
+        public IBodyWorkflowAction<SendWhatsAppTemplateImageResponse> SendWhatsAppTemplateImage(Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodycontenttemplatetemplateId = null, Expression<Func<string>> bodycontenttemplatetemplateLanguage = null, Expression<Func<bodycontenttemplatecomponentsheaderInputItem22[]>> bodycontenttemplatecomponentsheader = null, Expression<Func<bodycontenttemplatecomponentsbodyInputItem[]>> bodycontenttemplatecomponentsbody = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SendWhatsAppTemplateImageResponse> __BuildSendWhatsAppTemplateImage(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodycontenttemplatetemplateId = null, WorkflowExpression<string> bodycontenttemplatetemplateLanguage = null, WorkflowExpression<bodycontenttemplatecomponentsheaderInputItem22[]> bodycontenttemplatecomponentsheader = null, WorkflowExpression<bodycontenttemplatecomponentsbodyInputItem[]> bodycontenttemplatecomponentsbody = null)
-        {
-            WorkflowExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
-            WorkflowExpression.Validate(bodyto, nameof(bodyto), required: false);
-            WorkflowExpression.Validate(bodycontenttemplatetemplateId, nameof(bodycontenttemplatetemplateId), required: false);
-            WorkflowExpression.Validate(bodycontenttemplatetemplateLanguage, nameof(bodycontenttemplatetemplateLanguage), required: false);
-            WorkflowExpression.Validate(bodycontenttemplatecomponentsheader, nameof(bodycontenttemplatecomponentsheader), required: false);
-            WorkflowExpression.Validate(bodycontenttemplatecomponentsbody, nameof(bodycontenttemplatecomponentsbody), required: false);
+            var __workflow_bodyfrom = bodyfrom == null ? null : WorkflowExpression.Compile(bodyfrom);
+            WorkflowExpression.Validate(__workflow_bodyfrom, nameof(bodyfrom), required: false);
+            var __workflow_bodyto = bodyto == null ? null : WorkflowExpression.Compile(bodyto);
+            WorkflowExpression.Validate(__workflow_bodyto, nameof(bodyto), required: false);
+            var __workflow_bodycontenttemplatetemplateId = bodycontenttemplatetemplateId == null ? null : WorkflowExpression.Compile(bodycontenttemplatetemplateId);
+            WorkflowExpression.Validate(__workflow_bodycontenttemplatetemplateId, nameof(bodycontenttemplatetemplateId), required: false);
+            var __workflow_bodycontenttemplatetemplateLanguage = bodycontenttemplatetemplateLanguage == null ? null : WorkflowExpression.Compile(bodycontenttemplatetemplateLanguage);
+            WorkflowExpression.Validate(__workflow_bodycontenttemplatetemplateLanguage, nameof(bodycontenttemplatetemplateLanguage), required: false);
+            var __workflow_bodycontenttemplatecomponentsheader = bodycontenttemplatecomponentsheader == null ? null : WorkflowExpression.Compile(bodycontenttemplatecomponentsheader);
+            WorkflowExpression.Validate(__workflow_bodycontenttemplatecomponentsheader, nameof(bodycontenttemplatecomponentsheader), required: false);
+            var __workflow_bodycontenttemplatecomponentsbody = bodycontenttemplatecomponentsbody == null ? null : WorkflowExpression.Compile(bodycontenttemplatecomponentsbody);
+            WorkflowExpression.Validate(__workflow_bodycontenttemplatecomponentsbody, nameof(bodycontenttemplatecomponentsbody), required: false);
             return new DeferredBodyAction<SendWhatsAppTemplateImageResponse>(() =>
             {
                 var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/template-image";
@@ -1424,15 +1400,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfrom != null)
+                if (__workflow_bodyfrom != null)
                 {
-                    body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                    body["from"] = ExpressionConverter.ConvertO(__workflow_bodyfrom);
                     bodypropCount++;
                 }
 
-                if (bodyto != null)
+                if (__workflow_bodyto != null)
                 {
-                    body["to"] = ExpressionConverter.ConvertO(bodyto);
+                    body["to"] = ExpressionConverter.ConvertO(__workflow_bodyto);
                     bodypropCount++;
                 }
 
@@ -1444,29 +1420,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 contentObjectpropCount++;
                 var templateObject = new JObject();
                 var templateObjectpropCount = 0;
-                if (bodycontenttemplatetemplateId != null)
+                if (__workflow_bodycontenttemplatetemplateId != null)
                 {
-                    templateObject["templateId"] = ExpressionConverter.ConvertO(bodycontenttemplatetemplateId);
+                    templateObject["templateId"] = ExpressionConverter.ConvertO(__workflow_bodycontenttemplatetemplateId);
                     templateObjectpropCount++;
                 }
 
-                if (bodycontenttemplatetemplateLanguage != null)
+                if (__workflow_bodycontenttemplatetemplateLanguage != null)
                 {
-                    templateObject["templateLanguage"] = ExpressionConverter.ConvertO(bodycontenttemplatetemplateLanguage);
+                    templateObject["templateLanguage"] = ExpressionConverter.ConvertO(__workflow_bodycontenttemplatetemplateLanguage);
                     templateObjectpropCount++;
                 }
 
                 var componentsObject = new JObject();
                 var componentsObjectpropCount = 0;
-                if (bodycontenttemplatecomponentsheader != null)
+                if (__workflow_bodycontenttemplatecomponentsheader != null)
                 {
-                    componentsObject["header"] = ExpressionConverter.ConvertO(bodycontenttemplatecomponentsheader);
+                    componentsObject["header"] = ExpressionConverter.ConvertO(__workflow_bodycontenttemplatecomponentsheader);
                     componentsObjectpropCount++;
                 }
 
-                if (bodycontenttemplatecomponentsbody != null)
+                if (__workflow_bodycontenttemplatecomponentsbody != null)
                 {
-                    componentsObject["body"] = ExpressionConverter.ConvertO(bodycontenttemplatecomponentsbody);
+                    componentsObject["body"] = ExpressionConverter.ConvertO(__workflow_bodycontenttemplatecomponentsbody);
                     componentsObjectpropCount++;
                 }
 
@@ -1498,21 +1474,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        [WorkflowExpressionFactory(nameof(__BuildSendWhatsAppTemplateDocument))]
-        public IBodyWorkflowAction<SendWhatsAppTemplateDocumentResponse> SendWhatsAppTemplateDocument([WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<string> bodycontenttemplatetemplateId = null, [WorkflowExpression] Func<string> bodycontenttemplatetemplateLanguage = null, [WorkflowExpression] Func<bodycontenttemplatecomponentsheaderInputItem222[]> bodycontenttemplatecomponentsheader = null, [WorkflowExpression] Func<bodycontenttemplatecomponentsbodyInputItem[]> bodycontenttemplatecomponentsbody = null)
+        public IBodyWorkflowAction<SendWhatsAppTemplateDocumentResponse> SendWhatsAppTemplateDocument(Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodycontenttemplatetemplateId = null, Expression<Func<string>> bodycontenttemplatetemplateLanguage = null, Expression<Func<bodycontenttemplatecomponentsheaderInputItem222[]>> bodycontenttemplatecomponentsheader = null, Expression<Func<bodycontenttemplatecomponentsbodyInputItem[]>> bodycontenttemplatecomponentsbody = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SendWhatsAppTemplateDocumentResponse> __BuildSendWhatsAppTemplateDocument(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodycontenttemplatetemplateId = null, WorkflowExpression<string> bodycontenttemplatetemplateLanguage = null, WorkflowExpression<bodycontenttemplatecomponentsheaderInputItem222[]> bodycontenttemplatecomponentsheader = null, WorkflowExpression<bodycontenttemplatecomponentsbodyInputItem[]> bodycontenttemplatecomponentsbody = null)
-        {
-            WorkflowExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
-            WorkflowExpression.Validate(bodyto, nameof(bodyto), required: false);
-            WorkflowExpression.Validate(bodycontenttemplatetemplateId, nameof(bodycontenttemplatetemplateId), required: false);
-            WorkflowExpression.Validate(bodycontenttemplatetemplateLanguage, nameof(bodycontenttemplatetemplateLanguage), required: false);
-            WorkflowExpression.Validate(bodycontenttemplatecomponentsheader, nameof(bodycontenttemplatecomponentsheader), required: false);
-            WorkflowExpression.Validate(bodycontenttemplatecomponentsbody, nameof(bodycontenttemplatecomponentsbody), required: false);
+            var __workflow_bodyfrom = bodyfrom == null ? null : WorkflowExpression.Compile(bodyfrom);
+            WorkflowExpression.Validate(__workflow_bodyfrom, nameof(bodyfrom), required: false);
+            var __workflow_bodyto = bodyto == null ? null : WorkflowExpression.Compile(bodyto);
+            WorkflowExpression.Validate(__workflow_bodyto, nameof(bodyto), required: false);
+            var __workflow_bodycontenttemplatetemplateId = bodycontenttemplatetemplateId == null ? null : WorkflowExpression.Compile(bodycontenttemplatetemplateId);
+            WorkflowExpression.Validate(__workflow_bodycontenttemplatetemplateId, nameof(bodycontenttemplatetemplateId), required: false);
+            var __workflow_bodycontenttemplatetemplateLanguage = bodycontenttemplatetemplateLanguage == null ? null : WorkflowExpression.Compile(bodycontenttemplatetemplateLanguage);
+            WorkflowExpression.Validate(__workflow_bodycontenttemplatetemplateLanguage, nameof(bodycontenttemplatetemplateLanguage), required: false);
+            var __workflow_bodycontenttemplatecomponentsheader = bodycontenttemplatecomponentsheader == null ? null : WorkflowExpression.Compile(bodycontenttemplatecomponentsheader);
+            WorkflowExpression.Validate(__workflow_bodycontenttemplatecomponentsheader, nameof(bodycontenttemplatecomponentsheader), required: false);
+            var __workflow_bodycontenttemplatecomponentsbody = bodycontenttemplatecomponentsbody == null ? null : WorkflowExpression.Compile(bodycontenttemplatecomponentsbody);
+            WorkflowExpression.Validate(__workflow_bodycontenttemplatecomponentsbody, nameof(bodycontenttemplatecomponentsbody), required: false);
             return new DeferredBodyAction<SendWhatsAppTemplateDocumentResponse>(() =>
             {
                 var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/template-document";
@@ -1520,15 +1495,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfrom != null)
+                if (__workflow_bodyfrom != null)
                 {
-                    body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                    body["from"] = ExpressionConverter.ConvertO(__workflow_bodyfrom);
                     bodypropCount++;
                 }
 
-                if (bodyto != null)
+                if (__workflow_bodyto != null)
                 {
-                    body["to"] = ExpressionConverter.ConvertO(bodyto);
+                    body["to"] = ExpressionConverter.ConvertO(__workflow_bodyto);
                     bodypropCount++;
                 }
 
@@ -1540,29 +1515,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 contentObjectpropCount++;
                 var templateObject = new JObject();
                 var templateObjectpropCount = 0;
-                if (bodycontenttemplatetemplateId != null)
+                if (__workflow_bodycontenttemplatetemplateId != null)
                 {
-                    templateObject["templateId"] = ExpressionConverter.ConvertO(bodycontenttemplatetemplateId);
+                    templateObject["templateId"] = ExpressionConverter.ConvertO(__workflow_bodycontenttemplatetemplateId);
                     templateObjectpropCount++;
                 }
 
-                if (bodycontenttemplatetemplateLanguage != null)
+                if (__workflow_bodycontenttemplatetemplateLanguage != null)
                 {
-                    templateObject["templateLanguage"] = ExpressionConverter.ConvertO(bodycontenttemplatetemplateLanguage);
+                    templateObject["templateLanguage"] = ExpressionConverter.ConvertO(__workflow_bodycontenttemplatetemplateLanguage);
                     templateObjectpropCount++;
                 }
 
                 var componentsObject = new JObject();
                 var componentsObjectpropCount = 0;
-                if (bodycontenttemplatecomponentsheader != null)
+                if (__workflow_bodycontenttemplatecomponentsheader != null)
                 {
-                    componentsObject["header"] = ExpressionConverter.ConvertO(bodycontenttemplatecomponentsheader);
+                    componentsObject["header"] = ExpressionConverter.ConvertO(__workflow_bodycontenttemplatecomponentsheader);
                     componentsObjectpropCount++;
                 }
 
-                if (bodycontenttemplatecomponentsbody != null)
+                if (__workflow_bodycontenttemplatecomponentsbody != null)
                 {
-                    componentsObject["body"] = ExpressionConverter.ConvertO(bodycontenttemplatecomponentsbody);
+                    componentsObject["body"] = ExpressionConverter.ConvertO(__workflow_bodycontenttemplatecomponentsbody);
                     componentsObjectpropCount++;
                 }
 
@@ -1594,23 +1569,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        [WorkflowExpressionFactory(nameof(__BuildSendWhatsAppTemplateVideo))]
-        public IBodyWorkflowAction<SendWhatsAppTemplateVideoResponse> SendWhatsAppTemplateVideo([WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<string> bodychannel = null, [WorkflowExpression] Func<string> bodycontentcontentType = null, [WorkflowExpression] Func<string> bodycontenttemplatetemplateId = null, [WorkflowExpression] Func<string> bodycontenttemplatetemplateLanguage = null, [WorkflowExpression] Func<bodycontenttemplatecomponentsheaderInputItem2222[]> bodycontenttemplatecomponentsheader = null, [WorkflowExpression] Func<bodycontenttemplatecomponentsbodyInputItem[]> bodycontenttemplatecomponentsbody = null)
+        public IBodyWorkflowAction<SendWhatsAppTemplateVideoResponse> SendWhatsAppTemplateVideo(Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodychannel = null, Expression<Func<string>> bodycontentcontentType = null, Expression<Func<string>> bodycontenttemplatetemplateId = null, Expression<Func<string>> bodycontenttemplatetemplateLanguage = null, Expression<Func<bodycontenttemplatecomponentsheaderInputItem2222[]>> bodycontenttemplatecomponentsheader = null, Expression<Func<bodycontenttemplatecomponentsbodyInputItem[]>> bodycontenttemplatecomponentsbody = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SendWhatsAppTemplateVideoResponse> __BuildSendWhatsAppTemplateVideo(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodychannel = null, WorkflowExpression<string> bodycontentcontentType = null, WorkflowExpression<string> bodycontenttemplatetemplateId = null, WorkflowExpression<string> bodycontenttemplatetemplateLanguage = null, WorkflowExpression<bodycontenttemplatecomponentsheaderInputItem2222[]> bodycontenttemplatecomponentsheader = null, WorkflowExpression<bodycontenttemplatecomponentsbodyInputItem[]> bodycontenttemplatecomponentsbody = null)
-        {
-            WorkflowExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
-            WorkflowExpression.Validate(bodyto, nameof(bodyto), required: false);
-            WorkflowExpression.Validate(bodychannel, nameof(bodychannel), required: false);
-            WorkflowExpression.Validate(bodycontentcontentType, nameof(bodycontentcontentType), required: false);
-            WorkflowExpression.Validate(bodycontenttemplatetemplateId, nameof(bodycontenttemplatetemplateId), required: false);
-            WorkflowExpression.Validate(bodycontenttemplatetemplateLanguage, nameof(bodycontenttemplatetemplateLanguage), required: false);
-            WorkflowExpression.Validate(bodycontenttemplatecomponentsheader, nameof(bodycontenttemplatecomponentsheader), required: false);
-            WorkflowExpression.Validate(bodycontenttemplatecomponentsbody, nameof(bodycontenttemplatecomponentsbody), required: false);
+            var __workflow_bodyfrom = bodyfrom == null ? null : WorkflowExpression.Compile(bodyfrom);
+            WorkflowExpression.Validate(__workflow_bodyfrom, nameof(bodyfrom), required: false);
+            var __workflow_bodyto = bodyto == null ? null : WorkflowExpression.Compile(bodyto);
+            WorkflowExpression.Validate(__workflow_bodyto, nameof(bodyto), required: false);
+            var __workflow_bodychannel = bodychannel == null ? null : WorkflowExpression.Compile(bodychannel);
+            WorkflowExpression.Validate(__workflow_bodychannel, nameof(bodychannel), required: false);
+            var __workflow_bodycontentcontentType = bodycontentcontentType == null ? null : WorkflowExpression.Compile(bodycontentcontentType);
+            WorkflowExpression.Validate(__workflow_bodycontentcontentType, nameof(bodycontentcontentType), required: false);
+            var __workflow_bodycontenttemplatetemplateId = bodycontenttemplatetemplateId == null ? null : WorkflowExpression.Compile(bodycontenttemplatetemplateId);
+            WorkflowExpression.Validate(__workflow_bodycontenttemplatetemplateId, nameof(bodycontenttemplatetemplateId), required: false);
+            var __workflow_bodycontenttemplatetemplateLanguage = bodycontenttemplatetemplateLanguage == null ? null : WorkflowExpression.Compile(bodycontenttemplatetemplateLanguage);
+            WorkflowExpression.Validate(__workflow_bodycontenttemplatetemplateLanguage, nameof(bodycontenttemplatetemplateLanguage), required: false);
+            var __workflow_bodycontenttemplatecomponentsheader = bodycontenttemplatecomponentsheader == null ? null : WorkflowExpression.Compile(bodycontenttemplatecomponentsheader);
+            WorkflowExpression.Validate(__workflow_bodycontenttemplatecomponentsheader, nameof(bodycontenttemplatecomponentsheader), required: false);
+            var __workflow_bodycontenttemplatecomponentsbody = bodycontenttemplatecomponentsbody == null ? null : WorkflowExpression.Compile(bodycontenttemplatecomponentsbody);
+            WorkflowExpression.Validate(__workflow_bodycontenttemplatecomponentsbody, nameof(bodycontenttemplatecomponentsbody), required: false);
             return new DeferredBodyAction<SendWhatsAppTemplateVideoResponse>(() =>
             {
                 var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/template-video";
@@ -1618,57 +1594,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfrom != null)
+                if (__workflow_bodyfrom != null)
                 {
-                    body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                    body["from"] = ExpressionConverter.ConvertO(__workflow_bodyfrom);
                     bodypropCount++;
                 }
 
-                if (bodyto != null)
+                if (__workflow_bodyto != null)
                 {
-                    body["to"] = ExpressionConverter.ConvertO(bodyto);
+                    body["to"] = ExpressionConverter.ConvertO(__workflow_bodyto);
                     bodypropCount++;
                 }
 
-                if (bodychannel != null)
+                if (__workflow_bodychannel != null)
                 {
-                    body["channel"] = ExpressionConverter.ConvertO(bodychannel);
+                    body["channel"] = ExpressionConverter.ConvertO(__workflow_bodychannel);
                     bodypropCount++;
                 }
 
                 var contentObject = new JObject();
                 var contentObjectpropCount = 0;
-                if (bodycontentcontentType != null)
+                if (__workflow_bodycontentcontentType != null)
                 {
-                    contentObject["contentType"] = ExpressionConverter.ConvertO(bodycontentcontentType);
+                    contentObject["contentType"] = ExpressionConverter.ConvertO(__workflow_bodycontentcontentType);
                     contentObjectpropCount++;
                 }
 
                 var templateObject = new JObject();
                 var templateObjectpropCount = 0;
-                if (bodycontenttemplatetemplateId != null)
+                if (__workflow_bodycontenttemplatetemplateId != null)
                 {
-                    templateObject["templateId"] = ExpressionConverter.ConvertO(bodycontenttemplatetemplateId);
+                    templateObject["templateId"] = ExpressionConverter.ConvertO(__workflow_bodycontenttemplatetemplateId);
                     templateObjectpropCount++;
                 }
 
-                if (bodycontenttemplatetemplateLanguage != null)
+                if (__workflow_bodycontenttemplatetemplateLanguage != null)
                 {
-                    templateObject["templateLanguage"] = ExpressionConverter.ConvertO(bodycontenttemplatetemplateLanguage);
+                    templateObject["templateLanguage"] = ExpressionConverter.ConvertO(__workflow_bodycontenttemplatetemplateLanguage);
                     templateObjectpropCount++;
                 }
 
                 var componentsObject = new JObject();
                 var componentsObjectpropCount = 0;
-                if (bodycontenttemplatecomponentsheader != null)
+                if (__workflow_bodycontenttemplatecomponentsheader != null)
                 {
-                    componentsObject["header"] = ExpressionConverter.ConvertO(bodycontenttemplatecomponentsheader);
+                    componentsObject["header"] = ExpressionConverter.ConvertO(__workflow_bodycontenttemplatecomponentsheader);
                     componentsObjectpropCount++;
                 }
 
-                if (bodycontenttemplatecomponentsbody != null)
+                if (__workflow_bodycontenttemplatecomponentsbody != null)
                 {
-                    componentsObject["body"] = ExpressionConverter.ConvertO(bodycontenttemplatecomponentsbody);
+                    componentsObject["body"] = ExpressionConverter.ConvertO(__workflow_bodycontenttemplatecomponentsbody);
                     componentsObjectpropCount++;
                 }
 
@@ -1700,21 +1676,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        [WorkflowExpressionFactory(nameof(__BuildSendWhatsAppTemplateDynamicButton))]
-        public IBodyWorkflowAction<SendWhatsAppTemplateDynamicButtonResponse> SendWhatsAppTemplateDynamicButton([WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<string> bodycontenttemplatetemplateId = null, [WorkflowExpression] Func<string> bodycontenttemplatetemplateLanguage = null, [WorkflowExpression] Func<bodycontenttemplatecomponentsbodyInputItem[]> bodycontenttemplatecomponentsbody = null, [WorkflowExpression] Func<bodycontenttemplatecomponentsbuttonInputItem[]> bodycontenttemplatecomponentsbutton = null)
+        public IBodyWorkflowAction<SendWhatsAppTemplateDynamicButtonResponse> SendWhatsAppTemplateDynamicButton(Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodycontenttemplatetemplateId = null, Expression<Func<string>> bodycontenttemplatetemplateLanguage = null, Expression<Func<bodycontenttemplatecomponentsbodyInputItem[]>> bodycontenttemplatecomponentsbody = null, Expression<Func<bodycontenttemplatecomponentsbuttonInputItem[]>> bodycontenttemplatecomponentsbutton = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SendWhatsAppTemplateDynamicButtonResponse> __BuildSendWhatsAppTemplateDynamicButton(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodycontenttemplatetemplateId = null, WorkflowExpression<string> bodycontenttemplatetemplateLanguage = null, WorkflowExpression<bodycontenttemplatecomponentsbodyInputItem[]> bodycontenttemplatecomponentsbody = null, WorkflowExpression<bodycontenttemplatecomponentsbuttonInputItem[]> bodycontenttemplatecomponentsbutton = null)
-        {
-            WorkflowExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
-            WorkflowExpression.Validate(bodyto, nameof(bodyto), required: false);
-            WorkflowExpression.Validate(bodycontenttemplatetemplateId, nameof(bodycontenttemplatetemplateId), required: false);
-            WorkflowExpression.Validate(bodycontenttemplatetemplateLanguage, nameof(bodycontenttemplatetemplateLanguage), required: false);
-            WorkflowExpression.Validate(bodycontenttemplatecomponentsbody, nameof(bodycontenttemplatecomponentsbody), required: false);
-            WorkflowExpression.Validate(bodycontenttemplatecomponentsbutton, nameof(bodycontenttemplatecomponentsbutton), required: false);
+            var __workflow_bodyfrom = bodyfrom == null ? null : WorkflowExpression.Compile(bodyfrom);
+            WorkflowExpression.Validate(__workflow_bodyfrom, nameof(bodyfrom), required: false);
+            var __workflow_bodyto = bodyto == null ? null : WorkflowExpression.Compile(bodyto);
+            WorkflowExpression.Validate(__workflow_bodyto, nameof(bodyto), required: false);
+            var __workflow_bodycontenttemplatetemplateId = bodycontenttemplatetemplateId == null ? null : WorkflowExpression.Compile(bodycontenttemplatetemplateId);
+            WorkflowExpression.Validate(__workflow_bodycontenttemplatetemplateId, nameof(bodycontenttemplatetemplateId), required: false);
+            var __workflow_bodycontenttemplatetemplateLanguage = bodycontenttemplatetemplateLanguage == null ? null : WorkflowExpression.Compile(bodycontenttemplatetemplateLanguage);
+            WorkflowExpression.Validate(__workflow_bodycontenttemplatetemplateLanguage, nameof(bodycontenttemplatetemplateLanguage), required: false);
+            var __workflow_bodycontenttemplatecomponentsbody = bodycontenttemplatecomponentsbody == null ? null : WorkflowExpression.Compile(bodycontenttemplatecomponentsbody);
+            WorkflowExpression.Validate(__workflow_bodycontenttemplatecomponentsbody, nameof(bodycontenttemplatecomponentsbody), required: false);
+            var __workflow_bodycontenttemplatecomponentsbutton = bodycontenttemplatecomponentsbutton == null ? null : WorkflowExpression.Compile(bodycontenttemplatecomponentsbutton);
+            WorkflowExpression.Validate(__workflow_bodycontenttemplatecomponentsbutton, nameof(bodycontenttemplatecomponentsbutton), required: false);
             return new DeferredBodyAction<SendWhatsAppTemplateDynamicButtonResponse>(() =>
             {
                 var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/template-dynamic-button";
@@ -1722,15 +1697,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfrom != null)
+                if (__workflow_bodyfrom != null)
                 {
-                    body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                    body["from"] = ExpressionConverter.ConvertO(__workflow_bodyfrom);
                     bodypropCount++;
                 }
 
-                if (bodyto != null)
+                if (__workflow_bodyto != null)
                 {
-                    body["to"] = ExpressionConverter.ConvertO(bodyto);
+                    body["to"] = ExpressionConverter.ConvertO(__workflow_bodyto);
                     bodypropCount++;
                 }
 
@@ -1742,29 +1717,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 contentObjectpropCount++;
                 var templateObject = new JObject();
                 var templateObjectpropCount = 0;
-                if (bodycontenttemplatetemplateId != null)
+                if (__workflow_bodycontenttemplatetemplateId != null)
                 {
-                    templateObject["templateId"] = ExpressionConverter.ConvertO(bodycontenttemplatetemplateId);
+                    templateObject["templateId"] = ExpressionConverter.ConvertO(__workflow_bodycontenttemplatetemplateId);
                     templateObjectpropCount++;
                 }
 
-                if (bodycontenttemplatetemplateLanguage != null)
+                if (__workflow_bodycontenttemplatetemplateLanguage != null)
                 {
-                    templateObject["templateLanguage"] = ExpressionConverter.ConvertO(bodycontenttemplatetemplateLanguage);
+                    templateObject["templateLanguage"] = ExpressionConverter.ConvertO(__workflow_bodycontenttemplatetemplateLanguage);
                     templateObjectpropCount++;
                 }
 
                 var componentsObject = new JObject();
                 var componentsObjectpropCount = 0;
-                if (bodycontenttemplatecomponentsbody != null)
+                if (__workflow_bodycontenttemplatecomponentsbody != null)
                 {
-                    componentsObject["body"] = ExpressionConverter.ConvertO(bodycontenttemplatecomponentsbody);
+                    componentsObject["body"] = ExpressionConverter.ConvertO(__workflow_bodycontenttemplatecomponentsbody);
                     componentsObjectpropCount++;
                 }
 
-                if (bodycontenttemplatecomponentsbutton != null)
+                if (__workflow_bodycontenttemplatecomponentsbutton != null)
                 {
-                    componentsObject["button"] = ExpressionConverter.ConvertO(bodycontenttemplatecomponentsbutton);
+                    componentsObject["button"] = ExpressionConverter.ConvertO(__workflow_bodycontenttemplatecomponentsbutton);
                     componentsObjectpropCount++;
                 }
 
@@ -1796,21 +1771,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        [WorkflowExpressionFactory(nameof(__BuildSendWhatsAppTemplateQuickReply))]
-        public IBodyWorkflowAction<SendWhatsAppTemplateQuickReplyResponse> SendWhatsAppTemplateQuickReply([WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<string> bodycontenttemplatetemplateId = null, [WorkflowExpression] Func<string> bodycontenttemplatetemplateLanguage = null, [WorkflowExpression] Func<bodycontenttemplatecomponentsbodyInputItem[]> bodycontenttemplatecomponentsbody = null, [WorkflowExpression] Func<bodycontenttemplatecomponentsbuttonInputItem2[]> bodycontenttemplatecomponentsbutton = null)
+        public IBodyWorkflowAction<SendWhatsAppTemplateQuickReplyResponse> SendWhatsAppTemplateQuickReply(Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodycontenttemplatetemplateId = null, Expression<Func<string>> bodycontenttemplatetemplateLanguage = null, Expression<Func<bodycontenttemplatecomponentsbodyInputItem[]>> bodycontenttemplatecomponentsbody = null, Expression<Func<bodycontenttemplatecomponentsbuttonInputItem2[]>> bodycontenttemplatecomponentsbutton = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SendWhatsAppTemplateQuickReplyResponse> __BuildSendWhatsAppTemplateQuickReply(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodycontenttemplatetemplateId = null, WorkflowExpression<string> bodycontenttemplatetemplateLanguage = null, WorkflowExpression<bodycontenttemplatecomponentsbodyInputItem[]> bodycontenttemplatecomponentsbody = null, WorkflowExpression<bodycontenttemplatecomponentsbuttonInputItem2[]> bodycontenttemplatecomponentsbutton = null)
-        {
-            WorkflowExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
-            WorkflowExpression.Validate(bodyto, nameof(bodyto), required: false);
-            WorkflowExpression.Validate(bodycontenttemplatetemplateId, nameof(bodycontenttemplatetemplateId), required: false);
-            WorkflowExpression.Validate(bodycontenttemplatetemplateLanguage, nameof(bodycontenttemplatetemplateLanguage), required: false);
-            WorkflowExpression.Validate(bodycontenttemplatecomponentsbody, nameof(bodycontenttemplatecomponentsbody), required: false);
-            WorkflowExpression.Validate(bodycontenttemplatecomponentsbutton, nameof(bodycontenttemplatecomponentsbutton), required: false);
+            var __workflow_bodyfrom = bodyfrom == null ? null : WorkflowExpression.Compile(bodyfrom);
+            WorkflowExpression.Validate(__workflow_bodyfrom, nameof(bodyfrom), required: false);
+            var __workflow_bodyto = bodyto == null ? null : WorkflowExpression.Compile(bodyto);
+            WorkflowExpression.Validate(__workflow_bodyto, nameof(bodyto), required: false);
+            var __workflow_bodycontenttemplatetemplateId = bodycontenttemplatetemplateId == null ? null : WorkflowExpression.Compile(bodycontenttemplatetemplateId);
+            WorkflowExpression.Validate(__workflow_bodycontenttemplatetemplateId, nameof(bodycontenttemplatetemplateId), required: false);
+            var __workflow_bodycontenttemplatetemplateLanguage = bodycontenttemplatetemplateLanguage == null ? null : WorkflowExpression.Compile(bodycontenttemplatetemplateLanguage);
+            WorkflowExpression.Validate(__workflow_bodycontenttemplatetemplateLanguage, nameof(bodycontenttemplatetemplateLanguage), required: false);
+            var __workflow_bodycontenttemplatecomponentsbody = bodycontenttemplatecomponentsbody == null ? null : WorkflowExpression.Compile(bodycontenttemplatecomponentsbody);
+            WorkflowExpression.Validate(__workflow_bodycontenttemplatecomponentsbody, nameof(bodycontenttemplatecomponentsbody), required: false);
+            var __workflow_bodycontenttemplatecomponentsbutton = bodycontenttemplatecomponentsbutton == null ? null : WorkflowExpression.Compile(bodycontenttemplatecomponentsbutton);
+            WorkflowExpression.Validate(__workflow_bodycontenttemplatecomponentsbutton, nameof(bodycontenttemplatecomponentsbutton), required: false);
             return new DeferredBodyAction<SendWhatsAppTemplateQuickReplyResponse>(() =>
             {
                 var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/template-quick-reply";
@@ -1818,15 +1792,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfrom != null)
+                if (__workflow_bodyfrom != null)
                 {
-                    body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                    body["from"] = ExpressionConverter.ConvertO(__workflow_bodyfrom);
                     bodypropCount++;
                 }
 
-                if (bodyto != null)
+                if (__workflow_bodyto != null)
                 {
-                    body["to"] = ExpressionConverter.ConvertO(bodyto);
+                    body["to"] = ExpressionConverter.ConvertO(__workflow_bodyto);
                     bodypropCount++;
                 }
 
@@ -1838,29 +1812,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
                 contentObjectpropCount++;
                 var templateObject = new JObject();
                 var templateObjectpropCount = 0;
-                if (bodycontenttemplatetemplateId != null)
+                if (__workflow_bodycontenttemplatetemplateId != null)
                 {
-                    templateObject["templateId"] = ExpressionConverter.ConvertO(bodycontenttemplatetemplateId);
+                    templateObject["templateId"] = ExpressionConverter.ConvertO(__workflow_bodycontenttemplatetemplateId);
                     templateObjectpropCount++;
                 }
 
-                if (bodycontenttemplatetemplateLanguage != null)
+                if (__workflow_bodycontenttemplatetemplateLanguage != null)
                 {
-                    templateObject["templateLanguage"] = ExpressionConverter.ConvertO(bodycontenttemplatetemplateLanguage);
+                    templateObject["templateLanguage"] = ExpressionConverter.ConvertO(__workflow_bodycontenttemplatetemplateLanguage);
                     templateObjectpropCount++;
                 }
 
                 var componentsObject = new JObject();
                 var componentsObjectpropCount = 0;
-                if (bodycontenttemplatecomponentsbody != null)
+                if (__workflow_bodycontenttemplatecomponentsbody != null)
                 {
-                    componentsObject["body"] = ExpressionConverter.ConvertO(bodycontenttemplatecomponentsbody);
+                    componentsObject["body"] = ExpressionConverter.ConvertO(__workflow_bodycontenttemplatecomponentsbody);
                     componentsObjectpropCount++;
                 }
 
-                if (bodycontenttemplatecomponentsbutton != null)
+                if (__workflow_bodycontenttemplatecomponentsbutton != null)
                 {
-                    componentsObject["button"] = ExpressionConverter.ConvertO(bodycontenttemplatecomponentsbutton);
+                    componentsObject["button"] = ExpressionConverter.ConvertO(__workflow_bodycontenttemplatecomponentsbutton);
                     componentsObjectpropCount++;
                 }
 
@@ -1892,19 +1866,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        [WorkflowExpressionFactory(nameof(__BuildStatusCheck))]
-        public IBodyWorkflowAction<StatusCheckV3Response> StatusCheck([WorkflowExpression] Func<string> messageId)
+        public IBodyWorkflowAction<StatusCheckV3Response> StatusCheck(Expression<Func<string>> messageId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<StatusCheckV3Response> __BuildStatusCheck(WorkflowExpression<string> messageId)
-        {
-            WorkflowExpression.Validate(messageId, nameof(messageId), required: true);
+            var __workflow_messageId = messageId == null ? null : WorkflowExpression.Compile(messageId);
+            WorkflowExpression.Validate(__workflow_messageId, nameof(messageId), required: true);
             return new DeferredBodyAction<StatusCheckV3Response>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/conversations/v3/messages/{0}/status", ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/conversations/v3/messages/{0}/status", ExpressionConverter.ConvertWithUrlEncoding(__workflow_messageId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<StatusCheckV3Response>(callPayload);
@@ -1914,20 +1882,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
 
     public class TyntecwaTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildIncoming))]
-        public IWorkflowTrigger Incoming([WorkflowExpression] Func<string> wABA,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger Incoming(Expression<Func<string>> wABA, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildIncoming(WorkflowExpression<string> wABA,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(wABA, nameof(wABA), required: true);
+            var __workflow_wABA = wABA == null ? null : WorkflowExpression.Compile(wABA);
+            WorkflowExpression.Validate(__workflow_wABA, nameof(wABA), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/conversations/v3/power-automate/webhooks/channels/whatsapp/phone-numbers/{0}", ExpressionConverter.ConvertWithUrlEncoding(wABA, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/conversations/v3/power-automate/webhooks/channels/whatsapp/phone-numbers/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_wABA, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

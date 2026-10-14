@@ -1,70 +1,72 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class BlackbaudrenxtqueryActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtquery")]
-        [WorkflowExpressionFactory(nameof(__BuildGetQueryJobStatus))]
-        public IBodyWorkflowAction<QueryApiQueryExecutionJob> GetQueryJobStatus([WorkflowExpression] Func<string> jobId, [WorkflowExpression] Func<includeReadUrlInput> includeReadUrl = null, [WorkflowExpression] Func<contentDispositionInput> contentDisposition = null)
+        public IBodyWorkflowAction<QueryApiQueryExecutionJob> GetQueryJobStatus(Expression<Func<string>> jobId, Expression<Func<includeReadUrlInput>> includeReadUrl = null, Expression<Func<contentDispositionInput>> contentDisposition = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<QueryApiQueryExecutionJob> __BuildGetQueryJobStatus(WorkflowExpression<string> jobId, WorkflowExpression<includeReadUrlInput> includeReadUrl = null, WorkflowExpression<contentDispositionInput> contentDisposition = null)
-        {
-            WorkflowExpression.Validate(jobId, nameof(jobId), required: true);
-            WorkflowExpression.Validate(includeReadUrl, nameof(includeReadUrl), required: false);
-            WorkflowExpression.Validate(contentDisposition, nameof(contentDisposition), required: false);
+            var __workflow_jobId = jobId == null ? null : WorkflowExpression.Compile(jobId);
+            WorkflowExpression.Validate(__workflow_jobId, nameof(jobId), required: true);
+            var __workflow_includeReadUrl = includeReadUrl == null ? null : WorkflowExpression.Compile(includeReadUrl);
+            WorkflowExpression.Validate(__workflow_includeReadUrl, nameof(includeReadUrl), required: false);
+            var __workflow_contentDisposition = contentDisposition == null ? null : WorkflowExpression.Compile(contentDisposition);
+            WorkflowExpression.Validate(__workflow_contentDisposition, nameof(contentDisposition), required: false);
             return new DeferredBodyAction<QueryApiQueryExecutionJob>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/query/jobs/{0}", ExpressionConverter.ConvertWithUrlEncoding(jobId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/query/jobs/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_jobId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["product"] = Convert.ToString("RE");
                 callPayload.Queries["module"] = Convert.ToString("None");
                 callPayload.Queries["include_read_url"] = Convert.ToString("OnceCompleted");
-                if (includeReadUrl != null)
-                    callPayload.Queries["include_read_url"] = ExpressionConverter.Convert(includeReadUrl);
+                if (__workflow_includeReadUrl != null)
+                    callPayload.Queries["include_read_url"] = ExpressionConverter.Convert(__workflow_includeReadUrl);
                 callPayload.Queries["content_disposition"] = Convert.ToString("Attachment");
-                if (contentDisposition != null)
-                    callPayload.Queries["content_disposition"] = ExpressionConverter.Convert(contentDisposition);
+                if (__workflow_contentDisposition != null)
+                    callPayload.Queries["content_disposition"] = ExpressionConverter.Convert(__workflow_contentDisposition);
                 return new ApiConnectionAction<QueryApiQueryExecutionJob>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtquery")]
-        [WorkflowExpressionFactory(nameof(__BuildListQueries))]
-        public IBodyWorkflowAction<QueryApiQuerySummaryCollection> ListQueries([WorkflowExpression] Func<int> queryTypeId = null, [WorkflowExpression] Func<int> category = null, [WorkflowExpression] Func<queryFormatInput> queryFormat = null, [WorkflowExpression] Func<string> searchText = null, [WorkflowExpression] Func<bool> myFavQueriesOnly = null, [WorkflowExpression] Func<bool> myQueriesOnly = null, [WorkflowExpression] Func<bool> mergedQueriesOnly = null, [WorkflowExpression] Func<listQueriesInput> listQueries = null, [WorkflowExpression] Func<sortColumnInput> sortColumn = null, [WorkflowExpression] Func<bool> sortDescending = null, [WorkflowExpression] Func<string> dateAdded = null, [WorkflowExpression] Func<string> addedBy = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
+        public IBodyWorkflowAction<QueryApiQuerySummaryCollection> ListQueries(Expression<Func<int>> queryTypeId = null, Expression<Func<int>> category = null, Expression<Func<queryFormatInput>> queryFormat = null, Expression<Func<string>> searchText = null, Expression<Func<bool>> myFavQueriesOnly = null, Expression<Func<bool>> myQueriesOnly = null, Expression<Func<bool>> mergedQueriesOnly = null, Expression<Func<listQueriesInput>> listQueries = null, Expression<Func<sortColumnInput>> sortColumn = null, Expression<Func<bool>> sortDescending = null, Expression<Func<string>> dateAdded = null, Expression<Func<string>> addedBy = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<QueryApiQuerySummaryCollection> __BuildListQueries(WorkflowExpression<int> queryTypeId = null, WorkflowExpression<int> category = null, WorkflowExpression<queryFormatInput> queryFormat = null, WorkflowExpression<string> searchText = null, WorkflowExpression<bool> myFavQueriesOnly = null, WorkflowExpression<bool> myQueriesOnly = null, WorkflowExpression<bool> mergedQueriesOnly = null, WorkflowExpression<listQueriesInput> listQueries = null, WorkflowExpression<sortColumnInput> sortColumn = null, WorkflowExpression<bool> sortDescending = null, WorkflowExpression<string> dateAdded = null, WorkflowExpression<string> addedBy = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
-        {
-            WorkflowExpression.Validate(queryTypeId, nameof(queryTypeId), required: false);
-            WorkflowExpression.Validate(category, nameof(category), required: false);
-            WorkflowExpression.Validate(queryFormat, nameof(queryFormat), required: false);
-            WorkflowExpression.Validate(searchText, nameof(searchText), required: false);
-            WorkflowExpression.Validate(myFavQueriesOnly, nameof(myFavQueriesOnly), required: false);
-            WorkflowExpression.Validate(myQueriesOnly, nameof(myQueriesOnly), required: false);
-            WorkflowExpression.Validate(mergedQueriesOnly, nameof(mergedQueriesOnly), required: false);
-            WorkflowExpression.Validate(listQueries, nameof(listQueries), required: false);
-            WorkflowExpression.Validate(sortColumn, nameof(sortColumn), required: false);
-            WorkflowExpression.Validate(sortDescending, nameof(sortDescending), required: false);
-            WorkflowExpression.Validate(dateAdded, nameof(dateAdded), required: false);
-            WorkflowExpression.Validate(addedBy, nameof(addedBy), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            var __workflow_queryTypeId = queryTypeId == null ? null : WorkflowExpression.Compile(queryTypeId);
+            WorkflowExpression.Validate(__workflow_queryTypeId, nameof(queryTypeId), required: false);
+            var __workflow_category = category == null ? null : WorkflowExpression.Compile(category);
+            WorkflowExpression.Validate(__workflow_category, nameof(category), required: false);
+            var __workflow_queryFormat = queryFormat == null ? null : WorkflowExpression.Compile(queryFormat);
+            WorkflowExpression.Validate(__workflow_queryFormat, nameof(queryFormat), required: false);
+            var __workflow_searchText = searchText == null ? null : WorkflowExpression.Compile(searchText);
+            WorkflowExpression.Validate(__workflow_searchText, nameof(searchText), required: false);
+            var __workflow_myFavQueriesOnly = myFavQueriesOnly == null ? null : WorkflowExpression.Compile(myFavQueriesOnly);
+            WorkflowExpression.Validate(__workflow_myFavQueriesOnly, nameof(myFavQueriesOnly), required: false);
+            var __workflow_myQueriesOnly = myQueriesOnly == null ? null : WorkflowExpression.Compile(myQueriesOnly);
+            WorkflowExpression.Validate(__workflow_myQueriesOnly, nameof(myQueriesOnly), required: false);
+            var __workflow_mergedQueriesOnly = mergedQueriesOnly == null ? null : WorkflowExpression.Compile(mergedQueriesOnly);
+            WorkflowExpression.Validate(__workflow_mergedQueriesOnly, nameof(mergedQueriesOnly), required: false);
+            var __workflow_listQueries = listQueries == null ? null : WorkflowExpression.Compile(listQueries);
+            WorkflowExpression.Validate(__workflow_listQueries, nameof(listQueries), required: false);
+            var __workflow_sortColumn = sortColumn == null ? null : WorkflowExpression.Compile(sortColumn);
+            WorkflowExpression.Validate(__workflow_sortColumn, nameof(sortColumn), required: false);
+            var __workflow_sortDescending = sortDescending == null ? null : WorkflowExpression.Compile(sortDescending);
+            WorkflowExpression.Validate(__workflow_sortDescending, nameof(sortDescending), required: false);
+            var __workflow_dateAdded = dateAdded == null ? null : WorkflowExpression.Compile(dateAdded);
+            WorkflowExpression.Validate(__workflow_dateAdded, nameof(dateAdded), required: false);
+            var __workflow_addedBy = addedBy == null ? null : WorkflowExpression.Compile(addedBy);
+            WorkflowExpression.Validate(__workflow_addedBy, nameof(addedBy), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
             return new DeferredBodyAction<QueryApiQuerySummaryCollection>(() =>
             {
                 var apiCallPath = "/query/queries";
@@ -72,51 +74,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["product"] = Convert.ToString("RE");
                 callPayload.Queries["module"] = Convert.ToString("None");
-                if (queryTypeId != null)
-                    callPayload.Queries["query_type_id"] = ExpressionConverter.Convert(queryTypeId);
-                if (category != null)
-                    callPayload.Queries["category"] = ExpressionConverter.Convert(category);
-                if (queryFormat != null)
-                    callPayload.Queries["query_format"] = ExpressionConverter.Convert(queryFormat);
-                if (searchText != null)
-                    callPayload.Queries["search_text"] = ExpressionConverter.Convert(searchText);
-                if (myFavQueriesOnly != null)
-                    callPayload.Queries["my_fav_queries_only"] = ExpressionConverter.Convert(myFavQueriesOnly);
-                if (myQueriesOnly != null)
-                    callPayload.Queries["my_queries_only"] = ExpressionConverter.Convert(myQueriesOnly);
-                if (mergedQueriesOnly != null)
-                    callPayload.Queries["merged_queries_only"] = ExpressionConverter.Convert(mergedQueriesOnly);
-                if (listQueries != null)
-                    callPayload.Queries["list_queries"] = ExpressionConverter.Convert(listQueries);
-                if (sortColumn != null)
-                    callPayload.Queries["sort_column"] = ExpressionConverter.Convert(sortColumn);
-                if (sortDescending != null)
-                    callPayload.Queries["sort_descending"] = ExpressionConverter.Convert(sortDescending);
-                if (dateAdded != null)
-                    callPayload.Queries["date_added"] = ExpressionConverter.Convert(dateAdded);
-                if (addedBy != null)
-                    callPayload.Queries["added_by"] = ExpressionConverter.Convert(addedBy);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (offset != null)
-                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (__workflow_queryTypeId != null)
+                    callPayload.Queries["query_type_id"] = ExpressionConverter.Convert(__workflow_queryTypeId);
+                if (__workflow_category != null)
+                    callPayload.Queries["category"] = ExpressionConverter.Convert(__workflow_category);
+                if (__workflow_queryFormat != null)
+                    callPayload.Queries["query_format"] = ExpressionConverter.Convert(__workflow_queryFormat);
+                if (__workflow_searchText != null)
+                    callPayload.Queries["search_text"] = ExpressionConverter.Convert(__workflow_searchText);
+                if (__workflow_myFavQueriesOnly != null)
+                    callPayload.Queries["my_fav_queries_only"] = ExpressionConverter.Convert(__workflow_myFavQueriesOnly);
+                if (__workflow_myQueriesOnly != null)
+                    callPayload.Queries["my_queries_only"] = ExpressionConverter.Convert(__workflow_myQueriesOnly);
+                if (__workflow_mergedQueriesOnly != null)
+                    callPayload.Queries["merged_queries_only"] = ExpressionConverter.Convert(__workflow_mergedQueriesOnly);
+                if (__workflow_listQueries != null)
+                    callPayload.Queries["list_queries"] = ExpressionConverter.Convert(__workflow_listQueries);
+                if (__workflow_sortColumn != null)
+                    callPayload.Queries["sort_column"] = ExpressionConverter.Convert(__workflow_sortColumn);
+                if (__workflow_sortDescending != null)
+                    callPayload.Queries["sort_descending"] = ExpressionConverter.Convert(__workflow_sortDescending);
+                if (__workflow_dateAdded != null)
+                    callPayload.Queries["date_added"] = ExpressionConverter.Convert(__workflow_dateAdded);
+                if (__workflow_addedBy != null)
+                    callPayload.Queries["added_by"] = ExpressionConverter.Convert(__workflow_addedBy);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<QueryApiQuerySummaryCollection>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtquery")]
-        [WorkflowExpressionFactory(nameof(__BuildStartAdHocQueryExecutionJob))]
-        public IBodyWorkflowAction<QueryApiExecuteQueryResponse> StartAdHocQueryExecutionJob([WorkflowExpression] Func<bodyoutputFormatInput> bodyoutputFormat = null, [WorkflowExpression] Func<bodyformattingModeInput> bodyformattingMode = null, [WorkflowExpression] Func<string> bodyfilename = null)
+        public IBodyWorkflowAction<QueryApiExecuteQueryResponse> StartAdHocQueryExecutionJob(Expression<Func<bodyoutputFormatInput>> bodyoutputFormat = null, Expression<Func<bodyformattingModeInput>> bodyformattingMode = null, Expression<Func<string>> bodyfilename = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<QueryApiExecuteQueryResponse> __BuildStartAdHocQueryExecutionJob(WorkflowExpression<bodyoutputFormatInput> bodyoutputFormat = null, WorkflowExpression<bodyformattingModeInput> bodyformattingMode = null, WorkflowExpression<string> bodyfilename = null)
-        {
-            WorkflowExpression.Validate(bodyoutputFormat, nameof(bodyoutputFormat), required: false);
-            WorkflowExpression.Validate(bodyformattingMode, nameof(bodyformattingMode), required: false);
-            WorkflowExpression.Validate(bodyfilename, nameof(bodyfilename), required: false);
+            var __workflow_bodyoutputFormat = bodyoutputFormat == null ? null : WorkflowExpression.Compile(bodyoutputFormat);
+            WorkflowExpression.Validate(__workflow_bodyoutputFormat, nameof(bodyoutputFormat), required: false);
+            var __workflow_bodyformattingMode = bodyformattingMode == null ? null : WorkflowExpression.Compile(bodyformattingMode);
+            WorkflowExpression.Validate(__workflow_bodyformattingMode, nameof(bodyformattingMode), required: false);
+            var __workflow_bodyfilename = bodyfilename == null ? null : WorkflowExpression.Compile(bodyfilename);
+            WorkflowExpression.Validate(__workflow_bodyfilename, nameof(bodyfilename), required: false);
             return new DeferredBodyAction<QueryApiExecuteQueryResponse>(() =>
             {
                 var apiCallPath = "/query/queries/execute";
@@ -134,11 +132,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
                     bodypropCount++;
                 }
 
-                if (bodyoutputFormat != null)
+                if (__workflow_bodyoutputFormat != null)
                 {
-                    if (bodyoutputFormat != null)
+                    if (__workflow_bodyoutputFormat != null)
                     {
-                        body["output_format"] = ExpressionConverter.ConvertO(bodyoutputFormat);
+                        body["output_format"] = ExpressionConverter.ConvertO(__workflow_bodyoutputFormat);
                         bodypropCount++;
                     }
 
@@ -150,11 +148,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
                     bodypropCount++;
                 }
 
-                if (bodyformattingMode != null)
+                if (__workflow_bodyformattingMode != null)
                 {
-                    if (bodyformattingMode != null)
+                    if (__workflow_bodyformattingMode != null)
                     {
-                        body["formatting_mode"] = ExpressionConverter.ConvertO(bodyformattingMode);
+                        body["formatting_mode"] = ExpressionConverter.ConvertO(__workflow_bodyformattingMode);
                         bodypropCount++;
                     }
 
@@ -166,9 +164,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
                     bodypropCount++;
                 }
 
-                if (bodyfilename != null)
+                if (__workflow_bodyfilename != null)
                 {
-                    body["results_file_name"] = ExpressionConverter.ConvertO(bodyfilename);
+                    body["results_file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfilename);
                     bodypropCount++;
                 }
 
@@ -184,22 +182,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtquery")]
-        [WorkflowExpressionFactory(nameof(__BuildStartQueryExecutionJob))]
-        public IBodyWorkflowAction<QueryApiExecuteQueryResponse> StartQueryExecutionJob([WorkflowExpression] Func<int> bodytype, [WorkflowExpression] Func<int> bodyquery, [WorkflowExpression] Func<bodyoutputFormatInput> bodyoutputFormat = null, [WorkflowExpression] Func<bodyformattingModeInput> bodyformattingMode = null, [WorkflowExpression] Func<bodysQLGenerationModeInput> bodysQLGenerationMode = null, [WorkflowExpression] Func<bool> bodyuseStaticQuery = null, [WorkflowExpression] Func<string> bodyfilename = null)
+        public IBodyWorkflowAction<QueryApiExecuteQueryResponse> StartQueryExecutionJob(Expression<Func<int>> bodytype, Expression<Func<int>> bodyquery, Expression<Func<bodyoutputFormatInput>> bodyoutputFormat = null, Expression<Func<bodyformattingModeInput>> bodyformattingMode = null, Expression<Func<bodysQLGenerationModeInput>> bodysQLGenerationMode = null, Expression<Func<bool>> bodyuseStaticQuery = null, Expression<Func<string>> bodyfilename = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<QueryApiExecuteQueryResponse> __BuildStartQueryExecutionJob(WorkflowExpression<int> bodytype, WorkflowExpression<int> bodyquery, WorkflowExpression<bodyoutputFormatInput> bodyoutputFormat = null, WorkflowExpression<bodyformattingModeInput> bodyformattingMode = null, WorkflowExpression<bodysQLGenerationModeInput> bodysQLGenerationMode = null, WorkflowExpression<bool> bodyuseStaticQuery = null, WorkflowExpression<string> bodyfilename = null)
-        {
-            WorkflowExpression.Validate(bodytype, nameof(bodytype), required: true);
-            WorkflowExpression.Validate(bodyquery, nameof(bodyquery), required: true);
-            WorkflowExpression.Validate(bodyoutputFormat, nameof(bodyoutputFormat), required: false);
-            WorkflowExpression.Validate(bodyformattingMode, nameof(bodyformattingMode), required: false);
-            WorkflowExpression.Validate(bodysQLGenerationMode, nameof(bodysQLGenerationMode), required: false);
-            WorkflowExpression.Validate(bodyuseStaticQuery, nameof(bodyuseStaticQuery), required: false);
-            WorkflowExpression.Validate(bodyfilename, nameof(bodyfilename), required: false);
+            var __workflow_bodytype = bodytype == null ? null : WorkflowExpression.Compile(bodytype);
+            WorkflowExpression.Validate(__workflow_bodytype, nameof(bodytype), required: true);
+            var __workflow_bodyquery = bodyquery == null ? null : WorkflowExpression.Compile(bodyquery);
+            WorkflowExpression.Validate(__workflow_bodyquery, nameof(bodyquery), required: true);
+            var __workflow_bodyoutputFormat = bodyoutputFormat == null ? null : WorkflowExpression.Compile(bodyoutputFormat);
+            WorkflowExpression.Validate(__workflow_bodyoutputFormat, nameof(bodyoutputFormat), required: false);
+            var __workflow_bodyformattingMode = bodyformattingMode == null ? null : WorkflowExpression.Compile(bodyformattingMode);
+            WorkflowExpression.Validate(__workflow_bodyformattingMode, nameof(bodyformattingMode), required: false);
+            var __workflow_bodysQLGenerationMode = bodysQLGenerationMode == null ? null : WorkflowExpression.Compile(bodysQLGenerationMode);
+            WorkflowExpression.Validate(__workflow_bodysQLGenerationMode, nameof(bodysQLGenerationMode), required: false);
+            var __workflow_bodyuseStaticQuery = bodyuseStaticQuery == null ? null : WorkflowExpression.Compile(bodyuseStaticQuery);
+            WorkflowExpression.Validate(__workflow_bodyuseStaticQuery, nameof(bodyuseStaticQuery), required: false);
+            var __workflow_bodyfilename = bodyfilename == null ? null : WorkflowExpression.Compile(bodyfilename);
+            WorkflowExpression.Validate(__workflow_bodyfilename, nameof(bodyfilename), required: false);
             return new DeferredBodyAction<QueryApiExecuteQueryResponse>(() =>
             {
                 var apiCallPath = "/query/queries/executebyid";
@@ -210,14 +208,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["v_query_type_id"] = ExpressionConverter.ConvertO(bodytype);
+                body["v_query_type_id"] = ExpressionConverter.ConvertO(__workflow_bodytype);
                 bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(bodyquery);
-                if (bodyoutputFormat != null)
+                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyquery);
+                if (__workflow_bodyoutputFormat != null)
                 {
-                    if (bodyoutputFormat != null)
+                    if (__workflow_bodyoutputFormat != null)
                     {
-                        body["output_format"] = ExpressionConverter.ConvertO(bodyoutputFormat);
+                        body["output_format"] = ExpressionConverter.ConvertO(__workflow_bodyoutputFormat);
                         bodypropCount++;
                     }
 
@@ -229,11 +227,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
                     bodypropCount++;
                 }
 
-                if (bodyformattingMode != null)
+                if (__workflow_bodyformattingMode != null)
                 {
-                    if (bodyformattingMode != null)
+                    if (__workflow_bodyformattingMode != null)
                     {
-                        body["formatting_mode"] = ExpressionConverter.ConvertO(bodyformattingMode);
+                        body["formatting_mode"] = ExpressionConverter.ConvertO(__workflow_bodyformattingMode);
                         bodypropCount++;
                     }
 
@@ -245,11 +243,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
                     bodypropCount++;
                 }
 
-                if (bodysQLGenerationMode != null)
+                if (__workflow_bodysQLGenerationMode != null)
                 {
-                    if (bodysQLGenerationMode != null)
+                    if (__workflow_bodysQLGenerationMode != null)
                     {
-                        body["sql_generation_mode"] = ExpressionConverter.ConvertO(bodysQLGenerationMode);
+                        body["sql_generation_mode"] = ExpressionConverter.ConvertO(__workflow_bodysQLGenerationMode);
                         bodypropCount++;
                     }
 
@@ -261,15 +259,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
                     bodypropCount++;
                 }
 
-                if (bodyuseStaticQuery != null)
+                if (__workflow_bodyuseStaticQuery != null)
                 {
-                    body["use_static_query_id_set"] = ExpressionConverter.ConvertO(bodyuseStaticQuery);
+                    body["use_static_query_id_set"] = ExpressionConverter.ConvertO(__workflow_bodyuseStaticQuery);
                     bodypropCount++;
                 }
 
-                if (bodyfilename != null)
+                if (__workflow_bodyfilename != null)
                 {
-                    body["results_file_name"] = ExpressionConverter.ConvertO(bodyfilename);
+                    body["results_file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfilename);
                     bodypropCount++;
                 }
 
@@ -285,17 +283,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtquery")]
-        [WorkflowExpressionFactory(nameof(__BuildStartRefreshStaticQueryExecutionJob))]
-        public IBodyWorkflowAction<QueryApiExecuteQueryResponse> StartRefreshStaticQueryExecutionJob([WorkflowExpression] Func<int> bodytype, [WorkflowExpression] Func<int> bodyquery)
+        public IBodyWorkflowAction<QueryApiExecuteQueryResponse> StartRefreshStaticQueryExecutionJob(Expression<Func<int>> bodytype, Expression<Func<int>> bodyquery)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<QueryApiExecuteQueryResponse> __BuildStartRefreshStaticQueryExecutionJob(WorkflowExpression<int> bodytype, WorkflowExpression<int> bodyquery)
-        {
-            WorkflowExpression.Validate(bodytype, nameof(bodytype), required: true);
-            WorkflowExpression.Validate(bodyquery, nameof(bodyquery), required: true);
+            var __workflow_bodytype = bodytype == null ? null : WorkflowExpression.Compile(bodytype);
+            WorkflowExpression.Validate(__workflow_bodytype, nameof(bodytype), required: true);
+            var __workflow_bodyquery = bodyquery == null ? null : WorkflowExpression.Compile(bodyquery);
+            WorkflowExpression.Validate(__workflow_bodyquery, nameof(bodyquery), required: true);
             return new DeferredBodyAction<QueryApiExecuteQueryResponse>(() =>
             {
                 var apiCallPath = "/query/queries/refreshstaticquery";
@@ -306,9 +299,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["v_query_type_id"] = ExpressionConverter.ConvertO(bodytype);
+                body["v_query_type_id"] = ExpressionConverter.ConvertO(__workflow_bodytype);
                 bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(bodyquery);
+                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyquery);
                 body["ux_mode"] = "Asynchronous";
                 bodypropCount++;
                 if (bodypropCount > 0)

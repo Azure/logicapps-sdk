@@ -1,28 +1,22 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class ImanageinsightplusActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageinsightplus")]
-        [WorkflowExpressionFactory(nameof(__BuildGetCurationPropertiesForDocument))]
-        public IBodyWorkflowAction<GetCurationPropertiesForDocumentResponse> GetCurationPropertiesForDocument([WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<bool> bodylatest)
+        public IBodyWorkflowAction<GetCurationPropertiesForDocumentResponse> GetCurationPropertiesForDocument(Expression<Func<string>> bodydocumentId, Expression<Func<bool>> bodylatest)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetCurationPropertiesForDocumentResponse> __BuildGetCurationPropertiesForDocument(WorkflowExpression<string> bodydocumentId, WorkflowExpression<bool> bodylatest)
-        {
-            WorkflowExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
-            WorkflowExpression.Validate(bodylatest, nameof(bodylatest), required: true);
+            var __workflow_bodydocumentId = bodydocumentId == null ? null : WorkflowExpression.Compile(bodydocumentId);
+            WorkflowExpression.Validate(__workflow_bodydocumentId, nameof(bodydocumentId), required: true);
+            var __workflow_bodylatest = bodylatest == null ? null : WorkflowExpression.Compile(bodylatest);
+            WorkflowExpression.Validate(__workflow_bodylatest, nameof(bodylatest), required: true);
             return new DeferredBodyAction<GetCurationPropertiesForDocumentResponse>(() =>
             {
                 var apiCallPath = "/getCurationPropertiesForDocument";
@@ -31,9 +25,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+                body["documentId"] = ExpressionConverter.ConvertO(__workflow_bodydocumentId);
                 bodypropCount++;
-                body["latest"] = ExpressionConverter.ConvertO(bodylatest);
+                body["latest"] = ExpressionConverter.ConvertO(__workflow_bodylatest);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -44,35 +38,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageinsightplus")]
-        [WorkflowExpressionFactory(nameof(__BuildSetCurationPropertiesForDocument))]
-        public IBodyWorkflowAction<SetCurationPropertiesForDocumentResponseBody> SetCurationPropertiesForDocument([WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<string> bodyapprover = null, [WorkflowExpression] Func<string> bodydraftingNotes = null, [WorkflowExpression] Func<bool> bodyisMaintained = null, [WorkflowExpression] Func<string> bodyknowledgeOwner = null, [WorkflowExpression] Func<string> bodyknowledgeType = null, [WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<string> bodylastReviewDate = null, [WorkflowExpression] Func<string> bodyminiSummary = null, [WorkflowExpression] Func<string> bodynextReviewDate = null, [WorkflowExpression] Func<string> bodyotherNoteworthy = null, [WorkflowExpression] Func<string> bodystate = null, [WorkflowExpression] Func<string> bodysubmitDate = null, [WorkflowExpression] Func<string> bodytaxonomy1 = null, [WorkflowExpression] Func<string> bodytaxonomy2 = null, [WorkflowExpression] Func<string> bodytaxonomy3 = null, [WorkflowExpression] Func<string> bodytaxonomy4 = null, [WorkflowExpression] Func<string> bodytaxonomy5 = null, [WorkflowExpression] Func<string> bodysubmitter = null, [WorkflowExpression] Func<string> bodysubmittedDocId = null)
+        public IBodyWorkflowAction<SetCurationPropertiesForDocumentResponseBody> SetCurationPropertiesForDocument(Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodyapprover = null, Expression<Func<string>> bodydraftingNotes = null, Expression<Func<bool>> bodyisMaintained = null, Expression<Func<string>> bodyknowledgeOwner = null, Expression<Func<string>> bodyknowledgeType = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodylastReviewDate = null, Expression<Func<string>> bodyminiSummary = null, Expression<Func<string>> bodynextReviewDate = null, Expression<Func<string>> bodyotherNoteworthy = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodysubmitDate = null, Expression<Func<string>> bodytaxonomy1 = null, Expression<Func<string>> bodytaxonomy2 = null, Expression<Func<string>> bodytaxonomy3 = null, Expression<Func<string>> bodytaxonomy4 = null, Expression<Func<string>> bodytaxonomy5 = null, Expression<Func<string>> bodysubmitter = null, Expression<Func<string>> bodysubmittedDocId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SetCurationPropertiesForDocumentResponseBody> __BuildSetCurationPropertiesForDocument(WorkflowExpression<string> bodydocumentId, WorkflowExpression<string> bodyapprover = null, WorkflowExpression<string> bodydraftingNotes = null, WorkflowExpression<bool> bodyisMaintained = null, WorkflowExpression<string> bodyknowledgeOwner = null, WorkflowExpression<string> bodyknowledgeType = null, WorkflowExpression<string> bodylanguage = null, WorkflowExpression<string> bodylastReviewDate = null, WorkflowExpression<string> bodyminiSummary = null, WorkflowExpression<string> bodynextReviewDate = null, WorkflowExpression<string> bodyotherNoteworthy = null, WorkflowExpression<string> bodystate = null, WorkflowExpression<string> bodysubmitDate = null, WorkflowExpression<string> bodytaxonomy1 = null, WorkflowExpression<string> bodytaxonomy2 = null, WorkflowExpression<string> bodytaxonomy3 = null, WorkflowExpression<string> bodytaxonomy4 = null, WorkflowExpression<string> bodytaxonomy5 = null, WorkflowExpression<string> bodysubmitter = null, WorkflowExpression<string> bodysubmittedDocId = null)
-        {
-            WorkflowExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
-            WorkflowExpression.Validate(bodyapprover, nameof(bodyapprover), required: false);
-            WorkflowExpression.Validate(bodydraftingNotes, nameof(bodydraftingNotes), required: false);
-            WorkflowExpression.Validate(bodyisMaintained, nameof(bodyisMaintained), required: false);
-            WorkflowExpression.Validate(bodyknowledgeOwner, nameof(bodyknowledgeOwner), required: false);
-            WorkflowExpression.Validate(bodyknowledgeType, nameof(bodyknowledgeType), required: false);
-            WorkflowExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
-            WorkflowExpression.Validate(bodylastReviewDate, nameof(bodylastReviewDate), required: false);
-            WorkflowExpression.Validate(bodyminiSummary, nameof(bodyminiSummary), required: false);
-            WorkflowExpression.Validate(bodynextReviewDate, nameof(bodynextReviewDate), required: false);
-            WorkflowExpression.Validate(bodyotherNoteworthy, nameof(bodyotherNoteworthy), required: false);
-            WorkflowExpression.Validate(bodystate, nameof(bodystate), required: false);
-            WorkflowExpression.Validate(bodysubmitDate, nameof(bodysubmitDate), required: false);
-            WorkflowExpression.Validate(bodytaxonomy1, nameof(bodytaxonomy1), required: false);
-            WorkflowExpression.Validate(bodytaxonomy2, nameof(bodytaxonomy2), required: false);
-            WorkflowExpression.Validate(bodytaxonomy3, nameof(bodytaxonomy3), required: false);
-            WorkflowExpression.Validate(bodytaxonomy4, nameof(bodytaxonomy4), required: false);
-            WorkflowExpression.Validate(bodytaxonomy5, nameof(bodytaxonomy5), required: false);
-            WorkflowExpression.Validate(bodysubmitter, nameof(bodysubmitter), required: false);
-            WorkflowExpression.Validate(bodysubmittedDocId, nameof(bodysubmittedDocId), required: false);
+            var __workflow_bodydocumentId = bodydocumentId == null ? null : WorkflowExpression.Compile(bodydocumentId);
+            WorkflowExpression.Validate(__workflow_bodydocumentId, nameof(bodydocumentId), required: true);
+            var __workflow_bodyapprover = bodyapprover == null ? null : WorkflowExpression.Compile(bodyapprover);
+            WorkflowExpression.Validate(__workflow_bodyapprover, nameof(bodyapprover), required: false);
+            var __workflow_bodydraftingNotes = bodydraftingNotes == null ? null : WorkflowExpression.Compile(bodydraftingNotes);
+            WorkflowExpression.Validate(__workflow_bodydraftingNotes, nameof(bodydraftingNotes), required: false);
+            var __workflow_bodyisMaintained = bodyisMaintained == null ? null : WorkflowExpression.Compile(bodyisMaintained);
+            WorkflowExpression.Validate(__workflow_bodyisMaintained, nameof(bodyisMaintained), required: false);
+            var __workflow_bodyknowledgeOwner = bodyknowledgeOwner == null ? null : WorkflowExpression.Compile(bodyknowledgeOwner);
+            WorkflowExpression.Validate(__workflow_bodyknowledgeOwner, nameof(bodyknowledgeOwner), required: false);
+            var __workflow_bodyknowledgeType = bodyknowledgeType == null ? null : WorkflowExpression.Compile(bodyknowledgeType);
+            WorkflowExpression.Validate(__workflow_bodyknowledgeType, nameof(bodyknowledgeType), required: false);
+            var __workflow_bodylanguage = bodylanguage == null ? null : WorkflowExpression.Compile(bodylanguage);
+            WorkflowExpression.Validate(__workflow_bodylanguage, nameof(bodylanguage), required: false);
+            var __workflow_bodylastReviewDate = bodylastReviewDate == null ? null : WorkflowExpression.Compile(bodylastReviewDate);
+            WorkflowExpression.Validate(__workflow_bodylastReviewDate, nameof(bodylastReviewDate), required: false);
+            var __workflow_bodyminiSummary = bodyminiSummary == null ? null : WorkflowExpression.Compile(bodyminiSummary);
+            WorkflowExpression.Validate(__workflow_bodyminiSummary, nameof(bodyminiSummary), required: false);
+            var __workflow_bodynextReviewDate = bodynextReviewDate == null ? null : WorkflowExpression.Compile(bodynextReviewDate);
+            WorkflowExpression.Validate(__workflow_bodynextReviewDate, nameof(bodynextReviewDate), required: false);
+            var __workflow_bodyotherNoteworthy = bodyotherNoteworthy == null ? null : WorkflowExpression.Compile(bodyotherNoteworthy);
+            WorkflowExpression.Validate(__workflow_bodyotherNoteworthy, nameof(bodyotherNoteworthy), required: false);
+            var __workflow_bodystate = bodystate == null ? null : WorkflowExpression.Compile(bodystate);
+            WorkflowExpression.Validate(__workflow_bodystate, nameof(bodystate), required: false);
+            var __workflow_bodysubmitDate = bodysubmitDate == null ? null : WorkflowExpression.Compile(bodysubmitDate);
+            WorkflowExpression.Validate(__workflow_bodysubmitDate, nameof(bodysubmitDate), required: false);
+            var __workflow_bodytaxonomy1 = bodytaxonomy1 == null ? null : WorkflowExpression.Compile(bodytaxonomy1);
+            WorkflowExpression.Validate(__workflow_bodytaxonomy1, nameof(bodytaxonomy1), required: false);
+            var __workflow_bodytaxonomy2 = bodytaxonomy2 == null ? null : WorkflowExpression.Compile(bodytaxonomy2);
+            WorkflowExpression.Validate(__workflow_bodytaxonomy2, nameof(bodytaxonomy2), required: false);
+            var __workflow_bodytaxonomy3 = bodytaxonomy3 == null ? null : WorkflowExpression.Compile(bodytaxonomy3);
+            WorkflowExpression.Validate(__workflow_bodytaxonomy3, nameof(bodytaxonomy3), required: false);
+            var __workflow_bodytaxonomy4 = bodytaxonomy4 == null ? null : WorkflowExpression.Compile(bodytaxonomy4);
+            WorkflowExpression.Validate(__workflow_bodytaxonomy4, nameof(bodytaxonomy4), required: false);
+            var __workflow_bodytaxonomy5 = bodytaxonomy5 == null ? null : WorkflowExpression.Compile(bodytaxonomy5);
+            WorkflowExpression.Validate(__workflow_bodytaxonomy5, nameof(bodytaxonomy5), required: false);
+            var __workflow_bodysubmitter = bodysubmitter == null ? null : WorkflowExpression.Compile(bodysubmitter);
+            WorkflowExpression.Validate(__workflow_bodysubmitter, nameof(bodysubmitter), required: false);
+            var __workflow_bodysubmittedDocId = bodysubmittedDocId == null ? null : WorkflowExpression.Compile(bodysubmittedDocId);
+            WorkflowExpression.Validate(__workflow_bodysubmittedDocId, nameof(bodysubmittedDocId), required: false);
             return new DeferredBodyAction<SetCurationPropertiesForDocumentResponseBody>(() =>
             {
                 var apiCallPath = "/setCurationPropertiesForDocument";
@@ -81,118 +88,118 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
-                if (bodyapprover != null)
+                body["documentId"] = ExpressionConverter.ConvertO(__workflow_bodydocumentId);
+                if (__workflow_bodyapprover != null)
                 {
-                    body["approver"] = ExpressionConverter.ConvertO(bodyapprover);
+                    body["approver"] = ExpressionConverter.ConvertO(__workflow_bodyapprover);
                     bodypropCount++;
                 }
 
-                if (bodydraftingNotes != null)
+                if (__workflow_bodydraftingNotes != null)
                 {
-                    body["drafting_notes"] = ExpressionConverter.ConvertO(bodydraftingNotes);
+                    body["drafting_notes"] = ExpressionConverter.ConvertO(__workflow_bodydraftingNotes);
                     bodypropCount++;
                 }
 
-                if (bodyisMaintained != null)
+                if (__workflow_bodyisMaintained != null)
                 {
-                    body["is_maintained"] = ExpressionConverter.ConvertO(bodyisMaintained);
+                    body["is_maintained"] = ExpressionConverter.ConvertO(__workflow_bodyisMaintained);
                     bodypropCount++;
                 }
 
-                if (bodyknowledgeOwner != null)
+                if (__workflow_bodyknowledgeOwner != null)
                 {
-                    body["knowledge_owner"] = ExpressionConverter.ConvertO(bodyknowledgeOwner);
+                    body["knowledge_owner"] = ExpressionConverter.ConvertO(__workflow_bodyknowledgeOwner);
                     bodypropCount++;
                 }
 
-                if (bodyknowledgeType != null)
+                if (__workflow_bodyknowledgeType != null)
                 {
-                    body["knowledge_type"] = ExpressionConverter.ConvertO(bodyknowledgeType);
+                    body["knowledge_type"] = ExpressionConverter.ConvertO(__workflow_bodyknowledgeType);
                     bodypropCount++;
                 }
 
-                if (bodylanguage != null)
+                if (__workflow_bodylanguage != null)
                 {
-                    body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                    body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
                     bodypropCount++;
                 }
 
-                if (bodylastReviewDate != null)
+                if (__workflow_bodylastReviewDate != null)
                 {
-                    body["last_review_date"] = ExpressionConverter.ConvertO(bodylastReviewDate);
+                    body["last_review_date"] = ExpressionConverter.ConvertO(__workflow_bodylastReviewDate);
                     bodypropCount++;
                 }
 
-                if (bodyminiSummary != null)
+                if (__workflow_bodyminiSummary != null)
                 {
-                    body["mini_summary"] = ExpressionConverter.ConvertO(bodyminiSummary);
+                    body["mini_summary"] = ExpressionConverter.ConvertO(__workflow_bodyminiSummary);
                     bodypropCount++;
                 }
 
-                if (bodynextReviewDate != null)
+                if (__workflow_bodynextReviewDate != null)
                 {
-                    body["next_review_date"] = ExpressionConverter.ConvertO(bodynextReviewDate);
+                    body["next_review_date"] = ExpressionConverter.ConvertO(__workflow_bodynextReviewDate);
                     bodypropCount++;
                 }
 
-                if (bodyotherNoteworthy != null)
+                if (__workflow_bodyotherNoteworthy != null)
                 {
-                    body["other_noteworthy"] = ExpressionConverter.ConvertO(bodyotherNoteworthy);
+                    body["other_noteworthy"] = ExpressionConverter.ConvertO(__workflow_bodyotherNoteworthy);
                     bodypropCount++;
                 }
 
-                if (bodystate != null)
+                if (__workflow_bodystate != null)
                 {
-                    body["state"] = ExpressionConverter.ConvertO(bodystate);
+                    body["state"] = ExpressionConverter.ConvertO(__workflow_bodystate);
                     bodypropCount++;
                 }
 
-                if (bodysubmitDate != null)
+                if (__workflow_bodysubmitDate != null)
                 {
-                    body["submit_date"] = ExpressionConverter.ConvertO(bodysubmitDate);
+                    body["submit_date"] = ExpressionConverter.ConvertO(__workflow_bodysubmitDate);
                     bodypropCount++;
                 }
 
-                if (bodytaxonomy1 != null)
+                if (__workflow_bodytaxonomy1 != null)
                 {
-                    body["taxonomy1"] = ExpressionConverter.ConvertO(bodytaxonomy1);
+                    body["taxonomy1"] = ExpressionConverter.ConvertO(__workflow_bodytaxonomy1);
                     bodypropCount++;
                 }
 
-                if (bodytaxonomy2 != null)
+                if (__workflow_bodytaxonomy2 != null)
                 {
-                    body["taxonomy2"] = ExpressionConverter.ConvertO(bodytaxonomy2);
+                    body["taxonomy2"] = ExpressionConverter.ConvertO(__workflow_bodytaxonomy2);
                     bodypropCount++;
                 }
 
-                if (bodytaxonomy3 != null)
+                if (__workflow_bodytaxonomy3 != null)
                 {
-                    body["taxonomy3"] = ExpressionConverter.ConvertO(bodytaxonomy3);
+                    body["taxonomy3"] = ExpressionConverter.ConvertO(__workflow_bodytaxonomy3);
                     bodypropCount++;
                 }
 
-                if (bodytaxonomy4 != null)
+                if (__workflow_bodytaxonomy4 != null)
                 {
-                    body["taxonomy4"] = ExpressionConverter.ConvertO(bodytaxonomy4);
+                    body["taxonomy4"] = ExpressionConverter.ConvertO(__workflow_bodytaxonomy4);
                     bodypropCount++;
                 }
 
-                if (bodytaxonomy5 != null)
+                if (__workflow_bodytaxonomy5 != null)
                 {
-                    body["taxonomy5"] = ExpressionConverter.ConvertO(bodytaxonomy5);
+                    body["taxonomy5"] = ExpressionConverter.ConvertO(__workflow_bodytaxonomy5);
                     bodypropCount++;
                 }
 
-                if (bodysubmitter != null)
+                if (__workflow_bodysubmitter != null)
                 {
-                    body["submitter"] = ExpressionConverter.ConvertO(bodysubmitter);
+                    body["submitter"] = ExpressionConverter.ConvertO(__workflow_bodysubmitter);
                     bodypropCount++;
                 }
 
-                if (bodysubmittedDocId != null)
+                if (__workflow_bodysubmittedDocId != null)
                 {
-                    body["submitted_doc_id"] = ExpressionConverter.ConvertO(bodysubmittedDocId);
+                    body["submitted_doc_id"] = ExpressionConverter.ConvertO(__workflow_bodysubmittedDocId);
                     bodypropCount++;
                 }
 
@@ -206,65 +213,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageinsightplus")]
-        [WorkflowExpressionFactory(nameof(__BuildGetKnowledgeTypes))]
-        public IBodyWorkflowAction<GetKnowledgeTypesResponse> GetKnowledgeTypes([WorkflowExpression] Func<string> libraryId)
+        public IBodyWorkflowAction<GetKnowledgeTypesResponse> GetKnowledgeTypes(Expression<Func<string>> libraryId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetKnowledgeTypesResponse> __BuildGetKnowledgeTypes(WorkflowExpression<string> libraryId)
-        {
-            WorkflowExpression.Validate(libraryId, nameof(libraryId), required: true);
+            var __workflow_libraryId = libraryId == null ? null : WorkflowExpression.Compile(libraryId);
+            WorkflowExpression.Validate(__workflow_libraryId, nameof(libraryId), required: true);
             return new DeferredBodyAction<GetKnowledgeTypesResponse>(() =>
             {
                 var apiCallPath = "/getKnowledgeTypes";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["libraryId"] = ExpressionConverter.Convert(libraryId);
+                callPayload.Queries["libraryId"] = ExpressionConverter.Convert(__workflow_libraryId);
                 return new ApiConnectionAction<GetKnowledgeTypesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageinsightplus")]
-        [WorkflowExpressionFactory(nameof(__BuildGetCurationConfiguration))]
-        public IBodyWorkflowAction<GetCurationConfigurationResponse> GetCurationConfiguration([WorkflowExpression] Func<string> libraryId)
+        public IBodyWorkflowAction<GetCurationConfigurationResponse> GetCurationConfiguration(Expression<Func<string>> libraryId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetCurationConfigurationResponse> __BuildGetCurationConfiguration(WorkflowExpression<string> libraryId)
-        {
-            WorkflowExpression.Validate(libraryId, nameof(libraryId), required: true);
+            var __workflow_libraryId = libraryId == null ? null : WorkflowExpression.Compile(libraryId);
+            WorkflowExpression.Validate(__workflow_libraryId, nameof(libraryId), required: true);
             return new DeferredBodyAction<GetCurationConfigurationResponse>(() =>
             {
                 var apiCallPath = "/getCurationConfiguration";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["libraryId"] = ExpressionConverter.Convert(libraryId);
+                callPayload.Queries["libraryId"] = ExpressionConverter.Convert(__workflow_libraryId);
                 return new ApiConnectionAction<GetCurationConfigurationResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageinsightplus")]
-        [WorkflowExpressionFactory(nameof(__BuildSearchCurationTaxonomyNodeValues))]
-        public IBodyWorkflowAction<SearchCurationTaxonomyNodeValuesResponse> SearchCurationTaxonomyNodeValues([WorkflowExpression] Func<string> bodylibraryId, [WorkflowExpression] Func<string> bodytaxonomyProperty, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodyquery = null, [WorkflowExpression] Func<bodyenabledStateInput> bodyenabledState = null, [WorkflowExpression] Func<bool> bodyincludePath = null, [WorkflowExpression] Func<string> bodychildrenOfSsid = null, [WorkflowExpression] Func<bool> bodyimmediateChildrenOnly = null)
+        public IBodyWorkflowAction<SearchCurationTaxonomyNodeValuesResponse> SearchCurationTaxonomyNodeValues(Expression<Func<string>> bodylibraryId, Expression<Func<string>> bodytaxonomyProperty, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodyquery = null, Expression<Func<bodyenabledStateInput>> bodyenabledState = null, Expression<Func<bool>> bodyincludePath = null, Expression<Func<string>> bodychildrenOfSsid = null, Expression<Func<bool>> bodyimmediateChildrenOnly = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SearchCurationTaxonomyNodeValuesResponse> __BuildSearchCurationTaxonomyNodeValues(WorkflowExpression<string> bodylibraryId, WorkflowExpression<string> bodytaxonomyProperty, WorkflowExpression<string> bodyid = null, WorkflowExpression<string> bodyquery = null, WorkflowExpression<bodyenabledStateInput> bodyenabledState = null, WorkflowExpression<bool> bodyincludePath = null, WorkflowExpression<string> bodychildrenOfSsid = null, WorkflowExpression<bool> bodyimmediateChildrenOnly = null)
-        {
-            WorkflowExpression.Validate(bodylibraryId, nameof(bodylibraryId), required: true);
-            WorkflowExpression.Validate(bodytaxonomyProperty, nameof(bodytaxonomyProperty), required: true);
-            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: false);
-            WorkflowExpression.Validate(bodyquery, nameof(bodyquery), required: false);
-            WorkflowExpression.Validate(bodyenabledState, nameof(bodyenabledState), required: false);
-            WorkflowExpression.Validate(bodyincludePath, nameof(bodyincludePath), required: false);
-            WorkflowExpression.Validate(bodychildrenOfSsid, nameof(bodychildrenOfSsid), required: false);
-            WorkflowExpression.Validate(bodyimmediateChildrenOnly, nameof(bodyimmediateChildrenOnly), required: false);
+            var __workflow_bodylibraryId = bodylibraryId == null ? null : WorkflowExpression.Compile(bodylibraryId);
+            WorkflowExpression.Validate(__workflow_bodylibraryId, nameof(bodylibraryId), required: true);
+            var __workflow_bodytaxonomyProperty = bodytaxonomyProperty == null ? null : WorkflowExpression.Compile(bodytaxonomyProperty);
+            WorkflowExpression.Validate(__workflow_bodytaxonomyProperty, nameof(bodytaxonomyProperty), required: true);
+            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
+            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: false);
+            var __workflow_bodyquery = bodyquery == null ? null : WorkflowExpression.Compile(bodyquery);
+            WorkflowExpression.Validate(__workflow_bodyquery, nameof(bodyquery), required: false);
+            var __workflow_bodyenabledState = bodyenabledState == null ? null : WorkflowExpression.Compile(bodyenabledState);
+            WorkflowExpression.Validate(__workflow_bodyenabledState, nameof(bodyenabledState), required: false);
+            var __workflow_bodyincludePath = bodyincludePath == null ? null : WorkflowExpression.Compile(bodyincludePath);
+            WorkflowExpression.Validate(__workflow_bodyincludePath, nameof(bodyincludePath), required: false);
+            var __workflow_bodychildrenOfSsid = bodychildrenOfSsid == null ? null : WorkflowExpression.Compile(bodychildrenOfSsid);
+            WorkflowExpression.Validate(__workflow_bodychildrenOfSsid, nameof(bodychildrenOfSsid), required: false);
+            var __workflow_bodyimmediateChildrenOnly = bodyimmediateChildrenOnly == null ? null : WorkflowExpression.Compile(bodyimmediateChildrenOnly);
+            WorkflowExpression.Validate(__workflow_bodyimmediateChildrenOnly, nameof(bodyimmediateChildrenOnly), required: false);
             return new DeferredBodyAction<SearchCurationTaxonomyNodeValuesResponse>(() =>
             {
                 var apiCallPath = "/searchCurationTaxonomyNodeValues";
@@ -273,26 +269,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["libraryId"] = ExpressionConverter.ConvertO(bodylibraryId);
+                body["libraryId"] = ExpressionConverter.ConvertO(__workflow_bodylibraryId);
                 bodypropCount++;
-                body["taxonomyProperty"] = ExpressionConverter.ConvertO(bodytaxonomyProperty);
-                if (bodyid != null)
+                body["taxonomyProperty"] = ExpressionConverter.ConvertO(__workflow_bodytaxonomyProperty);
+                if (__workflow_bodyid != null)
                 {
-                    body["id"] = ExpressionConverter.ConvertO(bodyid);
+                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
                     bodypropCount++;
                 }
 
-                if (bodyquery != null)
+                if (__workflow_bodyquery != null)
                 {
-                    body["query"] = ExpressionConverter.ConvertO(bodyquery);
+                    body["query"] = ExpressionConverter.ConvertO(__workflow_bodyquery);
                     bodypropCount++;
                 }
 
-                if (bodyenabledState != null)
+                if (__workflow_bodyenabledState != null)
                 {
-                    if (bodyenabledState != null)
+                    if (__workflow_bodyenabledState != null)
                     {
-                        body["enabled_state"] = ExpressionConverter.ConvertO(bodyenabledState);
+                        body["enabled_state"] = ExpressionConverter.ConvertO(__workflow_bodyenabledState);
                         bodypropCount++;
                     }
 
@@ -304,11 +300,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
                     bodypropCount++;
                 }
 
-                if (bodyincludePath != null)
+                if (__workflow_bodyincludePath != null)
                 {
-                    if (bodyincludePath != null)
+                    if (__workflow_bodyincludePath != null)
                     {
-                        body["include_path"] = ExpressionConverter.ConvertO(bodyincludePath);
+                        body["include_path"] = ExpressionConverter.ConvertO(__workflow_bodyincludePath);
                         bodypropCount++;
                     }
 
@@ -320,17 +316,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
                     bodypropCount++;
                 }
 
-                if (bodychildrenOfSsid != null)
+                if (__workflow_bodychildrenOfSsid != null)
                 {
-                    body["children_of_ssid"] = ExpressionConverter.ConvertO(bodychildrenOfSsid);
+                    body["children_of_ssid"] = ExpressionConverter.ConvertO(__workflow_bodychildrenOfSsid);
                     bodypropCount++;
                 }
 
-                if (bodyimmediateChildrenOnly != null)
+                if (__workflow_bodyimmediateChildrenOnly != null)
                 {
-                    if (bodyimmediateChildrenOnly != null)
+                    if (__workflow_bodyimmediateChildrenOnly != null)
                     {
-                        body["immediate_children_only"] = ExpressionConverter.ConvertO(bodyimmediateChildrenOnly);
+                        body["immediate_children_only"] = ExpressionConverter.ConvertO(__workflow_bodyimmediateChildrenOnly);
                         bodypropCount++;
                     }
 

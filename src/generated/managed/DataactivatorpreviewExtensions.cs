@@ -1,12 +1,12 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataactivatorpreview
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class DataactivatorpreviewActions([ConnectionName] string connectionId)
     {
@@ -14,23 +14,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataactivatorpreview
 
     public class DataactivatorpreviewTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildCreatePowerAutomateWorkflow))]
-        public IWorkflowTrigger CreatePowerAutomateWorkflow([WorkflowExpression] Func<string> connectionString,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CreatePowerAutomateWorkflow(Expression<Func<string>> connectionString, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildCreatePowerAutomateWorkflow(WorkflowExpression<string> connectionString,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(connectionString, nameof(connectionString), required: true);
+            var __workflow_connectionString = connectionString == null ? null : WorkflowExpression.Compile(connectionString);
+            WorkflowExpression.Validate(__workflow_connectionString, nameof(connectionString), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/powerAutomateFlow";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["Connection-String"] = ExpressionConverter.Convert(connectionString);
+                callPayload.Headers["Connection-String"] = ExpressionConverter.Convert(__workflow_connectionString);
                 var body = new JObject();
                 var bodypropCount = 0;
                 body["callbackUrl"] = "#{listCallbackUrl()}";

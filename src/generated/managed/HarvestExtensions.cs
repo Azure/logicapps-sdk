@@ -1,12 +1,12 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class HarvestActions([ConnectionName] string connectionId)
     {
@@ -20,23 +20,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
-        [WorkflowExpressionFactory(nameof(__BuildAddNewContact))]
-        public IWorkflowAction AddNewContact([WorkflowExpression] Func<int> bodycontactclientId = null, [WorkflowExpression] Func<string> bodycontactfirstName = null, [WorkflowExpression] Func<string> bodycontactlastName = null, [WorkflowExpression] Func<string> bodycontactemail = null, [WorkflowExpression] Func<string> bodycontactofficePhone = null, [WorkflowExpression] Func<string> bodycontactmobilePhone = null, [WorkflowExpression] Func<string> bodycontactfax = null, [WorkflowExpression] Func<string> bodycontacttitle = null)
+        public IWorkflowAction AddNewContact(Expression<Func<int>> bodycontactclientId = null, Expression<Func<string>> bodycontactfirstName = null, Expression<Func<string>> bodycontactlastName = null, Expression<Func<string>> bodycontactemail = null, Expression<Func<string>> bodycontactofficePhone = null, Expression<Func<string>> bodycontactmobilePhone = null, Expression<Func<string>> bodycontactfax = null, Expression<Func<string>> bodycontacttitle = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildAddNewContact(WorkflowExpression<int> bodycontactclientId = null, WorkflowExpression<string> bodycontactfirstName = null, WorkflowExpression<string> bodycontactlastName = null, WorkflowExpression<string> bodycontactemail = null, WorkflowExpression<string> bodycontactofficePhone = null, WorkflowExpression<string> bodycontactmobilePhone = null, WorkflowExpression<string> bodycontactfax = null, WorkflowExpression<string> bodycontacttitle = null)
-        {
-            WorkflowExpression.Validate(bodycontactclientId, nameof(bodycontactclientId), required: false);
-            WorkflowExpression.Validate(bodycontactfirstName, nameof(bodycontactfirstName), required: false);
-            WorkflowExpression.Validate(bodycontactlastName, nameof(bodycontactlastName), required: false);
-            WorkflowExpression.Validate(bodycontactemail, nameof(bodycontactemail), required: false);
-            WorkflowExpression.Validate(bodycontactofficePhone, nameof(bodycontactofficePhone), required: false);
-            WorkflowExpression.Validate(bodycontactmobilePhone, nameof(bodycontactmobilePhone), required: false);
-            WorkflowExpression.Validate(bodycontactfax, nameof(bodycontactfax), required: false);
-            WorkflowExpression.Validate(bodycontacttitle, nameof(bodycontacttitle), required: false);
+            var __workflow_bodycontactclientId = bodycontactclientId == null ? null : WorkflowExpression.Compile(bodycontactclientId);
+            WorkflowExpression.Validate(__workflow_bodycontactclientId, nameof(bodycontactclientId), required: false);
+            var __workflow_bodycontactfirstName = bodycontactfirstName == null ? null : WorkflowExpression.Compile(bodycontactfirstName);
+            WorkflowExpression.Validate(__workflow_bodycontactfirstName, nameof(bodycontactfirstName), required: false);
+            var __workflow_bodycontactlastName = bodycontactlastName == null ? null : WorkflowExpression.Compile(bodycontactlastName);
+            WorkflowExpression.Validate(__workflow_bodycontactlastName, nameof(bodycontactlastName), required: false);
+            var __workflow_bodycontactemail = bodycontactemail == null ? null : WorkflowExpression.Compile(bodycontactemail);
+            WorkflowExpression.Validate(__workflow_bodycontactemail, nameof(bodycontactemail), required: false);
+            var __workflow_bodycontactofficePhone = bodycontactofficePhone == null ? null : WorkflowExpression.Compile(bodycontactofficePhone);
+            WorkflowExpression.Validate(__workflow_bodycontactofficePhone, nameof(bodycontactofficePhone), required: false);
+            var __workflow_bodycontactmobilePhone = bodycontactmobilePhone == null ? null : WorkflowExpression.Compile(bodycontactmobilePhone);
+            WorkflowExpression.Validate(__workflow_bodycontactmobilePhone, nameof(bodycontactmobilePhone), required: false);
+            var __workflow_bodycontactfax = bodycontactfax == null ? null : WorkflowExpression.Compile(bodycontactfax);
+            WorkflowExpression.Validate(__workflow_bodycontactfax, nameof(bodycontactfax), required: false);
+            var __workflow_bodycontacttitle = bodycontacttitle == null ? null : WorkflowExpression.Compile(bodycontacttitle);
+            WorkflowExpression.Validate(__workflow_bodycontacttitle, nameof(bodycontacttitle), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/contacts";
@@ -46,51 +47,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
                 var bodypropCount = 0;
                 var contactObject = new JObject();
                 var contactObjectpropCount = 0;
-                if (bodycontactclientId != null)
+                if (__workflow_bodycontactclientId != null)
                 {
-                    contactObject["client_id"] = ExpressionConverter.ConvertO(bodycontactclientId);
+                    contactObject["client_id"] = ExpressionConverter.ConvertO(__workflow_bodycontactclientId);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactfirstName != null)
+                if (__workflow_bodycontactfirstName != null)
                 {
-                    contactObject["first_name"] = ExpressionConverter.ConvertO(bodycontactfirstName);
+                    contactObject["first_name"] = ExpressionConverter.ConvertO(__workflow_bodycontactfirstName);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactlastName != null)
+                if (__workflow_bodycontactlastName != null)
                 {
-                    contactObject["last_name"] = ExpressionConverter.ConvertO(bodycontactlastName);
+                    contactObject["last_name"] = ExpressionConverter.ConvertO(__workflow_bodycontactlastName);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactemail != null)
+                if (__workflow_bodycontactemail != null)
                 {
-                    contactObject["email"] = ExpressionConverter.ConvertO(bodycontactemail);
+                    contactObject["email"] = ExpressionConverter.ConvertO(__workflow_bodycontactemail);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactofficePhone != null)
+                if (__workflow_bodycontactofficePhone != null)
                 {
-                    contactObject["phone_office"] = ExpressionConverter.ConvertO(bodycontactofficePhone);
+                    contactObject["phone_office"] = ExpressionConverter.ConvertO(__workflow_bodycontactofficePhone);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactmobilePhone != null)
+                if (__workflow_bodycontactmobilePhone != null)
                 {
-                    contactObject["phone_mobile"] = ExpressionConverter.ConvertO(bodycontactmobilePhone);
+                    contactObject["phone_mobile"] = ExpressionConverter.ConvertO(__workflow_bodycontactmobilePhone);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactfax != null)
+                if (__workflow_bodycontactfax != null)
                 {
-                    contactObject["fax"] = ExpressionConverter.ConvertO(bodycontactfax);
+                    contactObject["fax"] = ExpressionConverter.ConvertO(__workflow_bodycontactfax);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontacttitle != null)
+                if (__workflow_bodycontacttitle != null)
                 {
-                    contactObject["title"] = ExpressionConverter.ConvertO(bodycontacttitle);
+                    contactObject["title"] = ExpressionConverter.ConvertO(__workflow_bodycontacttitle);
                     contactObjectpropCount++;
                 }
 
@@ -119,19 +120,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
-        [WorkflowExpressionFactory(nameof(__BuildAddNewClient))]
-        public IWorkflowAction AddNewClient([WorkflowExpression] Func<string> bodyclientname = null, [WorkflowExpression] Func<string> bodyclientcurrency = null, [WorkflowExpression] Func<string> bodyclientcurrencySymbol = null, [WorkflowExpression] Func<string> bodyclientdetails = null)
+        public IWorkflowAction AddNewClient(Expression<Func<string>> bodyclientname = null, Expression<Func<string>> bodyclientcurrency = null, Expression<Func<string>> bodyclientcurrencySymbol = null, Expression<Func<string>> bodyclientdetails = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildAddNewClient(WorkflowExpression<string> bodyclientname = null, WorkflowExpression<string> bodyclientcurrency = null, WorkflowExpression<string> bodyclientcurrencySymbol = null, WorkflowExpression<string> bodyclientdetails = null)
-        {
-            WorkflowExpression.Validate(bodyclientname, nameof(bodyclientname), required: false);
-            WorkflowExpression.Validate(bodyclientcurrency, nameof(bodyclientcurrency), required: false);
-            WorkflowExpression.Validate(bodyclientcurrencySymbol, nameof(bodyclientcurrencySymbol), required: false);
-            WorkflowExpression.Validate(bodyclientdetails, nameof(bodyclientdetails), required: false);
+            var __workflow_bodyclientname = bodyclientname == null ? null : WorkflowExpression.Compile(bodyclientname);
+            WorkflowExpression.Validate(__workflow_bodyclientname, nameof(bodyclientname), required: false);
+            var __workflow_bodyclientcurrency = bodyclientcurrency == null ? null : WorkflowExpression.Compile(bodyclientcurrency);
+            WorkflowExpression.Validate(__workflow_bodyclientcurrency, nameof(bodyclientcurrency), required: false);
+            var __workflow_bodyclientcurrencySymbol = bodyclientcurrencySymbol == null ? null : WorkflowExpression.Compile(bodyclientcurrencySymbol);
+            WorkflowExpression.Validate(__workflow_bodyclientcurrencySymbol, nameof(bodyclientcurrencySymbol), required: false);
+            var __workflow_bodyclientdetails = bodyclientdetails == null ? null : WorkflowExpression.Compile(bodyclientdetails);
+            WorkflowExpression.Validate(__workflow_bodyclientdetails, nameof(bodyclientdetails), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/clients";
@@ -141,27 +139,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
                 var bodypropCount = 0;
                 var clientObject = new JObject();
                 var clientObjectpropCount = 0;
-                if (bodyclientname != null)
+                if (__workflow_bodyclientname != null)
                 {
-                    clientObject["name"] = ExpressionConverter.ConvertO(bodyclientname);
+                    clientObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyclientname);
                     clientObjectpropCount++;
                 }
 
-                if (bodyclientcurrency != null)
+                if (__workflow_bodyclientcurrency != null)
                 {
-                    clientObject["currency"] = ExpressionConverter.ConvertO(bodyclientcurrency);
+                    clientObject["currency"] = ExpressionConverter.ConvertO(__workflow_bodyclientcurrency);
                     clientObjectpropCount++;
                 }
 
-                if (bodyclientcurrencySymbol != null)
+                if (__workflow_bodyclientcurrencySymbol != null)
                 {
-                    clientObject["currency_symbol"] = ExpressionConverter.ConvertO(bodyclientcurrencySymbol);
+                    clientObject["currency_symbol"] = ExpressionConverter.ConvertO(__workflow_bodyclientcurrencySymbol);
                     clientObjectpropCount++;
                 }
 
-                if (bodyclientdetails != null)
+                if (__workflow_bodyclientdetails != null)
                 {
-                    clientObject["details"] = ExpressionConverter.ConvertO(bodyclientdetails);
+                    clientObject["details"] = ExpressionConverter.ConvertO(__workflow_bodyclientdetails);
                     clientObjectpropCount++;
                 }
 
@@ -181,24 +179,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateUser))]
-        public IWorkflowAction CreateUser([WorkflowExpression] Func<string> bodyuseremail = null, [WorkflowExpression] Func<bool> bodyuserisAdmin = null, [WorkflowExpression] Func<string> bodyuserfirstName = null, [WorkflowExpression] Func<string> bodyuserlastName = null, [WorkflowExpression] Func<bool> bodyuserisContractor = null, [WorkflowExpression] Func<string> bodyuserphone = null, [WorkflowExpression] Func<double> bodyuserhourlyRate = null, [WorkflowExpression] Func<string> bodyuserdepartment = null, [WorkflowExpression] Func<double> bodyusercostRate = null)
+        public IWorkflowAction CreateUser(Expression<Func<string>> bodyuseremail = null, Expression<Func<bool>> bodyuserisAdmin = null, Expression<Func<string>> bodyuserfirstName = null, Expression<Func<string>> bodyuserlastName = null, Expression<Func<bool>> bodyuserisContractor = null, Expression<Func<string>> bodyuserphone = null, Expression<Func<double>> bodyuserhourlyRate = null, Expression<Func<string>> bodyuserdepartment = null, Expression<Func<double>> bodyusercostRate = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildCreateUser(WorkflowExpression<string> bodyuseremail = null, WorkflowExpression<bool> bodyuserisAdmin = null, WorkflowExpression<string> bodyuserfirstName = null, WorkflowExpression<string> bodyuserlastName = null, WorkflowExpression<bool> bodyuserisContractor = null, WorkflowExpression<string> bodyuserphone = null, WorkflowExpression<double> bodyuserhourlyRate = null, WorkflowExpression<string> bodyuserdepartment = null, WorkflowExpression<double> bodyusercostRate = null)
-        {
-            WorkflowExpression.Validate(bodyuseremail, nameof(bodyuseremail), required: false);
-            WorkflowExpression.Validate(bodyuserisAdmin, nameof(bodyuserisAdmin), required: false);
-            WorkflowExpression.Validate(bodyuserfirstName, nameof(bodyuserfirstName), required: false);
-            WorkflowExpression.Validate(bodyuserlastName, nameof(bodyuserlastName), required: false);
-            WorkflowExpression.Validate(bodyuserisContractor, nameof(bodyuserisContractor), required: false);
-            WorkflowExpression.Validate(bodyuserphone, nameof(bodyuserphone), required: false);
-            WorkflowExpression.Validate(bodyuserhourlyRate, nameof(bodyuserhourlyRate), required: false);
-            WorkflowExpression.Validate(bodyuserdepartment, nameof(bodyuserdepartment), required: false);
-            WorkflowExpression.Validate(bodyusercostRate, nameof(bodyusercostRate), required: false);
+            var __workflow_bodyuseremail = bodyuseremail == null ? null : WorkflowExpression.Compile(bodyuseremail);
+            WorkflowExpression.Validate(__workflow_bodyuseremail, nameof(bodyuseremail), required: false);
+            var __workflow_bodyuserisAdmin = bodyuserisAdmin == null ? null : WorkflowExpression.Compile(bodyuserisAdmin);
+            WorkflowExpression.Validate(__workflow_bodyuserisAdmin, nameof(bodyuserisAdmin), required: false);
+            var __workflow_bodyuserfirstName = bodyuserfirstName == null ? null : WorkflowExpression.Compile(bodyuserfirstName);
+            WorkflowExpression.Validate(__workflow_bodyuserfirstName, nameof(bodyuserfirstName), required: false);
+            var __workflow_bodyuserlastName = bodyuserlastName == null ? null : WorkflowExpression.Compile(bodyuserlastName);
+            WorkflowExpression.Validate(__workflow_bodyuserlastName, nameof(bodyuserlastName), required: false);
+            var __workflow_bodyuserisContractor = bodyuserisContractor == null ? null : WorkflowExpression.Compile(bodyuserisContractor);
+            WorkflowExpression.Validate(__workflow_bodyuserisContractor, nameof(bodyuserisContractor), required: false);
+            var __workflow_bodyuserphone = bodyuserphone == null ? null : WorkflowExpression.Compile(bodyuserphone);
+            WorkflowExpression.Validate(__workflow_bodyuserphone, nameof(bodyuserphone), required: false);
+            var __workflow_bodyuserhourlyRate = bodyuserhourlyRate == null ? null : WorkflowExpression.Compile(bodyuserhourlyRate);
+            WorkflowExpression.Validate(__workflow_bodyuserhourlyRate, nameof(bodyuserhourlyRate), required: false);
+            var __workflow_bodyuserdepartment = bodyuserdepartment == null ? null : WorkflowExpression.Compile(bodyuserdepartment);
+            WorkflowExpression.Validate(__workflow_bodyuserdepartment, nameof(bodyuserdepartment), required: false);
+            var __workflow_bodyusercostRate = bodyusercostRate == null ? null : WorkflowExpression.Compile(bodyusercostRate);
+            WorkflowExpression.Validate(__workflow_bodyusercostRate, nameof(bodyusercostRate), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/people";
@@ -208,59 +208,59 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
                 var bodypropCount = 0;
                 var userObject = new JObject();
                 var userObjectpropCount = 0;
-                if (bodyuseremail != null)
+                if (__workflow_bodyuseremail != null)
                 {
-                    userObject["email"] = ExpressionConverter.ConvertO(bodyuseremail);
+                    userObject["email"] = ExpressionConverter.ConvertO(__workflow_bodyuseremail);
                     userObjectpropCount++;
                 }
 
-                if (bodyuserisAdmin != null)
+                if (__workflow_bodyuserisAdmin != null)
                 {
-                    userObject["is_admin"] = ExpressionConverter.ConvertO(bodyuserisAdmin);
+                    userObject["is_admin"] = ExpressionConverter.ConvertO(__workflow_bodyuserisAdmin);
                     userObjectpropCount++;
                 }
 
-                if (bodyuserfirstName != null)
+                if (__workflow_bodyuserfirstName != null)
                 {
-                    userObject["first_name"] = ExpressionConverter.ConvertO(bodyuserfirstName);
+                    userObject["first_name"] = ExpressionConverter.ConvertO(__workflow_bodyuserfirstName);
                     userObjectpropCount++;
                 }
 
-                if (bodyuserlastName != null)
+                if (__workflow_bodyuserlastName != null)
                 {
-                    userObject["last_name"] = ExpressionConverter.ConvertO(bodyuserlastName);
+                    userObject["last_name"] = ExpressionConverter.ConvertO(__workflow_bodyuserlastName);
                     userObjectpropCount++;
                 }
 
-                if (bodyuserisContractor != null)
+                if (__workflow_bodyuserisContractor != null)
                 {
-                    userObject["is_contractor"] = ExpressionConverter.ConvertO(bodyuserisContractor);
+                    userObject["is_contractor"] = ExpressionConverter.ConvertO(__workflow_bodyuserisContractor);
                     userObjectpropCount++;
                 }
 
-                if (bodyuserphone != null)
+                if (__workflow_bodyuserphone != null)
                 {
-                    userObject["telephone"] = ExpressionConverter.ConvertO(bodyuserphone);
+                    userObject["telephone"] = ExpressionConverter.ConvertO(__workflow_bodyuserphone);
                     userObjectpropCount++;
                 }
 
                 userObject["has_access_to_all_future_projects"] = false;
                 userObjectpropCount++;
-                if (bodyuserhourlyRate != null)
+                if (__workflow_bodyuserhourlyRate != null)
                 {
-                    userObject["default_hourly_rate"] = ExpressionConverter.ConvertO(bodyuserhourlyRate);
+                    userObject["default_hourly_rate"] = ExpressionConverter.ConvertO(__workflow_bodyuserhourlyRate);
                     userObjectpropCount++;
                 }
 
-                if (bodyuserdepartment != null)
+                if (__workflow_bodyuserdepartment != null)
                 {
-                    userObject["department"] = ExpressionConverter.ConvertO(bodyuserdepartment);
+                    userObject["department"] = ExpressionConverter.ConvertO(__workflow_bodyuserdepartment);
                     userObjectpropCount++;
                 }
 
-                if (bodyusercostRate != null)
+                if (__workflow_bodyusercostRate != null)
                 {
-                    userObject["cost_rate"] = ExpressionConverter.ConvertO(bodyusercostRate);
+                    userObject["cost_rate"] = ExpressionConverter.ConvertO(__workflow_bodyusercostRate);
                     userObjectpropCount++;
                 }
 
@@ -280,54 +280,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateTimeEntry))]
-        public IBodyWorkflowAction<UpdateTimeEntryResponse> UpdateTimeEntry([WorkflowExpression] Func<string> dAYENTRYID, [WorkflowExpression] Func<string> bodyprojectId, [WorkflowExpression] Func<string> bodytaskId, [WorkflowExpression] Func<string> bodynotes = null, [WorkflowExpression] Func<string> bodystartedDateTime = null, [WorkflowExpression] Func<string> bodyendedDateTime = null, [WorkflowExpression] Func<string> bodydate = null)
+        public IBodyWorkflowAction<UpdateTimeEntryResponse> UpdateTimeEntry(Expression<Func<string>> dAYENTRYID, Expression<Func<string>> bodyprojectId, Expression<Func<string>> bodytaskId, Expression<Func<string>> bodynotes = null, Expression<Func<string>> bodystartedDateTime = null, Expression<Func<string>> bodyendedDateTime = null, Expression<Func<string>> bodydate = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UpdateTimeEntryResponse> __BuildUpdateTimeEntry(WorkflowExpression<string> dAYENTRYID, WorkflowExpression<string> bodyprojectId, WorkflowExpression<string> bodytaskId, WorkflowExpression<string> bodynotes = null, WorkflowExpression<string> bodystartedDateTime = null, WorkflowExpression<string> bodyendedDateTime = null, WorkflowExpression<string> bodydate = null)
-        {
-            WorkflowExpression.Validate(dAYENTRYID, nameof(dAYENTRYID), required: true);
-            WorkflowExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: true);
-            WorkflowExpression.Validate(bodytaskId, nameof(bodytaskId), required: true);
-            WorkflowExpression.Validate(bodynotes, nameof(bodynotes), required: false);
-            WorkflowExpression.Validate(bodystartedDateTime, nameof(bodystartedDateTime), required: false);
-            WorkflowExpression.Validate(bodyendedDateTime, nameof(bodyendedDateTime), required: false);
-            WorkflowExpression.Validate(bodydate, nameof(bodydate), required: false);
+            var __workflow_dAYENTRYID = dAYENTRYID == null ? null : WorkflowExpression.Compile(dAYENTRYID);
+            WorkflowExpression.Validate(__workflow_dAYENTRYID, nameof(dAYENTRYID), required: true);
+            var __workflow_bodyprojectId = bodyprojectId == null ? null : WorkflowExpression.Compile(bodyprojectId);
+            WorkflowExpression.Validate(__workflow_bodyprojectId, nameof(bodyprojectId), required: true);
+            var __workflow_bodytaskId = bodytaskId == null ? null : WorkflowExpression.Compile(bodytaskId);
+            WorkflowExpression.Validate(__workflow_bodytaskId, nameof(bodytaskId), required: true);
+            var __workflow_bodynotes = bodynotes == null ? null : WorkflowExpression.Compile(bodynotes);
+            WorkflowExpression.Validate(__workflow_bodynotes, nameof(bodynotes), required: false);
+            var __workflow_bodystartedDateTime = bodystartedDateTime == null ? null : WorkflowExpression.Compile(bodystartedDateTime);
+            WorkflowExpression.Validate(__workflow_bodystartedDateTime, nameof(bodystartedDateTime), required: false);
+            var __workflow_bodyendedDateTime = bodyendedDateTime == null ? null : WorkflowExpression.Compile(bodyendedDateTime);
+            WorkflowExpression.Validate(__workflow_bodyendedDateTime, nameof(bodyendedDateTime), required: false);
+            var __workflow_bodydate = bodydate == null ? null : WorkflowExpression.Compile(bodydate);
+            WorkflowExpression.Validate(__workflow_bodydate, nameof(bodydate), required: false);
             return new DeferredBodyAction<UpdateTimeEntryResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/daily/update/{0}", ExpressionConverter.ConvertWithUrlEncoding(dAYENTRYID, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/daily/update/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dAYENTRYID, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["project_id"] = ExpressionConverter.ConvertO(bodyprojectId);
+                body["project_id"] = ExpressionConverter.ConvertO(__workflow_bodyprojectId);
                 bodypropCount++;
-                body["task_id"] = ExpressionConverter.ConvertO(bodytaskId);
-                if (bodynotes != null)
+                body["task_id"] = ExpressionConverter.ConvertO(__workflow_bodytaskId);
+                if (__workflow_bodynotes != null)
                 {
-                    body["notes"] = ExpressionConverter.ConvertO(bodynotes);
+                    body["notes"] = ExpressionConverter.ConvertO(__workflow_bodynotes);
                     bodypropCount++;
                 }
 
-                if (bodystartedDateTime != null)
+                if (__workflow_bodystartedDateTime != null)
                 {
-                    body["started_at"] = ExpressionConverter.ConvertO(bodystartedDateTime);
+                    body["started_at"] = ExpressionConverter.ConvertO(__workflow_bodystartedDateTime);
                     bodypropCount++;
                 }
 
-                if (bodyendedDateTime != null)
+                if (__workflow_bodyendedDateTime != null)
                 {
-                    body["ended_at"] = ExpressionConverter.ConvertO(bodyendedDateTime);
+                    body["ended_at"] = ExpressionConverter.ConvertO(__workflow_bodyendedDateTime);
                     bodypropCount++;
                 }
 
-                if (bodydate != null)
+                if (__workflow_bodydate != null)
                 {
-                    body["spent_at"] = ExpressionConverter.ConvertO(bodydate);
+                    body["spent_at"] = ExpressionConverter.ConvertO(__workflow_bodydate);
                     bodypropCount++;
                 }
 
@@ -341,20 +341,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateTimeEntry))]
-        public IBodyWorkflowAction<UpdateTimeEntryResponse> CreateTimeEntry([WorkflowExpression] Func<string> bodyprojectId, [WorkflowExpression] Func<string> bodytaskId, [WorkflowExpression] Func<string> bodynotes = null, [WorkflowExpression] Func<int> bodyhours = null, [WorkflowExpression] Func<string> bodydate = null)
+        public IBodyWorkflowAction<UpdateTimeEntryResponse> CreateTimeEntry(Expression<Func<string>> bodyprojectId, Expression<Func<string>> bodytaskId, Expression<Func<string>> bodynotes = null, Expression<Func<int>> bodyhours = null, Expression<Func<string>> bodydate = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UpdateTimeEntryResponse> __BuildCreateTimeEntry(WorkflowExpression<string> bodyprojectId, WorkflowExpression<string> bodytaskId, WorkflowExpression<string> bodynotes = null, WorkflowExpression<int> bodyhours = null, WorkflowExpression<string> bodydate = null)
-        {
-            WorkflowExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: true);
-            WorkflowExpression.Validate(bodytaskId, nameof(bodytaskId), required: true);
-            WorkflowExpression.Validate(bodynotes, nameof(bodynotes), required: false);
-            WorkflowExpression.Validate(bodyhours, nameof(bodyhours), required: false);
-            WorkflowExpression.Validate(bodydate, nameof(bodydate), required: false);
+            var __workflow_bodyprojectId = bodyprojectId == null ? null : WorkflowExpression.Compile(bodyprojectId);
+            WorkflowExpression.Validate(__workflow_bodyprojectId, nameof(bodyprojectId), required: true);
+            var __workflow_bodytaskId = bodytaskId == null ? null : WorkflowExpression.Compile(bodytaskId);
+            WorkflowExpression.Validate(__workflow_bodytaskId, nameof(bodytaskId), required: true);
+            var __workflow_bodynotes = bodynotes == null ? null : WorkflowExpression.Compile(bodynotes);
+            WorkflowExpression.Validate(__workflow_bodynotes, nameof(bodynotes), required: false);
+            var __workflow_bodyhours = bodyhours == null ? null : WorkflowExpression.Compile(bodyhours);
+            WorkflowExpression.Validate(__workflow_bodyhours, nameof(bodyhours), required: false);
+            var __workflow_bodydate = bodydate == null ? null : WorkflowExpression.Compile(bodydate);
+            WorkflowExpression.Validate(__workflow_bodydate, nameof(bodydate), required: false);
             return new DeferredBodyAction<UpdateTimeEntryResponse>(() =>
             {
                 var apiCallPath = "/daily/add";
@@ -362,25 +360,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodynotes != null)
+                if (__workflow_bodynotes != null)
                 {
-                    body["notes"] = ExpressionConverter.ConvertO(bodynotes);
+                    body["notes"] = ExpressionConverter.ConvertO(__workflow_bodynotes);
                     bodypropCount++;
                 }
 
-                if (bodyhours != null)
+                if (__workflow_bodyhours != null)
                 {
-                    body["hours"] = ExpressionConverter.ConvertO(bodyhours);
+                    body["hours"] = ExpressionConverter.ConvertO(__workflow_bodyhours);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["project_id"] = ExpressionConverter.ConvertO(bodyprojectId);
+                body["project_id"] = ExpressionConverter.ConvertO(__workflow_bodyprojectId);
                 bodypropCount++;
-                body["task_id"] = ExpressionConverter.ConvertO(bodytaskId);
-                if (bodydate != null)
+                body["task_id"] = ExpressionConverter.ConvertO(__workflow_bodytaskId);
+                if (__workflow_bodydate != null)
                 {
-                    body["spent_at"] = ExpressionConverter.ConvertO(bodydate);
+                    body["spent_at"] = ExpressionConverter.ConvertO(__workflow_bodydate);
                     bodypropCount++;
                 }
 
@@ -403,19 +401,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteTimeEntry))]
-        public IWorkflowAction DeleteTimeEntry([WorkflowExpression] Func<string> dAYENTRYID)
+        public IWorkflowAction DeleteTimeEntry(Expression<Func<string>> dAYENTRYID)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDeleteTimeEntry(WorkflowExpression<string> dAYENTRYID)
-        {
-            WorkflowExpression.Validate(dAYENTRYID, nameof(dAYENTRYID), required: true);
+            var __workflow_dAYENTRYID = dAYENTRYID == null ? null : WorkflowExpression.Compile(dAYENTRYID);
+            WorkflowExpression.Validate(__workflow_dAYENTRYID, nameof(dAYENTRYID), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/daily/delete/{0}", ExpressionConverter.ConvertWithUrlEncoding(dAYENTRYID, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/daily/delete/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dAYENTRYID, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -423,29 +415,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
-        [WorkflowExpressionFactory(nameof(__BuildAddUserToProject))]
-        public IWorkflowAction AddUserToProject([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<int> bodyuseruserId = null)
+        public IWorkflowAction AddUserToProject(Expression<Func<string>> projectId, Expression<Func<int>> bodyuseruserId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildAddUserToProject(WorkflowExpression<string> projectId, WorkflowExpression<int> bodyuseruserId = null)
-        {
-            WorkflowExpression.Validate(projectId, nameof(projectId), required: true);
-            WorkflowExpression.Validate(bodyuseruserId, nameof(bodyuseruserId), required: false);
+            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
+            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
+            var __workflow_bodyuseruserId = bodyuseruserId == null ? null : WorkflowExpression.Compile(bodyuseruserId);
+            WorkflowExpression.Validate(__workflow_bodyuseruserId, nameof(bodyuseruserId), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/projects/{0}/user_assignments", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/projects/{0}/user_assignments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 var userObject = new JObject();
                 var userObjectpropCount = 0;
-                if (bodyuseruserId != null)
+                if (__workflow_bodyuseruserId != null)
                 {
-                    userObject["id"] = ExpressionConverter.ConvertO(bodyuseruserId);
+                    userObject["id"] = ExpressionConverter.ConvertO(__workflow_bodyuseruserId);
                     userObjectpropCount++;
                 }
 
@@ -465,19 +452,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
-        [WorkflowExpressionFactory(nameof(__BuildGetTimeEntry))]
-        public IBodyWorkflowAction<UpdateTimeEntryResponse> GetTimeEntry([WorkflowExpression] Func<string> dAYENTRYID)
+        public IBodyWorkflowAction<UpdateTimeEntryResponse> GetTimeEntry(Expression<Func<string>> dAYENTRYID)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UpdateTimeEntryResponse> __BuildGetTimeEntry(WorkflowExpression<string> dAYENTRYID)
-        {
-            WorkflowExpression.Validate(dAYENTRYID, nameof(dAYENTRYID), required: true);
+            var __workflow_dAYENTRYID = dAYENTRYID == null ? null : WorkflowExpression.Compile(dAYENTRYID);
+            WorkflowExpression.Validate(__workflow_dAYENTRYID, nameof(dAYENTRYID), required: true);
             return new DeferredBodyAction<UpdateTimeEntryResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/daily/show/{0}", ExpressionConverter.ConvertWithUrlEncoding(dAYENTRYID, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/daily/show/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dAYENTRYID, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<UpdateTimeEntryResponse>(callPayload);
@@ -494,19 +475,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
-        [WorkflowExpressionFactory(nameof(__BuildGetUser))]
-        public IBodyWorkflowAction<GetUserByIDResponse> GetUser([WorkflowExpression] Func<string> uSERID)
+        public IBodyWorkflowAction<GetUserByIDResponse> GetUser(Expression<Func<string>> uSERID)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetUserByIDResponse> __BuildGetUser(WorkflowExpression<string> uSERID)
-        {
-            WorkflowExpression.Validate(uSERID, nameof(uSERID), required: true);
+            var __workflow_uSERID = uSERID == null ? null : WorkflowExpression.Compile(uSERID);
+            WorkflowExpression.Validate(__workflow_uSERID, nameof(uSERID), required: true);
             return new DeferredBodyAction<GetUserByIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/people/{0}", ExpressionConverter.ConvertWithUrlEncoding(uSERID, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/people/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_uSERID, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetUserByIDResponse>(callPayload);
@@ -548,46 +523,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
             return new ApiConnectionTrigger<ListProjectsResponseItem[]>(callPayload, recurrence: recurrence);
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildTrigNewTimeEntryToday))]
-        public IBodyWorkflowTrigger<GetTimeEntriesForDayResponse> TrigNewTimeEntryToday([WorkflowExpression] Func<string> ofUser = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GetTimeEntriesForDayResponse> TrigNewTimeEntryToday(Expression<Func<string>> ofUser = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<GetTimeEntriesForDayResponse> __BuildTrigNewTimeEntryToday(WorkflowExpression<string> ofUser = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(ofUser, nameof(ofUser), required: false);
+            var __workflow_ofUser = ofUser == null ? null : WorkflowExpression.Compile(ofUser);
+            WorkflowExpression.Validate(__workflow_ofUser, nameof(ofUser), required: false);
             return new DeferredBodyTrigger<GetTimeEntriesForDayResponse>(() =>
             {
                 var apiCallPath = "/trigger/daily";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (ofUser != null)
-                    callPayload.Queries["of_user"] = ExpressionConverter.Convert(ofUser);
+                if (__workflow_ofUser != null)
+                    callPayload.Queries["of_user"] = ExpressionConverter.Convert(__workflow_ofUser);
                 return new ApiConnectionTrigger<GetTimeEntriesForDayResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildTrigNewTimeEntry))]
-        public IBodyWorkflowTrigger<GetTimeEntriesForDayResponse> TrigNewTimeEntry([WorkflowExpression] Func<string> date,[WorkflowExpression] Func<string> ofUser = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GetTimeEntriesForDayResponse> TrigNewTimeEntry(Expression<Func<string>> date, Expression<Func<string>> ofUser = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<GetTimeEntriesForDayResponse> __BuildTrigNewTimeEntry(WorkflowExpression<string> date,WorkflowExpression<string> ofUser = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(date, nameof(date), required: true);
-            WorkflowExpression.Validate(ofUser, nameof(ofUser), required: false);
+            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
+            WorkflowExpression.Validate(__workflow_date, nameof(date), required: true);
+            var __workflow_ofUser = ofUser == null ? null : WorkflowExpression.Compile(ofUser);
+            WorkflowExpression.Validate(__workflow_ofUser, nameof(ofUser), required: false);
             return new DeferredBodyTrigger<GetTimeEntriesForDayResponse>(() =>
             {
                 var apiCallPath = "/trigger/daily/day/year";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["date"] = ExpressionConverter.Convert(date);
-                if (ofUser != null)
-                    callPayload.Queries["of_user"] = ExpressionConverter.Convert(ofUser);
+                callPayload.Queries["date"] = ExpressionConverter.Convert(__workflow_date);
+                if (__workflow_ofUser != null)
+                    callPayload.Queries["of_user"] = ExpressionConverter.Convert(__workflow_ofUser);
                 return new ApiConnectionTrigger<GetTimeEntriesForDayResponse>(callPayload, recurrence: recurrence);
             });
         }

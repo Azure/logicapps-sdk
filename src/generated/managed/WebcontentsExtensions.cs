@@ -1,50 +1,39 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webcontents
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class WebcontentsActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webcontents")]
-        [WorkflowExpressionFactory(nameof(__BuildGetFileContent))]
-        public IBodyWorkflowAction<string> GetFileContent([WorkflowExpression] Func<string> path)
+        public IBodyWorkflowAction<string> GetFileContent(Expression<Func<string>> path)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildGetFileContent(WorkflowExpression<string> path)
-        {
-            WorkflowExpression.Validate(path, nameof(path), required: true);
+            var __workflow_path = path == null ? null : WorkflowExpression.Compile(path);
+            WorkflowExpression.Validate(__workflow_path, nameof(path), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/GetFileContent";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["path"] = ExpressionConverter.Convert(path);
+                callPayload.Queries["path"] = ExpressionConverter.Convert(__workflow_path);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webcontents")]
-        [WorkflowExpressionFactory(nameof(__BuildInvokeHttp))]
-        public IBodyWorkflowAction<JToken> InvokeHttp([WorkflowExpression] Func<requestmethodInput> requestmethod, [WorkflowExpression] Func<string> requesturlOfTheRequest, [WorkflowExpression] Func<string> requestbodyOfTheRequest = null)
+        public IBodyWorkflowAction<JToken> InvokeHttp(Expression<Func<requestmethodInput>> requestmethod, Expression<Func<string>> requesturlOfTheRequest, Expression<Func<string>> requestbodyOfTheRequest = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildInvokeHttp(WorkflowExpression<requestmethodInput> requestmethod, WorkflowExpression<string> requesturlOfTheRequest, WorkflowExpression<string> requestbodyOfTheRequest = null)
-        {
-            WorkflowExpression.Validate(requestmethod, nameof(requestmethod), required: true);
-            WorkflowExpression.Validate(requesturlOfTheRequest, nameof(requesturlOfTheRequest), required: true);
-            WorkflowExpression.Validate(requestbodyOfTheRequest, nameof(requestbodyOfTheRequest), required: false);
+            var __workflow_requestmethod = requestmethod == null ? null : WorkflowExpression.Compile(requestmethod);
+            WorkflowExpression.Validate(__workflow_requestmethod, nameof(requestmethod), required: true);
+            var __workflow_requesturlOfTheRequest = requesturlOfTheRequest == null ? null : WorkflowExpression.Compile(requesturlOfTheRequest);
+            WorkflowExpression.Validate(__workflow_requesturlOfTheRequest, nameof(requesturlOfTheRequest), required: true);
+            var __workflow_requestbodyOfTheRequest = requestbodyOfTheRequest == null ? null : WorkflowExpression.Compile(requestbodyOfTheRequest);
+            WorkflowExpression.Validate(__workflow_requestbodyOfTheRequest, nameof(requestbodyOfTheRequest), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/codeless/InvokeHttp";
@@ -53,9 +42,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webcontents
                 var request = new JObject();
                 var requestpropCount = 0;
                 requestpropCount++;
-                request["method"] = ExpressionConverter.ConvertO(requestmethod);
+                request["method"] = ExpressionConverter.ConvertO(__workflow_requestmethod);
                 requestpropCount++;
-                request["url"] = ExpressionConverter.ConvertO(requesturlOfTheRequest);
+                request["url"] = ExpressionConverter.ConvertO(__workflow_requesturlOfTheRequest);
                 var headersObject = new JObject();
                 var headersObjectpropCount = 0;
                 if (headersObjectpropCount > 0)
@@ -64,9 +53,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webcontents
                     requestpropCount++;
                 }
 
-                if (requestbodyOfTheRequest != null)
+                if (__workflow_requestbodyOfTheRequest != null)
                 {
-                    request["body"] = ExpressionConverter.ConvertO(requestbodyOfTheRequest);
+                    request["body"] = ExpressionConverter.ConvertO(__workflow_requestbodyOfTheRequest);
                     requestpropCount++;
                 }
 

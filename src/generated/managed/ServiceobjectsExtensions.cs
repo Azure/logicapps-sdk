@@ -1,337 +1,351 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class ServiceobjectsActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serviceobjects")]
-        [WorkflowExpressionFactory(nameof(__BuildAVIGetAddressInfo))]
-        public IBodyWorkflowAction<AVIGetAddressInfoResponse> AVIGetAddressInfo([WorkflowExpression] Func<string> address1 = null, [WorkflowExpression] Func<string> address2 = null, [WorkflowExpression] Func<string> address3 = null, [WorkflowExpression] Func<string> address4 = null, [WorkflowExpression] Func<string> address5 = null, [WorkflowExpression] Func<string> locality = null, [WorkflowExpression] Func<string> administrativeArea = null, [WorkflowExpression] Func<string> postalCode = null, [WorkflowExpression] Func<string> country = null, [WorkflowExpression] Func<string> outputLanguage = null)
+        public IBodyWorkflowAction<AVIGetAddressInfoResponse> AVIGetAddressInfo(Expression<Func<string>> address1 = null, Expression<Func<string>> address2 = null, Expression<Func<string>> address3 = null, Expression<Func<string>> address4 = null, Expression<Func<string>> address5 = null, Expression<Func<string>> locality = null, Expression<Func<string>> administrativeArea = null, Expression<Func<string>> postalCode = null, Expression<Func<string>> country = null, Expression<Func<string>> outputLanguage = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AVIGetAddressInfoResponse> __BuildAVIGetAddressInfo(WorkflowExpression<string> address1 = null, WorkflowExpression<string> address2 = null, WorkflowExpression<string> address3 = null, WorkflowExpression<string> address4 = null, WorkflowExpression<string> address5 = null, WorkflowExpression<string> locality = null, WorkflowExpression<string> administrativeArea = null, WorkflowExpression<string> postalCode = null, WorkflowExpression<string> country = null, WorkflowExpression<string> outputLanguage = null)
-        {
-            WorkflowExpression.Validate(address1, nameof(address1), required: false);
-            WorkflowExpression.Validate(address2, nameof(address2), required: false);
-            WorkflowExpression.Validate(address3, nameof(address3), required: false);
-            WorkflowExpression.Validate(address4, nameof(address4), required: false);
-            WorkflowExpression.Validate(address5, nameof(address5), required: false);
-            WorkflowExpression.Validate(locality, nameof(locality), required: false);
-            WorkflowExpression.Validate(administrativeArea, nameof(administrativeArea), required: false);
-            WorkflowExpression.Validate(postalCode, nameof(postalCode), required: false);
-            WorkflowExpression.Validate(country, nameof(country), required: false);
-            WorkflowExpression.Validate(outputLanguage, nameof(outputLanguage), required: false);
+            var __workflow_address1 = address1 == null ? null : WorkflowExpression.Compile(address1);
+            WorkflowExpression.Validate(__workflow_address1, nameof(address1), required: false);
+            var __workflow_address2 = address2 == null ? null : WorkflowExpression.Compile(address2);
+            WorkflowExpression.Validate(__workflow_address2, nameof(address2), required: false);
+            var __workflow_address3 = address3 == null ? null : WorkflowExpression.Compile(address3);
+            WorkflowExpression.Validate(__workflow_address3, nameof(address3), required: false);
+            var __workflow_address4 = address4 == null ? null : WorkflowExpression.Compile(address4);
+            WorkflowExpression.Validate(__workflow_address4, nameof(address4), required: false);
+            var __workflow_address5 = address5 == null ? null : WorkflowExpression.Compile(address5);
+            WorkflowExpression.Validate(__workflow_address5, nameof(address5), required: false);
+            var __workflow_locality = locality == null ? null : WorkflowExpression.Compile(locality);
+            WorkflowExpression.Validate(__workflow_locality, nameof(locality), required: false);
+            var __workflow_administrativeArea = administrativeArea == null ? null : WorkflowExpression.Compile(administrativeArea);
+            WorkflowExpression.Validate(__workflow_administrativeArea, nameof(administrativeArea), required: false);
+            var __workflow_postalCode = postalCode == null ? null : WorkflowExpression.Compile(postalCode);
+            WorkflowExpression.Validate(__workflow_postalCode, nameof(postalCode), required: false);
+            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
+            WorkflowExpression.Validate(__workflow_country, nameof(country), required: false);
+            var __workflow_outputLanguage = outputLanguage == null ? null : WorkflowExpression.Compile(outputLanguage);
+            WorkflowExpression.Validate(__workflow_outputLanguage, nameof(outputLanguage), required: false);
             return new DeferredBodyAction<AVIGetAddressInfoResponse>(() =>
             {
                 var apiCallPath = "/AVI/api.svc/json/GetAddressInfo";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (address1 != null)
-                    callPayload.Queries["Address1"] = ExpressionConverter.Convert(address1);
-                if (address2 != null)
-                    callPayload.Queries["Address2"] = ExpressionConverter.Convert(address2);
-                if (address3 != null)
-                    callPayload.Queries["Address3"] = ExpressionConverter.Convert(address3);
-                if (address4 != null)
-                    callPayload.Queries["Address4"] = ExpressionConverter.Convert(address4);
-                if (address5 != null)
-                    callPayload.Queries["Address5"] = ExpressionConverter.Convert(address5);
-                if (locality != null)
-                    callPayload.Queries["Locality"] = ExpressionConverter.Convert(locality);
-                if (administrativeArea != null)
-                    callPayload.Queries["AdministrativeArea"] = ExpressionConverter.Convert(administrativeArea);
-                if (postalCode != null)
-                    callPayload.Queries["PostalCode"] = ExpressionConverter.Convert(postalCode);
-                if (country != null)
-                    callPayload.Queries["Country"] = ExpressionConverter.Convert(country);
-                if (outputLanguage != null)
-                    callPayload.Queries["OutputLanguage"] = ExpressionConverter.Convert(outputLanguage);
+                if (__workflow_address1 != null)
+                    callPayload.Queries["Address1"] = ExpressionConverter.Convert(__workflow_address1);
+                if (__workflow_address2 != null)
+                    callPayload.Queries["Address2"] = ExpressionConverter.Convert(__workflow_address2);
+                if (__workflow_address3 != null)
+                    callPayload.Queries["Address3"] = ExpressionConverter.Convert(__workflow_address3);
+                if (__workflow_address4 != null)
+                    callPayload.Queries["Address4"] = ExpressionConverter.Convert(__workflow_address4);
+                if (__workflow_address5 != null)
+                    callPayload.Queries["Address5"] = ExpressionConverter.Convert(__workflow_address5);
+                if (__workflow_locality != null)
+                    callPayload.Queries["Locality"] = ExpressionConverter.Convert(__workflow_locality);
+                if (__workflow_administrativeArea != null)
+                    callPayload.Queries["AdministrativeArea"] = ExpressionConverter.Convert(__workflow_administrativeArea);
+                if (__workflow_postalCode != null)
+                    callPayload.Queries["PostalCode"] = ExpressionConverter.Convert(__workflow_postalCode);
+                if (__workflow_country != null)
+                    callPayload.Queries["Country"] = ExpressionConverter.Convert(__workflow_country);
+                if (__workflow_outputLanguage != null)
+                    callPayload.Queries["OutputLanguage"] = ExpressionConverter.Convert(__workflow_outputLanguage);
                 return new ApiConnectionAction<AVIGetAddressInfoResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serviceobjects")]
-        [WorkflowExpressionFactory(nameof(__BuildAGIPlaceSearch))]
-        public IBodyWorkflowAction<AGIPlaceSearchResponse> AGIPlaceSearch([WorkflowExpression] Func<string> singleLine = null, [WorkflowExpression] Func<string> address1 = null, [WorkflowExpression] Func<string> address2 = null, [WorkflowExpression] Func<string> address3 = null, [WorkflowExpression] Func<string> address4 = null, [WorkflowExpression] Func<string> address5 = null, [WorkflowExpression] Func<string> locality = null, [WorkflowExpression] Func<string> administrativeArea = null, [WorkflowExpression] Func<string> postalCode = null, [WorkflowExpression] Func<string> country = null, [WorkflowExpression] Func<string> boundaries = null, [WorkflowExpression] Func<string> maxResults = null, [WorkflowExpression] Func<string> searchType = null, [WorkflowExpression] Func<string> extras = null)
+        public IBodyWorkflowAction<AGIPlaceSearchResponse> AGIPlaceSearch(Expression<Func<string>> singleLine = null, Expression<Func<string>> address1 = null, Expression<Func<string>> address2 = null, Expression<Func<string>> address3 = null, Expression<Func<string>> address4 = null, Expression<Func<string>> address5 = null, Expression<Func<string>> locality = null, Expression<Func<string>> administrativeArea = null, Expression<Func<string>> postalCode = null, Expression<Func<string>> country = null, Expression<Func<string>> boundaries = null, Expression<Func<string>> maxResults = null, Expression<Func<string>> searchType = null, Expression<Func<string>> extras = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AGIPlaceSearchResponse> __BuildAGIPlaceSearch(WorkflowExpression<string> singleLine = null, WorkflowExpression<string> address1 = null, WorkflowExpression<string> address2 = null, WorkflowExpression<string> address3 = null, WorkflowExpression<string> address4 = null, WorkflowExpression<string> address5 = null, WorkflowExpression<string> locality = null, WorkflowExpression<string> administrativeArea = null, WorkflowExpression<string> postalCode = null, WorkflowExpression<string> country = null, WorkflowExpression<string> boundaries = null, WorkflowExpression<string> maxResults = null, WorkflowExpression<string> searchType = null, WorkflowExpression<string> extras = null)
-        {
-            WorkflowExpression.Validate(singleLine, nameof(singleLine), required: false);
-            WorkflowExpression.Validate(address1, nameof(address1), required: false);
-            WorkflowExpression.Validate(address2, nameof(address2), required: false);
-            WorkflowExpression.Validate(address3, nameof(address3), required: false);
-            WorkflowExpression.Validate(address4, nameof(address4), required: false);
-            WorkflowExpression.Validate(address5, nameof(address5), required: false);
-            WorkflowExpression.Validate(locality, nameof(locality), required: false);
-            WorkflowExpression.Validate(administrativeArea, nameof(administrativeArea), required: false);
-            WorkflowExpression.Validate(postalCode, nameof(postalCode), required: false);
-            WorkflowExpression.Validate(country, nameof(country), required: false);
-            WorkflowExpression.Validate(boundaries, nameof(boundaries), required: false);
-            WorkflowExpression.Validate(maxResults, nameof(maxResults), required: false);
-            WorkflowExpression.Validate(searchType, nameof(searchType), required: false);
-            WorkflowExpression.Validate(extras, nameof(extras), required: false);
+            var __workflow_singleLine = singleLine == null ? null : WorkflowExpression.Compile(singleLine);
+            WorkflowExpression.Validate(__workflow_singleLine, nameof(singleLine), required: false);
+            var __workflow_address1 = address1 == null ? null : WorkflowExpression.Compile(address1);
+            WorkflowExpression.Validate(__workflow_address1, nameof(address1), required: false);
+            var __workflow_address2 = address2 == null ? null : WorkflowExpression.Compile(address2);
+            WorkflowExpression.Validate(__workflow_address2, nameof(address2), required: false);
+            var __workflow_address3 = address3 == null ? null : WorkflowExpression.Compile(address3);
+            WorkflowExpression.Validate(__workflow_address3, nameof(address3), required: false);
+            var __workflow_address4 = address4 == null ? null : WorkflowExpression.Compile(address4);
+            WorkflowExpression.Validate(__workflow_address4, nameof(address4), required: false);
+            var __workflow_address5 = address5 == null ? null : WorkflowExpression.Compile(address5);
+            WorkflowExpression.Validate(__workflow_address5, nameof(address5), required: false);
+            var __workflow_locality = locality == null ? null : WorkflowExpression.Compile(locality);
+            WorkflowExpression.Validate(__workflow_locality, nameof(locality), required: false);
+            var __workflow_administrativeArea = administrativeArea == null ? null : WorkflowExpression.Compile(administrativeArea);
+            WorkflowExpression.Validate(__workflow_administrativeArea, nameof(administrativeArea), required: false);
+            var __workflow_postalCode = postalCode == null ? null : WorkflowExpression.Compile(postalCode);
+            WorkflowExpression.Validate(__workflow_postalCode, nameof(postalCode), required: false);
+            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
+            WorkflowExpression.Validate(__workflow_country, nameof(country), required: false);
+            var __workflow_boundaries = boundaries == null ? null : WorkflowExpression.Compile(boundaries);
+            WorkflowExpression.Validate(__workflow_boundaries, nameof(boundaries), required: false);
+            var __workflow_maxResults = maxResults == null ? null : WorkflowExpression.Compile(maxResults);
+            WorkflowExpression.Validate(__workflow_maxResults, nameof(maxResults), required: false);
+            var __workflow_searchType = searchType == null ? null : WorkflowExpression.Compile(searchType);
+            WorkflowExpression.Validate(__workflow_searchType, nameof(searchType), required: false);
+            var __workflow_extras = extras == null ? null : WorkflowExpression.Compile(extras);
+            WorkflowExpression.Validate(__workflow_extras, nameof(extras), required: false);
             return new DeferredBodyAction<AGIPlaceSearchResponse>(() =>
             {
                 var apiCallPath = "/AGI/api.svc/json/PlaceSearch";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (singleLine != null)
-                    callPayload.Queries["SingleLine"] = ExpressionConverter.Convert(singleLine);
-                if (address1 != null)
-                    callPayload.Queries["Address1"] = ExpressionConverter.Convert(address1);
-                if (address2 != null)
-                    callPayload.Queries["Address2"] = ExpressionConverter.Convert(address2);
-                if (address3 != null)
-                    callPayload.Queries["Address3"] = ExpressionConverter.Convert(address3);
-                if (address4 != null)
-                    callPayload.Queries["Address4"] = ExpressionConverter.Convert(address4);
-                if (address5 != null)
-                    callPayload.Queries["Address5"] = ExpressionConverter.Convert(address5);
-                if (locality != null)
-                    callPayload.Queries["Locality"] = ExpressionConverter.Convert(locality);
-                if (administrativeArea != null)
-                    callPayload.Queries["AdministrativeArea"] = ExpressionConverter.Convert(administrativeArea);
-                if (postalCode != null)
-                    callPayload.Queries["PostalCode"] = ExpressionConverter.Convert(postalCode);
-                if (country != null)
-                    callPayload.Queries["Country"] = ExpressionConverter.Convert(country);
-                if (boundaries != null)
-                    callPayload.Queries["Boundaries"] = ExpressionConverter.Convert(boundaries);
-                if (maxResults != null)
-                    callPayload.Queries["MaxResults"] = ExpressionConverter.Convert(maxResults);
-                if (searchType != null)
-                    callPayload.Queries["SearchType"] = ExpressionConverter.Convert(searchType);
-                if (extras != null)
-                    callPayload.Queries["Extras"] = ExpressionConverter.Convert(extras);
+                if (__workflow_singleLine != null)
+                    callPayload.Queries["SingleLine"] = ExpressionConverter.Convert(__workflow_singleLine);
+                if (__workflow_address1 != null)
+                    callPayload.Queries["Address1"] = ExpressionConverter.Convert(__workflow_address1);
+                if (__workflow_address2 != null)
+                    callPayload.Queries["Address2"] = ExpressionConverter.Convert(__workflow_address2);
+                if (__workflow_address3 != null)
+                    callPayload.Queries["Address3"] = ExpressionConverter.Convert(__workflow_address3);
+                if (__workflow_address4 != null)
+                    callPayload.Queries["Address4"] = ExpressionConverter.Convert(__workflow_address4);
+                if (__workflow_address5 != null)
+                    callPayload.Queries["Address5"] = ExpressionConverter.Convert(__workflow_address5);
+                if (__workflow_locality != null)
+                    callPayload.Queries["Locality"] = ExpressionConverter.Convert(__workflow_locality);
+                if (__workflow_administrativeArea != null)
+                    callPayload.Queries["AdministrativeArea"] = ExpressionConverter.Convert(__workflow_administrativeArea);
+                if (__workflow_postalCode != null)
+                    callPayload.Queries["PostalCode"] = ExpressionConverter.Convert(__workflow_postalCode);
+                if (__workflow_country != null)
+                    callPayload.Queries["Country"] = ExpressionConverter.Convert(__workflow_country);
+                if (__workflow_boundaries != null)
+                    callPayload.Queries["Boundaries"] = ExpressionConverter.Convert(__workflow_boundaries);
+                if (__workflow_maxResults != null)
+                    callPayload.Queries["MaxResults"] = ExpressionConverter.Convert(__workflow_maxResults);
+                if (__workflow_searchType != null)
+                    callPayload.Queries["SearchType"] = ExpressionConverter.Convert(__workflow_searchType);
+                if (__workflow_extras != null)
+                    callPayload.Queries["Extras"] = ExpressionConverter.Convert(__workflow_extras);
                 return new ApiConnectionAction<AGIPlaceSearchResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serviceobjects")]
-        [WorkflowExpressionFactory(nameof(__BuildAGIReverseSearch))]
-        public IBodyWorkflowAction<AGIReverseSearchResponse> AGIReverseSearch([WorkflowExpression] Func<string> latitude = null, [WorkflowExpression] Func<string> longitude = null, [WorkflowExpression] Func<string> searchRadius = null, [WorkflowExpression] Func<string> country = null, [WorkflowExpression] Func<string> maxResults = null, [WorkflowExpression] Func<string> searchType = null)
+        public IBodyWorkflowAction<AGIReverseSearchResponse> AGIReverseSearch(Expression<Func<string>> latitude = null, Expression<Func<string>> longitude = null, Expression<Func<string>> searchRadius = null, Expression<Func<string>> country = null, Expression<Func<string>> maxResults = null, Expression<Func<string>> searchType = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AGIReverseSearchResponse> __BuildAGIReverseSearch(WorkflowExpression<string> latitude = null, WorkflowExpression<string> longitude = null, WorkflowExpression<string> searchRadius = null, WorkflowExpression<string> country = null, WorkflowExpression<string> maxResults = null, WorkflowExpression<string> searchType = null)
-        {
-            WorkflowExpression.Validate(latitude, nameof(latitude), required: false);
-            WorkflowExpression.Validate(longitude, nameof(longitude), required: false);
-            WorkflowExpression.Validate(searchRadius, nameof(searchRadius), required: false);
-            WorkflowExpression.Validate(country, nameof(country), required: false);
-            WorkflowExpression.Validate(maxResults, nameof(maxResults), required: false);
-            WorkflowExpression.Validate(searchType, nameof(searchType), required: false);
+            var __workflow_latitude = latitude == null ? null : WorkflowExpression.Compile(latitude);
+            WorkflowExpression.Validate(__workflow_latitude, nameof(latitude), required: false);
+            var __workflow_longitude = longitude == null ? null : WorkflowExpression.Compile(longitude);
+            WorkflowExpression.Validate(__workflow_longitude, nameof(longitude), required: false);
+            var __workflow_searchRadius = searchRadius == null ? null : WorkflowExpression.Compile(searchRadius);
+            WorkflowExpression.Validate(__workflow_searchRadius, nameof(searchRadius), required: false);
+            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
+            WorkflowExpression.Validate(__workflow_country, nameof(country), required: false);
+            var __workflow_maxResults = maxResults == null ? null : WorkflowExpression.Compile(maxResults);
+            WorkflowExpression.Validate(__workflow_maxResults, nameof(maxResults), required: false);
+            var __workflow_searchType = searchType == null ? null : WorkflowExpression.Compile(searchType);
+            WorkflowExpression.Validate(__workflow_searchType, nameof(searchType), required: false);
             return new DeferredBodyAction<AGIReverseSearchResponse>(() =>
             {
                 var apiCallPath = "/AGI/api.svc/json/ReverseSearch";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (latitude != null)
-                    callPayload.Queries["Latitude"] = ExpressionConverter.Convert(latitude);
-                if (longitude != null)
-                    callPayload.Queries["Longitude"] = ExpressionConverter.Convert(longitude);
-                if (searchRadius != null)
-                    callPayload.Queries["SearchRadius"] = ExpressionConverter.Convert(searchRadius);
-                if (country != null)
-                    callPayload.Queries["Country"] = ExpressionConverter.Convert(country);
-                if (maxResults != null)
-                    callPayload.Queries["MaxResults"] = ExpressionConverter.Convert(maxResults);
-                if (searchType != null)
-                    callPayload.Queries["SearchType"] = ExpressionConverter.Convert(searchType);
+                if (__workflow_latitude != null)
+                    callPayload.Queries["Latitude"] = ExpressionConverter.Convert(__workflow_latitude);
+                if (__workflow_longitude != null)
+                    callPayload.Queries["Longitude"] = ExpressionConverter.Convert(__workflow_longitude);
+                if (__workflow_searchRadius != null)
+                    callPayload.Queries["SearchRadius"] = ExpressionConverter.Convert(__workflow_searchRadius);
+                if (__workflow_country != null)
+                    callPayload.Queries["Country"] = ExpressionConverter.Convert(__workflow_country);
+                if (__workflow_maxResults != null)
+                    callPayload.Queries["MaxResults"] = ExpressionConverter.Convert(__workflow_maxResults);
+                if (__workflow_searchType != null)
+                    callPayload.Queries["SearchType"] = ExpressionConverter.Convert(__workflow_searchType);
                 return new ApiConnectionAction<AGIReverseSearchResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serviceobjects")]
-        [WorkflowExpressionFactory(nameof(__BuildPE2IGetInternationalExchangeInfo))]
-        public IBodyWorkflowAction<PE2IGetInternationalExchangeInfoResponse> PE2IGetInternationalExchangeInfo([WorkflowExpression] Func<string> phoneNumber = null, [WorkflowExpression] Func<string> country = null)
+        public IBodyWorkflowAction<PE2IGetInternationalExchangeInfoResponse> PE2IGetInternationalExchangeInfo(Expression<Func<string>> phoneNumber = null, Expression<Func<string>> country = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PE2IGetInternationalExchangeInfoResponse> __BuildPE2IGetInternationalExchangeInfo(WorkflowExpression<string> phoneNumber = null, WorkflowExpression<string> country = null)
-        {
-            WorkflowExpression.Validate(phoneNumber, nameof(phoneNumber), required: false);
-            WorkflowExpression.Validate(country, nameof(country), required: false);
+            var __workflow_phoneNumber = phoneNumber == null ? null : WorkflowExpression.Compile(phoneNumber);
+            WorkflowExpression.Validate(__workflow_phoneNumber, nameof(phoneNumber), required: false);
+            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
+            WorkflowExpression.Validate(__workflow_country, nameof(country), required: false);
             return new DeferredBodyAction<PE2IGetInternationalExchangeInfoResponse>(() =>
             {
                 var apiCallPath = "/PE2/web.svc/json/GetInternationalExchangeInfo";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (phoneNumber != null)
-                    callPayload.Queries["PhoneNumber"] = ExpressionConverter.Convert(phoneNumber);
-                if (country != null)
-                    callPayload.Queries["Country"] = ExpressionConverter.Convert(country);
+                if (__workflow_phoneNumber != null)
+                    callPayload.Queries["PhoneNumber"] = ExpressionConverter.Convert(__workflow_phoneNumber);
+                if (__workflow_country != null)
+                    callPayload.Queries["Country"] = ExpressionConverter.Convert(__workflow_country);
                 return new ApiConnectionAction<PE2IGetInternationalExchangeInfoResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serviceobjects")]
-        [WorkflowExpressionFactory(nameof(__BuildLVIValidateLeadInternational))]
-        public IBodyWorkflowAction<LVIValidateLeadInternationalResponse> LVIValidateLeadInternational([WorkflowExpression] Func<string> fullName = null, [WorkflowExpression] Func<string> salutation = null, [WorkflowExpression] Func<string> firstName = null, [WorkflowExpression] Func<string> lastName = null, [WorkflowExpression] Func<string> businessName = null, [WorkflowExpression] Func<string> businessDomain = null, [WorkflowExpression] Func<string> businessEIN = null, [WorkflowExpression] Func<string> address1 = null, [WorkflowExpression] Func<string> address2 = null, [WorkflowExpression] Func<string> address3 = null, [WorkflowExpression] Func<string> address4 = null, [WorkflowExpression] Func<string> address5 = null, [WorkflowExpression] Func<string> locality = null, [WorkflowExpression] Func<string> adminArea = null, [WorkflowExpression] Func<string> postalCode = null, [WorkflowExpression] Func<string> country = null, [WorkflowExpression] Func<string> phone1 = null, [WorkflowExpression] Func<string> phone2 = null, [WorkflowExpression] Func<string> email = null, [WorkflowExpression] Func<string> iPAddress = null, [WorkflowExpression] Func<string> gender = null, [WorkflowExpression] Func<string> dateOfBirth = null, [WorkflowExpression] Func<string> uTCCaptureTime = null, [WorkflowExpression] Func<string> outputLanguage = null, [WorkflowExpression] Func<string> testType = null)
+        public IBodyWorkflowAction<LVIValidateLeadInternationalResponse> LVIValidateLeadInternational(Expression<Func<string>> fullName = null, Expression<Func<string>> salutation = null, Expression<Func<string>> firstName = null, Expression<Func<string>> lastName = null, Expression<Func<string>> businessName = null, Expression<Func<string>> businessDomain = null, Expression<Func<string>> businessEIN = null, Expression<Func<string>> address1 = null, Expression<Func<string>> address2 = null, Expression<Func<string>> address3 = null, Expression<Func<string>> address4 = null, Expression<Func<string>> address5 = null, Expression<Func<string>> locality = null, Expression<Func<string>> adminArea = null, Expression<Func<string>> postalCode = null, Expression<Func<string>> country = null, Expression<Func<string>> phone1 = null, Expression<Func<string>> phone2 = null, Expression<Func<string>> email = null, Expression<Func<string>> iPAddress = null, Expression<Func<string>> gender = null, Expression<Func<string>> dateOfBirth = null, Expression<Func<string>> uTCCaptureTime = null, Expression<Func<string>> outputLanguage = null, Expression<Func<string>> testType = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<LVIValidateLeadInternationalResponse> __BuildLVIValidateLeadInternational(WorkflowExpression<string> fullName = null, WorkflowExpression<string> salutation = null, WorkflowExpression<string> firstName = null, WorkflowExpression<string> lastName = null, WorkflowExpression<string> businessName = null, WorkflowExpression<string> businessDomain = null, WorkflowExpression<string> businessEIN = null, WorkflowExpression<string> address1 = null, WorkflowExpression<string> address2 = null, WorkflowExpression<string> address3 = null, WorkflowExpression<string> address4 = null, WorkflowExpression<string> address5 = null, WorkflowExpression<string> locality = null, WorkflowExpression<string> adminArea = null, WorkflowExpression<string> postalCode = null, WorkflowExpression<string> country = null, WorkflowExpression<string> phone1 = null, WorkflowExpression<string> phone2 = null, WorkflowExpression<string> email = null, WorkflowExpression<string> iPAddress = null, WorkflowExpression<string> gender = null, WorkflowExpression<string> dateOfBirth = null, WorkflowExpression<string> uTCCaptureTime = null, WorkflowExpression<string> outputLanguage = null, WorkflowExpression<string> testType = null)
-        {
-            WorkflowExpression.Validate(fullName, nameof(fullName), required: false);
-            WorkflowExpression.Validate(salutation, nameof(salutation), required: false);
-            WorkflowExpression.Validate(firstName, nameof(firstName), required: false);
-            WorkflowExpression.Validate(lastName, nameof(lastName), required: false);
-            WorkflowExpression.Validate(businessName, nameof(businessName), required: false);
-            WorkflowExpression.Validate(businessDomain, nameof(businessDomain), required: false);
-            WorkflowExpression.Validate(businessEIN, nameof(businessEIN), required: false);
-            WorkflowExpression.Validate(address1, nameof(address1), required: false);
-            WorkflowExpression.Validate(address2, nameof(address2), required: false);
-            WorkflowExpression.Validate(address3, nameof(address3), required: false);
-            WorkflowExpression.Validate(address4, nameof(address4), required: false);
-            WorkflowExpression.Validate(address5, nameof(address5), required: false);
-            WorkflowExpression.Validate(locality, nameof(locality), required: false);
-            WorkflowExpression.Validate(adminArea, nameof(adminArea), required: false);
-            WorkflowExpression.Validate(postalCode, nameof(postalCode), required: false);
-            WorkflowExpression.Validate(country, nameof(country), required: false);
-            WorkflowExpression.Validate(phone1, nameof(phone1), required: false);
-            WorkflowExpression.Validate(phone2, nameof(phone2), required: false);
-            WorkflowExpression.Validate(email, nameof(email), required: false);
-            WorkflowExpression.Validate(iPAddress, nameof(iPAddress), required: false);
-            WorkflowExpression.Validate(gender, nameof(gender), required: false);
-            WorkflowExpression.Validate(dateOfBirth, nameof(dateOfBirth), required: false);
-            WorkflowExpression.Validate(uTCCaptureTime, nameof(uTCCaptureTime), required: false);
-            WorkflowExpression.Validate(outputLanguage, nameof(outputLanguage), required: false);
-            WorkflowExpression.Validate(testType, nameof(testType), required: false);
+            var __workflow_fullName = fullName == null ? null : WorkflowExpression.Compile(fullName);
+            WorkflowExpression.Validate(__workflow_fullName, nameof(fullName), required: false);
+            var __workflow_salutation = salutation == null ? null : WorkflowExpression.Compile(salutation);
+            WorkflowExpression.Validate(__workflow_salutation, nameof(salutation), required: false);
+            var __workflow_firstName = firstName == null ? null : WorkflowExpression.Compile(firstName);
+            WorkflowExpression.Validate(__workflow_firstName, nameof(firstName), required: false);
+            var __workflow_lastName = lastName == null ? null : WorkflowExpression.Compile(lastName);
+            WorkflowExpression.Validate(__workflow_lastName, nameof(lastName), required: false);
+            var __workflow_businessName = businessName == null ? null : WorkflowExpression.Compile(businessName);
+            WorkflowExpression.Validate(__workflow_businessName, nameof(businessName), required: false);
+            var __workflow_businessDomain = businessDomain == null ? null : WorkflowExpression.Compile(businessDomain);
+            WorkflowExpression.Validate(__workflow_businessDomain, nameof(businessDomain), required: false);
+            var __workflow_businessEIN = businessEIN == null ? null : WorkflowExpression.Compile(businessEIN);
+            WorkflowExpression.Validate(__workflow_businessEIN, nameof(businessEIN), required: false);
+            var __workflow_address1 = address1 == null ? null : WorkflowExpression.Compile(address1);
+            WorkflowExpression.Validate(__workflow_address1, nameof(address1), required: false);
+            var __workflow_address2 = address2 == null ? null : WorkflowExpression.Compile(address2);
+            WorkflowExpression.Validate(__workflow_address2, nameof(address2), required: false);
+            var __workflow_address3 = address3 == null ? null : WorkflowExpression.Compile(address3);
+            WorkflowExpression.Validate(__workflow_address3, nameof(address3), required: false);
+            var __workflow_address4 = address4 == null ? null : WorkflowExpression.Compile(address4);
+            WorkflowExpression.Validate(__workflow_address4, nameof(address4), required: false);
+            var __workflow_address5 = address5 == null ? null : WorkflowExpression.Compile(address5);
+            WorkflowExpression.Validate(__workflow_address5, nameof(address5), required: false);
+            var __workflow_locality = locality == null ? null : WorkflowExpression.Compile(locality);
+            WorkflowExpression.Validate(__workflow_locality, nameof(locality), required: false);
+            var __workflow_adminArea = adminArea == null ? null : WorkflowExpression.Compile(adminArea);
+            WorkflowExpression.Validate(__workflow_adminArea, nameof(adminArea), required: false);
+            var __workflow_postalCode = postalCode == null ? null : WorkflowExpression.Compile(postalCode);
+            WorkflowExpression.Validate(__workflow_postalCode, nameof(postalCode), required: false);
+            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
+            WorkflowExpression.Validate(__workflow_country, nameof(country), required: false);
+            var __workflow_phone1 = phone1 == null ? null : WorkflowExpression.Compile(phone1);
+            WorkflowExpression.Validate(__workflow_phone1, nameof(phone1), required: false);
+            var __workflow_phone2 = phone2 == null ? null : WorkflowExpression.Compile(phone2);
+            WorkflowExpression.Validate(__workflow_phone2, nameof(phone2), required: false);
+            var __workflow_email = email == null ? null : WorkflowExpression.Compile(email);
+            WorkflowExpression.Validate(__workflow_email, nameof(email), required: false);
+            var __workflow_iPAddress = iPAddress == null ? null : WorkflowExpression.Compile(iPAddress);
+            WorkflowExpression.Validate(__workflow_iPAddress, nameof(iPAddress), required: false);
+            var __workflow_gender = gender == null ? null : WorkflowExpression.Compile(gender);
+            WorkflowExpression.Validate(__workflow_gender, nameof(gender), required: false);
+            var __workflow_dateOfBirth = dateOfBirth == null ? null : WorkflowExpression.Compile(dateOfBirth);
+            WorkflowExpression.Validate(__workflow_dateOfBirth, nameof(dateOfBirth), required: false);
+            var __workflow_uTCCaptureTime = uTCCaptureTime == null ? null : WorkflowExpression.Compile(uTCCaptureTime);
+            WorkflowExpression.Validate(__workflow_uTCCaptureTime, nameof(uTCCaptureTime), required: false);
+            var __workflow_outputLanguage = outputLanguage == null ? null : WorkflowExpression.Compile(outputLanguage);
+            WorkflowExpression.Validate(__workflow_outputLanguage, nameof(outputLanguage), required: false);
+            var __workflow_testType = testType == null ? null : WorkflowExpression.Compile(testType);
+            WorkflowExpression.Validate(__workflow_testType, nameof(testType), required: false);
             return new DeferredBodyAction<LVIValidateLeadInternationalResponse>(() =>
             {
                 var apiCallPath = "/LVI/api.svc/json/ValidateLeadInternational";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (fullName != null)
-                    callPayload.Queries["FullName"] = ExpressionConverter.Convert(fullName);
-                if (salutation != null)
-                    callPayload.Queries["Salutation"] = ExpressionConverter.Convert(salutation);
-                if (firstName != null)
-                    callPayload.Queries["FirstName"] = ExpressionConverter.Convert(firstName);
-                if (lastName != null)
-                    callPayload.Queries["LastName"] = ExpressionConverter.Convert(lastName);
-                if (businessName != null)
-                    callPayload.Queries["BusinessName"] = ExpressionConverter.Convert(businessName);
-                if (businessDomain != null)
-                    callPayload.Queries["BusinessDomain"] = ExpressionConverter.Convert(businessDomain);
-                if (businessEIN != null)
-                    callPayload.Queries["BusinessEIN"] = ExpressionConverter.Convert(businessEIN);
-                if (address1 != null)
-                    callPayload.Queries["Address1"] = ExpressionConverter.Convert(address1);
-                if (address2 != null)
-                    callPayload.Queries["Address2"] = ExpressionConverter.Convert(address2);
-                if (address3 != null)
-                    callPayload.Queries["Address3"] = ExpressionConverter.Convert(address3);
-                if (address4 != null)
-                    callPayload.Queries["Address4"] = ExpressionConverter.Convert(address4);
-                if (address5 != null)
-                    callPayload.Queries["Address5"] = ExpressionConverter.Convert(address5);
-                if (locality != null)
-                    callPayload.Queries["Locality"] = ExpressionConverter.Convert(locality);
-                if (adminArea != null)
-                    callPayload.Queries["AdminArea"] = ExpressionConverter.Convert(adminArea);
-                if (postalCode != null)
-                    callPayload.Queries["PostalCode"] = ExpressionConverter.Convert(postalCode);
-                if (country != null)
-                    callPayload.Queries["Country"] = ExpressionConverter.Convert(country);
-                if (phone1 != null)
-                    callPayload.Queries["Phone1"] = ExpressionConverter.Convert(phone1);
-                if (phone2 != null)
-                    callPayload.Queries["Phone2"] = ExpressionConverter.Convert(phone2);
-                if (email != null)
-                    callPayload.Queries["Email"] = ExpressionConverter.Convert(email);
-                if (iPAddress != null)
-                    callPayload.Queries["IPAddress"] = ExpressionConverter.Convert(iPAddress);
-                if (gender != null)
-                    callPayload.Queries["Gender"] = ExpressionConverter.Convert(gender);
-                if (dateOfBirth != null)
-                    callPayload.Queries["DateOfBirth"] = ExpressionConverter.Convert(dateOfBirth);
-                if (uTCCaptureTime != null)
-                    callPayload.Queries["UTCCaptureTime"] = ExpressionConverter.Convert(uTCCaptureTime);
-                if (outputLanguage != null)
-                    callPayload.Queries["OutputLanguage"] = ExpressionConverter.Convert(outputLanguage);
-                if (testType != null)
-                    callPayload.Queries["TestType"] = ExpressionConverter.Convert(testType);
+                if (__workflow_fullName != null)
+                    callPayload.Queries["FullName"] = ExpressionConverter.Convert(__workflow_fullName);
+                if (__workflow_salutation != null)
+                    callPayload.Queries["Salutation"] = ExpressionConverter.Convert(__workflow_salutation);
+                if (__workflow_firstName != null)
+                    callPayload.Queries["FirstName"] = ExpressionConverter.Convert(__workflow_firstName);
+                if (__workflow_lastName != null)
+                    callPayload.Queries["LastName"] = ExpressionConverter.Convert(__workflow_lastName);
+                if (__workflow_businessName != null)
+                    callPayload.Queries["BusinessName"] = ExpressionConverter.Convert(__workflow_businessName);
+                if (__workflow_businessDomain != null)
+                    callPayload.Queries["BusinessDomain"] = ExpressionConverter.Convert(__workflow_businessDomain);
+                if (__workflow_businessEIN != null)
+                    callPayload.Queries["BusinessEIN"] = ExpressionConverter.Convert(__workflow_businessEIN);
+                if (__workflow_address1 != null)
+                    callPayload.Queries["Address1"] = ExpressionConverter.Convert(__workflow_address1);
+                if (__workflow_address2 != null)
+                    callPayload.Queries["Address2"] = ExpressionConverter.Convert(__workflow_address2);
+                if (__workflow_address3 != null)
+                    callPayload.Queries["Address3"] = ExpressionConverter.Convert(__workflow_address3);
+                if (__workflow_address4 != null)
+                    callPayload.Queries["Address4"] = ExpressionConverter.Convert(__workflow_address4);
+                if (__workflow_address5 != null)
+                    callPayload.Queries["Address5"] = ExpressionConverter.Convert(__workflow_address5);
+                if (__workflow_locality != null)
+                    callPayload.Queries["Locality"] = ExpressionConverter.Convert(__workflow_locality);
+                if (__workflow_adminArea != null)
+                    callPayload.Queries["AdminArea"] = ExpressionConverter.Convert(__workflow_adminArea);
+                if (__workflow_postalCode != null)
+                    callPayload.Queries["PostalCode"] = ExpressionConverter.Convert(__workflow_postalCode);
+                if (__workflow_country != null)
+                    callPayload.Queries["Country"] = ExpressionConverter.Convert(__workflow_country);
+                if (__workflow_phone1 != null)
+                    callPayload.Queries["Phone1"] = ExpressionConverter.Convert(__workflow_phone1);
+                if (__workflow_phone2 != null)
+                    callPayload.Queries["Phone2"] = ExpressionConverter.Convert(__workflow_phone2);
+                if (__workflow_email != null)
+                    callPayload.Queries["Email"] = ExpressionConverter.Convert(__workflow_email);
+                if (__workflow_iPAddress != null)
+                    callPayload.Queries["IPAddress"] = ExpressionConverter.Convert(__workflow_iPAddress);
+                if (__workflow_gender != null)
+                    callPayload.Queries["Gender"] = ExpressionConverter.Convert(__workflow_gender);
+                if (__workflow_dateOfBirth != null)
+                    callPayload.Queries["DateOfBirth"] = ExpressionConverter.Convert(__workflow_dateOfBirth);
+                if (__workflow_uTCCaptureTime != null)
+                    callPayload.Queries["UTCCaptureTime"] = ExpressionConverter.Convert(__workflow_uTCCaptureTime);
+                if (__workflow_outputLanguage != null)
+                    callPayload.Queries["OutputLanguage"] = ExpressionConverter.Convert(__workflow_outputLanguage);
+                if (__workflow_testType != null)
+                    callPayload.Queries["TestType"] = ExpressionConverter.Convert(__workflow_testType);
                 return new ApiConnectionAction<LVIValidateLeadInternationalResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serviceobjects")]
-        [WorkflowExpressionFactory(nameof(__BuildAV3GetBestMatches))]
-        public IBodyWorkflowAction<AV3GetBestMatchesResponse> AV3GetBestMatches([WorkflowExpression] Func<string> businessName = null, [WorkflowExpression] Func<string> address = null, [WorkflowExpression] Func<string> address2 = null, [WorkflowExpression] Func<string> city = null, [WorkflowExpression] Func<string> state = null, [WorkflowExpression] Func<string> postalCode = null)
+        public IBodyWorkflowAction<AV3GetBestMatchesResponse> AV3GetBestMatches(Expression<Func<string>> businessName = null, Expression<Func<string>> address = null, Expression<Func<string>> address2 = null, Expression<Func<string>> city = null, Expression<Func<string>> state = null, Expression<Func<string>> postalCode = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AV3GetBestMatchesResponse> __BuildAV3GetBestMatches(WorkflowExpression<string> businessName = null, WorkflowExpression<string> address = null, WorkflowExpression<string> address2 = null, WorkflowExpression<string> city = null, WorkflowExpression<string> state = null, WorkflowExpression<string> postalCode = null)
-        {
-            WorkflowExpression.Validate(businessName, nameof(businessName), required: false);
-            WorkflowExpression.Validate(address, nameof(address), required: false);
-            WorkflowExpression.Validate(address2, nameof(address2), required: false);
-            WorkflowExpression.Validate(city, nameof(city), required: false);
-            WorkflowExpression.Validate(state, nameof(state), required: false);
-            WorkflowExpression.Validate(postalCode, nameof(postalCode), required: false);
+            var __workflow_businessName = businessName == null ? null : WorkflowExpression.Compile(businessName);
+            WorkflowExpression.Validate(__workflow_businessName, nameof(businessName), required: false);
+            var __workflow_address = address == null ? null : WorkflowExpression.Compile(address);
+            WorkflowExpression.Validate(__workflow_address, nameof(address), required: false);
+            var __workflow_address2 = address2 == null ? null : WorkflowExpression.Compile(address2);
+            WorkflowExpression.Validate(__workflow_address2, nameof(address2), required: false);
+            var __workflow_city = city == null ? null : WorkflowExpression.Compile(city);
+            WorkflowExpression.Validate(__workflow_city, nameof(city), required: false);
+            var __workflow_state = state == null ? null : WorkflowExpression.Compile(state);
+            WorkflowExpression.Validate(__workflow_state, nameof(state), required: false);
+            var __workflow_postalCode = postalCode == null ? null : WorkflowExpression.Compile(postalCode);
+            WorkflowExpression.Validate(__workflow_postalCode, nameof(postalCode), required: false);
             return new DeferredBodyAction<AV3GetBestMatchesResponse>(() =>
             {
                 var apiCallPath = "/AV3/api.svc/GetBestMatchesJson";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (businessName != null)
-                    callPayload.Queries["BusinessName"] = ExpressionConverter.Convert(businessName);
-                if (address != null)
-                    callPayload.Queries["Address"] = ExpressionConverter.Convert(address);
-                if (address2 != null)
-                    callPayload.Queries["Address2"] = ExpressionConverter.Convert(address2);
-                if (city != null)
-                    callPayload.Queries["City"] = ExpressionConverter.Convert(city);
-                if (state != null)
-                    callPayload.Queries["State"] = ExpressionConverter.Convert(state);
-                if (postalCode != null)
-                    callPayload.Queries["PostalCode"] = ExpressionConverter.Convert(postalCode);
+                if (__workflow_businessName != null)
+                    callPayload.Queries["BusinessName"] = ExpressionConverter.Convert(__workflow_businessName);
+                if (__workflow_address != null)
+                    callPayload.Queries["Address"] = ExpressionConverter.Convert(__workflow_address);
+                if (__workflow_address2 != null)
+                    callPayload.Queries["Address2"] = ExpressionConverter.Convert(__workflow_address2);
+                if (__workflow_city != null)
+                    callPayload.Queries["City"] = ExpressionConverter.Convert(__workflow_city);
+                if (__workflow_state != null)
+                    callPayload.Queries["State"] = ExpressionConverter.Convert(__workflow_state);
+                if (__workflow_postalCode != null)
+                    callPayload.Queries["PostalCode"] = ExpressionConverter.Convert(__workflow_postalCode);
                 return new ApiConnectionAction<AV3GetBestMatchesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serviceobjects")]
-        [WorkflowExpressionFactory(nameof(__BuildIPAVGetLocationByIP))]
-        public IBodyWorkflowAction<IPAVGetLocationByIPV4Response> IPAVGetLocationByIP([WorkflowExpression] Func<string> iPAddress = null)
+        public IBodyWorkflowAction<IPAVGetLocationByIPV4Response> IPAVGetLocationByIP(Expression<Func<string>> iPAddress = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<IPAVGetLocationByIPV4Response> __BuildIPAVGetLocationByIP(WorkflowExpression<string> iPAddress = null)
-        {
-            WorkflowExpression.Validate(iPAddress, nameof(iPAddress), required: false);
+            var __workflow_iPAddress = iPAddress == null ? null : WorkflowExpression.Compile(iPAddress);
+            WorkflowExpression.Validate(__workflow_iPAddress, nameof(iPAddress), required: false);
             return new DeferredBodyAction<IPAVGetLocationByIPV4Response>(() =>
             {
                 var apiCallPath = "/GPP/web.svc/json/GetLocationByIP_V4";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (iPAddress != null)
-                    callPayload.Queries["IPAddress"] = ExpressionConverter.Convert(iPAddress);
+                if (__workflow_iPAddress != null)
+                    callPayload.Queries["IPAddress"] = ExpressionConverter.Convert(__workflow_iPAddress);
                 return new ApiConnectionAction<IPAVGetLocationByIPV4Response>(callPayload);
             });
         }

@@ -1,59 +1,49 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ventipixassetandinventory
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class VentipixassetandinventoryActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ventipixassetandinventory")]
-        [WorkflowExpressionFactory(nameof(__BuildGetListItems))]
-        public IBodyWorkflowAction<JToken> GetListItems([WorkflowExpression] Func<string> listIDDynamic, [WorkflowExpression] Func<string> barcodeValue, [WorkflowExpression] Func<string> location = null)
+        public IBodyWorkflowAction<JToken> GetListItems(Expression<Func<string>> listIDDynamic, Expression<Func<string>> barcodeValue, Expression<Func<string>> location = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildGetListItems(WorkflowExpression<string> listIDDynamic, WorkflowExpression<string> barcodeValue, WorkflowExpression<string> location = null)
-        {
-            WorkflowExpression.Validate(listIDDynamic, nameof(listIDDynamic), required: true);
-            WorkflowExpression.Validate(barcodeValue, nameof(barcodeValue), required: true);
-            WorkflowExpression.Validate(location, nameof(location), required: false);
+            var __workflow_listIDDynamic = listIDDynamic == null ? null : WorkflowExpression.Compile(listIDDynamic);
+            WorkflowExpression.Validate(__workflow_listIDDynamic, nameof(listIDDynamic), required: true);
+            var __workflow_barcodeValue = barcodeValue == null ? null : WorkflowExpression.Compile(barcodeValue);
+            WorkflowExpression.Validate(__workflow_barcodeValue, nameof(barcodeValue), required: true);
+            var __workflow_location = location == null ? null : WorkflowExpression.Compile(location);
+            WorkflowExpression.Validate(__workflow_location, nameof(location), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/app/flow/fetchsert/{0}", ExpressionConverter.ConvertWithUrlEncoding(listIDDynamic, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/app/flow/fetchsert/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listIDDynamic, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["barcode_value"] = ExpressionConverter.Convert(barcodeValue);
-                if (location != null)
-                    callPayload.Queries["location"] = ExpressionConverter.Convert(location);
+                callPayload.Queries["barcode_value"] = ExpressionConverter.Convert(__workflow_barcodeValue);
+                if (__workflow_location != null)
+                    callPayload.Queries["location"] = ExpressionConverter.Convert(__workflow_location);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ventipixassetandinventory")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateListItem))]
-        public IWorkflowAction CreateListItem([WorkflowExpression] Func<string> listIDDynamic, [WorkflowExpression] Func<object> dynamicListSchema = null)
+        public IWorkflowAction CreateListItem(Expression<Func<string>> listIDDynamic, Expression<Func<object>> dynamicListSchema = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildCreateListItem(WorkflowExpression<string> listIDDynamic, WorkflowExpression<object> dynamicListSchema = null)
-        {
-            WorkflowExpression.Validate(listIDDynamic, nameof(listIDDynamic), required: true);
-            WorkflowExpression.Validate(dynamicListSchema, nameof(dynamicListSchema), required: false);
+            var __workflow_listIDDynamic = listIDDynamic == null ? null : WorkflowExpression.Compile(listIDDynamic);
+            WorkflowExpression.Validate(__workflow_listIDDynamic, nameof(listIDDynamic), required: true);
+            var __workflow_dynamicListSchema = dynamicListSchema == null ? null : WorkflowExpression.Compile(dynamicListSchema);
+            WorkflowExpression.Validate(__workflow_dynamicListSchema, nameof(dynamicListSchema), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/app/flow/fetchsert/{0}", ExpressionConverter.ConvertWithUrlEncoding(listIDDynamic, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/app/flow/fetchsert/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listIDDynamic, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(dynamicListSchema);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_dynamicListSchema);
                 return new ApiConnectionAction(callPayload);
             });
         }

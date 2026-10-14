@@ -1,28 +1,22 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class CrmbotActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "crmbot")]
-        [WorkflowExpressionFactory(nameof(__BuildBuildCustomMessage))]
-        public IBodyWorkflowAction<BuildCustomMessageResponse> BuildCustomMessage([WorkflowExpression] Func<string> bodyplatform, [WorkflowExpression] Func<string> bodytext)
+        public IBodyWorkflowAction<BuildCustomMessageResponse> BuildCustomMessage(Expression<Func<string>> bodyplatform, Expression<Func<string>> bodytext)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<BuildCustomMessageResponse> __BuildBuildCustomMessage(WorkflowExpression<string> bodyplatform, WorkflowExpression<string> bodytext)
-        {
-            WorkflowExpression.Validate(bodyplatform, nameof(bodyplatform), required: true);
-            WorkflowExpression.Validate(bodytext, nameof(bodytext), required: true);
+            var __workflow_bodyplatform = bodyplatform == null ? null : WorkflowExpression.Compile(bodyplatform);
+            WorkflowExpression.Validate(__workflow_bodyplatform, nameof(bodyplatform), required: true);
+            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
+            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: true);
             return new DeferredBodyAction<BuildCustomMessageResponse>(() =>
             {
                 var apiCallPath = "/runtime/api/message/custom";
@@ -31,9 +25,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["platform"] = ExpressionConverter.ConvertO(bodyplatform);
+                body["platform"] = ExpressionConverter.ConvertO(__workflow_bodyplatform);
                 bodypropCount++;
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
+                body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -44,17 +38,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "crmbot")]
-        [WorkflowExpressionFactory(nameof(__BuildBuildTextMessage))]
-        public IBodyWorkflowAction<BuildTextMessageResponse> BuildTextMessage([WorkflowExpression] Func<string> bodyplatform, [WorkflowExpression] Func<string> bodytext)
+        public IBodyWorkflowAction<BuildTextMessageResponse> BuildTextMessage(Expression<Func<string>> bodyplatform, Expression<Func<string>> bodytext)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<BuildTextMessageResponse> __BuildBuildTextMessage(WorkflowExpression<string> bodyplatform, WorkflowExpression<string> bodytext)
-        {
-            WorkflowExpression.Validate(bodyplatform, nameof(bodyplatform), required: true);
-            WorkflowExpression.Validate(bodytext, nameof(bodytext), required: true);
+            var __workflow_bodyplatform = bodyplatform == null ? null : WorkflowExpression.Compile(bodyplatform);
+            WorkflowExpression.Validate(__workflow_bodyplatform, nameof(bodyplatform), required: true);
+            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
+            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: true);
             return new DeferredBodyAction<BuildTextMessageResponse>(() =>
             {
                 var apiCallPath = "/runtime/api/message/text";
@@ -63,9 +52,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["platform"] = ExpressionConverter.ConvertO(bodyplatform);
+                body["platform"] = ExpressionConverter.ConvertO(__workflow_bodyplatform);
                 bodypropCount++;
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
+                body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -76,26 +65,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "crmbot")]
-        [WorkflowExpressionFactory(nameof(__BuildBuildCardMessage))]
-        public IBodyWorkflowAction<BuildCardMessageResponse> BuildCardMessage([WorkflowExpression] Func<string> bodyplatform, [WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<bool> bodyisCarousel, [WorkflowExpression] Func<string> bodysubtitle = null, [WorkflowExpression] Func<string> bodyurl = null, [WorkflowExpression] Func<string> bodybuttontitle1 = null, [WorkflowExpression] Func<string> bodybuttonpostback1 = null, [WorkflowExpression] Func<string> bodybuttontitle2 = null, [WorkflowExpression] Func<string> bodybuttonpostback2 = null, [WorkflowExpression] Func<string> bodybuttontitle3 = null, [WorkflowExpression] Func<string> bodybuttonpostback3 = null)
+        public IBodyWorkflowAction<BuildCardMessageResponse> BuildCardMessage(Expression<Func<string>> bodyplatform, Expression<Func<string>> bodytitle, Expression<Func<bool>> bodyisCarousel, Expression<Func<string>> bodysubtitle = null, Expression<Func<string>> bodyurl = null, Expression<Func<string>> bodybuttontitle1 = null, Expression<Func<string>> bodybuttonpostback1 = null, Expression<Func<string>> bodybuttontitle2 = null, Expression<Func<string>> bodybuttonpostback2 = null, Expression<Func<string>> bodybuttontitle3 = null, Expression<Func<string>> bodybuttonpostback3 = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<BuildCardMessageResponse> __BuildBuildCardMessage(WorkflowExpression<string> bodyplatform, WorkflowExpression<string> bodytitle, WorkflowExpression<bool> bodyisCarousel, WorkflowExpression<string> bodysubtitle = null, WorkflowExpression<string> bodyurl = null, WorkflowExpression<string> bodybuttontitle1 = null, WorkflowExpression<string> bodybuttonpostback1 = null, WorkflowExpression<string> bodybuttontitle2 = null, WorkflowExpression<string> bodybuttonpostback2 = null, WorkflowExpression<string> bodybuttontitle3 = null, WorkflowExpression<string> bodybuttonpostback3 = null)
-        {
-            WorkflowExpression.Validate(bodyplatform, nameof(bodyplatform), required: true);
-            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            WorkflowExpression.Validate(bodyisCarousel, nameof(bodyisCarousel), required: true);
-            WorkflowExpression.Validate(bodysubtitle, nameof(bodysubtitle), required: false);
-            WorkflowExpression.Validate(bodyurl, nameof(bodyurl), required: false);
-            WorkflowExpression.Validate(bodybuttontitle1, nameof(bodybuttontitle1), required: false);
-            WorkflowExpression.Validate(bodybuttonpostback1, nameof(bodybuttonpostback1), required: false);
-            WorkflowExpression.Validate(bodybuttontitle2, nameof(bodybuttontitle2), required: false);
-            WorkflowExpression.Validate(bodybuttonpostback2, nameof(bodybuttonpostback2), required: false);
-            WorkflowExpression.Validate(bodybuttontitle3, nameof(bodybuttontitle3), required: false);
-            WorkflowExpression.Validate(bodybuttonpostback3, nameof(bodybuttonpostback3), required: false);
+            var __workflow_bodyplatform = bodyplatform == null ? null : WorkflowExpression.Compile(bodyplatform);
+            WorkflowExpression.Validate(__workflow_bodyplatform, nameof(bodyplatform), required: true);
+            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
+            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodyisCarousel = bodyisCarousel == null ? null : WorkflowExpression.Compile(bodyisCarousel);
+            WorkflowExpression.Validate(__workflow_bodyisCarousel, nameof(bodyisCarousel), required: true);
+            var __workflow_bodysubtitle = bodysubtitle == null ? null : WorkflowExpression.Compile(bodysubtitle);
+            WorkflowExpression.Validate(__workflow_bodysubtitle, nameof(bodysubtitle), required: false);
+            var __workflow_bodyurl = bodyurl == null ? null : WorkflowExpression.Compile(bodyurl);
+            WorkflowExpression.Validate(__workflow_bodyurl, nameof(bodyurl), required: false);
+            var __workflow_bodybuttontitle1 = bodybuttontitle1 == null ? null : WorkflowExpression.Compile(bodybuttontitle1);
+            WorkflowExpression.Validate(__workflow_bodybuttontitle1, nameof(bodybuttontitle1), required: false);
+            var __workflow_bodybuttonpostback1 = bodybuttonpostback1 == null ? null : WorkflowExpression.Compile(bodybuttonpostback1);
+            WorkflowExpression.Validate(__workflow_bodybuttonpostback1, nameof(bodybuttonpostback1), required: false);
+            var __workflow_bodybuttontitle2 = bodybuttontitle2 == null ? null : WorkflowExpression.Compile(bodybuttontitle2);
+            WorkflowExpression.Validate(__workflow_bodybuttontitle2, nameof(bodybuttontitle2), required: false);
+            var __workflow_bodybuttonpostback2 = bodybuttonpostback2 == null ? null : WorkflowExpression.Compile(bodybuttonpostback2);
+            WorkflowExpression.Validate(__workflow_bodybuttonpostback2, nameof(bodybuttonpostback2), required: false);
+            var __workflow_bodybuttontitle3 = bodybuttontitle3 == null ? null : WorkflowExpression.Compile(bodybuttontitle3);
+            WorkflowExpression.Validate(__workflow_bodybuttontitle3, nameof(bodybuttontitle3), required: false);
+            var __workflow_bodybuttonpostback3 = bodybuttonpostback3 == null ? null : WorkflowExpression.Compile(bodybuttonpostback3);
+            WorkflowExpression.Validate(__workflow_bodybuttonpostback3, nameof(bodybuttonpostback3), required: false);
             return new DeferredBodyAction<BuildCardMessageResponse>(() =>
             {
                 var apiCallPath = "/runtime/api/message/card";
@@ -104,56 +97,56 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["platform"] = ExpressionConverter.ConvertO(bodyplatform);
+                body["platform"] = ExpressionConverter.ConvertO(__workflow_bodyplatform);
                 bodypropCount++;
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
-                if (bodysubtitle != null)
+                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
+                if (__workflow_bodysubtitle != null)
                 {
-                    body["subtitle"] = ExpressionConverter.ConvertO(bodysubtitle);
+                    body["subtitle"] = ExpressionConverter.ConvertO(__workflow_bodysubtitle);
                     bodypropCount++;
                 }
 
-                if (bodyurl != null)
+                if (__workflow_bodyurl != null)
                 {
-                    body["url"] = ExpressionConverter.ConvertO(bodyurl);
+                    body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["isCarousel"] = ExpressionConverter.ConvertO(bodyisCarousel);
-                if (bodybuttontitle1 != null)
+                body["isCarousel"] = ExpressionConverter.ConvertO(__workflow_bodyisCarousel);
+                if (__workflow_bodybuttontitle1 != null)
                 {
-                    body["buttontitle1"] = ExpressionConverter.ConvertO(bodybuttontitle1);
+                    body["buttontitle1"] = ExpressionConverter.ConvertO(__workflow_bodybuttontitle1);
                     bodypropCount++;
                 }
 
-                if (bodybuttonpostback1 != null)
+                if (__workflow_bodybuttonpostback1 != null)
                 {
-                    body["buttonpostback1"] = ExpressionConverter.ConvertO(bodybuttonpostback1);
+                    body["buttonpostback1"] = ExpressionConverter.ConvertO(__workflow_bodybuttonpostback1);
                     bodypropCount++;
                 }
 
-                if (bodybuttontitle2 != null)
+                if (__workflow_bodybuttontitle2 != null)
                 {
-                    body["buttontitle2"] = ExpressionConverter.ConvertO(bodybuttontitle2);
+                    body["buttontitle2"] = ExpressionConverter.ConvertO(__workflow_bodybuttontitle2);
                     bodypropCount++;
                 }
 
-                if (bodybuttonpostback2 != null)
+                if (__workflow_bodybuttonpostback2 != null)
                 {
-                    body["buttonpostback2"] = ExpressionConverter.ConvertO(bodybuttonpostback2);
+                    body["buttonpostback2"] = ExpressionConverter.ConvertO(__workflow_bodybuttonpostback2);
                     bodypropCount++;
                 }
 
-                if (bodybuttontitle3 != null)
+                if (__workflow_bodybuttontitle3 != null)
                 {
-                    body["buttontitle3"] = ExpressionConverter.ConvertO(bodybuttontitle3);
+                    body["buttontitle3"] = ExpressionConverter.ConvertO(__workflow_bodybuttontitle3);
                     bodypropCount++;
                 }
 
-                if (bodybuttonpostback3 != null)
+                if (__workflow_bodybuttonpostback3 != null)
                 {
-                    body["buttonpostback3"] = ExpressionConverter.ConvertO(bodybuttonpostback3);
+                    body["buttonpostback3"] = ExpressionConverter.ConvertO(__workflow_bodybuttonpostback3);
                     bodypropCount++;
                 }
 
@@ -167,18 +160,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "crmbot")]
-        [WorkflowExpressionFactory(nameof(__BuildBuildQuickrepliesMessage))]
-        public IBodyWorkflowAction<BuildQuickrepliesMessageResponse> BuildQuickrepliesMessage([WorkflowExpression] Func<string> bodyplatform, [WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodytext)
+        public IBodyWorkflowAction<BuildQuickrepliesMessageResponse> BuildQuickrepliesMessage(Expression<Func<string>> bodyplatform, Expression<Func<string>> bodytitle, Expression<Func<string>> bodytext)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<BuildQuickrepliesMessageResponse> __BuildBuildQuickrepliesMessage(WorkflowExpression<string> bodyplatform, WorkflowExpression<string> bodytitle, WorkflowExpression<string> bodytext)
-        {
-            WorkflowExpression.Validate(bodyplatform, nameof(bodyplatform), required: true);
-            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            WorkflowExpression.Validate(bodytext, nameof(bodytext), required: true);
+            var __workflow_bodyplatform = bodyplatform == null ? null : WorkflowExpression.Compile(bodyplatform);
+            WorkflowExpression.Validate(__workflow_bodyplatform, nameof(bodyplatform), required: true);
+            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
+            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
+            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: true);
             return new DeferredBodyAction<BuildQuickrepliesMessageResponse>(() =>
             {
                 var apiCallPath = "/runtime/api/message/quickreplies";
@@ -187,11 +176,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["platform"] = ExpressionConverter.ConvertO(bodyplatform);
+                body["platform"] = ExpressionConverter.ConvertO(__workflow_bodyplatform);
                 bodypropCount++;
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
                 bodypropCount++;
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
+                body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -202,18 +191,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "crmbot")]
-        [WorkflowExpressionFactory(nameof(__BuildBuildMediaMessage))]
-        public IBodyWorkflowAction<BuildMediaMessageResponse> BuildMediaMessage([WorkflowExpression] Func<string> bodyplatform, [WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<bodymediaTypeInput> bodymediaType)
+        public IBodyWorkflowAction<BuildMediaMessageResponse> BuildMediaMessage(Expression<Func<string>> bodyplatform, Expression<Func<string>> bodyurl, Expression<Func<bodymediaTypeInput>> bodymediaType)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<BuildMediaMessageResponse> __BuildBuildMediaMessage(WorkflowExpression<string> bodyplatform, WorkflowExpression<string> bodyurl, WorkflowExpression<bodymediaTypeInput> bodymediaType)
-        {
-            WorkflowExpression.Validate(bodyplatform, nameof(bodyplatform), required: true);
-            WorkflowExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            WorkflowExpression.Validate(bodymediaType, nameof(bodymediaType), required: true);
+            var __workflow_bodyplatform = bodyplatform == null ? null : WorkflowExpression.Compile(bodyplatform);
+            WorkflowExpression.Validate(__workflow_bodyplatform, nameof(bodyplatform), required: true);
+            var __workflow_bodyurl = bodyurl == null ? null : WorkflowExpression.Compile(bodyurl);
+            WorkflowExpression.Validate(__workflow_bodyurl, nameof(bodyurl), required: true);
+            var __workflow_bodymediaType = bodymediaType == null ? null : WorkflowExpression.Compile(bodymediaType);
+            WorkflowExpression.Validate(__workflow_bodymediaType, nameof(bodymediaType), required: true);
             return new DeferredBodyAction<BuildMediaMessageResponse>(() =>
             {
                 var apiCallPath = "/runtime/api/message/media";
@@ -222,11 +207,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["platform"] = ExpressionConverter.ConvertO(bodyplatform);
+                body["platform"] = ExpressionConverter.ConvertO(__workflow_bodyplatform);
                 bodypropCount++;
-                body["url"] = ExpressionConverter.ConvertO(bodyurl);
+                body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
                 bodypropCount++;
-                body["mediaType"] = ExpressionConverter.ConvertO(bodymediaType);
+                body["mediaType"] = ExpressionConverter.ConvertO(__workflow_bodymediaType);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -237,22 +222,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "crmbot")]
-        [WorkflowExpressionFactory(nameof(__BuildSendResponse))]
-        public IWorkflowAction SendResponse([WorkflowExpression] Func<string> bodysessionId, [WorkflowExpression] Func<bool> bodyuseGlossary, [WorkflowExpression] Func<string> bodytargetLanguage, [WorkflowExpression] Func<JToken[]> bodywebhookResponsefulfillmentMessages = null, [WorkflowExpression] Func<string> bodywebhookResponseselectTheEventYouWouldLikeToInvoke = null, [WorkflowExpression] Func<string> bodywebhookResponseapplySpecificContextToResponse = null, [WorkflowExpression] Func<int> bodywebhookResponsedurationOfContext = null)
+        public IWorkflowAction SendResponse(Expression<Func<string>> bodysessionId, Expression<Func<bool>> bodyuseGlossary, Expression<Func<string>> bodytargetLanguage, Expression<Func<JToken[]>> bodywebhookResponsefulfillmentMessages = null, Expression<Func<string>> bodywebhookResponseselectTheEventYouWouldLikeToInvoke = null, Expression<Func<string>> bodywebhookResponseapplySpecificContextToResponse = null, Expression<Func<int>> bodywebhookResponsedurationOfContext = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildSendResponse(WorkflowExpression<string> bodysessionId, WorkflowExpression<bool> bodyuseGlossary, WorkflowExpression<string> bodytargetLanguage, WorkflowExpression<JToken[]> bodywebhookResponsefulfillmentMessages = null, WorkflowExpression<string> bodywebhookResponseselectTheEventYouWouldLikeToInvoke = null, WorkflowExpression<string> bodywebhookResponseapplySpecificContextToResponse = null, WorkflowExpression<int> bodywebhookResponsedurationOfContext = null)
-        {
-            WorkflowExpression.Validate(bodysessionId, nameof(bodysessionId), required: true);
-            WorkflowExpression.Validate(bodyuseGlossary, nameof(bodyuseGlossary), required: true);
-            WorkflowExpression.Validate(bodytargetLanguage, nameof(bodytargetLanguage), required: true);
-            WorkflowExpression.Validate(bodywebhookResponsefulfillmentMessages, nameof(bodywebhookResponsefulfillmentMessages), required: false);
-            WorkflowExpression.Validate(bodywebhookResponseselectTheEventYouWouldLikeToInvoke, nameof(bodywebhookResponseselectTheEventYouWouldLikeToInvoke), required: false);
-            WorkflowExpression.Validate(bodywebhookResponseapplySpecificContextToResponse, nameof(bodywebhookResponseapplySpecificContextToResponse), required: false);
-            WorkflowExpression.Validate(bodywebhookResponsedurationOfContext, nameof(bodywebhookResponsedurationOfContext), required: false);
+            var __workflow_bodysessionId = bodysessionId == null ? null : WorkflowExpression.Compile(bodysessionId);
+            WorkflowExpression.Validate(__workflow_bodysessionId, nameof(bodysessionId), required: true);
+            var __workflow_bodyuseGlossary = bodyuseGlossary == null ? null : WorkflowExpression.Compile(bodyuseGlossary);
+            WorkflowExpression.Validate(__workflow_bodyuseGlossary, nameof(bodyuseGlossary), required: true);
+            var __workflow_bodytargetLanguage = bodytargetLanguage == null ? null : WorkflowExpression.Compile(bodytargetLanguage);
+            WorkflowExpression.Validate(__workflow_bodytargetLanguage, nameof(bodytargetLanguage), required: true);
+            var __workflow_bodywebhookResponsefulfillmentMessages = bodywebhookResponsefulfillmentMessages == null ? null : WorkflowExpression.Compile(bodywebhookResponsefulfillmentMessages);
+            WorkflowExpression.Validate(__workflow_bodywebhookResponsefulfillmentMessages, nameof(bodywebhookResponsefulfillmentMessages), required: false);
+            var __workflow_bodywebhookResponseselectTheEventYouWouldLikeToInvoke = bodywebhookResponseselectTheEventYouWouldLikeToInvoke == null ? null : WorkflowExpression.Compile(bodywebhookResponseselectTheEventYouWouldLikeToInvoke);
+            WorkflowExpression.Validate(__workflow_bodywebhookResponseselectTheEventYouWouldLikeToInvoke, nameof(bodywebhookResponseselectTheEventYouWouldLikeToInvoke), required: false);
+            var __workflow_bodywebhookResponseapplySpecificContextToResponse = bodywebhookResponseapplySpecificContextToResponse == null ? null : WorkflowExpression.Compile(bodywebhookResponseapplySpecificContextToResponse);
+            WorkflowExpression.Validate(__workflow_bodywebhookResponseapplySpecificContextToResponse, nameof(bodywebhookResponseapplySpecificContextToResponse), required: false);
+            var __workflow_bodywebhookResponsedurationOfContext = bodywebhookResponsedurationOfContext == null ? null : WorkflowExpression.Compile(bodywebhookResponsedurationOfContext);
+            WorkflowExpression.Validate(__workflow_bodywebhookResponsedurationOfContext, nameof(bodywebhookResponsedurationOfContext), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/runtime/api/flowconnector/response";
@@ -261,34 +246,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["sessionId"] = ExpressionConverter.ConvertO(bodysessionId);
+                body["sessionId"] = ExpressionConverter.ConvertO(__workflow_bodysessionId);
                 bodypropCount++;
-                body["useGlossary"] = ExpressionConverter.ConvertO(bodyuseGlossary);
+                body["useGlossary"] = ExpressionConverter.ConvertO(__workflow_bodyuseGlossary);
                 bodypropCount++;
-                body["targetLanguage"] = ExpressionConverter.ConvertO(bodytargetLanguage);
+                body["targetLanguage"] = ExpressionConverter.ConvertO(__workflow_bodytargetLanguage);
                 var webhookResponseObject = new JObject();
                 var webhookResponseObjectpropCount = 0;
-                if (bodywebhookResponsefulfillmentMessages != null)
+                if (__workflow_bodywebhookResponsefulfillmentMessages != null)
                 {
-                    webhookResponseObject["FulfillmentMessages"] = ExpressionConverter.ConvertO(bodywebhookResponsefulfillmentMessages);
+                    webhookResponseObject["FulfillmentMessages"] = ExpressionConverter.ConvertO(__workflow_bodywebhookResponsefulfillmentMessages);
                     webhookResponseObjectpropCount++;
                 }
 
-                if (bodywebhookResponseselectTheEventYouWouldLikeToInvoke != null)
+                if (__workflow_bodywebhookResponseselectTheEventYouWouldLikeToInvoke != null)
                 {
-                    webhookResponseObject["EventName"] = ExpressionConverter.ConvertO(bodywebhookResponseselectTheEventYouWouldLikeToInvoke);
+                    webhookResponseObject["EventName"] = ExpressionConverter.ConvertO(__workflow_bodywebhookResponseselectTheEventYouWouldLikeToInvoke);
                     webhookResponseObjectpropCount++;
                 }
 
-                if (bodywebhookResponseapplySpecificContextToResponse != null)
+                if (__workflow_bodywebhookResponseapplySpecificContextToResponse != null)
                 {
-                    webhookResponseObject["OutputContextName"] = ExpressionConverter.ConvertO(bodywebhookResponseapplySpecificContextToResponse);
+                    webhookResponseObject["OutputContextName"] = ExpressionConverter.ConvertO(__workflow_bodywebhookResponseapplySpecificContextToResponse);
                     webhookResponseObjectpropCount++;
                 }
 
-                if (bodywebhookResponsedurationOfContext != null)
+                if (__workflow_bodywebhookResponsedurationOfContext != null)
                 {
-                    webhookResponseObject["OutputContextLifespan"] = ExpressionConverter.ConvertO(bodywebhookResponsedurationOfContext);
+                    webhookResponseObject["OutputContextLifespan"] = ExpressionConverter.ConvertO(__workflow_bodywebhookResponsedurationOfContext);
                     webhookResponseObjectpropCount++;
                 }
 
@@ -308,19 +293,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "crmbot")]
-        [WorkflowExpressionFactory(nameof(__BuildSendProactiveMessage))]
-        public IWorkflowAction SendProactiveMessage([WorkflowExpression] Func<string> bodysessionId, [WorkflowExpression] Func<bool> bodyuseGlossary, [WorkflowExpression] Func<string> bodytargetLanguage, [WorkflowExpression] Func<JToken[]> bodywebhookResponsefulfillmentMessages = null)
+        public IWorkflowAction SendProactiveMessage(Expression<Func<string>> bodysessionId, Expression<Func<bool>> bodyuseGlossary, Expression<Func<string>> bodytargetLanguage, Expression<Func<JToken[]>> bodywebhookResponsefulfillmentMessages = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildSendProactiveMessage(WorkflowExpression<string> bodysessionId, WorkflowExpression<bool> bodyuseGlossary, WorkflowExpression<string> bodytargetLanguage, WorkflowExpression<JToken[]> bodywebhookResponsefulfillmentMessages = null)
-        {
-            WorkflowExpression.Validate(bodysessionId, nameof(bodysessionId), required: true);
-            WorkflowExpression.Validate(bodyuseGlossary, nameof(bodyuseGlossary), required: true);
-            WorkflowExpression.Validate(bodytargetLanguage, nameof(bodytargetLanguage), required: true);
-            WorkflowExpression.Validate(bodywebhookResponsefulfillmentMessages, nameof(bodywebhookResponsefulfillmentMessages), required: false);
+            var __workflow_bodysessionId = bodysessionId == null ? null : WorkflowExpression.Compile(bodysessionId);
+            WorkflowExpression.Validate(__workflow_bodysessionId, nameof(bodysessionId), required: true);
+            var __workflow_bodyuseGlossary = bodyuseGlossary == null ? null : WorkflowExpression.Compile(bodyuseGlossary);
+            WorkflowExpression.Validate(__workflow_bodyuseGlossary, nameof(bodyuseGlossary), required: true);
+            var __workflow_bodytargetLanguage = bodytargetLanguage == null ? null : WorkflowExpression.Compile(bodytargetLanguage);
+            WorkflowExpression.Validate(__workflow_bodytargetLanguage, nameof(bodytargetLanguage), required: true);
+            var __workflow_bodywebhookResponsefulfillmentMessages = bodywebhookResponsefulfillmentMessages == null ? null : WorkflowExpression.Compile(bodywebhookResponsefulfillmentMessages);
+            WorkflowExpression.Validate(__workflow_bodywebhookResponsefulfillmentMessages, nameof(bodywebhookResponsefulfillmentMessages), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/runtime/api/flowconnector/proactive";
@@ -329,16 +311,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["sessionId"] = ExpressionConverter.ConvertO(bodysessionId);
+                body["sessionId"] = ExpressionConverter.ConvertO(__workflow_bodysessionId);
                 bodypropCount++;
-                body["useGlossary"] = ExpressionConverter.ConvertO(bodyuseGlossary);
+                body["useGlossary"] = ExpressionConverter.ConvertO(__workflow_bodyuseGlossary);
                 bodypropCount++;
-                body["targetLanguage"] = ExpressionConverter.ConvertO(bodytargetLanguage);
+                body["targetLanguage"] = ExpressionConverter.ConvertO(__workflow_bodytargetLanguage);
                 var webhookResponseObject = new JObject();
                 var webhookResponseObjectpropCount = 0;
-                if (bodywebhookResponsefulfillmentMessages != null)
+                if (__workflow_bodywebhookResponsefulfillmentMessages != null)
                 {
-                    webhookResponseObject["FulfillmentMessages"] = ExpressionConverter.ConvertO(bodywebhookResponsefulfillmentMessages);
+                    webhookResponseObject["FulfillmentMessages"] = ExpressionConverter.ConvertO(__workflow_bodywebhookResponsefulfillmentMessages);
                     webhookResponseObjectpropCount++;
                 }
 
@@ -360,18 +342,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
 
     public class CrmbotTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildIntentDetected))]
-        public IBodyWorkflowTrigger<JToken> IntentDetected([WorkflowExpression] Func<string> bodyselectIntentYouWouldLikeToTriggerOn,[WorkflowExpression] Func<bodyuseUnspecifiedIfYourFlowIsPlatformAgnosticInput> bodyuseUnspecifiedIfYourFlowIsPlatformAgnostic,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> IntentDetected(Expression<Func<string>> bodyselectIntentYouWouldLikeToTriggerOn, Expression<Func<bodyuseUnspecifiedIfYourFlowIsPlatformAgnosticInput>> bodyuseUnspecifiedIfYourFlowIsPlatformAgnostic, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildIntentDetected(WorkflowExpression<string> bodyselectIntentYouWouldLikeToTriggerOn,WorkflowExpression<bodyuseUnspecifiedIfYourFlowIsPlatformAgnosticInput> bodyuseUnspecifiedIfYourFlowIsPlatformAgnostic,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodyselectIntentYouWouldLikeToTriggerOn, nameof(bodyselectIntentYouWouldLikeToTriggerOn), required: true);
-            WorkflowExpression.Validate(bodyuseUnspecifiedIfYourFlowIsPlatformAgnostic, nameof(bodyuseUnspecifiedIfYourFlowIsPlatformAgnostic), required: true);
+            var __workflow_bodyselectIntentYouWouldLikeToTriggerOn = bodyselectIntentYouWouldLikeToTriggerOn == null ? null : WorkflowExpression.Compile(bodyselectIntentYouWouldLikeToTriggerOn);
+            WorkflowExpression.Validate(__workflow_bodyselectIntentYouWouldLikeToTriggerOn, nameof(bodyselectIntentYouWouldLikeToTriggerOn), required: true);
+            var __workflow_bodyuseUnspecifiedIfYourFlowIsPlatformAgnostic = bodyuseUnspecifiedIfYourFlowIsPlatformAgnostic == null ? null : WorkflowExpression.Compile(bodyuseUnspecifiedIfYourFlowIsPlatformAgnostic);
+            WorkflowExpression.Validate(__workflow_bodyuseUnspecifiedIfYourFlowIsPlatformAgnostic, nameof(bodyuseUnspecifiedIfYourFlowIsPlatformAgnostic), required: true);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = "/runtime/api/flowconnector";
@@ -382,9 +358,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
                 body["callbackUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 bodypropCount++;
-                body["intent"] = ExpressionConverter.ConvertO(bodyselectIntentYouWouldLikeToTriggerOn);
+                body["intent"] = ExpressionConverter.ConvertO(__workflow_bodyselectIntentYouWouldLikeToTriggerOn);
                 bodypropCount++;
-                body["platform"] = ExpressionConverter.ConvertO(bodyuseUnspecifiedIfYourFlowIsPlatformAgnostic);
+                body["platform"] = ExpressionConverter.ConvertO(__workflow_bodyuseUnspecifiedIfYourFlowIsPlatformAgnostic);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

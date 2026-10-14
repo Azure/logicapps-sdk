@@ -1,119 +1,118 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class LeapaiipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
-        [WorkflowExpressionFactory(nameof(__BuildImagesGet))]
-        public IBodyWorkflowAction<ImagesGetResponseItem[]> ImagesGet([WorkflowExpression] Func<modelIdInput> modelId, [WorkflowExpression] Func<bool> onlyFinished = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
+        public IBodyWorkflowAction<ImagesGetResponseItem[]> ImagesGet(Expression<Func<modelIdInput>> modelId, Expression<Func<bool>> onlyFinished = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ImagesGetResponseItem[]> __BuildImagesGet(WorkflowExpression<modelIdInput> modelId, WorkflowExpression<bool> onlyFinished = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null)
-        {
-            WorkflowExpression.Validate(modelId, nameof(modelId), required: true);
-            WorkflowExpression.Validate(onlyFinished, nameof(onlyFinished), required: false);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
-            WorkflowExpression.Validate(pageSize, nameof(pageSize), required: false);
+            var __workflow_modelId = modelId == null ? null : WorkflowExpression.Compile(modelId);
+            WorkflowExpression.Validate(__workflow_modelId, nameof(modelId), required: true);
+            var __workflow_onlyFinished = onlyFinished == null ? null : WorkflowExpression.Compile(onlyFinished);
+            WorkflowExpression.Validate(__workflow_onlyFinished, nameof(onlyFinished), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
+            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<ImagesGetResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/images/models/{0}/inferences", ExpressionConverter.ConvertWithUrlEncoding(modelId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/images/models/{0}/inferences", ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (onlyFinished != null)
-                    callPayload.Queries["onlyFinished"] = ExpressionConverter.Convert(onlyFinished);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-                if (pageSize != null)
-                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
+                if (__workflow_onlyFinished != null)
+                    callPayload.Queries["onlyFinished"] = ExpressionConverter.Convert(__workflow_onlyFinished);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_pageSize != null)
+                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 return new ApiConnectionAction<ImagesGetResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
-        [WorkflowExpressionFactory(nameof(__BuildImage))]
-        public IBodyWorkflowAction<ImagePostResponse> Image([WorkflowExpression] Func<modelIdInput> modelId, [WorkflowExpression] Func<string> bodyprompt, [WorkflowExpression] Func<string> bodynegativePrompt = null, [WorkflowExpression] Func<int> bodysteps = null, [WorkflowExpression] Func<int> bodywidth = null, [WorkflowExpression] Func<int> bodyheight = null, [WorkflowExpression] Func<int> bodynumberOfImages = null, [WorkflowExpression] Func<int> bodypromptStrength = null, [WorkflowExpression] Func<int> bodyseed = null, [WorkflowExpression] Func<string> bodywebhookUrl = null)
+        public IBodyWorkflowAction<ImagePostResponse> Image(Expression<Func<modelIdInput>> modelId, Expression<Func<string>> bodyprompt, Expression<Func<string>> bodynegativePrompt = null, Expression<Func<int>> bodysteps = null, Expression<Func<int>> bodywidth = null, Expression<Func<int>> bodyheight = null, Expression<Func<int>> bodynumberOfImages = null, Expression<Func<int>> bodypromptStrength = null, Expression<Func<int>> bodyseed = null, Expression<Func<string>> bodywebhookUrl = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ImagePostResponse> __BuildImage(WorkflowExpression<modelIdInput> modelId, WorkflowExpression<string> bodyprompt, WorkflowExpression<string> bodynegativePrompt = null, WorkflowExpression<int> bodysteps = null, WorkflowExpression<int> bodywidth = null, WorkflowExpression<int> bodyheight = null, WorkflowExpression<int> bodynumberOfImages = null, WorkflowExpression<int> bodypromptStrength = null, WorkflowExpression<int> bodyseed = null, WorkflowExpression<string> bodywebhookUrl = null)
-        {
-            WorkflowExpression.Validate(modelId, nameof(modelId), required: true);
-            WorkflowExpression.Validate(bodyprompt, nameof(bodyprompt), required: true);
-            WorkflowExpression.Validate(bodynegativePrompt, nameof(bodynegativePrompt), required: false);
-            WorkflowExpression.Validate(bodysteps, nameof(bodysteps), required: false);
-            WorkflowExpression.Validate(bodywidth, nameof(bodywidth), required: false);
-            WorkflowExpression.Validate(bodyheight, nameof(bodyheight), required: false);
-            WorkflowExpression.Validate(bodynumberOfImages, nameof(bodynumberOfImages), required: false);
-            WorkflowExpression.Validate(bodypromptStrength, nameof(bodypromptStrength), required: false);
-            WorkflowExpression.Validate(bodyseed, nameof(bodyseed), required: false);
-            WorkflowExpression.Validate(bodywebhookUrl, nameof(bodywebhookUrl), required: false);
+            var __workflow_modelId = modelId == null ? null : WorkflowExpression.Compile(modelId);
+            WorkflowExpression.Validate(__workflow_modelId, nameof(modelId), required: true);
+            var __workflow_bodyprompt = bodyprompt == null ? null : WorkflowExpression.Compile(bodyprompt);
+            WorkflowExpression.Validate(__workflow_bodyprompt, nameof(bodyprompt), required: true);
+            var __workflow_bodynegativePrompt = bodynegativePrompt == null ? null : WorkflowExpression.Compile(bodynegativePrompt);
+            WorkflowExpression.Validate(__workflow_bodynegativePrompt, nameof(bodynegativePrompt), required: false);
+            var __workflow_bodysteps = bodysteps == null ? null : WorkflowExpression.Compile(bodysteps);
+            WorkflowExpression.Validate(__workflow_bodysteps, nameof(bodysteps), required: false);
+            var __workflow_bodywidth = bodywidth == null ? null : WorkflowExpression.Compile(bodywidth);
+            WorkflowExpression.Validate(__workflow_bodywidth, nameof(bodywidth), required: false);
+            var __workflow_bodyheight = bodyheight == null ? null : WorkflowExpression.Compile(bodyheight);
+            WorkflowExpression.Validate(__workflow_bodyheight, nameof(bodyheight), required: false);
+            var __workflow_bodynumberOfImages = bodynumberOfImages == null ? null : WorkflowExpression.Compile(bodynumberOfImages);
+            WorkflowExpression.Validate(__workflow_bodynumberOfImages, nameof(bodynumberOfImages), required: false);
+            var __workflow_bodypromptStrength = bodypromptStrength == null ? null : WorkflowExpression.Compile(bodypromptStrength);
+            WorkflowExpression.Validate(__workflow_bodypromptStrength, nameof(bodypromptStrength), required: false);
+            var __workflow_bodyseed = bodyseed == null ? null : WorkflowExpression.Compile(bodyseed);
+            WorkflowExpression.Validate(__workflow_bodyseed, nameof(bodyseed), required: false);
+            var __workflow_bodywebhookUrl = bodywebhookUrl == null ? null : WorkflowExpression.Compile(bodywebhookUrl);
+            WorkflowExpression.Validate(__workflow_bodywebhookUrl, nameof(bodywebhookUrl), required: false);
             return new DeferredBodyAction<ImagePostResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/images/models/{0}/inferences", ExpressionConverter.ConvertWithUrlEncoding(modelId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/images/models/{0}/inferences", ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["prompt"] = ExpressionConverter.ConvertO(bodyprompt);
-                if (bodynegativePrompt != null)
+                body["prompt"] = ExpressionConverter.ConvertO(__workflow_bodyprompt);
+                if (__workflow_bodynegativePrompt != null)
                 {
-                    body["negativePrompt"] = ExpressionConverter.ConvertO(bodynegativePrompt);
+                    body["negativePrompt"] = ExpressionConverter.ConvertO(__workflow_bodynegativePrompt);
                     bodypropCount++;
                 }
 
-                if (bodysteps != null)
+                if (__workflow_bodysteps != null)
                 {
-                    body["steps"] = ExpressionConverter.ConvertO(bodysteps);
+                    body["steps"] = ExpressionConverter.ConvertO(__workflow_bodysteps);
                     bodypropCount++;
                 }
 
-                if (bodywidth != null)
+                if (__workflow_bodywidth != null)
                 {
-                    body["width"] = ExpressionConverter.ConvertO(bodywidth);
+                    body["width"] = ExpressionConverter.ConvertO(__workflow_bodywidth);
                     bodypropCount++;
                 }
 
-                if (bodyheight != null)
+                if (__workflow_bodyheight != null)
                 {
-                    body["height"] = ExpressionConverter.ConvertO(bodyheight);
+                    body["height"] = ExpressionConverter.ConvertO(__workflow_bodyheight);
                     bodypropCount++;
                 }
 
-                if (bodynumberOfImages != null)
+                if (__workflow_bodynumberOfImages != null)
                 {
-                    body["numberOfImages"] = ExpressionConverter.ConvertO(bodynumberOfImages);
+                    body["numberOfImages"] = ExpressionConverter.ConvertO(__workflow_bodynumberOfImages);
                     bodypropCount++;
                 }
 
-                if (bodypromptStrength != null)
+                if (__workflow_bodypromptStrength != null)
                 {
-                    body["promptStrength"] = ExpressionConverter.ConvertO(bodypromptStrength);
+                    body["promptStrength"] = ExpressionConverter.ConvertO(__workflow_bodypromptStrength);
                     bodypropCount++;
                 }
 
-                if (bodyseed != null)
+                if (__workflow_bodyseed != null)
                 {
-                    body["seed"] = ExpressionConverter.ConvertO(bodyseed);
+                    body["seed"] = ExpressionConverter.ConvertO(__workflow_bodyseed);
                     bodypropCount++;
                 }
 
-                if (bodywebhookUrl != null)
+                if (__workflow_bodywebhookUrl != null)
                 {
-                    body["webhookUrl"] = ExpressionConverter.ConvertO(bodywebhookUrl);
+                    body["webhookUrl"] = ExpressionConverter.ConvertO(__workflow_bodywebhookUrl);
                     bodypropCount++;
                 }
 
@@ -127,20 +126,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
-        [WorkflowExpressionFactory(nameof(__BuildImageGet))]
-        public IBodyWorkflowAction<ImageGetResponse> ImageGet([WorkflowExpression] Func<modelIdInput> modelId, [WorkflowExpression] Func<string> inferenceId)
+        public IBodyWorkflowAction<ImageGetResponse> ImageGet(Expression<Func<modelIdInput>> modelId, Expression<Func<string>> inferenceId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ImageGetResponse> __BuildImageGet(WorkflowExpression<modelIdInput> modelId, WorkflowExpression<string> inferenceId)
-        {
-            WorkflowExpression.Validate(modelId, nameof(modelId), required: true);
-            WorkflowExpression.Validate(inferenceId, nameof(inferenceId), required: true);
+            var __workflow_modelId = modelId == null ? null : WorkflowExpression.Compile(modelId);
+            WorkflowExpression.Validate(__workflow_modelId, nameof(modelId), required: true);
+            var __workflow_inferenceId = inferenceId == null ? null : WorkflowExpression.Compile(inferenceId);
+            WorkflowExpression.Validate(__workflow_inferenceId, nameof(inferenceId), required: true);
             return new DeferredBodyAction<ImageGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/images/models/{0}/inferences/{1}", ExpressionConverter.ConvertWithUrlEncoding(modelId, 1), ExpressionConverter.ConvertWithUrlEncoding(inferenceId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/images/models/{0}/inferences/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_inferenceId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ImageGetResponse>(callPayload);
@@ -148,20 +142,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
-        [WorkflowExpressionFactory(nameof(__BuildImageDelete))]
-        public IBodyWorkflowAction<string> ImageDelete([WorkflowExpression] Func<modelIdInput> modelId, [WorkflowExpression] Func<string> inferenceId)
+        public IBodyWorkflowAction<string> ImageDelete(Expression<Func<modelIdInput>> modelId, Expression<Func<string>> inferenceId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildImageDelete(WorkflowExpression<modelIdInput> modelId, WorkflowExpression<string> inferenceId)
-        {
-            WorkflowExpression.Validate(modelId, nameof(modelId), required: true);
-            WorkflowExpression.Validate(inferenceId, nameof(inferenceId), required: true);
+            var __workflow_modelId = modelId == null ? null : WorkflowExpression.Compile(modelId);
+            WorkflowExpression.Validate(__workflow_modelId, nameof(modelId), required: true);
+            var __workflow_inferenceId = inferenceId == null ? null : WorkflowExpression.Compile(inferenceId);
+            WorkflowExpression.Validate(__workflow_inferenceId, nameof(inferenceId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/images/models/{0}/inferences/{1}", ExpressionConverter.ConvertWithUrlEncoding(modelId, 1), ExpressionConverter.ConvertWithUrlEncoding(inferenceId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/images/models/{0}/inferences/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_inferenceId, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -169,20 +158,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
-        [WorkflowExpressionFactory(nameof(__BuildModel))]
-        public IBodyWorkflowAction<ModelPostResponse> Model([WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodysubjectKeyword = null, [WorkflowExpression] Func<string> bodysubjectType = null, [WorkflowExpression] Func<string> bodywebhookUrl = null, [WorkflowExpression] Func<string[]> bodyimageSampleUrls = null)
+        public IBodyWorkflowAction<ModelPostResponse> Model(Expression<Func<string>> bodyname = null, Expression<Func<string>> bodysubjectKeyword = null, Expression<Func<string>> bodysubjectType = null, Expression<Func<string>> bodywebhookUrl = null, Expression<Func<string[]>> bodyimageSampleUrls = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ModelPostResponse> __BuildModel(WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodysubjectKeyword = null, WorkflowExpression<string> bodysubjectType = null, WorkflowExpression<string> bodywebhookUrl = null, WorkflowExpression<string[]> bodyimageSampleUrls = null)
-        {
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
-            WorkflowExpression.Validate(bodysubjectKeyword, nameof(bodysubjectKeyword), required: false);
-            WorkflowExpression.Validate(bodysubjectType, nameof(bodysubjectType), required: false);
-            WorkflowExpression.Validate(bodywebhookUrl, nameof(bodywebhookUrl), required: false);
-            WorkflowExpression.Validate(bodyimageSampleUrls, nameof(bodyimageSampleUrls), required: false);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
+            var __workflow_bodysubjectKeyword = bodysubjectKeyword == null ? null : WorkflowExpression.Compile(bodysubjectKeyword);
+            WorkflowExpression.Validate(__workflow_bodysubjectKeyword, nameof(bodysubjectKeyword), required: false);
+            var __workflow_bodysubjectType = bodysubjectType == null ? null : WorkflowExpression.Compile(bodysubjectType);
+            WorkflowExpression.Validate(__workflow_bodysubjectType, nameof(bodysubjectType), required: false);
+            var __workflow_bodywebhookUrl = bodywebhookUrl == null ? null : WorkflowExpression.Compile(bodywebhookUrl);
+            WorkflowExpression.Validate(__workflow_bodywebhookUrl, nameof(bodywebhookUrl), required: false);
+            var __workflow_bodyimageSampleUrls = bodyimageSampleUrls == null ? null : WorkflowExpression.Compile(bodyimageSampleUrls);
+            WorkflowExpression.Validate(__workflow_bodyimageSampleUrls, nameof(bodyimageSampleUrls), required: false);
             return new DeferredBodyAction<ModelPostResponse>(() =>
             {
                 var apiCallPath = "/v2/images/models/new";
@@ -190,33 +177,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyname != null)
+                if (__workflow_bodyname != null)
                 {
-                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
                     bodypropCount++;
                 }
 
-                if (bodysubjectKeyword != null)
+                if (__workflow_bodysubjectKeyword != null)
                 {
-                    body["subjectKeyword"] = ExpressionConverter.ConvertO(bodysubjectKeyword);
+                    body["subjectKeyword"] = ExpressionConverter.ConvertO(__workflow_bodysubjectKeyword);
                     bodypropCount++;
                 }
 
-                if (bodysubjectType != null)
+                if (__workflow_bodysubjectType != null)
                 {
-                    body["subjectType"] = ExpressionConverter.ConvertO(bodysubjectType);
+                    body["subjectType"] = ExpressionConverter.ConvertO(__workflow_bodysubjectType);
                     bodypropCount++;
                 }
 
-                if (bodywebhookUrl != null)
+                if (__workflow_bodywebhookUrl != null)
                 {
-                    body["webhookUrl"] = ExpressionConverter.ConvertO(bodywebhookUrl);
+                    body["webhookUrl"] = ExpressionConverter.ConvertO(__workflow_bodywebhookUrl);
                     bodypropCount++;
                 }
 
-                if (bodyimageSampleUrls != null)
+                if (__workflow_bodyimageSampleUrls != null)
                 {
-                    body["imageSampleUrls"] = ExpressionConverter.ConvertO(bodyimageSampleUrls);
+                    body["imageSampleUrls"] = ExpressionConverter.ConvertO(__workflow_bodyimageSampleUrls);
                     bodypropCount++;
                 }
 
@@ -239,19 +226,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
-        [WorkflowExpressionFactory(nameof(__BuildModelGet))]
-        public IBodyWorkflowAction<ModelGetResponse> ModelGet([WorkflowExpression] Func<modelIdInput> modelId)
+        public IBodyWorkflowAction<ModelGetResponse> ModelGet(Expression<Func<modelIdInput>> modelId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ModelGetResponse> __BuildModelGet(WorkflowExpression<modelIdInput> modelId)
-        {
-            WorkflowExpression.Validate(modelId, nameof(modelId), required: true);
+            var __workflow_modelId = modelId == null ? null : WorkflowExpression.Compile(modelId);
+            WorkflowExpression.Validate(__workflow_modelId, nameof(modelId), required: true);
             return new DeferredBodyAction<ModelGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/images/models/{0}", ExpressionConverter.ConvertWithUrlEncoding(modelId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/images/models/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ModelGetResponse>(callPayload);
@@ -259,19 +240,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
-        [WorkflowExpressionFactory(nameof(__BuildModelDelete))]
-        public IBodyWorkflowAction<ModelDeleteResponse> ModelDelete([WorkflowExpression] Func<modelIdInput> modelId)
+        public IBodyWorkflowAction<ModelDeleteResponse> ModelDelete(Expression<Func<modelIdInput>> modelId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ModelDeleteResponse> __BuildModelDelete(WorkflowExpression<modelIdInput> modelId)
-        {
-            WorkflowExpression.Validate(modelId, nameof(modelId), required: true);
+            var __workflow_modelId = modelId == null ? null : WorkflowExpression.Compile(modelId);
+            WorkflowExpression.Validate(__workflow_modelId, nameof(modelId), required: true);
             return new DeferredBodyAction<ModelDeleteResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/images/models/{0}", ExpressionConverter.ConvertWithUrlEncoding(modelId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/images/models/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelId, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ModelDeleteResponse>(callPayload);
@@ -288,18 +263,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
-        [WorkflowExpressionFactory(nameof(__BuildMusic))]
-        public IBodyWorkflowAction<MusicPostResponse> Music([WorkflowExpression] Func<string> bodyprompt, [WorkflowExpression] Func<bodymodeInput> bodymode, [WorkflowExpression] Func<int> bodyduration)
+        public IBodyWorkflowAction<MusicPostResponse> Music(Expression<Func<string>> bodyprompt, Expression<Func<bodymodeInput>> bodymode, Expression<Func<int>> bodyduration)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MusicPostResponse> __BuildMusic(WorkflowExpression<string> bodyprompt, WorkflowExpression<bodymodeInput> bodymode, WorkflowExpression<int> bodyduration)
-        {
-            WorkflowExpression.Validate(bodyprompt, nameof(bodyprompt), required: true);
-            WorkflowExpression.Validate(bodymode, nameof(bodymode), required: true);
-            WorkflowExpression.Validate(bodyduration, nameof(bodyduration), required: true);
+            var __workflow_bodyprompt = bodyprompt == null ? null : WorkflowExpression.Compile(bodyprompt);
+            WorkflowExpression.Validate(__workflow_bodyprompt, nameof(bodyprompt), required: true);
+            var __workflow_bodymode = bodymode == null ? null : WorkflowExpression.Compile(bodymode);
+            WorkflowExpression.Validate(__workflow_bodymode, nameof(bodymode), required: true);
+            var __workflow_bodyduration = bodyduration == null ? null : WorkflowExpression.Compile(bodyduration);
+            WorkflowExpression.Validate(__workflow_bodyduration, nameof(bodyduration), required: true);
             return new DeferredBodyAction<MusicPostResponse>(() =>
             {
                 var apiCallPath = "/v1/music";
@@ -308,11 +279,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["prompt"] = ExpressionConverter.ConvertO(bodyprompt);
+                body["prompt"] = ExpressionConverter.ConvertO(__workflow_bodyprompt);
                 bodypropCount++;
-                body["mode"] = ExpressionConverter.ConvertO(bodymode);
+                body["mode"] = ExpressionConverter.ConvertO(__workflow_bodymode);
                 bodypropCount++;
-                body["duration"] = ExpressionConverter.ConvertO(bodyduration);
+                body["duration"] = ExpressionConverter.ConvertO(__workflow_bodyduration);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -323,19 +294,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
-        [WorkflowExpressionFactory(nameof(__BuildMusicGet))]
-        public IBodyWorkflowAction<MusicGetResponse> MusicGet([WorkflowExpression] Func<string> inferenceId)
+        public IBodyWorkflowAction<MusicGetResponse> MusicGet(Expression<Func<string>> inferenceId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MusicGetResponse> __BuildMusicGet(WorkflowExpression<string> inferenceId)
-        {
-            WorkflowExpression.Validate(inferenceId, nameof(inferenceId), required: true);
+            var __workflow_inferenceId = inferenceId == null ? null : WorkflowExpression.Compile(inferenceId);
+            WorkflowExpression.Validate(__workflow_inferenceId, nameof(inferenceId), required: true);
             return new DeferredBodyAction<MusicGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/music/{0}", ExpressionConverter.ConvertWithUrlEncoding(inferenceId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/music/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_inferenceId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<MusicGetResponse>(callPayload);

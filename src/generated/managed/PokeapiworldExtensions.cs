@@ -1,55 +1,43 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class PokeapiworldActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
-        [WorkflowExpressionFactory(nameof(__BuildListMachines))]
-        public IBodyWorkflowAction<ListResults> ListMachines([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
+        public IBodyWorkflowAction<ListResults> ListMachines(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListResults> __BuildListMachines(WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
-        {
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
             return new DeferredBodyAction<ListResults>(() =>
             {
                 var apiCallPath = "/api/v2/machine/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (offset != null)
-                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<ListResults>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
-        [WorkflowExpressionFactory(nameof(__BuildGetMachine))]
-        public IBodyWorkflowAction<GetMachineResponse> GetMachine([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<GetMachineResponse> GetMachine(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetMachineResponse> __BuildGetMachine(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<GetMachineResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/machine/{0}/", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/machine/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetMachineResponse>(callPayload);
@@ -57,44 +45,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
-        [WorkflowExpressionFactory(nameof(__BuildListLocations))]
-        public IBodyWorkflowAction<ListResults> ListLocations([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
+        public IBodyWorkflowAction<ListResults> ListLocations(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListResults> __BuildListLocations(WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
-        {
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
             return new DeferredBodyAction<ListResults>(() =>
             {
                 var apiCallPath = "/api/v2/location/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (offset != null)
-                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<ListResults>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
-        [WorkflowExpressionFactory(nameof(__BuildGetLocation))]
-        public IBodyWorkflowAction<GetLocationResponse> GetLocation([WorkflowExpression] Func<string> idOrName)
+        public IBodyWorkflowAction<GetLocationResponse> GetLocation(Expression<Func<string>> idOrName)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetLocationResponse> __BuildGetLocation(WorkflowExpression<string> idOrName)
-        {
-            WorkflowExpression.Validate(idOrName, nameof(idOrName), required: true);
+            var __workflow_idOrName = idOrName == null ? null : WorkflowExpression.Compile(idOrName);
+            WorkflowExpression.Validate(__workflow_idOrName, nameof(idOrName), required: true);
             return new DeferredBodyAction<GetLocationResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/location/{0}/", ExpressionConverter.ConvertWithUrlEncoding(idOrName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/location/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_idOrName, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetLocationResponse>(callPayload);
@@ -102,44 +79,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
-        [WorkflowExpressionFactory(nameof(__BuildListLocationAreas))]
-        public IBodyWorkflowAction<ListResults> ListLocationAreas([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
+        public IBodyWorkflowAction<ListResults> ListLocationAreas(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListResults> __BuildListLocationAreas(WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
-        {
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
             return new DeferredBodyAction<ListResults>(() =>
             {
                 var apiCallPath = "/api/v2/location-area/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (offset != null)
-                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<ListResults>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
-        [WorkflowExpressionFactory(nameof(__BuildGetLocationArea))]
-        public IBodyWorkflowAction<GetLocationAreaResponse> GetLocationArea([WorkflowExpression] Func<string> idOrName)
+        public IBodyWorkflowAction<GetLocationAreaResponse> GetLocationArea(Expression<Func<string>> idOrName)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetLocationAreaResponse> __BuildGetLocationArea(WorkflowExpression<string> idOrName)
-        {
-            WorkflowExpression.Validate(idOrName, nameof(idOrName), required: true);
+            var __workflow_idOrName = idOrName == null ? null : WorkflowExpression.Compile(idOrName);
+            WorkflowExpression.Validate(__workflow_idOrName, nameof(idOrName), required: true);
             return new DeferredBodyAction<GetLocationAreaResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/location-area/{0}/", ExpressionConverter.ConvertWithUrlEncoding(idOrName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/location-area/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_idOrName, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetLocationAreaResponse>(callPayload);
@@ -147,44 +113,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
-        [WorkflowExpressionFactory(nameof(__BuildListRegions))]
-        public IBodyWorkflowAction<ListResults> ListRegions([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
+        public IBodyWorkflowAction<ListResults> ListRegions(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListResults> __BuildListRegions(WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
-        {
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
             return new DeferredBodyAction<ListResults>(() =>
             {
                 var apiCallPath = "/api/v2/region/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (offset != null)
-                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<ListResults>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
-        [WorkflowExpressionFactory(nameof(__BuildGetRegion))]
-        public IBodyWorkflowAction<GetRegionResponse> GetRegion([WorkflowExpression] Func<string> idOrName)
+        public IBodyWorkflowAction<GetRegionResponse> GetRegion(Expression<Func<string>> idOrName)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetRegionResponse> __BuildGetRegion(WorkflowExpression<string> idOrName)
-        {
-            WorkflowExpression.Validate(idOrName, nameof(idOrName), required: true);
+            var __workflow_idOrName = idOrName == null ? null : WorkflowExpression.Compile(idOrName);
+            WorkflowExpression.Validate(__workflow_idOrName, nameof(idOrName), required: true);
             return new DeferredBodyAction<GetRegionResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/region/{0}/", ExpressionConverter.ConvertWithUrlEncoding(idOrName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/region/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_idOrName, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetRegionResponse>(callPayload);
@@ -192,44 +147,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
-        [WorkflowExpressionFactory(nameof(__BuildListEncounterMethods))]
-        public IBodyWorkflowAction<ListResults> ListEncounterMethods([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
+        public IBodyWorkflowAction<ListResults> ListEncounterMethods(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListResults> __BuildListEncounterMethods(WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
-        {
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
             return new DeferredBodyAction<ListResults>(() =>
             {
                 var apiCallPath = "/api/v2/encounter-method/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (offset != null)
-                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<ListResults>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
-        [WorkflowExpressionFactory(nameof(__BuildGetEncounter))]
-        public IBodyWorkflowAction<GetEncounterResponse> GetEncounter([WorkflowExpression] Func<string> idOrName)
+        public IBodyWorkflowAction<GetEncounterResponse> GetEncounter(Expression<Func<string>> idOrName)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetEncounterResponse> __BuildGetEncounter(WorkflowExpression<string> idOrName)
-        {
-            WorkflowExpression.Validate(idOrName, nameof(idOrName), required: true);
+            var __workflow_idOrName = idOrName == null ? null : WorkflowExpression.Compile(idOrName);
+            WorkflowExpression.Validate(__workflow_idOrName, nameof(idOrName), required: true);
             return new DeferredBodyAction<GetEncounterResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/encounter-method/{0}/", ExpressionConverter.ConvertWithUrlEncoding(idOrName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/encounter-method/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_idOrName, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetEncounterResponse>(callPayload);
@@ -237,44 +181,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
-        [WorkflowExpressionFactory(nameof(__BuildListEncounterConditions))]
-        public IBodyWorkflowAction<ListResults> ListEncounterConditions([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
+        public IBodyWorkflowAction<ListResults> ListEncounterConditions(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListResults> __BuildListEncounterConditions(WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
-        {
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
             return new DeferredBodyAction<ListResults>(() =>
             {
                 var apiCallPath = "/api/v2/encounter-condition/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (offset != null)
-                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<ListResults>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
-        [WorkflowExpressionFactory(nameof(__BuildGetEncounterCondition))]
-        public IBodyWorkflowAction<GetEncounterConditionResponse> GetEncounterCondition([WorkflowExpression] Func<string> idOrName)
+        public IBodyWorkflowAction<GetEncounterConditionResponse> GetEncounterCondition(Expression<Func<string>> idOrName)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetEncounterConditionResponse> __BuildGetEncounterCondition(WorkflowExpression<string> idOrName)
-        {
-            WorkflowExpression.Validate(idOrName, nameof(idOrName), required: true);
+            var __workflow_idOrName = idOrName == null ? null : WorkflowExpression.Compile(idOrName);
+            WorkflowExpression.Validate(__workflow_idOrName, nameof(idOrName), required: true);
             return new DeferredBodyAction<GetEncounterConditionResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/encounter-condition/{0}/", ExpressionConverter.ConvertWithUrlEncoding(idOrName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/encounter-condition/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_idOrName, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetEncounterConditionResponse>(callPayload);
@@ -282,44 +215,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
-        [WorkflowExpressionFactory(nameof(__BuildListEncounterConditionValues))]
-        public IBodyWorkflowAction<ListResults> ListEncounterConditionValues([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
+        public IBodyWorkflowAction<ListResults> ListEncounterConditionValues(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListResults> __BuildListEncounterConditionValues(WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
-        {
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
             return new DeferredBodyAction<ListResults>(() =>
             {
                 var apiCallPath = "/api/v2/encounter-condition-value/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (offset != null)
-                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<ListResults>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
-        [WorkflowExpressionFactory(nameof(__BuildGetEncounterConditionValue))]
-        public IBodyWorkflowAction<GetEncounterConditionValueResponse> GetEncounterConditionValue([WorkflowExpression] Func<string> idOrName)
+        public IBodyWorkflowAction<GetEncounterConditionValueResponse> GetEncounterConditionValue(Expression<Func<string>> idOrName)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetEncounterConditionValueResponse> __BuildGetEncounterConditionValue(WorkflowExpression<string> idOrName)
-        {
-            WorkflowExpression.Validate(idOrName, nameof(idOrName), required: true);
+            var __workflow_idOrName = idOrName == null ? null : WorkflowExpression.Compile(idOrName);
+            WorkflowExpression.Validate(__workflow_idOrName, nameof(idOrName), required: true);
             return new DeferredBodyAction<GetEncounterConditionValueResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/encounter-condition-value/{0}/", ExpressionConverter.ConvertWithUrlEncoding(idOrName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/encounter-condition-value/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_idOrName, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetEncounterConditionValueResponse>(callPayload);
@@ -327,44 +249,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
-        [WorkflowExpressionFactory(nameof(__BuildListBerries))]
-        public IBodyWorkflowAction<ListResults> ListBerries([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
+        public IBodyWorkflowAction<ListResults> ListBerries(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListResults> __BuildListBerries(WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
-        {
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
             return new DeferredBodyAction<ListResults>(() =>
             {
                 var apiCallPath = "/api/v2/berry/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (offset != null)
-                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<ListResults>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
-        [WorkflowExpressionFactory(nameof(__BuildGetBerry))]
-        public IBodyWorkflowAction<GetBerryResponse> GetBerry([WorkflowExpression] Func<string> idOrName)
+        public IBodyWorkflowAction<GetBerryResponse> GetBerry(Expression<Func<string>> idOrName)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetBerryResponse> __BuildGetBerry(WorkflowExpression<string> idOrName)
-        {
-            WorkflowExpression.Validate(idOrName, nameof(idOrName), required: true);
+            var __workflow_idOrName = idOrName == null ? null : WorkflowExpression.Compile(idOrName);
+            WorkflowExpression.Validate(__workflow_idOrName, nameof(idOrName), required: true);
             return new DeferredBodyAction<GetBerryResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/berry/{0}/", ExpressionConverter.ConvertWithUrlEncoding(idOrName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/berry/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_idOrName, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetBerryResponse>(callPayload);
@@ -372,26 +283,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
-        [WorkflowExpressionFactory(nameof(__BuildListItems))]
-        public IBodyWorkflowAction<ListResults> ListItems([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
+        public IBodyWorkflowAction<ListResults> ListItems(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListResults> __BuildListItems(WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
-        {
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
             return new DeferredBodyAction<ListResults>(() =>
             {
                 var apiCallPath = "/api/v2/item/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (offset != null)
-                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<ListResults>(callPayload);
             });
         }

@@ -1,39 +1,44 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class SignatureapiActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateEnvelope))]
-        public IBodyWorkflowAction<CreateEnvelopeOutput> CreateEnvelope([WorkflowExpression] Func<string> bodyenvelopeTitle = null, [WorkflowExpression] Func<string> bodyenvelopeLabel = null, [WorkflowExpression] Func<string> bodyenvelopeMessage = null, [WorkflowExpression] Func<bodyenvelopeModeInput> bodyenvelopeMode = null, [WorkflowExpression] Func<bodyenvelopeRoutingInput> bodyenvelopeRouting = null, [WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<string> bodytimeZone = null, [WorkflowExpression] Func<string> bodytimestampFormat = null, [WorkflowExpression] Func<bodyenvelopeAttestationInput> bodyenvelopeAttestation = null, [WorkflowExpression] Func<string> bodysendername = null, [WorkflowExpression] Func<string> bodysenderemail = null, [WorkflowExpression] Func<string[]> bodyenvelopeTopics = null, [WorkflowExpression] Func<string> bodyextraProperties = null)
+        public IBodyWorkflowAction<CreateEnvelopeOutput> CreateEnvelope(Expression<Func<string>> bodyenvelopeTitle = null, Expression<Func<string>> bodyenvelopeLabel = null, Expression<Func<string>> bodyenvelopeMessage = null, Expression<Func<bodyenvelopeModeInput>> bodyenvelopeMode = null, Expression<Func<bodyenvelopeRoutingInput>> bodyenvelopeRouting = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodytimeZone = null, Expression<Func<string>> bodytimestampFormat = null, Expression<Func<bodyenvelopeAttestationInput>> bodyenvelopeAttestation = null, Expression<Func<string>> bodysendername = null, Expression<Func<string>> bodysenderemail = null, Expression<Func<string[]>> bodyenvelopeTopics = null, Expression<Func<string>> bodyextraProperties = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateEnvelopeOutput> __BuildCreateEnvelope(WorkflowExpression<string> bodyenvelopeTitle = null, WorkflowExpression<string> bodyenvelopeLabel = null, WorkflowExpression<string> bodyenvelopeMessage = null, WorkflowExpression<bodyenvelopeModeInput> bodyenvelopeMode = null, WorkflowExpression<bodyenvelopeRoutingInput> bodyenvelopeRouting = null, WorkflowExpression<string> bodylanguage = null, WorkflowExpression<string> bodytimeZone = null, WorkflowExpression<string> bodytimestampFormat = null, WorkflowExpression<bodyenvelopeAttestationInput> bodyenvelopeAttestation = null, WorkflowExpression<string> bodysendername = null, WorkflowExpression<string> bodysenderemail = null, WorkflowExpression<string[]> bodyenvelopeTopics = null, WorkflowExpression<string> bodyextraProperties = null)
-        {
-            WorkflowExpression.Validate(bodyenvelopeTitle, nameof(bodyenvelopeTitle), required: false);
-            WorkflowExpression.Validate(bodyenvelopeLabel, nameof(bodyenvelopeLabel), required: false);
-            WorkflowExpression.Validate(bodyenvelopeMessage, nameof(bodyenvelopeMessage), required: false);
-            WorkflowExpression.Validate(bodyenvelopeMode, nameof(bodyenvelopeMode), required: false);
-            WorkflowExpression.Validate(bodyenvelopeRouting, nameof(bodyenvelopeRouting), required: false);
-            WorkflowExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
-            WorkflowExpression.Validate(bodytimeZone, nameof(bodytimeZone), required: false);
-            WorkflowExpression.Validate(bodytimestampFormat, nameof(bodytimestampFormat), required: false);
-            WorkflowExpression.Validate(bodyenvelopeAttestation, nameof(bodyenvelopeAttestation), required: false);
-            WorkflowExpression.Validate(bodysendername, nameof(bodysendername), required: false);
-            WorkflowExpression.Validate(bodysenderemail, nameof(bodysenderemail), required: false);
-            WorkflowExpression.Validate(bodyenvelopeTopics, nameof(bodyenvelopeTopics), required: false);
-            WorkflowExpression.Validate(bodyextraProperties, nameof(bodyextraProperties), required: false);
+            var __workflow_bodyenvelopeTitle = bodyenvelopeTitle == null ? null : WorkflowExpression.Compile(bodyenvelopeTitle);
+            WorkflowExpression.Validate(__workflow_bodyenvelopeTitle, nameof(bodyenvelopeTitle), required: false);
+            var __workflow_bodyenvelopeLabel = bodyenvelopeLabel == null ? null : WorkflowExpression.Compile(bodyenvelopeLabel);
+            WorkflowExpression.Validate(__workflow_bodyenvelopeLabel, nameof(bodyenvelopeLabel), required: false);
+            var __workflow_bodyenvelopeMessage = bodyenvelopeMessage == null ? null : WorkflowExpression.Compile(bodyenvelopeMessage);
+            WorkflowExpression.Validate(__workflow_bodyenvelopeMessage, nameof(bodyenvelopeMessage), required: false);
+            var __workflow_bodyenvelopeMode = bodyenvelopeMode == null ? null : WorkflowExpression.Compile(bodyenvelopeMode);
+            WorkflowExpression.Validate(__workflow_bodyenvelopeMode, nameof(bodyenvelopeMode), required: false);
+            var __workflow_bodyenvelopeRouting = bodyenvelopeRouting == null ? null : WorkflowExpression.Compile(bodyenvelopeRouting);
+            WorkflowExpression.Validate(__workflow_bodyenvelopeRouting, nameof(bodyenvelopeRouting), required: false);
+            var __workflow_bodylanguage = bodylanguage == null ? null : WorkflowExpression.Compile(bodylanguage);
+            WorkflowExpression.Validate(__workflow_bodylanguage, nameof(bodylanguage), required: false);
+            var __workflow_bodytimeZone = bodytimeZone == null ? null : WorkflowExpression.Compile(bodytimeZone);
+            WorkflowExpression.Validate(__workflow_bodytimeZone, nameof(bodytimeZone), required: false);
+            var __workflow_bodytimestampFormat = bodytimestampFormat == null ? null : WorkflowExpression.Compile(bodytimestampFormat);
+            WorkflowExpression.Validate(__workflow_bodytimestampFormat, nameof(bodytimestampFormat), required: false);
+            var __workflow_bodyenvelopeAttestation = bodyenvelopeAttestation == null ? null : WorkflowExpression.Compile(bodyenvelopeAttestation);
+            WorkflowExpression.Validate(__workflow_bodyenvelopeAttestation, nameof(bodyenvelopeAttestation), required: false);
+            var __workflow_bodysendername = bodysendername == null ? null : WorkflowExpression.Compile(bodysendername);
+            WorkflowExpression.Validate(__workflow_bodysendername, nameof(bodysendername), required: false);
+            var __workflow_bodysenderemail = bodysenderemail == null ? null : WorkflowExpression.Compile(bodysenderemail);
+            WorkflowExpression.Validate(__workflow_bodysenderemail, nameof(bodysenderemail), required: false);
+            var __workflow_bodyenvelopeTopics = bodyenvelopeTopics == null ? null : WorkflowExpression.Compile(bodyenvelopeTopics);
+            WorkflowExpression.Validate(__workflow_bodyenvelopeTopics, nameof(bodyenvelopeTopics), required: false);
+            var __workflow_bodyextraProperties = bodyextraProperties == null ? null : WorkflowExpression.Compile(bodyextraProperties);
+            WorkflowExpression.Validate(__workflow_bodyextraProperties, nameof(bodyextraProperties), required: false);
             return new DeferredBodyAction<CreateEnvelopeOutput>(() =>
             {
                 var apiCallPath = "/envelopes";
@@ -43,71 +48,71 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 var bodypropCount = 0;
                 body["draft"] = true;
                 bodypropCount++;
-                if (bodyenvelopeTitle != null)
+                if (__workflow_bodyenvelopeTitle != null)
                 {
-                    body["title"] = ExpressionConverter.ConvertO(bodyenvelopeTitle);
+                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodyenvelopeTitle);
                     bodypropCount++;
                 }
 
-                if (bodyenvelopeLabel != null)
+                if (__workflow_bodyenvelopeLabel != null)
                 {
-                    body["label"] = ExpressionConverter.ConvertO(bodyenvelopeLabel);
+                    body["label"] = ExpressionConverter.ConvertO(__workflow_bodyenvelopeLabel);
                     bodypropCount++;
                 }
 
-                if (bodyenvelopeMessage != null)
+                if (__workflow_bodyenvelopeMessage != null)
                 {
-                    body["message"] = ExpressionConverter.ConvertO(bodyenvelopeMessage);
+                    body["message"] = ExpressionConverter.ConvertO(__workflow_bodyenvelopeMessage);
                     bodypropCount++;
                 }
 
-                if (bodyenvelopeMode != null)
+                if (__workflow_bodyenvelopeMode != null)
                 {
-                    body["mode"] = ExpressionConverter.ConvertO(bodyenvelopeMode);
+                    body["mode"] = ExpressionConverter.ConvertO(__workflow_bodyenvelopeMode);
                     bodypropCount++;
                 }
 
-                if (bodyenvelopeRouting != null)
+                if (__workflow_bodyenvelopeRouting != null)
                 {
-                    body["routing"] = ExpressionConverter.ConvertO(bodyenvelopeRouting);
+                    body["routing"] = ExpressionConverter.ConvertO(__workflow_bodyenvelopeRouting);
                     bodypropCount++;
                 }
 
-                if (bodylanguage != null)
+                if (__workflow_bodylanguage != null)
                 {
-                    body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                    body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
                     bodypropCount++;
                 }
 
-                if (bodytimeZone != null)
+                if (__workflow_bodytimeZone != null)
                 {
-                    body["timezone"] = ExpressionConverter.ConvertO(bodytimeZone);
+                    body["timezone"] = ExpressionConverter.ConvertO(__workflow_bodytimeZone);
                     bodypropCount++;
                 }
 
-                if (bodytimestampFormat != null)
+                if (__workflow_bodytimestampFormat != null)
                 {
-                    body["timestamp_format"] = ExpressionConverter.ConvertO(bodytimestampFormat);
+                    body["timestamp_format"] = ExpressionConverter.ConvertO(__workflow_bodytimestampFormat);
                     bodypropCount++;
                 }
 
-                if (bodyenvelopeAttestation != null)
+                if (__workflow_bodyenvelopeAttestation != null)
                 {
-                    body["attestation"] = ExpressionConverter.ConvertO(bodyenvelopeAttestation);
+                    body["attestation"] = ExpressionConverter.ConvertO(__workflow_bodyenvelopeAttestation);
                     bodypropCount++;
                 }
 
                 var senderObject = new JObject();
                 var senderObjectpropCount = 0;
-                if (bodysendername != null)
+                if (__workflow_bodysendername != null)
                 {
-                    senderObject["name"] = ExpressionConverter.ConvertO(bodysendername);
+                    senderObject["name"] = ExpressionConverter.ConvertO(__workflow_bodysendername);
                     senderObjectpropCount++;
                 }
 
-                if (bodysenderemail != null)
+                if (__workflow_bodysenderemail != null)
                 {
-                    senderObject["email"] = ExpressionConverter.ConvertO(bodysenderemail);
+                    senderObject["email"] = ExpressionConverter.ConvertO(__workflow_bodysenderemail);
                     senderObjectpropCount++;
                 }
 
@@ -117,15 +122,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                     bodypropCount++;
                 }
 
-                if (bodyenvelopeTopics != null)
+                if (__workflow_bodyenvelopeTopics != null)
                 {
-                    body["topics"] = ExpressionConverter.ConvertO(bodyenvelopeTopics);
+                    body["topics"] = ExpressionConverter.ConvertO(__workflow_bodyenvelopeTopics);
                     bodypropCount++;
                 }
 
-                if (bodyextraProperties != null)
+                if (__workflow_bodyextraProperties != null)
                 {
-                    body["extra"] = ExpressionConverter.ConvertO(bodyextraProperties);
+                    body["extra"] = ExpressionConverter.ConvertO(__workflow_bodyextraProperties);
                     bodypropCount++;
                 }
 
@@ -139,19 +144,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteEnvelope))]
-        public IWorkflowAction DeleteEnvelope([WorkflowExpression] Func<string> envelopeId)
+        public IWorkflowAction DeleteEnvelope(Expression<Func<string>> envelopeId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDeleteEnvelope(WorkflowExpression<string> envelopeId)
-        {
-            WorkflowExpression.Validate(envelopeId, nameof(envelopeId), required: true);
+            var __workflow_envelopeId = envelopeId == null ? null : WorkflowExpression.Compile(envelopeId);
+            WorkflowExpression.Validate(__workflow_envelopeId, nameof(envelopeId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -159,19 +158,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        [WorkflowExpressionFactory(nameof(__BuildGetEnvelope))]
-        public IBodyWorkflowAction<Envelope> GetEnvelope([WorkflowExpression] Func<string> envelopeId)
+        public IBodyWorkflowAction<Envelope> GetEnvelope(Expression<Func<string>> envelopeId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Envelope> __BuildGetEnvelope(WorkflowExpression<string> envelopeId)
-        {
-            WorkflowExpression.Validate(envelopeId, nameof(envelopeId), required: true);
+            var __workflow_envelopeId = envelopeId == null ? null : WorkflowExpression.Compile(envelopeId);
+            WorkflowExpression.Validate(__workflow_envelopeId, nameof(envelopeId), required: true);
             return new DeferredBodyAction<Envelope>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Envelope>(callPayload);
@@ -179,41 +172,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        [WorkflowExpressionFactory(nameof(__BuildGetCapture))]
-        public IBodyWorkflowAction<Capture> GetCapture([WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> captureKey)
+        public IBodyWorkflowAction<Capture> GetCapture(Expression<Func<string>> envelopeId, Expression<Func<string>> captureKey)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Capture> __BuildGetCapture(WorkflowExpression<string> envelopeId, WorkflowExpression<string> captureKey)
-        {
-            WorkflowExpression.Validate(envelopeId, nameof(envelopeId), required: true);
-            WorkflowExpression.Validate(captureKey, nameof(captureKey), required: true);
+            var __workflow_envelopeId = envelopeId == null ? null : WorkflowExpression.Compile(envelopeId);
+            WorkflowExpression.Validate(__workflow_envelopeId, nameof(envelopeId), required: true);
+            var __workflow_captureKey = captureKey == null ? null : WorkflowExpression.Compile(captureKey);
+            WorkflowExpression.Validate(__workflow_captureKey, nameof(captureKey), required: true);
             return new DeferredBodyAction<Capture>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}+alias1", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}+alias1", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["captureKey"] = ExpressionConverter.Convert(captureKey);
+                callPayload.Queries["captureKey"] = ExpressionConverter.Convert(__workflow_captureKey);
                 return new ApiConnectionAction<Capture>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        [WorkflowExpressionFactory(nameof(__BuildStartEnvelope))]
-        public IBodyWorkflowAction<StartEnvelopeOutput> StartEnvelope([WorkflowExpression] Func<string> envelopeId)
+        public IBodyWorkflowAction<StartEnvelopeOutput> StartEnvelope(Expression<Func<string>> envelopeId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<StartEnvelopeOutput> __BuildStartEnvelope(WorkflowExpression<string> envelopeId)
-        {
-            WorkflowExpression.Validate(envelopeId, nameof(envelopeId), required: true);
+            var __workflow_envelopeId = envelopeId == null ? null : WorkflowExpression.Compile(envelopeId);
+            WorkflowExpression.Validate(__workflow_envelopeId, nameof(envelopeId), required: true);
             return new DeferredBodyAction<StartEnvelopeOutput>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/start", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/start", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<StartEnvelopeOutput>(callPayload);
@@ -221,43 +203,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        [WorkflowExpressionFactory(nameof(__BuildAddDocument))]
-        public IBodyWorkflowAction<AddDocumentOutput> AddDocument([WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> bodydocumentTitle = null, [WorkflowExpression] Func<string> bodyfileContent = null, [WorkflowExpression] Func<string> bodyextraProperties = null)
+        public IBodyWorkflowAction<AddDocumentOutput> AddDocument(Expression<Func<string>> envelopeId, Expression<Func<string>> bodydocumentTitle = null, Expression<Func<string>> bodyfileContent = null, Expression<Func<string>> bodyextraProperties = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AddDocumentOutput> __BuildAddDocument(WorkflowExpression<string> envelopeId, WorkflowExpression<string> bodydocumentTitle = null, WorkflowExpression<string> bodyfileContent = null, WorkflowExpression<string> bodyextraProperties = null)
-        {
-            WorkflowExpression.Validate(envelopeId, nameof(envelopeId), required: true);
-            WorkflowExpression.Validate(bodydocumentTitle, nameof(bodydocumentTitle), required: false);
-            WorkflowExpression.Validate(bodyfileContent, nameof(bodyfileContent), required: false);
-            WorkflowExpression.Validate(bodyextraProperties, nameof(bodyextraProperties), required: false);
+            var __workflow_envelopeId = envelopeId == null ? null : WorkflowExpression.Compile(envelopeId);
+            WorkflowExpression.Validate(__workflow_envelopeId, nameof(envelopeId), required: true);
+            var __workflow_bodydocumentTitle = bodydocumentTitle == null ? null : WorkflowExpression.Compile(bodydocumentTitle);
+            WorkflowExpression.Validate(__workflow_bodydocumentTitle, nameof(bodydocumentTitle), required: false);
+            var __workflow_bodyfileContent = bodyfileContent == null ? null : WorkflowExpression.Compile(bodyfileContent);
+            WorkflowExpression.Validate(__workflow_bodyfileContent, nameof(bodyfileContent), required: false);
+            var __workflow_bodyextraProperties = bodyextraProperties == null ? null : WorkflowExpression.Compile(bodyextraProperties);
+            WorkflowExpression.Validate(__workflow_bodyextraProperties, nameof(bodyextraProperties), required: false);
             return new DeferredBodyAction<AddDocumentOutput>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodydocumentTitle != null)
+                if (__workflow_bodydocumentTitle != null)
                 {
-                    body["title"] = ExpressionConverter.ConvertO(bodydocumentTitle);
+                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodydocumentTitle);
                     bodypropCount++;
                 }
 
-                if (bodyfileContent != null)
+                if (__workflow_bodyfileContent != null)
                 {
-                    body["file_content"] = ExpressionConverter.ConvertO(bodyfileContent);
+                    body["file_content"] = ExpressionConverter.ConvertO(__workflow_bodyfileContent);
                     bodypropCount++;
                 }
 
                 body["format"] = "pdf";
                 bodypropCount++;
-                if (bodyextraProperties != null)
+                if (__workflow_bodyextraProperties != null)
                 {
-                    body["extra"] = ExpressionConverter.ConvertO(bodyextraProperties);
+                    body["extra"] = ExpressionConverter.ConvertO(__workflow_bodyextraProperties);
                     bodypropCount++;
                 }
 
@@ -271,43 +250,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        [WorkflowExpressionFactory(nameof(__BuildAddDocumentDocx))]
-        public IBodyWorkflowAction<AddDocumentOutput> AddDocumentDocx([WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> bodydocumentTitle = null, [WorkflowExpression] Func<string> bodyfileContent = null, [WorkflowExpression] Func<string> bodyextraProperties = null)
+        public IBodyWorkflowAction<AddDocumentOutput> AddDocumentDocx(Expression<Func<string>> envelopeId, Expression<Func<string>> bodydocumentTitle = null, Expression<Func<string>> bodyfileContent = null, Expression<Func<string>> bodyextraProperties = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AddDocumentOutput> __BuildAddDocumentDocx(WorkflowExpression<string> envelopeId, WorkflowExpression<string> bodydocumentTitle = null, WorkflowExpression<string> bodyfileContent = null, WorkflowExpression<string> bodyextraProperties = null)
-        {
-            WorkflowExpression.Validate(envelopeId, nameof(envelopeId), required: true);
-            WorkflowExpression.Validate(bodydocumentTitle, nameof(bodydocumentTitle), required: false);
-            WorkflowExpression.Validate(bodyfileContent, nameof(bodyfileContent), required: false);
-            WorkflowExpression.Validate(bodyextraProperties, nameof(bodyextraProperties), required: false);
+            var __workflow_envelopeId = envelopeId == null ? null : WorkflowExpression.Compile(envelopeId);
+            WorkflowExpression.Validate(__workflow_envelopeId, nameof(envelopeId), required: true);
+            var __workflow_bodydocumentTitle = bodydocumentTitle == null ? null : WorkflowExpression.Compile(bodydocumentTitle);
+            WorkflowExpression.Validate(__workflow_bodydocumentTitle, nameof(bodydocumentTitle), required: false);
+            var __workflow_bodyfileContent = bodyfileContent == null ? null : WorkflowExpression.Compile(bodyfileContent);
+            WorkflowExpression.Validate(__workflow_bodyfileContent, nameof(bodyfileContent), required: false);
+            var __workflow_bodyextraProperties = bodyextraProperties == null ? null : WorkflowExpression.Compile(bodyextraProperties);
+            WorkflowExpression.Validate(__workflow_bodyextraProperties, nameof(bodyextraProperties), required: false);
             return new DeferredBodyAction<AddDocumentOutput>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents+alias1", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents+alias1", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodydocumentTitle != null)
+                if (__workflow_bodydocumentTitle != null)
                 {
-                    body["title"] = ExpressionConverter.ConvertO(bodydocumentTitle);
+                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodydocumentTitle);
                     bodypropCount++;
                 }
 
-                if (bodyfileContent != null)
+                if (__workflow_bodyfileContent != null)
                 {
-                    body["file_content"] = ExpressionConverter.ConvertO(bodyfileContent);
+                    body["file_content"] = ExpressionConverter.ConvertO(__workflow_bodyfileContent);
                     bodypropCount++;
                 }
 
                 body["format"] = "docx";
                 bodypropCount++;
-                if (bodyextraProperties != null)
+                if (__workflow_bodyextraProperties != null)
                 {
-                    body["extra"] = ExpressionConverter.ConvertO(bodyextraProperties);
+                    body["extra"] = ExpressionConverter.ConvertO(__workflow_bodyextraProperties);
                     bodypropCount++;
                 }
 
@@ -321,50 +297,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        [WorkflowExpressionFactory(nameof(__BuildAddTemplate))]
-        public IBodyWorkflowAction<AddDocumentOutput> AddTemplate([WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> bodydocumentTitle = null, [WorkflowExpression] Func<string> bodyfileContent = null, [WorkflowExpression] Func<string[]> bodytemplateData = null, [WorkflowExpression] Func<string> bodyextraProperties = null)
+        public IBodyWorkflowAction<AddDocumentOutput> AddTemplate(Expression<Func<string>> envelopeId, Expression<Func<string>> bodydocumentTitle = null, Expression<Func<string>> bodyfileContent = null, Expression<Func<string[]>> bodytemplateData = null, Expression<Func<string>> bodyextraProperties = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AddDocumentOutput> __BuildAddTemplate(WorkflowExpression<string> envelopeId, WorkflowExpression<string> bodydocumentTitle = null, WorkflowExpression<string> bodyfileContent = null, WorkflowExpression<string[]> bodytemplateData = null, WorkflowExpression<string> bodyextraProperties = null)
-        {
-            WorkflowExpression.Validate(envelopeId, nameof(envelopeId), required: true);
-            WorkflowExpression.Validate(bodydocumentTitle, nameof(bodydocumentTitle), required: false);
-            WorkflowExpression.Validate(bodyfileContent, nameof(bodyfileContent), required: false);
-            WorkflowExpression.Validate(bodytemplateData, nameof(bodytemplateData), required: false);
-            WorkflowExpression.Validate(bodyextraProperties, nameof(bodyextraProperties), required: false);
+            var __workflow_envelopeId = envelopeId == null ? null : WorkflowExpression.Compile(envelopeId);
+            WorkflowExpression.Validate(__workflow_envelopeId, nameof(envelopeId), required: true);
+            var __workflow_bodydocumentTitle = bodydocumentTitle == null ? null : WorkflowExpression.Compile(bodydocumentTitle);
+            WorkflowExpression.Validate(__workflow_bodydocumentTitle, nameof(bodydocumentTitle), required: false);
+            var __workflow_bodyfileContent = bodyfileContent == null ? null : WorkflowExpression.Compile(bodyfileContent);
+            WorkflowExpression.Validate(__workflow_bodyfileContent, nameof(bodyfileContent), required: false);
+            var __workflow_bodytemplateData = bodytemplateData == null ? null : WorkflowExpression.Compile(bodytemplateData);
+            WorkflowExpression.Validate(__workflow_bodytemplateData, nameof(bodytemplateData), required: false);
+            var __workflow_bodyextraProperties = bodyextraProperties == null ? null : WorkflowExpression.Compile(bodyextraProperties);
+            WorkflowExpression.Validate(__workflow_bodyextraProperties, nameof(bodyextraProperties), required: false);
             return new DeferredBodyAction<AddDocumentOutput>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents+alias2", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents+alias2", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodydocumentTitle != null)
+                if (__workflow_bodydocumentTitle != null)
                 {
-                    body["title"] = ExpressionConverter.ConvertO(bodydocumentTitle);
+                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodydocumentTitle);
                     bodypropCount++;
                 }
 
-                if (bodyfileContent != null)
+                if (__workflow_bodyfileContent != null)
                 {
-                    body["file_content"] = ExpressionConverter.ConvertO(bodyfileContent);
+                    body["file_content"] = ExpressionConverter.ConvertO(__workflow_bodyfileContent);
                     bodypropCount++;
                 }
 
                 body["format"] = "docx";
                 bodypropCount++;
-                if (bodytemplateData != null)
+                if (__workflow_bodytemplateData != null)
                 {
-                    body["data"] = ExpressionConverter.ConvertO(bodytemplateData);
+                    body["data"] = ExpressionConverter.ConvertO(__workflow_bodytemplateData);
                     bodypropCount++;
                 }
 
-                if (bodyextraProperties != null)
+                if (__workflow_bodyextraProperties != null)
                 {
-                    body["extra"] = ExpressionConverter.ConvertO(bodyextraProperties);
+                    body["extra"] = ExpressionConverter.ConvertO(__workflow_bodyextraProperties);
                     bodypropCount++;
                 }
 
@@ -378,34 +352,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        [WorkflowExpressionFactory(nameof(__BuildAddTemplateData))]
-        public IWorkflowAction AddTemplateData([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> bodyfieldName = null, [WorkflowExpression] Func<string> bodyvalue = null)
+        public IWorkflowAction AddTemplateData(Expression<Func<string>> documentId, Expression<Func<string>> bodyfieldName = null, Expression<Func<string>> bodyvalue = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildAddTemplateData(WorkflowExpression<string> documentId, WorkflowExpression<string> bodyfieldName = null, WorkflowExpression<string> bodyvalue = null)
-        {
-            WorkflowExpression.Validate(documentId, nameof(documentId), required: true);
-            WorkflowExpression.Validate(bodyfieldName, nameof(bodyfieldName), required: false);
-            WorkflowExpression.Validate(bodyvalue, nameof(bodyvalue), required: false);
+            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
+            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
+            var __workflow_bodyfieldName = bodyfieldName == null ? null : WorkflowExpression.Compile(bodyfieldName);
+            WorkflowExpression.Validate(__workflow_bodyfieldName, nameof(bodyfieldName), required: false);
+            var __workflow_bodyvalue = bodyvalue == null ? null : WorkflowExpression.Compile(bodyvalue);
+            WorkflowExpression.Validate(__workflow_bodyvalue, nameof(bodyvalue), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integrations/power-platform/documents/{0}/add-data", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integrations/power-platform/documents/{0}/add-data", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfieldName != null)
+                if (__workflow_bodyfieldName != null)
                 {
-                    body["field_name"] = ExpressionConverter.ConvertO(bodyfieldName);
+                    body["field_name"] = ExpressionConverter.ConvertO(__workflow_bodyfieldName);
                     bodypropCount++;
                 }
 
-                if (bodyvalue != null)
+                if (__workflow_bodyvalue != null)
                 {
-                    body["value"] = ExpressionConverter.ConvertO(bodyvalue);
+                    body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
                     bodypropCount++;
                 }
 
@@ -419,71 +389,72 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        [WorkflowExpressionFactory(nameof(__BuildAddPlaceSignature))]
-        public IWorkflowAction AddPlaceSignature([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> bodyplaceKey = null, [WorkflowExpression] Func<string> bodyrecipientKey = null, [WorkflowExpression] Func<double> bodyplaceHeight = null, [WorkflowExpression] Func<double> bodypageNumber = null, [WorkflowExpression] Func<double> bodydistanceFromTop = null, [WorkflowExpression] Func<double> bodydistanceFromLeft = null, [WorkflowExpression] Func<string> bodyextraProperties = null)
+        public IWorkflowAction AddPlaceSignature(Expression<Func<string>> documentId, Expression<Func<string>> bodyplaceKey = null, Expression<Func<string>> bodyrecipientKey = null, Expression<Func<double>> bodyplaceHeight = null, Expression<Func<double>> bodypageNumber = null, Expression<Func<double>> bodydistanceFromTop = null, Expression<Func<double>> bodydistanceFromLeft = null, Expression<Func<string>> bodyextraProperties = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildAddPlaceSignature(WorkflowExpression<string> documentId, WorkflowExpression<string> bodyplaceKey = null, WorkflowExpression<string> bodyrecipientKey = null, WorkflowExpression<double> bodyplaceHeight = null, WorkflowExpression<double> bodypageNumber = null, WorkflowExpression<double> bodydistanceFromTop = null, WorkflowExpression<double> bodydistanceFromLeft = null, WorkflowExpression<string> bodyextraProperties = null)
-        {
-            WorkflowExpression.Validate(documentId, nameof(documentId), required: true);
-            WorkflowExpression.Validate(bodyplaceKey, nameof(bodyplaceKey), required: false);
-            WorkflowExpression.Validate(bodyrecipientKey, nameof(bodyrecipientKey), required: false);
-            WorkflowExpression.Validate(bodyplaceHeight, nameof(bodyplaceHeight), required: false);
-            WorkflowExpression.Validate(bodypageNumber, nameof(bodypageNumber), required: false);
-            WorkflowExpression.Validate(bodydistanceFromTop, nameof(bodydistanceFromTop), required: false);
-            WorkflowExpression.Validate(bodydistanceFromLeft, nameof(bodydistanceFromLeft), required: false);
-            WorkflowExpression.Validate(bodyextraProperties, nameof(bodyextraProperties), required: false);
+            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
+            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
+            var __workflow_bodyplaceKey = bodyplaceKey == null ? null : WorkflowExpression.Compile(bodyplaceKey);
+            WorkflowExpression.Validate(__workflow_bodyplaceKey, nameof(bodyplaceKey), required: false);
+            var __workflow_bodyrecipientKey = bodyrecipientKey == null ? null : WorkflowExpression.Compile(bodyrecipientKey);
+            WorkflowExpression.Validate(__workflow_bodyrecipientKey, nameof(bodyrecipientKey), required: false);
+            var __workflow_bodyplaceHeight = bodyplaceHeight == null ? null : WorkflowExpression.Compile(bodyplaceHeight);
+            WorkflowExpression.Validate(__workflow_bodyplaceHeight, nameof(bodyplaceHeight), required: false);
+            var __workflow_bodypageNumber = bodypageNumber == null ? null : WorkflowExpression.Compile(bodypageNumber);
+            WorkflowExpression.Validate(__workflow_bodypageNumber, nameof(bodypageNumber), required: false);
+            var __workflow_bodydistanceFromTop = bodydistanceFromTop == null ? null : WorkflowExpression.Compile(bodydistanceFromTop);
+            WorkflowExpression.Validate(__workflow_bodydistanceFromTop, nameof(bodydistanceFromTop), required: false);
+            var __workflow_bodydistanceFromLeft = bodydistanceFromLeft == null ? null : WorkflowExpression.Compile(bodydistanceFromLeft);
+            WorkflowExpression.Validate(__workflow_bodydistanceFromLeft, nameof(bodydistanceFromLeft), required: false);
+            var __workflow_bodyextraProperties = bodyextraProperties == null ? null : WorkflowExpression.Compile(bodyextraProperties);
+            WorkflowExpression.Validate(__workflow_bodyextraProperties, nameof(bodyextraProperties), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integrations/power-platform/documents/{0}/add-signature-place", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integrations/power-platform/documents/{0}/add-signature-place", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 body["type"] = "signature";
                 bodypropCount++;
-                if (bodyplaceKey != null)
+                if (__workflow_bodyplaceKey != null)
                 {
-                    body["key"] = ExpressionConverter.ConvertO(bodyplaceKey);
+                    body["key"] = ExpressionConverter.ConvertO(__workflow_bodyplaceKey);
                     bodypropCount++;
                 }
 
-                if (bodyrecipientKey != null)
+                if (__workflow_bodyrecipientKey != null)
                 {
-                    body["recipient_key"] = ExpressionConverter.ConvertO(bodyrecipientKey);
+                    body["recipient_key"] = ExpressionConverter.ConvertO(__workflow_bodyrecipientKey);
                     bodypropCount++;
                 }
 
-                if (bodyplaceHeight != null)
+                if (__workflow_bodyplaceHeight != null)
                 {
-                    body["height"] = ExpressionConverter.ConvertO(bodyplaceHeight);
+                    body["height"] = ExpressionConverter.ConvertO(__workflow_bodyplaceHeight);
                     bodypropCount++;
                 }
 
-                if (bodypageNumber != null)
+                if (__workflow_bodypageNumber != null)
                 {
-                    body["page"] = ExpressionConverter.ConvertO(bodypageNumber);
+                    body["page"] = ExpressionConverter.ConvertO(__workflow_bodypageNumber);
                     bodypropCount++;
                 }
 
-                if (bodydistanceFromTop != null)
+                if (__workflow_bodydistanceFromTop != null)
                 {
-                    body["top"] = ExpressionConverter.ConvertO(bodydistanceFromTop);
+                    body["top"] = ExpressionConverter.ConvertO(__workflow_bodydistanceFromTop);
                     bodypropCount++;
                 }
 
-                if (bodydistanceFromLeft != null)
+                if (__workflow_bodydistanceFromLeft != null)
                 {
-                    body["left"] = ExpressionConverter.ConvertO(bodydistanceFromLeft);
+                    body["left"] = ExpressionConverter.ConvertO(__workflow_bodydistanceFromLeft);
                     bodypropCount++;
                 }
 
-                if (bodyextraProperties != null)
+                if (__workflow_bodyextraProperties != null)
                 {
-                    body["extra"] = ExpressionConverter.ConvertO(bodyextraProperties);
+                    body["extra"] = ExpressionConverter.ConvertO(__workflow_bodyextraProperties);
                     bodypropCount++;
                 }
 
@@ -497,71 +468,72 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        [WorkflowExpressionFactory(nameof(__BuildAddPlaceInitials))]
-        public IWorkflowAction AddPlaceInitials([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> bodyplaceKey = null, [WorkflowExpression] Func<string> bodyrecipientKey = null, [WorkflowExpression] Func<double> bodyplaceHeight = null, [WorkflowExpression] Func<double> bodypageNumber = null, [WorkflowExpression] Func<double> bodydistanceFromTop = null, [WorkflowExpression] Func<double> bodydistanceFromLeft = null, [WorkflowExpression] Func<string> bodyextraProperties = null)
+        public IWorkflowAction AddPlaceInitials(Expression<Func<string>> documentId, Expression<Func<string>> bodyplaceKey = null, Expression<Func<string>> bodyrecipientKey = null, Expression<Func<double>> bodyplaceHeight = null, Expression<Func<double>> bodypageNumber = null, Expression<Func<double>> bodydistanceFromTop = null, Expression<Func<double>> bodydistanceFromLeft = null, Expression<Func<string>> bodyextraProperties = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildAddPlaceInitials(WorkflowExpression<string> documentId, WorkflowExpression<string> bodyplaceKey = null, WorkflowExpression<string> bodyrecipientKey = null, WorkflowExpression<double> bodyplaceHeight = null, WorkflowExpression<double> bodypageNumber = null, WorkflowExpression<double> bodydistanceFromTop = null, WorkflowExpression<double> bodydistanceFromLeft = null, WorkflowExpression<string> bodyextraProperties = null)
-        {
-            WorkflowExpression.Validate(documentId, nameof(documentId), required: true);
-            WorkflowExpression.Validate(bodyplaceKey, nameof(bodyplaceKey), required: false);
-            WorkflowExpression.Validate(bodyrecipientKey, nameof(bodyrecipientKey), required: false);
-            WorkflowExpression.Validate(bodyplaceHeight, nameof(bodyplaceHeight), required: false);
-            WorkflowExpression.Validate(bodypageNumber, nameof(bodypageNumber), required: false);
-            WorkflowExpression.Validate(bodydistanceFromTop, nameof(bodydistanceFromTop), required: false);
-            WorkflowExpression.Validate(bodydistanceFromLeft, nameof(bodydistanceFromLeft), required: false);
-            WorkflowExpression.Validate(bodyextraProperties, nameof(bodyextraProperties), required: false);
+            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
+            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
+            var __workflow_bodyplaceKey = bodyplaceKey == null ? null : WorkflowExpression.Compile(bodyplaceKey);
+            WorkflowExpression.Validate(__workflow_bodyplaceKey, nameof(bodyplaceKey), required: false);
+            var __workflow_bodyrecipientKey = bodyrecipientKey == null ? null : WorkflowExpression.Compile(bodyrecipientKey);
+            WorkflowExpression.Validate(__workflow_bodyrecipientKey, nameof(bodyrecipientKey), required: false);
+            var __workflow_bodyplaceHeight = bodyplaceHeight == null ? null : WorkflowExpression.Compile(bodyplaceHeight);
+            WorkflowExpression.Validate(__workflow_bodyplaceHeight, nameof(bodyplaceHeight), required: false);
+            var __workflow_bodypageNumber = bodypageNumber == null ? null : WorkflowExpression.Compile(bodypageNumber);
+            WorkflowExpression.Validate(__workflow_bodypageNumber, nameof(bodypageNumber), required: false);
+            var __workflow_bodydistanceFromTop = bodydistanceFromTop == null ? null : WorkflowExpression.Compile(bodydistanceFromTop);
+            WorkflowExpression.Validate(__workflow_bodydistanceFromTop, nameof(bodydistanceFromTop), required: false);
+            var __workflow_bodydistanceFromLeft = bodydistanceFromLeft == null ? null : WorkflowExpression.Compile(bodydistanceFromLeft);
+            WorkflowExpression.Validate(__workflow_bodydistanceFromLeft, nameof(bodydistanceFromLeft), required: false);
+            var __workflow_bodyextraProperties = bodyextraProperties == null ? null : WorkflowExpression.Compile(bodyextraProperties);
+            WorkflowExpression.Validate(__workflow_bodyextraProperties, nameof(bodyextraProperties), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integrations/power-platform/documents/{0}/add-initials-place", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integrations/power-platform/documents/{0}/add-initials-place", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 body["type"] = "initials";
                 bodypropCount++;
-                if (bodyplaceKey != null)
+                if (__workflow_bodyplaceKey != null)
                 {
-                    body["key"] = ExpressionConverter.ConvertO(bodyplaceKey);
+                    body["key"] = ExpressionConverter.ConvertO(__workflow_bodyplaceKey);
                     bodypropCount++;
                 }
 
-                if (bodyrecipientKey != null)
+                if (__workflow_bodyrecipientKey != null)
                 {
-                    body["recipient_key"] = ExpressionConverter.ConvertO(bodyrecipientKey);
+                    body["recipient_key"] = ExpressionConverter.ConvertO(__workflow_bodyrecipientKey);
                     bodypropCount++;
                 }
 
-                if (bodyplaceHeight != null)
+                if (__workflow_bodyplaceHeight != null)
                 {
-                    body["height"] = ExpressionConverter.ConvertO(bodyplaceHeight);
+                    body["height"] = ExpressionConverter.ConvertO(__workflow_bodyplaceHeight);
                     bodypropCount++;
                 }
 
-                if (bodypageNumber != null)
+                if (__workflow_bodypageNumber != null)
                 {
-                    body["page"] = ExpressionConverter.ConvertO(bodypageNumber);
+                    body["page"] = ExpressionConverter.ConvertO(__workflow_bodypageNumber);
                     bodypropCount++;
                 }
 
-                if (bodydistanceFromTop != null)
+                if (__workflow_bodydistanceFromTop != null)
                 {
-                    body["top"] = ExpressionConverter.ConvertO(bodydistanceFromTop);
+                    body["top"] = ExpressionConverter.ConvertO(__workflow_bodydistanceFromTop);
                     bodypropCount++;
                 }
 
-                if (bodydistanceFromLeft != null)
+                if (__workflow_bodydistanceFromLeft != null)
                 {
-                    body["left"] = ExpressionConverter.ConvertO(bodydistanceFromLeft);
+                    body["left"] = ExpressionConverter.ConvertO(__workflow_bodydistanceFromLeft);
                     bodypropCount++;
                 }
 
-                if (bodyextraProperties != null)
+                if (__workflow_bodyextraProperties != null)
                 {
-                    body["extra"] = ExpressionConverter.ConvertO(bodyextraProperties);
+                    body["extra"] = ExpressionConverter.ConvertO(__workflow_bodyextraProperties);
                     bodypropCount++;
                 }
 
@@ -575,72 +547,78 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        [WorkflowExpressionFactory(nameof(__BuildAddPlaceTextInput))]
-        public IWorkflowAction AddPlaceTextInput([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> bodyplaceKey = null, [WorkflowExpression] Func<string> bodyrecipientKey = null, [WorkflowExpression] Func<string> bodycaptureAs = null, [WorkflowExpression] Func<string> bodyhint = null, [WorkflowExpression] Func<string> bodyprompt = null, [WorkflowExpression] Func<bodyrequirementInput> bodyrequirement = null, [WorkflowExpression] Func<string> bodyformat = null, [WorkflowExpression] Func<string> bodyformatMessage = null, [WorkflowExpression] Func<double> bodypageNumber = null, [WorkflowExpression] Func<double> bodydistanceFromTop = null, [WorkflowExpression] Func<double> bodydistanceFromLeft = null, [WorkflowExpression] Func<string> bodyextraProperties = null)
+        public IWorkflowAction AddPlaceTextInput(Expression<Func<string>> documentId, Expression<Func<string>> bodyplaceKey = null, Expression<Func<string>> bodyrecipientKey = null, Expression<Func<string>> bodycaptureAs = null, Expression<Func<string>> bodyhint = null, Expression<Func<string>> bodyprompt = null, Expression<Func<bodyrequirementInput>> bodyrequirement = null, Expression<Func<string>> bodyformat = null, Expression<Func<string>> bodyformatMessage = null, Expression<Func<double>> bodypageNumber = null, Expression<Func<double>> bodydistanceFromTop = null, Expression<Func<double>> bodydistanceFromLeft = null, Expression<Func<string>> bodyextraProperties = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildAddPlaceTextInput(WorkflowExpression<string> documentId, WorkflowExpression<string> bodyplaceKey = null, WorkflowExpression<string> bodyrecipientKey = null, WorkflowExpression<string> bodycaptureAs = null, WorkflowExpression<string> bodyhint = null, WorkflowExpression<string> bodyprompt = null, WorkflowExpression<bodyrequirementInput> bodyrequirement = null, WorkflowExpression<string> bodyformat = null, WorkflowExpression<string> bodyformatMessage = null, WorkflowExpression<double> bodypageNumber = null, WorkflowExpression<double> bodydistanceFromTop = null, WorkflowExpression<double> bodydistanceFromLeft = null, WorkflowExpression<string> bodyextraProperties = null)
-        {
-            WorkflowExpression.Validate(documentId, nameof(documentId), required: true);
-            WorkflowExpression.Validate(bodyplaceKey, nameof(bodyplaceKey), required: false);
-            WorkflowExpression.Validate(bodyrecipientKey, nameof(bodyrecipientKey), required: false);
-            WorkflowExpression.Validate(bodycaptureAs, nameof(bodycaptureAs), required: false);
-            WorkflowExpression.Validate(bodyhint, nameof(bodyhint), required: false);
-            WorkflowExpression.Validate(bodyprompt, nameof(bodyprompt), required: false);
-            WorkflowExpression.Validate(bodyrequirement, nameof(bodyrequirement), required: false);
-            WorkflowExpression.Validate(bodyformat, nameof(bodyformat), required: false);
-            WorkflowExpression.Validate(bodyformatMessage, nameof(bodyformatMessage), required: false);
-            WorkflowExpression.Validate(bodypageNumber, nameof(bodypageNumber), required: false);
-            WorkflowExpression.Validate(bodydistanceFromTop, nameof(bodydistanceFromTop), required: false);
-            WorkflowExpression.Validate(bodydistanceFromLeft, nameof(bodydistanceFromLeft), required: false);
-            WorkflowExpression.Validate(bodyextraProperties, nameof(bodyextraProperties), required: false);
+            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
+            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
+            var __workflow_bodyplaceKey = bodyplaceKey == null ? null : WorkflowExpression.Compile(bodyplaceKey);
+            WorkflowExpression.Validate(__workflow_bodyplaceKey, nameof(bodyplaceKey), required: false);
+            var __workflow_bodyrecipientKey = bodyrecipientKey == null ? null : WorkflowExpression.Compile(bodyrecipientKey);
+            WorkflowExpression.Validate(__workflow_bodyrecipientKey, nameof(bodyrecipientKey), required: false);
+            var __workflow_bodycaptureAs = bodycaptureAs == null ? null : WorkflowExpression.Compile(bodycaptureAs);
+            WorkflowExpression.Validate(__workflow_bodycaptureAs, nameof(bodycaptureAs), required: false);
+            var __workflow_bodyhint = bodyhint == null ? null : WorkflowExpression.Compile(bodyhint);
+            WorkflowExpression.Validate(__workflow_bodyhint, nameof(bodyhint), required: false);
+            var __workflow_bodyprompt = bodyprompt == null ? null : WorkflowExpression.Compile(bodyprompt);
+            WorkflowExpression.Validate(__workflow_bodyprompt, nameof(bodyprompt), required: false);
+            var __workflow_bodyrequirement = bodyrequirement == null ? null : WorkflowExpression.Compile(bodyrequirement);
+            WorkflowExpression.Validate(__workflow_bodyrequirement, nameof(bodyrequirement), required: false);
+            var __workflow_bodyformat = bodyformat == null ? null : WorkflowExpression.Compile(bodyformat);
+            WorkflowExpression.Validate(__workflow_bodyformat, nameof(bodyformat), required: false);
+            var __workflow_bodyformatMessage = bodyformatMessage == null ? null : WorkflowExpression.Compile(bodyformatMessage);
+            WorkflowExpression.Validate(__workflow_bodyformatMessage, nameof(bodyformatMessage), required: false);
+            var __workflow_bodypageNumber = bodypageNumber == null ? null : WorkflowExpression.Compile(bodypageNumber);
+            WorkflowExpression.Validate(__workflow_bodypageNumber, nameof(bodypageNumber), required: false);
+            var __workflow_bodydistanceFromTop = bodydistanceFromTop == null ? null : WorkflowExpression.Compile(bodydistanceFromTop);
+            WorkflowExpression.Validate(__workflow_bodydistanceFromTop, nameof(bodydistanceFromTop), required: false);
+            var __workflow_bodydistanceFromLeft = bodydistanceFromLeft == null ? null : WorkflowExpression.Compile(bodydistanceFromLeft);
+            WorkflowExpression.Validate(__workflow_bodydistanceFromLeft, nameof(bodydistanceFromLeft), required: false);
+            var __workflow_bodyextraProperties = bodyextraProperties == null ? null : WorkflowExpression.Compile(bodyextraProperties);
+            WorkflowExpression.Validate(__workflow_bodyextraProperties, nameof(bodyextraProperties), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integrations/power-platform/documents/{0}/add-text-input-place", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integrations/power-platform/documents/{0}/add-text-input-place", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 body["type"] = "text_input";
                 bodypropCount++;
-                if (bodyplaceKey != null)
+                if (__workflow_bodyplaceKey != null)
                 {
-                    body["key"] = ExpressionConverter.ConvertO(bodyplaceKey);
+                    body["key"] = ExpressionConverter.ConvertO(__workflow_bodyplaceKey);
                     bodypropCount++;
                 }
 
-                if (bodyrecipientKey != null)
+                if (__workflow_bodyrecipientKey != null)
                 {
-                    body["recipient_key"] = ExpressionConverter.ConvertO(bodyrecipientKey);
+                    body["recipient_key"] = ExpressionConverter.ConvertO(__workflow_bodyrecipientKey);
                     bodypropCount++;
                 }
 
-                if (bodycaptureAs != null)
+                if (__workflow_bodycaptureAs != null)
                 {
-                    body["capture_as"] = ExpressionConverter.ConvertO(bodycaptureAs);
+                    body["capture_as"] = ExpressionConverter.ConvertO(__workflow_bodycaptureAs);
                     bodypropCount++;
                 }
 
-                if (bodyhint != null)
+                if (__workflow_bodyhint != null)
                 {
-                    body["hint"] = ExpressionConverter.ConvertO(bodyhint);
+                    body["hint"] = ExpressionConverter.ConvertO(__workflow_bodyhint);
                     bodypropCount++;
                 }
 
-                if (bodyprompt != null)
+                if (__workflow_bodyprompt != null)
                 {
-                    body["prompt"] = ExpressionConverter.ConvertO(bodyprompt);
+                    body["prompt"] = ExpressionConverter.ConvertO(__workflow_bodyprompt);
                     bodypropCount++;
                 }
 
-                if (bodyrequirement != null)
+                if (__workflow_bodyrequirement != null)
                 {
-                    if (bodyrequirement != null)
+                    if (__workflow_bodyrequirement != null)
                     {
-                        body["requirement"] = ExpressionConverter.ConvertO(bodyrequirement);
+                        body["requirement"] = ExpressionConverter.ConvertO(__workflow_bodyrequirement);
                         bodypropCount++;
                     }
 
@@ -652,39 +630,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                     bodypropCount++;
                 }
 
-                if (bodyformat != null)
+                if (__workflow_bodyformat != null)
                 {
-                    body["format"] = ExpressionConverter.ConvertO(bodyformat);
+                    body["format"] = ExpressionConverter.ConvertO(__workflow_bodyformat);
                     bodypropCount++;
                 }
 
-                if (bodyformatMessage != null)
+                if (__workflow_bodyformatMessage != null)
                 {
-                    body["format_message"] = ExpressionConverter.ConvertO(bodyformatMessage);
+                    body["format_message"] = ExpressionConverter.ConvertO(__workflow_bodyformatMessage);
                     bodypropCount++;
                 }
 
-                if (bodypageNumber != null)
+                if (__workflow_bodypageNumber != null)
                 {
-                    body["page"] = ExpressionConverter.ConvertO(bodypageNumber);
+                    body["page"] = ExpressionConverter.ConvertO(__workflow_bodypageNumber);
                     bodypropCount++;
                 }
 
-                if (bodydistanceFromTop != null)
+                if (__workflow_bodydistanceFromTop != null)
                 {
-                    body["top"] = ExpressionConverter.ConvertO(bodydistanceFromTop);
+                    body["top"] = ExpressionConverter.ConvertO(__workflow_bodydistanceFromTop);
                     bodypropCount++;
                 }
 
-                if (bodydistanceFromLeft != null)
+                if (__workflow_bodydistanceFromLeft != null)
                 {
-                    body["left"] = ExpressionConverter.ConvertO(bodydistanceFromLeft);
+                    body["left"] = ExpressionConverter.ConvertO(__workflow_bodydistanceFromLeft);
                     bodypropCount++;
                 }
 
-                if (bodyextraProperties != null)
+                if (__workflow_bodyextraProperties != null)
                 {
-                    body["extra"] = ExpressionConverter.ConvertO(bodyextraProperties);
+                    body["extra"] = ExpressionConverter.ConvertO(__workflow_bodyextraProperties);
                     bodypropCount++;
                 }
 
@@ -698,78 +676,80 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        [WorkflowExpressionFactory(nameof(__BuildAddPlaceText))]
-        public IWorkflowAction AddPlaceText([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> bodyplaceKey = null, [WorkflowExpression] Func<string> bodyvalue = null, [WorkflowExpression] Func<double> bodyfontSize = null, [WorkflowExpression] Func<string> bodyfontColor = null, [WorkflowExpression] Func<double> bodypageNumber = null, [WorkflowExpression] Func<double> bodydistanceFromTop = null, [WorkflowExpression] Func<double> bodydistanceFromLeft = null, [WorkflowExpression] Func<string> bodyextraProperties = null)
+        public IWorkflowAction AddPlaceText(Expression<Func<string>> documentId, Expression<Func<string>> bodyplaceKey = null, Expression<Func<string>> bodyvalue = null, Expression<Func<double>> bodyfontSize = null, Expression<Func<string>> bodyfontColor = null, Expression<Func<double>> bodypageNumber = null, Expression<Func<double>> bodydistanceFromTop = null, Expression<Func<double>> bodydistanceFromLeft = null, Expression<Func<string>> bodyextraProperties = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildAddPlaceText(WorkflowExpression<string> documentId, WorkflowExpression<string> bodyplaceKey = null, WorkflowExpression<string> bodyvalue = null, WorkflowExpression<double> bodyfontSize = null, WorkflowExpression<string> bodyfontColor = null, WorkflowExpression<double> bodypageNumber = null, WorkflowExpression<double> bodydistanceFromTop = null, WorkflowExpression<double> bodydistanceFromLeft = null, WorkflowExpression<string> bodyextraProperties = null)
-        {
-            WorkflowExpression.Validate(documentId, nameof(documentId), required: true);
-            WorkflowExpression.Validate(bodyplaceKey, nameof(bodyplaceKey), required: false);
-            WorkflowExpression.Validate(bodyvalue, nameof(bodyvalue), required: false);
-            WorkflowExpression.Validate(bodyfontSize, nameof(bodyfontSize), required: false);
-            WorkflowExpression.Validate(bodyfontColor, nameof(bodyfontColor), required: false);
-            WorkflowExpression.Validate(bodypageNumber, nameof(bodypageNumber), required: false);
-            WorkflowExpression.Validate(bodydistanceFromTop, nameof(bodydistanceFromTop), required: false);
-            WorkflowExpression.Validate(bodydistanceFromLeft, nameof(bodydistanceFromLeft), required: false);
-            WorkflowExpression.Validate(bodyextraProperties, nameof(bodyextraProperties), required: false);
+            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
+            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
+            var __workflow_bodyplaceKey = bodyplaceKey == null ? null : WorkflowExpression.Compile(bodyplaceKey);
+            WorkflowExpression.Validate(__workflow_bodyplaceKey, nameof(bodyplaceKey), required: false);
+            var __workflow_bodyvalue = bodyvalue == null ? null : WorkflowExpression.Compile(bodyvalue);
+            WorkflowExpression.Validate(__workflow_bodyvalue, nameof(bodyvalue), required: false);
+            var __workflow_bodyfontSize = bodyfontSize == null ? null : WorkflowExpression.Compile(bodyfontSize);
+            WorkflowExpression.Validate(__workflow_bodyfontSize, nameof(bodyfontSize), required: false);
+            var __workflow_bodyfontColor = bodyfontColor == null ? null : WorkflowExpression.Compile(bodyfontColor);
+            WorkflowExpression.Validate(__workflow_bodyfontColor, nameof(bodyfontColor), required: false);
+            var __workflow_bodypageNumber = bodypageNumber == null ? null : WorkflowExpression.Compile(bodypageNumber);
+            WorkflowExpression.Validate(__workflow_bodypageNumber, nameof(bodypageNumber), required: false);
+            var __workflow_bodydistanceFromTop = bodydistanceFromTop == null ? null : WorkflowExpression.Compile(bodydistanceFromTop);
+            WorkflowExpression.Validate(__workflow_bodydistanceFromTop, nameof(bodydistanceFromTop), required: false);
+            var __workflow_bodydistanceFromLeft = bodydistanceFromLeft == null ? null : WorkflowExpression.Compile(bodydistanceFromLeft);
+            WorkflowExpression.Validate(__workflow_bodydistanceFromLeft, nameof(bodydistanceFromLeft), required: false);
+            var __workflow_bodyextraProperties = bodyextraProperties == null ? null : WorkflowExpression.Compile(bodyextraProperties);
+            WorkflowExpression.Validate(__workflow_bodyextraProperties, nameof(bodyextraProperties), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integrations/power-platform/documents/{0}/add-text-place", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integrations/power-platform/documents/{0}/add-text-place", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 body["type"] = "text";
                 bodypropCount++;
-                if (bodyplaceKey != null)
+                if (__workflow_bodyplaceKey != null)
                 {
-                    body["key"] = ExpressionConverter.ConvertO(bodyplaceKey);
+                    body["key"] = ExpressionConverter.ConvertO(__workflow_bodyplaceKey);
                     bodypropCount++;
                 }
 
-                if (bodyvalue != null)
+                if (__workflow_bodyvalue != null)
                 {
-                    body["value"] = ExpressionConverter.ConvertO(bodyvalue);
+                    body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
                     bodypropCount++;
                 }
 
-                if (bodyfontSize != null)
+                if (__workflow_bodyfontSize != null)
                 {
-                    body["font_size"] = ExpressionConverter.ConvertO(bodyfontSize);
+                    body["font_size"] = ExpressionConverter.ConvertO(__workflow_bodyfontSize);
                     bodypropCount++;
                 }
 
-                if (bodyfontColor != null)
+                if (__workflow_bodyfontColor != null)
                 {
-                    body["font_color"] = ExpressionConverter.ConvertO(bodyfontColor);
+                    body["font_color"] = ExpressionConverter.ConvertO(__workflow_bodyfontColor);
                     bodypropCount++;
                 }
 
-                if (bodypageNumber != null)
+                if (__workflow_bodypageNumber != null)
                 {
-                    body["page"] = ExpressionConverter.ConvertO(bodypageNumber);
+                    body["page"] = ExpressionConverter.ConvertO(__workflow_bodypageNumber);
                     bodypropCount++;
                 }
 
-                if (bodydistanceFromTop != null)
+                if (__workflow_bodydistanceFromTop != null)
                 {
-                    body["top"] = ExpressionConverter.ConvertO(bodydistanceFromTop);
+                    body["top"] = ExpressionConverter.ConvertO(__workflow_bodydistanceFromTop);
                     bodypropCount++;
                 }
 
-                if (bodydistanceFromLeft != null)
+                if (__workflow_bodydistanceFromLeft != null)
                 {
-                    body["left"] = ExpressionConverter.ConvertO(bodydistanceFromLeft);
+                    body["left"] = ExpressionConverter.ConvertO(__workflow_bodydistanceFromLeft);
                     bodypropCount++;
                 }
 
-                if (bodyextraProperties != null)
+                if (__workflow_bodyextraProperties != null)
                 {
-                    body["extra"] = ExpressionConverter.ConvertO(bodyextraProperties);
+                    body["extra"] = ExpressionConverter.ConvertO(__workflow_bodyextraProperties);
                     bodypropCount++;
                 }
 
@@ -783,71 +763,72 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        [WorkflowExpressionFactory(nameof(__BuildAddPlaceRecipientCompletedDate))]
-        public IWorkflowAction AddPlaceRecipientCompletedDate([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> bodyplaceKey = null, [WorkflowExpression] Func<string> bodyrecipientKey = null, [WorkflowExpression] Func<string> bodydateFormat = null, [WorkflowExpression] Func<double> bodypageNumber = null, [WorkflowExpression] Func<double> bodydistanceFromTop = null, [WorkflowExpression] Func<double> bodydistanceFromLeft = null, [WorkflowExpression] Func<string> bodyextraProperties = null)
+        public IWorkflowAction AddPlaceRecipientCompletedDate(Expression<Func<string>> documentId, Expression<Func<string>> bodyplaceKey = null, Expression<Func<string>> bodyrecipientKey = null, Expression<Func<string>> bodydateFormat = null, Expression<Func<double>> bodypageNumber = null, Expression<Func<double>> bodydistanceFromTop = null, Expression<Func<double>> bodydistanceFromLeft = null, Expression<Func<string>> bodyextraProperties = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildAddPlaceRecipientCompletedDate(WorkflowExpression<string> documentId, WorkflowExpression<string> bodyplaceKey = null, WorkflowExpression<string> bodyrecipientKey = null, WorkflowExpression<string> bodydateFormat = null, WorkflowExpression<double> bodypageNumber = null, WorkflowExpression<double> bodydistanceFromTop = null, WorkflowExpression<double> bodydistanceFromLeft = null, WorkflowExpression<string> bodyextraProperties = null)
-        {
-            WorkflowExpression.Validate(documentId, nameof(documentId), required: true);
-            WorkflowExpression.Validate(bodyplaceKey, nameof(bodyplaceKey), required: false);
-            WorkflowExpression.Validate(bodyrecipientKey, nameof(bodyrecipientKey), required: false);
-            WorkflowExpression.Validate(bodydateFormat, nameof(bodydateFormat), required: false);
-            WorkflowExpression.Validate(bodypageNumber, nameof(bodypageNumber), required: false);
-            WorkflowExpression.Validate(bodydistanceFromTop, nameof(bodydistanceFromTop), required: false);
-            WorkflowExpression.Validate(bodydistanceFromLeft, nameof(bodydistanceFromLeft), required: false);
-            WorkflowExpression.Validate(bodyextraProperties, nameof(bodyextraProperties), required: false);
+            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
+            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
+            var __workflow_bodyplaceKey = bodyplaceKey == null ? null : WorkflowExpression.Compile(bodyplaceKey);
+            WorkflowExpression.Validate(__workflow_bodyplaceKey, nameof(bodyplaceKey), required: false);
+            var __workflow_bodyrecipientKey = bodyrecipientKey == null ? null : WorkflowExpression.Compile(bodyrecipientKey);
+            WorkflowExpression.Validate(__workflow_bodyrecipientKey, nameof(bodyrecipientKey), required: false);
+            var __workflow_bodydateFormat = bodydateFormat == null ? null : WorkflowExpression.Compile(bodydateFormat);
+            WorkflowExpression.Validate(__workflow_bodydateFormat, nameof(bodydateFormat), required: false);
+            var __workflow_bodypageNumber = bodypageNumber == null ? null : WorkflowExpression.Compile(bodypageNumber);
+            WorkflowExpression.Validate(__workflow_bodypageNumber, nameof(bodypageNumber), required: false);
+            var __workflow_bodydistanceFromTop = bodydistanceFromTop == null ? null : WorkflowExpression.Compile(bodydistanceFromTop);
+            WorkflowExpression.Validate(__workflow_bodydistanceFromTop, nameof(bodydistanceFromTop), required: false);
+            var __workflow_bodydistanceFromLeft = bodydistanceFromLeft == null ? null : WorkflowExpression.Compile(bodydistanceFromLeft);
+            WorkflowExpression.Validate(__workflow_bodydistanceFromLeft, nameof(bodydistanceFromLeft), required: false);
+            var __workflow_bodyextraProperties = bodyextraProperties == null ? null : WorkflowExpression.Compile(bodyextraProperties);
+            WorkflowExpression.Validate(__workflow_bodyextraProperties, nameof(bodyextraProperties), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integrations/power-platform/documents/{0}/add-recipient-completed-date-place", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integrations/power-platform/documents/{0}/add-recipient-completed-date-place", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 body["type"] = "recipient_completed_date";
                 bodypropCount++;
-                if (bodyplaceKey != null)
+                if (__workflow_bodyplaceKey != null)
                 {
-                    body["key"] = ExpressionConverter.ConvertO(bodyplaceKey);
+                    body["key"] = ExpressionConverter.ConvertO(__workflow_bodyplaceKey);
                     bodypropCount++;
                 }
 
-                if (bodyrecipientKey != null)
+                if (__workflow_bodyrecipientKey != null)
                 {
-                    body["recipient_key"] = ExpressionConverter.ConvertO(bodyrecipientKey);
+                    body["recipient_key"] = ExpressionConverter.ConvertO(__workflow_bodyrecipientKey);
                     bodypropCount++;
                 }
 
-                if (bodydateFormat != null)
+                if (__workflow_bodydateFormat != null)
                 {
-                    body["date_format"] = ExpressionConverter.ConvertO(bodydateFormat);
+                    body["date_format"] = ExpressionConverter.ConvertO(__workflow_bodydateFormat);
                     bodypropCount++;
                 }
 
-                if (bodypageNumber != null)
+                if (__workflow_bodypageNumber != null)
                 {
-                    body["page"] = ExpressionConverter.ConvertO(bodypageNumber);
+                    body["page"] = ExpressionConverter.ConvertO(__workflow_bodypageNumber);
                     bodypropCount++;
                 }
 
-                if (bodydistanceFromTop != null)
+                if (__workflow_bodydistanceFromTop != null)
                 {
-                    body["top"] = ExpressionConverter.ConvertO(bodydistanceFromTop);
+                    body["top"] = ExpressionConverter.ConvertO(__workflow_bodydistanceFromTop);
                     bodypropCount++;
                 }
 
-                if (bodydistanceFromLeft != null)
+                if (__workflow_bodydistanceFromLeft != null)
                 {
-                    body["left"] = ExpressionConverter.ConvertO(bodydistanceFromLeft);
+                    body["left"] = ExpressionConverter.ConvertO(__workflow_bodydistanceFromLeft);
                     bodypropCount++;
                 }
 
-                if (bodyextraProperties != null)
+                if (__workflow_bodyextraProperties != null)
                 {
-                    body["extra"] = ExpressionConverter.ConvertO(bodyextraProperties);
+                    body["extra"] = ExpressionConverter.ConvertO(__workflow_bodyextraProperties);
                     bodypropCount++;
                 }
 
@@ -861,64 +842,64 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        [WorkflowExpressionFactory(nameof(__BuildAddPlaceEnvelopeCompletedDate))]
-        public IWorkflowAction AddPlaceEnvelopeCompletedDate([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> bodyplaceKey = null, [WorkflowExpression] Func<string> bodydateFormat = null, [WorkflowExpression] Func<double> bodypageNumber = null, [WorkflowExpression] Func<double> bodydistanceFromTop = null, [WorkflowExpression] Func<double> bodydistanceFromLeft = null, [WorkflowExpression] Func<string> bodyextraProperties = null)
+        public IWorkflowAction AddPlaceEnvelopeCompletedDate(Expression<Func<string>> documentId, Expression<Func<string>> bodyplaceKey = null, Expression<Func<string>> bodydateFormat = null, Expression<Func<double>> bodypageNumber = null, Expression<Func<double>> bodydistanceFromTop = null, Expression<Func<double>> bodydistanceFromLeft = null, Expression<Func<string>> bodyextraProperties = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildAddPlaceEnvelopeCompletedDate(WorkflowExpression<string> documentId, WorkflowExpression<string> bodyplaceKey = null, WorkflowExpression<string> bodydateFormat = null, WorkflowExpression<double> bodypageNumber = null, WorkflowExpression<double> bodydistanceFromTop = null, WorkflowExpression<double> bodydistanceFromLeft = null, WorkflowExpression<string> bodyextraProperties = null)
-        {
-            WorkflowExpression.Validate(documentId, nameof(documentId), required: true);
-            WorkflowExpression.Validate(bodyplaceKey, nameof(bodyplaceKey), required: false);
-            WorkflowExpression.Validate(bodydateFormat, nameof(bodydateFormat), required: false);
-            WorkflowExpression.Validate(bodypageNumber, nameof(bodypageNumber), required: false);
-            WorkflowExpression.Validate(bodydistanceFromTop, nameof(bodydistanceFromTop), required: false);
-            WorkflowExpression.Validate(bodydistanceFromLeft, nameof(bodydistanceFromLeft), required: false);
-            WorkflowExpression.Validate(bodyextraProperties, nameof(bodyextraProperties), required: false);
+            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
+            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
+            var __workflow_bodyplaceKey = bodyplaceKey == null ? null : WorkflowExpression.Compile(bodyplaceKey);
+            WorkflowExpression.Validate(__workflow_bodyplaceKey, nameof(bodyplaceKey), required: false);
+            var __workflow_bodydateFormat = bodydateFormat == null ? null : WorkflowExpression.Compile(bodydateFormat);
+            WorkflowExpression.Validate(__workflow_bodydateFormat, nameof(bodydateFormat), required: false);
+            var __workflow_bodypageNumber = bodypageNumber == null ? null : WorkflowExpression.Compile(bodypageNumber);
+            WorkflowExpression.Validate(__workflow_bodypageNumber, nameof(bodypageNumber), required: false);
+            var __workflow_bodydistanceFromTop = bodydistanceFromTop == null ? null : WorkflowExpression.Compile(bodydistanceFromTop);
+            WorkflowExpression.Validate(__workflow_bodydistanceFromTop, nameof(bodydistanceFromTop), required: false);
+            var __workflow_bodydistanceFromLeft = bodydistanceFromLeft == null ? null : WorkflowExpression.Compile(bodydistanceFromLeft);
+            WorkflowExpression.Validate(__workflow_bodydistanceFromLeft, nameof(bodydistanceFromLeft), required: false);
+            var __workflow_bodyextraProperties = bodyextraProperties == null ? null : WorkflowExpression.Compile(bodyextraProperties);
+            WorkflowExpression.Validate(__workflow_bodyextraProperties, nameof(bodyextraProperties), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integrations/power-platform/documents/{0}/add-envelope-completed-date-place", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integrations/power-platform/documents/{0}/add-envelope-completed-date-place", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 body["type"] = "envelope_completed_date";
                 bodypropCount++;
-                if (bodyplaceKey != null)
+                if (__workflow_bodyplaceKey != null)
                 {
-                    body["key"] = ExpressionConverter.ConvertO(bodyplaceKey);
+                    body["key"] = ExpressionConverter.ConvertO(__workflow_bodyplaceKey);
                     bodypropCount++;
                 }
 
-                if (bodydateFormat != null)
+                if (__workflow_bodydateFormat != null)
                 {
-                    body["date_format"] = ExpressionConverter.ConvertO(bodydateFormat);
+                    body["date_format"] = ExpressionConverter.ConvertO(__workflow_bodydateFormat);
                     bodypropCount++;
                 }
 
-                if (bodypageNumber != null)
+                if (__workflow_bodypageNumber != null)
                 {
-                    body["page"] = ExpressionConverter.ConvertO(bodypageNumber);
+                    body["page"] = ExpressionConverter.ConvertO(__workflow_bodypageNumber);
                     bodypropCount++;
                 }
 
-                if (bodydistanceFromTop != null)
+                if (__workflow_bodydistanceFromTop != null)
                 {
-                    body["top"] = ExpressionConverter.ConvertO(bodydistanceFromTop);
+                    body["top"] = ExpressionConverter.ConvertO(__workflow_bodydistanceFromTop);
                     bodypropCount++;
                 }
 
-                if (bodydistanceFromLeft != null)
+                if (__workflow_bodydistanceFromLeft != null)
                 {
-                    body["left"] = ExpressionConverter.ConvertO(bodydistanceFromLeft);
+                    body["left"] = ExpressionConverter.ConvertO(__workflow_bodydistanceFromLeft);
                     bodypropCount++;
                 }
 
-                if (bodyextraProperties != null)
+                if (__workflow_bodyextraProperties != null)
                 {
-                    body["extra"] = ExpressionConverter.ConvertO(bodyextraProperties);
+                    body["extra"] = ExpressionConverter.ConvertO(__workflow_bodyextraProperties);
                     bodypropCount++;
                 }
 
@@ -932,64 +913,64 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        [WorkflowExpressionFactory(nameof(__BuildAddRecipient))]
-        public IBodyWorkflowAction<AddRecipientSignerOutput> AddRecipient([WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> bodyrecipientName = null, [WorkflowExpression] Func<string> bodyrecipientEmail = null, [WorkflowExpression] Func<string> bodyrecipientKey = null, [WorkflowExpression] Func<bodyrecipientCeremonyCreationInput> bodyrecipientCeremonyCreation = null, [WorkflowExpression] Func<bodyrecipientDeliveryTypeInput> bodyrecipientDeliveryType = null, [WorkflowExpression] Func<string> bodyextraProperties = null)
+        public IBodyWorkflowAction<AddRecipientSignerOutput> AddRecipient(Expression<Func<string>> envelopeId, Expression<Func<string>> bodyrecipientName = null, Expression<Func<string>> bodyrecipientEmail = null, Expression<Func<string>> bodyrecipientKey = null, Expression<Func<bodyrecipientCeremonyCreationInput>> bodyrecipientCeremonyCreation = null, Expression<Func<bodyrecipientDeliveryTypeInput>> bodyrecipientDeliveryType = null, Expression<Func<string>> bodyextraProperties = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AddRecipientSignerOutput> __BuildAddRecipient(WorkflowExpression<string> envelopeId, WorkflowExpression<string> bodyrecipientName = null, WorkflowExpression<string> bodyrecipientEmail = null, WorkflowExpression<string> bodyrecipientKey = null, WorkflowExpression<bodyrecipientCeremonyCreationInput> bodyrecipientCeremonyCreation = null, WorkflowExpression<bodyrecipientDeliveryTypeInput> bodyrecipientDeliveryType = null, WorkflowExpression<string> bodyextraProperties = null)
-        {
-            WorkflowExpression.Validate(envelopeId, nameof(envelopeId), required: true);
-            WorkflowExpression.Validate(bodyrecipientName, nameof(bodyrecipientName), required: false);
-            WorkflowExpression.Validate(bodyrecipientEmail, nameof(bodyrecipientEmail), required: false);
-            WorkflowExpression.Validate(bodyrecipientKey, nameof(bodyrecipientKey), required: false);
-            WorkflowExpression.Validate(bodyrecipientCeremonyCreation, nameof(bodyrecipientCeremonyCreation), required: false);
-            WorkflowExpression.Validate(bodyrecipientDeliveryType, nameof(bodyrecipientDeliveryType), required: false);
-            WorkflowExpression.Validate(bodyextraProperties, nameof(bodyextraProperties), required: false);
+            var __workflow_envelopeId = envelopeId == null ? null : WorkflowExpression.Compile(envelopeId);
+            WorkflowExpression.Validate(__workflow_envelopeId, nameof(envelopeId), required: true);
+            var __workflow_bodyrecipientName = bodyrecipientName == null ? null : WorkflowExpression.Compile(bodyrecipientName);
+            WorkflowExpression.Validate(__workflow_bodyrecipientName, nameof(bodyrecipientName), required: false);
+            var __workflow_bodyrecipientEmail = bodyrecipientEmail == null ? null : WorkflowExpression.Compile(bodyrecipientEmail);
+            WorkflowExpression.Validate(__workflow_bodyrecipientEmail, nameof(bodyrecipientEmail), required: false);
+            var __workflow_bodyrecipientKey = bodyrecipientKey == null ? null : WorkflowExpression.Compile(bodyrecipientKey);
+            WorkflowExpression.Validate(__workflow_bodyrecipientKey, nameof(bodyrecipientKey), required: false);
+            var __workflow_bodyrecipientCeremonyCreation = bodyrecipientCeremonyCreation == null ? null : WorkflowExpression.Compile(bodyrecipientCeremonyCreation);
+            WorkflowExpression.Validate(__workflow_bodyrecipientCeremonyCreation, nameof(bodyrecipientCeremonyCreation), required: false);
+            var __workflow_bodyrecipientDeliveryType = bodyrecipientDeliveryType == null ? null : WorkflowExpression.Compile(bodyrecipientDeliveryType);
+            WorkflowExpression.Validate(__workflow_bodyrecipientDeliveryType, nameof(bodyrecipientDeliveryType), required: false);
+            var __workflow_bodyextraProperties = bodyextraProperties == null ? null : WorkflowExpression.Compile(bodyextraProperties);
+            WorkflowExpression.Validate(__workflow_bodyextraProperties, nameof(bodyextraProperties), required: false);
             return new DeferredBodyAction<AddRecipientSignerOutput>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/recipients", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/recipients", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 body["type"] = "signer";
                 bodypropCount++;
-                if (bodyrecipientName != null)
+                if (__workflow_bodyrecipientName != null)
                 {
-                    body["name"] = ExpressionConverter.ConvertO(bodyrecipientName);
+                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyrecipientName);
                     bodypropCount++;
                 }
 
-                if (bodyrecipientEmail != null)
+                if (__workflow_bodyrecipientEmail != null)
                 {
-                    body["email"] = ExpressionConverter.ConvertO(bodyrecipientEmail);
+                    body["email"] = ExpressionConverter.ConvertO(__workflow_bodyrecipientEmail);
                     bodypropCount++;
                 }
 
-                if (bodyrecipientKey != null)
+                if (__workflow_bodyrecipientKey != null)
                 {
-                    body["key"] = ExpressionConverter.ConvertO(bodyrecipientKey);
+                    body["key"] = ExpressionConverter.ConvertO(__workflow_bodyrecipientKey);
                     bodypropCount++;
                 }
 
-                if (bodyrecipientCeremonyCreation != null)
+                if (__workflow_bodyrecipientCeremonyCreation != null)
                 {
-                    body["ceremony_creation"] = ExpressionConverter.ConvertO(bodyrecipientCeremonyCreation);
+                    body["ceremony_creation"] = ExpressionConverter.ConvertO(__workflow_bodyrecipientCeremonyCreation);
                     bodypropCount++;
                 }
 
-                if (bodyrecipientDeliveryType != null)
+                if (__workflow_bodyrecipientDeliveryType != null)
                 {
-                    body["delivery_type"] = ExpressionConverter.ConvertO(bodyrecipientDeliveryType);
+                    body["delivery_type"] = ExpressionConverter.ConvertO(__workflow_bodyrecipientDeliveryType);
                     bodypropCount++;
                 }
 
-                if (bodyextraProperties != null)
+                if (__workflow_bodyextraProperties != null)
                 {
-                    body["extra"] = ExpressionConverter.ConvertO(bodyextraProperties);
+                    body["extra"] = ExpressionConverter.ConvertO(__workflow_bodyextraProperties);
                     bodypropCount++;
                 }
 
@@ -1003,19 +984,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        [WorkflowExpressionFactory(nameof(__BuildGetRecipient))]
-        public IBodyWorkflowAction<Recipient> GetRecipient([WorkflowExpression] Func<string> recipientId)
+        public IBodyWorkflowAction<Recipient> GetRecipient(Expression<Func<string>> recipientId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Recipient> __BuildGetRecipient(WorkflowExpression<string> recipientId)
-        {
-            WorkflowExpression.Validate(recipientId, nameof(recipientId), required: true);
+            var __workflow_recipientId = recipientId == null ? null : WorkflowExpression.Compile(recipientId);
+            WorkflowExpression.Validate(__workflow_recipientId, nameof(recipientId), required: true);
             return new DeferredBodyAction<Recipient>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/recipients/{0}", ExpressionConverter.ConvertWithUrlEncoding(recipientId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/recipients/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_recipientId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Recipient>(callPayload);
@@ -1023,21 +998,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateCeremonyEmailLink))]
-        public IBodyWorkflowAction<JToken> CreateCeremonyEmailLink([WorkflowExpression] Func<string> recipientId, [WorkflowExpression] Func<string> bodyredirectURL = null, [WorkflowExpression] Func<string> bodyextraProperties = null)
+        public IBodyWorkflowAction<JToken> CreateCeremonyEmailLink(Expression<Func<string>> recipientId, Expression<Func<string>> bodyredirectURL = null, Expression<Func<string>> bodyextraProperties = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildCreateCeremonyEmailLink(WorkflowExpression<string> recipientId, WorkflowExpression<string> bodyredirectURL = null, WorkflowExpression<string> bodyextraProperties = null)
-        {
-            WorkflowExpression.Validate(recipientId, nameof(recipientId), required: true);
-            WorkflowExpression.Validate(bodyredirectURL, nameof(bodyredirectURL), required: false);
-            WorkflowExpression.Validate(bodyextraProperties, nameof(bodyextraProperties), required: false);
+            var __workflow_recipientId = recipientId == null ? null : WorkflowExpression.Compile(recipientId);
+            WorkflowExpression.Validate(__workflow_recipientId, nameof(recipientId), required: true);
+            var __workflow_bodyredirectURL = bodyredirectURL == null ? null : WorkflowExpression.Compile(bodyredirectURL);
+            WorkflowExpression.Validate(__workflow_bodyredirectURL, nameof(bodyredirectURL), required: false);
+            var __workflow_bodyextraProperties = bodyextraProperties == null ? null : WorkflowExpression.Compile(bodyextraProperties);
+            WorkflowExpression.Validate(__workflow_bodyextraProperties, nameof(bodyextraProperties), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/recipients/{0}/ceremony", ExpressionConverter.ConvertWithUrlEncoding(recipientId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/recipients/{0}/ceremony", ExpressionConverter.ConvertWithUrlEncoding(__workflow_recipientId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -1052,15 +1023,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                     bodypropCount++;
                 }
 
-                if (bodyredirectURL != null)
+                if (__workflow_bodyredirectURL != null)
                 {
-                    body["redirect_url"] = ExpressionConverter.ConvertO(bodyredirectURL);
+                    body["redirect_url"] = ExpressionConverter.ConvertO(__workflow_bodyredirectURL);
                     bodypropCount++;
                 }
 
-                if (bodyextraProperties != null)
+                if (__workflow_bodyextraProperties != null)
                 {
-                    body["extra"] = ExpressionConverter.ConvertO(bodyextraProperties);
+                    body["extra"] = ExpressionConverter.ConvertO(__workflow_bodyextraProperties);
                     bodypropCount++;
                 }
 
@@ -1074,23 +1045,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateCeremonyCustom))]
-        public IBodyWorkflowAction<CreateCeremonyCustomOutput> CreateCeremonyCustom([WorkflowExpression] Func<string> recipientId, [WorkflowExpression] Func<string> bodyauthenticationauthenticationProvider = null, [WorkflowExpression] Func<string[]> bodyauthenticationauthenticationData = null, [WorkflowExpression] Func<string> bodyredirectURL = null, [WorkflowExpression] Func<string> bodyextraProperties = null)
+        public IBodyWorkflowAction<CreateCeremonyCustomOutput> CreateCeremonyCustom(Expression<Func<string>> recipientId, Expression<Func<string>> bodyauthenticationauthenticationProvider = null, Expression<Func<string[]>> bodyauthenticationauthenticationData = null, Expression<Func<string>> bodyredirectURL = null, Expression<Func<string>> bodyextraProperties = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateCeremonyCustomOutput> __BuildCreateCeremonyCustom(WorkflowExpression<string> recipientId, WorkflowExpression<string> bodyauthenticationauthenticationProvider = null, WorkflowExpression<string[]> bodyauthenticationauthenticationData = null, WorkflowExpression<string> bodyredirectURL = null, WorkflowExpression<string> bodyextraProperties = null)
-        {
-            WorkflowExpression.Validate(recipientId, nameof(recipientId), required: true);
-            WorkflowExpression.Validate(bodyauthenticationauthenticationProvider, nameof(bodyauthenticationauthenticationProvider), required: false);
-            WorkflowExpression.Validate(bodyauthenticationauthenticationData, nameof(bodyauthenticationauthenticationData), required: false);
-            WorkflowExpression.Validate(bodyredirectURL, nameof(bodyredirectURL), required: false);
-            WorkflowExpression.Validate(bodyextraProperties, nameof(bodyextraProperties), required: false);
+            var __workflow_recipientId = recipientId == null ? null : WorkflowExpression.Compile(recipientId);
+            WorkflowExpression.Validate(__workflow_recipientId, nameof(recipientId), required: true);
+            var __workflow_bodyauthenticationauthenticationProvider = bodyauthenticationauthenticationProvider == null ? null : WorkflowExpression.Compile(bodyauthenticationauthenticationProvider);
+            WorkflowExpression.Validate(__workflow_bodyauthenticationauthenticationProvider, nameof(bodyauthenticationauthenticationProvider), required: false);
+            var __workflow_bodyauthenticationauthenticationData = bodyauthenticationauthenticationData == null ? null : WorkflowExpression.Compile(bodyauthenticationauthenticationData);
+            WorkflowExpression.Validate(__workflow_bodyauthenticationauthenticationData, nameof(bodyauthenticationauthenticationData), required: false);
+            var __workflow_bodyredirectURL = bodyredirectURL == null ? null : WorkflowExpression.Compile(bodyredirectURL);
+            WorkflowExpression.Validate(__workflow_bodyredirectURL, nameof(bodyredirectURL), required: false);
+            var __workflow_bodyextraProperties = bodyextraProperties == null ? null : WorkflowExpression.Compile(bodyextraProperties);
+            WorkflowExpression.Validate(__workflow_bodyextraProperties, nameof(bodyextraProperties), required: false);
             return new DeferredBodyAction<CreateCeremonyCustomOutput>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/recipients/{0}/ceremony+alias1", ExpressionConverter.ConvertWithUrlEncoding(recipientId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/recipients/{0}/ceremony+alias1", ExpressionConverter.ConvertWithUrlEncoding(__workflow_recipientId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -1099,15 +1068,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 var authenticationObjectpropCount = 0;
                 authenticationObject["type"] = "custom";
                 authenticationObjectpropCount++;
-                if (bodyauthenticationauthenticationProvider != null)
+                if (__workflow_bodyauthenticationauthenticationProvider != null)
                 {
-                    authenticationObject["provider"] = ExpressionConverter.ConvertO(bodyauthenticationauthenticationProvider);
+                    authenticationObject["provider"] = ExpressionConverter.ConvertO(__workflow_bodyauthenticationauthenticationProvider);
                     authenticationObjectpropCount++;
                 }
 
-                if (bodyauthenticationauthenticationData != null)
+                if (__workflow_bodyauthenticationauthenticationData != null)
                 {
-                    authenticationObject["data"] = ExpressionConverter.ConvertO(bodyauthenticationauthenticationData);
+                    authenticationObject["data"] = ExpressionConverter.ConvertO(__workflow_bodyauthenticationauthenticationData);
                     authenticationObjectpropCount++;
                 }
 
@@ -1117,15 +1086,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                     bodypropCount++;
                 }
 
-                if (bodyredirectURL != null)
+                if (__workflow_bodyredirectURL != null)
                 {
-                    body["redirect_url"] = ExpressionConverter.ConvertO(bodyredirectURL);
+                    body["redirect_url"] = ExpressionConverter.ConvertO(__workflow_bodyredirectURL);
                     bodypropCount++;
                 }
 
-                if (bodyextraProperties != null)
+                if (__workflow_bodyextraProperties != null)
                 {
-                    body["extra"] = ExpressionConverter.ConvertO(bodyextraProperties);
+                    body["extra"] = ExpressionConverter.ConvertO(__workflow_bodyextraProperties);
                     bodypropCount++;
                 }
 
@@ -1139,19 +1108,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        [WorkflowExpressionFactory(nameof(__BuildWaitEnvelope))]
-        public IBodyWorkflowAction<Envelope> WaitEnvelope([WorkflowExpression] Func<string> envelopeId)
+        public IBodyWorkflowAction<Envelope> WaitEnvelope(Expression<Func<string>> envelopeId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Envelope> __BuildWaitEnvelope(WorkflowExpression<string> envelopeId)
-        {
-            WorkflowExpression.Validate(envelopeId, nameof(envelopeId), required: true);
+            var __workflow_envelopeId = envelopeId == null ? null : WorkflowExpression.Compile(envelopeId);
+            WorkflowExpression.Validate(__workflow_envelopeId, nameof(envelopeId), required: true);
             return new DeferredBodyAction<Envelope>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integrations/power-platform/envelopes/{0}/wait", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integrations/power-platform/envelopes/{0}/wait", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Envelope>(callPayload);
@@ -1159,19 +1122,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        [WorkflowExpressionFactory(nameof(__BuildGetDeliverable))]
-        public IBodyWorkflowAction<Deliverable> GetDeliverable([WorkflowExpression] Func<string> deliverableId)
+        public IBodyWorkflowAction<Deliverable> GetDeliverable(Expression<Func<string>> deliverableId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Deliverable> __BuildGetDeliverable(WorkflowExpression<string> deliverableId)
-        {
-            WorkflowExpression.Validate(deliverableId, nameof(deliverableId), required: true);
+            var __workflow_deliverableId = deliverableId == null ? null : WorkflowExpression.Compile(deliverableId);
+            WorkflowExpression.Validate(__workflow_deliverableId, nameof(deliverableId), required: true);
             return new DeferredBodyAction<Deliverable>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/deliverables/{0}", ExpressionConverter.ConvertWithUrlEncoding(deliverableId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/deliverables/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_deliverableId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Deliverable>(callPayload);
@@ -1181,17 +1138,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
     public class SignatureapiTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildCreateEndpointForEnvelopeCreated))]
-        public IBodyWorkflowTrigger<JToken> CreateEndpointForEnvelopeCreated([WorkflowExpression] Func<string[]> bodytopics = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> CreateEndpointForEnvelopeCreated(Expression<Func<string[]>> bodytopics = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildCreateEndpointForEnvelopeCreated(WorkflowExpression<string[]> bodytopics = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodytopics, nameof(bodytopics), required: false);
+            var __workflow_bodytopics = bodytopics == null ? null : WorkflowExpression.Compile(bodytopics);
+            WorkflowExpression.Validate(__workflow_bodytopics, nameof(bodytopics), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/envelope.created";
@@ -1199,9 +1149,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodytopics != null)
+                if (__workflow_bodytopics != null)
                 {
-                    body["topics"] = ExpressionConverter.ConvertO(bodytopics);
+                    body["topics"] = ExpressionConverter.ConvertO(__workflow_bodytopics);
                     bodypropCount++;
                 }
 
@@ -1216,16 +1166,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildCreateEndpointForEnvelopeStarted))]
-        public IBodyWorkflowTrigger<JToken> CreateEndpointForEnvelopeStarted([WorkflowExpression] Func<string[]> bodytopics = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> CreateEndpointForEnvelopeStarted(Expression<Func<string[]>> bodytopics = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildCreateEndpointForEnvelopeStarted(WorkflowExpression<string[]> bodytopics = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodytopics, nameof(bodytopics), required: false);
+            var __workflow_bodytopics = bodytopics == null ? null : WorkflowExpression.Compile(bodytopics);
+            WorkflowExpression.Validate(__workflow_bodytopics, nameof(bodytopics), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/envelope.started";
@@ -1233,9 +1177,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodytopics != null)
+                if (__workflow_bodytopics != null)
                 {
-                    body["topics"] = ExpressionConverter.ConvertO(bodytopics);
+                    body["topics"] = ExpressionConverter.ConvertO(__workflow_bodytopics);
                     bodypropCount++;
                 }
 
@@ -1250,16 +1194,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildCreateEndpointForEnvelopeCompleted))]
-        public IBodyWorkflowTrigger<JToken> CreateEndpointForEnvelopeCompleted([WorkflowExpression] Func<string[]> bodytopics = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> CreateEndpointForEnvelopeCompleted(Expression<Func<string[]>> bodytopics = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildCreateEndpointForEnvelopeCompleted(WorkflowExpression<string[]> bodytopics = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodytopics, nameof(bodytopics), required: false);
+            var __workflow_bodytopics = bodytopics == null ? null : WorkflowExpression.Compile(bodytopics);
+            WorkflowExpression.Validate(__workflow_bodytopics, nameof(bodytopics), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/envelope.completed";
@@ -1267,9 +1205,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodytopics != null)
+                if (__workflow_bodytopics != null)
                 {
-                    body["topics"] = ExpressionConverter.ConvertO(bodytopics);
+                    body["topics"] = ExpressionConverter.ConvertO(__workflow_bodytopics);
                     bodypropCount++;
                 }
 
@@ -1284,16 +1222,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildCreateEndpointForEnvelopeFailed))]
-        public IBodyWorkflowTrigger<JToken> CreateEndpointForEnvelopeFailed([WorkflowExpression] Func<string[]> bodytopics = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> CreateEndpointForEnvelopeFailed(Expression<Func<string[]>> bodytopics = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildCreateEndpointForEnvelopeFailed(WorkflowExpression<string[]> bodytopics = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodytopics, nameof(bodytopics), required: false);
+            var __workflow_bodytopics = bodytopics == null ? null : WorkflowExpression.Compile(bodytopics);
+            WorkflowExpression.Validate(__workflow_bodytopics, nameof(bodytopics), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/envelope.failed";
@@ -1301,9 +1233,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodytopics != null)
+                if (__workflow_bodytopics != null)
                 {
-                    body["topics"] = ExpressionConverter.ConvertO(bodytopics);
+                    body["topics"] = ExpressionConverter.ConvertO(__workflow_bodytopics);
                     bodypropCount++;
                 }
 
@@ -1318,16 +1250,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildCreateEndpointForEnvelopeCanceled))]
-        public IBodyWorkflowTrigger<JToken> CreateEndpointForEnvelopeCanceled([WorkflowExpression] Func<string[]> bodytopics = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> CreateEndpointForEnvelopeCanceled(Expression<Func<string[]>> bodytopics = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildCreateEndpointForEnvelopeCanceled(WorkflowExpression<string[]> bodytopics = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodytopics, nameof(bodytopics), required: false);
+            var __workflow_bodytopics = bodytopics == null ? null : WorkflowExpression.Compile(bodytopics);
+            WorkflowExpression.Validate(__workflow_bodytopics, nameof(bodytopics), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/envelope.canceled";
@@ -1335,9 +1261,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodytopics != null)
+                if (__workflow_bodytopics != null)
                 {
-                    body["topics"] = ExpressionConverter.ConvertO(bodytopics);
+                    body["topics"] = ExpressionConverter.ConvertO(__workflow_bodytopics);
                     bodypropCount++;
                 }
 
@@ -1352,16 +1278,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildCreateEndpointForRecipientReleased))]
-        public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientReleased([WorkflowExpression] Func<string[]> bodytopics = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientReleased(Expression<Func<string[]>> bodytopics = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildCreateEndpointForRecipientReleased(WorkflowExpression<string[]> bodytopics = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodytopics, nameof(bodytopics), required: false);
+            var __workflow_bodytopics = bodytopics == null ? null : WorkflowExpression.Compile(bodytopics);
+            WorkflowExpression.Validate(__workflow_bodytopics, nameof(bodytopics), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/recipient.released";
@@ -1369,9 +1289,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodytopics != null)
+                if (__workflow_bodytopics != null)
                 {
-                    body["topics"] = ExpressionConverter.ConvertO(bodytopics);
+                    body["topics"] = ExpressionConverter.ConvertO(__workflow_bodytopics);
                     bodypropCount++;
                 }
 
@@ -1386,16 +1306,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildCreateEndpointForRecipientSent))]
-        public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientSent([WorkflowExpression] Func<string[]> bodytopics = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientSent(Expression<Func<string[]>> bodytopics = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildCreateEndpointForRecipientSent(WorkflowExpression<string[]> bodytopics = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodytopics, nameof(bodytopics), required: false);
+            var __workflow_bodytopics = bodytopics == null ? null : WorkflowExpression.Compile(bodytopics);
+            WorkflowExpression.Validate(__workflow_bodytopics, nameof(bodytopics), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/recipient.sent";
@@ -1403,9 +1317,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodytopics != null)
+                if (__workflow_bodytopics != null)
                 {
-                    body["topics"] = ExpressionConverter.ConvertO(bodytopics);
+                    body["topics"] = ExpressionConverter.ConvertO(__workflow_bodytopics);
                     bodypropCount++;
                 }
 
@@ -1420,16 +1334,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildCreateEndpointForRecipientCompleted))]
-        public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientCompleted([WorkflowExpression] Func<string[]> bodytopics = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientCompleted(Expression<Func<string[]>> bodytopics = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildCreateEndpointForRecipientCompleted(WorkflowExpression<string[]> bodytopics = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodytopics, nameof(bodytopics), required: false);
+            var __workflow_bodytopics = bodytopics == null ? null : WorkflowExpression.Compile(bodytopics);
+            WorkflowExpression.Validate(__workflow_bodytopics, nameof(bodytopics), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/recipient.completed";
@@ -1437,9 +1345,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodytopics != null)
+                if (__workflow_bodytopics != null)
                 {
-                    body["topics"] = ExpressionConverter.ConvertO(bodytopics);
+                    body["topics"] = ExpressionConverter.ConvertO(__workflow_bodytopics);
                     bodypropCount++;
                 }
 
@@ -1454,16 +1362,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildCreateEndpointForRecipientRejected))]
-        public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientRejected([WorkflowExpression] Func<string[]> bodytopics = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientRejected(Expression<Func<string[]>> bodytopics = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildCreateEndpointForRecipientRejected(WorkflowExpression<string[]> bodytopics = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodytopics, nameof(bodytopics), required: false);
+            var __workflow_bodytopics = bodytopics == null ? null : WorkflowExpression.Compile(bodytopics);
+            WorkflowExpression.Validate(__workflow_bodytopics, nameof(bodytopics), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/recipient.rejected";
@@ -1471,9 +1373,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodytopics != null)
+                if (__workflow_bodytopics != null)
                 {
-                    body["topics"] = ExpressionConverter.ConvertO(bodytopics);
+                    body["topics"] = ExpressionConverter.ConvertO(__workflow_bodytopics);
                     bodypropCount++;
                 }
 
@@ -1488,16 +1390,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildCreateEndpointForRecipientBounced))]
-        public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientBounced([WorkflowExpression] Func<string[]> bodytopics = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientBounced(Expression<Func<string[]>> bodytopics = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildCreateEndpointForRecipientBounced(WorkflowExpression<string[]> bodytopics = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodytopics, nameof(bodytopics), required: false);
+            var __workflow_bodytopics = bodytopics == null ? null : WorkflowExpression.Compile(bodytopics);
+            WorkflowExpression.Validate(__workflow_bodytopics, nameof(bodytopics), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/recipient.bounced";
@@ -1505,9 +1401,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodytopics != null)
+                if (__workflow_bodytopics != null)
                 {
-                    body["topics"] = ExpressionConverter.ConvertO(bodytopics);
+                    body["topics"] = ExpressionConverter.ConvertO(__workflow_bodytopics);
                     bodypropCount++;
                 }
 
@@ -1522,16 +1418,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildCreateEndpointForRecipientFailed))]
-        public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientFailed([WorkflowExpression] Func<string[]> bodytopics = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientFailed(Expression<Func<string[]>> bodytopics = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildCreateEndpointForRecipientFailed(WorkflowExpression<string[]> bodytopics = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodytopics, nameof(bodytopics), required: false);
+            var __workflow_bodytopics = bodytopics == null ? null : WorkflowExpression.Compile(bodytopics);
+            WorkflowExpression.Validate(__workflow_bodytopics, nameof(bodytopics), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/recipient.failed";
@@ -1539,9 +1429,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodytopics != null)
+                if (__workflow_bodytopics != null)
                 {
-                    body["topics"] = ExpressionConverter.ConvertO(bodytopics);
+                    body["topics"] = ExpressionConverter.ConvertO(__workflow_bodytopics);
                     bodypropCount++;
                 }
 
@@ -1556,16 +1446,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildCreateEndpointForRecipientReplaced))]
-        public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientReplaced([WorkflowExpression] Func<string[]> bodytopics = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientReplaced(Expression<Func<string[]>> bodytopics = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildCreateEndpointForRecipientReplaced(WorkflowExpression<string[]> bodytopics = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodytopics, nameof(bodytopics), required: false);
+            var __workflow_bodytopics = bodytopics == null ? null : WorkflowExpression.Compile(bodytopics);
+            WorkflowExpression.Validate(__workflow_bodytopics, nameof(bodytopics), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/recipient.replaced";
@@ -1573,9 +1457,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodytopics != null)
+                if (__workflow_bodytopics != null)
                 {
-                    body["topics"] = ExpressionConverter.ConvertO(bodytopics);
+                    body["topics"] = ExpressionConverter.ConvertO(__workflow_bodytopics);
                     bodypropCount++;
                 }
 
@@ -1590,16 +1474,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildCreateEndpointForRecipientResent))]
-        public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientResent([WorkflowExpression] Func<string[]> bodytopics = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientResent(Expression<Func<string[]>> bodytopics = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildCreateEndpointForRecipientResent(WorkflowExpression<string[]> bodytopics = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodytopics, nameof(bodytopics), required: false);
+            var __workflow_bodytopics = bodytopics == null ? null : WorkflowExpression.Compile(bodytopics);
+            WorkflowExpression.Validate(__workflow_bodytopics, nameof(bodytopics), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/recipient.resent";
@@ -1607,9 +1485,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodytopics != null)
+                if (__workflow_bodytopics != null)
                 {
-                    body["topics"] = ExpressionConverter.ConvertO(bodytopics);
+                    body["topics"] = ExpressionConverter.ConvertO(__workflow_bodytopics);
                     bodypropCount++;
                 }
 
@@ -1624,16 +1502,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildCreateEndpointForDeliverableGenerated))]
-        public IBodyWorkflowTrigger<JToken> CreateEndpointForDeliverableGenerated([WorkflowExpression] Func<string[]> bodytopics = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> CreateEndpointForDeliverableGenerated(Expression<Func<string[]>> bodytopics = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildCreateEndpointForDeliverableGenerated(WorkflowExpression<string[]> bodytopics = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodytopics, nameof(bodytopics), required: false);
+            var __workflow_bodytopics = bodytopics == null ? null : WorkflowExpression.Compile(bodytopics);
+            WorkflowExpression.Validate(__workflow_bodytopics, nameof(bodytopics), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/deliverable.generated";
@@ -1641,9 +1513,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodytopics != null)
+                if (__workflow_bodytopics != null)
                 {
-                    body["topics"] = ExpressionConverter.ConvertO(bodytopics);
+                    body["topics"] = ExpressionConverter.ConvertO(__workflow_bodytopics);
                     bodypropCount++;
                 }
 
@@ -1658,16 +1530,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildCreateEndpointForDeliverableFailed))]
-        public IBodyWorkflowTrigger<JToken> CreateEndpointForDeliverableFailed([WorkflowExpression] Func<string[]> bodytopics = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> CreateEndpointForDeliverableFailed(Expression<Func<string[]>> bodytopics = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildCreateEndpointForDeliverableFailed(WorkflowExpression<string[]> bodytopics = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodytopics, nameof(bodytopics), required: false);
+            var __workflow_bodytopics = bodytopics == null ? null : WorkflowExpression.Compile(bodytopics);
+            WorkflowExpression.Validate(__workflow_bodytopics, nameof(bodytopics), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/deliverable.failed";
@@ -1675,9 +1541,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodytopics != null)
+                if (__workflow_bodytopics != null)
                 {
-                    body["topics"] = ExpressionConverter.ConvertO(bodytopics);
+                    body["topics"] = ExpressionConverter.ConvertO(__workflow_bodytopics);
                     bodypropCount++;
                 }
 

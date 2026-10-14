@@ -1,146 +1,127 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class RaptordocmanagementActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        [WorkflowExpressionFactory(nameof(__BuildGetUserToken))]
-        public IBodyWorkflowAction<string> GetUserToken([WorkflowExpression] Func<string> externalSystemID, [WorkflowExpression] Func<string> secret, [WorkflowExpression] Func<string> externalUserName)
+        public IBodyWorkflowAction<string> GetUserToken(Expression<Func<string>> externalSystemID, Expression<Func<string>> secret, Expression<Func<string>> externalUserName)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildGetUserToken(WorkflowExpression<string> externalSystemID, WorkflowExpression<string> secret, WorkflowExpression<string> externalUserName)
-        {
-            WorkflowExpression.Validate(externalSystemID, nameof(externalSystemID), required: true);
-            WorkflowExpression.Validate(secret, nameof(secret), required: true);
-            WorkflowExpression.Validate(externalUserName, nameof(externalUserName), required: true);
+            var __workflow_externalSystemID = externalSystemID == null ? null : WorkflowExpression.Compile(externalSystemID);
+            WorkflowExpression.Validate(__workflow_externalSystemID, nameof(externalSystemID), required: true);
+            var __workflow_secret = secret == null ? null : WorkflowExpression.Compile(secret);
+            WorkflowExpression.Validate(__workflow_secret, nameof(secret), required: true);
+            var __workflow_externalUserName = externalUserName == null ? null : WorkflowExpression.Compile(externalUserName);
+            WorkflowExpression.Validate(__workflow_externalUserName, nameof(externalUserName), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/User/getusertoken";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["externalSystemID"] = ExpressionConverter.Convert(externalSystemID);
-                callPayload.Queries["secret"] = ExpressionConverter.Convert(secret);
-                callPayload.Queries["externalUserName"] = ExpressionConverter.Convert(externalUserName);
+                callPayload.Queries["externalSystemID"] = ExpressionConverter.Convert(__workflow_externalSystemID);
+                callPayload.Queries["secret"] = ExpressionConverter.Convert(__workflow_secret);
+                callPayload.Queries["externalUserName"] = ExpressionConverter.Convert(__workflow_externalUserName);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        [WorkflowExpressionFactory(nameof(__BuildDownloadDocument))]
-        public IBodyWorkflowAction<string> DownloadDocument([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<string> DownloadDocument(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildDownloadDocument(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_exaAuthPlugin = exaAuthPlugin == null ? null : WorkflowExpression.Compile(exaAuthPlugin);
+            WorkflowExpression.Validate(__workflow_exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/meta/document/{0}/content", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/meta/document/{0}/content", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(exaAuthPlugin);
+                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        [WorkflowExpressionFactory(nameof(__BuildRemoveTagFromDocument))]
-        public IWorkflowAction RemoveTagFromDocument([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> tagId)
+        public IWorkflowAction RemoveTagFromDocument(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> documentId, Expression<Func<string>> tagId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildRemoveTagFromDocument(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> documentId, WorkflowExpression<string> tagId)
-        {
-            WorkflowExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            WorkflowExpression.Validate(documentId, nameof(documentId), required: true);
-            WorkflowExpression.Validate(tagId, nameof(tagId), required: true);
+            var __workflow_exaAuthPlugin = exaAuthPlugin == null ? null : WorkflowExpression.Compile(exaAuthPlugin);
+            WorkflowExpression.Validate(__workflow_exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
+            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
+            var __workflow_tagId = tagId == null ? null : WorkflowExpression.Compile(tagId);
+            WorkflowExpression.Validate(__workflow_tagId, nameof(tagId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/meta/document/{0}/tag/{1}", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1), ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/meta/document/{0}/tag/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_tagId, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(exaAuthPlugin);
+                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        [WorkflowExpressionFactory(nameof(__BuildTagDocument))]
-        public IWorkflowAction TagDocument([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> tagId, [WorkflowExpression] Func<bool> reTag = null)
+        public IWorkflowAction TagDocument(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> documentId, Expression<Func<string>> tagId, Expression<Func<bool>> reTag = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildTagDocument(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> documentId, WorkflowExpression<string> tagId, WorkflowExpression<bool> reTag = null)
-        {
-            WorkflowExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            WorkflowExpression.Validate(documentId, nameof(documentId), required: true);
-            WorkflowExpression.Validate(tagId, nameof(tagId), required: true);
-            WorkflowExpression.Validate(reTag, nameof(reTag), required: false);
+            var __workflow_exaAuthPlugin = exaAuthPlugin == null ? null : WorkflowExpression.Compile(exaAuthPlugin);
+            WorkflowExpression.Validate(__workflow_exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
+            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
+            var __workflow_tagId = tagId == null ? null : WorkflowExpression.Compile(tagId);
+            WorkflowExpression.Validate(__workflow_tagId, nameof(tagId), required: true);
+            var __workflow_reTag = reTag == null ? null : WorkflowExpression.Compile(reTag);
+            WorkflowExpression.Validate(__workflow_reTag, nameof(reTag), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/meta/document/{0}/tag/{1}", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1), ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/meta/document/{0}/tag/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_tagId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (reTag != null)
-                    callPayload.Queries["reTag"] = ExpressionConverter.Convert(reTag);
-                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(exaAuthPlugin);
+                if (__workflow_reTag != null)
+                    callPayload.Queries["reTag"] = ExpressionConverter.Convert(__workflow_reTag);
+                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        [WorkflowExpressionFactory(nameof(__BuildAddFieldToDocument))]
-        public IWorkflowAction AddFieldToDocument([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> method = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodyvalue = null)
+        public IWorkflowAction AddFieldToDocument(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> documentId, Expression<Func<string>> method = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodyvalue = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildAddFieldToDocument(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> documentId, WorkflowExpression<string> method = null, WorkflowExpression<string> bodyid = null, WorkflowExpression<string> bodyvalue = null)
-        {
-            WorkflowExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            WorkflowExpression.Validate(documentId, nameof(documentId), required: true);
-            WorkflowExpression.Validate(method, nameof(method), required: false);
-            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: false);
-            WorkflowExpression.Validate(bodyvalue, nameof(bodyvalue), required: false);
+            var __workflow_exaAuthPlugin = exaAuthPlugin == null ? null : WorkflowExpression.Compile(exaAuthPlugin);
+            WorkflowExpression.Validate(__workflow_exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
+            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
+            var __workflow_method = method == null ? null : WorkflowExpression.Compile(method);
+            WorkflowExpression.Validate(__workflow_method, nameof(method), required: false);
+            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
+            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: false);
+            var __workflow_bodyvalue = bodyvalue == null ? null : WorkflowExpression.Compile(bodyvalue);
+            WorkflowExpression.Validate(__workflow_bodyvalue, nameof(bodyvalue), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/meta/document/{0}/field", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/meta/document/{0}/field", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (method != null)
-                    callPayload.Queries["method"] = ExpressionConverter.Convert(method);
-                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(exaAuthPlugin);
+                if (__workflow_method != null)
+                    callPayload.Queries["method"] = ExpressionConverter.Convert(__workflow_method);
+                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyid != null)
+                if (__workflow_bodyid != null)
                 {
-                    body["id"] = ExpressionConverter.ConvertO(bodyid);
+                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
                     bodypropCount++;
                 }
 
-                if (bodyvalue != null)
+                if (__workflow_bodyvalue != null)
                 {
-                    body["value"] = ExpressionConverter.ConvertO(bodyvalue);
+                    body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
                     bodypropCount++;
                 }
 
@@ -154,36 +135,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateFieldOnDocument))]
-        public IWorkflowAction UpdateFieldOnDocument([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodyvalue = null)
+        public IWorkflowAction UpdateFieldOnDocument(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> documentId, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodyvalue = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildUpdateFieldOnDocument(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> documentId, WorkflowExpression<string> bodyid = null, WorkflowExpression<string> bodyvalue = null)
-        {
-            WorkflowExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            WorkflowExpression.Validate(documentId, nameof(documentId), required: true);
-            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: false);
-            WorkflowExpression.Validate(bodyvalue, nameof(bodyvalue), required: false);
+            var __workflow_exaAuthPlugin = exaAuthPlugin == null ? null : WorkflowExpression.Compile(exaAuthPlugin);
+            WorkflowExpression.Validate(__workflow_exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
+            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
+            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
+            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: false);
+            var __workflow_bodyvalue = bodyvalue == null ? null : WorkflowExpression.Compile(bodyvalue);
+            WorkflowExpression.Validate(__workflow_bodyvalue, nameof(bodyvalue), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/meta/document/{0}/field", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/meta/document/{0}/field", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(exaAuthPlugin);
+                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyid != null)
+                if (__workflow_bodyid != null)
                 {
-                    body["id"] = ExpressionConverter.ConvertO(bodyid);
+                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
                     bodypropCount++;
                 }
 
-                if (bodyvalue != null)
+                if (__workflow_bodyvalue != null)
                 {
-                    body["value"] = ExpressionConverter.ConvertO(bodyvalue);
+                    body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
                     bodypropCount++;
                 }
 
@@ -197,66 +175,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        [WorkflowExpressionFactory(nameof(__BuildAddTemplateToDocument))]
-        public IWorkflowAction AddTemplateToDocument([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> templateId, [WorkflowExpression] Func<string[]> body = null)
+        public IWorkflowAction AddTemplateToDocument(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> templateId, Expression<Func<string[]>> body = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildAddTemplateToDocument(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> templateId, WorkflowExpression<string[]> body = null)
-        {
-            WorkflowExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            WorkflowExpression.Validate(templateId, nameof(templateId), required: true);
-            WorkflowExpression.Validate(body, nameof(body), required: false);
+            var __workflow_exaAuthPlugin = exaAuthPlugin == null ? null : WorkflowExpression.Compile(exaAuthPlugin);
+            WorkflowExpression.Validate(__workflow_exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            var __workflow_templateId = templateId == null ? null : WorkflowExpression.Compile(templateId);
+            WorkflowExpression.Validate(__workflow_templateId, nameof(templateId), required: true);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/meta/document/multidoc/template/{0}", ExpressionConverter.ConvertWithUrlEncoding(templateId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/meta/document/multidoc/template/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(exaAuthPlugin);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        [WorkflowExpressionFactory(nameof(__BuildQueryDocuments))]
-        public IBodyWorkflowAction<QueryDocumentsResponse> QueryDocuments([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string[]> bodyobligatoryTags = null, [WorkflowExpression] Func<string[]> bodytagsInHierarchy = null, [WorkflowExpression] Func<string[]> bodyexcludeTagsInHierarchy = null, [WorkflowExpression] Func<bool> bodyincludeTotalCount = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodycontainsName = null, [WorkflowExpression] Func<bodyorderByInput> bodyorderBy = null, [WorkflowExpression] Func<bool> bodyorderAscending = null, [WorkflowExpression] Func<string> bodycontinuationToken = null)
+        public IBodyWorkflowAction<QueryDocumentsResponse> QueryDocuments(Expression<Func<string>> exaAuthPlugin, Expression<Func<string[]>> bodyobligatoryTags = null, Expression<Func<string[]>> bodytagsInHierarchy = null, Expression<Func<string[]>> bodyexcludeTagsInHierarchy = null, Expression<Func<bool>> bodyincludeTotalCount = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodycontainsName = null, Expression<Func<bodyorderByInput>> bodyorderBy = null, Expression<Func<bool>> bodyorderAscending = null, Expression<Func<string>> bodycontinuationToken = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<QueryDocumentsResponse> __BuildQueryDocuments(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string[]> bodyobligatoryTags = null, WorkflowExpression<string[]> bodytagsInHierarchy = null, WorkflowExpression<string[]> bodyexcludeTagsInHierarchy = null, WorkflowExpression<bool> bodyincludeTotalCount = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodycontainsName = null, WorkflowExpression<bodyorderByInput> bodyorderBy = null, WorkflowExpression<bool> bodyorderAscending = null, WorkflowExpression<string> bodycontinuationToken = null)
-        {
-            WorkflowExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            WorkflowExpression.Validate(bodyobligatoryTags, nameof(bodyobligatoryTags), required: false);
-            WorkflowExpression.Validate(bodytagsInHierarchy, nameof(bodytagsInHierarchy), required: false);
-            WorkflowExpression.Validate(bodyexcludeTagsInHierarchy, nameof(bodyexcludeTagsInHierarchy), required: false);
-            WorkflowExpression.Validate(bodyincludeTotalCount, nameof(bodyincludeTotalCount), required: false);
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
-            WorkflowExpression.Validate(bodycontainsName, nameof(bodycontainsName), required: false);
-            WorkflowExpression.Validate(bodyorderBy, nameof(bodyorderBy), required: false);
-            WorkflowExpression.Validate(bodyorderAscending, nameof(bodyorderAscending), required: false);
-            WorkflowExpression.Validate(bodycontinuationToken, nameof(bodycontinuationToken), required: false);
+            var __workflow_exaAuthPlugin = exaAuthPlugin == null ? null : WorkflowExpression.Compile(exaAuthPlugin);
+            WorkflowExpression.Validate(__workflow_exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            var __workflow_bodyobligatoryTags = bodyobligatoryTags == null ? null : WorkflowExpression.Compile(bodyobligatoryTags);
+            WorkflowExpression.Validate(__workflow_bodyobligatoryTags, nameof(bodyobligatoryTags), required: false);
+            var __workflow_bodytagsInHierarchy = bodytagsInHierarchy == null ? null : WorkflowExpression.Compile(bodytagsInHierarchy);
+            WorkflowExpression.Validate(__workflow_bodytagsInHierarchy, nameof(bodytagsInHierarchy), required: false);
+            var __workflow_bodyexcludeTagsInHierarchy = bodyexcludeTagsInHierarchy == null ? null : WorkflowExpression.Compile(bodyexcludeTagsInHierarchy);
+            WorkflowExpression.Validate(__workflow_bodyexcludeTagsInHierarchy, nameof(bodyexcludeTagsInHierarchy), required: false);
+            var __workflow_bodyincludeTotalCount = bodyincludeTotalCount == null ? null : WorkflowExpression.Compile(bodyincludeTotalCount);
+            WorkflowExpression.Validate(__workflow_bodyincludeTotalCount, nameof(bodyincludeTotalCount), required: false);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
+            var __workflow_bodycontainsName = bodycontainsName == null ? null : WorkflowExpression.Compile(bodycontainsName);
+            WorkflowExpression.Validate(__workflow_bodycontainsName, nameof(bodycontainsName), required: false);
+            var __workflow_bodyorderBy = bodyorderBy == null ? null : WorkflowExpression.Compile(bodyorderBy);
+            WorkflowExpression.Validate(__workflow_bodyorderBy, nameof(bodyorderBy), required: false);
+            var __workflow_bodyorderAscending = bodyorderAscending == null ? null : WorkflowExpression.Compile(bodyorderAscending);
+            WorkflowExpression.Validate(__workflow_bodyorderAscending, nameof(bodyorderAscending), required: false);
+            var __workflow_bodycontinuationToken = bodycontinuationToken == null ? null : WorkflowExpression.Compile(bodycontinuationToken);
+            WorkflowExpression.Validate(__workflow_bodycontinuationToken, nameof(bodycontinuationToken), required: false);
             return new DeferredBodyAction<QueryDocumentsResponse>(() =>
             {
                 var apiCallPath = "/meta/document/QueryDocuments";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(exaAuthPlugin);
+                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyobligatoryTags != null)
+                if (__workflow_bodyobligatoryTags != null)
                 {
-                    body["obligatoryTags"] = ExpressionConverter.ConvertO(bodyobligatoryTags);
+                    body["obligatoryTags"] = ExpressionConverter.ConvertO(__workflow_bodyobligatoryTags);
                     bodypropCount++;
                 }
 
-                if (bodytagsInHierarchy != null)
+                if (__workflow_bodytagsInHierarchy != null)
                 {
-                    body["tagsInHierarchy"] = ExpressionConverter.ConvertO(bodytagsInHierarchy);
+                    body["tagsInHierarchy"] = ExpressionConverter.ConvertO(__workflow_bodytagsInHierarchy);
                     bodypropCount++;
                 }
 
@@ -268,45 +245,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
                     bodypropCount++;
                 }
 
-                if (bodyexcludeTagsInHierarchy != null)
+                if (__workflow_bodyexcludeTagsInHierarchy != null)
                 {
-                    body["excludeTagsInHierarchy"] = ExpressionConverter.ConvertO(bodyexcludeTagsInHierarchy);
+                    body["excludeTagsInHierarchy"] = ExpressionConverter.ConvertO(__workflow_bodyexcludeTagsInHierarchy);
                     bodypropCount++;
                 }
 
-                if (bodyincludeTotalCount != null)
+                if (__workflow_bodyincludeTotalCount != null)
                 {
-                    body["includeTotalCount"] = ExpressionConverter.ConvertO(bodyincludeTotalCount);
+                    body["includeTotalCount"] = ExpressionConverter.ConvertO(__workflow_bodyincludeTotalCount);
                     bodypropCount++;
                 }
 
-                if (bodyname != null)
+                if (__workflow_bodyname != null)
                 {
-                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
                     bodypropCount++;
                 }
 
-                if (bodycontainsName != null)
+                if (__workflow_bodycontainsName != null)
                 {
-                    body["containsName"] = ExpressionConverter.ConvertO(bodycontainsName);
+                    body["containsName"] = ExpressionConverter.ConvertO(__workflow_bodycontainsName);
                     bodypropCount++;
                 }
 
-                if (bodyorderBy != null)
+                if (__workflow_bodyorderBy != null)
                 {
-                    body["orderBy"] = ExpressionConverter.ConvertO(bodyorderBy);
+                    body["orderBy"] = ExpressionConverter.ConvertO(__workflow_bodyorderBy);
                     bodypropCount++;
                 }
 
-                if (bodyorderAscending != null)
+                if (__workflow_bodyorderAscending != null)
                 {
-                    body["orderAscending"] = ExpressionConverter.ConvertO(bodyorderAscending);
+                    body["orderAscending"] = ExpressionConverter.ConvertO(__workflow_bodyorderAscending);
                     bodypropCount++;
                 }
 
-                if (bodycontinuationToken != null)
+                if (__workflow_bodycontinuationToken != null)
                 {
-                    body["continuationToken"] = ExpressionConverter.ConvertO(bodycontinuationToken);
+                    body["continuationToken"] = ExpressionConverter.ConvertO(__workflow_bodycontinuationToken);
                     bodypropCount++;
                 }
 
@@ -320,73 +297,58 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        [WorkflowExpressionFactory(nameof(__BuildGetTagByTagId))]
-        public IBodyWorkflowAction<GetTagByTagIdResponse> GetTagByTagId([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> tagId)
+        public IBodyWorkflowAction<GetTagByTagIdResponse> GetTagByTagId(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> tagId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetTagByTagIdResponse> __BuildGetTagByTagId(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> tagId)
-        {
-            WorkflowExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            WorkflowExpression.Validate(tagId, nameof(tagId), required: true);
+            var __workflow_exaAuthPlugin = exaAuthPlugin == null ? null : WorkflowExpression.Compile(exaAuthPlugin);
+            WorkflowExpression.Validate(__workflow_exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            var __workflow_tagId = tagId == null ? null : WorkflowExpression.Compile(tagId);
+            WorkflowExpression.Validate(__workflow_tagId, nameof(tagId), required: true);
             return new DeferredBodyAction<GetTagByTagIdResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/taxonomy/tags/{0}", ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/taxonomy/tags/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_tagId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(exaAuthPlugin);
+                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 return new ApiConnectionAction<GetTagByTagIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        [WorkflowExpressionFactory(nameof(__BuildGetTagByCode))]
-        public IBodyWorkflowAction<GetTagByCodeResponse> GetTagByCode([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> code)
+        public IBodyWorkflowAction<GetTagByCodeResponse> GetTagByCode(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> code)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetTagByCodeResponse> __BuildGetTagByCode(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> code)
-        {
-            WorkflowExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            WorkflowExpression.Validate(code, nameof(code), required: true);
+            var __workflow_exaAuthPlugin = exaAuthPlugin == null ? null : WorkflowExpression.Compile(exaAuthPlugin);
+            WorkflowExpression.Validate(__workflow_exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            var __workflow_code = code == null ? null : WorkflowExpression.Compile(code);
+            WorkflowExpression.Validate(__workflow_code, nameof(code), required: true);
             return new DeferredBodyAction<GetTagByCodeResponse>(() =>
             {
                 var apiCallPath = "/taxonomy/tags/tag";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["code"] = ExpressionConverter.Convert(code);
-                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(exaAuthPlugin);
+                callPayload.Queries["code"] = ExpressionConverter.Convert(__workflow_code);
+                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 return new ApiConnectionAction<GetTagByCodeResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        [WorkflowExpressionFactory(nameof(__BuildGetMultipleTags))]
-        public IBodyWorkflowAction<GetMultipleTagsResponseItem[]> GetMultipleTags([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string[]> bodyids = null)
+        public IBodyWorkflowAction<GetMultipleTagsResponseItem[]> GetMultipleTags(Expression<Func<string>> exaAuthPlugin, Expression<Func<string[]>> bodyids = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetMultipleTagsResponseItem[]> __BuildGetMultipleTags(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string[]> bodyids = null)
-        {
-            WorkflowExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            WorkflowExpression.Validate(bodyids, nameof(bodyids), required: false);
+            var __workflow_exaAuthPlugin = exaAuthPlugin == null ? null : WorkflowExpression.Compile(exaAuthPlugin);
+            WorkflowExpression.Validate(__workflow_exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            var __workflow_bodyids = bodyids == null ? null : WorkflowExpression.Compile(bodyids);
+            WorkflowExpression.Validate(__workflow_bodyids, nameof(bodyids), required: false);
             return new DeferredBodyAction<GetMultipleTagsResponseItem[]>(() =>
             {
                 var apiCallPath = "/taxonomy/tags/selection";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(exaAuthPlugin);
+                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyids != null)
+                if (__workflow_bodyids != null)
                 {
-                    body["ids"] = ExpressionConverter.ConvertO(bodyids);
+                    body["ids"] = ExpressionConverter.ConvertO(__workflow_bodyids);
                     bodypropCount++;
                 }
 
@@ -400,70 +362,71 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        [WorkflowExpressionFactory(nameof(__BuildQueryTags))]
-        public IBodyWorkflowAction<QueryTagsResponse> QueryTags([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> bodyparentTagId = null, [WorkflowExpression] Func<string> bodydirectParentTagId = null, [WorkflowExpression] Func<bool> bodyhasNoParentTag = null, [WorkflowExpression] Func<bool> bodyincludeTotalCount = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodycontainsName = null, [WorkflowExpression] Func<bool> bodyorderAscending = null)
+        public IBodyWorkflowAction<QueryTagsResponse> QueryTags(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> bodyparentTagId = null, Expression<Func<string>> bodydirectParentTagId = null, Expression<Func<bool>> bodyhasNoParentTag = null, Expression<Func<bool>> bodyincludeTotalCount = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodycontainsName = null, Expression<Func<bool>> bodyorderAscending = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<QueryTagsResponse> __BuildQueryTags(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> bodyparentTagId = null, WorkflowExpression<string> bodydirectParentTagId = null, WorkflowExpression<bool> bodyhasNoParentTag = null, WorkflowExpression<bool> bodyincludeTotalCount = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodycontainsName = null, WorkflowExpression<bool> bodyorderAscending = null)
-        {
-            WorkflowExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            WorkflowExpression.Validate(bodyparentTagId, nameof(bodyparentTagId), required: false);
-            WorkflowExpression.Validate(bodydirectParentTagId, nameof(bodydirectParentTagId), required: false);
-            WorkflowExpression.Validate(bodyhasNoParentTag, nameof(bodyhasNoParentTag), required: false);
-            WorkflowExpression.Validate(bodyincludeTotalCount, nameof(bodyincludeTotalCount), required: false);
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
-            WorkflowExpression.Validate(bodycontainsName, nameof(bodycontainsName), required: false);
-            WorkflowExpression.Validate(bodyorderAscending, nameof(bodyorderAscending), required: false);
+            var __workflow_exaAuthPlugin = exaAuthPlugin == null ? null : WorkflowExpression.Compile(exaAuthPlugin);
+            WorkflowExpression.Validate(__workflow_exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            var __workflow_bodyparentTagId = bodyparentTagId == null ? null : WorkflowExpression.Compile(bodyparentTagId);
+            WorkflowExpression.Validate(__workflow_bodyparentTagId, nameof(bodyparentTagId), required: false);
+            var __workflow_bodydirectParentTagId = bodydirectParentTagId == null ? null : WorkflowExpression.Compile(bodydirectParentTagId);
+            WorkflowExpression.Validate(__workflow_bodydirectParentTagId, nameof(bodydirectParentTagId), required: false);
+            var __workflow_bodyhasNoParentTag = bodyhasNoParentTag == null ? null : WorkflowExpression.Compile(bodyhasNoParentTag);
+            WorkflowExpression.Validate(__workflow_bodyhasNoParentTag, nameof(bodyhasNoParentTag), required: false);
+            var __workflow_bodyincludeTotalCount = bodyincludeTotalCount == null ? null : WorkflowExpression.Compile(bodyincludeTotalCount);
+            WorkflowExpression.Validate(__workflow_bodyincludeTotalCount, nameof(bodyincludeTotalCount), required: false);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
+            var __workflow_bodycontainsName = bodycontainsName == null ? null : WorkflowExpression.Compile(bodycontainsName);
+            WorkflowExpression.Validate(__workflow_bodycontainsName, nameof(bodycontainsName), required: false);
+            var __workflow_bodyorderAscending = bodyorderAscending == null ? null : WorkflowExpression.Compile(bodyorderAscending);
+            WorkflowExpression.Validate(__workflow_bodyorderAscending, nameof(bodyorderAscending), required: false);
             return new DeferredBodyAction<QueryTagsResponse>(() =>
             {
                 var apiCallPath = "/taxonomy/tags/querytags";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(exaAuthPlugin);
+                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyparentTagId != null)
+                if (__workflow_bodyparentTagId != null)
                 {
-                    body["parentTagId"] = ExpressionConverter.ConvertO(bodyparentTagId);
+                    body["parentTagId"] = ExpressionConverter.ConvertO(__workflow_bodyparentTagId);
                     bodypropCount++;
                 }
 
-                if (bodydirectParentTagId != null)
+                if (__workflow_bodydirectParentTagId != null)
                 {
-                    body["directParentTagId"] = ExpressionConverter.ConvertO(bodydirectParentTagId);
+                    body["directParentTagId"] = ExpressionConverter.ConvertO(__workflow_bodydirectParentTagId);
                     bodypropCount++;
                 }
 
-                if (bodyhasNoParentTag != null)
+                if (__workflow_bodyhasNoParentTag != null)
                 {
-                    body["hasNoParentTag"] = ExpressionConverter.ConvertO(bodyhasNoParentTag);
+                    body["hasNoParentTag"] = ExpressionConverter.ConvertO(__workflow_bodyhasNoParentTag);
                     bodypropCount++;
                 }
 
-                if (bodyincludeTotalCount != null)
+                if (__workflow_bodyincludeTotalCount != null)
                 {
-                    body["includeTotalCount"] = ExpressionConverter.ConvertO(bodyincludeTotalCount);
+                    body["includeTotalCount"] = ExpressionConverter.ConvertO(__workflow_bodyincludeTotalCount);
                     bodypropCount++;
                 }
 
-                if (bodyname != null)
+                if (__workflow_bodyname != null)
                 {
-                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
                     bodypropCount++;
                 }
 
-                if (bodycontainsName != null)
+                if (__workflow_bodycontainsName != null)
                 {
-                    body["containsName"] = ExpressionConverter.ConvertO(bodycontainsName);
+                    body["containsName"] = ExpressionConverter.ConvertO(__workflow_bodycontainsName);
                     bodypropCount++;
                 }
 
-                if (bodyorderAscending != null)
+                if (__workflow_bodyorderAscending != null)
                 {
-                    body["orderAscending"] = ExpressionConverter.ConvertO(bodyorderAscending);
+                    body["orderAscending"] = ExpressionConverter.ConvertO(__workflow_bodyorderAscending);
                     bodypropCount++;
                 }
 
@@ -477,108 +440,115 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateField))]
-        public IBodyWorkflowAction<CreateFieldResponse> CreateField([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> method = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodytenantId = null, [WorkflowExpression] Func<string> bodycode = null, [WorkflowExpression] Func<int> bodyfieldType = null, [WorkflowExpression] Func<bool> bodyisRequired = null, [WorkflowExpression] Func<bool> bodyisReadOnly = null, [WorkflowExpression] Func<string> bodydefaultValue = null, [WorkflowExpression] Func<bodylabelsInputItem[]> bodylabels = null, [WorkflowExpression] Func<string> bodyvalidatingRegExp = null, [WorkflowExpression] Func<bodyvalidationMessageInputItem[]> bodyvalidationMessage = null, [WorkflowExpression] Func<int> bodyrowAmount = null, [WorkflowExpression] Func<string> bodyparentTagId = null)
+        public IBodyWorkflowAction<CreateFieldResponse> CreateField(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> method = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytenantId = null, Expression<Func<string>> bodycode = null, Expression<Func<int>> bodyfieldType = null, Expression<Func<bool>> bodyisRequired = null, Expression<Func<bool>> bodyisReadOnly = null, Expression<Func<string>> bodydefaultValue = null, Expression<Func<bodylabelsInputItem[]>> bodylabels = null, Expression<Func<string>> bodyvalidatingRegExp = null, Expression<Func<bodyvalidationMessageInputItem[]>> bodyvalidationMessage = null, Expression<Func<int>> bodyrowAmount = null, Expression<Func<string>> bodyparentTagId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateFieldResponse> __BuildCreateField(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> method = null, WorkflowExpression<string> bodyid = null, WorkflowExpression<string> bodytenantId = null, WorkflowExpression<string> bodycode = null, WorkflowExpression<int> bodyfieldType = null, WorkflowExpression<bool> bodyisRequired = null, WorkflowExpression<bool> bodyisReadOnly = null, WorkflowExpression<string> bodydefaultValue = null, WorkflowExpression<bodylabelsInputItem[]> bodylabels = null, WorkflowExpression<string> bodyvalidatingRegExp = null, WorkflowExpression<bodyvalidationMessageInputItem[]> bodyvalidationMessage = null, WorkflowExpression<int> bodyrowAmount = null, WorkflowExpression<string> bodyparentTagId = null)
-        {
-            WorkflowExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            WorkflowExpression.Validate(method, nameof(method), required: false);
-            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: false);
-            WorkflowExpression.Validate(bodytenantId, nameof(bodytenantId), required: false);
-            WorkflowExpression.Validate(bodycode, nameof(bodycode), required: false);
-            WorkflowExpression.Validate(bodyfieldType, nameof(bodyfieldType), required: false);
-            WorkflowExpression.Validate(bodyisRequired, nameof(bodyisRequired), required: false);
-            WorkflowExpression.Validate(bodyisReadOnly, nameof(bodyisReadOnly), required: false);
-            WorkflowExpression.Validate(bodydefaultValue, nameof(bodydefaultValue), required: false);
-            WorkflowExpression.Validate(bodylabels, nameof(bodylabels), required: false);
-            WorkflowExpression.Validate(bodyvalidatingRegExp, nameof(bodyvalidatingRegExp), required: false);
-            WorkflowExpression.Validate(bodyvalidationMessage, nameof(bodyvalidationMessage), required: false);
-            WorkflowExpression.Validate(bodyrowAmount, nameof(bodyrowAmount), required: false);
-            WorkflowExpression.Validate(bodyparentTagId, nameof(bodyparentTagId), required: false);
+            var __workflow_exaAuthPlugin = exaAuthPlugin == null ? null : WorkflowExpression.Compile(exaAuthPlugin);
+            WorkflowExpression.Validate(__workflow_exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            var __workflow_method = method == null ? null : WorkflowExpression.Compile(method);
+            WorkflowExpression.Validate(__workflow_method, nameof(method), required: false);
+            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
+            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: false);
+            var __workflow_bodytenantId = bodytenantId == null ? null : WorkflowExpression.Compile(bodytenantId);
+            WorkflowExpression.Validate(__workflow_bodytenantId, nameof(bodytenantId), required: false);
+            var __workflow_bodycode = bodycode == null ? null : WorkflowExpression.Compile(bodycode);
+            WorkflowExpression.Validate(__workflow_bodycode, nameof(bodycode), required: false);
+            var __workflow_bodyfieldType = bodyfieldType == null ? null : WorkflowExpression.Compile(bodyfieldType);
+            WorkflowExpression.Validate(__workflow_bodyfieldType, nameof(bodyfieldType), required: false);
+            var __workflow_bodyisRequired = bodyisRequired == null ? null : WorkflowExpression.Compile(bodyisRequired);
+            WorkflowExpression.Validate(__workflow_bodyisRequired, nameof(bodyisRequired), required: false);
+            var __workflow_bodyisReadOnly = bodyisReadOnly == null ? null : WorkflowExpression.Compile(bodyisReadOnly);
+            WorkflowExpression.Validate(__workflow_bodyisReadOnly, nameof(bodyisReadOnly), required: false);
+            var __workflow_bodydefaultValue = bodydefaultValue == null ? null : WorkflowExpression.Compile(bodydefaultValue);
+            WorkflowExpression.Validate(__workflow_bodydefaultValue, nameof(bodydefaultValue), required: false);
+            var __workflow_bodylabels = bodylabels == null ? null : WorkflowExpression.Compile(bodylabels);
+            WorkflowExpression.Validate(__workflow_bodylabels, nameof(bodylabels), required: false);
+            var __workflow_bodyvalidatingRegExp = bodyvalidatingRegExp == null ? null : WorkflowExpression.Compile(bodyvalidatingRegExp);
+            WorkflowExpression.Validate(__workflow_bodyvalidatingRegExp, nameof(bodyvalidatingRegExp), required: false);
+            var __workflow_bodyvalidationMessage = bodyvalidationMessage == null ? null : WorkflowExpression.Compile(bodyvalidationMessage);
+            WorkflowExpression.Validate(__workflow_bodyvalidationMessage, nameof(bodyvalidationMessage), required: false);
+            var __workflow_bodyrowAmount = bodyrowAmount == null ? null : WorkflowExpression.Compile(bodyrowAmount);
+            WorkflowExpression.Validate(__workflow_bodyrowAmount, nameof(bodyrowAmount), required: false);
+            var __workflow_bodyparentTagId = bodyparentTagId == null ? null : WorkflowExpression.Compile(bodyparentTagId);
+            WorkflowExpression.Validate(__workflow_bodyparentTagId, nameof(bodyparentTagId), required: false);
             return new DeferredBodyAction<CreateFieldResponse>(() =>
             {
                 var apiCallPath = "/taxonomy/fields";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (method != null)
-                    callPayload.Queries["method"] = ExpressionConverter.Convert(method);
-                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(exaAuthPlugin);
+                if (__workflow_method != null)
+                    callPayload.Queries["method"] = ExpressionConverter.Convert(__workflow_method);
+                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyid != null)
+                if (__workflow_bodyid != null)
                 {
-                    body["id"] = ExpressionConverter.ConvertO(bodyid);
+                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
                     bodypropCount++;
                 }
 
-                if (bodytenantId != null)
+                if (__workflow_bodytenantId != null)
                 {
-                    body["tenantId"] = ExpressionConverter.ConvertO(bodytenantId);
+                    body["tenantId"] = ExpressionConverter.ConvertO(__workflow_bodytenantId);
                     bodypropCount++;
                 }
 
-                if (bodycode != null)
+                if (__workflow_bodycode != null)
                 {
-                    body["code"] = ExpressionConverter.ConvertO(bodycode);
+                    body["code"] = ExpressionConverter.ConvertO(__workflow_bodycode);
                     bodypropCount++;
                 }
 
-                if (bodyfieldType != null)
+                if (__workflow_bodyfieldType != null)
                 {
-                    body["fieldType"] = ExpressionConverter.ConvertO(bodyfieldType);
+                    body["fieldType"] = ExpressionConverter.ConvertO(__workflow_bodyfieldType);
                     bodypropCount++;
                 }
 
-                if (bodyisRequired != null)
+                if (__workflow_bodyisRequired != null)
                 {
-                    body["isRequired"] = ExpressionConverter.ConvertO(bodyisRequired);
+                    body["isRequired"] = ExpressionConverter.ConvertO(__workflow_bodyisRequired);
                     bodypropCount++;
                 }
 
-                if (bodyisReadOnly != null)
+                if (__workflow_bodyisReadOnly != null)
                 {
-                    body["isReadOnly"] = ExpressionConverter.ConvertO(bodyisReadOnly);
+                    body["isReadOnly"] = ExpressionConverter.ConvertO(__workflow_bodyisReadOnly);
                     bodypropCount++;
                 }
 
-                if (bodydefaultValue != null)
+                if (__workflow_bodydefaultValue != null)
                 {
-                    body["defaultValue"] = ExpressionConverter.ConvertO(bodydefaultValue);
+                    body["defaultValue"] = ExpressionConverter.ConvertO(__workflow_bodydefaultValue);
                     bodypropCount++;
                 }
 
-                if (bodylabels != null)
+                if (__workflow_bodylabels != null)
                 {
-                    body["labels"] = ExpressionConverter.ConvertO(bodylabels);
+                    body["labels"] = ExpressionConverter.ConvertO(__workflow_bodylabels);
                     bodypropCount++;
                 }
 
-                if (bodyvalidatingRegExp != null)
+                if (__workflow_bodyvalidatingRegExp != null)
                 {
-                    body["validatingRegExp"] = ExpressionConverter.ConvertO(bodyvalidatingRegExp);
+                    body["validatingRegExp"] = ExpressionConverter.ConvertO(__workflow_bodyvalidatingRegExp);
                     bodypropCount++;
                 }
 
-                if (bodyvalidationMessage != null)
+                if (__workflow_bodyvalidationMessage != null)
                 {
-                    body["validationMessage"] = ExpressionConverter.ConvertO(bodyvalidationMessage);
+                    body["validationMessage"] = ExpressionConverter.ConvertO(__workflow_bodyvalidationMessage);
                     bodypropCount++;
                 }
 
-                if (bodyrowAmount != null)
+                if (__workflow_bodyrowAmount != null)
                 {
-                    body["rowAmount"] = ExpressionConverter.ConvertO(bodyrowAmount);
+                    body["rowAmount"] = ExpressionConverter.ConvertO(__workflow_bodyrowAmount);
                     bodypropCount++;
                 }
 
-                if (bodyparentTagId != null)
+                if (__workflow_bodyparentTagId != null)
                 {
-                    body["parentTagId"] = ExpressionConverter.ConvertO(bodyparentTagId);
+                    body["parentTagId"] = ExpressionConverter.ConvertO(__workflow_bodyparentTagId);
                     bodypropCount++;
                 }
 
@@ -592,218 +562,191 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        [WorkflowExpressionFactory(nameof(__BuildGetFieldById))]
-        public IBodyWorkflowAction<GetFieldByIdResponse> GetFieldById([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> fieldId)
+        public IBodyWorkflowAction<GetFieldByIdResponse> GetFieldById(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> fieldId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetFieldByIdResponse> __BuildGetFieldById(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> fieldId)
-        {
-            WorkflowExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            WorkflowExpression.Validate(fieldId, nameof(fieldId), required: true);
+            var __workflow_exaAuthPlugin = exaAuthPlugin == null ? null : WorkflowExpression.Compile(exaAuthPlugin);
+            WorkflowExpression.Validate(__workflow_exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            var __workflow_fieldId = fieldId == null ? null : WorkflowExpression.Compile(fieldId);
+            WorkflowExpression.Validate(__workflow_fieldId, nameof(fieldId), required: true);
             return new DeferredBodyAction<GetFieldByIdResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/taxonomy/fields/{0}", ExpressionConverter.ConvertWithUrlEncoding(fieldId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/taxonomy/fields/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fieldId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(exaAuthPlugin);
+                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 return new ApiConnectionAction<GetFieldByIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        [WorkflowExpressionFactory(nameof(__BuildGetFieldByCode))]
-        public IBodyWorkflowAction<GetFieldByCodeResponse> GetFieldByCode([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> code)
+        public IBodyWorkflowAction<GetFieldByCodeResponse> GetFieldByCode(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> code)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetFieldByCodeResponse> __BuildGetFieldByCode(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> code)
-        {
-            WorkflowExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            WorkflowExpression.Validate(code, nameof(code), required: true);
+            var __workflow_exaAuthPlugin = exaAuthPlugin == null ? null : WorkflowExpression.Compile(exaAuthPlugin);
+            WorkflowExpression.Validate(__workflow_exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            var __workflow_code = code == null ? null : WorkflowExpression.Compile(code);
+            WorkflowExpression.Validate(__workflow_code, nameof(code), required: true);
             return new DeferredBodyAction<GetFieldByCodeResponse>(() =>
             {
                 var apiCallPath = "/taxonomy/fields/field";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["code"] = ExpressionConverter.Convert(code);
-                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(exaAuthPlugin);
+                callPayload.Queries["code"] = ExpressionConverter.Convert(__workflow_code);
+                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 return new ApiConnectionAction<GetFieldByCodeResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        [WorkflowExpressionFactory(nameof(__BuildGetTemplateFields))]
-        public IBodyWorkflowAction<GetTemplateFieldsResponseItem[]> GetTemplateFields([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> templateId)
+        public IBodyWorkflowAction<GetTemplateFieldsResponseItem[]> GetTemplateFields(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> templateId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetTemplateFieldsResponseItem[]> __BuildGetTemplateFields(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> templateId)
-        {
-            WorkflowExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            WorkflowExpression.Validate(templateId, nameof(templateId), required: true);
+            var __workflow_exaAuthPlugin = exaAuthPlugin == null ? null : WorkflowExpression.Compile(exaAuthPlugin);
+            WorkflowExpression.Validate(__workflow_exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            var __workflow_templateId = templateId == null ? null : WorkflowExpression.Compile(templateId);
+            WorkflowExpression.Validate(__workflow_templateId, nameof(templateId), required: true);
             return new DeferredBodyAction<GetTemplateFieldsResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/taxonomy/templates/{0}/fields", ExpressionConverter.ConvertWithUrlEncoding(templateId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/taxonomy/templates/{0}/fields", ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(exaAuthPlugin);
+                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 return new ApiConnectionAction<GetTemplateFieldsResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        [WorkflowExpressionFactory(nameof(__BuildGetTemplatebyid))]
-        public IBodyWorkflowAction<GetTemplatebyidResponse> GetTemplatebyid([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> templateId)
+        public IBodyWorkflowAction<GetTemplatebyidResponse> GetTemplatebyid(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> templateId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetTemplatebyidResponse> __BuildGetTemplatebyid(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> templateId)
-        {
-            WorkflowExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            WorkflowExpression.Validate(templateId, nameof(templateId), required: true);
+            var __workflow_exaAuthPlugin = exaAuthPlugin == null ? null : WorkflowExpression.Compile(exaAuthPlugin);
+            WorkflowExpression.Validate(__workflow_exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            var __workflow_templateId = templateId == null ? null : WorkflowExpression.Compile(templateId);
+            WorkflowExpression.Validate(__workflow_templateId, nameof(templateId), required: true);
             return new DeferredBodyAction<GetTemplatebyidResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/taxonomy/templates/{0}", ExpressionConverter.ConvertWithUrlEncoding(templateId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/taxonomy/templates/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(exaAuthPlugin);
+                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 return new ApiConnectionAction<GetTemplatebyidResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        [WorkflowExpressionFactory(nameof(__BuildGetTemplatebycode))]
-        public IBodyWorkflowAction<GetTemplatebycodeResponse> GetTemplatebycode([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> code)
+        public IBodyWorkflowAction<GetTemplatebycodeResponse> GetTemplatebycode(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> code)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetTemplatebycodeResponse> __BuildGetTemplatebycode(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> code)
-        {
-            WorkflowExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            WorkflowExpression.Validate(code, nameof(code), required: true);
+            var __workflow_exaAuthPlugin = exaAuthPlugin == null ? null : WorkflowExpression.Compile(exaAuthPlugin);
+            WorkflowExpression.Validate(__workflow_exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            var __workflow_code = code == null ? null : WorkflowExpression.Compile(code);
+            WorkflowExpression.Validate(__workflow_code, nameof(code), required: true);
             return new DeferredBodyAction<GetTemplatebycodeResponse>(() =>
             {
                 var apiCallPath = "/taxonomy/templates/template";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["code"] = ExpressionConverter.Convert(code);
-                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(exaAuthPlugin);
+                callPayload.Queries["code"] = ExpressionConverter.Convert(__workflow_code);
+                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 return new ApiConnectionAction<GetTemplatebycodeResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        [WorkflowExpressionFactory(nameof(__BuildGetUserById))]
-        public IBodyWorkflowAction<GetUserByIdResponse> GetUserById([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> userId)
+        public IBodyWorkflowAction<GetUserByIdResponse> GetUserById(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> userId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetUserByIdResponse> __BuildGetUserById(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> userId)
-        {
-            WorkflowExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            WorkflowExpression.Validate(userId, nameof(userId), required: true);
+            var __workflow_exaAuthPlugin = exaAuthPlugin == null ? null : WorkflowExpression.Compile(exaAuthPlugin);
+            WorkflowExpression.Validate(__workflow_exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
+            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
             return new DeferredBodyAction<GetUserByIdResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/user/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/user/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(exaAuthPlugin);
+                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 return new ApiConnectionAction<GetUserByIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        [WorkflowExpressionFactory(nameof(__BuildQueryUsers))]
-        public IBodyWorkflowAction<QueryUsersResponse> QueryUsers([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<bool> bodyexcludeActiveUsers = null, [WorkflowExpression] Func<bool> bodyexcludeInactiveUsers = null, [WorkflowExpression] Func<bool> bodyexcludeNormalUsers = null, [WorkflowExpression] Func<bool> bodyexcludeSystemUsers = null, [WorkflowExpression] Func<string> bodycontainsEmail = null, [WorkflowExpression] Func<string[]> bodyroleIds = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodycontainsName = null, [WorkflowExpression] Func<bool> bodyorderAscending = null)
+        public IBodyWorkflowAction<QueryUsersResponse> QueryUsers(Expression<Func<string>> exaAuthPlugin, Expression<Func<bool>> bodyexcludeActiveUsers = null, Expression<Func<bool>> bodyexcludeInactiveUsers = null, Expression<Func<bool>> bodyexcludeNormalUsers = null, Expression<Func<bool>> bodyexcludeSystemUsers = null, Expression<Func<string>> bodycontainsEmail = null, Expression<Func<string[]>> bodyroleIds = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodycontainsName = null, Expression<Func<bool>> bodyorderAscending = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<QueryUsersResponse> __BuildQueryUsers(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<bool> bodyexcludeActiveUsers = null, WorkflowExpression<bool> bodyexcludeInactiveUsers = null, WorkflowExpression<bool> bodyexcludeNormalUsers = null, WorkflowExpression<bool> bodyexcludeSystemUsers = null, WorkflowExpression<string> bodycontainsEmail = null, WorkflowExpression<string[]> bodyroleIds = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodycontainsName = null, WorkflowExpression<bool> bodyorderAscending = null)
-        {
-            WorkflowExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            WorkflowExpression.Validate(bodyexcludeActiveUsers, nameof(bodyexcludeActiveUsers), required: false);
-            WorkflowExpression.Validate(bodyexcludeInactiveUsers, nameof(bodyexcludeInactiveUsers), required: false);
-            WorkflowExpression.Validate(bodyexcludeNormalUsers, nameof(bodyexcludeNormalUsers), required: false);
-            WorkflowExpression.Validate(bodyexcludeSystemUsers, nameof(bodyexcludeSystemUsers), required: false);
-            WorkflowExpression.Validate(bodycontainsEmail, nameof(bodycontainsEmail), required: false);
-            WorkflowExpression.Validate(bodyroleIds, nameof(bodyroleIds), required: false);
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
-            WorkflowExpression.Validate(bodycontainsName, nameof(bodycontainsName), required: false);
-            WorkflowExpression.Validate(bodyorderAscending, nameof(bodyorderAscending), required: false);
+            var __workflow_exaAuthPlugin = exaAuthPlugin == null ? null : WorkflowExpression.Compile(exaAuthPlugin);
+            WorkflowExpression.Validate(__workflow_exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            var __workflow_bodyexcludeActiveUsers = bodyexcludeActiveUsers == null ? null : WorkflowExpression.Compile(bodyexcludeActiveUsers);
+            WorkflowExpression.Validate(__workflow_bodyexcludeActiveUsers, nameof(bodyexcludeActiveUsers), required: false);
+            var __workflow_bodyexcludeInactiveUsers = bodyexcludeInactiveUsers == null ? null : WorkflowExpression.Compile(bodyexcludeInactiveUsers);
+            WorkflowExpression.Validate(__workflow_bodyexcludeInactiveUsers, nameof(bodyexcludeInactiveUsers), required: false);
+            var __workflow_bodyexcludeNormalUsers = bodyexcludeNormalUsers == null ? null : WorkflowExpression.Compile(bodyexcludeNormalUsers);
+            WorkflowExpression.Validate(__workflow_bodyexcludeNormalUsers, nameof(bodyexcludeNormalUsers), required: false);
+            var __workflow_bodyexcludeSystemUsers = bodyexcludeSystemUsers == null ? null : WorkflowExpression.Compile(bodyexcludeSystemUsers);
+            WorkflowExpression.Validate(__workflow_bodyexcludeSystemUsers, nameof(bodyexcludeSystemUsers), required: false);
+            var __workflow_bodycontainsEmail = bodycontainsEmail == null ? null : WorkflowExpression.Compile(bodycontainsEmail);
+            WorkflowExpression.Validate(__workflow_bodycontainsEmail, nameof(bodycontainsEmail), required: false);
+            var __workflow_bodyroleIds = bodyroleIds == null ? null : WorkflowExpression.Compile(bodyroleIds);
+            WorkflowExpression.Validate(__workflow_bodyroleIds, nameof(bodyroleIds), required: false);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
+            var __workflow_bodycontainsName = bodycontainsName == null ? null : WorkflowExpression.Compile(bodycontainsName);
+            WorkflowExpression.Validate(__workflow_bodycontainsName, nameof(bodycontainsName), required: false);
+            var __workflow_bodyorderAscending = bodyorderAscending == null ? null : WorkflowExpression.Compile(bodyorderAscending);
+            WorkflowExpression.Validate(__workflow_bodyorderAscending, nameof(bodyorderAscending), required: false);
             return new DeferredBodyAction<QueryUsersResponse>(() =>
             {
                 var apiCallPath = "/user/queryusers";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(exaAuthPlugin);
+                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyexcludeActiveUsers != null)
+                if (__workflow_bodyexcludeActiveUsers != null)
                 {
-                    body["excludeActiveUsers"] = ExpressionConverter.ConvertO(bodyexcludeActiveUsers);
+                    body["excludeActiveUsers"] = ExpressionConverter.ConvertO(__workflow_bodyexcludeActiveUsers);
                     bodypropCount++;
                 }
 
-                if (bodyexcludeInactiveUsers != null)
+                if (__workflow_bodyexcludeInactiveUsers != null)
                 {
-                    body["excludeInactiveUsers"] = ExpressionConverter.ConvertO(bodyexcludeInactiveUsers);
+                    body["excludeInactiveUsers"] = ExpressionConverter.ConvertO(__workflow_bodyexcludeInactiveUsers);
                     bodypropCount++;
                 }
 
-                if (bodyexcludeNormalUsers != null)
+                if (__workflow_bodyexcludeNormalUsers != null)
                 {
-                    body["excludeNormalUsers"] = ExpressionConverter.ConvertO(bodyexcludeNormalUsers);
+                    body["excludeNormalUsers"] = ExpressionConverter.ConvertO(__workflow_bodyexcludeNormalUsers);
                     bodypropCount++;
                 }
 
-                if (bodyexcludeSystemUsers != null)
+                if (__workflow_bodyexcludeSystemUsers != null)
                 {
-                    body["excludeSystemUsers"] = ExpressionConverter.ConvertO(bodyexcludeSystemUsers);
+                    body["excludeSystemUsers"] = ExpressionConverter.ConvertO(__workflow_bodyexcludeSystemUsers);
                     bodypropCount++;
                 }
 
-                if (bodycontainsEmail != null)
+                if (__workflow_bodycontainsEmail != null)
                 {
-                    body["containsEmail"] = ExpressionConverter.ConvertO(bodycontainsEmail);
+                    body["containsEmail"] = ExpressionConverter.ConvertO(__workflow_bodycontainsEmail);
                     bodypropCount++;
                 }
 
-                if (bodyroleIds != null)
+                if (__workflow_bodyroleIds != null)
                 {
-                    body["roleIds"] = ExpressionConverter.ConvertO(bodyroleIds);
+                    body["roleIds"] = ExpressionConverter.ConvertO(__workflow_bodyroleIds);
                     bodypropCount++;
                 }
 
-                if (bodyname != null)
+                if (__workflow_bodyname != null)
                 {
-                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
                     bodypropCount++;
                 }
 
-                if (bodycontainsName != null)
+                if (__workflow_bodycontainsName != null)
                 {
-                    body["containsName"] = ExpressionConverter.ConvertO(bodycontainsName);
+                    body["containsName"] = ExpressionConverter.ConvertO(__workflow_bodycontainsName);
                     bodypropCount++;
                 }
 
-                if (bodyorderAscending != null)
+                if (__workflow_bodyorderAscending != null)
                 {
-                    body["orderAscending"] = ExpressionConverter.ConvertO(bodyorderAscending);
+                    body["orderAscending"] = ExpressionConverter.ConvertO(__workflow_bodyorderAscending);
                     bodypropCount++;
                 }
 
@@ -817,64 +760,56 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        [WorkflowExpressionFactory(nameof(__BuildGetExternalSystemById))]
-        public IBodyWorkflowAction<GetExternalSystemByIdResponse> GetExternalSystemById([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> externalSystemId)
+        public IBodyWorkflowAction<GetExternalSystemByIdResponse> GetExternalSystemById(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> externalSystemId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetExternalSystemByIdResponse> __BuildGetExternalSystemById(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> externalSystemId)
-        {
-            WorkflowExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            WorkflowExpression.Validate(externalSystemId, nameof(externalSystemId), required: true);
+            var __workflow_exaAuthPlugin = exaAuthPlugin == null ? null : WorkflowExpression.Compile(exaAuthPlugin);
+            WorkflowExpression.Validate(__workflow_exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            var __workflow_externalSystemId = externalSystemId == null ? null : WorkflowExpression.Compile(externalSystemId);
+            WorkflowExpression.Validate(__workflow_externalSystemId, nameof(externalSystemId), required: true);
             return new DeferredBodyAction<GetExternalSystemByIdResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/user/systems/{0}", ExpressionConverter.ConvertWithUrlEncoding(externalSystemId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/user/systems/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_externalSystemId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(exaAuthPlugin);
+                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 return new ApiConnectionAction<GetExternalSystemByIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        [WorkflowExpressionFactory(nameof(__BuildResolveContext))]
-        public IBodyWorkflowAction<ResolveContextResponse> ResolveContext([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> bodysource = null, [WorkflowExpression] Func<string> bodyentityName = null, [WorkflowExpression] Func<string> bodylegalEntity = null)
+        public IBodyWorkflowAction<ResolveContextResponse> ResolveContext(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> bodysource = null, Expression<Func<string>> bodyentityName = null, Expression<Func<string>> bodylegalEntity = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ResolveContextResponse> __BuildResolveContext(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> bodysource = null, WorkflowExpression<string> bodyentityName = null, WorkflowExpression<string> bodylegalEntity = null)
-        {
-            WorkflowExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            WorkflowExpression.Validate(bodysource, nameof(bodysource), required: false);
-            WorkflowExpression.Validate(bodyentityName, nameof(bodyentityName), required: false);
-            WorkflowExpression.Validate(bodylegalEntity, nameof(bodylegalEntity), required: false);
+            var __workflow_exaAuthPlugin = exaAuthPlugin == null ? null : WorkflowExpression.Compile(exaAuthPlugin);
+            WorkflowExpression.Validate(__workflow_exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            var __workflow_bodysource = bodysource == null ? null : WorkflowExpression.Compile(bodysource);
+            WorkflowExpression.Validate(__workflow_bodysource, nameof(bodysource), required: false);
+            var __workflow_bodyentityName = bodyentityName == null ? null : WorkflowExpression.Compile(bodyentityName);
+            WorkflowExpression.Validate(__workflow_bodyentityName, nameof(bodyentityName), required: false);
+            var __workflow_bodylegalEntity = bodylegalEntity == null ? null : WorkflowExpression.Compile(bodylegalEntity);
+            WorkflowExpression.Validate(__workflow_bodylegalEntity, nameof(bodylegalEntity), required: false);
             return new DeferredBodyAction<ResolveContextResponse>(() =>
             {
                 var apiCallPath = "/integration/resolvecontext";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(exaAuthPlugin);
+                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodysource != null)
+                if (__workflow_bodysource != null)
                 {
-                    body["source"] = ExpressionConverter.ConvertO(bodysource);
+                    body["source"] = ExpressionConverter.ConvertO(__workflow_bodysource);
                     bodypropCount++;
                 }
 
-                if (bodyentityName != null)
+                if (__workflow_bodyentityName != null)
                 {
-                    body["entityName"] = ExpressionConverter.ConvertO(bodyentityName);
+                    body["entityName"] = ExpressionConverter.ConvertO(__workflow_bodyentityName);
                     bodypropCount++;
                 }
 
-                if (bodylegalEntity != null)
+                if (__workflow_bodylegalEntity != null)
                 {
-                    body["legalEntity"] = ExpressionConverter.ConvertO(bodylegalEntity);
+                    body["legalEntity"] = ExpressionConverter.ConvertO(__workflow_bodylegalEntity);
                     bodypropCount++;
                 }
 
@@ -896,22 +831,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        [WorkflowExpressionFactory(nameof(__BuildAdvancedSearchQueryDocuments))]
-        public IBodyWorkflowAction<AdvancedSearchQueryDocumentsResponse> AdvancedSearchQueryDocuments([WorkflowExpression] Func<string> exaAuthPlugin)
+        public IBodyWorkflowAction<AdvancedSearchQueryDocumentsResponse> AdvancedSearchQueryDocuments(Expression<Func<string>> exaAuthPlugin)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AdvancedSearchQueryDocumentsResponse> __BuildAdvancedSearchQueryDocuments(WorkflowExpression<string> exaAuthPlugin)
-        {
-            WorkflowExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            var __workflow_exaAuthPlugin = exaAuthPlugin == null ? null : WorkflowExpression.Compile(exaAuthPlugin);
+            WorkflowExpression.Validate(__workflow_exaAuthPlugin, nameof(exaAuthPlugin), required: true);
             return new DeferredBodyAction<AdvancedSearchQueryDocumentsResponse>(() =>
             {
                 var apiCallPath = "/meta/document/query/v2";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(exaAuthPlugin);
+                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 var body = new JObject();
                 var bodypropCount = 0;
                 if (bodypropCount > 0)
@@ -924,30 +853,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        [WorkflowExpressionFactory(nameof(__BuildInsertExternalFile))]
-        public IBodyWorkflowAction<InsertExternalFileResponse> InsertExternalFile([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> filename, [WorkflowExpression] Func<string> bodybody = null)
+        public IBodyWorkflowAction<InsertExternalFileResponse> InsertExternalFile(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> filename, Expression<Func<string>> bodybody = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<InsertExternalFileResponse> __BuildInsertExternalFile(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> filename, WorkflowExpression<string> bodybody = null)
-        {
-            WorkflowExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            WorkflowExpression.Validate(filename, nameof(filename), required: true);
-            WorkflowExpression.Validate(bodybody, nameof(bodybody), required: false);
+            var __workflow_exaAuthPlugin = exaAuthPlugin == null ? null : WorkflowExpression.Compile(exaAuthPlugin);
+            WorkflowExpression.Validate(__workflow_exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            var __workflow_filename = filename == null ? null : WorkflowExpression.Compile(filename);
+            WorkflowExpression.Validate(__workflow_filename, nameof(filename), required: true);
+            var __workflow_bodybody = bodybody == null ? null : WorkflowExpression.Compile(bodybody);
+            WorkflowExpression.Validate(__workflow_bodybody, nameof(bodybody), required: false);
             return new DeferredBodyAction<InsertExternalFileResponse>(() =>
             {
                 var apiCallPath = "/meta/document/insertexternalfile";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["filename"] = ExpressionConverter.Convert(filename);
-                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(exaAuthPlugin);
+                callPayload.Queries["filename"] = ExpressionConverter.Convert(__workflow_filename);
+                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodybody != null)
+                if (__workflow_bodybody != null)
                 {
-                    body["body"] = ExpressionConverter.ConvertO(bodybody);
+                    body["body"] = ExpressionConverter.ConvertO(__workflow_bodybody);
                     bodypropCount++;
                 }
 
@@ -961,286 +886,250 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        [WorkflowExpressionFactory(nameof(__BuildGetDocumentMetadata))]
-        public IBodyWorkflowAction<GetDocumentMetadataResponse> GetDocumentMetadata([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<GetDocumentMetadataResponse> GetDocumentMetadata(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetDocumentMetadataResponse> __BuildGetDocumentMetadata(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_exaAuthPlugin = exaAuthPlugin == null ? null : WorkflowExpression.Compile(exaAuthPlugin);
+            WorkflowExpression.Validate(__workflow_exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<GetDocumentMetadataResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/meta/document/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/meta/document/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(exaAuthPlugin);
+                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 return new ApiConnectionAction<GetDocumentMetadataResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteDocument))]
-        public IWorkflowAction DeleteDocument([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> id)
+        public IWorkflowAction DeleteDocument(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDeleteDocument(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_exaAuthPlugin = exaAuthPlugin == null ? null : WorkflowExpression.Compile(exaAuthPlugin);
+            WorkflowExpression.Validate(__workflow_exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/meta/document/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/meta/document/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(exaAuthPlugin);
+                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        [WorkflowExpressionFactory(nameof(__BuildAddSiteToStorageProvider))]
-        public IWorkflowAction AddSiteToStorageProvider([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bodyInputItem[]> body = null)
+        public IWorkflowAction AddSiteToStorageProvider(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> id, Expression<Func<bodyInputItem[]>> body = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildAddSiteToStorageProvider(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> id, WorkflowExpression<bodyInputItem[]> body = null)
-        {
-            WorkflowExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(body, nameof(body), required: false);
+            var __workflow_exaAuthPlugin = exaAuthPlugin == null ? null : WorkflowExpression.Compile(exaAuthPlugin);
+            WorkflowExpression.Validate(__workflow_exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/storageproviders/sharepoint/config/{0}/sites/add", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/storageproviders/sharepoint/config/{0}/sites/add", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(exaAuthPlugin);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        [WorkflowExpressionFactory(nameof(__BuildGetDocumentMetadataByFileReference))]
-        public IBodyWorkflowAction<GetDocumentMetadataByFileReferenceResponse> GetDocumentMetadataByFileReference([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> fileReferenceId)
+        public IBodyWorkflowAction<GetDocumentMetadataByFileReferenceResponse> GetDocumentMetadataByFileReference(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> fileReferenceId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetDocumentMetadataByFileReferenceResponse> __BuildGetDocumentMetadataByFileReference(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> fileReferenceId)
-        {
-            WorkflowExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            WorkflowExpression.Validate(fileReferenceId, nameof(fileReferenceId), required: true);
+            var __workflow_exaAuthPlugin = exaAuthPlugin == null ? null : WorkflowExpression.Compile(exaAuthPlugin);
+            WorkflowExpression.Validate(__workflow_exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            var __workflow_fileReferenceId = fileReferenceId == null ? null : WorkflowExpression.Compile(fileReferenceId);
+            WorkflowExpression.Validate(__workflow_fileReferenceId, nameof(fileReferenceId), required: true);
             return new DeferredBodyAction<GetDocumentMetadataByFileReferenceResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/files/{0}/meta/document", ExpressionConverter.ConvertWithUrlEncoding(fileReferenceId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/files/{0}/meta/document", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fileReferenceId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(exaAuthPlugin);
+                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 return new ApiConnectionAction<GetDocumentMetadataByFileReferenceResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        [WorkflowExpressionFactory(nameof(__BuildGetStorageProviderById))]
-        public IBodyWorkflowAction<GetStorageProviderByIdResponse> GetStorageProviderById([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<GetStorageProviderByIdResponse> GetStorageProviderById(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetStorageProviderByIdResponse> __BuildGetStorageProviderById(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_exaAuthPlugin = exaAuthPlugin == null ? null : WorkflowExpression.Compile(exaAuthPlugin);
+            WorkflowExpression.Validate(__workflow_exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<GetStorageProviderByIdResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/storageproviders/sharepoint/config/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/storageproviders/sharepoint/config/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(exaAuthPlugin);
+                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 return new ApiConnectionAction<GetStorageProviderByIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        [WorkflowExpressionFactory(nameof(__BuildUploadDocument))]
-        public IBodyWorkflowAction<UploadDocumentResponse> UploadDocument([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> name, [WorkflowExpression] Func<contentTypeInput> contentType, [WorkflowExpression] Func<string> body = null)
+        public IBodyWorkflowAction<UploadDocumentResponse> UploadDocument(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> name, Expression<Func<contentTypeInput>> contentType, Expression<Func<string>> body = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UploadDocumentResponse> __BuildUploadDocument(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> name, WorkflowExpression<contentTypeInput> contentType, WorkflowExpression<string> body = null)
-        {
-            WorkflowExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            WorkflowExpression.Validate(name, nameof(name), required: true);
-            WorkflowExpression.Validate(contentType, nameof(contentType), required: true);
-            WorkflowExpression.Validate(body, nameof(body), required: false);
+            var __workflow_exaAuthPlugin = exaAuthPlugin == null ? null : WorkflowExpression.Compile(exaAuthPlugin);
+            WorkflowExpression.Validate(__workflow_exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
+            WorkflowExpression.Validate(__workflow_name, nameof(name), required: true);
+            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
+            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: true);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
             return new DeferredBodyAction<UploadDocumentResponse>(() =>
             {
                 var apiCallPath = "/meta/document/content";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(exaAuthPlugin);
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["name"] = ExpressionConverter.Convert(__workflow_name);
+                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
+                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UploadDocumentResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        [WorkflowExpressionFactory(nameof(__BuildSetPrimaryStorageProvider))]
-        public IBodyWorkflowAction<SetPrimaryStorageProviderResponse> SetPrimaryStorageProvider([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> fileReferenceId, [WorkflowExpression] Func<string> storageProviderId, [WorkflowExpression] Func<bool> removeRaptorStorage = null)
+        public IBodyWorkflowAction<SetPrimaryStorageProviderResponse> SetPrimaryStorageProvider(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> fileReferenceId, Expression<Func<string>> storageProviderId, Expression<Func<bool>> removeRaptorStorage = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SetPrimaryStorageProviderResponse> __BuildSetPrimaryStorageProvider(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> fileReferenceId, WorkflowExpression<string> storageProviderId, WorkflowExpression<bool> removeRaptorStorage = null)
-        {
-            WorkflowExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            WorkflowExpression.Validate(fileReferenceId, nameof(fileReferenceId), required: true);
-            WorkflowExpression.Validate(storageProviderId, nameof(storageProviderId), required: true);
-            WorkflowExpression.Validate(removeRaptorStorage, nameof(removeRaptorStorage), required: false);
+            var __workflow_exaAuthPlugin = exaAuthPlugin == null ? null : WorkflowExpression.Compile(exaAuthPlugin);
+            WorkflowExpression.Validate(__workflow_exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            var __workflow_fileReferenceId = fileReferenceId == null ? null : WorkflowExpression.Compile(fileReferenceId);
+            WorkflowExpression.Validate(__workflow_fileReferenceId, nameof(fileReferenceId), required: true);
+            var __workflow_storageProviderId = storageProviderId == null ? null : WorkflowExpression.Compile(storageProviderId);
+            WorkflowExpression.Validate(__workflow_storageProviderId, nameof(storageProviderId), required: true);
+            var __workflow_removeRaptorStorage = removeRaptorStorage == null ? null : WorkflowExpression.Compile(removeRaptorStorage);
+            WorkflowExpression.Validate(__workflow_removeRaptorStorage, nameof(removeRaptorStorage), required: false);
             return new DeferredBodyAction<SetPrimaryStorageProviderResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Files/{0}/primarystorageprovider/{1}", ExpressionConverter.ConvertWithUrlEncoding(fileReferenceId, 1), ExpressionConverter.ConvertWithUrlEncoding(storageProviderId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Files/{0}/primarystorageprovider/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fileReferenceId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_storageProviderId, 1));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (removeRaptorStorage != null)
-                    callPayload.Queries["removeRaptorStorage"] = ExpressionConverter.Convert(removeRaptorStorage);
-                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(exaAuthPlugin);
+                if (__workflow_removeRaptorStorage != null)
+                    callPayload.Queries["removeRaptorStorage"] = ExpressionConverter.Convert(__workflow_removeRaptorStorage);
+                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 return new ApiConnectionAction<SetPrimaryStorageProviderResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        [WorkflowExpressionFactory(nameof(__BuildSetExternalSource))]
-        public IBodyWorkflowAction<SetExternalSourceResponse> SetExternalSource([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> fileReferenceId, [WorkflowExpression] Func<string> body = null)
+        public IBodyWorkflowAction<SetExternalSourceResponse> SetExternalSource(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> fileReferenceId, Expression<Func<string>> body = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SetExternalSourceResponse> __BuildSetExternalSource(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> fileReferenceId, WorkflowExpression<string> body = null)
-        {
-            WorkflowExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            WorkflowExpression.Validate(fileReferenceId, nameof(fileReferenceId), required: true);
-            WorkflowExpression.Validate(body, nameof(body), required: false);
+            var __workflow_exaAuthPlugin = exaAuthPlugin == null ? null : WorkflowExpression.Compile(exaAuthPlugin);
+            WorkflowExpression.Validate(__workflow_exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            var __workflow_fileReferenceId = fileReferenceId == null ? null : WorkflowExpression.Compile(fileReferenceId);
+            WorkflowExpression.Validate(__workflow_fileReferenceId, nameof(fileReferenceId), required: true);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
             return new DeferredBodyAction<SetExternalSourceResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/files/{0}/externalsource", ExpressionConverter.ConvertWithUrlEncoding(fileReferenceId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/files/{0}/externalsource", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fileReferenceId, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(exaAuthPlugin);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SetExternalSourceResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        [WorkflowExpressionFactory(nameof(__BuildGenerateSiteSubscriptions))]
-        public IWorkflowAction GenerateSiteSubscriptions([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> storageProviderId, [WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<string> body = null)
+        public IWorkflowAction GenerateSiteSubscriptions(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> storageProviderId, Expression<Func<string>> contentType = null, Expression<Func<string>> body = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGenerateSiteSubscriptions(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> storageProviderId, WorkflowExpression<string> contentType = null, WorkflowExpression<string> body = null)
-        {
-            WorkflowExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            WorkflowExpression.Validate(storageProviderId, nameof(storageProviderId), required: true);
-            WorkflowExpression.Validate(contentType, nameof(contentType), required: false);
-            WorkflowExpression.Validate(body, nameof(body), required: false);
+            var __workflow_exaAuthPlugin = exaAuthPlugin == null ? null : WorkflowExpression.Compile(exaAuthPlugin);
+            WorkflowExpression.Validate(__workflow_exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            var __workflow_storageProviderId = storageProviderId == null ? null : WorkflowExpression.Compile(storageProviderId);
+            WorkflowExpression.Validate(__workflow_storageProviderId, nameof(storageProviderId), required: true);
+            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
+            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/storageproviders/sharepoint/subscriptions/{0}/generate", ExpressionConverter.ConvertWithUrlEncoding(storageProviderId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/storageproviders/sharepoint/subscriptions/{0}/generate", ExpressionConverter.ConvertWithUrlEncoding(__workflow_storageProviderId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(exaAuthPlugin);
-                if (contentType != null)
-                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
+                if (__workflow_contentType != null)
+                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        [WorkflowExpressionFactory(nameof(__BuildQueryTemplates))]
-        public IBodyWorkflowAction<QueryTemplatesResponse> QueryTemplates([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<int> bodylanguageCode = null, [WorkflowExpression] Func<string[]> bodycontextTags = null, [WorkflowExpression] Func<int> bodyorderBy = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodycontainsName = null, [WorkflowExpression] Func<bool> bodyorderAscending = null, [WorkflowExpression] Func<string> bodycontinuationToken = null)
+        public IBodyWorkflowAction<QueryTemplatesResponse> QueryTemplates(Expression<Func<string>> exaAuthPlugin, Expression<Func<int>> bodylanguageCode = null, Expression<Func<string[]>> bodycontextTags = null, Expression<Func<int>> bodyorderBy = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodycontainsName = null, Expression<Func<bool>> bodyorderAscending = null, Expression<Func<string>> bodycontinuationToken = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<QueryTemplatesResponse> __BuildQueryTemplates(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<int> bodylanguageCode = null, WorkflowExpression<string[]> bodycontextTags = null, WorkflowExpression<int> bodyorderBy = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodycontainsName = null, WorkflowExpression<bool> bodyorderAscending = null, WorkflowExpression<string> bodycontinuationToken = null)
-        {
-            WorkflowExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            WorkflowExpression.Validate(bodylanguageCode, nameof(bodylanguageCode), required: false);
-            WorkflowExpression.Validate(bodycontextTags, nameof(bodycontextTags), required: false);
-            WorkflowExpression.Validate(bodyorderBy, nameof(bodyorderBy), required: false);
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
-            WorkflowExpression.Validate(bodycontainsName, nameof(bodycontainsName), required: false);
-            WorkflowExpression.Validate(bodyorderAscending, nameof(bodyorderAscending), required: false);
-            WorkflowExpression.Validate(bodycontinuationToken, nameof(bodycontinuationToken), required: false);
+            var __workflow_exaAuthPlugin = exaAuthPlugin == null ? null : WorkflowExpression.Compile(exaAuthPlugin);
+            WorkflowExpression.Validate(__workflow_exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            var __workflow_bodylanguageCode = bodylanguageCode == null ? null : WorkflowExpression.Compile(bodylanguageCode);
+            WorkflowExpression.Validate(__workflow_bodylanguageCode, nameof(bodylanguageCode), required: false);
+            var __workflow_bodycontextTags = bodycontextTags == null ? null : WorkflowExpression.Compile(bodycontextTags);
+            WorkflowExpression.Validate(__workflow_bodycontextTags, nameof(bodycontextTags), required: false);
+            var __workflow_bodyorderBy = bodyorderBy == null ? null : WorkflowExpression.Compile(bodyorderBy);
+            WorkflowExpression.Validate(__workflow_bodyorderBy, nameof(bodyorderBy), required: false);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
+            var __workflow_bodycontainsName = bodycontainsName == null ? null : WorkflowExpression.Compile(bodycontainsName);
+            WorkflowExpression.Validate(__workflow_bodycontainsName, nameof(bodycontainsName), required: false);
+            var __workflow_bodyorderAscending = bodyorderAscending == null ? null : WorkflowExpression.Compile(bodyorderAscending);
+            WorkflowExpression.Validate(__workflow_bodyorderAscending, nameof(bodyorderAscending), required: false);
+            var __workflow_bodycontinuationToken = bodycontinuationToken == null ? null : WorkflowExpression.Compile(bodycontinuationToken);
+            WorkflowExpression.Validate(__workflow_bodycontinuationToken, nameof(bodycontinuationToken), required: false);
             return new DeferredBodyAction<QueryTemplatesResponse>(() =>
             {
                 var apiCallPath = "/taxonomy/templates/querytemplates";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(exaAuthPlugin);
+                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodylanguageCode != null)
+                if (__workflow_bodylanguageCode != null)
                 {
-                    body["languageCode"] = ExpressionConverter.ConvertO(bodylanguageCode);
+                    body["languageCode"] = ExpressionConverter.ConvertO(__workflow_bodylanguageCode);
                     bodypropCount++;
                 }
 
-                if (bodycontextTags != null)
+                if (__workflow_bodycontextTags != null)
                 {
-                    body["contextTags"] = ExpressionConverter.ConvertO(bodycontextTags);
+                    body["contextTags"] = ExpressionConverter.ConvertO(__workflow_bodycontextTags);
                     bodypropCount++;
                 }
 
-                if (bodyorderBy != null)
+                if (__workflow_bodyorderBy != null)
                 {
-                    body["orderBy"] = ExpressionConverter.ConvertO(bodyorderBy);
+                    body["orderBy"] = ExpressionConverter.ConvertO(__workflow_bodyorderBy);
                     bodypropCount++;
                 }
 
-                if (bodyname != null)
+                if (__workflow_bodyname != null)
                 {
-                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
                     bodypropCount++;
                 }
 
-                if (bodycontainsName != null)
+                if (__workflow_bodycontainsName != null)
                 {
-                    body["containsName"] = ExpressionConverter.ConvertO(bodycontainsName);
+                    body["containsName"] = ExpressionConverter.ConvertO(__workflow_bodycontainsName);
                     bodypropCount++;
                 }
 
-                if (bodyorderAscending != null)
+                if (__workflow_bodyorderAscending != null)
                 {
-                    body["orderAscending"] = ExpressionConverter.ConvertO(bodyorderAscending);
+                    body["orderAscending"] = ExpressionConverter.ConvertO(__workflow_bodyorderAscending);
                     bodypropCount++;
                 }
 
-                if (bodycontinuationToken != null)
+                if (__workflow_bodycontinuationToken != null)
                 {
-                    body["continuationToken"] = ExpressionConverter.ConvertO(bodycontinuationToken);
+                    body["continuationToken"] = ExpressionConverter.ConvertO(__workflow_bodycontinuationToken);
                     bodypropCount++;
                 }
 
@@ -1254,69 +1143,63 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        [WorkflowExpressionFactory(nameof(__BuildFindDocument))]
-        public IBodyWorkflowAction<FindDocumentResponse> FindDocument([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> azureDirectoryId, [WorkflowExpression] Func<string> driveId, [WorkflowExpression] Func<string> driveItemId)
+        public IBodyWorkflowAction<FindDocumentResponse> FindDocument(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> azureDirectoryId, Expression<Func<string>> driveId, Expression<Func<string>> driveItemId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FindDocumentResponse> __BuildFindDocument(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> azureDirectoryId, WorkflowExpression<string> driveId, WorkflowExpression<string> driveItemId)
-        {
-            WorkflowExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            WorkflowExpression.Validate(azureDirectoryId, nameof(azureDirectoryId), required: true);
-            WorkflowExpression.Validate(driveId, nameof(driveId), required: true);
-            WorkflowExpression.Validate(driveItemId, nameof(driveItemId), required: true);
+            var __workflow_exaAuthPlugin = exaAuthPlugin == null ? null : WorkflowExpression.Compile(exaAuthPlugin);
+            WorkflowExpression.Validate(__workflow_exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            var __workflow_azureDirectoryId = azureDirectoryId == null ? null : WorkflowExpression.Compile(azureDirectoryId);
+            WorkflowExpression.Validate(__workflow_azureDirectoryId, nameof(azureDirectoryId), required: true);
+            var __workflow_driveId = driveId == null ? null : WorkflowExpression.Compile(driveId);
+            WorkflowExpression.Validate(__workflow_driveId, nameof(driveId), required: true);
+            var __workflow_driveItemId = driveItemId == null ? null : WorkflowExpression.Compile(driveItemId);
+            WorkflowExpression.Validate(__workflow_driveItemId, nameof(driveItemId), required: true);
             return new DeferredBodyAction<FindDocumentResponse>(() =>
             {
                 var apiCallPath = "/storageproviders/sharepoint/file/find-document";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["azureDirectoryId"] = ExpressionConverter.Convert(azureDirectoryId);
-                callPayload.Queries["driveId"] = ExpressionConverter.Convert(driveId);
-                callPayload.Queries["driveItemId"] = ExpressionConverter.Convert(driveItemId);
-                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(exaAuthPlugin);
+                callPayload.Queries["azureDirectoryId"] = ExpressionConverter.Convert(__workflow_azureDirectoryId);
+                callPayload.Queries["driveId"] = ExpressionConverter.Convert(__workflow_driveId);
+                callPayload.Queries["driveItemId"] = ExpressionConverter.Convert(__workflow_driveItemId);
+                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 return new ApiConnectionAction<FindDocumentResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        [WorkflowExpressionFactory(nameof(__BuildDetachDocument))]
-        public IWorkflowAction DetachDocument([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> bodyazureDirectoryId = null, [WorkflowExpression] Func<string> bodydriveId = null, [WorkflowExpression] Func<string> bodydriveItemId = null)
+        public IWorkflowAction DetachDocument(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> bodyazureDirectoryId = null, Expression<Func<string>> bodydriveId = null, Expression<Func<string>> bodydriveItemId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDetachDocument(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<string> bodyazureDirectoryId = null, WorkflowExpression<string> bodydriveId = null, WorkflowExpression<string> bodydriveItemId = null)
-        {
-            WorkflowExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            WorkflowExpression.Validate(bodyazureDirectoryId, nameof(bodyazureDirectoryId), required: false);
-            WorkflowExpression.Validate(bodydriveId, nameof(bodydriveId), required: false);
-            WorkflowExpression.Validate(bodydriveItemId, nameof(bodydriveItemId), required: false);
+            var __workflow_exaAuthPlugin = exaAuthPlugin == null ? null : WorkflowExpression.Compile(exaAuthPlugin);
+            WorkflowExpression.Validate(__workflow_exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            var __workflow_bodyazureDirectoryId = bodyazureDirectoryId == null ? null : WorkflowExpression.Compile(bodyazureDirectoryId);
+            WorkflowExpression.Validate(__workflow_bodyazureDirectoryId, nameof(bodyazureDirectoryId), required: false);
+            var __workflow_bodydriveId = bodydriveId == null ? null : WorkflowExpression.Compile(bodydriveId);
+            WorkflowExpression.Validate(__workflow_bodydriveId, nameof(bodydriveId), required: false);
+            var __workflow_bodydriveItemId = bodydriveItemId == null ? null : WorkflowExpression.Compile(bodydriveItemId);
+            WorkflowExpression.Validate(__workflow_bodydriveItemId, nameof(bodydriveItemId), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/storageproviders/sharepoint/file/detach";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(exaAuthPlugin);
+                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyazureDirectoryId != null)
+                if (__workflow_bodyazureDirectoryId != null)
                 {
-                    body["azureDirectoryId"] = ExpressionConverter.ConvertO(bodyazureDirectoryId);
+                    body["azureDirectoryId"] = ExpressionConverter.ConvertO(__workflow_bodyazureDirectoryId);
                     bodypropCount++;
                 }
 
-                if (bodydriveId != null)
+                if (__workflow_bodydriveId != null)
                 {
-                    body["driveId"] = ExpressionConverter.ConvertO(bodydriveId);
+                    body["driveId"] = ExpressionConverter.ConvertO(__workflow_bodydriveId);
                     bodypropCount++;
                 }
 
-                if (bodydriveItemId != null)
+                if (__workflow_bodydriveItemId != null)
                 {
-                    body["driveItemId"] = ExpressionConverter.ConvertO(bodydriveItemId);
+                    body["driveItemId"] = ExpressionConverter.ConvertO(__workflow_bodydriveItemId);
                     bodypropCount++;
                 }
 
@@ -1330,44 +1213,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        [WorkflowExpressionFactory(nameof(__BuildGetOrCreateTag))]
-        public IWorkflowAction GetOrCreateTag([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<methodInput> method, [WorkflowExpression] Func<string> bodycode = null, [WorkflowExpression] Func<bodylabelsInputItem2[]> bodylabels = null, [WorkflowExpression] Func<string> bodyparentTagId = null)
+        public IWorkflowAction GetOrCreateTag(Expression<Func<string>> exaAuthPlugin, Expression<Func<methodInput>> method, Expression<Func<string>> bodycode = null, Expression<Func<bodylabelsInputItem2[]>> bodylabels = null, Expression<Func<string>> bodyparentTagId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetOrCreateTag(WorkflowExpression<string> exaAuthPlugin, WorkflowExpression<methodInput> method, WorkflowExpression<string> bodycode = null, WorkflowExpression<bodylabelsInputItem2[]> bodylabels = null, WorkflowExpression<string> bodyparentTagId = null)
-        {
-            WorkflowExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
-            WorkflowExpression.Validate(method, nameof(method), required: true);
-            WorkflowExpression.Validate(bodycode, nameof(bodycode), required: false);
-            WorkflowExpression.Validate(bodylabels, nameof(bodylabels), required: false);
-            WorkflowExpression.Validate(bodyparentTagId, nameof(bodyparentTagId), required: false);
+            var __workflow_exaAuthPlugin = exaAuthPlugin == null ? null : WorkflowExpression.Compile(exaAuthPlugin);
+            WorkflowExpression.Validate(__workflow_exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            var __workflow_method = method == null ? null : WorkflowExpression.Compile(method);
+            WorkflowExpression.Validate(__workflow_method, nameof(method), required: true);
+            var __workflow_bodycode = bodycode == null ? null : WorkflowExpression.Compile(bodycode);
+            WorkflowExpression.Validate(__workflow_bodycode, nameof(bodycode), required: false);
+            var __workflow_bodylabels = bodylabels == null ? null : WorkflowExpression.Compile(bodylabels);
+            WorkflowExpression.Validate(__workflow_bodylabels, nameof(bodylabels), required: false);
+            var __workflow_bodyparentTagId = bodyparentTagId == null ? null : WorkflowExpression.Compile(bodyparentTagId);
+            WorkflowExpression.Validate(__workflow_bodyparentTagId, nameof(bodyparentTagId), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/taxonomy/tags";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["method"] = ExpressionConverter.Convert(method);
-                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(exaAuthPlugin);
+                callPayload.Queries["method"] = ExpressionConverter.Convert(__workflow_method);
+                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodycode != null)
+                if (__workflow_bodycode != null)
                 {
-                    body["code"] = ExpressionConverter.ConvertO(bodycode);
+                    body["code"] = ExpressionConverter.ConvertO(__workflow_bodycode);
                     bodypropCount++;
                 }
 
-                if (bodylabels != null)
+                if (__workflow_bodylabels != null)
                 {
-                    body["labels"] = ExpressionConverter.ConvertO(bodylabels);
+                    body["labels"] = ExpressionConverter.ConvertO(__workflow_bodylabels);
                     bodypropCount++;
                 }
 
-                if (bodyparentTagId != null)
+                if (__workflow_bodyparentTagId != null)
                 {
-                    body["parentTagId"] = ExpressionConverter.ConvertO(bodyparentTagId);
+                    body["parentTagId"] = ExpressionConverter.ConvertO(__workflow_bodyparentTagId);
                     bodypropCount++;
                 }
 
@@ -1381,24 +1262,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        [WorkflowExpressionFactory(nameof(__BuildAddTemplateToDocumentSingle))]
-        public IWorkflowAction AddTemplateToDocumentSingle([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> templateId, [WorkflowExpression] Func<string> exaAuthPlugin)
+        public IWorkflowAction AddTemplateToDocumentSingle(Expression<Func<string>> documentId, Expression<Func<string>> templateId, Expression<Func<string>> exaAuthPlugin)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildAddTemplateToDocumentSingle(WorkflowExpression<string> documentId, WorkflowExpression<string> templateId, WorkflowExpression<string> exaAuthPlugin)
-        {
-            WorkflowExpression.Validate(documentId, nameof(documentId), required: true);
-            WorkflowExpression.Validate(templateId, nameof(templateId), required: true);
-            WorkflowExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
+            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
+            var __workflow_templateId = templateId == null ? null : WorkflowExpression.Compile(templateId);
+            WorkflowExpression.Validate(__workflow_templateId, nameof(templateId), required: true);
+            var __workflow_exaAuthPlugin = exaAuthPlugin == null ? null : WorkflowExpression.Compile(exaAuthPlugin);
+            WorkflowExpression.Validate(__workflow_exaAuthPlugin, nameof(exaAuthPlugin), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/meta/document/{0}/template/{1}", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1), ExpressionConverter.ConvertWithUrlEncoding(templateId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/meta/document/{0}/template/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(exaAuthPlugin);
+                callPayload.Headers["exa-auth-plugin"] = ExpressionConverter.Convert(__workflow_exaAuthPlugin);
                 return new ApiConnectionAction(callPayload);
             });
         }

@@ -1,12 +1,12 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smarp
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class SmarpActions([ConnectionName] string connectionId)
     {
@@ -21,22 +21,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smarp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smarp")]
-        [WorkflowExpressionFactory(nameof(__BuildSmarpCreate))]
-        public IWorkflowAction SmarpCreate([WorkflowExpression] Func<string[]> bodychannelList, [WorkflowExpression] Func<string> bodybody = null, [WorkflowExpression] Func<string> bodyimageUrl = null, [WorkflowExpression] Func<bool> bodyproposed = null, [WorkflowExpression] Func<bool> bodyshareable = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodyurl = null)
+        public IWorkflowAction SmarpCreate(Expression<Func<string[]>> bodychannelList, Expression<Func<string>> bodybody = null, Expression<Func<string>> bodyimageUrl = null, Expression<Func<bool>> bodyproposed = null, Expression<Func<bool>> bodyshareable = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyurl = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildSmarpCreate(WorkflowExpression<string[]> bodychannelList, WorkflowExpression<string> bodybody = null, WorkflowExpression<string> bodyimageUrl = null, WorkflowExpression<bool> bodyproposed = null, WorkflowExpression<bool> bodyshareable = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodyurl = null)
-        {
-            WorkflowExpression.Validate(bodychannelList, nameof(bodychannelList), required: true);
-            WorkflowExpression.Validate(bodybody, nameof(bodybody), required: false);
-            WorkflowExpression.Validate(bodyimageUrl, nameof(bodyimageUrl), required: false);
-            WorkflowExpression.Validate(bodyproposed, nameof(bodyproposed), required: false);
-            WorkflowExpression.Validate(bodyshareable, nameof(bodyshareable), required: false);
-            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            WorkflowExpression.Validate(bodyurl, nameof(bodyurl), required: false);
+            var __workflow_bodychannelList = bodychannelList == null ? null : WorkflowExpression.Compile(bodychannelList);
+            WorkflowExpression.Validate(__workflow_bodychannelList, nameof(bodychannelList), required: true);
+            var __workflow_bodybody = bodybody == null ? null : WorkflowExpression.Compile(bodybody);
+            WorkflowExpression.Validate(__workflow_bodybody, nameof(bodybody), required: false);
+            var __workflow_bodyimageUrl = bodyimageUrl == null ? null : WorkflowExpression.Compile(bodyimageUrl);
+            WorkflowExpression.Validate(__workflow_bodyimageUrl, nameof(bodyimageUrl), required: false);
+            var __workflow_bodyproposed = bodyproposed == null ? null : WorkflowExpression.Compile(bodyproposed);
+            WorkflowExpression.Validate(__workflow_bodyproposed, nameof(bodyproposed), required: false);
+            var __workflow_bodyshareable = bodyshareable == null ? null : WorkflowExpression.Compile(bodyshareable);
+            WorkflowExpression.Validate(__workflow_bodyshareable, nameof(bodyshareable), required: false);
+            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
+            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodyurl = bodyurl == null ? null : WorkflowExpression.Compile(bodyurl);
+            WorkflowExpression.Validate(__workflow_bodyurl, nameof(bodyurl), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/publicapi/post";
@@ -46,25 +46,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smarp
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodybody != null)
+                if (__workflow_bodybody != null)
                 {
-                    body["body"] = ExpressionConverter.ConvertO(bodybody);
+                    body["body"] = ExpressionConverter.ConvertO(__workflow_bodybody);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["channelList"] = ExpressionConverter.ConvertO(bodychannelList);
-                if (bodyimageUrl != null)
+                body["channelList"] = ExpressionConverter.ConvertO(__workflow_bodychannelList);
+                if (__workflow_bodyimageUrl != null)
                 {
-                    body["imageUrl"] = ExpressionConverter.ConvertO(bodyimageUrl);
+                    body["imageUrl"] = ExpressionConverter.ConvertO(__workflow_bodyimageUrl);
                     bodypropCount++;
                 }
 
-                if (bodyproposed != null)
+                if (__workflow_bodyproposed != null)
                 {
-                    if (bodyproposed != null)
+                    if (__workflow_bodyproposed != null)
                     {
-                        body["proposed"] = ExpressionConverter.ConvertO(bodyproposed);
+                        body["proposed"] = ExpressionConverter.ConvertO(__workflow_bodyproposed);
                         bodypropCount++;
                     }
 
@@ -76,11 +76,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smarp
                     bodypropCount++;
                 }
 
-                if (bodyshareable != null)
+                if (__workflow_bodyshareable != null)
                 {
-                    if (bodyshareable != null)
+                    if (__workflow_bodyshareable != null)
                     {
-                        body["shareable"] = ExpressionConverter.ConvertO(bodyshareable);
+                        body["shareable"] = ExpressionConverter.ConvertO(__workflow_bodyshareable);
                         bodypropCount++;
                     }
 
@@ -92,15 +92,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smarp
                     bodypropCount++;
                 }
 
-                if (bodytitle != null)
+                if (__workflow_bodytitle != null)
                 {
-                    body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
                     bodypropCount++;
                 }
 
-                if (bodyurl != null)
+                if (__workflow_bodyurl != null)
                 {
-                    body["url"] = ExpressionConverter.ConvertO(bodyurl);
+                    body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
                     bodypropCount++;
                 }
 

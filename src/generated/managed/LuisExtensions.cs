@@ -1,71 +1,64 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Luis
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class LuisActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "luis")]
-        [WorkflowExpressionFactory(nameof(__BuildGetPredictions))]
-        public IBodyWorkflowAction<PredictResponse> GetPredictions([WorkflowExpression] Func<string> appId, [WorkflowExpression] Func<string> q, [WorkflowExpression] Func<string> desiredIntent = null, [WorkflowExpression] Func<string> versionId = null)
+        public IBodyWorkflowAction<PredictResponse> GetPredictions(Expression<Func<string>> appId, Expression<Func<string>> q, Expression<Func<string>> desiredIntent = null, Expression<Func<string>> versionId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PredictResponse> __BuildGetPredictions(WorkflowExpression<string> appId, WorkflowExpression<string> q, WorkflowExpression<string> desiredIntent = null, WorkflowExpression<string> versionId = null)
-        {
-            WorkflowExpression.Validate(appId, nameof(appId), required: true);
-            WorkflowExpression.Validate(q, nameof(q), required: true);
-            WorkflowExpression.Validate(desiredIntent, nameof(desiredIntent), required: false);
-            WorkflowExpression.Validate(versionId, nameof(versionId), required: false);
+            var __workflow_appId = appId == null ? null : WorkflowExpression.Compile(appId);
+            WorkflowExpression.Validate(__workflow_appId, nameof(appId), required: true);
+            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
+            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
+            var __workflow_desiredIntent = desiredIntent == null ? null : WorkflowExpression.Compile(desiredIntent);
+            WorkflowExpression.Validate(__workflow_desiredIntent, nameof(desiredIntent), required: false);
+            var __workflow_versionId = versionId == null ? null : WorkflowExpression.Compile(versionId);
+            WorkflowExpression.Validate(__workflow_versionId, nameof(versionId), required: false);
             return new DeferredBodyAction<PredictResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/luis/v2.0/apps/{0}/", ExpressionConverter.ConvertWithUrlEncoding(appId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/luis/v2.0/apps/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_appId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-                if (desiredIntent != null)
-                    callPayload.Queries["desiredIntent"] = ExpressionConverter.Convert(desiredIntent);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
+                if (__workflow_desiredIntent != null)
+                    callPayload.Queries["desiredIntent"] = ExpressionConverter.Convert(__workflow_desiredIntent);
                 callPayload.Queries["versionId"] = Convert.ToString("0.1");
-                if (versionId != null)
-                    callPayload.Queries["versionId"] = ExpressionConverter.Convert(versionId);
+                if (__workflow_versionId != null)
+                    callPayload.Queries["versionId"] = ExpressionConverter.Convert(__workflow_versionId);
                 callPayload.Queries["verbose"] = Convert.ToString(true);
                 return new ApiConnectionAction<PredictResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "luis")]
-        [WorkflowExpressionFactory(nameof(__BuildGetTopScoringMatchingEntity))]
-        public IBodyWorkflowAction<GetTopScoringMatchingEntityResponse> GetTopScoringMatchingEntity([WorkflowExpression] Func<string> appId, [WorkflowExpression] Func<string> desiredEntity, [WorkflowExpression] Func<string> versionId = null, [WorkflowExpression] Func<string> luisPredictionObject = null)
+        public IBodyWorkflowAction<GetTopScoringMatchingEntityResponse> GetTopScoringMatchingEntity(Expression<Func<string>> appId, Expression<Func<string>> desiredEntity, Expression<Func<string>> versionId = null, Expression<Func<string>> luisPredictionObject = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetTopScoringMatchingEntityResponse> __BuildGetTopScoringMatchingEntity(WorkflowExpression<string> appId, WorkflowExpression<string> desiredEntity, WorkflowExpression<string> versionId = null, WorkflowExpression<string> luisPredictionObject = null)
-        {
-            WorkflowExpression.Validate(appId, nameof(appId), required: true);
-            WorkflowExpression.Validate(desiredEntity, nameof(desiredEntity), required: true);
-            WorkflowExpression.Validate(versionId, nameof(versionId), required: false);
-            WorkflowExpression.Validate(luisPredictionObject, nameof(luisPredictionObject), required: false);
+            var __workflow_appId = appId == null ? null : WorkflowExpression.Compile(appId);
+            WorkflowExpression.Validate(__workflow_appId, nameof(appId), required: true);
+            var __workflow_desiredEntity = desiredEntity == null ? null : WorkflowExpression.Compile(desiredEntity);
+            WorkflowExpression.Validate(__workflow_desiredEntity, nameof(desiredEntity), required: true);
+            var __workflow_versionId = versionId == null ? null : WorkflowExpression.Compile(versionId);
+            WorkflowExpression.Validate(__workflow_versionId, nameof(versionId), required: false);
+            var __workflow_luisPredictionObject = luisPredictionObject == null ? null : WorkflowExpression.Compile(luisPredictionObject);
+            WorkflowExpression.Validate(__workflow_luisPredictionObject, nameof(luisPredictionObject), required: false);
             return new DeferredBodyAction<GetTopScoringMatchingEntityResponse>(() =>
             {
                 var apiCallPath = "/noApiCall/GetTopScoringMatchingEntity";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["app-id"] = ExpressionConverter.Convert(appId);
-                callPayload.Queries["desiredEntity"] = ExpressionConverter.Convert(desiredEntity);
+                callPayload.Queries["app-id"] = ExpressionConverter.Convert(__workflow_appId);
+                callPayload.Queries["desiredEntity"] = ExpressionConverter.Convert(__workflow_desiredEntity);
                 callPayload.Queries["versionId"] = Convert.ToString("0.1");
-                if (versionId != null)
-                    callPayload.Queries["versionId"] = ExpressionConverter.Convert(versionId);
-                callPayload.Body = ExpressionConverter.ConvertO(luisPredictionObject);
+                if (__workflow_versionId != null)
+                    callPayload.Queries["versionId"] = ExpressionConverter.Convert(__workflow_versionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_luisPredictionObject);
                 return new ApiConnectionAction<GetTopScoringMatchingEntityResponse>(callPayload);
             });
         }

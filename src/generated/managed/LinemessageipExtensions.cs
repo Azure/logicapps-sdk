@@ -1,28 +1,22 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linemessageip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class LinemessageipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "linemessageip")]
-        [WorkflowExpressionFactory(nameof(__BuildSendMessage))]
-        public IWorkflowAction SendMessage([WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<bodymessagesInputItem[]> bodymessages = null)
+        public IWorkflowAction SendMessage(Expression<Func<string>> bodyto = null, Expression<Func<bodymessagesInputItem[]>> bodymessages = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildSendMessage(WorkflowExpression<string> bodyto = null, WorkflowExpression<bodymessagesInputItem[]> bodymessages = null)
-        {
-            WorkflowExpression.Validate(bodyto, nameof(bodyto), required: false);
-            WorkflowExpression.Validate(bodymessages, nameof(bodymessages), required: false);
+            var __workflow_bodyto = bodyto == null ? null : WorkflowExpression.Compile(bodyto);
+            WorkflowExpression.Validate(__workflow_bodyto, nameof(bodyto), required: false);
+            var __workflow_bodymessages = bodymessages == null ? null : WorkflowExpression.Compile(bodymessages);
+            WorkflowExpression.Validate(__workflow_bodymessages, nameof(bodymessages), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v2/bot/message/push";
@@ -31,15 +25,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linemessageip
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyto != null)
+                if (__workflow_bodyto != null)
                 {
-                    body["to"] = ExpressionConverter.ConvertO(bodyto);
+                    body["to"] = ExpressionConverter.ConvertO(__workflow_bodyto);
                     bodypropCount++;
                 }
 
-                if (bodymessages != null)
+                if (__workflow_bodymessages != null)
                 {
-                    body["messages"] = ExpressionConverter.ConvertO(bodymessages);
+                    body["messages"] = ExpressionConverter.ConvertO(__workflow_bodymessages);
                     bodypropCount++;
                 }
 

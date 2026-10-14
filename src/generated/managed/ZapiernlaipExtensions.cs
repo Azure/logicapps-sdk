@@ -1,12 +1,12 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zapiernlaip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class ZapiernlaipActions([ConnectionName] string connectionId)
     {
@@ -20,32 +20,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zapiernlaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zapiernlaip")]
-        [WorkflowExpressionFactory(nameof(__BuildAction))]
-        public IBodyWorkflowAction<ActionPostResponse> Action([WorkflowExpression] Func<string> actionId, [WorkflowExpression] Func<string> bodyinstructions, [WorkflowExpression] Func<bool> bodypreviewOnly = null)
+        public IBodyWorkflowAction<ActionPostResponse> Action(Expression<Func<string>> actionId, Expression<Func<string>> bodyinstructions, Expression<Func<bool>> bodypreviewOnly = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ActionPostResponse> __BuildAction(WorkflowExpression<string> actionId, WorkflowExpression<string> bodyinstructions, WorkflowExpression<bool> bodypreviewOnly = null)
-        {
-            WorkflowExpression.Validate(actionId, nameof(actionId), required: true);
-            WorkflowExpression.Validate(bodyinstructions, nameof(bodyinstructions), required: true);
-            WorkflowExpression.Validate(bodypreviewOnly, nameof(bodypreviewOnly), required: false);
+            var __workflow_actionId = actionId == null ? null : WorkflowExpression.Compile(actionId);
+            WorkflowExpression.Validate(__workflow_actionId, nameof(actionId), required: true);
+            var __workflow_bodyinstructions = bodyinstructions == null ? null : WorkflowExpression.Compile(bodyinstructions);
+            WorkflowExpression.Validate(__workflow_bodyinstructions, nameof(bodyinstructions), required: true);
+            var __workflow_bodypreviewOnly = bodypreviewOnly == null ? null : WorkflowExpression.Compile(bodypreviewOnly);
+            WorkflowExpression.Validate(__workflow_bodypreviewOnly, nameof(bodypreviewOnly), required: false);
             return new DeferredBodyAction<ActionPostResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/dynamic/exposed/{0}/execute/", ExpressionConverter.ConvertWithUrlEncoding(actionId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/dynamic/exposed/{0}/execute/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_actionId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["instructions"] = ExpressionConverter.ConvertO(bodyinstructions);
-                if (bodypreviewOnly != null)
+                body["instructions"] = ExpressionConverter.ConvertO(__workflow_bodyinstructions);
+                if (__workflow_bodypreviewOnly != null)
                 {
-                    if (bodypreviewOnly != null)
+                    if (__workflow_bodypreviewOnly != null)
                     {
-                        body["preview_only"] = ExpressionConverter.ConvertO(bodypreviewOnly);
+                        body["preview_only"] = ExpressionConverter.ConvertO(__workflow_bodypreviewOnly);
                         bodypropCount++;
                     }
 

@@ -1,55 +1,52 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilitervisionagents
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class TilitervisionagentsActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilitervisionagents")]
-        [WorkflowExpressionFactory(nameof(__BuildRunVisionAgent))]
-        public IBodyWorkflowAction<AgentResponse> RunVisionAgent([WorkflowExpression] Func<agentNameInput> agentName, [WorkflowExpression] Func<string> payloadinputFileB64, [WorkflowExpression] Func<string> payloadexpectedText = null, [WorkflowExpression] Func<string> payloadobjectType = null, [WorkflowExpression] Func<string[]> payloadexpectedObjects = null)
+        public IBodyWorkflowAction<AgentResponse> RunVisionAgent(Expression<Func<agentNameInput>> agentName, Expression<Func<string>> payloadinputFileB64, Expression<Func<string>> payloadexpectedText = null, Expression<Func<string>> payloadobjectType = null, Expression<Func<string[]>> payloadexpectedObjects = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AgentResponse> __BuildRunVisionAgent(WorkflowExpression<agentNameInput> agentName, WorkflowExpression<string> payloadinputFileB64, WorkflowExpression<string> payloadexpectedText = null, WorkflowExpression<string> payloadobjectType = null, WorkflowExpression<string[]> payloadexpectedObjects = null)
-        {
-            WorkflowExpression.Validate(agentName, nameof(agentName), required: true);
-            WorkflowExpression.Validate(payloadinputFileB64, nameof(payloadinputFileB64), required: true);
-            WorkflowExpression.Validate(payloadexpectedText, nameof(payloadexpectedText), required: false);
-            WorkflowExpression.Validate(payloadobjectType, nameof(payloadobjectType), required: false);
-            WorkflowExpression.Validate(payloadexpectedObjects, nameof(payloadexpectedObjects), required: false);
+            var __workflow_agentName = agentName == null ? null : WorkflowExpression.Compile(agentName);
+            WorkflowExpression.Validate(__workflow_agentName, nameof(agentName), required: true);
+            var __workflow_payloadinputFileB64 = payloadinputFileB64 == null ? null : WorkflowExpression.Compile(payloadinputFileB64);
+            WorkflowExpression.Validate(__workflow_payloadinputFileB64, nameof(payloadinputFileB64), required: true);
+            var __workflow_payloadexpectedText = payloadexpectedText == null ? null : WorkflowExpression.Compile(payloadexpectedText);
+            WorkflowExpression.Validate(__workflow_payloadexpectedText, nameof(payloadexpectedText), required: false);
+            var __workflow_payloadobjectType = payloadobjectType == null ? null : WorkflowExpression.Compile(payloadobjectType);
+            WorkflowExpression.Validate(__workflow_payloadobjectType, nameof(payloadobjectType), required: false);
+            var __workflow_payloadexpectedObjects = payloadexpectedObjects == null ? null : WorkflowExpression.Compile(payloadexpectedObjects);
+            WorkflowExpression.Validate(__workflow_payloadexpectedObjects, nameof(payloadexpectedObjects), required: false);
             return new DeferredBodyAction<AgentResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/agents/{0}/v1/inference", ExpressionConverter.ConvertWithUrlEncoding(agentName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/agents/{0}/v1/inference", ExpressionConverter.ConvertWithUrlEncoding(__workflow_agentName, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var payload = new JObject();
                 var payloadpropCount = 0;
                 payloadpropCount++;
-                payload["input_file_b64"] = ExpressionConverter.ConvertO(payloadinputFileB64);
-                if (payloadexpectedText != null)
+                payload["input_file_b64"] = ExpressionConverter.ConvertO(__workflow_payloadinputFileB64);
+                if (__workflow_payloadexpectedText != null)
                 {
-                    payload["expected_text"] = ExpressionConverter.ConvertO(payloadexpectedText);
+                    payload["expected_text"] = ExpressionConverter.ConvertO(__workflow_payloadexpectedText);
                     payloadpropCount++;
                 }
 
-                if (payloadobjectType != null)
+                if (__workflow_payloadobjectType != null)
                 {
-                    payload["object_type"] = ExpressionConverter.ConvertO(payloadobjectType);
+                    payload["object_type"] = ExpressionConverter.ConvertO(__workflow_payloadobjectType);
                     payloadpropCount++;
                 }
 
-                if (payloadexpectedObjects != null)
+                if (__workflow_payloadexpectedObjects != null)
                 {
-                    payload["expected_objects"] = ExpressionConverter.ConvertO(payloadexpectedObjects);
+                    payload["expected_objects"] = ExpressionConverter.ConvertO(__workflow_payloadexpectedObjects);
                     payloadpropCount++;
                 }
 

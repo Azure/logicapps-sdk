@@ -1,12 +1,12 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shipstationip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class ShipstationipActions([ConnectionName] string connectionId)
     {
@@ -29,17 +29,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shipstationip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shipstationip")]
-        [WorkflowExpressionFactory(nameof(__BuildStoresRefreshStore))]
-        public IBodyWorkflowAction<RefreshStoreResponse> StoresRefreshStore([WorkflowExpression] Func<int> bodystoreId = null, [WorkflowExpression] Func<string> bodyrefreshDate = null)
+        public IBodyWorkflowAction<RefreshStoreResponse> StoresRefreshStore(Expression<Func<int>> bodystoreId = null, Expression<Func<string>> bodyrefreshDate = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<RefreshStoreResponse> __BuildStoresRefreshStore(WorkflowExpression<int> bodystoreId = null, WorkflowExpression<string> bodyrefreshDate = null)
-        {
-            WorkflowExpression.Validate(bodystoreId, nameof(bodystoreId), required: false);
-            WorkflowExpression.Validate(bodyrefreshDate, nameof(bodyrefreshDate), required: false);
+            var __workflow_bodystoreId = bodystoreId == null ? null : WorkflowExpression.Compile(bodystoreId);
+            WorkflowExpression.Validate(__workflow_bodystoreId, nameof(bodystoreId), required: false);
+            var __workflow_bodyrefreshDate = bodyrefreshDate == null ? null : WorkflowExpression.Compile(bodyrefreshDate);
+            WorkflowExpression.Validate(__workflow_bodyrefreshDate, nameof(bodyrefreshDate), required: false);
             return new DeferredBodyAction<RefreshStoreResponse>(() =>
             {
                 var apiCallPath = "/stores/refreshstore";
@@ -48,15 +43,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shipstationip
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodystoreId != null)
+                if (__workflow_bodystoreId != null)
                 {
-                    body["storeId"] = ExpressionConverter.ConvertO(bodystoreId);
+                    body["storeId"] = ExpressionConverter.ConvertO(__workflow_bodystoreId);
                     bodypropCount++;
                 }
 
-                if (bodyrefreshDate != null)
+                if (__workflow_bodyrefreshDate != null)
                 {
-                    body["refreshDate"] = ExpressionConverter.ConvertO(bodyrefreshDate);
+                    body["refreshDate"] = ExpressionConverter.ConvertO(__workflow_bodyrefreshDate);
                     bodypropCount++;
                 }
 

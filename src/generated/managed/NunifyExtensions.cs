@@ -1,38 +1,39 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nunify
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class NunifyActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nunify")]
-        [WorkflowExpressionFactory(nameof(__BuildADDREGISTRANT))]
-        public IBodyWorkflowAction<ADDREGISTRANTResponse> ADDREGISTRANT([WorkflowExpression] Func<string> platformId, [WorkflowExpression] Func<string> domainId, [WorkflowExpression] Func<string> appId, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string> bodydesignation = null, [WorkflowExpression] Func<string> bodycompany = null, [WorkflowExpression] Func<string> bodyticketTypeId = null)
+        public IBodyWorkflowAction<ADDREGISTRANTResponse> ADDREGISTRANT(Expression<Func<string>> platformId, Expression<Func<string>> domainId, Expression<Func<string>> appId, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodydesignation = null, Expression<Func<string>> bodycompany = null, Expression<Func<string>> bodyticketTypeId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ADDREGISTRANTResponse> __BuildADDREGISTRANT(WorkflowExpression<string> platformId, WorkflowExpression<string> domainId, WorkflowExpression<string> appId, WorkflowExpression<string> bodyemail = null, WorkflowExpression<string> bodyfirstName = null, WorkflowExpression<string> bodylastName = null, WorkflowExpression<string> bodydesignation = null, WorkflowExpression<string> bodycompany = null, WorkflowExpression<string> bodyticketTypeId = null)
-        {
-            WorkflowExpression.Validate(platformId, nameof(platformId), required: true);
-            WorkflowExpression.Validate(domainId, nameof(domainId), required: true);
-            WorkflowExpression.Validate(appId, nameof(appId), required: true);
-            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            WorkflowExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
-            WorkflowExpression.Validate(bodylastName, nameof(bodylastName), required: false);
-            WorkflowExpression.Validate(bodydesignation, nameof(bodydesignation), required: false);
-            WorkflowExpression.Validate(bodycompany, nameof(bodycompany), required: false);
-            WorkflowExpression.Validate(bodyticketTypeId, nameof(bodyticketTypeId), required: false);
+            var __workflow_platformId = platformId == null ? null : WorkflowExpression.Compile(platformId);
+            WorkflowExpression.Validate(__workflow_platformId, nameof(platformId), required: true);
+            var __workflow_domainId = domainId == null ? null : WorkflowExpression.Compile(domainId);
+            WorkflowExpression.Validate(__workflow_domainId, nameof(domainId), required: true);
+            var __workflow_appId = appId == null ? null : WorkflowExpression.Compile(appId);
+            WorkflowExpression.Validate(__workflow_appId, nameof(appId), required: true);
+            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
+            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: false);
+            var __workflow_bodyfirstName = bodyfirstName == null ? null : WorkflowExpression.Compile(bodyfirstName);
+            WorkflowExpression.Validate(__workflow_bodyfirstName, nameof(bodyfirstName), required: false);
+            var __workflow_bodylastName = bodylastName == null ? null : WorkflowExpression.Compile(bodylastName);
+            WorkflowExpression.Validate(__workflow_bodylastName, nameof(bodylastName), required: false);
+            var __workflow_bodydesignation = bodydesignation == null ? null : WorkflowExpression.Compile(bodydesignation);
+            WorkflowExpression.Validate(__workflow_bodydesignation, nameof(bodydesignation), required: false);
+            var __workflow_bodycompany = bodycompany == null ? null : WorkflowExpression.Compile(bodycompany);
+            WorkflowExpression.Validate(__workflow_bodycompany, nameof(bodycompany), required: false);
+            var __workflow_bodyticketTypeId = bodyticketTypeId == null ? null : WorkflowExpression.Compile(bodyticketTypeId);
+            WorkflowExpression.Validate(__workflow_bodyticketTypeId, nameof(bodyticketTypeId), required: false);
             return new DeferredBodyAction<ADDREGISTRANTResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/platforms/{0}/domains/{1}/organisations/{2}/tickets.json", ExpressionConverter.ConvertWithUrlEncoding(platformId, 1), ExpressionConverter.ConvertWithUrlEncoding(domainId, 1), ExpressionConverter.ConvertWithUrlEncoding(appId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/platforms/{0}/domains/{1}/organisations/{2}/tickets.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_platformId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_domainId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_appId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["map_by_labels"] = Convert.ToString(true);
@@ -40,41 +41,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nunify
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyemail != null)
+                if (__workflow_bodyemail != null)
                 {
-                    body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                    body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
                     bodypropCount++;
                 }
 
-                if (bodyfirstName != null)
+                if (__workflow_bodyfirstName != null)
                 {
-                    body["first_name"] = ExpressionConverter.ConvertO(bodyfirstName);
+                    body["first_name"] = ExpressionConverter.ConvertO(__workflow_bodyfirstName);
                     bodypropCount++;
                 }
 
-                if (bodylastName != null)
+                if (__workflow_bodylastName != null)
                 {
-                    body["last_name"] = ExpressionConverter.ConvertO(bodylastName);
+                    body["last_name"] = ExpressionConverter.ConvertO(__workflow_bodylastName);
                     bodypropCount++;
                 }
 
-                if (bodydesignation != null)
+                if (__workflow_bodydesignation != null)
                 {
-                    body["designation"] = ExpressionConverter.ConvertO(bodydesignation);
+                    body["designation"] = ExpressionConverter.ConvertO(__workflow_bodydesignation);
                     bodypropCount++;
                 }
 
-                if (bodycompany != null)
+                if (__workflow_bodycompany != null)
                 {
-                    body["company"] = ExpressionConverter.ConvertO(bodycompany);
+                    body["company"] = ExpressionConverter.ConvertO(__workflow_bodycompany);
                     bodypropCount++;
                 }
 
-                if (bodyticketTypeId != null)
+                if (__workflow_bodyticketTypeId != null)
                 {
-                    if (bodyticketTypeId != null)
+                    if (__workflow_bodyticketTypeId != null)
                     {
-                        body["ticket_type_id"] = ExpressionConverter.ConvertO(bodyticketTypeId);
+                        body["ticket_type_id"] = ExpressionConverter.ConvertO(__workflow_bodyticketTypeId);
                         bodypropCount++;
                     }
 
@@ -98,22 +99,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nunify
 
     public class NunifyTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildNEWREGISTRATION))]
-        public IWorkflowTrigger NEWREGISTRATION([WorkflowExpression] Func<string> platformId,[WorkflowExpression] Func<string> domainId,[WorkflowExpression] Func<string> appId,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger NEWREGISTRATION(Expression<Func<string>> platformId, Expression<Func<string>> domainId, Expression<Func<string>> appId, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildNEWREGISTRATION(WorkflowExpression<string> platformId,WorkflowExpression<string> domainId,WorkflowExpression<string> appId,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(platformId, nameof(platformId), required: true);
-            WorkflowExpression.Validate(domainId, nameof(domainId), required: true);
-            WorkflowExpression.Validate(appId, nameof(appId), required: true);
+            var __workflow_platformId = platformId == null ? null : WorkflowExpression.Compile(platformId);
+            WorkflowExpression.Validate(__workflow_platformId, nameof(platformId), required: true);
+            var __workflow_domainId = domainId == null ? null : WorkflowExpression.Compile(domainId);
+            WorkflowExpression.Validate(__workflow_domainId, nameof(domainId), required: true);
+            var __workflow_appId = appId == null ? null : WorkflowExpression.Compile(appId);
+            WorkflowExpression.Validate(__workflow_appId, nameof(appId), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/platforms/{0}/domains/{1}/organisations/{2}/hooks/ticket_create.json", ExpressionConverter.ConvertWithUrlEncoding(platformId, 1), ExpressionConverter.ConvertWithUrlEncoding(domainId, 1), ExpressionConverter.ConvertWithUrlEncoding(appId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/platforms/{0}/domains/{1}/organisations/{2}/hooks/ticket_create.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_platformId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_domainId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_appId, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -133,21 +129,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nunify
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildNEWCHECKIN))]
-        public IWorkflowTrigger NEWCHECKIN([WorkflowExpression] Func<string> platformId,[WorkflowExpression] Func<string> domainId,[WorkflowExpression] Func<string> appId,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger NEWCHECKIN(Expression<Func<string>> platformId, Expression<Func<string>> domainId, Expression<Func<string>> appId, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildNEWCHECKIN(WorkflowExpression<string> platformId,WorkflowExpression<string> domainId,WorkflowExpression<string> appId,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(platformId, nameof(platformId), required: true);
-            WorkflowExpression.Validate(domainId, nameof(domainId), required: true);
-            WorkflowExpression.Validate(appId, nameof(appId), required: true);
+            var __workflow_platformId = platformId == null ? null : WorkflowExpression.Compile(platformId);
+            WorkflowExpression.Validate(__workflow_platformId, nameof(platformId), required: true);
+            var __workflow_domainId = domainId == null ? null : WorkflowExpression.Compile(domainId);
+            WorkflowExpression.Validate(__workflow_domainId, nameof(domainId), required: true);
+            var __workflow_appId = appId == null ? null : WorkflowExpression.Compile(appId);
+            WorkflowExpression.Validate(__workflow_appId, nameof(appId), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/platforms/{0}/domains/{1}/organisations/{2}/hooks/checkin.json", ExpressionConverter.ConvertWithUrlEncoding(platformId, 1), ExpressionConverter.ConvertWithUrlEncoding(domainId, 1), ExpressionConverter.ConvertWithUrlEncoding(appId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/platforms/{0}/domains/{1}/organisations/{2}/hooks/checkin.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_platformId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_domainId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_appId, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");

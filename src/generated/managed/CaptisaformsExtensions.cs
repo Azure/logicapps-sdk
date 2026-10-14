@@ -1,57 +1,47 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Captisaforms
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class CaptisaformsActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "captisaforms")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateEntry))]
-        public IBodyWorkflowAction<FormFieldResponse> CreateEntry([WorkflowExpression] Func<string> formID, [WorkflowExpression] Func<object> body = null)
+        public IBodyWorkflowAction<FormFieldResponse> CreateEntry(Expression<Func<string>> formID, Expression<Func<object>> body = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FormFieldResponse> __BuildCreateEntry(WorkflowExpression<string> formID, WorkflowExpression<object> body = null)
-        {
-            WorkflowExpression.Validate(formID, nameof(formID), required: true);
-            WorkflowExpression.Validate(body, nameof(body), required: false);
+            var __workflow_formID = formID == null ? null : WorkflowExpression.Compile(formID);
+            WorkflowExpression.Validate(__workflow_formID, nameof(formID), required: true);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
             return new DeferredBodyAction<FormFieldResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/data/{0}", ExpressionConverter.ConvertWithUrlEncoding(formID, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/data/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_formID, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<FormFieldResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "captisaforms")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateEntry))]
-        public IBodyWorkflowAction<FormFieldResponse> UpdateEntry([WorkflowExpression] Func<string> formID, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<object> body = null)
+        public IBodyWorkflowAction<FormFieldResponse> UpdateEntry(Expression<Func<string>> formID, Expression<Func<string>> id, Expression<Func<object>> body = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FormFieldResponse> __BuildUpdateEntry(WorkflowExpression<string> formID, WorkflowExpression<string> id, WorkflowExpression<object> body = null)
-        {
-            WorkflowExpression.Validate(formID, nameof(formID), required: true);
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(body, nameof(body), required: false);
+            var __workflow_formID = formID == null ? null : WorkflowExpression.Compile(formID);
+            WorkflowExpression.Validate(__workflow_formID, nameof(formID), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
             return new DeferredBodyAction<FormFieldResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/data/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(formID, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/data/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_formID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<FormFieldResponse>(callPayload);
             });
         }
@@ -59,20 +49,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Captisaforms
 
     public class CaptisaformsTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildWebhookCreateTrigger))]
-        public IBodyWorkflowTrigger<WebhookResponse> WebhookCreateTrigger([WorkflowExpression] Func<string> formID,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookResponse> WebhookCreateTrigger(Expression<Func<string>> formID, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<WebhookResponse> __BuildWebhookCreateTrigger(WorkflowExpression<string> formID,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(formID, nameof(formID), required: true);
+            var __workflow_formID = formID == null ? null : WorkflowExpression.Compile(formID);
+            WorkflowExpression.Validate(__workflow_formID, nameof(formID), required: true);
             return new DeferredBodyTrigger<WebhookResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/msflow/forms/{0}/c/subscribe", ExpressionConverter.ConvertWithUrlEncoding(formID, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/msflow/forms/{0}/c/subscribe", ExpressionConverter.ConvertWithUrlEncoding(__workflow_formID, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -88,19 +71,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Captisaforms
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildWebhookUpdateTrigger))]
-        public IBodyWorkflowTrigger<WebhookResponse> WebhookUpdateTrigger([WorkflowExpression] Func<string> formID,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookResponse> WebhookUpdateTrigger(Expression<Func<string>> formID, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<WebhookResponse> __BuildWebhookUpdateTrigger(WorkflowExpression<string> formID,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(formID, nameof(formID), required: true);
+            var __workflow_formID = formID == null ? null : WorkflowExpression.Compile(formID);
+            WorkflowExpression.Validate(__workflow_formID, nameof(formID), required: true);
             return new DeferredBodyTrigger<WebhookResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/msflow/forms/{0}/u/subscribe", ExpressionConverter.ConvertWithUrlEncoding(formID, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/msflow/forms/{0}/u/subscribe", ExpressionConverter.ConvertWithUrlEncoding(__workflow_formID, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

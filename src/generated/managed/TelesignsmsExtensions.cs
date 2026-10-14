@@ -1,31 +1,28 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telesignsms
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class TelesignsmsActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telesignsms")]
-        [WorkflowExpressionFactory(nameof(__BuildSendSMS))]
-        public IBodyWorkflowAction<SendSMSResponse> SendSMS([WorkflowExpression] Func<string> bodyphoneNumber, [WorkflowExpression] Func<string> bodymessageText, [WorkflowExpression] Func<string> bodyexternalId = null, [WorkflowExpression] Func<string> bodymessageType = null, [WorkflowExpression] Func<string> bodysenderId = null)
+        public IBodyWorkflowAction<SendSMSResponse> SendSMS(Expression<Func<string>> bodyphoneNumber, Expression<Func<string>> bodymessageText, Expression<Func<string>> bodyexternalId = null, Expression<Func<string>> bodymessageType = null, Expression<Func<string>> bodysenderId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SendSMSResponse> __BuildSendSMS(WorkflowExpression<string> bodyphoneNumber, WorkflowExpression<string> bodymessageText, WorkflowExpression<string> bodyexternalId = null, WorkflowExpression<string> bodymessageType = null, WorkflowExpression<string> bodysenderId = null)
-        {
-            WorkflowExpression.Validate(bodyphoneNumber, nameof(bodyphoneNumber), required: true);
-            WorkflowExpression.Validate(bodymessageText, nameof(bodymessageText), required: true);
-            WorkflowExpression.Validate(bodyexternalId, nameof(bodyexternalId), required: false);
-            WorkflowExpression.Validate(bodymessageType, nameof(bodymessageType), required: false);
-            WorkflowExpression.Validate(bodysenderId, nameof(bodysenderId), required: false);
+            var __workflow_bodyphoneNumber = bodyphoneNumber == null ? null : WorkflowExpression.Compile(bodyphoneNumber);
+            WorkflowExpression.Validate(__workflow_bodyphoneNumber, nameof(bodyphoneNumber), required: true);
+            var __workflow_bodymessageText = bodymessageText == null ? null : WorkflowExpression.Compile(bodymessageText);
+            WorkflowExpression.Validate(__workflow_bodymessageText, nameof(bodymessageText), required: true);
+            var __workflow_bodyexternalId = bodyexternalId == null ? null : WorkflowExpression.Compile(bodyexternalId);
+            WorkflowExpression.Validate(__workflow_bodyexternalId, nameof(bodyexternalId), required: false);
+            var __workflow_bodymessageType = bodymessageType == null ? null : WorkflowExpression.Compile(bodymessageType);
+            WorkflowExpression.Validate(__workflow_bodymessageType, nameof(bodymessageType), required: false);
+            var __workflow_bodysenderId = bodysenderId == null ? null : WorkflowExpression.Compile(bodysenderId);
+            WorkflowExpression.Validate(__workflow_bodysenderId, nameof(bodysenderId), required: false);
             return new DeferredBodyAction<SendSMSResponse>(() =>
             {
                 var apiCallPath = "/api/SMS";
@@ -34,24 +31,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telesignsms
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["PhoneNumber"] = ExpressionConverter.ConvertO(bodyphoneNumber);
-                if (bodyexternalId != null)
+                body["PhoneNumber"] = ExpressionConverter.ConvertO(__workflow_bodyphoneNumber);
+                if (__workflow_bodyexternalId != null)
                 {
-                    body["ExternalId"] = ExpressionConverter.ConvertO(bodyexternalId);
+                    body["ExternalId"] = ExpressionConverter.ConvertO(__workflow_bodyexternalId);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["MessageText"] = ExpressionConverter.ConvertO(bodymessageText);
-                if (bodymessageType != null)
+                body["MessageText"] = ExpressionConverter.ConvertO(__workflow_bodymessageText);
+                if (__workflow_bodymessageType != null)
                 {
-                    body["MessageType"] = ExpressionConverter.ConvertO(bodymessageType);
+                    body["MessageType"] = ExpressionConverter.ConvertO(__workflow_bodymessageType);
                     bodypropCount++;
                 }
 
-                if (bodysenderId != null)
+                if (__workflow_bodysenderId != null)
                 {
-                    body["SenderId"] = ExpressionConverter.ConvertO(bodysenderId);
+                    body["SenderId"] = ExpressionConverter.ConvertO(__workflow_bodysenderId);
                     bodypropCount++;
                 }
 

@@ -1,95 +1,92 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webexintegrationip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class WebexintegrationipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webexintegrationip")]
-        [WorkflowExpressionFactory(nameof(__BuildReadMeetings))]
-        public IBodyWorkflowAction<ReadMeetingResponse> ReadMeetings([WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<string> password = null, [WorkflowExpression] Func<string> timezone = null)
+        public IBodyWorkflowAction<ReadMeetingResponse> ReadMeetings(Expression<Func<string>> contentType = null, Expression<Func<string>> password = null, Expression<Func<string>> timezone = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ReadMeetingResponse> __BuildReadMeetings(WorkflowExpression<string> contentType = null, WorkflowExpression<string> password = null, WorkflowExpression<string> timezone = null)
-        {
-            WorkflowExpression.Validate(contentType, nameof(contentType), required: false);
-            WorkflowExpression.Validate(password, nameof(password), required: false);
-            WorkflowExpression.Validate(timezone, nameof(timezone), required: false);
+            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
+            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
+            var __workflow_password = password == null ? null : WorkflowExpression.Compile(password);
+            WorkflowExpression.Validate(__workflow_password, nameof(password), required: false);
+            var __workflow_timezone = timezone == null ? null : WorkflowExpression.Compile(timezone);
+            WorkflowExpression.Validate(__workflow_timezone, nameof(timezone), required: false);
             return new DeferredBodyAction<ReadMeetingResponse>(() =>
             {
                 var apiCallPath = "/meetings";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                if (contentType != null)
-                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-                if (password != null)
-                    callPayload.Headers["password"] = ExpressionConverter.Convert(password);
-                if (timezone != null)
-                    callPayload.Headers["timezone"] = ExpressionConverter.Convert(timezone);
+                if (__workflow_contentType != null)
+                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
+                if (__workflow_password != null)
+                    callPayload.Headers["password"] = ExpressionConverter.Convert(__workflow_password);
+                if (__workflow_timezone != null)
+                    callPayload.Headers["timezone"] = ExpressionConverter.Convert(__workflow_timezone);
                 return new ApiConnectionAction<ReadMeetingResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webexintegrationip")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateAMeeting))]
-        public IBodyWorkflowAction<CreateAMeetingResponse> CreateAMeeting([WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodystart, [WorkflowExpression] Func<string> bodyend, [WorkflowExpression] Func<string> bodyagenda = null, [WorkflowExpression] Func<string> bodypassword = null, [WorkflowExpression] Func<string> bodytimezone = null, [WorkflowExpression] Func<bool> bodyenabledAutoRecordMeeting = null, [WorkflowExpression] Func<bool> bodyallowAnyUserToBeCoHost = null)
+        public IBodyWorkflowAction<CreateAMeetingResponse> CreateAMeeting(Expression<Func<string>> contentType, Expression<Func<string>> bodytitle, Expression<Func<string>> bodystart, Expression<Func<string>> bodyend, Expression<Func<string>> bodyagenda = null, Expression<Func<string>> bodypassword = null, Expression<Func<string>> bodytimezone = null, Expression<Func<bool>> bodyenabledAutoRecordMeeting = null, Expression<Func<bool>> bodyallowAnyUserToBeCoHost = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateAMeetingResponse> __BuildCreateAMeeting(WorkflowExpression<string> contentType, WorkflowExpression<string> bodytitle, WorkflowExpression<string> bodystart, WorkflowExpression<string> bodyend, WorkflowExpression<string> bodyagenda = null, WorkflowExpression<string> bodypassword = null, WorkflowExpression<string> bodytimezone = null, WorkflowExpression<bool> bodyenabledAutoRecordMeeting = null, WorkflowExpression<bool> bodyallowAnyUserToBeCoHost = null)
-        {
-            WorkflowExpression.Validate(contentType, nameof(contentType), required: true);
-            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            WorkflowExpression.Validate(bodystart, nameof(bodystart), required: true);
-            WorkflowExpression.Validate(bodyend, nameof(bodyend), required: true);
-            WorkflowExpression.Validate(bodyagenda, nameof(bodyagenda), required: false);
-            WorkflowExpression.Validate(bodypassword, nameof(bodypassword), required: false);
-            WorkflowExpression.Validate(bodytimezone, nameof(bodytimezone), required: false);
-            WorkflowExpression.Validate(bodyenabledAutoRecordMeeting, nameof(bodyenabledAutoRecordMeeting), required: false);
-            WorkflowExpression.Validate(bodyallowAnyUserToBeCoHost, nameof(bodyallowAnyUserToBeCoHost), required: false);
+            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
+            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: true);
+            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
+            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodystart = bodystart == null ? null : WorkflowExpression.Compile(bodystart);
+            WorkflowExpression.Validate(__workflow_bodystart, nameof(bodystart), required: true);
+            var __workflow_bodyend = bodyend == null ? null : WorkflowExpression.Compile(bodyend);
+            WorkflowExpression.Validate(__workflow_bodyend, nameof(bodyend), required: true);
+            var __workflow_bodyagenda = bodyagenda == null ? null : WorkflowExpression.Compile(bodyagenda);
+            WorkflowExpression.Validate(__workflow_bodyagenda, nameof(bodyagenda), required: false);
+            var __workflow_bodypassword = bodypassword == null ? null : WorkflowExpression.Compile(bodypassword);
+            WorkflowExpression.Validate(__workflow_bodypassword, nameof(bodypassword), required: false);
+            var __workflow_bodytimezone = bodytimezone == null ? null : WorkflowExpression.Compile(bodytimezone);
+            WorkflowExpression.Validate(__workflow_bodytimezone, nameof(bodytimezone), required: false);
+            var __workflow_bodyenabledAutoRecordMeeting = bodyenabledAutoRecordMeeting == null ? null : WorkflowExpression.Compile(bodyenabledAutoRecordMeeting);
+            WorkflowExpression.Validate(__workflow_bodyenabledAutoRecordMeeting, nameof(bodyenabledAutoRecordMeeting), required: false);
+            var __workflow_bodyallowAnyUserToBeCoHost = bodyallowAnyUserToBeCoHost == null ? null : WorkflowExpression.Compile(bodyallowAnyUserToBeCoHost);
+            WorkflowExpression.Validate(__workflow_bodyallowAnyUserToBeCoHost, nameof(bodyallowAnyUserToBeCoHost), required: false);
             return new DeferredBodyAction<CreateAMeetingResponse>(() =>
             {
                 var apiCallPath = "/meetings";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
-                if (bodyagenda != null)
+                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
+                if (__workflow_bodyagenda != null)
                 {
-                    body["agenda"] = ExpressionConverter.ConvertO(bodyagenda);
+                    body["agenda"] = ExpressionConverter.ConvertO(__workflow_bodyagenda);
                     bodypropCount++;
                 }
 
-                if (bodypassword != null)
+                if (__workflow_bodypassword != null)
                 {
-                    body["password"] = ExpressionConverter.ConvertO(bodypassword);
+                    body["password"] = ExpressionConverter.ConvertO(__workflow_bodypassword);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["start"] = ExpressionConverter.ConvertO(bodystart);
+                body["start"] = ExpressionConverter.ConvertO(__workflow_bodystart);
                 bodypropCount++;
-                body["end"] = ExpressionConverter.ConvertO(bodyend);
-                if (bodytimezone != null)
+                body["end"] = ExpressionConverter.ConvertO(__workflow_bodyend);
+                if (__workflow_bodytimezone != null)
                 {
-                    if (bodytimezone != null)
+                    if (__workflow_bodytimezone != null)
                     {
-                        body["timezone"] = ExpressionConverter.ConvertO(bodytimezone);
+                        body["timezone"] = ExpressionConverter.ConvertO(__workflow_bodytimezone);
                         bodypropCount++;
                     }
 
@@ -101,11 +98,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webexintegrationip
                     bodypropCount++;
                 }
 
-                if (bodyenabledAutoRecordMeeting != null)
+                if (__workflow_bodyenabledAutoRecordMeeting != null)
                 {
-                    if (bodyenabledAutoRecordMeeting != null)
+                    if (__workflow_bodyenabledAutoRecordMeeting != null)
                     {
-                        body["enabledAutoRecordMeeting"] = ExpressionConverter.ConvertO(bodyenabledAutoRecordMeeting);
+                        body["enabledAutoRecordMeeting"] = ExpressionConverter.ConvertO(__workflow_bodyenabledAutoRecordMeeting);
                         bodypropCount++;
                     }
 
@@ -117,11 +114,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webexintegrationip
                     bodypropCount++;
                 }
 
-                if (bodyallowAnyUserToBeCoHost != null)
+                if (__workflow_bodyallowAnyUserToBeCoHost != null)
                 {
-                    if (bodyallowAnyUserToBeCoHost != null)
+                    if (__workflow_bodyallowAnyUserToBeCoHost != null)
                     {
-                        body["allowAnyUserToBeCoHost"] = ExpressionConverter.ConvertO(bodyallowAnyUserToBeCoHost);
+                        body["allowAnyUserToBeCoHost"] = ExpressionConverter.ConvertO(__workflow_bodyallowAnyUserToBeCoHost);
                         bodypropCount++;
                     }
 
@@ -143,64 +140,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webexintegrationip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webexintegrationip")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateAInvitee))]
-        public IWorkflowAction CreateAInvitee([WorkflowExpression] Func<string> bodymeetingId, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<string> bodydisplayName = null, [WorkflowExpression] Func<string> bodycoHost = null, [WorkflowExpression] Func<string> bodyhostEmail = null, [WorkflowExpression] Func<string> bodysendEmail = null, [WorkflowExpression] Func<string> bodypanelist = null)
+        public IWorkflowAction CreateAInvitee(Expression<Func<string>> bodymeetingId, Expression<Func<string>> bodyemail, Expression<Func<string>> contentType = null, Expression<Func<string>> bodydisplayName = null, Expression<Func<string>> bodycoHost = null, Expression<Func<string>> bodyhostEmail = null, Expression<Func<string>> bodysendEmail = null, Expression<Func<string>> bodypanelist = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildCreateAInvitee(WorkflowExpression<string> bodymeetingId, WorkflowExpression<string> bodyemail, WorkflowExpression<string> contentType = null, WorkflowExpression<string> bodydisplayName = null, WorkflowExpression<string> bodycoHost = null, WorkflowExpression<string> bodyhostEmail = null, WorkflowExpression<string> bodysendEmail = null, WorkflowExpression<string> bodypanelist = null)
-        {
-            WorkflowExpression.Validate(bodymeetingId, nameof(bodymeetingId), required: true);
-            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: true);
-            WorkflowExpression.Validate(contentType, nameof(contentType), required: false);
-            WorkflowExpression.Validate(bodydisplayName, nameof(bodydisplayName), required: false);
-            WorkflowExpression.Validate(bodycoHost, nameof(bodycoHost), required: false);
-            WorkflowExpression.Validate(bodyhostEmail, nameof(bodyhostEmail), required: false);
-            WorkflowExpression.Validate(bodysendEmail, nameof(bodysendEmail), required: false);
-            WorkflowExpression.Validate(bodypanelist, nameof(bodypanelist), required: false);
+            var __workflow_bodymeetingId = bodymeetingId == null ? null : WorkflowExpression.Compile(bodymeetingId);
+            WorkflowExpression.Validate(__workflow_bodymeetingId, nameof(bodymeetingId), required: true);
+            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
+            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
+            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
+            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
+            var __workflow_bodydisplayName = bodydisplayName == null ? null : WorkflowExpression.Compile(bodydisplayName);
+            WorkflowExpression.Validate(__workflow_bodydisplayName, nameof(bodydisplayName), required: false);
+            var __workflow_bodycoHost = bodycoHost == null ? null : WorkflowExpression.Compile(bodycoHost);
+            WorkflowExpression.Validate(__workflow_bodycoHost, nameof(bodycoHost), required: false);
+            var __workflow_bodyhostEmail = bodyhostEmail == null ? null : WorkflowExpression.Compile(bodyhostEmail);
+            WorkflowExpression.Validate(__workflow_bodyhostEmail, nameof(bodyhostEmail), required: false);
+            var __workflow_bodysendEmail = bodysendEmail == null ? null : WorkflowExpression.Compile(bodysendEmail);
+            WorkflowExpression.Validate(__workflow_bodysendEmail, nameof(bodysendEmail), required: false);
+            var __workflow_bodypanelist = bodypanelist == null ? null : WorkflowExpression.Compile(bodypanelist);
+            WorkflowExpression.Validate(__workflow_bodypanelist, nameof(bodypanelist), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/meetingInvitees";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                if (contentType != null)
-                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                if (__workflow_contentType != null)
+                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["meetingId"] = ExpressionConverter.ConvertO(bodymeetingId);
+                body["meetingId"] = ExpressionConverter.ConvertO(__workflow_bodymeetingId);
                 bodypropCount++;
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
-                if (bodydisplayName != null)
+                body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
+                if (__workflow_bodydisplayName != null)
                 {
-                    body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
+                    body["displayName"] = ExpressionConverter.ConvertO(__workflow_bodydisplayName);
                     bodypropCount++;
                 }
 
-                if (bodycoHost != null)
+                if (__workflow_bodycoHost != null)
                 {
-                    body["coHost"] = ExpressionConverter.ConvertO(bodycoHost);
+                    body["coHost"] = ExpressionConverter.ConvertO(__workflow_bodycoHost);
                     bodypropCount++;
                 }
 
-                if (bodyhostEmail != null)
+                if (__workflow_bodyhostEmail != null)
                 {
-                    body["hostEmail"] = ExpressionConverter.ConvertO(bodyhostEmail);
+                    body["hostEmail"] = ExpressionConverter.ConvertO(__workflow_bodyhostEmail);
                     bodypropCount++;
                 }
 
-                if (bodysendEmail != null)
+                if (__workflow_bodysendEmail != null)
                 {
-                    body["sendEmail"] = ExpressionConverter.ConvertO(bodysendEmail);
+                    body["sendEmail"] = ExpressionConverter.ConvertO(__workflow_bodysendEmail);
                     bodypropCount++;
                 }
 
-                if (bodypanelist != null)
+                if (__workflow_bodypanelist != null)
                 {
-                    body["panelist"] = ExpressionConverter.ConvertO(bodypanelist);
+                    body["panelist"] = ExpressionConverter.ConvertO(__workflow_bodypanelist);
                     bodypropCount++;
                 }
 
@@ -214,19 +212,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webexintegrationip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webexintegrationip")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteAMeeting))]
-        public IWorkflowAction DeleteAMeeting([WorkflowExpression] Func<string> meetingId)
+        public IWorkflowAction DeleteAMeeting(Expression<Func<string>> meetingId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDeleteAMeeting(WorkflowExpression<string> meetingId)
-        {
-            WorkflowExpression.Validate(meetingId, nameof(meetingId), required: true);
+            var __workflow_meetingId = meetingId == null ? null : WorkflowExpression.Compile(meetingId);
+            WorkflowExpression.Validate(__workflow_meetingId, nameof(meetingId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/meetings/{0}", ExpressionConverter.ConvertWithUrlEncoding(meetingId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/meetings/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_meetingId, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -234,260 +226,309 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webexintegrationip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webexintegrationip")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateAMeeting))]
-        public IWorkflowAction UpdateAMeeting([WorkflowExpression] Func<string> meetingId, [WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodyagenda = null, [WorkflowExpression] Func<string> bodypassword = null, [WorkflowExpression] Func<string> bodytimezone = null, [WorkflowExpression] Func<string> bodystart = null, [WorkflowExpression] Func<string> bodyend = null, [WorkflowExpression] Func<bool> bodyenabledAutoRecordMeeting = null, [WorkflowExpression] Func<bool> bodyallowAnyUserToBeCoHost = null, [WorkflowExpression] Func<bool> bodyenabledJoinBeforeHost = null, [WorkflowExpression] Func<bool> bodyenableConnectAudioBeforeHost = null, [WorkflowExpression] Func<int> bodyjoinBeforeHostMinutes = null, [WorkflowExpression] Func<bool> bodyexcludePassword = null, [WorkflowExpression] Func<bool> bodypublicMeeting = null, [WorkflowExpression] Func<int> bodyreminderTime = null, [WorkflowExpression] Func<string> bodyunlockedMeetingJoinSecurity = null, [WorkflowExpression] Func<bool> bodyenableAutomaticLock = null, [WorkflowExpression] Func<int> bodyautomaticLockMinutes = null, [WorkflowExpression] Func<bool> bodyallowFirstUserToBeCoHost = null, [WorkflowExpression] Func<bool> bodyallowAuthenticatedDevices = null, [WorkflowExpression] Func<bool> bodysendEmail = null, [WorkflowExpression] Func<string> bodyhostEmail = null, [WorkflowExpression] Func<string> bodysiteUrl = null, [WorkflowExpression] Func<bool> bodymeetingOptionsenabledChat = null, [WorkflowExpression] Func<bool> bodymeetingOptionsenabledVideo = null, [WorkflowExpression] Func<bool> bodymeetingOptionsenabledPolling = null, [WorkflowExpression] Func<bool> bodymeetingOptionsenabledNote = null, [WorkflowExpression] Func<string> bodymeetingOptionsnoteType = null, [WorkflowExpression] Func<bool> bodymeetingOptionsenabledClosedCaptions = null, [WorkflowExpression] Func<bool> bodymeetingOptionsenabledFileTransfer = null, [WorkflowExpression] Func<bool> bodymeetingOptionsenabledUCFRichMedia = null, [WorkflowExpression] Func<bool> bodyattendeePrivilegesenabledShareContent = null, [WorkflowExpression] Func<bool> bodyattendeePrivilegesenabledSaveDocument = null, [WorkflowExpression] Func<bool> bodyattendeePrivilegesenabledPrintDocument = null, [WorkflowExpression] Func<bool> bodyattendeePrivilegesenabledAnnotate = null, [WorkflowExpression] Func<bool> bodyattendeePrivilegesenabledViewParticipantList = null, [WorkflowExpression] Func<bool> bodyattendeePrivilegesenabledViewThumbnails = null, [WorkflowExpression] Func<bool> bodyattendeePrivilegesenabledRemoteControl = null, [WorkflowExpression] Func<bool> bodyattendeePrivilegesenabledViewAnyDocument = null, [WorkflowExpression] Func<bool> bodyattendeePrivilegesenabledViewAnyPage = null, [WorkflowExpression] Func<bool> bodyattendeePrivilegesenabledContactOperatorPrivately = null, [WorkflowExpression] Func<bool> bodyattendeePrivilegesenabledChatHost = null, [WorkflowExpression] Func<bool> bodyattendeePrivilegesenabledChatPresenter = null, [WorkflowExpression] Func<bool> bodyattendeePrivilegesenabledChatOtherParticipants = null, [WorkflowExpression] Func<string[]> bodyintegrationTags = null, [WorkflowExpression] Func<bool> bodyenabledBreakoutSessions = null, [WorkflowExpression] Func<bodytrackingCodesInputItem[]> bodytrackingCodes = null, [WorkflowExpression] Func<string> bodyaudioConnectionOptionsaudioConnectionType = null, [WorkflowExpression] Func<bool> bodyaudioConnectionOptionsenabledTollFreeCallIn = null, [WorkflowExpression] Func<bool> bodyaudioConnectionOptionsenabledGlobalCallIn = null, [WorkflowExpression] Func<bool> bodyaudioConnectionOptionsenabledAudienceCallBack = null, [WorkflowExpression] Func<string> bodyaudioConnectionOptionsentryAndExitTone = null, [WorkflowExpression] Func<bool> bodyaudioConnectionOptionsallowHostToUnmuteParticipants = null, [WorkflowExpression] Func<bool> bodyaudioConnectionOptionsallowAttendeeToUnmuteSelf = null, [WorkflowExpression] Func<bool> bodyaudioConnectionOptionsmuteAttendeeUponEntry = null)
+        public IWorkflowAction UpdateAMeeting(Expression<Func<string>> meetingId, Expression<Func<string>> contentType = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyagenda = null, Expression<Func<string>> bodypassword = null, Expression<Func<string>> bodytimezone = null, Expression<Func<string>> bodystart = null, Expression<Func<string>> bodyend = null, Expression<Func<bool>> bodyenabledAutoRecordMeeting = null, Expression<Func<bool>> bodyallowAnyUserToBeCoHost = null, Expression<Func<bool>> bodyenabledJoinBeforeHost = null, Expression<Func<bool>> bodyenableConnectAudioBeforeHost = null, Expression<Func<int>> bodyjoinBeforeHostMinutes = null, Expression<Func<bool>> bodyexcludePassword = null, Expression<Func<bool>> bodypublicMeeting = null, Expression<Func<int>> bodyreminderTime = null, Expression<Func<string>> bodyunlockedMeetingJoinSecurity = null, Expression<Func<bool>> bodyenableAutomaticLock = null, Expression<Func<int>> bodyautomaticLockMinutes = null, Expression<Func<bool>> bodyallowFirstUserToBeCoHost = null, Expression<Func<bool>> bodyallowAuthenticatedDevices = null, Expression<Func<bool>> bodysendEmail = null, Expression<Func<string>> bodyhostEmail = null, Expression<Func<string>> bodysiteUrl = null, Expression<Func<bool>> bodymeetingOptionsenabledChat = null, Expression<Func<bool>> bodymeetingOptionsenabledVideo = null, Expression<Func<bool>> bodymeetingOptionsenabledPolling = null, Expression<Func<bool>> bodymeetingOptionsenabledNote = null, Expression<Func<string>> bodymeetingOptionsnoteType = null, Expression<Func<bool>> bodymeetingOptionsenabledClosedCaptions = null, Expression<Func<bool>> bodymeetingOptionsenabledFileTransfer = null, Expression<Func<bool>> bodymeetingOptionsenabledUCFRichMedia = null, Expression<Func<bool>> bodyattendeePrivilegesenabledShareContent = null, Expression<Func<bool>> bodyattendeePrivilegesenabledSaveDocument = null, Expression<Func<bool>> bodyattendeePrivilegesenabledPrintDocument = null, Expression<Func<bool>> bodyattendeePrivilegesenabledAnnotate = null, Expression<Func<bool>> bodyattendeePrivilegesenabledViewParticipantList = null, Expression<Func<bool>> bodyattendeePrivilegesenabledViewThumbnails = null, Expression<Func<bool>> bodyattendeePrivilegesenabledRemoteControl = null, Expression<Func<bool>> bodyattendeePrivilegesenabledViewAnyDocument = null, Expression<Func<bool>> bodyattendeePrivilegesenabledViewAnyPage = null, Expression<Func<bool>> bodyattendeePrivilegesenabledContactOperatorPrivately = null, Expression<Func<bool>> bodyattendeePrivilegesenabledChatHost = null, Expression<Func<bool>> bodyattendeePrivilegesenabledChatPresenter = null, Expression<Func<bool>> bodyattendeePrivilegesenabledChatOtherParticipants = null, Expression<Func<string[]>> bodyintegrationTags = null, Expression<Func<bool>> bodyenabledBreakoutSessions = null, Expression<Func<bodytrackingCodesInputItem[]>> bodytrackingCodes = null, Expression<Func<string>> bodyaudioConnectionOptionsaudioConnectionType = null, Expression<Func<bool>> bodyaudioConnectionOptionsenabledTollFreeCallIn = null, Expression<Func<bool>> bodyaudioConnectionOptionsenabledGlobalCallIn = null, Expression<Func<bool>> bodyaudioConnectionOptionsenabledAudienceCallBack = null, Expression<Func<string>> bodyaudioConnectionOptionsentryAndExitTone = null, Expression<Func<bool>> bodyaudioConnectionOptionsallowHostToUnmuteParticipants = null, Expression<Func<bool>> bodyaudioConnectionOptionsallowAttendeeToUnmuteSelf = null, Expression<Func<bool>> bodyaudioConnectionOptionsmuteAttendeeUponEntry = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildUpdateAMeeting(WorkflowExpression<string> meetingId, WorkflowExpression<string> contentType = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodyagenda = null, WorkflowExpression<string> bodypassword = null, WorkflowExpression<string> bodytimezone = null, WorkflowExpression<string> bodystart = null, WorkflowExpression<string> bodyend = null, WorkflowExpression<bool> bodyenabledAutoRecordMeeting = null, WorkflowExpression<bool> bodyallowAnyUserToBeCoHost = null, WorkflowExpression<bool> bodyenabledJoinBeforeHost = null, WorkflowExpression<bool> bodyenableConnectAudioBeforeHost = null, WorkflowExpression<int> bodyjoinBeforeHostMinutes = null, WorkflowExpression<bool> bodyexcludePassword = null, WorkflowExpression<bool> bodypublicMeeting = null, WorkflowExpression<int> bodyreminderTime = null, WorkflowExpression<string> bodyunlockedMeetingJoinSecurity = null, WorkflowExpression<bool> bodyenableAutomaticLock = null, WorkflowExpression<int> bodyautomaticLockMinutes = null, WorkflowExpression<bool> bodyallowFirstUserToBeCoHost = null, WorkflowExpression<bool> bodyallowAuthenticatedDevices = null, WorkflowExpression<bool> bodysendEmail = null, WorkflowExpression<string> bodyhostEmail = null, WorkflowExpression<string> bodysiteUrl = null, WorkflowExpression<bool> bodymeetingOptionsenabledChat = null, WorkflowExpression<bool> bodymeetingOptionsenabledVideo = null, WorkflowExpression<bool> bodymeetingOptionsenabledPolling = null, WorkflowExpression<bool> bodymeetingOptionsenabledNote = null, WorkflowExpression<string> bodymeetingOptionsnoteType = null, WorkflowExpression<bool> bodymeetingOptionsenabledClosedCaptions = null, WorkflowExpression<bool> bodymeetingOptionsenabledFileTransfer = null, WorkflowExpression<bool> bodymeetingOptionsenabledUCFRichMedia = null, WorkflowExpression<bool> bodyattendeePrivilegesenabledShareContent = null, WorkflowExpression<bool> bodyattendeePrivilegesenabledSaveDocument = null, WorkflowExpression<bool> bodyattendeePrivilegesenabledPrintDocument = null, WorkflowExpression<bool> bodyattendeePrivilegesenabledAnnotate = null, WorkflowExpression<bool> bodyattendeePrivilegesenabledViewParticipantList = null, WorkflowExpression<bool> bodyattendeePrivilegesenabledViewThumbnails = null, WorkflowExpression<bool> bodyattendeePrivilegesenabledRemoteControl = null, WorkflowExpression<bool> bodyattendeePrivilegesenabledViewAnyDocument = null, WorkflowExpression<bool> bodyattendeePrivilegesenabledViewAnyPage = null, WorkflowExpression<bool> bodyattendeePrivilegesenabledContactOperatorPrivately = null, WorkflowExpression<bool> bodyattendeePrivilegesenabledChatHost = null, WorkflowExpression<bool> bodyattendeePrivilegesenabledChatPresenter = null, WorkflowExpression<bool> bodyattendeePrivilegesenabledChatOtherParticipants = null, WorkflowExpression<string[]> bodyintegrationTags = null, WorkflowExpression<bool> bodyenabledBreakoutSessions = null, WorkflowExpression<bodytrackingCodesInputItem[]> bodytrackingCodes = null, WorkflowExpression<string> bodyaudioConnectionOptionsaudioConnectionType = null, WorkflowExpression<bool> bodyaudioConnectionOptionsenabledTollFreeCallIn = null, WorkflowExpression<bool> bodyaudioConnectionOptionsenabledGlobalCallIn = null, WorkflowExpression<bool> bodyaudioConnectionOptionsenabledAudienceCallBack = null, WorkflowExpression<string> bodyaudioConnectionOptionsentryAndExitTone = null, WorkflowExpression<bool> bodyaudioConnectionOptionsallowHostToUnmuteParticipants = null, WorkflowExpression<bool> bodyaudioConnectionOptionsallowAttendeeToUnmuteSelf = null, WorkflowExpression<bool> bodyaudioConnectionOptionsmuteAttendeeUponEntry = null)
-        {
-            WorkflowExpression.Validate(meetingId, nameof(meetingId), required: true);
-            WorkflowExpression.Validate(contentType, nameof(contentType), required: false);
-            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            WorkflowExpression.Validate(bodyagenda, nameof(bodyagenda), required: false);
-            WorkflowExpression.Validate(bodypassword, nameof(bodypassword), required: false);
-            WorkflowExpression.Validate(bodytimezone, nameof(bodytimezone), required: false);
-            WorkflowExpression.Validate(bodystart, nameof(bodystart), required: false);
-            WorkflowExpression.Validate(bodyend, nameof(bodyend), required: false);
-            WorkflowExpression.Validate(bodyenabledAutoRecordMeeting, nameof(bodyenabledAutoRecordMeeting), required: false);
-            WorkflowExpression.Validate(bodyallowAnyUserToBeCoHost, nameof(bodyallowAnyUserToBeCoHost), required: false);
-            WorkflowExpression.Validate(bodyenabledJoinBeforeHost, nameof(bodyenabledJoinBeforeHost), required: false);
-            WorkflowExpression.Validate(bodyenableConnectAudioBeforeHost, nameof(bodyenableConnectAudioBeforeHost), required: false);
-            WorkflowExpression.Validate(bodyjoinBeforeHostMinutes, nameof(bodyjoinBeforeHostMinutes), required: false);
-            WorkflowExpression.Validate(bodyexcludePassword, nameof(bodyexcludePassword), required: false);
-            WorkflowExpression.Validate(bodypublicMeeting, nameof(bodypublicMeeting), required: false);
-            WorkflowExpression.Validate(bodyreminderTime, nameof(bodyreminderTime), required: false);
-            WorkflowExpression.Validate(bodyunlockedMeetingJoinSecurity, nameof(bodyunlockedMeetingJoinSecurity), required: false);
-            WorkflowExpression.Validate(bodyenableAutomaticLock, nameof(bodyenableAutomaticLock), required: false);
-            WorkflowExpression.Validate(bodyautomaticLockMinutes, nameof(bodyautomaticLockMinutes), required: false);
-            WorkflowExpression.Validate(bodyallowFirstUserToBeCoHost, nameof(bodyallowFirstUserToBeCoHost), required: false);
-            WorkflowExpression.Validate(bodyallowAuthenticatedDevices, nameof(bodyallowAuthenticatedDevices), required: false);
-            WorkflowExpression.Validate(bodysendEmail, nameof(bodysendEmail), required: false);
-            WorkflowExpression.Validate(bodyhostEmail, nameof(bodyhostEmail), required: false);
-            WorkflowExpression.Validate(bodysiteUrl, nameof(bodysiteUrl), required: false);
-            WorkflowExpression.Validate(bodymeetingOptionsenabledChat, nameof(bodymeetingOptionsenabledChat), required: false);
-            WorkflowExpression.Validate(bodymeetingOptionsenabledVideo, nameof(bodymeetingOptionsenabledVideo), required: false);
-            WorkflowExpression.Validate(bodymeetingOptionsenabledPolling, nameof(bodymeetingOptionsenabledPolling), required: false);
-            WorkflowExpression.Validate(bodymeetingOptionsenabledNote, nameof(bodymeetingOptionsenabledNote), required: false);
-            WorkflowExpression.Validate(bodymeetingOptionsnoteType, nameof(bodymeetingOptionsnoteType), required: false);
-            WorkflowExpression.Validate(bodymeetingOptionsenabledClosedCaptions, nameof(bodymeetingOptionsenabledClosedCaptions), required: false);
-            WorkflowExpression.Validate(bodymeetingOptionsenabledFileTransfer, nameof(bodymeetingOptionsenabledFileTransfer), required: false);
-            WorkflowExpression.Validate(bodymeetingOptionsenabledUCFRichMedia, nameof(bodymeetingOptionsenabledUCFRichMedia), required: false);
-            WorkflowExpression.Validate(bodyattendeePrivilegesenabledShareContent, nameof(bodyattendeePrivilegesenabledShareContent), required: false);
-            WorkflowExpression.Validate(bodyattendeePrivilegesenabledSaveDocument, nameof(bodyattendeePrivilegesenabledSaveDocument), required: false);
-            WorkflowExpression.Validate(bodyattendeePrivilegesenabledPrintDocument, nameof(bodyattendeePrivilegesenabledPrintDocument), required: false);
-            WorkflowExpression.Validate(bodyattendeePrivilegesenabledAnnotate, nameof(bodyattendeePrivilegesenabledAnnotate), required: false);
-            WorkflowExpression.Validate(bodyattendeePrivilegesenabledViewParticipantList, nameof(bodyattendeePrivilegesenabledViewParticipantList), required: false);
-            WorkflowExpression.Validate(bodyattendeePrivilegesenabledViewThumbnails, nameof(bodyattendeePrivilegesenabledViewThumbnails), required: false);
-            WorkflowExpression.Validate(bodyattendeePrivilegesenabledRemoteControl, nameof(bodyattendeePrivilegesenabledRemoteControl), required: false);
-            WorkflowExpression.Validate(bodyattendeePrivilegesenabledViewAnyDocument, nameof(bodyattendeePrivilegesenabledViewAnyDocument), required: false);
-            WorkflowExpression.Validate(bodyattendeePrivilegesenabledViewAnyPage, nameof(bodyattendeePrivilegesenabledViewAnyPage), required: false);
-            WorkflowExpression.Validate(bodyattendeePrivilegesenabledContactOperatorPrivately, nameof(bodyattendeePrivilegesenabledContactOperatorPrivately), required: false);
-            WorkflowExpression.Validate(bodyattendeePrivilegesenabledChatHost, nameof(bodyattendeePrivilegesenabledChatHost), required: false);
-            WorkflowExpression.Validate(bodyattendeePrivilegesenabledChatPresenter, nameof(bodyattendeePrivilegesenabledChatPresenter), required: false);
-            WorkflowExpression.Validate(bodyattendeePrivilegesenabledChatOtherParticipants, nameof(bodyattendeePrivilegesenabledChatOtherParticipants), required: false);
-            WorkflowExpression.Validate(bodyintegrationTags, nameof(bodyintegrationTags), required: false);
-            WorkflowExpression.Validate(bodyenabledBreakoutSessions, nameof(bodyenabledBreakoutSessions), required: false);
-            WorkflowExpression.Validate(bodytrackingCodes, nameof(bodytrackingCodes), required: false);
-            WorkflowExpression.Validate(bodyaudioConnectionOptionsaudioConnectionType, nameof(bodyaudioConnectionOptionsaudioConnectionType), required: false);
-            WorkflowExpression.Validate(bodyaudioConnectionOptionsenabledTollFreeCallIn, nameof(bodyaudioConnectionOptionsenabledTollFreeCallIn), required: false);
-            WorkflowExpression.Validate(bodyaudioConnectionOptionsenabledGlobalCallIn, nameof(bodyaudioConnectionOptionsenabledGlobalCallIn), required: false);
-            WorkflowExpression.Validate(bodyaudioConnectionOptionsenabledAudienceCallBack, nameof(bodyaudioConnectionOptionsenabledAudienceCallBack), required: false);
-            WorkflowExpression.Validate(bodyaudioConnectionOptionsentryAndExitTone, nameof(bodyaudioConnectionOptionsentryAndExitTone), required: false);
-            WorkflowExpression.Validate(bodyaudioConnectionOptionsallowHostToUnmuteParticipants, nameof(bodyaudioConnectionOptionsallowHostToUnmuteParticipants), required: false);
-            WorkflowExpression.Validate(bodyaudioConnectionOptionsallowAttendeeToUnmuteSelf, nameof(bodyaudioConnectionOptionsallowAttendeeToUnmuteSelf), required: false);
-            WorkflowExpression.Validate(bodyaudioConnectionOptionsmuteAttendeeUponEntry, nameof(bodyaudioConnectionOptionsmuteAttendeeUponEntry), required: false);
+            var __workflow_meetingId = meetingId == null ? null : WorkflowExpression.Compile(meetingId);
+            WorkflowExpression.Validate(__workflow_meetingId, nameof(meetingId), required: true);
+            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
+            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
+            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
+            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodyagenda = bodyagenda == null ? null : WorkflowExpression.Compile(bodyagenda);
+            WorkflowExpression.Validate(__workflow_bodyagenda, nameof(bodyagenda), required: false);
+            var __workflow_bodypassword = bodypassword == null ? null : WorkflowExpression.Compile(bodypassword);
+            WorkflowExpression.Validate(__workflow_bodypassword, nameof(bodypassword), required: false);
+            var __workflow_bodytimezone = bodytimezone == null ? null : WorkflowExpression.Compile(bodytimezone);
+            WorkflowExpression.Validate(__workflow_bodytimezone, nameof(bodytimezone), required: false);
+            var __workflow_bodystart = bodystart == null ? null : WorkflowExpression.Compile(bodystart);
+            WorkflowExpression.Validate(__workflow_bodystart, nameof(bodystart), required: false);
+            var __workflow_bodyend = bodyend == null ? null : WorkflowExpression.Compile(bodyend);
+            WorkflowExpression.Validate(__workflow_bodyend, nameof(bodyend), required: false);
+            var __workflow_bodyenabledAutoRecordMeeting = bodyenabledAutoRecordMeeting == null ? null : WorkflowExpression.Compile(bodyenabledAutoRecordMeeting);
+            WorkflowExpression.Validate(__workflow_bodyenabledAutoRecordMeeting, nameof(bodyenabledAutoRecordMeeting), required: false);
+            var __workflow_bodyallowAnyUserToBeCoHost = bodyallowAnyUserToBeCoHost == null ? null : WorkflowExpression.Compile(bodyallowAnyUserToBeCoHost);
+            WorkflowExpression.Validate(__workflow_bodyallowAnyUserToBeCoHost, nameof(bodyallowAnyUserToBeCoHost), required: false);
+            var __workflow_bodyenabledJoinBeforeHost = bodyenabledJoinBeforeHost == null ? null : WorkflowExpression.Compile(bodyenabledJoinBeforeHost);
+            WorkflowExpression.Validate(__workflow_bodyenabledJoinBeforeHost, nameof(bodyenabledJoinBeforeHost), required: false);
+            var __workflow_bodyenableConnectAudioBeforeHost = bodyenableConnectAudioBeforeHost == null ? null : WorkflowExpression.Compile(bodyenableConnectAudioBeforeHost);
+            WorkflowExpression.Validate(__workflow_bodyenableConnectAudioBeforeHost, nameof(bodyenableConnectAudioBeforeHost), required: false);
+            var __workflow_bodyjoinBeforeHostMinutes = bodyjoinBeforeHostMinutes == null ? null : WorkflowExpression.Compile(bodyjoinBeforeHostMinutes);
+            WorkflowExpression.Validate(__workflow_bodyjoinBeforeHostMinutes, nameof(bodyjoinBeforeHostMinutes), required: false);
+            var __workflow_bodyexcludePassword = bodyexcludePassword == null ? null : WorkflowExpression.Compile(bodyexcludePassword);
+            WorkflowExpression.Validate(__workflow_bodyexcludePassword, nameof(bodyexcludePassword), required: false);
+            var __workflow_bodypublicMeeting = bodypublicMeeting == null ? null : WorkflowExpression.Compile(bodypublicMeeting);
+            WorkflowExpression.Validate(__workflow_bodypublicMeeting, nameof(bodypublicMeeting), required: false);
+            var __workflow_bodyreminderTime = bodyreminderTime == null ? null : WorkflowExpression.Compile(bodyreminderTime);
+            WorkflowExpression.Validate(__workflow_bodyreminderTime, nameof(bodyreminderTime), required: false);
+            var __workflow_bodyunlockedMeetingJoinSecurity = bodyunlockedMeetingJoinSecurity == null ? null : WorkflowExpression.Compile(bodyunlockedMeetingJoinSecurity);
+            WorkflowExpression.Validate(__workflow_bodyunlockedMeetingJoinSecurity, nameof(bodyunlockedMeetingJoinSecurity), required: false);
+            var __workflow_bodyenableAutomaticLock = bodyenableAutomaticLock == null ? null : WorkflowExpression.Compile(bodyenableAutomaticLock);
+            WorkflowExpression.Validate(__workflow_bodyenableAutomaticLock, nameof(bodyenableAutomaticLock), required: false);
+            var __workflow_bodyautomaticLockMinutes = bodyautomaticLockMinutes == null ? null : WorkflowExpression.Compile(bodyautomaticLockMinutes);
+            WorkflowExpression.Validate(__workflow_bodyautomaticLockMinutes, nameof(bodyautomaticLockMinutes), required: false);
+            var __workflow_bodyallowFirstUserToBeCoHost = bodyallowFirstUserToBeCoHost == null ? null : WorkflowExpression.Compile(bodyallowFirstUserToBeCoHost);
+            WorkflowExpression.Validate(__workflow_bodyallowFirstUserToBeCoHost, nameof(bodyallowFirstUserToBeCoHost), required: false);
+            var __workflow_bodyallowAuthenticatedDevices = bodyallowAuthenticatedDevices == null ? null : WorkflowExpression.Compile(bodyallowAuthenticatedDevices);
+            WorkflowExpression.Validate(__workflow_bodyallowAuthenticatedDevices, nameof(bodyallowAuthenticatedDevices), required: false);
+            var __workflow_bodysendEmail = bodysendEmail == null ? null : WorkflowExpression.Compile(bodysendEmail);
+            WorkflowExpression.Validate(__workflow_bodysendEmail, nameof(bodysendEmail), required: false);
+            var __workflow_bodyhostEmail = bodyhostEmail == null ? null : WorkflowExpression.Compile(bodyhostEmail);
+            WorkflowExpression.Validate(__workflow_bodyhostEmail, nameof(bodyhostEmail), required: false);
+            var __workflow_bodysiteUrl = bodysiteUrl == null ? null : WorkflowExpression.Compile(bodysiteUrl);
+            WorkflowExpression.Validate(__workflow_bodysiteUrl, nameof(bodysiteUrl), required: false);
+            var __workflow_bodymeetingOptionsenabledChat = bodymeetingOptionsenabledChat == null ? null : WorkflowExpression.Compile(bodymeetingOptionsenabledChat);
+            WorkflowExpression.Validate(__workflow_bodymeetingOptionsenabledChat, nameof(bodymeetingOptionsenabledChat), required: false);
+            var __workflow_bodymeetingOptionsenabledVideo = bodymeetingOptionsenabledVideo == null ? null : WorkflowExpression.Compile(bodymeetingOptionsenabledVideo);
+            WorkflowExpression.Validate(__workflow_bodymeetingOptionsenabledVideo, nameof(bodymeetingOptionsenabledVideo), required: false);
+            var __workflow_bodymeetingOptionsenabledPolling = bodymeetingOptionsenabledPolling == null ? null : WorkflowExpression.Compile(bodymeetingOptionsenabledPolling);
+            WorkflowExpression.Validate(__workflow_bodymeetingOptionsenabledPolling, nameof(bodymeetingOptionsenabledPolling), required: false);
+            var __workflow_bodymeetingOptionsenabledNote = bodymeetingOptionsenabledNote == null ? null : WorkflowExpression.Compile(bodymeetingOptionsenabledNote);
+            WorkflowExpression.Validate(__workflow_bodymeetingOptionsenabledNote, nameof(bodymeetingOptionsenabledNote), required: false);
+            var __workflow_bodymeetingOptionsnoteType = bodymeetingOptionsnoteType == null ? null : WorkflowExpression.Compile(bodymeetingOptionsnoteType);
+            WorkflowExpression.Validate(__workflow_bodymeetingOptionsnoteType, nameof(bodymeetingOptionsnoteType), required: false);
+            var __workflow_bodymeetingOptionsenabledClosedCaptions = bodymeetingOptionsenabledClosedCaptions == null ? null : WorkflowExpression.Compile(bodymeetingOptionsenabledClosedCaptions);
+            WorkflowExpression.Validate(__workflow_bodymeetingOptionsenabledClosedCaptions, nameof(bodymeetingOptionsenabledClosedCaptions), required: false);
+            var __workflow_bodymeetingOptionsenabledFileTransfer = bodymeetingOptionsenabledFileTransfer == null ? null : WorkflowExpression.Compile(bodymeetingOptionsenabledFileTransfer);
+            WorkflowExpression.Validate(__workflow_bodymeetingOptionsenabledFileTransfer, nameof(bodymeetingOptionsenabledFileTransfer), required: false);
+            var __workflow_bodymeetingOptionsenabledUCFRichMedia = bodymeetingOptionsenabledUCFRichMedia == null ? null : WorkflowExpression.Compile(bodymeetingOptionsenabledUCFRichMedia);
+            WorkflowExpression.Validate(__workflow_bodymeetingOptionsenabledUCFRichMedia, nameof(bodymeetingOptionsenabledUCFRichMedia), required: false);
+            var __workflow_bodyattendeePrivilegesenabledShareContent = bodyattendeePrivilegesenabledShareContent == null ? null : WorkflowExpression.Compile(bodyattendeePrivilegesenabledShareContent);
+            WorkflowExpression.Validate(__workflow_bodyattendeePrivilegesenabledShareContent, nameof(bodyattendeePrivilegesenabledShareContent), required: false);
+            var __workflow_bodyattendeePrivilegesenabledSaveDocument = bodyattendeePrivilegesenabledSaveDocument == null ? null : WorkflowExpression.Compile(bodyattendeePrivilegesenabledSaveDocument);
+            WorkflowExpression.Validate(__workflow_bodyattendeePrivilegesenabledSaveDocument, nameof(bodyattendeePrivilegesenabledSaveDocument), required: false);
+            var __workflow_bodyattendeePrivilegesenabledPrintDocument = bodyattendeePrivilegesenabledPrintDocument == null ? null : WorkflowExpression.Compile(bodyattendeePrivilegesenabledPrintDocument);
+            WorkflowExpression.Validate(__workflow_bodyattendeePrivilegesenabledPrintDocument, nameof(bodyattendeePrivilegesenabledPrintDocument), required: false);
+            var __workflow_bodyattendeePrivilegesenabledAnnotate = bodyattendeePrivilegesenabledAnnotate == null ? null : WorkflowExpression.Compile(bodyattendeePrivilegesenabledAnnotate);
+            WorkflowExpression.Validate(__workflow_bodyattendeePrivilegesenabledAnnotate, nameof(bodyattendeePrivilegesenabledAnnotate), required: false);
+            var __workflow_bodyattendeePrivilegesenabledViewParticipantList = bodyattendeePrivilegesenabledViewParticipantList == null ? null : WorkflowExpression.Compile(bodyattendeePrivilegesenabledViewParticipantList);
+            WorkflowExpression.Validate(__workflow_bodyattendeePrivilegesenabledViewParticipantList, nameof(bodyattendeePrivilegesenabledViewParticipantList), required: false);
+            var __workflow_bodyattendeePrivilegesenabledViewThumbnails = bodyattendeePrivilegesenabledViewThumbnails == null ? null : WorkflowExpression.Compile(bodyattendeePrivilegesenabledViewThumbnails);
+            WorkflowExpression.Validate(__workflow_bodyattendeePrivilegesenabledViewThumbnails, nameof(bodyattendeePrivilegesenabledViewThumbnails), required: false);
+            var __workflow_bodyattendeePrivilegesenabledRemoteControl = bodyattendeePrivilegesenabledRemoteControl == null ? null : WorkflowExpression.Compile(bodyattendeePrivilegesenabledRemoteControl);
+            WorkflowExpression.Validate(__workflow_bodyattendeePrivilegesenabledRemoteControl, nameof(bodyattendeePrivilegesenabledRemoteControl), required: false);
+            var __workflow_bodyattendeePrivilegesenabledViewAnyDocument = bodyattendeePrivilegesenabledViewAnyDocument == null ? null : WorkflowExpression.Compile(bodyattendeePrivilegesenabledViewAnyDocument);
+            WorkflowExpression.Validate(__workflow_bodyattendeePrivilegesenabledViewAnyDocument, nameof(bodyattendeePrivilegesenabledViewAnyDocument), required: false);
+            var __workflow_bodyattendeePrivilegesenabledViewAnyPage = bodyattendeePrivilegesenabledViewAnyPage == null ? null : WorkflowExpression.Compile(bodyattendeePrivilegesenabledViewAnyPage);
+            WorkflowExpression.Validate(__workflow_bodyattendeePrivilegesenabledViewAnyPage, nameof(bodyattendeePrivilegesenabledViewAnyPage), required: false);
+            var __workflow_bodyattendeePrivilegesenabledContactOperatorPrivately = bodyattendeePrivilegesenabledContactOperatorPrivately == null ? null : WorkflowExpression.Compile(bodyattendeePrivilegesenabledContactOperatorPrivately);
+            WorkflowExpression.Validate(__workflow_bodyattendeePrivilegesenabledContactOperatorPrivately, nameof(bodyattendeePrivilegesenabledContactOperatorPrivately), required: false);
+            var __workflow_bodyattendeePrivilegesenabledChatHost = bodyattendeePrivilegesenabledChatHost == null ? null : WorkflowExpression.Compile(bodyattendeePrivilegesenabledChatHost);
+            WorkflowExpression.Validate(__workflow_bodyattendeePrivilegesenabledChatHost, nameof(bodyattendeePrivilegesenabledChatHost), required: false);
+            var __workflow_bodyattendeePrivilegesenabledChatPresenter = bodyattendeePrivilegesenabledChatPresenter == null ? null : WorkflowExpression.Compile(bodyattendeePrivilegesenabledChatPresenter);
+            WorkflowExpression.Validate(__workflow_bodyattendeePrivilegesenabledChatPresenter, nameof(bodyattendeePrivilegesenabledChatPresenter), required: false);
+            var __workflow_bodyattendeePrivilegesenabledChatOtherParticipants = bodyattendeePrivilegesenabledChatOtherParticipants == null ? null : WorkflowExpression.Compile(bodyattendeePrivilegesenabledChatOtherParticipants);
+            WorkflowExpression.Validate(__workflow_bodyattendeePrivilegesenabledChatOtherParticipants, nameof(bodyattendeePrivilegesenabledChatOtherParticipants), required: false);
+            var __workflow_bodyintegrationTags = bodyintegrationTags == null ? null : WorkflowExpression.Compile(bodyintegrationTags);
+            WorkflowExpression.Validate(__workflow_bodyintegrationTags, nameof(bodyintegrationTags), required: false);
+            var __workflow_bodyenabledBreakoutSessions = bodyenabledBreakoutSessions == null ? null : WorkflowExpression.Compile(bodyenabledBreakoutSessions);
+            WorkflowExpression.Validate(__workflow_bodyenabledBreakoutSessions, nameof(bodyenabledBreakoutSessions), required: false);
+            var __workflow_bodytrackingCodes = bodytrackingCodes == null ? null : WorkflowExpression.Compile(bodytrackingCodes);
+            WorkflowExpression.Validate(__workflow_bodytrackingCodes, nameof(bodytrackingCodes), required: false);
+            var __workflow_bodyaudioConnectionOptionsaudioConnectionType = bodyaudioConnectionOptionsaudioConnectionType == null ? null : WorkflowExpression.Compile(bodyaudioConnectionOptionsaudioConnectionType);
+            WorkflowExpression.Validate(__workflow_bodyaudioConnectionOptionsaudioConnectionType, nameof(bodyaudioConnectionOptionsaudioConnectionType), required: false);
+            var __workflow_bodyaudioConnectionOptionsenabledTollFreeCallIn = bodyaudioConnectionOptionsenabledTollFreeCallIn == null ? null : WorkflowExpression.Compile(bodyaudioConnectionOptionsenabledTollFreeCallIn);
+            WorkflowExpression.Validate(__workflow_bodyaudioConnectionOptionsenabledTollFreeCallIn, nameof(bodyaudioConnectionOptionsenabledTollFreeCallIn), required: false);
+            var __workflow_bodyaudioConnectionOptionsenabledGlobalCallIn = bodyaudioConnectionOptionsenabledGlobalCallIn == null ? null : WorkflowExpression.Compile(bodyaudioConnectionOptionsenabledGlobalCallIn);
+            WorkflowExpression.Validate(__workflow_bodyaudioConnectionOptionsenabledGlobalCallIn, nameof(bodyaudioConnectionOptionsenabledGlobalCallIn), required: false);
+            var __workflow_bodyaudioConnectionOptionsenabledAudienceCallBack = bodyaudioConnectionOptionsenabledAudienceCallBack == null ? null : WorkflowExpression.Compile(bodyaudioConnectionOptionsenabledAudienceCallBack);
+            WorkflowExpression.Validate(__workflow_bodyaudioConnectionOptionsenabledAudienceCallBack, nameof(bodyaudioConnectionOptionsenabledAudienceCallBack), required: false);
+            var __workflow_bodyaudioConnectionOptionsentryAndExitTone = bodyaudioConnectionOptionsentryAndExitTone == null ? null : WorkflowExpression.Compile(bodyaudioConnectionOptionsentryAndExitTone);
+            WorkflowExpression.Validate(__workflow_bodyaudioConnectionOptionsentryAndExitTone, nameof(bodyaudioConnectionOptionsentryAndExitTone), required: false);
+            var __workflow_bodyaudioConnectionOptionsallowHostToUnmuteParticipants = bodyaudioConnectionOptionsallowHostToUnmuteParticipants == null ? null : WorkflowExpression.Compile(bodyaudioConnectionOptionsallowHostToUnmuteParticipants);
+            WorkflowExpression.Validate(__workflow_bodyaudioConnectionOptionsallowHostToUnmuteParticipants, nameof(bodyaudioConnectionOptionsallowHostToUnmuteParticipants), required: false);
+            var __workflow_bodyaudioConnectionOptionsallowAttendeeToUnmuteSelf = bodyaudioConnectionOptionsallowAttendeeToUnmuteSelf == null ? null : WorkflowExpression.Compile(bodyaudioConnectionOptionsallowAttendeeToUnmuteSelf);
+            WorkflowExpression.Validate(__workflow_bodyaudioConnectionOptionsallowAttendeeToUnmuteSelf, nameof(bodyaudioConnectionOptionsallowAttendeeToUnmuteSelf), required: false);
+            var __workflow_bodyaudioConnectionOptionsmuteAttendeeUponEntry = bodyaudioConnectionOptionsmuteAttendeeUponEntry == null ? null : WorkflowExpression.Compile(bodyaudioConnectionOptionsmuteAttendeeUponEntry);
+            WorkflowExpression.Validate(__workflow_bodyaudioConnectionOptionsmuteAttendeeUponEntry, nameof(bodyaudioConnectionOptionsmuteAttendeeUponEntry), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/meetings/{0}", ExpressionConverter.ConvertWithUrlEncoding(meetingId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/meetings/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_meetingId, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                if (contentType != null)
-                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                if (__workflow_contentType != null)
+                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodytitle != null)
+                if (__workflow_bodytitle != null)
                 {
-                    body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
                     bodypropCount++;
                 }
 
-                if (bodyagenda != null)
+                if (__workflow_bodyagenda != null)
                 {
-                    body["agenda"] = ExpressionConverter.ConvertO(bodyagenda);
+                    body["agenda"] = ExpressionConverter.ConvertO(__workflow_bodyagenda);
                     bodypropCount++;
                 }
 
-                if (bodypassword != null)
+                if (__workflow_bodypassword != null)
                 {
-                    body["password"] = ExpressionConverter.ConvertO(bodypassword);
+                    body["password"] = ExpressionConverter.ConvertO(__workflow_bodypassword);
                     bodypropCount++;
                 }
 
-                if (bodytimezone != null)
+                if (__workflow_bodytimezone != null)
                 {
-                    body["timezone"] = ExpressionConverter.ConvertO(bodytimezone);
+                    body["timezone"] = ExpressionConverter.ConvertO(__workflow_bodytimezone);
                     bodypropCount++;
                 }
 
-                if (bodystart != null)
+                if (__workflow_bodystart != null)
                 {
-                    body["start"] = ExpressionConverter.ConvertO(bodystart);
+                    body["start"] = ExpressionConverter.ConvertO(__workflow_bodystart);
                     bodypropCount++;
                 }
 
-                if (bodyend != null)
+                if (__workflow_bodyend != null)
                 {
-                    body["end"] = ExpressionConverter.ConvertO(bodyend);
+                    body["end"] = ExpressionConverter.ConvertO(__workflow_bodyend);
                     bodypropCount++;
                 }
 
-                if (bodyenabledAutoRecordMeeting != null)
+                if (__workflow_bodyenabledAutoRecordMeeting != null)
                 {
-                    body["enabledAutoRecordMeeting"] = ExpressionConverter.ConvertO(bodyenabledAutoRecordMeeting);
+                    body["enabledAutoRecordMeeting"] = ExpressionConverter.ConvertO(__workflow_bodyenabledAutoRecordMeeting);
                     bodypropCount++;
                 }
 
-                if (bodyallowAnyUserToBeCoHost != null)
+                if (__workflow_bodyallowAnyUserToBeCoHost != null)
                 {
-                    body["allowAnyUserToBeCoHost"] = ExpressionConverter.ConvertO(bodyallowAnyUserToBeCoHost);
+                    body["allowAnyUserToBeCoHost"] = ExpressionConverter.ConvertO(__workflow_bodyallowAnyUserToBeCoHost);
                     bodypropCount++;
                 }
 
-                if (bodyenabledJoinBeforeHost != null)
+                if (__workflow_bodyenabledJoinBeforeHost != null)
                 {
-                    body["enabledJoinBeforeHost"] = ExpressionConverter.ConvertO(bodyenabledJoinBeforeHost);
+                    body["enabledJoinBeforeHost"] = ExpressionConverter.ConvertO(__workflow_bodyenabledJoinBeforeHost);
                     bodypropCount++;
                 }
 
-                if (bodyenableConnectAudioBeforeHost != null)
+                if (__workflow_bodyenableConnectAudioBeforeHost != null)
                 {
-                    body["enableConnectAudioBeforeHost"] = ExpressionConverter.ConvertO(bodyenableConnectAudioBeforeHost);
+                    body["enableConnectAudioBeforeHost"] = ExpressionConverter.ConvertO(__workflow_bodyenableConnectAudioBeforeHost);
                     bodypropCount++;
                 }
 
-                if (bodyjoinBeforeHostMinutes != null)
+                if (__workflow_bodyjoinBeforeHostMinutes != null)
                 {
-                    body["joinBeforeHostMinutes"] = ExpressionConverter.ConvertO(bodyjoinBeforeHostMinutes);
+                    body["joinBeforeHostMinutes"] = ExpressionConverter.ConvertO(__workflow_bodyjoinBeforeHostMinutes);
                     bodypropCount++;
                 }
 
-                if (bodyexcludePassword != null)
+                if (__workflow_bodyexcludePassword != null)
                 {
-                    body["excludePassword"] = ExpressionConverter.ConvertO(bodyexcludePassword);
+                    body["excludePassword"] = ExpressionConverter.ConvertO(__workflow_bodyexcludePassword);
                     bodypropCount++;
                 }
 
-                if (bodypublicMeeting != null)
+                if (__workflow_bodypublicMeeting != null)
                 {
-                    body["publicMeeting"] = ExpressionConverter.ConvertO(bodypublicMeeting);
+                    body["publicMeeting"] = ExpressionConverter.ConvertO(__workflow_bodypublicMeeting);
                     bodypropCount++;
                 }
 
-                if (bodyreminderTime != null)
+                if (__workflow_bodyreminderTime != null)
                 {
-                    body["reminderTime"] = ExpressionConverter.ConvertO(bodyreminderTime);
+                    body["reminderTime"] = ExpressionConverter.ConvertO(__workflow_bodyreminderTime);
                     bodypropCount++;
                 }
 
-                if (bodyunlockedMeetingJoinSecurity != null)
+                if (__workflow_bodyunlockedMeetingJoinSecurity != null)
                 {
-                    body["unlockedMeetingJoinSecurity"] = ExpressionConverter.ConvertO(bodyunlockedMeetingJoinSecurity);
+                    body["unlockedMeetingJoinSecurity"] = ExpressionConverter.ConvertO(__workflow_bodyunlockedMeetingJoinSecurity);
                     bodypropCount++;
                 }
 
-                if (bodyenableAutomaticLock != null)
+                if (__workflow_bodyenableAutomaticLock != null)
                 {
-                    body["enableAutomaticLock"] = ExpressionConverter.ConvertO(bodyenableAutomaticLock);
+                    body["enableAutomaticLock"] = ExpressionConverter.ConvertO(__workflow_bodyenableAutomaticLock);
                     bodypropCount++;
                 }
 
-                if (bodyautomaticLockMinutes != null)
+                if (__workflow_bodyautomaticLockMinutes != null)
                 {
-                    body["automaticLockMinutes"] = ExpressionConverter.ConvertO(bodyautomaticLockMinutes);
+                    body["automaticLockMinutes"] = ExpressionConverter.ConvertO(__workflow_bodyautomaticLockMinutes);
                     bodypropCount++;
                 }
 
-                if (bodyallowFirstUserToBeCoHost != null)
+                if (__workflow_bodyallowFirstUserToBeCoHost != null)
                 {
-                    body["allowFirstUserToBeCoHost"] = ExpressionConverter.ConvertO(bodyallowFirstUserToBeCoHost);
+                    body["allowFirstUserToBeCoHost"] = ExpressionConverter.ConvertO(__workflow_bodyallowFirstUserToBeCoHost);
                     bodypropCount++;
                 }
 
-                if (bodyallowAuthenticatedDevices != null)
+                if (__workflow_bodyallowAuthenticatedDevices != null)
                 {
-                    body["allowAuthenticatedDevices"] = ExpressionConverter.ConvertO(bodyallowAuthenticatedDevices);
+                    body["allowAuthenticatedDevices"] = ExpressionConverter.ConvertO(__workflow_bodyallowAuthenticatedDevices);
                     bodypropCount++;
                 }
 
-                if (bodysendEmail != null)
+                if (__workflow_bodysendEmail != null)
                 {
-                    body["sendEmail"] = ExpressionConverter.ConvertO(bodysendEmail);
+                    body["sendEmail"] = ExpressionConverter.ConvertO(__workflow_bodysendEmail);
                     bodypropCount++;
                 }
 
-                if (bodyhostEmail != null)
+                if (__workflow_bodyhostEmail != null)
                 {
-                    body["hostEmail"] = ExpressionConverter.ConvertO(bodyhostEmail);
+                    body["hostEmail"] = ExpressionConverter.ConvertO(__workflow_bodyhostEmail);
                     bodypropCount++;
                 }
 
-                if (bodysiteUrl != null)
+                if (__workflow_bodysiteUrl != null)
                 {
-                    body["siteUrl"] = ExpressionConverter.ConvertO(bodysiteUrl);
+                    body["siteUrl"] = ExpressionConverter.ConvertO(__workflow_bodysiteUrl);
                     bodypropCount++;
                 }
 
                 var meetingOptionsObject = new JObject();
                 var meetingOptionsObjectpropCount = 0;
-                if (bodymeetingOptionsenabledChat != null)
+                if (__workflow_bodymeetingOptionsenabledChat != null)
                 {
-                    meetingOptionsObject["enabledChat"] = ExpressionConverter.ConvertO(bodymeetingOptionsenabledChat);
+                    meetingOptionsObject["enabledChat"] = ExpressionConverter.ConvertO(__workflow_bodymeetingOptionsenabledChat);
                     meetingOptionsObjectpropCount++;
                 }
 
-                if (bodymeetingOptionsenabledVideo != null)
+                if (__workflow_bodymeetingOptionsenabledVideo != null)
                 {
-                    meetingOptionsObject["enabledVideo"] = ExpressionConverter.ConvertO(bodymeetingOptionsenabledVideo);
+                    meetingOptionsObject["enabledVideo"] = ExpressionConverter.ConvertO(__workflow_bodymeetingOptionsenabledVideo);
                     meetingOptionsObjectpropCount++;
                 }
 
-                if (bodymeetingOptionsenabledPolling != null)
+                if (__workflow_bodymeetingOptionsenabledPolling != null)
                 {
-                    meetingOptionsObject["enabledPolling"] = ExpressionConverter.ConvertO(bodymeetingOptionsenabledPolling);
+                    meetingOptionsObject["enabledPolling"] = ExpressionConverter.ConvertO(__workflow_bodymeetingOptionsenabledPolling);
                     meetingOptionsObjectpropCount++;
                 }
 
-                if (bodymeetingOptionsenabledNote != null)
+                if (__workflow_bodymeetingOptionsenabledNote != null)
                 {
-                    meetingOptionsObject["enabledNote"] = ExpressionConverter.ConvertO(bodymeetingOptionsenabledNote);
+                    meetingOptionsObject["enabledNote"] = ExpressionConverter.ConvertO(__workflow_bodymeetingOptionsenabledNote);
                     meetingOptionsObjectpropCount++;
                 }
 
-                if (bodymeetingOptionsnoteType != null)
+                if (__workflow_bodymeetingOptionsnoteType != null)
                 {
-                    meetingOptionsObject["noteType"] = ExpressionConverter.ConvertO(bodymeetingOptionsnoteType);
+                    meetingOptionsObject["noteType"] = ExpressionConverter.ConvertO(__workflow_bodymeetingOptionsnoteType);
                     meetingOptionsObjectpropCount++;
                 }
 
-                if (bodymeetingOptionsenabledClosedCaptions != null)
+                if (__workflow_bodymeetingOptionsenabledClosedCaptions != null)
                 {
-                    meetingOptionsObject["enabledClosedCaptions"] = ExpressionConverter.ConvertO(bodymeetingOptionsenabledClosedCaptions);
+                    meetingOptionsObject["enabledClosedCaptions"] = ExpressionConverter.ConvertO(__workflow_bodymeetingOptionsenabledClosedCaptions);
                     meetingOptionsObjectpropCount++;
                 }
 
-                if (bodymeetingOptionsenabledFileTransfer != null)
+                if (__workflow_bodymeetingOptionsenabledFileTransfer != null)
                 {
-                    meetingOptionsObject["enabledFileTransfer"] = ExpressionConverter.ConvertO(bodymeetingOptionsenabledFileTransfer);
+                    meetingOptionsObject["enabledFileTransfer"] = ExpressionConverter.ConvertO(__workflow_bodymeetingOptionsenabledFileTransfer);
                     meetingOptionsObjectpropCount++;
                 }
 
-                if (bodymeetingOptionsenabledUCFRichMedia != null)
+                if (__workflow_bodymeetingOptionsenabledUCFRichMedia != null)
                 {
-                    meetingOptionsObject["enabledUCFRichMedia"] = ExpressionConverter.ConvertO(bodymeetingOptionsenabledUCFRichMedia);
+                    meetingOptionsObject["enabledUCFRichMedia"] = ExpressionConverter.ConvertO(__workflow_bodymeetingOptionsenabledUCFRichMedia);
                     meetingOptionsObjectpropCount++;
                 }
 
@@ -499,81 +540,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webexintegrationip
 
                 var attendeePrivilegesObject = new JObject();
                 var attendeePrivilegesObjectpropCount = 0;
-                if (bodyattendeePrivilegesenabledShareContent != null)
+                if (__workflow_bodyattendeePrivilegesenabledShareContent != null)
                 {
-                    attendeePrivilegesObject["enabledShareContent"] = ExpressionConverter.ConvertO(bodyattendeePrivilegesenabledShareContent);
+                    attendeePrivilegesObject["enabledShareContent"] = ExpressionConverter.ConvertO(__workflow_bodyattendeePrivilegesenabledShareContent);
                     attendeePrivilegesObjectpropCount++;
                 }
 
-                if (bodyattendeePrivilegesenabledSaveDocument != null)
+                if (__workflow_bodyattendeePrivilegesenabledSaveDocument != null)
                 {
-                    attendeePrivilegesObject["enabledSaveDocument"] = ExpressionConverter.ConvertO(bodyattendeePrivilegesenabledSaveDocument);
+                    attendeePrivilegesObject["enabledSaveDocument"] = ExpressionConverter.ConvertO(__workflow_bodyattendeePrivilegesenabledSaveDocument);
                     attendeePrivilegesObjectpropCount++;
                 }
 
-                if (bodyattendeePrivilegesenabledPrintDocument != null)
+                if (__workflow_bodyattendeePrivilegesenabledPrintDocument != null)
                 {
-                    attendeePrivilegesObject["enabledPrintDocument"] = ExpressionConverter.ConvertO(bodyattendeePrivilegesenabledPrintDocument);
+                    attendeePrivilegesObject["enabledPrintDocument"] = ExpressionConverter.ConvertO(__workflow_bodyattendeePrivilegesenabledPrintDocument);
                     attendeePrivilegesObjectpropCount++;
                 }
 
-                if (bodyattendeePrivilegesenabledAnnotate != null)
+                if (__workflow_bodyattendeePrivilegesenabledAnnotate != null)
                 {
-                    attendeePrivilegesObject["enabledAnnotate"] = ExpressionConverter.ConvertO(bodyattendeePrivilegesenabledAnnotate);
+                    attendeePrivilegesObject["enabledAnnotate"] = ExpressionConverter.ConvertO(__workflow_bodyattendeePrivilegesenabledAnnotate);
                     attendeePrivilegesObjectpropCount++;
                 }
 
-                if (bodyattendeePrivilegesenabledViewParticipantList != null)
+                if (__workflow_bodyattendeePrivilegesenabledViewParticipantList != null)
                 {
-                    attendeePrivilegesObject["enabledViewParticipantList"] = ExpressionConverter.ConvertO(bodyattendeePrivilegesenabledViewParticipantList);
+                    attendeePrivilegesObject["enabledViewParticipantList"] = ExpressionConverter.ConvertO(__workflow_bodyattendeePrivilegesenabledViewParticipantList);
                     attendeePrivilegesObjectpropCount++;
                 }
 
-                if (bodyattendeePrivilegesenabledViewThumbnails != null)
+                if (__workflow_bodyattendeePrivilegesenabledViewThumbnails != null)
                 {
-                    attendeePrivilegesObject["enabledViewThumbnails"] = ExpressionConverter.ConvertO(bodyattendeePrivilegesenabledViewThumbnails);
+                    attendeePrivilegesObject["enabledViewThumbnails"] = ExpressionConverter.ConvertO(__workflow_bodyattendeePrivilegesenabledViewThumbnails);
                     attendeePrivilegesObjectpropCount++;
                 }
 
-                if (bodyattendeePrivilegesenabledRemoteControl != null)
+                if (__workflow_bodyattendeePrivilegesenabledRemoteControl != null)
                 {
-                    attendeePrivilegesObject["enabledRemoteControl"] = ExpressionConverter.ConvertO(bodyattendeePrivilegesenabledRemoteControl);
+                    attendeePrivilegesObject["enabledRemoteControl"] = ExpressionConverter.ConvertO(__workflow_bodyattendeePrivilegesenabledRemoteControl);
                     attendeePrivilegesObjectpropCount++;
                 }
 
-                if (bodyattendeePrivilegesenabledViewAnyDocument != null)
+                if (__workflow_bodyattendeePrivilegesenabledViewAnyDocument != null)
                 {
-                    attendeePrivilegesObject["enabledViewAnyDocument"] = ExpressionConverter.ConvertO(bodyattendeePrivilegesenabledViewAnyDocument);
+                    attendeePrivilegesObject["enabledViewAnyDocument"] = ExpressionConverter.ConvertO(__workflow_bodyattendeePrivilegesenabledViewAnyDocument);
                     attendeePrivilegesObjectpropCount++;
                 }
 
-                if (bodyattendeePrivilegesenabledViewAnyPage != null)
+                if (__workflow_bodyattendeePrivilegesenabledViewAnyPage != null)
                 {
-                    attendeePrivilegesObject["enabledViewAnyPage"] = ExpressionConverter.ConvertO(bodyattendeePrivilegesenabledViewAnyPage);
+                    attendeePrivilegesObject["enabledViewAnyPage"] = ExpressionConverter.ConvertO(__workflow_bodyattendeePrivilegesenabledViewAnyPage);
                     attendeePrivilegesObjectpropCount++;
                 }
 
-                if (bodyattendeePrivilegesenabledContactOperatorPrivately != null)
+                if (__workflow_bodyattendeePrivilegesenabledContactOperatorPrivately != null)
                 {
-                    attendeePrivilegesObject["enabledContactOperatorPrivately"] = ExpressionConverter.ConvertO(bodyattendeePrivilegesenabledContactOperatorPrivately);
+                    attendeePrivilegesObject["enabledContactOperatorPrivately"] = ExpressionConverter.ConvertO(__workflow_bodyattendeePrivilegesenabledContactOperatorPrivately);
                     attendeePrivilegesObjectpropCount++;
                 }
 
-                if (bodyattendeePrivilegesenabledChatHost != null)
+                if (__workflow_bodyattendeePrivilegesenabledChatHost != null)
                 {
-                    attendeePrivilegesObject["enabledChatHost"] = ExpressionConverter.ConvertO(bodyattendeePrivilegesenabledChatHost);
+                    attendeePrivilegesObject["enabledChatHost"] = ExpressionConverter.ConvertO(__workflow_bodyattendeePrivilegesenabledChatHost);
                     attendeePrivilegesObjectpropCount++;
                 }
 
-                if (bodyattendeePrivilegesenabledChatPresenter != null)
+                if (__workflow_bodyattendeePrivilegesenabledChatPresenter != null)
                 {
-                    attendeePrivilegesObject["enabledChatPresenter"] = ExpressionConverter.ConvertO(bodyattendeePrivilegesenabledChatPresenter);
+                    attendeePrivilegesObject["enabledChatPresenter"] = ExpressionConverter.ConvertO(__workflow_bodyattendeePrivilegesenabledChatPresenter);
                     attendeePrivilegesObjectpropCount++;
                 }
 
-                if (bodyattendeePrivilegesenabledChatOtherParticipants != null)
+                if (__workflow_bodyattendeePrivilegesenabledChatOtherParticipants != null)
                 {
-                    attendeePrivilegesObject["enabledChatOtherParticipants"] = ExpressionConverter.ConvertO(bodyattendeePrivilegesenabledChatOtherParticipants);
+                    attendeePrivilegesObject["enabledChatOtherParticipants"] = ExpressionConverter.ConvertO(__workflow_bodyattendeePrivilegesenabledChatOtherParticipants);
                     attendeePrivilegesObjectpropCount++;
                 }
 
@@ -583,71 +624,71 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webexintegrationip
                     bodypropCount++;
                 }
 
-                if (bodyintegrationTags != null)
+                if (__workflow_bodyintegrationTags != null)
                 {
-                    body["integrationTags"] = ExpressionConverter.ConvertO(bodyintegrationTags);
+                    body["integrationTags"] = ExpressionConverter.ConvertO(__workflow_bodyintegrationTags);
                     bodypropCount++;
                 }
 
-                if (bodyenabledBreakoutSessions != null)
+                if (__workflow_bodyenabledBreakoutSessions != null)
                 {
-                    body["enabledBreakoutSessions"] = ExpressionConverter.ConvertO(bodyenabledBreakoutSessions);
+                    body["enabledBreakoutSessions"] = ExpressionConverter.ConvertO(__workflow_bodyenabledBreakoutSessions);
                     bodypropCount++;
                 }
 
-                if (bodytrackingCodes != null)
+                if (__workflow_bodytrackingCodes != null)
                 {
-                    body["trackingCodes"] = ExpressionConverter.ConvertO(bodytrackingCodes);
+                    body["trackingCodes"] = ExpressionConverter.ConvertO(__workflow_bodytrackingCodes);
                     bodypropCount++;
                 }
 
                 var audioConnectionOptionsObject = new JObject();
                 var audioConnectionOptionsObjectpropCount = 0;
-                if (bodyaudioConnectionOptionsaudioConnectionType != null)
+                if (__workflow_bodyaudioConnectionOptionsaudioConnectionType != null)
                 {
-                    audioConnectionOptionsObject["audioConnectionType"] = ExpressionConverter.ConvertO(bodyaudioConnectionOptionsaudioConnectionType);
+                    audioConnectionOptionsObject["audioConnectionType"] = ExpressionConverter.ConvertO(__workflow_bodyaudioConnectionOptionsaudioConnectionType);
                     audioConnectionOptionsObjectpropCount++;
                 }
 
-                if (bodyaudioConnectionOptionsenabledTollFreeCallIn != null)
+                if (__workflow_bodyaudioConnectionOptionsenabledTollFreeCallIn != null)
                 {
-                    audioConnectionOptionsObject["enabledTollFreeCallIn"] = ExpressionConverter.ConvertO(bodyaudioConnectionOptionsenabledTollFreeCallIn);
+                    audioConnectionOptionsObject["enabledTollFreeCallIn"] = ExpressionConverter.ConvertO(__workflow_bodyaudioConnectionOptionsenabledTollFreeCallIn);
                     audioConnectionOptionsObjectpropCount++;
                 }
 
-                if (bodyaudioConnectionOptionsenabledGlobalCallIn != null)
+                if (__workflow_bodyaudioConnectionOptionsenabledGlobalCallIn != null)
                 {
-                    audioConnectionOptionsObject["enabledGlobalCallIn"] = ExpressionConverter.ConvertO(bodyaudioConnectionOptionsenabledGlobalCallIn);
+                    audioConnectionOptionsObject["enabledGlobalCallIn"] = ExpressionConverter.ConvertO(__workflow_bodyaudioConnectionOptionsenabledGlobalCallIn);
                     audioConnectionOptionsObjectpropCount++;
                 }
 
-                if (bodyaudioConnectionOptionsenabledAudienceCallBack != null)
+                if (__workflow_bodyaudioConnectionOptionsenabledAudienceCallBack != null)
                 {
-                    audioConnectionOptionsObject["enabledAudienceCallBack"] = ExpressionConverter.ConvertO(bodyaudioConnectionOptionsenabledAudienceCallBack);
+                    audioConnectionOptionsObject["enabledAudienceCallBack"] = ExpressionConverter.ConvertO(__workflow_bodyaudioConnectionOptionsenabledAudienceCallBack);
                     audioConnectionOptionsObjectpropCount++;
                 }
 
-                if (bodyaudioConnectionOptionsentryAndExitTone != null)
+                if (__workflow_bodyaudioConnectionOptionsentryAndExitTone != null)
                 {
-                    audioConnectionOptionsObject["entryAndExitTone"] = ExpressionConverter.ConvertO(bodyaudioConnectionOptionsentryAndExitTone);
+                    audioConnectionOptionsObject["entryAndExitTone"] = ExpressionConverter.ConvertO(__workflow_bodyaudioConnectionOptionsentryAndExitTone);
                     audioConnectionOptionsObjectpropCount++;
                 }
 
-                if (bodyaudioConnectionOptionsallowHostToUnmuteParticipants != null)
+                if (__workflow_bodyaudioConnectionOptionsallowHostToUnmuteParticipants != null)
                 {
-                    audioConnectionOptionsObject["allowHostToUnmuteParticipants"] = ExpressionConverter.ConvertO(bodyaudioConnectionOptionsallowHostToUnmuteParticipants);
+                    audioConnectionOptionsObject["allowHostToUnmuteParticipants"] = ExpressionConverter.ConvertO(__workflow_bodyaudioConnectionOptionsallowHostToUnmuteParticipants);
                     audioConnectionOptionsObjectpropCount++;
                 }
 
-                if (bodyaudioConnectionOptionsallowAttendeeToUnmuteSelf != null)
+                if (__workflow_bodyaudioConnectionOptionsallowAttendeeToUnmuteSelf != null)
                 {
-                    audioConnectionOptionsObject["allowAttendeeToUnmuteSelf"] = ExpressionConverter.ConvertO(bodyaudioConnectionOptionsallowAttendeeToUnmuteSelf);
+                    audioConnectionOptionsObject["allowAttendeeToUnmuteSelf"] = ExpressionConverter.ConvertO(__workflow_bodyaudioConnectionOptionsallowAttendeeToUnmuteSelf);
                     audioConnectionOptionsObjectpropCount++;
                 }
 
-                if (bodyaudioConnectionOptionsmuteAttendeeUponEntry != null)
+                if (__workflow_bodyaudioConnectionOptionsmuteAttendeeUponEntry != null)
                 {
-                    audioConnectionOptionsObject["muteAttendeeUponEntry"] = ExpressionConverter.ConvertO(bodyaudioConnectionOptionsmuteAttendeeUponEntry);
+                    audioConnectionOptionsObject["muteAttendeeUponEntry"] = ExpressionConverter.ConvertO(__workflow_bodyaudioConnectionOptionsmuteAttendeeUponEntry);
                     audioConnectionOptionsObjectpropCount++;
                 }
 

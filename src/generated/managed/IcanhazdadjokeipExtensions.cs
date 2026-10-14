@@ -1,12 +1,12 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icanhazdadjokeip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class IcanhazdadjokeipActions([ConnectionName] string connectionId)
     {
@@ -21,48 +21,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icanhazdadjokeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icanhazdadjokeip")]
-        [WorkflowExpressionFactory(nameof(__BuildSearchForDadJokes))]
-        public IBodyWorkflowAction<SearchForDadJokesResponse> SearchForDadJokes([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> term = null)
+        public IBodyWorkflowAction<SearchForDadJokesResponse> SearchForDadJokes(Expression<Func<int>> page = null, Expression<Func<int>> limit = null, Expression<Func<string>> term = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SearchForDadJokesResponse> __BuildSearchForDadJokes(WorkflowExpression<int> page = null, WorkflowExpression<int> limit = null, WorkflowExpression<string> term = null)
-        {
-            WorkflowExpression.Validate(page, nameof(page), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(term, nameof(term), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_term = term == null ? null : WorkflowExpression.Compile(term);
+            WorkflowExpression.Validate(__workflow_term, nameof(term), required: false);
             return new DeferredBodyAction<SearchForDadJokesResponse>(() =>
             {
                 var apiCallPath = "/search";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (term != null)
-                    callPayload.Queries["term"] = ExpressionConverter.Convert(term);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_term != null)
+                    callPayload.Queries["term"] = ExpressionConverter.Convert(__workflow_term);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<SearchForDadJokesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icanhazdadjokeip")]
-        [WorkflowExpressionFactory(nameof(__BuildFetchaDadJoke))]
-        public IBodyWorkflowAction<FetchaDadJokeResponse> FetchaDadJoke([WorkflowExpression] Func<string> jokeid)
+        public IBodyWorkflowAction<FetchaDadJokeResponse> FetchaDadJoke(Expression<Func<string>> jokeid)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FetchaDadJokeResponse> __BuildFetchaDadJoke(WorkflowExpression<string> jokeid)
-        {
-            WorkflowExpression.Validate(jokeid, nameof(jokeid), required: true);
+            var __workflow_jokeid = jokeid == null ? null : WorkflowExpression.Compile(jokeid);
+            WorkflowExpression.Validate(__workflow_jokeid, nameof(jokeid), required: true);
             return new DeferredBodyAction<FetchaDadJokeResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/j/{0}", ExpressionConverter.ConvertWithUrlEncoding(jokeid, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/j/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_jokeid, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");

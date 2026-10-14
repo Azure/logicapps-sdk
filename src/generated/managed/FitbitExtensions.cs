@@ -1,30 +1,23 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class FitbitActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        [WorkflowExpressionFactory(nameof(__BuildGetSleepGoal))]
-        public IBodyWorkflowAction<GetSleepGoalResponse> GetSleepGoal([WorkflowExpression] Func<string> userId)
+        public IBodyWorkflowAction<GetSleepGoalResponse> GetSleepGoal(Expression<Func<string>> userId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetSleepGoalResponse> __BuildGetSleepGoal(WorkflowExpression<string> userId)
-        {
-            WorkflowExpression.Validate(userId, nameof(userId), required: true);
+            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
+            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
             return new DeferredBodyAction<GetSleepGoalResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1.2/user/{0}/sleep/goal.json", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1.2/user/{0}/sleep/goal.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetSleepGoalResponse>(callPayload);
@@ -32,20 +25,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        [WorkflowExpressionFactory(nameof(__BuildGetSleepLogbyDate))]
-        public IBodyWorkflowAction<GetSleepLogbyDateResponse> GetSleepLogbyDate([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> date)
+        public IBodyWorkflowAction<GetSleepLogbyDateResponse> GetSleepLogbyDate(Expression<Func<string>> userId, Expression<Func<string>> date)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetSleepLogbyDateResponse> __BuildGetSleepLogbyDate(WorkflowExpression<string> userId, WorkflowExpression<string> date)
-        {
-            WorkflowExpression.Validate(userId, nameof(userId), required: true);
-            WorkflowExpression.Validate(date, nameof(date), required: true);
+            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
+            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
+            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
+            WorkflowExpression.Validate(__workflow_date, nameof(date), required: true);
             return new DeferredBodyAction<GetSleepLogbyDateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1.2/user/{0}/sleep/date/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(userId, 1), ExpressionConverter.ConvertWithUrlEncoding(date, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1.2/user/{0}/sleep/date/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_date, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetSleepLogbyDateResponse>(callPayload);
@@ -53,21 +41,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        [WorkflowExpressionFactory(nameof(__BuildGetSleepLogbyDateRange))]
-        public IBodyWorkflowAction<GetSleepLogbyDateRangeResponse> GetSleepLogbyDateRange([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate)
+        public IBodyWorkflowAction<GetSleepLogbyDateRangeResponse> GetSleepLogbyDateRange(Expression<Func<string>> userId, Expression<Func<string>> startDate, Expression<Func<string>> endDate)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetSleepLogbyDateRangeResponse> __BuildGetSleepLogbyDateRange(WorkflowExpression<string> userId, WorkflowExpression<string> startDate, WorkflowExpression<string> endDate)
-        {
-            WorkflowExpression.Validate(userId, nameof(userId), required: true);
-            WorkflowExpression.Validate(startDate, nameof(startDate), required: true);
-            WorkflowExpression.Validate(endDate, nameof(endDate), required: true);
+            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
+            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
+            var __workflow_startDate = startDate == null ? null : WorkflowExpression.Compile(startDate);
+            WorkflowExpression.Validate(__workflow_startDate, nameof(startDate), required: true);
+            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
+            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: true);
             return new DeferredBodyAction<GetSleepLogbyDateRangeResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1.2/user/{0}/sleep/date/{1}/{2}.json", ExpressionConverter.ConvertWithUrlEncoding(userId, 1), ExpressionConverter.ConvertWithUrlEncoding(startDate, 1), ExpressionConverter.ConvertWithUrlEncoding(endDate, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1.2/user/{0}/sleep/date/{1}/{2}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_startDate, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_endDate, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetSleepLogbyDateRangeResponse>(callPayload);
@@ -75,54 +59,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        [WorkflowExpressionFactory(nameof(__BuildGetSleepLogList))]
-        public IBodyWorkflowAction<GetSleepLogListResponse> GetSleepLogList([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> afterDate = null, [WorkflowExpression] Func<string> beforeDate = null, [WorkflowExpression] Func<sortInput> sort = null, [WorkflowExpression] Func<int> limit = null)
+        public IBodyWorkflowAction<GetSleepLogListResponse> GetSleepLogList(Expression<Func<string>> userId, Expression<Func<string>> afterDate = null, Expression<Func<string>> beforeDate = null, Expression<Func<sortInput>> sort = null, Expression<Func<int>> limit = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetSleepLogListResponse> __BuildGetSleepLogList(WorkflowExpression<string> userId, WorkflowExpression<string> afterDate = null, WorkflowExpression<string> beforeDate = null, WorkflowExpression<sortInput> sort = null, WorkflowExpression<int> limit = null)
-        {
-            WorkflowExpression.Validate(userId, nameof(userId), required: true);
-            WorkflowExpression.Validate(afterDate, nameof(afterDate), required: false);
-            WorkflowExpression.Validate(beforeDate, nameof(beforeDate), required: false);
-            WorkflowExpression.Validate(sort, nameof(sort), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
+            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
+            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
+            var __workflow_afterDate = afterDate == null ? null : WorkflowExpression.Compile(afterDate);
+            WorkflowExpression.Validate(__workflow_afterDate, nameof(afterDate), required: false);
+            var __workflow_beforeDate = beforeDate == null ? null : WorkflowExpression.Compile(beforeDate);
+            WorkflowExpression.Validate(__workflow_beforeDate, nameof(beforeDate), required: false);
+            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
+            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
             return new DeferredBodyAction<GetSleepLogListResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1.2/user/{0}/sleep/list.json", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1.2/user/{0}/sleep/list.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (afterDate != null)
-                    callPayload.Queries["afterDate"] = ExpressionConverter.Convert(afterDate);
-                if (beforeDate != null)
-                    callPayload.Queries["beforeDate"] = ExpressionConverter.Convert(beforeDate);
-                if (sort != null)
-                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                if (__workflow_afterDate != null)
+                    callPayload.Queries["afterDate"] = ExpressionConverter.Convert(__workflow_afterDate);
+                if (__workflow_beforeDate != null)
+                    callPayload.Queries["beforeDate"] = ExpressionConverter.Convert(__workflow_beforeDate);
+                if (__workflow_sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
                 callPayload.Queries["offset"] = Convert.ToString(0);
                 callPayload.Queries["limit"] = Convert.ToString(100);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction<GetSleepLogListResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        [WorkflowExpressionFactory(nameof(__BuildGetActivityGoals))]
-        public IBodyWorkflowAction<GetActivityGoalsResponse> GetActivityGoals([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<periodInput> period)
+        public IBodyWorkflowAction<GetActivityGoalsResponse> GetActivityGoals(Expression<Func<string>> userId, Expression<Func<periodInput>> period)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetActivityGoalsResponse> __BuildGetActivityGoals(WorkflowExpression<string> userId, WorkflowExpression<periodInput> period)
-        {
-            WorkflowExpression.Validate(userId, nameof(userId), required: true);
-            WorkflowExpression.Validate(period, nameof(period), required: true);
+            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
+            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
+            var __workflow_period = period == null ? null : WorkflowExpression.Compile(period);
+            WorkflowExpression.Validate(__workflow_period, nameof(period), required: true);
             return new DeferredBodyAction<GetActivityGoalsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities/goals/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(userId, 1), ExpressionConverter.ConvertWithUrlEncoding(period, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities/goals/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_period, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetActivityGoalsResponse>(callPayload);
@@ -130,78 +107,67 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        [WorkflowExpressionFactory(nameof(__BuildGetActivityLogList))]
-        public IBodyWorkflowAction<GetActivityLogListResponse> GetActivityLogList([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> afterDate = null, [WorkflowExpression] Func<string> beforeDate = null, [WorkflowExpression] Func<sortInput> sort = null, [WorkflowExpression] Func<int> limit = null)
+        public IBodyWorkflowAction<GetActivityLogListResponse> GetActivityLogList(Expression<Func<string>> userId, Expression<Func<string>> afterDate = null, Expression<Func<string>> beforeDate = null, Expression<Func<sortInput>> sort = null, Expression<Func<int>> limit = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetActivityLogListResponse> __BuildGetActivityLogList(WorkflowExpression<string> userId, WorkflowExpression<string> afterDate = null, WorkflowExpression<string> beforeDate = null, WorkflowExpression<sortInput> sort = null, WorkflowExpression<int> limit = null)
-        {
-            WorkflowExpression.Validate(userId, nameof(userId), required: true);
-            WorkflowExpression.Validate(afterDate, nameof(afterDate), required: false);
-            WorkflowExpression.Validate(beforeDate, nameof(beforeDate), required: false);
-            WorkflowExpression.Validate(sort, nameof(sort), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
+            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
+            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
+            var __workflow_afterDate = afterDate == null ? null : WorkflowExpression.Compile(afterDate);
+            WorkflowExpression.Validate(__workflow_afterDate, nameof(afterDate), required: false);
+            var __workflow_beforeDate = beforeDate == null ? null : WorkflowExpression.Compile(beforeDate);
+            WorkflowExpression.Validate(__workflow_beforeDate, nameof(beforeDate), required: false);
+            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
+            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
             return new DeferredBodyAction<GetActivityLogListResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities/list.json", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities/list.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (afterDate != null)
-                    callPayload.Queries["afterDate"] = ExpressionConverter.Convert(afterDate);
-                if (beforeDate != null)
-                    callPayload.Queries["beforeDate"] = ExpressionConverter.Convert(beforeDate);
-                if (sort != null)
-                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                if (__workflow_afterDate != null)
+                    callPayload.Queries["afterDate"] = ExpressionConverter.Convert(__workflow_afterDate);
+                if (__workflow_beforeDate != null)
+                    callPayload.Queries["beforeDate"] = ExpressionConverter.Convert(__workflow_beforeDate);
+                if (__workflow_sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
                 callPayload.Queries["offset"] = Convert.ToString(0);
                 callPayload.Queries["limit"] = Convert.ToString(100);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction<GetActivityLogListResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        [WorkflowExpressionFactory(nameof(__BuildGetActivityTCX))]
-        public IWorkflowAction GetActivityTCX([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> logId, [WorkflowExpression] Func<bool> includePartialTCX = null)
+        public IWorkflowAction GetActivityTCX(Expression<Func<string>> userId, Expression<Func<string>> logId, Expression<Func<bool>> includePartialTCX = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetActivityTCX(WorkflowExpression<string> userId, WorkflowExpression<string> logId, WorkflowExpression<bool> includePartialTCX = null)
-        {
-            WorkflowExpression.Validate(userId, nameof(userId), required: true);
-            WorkflowExpression.Validate(logId, nameof(logId), required: true);
-            WorkflowExpression.Validate(includePartialTCX, nameof(includePartialTCX), required: false);
+            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
+            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
+            var __workflow_logId = logId == null ? null : WorkflowExpression.Compile(logId);
+            WorkflowExpression.Validate(__workflow_logId, nameof(logId), required: true);
+            var __workflow_includePartialTCX = includePartialTCX == null ? null : WorkflowExpression.Compile(includePartialTCX);
+            WorkflowExpression.Validate(__workflow_includePartialTCX, nameof(includePartialTCX), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities/{1}.tcx", ExpressionConverter.ConvertWithUrlEncoding(userId, 1), ExpressionConverter.ConvertWithUrlEncoding(logId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities/{1}.tcx", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_logId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (includePartialTCX != null)
-                    callPayload.Queries["includePartialTCX"] = ExpressionConverter.Convert(includePartialTCX);
+                if (__workflow_includePartialTCX != null)
+                    callPayload.Queries["includePartialTCX"] = ExpressionConverter.Convert(__workflow_includePartialTCX);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        [WorkflowExpressionFactory(nameof(__BuildGetAcitivityType))]
-        public IBodyWorkflowAction<GetAcitivityTypeResponse> GetAcitivityType([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> activityId)
+        public IBodyWorkflowAction<GetAcitivityTypeResponse> GetAcitivityType(Expression<Func<string>> userId, Expression<Func<string>> activityId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetAcitivityTypeResponse> __BuildGetAcitivityType(WorkflowExpression<string> userId, WorkflowExpression<string> activityId)
-        {
-            WorkflowExpression.Validate(userId, nameof(userId), required: true);
-            WorkflowExpression.Validate(activityId, nameof(activityId), required: true);
+            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
+            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
+            var __workflow_activityId = activityId == null ? null : WorkflowExpression.Compile(activityId);
+            WorkflowExpression.Validate(__workflow_activityId, nameof(activityId), required: true);
             return new DeferredBodyAction<GetAcitivityTypeResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(userId, 1), ExpressionConverter.ConvertWithUrlEncoding(activityId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_activityId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetAcitivityTypeResponse>(callPayload);
@@ -218,20 +184,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        [WorkflowExpressionFactory(nameof(__BuildGetDailyActivitySummary))]
-        public IBodyWorkflowAction<GetDailyActivitySummaryResponse> GetDailyActivitySummary([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> date)
+        public IBodyWorkflowAction<GetDailyActivitySummaryResponse> GetDailyActivitySummary(Expression<Func<string>> userId, Expression<Func<string>> date)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetDailyActivitySummaryResponse> __BuildGetDailyActivitySummary(WorkflowExpression<string> userId, WorkflowExpression<string> date)
-        {
-            WorkflowExpression.Validate(userId, nameof(userId), required: true);
-            WorkflowExpression.Validate(date, nameof(date), required: true);
+            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
+            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
+            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
+            WorkflowExpression.Validate(__workflow_date, nameof(date), required: true);
             return new DeferredBodyAction<GetDailyActivitySummaryResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities/date/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(userId, 1), ExpressionConverter.ConvertWithUrlEncoding(date, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities/date/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_date, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetDailyActivitySummaryResponse>(callPayload);
@@ -239,19 +200,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        [WorkflowExpressionFactory(nameof(__BuildGetFavoriteActivities))]
-        public IBodyWorkflowAction<GetFavoriteActivitiesResponseItem[]> GetFavoriteActivities([WorkflowExpression] Func<string> userId)
+        public IBodyWorkflowAction<GetFavoriteActivitiesResponseItem[]> GetFavoriteActivities(Expression<Func<string>> userId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetFavoriteActivitiesResponseItem[]> __BuildGetFavoriteActivities(WorkflowExpression<string> userId)
-        {
-            WorkflowExpression.Validate(userId, nameof(userId), required: true);
+            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
+            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
             return new DeferredBodyAction<GetFavoriteActivitiesResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities/favorite.json", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities/favorite.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetFavoriteActivitiesResponseItem[]>(callPayload);
@@ -259,19 +214,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        [WorkflowExpressionFactory(nameof(__BuildGetFrequentActivities))]
-        public IBodyWorkflowAction<GetFrequentActivitiesResponseItem[]> GetFrequentActivities([WorkflowExpression] Func<string> userId)
+        public IBodyWorkflowAction<GetFrequentActivitiesResponseItem[]> GetFrequentActivities(Expression<Func<string>> userId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetFrequentActivitiesResponseItem[]> __BuildGetFrequentActivities(WorkflowExpression<string> userId)
-        {
-            WorkflowExpression.Validate(userId, nameof(userId), required: true);
+            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
+            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
             return new DeferredBodyAction<GetFrequentActivitiesResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}activities/frequent.json", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}activities/frequent.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetFrequentActivitiesResponseItem[]>(callPayload);
@@ -279,19 +228,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        [WorkflowExpressionFactory(nameof(__BuildGetLifetimeStats))]
-        public IBodyWorkflowAction<GetLifetimeStatsResponse> GetLifetimeStats([WorkflowExpression] Func<string> userId)
+        public IBodyWorkflowAction<GetLifetimeStatsResponse> GetLifetimeStats(Expression<Func<string>> userId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetLifetimeStatsResponse> __BuildGetLifetimeStats(WorkflowExpression<string> userId)
-        {
-            WorkflowExpression.Validate(userId, nameof(userId), required: true);
+            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
+            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
             return new DeferredBodyAction<GetLifetimeStatsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities.json", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetLifetimeStatsResponse>(callPayload);
@@ -299,19 +242,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        [WorkflowExpressionFactory(nameof(__BuildGetRecentActivityTypes))]
-        public IBodyWorkflowAction<GetRecentActivityTypesResponseItem[]> GetRecentActivityTypes([WorkflowExpression] Func<string> userId)
+        public IBodyWorkflowAction<GetRecentActivityTypesResponseItem[]> GetRecentActivityTypes(Expression<Func<string>> userId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetRecentActivityTypesResponseItem[]> __BuildGetRecentActivityTypes(WorkflowExpression<string> userId)
-        {
-            WorkflowExpression.Validate(userId, nameof(userId), required: true);
+            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
+            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
             return new DeferredBodyAction<GetRecentActivityTypesResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities/recent.json", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities/recent.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetRecentActivityTypesResponseItem[]>(callPayload);
@@ -319,22 +256,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        [WorkflowExpressionFactory(nameof(__BuildGetActivityTimeSeriesbyDate))]
-        public IBodyWorkflowAction<GetActivityTimeSeriesbyDateResponse> GetActivityTimeSeriesbyDate([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<resourceInput> resource, [WorkflowExpression] Func<string> date, [WorkflowExpression] Func<periodInput> period)
+        public IBodyWorkflowAction<GetActivityTimeSeriesbyDateResponse> GetActivityTimeSeriesbyDate(Expression<Func<string>> userId, Expression<Func<resourceInput>> resource, Expression<Func<string>> date, Expression<Func<periodInput>> period)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetActivityTimeSeriesbyDateResponse> __BuildGetActivityTimeSeriesbyDate(WorkflowExpression<string> userId, WorkflowExpression<resourceInput> resource, WorkflowExpression<string> date, WorkflowExpression<periodInput> period)
-        {
-            WorkflowExpression.Validate(userId, nameof(userId), required: true);
-            WorkflowExpression.Validate(resource, nameof(resource), required: true);
-            WorkflowExpression.Validate(date, nameof(date), required: true);
-            WorkflowExpression.Validate(period, nameof(period), required: true);
+            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
+            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
+            var __workflow_resource = resource == null ? null : WorkflowExpression.Compile(resource);
+            WorkflowExpression.Validate(__workflow_resource, nameof(resource), required: true);
+            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
+            WorkflowExpression.Validate(__workflow_date, nameof(date), required: true);
+            var __workflow_period = period == null ? null : WorkflowExpression.Compile(period);
+            WorkflowExpression.Validate(__workflow_period, nameof(period), required: true);
             return new DeferredBodyAction<GetActivityTimeSeriesbyDateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities/{1}/date/{2}/{3}.json", ExpressionConverter.ConvertWithUrlEncoding(userId, 1), ExpressionConverter.ConvertWithUrlEncoding(resource, 1), ExpressionConverter.ConvertWithUrlEncoding(date, 1), ExpressionConverter.ConvertWithUrlEncoding(period, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities/{1}/date/{2}/{3}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resource, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_date, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_period, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetActivityTimeSeriesbyDateResponse>(callPayload);
@@ -342,20 +276,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        [WorkflowExpressionFactory(nameof(__BuildGetBodyGoals))]
-        public IBodyWorkflowAction<GetBodyGoalsResponse> GetBodyGoals([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<goalTypeInput> goalType)
+        public IBodyWorkflowAction<GetBodyGoalsResponse> GetBodyGoals(Expression<Func<string>> userId, Expression<Func<goalTypeInput>> goalType)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetBodyGoalsResponse> __BuildGetBodyGoals(WorkflowExpression<string> userId, WorkflowExpression<goalTypeInput> goalType)
-        {
-            WorkflowExpression.Validate(userId, nameof(userId), required: true);
-            WorkflowExpression.Validate(goalType, nameof(goalType), required: true);
+            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
+            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
+            var __workflow_goalType = goalType == null ? null : WorkflowExpression.Compile(goalType);
+            WorkflowExpression.Validate(__workflow_goalType, nameof(goalType), required: true);
             return new DeferredBodyAction<GetBodyGoalsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/body/log/{1}/goal.json", ExpressionConverter.ConvertWithUrlEncoding(userId, 1), ExpressionConverter.ConvertWithUrlEncoding(goalType, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/body/log/{1}/goal.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_goalType, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetBodyGoalsResponse>(callPayload);
@@ -363,20 +292,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        [WorkflowExpressionFactory(nameof(__BuildGetBodyFattLog))]
-        public IBodyWorkflowAction<GetBodyFattLogResponse> GetBodyFattLog([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> date)
+        public IBodyWorkflowAction<GetBodyFattLogResponse> GetBodyFattLog(Expression<Func<string>> userId, Expression<Func<string>> date)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetBodyFattLogResponse> __BuildGetBodyFattLog(WorkflowExpression<string> userId, WorkflowExpression<string> date)
-        {
-            WorkflowExpression.Validate(userId, nameof(userId), required: true);
-            WorkflowExpression.Validate(date, nameof(date), required: true);
+            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
+            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
+            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
+            WorkflowExpression.Validate(__workflow_date, nameof(date), required: true);
             return new DeferredBodyAction<GetBodyFattLogResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/body/log/fat/date/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(userId, 1), ExpressionConverter.ConvertWithUrlEncoding(date, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/body/log/fat/date/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_date, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetBodyFattLogResponse>(callPayload);
@@ -384,20 +308,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        [WorkflowExpressionFactory(nameof(__BuildGetWeightLog))]
-        public IBodyWorkflowAction<GetWeightLogResponse> GetWeightLog([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> date)
+        public IBodyWorkflowAction<GetWeightLogResponse> GetWeightLog(Expression<Func<string>> userId, Expression<Func<string>> date)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetWeightLogResponse> __BuildGetWeightLog(WorkflowExpression<string> userId, WorkflowExpression<string> date)
-        {
-            WorkflowExpression.Validate(userId, nameof(userId), required: true);
-            WorkflowExpression.Validate(date, nameof(date), required: true);
+            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
+            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
+            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
+            WorkflowExpression.Validate(__workflow_date, nameof(date), required: true);
             return new DeferredBodyAction<GetWeightLogResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/body/log/weight/date/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(userId, 1), ExpressionConverter.ConvertWithUrlEncoding(date, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/body/log/weight/date/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_date, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetWeightLogResponse>(callPayload);
@@ -405,22 +324,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        [WorkflowExpressionFactory(nameof(__BuildGetBodyTimeSeriesbyDate))]
-        public IBodyWorkflowAction<GetBodyTimeSeriesbyDateResponse> GetBodyTimeSeriesbyDate([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<resourceInput> resource, [WorkflowExpression] Func<string> date, [WorkflowExpression] Func<periodInput> period)
+        public IBodyWorkflowAction<GetBodyTimeSeriesbyDateResponse> GetBodyTimeSeriesbyDate(Expression<Func<string>> userId, Expression<Func<resourceInput>> resource, Expression<Func<string>> date, Expression<Func<periodInput>> period)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetBodyTimeSeriesbyDateResponse> __BuildGetBodyTimeSeriesbyDate(WorkflowExpression<string> userId, WorkflowExpression<resourceInput> resource, WorkflowExpression<string> date, WorkflowExpression<periodInput> period)
-        {
-            WorkflowExpression.Validate(userId, nameof(userId), required: true);
-            WorkflowExpression.Validate(resource, nameof(resource), required: true);
-            WorkflowExpression.Validate(date, nameof(date), required: true);
-            WorkflowExpression.Validate(period, nameof(period), required: true);
+            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
+            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
+            var __workflow_resource = resource == null ? null : WorkflowExpression.Compile(resource);
+            WorkflowExpression.Validate(__workflow_resource, nameof(resource), required: true);
+            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
+            WorkflowExpression.Validate(__workflow_date, nameof(date), required: true);
+            var __workflow_period = period == null ? null : WorkflowExpression.Compile(period);
+            WorkflowExpression.Validate(__workflow_period, nameof(period), required: true);
             return new DeferredBodyAction<GetBodyTimeSeriesbyDateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/body/{1}/date/{2}/{3}.json", ExpressionConverter.ConvertWithUrlEncoding(userId, 1), ExpressionConverter.ConvertWithUrlEncoding(resource, 1), ExpressionConverter.ConvertWithUrlEncoding(date, 1), ExpressionConverter.ConvertWithUrlEncoding(period, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/body/{1}/date/{2}/{3}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resource, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_date, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_period, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetBodyTimeSeriesbyDateResponse>(callPayload);
@@ -428,21 +344,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        [WorkflowExpressionFactory(nameof(__BuildGetBodyFatTimerSeriesbyDate))]
-        public IBodyWorkflowAction<GetBodyFatTimerSeriesbyDateResponse> GetBodyFatTimerSeriesbyDate([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> date, [WorkflowExpression] Func<periodInput> period)
+        public IBodyWorkflowAction<GetBodyFatTimerSeriesbyDateResponse> GetBodyFatTimerSeriesbyDate(Expression<Func<string>> userId, Expression<Func<string>> date, Expression<Func<periodInput>> period)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetBodyFatTimerSeriesbyDateResponse> __BuildGetBodyFatTimerSeriesbyDate(WorkflowExpression<string> userId, WorkflowExpression<string> date, WorkflowExpression<periodInput> period)
-        {
-            WorkflowExpression.Validate(userId, nameof(userId), required: true);
-            WorkflowExpression.Validate(date, nameof(date), required: true);
-            WorkflowExpression.Validate(period, nameof(period), required: true);
+            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
+            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
+            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
+            WorkflowExpression.Validate(__workflow_date, nameof(date), required: true);
+            var __workflow_period = period == null ? null : WorkflowExpression.Compile(period);
+            WorkflowExpression.Validate(__workflow_period, nameof(period), required: true);
             return new DeferredBodyAction<GetBodyFatTimerSeriesbyDateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/body/log/fat/date/{1}/{2}.json", ExpressionConverter.ConvertWithUrlEncoding(userId, 1), ExpressionConverter.ConvertWithUrlEncoding(date, 1), ExpressionConverter.ConvertWithUrlEncoding(period, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/body/log/fat/date/{1}/{2}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_date, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_period, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetBodyFatTimerSeriesbyDateResponse>(callPayload);
@@ -450,21 +362,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        [WorkflowExpressionFactory(nameof(__BuildGetWeightTimeSeriesbyDate))]
-        public IBodyWorkflowAction<GetWeightTimeSeriesbyDateResponse> GetWeightTimeSeriesbyDate([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> date, [WorkflowExpression] Func<periodInput> period)
+        public IBodyWorkflowAction<GetWeightTimeSeriesbyDateResponse> GetWeightTimeSeriesbyDate(Expression<Func<string>> userId, Expression<Func<string>> date, Expression<Func<periodInput>> period)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetWeightTimeSeriesbyDateResponse> __BuildGetWeightTimeSeriesbyDate(WorkflowExpression<string> userId, WorkflowExpression<string> date, WorkflowExpression<periodInput> period)
-        {
-            WorkflowExpression.Validate(userId, nameof(userId), required: true);
-            WorkflowExpression.Validate(date, nameof(date), required: true);
-            WorkflowExpression.Validate(period, nameof(period), required: true);
+            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
+            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
+            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
+            WorkflowExpression.Validate(__workflow_date, nameof(date), required: true);
+            var __workflow_period = period == null ? null : WorkflowExpression.Compile(period);
+            WorkflowExpression.Validate(__workflow_period, nameof(period), required: true);
             return new DeferredBodyAction<GetWeightTimeSeriesbyDateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/body/log/weight/date/{1}/{2}.json", ExpressionConverter.ConvertWithUrlEncoding(userId, 1), ExpressionConverter.ConvertWithUrlEncoding(date, 1), ExpressionConverter.ConvertWithUrlEncoding(period, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/body/log/weight/date/{1}/{2}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_date, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_period, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetWeightTimeSeriesbyDateResponse>(callPayload);
@@ -472,20 +380,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        [WorkflowExpressionFactory(nameof(__BuildGetBreathingRateSummarybyDate))]
-        public IBodyWorkflowAction<GetBreathingRateSummarybyDateResponse> GetBreathingRateSummarybyDate([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> date)
+        public IBodyWorkflowAction<GetBreathingRateSummarybyDateResponse> GetBreathingRateSummarybyDate(Expression<Func<string>> userId, Expression<Func<string>> date)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetBreathingRateSummarybyDateResponse> __BuildGetBreathingRateSummarybyDate(WorkflowExpression<string> userId, WorkflowExpression<string> date)
-        {
-            WorkflowExpression.Validate(userId, nameof(userId), required: true);
-            WorkflowExpression.Validate(date, nameof(date), required: true);
+            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
+            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
+            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
+            WorkflowExpression.Validate(__workflow_date, nameof(date), required: true);
             return new DeferredBodyAction<GetBreathingRateSummarybyDateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/br/date/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(userId, 1), ExpressionConverter.ConvertWithUrlEncoding(date, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/br/date/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_date, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetBreathingRateSummarybyDateResponse>(callPayload);
@@ -493,20 +396,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        [WorkflowExpressionFactory(nameof(__BuildGetVO2MaxSummarybyDate))]
-        public IBodyWorkflowAction<GetVO2MaxSummarybyDateResponse> GetVO2MaxSummarybyDate([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> date)
+        public IBodyWorkflowAction<GetVO2MaxSummarybyDateResponse> GetVO2MaxSummarybyDate(Expression<Func<string>> userId, Expression<Func<string>> date)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetVO2MaxSummarybyDateResponse> __BuildGetVO2MaxSummarybyDate(WorkflowExpression<string> userId, WorkflowExpression<string> date)
-        {
-            WorkflowExpression.Validate(userId, nameof(userId), required: true);
-            WorkflowExpression.Validate(date, nameof(date), required: true);
+            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
+            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
+            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
+            WorkflowExpression.Validate(__workflow_date, nameof(date), required: true);
             return new DeferredBodyAction<GetVO2MaxSummarybyDateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/cardioscore/date/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(userId, 1), ExpressionConverter.ConvertWithUrlEncoding(date, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/cardioscore/date/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_date, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetVO2MaxSummarybyDateResponse>(callPayload);
@@ -514,19 +412,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        [WorkflowExpressionFactory(nameof(__BuildGetDevices))]
-        public IBodyWorkflowAction<GetDevicesResponseItem[]> GetDevices([WorkflowExpression] Func<string> userId)
+        public IBodyWorkflowAction<GetDevicesResponseItem[]> GetDevices(Expression<Func<string>> userId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetDevicesResponseItem[]> __BuildGetDevices(WorkflowExpression<string> userId)
-        {
-            WorkflowExpression.Validate(userId, nameof(userId), required: true);
+            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
+            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
             return new DeferredBodyAction<GetDevicesResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/devices.json", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/devices.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetDevicesResponseItem[]>(callPayload);
@@ -534,20 +426,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        [WorkflowExpressionFactory(nameof(__BuildGetAlarms))]
-        public IBodyWorkflowAction<GetAlarmsResponse> GetAlarms([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> trackerId)
+        public IBodyWorkflowAction<GetAlarmsResponse> GetAlarms(Expression<Func<string>> userId, Expression<Func<string>> trackerId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetAlarmsResponse> __BuildGetAlarms(WorkflowExpression<string> userId, WorkflowExpression<string> trackerId)
-        {
-            WorkflowExpression.Validate(userId, nameof(userId), required: true);
-            WorkflowExpression.Validate(trackerId, nameof(trackerId), required: true);
+            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
+            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
+            var __workflow_trackerId = trackerId == null ? null : WorkflowExpression.Compile(trackerId);
+            WorkflowExpression.Validate(__workflow_trackerId, nameof(trackerId), required: true);
             return new DeferredBodyAction<GetAlarmsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/devices/tracker/{1}/alarms.json", ExpressionConverter.ConvertWithUrlEncoding(userId, 1), ExpressionConverter.ConvertWithUrlEncoding(trackerId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/devices/tracker/{1}/alarms.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_trackerId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetAlarmsResponse>(callPayload);
@@ -555,19 +442,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        [WorkflowExpressionFactory(nameof(__BuildGetFriendsLeaderboard))]
-        public IBodyWorkflowAction<GetFriendsLeaderboardResponse> GetFriendsLeaderboard([WorkflowExpression] Func<string> userId)
+        public IBodyWorkflowAction<GetFriendsLeaderboardResponse> GetFriendsLeaderboard(Expression<Func<string>> userId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetFriendsLeaderboardResponse> __BuildGetFriendsLeaderboard(WorkflowExpression<string> userId)
-        {
-            WorkflowExpression.Validate(userId, nameof(userId), required: true);
+            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
+            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
             return new DeferredBodyAction<GetFriendsLeaderboardResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1.1/user/{0}/leaderboard/friends.json", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1.1/user/{0}/leaderboard/friends.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetFriendsLeaderboardResponse>(callPayload);
@@ -575,20 +456,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        [WorkflowExpressionFactory(nameof(__BuildGetHRVSummarybyDate))]
-        public IBodyWorkflowAction<GetHRVSummarybyDateResponse> GetHRVSummarybyDate([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> date)
+        public IBodyWorkflowAction<GetHRVSummarybyDateResponse> GetHRVSummarybyDate(Expression<Func<string>> userId, Expression<Func<string>> date)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetHRVSummarybyDateResponse> __BuildGetHRVSummarybyDate(WorkflowExpression<string> userId, WorkflowExpression<string> date)
-        {
-            WorkflowExpression.Validate(userId, nameof(userId), required: true);
-            WorkflowExpression.Validate(date, nameof(date), required: true);
+            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
+            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
+            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
+            WorkflowExpression.Validate(__workflow_date, nameof(date), required: true);
             return new DeferredBodyAction<GetHRVSummarybyDateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/hrv/date/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(userId, 1), ExpressionConverter.ConvertWithUrlEncoding(date, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/hrv/date/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_date, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetHRVSummarybyDateResponse>(callPayload);
@@ -596,19 +472,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        [WorkflowExpressionFactory(nameof(__BuildGetBadges))]
-        public IBodyWorkflowAction<GetBadgesResponse> GetBadges([WorkflowExpression] Func<string> userId)
+        public IBodyWorkflowAction<GetBadgesResponse> GetBadges(Expression<Func<string>> userId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetBadgesResponse> __BuildGetBadges(WorkflowExpression<string> userId)
-        {
-            WorkflowExpression.Validate(userId, nameof(userId), required: true);
+            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
+            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
             return new DeferredBodyAction<GetBadgesResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/badges.json", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/badges.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetBadgesResponse>(callPayload);
@@ -616,19 +486,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        [WorkflowExpressionFactory(nameof(__BuildGetProfile))]
-        public IBodyWorkflowAction<GetProfileResponse> GetProfile([WorkflowExpression] Func<string> userId)
+        public IBodyWorkflowAction<GetProfileResponse> GetProfile(Expression<Func<string>> userId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetProfileResponse> __BuildGetProfile(WorkflowExpression<string> userId)
-        {
-            WorkflowExpression.Validate(userId, nameof(userId), required: true);
+            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
+            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
             return new DeferredBodyAction<GetProfileResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/profile.json", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/profile.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetProfileResponse>(callPayload);

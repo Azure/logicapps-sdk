@@ -1,12 +1,12 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Worldsacademia
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class WorldsacademiaActions([ConnectionName] string connectionId)
     {
@@ -29,19 +29,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Worldsacademia
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldsacademia")]
-        [WorkflowExpressionFactory(nameof(__BuildGetAListCountriesInAContinent))]
-        public IBodyWorkflowAction<string[]> GetAListCountriesInAContinent([WorkflowExpression] Func<string> continentName)
+        public IBodyWorkflowAction<string[]> GetAListCountriesInAContinent(Expression<Func<string>> continentName)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string[]> __BuildGetAListCountriesInAContinent(WorkflowExpression<string> continentName)
-        {
-            WorkflowExpression.Validate(continentName, nameof(continentName), required: true);
+            var __workflow_continentName = continentName == null ? null : WorkflowExpression.Compile(continentName);
+            WorkflowExpression.Validate(__workflow_continentName, nameof(continentName), required: true);
             return new DeferredBodyAction<string[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/continent/{0}", ExpressionConverter.ConvertWithUrlEncoding(continentName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/continent/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_continentName, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string[]>(callPayload);
@@ -76,19 +70,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Worldsacademia
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldsacademia")]
-        [WorkflowExpressionFactory(nameof(__BuildGetAllUniversitiesInACountryViaCountryName))]
-        public IBodyWorkflowAction<GetAllUniversitiesInACountryViaCountryNameResponseItem[]> GetAllUniversitiesInACountryViaCountryName([WorkflowExpression] Func<string> countryName)
+        public IBodyWorkflowAction<GetAllUniversitiesInACountryViaCountryNameResponseItem[]> GetAllUniversitiesInACountryViaCountryName(Expression<Func<string>> countryName)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetAllUniversitiesInACountryViaCountryNameResponseItem[]> __BuildGetAllUniversitiesInACountryViaCountryName(WorkflowExpression<string> countryName)
-        {
-            WorkflowExpression.Validate(countryName, nameof(countryName), required: true);
+            var __workflow_countryName = countryName == null ? null : WorkflowExpression.Compile(countryName);
+            WorkflowExpression.Validate(__workflow_countryName, nameof(countryName), required: true);
             return new DeferredBodyAction<GetAllUniversitiesInACountryViaCountryNameResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/sch/country/{0}", ExpressionConverter.ConvertWithUrlEncoding(countryName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/sch/country/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_countryName, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetAllUniversitiesInACountryViaCountryNameResponseItem[]>(callPayload);
@@ -96,19 +84,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Worldsacademia
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldsacademia")]
-        [WorkflowExpressionFactory(nameof(__BuildGetAllUniversitiesInACountryViaCountryCode))]
-        public IBodyWorkflowAction<GetAllUniversitiesInACountryViaCountryCodeResponseItem[]> GetAllUniversitiesInACountryViaCountryCode([WorkflowExpression] Func<string> countryCode)
+        public IBodyWorkflowAction<GetAllUniversitiesInACountryViaCountryCodeResponseItem[]> GetAllUniversitiesInACountryViaCountryCode(Expression<Func<string>> countryCode)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetAllUniversitiesInACountryViaCountryCodeResponseItem[]> __BuildGetAllUniversitiesInACountryViaCountryCode(WorkflowExpression<string> countryCode)
-        {
-            WorkflowExpression.Validate(countryCode, nameof(countryCode), required: true);
+            var __workflow_countryCode = countryCode == null ? null : WorkflowExpression.Compile(countryCode);
+            WorkflowExpression.Validate(__workflow_countryCode, nameof(countryCode), required: true);
             return new DeferredBodyAction<GetAllUniversitiesInACountryViaCountryCodeResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/sch/countrycode/{0}", ExpressionConverter.ConvertWithUrlEncoding(countryCode, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/sch/countrycode/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_countryCode, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetAllUniversitiesInACountryViaCountryCodeResponseItem[]>(callPayload);
@@ -116,19 +98,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Worldsacademia
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldsacademia")]
-        [WorkflowExpressionFactory(nameof(__BuildGetAllUniversityDetails))]
-        public IBodyWorkflowAction<GetAllUniversityDetailsResponse> GetAllUniversityDetails([WorkflowExpression] Func<string> universityName)
+        public IBodyWorkflowAction<GetAllUniversityDetailsResponse> GetAllUniversityDetails(Expression<Func<string>> universityName)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetAllUniversityDetailsResponse> __BuildGetAllUniversityDetails(WorkflowExpression<string> universityName)
-        {
-            WorkflowExpression.Validate(universityName, nameof(universityName), required: true);
+            var __workflow_universityName = universityName == null ? null : WorkflowExpression.Compile(universityName);
+            WorkflowExpression.Validate(__workflow_universityName, nameof(universityName), required: true);
             return new DeferredBodyAction<GetAllUniversityDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/sch/university/{0}", ExpressionConverter.ConvertWithUrlEncoding(universityName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/sch/university/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_universityName, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetAllUniversityDetailsResponse>(callPayload);

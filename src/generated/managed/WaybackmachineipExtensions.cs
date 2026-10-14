@@ -1,36 +1,30 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waybackmachineip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class WaybackmachineipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "waybackmachineip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetSnapshot))]
-        public IBodyWorkflowAction<GetSnapshotResponse> GetSnapshot([WorkflowExpression] Func<string> url, [WorkflowExpression] Func<string> timestamp = null)
+        public IBodyWorkflowAction<GetSnapshotResponse> GetSnapshot(Expression<Func<string>> url, Expression<Func<string>> timestamp = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetSnapshotResponse> __BuildGetSnapshot(WorkflowExpression<string> url, WorkflowExpression<string> timestamp = null)
-        {
-            WorkflowExpression.Validate(url, nameof(url), required: true);
-            WorkflowExpression.Validate(timestamp, nameof(timestamp), required: false);
+            var __workflow_url = url == null ? null : WorkflowExpression.Compile(url);
+            WorkflowExpression.Validate(__workflow_url, nameof(url), required: true);
+            var __workflow_timestamp = timestamp == null ? null : WorkflowExpression.Compile(timestamp);
+            WorkflowExpression.Validate(__workflow_timestamp, nameof(timestamp), required: false);
             return new DeferredBodyAction<GetSnapshotResponse>(() =>
             {
                 var apiCallPath = "/wayback/available";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["url"] = ExpressionConverter.Convert(url);
-                if (timestamp != null)
-                    callPayload.Queries["timestamp"] = ExpressionConverter.Convert(timestamp);
+                callPayload.Queries["url"] = ExpressionConverter.Convert(__workflow_url);
+                if (__workflow_timestamp != null)
+                    callPayload.Queries["timestamp"] = ExpressionConverter.Convert(__workflow_timestamp);
                 return new ApiConnectionAction<GetSnapshotResponse>(callPayload);
             });
         }

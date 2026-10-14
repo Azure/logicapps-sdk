@@ -1,12 +1,12 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Metatask
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class MetataskActions([ConnectionName] string connectionId)
     {
@@ -14,17 +14,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Metatask
 
     public class MetataskTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildCreateSubscriptionProcessCompleted))]
-        public IWorkflowTrigger CreateSubscriptionProcessCompleted([WorkflowExpression] Func<string> webhookRequestBodyconditionstemplate = null,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CreateSubscriptionProcessCompleted(Expression<Func<string>> webhookRequestBodyconditionstemplate = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildCreateSubscriptionProcessCompleted(WorkflowExpression<string> webhookRequestBodyconditionstemplate = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(webhookRequestBodyconditionstemplate, nameof(webhookRequestBodyconditionstemplate), required: false);
+            var __workflow_webhookRequestBodyconditionstemplate = webhookRequestBodyconditionstemplate == null ? null : WorkflowExpression.Compile(webhookRequestBodyconditionstemplate);
+            WorkflowExpression.Validate(__workflow_webhookRequestBodyconditionstemplate, nameof(webhookRequestBodyconditionstemplate), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/oauth/subscription/process_completed";
@@ -38,9 +31,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Metatask
                 webhookRequestBodypropCount++;
                 var conditionsObject = new JObject();
                 var conditionsObjectpropCount = 0;
-                if (webhookRequestBodyconditionstemplate != null)
+                if (__workflow_webhookRequestBodyconditionstemplate != null)
                 {
-                    conditionsObject["templateId"] = ExpressionConverter.ConvertO(webhookRequestBodyconditionstemplate);
+                    conditionsObject["templateId"] = ExpressionConverter.ConvertO(__workflow_webhookRequestBodyconditionstemplate);
                     conditionsObjectpropCount++;
                 }
 

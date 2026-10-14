@@ -1,53 +1,44 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class ExperlogixcpqActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixcpq")]
-        [WorkflowExpressionFactory(nameof(__BuildGetConfigurationXml))]
-        public IBodyWorkflowAction<GetConfigurationXmlResponse> GetConfigurationXml([WorkflowExpression] Func<string> type, [WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<GetConfigurationXmlResponse> GetConfigurationXml(Expression<Func<string>> type, Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetConfigurationXmlResponse> __BuildGetConfigurationXml(WorkflowExpression<string> type, WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(type, nameof(type), required: true);
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
+            WorkflowExpression.Validate(__workflow_type, nameof(type), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<GetConfigurationXmlResponse>(() =>
             {
                 var apiCallPath = "/api/ConfigurationXml";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<GetConfigurationXmlResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixcpq")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateConfigurationFromCopy))]
-        public IBodyWorkflowAction<GetConfigurationXmlResponse> CreateConfigurationFromCopy([WorkflowExpression] Func<string> reqtargetId, [WorkflowExpression] Func<string> reqsourceId, [WorkflowExpression] Func<string> reqtype, [WorkflowExpression] Func<int[]> reqlineItemIds = null)
+        public IBodyWorkflowAction<GetConfigurationXmlResponse> CreateConfigurationFromCopy(Expression<Func<string>> reqtargetId, Expression<Func<string>> reqsourceId, Expression<Func<string>> reqtype, Expression<Func<int[]>> reqlineItemIds = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetConfigurationXmlResponse> __BuildCreateConfigurationFromCopy(WorkflowExpression<string> reqtargetId, WorkflowExpression<string> reqsourceId, WorkflowExpression<string> reqtype, WorkflowExpression<int[]> reqlineItemIds = null)
-        {
-            WorkflowExpression.Validate(reqtargetId, nameof(reqtargetId), required: true);
-            WorkflowExpression.Validate(reqsourceId, nameof(reqsourceId), required: true);
-            WorkflowExpression.Validate(reqtype, nameof(reqtype), required: true);
-            WorkflowExpression.Validate(reqlineItemIds, nameof(reqlineItemIds), required: false);
+            var __workflow_reqtargetId = reqtargetId == null ? null : WorkflowExpression.Compile(reqtargetId);
+            WorkflowExpression.Validate(__workflow_reqtargetId, nameof(reqtargetId), required: true);
+            var __workflow_reqsourceId = reqsourceId == null ? null : WorkflowExpression.Compile(reqsourceId);
+            WorkflowExpression.Validate(__workflow_reqsourceId, nameof(reqsourceId), required: true);
+            var __workflow_reqtype = reqtype == null ? null : WorkflowExpression.Compile(reqtype);
+            WorkflowExpression.Validate(__workflow_reqtype, nameof(reqtype), required: true);
+            var __workflow_reqlineItemIds = reqlineItemIds == null ? null : WorkflowExpression.Compile(reqlineItemIds);
+            WorkflowExpression.Validate(__workflow_reqlineItemIds, nameof(reqlineItemIds), required: false);
             return new DeferredBodyAction<GetConfigurationXmlResponse>(() =>
             {
                 var apiCallPath = "/api/CreateConfigurationFromCopy";
@@ -56,14 +47,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
                 var req = new JObject();
                 var reqpropCount = 0;
                 reqpropCount++;
-                req["targetId"] = ExpressionConverter.ConvertO(reqtargetId);
+                req["targetId"] = ExpressionConverter.ConvertO(__workflow_reqtargetId);
                 reqpropCount++;
-                req["sourceId"] = ExpressionConverter.ConvertO(reqsourceId);
+                req["sourceId"] = ExpressionConverter.ConvertO(__workflow_reqsourceId);
                 reqpropCount++;
-                req["type"] = ExpressionConverter.ConvertO(reqtype);
-                if (reqlineItemIds != null)
+                req["type"] = ExpressionConverter.ConvertO(__workflow_reqtype);
+                if (__workflow_reqlineItemIds != null)
                 {
-                    req["lineItemIds"] = ExpressionConverter.ConvertO(reqlineItemIds);
+                    req["lineItemIds"] = ExpressionConverter.ConvertO(__workflow_reqlineItemIds);
                     reqpropCount++;
                 }
 
@@ -77,18 +68,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixcpq")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateConfiguration))]
-        public IBodyWorkflowAction<GetConfigurationXmlResponse> UpdateConfiguration([WorkflowExpression] Func<string> reqid, [WorkflowExpression] Func<string> reqtype, [WorkflowExpression] Func<string> reqconfigurationXml)
+        public IBodyWorkflowAction<GetConfigurationXmlResponse> UpdateConfiguration(Expression<Func<string>> reqid, Expression<Func<string>> reqtype, Expression<Func<string>> reqconfigurationXml)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetConfigurationXmlResponse> __BuildUpdateConfiguration(WorkflowExpression<string> reqid, WorkflowExpression<string> reqtype, WorkflowExpression<string> reqconfigurationXml)
-        {
-            WorkflowExpression.Validate(reqid, nameof(reqid), required: true);
-            WorkflowExpression.Validate(reqtype, nameof(reqtype), required: true);
-            WorkflowExpression.Validate(reqconfigurationXml, nameof(reqconfigurationXml), required: true);
+            var __workflow_reqid = reqid == null ? null : WorkflowExpression.Compile(reqid);
+            WorkflowExpression.Validate(__workflow_reqid, nameof(reqid), required: true);
+            var __workflow_reqtype = reqtype == null ? null : WorkflowExpression.Compile(reqtype);
+            WorkflowExpression.Validate(__workflow_reqtype, nameof(reqtype), required: true);
+            var __workflow_reqconfigurationXml = reqconfigurationXml == null ? null : WorkflowExpression.Compile(reqconfigurationXml);
+            WorkflowExpression.Validate(__workflow_reqconfigurationXml, nameof(reqconfigurationXml), required: true);
             return new DeferredBodyAction<GetConfigurationXmlResponse>(() =>
             {
                 var apiCallPath = "/api/UpdateConfiguration";
@@ -97,11 +84,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
                 var req = new JObject();
                 var reqpropCount = 0;
                 reqpropCount++;
-                req["id"] = ExpressionConverter.ConvertO(reqid);
+                req["id"] = ExpressionConverter.ConvertO(__workflow_reqid);
                 reqpropCount++;
-                req["type"] = ExpressionConverter.ConvertO(reqtype);
+                req["type"] = ExpressionConverter.ConvertO(__workflow_reqtype);
                 reqpropCount++;
-                req["configurationXml"] = ExpressionConverter.ConvertO(reqconfigurationXml);
+                req["configurationXml"] = ExpressionConverter.ConvertO(__workflow_reqconfigurationXml);
                 if (reqpropCount > 0)
                 {
                     callPayload.Body = req;
@@ -112,18 +99,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixcpq")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateConfiguration))]
-        public IBodyWorkflowAction<GetConfigurationXmlResponse> CreateConfiguration([WorkflowExpression] Func<string> reqid, [WorkflowExpression] Func<string> reqtype, [WorkflowExpression] Func<string> reqconfigurationXml)
+        public IBodyWorkflowAction<GetConfigurationXmlResponse> CreateConfiguration(Expression<Func<string>> reqid, Expression<Func<string>> reqtype, Expression<Func<string>> reqconfigurationXml)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetConfigurationXmlResponse> __BuildCreateConfiguration(WorkflowExpression<string> reqid, WorkflowExpression<string> reqtype, WorkflowExpression<string> reqconfigurationXml)
-        {
-            WorkflowExpression.Validate(reqid, nameof(reqid), required: true);
-            WorkflowExpression.Validate(reqtype, nameof(reqtype), required: true);
-            WorkflowExpression.Validate(reqconfigurationXml, nameof(reqconfigurationXml), required: true);
+            var __workflow_reqid = reqid == null ? null : WorkflowExpression.Compile(reqid);
+            WorkflowExpression.Validate(__workflow_reqid, nameof(reqid), required: true);
+            var __workflow_reqtype = reqtype == null ? null : WorkflowExpression.Compile(reqtype);
+            WorkflowExpression.Validate(__workflow_reqtype, nameof(reqtype), required: true);
+            var __workflow_reqconfigurationXml = reqconfigurationXml == null ? null : WorkflowExpression.Compile(reqconfigurationXml);
+            WorkflowExpression.Validate(__workflow_reqconfigurationXml, nameof(reqconfigurationXml), required: true);
             return new DeferredBodyAction<GetConfigurationXmlResponse>(() =>
             {
                 var apiCallPath = "/api/CreateConfiguration";
@@ -132,11 +115,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
                 var req = new JObject();
                 var reqpropCount = 0;
                 reqpropCount++;
-                req["id"] = ExpressionConverter.ConvertO(reqid);
+                req["id"] = ExpressionConverter.ConvertO(__workflow_reqid);
                 reqpropCount++;
-                req["type"] = ExpressionConverter.ConvertO(reqtype);
+                req["type"] = ExpressionConverter.ConvertO(__workflow_reqtype);
                 reqpropCount++;
-                req["configurationXml"] = ExpressionConverter.ConvertO(reqconfigurationXml);
+                req["configurationXml"] = ExpressionConverter.ConvertO(__workflow_reqconfigurationXml);
                 if (reqpropCount > 0)
                 {
                     callPayload.Body = req;

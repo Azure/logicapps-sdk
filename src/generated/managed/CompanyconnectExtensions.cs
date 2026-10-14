@@ -1,29 +1,24 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class CompanyconnectActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companyconnect")]
-        [WorkflowExpressionFactory(nameof(__BuildChoicePrompt))]
-        public IWorkflowAction ChoicePrompt([WorkflowExpression] Func<string> requestprompt, [WorkflowExpression] Func<string> requestconversationReference, [WorkflowExpression] Func<string[]> requestchoices = null)
+        public IWorkflowAction ChoicePrompt(Expression<Func<string>> requestprompt, Expression<Func<string>> requestconversationReference, Expression<Func<string[]>> requestchoices = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildChoicePrompt(WorkflowExpression<string> requestprompt, WorkflowExpression<string> requestconversationReference, WorkflowExpression<string[]> requestchoices = null)
-        {
-            WorkflowExpression.Validate(requestprompt, nameof(requestprompt), required: true);
-            WorkflowExpression.Validate(requestconversationReference, nameof(requestconversationReference), required: true);
-            WorkflowExpression.Validate(requestchoices, nameof(requestchoices), required: false);
+            var __workflow_requestprompt = requestprompt == null ? null : WorkflowExpression.Compile(requestprompt);
+            WorkflowExpression.Validate(__workflow_requestprompt, nameof(requestprompt), required: true);
+            var __workflow_requestconversationReference = requestconversationReference == null ? null : WorkflowExpression.Compile(requestconversationReference);
+            WorkflowExpression.Validate(__workflow_requestconversationReference, nameof(requestconversationReference), required: true);
+            var __workflow_requestchoices = requestchoices == null ? null : WorkflowExpression.Compile(requestchoices);
+            WorkflowExpression.Validate(__workflow_requestchoices, nameof(requestchoices), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/choicePrompt";
@@ -34,15 +29,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
                 request["callbackUri"] = "#{listCallbackUrl()}";
                 requestpropCount++;
                 requestpropCount++;
-                request["prompt"] = ExpressionConverter.ConvertO(requestprompt);
-                if (requestchoices != null)
+                request["prompt"] = ExpressionConverter.ConvertO(__workflow_requestprompt);
+                if (__workflow_requestchoices != null)
                 {
-                    request["choices"] = ExpressionConverter.ConvertO(requestchoices);
+                    request["choices"] = ExpressionConverter.ConvertO(__workflow_requestchoices);
                     requestpropCount++;
                 }
 
                 requestpropCount++;
-                request["conversationReference"] = ExpressionConverter.ConvertO(requestconversationReference);
+                request["conversationReference"] = ExpressionConverter.ConvertO(__workflow_requestconversationReference);
                 if (requestpropCount > 0)
                 {
                     callPayload.Body = request;
@@ -53,19 +48,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companyconnect")]
-        [WorkflowExpressionFactory(nameof(__BuildConfirmPrompt))]
-        public IWorkflowAction ConfirmPrompt([WorkflowExpression] Func<string> requestprompt, [WorkflowExpression] Func<string> requestconversationReference, [WorkflowExpression] Func<string> requestyesText = null, [WorkflowExpression] Func<string> requestnoText = null)
+        public IWorkflowAction ConfirmPrompt(Expression<Func<string>> requestprompt, Expression<Func<string>> requestconversationReference, Expression<Func<string>> requestyesText = null, Expression<Func<string>> requestnoText = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildConfirmPrompt(WorkflowExpression<string> requestprompt, WorkflowExpression<string> requestconversationReference, WorkflowExpression<string> requestyesText = null, WorkflowExpression<string> requestnoText = null)
-        {
-            WorkflowExpression.Validate(requestprompt, nameof(requestprompt), required: true);
-            WorkflowExpression.Validate(requestconversationReference, nameof(requestconversationReference), required: true);
-            WorkflowExpression.Validate(requestyesText, nameof(requestyesText), required: false);
-            WorkflowExpression.Validate(requestnoText, nameof(requestnoText), required: false);
+            var __workflow_requestprompt = requestprompt == null ? null : WorkflowExpression.Compile(requestprompt);
+            WorkflowExpression.Validate(__workflow_requestprompt, nameof(requestprompt), required: true);
+            var __workflow_requestconversationReference = requestconversationReference == null ? null : WorkflowExpression.Compile(requestconversationReference);
+            WorkflowExpression.Validate(__workflow_requestconversationReference, nameof(requestconversationReference), required: true);
+            var __workflow_requestyesText = requestyesText == null ? null : WorkflowExpression.Compile(requestyesText);
+            WorkflowExpression.Validate(__workflow_requestyesText, nameof(requestyesText), required: false);
+            var __workflow_requestnoText = requestnoText == null ? null : WorkflowExpression.Compile(requestnoText);
+            WorkflowExpression.Validate(__workflow_requestnoText, nameof(requestnoText), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/confirmPrompt";
@@ -76,12 +68,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
                 request["callbackUri"] = "#{listCallbackUrl()}";
                 requestpropCount++;
                 requestpropCount++;
-                request["prompt"] = ExpressionConverter.ConvertO(requestprompt);
-                if (requestyesText != null)
+                request["prompt"] = ExpressionConverter.ConvertO(__workflow_requestprompt);
+                if (__workflow_requestyesText != null)
                 {
-                    if (requestyesText != null)
+                    if (__workflow_requestyesText != null)
                     {
-                        request["yesText"] = ExpressionConverter.ConvertO(requestyesText);
+                        request["yesText"] = ExpressionConverter.ConvertO(__workflow_requestyesText);
                         requestpropCount++;
                     }
 
@@ -93,11 +85,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
                     requestpropCount++;
                 }
 
-                if (requestnoText != null)
+                if (__workflow_requestnoText != null)
                 {
-                    if (requestnoText != null)
+                    if (__workflow_requestnoText != null)
                     {
-                        request["noText"] = ExpressionConverter.ConvertO(requestnoText);
+                        request["noText"] = ExpressionConverter.ConvertO(__workflow_requestnoText);
                         requestpropCount++;
                     }
 
@@ -110,7 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
                 }
 
                 requestpropCount++;
-                request["conversationReference"] = ExpressionConverter.ConvertO(requestconversationReference);
+                request["conversationReference"] = ExpressionConverter.ConvertO(__workflow_requestconversationReference);
                 if (requestpropCount > 0)
                 {
                     callPayload.Body = request;
@@ -121,26 +113,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companyconnect")]
-        [WorkflowExpressionFactory(nameof(__BuildProactiveDialogStart))]
-        public IWorkflowAction ProactiveDialogStart([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyupn)
+        public IWorkflowAction ProactiveDialogStart(Expression<Func<string>> id, Expression<Func<string>> bodyupn)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildProactiveDialogStart(WorkflowExpression<string> id, WorkflowExpression<string> bodyupn)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(bodyupn, nameof(bodyupn), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_bodyupn = bodyupn == null ? null : WorkflowExpression.Compile(bodyupn);
+            WorkflowExpression.Validate(__workflow_bodyupn, nameof(bodyupn), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/proactiveDialogs/{0}/start", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/proactiveDialogs/{0}/start", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["upn"] = ExpressionConverter.ConvertO(bodyupn);
+                body["upn"] = ExpressionConverter.ConvertO(__workflow_bodyupn);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -151,17 +138,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companyconnect")]
-        [WorkflowExpressionFactory(nameof(__BuildReply))]
-        public IWorkflowAction Reply([WorkflowExpression] Func<string> messageActivitytext, [WorkflowExpression] Func<string> messageActivityconversationReference = null)
+        public IWorkflowAction Reply(Expression<Func<string>> messageActivitytext, Expression<Func<string>> messageActivityconversationReference = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildReply(WorkflowExpression<string> messageActivitytext, WorkflowExpression<string> messageActivityconversationReference = null)
-        {
-            WorkflowExpression.Validate(messageActivitytext, nameof(messageActivitytext), required: true);
-            WorkflowExpression.Validate(messageActivityconversationReference, nameof(messageActivityconversationReference), required: false);
+            var __workflow_messageActivitytext = messageActivitytext == null ? null : WorkflowExpression.Compile(messageActivitytext);
+            WorkflowExpression.Validate(__workflow_messageActivitytext, nameof(messageActivitytext), required: true);
+            var __workflow_messageActivityconversationReference = messageActivityconversationReference == null ? null : WorkflowExpression.Compile(messageActivityconversationReference);
+            WorkflowExpression.Validate(__workflow_messageActivityconversationReference, nameof(messageActivityconversationReference), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/reply";
@@ -170,10 +152,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
                 var messageActivity = new JObject();
                 var messageActivitypropCount = 0;
                 messageActivitypropCount++;
-                messageActivity["text"] = ExpressionConverter.ConvertO(messageActivitytext);
-                if (messageActivityconversationReference != null)
+                messageActivity["text"] = ExpressionConverter.ConvertO(__workflow_messageActivitytext);
+                if (__workflow_messageActivityconversationReference != null)
                 {
-                    messageActivity["conversationReference"] = ExpressionConverter.ConvertO(messageActivityconversationReference);
+                    messageActivity["conversationReference"] = ExpressionConverter.ConvertO(__workflow_messageActivityconversationReference);
                     messageActivitypropCount++;
                 }
 
@@ -187,17 +169,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companyconnect")]
-        [WorkflowExpressionFactory(nameof(__BuildTextPrompt))]
-        public IWorkflowAction TextPrompt([WorkflowExpression] Func<string> requestprompt, [WorkflowExpression] Func<string> requestconversationReference)
+        public IWorkflowAction TextPrompt(Expression<Func<string>> requestprompt, Expression<Func<string>> requestconversationReference)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildTextPrompt(WorkflowExpression<string> requestprompt, WorkflowExpression<string> requestconversationReference)
-        {
-            WorkflowExpression.Validate(requestprompt, nameof(requestprompt), required: true);
-            WorkflowExpression.Validate(requestconversationReference, nameof(requestconversationReference), required: true);
+            var __workflow_requestprompt = requestprompt == null ? null : WorkflowExpression.Compile(requestprompt);
+            WorkflowExpression.Validate(__workflow_requestprompt, nameof(requestprompt), required: true);
+            var __workflow_requestconversationReference = requestconversationReference == null ? null : WorkflowExpression.Compile(requestconversationReference);
+            WorkflowExpression.Validate(__workflow_requestconversationReference, nameof(requestconversationReference), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/textPrompt";
@@ -208,9 +185,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
                 request["callbackUri"] = "#{listCallbackUrl()}";
                 requestpropCount++;
                 requestpropCount++;
-                request["prompt"] = ExpressionConverter.ConvertO(requestprompt);
+                request["prompt"] = ExpressionConverter.ConvertO(__workflow_requestprompt);
                 requestpropCount++;
-                request["conversationReference"] = ExpressionConverter.ConvertO(requestconversationReference);
+                request["conversationReference"] = ExpressionConverter.ConvertO(__workflow_requestconversationReference);
                 if (requestpropCount > 0)
                 {
                     callPayload.Body = request;
@@ -223,17 +200,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
 
     public class CompanyconnectTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildProactiveDialogSubscribe))]
-        public IWorkflowTrigger ProactiveDialogSubscribe([WorkflowExpression] Func<string> bodytitle,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ProactiveDialogSubscribe(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildProactiveDialogSubscribe(WorkflowExpression<string> bodytitle,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
+            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/proactiveDialogs";
@@ -244,7 +214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
                 body["callbackUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 bodypropCount++;
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -254,18 +224,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildSmartDialogSubscribe))]
-        public IWorkflowTrigger SmartDialogSubscribe([WorkflowExpression] Func<string> bodyappId,[WorkflowExpression] Func<string> bodyintent,[WorkflowExpression] Func<string> bodydescription,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger SmartDialogSubscribe(Expression<Func<string>> bodyappId, Expression<Func<string>> bodyintent, Expression<Func<string>> bodydescription, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildSmartDialogSubscribe(WorkflowExpression<string> bodyappId,WorkflowExpression<string> bodyintent,WorkflowExpression<string> bodydescription,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodyappId, nameof(bodyappId), required: true);
-            WorkflowExpression.Validate(bodyintent, nameof(bodyintent), required: true);
-            WorkflowExpression.Validate(bodydescription, nameof(bodydescription), required: true);
+            var __workflow_bodyappId = bodyappId == null ? null : WorkflowExpression.Compile(bodyappId);
+            WorkflowExpression.Validate(__workflow_bodyappId, nameof(bodyappId), required: true);
+            var __workflow_bodyintent = bodyintent == null ? null : WorkflowExpression.Compile(bodyintent);
+            WorkflowExpression.Validate(__workflow_bodyintent, nameof(bodyintent), required: true);
+            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
+            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/smartDialogs";
@@ -274,11 +240,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["appId"] = ExpressionConverter.ConvertO(bodyappId);
+                body["appId"] = ExpressionConverter.ConvertO(__workflow_bodyappId);
                 bodypropCount++;
-                body["intent"] = ExpressionConverter.ConvertO(bodyintent);
+                body["intent"] = ExpressionConverter.ConvertO(__workflow_bodyintent);
                 bodypropCount++;
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
                 body["callbackUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
@@ -290,18 +256,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildSmartSourceSubscribe))]
-        public IWorkflowTrigger SmartSourceSubscribe([WorkflowExpression] Func<string> bodytitle,[WorkflowExpression] Func<string> bodycategory,[WorkflowExpression] Func<string> bodyicon = null,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger SmartSourceSubscribe(Expression<Func<string>> bodytitle, Expression<Func<string>> bodycategory, Expression<Func<string>> bodyicon = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildSmartSourceSubscribe(WorkflowExpression<string> bodytitle,WorkflowExpression<string> bodycategory,WorkflowExpression<string> bodyicon = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            WorkflowExpression.Validate(bodycategory, nameof(bodycategory), required: true);
-            WorkflowExpression.Validate(bodyicon, nameof(bodyicon), required: false);
+            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
+            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodycategory = bodycategory == null ? null : WorkflowExpression.Compile(bodycategory);
+            WorkflowExpression.Validate(__workflow_bodycategory, nameof(bodycategory), required: true);
+            var __workflow_bodyicon = bodyicon == null ? null : WorkflowExpression.Compile(bodyicon);
+            WorkflowExpression.Validate(__workflow_bodyicon, nameof(bodyicon), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/smartSources";
@@ -312,12 +274,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
                 body["callbackUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 bodypropCount++;
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
                 bodypropCount++;
-                body["category"] = ExpressionConverter.ConvertO(bodycategory);
-                if (bodyicon != null)
+                body["category"] = ExpressionConverter.ConvertO(__workflow_bodycategory);
+                if (__workflow_bodyicon != null)
                 {
-                    body["icon"] = ExpressionConverter.ConvertO(bodyicon);
+                    body["icon"] = ExpressionConverter.ConvertO(__workflow_bodyicon);
                     bodypropCount++;
                 }
 

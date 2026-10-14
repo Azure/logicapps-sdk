@@ -1,12 +1,12 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Litipsumip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class LitipsumipActions([ConnectionName] string connectionId)
     {
@@ -20,19 +20,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Litipsumip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "litipsumip")]
-        [WorkflowExpressionFactory(nameof(__BuildTextTitle))]
-        public IBodyWorkflowAction<TextTitleResponse> TextTitle([WorkflowExpression] Func<titleInput> title)
+        public IBodyWorkflowAction<TextTitleResponse> TextTitle(Expression<Func<titleInput>> title)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TextTitleResponse> __BuildTextTitle(WorkflowExpression<titleInput> title)
-        {
-            WorkflowExpression.Validate(title, nameof(title), required: true);
+            var __workflow_title = title == null ? null : WorkflowExpression.Compile(title);
+            WorkflowExpression.Validate(__workflow_title, nameof(title), required: true);
             return new DeferredBodyAction<TextTitleResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/json", ExpressionConverter.ConvertWithUrlEncoding(title, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_title, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TextTitleResponse>(callPayload);

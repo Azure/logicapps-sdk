@@ -1,115 +1,112 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class VideoindexerActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
-        [WorkflowExpressionFactory(nameof(__BuildUploadVideo))]
-        public IBodyWorkflowAction<string> UploadVideo([WorkflowExpression] Func<string> videoUrl, [WorkflowExpression] Func<string> name, [WorkflowExpression] Func<privacyInput> privacy, [WorkflowExpression] Func<languageInput> language = null, [WorkflowExpression] Func<string> externalId = null, [WorkflowExpression] Func<string> metadata = null, [WorkflowExpression] Func<string> description = null, [WorkflowExpression] Func<string> partition = null, [WorkflowExpression] Func<string> callbackUrl = null)
+        public IBodyWorkflowAction<string> UploadVideo(Expression<Func<string>> videoUrl, Expression<Func<string>> name, Expression<Func<privacyInput>> privacy, Expression<Func<languageInput>> language = null, Expression<Func<string>> externalId = null, Expression<Func<string>> metadata = null, Expression<Func<string>> description = null, Expression<Func<string>> partition = null, Expression<Func<string>> callbackUrl = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildUploadVideo(WorkflowExpression<string> videoUrl, WorkflowExpression<string> name, WorkflowExpression<privacyInput> privacy, WorkflowExpression<languageInput> language = null, WorkflowExpression<string> externalId = null, WorkflowExpression<string> metadata = null, WorkflowExpression<string> description = null, WorkflowExpression<string> partition = null, WorkflowExpression<string> callbackUrl = null)
-        {
-            WorkflowExpression.Validate(videoUrl, nameof(videoUrl), required: true);
-            WorkflowExpression.Validate(name, nameof(name), required: true);
-            WorkflowExpression.Validate(privacy, nameof(privacy), required: true);
-            WorkflowExpression.Validate(language, nameof(language), required: false);
-            WorkflowExpression.Validate(externalId, nameof(externalId), required: false);
-            WorkflowExpression.Validate(metadata, nameof(metadata), required: false);
-            WorkflowExpression.Validate(description, nameof(description), required: false);
-            WorkflowExpression.Validate(partition, nameof(partition), required: false);
-            WorkflowExpression.Validate(callbackUrl, nameof(callbackUrl), required: false);
+            var __workflow_videoUrl = videoUrl == null ? null : WorkflowExpression.Compile(videoUrl);
+            WorkflowExpression.Validate(__workflow_videoUrl, nameof(videoUrl), required: true);
+            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
+            WorkflowExpression.Validate(__workflow_name, nameof(name), required: true);
+            var __workflow_privacy = privacy == null ? null : WorkflowExpression.Compile(privacy);
+            WorkflowExpression.Validate(__workflow_privacy, nameof(privacy), required: true);
+            var __workflow_language = language == null ? null : WorkflowExpression.Compile(language);
+            WorkflowExpression.Validate(__workflow_language, nameof(language), required: false);
+            var __workflow_externalId = externalId == null ? null : WorkflowExpression.Compile(externalId);
+            WorkflowExpression.Validate(__workflow_externalId, nameof(externalId), required: false);
+            var __workflow_metadata = metadata == null ? null : WorkflowExpression.Compile(metadata);
+            WorkflowExpression.Validate(__workflow_metadata, nameof(metadata), required: false);
+            var __workflow_description = description == null ? null : WorkflowExpression.Compile(description);
+            WorkflowExpression.Validate(__workflow_description, nameof(description), required: false);
+            var __workflow_partition = partition == null ? null : WorkflowExpression.Compile(partition);
+            WorkflowExpression.Validate(__workflow_partition, nameof(partition), required: false);
+            var __workflow_callbackUrl = callbackUrl == null ? null : WorkflowExpression.Compile(callbackUrl);
+            WorkflowExpression.Validate(__workflow_callbackUrl, nameof(callbackUrl), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/Api/Partner/Breakdowns";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["videoUrl"] = ExpressionConverter.Convert(videoUrl);
-                if (language != null)
-                    callPayload.Queries["language"] = ExpressionConverter.Convert(language);
-                if (externalId != null)
-                    callPayload.Queries["externalId"] = ExpressionConverter.Convert(externalId);
-                if (metadata != null)
-                    callPayload.Queries["metadata"] = ExpressionConverter.Convert(metadata);
-                if (description != null)
-                    callPayload.Queries["description"] = ExpressionConverter.Convert(description);
-                if (partition != null)
-                    callPayload.Queries["partition"] = ExpressionConverter.Convert(partition);
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-                callPayload.Queries["privacy"] = ExpressionConverter.Convert(privacy);
-                if (callbackUrl != null)
-                    callPayload.Queries["callbackUrl"] = ExpressionConverter.Convert(callbackUrl);
+                callPayload.Queries["videoUrl"] = ExpressionConverter.Convert(__workflow_videoUrl);
+                if (__workflow_language != null)
+                    callPayload.Queries["language"] = ExpressionConverter.Convert(__workflow_language);
+                if (__workflow_externalId != null)
+                    callPayload.Queries["externalId"] = ExpressionConverter.Convert(__workflow_externalId);
+                if (__workflow_metadata != null)
+                    callPayload.Queries["metadata"] = ExpressionConverter.Convert(__workflow_metadata);
+                if (__workflow_description != null)
+                    callPayload.Queries["description"] = ExpressionConverter.Convert(__workflow_description);
+                if (__workflow_partition != null)
+                    callPayload.Queries["partition"] = ExpressionConverter.Convert(__workflow_partition);
+                callPayload.Queries["name"] = ExpressionConverter.Convert(__workflow_name);
+                callPayload.Queries["privacy"] = ExpressionConverter.Convert(__workflow_privacy);
+                if (__workflow_callbackUrl != null)
+                    callPayload.Queries["callbackUrl"] = ExpressionConverter.Convert(__workflow_callbackUrl);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
-        [WorkflowExpressionFactory(nameof(__BuildUploadVideoFileContent))]
-        public IBodyWorkflowAction<string> UploadVideoFileContent([WorkflowExpression] Func<string> fileContent, [WorkflowExpression] Func<string> name, [WorkflowExpression] Func<privacyInput> privacy, [WorkflowExpression] Func<languageInput> language = null, [WorkflowExpression] Func<string> externalId = null, [WorkflowExpression] Func<string> metadata = null, [WorkflowExpression] Func<string> description = null, [WorkflowExpression] Func<string> partition = null, [WorkflowExpression] Func<string> callbackUrl = null)
+        public IBodyWorkflowAction<string> UploadVideoFileContent(Expression<Func<string>> fileContent, Expression<Func<string>> name, Expression<Func<privacyInput>> privacy, Expression<Func<languageInput>> language = null, Expression<Func<string>> externalId = null, Expression<Func<string>> metadata = null, Expression<Func<string>> description = null, Expression<Func<string>> partition = null, Expression<Func<string>> callbackUrl = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildUploadVideoFileContent(WorkflowExpression<string> fileContent, WorkflowExpression<string> name, WorkflowExpression<privacyInput> privacy, WorkflowExpression<languageInput> language = null, WorkflowExpression<string> externalId = null, WorkflowExpression<string> metadata = null, WorkflowExpression<string> description = null, WorkflowExpression<string> partition = null, WorkflowExpression<string> callbackUrl = null)
-        {
-            WorkflowExpression.Validate(fileContent, nameof(fileContent), required: true);
-            WorkflowExpression.Validate(name, nameof(name), required: true);
-            WorkflowExpression.Validate(privacy, nameof(privacy), required: true);
-            WorkflowExpression.Validate(language, nameof(language), required: false);
-            WorkflowExpression.Validate(externalId, nameof(externalId), required: false);
-            WorkflowExpression.Validate(metadata, nameof(metadata), required: false);
-            WorkflowExpression.Validate(description, nameof(description), required: false);
-            WorkflowExpression.Validate(partition, nameof(partition), required: false);
-            WorkflowExpression.Validate(callbackUrl, nameof(callbackUrl), required: false);
+            var __workflow_fileContent = fileContent == null ? null : WorkflowExpression.Compile(fileContent);
+            WorkflowExpression.Validate(__workflow_fileContent, nameof(fileContent), required: true);
+            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
+            WorkflowExpression.Validate(__workflow_name, nameof(name), required: true);
+            var __workflow_privacy = privacy == null ? null : WorkflowExpression.Compile(privacy);
+            WorkflowExpression.Validate(__workflow_privacy, nameof(privacy), required: true);
+            var __workflow_language = language == null ? null : WorkflowExpression.Compile(language);
+            WorkflowExpression.Validate(__workflow_language, nameof(language), required: false);
+            var __workflow_externalId = externalId == null ? null : WorkflowExpression.Compile(externalId);
+            WorkflowExpression.Validate(__workflow_externalId, nameof(externalId), required: false);
+            var __workflow_metadata = metadata == null ? null : WorkflowExpression.Compile(metadata);
+            WorkflowExpression.Validate(__workflow_metadata, nameof(metadata), required: false);
+            var __workflow_description = description == null ? null : WorkflowExpression.Compile(description);
+            WorkflowExpression.Validate(__workflow_description, nameof(description), required: false);
+            var __workflow_partition = partition == null ? null : WorkflowExpression.Compile(partition);
+            WorkflowExpression.Validate(__workflow_partition, nameof(partition), required: false);
+            var __workflow_callbackUrl = callbackUrl == null ? null : WorkflowExpression.Compile(callbackUrl);
+            WorkflowExpression.Validate(__workflow_callbackUrl, nameof(callbackUrl), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/Api/Partner/Breakdowns/FileContent";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (language != null)
-                    callPayload.Queries["language"] = ExpressionConverter.Convert(language);
-                if (externalId != null)
-                    callPayload.Queries["externalId"] = ExpressionConverter.Convert(externalId);
-                if (metadata != null)
-                    callPayload.Queries["metadata"] = ExpressionConverter.Convert(metadata);
-                if (description != null)
-                    callPayload.Queries["description"] = ExpressionConverter.Convert(description);
-                if (partition != null)
-                    callPayload.Queries["partition"] = ExpressionConverter.Convert(partition);
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-                callPayload.Queries["privacy"] = ExpressionConverter.Convert(privacy);
-                if (callbackUrl != null)
-                    callPayload.Queries["callbackUrl"] = ExpressionConverter.Convert(callbackUrl);
+                if (__workflow_language != null)
+                    callPayload.Queries["language"] = ExpressionConverter.Convert(__workflow_language);
+                if (__workflow_externalId != null)
+                    callPayload.Queries["externalId"] = ExpressionConverter.Convert(__workflow_externalId);
+                if (__workflow_metadata != null)
+                    callPayload.Queries["metadata"] = ExpressionConverter.Convert(__workflow_metadata);
+                if (__workflow_description != null)
+                    callPayload.Queries["description"] = ExpressionConverter.Convert(__workflow_description);
+                if (__workflow_partition != null)
+                    callPayload.Queries["partition"] = ExpressionConverter.Convert(__workflow_partition);
+                callPayload.Queries["name"] = ExpressionConverter.Convert(__workflow_name);
+                callPayload.Queries["privacy"] = ExpressionConverter.Convert(__workflow_privacy);
+                if (__workflow_callbackUrl != null)
+                    callPayload.Queries["callbackUrl"] = ExpressionConverter.Convert(__workflow_callbackUrl);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
-        [WorkflowExpressionFactory(nameof(__BuildGetProcessingState))]
-        public IBodyWorkflowAction<GetProcessingStateResponse> GetProcessingState([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<GetProcessingStateResponse> GetProcessingState(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetProcessingStateResponse> __BuildGetProcessingState(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<GetProcessingStateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/{0}/State", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/{0}/State", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetProcessingStateResponse>(callPayload);
@@ -117,143 +114,127 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
-        [WorkflowExpressionFactory(nameof(__BuildSearch))]
-        public IBodyWorkflowAction<SearchResponse> Search([WorkflowExpression] Func<string> face = null, [WorkflowExpression] Func<string> query = null, [WorkflowExpression] Func<string> searchInPublicAccount = null, [WorkflowExpression] Func<privacyInput> privacy = null, [WorkflowExpression] Func<textScopeInput> textScope = null, [WorkflowExpression] Func<languageInput> language = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> partition = null, [WorkflowExpression] Func<string> owner = null, [WorkflowExpression] Func<double> pageSize = null, [WorkflowExpression] Func<double> skip = null, [WorkflowExpression] Func<string> externalId = null)
+        public IBodyWorkflowAction<SearchResponse> Search(Expression<Func<string>> face = null, Expression<Func<string>> query = null, Expression<Func<string>> searchInPublicAccount = null, Expression<Func<privacyInput>> privacy = null, Expression<Func<textScopeInput>> textScope = null, Expression<Func<languageInput>> language = null, Expression<Func<string>> id = null, Expression<Func<string>> partition = null, Expression<Func<string>> owner = null, Expression<Func<double>> pageSize = null, Expression<Func<double>> skip = null, Expression<Func<string>> externalId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SearchResponse> __BuildSearch(WorkflowExpression<string> face = null, WorkflowExpression<string> query = null, WorkflowExpression<string> searchInPublicAccount = null, WorkflowExpression<privacyInput> privacy = null, WorkflowExpression<textScopeInput> textScope = null, WorkflowExpression<languageInput> language = null, WorkflowExpression<string> id = null, WorkflowExpression<string> partition = null, WorkflowExpression<string> owner = null, WorkflowExpression<double> pageSize = null, WorkflowExpression<double> skip = null, WorkflowExpression<string> externalId = null)
-        {
-            WorkflowExpression.Validate(face, nameof(face), required: false);
-            WorkflowExpression.Validate(query, nameof(query), required: false);
-            WorkflowExpression.Validate(searchInPublicAccount, nameof(searchInPublicAccount), required: false);
-            WorkflowExpression.Validate(privacy, nameof(privacy), required: false);
-            WorkflowExpression.Validate(textScope, nameof(textScope), required: false);
-            WorkflowExpression.Validate(language, nameof(language), required: false);
-            WorkflowExpression.Validate(id, nameof(id), required: false);
-            WorkflowExpression.Validate(partition, nameof(partition), required: false);
-            WorkflowExpression.Validate(owner, nameof(owner), required: false);
-            WorkflowExpression.Validate(pageSize, nameof(pageSize), required: false);
-            WorkflowExpression.Validate(skip, nameof(skip), required: false);
-            WorkflowExpression.Validate(externalId, nameof(externalId), required: false);
+            var __workflow_face = face == null ? null : WorkflowExpression.Compile(face);
+            WorkflowExpression.Validate(__workflow_face, nameof(face), required: false);
+            var __workflow_query = query == null ? null : WorkflowExpression.Compile(query);
+            WorkflowExpression.Validate(__workflow_query, nameof(query), required: false);
+            var __workflow_searchInPublicAccount = searchInPublicAccount == null ? null : WorkflowExpression.Compile(searchInPublicAccount);
+            WorkflowExpression.Validate(__workflow_searchInPublicAccount, nameof(searchInPublicAccount), required: false);
+            var __workflow_privacy = privacy == null ? null : WorkflowExpression.Compile(privacy);
+            WorkflowExpression.Validate(__workflow_privacy, nameof(privacy), required: false);
+            var __workflow_textScope = textScope == null ? null : WorkflowExpression.Compile(textScope);
+            WorkflowExpression.Validate(__workflow_textScope, nameof(textScope), required: false);
+            var __workflow_language = language == null ? null : WorkflowExpression.Compile(language);
+            WorkflowExpression.Validate(__workflow_language, nameof(language), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: false);
+            var __workflow_partition = partition == null ? null : WorkflowExpression.Compile(partition);
+            WorkflowExpression.Validate(__workflow_partition, nameof(partition), required: false);
+            var __workflow_owner = owner == null ? null : WorkflowExpression.Compile(owner);
+            WorkflowExpression.Validate(__workflow_owner, nameof(owner), required: false);
+            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
+            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_skip = skip == null ? null : WorkflowExpression.Compile(skip);
+            WorkflowExpression.Validate(__workflow_skip, nameof(skip), required: false);
+            var __workflow_externalId = externalId == null ? null : WorkflowExpression.Compile(externalId);
+            WorkflowExpression.Validate(__workflow_externalId, nameof(externalId), required: false);
             return new DeferredBodyAction<SearchResponse>(() =>
             {
                 var apiCallPath = "/Api/Partner/Breakdowns/Search";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (face != null)
-                    callPayload.Queries["face"] = ExpressionConverter.Convert(face);
-                if (query != null)
-                    callPayload.Queries["query"] = ExpressionConverter.Convert(query);
-                if (searchInPublicAccount != null)
-                    callPayload.Queries["searchInPublicAccount"] = ExpressionConverter.Convert(searchInPublicAccount);
-                if (privacy != null)
-                    callPayload.Queries["privacy"] = ExpressionConverter.Convert(privacy);
-                if (textScope != null)
-                    callPayload.Queries["textScope"] = ExpressionConverter.Convert(textScope);
-                if (language != null)
-                    callPayload.Queries["language"] = ExpressionConverter.Convert(language);
-                if (id != null)
-                    callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-                if (partition != null)
-                    callPayload.Queries["partition"] = ExpressionConverter.Convert(partition);
-                if (owner != null)
-                    callPayload.Queries["owner"] = ExpressionConverter.Convert(owner);
-                if (pageSize != null)
-                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-                if (skip != null)
-                    callPayload.Queries["skip"] = ExpressionConverter.Convert(skip);
-                if (externalId != null)
-                    callPayload.Queries["externalId"] = ExpressionConverter.Convert(externalId);
+                if (__workflow_face != null)
+                    callPayload.Queries["face"] = ExpressionConverter.Convert(__workflow_face);
+                if (__workflow_query != null)
+                    callPayload.Queries["query"] = ExpressionConverter.Convert(__workflow_query);
+                if (__workflow_searchInPublicAccount != null)
+                    callPayload.Queries["searchInPublicAccount"] = ExpressionConverter.Convert(__workflow_searchInPublicAccount);
+                if (__workflow_privacy != null)
+                    callPayload.Queries["privacy"] = ExpressionConverter.Convert(__workflow_privacy);
+                if (__workflow_textScope != null)
+                    callPayload.Queries["textScope"] = ExpressionConverter.Convert(__workflow_textScope);
+                if (__workflow_language != null)
+                    callPayload.Queries["language"] = ExpressionConverter.Convert(__workflow_language);
+                if (__workflow_id != null)
+                    callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
+                if (__workflow_partition != null)
+                    callPayload.Queries["partition"] = ExpressionConverter.Convert(__workflow_partition);
+                if (__workflow_owner != null)
+                    callPayload.Queries["owner"] = ExpressionConverter.Convert(__workflow_owner);
+                if (__workflow_pageSize != null)
+                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
+                if (__workflow_skip != null)
+                    callPayload.Queries["skip"] = ExpressionConverter.Convert(__workflow_skip);
+                if (__workflow_externalId != null)
+                    callPayload.Queries["externalId"] = ExpressionConverter.Convert(__workflow_externalId);
                 return new ApiConnectionAction<SearchResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
-        [WorkflowExpressionFactory(nameof(__BuildGetBreakdown))]
-        public IBodyWorkflowAction<GetBreakdownResponse> GetBreakdown([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<languageInput> language = null)
+        public IBodyWorkflowAction<GetBreakdownResponse> GetBreakdown(Expression<Func<string>> id, Expression<Func<languageInput>> language = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetBreakdownResponse> __BuildGetBreakdown(WorkflowExpression<string> id, WorkflowExpression<languageInput> language = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(language, nameof(language), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_language = language == null ? null : WorkflowExpression.Compile(language);
+            WorkflowExpression.Validate(__workflow_language, nameof(language), required: false);
             return new DeferredBodyAction<GetBreakdownResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (language != null)
-                    callPayload.Queries["language"] = ExpressionConverter.Convert(language);
+                if (__workflow_language != null)
+                    callPayload.Queries["language"] = ExpressionConverter.Convert(__workflow_language);
                 return new ApiConnectionAction<GetBreakdownResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteBreakdown))]
-        public IBodyWorkflowAction<JToken> DeleteBreakdown([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bool> deleteInsights = null)
+        public IBodyWorkflowAction<JToken> DeleteBreakdown(Expression<Func<string>> id, Expression<Func<bool>> deleteInsights = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildDeleteBreakdown(WorkflowExpression<string> id, WorkflowExpression<bool> deleteInsights = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(deleteInsights, nameof(deleteInsights), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_deleteInsights = deleteInsights == null ? null : WorkflowExpression.Compile(deleteInsights);
+            WorkflowExpression.Validate(__workflow_deleteInsights, nameof(deleteInsights), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (deleteInsights != null)
-                    callPayload.Queries["deleteInsights"] = ExpressionConverter.Convert(deleteInsights);
+                if (__workflow_deleteInsights != null)
+                    callPayload.Queries["deleteInsights"] = ExpressionConverter.Convert(__workflow_deleteInsights);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
-        [WorkflowExpressionFactory(nameof(__BuildGetInsightsWidgetUrl))]
-        public IBodyWorkflowAction<string> GetInsightsWidgetUrl([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<widgetTypeInput> widgetType = null)
+        public IBodyWorkflowAction<string> GetInsightsWidgetUrl(Expression<Func<string>> id, Expression<Func<widgetTypeInput>> widgetType = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildGetInsightsWidgetUrl(WorkflowExpression<string> id, WorkflowExpression<widgetTypeInput> widgetType = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(widgetType, nameof(widgetType), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_widgetType = widgetType == null ? null : WorkflowExpression.Compile(widgetType);
+            WorkflowExpression.Validate(__workflow_widgetType, nameof(widgetType), required: false);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/{0}/InsightsWidgetUrl", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/{0}/InsightsWidgetUrl", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (widgetType != null)
-                    callPayload.Queries["widgetType"] = ExpressionConverter.Convert(widgetType);
+                if (__workflow_widgetType != null)
+                    callPayload.Queries["widgetType"] = ExpressionConverter.Convert(__workflow_widgetType);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
-        [WorkflowExpressionFactory(nameof(__BuildGetPlayerWidgetUrl))]
-        public IBodyWorkflowAction<string> GetPlayerWidgetUrl([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<string> GetPlayerWidgetUrl(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildGetPlayerWidgetUrl(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/{0}/PlayerWidgetUrl", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/{0}/PlayerWidgetUrl", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -261,48 +242,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
-        [WorkflowExpressionFactory(nameof(__BuildGetVttUrl))]
-        public IBodyWorkflowAction<string> GetVttUrl([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<languageInput> language = null)
+        public IBodyWorkflowAction<string> GetVttUrl(Expression<Func<string>> id, Expression<Func<languageInput>> language = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildGetVttUrl(WorkflowExpression<string> id, WorkflowExpression<languageInput> language = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(language, nameof(language), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_language = language == null ? null : WorkflowExpression.Compile(language);
+            WorkflowExpression.Validate(__workflow_language, nameof(language), required: false);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/{0}/VttUrl", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/{0}/VttUrl", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (language != null)
-                    callPayload.Queries["language"] = ExpressionConverter.Convert(language);
+                if (__workflow_language != null)
+                    callPayload.Queries["language"] = ExpressionConverter.Convert(__workflow_language);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
-        [WorkflowExpressionFactory(nameof(__BuildGetInsightsWidgetUrlByExternalId))]
-        public IBodyWorkflowAction<string> GetInsightsWidgetUrlByExternalId([WorkflowExpression] Func<string> externalId, [WorkflowExpression] Func<widgetTypeInput> widgetType = null)
+        public IBodyWorkflowAction<string> GetInsightsWidgetUrlByExternalId(Expression<Func<string>> externalId, Expression<Func<widgetTypeInput>> widgetType = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildGetInsightsWidgetUrlByExternalId(WorkflowExpression<string> externalId, WorkflowExpression<widgetTypeInput> widgetType = null)
-        {
-            WorkflowExpression.Validate(externalId, nameof(externalId), required: true);
-            WorkflowExpression.Validate(widgetType, nameof(widgetType), required: false);
+            var __workflow_externalId = externalId == null ? null : WorkflowExpression.Compile(externalId);
+            WorkflowExpression.Validate(__workflow_externalId, nameof(externalId), required: true);
+            var __workflow_widgetType = widgetType == null ? null : WorkflowExpression.Compile(widgetType);
+            WorkflowExpression.Validate(__workflow_widgetType, nameof(widgetType), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/Api/Partner/Breakdowns/GetInsightsWidgetUrlByExternalId";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["externalId"] = ExpressionConverter.Convert(externalId);
-                if (widgetType != null)
-                    callPayload.Queries["widgetType"] = ExpressionConverter.Convert(widgetType);
+                callPayload.Queries["externalId"] = ExpressionConverter.Convert(__workflow_externalId);
+                if (__workflow_widgetType != null)
+                    callPayload.Queries["widgetType"] = ExpressionConverter.Convert(__workflow_widgetType);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -317,71 +288,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
-        [WorkflowExpressionFactory(nameof(__BuildReIndexBreakdown))]
-        public IBodyWorkflowAction<JToken> ReIndexBreakdown([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> callbackUrl = null)
+        public IBodyWorkflowAction<JToken> ReIndexBreakdown(Expression<Func<string>> id, Expression<Func<string>> callbackUrl = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildReIndexBreakdown(WorkflowExpression<string> id, WorkflowExpression<string> callbackUrl = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(callbackUrl, nameof(callbackUrl), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_callbackUrl = callbackUrl == null ? null : WorkflowExpression.Compile(callbackUrl);
+            WorkflowExpression.Validate(__workflow_callbackUrl, nameof(callbackUrl), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/reindex/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/reindex/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (callbackUrl != null)
-                    callPayload.Queries["callbackUrl"] = ExpressionConverter.Convert(callbackUrl);
+                if (__workflow_callbackUrl != null)
+                    callPayload.Queries["callbackUrl"] = ExpressionConverter.Convert(__workflow_callbackUrl);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
-        [WorkflowExpressionFactory(nameof(__BuildReIndexBreakdownByExternalId))]
-        public IBodyWorkflowAction<JToken> ReIndexBreakdownByExternalId([WorkflowExpression] Func<string> externalId, [WorkflowExpression] Func<string> callbackUrl = null)
+        public IBodyWorkflowAction<JToken> ReIndexBreakdownByExternalId(Expression<Func<string>> externalId, Expression<Func<string>> callbackUrl = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildReIndexBreakdownByExternalId(WorkflowExpression<string> externalId, WorkflowExpression<string> callbackUrl = null)
-        {
-            WorkflowExpression.Validate(externalId, nameof(externalId), required: true);
-            WorkflowExpression.Validate(callbackUrl, nameof(callbackUrl), required: false);
+            var __workflow_externalId = externalId == null ? null : WorkflowExpression.Compile(externalId);
+            WorkflowExpression.Validate(__workflow_externalId, nameof(externalId), required: true);
+            var __workflow_callbackUrl = callbackUrl == null ? null : WorkflowExpression.Compile(callbackUrl);
+            WorkflowExpression.Validate(__workflow_callbackUrl, nameof(callbackUrl), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/reindexbyexternalid/{0}", ExpressionConverter.ConvertWithUrlEncoding(externalId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/reindexbyexternalid/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_externalId, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (callbackUrl != null)
-                    callPayload.Queries["callbackUrl"] = ExpressionConverter.Convert(callbackUrl);
+                if (__workflow_callbackUrl != null)
+                    callPayload.Queries["callbackUrl"] = ExpressionConverter.Convert(__workflow_callbackUrl);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateFaceName))]
-        public IBodyWorkflowAction<JToken> UpdateFaceName([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<double> faceId, [WorkflowExpression] Func<string> newName)
+        public IBodyWorkflowAction<JToken> UpdateFaceName(Expression<Func<string>> id, Expression<Func<double>> faceId, Expression<Func<string>> newName)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildUpdateFaceName(WorkflowExpression<string> id, WorkflowExpression<double> faceId, WorkflowExpression<string> newName)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(faceId, nameof(faceId), required: true);
-            WorkflowExpression.Validate(newName, nameof(newName), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_faceId = faceId == null ? null : WorkflowExpression.Compile(faceId);
+            WorkflowExpression.Validate(__workflow_faceId, nameof(faceId), required: true);
+            var __workflow_newName = newName == null ? null : WorkflowExpression.Compile(newName);
+            WorkflowExpression.Validate(__workflow_newName, nameof(newName), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/UpdateFaceName/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/UpdateFaceName/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["faceId"] = ExpressionConverter.Convert(faceId);
-                callPayload.Queries["newName"] = ExpressionConverter.Convert(newName);
+                callPayload.Queries["faceId"] = ExpressionConverter.Convert(__workflow_faceId);
+                callPayload.Queries["newName"] = ExpressionConverter.Convert(__workflow_newName);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }

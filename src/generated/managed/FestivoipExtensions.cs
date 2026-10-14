@@ -1,82 +1,77 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Festivoip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class FestivoipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "festivoip")]
-        [WorkflowExpressionFactory(nameof(__BuildHolidaysGet))]
-        public IBodyWorkflowAction<HolidaysGetResponse> HolidaysGet([WorkflowExpression] Func<string> country, [WorkflowExpression] Func<int> year, [WorkflowExpression] Func<int> month = null, [WorkflowExpression] Func<int> day = null, [WorkflowExpression] Func<string> language = null, [WorkflowExpression] Func<bool> before = null, [WorkflowExpression] Func<bool> after = null, [WorkflowExpression] Func<bool> @public = null, [WorkflowExpression] Func<string> timezone = null)
+        public IBodyWorkflowAction<HolidaysGetResponse> HolidaysGet(Expression<Func<string>> country, Expression<Func<int>> year, Expression<Func<int>> month = null, Expression<Func<int>> day = null, Expression<Func<string>> language = null, Expression<Func<bool>> before = null, Expression<Func<bool>> after = null, Expression<Func<bool>> @public = null, Expression<Func<string>> timezone = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<HolidaysGetResponse> __BuildHolidaysGet(WorkflowExpression<string> country, WorkflowExpression<int> year, WorkflowExpression<int> month = null, WorkflowExpression<int> day = null, WorkflowExpression<string> language = null, WorkflowExpression<bool> before = null, WorkflowExpression<bool> after = null, WorkflowExpression<bool> @public = null, WorkflowExpression<string> timezone = null)
-        {
-            WorkflowExpression.Validate(country, nameof(country), required: true);
-            WorkflowExpression.Validate(year, nameof(year), required: true);
-            WorkflowExpression.Validate(month, nameof(month), required: false);
-            WorkflowExpression.Validate(day, nameof(day), required: false);
-            WorkflowExpression.Validate(language, nameof(language), required: false);
-            WorkflowExpression.Validate(before, nameof(before), required: false);
-            WorkflowExpression.Validate(after, nameof(after), required: false);
-            WorkflowExpression.Validate(@public, nameof(@public), required: false);
-            WorkflowExpression.Validate(timezone, nameof(timezone), required: false);
+            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
+            WorkflowExpression.Validate(__workflow_country, nameof(country), required: true);
+            var __workflow_year = year == null ? null : WorkflowExpression.Compile(year);
+            WorkflowExpression.Validate(__workflow_year, nameof(year), required: true);
+            var __workflow_month = month == null ? null : WorkflowExpression.Compile(month);
+            WorkflowExpression.Validate(__workflow_month, nameof(month), required: false);
+            var __workflow_day = day == null ? null : WorkflowExpression.Compile(day);
+            WorkflowExpression.Validate(__workflow_day, nameof(day), required: false);
+            var __workflow_language = language == null ? null : WorkflowExpression.Compile(language);
+            WorkflowExpression.Validate(__workflow_language, nameof(language), required: false);
+            var __workflow_before = before == null ? null : WorkflowExpression.Compile(before);
+            WorkflowExpression.Validate(__workflow_before, nameof(before), required: false);
+            var __workflow_after = after == null ? null : WorkflowExpression.Compile(after);
+            WorkflowExpression.Validate(__workflow_after, nameof(after), required: false);
+            var __workflow_public = @public == null ? null : WorkflowExpression.Compile(@public);
+            WorkflowExpression.Validate(__workflow_public, nameof(@public), required: false);
+            var __workflow_timezone = timezone == null ? null : WorkflowExpression.Compile(timezone);
+            WorkflowExpression.Validate(__workflow_timezone, nameof(timezone), required: false);
             return new DeferredBodyAction<HolidaysGetResponse>(() =>
             {
                 var apiCallPath = "/holidays";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-                callPayload.Queries["year"] = ExpressionConverter.Convert(year);
-                if (month != null)
-                    callPayload.Queries["month"] = ExpressionConverter.Convert(month);
-                if (day != null)
-                    callPayload.Queries["day"] = ExpressionConverter.Convert(day);
-                if (language != null)
-                    callPayload.Queries["language"] = ExpressionConverter.Convert(language);
+                callPayload.Queries["country"] = ExpressionConverter.Convert(__workflow_country);
+                callPayload.Queries["year"] = ExpressionConverter.Convert(__workflow_year);
+                if (__workflow_month != null)
+                    callPayload.Queries["month"] = ExpressionConverter.Convert(__workflow_month);
+                if (__workflow_day != null)
+                    callPayload.Queries["day"] = ExpressionConverter.Convert(__workflow_day);
+                if (__workflow_language != null)
+                    callPayload.Queries["language"] = ExpressionConverter.Convert(__workflow_language);
                 callPayload.Queries["before"] = Convert.ToString(false);
-                if (before != null)
-                    callPayload.Queries["before"] = ExpressionConverter.Convert(before);
+                if (__workflow_before != null)
+                    callPayload.Queries["before"] = ExpressionConverter.Convert(__workflow_before);
                 callPayload.Queries["after"] = Convert.ToString(false);
-                if (after != null)
-                    callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                if (__workflow_after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(__workflow_after);
                 callPayload.Queries["public"] = Convert.ToString(false);
-                if (@public != null)
-                    callPayload.Queries["public"] = ExpressionConverter.Convert(@public);
+                if (__workflow_public != null)
+                    callPayload.Queries["public"] = ExpressionConverter.Convert(__workflow_public);
                 callPayload.Queries["format"] = Convert.ToString("json");
-                if (timezone != null)
-                    callPayload.Queries["timezone"] = ExpressionConverter.Convert(timezone);
+                if (__workflow_timezone != null)
+                    callPayload.Queries["timezone"] = ExpressionConverter.Convert(__workflow_timezone);
                 return new ApiConnectionAction<HolidaysGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "festivoip")]
-        [WorkflowExpressionFactory(nameof(__BuildCountriesGet))]
-        public IBodyWorkflowAction<CountriesGetResponseItem[]> CountriesGet([WorkflowExpression] Func<string> code = null)
+        public IBodyWorkflowAction<CountriesGetResponseItem[]> CountriesGet(Expression<Func<string>> code = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CountriesGetResponseItem[]> __BuildCountriesGet(WorkflowExpression<string> code = null)
-        {
-            WorkflowExpression.Validate(code, nameof(code), required: false);
+            var __workflow_code = code == null ? null : WorkflowExpression.Compile(code);
+            WorkflowExpression.Validate(__workflow_code, nameof(code), required: false);
             return new DeferredBodyAction<CountriesGetResponseItem[]>(() =>
             {
                 var apiCallPath = "/countries";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (code != null)
-                    callPayload.Queries["code"] = ExpressionConverter.Convert(code);
+                if (__workflow_code != null)
+                    callPayload.Queries["code"] = ExpressionConverter.Convert(__workflow_code);
                 return new ApiConnectionAction<CountriesGetResponseItem[]>(callPayload);
             });
         }

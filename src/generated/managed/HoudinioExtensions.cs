@@ -1,28 +1,22 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Houdinio
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class HoudinioActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "houdinio")]
-        [WorkflowExpressionFactory(nameof(__BuildLaunchScan))]
-        public IBodyWorkflowAction<ScanResponse> LaunchScan([WorkflowExpression] Func<string> bodyartifact, [WorkflowExpression] Func<string[]> bodyscanOn = null)
+        public IBodyWorkflowAction<ScanResponse> LaunchScan(Expression<Func<string>> bodyartifact, Expression<Func<string[]>> bodyscanOn = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ScanResponse> __BuildLaunchScan(WorkflowExpression<string> bodyartifact, WorkflowExpression<string[]> bodyscanOn = null)
-        {
-            WorkflowExpression.Validate(bodyartifact, nameof(bodyartifact), required: true);
-            WorkflowExpression.Validate(bodyscanOn, nameof(bodyscanOn), required: false);
+            var __workflow_bodyartifact = bodyartifact == null ? null : WorkflowExpression.Compile(bodyartifact);
+            WorkflowExpression.Validate(__workflow_bodyartifact, nameof(bodyartifact), required: true);
+            var __workflow_bodyscanOn = bodyscanOn == null ? null : WorkflowExpression.Compile(bodyscanOn);
+            WorkflowExpression.Validate(__workflow_bodyscanOn, nameof(bodyscanOn), required: false);
             return new DeferredBodyAction<ScanResponse>(() =>
             {
                 var apiCallPath = "/scan/launch";
@@ -31,10 +25,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Houdinio
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["artifact"] = ExpressionConverter.ConvertO(bodyartifact);
-                if (bodyscanOn != null)
+                body["artifact"] = ExpressionConverter.ConvertO(__workflow_bodyartifact);
+                if (__workflow_bodyscanOn != null)
                 {
-                    body["scanOn"] = ExpressionConverter.ConvertO(bodyscanOn);
+                    body["scanOn"] = ExpressionConverter.ConvertO(__workflow_bodyscanOn);
                     bodypropCount++;
                 }
 
@@ -48,22 +42,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Houdinio
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "houdinio")]
-        [WorkflowExpressionFactory(nameof(__BuildRetrieveScan))]
-        public IBodyWorkflowAction<ScanResult> RetrieveScan([WorkflowExpression] Func<string> scanID)
+        public IBodyWorkflowAction<ScanResult> RetrieveScan(Expression<Func<string>> scanID)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ScanResult> __BuildRetrieveScan(WorkflowExpression<string> scanID)
-        {
-            WorkflowExpression.Validate(scanID, nameof(scanID), required: true);
+            var __workflow_scanID = scanID == null ? null : WorkflowExpression.Compile(scanID);
+            WorkflowExpression.Validate(__workflow_scanID, nameof(scanID), required: true);
             return new DeferredBodyAction<ScanResult>(() =>
             {
                 var apiCallPath = "/scan/result";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["scanID"] = ExpressionConverter.Convert(scanID);
+                callPayload.Queries["scanID"] = ExpressionConverter.Convert(__workflow_scanID);
                 return new ApiConnectionAction<ScanResult>(callPayload);
             });
         }

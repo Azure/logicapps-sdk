@@ -1,88 +1,83 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class ReversinglabstitaniuActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildGetFileReputationSingle))]
-        public IWorkflowAction GetFileReputationSingle([WorkflowExpression] Func<hashTypeInput> hashType, [WorkflowExpression] Func<string> hashValue, [WorkflowExpression] Func<bool> extended = null, [WorkflowExpression] Func<bool> showHashes = null, [WorkflowExpression] Func<formatInput> format = null)
+        public IWorkflowAction GetFileReputationSingle(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<bool>> extended = null, Expression<Func<bool>> showHashes = null, Expression<Func<formatInput>> format = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetFileReputationSingle(WorkflowExpression<hashTypeInput> hashType, WorkflowExpression<string> hashValue, WorkflowExpression<bool> extended = null, WorkflowExpression<bool> showHashes = null, WorkflowExpression<formatInput> format = null)
-        {
-            WorkflowExpression.Validate(hashType, nameof(hashType), required: true);
-            WorkflowExpression.Validate(hashValue, nameof(hashValue), required: true);
-            WorkflowExpression.Validate(extended, nameof(extended), required: false);
-            WorkflowExpression.Validate(showHashes, nameof(showHashes), required: false);
-            WorkflowExpression.Validate(format, nameof(format), required: false);
+            var __workflow_hashType = hashType == null ? null : WorkflowExpression.Compile(hashType);
+            WorkflowExpression.Validate(__workflow_hashType, nameof(hashType), required: true);
+            var __workflow_hashValue = hashValue == null ? null : WorkflowExpression.Compile(hashValue);
+            WorkflowExpression.Validate(__workflow_hashValue, nameof(hashValue), required: true);
+            var __workflow_extended = extended == null ? null : WorkflowExpression.Compile(extended);
+            WorkflowExpression.Validate(__workflow_extended, nameof(extended), required: false);
+            var __workflow_showHashes = showHashes == null ? null : WorkflowExpression.Compile(showHashes);
+            WorkflowExpression.Validate(__workflow_showHashes, nameof(showHashes), required: false);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/databrowser/malware_presence/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(hashValue, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/databrowser/malware_presence/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashValue, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["extended"] = Convert.ToString(true);
-                if (extended != null)
-                    callPayload.Queries["extended"] = ExpressionConverter.Convert(extended);
+                if (__workflow_extended != null)
+                    callPayload.Queries["extended"] = ExpressionConverter.Convert(__workflow_extended);
                 callPayload.Queries["show_hashes"] = Convert.ToString(true);
-                if (showHashes != null)
-                    callPayload.Queries["show_hashes"] = ExpressionConverter.Convert(showHashes);
+                if (__workflow_showHashes != null)
+                    callPayload.Queries["show_hashes"] = ExpressionConverter.Convert(__workflow_showHashes);
                 callPayload.Queries["format"] = Convert.ToString("json");
-                if (format != null)
-                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildGetFileReputationBulk))]
-        public IWorkflowAction GetFileReputationBulk([WorkflowExpression] Func<postFormatInput> postFormat, [WorkflowExpression] Func<bool> extended = null, [WorkflowExpression] Func<bool> showHashes = null, [WorkflowExpression] Func<bodyrlqueryhashTypeInput> bodyrlqueryhashType = null, [WorkflowExpression] Func<string[]> bodyrlqueryhashes = null)
+        public IWorkflowAction GetFileReputationBulk(Expression<Func<postFormatInput>> postFormat, Expression<Func<bool>> extended = null, Expression<Func<bool>> showHashes = null, Expression<Func<bodyrlqueryhashTypeInput>> bodyrlqueryhashType = null, Expression<Func<string[]>> bodyrlqueryhashes = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetFileReputationBulk(WorkflowExpression<postFormatInput> postFormat, WorkflowExpression<bool> extended = null, WorkflowExpression<bool> showHashes = null, WorkflowExpression<bodyrlqueryhashTypeInput> bodyrlqueryhashType = null, WorkflowExpression<string[]> bodyrlqueryhashes = null)
-        {
-            WorkflowExpression.Validate(postFormat, nameof(postFormat), required: true);
-            WorkflowExpression.Validate(extended, nameof(extended), required: false);
-            WorkflowExpression.Validate(showHashes, nameof(showHashes), required: false);
-            WorkflowExpression.Validate(bodyrlqueryhashType, nameof(bodyrlqueryhashType), required: false);
-            WorkflowExpression.Validate(bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
+            var __workflow_postFormat = postFormat == null ? null : WorkflowExpression.Compile(postFormat);
+            WorkflowExpression.Validate(__workflow_postFormat, nameof(postFormat), required: true);
+            var __workflow_extended = extended == null ? null : WorkflowExpression.Compile(extended);
+            WorkflowExpression.Validate(__workflow_extended, nameof(extended), required: false);
+            var __workflow_showHashes = showHashes == null ? null : WorkflowExpression.Compile(showHashes);
+            WorkflowExpression.Validate(__workflow_showHashes, nameof(showHashes), required: false);
+            var __workflow_bodyrlqueryhashType = bodyrlqueryhashType == null ? null : WorkflowExpression.Compile(bodyrlqueryhashType);
+            WorkflowExpression.Validate(__workflow_bodyrlqueryhashType, nameof(bodyrlqueryhashType), required: false);
+            var __workflow_bodyrlqueryhashes = bodyrlqueryhashes == null ? null : WorkflowExpression.Compile(bodyrlqueryhashes);
+            WorkflowExpression.Validate(__workflow_bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/databrowser/malware_presence/bulk_query/{0}", ExpressionConverter.ConvertWithUrlEncoding(postFormat, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/databrowser/malware_presence/bulk_query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_postFormat, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (extended != null)
-                    callPayload.Queries["extended"] = ExpressionConverter.Convert(extended);
-                if (showHashes != null)
-                    callPayload.Queries["show_hashes"] = ExpressionConverter.Convert(showHashes);
+                if (__workflow_extended != null)
+                    callPayload.Queries["extended"] = ExpressionConverter.Convert(__workflow_extended);
+                if (__workflow_showHashes != null)
+                    callPayload.Queries["show_hashes"] = ExpressionConverter.Convert(__workflow_showHashes);
                 var body = new JObject();
                 var bodypropCount = 0;
                 var rlObject = new JObject();
                 var rlObjectpropCount = 0;
                 var queryObject = new JObject();
                 var queryObjectpropCount = 0;
-                if (bodyrlqueryhashType != null)
+                if (__workflow_bodyrlqueryhashType != null)
                 {
-                    queryObject["hash_type"] = ExpressionConverter.ConvertO(bodyrlqueryhashType);
+                    queryObject["hash_type"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryhashType);
                     queryObjectpropCount++;
                 }
 
-                if (bodyrlqueryhashes != null)
+                if (__workflow_bodyrlqueryhashes != null)
                 {
-                    queryObject["hashes"] = ExpressionConverter.ConvertO(bodyrlqueryhashes);
+                    queryObject["hashes"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryhashes);
                     queryObjectpropCount++;
                 }
 
@@ -108,74 +103,69 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildGetHistoricalAvRecordsSingle))]
-        public IWorkflowAction GetHistoricalAvRecordsSingle([WorkflowExpression] Func<hashTypeInput> hashType, [WorkflowExpression] Func<string> hashValue, [WorkflowExpression] Func<bool> history = null, [WorkflowExpression] Func<formatInput> format = null)
+        public IWorkflowAction GetHistoricalAvRecordsSingle(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<bool>> history = null, Expression<Func<formatInput>> format = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetHistoricalAvRecordsSingle(WorkflowExpression<hashTypeInput> hashType, WorkflowExpression<string> hashValue, WorkflowExpression<bool> history = null, WorkflowExpression<formatInput> format = null)
-        {
-            WorkflowExpression.Validate(hashType, nameof(hashType), required: true);
-            WorkflowExpression.Validate(hashValue, nameof(hashValue), required: true);
-            WorkflowExpression.Validate(history, nameof(history), required: false);
-            WorkflowExpression.Validate(format, nameof(format), required: false);
+            var __workflow_hashType = hashType == null ? null : WorkflowExpression.Compile(hashType);
+            WorkflowExpression.Validate(__workflow_hashType, nameof(hashType), required: true);
+            var __workflow_hashValue = hashValue == null ? null : WorkflowExpression.Compile(hashValue);
+            WorkflowExpression.Validate(__workflow_hashValue, nameof(hashValue), required: true);
+            var __workflow_history = history == null ? null : WorkflowExpression.Compile(history);
+            WorkflowExpression.Validate(__workflow_history, nameof(history), required: false);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/xref/v2/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(hashValue, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/xref/v2/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashValue, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["history"] = Convert.ToString(false);
-                if (history != null)
-                    callPayload.Queries["history"] = ExpressionConverter.Convert(history);
+                if (__workflow_history != null)
+                    callPayload.Queries["history"] = ExpressionConverter.Convert(__workflow_history);
                 callPayload.Queries["format"] = Convert.ToString("json");
-                if (format != null)
-                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildGetHistoricalAvRecordsBulk))]
-        public IWorkflowAction GetHistoricalAvRecordsBulk([WorkflowExpression] Func<postFormatInput> postFormat, [WorkflowExpression] Func<bool> history = null, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<bodyrlqueryhashTypeInput> bodyrlqueryhashType = null, [WorkflowExpression] Func<string[]> bodyrlqueryhashes = null)
+        public IWorkflowAction GetHistoricalAvRecordsBulk(Expression<Func<postFormatInput>> postFormat, Expression<Func<bool>> history = null, Expression<Func<formatInput>> format = null, Expression<Func<bodyrlqueryhashTypeInput>> bodyrlqueryhashType = null, Expression<Func<string[]>> bodyrlqueryhashes = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetHistoricalAvRecordsBulk(WorkflowExpression<postFormatInput> postFormat, WorkflowExpression<bool> history = null, WorkflowExpression<formatInput> format = null, WorkflowExpression<bodyrlqueryhashTypeInput> bodyrlqueryhashType = null, WorkflowExpression<string[]> bodyrlqueryhashes = null)
-        {
-            WorkflowExpression.Validate(postFormat, nameof(postFormat), required: true);
-            WorkflowExpression.Validate(history, nameof(history), required: false);
-            WorkflowExpression.Validate(format, nameof(format), required: false);
-            WorkflowExpression.Validate(bodyrlqueryhashType, nameof(bodyrlqueryhashType), required: false);
-            WorkflowExpression.Validate(bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
+            var __workflow_postFormat = postFormat == null ? null : WorkflowExpression.Compile(postFormat);
+            WorkflowExpression.Validate(__workflow_postFormat, nameof(postFormat), required: true);
+            var __workflow_history = history == null ? null : WorkflowExpression.Compile(history);
+            WorkflowExpression.Validate(__workflow_history, nameof(history), required: false);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
+            var __workflow_bodyrlqueryhashType = bodyrlqueryhashType == null ? null : WorkflowExpression.Compile(bodyrlqueryhashType);
+            WorkflowExpression.Validate(__workflow_bodyrlqueryhashType, nameof(bodyrlqueryhashType), required: false);
+            var __workflow_bodyrlqueryhashes = bodyrlqueryhashes == null ? null : WorkflowExpression.Compile(bodyrlqueryhashes);
+            WorkflowExpression.Validate(__workflow_bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/xref/v2/bulk_query/{0}", ExpressionConverter.ConvertWithUrlEncoding(postFormat, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/xref/v2/bulk_query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_postFormat, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (history != null)
-                    callPayload.Queries["history"] = ExpressionConverter.Convert(history);
+                if (__workflow_history != null)
+                    callPayload.Queries["history"] = ExpressionConverter.Convert(__workflow_history);
                 callPayload.Queries["format"] = Convert.ToString("json");
-                if (format != null)
-                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 var body = new JObject();
                 var bodypropCount = 0;
                 var rlObject = new JObject();
                 var rlObjectpropCount = 0;
                 var queryObject = new JObject();
                 var queryObjectpropCount = 0;
-                if (bodyrlqueryhashType != null)
+                if (__workflow_bodyrlqueryhashType != null)
                 {
-                    queryObject["hash_type"] = ExpressionConverter.ConvertO(bodyrlqueryhashType);
+                    queryObject["hash_type"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryhashType);
                     queryObjectpropCount++;
                 }
 
-                if (bodyrlqueryhashes != null)
+                if (__workflow_bodyrlqueryhashes != null)
                 {
-                    queryObject["hashes"] = ExpressionConverter.ConvertO(bodyrlqueryhashes);
+                    queryObject["hashes"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryhashes);
                     queryObjectpropCount++;
                 }
 
@@ -201,46 +191,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildGetFileAnalysisSingle))]
-        public IWorkflowAction GetFileAnalysisSingle([WorkflowExpression] Func<hashTypeInput> hashType, [WorkflowExpression] Func<string> hashValue, [WorkflowExpression] Func<formatInput> format = null)
+        public IWorkflowAction GetFileAnalysisSingle(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<formatInput>> format = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetFileAnalysisSingle(WorkflowExpression<hashTypeInput> hashType, WorkflowExpression<string> hashValue, WorkflowExpression<formatInput> format = null)
-        {
-            WorkflowExpression.Validate(hashType, nameof(hashType), required: true);
-            WorkflowExpression.Validate(hashValue, nameof(hashValue), required: true);
-            WorkflowExpression.Validate(format, nameof(format), required: false);
+            var __workflow_hashType = hashType == null ? null : WorkflowExpression.Compile(hashType);
+            WorkflowExpression.Validate(__workflow_hashType, nameof(hashType), required: true);
+            var __workflow_hashValue = hashValue == null ? null : WorkflowExpression.Compile(hashValue);
+            WorkflowExpression.Validate(__workflow_hashValue, nameof(hashValue), required: true);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/databrowser/rldata/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(hashValue, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/databrowser/rldata/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashValue, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
-                if (format != null)
-                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildGetFileAnalysisBulk))]
-        public IWorkflowAction GetFileAnalysisBulk([WorkflowExpression] Func<postFormatInput> postFormat, [WorkflowExpression] Func<bodyrlqueryhashTypeInput> bodyrlqueryhashType = null, [WorkflowExpression] Func<string[]> bodyrlqueryhashes = null)
+        public IWorkflowAction GetFileAnalysisBulk(Expression<Func<postFormatInput>> postFormat, Expression<Func<bodyrlqueryhashTypeInput>> bodyrlqueryhashType = null, Expression<Func<string[]>> bodyrlqueryhashes = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetFileAnalysisBulk(WorkflowExpression<postFormatInput> postFormat, WorkflowExpression<bodyrlqueryhashTypeInput> bodyrlqueryhashType = null, WorkflowExpression<string[]> bodyrlqueryhashes = null)
-        {
-            WorkflowExpression.Validate(postFormat, nameof(postFormat), required: true);
-            WorkflowExpression.Validate(bodyrlqueryhashType, nameof(bodyrlqueryhashType), required: false);
-            WorkflowExpression.Validate(bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
+            var __workflow_postFormat = postFormat == null ? null : WorkflowExpression.Compile(postFormat);
+            WorkflowExpression.Validate(__workflow_postFormat, nameof(postFormat), required: true);
+            var __workflow_bodyrlqueryhashType = bodyrlqueryhashType == null ? null : WorkflowExpression.Compile(bodyrlqueryhashType);
+            WorkflowExpression.Validate(__workflow_bodyrlqueryhashType, nameof(bodyrlqueryhashType), required: false);
+            var __workflow_bodyrlqueryhashes = bodyrlqueryhashes == null ? null : WorkflowExpression.Compile(bodyrlqueryhashes);
+            WorkflowExpression.Validate(__workflow_bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/databrowser/rldata/bulk_query/{0}", ExpressionConverter.ConvertWithUrlEncoding(postFormat, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/databrowser/rldata/bulk_query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_postFormat, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -249,15 +231,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 var rlObjectpropCount = 0;
                 var queryObject = new JObject();
                 var queryObjectpropCount = 0;
-                if (bodyrlqueryhashType != null)
+                if (__workflow_bodyrlqueryhashType != null)
                 {
-                    queryObject["hash_type"] = ExpressionConverter.ConvertO(bodyrlqueryhashType);
+                    queryObject["hash_type"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryhashType);
                     queryObjectpropCount++;
                 }
 
-                if (bodyrlqueryhashes != null)
+                if (__workflow_bodyrlqueryhashes != null)
                 {
-                    queryObject["hashes"] = ExpressionConverter.ConvertO(bodyrlqueryhashes);
+                    queryObject["hashes"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryhashes);
                     queryObjectpropCount++;
                 }
 
@@ -283,20 +265,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildGetFileAnalysisNonMaliciousSingle))]
-        public IWorkflowAction GetFileAnalysisNonMaliciousSingle([WorkflowExpression] Func<hashTypeInput> hashType, [WorkflowExpression] Func<string> hashValue)
+        public IWorkflowAction GetFileAnalysisNonMaliciousSingle(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetFileAnalysisNonMaliciousSingle(WorkflowExpression<hashTypeInput> hashType, WorkflowExpression<string> hashValue)
-        {
-            WorkflowExpression.Validate(hashType, nameof(hashType), required: true);
-            WorkflowExpression.Validate(hashValue, nameof(hashValue), required: true);
+            var __workflow_hashType = hashType == null ? null : WorkflowExpression.Compile(hashType);
+            WorkflowExpression.Validate(__workflow_hashType, nameof(hashType), required: true);
+            var __workflow_hashValue = hashValue == null ? null : WorkflowExpression.Compile(hashValue);
+            WorkflowExpression.Validate(__workflow_hashValue, nameof(hashValue), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/databrowser/rldata/goodware/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(hashValue, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/databrowser/rldata/goodware/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashValue, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -304,21 +281,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildGetFileAnalysisNonMaliciousBulk))]
-        public IWorkflowAction GetFileAnalysisNonMaliciousBulk([WorkflowExpression] Func<postFormatInput> postFormat, [WorkflowExpression] Func<bodyrlqueryhashTypeInput> bodyrlqueryhashType = null, [WorkflowExpression] Func<string[]> bodyrlqueryhashes = null)
+        public IWorkflowAction GetFileAnalysisNonMaliciousBulk(Expression<Func<postFormatInput>> postFormat, Expression<Func<bodyrlqueryhashTypeInput>> bodyrlqueryhashType = null, Expression<Func<string[]>> bodyrlqueryhashes = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetFileAnalysisNonMaliciousBulk(WorkflowExpression<postFormatInput> postFormat, WorkflowExpression<bodyrlqueryhashTypeInput> bodyrlqueryhashType = null, WorkflowExpression<string[]> bodyrlqueryhashes = null)
-        {
-            WorkflowExpression.Validate(postFormat, nameof(postFormat), required: true);
-            WorkflowExpression.Validate(bodyrlqueryhashType, nameof(bodyrlqueryhashType), required: false);
-            WorkflowExpression.Validate(bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
+            var __workflow_postFormat = postFormat == null ? null : WorkflowExpression.Compile(postFormat);
+            WorkflowExpression.Validate(__workflow_postFormat, nameof(postFormat), required: true);
+            var __workflow_bodyrlqueryhashType = bodyrlqueryhashType == null ? null : WorkflowExpression.Compile(bodyrlqueryhashType);
+            WorkflowExpression.Validate(__workflow_bodyrlqueryhashType, nameof(bodyrlqueryhashType), required: false);
+            var __workflow_bodyrlqueryhashes = bodyrlqueryhashes == null ? null : WorkflowExpression.Compile(bodyrlqueryhashes);
+            WorkflowExpression.Validate(__workflow_bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/databrowser/rldata/goodware/bulk_query/{0}", ExpressionConverter.ConvertWithUrlEncoding(postFormat, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/databrowser/rldata/goodware/bulk_query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_postFormat, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -327,15 +300,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 var rlObjectpropCount = 0;
                 var queryObject = new JObject();
                 var queryObjectpropCount = 0;
-                if (bodyrlqueryhashType != null)
+                if (__workflow_bodyrlqueryhashType != null)
                 {
-                    queryObject["hash_type"] = ExpressionConverter.ConvertO(bodyrlqueryhashType);
+                    queryObject["hash_type"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryhashType);
                     queryObjectpropCount++;
                 }
 
-                if (bodyrlqueryhashes != null)
+                if (__workflow_bodyrlqueryhashes != null)
                 {
-                    queryObject["hashes"] = ExpressionConverter.ConvertO(bodyrlqueryhashes);
+                    queryObject["hashes"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryhashes);
                     queryObjectpropCount++;
                 }
 
@@ -361,146 +334,122 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildGetDynamicAnalysisMerged))]
-        public IWorkflowAction GetDynamicAnalysisMerged([WorkflowExpression] Func<hashTypeInput> hashType, [WorkflowExpression] Func<string> hashValue, [WorkflowExpression] Func<formatInput> format = null)
+        public IWorkflowAction GetDynamicAnalysisMerged(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<formatInput>> format = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetDynamicAnalysisMerged(WorkflowExpression<hashTypeInput> hashType, WorkflowExpression<string> hashValue, WorkflowExpression<formatInput> format = null)
-        {
-            WorkflowExpression.Validate(hashType, nameof(hashType), required: true);
-            WorkflowExpression.Validate(hashValue, nameof(hashValue), required: true);
-            WorkflowExpression.Validate(format, nameof(format), required: false);
+            var __workflow_hashType = hashType == null ? null : WorkflowExpression.Compile(hashType);
+            WorkflowExpression.Validate(__workflow_hashType, nameof(hashType), required: true);
+            var __workflow_hashValue = hashValue == null ? null : WorkflowExpression.Compile(hashValue);
+            WorkflowExpression.Validate(__workflow_hashValue, nameof(hashValue), required: true);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/report/v1/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(hashValue, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/report/v1/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashValue, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
-                if (format != null)
-                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildGetDynamicAnalysisLatest))]
-        public IWorkflowAction GetDynamicAnalysisLatest([WorkflowExpression] Func<hashTypeInput> hashType, [WorkflowExpression] Func<string> hashValue, [WorkflowExpression] Func<formatInput> format = null)
+        public IWorkflowAction GetDynamicAnalysisLatest(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<formatInput>> format = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetDynamicAnalysisLatest(WorkflowExpression<hashTypeInput> hashType, WorkflowExpression<string> hashValue, WorkflowExpression<formatInput> format = null)
-        {
-            WorkflowExpression.Validate(hashType, nameof(hashType), required: true);
-            WorkflowExpression.Validate(hashValue, nameof(hashValue), required: true);
-            WorkflowExpression.Validate(format, nameof(format), required: false);
+            var __workflow_hashType = hashType == null ? null : WorkflowExpression.Compile(hashType);
+            WorkflowExpression.Validate(__workflow_hashType, nameof(hashType), required: true);
+            var __workflow_hashValue = hashValue == null ? null : WorkflowExpression.Compile(hashValue);
+            WorkflowExpression.Validate(__workflow_hashValue, nameof(hashValue), required: true);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/report/v1/query/{0}/{1}/latest", ExpressionConverter.ConvertWithUrlEncoding(hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(hashValue, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/report/v1/query/{0}/{1}/latest", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashValue, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
-                if (format != null)
-                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildGetDynamicAnalysisSpecific))]
-        public IWorkflowAction GetDynamicAnalysisSpecific([WorkflowExpression] Func<hashTypeInput> hashType, [WorkflowExpression] Func<string> hashValue, [WorkflowExpression] Func<string> analysisId, [WorkflowExpression] Func<formatInput> format = null)
+        public IWorkflowAction GetDynamicAnalysisSpecific(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<string>> analysisId, Expression<Func<formatInput>> format = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetDynamicAnalysisSpecific(WorkflowExpression<hashTypeInput> hashType, WorkflowExpression<string> hashValue, WorkflowExpression<string> analysisId, WorkflowExpression<formatInput> format = null)
-        {
-            WorkflowExpression.Validate(hashType, nameof(hashType), required: true);
-            WorkflowExpression.Validate(hashValue, nameof(hashValue), required: true);
-            WorkflowExpression.Validate(analysisId, nameof(analysisId), required: true);
-            WorkflowExpression.Validate(format, nameof(format), required: false);
+            var __workflow_hashType = hashType == null ? null : WorkflowExpression.Compile(hashType);
+            WorkflowExpression.Validate(__workflow_hashType, nameof(hashType), required: true);
+            var __workflow_hashValue = hashValue == null ? null : WorkflowExpression.Compile(hashValue);
+            WorkflowExpression.Validate(__workflow_hashValue, nameof(hashValue), required: true);
+            var __workflow_analysisId = analysisId == null ? null : WorkflowExpression.Compile(analysisId);
+            WorkflowExpression.Validate(__workflow_analysisId, nameof(analysisId), required: true);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/report/v1/query/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(hashValue, 1), ExpressionConverter.ConvertWithUrlEncoding(analysisId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/report/v1/query/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashValue, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_analysisId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
-                if (format != null)
-                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildGetDynamicAnalysisArchiveMerged))]
-        public IWorkflowAction GetDynamicAnalysisArchiveMerged([WorkflowExpression] Func<hashTypeInput> hashType, [WorkflowExpression] Func<string> hashValue, [WorkflowExpression] Func<formatInput> format = null)
+        public IWorkflowAction GetDynamicAnalysisArchiveMerged(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<formatInput>> format = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetDynamicAnalysisArchiveMerged(WorkflowExpression<hashTypeInput> hashType, WorkflowExpression<string> hashValue, WorkflowExpression<formatInput> format = null)
-        {
-            WorkflowExpression.Validate(hashType, nameof(hashType), required: true);
-            WorkflowExpression.Validate(hashValue, nameof(hashValue), required: true);
-            WorkflowExpression.Validate(format, nameof(format), required: false);
+            var __workflow_hashType = hashType == null ? null : WorkflowExpression.Compile(hashType);
+            WorkflowExpression.Validate(__workflow_hashType, nameof(hashType), required: true);
+            var __workflow_hashValue = hashValue == null ? null : WorkflowExpression.Compile(hashValue);
+            WorkflowExpression.Validate(__workflow_hashValue, nameof(hashValue), required: true);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/report/v1/archive/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(hashValue, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/report/v1/archive/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashValue, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
-                if (format != null)
-                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildGetDynamicAnalysisArchiveLatest))]
-        public IWorkflowAction GetDynamicAnalysisArchiveLatest([WorkflowExpression] Func<hashTypeInput> hashType, [WorkflowExpression] Func<string> hashValue, [WorkflowExpression] Func<formatInput> format = null)
+        public IWorkflowAction GetDynamicAnalysisArchiveLatest(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<formatInput>> format = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetDynamicAnalysisArchiveLatest(WorkflowExpression<hashTypeInput> hashType, WorkflowExpression<string> hashValue, WorkflowExpression<formatInput> format = null)
-        {
-            WorkflowExpression.Validate(hashType, nameof(hashType), required: true);
-            WorkflowExpression.Validate(hashValue, nameof(hashValue), required: true);
-            WorkflowExpression.Validate(format, nameof(format), required: false);
+            var __workflow_hashType = hashType == null ? null : WorkflowExpression.Compile(hashType);
+            WorkflowExpression.Validate(__workflow_hashType, nameof(hashType), required: true);
+            var __workflow_hashValue = hashValue == null ? null : WorkflowExpression.Compile(hashValue);
+            WorkflowExpression.Validate(__workflow_hashValue, nameof(hashValue), required: true);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/report/v1/archive/query/{0}/{1}/latest", ExpressionConverter.ConvertWithUrlEncoding(hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(hashValue, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/report/v1/archive/query/{0}/{1}/latest", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashValue, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
-                if (format != null)
-                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildDownloadSample))]
-        public IWorkflowAction DownloadSample([WorkflowExpression] Func<hashTypeInput> hashType, [WorkflowExpression] Func<string> hashValue)
+        public IWorkflowAction DownloadSample(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDownloadSample(WorkflowExpression<hashTypeInput> hashType, WorkflowExpression<string> hashValue)
-        {
-            WorkflowExpression.Validate(hashType, nameof(hashType), required: true);
-            WorkflowExpression.Validate(hashValue, nameof(hashValue), required: true);
+            var __workflow_hashType = hashType == null ? null : WorkflowExpression.Compile(hashType);
+            WorkflowExpression.Validate(__workflow_hashType, nameof(hashType), required: true);
+            var __workflow_hashValue = hashValue == null ? null : WorkflowExpression.Compile(hashValue);
+            WorkflowExpression.Validate(__workflow_hashValue, nameof(hashValue), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/spex/download/v2/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(hashValue, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/spex/download/v2/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashValue, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -508,46 +457,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildGetSampleDownloadStatus))]
-        public IWorkflowAction GetSampleDownloadStatus([WorkflowExpression] Func<postFormatInput> postFormat, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<bodyrlqueryhashTypeInput> bodyrlqueryhashType = null, [WorkflowExpression] Func<string[]> bodyrlqueryhashes = null)
+        public IWorkflowAction GetSampleDownloadStatus(Expression<Func<postFormatInput>> postFormat, Expression<Func<formatInput>> format = null, Expression<Func<string>> contentType = null, Expression<Func<bodyrlqueryhashTypeInput>> bodyrlqueryhashType = null, Expression<Func<string[]>> bodyrlqueryhashes = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetSampleDownloadStatus(WorkflowExpression<postFormatInput> postFormat, WorkflowExpression<formatInput> format = null, WorkflowExpression<string> contentType = null, WorkflowExpression<bodyrlqueryhashTypeInput> bodyrlqueryhashType = null, WorkflowExpression<string[]> bodyrlqueryhashes = null)
-        {
-            WorkflowExpression.Validate(postFormat, nameof(postFormat), required: true);
-            WorkflowExpression.Validate(format, nameof(format), required: false);
-            WorkflowExpression.Validate(contentType, nameof(contentType), required: false);
-            WorkflowExpression.Validate(bodyrlqueryhashType, nameof(bodyrlqueryhashType), required: false);
-            WorkflowExpression.Validate(bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
+            var __workflow_postFormat = postFormat == null ? null : WorkflowExpression.Compile(postFormat);
+            WorkflowExpression.Validate(__workflow_postFormat, nameof(postFormat), required: true);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
+            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
+            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
+            var __workflow_bodyrlqueryhashType = bodyrlqueryhashType == null ? null : WorkflowExpression.Compile(bodyrlqueryhashType);
+            WorkflowExpression.Validate(__workflow_bodyrlqueryhashType, nameof(bodyrlqueryhashType), required: false);
+            var __workflow_bodyrlqueryhashes = bodyrlqueryhashes == null ? null : WorkflowExpression.Compile(bodyrlqueryhashes);
+            WorkflowExpression.Validate(__workflow_bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/spex/download/v2/status/bulk_query/{0}", ExpressionConverter.ConvertWithUrlEncoding(postFormat, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/spex/download/v2/status/bulk_query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_postFormat, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
-                if (format != null)
-                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/octet-stream");
-                if (contentType != null)
-                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                if (__workflow_contentType != null)
+                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 var body = new JObject();
                 var bodypropCount = 0;
                 var rlObject = new JObject();
                 var rlObjectpropCount = 0;
                 var queryObject = new JObject();
                 var queryObjectpropCount = 0;
-                if (bodyrlqueryhashType != null)
+                if (__workflow_bodyrlqueryhashType != null)
                 {
-                    queryObject["hash_type"] = ExpressionConverter.ConvertO(bodyrlqueryhashType);
+                    queryObject["hash_type"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryhashType);
                     queryObjectpropCount++;
                 }
 
-                if (bodyrlqueryhashes != null)
+                if (__workflow_bodyrlqueryhashes != null)
                 {
-                    queryObject["hashes"] = ExpressionConverter.ConvertO(bodyrlqueryhashes);
+                    queryObject["hashes"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryhashes);
                     queryObjectpropCount++;
                 }
 
@@ -573,23 +520,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildUploadSample))]
-        public IWorkflowAction UploadSample([WorkflowExpression] Func<string> sha1Value, [WorkflowExpression] Func<string> contentType)
+        public IWorkflowAction UploadSample(Expression<Func<string>> sha1Value, Expression<Func<string>> contentType)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildUploadSample(WorkflowExpression<string> sha1Value, WorkflowExpression<string> contentType)
-        {
-            WorkflowExpression.Validate(sha1Value, nameof(sha1Value), required: true);
-            WorkflowExpression.Validate(contentType, nameof(contentType), required: true);
+            var __workflow_sha1Value = sha1Value == null ? null : WorkflowExpression.Compile(sha1Value);
+            WorkflowExpression.Validate(__workflow_sha1Value, nameof(sha1Value), required: true);
+            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
+            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/spex/upload/{0}", ExpressionConverter.ConvertWithUrlEncoding(sha1Value, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/spex/upload/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sha1Value, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 var body = new JObject();
                 var bodypropCount = 0;
                 if (bodypropCount > 0)
@@ -602,73 +544,63 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildUploadSampleMetadata))]
-        public IWorkflowAction UploadSampleMetadata([WorkflowExpression] Func<string> sha1Value, [WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> subscribe = null, [WorkflowExpression] Func<string> body = null)
+        public IWorkflowAction UploadSampleMetadata(Expression<Func<string>> sha1Value, Expression<Func<string>> contentType, Expression<Func<string>> subscribe = null, Expression<Func<string>> body = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildUploadSampleMetadata(WorkflowExpression<string> sha1Value, WorkflowExpression<string> contentType, WorkflowExpression<string> subscribe = null, WorkflowExpression<string> body = null)
-        {
-            WorkflowExpression.Validate(sha1Value, nameof(sha1Value), required: true);
-            WorkflowExpression.Validate(contentType, nameof(contentType), required: true);
-            WorkflowExpression.Validate(subscribe, nameof(subscribe), required: false);
-            WorkflowExpression.Validate(body, nameof(body), required: false);
+            var __workflow_sha1Value = sha1Value == null ? null : WorkflowExpression.Compile(sha1Value);
+            WorkflowExpression.Validate(__workflow_sha1Value, nameof(sha1Value), required: true);
+            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
+            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: true);
+            var __workflow_subscribe = subscribe == null ? null : WorkflowExpression.Compile(subscribe);
+            WorkflowExpression.Validate(__workflow_subscribe, nameof(subscribe), required: false);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/spex/upload/{0}/meta", ExpressionConverter.ConvertWithUrlEncoding(sha1Value, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/spex/upload/{0}/meta", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sha1Value, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (subscribe != null)
-                    callPayload.Queries["subscribe"] = ExpressionConverter.Convert(subscribe);
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                if (__workflow_subscribe != null)
+                    callPayload.Queries["subscribe"] = ExpressionConverter.Convert(__workflow_subscribe);
+                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteSampleSingle))]
-        public IWorkflowAction DeleteSampleSingle([WorkflowExpression] Func<hashTypeInput> hashType, [WorkflowExpression] Func<string> hashValue, [WorkflowExpression] Func<string> deleteOn = null)
+        public IWorkflowAction DeleteSampleSingle(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<string>> deleteOn = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDeleteSampleSingle(WorkflowExpression<hashTypeInput> hashType, WorkflowExpression<string> hashValue, WorkflowExpression<string> deleteOn = null)
-        {
-            WorkflowExpression.Validate(hashType, nameof(hashType), required: true);
-            WorkflowExpression.Validate(hashValue, nameof(hashValue), required: true);
-            WorkflowExpression.Validate(deleteOn, nameof(deleteOn), required: false);
+            var __workflow_hashType = hashType == null ? null : WorkflowExpression.Compile(hashType);
+            WorkflowExpression.Validate(__workflow_hashType, nameof(hashType), required: true);
+            var __workflow_hashValue = hashValue == null ? null : WorkflowExpression.Compile(hashValue);
+            WorkflowExpression.Validate(__workflow_hashValue, nameof(hashValue), required: true);
+            var __workflow_deleteOn = deleteOn == null ? null : WorkflowExpression.Compile(deleteOn);
+            WorkflowExpression.Validate(__workflow_deleteOn, nameof(deleteOn), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/delete/sample/v1/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(hashValue, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/delete/sample/v1/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashValue, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (deleteOn != null)
-                    callPayload.Queries["delete_on"] = ExpressionConverter.Convert(deleteOn);
+                if (__workflow_deleteOn != null)
+                    callPayload.Queries["delete_on"] = ExpressionConverter.Convert(__workflow_deleteOn);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteSamplesBulk))]
-        public IWorkflowAction DeleteSamplesBulk([WorkflowExpression] Func<postFormatInput> postFormat, [WorkflowExpression] Func<bodyrlqueryhashTypeInput> bodyrlqueryhashType = null, [WorkflowExpression] Func<string> bodyrlquerydeleteOn = null, [WorkflowExpression] Func<string[]> bodyrlqueryhashes = null)
+        public IWorkflowAction DeleteSamplesBulk(Expression<Func<postFormatInput>> postFormat, Expression<Func<bodyrlqueryhashTypeInput>> bodyrlqueryhashType = null, Expression<Func<string>> bodyrlquerydeleteOn = null, Expression<Func<string[]>> bodyrlqueryhashes = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDeleteSamplesBulk(WorkflowExpression<postFormatInput> postFormat, WorkflowExpression<bodyrlqueryhashTypeInput> bodyrlqueryhashType = null, WorkflowExpression<string> bodyrlquerydeleteOn = null, WorkflowExpression<string[]> bodyrlqueryhashes = null)
-        {
-            WorkflowExpression.Validate(postFormat, nameof(postFormat), required: true);
-            WorkflowExpression.Validate(bodyrlqueryhashType, nameof(bodyrlqueryhashType), required: false);
-            WorkflowExpression.Validate(bodyrlquerydeleteOn, nameof(bodyrlquerydeleteOn), required: false);
-            WorkflowExpression.Validate(bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
+            var __workflow_postFormat = postFormat == null ? null : WorkflowExpression.Compile(postFormat);
+            WorkflowExpression.Validate(__workflow_postFormat, nameof(postFormat), required: true);
+            var __workflow_bodyrlqueryhashType = bodyrlqueryhashType == null ? null : WorkflowExpression.Compile(bodyrlqueryhashType);
+            WorkflowExpression.Validate(__workflow_bodyrlqueryhashType, nameof(bodyrlqueryhashType), required: false);
+            var __workflow_bodyrlquerydeleteOn = bodyrlquerydeleteOn == null ? null : WorkflowExpression.Compile(bodyrlquerydeleteOn);
+            WorkflowExpression.Validate(__workflow_bodyrlquerydeleteOn, nameof(bodyrlquerydeleteOn), required: false);
+            var __workflow_bodyrlqueryhashes = bodyrlqueryhashes == null ? null : WorkflowExpression.Compile(bodyrlqueryhashes);
+            WorkflowExpression.Validate(__workflow_bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/delete/sample/v1/bulk_query/{0}", ExpressionConverter.ConvertWithUrlEncoding(postFormat, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/delete/sample/v1/bulk_query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_postFormat, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -677,21 +609,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 var rlObjectpropCount = 0;
                 var queryObject = new JObject();
                 var queryObjectpropCount = 0;
-                if (bodyrlqueryhashType != null)
+                if (__workflow_bodyrlqueryhashType != null)
                 {
-                    queryObject["hash_type"] = ExpressionConverter.ConvertO(bodyrlqueryhashType);
+                    queryObject["hash_type"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryhashType);
                     queryObjectpropCount++;
                 }
 
-                if (bodyrlquerydeleteOn != null)
+                if (__workflow_bodyrlquerydeleteOn != null)
                 {
-                    queryObject["delete_on"] = ExpressionConverter.ConvertO(bodyrlquerydeleteOn);
+                    queryObject["delete_on"] = ExpressionConverter.ConvertO(__workflow_bodyrlquerydeleteOn);
                     queryObjectpropCount++;
                 }
 
-                if (bodyrlqueryhashes != null)
+                if (__workflow_bodyrlqueryhashes != null)
                 {
-                    queryObject["hashes"] = ExpressionConverter.ConvertO(bodyrlqueryhashes);
+                    queryObject["hashes"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryhashes);
                     queryObjectpropCount++;
                 }
 
@@ -717,20 +649,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildReanalyzeSampleSingle))]
-        public IWorkflowAction ReanalyzeSampleSingle([WorkflowExpression] Func<hashTypeInput> hashType, [WorkflowExpression] Func<string> hashValue)
+        public IWorkflowAction ReanalyzeSampleSingle(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildReanalyzeSampleSingle(WorkflowExpression<hashTypeInput> hashType, WorkflowExpression<string> hashValue)
-        {
-            WorkflowExpression.Validate(hashType, nameof(hashType), required: true);
-            WorkflowExpression.Validate(hashValue, nameof(hashValue), required: true);
+            var __workflow_hashType = hashType == null ? null : WorkflowExpression.Compile(hashType);
+            WorkflowExpression.Validate(__workflow_hashType, nameof(hashType), required: true);
+            var __workflow_hashValue = hashValue == null ? null : WorkflowExpression.Compile(hashValue);
+            WorkflowExpression.Validate(__workflow_hashValue, nameof(hashValue), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/rescan/v1/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(hashValue, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/rescan/v1/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashValue, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -738,42 +665,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildReanalyzeSampleBulk))]
-        public IWorkflowAction ReanalyzeSampleBulk([WorkflowExpression] Func<postFormatInput> postFormat, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<bodyrlqueryhashTypeInput> bodyrlqueryhashType = null, [WorkflowExpression] Func<string[]> bodyrlqueryhashes = null)
+        public IWorkflowAction ReanalyzeSampleBulk(Expression<Func<postFormatInput>> postFormat, Expression<Func<formatInput>> format = null, Expression<Func<bodyrlqueryhashTypeInput>> bodyrlqueryhashType = null, Expression<Func<string[]>> bodyrlqueryhashes = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildReanalyzeSampleBulk(WorkflowExpression<postFormatInput> postFormat, WorkflowExpression<formatInput> format = null, WorkflowExpression<bodyrlqueryhashTypeInput> bodyrlqueryhashType = null, WorkflowExpression<string[]> bodyrlqueryhashes = null)
-        {
-            WorkflowExpression.Validate(postFormat, nameof(postFormat), required: true);
-            WorkflowExpression.Validate(format, nameof(format), required: false);
-            WorkflowExpression.Validate(bodyrlqueryhashType, nameof(bodyrlqueryhashType), required: false);
-            WorkflowExpression.Validate(bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
+            var __workflow_postFormat = postFormat == null ? null : WorkflowExpression.Compile(postFormat);
+            WorkflowExpression.Validate(__workflow_postFormat, nameof(postFormat), required: true);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
+            var __workflow_bodyrlqueryhashType = bodyrlqueryhashType == null ? null : WorkflowExpression.Compile(bodyrlqueryhashType);
+            WorkflowExpression.Validate(__workflow_bodyrlqueryhashType, nameof(bodyrlqueryhashType), required: false);
+            var __workflow_bodyrlqueryhashes = bodyrlqueryhashes == null ? null : WorkflowExpression.Compile(bodyrlqueryhashes);
+            WorkflowExpression.Validate(__workflow_bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/rescan/v1/bulk_query/{0}", ExpressionConverter.ConvertWithUrlEncoding(postFormat, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/rescan/v1/bulk_query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_postFormat, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
-                if (format != null)
-                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 var body = new JObject();
                 var bodypropCount = 0;
                 var rlObject = new JObject();
                 var rlObjectpropCount = 0;
                 var queryObject = new JObject();
                 var queryObjectpropCount = 0;
-                if (bodyrlqueryhashType != null)
+                if (__workflow_bodyrlqueryhashType != null)
                 {
-                    queryObject["hash_type"] = ExpressionConverter.ConvertO(bodyrlqueryhashType);
+                    queryObject["hash_type"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryhashType);
                     queryObjectpropCount++;
                 }
 
-                if (bodyrlqueryhashes != null)
+                if (__workflow_bodyrlqueryhashes != null)
                 {
-                    queryObject["hashes"] = ExpressionConverter.ConvertO(bodyrlqueryhashes);
+                    queryObject["hashes"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryhashes);
                     queryObjectpropCount++;
                 }
 
@@ -799,21 +723,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildSubscribeToReputationChanges))]
-        public IWorkflowAction SubscribeToReputationChanges([WorkflowExpression] Func<postFormatInput> postFormat, [WorkflowExpression] Func<bodyrlqueryhashTypeInput> bodyrlqueryhashType = null, [WorkflowExpression] Func<string[]> bodyrlqueryhashes = null)
+        public IWorkflowAction SubscribeToReputationChanges(Expression<Func<postFormatInput>> postFormat, Expression<Func<bodyrlqueryhashTypeInput>> bodyrlqueryhashType = null, Expression<Func<string[]>> bodyrlqueryhashes = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildSubscribeToReputationChanges(WorkflowExpression<postFormatInput> postFormat, WorkflowExpression<bodyrlqueryhashTypeInput> bodyrlqueryhashType = null, WorkflowExpression<string[]> bodyrlqueryhashes = null)
-        {
-            WorkflowExpression.Validate(postFormat, nameof(postFormat), required: true);
-            WorkflowExpression.Validate(bodyrlqueryhashType, nameof(bodyrlqueryhashType), required: false);
-            WorkflowExpression.Validate(bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
+            var __workflow_postFormat = postFormat == null ? null : WorkflowExpression.Compile(postFormat);
+            WorkflowExpression.Validate(__workflow_postFormat, nameof(postFormat), required: true);
+            var __workflow_bodyrlqueryhashType = bodyrlqueryhashType == null ? null : WorkflowExpression.Compile(bodyrlqueryhashType);
+            WorkflowExpression.Validate(__workflow_bodyrlqueryhashType, nameof(bodyrlqueryhashType), required: false);
+            var __workflow_bodyrlqueryhashes = bodyrlqueryhashes == null ? null : WorkflowExpression.Compile(bodyrlqueryhashes);
+            WorkflowExpression.Validate(__workflow_bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/subscription/data_change/v1/bulk_query/subscribe/{0}", ExpressionConverter.ConvertWithUrlEncoding(postFormat, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/subscription/data_change/v1/bulk_query/subscribe/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_postFormat, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -822,15 +742,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 var rlObjectpropCount = 0;
                 var queryObject = new JObject();
                 var queryObjectpropCount = 0;
-                if (bodyrlqueryhashType != null)
+                if (__workflow_bodyrlqueryhashType != null)
                 {
-                    queryObject["hash_type"] = ExpressionConverter.ConvertO(bodyrlqueryhashType);
+                    queryObject["hash_type"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryhashType);
                     queryObjectpropCount++;
                 }
 
-                if (bodyrlqueryhashes != null)
+                if (__workflow_bodyrlqueryhashes != null)
                 {
-                    queryObject["hashes"] = ExpressionConverter.ConvertO(bodyrlqueryhashes);
+                    queryObject["hashes"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryhashes);
                     queryObjectpropCount++;
                 }
 
@@ -856,21 +776,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildUnsubscribeFromReputationChanges))]
-        public IWorkflowAction UnsubscribeFromReputationChanges([WorkflowExpression] Func<postFormatInput> postFormat, [WorkflowExpression] Func<bodyrlqueryhashTypeInput> bodyrlqueryhashType = null, [WorkflowExpression] Func<string[]> bodyrlqueryhashes = null)
+        public IWorkflowAction UnsubscribeFromReputationChanges(Expression<Func<postFormatInput>> postFormat, Expression<Func<bodyrlqueryhashTypeInput>> bodyrlqueryhashType = null, Expression<Func<string[]>> bodyrlqueryhashes = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildUnsubscribeFromReputationChanges(WorkflowExpression<postFormatInput> postFormat, WorkflowExpression<bodyrlqueryhashTypeInput> bodyrlqueryhashType = null, WorkflowExpression<string[]> bodyrlqueryhashes = null)
-        {
-            WorkflowExpression.Validate(postFormat, nameof(postFormat), required: true);
-            WorkflowExpression.Validate(bodyrlqueryhashType, nameof(bodyrlqueryhashType), required: false);
-            WorkflowExpression.Validate(bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
+            var __workflow_postFormat = postFormat == null ? null : WorkflowExpression.Compile(postFormat);
+            WorkflowExpression.Validate(__workflow_postFormat, nameof(postFormat), required: true);
+            var __workflow_bodyrlqueryhashType = bodyrlqueryhashType == null ? null : WorkflowExpression.Compile(bodyrlqueryhashType);
+            WorkflowExpression.Validate(__workflow_bodyrlqueryhashType, nameof(bodyrlqueryhashType), required: false);
+            var __workflow_bodyrlqueryhashes = bodyrlqueryhashes == null ? null : WorkflowExpression.Compile(bodyrlqueryhashes);
+            WorkflowExpression.Validate(__workflow_bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/subscription/data_change/v1/bulk_query/unsubscribe/{0}", ExpressionConverter.ConvertWithUrlEncoding(postFormat, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/subscription/data_change/v1/bulk_query/unsubscribe/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_postFormat, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -879,15 +795,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 var rlObjectpropCount = 0;
                 var queryObject = new JObject();
                 var queryObjectpropCount = 0;
-                if (bodyrlqueryhashType != null)
+                if (__workflow_bodyrlqueryhashType != null)
                 {
-                    queryObject["hash_type"] = ExpressionConverter.ConvertO(bodyrlqueryhashType);
+                    queryObject["hash_type"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryhashType);
                     queryObjectpropCount++;
                 }
 
-                if (bodyrlqueryhashes != null)
+                if (__workflow_bodyrlqueryhashes != null)
                 {
-                    queryObject["hashes"] = ExpressionConverter.ConvertO(bodyrlqueryhashes);
+                    queryObject["hashes"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryhashes);
                     queryObjectpropCount++;
                 }
 
@@ -913,20 +829,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildSetStartTimeForReputationChanges))]
-        public IWorkflowAction SetStartTimeForReputationChanges([WorkflowExpression] Func<timeFormatInput> timeFormat, [WorkflowExpression] Func<string> timeValue)
+        public IWorkflowAction SetStartTimeForReputationChanges(Expression<Func<timeFormatInput>> timeFormat, Expression<Func<string>> timeValue)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildSetStartTimeForReputationChanges(WorkflowExpression<timeFormatInput> timeFormat, WorkflowExpression<string> timeValue)
-        {
-            WorkflowExpression.Validate(timeFormat, nameof(timeFormat), required: true);
-            WorkflowExpression.Validate(timeValue, nameof(timeValue), required: true);
+            var __workflow_timeFormat = timeFormat == null ? null : WorkflowExpression.Compile(timeFormat);
+            WorkflowExpression.Validate(__workflow_timeFormat, nameof(timeFormat), required: true);
+            var __workflow_timeValue = timeValue == null ? null : WorkflowExpression.Compile(timeValue);
+            WorkflowExpression.Validate(__workflow_timeValue, nameof(timeValue), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/feed/data_change/v3/start/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(timeFormat, 1), ExpressionConverter.ConvertWithUrlEncoding(timeValue, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/feed/data_change/v3/start/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_timeFormat, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_timeValue, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -934,110 +845,102 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildGetReputationDataChanges))]
-        public IWorkflowAction GetReputationDataChanges([WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<string> events = null, [WorkflowExpression] Func<int> limit = null)
+        public IWorkflowAction GetReputationDataChanges(Expression<Func<formatInput>> format = null, Expression<Func<string>> events = null, Expression<Func<int>> limit = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetReputationDataChanges(WorkflowExpression<formatInput> format = null, WorkflowExpression<string> events = null, WorkflowExpression<int> limit = null)
-        {
-            WorkflowExpression.Validate(format, nameof(format), required: false);
-            WorkflowExpression.Validate(events, nameof(events), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
+            var __workflow_events = events == null ? null : WorkflowExpression.Compile(events);
+            WorkflowExpression.Validate(__workflow_events, nameof(events), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/feed/data_change/v3/pull";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
-                if (format != null)
-                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-                if (events != null)
-                    callPayload.Queries["events"] = ExpressionConverter.Convert(events);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                if (__workflow_events != null)
+                    callPayload.Queries["events"] = ExpressionConverter.Convert(__workflow_events);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildGetContinuousReputationDataChanges))]
-        public IWorkflowAction GetContinuousReputationDataChanges([WorkflowExpression] Func<timeFormatInput> timeFormat, [WorkflowExpression] Func<string> timeValue, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<string> events = null)
+        public IWorkflowAction GetContinuousReputationDataChanges(Expression<Func<timeFormatInput>> timeFormat, Expression<Func<string>> timeValue, Expression<Func<formatInput>> format = null, Expression<Func<string>> events = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetContinuousReputationDataChanges(WorkflowExpression<timeFormatInput> timeFormat, WorkflowExpression<string> timeValue, WorkflowExpression<formatInput> format = null, WorkflowExpression<string> events = null)
-        {
-            WorkflowExpression.Validate(timeFormat, nameof(timeFormat), required: true);
-            WorkflowExpression.Validate(timeValue, nameof(timeValue), required: true);
-            WorkflowExpression.Validate(format, nameof(format), required: false);
-            WorkflowExpression.Validate(events, nameof(events), required: false);
+            var __workflow_timeFormat = timeFormat == null ? null : WorkflowExpression.Compile(timeFormat);
+            WorkflowExpression.Validate(__workflow_timeFormat, nameof(timeFormat), required: true);
+            var __workflow_timeValue = timeValue == null ? null : WorkflowExpression.Compile(timeValue);
+            WorkflowExpression.Validate(__workflow_timeValue, nameof(timeValue), required: true);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
+            var __workflow_events = events == null ? null : WorkflowExpression.Compile(events);
+            WorkflowExpression.Validate(__workflow_events, nameof(events), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/feed/data_change/v3/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(timeFormat, 1), ExpressionConverter.ConvertWithUrlEncoding(timeValue, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/feed/data_change/v3/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_timeFormat, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_timeValue, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
-                if (format != null)
-                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-                if (events != null)
-                    callPayload.Queries["events"] = ExpressionConverter.Convert(events);
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                if (__workflow_events != null)
+                    callPayload.Queries["events"] = ExpressionConverter.Convert(__workflow_events);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildSubmitSampleForDynamicAnalysis))]
-        public IWorkflowAction SubmitSampleForDynamicAnalysis([WorkflowExpression] Func<postFormatInput> postFormat, [WorkflowExpression] Func<string> bodyrlsha1 = null, [WorkflowExpression] Func<string> bodyrlurl = null, [WorkflowExpression] Func<string> bodyrlplatform = null, [WorkflowExpression] Func<bodyrlresponseFormatInput> bodyrlresponseFormat = null, [WorkflowExpression] Func<string> bodyrloptionalParameters = null)
+        public IWorkflowAction SubmitSampleForDynamicAnalysis(Expression<Func<postFormatInput>> postFormat, Expression<Func<string>> bodyrlsha1 = null, Expression<Func<string>> bodyrlurl = null, Expression<Func<string>> bodyrlplatform = null, Expression<Func<bodyrlresponseFormatInput>> bodyrlresponseFormat = null, Expression<Func<string>> bodyrloptionalParameters = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildSubmitSampleForDynamicAnalysis(WorkflowExpression<postFormatInput> postFormat, WorkflowExpression<string> bodyrlsha1 = null, WorkflowExpression<string> bodyrlurl = null, WorkflowExpression<string> bodyrlplatform = null, WorkflowExpression<bodyrlresponseFormatInput> bodyrlresponseFormat = null, WorkflowExpression<string> bodyrloptionalParameters = null)
-        {
-            WorkflowExpression.Validate(postFormat, nameof(postFormat), required: true);
-            WorkflowExpression.Validate(bodyrlsha1, nameof(bodyrlsha1), required: false);
-            WorkflowExpression.Validate(bodyrlurl, nameof(bodyrlurl), required: false);
-            WorkflowExpression.Validate(bodyrlplatform, nameof(bodyrlplatform), required: false);
-            WorkflowExpression.Validate(bodyrlresponseFormat, nameof(bodyrlresponseFormat), required: false);
-            WorkflowExpression.Validate(bodyrloptionalParameters, nameof(bodyrloptionalParameters), required: false);
+            var __workflow_postFormat = postFormat == null ? null : WorkflowExpression.Compile(postFormat);
+            WorkflowExpression.Validate(__workflow_postFormat, nameof(postFormat), required: true);
+            var __workflow_bodyrlsha1 = bodyrlsha1 == null ? null : WorkflowExpression.Compile(bodyrlsha1);
+            WorkflowExpression.Validate(__workflow_bodyrlsha1, nameof(bodyrlsha1), required: false);
+            var __workflow_bodyrlurl = bodyrlurl == null ? null : WorkflowExpression.Compile(bodyrlurl);
+            WorkflowExpression.Validate(__workflow_bodyrlurl, nameof(bodyrlurl), required: false);
+            var __workflow_bodyrlplatform = bodyrlplatform == null ? null : WorkflowExpression.Compile(bodyrlplatform);
+            WorkflowExpression.Validate(__workflow_bodyrlplatform, nameof(bodyrlplatform), required: false);
+            var __workflow_bodyrlresponseFormat = bodyrlresponseFormat == null ? null : WorkflowExpression.Compile(bodyrlresponseFormat);
+            WorkflowExpression.Validate(__workflow_bodyrlresponseFormat, nameof(bodyrlresponseFormat), required: false);
+            var __workflow_bodyrloptionalParameters = bodyrloptionalParameters == null ? null : WorkflowExpression.Compile(bodyrloptionalParameters);
+            WorkflowExpression.Validate(__workflow_bodyrloptionalParameters, nameof(bodyrloptionalParameters), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/analyze/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(postFormat, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/analyze/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_postFormat, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 var rlObject = new JObject();
                 var rlObjectpropCount = 0;
-                if (bodyrlsha1 != null)
+                if (__workflow_bodyrlsha1 != null)
                 {
-                    rlObject["sha1"] = ExpressionConverter.ConvertO(bodyrlsha1);
+                    rlObject["sha1"] = ExpressionConverter.ConvertO(__workflow_bodyrlsha1);
                     rlObjectpropCount++;
                 }
 
-                if (bodyrlurl != null)
+                if (__workflow_bodyrlurl != null)
                 {
-                    rlObject["url"] = ExpressionConverter.ConvertO(bodyrlurl);
+                    rlObject["url"] = ExpressionConverter.ConvertO(__workflow_bodyrlurl);
                     rlObjectpropCount++;
                 }
 
-                if (bodyrlplatform != null)
+                if (__workflow_bodyrlplatform != null)
                 {
-                    rlObject["platform"] = ExpressionConverter.ConvertO(bodyrlplatform);
+                    rlObject["platform"] = ExpressionConverter.ConvertO(__workflow_bodyrlplatform);
                     rlObjectpropCount++;
                 }
 
-                if (bodyrlresponseFormat != null)
+                if (__workflow_bodyrlresponseFormat != null)
                 {
-                    if (bodyrlresponseFormat != null)
+                    if (__workflow_bodyrlresponseFormat != null)
                     {
-                        rlObject["response_format"] = ExpressionConverter.ConvertO(bodyrlresponseFormat);
+                        rlObject["response_format"] = ExpressionConverter.ConvertO(__workflow_bodyrlresponseFormat);
                         rlObjectpropCount++;
                     }
 
@@ -1049,9 +952,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                     rlObjectpropCount++;
                 }
 
-                if (bodyrloptionalParameters != null)
+                if (__workflow_bodyrloptionalParameters != null)
                 {
-                    rlObject["optional_parameters"] = ExpressionConverter.ConvertO(bodyrloptionalParameters);
+                    rlObject["optional_parameters"] = ExpressionConverter.ConvertO(__workflow_bodyrloptionalParameters);
                     rlObjectpropCount++;
                 }
 
@@ -1071,50 +974,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildSubmitArchiveForDynamicAnalysis))]
-        public IWorkflowAction SubmitArchiveForDynamicAnalysis([WorkflowExpression] Func<postFormatInput> postFormat, [WorkflowExpression] Func<string> bodyrlsha1 = null, [WorkflowExpression] Func<string> bodyrlplatform = null, [WorkflowExpression] Func<string> bodyrlresponseFormat = null, [WorkflowExpression] Func<string> bodyrloptionalParameters = null)
+        public IWorkflowAction SubmitArchiveForDynamicAnalysis(Expression<Func<postFormatInput>> postFormat, Expression<Func<string>> bodyrlsha1 = null, Expression<Func<string>> bodyrlplatform = null, Expression<Func<string>> bodyrlresponseFormat = null, Expression<Func<string>> bodyrloptionalParameters = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildSubmitArchiveForDynamicAnalysis(WorkflowExpression<postFormatInput> postFormat, WorkflowExpression<string> bodyrlsha1 = null, WorkflowExpression<string> bodyrlplatform = null, WorkflowExpression<string> bodyrlresponseFormat = null, WorkflowExpression<string> bodyrloptionalParameters = null)
-        {
-            WorkflowExpression.Validate(postFormat, nameof(postFormat), required: true);
-            WorkflowExpression.Validate(bodyrlsha1, nameof(bodyrlsha1), required: false);
-            WorkflowExpression.Validate(bodyrlplatform, nameof(bodyrlplatform), required: false);
-            WorkflowExpression.Validate(bodyrlresponseFormat, nameof(bodyrlresponseFormat), required: false);
-            WorkflowExpression.Validate(bodyrloptionalParameters, nameof(bodyrloptionalParameters), required: false);
+            var __workflow_postFormat = postFormat == null ? null : WorkflowExpression.Compile(postFormat);
+            WorkflowExpression.Validate(__workflow_postFormat, nameof(postFormat), required: true);
+            var __workflow_bodyrlsha1 = bodyrlsha1 == null ? null : WorkflowExpression.Compile(bodyrlsha1);
+            WorkflowExpression.Validate(__workflow_bodyrlsha1, nameof(bodyrlsha1), required: false);
+            var __workflow_bodyrlplatform = bodyrlplatform == null ? null : WorkflowExpression.Compile(bodyrlplatform);
+            WorkflowExpression.Validate(__workflow_bodyrlplatform, nameof(bodyrlplatform), required: false);
+            var __workflow_bodyrlresponseFormat = bodyrlresponseFormat == null ? null : WorkflowExpression.Compile(bodyrlresponseFormat);
+            WorkflowExpression.Validate(__workflow_bodyrlresponseFormat, nameof(bodyrlresponseFormat), required: false);
+            var __workflow_bodyrloptionalParameters = bodyrloptionalParameters == null ? null : WorkflowExpression.Compile(bodyrloptionalParameters);
+            WorkflowExpression.Validate(__workflow_bodyrloptionalParameters, nameof(bodyrloptionalParameters), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/analyze/v1/archive/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(postFormat, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/analyze/v1/archive/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_postFormat, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 var rlObject = new JObject();
                 var rlObjectpropCount = 0;
-                if (bodyrlsha1 != null)
+                if (__workflow_bodyrlsha1 != null)
                 {
-                    rlObject["sha1"] = ExpressionConverter.ConvertO(bodyrlsha1);
+                    rlObject["sha1"] = ExpressionConverter.ConvertO(__workflow_bodyrlsha1);
                     rlObjectpropCount++;
                 }
 
-                if (bodyrlplatform != null)
+                if (__workflow_bodyrlplatform != null)
                 {
-                    rlObject["platform"] = ExpressionConverter.ConvertO(bodyrlplatform);
+                    rlObject["platform"] = ExpressionConverter.ConvertO(__workflow_bodyrlplatform);
                     rlObjectpropCount++;
                 }
 
-                if (bodyrlresponseFormat != null)
+                if (__workflow_bodyrlresponseFormat != null)
                 {
-                    rlObject["response_format"] = ExpressionConverter.ConvertO(bodyrlresponseFormat);
+                    rlObject["response_format"] = ExpressionConverter.ConvertO(__workflow_bodyrlresponseFormat);
                     rlObjectpropCount++;
                 }
 
-                if (bodyrloptionalParameters != null)
+                if (__workflow_bodyrloptionalParameters != null)
                 {
-                    rlObject["optional_parameters"] = ExpressionConverter.ConvertO(bodyrloptionalParameters);
+                    rlObject["optional_parameters"] = ExpressionConverter.ConvertO(__workflow_bodyrloptionalParameters);
                     rlObjectpropCount++;
                 }
 
@@ -1134,98 +1035,88 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildURIToHashSearchSha1FirstPage))]
-        public IWorkflowAction URIToHashSearchSha1FirstPage([WorkflowExpression] Func<string> uriSha1, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<string> classification = null)
+        public IWorkflowAction URIToHashSearchSha1FirstPage(Expression<Func<string>> uriSha1, Expression<Func<formatInput>> format = null, Expression<Func<string>> classification = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildURIToHashSearchSha1FirstPage(WorkflowExpression<string> uriSha1, WorkflowExpression<formatInput> format = null, WorkflowExpression<string> classification = null)
-        {
-            WorkflowExpression.Validate(uriSha1, nameof(uriSha1), required: true);
-            WorkflowExpression.Validate(format, nameof(format), required: false);
-            WorkflowExpression.Validate(classification, nameof(classification), required: false);
+            var __workflow_uriSha1 = uriSha1 == null ? null : WorkflowExpression.Compile(uriSha1);
+            WorkflowExpression.Validate(__workflow_uriSha1, nameof(uriSha1), required: true);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
+            var __workflow_classification = classification == null ? null : WorkflowExpression.Compile(classification);
+            WorkflowExpression.Validate(__workflow_classification, nameof(classification), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/uri_index/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(uriSha1, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/uri_index/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_uriSha1, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
-                if (format != null)
-                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-                if (classification != null)
-                    callPayload.Queries["classification"] = ExpressionConverter.Convert(classification);
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                if (__workflow_classification != null)
+                    callPayload.Queries["classification"] = ExpressionConverter.Convert(__workflow_classification);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildURIToHashSearchSha1Paging))]
-        public IWorkflowAction URIToHashSearchSha1Paging([WorkflowExpression] Func<string> uriSha1, [WorkflowExpression] Func<string> nextPageSha1, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<string> classification = null)
+        public IWorkflowAction URIToHashSearchSha1Paging(Expression<Func<string>> uriSha1, Expression<Func<string>> nextPageSha1, Expression<Func<formatInput>> format = null, Expression<Func<string>> classification = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildURIToHashSearchSha1Paging(WorkflowExpression<string> uriSha1, WorkflowExpression<string> nextPageSha1, WorkflowExpression<formatInput> format = null, WorkflowExpression<string> classification = null)
-        {
-            WorkflowExpression.Validate(uriSha1, nameof(uriSha1), required: true);
-            WorkflowExpression.Validate(nextPageSha1, nameof(nextPageSha1), required: true);
-            WorkflowExpression.Validate(format, nameof(format), required: false);
-            WorkflowExpression.Validate(classification, nameof(classification), required: false);
+            var __workflow_uriSha1 = uriSha1 == null ? null : WorkflowExpression.Compile(uriSha1);
+            WorkflowExpression.Validate(__workflow_uriSha1, nameof(uriSha1), required: true);
+            var __workflow_nextPageSha1 = nextPageSha1 == null ? null : WorkflowExpression.Compile(nextPageSha1);
+            WorkflowExpression.Validate(__workflow_nextPageSha1, nameof(nextPageSha1), required: true);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
+            var __workflow_classification = classification == null ? null : WorkflowExpression.Compile(classification);
+            WorkflowExpression.Validate(__workflow_classification, nameof(classification), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/uri_index/v1/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(uriSha1, 1), ExpressionConverter.ConvertWithUrlEncoding(nextPageSha1, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/uri_index/v1/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_uriSha1, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_nextPageSha1, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
-                if (format != null)
-                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-                if (classification != null)
-                    callPayload.Queries["classification"] = ExpressionConverter.Convert(classification);
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                if (__workflow_classification != null)
+                    callPayload.Queries["classification"] = ExpressionConverter.Convert(__workflow_classification);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildURIToHashSearchTextPaging))]
-        public IWorkflowAction URIToHashSearchTextPaging([WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<string> bodyrlqueryuri = null, [WorkflowExpression] Func<string> bodyrlquerynextPageSha1 = null)
+        public IWorkflowAction URIToHashSearchTextPaging(Expression<Func<string>> contentType, Expression<Func<formatInput>> format = null, Expression<Func<string>> bodyrlqueryuri = null, Expression<Func<string>> bodyrlquerynextPageSha1 = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildURIToHashSearchTextPaging(WorkflowExpression<string> contentType, WorkflowExpression<formatInput> format = null, WorkflowExpression<string> bodyrlqueryuri = null, WorkflowExpression<string> bodyrlquerynextPageSha1 = null)
-        {
-            WorkflowExpression.Validate(contentType, nameof(contentType), required: true);
-            WorkflowExpression.Validate(format, nameof(format), required: false);
-            WorkflowExpression.Validate(bodyrlqueryuri, nameof(bodyrlqueryuri), required: false);
-            WorkflowExpression.Validate(bodyrlquerynextPageSha1, nameof(bodyrlquerynextPageSha1), required: false);
+            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
+            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: true);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
+            var __workflow_bodyrlqueryuri = bodyrlqueryuri == null ? null : WorkflowExpression.Compile(bodyrlqueryuri);
+            WorkflowExpression.Validate(__workflow_bodyrlqueryuri, nameof(bodyrlqueryuri), required: false);
+            var __workflow_bodyrlquerynextPageSha1 = bodyrlquerynextPageSha1 == null ? null : WorkflowExpression.Compile(bodyrlquerynextPageSha1);
+            WorkflowExpression.Validate(__workflow_bodyrlquerynextPageSha1, nameof(bodyrlquerynextPageSha1), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/uri_index/v1/query";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
-                if (format != null)
-                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 var body = new JObject();
                 var bodypropCount = 0;
                 var rlObject = new JObject();
                 var rlObjectpropCount = 0;
                 var queryObject = new JObject();
                 var queryObjectpropCount = 0;
-                if (bodyrlqueryuri != null)
+                if (__workflow_bodyrlqueryuri != null)
                 {
-                    queryObject["uri"] = ExpressionConverter.ConvertO(bodyrlqueryuri);
+                    queryObject["uri"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryuri);
                     queryObjectpropCount++;
                 }
 
-                if (bodyrlquerynextPageSha1 != null)
+                if (__workflow_bodyrlquerynextPageSha1 != null)
                 {
-                    queryObject["next_page_sha1"] = ExpressionConverter.ConvertO(bodyrlquerynextPageSha1);
+                    queryObject["next_page_sha1"] = ExpressionConverter.ConvertO(__workflow_bodyrlquerynextPageSha1);
                     queryObjectpropCount++;
                 }
 
@@ -1251,21 +1142,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildGetURLReport))]
-        public IWorkflowAction GetURLReport([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string> bodyrlqueryurl = null, [WorkflowExpression] Func<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null)
+        public IWorkflowAction GetURLReport(Expression<Func<formatInput>> format, Expression<Func<string>> bodyrlqueryurl = null, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetURLReport(WorkflowExpression<formatInput> format, WorkflowExpression<string> bodyrlqueryurl = null, WorkflowExpression<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null)
-        {
-            WorkflowExpression.Validate(format, nameof(format), required: true);
-            WorkflowExpression.Validate(bodyrlqueryurl, nameof(bodyrlqueryurl), required: false);
-            WorkflowExpression.Validate(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: true);
+            var __workflow_bodyrlqueryurl = bodyrlqueryurl == null ? null : WorkflowExpression.Compile(bodyrlqueryurl);
+            WorkflowExpression.Validate(__workflow_bodyrlqueryurl, nameof(bodyrlqueryurl), required: false);
+            var __workflow_bodyrlqueryresponseFormat = bodyrlqueryresponseFormat == null ? null : WorkflowExpression.Compile(bodyrlqueryresponseFormat);
+            WorkflowExpression.Validate(__workflow_bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/url/v1/report/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(format, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/url/v1/report/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -1274,15 +1161,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 var rlObjectpropCount = 0;
                 var queryObject = new JObject();
                 var queryObjectpropCount = 0;
-                if (bodyrlqueryurl != null)
+                if (__workflow_bodyrlqueryurl != null)
                 {
-                    queryObject["url"] = ExpressionConverter.ConvertO(bodyrlqueryurl);
+                    queryObject["url"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryurl);
                     queryObjectpropCount++;
                 }
 
-                if (bodyrlqueryresponseFormat != null)
+                if (__workflow_bodyrlqueryresponseFormat != null)
                 {
-                    queryObject["response_format"] = ExpressionConverter.ConvertO(bodyrlqueryresponseFormat);
+                    queryObject["response_format"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryresponseFormat);
                     queryObjectpropCount++;
                 }
 
@@ -1308,27 +1195,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildListFilesFromURL))]
-        public IWorkflowAction ListFilesFromURL([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string> bodyrlqueryurl = null, [WorkflowExpression] Func<string> bodyrlqueryanalysisId = null, [WorkflowExpression] Func<bool> bodyrlquerylastAnalysis = null, [WorkflowExpression] Func<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null, [WorkflowExpression] Func<int> bodyrlquerylimit = null, [WorkflowExpression] Func<bool> bodyrlqueryextended = null, [WorkflowExpression] Func<string> bodyrlqueryclassification = null, [WorkflowExpression] Func<string> bodyrlquerypage = null)
+        public IWorkflowAction ListFilesFromURL(Expression<Func<formatInput>> format, Expression<Func<string>> bodyrlqueryurl = null, Expression<Func<string>> bodyrlqueryanalysisId = null, Expression<Func<bool>> bodyrlquerylastAnalysis = null, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null, Expression<Func<int>> bodyrlquerylimit = null, Expression<Func<bool>> bodyrlqueryextended = null, Expression<Func<string>> bodyrlqueryclassification = null, Expression<Func<string>> bodyrlquerypage = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildListFilesFromURL(WorkflowExpression<formatInput> format, WorkflowExpression<string> bodyrlqueryurl = null, WorkflowExpression<string> bodyrlqueryanalysisId = null, WorkflowExpression<bool> bodyrlquerylastAnalysis = null, WorkflowExpression<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null, WorkflowExpression<int> bodyrlquerylimit = null, WorkflowExpression<bool> bodyrlqueryextended = null, WorkflowExpression<string> bodyrlqueryclassification = null, WorkflowExpression<string> bodyrlquerypage = null)
-        {
-            WorkflowExpression.Validate(format, nameof(format), required: true);
-            WorkflowExpression.Validate(bodyrlqueryurl, nameof(bodyrlqueryurl), required: false);
-            WorkflowExpression.Validate(bodyrlqueryanalysisId, nameof(bodyrlqueryanalysisId), required: false);
-            WorkflowExpression.Validate(bodyrlquerylastAnalysis, nameof(bodyrlquerylastAnalysis), required: false);
-            WorkflowExpression.Validate(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
-            WorkflowExpression.Validate(bodyrlquerylimit, nameof(bodyrlquerylimit), required: false);
-            WorkflowExpression.Validate(bodyrlqueryextended, nameof(bodyrlqueryextended), required: false);
-            WorkflowExpression.Validate(bodyrlqueryclassification, nameof(bodyrlqueryclassification), required: false);
-            WorkflowExpression.Validate(bodyrlquerypage, nameof(bodyrlquerypage), required: false);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: true);
+            var __workflow_bodyrlqueryurl = bodyrlqueryurl == null ? null : WorkflowExpression.Compile(bodyrlqueryurl);
+            WorkflowExpression.Validate(__workflow_bodyrlqueryurl, nameof(bodyrlqueryurl), required: false);
+            var __workflow_bodyrlqueryanalysisId = bodyrlqueryanalysisId == null ? null : WorkflowExpression.Compile(bodyrlqueryanalysisId);
+            WorkflowExpression.Validate(__workflow_bodyrlqueryanalysisId, nameof(bodyrlqueryanalysisId), required: false);
+            var __workflow_bodyrlquerylastAnalysis = bodyrlquerylastAnalysis == null ? null : WorkflowExpression.Compile(bodyrlquerylastAnalysis);
+            WorkflowExpression.Validate(__workflow_bodyrlquerylastAnalysis, nameof(bodyrlquerylastAnalysis), required: false);
+            var __workflow_bodyrlqueryresponseFormat = bodyrlqueryresponseFormat == null ? null : WorkflowExpression.Compile(bodyrlqueryresponseFormat);
+            WorkflowExpression.Validate(__workflow_bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
+            var __workflow_bodyrlquerylimit = bodyrlquerylimit == null ? null : WorkflowExpression.Compile(bodyrlquerylimit);
+            WorkflowExpression.Validate(__workflow_bodyrlquerylimit, nameof(bodyrlquerylimit), required: false);
+            var __workflow_bodyrlqueryextended = bodyrlqueryextended == null ? null : WorkflowExpression.Compile(bodyrlqueryextended);
+            WorkflowExpression.Validate(__workflow_bodyrlqueryextended, nameof(bodyrlqueryextended), required: false);
+            var __workflow_bodyrlqueryclassification = bodyrlqueryclassification == null ? null : WorkflowExpression.Compile(bodyrlqueryclassification);
+            WorkflowExpression.Validate(__workflow_bodyrlqueryclassification, nameof(bodyrlqueryclassification), required: false);
+            var __workflow_bodyrlquerypage = bodyrlquerypage == null ? null : WorkflowExpression.Compile(bodyrlquerypage);
+            WorkflowExpression.Validate(__workflow_bodyrlquerypage, nameof(bodyrlquerypage), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/url/v1/downloaded_files/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(format, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/url/v1/downloaded_files/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -1337,29 +1226,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 var rlObjectpropCount = 0;
                 var queryObject = new JObject();
                 var queryObjectpropCount = 0;
-                if (bodyrlqueryurl != null)
+                if (__workflow_bodyrlqueryurl != null)
                 {
-                    queryObject["url"] = ExpressionConverter.ConvertO(bodyrlqueryurl);
+                    queryObject["url"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryurl);
                     queryObjectpropCount++;
                 }
 
-                if (bodyrlqueryanalysisId != null)
+                if (__workflow_bodyrlqueryanalysisId != null)
                 {
-                    queryObject["analysis_id"] = ExpressionConverter.ConvertO(bodyrlqueryanalysisId);
+                    queryObject["analysis_id"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryanalysisId);
                     queryObjectpropCount++;
                 }
 
-                if (bodyrlquerylastAnalysis != null)
+                if (__workflow_bodyrlquerylastAnalysis != null)
                 {
-                    queryObject["last_analysis"] = ExpressionConverter.ConvertO(bodyrlquerylastAnalysis);
+                    queryObject["last_analysis"] = ExpressionConverter.ConvertO(__workflow_bodyrlquerylastAnalysis);
                     queryObjectpropCount++;
                 }
 
-                if (bodyrlqueryresponseFormat != null)
+                if (__workflow_bodyrlqueryresponseFormat != null)
                 {
-                    if (bodyrlqueryresponseFormat != null)
+                    if (__workflow_bodyrlqueryresponseFormat != null)
                     {
-                        queryObject["response_format"] = ExpressionConverter.ConvertO(bodyrlqueryresponseFormat);
+                        queryObject["response_format"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryresponseFormat);
                         queryObjectpropCount++;
                     }
 
@@ -1371,27 +1260,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                     queryObjectpropCount++;
                 }
 
-                if (bodyrlquerylimit != null)
+                if (__workflow_bodyrlquerylimit != null)
                 {
-                    queryObject["limit"] = ExpressionConverter.ConvertO(bodyrlquerylimit);
+                    queryObject["limit"] = ExpressionConverter.ConvertO(__workflow_bodyrlquerylimit);
                     queryObjectpropCount++;
                 }
 
-                if (bodyrlqueryextended != null)
+                if (__workflow_bodyrlqueryextended != null)
                 {
-                    queryObject["extended"] = ExpressionConverter.ConvertO(bodyrlqueryextended);
+                    queryObject["extended"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryextended);
                     queryObjectpropCount++;
                 }
 
-                if (bodyrlqueryclassification != null)
+                if (__workflow_bodyrlqueryclassification != null)
                 {
-                    queryObject["classification"] = ExpressionConverter.ConvertO(bodyrlqueryclassification);
+                    queryObject["classification"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryclassification);
                     queryObjectpropCount++;
                 }
 
-                if (bodyrlquerypage != null)
+                if (__workflow_bodyrlquerypage != null)
                 {
-                    queryObject["page"] = ExpressionConverter.ConvertO(bodyrlquerypage);
+                    queryObject["page"] = ExpressionConverter.ConvertO(__workflow_bodyrlquerypage);
                     queryObjectpropCount++;
                 }
 
@@ -1417,131 +1306,113 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildGetLatestURLAnalysesFirst))]
-        public IWorkflowAction GetLatestURLAnalysesFirst([WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<int> limit = null)
+        public IWorkflowAction GetLatestURLAnalysesFirst(Expression<Func<formatInput>> format = null, Expression<Func<int>> limit = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetLatestURLAnalysesFirst(WorkflowExpression<formatInput> format = null, WorkflowExpression<int> limit = null)
-        {
-            WorkflowExpression.Validate(format, nameof(format), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/networking/url/v1/notifications/query/latest";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
-                if (format != null)
-                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildGetLatestURLAnalysesPaging))]
-        public IWorkflowAction GetLatestURLAnalysesPaging([WorkflowExpression] Func<string> page, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<int> limit = null)
+        public IWorkflowAction GetLatestURLAnalysesPaging(Expression<Func<string>> page, Expression<Func<formatInput>> format = null, Expression<Func<int>> limit = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetLatestURLAnalysesPaging(WorkflowExpression<string> page, WorkflowExpression<formatInput> format = null, WorkflowExpression<int> limit = null)
-        {
-            WorkflowExpression.Validate(page, nameof(page), required: true);
-            WorkflowExpression.Validate(format, nameof(format), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: true);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/url/v1/notifications/query/latest/page/{0}", ExpressionConverter.ConvertWithUrlEncoding(page, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/url/v1/notifications/query/latest/page/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_page, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
-                if (format != null)
-                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildGetTimestampedURLAnalysesFirst))]
-        public IWorkflowAction GetTimestampedURLAnalysesFirst([WorkflowExpression] Func<timeFormatInput> timeFormat, [WorkflowExpression] Func<string> startTime, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<int> limit = null)
+        public IWorkflowAction GetTimestampedURLAnalysesFirst(Expression<Func<timeFormatInput>> timeFormat, Expression<Func<string>> startTime, Expression<Func<formatInput>> format = null, Expression<Func<int>> limit = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetTimestampedURLAnalysesFirst(WorkflowExpression<timeFormatInput> timeFormat, WorkflowExpression<string> startTime, WorkflowExpression<formatInput> format = null, WorkflowExpression<int> limit = null)
-        {
-            WorkflowExpression.Validate(timeFormat, nameof(timeFormat), required: true);
-            WorkflowExpression.Validate(startTime, nameof(startTime), required: true);
-            WorkflowExpression.Validate(format, nameof(format), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
+            var __workflow_timeFormat = timeFormat == null ? null : WorkflowExpression.Compile(timeFormat);
+            WorkflowExpression.Validate(__workflow_timeFormat, nameof(timeFormat), required: true);
+            var __workflow_startTime = startTime == null ? null : WorkflowExpression.Compile(startTime);
+            WorkflowExpression.Validate(__workflow_startTime, nameof(startTime), required: true);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/url/v1/notifications/query/from/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(timeFormat, 1), ExpressionConverter.ConvertWithUrlEncoding(startTime, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/url/v1/notifications/query/from/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_timeFormat, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_startTime, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
-                if (format != null)
-                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildGetTimestampedURLAnalysesPaging))]
-        public IWorkflowAction GetTimestampedURLAnalysesPaging([WorkflowExpression] Func<timeFormatInput> timeFormat, [WorkflowExpression] Func<string> startTime, [WorkflowExpression] Func<string> page, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<int> limit = null)
+        public IWorkflowAction GetTimestampedURLAnalysesPaging(Expression<Func<timeFormatInput>> timeFormat, Expression<Func<string>> startTime, Expression<Func<string>> page, Expression<Func<formatInput>> format = null, Expression<Func<int>> limit = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetTimestampedURLAnalysesPaging(WorkflowExpression<timeFormatInput> timeFormat, WorkflowExpression<string> startTime, WorkflowExpression<string> page, WorkflowExpression<formatInput> format = null, WorkflowExpression<int> limit = null)
-        {
-            WorkflowExpression.Validate(timeFormat, nameof(timeFormat), required: true);
-            WorkflowExpression.Validate(startTime, nameof(startTime), required: true);
-            WorkflowExpression.Validate(page, nameof(page), required: true);
-            WorkflowExpression.Validate(format, nameof(format), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
+            var __workflow_timeFormat = timeFormat == null ? null : WorkflowExpression.Compile(timeFormat);
+            WorkflowExpression.Validate(__workflow_timeFormat, nameof(timeFormat), required: true);
+            var __workflow_startTime = startTime == null ? null : WorkflowExpression.Compile(startTime);
+            WorkflowExpression.Validate(__workflow_startTime, nameof(startTime), required: true);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: true);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/url/v1/notifications/query/from/{0}/{1}/page/{2}", ExpressionConverter.ConvertWithUrlEncoding(timeFormat, 1), ExpressionConverter.ConvertWithUrlEncoding(startTime, 1), ExpressionConverter.ConvertWithUrlEncoding(page, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/url/v1/notifications/query/from/{0}/{1}/page/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_timeFormat, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_startTime, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_page, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
-                if (format != null)
-                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildAnalyzeURL))]
-        public IWorkflowAction AnalyzeURL([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string> bodyrlqueryurl = null, [WorkflowExpression] Func<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null)
+        public IWorkflowAction AnalyzeURL(Expression<Func<formatInput>> format, Expression<Func<string>> bodyrlqueryurl = null, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildAnalyzeURL(WorkflowExpression<formatInput> format, WorkflowExpression<string> bodyrlqueryurl = null, WorkflowExpression<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null)
-        {
-            WorkflowExpression.Validate(format, nameof(format), required: true);
-            WorkflowExpression.Validate(bodyrlqueryurl, nameof(bodyrlqueryurl), required: false);
-            WorkflowExpression.Validate(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: true);
+            var __workflow_bodyrlqueryurl = bodyrlqueryurl == null ? null : WorkflowExpression.Compile(bodyrlqueryurl);
+            WorkflowExpression.Validate(__workflow_bodyrlqueryurl, nameof(bodyrlqueryurl), required: false);
+            var __workflow_bodyrlqueryresponseFormat = bodyrlqueryresponseFormat == null ? null : WorkflowExpression.Compile(bodyrlqueryresponseFormat);
+            WorkflowExpression.Validate(__workflow_bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/url/v1/analyze/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(format, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/url/v1/analyze/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -1550,17 +1421,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 var rlObjectpropCount = 0;
                 var queryObject = new JObject();
                 var queryObjectpropCount = 0;
-                if (bodyrlqueryurl != null)
+                if (__workflow_bodyrlqueryurl != null)
                 {
-                    queryObject["url"] = ExpressionConverter.ConvertO(bodyrlqueryurl);
+                    queryObject["url"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryurl);
                     queryObjectpropCount++;
                 }
 
-                if (bodyrlqueryresponseFormat != null)
+                if (__workflow_bodyrlqueryresponseFormat != null)
                 {
-                    if (bodyrlqueryresponseFormat != null)
+                    if (__workflow_bodyrlqueryresponseFormat != null)
                     {
-                        queryObject["response_format"] = ExpressionConverter.ConvertO(bodyrlqueryresponseFormat);
+                        queryObject["response_format"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryresponseFormat);
                         queryObjectpropCount++;
                     }
 
@@ -1594,21 +1465,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildGetDomainReport))]
-        public IWorkflowAction GetDomainReport([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string> bodyrlquerydomain = null, [WorkflowExpression] Func<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null)
+        public IWorkflowAction GetDomainReport(Expression<Func<formatInput>> format, Expression<Func<string>> bodyrlquerydomain = null, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetDomainReport(WorkflowExpression<formatInput> format, WorkflowExpression<string> bodyrlquerydomain = null, WorkflowExpression<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null)
-        {
-            WorkflowExpression.Validate(format, nameof(format), required: true);
-            WorkflowExpression.Validate(bodyrlquerydomain, nameof(bodyrlquerydomain), required: false);
-            WorkflowExpression.Validate(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: true);
+            var __workflow_bodyrlquerydomain = bodyrlquerydomain == null ? null : WorkflowExpression.Compile(bodyrlquerydomain);
+            WorkflowExpression.Validate(__workflow_bodyrlquerydomain, nameof(bodyrlquerydomain), required: false);
+            var __workflow_bodyrlqueryresponseFormat = bodyrlqueryresponseFormat == null ? null : WorkflowExpression.Compile(bodyrlqueryresponseFormat);
+            WorkflowExpression.Validate(__workflow_bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/domain/report/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(format, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/domain/report/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -1617,17 +1484,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 var rlObjectpropCount = 0;
                 var queryObject = new JObject();
                 var queryObjectpropCount = 0;
-                if (bodyrlquerydomain != null)
+                if (__workflow_bodyrlquerydomain != null)
                 {
-                    queryObject["domain"] = ExpressionConverter.ConvertO(bodyrlquerydomain);
+                    queryObject["domain"] = ExpressionConverter.ConvertO(__workflow_bodyrlquerydomain);
                     queryObjectpropCount++;
                 }
 
-                if (bodyrlqueryresponseFormat != null)
+                if (__workflow_bodyrlqueryresponseFormat != null)
                 {
-                    if (bodyrlqueryresponseFormat != null)
+                    if (__workflow_bodyrlqueryresponseFormat != null)
                     {
-                        queryObject["response_format"] = ExpressionConverter.ConvertO(bodyrlqueryresponseFormat);
+                        queryObject["response_format"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryresponseFormat);
                         queryObjectpropCount++;
                     }
 
@@ -1661,25 +1528,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildListFilesFromDomain))]
-        public IWorkflowAction ListFilesFromDomain([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string> bodyrlquerydomain = null, [WorkflowExpression] Func<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null, [WorkflowExpression] Func<int> bodyrlquerylimit = null, [WorkflowExpression] Func<bool> bodyrlqueryextended = null, [WorkflowExpression] Func<string> bodyrlqueryclassification = null, [WorkflowExpression] Func<string> bodyrlquerypage = null)
+        public IWorkflowAction ListFilesFromDomain(Expression<Func<formatInput>> format, Expression<Func<string>> bodyrlquerydomain = null, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null, Expression<Func<int>> bodyrlquerylimit = null, Expression<Func<bool>> bodyrlqueryextended = null, Expression<Func<string>> bodyrlqueryclassification = null, Expression<Func<string>> bodyrlquerypage = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildListFilesFromDomain(WorkflowExpression<formatInput> format, WorkflowExpression<string> bodyrlquerydomain = null, WorkflowExpression<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null, WorkflowExpression<int> bodyrlquerylimit = null, WorkflowExpression<bool> bodyrlqueryextended = null, WorkflowExpression<string> bodyrlqueryclassification = null, WorkflowExpression<string> bodyrlquerypage = null)
-        {
-            WorkflowExpression.Validate(format, nameof(format), required: true);
-            WorkflowExpression.Validate(bodyrlquerydomain, nameof(bodyrlquerydomain), required: false);
-            WorkflowExpression.Validate(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
-            WorkflowExpression.Validate(bodyrlquerylimit, nameof(bodyrlquerylimit), required: false);
-            WorkflowExpression.Validate(bodyrlqueryextended, nameof(bodyrlqueryextended), required: false);
-            WorkflowExpression.Validate(bodyrlqueryclassification, nameof(bodyrlqueryclassification), required: false);
-            WorkflowExpression.Validate(bodyrlquerypage, nameof(bodyrlquerypage), required: false);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: true);
+            var __workflow_bodyrlquerydomain = bodyrlquerydomain == null ? null : WorkflowExpression.Compile(bodyrlquerydomain);
+            WorkflowExpression.Validate(__workflow_bodyrlquerydomain, nameof(bodyrlquerydomain), required: false);
+            var __workflow_bodyrlqueryresponseFormat = bodyrlqueryresponseFormat == null ? null : WorkflowExpression.Compile(bodyrlqueryresponseFormat);
+            WorkflowExpression.Validate(__workflow_bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
+            var __workflow_bodyrlquerylimit = bodyrlquerylimit == null ? null : WorkflowExpression.Compile(bodyrlquerylimit);
+            WorkflowExpression.Validate(__workflow_bodyrlquerylimit, nameof(bodyrlquerylimit), required: false);
+            var __workflow_bodyrlqueryextended = bodyrlqueryextended == null ? null : WorkflowExpression.Compile(bodyrlqueryextended);
+            WorkflowExpression.Validate(__workflow_bodyrlqueryextended, nameof(bodyrlqueryextended), required: false);
+            var __workflow_bodyrlqueryclassification = bodyrlqueryclassification == null ? null : WorkflowExpression.Compile(bodyrlqueryclassification);
+            WorkflowExpression.Validate(__workflow_bodyrlqueryclassification, nameof(bodyrlqueryclassification), required: false);
+            var __workflow_bodyrlquerypage = bodyrlquerypage == null ? null : WorkflowExpression.Compile(bodyrlquerypage);
+            WorkflowExpression.Validate(__workflow_bodyrlquerypage, nameof(bodyrlquerypage), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/domain/downloaded_files/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(format, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/domain/downloaded_files/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -1688,17 +1555,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 var rlObjectpropCount = 0;
                 var queryObject = new JObject();
                 var queryObjectpropCount = 0;
-                if (bodyrlquerydomain != null)
+                if (__workflow_bodyrlquerydomain != null)
                 {
-                    queryObject["domain"] = ExpressionConverter.ConvertO(bodyrlquerydomain);
+                    queryObject["domain"] = ExpressionConverter.ConvertO(__workflow_bodyrlquerydomain);
                     queryObjectpropCount++;
                 }
 
-                if (bodyrlqueryresponseFormat != null)
+                if (__workflow_bodyrlqueryresponseFormat != null)
                 {
-                    if (bodyrlqueryresponseFormat != null)
+                    if (__workflow_bodyrlqueryresponseFormat != null)
                     {
-                        queryObject["response_format"] = ExpressionConverter.ConvertO(bodyrlqueryresponseFormat);
+                        queryObject["response_format"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryresponseFormat);
                         queryObjectpropCount++;
                     }
 
@@ -1710,27 +1577,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                     queryObjectpropCount++;
                 }
 
-                if (bodyrlquerylimit != null)
+                if (__workflow_bodyrlquerylimit != null)
                 {
-                    queryObject["limit"] = ExpressionConverter.ConvertO(bodyrlquerylimit);
+                    queryObject["limit"] = ExpressionConverter.ConvertO(__workflow_bodyrlquerylimit);
                     queryObjectpropCount++;
                 }
 
-                if (bodyrlqueryextended != null)
+                if (__workflow_bodyrlqueryextended != null)
                 {
-                    queryObject["extended"] = ExpressionConverter.ConvertO(bodyrlqueryextended);
+                    queryObject["extended"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryextended);
                     queryObjectpropCount++;
                 }
 
-                if (bodyrlqueryclassification != null)
+                if (__workflow_bodyrlqueryclassification != null)
                 {
-                    queryObject["classification"] = ExpressionConverter.ConvertO(bodyrlqueryclassification);
+                    queryObject["classification"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryclassification);
                     queryObjectpropCount++;
                 }
 
-                if (bodyrlquerypage != null)
+                if (__workflow_bodyrlquerypage != null)
                 {
-                    queryObject["page"] = ExpressionConverter.ConvertO(bodyrlquerypage);
+                    queryObject["page"] = ExpressionConverter.ConvertO(__workflow_bodyrlquerypage);
                     queryObjectpropCount++;
                 }
 
@@ -1756,23 +1623,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildGetURLFromDomain))]
-        public IWorkflowAction GetURLFromDomain([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string> bodyrlquerydomain = null, [WorkflowExpression] Func<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null, [WorkflowExpression] Func<int> bodyrlquerylimit = null, [WorkflowExpression] Func<string> bodyrlquerypage = null)
+        public IWorkflowAction GetURLFromDomain(Expression<Func<formatInput>> format, Expression<Func<string>> bodyrlquerydomain = null, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null, Expression<Func<int>> bodyrlquerylimit = null, Expression<Func<string>> bodyrlquerypage = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetURLFromDomain(WorkflowExpression<formatInput> format, WorkflowExpression<string> bodyrlquerydomain = null, WorkflowExpression<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null, WorkflowExpression<int> bodyrlquerylimit = null, WorkflowExpression<string> bodyrlquerypage = null)
-        {
-            WorkflowExpression.Validate(format, nameof(format), required: true);
-            WorkflowExpression.Validate(bodyrlquerydomain, nameof(bodyrlquerydomain), required: false);
-            WorkflowExpression.Validate(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
-            WorkflowExpression.Validate(bodyrlquerylimit, nameof(bodyrlquerylimit), required: false);
-            WorkflowExpression.Validate(bodyrlquerypage, nameof(bodyrlquerypage), required: false);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: true);
+            var __workflow_bodyrlquerydomain = bodyrlquerydomain == null ? null : WorkflowExpression.Compile(bodyrlquerydomain);
+            WorkflowExpression.Validate(__workflow_bodyrlquerydomain, nameof(bodyrlquerydomain), required: false);
+            var __workflow_bodyrlqueryresponseFormat = bodyrlqueryresponseFormat == null ? null : WorkflowExpression.Compile(bodyrlqueryresponseFormat);
+            WorkflowExpression.Validate(__workflow_bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
+            var __workflow_bodyrlquerylimit = bodyrlquerylimit == null ? null : WorkflowExpression.Compile(bodyrlquerylimit);
+            WorkflowExpression.Validate(__workflow_bodyrlquerylimit, nameof(bodyrlquerylimit), required: false);
+            var __workflow_bodyrlquerypage = bodyrlquerypage == null ? null : WorkflowExpression.Compile(bodyrlquerypage);
+            WorkflowExpression.Validate(__workflow_bodyrlquerypage, nameof(bodyrlquerypage), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/domain/urls/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(format, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/domain/urls/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -1781,17 +1646,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 var rlObjectpropCount = 0;
                 var queryObject = new JObject();
                 var queryObjectpropCount = 0;
-                if (bodyrlquerydomain != null)
+                if (__workflow_bodyrlquerydomain != null)
                 {
-                    queryObject["domain"] = ExpressionConverter.ConvertO(bodyrlquerydomain);
+                    queryObject["domain"] = ExpressionConverter.ConvertO(__workflow_bodyrlquerydomain);
                     queryObjectpropCount++;
                 }
 
-                if (bodyrlqueryresponseFormat != null)
+                if (__workflow_bodyrlqueryresponseFormat != null)
                 {
-                    if (bodyrlqueryresponseFormat != null)
+                    if (__workflow_bodyrlqueryresponseFormat != null)
                     {
-                        queryObject["response_format"] = ExpressionConverter.ConvertO(bodyrlqueryresponseFormat);
+                        queryObject["response_format"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryresponseFormat);
                         queryObjectpropCount++;
                     }
 
@@ -1803,15 +1668,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                     queryObjectpropCount++;
                 }
 
-                if (bodyrlquerylimit != null)
+                if (__workflow_bodyrlquerylimit != null)
                 {
-                    queryObject["limit"] = ExpressionConverter.ConvertO(bodyrlquerylimit);
+                    queryObject["limit"] = ExpressionConverter.ConvertO(__workflow_bodyrlquerylimit);
                     queryObjectpropCount++;
                 }
 
-                if (bodyrlquerypage != null)
+                if (__workflow_bodyrlquerypage != null)
                 {
-                    queryObject["page"] = ExpressionConverter.ConvertO(bodyrlquerypage);
+                    queryObject["page"] = ExpressionConverter.ConvertO(__workflow_bodyrlquerypage);
                     queryObjectpropCount++;
                 }
 
@@ -1837,23 +1702,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildGetDomainResolutions))]
-        public IWorkflowAction GetDomainResolutions([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string> bodyrlquerydomain = null, [WorkflowExpression] Func<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null, [WorkflowExpression] Func<int> bodyrlquerylimit = null, [WorkflowExpression] Func<string> bodyrlquerypage = null)
+        public IWorkflowAction GetDomainResolutions(Expression<Func<formatInput>> format, Expression<Func<string>> bodyrlquerydomain = null, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null, Expression<Func<int>> bodyrlquerylimit = null, Expression<Func<string>> bodyrlquerypage = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetDomainResolutions(WorkflowExpression<formatInput> format, WorkflowExpression<string> bodyrlquerydomain = null, WorkflowExpression<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null, WorkflowExpression<int> bodyrlquerylimit = null, WorkflowExpression<string> bodyrlquerypage = null)
-        {
-            WorkflowExpression.Validate(format, nameof(format), required: true);
-            WorkflowExpression.Validate(bodyrlquerydomain, nameof(bodyrlquerydomain), required: false);
-            WorkflowExpression.Validate(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
-            WorkflowExpression.Validate(bodyrlquerylimit, nameof(bodyrlquerylimit), required: false);
-            WorkflowExpression.Validate(bodyrlquerypage, nameof(bodyrlquerypage), required: false);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: true);
+            var __workflow_bodyrlquerydomain = bodyrlquerydomain == null ? null : WorkflowExpression.Compile(bodyrlquerydomain);
+            WorkflowExpression.Validate(__workflow_bodyrlquerydomain, nameof(bodyrlquerydomain), required: false);
+            var __workflow_bodyrlqueryresponseFormat = bodyrlqueryresponseFormat == null ? null : WorkflowExpression.Compile(bodyrlqueryresponseFormat);
+            WorkflowExpression.Validate(__workflow_bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
+            var __workflow_bodyrlquerylimit = bodyrlquerylimit == null ? null : WorkflowExpression.Compile(bodyrlquerylimit);
+            WorkflowExpression.Validate(__workflow_bodyrlquerylimit, nameof(bodyrlquerylimit), required: false);
+            var __workflow_bodyrlquerypage = bodyrlquerypage == null ? null : WorkflowExpression.Compile(bodyrlquerypage);
+            WorkflowExpression.Validate(__workflow_bodyrlquerypage, nameof(bodyrlquerypage), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/domain/resolutions/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(format, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/domain/resolutions/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -1862,17 +1725,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 var rlObjectpropCount = 0;
                 var queryObject = new JObject();
                 var queryObjectpropCount = 0;
-                if (bodyrlquerydomain != null)
+                if (__workflow_bodyrlquerydomain != null)
                 {
-                    queryObject["domain"] = ExpressionConverter.ConvertO(bodyrlquerydomain);
+                    queryObject["domain"] = ExpressionConverter.ConvertO(__workflow_bodyrlquerydomain);
                     queryObjectpropCount++;
                 }
 
-                if (bodyrlqueryresponseFormat != null)
+                if (__workflow_bodyrlqueryresponseFormat != null)
                 {
-                    if (bodyrlqueryresponseFormat != null)
+                    if (__workflow_bodyrlqueryresponseFormat != null)
                     {
-                        queryObject["response_format"] = ExpressionConverter.ConvertO(bodyrlqueryresponseFormat);
+                        queryObject["response_format"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryresponseFormat);
                         queryObjectpropCount++;
                     }
 
@@ -1884,15 +1747,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                     queryObjectpropCount++;
                 }
 
-                if (bodyrlquerylimit != null)
+                if (__workflow_bodyrlquerylimit != null)
                 {
-                    queryObject["limit"] = ExpressionConverter.ConvertO(bodyrlquerylimit);
+                    queryObject["limit"] = ExpressionConverter.ConvertO(__workflow_bodyrlquerylimit);
                     queryObjectpropCount++;
                 }
 
-                if (bodyrlquerypage != null)
+                if (__workflow_bodyrlquerypage != null)
                 {
-                    queryObject["page"] = ExpressionConverter.ConvertO(bodyrlquerypage);
+                    queryObject["page"] = ExpressionConverter.ConvertO(__workflow_bodyrlquerypage);
                     queryObjectpropCount++;
                 }
 
@@ -1918,23 +1781,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildGetDomainRelatedDomains))]
-        public IWorkflowAction GetDomainRelatedDomains([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string> bodyrlquerydomain = null, [WorkflowExpression] Func<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null, [WorkflowExpression] Func<int> bodyrlquerylimit = null, [WorkflowExpression] Func<string> bodyrlquerypage = null)
+        public IWorkflowAction GetDomainRelatedDomains(Expression<Func<formatInput>> format, Expression<Func<string>> bodyrlquerydomain = null, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null, Expression<Func<int>> bodyrlquerylimit = null, Expression<Func<string>> bodyrlquerypage = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetDomainRelatedDomains(WorkflowExpression<formatInput> format, WorkflowExpression<string> bodyrlquerydomain = null, WorkflowExpression<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null, WorkflowExpression<int> bodyrlquerylimit = null, WorkflowExpression<string> bodyrlquerypage = null)
-        {
-            WorkflowExpression.Validate(format, nameof(format), required: true);
-            WorkflowExpression.Validate(bodyrlquerydomain, nameof(bodyrlquerydomain), required: false);
-            WorkflowExpression.Validate(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
-            WorkflowExpression.Validate(bodyrlquerylimit, nameof(bodyrlquerylimit), required: false);
-            WorkflowExpression.Validate(bodyrlquerypage, nameof(bodyrlquerypage), required: false);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: true);
+            var __workflow_bodyrlquerydomain = bodyrlquerydomain == null ? null : WorkflowExpression.Compile(bodyrlquerydomain);
+            WorkflowExpression.Validate(__workflow_bodyrlquerydomain, nameof(bodyrlquerydomain), required: false);
+            var __workflow_bodyrlqueryresponseFormat = bodyrlqueryresponseFormat == null ? null : WorkflowExpression.Compile(bodyrlqueryresponseFormat);
+            WorkflowExpression.Validate(__workflow_bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
+            var __workflow_bodyrlquerylimit = bodyrlquerylimit == null ? null : WorkflowExpression.Compile(bodyrlquerylimit);
+            WorkflowExpression.Validate(__workflow_bodyrlquerylimit, nameof(bodyrlquerylimit), required: false);
+            var __workflow_bodyrlquerypage = bodyrlquerypage == null ? null : WorkflowExpression.Compile(bodyrlquerypage);
+            WorkflowExpression.Validate(__workflow_bodyrlquerypage, nameof(bodyrlquerypage), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/domain/related_domains/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(format, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/domain/related_domains/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -1943,17 +1804,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 var rlObjectpropCount = 0;
                 var queryObject = new JObject();
                 var queryObjectpropCount = 0;
-                if (bodyrlquerydomain != null)
+                if (__workflow_bodyrlquerydomain != null)
                 {
-                    queryObject["domain"] = ExpressionConverter.ConvertO(bodyrlquerydomain);
+                    queryObject["domain"] = ExpressionConverter.ConvertO(__workflow_bodyrlquerydomain);
                     queryObjectpropCount++;
                 }
 
-                if (bodyrlqueryresponseFormat != null)
+                if (__workflow_bodyrlqueryresponseFormat != null)
                 {
-                    if (bodyrlqueryresponseFormat != null)
+                    if (__workflow_bodyrlqueryresponseFormat != null)
                     {
-                        queryObject["response_format"] = ExpressionConverter.ConvertO(bodyrlqueryresponseFormat);
+                        queryObject["response_format"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryresponseFormat);
                         queryObjectpropCount++;
                     }
 
@@ -1965,15 +1826,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                     queryObjectpropCount++;
                 }
 
-                if (bodyrlquerylimit != null)
+                if (__workflow_bodyrlquerylimit != null)
                 {
-                    queryObject["limit"] = ExpressionConverter.ConvertO(bodyrlquerylimit);
+                    queryObject["limit"] = ExpressionConverter.ConvertO(__workflow_bodyrlquerylimit);
                     queryObjectpropCount++;
                 }
 
-                if (bodyrlquerypage != null)
+                if (__workflow_bodyrlquerypage != null)
                 {
-                    queryObject["page"] = ExpressionConverter.ConvertO(bodyrlquerypage);
+                    queryObject["page"] = ExpressionConverter.ConvertO(__workflow_bodyrlquerypage);
                     queryObjectpropCount++;
                 }
 
@@ -1999,21 +1860,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildGetIPAddressReport))]
-        public IWorkflowAction GetIPAddressReport([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string> bodyrlqueryip = null, [WorkflowExpression] Func<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null)
+        public IWorkflowAction GetIPAddressReport(Expression<Func<formatInput>> format, Expression<Func<string>> bodyrlqueryip = null, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetIPAddressReport(WorkflowExpression<formatInput> format, WorkflowExpression<string> bodyrlqueryip = null, WorkflowExpression<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null)
-        {
-            WorkflowExpression.Validate(format, nameof(format), required: true);
-            WorkflowExpression.Validate(bodyrlqueryip, nameof(bodyrlqueryip), required: false);
-            WorkflowExpression.Validate(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: true);
+            var __workflow_bodyrlqueryip = bodyrlqueryip == null ? null : WorkflowExpression.Compile(bodyrlqueryip);
+            WorkflowExpression.Validate(__workflow_bodyrlqueryip, nameof(bodyrlqueryip), required: false);
+            var __workflow_bodyrlqueryresponseFormat = bodyrlqueryresponseFormat == null ? null : WorkflowExpression.Compile(bodyrlqueryresponseFormat);
+            WorkflowExpression.Validate(__workflow_bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/ip/report/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(format, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/ip/report/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -2022,17 +1879,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 var rlObjectpropCount = 0;
                 var queryObject = new JObject();
                 var queryObjectpropCount = 0;
-                if (bodyrlqueryip != null)
+                if (__workflow_bodyrlqueryip != null)
                 {
-                    queryObject["ip"] = ExpressionConverter.ConvertO(bodyrlqueryip);
+                    queryObject["ip"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryip);
                     queryObjectpropCount++;
                 }
 
-                if (bodyrlqueryresponseFormat != null)
+                if (__workflow_bodyrlqueryresponseFormat != null)
                 {
-                    if (bodyrlqueryresponseFormat != null)
+                    if (__workflow_bodyrlqueryresponseFormat != null)
                     {
-                        queryObject["response_format"] = ExpressionConverter.ConvertO(bodyrlqueryresponseFormat);
+                        queryObject["response_format"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryresponseFormat);
                         queryObjectpropCount++;
                     }
 
@@ -2066,25 +1923,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildListFilesFromIPAddress))]
-        public IWorkflowAction ListFilesFromIPAddress([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string> bodyrlqueryip = null, [WorkflowExpression] Func<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null, [WorkflowExpression] Func<int> bodyrlquerylimit = null, [WorkflowExpression] Func<bool> bodyrlqueryextended = null, [WorkflowExpression] Func<string> bodyrlqueryclassification = null, [WorkflowExpression] Func<string> bodyrlquerypage = null)
+        public IWorkflowAction ListFilesFromIPAddress(Expression<Func<formatInput>> format, Expression<Func<string>> bodyrlqueryip = null, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null, Expression<Func<int>> bodyrlquerylimit = null, Expression<Func<bool>> bodyrlqueryextended = null, Expression<Func<string>> bodyrlqueryclassification = null, Expression<Func<string>> bodyrlquerypage = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildListFilesFromIPAddress(WorkflowExpression<formatInput> format, WorkflowExpression<string> bodyrlqueryip = null, WorkflowExpression<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null, WorkflowExpression<int> bodyrlquerylimit = null, WorkflowExpression<bool> bodyrlqueryextended = null, WorkflowExpression<string> bodyrlqueryclassification = null, WorkflowExpression<string> bodyrlquerypage = null)
-        {
-            WorkflowExpression.Validate(format, nameof(format), required: true);
-            WorkflowExpression.Validate(bodyrlqueryip, nameof(bodyrlqueryip), required: false);
-            WorkflowExpression.Validate(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
-            WorkflowExpression.Validate(bodyrlquerylimit, nameof(bodyrlquerylimit), required: false);
-            WorkflowExpression.Validate(bodyrlqueryextended, nameof(bodyrlqueryextended), required: false);
-            WorkflowExpression.Validate(bodyrlqueryclassification, nameof(bodyrlqueryclassification), required: false);
-            WorkflowExpression.Validate(bodyrlquerypage, nameof(bodyrlquerypage), required: false);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: true);
+            var __workflow_bodyrlqueryip = bodyrlqueryip == null ? null : WorkflowExpression.Compile(bodyrlqueryip);
+            WorkflowExpression.Validate(__workflow_bodyrlqueryip, nameof(bodyrlqueryip), required: false);
+            var __workflow_bodyrlqueryresponseFormat = bodyrlqueryresponseFormat == null ? null : WorkflowExpression.Compile(bodyrlqueryresponseFormat);
+            WorkflowExpression.Validate(__workflow_bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
+            var __workflow_bodyrlquerylimit = bodyrlquerylimit == null ? null : WorkflowExpression.Compile(bodyrlquerylimit);
+            WorkflowExpression.Validate(__workflow_bodyrlquerylimit, nameof(bodyrlquerylimit), required: false);
+            var __workflow_bodyrlqueryextended = bodyrlqueryextended == null ? null : WorkflowExpression.Compile(bodyrlqueryextended);
+            WorkflowExpression.Validate(__workflow_bodyrlqueryextended, nameof(bodyrlqueryextended), required: false);
+            var __workflow_bodyrlqueryclassification = bodyrlqueryclassification == null ? null : WorkflowExpression.Compile(bodyrlqueryclassification);
+            WorkflowExpression.Validate(__workflow_bodyrlqueryclassification, nameof(bodyrlqueryclassification), required: false);
+            var __workflow_bodyrlquerypage = bodyrlquerypage == null ? null : WorkflowExpression.Compile(bodyrlquerypage);
+            WorkflowExpression.Validate(__workflow_bodyrlquerypage, nameof(bodyrlquerypage), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/ip/downloaded_files/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(format, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/ip/downloaded_files/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -2093,17 +1950,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 var rlObjectpropCount = 0;
                 var queryObject = new JObject();
                 var queryObjectpropCount = 0;
-                if (bodyrlqueryip != null)
+                if (__workflow_bodyrlqueryip != null)
                 {
-                    queryObject["ip"] = ExpressionConverter.ConvertO(bodyrlqueryip);
+                    queryObject["ip"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryip);
                     queryObjectpropCount++;
                 }
 
-                if (bodyrlqueryresponseFormat != null)
+                if (__workflow_bodyrlqueryresponseFormat != null)
                 {
-                    if (bodyrlqueryresponseFormat != null)
+                    if (__workflow_bodyrlqueryresponseFormat != null)
                     {
-                        queryObject["response_format"] = ExpressionConverter.ConvertO(bodyrlqueryresponseFormat);
+                        queryObject["response_format"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryresponseFormat);
                         queryObjectpropCount++;
                     }
 
@@ -2115,27 +1972,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                     queryObjectpropCount++;
                 }
 
-                if (bodyrlquerylimit != null)
+                if (__workflow_bodyrlquerylimit != null)
                 {
-                    queryObject["limit"] = ExpressionConverter.ConvertO(bodyrlquerylimit);
+                    queryObject["limit"] = ExpressionConverter.ConvertO(__workflow_bodyrlquerylimit);
                     queryObjectpropCount++;
                 }
 
-                if (bodyrlqueryextended != null)
+                if (__workflow_bodyrlqueryextended != null)
                 {
-                    queryObject["extended"] = ExpressionConverter.ConvertO(bodyrlqueryextended);
+                    queryObject["extended"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryextended);
                     queryObjectpropCount++;
                 }
 
-                if (bodyrlqueryclassification != null)
+                if (__workflow_bodyrlqueryclassification != null)
                 {
-                    queryObject["classification"] = ExpressionConverter.ConvertO(bodyrlqueryclassification);
+                    queryObject["classification"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryclassification);
                     queryObjectpropCount++;
                 }
 
-                if (bodyrlquerypage != null)
+                if (__workflow_bodyrlquerypage != null)
                 {
-                    queryObject["page"] = ExpressionConverter.ConvertO(bodyrlquerypage);
+                    queryObject["page"] = ExpressionConverter.ConvertO(__workflow_bodyrlquerypage);
                     queryObjectpropCount++;
                 }
 
@@ -2161,23 +2018,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildGetURLFromIPAddress))]
-        public IWorkflowAction GetURLFromIPAddress([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string> bodyrlqueryip = null, [WorkflowExpression] Func<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null, [WorkflowExpression] Func<int> bodyrlquerylimit = null, [WorkflowExpression] Func<string> bodyrlquerypage = null)
+        public IWorkflowAction GetURLFromIPAddress(Expression<Func<formatInput>> format, Expression<Func<string>> bodyrlqueryip = null, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null, Expression<Func<int>> bodyrlquerylimit = null, Expression<Func<string>> bodyrlquerypage = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetURLFromIPAddress(WorkflowExpression<formatInput> format, WorkflowExpression<string> bodyrlqueryip = null, WorkflowExpression<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null, WorkflowExpression<int> bodyrlquerylimit = null, WorkflowExpression<string> bodyrlquerypage = null)
-        {
-            WorkflowExpression.Validate(format, nameof(format), required: true);
-            WorkflowExpression.Validate(bodyrlqueryip, nameof(bodyrlqueryip), required: false);
-            WorkflowExpression.Validate(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
-            WorkflowExpression.Validate(bodyrlquerylimit, nameof(bodyrlquerylimit), required: false);
-            WorkflowExpression.Validate(bodyrlquerypage, nameof(bodyrlquerypage), required: false);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: true);
+            var __workflow_bodyrlqueryip = bodyrlqueryip == null ? null : WorkflowExpression.Compile(bodyrlqueryip);
+            WorkflowExpression.Validate(__workflow_bodyrlqueryip, nameof(bodyrlqueryip), required: false);
+            var __workflow_bodyrlqueryresponseFormat = bodyrlqueryresponseFormat == null ? null : WorkflowExpression.Compile(bodyrlqueryresponseFormat);
+            WorkflowExpression.Validate(__workflow_bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
+            var __workflow_bodyrlquerylimit = bodyrlquerylimit == null ? null : WorkflowExpression.Compile(bodyrlquerylimit);
+            WorkflowExpression.Validate(__workflow_bodyrlquerylimit, nameof(bodyrlquerylimit), required: false);
+            var __workflow_bodyrlquerypage = bodyrlquerypage == null ? null : WorkflowExpression.Compile(bodyrlquerypage);
+            WorkflowExpression.Validate(__workflow_bodyrlquerypage, nameof(bodyrlquerypage), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/ip/urls/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(format, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/ip/urls/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -2186,17 +2041,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 var rlObjectpropCount = 0;
                 var queryObject = new JObject();
                 var queryObjectpropCount = 0;
-                if (bodyrlqueryip != null)
+                if (__workflow_bodyrlqueryip != null)
                 {
-                    queryObject["ip"] = ExpressionConverter.ConvertO(bodyrlqueryip);
+                    queryObject["ip"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryip);
                     queryObjectpropCount++;
                 }
 
-                if (bodyrlqueryresponseFormat != null)
+                if (__workflow_bodyrlqueryresponseFormat != null)
                 {
-                    if (bodyrlqueryresponseFormat != null)
+                    if (__workflow_bodyrlqueryresponseFormat != null)
                     {
-                        queryObject["response_format"] = ExpressionConverter.ConvertO(bodyrlqueryresponseFormat);
+                        queryObject["response_format"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryresponseFormat);
                         queryObjectpropCount++;
                     }
 
@@ -2208,15 +2063,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                     queryObjectpropCount++;
                 }
 
-                if (bodyrlquerylimit != null)
+                if (__workflow_bodyrlquerylimit != null)
                 {
-                    queryObject["limit"] = ExpressionConverter.ConvertO(bodyrlquerylimit);
+                    queryObject["limit"] = ExpressionConverter.ConvertO(__workflow_bodyrlquerylimit);
                     queryObjectpropCount++;
                 }
 
-                if (bodyrlquerypage != null)
+                if (__workflow_bodyrlquerypage != null)
                 {
-                    queryObject["page"] = ExpressionConverter.ConvertO(bodyrlquerypage);
+                    queryObject["page"] = ExpressionConverter.ConvertO(__workflow_bodyrlquerypage);
                     queryObjectpropCount++;
                 }
 
@@ -2242,23 +2097,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildGetIPAddressResolutions))]
-        public IWorkflowAction GetIPAddressResolutions([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string> bodyrlqueryip = null, [WorkflowExpression] Func<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null, [WorkflowExpression] Func<int> bodyrlquerylimit = null, [WorkflowExpression] Func<string> bodyrlquerypage = null)
+        public IWorkflowAction GetIPAddressResolutions(Expression<Func<formatInput>> format, Expression<Func<string>> bodyrlqueryip = null, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null, Expression<Func<int>> bodyrlquerylimit = null, Expression<Func<string>> bodyrlquerypage = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetIPAddressResolutions(WorkflowExpression<formatInput> format, WorkflowExpression<string> bodyrlqueryip = null, WorkflowExpression<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null, WorkflowExpression<int> bodyrlquerylimit = null, WorkflowExpression<string> bodyrlquerypage = null)
-        {
-            WorkflowExpression.Validate(format, nameof(format), required: true);
-            WorkflowExpression.Validate(bodyrlqueryip, nameof(bodyrlqueryip), required: false);
-            WorkflowExpression.Validate(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
-            WorkflowExpression.Validate(bodyrlquerylimit, nameof(bodyrlquerylimit), required: false);
-            WorkflowExpression.Validate(bodyrlquerypage, nameof(bodyrlquerypage), required: false);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: true);
+            var __workflow_bodyrlqueryip = bodyrlqueryip == null ? null : WorkflowExpression.Compile(bodyrlqueryip);
+            WorkflowExpression.Validate(__workflow_bodyrlqueryip, nameof(bodyrlqueryip), required: false);
+            var __workflow_bodyrlqueryresponseFormat = bodyrlqueryresponseFormat == null ? null : WorkflowExpression.Compile(bodyrlqueryresponseFormat);
+            WorkflowExpression.Validate(__workflow_bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
+            var __workflow_bodyrlquerylimit = bodyrlquerylimit == null ? null : WorkflowExpression.Compile(bodyrlquerylimit);
+            WorkflowExpression.Validate(__workflow_bodyrlquerylimit, nameof(bodyrlquerylimit), required: false);
+            var __workflow_bodyrlquerypage = bodyrlquerypage == null ? null : WorkflowExpression.Compile(bodyrlquerypage);
+            WorkflowExpression.Validate(__workflow_bodyrlquerypage, nameof(bodyrlquerypage), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/ip/resolutions/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(format, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/ip/resolutions/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -2267,17 +2120,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 var rlObjectpropCount = 0;
                 var queryObject = new JObject();
                 var queryObjectpropCount = 0;
-                if (bodyrlqueryip != null)
+                if (__workflow_bodyrlqueryip != null)
                 {
-                    queryObject["ip"] = ExpressionConverter.ConvertO(bodyrlqueryip);
+                    queryObject["ip"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryip);
                     queryObjectpropCount++;
                 }
 
-                if (bodyrlqueryresponseFormat != null)
+                if (__workflow_bodyrlqueryresponseFormat != null)
                 {
-                    if (bodyrlqueryresponseFormat != null)
+                    if (__workflow_bodyrlqueryresponseFormat != null)
                     {
-                        queryObject["response_format"] = ExpressionConverter.ConvertO(bodyrlqueryresponseFormat);
+                        queryObject["response_format"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryresponseFormat);
                         queryObjectpropCount++;
                     }
 
@@ -2289,15 +2142,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                     queryObjectpropCount++;
                 }
 
-                if (bodyrlquerylimit != null)
+                if (__workflow_bodyrlquerylimit != null)
                 {
-                    queryObject["limit"] = ExpressionConverter.ConvertO(bodyrlquerylimit);
+                    queryObject["limit"] = ExpressionConverter.ConvertO(__workflow_bodyrlquerylimit);
                     queryObjectpropCount++;
                 }
 
-                if (bodyrlquerypage != null)
+                if (__workflow_bodyrlquerypage != null)
                 {
-                    queryObject["page"] = ExpressionConverter.ConvertO(bodyrlquerypage);
+                    queryObject["page"] = ExpressionConverter.ConvertO(__workflow_bodyrlquerypage);
                     queryObjectpropCount++;
                 }
 
@@ -2323,264 +2176,218 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildDailyAPIUsageUser))]
-        public IWorkflowAction DailyAPIUsageUser([WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<string> date = null, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> to = null)
+        public IWorkflowAction DailyAPIUsageUser(Expression<Func<formatInput>> format = null, Expression<Func<string>> date = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDailyAPIUsageUser(WorkflowExpression<formatInput> format = null, WorkflowExpression<string> date = null, WorkflowExpression<string> from = null, WorkflowExpression<string> to = null)
-        {
-            WorkflowExpression.Validate(format, nameof(format), required: false);
-            WorkflowExpression.Validate(date, nameof(date), required: false);
-            WorkflowExpression.Validate(from, nameof(from), required: false);
-            WorkflowExpression.Validate(to, nameof(to), required: false);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
+            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
+            WorkflowExpression.Validate(__workflow_date, nameof(date), required: false);
+            var __workflow_from = from == null ? null : WorkflowExpression.Compile(from);
+            WorkflowExpression.Validate(__workflow_from, nameof(from), required: false);
+            var __workflow_to = to == null ? null : WorkflowExpression.Compile(to);
+            WorkflowExpression.Validate(__workflow_to, nameof(to), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/customer_usage/v1/usage/daily";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
-                if (format != null)
-                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-                if (date != null)
-                    callPayload.Queries["date"] = ExpressionConverter.Convert(date);
-                if (from != null)
-                    callPayload.Queries["from"] = ExpressionConverter.Convert(from);
-                if (to != null)
-                    callPayload.Queries["to"] = ExpressionConverter.Convert(to);
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                if (__workflow_date != null)
+                    callPayload.Queries["date"] = ExpressionConverter.Convert(__workflow_date);
+                if (__workflow_from != null)
+                    callPayload.Queries["from"] = ExpressionConverter.Convert(__workflow_from);
+                if (__workflow_to != null)
+                    callPayload.Queries["to"] = ExpressionConverter.Convert(__workflow_to);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildDailyAPIUsageCompany))]
-        public IWorkflowAction DailyAPIUsageCompany([WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<string> date = null, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> to = null)
+        public IWorkflowAction DailyAPIUsageCompany(Expression<Func<formatInput>> format = null, Expression<Func<string>> date = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDailyAPIUsageCompany(WorkflowExpression<formatInput> format = null, WorkflowExpression<string> date = null, WorkflowExpression<string> from = null, WorkflowExpression<string> to = null)
-        {
-            WorkflowExpression.Validate(format, nameof(format), required: false);
-            WorkflowExpression.Validate(date, nameof(date), required: false);
-            WorkflowExpression.Validate(from, nameof(from), required: false);
-            WorkflowExpression.Validate(to, nameof(to), required: false);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
+            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
+            WorkflowExpression.Validate(__workflow_date, nameof(date), required: false);
+            var __workflow_from = from == null ? null : WorkflowExpression.Compile(from);
+            WorkflowExpression.Validate(__workflow_from, nameof(from), required: false);
+            var __workflow_to = to == null ? null : WorkflowExpression.Compile(to);
+            WorkflowExpression.Validate(__workflow_to, nameof(to), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/customer_usage/v1/usage/company/daily";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
-                if (format != null)
-                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-                if (date != null)
-                    callPayload.Queries["date"] = ExpressionConverter.Convert(date);
-                if (from != null)
-                    callPayload.Queries["from"] = ExpressionConverter.Convert(from);
-                if (to != null)
-                    callPayload.Queries["to"] = ExpressionConverter.Convert(to);
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                if (__workflow_date != null)
+                    callPayload.Queries["date"] = ExpressionConverter.Convert(__workflow_date);
+                if (__workflow_from != null)
+                    callPayload.Queries["from"] = ExpressionConverter.Convert(__workflow_from);
+                if (__workflow_to != null)
+                    callPayload.Queries["to"] = ExpressionConverter.Convert(__workflow_to);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildMonthlyAPIUsageUser))]
-        public IWorkflowAction MonthlyAPIUsageUser([WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<string> month = null, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> to = null)
+        public IWorkflowAction MonthlyAPIUsageUser(Expression<Func<formatInput>> format = null, Expression<Func<string>> month = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildMonthlyAPIUsageUser(WorkflowExpression<formatInput> format = null, WorkflowExpression<string> month = null, WorkflowExpression<string> from = null, WorkflowExpression<string> to = null)
-        {
-            WorkflowExpression.Validate(format, nameof(format), required: false);
-            WorkflowExpression.Validate(month, nameof(month), required: false);
-            WorkflowExpression.Validate(from, nameof(from), required: false);
-            WorkflowExpression.Validate(to, nameof(to), required: false);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
+            var __workflow_month = month == null ? null : WorkflowExpression.Compile(month);
+            WorkflowExpression.Validate(__workflow_month, nameof(month), required: false);
+            var __workflow_from = from == null ? null : WorkflowExpression.Compile(from);
+            WorkflowExpression.Validate(__workflow_from, nameof(from), required: false);
+            var __workflow_to = to == null ? null : WorkflowExpression.Compile(to);
+            WorkflowExpression.Validate(__workflow_to, nameof(to), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/customer_usage/v1/usage/monthly";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
-                if (format != null)
-                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-                if (month != null)
-                    callPayload.Queries["month"] = ExpressionConverter.Convert(month);
-                if (from != null)
-                    callPayload.Queries["from"] = ExpressionConverter.Convert(from);
-                if (to != null)
-                    callPayload.Queries["to"] = ExpressionConverter.Convert(to);
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                if (__workflow_month != null)
+                    callPayload.Queries["month"] = ExpressionConverter.Convert(__workflow_month);
+                if (__workflow_from != null)
+                    callPayload.Queries["from"] = ExpressionConverter.Convert(__workflow_from);
+                if (__workflow_to != null)
+                    callPayload.Queries["to"] = ExpressionConverter.Convert(__workflow_to);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildMonthlyAPIUsageCompany))]
-        public IWorkflowAction MonthlyAPIUsageCompany([WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<string> month = null, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> to = null)
+        public IWorkflowAction MonthlyAPIUsageCompany(Expression<Func<formatInput>> format = null, Expression<Func<string>> month = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildMonthlyAPIUsageCompany(WorkflowExpression<formatInput> format = null, WorkflowExpression<string> month = null, WorkflowExpression<string> from = null, WorkflowExpression<string> to = null)
-        {
-            WorkflowExpression.Validate(format, nameof(format), required: false);
-            WorkflowExpression.Validate(month, nameof(month), required: false);
-            WorkflowExpression.Validate(from, nameof(from), required: false);
-            WorkflowExpression.Validate(to, nameof(to), required: false);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
+            var __workflow_month = month == null ? null : WorkflowExpression.Compile(month);
+            WorkflowExpression.Validate(__workflow_month, nameof(month), required: false);
+            var __workflow_from = from == null ? null : WorkflowExpression.Compile(from);
+            WorkflowExpression.Validate(__workflow_from, nameof(from), required: false);
+            var __workflow_to = to == null ? null : WorkflowExpression.Compile(to);
+            WorkflowExpression.Validate(__workflow_to, nameof(to), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/customer_usage/v1/usage/company/monthly";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
-                if (format != null)
-                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-                if (month != null)
-                    callPayload.Queries["month"] = ExpressionConverter.Convert(month);
-                if (from != null)
-                    callPayload.Queries["from"] = ExpressionConverter.Convert(from);
-                if (to != null)
-                    callPayload.Queries["to"] = ExpressionConverter.Convert(to);
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                if (__workflow_month != null)
+                    callPayload.Queries["month"] = ExpressionConverter.Convert(__workflow_month);
+                if (__workflow_from != null)
+                    callPayload.Queries["from"] = ExpressionConverter.Convert(__workflow_from);
+                if (__workflow_to != null)
+                    callPayload.Queries["to"] = ExpressionConverter.Convert(__workflow_to);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildDateRangeAPIUsageUser))]
-        public IWorkflowAction DateRangeAPIUsageUser([WorkflowExpression] Func<formatInput> format = null)
+        public IWorkflowAction DateRangeAPIUsageUser(Expression<Func<formatInput>> format = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDateRangeAPIUsageUser(WorkflowExpression<formatInput> format = null)
-        {
-            WorkflowExpression.Validate(format, nameof(format), required: false);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/customer_usage/v1/usage/date_range";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
-                if (format != null)
-                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildDateRangeAPIUsageCompany))]
-        public IWorkflowAction DateRangeAPIUsageCompany([WorkflowExpression] Func<formatInput> format = null)
+        public IWorkflowAction DateRangeAPIUsageCompany(Expression<Func<formatInput>> format = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDateRangeAPIUsageCompany(WorkflowExpression<formatInput> format = null)
-        {
-            WorkflowExpression.Validate(format, nameof(format), required: false);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/customer_usage/v1/usage/company/date_range";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
-                if (format != null)
-                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildGetActiveYARARulesets))]
-        public IWorkflowAction GetActiveYARARulesets([WorkflowExpression] Func<formatInput> format = null)
+        public IWorkflowAction GetActiveYARARulesets(Expression<Func<formatInput>> format = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetActiveYARARulesets(WorkflowExpression<formatInput> format = null)
-        {
-            WorkflowExpression.Validate(format, nameof(format), required: false);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/customer_usage/v1/usage/yara";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
-                if (format != null)
-                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildGetAPIQuotaLimitsUser))]
-        public IWorkflowAction GetAPIQuotaLimitsUser([WorkflowExpression] Func<formatInput> format = null)
+        public IWorkflowAction GetAPIQuotaLimitsUser(Expression<Func<formatInput>> format = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetAPIQuotaLimitsUser(WorkflowExpression<formatInput> format = null)
-        {
-            WorkflowExpression.Validate(format, nameof(format), required: false);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/customer_usage/v1/limits";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
-                if (format != null)
-                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildGetAPIQuotaLimitsCompany))]
-        public IWorkflowAction GetAPIQuotaLimitsCompany([WorkflowExpression] Func<formatInput> format = null)
+        public IWorkflowAction GetAPIQuotaLimitsCompany(Expression<Func<formatInput>> format = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetAPIQuotaLimitsCompany(WorkflowExpression<formatInput> format = null)
-        {
-            WorkflowExpression.Validate(format, nameof(format), required: false);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/customer_usage/v1/limits/company";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
-                if (format != null)
-                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildNetworkReputationApi))]
-        public IWorkflowAction NetworkReputationApi([WorkflowExpression] Func<postFormatInput> postFormat, [WorkflowExpression] Func<bodyrlquerynetworkLocationsInputItem[]> bodyrlquerynetworkLocations, [WorkflowExpression] Func<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null)
+        public IWorkflowAction NetworkReputationApi(Expression<Func<postFormatInput>> postFormat, Expression<Func<bodyrlquerynetworkLocationsInputItem[]>> bodyrlquerynetworkLocations, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildNetworkReputationApi(WorkflowExpression<postFormatInput> postFormat, WorkflowExpression<bodyrlquerynetworkLocationsInputItem[]> bodyrlquerynetworkLocations, WorkflowExpression<bodyrlqueryresponseFormatInput> bodyrlqueryresponseFormat = null)
-        {
-            WorkflowExpression.Validate(postFormat, nameof(postFormat), required: true);
-            WorkflowExpression.Validate(bodyrlquerynetworkLocations, nameof(bodyrlquerynetworkLocations), required: true);
-            WorkflowExpression.Validate(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
+            var __workflow_postFormat = postFormat == null ? null : WorkflowExpression.Compile(postFormat);
+            WorkflowExpression.Validate(__workflow_postFormat, nameof(postFormat), required: true);
+            var __workflow_bodyrlquerynetworkLocations = bodyrlquerynetworkLocations == null ? null : WorkflowExpression.Compile(bodyrlquerynetworkLocations);
+            WorkflowExpression.Validate(__workflow_bodyrlquerynetworkLocations, nameof(bodyrlquerynetworkLocations), required: true);
+            var __workflow_bodyrlqueryresponseFormat = bodyrlqueryresponseFormat == null ? null : WorkflowExpression.Compile(bodyrlqueryresponseFormat);
+            WorkflowExpression.Validate(__workflow_bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/reputation/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(postFormat, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/reputation/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_postFormat, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -2590,12 +2397,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 var queryObject = new JObject();
                 var queryObjectpropCount = 0;
                 queryObjectpropCount++;
-                queryObject["network_locations"] = ExpressionConverter.ConvertO(bodyrlquerynetworkLocations);
-                if (bodyrlqueryresponseFormat != null)
+                queryObject["network_locations"] = ExpressionConverter.ConvertO(__workflow_bodyrlquerynetworkLocations);
+                if (__workflow_bodyrlqueryresponseFormat != null)
                 {
-                    if (bodyrlqueryresponseFormat != null)
+                    if (__workflow_bodyrlqueryresponseFormat != null)
                     {
-                        queryObject["response_format"] = ExpressionConverter.ConvertO(bodyrlqueryresponseFormat);
+                        queryObject["response_format"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryresponseFormat);
                         queryObjectpropCount++;
                     }
 
@@ -2629,47 +2436,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildListUserOverride))]
-        public IWorkflowAction ListUserOverride([WorkflowExpression] Func<string> format = null, [WorkflowExpression] Func<string> nextNetworkLocation = null)
+        public IWorkflowAction ListUserOverride(Expression<Func<string>> format = null, Expression<Func<string>> nextNetworkLocation = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildListUserOverride(WorkflowExpression<string> format = null, WorkflowExpression<string> nextNetworkLocation = null)
-        {
-            WorkflowExpression.Validate(format, nameof(format), required: false);
-            WorkflowExpression.Validate(nextNetworkLocation, nameof(nextNetworkLocation), required: false);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
+            var __workflow_nextNetworkLocation = nextNetworkLocation == null ? null : WorkflowExpression.Compile(nextNetworkLocation);
+            WorkflowExpression.Validate(__workflow_nextNetworkLocation, nameof(nextNetworkLocation), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/networking/user_override/v1/query/list_overrides";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
-                if (format != null)
-                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-                if (nextNetworkLocation != null)
-                    callPayload.Queries["next_network_location"] = ExpressionConverter.Convert(nextNetworkLocation);
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                if (__workflow_nextNetworkLocation != null)
+                    callPayload.Queries["next_network_location"] = ExpressionConverter.Convert(__workflow_nextNetworkLocation);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildNetworkReputationUserOverride))]
-        public IWorkflowAction NetworkReputationUserOverride([WorkflowExpression] Func<postFormatInput> postFormat, [WorkflowExpression] Func<bodyrlqueryuserOverrideoverrideNetworkLocationsInputItem[]> bodyrlqueryuserOverrideoverrideNetworkLocations = null, [WorkflowExpression] Func<string> bodyrlresponseFormat = null)
+        public IWorkflowAction NetworkReputationUserOverride(Expression<Func<postFormatInput>> postFormat, Expression<Func<bodyrlqueryuserOverrideoverrideNetworkLocationsInputItem[]>> bodyrlqueryuserOverrideoverrideNetworkLocations = null, Expression<Func<string>> bodyrlresponseFormat = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildNetworkReputationUserOverride(WorkflowExpression<postFormatInput> postFormat, WorkflowExpression<bodyrlqueryuserOverrideoverrideNetworkLocationsInputItem[]> bodyrlqueryuserOverrideoverrideNetworkLocations = null, WorkflowExpression<string> bodyrlresponseFormat = null)
-        {
-            WorkflowExpression.Validate(postFormat, nameof(postFormat), required: true);
-            WorkflowExpression.Validate(bodyrlqueryuserOverrideoverrideNetworkLocations, nameof(bodyrlqueryuserOverrideoverrideNetworkLocations), required: false);
-            WorkflowExpression.Validate(bodyrlresponseFormat, nameof(bodyrlresponseFormat), required: false);
+            var __workflow_postFormat = postFormat == null ? null : WorkflowExpression.Compile(postFormat);
+            WorkflowExpression.Validate(__workflow_postFormat, nameof(postFormat), required: true);
+            var __workflow_bodyrlqueryuserOverrideoverrideNetworkLocations = bodyrlqueryuserOverrideoverrideNetworkLocations == null ? null : WorkflowExpression.Compile(bodyrlqueryuserOverrideoverrideNetworkLocations);
+            WorkflowExpression.Validate(__workflow_bodyrlqueryuserOverrideoverrideNetworkLocations, nameof(bodyrlqueryuserOverrideoverrideNetworkLocations), required: false);
+            var __workflow_bodyrlresponseFormat = bodyrlresponseFormat == null ? null : WorkflowExpression.Compile(bodyrlresponseFormat);
+            WorkflowExpression.Validate(__workflow_bodyrlresponseFormat, nameof(bodyrlresponseFormat), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/user_override/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(postFormat, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/user_override/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_postFormat, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -2680,9 +2478,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 var queryObjectpropCount = 0;
                 var userOverrideObject = new JObject();
                 var userOverrideObjectpropCount = 0;
-                if (bodyrlqueryuserOverrideoverrideNetworkLocations != null)
+                if (__workflow_bodyrlqueryuserOverrideoverrideNetworkLocations != null)
                 {
-                    userOverrideObject["override_network_locations"] = ExpressionConverter.ConvertO(bodyrlqueryuserOverrideoverrideNetworkLocations);
+                    userOverrideObject["override_network_locations"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryuserOverrideoverrideNetworkLocations);
                     userOverrideObjectpropCount++;
                 }
 
@@ -2698,11 +2496,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                     rlObjectpropCount++;
                 }
 
-                if (bodyrlresponseFormat != null)
+                if (__workflow_bodyrlresponseFormat != null)
                 {
-                    if (bodyrlresponseFormat != null)
+                    if (__workflow_bodyrlresponseFormat != null)
                     {
-                        rlObject["response_format"] = ExpressionConverter.ConvertO(bodyrlresponseFormat);
+                        rlObject["response_format"] = ExpressionConverter.ConvertO(__workflow_bodyrlresponseFormat);
                         rlObjectpropCount++;
                     }
 
@@ -2730,125 +2528,103 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildGetSpecificDynamicAnalysisReportForUrlSha1))]
-        public IWorkflowAction GetSpecificDynamicAnalysisReportForUrlSha1([WorkflowExpression] Func<string> sha1Value, [WorkflowExpression] Func<string> specificReport, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<string> contentType = null)
+        public IWorkflowAction GetSpecificDynamicAnalysisReportForUrlSha1(Expression<Func<string>> sha1Value, Expression<Func<string>> specificReport, Expression<Func<formatInput>> format = null, Expression<Func<string>> contentType = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetSpecificDynamicAnalysisReportForUrlSha1(WorkflowExpression<string> sha1Value, WorkflowExpression<string> specificReport, WorkflowExpression<formatInput> format = null, WorkflowExpression<string> contentType = null)
-        {
-            WorkflowExpression.Validate(sha1Value, nameof(sha1Value), required: true);
-            WorkflowExpression.Validate(specificReport, nameof(specificReport), required: true);
-            WorkflowExpression.Validate(format, nameof(format), required: false);
-            WorkflowExpression.Validate(contentType, nameof(contentType), required: false);
+            var __workflow_sha1Value = sha1Value == null ? null : WorkflowExpression.Compile(sha1Value);
+            WorkflowExpression.Validate(__workflow_sha1Value, nameof(sha1Value), required: true);
+            var __workflow_specificReport = specificReport == null ? null : WorkflowExpression.Compile(specificReport);
+            WorkflowExpression.Validate(__workflow_specificReport, nameof(specificReport), required: true);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
+            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
+            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/report/v1/query/url/sha1/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(sha1Value, 1), ExpressionConverter.ConvertWithUrlEncoding(specificReport, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/report/v1/query/url/sha1/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sha1Value, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_specificReport, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
-                if (format != null)
-                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                if (contentType != null)
-                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                if (__workflow_contentType != null)
+                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildGetSpecificDynamicAnalysisReportForUrlBase64))]
-        public IWorkflowAction GetSpecificDynamicAnalysisReportForUrlBase64([WorkflowExpression] Func<string> base64Value, [WorkflowExpression] Func<string> specificReport, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<string> contentType = null)
+        public IWorkflowAction GetSpecificDynamicAnalysisReportForUrlBase64(Expression<Func<string>> base64Value, Expression<Func<string>> specificReport, Expression<Func<formatInput>> format = null, Expression<Func<string>> contentType = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetSpecificDynamicAnalysisReportForUrlBase64(WorkflowExpression<string> base64Value, WorkflowExpression<string> specificReport, WorkflowExpression<formatInput> format = null, WorkflowExpression<string> contentType = null)
-        {
-            WorkflowExpression.Validate(base64Value, nameof(base64Value), required: true);
-            WorkflowExpression.Validate(specificReport, nameof(specificReport), required: true);
-            WorkflowExpression.Validate(format, nameof(format), required: false);
-            WorkflowExpression.Validate(contentType, nameof(contentType), required: false);
+            var __workflow_base64Value = base64Value == null ? null : WorkflowExpression.Compile(base64Value);
+            WorkflowExpression.Validate(__workflow_base64Value, nameof(base64Value), required: true);
+            var __workflow_specificReport = specificReport == null ? null : WorkflowExpression.Compile(specificReport);
+            WorkflowExpression.Validate(__workflow_specificReport, nameof(specificReport), required: true);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
+            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
+            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/report/v1/query/url/base64/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(base64Value, 1), ExpressionConverter.ConvertWithUrlEncoding(specificReport, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/report/v1/query/url/base64/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_base64Value, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_specificReport, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
-                if (format != null)
-                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                if (contentType != null)
-                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                if (__workflow_contentType != null)
+                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildGetDynamicAnalysisReportForUrlSha1))]
-        public IWorkflowAction GetDynamicAnalysisReportForUrlSha1([WorkflowExpression] Func<string> sha1Value, [WorkflowExpression] Func<string> contentType = null)
+        public IWorkflowAction GetDynamicAnalysisReportForUrlSha1(Expression<Func<string>> sha1Value, Expression<Func<string>> contentType = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetDynamicAnalysisReportForUrlSha1(WorkflowExpression<string> sha1Value, WorkflowExpression<string> contentType = null)
-        {
-            WorkflowExpression.Validate(sha1Value, nameof(sha1Value), required: true);
-            WorkflowExpression.Validate(contentType, nameof(contentType), required: false);
+            var __workflow_sha1Value = sha1Value == null ? null : WorkflowExpression.Compile(sha1Value);
+            WorkflowExpression.Validate(__workflow_sha1Value, nameof(sha1Value), required: true);
+            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
+            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/report/v1/query/url/sha1/{0}/latest", ExpressionConverter.ConvertWithUrlEncoding(sha1Value, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/report/v1/query/url/sha1/{0}/latest", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sha1Value, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                if (contentType != null)
-                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                if (__workflow_contentType != null)
+                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildGetDynamicAnalysisReportForUrlBase64))]
-        public IWorkflowAction GetDynamicAnalysisReportForUrlBase64([WorkflowExpression] Func<string> base64Value, [WorkflowExpression] Func<string> contentType = null)
+        public IWorkflowAction GetDynamicAnalysisReportForUrlBase64(Expression<Func<string>> base64Value, Expression<Func<string>> contentType = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetDynamicAnalysisReportForUrlBase64(WorkflowExpression<string> base64Value, WorkflowExpression<string> contentType = null)
-        {
-            WorkflowExpression.Validate(base64Value, nameof(base64Value), required: true);
-            WorkflowExpression.Validate(contentType, nameof(contentType), required: false);
+            var __workflow_base64Value = base64Value == null ? null : WorkflowExpression.Compile(base64Value);
+            WorkflowExpression.Validate(__workflow_base64Value, nameof(base64Value), required: true);
+            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
+            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/report/v1/query/url/base64/{0}/latest", ExpressionConverter.ConvertWithUrlEncoding(base64Value, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/report/v1/query/url/base64/{0}/latest", ExpressionConverter.ConvertWithUrlEncoding(__workflow_base64Value, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                if (contentType != null)
-                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                if (__workflow_contentType != null)
+                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildGetYaraRulesetInformation))]
-        public IWorkflowAction GetYaraRulesetInformation([WorkflowExpression] Func<string> rulesetName)
+        public IWorkflowAction GetYaraRulesetInformation(Expression<Func<string>> rulesetName)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetYaraRulesetInformation(WorkflowExpression<string> rulesetName)
-        {
-            WorkflowExpression.Validate(rulesetName, nameof(rulesetName), required: true);
+            var __workflow_rulesetName = rulesetName == null ? null : WorkflowExpression.Compile(rulesetName);
+            WorkflowExpression.Validate(__workflow_rulesetName, nameof(rulesetName), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/yara/admin/v1/ruleset/{0}", ExpressionConverter.ConvertWithUrlEncoding(rulesetName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/yara/admin/v1/ruleset/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_rulesetName, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -2856,19 +2632,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteYaraRuleset))]
-        public IWorkflowAction DeleteYaraRuleset([WorkflowExpression] Func<string> rulesetName)
+        public IWorkflowAction DeleteYaraRuleset(Expression<Func<string>> rulesetName)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDeleteYaraRuleset(WorkflowExpression<string> rulesetName)
-        {
-            WorkflowExpression.Validate(rulesetName, nameof(rulesetName), required: true);
+            var __workflow_rulesetName = rulesetName == null ? null : WorkflowExpression.Compile(rulesetName);
+            WorkflowExpression.Validate(__workflow_rulesetName, nameof(rulesetName), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/yara/admin/v1/ruleset/{0}", ExpressionConverter.ConvertWithUrlEncoding(rulesetName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/yara/admin/v1/ruleset/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_rulesetName, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -2876,19 +2646,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildGetYaraRulesetText))]
-        public IWorkflowAction GetYaraRulesetText([WorkflowExpression] Func<string> rulesetName)
+        public IWorkflowAction GetYaraRulesetText(Expression<Func<string>> rulesetName)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetYaraRulesetText(WorkflowExpression<string> rulesetName)
-        {
-            WorkflowExpression.Validate(rulesetName, nameof(rulesetName), required: true);
+            var __workflow_rulesetName = rulesetName == null ? null : WorkflowExpression.Compile(rulesetName);
+            WorkflowExpression.Validate(__workflow_rulesetName, nameof(rulesetName), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/yara/admin/v1/ruleset/{0}/text", ExpressionConverter.ConvertWithUrlEncoding(rulesetName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/yara/admin/v1/ruleset/{0}/text", ExpressionConverter.ConvertWithUrlEncoding(__workflow_rulesetName, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -2896,60 +2660,53 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildGetYaraMatchesFeed))]
-        public IWorkflowAction GetYaraMatchesFeed([WorkflowExpression] Func<timeFormatInput> timeFormat, [WorkflowExpression] Func<string> timeValue, [WorkflowExpression] Func<formatInput> format = null)
+        public IWorkflowAction GetYaraMatchesFeed(Expression<Func<timeFormatInput>> timeFormat, Expression<Func<string>> timeValue, Expression<Func<formatInput>> format = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetYaraMatchesFeed(WorkflowExpression<timeFormatInput> timeFormat, WorkflowExpression<string> timeValue, WorkflowExpression<formatInput> format = null)
-        {
-            WorkflowExpression.Validate(timeFormat, nameof(timeFormat), required: true);
-            WorkflowExpression.Validate(timeValue, nameof(timeValue), required: true);
-            WorkflowExpression.Validate(format, nameof(format), required: false);
+            var __workflow_timeFormat = timeFormat == null ? null : WorkflowExpression.Compile(timeFormat);
+            WorkflowExpression.Validate(__workflow_timeFormat, nameof(timeFormat), required: true);
+            var __workflow_timeValue = timeValue == null ? null : WorkflowExpression.Compile(timeValue);
+            WorkflowExpression.Validate(__workflow_timeValue, nameof(timeValue), required: true);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/feed/yara/v1/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(timeFormat, 1), ExpressionConverter.ConvertWithUrlEncoding(timeValue, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/feed/yara/v1/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_timeFormat, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_timeValue, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
-                if (format != null)
-                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateYaraRuleset))]
-        public IWorkflowAction CreateYaraRuleset([WorkflowExpression] Func<string> bodyrulesetName, [WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<bool> bodysampleAvailable, [WorkflowExpression] Func<string> contentType = null)
+        public IWorkflowAction CreateYaraRuleset(Expression<Func<string>> bodyrulesetName, Expression<Func<string>> bodytext, Expression<Func<bool>> bodysampleAvailable, Expression<Func<string>> contentType = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildCreateYaraRuleset(WorkflowExpression<string> bodyrulesetName, WorkflowExpression<string> bodytext, WorkflowExpression<bool> bodysampleAvailable, WorkflowExpression<string> contentType = null)
-        {
-            WorkflowExpression.Validate(bodyrulesetName, nameof(bodyrulesetName), required: true);
-            WorkflowExpression.Validate(bodytext, nameof(bodytext), required: true);
-            WorkflowExpression.Validate(bodysampleAvailable, nameof(bodysampleAvailable), required: true);
-            WorkflowExpression.Validate(contentType, nameof(contentType), required: false);
+            var __workflow_bodyrulesetName = bodyrulesetName == null ? null : WorkflowExpression.Compile(bodyrulesetName);
+            WorkflowExpression.Validate(__workflow_bodyrulesetName, nameof(bodyrulesetName), required: true);
+            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
+            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: true);
+            var __workflow_bodysampleAvailable = bodysampleAvailable == null ? null : WorkflowExpression.Compile(bodysampleAvailable);
+            WorkflowExpression.Validate(__workflow_bodysampleAvailable, nameof(bodysampleAvailable), required: true);
+            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
+            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/yara/admin/v1/ruleset";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                if (contentType != null)
-                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                if (__workflow_contentType != null)
+                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["ruleset_name"] = ExpressionConverter.ConvertO(bodyrulesetName);
+                body["ruleset_name"] = ExpressionConverter.ConvertO(__workflow_bodyrulesetName);
                 bodypropCount++;
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
+                body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
                 bodypropCount++;
-                body["sample_available"] = ExpressionConverter.ConvertO(bodysampleAvailable);
+                body["sample_available"] = ExpressionConverter.ConvertO(__workflow_bodysampleAvailable);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -2960,19 +2717,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildGetYaraRetroHuntingStatus))]
-        public IWorkflowAction GetYaraRetroHuntingStatus([WorkflowExpression] Func<string> rulesetName)
+        public IWorkflowAction GetYaraRetroHuntingStatus(Expression<Func<string>> rulesetName)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetYaraRetroHuntingStatus(WorkflowExpression<string> rulesetName)
-        {
-            WorkflowExpression.Validate(rulesetName, nameof(rulesetName), required: true);
+            var __workflow_rulesetName = rulesetName == null ? null : WorkflowExpression.Compile(rulesetName);
+            WorkflowExpression.Validate(__workflow_rulesetName, nameof(rulesetName), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/yara/admin/v1/ruleset/{0}/status-retro-hunt", ExpressionConverter.ConvertWithUrlEncoding(rulesetName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/yara/admin/v1/ruleset/{0}/status-retro-hunt", ExpressionConverter.ConvertWithUrlEncoding(__workflow_rulesetName, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -2980,54 +2731,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildGetYaraRetroMatchesFeed))]
-        public IWorkflowAction GetYaraRetroMatchesFeed([WorkflowExpression] Func<timeFormatInput> timeFormat, [WorkflowExpression] Func<string> timeValue, [WorkflowExpression] Func<formatInput> format = null)
+        public IWorkflowAction GetYaraRetroMatchesFeed(Expression<Func<timeFormatInput>> timeFormat, Expression<Func<string>> timeValue, Expression<Func<formatInput>> format = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetYaraRetroMatchesFeed(WorkflowExpression<timeFormatInput> timeFormat, WorkflowExpression<string> timeValue, WorkflowExpression<formatInput> format = null)
-        {
-            WorkflowExpression.Validate(timeFormat, nameof(timeFormat), required: true);
-            WorkflowExpression.Validate(timeValue, nameof(timeValue), required: true);
-            WorkflowExpression.Validate(format, nameof(format), required: false);
+            var __workflow_timeFormat = timeFormat == null ? null : WorkflowExpression.Compile(timeFormat);
+            WorkflowExpression.Validate(__workflow_timeFormat, nameof(timeFormat), required: true);
+            var __workflow_timeValue = timeValue == null ? null : WorkflowExpression.Compile(timeValue);
+            WorkflowExpression.Validate(__workflow_timeValue, nameof(timeValue), required: true);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/feed/yara/retro/v1/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(timeFormat, 1), ExpressionConverter.ConvertWithUrlEncoding(timeValue, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/feed/yara/retro/v1/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_timeFormat, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_timeValue, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
-                if (format != null)
-                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildStartYaraRetroHunt))]
-        public IWorkflowAction StartYaraRetroHunt([WorkflowExpression] Func<string> bodyrulesetName, [WorkflowExpression] Func<string> contentType = null)
+        public IWorkflowAction StartYaraRetroHunt(Expression<Func<string>> bodyrulesetName, Expression<Func<string>> contentType = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildStartYaraRetroHunt(WorkflowExpression<string> bodyrulesetName, WorkflowExpression<string> contentType = null)
-        {
-            WorkflowExpression.Validate(bodyrulesetName, nameof(bodyrulesetName), required: true);
-            WorkflowExpression.Validate(contentType, nameof(contentType), required: false);
+            var __workflow_bodyrulesetName = bodyrulesetName == null ? null : WorkflowExpression.Compile(bodyrulesetName);
+            WorkflowExpression.Validate(__workflow_bodyrulesetName, nameof(bodyrulesetName), required: true);
+            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
+            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/yara/admin/v1/ruleset/start-retro-hunt";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                if (contentType != null)
-                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                if (__workflow_contentType != null)
+                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["ruleset_name"] = ExpressionConverter.ConvertO(bodyrulesetName);
+                body["ruleset_name"] = ExpressionConverter.ConvertO(__workflow_bodyrulesetName);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -3038,29 +2780,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildCancelYaraRetroHunt))]
-        public IWorkflowAction CancelYaraRetroHunt([WorkflowExpression] Func<string> bodyrulesetName, [WorkflowExpression] Func<string> contentType = null)
+        public IWorkflowAction CancelYaraRetroHunt(Expression<Func<string>> bodyrulesetName, Expression<Func<string>> contentType = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildCancelYaraRetroHunt(WorkflowExpression<string> bodyrulesetName, WorkflowExpression<string> contentType = null)
-        {
-            WorkflowExpression.Validate(bodyrulesetName, nameof(bodyrulesetName), required: true);
-            WorkflowExpression.Validate(contentType, nameof(contentType), required: false);
+            var __workflow_bodyrulesetName = bodyrulesetName == null ? null : WorkflowExpression.Compile(bodyrulesetName);
+            WorkflowExpression.Validate(__workflow_bodyrulesetName, nameof(bodyrulesetName), required: true);
+            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
+            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/yara/admin/v1/ruleset/cancel-retro-hunt";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                if (contentType != null)
-                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                if (__workflow_contentType != null)
+                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["ruleset_name"] = ExpressionConverter.ConvertO(bodyrulesetName);
+                body["ruleset_name"] = ExpressionConverter.ConvertO(__workflow_bodyrulesetName);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -3071,44 +2808,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildAdvancedSearch))]
-        public IWorkflowAction AdvancedSearch([WorkflowExpression] Func<bodyqueryInputItem[]> bodyquery, [WorkflowExpression] Func<bodyformatInput> bodyformat = null, [WorkflowExpression] Func<int> bodyrecordsPerPage = null, [WorkflowExpression] Func<int> bodypage = null, [WorkflowExpression] Func<string> bodysort = null, [WorkflowExpression] Func<string> contentType = null)
+        public IWorkflowAction AdvancedSearch(Expression<Func<bodyqueryInputItem[]>> bodyquery, Expression<Func<bodyformatInput>> bodyformat = null, Expression<Func<int>> bodyrecordsPerPage = null, Expression<Func<int>> bodypage = null, Expression<Func<string>> bodysort = null, Expression<Func<string>> contentType = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildAdvancedSearch(WorkflowExpression<bodyqueryInputItem[]> bodyquery, WorkflowExpression<bodyformatInput> bodyformat = null, WorkflowExpression<int> bodyrecordsPerPage = null, WorkflowExpression<int> bodypage = null, WorkflowExpression<string> bodysort = null, WorkflowExpression<string> contentType = null)
-        {
-            WorkflowExpression.Validate(bodyquery, nameof(bodyquery), required: true);
-            WorkflowExpression.Validate(bodyformat, nameof(bodyformat), required: false);
-            WorkflowExpression.Validate(bodyrecordsPerPage, nameof(bodyrecordsPerPage), required: false);
-            WorkflowExpression.Validate(bodypage, nameof(bodypage), required: false);
-            WorkflowExpression.Validate(bodysort, nameof(bodysort), required: false);
-            WorkflowExpression.Validate(contentType, nameof(contentType), required: false);
+            var __workflow_bodyquery = bodyquery == null ? null : WorkflowExpression.Compile(bodyquery);
+            WorkflowExpression.Validate(__workflow_bodyquery, nameof(bodyquery), required: true);
+            var __workflow_bodyformat = bodyformat == null ? null : WorkflowExpression.Compile(bodyformat);
+            WorkflowExpression.Validate(__workflow_bodyformat, nameof(bodyformat), required: false);
+            var __workflow_bodyrecordsPerPage = bodyrecordsPerPage == null ? null : WorkflowExpression.Compile(bodyrecordsPerPage);
+            WorkflowExpression.Validate(__workflow_bodyrecordsPerPage, nameof(bodyrecordsPerPage), required: false);
+            var __workflow_bodypage = bodypage == null ? null : WorkflowExpression.Compile(bodypage);
+            WorkflowExpression.Validate(__workflow_bodypage, nameof(bodypage), required: false);
+            var __workflow_bodysort = bodysort == null ? null : WorkflowExpression.Compile(bodysort);
+            WorkflowExpression.Validate(__workflow_bodysort, nameof(bodysort), required: false);
+            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
+            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/search/v1/query";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                if (contentType != null)
-                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                if (__workflow_contentType != null)
+                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
-                if (bodyformat != null)
+                body["query"] = ExpressionConverter.ConvertO(__workflow_bodyquery);
+                if (__workflow_bodyformat != null)
                 {
-                    body["format"] = ExpressionConverter.ConvertO(bodyformat);
+                    body["format"] = ExpressionConverter.ConvertO(__workflow_bodyformat);
                     bodypropCount++;
                 }
 
-                if (bodyrecordsPerPage != null)
+                if (__workflow_bodyrecordsPerPage != null)
                 {
-                    if (bodyrecordsPerPage != null)
+                    if (__workflow_bodyrecordsPerPage != null)
                     {
-                        body["records_per_page"] = ExpressionConverter.ConvertO(bodyrecordsPerPage);
+                        body["records_per_page"] = ExpressionConverter.ConvertO(__workflow_bodyrecordsPerPage);
                         bodypropCount++;
                     }
 
@@ -3120,11 +2856,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                     bodypropCount++;
                 }
 
-                if (bodypage != null)
+                if (__workflow_bodypage != null)
                 {
-                    if (bodypage != null)
+                    if (__workflow_bodypage != null)
                     {
-                        body["page"] = ExpressionConverter.ConvertO(bodypage);
+                        body["page"] = ExpressionConverter.ConvertO(__workflow_bodypage);
                         bodypropCount++;
                     }
 
@@ -3136,11 +2872,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                     bodypropCount++;
                 }
 
-                if (bodysort != null)
+                if (__workflow_bodysort != null)
                 {
-                    if (bodysort != null)
+                    if (__workflow_bodysort != null)
                     {
-                        body["sort"] = ExpressionConverter.ConvertO(bodysort);
+                        body["sort"] = ExpressionConverter.ConvertO(__workflow_bodysort);
                         bodypropCount++;
                     }
 
@@ -3162,116 +2898,106 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildGroupByRha1SingleQuery))]
-        public IWorkflowAction GroupByRha1SingleQuery([WorkflowExpression] Func<string> rha1Type, [WorkflowExpression] Func<string> hashValue, [WorkflowExpression] Func<string> nextPageSha1, [WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<bool> extended = null, [WorkflowExpression] Func<classificationInput> classification = null)
+        public IWorkflowAction GroupByRha1SingleQuery(Expression<Func<string>> rha1Type, Expression<Func<string>> hashValue, Expression<Func<string>> nextPageSha1, Expression<Func<string>> contentType = null, Expression<Func<formatInput>> format = null, Expression<Func<int>> limit = null, Expression<Func<bool>> extended = null, Expression<Func<classificationInput>> classification = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGroupByRha1SingleQuery(WorkflowExpression<string> rha1Type, WorkflowExpression<string> hashValue, WorkflowExpression<string> nextPageSha1, WorkflowExpression<string> contentType = null, WorkflowExpression<formatInput> format = null, WorkflowExpression<int> limit = null, WorkflowExpression<bool> extended = null, WorkflowExpression<classificationInput> classification = null)
-        {
-            WorkflowExpression.Validate(rha1Type, nameof(rha1Type), required: true);
-            WorkflowExpression.Validate(hashValue, nameof(hashValue), required: true);
-            WorkflowExpression.Validate(nextPageSha1, nameof(nextPageSha1), required: true);
-            WorkflowExpression.Validate(contentType, nameof(contentType), required: false);
-            WorkflowExpression.Validate(format, nameof(format), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(extended, nameof(extended), required: false);
-            WorkflowExpression.Validate(classification, nameof(classification), required: false);
+            var __workflow_rha1Type = rha1Type == null ? null : WorkflowExpression.Compile(rha1Type);
+            WorkflowExpression.Validate(__workflow_rha1Type, nameof(rha1Type), required: true);
+            var __workflow_hashValue = hashValue == null ? null : WorkflowExpression.Compile(hashValue);
+            WorkflowExpression.Validate(__workflow_hashValue, nameof(hashValue), required: true);
+            var __workflow_nextPageSha1 = nextPageSha1 == null ? null : WorkflowExpression.Compile(nextPageSha1);
+            WorkflowExpression.Validate(__workflow_nextPageSha1, nameof(nextPageSha1), required: true);
+            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
+            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_extended = extended == null ? null : WorkflowExpression.Compile(extended);
+            WorkflowExpression.Validate(__workflow_extended, nameof(extended), required: false);
+            var __workflow_classification = classification == null ? null : WorkflowExpression.Compile(classification);
+            WorkflowExpression.Validate(__workflow_classification, nameof(classification), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/group_by_rha1/v1/query/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(rha1Type, 1), ExpressionConverter.ConvertWithUrlEncoding(hashValue, 1), ExpressionConverter.ConvertWithUrlEncoding(nextPageSha1, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/group_by_rha1/v1/query/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_rha1Type, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashValue, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_nextPageSha1, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
-                if (format != null)
-                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 callPayload.Queries["limit"] = Convert.ToString(1000);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 callPayload.Queries["extended"] = Convert.ToString(false);
-                if (extended != null)
-                    callPayload.Queries["extended"] = ExpressionConverter.Convert(extended);
-                if (classification != null)
-                    callPayload.Queries["classification"] = ExpressionConverter.Convert(classification);
-                if (contentType != null)
-                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                if (__workflow_extended != null)
+                    callPayload.Queries["extended"] = ExpressionConverter.Convert(__workflow_extended);
+                if (__workflow_classification != null)
+                    callPayload.Queries["classification"] = ExpressionConverter.Convert(__workflow_classification);
+                if (__workflow_contentType != null)
+                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildImportHashSimilarity))]
-        public IWorkflowAction ImportHashSimilarity([WorkflowExpression] Func<string> hashValue, [WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<formatInput> format = null)
+        public IWorkflowAction ImportHashSimilarity(Expression<Func<string>> hashValue, Expression<Func<string>> contentType = null, Expression<Func<formatInput>> format = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildImportHashSimilarity(WorkflowExpression<string> hashValue, WorkflowExpression<string> contentType = null, WorkflowExpression<formatInput> format = null)
-        {
-            WorkflowExpression.Validate(hashValue, nameof(hashValue), required: true);
-            WorkflowExpression.Validate(contentType, nameof(contentType), required: false);
-            WorkflowExpression.Validate(format, nameof(format), required: false);
+            var __workflow_hashValue = hashValue == null ? null : WorkflowExpression.Compile(hashValue);
+            WorkflowExpression.Validate(__workflow_hashValue, nameof(hashValue), required: true);
+            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
+            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/imphash_index/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(hashValue, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/imphash_index/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashValue, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
-                if (format != null)
-                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-                if (contentType != null)
-                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                if (__workflow_contentType != null)
+                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildImportHashSimilarityPaginated))]
-        public IWorkflowAction ImportHashSimilarityPaginated([WorkflowExpression] Func<string> hashValue, [WorkflowExpression] Func<string> nextPageSha1, [WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<formatInput> format = null)
+        public IWorkflowAction ImportHashSimilarityPaginated(Expression<Func<string>> hashValue, Expression<Func<string>> nextPageSha1, Expression<Func<string>> contentType = null, Expression<Func<formatInput>> format = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildImportHashSimilarityPaginated(WorkflowExpression<string> hashValue, WorkflowExpression<string> nextPageSha1, WorkflowExpression<string> contentType = null, WorkflowExpression<formatInput> format = null)
-        {
-            WorkflowExpression.Validate(hashValue, nameof(hashValue), required: true);
-            WorkflowExpression.Validate(nextPageSha1, nameof(nextPageSha1), required: true);
-            WorkflowExpression.Validate(contentType, nameof(contentType), required: false);
-            WorkflowExpression.Validate(format, nameof(format), required: false);
+            var __workflow_hashValue = hashValue == null ? null : WorkflowExpression.Compile(hashValue);
+            WorkflowExpression.Validate(__workflow_hashValue, nameof(hashValue), required: true);
+            var __workflow_nextPageSha1 = nextPageSha1 == null ? null : WorkflowExpression.Compile(nextPageSha1);
+            WorkflowExpression.Validate(__workflow_nextPageSha1, nameof(nextPageSha1), required: true);
+            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
+            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/imphash_index/v1/query/{0}/start_sha1/{1}", ExpressionConverter.ConvertWithUrlEncoding(hashValue, 1), ExpressionConverter.ConvertWithUrlEncoding(nextPageSha1, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/imphash_index/v1/query/{0}/start_sha1/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashValue, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_nextPageSha1, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("json");
-                if (format != null)
-                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-                if (contentType != null)
-                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                if (__workflow_contentType != null)
+                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildFileReputationUserOverride))]
-        public IWorkflowAction FileReputationUserOverride([WorkflowExpression] Func<postFormatInput> postFormat, [WorkflowExpression] Func<bodyrlqueryoverrideSamplesInputItem[]> bodyrlqueryoverrideSamples = null, [WorkflowExpression] Func<bodyrlqueryremoveOverrideInputItem[]> bodyrlqueryremoveOverride = null)
+        public IWorkflowAction FileReputationUserOverride(Expression<Func<postFormatInput>> postFormat, Expression<Func<bodyrlqueryoverrideSamplesInputItem[]>> bodyrlqueryoverrideSamples = null, Expression<Func<bodyrlqueryremoveOverrideInputItem[]>> bodyrlqueryremoveOverride = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildFileReputationUserOverride(WorkflowExpression<postFormatInput> postFormat, WorkflowExpression<bodyrlqueryoverrideSamplesInputItem[]> bodyrlqueryoverrideSamples = null, WorkflowExpression<bodyrlqueryremoveOverrideInputItem[]> bodyrlqueryremoveOverride = null)
-        {
-            WorkflowExpression.Validate(postFormat, nameof(postFormat), required: true);
-            WorkflowExpression.Validate(bodyrlqueryoverrideSamples, nameof(bodyrlqueryoverrideSamples), required: false);
-            WorkflowExpression.Validate(bodyrlqueryremoveOverride, nameof(bodyrlqueryremoveOverride), required: false);
+            var __workflow_postFormat = postFormat == null ? null : WorkflowExpression.Compile(postFormat);
+            WorkflowExpression.Validate(__workflow_postFormat, nameof(postFormat), required: true);
+            var __workflow_bodyrlqueryoverrideSamples = bodyrlqueryoverrideSamples == null ? null : WorkflowExpression.Compile(bodyrlqueryoverrideSamples);
+            WorkflowExpression.Validate(__workflow_bodyrlqueryoverrideSamples, nameof(bodyrlqueryoverrideSamples), required: false);
+            var __workflow_bodyrlqueryremoveOverride = bodyrlqueryremoveOverride == null ? null : WorkflowExpression.Compile(bodyrlqueryremoveOverride);
+            WorkflowExpression.Validate(__workflow_bodyrlqueryremoveOverride, nameof(bodyrlqueryremoveOverride), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/databrowser/malware_presence/user_override/{0}", ExpressionConverter.ConvertWithUrlEncoding(postFormat, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/databrowser/malware_presence/user_override/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_postFormat, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -3280,15 +3006,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
                 var rlObjectpropCount = 0;
                 var queryObject = new JObject();
                 var queryObjectpropCount = 0;
-                if (bodyrlqueryoverrideSamples != null)
+                if (__workflow_bodyrlqueryoverrideSamples != null)
                 {
-                    queryObject["override_samples"] = ExpressionConverter.ConvertO(bodyrlqueryoverrideSamples);
+                    queryObject["override_samples"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryoverrideSamples);
                     queryObjectpropCount++;
                 }
 
-                if (bodyrlqueryremoveOverride != null)
+                if (__workflow_bodyrlqueryremoveOverride != null)
                 {
-                    queryObject["remove_override"] = ExpressionConverter.ConvertO(bodyrlqueryremoveOverride);
+                    queryObject["remove_override"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryremoveOverride);
                     queryObjectpropCount++;
                 }
 
@@ -3314,28 +3040,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        [WorkflowExpressionFactory(nameof(__BuildFileReputationListUserOverrides))]
-        public IWorkflowAction FileReputationListUserOverrides([WorkflowExpression] Func<hashTypeInput> hashType, [WorkflowExpression] Func<string> startHash = null, [WorkflowExpression] Func<formatInput> format = null)
+        public IWorkflowAction FileReputationListUserOverrides(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> startHash = null, Expression<Func<formatInput>> format = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildFileReputationListUserOverrides(WorkflowExpression<hashTypeInput> hashType, WorkflowExpression<string> startHash = null, WorkflowExpression<formatInput> format = null)
-        {
-            WorkflowExpression.Validate(hashType, nameof(hashType), required: true);
-            WorkflowExpression.Validate(startHash, nameof(startHash), required: false);
-            WorkflowExpression.Validate(format, nameof(format), required: false);
+            var __workflow_hashType = hashType == null ? null : WorkflowExpression.Compile(hashType);
+            WorkflowExpression.Validate(__workflow_hashType, nameof(hashType), required: true);
+            var __workflow_startHash = startHash == null ? null : WorkflowExpression.Compile(startHash);
+            WorkflowExpression.Validate(__workflow_startHash, nameof(startHash), required: false);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/databrowser/malware_presence/user_override/list_hashes/{0}", ExpressionConverter.ConvertWithUrlEncoding(hashType, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/databrowser/malware_presence/user_override/list_hashes/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashType, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (startHash != null)
-                    callPayload.Queries["start_hash"] = ExpressionConverter.Convert(startHash);
+                if (__workflow_startHash != null)
+                    callPayload.Queries["start_hash"] = ExpressionConverter.Convert(__workflow_startHash);
                 callPayload.Queries["format"] = Convert.ToString("json");
-                if (format != null)
-                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 return new ApiConnectionAction(callPayload);
             });
         }

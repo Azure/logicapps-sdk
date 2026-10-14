@@ -6,7 +6,6 @@
     <LangVersion>latest</LangVersion>
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
-    <WorkflowRepositoryConsumer>true</WorkflowRepositoryConsumer>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,7 +20,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Microsoft.Azure.Workflows.Sdk.csproj" />
-    <ProjectReference Include="..\..\src\Build\Microsoft.Azure.Workflows.Sdk.Build\Microsoft.Azure.Workflows.Sdk.Build.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,58 +1,57 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartcommondemanddoc
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class SmartcommondemanddocActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartcommondemanddoc")]
-        [WorkflowExpressionFactory(nameof(__BuildGenerateDocument))]
-        public IBodyWorkflowAction<GenerateDocumentResponse> GenerateDocument([WorkflowExpression] Func<bool> includeDocumentData, [WorkflowExpression] Func<string> bodytransactionData, [WorkflowExpression] Func<int> bodybatchConfigResId, [WorkflowExpression] Func<int> bodyprojectID = null, [WorkflowExpression] Func<int> bodytransactionRange = null, [WorkflowExpression] Func<bodytransactionDataTypeInput> bodytransactionDataType = null, [WorkflowExpression] Func<bodypropertiesInputItem[]> bodyproperties = null)
+        public IBodyWorkflowAction<GenerateDocumentResponse> GenerateDocument(Expression<Func<bool>> includeDocumentData, Expression<Func<string>> bodytransactionData, Expression<Func<int>> bodybatchConfigResId, Expression<Func<int>> bodyprojectID = null, Expression<Func<int>> bodytransactionRange = null, Expression<Func<bodytransactionDataTypeInput>> bodytransactionDataType = null, Expression<Func<bodypropertiesInputItem[]>> bodyproperties = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GenerateDocumentResponse> __BuildGenerateDocument(WorkflowExpression<bool> includeDocumentData, WorkflowExpression<string> bodytransactionData, WorkflowExpression<int> bodybatchConfigResId, WorkflowExpression<int> bodyprojectID = null, WorkflowExpression<int> bodytransactionRange = null, WorkflowExpression<bodytransactionDataTypeInput> bodytransactionDataType = null, WorkflowExpression<bodypropertiesInputItem[]> bodyproperties = null)
-        {
-            WorkflowExpression.Validate(includeDocumentData, nameof(includeDocumentData), required: true);
-            WorkflowExpression.Validate(bodytransactionData, nameof(bodytransactionData), required: true);
-            WorkflowExpression.Validate(bodybatchConfigResId, nameof(bodybatchConfigResId), required: true);
-            WorkflowExpression.Validate(bodyprojectID, nameof(bodyprojectID), required: false);
-            WorkflowExpression.Validate(bodytransactionRange, nameof(bodytransactionRange), required: false);
-            WorkflowExpression.Validate(bodytransactionDataType, nameof(bodytransactionDataType), required: false);
-            WorkflowExpression.Validate(bodyproperties, nameof(bodyproperties), required: false);
+            var __workflow_includeDocumentData = includeDocumentData == null ? null : WorkflowExpression.Compile(includeDocumentData);
+            WorkflowExpression.Validate(__workflow_includeDocumentData, nameof(includeDocumentData), required: true);
+            var __workflow_bodytransactionData = bodytransactionData == null ? null : WorkflowExpression.Compile(bodytransactionData);
+            WorkflowExpression.Validate(__workflow_bodytransactionData, nameof(bodytransactionData), required: true);
+            var __workflow_bodybatchConfigResId = bodybatchConfigResId == null ? null : WorkflowExpression.Compile(bodybatchConfigResId);
+            WorkflowExpression.Validate(__workflow_bodybatchConfigResId, nameof(bodybatchConfigResId), required: true);
+            var __workflow_bodyprojectID = bodyprojectID == null ? null : WorkflowExpression.Compile(bodyprojectID);
+            WorkflowExpression.Validate(__workflow_bodyprojectID, nameof(bodyprojectID), required: false);
+            var __workflow_bodytransactionRange = bodytransactionRange == null ? null : WorkflowExpression.Compile(bodytransactionRange);
+            WorkflowExpression.Validate(__workflow_bodytransactionRange, nameof(bodytransactionRange), required: false);
+            var __workflow_bodytransactionDataType = bodytransactionDataType == null ? null : WorkflowExpression.Compile(bodytransactionDataType);
+            WorkflowExpression.Validate(__workflow_bodytransactionDataType, nameof(bodytransactionDataType), required: false);
+            var __workflow_bodyproperties = bodyproperties == null ? null : WorkflowExpression.Compile(bodyproperties);
+            WorkflowExpression.Validate(__workflow_bodyproperties, nameof(bodyproperties), required: false);
             return new DeferredBodyAction<GenerateDocumentResponse>(() =>
             {
                 var apiCallPath = "/one/oauth2/api/v11/job/generateDocument";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["includeDocumentData"] = ExpressionConverter.Convert(includeDocumentData);
+                callPayload.Queries["includeDocumentData"] = ExpressionConverter.Convert(__workflow_includeDocumentData);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyprojectID != null)
+                if (__workflow_bodyprojectID != null)
                 {
-                    body["projectId"] = ExpressionConverter.ConvertO(bodyprojectID);
+                    body["projectId"] = ExpressionConverter.ConvertO(__workflow_bodyprojectID);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["transactionData"] = ExpressionConverter.ConvertO(bodytransactionData);
+                body["transactionData"] = ExpressionConverter.ConvertO(__workflow_bodytransactionData);
                 bodypropCount++;
-                body["batchConfigResId"] = ExpressionConverter.ConvertO(bodybatchConfigResId);
-                if (bodytransactionRange != null)
+                body["batchConfigResId"] = ExpressionConverter.ConvertO(__workflow_bodybatchConfigResId);
+                if (__workflow_bodytransactionRange != null)
                 {
-                    if (bodytransactionRange != null)
+                    if (__workflow_bodytransactionRange != null)
                     {
-                        body["transactionRange"] = ExpressionConverter.ConvertO(bodytransactionRange);
+                        body["transactionRange"] = ExpressionConverter.ConvertO(__workflow_bodytransactionRange);
                         bodypropCount++;
                     }
 
@@ -64,11 +63,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartcommondemanddoc
                     bodypropCount++;
                 }
 
-                if (bodytransactionDataType != null)
+                if (__workflow_bodytransactionDataType != null)
                 {
-                    if (bodytransactionDataType != null)
+                    if (__workflow_bodytransactionDataType != null)
                     {
-                        body["transactionDataType"] = ExpressionConverter.ConvertO(bodytransactionDataType);
+                        body["transactionDataType"] = ExpressionConverter.ConvertO(__workflow_bodytransactionDataType);
                         bodypropCount++;
                     }
 
@@ -80,9 +79,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartcommondemanddoc
                     bodypropCount++;
                 }
 
-                if (bodyproperties != null)
+                if (__workflow_bodyproperties != null)
                 {
-                    body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
+                    body["properties"] = ExpressionConverter.ConvertO(__workflow_bodyproperties);
                     bodypropCount++;
                 }
 

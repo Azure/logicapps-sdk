@@ -1,7 +1,6 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
 {
     using System;
@@ -9,29 +8,24 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class SqlActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sql")]
-        [WorkflowExpressionFactory(nameof(__BuildExecuteQuery))]
-        public IBodyWorkflowAction<JToken[]> ExecuteQuery([WorkflowExpression] Func<string> query, [WorkflowExpression] Func<object> queryParameters = null)
+        public IBodyWorkflowAction<JToken[]> ExecuteQuery(Expression<Func<string>> query, Expression<Func<object>> queryParameters = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken[]> __BuildExecuteQuery(WorkflowExpression<string> query, WorkflowExpression<object> queryParameters = null)
-        {
-            WorkflowExpression.Validate(query, nameof(query), required: true);
-            WorkflowExpression.Validate(queryParameters, nameof(queryParameters), required: false);
+            var __workflow_query = query == null ? null : WorkflowExpression.Compile(query);
+            WorkflowExpression.Validate(__workflow_query, nameof(query), required: true);
+            var __workflow_queryParameters = queryParameters == null ? null : WorkflowExpression.Compile(queryParameters);
+            WorkflowExpression.Validate(__workflow_queryParameters, nameof(queryParameters), required: false);
             return new DeferredBodyAction<JToken[]>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["query"] = ExpressionConverter.ConvertO(query);
-                if (queryParameters != null)
+                serviceProviderParameters["query"] = ExpressionConverter.ConvertO(__workflow_query);
+                if (__workflow_queryParameters != null)
                 {
-                    serviceProviderParameters["queryParameters"] = ExpressionConverter.ConvertO(queryParameters);
+                    serviceProviderParameters["queryParameters"] = ExpressionConverter.ConvertO(__workflow_queryParameters);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -44,24 +38,19 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sql")]
-        [WorkflowExpressionFactory(nameof(__BuildInsertRow))]
-        public IBodyWorkflowAction<JToken> InsertRow([WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<object> setColumns = null)
+        public IBodyWorkflowAction<JToken> InsertRow(Expression<Func<string>> tableName, Expression<Func<object>> setColumns = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildInsertRow(WorkflowExpression<string> tableName, WorkflowExpression<object> setColumns = null)
-        {
-            WorkflowExpression.Validate(tableName, nameof(tableName), required: true);
-            WorkflowExpression.Validate(setColumns, nameof(setColumns), required: false);
+            var __workflow_tableName = tableName == null ? null : WorkflowExpression.Compile(tableName);
+            WorkflowExpression.Validate(__workflow_tableName, nameof(tableName), required: true);
+            var __workflow_setColumns = setColumns == null ? null : WorkflowExpression.Compile(setColumns);
+            WorkflowExpression.Validate(__workflow_setColumns, nameof(setColumns), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
-                if (setColumns != null)
+                serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(__workflow_tableName);
+                if (__workflow_setColumns != null)
                 {
-                    serviceProviderParameters["setColumns"] = ExpressionConverter.ConvertO(setColumns);
+                    serviceProviderParameters["setColumns"] = ExpressionConverter.ConvertO(__workflow_setColumns);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -74,30 +63,26 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sql")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteRows))]
-        public IBodyWorkflowAction<JToken[]> DeleteRows([WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<object> columnValuesForWhereCondition = null, [WorkflowExpression] Func<string> primaryKey = null)
+        public IBodyWorkflowAction<JToken[]> DeleteRows(Expression<Func<string>> tableName, Expression<Func<object>> columnValuesForWhereCondition = null, Expression<Func<string>> primaryKey = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken[]> __BuildDeleteRows(WorkflowExpression<string> tableName, WorkflowExpression<object> columnValuesForWhereCondition = null, WorkflowExpression<string> primaryKey = null)
-        {
-            WorkflowExpression.Validate(tableName, nameof(tableName), required: true);
-            WorkflowExpression.Validate(columnValuesForWhereCondition, nameof(columnValuesForWhereCondition), required: false);
-            WorkflowExpression.Validate(primaryKey, nameof(primaryKey), required: false);
+            var __workflow_tableName = tableName == null ? null : WorkflowExpression.Compile(tableName);
+            WorkflowExpression.Validate(__workflow_tableName, nameof(tableName), required: true);
+            var __workflow_columnValuesForWhereCondition = columnValuesForWhereCondition == null ? null : WorkflowExpression.Compile(columnValuesForWhereCondition);
+            WorkflowExpression.Validate(__workflow_columnValuesForWhereCondition, nameof(columnValuesForWhereCondition), required: false);
+            var __workflow_primaryKey = primaryKey == null ? null : WorkflowExpression.Compile(primaryKey);
+            WorkflowExpression.Validate(__workflow_primaryKey, nameof(primaryKey), required: false);
             return new DeferredBodyAction<JToken[]>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
-                if (columnValuesForWhereCondition != null)
+                serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(__workflow_tableName);
+                if (__workflow_columnValuesForWhereCondition != null)
                 {
-                    serviceProviderParameters["columnValuesForWhereCondition"] = ExpressionConverter.ConvertO(columnValuesForWhereCondition);
+                    serviceProviderParameters["columnValuesForWhereCondition"] = ExpressionConverter.ConvertO(__workflow_columnValuesForWhereCondition);
                 }
 
-                if (primaryKey != null)
+                if (__workflow_primaryKey != null)
                 {
-                    serviceProviderParameters["primaryKey"] = ExpressionConverter.ConvertO(primaryKey);
+                    serviceProviderParameters["primaryKey"] = ExpressionConverter.ConvertO(__workflow_primaryKey);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -110,36 +95,33 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sql")]
-        [WorkflowExpressionFactory(nameof(__BuildGetRows))]
-        public IBodyWorkflowAction<JToken[]> GetRows([WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<object> columnValuesForWhereCondition = null, [WorkflowExpression] Func<string> primaryKey = null, [WorkflowExpression] Func<object> queries = null)
+        public IBodyWorkflowAction<JToken[]> GetRows(Expression<Func<string>> tableName, Expression<Func<object>> columnValuesForWhereCondition = null, Expression<Func<string>> primaryKey = null, Expression<Func<object>> queries = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken[]> __BuildGetRows(WorkflowExpression<string> tableName, WorkflowExpression<object> columnValuesForWhereCondition = null, WorkflowExpression<string> primaryKey = null, WorkflowExpression<object> queries = null)
-        {
-            WorkflowExpression.Validate(tableName, nameof(tableName), required: true);
-            WorkflowExpression.Validate(columnValuesForWhereCondition, nameof(columnValuesForWhereCondition), required: false);
-            WorkflowExpression.Validate(primaryKey, nameof(primaryKey), required: false);
-            WorkflowExpression.Validate(queries, nameof(queries), required: false);
+            var __workflow_tableName = tableName == null ? null : WorkflowExpression.Compile(tableName);
+            WorkflowExpression.Validate(__workflow_tableName, nameof(tableName), required: true);
+            var __workflow_columnValuesForWhereCondition = columnValuesForWhereCondition == null ? null : WorkflowExpression.Compile(columnValuesForWhereCondition);
+            WorkflowExpression.Validate(__workflow_columnValuesForWhereCondition, nameof(columnValuesForWhereCondition), required: false);
+            var __workflow_primaryKey = primaryKey == null ? null : WorkflowExpression.Compile(primaryKey);
+            WorkflowExpression.Validate(__workflow_primaryKey, nameof(primaryKey), required: false);
+            var __workflow_queries = queries == null ? null : WorkflowExpression.Compile(queries);
+            WorkflowExpression.Validate(__workflow_queries, nameof(queries), required: false);
             return new DeferredBodyAction<JToken[]>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
-                if (columnValuesForWhereCondition != null)
+                serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(__workflow_tableName);
+                if (__workflow_columnValuesForWhereCondition != null)
                 {
-                    serviceProviderParameters["columnValuesForWhereCondition"] = ExpressionConverter.ConvertO(columnValuesForWhereCondition);
+                    serviceProviderParameters["columnValuesForWhereCondition"] = ExpressionConverter.ConvertO(__workflow_columnValuesForWhereCondition);
                 }
 
-                if (primaryKey != null)
+                if (__workflow_primaryKey != null)
                 {
-                    serviceProviderParameters["primaryKey"] = ExpressionConverter.ConvertO(primaryKey);
+                    serviceProviderParameters["primaryKey"] = ExpressionConverter.ConvertO(__workflow_primaryKey);
                 }
 
-                if (queries != null)
+                if (__workflow_queries != null)
                 {
-                    serviceProviderParameters["queries"] = ExpressionConverter.ConvertO(queries);
+                    serviceProviderParameters["queries"] = ExpressionConverter.ConvertO(__workflow_queries);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -152,24 +134,19 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sql")]
-        [WorkflowExpressionFactory(nameof(__BuildGetRowsV2))]
-        public IBodyWorkflowAction<GetRowsV2Output> GetRowsV2([WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<object> queries = null)
+        public IBodyWorkflowAction<GetRowsV2Output> GetRowsV2(Expression<Func<string>> tableName, Expression<Func<object>> queries = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetRowsV2Output> __BuildGetRowsV2(WorkflowExpression<string> tableName, WorkflowExpression<object> queries = null)
-        {
-            WorkflowExpression.Validate(tableName, nameof(tableName), required: true);
-            WorkflowExpression.Validate(queries, nameof(queries), required: false);
+            var __workflow_tableName = tableName == null ? null : WorkflowExpression.Compile(tableName);
+            WorkflowExpression.Validate(__workflow_tableName, nameof(tableName), required: true);
+            var __workflow_queries = queries == null ? null : WorkflowExpression.Compile(queries);
+            WorkflowExpression.Validate(__workflow_queries, nameof(queries), required: false);
             return new DeferredBodyAction<GetRowsV2Output>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
-                if (queries != null)
+                serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(__workflow_tableName);
+                if (__workflow_queries != null)
                 {
-                    serviceProviderParameters["queries"] = ExpressionConverter.ConvertO(queries);
+                    serviceProviderParameters["queries"] = ExpressionConverter.ConvertO(__workflow_queries);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -182,32 +159,29 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sql")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateRows))]
-        public IBodyWorkflowAction<JToken[]> UpdateRows([WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<object> setColumns, [WorkflowExpression] Func<object> columnValuesForWhereCondition = null, [WorkflowExpression] Func<string> primaryKey = null)
+        public IBodyWorkflowAction<JToken[]> UpdateRows(Expression<Func<string>> tableName, Expression<Func<object>> setColumns, Expression<Func<object>> columnValuesForWhereCondition = null, Expression<Func<string>> primaryKey = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken[]> __BuildUpdateRows(WorkflowExpression<string> tableName, WorkflowExpression<object> setColumns, WorkflowExpression<object> columnValuesForWhereCondition = null, WorkflowExpression<string> primaryKey = null)
-        {
-            WorkflowExpression.Validate(tableName, nameof(tableName), required: true);
-            WorkflowExpression.Validate(setColumns, nameof(setColumns), required: true);
-            WorkflowExpression.Validate(columnValuesForWhereCondition, nameof(columnValuesForWhereCondition), required: false);
-            WorkflowExpression.Validate(primaryKey, nameof(primaryKey), required: false);
+            var __workflow_tableName = tableName == null ? null : WorkflowExpression.Compile(tableName);
+            WorkflowExpression.Validate(__workflow_tableName, nameof(tableName), required: true);
+            var __workflow_setColumns = setColumns == null ? null : WorkflowExpression.Compile(setColumns);
+            WorkflowExpression.Validate(__workflow_setColumns, nameof(setColumns), required: true);
+            var __workflow_columnValuesForWhereCondition = columnValuesForWhereCondition == null ? null : WorkflowExpression.Compile(columnValuesForWhereCondition);
+            WorkflowExpression.Validate(__workflow_columnValuesForWhereCondition, nameof(columnValuesForWhereCondition), required: false);
+            var __workflow_primaryKey = primaryKey == null ? null : WorkflowExpression.Compile(primaryKey);
+            WorkflowExpression.Validate(__workflow_primaryKey, nameof(primaryKey), required: false);
             return new DeferredBodyAction<JToken[]>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
-                if (columnValuesForWhereCondition != null)
+                serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(__workflow_tableName);
+                if (__workflow_columnValuesForWhereCondition != null)
                 {
-                    serviceProviderParameters["columnValuesForWhereCondition"] = ExpressionConverter.ConvertO(columnValuesForWhereCondition);
+                    serviceProviderParameters["columnValuesForWhereCondition"] = ExpressionConverter.ConvertO(__workflow_columnValuesForWhereCondition);
                 }
 
-                serviceProviderParameters["setColumns"] = ExpressionConverter.ConvertO(setColumns);
-                if (primaryKey != null)
+                serviceProviderParameters["setColumns"] = ExpressionConverter.ConvertO(__workflow_setColumns);
+                if (__workflow_primaryKey != null)
                 {
-                    serviceProviderParameters["primaryKey"] = ExpressionConverter.ConvertO(primaryKey);
+                    serviceProviderParameters["primaryKey"] = ExpressionConverter.ConvertO(__workflow_primaryKey);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -230,30 +204,26 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sql")]
-        [WorkflowExpressionFactory(nameof(__BuildExecuteStoredProcedure))]
-        public IBodyWorkflowAction<ExecuteStoredProcedureOutput> ExecuteStoredProcedure([WorkflowExpression] Func<string> storedProcedureName, [WorkflowExpression] Func<object> storedProcedureParameters = null, [WorkflowExpression] Func<bool> includeEmptyResultSets = null)
+        public IBodyWorkflowAction<ExecuteStoredProcedureOutput> ExecuteStoredProcedure(Expression<Func<string>> storedProcedureName, Expression<Func<object>> storedProcedureParameters = null, Expression<Func<bool>> includeEmptyResultSets = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ExecuteStoredProcedureOutput> __BuildExecuteStoredProcedure(WorkflowExpression<string> storedProcedureName, WorkflowExpression<object> storedProcedureParameters = null, WorkflowExpression<bool> includeEmptyResultSets = null)
-        {
-            WorkflowExpression.Validate(storedProcedureName, nameof(storedProcedureName), required: true);
-            WorkflowExpression.Validate(storedProcedureParameters, nameof(storedProcedureParameters), required: false);
-            WorkflowExpression.Validate(includeEmptyResultSets, nameof(includeEmptyResultSets), required: false);
+            var __workflow_storedProcedureName = storedProcedureName == null ? null : WorkflowExpression.Compile(storedProcedureName);
+            WorkflowExpression.Validate(__workflow_storedProcedureName, nameof(storedProcedureName), required: true);
+            var __workflow_storedProcedureParameters = storedProcedureParameters == null ? null : WorkflowExpression.Compile(storedProcedureParameters);
+            WorkflowExpression.Validate(__workflow_storedProcedureParameters, nameof(storedProcedureParameters), required: false);
+            var __workflow_includeEmptyResultSets = includeEmptyResultSets == null ? null : WorkflowExpression.Compile(includeEmptyResultSets);
+            WorkflowExpression.Validate(__workflow_includeEmptyResultSets, nameof(includeEmptyResultSets), required: false);
             return new DeferredBodyAction<ExecuteStoredProcedureOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["storedProcedureName"] = ExpressionConverter.ConvertO(storedProcedureName);
-                if (storedProcedureParameters != null)
+                serviceProviderParameters["storedProcedureName"] = ExpressionConverter.ConvertO(__workflow_storedProcedureName);
+                if (__workflow_storedProcedureParameters != null)
                 {
-                    serviceProviderParameters["storedProcedureParameters"] = ExpressionConverter.ConvertO(storedProcedureParameters);
+                    serviceProviderParameters["storedProcedureParameters"] = ExpressionConverter.ConvertO(__workflow_storedProcedureParameters);
                 }
 
-                if (includeEmptyResultSets != null)
+                if (__workflow_includeEmptyResultSets != null)
                 {
-                    serviceProviderParameters["includeEmptyResultSets"] = ExpressionConverter.ConvertO(includeEmptyResultSets);
+                    serviceProviderParameters["includeEmptyResultSets"] = ExpressionConverter.ConvertO(__workflow_includeEmptyResultSets);
                 }
                 else
                 {
@@ -272,21 +242,14 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
 
     public class SqlTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildWhenARowIsUpdated))]
-        public IBodyWorkflowTrigger<JToken[]> WhenARowIsUpdated([WorkflowExpression] Func<string> tableName)
+        public IBodyWorkflowTrigger<JToken[]> WhenARowIsUpdated(Expression<Func<string>> tableName)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken[]> __BuildWhenARowIsUpdated(WorkflowExpression<string> tableName)
-        {
-            WorkflowExpression.Validate(tableName, nameof(tableName), required: true);
+            var __workflow_tableName = tableName == null ? null : WorkflowExpression.Compile(tableName);
+            WorkflowExpression.Validate(__workflow_tableName, nameof(tableName), required: true);
             return new DeferredBodyTrigger<JToken[]>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
+                serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(__workflow_tableName);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sql", operationId: "whenARowIsUpdated", connectionName: connectionId),
@@ -296,20 +259,14 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildWhenARowIsDeleted))]
-        public IBodyWorkflowTrigger<JToken[]> WhenARowIsDeleted([WorkflowExpression] Func<string> tableName)
+        public IBodyWorkflowTrigger<JToken[]> WhenARowIsDeleted(Expression<Func<string>> tableName)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken[]> __BuildWhenARowIsDeleted(WorkflowExpression<string> tableName)
-        {
-            WorkflowExpression.Validate(tableName, nameof(tableName), required: true);
+            var __workflow_tableName = tableName == null ? null : WorkflowExpression.Compile(tableName);
+            WorkflowExpression.Validate(__workflow_tableName, nameof(tableName), required: true);
             return new DeferredBodyTrigger<JToken[]>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
+                serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(__workflow_tableName);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sql", operationId: "whenARowIsDeleted", connectionName: connectionId),
@@ -319,20 +276,14 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildWhenARowIsInserted))]
-        public IBodyWorkflowTrigger<JToken[]> WhenARowIsInserted([WorkflowExpression] Func<string> tableName)
+        public IBodyWorkflowTrigger<JToken[]> WhenARowIsInserted(Expression<Func<string>> tableName)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken[]> __BuildWhenARowIsInserted(WorkflowExpression<string> tableName)
-        {
-            WorkflowExpression.Validate(tableName, nameof(tableName), required: true);
+            var __workflow_tableName = tableName == null ? null : WorkflowExpression.Compile(tableName);
+            WorkflowExpression.Validate(__workflow_tableName, nameof(tableName), required: true);
             return new DeferredBodyTrigger<JToken[]>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
+                serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(__workflow_tableName);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sql", operationId: "whenARowIsInserted", connectionName: connectionId),
@@ -342,20 +293,14 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildWhenARowIsModified))]
-        public IBodyWorkflowTrigger<JToken[]> WhenARowIsModified([WorkflowExpression] Func<string> tableName)
+        public IBodyWorkflowTrigger<JToken[]> WhenARowIsModified(Expression<Func<string>> tableName)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken[]> __BuildWhenARowIsModified(WorkflowExpression<string> tableName)
-        {
-            WorkflowExpression.Validate(tableName, nameof(tableName), required: true);
+            var __workflow_tableName = tableName == null ? null : WorkflowExpression.Compile(tableName);
+            WorkflowExpression.Validate(__workflow_tableName, nameof(tableName), required: true);
             return new DeferredBodyTrigger<JToken[]>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
+                serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(__workflow_tableName);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sql", operationId: "whenARowIsModified", connectionName: connectionId),

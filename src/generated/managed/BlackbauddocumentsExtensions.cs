@@ -1,28 +1,22 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbauddocuments
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class BlackbauddocumentsActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbauddocuments")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateDocument))]
-        public IBodyWorkflowAction<ConstituentApiFileDefinition> CreateDocument([WorkflowExpression] Func<string> bodyfileName = null, [WorkflowExpression] Func<bool> bodyincludeThumbnail = null)
+        public IBodyWorkflowAction<ConstituentApiFileDefinition> CreateDocument(Expression<Func<string>> bodyfileName = null, Expression<Func<bool>> bodyincludeThumbnail = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ConstituentApiFileDefinition> __BuildCreateDocument(WorkflowExpression<string> bodyfileName = null, WorkflowExpression<bool> bodyincludeThumbnail = null)
-        {
-            WorkflowExpression.Validate(bodyfileName, nameof(bodyfileName), required: false);
-            WorkflowExpression.Validate(bodyincludeThumbnail, nameof(bodyincludeThumbnail), required: false);
+            var __workflow_bodyfileName = bodyfileName == null ? null : WorkflowExpression.Compile(bodyfileName);
+            WorkflowExpression.Validate(__workflow_bodyfileName, nameof(bodyfileName), required: false);
+            var __workflow_bodyincludeThumbnail = bodyincludeThumbnail == null ? null : WorkflowExpression.Compile(bodyincludeThumbnail);
+            WorkflowExpression.Validate(__workflow_bodyincludeThumbnail, nameof(bodyincludeThumbnail), required: false);
             return new DeferredBodyAction<ConstituentApiFileDefinition>(() =>
             {
                 var apiCallPath = "/constituent/v1/documents";
@@ -30,15 +24,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbauddocuments
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfileName != null)
+                if (__workflow_bodyfileName != null)
                 {
-                    body["file_name"] = ExpressionConverter.ConvertO(bodyfileName);
+                    body["file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
                     bodypropCount++;
                 }
 
-                if (bodyincludeThumbnail != null)
+                if (__workflow_bodyincludeThumbnail != null)
                 {
-                    body["upload_thumbnail"] = ExpressionConverter.ConvertO(bodyincludeThumbnail);
+                    body["upload_thumbnail"] = ExpressionConverter.ConvertO(__workflow_bodyincludeThumbnail);
                     bodypropCount++;
                 }
 

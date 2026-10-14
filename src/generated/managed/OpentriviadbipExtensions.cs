@@ -1,12 +1,12 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentriviadbip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class OpentriviadbipActions([ConnectionName] string connectionId)
     {
@@ -20,52 +20,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentriviadbip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentriviadbip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetQuestion))]
-        public IBodyWorkflowAction<GetQuestionResponse> GetQuestion([WorkflowExpression] Func<int> amount, [WorkflowExpression] Func<int> category = null, [WorkflowExpression] Func<difficultyInput> difficulty = null, [WorkflowExpression] Func<typeInput> type = null)
+        public IBodyWorkflowAction<GetQuestionResponse> GetQuestion(Expression<Func<int>> amount, Expression<Func<int>> category = null, Expression<Func<difficultyInput>> difficulty = null, Expression<Func<typeInput>> type = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetQuestionResponse> __BuildGetQuestion(WorkflowExpression<int> amount, WorkflowExpression<int> category = null, WorkflowExpression<difficultyInput> difficulty = null, WorkflowExpression<typeInput> type = null)
-        {
-            WorkflowExpression.Validate(amount, nameof(amount), required: true);
-            WorkflowExpression.Validate(category, nameof(category), required: false);
-            WorkflowExpression.Validate(difficulty, nameof(difficulty), required: false);
-            WorkflowExpression.Validate(type, nameof(type), required: false);
+            var __workflow_amount = amount == null ? null : WorkflowExpression.Compile(amount);
+            WorkflowExpression.Validate(__workflow_amount, nameof(amount), required: true);
+            var __workflow_category = category == null ? null : WorkflowExpression.Compile(category);
+            WorkflowExpression.Validate(__workflow_category, nameof(category), required: false);
+            var __workflow_difficulty = difficulty == null ? null : WorkflowExpression.Compile(difficulty);
+            WorkflowExpression.Validate(__workflow_difficulty, nameof(difficulty), required: false);
+            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
+            WorkflowExpression.Validate(__workflow_type, nameof(type), required: false);
             return new DeferredBodyAction<GetQuestionResponse>(() =>
             {
                 var apiCallPath = "/api.php";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["amount"] = ExpressionConverter.Convert(amount);
-                if (category != null)
-                    callPayload.Queries["category"] = ExpressionConverter.Convert(category);
-                if (difficulty != null)
-                    callPayload.Queries["difficulty"] = ExpressionConverter.Convert(difficulty);
-                if (type != null)
-                    callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                callPayload.Queries["amount"] = ExpressionConverter.Convert(__workflow_amount);
+                if (__workflow_category != null)
+                    callPayload.Queries["category"] = ExpressionConverter.Convert(__workflow_category);
+                if (__workflow_difficulty != null)
+                    callPayload.Queries["difficulty"] = ExpressionConverter.Convert(__workflow_difficulty);
+                if (__workflow_type != null)
+                    callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
                 return new ApiConnectionAction<GetQuestionResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentriviadbip")]
-        [WorkflowExpressionFactory(nameof(__BuildQuestionCountLookup))]
-        public IBodyWorkflowAction<QuestionCountLookupResponse> QuestionCountLookup([WorkflowExpression] Func<int> category)
+        public IBodyWorkflowAction<QuestionCountLookupResponse> QuestionCountLookup(Expression<Func<int>> category)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<QuestionCountLookupResponse> __BuildQuestionCountLookup(WorkflowExpression<int> category)
-        {
-            WorkflowExpression.Validate(category, nameof(category), required: true);
+            var __workflow_category = category == null ? null : WorkflowExpression.Compile(category);
+            WorkflowExpression.Validate(__workflow_category, nameof(category), required: true);
             return new DeferredBodyAction<QuestionCountLookupResponse>(() =>
             {
                 var apiCallPath = "/api_count.php";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["category"] = ExpressionConverter.Convert(category);
+                callPayload.Queries["category"] = ExpressionConverter.Convert(__workflow_category);
                 return new ApiConnectionAction<QuestionCountLookupResponse>(callPayload);
             });
         }

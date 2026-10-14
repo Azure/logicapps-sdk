@@ -1,28 +1,22 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class OptiapiActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        [WorkflowExpressionFactory(nameof(__BuildCalculateAverage))]
-        public IBodyWorkflowAction<CalculateAverageResponse> CalculateAverage([WorkflowExpression] Func<string[]> bodyarray, [WorkflowExpression] Func<string> bodykey)
+        public IBodyWorkflowAction<CalculateAverageResponse> CalculateAverage(Expression<Func<string[]>> bodyarray, Expression<Func<string>> bodykey)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CalculateAverageResponse> __BuildCalculateAverage(WorkflowExpression<string[]> bodyarray, WorkflowExpression<string> bodykey)
-        {
-            WorkflowExpression.Validate(bodyarray, nameof(bodyarray), required: true);
-            WorkflowExpression.Validate(bodykey, nameof(bodykey), required: true);
+            var __workflow_bodyarray = bodyarray == null ? null : WorkflowExpression.Compile(bodyarray);
+            WorkflowExpression.Validate(__workflow_bodyarray, nameof(bodyarray), required: true);
+            var __workflow_bodykey = bodykey == null ? null : WorkflowExpression.Compile(bodykey);
+            WorkflowExpression.Validate(__workflow_bodykey, nameof(bodykey), required: true);
             return new DeferredBodyAction<CalculateAverageResponse>(() =>
             {
                 var apiCallPath = "/array/calculate-average";
@@ -33,9 +27,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["array"] = ExpressionConverter.ConvertO(bodyarray);
+                body["array"] = ExpressionConverter.ConvertO(__workflow_bodyarray);
                 bodypropCount++;
-                body["key"] = ExpressionConverter.ConvertO(bodykey);
+                body["key"] = ExpressionConverter.ConvertO(__workflow_bodykey);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -46,17 +40,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        [WorkflowExpressionFactory(nameof(__BuildChunkAnArray))]
-        public IBodyWorkflowAction<ChunkAnArrayResponse> ChunkAnArray([WorkflowExpression] Func<string[]> bodyarray, [WorkflowExpression] Func<int> bodysize)
+        public IBodyWorkflowAction<ChunkAnArrayResponse> ChunkAnArray(Expression<Func<string[]>> bodyarray, Expression<Func<int>> bodysize)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ChunkAnArrayResponse> __BuildChunkAnArray(WorkflowExpression<string[]> bodyarray, WorkflowExpression<int> bodysize)
-        {
-            WorkflowExpression.Validate(bodyarray, nameof(bodyarray), required: true);
-            WorkflowExpression.Validate(bodysize, nameof(bodysize), required: true);
+            var __workflow_bodyarray = bodyarray == null ? null : WorkflowExpression.Compile(bodyarray);
+            WorkflowExpression.Validate(__workflow_bodyarray, nameof(bodyarray), required: true);
+            var __workflow_bodysize = bodysize == null ? null : WorkflowExpression.Compile(bodysize);
+            WorkflowExpression.Validate(__workflow_bodysize, nameof(bodysize), required: true);
             return new DeferredBodyAction<ChunkAnArrayResponse>(() =>
             {
                 var apiCallPath = "/array/chunk";
@@ -67,9 +56,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["array"] = ExpressionConverter.ConvertO(bodyarray);
+                body["array"] = ExpressionConverter.ConvertO(__workflow_bodyarray);
                 bodypropCount++;
-                body["size"] = ExpressionConverter.ConvertO(bodysize);
+                body["size"] = ExpressionConverter.ConvertO(__workflow_bodysize);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -80,32 +69,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        [WorkflowExpressionFactory(nameof(__BuildCombineArray))]
-        public IBodyWorkflowAction<CombineArrayResponse> CombineArray([WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string[]> bodykeys, [WorkflowExpression] Func<string[]> bodyvalues)
+        public IBodyWorkflowAction<CombineArrayResponse> CombineArray(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<string[]>> bodykeys, Expression<Func<string[]>> bodyvalues)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CombineArrayResponse> __BuildCombineArray(WorkflowExpression<string> contentType, WorkflowExpression<string> accept, WorkflowExpression<string[]> bodykeys, WorkflowExpression<string[]> bodyvalues)
-        {
-            WorkflowExpression.Validate(contentType, nameof(contentType), required: true);
-            WorkflowExpression.Validate(accept, nameof(accept), required: true);
-            WorkflowExpression.Validate(bodykeys, nameof(bodykeys), required: true);
-            WorkflowExpression.Validate(bodyvalues, nameof(bodyvalues), required: true);
+            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
+            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: true);
+            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
+            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: true);
+            var __workflow_bodykeys = bodykeys == null ? null : WorkflowExpression.Compile(bodykeys);
+            WorkflowExpression.Validate(__workflow_bodykeys, nameof(bodykeys), required: true);
+            var __workflow_bodyvalues = bodyvalues == null ? null : WorkflowExpression.Compile(bodyvalues);
+            WorkflowExpression.Validate(__workflow_bodyvalues, nameof(bodyvalues), required: true);
             return new DeferredBodyAction<CombineArrayResponse>(() =>
             {
                 var apiCallPath = "/array/combine";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["keys"] = ExpressionConverter.ConvertO(bodykeys);
+                body["keys"] = ExpressionConverter.ConvertO(__workflow_bodykeys);
                 bodypropCount++;
-                body["values"] = ExpressionConverter.ConvertO(bodyvalues);
+                body["values"] = ExpressionConverter.ConvertO(__workflow_bodyvalues);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -116,18 +102,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        [WorkflowExpressionFactory(nameof(__BuildCheckIfArrayContainAValue))]
-        public IBodyWorkflowAction<CheckIfArrayContainAValueResponse> CheckIfArrayContainAValue([WorkflowExpression] Func<string[]> bodyarray, [WorkflowExpression] Func<string> bodykey, [WorkflowExpression] Func<string> bodysearch)
+        public IBodyWorkflowAction<CheckIfArrayContainAValueResponse> CheckIfArrayContainAValue(Expression<Func<string[]>> bodyarray, Expression<Func<string>> bodykey, Expression<Func<string>> bodysearch)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CheckIfArrayContainAValueResponse> __BuildCheckIfArrayContainAValue(WorkflowExpression<string[]> bodyarray, WorkflowExpression<string> bodykey, WorkflowExpression<string> bodysearch)
-        {
-            WorkflowExpression.Validate(bodyarray, nameof(bodyarray), required: true);
-            WorkflowExpression.Validate(bodykey, nameof(bodykey), required: true);
-            WorkflowExpression.Validate(bodysearch, nameof(bodysearch), required: true);
+            var __workflow_bodyarray = bodyarray == null ? null : WorkflowExpression.Compile(bodyarray);
+            WorkflowExpression.Validate(__workflow_bodyarray, nameof(bodyarray), required: true);
+            var __workflow_bodykey = bodykey == null ? null : WorkflowExpression.Compile(bodykey);
+            WorkflowExpression.Validate(__workflow_bodykey, nameof(bodykey), required: true);
+            var __workflow_bodysearch = bodysearch == null ? null : WorkflowExpression.Compile(bodysearch);
+            WorkflowExpression.Validate(__workflow_bodysearch, nameof(bodysearch), required: true);
             return new DeferredBodyAction<CheckIfArrayContainAValueResponse>(() =>
             {
                 var apiCallPath = "/array/contains";
@@ -138,11 +120,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["array"] = ExpressionConverter.ConvertO(bodyarray);
+                body["array"] = ExpressionConverter.ConvertO(__workflow_bodyarray);
                 bodypropCount++;
-                body["key"] = ExpressionConverter.ConvertO(bodykey);
+                body["key"] = ExpressionConverter.ConvertO(__workflow_bodykey);
                 bodypropCount++;
-                body["search"] = ExpressionConverter.ConvertO(bodysearch);
+                body["search"] = ExpressionConverter.ConvertO(__workflow_bodysearch);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -153,17 +135,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        [WorkflowExpressionFactory(nameof(__BuildFindDifferenceBetweenArrays))]
-        public IBodyWorkflowAction<FindDifferenceBetweenArraysResponse> FindDifferenceBetweenArrays([WorkflowExpression] Func<string[]> bodyarray, [WorkflowExpression] Func<string[]> bodycompare)
+        public IBodyWorkflowAction<FindDifferenceBetweenArraysResponse> FindDifferenceBetweenArrays(Expression<Func<string[]>> bodyarray, Expression<Func<string[]>> bodycompare)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FindDifferenceBetweenArraysResponse> __BuildFindDifferenceBetweenArrays(WorkflowExpression<string[]> bodyarray, WorkflowExpression<string[]> bodycompare)
-        {
-            WorkflowExpression.Validate(bodyarray, nameof(bodyarray), required: true);
-            WorkflowExpression.Validate(bodycompare, nameof(bodycompare), required: true);
+            var __workflow_bodyarray = bodyarray == null ? null : WorkflowExpression.Compile(bodyarray);
+            WorkflowExpression.Validate(__workflow_bodyarray, nameof(bodyarray), required: true);
+            var __workflow_bodycompare = bodycompare == null ? null : WorkflowExpression.Compile(bodycompare);
+            WorkflowExpression.Validate(__workflow_bodycompare, nameof(bodycompare), required: true);
             return new DeferredBodyAction<FindDifferenceBetweenArraysResponse>(() =>
             {
                 var apiCallPath = "/array/difference";
@@ -174,9 +151,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["array"] = ExpressionConverter.ConvertO(bodyarray);
+                body["array"] = ExpressionConverter.ConvertO(__workflow_bodyarray);
                 bodypropCount++;
-                body["compare"] = ExpressionConverter.ConvertO(bodycompare);
+                body["compare"] = ExpressionConverter.ConvertO(__workflow_bodycompare);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -187,17 +164,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        [WorkflowExpressionFactory(nameof(__BuildFindDuplicatesInArrays))]
-        public IBodyWorkflowAction<FindDuplicatesInArraysResponse> FindDuplicatesInArrays([WorkflowExpression] Func<string[]> bodyarray, [WorkflowExpression] Func<string> bodykey = null)
+        public IBodyWorkflowAction<FindDuplicatesInArraysResponse> FindDuplicatesInArrays(Expression<Func<string[]>> bodyarray, Expression<Func<string>> bodykey = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FindDuplicatesInArraysResponse> __BuildFindDuplicatesInArrays(WorkflowExpression<string[]> bodyarray, WorkflowExpression<string> bodykey = null)
-        {
-            WorkflowExpression.Validate(bodyarray, nameof(bodyarray), required: true);
-            WorkflowExpression.Validate(bodykey, nameof(bodykey), required: false);
+            var __workflow_bodyarray = bodyarray == null ? null : WorkflowExpression.Compile(bodyarray);
+            WorkflowExpression.Validate(__workflow_bodyarray, nameof(bodyarray), required: true);
+            var __workflow_bodykey = bodykey == null ? null : WorkflowExpression.Compile(bodykey);
+            WorkflowExpression.Validate(__workflow_bodykey, nameof(bodykey), required: false);
             return new DeferredBodyAction<FindDuplicatesInArraysResponse>(() =>
             {
                 var apiCallPath = "/array/duplicate";
@@ -208,10 +180,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["array"] = ExpressionConverter.ConvertO(bodyarray);
-                if (bodykey != null)
+                body["array"] = ExpressionConverter.ConvertO(__workflow_bodyarray);
+                if (__workflow_bodykey != null)
                 {
-                    body["key"] = ExpressionConverter.ConvertO(bodykey);
+                    body["key"] = ExpressionConverter.ConvertO(__workflow_bodykey);
                     bodypropCount++;
                 }
 
@@ -225,17 +197,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        [WorkflowExpressionFactory(nameof(__BuildFilterAnArray))]
-        public IBodyWorkflowAction<FilterAnArrayResponse> FilterAnArray([WorkflowExpression] Func<string[]> bodyarray, [WorkflowExpression] Func<bool> bodypreserveKeys)
+        public IBodyWorkflowAction<FilterAnArrayResponse> FilterAnArray(Expression<Func<string[]>> bodyarray, Expression<Func<bool>> bodypreserveKeys)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FilterAnArrayResponse> __BuildFilterAnArray(WorkflowExpression<string[]> bodyarray, WorkflowExpression<bool> bodypreserveKeys)
-        {
-            WorkflowExpression.Validate(bodyarray, nameof(bodyarray), required: true);
-            WorkflowExpression.Validate(bodypreserveKeys, nameof(bodypreserveKeys), required: true);
+            var __workflow_bodyarray = bodyarray == null ? null : WorkflowExpression.Compile(bodyarray);
+            WorkflowExpression.Validate(__workflow_bodyarray, nameof(bodyarray), required: true);
+            var __workflow_bodypreserveKeys = bodypreserveKeys == null ? null : WorkflowExpression.Compile(bodypreserveKeys);
+            WorkflowExpression.Validate(__workflow_bodypreserveKeys, nameof(bodypreserveKeys), required: true);
             return new DeferredBodyAction<FilterAnArrayResponse>(() =>
             {
                 var apiCallPath = "/array/filter";
@@ -246,9 +213,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["array"] = ExpressionConverter.ConvertO(bodyarray);
+                body["array"] = ExpressionConverter.ConvertO(__workflow_bodyarray);
                 bodypropCount++;
-                body["preserveKeys"] = ExpressionConverter.ConvertO(bodypreserveKeys);
+                body["preserveKeys"] = ExpressionConverter.ConvertO(__workflow_bodypreserveKeys);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -259,19 +226,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        [WorkflowExpressionFactory(nameof(__BuildFirstWhereWithinAnArray))]
-        public IBodyWorkflowAction<FirstWhereWithinAnArrayResponse> FirstWhereWithinAnArray([WorkflowExpression] Func<string[]> bodyarray, [WorkflowExpression] Func<string> bodykey, [WorkflowExpression] Func<string> bodyvalue, [WorkflowExpression] Func<bodyOperatorInput> bodyOperator = null)
+        public IBodyWorkflowAction<FirstWhereWithinAnArrayResponse> FirstWhereWithinAnArray(Expression<Func<string[]>> bodyarray, Expression<Func<string>> bodykey, Expression<Func<string>> bodyvalue, Expression<Func<bodyOperatorInput>> bodyOperator = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FirstWhereWithinAnArrayResponse> __BuildFirstWhereWithinAnArray(WorkflowExpression<string[]> bodyarray, WorkflowExpression<string> bodykey, WorkflowExpression<string> bodyvalue, WorkflowExpression<bodyOperatorInput> bodyOperator = null)
-        {
-            WorkflowExpression.Validate(bodyarray, nameof(bodyarray), required: true);
-            WorkflowExpression.Validate(bodykey, nameof(bodykey), required: true);
-            WorkflowExpression.Validate(bodyvalue, nameof(bodyvalue), required: true);
-            WorkflowExpression.Validate(bodyOperator, nameof(bodyOperator), required: false);
+            var __workflow_bodyarray = bodyarray == null ? null : WorkflowExpression.Compile(bodyarray);
+            WorkflowExpression.Validate(__workflow_bodyarray, nameof(bodyarray), required: true);
+            var __workflow_bodykey = bodykey == null ? null : WorkflowExpression.Compile(bodykey);
+            WorkflowExpression.Validate(__workflow_bodykey, nameof(bodykey), required: true);
+            var __workflow_bodyvalue = bodyvalue == null ? null : WorkflowExpression.Compile(bodyvalue);
+            WorkflowExpression.Validate(__workflow_bodyvalue, nameof(bodyvalue), required: true);
+            var __workflow_bodyOperator = bodyOperator == null ? null : WorkflowExpression.Compile(bodyOperator);
+            WorkflowExpression.Validate(__workflow_bodyOperator, nameof(bodyOperator), required: false);
             return new DeferredBodyAction<FirstWhereWithinAnArrayResponse>(() =>
             {
                 var apiCallPath = "/array/first-where";
@@ -282,17 +246,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["array"] = ExpressionConverter.ConvertO(bodyarray);
+                body["array"] = ExpressionConverter.ConvertO(__workflow_bodyarray);
                 bodypropCount++;
-                body["key"] = ExpressionConverter.ConvertO(bodykey);
-                if (bodyOperator != null)
+                body["key"] = ExpressionConverter.ConvertO(__workflow_bodykey);
+                if (__workflow_bodyOperator != null)
                 {
-                    body["operator"] = ExpressionConverter.ConvertO(bodyOperator);
+                    body["operator"] = ExpressionConverter.ConvertO(__workflow_bodyOperator);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["value"] = ExpressionConverter.ConvertO(bodyvalue);
+                body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -303,17 +267,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        [WorkflowExpressionFactory(nameof(__BuildFlattenAnArray))]
-        public IBodyWorkflowAction<FlattenAnArrayResponse> FlattenAnArray([WorkflowExpression] Func<string[]> bodyarray, [WorkflowExpression] Func<int> bodydepth = null)
+        public IBodyWorkflowAction<FlattenAnArrayResponse> FlattenAnArray(Expression<Func<string[]>> bodyarray, Expression<Func<int>> bodydepth = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FlattenAnArrayResponse> __BuildFlattenAnArray(WorkflowExpression<string[]> bodyarray, WorkflowExpression<int> bodydepth = null)
-        {
-            WorkflowExpression.Validate(bodyarray, nameof(bodyarray), required: true);
-            WorkflowExpression.Validate(bodydepth, nameof(bodydepth), required: false);
+            var __workflow_bodyarray = bodyarray == null ? null : WorkflowExpression.Compile(bodyarray);
+            WorkflowExpression.Validate(__workflow_bodyarray, nameof(bodyarray), required: true);
+            var __workflow_bodydepth = bodydepth == null ? null : WorkflowExpression.Compile(bodydepth);
+            WorkflowExpression.Validate(__workflow_bodydepth, nameof(bodydepth), required: false);
             return new DeferredBodyAction<FlattenAnArrayResponse>(() =>
             {
                 var apiCallPath = "/array/flatten";
@@ -324,10 +283,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["array"] = ExpressionConverter.ConvertO(bodyarray);
-                if (bodydepth != null)
+                body["array"] = ExpressionConverter.ConvertO(__workflow_bodyarray);
+                if (__workflow_bodydepth != null)
                 {
-                    body["depth"] = ExpressionConverter.ConvertO(bodydepth);
+                    body["depth"] = ExpressionConverter.ConvertO(__workflow_bodydepth);
                     bodypropCount++;
                 }
 
@@ -341,17 +300,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        [WorkflowExpressionFactory(nameof(__BuildRemoveItemFromArray))]
-        public IBodyWorkflowAction<RemoveItemFromArrayResponse> RemoveItemFromArray([WorkflowExpression] Func<string[]> bodyarray, [WorkflowExpression] Func<string> bodykey)
+        public IBodyWorkflowAction<RemoveItemFromArrayResponse> RemoveItemFromArray(Expression<Func<string[]>> bodyarray, Expression<Func<string>> bodykey)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<RemoveItemFromArrayResponse> __BuildRemoveItemFromArray(WorkflowExpression<string[]> bodyarray, WorkflowExpression<string> bodykey)
-        {
-            WorkflowExpression.Validate(bodyarray, nameof(bodyarray), required: true);
-            WorkflowExpression.Validate(bodykey, nameof(bodykey), required: true);
+            var __workflow_bodyarray = bodyarray == null ? null : WorkflowExpression.Compile(bodyarray);
+            WorkflowExpression.Validate(__workflow_bodyarray, nameof(bodyarray), required: true);
+            var __workflow_bodykey = bodykey == null ? null : WorkflowExpression.Compile(bodykey);
+            WorkflowExpression.Validate(__workflow_bodykey, nameof(bodykey), required: true);
             return new DeferredBodyAction<RemoveItemFromArrayResponse>(() =>
             {
                 var apiCallPath = "/array/forget";
@@ -362,9 +316,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["array"] = ExpressionConverter.ConvertO(bodyarray);
+                body["array"] = ExpressionConverter.ConvertO(__workflow_bodyarray);
                 bodypropCount++;
-                body["key"] = ExpressionConverter.ConvertO(bodykey);
+                body["key"] = ExpressionConverter.ConvertO(__workflow_bodykey);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -375,17 +329,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        [WorkflowExpressionFactory(nameof(__BuildGroupByAnArrayKey))]
-        public IBodyWorkflowAction<GroupByAnArrayKeyResponse> GroupByAnArrayKey([WorkflowExpression] Func<string[]> bodyarray, [WorkflowExpression] Func<string> bodykey)
+        public IBodyWorkflowAction<GroupByAnArrayKeyResponse> GroupByAnArrayKey(Expression<Func<string[]>> bodyarray, Expression<Func<string>> bodykey)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GroupByAnArrayKeyResponse> __BuildGroupByAnArrayKey(WorkflowExpression<string[]> bodyarray, WorkflowExpression<string> bodykey)
-        {
-            WorkflowExpression.Validate(bodyarray, nameof(bodyarray), required: true);
-            WorkflowExpression.Validate(bodykey, nameof(bodykey), required: true);
+            var __workflow_bodyarray = bodyarray == null ? null : WorkflowExpression.Compile(bodyarray);
+            WorkflowExpression.Validate(__workflow_bodyarray, nameof(bodyarray), required: true);
+            var __workflow_bodykey = bodykey == null ? null : WorkflowExpression.Compile(bodykey);
+            WorkflowExpression.Validate(__workflow_bodykey, nameof(bodykey), required: true);
             return new DeferredBodyAction<GroupByAnArrayKeyResponse>(() =>
             {
                 var apiCallPath = "/array/group-by";
@@ -396,9 +345,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["array"] = ExpressionConverter.ConvertO(bodyarray);
+                body["array"] = ExpressionConverter.ConvertO(__workflow_bodyarray);
                 bodypropCount++;
-                body["key"] = ExpressionConverter.ConvertO(bodykey);
+                body["key"] = ExpressionConverter.ConvertO(__workflow_bodykey);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -409,17 +358,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        [WorkflowExpressionFactory(nameof(__BuildSortAnArray))]
-        public IBodyWorkflowAction<StandardArrayResponse> SortAnArray([WorkflowExpression] Func<string[]> bodyarray, [WorkflowExpression] Func<bodysortInput> bodysort)
+        public IBodyWorkflowAction<StandardArrayResponse> SortAnArray(Expression<Func<string[]>> bodyarray, Expression<Func<bodysortInput>> bodysort)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<StandardArrayResponse> __BuildSortAnArray(WorkflowExpression<string[]> bodyarray, WorkflowExpression<bodysortInput> bodysort)
-        {
-            WorkflowExpression.Validate(bodyarray, nameof(bodyarray), required: true);
-            WorkflowExpression.Validate(bodysort, nameof(bodysort), required: true);
+            var __workflow_bodyarray = bodyarray == null ? null : WorkflowExpression.Compile(bodyarray);
+            WorkflowExpression.Validate(__workflow_bodyarray, nameof(bodyarray), required: true);
+            var __workflow_bodysort = bodysort == null ? null : WorkflowExpression.Compile(bodysort);
+            WorkflowExpression.Validate(__workflow_bodysort, nameof(bodysort), required: true);
             return new DeferredBodyAction<StandardArrayResponse>(() =>
             {
                 var apiCallPath = "/array/sort";
@@ -430,9 +374,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["array"] = ExpressionConverter.ConvertO(bodyarray);
+                body["array"] = ExpressionConverter.ConvertO(__workflow_bodyarray);
                 bodypropCount++;
-                body["sort"] = ExpressionConverter.ConvertO(bodysort);
+                body["sort"] = ExpressionConverter.ConvertO(__workflow_bodysort);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -443,17 +387,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        [WorkflowExpressionFactory(nameof(__BuildGetUniqueItemsInAnArray))]
-        public IBodyWorkflowAction<GetUniqueItemsInAnArrayResponse> GetUniqueItemsInAnArray([WorkflowExpression] Func<string[]> bodyarray, [WorkflowExpression] Func<string> bodykey = null)
+        public IBodyWorkflowAction<GetUniqueItemsInAnArrayResponse> GetUniqueItemsInAnArray(Expression<Func<string[]>> bodyarray, Expression<Func<string>> bodykey = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetUniqueItemsInAnArrayResponse> __BuildGetUniqueItemsInAnArray(WorkflowExpression<string[]> bodyarray, WorkflowExpression<string> bodykey = null)
-        {
-            WorkflowExpression.Validate(bodyarray, nameof(bodyarray), required: true);
-            WorkflowExpression.Validate(bodykey, nameof(bodykey), required: false);
+            var __workflow_bodyarray = bodyarray == null ? null : WorkflowExpression.Compile(bodyarray);
+            WorkflowExpression.Validate(__workflow_bodyarray, nameof(bodyarray), required: true);
+            var __workflow_bodykey = bodykey == null ? null : WorkflowExpression.Compile(bodykey);
+            WorkflowExpression.Validate(__workflow_bodykey, nameof(bodykey), required: false);
             return new DeferredBodyAction<GetUniqueItemsInAnArrayResponse>(() =>
             {
                 var apiCallPath = "/array/unique";
@@ -464,10 +403,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["array"] = ExpressionConverter.ConvertO(bodyarray);
-                if (bodykey != null)
+                body["array"] = ExpressionConverter.ConvertO(__workflow_bodyarray);
+                if (__workflow_bodykey != null)
                 {
-                    body["key"] = ExpressionConverter.ConvertO(bodykey);
+                    body["key"] = ExpressionConverter.ConvertO(__workflow_bodykey);
                     bodypropCount++;
                 }
 
@@ -481,20 +420,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        [WorkflowExpressionFactory(nameof(__BuildAddOrSubtractFromTimeOrDates))]
-        public IBodyWorkflowAction<AddOrSubtractFromTimeOrDatesResponse> AddOrSubtractFromTimeOrDates([WorkflowExpression] Func<bodyactionInput> bodyaction, [WorkflowExpression] Func<string> bodydatetime, [WorkflowExpression] Func<bodyOperatorInput> bodyOperator, [WorkflowExpression] Func<int> bodyvalue, [WorkflowExpression] Func<string> bodyoutputFormat = null)
+        public IBodyWorkflowAction<AddOrSubtractFromTimeOrDatesResponse> AddOrSubtractFromTimeOrDates(Expression<Func<bodyactionInput>> bodyaction, Expression<Func<string>> bodydatetime, Expression<Func<bodyOperatorInput>> bodyOperator, Expression<Func<int>> bodyvalue, Expression<Func<string>> bodyoutputFormat = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AddOrSubtractFromTimeOrDatesResponse> __BuildAddOrSubtractFromTimeOrDates(WorkflowExpression<bodyactionInput> bodyaction, WorkflowExpression<string> bodydatetime, WorkflowExpression<bodyOperatorInput> bodyOperator, WorkflowExpression<int> bodyvalue, WorkflowExpression<string> bodyoutputFormat = null)
-        {
-            WorkflowExpression.Validate(bodyaction, nameof(bodyaction), required: true);
-            WorkflowExpression.Validate(bodydatetime, nameof(bodydatetime), required: true);
-            WorkflowExpression.Validate(bodyOperator, nameof(bodyOperator), required: true);
-            WorkflowExpression.Validate(bodyvalue, nameof(bodyvalue), required: true);
-            WorkflowExpression.Validate(bodyoutputFormat, nameof(bodyoutputFormat), required: false);
+            var __workflow_bodyaction = bodyaction == null ? null : WorkflowExpression.Compile(bodyaction);
+            WorkflowExpression.Validate(__workflow_bodyaction, nameof(bodyaction), required: true);
+            var __workflow_bodydatetime = bodydatetime == null ? null : WorkflowExpression.Compile(bodydatetime);
+            WorkflowExpression.Validate(__workflow_bodydatetime, nameof(bodydatetime), required: true);
+            var __workflow_bodyOperator = bodyOperator == null ? null : WorkflowExpression.Compile(bodyOperator);
+            WorkflowExpression.Validate(__workflow_bodyOperator, nameof(bodyOperator), required: true);
+            var __workflow_bodyvalue = bodyvalue == null ? null : WorkflowExpression.Compile(bodyvalue);
+            WorkflowExpression.Validate(__workflow_bodyvalue, nameof(bodyvalue), required: true);
+            var __workflow_bodyoutputFormat = bodyoutputFormat == null ? null : WorkflowExpression.Compile(bodyoutputFormat);
+            WorkflowExpression.Validate(__workflow_bodyoutputFormat, nameof(bodyoutputFormat), required: false);
             return new DeferredBodyAction<AddOrSubtractFromTimeOrDatesResponse>(() =>
             {
                 var apiCallPath = "/datetime/add-or-subtract";
@@ -505,19 +442,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["action"] = ExpressionConverter.ConvertO(bodyaction);
+                body["action"] = ExpressionConverter.ConvertO(__workflow_bodyaction);
                 bodypropCount++;
-                body["datetime"] = ExpressionConverter.ConvertO(bodydatetime);
+                body["datetime"] = ExpressionConverter.ConvertO(__workflow_bodydatetime);
                 bodypropCount++;
-                body["operator"] = ExpressionConverter.ConvertO(bodyOperator);
-                if (bodyoutputFormat != null)
+                body["operator"] = ExpressionConverter.ConvertO(__workflow_bodyOperator);
+                if (__workflow_bodyoutputFormat != null)
                 {
-                    body["outputFormat"] = ExpressionConverter.ConvertO(bodyoutputFormat);
+                    body["outputFormat"] = ExpressionConverter.ConvertO(__workflow_bodyoutputFormat);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["value"] = ExpressionConverter.ConvertO(bodyvalue);
+                body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -528,39 +465,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        [WorkflowExpressionFactory(nameof(__BuildConvertAStringToADatetimeObject))]
-        public IBodyWorkflowAction<ConvertAStringToADatetimeObjectResponse> ConvertAStringToADatetimeObject([WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> bodyinputFormat, [WorkflowExpression] Func<string> bodyoutputFormat, [WorkflowExpression] Func<string> bodystring, [WorkflowExpression] Func<string> bodytimezone = null)
+        public IBodyWorkflowAction<ConvertAStringToADatetimeObjectResponse> ConvertAStringToADatetimeObject(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<string>> bodyinputFormat, Expression<Func<string>> bodyoutputFormat, Expression<Func<string>> bodystring, Expression<Func<string>> bodytimezone = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ConvertAStringToADatetimeObjectResponse> __BuildConvertAStringToADatetimeObject(WorkflowExpression<string> contentType, WorkflowExpression<string> accept, WorkflowExpression<string> bodyinputFormat, WorkflowExpression<string> bodyoutputFormat, WorkflowExpression<string> bodystring, WorkflowExpression<string> bodytimezone = null)
-        {
-            WorkflowExpression.Validate(contentType, nameof(contentType), required: true);
-            WorkflowExpression.Validate(accept, nameof(accept), required: true);
-            WorkflowExpression.Validate(bodyinputFormat, nameof(bodyinputFormat), required: true);
-            WorkflowExpression.Validate(bodyoutputFormat, nameof(bodyoutputFormat), required: true);
-            WorkflowExpression.Validate(bodystring, nameof(bodystring), required: true);
-            WorkflowExpression.Validate(bodytimezone, nameof(bodytimezone), required: false);
+            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
+            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: true);
+            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
+            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: true);
+            var __workflow_bodyinputFormat = bodyinputFormat == null ? null : WorkflowExpression.Compile(bodyinputFormat);
+            WorkflowExpression.Validate(__workflow_bodyinputFormat, nameof(bodyinputFormat), required: true);
+            var __workflow_bodyoutputFormat = bodyoutputFormat == null ? null : WorkflowExpression.Compile(bodyoutputFormat);
+            WorkflowExpression.Validate(__workflow_bodyoutputFormat, nameof(bodyoutputFormat), required: true);
+            var __workflow_bodystring = bodystring == null ? null : WorkflowExpression.Compile(bodystring);
+            WorkflowExpression.Validate(__workflow_bodystring, nameof(bodystring), required: true);
+            var __workflow_bodytimezone = bodytimezone == null ? null : WorkflowExpression.Compile(bodytimezone);
+            WorkflowExpression.Validate(__workflow_bodytimezone, nameof(bodytimezone), required: false);
             return new DeferredBodyAction<ConvertAStringToADatetimeObjectResponse>(() =>
             {
                 var apiCallPath = "/datetime/string-to-datetime";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["inputFormat"] = ExpressionConverter.ConvertO(bodyinputFormat);
+                body["inputFormat"] = ExpressionConverter.ConvertO(__workflow_bodyinputFormat);
                 bodypropCount++;
-                body["outputFormat"] = ExpressionConverter.ConvertO(bodyoutputFormat);
+                body["outputFormat"] = ExpressionConverter.ConvertO(__workflow_bodyoutputFormat);
                 bodypropCount++;
-                body["string"] = ExpressionConverter.ConvertO(bodystring);
-                if (bodytimezone != null)
+                body["string"] = ExpressionConverter.ConvertO(__workflow_bodystring);
+                if (__workflow_bodytimezone != null)
                 {
-                    body["timezone"] = ExpressionConverter.ConvertO(bodytimezone);
+                    body["timezone"] = ExpressionConverter.ConvertO(__workflow_bodytimezone);
                     bodypropCount++;
                 }
 
@@ -574,21 +510,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        [WorkflowExpressionFactory(nameof(__BuildPerformOcrOnAScannedPdfOrImageFile))]
-        public IBodyWorkflowAction<PerformOcrOnAScannedPdfOrImageFileResponse> PerformOcrOnAScannedPdfOrImageFile([WorkflowExpression] Func<string> bodyfile, [WorkflowExpression] Func<bodyoemInput> bodyoem, [WorkflowExpression] Func<bodypsmInput> bodypsm, [WorkflowExpression] Func<bool> bodytrim, [WorkflowExpression] Func<bodytypeInput> bodytype, [WorkflowExpression] Func<string> bodylanguage = null)
+        public IBodyWorkflowAction<PerformOcrOnAScannedPdfOrImageFileResponse> PerformOcrOnAScannedPdfOrImageFile(Expression<Func<string>> bodyfile, Expression<Func<bodyoemInput>> bodyoem, Expression<Func<bodypsmInput>> bodypsm, Expression<Func<bool>> bodytrim, Expression<Func<bodytypeInput>> bodytype, Expression<Func<string>> bodylanguage = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PerformOcrOnAScannedPdfOrImageFileResponse> __BuildPerformOcrOnAScannedPdfOrImageFile(WorkflowExpression<string> bodyfile, WorkflowExpression<bodyoemInput> bodyoem, WorkflowExpression<bodypsmInput> bodypsm, WorkflowExpression<bool> bodytrim, WorkflowExpression<bodytypeInput> bodytype, WorkflowExpression<string> bodylanguage = null)
-        {
-            WorkflowExpression.Validate(bodyfile, nameof(bodyfile), required: true);
-            WorkflowExpression.Validate(bodyoem, nameof(bodyoem), required: true);
-            WorkflowExpression.Validate(bodypsm, nameof(bodypsm), required: true);
-            WorkflowExpression.Validate(bodytrim, nameof(bodytrim), required: true);
-            WorkflowExpression.Validate(bodytype, nameof(bodytype), required: true);
-            WorkflowExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
+            var __workflow_bodyfile = bodyfile == null ? null : WorkflowExpression.Compile(bodyfile);
+            WorkflowExpression.Validate(__workflow_bodyfile, nameof(bodyfile), required: true);
+            var __workflow_bodyoem = bodyoem == null ? null : WorkflowExpression.Compile(bodyoem);
+            WorkflowExpression.Validate(__workflow_bodyoem, nameof(bodyoem), required: true);
+            var __workflow_bodypsm = bodypsm == null ? null : WorkflowExpression.Compile(bodypsm);
+            WorkflowExpression.Validate(__workflow_bodypsm, nameof(bodypsm), required: true);
+            var __workflow_bodytrim = bodytrim == null ? null : WorkflowExpression.Compile(bodytrim);
+            WorkflowExpression.Validate(__workflow_bodytrim, nameof(bodytrim), required: true);
+            var __workflow_bodytype = bodytype == null ? null : WorkflowExpression.Compile(bodytype);
+            WorkflowExpression.Validate(__workflow_bodytype, nameof(bodytype), required: true);
+            var __workflow_bodylanguage = bodylanguage == null ? null : WorkflowExpression.Compile(bodylanguage);
+            WorkflowExpression.Validate(__workflow_bodylanguage, nameof(bodylanguage), required: false);
             return new DeferredBodyAction<PerformOcrOnAScannedPdfOrImageFileResponse>(() =>
             {
                 var apiCallPath = "/ocr/perform-ocr";
@@ -599,12 +534,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["file"] = ExpressionConverter.ConvertO(bodyfile);
-                if (bodylanguage != null)
+                body["file"] = ExpressionConverter.ConvertO(__workflow_bodyfile);
+                if (__workflow_bodylanguage != null)
                 {
-                    if (bodylanguage != null)
+                    if (__workflow_bodylanguage != null)
                     {
-                        body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                        body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
                         bodypropCount++;
                     }
 
@@ -617,13 +552,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
                 }
 
                 bodypropCount++;
-                body["oem"] = ExpressionConverter.ConvertO(bodyoem);
+                body["oem"] = ExpressionConverter.ConvertO(__workflow_bodyoem);
                 bodypropCount++;
-                body["psm"] = ExpressionConverter.ConvertO(bodypsm);
+                body["psm"] = ExpressionConverter.ConvertO(__workflow_bodypsm);
                 bodypropCount++;
-                body["trim"] = ExpressionConverter.ConvertO(bodytrim);
+                body["trim"] = ExpressionConverter.ConvertO(__workflow_bodytrim);
                 bodypropCount++;
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
+                body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -634,16 +569,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        [WorkflowExpressionFactory(nameof(__BuildCombineMultiplePdfFiles))]
-        public IBodyWorkflowAction<CombineMultiplePdfFilesResponse> CombineMultiplePdfFiles([WorkflowExpression] Func<string[]> bodypdfs)
+        public IBodyWorkflowAction<CombineMultiplePdfFilesResponse> CombineMultiplePdfFiles(Expression<Func<string[]>> bodypdfs)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CombineMultiplePdfFilesResponse> __BuildCombineMultiplePdfFiles(WorkflowExpression<string[]> bodypdfs)
-        {
-            WorkflowExpression.Validate(bodypdfs, nameof(bodypdfs), required: true);
+            var __workflow_bodypdfs = bodypdfs == null ? null : WorkflowExpression.Compile(bodypdfs);
+            WorkflowExpression.Validate(__workflow_bodypdfs, nameof(bodypdfs), required: true);
             return new DeferredBodyAction<CombineMultiplePdfFilesResponse>(() =>
             {
                 var apiCallPath = "/pdf/combine-pdf";
@@ -654,7 +583,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["pdfs"] = ExpressionConverter.ConvertO(bodypdfs);
+                body["pdfs"] = ExpressionConverter.ConvertO(__workflow_bodypdfs);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -665,16 +594,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        [WorkflowExpressionFactory(nameof(__BuildGetPdfMetadataInformation))]
-        public IBodyWorkflowAction<GetPdfMetadataInformationResponse> GetPdfMetadataInformation([WorkflowExpression] Func<string> bodypdf)
+        public IBodyWorkflowAction<GetPdfMetadataInformationResponse> GetPdfMetadataInformation(Expression<Func<string>> bodypdf)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetPdfMetadataInformationResponse> __BuildGetPdfMetadataInformation(WorkflowExpression<string> bodypdf)
-        {
-            WorkflowExpression.Validate(bodypdf, nameof(bodypdf), required: true);
+            var __workflow_bodypdf = bodypdf == null ? null : WorkflowExpression.Compile(bodypdf);
+            WorkflowExpression.Validate(__workflow_bodypdf, nameof(bodypdf), required: true);
             return new DeferredBodyAction<GetPdfMetadataInformationResponse>(() =>
             {
                 var apiCallPath = "/pdf/pdf-metadata";
@@ -685,7 +608,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["pdf"] = ExpressionConverter.ConvertO(bodypdf);
+                body["pdf"] = ExpressionConverter.ConvertO(__workflow_bodypdf);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -696,19 +619,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        [WorkflowExpressionFactory(nameof(__BuildConvertAPdfFileToText))]
-        public IBodyWorkflowAction<StandardArrayResponse> ConvertAPdfFileToText([WorkflowExpression] Func<bodylayoutInput> bodylayout, [WorkflowExpression] Func<string> bodypdf, [WorkflowExpression] Func<int> bodyendPage = null, [WorkflowExpression] Func<int> bodystartPage = null)
+        public IBodyWorkflowAction<StandardArrayResponse> ConvertAPdfFileToText(Expression<Func<bodylayoutInput>> bodylayout, Expression<Func<string>> bodypdf, Expression<Func<int>> bodyendPage = null, Expression<Func<int>> bodystartPage = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<StandardArrayResponse> __BuildConvertAPdfFileToText(WorkflowExpression<bodylayoutInput> bodylayout, WorkflowExpression<string> bodypdf, WorkflowExpression<int> bodyendPage = null, WorkflowExpression<int> bodystartPage = null)
-        {
-            WorkflowExpression.Validate(bodylayout, nameof(bodylayout), required: true);
-            WorkflowExpression.Validate(bodypdf, nameof(bodypdf), required: true);
-            WorkflowExpression.Validate(bodyendPage, nameof(bodyendPage), required: false);
-            WorkflowExpression.Validate(bodystartPage, nameof(bodystartPage), required: false);
+            var __workflow_bodylayout = bodylayout == null ? null : WorkflowExpression.Compile(bodylayout);
+            WorkflowExpression.Validate(__workflow_bodylayout, nameof(bodylayout), required: true);
+            var __workflow_bodypdf = bodypdf == null ? null : WorkflowExpression.Compile(bodypdf);
+            WorkflowExpression.Validate(__workflow_bodypdf, nameof(bodypdf), required: true);
+            var __workflow_bodyendPage = bodyendPage == null ? null : WorkflowExpression.Compile(bodyendPage);
+            WorkflowExpression.Validate(__workflow_bodyendPage, nameof(bodyendPage), required: false);
+            var __workflow_bodystartPage = bodystartPage == null ? null : WorkflowExpression.Compile(bodystartPage);
+            WorkflowExpression.Validate(__workflow_bodystartPage, nameof(bodystartPage), required: false);
             return new DeferredBodyAction<StandardArrayResponse>(() =>
             {
                 var apiCallPath = "/pdf/pdf-to-text";
@@ -718,19 +638,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
                 callPayload.Headers["Accept"] = Convert.ToString(" application/json");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyendPage != null)
+                if (__workflow_bodyendPage != null)
                 {
-                    body["endPage"] = ExpressionConverter.ConvertO(bodyendPage);
+                    body["endPage"] = ExpressionConverter.ConvertO(__workflow_bodyendPage);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["layout"] = ExpressionConverter.ConvertO(bodylayout);
+                body["layout"] = ExpressionConverter.ConvertO(__workflow_bodylayout);
                 bodypropCount++;
-                body["pdf"] = ExpressionConverter.ConvertO(bodypdf);
-                if (bodystartPage != null)
+                body["pdf"] = ExpressionConverter.ConvertO(__workflow_bodypdf);
+                if (__workflow_bodystartPage != null)
                 {
-                    body["startPage"] = ExpressionConverter.ConvertO(bodystartPage);
+                    body["startPage"] = ExpressionConverter.ConvertO(__workflow_bodystartPage);
                     bodypropCount++;
                 }
 
@@ -744,32 +664,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        [WorkflowExpressionFactory(nameof(__BuildSetPasswordOnAPdfFile))]
-        public IBodyWorkflowAction<SetPasswordOnAPdfFileResponse> SetPasswordOnAPdfFile([WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> bodypassword, [WorkflowExpression] Func<string> bodypdf)
+        public IBodyWorkflowAction<SetPasswordOnAPdfFileResponse> SetPasswordOnAPdfFile(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<string>> bodypassword, Expression<Func<string>> bodypdf)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SetPasswordOnAPdfFileResponse> __BuildSetPasswordOnAPdfFile(WorkflowExpression<string> contentType, WorkflowExpression<string> accept, WorkflowExpression<string> bodypassword, WorkflowExpression<string> bodypdf)
-        {
-            WorkflowExpression.Validate(contentType, nameof(contentType), required: true);
-            WorkflowExpression.Validate(accept, nameof(accept), required: true);
-            WorkflowExpression.Validate(bodypassword, nameof(bodypassword), required: true);
-            WorkflowExpression.Validate(bodypdf, nameof(bodypdf), required: true);
+            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
+            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: true);
+            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
+            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: true);
+            var __workflow_bodypassword = bodypassword == null ? null : WorkflowExpression.Compile(bodypassword);
+            WorkflowExpression.Validate(__workflow_bodypassword, nameof(bodypassword), required: true);
+            var __workflow_bodypdf = bodypdf == null ? null : WorkflowExpression.Compile(bodypdf);
+            WorkflowExpression.Validate(__workflow_bodypdf, nameof(bodypdf), required: true);
             return new DeferredBodyAction<SetPasswordOnAPdfFileResponse>(() =>
             {
                 var apiCallPath = "/pdf/set-password";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["password"] = ExpressionConverter.ConvertO(bodypassword);
+                body["password"] = ExpressionConverter.ConvertO(__workflow_bodypassword);
                 bodypropCount++;
-                body["pdf"] = ExpressionConverter.ConvertO(bodypdf);
+                body["pdf"] = ExpressionConverter.ConvertO(__workflow_bodypdf);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -780,18 +697,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        [WorkflowExpressionFactory(nameof(__BuildReplaceTextInStringBasedOnARegularExpression))]
-        public IBodyWorkflowAction<ReplaceTextInStringBasedOnARegularExpressionResponse> ReplaceTextInStringBasedOnARegularExpression([WorkflowExpression] Func<string> bodypattern, [WorkflowExpression] Func<string> bodyreplacement, [WorkflowExpression] Func<string> bodytext)
+        public IBodyWorkflowAction<ReplaceTextInStringBasedOnARegularExpressionResponse> ReplaceTextInStringBasedOnARegularExpression(Expression<Func<string>> bodypattern, Expression<Func<string>> bodyreplacement, Expression<Func<string>> bodytext)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ReplaceTextInStringBasedOnARegularExpressionResponse> __BuildReplaceTextInStringBasedOnARegularExpression(WorkflowExpression<string> bodypattern, WorkflowExpression<string> bodyreplacement, WorkflowExpression<string> bodytext)
-        {
-            WorkflowExpression.Validate(bodypattern, nameof(bodypattern), required: true);
-            WorkflowExpression.Validate(bodyreplacement, nameof(bodyreplacement), required: true);
-            WorkflowExpression.Validate(bodytext, nameof(bodytext), required: true);
+            var __workflow_bodypattern = bodypattern == null ? null : WorkflowExpression.Compile(bodypattern);
+            WorkflowExpression.Validate(__workflow_bodypattern, nameof(bodypattern), required: true);
+            var __workflow_bodyreplacement = bodyreplacement == null ? null : WorkflowExpression.Compile(bodyreplacement);
+            WorkflowExpression.Validate(__workflow_bodyreplacement, nameof(bodyreplacement), required: true);
+            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
+            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: true);
             return new DeferredBodyAction<ReplaceTextInStringBasedOnARegularExpressionResponse>(() =>
             {
                 var apiCallPath = "/regex/regex-replace";
@@ -802,11 +715,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["pattern"] = ExpressionConverter.ConvertO(bodypattern);
+                body["pattern"] = ExpressionConverter.ConvertO(__workflow_bodypattern);
                 bodypropCount++;
-                body["replacement"] = ExpressionConverter.ConvertO(bodyreplacement);
+                body["replacement"] = ExpressionConverter.ConvertO(__workflow_bodyreplacement);
                 bodypropCount++;
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
+                body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -817,18 +730,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        [WorkflowExpressionFactory(nameof(__BuildFindValuesFromAStringBasedOnARegularExpression))]
-        public IBodyWorkflowAction<FindValuesFromAStringBasedOnARegularExpressionResponse> FindValuesFromAStringBasedOnARegularExpression([WorkflowExpression] Func<string> bodypattern, [WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<int> bodygroup = null)
+        public IBodyWorkflowAction<FindValuesFromAStringBasedOnARegularExpressionResponse> FindValuesFromAStringBasedOnARegularExpression(Expression<Func<string>> bodypattern, Expression<Func<string>> bodytext, Expression<Func<int>> bodygroup = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FindValuesFromAStringBasedOnARegularExpressionResponse> __BuildFindValuesFromAStringBasedOnARegularExpression(WorkflowExpression<string> bodypattern, WorkflowExpression<string> bodytext, WorkflowExpression<int> bodygroup = null)
-        {
-            WorkflowExpression.Validate(bodypattern, nameof(bodypattern), required: true);
-            WorkflowExpression.Validate(bodytext, nameof(bodytext), required: true);
-            WorkflowExpression.Validate(bodygroup, nameof(bodygroup), required: false);
+            var __workflow_bodypattern = bodypattern == null ? null : WorkflowExpression.Compile(bodypattern);
+            WorkflowExpression.Validate(__workflow_bodypattern, nameof(bodypattern), required: true);
+            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
+            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: true);
+            var __workflow_bodygroup = bodygroup == null ? null : WorkflowExpression.Compile(bodygroup);
+            WorkflowExpression.Validate(__workflow_bodygroup, nameof(bodygroup), required: false);
             return new DeferredBodyAction<FindValuesFromAStringBasedOnARegularExpressionResponse>(() =>
             {
                 var apiCallPath = "/regex/regex-search";
@@ -838,16 +747,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
                 callPayload.Headers["Accept"] = Convert.ToString(" application/json");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodygroup != null)
+                if (__workflow_bodygroup != null)
                 {
-                    body["group"] = ExpressionConverter.ConvertO(bodygroup);
+                    body["group"] = ExpressionConverter.ConvertO(__workflow_bodygroup);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["pattern"] = ExpressionConverter.ConvertO(bodypattern);
+                body["pattern"] = ExpressionConverter.ConvertO(__workflow_bodypattern);
                 bodypropCount++;
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
+                body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -858,35 +767,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        [WorkflowExpressionFactory(nameof(__BuildReplaceTextInString))]
-        public IBodyWorkflowAction<ReplaceTextInStringResponse> ReplaceTextInString([WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> bodyreplace, [WorkflowExpression] Func<string> bodysearch, [WorkflowExpression] Func<string> bodytext)
+        public IBodyWorkflowAction<ReplaceTextInStringResponse> ReplaceTextInString(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<string>> bodyreplace, Expression<Func<string>> bodysearch, Expression<Func<string>> bodytext)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ReplaceTextInStringResponse> __BuildReplaceTextInString(WorkflowExpression<string> contentType, WorkflowExpression<string> accept, WorkflowExpression<string> bodyreplace, WorkflowExpression<string> bodysearch, WorkflowExpression<string> bodytext)
-        {
-            WorkflowExpression.Validate(contentType, nameof(contentType), required: true);
-            WorkflowExpression.Validate(accept, nameof(accept), required: true);
-            WorkflowExpression.Validate(bodyreplace, nameof(bodyreplace), required: true);
-            WorkflowExpression.Validate(bodysearch, nameof(bodysearch), required: true);
-            WorkflowExpression.Validate(bodytext, nameof(bodytext), required: true);
+            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
+            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: true);
+            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
+            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: true);
+            var __workflow_bodyreplace = bodyreplace == null ? null : WorkflowExpression.Compile(bodyreplace);
+            WorkflowExpression.Validate(__workflow_bodyreplace, nameof(bodyreplace), required: true);
+            var __workflow_bodysearch = bodysearch == null ? null : WorkflowExpression.Compile(bodysearch);
+            WorkflowExpression.Validate(__workflow_bodysearch, nameof(bodysearch), required: true);
+            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
+            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: true);
             return new DeferredBodyAction<ReplaceTextInStringResponse>(() =>
             {
                 var apiCallPath = "/text/text-replace";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["replace"] = ExpressionConverter.ConvertO(bodyreplace);
+                body["replace"] = ExpressionConverter.ConvertO(__workflow_bodyreplace);
                 bodypropCount++;
-                body["search"] = ExpressionConverter.ConvertO(bodysearch);
+                body["search"] = ExpressionConverter.ConvertO(__workflow_bodysearch);
                 bodypropCount++;
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
+                body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

@@ -1,31 +1,28 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurecommunicationservicessms
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class AzurecommunicationservicessmsActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurecommunicationservicessms")]
-        [WorkflowExpressionFactory(nameof(__BuildSendSMSv2))]
-        public IBodyWorkflowAction<SendSMSv2Response> SendSMSv2([WorkflowExpression] Func<string> bodyfromPhoneNumber, [WorkflowExpression] Func<bodyrecipientsInputItem[]> bodyrecipients, [WorkflowExpression] Func<string> bodymessage, [WorkflowExpression] Func<bool> bodysmsSendOptionsdeliveryReport = null, [WorkflowExpression] Func<string> bodysmsSendOptionstag = null)
+        public IBodyWorkflowAction<SendSMSv2Response> SendSMSv2(Expression<Func<string>> bodyfromPhoneNumber, Expression<Func<bodyrecipientsInputItem[]>> bodyrecipients, Expression<Func<string>> bodymessage, Expression<Func<bool>> bodysmsSendOptionsdeliveryReport = null, Expression<Func<string>> bodysmsSendOptionstag = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SendSMSv2Response> __BuildSendSMSv2(WorkflowExpression<string> bodyfromPhoneNumber, WorkflowExpression<bodyrecipientsInputItem[]> bodyrecipients, WorkflowExpression<string> bodymessage, WorkflowExpression<bool> bodysmsSendOptionsdeliveryReport = null, WorkflowExpression<string> bodysmsSendOptionstag = null)
-        {
-            WorkflowExpression.Validate(bodyfromPhoneNumber, nameof(bodyfromPhoneNumber), required: true);
-            WorkflowExpression.Validate(bodyrecipients, nameof(bodyrecipients), required: true);
-            WorkflowExpression.Validate(bodymessage, nameof(bodymessage), required: true);
-            WorkflowExpression.Validate(bodysmsSendOptionsdeliveryReport, nameof(bodysmsSendOptionsdeliveryReport), required: false);
-            WorkflowExpression.Validate(bodysmsSendOptionstag, nameof(bodysmsSendOptionstag), required: false);
+            var __workflow_bodyfromPhoneNumber = bodyfromPhoneNumber == null ? null : WorkflowExpression.Compile(bodyfromPhoneNumber);
+            WorkflowExpression.Validate(__workflow_bodyfromPhoneNumber, nameof(bodyfromPhoneNumber), required: true);
+            var __workflow_bodyrecipients = bodyrecipients == null ? null : WorkflowExpression.Compile(bodyrecipients);
+            WorkflowExpression.Validate(__workflow_bodyrecipients, nameof(bodyrecipients), required: true);
+            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
+            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: true);
+            var __workflow_bodysmsSendOptionsdeliveryReport = bodysmsSendOptionsdeliveryReport == null ? null : WorkflowExpression.Compile(bodysmsSendOptionsdeliveryReport);
+            WorkflowExpression.Validate(__workflow_bodysmsSendOptionsdeliveryReport, nameof(bodysmsSendOptionsdeliveryReport), required: false);
+            var __workflow_bodysmsSendOptionstag = bodysmsSendOptionstag == null ? null : WorkflowExpression.Compile(bodysmsSendOptionstag);
+            WorkflowExpression.Validate(__workflow_bodysmsSendOptionstag, nameof(bodysmsSendOptionstag), required: false);
             return new DeferredBodyAction<SendSMSv2Response>(() =>
             {
                 var apiCallPath = "/v2/sms";
@@ -34,18 +31,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurecommunicationservicessms
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["from"] = ExpressionConverter.ConvertO(bodyfromPhoneNumber);
+                body["from"] = ExpressionConverter.ConvertO(__workflow_bodyfromPhoneNumber);
                 bodypropCount++;
-                body["smsRecipients"] = ExpressionConverter.ConvertO(bodyrecipients);
+                body["smsRecipients"] = ExpressionConverter.ConvertO(__workflow_bodyrecipients);
                 bodypropCount++;
-                body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                body["message"] = ExpressionConverter.ConvertO(__workflow_bodymessage);
                 var smsSendOptionsObject = new JObject();
                 var smsSendOptionsObjectpropCount = 0;
-                if (bodysmsSendOptionsdeliveryReport != null)
+                if (__workflow_bodysmsSendOptionsdeliveryReport != null)
                 {
-                    if (bodysmsSendOptionsdeliveryReport != null)
+                    if (__workflow_bodysmsSendOptionsdeliveryReport != null)
                     {
-                        smsSendOptionsObject["enableDeliveryReport"] = ExpressionConverter.ConvertO(bodysmsSendOptionsdeliveryReport);
+                        smsSendOptionsObject["enableDeliveryReport"] = ExpressionConverter.ConvertO(__workflow_bodysmsSendOptionsdeliveryReport);
                         smsSendOptionsObjectpropCount++;
                     }
 
@@ -57,9 +54,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurecommunicationservicessms
                     smsSendOptionsObjectpropCount++;
                 }
 
-                if (bodysmsSendOptionstag != null)
+                if (__workflow_bodysmsSendOptionstag != null)
                 {
-                    smsSendOptionsObject["tag"] = ExpressionConverter.ConvertO(bodysmsSendOptionstag);
+                    smsSendOptionsObject["tag"] = ExpressionConverter.ConvertO(__workflow_bodysmsSendOptionstag);
                     smsSendOptionsObjectpropCount++;
                 }
 

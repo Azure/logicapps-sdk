@@ -1,12 +1,12 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class LivechatActions([ConnectionName] string connectionId)
     {
@@ -20,22 +20,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livechat")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateAgent))]
-        public IBodyWorkflowAction<CreateAgentResponse> CreateAgent([WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<bodyloginStatusInput> bodyloginStatus = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<bodypermissionInput> bodypermission = null, [WorkflowExpression] Func<string> bodypassword = null, [WorkflowExpression] Func<string> bodymaxChatCounts = null)
+        public IBodyWorkflowAction<CreateAgentResponse> CreateAgent(Expression<Func<string>> bodyemail, Expression<Func<string>> bodyname, Expression<Func<bodyloginStatusInput>> bodyloginStatus = null, Expression<Func<string>> bodytitle = null, Expression<Func<bodypermissionInput>> bodypermission = null, Expression<Func<string>> bodypassword = null, Expression<Func<string>> bodymaxChatCounts = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateAgentResponse> __BuildCreateAgent(WorkflowExpression<string> bodyemail, WorkflowExpression<string> bodyname, WorkflowExpression<bodyloginStatusInput> bodyloginStatus = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<bodypermissionInput> bodypermission = null, WorkflowExpression<string> bodypassword = null, WorkflowExpression<string> bodymaxChatCounts = null)
-        {
-            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: true);
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
-            WorkflowExpression.Validate(bodyloginStatus, nameof(bodyloginStatus), required: false);
-            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            WorkflowExpression.Validate(bodypermission, nameof(bodypermission), required: false);
-            WorkflowExpression.Validate(bodypassword, nameof(bodypassword), required: false);
-            WorkflowExpression.Validate(bodymaxChatCounts, nameof(bodymaxChatCounts), required: false);
+            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
+            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
+            var __workflow_bodyloginStatus = bodyloginStatus == null ? null : WorkflowExpression.Compile(bodyloginStatus);
+            WorkflowExpression.Validate(__workflow_bodyloginStatus, nameof(bodyloginStatus), required: false);
+            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
+            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodypermission = bodypermission == null ? null : WorkflowExpression.Compile(bodypermission);
+            WorkflowExpression.Validate(__workflow_bodypermission, nameof(bodypermission), required: false);
+            var __workflow_bodypassword = bodypassword == null ? null : WorkflowExpression.Compile(bodypassword);
+            WorkflowExpression.Validate(__workflow_bodypassword, nameof(bodypassword), required: false);
+            var __workflow_bodymaxChatCounts = bodymaxChatCounts == null ? null : WorkflowExpression.Compile(bodymaxChatCounts);
+            WorkflowExpression.Validate(__workflow_bodymaxChatCounts, nameof(bodymaxChatCounts), required: false);
             return new DeferredBodyAction<CreateAgentResponse>(() =>
             {
                 var apiCallPath = "/agents";
@@ -44,36 +44,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["login"] = ExpressionConverter.ConvertO(bodyemail);
+                body["login"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
                 bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                if (bodyloginStatus != null)
+                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
+                if (__workflow_bodyloginStatus != null)
                 {
-                    body["login_status"] = ExpressionConverter.ConvertO(bodyloginStatus);
+                    body["login_status"] = ExpressionConverter.ConvertO(__workflow_bodyloginStatus);
                     bodypropCount++;
                 }
 
-                if (bodytitle != null)
+                if (__workflow_bodytitle != null)
                 {
-                    body["job_title"] = ExpressionConverter.ConvertO(bodytitle);
+                    body["job_title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
                     bodypropCount++;
                 }
 
-                if (bodypermission != null)
+                if (__workflow_bodypermission != null)
                 {
-                    body["permission"] = ExpressionConverter.ConvertO(bodypermission);
+                    body["permission"] = ExpressionConverter.ConvertO(__workflow_bodypermission);
                     bodypropCount++;
                 }
 
-                if (bodypassword != null)
+                if (__workflow_bodypassword != null)
                 {
-                    body["password"] = ExpressionConverter.ConvertO(bodypassword);
+                    body["password"] = ExpressionConverter.ConvertO(__workflow_bodypassword);
                     bodypropCount++;
                 }
 
-                if (bodymaxChatCounts != null)
+                if (__workflow_bodymaxChatCounts != null)
                 {
-                    body["max_chats_count"] = ExpressionConverter.ConvertO(bodymaxChatCounts);
+                    body["max_chats_count"] = ExpressionConverter.ConvertO(__workflow_bodymaxChatCounts);
                     bodypropCount++;
                 }
 
@@ -87,19 +87,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livechat")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteAgent))]
-        public IBodyWorkflowAction<DeleteAgentResponse> DeleteAgent([WorkflowExpression] Func<string> login)
+        public IBodyWorkflowAction<DeleteAgentResponse> DeleteAgent(Expression<Func<string>> login)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DeleteAgentResponse> __BuildDeleteAgent(WorkflowExpression<string> login)
-        {
-            WorkflowExpression.Validate(login, nameof(login), required: true);
+            var __workflow_login = login == null ? null : WorkflowExpression.Compile(login);
+            WorkflowExpression.Validate(__workflow_login, nameof(login), required: true);
             return new DeferredBodyAction<DeleteAgentResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/agents/{0}", ExpressionConverter.ConvertWithUrlEncoding(login, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/agents/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_login, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DeleteAgentResponse>(callPayload);
@@ -116,22 +110,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livechat")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateTicket))]
-        public IBodyWorkflowAction<TicketResponse> CreateTicket([WorkflowExpression] Func<string> bodymessage, [WorkflowExpression] Func<string> bodyrequesterrequesterSEmail = null, [WorkflowExpression] Func<string> bodyrequesterrequesterSName = null, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<string> bodyassigneeassigneeId = null, [WorkflowExpression] Func<bodysourcesourceTypeInput> bodysourcesourceType = null, [WorkflowExpression] Func<string> bodysourcesourceURL = null)
+        public IBodyWorkflowAction<TicketResponse> CreateTicket(Expression<Func<string>> bodymessage, Expression<Func<string>> bodyrequesterrequesterSEmail = null, Expression<Func<string>> bodyrequesterrequesterSName = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodyassigneeassigneeId = null, Expression<Func<bodysourcesourceTypeInput>> bodysourcesourceType = null, Expression<Func<string>> bodysourcesourceURL = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TicketResponse> __BuildCreateTicket(WorkflowExpression<string> bodymessage, WorkflowExpression<string> bodyrequesterrequesterSEmail = null, WorkflowExpression<string> bodyrequesterrequesterSName = null, WorkflowExpression<string> bodysubject = null, WorkflowExpression<string> bodyassigneeassigneeId = null, WorkflowExpression<bodysourcesourceTypeInput> bodysourcesourceType = null, WorkflowExpression<string> bodysourcesourceURL = null)
-        {
-            WorkflowExpression.Validate(bodymessage, nameof(bodymessage), required: true);
-            WorkflowExpression.Validate(bodyrequesterrequesterSEmail, nameof(bodyrequesterrequesterSEmail), required: false);
-            WorkflowExpression.Validate(bodyrequesterrequesterSName, nameof(bodyrequesterrequesterSName), required: false);
-            WorkflowExpression.Validate(bodysubject, nameof(bodysubject), required: false);
-            WorkflowExpression.Validate(bodyassigneeassigneeId, nameof(bodyassigneeassigneeId), required: false);
-            WorkflowExpression.Validate(bodysourcesourceType, nameof(bodysourcesourceType), required: false);
-            WorkflowExpression.Validate(bodysourcesourceURL, nameof(bodysourcesourceURL), required: false);
+            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
+            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: true);
+            var __workflow_bodyrequesterrequesterSEmail = bodyrequesterrequesterSEmail == null ? null : WorkflowExpression.Compile(bodyrequesterrequesterSEmail);
+            WorkflowExpression.Validate(__workflow_bodyrequesterrequesterSEmail, nameof(bodyrequesterrequesterSEmail), required: false);
+            var __workflow_bodyrequesterrequesterSName = bodyrequesterrequesterSName == null ? null : WorkflowExpression.Compile(bodyrequesterrequesterSName);
+            WorkflowExpression.Validate(__workflow_bodyrequesterrequesterSName, nameof(bodyrequesterrequesterSName), required: false);
+            var __workflow_bodysubject = bodysubject == null ? null : WorkflowExpression.Compile(bodysubject);
+            WorkflowExpression.Validate(__workflow_bodysubject, nameof(bodysubject), required: false);
+            var __workflow_bodyassigneeassigneeId = bodyassigneeassigneeId == null ? null : WorkflowExpression.Compile(bodyassigneeassigneeId);
+            WorkflowExpression.Validate(__workflow_bodyassigneeassigneeId, nameof(bodyassigneeassigneeId), required: false);
+            var __workflow_bodysourcesourceType = bodysourcesourceType == null ? null : WorkflowExpression.Compile(bodysourcesourceType);
+            WorkflowExpression.Validate(__workflow_bodysourcesourceType, nameof(bodysourcesourceType), required: false);
+            var __workflow_bodysourcesourceURL = bodysourcesourceURL == null ? null : WorkflowExpression.Compile(bodysourcesourceURL);
+            WorkflowExpression.Validate(__workflow_bodysourcesourceURL, nameof(bodysourcesourceURL), required: false);
             return new DeferredBodyAction<TicketResponse>(() =>
             {
                 var apiCallPath = "/tickets";
@@ -140,18 +134,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                body["message"] = ExpressionConverter.ConvertO(__workflow_bodymessage);
                 var requesterObject = new JObject();
                 var requesterObjectpropCount = 0;
-                if (bodyrequesterrequesterSEmail != null)
+                if (__workflow_bodyrequesterrequesterSEmail != null)
                 {
-                    requesterObject["mail"] = ExpressionConverter.ConvertO(bodyrequesterrequesterSEmail);
+                    requesterObject["mail"] = ExpressionConverter.ConvertO(__workflow_bodyrequesterrequesterSEmail);
                     requesterObjectpropCount++;
                 }
 
-                if (bodyrequesterrequesterSName != null)
+                if (__workflow_bodyrequesterrequesterSName != null)
                 {
-                    requesterObject["name"] = ExpressionConverter.ConvertO(bodyrequesterrequesterSName);
+                    requesterObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyrequesterrequesterSName);
                     requesterObjectpropCount++;
                 }
 
@@ -161,17 +155,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
                     bodypropCount++;
                 }
 
-                if (bodysubject != null)
+                if (__workflow_bodysubject != null)
                 {
-                    body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+                    body["subject"] = ExpressionConverter.ConvertO(__workflow_bodysubject);
                     bodypropCount++;
                 }
 
                 var assigneeObject = new JObject();
                 var assigneeObjectpropCount = 0;
-                if (bodyassigneeassigneeId != null)
+                if (__workflow_bodyassigneeassigneeId != null)
                 {
-                    assigneeObject["id"] = ExpressionConverter.ConvertO(bodyassigneeassigneeId);
+                    assigneeObject["id"] = ExpressionConverter.ConvertO(__workflow_bodyassigneeassigneeId);
                     assigneeObjectpropCount++;
                 }
 
@@ -183,15 +177,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
 
                 var sourceObject = new JObject();
                 var sourceObjectpropCount = 0;
-                if (bodysourcesourceType != null)
+                if (__workflow_bodysourcesourceType != null)
                 {
-                    sourceObject["type"] = ExpressionConverter.ConvertO(bodysourcesourceType);
+                    sourceObject["type"] = ExpressionConverter.ConvertO(__workflow_bodysourcesourceType);
                     sourceObjectpropCount++;
                 }
 
-                if (bodysourcesourceURL != null)
+                if (__workflow_bodysourcesourceURL != null)
                 {
-                    sourceObject["url"] = ExpressionConverter.ConvertO(bodysourcesourceURL);
+                    sourceObject["url"] = ExpressionConverter.ConvertO(__workflow_bodysourcesourceURL);
                     sourceObjectpropCount++;
                 }
 
@@ -211,43 +205,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livechat")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateTicket))]
-        public IBodyWorkflowAction<TicketResponse> UpdateTicket([WorkflowExpression] Func<string> ticketId, [WorkflowExpression] Func<string> bodyrequesterrequesterSEmail, [WorkflowExpression] Func<string> bodymessage = null, [WorkflowExpression] Func<string> bodyrequesterrequesterSName = null, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<string> bodyassigneeassigneeId = null, [WorkflowExpression] Func<bodysourcesourceTypeInput> bodysourcesourceType = null, [WorkflowExpression] Func<string> bodysourcesourceURL = null)
+        public IBodyWorkflowAction<TicketResponse> UpdateTicket(Expression<Func<string>> ticketId, Expression<Func<string>> bodyrequesterrequesterSEmail, Expression<Func<string>> bodymessage = null, Expression<Func<string>> bodyrequesterrequesterSName = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodyassigneeassigneeId = null, Expression<Func<bodysourcesourceTypeInput>> bodysourcesourceType = null, Expression<Func<string>> bodysourcesourceURL = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TicketResponse> __BuildUpdateTicket(WorkflowExpression<string> ticketId, WorkflowExpression<string> bodyrequesterrequesterSEmail, WorkflowExpression<string> bodymessage = null, WorkflowExpression<string> bodyrequesterrequesterSName = null, WorkflowExpression<string> bodysubject = null, WorkflowExpression<string> bodyassigneeassigneeId = null, WorkflowExpression<bodysourcesourceTypeInput> bodysourcesourceType = null, WorkflowExpression<string> bodysourcesourceURL = null)
-        {
-            WorkflowExpression.Validate(ticketId, nameof(ticketId), required: true);
-            WorkflowExpression.Validate(bodyrequesterrequesterSEmail, nameof(bodyrequesterrequesterSEmail), required: true);
-            WorkflowExpression.Validate(bodymessage, nameof(bodymessage), required: false);
-            WorkflowExpression.Validate(bodyrequesterrequesterSName, nameof(bodyrequesterrequesterSName), required: false);
-            WorkflowExpression.Validate(bodysubject, nameof(bodysubject), required: false);
-            WorkflowExpression.Validate(bodyassigneeassigneeId, nameof(bodyassigneeassigneeId), required: false);
-            WorkflowExpression.Validate(bodysourcesourceType, nameof(bodysourcesourceType), required: false);
-            WorkflowExpression.Validate(bodysourcesourceURL, nameof(bodysourcesourceURL), required: false);
+            var __workflow_ticketId = ticketId == null ? null : WorkflowExpression.Compile(ticketId);
+            WorkflowExpression.Validate(__workflow_ticketId, nameof(ticketId), required: true);
+            var __workflow_bodyrequesterrequesterSEmail = bodyrequesterrequesterSEmail == null ? null : WorkflowExpression.Compile(bodyrequesterrequesterSEmail);
+            WorkflowExpression.Validate(__workflow_bodyrequesterrequesterSEmail, nameof(bodyrequesterrequesterSEmail), required: true);
+            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
+            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: false);
+            var __workflow_bodyrequesterrequesterSName = bodyrequesterrequesterSName == null ? null : WorkflowExpression.Compile(bodyrequesterrequesterSName);
+            WorkflowExpression.Validate(__workflow_bodyrequesterrequesterSName, nameof(bodyrequesterrequesterSName), required: false);
+            var __workflow_bodysubject = bodysubject == null ? null : WorkflowExpression.Compile(bodysubject);
+            WorkflowExpression.Validate(__workflow_bodysubject, nameof(bodysubject), required: false);
+            var __workflow_bodyassigneeassigneeId = bodyassigneeassigneeId == null ? null : WorkflowExpression.Compile(bodyassigneeassigneeId);
+            WorkflowExpression.Validate(__workflow_bodyassigneeassigneeId, nameof(bodyassigneeassigneeId), required: false);
+            var __workflow_bodysourcesourceType = bodysourcesourceType == null ? null : WorkflowExpression.Compile(bodysourcesourceType);
+            WorkflowExpression.Validate(__workflow_bodysourcesourceType, nameof(bodysourcesourceType), required: false);
+            var __workflow_bodysourcesourceURL = bodysourcesourceURL == null ? null : WorkflowExpression.Compile(bodysourcesourceURL);
+            WorkflowExpression.Validate(__workflow_bodysourcesourceURL, nameof(bodysourcesourceURL), required: false);
             return new DeferredBodyAction<TicketResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/tickets/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(ticketId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/tickets/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(__workflow_ticketId, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodymessage != null)
+                if (__workflow_bodymessage != null)
                 {
-                    body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                    body["message"] = ExpressionConverter.ConvertO(__workflow_bodymessage);
                     bodypropCount++;
                 }
 
                 var requesterObject = new JObject();
                 var requesterObjectpropCount = 0;
                 requesterObjectpropCount++;
-                requesterObject["mail"] = ExpressionConverter.ConvertO(bodyrequesterrequesterSEmail);
-                if (bodyrequesterrequesterSName != null)
+                requesterObject["mail"] = ExpressionConverter.ConvertO(__workflow_bodyrequesterrequesterSEmail);
+                if (__workflow_bodyrequesterrequesterSName != null)
                 {
-                    requesterObject["name"] = ExpressionConverter.ConvertO(bodyrequesterrequesterSName);
+                    requesterObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyrequesterrequesterSName);
                     requesterObjectpropCount++;
                 }
 
@@ -257,17 +252,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
                     bodypropCount++;
                 }
 
-                if (bodysubject != null)
+                if (__workflow_bodysubject != null)
                 {
-                    body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+                    body["subject"] = ExpressionConverter.ConvertO(__workflow_bodysubject);
                     bodypropCount++;
                 }
 
                 var assigneeObject = new JObject();
                 var assigneeObjectpropCount = 0;
-                if (bodyassigneeassigneeId != null)
+                if (__workflow_bodyassigneeassigneeId != null)
                 {
-                    assigneeObject["id"] = ExpressionConverter.ConvertO(bodyassigneeassigneeId);
+                    assigneeObject["id"] = ExpressionConverter.ConvertO(__workflow_bodyassigneeassigneeId);
                     assigneeObjectpropCount++;
                 }
 
@@ -279,15 +274,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
 
                 var sourceObject = new JObject();
                 var sourceObjectpropCount = 0;
-                if (bodysourcesourceType != null)
+                if (__workflow_bodysourcesourceType != null)
                 {
-                    sourceObject["type"] = ExpressionConverter.ConvertO(bodysourcesourceType);
+                    sourceObject["type"] = ExpressionConverter.ConvertO(__workflow_bodysourcesourceType);
                     sourceObjectpropCount++;
                 }
 
-                if (bodysourcesourceURL != null)
+                if (__workflow_bodysourcesourceURL != null)
                 {
-                    sourceObject["url"] = ExpressionConverter.ConvertO(bodysourcesourceURL);
+                    sourceObject["url"] = ExpressionConverter.ConvertO(__workflow_bodysourcesourceURL);
                     sourceObjectpropCount++;
                 }
 
@@ -307,19 +302,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livechat")]
-        [WorkflowExpressionFactory(nameof(__BuildGetTicket))]
-        public IBodyWorkflowAction<TicketResponse> GetTicket([WorkflowExpression] Func<string> ticketId)
+        public IBodyWorkflowAction<TicketResponse> GetTicket(Expression<Func<string>> ticketId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TicketResponse> __BuildGetTicket(WorkflowExpression<string> ticketId)
-        {
-            WorkflowExpression.Validate(ticketId, nameof(ticketId), required: true);
+            var __workflow_ticketId = ticketId == null ? null : WorkflowExpression.Compile(ticketId);
+            WorkflowExpression.Validate(__workflow_ticketId, nameof(ticketId), required: true);
             return new DeferredBodyAction<TicketResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/tickets/{0}", ExpressionConverter.ConvertWithUrlEncoding(ticketId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/tickets/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_ticketId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TicketResponse>(callPayload);

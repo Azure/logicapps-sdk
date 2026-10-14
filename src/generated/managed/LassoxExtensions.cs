@@ -1,58 +1,47 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lassox
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class LassoxActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lassox")]
-        [WorkflowExpressionFactory(nameof(__BuildActivateUser))]
-        public IWorkflowAction ActivateUser([WorkflowExpression] Func<productInput> product, [WorkflowExpression] Func<string> productUserId)
+        public IWorkflowAction ActivateUser(Expression<Func<productInput>> product, Expression<Func<string>> productUserId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildActivateUser(WorkflowExpression<productInput> product, WorkflowExpression<string> productUserId)
-        {
-            WorkflowExpression.Validate(product, nameof(product), required: true);
-            WorkflowExpression.Validate(productUserId, nameof(productUserId), required: true);
+            var __workflow_product = product == null ? null : WorkflowExpression.Compile(product);
+            WorkflowExpression.Validate(__workflow_product, nameof(product), required: true);
+            var __workflow_productUserId = productUserId == null ? null : WorkflowExpression.Compile(productUserId);
+            WorkflowExpression.Validate(__workflow_productUserId, nameof(productUserId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/users/activatefromproduct";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["Product"] = ExpressionConverter.Convert(product);
-                callPayload.Queries["ProductUserId"] = ExpressionConverter.Convert(productUserId);
+                callPayload.Queries["Product"] = ExpressionConverter.Convert(__workflow_product);
+                callPayload.Queries["ProductUserId"] = ExpressionConverter.Convert(__workflow_productUserId);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lassox")]
-        [WorkflowExpressionFactory(nameof(__BuildDeactivateUser))]
-        public IWorkflowAction DeactivateUser([WorkflowExpression] Func<productInput> product, [WorkflowExpression] Func<string> productUserId)
+        public IWorkflowAction DeactivateUser(Expression<Func<productInput>> product, Expression<Func<string>> productUserId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDeactivateUser(WorkflowExpression<productInput> product, WorkflowExpression<string> productUserId)
-        {
-            WorkflowExpression.Validate(product, nameof(product), required: true);
-            WorkflowExpression.Validate(productUserId, nameof(productUserId), required: true);
+            var __workflow_product = product == null ? null : WorkflowExpression.Compile(product);
+            WorkflowExpression.Validate(__workflow_product, nameof(product), required: true);
+            var __workflow_productUserId = productUserId == null ? null : WorkflowExpression.Compile(productUserId);
+            WorkflowExpression.Validate(__workflow_productUserId, nameof(productUserId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/users/deactivatefromproduct";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["Product"] = ExpressionConverter.Convert(product);
-                callPayload.Queries["ProductUserId"] = ExpressionConverter.Convert(productUserId);
+                callPayload.Queries["Product"] = ExpressionConverter.Convert(__workflow_product);
+                callPayload.Queries["ProductUserId"] = ExpressionConverter.Convert(__workflow_productUserId);
                 return new ApiConnectionAction(callPayload);
             });
         }

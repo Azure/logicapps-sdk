@@ -1,29 +1,24 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentaikonfuzio
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class DocumentaikonfuzioActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentaikonfuzio")]
-        [WorkflowExpressionFactory(nameof(__BuildDocsCreate))]
-        public IBodyWorkflowAction<V2DocsCreateResponse> DocsCreate([WorkflowExpression] Func<object> dataFile, [WorkflowExpression] Func<int> project, [WorkflowExpression] Func<bool> sync = null)
+        public IBodyWorkflowAction<V2DocsCreateResponse> DocsCreate(Expression<Func<object>> dataFile, Expression<Func<int>> project, Expression<Func<bool>> sync = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<V2DocsCreateResponse> __BuildDocsCreate(WorkflowExpression<object> dataFile, WorkflowExpression<int> project, WorkflowExpression<bool> sync = null)
-        {
-            WorkflowExpression.Validate(dataFile, nameof(dataFile), required: true);
-            WorkflowExpression.Validate(project, nameof(project), required: true);
-            WorkflowExpression.Validate(sync, nameof(sync), required: false);
+            var __workflow_dataFile = dataFile == null ? null : WorkflowExpression.Compile(dataFile);
+            WorkflowExpression.Validate(__workflow_dataFile, nameof(dataFile), required: true);
+            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
+            WorkflowExpression.Validate(__workflow_project, nameof(project), required: true);
+            var __workflow_sync = sync == null ? null : WorkflowExpression.Compile(sync);
+            WorkflowExpression.Validate(__workflow_sync, nameof(sync), required: false);
             return new DeferredBodyAction<V2DocsCreateResponse>(() =>
             {
                 var apiCallPath = "/v2/docs/";
@@ -34,19 +29,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentaikonfuzio
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentaikonfuzio")]
-        [WorkflowExpressionFactory(nameof(__BuildDocsDelete))]
-        public IWorkflowAction DocsDelete([WorkflowExpression] Func<string> doc)
+        public IWorkflowAction DocsDelete(Expression<Func<string>> doc)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDocsDelete(WorkflowExpression<string> doc)
-        {
-            WorkflowExpression.Validate(doc, nameof(doc), required: true);
+            var __workflow_doc = doc == null ? null : WorkflowExpression.Compile(doc);
+            WorkflowExpression.Validate(__workflow_doc, nameof(doc), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/docs/{0}/", ExpressionConverter.ConvertWithUrlEncoding(doc, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/docs/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_doc, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -54,19 +43,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentaikonfuzio
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentaikonfuzio")]
-        [WorkflowExpressionFactory(nameof(__BuildDocsPartialUpdate))]
-        public IWorkflowAction DocsPartialUpdate([WorkflowExpression] Func<string> doc)
+        public IWorkflowAction DocsPartialUpdate(Expression<Func<string>> doc)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDocsPartialUpdate(WorkflowExpression<string> doc)
-        {
-            WorkflowExpression.Validate(doc, nameof(doc), required: true);
+            var __workflow_doc = doc == null ? null : WorkflowExpression.Compile(doc);
+            WorkflowExpression.Validate(__workflow_doc, nameof(doc), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/docs/{0}/", ExpressionConverter.ConvertWithUrlEncoding(doc, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/docs/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_doc, 1));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -74,19 +57,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentaikonfuzio
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentaikonfuzio")]
-        [WorkflowExpressionFactory(nameof(__BuildDocsRead))]
-        public IWorkflowAction DocsRead([WorkflowExpression] Func<string> doc)
+        public IWorkflowAction DocsRead(Expression<Func<string>> doc)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDocsRead(WorkflowExpression<string> doc)
-        {
-            WorkflowExpression.Validate(doc, nameof(doc), required: true);
+            var __workflow_doc = doc == null ? null : WorkflowExpression.Compile(doc);
+            WorkflowExpression.Validate(__workflow_doc, nameof(doc), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/docs/{0}/", ExpressionConverter.ConvertWithUrlEncoding(doc, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/docs/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_doc, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);

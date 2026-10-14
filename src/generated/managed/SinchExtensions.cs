@@ -1,32 +1,30 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class SinchActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sinch")]
-        [WorkflowExpressionFactory(nameof(__BuildSendSms))]
-        public IBodyWorkflowAction<SendSmsResponse> SendSms([WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<string> bodymessage, [WorkflowExpression] Func<string> bodysourceNumber = null, [WorkflowExpression] Func<bool> bodydeliveryReport = null, [WorkflowExpression] Func<string> bodycallbackUrl = null, [WorkflowExpression] Func<bodymetadataInputItem[]> bodymetadata = null)
+        public IBodyWorkflowAction<SendSmsResponse> SendSms(Expression<Func<string>> bodyto, Expression<Func<string>> bodymessage, Expression<Func<string>> bodysourceNumber = null, Expression<Func<bool>> bodydeliveryReport = null, Expression<Func<string>> bodycallbackUrl = null, Expression<Func<bodymetadataInputItem[]>> bodymetadata = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SendSmsResponse> __BuildSendSms(WorkflowExpression<string> bodyto, WorkflowExpression<string> bodymessage, WorkflowExpression<string> bodysourceNumber = null, WorkflowExpression<bool> bodydeliveryReport = null, WorkflowExpression<string> bodycallbackUrl = null, WorkflowExpression<bodymetadataInputItem[]> bodymetadata = null)
-        {
-            WorkflowExpression.Validate(bodyto, nameof(bodyto), required: true);
-            WorkflowExpression.Validate(bodymessage, nameof(bodymessage), required: true);
-            WorkflowExpression.Validate(bodysourceNumber, nameof(bodysourceNumber), required: false);
-            WorkflowExpression.Validate(bodydeliveryReport, nameof(bodydeliveryReport), required: false);
-            WorkflowExpression.Validate(bodycallbackUrl, nameof(bodycallbackUrl), required: false);
-            WorkflowExpression.Validate(bodymetadata, nameof(bodymetadata), required: false);
+            var __workflow_bodyto = bodyto == null ? null : WorkflowExpression.Compile(bodyto);
+            WorkflowExpression.Validate(__workflow_bodyto, nameof(bodyto), required: true);
+            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
+            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: true);
+            var __workflow_bodysourceNumber = bodysourceNumber == null ? null : WorkflowExpression.Compile(bodysourceNumber);
+            WorkflowExpression.Validate(__workflow_bodysourceNumber, nameof(bodysourceNumber), required: false);
+            var __workflow_bodydeliveryReport = bodydeliveryReport == null ? null : WorkflowExpression.Compile(bodydeliveryReport);
+            WorkflowExpression.Validate(__workflow_bodydeliveryReport, nameof(bodydeliveryReport), required: false);
+            var __workflow_bodycallbackUrl = bodycallbackUrl == null ? null : WorkflowExpression.Compile(bodycallbackUrl);
+            WorkflowExpression.Validate(__workflow_bodycallbackUrl, nameof(bodycallbackUrl), required: false);
+            var __workflow_bodymetadata = bodymetadata == null ? null : WorkflowExpression.Compile(bodymetadata);
+            WorkflowExpression.Validate(__workflow_bodymetadata, nameof(bodymetadata), required: false);
             return new DeferredBodyAction<SendSmsResponse>(() =>
             {
                 var apiCallPath = "/v1/int-power-automate/send-message";
@@ -34,21 +32,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodysourceNumber != null)
+                if (__workflow_bodysourceNumber != null)
                 {
-                    body["source_number"] = ExpressionConverter.ConvertO(bodysourceNumber);
+                    body["source_number"] = ExpressionConverter.ConvertO(__workflow_bodysourceNumber);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["to"] = ExpressionConverter.ConvertO(bodyto);
+                body["to"] = ExpressionConverter.ConvertO(__workflow_bodyto);
                 bodypropCount++;
-                body["message"] = ExpressionConverter.ConvertO(bodymessage);
-                if (bodydeliveryReport != null)
+                body["message"] = ExpressionConverter.ConvertO(__workflow_bodymessage);
+                if (__workflow_bodydeliveryReport != null)
                 {
-                    if (bodydeliveryReport != null)
+                    if (__workflow_bodydeliveryReport != null)
                     {
-                        body["delivery_report"] = ExpressionConverter.ConvertO(bodydeliveryReport);
+                        body["delivery_report"] = ExpressionConverter.ConvertO(__workflow_bodydeliveryReport);
                         bodypropCount++;
                     }
 
@@ -60,15 +58,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
                     bodypropCount++;
                 }
 
-                if (bodycallbackUrl != null)
+                if (__workflow_bodycallbackUrl != null)
                 {
-                    body["callback_url"] = ExpressionConverter.ConvertO(bodycallbackUrl);
+                    body["callback_url"] = ExpressionConverter.ConvertO(__workflow_bodycallbackUrl);
                     bodypropCount++;
                 }
 
-                if (bodymetadata != null)
+                if (__workflow_bodymetadata != null)
                 {
-                    body["metadata"] = ExpressionConverter.ConvertO(bodymetadata);
+                    body["metadata"] = ExpressionConverter.ConvertO(__workflow_bodymetadata);
                     bodypropCount++;
                 }
 
@@ -91,19 +89,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sinch")]
-        [WorkflowExpressionFactory(nameof(__BuildGetMessageStatus))]
-        public IBodyWorkflowAction<Message> GetMessageStatus([WorkflowExpression] Func<string> messageId)
+        public IBodyWorkflowAction<Message> GetMessageStatus(Expression<Func<string>> messageId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Message> __BuildGetMessageStatus(WorkflowExpression<string> messageId)
-        {
-            WorkflowExpression.Validate(messageId, nameof(messageId), required: true);
+            var __workflow_messageId = messageId == null ? null : WorkflowExpression.Compile(messageId);
+            WorkflowExpression.Validate(__workflow_messageId, nameof(messageId), required: true);
             return new DeferredBodyAction<Message>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/messages/{0}", ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/messages/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_messageId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Message>(callPayload);
@@ -111,22 +103,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sinch")]
-        [WorkflowExpressionFactory(nameof(__BuildSendRCS))]
-        public IWorkflowAction SendRCS([WorkflowExpression] Func<object> body = null)
+        public IWorkflowAction SendRCS(Expression<Func<object>> body = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildSendRCS(WorkflowExpression<object> body = null)
-        {
-            WorkflowExpression.Validate(body, nameof(body), required: false);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v2/int-power-automate/message";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }

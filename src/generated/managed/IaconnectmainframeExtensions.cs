@@ -1,33 +1,32 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class IaconnectmainframeActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        [WorkflowExpressionFactory(nameof(__BuildHLLAPISetHLLAPIDLL))]
-        public IWorkflowAction HLLAPISetHLLAPIDLL([WorkflowExpression] Func<string> hLLAPISetHLLAPIDLLdLLFilename, [WorkflowExpression] Func<string> hLLAPISetHLLAPIDLLworkflow, [WorkflowExpression] Func<string> hLLAPISetHLLAPIDLLiAHLLAPIPath = null, [WorkflowExpression] Func<string> hLLAPISetHLLAPIDLLentryPointName = null, [WorkflowExpression] Func<bool> hLLAPISetHLLAPIDLLisEnhancedInterface = null, [WorkflowExpression] Func<bool> hLLAPISetHLLAPIDLLis64BitHLLAPIDLL = null, [WorkflowExpression] Func<bool> hLLAPISetHLLAPIDLLuseCOMFor64BitHLLAPIDLL = null)
+        public IWorkflowAction HLLAPISetHLLAPIDLL(Expression<Func<string>> hLLAPISetHLLAPIDLLdLLFilename, Expression<Func<string>> hLLAPISetHLLAPIDLLworkflow, Expression<Func<string>> hLLAPISetHLLAPIDLLiAHLLAPIPath = null, Expression<Func<string>> hLLAPISetHLLAPIDLLentryPointName = null, Expression<Func<bool>> hLLAPISetHLLAPIDLLisEnhancedInterface = null, Expression<Func<bool>> hLLAPISetHLLAPIDLLis64BitHLLAPIDLL = null, Expression<Func<bool>> hLLAPISetHLLAPIDLLuseCOMFor64BitHLLAPIDLL = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildHLLAPISetHLLAPIDLL(WorkflowExpression<string> hLLAPISetHLLAPIDLLdLLFilename, WorkflowExpression<string> hLLAPISetHLLAPIDLLworkflow, WorkflowExpression<string> hLLAPISetHLLAPIDLLiAHLLAPIPath = null, WorkflowExpression<string> hLLAPISetHLLAPIDLLentryPointName = null, WorkflowExpression<bool> hLLAPISetHLLAPIDLLisEnhancedInterface = null, WorkflowExpression<bool> hLLAPISetHLLAPIDLLis64BitHLLAPIDLL = null, WorkflowExpression<bool> hLLAPISetHLLAPIDLLuseCOMFor64BitHLLAPIDLL = null)
-        {
-            WorkflowExpression.Validate(hLLAPISetHLLAPIDLLdLLFilename, nameof(hLLAPISetHLLAPIDLLdLLFilename), required: true);
-            WorkflowExpression.Validate(hLLAPISetHLLAPIDLLworkflow, nameof(hLLAPISetHLLAPIDLLworkflow), required: true);
-            WorkflowExpression.Validate(hLLAPISetHLLAPIDLLiAHLLAPIPath, nameof(hLLAPISetHLLAPIDLLiAHLLAPIPath), required: false);
-            WorkflowExpression.Validate(hLLAPISetHLLAPIDLLentryPointName, nameof(hLLAPISetHLLAPIDLLentryPointName), required: false);
-            WorkflowExpression.Validate(hLLAPISetHLLAPIDLLisEnhancedInterface, nameof(hLLAPISetHLLAPIDLLisEnhancedInterface), required: false);
-            WorkflowExpression.Validate(hLLAPISetHLLAPIDLLis64BitHLLAPIDLL, nameof(hLLAPISetHLLAPIDLLis64BitHLLAPIDLL), required: false);
-            WorkflowExpression.Validate(hLLAPISetHLLAPIDLLuseCOMFor64BitHLLAPIDLL, nameof(hLLAPISetHLLAPIDLLuseCOMFor64BitHLLAPIDLL), required: false);
+            var __workflow_hLLAPISetHLLAPIDLLdLLFilename = hLLAPISetHLLAPIDLLdLLFilename == null ? null : WorkflowExpression.Compile(hLLAPISetHLLAPIDLLdLLFilename);
+            WorkflowExpression.Validate(__workflow_hLLAPISetHLLAPIDLLdLLFilename, nameof(hLLAPISetHLLAPIDLLdLLFilename), required: true);
+            var __workflow_hLLAPISetHLLAPIDLLworkflow = hLLAPISetHLLAPIDLLworkflow == null ? null : WorkflowExpression.Compile(hLLAPISetHLLAPIDLLworkflow);
+            WorkflowExpression.Validate(__workflow_hLLAPISetHLLAPIDLLworkflow, nameof(hLLAPISetHLLAPIDLLworkflow), required: true);
+            var __workflow_hLLAPISetHLLAPIDLLiAHLLAPIPath = hLLAPISetHLLAPIDLLiAHLLAPIPath == null ? null : WorkflowExpression.Compile(hLLAPISetHLLAPIDLLiAHLLAPIPath);
+            WorkflowExpression.Validate(__workflow_hLLAPISetHLLAPIDLLiAHLLAPIPath, nameof(hLLAPISetHLLAPIDLLiAHLLAPIPath), required: false);
+            var __workflow_hLLAPISetHLLAPIDLLentryPointName = hLLAPISetHLLAPIDLLentryPointName == null ? null : WorkflowExpression.Compile(hLLAPISetHLLAPIDLLentryPointName);
+            WorkflowExpression.Validate(__workflow_hLLAPISetHLLAPIDLLentryPointName, nameof(hLLAPISetHLLAPIDLLentryPointName), required: false);
+            var __workflow_hLLAPISetHLLAPIDLLisEnhancedInterface = hLLAPISetHLLAPIDLLisEnhancedInterface == null ? null : WorkflowExpression.Compile(hLLAPISetHLLAPIDLLisEnhancedInterface);
+            WorkflowExpression.Validate(__workflow_hLLAPISetHLLAPIDLLisEnhancedInterface, nameof(hLLAPISetHLLAPIDLLisEnhancedInterface), required: false);
+            var __workflow_hLLAPISetHLLAPIDLLis64BitHLLAPIDLL = hLLAPISetHLLAPIDLLis64BitHLLAPIDLL == null ? null : WorkflowExpression.Compile(hLLAPISetHLLAPIDLLis64BitHLLAPIDLL);
+            WorkflowExpression.Validate(__workflow_hLLAPISetHLLAPIDLLis64BitHLLAPIDLL, nameof(hLLAPISetHLLAPIDLLis64BitHLLAPIDLL), required: false);
+            var __workflow_hLLAPISetHLLAPIDLLuseCOMFor64BitHLLAPIDLL = hLLAPISetHLLAPIDLLuseCOMFor64BitHLLAPIDLL == null ? null : WorkflowExpression.Compile(hLLAPISetHLLAPIDLLuseCOMFor64BitHLLAPIDLL);
+            WorkflowExpression.Validate(__workflow_hLLAPISetHLLAPIDLLuseCOMFor64BitHLLAPIDLL, nameof(hLLAPISetHLLAPIDLLuseCOMFor64BitHLLAPIDLL), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/HLLAPI/HLLAPISetHLLAPIDLL";
@@ -36,24 +35,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 var hLLAPISetHLLAPIDLL = new JObject();
                 var hLLAPISetHLLAPIDLLpropCount = 0;
                 hLLAPISetHLLAPIDLLpropCount++;
-                hLLAPISetHLLAPIDLL["DLLFilename"] = ExpressionConverter.ConvertO(hLLAPISetHLLAPIDLLdLLFilename);
-                if (hLLAPISetHLLAPIDLLiAHLLAPIPath != null)
+                hLLAPISetHLLAPIDLL["DLLFilename"] = ExpressionConverter.ConvertO(__workflow_hLLAPISetHLLAPIDLLdLLFilename);
+                if (__workflow_hLLAPISetHLLAPIDLLiAHLLAPIPath != null)
                 {
-                    hLLAPISetHLLAPIDLL["IAHLLAPIPath"] = ExpressionConverter.ConvertO(hLLAPISetHLLAPIDLLiAHLLAPIPath);
+                    hLLAPISetHLLAPIDLL["IAHLLAPIPath"] = ExpressionConverter.ConvertO(__workflow_hLLAPISetHLLAPIDLLiAHLLAPIPath);
                     hLLAPISetHLLAPIDLLpropCount++;
                 }
 
-                if (hLLAPISetHLLAPIDLLentryPointName != null)
+                if (__workflow_hLLAPISetHLLAPIDLLentryPointName != null)
                 {
-                    hLLAPISetHLLAPIDLL["EntryPointName"] = ExpressionConverter.ConvertO(hLLAPISetHLLAPIDLLentryPointName);
+                    hLLAPISetHLLAPIDLL["EntryPointName"] = ExpressionConverter.ConvertO(__workflow_hLLAPISetHLLAPIDLLentryPointName);
                     hLLAPISetHLLAPIDLLpropCount++;
                 }
 
-                if (hLLAPISetHLLAPIDLLisEnhancedInterface != null)
+                if (__workflow_hLLAPISetHLLAPIDLLisEnhancedInterface != null)
                 {
-                    if (hLLAPISetHLLAPIDLLisEnhancedInterface != null)
+                    if (__workflow_hLLAPISetHLLAPIDLLisEnhancedInterface != null)
                     {
-                        hLLAPISetHLLAPIDLL["IsEnhancedInterface"] = ExpressionConverter.ConvertO(hLLAPISetHLLAPIDLLisEnhancedInterface);
+                        hLLAPISetHLLAPIDLL["IsEnhancedInterface"] = ExpressionConverter.ConvertO(__workflow_hLLAPISetHLLAPIDLLisEnhancedInterface);
                         hLLAPISetHLLAPIDLLpropCount++;
                     }
 
@@ -65,11 +64,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                     hLLAPISetHLLAPIDLLpropCount++;
                 }
 
-                if (hLLAPISetHLLAPIDLLis64BitHLLAPIDLL != null)
+                if (__workflow_hLLAPISetHLLAPIDLLis64BitHLLAPIDLL != null)
                 {
-                    if (hLLAPISetHLLAPIDLLis64BitHLLAPIDLL != null)
+                    if (__workflow_hLLAPISetHLLAPIDLLis64BitHLLAPIDLL != null)
                     {
-                        hLLAPISetHLLAPIDLL["Is64BitHLLAPIDLL"] = ExpressionConverter.ConvertO(hLLAPISetHLLAPIDLLis64BitHLLAPIDLL);
+                        hLLAPISetHLLAPIDLL["Is64BitHLLAPIDLL"] = ExpressionConverter.ConvertO(__workflow_hLLAPISetHLLAPIDLLis64BitHLLAPIDLL);
                         hLLAPISetHLLAPIDLLpropCount++;
                     }
 
@@ -81,11 +80,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                     hLLAPISetHLLAPIDLLpropCount++;
                 }
 
-                if (hLLAPISetHLLAPIDLLuseCOMFor64BitHLLAPIDLL != null)
+                if (__workflow_hLLAPISetHLLAPIDLLuseCOMFor64BitHLLAPIDLL != null)
                 {
-                    if (hLLAPISetHLLAPIDLLuseCOMFor64BitHLLAPIDLL != null)
+                    if (__workflow_hLLAPISetHLLAPIDLLuseCOMFor64BitHLLAPIDLL != null)
                     {
-                        hLLAPISetHLLAPIDLL["UseCOMFor64BitHLLAPIDLL"] = ExpressionConverter.ConvertO(hLLAPISetHLLAPIDLLuseCOMFor64BitHLLAPIDLL);
+                        hLLAPISetHLLAPIDLL["UseCOMFor64BitHLLAPIDLL"] = ExpressionConverter.ConvertO(__workflow_hLLAPISetHLLAPIDLLuseCOMFor64BitHLLAPIDLL);
                         hLLAPISetHLLAPIDLLpropCount++;
                     }
 
@@ -98,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 }
 
                 hLLAPISetHLLAPIDLLpropCount++;
-                hLLAPISetHLLAPIDLL["Workflow"] = ExpressionConverter.ConvertO(hLLAPISetHLLAPIDLLworkflow);
+                hLLAPISetHLLAPIDLL["Workflow"] = ExpressionConverter.ConvertO(__workflow_hLLAPISetHLLAPIDLLworkflow);
                 if (hLLAPISetHLLAPIDLLpropCount > 0)
                 {
                     callPayload.Body = hLLAPISetHLLAPIDLL;
@@ -109,16 +108,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        [WorkflowExpressionFactory(nameof(__BuildHLLAPIDispose))]
-        public IWorkflowAction HLLAPIDispose([WorkflowExpression] Func<string> hLLAPIDisposeworkflow)
+        public IWorkflowAction HLLAPIDispose(Expression<Func<string>> hLLAPIDisposeworkflow)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildHLLAPIDispose(WorkflowExpression<string> hLLAPIDisposeworkflow)
-        {
-            WorkflowExpression.Validate(hLLAPIDisposeworkflow, nameof(hLLAPIDisposeworkflow), required: true);
+            var __workflow_hLLAPIDisposeworkflow = hLLAPIDisposeworkflow == null ? null : WorkflowExpression.Compile(hLLAPIDisposeworkflow);
+            WorkflowExpression.Validate(__workflow_hLLAPIDisposeworkflow, nameof(hLLAPIDisposeworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/HLLAPI/HLLAPIDispose";
@@ -127,7 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 var hLLAPIDispose = new JObject();
                 var hLLAPIDisposepropCount = 0;
                 hLLAPIDisposepropCount++;
-                hLLAPIDispose["Workflow"] = ExpressionConverter.ConvertO(hLLAPIDisposeworkflow);
+                hLLAPIDispose["Workflow"] = ExpressionConverter.ConvertO(__workflow_hLLAPIDisposeworkflow);
                 if (hLLAPIDisposepropCount > 0)
                 {
                     callPayload.Body = hLLAPIDispose;
@@ -138,17 +131,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        [WorkflowExpressionFactory(nameof(__BuildHLLAPIConnect))]
-        public IWorkflowAction HLLAPIConnect([WorkflowExpression] Func<string> hLLAPIConnectsessionID, [WorkflowExpression] Func<string> hLLAPIConnectworkflow)
+        public IWorkflowAction HLLAPIConnect(Expression<Func<string>> hLLAPIConnectsessionID, Expression<Func<string>> hLLAPIConnectworkflow)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildHLLAPIConnect(WorkflowExpression<string> hLLAPIConnectsessionID, WorkflowExpression<string> hLLAPIConnectworkflow)
-        {
-            WorkflowExpression.Validate(hLLAPIConnectsessionID, nameof(hLLAPIConnectsessionID), required: true);
-            WorkflowExpression.Validate(hLLAPIConnectworkflow, nameof(hLLAPIConnectworkflow), required: true);
+            var __workflow_hLLAPIConnectsessionID = hLLAPIConnectsessionID == null ? null : WorkflowExpression.Compile(hLLAPIConnectsessionID);
+            WorkflowExpression.Validate(__workflow_hLLAPIConnectsessionID, nameof(hLLAPIConnectsessionID), required: true);
+            var __workflow_hLLAPIConnectworkflow = hLLAPIConnectworkflow == null ? null : WorkflowExpression.Compile(hLLAPIConnectworkflow);
+            WorkflowExpression.Validate(__workflow_hLLAPIConnectworkflow, nameof(hLLAPIConnectworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/HLLAPI/HLLAPIConnect";
@@ -157,9 +145,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 var hLLAPIConnect = new JObject();
                 var hLLAPIConnectpropCount = 0;
                 hLLAPIConnectpropCount++;
-                hLLAPIConnect["SessionID"] = ExpressionConverter.ConvertO(hLLAPIConnectsessionID);
+                hLLAPIConnect["SessionID"] = ExpressionConverter.ConvertO(__workflow_hLLAPIConnectsessionID);
                 hLLAPIConnectpropCount++;
-                hLLAPIConnect["Workflow"] = ExpressionConverter.ConvertO(hLLAPIConnectworkflow);
+                hLLAPIConnect["Workflow"] = ExpressionConverter.ConvertO(__workflow_hLLAPIConnectworkflow);
                 if (hLLAPIConnectpropCount > 0)
                 {
                     callPayload.Body = hLLAPIConnect;
@@ -170,17 +158,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        [WorkflowExpressionFactory(nameof(__BuildHLLAPIGetConnectStatus))]
-        public IBodyWorkflowAction<HLLAPIGetConnectStatusResponse> HLLAPIGetConnectStatus([WorkflowExpression] Func<string> hLLAPIGetConnectStatussessionID, [WorkflowExpression] Func<string> hLLAPIGetConnectStatusworkflow)
+        public IBodyWorkflowAction<HLLAPIGetConnectStatusResponse> HLLAPIGetConnectStatus(Expression<Func<string>> hLLAPIGetConnectStatussessionID, Expression<Func<string>> hLLAPIGetConnectStatusworkflow)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<HLLAPIGetConnectStatusResponse> __BuildHLLAPIGetConnectStatus(WorkflowExpression<string> hLLAPIGetConnectStatussessionID, WorkflowExpression<string> hLLAPIGetConnectStatusworkflow)
-        {
-            WorkflowExpression.Validate(hLLAPIGetConnectStatussessionID, nameof(hLLAPIGetConnectStatussessionID), required: true);
-            WorkflowExpression.Validate(hLLAPIGetConnectStatusworkflow, nameof(hLLAPIGetConnectStatusworkflow), required: true);
+            var __workflow_hLLAPIGetConnectStatussessionID = hLLAPIGetConnectStatussessionID == null ? null : WorkflowExpression.Compile(hLLAPIGetConnectStatussessionID);
+            WorkflowExpression.Validate(__workflow_hLLAPIGetConnectStatussessionID, nameof(hLLAPIGetConnectStatussessionID), required: true);
+            var __workflow_hLLAPIGetConnectStatusworkflow = hLLAPIGetConnectStatusworkflow == null ? null : WorkflowExpression.Compile(hLLAPIGetConnectStatusworkflow);
+            WorkflowExpression.Validate(__workflow_hLLAPIGetConnectStatusworkflow, nameof(hLLAPIGetConnectStatusworkflow), required: true);
             return new DeferredBodyAction<HLLAPIGetConnectStatusResponse>(() =>
             {
                 var apiCallPath = "/HLLAPI/HLLAPIGetConnectStatus";
@@ -189,9 +172,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 var hLLAPIGetConnectStatus = new JObject();
                 var hLLAPIGetConnectStatuspropCount = 0;
                 hLLAPIGetConnectStatuspropCount++;
-                hLLAPIGetConnectStatus["SessionID"] = ExpressionConverter.ConvertO(hLLAPIGetConnectStatussessionID);
+                hLLAPIGetConnectStatus["SessionID"] = ExpressionConverter.ConvertO(__workflow_hLLAPIGetConnectStatussessionID);
                 hLLAPIGetConnectStatuspropCount++;
-                hLLAPIGetConnectStatus["Workflow"] = ExpressionConverter.ConvertO(hLLAPIGetConnectStatusworkflow);
+                hLLAPIGetConnectStatus["Workflow"] = ExpressionConverter.ConvertO(__workflow_hLLAPIGetConnectStatusworkflow);
                 if (hLLAPIGetConnectStatuspropCount > 0)
                 {
                     callPayload.Body = hLLAPIGetConnectStatus;
@@ -202,17 +185,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        [WorkflowExpressionFactory(nameof(__BuildHLLAPIDisconnect))]
-        public IWorkflowAction HLLAPIDisconnect([WorkflowExpression] Func<string> hLLAPIDisconnectsessionID, [WorkflowExpression] Func<string> hLLAPIDisconnectworkflow)
+        public IWorkflowAction HLLAPIDisconnect(Expression<Func<string>> hLLAPIDisconnectsessionID, Expression<Func<string>> hLLAPIDisconnectworkflow)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildHLLAPIDisconnect(WorkflowExpression<string> hLLAPIDisconnectsessionID, WorkflowExpression<string> hLLAPIDisconnectworkflow)
-        {
-            WorkflowExpression.Validate(hLLAPIDisconnectsessionID, nameof(hLLAPIDisconnectsessionID), required: true);
-            WorkflowExpression.Validate(hLLAPIDisconnectworkflow, nameof(hLLAPIDisconnectworkflow), required: true);
+            var __workflow_hLLAPIDisconnectsessionID = hLLAPIDisconnectsessionID == null ? null : WorkflowExpression.Compile(hLLAPIDisconnectsessionID);
+            WorkflowExpression.Validate(__workflow_hLLAPIDisconnectsessionID, nameof(hLLAPIDisconnectsessionID), required: true);
+            var __workflow_hLLAPIDisconnectworkflow = hLLAPIDisconnectworkflow == null ? null : WorkflowExpression.Compile(hLLAPIDisconnectworkflow);
+            WorkflowExpression.Validate(__workflow_hLLAPIDisconnectworkflow, nameof(hLLAPIDisconnectworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/HLLAPI/HLLAPIDisconnect";
@@ -221,9 +199,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 var hLLAPIDisconnect = new JObject();
                 var hLLAPIDisconnectpropCount = 0;
                 hLLAPIDisconnectpropCount++;
-                hLLAPIDisconnect["SessionID"] = ExpressionConverter.ConvertO(hLLAPIDisconnectsessionID);
+                hLLAPIDisconnect["SessionID"] = ExpressionConverter.ConvertO(__workflow_hLLAPIDisconnectsessionID);
                 hLLAPIDisconnectpropCount++;
-                hLLAPIDisconnect["Workflow"] = ExpressionConverter.ConvertO(hLLAPIDisconnectworkflow);
+                hLLAPIDisconnect["Workflow"] = ExpressionConverter.ConvertO(__workflow_hLLAPIDisconnectworkflow);
                 if (hLLAPIDisconnectpropCount > 0)
                 {
                     callPayload.Body = hLLAPIDisconnect;
@@ -234,19 +212,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        [WorkflowExpressionFactory(nameof(__BuildHLLAPISetCursorPos))]
-        public IWorkflowAction HLLAPISetCursorPos([WorkflowExpression] Func<string> hLLAPISetCursorPossessionID, [WorkflowExpression] Func<int> hLLAPISetCursorPoscursorRowIndex, [WorkflowExpression] Func<int> hLLAPISetCursorPoscursorColIndex, [WorkflowExpression] Func<string> hLLAPISetCursorPosworkflow)
+        public IWorkflowAction HLLAPISetCursorPos(Expression<Func<string>> hLLAPISetCursorPossessionID, Expression<Func<int>> hLLAPISetCursorPoscursorRowIndex, Expression<Func<int>> hLLAPISetCursorPoscursorColIndex, Expression<Func<string>> hLLAPISetCursorPosworkflow)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildHLLAPISetCursorPos(WorkflowExpression<string> hLLAPISetCursorPossessionID, WorkflowExpression<int> hLLAPISetCursorPoscursorRowIndex, WorkflowExpression<int> hLLAPISetCursorPoscursorColIndex, WorkflowExpression<string> hLLAPISetCursorPosworkflow)
-        {
-            WorkflowExpression.Validate(hLLAPISetCursorPossessionID, nameof(hLLAPISetCursorPossessionID), required: true);
-            WorkflowExpression.Validate(hLLAPISetCursorPoscursorRowIndex, nameof(hLLAPISetCursorPoscursorRowIndex), required: true);
-            WorkflowExpression.Validate(hLLAPISetCursorPoscursorColIndex, nameof(hLLAPISetCursorPoscursorColIndex), required: true);
-            WorkflowExpression.Validate(hLLAPISetCursorPosworkflow, nameof(hLLAPISetCursorPosworkflow), required: true);
+            var __workflow_hLLAPISetCursorPossessionID = hLLAPISetCursorPossessionID == null ? null : WorkflowExpression.Compile(hLLAPISetCursorPossessionID);
+            WorkflowExpression.Validate(__workflow_hLLAPISetCursorPossessionID, nameof(hLLAPISetCursorPossessionID), required: true);
+            var __workflow_hLLAPISetCursorPoscursorRowIndex = hLLAPISetCursorPoscursorRowIndex == null ? null : WorkflowExpression.Compile(hLLAPISetCursorPoscursorRowIndex);
+            WorkflowExpression.Validate(__workflow_hLLAPISetCursorPoscursorRowIndex, nameof(hLLAPISetCursorPoscursorRowIndex), required: true);
+            var __workflow_hLLAPISetCursorPoscursorColIndex = hLLAPISetCursorPoscursorColIndex == null ? null : WorkflowExpression.Compile(hLLAPISetCursorPoscursorColIndex);
+            WorkflowExpression.Validate(__workflow_hLLAPISetCursorPoscursorColIndex, nameof(hLLAPISetCursorPoscursorColIndex), required: true);
+            var __workflow_hLLAPISetCursorPosworkflow = hLLAPISetCursorPosworkflow == null ? null : WorkflowExpression.Compile(hLLAPISetCursorPosworkflow);
+            WorkflowExpression.Validate(__workflow_hLLAPISetCursorPosworkflow, nameof(hLLAPISetCursorPosworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/HLLAPI/HLLAPISetCursorPos";
@@ -255,13 +230,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 var hLLAPISetCursorPos = new JObject();
                 var hLLAPISetCursorPospropCount = 0;
                 hLLAPISetCursorPospropCount++;
-                hLLAPISetCursorPos["SessionID"] = ExpressionConverter.ConvertO(hLLAPISetCursorPossessionID);
+                hLLAPISetCursorPos["SessionID"] = ExpressionConverter.ConvertO(__workflow_hLLAPISetCursorPossessionID);
                 hLLAPISetCursorPospropCount++;
-                hLLAPISetCursorPos["CursorRowIndex"] = ExpressionConverter.ConvertO(hLLAPISetCursorPoscursorRowIndex);
+                hLLAPISetCursorPos["CursorRowIndex"] = ExpressionConverter.ConvertO(__workflow_hLLAPISetCursorPoscursorRowIndex);
                 hLLAPISetCursorPospropCount++;
-                hLLAPISetCursorPos["CursorColIndex"] = ExpressionConverter.ConvertO(hLLAPISetCursorPoscursorColIndex);
+                hLLAPISetCursorPos["CursorColIndex"] = ExpressionConverter.ConvertO(__workflow_hLLAPISetCursorPoscursorColIndex);
                 hLLAPISetCursorPospropCount++;
-                hLLAPISetCursorPos["Workflow"] = ExpressionConverter.ConvertO(hLLAPISetCursorPosworkflow);
+                hLLAPISetCursorPos["Workflow"] = ExpressionConverter.ConvertO(__workflow_hLLAPISetCursorPosworkflow);
                 if (hLLAPISetCursorPospropCount > 0)
                 {
                     callPayload.Body = hLLAPISetCursorPos;
@@ -272,17 +247,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        [WorkflowExpressionFactory(nameof(__BuildHLLAPIGetCursorPos))]
-        public IBodyWorkflowAction<HLLAPIGetCursorPosResponse> HLLAPIGetCursorPos([WorkflowExpression] Func<string> hLLAPIGetCursorPossessionID, [WorkflowExpression] Func<string> hLLAPIGetCursorPosworkflow)
+        public IBodyWorkflowAction<HLLAPIGetCursorPosResponse> HLLAPIGetCursorPos(Expression<Func<string>> hLLAPIGetCursorPossessionID, Expression<Func<string>> hLLAPIGetCursorPosworkflow)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<HLLAPIGetCursorPosResponse> __BuildHLLAPIGetCursorPos(WorkflowExpression<string> hLLAPIGetCursorPossessionID, WorkflowExpression<string> hLLAPIGetCursorPosworkflow)
-        {
-            WorkflowExpression.Validate(hLLAPIGetCursorPossessionID, nameof(hLLAPIGetCursorPossessionID), required: true);
-            WorkflowExpression.Validate(hLLAPIGetCursorPosworkflow, nameof(hLLAPIGetCursorPosworkflow), required: true);
+            var __workflow_hLLAPIGetCursorPossessionID = hLLAPIGetCursorPossessionID == null ? null : WorkflowExpression.Compile(hLLAPIGetCursorPossessionID);
+            WorkflowExpression.Validate(__workflow_hLLAPIGetCursorPossessionID, nameof(hLLAPIGetCursorPossessionID), required: true);
+            var __workflow_hLLAPIGetCursorPosworkflow = hLLAPIGetCursorPosworkflow == null ? null : WorkflowExpression.Compile(hLLAPIGetCursorPosworkflow);
+            WorkflowExpression.Validate(__workflow_hLLAPIGetCursorPosworkflow, nameof(hLLAPIGetCursorPosworkflow), required: true);
             return new DeferredBodyAction<HLLAPIGetCursorPosResponse>(() =>
             {
                 var apiCallPath = "/HLLAPI/HLLAPIGetCursorPos";
@@ -291,9 +261,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 var hLLAPIGetCursorPos = new JObject();
                 var hLLAPIGetCursorPospropCount = 0;
                 hLLAPIGetCursorPospropCount++;
-                hLLAPIGetCursorPos["SessionID"] = ExpressionConverter.ConvertO(hLLAPIGetCursorPossessionID);
+                hLLAPIGetCursorPos["SessionID"] = ExpressionConverter.ConvertO(__workflow_hLLAPIGetCursorPossessionID);
                 hLLAPIGetCursorPospropCount++;
-                hLLAPIGetCursorPos["Workflow"] = ExpressionConverter.ConvertO(hLLAPIGetCursorPosworkflow);
+                hLLAPIGetCursorPos["Workflow"] = ExpressionConverter.ConvertO(__workflow_hLLAPIGetCursorPosworkflow);
                 if (hLLAPIGetCursorPospropCount > 0)
                 {
                     callPayload.Body = hLLAPIGetCursorPos;
@@ -304,17 +274,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        [WorkflowExpressionFactory(nameof(__BuildHLLAPISendString))]
-        public IWorkflowAction HLLAPISendString([WorkflowExpression] Func<string> hLLAPISendStringinputString, [WorkflowExpression] Func<string> hLLAPISendStringworkflow)
+        public IWorkflowAction HLLAPISendString(Expression<Func<string>> hLLAPISendStringinputString, Expression<Func<string>> hLLAPISendStringworkflow)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildHLLAPISendString(WorkflowExpression<string> hLLAPISendStringinputString, WorkflowExpression<string> hLLAPISendStringworkflow)
-        {
-            WorkflowExpression.Validate(hLLAPISendStringinputString, nameof(hLLAPISendStringinputString), required: true);
-            WorkflowExpression.Validate(hLLAPISendStringworkflow, nameof(hLLAPISendStringworkflow), required: true);
+            var __workflow_hLLAPISendStringinputString = hLLAPISendStringinputString == null ? null : WorkflowExpression.Compile(hLLAPISendStringinputString);
+            WorkflowExpression.Validate(__workflow_hLLAPISendStringinputString, nameof(hLLAPISendStringinputString), required: true);
+            var __workflow_hLLAPISendStringworkflow = hLLAPISendStringworkflow == null ? null : WorkflowExpression.Compile(hLLAPISendStringworkflow);
+            WorkflowExpression.Validate(__workflow_hLLAPISendStringworkflow, nameof(hLLAPISendStringworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/HLLAPI/HLLAPISendString";
@@ -323,9 +288,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 var hLLAPISendString = new JObject();
                 var hLLAPISendStringpropCount = 0;
                 hLLAPISendStringpropCount++;
-                hLLAPISendString["InputString"] = ExpressionConverter.ConvertO(hLLAPISendStringinputString);
+                hLLAPISendString["InputString"] = ExpressionConverter.ConvertO(__workflow_hLLAPISendStringinputString);
                 hLLAPISendStringpropCount++;
-                hLLAPISendString["Workflow"] = ExpressionConverter.ConvertO(hLLAPISendStringworkflow);
+                hLLAPISendString["Workflow"] = ExpressionConverter.ConvertO(__workflow_hLLAPISendStringworkflow);
                 if (hLLAPISendStringpropCount > 0)
                 {
                     callPayload.Body = hLLAPISendString;
@@ -336,17 +301,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        [WorkflowExpressionFactory(nameof(__BuildHLLAPISendPassword))]
-        public IWorkflowAction HLLAPISendPassword([WorkflowExpression] Func<string> hLLAPISendPasswordinputPassword, [WorkflowExpression] Func<string> hLLAPISendPasswordworkflow)
+        public IWorkflowAction HLLAPISendPassword(Expression<Func<string>> hLLAPISendPasswordinputPassword, Expression<Func<string>> hLLAPISendPasswordworkflow)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildHLLAPISendPassword(WorkflowExpression<string> hLLAPISendPasswordinputPassword, WorkflowExpression<string> hLLAPISendPasswordworkflow)
-        {
-            WorkflowExpression.Validate(hLLAPISendPasswordinputPassword, nameof(hLLAPISendPasswordinputPassword), required: true);
-            WorkflowExpression.Validate(hLLAPISendPasswordworkflow, nameof(hLLAPISendPasswordworkflow), required: true);
+            var __workflow_hLLAPISendPasswordinputPassword = hLLAPISendPasswordinputPassword == null ? null : WorkflowExpression.Compile(hLLAPISendPasswordinputPassword);
+            WorkflowExpression.Validate(__workflow_hLLAPISendPasswordinputPassword, nameof(hLLAPISendPasswordinputPassword), required: true);
+            var __workflow_hLLAPISendPasswordworkflow = hLLAPISendPasswordworkflow == null ? null : WorkflowExpression.Compile(hLLAPISendPasswordworkflow);
+            WorkflowExpression.Validate(__workflow_hLLAPISendPasswordworkflow, nameof(hLLAPISendPasswordworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/HLLAPI/HLLAPISendPassword";
@@ -355,9 +315,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 var hLLAPISendPassword = new JObject();
                 var hLLAPISendPasswordpropCount = 0;
                 hLLAPISendPasswordpropCount++;
-                hLLAPISendPassword["InputPassword"] = ExpressionConverter.ConvertO(hLLAPISendPasswordinputPassword);
+                hLLAPISendPassword["InputPassword"] = ExpressionConverter.ConvertO(__workflow_hLLAPISendPasswordinputPassword);
                 hLLAPISendPasswordpropCount++;
-                hLLAPISendPassword["Workflow"] = ExpressionConverter.ConvertO(hLLAPISendPasswordworkflow);
+                hLLAPISendPassword["Workflow"] = ExpressionConverter.ConvertO(__workflow_hLLAPISendPasswordworkflow);
                 if (hLLAPISendPasswordpropCount > 0)
                 {
                     callPayload.Body = hLLAPISendPassword;
@@ -368,20 +328,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        [WorkflowExpressionFactory(nameof(__BuildHLLAPISendStringAtCursorPos))]
-        public IWorkflowAction HLLAPISendStringAtCursorPos([WorkflowExpression] Func<string> hLLAPISendStringAtCursorPossessionID, [WorkflowExpression] Func<int> hLLAPISendStringAtCursorPoscursorRowIndex, [WorkflowExpression] Func<int> hLLAPISendStringAtCursorPoscursorColIndex, [WorkflowExpression] Func<string> hLLAPISendStringAtCursorPosinputString, [WorkflowExpression] Func<string> hLLAPISendStringAtCursorPosworkflow)
+        public IWorkflowAction HLLAPISendStringAtCursorPos(Expression<Func<string>> hLLAPISendStringAtCursorPossessionID, Expression<Func<int>> hLLAPISendStringAtCursorPoscursorRowIndex, Expression<Func<int>> hLLAPISendStringAtCursorPoscursorColIndex, Expression<Func<string>> hLLAPISendStringAtCursorPosinputString, Expression<Func<string>> hLLAPISendStringAtCursorPosworkflow)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildHLLAPISendStringAtCursorPos(WorkflowExpression<string> hLLAPISendStringAtCursorPossessionID, WorkflowExpression<int> hLLAPISendStringAtCursorPoscursorRowIndex, WorkflowExpression<int> hLLAPISendStringAtCursorPoscursorColIndex, WorkflowExpression<string> hLLAPISendStringAtCursorPosinputString, WorkflowExpression<string> hLLAPISendStringAtCursorPosworkflow)
-        {
-            WorkflowExpression.Validate(hLLAPISendStringAtCursorPossessionID, nameof(hLLAPISendStringAtCursorPossessionID), required: true);
-            WorkflowExpression.Validate(hLLAPISendStringAtCursorPoscursorRowIndex, nameof(hLLAPISendStringAtCursorPoscursorRowIndex), required: true);
-            WorkflowExpression.Validate(hLLAPISendStringAtCursorPoscursorColIndex, nameof(hLLAPISendStringAtCursorPoscursorColIndex), required: true);
-            WorkflowExpression.Validate(hLLAPISendStringAtCursorPosinputString, nameof(hLLAPISendStringAtCursorPosinputString), required: true);
-            WorkflowExpression.Validate(hLLAPISendStringAtCursorPosworkflow, nameof(hLLAPISendStringAtCursorPosworkflow), required: true);
+            var __workflow_hLLAPISendStringAtCursorPossessionID = hLLAPISendStringAtCursorPossessionID == null ? null : WorkflowExpression.Compile(hLLAPISendStringAtCursorPossessionID);
+            WorkflowExpression.Validate(__workflow_hLLAPISendStringAtCursorPossessionID, nameof(hLLAPISendStringAtCursorPossessionID), required: true);
+            var __workflow_hLLAPISendStringAtCursorPoscursorRowIndex = hLLAPISendStringAtCursorPoscursorRowIndex == null ? null : WorkflowExpression.Compile(hLLAPISendStringAtCursorPoscursorRowIndex);
+            WorkflowExpression.Validate(__workflow_hLLAPISendStringAtCursorPoscursorRowIndex, nameof(hLLAPISendStringAtCursorPoscursorRowIndex), required: true);
+            var __workflow_hLLAPISendStringAtCursorPoscursorColIndex = hLLAPISendStringAtCursorPoscursorColIndex == null ? null : WorkflowExpression.Compile(hLLAPISendStringAtCursorPoscursorColIndex);
+            WorkflowExpression.Validate(__workflow_hLLAPISendStringAtCursorPoscursorColIndex, nameof(hLLAPISendStringAtCursorPoscursorColIndex), required: true);
+            var __workflow_hLLAPISendStringAtCursorPosinputString = hLLAPISendStringAtCursorPosinputString == null ? null : WorkflowExpression.Compile(hLLAPISendStringAtCursorPosinputString);
+            WorkflowExpression.Validate(__workflow_hLLAPISendStringAtCursorPosinputString, nameof(hLLAPISendStringAtCursorPosinputString), required: true);
+            var __workflow_hLLAPISendStringAtCursorPosworkflow = hLLAPISendStringAtCursorPosworkflow == null ? null : WorkflowExpression.Compile(hLLAPISendStringAtCursorPosworkflow);
+            WorkflowExpression.Validate(__workflow_hLLAPISendStringAtCursorPosworkflow, nameof(hLLAPISendStringAtCursorPosworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/HLLAPI/HLLAPISendStringAtCursorPos";
@@ -390,15 +348,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 var hLLAPISendStringAtCursorPos = new JObject();
                 var hLLAPISendStringAtCursorPospropCount = 0;
                 hLLAPISendStringAtCursorPospropCount++;
-                hLLAPISendStringAtCursorPos["SessionID"] = ExpressionConverter.ConvertO(hLLAPISendStringAtCursorPossessionID);
+                hLLAPISendStringAtCursorPos["SessionID"] = ExpressionConverter.ConvertO(__workflow_hLLAPISendStringAtCursorPossessionID);
                 hLLAPISendStringAtCursorPospropCount++;
-                hLLAPISendStringAtCursorPos["CursorRowIndex"] = ExpressionConverter.ConvertO(hLLAPISendStringAtCursorPoscursorRowIndex);
+                hLLAPISendStringAtCursorPos["CursorRowIndex"] = ExpressionConverter.ConvertO(__workflow_hLLAPISendStringAtCursorPoscursorRowIndex);
                 hLLAPISendStringAtCursorPospropCount++;
-                hLLAPISendStringAtCursorPos["CursorColIndex"] = ExpressionConverter.ConvertO(hLLAPISendStringAtCursorPoscursorColIndex);
+                hLLAPISendStringAtCursorPos["CursorColIndex"] = ExpressionConverter.ConvertO(__workflow_hLLAPISendStringAtCursorPoscursorColIndex);
                 hLLAPISendStringAtCursorPospropCount++;
-                hLLAPISendStringAtCursorPos["InputString"] = ExpressionConverter.ConvertO(hLLAPISendStringAtCursorPosinputString);
+                hLLAPISendStringAtCursorPos["InputString"] = ExpressionConverter.ConvertO(__workflow_hLLAPISendStringAtCursorPosinputString);
                 hLLAPISendStringAtCursorPospropCount++;
-                hLLAPISendStringAtCursorPos["Workflow"] = ExpressionConverter.ConvertO(hLLAPISendStringAtCursorPosworkflow);
+                hLLAPISendStringAtCursorPos["Workflow"] = ExpressionConverter.ConvertO(__workflow_hLLAPISendStringAtCursorPosworkflow);
                 if (hLLAPISendStringAtCursorPospropCount > 0)
                 {
                     callPayload.Body = hLLAPISendStringAtCursorPos;
@@ -409,20 +367,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        [WorkflowExpressionFactory(nameof(__BuildHLLAPISendPasswordAtCursorPos))]
-        public IWorkflowAction HLLAPISendPasswordAtCursorPos([WorkflowExpression] Func<string> hLLAPISendPasswordAtCursorPossessionID, [WorkflowExpression] Func<int> hLLAPISendPasswordAtCursorPoscursorRowIndex, [WorkflowExpression] Func<int> hLLAPISendPasswordAtCursorPoscursorColIndex, [WorkflowExpression] Func<string> hLLAPISendPasswordAtCursorPosinputPassword, [WorkflowExpression] Func<string> hLLAPISendPasswordAtCursorPosworkflow)
+        public IWorkflowAction HLLAPISendPasswordAtCursorPos(Expression<Func<string>> hLLAPISendPasswordAtCursorPossessionID, Expression<Func<int>> hLLAPISendPasswordAtCursorPoscursorRowIndex, Expression<Func<int>> hLLAPISendPasswordAtCursorPoscursorColIndex, Expression<Func<string>> hLLAPISendPasswordAtCursorPosinputPassword, Expression<Func<string>> hLLAPISendPasswordAtCursorPosworkflow)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildHLLAPISendPasswordAtCursorPos(WorkflowExpression<string> hLLAPISendPasswordAtCursorPossessionID, WorkflowExpression<int> hLLAPISendPasswordAtCursorPoscursorRowIndex, WorkflowExpression<int> hLLAPISendPasswordAtCursorPoscursorColIndex, WorkflowExpression<string> hLLAPISendPasswordAtCursorPosinputPassword, WorkflowExpression<string> hLLAPISendPasswordAtCursorPosworkflow)
-        {
-            WorkflowExpression.Validate(hLLAPISendPasswordAtCursorPossessionID, nameof(hLLAPISendPasswordAtCursorPossessionID), required: true);
-            WorkflowExpression.Validate(hLLAPISendPasswordAtCursorPoscursorRowIndex, nameof(hLLAPISendPasswordAtCursorPoscursorRowIndex), required: true);
-            WorkflowExpression.Validate(hLLAPISendPasswordAtCursorPoscursorColIndex, nameof(hLLAPISendPasswordAtCursorPoscursorColIndex), required: true);
-            WorkflowExpression.Validate(hLLAPISendPasswordAtCursorPosinputPassword, nameof(hLLAPISendPasswordAtCursorPosinputPassword), required: true);
-            WorkflowExpression.Validate(hLLAPISendPasswordAtCursorPosworkflow, nameof(hLLAPISendPasswordAtCursorPosworkflow), required: true);
+            var __workflow_hLLAPISendPasswordAtCursorPossessionID = hLLAPISendPasswordAtCursorPossessionID == null ? null : WorkflowExpression.Compile(hLLAPISendPasswordAtCursorPossessionID);
+            WorkflowExpression.Validate(__workflow_hLLAPISendPasswordAtCursorPossessionID, nameof(hLLAPISendPasswordAtCursorPossessionID), required: true);
+            var __workflow_hLLAPISendPasswordAtCursorPoscursorRowIndex = hLLAPISendPasswordAtCursorPoscursorRowIndex == null ? null : WorkflowExpression.Compile(hLLAPISendPasswordAtCursorPoscursorRowIndex);
+            WorkflowExpression.Validate(__workflow_hLLAPISendPasswordAtCursorPoscursorRowIndex, nameof(hLLAPISendPasswordAtCursorPoscursorRowIndex), required: true);
+            var __workflow_hLLAPISendPasswordAtCursorPoscursorColIndex = hLLAPISendPasswordAtCursorPoscursorColIndex == null ? null : WorkflowExpression.Compile(hLLAPISendPasswordAtCursorPoscursorColIndex);
+            WorkflowExpression.Validate(__workflow_hLLAPISendPasswordAtCursorPoscursorColIndex, nameof(hLLAPISendPasswordAtCursorPoscursorColIndex), required: true);
+            var __workflow_hLLAPISendPasswordAtCursorPosinputPassword = hLLAPISendPasswordAtCursorPosinputPassword == null ? null : WorkflowExpression.Compile(hLLAPISendPasswordAtCursorPosinputPassword);
+            WorkflowExpression.Validate(__workflow_hLLAPISendPasswordAtCursorPosinputPassword, nameof(hLLAPISendPasswordAtCursorPosinputPassword), required: true);
+            var __workflow_hLLAPISendPasswordAtCursorPosworkflow = hLLAPISendPasswordAtCursorPosworkflow == null ? null : WorkflowExpression.Compile(hLLAPISendPasswordAtCursorPosworkflow);
+            WorkflowExpression.Validate(__workflow_hLLAPISendPasswordAtCursorPosworkflow, nameof(hLLAPISendPasswordAtCursorPosworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/HLLAPI/HLLAPISendPasswordAtCursorPos";
@@ -431,15 +387,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 var hLLAPISendPasswordAtCursorPos = new JObject();
                 var hLLAPISendPasswordAtCursorPospropCount = 0;
                 hLLAPISendPasswordAtCursorPospropCount++;
-                hLLAPISendPasswordAtCursorPos["SessionID"] = ExpressionConverter.ConvertO(hLLAPISendPasswordAtCursorPossessionID);
+                hLLAPISendPasswordAtCursorPos["SessionID"] = ExpressionConverter.ConvertO(__workflow_hLLAPISendPasswordAtCursorPossessionID);
                 hLLAPISendPasswordAtCursorPospropCount++;
-                hLLAPISendPasswordAtCursorPos["CursorRowIndex"] = ExpressionConverter.ConvertO(hLLAPISendPasswordAtCursorPoscursorRowIndex);
+                hLLAPISendPasswordAtCursorPos["CursorRowIndex"] = ExpressionConverter.ConvertO(__workflow_hLLAPISendPasswordAtCursorPoscursorRowIndex);
                 hLLAPISendPasswordAtCursorPospropCount++;
-                hLLAPISendPasswordAtCursorPos["CursorColIndex"] = ExpressionConverter.ConvertO(hLLAPISendPasswordAtCursorPoscursorColIndex);
+                hLLAPISendPasswordAtCursorPos["CursorColIndex"] = ExpressionConverter.ConvertO(__workflow_hLLAPISendPasswordAtCursorPoscursorColIndex);
                 hLLAPISendPasswordAtCursorPospropCount++;
-                hLLAPISendPasswordAtCursorPos["InputPassword"] = ExpressionConverter.ConvertO(hLLAPISendPasswordAtCursorPosinputPassword);
+                hLLAPISendPasswordAtCursorPos["InputPassword"] = ExpressionConverter.ConvertO(__workflow_hLLAPISendPasswordAtCursorPosinputPassword);
                 hLLAPISendPasswordAtCursorPospropCount++;
-                hLLAPISendPasswordAtCursorPos["Workflow"] = ExpressionConverter.ConvertO(hLLAPISendPasswordAtCursorPosworkflow);
+                hLLAPISendPasswordAtCursorPos["Workflow"] = ExpressionConverter.ConvertO(__workflow_hLLAPISendPasswordAtCursorPosworkflow);
                 if (hLLAPISendPasswordAtCursorPospropCount > 0)
                 {
                     callPayload.Body = hLLAPISendPasswordAtCursorPos;
@@ -450,20 +406,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        [WorkflowExpressionFactory(nameof(__BuildHLLAPIReadScreenAtCursorPos))]
-        public IBodyWorkflowAction<HLLAPIReadScreenAtCursorPosResponse> HLLAPIReadScreenAtCursorPos([WorkflowExpression] Func<string> hLLAPIReadScreenAtCursorPossessionID, [WorkflowExpression] Func<int> hLLAPIReadScreenAtCursorPoscursorRowIndex, [WorkflowExpression] Func<int> hLLAPIReadScreenAtCursorPoscursorColIndex, [WorkflowExpression] Func<int> hLLAPIReadScreenAtCursorPosreadScreenLength, [WorkflowExpression] Func<string> hLLAPIReadScreenAtCursorPosworkflow)
+        public IBodyWorkflowAction<HLLAPIReadScreenAtCursorPosResponse> HLLAPIReadScreenAtCursorPos(Expression<Func<string>> hLLAPIReadScreenAtCursorPossessionID, Expression<Func<int>> hLLAPIReadScreenAtCursorPoscursorRowIndex, Expression<Func<int>> hLLAPIReadScreenAtCursorPoscursorColIndex, Expression<Func<int>> hLLAPIReadScreenAtCursorPosreadScreenLength, Expression<Func<string>> hLLAPIReadScreenAtCursorPosworkflow)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<HLLAPIReadScreenAtCursorPosResponse> __BuildHLLAPIReadScreenAtCursorPos(WorkflowExpression<string> hLLAPIReadScreenAtCursorPossessionID, WorkflowExpression<int> hLLAPIReadScreenAtCursorPoscursorRowIndex, WorkflowExpression<int> hLLAPIReadScreenAtCursorPoscursorColIndex, WorkflowExpression<int> hLLAPIReadScreenAtCursorPosreadScreenLength, WorkflowExpression<string> hLLAPIReadScreenAtCursorPosworkflow)
-        {
-            WorkflowExpression.Validate(hLLAPIReadScreenAtCursorPossessionID, nameof(hLLAPIReadScreenAtCursorPossessionID), required: true);
-            WorkflowExpression.Validate(hLLAPIReadScreenAtCursorPoscursorRowIndex, nameof(hLLAPIReadScreenAtCursorPoscursorRowIndex), required: true);
-            WorkflowExpression.Validate(hLLAPIReadScreenAtCursorPoscursorColIndex, nameof(hLLAPIReadScreenAtCursorPoscursorColIndex), required: true);
-            WorkflowExpression.Validate(hLLAPIReadScreenAtCursorPosreadScreenLength, nameof(hLLAPIReadScreenAtCursorPosreadScreenLength), required: true);
-            WorkflowExpression.Validate(hLLAPIReadScreenAtCursorPosworkflow, nameof(hLLAPIReadScreenAtCursorPosworkflow), required: true);
+            var __workflow_hLLAPIReadScreenAtCursorPossessionID = hLLAPIReadScreenAtCursorPossessionID == null ? null : WorkflowExpression.Compile(hLLAPIReadScreenAtCursorPossessionID);
+            WorkflowExpression.Validate(__workflow_hLLAPIReadScreenAtCursorPossessionID, nameof(hLLAPIReadScreenAtCursorPossessionID), required: true);
+            var __workflow_hLLAPIReadScreenAtCursorPoscursorRowIndex = hLLAPIReadScreenAtCursorPoscursorRowIndex == null ? null : WorkflowExpression.Compile(hLLAPIReadScreenAtCursorPoscursorRowIndex);
+            WorkflowExpression.Validate(__workflow_hLLAPIReadScreenAtCursorPoscursorRowIndex, nameof(hLLAPIReadScreenAtCursorPoscursorRowIndex), required: true);
+            var __workflow_hLLAPIReadScreenAtCursorPoscursorColIndex = hLLAPIReadScreenAtCursorPoscursorColIndex == null ? null : WorkflowExpression.Compile(hLLAPIReadScreenAtCursorPoscursorColIndex);
+            WorkflowExpression.Validate(__workflow_hLLAPIReadScreenAtCursorPoscursorColIndex, nameof(hLLAPIReadScreenAtCursorPoscursorColIndex), required: true);
+            var __workflow_hLLAPIReadScreenAtCursorPosreadScreenLength = hLLAPIReadScreenAtCursorPosreadScreenLength == null ? null : WorkflowExpression.Compile(hLLAPIReadScreenAtCursorPosreadScreenLength);
+            WorkflowExpression.Validate(__workflow_hLLAPIReadScreenAtCursorPosreadScreenLength, nameof(hLLAPIReadScreenAtCursorPosreadScreenLength), required: true);
+            var __workflow_hLLAPIReadScreenAtCursorPosworkflow = hLLAPIReadScreenAtCursorPosworkflow == null ? null : WorkflowExpression.Compile(hLLAPIReadScreenAtCursorPosworkflow);
+            WorkflowExpression.Validate(__workflow_hLLAPIReadScreenAtCursorPosworkflow, nameof(hLLAPIReadScreenAtCursorPosworkflow), required: true);
             return new DeferredBodyAction<HLLAPIReadScreenAtCursorPosResponse>(() =>
             {
                 var apiCallPath = "/HLLAPI/HLLAPIReadScreenAtCursorPos";
@@ -472,15 +426,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 var hLLAPIReadScreenAtCursorPos = new JObject();
                 var hLLAPIReadScreenAtCursorPospropCount = 0;
                 hLLAPIReadScreenAtCursorPospropCount++;
-                hLLAPIReadScreenAtCursorPos["SessionID"] = ExpressionConverter.ConvertO(hLLAPIReadScreenAtCursorPossessionID);
+                hLLAPIReadScreenAtCursorPos["SessionID"] = ExpressionConverter.ConvertO(__workflow_hLLAPIReadScreenAtCursorPossessionID);
                 hLLAPIReadScreenAtCursorPospropCount++;
-                hLLAPIReadScreenAtCursorPos["CursorRowIndex"] = ExpressionConverter.ConvertO(hLLAPIReadScreenAtCursorPoscursorRowIndex);
+                hLLAPIReadScreenAtCursorPos["CursorRowIndex"] = ExpressionConverter.ConvertO(__workflow_hLLAPIReadScreenAtCursorPoscursorRowIndex);
                 hLLAPIReadScreenAtCursorPospropCount++;
-                hLLAPIReadScreenAtCursorPos["CursorColIndex"] = ExpressionConverter.ConvertO(hLLAPIReadScreenAtCursorPoscursorColIndex);
+                hLLAPIReadScreenAtCursorPos["CursorColIndex"] = ExpressionConverter.ConvertO(__workflow_hLLAPIReadScreenAtCursorPoscursorColIndex);
                 hLLAPIReadScreenAtCursorPospropCount++;
-                hLLAPIReadScreenAtCursorPos["ReadScreenLength"] = ExpressionConverter.ConvertO(hLLAPIReadScreenAtCursorPosreadScreenLength);
+                hLLAPIReadScreenAtCursorPos["ReadScreenLength"] = ExpressionConverter.ConvertO(__workflow_hLLAPIReadScreenAtCursorPosreadScreenLength);
                 hLLAPIReadScreenAtCursorPospropCount++;
-                hLLAPIReadScreenAtCursorPos["Workflow"] = ExpressionConverter.ConvertO(hLLAPIReadScreenAtCursorPosworkflow);
+                hLLAPIReadScreenAtCursorPos["Workflow"] = ExpressionConverter.ConvertO(__workflow_hLLAPIReadScreenAtCursorPosworkflow);
                 if (hLLAPIReadScreenAtCursorPospropCount > 0)
                 {
                     callPayload.Body = hLLAPIReadScreenAtCursorPos;
@@ -491,16 +445,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        [WorkflowExpressionFactory(nameof(__BuildHLLAPIQuerySessionStatus))]
-        public IBodyWorkflowAction<HLLAPIQuerySessionStatusResponse> HLLAPIQuerySessionStatus([WorkflowExpression] Func<string> hLLAPIQuerySessionStatusworkflow)
+        public IBodyWorkflowAction<HLLAPIQuerySessionStatusResponse> HLLAPIQuerySessionStatus(Expression<Func<string>> hLLAPIQuerySessionStatusworkflow)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<HLLAPIQuerySessionStatusResponse> __BuildHLLAPIQuerySessionStatus(WorkflowExpression<string> hLLAPIQuerySessionStatusworkflow)
-        {
-            WorkflowExpression.Validate(hLLAPIQuerySessionStatusworkflow, nameof(hLLAPIQuerySessionStatusworkflow), required: true);
+            var __workflow_hLLAPIQuerySessionStatusworkflow = hLLAPIQuerySessionStatusworkflow == null ? null : WorkflowExpression.Compile(hLLAPIQuerySessionStatusworkflow);
+            WorkflowExpression.Validate(__workflow_hLLAPIQuerySessionStatusworkflow, nameof(hLLAPIQuerySessionStatusworkflow), required: true);
             return new DeferredBodyAction<HLLAPIQuerySessionStatusResponse>(() =>
             {
                 var apiCallPath = "/HLLAPI/HLLAPIQuerySessionStatus";
@@ -509,7 +457,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 var hLLAPIQuerySessionStatus = new JObject();
                 var hLLAPIQuerySessionStatuspropCount = 0;
                 hLLAPIQuerySessionStatuspropCount++;
-                hLLAPIQuerySessionStatus["Workflow"] = ExpressionConverter.ConvertO(hLLAPIQuerySessionStatusworkflow);
+                hLLAPIQuerySessionStatus["Workflow"] = ExpressionConverter.ConvertO(__workflow_hLLAPIQuerySessionStatusworkflow);
                 if (hLLAPIQuerySessionStatuspropCount > 0)
                 {
                     callPayload.Body = hLLAPIQuerySessionStatus;
@@ -520,21 +468,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        [WorkflowExpressionFactory(nameof(__BuildHLLAPIReadScreenRows))]
-        public IBodyWorkflowAction<HLLAPIReadScreenRowsResponse> HLLAPIReadScreenRows([WorkflowExpression] Func<string> hLLAPIReadScreenRowssessionID, [WorkflowExpression] Func<int> hLLAPIReadScreenRowsstartRowIndex, [WorkflowExpression] Func<int> hLLAPIReadScreenRowsendRowIndex, [WorkflowExpression] Func<string> hLLAPIReadScreenRowsworkflow, [WorkflowExpression] Func<int> hLLAPIReadScreenRowsnumberOfRowsInSession = null, [WorkflowExpression] Func<int> hLLAPIReadScreenRowsnumberOfColumnsInSession = null)
+        public IBodyWorkflowAction<HLLAPIReadScreenRowsResponse> HLLAPIReadScreenRows(Expression<Func<string>> hLLAPIReadScreenRowssessionID, Expression<Func<int>> hLLAPIReadScreenRowsstartRowIndex, Expression<Func<int>> hLLAPIReadScreenRowsendRowIndex, Expression<Func<string>> hLLAPIReadScreenRowsworkflow, Expression<Func<int>> hLLAPIReadScreenRowsnumberOfRowsInSession = null, Expression<Func<int>> hLLAPIReadScreenRowsnumberOfColumnsInSession = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<HLLAPIReadScreenRowsResponse> __BuildHLLAPIReadScreenRows(WorkflowExpression<string> hLLAPIReadScreenRowssessionID, WorkflowExpression<int> hLLAPIReadScreenRowsstartRowIndex, WorkflowExpression<int> hLLAPIReadScreenRowsendRowIndex, WorkflowExpression<string> hLLAPIReadScreenRowsworkflow, WorkflowExpression<int> hLLAPIReadScreenRowsnumberOfRowsInSession = null, WorkflowExpression<int> hLLAPIReadScreenRowsnumberOfColumnsInSession = null)
-        {
-            WorkflowExpression.Validate(hLLAPIReadScreenRowssessionID, nameof(hLLAPIReadScreenRowssessionID), required: true);
-            WorkflowExpression.Validate(hLLAPIReadScreenRowsstartRowIndex, nameof(hLLAPIReadScreenRowsstartRowIndex), required: true);
-            WorkflowExpression.Validate(hLLAPIReadScreenRowsendRowIndex, nameof(hLLAPIReadScreenRowsendRowIndex), required: true);
-            WorkflowExpression.Validate(hLLAPIReadScreenRowsworkflow, nameof(hLLAPIReadScreenRowsworkflow), required: true);
-            WorkflowExpression.Validate(hLLAPIReadScreenRowsnumberOfRowsInSession, nameof(hLLAPIReadScreenRowsnumberOfRowsInSession), required: false);
-            WorkflowExpression.Validate(hLLAPIReadScreenRowsnumberOfColumnsInSession, nameof(hLLAPIReadScreenRowsnumberOfColumnsInSession), required: false);
+            var __workflow_hLLAPIReadScreenRowssessionID = hLLAPIReadScreenRowssessionID == null ? null : WorkflowExpression.Compile(hLLAPIReadScreenRowssessionID);
+            WorkflowExpression.Validate(__workflow_hLLAPIReadScreenRowssessionID, nameof(hLLAPIReadScreenRowssessionID), required: true);
+            var __workflow_hLLAPIReadScreenRowsstartRowIndex = hLLAPIReadScreenRowsstartRowIndex == null ? null : WorkflowExpression.Compile(hLLAPIReadScreenRowsstartRowIndex);
+            WorkflowExpression.Validate(__workflow_hLLAPIReadScreenRowsstartRowIndex, nameof(hLLAPIReadScreenRowsstartRowIndex), required: true);
+            var __workflow_hLLAPIReadScreenRowsendRowIndex = hLLAPIReadScreenRowsendRowIndex == null ? null : WorkflowExpression.Compile(hLLAPIReadScreenRowsendRowIndex);
+            WorkflowExpression.Validate(__workflow_hLLAPIReadScreenRowsendRowIndex, nameof(hLLAPIReadScreenRowsendRowIndex), required: true);
+            var __workflow_hLLAPIReadScreenRowsworkflow = hLLAPIReadScreenRowsworkflow == null ? null : WorkflowExpression.Compile(hLLAPIReadScreenRowsworkflow);
+            WorkflowExpression.Validate(__workflow_hLLAPIReadScreenRowsworkflow, nameof(hLLAPIReadScreenRowsworkflow), required: true);
+            var __workflow_hLLAPIReadScreenRowsnumberOfRowsInSession = hLLAPIReadScreenRowsnumberOfRowsInSession == null ? null : WorkflowExpression.Compile(hLLAPIReadScreenRowsnumberOfRowsInSession);
+            WorkflowExpression.Validate(__workflow_hLLAPIReadScreenRowsnumberOfRowsInSession, nameof(hLLAPIReadScreenRowsnumberOfRowsInSession), required: false);
+            var __workflow_hLLAPIReadScreenRowsnumberOfColumnsInSession = hLLAPIReadScreenRowsnumberOfColumnsInSession == null ? null : WorkflowExpression.Compile(hLLAPIReadScreenRowsnumberOfColumnsInSession);
+            WorkflowExpression.Validate(__workflow_hLLAPIReadScreenRowsnumberOfColumnsInSession, nameof(hLLAPIReadScreenRowsnumberOfColumnsInSession), required: false);
             return new DeferredBodyAction<HLLAPIReadScreenRowsResponse>(() =>
             {
                 var apiCallPath = "/HLLAPI/HLLAPIReadScreenRows";
@@ -543,25 +490,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 var hLLAPIReadScreenRows = new JObject();
                 var hLLAPIReadScreenRowspropCount = 0;
                 hLLAPIReadScreenRowspropCount++;
-                hLLAPIReadScreenRows["SessionID"] = ExpressionConverter.ConvertO(hLLAPIReadScreenRowssessionID);
+                hLLAPIReadScreenRows["SessionID"] = ExpressionConverter.ConvertO(__workflow_hLLAPIReadScreenRowssessionID);
                 hLLAPIReadScreenRowspropCount++;
-                hLLAPIReadScreenRows["StartRowIndex"] = ExpressionConverter.ConvertO(hLLAPIReadScreenRowsstartRowIndex);
+                hLLAPIReadScreenRows["StartRowIndex"] = ExpressionConverter.ConvertO(__workflow_hLLAPIReadScreenRowsstartRowIndex);
                 hLLAPIReadScreenRowspropCount++;
-                hLLAPIReadScreenRows["EndRowIndex"] = ExpressionConverter.ConvertO(hLLAPIReadScreenRowsendRowIndex);
-                if (hLLAPIReadScreenRowsnumberOfRowsInSession != null)
+                hLLAPIReadScreenRows["EndRowIndex"] = ExpressionConverter.ConvertO(__workflow_hLLAPIReadScreenRowsendRowIndex);
+                if (__workflow_hLLAPIReadScreenRowsnumberOfRowsInSession != null)
                 {
-                    hLLAPIReadScreenRows["NumberOfRowsInSession"] = ExpressionConverter.ConvertO(hLLAPIReadScreenRowsnumberOfRowsInSession);
+                    hLLAPIReadScreenRows["NumberOfRowsInSession"] = ExpressionConverter.ConvertO(__workflow_hLLAPIReadScreenRowsnumberOfRowsInSession);
                     hLLAPIReadScreenRowspropCount++;
                 }
 
-                if (hLLAPIReadScreenRowsnumberOfColumnsInSession != null)
+                if (__workflow_hLLAPIReadScreenRowsnumberOfColumnsInSession != null)
                 {
-                    hLLAPIReadScreenRows["NumberOfColumnsInSession"] = ExpressionConverter.ConvertO(hLLAPIReadScreenRowsnumberOfColumnsInSession);
+                    hLLAPIReadScreenRows["NumberOfColumnsInSession"] = ExpressionConverter.ConvertO(__workflow_hLLAPIReadScreenRowsnumberOfColumnsInSession);
                     hLLAPIReadScreenRowspropCount++;
                 }
 
                 hLLAPIReadScreenRowspropCount++;
-                hLLAPIReadScreenRows["Workflow"] = ExpressionConverter.ConvertO(hLLAPIReadScreenRowsworkflow);
+                hLLAPIReadScreenRows["Workflow"] = ExpressionConverter.ConvertO(__workflow_hLLAPIReadScreenRowsworkflow);
                 if (hLLAPIReadScreenRowspropCount > 0)
                 {
                     callPayload.Body = hLLAPIReadScreenRows;
@@ -572,16 +519,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        [WorkflowExpressionFactory(nameof(__BuildHLLAPIIsKeyboardUnlocked))]
-        public IBodyWorkflowAction<HLLAPIIsKeyboardUnlockedResponse> HLLAPIIsKeyboardUnlocked([WorkflowExpression] Func<string> hLLAPIIsKeyboardUnlockedworkflow)
+        public IBodyWorkflowAction<HLLAPIIsKeyboardUnlockedResponse> HLLAPIIsKeyboardUnlocked(Expression<Func<string>> hLLAPIIsKeyboardUnlockedworkflow)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<HLLAPIIsKeyboardUnlockedResponse> __BuildHLLAPIIsKeyboardUnlocked(WorkflowExpression<string> hLLAPIIsKeyboardUnlockedworkflow)
-        {
-            WorkflowExpression.Validate(hLLAPIIsKeyboardUnlockedworkflow, nameof(hLLAPIIsKeyboardUnlockedworkflow), required: true);
+            var __workflow_hLLAPIIsKeyboardUnlockedworkflow = hLLAPIIsKeyboardUnlockedworkflow == null ? null : WorkflowExpression.Compile(hLLAPIIsKeyboardUnlockedworkflow);
+            WorkflowExpression.Validate(__workflow_hLLAPIIsKeyboardUnlockedworkflow, nameof(hLLAPIIsKeyboardUnlockedworkflow), required: true);
             return new DeferredBodyAction<HLLAPIIsKeyboardUnlockedResponse>(() =>
             {
                 var apiCallPath = "/HLLAPI/HLLAPIIsKeyboardUnlocked";
@@ -590,7 +531,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 var hLLAPIIsKeyboardUnlocked = new JObject();
                 var hLLAPIIsKeyboardUnlockedpropCount = 0;
                 hLLAPIIsKeyboardUnlockedpropCount++;
-                hLLAPIIsKeyboardUnlocked["Workflow"] = ExpressionConverter.ConvertO(hLLAPIIsKeyboardUnlockedworkflow);
+                hLLAPIIsKeyboardUnlocked["Workflow"] = ExpressionConverter.ConvertO(__workflow_hLLAPIIsKeyboardUnlockedworkflow);
                 if (hLLAPIIsKeyboardUnlockedpropCount > 0)
                 {
                     callPayload.Body = hLLAPIIsKeyboardUnlocked;
@@ -601,18 +542,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        [WorkflowExpressionFactory(nameof(__BuildHLLAPIWaitForKeyboardUnlocked))]
-        public IBodyWorkflowAction<HLLAPIWaitForKeyboardUnlockedResponse> HLLAPIWaitForKeyboardUnlocked([WorkflowExpression] Func<double> hLLAPIWaitForKeyboardUnlockedsecondsToWait, [WorkflowExpression] Func<string> hLLAPIWaitForKeyboardUnlockedworkflow, [WorkflowExpression] Func<double> hLLAPIWaitForKeyboardUnlockeddeltaSecondsToWait = null)
+        public IBodyWorkflowAction<HLLAPIWaitForKeyboardUnlockedResponse> HLLAPIWaitForKeyboardUnlocked(Expression<Func<double>> hLLAPIWaitForKeyboardUnlockedsecondsToWait, Expression<Func<string>> hLLAPIWaitForKeyboardUnlockedworkflow, Expression<Func<double>> hLLAPIWaitForKeyboardUnlockeddeltaSecondsToWait = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<HLLAPIWaitForKeyboardUnlockedResponse> __BuildHLLAPIWaitForKeyboardUnlocked(WorkflowExpression<double> hLLAPIWaitForKeyboardUnlockedsecondsToWait, WorkflowExpression<string> hLLAPIWaitForKeyboardUnlockedworkflow, WorkflowExpression<double> hLLAPIWaitForKeyboardUnlockeddeltaSecondsToWait = null)
-        {
-            WorkflowExpression.Validate(hLLAPIWaitForKeyboardUnlockedsecondsToWait, nameof(hLLAPIWaitForKeyboardUnlockedsecondsToWait), required: true);
-            WorkflowExpression.Validate(hLLAPIWaitForKeyboardUnlockedworkflow, nameof(hLLAPIWaitForKeyboardUnlockedworkflow), required: true);
-            WorkflowExpression.Validate(hLLAPIWaitForKeyboardUnlockeddeltaSecondsToWait, nameof(hLLAPIWaitForKeyboardUnlockeddeltaSecondsToWait), required: false);
+            var __workflow_hLLAPIWaitForKeyboardUnlockedsecondsToWait = hLLAPIWaitForKeyboardUnlockedsecondsToWait == null ? null : WorkflowExpression.Compile(hLLAPIWaitForKeyboardUnlockedsecondsToWait);
+            WorkflowExpression.Validate(__workflow_hLLAPIWaitForKeyboardUnlockedsecondsToWait, nameof(hLLAPIWaitForKeyboardUnlockedsecondsToWait), required: true);
+            var __workflow_hLLAPIWaitForKeyboardUnlockedworkflow = hLLAPIWaitForKeyboardUnlockedworkflow == null ? null : WorkflowExpression.Compile(hLLAPIWaitForKeyboardUnlockedworkflow);
+            WorkflowExpression.Validate(__workflow_hLLAPIWaitForKeyboardUnlockedworkflow, nameof(hLLAPIWaitForKeyboardUnlockedworkflow), required: true);
+            var __workflow_hLLAPIWaitForKeyboardUnlockeddeltaSecondsToWait = hLLAPIWaitForKeyboardUnlockeddeltaSecondsToWait == null ? null : WorkflowExpression.Compile(hLLAPIWaitForKeyboardUnlockeddeltaSecondsToWait);
+            WorkflowExpression.Validate(__workflow_hLLAPIWaitForKeyboardUnlockeddeltaSecondsToWait, nameof(hLLAPIWaitForKeyboardUnlockeddeltaSecondsToWait), required: false);
             return new DeferredBodyAction<HLLAPIWaitForKeyboardUnlockedResponse>(() =>
             {
                 var apiCallPath = "/HLLAPI/HLLAPIWaitForKeyboardUnlocked";
@@ -621,12 +558,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 var hLLAPIWaitForKeyboardUnlocked = new JObject();
                 var hLLAPIWaitForKeyboardUnlockedpropCount = 0;
                 hLLAPIWaitForKeyboardUnlockedpropCount++;
-                hLLAPIWaitForKeyboardUnlocked["SecondsToWait"] = ExpressionConverter.ConvertO(hLLAPIWaitForKeyboardUnlockedsecondsToWait);
-                if (hLLAPIWaitForKeyboardUnlockeddeltaSecondsToWait != null)
+                hLLAPIWaitForKeyboardUnlocked["SecondsToWait"] = ExpressionConverter.ConvertO(__workflow_hLLAPIWaitForKeyboardUnlockedsecondsToWait);
+                if (__workflow_hLLAPIWaitForKeyboardUnlockeddeltaSecondsToWait != null)
                 {
-                    if (hLLAPIWaitForKeyboardUnlockeddeltaSecondsToWait != null)
+                    if (__workflow_hLLAPIWaitForKeyboardUnlockeddeltaSecondsToWait != null)
                     {
-                        hLLAPIWaitForKeyboardUnlocked["DeltaSecondsToWait"] = ExpressionConverter.ConvertO(hLLAPIWaitForKeyboardUnlockeddeltaSecondsToWait);
+                        hLLAPIWaitForKeyboardUnlocked["DeltaSecondsToWait"] = ExpressionConverter.ConvertO(__workflow_hLLAPIWaitForKeyboardUnlockeddeltaSecondsToWait);
                         hLLAPIWaitForKeyboardUnlockedpropCount++;
                     }
 
@@ -639,7 +576,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 }
 
                 hLLAPIWaitForKeyboardUnlockedpropCount++;
-                hLLAPIWaitForKeyboardUnlocked["Workflow"] = ExpressionConverter.ConvertO(hLLAPIWaitForKeyboardUnlockedworkflow);
+                hLLAPIWaitForKeyboardUnlocked["Workflow"] = ExpressionConverter.ConvertO(__workflow_hLLAPIWaitForKeyboardUnlockedworkflow);
                 if (hLLAPIWaitForKeyboardUnlockedpropCount > 0)
                 {
                     callPayload.Body = hLLAPIWaitForKeyboardUnlocked;
@@ -650,18 +587,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        [WorkflowExpressionFactory(nameof(__BuildHLLAPIWaitForSystemReady))]
-        public IBodyWorkflowAction<HLLAPIWaitForSystemReadyResponse> HLLAPIWaitForSystemReady([WorkflowExpression] Func<double> hLLAPIWaitForSystemReadysecondsToWait, [WorkflowExpression] Func<string> hLLAPIWaitForSystemReadyworkflow, [WorkflowExpression] Func<double> hLLAPIWaitForSystemReadydeltaSecondsToWait = null)
+        public IBodyWorkflowAction<HLLAPIWaitForSystemReadyResponse> HLLAPIWaitForSystemReady(Expression<Func<double>> hLLAPIWaitForSystemReadysecondsToWait, Expression<Func<string>> hLLAPIWaitForSystemReadyworkflow, Expression<Func<double>> hLLAPIWaitForSystemReadydeltaSecondsToWait = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<HLLAPIWaitForSystemReadyResponse> __BuildHLLAPIWaitForSystemReady(WorkflowExpression<double> hLLAPIWaitForSystemReadysecondsToWait, WorkflowExpression<string> hLLAPIWaitForSystemReadyworkflow, WorkflowExpression<double> hLLAPIWaitForSystemReadydeltaSecondsToWait = null)
-        {
-            WorkflowExpression.Validate(hLLAPIWaitForSystemReadysecondsToWait, nameof(hLLAPIWaitForSystemReadysecondsToWait), required: true);
-            WorkflowExpression.Validate(hLLAPIWaitForSystemReadyworkflow, nameof(hLLAPIWaitForSystemReadyworkflow), required: true);
-            WorkflowExpression.Validate(hLLAPIWaitForSystemReadydeltaSecondsToWait, nameof(hLLAPIWaitForSystemReadydeltaSecondsToWait), required: false);
+            var __workflow_hLLAPIWaitForSystemReadysecondsToWait = hLLAPIWaitForSystemReadysecondsToWait == null ? null : WorkflowExpression.Compile(hLLAPIWaitForSystemReadysecondsToWait);
+            WorkflowExpression.Validate(__workflow_hLLAPIWaitForSystemReadysecondsToWait, nameof(hLLAPIWaitForSystemReadysecondsToWait), required: true);
+            var __workflow_hLLAPIWaitForSystemReadyworkflow = hLLAPIWaitForSystemReadyworkflow == null ? null : WorkflowExpression.Compile(hLLAPIWaitForSystemReadyworkflow);
+            WorkflowExpression.Validate(__workflow_hLLAPIWaitForSystemReadyworkflow, nameof(hLLAPIWaitForSystemReadyworkflow), required: true);
+            var __workflow_hLLAPIWaitForSystemReadydeltaSecondsToWait = hLLAPIWaitForSystemReadydeltaSecondsToWait == null ? null : WorkflowExpression.Compile(hLLAPIWaitForSystemReadydeltaSecondsToWait);
+            WorkflowExpression.Validate(__workflow_hLLAPIWaitForSystemReadydeltaSecondsToWait, nameof(hLLAPIWaitForSystemReadydeltaSecondsToWait), required: false);
             return new DeferredBodyAction<HLLAPIWaitForSystemReadyResponse>(() =>
             {
                 var apiCallPath = "/HLLAPI/HLLAPIWaitForSystemReady";
@@ -670,12 +603,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 var hLLAPIWaitForSystemReady = new JObject();
                 var hLLAPIWaitForSystemReadypropCount = 0;
                 hLLAPIWaitForSystemReadypropCount++;
-                hLLAPIWaitForSystemReady["SecondsToWait"] = ExpressionConverter.ConvertO(hLLAPIWaitForSystemReadysecondsToWait);
-                if (hLLAPIWaitForSystemReadydeltaSecondsToWait != null)
+                hLLAPIWaitForSystemReady["SecondsToWait"] = ExpressionConverter.ConvertO(__workflow_hLLAPIWaitForSystemReadysecondsToWait);
+                if (__workflow_hLLAPIWaitForSystemReadydeltaSecondsToWait != null)
                 {
-                    if (hLLAPIWaitForSystemReadydeltaSecondsToWait != null)
+                    if (__workflow_hLLAPIWaitForSystemReadydeltaSecondsToWait != null)
                     {
-                        hLLAPIWaitForSystemReady["DeltaSecondsToWait"] = ExpressionConverter.ConvertO(hLLAPIWaitForSystemReadydeltaSecondsToWait);
+                        hLLAPIWaitForSystemReady["DeltaSecondsToWait"] = ExpressionConverter.ConvertO(__workflow_hLLAPIWaitForSystemReadydeltaSecondsToWait);
                         hLLAPIWaitForSystemReadypropCount++;
                     }
 
@@ -688,7 +621,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 }
 
                 hLLAPIWaitForSystemReadypropCount++;
-                hLLAPIWaitForSystemReady["Workflow"] = ExpressionConverter.ConvertO(hLLAPIWaitForSystemReadyworkflow);
+                hLLAPIWaitForSystemReady["Workflow"] = ExpressionConverter.ConvertO(__workflow_hLLAPIWaitForSystemReadyworkflow);
                 if (hLLAPIWaitForSystemReadypropCount > 0)
                 {
                     callPayload.Body = hLLAPIWaitForSystemReady;
@@ -699,16 +632,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        [WorkflowExpressionFactory(nameof(__BuildHLLAPIPressReset))]
-        public IWorkflowAction HLLAPIPressReset([WorkflowExpression] Func<string> hLLAPIPressResetworkflow)
+        public IWorkflowAction HLLAPIPressReset(Expression<Func<string>> hLLAPIPressResetworkflow)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildHLLAPIPressReset(WorkflowExpression<string> hLLAPIPressResetworkflow)
-        {
-            WorkflowExpression.Validate(hLLAPIPressResetworkflow, nameof(hLLAPIPressResetworkflow), required: true);
+            var __workflow_hLLAPIPressResetworkflow = hLLAPIPressResetworkflow == null ? null : WorkflowExpression.Compile(hLLAPIPressResetworkflow);
+            WorkflowExpression.Validate(__workflow_hLLAPIPressResetworkflow, nameof(hLLAPIPressResetworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/HLLAPI/HLLAPIPressReset";
@@ -717,7 +644,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 var hLLAPIPressReset = new JObject();
                 var hLLAPIPressResetpropCount = 0;
                 hLLAPIPressResetpropCount++;
-                hLLAPIPressReset["Workflow"] = ExpressionConverter.ConvertO(hLLAPIPressResetworkflow);
+                hLLAPIPressReset["Workflow"] = ExpressionConverter.ConvertO(__workflow_hLLAPIPressResetworkflow);
                 if (hLLAPIPressResetpropCount > 0)
                 {
                     callPayload.Body = hLLAPIPressReset;
@@ -728,21 +655,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        [WorkflowExpressionFactory(nameof(__BuildHLLAPISearchForString))]
-        public IBodyWorkflowAction<HLLAPISearchForStringResponse> HLLAPISearchForString([WorkflowExpression] Func<string> hLLAPISearchForStringsessionID, [WorkflowExpression] Func<string> hLLAPISearchForStringsearchString, [WorkflowExpression] Func<string> hLLAPISearchForStringworkflow, [WorkflowExpression] Func<bool> hLLAPISearchForStringsearchEntireScreen = null, [WorkflowExpression] Func<int> hLLAPISearchForStringsearchStartRowIndex = null, [WorkflowExpression] Func<int> hLLAPISearchForStringsearchStartColIndex = null)
+        public IBodyWorkflowAction<HLLAPISearchForStringResponse> HLLAPISearchForString(Expression<Func<string>> hLLAPISearchForStringsessionID, Expression<Func<string>> hLLAPISearchForStringsearchString, Expression<Func<string>> hLLAPISearchForStringworkflow, Expression<Func<bool>> hLLAPISearchForStringsearchEntireScreen = null, Expression<Func<int>> hLLAPISearchForStringsearchStartRowIndex = null, Expression<Func<int>> hLLAPISearchForStringsearchStartColIndex = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<HLLAPISearchForStringResponse> __BuildHLLAPISearchForString(WorkflowExpression<string> hLLAPISearchForStringsessionID, WorkflowExpression<string> hLLAPISearchForStringsearchString, WorkflowExpression<string> hLLAPISearchForStringworkflow, WorkflowExpression<bool> hLLAPISearchForStringsearchEntireScreen = null, WorkflowExpression<int> hLLAPISearchForStringsearchStartRowIndex = null, WorkflowExpression<int> hLLAPISearchForStringsearchStartColIndex = null)
-        {
-            WorkflowExpression.Validate(hLLAPISearchForStringsessionID, nameof(hLLAPISearchForStringsessionID), required: true);
-            WorkflowExpression.Validate(hLLAPISearchForStringsearchString, nameof(hLLAPISearchForStringsearchString), required: true);
-            WorkflowExpression.Validate(hLLAPISearchForStringworkflow, nameof(hLLAPISearchForStringworkflow), required: true);
-            WorkflowExpression.Validate(hLLAPISearchForStringsearchEntireScreen, nameof(hLLAPISearchForStringsearchEntireScreen), required: false);
-            WorkflowExpression.Validate(hLLAPISearchForStringsearchStartRowIndex, nameof(hLLAPISearchForStringsearchStartRowIndex), required: false);
-            WorkflowExpression.Validate(hLLAPISearchForStringsearchStartColIndex, nameof(hLLAPISearchForStringsearchStartColIndex), required: false);
+            var __workflow_hLLAPISearchForStringsessionID = hLLAPISearchForStringsessionID == null ? null : WorkflowExpression.Compile(hLLAPISearchForStringsessionID);
+            WorkflowExpression.Validate(__workflow_hLLAPISearchForStringsessionID, nameof(hLLAPISearchForStringsessionID), required: true);
+            var __workflow_hLLAPISearchForStringsearchString = hLLAPISearchForStringsearchString == null ? null : WorkflowExpression.Compile(hLLAPISearchForStringsearchString);
+            WorkflowExpression.Validate(__workflow_hLLAPISearchForStringsearchString, nameof(hLLAPISearchForStringsearchString), required: true);
+            var __workflow_hLLAPISearchForStringworkflow = hLLAPISearchForStringworkflow == null ? null : WorkflowExpression.Compile(hLLAPISearchForStringworkflow);
+            WorkflowExpression.Validate(__workflow_hLLAPISearchForStringworkflow, nameof(hLLAPISearchForStringworkflow), required: true);
+            var __workflow_hLLAPISearchForStringsearchEntireScreen = hLLAPISearchForStringsearchEntireScreen == null ? null : WorkflowExpression.Compile(hLLAPISearchForStringsearchEntireScreen);
+            WorkflowExpression.Validate(__workflow_hLLAPISearchForStringsearchEntireScreen, nameof(hLLAPISearchForStringsearchEntireScreen), required: false);
+            var __workflow_hLLAPISearchForStringsearchStartRowIndex = hLLAPISearchForStringsearchStartRowIndex == null ? null : WorkflowExpression.Compile(hLLAPISearchForStringsearchStartRowIndex);
+            WorkflowExpression.Validate(__workflow_hLLAPISearchForStringsearchStartRowIndex, nameof(hLLAPISearchForStringsearchStartRowIndex), required: false);
+            var __workflow_hLLAPISearchForStringsearchStartColIndex = hLLAPISearchForStringsearchStartColIndex == null ? null : WorkflowExpression.Compile(hLLAPISearchForStringsearchStartColIndex);
+            WorkflowExpression.Validate(__workflow_hLLAPISearchForStringsearchStartColIndex, nameof(hLLAPISearchForStringsearchStartColIndex), required: false);
             return new DeferredBodyAction<HLLAPISearchForStringResponse>(() =>
             {
                 var apiCallPath = "/HLLAPI/HLLAPISearchForString";
@@ -751,14 +677,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 var hLLAPISearchForString = new JObject();
                 var hLLAPISearchForStringpropCount = 0;
                 hLLAPISearchForStringpropCount++;
-                hLLAPISearchForString["SessionID"] = ExpressionConverter.ConvertO(hLLAPISearchForStringsessionID);
+                hLLAPISearchForString["SessionID"] = ExpressionConverter.ConvertO(__workflow_hLLAPISearchForStringsessionID);
                 hLLAPISearchForStringpropCount++;
-                hLLAPISearchForString["SearchString"] = ExpressionConverter.ConvertO(hLLAPISearchForStringsearchString);
-                if (hLLAPISearchForStringsearchEntireScreen != null)
+                hLLAPISearchForString["SearchString"] = ExpressionConverter.ConvertO(__workflow_hLLAPISearchForStringsearchString);
+                if (__workflow_hLLAPISearchForStringsearchEntireScreen != null)
                 {
-                    if (hLLAPISearchForStringsearchEntireScreen != null)
+                    if (__workflow_hLLAPISearchForStringsearchEntireScreen != null)
                     {
-                        hLLAPISearchForString["SearchEntireScreen"] = ExpressionConverter.ConvertO(hLLAPISearchForStringsearchEntireScreen);
+                        hLLAPISearchForString["SearchEntireScreen"] = ExpressionConverter.ConvertO(__workflow_hLLAPISearchForStringsearchEntireScreen);
                         hLLAPISearchForStringpropCount++;
                     }
 
@@ -770,20 +696,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                     hLLAPISearchForStringpropCount++;
                 }
 
-                if (hLLAPISearchForStringsearchStartRowIndex != null)
+                if (__workflow_hLLAPISearchForStringsearchStartRowIndex != null)
                 {
-                    hLLAPISearchForString["SearchStartRowIndex"] = ExpressionConverter.ConvertO(hLLAPISearchForStringsearchStartRowIndex);
+                    hLLAPISearchForString["SearchStartRowIndex"] = ExpressionConverter.ConvertO(__workflow_hLLAPISearchForStringsearchStartRowIndex);
                     hLLAPISearchForStringpropCount++;
                 }
 
-                if (hLLAPISearchForStringsearchStartColIndex != null)
+                if (__workflow_hLLAPISearchForStringsearchStartColIndex != null)
                 {
-                    hLLAPISearchForString["SearchStartColIndex"] = ExpressionConverter.ConvertO(hLLAPISearchForStringsearchStartColIndex);
+                    hLLAPISearchForString["SearchStartColIndex"] = ExpressionConverter.ConvertO(__workflow_hLLAPISearchForStringsearchStartColIndex);
                     hLLAPISearchForStringpropCount++;
                 }
 
                 hLLAPISearchForStringpropCount++;
-                hLLAPISearchForString["Workflow"] = ExpressionConverter.ConvertO(hLLAPISearchForStringworkflow);
+                hLLAPISearchForString["Workflow"] = ExpressionConverter.ConvertO(__workflow_hLLAPISearchForStringworkflow);
                 if (hLLAPISearchForStringpropCount > 0)
                 {
                     callPayload.Body = hLLAPISearchForString;
@@ -794,23 +720,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        [WorkflowExpressionFactory(nameof(__BuildHLLAPIWaitForString))]
-        public IBodyWorkflowAction<HLLAPIWaitForStringResponse> HLLAPIWaitForString([WorkflowExpression] Func<string> hLLAPIWaitForStringsessionID, [WorkflowExpression] Func<string> hLLAPIWaitForStringsearchString, [WorkflowExpression] Func<double> hLLAPIWaitForStringsecondsToWait, [WorkflowExpression] Func<string> hLLAPIWaitForStringworkflow, [WorkflowExpression] Func<bool> hLLAPIWaitForStringsearchEntireScreen = null, [WorkflowExpression] Func<int> hLLAPIWaitForStringsearchStartRowIndex = null, [WorkflowExpression] Func<int> hLLAPIWaitForStringsearchStartColIndex = null, [WorkflowExpression] Func<double> hLLAPIWaitForStringdeltaSecondsToWait = null)
+        public IBodyWorkflowAction<HLLAPIWaitForStringResponse> HLLAPIWaitForString(Expression<Func<string>> hLLAPIWaitForStringsessionID, Expression<Func<string>> hLLAPIWaitForStringsearchString, Expression<Func<double>> hLLAPIWaitForStringsecondsToWait, Expression<Func<string>> hLLAPIWaitForStringworkflow, Expression<Func<bool>> hLLAPIWaitForStringsearchEntireScreen = null, Expression<Func<int>> hLLAPIWaitForStringsearchStartRowIndex = null, Expression<Func<int>> hLLAPIWaitForStringsearchStartColIndex = null, Expression<Func<double>> hLLAPIWaitForStringdeltaSecondsToWait = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<HLLAPIWaitForStringResponse> __BuildHLLAPIWaitForString(WorkflowExpression<string> hLLAPIWaitForStringsessionID, WorkflowExpression<string> hLLAPIWaitForStringsearchString, WorkflowExpression<double> hLLAPIWaitForStringsecondsToWait, WorkflowExpression<string> hLLAPIWaitForStringworkflow, WorkflowExpression<bool> hLLAPIWaitForStringsearchEntireScreen = null, WorkflowExpression<int> hLLAPIWaitForStringsearchStartRowIndex = null, WorkflowExpression<int> hLLAPIWaitForStringsearchStartColIndex = null, WorkflowExpression<double> hLLAPIWaitForStringdeltaSecondsToWait = null)
-        {
-            WorkflowExpression.Validate(hLLAPIWaitForStringsessionID, nameof(hLLAPIWaitForStringsessionID), required: true);
-            WorkflowExpression.Validate(hLLAPIWaitForStringsearchString, nameof(hLLAPIWaitForStringsearchString), required: true);
-            WorkflowExpression.Validate(hLLAPIWaitForStringsecondsToWait, nameof(hLLAPIWaitForStringsecondsToWait), required: true);
-            WorkflowExpression.Validate(hLLAPIWaitForStringworkflow, nameof(hLLAPIWaitForStringworkflow), required: true);
-            WorkflowExpression.Validate(hLLAPIWaitForStringsearchEntireScreen, nameof(hLLAPIWaitForStringsearchEntireScreen), required: false);
-            WorkflowExpression.Validate(hLLAPIWaitForStringsearchStartRowIndex, nameof(hLLAPIWaitForStringsearchStartRowIndex), required: false);
-            WorkflowExpression.Validate(hLLAPIWaitForStringsearchStartColIndex, nameof(hLLAPIWaitForStringsearchStartColIndex), required: false);
-            WorkflowExpression.Validate(hLLAPIWaitForStringdeltaSecondsToWait, nameof(hLLAPIWaitForStringdeltaSecondsToWait), required: false);
+            var __workflow_hLLAPIWaitForStringsessionID = hLLAPIWaitForStringsessionID == null ? null : WorkflowExpression.Compile(hLLAPIWaitForStringsessionID);
+            WorkflowExpression.Validate(__workflow_hLLAPIWaitForStringsessionID, nameof(hLLAPIWaitForStringsessionID), required: true);
+            var __workflow_hLLAPIWaitForStringsearchString = hLLAPIWaitForStringsearchString == null ? null : WorkflowExpression.Compile(hLLAPIWaitForStringsearchString);
+            WorkflowExpression.Validate(__workflow_hLLAPIWaitForStringsearchString, nameof(hLLAPIWaitForStringsearchString), required: true);
+            var __workflow_hLLAPIWaitForStringsecondsToWait = hLLAPIWaitForStringsecondsToWait == null ? null : WorkflowExpression.Compile(hLLAPIWaitForStringsecondsToWait);
+            WorkflowExpression.Validate(__workflow_hLLAPIWaitForStringsecondsToWait, nameof(hLLAPIWaitForStringsecondsToWait), required: true);
+            var __workflow_hLLAPIWaitForStringworkflow = hLLAPIWaitForStringworkflow == null ? null : WorkflowExpression.Compile(hLLAPIWaitForStringworkflow);
+            WorkflowExpression.Validate(__workflow_hLLAPIWaitForStringworkflow, nameof(hLLAPIWaitForStringworkflow), required: true);
+            var __workflow_hLLAPIWaitForStringsearchEntireScreen = hLLAPIWaitForStringsearchEntireScreen == null ? null : WorkflowExpression.Compile(hLLAPIWaitForStringsearchEntireScreen);
+            WorkflowExpression.Validate(__workflow_hLLAPIWaitForStringsearchEntireScreen, nameof(hLLAPIWaitForStringsearchEntireScreen), required: false);
+            var __workflow_hLLAPIWaitForStringsearchStartRowIndex = hLLAPIWaitForStringsearchStartRowIndex == null ? null : WorkflowExpression.Compile(hLLAPIWaitForStringsearchStartRowIndex);
+            WorkflowExpression.Validate(__workflow_hLLAPIWaitForStringsearchStartRowIndex, nameof(hLLAPIWaitForStringsearchStartRowIndex), required: false);
+            var __workflow_hLLAPIWaitForStringsearchStartColIndex = hLLAPIWaitForStringsearchStartColIndex == null ? null : WorkflowExpression.Compile(hLLAPIWaitForStringsearchStartColIndex);
+            WorkflowExpression.Validate(__workflow_hLLAPIWaitForStringsearchStartColIndex, nameof(hLLAPIWaitForStringsearchStartColIndex), required: false);
+            var __workflow_hLLAPIWaitForStringdeltaSecondsToWait = hLLAPIWaitForStringdeltaSecondsToWait == null ? null : WorkflowExpression.Compile(hLLAPIWaitForStringdeltaSecondsToWait);
+            WorkflowExpression.Validate(__workflow_hLLAPIWaitForStringdeltaSecondsToWait, nameof(hLLAPIWaitForStringdeltaSecondsToWait), required: false);
             return new DeferredBodyAction<HLLAPIWaitForStringResponse>(() =>
             {
                 var apiCallPath = "/HLLAPI/HLLAPIWaitForString";
@@ -819,14 +746,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 var hLLAPIWaitForString = new JObject();
                 var hLLAPIWaitForStringpropCount = 0;
                 hLLAPIWaitForStringpropCount++;
-                hLLAPIWaitForString["SessionID"] = ExpressionConverter.ConvertO(hLLAPIWaitForStringsessionID);
+                hLLAPIWaitForString["SessionID"] = ExpressionConverter.ConvertO(__workflow_hLLAPIWaitForStringsessionID);
                 hLLAPIWaitForStringpropCount++;
-                hLLAPIWaitForString["SearchString"] = ExpressionConverter.ConvertO(hLLAPIWaitForStringsearchString);
-                if (hLLAPIWaitForStringsearchEntireScreen != null)
+                hLLAPIWaitForString["SearchString"] = ExpressionConverter.ConvertO(__workflow_hLLAPIWaitForStringsearchString);
+                if (__workflow_hLLAPIWaitForStringsearchEntireScreen != null)
                 {
-                    if (hLLAPIWaitForStringsearchEntireScreen != null)
+                    if (__workflow_hLLAPIWaitForStringsearchEntireScreen != null)
                     {
-                        hLLAPIWaitForString["SearchEntireScreen"] = ExpressionConverter.ConvertO(hLLAPIWaitForStringsearchEntireScreen);
+                        hLLAPIWaitForString["SearchEntireScreen"] = ExpressionConverter.ConvertO(__workflow_hLLAPIWaitForStringsearchEntireScreen);
                         hLLAPIWaitForStringpropCount++;
                     }
 
@@ -838,25 +765,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                     hLLAPIWaitForStringpropCount++;
                 }
 
-                if (hLLAPIWaitForStringsearchStartRowIndex != null)
+                if (__workflow_hLLAPIWaitForStringsearchStartRowIndex != null)
                 {
-                    hLLAPIWaitForString["SearchStartRowIndex"] = ExpressionConverter.ConvertO(hLLAPIWaitForStringsearchStartRowIndex);
+                    hLLAPIWaitForString["SearchStartRowIndex"] = ExpressionConverter.ConvertO(__workflow_hLLAPIWaitForStringsearchStartRowIndex);
                     hLLAPIWaitForStringpropCount++;
                 }
 
-                if (hLLAPIWaitForStringsearchStartColIndex != null)
+                if (__workflow_hLLAPIWaitForStringsearchStartColIndex != null)
                 {
-                    hLLAPIWaitForString["SearchStartColIndex"] = ExpressionConverter.ConvertO(hLLAPIWaitForStringsearchStartColIndex);
+                    hLLAPIWaitForString["SearchStartColIndex"] = ExpressionConverter.ConvertO(__workflow_hLLAPIWaitForStringsearchStartColIndex);
                     hLLAPIWaitForStringpropCount++;
                 }
 
                 hLLAPIWaitForStringpropCount++;
-                hLLAPIWaitForString["SecondsToWait"] = ExpressionConverter.ConvertO(hLLAPIWaitForStringsecondsToWait);
-                if (hLLAPIWaitForStringdeltaSecondsToWait != null)
+                hLLAPIWaitForString["SecondsToWait"] = ExpressionConverter.ConvertO(__workflow_hLLAPIWaitForStringsecondsToWait);
+                if (__workflow_hLLAPIWaitForStringdeltaSecondsToWait != null)
                 {
-                    if (hLLAPIWaitForStringdeltaSecondsToWait != null)
+                    if (__workflow_hLLAPIWaitForStringdeltaSecondsToWait != null)
                     {
-                        hLLAPIWaitForString["DeltaSecondsToWait"] = ExpressionConverter.ConvertO(hLLAPIWaitForStringdeltaSecondsToWait);
+                        hLLAPIWaitForString["DeltaSecondsToWait"] = ExpressionConverter.ConvertO(__workflow_hLLAPIWaitForStringdeltaSecondsToWait);
                         hLLAPIWaitForStringpropCount++;
                     }
 
@@ -869,7 +796,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 }
 
                 hLLAPIWaitForStringpropCount++;
-                hLLAPIWaitForString["Workflow"] = ExpressionConverter.ConvertO(hLLAPIWaitForStringworkflow);
+                hLLAPIWaitForString["Workflow"] = ExpressionConverter.ConvertO(__workflow_hLLAPIWaitForStringworkflow);
                 if (hLLAPIWaitForStringpropCount > 0)
                 {
                     callPayload.Body = hLLAPIWaitForString;
@@ -880,17 +807,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        [WorkflowExpressionFactory(nameof(__BuildHLLAPISetSessionParameter))]
-        public IWorkflowAction HLLAPISetSessionParameter([WorkflowExpression] Func<string> hLLAPISetSessionParameterparameter, [WorkflowExpression] Func<string> hLLAPISetSessionParameterworkflow)
+        public IWorkflowAction HLLAPISetSessionParameter(Expression<Func<string>> hLLAPISetSessionParameterparameter, Expression<Func<string>> hLLAPISetSessionParameterworkflow)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildHLLAPISetSessionParameter(WorkflowExpression<string> hLLAPISetSessionParameterparameter, WorkflowExpression<string> hLLAPISetSessionParameterworkflow)
-        {
-            WorkflowExpression.Validate(hLLAPISetSessionParameterparameter, nameof(hLLAPISetSessionParameterparameter), required: true);
-            WorkflowExpression.Validate(hLLAPISetSessionParameterworkflow, nameof(hLLAPISetSessionParameterworkflow), required: true);
+            var __workflow_hLLAPISetSessionParameterparameter = hLLAPISetSessionParameterparameter == null ? null : WorkflowExpression.Compile(hLLAPISetSessionParameterparameter);
+            WorkflowExpression.Validate(__workflow_hLLAPISetSessionParameterparameter, nameof(hLLAPISetSessionParameterparameter), required: true);
+            var __workflow_hLLAPISetSessionParameterworkflow = hLLAPISetSessionParameterworkflow == null ? null : WorkflowExpression.Compile(hLLAPISetSessionParameterworkflow);
+            WorkflowExpression.Validate(__workflow_hLLAPISetSessionParameterworkflow, nameof(hLLAPISetSessionParameterworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/HLLAPI/HLLAPISetSessionParameter";
@@ -899,9 +821,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 var hLLAPISetSessionParameter = new JObject();
                 var hLLAPISetSessionParameterpropCount = 0;
                 hLLAPISetSessionParameterpropCount++;
-                hLLAPISetSessionParameter["Parameter"] = ExpressionConverter.ConvertO(hLLAPISetSessionParameterparameter);
+                hLLAPISetSessionParameter["Parameter"] = ExpressionConverter.ConvertO(__workflow_hLLAPISetSessionParameterparameter);
                 hLLAPISetSessionParameterpropCount++;
-                hLLAPISetSessionParameter["Workflow"] = ExpressionConverter.ConvertO(hLLAPISetSessionParameterworkflow);
+                hLLAPISetSessionParameter["Workflow"] = ExpressionConverter.ConvertO(__workflow_hLLAPISetSessionParameterworkflow);
                 if (hLLAPISetSessionParameterpropCount > 0)
                 {
                     callPayload.Body = hLLAPISetSessionParameter;
@@ -912,16 +834,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        [WorkflowExpressionFactory(nameof(__BuildHLLAPIResetSystem))]
-        public IWorkflowAction HLLAPIResetSystem([WorkflowExpression] Func<string> hLLAPIResetSystemworkflow)
+        public IWorkflowAction HLLAPIResetSystem(Expression<Func<string>> hLLAPIResetSystemworkflow)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildHLLAPIResetSystem(WorkflowExpression<string> hLLAPIResetSystemworkflow)
-        {
-            WorkflowExpression.Validate(hLLAPIResetSystemworkflow, nameof(hLLAPIResetSystemworkflow), required: true);
+            var __workflow_hLLAPIResetSystemworkflow = hLLAPIResetSystemworkflow == null ? null : WorkflowExpression.Compile(hLLAPIResetSystemworkflow);
+            WorkflowExpression.Validate(__workflow_hLLAPIResetSystemworkflow, nameof(hLLAPIResetSystemworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/HLLAPI/HLLAPIResetSystem";
@@ -930,7 +846,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 var hLLAPIResetSystem = new JObject();
                 var hLLAPIResetSystempropCount = 0;
                 hLLAPIResetSystempropCount++;
-                hLLAPIResetSystem["Workflow"] = ExpressionConverter.ConvertO(hLLAPIResetSystemworkflow);
+                hLLAPIResetSystem["Workflow"] = ExpressionConverter.ConvertO(__workflow_hLLAPIResetSystemworkflow);
                 if (hLLAPIResetSystempropCount > 0)
                 {
                     callPayload.Body = hLLAPIResetSystem;
@@ -941,16 +857,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        [WorkflowExpressionFactory(nameof(__BuildHLLAPICopyOperatorInformationArea))]
-        public IBodyWorkflowAction<HLLAPICopyOperatorInformationAreaResponse> HLLAPICopyOperatorInformationArea([WorkflowExpression] Func<string> hLLAPICopyOperatorInformationAreaworkflow)
+        public IBodyWorkflowAction<HLLAPICopyOperatorInformationAreaResponse> HLLAPICopyOperatorInformationArea(Expression<Func<string>> hLLAPICopyOperatorInformationAreaworkflow)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<HLLAPICopyOperatorInformationAreaResponse> __BuildHLLAPICopyOperatorInformationArea(WorkflowExpression<string> hLLAPICopyOperatorInformationAreaworkflow)
-        {
-            WorkflowExpression.Validate(hLLAPICopyOperatorInformationAreaworkflow, nameof(hLLAPICopyOperatorInformationAreaworkflow), required: true);
+            var __workflow_hLLAPICopyOperatorInformationAreaworkflow = hLLAPICopyOperatorInformationAreaworkflow == null ? null : WorkflowExpression.Compile(hLLAPICopyOperatorInformationAreaworkflow);
+            WorkflowExpression.Validate(__workflow_hLLAPICopyOperatorInformationAreaworkflow, nameof(hLLAPICopyOperatorInformationAreaworkflow), required: true);
             return new DeferredBodyAction<HLLAPICopyOperatorInformationAreaResponse>(() =>
             {
                 var apiCallPath = "/HLLAPI/HLLAPICopyOperatorInformationArea";
@@ -959,7 +869,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 var hLLAPICopyOperatorInformationArea = new JObject();
                 var hLLAPICopyOperatorInformationAreapropCount = 0;
                 hLLAPICopyOperatorInformationAreapropCount++;
-                hLLAPICopyOperatorInformationArea["Workflow"] = ExpressionConverter.ConvertO(hLLAPICopyOperatorInformationAreaworkflow);
+                hLLAPICopyOperatorInformationArea["Workflow"] = ExpressionConverter.ConvertO(__workflow_hLLAPICopyOperatorInformationAreaworkflow);
                 if (hLLAPICopyOperatorInformationAreapropCount > 0)
                 {
                     callPayload.Body = hLLAPICopyOperatorInformationArea;

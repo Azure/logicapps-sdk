@@ -1,34 +1,34 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class MistralActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mistral")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateChatCompletion))]
-        public IBodyWorkflowAction<ChatCompletionResponse> CreateChatCompletion([WorkflowExpression] Func<string> bodymodel, [WorkflowExpression] Func<bodymessagesInputItem[]> bodymessages, [WorkflowExpression] Func<double> bodytemperature = null, [WorkflowExpression] Func<double> bodytopP = null, [WorkflowExpression] Func<int> bodymaxTokens = null, [WorkflowExpression] Func<bool> bodystream = null, [WorkflowExpression] Func<bool> bodysafePrompt = null, [WorkflowExpression] Func<int> bodyrandomSeed = null)
+        public IBodyWorkflowAction<ChatCompletionResponse> CreateChatCompletion(Expression<Func<string>> bodymodel, Expression<Func<bodymessagesInputItem[]>> bodymessages, Expression<Func<double>> bodytemperature = null, Expression<Func<double>> bodytopP = null, Expression<Func<int>> bodymaxTokens = null, Expression<Func<bool>> bodystream = null, Expression<Func<bool>> bodysafePrompt = null, Expression<Func<int>> bodyrandomSeed = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ChatCompletionResponse> __BuildCreateChatCompletion(WorkflowExpression<string> bodymodel, WorkflowExpression<bodymessagesInputItem[]> bodymessages, WorkflowExpression<double> bodytemperature = null, WorkflowExpression<double> bodytopP = null, WorkflowExpression<int> bodymaxTokens = null, WorkflowExpression<bool> bodystream = null, WorkflowExpression<bool> bodysafePrompt = null, WorkflowExpression<int> bodyrandomSeed = null)
-        {
-            WorkflowExpression.Validate(bodymodel, nameof(bodymodel), required: true);
-            WorkflowExpression.Validate(bodymessages, nameof(bodymessages), required: true);
-            WorkflowExpression.Validate(bodytemperature, nameof(bodytemperature), required: false);
-            WorkflowExpression.Validate(bodytopP, nameof(bodytopP), required: false);
-            WorkflowExpression.Validate(bodymaxTokens, nameof(bodymaxTokens), required: false);
-            WorkflowExpression.Validate(bodystream, nameof(bodystream), required: false);
-            WorkflowExpression.Validate(bodysafePrompt, nameof(bodysafePrompt), required: false);
-            WorkflowExpression.Validate(bodyrandomSeed, nameof(bodyrandomSeed), required: false);
+            var __workflow_bodymodel = bodymodel == null ? null : WorkflowExpression.Compile(bodymodel);
+            WorkflowExpression.Validate(__workflow_bodymodel, nameof(bodymodel), required: true);
+            var __workflow_bodymessages = bodymessages == null ? null : WorkflowExpression.Compile(bodymessages);
+            WorkflowExpression.Validate(__workflow_bodymessages, nameof(bodymessages), required: true);
+            var __workflow_bodytemperature = bodytemperature == null ? null : WorkflowExpression.Compile(bodytemperature);
+            WorkflowExpression.Validate(__workflow_bodytemperature, nameof(bodytemperature), required: false);
+            var __workflow_bodytopP = bodytopP == null ? null : WorkflowExpression.Compile(bodytopP);
+            WorkflowExpression.Validate(__workflow_bodytopP, nameof(bodytopP), required: false);
+            var __workflow_bodymaxTokens = bodymaxTokens == null ? null : WorkflowExpression.Compile(bodymaxTokens);
+            WorkflowExpression.Validate(__workflow_bodymaxTokens, nameof(bodymaxTokens), required: false);
+            var __workflow_bodystream = bodystream == null ? null : WorkflowExpression.Compile(bodystream);
+            WorkflowExpression.Validate(__workflow_bodystream, nameof(bodystream), required: false);
+            var __workflow_bodysafePrompt = bodysafePrompt == null ? null : WorkflowExpression.Compile(bodysafePrompt);
+            WorkflowExpression.Validate(__workflow_bodysafePrompt, nameof(bodysafePrompt), required: false);
+            var __workflow_bodyrandomSeed = bodyrandomSeed == null ? null : WorkflowExpression.Compile(bodyrandomSeed);
+            WorkflowExpression.Validate(__workflow_bodyrandomSeed, nameof(bodyrandomSeed), required: false);
             return new DeferredBodyAction<ChatCompletionResponse>(() =>
             {
                 var apiCallPath = "/chat/completions";
@@ -37,14 +37,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["model"] = ExpressionConverter.ConvertO(bodymodel);
+                body["model"] = ExpressionConverter.ConvertO(__workflow_bodymodel);
                 bodypropCount++;
-                body["messages"] = ExpressionConverter.ConvertO(bodymessages);
-                if (bodytemperature != null)
+                body["messages"] = ExpressionConverter.ConvertO(__workflow_bodymessages);
+                if (__workflow_bodytemperature != null)
                 {
-                    if (bodytemperature != null)
+                    if (__workflow_bodytemperature != null)
                     {
-                        body["temperature"] = ExpressionConverter.ConvertO(bodytemperature);
+                        body["temperature"] = ExpressionConverter.ConvertO(__workflow_bodytemperature);
                         bodypropCount++;
                     }
 
@@ -56,11 +56,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
                     bodypropCount++;
                 }
 
-                if (bodytopP != null)
+                if (__workflow_bodytopP != null)
                 {
-                    if (bodytopP != null)
+                    if (__workflow_bodytopP != null)
                     {
-                        body["top_p"] = ExpressionConverter.ConvertO(bodytopP);
+                        body["top_p"] = ExpressionConverter.ConvertO(__workflow_bodytopP);
                         bodypropCount++;
                     }
 
@@ -72,17 +72,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
                     bodypropCount++;
                 }
 
-                if (bodymaxTokens != null)
+                if (__workflow_bodymaxTokens != null)
                 {
-                    body["max_tokens"] = ExpressionConverter.ConvertO(bodymaxTokens);
+                    body["max_tokens"] = ExpressionConverter.ConvertO(__workflow_bodymaxTokens);
                     bodypropCount++;
                 }
 
-                if (bodystream != null)
+                if (__workflow_bodystream != null)
                 {
-                    if (bodystream != null)
+                    if (__workflow_bodystream != null)
                     {
-                        body["stream"] = ExpressionConverter.ConvertO(bodystream);
+                        body["stream"] = ExpressionConverter.ConvertO(__workflow_bodystream);
                         bodypropCount++;
                     }
 
@@ -94,11 +94,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
                     bodypropCount++;
                 }
 
-                if (bodysafePrompt != null)
+                if (__workflow_bodysafePrompt != null)
                 {
-                    if (bodysafePrompt != null)
+                    if (__workflow_bodysafePrompt != null)
                     {
-                        body["safe_prompt"] = ExpressionConverter.ConvertO(bodysafePrompt);
+                        body["safe_prompt"] = ExpressionConverter.ConvertO(__workflow_bodysafePrompt);
                         bodypropCount++;
                     }
 
@@ -110,9 +110,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
                     bodypropCount++;
                 }
 
-                if (bodyrandomSeed != null)
+                if (__workflow_bodyrandomSeed != null)
                 {
-                    body["random_seed"] = ExpressionConverter.ConvertO(bodyrandomSeed);
+                    body["random_seed"] = ExpressionConverter.ConvertO(__workflow_bodyrandomSeed);
                     bodypropCount++;
                 }
 
@@ -126,18 +126,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mistral")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateEmbedding))]
-        public IBodyWorkflowAction<EmbeddingResponse> CreateEmbedding([WorkflowExpression] Func<string> bodymodel = null, [WorkflowExpression] Func<string[]> bodyinput = null, [WorkflowExpression] Func<bodyencodingFormatInput> bodyencodingFormat = null)
+        public IBodyWorkflowAction<EmbeddingResponse> CreateEmbedding(Expression<Func<string>> bodymodel = null, Expression<Func<string[]>> bodyinput = null, Expression<Func<bodyencodingFormatInput>> bodyencodingFormat = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EmbeddingResponse> __BuildCreateEmbedding(WorkflowExpression<string> bodymodel = null, WorkflowExpression<string[]> bodyinput = null, WorkflowExpression<bodyencodingFormatInput> bodyencodingFormat = null)
-        {
-            WorkflowExpression.Validate(bodymodel, nameof(bodymodel), required: false);
-            WorkflowExpression.Validate(bodyinput, nameof(bodyinput), required: false);
-            WorkflowExpression.Validate(bodyencodingFormat, nameof(bodyencodingFormat), required: false);
+            var __workflow_bodymodel = bodymodel == null ? null : WorkflowExpression.Compile(bodymodel);
+            WorkflowExpression.Validate(__workflow_bodymodel, nameof(bodymodel), required: false);
+            var __workflow_bodyinput = bodyinput == null ? null : WorkflowExpression.Compile(bodyinput);
+            WorkflowExpression.Validate(__workflow_bodyinput, nameof(bodyinput), required: false);
+            var __workflow_bodyencodingFormat = bodyencodingFormat == null ? null : WorkflowExpression.Compile(bodyencodingFormat);
+            WorkflowExpression.Validate(__workflow_bodyencodingFormat, nameof(bodyencodingFormat), required: false);
             return new DeferredBodyAction<EmbeddingResponse>(() =>
             {
                 var apiCallPath = "/embeddings";
@@ -145,11 +141,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodymodel != null)
+                if (__workflow_bodymodel != null)
                 {
-                    if (bodymodel != null)
+                    if (__workflow_bodymodel != null)
                     {
-                        body["model"] = ExpressionConverter.ConvertO(bodymodel);
+                        body["model"] = ExpressionConverter.ConvertO(__workflow_bodymodel);
                         bodypropCount++;
                     }
 
@@ -161,15 +157,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
                     bodypropCount++;
                 }
 
-                if (bodyinput != null)
+                if (__workflow_bodyinput != null)
                 {
-                    body["input"] = ExpressionConverter.ConvertO(bodyinput);
+                    body["input"] = ExpressionConverter.ConvertO(__workflow_bodyinput);
                     bodypropCount++;
                 }
 
-                if (bodyencodingFormat != null)
+                if (__workflow_bodyencodingFormat != null)
                 {
-                    body["encoding_format"] = ExpressionConverter.ConvertO(bodyencodingFormat);
+                    body["encoding_format"] = ExpressionConverter.ConvertO(__workflow_bodyencodingFormat);
                     bodypropCount++;
                 }
 

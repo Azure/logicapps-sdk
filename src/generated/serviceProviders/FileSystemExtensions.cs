@@ -1,7 +1,6 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
 {
     using System;
@@ -9,31 +8,27 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class FileSystemActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
-        [WorkflowExpressionFactory(nameof(__BuildAppendFile))]
-        public IWorkflowAction AppendFile([WorkflowExpression] Func<string> filePath, [WorkflowExpression] Func<object> body, [WorkflowExpression] Func<bool> createFileIfNotPresent = null)
+        public IWorkflowAction AppendFile(Expression<Func<string>> filePath, Expression<Func<object>> body, Expression<Func<bool>> createFileIfNotPresent = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildAppendFile(WorkflowExpression<string> filePath, WorkflowExpression<object> body, WorkflowExpression<bool> createFileIfNotPresent = null)
-        {
-            WorkflowExpression.Validate(filePath, nameof(filePath), required: true);
-            WorkflowExpression.Validate(body, nameof(body), required: true);
-            WorkflowExpression.Validate(createFileIfNotPresent, nameof(createFileIfNotPresent), required: false);
+            var __workflow_filePath = filePath == null ? null : WorkflowExpression.Compile(filePath);
+            WorkflowExpression.Validate(__workflow_filePath, nameof(filePath), required: true);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: true);
+            var __workflow_createFileIfNotPresent = createFileIfNotPresent == null ? null : WorkflowExpression.Compile(createFileIfNotPresent);
+            WorkflowExpression.Validate(__workflow_createFileIfNotPresent, nameof(createFileIfNotPresent), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(filePath);
-                serviceProviderParameters["body"] = ExpressionConverter.ConvertO(body);
-                if (createFileIfNotPresent != null)
+                serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(__workflow_filePath);
+                serviceProviderParameters["body"] = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_createFileIfNotPresent != null)
                 {
-                    serviceProviderParameters["createFileIfNotPresent"] = ExpressionConverter.ConvertO(createFileIfNotPresent);
+                    serviceProviderParameters["createFileIfNotPresent"] = ExpressionConverter.ConvertO(__workflow_createFileIfNotPresent);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -46,26 +41,22 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
-        [WorkflowExpressionFactory(nameof(__BuildCopyFile))]
-        public IWorkflowAction CopyFile([WorkflowExpression] Func<string> source, [WorkflowExpression] Func<string> destination, [WorkflowExpression] Func<bool> overwrite = null)
+        public IWorkflowAction CopyFile(Expression<Func<string>> source, Expression<Func<string>> destination, Expression<Func<bool>> overwrite = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildCopyFile(WorkflowExpression<string> source, WorkflowExpression<string> destination, WorkflowExpression<bool> overwrite = null)
-        {
-            WorkflowExpression.Validate(source, nameof(source), required: true);
-            WorkflowExpression.Validate(destination, nameof(destination), required: true);
-            WorkflowExpression.Validate(overwrite, nameof(overwrite), required: false);
+            var __workflow_source = source == null ? null : WorkflowExpression.Compile(source);
+            WorkflowExpression.Validate(__workflow_source, nameof(source), required: true);
+            var __workflow_destination = destination == null ? null : WorkflowExpression.Compile(destination);
+            WorkflowExpression.Validate(__workflow_destination, nameof(destination), required: true);
+            var __workflow_overwrite = overwrite == null ? null : WorkflowExpression.Compile(overwrite);
+            WorkflowExpression.Validate(__workflow_overwrite, nameof(overwrite), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["source"] = ExpressionConverter.ConvertO(source);
-                serviceProviderParameters["destination"] = ExpressionConverter.ConvertO(destination);
-                if (overwrite != null)
+                serviceProviderParameters["source"] = ExpressionConverter.ConvertO(__workflow_source);
+                serviceProviderParameters["destination"] = ExpressionConverter.ConvertO(__workflow_destination);
+                if (__workflow_overwrite != null)
                 {
-                    serviceProviderParameters["overwrite"] = ExpressionConverter.ConvertO(overwrite);
+                    serviceProviderParameters["overwrite"] = ExpressionConverter.ConvertO(__workflow_overwrite);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -78,24 +69,19 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateFile))]
-        public IBodyWorkflowAction<CreateFileOutput> CreateFile([WorkflowExpression] Func<string> filePath, [WorkflowExpression] Func<object> body = null)
+        public IBodyWorkflowAction<CreateFileOutput> CreateFile(Expression<Func<string>> filePath, Expression<Func<object>> body = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateFileOutput> __BuildCreateFile(WorkflowExpression<string> filePath, WorkflowExpression<object> body = null)
-        {
-            WorkflowExpression.Validate(filePath, nameof(filePath), required: true);
-            WorkflowExpression.Validate(body, nameof(body), required: false);
+            var __workflow_filePath = filePath == null ? null : WorkflowExpression.Compile(filePath);
+            WorkflowExpression.Validate(__workflow_filePath, nameof(filePath), required: true);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
             return new DeferredBodyAction<CreateFileOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(filePath);
-                if (body != null)
+                serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(__workflow_filePath);
+                if (__workflow_body != null)
                 {
-                    serviceProviderParameters["body"] = ExpressionConverter.ConvertO(body);
+                    serviceProviderParameters["body"] = ExpressionConverter.ConvertO(__workflow_body);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -108,24 +94,19 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteFile))]
-        public IOutputWorkflowAction<JToken> DeleteFile([WorkflowExpression] Func<string> filePath, [WorkflowExpression] Func<bool> skipIfFileNotPresent = null)
+        public IOutputWorkflowAction<JToken> DeleteFile(Expression<Func<string>> filePath, Expression<Func<bool>> skipIfFileNotPresent = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IOutputWorkflowAction<JToken> __BuildDeleteFile(WorkflowExpression<string> filePath, WorkflowExpression<bool> skipIfFileNotPresent = null)
-        {
-            WorkflowExpression.Validate(filePath, nameof(filePath), required: true);
-            WorkflowExpression.Validate(skipIfFileNotPresent, nameof(skipIfFileNotPresent), required: false);
+            var __workflow_filePath = filePath == null ? null : WorkflowExpression.Compile(filePath);
+            WorkflowExpression.Validate(__workflow_filePath, nameof(filePath), required: true);
+            var __workflow_skipIfFileNotPresent = skipIfFileNotPresent == null ? null : WorkflowExpression.Compile(skipIfFileNotPresent);
+            WorkflowExpression.Validate(__workflow_skipIfFileNotPresent, nameof(skipIfFileNotPresent), required: false);
             return new DeferredOutputAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(filePath);
-                if (skipIfFileNotPresent != null)
+                serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(__workflow_filePath);
+                if (__workflow_skipIfFileNotPresent != null)
                 {
-                    serviceProviderParameters["skipIfFileNotPresent"] = ExpressionConverter.ConvertO(skipIfFileNotPresent);
+                    serviceProviderParameters["skipIfFileNotPresent"] = ExpressionConverter.ConvertO(__workflow_skipIfFileNotPresent);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -138,24 +119,19 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
-        [WorkflowExpressionFactory(nameof(__BuildGetFileContent))]
-        public IBodyWorkflowAction<JToken> GetFileContent([WorkflowExpression] Func<string> filePath, [WorkflowExpression] Func<bool> inferContentType = null)
+        public IBodyWorkflowAction<JToken> GetFileContent(Expression<Func<string>> filePath, Expression<Func<bool>> inferContentType = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildGetFileContent(WorkflowExpression<string> filePath, WorkflowExpression<bool> inferContentType = null)
-        {
-            WorkflowExpression.Validate(filePath, nameof(filePath), required: true);
-            WorkflowExpression.Validate(inferContentType, nameof(inferContentType), required: false);
+            var __workflow_filePath = filePath == null ? null : WorkflowExpression.Compile(filePath);
+            WorkflowExpression.Validate(__workflow_filePath, nameof(filePath), required: true);
+            var __workflow_inferContentType = inferContentType == null ? null : WorkflowExpression.Compile(inferContentType);
+            WorkflowExpression.Validate(__workflow_inferContentType, nameof(inferContentType), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(filePath);
-                if (inferContentType != null)
+                serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(__workflow_filePath);
+                if (__workflow_inferContentType != null)
                 {
-                    serviceProviderParameters["inferContentType"] = ExpressionConverter.ConvertO(inferContentType);
+                    serviceProviderParameters["inferContentType"] = ExpressionConverter.ConvertO(__workflow_inferContentType);
                 }
                 else
                 {
@@ -172,24 +148,19 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
-        [WorkflowExpressionFactory(nameof(__BuildGetFileContentV2))]
-        public IBodyWorkflowAction<JToken> GetFileContentV2([WorkflowExpression] Func<string> filePath, [WorkflowExpression] Func<bool> inferContentType = null)
+        public IBodyWorkflowAction<JToken> GetFileContentV2(Expression<Func<string>> filePath, Expression<Func<bool>> inferContentType = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildGetFileContentV2(WorkflowExpression<string> filePath, WorkflowExpression<bool> inferContentType = null)
-        {
-            WorkflowExpression.Validate(filePath, nameof(filePath), required: true);
-            WorkflowExpression.Validate(inferContentType, nameof(inferContentType), required: false);
+            var __workflow_filePath = filePath == null ? null : WorkflowExpression.Compile(filePath);
+            WorkflowExpression.Validate(__workflow_filePath, nameof(filePath), required: true);
+            var __workflow_inferContentType = inferContentType == null ? null : WorkflowExpression.Compile(inferContentType);
+            WorkflowExpression.Validate(__workflow_inferContentType, nameof(inferContentType), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(filePath);
-                if (inferContentType != null)
+                serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(__workflow_filePath);
+                if (__workflow_inferContentType != null)
                 {
-                    serviceProviderParameters["inferContentType"] = ExpressionConverter.ConvertO(inferContentType);
+                    serviceProviderParameters["inferContentType"] = ExpressionConverter.ConvertO(__workflow_inferContentType);
                 }
                 else
                 {
@@ -206,20 +177,14 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
-        [WorkflowExpressionFactory(nameof(__BuildGetFileMetadata))]
-        public IBodyWorkflowAction<GetFileMetadataOutput> GetFileMetadata([WorkflowExpression] Func<string> filePath)
+        public IBodyWorkflowAction<GetFileMetadataOutput> GetFileMetadata(Expression<Func<string>> filePath)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetFileMetadataOutput> __BuildGetFileMetadata(WorkflowExpression<string> filePath)
-        {
-            WorkflowExpression.Validate(filePath, nameof(filePath), required: true);
+            var __workflow_filePath = filePath == null ? null : WorkflowExpression.Compile(filePath);
+            WorkflowExpression.Validate(__workflow_filePath, nameof(filePath), required: true);
             return new DeferredBodyAction<GetFileMetadataOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(filePath);
+                serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(__workflow_filePath);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/FileSystem", operationId: "getFileMetadata", connectionName: connectionId),
@@ -230,24 +195,19 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
-        [WorkflowExpressionFactory(nameof(__BuildListFolder))]
-        public IBodyWorkflowAction<ListFolderOutputItem[]> ListFolder([WorkflowExpression] Func<string> folderPath, [WorkflowExpression] Func<bool> enableRecursiveListing = null)
+        public IBodyWorkflowAction<ListFolderOutputItem[]> ListFolder(Expression<Func<string>> folderPath, Expression<Func<bool>> enableRecursiveListing = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListFolderOutputItem[]> __BuildListFolder(WorkflowExpression<string> folderPath, WorkflowExpression<bool> enableRecursiveListing = null)
-        {
-            WorkflowExpression.Validate(folderPath, nameof(folderPath), required: true);
-            WorkflowExpression.Validate(enableRecursiveListing, nameof(enableRecursiveListing), required: false);
+            var __workflow_folderPath = folderPath == null ? null : WorkflowExpression.Compile(folderPath);
+            WorkflowExpression.Validate(__workflow_folderPath, nameof(folderPath), required: true);
+            var __workflow_enableRecursiveListing = enableRecursiveListing == null ? null : WorkflowExpression.Compile(enableRecursiveListing);
+            WorkflowExpression.Validate(__workflow_enableRecursiveListing, nameof(enableRecursiveListing), required: false);
             return new DeferredBodyAction<ListFolderOutputItem[]>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["folderPath"] = ExpressionConverter.ConvertO(folderPath);
-                if (enableRecursiveListing != null)
+                serviceProviderParameters["folderPath"] = ExpressionConverter.ConvertO(__workflow_folderPath);
+                if (__workflow_enableRecursiveListing != null)
                 {
-                    serviceProviderParameters["enableRecursiveListing"] = ExpressionConverter.ConvertO(enableRecursiveListing);
+                    serviceProviderParameters["enableRecursiveListing"] = ExpressionConverter.ConvertO(__workflow_enableRecursiveListing);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -260,22 +220,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
-        [WorkflowExpressionFactory(nameof(__BuildRenameFile))]
-        public IWorkflowAction RenameFile([WorkflowExpression] Func<string> filePath, [WorkflowExpression] Func<string> newName)
+        public IWorkflowAction RenameFile(Expression<Func<string>> filePath, Expression<Func<string>> newName)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildRenameFile(WorkflowExpression<string> filePath, WorkflowExpression<string> newName)
-        {
-            WorkflowExpression.Validate(filePath, nameof(filePath), required: true);
-            WorkflowExpression.Validate(newName, nameof(newName), required: true);
+            var __workflow_filePath = filePath == null ? null : WorkflowExpression.Compile(filePath);
+            WorkflowExpression.Validate(__workflow_filePath, nameof(filePath), required: true);
+            var __workflow_newName = newName == null ? null : WorkflowExpression.Compile(newName);
+            WorkflowExpression.Validate(__workflow_newName, nameof(newName), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(filePath);
-                serviceProviderParameters["newName"] = ExpressionConverter.ConvertO(newName);
+                serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(__workflow_filePath);
+                serviceProviderParameters["newName"] = ExpressionConverter.ConvertO(__workflow_newName);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/FileSystem", operationId: "renameFile", connectionName: connectionId),
@@ -286,22 +241,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateFile))]
-        public IBodyWorkflowAction<UpdateFileOutput> UpdateFile([WorkflowExpression] Func<string> filePath, [WorkflowExpression] Func<object> body)
+        public IBodyWorkflowAction<UpdateFileOutput> UpdateFile(Expression<Func<string>> filePath, Expression<Func<object>> body)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UpdateFileOutput> __BuildUpdateFile(WorkflowExpression<string> filePath, WorkflowExpression<object> body)
-        {
-            WorkflowExpression.Validate(filePath, nameof(filePath), required: true);
-            WorkflowExpression.Validate(body, nameof(body), required: true);
+            var __workflow_filePath = filePath == null ? null : WorkflowExpression.Compile(filePath);
+            WorkflowExpression.Validate(__workflow_filePath, nameof(filePath), required: true);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: true);
             return new DeferredBodyAction<UpdateFileOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(filePath);
-                serviceProviderParameters["body"] = ExpressionConverter.ConvertO(body);
+                serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(__workflow_filePath);
+                serviceProviderParameters["body"] = ExpressionConverter.ConvertO(__workflow_body);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/FileSystem", operationId: "updateFile", connectionName: connectionId),
@@ -312,36 +262,33 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "FileSystem")]
-        [WorkflowExpressionFactory(nameof(__BuildExtractArchive))]
-        public IBodyWorkflowAction<ExtractArchiveOutputItem[]> ExtractArchive([WorkflowExpression] Func<string> folderPath, [WorkflowExpression] Func<string> filePath = null, [WorkflowExpression] Func<ExtractArchiveInputOverwriteType> overwrite = null, [WorkflowExpression] Func<object> body = null)
+        public IBodyWorkflowAction<ExtractArchiveOutputItem[]> ExtractArchive(Expression<Func<string>> folderPath, Expression<Func<string>> filePath = null, Expression<Func<ExtractArchiveInputOverwriteType>> overwrite = null, Expression<Func<object>> body = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ExtractArchiveOutputItem[]> __BuildExtractArchive(WorkflowExpression<string> folderPath, WorkflowExpression<string> filePath = null, WorkflowExpression<ExtractArchiveInputOverwriteType> overwrite = null, WorkflowExpression<object> body = null)
-        {
-            WorkflowExpression.Validate(folderPath, nameof(folderPath), required: true);
-            WorkflowExpression.Validate(filePath, nameof(filePath), required: false);
-            WorkflowExpression.Validate(overwrite, nameof(overwrite), required: false);
-            WorkflowExpression.Validate(body, nameof(body), required: false);
+            var __workflow_folderPath = folderPath == null ? null : WorkflowExpression.Compile(folderPath);
+            WorkflowExpression.Validate(__workflow_folderPath, nameof(folderPath), required: true);
+            var __workflow_filePath = filePath == null ? null : WorkflowExpression.Compile(filePath);
+            WorkflowExpression.Validate(__workflow_filePath, nameof(filePath), required: false);
+            var __workflow_overwrite = overwrite == null ? null : WorkflowExpression.Compile(overwrite);
+            WorkflowExpression.Validate(__workflow_overwrite, nameof(overwrite), required: false);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
             return new DeferredBodyAction<ExtractArchiveOutputItem[]>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                if (filePath != null)
+                if (__workflow_filePath != null)
                 {
-                    serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(filePath);
+                    serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(__workflow_filePath);
                 }
 
-                serviceProviderParameters["folderPath"] = ExpressionConverter.ConvertO(folderPath);
-                if (overwrite != null)
+                serviceProviderParameters["folderPath"] = ExpressionConverter.ConvertO(__workflow_folderPath);
+                if (__workflow_overwrite != null)
                 {
-                    serviceProviderParameters["overwrite"] = ExpressionConverter.ConvertO(overwrite);
+                    serviceProviderParameters["overwrite"] = ExpressionConverter.ConvertO(__workflow_overwrite);
                 }
 
-                if (body != null)
+                if (__workflow_body != null)
                 {
-                    serviceProviderParameters["body"] = ExpressionConverter.ConvertO(body);
+                    serviceProviderParameters["body"] = ExpressionConverter.ConvertO(__workflow_body);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -356,31 +303,26 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
 
     public class FileSystemTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildWhenFilesAreAdded))]
-        public IBodyWorkflowTrigger<WhenFilesAreAddedOutputItem[]> WhenFilesAreAdded([WorkflowExpression] Func<string> folderPath, [WorkflowExpression] Func<int> maxFileCount = null, [WorkflowExpression] Func<string> oldFileCutOffTimestamp = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WhenFilesAreAddedOutputItem[]> WhenFilesAreAdded(Expression<Func<string>> folderPath, Expression<Func<int>> maxFileCount = null, Expression<Func<string>> oldFileCutOffTimestamp = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<WhenFilesAreAddedOutputItem[]> __BuildWhenFilesAreAdded(WorkflowExpression<string> folderPath, WorkflowExpression<int> maxFileCount = null, WorkflowExpression<string> oldFileCutOffTimestamp = null, FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(folderPath, nameof(folderPath), required: true);
-            WorkflowExpression.Validate(maxFileCount, nameof(maxFileCount), required: false);
-            WorkflowExpression.Validate(oldFileCutOffTimestamp, nameof(oldFileCutOffTimestamp), required: false);
+            var __workflow_folderPath = folderPath == null ? null : WorkflowExpression.Compile(folderPath);
+            WorkflowExpression.Validate(__workflow_folderPath, nameof(folderPath), required: true);
+            var __workflow_maxFileCount = maxFileCount == null ? null : WorkflowExpression.Compile(maxFileCount);
+            WorkflowExpression.Validate(__workflow_maxFileCount, nameof(maxFileCount), required: false);
+            var __workflow_oldFileCutOffTimestamp = oldFileCutOffTimestamp == null ? null : WorkflowExpression.Compile(oldFileCutOffTimestamp);
+            WorkflowExpression.Validate(__workflow_oldFileCutOffTimestamp, nameof(oldFileCutOffTimestamp), required: false);
             return new DeferredBodyTrigger<WhenFilesAreAddedOutputItem[]>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["folderPath"] = ExpressionConverter.ConvertO(folderPath);
-                if (maxFileCount != null)
+                serviceProviderParameters["folderPath"] = ExpressionConverter.ConvertO(__workflow_folderPath);
+                if (__workflow_maxFileCount != null)
                 {
-                    serviceProviderParameters["maxFileCount"] = ExpressionConverter.ConvertO(maxFileCount);
+                    serviceProviderParameters["maxFileCount"] = ExpressionConverter.ConvertO(__workflow_maxFileCount);
                 }
 
-                if (oldFileCutOffTimestamp != null)
+                if (__workflow_oldFileCutOffTimestamp != null)
                 {
-                    serviceProviderParameters["oldFileCutOffTimestamp"] = ExpressionConverter.ConvertO(oldFileCutOffTimestamp);
+                    serviceProviderParameters["oldFileCutOffTimestamp"] = ExpressionConverter.ConvertO(__workflow_oldFileCutOffTimestamp);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -392,30 +334,26 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildWhenFilesAreAddedOrModified))]
-        public IBodyWorkflowTrigger<WhenFilesAreAddedOrModifiedOutputItem[]> WhenFilesAreAddedOrModified([WorkflowExpression] Func<string> folderPath, [WorkflowExpression] Func<int> maxFileCount = null, [WorkflowExpression] Func<string> oldFileCutOffTimestamp = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WhenFilesAreAddedOrModifiedOutputItem[]> WhenFilesAreAddedOrModified(Expression<Func<string>> folderPath, Expression<Func<int>> maxFileCount = null, Expression<Func<string>> oldFileCutOffTimestamp = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<WhenFilesAreAddedOrModifiedOutputItem[]> __BuildWhenFilesAreAddedOrModified(WorkflowExpression<string> folderPath, WorkflowExpression<int> maxFileCount = null, WorkflowExpression<string> oldFileCutOffTimestamp = null, FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(folderPath, nameof(folderPath), required: true);
-            WorkflowExpression.Validate(maxFileCount, nameof(maxFileCount), required: false);
-            WorkflowExpression.Validate(oldFileCutOffTimestamp, nameof(oldFileCutOffTimestamp), required: false);
+            var __workflow_folderPath = folderPath == null ? null : WorkflowExpression.Compile(folderPath);
+            WorkflowExpression.Validate(__workflow_folderPath, nameof(folderPath), required: true);
+            var __workflow_maxFileCount = maxFileCount == null ? null : WorkflowExpression.Compile(maxFileCount);
+            WorkflowExpression.Validate(__workflow_maxFileCount, nameof(maxFileCount), required: false);
+            var __workflow_oldFileCutOffTimestamp = oldFileCutOffTimestamp == null ? null : WorkflowExpression.Compile(oldFileCutOffTimestamp);
+            WorkflowExpression.Validate(__workflow_oldFileCutOffTimestamp, nameof(oldFileCutOffTimestamp), required: false);
             return new DeferredBodyTrigger<WhenFilesAreAddedOrModifiedOutputItem[]>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["folderPath"] = ExpressionConverter.ConvertO(folderPath);
-                if (maxFileCount != null)
+                serviceProviderParameters["folderPath"] = ExpressionConverter.ConvertO(__workflow_folderPath);
+                if (__workflow_maxFileCount != null)
                 {
-                    serviceProviderParameters["maxFileCount"] = ExpressionConverter.ConvertO(maxFileCount);
+                    serviceProviderParameters["maxFileCount"] = ExpressionConverter.ConvertO(__workflow_maxFileCount);
                 }
 
-                if (oldFileCutOffTimestamp != null)
+                if (__workflow_oldFileCutOffTimestamp != null)
                 {
-                    serviceProviderParameters["oldFileCutOffTimestamp"] = ExpressionConverter.ConvertO(oldFileCutOffTimestamp);
+                    serviceProviderParameters["oldFileCutOffTimestamp"] = ExpressionConverter.ConvertO(__workflow_oldFileCutOffTimestamp);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput

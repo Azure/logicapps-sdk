@@ -1,73 +1,69 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airtable
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class AirtableActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airtable")]
-        [WorkflowExpressionFactory(nameof(__BuildListRecords))]
-        public IBodyWorkflowAction<ListRecordsResponse> ListRecords([WorkflowExpression] Func<string> baseID, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> filterByFormula = null, [WorkflowExpression] Func<int> maxRecords = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> view = null, [WorkflowExpression] Func<string> cellFormat = null, [WorkflowExpression] Func<string> timeZone = null, [WorkflowExpression] Func<string> userLocale = null)
+        public IBodyWorkflowAction<ListRecordsResponse> ListRecords(Expression<Func<string>> baseID, Expression<Func<string>> table, Expression<Func<string>> filterByFormula = null, Expression<Func<int>> maxRecords = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> view = null, Expression<Func<string>> cellFormat = null, Expression<Func<string>> timeZone = null, Expression<Func<string>> userLocale = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListRecordsResponse> __BuildListRecords(WorkflowExpression<string> baseID, WorkflowExpression<string> table, WorkflowExpression<string> filterByFormula = null, WorkflowExpression<int> maxRecords = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> view = null, WorkflowExpression<string> cellFormat = null, WorkflowExpression<string> timeZone = null, WorkflowExpression<string> userLocale = null)
-        {
-            WorkflowExpression.Validate(baseID, nameof(baseID), required: true);
-            WorkflowExpression.Validate(table, nameof(table), required: true);
-            WorkflowExpression.Validate(filterByFormula, nameof(filterByFormula), required: false);
-            WorkflowExpression.Validate(maxRecords, nameof(maxRecords), required: false);
-            WorkflowExpression.Validate(pageSize, nameof(pageSize), required: false);
-            WorkflowExpression.Validate(view, nameof(view), required: false);
-            WorkflowExpression.Validate(cellFormat, nameof(cellFormat), required: false);
-            WorkflowExpression.Validate(timeZone, nameof(timeZone), required: false);
-            WorkflowExpression.Validate(userLocale, nameof(userLocale), required: false);
+            var __workflow_baseID = baseID == null ? null : WorkflowExpression.Compile(baseID);
+            WorkflowExpression.Validate(__workflow_baseID, nameof(baseID), required: true);
+            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
+            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
+            var __workflow_filterByFormula = filterByFormula == null ? null : WorkflowExpression.Compile(filterByFormula);
+            WorkflowExpression.Validate(__workflow_filterByFormula, nameof(filterByFormula), required: false);
+            var __workflow_maxRecords = maxRecords == null ? null : WorkflowExpression.Compile(maxRecords);
+            WorkflowExpression.Validate(__workflow_maxRecords, nameof(maxRecords), required: false);
+            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
+            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_view = view == null ? null : WorkflowExpression.Compile(view);
+            WorkflowExpression.Validate(__workflow_view, nameof(view), required: false);
+            var __workflow_cellFormat = cellFormat == null ? null : WorkflowExpression.Compile(cellFormat);
+            WorkflowExpression.Validate(__workflow_cellFormat, nameof(cellFormat), required: false);
+            var __workflow_timeZone = timeZone == null ? null : WorkflowExpression.Compile(timeZone);
+            WorkflowExpression.Validate(__workflow_timeZone, nameof(timeZone), required: false);
+            var __workflow_userLocale = userLocale == null ? null : WorkflowExpression.Compile(userLocale);
+            WorkflowExpression.Validate(__workflow_userLocale, nameof(userLocale), required: false);
             return new DeferredBodyAction<ListRecordsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(baseID, 1), ExpressionConverter.ConvertWithUrlEncoding(table, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_baseID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (filterByFormula != null)
-                    callPayload.Queries["filterByFormula"] = ExpressionConverter.Convert(filterByFormula);
-                if (maxRecords != null)
-                    callPayload.Queries["maxRecords"] = ExpressionConverter.Convert(maxRecords);
-                if (pageSize != null)
-                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-                if (view != null)
-                    callPayload.Queries["view"] = ExpressionConverter.Convert(view);
-                if (cellFormat != null)
-                    callPayload.Queries["cellFormat"] = ExpressionConverter.Convert(cellFormat);
-                if (timeZone != null)
-                    callPayload.Queries["timeZone"] = ExpressionConverter.Convert(timeZone);
-                if (userLocale != null)
-                    callPayload.Queries["userLocale"] = ExpressionConverter.Convert(userLocale);
+                if (__workflow_filterByFormula != null)
+                    callPayload.Queries["filterByFormula"] = ExpressionConverter.Convert(__workflow_filterByFormula);
+                if (__workflow_maxRecords != null)
+                    callPayload.Queries["maxRecords"] = ExpressionConverter.Convert(__workflow_maxRecords);
+                if (__workflow_pageSize != null)
+                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
+                if (__workflow_view != null)
+                    callPayload.Queries["view"] = ExpressionConverter.Convert(__workflow_view);
+                if (__workflow_cellFormat != null)
+                    callPayload.Queries["cellFormat"] = ExpressionConverter.Convert(__workflow_cellFormat);
+                if (__workflow_timeZone != null)
+                    callPayload.Queries["timeZone"] = ExpressionConverter.Convert(__workflow_timeZone);
+                if (__workflow_userLocale != null)
+                    callPayload.Queries["userLocale"] = ExpressionConverter.Convert(__workflow_userLocale);
                 return new ApiConnectionAction<ListRecordsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airtable")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateaRecord))]
-        public IBodyWorkflowAction<CreateaRecordResponse> CreateaRecord([WorkflowExpression] Func<string> baseID, [WorkflowExpression] Func<string> table)
+        public IBodyWorkflowAction<CreateaRecordResponse> CreateaRecord(Expression<Func<string>> baseID, Expression<Func<string>> table)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateaRecordResponse> __BuildCreateaRecord(WorkflowExpression<string> baseID, WorkflowExpression<string> table)
-        {
-            WorkflowExpression.Validate(baseID, nameof(baseID), required: true);
-            WorkflowExpression.Validate(table, nameof(table), required: true);
+            var __workflow_baseID = baseID == null ? null : WorkflowExpression.Compile(baseID);
+            WorkflowExpression.Validate(__workflow_baseID, nameof(baseID), required: true);
+            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
+            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
             return new DeferredBodyAction<CreateaRecordResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(baseID, 1), ExpressionConverter.ConvertWithUrlEncoding(table, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_baseID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -83,21 +79,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airtable
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airtable")]
-        [WorkflowExpressionFactory(nameof(__BuildRetrieveaRecord))]
-        public IBodyWorkflowAction<RetrieveaRecordResponse> RetrieveaRecord([WorkflowExpression] Func<string> baseID, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> recordID)
+        public IBodyWorkflowAction<RetrieveaRecordResponse> RetrieveaRecord(Expression<Func<string>> baseID, Expression<Func<string>> table, Expression<Func<string>> recordID)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<RetrieveaRecordResponse> __BuildRetrieveaRecord(WorkflowExpression<string> baseID, WorkflowExpression<string> table, WorkflowExpression<string> recordID)
-        {
-            WorkflowExpression.Validate(baseID, nameof(baseID), required: true);
-            WorkflowExpression.Validate(table, nameof(table), required: true);
-            WorkflowExpression.Validate(recordID, nameof(recordID), required: true);
+            var __workflow_baseID = baseID == null ? null : WorkflowExpression.Compile(baseID);
+            WorkflowExpression.Validate(__workflow_baseID, nameof(baseID), required: true);
+            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
+            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
+            var __workflow_recordID = recordID == null ? null : WorkflowExpression.Compile(recordID);
+            WorkflowExpression.Validate(__workflow_recordID, nameof(recordID), required: true);
             return new DeferredBodyAction<RetrieveaRecordResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(baseID, 1), ExpressionConverter.ConvertWithUrlEncoding(table, 1), ExpressionConverter.ConvertWithUrlEncoding(recordID, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_baseID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_recordID, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<RetrieveaRecordResponse>(callPayload);
@@ -105,21 +97,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airtable
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airtable")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteaRecord))]
-        public IBodyWorkflowAction<DeleteaRecordResponse> DeleteaRecord([WorkflowExpression] Func<string> baseID, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> recordID)
+        public IBodyWorkflowAction<DeleteaRecordResponse> DeleteaRecord(Expression<Func<string>> baseID, Expression<Func<string>> table, Expression<Func<string>> recordID)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DeleteaRecordResponse> __BuildDeleteaRecord(WorkflowExpression<string> baseID, WorkflowExpression<string> table, WorkflowExpression<string> recordID)
-        {
-            WorkflowExpression.Validate(baseID, nameof(baseID), required: true);
-            WorkflowExpression.Validate(table, nameof(table), required: true);
-            WorkflowExpression.Validate(recordID, nameof(recordID), required: true);
+            var __workflow_baseID = baseID == null ? null : WorkflowExpression.Compile(baseID);
+            WorkflowExpression.Validate(__workflow_baseID, nameof(baseID), required: true);
+            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
+            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
+            var __workflow_recordID = recordID == null ? null : WorkflowExpression.Compile(recordID);
+            WorkflowExpression.Validate(__workflow_recordID, nameof(recordID), required: true);
             return new DeferredBodyAction<DeleteaRecordResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(baseID, 1), ExpressionConverter.ConvertWithUrlEncoding(table, 1), ExpressionConverter.ConvertWithUrlEncoding(recordID, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_baseID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_recordID, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DeleteaRecordResponse>(callPayload);
@@ -127,26 +115,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airtable
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airtable")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateaRecord))]
-        public IBodyWorkflowAction<UpdateaRecordResponse> UpdateaRecord([WorkflowExpression] Func<string> baseID, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> recordID, [WorkflowExpression] Func<string> contentType = null)
+        public IBodyWorkflowAction<UpdateaRecordResponse> UpdateaRecord(Expression<Func<string>> baseID, Expression<Func<string>> table, Expression<Func<string>> recordID, Expression<Func<string>> contentType = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UpdateaRecordResponse> __BuildUpdateaRecord(WorkflowExpression<string> baseID, WorkflowExpression<string> table, WorkflowExpression<string> recordID, WorkflowExpression<string> contentType = null)
-        {
-            WorkflowExpression.Validate(baseID, nameof(baseID), required: true);
-            WorkflowExpression.Validate(table, nameof(table), required: true);
-            WorkflowExpression.Validate(recordID, nameof(recordID), required: true);
-            WorkflowExpression.Validate(contentType, nameof(contentType), required: false);
+            var __workflow_baseID = baseID == null ? null : WorkflowExpression.Compile(baseID);
+            WorkflowExpression.Validate(__workflow_baseID, nameof(baseID), required: true);
+            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
+            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
+            var __workflow_recordID = recordID == null ? null : WorkflowExpression.Compile(recordID);
+            WorkflowExpression.Validate(__workflow_recordID, nameof(recordID), required: true);
+            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
+            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
             return new DeferredBodyAction<UpdateaRecordResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(baseID, 1), ExpressionConverter.ConvertWithUrlEncoding(table, 1), ExpressionConverter.ConvertWithUrlEncoding(recordID, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_baseID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_recordID, 1));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (contentType != null)
-                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                if (__workflow_contentType != null)
+                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 var body = new JObject();
                 var bodypropCount = 0;
                 if (bodypropCount > 0)

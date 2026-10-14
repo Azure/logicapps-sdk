@@ -1,72 +1,56 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waaila
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class WaailaActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "waaila")]
-        [WorkflowExpressionFactory(nameof(__BuildGetDepots))]
-        public IBodyWorkflowAction<GetDepotsResponseItem[]> GetDepots([WorkflowExpression] Func<string> wauth)
+        public IBodyWorkflowAction<GetDepotsResponseItem[]> GetDepots(Expression<Func<string>> wauth)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetDepotsResponseItem[]> __BuildGetDepots(WorkflowExpression<string> wauth)
-        {
-            WorkflowExpression.Validate(wauth, nameof(wauth), required: true);
+            var __workflow_wauth = wauth == null ? null : WorkflowExpression.Compile(wauth);
+            WorkflowExpression.Validate(__workflow_wauth, nameof(wauth), required: true);
             return new DeferredBodyAction<GetDepotsResponseItem[]>(() =>
             {
                 var apiCallPath = "/v1/depots";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["Wauth"] = ExpressionConverter.Convert(wauth);
+                callPayload.Headers["Wauth"] = ExpressionConverter.Convert(__workflow_wauth);
                 return new ApiConnectionAction<GetDepotsResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "waaila")]
-        [WorkflowExpressionFactory(nameof(__BuildGetTestsuite))]
-        public IBodyWorkflowAction<GetTestsuiteResponse> GetTestsuite([WorkflowExpression] Func<string> depot, [WorkflowExpression] Func<string> testsuite, [WorkflowExpression] Func<string> wauth)
+        public IBodyWorkflowAction<GetTestsuiteResponse> GetTestsuite(Expression<Func<string>> depot, Expression<Func<string>> testsuite, Expression<Func<string>> wauth)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetTestsuiteResponse> __BuildGetTestsuite(WorkflowExpression<string> depot, WorkflowExpression<string> testsuite, WorkflowExpression<string> wauth)
-        {
-            WorkflowExpression.Validate(depot, nameof(depot), required: true);
-            WorkflowExpression.Validate(testsuite, nameof(testsuite), required: true);
-            WorkflowExpression.Validate(wauth, nameof(wauth), required: true);
+            var __workflow_depot = depot == null ? null : WorkflowExpression.Compile(depot);
+            WorkflowExpression.Validate(__workflow_depot, nameof(depot), required: true);
+            var __workflow_testsuite = testsuite == null ? null : WorkflowExpression.Compile(testsuite);
+            WorkflowExpression.Validate(__workflow_testsuite, nameof(testsuite), required: true);
+            var __workflow_wauth = wauth == null ? null : WorkflowExpression.Compile(wauth);
+            WorkflowExpression.Validate(__workflow_wauth, nameof(wauth), required: true);
             return new DeferredBodyAction<GetTestsuiteResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/depot/{0}/testsuite/{1}", ExpressionConverter.ConvertWithUrlEncoding(depot, 1), ExpressionConverter.ConvertWithUrlEncoding(testsuite, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/depot/{0}/testsuite/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_depot, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_testsuite, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["Wauth"] = ExpressionConverter.Convert(wauth);
+                callPayload.Headers["Wauth"] = ExpressionConverter.Convert(__workflow_wauth);
                 return new ApiConnectionAction<GetTestsuiteResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "waaila")]
-        [WorkflowExpressionFactory(nameof(__BuildGetToken))]
-        public IBodyWorkflowAction<GetTokenResponse> GetToken([WorkflowExpression] Func<string> bodycode, [WorkflowExpression] Func<string> bodyemail)
+        public IBodyWorkflowAction<GetTokenResponse> GetToken(Expression<Func<string>> bodycode, Expression<Func<string>> bodyemail)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetTokenResponse> __BuildGetToken(WorkflowExpression<string> bodycode, WorkflowExpression<string> bodyemail)
-        {
-            WorkflowExpression.Validate(bodycode, nameof(bodycode), required: true);
-            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: true);
+            var __workflow_bodycode = bodycode == null ? null : WorkflowExpression.Compile(bodycode);
+            WorkflowExpression.Validate(__workflow_bodycode, nameof(bodycode), required: true);
+            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
+            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
             return new DeferredBodyAction<GetTokenResponse>(() =>
             {
                 var apiCallPath = "/v1/auth/exchange-api-code";
@@ -75,9 +59,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waaila
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["code"] = ExpressionConverter.ConvertO(bodycode);
+                body["code"] = ExpressionConverter.ConvertO(__workflow_bodycode);
                 bodypropCount++;
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

@@ -1,33 +1,26 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ip2locationip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class Ip2locationipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ip2locationip")]
-        [WorkflowExpressionFactory(nameof(__BuildLookupIp))]
-        public IBodyWorkflowAction<LookupIpResponse> LookupIp([WorkflowExpression] Func<string> ip)
+        public IBodyWorkflowAction<LookupIpResponse> LookupIp(Expression<Func<string>> ip)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<LookupIpResponse> __BuildLookupIp(WorkflowExpression<string> ip)
-        {
-            WorkflowExpression.Validate(ip, nameof(ip), required: true);
+            var __workflow_ip = ip == null ? null : WorkflowExpression.Compile(ip);
+            WorkflowExpression.Validate(__workflow_ip, nameof(ip), required: true);
             return new DeferredBodyAction<LookupIpResponse>(() =>
             {
                 var apiCallPath = "/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["ip"] = ExpressionConverter.Convert(ip);
+                callPayload.Queries["ip"] = ExpressionConverter.Convert(__workflow_ip);
                 return new ApiConnectionAction<LookupIpResponse>(callPayload);
             });
         }

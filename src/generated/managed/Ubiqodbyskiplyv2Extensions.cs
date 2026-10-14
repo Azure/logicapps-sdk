@@ -1,12 +1,12 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ubiqodbyskiplyv2
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class Ubiqodbyskiplyv2Actions([ConnectionName] string connectionId)
     {
@@ -14,18 +14,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ubiqodbyskiplyv2
 
     public class Ubiqodbyskiplyv2Triggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildReceiveDataFromTrackers))]
-        public IBodyWorkflowTrigger<ReceiveDataFromTrackersResponseItem[]> ReceiveDataFromTrackers([WorkflowExpression] Func<string> bodyhookName = null,[WorkflowExpression] Func<string> bodydispatchId = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ReceiveDataFromTrackersResponseItem[]> ReceiveDataFromTrackers(Expression<Func<string>> bodyhookName = null, Expression<Func<string>> bodydispatchId = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ReceiveDataFromTrackersResponseItem[]> __BuildReceiveDataFromTrackers(WorkflowExpression<string> bodyhookName = null,WorkflowExpression<string> bodydispatchId = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodyhookName, nameof(bodyhookName), required: false);
-            WorkflowExpression.Validate(bodydispatchId, nameof(bodydispatchId), required: false);
+            var __workflow_bodyhookName = bodyhookName == null ? null : WorkflowExpression.Compile(bodyhookName);
+            WorkflowExpression.Validate(__workflow_bodyhookName, nameof(bodyhookName), required: false);
+            var __workflow_bodydispatchId = bodydispatchId == null ? null : WorkflowExpression.Compile(bodydispatchId);
+            WorkflowExpression.Validate(__workflow_bodydispatchId, nameof(bodydispatchId), required: false);
             return new DeferredBodyTrigger<ReceiveDataFromTrackersResponseItem[]>(() =>
             {
                 var apiCallPath = "/hooks/zapier/subscribe";
@@ -37,15 +31,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ubiqodbyskiplyv2
                 bodypropCount++;
                 body["dispatchType"] = "POWERAUTOMATE";
                 bodypropCount++;
-                if (bodyhookName != null)
+                if (__workflow_bodyhookName != null)
                 {
-                    body["hookName"] = ExpressionConverter.ConvertO(bodyhookName);
+                    body["hookName"] = ExpressionConverter.ConvertO(__workflow_bodyhookName);
                     bodypropCount++;
                 }
 
-                if (bodydispatchId != null)
+                if (__workflow_bodydispatchId != null)
                 {
-                    body["dispatchId"] = ExpressionConverter.ConvertO(bodydispatchId);
+                    body["dispatchId"] = ExpressionConverter.ConvertO(__workflow_bodydispatchId);
                     bodypropCount++;
                 }
 

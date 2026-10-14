@@ -1,12 +1,12 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vatcheckapiip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class VatcheckapiipActions([ConnectionName] string connectionId)
     {
@@ -20,26 +20,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vatcheckapiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vatcheckapiip")]
-        [WorkflowExpressionFactory(nameof(__BuildValidate))]
-        public IBodyWorkflowAction<ValidateResponse> Validate([WorkflowExpression] Func<int> vatNumber = null, [WorkflowExpression] Func<string> countryCode = null)
+        public IBodyWorkflowAction<ValidateResponse> Validate(Expression<Func<int>> vatNumber = null, Expression<Func<string>> countryCode = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ValidateResponse> __BuildValidate(WorkflowExpression<int> vatNumber = null, WorkflowExpression<string> countryCode = null)
-        {
-            WorkflowExpression.Validate(vatNumber, nameof(vatNumber), required: false);
-            WorkflowExpression.Validate(countryCode, nameof(countryCode), required: false);
+            var __workflow_vatNumber = vatNumber == null ? null : WorkflowExpression.Compile(vatNumber);
+            WorkflowExpression.Validate(__workflow_vatNumber, nameof(vatNumber), required: false);
+            var __workflow_countryCode = countryCode == null ? null : WorkflowExpression.Compile(countryCode);
+            WorkflowExpression.Validate(__workflow_countryCode, nameof(countryCode), required: false);
             return new DeferredBodyAction<ValidateResponse>(() =>
             {
                 var apiCallPath = "/v2/check";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (vatNumber != null)
-                    callPayload.Queries["vat_number"] = ExpressionConverter.Convert(vatNumber);
-                if (countryCode != null)
-                    callPayload.Queries["country_code"] = ExpressionConverter.Convert(countryCode);
+                if (__workflow_vatNumber != null)
+                    callPayload.Queries["vat_number"] = ExpressionConverter.Convert(__workflow_vatNumber);
+                if (__workflow_countryCode != null)
+                    callPayload.Queries["country_code"] = ExpressionConverter.Convert(__workflow_countryCode);
                 return new ApiConnectionAction<ValidateResponse>(callPayload);
             });
         }

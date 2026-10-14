@@ -1,7 +1,6 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
 {
     using System;
@@ -9,73 +8,74 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class SapActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
-        [WorkflowExpressionFactory(nameof(__BuildCallRfc))]
-        public IBodyWorkflowAction<JToken> CallRfc([WorkflowExpression] Func<CallRfcInputInputBodyTypeType> inputBodyType = null, [WorkflowExpression] Func<string> rfcName = null, [WorkflowExpression] Func<string> sessionId = null, [WorkflowExpression] Func<string> tId = null, [WorkflowExpression] Func<string> queueName = null, [WorkflowExpression] Func<bool> autoCommit = null, [WorkflowExpression] Func<bool> safeType = null, [WorkflowExpression] Func<CallRfcInputOutputBodyTypeType> outputBodyType = null)
+        public IBodyWorkflowAction<JToken> CallRfc(Expression<Func<CallRfcInputInputBodyTypeType>> inputBodyType = null, Expression<Func<string>> rfcName = null, Expression<Func<string>> sessionId = null, Expression<Func<string>> tId = null, Expression<Func<string>> queueName = null, Expression<Func<bool>> autoCommit = null, Expression<Func<bool>> safeType = null, Expression<Func<CallRfcInputOutputBodyTypeType>> outputBodyType = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildCallRfc(WorkflowExpression<CallRfcInputInputBodyTypeType> inputBodyType = null, WorkflowExpression<string> rfcName = null, WorkflowExpression<string> sessionId = null, WorkflowExpression<string> tId = null, WorkflowExpression<string> queueName = null, WorkflowExpression<bool> autoCommit = null, WorkflowExpression<bool> safeType = null, WorkflowExpression<CallRfcInputOutputBodyTypeType> outputBodyType = null)
-        {
-            WorkflowExpression.Validate(inputBodyType, nameof(inputBodyType), required: false);
-            WorkflowExpression.Validate(rfcName, nameof(rfcName), required: false);
-            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: false);
-            WorkflowExpression.Validate(tId, nameof(tId), required: false);
-            WorkflowExpression.Validate(queueName, nameof(queueName), required: false);
-            WorkflowExpression.Validate(autoCommit, nameof(autoCommit), required: false);
-            WorkflowExpression.Validate(safeType, nameof(safeType), required: false);
-            WorkflowExpression.Validate(outputBodyType, nameof(outputBodyType), required: false);
+            var __workflow_inputBodyType = inputBodyType == null ? null : WorkflowExpression.Compile(inputBodyType);
+            WorkflowExpression.Validate(__workflow_inputBodyType, nameof(inputBodyType), required: false);
+            var __workflow_rfcName = rfcName == null ? null : WorkflowExpression.Compile(rfcName);
+            WorkflowExpression.Validate(__workflow_rfcName, nameof(rfcName), required: false);
+            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
+            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: false);
+            var __workflow_tId = tId == null ? null : WorkflowExpression.Compile(tId);
+            WorkflowExpression.Validate(__workflow_tId, nameof(tId), required: false);
+            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
+            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: false);
+            var __workflow_autoCommit = autoCommit == null ? null : WorkflowExpression.Compile(autoCommit);
+            WorkflowExpression.Validate(__workflow_autoCommit, nameof(autoCommit), required: false);
+            var __workflow_safeType = safeType == null ? null : WorkflowExpression.Compile(safeType);
+            WorkflowExpression.Validate(__workflow_safeType, nameof(safeType), required: false);
+            var __workflow_outputBodyType = outputBodyType == null ? null : WorkflowExpression.Compile(outputBodyType);
+            WorkflowExpression.Validate(__workflow_outputBodyType, nameof(outputBodyType), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                if (inputBodyType != null)
+                if (__workflow_inputBodyType != null)
                 {
-                    serviceProviderParameters["inputBodyType"] = ExpressionConverter.ConvertO(inputBodyType);
+                    serviceProviderParameters["inputBodyType"] = ExpressionConverter.ConvertO(__workflow_inputBodyType);
                 }
                 else
                 {
                     serviceProviderParameters["inputBodyType"] = "XML";
                 }
 
-                if (rfcName != null)
+                if (__workflow_rfcName != null)
                 {
-                    serviceProviderParameters["rfcName"] = ExpressionConverter.ConvertO(rfcName);
+                    serviceProviderParameters["rfcName"] = ExpressionConverter.ConvertO(__workflow_rfcName);
                 }
 
-                if (sessionId != null)
+                if (__workflow_sessionId != null)
                 {
-                    serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+                    serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(__workflow_sessionId);
                 }
 
-                if (tId != null)
+                if (__workflow_tId != null)
                 {
-                    serviceProviderParameters["tId"] = ExpressionConverter.ConvertO(tId);
+                    serviceProviderParameters["tId"] = ExpressionConverter.ConvertO(__workflow_tId);
                 }
 
-                if (queueName != null)
+                if (__workflow_queueName != null)
                 {
-                    serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+                    serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
                 }
 
-                if (autoCommit != null)
+                if (__workflow_autoCommit != null)
                 {
-                    serviceProviderParameters["autoCommit"] = ExpressionConverter.ConvertO(autoCommit);
+                    serviceProviderParameters["autoCommit"] = ExpressionConverter.ConvertO(__workflow_autoCommit);
                 }
 
-                if (safeType != null)
+                if (__workflow_safeType != null)
                 {
-                    serviceProviderParameters["safeType"] = ExpressionConverter.ConvertO(safeType);
+                    serviceProviderParameters["safeType"] = ExpressionConverter.ConvertO(__workflow_safeType);
                 }
 
-                if (outputBodyType != null)
+                if (__workflow_outputBodyType != null)
                 {
-                    serviceProviderParameters["outputBodyType"] = ExpressionConverter.ConvertO(outputBodyType);
+                    serviceProviderParameters["outputBodyType"] = ExpressionConverter.ConvertO(__workflow_outputBodyType);
                 }
                 else
                 {
@@ -92,24 +92,19 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateRfcTransaction))]
-        public IBodyWorkflowAction<CreateRfcTransactionOutput> CreateRfcTransaction([WorkflowExpression] Func<string> tId, [WorkflowExpression] Func<string> queueName = null)
+        public IBodyWorkflowAction<CreateRfcTransactionOutput> CreateRfcTransaction(Expression<Func<string>> tId, Expression<Func<string>> queueName = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateRfcTransactionOutput> __BuildCreateRfcTransaction(WorkflowExpression<string> tId, WorkflowExpression<string> queueName = null)
-        {
-            WorkflowExpression.Validate(tId, nameof(tId), required: true);
-            WorkflowExpression.Validate(queueName, nameof(queueName), required: false);
+            var __workflow_tId = tId == null ? null : WorkflowExpression.Compile(tId);
+            WorkflowExpression.Validate(__workflow_tId, nameof(tId), required: true);
+            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
+            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: false);
             return new DeferredBodyAction<CreateRfcTransactionOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["tId"] = ExpressionConverter.ConvertO(tId);
-                if (queueName != null)
+                serviceProviderParameters["tId"] = ExpressionConverter.ConvertO(__workflow_tId);
+                if (__workflow_queueName != null)
                 {
-                    serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+                    serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -122,24 +117,19 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
-        [WorkflowExpressionFactory(nameof(__BuildGetRfcTransaction))]
-        public IBodyWorkflowAction<GetRfcTransactionOutput> GetRfcTransaction([WorkflowExpression] Func<string> tId, [WorkflowExpression] Func<string> queueName = null)
+        public IBodyWorkflowAction<GetRfcTransactionOutput> GetRfcTransaction(Expression<Func<string>> tId, Expression<Func<string>> queueName = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetRfcTransactionOutput> __BuildGetRfcTransaction(WorkflowExpression<string> tId, WorkflowExpression<string> queueName = null)
-        {
-            WorkflowExpression.Validate(tId, nameof(tId), required: true);
-            WorkflowExpression.Validate(queueName, nameof(queueName), required: false);
+            var __workflow_tId = tId == null ? null : WorkflowExpression.Compile(tId);
+            WorkflowExpression.Validate(__workflow_tId, nameof(tId), required: true);
+            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
+            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: false);
             return new DeferredBodyAction<GetRfcTransactionOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["tId"] = ExpressionConverter.ConvertO(tId);
-                if (queueName != null)
+                serviceProviderParameters["tId"] = ExpressionConverter.ConvertO(__workflow_tId);
+                if (__workflow_queueName != null)
                 {
-                    serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+                    serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -152,32 +142,29 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
-        [WorkflowExpressionFactory(nameof(__BuildAddRfcToTransaction))]
-        public IBodyWorkflowAction<AddRfcToTransactionOutput> AddRfcToTransaction([WorkflowExpression] Func<object> body, [WorkflowExpression] Func<string> tId, [WorkflowExpression] Func<string> queueName = null, [WorkflowExpression] Func<bool> autoCommit = null)
+        public IBodyWorkflowAction<AddRfcToTransactionOutput> AddRfcToTransaction(Expression<Func<object>> body, Expression<Func<string>> tId, Expression<Func<string>> queueName = null, Expression<Func<bool>> autoCommit = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AddRfcToTransactionOutput> __BuildAddRfcToTransaction(WorkflowExpression<object> body, WorkflowExpression<string> tId, WorkflowExpression<string> queueName = null, WorkflowExpression<bool> autoCommit = null)
-        {
-            WorkflowExpression.Validate(body, nameof(body), required: true);
-            WorkflowExpression.Validate(tId, nameof(tId), required: true);
-            WorkflowExpression.Validate(queueName, nameof(queueName), required: false);
-            WorkflowExpression.Validate(autoCommit, nameof(autoCommit), required: false);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: true);
+            var __workflow_tId = tId == null ? null : WorkflowExpression.Compile(tId);
+            WorkflowExpression.Validate(__workflow_tId, nameof(tId), required: true);
+            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
+            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: false);
+            var __workflow_autoCommit = autoCommit == null ? null : WorkflowExpression.Compile(autoCommit);
+            WorkflowExpression.Validate(__workflow_autoCommit, nameof(autoCommit), required: false);
             return new DeferredBodyAction<AddRfcToTransactionOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["body"] = ExpressionConverter.ConvertO(body);
-                serviceProviderParameters["tId"] = ExpressionConverter.ConvertO(tId);
-                if (queueName != null)
+                serviceProviderParameters["body"] = ExpressionConverter.ConvertO(__workflow_body);
+                serviceProviderParameters["tId"] = ExpressionConverter.ConvertO(__workflow_tId);
+                if (__workflow_queueName != null)
                 {
-                    serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+                    serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
                 }
 
-                if (autoCommit != null)
+                if (__workflow_autoCommit != null)
                 {
-                    serviceProviderParameters["autoCommit"] = ExpressionConverter.ConvertO(autoCommit);
+                    serviceProviderParameters["autoCommit"] = ExpressionConverter.ConvertO(__workflow_autoCommit);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -190,24 +177,19 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
-        [WorkflowExpressionFactory(nameof(__BuildCommitRfcTransaction))]
-        public IBodyWorkflowAction<CommitRfcTransactionOutput> CommitRfcTransaction([WorkflowExpression] Func<string> tId, [WorkflowExpression] Func<string> queueName = null)
+        public IBodyWorkflowAction<CommitRfcTransactionOutput> CommitRfcTransaction(Expression<Func<string>> tId, Expression<Func<string>> queueName = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CommitRfcTransactionOutput> __BuildCommitRfcTransaction(WorkflowExpression<string> tId, WorkflowExpression<string> queueName = null)
-        {
-            WorkflowExpression.Validate(tId, nameof(tId), required: true);
-            WorkflowExpression.Validate(queueName, nameof(queueName), required: false);
+            var __workflow_tId = tId == null ? null : WorkflowExpression.Compile(tId);
+            WorkflowExpression.Validate(__workflow_tId, nameof(tId), required: true);
+            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
+            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: false);
             return new DeferredBodyAction<CommitRfcTransactionOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["tId"] = ExpressionConverter.ConvertO(tId);
-                if (queueName != null)
+                serviceProviderParameters["tId"] = ExpressionConverter.ConvertO(__workflow_tId);
+                if (__workflow_queueName != null)
                 {
-                    serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+                    serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -220,20 +202,14 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
-        [WorkflowExpressionFactory(nameof(__BuildConfirmTransactionId))]
-        public IWorkflowAction ConfirmTransactionId([WorkflowExpression] Func<string> tId)
+        public IWorkflowAction ConfirmTransactionId(Expression<Func<string>> tId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildConfirmTransactionId(WorkflowExpression<string> tId)
-        {
-            WorkflowExpression.Validate(tId, nameof(tId), required: true);
+            var __workflow_tId = tId == null ? null : WorkflowExpression.Compile(tId);
+            WorkflowExpression.Validate(__workflow_tId, nameof(tId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["tId"] = ExpressionConverter.ConvertO(tId);
+                serviceProviderParameters["tId"] = ExpressionConverter.ConvertO(__workflow_tId);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "confirmTransactionId", connectionName: connectionId),
@@ -244,32 +220,29 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
-        [WorkflowExpressionFactory(nameof(__BuildSendIDoc))]
-        public IBodyWorkflowAction<SendIDocOutput> SendIDoc([WorkflowExpression] Func<SendIDocInputIdocFormatType> idocFormat, [WorkflowExpression] Func<bool> confirmTid, [WorkflowExpression] Func<string> tId = null, [WorkflowExpression] Func<bool> allowUnreleasedSegmentV2 = null)
+        public IBodyWorkflowAction<SendIDocOutput> SendIDoc(Expression<Func<SendIDocInputIdocFormatType>> idocFormat, Expression<Func<bool>> confirmTid, Expression<Func<string>> tId = null, Expression<Func<bool>> allowUnreleasedSegmentV2 = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SendIDocOutput> __BuildSendIDoc(WorkflowExpression<SendIDocInputIdocFormatType> idocFormat, WorkflowExpression<bool> confirmTid, WorkflowExpression<string> tId = null, WorkflowExpression<bool> allowUnreleasedSegmentV2 = null)
-        {
-            WorkflowExpression.Validate(idocFormat, nameof(idocFormat), required: true);
-            WorkflowExpression.Validate(confirmTid, nameof(confirmTid), required: true);
-            WorkflowExpression.Validate(tId, nameof(tId), required: false);
-            WorkflowExpression.Validate(allowUnreleasedSegmentV2, nameof(allowUnreleasedSegmentV2), required: false);
+            var __workflow_idocFormat = idocFormat == null ? null : WorkflowExpression.Compile(idocFormat);
+            WorkflowExpression.Validate(__workflow_idocFormat, nameof(idocFormat), required: true);
+            var __workflow_confirmTid = confirmTid == null ? null : WorkflowExpression.Compile(confirmTid);
+            WorkflowExpression.Validate(__workflow_confirmTid, nameof(confirmTid), required: true);
+            var __workflow_tId = tId == null ? null : WorkflowExpression.Compile(tId);
+            WorkflowExpression.Validate(__workflow_tId, nameof(tId), required: false);
+            var __workflow_allowUnreleasedSegmentV2 = allowUnreleasedSegmentV2 == null ? null : WorkflowExpression.Compile(allowUnreleasedSegmentV2);
+            WorkflowExpression.Validate(__workflow_allowUnreleasedSegmentV2, nameof(allowUnreleasedSegmentV2), required: false);
             return new DeferredBodyAction<SendIDocOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["idocFormat"] = ExpressionConverter.ConvertO(idocFormat);
-                if (tId != null)
+                serviceProviderParameters["idocFormat"] = ExpressionConverter.ConvertO(__workflow_idocFormat);
+                if (__workflow_tId != null)
                 {
-                    serviceProviderParameters["tId"] = ExpressionConverter.ConvertO(tId);
+                    serviceProviderParameters["tId"] = ExpressionConverter.ConvertO(__workflow_tId);
                 }
 
-                serviceProviderParameters["confirmTid"] = ExpressionConverter.ConvertO(confirmTid);
-                if (allowUnreleasedSegmentV2 != null)
+                serviceProviderParameters["confirmTid"] = ExpressionConverter.ConvertO(__workflow_confirmTid);
+                if (__workflow_allowUnreleasedSegmentV2 != null)
                 {
-                    serviceProviderParameters["allowUnreleasedSegmentV2"] = ExpressionConverter.ConvertO(allowUnreleasedSegmentV2);
+                    serviceProviderParameters["allowUnreleasedSegmentV2"] = ExpressionConverter.ConvertO(__workflow_allowUnreleasedSegmentV2);
                 }
                 else
                 {
@@ -286,36 +259,35 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
-        [WorkflowExpressionFactory(nameof(__BuildBapiCallMethod))]
-        public IBodyWorkflowAction<BapiCallMethodOutput> BapiCallMethod([WorkflowExpression] Func<string> businessObject, [WorkflowExpression] Func<string> method, [WorkflowExpression] Func<bool> autoCommit, [WorkflowExpression] Func<object> body, [WorkflowExpression] Func<string> sessionId = null, [WorkflowExpression] Func<bool> safeType = null)
+        public IBodyWorkflowAction<BapiCallMethodOutput> BapiCallMethod(Expression<Func<string>> businessObject, Expression<Func<string>> method, Expression<Func<bool>> autoCommit, Expression<Func<object>> body, Expression<Func<string>> sessionId = null, Expression<Func<bool>> safeType = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<BapiCallMethodOutput> __BuildBapiCallMethod(WorkflowExpression<string> businessObject, WorkflowExpression<string> method, WorkflowExpression<bool> autoCommit, WorkflowExpression<object> body, WorkflowExpression<string> sessionId = null, WorkflowExpression<bool> safeType = null)
-        {
-            WorkflowExpression.Validate(businessObject, nameof(businessObject), required: true);
-            WorkflowExpression.Validate(method, nameof(method), required: true);
-            WorkflowExpression.Validate(autoCommit, nameof(autoCommit), required: true);
-            WorkflowExpression.Validate(body, nameof(body), required: true);
-            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: false);
-            WorkflowExpression.Validate(safeType, nameof(safeType), required: false);
+            var __workflow_businessObject = businessObject == null ? null : WorkflowExpression.Compile(businessObject);
+            WorkflowExpression.Validate(__workflow_businessObject, nameof(businessObject), required: true);
+            var __workflow_method = method == null ? null : WorkflowExpression.Compile(method);
+            WorkflowExpression.Validate(__workflow_method, nameof(method), required: true);
+            var __workflow_autoCommit = autoCommit == null ? null : WorkflowExpression.Compile(autoCommit);
+            WorkflowExpression.Validate(__workflow_autoCommit, nameof(autoCommit), required: true);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: true);
+            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
+            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: false);
+            var __workflow_safeType = safeType == null ? null : WorkflowExpression.Compile(safeType);
+            WorkflowExpression.Validate(__workflow_safeType, nameof(safeType), required: false);
             return new DeferredBodyAction<BapiCallMethodOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["businessObject"] = ExpressionConverter.ConvertO(businessObject);
-                serviceProviderParameters["method"] = ExpressionConverter.ConvertO(method);
-                serviceProviderParameters["autoCommit"] = ExpressionConverter.ConvertO(autoCommit);
-                if (sessionId != null)
+                serviceProviderParameters["businessObject"] = ExpressionConverter.ConvertO(__workflow_businessObject);
+                serviceProviderParameters["method"] = ExpressionConverter.ConvertO(__workflow_method);
+                serviceProviderParameters["autoCommit"] = ExpressionConverter.ConvertO(__workflow_autoCommit);
+                if (__workflow_sessionId != null)
                 {
-                    serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+                    serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(__workflow_sessionId);
                 }
 
-                serviceProviderParameters["body"] = ExpressionConverter.ConvertO(body);
-                if (safeType != null)
+                serviceProviderParameters["body"] = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_safeType != null)
                 {
-                    serviceProviderParameters["safeType"] = ExpressionConverter.ConvertO(safeType);
+                    serviceProviderParameters["safeType"] = ExpressionConverter.ConvertO(__workflow_safeType);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -338,20 +310,14 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
-        [WorkflowExpressionFactory(nameof(__BuildCloseSession))]
-        public IWorkflowAction CloseSession([WorkflowExpression] Func<string> sessionId)
+        public IWorkflowAction CloseSession(Expression<Func<string>> sessionId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildCloseSession(WorkflowExpression<string> sessionId)
-        {
-            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: true);
+            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
+            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(__workflow_sessionId);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "closeSession", connectionName: connectionId),
@@ -362,24 +328,20 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
-        [WorkflowExpressionFactory(nameof(__BuildBapiCommit))]
-        public IBodyWorkflowAction<BapiCommitOutput> BapiCommit([WorkflowExpression] Func<string> sessionId, [WorkflowExpression] Func<bool> wait, [WorkflowExpression] Func<bool> closeSession)
+        public IBodyWorkflowAction<BapiCommitOutput> BapiCommit(Expression<Func<string>> sessionId, Expression<Func<bool>> wait, Expression<Func<bool>> closeSession)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<BapiCommitOutput> __BuildBapiCommit(WorkflowExpression<string> sessionId, WorkflowExpression<bool> wait, WorkflowExpression<bool> closeSession)
-        {
-            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: true);
-            WorkflowExpression.Validate(wait, nameof(wait), required: true);
-            WorkflowExpression.Validate(closeSession, nameof(closeSession), required: true);
+            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
+            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: true);
+            var __workflow_wait = wait == null ? null : WorkflowExpression.Compile(wait);
+            WorkflowExpression.Validate(__workflow_wait, nameof(wait), required: true);
+            var __workflow_closeSession = closeSession == null ? null : WorkflowExpression.Compile(closeSession);
+            WorkflowExpression.Validate(__workflow_closeSession, nameof(closeSession), required: true);
             return new DeferredBodyAction<BapiCommitOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
-                serviceProviderParameters["wait"] = ExpressionConverter.ConvertO(wait);
-                serviceProviderParameters["closeSession"] = ExpressionConverter.ConvertO(closeSession);
+                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(__workflow_sessionId);
+                serviceProviderParameters["wait"] = ExpressionConverter.ConvertO(__workflow_wait);
+                serviceProviderParameters["closeSession"] = ExpressionConverter.ConvertO(__workflow_closeSession);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "bapiCommit", connectionName: connectionId),
@@ -390,22 +352,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
-        [WorkflowExpressionFactory(nameof(__BuildBapiRollback))]
-        public IBodyWorkflowAction<BapiRollbackOutput> BapiRollback([WorkflowExpression] Func<string> sessionId, [WorkflowExpression] Func<bool> closeSession)
+        public IBodyWorkflowAction<BapiRollbackOutput> BapiRollback(Expression<Func<string>> sessionId, Expression<Func<bool>> closeSession)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<BapiRollbackOutput> __BuildBapiRollback(WorkflowExpression<string> sessionId, WorkflowExpression<bool> closeSession)
-        {
-            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: true);
-            WorkflowExpression.Validate(closeSession, nameof(closeSession), required: true);
+            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
+            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: true);
+            var __workflow_closeSession = closeSession == null ? null : WorkflowExpression.Compile(closeSession);
+            WorkflowExpression.Validate(__workflow_closeSession, nameof(closeSession), required: true);
             return new DeferredBodyAction<BapiRollbackOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
-                serviceProviderParameters["closeSession"] = ExpressionConverter.ConvertO(closeSession);
+                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(__workflow_sessionId);
+                serviceProviderParameters["closeSession"] = ExpressionConverter.ConvertO(__workflow_closeSession);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "bapiRollback", connectionName: connectionId),
@@ -416,54 +373,54 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
-        [WorkflowExpressionFactory(nameof(__BuildReadTable))]
-        public IBodyWorkflowAction<ReadTableOutput> ReadTable([WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<string[]> fieldNames = null, [WorkflowExpression] Func<string[]> whereFilters = null, [WorkflowExpression] Func<int> startIndex = null, [WorkflowExpression] Func<int> numberOfRowsToRead = null, [WorkflowExpression] Func<string> delimiter = null, [WorkflowExpression] Func<ReadTableInputReturnFormatType> returnFormat = null)
+        public IBodyWorkflowAction<ReadTableOutput> ReadTable(Expression<Func<string>> tableName, Expression<Func<string[]>> fieldNames = null, Expression<Func<string[]>> whereFilters = null, Expression<Func<int>> startIndex = null, Expression<Func<int>> numberOfRowsToRead = null, Expression<Func<string>> delimiter = null, Expression<Func<ReadTableInputReturnFormatType>> returnFormat = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ReadTableOutput> __BuildReadTable(WorkflowExpression<string> tableName, WorkflowExpression<string[]> fieldNames = null, WorkflowExpression<string[]> whereFilters = null, WorkflowExpression<int> startIndex = null, WorkflowExpression<int> numberOfRowsToRead = null, WorkflowExpression<string> delimiter = null, WorkflowExpression<ReadTableInputReturnFormatType> returnFormat = null)
-        {
-            WorkflowExpression.Validate(tableName, nameof(tableName), required: true);
-            WorkflowExpression.Validate(fieldNames, nameof(fieldNames), required: false);
-            WorkflowExpression.Validate(whereFilters, nameof(whereFilters), required: false);
-            WorkflowExpression.Validate(startIndex, nameof(startIndex), required: false);
-            WorkflowExpression.Validate(numberOfRowsToRead, nameof(numberOfRowsToRead), required: false);
-            WorkflowExpression.Validate(delimiter, nameof(delimiter), required: false);
-            WorkflowExpression.Validate(returnFormat, nameof(returnFormat), required: false);
+            var __workflow_tableName = tableName == null ? null : WorkflowExpression.Compile(tableName);
+            WorkflowExpression.Validate(__workflow_tableName, nameof(tableName), required: true);
+            var __workflow_fieldNames = fieldNames == null ? null : WorkflowExpression.Compile(fieldNames);
+            WorkflowExpression.Validate(__workflow_fieldNames, nameof(fieldNames), required: false);
+            var __workflow_whereFilters = whereFilters == null ? null : WorkflowExpression.Compile(whereFilters);
+            WorkflowExpression.Validate(__workflow_whereFilters, nameof(whereFilters), required: false);
+            var __workflow_startIndex = startIndex == null ? null : WorkflowExpression.Compile(startIndex);
+            WorkflowExpression.Validate(__workflow_startIndex, nameof(startIndex), required: false);
+            var __workflow_numberOfRowsToRead = numberOfRowsToRead == null ? null : WorkflowExpression.Compile(numberOfRowsToRead);
+            WorkflowExpression.Validate(__workflow_numberOfRowsToRead, nameof(numberOfRowsToRead), required: false);
+            var __workflow_delimiter = delimiter == null ? null : WorkflowExpression.Compile(delimiter);
+            WorkflowExpression.Validate(__workflow_delimiter, nameof(delimiter), required: false);
+            var __workflow_returnFormat = returnFormat == null ? null : WorkflowExpression.Compile(returnFormat);
+            WorkflowExpression.Validate(__workflow_returnFormat, nameof(returnFormat), required: false);
             return new DeferredBodyAction<ReadTableOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
-                if (fieldNames != null)
+                serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(__workflow_tableName);
+                if (__workflow_fieldNames != null)
                 {
-                    serviceProviderParameters["fieldNames"] = ExpressionConverter.ConvertO(fieldNames);
+                    serviceProviderParameters["fieldNames"] = ExpressionConverter.ConvertO(__workflow_fieldNames);
                 }
 
-                if (whereFilters != null)
+                if (__workflow_whereFilters != null)
                 {
-                    serviceProviderParameters["whereFilters"] = ExpressionConverter.ConvertO(whereFilters);
+                    serviceProviderParameters["whereFilters"] = ExpressionConverter.ConvertO(__workflow_whereFilters);
                 }
 
-                if (startIndex != null)
+                if (__workflow_startIndex != null)
                 {
-                    serviceProviderParameters["startIndex"] = ExpressionConverter.ConvertO(startIndex);
+                    serviceProviderParameters["startIndex"] = ExpressionConverter.ConvertO(__workflow_startIndex);
                 }
 
-                if (numberOfRowsToRead != null)
+                if (__workflow_numberOfRowsToRead != null)
                 {
-                    serviceProviderParameters["numberOfRowsToRead"] = ExpressionConverter.ConvertO(numberOfRowsToRead);
+                    serviceProviderParameters["numberOfRowsToRead"] = ExpressionConverter.ConvertO(__workflow_numberOfRowsToRead);
                 }
 
-                if (delimiter != null)
+                if (__workflow_delimiter != null)
                 {
-                    serviceProviderParameters["delimiter"] = ExpressionConverter.ConvertO(delimiter);
+                    serviceProviderParameters["delimiter"] = ExpressionConverter.ConvertO(__workflow_delimiter);
                 }
 
-                if (returnFormat != null)
+                if (__workflow_returnFormat != null)
                 {
-                    serviceProviderParameters["returnFormat"] = ExpressionConverter.ConvertO(returnFormat);
+                    serviceProviderParameters["returnFormat"] = ExpressionConverter.ConvertO(__workflow_returnFormat);
                 }
                 else
                 {
@@ -480,24 +437,19 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
-        [WorkflowExpressionFactory(nameof(__BuildGetSchemaV2))]
-        public IBodyWorkflowAction<JToken> GetSchemaV2([WorkflowExpression] Func<GetSchemaV2InputOperationTypeType> operationType, [WorkflowExpression] Func<string> fileNamePrefix = null)
+        public IBodyWorkflowAction<JToken> GetSchemaV2(Expression<Func<GetSchemaV2InputOperationTypeType>> operationType, Expression<Func<string>> fileNamePrefix = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildGetSchemaV2(WorkflowExpression<GetSchemaV2InputOperationTypeType> operationType, WorkflowExpression<string> fileNamePrefix = null)
-        {
-            WorkflowExpression.Validate(operationType, nameof(operationType), required: true);
-            WorkflowExpression.Validate(fileNamePrefix, nameof(fileNamePrefix), required: false);
+            var __workflow_operationType = operationType == null ? null : WorkflowExpression.Compile(operationType);
+            WorkflowExpression.Validate(__workflow_operationType, nameof(operationType), required: true);
+            var __workflow_fileNamePrefix = fileNamePrefix == null ? null : WorkflowExpression.Compile(fileNamePrefix);
+            WorkflowExpression.Validate(__workflow_fileNamePrefix, nameof(fileNamePrefix), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["operationType"] = ExpressionConverter.ConvertO(operationType);
-                if (fileNamePrefix != null)
+                serviceProviderParameters["operationType"] = ExpressionConverter.ConvertO(__workflow_operationType);
+                if (__workflow_fileNamePrefix != null)
                 {
-                    serviceProviderParameters["fileNamePrefix"] = ExpressionConverter.ConvertO(fileNamePrefix);
+                    serviceProviderParameters["fileNamePrefix"] = ExpressionConverter.ConvertO(__workflow_fileNamePrefix);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -510,22 +462,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
-        [WorkflowExpressionFactory(nameof(__BuildGetIDocList))]
-        public IBodyWorkflowAction<GetIDocListOutput> GetIDocList([WorkflowExpression] Func<GetIDocListInputDirectionType> direction, [WorkflowExpression] Func<string> tId)
+        public IBodyWorkflowAction<GetIDocListOutput> GetIDocList(Expression<Func<GetIDocListInputDirectionType>> direction, Expression<Func<string>> tId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetIDocListOutput> __BuildGetIDocList(WorkflowExpression<GetIDocListInputDirectionType> direction, WorkflowExpression<string> tId)
-        {
-            WorkflowExpression.Validate(direction, nameof(direction), required: true);
-            WorkflowExpression.Validate(tId, nameof(tId), required: true);
+            var __workflow_direction = direction == null ? null : WorkflowExpression.Compile(direction);
+            WorkflowExpression.Validate(__workflow_direction, nameof(direction), required: true);
+            var __workflow_tId = tId == null ? null : WorkflowExpression.Compile(tId);
+            WorkflowExpression.Validate(__workflow_tId, nameof(tId), required: true);
             return new DeferredBodyAction<GetIDocListOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["direction"] = ExpressionConverter.ConvertO(direction);
-                serviceProviderParameters["tId"] = ExpressionConverter.ConvertO(tId);
+                serviceProviderParameters["direction"] = ExpressionConverter.ConvertO(__workflow_direction);
+                serviceProviderParameters["tId"] = ExpressionConverter.ConvertO(__workflow_tId);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "getIDocList", connectionName: connectionId),
@@ -536,20 +483,14 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
-        [WorkflowExpressionFactory(nameof(__BuildGetIDocStatus))]
-        public IBodyWorkflowAction<GetIDocStatusOutput> GetIDocStatus([WorkflowExpression] Func<int> iDocNumber)
+        public IBodyWorkflowAction<GetIDocStatusOutput> GetIDocStatus(Expression<Func<int>> iDocNumber)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetIDocStatusOutput> __BuildGetIDocStatus(WorkflowExpression<int> iDocNumber)
-        {
-            WorkflowExpression.Validate(iDocNumber, nameof(iDocNumber), required: true);
+            var __workflow_iDocNumber = iDocNumber == null ? null : WorkflowExpression.Compile(iDocNumber);
+            WorkflowExpression.Validate(__workflow_iDocNumber, nameof(iDocNumber), required: true);
             return new DeferredBodyAction<GetIDocStatusOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["iDocNumber"] = ExpressionConverter.ConvertO(iDocNumber);
+                serviceProviderParameters["iDocNumber"] = ExpressionConverter.ConvertO(__workflow_iDocNumber);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "getIDocStatus", connectionName: connectionId),
@@ -560,24 +501,19 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
-        [WorkflowExpressionFactory(nameof(__BuildRespondToSapServer))]
-        public IWorkflowAction RespondToSapServer([WorkflowExpression] Func<string> body, [WorkflowExpression] Func<bool> safeType = null)
+        public IWorkflowAction RespondToSapServer(Expression<Func<string>> body, Expression<Func<bool>> safeType = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildRespondToSapServer(WorkflowExpression<string> body, WorkflowExpression<bool> safeType = null)
-        {
-            WorkflowExpression.Validate(body, nameof(body), required: true);
-            WorkflowExpression.Validate(safeType, nameof(safeType), required: false);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: true);
+            var __workflow_safeType = safeType == null ? null : WorkflowExpression.Compile(safeType);
+            WorkflowExpression.Validate(__workflow_safeType, nameof(safeType), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["body"] = ExpressionConverter.ConvertO(body);
-                if (safeType != null)
+                serviceProviderParameters["body"] = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_safeType != null)
                 {
-                    serviceProviderParameters["safeType"] = ExpressionConverter.ConvertO(safeType);
+                    serviceProviderParameters["safeType"] = ExpressionConverter.ConvertO(__workflow_safeType);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -590,48 +526,47 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
-        [WorkflowExpressionFactory(nameof(__BuildSendExceptionToSapServer))]
-        public IWorkflowAction SendExceptionToSapServer([WorkflowExpression] Func<string> sendExceptionToSapServerErrorMessage, [WorkflowExpression] Func<string> sendExceptionToSapServerExceptionName = null, [WorkflowExpression] Func<string> sendExceptionToSapServerMessageType = null, [WorkflowExpression] Func<string> sendExceptionToSapServerMessageClass = null, [WorkflowExpression] Func<string> sendExceptionToSapServerMessageNumber = null, [WorkflowExpression] Func<bool> sendExceptionToSapServerIsAbapMessage = null)
+        public IWorkflowAction SendExceptionToSapServer(Expression<Func<string>> sendExceptionToSapServerErrorMessage, Expression<Func<string>> sendExceptionToSapServerExceptionName = null, Expression<Func<string>> sendExceptionToSapServerMessageType = null, Expression<Func<string>> sendExceptionToSapServerMessageClass = null, Expression<Func<string>> sendExceptionToSapServerMessageNumber = null, Expression<Func<bool>> sendExceptionToSapServerIsAbapMessage = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildSendExceptionToSapServer(WorkflowExpression<string> sendExceptionToSapServerErrorMessage, WorkflowExpression<string> sendExceptionToSapServerExceptionName = null, WorkflowExpression<string> sendExceptionToSapServerMessageType = null, WorkflowExpression<string> sendExceptionToSapServerMessageClass = null, WorkflowExpression<string> sendExceptionToSapServerMessageNumber = null, WorkflowExpression<bool> sendExceptionToSapServerIsAbapMessage = null)
-        {
-            WorkflowExpression.Validate(sendExceptionToSapServerErrorMessage, nameof(sendExceptionToSapServerErrorMessage), required: true);
-            WorkflowExpression.Validate(sendExceptionToSapServerExceptionName, nameof(sendExceptionToSapServerExceptionName), required: false);
-            WorkflowExpression.Validate(sendExceptionToSapServerMessageType, nameof(sendExceptionToSapServerMessageType), required: false);
-            WorkflowExpression.Validate(sendExceptionToSapServerMessageClass, nameof(sendExceptionToSapServerMessageClass), required: false);
-            WorkflowExpression.Validate(sendExceptionToSapServerMessageNumber, nameof(sendExceptionToSapServerMessageNumber), required: false);
-            WorkflowExpression.Validate(sendExceptionToSapServerIsAbapMessage, nameof(sendExceptionToSapServerIsAbapMessage), required: false);
+            var __workflow_sendExceptionToSapServerErrorMessage = sendExceptionToSapServerErrorMessage == null ? null : WorkflowExpression.Compile(sendExceptionToSapServerErrorMessage);
+            WorkflowExpression.Validate(__workflow_sendExceptionToSapServerErrorMessage, nameof(sendExceptionToSapServerErrorMessage), required: true);
+            var __workflow_sendExceptionToSapServerExceptionName = sendExceptionToSapServerExceptionName == null ? null : WorkflowExpression.Compile(sendExceptionToSapServerExceptionName);
+            WorkflowExpression.Validate(__workflow_sendExceptionToSapServerExceptionName, nameof(sendExceptionToSapServerExceptionName), required: false);
+            var __workflow_sendExceptionToSapServerMessageType = sendExceptionToSapServerMessageType == null ? null : WorkflowExpression.Compile(sendExceptionToSapServerMessageType);
+            WorkflowExpression.Validate(__workflow_sendExceptionToSapServerMessageType, nameof(sendExceptionToSapServerMessageType), required: false);
+            var __workflow_sendExceptionToSapServerMessageClass = sendExceptionToSapServerMessageClass == null ? null : WorkflowExpression.Compile(sendExceptionToSapServerMessageClass);
+            WorkflowExpression.Validate(__workflow_sendExceptionToSapServerMessageClass, nameof(sendExceptionToSapServerMessageClass), required: false);
+            var __workflow_sendExceptionToSapServerMessageNumber = sendExceptionToSapServerMessageNumber == null ? null : WorkflowExpression.Compile(sendExceptionToSapServerMessageNumber);
+            WorkflowExpression.Validate(__workflow_sendExceptionToSapServerMessageNumber, nameof(sendExceptionToSapServerMessageNumber), required: false);
+            var __workflow_sendExceptionToSapServerIsAbapMessage = sendExceptionToSapServerIsAbapMessage == null ? null : WorkflowExpression.Compile(sendExceptionToSapServerIsAbapMessage);
+            WorkflowExpression.Validate(__workflow_sendExceptionToSapServerIsAbapMessage, nameof(sendExceptionToSapServerIsAbapMessage), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["SendExceptionToSapServerErrorMessage"] = ExpressionConverter.ConvertO(sendExceptionToSapServerErrorMessage);
-                if (sendExceptionToSapServerExceptionName != null)
+                serviceProviderParameters["SendExceptionToSapServerErrorMessage"] = ExpressionConverter.ConvertO(__workflow_sendExceptionToSapServerErrorMessage);
+                if (__workflow_sendExceptionToSapServerExceptionName != null)
                 {
-                    serviceProviderParameters["SendExceptionToSapServerExceptionName"] = ExpressionConverter.ConvertO(sendExceptionToSapServerExceptionName);
+                    serviceProviderParameters["SendExceptionToSapServerExceptionName"] = ExpressionConverter.ConvertO(__workflow_sendExceptionToSapServerExceptionName);
                 }
 
-                if (sendExceptionToSapServerMessageType != null)
+                if (__workflow_sendExceptionToSapServerMessageType != null)
                 {
-                    serviceProviderParameters["SendExceptionToSapServerMessageType"] = ExpressionConverter.ConvertO(sendExceptionToSapServerMessageType);
+                    serviceProviderParameters["SendExceptionToSapServerMessageType"] = ExpressionConverter.ConvertO(__workflow_sendExceptionToSapServerMessageType);
                 }
 
-                if (sendExceptionToSapServerMessageClass != null)
+                if (__workflow_sendExceptionToSapServerMessageClass != null)
                 {
-                    serviceProviderParameters["SendExceptionToSapServerMessageClass"] = ExpressionConverter.ConvertO(sendExceptionToSapServerMessageClass);
+                    serviceProviderParameters["SendExceptionToSapServerMessageClass"] = ExpressionConverter.ConvertO(__workflow_sendExceptionToSapServerMessageClass);
                 }
 
-                if (sendExceptionToSapServerMessageNumber != null)
+                if (__workflow_sendExceptionToSapServerMessageNumber != null)
                 {
-                    serviceProviderParameters["SendExceptionToSapServerMessageNumber"] = ExpressionConverter.ConvertO(sendExceptionToSapServerMessageNumber);
+                    serviceProviderParameters["SendExceptionToSapServerMessageNumber"] = ExpressionConverter.ConvertO(__workflow_sendExceptionToSapServerMessageNumber);
                 }
 
-                if (sendExceptionToSapServerIsAbapMessage != null)
+                if (__workflow_sendExceptionToSapServerIsAbapMessage != null)
                 {
-                    serviceProviderParameters["SendExceptionToSapServerIsAbapMessage"] = ExpressionConverter.ConvertO(sendExceptionToSapServerIsAbapMessage);
+                    serviceProviderParameters["SendExceptionToSapServerIsAbapMessage"] = ExpressionConverter.ConvertO(__workflow_sendExceptionToSapServerIsAbapMessage);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -644,20 +579,14 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
-        [WorkflowExpressionFactory(nameof(__BuildRunDiagnostics))]
-        public IBodyWorkflowAction<JToken> RunDiagnostics([WorkflowExpression] Func<RunDiagnosticsInputOperationTypeType> operationType)
+        public IBodyWorkflowAction<JToken> RunDiagnostics(Expression<Func<RunDiagnosticsInputOperationTypeType>> operationType)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildRunDiagnostics(WorkflowExpression<RunDiagnosticsInputOperationTypeType> operationType)
-        {
-            WorkflowExpression.Validate(operationType, nameof(operationType), required: true);
+            var __workflow_operationType = operationType == null ? null : WorkflowExpression.Compile(operationType);
+            WorkflowExpression.Validate(__workflow_operationType, nameof(operationType), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["operationType"] = ExpressionConverter.ConvertO(operationType);
+                serviceProviderParameters["operationType"] = ExpressionConverter.ConvertO(__workflow_operationType);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "runDiagnostics", connectionName: connectionId),
@@ -670,57 +599,59 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
 
     public class SapTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildSapTrigger))]
-        public IBodyWorkflowTrigger<SapTriggerOutput> SapTrigger([WorkflowExpression] Func<SapTriggerInputIdocFormatType> idocFormat, [WorkflowExpression] Func<int> degreeOfParallelism, [WorkflowExpression] Func<string> gatewayHost, [WorkflowExpression] Func<string> gatewayService, [WorkflowExpression] Func<string> programId, [WorkflowExpression] Func<string> sncPartnerNames = null, [WorkflowExpression] Func<bool> receiveIDocsWithUnreleasedSegmentsV2 = null, [WorkflowExpression] Func<string> defaultIDocRelease = null, [WorkflowExpression] Func<string> receivedIDocTypeReleaseMapping = null, [WorkflowExpression] Func<bool> gatewayWithoutWorkProcess = null)
+        public IBodyWorkflowTrigger<SapTriggerOutput> SapTrigger(Expression<Func<SapTriggerInputIdocFormatType>> idocFormat, Expression<Func<int>> degreeOfParallelism, Expression<Func<string>> gatewayHost, Expression<Func<string>> gatewayService, Expression<Func<string>> programId, Expression<Func<string>> sncPartnerNames = null, Expression<Func<bool>> receiveIDocsWithUnreleasedSegmentsV2 = null, Expression<Func<string>> defaultIDocRelease = null, Expression<Func<string>> receivedIDocTypeReleaseMapping = null, Expression<Func<bool>> gatewayWithoutWorkProcess = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<SapTriggerOutput> __BuildSapTrigger(WorkflowExpression<SapTriggerInputIdocFormatType> idocFormat, WorkflowExpression<int> degreeOfParallelism, WorkflowExpression<string> gatewayHost, WorkflowExpression<string> gatewayService, WorkflowExpression<string> programId, WorkflowExpression<string> sncPartnerNames = null, WorkflowExpression<bool> receiveIDocsWithUnreleasedSegmentsV2 = null, WorkflowExpression<string> defaultIDocRelease = null, WorkflowExpression<string> receivedIDocTypeReleaseMapping = null, WorkflowExpression<bool> gatewayWithoutWorkProcess = null)
-        {
-            WorkflowExpression.Validate(idocFormat, nameof(idocFormat), required: true);
-            WorkflowExpression.Validate(degreeOfParallelism, nameof(degreeOfParallelism), required: true);
-            WorkflowExpression.Validate(gatewayHost, nameof(gatewayHost), required: true);
-            WorkflowExpression.Validate(gatewayService, nameof(gatewayService), required: true);
-            WorkflowExpression.Validate(programId, nameof(programId), required: true);
-            WorkflowExpression.Validate(sncPartnerNames, nameof(sncPartnerNames), required: false);
-            WorkflowExpression.Validate(receiveIDocsWithUnreleasedSegmentsV2, nameof(receiveIDocsWithUnreleasedSegmentsV2), required: false);
-            WorkflowExpression.Validate(defaultIDocRelease, nameof(defaultIDocRelease), required: false);
-            WorkflowExpression.Validate(receivedIDocTypeReleaseMapping, nameof(receivedIDocTypeReleaseMapping), required: false);
-            WorkflowExpression.Validate(gatewayWithoutWorkProcess, nameof(gatewayWithoutWorkProcess), required: false);
+            var __workflow_idocFormat = idocFormat == null ? null : WorkflowExpression.Compile(idocFormat);
+            WorkflowExpression.Validate(__workflow_idocFormat, nameof(idocFormat), required: true);
+            var __workflow_degreeOfParallelism = degreeOfParallelism == null ? null : WorkflowExpression.Compile(degreeOfParallelism);
+            WorkflowExpression.Validate(__workflow_degreeOfParallelism, nameof(degreeOfParallelism), required: true);
+            var __workflow_gatewayHost = gatewayHost == null ? null : WorkflowExpression.Compile(gatewayHost);
+            WorkflowExpression.Validate(__workflow_gatewayHost, nameof(gatewayHost), required: true);
+            var __workflow_gatewayService = gatewayService == null ? null : WorkflowExpression.Compile(gatewayService);
+            WorkflowExpression.Validate(__workflow_gatewayService, nameof(gatewayService), required: true);
+            var __workflow_programId = programId == null ? null : WorkflowExpression.Compile(programId);
+            WorkflowExpression.Validate(__workflow_programId, nameof(programId), required: true);
+            var __workflow_sncPartnerNames = sncPartnerNames == null ? null : WorkflowExpression.Compile(sncPartnerNames);
+            WorkflowExpression.Validate(__workflow_sncPartnerNames, nameof(sncPartnerNames), required: false);
+            var __workflow_receiveIDocsWithUnreleasedSegmentsV2 = receiveIDocsWithUnreleasedSegmentsV2 == null ? null : WorkflowExpression.Compile(receiveIDocsWithUnreleasedSegmentsV2);
+            WorkflowExpression.Validate(__workflow_receiveIDocsWithUnreleasedSegmentsV2, nameof(receiveIDocsWithUnreleasedSegmentsV2), required: false);
+            var __workflow_defaultIDocRelease = defaultIDocRelease == null ? null : WorkflowExpression.Compile(defaultIDocRelease);
+            WorkflowExpression.Validate(__workflow_defaultIDocRelease, nameof(defaultIDocRelease), required: false);
+            var __workflow_receivedIDocTypeReleaseMapping = receivedIDocTypeReleaseMapping == null ? null : WorkflowExpression.Compile(receivedIDocTypeReleaseMapping);
+            WorkflowExpression.Validate(__workflow_receivedIDocTypeReleaseMapping, nameof(receivedIDocTypeReleaseMapping), required: false);
+            var __workflow_gatewayWithoutWorkProcess = gatewayWithoutWorkProcess == null ? null : WorkflowExpression.Compile(gatewayWithoutWorkProcess);
+            WorkflowExpression.Validate(__workflow_gatewayWithoutWorkProcess, nameof(gatewayWithoutWorkProcess), required: false);
             return new DeferredBodyTrigger<SapTriggerOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["idocFormat"] = ExpressionConverter.ConvertO(idocFormat);
-                if (sncPartnerNames != null)
+                serviceProviderParameters["idocFormat"] = ExpressionConverter.ConvertO(__workflow_idocFormat);
+                if (__workflow_sncPartnerNames != null)
                 {
-                    serviceProviderParameters["SncPartnerNames"] = ExpressionConverter.ConvertO(sncPartnerNames);
+                    serviceProviderParameters["SncPartnerNames"] = ExpressionConverter.ConvertO(__workflow_sncPartnerNames);
                 }
 
-                serviceProviderParameters["DegreeOfParallelism"] = ExpressionConverter.ConvertO(degreeOfParallelism);
-                if (receiveIDocsWithUnreleasedSegmentsV2 != null)
+                serviceProviderParameters["DegreeOfParallelism"] = ExpressionConverter.ConvertO(__workflow_degreeOfParallelism);
+                if (__workflow_receiveIDocsWithUnreleasedSegmentsV2 != null)
                 {
-                    serviceProviderParameters["ReceiveIDocsWithUnreleasedSegmentsV2"] = ExpressionConverter.ConvertO(receiveIDocsWithUnreleasedSegmentsV2);
+                    serviceProviderParameters["ReceiveIDocsWithUnreleasedSegmentsV2"] = ExpressionConverter.ConvertO(__workflow_receiveIDocsWithUnreleasedSegmentsV2);
                 }
 
-                serviceProviderParameters["GatewayHost"] = ExpressionConverter.ConvertO(gatewayHost);
-                serviceProviderParameters["GatewayService"] = ExpressionConverter.ConvertO(gatewayService);
-                serviceProviderParameters["ProgramId"] = ExpressionConverter.ConvertO(programId);
-                if (defaultIDocRelease != null)
+                serviceProviderParameters["GatewayHost"] = ExpressionConverter.ConvertO(__workflow_gatewayHost);
+                serviceProviderParameters["GatewayService"] = ExpressionConverter.ConvertO(__workflow_gatewayService);
+                serviceProviderParameters["ProgramId"] = ExpressionConverter.ConvertO(__workflow_programId);
+                if (__workflow_defaultIDocRelease != null)
                 {
-                    serviceProviderParameters["DefaultIDocRelease"] = ExpressionConverter.ConvertO(defaultIDocRelease);
+                    serviceProviderParameters["DefaultIDocRelease"] = ExpressionConverter.ConvertO(__workflow_defaultIDocRelease);
                 }
 
-                if (receivedIDocTypeReleaseMapping != null)
+                if (__workflow_receivedIDocTypeReleaseMapping != null)
                 {
-                    serviceProviderParameters["ReceivedIDocTypeReleaseMapping"] = ExpressionConverter.ConvertO(receivedIDocTypeReleaseMapping);
+                    serviceProviderParameters["ReceivedIDocTypeReleaseMapping"] = ExpressionConverter.ConvertO(__workflow_receivedIDocTypeReleaseMapping);
                 }
 
-                if (gatewayWithoutWorkProcess != null)
+                if (__workflow_gatewayWithoutWorkProcess != null)
                 {
-                    serviceProviderParameters["GatewayWithoutWorkProcess"] = ExpressionConverter.ConvertO(gatewayWithoutWorkProcess);
+                    serviceProviderParameters["GatewayWithoutWorkProcess"] = ExpressionConverter.ConvertO(__workflow_gatewayWithoutWorkProcess);
                 }
                 else
                 {

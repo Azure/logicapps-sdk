@@ -1,34 +1,31 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Npstoday
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class NpstodayActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "npstoday")]
-        [WorkflowExpressionFactory(nameof(__BuildSendSurvey))]
-        public IWorkflowAction SendSurvey([WorkflowExpression] Func<string> campaign, [WorkflowExpression] Func<string> bodyrespondentemailAddress = null, [WorkflowExpression] Func<string> bodyrespondentfirstName = null, [WorkflowExpression] Func<string> bodyrespondentlastName = null, [WorkflowExpression] Func<string> bodyrespondentphoneNumber = null)
+        public IWorkflowAction SendSurvey(Expression<Func<string>> campaign, Expression<Func<string>> bodyrespondentemailAddress = null, Expression<Func<string>> bodyrespondentfirstName = null, Expression<Func<string>> bodyrespondentlastName = null, Expression<Func<string>> bodyrespondentphoneNumber = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildSendSurvey(WorkflowExpression<string> campaign, WorkflowExpression<string> bodyrespondentemailAddress = null, WorkflowExpression<string> bodyrespondentfirstName = null, WorkflowExpression<string> bodyrespondentlastName = null, WorkflowExpression<string> bodyrespondentphoneNumber = null)
-        {
-            WorkflowExpression.Validate(campaign, nameof(campaign), required: true);
-            WorkflowExpression.Validate(bodyrespondentemailAddress, nameof(bodyrespondentemailAddress), required: false);
-            WorkflowExpression.Validate(bodyrespondentfirstName, nameof(bodyrespondentfirstName), required: false);
-            WorkflowExpression.Validate(bodyrespondentlastName, nameof(bodyrespondentlastName), required: false);
-            WorkflowExpression.Validate(bodyrespondentphoneNumber, nameof(bodyrespondentphoneNumber), required: false);
+            var __workflow_campaign = campaign == null ? null : WorkflowExpression.Compile(campaign);
+            WorkflowExpression.Validate(__workflow_campaign, nameof(campaign), required: true);
+            var __workflow_bodyrespondentemailAddress = bodyrespondentemailAddress == null ? null : WorkflowExpression.Compile(bodyrespondentemailAddress);
+            WorkflowExpression.Validate(__workflow_bodyrespondentemailAddress, nameof(bodyrespondentemailAddress), required: false);
+            var __workflow_bodyrespondentfirstName = bodyrespondentfirstName == null ? null : WorkflowExpression.Compile(bodyrespondentfirstName);
+            WorkflowExpression.Validate(__workflow_bodyrespondentfirstName, nameof(bodyrespondentfirstName), required: false);
+            var __workflow_bodyrespondentlastName = bodyrespondentlastName == null ? null : WorkflowExpression.Compile(bodyrespondentlastName);
+            WorkflowExpression.Validate(__workflow_bodyrespondentlastName, nameof(bodyrespondentlastName), required: false);
+            var __workflow_bodyrespondentphoneNumber = bodyrespondentphoneNumber == null ? null : WorkflowExpression.Compile(bodyrespondentphoneNumber);
+            WorkflowExpression.Validate(__workflow_bodyrespondentphoneNumber, nameof(bodyrespondentphoneNumber), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/respondent", ExpressionConverter.ConvertWithUrlEncoding(campaign, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/respondent", ExpressionConverter.ConvertWithUrlEncoding(__workflow_campaign, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -36,27 +33,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Npstoday
                 var bodypropCount = 0;
                 var respondentObject = new JObject();
                 var respondentObjectpropCount = 0;
-                if (bodyrespondentemailAddress != null)
+                if (__workflow_bodyrespondentemailAddress != null)
                 {
-                    respondentObject["emailAddress"] = ExpressionConverter.ConvertO(bodyrespondentemailAddress);
+                    respondentObject["emailAddress"] = ExpressionConverter.ConvertO(__workflow_bodyrespondentemailAddress);
                     respondentObjectpropCount++;
                 }
 
-                if (bodyrespondentfirstName != null)
+                if (__workflow_bodyrespondentfirstName != null)
                 {
-                    respondentObject["firstName"] = ExpressionConverter.ConvertO(bodyrespondentfirstName);
+                    respondentObject["firstName"] = ExpressionConverter.ConvertO(__workflow_bodyrespondentfirstName);
                     respondentObjectpropCount++;
                 }
 
-                if (bodyrespondentlastName != null)
+                if (__workflow_bodyrespondentlastName != null)
                 {
-                    respondentObject["lastName"] = ExpressionConverter.ConvertO(bodyrespondentlastName);
+                    respondentObject["lastName"] = ExpressionConverter.ConvertO(__workflow_bodyrespondentlastName);
                     respondentObjectpropCount++;
                 }
 
-                if (bodyrespondentphoneNumber != null)
+                if (__workflow_bodyrespondentphoneNumber != null)
                 {
-                    respondentObject["phoneNumber"] = ExpressionConverter.ConvertO(bodyrespondentphoneNumber);
+                    respondentObject["phoneNumber"] = ExpressionConverter.ConvertO(__workflow_bodyrespondentphoneNumber);
                     respondentObjectpropCount++;
                 }
 
@@ -76,24 +73,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Npstoday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "npstoday")]
-        [WorkflowExpressionFactory(nameof(__BuildAddEmployee))]
-        public IWorkflowAction AddEmployee([WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodydepartment = null, [WorkflowExpression] Func<string> bodyteam = null, [WorkflowExpression] Func<string> bodydivision = null, [WorkflowExpression] Func<string> bodyphoneNumber = null, [WorkflowExpression] Func<bool> bodyactive = null)
+        public IWorkflowAction AddEmployee(Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydepartment = null, Expression<Func<string>> bodyteam = null, Expression<Func<string>> bodydivision = null, Expression<Func<string>> bodyphoneNumber = null, Expression<Func<bool>> bodyactive = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildAddEmployee(WorkflowExpression<string> bodyemail = null, WorkflowExpression<string> bodyfirstName = null, WorkflowExpression<string> bodylastName = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodydepartment = null, WorkflowExpression<string> bodyteam = null, WorkflowExpression<string> bodydivision = null, WorkflowExpression<string> bodyphoneNumber = null, WorkflowExpression<bool> bodyactive = null)
-        {
-            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            WorkflowExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
-            WorkflowExpression.Validate(bodylastName, nameof(bodylastName), required: false);
-            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            WorkflowExpression.Validate(bodydepartment, nameof(bodydepartment), required: false);
-            WorkflowExpression.Validate(bodyteam, nameof(bodyteam), required: false);
-            WorkflowExpression.Validate(bodydivision, nameof(bodydivision), required: false);
-            WorkflowExpression.Validate(bodyphoneNumber, nameof(bodyphoneNumber), required: false);
-            WorkflowExpression.Validate(bodyactive, nameof(bodyactive), required: false);
+            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
+            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: false);
+            var __workflow_bodyfirstName = bodyfirstName == null ? null : WorkflowExpression.Compile(bodyfirstName);
+            WorkflowExpression.Validate(__workflow_bodyfirstName, nameof(bodyfirstName), required: false);
+            var __workflow_bodylastName = bodylastName == null ? null : WorkflowExpression.Compile(bodylastName);
+            WorkflowExpression.Validate(__workflow_bodylastName, nameof(bodylastName), required: false);
+            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
+            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodydepartment = bodydepartment == null ? null : WorkflowExpression.Compile(bodydepartment);
+            WorkflowExpression.Validate(__workflow_bodydepartment, nameof(bodydepartment), required: false);
+            var __workflow_bodyteam = bodyteam == null ? null : WorkflowExpression.Compile(bodyteam);
+            WorkflowExpression.Validate(__workflow_bodyteam, nameof(bodyteam), required: false);
+            var __workflow_bodydivision = bodydivision == null ? null : WorkflowExpression.Compile(bodydivision);
+            WorkflowExpression.Validate(__workflow_bodydivision, nameof(bodydivision), required: false);
+            var __workflow_bodyphoneNumber = bodyphoneNumber == null ? null : WorkflowExpression.Compile(bodyphoneNumber);
+            WorkflowExpression.Validate(__workflow_bodyphoneNumber, nameof(bodyphoneNumber), required: false);
+            var __workflow_bodyactive = bodyactive == null ? null : WorkflowExpression.Compile(bodyactive);
+            WorkflowExpression.Validate(__workflow_bodyactive, nameof(bodyactive), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/profile/employees";
@@ -102,57 +101,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Npstoday
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyemail != null)
+                if (__workflow_bodyemail != null)
                 {
-                    body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                    body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
                     bodypropCount++;
                 }
 
-                if (bodyfirstName != null)
+                if (__workflow_bodyfirstName != null)
                 {
-                    body["firstName"] = ExpressionConverter.ConvertO(bodyfirstName);
+                    body["firstName"] = ExpressionConverter.ConvertO(__workflow_bodyfirstName);
                     bodypropCount++;
                 }
 
-                if (bodylastName != null)
+                if (__workflow_bodylastName != null)
                 {
-                    body["lastName"] = ExpressionConverter.ConvertO(bodylastName);
+                    body["lastName"] = ExpressionConverter.ConvertO(__workflow_bodylastName);
                     bodypropCount++;
                 }
 
-                if (bodytitle != null)
+                if (__workflow_bodytitle != null)
                 {
-                    body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
                     bodypropCount++;
                 }
 
-                if (bodydepartment != null)
+                if (__workflow_bodydepartment != null)
                 {
-                    body["department"] = ExpressionConverter.ConvertO(bodydepartment);
+                    body["department"] = ExpressionConverter.ConvertO(__workflow_bodydepartment);
                     bodypropCount++;
                 }
 
-                if (bodyteam != null)
+                if (__workflow_bodyteam != null)
                 {
-                    body["team"] = ExpressionConverter.ConvertO(bodyteam);
+                    body["team"] = ExpressionConverter.ConvertO(__workflow_bodyteam);
                     bodypropCount++;
                 }
 
-                if (bodydivision != null)
+                if (__workflow_bodydivision != null)
                 {
-                    body["division"] = ExpressionConverter.ConvertO(bodydivision);
+                    body["division"] = ExpressionConverter.ConvertO(__workflow_bodydivision);
                     bodypropCount++;
                 }
 
-                if (bodyphoneNumber != null)
+                if (__workflow_bodyphoneNumber != null)
                 {
-                    body["phoneNumber"] = ExpressionConverter.ConvertO(bodyphoneNumber);
+                    body["phoneNumber"] = ExpressionConverter.ConvertO(__workflow_bodyphoneNumber);
                     bodypropCount++;
                 }
 
-                if (bodyactive != null)
+                if (__workflow_bodyactive != null)
                 {
-                    body["active"] = ExpressionConverter.ConvertO(bodyactive);
+                    body["active"] = ExpressionConverter.ConvertO(__workflow_bodyactive);
                     bodypropCount++;
                 }
 
@@ -168,17 +167,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Npstoday
 
     public class NpstodayTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildNewResponse))]
-        public IBodyWorkflowTrigger<JToken> NewResponse([WorkflowExpression] Func<int> bodycampaignId = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> NewResponse(Expression<Func<int>> bodycampaignId = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildNewResponse(WorkflowExpression<int> bodycampaignId = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodycampaignId, nameof(bodycampaignId), required: false);
+            var __workflow_bodycampaignId = bodycampaignId == null ? null : WorkflowExpression.Compile(bodycampaignId);
+            WorkflowExpression.Validate(__workflow_bodycampaignId, nameof(bodycampaignId), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = "/webhooks/subscriptions/responses";
@@ -187,9 +179,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Npstoday
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodycampaignId != null)
+                if (__workflow_bodycampaignId != null)
                 {
-                    body["campaignId"] = ExpressionConverter.ConvertO(bodycampaignId);
+                    body["campaignId"] = ExpressionConverter.ConvertO(__workflow_bodycampaignId);
                     bodypropCount++;
                 }
 
@@ -206,16 +198,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Npstoday
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildNewCampaignMember))]
-        public IBodyWorkflowTrigger<JToken> NewCampaignMember([WorkflowExpression] Func<int> bodycampaignId = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> NewCampaignMember(Expression<Func<int>> bodycampaignId = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildNewCampaignMember(WorkflowExpression<int> bodycampaignId = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodycampaignId, nameof(bodycampaignId), required: false);
+            var __workflow_bodycampaignId = bodycampaignId == null ? null : WorkflowExpression.Compile(bodycampaignId);
+            WorkflowExpression.Validate(__workflow_bodycampaignId, nameof(bodycampaignId), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = "/webhooks/subscriptions/campaignmembers";
@@ -224,9 +210,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Npstoday
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodycampaignId != null)
+                if (__workflow_bodycampaignId != null)
                 {
-                    body["campaignId"] = ExpressionConverter.ConvertO(bodycampaignId);
+                    body["campaignId"] = ExpressionConverter.ConvertO(__workflow_bodycampaignId);
                     bodypropCount++;
                 }
 

@@ -1,27 +1,20 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsidentity
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class AcsidentityActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acsidentity")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateCommunicationIdentity))]
-        public IBodyWorkflowAction<CreateCommunicationIdentityResponse> CreateCommunicationIdentity([WorkflowExpression] Func<TokenScopes[]> bodytokenScopes = null)
+        public IBodyWorkflowAction<CreateCommunicationIdentityResponse> CreateCommunicationIdentity(Expression<Func<TokenScopes[]>> bodytokenScopes = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateCommunicationIdentityResponse> __BuildCreateCommunicationIdentity(WorkflowExpression<TokenScopes[]> bodytokenScopes = null)
-        {
-            WorkflowExpression.Validate(bodytokenScopes, nameof(bodytokenScopes), required: false);
+            var __workflow_bodytokenScopes = bodytokenScopes == null ? null : WorkflowExpression.Compile(bodytokenScopes);
+            WorkflowExpression.Validate(__workflow_bodytokenScopes, nameof(bodytokenScopes), required: false);
             return new DeferredBodyAction<CreateCommunicationIdentityResponse>(() =>
             {
                 var apiCallPath = "/identities";
@@ -30,9 +23,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsidentity
                 callPayload.Queries["api-version"] = Convert.ToString("2021-03-07");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodytokenScopes != null)
+                if (__workflow_bodytokenScopes != null)
                 {
-                    body["createTokenWithScopes"] = ExpressionConverter.ConvertO(bodytokenScopes);
+                    body["createTokenWithScopes"] = ExpressionConverter.ConvertO(__workflow_bodytokenScopes);
                     bodypropCount++;
                 }
 
@@ -46,19 +39,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsidentity
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acsidentity")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteCommunicationIdentity))]
-        public IWorkflowAction DeleteCommunicationIdentity([WorkflowExpression] Func<string> identityId)
+        public IWorkflowAction DeleteCommunicationIdentity(Expression<Func<string>> identityId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDeleteCommunicationIdentity(WorkflowExpression<string> identityId)
-        {
-            WorkflowExpression.Validate(identityId, nameof(identityId), required: true);
+            var __workflow_identityId = identityId == null ? null : WorkflowExpression.Compile(identityId);
+            WorkflowExpression.Validate(__workflow_identityId, nameof(identityId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/identities/{0}", ExpressionConverter.ConvertWithUrlEncoding(identityId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/identities/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_identityId, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2021-03-07");
@@ -67,27 +54,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsidentity
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acsidentity")]
-        [WorkflowExpressionFactory(nameof(__BuildIssueIdentityAccessToken))]
-        public IBodyWorkflowAction<AccessTokenInfo> IssueIdentityAccessToken([WorkflowExpression] Func<string> identityId, [WorkflowExpression] Func<TokenScopes[]> bodytokenScopes)
+        public IBodyWorkflowAction<AccessTokenInfo> IssueIdentityAccessToken(Expression<Func<string>> identityId, Expression<Func<TokenScopes[]>> bodytokenScopes)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AccessTokenInfo> __BuildIssueIdentityAccessToken(WorkflowExpression<string> identityId, WorkflowExpression<TokenScopes[]> bodytokenScopes)
-        {
-            WorkflowExpression.Validate(identityId, nameof(identityId), required: true);
-            WorkflowExpression.Validate(bodytokenScopes, nameof(bodytokenScopes), required: true);
+            var __workflow_identityId = identityId == null ? null : WorkflowExpression.Compile(identityId);
+            WorkflowExpression.Validate(__workflow_identityId, nameof(identityId), required: true);
+            var __workflow_bodytokenScopes = bodytokenScopes == null ? null : WorkflowExpression.Compile(bodytokenScopes);
+            WorkflowExpression.Validate(__workflow_bodytokenScopes, nameof(bodytokenScopes), required: true);
             return new DeferredBodyAction<AccessTokenInfo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/identities/{0}/:issueAccessToken", ExpressionConverter.ConvertWithUrlEncoding(identityId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/identities/{0}/:issueAccessToken", ExpressionConverter.ConvertWithUrlEncoding(__workflow_identityId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2021-03-07");
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["scopes"] = ExpressionConverter.ConvertO(bodytokenScopes);
+                body["scopes"] = ExpressionConverter.ConvertO(__workflow_bodytokenScopes);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -98,19 +80,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsidentity
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acsidentity")]
-        [WorkflowExpressionFactory(nameof(__BuildRevokeIdentityAccessTokens))]
-        public IWorkflowAction RevokeIdentityAccessTokens([WorkflowExpression] Func<string> identityId)
+        public IWorkflowAction RevokeIdentityAccessTokens(Expression<Func<string>> identityId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildRevokeIdentityAccessTokens(WorkflowExpression<string> identityId)
-        {
-            WorkflowExpression.Validate(identityId, nameof(identityId), required: true);
+            var __workflow_identityId = identityId == null ? null : WorkflowExpression.Compile(identityId);
+            WorkflowExpression.Validate(__workflow_identityId, nameof(identityId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/identities/{0}/:revokeAccessTokens", ExpressionConverter.ConvertWithUrlEncoding(identityId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/identities/{0}/:revokeAccessTokens", ExpressionConverter.ConvertWithUrlEncoding(__workflow_identityId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2021-03-07");

@@ -1,30 +1,23 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class NotionipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
-        [WorkflowExpressionFactory(nameof(__BuildRetrieveuser))]
-        public IBodyWorkflowAction<RetrieveuserResponse> Retrieveuser([WorkflowExpression] Func<string> userId)
+        public IBodyWorkflowAction<RetrieveuserResponse> Retrieveuser(Expression<Func<string>> userId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<RetrieveuserResponse> __BuildRetrieveuser(WorkflowExpression<string> userId)
-        {
-            WorkflowExpression.Validate(userId, nameof(userId), required: true);
+            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
+            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
             return new DeferredBodyAction<RetrieveuserResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Notion-Version"] = Convert.ToString("2022-06-28");
@@ -33,43 +26,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
-        [WorkflowExpressionFactory(nameof(__BuildListOfAllUsers))]
-        public IBodyWorkflowAction<ListOfAllUsersResponse> ListOfAllUsers([WorkflowExpression] Func<int> pageSize = null)
+        public IBodyWorkflowAction<ListOfAllUsersResponse> ListOfAllUsers(Expression<Func<int>> pageSize = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListOfAllUsersResponse> __BuildListOfAllUsers(WorkflowExpression<int> pageSize = null)
-        {
-            WorkflowExpression.Validate(pageSize, nameof(pageSize), required: false);
+            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
+            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<ListOfAllUsersResponse>(() =>
             {
                 var apiCallPath = "/users";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["page_size"] = Convert.ToString(100);
-                if (pageSize != null)
-                    callPayload.Queries["page_size"] = ExpressionConverter.Convert(pageSize);
+                if (__workflow_pageSize != null)
+                    callPayload.Queries["page_size"] = ExpressionConverter.Convert(__workflow_pageSize);
                 callPayload.Headers["Notion-Version"] = Convert.ToString("2022-06-28");
                 return new ApiConnectionAction<ListOfAllUsersResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
-        [WorkflowExpressionFactory(nameof(__BuildRetrieveablock))]
-        public IBodyWorkflowAction<RetrieveablockResponse> Retrieveablock([WorkflowExpression] Func<string> blockId)
+        public IBodyWorkflowAction<RetrieveablockResponse> Retrieveablock(Expression<Func<string>> blockId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<RetrieveablockResponse> __BuildRetrieveablock(WorkflowExpression<string> blockId)
-        {
-            WorkflowExpression.Validate(blockId, nameof(blockId), required: true);
+            var __workflow_blockId = blockId == null ? null : WorkflowExpression.Compile(blockId);
+            WorkflowExpression.Validate(__workflow_blockId, nameof(blockId), required: true);
             return new DeferredBodyAction<RetrieveablockResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/blocks/{0}", ExpressionConverter.ConvertWithUrlEncoding(blockId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/blocks/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blockId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Notion-Version"] = Convert.ToString("2022-02-22");
@@ -78,19 +59,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteablock))]
-        public IBodyWorkflowAction<DeleteablockResponse> Deleteablock([WorkflowExpression] Func<string> blockId)
+        public IBodyWorkflowAction<DeleteablockResponse> Deleteablock(Expression<Func<string>> blockId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DeleteablockResponse> __BuildDeleteablock(WorkflowExpression<string> blockId)
-        {
-            WorkflowExpression.Validate(blockId, nameof(blockId), required: true);
+            var __workflow_blockId = blockId == null ? null : WorkflowExpression.Compile(blockId);
+            WorkflowExpression.Validate(__workflow_blockId, nameof(blockId), required: true);
             return new DeferredBodyAction<DeleteablockResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/blocks/{0}", ExpressionConverter.ConvertWithUrlEncoding(blockId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/blocks/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blockId, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Notion-Version"] = Convert.ToString("2022-06-28");
@@ -99,34 +74,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateablock))]
-        public IWorkflowAction Updateablock([WorkflowExpression] Func<string> blockId, [WorkflowExpression] Func<bodyparagraphrichTextInputItem[]> bodyparagraphrichText = null, [WorkflowExpression] Func<string> bodyparagraphcolor = null, [WorkflowExpression] Func<bodyheading1richTextInputItem[]> bodyheading1richText = null, [WorkflowExpression] Func<string> bodyheading1color = null, [WorkflowExpression] Func<bodyheading2richTextInputItem[]> bodyheading2richText = null, [WorkflowExpression] Func<string> bodyheading2color = null, [WorkflowExpression] Func<bodyheading3richTextInputItem[]> bodyheading3richText = null, [WorkflowExpression] Func<string> bodyheading3color = null, [WorkflowExpression] Func<bodybulletedListItemrichTextInputItem[]> bodybulletedListItemrichText = null, [WorkflowExpression] Func<string> bodybulletedListItemcolor = null, [WorkflowExpression] Func<bodynumberedListItemrichTextInputItem[]> bodynumberedListItemrichText = null, [WorkflowExpression] Func<string> bodynumberedListItemcolor = null, [WorkflowExpression] Func<bodytoDorichTextInputItem[]> bodytoDorichText = null, [WorkflowExpression] Func<bool> bodytoDochecked = null, [WorkflowExpression] Func<string> bodytoDocolor = null)
+        public IWorkflowAction Updateablock(Expression<Func<string>> blockId, Expression<Func<bodyparagraphrichTextInputItem[]>> bodyparagraphrichText = null, Expression<Func<string>> bodyparagraphcolor = null, Expression<Func<bodyheading1richTextInputItem[]>> bodyheading1richText = null, Expression<Func<string>> bodyheading1color = null, Expression<Func<bodyheading2richTextInputItem[]>> bodyheading2richText = null, Expression<Func<string>> bodyheading2color = null, Expression<Func<bodyheading3richTextInputItem[]>> bodyheading3richText = null, Expression<Func<string>> bodyheading3color = null, Expression<Func<bodybulletedListItemrichTextInputItem[]>> bodybulletedListItemrichText = null, Expression<Func<string>> bodybulletedListItemcolor = null, Expression<Func<bodynumberedListItemrichTextInputItem[]>> bodynumberedListItemrichText = null, Expression<Func<string>> bodynumberedListItemcolor = null, Expression<Func<bodytoDorichTextInputItem[]>> bodytoDorichText = null, Expression<Func<bool>> bodytoDochecked = null, Expression<Func<string>> bodytoDocolor = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildUpdateablock(WorkflowExpression<string> blockId, WorkflowExpression<bodyparagraphrichTextInputItem[]> bodyparagraphrichText = null, WorkflowExpression<string> bodyparagraphcolor = null, WorkflowExpression<bodyheading1richTextInputItem[]> bodyheading1richText = null, WorkflowExpression<string> bodyheading1color = null, WorkflowExpression<bodyheading2richTextInputItem[]> bodyheading2richText = null, WorkflowExpression<string> bodyheading2color = null, WorkflowExpression<bodyheading3richTextInputItem[]> bodyheading3richText = null, WorkflowExpression<string> bodyheading3color = null, WorkflowExpression<bodybulletedListItemrichTextInputItem[]> bodybulletedListItemrichText = null, WorkflowExpression<string> bodybulletedListItemcolor = null, WorkflowExpression<bodynumberedListItemrichTextInputItem[]> bodynumberedListItemrichText = null, WorkflowExpression<string> bodynumberedListItemcolor = null, WorkflowExpression<bodytoDorichTextInputItem[]> bodytoDorichText = null, WorkflowExpression<bool> bodytoDochecked = null, WorkflowExpression<string> bodytoDocolor = null)
-        {
-            WorkflowExpression.Validate(blockId, nameof(blockId), required: true);
-            WorkflowExpression.Validate(bodyparagraphrichText, nameof(bodyparagraphrichText), required: false);
-            WorkflowExpression.Validate(bodyparagraphcolor, nameof(bodyparagraphcolor), required: false);
-            WorkflowExpression.Validate(bodyheading1richText, nameof(bodyheading1richText), required: false);
-            WorkflowExpression.Validate(bodyheading1color, nameof(bodyheading1color), required: false);
-            WorkflowExpression.Validate(bodyheading2richText, nameof(bodyheading2richText), required: false);
-            WorkflowExpression.Validate(bodyheading2color, nameof(bodyheading2color), required: false);
-            WorkflowExpression.Validate(bodyheading3richText, nameof(bodyheading3richText), required: false);
-            WorkflowExpression.Validate(bodyheading3color, nameof(bodyheading3color), required: false);
-            WorkflowExpression.Validate(bodybulletedListItemrichText, nameof(bodybulletedListItemrichText), required: false);
-            WorkflowExpression.Validate(bodybulletedListItemcolor, nameof(bodybulletedListItemcolor), required: false);
-            WorkflowExpression.Validate(bodynumberedListItemrichText, nameof(bodynumberedListItemrichText), required: false);
-            WorkflowExpression.Validate(bodynumberedListItemcolor, nameof(bodynumberedListItemcolor), required: false);
-            WorkflowExpression.Validate(bodytoDorichText, nameof(bodytoDorichText), required: false);
-            WorkflowExpression.Validate(bodytoDochecked, nameof(bodytoDochecked), required: false);
-            WorkflowExpression.Validate(bodytoDocolor, nameof(bodytoDocolor), required: false);
+            var __workflow_blockId = blockId == null ? null : WorkflowExpression.Compile(blockId);
+            WorkflowExpression.Validate(__workflow_blockId, nameof(blockId), required: true);
+            var __workflow_bodyparagraphrichText = bodyparagraphrichText == null ? null : WorkflowExpression.Compile(bodyparagraphrichText);
+            WorkflowExpression.Validate(__workflow_bodyparagraphrichText, nameof(bodyparagraphrichText), required: false);
+            var __workflow_bodyparagraphcolor = bodyparagraphcolor == null ? null : WorkflowExpression.Compile(bodyparagraphcolor);
+            WorkflowExpression.Validate(__workflow_bodyparagraphcolor, nameof(bodyparagraphcolor), required: false);
+            var __workflow_bodyheading1richText = bodyheading1richText == null ? null : WorkflowExpression.Compile(bodyheading1richText);
+            WorkflowExpression.Validate(__workflow_bodyheading1richText, nameof(bodyheading1richText), required: false);
+            var __workflow_bodyheading1color = bodyheading1color == null ? null : WorkflowExpression.Compile(bodyheading1color);
+            WorkflowExpression.Validate(__workflow_bodyheading1color, nameof(bodyheading1color), required: false);
+            var __workflow_bodyheading2richText = bodyheading2richText == null ? null : WorkflowExpression.Compile(bodyheading2richText);
+            WorkflowExpression.Validate(__workflow_bodyheading2richText, nameof(bodyheading2richText), required: false);
+            var __workflow_bodyheading2color = bodyheading2color == null ? null : WorkflowExpression.Compile(bodyheading2color);
+            WorkflowExpression.Validate(__workflow_bodyheading2color, nameof(bodyheading2color), required: false);
+            var __workflow_bodyheading3richText = bodyheading3richText == null ? null : WorkflowExpression.Compile(bodyheading3richText);
+            WorkflowExpression.Validate(__workflow_bodyheading3richText, nameof(bodyheading3richText), required: false);
+            var __workflow_bodyheading3color = bodyheading3color == null ? null : WorkflowExpression.Compile(bodyheading3color);
+            WorkflowExpression.Validate(__workflow_bodyheading3color, nameof(bodyheading3color), required: false);
+            var __workflow_bodybulletedListItemrichText = bodybulletedListItemrichText == null ? null : WorkflowExpression.Compile(bodybulletedListItemrichText);
+            WorkflowExpression.Validate(__workflow_bodybulletedListItemrichText, nameof(bodybulletedListItemrichText), required: false);
+            var __workflow_bodybulletedListItemcolor = bodybulletedListItemcolor == null ? null : WorkflowExpression.Compile(bodybulletedListItemcolor);
+            WorkflowExpression.Validate(__workflow_bodybulletedListItemcolor, nameof(bodybulletedListItemcolor), required: false);
+            var __workflow_bodynumberedListItemrichText = bodynumberedListItemrichText == null ? null : WorkflowExpression.Compile(bodynumberedListItemrichText);
+            WorkflowExpression.Validate(__workflow_bodynumberedListItemrichText, nameof(bodynumberedListItemrichText), required: false);
+            var __workflow_bodynumberedListItemcolor = bodynumberedListItemcolor == null ? null : WorkflowExpression.Compile(bodynumberedListItemcolor);
+            WorkflowExpression.Validate(__workflow_bodynumberedListItemcolor, nameof(bodynumberedListItemcolor), required: false);
+            var __workflow_bodytoDorichText = bodytoDorichText == null ? null : WorkflowExpression.Compile(bodytoDorichText);
+            WorkflowExpression.Validate(__workflow_bodytoDorichText, nameof(bodytoDorichText), required: false);
+            var __workflow_bodytoDochecked = bodytoDochecked == null ? null : WorkflowExpression.Compile(bodytoDochecked);
+            WorkflowExpression.Validate(__workflow_bodytoDochecked, nameof(bodytoDochecked), required: false);
+            var __workflow_bodytoDocolor = bodytoDocolor == null ? null : WorkflowExpression.Compile(bodytoDocolor);
+            WorkflowExpression.Validate(__workflow_bodytoDocolor, nameof(bodytoDocolor), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/blocks/{0}", ExpressionConverter.ConvertWithUrlEncoding(blockId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/blocks/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blockId, 1));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -135,15 +119,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
                 var bodypropCount = 0;
                 var paragraphObject = new JObject();
                 var paragraphObjectpropCount = 0;
-                if (bodyparagraphrichText != null)
+                if (__workflow_bodyparagraphrichText != null)
                 {
-                    paragraphObject["rich_text"] = ExpressionConverter.ConvertO(bodyparagraphrichText);
+                    paragraphObject["rich_text"] = ExpressionConverter.ConvertO(__workflow_bodyparagraphrichText);
                     paragraphObjectpropCount++;
                 }
 
-                if (bodyparagraphcolor != null)
+                if (__workflow_bodyparagraphcolor != null)
                 {
-                    paragraphObject["color"] = ExpressionConverter.ConvertO(bodyparagraphcolor);
+                    paragraphObject["color"] = ExpressionConverter.ConvertO(__workflow_bodyparagraphcolor);
                     paragraphObjectpropCount++;
                 }
 
@@ -155,15 +139,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
 
                 var heading1Object = new JObject();
                 var heading1ObjectpropCount = 0;
-                if (bodyheading1richText != null)
+                if (__workflow_bodyheading1richText != null)
                 {
-                    heading1Object["rich_text"] = ExpressionConverter.ConvertO(bodyheading1richText);
+                    heading1Object["rich_text"] = ExpressionConverter.ConvertO(__workflow_bodyheading1richText);
                     heading1ObjectpropCount++;
                 }
 
-                if (bodyheading1color != null)
+                if (__workflow_bodyheading1color != null)
                 {
-                    heading1Object["color"] = ExpressionConverter.ConvertO(bodyheading1color);
+                    heading1Object["color"] = ExpressionConverter.ConvertO(__workflow_bodyheading1color);
                     heading1ObjectpropCount++;
                 }
 
@@ -175,15 +159,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
 
                 var heading2Object = new JObject();
                 var heading2ObjectpropCount = 0;
-                if (bodyheading2richText != null)
+                if (__workflow_bodyheading2richText != null)
                 {
-                    heading2Object["rich_text"] = ExpressionConverter.ConvertO(bodyheading2richText);
+                    heading2Object["rich_text"] = ExpressionConverter.ConvertO(__workflow_bodyheading2richText);
                     heading2ObjectpropCount++;
                 }
 
-                if (bodyheading2color != null)
+                if (__workflow_bodyheading2color != null)
                 {
-                    heading2Object["color"] = ExpressionConverter.ConvertO(bodyheading2color);
+                    heading2Object["color"] = ExpressionConverter.ConvertO(__workflow_bodyheading2color);
                     heading2ObjectpropCount++;
                 }
 
@@ -195,15 +179,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
 
                 var heading3Object = new JObject();
                 var heading3ObjectpropCount = 0;
-                if (bodyheading3richText != null)
+                if (__workflow_bodyheading3richText != null)
                 {
-                    heading3Object["rich_text"] = ExpressionConverter.ConvertO(bodyheading3richText);
+                    heading3Object["rich_text"] = ExpressionConverter.ConvertO(__workflow_bodyheading3richText);
                     heading3ObjectpropCount++;
                 }
 
-                if (bodyheading3color != null)
+                if (__workflow_bodyheading3color != null)
                 {
-                    heading3Object["color"] = ExpressionConverter.ConvertO(bodyheading3color);
+                    heading3Object["color"] = ExpressionConverter.ConvertO(__workflow_bodyheading3color);
                     heading3ObjectpropCount++;
                 }
 
@@ -215,15 +199,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
 
                 var bulletedListItemObject = new JObject();
                 var bulletedListItemObjectpropCount = 0;
-                if (bodybulletedListItemrichText != null)
+                if (__workflow_bodybulletedListItemrichText != null)
                 {
-                    bulletedListItemObject["rich_text"] = ExpressionConverter.ConvertO(bodybulletedListItemrichText);
+                    bulletedListItemObject["rich_text"] = ExpressionConverter.ConvertO(__workflow_bodybulletedListItemrichText);
                     bulletedListItemObjectpropCount++;
                 }
 
-                if (bodybulletedListItemcolor != null)
+                if (__workflow_bodybulletedListItemcolor != null)
                 {
-                    bulletedListItemObject["color"] = ExpressionConverter.ConvertO(bodybulletedListItemcolor);
+                    bulletedListItemObject["color"] = ExpressionConverter.ConvertO(__workflow_bodybulletedListItemcolor);
                     bulletedListItemObjectpropCount++;
                 }
 
@@ -235,15 +219,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
 
                 var numberedListItemObject = new JObject();
                 var numberedListItemObjectpropCount = 0;
-                if (bodynumberedListItemrichText != null)
+                if (__workflow_bodynumberedListItemrichText != null)
                 {
-                    numberedListItemObject["rich_text"] = ExpressionConverter.ConvertO(bodynumberedListItemrichText);
+                    numberedListItemObject["rich_text"] = ExpressionConverter.ConvertO(__workflow_bodynumberedListItemrichText);
                     numberedListItemObjectpropCount++;
                 }
 
-                if (bodynumberedListItemcolor != null)
+                if (__workflow_bodynumberedListItemcolor != null)
                 {
-                    numberedListItemObject["color"] = ExpressionConverter.ConvertO(bodynumberedListItemcolor);
+                    numberedListItemObject["color"] = ExpressionConverter.ConvertO(__workflow_bodynumberedListItemcolor);
                     numberedListItemObjectpropCount++;
                 }
 
@@ -255,21 +239,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
 
                 var toDoObject = new JObject();
                 var toDoObjectpropCount = 0;
-                if (bodytoDorichText != null)
+                if (__workflow_bodytoDorichText != null)
                 {
-                    toDoObject["rich_text"] = ExpressionConverter.ConvertO(bodytoDorichText);
+                    toDoObject["rich_text"] = ExpressionConverter.ConvertO(__workflow_bodytoDorichText);
                     toDoObjectpropCount++;
                 }
 
-                if (bodytoDochecked != null)
+                if (__workflow_bodytoDochecked != null)
                 {
-                    toDoObject["checked"] = ExpressionConverter.ConvertO(bodytoDochecked);
+                    toDoObject["checked"] = ExpressionConverter.ConvertO(__workflow_bodytoDochecked);
                     toDoObjectpropCount++;
                 }
 
-                if (bodytoDocolor != null)
+                if (__workflow_bodytoDocolor != null)
                 {
-                    toDoObject["color"] = ExpressionConverter.ConvertO(bodytoDocolor);
+                    toDoObject["color"] = ExpressionConverter.ConvertO(__workflow_bodytoDocolor);
                     toDoObjectpropCount++;
                 }
 
@@ -289,54 +273,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
-        [WorkflowExpressionFactory(nameof(__BuildRetrieveBlockChildren))]
-        public IBodyWorkflowAction<RetrieveBlockChildrenResponse> RetrieveBlockChildren([WorkflowExpression] Func<string> blockId, [WorkflowExpression] Func<int> pageSize = null)
+        public IBodyWorkflowAction<RetrieveBlockChildrenResponse> RetrieveBlockChildren(Expression<Func<string>> blockId, Expression<Func<int>> pageSize = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<RetrieveBlockChildrenResponse> __BuildRetrieveBlockChildren(WorkflowExpression<string> blockId, WorkflowExpression<int> pageSize = null)
-        {
-            WorkflowExpression.Validate(blockId, nameof(blockId), required: true);
-            WorkflowExpression.Validate(pageSize, nameof(pageSize), required: false);
+            var __workflow_blockId = blockId == null ? null : WorkflowExpression.Compile(blockId);
+            WorkflowExpression.Validate(__workflow_blockId, nameof(blockId), required: true);
+            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
+            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<RetrieveBlockChildrenResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/blocks/{0}/children", ExpressionConverter.ConvertWithUrlEncoding(blockId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/blocks/{0}/children", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blockId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["page_size"] = Convert.ToString(100);
-                if (pageSize != null)
-                    callPayload.Queries["page_size"] = ExpressionConverter.Convert(pageSize);
+                if (__workflow_pageSize != null)
+                    callPayload.Queries["page_size"] = ExpressionConverter.Convert(__workflow_pageSize);
                 callPayload.Headers["Notion-Version"] = Convert.ToString("2022-06-28");
                 return new ApiConnectionAction<RetrieveBlockChildrenResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
-        [WorkflowExpressionFactory(nameof(__BuildAppendblockchildren))]
-        public IWorkflowAction Appendblockchildren([WorkflowExpression] Func<string> blockId, [WorkflowExpression] Func<bodychildrenInputItem[]> bodychildren = null)
+        public IWorkflowAction Appendblockchildren(Expression<Func<string>> blockId, Expression<Func<bodychildrenInputItem[]>> bodychildren = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildAppendblockchildren(WorkflowExpression<string> blockId, WorkflowExpression<bodychildrenInputItem[]> bodychildren = null)
-        {
-            WorkflowExpression.Validate(blockId, nameof(blockId), required: true);
-            WorkflowExpression.Validate(bodychildren, nameof(bodychildren), required: false);
+            var __workflow_blockId = blockId == null ? null : WorkflowExpression.Compile(blockId);
+            WorkflowExpression.Validate(__workflow_blockId, nameof(blockId), required: true);
+            var __workflow_bodychildren = bodychildren == null ? null : WorkflowExpression.Compile(bodychildren);
+            WorkflowExpression.Validate(__workflow_bodychildren, nameof(bodychildren), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/blocks/{0}/children", ExpressionConverter.ConvertWithUrlEncoding(blockId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/blocks/{0}/children", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blockId, 1));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Notion-Version"] = Convert.ToString("2022-06-28");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodychildren != null)
+                if (__workflow_bodychildren != null)
                 {
-                    body["children"] = ExpressionConverter.ConvertO(bodychildren);
+                    body["children"] = ExpressionConverter.ConvertO(__workflow_bodychildren);
                     bodypropCount++;
                 }
 
@@ -350,19 +324,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
-        [WorkflowExpressionFactory(nameof(__BuildRetrieveADatabase))]
-        public IBodyWorkflowAction<DatabaseResponse> RetrieveADatabase([WorkflowExpression] Func<string> databaseId)
+        public IBodyWorkflowAction<DatabaseResponse> RetrieveADatabase(Expression<Func<string>> databaseId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DatabaseResponse> __BuildRetrieveADatabase(WorkflowExpression<string> databaseId)
-        {
-            WorkflowExpression.Validate(databaseId, nameof(databaseId), required: true);
+            var __workflow_databaseId = databaseId == null ? null : WorkflowExpression.Compile(databaseId);
+            WorkflowExpression.Validate(__workflow_databaseId, nameof(databaseId), required: true);
             return new DeferredBodyAction<DatabaseResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/databases/{0}", ExpressionConverter.ConvertWithUrlEncoding(databaseId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/databases/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_databaseId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Notion-Version"] = Convert.ToString("2022-06-28");
@@ -371,18 +339,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
-        [WorkflowExpressionFactory(nameof(__BuildSearch))]
-        public IBodyWorkflowAction<SearchResponse> Search([WorkflowExpression] Func<string> bodyquery, [WorkflowExpression] Func<string> bodysortdirection = null, [WorkflowExpression] Func<string> bodysorttimestamp = null)
+        public IBodyWorkflowAction<SearchResponse> Search(Expression<Func<string>> bodyquery, Expression<Func<string>> bodysortdirection = null, Expression<Func<string>> bodysorttimestamp = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SearchResponse> __BuildSearch(WorkflowExpression<string> bodyquery, WorkflowExpression<string> bodysortdirection = null, WorkflowExpression<string> bodysorttimestamp = null)
-        {
-            WorkflowExpression.Validate(bodyquery, nameof(bodyquery), required: true);
-            WorkflowExpression.Validate(bodysortdirection, nameof(bodysortdirection), required: false);
-            WorkflowExpression.Validate(bodysorttimestamp, nameof(bodysorttimestamp), required: false);
+            var __workflow_bodyquery = bodyquery == null ? null : WorkflowExpression.Compile(bodyquery);
+            WorkflowExpression.Validate(__workflow_bodyquery, nameof(bodyquery), required: true);
+            var __workflow_bodysortdirection = bodysortdirection == null ? null : WorkflowExpression.Compile(bodysortdirection);
+            WorkflowExpression.Validate(__workflow_bodysortdirection, nameof(bodysortdirection), required: false);
+            var __workflow_bodysorttimestamp = bodysorttimestamp == null ? null : WorkflowExpression.Compile(bodysorttimestamp);
+            WorkflowExpression.Validate(__workflow_bodysorttimestamp, nameof(bodysorttimestamp), required: false);
             return new DeferredBodyAction<SearchResponse>(() =>
             {
                 var apiCallPath = "/search";
@@ -393,18 +357,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
+                body["query"] = ExpressionConverter.ConvertO(__workflow_bodyquery);
                 var sortObject = new JObject();
                 var sortObjectpropCount = 0;
-                if (bodysortdirection != null)
+                if (__workflow_bodysortdirection != null)
                 {
-                    sortObject["direction"] = ExpressionConverter.ConvertO(bodysortdirection);
+                    sortObject["direction"] = ExpressionConverter.ConvertO(__workflow_bodysortdirection);
                     sortObjectpropCount++;
                 }
 
-                if (bodysorttimestamp != null)
+                if (__workflow_bodysorttimestamp != null)
                 {
-                    sortObject["timestamp"] = ExpressionConverter.ConvertO(bodysorttimestamp);
+                    sortObject["timestamp"] = ExpressionConverter.ConvertO(__workflow_bodysorttimestamp);
                     sortObjectpropCount++;
                 }
 
@@ -424,19 +388,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
-        [WorkflowExpressionFactory(nameof(__BuildQueryADatabase))]
-        public IBodyWorkflowAction<DatabaseResponse> QueryADatabase([WorkflowExpression] Func<string> databaseId)
+        public IBodyWorkflowAction<DatabaseResponse> QueryADatabase(Expression<Func<string>> databaseId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DatabaseResponse> __BuildQueryADatabase(WorkflowExpression<string> databaseId)
-        {
-            WorkflowExpression.Validate(databaseId, nameof(databaseId), required: true);
+            var __workflow_databaseId = databaseId == null ? null : WorkflowExpression.Compile(databaseId);
+            WorkflowExpression.Validate(__workflow_databaseId, nameof(databaseId), required: true);
             return new DeferredBodyAction<DatabaseResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/databases/{0}/query", ExpressionConverter.ConvertWithUrlEncoding(databaseId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/databases/{0}/query", ExpressionConverter.ConvertWithUrlEncoding(__workflow_databaseId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Notion-Version"] = Convert.ToString("2022-06-28");
@@ -456,20 +414,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
-        [WorkflowExpressionFactory(nameof(__BuildRetrieveapagepropertyitem))]
-        public IBodyWorkflowAction<RetrieveapagepropertyitemResponse> Retrieveapagepropertyitem([WorkflowExpression] Func<string> pageId, [WorkflowExpression] Func<string> propertyId)
+        public IBodyWorkflowAction<RetrieveapagepropertyitemResponse> Retrieveapagepropertyitem(Expression<Func<string>> pageId, Expression<Func<string>> propertyId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<RetrieveapagepropertyitemResponse> __BuildRetrieveapagepropertyitem(WorkflowExpression<string> pageId, WorkflowExpression<string> propertyId)
-        {
-            WorkflowExpression.Validate(pageId, nameof(pageId), required: true);
-            WorkflowExpression.Validate(propertyId, nameof(propertyId), required: true);
+            var __workflow_pageId = pageId == null ? null : WorkflowExpression.Compile(pageId);
+            WorkflowExpression.Validate(__workflow_pageId, nameof(pageId), required: true);
+            var __workflow_propertyId = propertyId == null ? null : WorkflowExpression.Compile(propertyId);
+            WorkflowExpression.Validate(__workflow_propertyId, nameof(propertyId), required: true);
             return new DeferredBodyAction<RetrieveapagepropertyitemResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/pages/{0}/properties/{1}", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(propertyId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/pages/{0}/properties/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_propertyId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Notion-Version"] = Convert.ToString("2022-06-28");
@@ -478,19 +431,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
-        [WorkflowExpressionFactory(nameof(__BuildRetrieveapage))]
-        public IBodyWorkflowAction<RetrieveapageResponse> Retrieveapage([WorkflowExpression] Func<string> pageId)
+        public IBodyWorkflowAction<RetrieveapageResponse> Retrieveapage(Expression<Func<string>> pageId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<RetrieveapageResponse> __BuildRetrieveapage(WorkflowExpression<string> pageId)
-        {
-            WorkflowExpression.Validate(pageId, nameof(pageId), required: true);
+            var __workflow_pageId = pageId == null ? null : WorkflowExpression.Compile(pageId);
+            WorkflowExpression.Validate(__workflow_pageId, nameof(pageId), required: true);
             return new DeferredBodyAction<RetrieveapageResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/pages/{0}", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/pages/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Notion-Version"] = Convert.ToString("2022-06-28");
@@ -499,18 +446,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateaPage))]
-        public IBodyWorkflowAction<CreateaPageResponse> CreateaPage([WorkflowExpression] Func<string> bodyparentdatabaseId = null, [WorkflowExpression] Func<string> bodyiconemoji = null, [WorkflowExpression] Func<string> bodycoverexternalurl = null)
+        public IBodyWorkflowAction<CreateaPageResponse> CreateaPage(Expression<Func<string>> bodyparentdatabaseId = null, Expression<Func<string>> bodyiconemoji = null, Expression<Func<string>> bodycoverexternalurl = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateaPageResponse> __BuildCreateaPage(WorkflowExpression<string> bodyparentdatabaseId = null, WorkflowExpression<string> bodyiconemoji = null, WorkflowExpression<string> bodycoverexternalurl = null)
-        {
-            WorkflowExpression.Validate(bodyparentdatabaseId, nameof(bodyparentdatabaseId), required: false);
-            WorkflowExpression.Validate(bodyiconemoji, nameof(bodyiconemoji), required: false);
-            WorkflowExpression.Validate(bodycoverexternalurl, nameof(bodycoverexternalurl), required: false);
+            var __workflow_bodyparentdatabaseId = bodyparentdatabaseId == null ? null : WorkflowExpression.Compile(bodyparentdatabaseId);
+            WorkflowExpression.Validate(__workflow_bodyparentdatabaseId, nameof(bodyparentdatabaseId), required: false);
+            var __workflow_bodyiconemoji = bodyiconemoji == null ? null : WorkflowExpression.Compile(bodyiconemoji);
+            WorkflowExpression.Validate(__workflow_bodyiconemoji, nameof(bodyiconemoji), required: false);
+            var __workflow_bodycoverexternalurl = bodycoverexternalurl == null ? null : WorkflowExpression.Compile(bodycoverexternalurl);
+            WorkflowExpression.Validate(__workflow_bodycoverexternalurl, nameof(bodycoverexternalurl), required: false);
             return new DeferredBodyAction<CreateaPageResponse>(() =>
             {
                 var apiCallPath = "/pages";
@@ -522,9 +465,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
                 var bodypropCount = 0;
                 var parentObject = new JObject();
                 var parentObjectpropCount = 0;
-                if (bodyparentdatabaseId != null)
+                if (__workflow_bodyparentdatabaseId != null)
                 {
-                    parentObject["database_id"] = ExpressionConverter.ConvertO(bodyparentdatabaseId);
+                    parentObject["database_id"] = ExpressionConverter.ConvertO(__workflow_bodyparentdatabaseId);
                     parentObjectpropCount++;
                 }
 
@@ -536,9 +479,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
 
                 var iconObject = new JObject();
                 var iconObjectpropCount = 0;
-                if (bodyiconemoji != null)
+                if (__workflow_bodyiconemoji != null)
                 {
-                    iconObject["emoji"] = ExpressionConverter.ConvertO(bodyiconemoji);
+                    iconObject["emoji"] = ExpressionConverter.ConvertO(__workflow_bodyiconemoji);
                     iconObjectpropCount++;
                 }
 
@@ -552,9 +495,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
                 var coverObjectpropCount = 0;
                 var externalObject = new JObject();
                 var externalObjectpropCount = 0;
-                if (bodycoverexternalurl != null)
+                if (__workflow_bodycoverexternalurl != null)
                 {
-                    externalObject["url"] = ExpressionConverter.ConvertO(bodycoverexternalurl);
+                    externalObject["url"] = ExpressionConverter.ConvertO(__workflow_bodycoverexternalurl);
                     externalObjectpropCount++;
                 }
 
@@ -588,40 +531,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
-        [WorkflowExpressionFactory(nameof(__BuildRetrievecomments))]
-        public IBodyWorkflowAction<CommentResponse> Retrievecomments([WorkflowExpression] Func<string> blockId)
+        public IBodyWorkflowAction<CommentResponse> Retrievecomments(Expression<Func<string>> blockId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CommentResponse> __BuildRetrievecomments(WorkflowExpression<string> blockId)
-        {
-            WorkflowExpression.Validate(blockId, nameof(blockId), required: true);
+            var __workflow_blockId = blockId == null ? null : WorkflowExpression.Compile(blockId);
+            WorkflowExpression.Validate(__workflow_blockId, nameof(blockId), required: true);
             return new DeferredBodyAction<CommentResponse>(() =>
             {
                 var apiCallPath = "/comments";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["block_id"] = ExpressionConverter.Convert(blockId);
+                callPayload.Queries["block_id"] = ExpressionConverter.Convert(__workflow_blockId);
                 callPayload.Headers["Notion-Version"] = Convert.ToString("2022-06-28");
                 return new ApiConnectionAction<CommentResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
-        [WorkflowExpressionFactory(nameof(__BuildCreatecomment))]
-        public IBodyWorkflowAction<CommentResponse> Createcomment([WorkflowExpression] Func<string> bodyparentpageId = null, [WorkflowExpression] Func<string> bodydiscussionId = null, [WorkflowExpression] Func<bodyrichTextInputItem[]> bodyrichText = null)
+        public IBodyWorkflowAction<CommentResponse> Createcomment(Expression<Func<string>> bodyparentpageId = null, Expression<Func<string>> bodydiscussionId = null, Expression<Func<bodyrichTextInputItem[]>> bodyrichText = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CommentResponse> __BuildCreatecomment(WorkflowExpression<string> bodyparentpageId = null, WorkflowExpression<string> bodydiscussionId = null, WorkflowExpression<bodyrichTextInputItem[]> bodyrichText = null)
-        {
-            WorkflowExpression.Validate(bodyparentpageId, nameof(bodyparentpageId), required: false);
-            WorkflowExpression.Validate(bodydiscussionId, nameof(bodydiscussionId), required: false);
-            WorkflowExpression.Validate(bodyrichText, nameof(bodyrichText), required: false);
+            var __workflow_bodyparentpageId = bodyparentpageId == null ? null : WorkflowExpression.Compile(bodyparentpageId);
+            WorkflowExpression.Validate(__workflow_bodyparentpageId, nameof(bodyparentpageId), required: false);
+            var __workflow_bodydiscussionId = bodydiscussionId == null ? null : WorkflowExpression.Compile(bodydiscussionId);
+            WorkflowExpression.Validate(__workflow_bodydiscussionId, nameof(bodydiscussionId), required: false);
+            var __workflow_bodyrichText = bodyrichText == null ? null : WorkflowExpression.Compile(bodyrichText);
+            WorkflowExpression.Validate(__workflow_bodyrichText, nameof(bodyrichText), required: false);
             return new DeferredBodyAction<CommentResponse>(() =>
             {
                 var apiCallPath = "/comments";
@@ -632,9 +565,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
                 var bodypropCount = 0;
                 var parentObject = new JObject();
                 var parentObjectpropCount = 0;
-                if (bodyparentpageId != null)
+                if (__workflow_bodyparentpageId != null)
                 {
-                    parentObject["page_id"] = ExpressionConverter.ConvertO(bodyparentpageId);
+                    parentObject["page_id"] = ExpressionConverter.ConvertO(__workflow_bodyparentpageId);
                     parentObjectpropCount++;
                 }
 
@@ -644,15 +577,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
                     bodypropCount++;
                 }
 
-                if (bodydiscussionId != null)
+                if (__workflow_bodydiscussionId != null)
                 {
-                    body["discussion_id"] = ExpressionConverter.ConvertO(bodydiscussionId);
+                    body["discussion_id"] = ExpressionConverter.ConvertO(__workflow_bodydiscussionId);
                     bodypropCount++;
                 }
 
-                if (bodyrichText != null)
+                if (__workflow_bodyrichText != null)
                 {
-                    body["rich_text"] = ExpressionConverter.ConvertO(bodyrichText);
+                    body["rich_text"] = ExpressionConverter.ConvertO(__workflow_bodyrichText);
                     bodypropCount++;
                 }
 

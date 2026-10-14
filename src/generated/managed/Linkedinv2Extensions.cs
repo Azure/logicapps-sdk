@@ -1,34 +1,34 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class Linkedinv2Actions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "linkedinv2")]
-        [WorkflowExpressionFactory(nameof(__BuildPostCompanyUpdate))]
-        public IBodyWorkflowAction<ShareResponseV2> PostCompanyUpdate([WorkflowExpression] Func<string> bodycompany, [WorkflowExpression] Func<string> bodycommentary, [WorkflowExpression] Func<bodyvisibilityInput> bodyvisibility, [WorkflowExpression] Func<string> bodycontentarticleuRLOfTheArticle, [WorkflowExpression] Func<string> bodycontentarticletitle, [WorkflowExpression] Func<bool> bodyisReshareDisabledByAuthor = null, [WorkflowExpression] Func<string> bodycontentarticledescription = null, [WorkflowExpression] Func<string> bodycontentarticlethumbnailURL = null)
+        public IBodyWorkflowAction<ShareResponseV2> PostCompanyUpdate(Expression<Func<string>> bodycompany, Expression<Func<string>> bodycommentary, Expression<Func<bodyvisibilityInput>> bodyvisibility, Expression<Func<string>> bodycontentarticleuRLOfTheArticle, Expression<Func<string>> bodycontentarticletitle, Expression<Func<bool>> bodyisReshareDisabledByAuthor = null, Expression<Func<string>> bodycontentarticledescription = null, Expression<Func<string>> bodycontentarticlethumbnailURL = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ShareResponseV2> __BuildPostCompanyUpdate(WorkflowExpression<string> bodycompany, WorkflowExpression<string> bodycommentary, WorkflowExpression<bodyvisibilityInput> bodyvisibility, WorkflowExpression<string> bodycontentarticleuRLOfTheArticle, WorkflowExpression<string> bodycontentarticletitle, WorkflowExpression<bool> bodyisReshareDisabledByAuthor = null, WorkflowExpression<string> bodycontentarticledescription = null, WorkflowExpression<string> bodycontentarticlethumbnailURL = null)
-        {
-            WorkflowExpression.Validate(bodycompany, nameof(bodycompany), required: true);
-            WorkflowExpression.Validate(bodycommentary, nameof(bodycommentary), required: true);
-            WorkflowExpression.Validate(bodyvisibility, nameof(bodyvisibility), required: true);
-            WorkflowExpression.Validate(bodycontentarticleuRLOfTheArticle, nameof(bodycontentarticleuRLOfTheArticle), required: true);
-            WorkflowExpression.Validate(bodycontentarticletitle, nameof(bodycontentarticletitle), required: true);
-            WorkflowExpression.Validate(bodyisReshareDisabledByAuthor, nameof(bodyisReshareDisabledByAuthor), required: false);
-            WorkflowExpression.Validate(bodycontentarticledescription, nameof(bodycontentarticledescription), required: false);
-            WorkflowExpression.Validate(bodycontentarticlethumbnailURL, nameof(bodycontentarticlethumbnailURL), required: false);
+            var __workflow_bodycompany = bodycompany == null ? null : WorkflowExpression.Compile(bodycompany);
+            WorkflowExpression.Validate(__workflow_bodycompany, nameof(bodycompany), required: true);
+            var __workflow_bodycommentary = bodycommentary == null ? null : WorkflowExpression.Compile(bodycommentary);
+            WorkflowExpression.Validate(__workflow_bodycommentary, nameof(bodycommentary), required: true);
+            var __workflow_bodyvisibility = bodyvisibility == null ? null : WorkflowExpression.Compile(bodyvisibility);
+            WorkflowExpression.Validate(__workflow_bodyvisibility, nameof(bodyvisibility), required: true);
+            var __workflow_bodycontentarticleuRLOfTheArticle = bodycontentarticleuRLOfTheArticle == null ? null : WorkflowExpression.Compile(bodycontentarticleuRLOfTheArticle);
+            WorkflowExpression.Validate(__workflow_bodycontentarticleuRLOfTheArticle, nameof(bodycontentarticleuRLOfTheArticle), required: true);
+            var __workflow_bodycontentarticletitle = bodycontentarticletitle == null ? null : WorkflowExpression.Compile(bodycontentarticletitle);
+            WorkflowExpression.Validate(__workflow_bodycontentarticletitle, nameof(bodycontentarticletitle), required: true);
+            var __workflow_bodyisReshareDisabledByAuthor = bodyisReshareDisabledByAuthor == null ? null : WorkflowExpression.Compile(bodyisReshareDisabledByAuthor);
+            WorkflowExpression.Validate(__workflow_bodyisReshareDisabledByAuthor, nameof(bodyisReshareDisabledByAuthor), required: false);
+            var __workflow_bodycontentarticledescription = bodycontentarticledescription == null ? null : WorkflowExpression.Compile(bodycontentarticledescription);
+            WorkflowExpression.Validate(__workflow_bodycontentarticledescription, nameof(bodycontentarticledescription), required: false);
+            var __workflow_bodycontentarticlethumbnailURL = bodycontentarticlethumbnailURL == null ? null : WorkflowExpression.Compile(bodycontentarticlethumbnailURL);
+            WorkflowExpression.Validate(__workflow_bodycontentarticlethumbnailURL, nameof(bodycontentarticlethumbnailURL), required: false);
             return new DeferredBodyAction<ShareResponseV2>(() =>
             {
                 var apiCallPath = "/company/rest/posts";
@@ -37,18 +37,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["author"] = ExpressionConverter.ConvertO(bodycompany);
+                body["author"] = ExpressionConverter.ConvertO(__workflow_bodycompany);
                 bodypropCount++;
-                body["commentary"] = ExpressionConverter.ConvertO(bodycommentary);
+                body["commentary"] = ExpressionConverter.ConvertO(__workflow_bodycommentary);
                 bodypropCount++;
-                body["visibility"] = ExpressionConverter.ConvertO(bodyvisibility);
+                body["visibility"] = ExpressionConverter.ConvertO(__workflow_bodyvisibility);
                 body["lifecycleState"] = "PUBLISHED";
                 bodypropCount++;
-                if (bodyisReshareDisabledByAuthor != null)
+                if (__workflow_bodyisReshareDisabledByAuthor != null)
                 {
-                    if (bodyisReshareDisabledByAuthor != null)
+                    if (__workflow_bodyisReshareDisabledByAuthor != null)
                     {
-                        body["isReshareDisabledByAuthor"] = ExpressionConverter.ConvertO(bodyisReshareDisabledByAuthor);
+                        body["isReshareDisabledByAuthor"] = ExpressionConverter.ConvertO(__workflow_bodyisReshareDisabledByAuthor);
                         bodypropCount++;
                     }
 
@@ -74,11 +74,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
                 var contentObjectpropCount = 0;
                 var articleObject = new JObject();
                 var articleObjectpropCount = 0;
-                if (bodycontentarticledescription != null)
+                if (__workflow_bodycontentarticledescription != null)
                 {
-                    if (bodycontentarticledescription != null)
+                    if (__workflow_bodycontentarticledescription != null)
                     {
-                        articleObject["description"] = ExpressionConverter.ConvertO(bodycontentarticledescription);
+                        articleObject["description"] = ExpressionConverter.ConvertO(__workflow_bodycontentarticledescription);
                         articleObjectpropCount++;
                     }
 
@@ -91,12 +91,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
                 }
 
                 articleObjectpropCount++;
-                articleObject["source"] = ExpressionConverter.ConvertO(bodycontentarticleuRLOfTheArticle);
+                articleObject["source"] = ExpressionConverter.ConvertO(__workflow_bodycontentarticleuRLOfTheArticle);
                 articleObjectpropCount++;
-                articleObject["title"] = ExpressionConverter.ConvertO(bodycontentarticletitle);
-                if (bodycontentarticlethumbnailURL != null)
+                articleObject["title"] = ExpressionConverter.ConvertO(__workflow_bodycontentarticletitle);
+                if (__workflow_bodycontentarticlethumbnailURL != null)
                 {
-                    articleObject["thumbnail"] = ExpressionConverter.ConvertO(bodycontentarticlethumbnailURL);
+                    articleObject["thumbnail"] = ExpressionConverter.ConvertO(__workflow_bodycontentarticlethumbnailURL);
                     articleObjectpropCount++;
                 }
 
@@ -122,22 +122,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "linkedinv2")]
-        [WorkflowExpressionFactory(nameof(__BuildPostUpdate))]
-        public IBodyWorkflowAction<ShareResponseV2> PostUpdate([WorkflowExpression] Func<string> bodycommentary, [WorkflowExpression] Func<bodyvisibilityInput> bodyvisibility, [WorkflowExpression] Func<string> bodycontentarticleuRLOfTheArticle, [WorkflowExpression] Func<string> bodycontentarticletitle, [WorkflowExpression] Func<bool> bodyisReshareDisabledByAuthor = null, [WorkflowExpression] Func<string> bodycontentarticledescription = null, [WorkflowExpression] Func<string> bodycontentarticlethumbnailURL = null)
+        public IBodyWorkflowAction<ShareResponseV2> PostUpdate(Expression<Func<string>> bodycommentary, Expression<Func<bodyvisibilityInput>> bodyvisibility, Expression<Func<string>> bodycontentarticleuRLOfTheArticle, Expression<Func<string>> bodycontentarticletitle, Expression<Func<bool>> bodyisReshareDisabledByAuthor = null, Expression<Func<string>> bodycontentarticledescription = null, Expression<Func<string>> bodycontentarticlethumbnailURL = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ShareResponseV2> __BuildPostUpdate(WorkflowExpression<string> bodycommentary, WorkflowExpression<bodyvisibilityInput> bodyvisibility, WorkflowExpression<string> bodycontentarticleuRLOfTheArticle, WorkflowExpression<string> bodycontentarticletitle, WorkflowExpression<bool> bodyisReshareDisabledByAuthor = null, WorkflowExpression<string> bodycontentarticledescription = null, WorkflowExpression<string> bodycontentarticlethumbnailURL = null)
-        {
-            WorkflowExpression.Validate(bodycommentary, nameof(bodycommentary), required: true);
-            WorkflowExpression.Validate(bodyvisibility, nameof(bodyvisibility), required: true);
-            WorkflowExpression.Validate(bodycontentarticleuRLOfTheArticle, nameof(bodycontentarticleuRLOfTheArticle), required: true);
-            WorkflowExpression.Validate(bodycontentarticletitle, nameof(bodycontentarticletitle), required: true);
-            WorkflowExpression.Validate(bodyisReshareDisabledByAuthor, nameof(bodyisReshareDisabledByAuthor), required: false);
-            WorkflowExpression.Validate(bodycontentarticledescription, nameof(bodycontentarticledescription), required: false);
-            WorkflowExpression.Validate(bodycontentarticlethumbnailURL, nameof(bodycontentarticlethumbnailURL), required: false);
+            var __workflow_bodycommentary = bodycommentary == null ? null : WorkflowExpression.Compile(bodycommentary);
+            WorkflowExpression.Validate(__workflow_bodycommentary, nameof(bodycommentary), required: true);
+            var __workflow_bodyvisibility = bodyvisibility == null ? null : WorkflowExpression.Compile(bodyvisibility);
+            WorkflowExpression.Validate(__workflow_bodyvisibility, nameof(bodyvisibility), required: true);
+            var __workflow_bodycontentarticleuRLOfTheArticle = bodycontentarticleuRLOfTheArticle == null ? null : WorkflowExpression.Compile(bodycontentarticleuRLOfTheArticle);
+            WorkflowExpression.Validate(__workflow_bodycontentarticleuRLOfTheArticle, nameof(bodycontentarticleuRLOfTheArticle), required: true);
+            var __workflow_bodycontentarticletitle = bodycontentarticletitle == null ? null : WorkflowExpression.Compile(bodycontentarticletitle);
+            WorkflowExpression.Validate(__workflow_bodycontentarticletitle, nameof(bodycontentarticletitle), required: true);
+            var __workflow_bodyisReshareDisabledByAuthor = bodyisReshareDisabledByAuthor == null ? null : WorkflowExpression.Compile(bodyisReshareDisabledByAuthor);
+            WorkflowExpression.Validate(__workflow_bodyisReshareDisabledByAuthor, nameof(bodyisReshareDisabledByAuthor), required: false);
+            var __workflow_bodycontentarticledescription = bodycontentarticledescription == null ? null : WorkflowExpression.Compile(bodycontentarticledescription);
+            WorkflowExpression.Validate(__workflow_bodycontentarticledescription, nameof(bodycontentarticledescription), required: false);
+            var __workflow_bodycontentarticlethumbnailURL = bodycontentarticlethumbnailURL == null ? null : WorkflowExpression.Compile(bodycontentarticlethumbnailURL);
+            WorkflowExpression.Validate(__workflow_bodycontentarticlethumbnailURL, nameof(bodycontentarticlethumbnailURL), required: false);
             return new DeferredBodyAction<ShareResponseV2>(() =>
             {
                 var apiCallPath = "/people/rest/posts";
@@ -146,16 +146,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["commentary"] = ExpressionConverter.ConvertO(bodycommentary);
+                body["commentary"] = ExpressionConverter.ConvertO(__workflow_bodycommentary);
                 bodypropCount++;
-                body["visibility"] = ExpressionConverter.ConvertO(bodyvisibility);
+                body["visibility"] = ExpressionConverter.ConvertO(__workflow_bodyvisibility);
                 body["lifecycleState"] = "PUBLISHED";
                 bodypropCount++;
-                if (bodyisReshareDisabledByAuthor != null)
+                if (__workflow_bodyisReshareDisabledByAuthor != null)
                 {
-                    if (bodyisReshareDisabledByAuthor != null)
+                    if (__workflow_bodyisReshareDisabledByAuthor != null)
                     {
-                        body["isReshareDisabledByAuthor"] = ExpressionConverter.ConvertO(bodyisReshareDisabledByAuthor);
+                        body["isReshareDisabledByAuthor"] = ExpressionConverter.ConvertO(__workflow_bodyisReshareDisabledByAuthor);
                         bodypropCount++;
                     }
 
@@ -181,11 +181,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
                 var contentObjectpropCount = 0;
                 var articleObject = new JObject();
                 var articleObjectpropCount = 0;
-                if (bodycontentarticledescription != null)
+                if (__workflow_bodycontentarticledescription != null)
                 {
-                    if (bodycontentarticledescription != null)
+                    if (__workflow_bodycontentarticledescription != null)
                     {
-                        articleObject["description"] = ExpressionConverter.ConvertO(bodycontentarticledescription);
+                        articleObject["description"] = ExpressionConverter.ConvertO(__workflow_bodycontentarticledescription);
                         articleObjectpropCount++;
                     }
 
@@ -198,12 +198,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
                 }
 
                 articleObjectpropCount++;
-                articleObject["source"] = ExpressionConverter.ConvertO(bodycontentarticleuRLOfTheArticle);
+                articleObject["source"] = ExpressionConverter.ConvertO(__workflow_bodycontentarticleuRLOfTheArticle);
                 articleObjectpropCount++;
-                articleObject["title"] = ExpressionConverter.ConvertO(bodycontentarticletitle);
-                if (bodycontentarticlethumbnailURL != null)
+                articleObject["title"] = ExpressionConverter.ConvertO(__workflow_bodycontentarticletitle);
+                if (__workflow_bodycontentarticlethumbnailURL != null)
                 {
-                    articleObject["thumbnail"] = ExpressionConverter.ConvertO(bodycontentarticlethumbnailURL);
+                    articleObject["thumbnail"] = ExpressionConverter.ConvertO(__workflow_bodycontentarticlethumbnailURL);
                     articleObjectpropCount++;
                 }
 

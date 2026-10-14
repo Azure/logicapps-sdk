@@ -1,88 +1,87 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class VeteransaffairsfacilActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsfacil")]
-        [WorkflowExpressionFactory(nameof(__BuildGetFacilities))]
-        public IBodyWorkflowAction<FacilitiesResponse> GetFacilities([WorkflowExpression] Func<string> facilityIds = null, [WorkflowExpression] Func<string> zip = null, [WorkflowExpression] Func<string> state = null, [WorkflowExpression] Func<double> lat = null, [WorkflowExpression] Func<double> @long = null, [WorkflowExpression] Func<double> radius = null, [WorkflowExpression] Func<string> bbox = null, [WorkflowExpression] Func<double> visn = null, [WorkflowExpression] Func<typeInput> type = null, [WorkflowExpression] Func<string> services = null, [WorkflowExpression] Func<bool> mobile = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null)
+        public IBodyWorkflowAction<FacilitiesResponse> GetFacilities(Expression<Func<string>> facilityIds = null, Expression<Func<string>> zip = null, Expression<Func<string>> state = null, Expression<Func<double>> lat = null, Expression<Func<double>> @long = null, Expression<Func<double>> radius = null, Expression<Func<string>> bbox = null, Expression<Func<double>> visn = null, Expression<Func<typeInput>> type = null, Expression<Func<string>> services = null, Expression<Func<bool>> mobile = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FacilitiesResponse> __BuildGetFacilities(WorkflowExpression<string> facilityIds = null, WorkflowExpression<string> zip = null, WorkflowExpression<string> state = null, WorkflowExpression<double> lat = null, WorkflowExpression<double> @long = null, WorkflowExpression<double> radius = null, WorkflowExpression<string> bbox = null, WorkflowExpression<double> visn = null, WorkflowExpression<typeInput> type = null, WorkflowExpression<string> services = null, WorkflowExpression<bool> mobile = null, WorkflowExpression<int> page = null, WorkflowExpression<int> perPage = null)
-        {
-            WorkflowExpression.Validate(facilityIds, nameof(facilityIds), required: false);
-            WorkflowExpression.Validate(zip, nameof(zip), required: false);
-            WorkflowExpression.Validate(state, nameof(state), required: false);
-            WorkflowExpression.Validate(lat, nameof(lat), required: false);
-            WorkflowExpression.Validate(@long, nameof(@long), required: false);
-            WorkflowExpression.Validate(radius, nameof(radius), required: false);
-            WorkflowExpression.Validate(bbox, nameof(bbox), required: false);
-            WorkflowExpression.Validate(visn, nameof(visn), required: false);
-            WorkflowExpression.Validate(type, nameof(type), required: false);
-            WorkflowExpression.Validate(services, nameof(services), required: false);
-            WorkflowExpression.Validate(mobile, nameof(mobile), required: false);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
-            WorkflowExpression.Validate(perPage, nameof(perPage), required: false);
+            var __workflow_facilityIds = facilityIds == null ? null : WorkflowExpression.Compile(facilityIds);
+            WorkflowExpression.Validate(__workflow_facilityIds, nameof(facilityIds), required: false);
+            var __workflow_zip = zip == null ? null : WorkflowExpression.Compile(zip);
+            WorkflowExpression.Validate(__workflow_zip, nameof(zip), required: false);
+            var __workflow_state = state == null ? null : WorkflowExpression.Compile(state);
+            WorkflowExpression.Validate(__workflow_state, nameof(state), required: false);
+            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
+            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: false);
+            var __workflow_long = @long == null ? null : WorkflowExpression.Compile(@long);
+            WorkflowExpression.Validate(__workflow_long, nameof(@long), required: false);
+            var __workflow_radius = radius == null ? null : WorkflowExpression.Compile(radius);
+            WorkflowExpression.Validate(__workflow_radius, nameof(radius), required: false);
+            var __workflow_bbox = bbox == null ? null : WorkflowExpression.Compile(bbox);
+            WorkflowExpression.Validate(__workflow_bbox, nameof(bbox), required: false);
+            var __workflow_visn = visn == null ? null : WorkflowExpression.Compile(visn);
+            WorkflowExpression.Validate(__workflow_visn, nameof(visn), required: false);
+            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
+            WorkflowExpression.Validate(__workflow_type, nameof(type), required: false);
+            var __workflow_services = services == null ? null : WorkflowExpression.Compile(services);
+            WorkflowExpression.Validate(__workflow_services, nameof(services), required: false);
+            var __workflow_mobile = mobile == null ? null : WorkflowExpression.Compile(mobile);
+            WorkflowExpression.Validate(__workflow_mobile, nameof(mobile), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
+            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
             return new DeferredBodyAction<FacilitiesResponse>(() =>
             {
                 var apiCallPath = "/facilities";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (facilityIds != null)
-                    callPayload.Queries["facilityIds"] = ExpressionConverter.Convert(facilityIds);
-                if (zip != null)
-                    callPayload.Queries["zip"] = ExpressionConverter.Convert(zip);
-                if (state != null)
-                    callPayload.Queries["state"] = ExpressionConverter.Convert(state);
-                if (lat != null)
-                    callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
-                if (@long != null)
-                    callPayload.Queries["long"] = ExpressionConverter.Convert(@long);
-                if (radius != null)
-                    callPayload.Queries["radius"] = ExpressionConverter.Convert(radius);
-                if (bbox != null)
-                    callPayload.Queries["bbox[]"] = ExpressionConverter.Convert(bbox);
-                if (visn != null)
-                    callPayload.Queries["visn"] = ExpressionConverter.Convert(visn);
-                if (type != null)
-                    callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-                if (services != null)
-                    callPayload.Queries["services[]"] = ExpressionConverter.Convert(services);
-                if (mobile != null)
-                    callPayload.Queries["mobile"] = ExpressionConverter.Convert(mobile);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-                if (perPage != null)
-                    callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
+                if (__workflow_facilityIds != null)
+                    callPayload.Queries["facilityIds"] = ExpressionConverter.Convert(__workflow_facilityIds);
+                if (__workflow_zip != null)
+                    callPayload.Queries["zip"] = ExpressionConverter.Convert(__workflow_zip);
+                if (__workflow_state != null)
+                    callPayload.Queries["state"] = ExpressionConverter.Convert(__workflow_state);
+                if (__workflow_lat != null)
+                    callPayload.Queries["lat"] = ExpressionConverter.Convert(__workflow_lat);
+                if (__workflow_long != null)
+                    callPayload.Queries["long"] = ExpressionConverter.Convert(__workflow_long);
+                if (__workflow_radius != null)
+                    callPayload.Queries["radius"] = ExpressionConverter.Convert(__workflow_radius);
+                if (__workflow_bbox != null)
+                    callPayload.Queries["bbox[]"] = ExpressionConverter.Convert(__workflow_bbox);
+                if (__workflow_visn != null)
+                    callPayload.Queries["visn"] = ExpressionConverter.Convert(__workflow_visn);
+                if (__workflow_type != null)
+                    callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
+                if (__workflow_services != null)
+                    callPayload.Queries["services[]"] = ExpressionConverter.Convert(__workflow_services);
+                if (__workflow_mobile != null)
+                    callPayload.Queries["mobile"] = ExpressionConverter.Convert(__workflow_mobile);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_perPage != null)
+                    callPayload.Queries["per_page"] = ExpressionConverter.Convert(__workflow_perPage);
                 return new ApiConnectionAction<FacilitiesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsfacil")]
-        [WorkflowExpressionFactory(nameof(__BuildGetFacilityById))]
-        public IBodyWorkflowAction<FacilityReadResponse> GetFacilityById([WorkflowExpression] Func<string> facilityId)
+        public IBodyWorkflowAction<FacilityReadResponse> GetFacilityById(Expression<Func<string>> facilityId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FacilityReadResponse> __BuildGetFacilityById(WorkflowExpression<string> facilityId)
-        {
-            WorkflowExpression.Validate(facilityId, nameof(facilityId), required: true);
+            var __workflow_facilityId = facilityId == null ? null : WorkflowExpression.Compile(facilityId);
+            WorkflowExpression.Validate(__workflow_facilityId, nameof(facilityId), required: true);
             return new DeferredBodyAction<FacilityReadResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/facilities/{0}", ExpressionConverter.ConvertWithUrlEncoding(facilityId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/facilities/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_facilityId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FacilityReadResponse>(callPayload);
@@ -90,46 +89,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsfacil")]
-        [WorkflowExpressionFactory(nameof(__BuildGetFacilityServicesById))]
-        public IBodyWorkflowAction<DetailedServicesResponse> GetFacilityServicesById([WorkflowExpression] Func<string> facilityId, [WorkflowExpression] Func<string> serviceIds = null, [WorkflowExpression] Func<string> serviceType = null)
+        public IBodyWorkflowAction<DetailedServicesResponse> GetFacilityServicesById(Expression<Func<string>> facilityId, Expression<Func<string>> serviceIds = null, Expression<Func<string>> serviceType = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DetailedServicesResponse> __BuildGetFacilityServicesById(WorkflowExpression<string> facilityId, WorkflowExpression<string> serviceIds = null, WorkflowExpression<string> serviceType = null)
-        {
-            WorkflowExpression.Validate(facilityId, nameof(facilityId), required: true);
-            WorkflowExpression.Validate(serviceIds, nameof(serviceIds), required: false);
-            WorkflowExpression.Validate(serviceType, nameof(serviceType), required: false);
+            var __workflow_facilityId = facilityId == null ? null : WorkflowExpression.Compile(facilityId);
+            WorkflowExpression.Validate(__workflow_facilityId, nameof(facilityId), required: true);
+            var __workflow_serviceIds = serviceIds == null ? null : WorkflowExpression.Compile(serviceIds);
+            WorkflowExpression.Validate(__workflow_serviceIds, nameof(serviceIds), required: false);
+            var __workflow_serviceType = serviceType == null ? null : WorkflowExpression.Compile(serviceType);
+            WorkflowExpression.Validate(__workflow_serviceType, nameof(serviceType), required: false);
             return new DeferredBodyAction<DetailedServicesResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/facilities/{0}/services", ExpressionConverter.ConvertWithUrlEncoding(facilityId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/facilities/{0}/services", ExpressionConverter.ConvertWithUrlEncoding(__workflow_facilityId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (serviceIds != null)
-                    callPayload.Queries["serviceIds"] = ExpressionConverter.Convert(serviceIds);
-                if (serviceType != null)
-                    callPayload.Queries["serviceType"] = ExpressionConverter.Convert(serviceType);
+                if (__workflow_serviceIds != null)
+                    callPayload.Queries["serviceIds"] = ExpressionConverter.Convert(__workflow_serviceIds);
+                if (__workflow_serviceType != null)
+                    callPayload.Queries["serviceType"] = ExpressionConverter.Convert(__workflow_serviceType);
                 return new ApiConnectionAction<DetailedServicesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsfacil")]
-        [WorkflowExpressionFactory(nameof(__BuildGetFacilityServiceById))]
-        public IBodyWorkflowAction<DetailedServiceResponse> GetFacilityServiceById([WorkflowExpression] Func<string> facilityId, [WorkflowExpression] Func<string> serviceId)
+        public IBodyWorkflowAction<DetailedServiceResponse> GetFacilityServiceById(Expression<Func<string>> facilityId, Expression<Func<string>> serviceId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DetailedServiceResponse> __BuildGetFacilityServiceById(WorkflowExpression<string> facilityId, WorkflowExpression<string> serviceId)
-        {
-            WorkflowExpression.Validate(facilityId, nameof(facilityId), required: true);
-            WorkflowExpression.Validate(serviceId, nameof(serviceId), required: true);
+            var __workflow_facilityId = facilityId == null ? null : WorkflowExpression.Compile(facilityId);
+            WorkflowExpression.Validate(__workflow_facilityId, nameof(facilityId), required: true);
+            var __workflow_serviceId = serviceId == null ? null : WorkflowExpression.Compile(serviceId);
+            WorkflowExpression.Validate(__workflow_serviceId, nameof(serviceId), required: true);
             return new DeferredBodyAction<DetailedServiceResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/facilities/{0}/services/{1}", ExpressionConverter.ConvertWithUrlEncoding(facilityId, 1), ExpressionConverter.ConvertWithUrlEncoding(serviceId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/facilities/{0}/services/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_facilityId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_serviceId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DetailedServiceResponse>(callPayload);
@@ -137,58 +127,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsfacil")]
-        [WorkflowExpressionFactory(nameof(__BuildGetFacilityIds))]
-        public IBodyWorkflowAction<FacilitiesIdsResponse> GetFacilityIds([WorkflowExpression] Func<typeInput> type = null)
+        public IBodyWorkflowAction<FacilitiesIdsResponse> GetFacilityIds(Expression<Func<typeInput>> type = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FacilitiesIdsResponse> __BuildGetFacilityIds(WorkflowExpression<typeInput> type = null)
-        {
-            WorkflowExpression.Validate(type, nameof(type), required: false);
+            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
+            WorkflowExpression.Validate(__workflow_type, nameof(type), required: false);
             return new DeferredBodyAction<FacilitiesIdsResponse>(() =>
             {
                 var apiCallPath = "/ids";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (type != null)
-                    callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                if (__workflow_type != null)
+                    callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
                 return new ApiConnectionAction<FacilitiesIdsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsfacil")]
-        [WorkflowExpressionFactory(nameof(__BuildGetNearbyFacilities))]
-        public IBodyWorkflowAction<NearbyResponse> GetNearbyFacilities([WorkflowExpression] Func<double> lat, [WorkflowExpression] Func<double> @long, [WorkflowExpression] Func<int> driveTime = null, [WorkflowExpression] Func<string> services = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null)
+        public IBodyWorkflowAction<NearbyResponse> GetNearbyFacilities(Expression<Func<double>> lat, Expression<Func<double>> @long, Expression<Func<int>> driveTime = null, Expression<Func<string>> services = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<NearbyResponse> __BuildGetNearbyFacilities(WorkflowExpression<double> lat, WorkflowExpression<double> @long, WorkflowExpression<int> driveTime = null, WorkflowExpression<string> services = null, WorkflowExpression<int> page = null, WorkflowExpression<int> perPage = null)
-        {
-            WorkflowExpression.Validate(lat, nameof(lat), required: true);
-            WorkflowExpression.Validate(@long, nameof(@long), required: true);
-            WorkflowExpression.Validate(driveTime, nameof(driveTime), required: false);
-            WorkflowExpression.Validate(services, nameof(services), required: false);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
-            WorkflowExpression.Validate(perPage, nameof(perPage), required: false);
+            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
+            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: true);
+            var __workflow_long = @long == null ? null : WorkflowExpression.Compile(@long);
+            WorkflowExpression.Validate(__workflow_long, nameof(@long), required: true);
+            var __workflow_driveTime = driveTime == null ? null : WorkflowExpression.Compile(driveTime);
+            WorkflowExpression.Validate(__workflow_driveTime, nameof(driveTime), required: false);
+            var __workflow_services = services == null ? null : WorkflowExpression.Compile(services);
+            WorkflowExpression.Validate(__workflow_services, nameof(services), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
+            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
             return new DeferredBodyAction<NearbyResponse>(() =>
             {
                 var apiCallPath = "/nearby";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
-                callPayload.Queries["long"] = ExpressionConverter.Convert(@long);
-                if (driveTime != null)
-                    callPayload.Queries["drive_time"] = ExpressionConverter.Convert(driveTime);
-                if (services != null)
-                    callPayload.Queries["services[]"] = ExpressionConverter.Convert(services);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-                if (perPage != null)
-                    callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
+                callPayload.Queries["lat"] = ExpressionConverter.Convert(__workflow_lat);
+                callPayload.Queries["long"] = ExpressionConverter.Convert(__workflow_long);
+                if (__workflow_driveTime != null)
+                    callPayload.Queries["drive_time"] = ExpressionConverter.Convert(__workflow_driveTime);
+                if (__workflow_services != null)
+                    callPayload.Queries["services[]"] = ExpressionConverter.Convert(__workflow_services);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_perPage != null)
+                    callPayload.Queries["per_page"] = ExpressionConverter.Convert(__workflow_perPage);
                 return new ApiConnectionAction<NearbyResponse>(callPayload);
             });
         }

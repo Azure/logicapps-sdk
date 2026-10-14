@@ -1,12 +1,12 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Showcaseworkshop
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class ShowcaseworkshopActions([ConnectionName] string connectionId)
     {
@@ -14,23 +14,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Showcaseworkshop
 
     public class ShowcaseworkshopTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildShowcaseShareSendEmail))]
-        public IWorkflowTrigger ShowcaseShareSendEmail([WorkflowExpression] Func<string> workshopUid,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ShowcaseShareSendEmail(Expression<Func<string>> workshopUid, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildShowcaseShareSendEmail(WorkflowExpression<string> workshopUid,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(workshopUid, nameof(workshopUid), required: true);
+            var __workflow_workshopUid = workshopUid == null ? null : WorkflowExpression.Compile(workshopUid);
+            WorkflowExpression.Validate(__workflow_workshopUid, nameof(workshopUid), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/main/integrations/ms_create_webhook/share_send_email";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["workshop_uid"] = ExpressionConverter.Convert(workshopUid);
+                callPayload.Queries["workshop_uid"] = ExpressionConverter.Convert(__workflow_workshopUid);
                 callPayload.Queries["event_name"] = Convert.ToString("share_send_email");
                 var requestBodyOfWebhook = new JObject();
                 var requestBodyOfWebhookpropCount = 0;
@@ -45,22 +38,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Showcaseworkshop
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildShowcaseSharedPageView))]
-        public IWorkflowTrigger ShowcaseSharedPageView([WorkflowExpression] Func<string> workshopUid,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ShowcaseSharedPageView(Expression<Func<string>> workshopUid, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildShowcaseSharedPageView(WorkflowExpression<string> workshopUid,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(workshopUid, nameof(workshopUid), required: true);
+            var __workflow_workshopUid = workshopUid == null ? null : WorkflowExpression.Compile(workshopUid);
+            WorkflowExpression.Validate(__workflow_workshopUid, nameof(workshopUid), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/main/integrations/ms_create_webhook/shared_page_view";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["workshop_uid"] = ExpressionConverter.Convert(workshopUid);
+                callPayload.Queries["workshop_uid"] = ExpressionConverter.Convert(__workflow_workshopUid);
                 callPayload.Queries["event_name"] = Convert.ToString("shared_page_view");
                 var requestBodyOfWebhook = new JObject();
                 var requestBodyOfWebhookpropCount = 0;
@@ -75,22 +62,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Showcaseworkshop
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildShowcaseSharedPageDownload))]
-        public IWorkflowTrigger ShowcaseSharedPageDownload([WorkflowExpression] Func<string> workshopUid,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ShowcaseSharedPageDownload(Expression<Func<string>> workshopUid, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildShowcaseSharedPageDownload(WorkflowExpression<string> workshopUid,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(workshopUid, nameof(workshopUid), required: true);
+            var __workflow_workshopUid = workshopUid == null ? null : WorkflowExpression.Compile(workshopUid);
+            WorkflowExpression.Validate(__workflow_workshopUid, nameof(workshopUid), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/main/integrations/ms_create_webhook/shared_page_download";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["workshop_uid"] = ExpressionConverter.Convert(workshopUid);
+                callPayload.Queries["workshop_uid"] = ExpressionConverter.Convert(__workflow_workshopUid);
                 callPayload.Queries["event_name"] = Convert.ToString("shared_page_download");
                 var requestBodyOfWebhook = new JObject();
                 var requestBodyOfWebhookpropCount = 0;

@@ -1,12 +1,12 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class RebrandlyipActions([ConnectionName] string connectionId)
     {
@@ -29,56 +29,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrandlyip")]
-        [WorkflowExpressionFactory(nameof(__BuildListLinks))]
-        public IBodyWorkflowAction<ListLinksResponseItem[]> ListLinks([WorkflowExpression] Func<string> domainId = null, [WorkflowExpression] Func<string> slashtag = null, [WorkflowExpression] Func<orderByInput> orderBy = null, [WorkflowExpression] Func<orderDirInput> orderDir = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> workspace = null)
+        public IBodyWorkflowAction<ListLinksResponseItem[]> ListLinks(Expression<Func<string>> domainId = null, Expression<Func<string>> slashtag = null, Expression<Func<orderByInput>> orderBy = null, Expression<Func<orderDirInput>> orderDir = null, Expression<Func<int>> limit = null, Expression<Func<string>> workspace = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListLinksResponseItem[]> __BuildListLinks(WorkflowExpression<string> domainId = null, WorkflowExpression<string> slashtag = null, WorkflowExpression<orderByInput> orderBy = null, WorkflowExpression<orderDirInput> orderDir = null, WorkflowExpression<int> limit = null, WorkflowExpression<string> workspace = null)
-        {
-            WorkflowExpression.Validate(domainId, nameof(domainId), required: false);
-            WorkflowExpression.Validate(slashtag, nameof(slashtag), required: false);
-            WorkflowExpression.Validate(orderBy, nameof(orderBy), required: false);
-            WorkflowExpression.Validate(orderDir, nameof(orderDir), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(workspace, nameof(workspace), required: false);
+            var __workflow_domainId = domainId == null ? null : WorkflowExpression.Compile(domainId);
+            WorkflowExpression.Validate(__workflow_domainId, nameof(domainId), required: false);
+            var __workflow_slashtag = slashtag == null ? null : WorkflowExpression.Compile(slashtag);
+            WorkflowExpression.Validate(__workflow_slashtag, nameof(slashtag), required: false);
+            var __workflow_orderBy = orderBy == null ? null : WorkflowExpression.Compile(orderBy);
+            WorkflowExpression.Validate(__workflow_orderBy, nameof(orderBy), required: false);
+            var __workflow_orderDir = orderDir == null ? null : WorkflowExpression.Compile(orderDir);
+            WorkflowExpression.Validate(__workflow_orderDir, nameof(orderDir), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_workspace = workspace == null ? null : WorkflowExpression.Compile(workspace);
+            WorkflowExpression.Validate(__workflow_workspace, nameof(workspace), required: false);
             return new DeferredBodyAction<ListLinksResponseItem[]>(() =>
             {
                 var apiCallPath = "/links";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (domainId != null)
-                    callPayload.Queries["domain.id"] = ExpressionConverter.Convert(domainId);
-                if (slashtag != null)
-                    callPayload.Queries["slashtag"] = ExpressionConverter.Convert(slashtag);
-                if (orderBy != null)
-                    callPayload.Queries["orderBy"] = ExpressionConverter.Convert(orderBy);
-                if (orderDir != null)
-                    callPayload.Queries["orderDir"] = ExpressionConverter.Convert(orderDir);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (workspace != null)
-                    callPayload.Headers["Workspace"] = ExpressionConverter.Convert(workspace);
+                if (__workflow_domainId != null)
+                    callPayload.Queries["domain.id"] = ExpressionConverter.Convert(__workflow_domainId);
+                if (__workflow_slashtag != null)
+                    callPayload.Queries["slashtag"] = ExpressionConverter.Convert(__workflow_slashtag);
+                if (__workflow_orderBy != null)
+                    callPayload.Queries["orderBy"] = ExpressionConverter.Convert(__workflow_orderBy);
+                if (__workflow_orderDir != null)
+                    callPayload.Queries["orderDir"] = ExpressionConverter.Convert(__workflow_orderDir);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_workspace != null)
+                    callPayload.Headers["Workspace"] = ExpressionConverter.Convert(__workflow_workspace);
                 return new ApiConnectionAction<ListLinksResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrandlyip")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateLink))]
-        public IBodyWorkflowAction<CreateLinkResponse> CreateLink([WorkflowExpression] Func<string> bodydestination = null, [WorkflowExpression] Func<string> bodyslashtag = null, [WorkflowExpression] Func<string> bodydomainid = null, [WorkflowExpression] Func<string> bodytitle = null)
+        public IBodyWorkflowAction<CreateLinkResponse> CreateLink(Expression<Func<string>> bodydestination = null, Expression<Func<string>> bodyslashtag = null, Expression<Func<string>> bodydomainid = null, Expression<Func<string>> bodytitle = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateLinkResponse> __BuildCreateLink(WorkflowExpression<string> bodydestination = null, WorkflowExpression<string> bodyslashtag = null, WorkflowExpression<string> bodydomainid = null, WorkflowExpression<string> bodytitle = null)
-        {
-            WorkflowExpression.Validate(bodydestination, nameof(bodydestination), required: false);
-            WorkflowExpression.Validate(bodyslashtag, nameof(bodyslashtag), required: false);
-            WorkflowExpression.Validate(bodydomainid, nameof(bodydomainid), required: false);
-            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodydestination = bodydestination == null ? null : WorkflowExpression.Compile(bodydestination);
+            WorkflowExpression.Validate(__workflow_bodydestination, nameof(bodydestination), required: false);
+            var __workflow_bodyslashtag = bodyslashtag == null ? null : WorkflowExpression.Compile(bodyslashtag);
+            WorkflowExpression.Validate(__workflow_bodyslashtag, nameof(bodyslashtag), required: false);
+            var __workflow_bodydomainid = bodydomainid == null ? null : WorkflowExpression.Compile(bodydomainid);
+            WorkflowExpression.Validate(__workflow_bodydomainid, nameof(bodydomainid), required: false);
+            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
+            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
             return new DeferredBodyAction<CreateLinkResponse>(() =>
             {
                 var apiCallPath = "/links";
@@ -86,23 +82,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodydestination != null)
+                if (__workflow_bodydestination != null)
                 {
-                    body["destination"] = ExpressionConverter.ConvertO(bodydestination);
+                    body["destination"] = ExpressionConverter.ConvertO(__workflow_bodydestination);
                     bodypropCount++;
                 }
 
-                if (bodyslashtag != null)
+                if (__workflow_bodyslashtag != null)
                 {
-                    body["slashtag"] = ExpressionConverter.ConvertO(bodyslashtag);
+                    body["slashtag"] = ExpressionConverter.ConvertO(__workflow_bodyslashtag);
                     bodypropCount++;
                 }
 
                 var domainObject = new JObject();
                 var domainObjectpropCount = 0;
-                if (bodydomainid != null)
+                if (__workflow_bodydomainid != null)
                 {
-                    domainObject["id"] = ExpressionConverter.ConvertO(bodydomainid);
+                    domainObject["id"] = ExpressionConverter.ConvertO(__workflow_bodydomainid);
                     domainObjectpropCount++;
                 }
 
@@ -112,9 +108,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
                     bodypropCount++;
                 }
 
-                if (bodytitle != null)
+                if (__workflow_bodytitle != null)
                 {
-                    body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
                     bodypropCount++;
                 }
 
@@ -128,111 +124,94 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrandlyip")]
-        [WorkflowExpressionFactory(nameof(__BuildListWorkspaces))]
-        public IBodyWorkflowAction<ListWorkspacesResponseItem[]> ListWorkspaces([WorkflowExpression] Func<orderByInput> orderBy = null, [WorkflowExpression] Func<orderDirInput> orderDir = null, [WorkflowExpression] Func<int> limit = null)
+        public IBodyWorkflowAction<ListWorkspacesResponseItem[]> ListWorkspaces(Expression<Func<orderByInput>> orderBy = null, Expression<Func<orderDirInput>> orderDir = null, Expression<Func<int>> limit = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListWorkspacesResponseItem[]> __BuildListWorkspaces(WorkflowExpression<orderByInput> orderBy = null, WorkflowExpression<orderDirInput> orderDir = null, WorkflowExpression<int> limit = null)
-        {
-            WorkflowExpression.Validate(orderBy, nameof(orderBy), required: false);
-            WorkflowExpression.Validate(orderDir, nameof(orderDir), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
+            var __workflow_orderBy = orderBy == null ? null : WorkflowExpression.Compile(orderBy);
+            WorkflowExpression.Validate(__workflow_orderBy, nameof(orderBy), required: false);
+            var __workflow_orderDir = orderDir == null ? null : WorkflowExpression.Compile(orderDir);
+            WorkflowExpression.Validate(__workflow_orderDir, nameof(orderDir), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
             return new DeferredBodyAction<ListWorkspacesResponseItem[]>(() =>
             {
                 var apiCallPath = "/workspaces";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (orderBy != null)
-                    callPayload.Queries["orderBy"] = ExpressionConverter.Convert(orderBy);
-                if (orderDir != null)
-                    callPayload.Queries["orderDir"] = ExpressionConverter.Convert(orderDir);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (__workflow_orderBy != null)
+                    callPayload.Queries["orderBy"] = ExpressionConverter.Convert(__workflow_orderBy);
+                if (__workflow_orderDir != null)
+                    callPayload.Queries["orderDir"] = ExpressionConverter.Convert(__workflow_orderDir);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction<ListWorkspacesResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrandlyip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetLink))]
-        public IBodyWorkflowAction<GetLinkResponse> GetLink([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> workspace = null)
+        public IBodyWorkflowAction<GetLinkResponse> GetLink(Expression<Func<string>> id, Expression<Func<string>> workspace = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetLinkResponse> __BuildGetLink(WorkflowExpression<string> id, WorkflowExpression<string> workspace = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(workspace, nameof(workspace), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_workspace = workspace == null ? null : WorkflowExpression.Compile(workspace);
+            WorkflowExpression.Validate(__workflow_workspace, nameof(workspace), required: false);
             return new DeferredBodyAction<GetLinkResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/links/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/links/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (workspace != null)
-                    callPayload.Headers["Workspace"] = ExpressionConverter.Convert(workspace);
+                if (__workflow_workspace != null)
+                    callPayload.Headers["Workspace"] = ExpressionConverter.Convert(__workflow_workspace);
                 return new ApiConnectionAction<GetLinkResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrandlyip")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteLink))]
-        public IBodyWorkflowAction<DeleteLinkResponse> DeleteLink([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> workspace = null)
+        public IBodyWorkflowAction<DeleteLinkResponse> DeleteLink(Expression<Func<string>> id, Expression<Func<string>> workspace = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DeleteLinkResponse> __BuildDeleteLink(WorkflowExpression<string> id, WorkflowExpression<string> workspace = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(workspace, nameof(workspace), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_workspace = workspace == null ? null : WorkflowExpression.Compile(workspace);
+            WorkflowExpression.Validate(__workflow_workspace, nameof(workspace), required: false);
             return new DeferredBodyAction<DeleteLinkResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/links/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/links/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (workspace != null)
-                    callPayload.Headers["Workspace"] = ExpressionConverter.Convert(workspace);
+                if (__workflow_workspace != null)
+                    callPayload.Headers["Workspace"] = ExpressionConverter.Convert(__workflow_workspace);
                 return new ApiConnectionAction<DeleteLinkResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrandlyip")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateLink))]
-        public IBodyWorkflowAction<UpdateLinkResponse> UpdateLink([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> workspace = null, [WorkflowExpression] Func<string> bodydestinationURL = null, [WorkflowExpression] Func<string> bodytitle = null)
+        public IBodyWorkflowAction<UpdateLinkResponse> UpdateLink(Expression<Func<string>> id, Expression<Func<string>> workspace = null, Expression<Func<string>> bodydestinationURL = null, Expression<Func<string>> bodytitle = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UpdateLinkResponse> __BuildUpdateLink(WorkflowExpression<string> id, WorkflowExpression<string> workspace = null, WorkflowExpression<string> bodydestinationURL = null, WorkflowExpression<string> bodytitle = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(workspace, nameof(workspace), required: false);
-            WorkflowExpression.Validate(bodydestinationURL, nameof(bodydestinationURL), required: false);
-            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_workspace = workspace == null ? null : WorkflowExpression.Compile(workspace);
+            WorkflowExpression.Validate(__workflow_workspace, nameof(workspace), required: false);
+            var __workflow_bodydestinationURL = bodydestinationURL == null ? null : WorkflowExpression.Compile(bodydestinationURL);
+            WorkflowExpression.Validate(__workflow_bodydestinationURL, nameof(bodydestinationURL), required: false);
+            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
+            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
             return new DeferredBodyAction<UpdateLinkResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/links/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/links/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (workspace != null)
-                    callPayload.Headers["Workspace"] = ExpressionConverter.Convert(workspace);
+                if (__workflow_workspace != null)
+                    callPayload.Headers["Workspace"] = ExpressionConverter.Convert(__workflow_workspace);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodydestinationURL != null)
+                if (__workflow_bodydestinationURL != null)
                 {
-                    body["destination"] = ExpressionConverter.ConvertO(bodydestinationURL);
+                    body["destination"] = ExpressionConverter.ConvertO(__workflow_bodydestinationURL);
                     bodypropCount++;
                 }
 
-                if (bodytitle != null)
+                if (__workflow_bodytitle != null)
                 {
-                    body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
                     bodypropCount++;
                 }
 

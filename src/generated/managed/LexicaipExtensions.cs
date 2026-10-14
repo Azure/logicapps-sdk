@@ -1,33 +1,26 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexicaip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class LexicaipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexicaip")]
-        [WorkflowExpressionFactory(nameof(__BuildSearch))]
-        public IBodyWorkflowAction<SearchResponse> Search([WorkflowExpression] Func<string> q)
+        public IBodyWorkflowAction<SearchResponse> Search(Expression<Func<string>> q)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SearchResponse> __BuildSearch(WorkflowExpression<string> q)
-        {
-            WorkflowExpression.Validate(q, nameof(q), required: true);
+            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
+            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
             return new DeferredBodyAction<SearchResponse>(() =>
             {
                 var apiCallPath = "/search";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
                 return new ApiConnectionAction<SearchResponse>(callPayload);
             });
         }

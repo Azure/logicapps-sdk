@@ -1,12 +1,12 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Receptful
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class ReceptfulActions([ConnectionName] string connectionId)
     {
@@ -14,21 +14,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Receptful
 
     public class ReceptfulTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildVisitEvents))]
-        public IBodyWorkflowTrigger<VisitEventsResponse> VisitEvents([WorkflowExpression] Func<bodyEventInput> bodyEvent,[WorkflowExpression] Func<string> bodyregionId = null,[WorkflowExpression] Func<string> bodylocationId = null,[WorkflowExpression] Func<string> bodybuttonId = null,[WorkflowExpression] Func<string> bodyconfigId = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VisitEventsResponse> VisitEvents(Expression<Func<bodyEventInput>> bodyEvent, Expression<Func<string>> bodyregionId = null, Expression<Func<string>> bodylocationId = null, Expression<Func<string>> bodybuttonId = null, Expression<Func<string>> bodyconfigId = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<VisitEventsResponse> __BuildVisitEvents(WorkflowExpression<bodyEventInput> bodyEvent,WorkflowExpression<string> bodyregionId = null,WorkflowExpression<string> bodylocationId = null,WorkflowExpression<string> bodybuttonId = null,WorkflowExpression<string> bodyconfigId = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodyEvent, nameof(bodyEvent), required: true);
-            WorkflowExpression.Validate(bodyregionId, nameof(bodyregionId), required: false);
-            WorkflowExpression.Validate(bodylocationId, nameof(bodylocationId), required: false);
-            WorkflowExpression.Validate(bodybuttonId, nameof(bodybuttonId), required: false);
-            WorkflowExpression.Validate(bodyconfigId, nameof(bodyconfigId), required: false);
+            var __workflow_bodyEvent = bodyEvent == null ? null : WorkflowExpression.Compile(bodyEvent);
+            WorkflowExpression.Validate(__workflow_bodyEvent, nameof(bodyEvent), required: true);
+            var __workflow_bodyregionId = bodyregionId == null ? null : WorkflowExpression.Compile(bodyregionId);
+            WorkflowExpression.Validate(__workflow_bodyregionId, nameof(bodyregionId), required: false);
+            var __workflow_bodylocationId = bodylocationId == null ? null : WorkflowExpression.Compile(bodylocationId);
+            WorkflowExpression.Validate(__workflow_bodylocationId, nameof(bodylocationId), required: false);
+            var __workflow_bodybuttonId = bodybuttonId == null ? null : WorkflowExpression.Compile(bodybuttonId);
+            WorkflowExpression.Validate(__workflow_bodybuttonId, nameof(bodybuttonId), required: false);
+            var __workflow_bodyconfigId = bodyconfigId == null ? null : WorkflowExpression.Compile(bodyconfigId);
+            WorkflowExpression.Validate(__workflow_bodyconfigId, nameof(bodyconfigId), required: false);
             return new DeferredBodyTrigger<VisitEventsResponse>(() =>
             {
                 var apiCallPath = "/hooks";
@@ -39,30 +36,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Receptful
                 body["url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 bodypropCount++;
-                body["event"] = ExpressionConverter.ConvertO(bodyEvent);
+                body["event"] = ExpressionConverter.ConvertO(__workflow_bodyEvent);
                 body["source"] = "microsoft";
                 bodypropCount++;
-                if (bodyregionId != null)
+                if (__workflow_bodyregionId != null)
                 {
-                    body["region_id"] = ExpressionConverter.ConvertO(bodyregionId);
+                    body["region_id"] = ExpressionConverter.ConvertO(__workflow_bodyregionId);
                     bodypropCount++;
                 }
 
-                if (bodylocationId != null)
+                if (__workflow_bodylocationId != null)
                 {
-                    body["location_id"] = ExpressionConverter.ConvertO(bodylocationId);
+                    body["location_id"] = ExpressionConverter.ConvertO(__workflow_bodylocationId);
                     bodypropCount++;
                 }
 
-                if (bodybuttonId != null)
+                if (__workflow_bodybuttonId != null)
                 {
-                    body["button_id"] = ExpressionConverter.ConvertO(bodybuttonId);
+                    body["button_id"] = ExpressionConverter.ConvertO(__workflow_bodybuttonId);
                     bodypropCount++;
                 }
 
-                if (bodyconfigId != null)
+                if (__workflow_bodyconfigId != null)
                 {
-                    body["config_id"] = ExpressionConverter.ConvertO(bodyconfigId);
+                    body["config_id"] = ExpressionConverter.ConvertO(__workflow_bodyconfigId);
                     bodypropCount++;
                 }
 

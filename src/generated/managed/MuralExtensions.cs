@@ -1,29 +1,24 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mural
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class MuralActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mural")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateNewMural))]
-        public IBodyWorkflowAction<CreateNewMuralResponse> CreateNewMural([WorkflowExpression] Func<string> bodyworkspaceId, [WorkflowExpression] Func<int> bodyroomId, [WorkflowExpression] Func<string> bodytitle = null)
+        public IBodyWorkflowAction<CreateNewMuralResponse> CreateNewMural(Expression<Func<string>> bodyworkspaceId, Expression<Func<int>> bodyroomId, Expression<Func<string>> bodytitle = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateNewMuralResponse> __BuildCreateNewMural(WorkflowExpression<string> bodyworkspaceId, WorkflowExpression<int> bodyroomId, WorkflowExpression<string> bodytitle = null)
-        {
-            WorkflowExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            WorkflowExpression.Validate(bodyroomId, nameof(bodyroomId), required: true);
-            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodyworkspaceId = bodyworkspaceId == null ? null : WorkflowExpression.Compile(bodyworkspaceId);
+            WorkflowExpression.Validate(__workflow_bodyworkspaceId, nameof(bodyworkspaceId), required: true);
+            var __workflow_bodyroomId = bodyroomId == null ? null : WorkflowExpression.Compile(bodyroomId);
+            WorkflowExpression.Validate(__workflow_bodyroomId, nameof(bodyroomId), required: true);
+            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
+            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
             return new DeferredBodyAction<CreateNewMuralResponse>(() =>
             {
                 var apiCallPath = "/api/public/v1/murals";
@@ -32,12 +27,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mural
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["workspaceId"] = ExpressionConverter.ConvertO(bodyworkspaceId);
+                body["workspaceId"] = ExpressionConverter.ConvertO(__workflow_bodyworkspaceId);
                 bodypropCount++;
-                body["roomId"] = ExpressionConverter.ConvertO(bodyroomId);
-                if (bodytitle != null)
+                body["roomId"] = ExpressionConverter.ConvertO(__workflow_bodyroomId);
+                if (__workflow_bodytitle != null)
                 {
-                    body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
                     bodypropCount++;
                 }
 
@@ -51,44 +46,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mural
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mural")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateNewStickyNote))]
-        public IBodyWorkflowAction<CreateNewStickyNoteResponse> CreateNewStickyNote([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<string> roomId, [WorkflowExpression] Func<string> muralId, [WorkflowExpression] Func<bodyshapeInput> bodyshape, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<string> bodytitle = null)
+        public IBodyWorkflowAction<CreateNewStickyNoteResponse> CreateNewStickyNote(Expression<Func<string>> workspaceId, Expression<Func<string>> roomId, Expression<Func<string>> muralId, Expression<Func<bodyshapeInput>> bodyshape, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodytitle = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateNewStickyNoteResponse> __BuildCreateNewStickyNote(WorkflowExpression<string> workspaceId, WorkflowExpression<string> roomId, WorkflowExpression<string> muralId, WorkflowExpression<bodyshapeInput> bodyshape, WorkflowExpression<string> bodytext = null, WorkflowExpression<string> bodytitle = null)
-        {
-            WorkflowExpression.Validate(workspaceId, nameof(workspaceId), required: true);
-            WorkflowExpression.Validate(roomId, nameof(roomId), required: true);
-            WorkflowExpression.Validate(muralId, nameof(muralId), required: true);
-            WorkflowExpression.Validate(bodyshape, nameof(bodyshape), required: true);
-            WorkflowExpression.Validate(bodytext, nameof(bodytext), required: false);
-            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_workspaceId = workspaceId == null ? null : WorkflowExpression.Compile(workspaceId);
+            WorkflowExpression.Validate(__workflow_workspaceId, nameof(workspaceId), required: true);
+            var __workflow_roomId = roomId == null ? null : WorkflowExpression.Compile(roomId);
+            WorkflowExpression.Validate(__workflow_roomId, nameof(roomId), required: true);
+            var __workflow_muralId = muralId == null ? null : WorkflowExpression.Compile(muralId);
+            WorkflowExpression.Validate(__workflow_muralId, nameof(muralId), required: true);
+            var __workflow_bodyshape = bodyshape == null ? null : WorkflowExpression.Compile(bodyshape);
+            WorkflowExpression.Validate(__workflow_bodyshape, nameof(bodyshape), required: true);
+            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
+            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: false);
+            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
+            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
             return new DeferredBodyAction<CreateNewStickyNoteResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/public/v1/murals/{0}/widgets/sticky-note", ExpressionConverter.ConvertWithUrlEncoding(muralId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/public/v1/murals/{0}/widgets/sticky-note", ExpressionConverter.ConvertWithUrlEncoding(__workflow_muralId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(workspaceId);
-                callPayload.Queries["roomId"] = ExpressionConverter.Convert(roomId);
+                callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(__workflow_workspaceId);
+                callPayload.Queries["roomId"] = ExpressionConverter.Convert(__workflow_roomId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodytext != null)
+                if (__workflow_bodytext != null)
                 {
-                    body["text"] = ExpressionConverter.ConvertO(bodytext);
+                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
                     bodypropCount++;
                 }
 
-                if (bodytitle != null)
+                if (__workflow_bodytitle != null)
                 {
-                    body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["shape"] = ExpressionConverter.ConvertO(bodyshape);
+                body["shape"] = ExpressionConverter.ConvertO(__workflow_bodyshape);
                 body["x"] = 150;
                 bodypropCount++;
                 body["y"] = 250;

@@ -1,57 +1,46 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buffer
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class BufferActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buffer")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateUpdate))]
-        public IBodyWorkflowAction<CreateUpdateResponse> CreateUpdate([WorkflowExpression] Func<string> createUpdateProfileId, [WorkflowExpression] Func<string> createUpdateText)
+        public IBodyWorkflowAction<CreateUpdateResponse> CreateUpdate(Expression<Func<string>> createUpdateProfileId, Expression<Func<string>> createUpdateText)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateUpdateResponse> __BuildCreateUpdate(WorkflowExpression<string> createUpdateProfileId, WorkflowExpression<string> createUpdateText)
-        {
-            WorkflowExpression.Validate(createUpdateProfileId, nameof(createUpdateProfileId), required: true);
-            WorkflowExpression.Validate(createUpdateText, nameof(createUpdateText), required: true);
+            var __workflow_createUpdateProfileId = createUpdateProfileId == null ? null : WorkflowExpression.Compile(createUpdateProfileId);
+            WorkflowExpression.Validate(__workflow_createUpdateProfileId, nameof(createUpdateProfileId), required: true);
+            var __workflow_createUpdateText = createUpdateText == null ? null : WorkflowExpression.Compile(createUpdateText);
+            WorkflowExpression.Validate(__workflow_createUpdateText, nameof(createUpdateText), required: true);
             return new DeferredBodyAction<CreateUpdateResponse>(() =>
             {
                 var apiCallPath = "/1/updates/create.json";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["CreateUpdateProfileId"] = ExpressionConverter.Convert(createUpdateProfileId);
-                callPayload.Queries["CreateUpdateText"] = ExpressionConverter.Convert(createUpdateText);
+                callPayload.Queries["CreateUpdateProfileId"] = ExpressionConverter.Convert(__workflow_createUpdateProfileId);
+                callPayload.Queries["CreateUpdateText"] = ExpressionConverter.Convert(__workflow_createUpdateText);
                 return new ApiConnectionAction<CreateUpdateResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buffer")]
-        [WorkflowExpressionFactory(nameof(__BuildShareUpdate))]
-        public IBodyWorkflowAction<ShareUpdateResponse> ShareUpdate([WorkflowExpression] Func<string> profileId, [WorkflowExpression] Func<string> udpateId)
+        public IBodyWorkflowAction<ShareUpdateResponse> ShareUpdate(Expression<Func<string>> profileId, Expression<Func<string>> udpateId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ShareUpdateResponse> __BuildShareUpdate(WorkflowExpression<string> profileId, WorkflowExpression<string> udpateId)
-        {
-            WorkflowExpression.Validate(profileId, nameof(profileId), required: true);
-            WorkflowExpression.Validate(udpateId, nameof(udpateId), required: true);
+            var __workflow_profileId = profileId == null ? null : WorkflowExpression.Compile(profileId);
+            WorkflowExpression.Validate(__workflow_profileId, nameof(profileId), required: true);
+            var __workflow_udpateId = udpateId == null ? null : WorkflowExpression.Compile(udpateId);
+            WorkflowExpression.Validate(__workflow_udpateId, nameof(udpateId), required: true);
             return new DeferredBodyAction<ShareUpdateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/updates/{0}/share.json", ExpressionConverter.ConvertWithUrlEncoding(udpateId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/updates/{0}/share.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_udpateId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["profile_id"] = ExpressionConverter.Convert(profileId);
+                callPayload.Queries["profile_id"] = ExpressionConverter.Convert(__workflow_profileId);
                 return new ApiConnectionAction<ShareUpdateResponse>(callPayload);
             });
         }
@@ -59,39 +48,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buffer
 
     public class BufferTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildTrigPendingUpdates))]
-        public IBodyWorkflowTrigger<ListPendingUpdatesResponse> TrigPendingUpdates([WorkflowExpression] Func<string> profileId,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListPendingUpdatesResponse> TrigPendingUpdates(Expression<Func<string>> profileId, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ListPendingUpdatesResponse> __BuildTrigPendingUpdates(WorkflowExpression<string> profileId,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(profileId, nameof(profileId), required: true);
+            var __workflow_profileId = profileId == null ? null : WorkflowExpression.Compile(profileId);
+            WorkflowExpression.Validate(__workflow_profileId, nameof(profileId), required: true);
             return new DeferredBodyTrigger<ListPendingUpdatesResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/1/profiles/{0}/updates/pending.json", ExpressionConverter.ConvertWithUrlEncoding(profileId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/1/profiles/{0}/updates/pending.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_profileId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionTrigger<ListPendingUpdatesResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildTrigSentUpdates))]
-        public IBodyWorkflowTrigger<ListSentUpdatesResponse> TrigSentUpdates([WorkflowExpression] Func<string> profileId,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListSentUpdatesResponse> TrigSentUpdates(Expression<Func<string>> profileId, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ListSentUpdatesResponse> __BuildTrigSentUpdates(WorkflowExpression<string> profileId,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(profileId, nameof(profileId), required: true);
+            var __workflow_profileId = profileId == null ? null : WorkflowExpression.Compile(profileId);
+            WorkflowExpression.Validate(__workflow_profileId, nameof(profileId), required: true);
             return new DeferredBodyTrigger<ListSentUpdatesResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/1/profiles/{0}/updates/sent.json", ExpressionConverter.ConvertWithUrlEncoding(profileId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/1/profiles/{0}/updates/sent.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_profileId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionTrigger<ListSentUpdatesResponse>(callPayload, recurrence: recurrence);

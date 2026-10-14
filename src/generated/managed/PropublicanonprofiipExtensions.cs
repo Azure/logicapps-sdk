@@ -1,64 +1,55 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicanonprofiip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class PropublicanonprofiipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicanonprofiip")]
-        [WorkflowExpressionFactory(nameof(__BuildSearch))]
-        public IBodyWorkflowAction<SearchResponse> Search([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> stateId = null, [WorkflowExpression] Func<int> nteeId = null, [WorkflowExpression] Func<int> cCodeId = null)
+        public IBodyWorkflowAction<SearchResponse> Search(Expression<Func<string>> q = null, Expression<Func<int>> page = null, Expression<Func<string>> stateId = null, Expression<Func<int>> nteeId = null, Expression<Func<int>> cCodeId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SearchResponse> __BuildSearch(WorkflowExpression<string> q = null, WorkflowExpression<int> page = null, WorkflowExpression<string> stateId = null, WorkflowExpression<int> nteeId = null, WorkflowExpression<int> cCodeId = null)
-        {
-            WorkflowExpression.Validate(q, nameof(q), required: false);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
-            WorkflowExpression.Validate(stateId, nameof(stateId), required: false);
-            WorkflowExpression.Validate(nteeId, nameof(nteeId), required: false);
-            WorkflowExpression.Validate(cCodeId, nameof(cCodeId), required: false);
+            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
+            WorkflowExpression.Validate(__workflow_q, nameof(q), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_stateId = stateId == null ? null : WorkflowExpression.Compile(stateId);
+            WorkflowExpression.Validate(__workflow_stateId, nameof(stateId), required: false);
+            var __workflow_nteeId = nteeId == null ? null : WorkflowExpression.Compile(nteeId);
+            WorkflowExpression.Validate(__workflow_nteeId, nameof(nteeId), required: false);
+            var __workflow_cCodeId = cCodeId == null ? null : WorkflowExpression.Compile(cCodeId);
+            WorkflowExpression.Validate(__workflow_cCodeId, nameof(cCodeId), required: false);
             return new DeferredBodyAction<SearchResponse>(() =>
             {
                 var apiCallPath = "/search.json";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (q != null)
-                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-                if (stateId != null)
-                    callPayload.Queries["state[id]"] = ExpressionConverter.Convert(stateId);
-                if (nteeId != null)
-                    callPayload.Queries["ntee[id]"] = ExpressionConverter.Convert(nteeId);
-                if (cCodeId != null)
-                    callPayload.Queries["c_code[id]"] = ExpressionConverter.Convert(cCodeId);
+                if (__workflow_q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_stateId != null)
+                    callPayload.Queries["state[id]"] = ExpressionConverter.Convert(__workflow_stateId);
+                if (__workflow_nteeId != null)
+                    callPayload.Queries["ntee[id]"] = ExpressionConverter.Convert(__workflow_nteeId);
+                if (__workflow_cCodeId != null)
+                    callPayload.Queries["c_code[id]"] = ExpressionConverter.Convert(__workflow_cCodeId);
                 return new ApiConnectionAction<SearchResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicanonprofiip")]
-        [WorkflowExpressionFactory(nameof(__BuildNonprofitGet))]
-        public IBodyWorkflowAction<NonprofitGetResponse> NonprofitGet([WorkflowExpression] Func<string> ein)
+        public IBodyWorkflowAction<NonprofitGetResponse> NonprofitGet(Expression<Func<string>> ein)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<NonprofitGetResponse> __BuildNonprofitGet(WorkflowExpression<string> ein)
-        {
-            WorkflowExpression.Validate(ein, nameof(ein), required: true);
+            var __workflow_ein = ein == null ? null : WorkflowExpression.Compile(ein);
+            WorkflowExpression.Validate(__workflow_ein, nameof(ein), required: true);
             return new DeferredBodyAction<NonprofitGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/organizations/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(ein, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/organizations/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_ein, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<NonprofitGetResponse>(callPayload);

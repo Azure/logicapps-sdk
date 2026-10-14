@@ -1,12 +1,12 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelmeip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class PixelmeipActions([ConnectionName] string connectionId)
     {
@@ -20,23 +20,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelmeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelmeip")]
-        [WorkflowExpressionFactory(nameof(__BuildRedirect))]
-        public IBodyWorkflowAction<RedirectPostResponse> Redirect([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string[]> bodypixelsIds = null, [WorkflowExpression] Func<string> bodydomain = null, [WorkflowExpression] Func<string> bodykey = null, [WorkflowExpression] Func<string[]> bodytags = null, [WorkflowExpression] Func<string> bodycampaignId = null, [WorkflowExpression] Func<string> bodysubCampaignId = null, [WorkflowExpression] Func<bodydynamicUrlsInputItem[]> bodydynamicUrls = null)
+        public IBodyWorkflowAction<RedirectPostResponse> Redirect(Expression<Func<string>> bodyurl, Expression<Func<string[]>> bodypixelsIds = null, Expression<Func<string>> bodydomain = null, Expression<Func<string>> bodykey = null, Expression<Func<string[]>> bodytags = null, Expression<Func<string>> bodycampaignId = null, Expression<Func<string>> bodysubCampaignId = null, Expression<Func<bodydynamicUrlsInputItem[]>> bodydynamicUrls = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<RedirectPostResponse> __BuildRedirect(WorkflowExpression<string> bodyurl, WorkflowExpression<string[]> bodypixelsIds = null, WorkflowExpression<string> bodydomain = null, WorkflowExpression<string> bodykey = null, WorkflowExpression<string[]> bodytags = null, WorkflowExpression<string> bodycampaignId = null, WorkflowExpression<string> bodysubCampaignId = null, WorkflowExpression<bodydynamicUrlsInputItem[]> bodydynamicUrls = null)
-        {
-            WorkflowExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            WorkflowExpression.Validate(bodypixelsIds, nameof(bodypixelsIds), required: false);
-            WorkflowExpression.Validate(bodydomain, nameof(bodydomain), required: false);
-            WorkflowExpression.Validate(bodykey, nameof(bodykey), required: false);
-            WorkflowExpression.Validate(bodytags, nameof(bodytags), required: false);
-            WorkflowExpression.Validate(bodycampaignId, nameof(bodycampaignId), required: false);
-            WorkflowExpression.Validate(bodysubCampaignId, nameof(bodysubCampaignId), required: false);
-            WorkflowExpression.Validate(bodydynamicUrls, nameof(bodydynamicUrls), required: false);
+            var __workflow_bodyurl = bodyurl == null ? null : WorkflowExpression.Compile(bodyurl);
+            WorkflowExpression.Validate(__workflow_bodyurl, nameof(bodyurl), required: true);
+            var __workflow_bodypixelsIds = bodypixelsIds == null ? null : WorkflowExpression.Compile(bodypixelsIds);
+            WorkflowExpression.Validate(__workflow_bodypixelsIds, nameof(bodypixelsIds), required: false);
+            var __workflow_bodydomain = bodydomain == null ? null : WorkflowExpression.Compile(bodydomain);
+            WorkflowExpression.Validate(__workflow_bodydomain, nameof(bodydomain), required: false);
+            var __workflow_bodykey = bodykey == null ? null : WorkflowExpression.Compile(bodykey);
+            WorkflowExpression.Validate(__workflow_bodykey, nameof(bodykey), required: false);
+            var __workflow_bodytags = bodytags == null ? null : WorkflowExpression.Compile(bodytags);
+            WorkflowExpression.Validate(__workflow_bodytags, nameof(bodytags), required: false);
+            var __workflow_bodycampaignId = bodycampaignId == null ? null : WorkflowExpression.Compile(bodycampaignId);
+            WorkflowExpression.Validate(__workflow_bodycampaignId, nameof(bodycampaignId), required: false);
+            var __workflow_bodysubCampaignId = bodysubCampaignId == null ? null : WorkflowExpression.Compile(bodysubCampaignId);
+            WorkflowExpression.Validate(__workflow_bodysubCampaignId, nameof(bodysubCampaignId), required: false);
+            var __workflow_bodydynamicUrls = bodydynamicUrls == null ? null : WorkflowExpression.Compile(bodydynamicUrls);
+            WorkflowExpression.Validate(__workflow_bodydynamicUrls, nameof(bodydynamicUrls), required: false);
             return new DeferredBodyAction<RedirectPostResponse>(() =>
             {
                 var apiCallPath = "/redirects";
@@ -45,46 +46,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelmeip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["url"] = ExpressionConverter.ConvertO(bodyurl);
-                if (bodypixelsIds != null)
+                body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
+                if (__workflow_bodypixelsIds != null)
                 {
-                    body["pixels_ids"] = ExpressionConverter.ConvertO(bodypixelsIds);
+                    body["pixels_ids"] = ExpressionConverter.ConvertO(__workflow_bodypixelsIds);
                     bodypropCount++;
                 }
 
-                if (bodydomain != null)
+                if (__workflow_bodydomain != null)
                 {
-                    body["domain"] = ExpressionConverter.ConvertO(bodydomain);
+                    body["domain"] = ExpressionConverter.ConvertO(__workflow_bodydomain);
                     bodypropCount++;
                 }
 
-                if (bodykey != null)
+                if (__workflow_bodykey != null)
                 {
-                    body["key"] = ExpressionConverter.ConvertO(bodykey);
+                    body["key"] = ExpressionConverter.ConvertO(__workflow_bodykey);
                     bodypropCount++;
                 }
 
-                if (bodytags != null)
+                if (__workflow_bodytags != null)
                 {
-                    body["tags"] = ExpressionConverter.ConvertO(bodytags);
+                    body["tags"] = ExpressionConverter.ConvertO(__workflow_bodytags);
                     bodypropCount++;
                 }
 
-                if (bodycampaignId != null)
+                if (__workflow_bodycampaignId != null)
                 {
-                    body["campaign_id"] = ExpressionConverter.ConvertO(bodycampaignId);
+                    body["campaign_id"] = ExpressionConverter.ConvertO(__workflow_bodycampaignId);
                     bodypropCount++;
                 }
 
-                if (bodysubCampaignId != null)
+                if (__workflow_bodysubCampaignId != null)
                 {
-                    body["sub_campaign_id"] = ExpressionConverter.ConvertO(bodysubCampaignId);
+                    body["sub_campaign_id"] = ExpressionConverter.ConvertO(__workflow_bodysubCampaignId);
                     bodypropCount++;
                 }
 
-                if (bodydynamicUrls != null)
+                if (__workflow_bodydynamicUrls != null)
                 {
-                    body["dynamic_urls"] = ExpressionConverter.ConvertO(bodydynamicUrls);
+                    body["dynamic_urls"] = ExpressionConverter.ConvertO(__workflow_bodydynamicUrls);
                     bodypropCount++;
                 }
 
@@ -107,30 +108,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelmeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelmeip")]
-        [WorkflowExpressionFactory(nameof(__BuildRedirectPatch))]
-        public IBodyWorkflowAction<RedirectPatchResponse> RedirectPatch([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodykey, [WorkflowExpression] Func<string[]> bodytags = null)
+        public IBodyWorkflowAction<RedirectPatchResponse> RedirectPatch(Expression<Func<string>> id, Expression<Func<string>> bodykey, Expression<Func<string[]>> bodytags = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<RedirectPatchResponse> __BuildRedirectPatch(WorkflowExpression<string> id, WorkflowExpression<string> bodykey, WorkflowExpression<string[]> bodytags = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(bodykey, nameof(bodykey), required: true);
-            WorkflowExpression.Validate(bodytags, nameof(bodytags), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_bodykey = bodykey == null ? null : WorkflowExpression.Compile(bodykey);
+            WorkflowExpression.Validate(__workflow_bodykey, nameof(bodykey), required: true);
+            var __workflow_bodytags = bodytags == null ? null : WorkflowExpression.Compile(bodytags);
+            WorkflowExpression.Validate(__workflow_bodytags, nameof(bodytags), required: false);
             return new DeferredBodyAction<RedirectPatchResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/redirects/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/redirects/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["key"] = ExpressionConverter.ConvertO(bodykey);
-                if (bodytags != null)
+                body["key"] = ExpressionConverter.ConvertO(__workflow_bodykey);
+                if (__workflow_bodytags != null)
                 {
-                    body["tags"] = ExpressionConverter.ConvertO(bodytags);
+                    body["tags"] = ExpressionConverter.ConvertO(__workflow_bodytags);
                     bodypropCount++;
                 }
 
@@ -144,19 +141,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelmeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelmeip")]
-        [WorkflowExpressionFactory(nameof(__BuildRedirectDelete))]
-        public IBodyWorkflowAction<string> RedirectDelete([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<string> RedirectDelete(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildRedirectDelete(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/redirects/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/redirects/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);

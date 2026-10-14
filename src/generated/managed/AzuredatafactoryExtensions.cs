@@ -1,38 +1,35 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatafactory
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class AzuredatafactoryActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredatafactory")]
-        [WorkflowExpressionFactory(nameof(__BuildCreatePipelineRun))]
-        public IBodyWorkflowAction<CreatePipelineRunResponse> CreatePipelineRun([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName, [WorkflowExpression] Func<string> dataFactoryName, [WorkflowExpression] Func<string> pipelineName, [WorkflowExpression] Func<string> referencePipelineRunId = null)
+        public IBodyWorkflowAction<CreatePipelineRunResponse> CreatePipelineRun(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> dataFactoryName, Expression<Func<string>> pipelineName, Expression<Func<string>> referencePipelineRunId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreatePipelineRunResponse> __BuildCreatePipelineRun(WorkflowExpression<string> subscriptionId, WorkflowExpression<string> resourceGroupName, WorkflowExpression<string> dataFactoryName, WorkflowExpression<string> pipelineName, WorkflowExpression<string> referencePipelineRunId = null)
-        {
-            WorkflowExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
-            WorkflowExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
-            WorkflowExpression.Validate(dataFactoryName, nameof(dataFactoryName), required: true);
-            WorkflowExpression.Validate(pipelineName, nameof(pipelineName), required: true);
-            WorkflowExpression.Validate(referencePipelineRunId, nameof(referencePipelineRunId), required: false);
+            var __workflow_subscriptionId = subscriptionId == null ? null : WorkflowExpression.Compile(subscriptionId);
+            WorkflowExpression.Validate(__workflow_subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = resourceGroupName == null ? null : WorkflowExpression.Compile(resourceGroupName);
+            WorkflowExpression.Validate(__workflow_resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_dataFactoryName = dataFactoryName == null ? null : WorkflowExpression.Compile(dataFactoryName);
+            WorkflowExpression.Validate(__workflow_dataFactoryName, nameof(dataFactoryName), required: true);
+            var __workflow_pipelineName = pipelineName == null ? null : WorkflowExpression.Compile(pipelineName);
+            WorkflowExpression.Validate(__workflow_pipelineName, nameof(pipelineName), required: true);
+            var __workflow_referencePipelineRunId = referencePipelineRunId == null ? null : WorkflowExpression.Compile(referencePipelineRunId);
+            WorkflowExpression.Validate(__workflow_referencePipelineRunId, nameof(referencePipelineRunId), required: false);
             return new DeferredBodyAction<CreatePipelineRunResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.DataFactory/factories/{2}/pipelines/{3}/CreateRun", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(dataFactoryName, 1), ExpressionConverter.ConvertWithUrlEncoding(pipelineName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.DataFactory/factories/{2}/pipelines/{3}/CreateRun", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataFactoryName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_pipelineName, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (referencePipelineRunId != null)
-                    callPayload.Queries["referencePipelineRunId"] = ExpressionConverter.Convert(referencePipelineRunId);
+                if (__workflow_referencePipelineRunId != null)
+                    callPayload.Queries["referencePipelineRunId"] = ExpressionConverter.Convert(__workflow_referencePipelineRunId);
                 callPayload.Queries["x-ms-api-version"] = Convert.ToString("2017-09-01-preview");
                 var parameters = new JObject();
                 var parameterspropCount = 0;
@@ -46,22 +43,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatafactory
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredatafactory")]
-        [WorkflowExpressionFactory(nameof(__BuildCancelPipelineRun))]
-        public IWorkflowAction CancelPipelineRun([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName, [WorkflowExpression] Func<string> dataFactoryName, [WorkflowExpression] Func<string> pipelineRunName)
+        public IWorkflowAction CancelPipelineRun(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> dataFactoryName, Expression<Func<string>> pipelineRunName)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildCancelPipelineRun(WorkflowExpression<string> subscriptionId, WorkflowExpression<string> resourceGroupName, WorkflowExpression<string> dataFactoryName, WorkflowExpression<string> pipelineRunName)
-        {
-            WorkflowExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
-            WorkflowExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
-            WorkflowExpression.Validate(dataFactoryName, nameof(dataFactoryName), required: true);
-            WorkflowExpression.Validate(pipelineRunName, nameof(pipelineRunName), required: true);
+            var __workflow_subscriptionId = subscriptionId == null ? null : WorkflowExpression.Compile(subscriptionId);
+            WorkflowExpression.Validate(__workflow_subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = resourceGroupName == null ? null : WorkflowExpression.Compile(resourceGroupName);
+            WorkflowExpression.Validate(__workflow_resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_dataFactoryName = dataFactoryName == null ? null : WorkflowExpression.Compile(dataFactoryName);
+            WorkflowExpression.Validate(__workflow_dataFactoryName, nameof(dataFactoryName), required: true);
+            var __workflow_pipelineRunName = pipelineRunName == null ? null : WorkflowExpression.Compile(pipelineRunName);
+            WorkflowExpression.Validate(__workflow_pipelineRunName, nameof(pipelineRunName), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.DataFactory/factories/{2}/cancelpipelineRun/{3}", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(dataFactoryName, 1), ExpressionConverter.ConvertWithUrlEncoding(pipelineRunName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.DataFactory/factories/{2}/cancelpipelineRun/{3}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataFactoryName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_pipelineRunName, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["x-ms-api-version"] = Convert.ToString("2017-09-01-preview");
@@ -70,22 +64,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatafactory
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredatafactory")]
-        [WorkflowExpressionFactory(nameof(__BuildGetPipelineRun))]
-        public IBodyWorkflowAction<PipelineRun> GetPipelineRun([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName, [WorkflowExpression] Func<string> dataFactoryName, [WorkflowExpression] Func<string> pipelineRunName)
+        public IBodyWorkflowAction<PipelineRun> GetPipelineRun(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> dataFactoryName, Expression<Func<string>> pipelineRunName)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PipelineRun> __BuildGetPipelineRun(WorkflowExpression<string> subscriptionId, WorkflowExpression<string> resourceGroupName, WorkflowExpression<string> dataFactoryName, WorkflowExpression<string> pipelineRunName)
-        {
-            WorkflowExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
-            WorkflowExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
-            WorkflowExpression.Validate(dataFactoryName, nameof(dataFactoryName), required: true);
-            WorkflowExpression.Validate(pipelineRunName, nameof(pipelineRunName), required: true);
+            var __workflow_subscriptionId = subscriptionId == null ? null : WorkflowExpression.Compile(subscriptionId);
+            WorkflowExpression.Validate(__workflow_subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = resourceGroupName == null ? null : WorkflowExpression.Compile(resourceGroupName);
+            WorkflowExpression.Validate(__workflow_resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_dataFactoryName = dataFactoryName == null ? null : WorkflowExpression.Compile(dataFactoryName);
+            WorkflowExpression.Validate(__workflow_dataFactoryName, nameof(dataFactoryName), required: true);
+            var __workflow_pipelineRunName = pipelineRunName == null ? null : WorkflowExpression.Compile(pipelineRunName);
+            WorkflowExpression.Validate(__workflow_pipelineRunName, nameof(pipelineRunName), required: true);
             return new DeferredBodyAction<PipelineRun>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.DataFactory/factories/{2}/pipelineRuns/{3}", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(dataFactoryName, 1), ExpressionConverter.ConvertWithUrlEncoding(pipelineRunName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.DataFactory/factories/{2}/pipelineRuns/{3}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataFactoryName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_pipelineRunName, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["x-ms-api-version"] = Convert.ToString("2017-09-01-preview");

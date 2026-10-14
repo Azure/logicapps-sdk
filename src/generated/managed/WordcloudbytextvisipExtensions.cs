@@ -1,35 +1,36 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordcloudbytextvisip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class WordcloudbytextvisipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wordcloudbytextvisip")]
-        [WorkflowExpressionFactory(nameof(__BuildCloudCreate))]
-        public IBodyWorkflowAction<CloudCreateResponse> CloudCreate([WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<double> bodyscale, [WorkflowExpression] Func<int> bodywidth, [WorkflowExpression] Func<int> bodyheight, [WorkflowExpression] Func<string[]> bodycolors = null, [WorkflowExpression] Func<string> bodyfont = null, [WorkflowExpression] Func<bool> bodyuseStopwords = null, [WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<bool> bodyuppercase = null)
+        public IBodyWorkflowAction<CloudCreateResponse> CloudCreate(Expression<Func<string>> bodytext, Expression<Func<double>> bodyscale, Expression<Func<int>> bodywidth, Expression<Func<int>> bodyheight, Expression<Func<string[]>> bodycolors = null, Expression<Func<string>> bodyfont = null, Expression<Func<bool>> bodyuseStopwords = null, Expression<Func<string>> bodylanguage = null, Expression<Func<bool>> bodyuppercase = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CloudCreateResponse> __BuildCloudCreate(WorkflowExpression<string> bodytext, WorkflowExpression<double> bodyscale, WorkflowExpression<int> bodywidth, WorkflowExpression<int> bodyheight, WorkflowExpression<string[]> bodycolors = null, WorkflowExpression<string> bodyfont = null, WorkflowExpression<bool> bodyuseStopwords = null, WorkflowExpression<string> bodylanguage = null, WorkflowExpression<bool> bodyuppercase = null)
-        {
-            WorkflowExpression.Validate(bodytext, nameof(bodytext), required: true);
-            WorkflowExpression.Validate(bodyscale, nameof(bodyscale), required: true);
-            WorkflowExpression.Validate(bodywidth, nameof(bodywidth), required: true);
-            WorkflowExpression.Validate(bodyheight, nameof(bodyheight), required: true);
-            WorkflowExpression.Validate(bodycolors, nameof(bodycolors), required: false);
-            WorkflowExpression.Validate(bodyfont, nameof(bodyfont), required: false);
-            WorkflowExpression.Validate(bodyuseStopwords, nameof(bodyuseStopwords), required: false);
-            WorkflowExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
-            WorkflowExpression.Validate(bodyuppercase, nameof(bodyuppercase), required: false);
+            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
+            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: true);
+            var __workflow_bodyscale = bodyscale == null ? null : WorkflowExpression.Compile(bodyscale);
+            WorkflowExpression.Validate(__workflow_bodyscale, nameof(bodyscale), required: true);
+            var __workflow_bodywidth = bodywidth == null ? null : WorkflowExpression.Compile(bodywidth);
+            WorkflowExpression.Validate(__workflow_bodywidth, nameof(bodywidth), required: true);
+            var __workflow_bodyheight = bodyheight == null ? null : WorkflowExpression.Compile(bodyheight);
+            WorkflowExpression.Validate(__workflow_bodyheight, nameof(bodyheight), required: true);
+            var __workflow_bodycolors = bodycolors == null ? null : WorkflowExpression.Compile(bodycolors);
+            WorkflowExpression.Validate(__workflow_bodycolors, nameof(bodycolors), required: false);
+            var __workflow_bodyfont = bodyfont == null ? null : WorkflowExpression.Compile(bodyfont);
+            WorkflowExpression.Validate(__workflow_bodyfont, nameof(bodyfont), required: false);
+            var __workflow_bodyuseStopwords = bodyuseStopwords == null ? null : WorkflowExpression.Compile(bodyuseStopwords);
+            WorkflowExpression.Validate(__workflow_bodyuseStopwords, nameof(bodyuseStopwords), required: false);
+            var __workflow_bodylanguage = bodylanguage == null ? null : WorkflowExpression.Compile(bodylanguage);
+            WorkflowExpression.Validate(__workflow_bodylanguage, nameof(bodylanguage), required: false);
+            var __workflow_bodyuppercase = bodyuppercase == null ? null : WorkflowExpression.Compile(bodyuppercase);
+            WorkflowExpression.Validate(__workflow_bodyuppercase, nameof(bodyuppercase), required: false);
             return new DeferredBodyAction<CloudCreateResponse>(() =>
             {
                 var apiCallPath = "/";
@@ -38,40 +39,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordcloudbytextvisip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
+                body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
                 bodypropCount++;
-                body["scale"] = ExpressionConverter.ConvertO(bodyscale);
+                body["scale"] = ExpressionConverter.ConvertO(__workflow_bodyscale);
                 bodypropCount++;
-                body["width"] = ExpressionConverter.ConvertO(bodywidth);
+                body["width"] = ExpressionConverter.ConvertO(__workflow_bodywidth);
                 bodypropCount++;
-                body["height"] = ExpressionConverter.ConvertO(bodyheight);
-                if (bodycolors != null)
+                body["height"] = ExpressionConverter.ConvertO(__workflow_bodyheight);
+                if (__workflow_bodycolors != null)
                 {
-                    body["colors"] = ExpressionConverter.ConvertO(bodycolors);
+                    body["colors"] = ExpressionConverter.ConvertO(__workflow_bodycolors);
                     bodypropCount++;
                 }
 
-                if (bodyfont != null)
+                if (__workflow_bodyfont != null)
                 {
-                    body["font"] = ExpressionConverter.ConvertO(bodyfont);
+                    body["font"] = ExpressionConverter.ConvertO(__workflow_bodyfont);
                     bodypropCount++;
                 }
 
-                if (bodyuseStopwords != null)
+                if (__workflow_bodyuseStopwords != null)
                 {
-                    body["use_stopwords"] = ExpressionConverter.ConvertO(bodyuseStopwords);
+                    body["use_stopwords"] = ExpressionConverter.ConvertO(__workflow_bodyuseStopwords);
                     bodypropCount++;
                 }
 
-                if (bodylanguage != null)
+                if (__workflow_bodylanguage != null)
                 {
-                    body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                    body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
                     bodypropCount++;
                 }
 
-                if (bodyuppercase != null)
+                if (__workflow_bodyuppercase != null)
                 {
-                    body["uppercase"] = ExpressionConverter.ConvertO(bodyuppercase);
+                    body["uppercase"] = ExpressionConverter.ConvertO(__workflow_bodyuppercase);
                     bodypropCount++;
                 }
 

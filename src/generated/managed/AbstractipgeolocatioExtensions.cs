@@ -1,36 +1,30 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractipgeolocatio
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class AbstractipgeolocatioActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractipgeolocatio")]
-        [WorkflowExpressionFactory(nameof(__BuildAnalyze))]
-        public IBodyWorkflowAction<AnalyzeResponse> Analyze([WorkflowExpression] Func<string> ipAddress, [WorkflowExpression] Func<string> fields = null)
+        public IBodyWorkflowAction<AnalyzeResponse> Analyze(Expression<Func<string>> ipAddress, Expression<Func<string>> fields = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AnalyzeResponse> __BuildAnalyze(WorkflowExpression<string> ipAddress, WorkflowExpression<string> fields = null)
-        {
-            WorkflowExpression.Validate(ipAddress, nameof(ipAddress), required: true);
-            WorkflowExpression.Validate(fields, nameof(fields), required: false);
+            var __workflow_ipAddress = ipAddress == null ? null : WorkflowExpression.Compile(ipAddress);
+            WorkflowExpression.Validate(__workflow_ipAddress, nameof(ipAddress), required: true);
+            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
+            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
             return new DeferredBodyAction<AnalyzeResponse>(() =>
             {
                 var apiCallPath = "/v1/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["ip_address"] = ExpressionConverter.Convert(ipAddress);
-                if (fields != null)
-                    callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                callPayload.Queries["ip_address"] = ExpressionConverter.Convert(__workflow_ipAddress);
+                if (__workflow_fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
                 return new ApiConnectionAction<AnalyzeResponse>(callPayload);
             });
         }

@@ -1,27 +1,20 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mondaycomip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class MondaycomipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mondaycomip")]
-        [WorkflowExpressionFactory(nameof(__BuildCallGraphQL))]
-        public IBodyWorkflowAction<JToken> CallGraphQL([WorkflowExpression] Func<string> bodyquery = null)
+        public IBodyWorkflowAction<JToken> CallGraphQL(Expression<Func<string>> bodyquery = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildCallGraphQL(WorkflowExpression<string> bodyquery = null)
-        {
-            WorkflowExpression.Validate(bodyquery, nameof(bodyquery), required: false);
+            var __workflow_bodyquery = bodyquery == null ? null : WorkflowExpression.Compile(bodyquery);
+            WorkflowExpression.Validate(__workflow_bodyquery, nameof(bodyquery), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/";
@@ -30,9 +23,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mondaycomip
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyquery != null)
+                if (__workflow_bodyquery != null)
                 {
-                    body["query"] = ExpressionConverter.ConvertO(bodyquery);
+                    body["query"] = ExpressionConverter.ConvertO(__workflow_bodyquery);
                     bodypropCount++;
                 }
 

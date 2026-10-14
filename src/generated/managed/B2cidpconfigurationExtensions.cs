@@ -1,12 +1,12 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class B2cidpconfigurationActions([ConnectionName] string connectionId)
     {
@@ -20,20 +20,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
-        [WorkflowExpressionFactory(nameof(__BuildPostApplication))]
-        public IBodyWorkflowAction<Application> PostApplication([WorkflowExpression] Func<string> bodydisplayName = null, [WorkflowExpression] Func<bool> bodyisFallbackPublicClient = null, [WorkflowExpression] Func<string[]> bodywebredirectUris = null, [WorkflowExpression] Func<bool> bodywebimplicitGrantSettingsenableIdTokenIssuance = null, [WorkflowExpression] Func<bool> bodywebimplicitGrantSettingsenableAccessTokenIssuance = null)
+        public IBodyWorkflowAction<Application> PostApplication(Expression<Func<string>> bodydisplayName = null, Expression<Func<bool>> bodyisFallbackPublicClient = null, Expression<Func<string[]>> bodywebredirectUris = null, Expression<Func<bool>> bodywebimplicitGrantSettingsenableIdTokenIssuance = null, Expression<Func<bool>> bodywebimplicitGrantSettingsenableAccessTokenIssuance = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Application> __BuildPostApplication(WorkflowExpression<string> bodydisplayName = null, WorkflowExpression<bool> bodyisFallbackPublicClient = null, WorkflowExpression<string[]> bodywebredirectUris = null, WorkflowExpression<bool> bodywebimplicitGrantSettingsenableIdTokenIssuance = null, WorkflowExpression<bool> bodywebimplicitGrantSettingsenableAccessTokenIssuance = null)
-        {
-            WorkflowExpression.Validate(bodydisplayName, nameof(bodydisplayName), required: false);
-            WorkflowExpression.Validate(bodyisFallbackPublicClient, nameof(bodyisFallbackPublicClient), required: false);
-            WorkflowExpression.Validate(bodywebredirectUris, nameof(bodywebredirectUris), required: false);
-            WorkflowExpression.Validate(bodywebimplicitGrantSettingsenableIdTokenIssuance, nameof(bodywebimplicitGrantSettingsenableIdTokenIssuance), required: false);
-            WorkflowExpression.Validate(bodywebimplicitGrantSettingsenableAccessTokenIssuance, nameof(bodywebimplicitGrantSettingsenableAccessTokenIssuance), required: false);
+            var __workflow_bodydisplayName = bodydisplayName == null ? null : WorkflowExpression.Compile(bodydisplayName);
+            WorkflowExpression.Validate(__workflow_bodydisplayName, nameof(bodydisplayName), required: false);
+            var __workflow_bodyisFallbackPublicClient = bodyisFallbackPublicClient == null ? null : WorkflowExpression.Compile(bodyisFallbackPublicClient);
+            WorkflowExpression.Validate(__workflow_bodyisFallbackPublicClient, nameof(bodyisFallbackPublicClient), required: false);
+            var __workflow_bodywebredirectUris = bodywebredirectUris == null ? null : WorkflowExpression.Compile(bodywebredirectUris);
+            WorkflowExpression.Validate(__workflow_bodywebredirectUris, nameof(bodywebredirectUris), required: false);
+            var __workflow_bodywebimplicitGrantSettingsenableIdTokenIssuance = bodywebimplicitGrantSettingsenableIdTokenIssuance == null ? null : WorkflowExpression.Compile(bodywebimplicitGrantSettingsenableIdTokenIssuance);
+            WorkflowExpression.Validate(__workflow_bodywebimplicitGrantSettingsenableIdTokenIssuance, nameof(bodywebimplicitGrantSettingsenableIdTokenIssuance), required: false);
+            var __workflow_bodywebimplicitGrantSettingsenableAccessTokenIssuance = bodywebimplicitGrantSettingsenableAccessTokenIssuance == null ? null : WorkflowExpression.Compile(bodywebimplicitGrantSettingsenableAccessTokenIssuance);
+            WorkflowExpression.Validate(__workflow_bodywebimplicitGrantSettingsenableAccessTokenIssuance, nameof(bodywebimplicitGrantSettingsenableAccessTokenIssuance), required: false);
             return new DeferredBodyAction<Application>(() =>
             {
                 var apiCallPath = "/v1.0/applications";
@@ -41,37 +39,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodydisplayName != null)
+                if (__workflow_bodydisplayName != null)
                 {
-                    body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
+                    body["displayName"] = ExpressionConverter.ConvertO(__workflow_bodydisplayName);
                     bodypropCount++;
                 }
 
-                if (bodyisFallbackPublicClient != null)
+                if (__workflow_bodyisFallbackPublicClient != null)
                 {
-                    body["isFallbackPublicClient"] = ExpressionConverter.ConvertO(bodyisFallbackPublicClient);
+                    body["isFallbackPublicClient"] = ExpressionConverter.ConvertO(__workflow_bodyisFallbackPublicClient);
                     bodypropCount++;
                 }
 
                 var webObject = new JObject();
                 var webObjectpropCount = 0;
-                if (bodywebredirectUris != null)
+                if (__workflow_bodywebredirectUris != null)
                 {
-                    webObject["redirectUris"] = ExpressionConverter.ConvertO(bodywebredirectUris);
+                    webObject["redirectUris"] = ExpressionConverter.ConvertO(__workflow_bodywebredirectUris);
                     webObjectpropCount++;
                 }
 
                 var implicitGrantSettingsObject = new JObject();
                 var implicitGrantSettingsObjectpropCount = 0;
-                if (bodywebimplicitGrantSettingsenableIdTokenIssuance != null)
+                if (__workflow_bodywebimplicitGrantSettingsenableIdTokenIssuance != null)
                 {
-                    implicitGrantSettingsObject["enableIdTokenIssuance"] = ExpressionConverter.ConvertO(bodywebimplicitGrantSettingsenableIdTokenIssuance);
+                    implicitGrantSettingsObject["enableIdTokenIssuance"] = ExpressionConverter.ConvertO(__workflow_bodywebimplicitGrantSettingsenableIdTokenIssuance);
                     implicitGrantSettingsObjectpropCount++;
                 }
 
-                if (bodywebimplicitGrantSettingsenableAccessTokenIssuance != null)
+                if (__workflow_bodywebimplicitGrantSettingsenableAccessTokenIssuance != null)
                 {
-                    implicitGrantSettingsObject["enableAccessTokenIssuance"] = ExpressionConverter.ConvertO(bodywebimplicitGrantSettingsenableAccessTokenIssuance);
+                    implicitGrantSettingsObject["enableAccessTokenIssuance"] = ExpressionConverter.ConvertO(__workflow_bodywebimplicitGrantSettingsenableAccessTokenIssuance);
                     implicitGrantSettingsObjectpropCount++;
                 }
 
@@ -97,19 +95,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
-        [WorkflowExpressionFactory(nameof(__BuildPatchApplication))]
-        public IWorkflowAction PatchApplication([WorkflowExpression] Func<string> id)
+        public IWorkflowAction PatchApplication(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildPatchApplication(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/applications/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/applications/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -142,20 +134,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
-        [WorkflowExpressionFactory(nameof(__BuildPostPermissionGrant))]
-        public IBodyWorkflowAction<PermissionGrant> PostPermissionGrant([WorkflowExpression] Func<string> bodyclientId = null, [WorkflowExpression] Func<string> bodyconsentType = null, [WorkflowExpression] Func<string> bodyprincipalId = null, [WorkflowExpression] Func<string> bodyresourceId = null, [WorkflowExpression] Func<string> bodyscope = null)
+        public IBodyWorkflowAction<PermissionGrant> PostPermissionGrant(Expression<Func<string>> bodyclientId = null, Expression<Func<string>> bodyconsentType = null, Expression<Func<string>> bodyprincipalId = null, Expression<Func<string>> bodyresourceId = null, Expression<Func<string>> bodyscope = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PermissionGrant> __BuildPostPermissionGrant(WorkflowExpression<string> bodyclientId = null, WorkflowExpression<string> bodyconsentType = null, WorkflowExpression<string> bodyprincipalId = null, WorkflowExpression<string> bodyresourceId = null, WorkflowExpression<string> bodyscope = null)
-        {
-            WorkflowExpression.Validate(bodyclientId, nameof(bodyclientId), required: false);
-            WorkflowExpression.Validate(bodyconsentType, nameof(bodyconsentType), required: false);
-            WorkflowExpression.Validate(bodyprincipalId, nameof(bodyprincipalId), required: false);
-            WorkflowExpression.Validate(bodyresourceId, nameof(bodyresourceId), required: false);
-            WorkflowExpression.Validate(bodyscope, nameof(bodyscope), required: false);
+            var __workflow_bodyclientId = bodyclientId == null ? null : WorkflowExpression.Compile(bodyclientId);
+            WorkflowExpression.Validate(__workflow_bodyclientId, nameof(bodyclientId), required: false);
+            var __workflow_bodyconsentType = bodyconsentType == null ? null : WorkflowExpression.Compile(bodyconsentType);
+            WorkflowExpression.Validate(__workflow_bodyconsentType, nameof(bodyconsentType), required: false);
+            var __workflow_bodyprincipalId = bodyprincipalId == null ? null : WorkflowExpression.Compile(bodyprincipalId);
+            WorkflowExpression.Validate(__workflow_bodyprincipalId, nameof(bodyprincipalId), required: false);
+            var __workflow_bodyresourceId = bodyresourceId == null ? null : WorkflowExpression.Compile(bodyresourceId);
+            WorkflowExpression.Validate(__workflow_bodyresourceId, nameof(bodyresourceId), required: false);
+            var __workflow_bodyscope = bodyscope == null ? null : WorkflowExpression.Compile(bodyscope);
+            WorkflowExpression.Validate(__workflow_bodyscope, nameof(bodyscope), required: false);
             return new DeferredBodyAction<PermissionGrant>(() =>
             {
                 var apiCallPath = "/v1.0/oauth2PermissionGrants";
@@ -163,33 +153,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyclientId != null)
+                if (__workflow_bodyclientId != null)
                 {
-                    body["clientId"] = ExpressionConverter.ConvertO(bodyclientId);
+                    body["clientId"] = ExpressionConverter.ConvertO(__workflow_bodyclientId);
                     bodypropCount++;
                 }
 
-                if (bodyconsentType != null)
+                if (__workflow_bodyconsentType != null)
                 {
-                    body["consentType"] = ExpressionConverter.ConvertO(bodyconsentType);
+                    body["consentType"] = ExpressionConverter.ConvertO(__workflow_bodyconsentType);
                     bodypropCount++;
                 }
 
-                if (bodyprincipalId != null)
+                if (__workflow_bodyprincipalId != null)
                 {
-                    body["principalId"] = ExpressionConverter.ConvertO(bodyprincipalId);
+                    body["principalId"] = ExpressionConverter.ConvertO(__workflow_bodyprincipalId);
                     bodypropCount++;
                 }
 
-                if (bodyresourceId != null)
+                if (__workflow_bodyresourceId != null)
                 {
-                    body["resourceId"] = ExpressionConverter.ConvertO(bodyresourceId);
+                    body["resourceId"] = ExpressionConverter.ConvertO(__workflow_bodyresourceId);
                     bodypropCount++;
                 }
 
-                if (bodyscope != null)
+                if (__workflow_bodyscope != null)
                 {
-                    body["scope"] = ExpressionConverter.ConvertO(bodyscope);
+                    body["scope"] = ExpressionConverter.ConvertO(__workflow_bodyscope);
                     bodypropCount++;
                 }
 
@@ -212,18 +202,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
-        [WorkflowExpressionFactory(nameof(__BuildPostUserflow))]
-        public IBodyWorkflowAction<UserFlow> PostUserflow([WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodyuserFlowType = null, [WorkflowExpression] Func<int> bodyuserFlowTypeVersion = null)
+        public IBodyWorkflowAction<UserFlow> PostUserflow(Expression<Func<string>> bodyid = null, Expression<Func<string>> bodyuserFlowType = null, Expression<Func<int>> bodyuserFlowTypeVersion = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UserFlow> __BuildPostUserflow(WorkflowExpression<string> bodyid = null, WorkflowExpression<string> bodyuserFlowType = null, WorkflowExpression<int> bodyuserFlowTypeVersion = null)
-        {
-            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: false);
-            WorkflowExpression.Validate(bodyuserFlowType, nameof(bodyuserFlowType), required: false);
-            WorkflowExpression.Validate(bodyuserFlowTypeVersion, nameof(bodyuserFlowTypeVersion), required: false);
+            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
+            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: false);
+            var __workflow_bodyuserFlowType = bodyuserFlowType == null ? null : WorkflowExpression.Compile(bodyuserFlowType);
+            WorkflowExpression.Validate(__workflow_bodyuserFlowType, nameof(bodyuserFlowType), required: false);
+            var __workflow_bodyuserFlowTypeVersion = bodyuserFlowTypeVersion == null ? null : WorkflowExpression.Compile(bodyuserFlowTypeVersion);
+            WorkflowExpression.Validate(__workflow_bodyuserFlowTypeVersion, nameof(bodyuserFlowTypeVersion), required: false);
             return new DeferredBodyAction<UserFlow>(() =>
             {
                 var apiCallPath = "/beta/identity/userFlows";
@@ -231,21 +217,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyid != null)
+                if (__workflow_bodyid != null)
                 {
-                    body["id"] = ExpressionConverter.ConvertO(bodyid);
+                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
                     bodypropCount++;
                 }
 
-                if (bodyuserFlowType != null)
+                if (__workflow_bodyuserFlowType != null)
                 {
-                    body["userFlowType"] = ExpressionConverter.ConvertO(bodyuserFlowType);
+                    body["userFlowType"] = ExpressionConverter.ConvertO(__workflow_bodyuserFlowType);
                     bodypropCount++;
                 }
 
-                if (bodyuserFlowTypeVersion != null)
+                if (__workflow_bodyuserFlowTypeVersion != null)
                 {
-                    body["userFlowTypeVersion"] = ExpressionConverter.ConvertO(bodyuserFlowTypeVersion);
+                    body["userFlowTypeVersion"] = ExpressionConverter.ConvertO(__workflow_bodyuserFlowTypeVersion);
                     bodypropCount++;
                 }
 
@@ -268,19 +254,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
-        [WorkflowExpressionFactory(nameof(__BuildPostB2cUserflow))]
-        public IBodyWorkflowAction<UserFlow> PostB2cUserflow([WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodyuserFlowType = null, [WorkflowExpression] Func<int> bodyuserFlowTypeVersion = null, [WorkflowExpression] Func<bool> bodytokenClaimsConfigurationisIssuerEntityUserFlow = null)
+        public IBodyWorkflowAction<UserFlow> PostB2cUserflow(Expression<Func<string>> bodyid = null, Expression<Func<string>> bodyuserFlowType = null, Expression<Func<int>> bodyuserFlowTypeVersion = null, Expression<Func<bool>> bodytokenClaimsConfigurationisIssuerEntityUserFlow = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UserFlow> __BuildPostB2cUserflow(WorkflowExpression<string> bodyid = null, WorkflowExpression<string> bodyuserFlowType = null, WorkflowExpression<int> bodyuserFlowTypeVersion = null, WorkflowExpression<bool> bodytokenClaimsConfigurationisIssuerEntityUserFlow = null)
-        {
-            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: false);
-            WorkflowExpression.Validate(bodyuserFlowType, nameof(bodyuserFlowType), required: false);
-            WorkflowExpression.Validate(bodyuserFlowTypeVersion, nameof(bodyuserFlowTypeVersion), required: false);
-            WorkflowExpression.Validate(bodytokenClaimsConfigurationisIssuerEntityUserFlow, nameof(bodytokenClaimsConfigurationisIssuerEntityUserFlow), required: false);
+            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
+            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: false);
+            var __workflow_bodyuserFlowType = bodyuserFlowType == null ? null : WorkflowExpression.Compile(bodyuserFlowType);
+            WorkflowExpression.Validate(__workflow_bodyuserFlowType, nameof(bodyuserFlowType), required: false);
+            var __workflow_bodyuserFlowTypeVersion = bodyuserFlowTypeVersion == null ? null : WorkflowExpression.Compile(bodyuserFlowTypeVersion);
+            WorkflowExpression.Validate(__workflow_bodyuserFlowTypeVersion, nameof(bodyuserFlowTypeVersion), required: false);
+            var __workflow_bodytokenClaimsConfigurationisIssuerEntityUserFlow = bodytokenClaimsConfigurationisIssuerEntityUserFlow == null ? null : WorkflowExpression.Compile(bodytokenClaimsConfigurationisIssuerEntityUserFlow);
+            WorkflowExpression.Validate(__workflow_bodytokenClaimsConfigurationisIssuerEntityUserFlow, nameof(bodytokenClaimsConfigurationisIssuerEntityUserFlow), required: false);
             return new DeferredBodyAction<UserFlow>(() =>
             {
                 var apiCallPath = "/beta/identity/b2cUserflows";
@@ -288,23 +271,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyid != null)
+                if (__workflow_bodyid != null)
                 {
-                    body["id"] = ExpressionConverter.ConvertO(bodyid);
+                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
                     bodypropCount++;
                 }
 
-                if (bodyuserFlowType != null)
+                if (__workflow_bodyuserFlowType != null)
                 {
-                    body["userFlowType"] = ExpressionConverter.ConvertO(bodyuserFlowType);
+                    body["userFlowType"] = ExpressionConverter.ConvertO(__workflow_bodyuserFlowType);
                     bodypropCount++;
                 }
 
-                if (bodyuserFlowTypeVersion != null)
+                if (__workflow_bodyuserFlowTypeVersion != null)
                 {
-                    if (bodyuserFlowTypeVersion != null)
+                    if (__workflow_bodyuserFlowTypeVersion != null)
                     {
-                        body["userFlowTypeVersion"] = ExpressionConverter.ConvertO(bodyuserFlowTypeVersion);
+                        body["userFlowTypeVersion"] = ExpressionConverter.ConvertO(__workflow_bodyuserFlowTypeVersion);
                         bodypropCount++;
                     }
 
@@ -318,11 +301,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
 
                 var tokenClaimsConfigurationObject = new JObject();
                 var tokenClaimsConfigurationObjectpropCount = 0;
-                if (bodytokenClaimsConfigurationisIssuerEntityUserFlow != null)
+                if (__workflow_bodytokenClaimsConfigurationisIssuerEntityUserFlow != null)
                 {
-                    if (bodytokenClaimsConfigurationisIssuerEntityUserFlow != null)
+                    if (__workflow_bodytokenClaimsConfigurationisIssuerEntityUserFlow != null)
                     {
-                        tokenClaimsConfigurationObject["isIssuerEntityUserFlow"] = ExpressionConverter.ConvertO(bodytokenClaimsConfigurationisIssuerEntityUserFlow);
+                        tokenClaimsConfigurationObject["isIssuerEntityUserFlow"] = ExpressionConverter.ConvertO(__workflow_bodytokenClaimsConfigurationisIssuerEntityUserFlow);
                         tokenClaimsConfigurationObjectpropCount++;
                     }
 
@@ -359,19 +342,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
-        [WorkflowExpressionFactory(nameof(__BuildPostServicePrinciple))]
-        public IBodyWorkflowAction<ServicePrinciple> PostServicePrinciple([WorkflowExpression] Func<bool> bodyaccountEnabled = null, [WorkflowExpression] Func<string> bodyappId = null, [WorkflowExpression] Func<bool> bodyappRoleAssignmentRequired = null, [WorkflowExpression] Func<string[]> bodyreplyUrls = null)
+        public IBodyWorkflowAction<ServicePrinciple> PostServicePrinciple(Expression<Func<bool>> bodyaccountEnabled = null, Expression<Func<string>> bodyappId = null, Expression<Func<bool>> bodyappRoleAssignmentRequired = null, Expression<Func<string[]>> bodyreplyUrls = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ServicePrinciple> __BuildPostServicePrinciple(WorkflowExpression<bool> bodyaccountEnabled = null, WorkflowExpression<string> bodyappId = null, WorkflowExpression<bool> bodyappRoleAssignmentRequired = null, WorkflowExpression<string[]> bodyreplyUrls = null)
-        {
-            WorkflowExpression.Validate(bodyaccountEnabled, nameof(bodyaccountEnabled), required: false);
-            WorkflowExpression.Validate(bodyappId, nameof(bodyappId), required: false);
-            WorkflowExpression.Validate(bodyappRoleAssignmentRequired, nameof(bodyappRoleAssignmentRequired), required: false);
-            WorkflowExpression.Validate(bodyreplyUrls, nameof(bodyreplyUrls), required: false);
+            var __workflow_bodyaccountEnabled = bodyaccountEnabled == null ? null : WorkflowExpression.Compile(bodyaccountEnabled);
+            WorkflowExpression.Validate(__workflow_bodyaccountEnabled, nameof(bodyaccountEnabled), required: false);
+            var __workflow_bodyappId = bodyappId == null ? null : WorkflowExpression.Compile(bodyappId);
+            WorkflowExpression.Validate(__workflow_bodyappId, nameof(bodyappId), required: false);
+            var __workflow_bodyappRoleAssignmentRequired = bodyappRoleAssignmentRequired == null ? null : WorkflowExpression.Compile(bodyappRoleAssignmentRequired);
+            WorkflowExpression.Validate(__workflow_bodyappRoleAssignmentRequired, nameof(bodyappRoleAssignmentRequired), required: false);
+            var __workflow_bodyreplyUrls = bodyreplyUrls == null ? null : WorkflowExpression.Compile(bodyreplyUrls);
+            WorkflowExpression.Validate(__workflow_bodyreplyUrls, nameof(bodyreplyUrls), required: false);
             return new DeferredBodyAction<ServicePrinciple>(() =>
             {
                 var apiCallPath = "/v1.0/serviceprincipals";
@@ -379,27 +359,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyaccountEnabled != null)
+                if (__workflow_bodyaccountEnabled != null)
                 {
-                    body["accountEnabled"] = ExpressionConverter.ConvertO(bodyaccountEnabled);
+                    body["accountEnabled"] = ExpressionConverter.ConvertO(__workflow_bodyaccountEnabled);
                     bodypropCount++;
                 }
 
-                if (bodyappId != null)
+                if (__workflow_bodyappId != null)
                 {
-                    body["appId"] = ExpressionConverter.ConvertO(bodyappId);
+                    body["appId"] = ExpressionConverter.ConvertO(__workflow_bodyappId);
                     bodypropCount++;
                 }
 
-                if (bodyappRoleAssignmentRequired != null)
+                if (__workflow_bodyappRoleAssignmentRequired != null)
                 {
-                    body["appRoleAssignmentRequired"] = ExpressionConverter.ConvertO(bodyappRoleAssignmentRequired);
+                    body["appRoleAssignmentRequired"] = ExpressionConverter.ConvertO(__workflow_bodyappRoleAssignmentRequired);
                     bodypropCount++;
                 }
 
-                if (bodyreplyUrls != null)
+                if (__workflow_bodyreplyUrls != null)
                 {
-                    body["replyUrls"] = ExpressionConverter.ConvertO(bodyreplyUrls);
+                    body["replyUrls"] = ExpressionConverter.ConvertO(__workflow_bodyreplyUrls);
                     bodypropCount++;
                 }
 

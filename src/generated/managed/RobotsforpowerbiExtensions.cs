@@ -1,38 +1,32 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robotsforpowerbi
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class RobotsforpowerbiActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "robotsforpowerbi")]
-        [WorkflowExpressionFactory(nameof(__BuildPlaylistEnable))]
-        public IBodyWorkflowAction<PlaylistEnableResponse> PlaylistEnable([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> bodyid)
+        public IBodyWorkflowAction<PlaylistEnableResponse> PlaylistEnable(Expression<Func<string>> accountId, Expression<Func<string>> bodyid)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PlaylistEnableResponse> __BuildPlaylistEnable(WorkflowExpression<string> accountId, WorkflowExpression<string> bodyid)
-        {
-            WorkflowExpression.Validate(accountId, nameof(accountId), required: true);
-            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: true);
+            var __workflow_accountId = accountId == null ? null : WorkflowExpression.Compile(accountId);
+            WorkflowExpression.Validate(__workflow_accountId, nameof(accountId), required: true);
+            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
+            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: true);
             return new DeferredBodyAction<PlaylistEnableResponse>(() =>
             {
                 var apiCallPath = "/api/v1/playlist.enable";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["Account Id"] = ExpressionConverter.Convert(accountId);
+                callPayload.Headers["Account Id"] = ExpressionConverter.Convert(__workflow_accountId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -43,27 +37,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robotsforpowerbi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "robotsforpowerbi")]
-        [WorkflowExpressionFactory(nameof(__BuildPlaylistDisable))]
-        public IBodyWorkflowAction<PlaylistDisableResponse> PlaylistDisable([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> bodyid)
+        public IBodyWorkflowAction<PlaylistDisableResponse> PlaylistDisable(Expression<Func<string>> accountId, Expression<Func<string>> bodyid)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PlaylistDisableResponse> __BuildPlaylistDisable(WorkflowExpression<string> accountId, WorkflowExpression<string> bodyid)
-        {
-            WorkflowExpression.Validate(accountId, nameof(accountId), required: true);
-            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: true);
+            var __workflow_accountId = accountId == null ? null : WorkflowExpression.Compile(accountId);
+            WorkflowExpression.Validate(__workflow_accountId, nameof(accountId), required: true);
+            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
+            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: true);
             return new DeferredBodyAction<PlaylistDisableResponse>(() =>
             {
                 var apiCallPath = "/api/v1/playlist.disable";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["Account Id"] = ExpressionConverter.Convert(accountId);
+                callPayload.Headers["Account Id"] = ExpressionConverter.Convert(__workflow_accountId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -74,27 +63,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robotsforpowerbi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "robotsforpowerbi")]
-        [WorkflowExpressionFactory(nameof(__BuildPlaylistExecute))]
-        public IBodyWorkflowAction<PlaylistExecuteResponse> PlaylistExecute([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> bodyid)
+        public IBodyWorkflowAction<PlaylistExecuteResponse> PlaylistExecute(Expression<Func<string>> accountId, Expression<Func<string>> bodyid)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PlaylistExecuteResponse> __BuildPlaylistExecute(WorkflowExpression<string> accountId, WorkflowExpression<string> bodyid)
-        {
-            WorkflowExpression.Validate(accountId, nameof(accountId), required: true);
-            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: true);
+            var __workflow_accountId = accountId == null ? null : WorkflowExpression.Compile(accountId);
+            WorkflowExpression.Validate(__workflow_accountId, nameof(accountId), required: true);
+            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
+            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: true);
             return new DeferredBodyAction<PlaylistExecuteResponse>(() =>
             {
                 var apiCallPath = "/api/v1/playlist.execute";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["Account Id"] = ExpressionConverter.Convert(accountId);
+                callPayload.Headers["Account Id"] = ExpressionConverter.Convert(__workflow_accountId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

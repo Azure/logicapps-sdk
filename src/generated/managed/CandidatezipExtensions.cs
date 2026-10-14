@@ -1,28 +1,22 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class CandidatezipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
-        [WorkflowExpressionFactory(nameof(__BuildParseResumeStandardViaFileContent))]
-        public IBodyWorkflowAction<ParseResumeStandardViaFileContentResponse> ParseResumeStandardViaFileContent([WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<string> bodyfileContent)
+        public IBodyWorkflowAction<ParseResumeStandardViaFileContentResponse> ParseResumeStandardViaFileContent(Expression<Func<string>> bodyfileName, Expression<Func<string>> bodyfileContent)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ParseResumeStandardViaFileContentResponse> __BuildParseResumeStandardViaFileContent(WorkflowExpression<string> bodyfileName, WorkflowExpression<string> bodyfileContent)
-        {
-            WorkflowExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
-            WorkflowExpression.Validate(bodyfileContent, nameof(bodyfileContent), required: true);
+            var __workflow_bodyfileName = bodyfileName == null ? null : WorkflowExpression.Compile(bodyfileName);
+            WorkflowExpression.Validate(__workflow_bodyfileName, nameof(bodyfileName), required: true);
+            var __workflow_bodyfileContent = bodyfileContent == null ? null : WorkflowExpression.Compile(bodyfileContent);
+            WorkflowExpression.Validate(__workflow_bodyfileContent, nameof(bodyfileContent), required: true);
             return new DeferredBodyAction<ParseResumeStandardViaFileContentResponse>(() =>
             {
                 var apiCallPath = "/ParseResumeBinary-Standard";
@@ -31,9 +25,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["FileName"] = ExpressionConverter.ConvertO(bodyfileName);
+                body["FileName"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
                 bodypropCount++;
-                body["FileContent"] = ExpressionConverter.ConvertO(bodyfileContent);
+                body["FileContent"] = ExpressionConverter.ConvertO(__workflow_bodyfileContent);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -44,17 +38,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
-        [WorkflowExpressionFactory(nameof(__BuildParseResumeDetailViaFileContent))]
-        public IBodyWorkflowAction<ParseResumeDetailViaFileContentResponse> ParseResumeDetailViaFileContent([WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<string> bodyfileContent)
+        public IBodyWorkflowAction<ParseResumeDetailViaFileContentResponse> ParseResumeDetailViaFileContent(Expression<Func<string>> bodyfileName, Expression<Func<string>> bodyfileContent)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ParseResumeDetailViaFileContentResponse> __BuildParseResumeDetailViaFileContent(WorkflowExpression<string> bodyfileName, WorkflowExpression<string> bodyfileContent)
-        {
-            WorkflowExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
-            WorkflowExpression.Validate(bodyfileContent, nameof(bodyfileContent), required: true);
+            var __workflow_bodyfileName = bodyfileName == null ? null : WorkflowExpression.Compile(bodyfileName);
+            WorkflowExpression.Validate(__workflow_bodyfileName, nameof(bodyfileName), required: true);
+            var __workflow_bodyfileContent = bodyfileContent == null ? null : WorkflowExpression.Compile(bodyfileContent);
+            WorkflowExpression.Validate(__workflow_bodyfileContent, nameof(bodyfileContent), required: true);
             return new DeferredBodyAction<ParseResumeDetailViaFileContentResponse>(() =>
             {
                 var apiCallPath = "/ParseResumeBinary";
@@ -63,9 +52,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["FileName"] = ExpressionConverter.ConvertO(bodyfileName);
+                body["FileName"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
                 bodypropCount++;
-                body["FileContent"] = ExpressionConverter.ConvertO(bodyfileContent);
+                body["FileContent"] = ExpressionConverter.ConvertO(__workflow_bodyfileContent);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -76,17 +65,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
-        [WorkflowExpressionFactory(nameof(__BuildParseResumeDetailViaUrl))]
-        public IBodyWorkflowAction<ParseResumeDetailViaUrlResponse> ParseResumeDetailViaUrl([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string> bodyfileName)
+        public IBodyWorkflowAction<ParseResumeDetailViaUrlResponse> ParseResumeDetailViaUrl(Expression<Func<string>> bodyurl, Expression<Func<string>> bodyfileName)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ParseResumeDetailViaUrlResponse> __BuildParseResumeDetailViaUrl(WorkflowExpression<string> bodyurl, WorkflowExpression<string> bodyfileName)
-        {
-            WorkflowExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            WorkflowExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
+            var __workflow_bodyurl = bodyurl == null ? null : WorkflowExpression.Compile(bodyurl);
+            WorkflowExpression.Validate(__workflow_bodyurl, nameof(bodyurl), required: true);
+            var __workflow_bodyfileName = bodyfileName == null ? null : WorkflowExpression.Compile(bodyfileName);
+            WorkflowExpression.Validate(__workflow_bodyfileName, nameof(bodyfileName), required: true);
             return new DeferredBodyAction<ParseResumeDetailViaUrlResponse>(() =>
             {
                 var apiCallPath = "/ParseResume";
@@ -95,9 +79,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["Url"] = ExpressionConverter.ConvertO(bodyurl);
+                body["Url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
                 bodypropCount++;
-                body["FileName"] = ExpressionConverter.ConvertO(bodyfileName);
+                body["FileName"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -108,17 +92,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
-        [WorkflowExpressionFactory(nameof(__BuildParseJDViaFileContent))]
-        public IBodyWorkflowAction<ParseJDViaFileContentResponse> ParseJDViaFileContent([WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<string> bodyfileContent)
+        public IBodyWorkflowAction<ParseJDViaFileContentResponse> ParseJDViaFileContent(Expression<Func<string>> bodyfileName, Expression<Func<string>> bodyfileContent)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ParseJDViaFileContentResponse> __BuildParseJDViaFileContent(WorkflowExpression<string> bodyfileName, WorkflowExpression<string> bodyfileContent)
-        {
-            WorkflowExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
-            WorkflowExpression.Validate(bodyfileContent, nameof(bodyfileContent), required: true);
+            var __workflow_bodyfileName = bodyfileName == null ? null : WorkflowExpression.Compile(bodyfileName);
+            WorkflowExpression.Validate(__workflow_bodyfileName, nameof(bodyfileName), required: true);
+            var __workflow_bodyfileContent = bodyfileContent == null ? null : WorkflowExpression.Compile(bodyfileContent);
+            WorkflowExpression.Validate(__workflow_bodyfileContent, nameof(bodyfileContent), required: true);
             return new DeferredBodyAction<ParseJDViaFileContentResponse>(() =>
             {
                 var apiCallPath = "/ParseJDBinary";
@@ -127,9 +106,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["FileName"] = ExpressionConverter.ConvertO(bodyfileName);
+                body["FileName"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
                 bodypropCount++;
-                body["FileContent"] = ExpressionConverter.ConvertO(bodyfileContent);
+                body["FileContent"] = ExpressionConverter.ConvertO(__workflow_bodyfileContent);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -140,17 +119,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
-        [WorkflowExpressionFactory(nameof(__BuildParseResumeStandardViaUrl))]
-        public IBodyWorkflowAction<ParseResumeStandardViaUrlResponse> ParseResumeStandardViaUrl([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string> bodyfileName)
+        public IBodyWorkflowAction<ParseResumeStandardViaUrlResponse> ParseResumeStandardViaUrl(Expression<Func<string>> bodyurl, Expression<Func<string>> bodyfileName)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ParseResumeStandardViaUrlResponse> __BuildParseResumeStandardViaUrl(WorkflowExpression<string> bodyurl, WorkflowExpression<string> bodyfileName)
-        {
-            WorkflowExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            WorkflowExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
+            var __workflow_bodyurl = bodyurl == null ? null : WorkflowExpression.Compile(bodyurl);
+            WorkflowExpression.Validate(__workflow_bodyurl, nameof(bodyurl), required: true);
+            var __workflow_bodyfileName = bodyfileName == null ? null : WorkflowExpression.Compile(bodyfileName);
+            WorkflowExpression.Validate(__workflow_bodyfileName, nameof(bodyfileName), required: true);
             return new DeferredBodyAction<ParseResumeStandardViaUrlResponse>(() =>
             {
                 var apiCallPath = "/ParseResume-Standard";
@@ -159,9 +133,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["Url"] = ExpressionConverter.ConvertO(bodyurl);
+                body["Url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
                 bodypropCount++;
-                body["FileName"] = ExpressionConverter.ConvertO(bodyfileName);
+                body["FileName"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -172,17 +146,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
-        [WorkflowExpressionFactory(nameof(__BuildParseJDViaUrl))]
-        public IBodyWorkflowAction<ParseJDViaUrlResponse> ParseJDViaUrl([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string> bodyfileName)
+        public IBodyWorkflowAction<ParseJDViaUrlResponse> ParseJDViaUrl(Expression<Func<string>> bodyurl, Expression<Func<string>> bodyfileName)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ParseJDViaUrlResponse> __BuildParseJDViaUrl(WorkflowExpression<string> bodyurl, WorkflowExpression<string> bodyfileName)
-        {
-            WorkflowExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            WorkflowExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
+            var __workflow_bodyurl = bodyurl == null ? null : WorkflowExpression.Compile(bodyurl);
+            WorkflowExpression.Validate(__workflow_bodyurl, nameof(bodyurl), required: true);
+            var __workflow_bodyfileName = bodyfileName == null ? null : WorkflowExpression.Compile(bodyfileName);
+            WorkflowExpression.Validate(__workflow_bodyfileName, nameof(bodyfileName), required: true);
             return new DeferredBodyAction<ParseJDViaUrlResponse>(() =>
             {
                 var apiCallPath = "/ParseJD";
@@ -191,9 +160,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["Url"] = ExpressionConverter.ConvertO(bodyurl);
+                body["Url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
                 bodypropCount++;
-                body["FileName"] = ExpressionConverter.ConvertO(bodyfileName);
+                body["FileName"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -204,17 +173,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
-        [WorkflowExpressionFactory(nameof(__BuildParseResumeBasicViaFileContent))]
-        public IBodyWorkflowAction<ParseResumeBasicViaFileContentResponse> ParseResumeBasicViaFileContent([WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<string> bodyfileContent)
+        public IBodyWorkflowAction<ParseResumeBasicViaFileContentResponse> ParseResumeBasicViaFileContent(Expression<Func<string>> bodyfileName, Expression<Func<string>> bodyfileContent)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ParseResumeBasicViaFileContentResponse> __BuildParseResumeBasicViaFileContent(WorkflowExpression<string> bodyfileName, WorkflowExpression<string> bodyfileContent)
-        {
-            WorkflowExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
-            WorkflowExpression.Validate(bodyfileContent, nameof(bodyfileContent), required: true);
+            var __workflow_bodyfileName = bodyfileName == null ? null : WorkflowExpression.Compile(bodyfileName);
+            WorkflowExpression.Validate(__workflow_bodyfileName, nameof(bodyfileName), required: true);
+            var __workflow_bodyfileContent = bodyfileContent == null ? null : WorkflowExpression.Compile(bodyfileContent);
+            WorkflowExpression.Validate(__workflow_bodyfileContent, nameof(bodyfileContent), required: true);
             return new DeferredBodyAction<ParseResumeBasicViaFileContentResponse>(() =>
             {
                 var apiCallPath = "/ParseResumeBinary-Basic";
@@ -223,9 +187,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["FileName"] = ExpressionConverter.ConvertO(bodyfileName);
+                body["FileName"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
                 bodypropCount++;
-                body["FileContent"] = ExpressionConverter.ConvertO(bodyfileContent);
+                body["FileContent"] = ExpressionConverter.ConvertO(__workflow_bodyfileContent);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -236,17 +200,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
-        [WorkflowExpressionFactory(nameof(__BuildParseResumeBasicViaUrl))]
-        public IBodyWorkflowAction<ParseResumeBasicViaUrlResponse> ParseResumeBasicViaUrl([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string> bodyfileName)
+        public IBodyWorkflowAction<ParseResumeBasicViaUrlResponse> ParseResumeBasicViaUrl(Expression<Func<string>> bodyurl, Expression<Func<string>> bodyfileName)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ParseResumeBasicViaUrlResponse> __BuildParseResumeBasicViaUrl(WorkflowExpression<string> bodyurl, WorkflowExpression<string> bodyfileName)
-        {
-            WorkflowExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            WorkflowExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
+            var __workflow_bodyurl = bodyurl == null ? null : WorkflowExpression.Compile(bodyurl);
+            WorkflowExpression.Validate(__workflow_bodyurl, nameof(bodyurl), required: true);
+            var __workflow_bodyfileName = bodyfileName == null ? null : WorkflowExpression.Compile(bodyfileName);
+            WorkflowExpression.Validate(__workflow_bodyfileName, nameof(bodyfileName), required: true);
             return new DeferredBodyAction<ParseResumeBasicViaUrlResponse>(() =>
             {
                 var apiCallPath = "/ParseResume-Basic";
@@ -255,9 +214,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["Url"] = ExpressionConverter.ConvertO(bodyurl);
+                body["Url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
                 bodypropCount++;
-                body["FileName"] = ExpressionConverter.ConvertO(bodyfileName);
+                body["FileName"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

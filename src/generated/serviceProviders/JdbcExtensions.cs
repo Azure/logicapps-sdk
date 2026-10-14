@@ -1,7 +1,6 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Jdbc
 {
     using System;
@@ -9,6 +8,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Jdbc
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class JdbcActions([ConnectionName] string connectionId)
     {
@@ -23,24 +23,19 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Jdbc
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Jdbc")]
-        [WorkflowExpressionFactory(nameof(__BuildRawQuery))]
-        public IBodyWorkflowAction<JToken[]> RawQuery([WorkflowExpression] Func<string> query, [WorkflowExpression] Func<object> queryParameters = null)
+        public IBodyWorkflowAction<JToken[]> RawQuery(Expression<Func<string>> query, Expression<Func<object>> queryParameters = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken[]> __BuildRawQuery(WorkflowExpression<string> query, WorkflowExpression<object> queryParameters = null)
-        {
-            WorkflowExpression.Validate(query, nameof(query), required: true);
-            WorkflowExpression.Validate(queryParameters, nameof(queryParameters), required: false);
+            var __workflow_query = query == null ? null : WorkflowExpression.Compile(query);
+            WorkflowExpression.Validate(__workflow_query, nameof(query), required: true);
+            var __workflow_queryParameters = queryParameters == null ? null : WorkflowExpression.Compile(queryParameters);
+            WorkflowExpression.Validate(__workflow_queryParameters, nameof(queryParameters), required: false);
             return new DeferredBodyAction<JToken[]>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["query"] = ExpressionConverter.ConvertO(query);
-                if (queryParameters != null)
+                serviceProviderParameters["query"] = ExpressionConverter.ConvertO(__workflow_query);
+                if (__workflow_queryParameters != null)
                 {
-                    serviceProviderParameters["queryParameters"] = ExpressionConverter.ConvertO(queryParameters);
+                    serviceProviderParameters["queryParameters"] = ExpressionConverter.ConvertO(__workflow_queryParameters);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -53,20 +48,14 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Jdbc
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Jdbc")]
-        [WorkflowExpressionFactory(nameof(__BuildGetSchema))]
-        public IBodyWorkflowAction<GetSchemaOutputItem[]> GetSchema([WorkflowExpression] Func<string> tableName)
+        public IBodyWorkflowAction<GetSchemaOutputItem[]> GetSchema(Expression<Func<string>> tableName)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetSchemaOutputItem[]> __BuildGetSchema(WorkflowExpression<string> tableName)
-        {
-            WorkflowExpression.Validate(tableName, nameof(tableName), required: true);
+            var __workflow_tableName = tableName == null ? null : WorkflowExpression.Compile(tableName);
+            WorkflowExpression.Validate(__workflow_tableName, nameof(tableName), required: true);
             return new DeferredBodyAction<GetSchemaOutputItem[]>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
+                serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(__workflow_tableName);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Jdbc", operationId: "getSchema", connectionName: connectionId),

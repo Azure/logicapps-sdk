@@ -1,47 +1,45 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Giphyip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class GiphyipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "giphyip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetGIF))]
-        public IBodyWorkflowAction<GetGIFResponse> GetGIF([WorkflowExpression] Func<string> aPIKEY, [WorkflowExpression] Func<string> q, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> rating = null, [WorkflowExpression] Func<string> lang = null)
+        public IBodyWorkflowAction<GetGIFResponse> GetGIF(Expression<Func<string>> aPIKEY, Expression<Func<string>> q, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<string>> rating = null, Expression<Func<string>> lang = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetGIFResponse> __BuildGetGIF(WorkflowExpression<string> aPIKEY, WorkflowExpression<string> q, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null, WorkflowExpression<string> rating = null, WorkflowExpression<string> lang = null)
-        {
-            WorkflowExpression.Validate(aPIKEY, nameof(aPIKEY), required: true);
-            WorkflowExpression.Validate(q, nameof(q), required: true);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(offset, nameof(offset), required: false);
-            WorkflowExpression.Validate(rating, nameof(rating), required: false);
-            WorkflowExpression.Validate(lang, nameof(lang), required: false);
+            var __workflow_aPIKEY = aPIKEY == null ? null : WorkflowExpression.Compile(aPIKEY);
+            WorkflowExpression.Validate(__workflow_aPIKEY, nameof(aPIKEY), required: true);
+            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
+            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_rating = rating == null ? null : WorkflowExpression.Compile(rating);
+            WorkflowExpression.Validate(__workflow_rating, nameof(rating), required: false);
+            var __workflow_lang = lang == null ? null : WorkflowExpression.Compile(lang);
+            WorkflowExpression.Validate(__workflow_lang, nameof(lang), required: false);
             return new DeferredBodyAction<GetGIFResponse>(() =>
             {
                 var apiCallPath = "/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["API_KEY"] = ExpressionConverter.Convert(aPIKEY);
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (offset != null)
-                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-                if (rating != null)
-                    callPayload.Queries["rating"] = ExpressionConverter.Convert(rating);
-                if (lang != null)
-                    callPayload.Queries["lang"] = ExpressionConverter.Convert(lang);
+                callPayload.Queries["API_KEY"] = ExpressionConverter.Convert(__workflow_aPIKEY);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                if (__workflow_rating != null)
+                    callPayload.Queries["rating"] = ExpressionConverter.Convert(__workflow_rating);
+                if (__workflow_lang != null)
+                    callPayload.Queries["lang"] = ExpressionConverter.Convert(__workflow_lang);
                 return new ApiConnectionAction<GetGIFResponse>(callPayload);
             });
         }

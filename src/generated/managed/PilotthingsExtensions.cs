@@ -1,463 +1,505 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class PilotthingsActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildGetAlerts))]
-        public IBodyWorkflowAction<PageAlertRo> GetAlerts([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null, [WorkflowExpression] Func<int> dateStart = null, [WorkflowExpression] Func<int> dateEnd = null)
+        public IBodyWorkflowAction<PageAlertRo> GetAlerts(Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null, Expression<Func<int>> dateStart = null, Expression<Func<int>> dateEnd = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PageAlertRo> __BuildGetAlerts(WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sortValues = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> filter = null, WorkflowExpression<dirInput> dir = null, WorkflowExpression<string> orFilter = null, WorkflowExpression<int> dateStart = null, WorkflowExpression<int> dateEnd = null)
-        {
-            WorkflowExpression.Validate(page, nameof(page), required: false);
-            WorkflowExpression.Validate(pageSize, nameof(pageSize), required: false);
-            WorkflowExpression.Validate(sortValues, nameof(sortValues), required: false);
-            WorkflowExpression.Validate(sort, nameof(sort), required: false);
-            WorkflowExpression.Validate(filter, nameof(filter), required: false);
-            WorkflowExpression.Validate(dir, nameof(dir), required: false);
-            WorkflowExpression.Validate(orFilter, nameof(orFilter), required: false);
-            WorkflowExpression.Validate(dateStart, nameof(dateStart), required: false);
-            WorkflowExpression.Validate(dateEnd, nameof(dateEnd), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
+            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_sortValues = sortValues == null ? null : WorkflowExpression.Compile(sortValues);
+            WorkflowExpression.Validate(__workflow_sortValues, nameof(sortValues), required: false);
+            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
+            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
+            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
+            var __workflow_dir = dir == null ? null : WorkflowExpression.Compile(dir);
+            WorkflowExpression.Validate(__workflow_dir, nameof(dir), required: false);
+            var __workflow_orFilter = orFilter == null ? null : WorkflowExpression.Compile(orFilter);
+            WorkflowExpression.Validate(__workflow_orFilter, nameof(orFilter), required: false);
+            var __workflow_dateStart = dateStart == null ? null : WorkflowExpression.Compile(dateStart);
+            WorkflowExpression.Validate(__workflow_dateStart, nameof(dateStart), required: false);
+            var __workflow_dateEnd = dateEnd == null ? null : WorkflowExpression.Compile(dateEnd);
+            WorkflowExpression.Validate(__workflow_dateEnd, nameof(dateEnd), required: false);
             return new DeferredBodyAction<PageAlertRo>(() =>
             {
                 var apiCallPath = "/api/alerts";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-                if (pageSize != null)
-                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-                if (sortValues != null)
-                    callPayload.Queries["sortValues"] = ExpressionConverter.Convert(sortValues);
-                if (sort != null)
-                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-                if (filter != null)
-                    callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-                if (dir != null)
-                    callPayload.Queries["dir"] = ExpressionConverter.Convert(dir);
-                if (orFilter != null)
-                    callPayload.Queries["orFilter"] = ExpressionConverter.Convert(orFilter);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_pageSize != null)
+                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
+                if (__workflow_sortValues != null)
+                    callPayload.Queries["sortValues"] = ExpressionConverter.Convert(__workflow_sortValues);
+                if (__workflow_sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
+                if (__workflow_filter != null)
+                    callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
+                if (__workflow_dir != null)
+                    callPayload.Queries["dir"] = ExpressionConverter.Convert(__workflow_dir);
+                if (__workflow_orFilter != null)
+                    callPayload.Queries["orFilter"] = ExpressionConverter.Convert(__workflow_orFilter);
                 callPayload.Queries["dateStart"] = Convert.ToString(0);
-                if (dateStart != null)
-                    callPayload.Queries["dateStart"] = ExpressionConverter.Convert(dateStart);
+                if (__workflow_dateStart != null)
+                    callPayload.Queries["dateStart"] = ExpressionConverter.Convert(__workflow_dateStart);
                 callPayload.Queries["dateEnd"] = Convert.ToString(0);
-                if (dateEnd != null)
-                    callPayload.Queries["dateEnd"] = ExpressionConverter.Convert(dateEnd);
+                if (__workflow_dateEnd != null)
+                    callPayload.Queries["dateEnd"] = ExpressionConverter.Convert(__workflow_dateEnd);
                 return new ApiConnectionAction<PageAlertRo>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateAlertState))]
-        public IBodyWorkflowAction<AlertRo> UpdateAlertState([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> paramJson = null)
+        public IBodyWorkflowAction<AlertRo> UpdateAlertState(Expression<Func<string>> id, Expression<Func<string>> paramJson = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AlertRo> __BuildUpdateAlertState(WorkflowExpression<string> id, WorkflowExpression<string> paramJson = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(paramJson, nameof(paramJson), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_paramJson = paramJson == null ? null : WorkflowExpression.Compile(paramJson);
+            WorkflowExpression.Validate(__workflow_paramJson, nameof(paramJson), required: false);
             return new DeferredBodyAction<AlertRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/alerts/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/alerts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(paramJson);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_paramJson);
                 return new ApiConnectionAction<AlertRo>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildGetMeasures))]
-        public IBodyWorkflowAction<PageMeasureRo> GetMeasures([WorkflowExpression] Func<bool> detailed = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null)
+        public IBodyWorkflowAction<PageMeasureRo> GetMeasures(Expression<Func<bool>> detailed = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PageMeasureRo> __BuildGetMeasures(WorkflowExpression<bool> detailed = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sortValues = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> filter = null, WorkflowExpression<dirInput> dir = null, WorkflowExpression<string> orFilter = null)
-        {
-            WorkflowExpression.Validate(detailed, nameof(detailed), required: false);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
-            WorkflowExpression.Validate(pageSize, nameof(pageSize), required: false);
-            WorkflowExpression.Validate(sortValues, nameof(sortValues), required: false);
-            WorkflowExpression.Validate(sort, nameof(sort), required: false);
-            WorkflowExpression.Validate(filter, nameof(filter), required: false);
-            WorkflowExpression.Validate(dir, nameof(dir), required: false);
-            WorkflowExpression.Validate(orFilter, nameof(orFilter), required: false);
+            var __workflow_detailed = detailed == null ? null : WorkflowExpression.Compile(detailed);
+            WorkflowExpression.Validate(__workflow_detailed, nameof(detailed), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
+            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_sortValues = sortValues == null ? null : WorkflowExpression.Compile(sortValues);
+            WorkflowExpression.Validate(__workflow_sortValues, nameof(sortValues), required: false);
+            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
+            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
+            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
+            var __workflow_dir = dir == null ? null : WorkflowExpression.Compile(dir);
+            WorkflowExpression.Validate(__workflow_dir, nameof(dir), required: false);
+            var __workflow_orFilter = orFilter == null ? null : WorkflowExpression.Compile(orFilter);
+            WorkflowExpression.Validate(__workflow_orFilter, nameof(orFilter), required: false);
             return new DeferredBodyAction<PageMeasureRo>(() =>
             {
                 var apiCallPath = "/api/measures";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["detailed"] = Convert.ToString(false);
-                if (detailed != null)
-                    callPayload.Queries["detailed"] = ExpressionConverter.Convert(detailed);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-                if (pageSize != null)
-                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-                if (sortValues != null)
-                    callPayload.Queries["sortValues"] = ExpressionConverter.Convert(sortValues);
-                if (sort != null)
-                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-                if (filter != null)
-                    callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-                if (dir != null)
-                    callPayload.Queries["dir"] = ExpressionConverter.Convert(dir);
-                if (orFilter != null)
-                    callPayload.Queries["orFilter"] = ExpressionConverter.Convert(orFilter);
+                if (__workflow_detailed != null)
+                    callPayload.Queries["detailed"] = ExpressionConverter.Convert(__workflow_detailed);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_pageSize != null)
+                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
+                if (__workflow_sortValues != null)
+                    callPayload.Queries["sortValues"] = ExpressionConverter.Convert(__workflow_sortValues);
+                if (__workflow_sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
+                if (__workflow_filter != null)
+                    callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
+                if (__workflow_dir != null)
+                    callPayload.Queries["dir"] = ExpressionConverter.Convert(__workflow_dir);
+                if (__workflow_orFilter != null)
+                    callPayload.Queries["orFilter"] = ExpressionConverter.Convert(__workflow_orFilter);
                 return new ApiConnectionAction<PageMeasureRo>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildGetCount))]
-        public IBodyWorkflowAction<CountRo> GetCount([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null)
+        public IBodyWorkflowAction<CountRo> GetCount(Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CountRo> __BuildGetCount(WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sortValues = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> filter = null, WorkflowExpression<dirInput> dir = null, WorkflowExpression<string> orFilter = null)
-        {
-            WorkflowExpression.Validate(page, nameof(page), required: false);
-            WorkflowExpression.Validate(pageSize, nameof(pageSize), required: false);
-            WorkflowExpression.Validate(sortValues, nameof(sortValues), required: false);
-            WorkflowExpression.Validate(sort, nameof(sort), required: false);
-            WorkflowExpression.Validate(filter, nameof(filter), required: false);
-            WorkflowExpression.Validate(dir, nameof(dir), required: false);
-            WorkflowExpression.Validate(orFilter, nameof(orFilter), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
+            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_sortValues = sortValues == null ? null : WorkflowExpression.Compile(sortValues);
+            WorkflowExpression.Validate(__workflow_sortValues, nameof(sortValues), required: false);
+            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
+            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
+            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
+            var __workflow_dir = dir == null ? null : WorkflowExpression.Compile(dir);
+            WorkflowExpression.Validate(__workflow_dir, nameof(dir), required: false);
+            var __workflow_orFilter = orFilter == null ? null : WorkflowExpression.Compile(orFilter);
+            WorkflowExpression.Validate(__workflow_orFilter, nameof(orFilter), required: false);
             return new DeferredBodyAction<CountRo>(() =>
             {
                 var apiCallPath = "/api/measures/count";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-                if (pageSize != null)
-                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-                if (sortValues != null)
-                    callPayload.Queries["sortValues"] = ExpressionConverter.Convert(sortValues);
-                if (sort != null)
-                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-                if (filter != null)
-                    callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-                if (dir != null)
-                    callPayload.Queries["dir"] = ExpressionConverter.Convert(dir);
-                if (orFilter != null)
-                    callPayload.Queries["orFilter"] = ExpressionConverter.Convert(orFilter);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_pageSize != null)
+                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
+                if (__workflow_sortValues != null)
+                    callPayload.Queries["sortValues"] = ExpressionConverter.Convert(__workflow_sortValues);
+                if (__workflow_sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
+                if (__workflow_filter != null)
+                    callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
+                if (__workflow_dir != null)
+                    callPayload.Queries["dir"] = ExpressionConverter.Convert(__workflow_dir);
+                if (__workflow_orFilter != null)
+                    callPayload.Queries["orFilter"] = ExpressionConverter.Convert(__workflow_orFilter);
                 return new ApiConnectionAction<CountRo>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildGetMeasure))]
-        public IBodyWorkflowAction<MeasureRo> GetMeasure([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bool> detailed = null)
+        public IBodyWorkflowAction<MeasureRo> GetMeasure(Expression<Func<string>> id, Expression<Func<bool>> detailed = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MeasureRo> __BuildGetMeasure(WorkflowExpression<string> id, WorkflowExpression<bool> detailed = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(detailed, nameof(detailed), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_detailed = detailed == null ? null : WorkflowExpression.Compile(detailed);
+            WorkflowExpression.Validate(__workflow_detailed, nameof(detailed), required: false);
             return new DeferredBodyAction<MeasureRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/measures/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/measures/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["detailed"] = Convert.ToString(false);
-                if (detailed != null)
-                    callPayload.Queries["detailed"] = ExpressionConverter.Convert(detailed);
+                if (__workflow_detailed != null)
+                    callPayload.Queries["detailed"] = ExpressionConverter.Convert(__workflow_detailed);
                 return new ApiConnectionAction<MeasureRo>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildGetMessages))]
-        public IBodyWorkflowAction<PageMessageRo> GetMessages([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null)
+        public IBodyWorkflowAction<PageMessageRo> GetMessages(Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PageMessageRo> __BuildGetMessages(WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sortValues = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> filter = null, WorkflowExpression<dirInput> dir = null, WorkflowExpression<string> orFilter = null)
-        {
-            WorkflowExpression.Validate(page, nameof(page), required: false);
-            WorkflowExpression.Validate(pageSize, nameof(pageSize), required: false);
-            WorkflowExpression.Validate(sortValues, nameof(sortValues), required: false);
-            WorkflowExpression.Validate(sort, nameof(sort), required: false);
-            WorkflowExpression.Validate(filter, nameof(filter), required: false);
-            WorkflowExpression.Validate(dir, nameof(dir), required: false);
-            WorkflowExpression.Validate(orFilter, nameof(orFilter), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
+            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_sortValues = sortValues == null ? null : WorkflowExpression.Compile(sortValues);
+            WorkflowExpression.Validate(__workflow_sortValues, nameof(sortValues), required: false);
+            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
+            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
+            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
+            var __workflow_dir = dir == null ? null : WorkflowExpression.Compile(dir);
+            WorkflowExpression.Validate(__workflow_dir, nameof(dir), required: false);
+            var __workflow_orFilter = orFilter == null ? null : WorkflowExpression.Compile(orFilter);
+            WorkflowExpression.Validate(__workflow_orFilter, nameof(orFilter), required: false);
             return new DeferredBodyAction<PageMessageRo>(() =>
             {
                 var apiCallPath = "/api/messages";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-                if (pageSize != null)
-                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-                if (sortValues != null)
-                    callPayload.Queries["sortValues"] = ExpressionConverter.Convert(sortValues);
-                if (sort != null)
-                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-                if (filter != null)
-                    callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-                if (dir != null)
-                    callPayload.Queries["dir"] = ExpressionConverter.Convert(dir);
-                if (orFilter != null)
-                    callPayload.Queries["orFilter"] = ExpressionConverter.Convert(orFilter);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_pageSize != null)
+                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
+                if (__workflow_sortValues != null)
+                    callPayload.Queries["sortValues"] = ExpressionConverter.Convert(__workflow_sortValues);
+                if (__workflow_sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
+                if (__workflow_filter != null)
+                    callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
+                if (__workflow_dir != null)
+                    callPayload.Queries["dir"] = ExpressionConverter.Convert(__workflow_dir);
+                if (__workflow_orFilter != null)
+                    callPayload.Queries["orFilter"] = ExpressionConverter.Convert(__workflow_orFilter);
                 return new ApiConnectionAction<PageMessageRo>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildGetMessagesAndMeasurements))]
-        public IBodyWorkflowAction<PageMessageRo> GetMessagesAndMeasurements([WorkflowExpression] Func<string> thingId, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null)
+        public IBodyWorkflowAction<PageMessageRo> GetMessagesAndMeasurements(Expression<Func<string>> thingId, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PageMessageRo> __BuildGetMessagesAndMeasurements(WorkflowExpression<string> thingId, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sortValues = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> filter = null, WorkflowExpression<dirInput> dir = null, WorkflowExpression<string> orFilter = null)
-        {
-            WorkflowExpression.Validate(thingId, nameof(thingId), required: true);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
-            WorkflowExpression.Validate(pageSize, nameof(pageSize), required: false);
-            WorkflowExpression.Validate(sortValues, nameof(sortValues), required: false);
-            WorkflowExpression.Validate(sort, nameof(sort), required: false);
-            WorkflowExpression.Validate(filter, nameof(filter), required: false);
-            WorkflowExpression.Validate(dir, nameof(dir), required: false);
-            WorkflowExpression.Validate(orFilter, nameof(orFilter), required: false);
+            var __workflow_thingId = thingId == null ? null : WorkflowExpression.Compile(thingId);
+            WorkflowExpression.Validate(__workflow_thingId, nameof(thingId), required: true);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
+            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_sortValues = sortValues == null ? null : WorkflowExpression.Compile(sortValues);
+            WorkflowExpression.Validate(__workflow_sortValues, nameof(sortValues), required: false);
+            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
+            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
+            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
+            var __workflow_dir = dir == null ? null : WorkflowExpression.Compile(dir);
+            WorkflowExpression.Validate(__workflow_dir, nameof(dir), required: false);
+            var __workflow_orFilter = orFilter == null ? null : WorkflowExpression.Compile(orFilter);
+            WorkflowExpression.Validate(__workflow_orFilter, nameof(orFilter), required: false);
             return new DeferredBodyAction<PageMessageRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/messages/things/{0}", ExpressionConverter.ConvertWithUrlEncoding(thingId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/messages/things/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_thingId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-                if (pageSize != null)
-                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-                if (sortValues != null)
-                    callPayload.Queries["sortValues"] = ExpressionConverter.Convert(sortValues);
-                if (sort != null)
-                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-                if (filter != null)
-                    callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-                if (dir != null)
-                    callPayload.Queries["dir"] = ExpressionConverter.Convert(dir);
-                if (orFilter != null)
-                    callPayload.Queries["orFilter"] = ExpressionConverter.Convert(orFilter);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_pageSize != null)
+                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
+                if (__workflow_sortValues != null)
+                    callPayload.Queries["sortValues"] = ExpressionConverter.Convert(__workflow_sortValues);
+                if (__workflow_sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
+                if (__workflow_filter != null)
+                    callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
+                if (__workflow_dir != null)
+                    callPayload.Queries["dir"] = ExpressionConverter.Convert(__workflow_dir);
+                if (__workflow_orFilter != null)
+                    callPayload.Queries["orFilter"] = ExpressionConverter.Convert(__workflow_orFilter);
                 return new ApiConnectionAction<PageMessageRo>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildAddMessage))]
-        public IBodyWorkflowAction<MessageRo> AddMessage([WorkflowExpression] Func<string> thingId, [WorkflowExpression] Func<string> messageRobody, [WorkflowExpression] Func<string> messageRocreationDate, [WorkflowExpression] Func<string> messageRoerrorMessage, [WorkflowExpression] Func<double> messageRolatitude, [WorkflowExpression] Func<double> messageRolongitude, [WorkflowExpression] Func<string> messageRometadata, [WorkflowExpression] Func<int> messageRonumber, [WorkflowExpression] Func<messageRoprocessedInput> messageRoprocessed, [WorkflowExpression] Func<string> messageRothingname, [WorkflowExpression] Func<string> messageRotimestamp, [WorkflowExpression] Func<string> messageRotopic, [WorkflowExpression] Func<string> messageRoid = null, [WorkflowExpression] Func<bool> messageRolinkabsolute = null, [WorkflowExpression] Func<string> messageRolinkauthority = null, [WorkflowExpression] Func<string> messageRolinkfragment = null, [WorkflowExpression] Func<string> messageRolinkhost = null, [WorkflowExpression] Func<bool> messageRolinkopaque = null, [WorkflowExpression] Func<string> messageRolinkpath = null, [WorkflowExpression] Func<int> messageRolinkport = null, [WorkflowExpression] Func<string> messageRolinkquery = null, [WorkflowExpression] Func<string> messageRolinkrawAuthority = null, [WorkflowExpression] Func<string> messageRolinkrawFragment = null, [WorkflowExpression] Func<string> messageRolinkrawPath = null, [WorkflowExpression] Func<string> messageRolinkrawQuery = null, [WorkflowExpression] Func<string> messageRolinkrawSchemeSpecificPart = null, [WorkflowExpression] Func<string> messageRolinkrawUserInfo = null, [WorkflowExpression] Func<string> messageRolinkscheme = null, [WorkflowExpression] Func<string> messageRolinkschemeSpecificPart = null, [WorkflowExpression] Func<string> messageRolinkuserInfo = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsarray = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsbigDecimal = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsbigInteger = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsbinary = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsboolean = null, [WorkflowExpression] Func<bool> messageRorawMeasurementscontainerNode = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsdouble = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsfloat = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsfloatingPointNumber = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsint = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsintegralNumber = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsLong = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsmissingNode = null, [WorkflowExpression] Func<messageRorawMeasurementsnodeTypeInput> messageRorawMeasurementsnodeType = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsnull = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsnumber = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsObject = null, [WorkflowExpression] Func<bool> messageRorawMeasurementspojo = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsShort = null, [WorkflowExpression] Func<bool> messageRorawMeasurementstextual = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsvalueNode = null, [WorkflowExpression] Func<string> messageRothingdisplayName = null, [WorkflowExpression] Func<string> messageRothingfixedName = null, [WorkflowExpression] Func<string> messageRothingid = null, [WorkflowExpression] Func<int> messageRothingnbAlerts = null, [WorkflowExpression] Func<ThingTagRo[]> messageRothingtags = null)
+        public IBodyWorkflowAction<MessageRo> AddMessage(Expression<Func<string>> thingId, Expression<Func<string>> messageRobody, Expression<Func<string>> messageRocreationDate, Expression<Func<string>> messageRoerrorMessage, Expression<Func<double>> messageRolatitude, Expression<Func<double>> messageRolongitude, Expression<Func<string>> messageRometadata, Expression<Func<int>> messageRonumber, Expression<Func<messageRoprocessedInput>> messageRoprocessed, Expression<Func<string>> messageRothingname, Expression<Func<string>> messageRotimestamp, Expression<Func<string>> messageRotopic, Expression<Func<string>> messageRoid = null, Expression<Func<bool>> messageRolinkabsolute = null, Expression<Func<string>> messageRolinkauthority = null, Expression<Func<string>> messageRolinkfragment = null, Expression<Func<string>> messageRolinkhost = null, Expression<Func<bool>> messageRolinkopaque = null, Expression<Func<string>> messageRolinkpath = null, Expression<Func<int>> messageRolinkport = null, Expression<Func<string>> messageRolinkquery = null, Expression<Func<string>> messageRolinkrawAuthority = null, Expression<Func<string>> messageRolinkrawFragment = null, Expression<Func<string>> messageRolinkrawPath = null, Expression<Func<string>> messageRolinkrawQuery = null, Expression<Func<string>> messageRolinkrawSchemeSpecificPart = null, Expression<Func<string>> messageRolinkrawUserInfo = null, Expression<Func<string>> messageRolinkscheme = null, Expression<Func<string>> messageRolinkschemeSpecificPart = null, Expression<Func<string>> messageRolinkuserInfo = null, Expression<Func<bool>> messageRorawMeasurementsarray = null, Expression<Func<bool>> messageRorawMeasurementsbigDecimal = null, Expression<Func<bool>> messageRorawMeasurementsbigInteger = null, Expression<Func<bool>> messageRorawMeasurementsbinary = null, Expression<Func<bool>> messageRorawMeasurementsboolean = null, Expression<Func<bool>> messageRorawMeasurementscontainerNode = null, Expression<Func<bool>> messageRorawMeasurementsdouble = null, Expression<Func<bool>> messageRorawMeasurementsfloat = null, Expression<Func<bool>> messageRorawMeasurementsfloatingPointNumber = null, Expression<Func<bool>> messageRorawMeasurementsint = null, Expression<Func<bool>> messageRorawMeasurementsintegralNumber = null, Expression<Func<bool>> messageRorawMeasurementsLong = null, Expression<Func<bool>> messageRorawMeasurementsmissingNode = null, Expression<Func<messageRorawMeasurementsnodeTypeInput>> messageRorawMeasurementsnodeType = null, Expression<Func<bool>> messageRorawMeasurementsnull = null, Expression<Func<bool>> messageRorawMeasurementsnumber = null, Expression<Func<bool>> messageRorawMeasurementsObject = null, Expression<Func<bool>> messageRorawMeasurementspojo = null, Expression<Func<bool>> messageRorawMeasurementsShort = null, Expression<Func<bool>> messageRorawMeasurementstextual = null, Expression<Func<bool>> messageRorawMeasurementsvalueNode = null, Expression<Func<string>> messageRothingdisplayName = null, Expression<Func<string>> messageRothingfixedName = null, Expression<Func<string>> messageRothingid = null, Expression<Func<int>> messageRothingnbAlerts = null, Expression<Func<ThingTagRo[]>> messageRothingtags = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MessageRo> __BuildAddMessage(WorkflowExpression<string> thingId, WorkflowExpression<string> messageRobody, WorkflowExpression<string> messageRocreationDate, WorkflowExpression<string> messageRoerrorMessage, WorkflowExpression<double> messageRolatitude, WorkflowExpression<double> messageRolongitude, WorkflowExpression<string> messageRometadata, WorkflowExpression<int> messageRonumber, WorkflowExpression<messageRoprocessedInput> messageRoprocessed, WorkflowExpression<string> messageRothingname, WorkflowExpression<string> messageRotimestamp, WorkflowExpression<string> messageRotopic, WorkflowExpression<string> messageRoid = null, WorkflowExpression<bool> messageRolinkabsolute = null, WorkflowExpression<string> messageRolinkauthority = null, WorkflowExpression<string> messageRolinkfragment = null, WorkflowExpression<string> messageRolinkhost = null, WorkflowExpression<bool> messageRolinkopaque = null, WorkflowExpression<string> messageRolinkpath = null, WorkflowExpression<int> messageRolinkport = null, WorkflowExpression<string> messageRolinkquery = null, WorkflowExpression<string> messageRolinkrawAuthority = null, WorkflowExpression<string> messageRolinkrawFragment = null, WorkflowExpression<string> messageRolinkrawPath = null, WorkflowExpression<string> messageRolinkrawQuery = null, WorkflowExpression<string> messageRolinkrawSchemeSpecificPart = null, WorkflowExpression<string> messageRolinkrawUserInfo = null, WorkflowExpression<string> messageRolinkscheme = null, WorkflowExpression<string> messageRolinkschemeSpecificPart = null, WorkflowExpression<string> messageRolinkuserInfo = null, WorkflowExpression<bool> messageRorawMeasurementsarray = null, WorkflowExpression<bool> messageRorawMeasurementsbigDecimal = null, WorkflowExpression<bool> messageRorawMeasurementsbigInteger = null, WorkflowExpression<bool> messageRorawMeasurementsbinary = null, WorkflowExpression<bool> messageRorawMeasurementsboolean = null, WorkflowExpression<bool> messageRorawMeasurementscontainerNode = null, WorkflowExpression<bool> messageRorawMeasurementsdouble = null, WorkflowExpression<bool> messageRorawMeasurementsfloat = null, WorkflowExpression<bool> messageRorawMeasurementsfloatingPointNumber = null, WorkflowExpression<bool> messageRorawMeasurementsint = null, WorkflowExpression<bool> messageRorawMeasurementsintegralNumber = null, WorkflowExpression<bool> messageRorawMeasurementsLong = null, WorkflowExpression<bool> messageRorawMeasurementsmissingNode = null, WorkflowExpression<messageRorawMeasurementsnodeTypeInput> messageRorawMeasurementsnodeType = null, WorkflowExpression<bool> messageRorawMeasurementsnull = null, WorkflowExpression<bool> messageRorawMeasurementsnumber = null, WorkflowExpression<bool> messageRorawMeasurementsObject = null, WorkflowExpression<bool> messageRorawMeasurementspojo = null, WorkflowExpression<bool> messageRorawMeasurementsShort = null, WorkflowExpression<bool> messageRorawMeasurementstextual = null, WorkflowExpression<bool> messageRorawMeasurementsvalueNode = null, WorkflowExpression<string> messageRothingdisplayName = null, WorkflowExpression<string> messageRothingfixedName = null, WorkflowExpression<string> messageRothingid = null, WorkflowExpression<int> messageRothingnbAlerts = null, WorkflowExpression<ThingTagRo[]> messageRothingtags = null)
-        {
-            WorkflowExpression.Validate(thingId, nameof(thingId), required: true);
-            WorkflowExpression.Validate(messageRobody, nameof(messageRobody), required: true);
-            WorkflowExpression.Validate(messageRocreationDate, nameof(messageRocreationDate), required: true);
-            WorkflowExpression.Validate(messageRoerrorMessage, nameof(messageRoerrorMessage), required: true);
-            WorkflowExpression.Validate(messageRolatitude, nameof(messageRolatitude), required: true);
-            WorkflowExpression.Validate(messageRolongitude, nameof(messageRolongitude), required: true);
-            WorkflowExpression.Validate(messageRometadata, nameof(messageRometadata), required: true);
-            WorkflowExpression.Validate(messageRonumber, nameof(messageRonumber), required: true);
-            WorkflowExpression.Validate(messageRoprocessed, nameof(messageRoprocessed), required: true);
-            WorkflowExpression.Validate(messageRothingname, nameof(messageRothingname), required: true);
-            WorkflowExpression.Validate(messageRotimestamp, nameof(messageRotimestamp), required: true);
-            WorkflowExpression.Validate(messageRotopic, nameof(messageRotopic), required: true);
-            WorkflowExpression.Validate(messageRoid, nameof(messageRoid), required: false);
-            WorkflowExpression.Validate(messageRolinkabsolute, nameof(messageRolinkabsolute), required: false);
-            WorkflowExpression.Validate(messageRolinkauthority, nameof(messageRolinkauthority), required: false);
-            WorkflowExpression.Validate(messageRolinkfragment, nameof(messageRolinkfragment), required: false);
-            WorkflowExpression.Validate(messageRolinkhost, nameof(messageRolinkhost), required: false);
-            WorkflowExpression.Validate(messageRolinkopaque, nameof(messageRolinkopaque), required: false);
-            WorkflowExpression.Validate(messageRolinkpath, nameof(messageRolinkpath), required: false);
-            WorkflowExpression.Validate(messageRolinkport, nameof(messageRolinkport), required: false);
-            WorkflowExpression.Validate(messageRolinkquery, nameof(messageRolinkquery), required: false);
-            WorkflowExpression.Validate(messageRolinkrawAuthority, nameof(messageRolinkrawAuthority), required: false);
-            WorkflowExpression.Validate(messageRolinkrawFragment, nameof(messageRolinkrawFragment), required: false);
-            WorkflowExpression.Validate(messageRolinkrawPath, nameof(messageRolinkrawPath), required: false);
-            WorkflowExpression.Validate(messageRolinkrawQuery, nameof(messageRolinkrawQuery), required: false);
-            WorkflowExpression.Validate(messageRolinkrawSchemeSpecificPart, nameof(messageRolinkrawSchemeSpecificPart), required: false);
-            WorkflowExpression.Validate(messageRolinkrawUserInfo, nameof(messageRolinkrawUserInfo), required: false);
-            WorkflowExpression.Validate(messageRolinkscheme, nameof(messageRolinkscheme), required: false);
-            WorkflowExpression.Validate(messageRolinkschemeSpecificPart, nameof(messageRolinkschemeSpecificPart), required: false);
-            WorkflowExpression.Validate(messageRolinkuserInfo, nameof(messageRolinkuserInfo), required: false);
-            WorkflowExpression.Validate(messageRorawMeasurementsarray, nameof(messageRorawMeasurementsarray), required: false);
-            WorkflowExpression.Validate(messageRorawMeasurementsbigDecimal, nameof(messageRorawMeasurementsbigDecimal), required: false);
-            WorkflowExpression.Validate(messageRorawMeasurementsbigInteger, nameof(messageRorawMeasurementsbigInteger), required: false);
-            WorkflowExpression.Validate(messageRorawMeasurementsbinary, nameof(messageRorawMeasurementsbinary), required: false);
-            WorkflowExpression.Validate(messageRorawMeasurementsboolean, nameof(messageRorawMeasurementsboolean), required: false);
-            WorkflowExpression.Validate(messageRorawMeasurementscontainerNode, nameof(messageRorawMeasurementscontainerNode), required: false);
-            WorkflowExpression.Validate(messageRorawMeasurementsdouble, nameof(messageRorawMeasurementsdouble), required: false);
-            WorkflowExpression.Validate(messageRorawMeasurementsfloat, nameof(messageRorawMeasurementsfloat), required: false);
-            WorkflowExpression.Validate(messageRorawMeasurementsfloatingPointNumber, nameof(messageRorawMeasurementsfloatingPointNumber), required: false);
-            WorkflowExpression.Validate(messageRorawMeasurementsint, nameof(messageRorawMeasurementsint), required: false);
-            WorkflowExpression.Validate(messageRorawMeasurementsintegralNumber, nameof(messageRorawMeasurementsintegralNumber), required: false);
-            WorkflowExpression.Validate(messageRorawMeasurementsLong, nameof(messageRorawMeasurementsLong), required: false);
-            WorkflowExpression.Validate(messageRorawMeasurementsmissingNode, nameof(messageRorawMeasurementsmissingNode), required: false);
-            WorkflowExpression.Validate(messageRorawMeasurementsnodeType, nameof(messageRorawMeasurementsnodeType), required: false);
-            WorkflowExpression.Validate(messageRorawMeasurementsnull, nameof(messageRorawMeasurementsnull), required: false);
-            WorkflowExpression.Validate(messageRorawMeasurementsnumber, nameof(messageRorawMeasurementsnumber), required: false);
-            WorkflowExpression.Validate(messageRorawMeasurementsObject, nameof(messageRorawMeasurementsObject), required: false);
-            WorkflowExpression.Validate(messageRorawMeasurementspojo, nameof(messageRorawMeasurementspojo), required: false);
-            WorkflowExpression.Validate(messageRorawMeasurementsShort, nameof(messageRorawMeasurementsShort), required: false);
-            WorkflowExpression.Validate(messageRorawMeasurementstextual, nameof(messageRorawMeasurementstextual), required: false);
-            WorkflowExpression.Validate(messageRorawMeasurementsvalueNode, nameof(messageRorawMeasurementsvalueNode), required: false);
-            WorkflowExpression.Validate(messageRothingdisplayName, nameof(messageRothingdisplayName), required: false);
-            WorkflowExpression.Validate(messageRothingfixedName, nameof(messageRothingfixedName), required: false);
-            WorkflowExpression.Validate(messageRothingid, nameof(messageRothingid), required: false);
-            WorkflowExpression.Validate(messageRothingnbAlerts, nameof(messageRothingnbAlerts), required: false);
-            WorkflowExpression.Validate(messageRothingtags, nameof(messageRothingtags), required: false);
+            var __workflow_thingId = thingId == null ? null : WorkflowExpression.Compile(thingId);
+            WorkflowExpression.Validate(__workflow_thingId, nameof(thingId), required: true);
+            var __workflow_messageRobody = messageRobody == null ? null : WorkflowExpression.Compile(messageRobody);
+            WorkflowExpression.Validate(__workflow_messageRobody, nameof(messageRobody), required: true);
+            var __workflow_messageRocreationDate = messageRocreationDate == null ? null : WorkflowExpression.Compile(messageRocreationDate);
+            WorkflowExpression.Validate(__workflow_messageRocreationDate, nameof(messageRocreationDate), required: true);
+            var __workflow_messageRoerrorMessage = messageRoerrorMessage == null ? null : WorkflowExpression.Compile(messageRoerrorMessage);
+            WorkflowExpression.Validate(__workflow_messageRoerrorMessage, nameof(messageRoerrorMessage), required: true);
+            var __workflow_messageRolatitude = messageRolatitude == null ? null : WorkflowExpression.Compile(messageRolatitude);
+            WorkflowExpression.Validate(__workflow_messageRolatitude, nameof(messageRolatitude), required: true);
+            var __workflow_messageRolongitude = messageRolongitude == null ? null : WorkflowExpression.Compile(messageRolongitude);
+            WorkflowExpression.Validate(__workflow_messageRolongitude, nameof(messageRolongitude), required: true);
+            var __workflow_messageRometadata = messageRometadata == null ? null : WorkflowExpression.Compile(messageRometadata);
+            WorkflowExpression.Validate(__workflow_messageRometadata, nameof(messageRometadata), required: true);
+            var __workflow_messageRonumber = messageRonumber == null ? null : WorkflowExpression.Compile(messageRonumber);
+            WorkflowExpression.Validate(__workflow_messageRonumber, nameof(messageRonumber), required: true);
+            var __workflow_messageRoprocessed = messageRoprocessed == null ? null : WorkflowExpression.Compile(messageRoprocessed);
+            WorkflowExpression.Validate(__workflow_messageRoprocessed, nameof(messageRoprocessed), required: true);
+            var __workflow_messageRothingname = messageRothingname == null ? null : WorkflowExpression.Compile(messageRothingname);
+            WorkflowExpression.Validate(__workflow_messageRothingname, nameof(messageRothingname), required: true);
+            var __workflow_messageRotimestamp = messageRotimestamp == null ? null : WorkflowExpression.Compile(messageRotimestamp);
+            WorkflowExpression.Validate(__workflow_messageRotimestamp, nameof(messageRotimestamp), required: true);
+            var __workflow_messageRotopic = messageRotopic == null ? null : WorkflowExpression.Compile(messageRotopic);
+            WorkflowExpression.Validate(__workflow_messageRotopic, nameof(messageRotopic), required: true);
+            var __workflow_messageRoid = messageRoid == null ? null : WorkflowExpression.Compile(messageRoid);
+            WorkflowExpression.Validate(__workflow_messageRoid, nameof(messageRoid), required: false);
+            var __workflow_messageRolinkabsolute = messageRolinkabsolute == null ? null : WorkflowExpression.Compile(messageRolinkabsolute);
+            WorkflowExpression.Validate(__workflow_messageRolinkabsolute, nameof(messageRolinkabsolute), required: false);
+            var __workflow_messageRolinkauthority = messageRolinkauthority == null ? null : WorkflowExpression.Compile(messageRolinkauthority);
+            WorkflowExpression.Validate(__workflow_messageRolinkauthority, nameof(messageRolinkauthority), required: false);
+            var __workflow_messageRolinkfragment = messageRolinkfragment == null ? null : WorkflowExpression.Compile(messageRolinkfragment);
+            WorkflowExpression.Validate(__workflow_messageRolinkfragment, nameof(messageRolinkfragment), required: false);
+            var __workflow_messageRolinkhost = messageRolinkhost == null ? null : WorkflowExpression.Compile(messageRolinkhost);
+            WorkflowExpression.Validate(__workflow_messageRolinkhost, nameof(messageRolinkhost), required: false);
+            var __workflow_messageRolinkopaque = messageRolinkopaque == null ? null : WorkflowExpression.Compile(messageRolinkopaque);
+            WorkflowExpression.Validate(__workflow_messageRolinkopaque, nameof(messageRolinkopaque), required: false);
+            var __workflow_messageRolinkpath = messageRolinkpath == null ? null : WorkflowExpression.Compile(messageRolinkpath);
+            WorkflowExpression.Validate(__workflow_messageRolinkpath, nameof(messageRolinkpath), required: false);
+            var __workflow_messageRolinkport = messageRolinkport == null ? null : WorkflowExpression.Compile(messageRolinkport);
+            WorkflowExpression.Validate(__workflow_messageRolinkport, nameof(messageRolinkport), required: false);
+            var __workflow_messageRolinkquery = messageRolinkquery == null ? null : WorkflowExpression.Compile(messageRolinkquery);
+            WorkflowExpression.Validate(__workflow_messageRolinkquery, nameof(messageRolinkquery), required: false);
+            var __workflow_messageRolinkrawAuthority = messageRolinkrawAuthority == null ? null : WorkflowExpression.Compile(messageRolinkrawAuthority);
+            WorkflowExpression.Validate(__workflow_messageRolinkrawAuthority, nameof(messageRolinkrawAuthority), required: false);
+            var __workflow_messageRolinkrawFragment = messageRolinkrawFragment == null ? null : WorkflowExpression.Compile(messageRolinkrawFragment);
+            WorkflowExpression.Validate(__workflow_messageRolinkrawFragment, nameof(messageRolinkrawFragment), required: false);
+            var __workflow_messageRolinkrawPath = messageRolinkrawPath == null ? null : WorkflowExpression.Compile(messageRolinkrawPath);
+            WorkflowExpression.Validate(__workflow_messageRolinkrawPath, nameof(messageRolinkrawPath), required: false);
+            var __workflow_messageRolinkrawQuery = messageRolinkrawQuery == null ? null : WorkflowExpression.Compile(messageRolinkrawQuery);
+            WorkflowExpression.Validate(__workflow_messageRolinkrawQuery, nameof(messageRolinkrawQuery), required: false);
+            var __workflow_messageRolinkrawSchemeSpecificPart = messageRolinkrawSchemeSpecificPart == null ? null : WorkflowExpression.Compile(messageRolinkrawSchemeSpecificPart);
+            WorkflowExpression.Validate(__workflow_messageRolinkrawSchemeSpecificPart, nameof(messageRolinkrawSchemeSpecificPart), required: false);
+            var __workflow_messageRolinkrawUserInfo = messageRolinkrawUserInfo == null ? null : WorkflowExpression.Compile(messageRolinkrawUserInfo);
+            WorkflowExpression.Validate(__workflow_messageRolinkrawUserInfo, nameof(messageRolinkrawUserInfo), required: false);
+            var __workflow_messageRolinkscheme = messageRolinkscheme == null ? null : WorkflowExpression.Compile(messageRolinkscheme);
+            WorkflowExpression.Validate(__workflow_messageRolinkscheme, nameof(messageRolinkscheme), required: false);
+            var __workflow_messageRolinkschemeSpecificPart = messageRolinkschemeSpecificPart == null ? null : WorkflowExpression.Compile(messageRolinkschemeSpecificPart);
+            WorkflowExpression.Validate(__workflow_messageRolinkschemeSpecificPart, nameof(messageRolinkschemeSpecificPart), required: false);
+            var __workflow_messageRolinkuserInfo = messageRolinkuserInfo == null ? null : WorkflowExpression.Compile(messageRolinkuserInfo);
+            WorkflowExpression.Validate(__workflow_messageRolinkuserInfo, nameof(messageRolinkuserInfo), required: false);
+            var __workflow_messageRorawMeasurementsarray = messageRorawMeasurementsarray == null ? null : WorkflowExpression.Compile(messageRorawMeasurementsarray);
+            WorkflowExpression.Validate(__workflow_messageRorawMeasurementsarray, nameof(messageRorawMeasurementsarray), required: false);
+            var __workflow_messageRorawMeasurementsbigDecimal = messageRorawMeasurementsbigDecimal == null ? null : WorkflowExpression.Compile(messageRorawMeasurementsbigDecimal);
+            WorkflowExpression.Validate(__workflow_messageRorawMeasurementsbigDecimal, nameof(messageRorawMeasurementsbigDecimal), required: false);
+            var __workflow_messageRorawMeasurementsbigInteger = messageRorawMeasurementsbigInteger == null ? null : WorkflowExpression.Compile(messageRorawMeasurementsbigInteger);
+            WorkflowExpression.Validate(__workflow_messageRorawMeasurementsbigInteger, nameof(messageRorawMeasurementsbigInteger), required: false);
+            var __workflow_messageRorawMeasurementsbinary = messageRorawMeasurementsbinary == null ? null : WorkflowExpression.Compile(messageRorawMeasurementsbinary);
+            WorkflowExpression.Validate(__workflow_messageRorawMeasurementsbinary, nameof(messageRorawMeasurementsbinary), required: false);
+            var __workflow_messageRorawMeasurementsboolean = messageRorawMeasurementsboolean == null ? null : WorkflowExpression.Compile(messageRorawMeasurementsboolean);
+            WorkflowExpression.Validate(__workflow_messageRorawMeasurementsboolean, nameof(messageRorawMeasurementsboolean), required: false);
+            var __workflow_messageRorawMeasurementscontainerNode = messageRorawMeasurementscontainerNode == null ? null : WorkflowExpression.Compile(messageRorawMeasurementscontainerNode);
+            WorkflowExpression.Validate(__workflow_messageRorawMeasurementscontainerNode, nameof(messageRorawMeasurementscontainerNode), required: false);
+            var __workflow_messageRorawMeasurementsdouble = messageRorawMeasurementsdouble == null ? null : WorkflowExpression.Compile(messageRorawMeasurementsdouble);
+            WorkflowExpression.Validate(__workflow_messageRorawMeasurementsdouble, nameof(messageRorawMeasurementsdouble), required: false);
+            var __workflow_messageRorawMeasurementsfloat = messageRorawMeasurementsfloat == null ? null : WorkflowExpression.Compile(messageRorawMeasurementsfloat);
+            WorkflowExpression.Validate(__workflow_messageRorawMeasurementsfloat, nameof(messageRorawMeasurementsfloat), required: false);
+            var __workflow_messageRorawMeasurementsfloatingPointNumber = messageRorawMeasurementsfloatingPointNumber == null ? null : WorkflowExpression.Compile(messageRorawMeasurementsfloatingPointNumber);
+            WorkflowExpression.Validate(__workflow_messageRorawMeasurementsfloatingPointNumber, nameof(messageRorawMeasurementsfloatingPointNumber), required: false);
+            var __workflow_messageRorawMeasurementsint = messageRorawMeasurementsint == null ? null : WorkflowExpression.Compile(messageRorawMeasurementsint);
+            WorkflowExpression.Validate(__workflow_messageRorawMeasurementsint, nameof(messageRorawMeasurementsint), required: false);
+            var __workflow_messageRorawMeasurementsintegralNumber = messageRorawMeasurementsintegralNumber == null ? null : WorkflowExpression.Compile(messageRorawMeasurementsintegralNumber);
+            WorkflowExpression.Validate(__workflow_messageRorawMeasurementsintegralNumber, nameof(messageRorawMeasurementsintegralNumber), required: false);
+            var __workflow_messageRorawMeasurementsLong = messageRorawMeasurementsLong == null ? null : WorkflowExpression.Compile(messageRorawMeasurementsLong);
+            WorkflowExpression.Validate(__workflow_messageRorawMeasurementsLong, nameof(messageRorawMeasurementsLong), required: false);
+            var __workflow_messageRorawMeasurementsmissingNode = messageRorawMeasurementsmissingNode == null ? null : WorkflowExpression.Compile(messageRorawMeasurementsmissingNode);
+            WorkflowExpression.Validate(__workflow_messageRorawMeasurementsmissingNode, nameof(messageRorawMeasurementsmissingNode), required: false);
+            var __workflow_messageRorawMeasurementsnodeType = messageRorawMeasurementsnodeType == null ? null : WorkflowExpression.Compile(messageRorawMeasurementsnodeType);
+            WorkflowExpression.Validate(__workflow_messageRorawMeasurementsnodeType, nameof(messageRorawMeasurementsnodeType), required: false);
+            var __workflow_messageRorawMeasurementsnull = messageRorawMeasurementsnull == null ? null : WorkflowExpression.Compile(messageRorawMeasurementsnull);
+            WorkflowExpression.Validate(__workflow_messageRorawMeasurementsnull, nameof(messageRorawMeasurementsnull), required: false);
+            var __workflow_messageRorawMeasurementsnumber = messageRorawMeasurementsnumber == null ? null : WorkflowExpression.Compile(messageRorawMeasurementsnumber);
+            WorkflowExpression.Validate(__workflow_messageRorawMeasurementsnumber, nameof(messageRorawMeasurementsnumber), required: false);
+            var __workflow_messageRorawMeasurementsObject = messageRorawMeasurementsObject == null ? null : WorkflowExpression.Compile(messageRorawMeasurementsObject);
+            WorkflowExpression.Validate(__workflow_messageRorawMeasurementsObject, nameof(messageRorawMeasurementsObject), required: false);
+            var __workflow_messageRorawMeasurementspojo = messageRorawMeasurementspojo == null ? null : WorkflowExpression.Compile(messageRorawMeasurementspojo);
+            WorkflowExpression.Validate(__workflow_messageRorawMeasurementspojo, nameof(messageRorawMeasurementspojo), required: false);
+            var __workflow_messageRorawMeasurementsShort = messageRorawMeasurementsShort == null ? null : WorkflowExpression.Compile(messageRorawMeasurementsShort);
+            WorkflowExpression.Validate(__workflow_messageRorawMeasurementsShort, nameof(messageRorawMeasurementsShort), required: false);
+            var __workflow_messageRorawMeasurementstextual = messageRorawMeasurementstextual == null ? null : WorkflowExpression.Compile(messageRorawMeasurementstextual);
+            WorkflowExpression.Validate(__workflow_messageRorawMeasurementstextual, nameof(messageRorawMeasurementstextual), required: false);
+            var __workflow_messageRorawMeasurementsvalueNode = messageRorawMeasurementsvalueNode == null ? null : WorkflowExpression.Compile(messageRorawMeasurementsvalueNode);
+            WorkflowExpression.Validate(__workflow_messageRorawMeasurementsvalueNode, nameof(messageRorawMeasurementsvalueNode), required: false);
+            var __workflow_messageRothingdisplayName = messageRothingdisplayName == null ? null : WorkflowExpression.Compile(messageRothingdisplayName);
+            WorkflowExpression.Validate(__workflow_messageRothingdisplayName, nameof(messageRothingdisplayName), required: false);
+            var __workflow_messageRothingfixedName = messageRothingfixedName == null ? null : WorkflowExpression.Compile(messageRothingfixedName);
+            WorkflowExpression.Validate(__workflow_messageRothingfixedName, nameof(messageRothingfixedName), required: false);
+            var __workflow_messageRothingid = messageRothingid == null ? null : WorkflowExpression.Compile(messageRothingid);
+            WorkflowExpression.Validate(__workflow_messageRothingid, nameof(messageRothingid), required: false);
+            var __workflow_messageRothingnbAlerts = messageRothingnbAlerts == null ? null : WorkflowExpression.Compile(messageRothingnbAlerts);
+            WorkflowExpression.Validate(__workflow_messageRothingnbAlerts, nameof(messageRothingnbAlerts), required: false);
+            var __workflow_messageRothingtags = messageRothingtags == null ? null : WorkflowExpression.Compile(messageRothingtags);
+            WorkflowExpression.Validate(__workflow_messageRothingtags, nameof(messageRothingtags), required: false);
             return new DeferredBodyAction<MessageRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/messages/things/{0}", ExpressionConverter.ConvertWithUrlEncoding(thingId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/messages/things/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_thingId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var messageRo = new JObject();
                 var messageRopropCount = 0;
                 messageRopropCount++;
-                messageRo["body"] = ExpressionConverter.ConvertO(messageRobody);
+                messageRo["body"] = ExpressionConverter.ConvertO(__workflow_messageRobody);
                 messageRopropCount++;
-                messageRo["creationDate"] = ExpressionConverter.ConvertO(messageRocreationDate);
+                messageRo["creationDate"] = ExpressionConverter.ConvertO(__workflow_messageRocreationDate);
                 messageRopropCount++;
-                messageRo["errorMessage"] = ExpressionConverter.ConvertO(messageRoerrorMessage);
-                if (messageRoid != null)
+                messageRo["errorMessage"] = ExpressionConverter.ConvertO(__workflow_messageRoerrorMessage);
+                if (__workflow_messageRoid != null)
                 {
-                    messageRo["id"] = ExpressionConverter.ConvertO(messageRoid);
+                    messageRo["id"] = ExpressionConverter.ConvertO(__workflow_messageRoid);
                     messageRopropCount++;
                 }
 
                 messageRopropCount++;
-                messageRo["latitude"] = ExpressionConverter.ConvertO(messageRolatitude);
+                messageRo["latitude"] = ExpressionConverter.ConvertO(__workflow_messageRolatitude);
                 var linkObject = new JObject();
                 var linkObjectpropCount = 0;
-                if (messageRolinkabsolute != null)
+                if (__workflow_messageRolinkabsolute != null)
                 {
-                    linkObject["absolute"] = ExpressionConverter.ConvertO(messageRolinkabsolute);
+                    linkObject["absolute"] = ExpressionConverter.ConvertO(__workflow_messageRolinkabsolute);
                     linkObjectpropCount++;
                 }
 
-                if (messageRolinkauthority != null)
+                if (__workflow_messageRolinkauthority != null)
                 {
-                    linkObject["authority"] = ExpressionConverter.ConvertO(messageRolinkauthority);
+                    linkObject["authority"] = ExpressionConverter.ConvertO(__workflow_messageRolinkauthority);
                     linkObjectpropCount++;
                 }
 
-                if (messageRolinkfragment != null)
+                if (__workflow_messageRolinkfragment != null)
                 {
-                    linkObject["fragment"] = ExpressionConverter.ConvertO(messageRolinkfragment);
+                    linkObject["fragment"] = ExpressionConverter.ConvertO(__workflow_messageRolinkfragment);
                     linkObjectpropCount++;
                 }
 
-                if (messageRolinkhost != null)
+                if (__workflow_messageRolinkhost != null)
                 {
-                    linkObject["host"] = ExpressionConverter.ConvertO(messageRolinkhost);
+                    linkObject["host"] = ExpressionConverter.ConvertO(__workflow_messageRolinkhost);
                     linkObjectpropCount++;
                 }
 
-                if (messageRolinkopaque != null)
+                if (__workflow_messageRolinkopaque != null)
                 {
-                    linkObject["opaque"] = ExpressionConverter.ConvertO(messageRolinkopaque);
+                    linkObject["opaque"] = ExpressionConverter.ConvertO(__workflow_messageRolinkopaque);
                     linkObjectpropCount++;
                 }
 
-                if (messageRolinkpath != null)
+                if (__workflow_messageRolinkpath != null)
                 {
-                    linkObject["path"] = ExpressionConverter.ConvertO(messageRolinkpath);
+                    linkObject["path"] = ExpressionConverter.ConvertO(__workflow_messageRolinkpath);
                     linkObjectpropCount++;
                 }
 
-                if (messageRolinkport != null)
+                if (__workflow_messageRolinkport != null)
                 {
-                    linkObject["port"] = ExpressionConverter.ConvertO(messageRolinkport);
+                    linkObject["port"] = ExpressionConverter.ConvertO(__workflow_messageRolinkport);
                     linkObjectpropCount++;
                 }
 
-                if (messageRolinkquery != null)
+                if (__workflow_messageRolinkquery != null)
                 {
-                    linkObject["query"] = ExpressionConverter.ConvertO(messageRolinkquery);
+                    linkObject["query"] = ExpressionConverter.ConvertO(__workflow_messageRolinkquery);
                     linkObjectpropCount++;
                 }
 
-                if (messageRolinkrawAuthority != null)
+                if (__workflow_messageRolinkrawAuthority != null)
                 {
-                    linkObject["rawAuthority"] = ExpressionConverter.ConvertO(messageRolinkrawAuthority);
+                    linkObject["rawAuthority"] = ExpressionConverter.ConvertO(__workflow_messageRolinkrawAuthority);
                     linkObjectpropCount++;
                 }
 
-                if (messageRolinkrawFragment != null)
+                if (__workflow_messageRolinkrawFragment != null)
                 {
-                    linkObject["rawFragment"] = ExpressionConverter.ConvertO(messageRolinkrawFragment);
+                    linkObject["rawFragment"] = ExpressionConverter.ConvertO(__workflow_messageRolinkrawFragment);
                     linkObjectpropCount++;
                 }
 
-                if (messageRolinkrawPath != null)
+                if (__workflow_messageRolinkrawPath != null)
                 {
-                    linkObject["rawPath"] = ExpressionConverter.ConvertO(messageRolinkrawPath);
+                    linkObject["rawPath"] = ExpressionConverter.ConvertO(__workflow_messageRolinkrawPath);
                     linkObjectpropCount++;
                 }
 
-                if (messageRolinkrawQuery != null)
+                if (__workflow_messageRolinkrawQuery != null)
                 {
-                    linkObject["rawQuery"] = ExpressionConverter.ConvertO(messageRolinkrawQuery);
+                    linkObject["rawQuery"] = ExpressionConverter.ConvertO(__workflow_messageRolinkrawQuery);
                     linkObjectpropCount++;
                 }
 
-                if (messageRolinkrawSchemeSpecificPart != null)
+                if (__workflow_messageRolinkrawSchemeSpecificPart != null)
                 {
-                    linkObject["rawSchemeSpecificPart"] = ExpressionConverter.ConvertO(messageRolinkrawSchemeSpecificPart);
+                    linkObject["rawSchemeSpecificPart"] = ExpressionConverter.ConvertO(__workflow_messageRolinkrawSchemeSpecificPart);
                     linkObjectpropCount++;
                 }
 
-                if (messageRolinkrawUserInfo != null)
+                if (__workflow_messageRolinkrawUserInfo != null)
                 {
-                    linkObject["rawUserInfo"] = ExpressionConverter.ConvertO(messageRolinkrawUserInfo);
+                    linkObject["rawUserInfo"] = ExpressionConverter.ConvertO(__workflow_messageRolinkrawUserInfo);
                     linkObjectpropCount++;
                 }
 
-                if (messageRolinkscheme != null)
+                if (__workflow_messageRolinkscheme != null)
                 {
-                    linkObject["scheme"] = ExpressionConverter.ConvertO(messageRolinkscheme);
+                    linkObject["scheme"] = ExpressionConverter.ConvertO(__workflow_messageRolinkscheme);
                     linkObjectpropCount++;
                 }
 
-                if (messageRolinkschemeSpecificPart != null)
+                if (__workflow_messageRolinkschemeSpecificPart != null)
                 {
-                    linkObject["schemeSpecificPart"] = ExpressionConverter.ConvertO(messageRolinkschemeSpecificPart);
+                    linkObject["schemeSpecificPart"] = ExpressionConverter.ConvertO(__workflow_messageRolinkschemeSpecificPart);
                     linkObjectpropCount++;
                 }
 
-                if (messageRolinkuserInfo != null)
+                if (__workflow_messageRolinkuserInfo != null)
                 {
-                    linkObject["userInfo"] = ExpressionConverter.ConvertO(messageRolinkuserInfo);
+                    linkObject["userInfo"] = ExpressionConverter.ConvertO(__workflow_messageRolinkuserInfo);
                     linkObjectpropCount++;
                 }
 
@@ -468,7 +510,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 }
 
                 messageRopropCount++;
-                messageRo["longitude"] = ExpressionConverter.ConvertO(messageRolongitude);
+                messageRo["longitude"] = ExpressionConverter.ConvertO(__workflow_messageRolongitude);
                 var measurementsObject = new JObject();
                 var measurementsObjectpropCount = 0;
                 if (measurementsObjectpropCount > 0)
@@ -478,136 +520,136 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 }
 
                 messageRopropCount++;
-                messageRo["metadata"] = ExpressionConverter.ConvertO(messageRometadata);
+                messageRo["metadata"] = ExpressionConverter.ConvertO(__workflow_messageRometadata);
                 messageRopropCount++;
-                messageRo["number"] = ExpressionConverter.ConvertO(messageRonumber);
+                messageRo["number"] = ExpressionConverter.ConvertO(__workflow_messageRonumber);
                 messageRopropCount++;
-                messageRo["processed"] = ExpressionConverter.ConvertO(messageRoprocessed);
+                messageRo["processed"] = ExpressionConverter.ConvertO(__workflow_messageRoprocessed);
                 var rawMeasurementsObject = new JObject();
                 var rawMeasurementsObjectpropCount = 0;
-                if (messageRorawMeasurementsarray != null)
+                if (__workflow_messageRorawMeasurementsarray != null)
                 {
-                    rawMeasurementsObject["array"] = ExpressionConverter.ConvertO(messageRorawMeasurementsarray);
+                    rawMeasurementsObject["array"] = ExpressionConverter.ConvertO(__workflow_messageRorawMeasurementsarray);
                     rawMeasurementsObjectpropCount++;
                 }
 
-                if (messageRorawMeasurementsbigDecimal != null)
+                if (__workflow_messageRorawMeasurementsbigDecimal != null)
                 {
-                    rawMeasurementsObject["bigDecimal"] = ExpressionConverter.ConvertO(messageRorawMeasurementsbigDecimal);
+                    rawMeasurementsObject["bigDecimal"] = ExpressionConverter.ConvertO(__workflow_messageRorawMeasurementsbigDecimal);
                     rawMeasurementsObjectpropCount++;
                 }
 
-                if (messageRorawMeasurementsbigInteger != null)
+                if (__workflow_messageRorawMeasurementsbigInteger != null)
                 {
-                    rawMeasurementsObject["bigInteger"] = ExpressionConverter.ConvertO(messageRorawMeasurementsbigInteger);
+                    rawMeasurementsObject["bigInteger"] = ExpressionConverter.ConvertO(__workflow_messageRorawMeasurementsbigInteger);
                     rawMeasurementsObjectpropCount++;
                 }
 
-                if (messageRorawMeasurementsbinary != null)
+                if (__workflow_messageRorawMeasurementsbinary != null)
                 {
-                    rawMeasurementsObject["binary"] = ExpressionConverter.ConvertO(messageRorawMeasurementsbinary);
+                    rawMeasurementsObject["binary"] = ExpressionConverter.ConvertO(__workflow_messageRorawMeasurementsbinary);
                     rawMeasurementsObjectpropCount++;
                 }
 
-                if (messageRorawMeasurementsboolean != null)
+                if (__workflow_messageRorawMeasurementsboolean != null)
                 {
-                    rawMeasurementsObject["boolean"] = ExpressionConverter.ConvertO(messageRorawMeasurementsboolean);
+                    rawMeasurementsObject["boolean"] = ExpressionConverter.ConvertO(__workflow_messageRorawMeasurementsboolean);
                     rawMeasurementsObjectpropCount++;
                 }
 
-                if (messageRorawMeasurementscontainerNode != null)
+                if (__workflow_messageRorawMeasurementscontainerNode != null)
                 {
-                    rawMeasurementsObject["containerNode"] = ExpressionConverter.ConvertO(messageRorawMeasurementscontainerNode);
+                    rawMeasurementsObject["containerNode"] = ExpressionConverter.ConvertO(__workflow_messageRorawMeasurementscontainerNode);
                     rawMeasurementsObjectpropCount++;
                 }
 
-                if (messageRorawMeasurementsdouble != null)
+                if (__workflow_messageRorawMeasurementsdouble != null)
                 {
-                    rawMeasurementsObject["double"] = ExpressionConverter.ConvertO(messageRorawMeasurementsdouble);
+                    rawMeasurementsObject["double"] = ExpressionConverter.ConvertO(__workflow_messageRorawMeasurementsdouble);
                     rawMeasurementsObjectpropCount++;
                 }
 
-                if (messageRorawMeasurementsfloat != null)
+                if (__workflow_messageRorawMeasurementsfloat != null)
                 {
-                    rawMeasurementsObject["float"] = ExpressionConverter.ConvertO(messageRorawMeasurementsfloat);
+                    rawMeasurementsObject["float"] = ExpressionConverter.ConvertO(__workflow_messageRorawMeasurementsfloat);
                     rawMeasurementsObjectpropCount++;
                 }
 
-                if (messageRorawMeasurementsfloatingPointNumber != null)
+                if (__workflow_messageRorawMeasurementsfloatingPointNumber != null)
                 {
-                    rawMeasurementsObject["floatingPointNumber"] = ExpressionConverter.ConvertO(messageRorawMeasurementsfloatingPointNumber);
+                    rawMeasurementsObject["floatingPointNumber"] = ExpressionConverter.ConvertO(__workflow_messageRorawMeasurementsfloatingPointNumber);
                     rawMeasurementsObjectpropCount++;
                 }
 
-                if (messageRorawMeasurementsint != null)
+                if (__workflow_messageRorawMeasurementsint != null)
                 {
-                    rawMeasurementsObject["int"] = ExpressionConverter.ConvertO(messageRorawMeasurementsint);
+                    rawMeasurementsObject["int"] = ExpressionConverter.ConvertO(__workflow_messageRorawMeasurementsint);
                     rawMeasurementsObjectpropCount++;
                 }
 
-                if (messageRorawMeasurementsintegralNumber != null)
+                if (__workflow_messageRorawMeasurementsintegralNumber != null)
                 {
-                    rawMeasurementsObject["integralNumber"] = ExpressionConverter.ConvertO(messageRorawMeasurementsintegralNumber);
+                    rawMeasurementsObject["integralNumber"] = ExpressionConverter.ConvertO(__workflow_messageRorawMeasurementsintegralNumber);
                     rawMeasurementsObjectpropCount++;
                 }
 
-                if (messageRorawMeasurementsLong != null)
+                if (__workflow_messageRorawMeasurementsLong != null)
                 {
-                    rawMeasurementsObject["long"] = ExpressionConverter.ConvertO(messageRorawMeasurementsLong);
+                    rawMeasurementsObject["long"] = ExpressionConverter.ConvertO(__workflow_messageRorawMeasurementsLong);
                     rawMeasurementsObjectpropCount++;
                 }
 
-                if (messageRorawMeasurementsmissingNode != null)
+                if (__workflow_messageRorawMeasurementsmissingNode != null)
                 {
-                    rawMeasurementsObject["missingNode"] = ExpressionConverter.ConvertO(messageRorawMeasurementsmissingNode);
+                    rawMeasurementsObject["missingNode"] = ExpressionConverter.ConvertO(__workflow_messageRorawMeasurementsmissingNode);
                     rawMeasurementsObjectpropCount++;
                 }
 
-                if (messageRorawMeasurementsnodeType != null)
+                if (__workflow_messageRorawMeasurementsnodeType != null)
                 {
-                    rawMeasurementsObject["nodeType"] = ExpressionConverter.ConvertO(messageRorawMeasurementsnodeType);
+                    rawMeasurementsObject["nodeType"] = ExpressionConverter.ConvertO(__workflow_messageRorawMeasurementsnodeType);
                     rawMeasurementsObjectpropCount++;
                 }
 
-                if (messageRorawMeasurementsnull != null)
+                if (__workflow_messageRorawMeasurementsnull != null)
                 {
-                    rawMeasurementsObject["null"] = ExpressionConverter.ConvertO(messageRorawMeasurementsnull);
+                    rawMeasurementsObject["null"] = ExpressionConverter.ConvertO(__workflow_messageRorawMeasurementsnull);
                     rawMeasurementsObjectpropCount++;
                 }
 
-                if (messageRorawMeasurementsnumber != null)
+                if (__workflow_messageRorawMeasurementsnumber != null)
                 {
-                    rawMeasurementsObject["number"] = ExpressionConverter.ConvertO(messageRorawMeasurementsnumber);
+                    rawMeasurementsObject["number"] = ExpressionConverter.ConvertO(__workflow_messageRorawMeasurementsnumber);
                     rawMeasurementsObjectpropCount++;
                 }
 
-                if (messageRorawMeasurementsObject != null)
+                if (__workflow_messageRorawMeasurementsObject != null)
                 {
-                    rawMeasurementsObject["object"] = ExpressionConverter.ConvertO(messageRorawMeasurementsObject);
+                    rawMeasurementsObject["object"] = ExpressionConverter.ConvertO(__workflow_messageRorawMeasurementsObject);
                     rawMeasurementsObjectpropCount++;
                 }
 
-                if (messageRorawMeasurementspojo != null)
+                if (__workflow_messageRorawMeasurementspojo != null)
                 {
-                    rawMeasurementsObject["pojo"] = ExpressionConverter.ConvertO(messageRorawMeasurementspojo);
+                    rawMeasurementsObject["pojo"] = ExpressionConverter.ConvertO(__workflow_messageRorawMeasurementspojo);
                     rawMeasurementsObjectpropCount++;
                 }
 
-                if (messageRorawMeasurementsShort != null)
+                if (__workflow_messageRorawMeasurementsShort != null)
                 {
-                    rawMeasurementsObject["short"] = ExpressionConverter.ConvertO(messageRorawMeasurementsShort);
+                    rawMeasurementsObject["short"] = ExpressionConverter.ConvertO(__workflow_messageRorawMeasurementsShort);
                     rawMeasurementsObjectpropCount++;
                 }
 
-                if (messageRorawMeasurementstextual != null)
+                if (__workflow_messageRorawMeasurementstextual != null)
                 {
-                    rawMeasurementsObject["textual"] = ExpressionConverter.ConvertO(messageRorawMeasurementstextual);
+                    rawMeasurementsObject["textual"] = ExpressionConverter.ConvertO(__workflow_messageRorawMeasurementstextual);
                     rawMeasurementsObjectpropCount++;
                 }
 
-                if (messageRorawMeasurementsvalueNode != null)
+                if (__workflow_messageRorawMeasurementsvalueNode != null)
                 {
-                    rawMeasurementsObject["valueNode"] = ExpressionConverter.ConvertO(messageRorawMeasurementsvalueNode);
+                    rawMeasurementsObject["valueNode"] = ExpressionConverter.ConvertO(__workflow_messageRorawMeasurementsvalueNode);
                     rawMeasurementsObjectpropCount++;
                 }
 
@@ -619,35 +661,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
 
                 var thingObject = new JObject();
                 var thingObjectpropCount = 0;
-                if (messageRothingdisplayName != null)
+                if (__workflow_messageRothingdisplayName != null)
                 {
-                    thingObject["displayName"] = ExpressionConverter.ConvertO(messageRothingdisplayName);
+                    thingObject["displayName"] = ExpressionConverter.ConvertO(__workflow_messageRothingdisplayName);
                     thingObjectpropCount++;
                 }
 
-                if (messageRothingfixedName != null)
+                if (__workflow_messageRothingfixedName != null)
                 {
-                    thingObject["fixedName"] = ExpressionConverter.ConvertO(messageRothingfixedName);
+                    thingObject["fixedName"] = ExpressionConverter.ConvertO(__workflow_messageRothingfixedName);
                     thingObjectpropCount++;
                 }
 
-                if (messageRothingid != null)
+                if (__workflow_messageRothingid != null)
                 {
-                    thingObject["id"] = ExpressionConverter.ConvertO(messageRothingid);
+                    thingObject["id"] = ExpressionConverter.ConvertO(__workflow_messageRothingid);
                     thingObjectpropCount++;
                 }
 
                 thingObjectpropCount++;
-                thingObject["name"] = ExpressionConverter.ConvertO(messageRothingname);
-                if (messageRothingnbAlerts != null)
+                thingObject["name"] = ExpressionConverter.ConvertO(__workflow_messageRothingname);
+                if (__workflow_messageRothingnbAlerts != null)
                 {
-                    thingObject["nbAlerts"] = ExpressionConverter.ConvertO(messageRothingnbAlerts);
+                    thingObject["nbAlerts"] = ExpressionConverter.ConvertO(__workflow_messageRothingnbAlerts);
                     thingObjectpropCount++;
                 }
 
-                if (messageRothingtags != null)
+                if (__workflow_messageRothingtags != null)
                 {
-                    thingObject["tags"] = ExpressionConverter.ConvertO(messageRothingtags);
+                    thingObject["tags"] = ExpressionConverter.ConvertO(__workflow_messageRothingtags);
                     thingObjectpropCount++;
                 }
 
@@ -658,9 +700,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 }
 
                 messageRopropCount++;
-                messageRo["timestamp"] = ExpressionConverter.ConvertO(messageRotimestamp);
+                messageRo["timestamp"] = ExpressionConverter.ConvertO(__workflow_messageRotimestamp);
                 messageRopropCount++;
-                messageRo["topic"] = ExpressionConverter.ConvertO(messageRotopic);
+                messageRo["topic"] = ExpressionConverter.ConvertO(__workflow_messageRotopic);
                 if (messageRopropCount > 0)
                 {
                     callPayload.Body = messageRo;
@@ -671,19 +713,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildGetMessage))]
-        public IBodyWorkflowAction<MessageRo> GetMessage([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<MessageRo> GetMessage(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MessageRo> __BuildGetMessage(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<MessageRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/messages/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/messages/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<MessageRo>(callPayload);
@@ -691,19 +727,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildGetPreviousMessage))]
-        public IBodyWorkflowAction<MessageRo> GetPreviousMessage([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<MessageRo> GetPreviousMessage(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MessageRo> __BuildGetPreviousMessage(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<MessageRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/messages/{0}/previous", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/messages/{0}/previous", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<MessageRo>(callPayload);
@@ -711,76 +741,90 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildGetSites))]
-        public IBodyWorkflowAction<PageSiteRo> GetSites([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null)
+        public IBodyWorkflowAction<PageSiteRo> GetSites(Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PageSiteRo> __BuildGetSites(WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sortValues = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> filter = null, WorkflowExpression<dirInput> dir = null, WorkflowExpression<string> orFilter = null)
-        {
-            WorkflowExpression.Validate(page, nameof(page), required: false);
-            WorkflowExpression.Validate(pageSize, nameof(pageSize), required: false);
-            WorkflowExpression.Validate(sortValues, nameof(sortValues), required: false);
-            WorkflowExpression.Validate(sort, nameof(sort), required: false);
-            WorkflowExpression.Validate(filter, nameof(filter), required: false);
-            WorkflowExpression.Validate(dir, nameof(dir), required: false);
-            WorkflowExpression.Validate(orFilter, nameof(orFilter), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
+            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_sortValues = sortValues == null ? null : WorkflowExpression.Compile(sortValues);
+            WorkflowExpression.Validate(__workflow_sortValues, nameof(sortValues), required: false);
+            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
+            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
+            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
+            var __workflow_dir = dir == null ? null : WorkflowExpression.Compile(dir);
+            WorkflowExpression.Validate(__workflow_dir, nameof(dir), required: false);
+            var __workflow_orFilter = orFilter == null ? null : WorkflowExpression.Compile(orFilter);
+            WorkflowExpression.Validate(__workflow_orFilter, nameof(orFilter), required: false);
             return new DeferredBodyAction<PageSiteRo>(() =>
             {
                 var apiCallPath = "/api/sites";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-                if (pageSize != null)
-                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-                if (sortValues != null)
-                    callPayload.Queries["sortValues"] = ExpressionConverter.Convert(sortValues);
-                if (sort != null)
-                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-                if (filter != null)
-                    callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-                if (dir != null)
-                    callPayload.Queries["dir"] = ExpressionConverter.Convert(dir);
-                if (orFilter != null)
-                    callPayload.Queries["orFilter"] = ExpressionConverter.Convert(orFilter);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_pageSize != null)
+                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
+                if (__workflow_sortValues != null)
+                    callPayload.Queries["sortValues"] = ExpressionConverter.Convert(__workflow_sortValues);
+                if (__workflow_sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
+                if (__workflow_filter != null)
+                    callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
+                if (__workflow_dir != null)
+                    callPayload.Queries["dir"] = ExpressionConverter.Convert(__workflow_dir);
+                if (__workflow_orFilter != null)
+                    callPayload.Queries["orFilter"] = ExpressionConverter.Convert(__workflow_orFilter);
                 return new ApiConnectionAction<PageSiteRo>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateSite))]
-        public IBodyWorkflowAction<SiteRo[]> CreateSite([WorkflowExpression] Func<bool> nodearray = null, [WorkflowExpression] Func<bool> nodebigDecimal = null, [WorkflowExpression] Func<bool> nodebigInteger = null, [WorkflowExpression] Func<bool> nodebinary = null, [WorkflowExpression] Func<bool> nodeboolean = null, [WorkflowExpression] Func<bool> nodecontainerNode = null, [WorkflowExpression] Func<bool> nodedouble = null, [WorkflowExpression] Func<bool> nodefloat = null, [WorkflowExpression] Func<bool> nodefloatingPointNumber = null, [WorkflowExpression] Func<bool> nodeint = null, [WorkflowExpression] Func<bool> nodeintegralNumber = null, [WorkflowExpression] Func<bool> nodeLong = null, [WorkflowExpression] Func<bool> nodemissingNode = null, [WorkflowExpression] Func<nodenodeTypeInput> nodenodeType = null, [WorkflowExpression] Func<bool> nodenull = null, [WorkflowExpression] Func<bool> nodenumber = null, [WorkflowExpression] Func<bool> nodeObject = null, [WorkflowExpression] Func<bool> nodepojo = null, [WorkflowExpression] Func<bool> nodeShort = null, [WorkflowExpression] Func<bool> nodetextual = null, [WorkflowExpression] Func<bool> nodevalueNode = null)
+        public IBodyWorkflowAction<SiteRo[]> CreateSite(Expression<Func<bool>> nodearray = null, Expression<Func<bool>> nodebigDecimal = null, Expression<Func<bool>> nodebigInteger = null, Expression<Func<bool>> nodebinary = null, Expression<Func<bool>> nodeboolean = null, Expression<Func<bool>> nodecontainerNode = null, Expression<Func<bool>> nodedouble = null, Expression<Func<bool>> nodefloat = null, Expression<Func<bool>> nodefloatingPointNumber = null, Expression<Func<bool>> nodeint = null, Expression<Func<bool>> nodeintegralNumber = null, Expression<Func<bool>> nodeLong = null, Expression<Func<bool>> nodemissingNode = null, Expression<Func<nodenodeTypeInput>> nodenodeType = null, Expression<Func<bool>> nodenull = null, Expression<Func<bool>> nodenumber = null, Expression<Func<bool>> nodeObject = null, Expression<Func<bool>> nodepojo = null, Expression<Func<bool>> nodeShort = null, Expression<Func<bool>> nodetextual = null, Expression<Func<bool>> nodevalueNode = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SiteRo[]> __BuildCreateSite(WorkflowExpression<bool> nodearray = null, WorkflowExpression<bool> nodebigDecimal = null, WorkflowExpression<bool> nodebigInteger = null, WorkflowExpression<bool> nodebinary = null, WorkflowExpression<bool> nodeboolean = null, WorkflowExpression<bool> nodecontainerNode = null, WorkflowExpression<bool> nodedouble = null, WorkflowExpression<bool> nodefloat = null, WorkflowExpression<bool> nodefloatingPointNumber = null, WorkflowExpression<bool> nodeint = null, WorkflowExpression<bool> nodeintegralNumber = null, WorkflowExpression<bool> nodeLong = null, WorkflowExpression<bool> nodemissingNode = null, WorkflowExpression<nodenodeTypeInput> nodenodeType = null, WorkflowExpression<bool> nodenull = null, WorkflowExpression<bool> nodenumber = null, WorkflowExpression<bool> nodeObject = null, WorkflowExpression<bool> nodepojo = null, WorkflowExpression<bool> nodeShort = null, WorkflowExpression<bool> nodetextual = null, WorkflowExpression<bool> nodevalueNode = null)
-        {
-            WorkflowExpression.Validate(nodearray, nameof(nodearray), required: false);
-            WorkflowExpression.Validate(nodebigDecimal, nameof(nodebigDecimal), required: false);
-            WorkflowExpression.Validate(nodebigInteger, nameof(nodebigInteger), required: false);
-            WorkflowExpression.Validate(nodebinary, nameof(nodebinary), required: false);
-            WorkflowExpression.Validate(nodeboolean, nameof(nodeboolean), required: false);
-            WorkflowExpression.Validate(nodecontainerNode, nameof(nodecontainerNode), required: false);
-            WorkflowExpression.Validate(nodedouble, nameof(nodedouble), required: false);
-            WorkflowExpression.Validate(nodefloat, nameof(nodefloat), required: false);
-            WorkflowExpression.Validate(nodefloatingPointNumber, nameof(nodefloatingPointNumber), required: false);
-            WorkflowExpression.Validate(nodeint, nameof(nodeint), required: false);
-            WorkflowExpression.Validate(nodeintegralNumber, nameof(nodeintegralNumber), required: false);
-            WorkflowExpression.Validate(nodeLong, nameof(nodeLong), required: false);
-            WorkflowExpression.Validate(nodemissingNode, nameof(nodemissingNode), required: false);
-            WorkflowExpression.Validate(nodenodeType, nameof(nodenodeType), required: false);
-            WorkflowExpression.Validate(nodenull, nameof(nodenull), required: false);
-            WorkflowExpression.Validate(nodenumber, nameof(nodenumber), required: false);
-            WorkflowExpression.Validate(nodeObject, nameof(nodeObject), required: false);
-            WorkflowExpression.Validate(nodepojo, nameof(nodepojo), required: false);
-            WorkflowExpression.Validate(nodeShort, nameof(nodeShort), required: false);
-            WorkflowExpression.Validate(nodetextual, nameof(nodetextual), required: false);
-            WorkflowExpression.Validate(nodevalueNode, nameof(nodevalueNode), required: false);
+            var __workflow_nodearray = nodearray == null ? null : WorkflowExpression.Compile(nodearray);
+            WorkflowExpression.Validate(__workflow_nodearray, nameof(nodearray), required: false);
+            var __workflow_nodebigDecimal = nodebigDecimal == null ? null : WorkflowExpression.Compile(nodebigDecimal);
+            WorkflowExpression.Validate(__workflow_nodebigDecimal, nameof(nodebigDecimal), required: false);
+            var __workflow_nodebigInteger = nodebigInteger == null ? null : WorkflowExpression.Compile(nodebigInteger);
+            WorkflowExpression.Validate(__workflow_nodebigInteger, nameof(nodebigInteger), required: false);
+            var __workflow_nodebinary = nodebinary == null ? null : WorkflowExpression.Compile(nodebinary);
+            WorkflowExpression.Validate(__workflow_nodebinary, nameof(nodebinary), required: false);
+            var __workflow_nodeboolean = nodeboolean == null ? null : WorkflowExpression.Compile(nodeboolean);
+            WorkflowExpression.Validate(__workflow_nodeboolean, nameof(nodeboolean), required: false);
+            var __workflow_nodecontainerNode = nodecontainerNode == null ? null : WorkflowExpression.Compile(nodecontainerNode);
+            WorkflowExpression.Validate(__workflow_nodecontainerNode, nameof(nodecontainerNode), required: false);
+            var __workflow_nodedouble = nodedouble == null ? null : WorkflowExpression.Compile(nodedouble);
+            WorkflowExpression.Validate(__workflow_nodedouble, nameof(nodedouble), required: false);
+            var __workflow_nodefloat = nodefloat == null ? null : WorkflowExpression.Compile(nodefloat);
+            WorkflowExpression.Validate(__workflow_nodefloat, nameof(nodefloat), required: false);
+            var __workflow_nodefloatingPointNumber = nodefloatingPointNumber == null ? null : WorkflowExpression.Compile(nodefloatingPointNumber);
+            WorkflowExpression.Validate(__workflow_nodefloatingPointNumber, nameof(nodefloatingPointNumber), required: false);
+            var __workflow_nodeint = nodeint == null ? null : WorkflowExpression.Compile(nodeint);
+            WorkflowExpression.Validate(__workflow_nodeint, nameof(nodeint), required: false);
+            var __workflow_nodeintegralNumber = nodeintegralNumber == null ? null : WorkflowExpression.Compile(nodeintegralNumber);
+            WorkflowExpression.Validate(__workflow_nodeintegralNumber, nameof(nodeintegralNumber), required: false);
+            var __workflow_nodeLong = nodeLong == null ? null : WorkflowExpression.Compile(nodeLong);
+            WorkflowExpression.Validate(__workflow_nodeLong, nameof(nodeLong), required: false);
+            var __workflow_nodemissingNode = nodemissingNode == null ? null : WorkflowExpression.Compile(nodemissingNode);
+            WorkflowExpression.Validate(__workflow_nodemissingNode, nameof(nodemissingNode), required: false);
+            var __workflow_nodenodeType = nodenodeType == null ? null : WorkflowExpression.Compile(nodenodeType);
+            WorkflowExpression.Validate(__workflow_nodenodeType, nameof(nodenodeType), required: false);
+            var __workflow_nodenull = nodenull == null ? null : WorkflowExpression.Compile(nodenull);
+            WorkflowExpression.Validate(__workflow_nodenull, nameof(nodenull), required: false);
+            var __workflow_nodenumber = nodenumber == null ? null : WorkflowExpression.Compile(nodenumber);
+            WorkflowExpression.Validate(__workflow_nodenumber, nameof(nodenumber), required: false);
+            var __workflow_nodeObject = nodeObject == null ? null : WorkflowExpression.Compile(nodeObject);
+            WorkflowExpression.Validate(__workflow_nodeObject, nameof(nodeObject), required: false);
+            var __workflow_nodepojo = nodepojo == null ? null : WorkflowExpression.Compile(nodepojo);
+            WorkflowExpression.Validate(__workflow_nodepojo, nameof(nodepojo), required: false);
+            var __workflow_nodeShort = nodeShort == null ? null : WorkflowExpression.Compile(nodeShort);
+            WorkflowExpression.Validate(__workflow_nodeShort, nameof(nodeShort), required: false);
+            var __workflow_nodetextual = nodetextual == null ? null : WorkflowExpression.Compile(nodetextual);
+            WorkflowExpression.Validate(__workflow_nodetextual, nameof(nodetextual), required: false);
+            var __workflow_nodevalueNode = nodevalueNode == null ? null : WorkflowExpression.Compile(nodevalueNode);
+            WorkflowExpression.Validate(__workflow_nodevalueNode, nameof(nodevalueNode), required: false);
             return new DeferredBodyAction<SiteRo[]>(() =>
             {
                 var apiCallPath = "/api/sites";
@@ -788,129 +832,129 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var node = new JObject();
                 var nodepropCount = 0;
-                if (nodearray != null)
+                if (__workflow_nodearray != null)
                 {
-                    node["array"] = ExpressionConverter.ConvertO(nodearray);
+                    node["array"] = ExpressionConverter.ConvertO(__workflow_nodearray);
                     nodepropCount++;
                 }
 
-                if (nodebigDecimal != null)
+                if (__workflow_nodebigDecimal != null)
                 {
-                    node["bigDecimal"] = ExpressionConverter.ConvertO(nodebigDecimal);
+                    node["bigDecimal"] = ExpressionConverter.ConvertO(__workflow_nodebigDecimal);
                     nodepropCount++;
                 }
 
-                if (nodebigInteger != null)
+                if (__workflow_nodebigInteger != null)
                 {
-                    node["bigInteger"] = ExpressionConverter.ConvertO(nodebigInteger);
+                    node["bigInteger"] = ExpressionConverter.ConvertO(__workflow_nodebigInteger);
                     nodepropCount++;
                 }
 
-                if (nodebinary != null)
+                if (__workflow_nodebinary != null)
                 {
-                    node["binary"] = ExpressionConverter.ConvertO(nodebinary);
+                    node["binary"] = ExpressionConverter.ConvertO(__workflow_nodebinary);
                     nodepropCount++;
                 }
 
-                if (nodeboolean != null)
+                if (__workflow_nodeboolean != null)
                 {
-                    node["boolean"] = ExpressionConverter.ConvertO(nodeboolean);
+                    node["boolean"] = ExpressionConverter.ConvertO(__workflow_nodeboolean);
                     nodepropCount++;
                 }
 
-                if (nodecontainerNode != null)
+                if (__workflow_nodecontainerNode != null)
                 {
-                    node["containerNode"] = ExpressionConverter.ConvertO(nodecontainerNode);
+                    node["containerNode"] = ExpressionConverter.ConvertO(__workflow_nodecontainerNode);
                     nodepropCount++;
                 }
 
-                if (nodedouble != null)
+                if (__workflow_nodedouble != null)
                 {
-                    node["double"] = ExpressionConverter.ConvertO(nodedouble);
+                    node["double"] = ExpressionConverter.ConvertO(__workflow_nodedouble);
                     nodepropCount++;
                 }
 
-                if (nodefloat != null)
+                if (__workflow_nodefloat != null)
                 {
-                    node["float"] = ExpressionConverter.ConvertO(nodefloat);
+                    node["float"] = ExpressionConverter.ConvertO(__workflow_nodefloat);
                     nodepropCount++;
                 }
 
-                if (nodefloatingPointNumber != null)
+                if (__workflow_nodefloatingPointNumber != null)
                 {
-                    node["floatingPointNumber"] = ExpressionConverter.ConvertO(nodefloatingPointNumber);
+                    node["floatingPointNumber"] = ExpressionConverter.ConvertO(__workflow_nodefloatingPointNumber);
                     nodepropCount++;
                 }
 
-                if (nodeint != null)
+                if (__workflow_nodeint != null)
                 {
-                    node["int"] = ExpressionConverter.ConvertO(nodeint);
+                    node["int"] = ExpressionConverter.ConvertO(__workflow_nodeint);
                     nodepropCount++;
                 }
 
-                if (nodeintegralNumber != null)
+                if (__workflow_nodeintegralNumber != null)
                 {
-                    node["integralNumber"] = ExpressionConverter.ConvertO(nodeintegralNumber);
+                    node["integralNumber"] = ExpressionConverter.ConvertO(__workflow_nodeintegralNumber);
                     nodepropCount++;
                 }
 
-                if (nodeLong != null)
+                if (__workflow_nodeLong != null)
                 {
-                    node["long"] = ExpressionConverter.ConvertO(nodeLong);
+                    node["long"] = ExpressionConverter.ConvertO(__workflow_nodeLong);
                     nodepropCount++;
                 }
 
-                if (nodemissingNode != null)
+                if (__workflow_nodemissingNode != null)
                 {
-                    node["missingNode"] = ExpressionConverter.ConvertO(nodemissingNode);
+                    node["missingNode"] = ExpressionConverter.ConvertO(__workflow_nodemissingNode);
                     nodepropCount++;
                 }
 
-                if (nodenodeType != null)
+                if (__workflow_nodenodeType != null)
                 {
-                    node["nodeType"] = ExpressionConverter.ConvertO(nodenodeType);
+                    node["nodeType"] = ExpressionConverter.ConvertO(__workflow_nodenodeType);
                     nodepropCount++;
                 }
 
-                if (nodenull != null)
+                if (__workflow_nodenull != null)
                 {
-                    node["null"] = ExpressionConverter.ConvertO(nodenull);
+                    node["null"] = ExpressionConverter.ConvertO(__workflow_nodenull);
                     nodepropCount++;
                 }
 
-                if (nodenumber != null)
+                if (__workflow_nodenumber != null)
                 {
-                    node["number"] = ExpressionConverter.ConvertO(nodenumber);
+                    node["number"] = ExpressionConverter.ConvertO(__workflow_nodenumber);
                     nodepropCount++;
                 }
 
-                if (nodeObject != null)
+                if (__workflow_nodeObject != null)
                 {
-                    node["object"] = ExpressionConverter.ConvertO(nodeObject);
+                    node["object"] = ExpressionConverter.ConvertO(__workflow_nodeObject);
                     nodepropCount++;
                 }
 
-                if (nodepojo != null)
+                if (__workflow_nodepojo != null)
                 {
-                    node["pojo"] = ExpressionConverter.ConvertO(nodepojo);
+                    node["pojo"] = ExpressionConverter.ConvertO(__workflow_nodepojo);
                     nodepropCount++;
                 }
 
-                if (nodeShort != null)
+                if (__workflow_nodeShort != null)
                 {
-                    node["short"] = ExpressionConverter.ConvertO(nodeShort);
+                    node["short"] = ExpressionConverter.ConvertO(__workflow_nodeShort);
                     nodepropCount++;
                 }
 
-                if (nodetextual != null)
+                if (__workflow_nodetextual != null)
                 {
-                    node["textual"] = ExpressionConverter.ConvertO(nodetextual);
+                    node["textual"] = ExpressionConverter.ConvertO(__workflow_nodetextual);
                     nodepropCount++;
                 }
 
-                if (nodevalueNode != null)
+                if (__workflow_nodevalueNode != null)
                 {
-                    node["valueNode"] = ExpressionConverter.ConvertO(nodevalueNode);
+                    node["valueNode"] = ExpressionConverter.ConvertO(__workflow_nodevalueNode);
                     nodepropCount++;
                 }
 
@@ -924,19 +968,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildGetSite))]
-        public IBodyWorkflowAction<SiteRo> GetSite([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<SiteRo> GetSite(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SiteRo> __BuildGetSite(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<SiteRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/sites/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/sites/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SiteRo>(callPayload);
@@ -944,19 +982,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteSite))]
-        public IWorkflowAction DeleteSite([WorkflowExpression] Func<string> id)
+        public IWorkflowAction DeleteSite(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDeleteSite(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/sites/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/sites/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -964,56 +996,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateSite))]
-        public IBodyWorkflowAction<SiteRo> UpdateSite([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> siteRoaddress, [WorkflowExpression] Func<string> siteRocity, [WorkflowExpression] Func<string> siteRoname, [WorkflowExpression] Func<string> siteRopostalCode, [WorkflowExpression] Func<string> siteRoid = null, [WorkflowExpression] Func<double> siteRolatitude = null, [WorkflowExpression] Func<double> siteRolongitude = null)
+        public IBodyWorkflowAction<SiteRo> UpdateSite(Expression<Func<string>> id, Expression<Func<string>> siteRoaddress, Expression<Func<string>> siteRocity, Expression<Func<string>> siteRoname, Expression<Func<string>> siteRopostalCode, Expression<Func<string>> siteRoid = null, Expression<Func<double>> siteRolatitude = null, Expression<Func<double>> siteRolongitude = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SiteRo> __BuildUpdateSite(WorkflowExpression<string> id, WorkflowExpression<string> siteRoaddress, WorkflowExpression<string> siteRocity, WorkflowExpression<string> siteRoname, WorkflowExpression<string> siteRopostalCode, WorkflowExpression<string> siteRoid = null, WorkflowExpression<double> siteRolatitude = null, WorkflowExpression<double> siteRolongitude = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(siteRoaddress, nameof(siteRoaddress), required: true);
-            WorkflowExpression.Validate(siteRocity, nameof(siteRocity), required: true);
-            WorkflowExpression.Validate(siteRoname, nameof(siteRoname), required: true);
-            WorkflowExpression.Validate(siteRopostalCode, nameof(siteRopostalCode), required: true);
-            WorkflowExpression.Validate(siteRoid, nameof(siteRoid), required: false);
-            WorkflowExpression.Validate(siteRolatitude, nameof(siteRolatitude), required: false);
-            WorkflowExpression.Validate(siteRolongitude, nameof(siteRolongitude), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_siteRoaddress = siteRoaddress == null ? null : WorkflowExpression.Compile(siteRoaddress);
+            WorkflowExpression.Validate(__workflow_siteRoaddress, nameof(siteRoaddress), required: true);
+            var __workflow_siteRocity = siteRocity == null ? null : WorkflowExpression.Compile(siteRocity);
+            WorkflowExpression.Validate(__workflow_siteRocity, nameof(siteRocity), required: true);
+            var __workflow_siteRoname = siteRoname == null ? null : WorkflowExpression.Compile(siteRoname);
+            WorkflowExpression.Validate(__workflow_siteRoname, nameof(siteRoname), required: true);
+            var __workflow_siteRopostalCode = siteRopostalCode == null ? null : WorkflowExpression.Compile(siteRopostalCode);
+            WorkflowExpression.Validate(__workflow_siteRopostalCode, nameof(siteRopostalCode), required: true);
+            var __workflow_siteRoid = siteRoid == null ? null : WorkflowExpression.Compile(siteRoid);
+            WorkflowExpression.Validate(__workflow_siteRoid, nameof(siteRoid), required: false);
+            var __workflow_siteRolatitude = siteRolatitude == null ? null : WorkflowExpression.Compile(siteRolatitude);
+            WorkflowExpression.Validate(__workflow_siteRolatitude, nameof(siteRolatitude), required: false);
+            var __workflow_siteRolongitude = siteRolongitude == null ? null : WorkflowExpression.Compile(siteRolongitude);
+            WorkflowExpression.Validate(__workflow_siteRolongitude, nameof(siteRolongitude), required: false);
             return new DeferredBodyAction<SiteRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/sites/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/sites/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var siteRo = new JObject();
                 var siteRopropCount = 0;
                 siteRopropCount++;
-                siteRo["address"] = ExpressionConverter.ConvertO(siteRoaddress);
+                siteRo["address"] = ExpressionConverter.ConvertO(__workflow_siteRoaddress);
                 siteRopropCount++;
-                siteRo["city"] = ExpressionConverter.ConvertO(siteRocity);
-                if (siteRoid != null)
+                siteRo["city"] = ExpressionConverter.ConvertO(__workflow_siteRocity);
+                if (__workflow_siteRoid != null)
                 {
-                    siteRo["id"] = ExpressionConverter.ConvertO(siteRoid);
+                    siteRo["id"] = ExpressionConverter.ConvertO(__workflow_siteRoid);
                     siteRopropCount++;
                 }
 
-                if (siteRolatitude != null)
+                if (__workflow_siteRolatitude != null)
                 {
-                    siteRo["latitude"] = ExpressionConverter.ConvertO(siteRolatitude);
+                    siteRo["latitude"] = ExpressionConverter.ConvertO(__workflow_siteRolatitude);
                     siteRopropCount++;
                 }
 
-                if (siteRolongitude != null)
+                if (__workflow_siteRolongitude != null)
                 {
-                    siteRo["longitude"] = ExpressionConverter.ConvertO(siteRolongitude);
+                    siteRo["longitude"] = ExpressionConverter.ConvertO(__workflow_siteRolongitude);
                     siteRopropCount++;
                 }
 
                 siteRopropCount++;
-                siteRo["name"] = ExpressionConverter.ConvertO(siteRoname);
+                siteRo["name"] = ExpressionConverter.ConvertO(__workflow_siteRoname);
                 siteRopropCount++;
-                siteRo["postalCode"] = ExpressionConverter.ConvertO(siteRopostalCode);
+                siteRo["postalCode"] = ExpressionConverter.ConvertO(__workflow_siteRopostalCode);
                 if (siteRopropCount > 0)
                 {
                     callPayload.Body = siteRo;
@@ -1024,57 +1057,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildGetTags))]
-        public IBodyWorkflowAction<PageThingTagRo> GetTags([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null)
+        public IBodyWorkflowAction<PageThingTagRo> GetTags(Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PageThingTagRo> __BuildGetTags(WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sortValues = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> filter = null, WorkflowExpression<dirInput> dir = null, WorkflowExpression<string> orFilter = null)
-        {
-            WorkflowExpression.Validate(page, nameof(page), required: false);
-            WorkflowExpression.Validate(pageSize, nameof(pageSize), required: false);
-            WorkflowExpression.Validate(sortValues, nameof(sortValues), required: false);
-            WorkflowExpression.Validate(sort, nameof(sort), required: false);
-            WorkflowExpression.Validate(filter, nameof(filter), required: false);
-            WorkflowExpression.Validate(dir, nameof(dir), required: false);
-            WorkflowExpression.Validate(orFilter, nameof(orFilter), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
+            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_sortValues = sortValues == null ? null : WorkflowExpression.Compile(sortValues);
+            WorkflowExpression.Validate(__workflow_sortValues, nameof(sortValues), required: false);
+            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
+            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
+            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
+            var __workflow_dir = dir == null ? null : WorkflowExpression.Compile(dir);
+            WorkflowExpression.Validate(__workflow_dir, nameof(dir), required: false);
+            var __workflow_orFilter = orFilter == null ? null : WorkflowExpression.Compile(orFilter);
+            WorkflowExpression.Validate(__workflow_orFilter, nameof(orFilter), required: false);
             return new DeferredBodyAction<PageThingTagRo>(() =>
             {
                 var apiCallPath = "/api/tags";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-                if (pageSize != null)
-                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-                if (sortValues != null)
-                    callPayload.Queries["sortValues"] = ExpressionConverter.Convert(sortValues);
-                if (sort != null)
-                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-                if (filter != null)
-                    callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-                if (dir != null)
-                    callPayload.Queries["dir"] = ExpressionConverter.Convert(dir);
-                if (orFilter != null)
-                    callPayload.Queries["orFilter"] = ExpressionConverter.Convert(orFilter);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_pageSize != null)
+                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
+                if (__workflow_sortValues != null)
+                    callPayload.Queries["sortValues"] = ExpressionConverter.Convert(__workflow_sortValues);
+                if (__workflow_sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
+                if (__workflow_filter != null)
+                    callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
+                if (__workflow_dir != null)
+                    callPayload.Queries["dir"] = ExpressionConverter.Convert(__workflow_dir);
+                if (__workflow_orFilter != null)
+                    callPayload.Queries["orFilter"] = ExpressionConverter.Convert(__workflow_orFilter);
                 return new ApiConnectionAction<PageThingTagRo>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateThingTag))]
-        public IBodyWorkflowAction<TagRo> UpdateThingTag([WorkflowExpression] Func<string> thingTagRoid = null, [WorkflowExpression] Func<string> thingTagRotag = null)
+        public IBodyWorkflowAction<TagRo> UpdateThingTag(Expression<Func<string>> thingTagRoid = null, Expression<Func<string>> thingTagRotag = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TagRo> __BuildUpdateThingTag(WorkflowExpression<string> thingTagRoid = null, WorkflowExpression<string> thingTagRotag = null)
-        {
-            WorkflowExpression.Validate(thingTagRoid, nameof(thingTagRoid), required: false);
-            WorkflowExpression.Validate(thingTagRotag, nameof(thingTagRotag), required: false);
+            var __workflow_thingTagRoid = thingTagRoid == null ? null : WorkflowExpression.Compile(thingTagRoid);
+            WorkflowExpression.Validate(__workflow_thingTagRoid, nameof(thingTagRoid), required: false);
+            var __workflow_thingTagRotag = thingTagRotag == null ? null : WorkflowExpression.Compile(thingTagRotag);
+            WorkflowExpression.Validate(__workflow_thingTagRotag, nameof(thingTagRotag), required: false);
             return new DeferredBodyAction<TagRo>(() =>
             {
                 var apiCallPath = "/api/tags";
@@ -1082,15 +1110,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var thingTagRo = new JObject();
                 var thingTagRopropCount = 0;
-                if (thingTagRoid != null)
+                if (__workflow_thingTagRoid != null)
                 {
-                    thingTagRo["id"] = ExpressionConverter.ConvertO(thingTagRoid);
+                    thingTagRo["id"] = ExpressionConverter.ConvertO(__workflow_thingTagRoid);
                     thingTagRopropCount++;
                 }
 
-                if (thingTagRotag != null)
+                if (__workflow_thingTagRotag != null)
                 {
-                    thingTagRo["tag"] = ExpressionConverter.ConvertO(thingTagRotag);
+                    thingTagRo["tag"] = ExpressionConverter.ConvertO(__workflow_thingTagRotag);
                     thingTagRopropCount++;
                 }
 
@@ -1104,34 +1132,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildAddThingTag))]
-        public IBodyWorkflowAction<TagRo> AddThingTag([WorkflowExpression] Func<string> thingId, [WorkflowExpression] Func<string> thingTagRoid = null, [WorkflowExpression] Func<string> thingTagRotag = null)
+        public IBodyWorkflowAction<TagRo> AddThingTag(Expression<Func<string>> thingId, Expression<Func<string>> thingTagRoid = null, Expression<Func<string>> thingTagRotag = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TagRo> __BuildAddThingTag(WorkflowExpression<string> thingId, WorkflowExpression<string> thingTagRoid = null, WorkflowExpression<string> thingTagRotag = null)
-        {
-            WorkflowExpression.Validate(thingId, nameof(thingId), required: true);
-            WorkflowExpression.Validate(thingTagRoid, nameof(thingTagRoid), required: false);
-            WorkflowExpression.Validate(thingTagRotag, nameof(thingTagRotag), required: false);
+            var __workflow_thingId = thingId == null ? null : WorkflowExpression.Compile(thingId);
+            WorkflowExpression.Validate(__workflow_thingId, nameof(thingId), required: true);
+            var __workflow_thingTagRoid = thingTagRoid == null ? null : WorkflowExpression.Compile(thingTagRoid);
+            WorkflowExpression.Validate(__workflow_thingTagRoid, nameof(thingTagRoid), required: false);
+            var __workflow_thingTagRotag = thingTagRotag == null ? null : WorkflowExpression.Compile(thingTagRotag);
+            WorkflowExpression.Validate(__workflow_thingTagRotag, nameof(thingTagRotag), required: false);
             return new DeferredBodyAction<TagRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/tags/thing/{0}", ExpressionConverter.ConvertWithUrlEncoding(thingId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/tags/thing/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_thingId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var thingTagRo = new JObject();
                 var thingTagRopropCount = 0;
-                if (thingTagRoid != null)
+                if (__workflow_thingTagRoid != null)
                 {
-                    thingTagRo["id"] = ExpressionConverter.ConvertO(thingTagRoid);
+                    thingTagRo["id"] = ExpressionConverter.ConvertO(__workflow_thingTagRoid);
                     thingTagRopropCount++;
                 }
 
-                if (thingTagRotag != null)
+                if (__workflow_thingTagRotag != null)
                 {
-                    thingTagRo["tag"] = ExpressionConverter.ConvertO(thingTagRotag);
+                    thingTagRo["tag"] = ExpressionConverter.ConvertO(__workflow_thingTagRotag);
                     thingTagRopropCount++;
                 }
 
@@ -1145,19 +1169,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildGetThingTag))]
-        public IBodyWorkflowAction<TagRo> GetThingTag([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<TagRo> GetThingTag(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TagRo> __BuildGetThingTag(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<TagRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/tags/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/tags/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TagRo>(callPayload);
@@ -1165,60 +1183,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildGetThings))]
-        public IBodyWorkflowAction<PageSingleThingRo> GetThings([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null, [WorkflowExpression] Func<bool> detailed = null)
+        public IBodyWorkflowAction<PageSingleThingRo> GetThings(Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null, Expression<Func<bool>> detailed = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PageSingleThingRo> __BuildGetThings(WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sortValues = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> filter = null, WorkflowExpression<dirInput> dir = null, WorkflowExpression<string> orFilter = null, WorkflowExpression<bool> detailed = null)
-        {
-            WorkflowExpression.Validate(page, nameof(page), required: false);
-            WorkflowExpression.Validate(pageSize, nameof(pageSize), required: false);
-            WorkflowExpression.Validate(sortValues, nameof(sortValues), required: false);
-            WorkflowExpression.Validate(sort, nameof(sort), required: false);
-            WorkflowExpression.Validate(filter, nameof(filter), required: false);
-            WorkflowExpression.Validate(dir, nameof(dir), required: false);
-            WorkflowExpression.Validate(orFilter, nameof(orFilter), required: false);
-            WorkflowExpression.Validate(detailed, nameof(detailed), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
+            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_sortValues = sortValues == null ? null : WorkflowExpression.Compile(sortValues);
+            WorkflowExpression.Validate(__workflow_sortValues, nameof(sortValues), required: false);
+            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
+            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
+            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
+            var __workflow_dir = dir == null ? null : WorkflowExpression.Compile(dir);
+            WorkflowExpression.Validate(__workflow_dir, nameof(dir), required: false);
+            var __workflow_orFilter = orFilter == null ? null : WorkflowExpression.Compile(orFilter);
+            WorkflowExpression.Validate(__workflow_orFilter, nameof(orFilter), required: false);
+            var __workflow_detailed = detailed == null ? null : WorkflowExpression.Compile(detailed);
+            WorkflowExpression.Validate(__workflow_detailed, nameof(detailed), required: false);
             return new DeferredBodyAction<PageSingleThingRo>(() =>
             {
                 var apiCallPath = "/api/things";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-                if (pageSize != null)
-                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-                if (sortValues != null)
-                    callPayload.Queries["sortValues"] = ExpressionConverter.Convert(sortValues);
-                if (sort != null)
-                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-                if (filter != null)
-                    callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-                if (dir != null)
-                    callPayload.Queries["dir"] = ExpressionConverter.Convert(dir);
-                if (orFilter != null)
-                    callPayload.Queries["orFilter"] = ExpressionConverter.Convert(orFilter);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_pageSize != null)
+                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
+                if (__workflow_sortValues != null)
+                    callPayload.Queries["sortValues"] = ExpressionConverter.Convert(__workflow_sortValues);
+                if (__workflow_sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
+                if (__workflow_filter != null)
+                    callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
+                if (__workflow_dir != null)
+                    callPayload.Queries["dir"] = ExpressionConverter.Convert(__workflow_dir);
+                if (__workflow_orFilter != null)
+                    callPayload.Queries["orFilter"] = ExpressionConverter.Convert(__workflow_orFilter);
                 callPayload.Queries["detailed"] = Convert.ToString(false);
-                if (detailed != null)
-                    callPayload.Queries["detailed"] = ExpressionConverter.Convert(detailed);
+                if (__workflow_detailed != null)
+                    callPayload.Queries["detailed"] = ExpressionConverter.Convert(__workflow_detailed);
                 return new ApiConnectionAction<PageSingleThingRo>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildAddThingsCsv))]
-        public IBodyWorkflowAction<ResponseEntity> AddThingsCsv([WorkflowExpression] Func<object> file)
+        public IBodyWorkflowAction<ResponseEntity> AddThingsCsv(Expression<Func<object>> file)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ResponseEntity> __BuildAddThingsCsv(WorkflowExpression<object> file)
-        {
-            WorkflowExpression.Validate(file, nameof(file), required: true);
+            var __workflow_file = file == null ? null : WorkflowExpression.Compile(file);
+            WorkflowExpression.Validate(__workflow_file, nameof(file), required: true);
             return new DeferredBodyAction<ResponseEntity>(() =>
             {
                 var apiCallPath = "/api/things";
@@ -1229,36 +1242,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildAssociateThingsWithProduct))]
-        public IBodyWorkflowAction<SingleThingRo[]> AssociateThingsWithProduct([WorkflowExpression] Func<bool> jsonarray = null, [WorkflowExpression] Func<bool> jsonbigDecimal = null, [WorkflowExpression] Func<bool> jsonbigInteger = null, [WorkflowExpression] Func<bool> jsonbinary = null, [WorkflowExpression] Func<bool> jsonboolean = null, [WorkflowExpression] Func<bool> jsoncontainerNode = null, [WorkflowExpression] Func<bool> jsondouble = null, [WorkflowExpression] Func<bool> jsonfloat = null, [WorkflowExpression] Func<bool> jsonfloatingPointNumber = null, [WorkflowExpression] Func<bool> jsonint = null, [WorkflowExpression] Func<bool> jsonintegralNumber = null, [WorkflowExpression] Func<bool> jsonLong = null, [WorkflowExpression] Func<bool> jsonmissingNode = null, [WorkflowExpression] Func<jsonnodeTypeInput> jsonnodeType = null, [WorkflowExpression] Func<bool> jsonnull = null, [WorkflowExpression] Func<bool> jsonnumber = null, [WorkflowExpression] Func<bool> jsonObject = null, [WorkflowExpression] Func<bool> jsonpojo = null, [WorkflowExpression] Func<bool> jsonShort = null, [WorkflowExpression] Func<bool> jsontextual = null, [WorkflowExpression] Func<bool> jsonvalueNode = null)
+        public IBodyWorkflowAction<SingleThingRo[]> AssociateThingsWithProduct(Expression<Func<bool>> jsonarray = null, Expression<Func<bool>> jsonbigDecimal = null, Expression<Func<bool>> jsonbigInteger = null, Expression<Func<bool>> jsonbinary = null, Expression<Func<bool>> jsonboolean = null, Expression<Func<bool>> jsoncontainerNode = null, Expression<Func<bool>> jsondouble = null, Expression<Func<bool>> jsonfloat = null, Expression<Func<bool>> jsonfloatingPointNumber = null, Expression<Func<bool>> jsonint = null, Expression<Func<bool>> jsonintegralNumber = null, Expression<Func<bool>> jsonLong = null, Expression<Func<bool>> jsonmissingNode = null, Expression<Func<jsonnodeTypeInput>> jsonnodeType = null, Expression<Func<bool>> jsonnull = null, Expression<Func<bool>> jsonnumber = null, Expression<Func<bool>> jsonObject = null, Expression<Func<bool>> jsonpojo = null, Expression<Func<bool>> jsonShort = null, Expression<Func<bool>> jsontextual = null, Expression<Func<bool>> jsonvalueNode = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SingleThingRo[]> __BuildAssociateThingsWithProduct(WorkflowExpression<bool> jsonarray = null, WorkflowExpression<bool> jsonbigDecimal = null, WorkflowExpression<bool> jsonbigInteger = null, WorkflowExpression<bool> jsonbinary = null, WorkflowExpression<bool> jsonboolean = null, WorkflowExpression<bool> jsoncontainerNode = null, WorkflowExpression<bool> jsondouble = null, WorkflowExpression<bool> jsonfloat = null, WorkflowExpression<bool> jsonfloatingPointNumber = null, WorkflowExpression<bool> jsonint = null, WorkflowExpression<bool> jsonintegralNumber = null, WorkflowExpression<bool> jsonLong = null, WorkflowExpression<bool> jsonmissingNode = null, WorkflowExpression<jsonnodeTypeInput> jsonnodeType = null, WorkflowExpression<bool> jsonnull = null, WorkflowExpression<bool> jsonnumber = null, WorkflowExpression<bool> jsonObject = null, WorkflowExpression<bool> jsonpojo = null, WorkflowExpression<bool> jsonShort = null, WorkflowExpression<bool> jsontextual = null, WorkflowExpression<bool> jsonvalueNode = null)
-        {
-            WorkflowExpression.Validate(jsonarray, nameof(jsonarray), required: false);
-            WorkflowExpression.Validate(jsonbigDecimal, nameof(jsonbigDecimal), required: false);
-            WorkflowExpression.Validate(jsonbigInteger, nameof(jsonbigInteger), required: false);
-            WorkflowExpression.Validate(jsonbinary, nameof(jsonbinary), required: false);
-            WorkflowExpression.Validate(jsonboolean, nameof(jsonboolean), required: false);
-            WorkflowExpression.Validate(jsoncontainerNode, nameof(jsoncontainerNode), required: false);
-            WorkflowExpression.Validate(jsondouble, nameof(jsondouble), required: false);
-            WorkflowExpression.Validate(jsonfloat, nameof(jsonfloat), required: false);
-            WorkflowExpression.Validate(jsonfloatingPointNumber, nameof(jsonfloatingPointNumber), required: false);
-            WorkflowExpression.Validate(jsonint, nameof(jsonint), required: false);
-            WorkflowExpression.Validate(jsonintegralNumber, nameof(jsonintegralNumber), required: false);
-            WorkflowExpression.Validate(jsonLong, nameof(jsonLong), required: false);
-            WorkflowExpression.Validate(jsonmissingNode, nameof(jsonmissingNode), required: false);
-            WorkflowExpression.Validate(jsonnodeType, nameof(jsonnodeType), required: false);
-            WorkflowExpression.Validate(jsonnull, nameof(jsonnull), required: false);
-            WorkflowExpression.Validate(jsonnumber, nameof(jsonnumber), required: false);
-            WorkflowExpression.Validate(jsonObject, nameof(jsonObject), required: false);
-            WorkflowExpression.Validate(jsonpojo, nameof(jsonpojo), required: false);
-            WorkflowExpression.Validate(jsonShort, nameof(jsonShort), required: false);
-            WorkflowExpression.Validate(jsontextual, nameof(jsontextual), required: false);
-            WorkflowExpression.Validate(jsonvalueNode, nameof(jsonvalueNode), required: false);
+            var __workflow_jsonarray = jsonarray == null ? null : WorkflowExpression.Compile(jsonarray);
+            WorkflowExpression.Validate(__workflow_jsonarray, nameof(jsonarray), required: false);
+            var __workflow_jsonbigDecimal = jsonbigDecimal == null ? null : WorkflowExpression.Compile(jsonbigDecimal);
+            WorkflowExpression.Validate(__workflow_jsonbigDecimal, nameof(jsonbigDecimal), required: false);
+            var __workflow_jsonbigInteger = jsonbigInteger == null ? null : WorkflowExpression.Compile(jsonbigInteger);
+            WorkflowExpression.Validate(__workflow_jsonbigInteger, nameof(jsonbigInteger), required: false);
+            var __workflow_jsonbinary = jsonbinary == null ? null : WorkflowExpression.Compile(jsonbinary);
+            WorkflowExpression.Validate(__workflow_jsonbinary, nameof(jsonbinary), required: false);
+            var __workflow_jsonboolean = jsonboolean == null ? null : WorkflowExpression.Compile(jsonboolean);
+            WorkflowExpression.Validate(__workflow_jsonboolean, nameof(jsonboolean), required: false);
+            var __workflow_jsoncontainerNode = jsoncontainerNode == null ? null : WorkflowExpression.Compile(jsoncontainerNode);
+            WorkflowExpression.Validate(__workflow_jsoncontainerNode, nameof(jsoncontainerNode), required: false);
+            var __workflow_jsondouble = jsondouble == null ? null : WorkflowExpression.Compile(jsondouble);
+            WorkflowExpression.Validate(__workflow_jsondouble, nameof(jsondouble), required: false);
+            var __workflow_jsonfloat = jsonfloat == null ? null : WorkflowExpression.Compile(jsonfloat);
+            WorkflowExpression.Validate(__workflow_jsonfloat, nameof(jsonfloat), required: false);
+            var __workflow_jsonfloatingPointNumber = jsonfloatingPointNumber == null ? null : WorkflowExpression.Compile(jsonfloatingPointNumber);
+            WorkflowExpression.Validate(__workflow_jsonfloatingPointNumber, nameof(jsonfloatingPointNumber), required: false);
+            var __workflow_jsonint = jsonint == null ? null : WorkflowExpression.Compile(jsonint);
+            WorkflowExpression.Validate(__workflow_jsonint, nameof(jsonint), required: false);
+            var __workflow_jsonintegralNumber = jsonintegralNumber == null ? null : WorkflowExpression.Compile(jsonintegralNumber);
+            WorkflowExpression.Validate(__workflow_jsonintegralNumber, nameof(jsonintegralNumber), required: false);
+            var __workflow_jsonLong = jsonLong == null ? null : WorkflowExpression.Compile(jsonLong);
+            WorkflowExpression.Validate(__workflow_jsonLong, nameof(jsonLong), required: false);
+            var __workflow_jsonmissingNode = jsonmissingNode == null ? null : WorkflowExpression.Compile(jsonmissingNode);
+            WorkflowExpression.Validate(__workflow_jsonmissingNode, nameof(jsonmissingNode), required: false);
+            var __workflow_jsonnodeType = jsonnodeType == null ? null : WorkflowExpression.Compile(jsonnodeType);
+            WorkflowExpression.Validate(__workflow_jsonnodeType, nameof(jsonnodeType), required: false);
+            var __workflow_jsonnull = jsonnull == null ? null : WorkflowExpression.Compile(jsonnull);
+            WorkflowExpression.Validate(__workflow_jsonnull, nameof(jsonnull), required: false);
+            var __workflow_jsonnumber = jsonnumber == null ? null : WorkflowExpression.Compile(jsonnumber);
+            WorkflowExpression.Validate(__workflow_jsonnumber, nameof(jsonnumber), required: false);
+            var __workflow_jsonObject = jsonObject == null ? null : WorkflowExpression.Compile(jsonObject);
+            WorkflowExpression.Validate(__workflow_jsonObject, nameof(jsonObject), required: false);
+            var __workflow_jsonpojo = jsonpojo == null ? null : WorkflowExpression.Compile(jsonpojo);
+            WorkflowExpression.Validate(__workflow_jsonpojo, nameof(jsonpojo), required: false);
+            var __workflow_jsonShort = jsonShort == null ? null : WorkflowExpression.Compile(jsonShort);
+            WorkflowExpression.Validate(__workflow_jsonShort, nameof(jsonShort), required: false);
+            var __workflow_jsontextual = jsontextual == null ? null : WorkflowExpression.Compile(jsontextual);
+            WorkflowExpression.Validate(__workflow_jsontextual, nameof(jsontextual), required: false);
+            var __workflow_jsonvalueNode = jsonvalueNode == null ? null : WorkflowExpression.Compile(jsonvalueNode);
+            WorkflowExpression.Validate(__workflow_jsonvalueNode, nameof(jsonvalueNode), required: false);
             return new DeferredBodyAction<SingleThingRo[]>(() =>
             {
                 var apiCallPath = "/api/things";
@@ -1266,129 +1293,129 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var json = new JObject();
                 var jsonpropCount = 0;
-                if (jsonarray != null)
+                if (__workflow_jsonarray != null)
                 {
-                    json["array"] = ExpressionConverter.ConvertO(jsonarray);
+                    json["array"] = ExpressionConverter.ConvertO(__workflow_jsonarray);
                     jsonpropCount++;
                 }
 
-                if (jsonbigDecimal != null)
+                if (__workflow_jsonbigDecimal != null)
                 {
-                    json["bigDecimal"] = ExpressionConverter.ConvertO(jsonbigDecimal);
+                    json["bigDecimal"] = ExpressionConverter.ConvertO(__workflow_jsonbigDecimal);
                     jsonpropCount++;
                 }
 
-                if (jsonbigInteger != null)
+                if (__workflow_jsonbigInteger != null)
                 {
-                    json["bigInteger"] = ExpressionConverter.ConvertO(jsonbigInteger);
+                    json["bigInteger"] = ExpressionConverter.ConvertO(__workflow_jsonbigInteger);
                     jsonpropCount++;
                 }
 
-                if (jsonbinary != null)
+                if (__workflow_jsonbinary != null)
                 {
-                    json["binary"] = ExpressionConverter.ConvertO(jsonbinary);
+                    json["binary"] = ExpressionConverter.ConvertO(__workflow_jsonbinary);
                     jsonpropCount++;
                 }
 
-                if (jsonboolean != null)
+                if (__workflow_jsonboolean != null)
                 {
-                    json["boolean"] = ExpressionConverter.ConvertO(jsonboolean);
+                    json["boolean"] = ExpressionConverter.ConvertO(__workflow_jsonboolean);
                     jsonpropCount++;
                 }
 
-                if (jsoncontainerNode != null)
+                if (__workflow_jsoncontainerNode != null)
                 {
-                    json["containerNode"] = ExpressionConverter.ConvertO(jsoncontainerNode);
+                    json["containerNode"] = ExpressionConverter.ConvertO(__workflow_jsoncontainerNode);
                     jsonpropCount++;
                 }
 
-                if (jsondouble != null)
+                if (__workflow_jsondouble != null)
                 {
-                    json["double"] = ExpressionConverter.ConvertO(jsondouble);
+                    json["double"] = ExpressionConverter.ConvertO(__workflow_jsondouble);
                     jsonpropCount++;
                 }
 
-                if (jsonfloat != null)
+                if (__workflow_jsonfloat != null)
                 {
-                    json["float"] = ExpressionConverter.ConvertO(jsonfloat);
+                    json["float"] = ExpressionConverter.ConvertO(__workflow_jsonfloat);
                     jsonpropCount++;
                 }
 
-                if (jsonfloatingPointNumber != null)
+                if (__workflow_jsonfloatingPointNumber != null)
                 {
-                    json["floatingPointNumber"] = ExpressionConverter.ConvertO(jsonfloatingPointNumber);
+                    json["floatingPointNumber"] = ExpressionConverter.ConvertO(__workflow_jsonfloatingPointNumber);
                     jsonpropCount++;
                 }
 
-                if (jsonint != null)
+                if (__workflow_jsonint != null)
                 {
-                    json["int"] = ExpressionConverter.ConvertO(jsonint);
+                    json["int"] = ExpressionConverter.ConvertO(__workflow_jsonint);
                     jsonpropCount++;
                 }
 
-                if (jsonintegralNumber != null)
+                if (__workflow_jsonintegralNumber != null)
                 {
-                    json["integralNumber"] = ExpressionConverter.ConvertO(jsonintegralNumber);
+                    json["integralNumber"] = ExpressionConverter.ConvertO(__workflow_jsonintegralNumber);
                     jsonpropCount++;
                 }
 
-                if (jsonLong != null)
+                if (__workflow_jsonLong != null)
                 {
-                    json["long"] = ExpressionConverter.ConvertO(jsonLong);
+                    json["long"] = ExpressionConverter.ConvertO(__workflow_jsonLong);
                     jsonpropCount++;
                 }
 
-                if (jsonmissingNode != null)
+                if (__workflow_jsonmissingNode != null)
                 {
-                    json["missingNode"] = ExpressionConverter.ConvertO(jsonmissingNode);
+                    json["missingNode"] = ExpressionConverter.ConvertO(__workflow_jsonmissingNode);
                     jsonpropCount++;
                 }
 
-                if (jsonnodeType != null)
+                if (__workflow_jsonnodeType != null)
                 {
-                    json["nodeType"] = ExpressionConverter.ConvertO(jsonnodeType);
+                    json["nodeType"] = ExpressionConverter.ConvertO(__workflow_jsonnodeType);
                     jsonpropCount++;
                 }
 
-                if (jsonnull != null)
+                if (__workflow_jsonnull != null)
                 {
-                    json["null"] = ExpressionConverter.ConvertO(jsonnull);
+                    json["null"] = ExpressionConverter.ConvertO(__workflow_jsonnull);
                     jsonpropCount++;
                 }
 
-                if (jsonnumber != null)
+                if (__workflow_jsonnumber != null)
                 {
-                    json["number"] = ExpressionConverter.ConvertO(jsonnumber);
+                    json["number"] = ExpressionConverter.ConvertO(__workflow_jsonnumber);
                     jsonpropCount++;
                 }
 
-                if (jsonObject != null)
+                if (__workflow_jsonObject != null)
                 {
-                    json["object"] = ExpressionConverter.ConvertO(jsonObject);
+                    json["object"] = ExpressionConverter.ConvertO(__workflow_jsonObject);
                     jsonpropCount++;
                 }
 
-                if (jsonpojo != null)
+                if (__workflow_jsonpojo != null)
                 {
-                    json["pojo"] = ExpressionConverter.ConvertO(jsonpojo);
+                    json["pojo"] = ExpressionConverter.ConvertO(__workflow_jsonpojo);
                     jsonpropCount++;
                 }
 
-                if (jsonShort != null)
+                if (__workflow_jsonShort != null)
                 {
-                    json["short"] = ExpressionConverter.ConvertO(jsonShort);
+                    json["short"] = ExpressionConverter.ConvertO(__workflow_jsonShort);
                     jsonpropCount++;
                 }
 
-                if (jsontextual != null)
+                if (__workflow_jsontextual != null)
                 {
-                    json["textual"] = ExpressionConverter.ConvertO(jsontextual);
+                    json["textual"] = ExpressionConverter.ConvertO(__workflow_jsontextual);
                     jsonpropCount++;
                 }
 
-                if (jsonvalueNode != null)
+                if (__workflow_jsonvalueNode != null)
                 {
-                    json["valueNode"] = ExpressionConverter.ConvertO(jsonvalueNode);
+                    json["valueNode"] = ExpressionConverter.ConvertO(__workflow_jsonvalueNode);
                     jsonpropCount++;
                 }
 
@@ -1402,232 +1429,334 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildGetThingList))]
-        public IBodyWorkflowAction<SingleThingRo[]> GetThingList([WorkflowExpression] Func<string[]> thingIds = null)
+        public IBodyWorkflowAction<SingleThingRo[]> GetThingList(Expression<Func<string[]>> thingIds = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SingleThingRo[]> __BuildGetThingList(WorkflowExpression<string[]> thingIds = null)
-        {
-            WorkflowExpression.Validate(thingIds, nameof(thingIds), required: false);
+            var __workflow_thingIds = thingIds == null ? null : WorkflowExpression.Compile(thingIds);
+            WorkflowExpression.Validate(__workflow_thingIds, nameof(thingIds), required: false);
             return new DeferredBodyAction<SingleThingRo[]>(() =>
             {
                 var apiCallPath = "/api/things/list";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(thingIds);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_thingIds);
                 return new ApiConnectionAction<SingleThingRo[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildGetThing))]
-        public IBodyWorkflowAction<SingleThingRo> GetThing([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bool> detailed = null)
+        public IBodyWorkflowAction<SingleThingRo> GetThing(Expression<Func<string>> id, Expression<Func<bool>> detailed = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SingleThingRo> __BuildGetThing(WorkflowExpression<string> id, WorkflowExpression<bool> detailed = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(detailed, nameof(detailed), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_detailed = detailed == null ? null : WorkflowExpression.Compile(detailed);
+            WorkflowExpression.Validate(__workflow_detailed, nameof(detailed), required: false);
             return new DeferredBodyAction<SingleThingRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["detailed"] = Convert.ToString(false);
-                if (detailed != null)
-                    callPayload.Queries["detailed"] = ExpressionConverter.Convert(detailed);
+                if (__workflow_detailed != null)
+                    callPayload.Queries["detailed"] = ExpressionConverter.Convert(__workflow_detailed);
                 return new ApiConnectionAction<SingleThingRo>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildIgnoreThing))]
-        public IWorkflowAction IgnoreThing([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bool> force = null)
+        public IWorkflowAction IgnoreThing(Expression<Func<string>> id, Expression<Func<bool>> force = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildIgnoreThing(WorkflowExpression<string> id, WorkflowExpression<bool> force = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(force, nameof(force), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_force = force == null ? null : WorkflowExpression.Compile(force);
+            WorkflowExpression.Validate(__workflow_force, nameof(force), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (force != null)
-                    callPayload.Queries["force"] = ExpressionConverter.Convert(force);
+                if (__workflow_force != null)
+                    callPayload.Queries["force"] = ExpressionConverter.Convert(__workflow_force);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildPutThing))]
-        public IBodyWorkflowAction<ThingRo> PutThing([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> thingRoname, [WorkflowExpression] Func<string> thingRositeaddress, [WorkflowExpression] Func<string> thingRositecity, [WorkflowExpression] Func<string> thingRositename, [WorkflowExpression] Func<string> thingRositepostalCode, [WorkflowExpression] Func<string> thingRoapplicationid = null, [WorkflowExpression] Func<string> thingRoapplicationlink = null, [WorkflowExpression] Func<string> thingRoapplicationname = null, [WorkflowExpression] Func<string> thingRoconnectivityid = null, [WorkflowExpression] Func<string> thingRoconnectivityrawStatus = null, [WorkflowExpression] Func<thingRoconnectivitystatusInput> thingRoconnectivitystatus = null, [WorkflowExpression] Func<thingRoconnectivitytypeInput> thingRoconnectivitytype = null, [WorkflowExpression] Func<CustomFieldRo[]> thingRocustomFields = null, [WorkflowExpression] Func<string> thingRocustomModelcolor = null, [WorkflowExpression] Func<string> thingRocustomModelicon = null, [WorkflowExpression] Func<string> thingRocustomModelid = null, [WorkflowExpression] Func<string> thingRocustomModellink = null, [WorkflowExpression] Func<string> thingRocustomModelname = null, [WorkflowExpression] Func<string> thingRodescription = null, [WorkflowExpression] Func<int> thingRodevicebatteryLevel = null, [WorkflowExpression] Func<thingRodevicebatteryStatusInput> thingRodevicebatteryStatus = null, [WorkflowExpression] Func<string> thingRodevicedeviceType = null, [WorkflowExpression] Func<string> thingRodeviceid = null, [WorkflowExpression] Func<string> thingRodevicemanufacturer = null, [WorkflowExpression] Func<int> thingRodevicememoryFree = null, [WorkflowExpression] Func<int> thingRodevicememoryTotal = null, [WorkflowExpression] Func<string> thingRodevicemodel = null, [WorkflowExpression] Func<string> thingRodevicemodelNumber = null, [WorkflowExpression] Func<string> thingRodevicename = null, [WorkflowExpression] Func<string> thingRodeviceserialNumber = null, [WorkflowExpression] Func<thingRodevicestatusInput> thingRodevicestatus = null, [WorkflowExpression] Func<string> thingRodisplayName = null, [WorkflowExpression] Func<bool> thingRodynamicGps = null, [WorkflowExpression] Func<double> thingRofixedLatitude = null, [WorkflowExpression] Func<double> thingRofixedLongitude = null, [WorkflowExpression] Func<string> thingRofixedName = null, [WorkflowExpression] Func<string> thingRoid = null, [WorkflowExpression] Func<int> thingRolastActivityDate = null, [WorkflowExpression] Func<double> thingRolastLatitude = null, [WorkflowExpression] Func<double> thingRolastLongitude = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsarray = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsbigDecimal = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsbigInteger = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsbinary = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsboolean = null, [WorkflowExpression] Func<bool> thingRolastMeasurementscontainerNode = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsdouble = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsfloat = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsfloatingPointNumber = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsint = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsintegralNumber = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsLong = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsmissingNode = null, [WorkflowExpression] Func<thingRolastMeasurementsnodeTypeInput> thingRolastMeasurementsnodeType = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsnull = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsnumber = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsObject = null, [WorkflowExpression] Func<bool> thingRolastMeasurementspojo = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsShort = null, [WorkflowExpression] Func<bool> thingRolastMeasurementstextual = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsvalueNode = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsarray = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsbigDecimal = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsbigInteger = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsbinary = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsboolean = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampscontainerNode = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsdouble = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsfloat = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsfloatingPointNumber = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsint = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsintegralNumber = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsLong = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsmissingNode = null, [WorkflowExpression] Func<thingRolastMeasurementsTimestampsnodeTypeInput> thingRolastMeasurementsTimestampsnodeType = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsnull = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsnumber = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsObject = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampspojo = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsShort = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampstextual = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsvalueNode = null, [WorkflowExpression] Func<int> thingRolastMessageDate = null, [WorkflowExpression] Func<int> thingRomessageActivityTimeoutPeriod = null, [WorkflowExpression] Func<int> thingRonbAlerts = null, [WorkflowExpression] Func<thingRoproductconnectivityTypesInputItem[]> thingRoproductconnectivityTypes = null, [WorkflowExpression] Func<bool> thingRoproductgenerateLinks = null, [WorkflowExpression] Func<string> thingRoproductid = null, [WorkflowExpression] Func<string> thingRoproductlink = null, [WorkflowExpression] Func<bool> thingRoproductmanufacturergenerateLinks = null, [WorkflowExpression] Func<string> thingRoproductmanufacturerid = null, [WorkflowExpression] Func<string> thingRoproductmanufacturerlink = null, [WorkflowExpression] Func<string> thingRoproductmanufacturername = null, [WorkflowExpression] Func<string> thingRoproductmodelcolor = null, [WorkflowExpression] Func<bool> thingRoproductmodelgenerateLinks = null, [WorkflowExpression] Func<string> thingRoproductmodelicon = null, [WorkflowExpression] Func<string> thingRoproductmodelid = null, [WorkflowExpression] Func<bool> thingRoproductmodelisCustomModel = null, [WorkflowExpression] Func<bool> thingRoproductmodellinkabsolute = null, [WorkflowExpression] Func<string> thingRoproductmodellinkauthority = null, [WorkflowExpression] Func<string> thingRoproductmodellinkfragment = null, [WorkflowExpression] Func<string> thingRoproductmodellinkhost = null, [WorkflowExpression] Func<bool> thingRoproductmodellinkopaque = null, [WorkflowExpression] Func<string> thingRoproductmodellinkpath = null, [WorkflowExpression] Func<int> thingRoproductmodellinkport = null, [WorkflowExpression] Func<string> thingRoproductmodellinkquery = null, [WorkflowExpression] Func<string> thingRoproductmodellinkrawAuthority = null, [WorkflowExpression] Func<string> thingRoproductmodellinkrawFragment = null, [WorkflowExpression] Func<string> thingRoproductmodellinkrawPath = null, [WorkflowExpression] Func<string> thingRoproductmodellinkrawQuery = null, [WorkflowExpression] Func<string> thingRoproductmodellinkrawSchemeSpecificPart = null, [WorkflowExpression] Func<string> thingRoproductmodellinkrawUserInfo = null, [WorkflowExpression] Func<string> thingRoproductmodellinkscheme = null, [WorkflowExpression] Func<string> thingRoproductmodellinkschemeSpecificPart = null, [WorkflowExpression] Func<string> thingRoproductmodellinkuserInfo = null, [WorkflowExpression] Func<string> thingRoproductmodelname = null, [WorkflowExpression] Func<string> thingRoproductname = null, [WorkflowExpression] Func<string> thingRoproductreference = null, [WorkflowExpression] Func<string> thingRositeid = null, [WorkflowExpression] Func<double> thingRositelatitude = null, [WorkflowExpression] Func<double> thingRositelongitude = null, [WorkflowExpression] Func<string> thingRosourceId = null, [WorkflowExpression] Func<thingRostatusInput> thingRostatus = null, [WorkflowExpression] Func<ThingTagRo[]> thingRotags = null)
+        public IBodyWorkflowAction<ThingRo> PutThing(Expression<Func<string>> id, Expression<Func<string>> thingRoname, Expression<Func<string>> thingRositeaddress, Expression<Func<string>> thingRositecity, Expression<Func<string>> thingRositename, Expression<Func<string>> thingRositepostalCode, Expression<Func<string>> thingRoapplicationid = null, Expression<Func<string>> thingRoapplicationlink = null, Expression<Func<string>> thingRoapplicationname = null, Expression<Func<string>> thingRoconnectivityid = null, Expression<Func<string>> thingRoconnectivityrawStatus = null, Expression<Func<thingRoconnectivitystatusInput>> thingRoconnectivitystatus = null, Expression<Func<thingRoconnectivitytypeInput>> thingRoconnectivitytype = null, Expression<Func<CustomFieldRo[]>> thingRocustomFields = null, Expression<Func<string>> thingRocustomModelcolor = null, Expression<Func<string>> thingRocustomModelicon = null, Expression<Func<string>> thingRocustomModelid = null, Expression<Func<string>> thingRocustomModellink = null, Expression<Func<string>> thingRocustomModelname = null, Expression<Func<string>> thingRodescription = null, Expression<Func<int>> thingRodevicebatteryLevel = null, Expression<Func<thingRodevicebatteryStatusInput>> thingRodevicebatteryStatus = null, Expression<Func<string>> thingRodevicedeviceType = null, Expression<Func<string>> thingRodeviceid = null, Expression<Func<string>> thingRodevicemanufacturer = null, Expression<Func<int>> thingRodevicememoryFree = null, Expression<Func<int>> thingRodevicememoryTotal = null, Expression<Func<string>> thingRodevicemodel = null, Expression<Func<string>> thingRodevicemodelNumber = null, Expression<Func<string>> thingRodevicename = null, Expression<Func<string>> thingRodeviceserialNumber = null, Expression<Func<thingRodevicestatusInput>> thingRodevicestatus = null, Expression<Func<string>> thingRodisplayName = null, Expression<Func<bool>> thingRodynamicGps = null, Expression<Func<double>> thingRofixedLatitude = null, Expression<Func<double>> thingRofixedLongitude = null, Expression<Func<string>> thingRofixedName = null, Expression<Func<string>> thingRoid = null, Expression<Func<int>> thingRolastActivityDate = null, Expression<Func<double>> thingRolastLatitude = null, Expression<Func<double>> thingRolastLongitude = null, Expression<Func<bool>> thingRolastMeasurementsarray = null, Expression<Func<bool>> thingRolastMeasurementsbigDecimal = null, Expression<Func<bool>> thingRolastMeasurementsbigInteger = null, Expression<Func<bool>> thingRolastMeasurementsbinary = null, Expression<Func<bool>> thingRolastMeasurementsboolean = null, Expression<Func<bool>> thingRolastMeasurementscontainerNode = null, Expression<Func<bool>> thingRolastMeasurementsdouble = null, Expression<Func<bool>> thingRolastMeasurementsfloat = null, Expression<Func<bool>> thingRolastMeasurementsfloatingPointNumber = null, Expression<Func<bool>> thingRolastMeasurementsint = null, Expression<Func<bool>> thingRolastMeasurementsintegralNumber = null, Expression<Func<bool>> thingRolastMeasurementsLong = null, Expression<Func<bool>> thingRolastMeasurementsmissingNode = null, Expression<Func<thingRolastMeasurementsnodeTypeInput>> thingRolastMeasurementsnodeType = null, Expression<Func<bool>> thingRolastMeasurementsnull = null, Expression<Func<bool>> thingRolastMeasurementsnumber = null, Expression<Func<bool>> thingRolastMeasurementsObject = null, Expression<Func<bool>> thingRolastMeasurementspojo = null, Expression<Func<bool>> thingRolastMeasurementsShort = null, Expression<Func<bool>> thingRolastMeasurementstextual = null, Expression<Func<bool>> thingRolastMeasurementsvalueNode = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsarray = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsbigDecimal = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsbigInteger = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsbinary = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsboolean = null, Expression<Func<bool>> thingRolastMeasurementsTimestampscontainerNode = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsdouble = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsfloat = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsfloatingPointNumber = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsint = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsintegralNumber = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsLong = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsmissingNode = null, Expression<Func<thingRolastMeasurementsTimestampsnodeTypeInput>> thingRolastMeasurementsTimestampsnodeType = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsnull = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsnumber = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsObject = null, Expression<Func<bool>> thingRolastMeasurementsTimestampspojo = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsShort = null, Expression<Func<bool>> thingRolastMeasurementsTimestampstextual = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsvalueNode = null, Expression<Func<int>> thingRolastMessageDate = null, Expression<Func<int>> thingRomessageActivityTimeoutPeriod = null, Expression<Func<int>> thingRonbAlerts = null, Expression<Func<thingRoproductconnectivityTypesInputItem[]>> thingRoproductconnectivityTypes = null, Expression<Func<bool>> thingRoproductgenerateLinks = null, Expression<Func<string>> thingRoproductid = null, Expression<Func<string>> thingRoproductlink = null, Expression<Func<bool>> thingRoproductmanufacturergenerateLinks = null, Expression<Func<string>> thingRoproductmanufacturerid = null, Expression<Func<string>> thingRoproductmanufacturerlink = null, Expression<Func<string>> thingRoproductmanufacturername = null, Expression<Func<string>> thingRoproductmodelcolor = null, Expression<Func<bool>> thingRoproductmodelgenerateLinks = null, Expression<Func<string>> thingRoproductmodelicon = null, Expression<Func<string>> thingRoproductmodelid = null, Expression<Func<bool>> thingRoproductmodelisCustomModel = null, Expression<Func<bool>> thingRoproductmodellinkabsolute = null, Expression<Func<string>> thingRoproductmodellinkauthority = null, Expression<Func<string>> thingRoproductmodellinkfragment = null, Expression<Func<string>> thingRoproductmodellinkhost = null, Expression<Func<bool>> thingRoproductmodellinkopaque = null, Expression<Func<string>> thingRoproductmodellinkpath = null, Expression<Func<int>> thingRoproductmodellinkport = null, Expression<Func<string>> thingRoproductmodellinkquery = null, Expression<Func<string>> thingRoproductmodellinkrawAuthority = null, Expression<Func<string>> thingRoproductmodellinkrawFragment = null, Expression<Func<string>> thingRoproductmodellinkrawPath = null, Expression<Func<string>> thingRoproductmodellinkrawQuery = null, Expression<Func<string>> thingRoproductmodellinkrawSchemeSpecificPart = null, Expression<Func<string>> thingRoproductmodellinkrawUserInfo = null, Expression<Func<string>> thingRoproductmodellinkscheme = null, Expression<Func<string>> thingRoproductmodellinkschemeSpecificPart = null, Expression<Func<string>> thingRoproductmodellinkuserInfo = null, Expression<Func<string>> thingRoproductmodelname = null, Expression<Func<string>> thingRoproductname = null, Expression<Func<string>> thingRoproductreference = null, Expression<Func<string>> thingRositeid = null, Expression<Func<double>> thingRositelatitude = null, Expression<Func<double>> thingRositelongitude = null, Expression<Func<string>> thingRosourceId = null, Expression<Func<thingRostatusInput>> thingRostatus = null, Expression<Func<ThingTagRo[]>> thingRotags = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ThingRo> __BuildPutThing(WorkflowExpression<string> id, WorkflowExpression<string> thingRoname, WorkflowExpression<string> thingRositeaddress, WorkflowExpression<string> thingRositecity, WorkflowExpression<string> thingRositename, WorkflowExpression<string> thingRositepostalCode, WorkflowExpression<string> thingRoapplicationid = null, WorkflowExpression<string> thingRoapplicationlink = null, WorkflowExpression<string> thingRoapplicationname = null, WorkflowExpression<string> thingRoconnectivityid = null, WorkflowExpression<string> thingRoconnectivityrawStatus = null, WorkflowExpression<thingRoconnectivitystatusInput> thingRoconnectivitystatus = null, WorkflowExpression<thingRoconnectivitytypeInput> thingRoconnectivitytype = null, WorkflowExpression<CustomFieldRo[]> thingRocustomFields = null, WorkflowExpression<string> thingRocustomModelcolor = null, WorkflowExpression<string> thingRocustomModelicon = null, WorkflowExpression<string> thingRocustomModelid = null, WorkflowExpression<string> thingRocustomModellink = null, WorkflowExpression<string> thingRocustomModelname = null, WorkflowExpression<string> thingRodescription = null, WorkflowExpression<int> thingRodevicebatteryLevel = null, WorkflowExpression<thingRodevicebatteryStatusInput> thingRodevicebatteryStatus = null, WorkflowExpression<string> thingRodevicedeviceType = null, WorkflowExpression<string> thingRodeviceid = null, WorkflowExpression<string> thingRodevicemanufacturer = null, WorkflowExpression<int> thingRodevicememoryFree = null, WorkflowExpression<int> thingRodevicememoryTotal = null, WorkflowExpression<string> thingRodevicemodel = null, WorkflowExpression<string> thingRodevicemodelNumber = null, WorkflowExpression<string> thingRodevicename = null, WorkflowExpression<string> thingRodeviceserialNumber = null, WorkflowExpression<thingRodevicestatusInput> thingRodevicestatus = null, WorkflowExpression<string> thingRodisplayName = null, WorkflowExpression<bool> thingRodynamicGps = null, WorkflowExpression<double> thingRofixedLatitude = null, WorkflowExpression<double> thingRofixedLongitude = null, WorkflowExpression<string> thingRofixedName = null, WorkflowExpression<string> thingRoid = null, WorkflowExpression<int> thingRolastActivityDate = null, WorkflowExpression<double> thingRolastLatitude = null, WorkflowExpression<double> thingRolastLongitude = null, WorkflowExpression<bool> thingRolastMeasurementsarray = null, WorkflowExpression<bool> thingRolastMeasurementsbigDecimal = null, WorkflowExpression<bool> thingRolastMeasurementsbigInteger = null, WorkflowExpression<bool> thingRolastMeasurementsbinary = null, WorkflowExpression<bool> thingRolastMeasurementsboolean = null, WorkflowExpression<bool> thingRolastMeasurementscontainerNode = null, WorkflowExpression<bool> thingRolastMeasurementsdouble = null, WorkflowExpression<bool> thingRolastMeasurementsfloat = null, WorkflowExpression<bool> thingRolastMeasurementsfloatingPointNumber = null, WorkflowExpression<bool> thingRolastMeasurementsint = null, WorkflowExpression<bool> thingRolastMeasurementsintegralNumber = null, WorkflowExpression<bool> thingRolastMeasurementsLong = null, WorkflowExpression<bool> thingRolastMeasurementsmissingNode = null, WorkflowExpression<thingRolastMeasurementsnodeTypeInput> thingRolastMeasurementsnodeType = null, WorkflowExpression<bool> thingRolastMeasurementsnull = null, WorkflowExpression<bool> thingRolastMeasurementsnumber = null, WorkflowExpression<bool> thingRolastMeasurementsObject = null, WorkflowExpression<bool> thingRolastMeasurementspojo = null, WorkflowExpression<bool> thingRolastMeasurementsShort = null, WorkflowExpression<bool> thingRolastMeasurementstextual = null, WorkflowExpression<bool> thingRolastMeasurementsvalueNode = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsarray = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsbigDecimal = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsbigInteger = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsbinary = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsboolean = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampscontainerNode = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsdouble = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsfloat = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsfloatingPointNumber = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsint = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsintegralNumber = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsLong = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsmissingNode = null, WorkflowExpression<thingRolastMeasurementsTimestampsnodeTypeInput> thingRolastMeasurementsTimestampsnodeType = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsnull = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsnumber = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsObject = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampspojo = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsShort = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampstextual = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsvalueNode = null, WorkflowExpression<int> thingRolastMessageDate = null, WorkflowExpression<int> thingRomessageActivityTimeoutPeriod = null, WorkflowExpression<int> thingRonbAlerts = null, WorkflowExpression<thingRoproductconnectivityTypesInputItem[]> thingRoproductconnectivityTypes = null, WorkflowExpression<bool> thingRoproductgenerateLinks = null, WorkflowExpression<string> thingRoproductid = null, WorkflowExpression<string> thingRoproductlink = null, WorkflowExpression<bool> thingRoproductmanufacturergenerateLinks = null, WorkflowExpression<string> thingRoproductmanufacturerid = null, WorkflowExpression<string> thingRoproductmanufacturerlink = null, WorkflowExpression<string> thingRoproductmanufacturername = null, WorkflowExpression<string> thingRoproductmodelcolor = null, WorkflowExpression<bool> thingRoproductmodelgenerateLinks = null, WorkflowExpression<string> thingRoproductmodelicon = null, WorkflowExpression<string> thingRoproductmodelid = null, WorkflowExpression<bool> thingRoproductmodelisCustomModel = null, WorkflowExpression<bool> thingRoproductmodellinkabsolute = null, WorkflowExpression<string> thingRoproductmodellinkauthority = null, WorkflowExpression<string> thingRoproductmodellinkfragment = null, WorkflowExpression<string> thingRoproductmodellinkhost = null, WorkflowExpression<bool> thingRoproductmodellinkopaque = null, WorkflowExpression<string> thingRoproductmodellinkpath = null, WorkflowExpression<int> thingRoproductmodellinkport = null, WorkflowExpression<string> thingRoproductmodellinkquery = null, WorkflowExpression<string> thingRoproductmodellinkrawAuthority = null, WorkflowExpression<string> thingRoproductmodellinkrawFragment = null, WorkflowExpression<string> thingRoproductmodellinkrawPath = null, WorkflowExpression<string> thingRoproductmodellinkrawQuery = null, WorkflowExpression<string> thingRoproductmodellinkrawSchemeSpecificPart = null, WorkflowExpression<string> thingRoproductmodellinkrawUserInfo = null, WorkflowExpression<string> thingRoproductmodellinkscheme = null, WorkflowExpression<string> thingRoproductmodellinkschemeSpecificPart = null, WorkflowExpression<string> thingRoproductmodellinkuserInfo = null, WorkflowExpression<string> thingRoproductmodelname = null, WorkflowExpression<string> thingRoproductname = null, WorkflowExpression<string> thingRoproductreference = null, WorkflowExpression<string> thingRositeid = null, WorkflowExpression<double> thingRositelatitude = null, WorkflowExpression<double> thingRositelongitude = null, WorkflowExpression<string> thingRosourceId = null, WorkflowExpression<thingRostatusInput> thingRostatus = null, WorkflowExpression<ThingTagRo[]> thingRotags = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(thingRoname, nameof(thingRoname), required: true);
-            WorkflowExpression.Validate(thingRositeaddress, nameof(thingRositeaddress), required: true);
-            WorkflowExpression.Validate(thingRositecity, nameof(thingRositecity), required: true);
-            WorkflowExpression.Validate(thingRositename, nameof(thingRositename), required: true);
-            WorkflowExpression.Validate(thingRositepostalCode, nameof(thingRositepostalCode), required: true);
-            WorkflowExpression.Validate(thingRoapplicationid, nameof(thingRoapplicationid), required: false);
-            WorkflowExpression.Validate(thingRoapplicationlink, nameof(thingRoapplicationlink), required: false);
-            WorkflowExpression.Validate(thingRoapplicationname, nameof(thingRoapplicationname), required: false);
-            WorkflowExpression.Validate(thingRoconnectivityid, nameof(thingRoconnectivityid), required: false);
-            WorkflowExpression.Validate(thingRoconnectivityrawStatus, nameof(thingRoconnectivityrawStatus), required: false);
-            WorkflowExpression.Validate(thingRoconnectivitystatus, nameof(thingRoconnectivitystatus), required: false);
-            WorkflowExpression.Validate(thingRoconnectivitytype, nameof(thingRoconnectivitytype), required: false);
-            WorkflowExpression.Validate(thingRocustomFields, nameof(thingRocustomFields), required: false);
-            WorkflowExpression.Validate(thingRocustomModelcolor, nameof(thingRocustomModelcolor), required: false);
-            WorkflowExpression.Validate(thingRocustomModelicon, nameof(thingRocustomModelicon), required: false);
-            WorkflowExpression.Validate(thingRocustomModelid, nameof(thingRocustomModelid), required: false);
-            WorkflowExpression.Validate(thingRocustomModellink, nameof(thingRocustomModellink), required: false);
-            WorkflowExpression.Validate(thingRocustomModelname, nameof(thingRocustomModelname), required: false);
-            WorkflowExpression.Validate(thingRodescription, nameof(thingRodescription), required: false);
-            WorkflowExpression.Validate(thingRodevicebatteryLevel, nameof(thingRodevicebatteryLevel), required: false);
-            WorkflowExpression.Validate(thingRodevicebatteryStatus, nameof(thingRodevicebatteryStatus), required: false);
-            WorkflowExpression.Validate(thingRodevicedeviceType, nameof(thingRodevicedeviceType), required: false);
-            WorkflowExpression.Validate(thingRodeviceid, nameof(thingRodeviceid), required: false);
-            WorkflowExpression.Validate(thingRodevicemanufacturer, nameof(thingRodevicemanufacturer), required: false);
-            WorkflowExpression.Validate(thingRodevicememoryFree, nameof(thingRodevicememoryFree), required: false);
-            WorkflowExpression.Validate(thingRodevicememoryTotal, nameof(thingRodevicememoryTotal), required: false);
-            WorkflowExpression.Validate(thingRodevicemodel, nameof(thingRodevicemodel), required: false);
-            WorkflowExpression.Validate(thingRodevicemodelNumber, nameof(thingRodevicemodelNumber), required: false);
-            WorkflowExpression.Validate(thingRodevicename, nameof(thingRodevicename), required: false);
-            WorkflowExpression.Validate(thingRodeviceserialNumber, nameof(thingRodeviceserialNumber), required: false);
-            WorkflowExpression.Validate(thingRodevicestatus, nameof(thingRodevicestatus), required: false);
-            WorkflowExpression.Validate(thingRodisplayName, nameof(thingRodisplayName), required: false);
-            WorkflowExpression.Validate(thingRodynamicGps, nameof(thingRodynamicGps), required: false);
-            WorkflowExpression.Validate(thingRofixedLatitude, nameof(thingRofixedLatitude), required: false);
-            WorkflowExpression.Validate(thingRofixedLongitude, nameof(thingRofixedLongitude), required: false);
-            WorkflowExpression.Validate(thingRofixedName, nameof(thingRofixedName), required: false);
-            WorkflowExpression.Validate(thingRoid, nameof(thingRoid), required: false);
-            WorkflowExpression.Validate(thingRolastActivityDate, nameof(thingRolastActivityDate), required: false);
-            WorkflowExpression.Validate(thingRolastLatitude, nameof(thingRolastLatitude), required: false);
-            WorkflowExpression.Validate(thingRolastLongitude, nameof(thingRolastLongitude), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsarray, nameof(thingRolastMeasurementsarray), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsbigDecimal, nameof(thingRolastMeasurementsbigDecimal), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsbigInteger, nameof(thingRolastMeasurementsbigInteger), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsbinary, nameof(thingRolastMeasurementsbinary), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsboolean, nameof(thingRolastMeasurementsboolean), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementscontainerNode, nameof(thingRolastMeasurementscontainerNode), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsdouble, nameof(thingRolastMeasurementsdouble), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsfloat, nameof(thingRolastMeasurementsfloat), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsfloatingPointNumber, nameof(thingRolastMeasurementsfloatingPointNumber), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsint, nameof(thingRolastMeasurementsint), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsintegralNumber, nameof(thingRolastMeasurementsintegralNumber), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsLong, nameof(thingRolastMeasurementsLong), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsmissingNode, nameof(thingRolastMeasurementsmissingNode), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsnodeType, nameof(thingRolastMeasurementsnodeType), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsnull, nameof(thingRolastMeasurementsnull), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsnumber, nameof(thingRolastMeasurementsnumber), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsObject, nameof(thingRolastMeasurementsObject), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementspojo, nameof(thingRolastMeasurementspojo), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsShort, nameof(thingRolastMeasurementsShort), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementstextual, nameof(thingRolastMeasurementstextual), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsvalueNode, nameof(thingRolastMeasurementsvalueNode), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsTimestampsarray, nameof(thingRolastMeasurementsTimestampsarray), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsTimestampsbigDecimal, nameof(thingRolastMeasurementsTimestampsbigDecimal), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsTimestampsbigInteger, nameof(thingRolastMeasurementsTimestampsbigInteger), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsTimestampsbinary, nameof(thingRolastMeasurementsTimestampsbinary), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsTimestampsboolean, nameof(thingRolastMeasurementsTimestampsboolean), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsTimestampscontainerNode, nameof(thingRolastMeasurementsTimestampscontainerNode), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsTimestampsdouble, nameof(thingRolastMeasurementsTimestampsdouble), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsTimestampsfloat, nameof(thingRolastMeasurementsTimestampsfloat), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsTimestampsfloatingPointNumber, nameof(thingRolastMeasurementsTimestampsfloatingPointNumber), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsTimestampsint, nameof(thingRolastMeasurementsTimestampsint), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsTimestampsintegralNumber, nameof(thingRolastMeasurementsTimestampsintegralNumber), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsTimestampsLong, nameof(thingRolastMeasurementsTimestampsLong), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsTimestampsmissingNode, nameof(thingRolastMeasurementsTimestampsmissingNode), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsTimestampsnodeType, nameof(thingRolastMeasurementsTimestampsnodeType), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsTimestampsnull, nameof(thingRolastMeasurementsTimestampsnull), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsTimestampsnumber, nameof(thingRolastMeasurementsTimestampsnumber), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsTimestampsObject, nameof(thingRolastMeasurementsTimestampsObject), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsTimestampspojo, nameof(thingRolastMeasurementsTimestampspojo), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsTimestampsShort, nameof(thingRolastMeasurementsTimestampsShort), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsTimestampstextual, nameof(thingRolastMeasurementsTimestampstextual), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsTimestampsvalueNode, nameof(thingRolastMeasurementsTimestampsvalueNode), required: false);
-            WorkflowExpression.Validate(thingRolastMessageDate, nameof(thingRolastMessageDate), required: false);
-            WorkflowExpression.Validate(thingRomessageActivityTimeoutPeriod, nameof(thingRomessageActivityTimeoutPeriod), required: false);
-            WorkflowExpression.Validate(thingRonbAlerts, nameof(thingRonbAlerts), required: false);
-            WorkflowExpression.Validate(thingRoproductconnectivityTypes, nameof(thingRoproductconnectivityTypes), required: false);
-            WorkflowExpression.Validate(thingRoproductgenerateLinks, nameof(thingRoproductgenerateLinks), required: false);
-            WorkflowExpression.Validate(thingRoproductid, nameof(thingRoproductid), required: false);
-            WorkflowExpression.Validate(thingRoproductlink, nameof(thingRoproductlink), required: false);
-            WorkflowExpression.Validate(thingRoproductmanufacturergenerateLinks, nameof(thingRoproductmanufacturergenerateLinks), required: false);
-            WorkflowExpression.Validate(thingRoproductmanufacturerid, nameof(thingRoproductmanufacturerid), required: false);
-            WorkflowExpression.Validate(thingRoproductmanufacturerlink, nameof(thingRoproductmanufacturerlink), required: false);
-            WorkflowExpression.Validate(thingRoproductmanufacturername, nameof(thingRoproductmanufacturername), required: false);
-            WorkflowExpression.Validate(thingRoproductmodelcolor, nameof(thingRoproductmodelcolor), required: false);
-            WorkflowExpression.Validate(thingRoproductmodelgenerateLinks, nameof(thingRoproductmodelgenerateLinks), required: false);
-            WorkflowExpression.Validate(thingRoproductmodelicon, nameof(thingRoproductmodelicon), required: false);
-            WorkflowExpression.Validate(thingRoproductmodelid, nameof(thingRoproductmodelid), required: false);
-            WorkflowExpression.Validate(thingRoproductmodelisCustomModel, nameof(thingRoproductmodelisCustomModel), required: false);
-            WorkflowExpression.Validate(thingRoproductmodellinkabsolute, nameof(thingRoproductmodellinkabsolute), required: false);
-            WorkflowExpression.Validate(thingRoproductmodellinkauthority, nameof(thingRoproductmodellinkauthority), required: false);
-            WorkflowExpression.Validate(thingRoproductmodellinkfragment, nameof(thingRoproductmodellinkfragment), required: false);
-            WorkflowExpression.Validate(thingRoproductmodellinkhost, nameof(thingRoproductmodellinkhost), required: false);
-            WorkflowExpression.Validate(thingRoproductmodellinkopaque, nameof(thingRoproductmodellinkopaque), required: false);
-            WorkflowExpression.Validate(thingRoproductmodellinkpath, nameof(thingRoproductmodellinkpath), required: false);
-            WorkflowExpression.Validate(thingRoproductmodellinkport, nameof(thingRoproductmodellinkport), required: false);
-            WorkflowExpression.Validate(thingRoproductmodellinkquery, nameof(thingRoproductmodellinkquery), required: false);
-            WorkflowExpression.Validate(thingRoproductmodellinkrawAuthority, nameof(thingRoproductmodellinkrawAuthority), required: false);
-            WorkflowExpression.Validate(thingRoproductmodellinkrawFragment, nameof(thingRoproductmodellinkrawFragment), required: false);
-            WorkflowExpression.Validate(thingRoproductmodellinkrawPath, nameof(thingRoproductmodellinkrawPath), required: false);
-            WorkflowExpression.Validate(thingRoproductmodellinkrawQuery, nameof(thingRoproductmodellinkrawQuery), required: false);
-            WorkflowExpression.Validate(thingRoproductmodellinkrawSchemeSpecificPart, nameof(thingRoproductmodellinkrawSchemeSpecificPart), required: false);
-            WorkflowExpression.Validate(thingRoproductmodellinkrawUserInfo, nameof(thingRoproductmodellinkrawUserInfo), required: false);
-            WorkflowExpression.Validate(thingRoproductmodellinkscheme, nameof(thingRoproductmodellinkscheme), required: false);
-            WorkflowExpression.Validate(thingRoproductmodellinkschemeSpecificPart, nameof(thingRoproductmodellinkschemeSpecificPart), required: false);
-            WorkflowExpression.Validate(thingRoproductmodellinkuserInfo, nameof(thingRoproductmodellinkuserInfo), required: false);
-            WorkflowExpression.Validate(thingRoproductmodelname, nameof(thingRoproductmodelname), required: false);
-            WorkflowExpression.Validate(thingRoproductname, nameof(thingRoproductname), required: false);
-            WorkflowExpression.Validate(thingRoproductreference, nameof(thingRoproductreference), required: false);
-            WorkflowExpression.Validate(thingRositeid, nameof(thingRositeid), required: false);
-            WorkflowExpression.Validate(thingRositelatitude, nameof(thingRositelatitude), required: false);
-            WorkflowExpression.Validate(thingRositelongitude, nameof(thingRositelongitude), required: false);
-            WorkflowExpression.Validate(thingRosourceId, nameof(thingRosourceId), required: false);
-            WorkflowExpression.Validate(thingRostatus, nameof(thingRostatus), required: false);
-            WorkflowExpression.Validate(thingRotags, nameof(thingRotags), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_thingRoname = thingRoname == null ? null : WorkflowExpression.Compile(thingRoname);
+            WorkflowExpression.Validate(__workflow_thingRoname, nameof(thingRoname), required: true);
+            var __workflow_thingRositeaddress = thingRositeaddress == null ? null : WorkflowExpression.Compile(thingRositeaddress);
+            WorkflowExpression.Validate(__workflow_thingRositeaddress, nameof(thingRositeaddress), required: true);
+            var __workflow_thingRositecity = thingRositecity == null ? null : WorkflowExpression.Compile(thingRositecity);
+            WorkflowExpression.Validate(__workflow_thingRositecity, nameof(thingRositecity), required: true);
+            var __workflow_thingRositename = thingRositename == null ? null : WorkflowExpression.Compile(thingRositename);
+            WorkflowExpression.Validate(__workflow_thingRositename, nameof(thingRositename), required: true);
+            var __workflow_thingRositepostalCode = thingRositepostalCode == null ? null : WorkflowExpression.Compile(thingRositepostalCode);
+            WorkflowExpression.Validate(__workflow_thingRositepostalCode, nameof(thingRositepostalCode), required: true);
+            var __workflow_thingRoapplicationid = thingRoapplicationid == null ? null : WorkflowExpression.Compile(thingRoapplicationid);
+            WorkflowExpression.Validate(__workflow_thingRoapplicationid, nameof(thingRoapplicationid), required: false);
+            var __workflow_thingRoapplicationlink = thingRoapplicationlink == null ? null : WorkflowExpression.Compile(thingRoapplicationlink);
+            WorkflowExpression.Validate(__workflow_thingRoapplicationlink, nameof(thingRoapplicationlink), required: false);
+            var __workflow_thingRoapplicationname = thingRoapplicationname == null ? null : WorkflowExpression.Compile(thingRoapplicationname);
+            WorkflowExpression.Validate(__workflow_thingRoapplicationname, nameof(thingRoapplicationname), required: false);
+            var __workflow_thingRoconnectivityid = thingRoconnectivityid == null ? null : WorkflowExpression.Compile(thingRoconnectivityid);
+            WorkflowExpression.Validate(__workflow_thingRoconnectivityid, nameof(thingRoconnectivityid), required: false);
+            var __workflow_thingRoconnectivityrawStatus = thingRoconnectivityrawStatus == null ? null : WorkflowExpression.Compile(thingRoconnectivityrawStatus);
+            WorkflowExpression.Validate(__workflow_thingRoconnectivityrawStatus, nameof(thingRoconnectivityrawStatus), required: false);
+            var __workflow_thingRoconnectivitystatus = thingRoconnectivitystatus == null ? null : WorkflowExpression.Compile(thingRoconnectivitystatus);
+            WorkflowExpression.Validate(__workflow_thingRoconnectivitystatus, nameof(thingRoconnectivitystatus), required: false);
+            var __workflow_thingRoconnectivitytype = thingRoconnectivitytype == null ? null : WorkflowExpression.Compile(thingRoconnectivitytype);
+            WorkflowExpression.Validate(__workflow_thingRoconnectivitytype, nameof(thingRoconnectivitytype), required: false);
+            var __workflow_thingRocustomFields = thingRocustomFields == null ? null : WorkflowExpression.Compile(thingRocustomFields);
+            WorkflowExpression.Validate(__workflow_thingRocustomFields, nameof(thingRocustomFields), required: false);
+            var __workflow_thingRocustomModelcolor = thingRocustomModelcolor == null ? null : WorkflowExpression.Compile(thingRocustomModelcolor);
+            WorkflowExpression.Validate(__workflow_thingRocustomModelcolor, nameof(thingRocustomModelcolor), required: false);
+            var __workflow_thingRocustomModelicon = thingRocustomModelicon == null ? null : WorkflowExpression.Compile(thingRocustomModelicon);
+            WorkflowExpression.Validate(__workflow_thingRocustomModelicon, nameof(thingRocustomModelicon), required: false);
+            var __workflow_thingRocustomModelid = thingRocustomModelid == null ? null : WorkflowExpression.Compile(thingRocustomModelid);
+            WorkflowExpression.Validate(__workflow_thingRocustomModelid, nameof(thingRocustomModelid), required: false);
+            var __workflow_thingRocustomModellink = thingRocustomModellink == null ? null : WorkflowExpression.Compile(thingRocustomModellink);
+            WorkflowExpression.Validate(__workflow_thingRocustomModellink, nameof(thingRocustomModellink), required: false);
+            var __workflow_thingRocustomModelname = thingRocustomModelname == null ? null : WorkflowExpression.Compile(thingRocustomModelname);
+            WorkflowExpression.Validate(__workflow_thingRocustomModelname, nameof(thingRocustomModelname), required: false);
+            var __workflow_thingRodescription = thingRodescription == null ? null : WorkflowExpression.Compile(thingRodescription);
+            WorkflowExpression.Validate(__workflow_thingRodescription, nameof(thingRodescription), required: false);
+            var __workflow_thingRodevicebatteryLevel = thingRodevicebatteryLevel == null ? null : WorkflowExpression.Compile(thingRodevicebatteryLevel);
+            WorkflowExpression.Validate(__workflow_thingRodevicebatteryLevel, nameof(thingRodevicebatteryLevel), required: false);
+            var __workflow_thingRodevicebatteryStatus = thingRodevicebatteryStatus == null ? null : WorkflowExpression.Compile(thingRodevicebatteryStatus);
+            WorkflowExpression.Validate(__workflow_thingRodevicebatteryStatus, nameof(thingRodevicebatteryStatus), required: false);
+            var __workflow_thingRodevicedeviceType = thingRodevicedeviceType == null ? null : WorkflowExpression.Compile(thingRodevicedeviceType);
+            WorkflowExpression.Validate(__workflow_thingRodevicedeviceType, nameof(thingRodevicedeviceType), required: false);
+            var __workflow_thingRodeviceid = thingRodeviceid == null ? null : WorkflowExpression.Compile(thingRodeviceid);
+            WorkflowExpression.Validate(__workflow_thingRodeviceid, nameof(thingRodeviceid), required: false);
+            var __workflow_thingRodevicemanufacturer = thingRodevicemanufacturer == null ? null : WorkflowExpression.Compile(thingRodevicemanufacturer);
+            WorkflowExpression.Validate(__workflow_thingRodevicemanufacturer, nameof(thingRodevicemanufacturer), required: false);
+            var __workflow_thingRodevicememoryFree = thingRodevicememoryFree == null ? null : WorkflowExpression.Compile(thingRodevicememoryFree);
+            WorkflowExpression.Validate(__workflow_thingRodevicememoryFree, nameof(thingRodevicememoryFree), required: false);
+            var __workflow_thingRodevicememoryTotal = thingRodevicememoryTotal == null ? null : WorkflowExpression.Compile(thingRodevicememoryTotal);
+            WorkflowExpression.Validate(__workflow_thingRodevicememoryTotal, nameof(thingRodevicememoryTotal), required: false);
+            var __workflow_thingRodevicemodel = thingRodevicemodel == null ? null : WorkflowExpression.Compile(thingRodevicemodel);
+            WorkflowExpression.Validate(__workflow_thingRodevicemodel, nameof(thingRodevicemodel), required: false);
+            var __workflow_thingRodevicemodelNumber = thingRodevicemodelNumber == null ? null : WorkflowExpression.Compile(thingRodevicemodelNumber);
+            WorkflowExpression.Validate(__workflow_thingRodevicemodelNumber, nameof(thingRodevicemodelNumber), required: false);
+            var __workflow_thingRodevicename = thingRodevicename == null ? null : WorkflowExpression.Compile(thingRodevicename);
+            WorkflowExpression.Validate(__workflow_thingRodevicename, nameof(thingRodevicename), required: false);
+            var __workflow_thingRodeviceserialNumber = thingRodeviceserialNumber == null ? null : WorkflowExpression.Compile(thingRodeviceserialNumber);
+            WorkflowExpression.Validate(__workflow_thingRodeviceserialNumber, nameof(thingRodeviceserialNumber), required: false);
+            var __workflow_thingRodevicestatus = thingRodevicestatus == null ? null : WorkflowExpression.Compile(thingRodevicestatus);
+            WorkflowExpression.Validate(__workflow_thingRodevicestatus, nameof(thingRodevicestatus), required: false);
+            var __workflow_thingRodisplayName = thingRodisplayName == null ? null : WorkflowExpression.Compile(thingRodisplayName);
+            WorkflowExpression.Validate(__workflow_thingRodisplayName, nameof(thingRodisplayName), required: false);
+            var __workflow_thingRodynamicGps = thingRodynamicGps == null ? null : WorkflowExpression.Compile(thingRodynamicGps);
+            WorkflowExpression.Validate(__workflow_thingRodynamicGps, nameof(thingRodynamicGps), required: false);
+            var __workflow_thingRofixedLatitude = thingRofixedLatitude == null ? null : WorkflowExpression.Compile(thingRofixedLatitude);
+            WorkflowExpression.Validate(__workflow_thingRofixedLatitude, nameof(thingRofixedLatitude), required: false);
+            var __workflow_thingRofixedLongitude = thingRofixedLongitude == null ? null : WorkflowExpression.Compile(thingRofixedLongitude);
+            WorkflowExpression.Validate(__workflow_thingRofixedLongitude, nameof(thingRofixedLongitude), required: false);
+            var __workflow_thingRofixedName = thingRofixedName == null ? null : WorkflowExpression.Compile(thingRofixedName);
+            WorkflowExpression.Validate(__workflow_thingRofixedName, nameof(thingRofixedName), required: false);
+            var __workflow_thingRoid = thingRoid == null ? null : WorkflowExpression.Compile(thingRoid);
+            WorkflowExpression.Validate(__workflow_thingRoid, nameof(thingRoid), required: false);
+            var __workflow_thingRolastActivityDate = thingRolastActivityDate == null ? null : WorkflowExpression.Compile(thingRolastActivityDate);
+            WorkflowExpression.Validate(__workflow_thingRolastActivityDate, nameof(thingRolastActivityDate), required: false);
+            var __workflow_thingRolastLatitude = thingRolastLatitude == null ? null : WorkflowExpression.Compile(thingRolastLatitude);
+            WorkflowExpression.Validate(__workflow_thingRolastLatitude, nameof(thingRolastLatitude), required: false);
+            var __workflow_thingRolastLongitude = thingRolastLongitude == null ? null : WorkflowExpression.Compile(thingRolastLongitude);
+            WorkflowExpression.Validate(__workflow_thingRolastLongitude, nameof(thingRolastLongitude), required: false);
+            var __workflow_thingRolastMeasurementsarray = thingRolastMeasurementsarray == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsarray);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsarray, nameof(thingRolastMeasurementsarray), required: false);
+            var __workflow_thingRolastMeasurementsbigDecimal = thingRolastMeasurementsbigDecimal == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsbigDecimal);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsbigDecimal, nameof(thingRolastMeasurementsbigDecimal), required: false);
+            var __workflow_thingRolastMeasurementsbigInteger = thingRolastMeasurementsbigInteger == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsbigInteger);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsbigInteger, nameof(thingRolastMeasurementsbigInteger), required: false);
+            var __workflow_thingRolastMeasurementsbinary = thingRolastMeasurementsbinary == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsbinary);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsbinary, nameof(thingRolastMeasurementsbinary), required: false);
+            var __workflow_thingRolastMeasurementsboolean = thingRolastMeasurementsboolean == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsboolean);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsboolean, nameof(thingRolastMeasurementsboolean), required: false);
+            var __workflow_thingRolastMeasurementscontainerNode = thingRolastMeasurementscontainerNode == null ? null : WorkflowExpression.Compile(thingRolastMeasurementscontainerNode);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementscontainerNode, nameof(thingRolastMeasurementscontainerNode), required: false);
+            var __workflow_thingRolastMeasurementsdouble = thingRolastMeasurementsdouble == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsdouble);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsdouble, nameof(thingRolastMeasurementsdouble), required: false);
+            var __workflow_thingRolastMeasurementsfloat = thingRolastMeasurementsfloat == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsfloat);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsfloat, nameof(thingRolastMeasurementsfloat), required: false);
+            var __workflow_thingRolastMeasurementsfloatingPointNumber = thingRolastMeasurementsfloatingPointNumber == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsfloatingPointNumber);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsfloatingPointNumber, nameof(thingRolastMeasurementsfloatingPointNumber), required: false);
+            var __workflow_thingRolastMeasurementsint = thingRolastMeasurementsint == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsint);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsint, nameof(thingRolastMeasurementsint), required: false);
+            var __workflow_thingRolastMeasurementsintegralNumber = thingRolastMeasurementsintegralNumber == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsintegralNumber);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsintegralNumber, nameof(thingRolastMeasurementsintegralNumber), required: false);
+            var __workflow_thingRolastMeasurementsLong = thingRolastMeasurementsLong == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsLong);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsLong, nameof(thingRolastMeasurementsLong), required: false);
+            var __workflow_thingRolastMeasurementsmissingNode = thingRolastMeasurementsmissingNode == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsmissingNode);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsmissingNode, nameof(thingRolastMeasurementsmissingNode), required: false);
+            var __workflow_thingRolastMeasurementsnodeType = thingRolastMeasurementsnodeType == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsnodeType);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsnodeType, nameof(thingRolastMeasurementsnodeType), required: false);
+            var __workflow_thingRolastMeasurementsnull = thingRolastMeasurementsnull == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsnull);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsnull, nameof(thingRolastMeasurementsnull), required: false);
+            var __workflow_thingRolastMeasurementsnumber = thingRolastMeasurementsnumber == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsnumber);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsnumber, nameof(thingRolastMeasurementsnumber), required: false);
+            var __workflow_thingRolastMeasurementsObject = thingRolastMeasurementsObject == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsObject);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsObject, nameof(thingRolastMeasurementsObject), required: false);
+            var __workflow_thingRolastMeasurementspojo = thingRolastMeasurementspojo == null ? null : WorkflowExpression.Compile(thingRolastMeasurementspojo);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementspojo, nameof(thingRolastMeasurementspojo), required: false);
+            var __workflow_thingRolastMeasurementsShort = thingRolastMeasurementsShort == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsShort);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsShort, nameof(thingRolastMeasurementsShort), required: false);
+            var __workflow_thingRolastMeasurementstextual = thingRolastMeasurementstextual == null ? null : WorkflowExpression.Compile(thingRolastMeasurementstextual);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementstextual, nameof(thingRolastMeasurementstextual), required: false);
+            var __workflow_thingRolastMeasurementsvalueNode = thingRolastMeasurementsvalueNode == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsvalueNode);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsvalueNode, nameof(thingRolastMeasurementsvalueNode), required: false);
+            var __workflow_thingRolastMeasurementsTimestampsarray = thingRolastMeasurementsTimestampsarray == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsTimestampsarray);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsTimestampsarray, nameof(thingRolastMeasurementsTimestampsarray), required: false);
+            var __workflow_thingRolastMeasurementsTimestampsbigDecimal = thingRolastMeasurementsTimestampsbigDecimal == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsTimestampsbigDecimal);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsTimestampsbigDecimal, nameof(thingRolastMeasurementsTimestampsbigDecimal), required: false);
+            var __workflow_thingRolastMeasurementsTimestampsbigInteger = thingRolastMeasurementsTimestampsbigInteger == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsTimestampsbigInteger);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsTimestampsbigInteger, nameof(thingRolastMeasurementsTimestampsbigInteger), required: false);
+            var __workflow_thingRolastMeasurementsTimestampsbinary = thingRolastMeasurementsTimestampsbinary == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsTimestampsbinary);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsTimestampsbinary, nameof(thingRolastMeasurementsTimestampsbinary), required: false);
+            var __workflow_thingRolastMeasurementsTimestampsboolean = thingRolastMeasurementsTimestampsboolean == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsTimestampsboolean);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsTimestampsboolean, nameof(thingRolastMeasurementsTimestampsboolean), required: false);
+            var __workflow_thingRolastMeasurementsTimestampscontainerNode = thingRolastMeasurementsTimestampscontainerNode == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsTimestampscontainerNode);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsTimestampscontainerNode, nameof(thingRolastMeasurementsTimestampscontainerNode), required: false);
+            var __workflow_thingRolastMeasurementsTimestampsdouble = thingRolastMeasurementsTimestampsdouble == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsTimestampsdouble);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsTimestampsdouble, nameof(thingRolastMeasurementsTimestampsdouble), required: false);
+            var __workflow_thingRolastMeasurementsTimestampsfloat = thingRolastMeasurementsTimestampsfloat == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsTimestampsfloat);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsTimestampsfloat, nameof(thingRolastMeasurementsTimestampsfloat), required: false);
+            var __workflow_thingRolastMeasurementsTimestampsfloatingPointNumber = thingRolastMeasurementsTimestampsfloatingPointNumber == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsTimestampsfloatingPointNumber);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsTimestampsfloatingPointNumber, nameof(thingRolastMeasurementsTimestampsfloatingPointNumber), required: false);
+            var __workflow_thingRolastMeasurementsTimestampsint = thingRolastMeasurementsTimestampsint == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsTimestampsint);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsTimestampsint, nameof(thingRolastMeasurementsTimestampsint), required: false);
+            var __workflow_thingRolastMeasurementsTimestampsintegralNumber = thingRolastMeasurementsTimestampsintegralNumber == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsTimestampsintegralNumber);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsTimestampsintegralNumber, nameof(thingRolastMeasurementsTimestampsintegralNumber), required: false);
+            var __workflow_thingRolastMeasurementsTimestampsLong = thingRolastMeasurementsTimestampsLong == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsTimestampsLong);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsTimestampsLong, nameof(thingRolastMeasurementsTimestampsLong), required: false);
+            var __workflow_thingRolastMeasurementsTimestampsmissingNode = thingRolastMeasurementsTimestampsmissingNode == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsTimestampsmissingNode);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsTimestampsmissingNode, nameof(thingRolastMeasurementsTimestampsmissingNode), required: false);
+            var __workflow_thingRolastMeasurementsTimestampsnodeType = thingRolastMeasurementsTimestampsnodeType == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsTimestampsnodeType);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsTimestampsnodeType, nameof(thingRolastMeasurementsTimestampsnodeType), required: false);
+            var __workflow_thingRolastMeasurementsTimestampsnull = thingRolastMeasurementsTimestampsnull == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsTimestampsnull);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsTimestampsnull, nameof(thingRolastMeasurementsTimestampsnull), required: false);
+            var __workflow_thingRolastMeasurementsTimestampsnumber = thingRolastMeasurementsTimestampsnumber == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsTimestampsnumber);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsTimestampsnumber, nameof(thingRolastMeasurementsTimestampsnumber), required: false);
+            var __workflow_thingRolastMeasurementsTimestampsObject = thingRolastMeasurementsTimestampsObject == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsTimestampsObject);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsTimestampsObject, nameof(thingRolastMeasurementsTimestampsObject), required: false);
+            var __workflow_thingRolastMeasurementsTimestampspojo = thingRolastMeasurementsTimestampspojo == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsTimestampspojo);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsTimestampspojo, nameof(thingRolastMeasurementsTimestampspojo), required: false);
+            var __workflow_thingRolastMeasurementsTimestampsShort = thingRolastMeasurementsTimestampsShort == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsTimestampsShort);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsTimestampsShort, nameof(thingRolastMeasurementsTimestampsShort), required: false);
+            var __workflow_thingRolastMeasurementsTimestampstextual = thingRolastMeasurementsTimestampstextual == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsTimestampstextual);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsTimestampstextual, nameof(thingRolastMeasurementsTimestampstextual), required: false);
+            var __workflow_thingRolastMeasurementsTimestampsvalueNode = thingRolastMeasurementsTimestampsvalueNode == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsTimestampsvalueNode);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsTimestampsvalueNode, nameof(thingRolastMeasurementsTimestampsvalueNode), required: false);
+            var __workflow_thingRolastMessageDate = thingRolastMessageDate == null ? null : WorkflowExpression.Compile(thingRolastMessageDate);
+            WorkflowExpression.Validate(__workflow_thingRolastMessageDate, nameof(thingRolastMessageDate), required: false);
+            var __workflow_thingRomessageActivityTimeoutPeriod = thingRomessageActivityTimeoutPeriod == null ? null : WorkflowExpression.Compile(thingRomessageActivityTimeoutPeriod);
+            WorkflowExpression.Validate(__workflow_thingRomessageActivityTimeoutPeriod, nameof(thingRomessageActivityTimeoutPeriod), required: false);
+            var __workflow_thingRonbAlerts = thingRonbAlerts == null ? null : WorkflowExpression.Compile(thingRonbAlerts);
+            WorkflowExpression.Validate(__workflow_thingRonbAlerts, nameof(thingRonbAlerts), required: false);
+            var __workflow_thingRoproductconnectivityTypes = thingRoproductconnectivityTypes == null ? null : WorkflowExpression.Compile(thingRoproductconnectivityTypes);
+            WorkflowExpression.Validate(__workflow_thingRoproductconnectivityTypes, nameof(thingRoproductconnectivityTypes), required: false);
+            var __workflow_thingRoproductgenerateLinks = thingRoproductgenerateLinks == null ? null : WorkflowExpression.Compile(thingRoproductgenerateLinks);
+            WorkflowExpression.Validate(__workflow_thingRoproductgenerateLinks, nameof(thingRoproductgenerateLinks), required: false);
+            var __workflow_thingRoproductid = thingRoproductid == null ? null : WorkflowExpression.Compile(thingRoproductid);
+            WorkflowExpression.Validate(__workflow_thingRoproductid, nameof(thingRoproductid), required: false);
+            var __workflow_thingRoproductlink = thingRoproductlink == null ? null : WorkflowExpression.Compile(thingRoproductlink);
+            WorkflowExpression.Validate(__workflow_thingRoproductlink, nameof(thingRoproductlink), required: false);
+            var __workflow_thingRoproductmanufacturergenerateLinks = thingRoproductmanufacturergenerateLinks == null ? null : WorkflowExpression.Compile(thingRoproductmanufacturergenerateLinks);
+            WorkflowExpression.Validate(__workflow_thingRoproductmanufacturergenerateLinks, nameof(thingRoproductmanufacturergenerateLinks), required: false);
+            var __workflow_thingRoproductmanufacturerid = thingRoproductmanufacturerid == null ? null : WorkflowExpression.Compile(thingRoproductmanufacturerid);
+            WorkflowExpression.Validate(__workflow_thingRoproductmanufacturerid, nameof(thingRoproductmanufacturerid), required: false);
+            var __workflow_thingRoproductmanufacturerlink = thingRoproductmanufacturerlink == null ? null : WorkflowExpression.Compile(thingRoproductmanufacturerlink);
+            WorkflowExpression.Validate(__workflow_thingRoproductmanufacturerlink, nameof(thingRoproductmanufacturerlink), required: false);
+            var __workflow_thingRoproductmanufacturername = thingRoproductmanufacturername == null ? null : WorkflowExpression.Compile(thingRoproductmanufacturername);
+            WorkflowExpression.Validate(__workflow_thingRoproductmanufacturername, nameof(thingRoproductmanufacturername), required: false);
+            var __workflow_thingRoproductmodelcolor = thingRoproductmodelcolor == null ? null : WorkflowExpression.Compile(thingRoproductmodelcolor);
+            WorkflowExpression.Validate(__workflow_thingRoproductmodelcolor, nameof(thingRoproductmodelcolor), required: false);
+            var __workflow_thingRoproductmodelgenerateLinks = thingRoproductmodelgenerateLinks == null ? null : WorkflowExpression.Compile(thingRoproductmodelgenerateLinks);
+            WorkflowExpression.Validate(__workflow_thingRoproductmodelgenerateLinks, nameof(thingRoproductmodelgenerateLinks), required: false);
+            var __workflow_thingRoproductmodelicon = thingRoproductmodelicon == null ? null : WorkflowExpression.Compile(thingRoproductmodelicon);
+            WorkflowExpression.Validate(__workflow_thingRoproductmodelicon, nameof(thingRoproductmodelicon), required: false);
+            var __workflow_thingRoproductmodelid = thingRoproductmodelid == null ? null : WorkflowExpression.Compile(thingRoproductmodelid);
+            WorkflowExpression.Validate(__workflow_thingRoproductmodelid, nameof(thingRoproductmodelid), required: false);
+            var __workflow_thingRoproductmodelisCustomModel = thingRoproductmodelisCustomModel == null ? null : WorkflowExpression.Compile(thingRoproductmodelisCustomModel);
+            WorkflowExpression.Validate(__workflow_thingRoproductmodelisCustomModel, nameof(thingRoproductmodelisCustomModel), required: false);
+            var __workflow_thingRoproductmodellinkabsolute = thingRoproductmodellinkabsolute == null ? null : WorkflowExpression.Compile(thingRoproductmodellinkabsolute);
+            WorkflowExpression.Validate(__workflow_thingRoproductmodellinkabsolute, nameof(thingRoproductmodellinkabsolute), required: false);
+            var __workflow_thingRoproductmodellinkauthority = thingRoproductmodellinkauthority == null ? null : WorkflowExpression.Compile(thingRoproductmodellinkauthority);
+            WorkflowExpression.Validate(__workflow_thingRoproductmodellinkauthority, nameof(thingRoproductmodellinkauthority), required: false);
+            var __workflow_thingRoproductmodellinkfragment = thingRoproductmodellinkfragment == null ? null : WorkflowExpression.Compile(thingRoproductmodellinkfragment);
+            WorkflowExpression.Validate(__workflow_thingRoproductmodellinkfragment, nameof(thingRoproductmodellinkfragment), required: false);
+            var __workflow_thingRoproductmodellinkhost = thingRoproductmodellinkhost == null ? null : WorkflowExpression.Compile(thingRoproductmodellinkhost);
+            WorkflowExpression.Validate(__workflow_thingRoproductmodellinkhost, nameof(thingRoproductmodellinkhost), required: false);
+            var __workflow_thingRoproductmodellinkopaque = thingRoproductmodellinkopaque == null ? null : WorkflowExpression.Compile(thingRoproductmodellinkopaque);
+            WorkflowExpression.Validate(__workflow_thingRoproductmodellinkopaque, nameof(thingRoproductmodellinkopaque), required: false);
+            var __workflow_thingRoproductmodellinkpath = thingRoproductmodellinkpath == null ? null : WorkflowExpression.Compile(thingRoproductmodellinkpath);
+            WorkflowExpression.Validate(__workflow_thingRoproductmodellinkpath, nameof(thingRoproductmodellinkpath), required: false);
+            var __workflow_thingRoproductmodellinkport = thingRoproductmodellinkport == null ? null : WorkflowExpression.Compile(thingRoproductmodellinkport);
+            WorkflowExpression.Validate(__workflow_thingRoproductmodellinkport, nameof(thingRoproductmodellinkport), required: false);
+            var __workflow_thingRoproductmodellinkquery = thingRoproductmodellinkquery == null ? null : WorkflowExpression.Compile(thingRoproductmodellinkquery);
+            WorkflowExpression.Validate(__workflow_thingRoproductmodellinkquery, nameof(thingRoproductmodellinkquery), required: false);
+            var __workflow_thingRoproductmodellinkrawAuthority = thingRoproductmodellinkrawAuthority == null ? null : WorkflowExpression.Compile(thingRoproductmodellinkrawAuthority);
+            WorkflowExpression.Validate(__workflow_thingRoproductmodellinkrawAuthority, nameof(thingRoproductmodellinkrawAuthority), required: false);
+            var __workflow_thingRoproductmodellinkrawFragment = thingRoproductmodellinkrawFragment == null ? null : WorkflowExpression.Compile(thingRoproductmodellinkrawFragment);
+            WorkflowExpression.Validate(__workflow_thingRoproductmodellinkrawFragment, nameof(thingRoproductmodellinkrawFragment), required: false);
+            var __workflow_thingRoproductmodellinkrawPath = thingRoproductmodellinkrawPath == null ? null : WorkflowExpression.Compile(thingRoproductmodellinkrawPath);
+            WorkflowExpression.Validate(__workflow_thingRoproductmodellinkrawPath, nameof(thingRoproductmodellinkrawPath), required: false);
+            var __workflow_thingRoproductmodellinkrawQuery = thingRoproductmodellinkrawQuery == null ? null : WorkflowExpression.Compile(thingRoproductmodellinkrawQuery);
+            WorkflowExpression.Validate(__workflow_thingRoproductmodellinkrawQuery, nameof(thingRoproductmodellinkrawQuery), required: false);
+            var __workflow_thingRoproductmodellinkrawSchemeSpecificPart = thingRoproductmodellinkrawSchemeSpecificPart == null ? null : WorkflowExpression.Compile(thingRoproductmodellinkrawSchemeSpecificPart);
+            WorkflowExpression.Validate(__workflow_thingRoproductmodellinkrawSchemeSpecificPart, nameof(thingRoproductmodellinkrawSchemeSpecificPart), required: false);
+            var __workflow_thingRoproductmodellinkrawUserInfo = thingRoproductmodellinkrawUserInfo == null ? null : WorkflowExpression.Compile(thingRoproductmodellinkrawUserInfo);
+            WorkflowExpression.Validate(__workflow_thingRoproductmodellinkrawUserInfo, nameof(thingRoproductmodellinkrawUserInfo), required: false);
+            var __workflow_thingRoproductmodellinkscheme = thingRoproductmodellinkscheme == null ? null : WorkflowExpression.Compile(thingRoproductmodellinkscheme);
+            WorkflowExpression.Validate(__workflow_thingRoproductmodellinkscheme, nameof(thingRoproductmodellinkscheme), required: false);
+            var __workflow_thingRoproductmodellinkschemeSpecificPart = thingRoproductmodellinkschemeSpecificPart == null ? null : WorkflowExpression.Compile(thingRoproductmodellinkschemeSpecificPart);
+            WorkflowExpression.Validate(__workflow_thingRoproductmodellinkschemeSpecificPart, nameof(thingRoproductmodellinkschemeSpecificPart), required: false);
+            var __workflow_thingRoproductmodellinkuserInfo = thingRoproductmodellinkuserInfo == null ? null : WorkflowExpression.Compile(thingRoproductmodellinkuserInfo);
+            WorkflowExpression.Validate(__workflow_thingRoproductmodellinkuserInfo, nameof(thingRoproductmodellinkuserInfo), required: false);
+            var __workflow_thingRoproductmodelname = thingRoproductmodelname == null ? null : WorkflowExpression.Compile(thingRoproductmodelname);
+            WorkflowExpression.Validate(__workflow_thingRoproductmodelname, nameof(thingRoproductmodelname), required: false);
+            var __workflow_thingRoproductname = thingRoproductname == null ? null : WorkflowExpression.Compile(thingRoproductname);
+            WorkflowExpression.Validate(__workflow_thingRoproductname, nameof(thingRoproductname), required: false);
+            var __workflow_thingRoproductreference = thingRoproductreference == null ? null : WorkflowExpression.Compile(thingRoproductreference);
+            WorkflowExpression.Validate(__workflow_thingRoproductreference, nameof(thingRoproductreference), required: false);
+            var __workflow_thingRositeid = thingRositeid == null ? null : WorkflowExpression.Compile(thingRositeid);
+            WorkflowExpression.Validate(__workflow_thingRositeid, nameof(thingRositeid), required: false);
+            var __workflow_thingRositelatitude = thingRositelatitude == null ? null : WorkflowExpression.Compile(thingRositelatitude);
+            WorkflowExpression.Validate(__workflow_thingRositelatitude, nameof(thingRositelatitude), required: false);
+            var __workflow_thingRositelongitude = thingRositelongitude == null ? null : WorkflowExpression.Compile(thingRositelongitude);
+            WorkflowExpression.Validate(__workflow_thingRositelongitude, nameof(thingRositelongitude), required: false);
+            var __workflow_thingRosourceId = thingRosourceId == null ? null : WorkflowExpression.Compile(thingRosourceId);
+            WorkflowExpression.Validate(__workflow_thingRosourceId, nameof(thingRosourceId), required: false);
+            var __workflow_thingRostatus = thingRostatus == null ? null : WorkflowExpression.Compile(thingRostatus);
+            WorkflowExpression.Validate(__workflow_thingRostatus, nameof(thingRostatus), required: false);
+            var __workflow_thingRotags = thingRotags == null ? null : WorkflowExpression.Compile(thingRotags);
+            WorkflowExpression.Validate(__workflow_thingRotags, nameof(thingRotags), required: false);
             return new DeferredBodyAction<ThingRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var thingRo = new JObject();
                 var thingRopropCount = 0;
                 var applicationObject = new JObject();
                 var applicationObjectpropCount = 0;
-                if (thingRoapplicationid != null)
+                if (__workflow_thingRoapplicationid != null)
                 {
-                    applicationObject["id"] = ExpressionConverter.ConvertO(thingRoapplicationid);
+                    applicationObject["id"] = ExpressionConverter.ConvertO(__workflow_thingRoapplicationid);
                     applicationObjectpropCount++;
                 }
 
-                if (thingRoapplicationlink != null)
+                if (__workflow_thingRoapplicationlink != null)
                 {
-                    applicationObject["link"] = ExpressionConverter.ConvertO(thingRoapplicationlink);
+                    applicationObject["link"] = ExpressionConverter.ConvertO(__workflow_thingRoapplicationlink);
                     applicationObjectpropCount++;
                 }
 
-                if (thingRoapplicationname != null)
+                if (__workflow_thingRoapplicationname != null)
                 {
-                    applicationObject["name"] = ExpressionConverter.ConvertO(thingRoapplicationname);
+                    applicationObject["name"] = ExpressionConverter.ConvertO(__workflow_thingRoapplicationname);
                     applicationObjectpropCount++;
                 }
 
@@ -1647,27 +1776,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                     connectivityObjectpropCount++;
                 }
 
-                if (thingRoconnectivityid != null)
+                if (__workflow_thingRoconnectivityid != null)
                 {
-                    connectivityObject["id"] = ExpressionConverter.ConvertO(thingRoconnectivityid);
+                    connectivityObject["id"] = ExpressionConverter.ConvertO(__workflow_thingRoconnectivityid);
                     connectivityObjectpropCount++;
                 }
 
-                if (thingRoconnectivityrawStatus != null)
+                if (__workflow_thingRoconnectivityrawStatus != null)
                 {
-                    connectivityObject["rawStatus"] = ExpressionConverter.ConvertO(thingRoconnectivityrawStatus);
+                    connectivityObject["rawStatus"] = ExpressionConverter.ConvertO(__workflow_thingRoconnectivityrawStatus);
                     connectivityObjectpropCount++;
                 }
 
-                if (thingRoconnectivitystatus != null)
+                if (__workflow_thingRoconnectivitystatus != null)
                 {
-                    connectivityObject["status"] = ExpressionConverter.ConvertO(thingRoconnectivitystatus);
+                    connectivityObject["status"] = ExpressionConverter.ConvertO(__workflow_thingRoconnectivitystatus);
                     connectivityObjectpropCount++;
                 }
 
-                if (thingRoconnectivitytype != null)
+                if (__workflow_thingRoconnectivitytype != null)
                 {
-                    connectivityObject["type"] = ExpressionConverter.ConvertO(thingRoconnectivitytype);
+                    connectivityObject["type"] = ExpressionConverter.ConvertO(__workflow_thingRoconnectivitytype);
                     connectivityObjectpropCount++;
                 }
 
@@ -1677,41 +1806,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                     thingRopropCount++;
                 }
 
-                if (thingRocustomFields != null)
+                if (__workflow_thingRocustomFields != null)
                 {
-                    thingRo["customFields"] = ExpressionConverter.ConvertO(thingRocustomFields);
+                    thingRo["customFields"] = ExpressionConverter.ConvertO(__workflow_thingRocustomFields);
                     thingRopropCount++;
                 }
 
                 var customModelObject = new JObject();
                 var customModelObjectpropCount = 0;
-                if (thingRocustomModelcolor != null)
+                if (__workflow_thingRocustomModelcolor != null)
                 {
-                    customModelObject["color"] = ExpressionConverter.ConvertO(thingRocustomModelcolor);
+                    customModelObject["color"] = ExpressionConverter.ConvertO(__workflow_thingRocustomModelcolor);
                     customModelObjectpropCount++;
                 }
 
-                if (thingRocustomModelicon != null)
+                if (__workflow_thingRocustomModelicon != null)
                 {
-                    customModelObject["icon"] = ExpressionConverter.ConvertO(thingRocustomModelicon);
+                    customModelObject["icon"] = ExpressionConverter.ConvertO(__workflow_thingRocustomModelicon);
                     customModelObjectpropCount++;
                 }
 
-                if (thingRocustomModelid != null)
+                if (__workflow_thingRocustomModelid != null)
                 {
-                    customModelObject["id"] = ExpressionConverter.ConvertO(thingRocustomModelid);
+                    customModelObject["id"] = ExpressionConverter.ConvertO(__workflow_thingRocustomModelid);
                     customModelObjectpropCount++;
                 }
 
-                if (thingRocustomModellink != null)
+                if (__workflow_thingRocustomModellink != null)
                 {
-                    customModelObject["link"] = ExpressionConverter.ConvertO(thingRocustomModellink);
+                    customModelObject["link"] = ExpressionConverter.ConvertO(__workflow_thingRocustomModellink);
                     customModelObjectpropCount++;
                 }
 
-                if (thingRocustomModelname != null)
+                if (__workflow_thingRocustomModelname != null)
                 {
-                    customModelObject["name"] = ExpressionConverter.ConvertO(thingRocustomModelname);
+                    customModelObject["name"] = ExpressionConverter.ConvertO(__workflow_thingRocustomModelname);
                     customModelObjectpropCount++;
                 }
 
@@ -1721,83 +1850,83 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                     thingRopropCount++;
                 }
 
-                if (thingRodescription != null)
+                if (__workflow_thingRodescription != null)
                 {
-                    thingRo["description"] = ExpressionConverter.ConvertO(thingRodescription);
+                    thingRo["description"] = ExpressionConverter.ConvertO(__workflow_thingRodescription);
                     thingRopropCount++;
                 }
 
                 var deviceObject = new JObject();
                 var deviceObjectpropCount = 0;
-                if (thingRodevicebatteryLevel != null)
+                if (__workflow_thingRodevicebatteryLevel != null)
                 {
-                    deviceObject["batteryLevel"] = ExpressionConverter.ConvertO(thingRodevicebatteryLevel);
+                    deviceObject["batteryLevel"] = ExpressionConverter.ConvertO(__workflow_thingRodevicebatteryLevel);
                     deviceObjectpropCount++;
                 }
 
-                if (thingRodevicebatteryStatus != null)
+                if (__workflow_thingRodevicebatteryStatus != null)
                 {
-                    deviceObject["batteryStatus"] = ExpressionConverter.ConvertO(thingRodevicebatteryStatus);
+                    deviceObject["batteryStatus"] = ExpressionConverter.ConvertO(__workflow_thingRodevicebatteryStatus);
                     deviceObjectpropCount++;
                 }
 
-                if (thingRodevicedeviceType != null)
+                if (__workflow_thingRodevicedeviceType != null)
                 {
-                    deviceObject["deviceType"] = ExpressionConverter.ConvertO(thingRodevicedeviceType);
+                    deviceObject["deviceType"] = ExpressionConverter.ConvertO(__workflow_thingRodevicedeviceType);
                     deviceObjectpropCount++;
                 }
 
-                if (thingRodeviceid != null)
+                if (__workflow_thingRodeviceid != null)
                 {
-                    deviceObject["id"] = ExpressionConverter.ConvertO(thingRodeviceid);
+                    deviceObject["id"] = ExpressionConverter.ConvertO(__workflow_thingRodeviceid);
                     deviceObjectpropCount++;
                 }
 
-                if (thingRodevicemanufacturer != null)
+                if (__workflow_thingRodevicemanufacturer != null)
                 {
-                    deviceObject["manufacturer"] = ExpressionConverter.ConvertO(thingRodevicemanufacturer);
+                    deviceObject["manufacturer"] = ExpressionConverter.ConvertO(__workflow_thingRodevicemanufacturer);
                     deviceObjectpropCount++;
                 }
 
-                if (thingRodevicememoryFree != null)
+                if (__workflow_thingRodevicememoryFree != null)
                 {
-                    deviceObject["memoryFree"] = ExpressionConverter.ConvertO(thingRodevicememoryFree);
+                    deviceObject["memoryFree"] = ExpressionConverter.ConvertO(__workflow_thingRodevicememoryFree);
                     deviceObjectpropCount++;
                 }
 
-                if (thingRodevicememoryTotal != null)
+                if (__workflow_thingRodevicememoryTotal != null)
                 {
-                    deviceObject["memoryTotal"] = ExpressionConverter.ConvertO(thingRodevicememoryTotal);
+                    deviceObject["memoryTotal"] = ExpressionConverter.ConvertO(__workflow_thingRodevicememoryTotal);
                     deviceObjectpropCount++;
                 }
 
-                if (thingRodevicemodel != null)
+                if (__workflow_thingRodevicemodel != null)
                 {
-                    deviceObject["model"] = ExpressionConverter.ConvertO(thingRodevicemodel);
+                    deviceObject["model"] = ExpressionConverter.ConvertO(__workflow_thingRodevicemodel);
                     deviceObjectpropCount++;
                 }
 
-                if (thingRodevicemodelNumber != null)
+                if (__workflow_thingRodevicemodelNumber != null)
                 {
-                    deviceObject["modelNumber"] = ExpressionConverter.ConvertO(thingRodevicemodelNumber);
+                    deviceObject["modelNumber"] = ExpressionConverter.ConvertO(__workflow_thingRodevicemodelNumber);
                     deviceObjectpropCount++;
                 }
 
-                if (thingRodevicename != null)
+                if (__workflow_thingRodevicename != null)
                 {
-                    deviceObject["name"] = ExpressionConverter.ConvertO(thingRodevicename);
+                    deviceObject["name"] = ExpressionConverter.ConvertO(__workflow_thingRodevicename);
                     deviceObjectpropCount++;
                 }
 
-                if (thingRodeviceserialNumber != null)
+                if (__workflow_thingRodeviceserialNumber != null)
                 {
-                    deviceObject["serialNumber"] = ExpressionConverter.ConvertO(thingRodeviceserialNumber);
+                    deviceObject["serialNumber"] = ExpressionConverter.ConvertO(__workflow_thingRodeviceserialNumber);
                     deviceObjectpropCount++;
                 }
 
-                if (thingRodevicestatus != null)
+                if (__workflow_thingRodevicestatus != null)
                 {
-                    deviceObject["status"] = ExpressionConverter.ConvertO(thingRodevicestatus);
+                    deviceObject["status"] = ExpressionConverter.ConvertO(__workflow_thingRodevicestatus);
                     deviceObjectpropCount++;
                 }
 
@@ -1807,185 +1936,185 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                     thingRopropCount++;
                 }
 
-                if (thingRodisplayName != null)
+                if (__workflow_thingRodisplayName != null)
                 {
-                    thingRo["displayName"] = ExpressionConverter.ConvertO(thingRodisplayName);
+                    thingRo["displayName"] = ExpressionConverter.ConvertO(__workflow_thingRodisplayName);
                     thingRopropCount++;
                 }
 
-                if (thingRodynamicGps != null)
+                if (__workflow_thingRodynamicGps != null)
                 {
-                    thingRo["dynamicGps"] = ExpressionConverter.ConvertO(thingRodynamicGps);
+                    thingRo["dynamicGps"] = ExpressionConverter.ConvertO(__workflow_thingRodynamicGps);
                     thingRopropCount++;
                 }
 
-                if (thingRofixedLatitude != null)
+                if (__workflow_thingRofixedLatitude != null)
                 {
-                    thingRo["fixedLatitude"] = ExpressionConverter.ConvertO(thingRofixedLatitude);
+                    thingRo["fixedLatitude"] = ExpressionConverter.ConvertO(__workflow_thingRofixedLatitude);
                     thingRopropCount++;
                 }
 
-                if (thingRofixedLongitude != null)
+                if (__workflow_thingRofixedLongitude != null)
                 {
-                    thingRo["fixedLongitude"] = ExpressionConverter.ConvertO(thingRofixedLongitude);
+                    thingRo["fixedLongitude"] = ExpressionConverter.ConvertO(__workflow_thingRofixedLongitude);
                     thingRopropCount++;
                 }
 
-                if (thingRofixedName != null)
+                if (__workflow_thingRofixedName != null)
                 {
-                    thingRo["fixedName"] = ExpressionConverter.ConvertO(thingRofixedName);
+                    thingRo["fixedName"] = ExpressionConverter.ConvertO(__workflow_thingRofixedName);
                     thingRopropCount++;
                 }
 
-                if (thingRoid != null)
+                if (__workflow_thingRoid != null)
                 {
-                    thingRo["id"] = ExpressionConverter.ConvertO(thingRoid);
+                    thingRo["id"] = ExpressionConverter.ConvertO(__workflow_thingRoid);
                     thingRopropCount++;
                 }
 
-                if (thingRolastActivityDate != null)
+                if (__workflow_thingRolastActivityDate != null)
                 {
-                    thingRo["lastActivityDate"] = ExpressionConverter.ConvertO(thingRolastActivityDate);
+                    thingRo["lastActivityDate"] = ExpressionConverter.ConvertO(__workflow_thingRolastActivityDate);
                     thingRopropCount++;
                 }
 
-                if (thingRolastLatitude != null)
+                if (__workflow_thingRolastLatitude != null)
                 {
-                    thingRo["lastLatitude"] = ExpressionConverter.ConvertO(thingRolastLatitude);
+                    thingRo["lastLatitude"] = ExpressionConverter.ConvertO(__workflow_thingRolastLatitude);
                     thingRopropCount++;
                 }
 
-                if (thingRolastLongitude != null)
+                if (__workflow_thingRolastLongitude != null)
                 {
-                    thingRo["lastLongitude"] = ExpressionConverter.ConvertO(thingRolastLongitude);
+                    thingRo["lastLongitude"] = ExpressionConverter.ConvertO(__workflow_thingRolastLongitude);
                     thingRopropCount++;
                 }
 
                 var lastMeasurementsObject = new JObject();
                 var lastMeasurementsObjectpropCount = 0;
-                if (thingRolastMeasurementsarray != null)
+                if (__workflow_thingRolastMeasurementsarray != null)
                 {
-                    lastMeasurementsObject["array"] = ExpressionConverter.ConvertO(thingRolastMeasurementsarray);
+                    lastMeasurementsObject["array"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsarray);
                     lastMeasurementsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsbigDecimal != null)
+                if (__workflow_thingRolastMeasurementsbigDecimal != null)
                 {
-                    lastMeasurementsObject["bigDecimal"] = ExpressionConverter.ConvertO(thingRolastMeasurementsbigDecimal);
+                    lastMeasurementsObject["bigDecimal"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsbigDecimal);
                     lastMeasurementsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsbigInteger != null)
+                if (__workflow_thingRolastMeasurementsbigInteger != null)
                 {
-                    lastMeasurementsObject["bigInteger"] = ExpressionConverter.ConvertO(thingRolastMeasurementsbigInteger);
+                    lastMeasurementsObject["bigInteger"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsbigInteger);
                     lastMeasurementsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsbinary != null)
+                if (__workflow_thingRolastMeasurementsbinary != null)
                 {
-                    lastMeasurementsObject["binary"] = ExpressionConverter.ConvertO(thingRolastMeasurementsbinary);
+                    lastMeasurementsObject["binary"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsbinary);
                     lastMeasurementsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsboolean != null)
+                if (__workflow_thingRolastMeasurementsboolean != null)
                 {
-                    lastMeasurementsObject["boolean"] = ExpressionConverter.ConvertO(thingRolastMeasurementsboolean);
+                    lastMeasurementsObject["boolean"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsboolean);
                     lastMeasurementsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementscontainerNode != null)
+                if (__workflow_thingRolastMeasurementscontainerNode != null)
                 {
-                    lastMeasurementsObject["containerNode"] = ExpressionConverter.ConvertO(thingRolastMeasurementscontainerNode);
+                    lastMeasurementsObject["containerNode"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementscontainerNode);
                     lastMeasurementsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsdouble != null)
+                if (__workflow_thingRolastMeasurementsdouble != null)
                 {
-                    lastMeasurementsObject["double"] = ExpressionConverter.ConvertO(thingRolastMeasurementsdouble);
+                    lastMeasurementsObject["double"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsdouble);
                     lastMeasurementsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsfloat != null)
+                if (__workflow_thingRolastMeasurementsfloat != null)
                 {
-                    lastMeasurementsObject["float"] = ExpressionConverter.ConvertO(thingRolastMeasurementsfloat);
+                    lastMeasurementsObject["float"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsfloat);
                     lastMeasurementsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsfloatingPointNumber != null)
+                if (__workflow_thingRolastMeasurementsfloatingPointNumber != null)
                 {
-                    lastMeasurementsObject["floatingPointNumber"] = ExpressionConverter.ConvertO(thingRolastMeasurementsfloatingPointNumber);
+                    lastMeasurementsObject["floatingPointNumber"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsfloatingPointNumber);
                     lastMeasurementsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsint != null)
+                if (__workflow_thingRolastMeasurementsint != null)
                 {
-                    lastMeasurementsObject["int"] = ExpressionConverter.ConvertO(thingRolastMeasurementsint);
+                    lastMeasurementsObject["int"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsint);
                     lastMeasurementsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsintegralNumber != null)
+                if (__workflow_thingRolastMeasurementsintegralNumber != null)
                 {
-                    lastMeasurementsObject["integralNumber"] = ExpressionConverter.ConvertO(thingRolastMeasurementsintegralNumber);
+                    lastMeasurementsObject["integralNumber"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsintegralNumber);
                     lastMeasurementsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsLong != null)
+                if (__workflow_thingRolastMeasurementsLong != null)
                 {
-                    lastMeasurementsObject["long"] = ExpressionConverter.ConvertO(thingRolastMeasurementsLong);
+                    lastMeasurementsObject["long"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsLong);
                     lastMeasurementsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsmissingNode != null)
+                if (__workflow_thingRolastMeasurementsmissingNode != null)
                 {
-                    lastMeasurementsObject["missingNode"] = ExpressionConverter.ConvertO(thingRolastMeasurementsmissingNode);
+                    lastMeasurementsObject["missingNode"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsmissingNode);
                     lastMeasurementsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsnodeType != null)
+                if (__workflow_thingRolastMeasurementsnodeType != null)
                 {
-                    lastMeasurementsObject["nodeType"] = ExpressionConverter.ConvertO(thingRolastMeasurementsnodeType);
+                    lastMeasurementsObject["nodeType"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsnodeType);
                     lastMeasurementsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsnull != null)
+                if (__workflow_thingRolastMeasurementsnull != null)
                 {
-                    lastMeasurementsObject["null"] = ExpressionConverter.ConvertO(thingRolastMeasurementsnull);
+                    lastMeasurementsObject["null"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsnull);
                     lastMeasurementsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsnumber != null)
+                if (__workflow_thingRolastMeasurementsnumber != null)
                 {
-                    lastMeasurementsObject["number"] = ExpressionConverter.ConvertO(thingRolastMeasurementsnumber);
+                    lastMeasurementsObject["number"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsnumber);
                     lastMeasurementsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsObject != null)
+                if (__workflow_thingRolastMeasurementsObject != null)
                 {
-                    lastMeasurementsObject["object"] = ExpressionConverter.ConvertO(thingRolastMeasurementsObject);
+                    lastMeasurementsObject["object"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsObject);
                     lastMeasurementsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementspojo != null)
+                if (__workflow_thingRolastMeasurementspojo != null)
                 {
-                    lastMeasurementsObject["pojo"] = ExpressionConverter.ConvertO(thingRolastMeasurementspojo);
+                    lastMeasurementsObject["pojo"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementspojo);
                     lastMeasurementsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsShort != null)
+                if (__workflow_thingRolastMeasurementsShort != null)
                 {
-                    lastMeasurementsObject["short"] = ExpressionConverter.ConvertO(thingRolastMeasurementsShort);
+                    lastMeasurementsObject["short"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsShort);
                     lastMeasurementsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementstextual != null)
+                if (__workflow_thingRolastMeasurementstextual != null)
                 {
-                    lastMeasurementsObject["textual"] = ExpressionConverter.ConvertO(thingRolastMeasurementstextual);
+                    lastMeasurementsObject["textual"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementstextual);
                     lastMeasurementsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsvalueNode != null)
+                if (__workflow_thingRolastMeasurementsvalueNode != null)
                 {
-                    lastMeasurementsObject["valueNode"] = ExpressionConverter.ConvertO(thingRolastMeasurementsvalueNode);
+                    lastMeasurementsObject["valueNode"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsvalueNode);
                     lastMeasurementsObjectpropCount++;
                 }
 
@@ -1997,129 +2126,129 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
 
                 var lastMeasurementsTimestampsObject = new JObject();
                 var lastMeasurementsTimestampsObjectpropCount = 0;
-                if (thingRolastMeasurementsarray != null)
+                if (__workflow_thingRolastMeasurementsarray != null)
                 {
-                    lastMeasurementsTimestampsObject["array"] = ExpressionConverter.ConvertO(thingRolastMeasurementsarray);
+                    lastMeasurementsTimestampsObject["array"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsarray);
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsbigDecimal != null)
+                if (__workflow_thingRolastMeasurementsbigDecimal != null)
                 {
-                    lastMeasurementsTimestampsObject["bigDecimal"] = ExpressionConverter.ConvertO(thingRolastMeasurementsbigDecimal);
+                    lastMeasurementsTimestampsObject["bigDecimal"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsbigDecimal);
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsbigInteger != null)
+                if (__workflow_thingRolastMeasurementsbigInteger != null)
                 {
-                    lastMeasurementsTimestampsObject["bigInteger"] = ExpressionConverter.ConvertO(thingRolastMeasurementsbigInteger);
+                    lastMeasurementsTimestampsObject["bigInteger"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsbigInteger);
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsbinary != null)
+                if (__workflow_thingRolastMeasurementsbinary != null)
                 {
-                    lastMeasurementsTimestampsObject["binary"] = ExpressionConverter.ConvertO(thingRolastMeasurementsbinary);
+                    lastMeasurementsTimestampsObject["binary"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsbinary);
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsboolean != null)
+                if (__workflow_thingRolastMeasurementsboolean != null)
                 {
-                    lastMeasurementsTimestampsObject["boolean"] = ExpressionConverter.ConvertO(thingRolastMeasurementsboolean);
+                    lastMeasurementsTimestampsObject["boolean"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsboolean);
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementscontainerNode != null)
+                if (__workflow_thingRolastMeasurementscontainerNode != null)
                 {
-                    lastMeasurementsTimestampsObject["containerNode"] = ExpressionConverter.ConvertO(thingRolastMeasurementscontainerNode);
+                    lastMeasurementsTimestampsObject["containerNode"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementscontainerNode);
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsdouble != null)
+                if (__workflow_thingRolastMeasurementsdouble != null)
                 {
-                    lastMeasurementsTimestampsObject["double"] = ExpressionConverter.ConvertO(thingRolastMeasurementsdouble);
+                    lastMeasurementsTimestampsObject["double"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsdouble);
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsfloat != null)
+                if (__workflow_thingRolastMeasurementsfloat != null)
                 {
-                    lastMeasurementsTimestampsObject["float"] = ExpressionConverter.ConvertO(thingRolastMeasurementsfloat);
+                    lastMeasurementsTimestampsObject["float"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsfloat);
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsfloatingPointNumber != null)
+                if (__workflow_thingRolastMeasurementsfloatingPointNumber != null)
                 {
-                    lastMeasurementsTimestampsObject["floatingPointNumber"] = ExpressionConverter.ConvertO(thingRolastMeasurementsfloatingPointNumber);
+                    lastMeasurementsTimestampsObject["floatingPointNumber"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsfloatingPointNumber);
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsint != null)
+                if (__workflow_thingRolastMeasurementsint != null)
                 {
-                    lastMeasurementsTimestampsObject["int"] = ExpressionConverter.ConvertO(thingRolastMeasurementsint);
+                    lastMeasurementsTimestampsObject["int"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsint);
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsintegralNumber != null)
+                if (__workflow_thingRolastMeasurementsintegralNumber != null)
                 {
-                    lastMeasurementsTimestampsObject["integralNumber"] = ExpressionConverter.ConvertO(thingRolastMeasurementsintegralNumber);
+                    lastMeasurementsTimestampsObject["integralNumber"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsintegralNumber);
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsLong != null)
+                if (__workflow_thingRolastMeasurementsLong != null)
                 {
-                    lastMeasurementsTimestampsObject["long"] = ExpressionConverter.ConvertO(thingRolastMeasurementsLong);
+                    lastMeasurementsTimestampsObject["long"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsLong);
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsmissingNode != null)
+                if (__workflow_thingRolastMeasurementsmissingNode != null)
                 {
-                    lastMeasurementsTimestampsObject["missingNode"] = ExpressionConverter.ConvertO(thingRolastMeasurementsmissingNode);
+                    lastMeasurementsTimestampsObject["missingNode"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsmissingNode);
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsnodeType != null)
+                if (__workflow_thingRolastMeasurementsnodeType != null)
                 {
-                    lastMeasurementsTimestampsObject["nodeType"] = ExpressionConverter.ConvertO(thingRolastMeasurementsnodeType);
+                    lastMeasurementsTimestampsObject["nodeType"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsnodeType);
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsnull != null)
+                if (__workflow_thingRolastMeasurementsnull != null)
                 {
-                    lastMeasurementsTimestampsObject["null"] = ExpressionConverter.ConvertO(thingRolastMeasurementsnull);
+                    lastMeasurementsTimestampsObject["null"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsnull);
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsnumber != null)
+                if (__workflow_thingRolastMeasurementsnumber != null)
                 {
-                    lastMeasurementsTimestampsObject["number"] = ExpressionConverter.ConvertO(thingRolastMeasurementsnumber);
+                    lastMeasurementsTimestampsObject["number"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsnumber);
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsObject != null)
+                if (__workflow_thingRolastMeasurementsObject != null)
                 {
-                    lastMeasurementsTimestampsObject["object"] = ExpressionConverter.ConvertO(thingRolastMeasurementsObject);
+                    lastMeasurementsTimestampsObject["object"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsObject);
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementspojo != null)
+                if (__workflow_thingRolastMeasurementspojo != null)
                 {
-                    lastMeasurementsTimestampsObject["pojo"] = ExpressionConverter.ConvertO(thingRolastMeasurementspojo);
+                    lastMeasurementsTimestampsObject["pojo"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementspojo);
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsShort != null)
+                if (__workflow_thingRolastMeasurementsShort != null)
                 {
-                    lastMeasurementsTimestampsObject["short"] = ExpressionConverter.ConvertO(thingRolastMeasurementsShort);
+                    lastMeasurementsTimestampsObject["short"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsShort);
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementstextual != null)
+                if (__workflow_thingRolastMeasurementstextual != null)
                 {
-                    lastMeasurementsTimestampsObject["textual"] = ExpressionConverter.ConvertO(thingRolastMeasurementstextual);
+                    lastMeasurementsTimestampsObject["textual"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementstextual);
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsvalueNode != null)
+                if (__workflow_thingRolastMeasurementsvalueNode != null)
                 {
-                    lastMeasurementsTimestampsObject["valueNode"] = ExpressionConverter.ConvertO(thingRolastMeasurementsvalueNode);
+                    lastMeasurementsTimestampsObject["valueNode"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsvalueNode);
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
@@ -2129,75 +2258,75 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                     thingRopropCount++;
                 }
 
-                if (thingRolastMessageDate != null)
+                if (__workflow_thingRolastMessageDate != null)
                 {
-                    thingRo["lastMessageDate"] = ExpressionConverter.ConvertO(thingRolastMessageDate);
+                    thingRo["lastMessageDate"] = ExpressionConverter.ConvertO(__workflow_thingRolastMessageDate);
                     thingRopropCount++;
                 }
 
-                if (thingRomessageActivityTimeoutPeriod != null)
+                if (__workflow_thingRomessageActivityTimeoutPeriod != null)
                 {
-                    thingRo["messageActivityTimeoutPeriod"] = ExpressionConverter.ConvertO(thingRomessageActivityTimeoutPeriod);
+                    thingRo["messageActivityTimeoutPeriod"] = ExpressionConverter.ConvertO(__workflow_thingRomessageActivityTimeoutPeriod);
                     thingRopropCount++;
                 }
 
                 thingRopropCount++;
-                thingRo["name"] = ExpressionConverter.ConvertO(thingRoname);
-                if (thingRonbAlerts != null)
+                thingRo["name"] = ExpressionConverter.ConvertO(__workflow_thingRoname);
+                if (__workflow_thingRonbAlerts != null)
                 {
-                    thingRo["nbAlerts"] = ExpressionConverter.ConvertO(thingRonbAlerts);
+                    thingRo["nbAlerts"] = ExpressionConverter.ConvertO(__workflow_thingRonbAlerts);
                     thingRopropCount++;
                 }
 
                 var productObject = new JObject();
                 var productObjectpropCount = 0;
-                if (thingRoproductconnectivityTypes != null)
+                if (__workflow_thingRoproductconnectivityTypes != null)
                 {
-                    productObject["connectivityTypes"] = ExpressionConverter.ConvertO(thingRoproductconnectivityTypes);
+                    productObject["connectivityTypes"] = ExpressionConverter.ConvertO(__workflow_thingRoproductconnectivityTypes);
                     productObjectpropCount++;
                 }
 
-                if (thingRoproductgenerateLinks != null)
+                if (__workflow_thingRoproductgenerateLinks != null)
                 {
-                    productObject["generateLinks"] = ExpressionConverter.ConvertO(thingRoproductgenerateLinks);
+                    productObject["generateLinks"] = ExpressionConverter.ConvertO(__workflow_thingRoproductgenerateLinks);
                     productObjectpropCount++;
                 }
 
-                if (thingRoproductid != null)
+                if (__workflow_thingRoproductid != null)
                 {
-                    productObject["id"] = ExpressionConverter.ConvertO(thingRoproductid);
+                    productObject["id"] = ExpressionConverter.ConvertO(__workflow_thingRoproductid);
                     productObjectpropCount++;
                 }
 
-                if (thingRoproductlink != null)
+                if (__workflow_thingRoproductlink != null)
                 {
-                    productObject["link"] = ExpressionConverter.ConvertO(thingRoproductlink);
+                    productObject["link"] = ExpressionConverter.ConvertO(__workflow_thingRoproductlink);
                     productObjectpropCount++;
                 }
 
                 var manufacturerObject = new JObject();
                 var manufacturerObjectpropCount = 0;
-                if (thingRoproductmanufacturergenerateLinks != null)
+                if (__workflow_thingRoproductmanufacturergenerateLinks != null)
                 {
-                    manufacturerObject["generateLinks"] = ExpressionConverter.ConvertO(thingRoproductmanufacturergenerateLinks);
+                    manufacturerObject["generateLinks"] = ExpressionConverter.ConvertO(__workflow_thingRoproductmanufacturergenerateLinks);
                     manufacturerObjectpropCount++;
                 }
 
-                if (thingRoproductmanufacturerid != null)
+                if (__workflow_thingRoproductmanufacturerid != null)
                 {
-                    manufacturerObject["id"] = ExpressionConverter.ConvertO(thingRoproductmanufacturerid);
+                    manufacturerObject["id"] = ExpressionConverter.ConvertO(__workflow_thingRoproductmanufacturerid);
                     manufacturerObjectpropCount++;
                 }
 
-                if (thingRoproductmanufacturerlink != null)
+                if (__workflow_thingRoproductmanufacturerlink != null)
                 {
-                    manufacturerObject["link"] = ExpressionConverter.ConvertO(thingRoproductmanufacturerlink);
+                    manufacturerObject["link"] = ExpressionConverter.ConvertO(__workflow_thingRoproductmanufacturerlink);
                     manufacturerObjectpropCount++;
                 }
 
-                if (thingRoproductmanufacturername != null)
+                if (__workflow_thingRoproductmanufacturername != null)
                 {
-                    manufacturerObject["name"] = ExpressionConverter.ConvertO(thingRoproductmanufacturername);
+                    manufacturerObject["name"] = ExpressionConverter.ConvertO(__workflow_thingRoproductmanufacturername);
                     manufacturerObjectpropCount++;
                 }
 
@@ -2209,137 +2338,137 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
 
                 var modelObject = new JObject();
                 var modelObjectpropCount = 0;
-                if (thingRoproductmodelcolor != null)
+                if (__workflow_thingRoproductmodelcolor != null)
                 {
-                    modelObject["color"] = ExpressionConverter.ConvertO(thingRoproductmodelcolor);
+                    modelObject["color"] = ExpressionConverter.ConvertO(__workflow_thingRoproductmodelcolor);
                     modelObjectpropCount++;
                 }
 
-                if (thingRoproductmodelgenerateLinks != null)
+                if (__workflow_thingRoproductmodelgenerateLinks != null)
                 {
-                    modelObject["generateLinks"] = ExpressionConverter.ConvertO(thingRoproductmodelgenerateLinks);
+                    modelObject["generateLinks"] = ExpressionConverter.ConvertO(__workflow_thingRoproductmodelgenerateLinks);
                     modelObjectpropCount++;
                 }
 
-                if (thingRoproductmodelicon != null)
+                if (__workflow_thingRoproductmodelicon != null)
                 {
-                    modelObject["icon"] = ExpressionConverter.ConvertO(thingRoproductmodelicon);
+                    modelObject["icon"] = ExpressionConverter.ConvertO(__workflow_thingRoproductmodelicon);
                     modelObjectpropCount++;
                 }
 
-                if (thingRoproductmodelid != null)
+                if (__workflow_thingRoproductmodelid != null)
                 {
-                    modelObject["id"] = ExpressionConverter.ConvertO(thingRoproductmodelid);
+                    modelObject["id"] = ExpressionConverter.ConvertO(__workflow_thingRoproductmodelid);
                     modelObjectpropCount++;
                 }
 
-                if (thingRoproductmodelisCustomModel != null)
+                if (__workflow_thingRoproductmodelisCustomModel != null)
                 {
-                    modelObject["isCustomModel"] = ExpressionConverter.ConvertO(thingRoproductmodelisCustomModel);
+                    modelObject["isCustomModel"] = ExpressionConverter.ConvertO(__workflow_thingRoproductmodelisCustomModel);
                     modelObjectpropCount++;
                 }
 
                 var linkObject = new JObject();
                 var linkObjectpropCount = 0;
-                if (thingRoproductmodellinkabsolute != null)
+                if (__workflow_thingRoproductmodellinkabsolute != null)
                 {
-                    linkObject["absolute"] = ExpressionConverter.ConvertO(thingRoproductmodellinkabsolute);
+                    linkObject["absolute"] = ExpressionConverter.ConvertO(__workflow_thingRoproductmodellinkabsolute);
                     linkObjectpropCount++;
                 }
 
-                if (thingRoproductmodellinkauthority != null)
+                if (__workflow_thingRoproductmodellinkauthority != null)
                 {
-                    linkObject["authority"] = ExpressionConverter.ConvertO(thingRoproductmodellinkauthority);
+                    linkObject["authority"] = ExpressionConverter.ConvertO(__workflow_thingRoproductmodellinkauthority);
                     linkObjectpropCount++;
                 }
 
-                if (thingRoproductmodellinkfragment != null)
+                if (__workflow_thingRoproductmodellinkfragment != null)
                 {
-                    linkObject["fragment"] = ExpressionConverter.ConvertO(thingRoproductmodellinkfragment);
+                    linkObject["fragment"] = ExpressionConverter.ConvertO(__workflow_thingRoproductmodellinkfragment);
                     linkObjectpropCount++;
                 }
 
-                if (thingRoproductmodellinkhost != null)
+                if (__workflow_thingRoproductmodellinkhost != null)
                 {
-                    linkObject["host"] = ExpressionConverter.ConvertO(thingRoproductmodellinkhost);
+                    linkObject["host"] = ExpressionConverter.ConvertO(__workflow_thingRoproductmodellinkhost);
                     linkObjectpropCount++;
                 }
 
-                if (thingRoproductmodellinkopaque != null)
+                if (__workflow_thingRoproductmodellinkopaque != null)
                 {
-                    linkObject["opaque"] = ExpressionConverter.ConvertO(thingRoproductmodellinkopaque);
+                    linkObject["opaque"] = ExpressionConverter.ConvertO(__workflow_thingRoproductmodellinkopaque);
                     linkObjectpropCount++;
                 }
 
-                if (thingRoproductmodellinkpath != null)
+                if (__workflow_thingRoproductmodellinkpath != null)
                 {
-                    linkObject["path"] = ExpressionConverter.ConvertO(thingRoproductmodellinkpath);
+                    linkObject["path"] = ExpressionConverter.ConvertO(__workflow_thingRoproductmodellinkpath);
                     linkObjectpropCount++;
                 }
 
-                if (thingRoproductmodellinkport != null)
+                if (__workflow_thingRoproductmodellinkport != null)
                 {
-                    linkObject["port"] = ExpressionConverter.ConvertO(thingRoproductmodellinkport);
+                    linkObject["port"] = ExpressionConverter.ConvertO(__workflow_thingRoproductmodellinkport);
                     linkObjectpropCount++;
                 }
 
-                if (thingRoproductmodellinkquery != null)
+                if (__workflow_thingRoproductmodellinkquery != null)
                 {
-                    linkObject["query"] = ExpressionConverter.ConvertO(thingRoproductmodellinkquery);
+                    linkObject["query"] = ExpressionConverter.ConvertO(__workflow_thingRoproductmodellinkquery);
                     linkObjectpropCount++;
                 }
 
-                if (thingRoproductmodellinkrawAuthority != null)
+                if (__workflow_thingRoproductmodellinkrawAuthority != null)
                 {
-                    linkObject["rawAuthority"] = ExpressionConverter.ConvertO(thingRoproductmodellinkrawAuthority);
+                    linkObject["rawAuthority"] = ExpressionConverter.ConvertO(__workflow_thingRoproductmodellinkrawAuthority);
                     linkObjectpropCount++;
                 }
 
-                if (thingRoproductmodellinkrawFragment != null)
+                if (__workflow_thingRoproductmodellinkrawFragment != null)
                 {
-                    linkObject["rawFragment"] = ExpressionConverter.ConvertO(thingRoproductmodellinkrawFragment);
+                    linkObject["rawFragment"] = ExpressionConverter.ConvertO(__workflow_thingRoproductmodellinkrawFragment);
                     linkObjectpropCount++;
                 }
 
-                if (thingRoproductmodellinkrawPath != null)
+                if (__workflow_thingRoproductmodellinkrawPath != null)
                 {
-                    linkObject["rawPath"] = ExpressionConverter.ConvertO(thingRoproductmodellinkrawPath);
+                    linkObject["rawPath"] = ExpressionConverter.ConvertO(__workflow_thingRoproductmodellinkrawPath);
                     linkObjectpropCount++;
                 }
 
-                if (thingRoproductmodellinkrawQuery != null)
+                if (__workflow_thingRoproductmodellinkrawQuery != null)
                 {
-                    linkObject["rawQuery"] = ExpressionConverter.ConvertO(thingRoproductmodellinkrawQuery);
+                    linkObject["rawQuery"] = ExpressionConverter.ConvertO(__workflow_thingRoproductmodellinkrawQuery);
                     linkObjectpropCount++;
                 }
 
-                if (thingRoproductmodellinkrawSchemeSpecificPart != null)
+                if (__workflow_thingRoproductmodellinkrawSchemeSpecificPart != null)
                 {
-                    linkObject["rawSchemeSpecificPart"] = ExpressionConverter.ConvertO(thingRoproductmodellinkrawSchemeSpecificPart);
+                    linkObject["rawSchemeSpecificPart"] = ExpressionConverter.ConvertO(__workflow_thingRoproductmodellinkrawSchemeSpecificPart);
                     linkObjectpropCount++;
                 }
 
-                if (thingRoproductmodellinkrawUserInfo != null)
+                if (__workflow_thingRoproductmodellinkrawUserInfo != null)
                 {
-                    linkObject["rawUserInfo"] = ExpressionConverter.ConvertO(thingRoproductmodellinkrawUserInfo);
+                    linkObject["rawUserInfo"] = ExpressionConverter.ConvertO(__workflow_thingRoproductmodellinkrawUserInfo);
                     linkObjectpropCount++;
                 }
 
-                if (thingRoproductmodellinkscheme != null)
+                if (__workflow_thingRoproductmodellinkscheme != null)
                 {
-                    linkObject["scheme"] = ExpressionConverter.ConvertO(thingRoproductmodellinkscheme);
+                    linkObject["scheme"] = ExpressionConverter.ConvertO(__workflow_thingRoproductmodellinkscheme);
                     linkObjectpropCount++;
                 }
 
-                if (thingRoproductmodellinkschemeSpecificPart != null)
+                if (__workflow_thingRoproductmodellinkschemeSpecificPart != null)
                 {
-                    linkObject["schemeSpecificPart"] = ExpressionConverter.ConvertO(thingRoproductmodellinkschemeSpecificPart);
+                    linkObject["schemeSpecificPart"] = ExpressionConverter.ConvertO(__workflow_thingRoproductmodellinkschemeSpecificPart);
                     linkObjectpropCount++;
                 }
 
-                if (thingRoproductmodellinkuserInfo != null)
+                if (__workflow_thingRoproductmodellinkuserInfo != null)
                 {
-                    linkObject["userInfo"] = ExpressionConverter.ConvertO(thingRoproductmodellinkuserInfo);
+                    linkObject["userInfo"] = ExpressionConverter.ConvertO(__workflow_thingRoproductmodellinkuserInfo);
                     linkObjectpropCount++;
                 }
 
@@ -2349,9 +2478,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                     modelObjectpropCount++;
                 }
 
-                if (thingRoproductmodelname != null)
+                if (__workflow_thingRoproductmodelname != null)
                 {
-                    modelObject["name"] = ExpressionConverter.ConvertO(thingRoproductmodelname);
+                    modelObject["name"] = ExpressionConverter.ConvertO(__workflow_thingRoproductmodelname);
                     modelObjectpropCount++;
                 }
 
@@ -2361,15 +2490,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                     productObjectpropCount++;
                 }
 
-                if (thingRoproductname != null)
+                if (__workflow_thingRoproductname != null)
                 {
-                    productObject["name"] = ExpressionConverter.ConvertO(thingRoproductname);
+                    productObject["name"] = ExpressionConverter.ConvertO(__workflow_thingRoproductname);
                     productObjectpropCount++;
                 }
 
-                if (thingRoproductreference != null)
+                if (__workflow_thingRoproductreference != null)
                 {
-                    productObject["reference"] = ExpressionConverter.ConvertO(thingRoproductreference);
+                    productObject["reference"] = ExpressionConverter.ConvertO(__workflow_thingRoproductreference);
                     productObjectpropCount++;
                 }
 
@@ -2382,52 +2511,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 var siteObject = new JObject();
                 var siteObjectpropCount = 0;
                 siteObjectpropCount++;
-                siteObject["address"] = ExpressionConverter.ConvertO(thingRositeaddress);
+                siteObject["address"] = ExpressionConverter.ConvertO(__workflow_thingRositeaddress);
                 siteObjectpropCount++;
-                siteObject["city"] = ExpressionConverter.ConvertO(thingRositecity);
-                if (thingRositeid != null)
+                siteObject["city"] = ExpressionConverter.ConvertO(__workflow_thingRositecity);
+                if (__workflow_thingRositeid != null)
                 {
-                    siteObject["id"] = ExpressionConverter.ConvertO(thingRositeid);
+                    siteObject["id"] = ExpressionConverter.ConvertO(__workflow_thingRositeid);
                     siteObjectpropCount++;
                 }
 
-                if (thingRositelatitude != null)
+                if (__workflow_thingRositelatitude != null)
                 {
-                    siteObject["latitude"] = ExpressionConverter.ConvertO(thingRositelatitude);
+                    siteObject["latitude"] = ExpressionConverter.ConvertO(__workflow_thingRositelatitude);
                     siteObjectpropCount++;
                 }
 
-                if (thingRositelongitude != null)
+                if (__workflow_thingRositelongitude != null)
                 {
-                    siteObject["longitude"] = ExpressionConverter.ConvertO(thingRositelongitude);
+                    siteObject["longitude"] = ExpressionConverter.ConvertO(__workflow_thingRositelongitude);
                     siteObjectpropCount++;
                 }
 
                 siteObjectpropCount++;
-                siteObject["name"] = ExpressionConverter.ConvertO(thingRositename);
+                siteObject["name"] = ExpressionConverter.ConvertO(__workflow_thingRositename);
                 siteObjectpropCount++;
-                siteObject["postalCode"] = ExpressionConverter.ConvertO(thingRositepostalCode);
+                siteObject["postalCode"] = ExpressionConverter.ConvertO(__workflow_thingRositepostalCode);
                 if (siteObjectpropCount > 0)
                 {
                     thingRo["site"] = siteObject;
                     thingRopropCount++;
                 }
 
-                if (thingRosourceId != null)
+                if (__workflow_thingRosourceId != null)
                 {
-                    thingRo["sourceId"] = ExpressionConverter.ConvertO(thingRosourceId);
+                    thingRo["sourceId"] = ExpressionConverter.ConvertO(__workflow_thingRosourceId);
                     thingRopropCount++;
                 }
 
-                if (thingRostatus != null)
+                if (__workflow_thingRostatus != null)
                 {
-                    thingRo["status"] = ExpressionConverter.ConvertO(thingRostatus);
+                    thingRo["status"] = ExpressionConverter.ConvertO(__workflow_thingRostatus);
                     thingRopropCount++;
                 }
 
-                if (thingRotags != null)
+                if (__workflow_thingRotags != null)
                 {
-                    thingRo["tags"] = ExpressionConverter.ConvertO(thingRotags);
+                    thingRo["tags"] = ExpressionConverter.ConvertO(__workflow_thingRotags);
                     thingRopropCount++;
                 }
 
@@ -2441,19 +2570,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildGetThingActiveModel))]
-        public IBodyWorkflowAction<ModelRo> GetThingActiveModel([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<ModelRo> GetThingActiveModel(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ModelRo> __BuildGetThingActiveModel(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<ModelRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/active_model", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/active_model", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ModelRo>(callPayload);
@@ -2461,19 +2584,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildGetCustomField))]
-        public IBodyWorkflowAction<PageCustomFieldRo> GetCustomField([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<PageCustomFieldRo> GetCustomField(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PageCustomFieldRo> __BuildGetCustomField(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<PageCustomFieldRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/custom_fields", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/custom_fields", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<PageCustomFieldRo>(callPayload);
@@ -2481,62 +2598,62 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateCustomField))]
-        public IBodyWorkflowAction<CustomFieldRo> CreateCustomField([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> customFieldRoid = null, [WorkflowExpression] Func<string> customFieldRoimageLink = null, [WorkflowExpression] Func<string> customFieldRolabel = null, [WorkflowExpression] Func<string> customFieldRoname = null, [WorkflowExpression] Func<customFieldRotypeInput> customFieldRotype = null, [WorkflowExpression] Func<string> customFieldRovalue = null)
+        public IBodyWorkflowAction<CustomFieldRo> CreateCustomField(Expression<Func<string>> id, Expression<Func<string>> customFieldRoid = null, Expression<Func<string>> customFieldRoimageLink = null, Expression<Func<string>> customFieldRolabel = null, Expression<Func<string>> customFieldRoname = null, Expression<Func<customFieldRotypeInput>> customFieldRotype = null, Expression<Func<string>> customFieldRovalue = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CustomFieldRo> __BuildCreateCustomField(WorkflowExpression<string> id, WorkflowExpression<string> customFieldRoid = null, WorkflowExpression<string> customFieldRoimageLink = null, WorkflowExpression<string> customFieldRolabel = null, WorkflowExpression<string> customFieldRoname = null, WorkflowExpression<customFieldRotypeInput> customFieldRotype = null, WorkflowExpression<string> customFieldRovalue = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(customFieldRoid, nameof(customFieldRoid), required: false);
-            WorkflowExpression.Validate(customFieldRoimageLink, nameof(customFieldRoimageLink), required: false);
-            WorkflowExpression.Validate(customFieldRolabel, nameof(customFieldRolabel), required: false);
-            WorkflowExpression.Validate(customFieldRoname, nameof(customFieldRoname), required: false);
-            WorkflowExpression.Validate(customFieldRotype, nameof(customFieldRotype), required: false);
-            WorkflowExpression.Validate(customFieldRovalue, nameof(customFieldRovalue), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_customFieldRoid = customFieldRoid == null ? null : WorkflowExpression.Compile(customFieldRoid);
+            WorkflowExpression.Validate(__workflow_customFieldRoid, nameof(customFieldRoid), required: false);
+            var __workflow_customFieldRoimageLink = customFieldRoimageLink == null ? null : WorkflowExpression.Compile(customFieldRoimageLink);
+            WorkflowExpression.Validate(__workflow_customFieldRoimageLink, nameof(customFieldRoimageLink), required: false);
+            var __workflow_customFieldRolabel = customFieldRolabel == null ? null : WorkflowExpression.Compile(customFieldRolabel);
+            WorkflowExpression.Validate(__workflow_customFieldRolabel, nameof(customFieldRolabel), required: false);
+            var __workflow_customFieldRoname = customFieldRoname == null ? null : WorkflowExpression.Compile(customFieldRoname);
+            WorkflowExpression.Validate(__workflow_customFieldRoname, nameof(customFieldRoname), required: false);
+            var __workflow_customFieldRotype = customFieldRotype == null ? null : WorkflowExpression.Compile(customFieldRotype);
+            WorkflowExpression.Validate(__workflow_customFieldRotype, nameof(customFieldRotype), required: false);
+            var __workflow_customFieldRovalue = customFieldRovalue == null ? null : WorkflowExpression.Compile(customFieldRovalue);
+            WorkflowExpression.Validate(__workflow_customFieldRovalue, nameof(customFieldRovalue), required: false);
             return new DeferredBodyAction<CustomFieldRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/custom_fields", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/custom_fields", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var customFieldRo = new JObject();
                 var customFieldRopropCount = 0;
-                if (customFieldRoid != null)
+                if (__workflow_customFieldRoid != null)
                 {
-                    customFieldRo["id"] = ExpressionConverter.ConvertO(customFieldRoid);
+                    customFieldRo["id"] = ExpressionConverter.ConvertO(__workflow_customFieldRoid);
                     customFieldRopropCount++;
                 }
 
-                if (customFieldRoimageLink != null)
+                if (__workflow_customFieldRoimageLink != null)
                 {
-                    customFieldRo["imageLink"] = ExpressionConverter.ConvertO(customFieldRoimageLink);
+                    customFieldRo["imageLink"] = ExpressionConverter.ConvertO(__workflow_customFieldRoimageLink);
                     customFieldRopropCount++;
                 }
 
-                if (customFieldRolabel != null)
+                if (__workflow_customFieldRolabel != null)
                 {
-                    customFieldRo["label"] = ExpressionConverter.ConvertO(customFieldRolabel);
+                    customFieldRo["label"] = ExpressionConverter.ConvertO(__workflow_customFieldRolabel);
                     customFieldRopropCount++;
                 }
 
-                if (customFieldRoname != null)
+                if (__workflow_customFieldRoname != null)
                 {
-                    customFieldRo["name"] = ExpressionConverter.ConvertO(customFieldRoname);
+                    customFieldRo["name"] = ExpressionConverter.ConvertO(__workflow_customFieldRoname);
                     customFieldRopropCount++;
                 }
 
-                if (customFieldRotype != null)
+                if (__workflow_customFieldRotype != null)
                 {
-                    customFieldRo["type"] = ExpressionConverter.ConvertO(customFieldRotype);
+                    customFieldRo["type"] = ExpressionConverter.ConvertO(__workflow_customFieldRotype);
                     customFieldRopropCount++;
                 }
 
-                if (customFieldRovalue != null)
+                if (__workflow_customFieldRovalue != null)
                 {
-                    customFieldRo["value"] = ExpressionConverter.ConvertO(customFieldRovalue);
+                    customFieldRo["value"] = ExpressionConverter.ConvertO(__workflow_customFieldRovalue);
                     customFieldRopropCount++;
                 }
 
@@ -2550,62 +2667,62 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateCustomField))]
-        public IBodyWorkflowAction<CustomFieldRo> UpdateCustomField([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> customFieldRoid = null, [WorkflowExpression] Func<string> customFieldRoimageLink = null, [WorkflowExpression] Func<string> customFieldRolabel = null, [WorkflowExpression] Func<string> customFieldRoname = null, [WorkflowExpression] Func<customFieldRotypeInput> customFieldRotype = null, [WorkflowExpression] Func<string> customFieldRovalue = null)
+        public IBodyWorkflowAction<CustomFieldRo> UpdateCustomField(Expression<Func<string>> id, Expression<Func<string>> customFieldRoid = null, Expression<Func<string>> customFieldRoimageLink = null, Expression<Func<string>> customFieldRolabel = null, Expression<Func<string>> customFieldRoname = null, Expression<Func<customFieldRotypeInput>> customFieldRotype = null, Expression<Func<string>> customFieldRovalue = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CustomFieldRo> __BuildUpdateCustomField(WorkflowExpression<string> id, WorkflowExpression<string> customFieldRoid = null, WorkflowExpression<string> customFieldRoimageLink = null, WorkflowExpression<string> customFieldRolabel = null, WorkflowExpression<string> customFieldRoname = null, WorkflowExpression<customFieldRotypeInput> customFieldRotype = null, WorkflowExpression<string> customFieldRovalue = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(customFieldRoid, nameof(customFieldRoid), required: false);
-            WorkflowExpression.Validate(customFieldRoimageLink, nameof(customFieldRoimageLink), required: false);
-            WorkflowExpression.Validate(customFieldRolabel, nameof(customFieldRolabel), required: false);
-            WorkflowExpression.Validate(customFieldRoname, nameof(customFieldRoname), required: false);
-            WorkflowExpression.Validate(customFieldRotype, nameof(customFieldRotype), required: false);
-            WorkflowExpression.Validate(customFieldRovalue, nameof(customFieldRovalue), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_customFieldRoid = customFieldRoid == null ? null : WorkflowExpression.Compile(customFieldRoid);
+            WorkflowExpression.Validate(__workflow_customFieldRoid, nameof(customFieldRoid), required: false);
+            var __workflow_customFieldRoimageLink = customFieldRoimageLink == null ? null : WorkflowExpression.Compile(customFieldRoimageLink);
+            WorkflowExpression.Validate(__workflow_customFieldRoimageLink, nameof(customFieldRoimageLink), required: false);
+            var __workflow_customFieldRolabel = customFieldRolabel == null ? null : WorkflowExpression.Compile(customFieldRolabel);
+            WorkflowExpression.Validate(__workflow_customFieldRolabel, nameof(customFieldRolabel), required: false);
+            var __workflow_customFieldRoname = customFieldRoname == null ? null : WorkflowExpression.Compile(customFieldRoname);
+            WorkflowExpression.Validate(__workflow_customFieldRoname, nameof(customFieldRoname), required: false);
+            var __workflow_customFieldRotype = customFieldRotype == null ? null : WorkflowExpression.Compile(customFieldRotype);
+            WorkflowExpression.Validate(__workflow_customFieldRotype, nameof(customFieldRotype), required: false);
+            var __workflow_customFieldRovalue = customFieldRovalue == null ? null : WorkflowExpression.Compile(customFieldRovalue);
+            WorkflowExpression.Validate(__workflow_customFieldRovalue, nameof(customFieldRovalue), required: false);
             return new DeferredBodyAction<CustomFieldRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/custom_fields", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/custom_fields", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var customFieldRo = new JObject();
                 var customFieldRopropCount = 0;
-                if (customFieldRoid != null)
+                if (__workflow_customFieldRoid != null)
                 {
-                    customFieldRo["id"] = ExpressionConverter.ConvertO(customFieldRoid);
+                    customFieldRo["id"] = ExpressionConverter.ConvertO(__workflow_customFieldRoid);
                     customFieldRopropCount++;
                 }
 
-                if (customFieldRoimageLink != null)
+                if (__workflow_customFieldRoimageLink != null)
                 {
-                    customFieldRo["imageLink"] = ExpressionConverter.ConvertO(customFieldRoimageLink);
+                    customFieldRo["imageLink"] = ExpressionConverter.ConvertO(__workflow_customFieldRoimageLink);
                     customFieldRopropCount++;
                 }
 
-                if (customFieldRolabel != null)
+                if (__workflow_customFieldRolabel != null)
                 {
-                    customFieldRo["label"] = ExpressionConverter.ConvertO(customFieldRolabel);
+                    customFieldRo["label"] = ExpressionConverter.ConvertO(__workflow_customFieldRolabel);
                     customFieldRopropCount++;
                 }
 
-                if (customFieldRoname != null)
+                if (__workflow_customFieldRoname != null)
                 {
-                    customFieldRo["name"] = ExpressionConverter.ConvertO(customFieldRoname);
+                    customFieldRo["name"] = ExpressionConverter.ConvertO(__workflow_customFieldRoname);
                     customFieldRopropCount++;
                 }
 
-                if (customFieldRotype != null)
+                if (__workflow_customFieldRotype != null)
                 {
-                    customFieldRo["type"] = ExpressionConverter.ConvertO(customFieldRotype);
+                    customFieldRo["type"] = ExpressionConverter.ConvertO(__workflow_customFieldRotype);
                     customFieldRopropCount++;
                 }
 
-                if (customFieldRovalue != null)
+                if (__workflow_customFieldRovalue != null)
                 {
-                    customFieldRo["value"] = ExpressionConverter.ConvertO(customFieldRovalue);
+                    customFieldRo["value"] = ExpressionConverter.ConvertO(__workflow_customFieldRovalue);
                     customFieldRopropCount++;
                 }
 
@@ -2619,20 +2736,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteCustomField))]
-        public IBodyWorkflowAction<ResponseEntity> DeleteCustomField([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> fieldId)
+        public IBodyWorkflowAction<ResponseEntity> DeleteCustomField(Expression<Func<string>> id, Expression<Func<string>> fieldId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ResponseEntity> __BuildDeleteCustomField(WorkflowExpression<string> id, WorkflowExpression<string> fieldId)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(fieldId, nameof(fieldId), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_fieldId = fieldId == null ? null : WorkflowExpression.Compile(fieldId);
+            WorkflowExpression.Validate(__workflow_fieldId, nameof(fieldId), required: true);
             return new DeferredBodyAction<ResponseEntity>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/custom_fields/{1}", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(fieldId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/custom_fields/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fieldId, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ResponseEntity>(callPayload);
@@ -2640,20 +2752,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildGetCustomFieldImage))]
-        public IBodyWorkflowAction<ResponseEntity> GetCustomFieldImage([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> fieldId)
+        public IBodyWorkflowAction<ResponseEntity> GetCustomFieldImage(Expression<Func<string>> id, Expression<Func<string>> fieldId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ResponseEntity> __BuildGetCustomFieldImage(WorkflowExpression<string> id, WorkflowExpression<string> fieldId)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(fieldId, nameof(fieldId), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_fieldId = fieldId == null ? null : WorkflowExpression.Compile(fieldId);
+            WorkflowExpression.Validate(__workflow_fieldId, nameof(fieldId), required: true);
             return new DeferredBodyAction<ResponseEntity>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/custom_fields/{1}/image", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(fieldId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/custom_fields/{1}/image", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fieldId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ResponseEntity>(callPayload);
@@ -2661,21 +2768,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildPostCustomFieldImage))]
-        public IBodyWorkflowAction<ResponseEntity> PostCustomFieldImage([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> fieldId, [WorkflowExpression] Func<object> file)
+        public IBodyWorkflowAction<ResponseEntity> PostCustomFieldImage(Expression<Func<string>> id, Expression<Func<string>> fieldId, Expression<Func<object>> file)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ResponseEntity> __BuildPostCustomFieldImage(WorkflowExpression<string> id, WorkflowExpression<string> fieldId, WorkflowExpression<object> file)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(fieldId, nameof(fieldId), required: true);
-            WorkflowExpression.Validate(file, nameof(file), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_fieldId = fieldId == null ? null : WorkflowExpression.Compile(fieldId);
+            WorkflowExpression.Validate(__workflow_fieldId, nameof(fieldId), required: true);
+            var __workflow_file = file == null ? null : WorkflowExpression.Compile(file);
+            WorkflowExpression.Validate(__workflow_file, nameof(file), required: true);
             return new DeferredBodyAction<ResponseEntity>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/custom_fields/{1}/image", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(fieldId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/custom_fields/{1}/image", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fieldId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ResponseEntity>(callPayload);
@@ -2683,19 +2786,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildGetThingImage))]
-        public IBodyWorkflowAction<ResponseEntity> GetThingImage([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<ResponseEntity> GetThingImage(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ResponseEntity> __BuildGetThingImage(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<ResponseEntity>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/image", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/image", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ResponseEntity>(callPayload);
@@ -2703,19 +2800,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildGetLastMeasures))]
-        public IBodyWorkflowAction<MeasureTinyRo[]> GetLastMeasures([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<MeasureTinyRo[]> GetLastMeasures(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MeasureTinyRo[]> __BuildGetLastMeasures(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<MeasureTinyRo[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/last_measurements", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/last_measurements", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<MeasureTinyRo[]>(callPayload);
@@ -2723,19 +2814,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildGetLastMessage))]
-        public IBodyWorkflowAction<MessageTinyRo> GetLastMessage([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<MessageTinyRo> GetLastMessage(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MessageTinyRo> __BuildGetLastMessage(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<MessageTinyRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/last_message", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/last_message", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<MessageTinyRo>(callPayload);
@@ -2743,105 +2828,102 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildGetThingMeasures))]
-        public IBodyWorkflowAction<PageMeasureRo> GetThingMeasures([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bool> detailed = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null)
+        public IBodyWorkflowAction<PageMeasureRo> GetThingMeasures(Expression<Func<string>> id, Expression<Func<bool>> detailed = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PageMeasureRo> __BuildGetThingMeasures(WorkflowExpression<string> id, WorkflowExpression<bool> detailed = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sortValues = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> filter = null, WorkflowExpression<dirInput> dir = null, WorkflowExpression<string> orFilter = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(detailed, nameof(detailed), required: false);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
-            WorkflowExpression.Validate(pageSize, nameof(pageSize), required: false);
-            WorkflowExpression.Validate(sortValues, nameof(sortValues), required: false);
-            WorkflowExpression.Validate(sort, nameof(sort), required: false);
-            WorkflowExpression.Validate(filter, nameof(filter), required: false);
-            WorkflowExpression.Validate(dir, nameof(dir), required: false);
-            WorkflowExpression.Validate(orFilter, nameof(orFilter), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_detailed = detailed == null ? null : WorkflowExpression.Compile(detailed);
+            WorkflowExpression.Validate(__workflow_detailed, nameof(detailed), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
+            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_sortValues = sortValues == null ? null : WorkflowExpression.Compile(sortValues);
+            WorkflowExpression.Validate(__workflow_sortValues, nameof(sortValues), required: false);
+            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
+            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
+            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
+            var __workflow_dir = dir == null ? null : WorkflowExpression.Compile(dir);
+            WorkflowExpression.Validate(__workflow_dir, nameof(dir), required: false);
+            var __workflow_orFilter = orFilter == null ? null : WorkflowExpression.Compile(orFilter);
+            WorkflowExpression.Validate(__workflow_orFilter, nameof(orFilter), required: false);
             return new DeferredBodyAction<PageMeasureRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/measures", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/measures", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["detailed"] = Convert.ToString(false);
-                if (detailed != null)
-                    callPayload.Queries["detailed"] = ExpressionConverter.Convert(detailed);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-                if (pageSize != null)
-                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-                if (sortValues != null)
-                    callPayload.Queries["sortValues"] = ExpressionConverter.Convert(sortValues);
-                if (sort != null)
-                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-                if (filter != null)
-                    callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-                if (dir != null)
-                    callPayload.Queries["dir"] = ExpressionConverter.Convert(dir);
-                if (orFilter != null)
-                    callPayload.Queries["orFilter"] = ExpressionConverter.Convert(orFilter);
+                if (__workflow_detailed != null)
+                    callPayload.Queries["detailed"] = ExpressionConverter.Convert(__workflow_detailed);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_pageSize != null)
+                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
+                if (__workflow_sortValues != null)
+                    callPayload.Queries["sortValues"] = ExpressionConverter.Convert(__workflow_sortValues);
+                if (__workflow_sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
+                if (__workflow_filter != null)
+                    callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
+                if (__workflow_dir != null)
+                    callPayload.Queries["dir"] = ExpressionConverter.Convert(__workflow_dir);
+                if (__workflow_orFilter != null)
+                    callPayload.Queries["orFilter"] = ExpressionConverter.Convert(__workflow_orFilter);
                 return new ApiConnectionAction<PageMeasureRo>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildGetThingMessages))]
-        public IBodyWorkflowAction<PageMessageRo> GetThingMessages([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null)
+        public IBodyWorkflowAction<PageMessageRo> GetThingMessages(Expression<Func<string>> id, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PageMessageRo> __BuildGetThingMessages(WorkflowExpression<string> id, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sortValues = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> filter = null, WorkflowExpression<dirInput> dir = null, WorkflowExpression<string> orFilter = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
-            WorkflowExpression.Validate(pageSize, nameof(pageSize), required: false);
-            WorkflowExpression.Validate(sortValues, nameof(sortValues), required: false);
-            WorkflowExpression.Validate(sort, nameof(sort), required: false);
-            WorkflowExpression.Validate(filter, nameof(filter), required: false);
-            WorkflowExpression.Validate(dir, nameof(dir), required: false);
-            WorkflowExpression.Validate(orFilter, nameof(orFilter), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
+            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_sortValues = sortValues == null ? null : WorkflowExpression.Compile(sortValues);
+            WorkflowExpression.Validate(__workflow_sortValues, nameof(sortValues), required: false);
+            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
+            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
+            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
+            var __workflow_dir = dir == null ? null : WorkflowExpression.Compile(dir);
+            WorkflowExpression.Validate(__workflow_dir, nameof(dir), required: false);
+            var __workflow_orFilter = orFilter == null ? null : WorkflowExpression.Compile(orFilter);
+            WorkflowExpression.Validate(__workflow_orFilter, nameof(orFilter), required: false);
             return new DeferredBodyAction<PageMessageRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-                if (pageSize != null)
-                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-                if (sortValues != null)
-                    callPayload.Queries["sortValues"] = ExpressionConverter.Convert(sortValues);
-                if (sort != null)
-                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-                if (filter != null)
-                    callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-                if (dir != null)
-                    callPayload.Queries["dir"] = ExpressionConverter.Convert(dir);
-                if (orFilter != null)
-                    callPayload.Queries["orFilter"] = ExpressionConverter.Convert(orFilter);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_pageSize != null)
+                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
+                if (__workflow_sortValues != null)
+                    callPayload.Queries["sortValues"] = ExpressionConverter.Convert(__workflow_sortValues);
+                if (__workflow_sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
+                if (__workflow_filter != null)
+                    callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
+                if (__workflow_dir != null)
+                    callPayload.Queries["dir"] = ExpressionConverter.Convert(__workflow_dir);
+                if (__workflow_orFilter != null)
+                    callPayload.Queries["orFilter"] = ExpressionConverter.Convert(__workflow_orFilter);
                 return new ApiConnectionAction<PageMessageRo>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteThingMessages))]
-        public IWorkflowAction DeleteThingMessages([WorkflowExpression] Func<string> id)
+        public IWorkflowAction DeleteThingMessages(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDeleteThingMessages(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -2849,214 +2931,284 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateThingMessages))]
-        public IBodyWorkflowAction<MessageRo> CreateThingMessages([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> messageRobody, [WorkflowExpression] Func<string> messageRocreationDate, [WorkflowExpression] Func<string> messageRoerrorMessage, [WorkflowExpression] Func<double> messageRolatitude, [WorkflowExpression] Func<double> messageRolongitude, [WorkflowExpression] Func<string> messageRometadata, [WorkflowExpression] Func<int> messageRonumber, [WorkflowExpression] Func<messageRoprocessedInput> messageRoprocessed, [WorkflowExpression] Func<string> messageRothingname, [WorkflowExpression] Func<string> messageRotimestamp, [WorkflowExpression] Func<string> messageRotopic, [WorkflowExpression] Func<string> messageRoid = null, [WorkflowExpression] Func<bool> messageRolinkabsolute = null, [WorkflowExpression] Func<string> messageRolinkauthority = null, [WorkflowExpression] Func<string> messageRolinkfragment = null, [WorkflowExpression] Func<string> messageRolinkhost = null, [WorkflowExpression] Func<bool> messageRolinkopaque = null, [WorkflowExpression] Func<string> messageRolinkpath = null, [WorkflowExpression] Func<int> messageRolinkport = null, [WorkflowExpression] Func<string> messageRolinkquery = null, [WorkflowExpression] Func<string> messageRolinkrawAuthority = null, [WorkflowExpression] Func<string> messageRolinkrawFragment = null, [WorkflowExpression] Func<string> messageRolinkrawPath = null, [WorkflowExpression] Func<string> messageRolinkrawQuery = null, [WorkflowExpression] Func<string> messageRolinkrawSchemeSpecificPart = null, [WorkflowExpression] Func<string> messageRolinkrawUserInfo = null, [WorkflowExpression] Func<string> messageRolinkscheme = null, [WorkflowExpression] Func<string> messageRolinkschemeSpecificPart = null, [WorkflowExpression] Func<string> messageRolinkuserInfo = null, [WorkflowExpression] Func<bool> messageRomeasurementsarray = null, [WorkflowExpression] Func<bool> messageRomeasurementsbigDecimal = null, [WorkflowExpression] Func<bool> messageRomeasurementsbigInteger = null, [WorkflowExpression] Func<bool> messageRomeasurementsbinary = null, [WorkflowExpression] Func<bool> messageRomeasurementsboolean = null, [WorkflowExpression] Func<bool> messageRomeasurementscontainerNode = null, [WorkflowExpression] Func<bool> messageRomeasurementsdouble = null, [WorkflowExpression] Func<bool> messageRomeasurementsfloat = null, [WorkflowExpression] Func<bool> messageRomeasurementsfloatingPointNumber = null, [WorkflowExpression] Func<bool> messageRomeasurementsint = null, [WorkflowExpression] Func<bool> messageRomeasurementsintegralNumber = null, [WorkflowExpression] Func<bool> messageRomeasurementsLong = null, [WorkflowExpression] Func<bool> messageRomeasurementsmissingNode = null, [WorkflowExpression] Func<messageRomeasurementsnodeTypeInput> messageRomeasurementsnodeType = null, [WorkflowExpression] Func<bool> messageRomeasurementsnull = null, [WorkflowExpression] Func<bool> messageRomeasurementsnumber = null, [WorkflowExpression] Func<bool> messageRomeasurementsObject = null, [WorkflowExpression] Func<bool> messageRomeasurementspojo = null, [WorkflowExpression] Func<bool> messageRomeasurementsShort = null, [WorkflowExpression] Func<bool> messageRomeasurementstextual = null, [WorkflowExpression] Func<bool> messageRomeasurementsvalueNode = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsarray = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsbigDecimal = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsbigInteger = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsbinary = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsboolean = null, [WorkflowExpression] Func<bool> messageRorawMeasurementscontainerNode = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsdouble = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsfloat = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsfloatingPointNumber = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsint = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsintegralNumber = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsLong = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsmissingNode = null, [WorkflowExpression] Func<messageRorawMeasurementsnodeTypeInput> messageRorawMeasurementsnodeType = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsnull = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsnumber = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsObject = null, [WorkflowExpression] Func<bool> messageRorawMeasurementspojo = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsShort = null, [WorkflowExpression] Func<bool> messageRorawMeasurementstextual = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsvalueNode = null, [WorkflowExpression] Func<string> messageRothingdisplayName = null, [WorkflowExpression] Func<string> messageRothingfixedName = null, [WorkflowExpression] Func<string> messageRothingid = null, [WorkflowExpression] Func<int> messageRothingnbAlerts = null, [WorkflowExpression] Func<ThingTagRo[]> messageRothingtags = null)
+        public IBodyWorkflowAction<MessageRo> CreateThingMessages(Expression<Func<string>> id, Expression<Func<string>> messageRobody, Expression<Func<string>> messageRocreationDate, Expression<Func<string>> messageRoerrorMessage, Expression<Func<double>> messageRolatitude, Expression<Func<double>> messageRolongitude, Expression<Func<string>> messageRometadata, Expression<Func<int>> messageRonumber, Expression<Func<messageRoprocessedInput>> messageRoprocessed, Expression<Func<string>> messageRothingname, Expression<Func<string>> messageRotimestamp, Expression<Func<string>> messageRotopic, Expression<Func<string>> messageRoid = null, Expression<Func<bool>> messageRolinkabsolute = null, Expression<Func<string>> messageRolinkauthority = null, Expression<Func<string>> messageRolinkfragment = null, Expression<Func<string>> messageRolinkhost = null, Expression<Func<bool>> messageRolinkopaque = null, Expression<Func<string>> messageRolinkpath = null, Expression<Func<int>> messageRolinkport = null, Expression<Func<string>> messageRolinkquery = null, Expression<Func<string>> messageRolinkrawAuthority = null, Expression<Func<string>> messageRolinkrawFragment = null, Expression<Func<string>> messageRolinkrawPath = null, Expression<Func<string>> messageRolinkrawQuery = null, Expression<Func<string>> messageRolinkrawSchemeSpecificPart = null, Expression<Func<string>> messageRolinkrawUserInfo = null, Expression<Func<string>> messageRolinkscheme = null, Expression<Func<string>> messageRolinkschemeSpecificPart = null, Expression<Func<string>> messageRolinkuserInfo = null, Expression<Func<bool>> messageRomeasurementsarray = null, Expression<Func<bool>> messageRomeasurementsbigDecimal = null, Expression<Func<bool>> messageRomeasurementsbigInteger = null, Expression<Func<bool>> messageRomeasurementsbinary = null, Expression<Func<bool>> messageRomeasurementsboolean = null, Expression<Func<bool>> messageRomeasurementscontainerNode = null, Expression<Func<bool>> messageRomeasurementsdouble = null, Expression<Func<bool>> messageRomeasurementsfloat = null, Expression<Func<bool>> messageRomeasurementsfloatingPointNumber = null, Expression<Func<bool>> messageRomeasurementsint = null, Expression<Func<bool>> messageRomeasurementsintegralNumber = null, Expression<Func<bool>> messageRomeasurementsLong = null, Expression<Func<bool>> messageRomeasurementsmissingNode = null, Expression<Func<messageRomeasurementsnodeTypeInput>> messageRomeasurementsnodeType = null, Expression<Func<bool>> messageRomeasurementsnull = null, Expression<Func<bool>> messageRomeasurementsnumber = null, Expression<Func<bool>> messageRomeasurementsObject = null, Expression<Func<bool>> messageRomeasurementspojo = null, Expression<Func<bool>> messageRomeasurementsShort = null, Expression<Func<bool>> messageRomeasurementstextual = null, Expression<Func<bool>> messageRomeasurementsvalueNode = null, Expression<Func<bool>> messageRorawMeasurementsarray = null, Expression<Func<bool>> messageRorawMeasurementsbigDecimal = null, Expression<Func<bool>> messageRorawMeasurementsbigInteger = null, Expression<Func<bool>> messageRorawMeasurementsbinary = null, Expression<Func<bool>> messageRorawMeasurementsboolean = null, Expression<Func<bool>> messageRorawMeasurementscontainerNode = null, Expression<Func<bool>> messageRorawMeasurementsdouble = null, Expression<Func<bool>> messageRorawMeasurementsfloat = null, Expression<Func<bool>> messageRorawMeasurementsfloatingPointNumber = null, Expression<Func<bool>> messageRorawMeasurementsint = null, Expression<Func<bool>> messageRorawMeasurementsintegralNumber = null, Expression<Func<bool>> messageRorawMeasurementsLong = null, Expression<Func<bool>> messageRorawMeasurementsmissingNode = null, Expression<Func<messageRorawMeasurementsnodeTypeInput>> messageRorawMeasurementsnodeType = null, Expression<Func<bool>> messageRorawMeasurementsnull = null, Expression<Func<bool>> messageRorawMeasurementsnumber = null, Expression<Func<bool>> messageRorawMeasurementsObject = null, Expression<Func<bool>> messageRorawMeasurementspojo = null, Expression<Func<bool>> messageRorawMeasurementsShort = null, Expression<Func<bool>> messageRorawMeasurementstextual = null, Expression<Func<bool>> messageRorawMeasurementsvalueNode = null, Expression<Func<string>> messageRothingdisplayName = null, Expression<Func<string>> messageRothingfixedName = null, Expression<Func<string>> messageRothingid = null, Expression<Func<int>> messageRothingnbAlerts = null, Expression<Func<ThingTagRo[]>> messageRothingtags = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MessageRo> __BuildCreateThingMessages(WorkflowExpression<string> id, WorkflowExpression<string> messageRobody, WorkflowExpression<string> messageRocreationDate, WorkflowExpression<string> messageRoerrorMessage, WorkflowExpression<double> messageRolatitude, WorkflowExpression<double> messageRolongitude, WorkflowExpression<string> messageRometadata, WorkflowExpression<int> messageRonumber, WorkflowExpression<messageRoprocessedInput> messageRoprocessed, WorkflowExpression<string> messageRothingname, WorkflowExpression<string> messageRotimestamp, WorkflowExpression<string> messageRotopic, WorkflowExpression<string> messageRoid = null, WorkflowExpression<bool> messageRolinkabsolute = null, WorkflowExpression<string> messageRolinkauthority = null, WorkflowExpression<string> messageRolinkfragment = null, WorkflowExpression<string> messageRolinkhost = null, WorkflowExpression<bool> messageRolinkopaque = null, WorkflowExpression<string> messageRolinkpath = null, WorkflowExpression<int> messageRolinkport = null, WorkflowExpression<string> messageRolinkquery = null, WorkflowExpression<string> messageRolinkrawAuthority = null, WorkflowExpression<string> messageRolinkrawFragment = null, WorkflowExpression<string> messageRolinkrawPath = null, WorkflowExpression<string> messageRolinkrawQuery = null, WorkflowExpression<string> messageRolinkrawSchemeSpecificPart = null, WorkflowExpression<string> messageRolinkrawUserInfo = null, WorkflowExpression<string> messageRolinkscheme = null, WorkflowExpression<string> messageRolinkschemeSpecificPart = null, WorkflowExpression<string> messageRolinkuserInfo = null, WorkflowExpression<bool> messageRomeasurementsarray = null, WorkflowExpression<bool> messageRomeasurementsbigDecimal = null, WorkflowExpression<bool> messageRomeasurementsbigInteger = null, WorkflowExpression<bool> messageRomeasurementsbinary = null, WorkflowExpression<bool> messageRomeasurementsboolean = null, WorkflowExpression<bool> messageRomeasurementscontainerNode = null, WorkflowExpression<bool> messageRomeasurementsdouble = null, WorkflowExpression<bool> messageRomeasurementsfloat = null, WorkflowExpression<bool> messageRomeasurementsfloatingPointNumber = null, WorkflowExpression<bool> messageRomeasurementsint = null, WorkflowExpression<bool> messageRomeasurementsintegralNumber = null, WorkflowExpression<bool> messageRomeasurementsLong = null, WorkflowExpression<bool> messageRomeasurementsmissingNode = null, WorkflowExpression<messageRomeasurementsnodeTypeInput> messageRomeasurementsnodeType = null, WorkflowExpression<bool> messageRomeasurementsnull = null, WorkflowExpression<bool> messageRomeasurementsnumber = null, WorkflowExpression<bool> messageRomeasurementsObject = null, WorkflowExpression<bool> messageRomeasurementspojo = null, WorkflowExpression<bool> messageRomeasurementsShort = null, WorkflowExpression<bool> messageRomeasurementstextual = null, WorkflowExpression<bool> messageRomeasurementsvalueNode = null, WorkflowExpression<bool> messageRorawMeasurementsarray = null, WorkflowExpression<bool> messageRorawMeasurementsbigDecimal = null, WorkflowExpression<bool> messageRorawMeasurementsbigInteger = null, WorkflowExpression<bool> messageRorawMeasurementsbinary = null, WorkflowExpression<bool> messageRorawMeasurementsboolean = null, WorkflowExpression<bool> messageRorawMeasurementscontainerNode = null, WorkflowExpression<bool> messageRorawMeasurementsdouble = null, WorkflowExpression<bool> messageRorawMeasurementsfloat = null, WorkflowExpression<bool> messageRorawMeasurementsfloatingPointNumber = null, WorkflowExpression<bool> messageRorawMeasurementsint = null, WorkflowExpression<bool> messageRorawMeasurementsintegralNumber = null, WorkflowExpression<bool> messageRorawMeasurementsLong = null, WorkflowExpression<bool> messageRorawMeasurementsmissingNode = null, WorkflowExpression<messageRorawMeasurementsnodeTypeInput> messageRorawMeasurementsnodeType = null, WorkflowExpression<bool> messageRorawMeasurementsnull = null, WorkflowExpression<bool> messageRorawMeasurementsnumber = null, WorkflowExpression<bool> messageRorawMeasurementsObject = null, WorkflowExpression<bool> messageRorawMeasurementspojo = null, WorkflowExpression<bool> messageRorawMeasurementsShort = null, WorkflowExpression<bool> messageRorawMeasurementstextual = null, WorkflowExpression<bool> messageRorawMeasurementsvalueNode = null, WorkflowExpression<string> messageRothingdisplayName = null, WorkflowExpression<string> messageRothingfixedName = null, WorkflowExpression<string> messageRothingid = null, WorkflowExpression<int> messageRothingnbAlerts = null, WorkflowExpression<ThingTagRo[]> messageRothingtags = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(messageRobody, nameof(messageRobody), required: true);
-            WorkflowExpression.Validate(messageRocreationDate, nameof(messageRocreationDate), required: true);
-            WorkflowExpression.Validate(messageRoerrorMessage, nameof(messageRoerrorMessage), required: true);
-            WorkflowExpression.Validate(messageRolatitude, nameof(messageRolatitude), required: true);
-            WorkflowExpression.Validate(messageRolongitude, nameof(messageRolongitude), required: true);
-            WorkflowExpression.Validate(messageRometadata, nameof(messageRometadata), required: true);
-            WorkflowExpression.Validate(messageRonumber, nameof(messageRonumber), required: true);
-            WorkflowExpression.Validate(messageRoprocessed, nameof(messageRoprocessed), required: true);
-            WorkflowExpression.Validate(messageRothingname, nameof(messageRothingname), required: true);
-            WorkflowExpression.Validate(messageRotimestamp, nameof(messageRotimestamp), required: true);
-            WorkflowExpression.Validate(messageRotopic, nameof(messageRotopic), required: true);
-            WorkflowExpression.Validate(messageRoid, nameof(messageRoid), required: false);
-            WorkflowExpression.Validate(messageRolinkabsolute, nameof(messageRolinkabsolute), required: false);
-            WorkflowExpression.Validate(messageRolinkauthority, nameof(messageRolinkauthority), required: false);
-            WorkflowExpression.Validate(messageRolinkfragment, nameof(messageRolinkfragment), required: false);
-            WorkflowExpression.Validate(messageRolinkhost, nameof(messageRolinkhost), required: false);
-            WorkflowExpression.Validate(messageRolinkopaque, nameof(messageRolinkopaque), required: false);
-            WorkflowExpression.Validate(messageRolinkpath, nameof(messageRolinkpath), required: false);
-            WorkflowExpression.Validate(messageRolinkport, nameof(messageRolinkport), required: false);
-            WorkflowExpression.Validate(messageRolinkquery, nameof(messageRolinkquery), required: false);
-            WorkflowExpression.Validate(messageRolinkrawAuthority, nameof(messageRolinkrawAuthority), required: false);
-            WorkflowExpression.Validate(messageRolinkrawFragment, nameof(messageRolinkrawFragment), required: false);
-            WorkflowExpression.Validate(messageRolinkrawPath, nameof(messageRolinkrawPath), required: false);
-            WorkflowExpression.Validate(messageRolinkrawQuery, nameof(messageRolinkrawQuery), required: false);
-            WorkflowExpression.Validate(messageRolinkrawSchemeSpecificPart, nameof(messageRolinkrawSchemeSpecificPart), required: false);
-            WorkflowExpression.Validate(messageRolinkrawUserInfo, nameof(messageRolinkrawUserInfo), required: false);
-            WorkflowExpression.Validate(messageRolinkscheme, nameof(messageRolinkscheme), required: false);
-            WorkflowExpression.Validate(messageRolinkschemeSpecificPart, nameof(messageRolinkschemeSpecificPart), required: false);
-            WorkflowExpression.Validate(messageRolinkuserInfo, nameof(messageRolinkuserInfo), required: false);
-            WorkflowExpression.Validate(messageRomeasurementsarray, nameof(messageRomeasurementsarray), required: false);
-            WorkflowExpression.Validate(messageRomeasurementsbigDecimal, nameof(messageRomeasurementsbigDecimal), required: false);
-            WorkflowExpression.Validate(messageRomeasurementsbigInteger, nameof(messageRomeasurementsbigInteger), required: false);
-            WorkflowExpression.Validate(messageRomeasurementsbinary, nameof(messageRomeasurementsbinary), required: false);
-            WorkflowExpression.Validate(messageRomeasurementsboolean, nameof(messageRomeasurementsboolean), required: false);
-            WorkflowExpression.Validate(messageRomeasurementscontainerNode, nameof(messageRomeasurementscontainerNode), required: false);
-            WorkflowExpression.Validate(messageRomeasurementsdouble, nameof(messageRomeasurementsdouble), required: false);
-            WorkflowExpression.Validate(messageRomeasurementsfloat, nameof(messageRomeasurementsfloat), required: false);
-            WorkflowExpression.Validate(messageRomeasurementsfloatingPointNumber, nameof(messageRomeasurementsfloatingPointNumber), required: false);
-            WorkflowExpression.Validate(messageRomeasurementsint, nameof(messageRomeasurementsint), required: false);
-            WorkflowExpression.Validate(messageRomeasurementsintegralNumber, nameof(messageRomeasurementsintegralNumber), required: false);
-            WorkflowExpression.Validate(messageRomeasurementsLong, nameof(messageRomeasurementsLong), required: false);
-            WorkflowExpression.Validate(messageRomeasurementsmissingNode, nameof(messageRomeasurementsmissingNode), required: false);
-            WorkflowExpression.Validate(messageRomeasurementsnodeType, nameof(messageRomeasurementsnodeType), required: false);
-            WorkflowExpression.Validate(messageRomeasurementsnull, nameof(messageRomeasurementsnull), required: false);
-            WorkflowExpression.Validate(messageRomeasurementsnumber, nameof(messageRomeasurementsnumber), required: false);
-            WorkflowExpression.Validate(messageRomeasurementsObject, nameof(messageRomeasurementsObject), required: false);
-            WorkflowExpression.Validate(messageRomeasurementspojo, nameof(messageRomeasurementspojo), required: false);
-            WorkflowExpression.Validate(messageRomeasurementsShort, nameof(messageRomeasurementsShort), required: false);
-            WorkflowExpression.Validate(messageRomeasurementstextual, nameof(messageRomeasurementstextual), required: false);
-            WorkflowExpression.Validate(messageRomeasurementsvalueNode, nameof(messageRomeasurementsvalueNode), required: false);
-            WorkflowExpression.Validate(messageRorawMeasurementsarray, nameof(messageRorawMeasurementsarray), required: false);
-            WorkflowExpression.Validate(messageRorawMeasurementsbigDecimal, nameof(messageRorawMeasurementsbigDecimal), required: false);
-            WorkflowExpression.Validate(messageRorawMeasurementsbigInteger, nameof(messageRorawMeasurementsbigInteger), required: false);
-            WorkflowExpression.Validate(messageRorawMeasurementsbinary, nameof(messageRorawMeasurementsbinary), required: false);
-            WorkflowExpression.Validate(messageRorawMeasurementsboolean, nameof(messageRorawMeasurementsboolean), required: false);
-            WorkflowExpression.Validate(messageRorawMeasurementscontainerNode, nameof(messageRorawMeasurementscontainerNode), required: false);
-            WorkflowExpression.Validate(messageRorawMeasurementsdouble, nameof(messageRorawMeasurementsdouble), required: false);
-            WorkflowExpression.Validate(messageRorawMeasurementsfloat, nameof(messageRorawMeasurementsfloat), required: false);
-            WorkflowExpression.Validate(messageRorawMeasurementsfloatingPointNumber, nameof(messageRorawMeasurementsfloatingPointNumber), required: false);
-            WorkflowExpression.Validate(messageRorawMeasurementsint, nameof(messageRorawMeasurementsint), required: false);
-            WorkflowExpression.Validate(messageRorawMeasurementsintegralNumber, nameof(messageRorawMeasurementsintegralNumber), required: false);
-            WorkflowExpression.Validate(messageRorawMeasurementsLong, nameof(messageRorawMeasurementsLong), required: false);
-            WorkflowExpression.Validate(messageRorawMeasurementsmissingNode, nameof(messageRorawMeasurementsmissingNode), required: false);
-            WorkflowExpression.Validate(messageRorawMeasurementsnodeType, nameof(messageRorawMeasurementsnodeType), required: false);
-            WorkflowExpression.Validate(messageRorawMeasurementsnull, nameof(messageRorawMeasurementsnull), required: false);
-            WorkflowExpression.Validate(messageRorawMeasurementsnumber, nameof(messageRorawMeasurementsnumber), required: false);
-            WorkflowExpression.Validate(messageRorawMeasurementsObject, nameof(messageRorawMeasurementsObject), required: false);
-            WorkflowExpression.Validate(messageRorawMeasurementspojo, nameof(messageRorawMeasurementspojo), required: false);
-            WorkflowExpression.Validate(messageRorawMeasurementsShort, nameof(messageRorawMeasurementsShort), required: false);
-            WorkflowExpression.Validate(messageRorawMeasurementstextual, nameof(messageRorawMeasurementstextual), required: false);
-            WorkflowExpression.Validate(messageRorawMeasurementsvalueNode, nameof(messageRorawMeasurementsvalueNode), required: false);
-            WorkflowExpression.Validate(messageRothingdisplayName, nameof(messageRothingdisplayName), required: false);
-            WorkflowExpression.Validate(messageRothingfixedName, nameof(messageRothingfixedName), required: false);
-            WorkflowExpression.Validate(messageRothingid, nameof(messageRothingid), required: false);
-            WorkflowExpression.Validate(messageRothingnbAlerts, nameof(messageRothingnbAlerts), required: false);
-            WorkflowExpression.Validate(messageRothingtags, nameof(messageRothingtags), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_messageRobody = messageRobody == null ? null : WorkflowExpression.Compile(messageRobody);
+            WorkflowExpression.Validate(__workflow_messageRobody, nameof(messageRobody), required: true);
+            var __workflow_messageRocreationDate = messageRocreationDate == null ? null : WorkflowExpression.Compile(messageRocreationDate);
+            WorkflowExpression.Validate(__workflow_messageRocreationDate, nameof(messageRocreationDate), required: true);
+            var __workflow_messageRoerrorMessage = messageRoerrorMessage == null ? null : WorkflowExpression.Compile(messageRoerrorMessage);
+            WorkflowExpression.Validate(__workflow_messageRoerrorMessage, nameof(messageRoerrorMessage), required: true);
+            var __workflow_messageRolatitude = messageRolatitude == null ? null : WorkflowExpression.Compile(messageRolatitude);
+            WorkflowExpression.Validate(__workflow_messageRolatitude, nameof(messageRolatitude), required: true);
+            var __workflow_messageRolongitude = messageRolongitude == null ? null : WorkflowExpression.Compile(messageRolongitude);
+            WorkflowExpression.Validate(__workflow_messageRolongitude, nameof(messageRolongitude), required: true);
+            var __workflow_messageRometadata = messageRometadata == null ? null : WorkflowExpression.Compile(messageRometadata);
+            WorkflowExpression.Validate(__workflow_messageRometadata, nameof(messageRometadata), required: true);
+            var __workflow_messageRonumber = messageRonumber == null ? null : WorkflowExpression.Compile(messageRonumber);
+            WorkflowExpression.Validate(__workflow_messageRonumber, nameof(messageRonumber), required: true);
+            var __workflow_messageRoprocessed = messageRoprocessed == null ? null : WorkflowExpression.Compile(messageRoprocessed);
+            WorkflowExpression.Validate(__workflow_messageRoprocessed, nameof(messageRoprocessed), required: true);
+            var __workflow_messageRothingname = messageRothingname == null ? null : WorkflowExpression.Compile(messageRothingname);
+            WorkflowExpression.Validate(__workflow_messageRothingname, nameof(messageRothingname), required: true);
+            var __workflow_messageRotimestamp = messageRotimestamp == null ? null : WorkflowExpression.Compile(messageRotimestamp);
+            WorkflowExpression.Validate(__workflow_messageRotimestamp, nameof(messageRotimestamp), required: true);
+            var __workflow_messageRotopic = messageRotopic == null ? null : WorkflowExpression.Compile(messageRotopic);
+            WorkflowExpression.Validate(__workflow_messageRotopic, nameof(messageRotopic), required: true);
+            var __workflow_messageRoid = messageRoid == null ? null : WorkflowExpression.Compile(messageRoid);
+            WorkflowExpression.Validate(__workflow_messageRoid, nameof(messageRoid), required: false);
+            var __workflow_messageRolinkabsolute = messageRolinkabsolute == null ? null : WorkflowExpression.Compile(messageRolinkabsolute);
+            WorkflowExpression.Validate(__workflow_messageRolinkabsolute, nameof(messageRolinkabsolute), required: false);
+            var __workflow_messageRolinkauthority = messageRolinkauthority == null ? null : WorkflowExpression.Compile(messageRolinkauthority);
+            WorkflowExpression.Validate(__workflow_messageRolinkauthority, nameof(messageRolinkauthority), required: false);
+            var __workflow_messageRolinkfragment = messageRolinkfragment == null ? null : WorkflowExpression.Compile(messageRolinkfragment);
+            WorkflowExpression.Validate(__workflow_messageRolinkfragment, nameof(messageRolinkfragment), required: false);
+            var __workflow_messageRolinkhost = messageRolinkhost == null ? null : WorkflowExpression.Compile(messageRolinkhost);
+            WorkflowExpression.Validate(__workflow_messageRolinkhost, nameof(messageRolinkhost), required: false);
+            var __workflow_messageRolinkopaque = messageRolinkopaque == null ? null : WorkflowExpression.Compile(messageRolinkopaque);
+            WorkflowExpression.Validate(__workflow_messageRolinkopaque, nameof(messageRolinkopaque), required: false);
+            var __workflow_messageRolinkpath = messageRolinkpath == null ? null : WorkflowExpression.Compile(messageRolinkpath);
+            WorkflowExpression.Validate(__workflow_messageRolinkpath, nameof(messageRolinkpath), required: false);
+            var __workflow_messageRolinkport = messageRolinkport == null ? null : WorkflowExpression.Compile(messageRolinkport);
+            WorkflowExpression.Validate(__workflow_messageRolinkport, nameof(messageRolinkport), required: false);
+            var __workflow_messageRolinkquery = messageRolinkquery == null ? null : WorkflowExpression.Compile(messageRolinkquery);
+            WorkflowExpression.Validate(__workflow_messageRolinkquery, nameof(messageRolinkquery), required: false);
+            var __workflow_messageRolinkrawAuthority = messageRolinkrawAuthority == null ? null : WorkflowExpression.Compile(messageRolinkrawAuthority);
+            WorkflowExpression.Validate(__workflow_messageRolinkrawAuthority, nameof(messageRolinkrawAuthority), required: false);
+            var __workflow_messageRolinkrawFragment = messageRolinkrawFragment == null ? null : WorkflowExpression.Compile(messageRolinkrawFragment);
+            WorkflowExpression.Validate(__workflow_messageRolinkrawFragment, nameof(messageRolinkrawFragment), required: false);
+            var __workflow_messageRolinkrawPath = messageRolinkrawPath == null ? null : WorkflowExpression.Compile(messageRolinkrawPath);
+            WorkflowExpression.Validate(__workflow_messageRolinkrawPath, nameof(messageRolinkrawPath), required: false);
+            var __workflow_messageRolinkrawQuery = messageRolinkrawQuery == null ? null : WorkflowExpression.Compile(messageRolinkrawQuery);
+            WorkflowExpression.Validate(__workflow_messageRolinkrawQuery, nameof(messageRolinkrawQuery), required: false);
+            var __workflow_messageRolinkrawSchemeSpecificPart = messageRolinkrawSchemeSpecificPart == null ? null : WorkflowExpression.Compile(messageRolinkrawSchemeSpecificPart);
+            WorkflowExpression.Validate(__workflow_messageRolinkrawSchemeSpecificPart, nameof(messageRolinkrawSchemeSpecificPart), required: false);
+            var __workflow_messageRolinkrawUserInfo = messageRolinkrawUserInfo == null ? null : WorkflowExpression.Compile(messageRolinkrawUserInfo);
+            WorkflowExpression.Validate(__workflow_messageRolinkrawUserInfo, nameof(messageRolinkrawUserInfo), required: false);
+            var __workflow_messageRolinkscheme = messageRolinkscheme == null ? null : WorkflowExpression.Compile(messageRolinkscheme);
+            WorkflowExpression.Validate(__workflow_messageRolinkscheme, nameof(messageRolinkscheme), required: false);
+            var __workflow_messageRolinkschemeSpecificPart = messageRolinkschemeSpecificPart == null ? null : WorkflowExpression.Compile(messageRolinkschemeSpecificPart);
+            WorkflowExpression.Validate(__workflow_messageRolinkschemeSpecificPart, nameof(messageRolinkschemeSpecificPart), required: false);
+            var __workflow_messageRolinkuserInfo = messageRolinkuserInfo == null ? null : WorkflowExpression.Compile(messageRolinkuserInfo);
+            WorkflowExpression.Validate(__workflow_messageRolinkuserInfo, nameof(messageRolinkuserInfo), required: false);
+            var __workflow_messageRomeasurementsarray = messageRomeasurementsarray == null ? null : WorkflowExpression.Compile(messageRomeasurementsarray);
+            WorkflowExpression.Validate(__workflow_messageRomeasurementsarray, nameof(messageRomeasurementsarray), required: false);
+            var __workflow_messageRomeasurementsbigDecimal = messageRomeasurementsbigDecimal == null ? null : WorkflowExpression.Compile(messageRomeasurementsbigDecimal);
+            WorkflowExpression.Validate(__workflow_messageRomeasurementsbigDecimal, nameof(messageRomeasurementsbigDecimal), required: false);
+            var __workflow_messageRomeasurementsbigInteger = messageRomeasurementsbigInteger == null ? null : WorkflowExpression.Compile(messageRomeasurementsbigInteger);
+            WorkflowExpression.Validate(__workflow_messageRomeasurementsbigInteger, nameof(messageRomeasurementsbigInteger), required: false);
+            var __workflow_messageRomeasurementsbinary = messageRomeasurementsbinary == null ? null : WorkflowExpression.Compile(messageRomeasurementsbinary);
+            WorkflowExpression.Validate(__workflow_messageRomeasurementsbinary, nameof(messageRomeasurementsbinary), required: false);
+            var __workflow_messageRomeasurementsboolean = messageRomeasurementsboolean == null ? null : WorkflowExpression.Compile(messageRomeasurementsboolean);
+            WorkflowExpression.Validate(__workflow_messageRomeasurementsboolean, nameof(messageRomeasurementsboolean), required: false);
+            var __workflow_messageRomeasurementscontainerNode = messageRomeasurementscontainerNode == null ? null : WorkflowExpression.Compile(messageRomeasurementscontainerNode);
+            WorkflowExpression.Validate(__workflow_messageRomeasurementscontainerNode, nameof(messageRomeasurementscontainerNode), required: false);
+            var __workflow_messageRomeasurementsdouble = messageRomeasurementsdouble == null ? null : WorkflowExpression.Compile(messageRomeasurementsdouble);
+            WorkflowExpression.Validate(__workflow_messageRomeasurementsdouble, nameof(messageRomeasurementsdouble), required: false);
+            var __workflow_messageRomeasurementsfloat = messageRomeasurementsfloat == null ? null : WorkflowExpression.Compile(messageRomeasurementsfloat);
+            WorkflowExpression.Validate(__workflow_messageRomeasurementsfloat, nameof(messageRomeasurementsfloat), required: false);
+            var __workflow_messageRomeasurementsfloatingPointNumber = messageRomeasurementsfloatingPointNumber == null ? null : WorkflowExpression.Compile(messageRomeasurementsfloatingPointNumber);
+            WorkflowExpression.Validate(__workflow_messageRomeasurementsfloatingPointNumber, nameof(messageRomeasurementsfloatingPointNumber), required: false);
+            var __workflow_messageRomeasurementsint = messageRomeasurementsint == null ? null : WorkflowExpression.Compile(messageRomeasurementsint);
+            WorkflowExpression.Validate(__workflow_messageRomeasurementsint, nameof(messageRomeasurementsint), required: false);
+            var __workflow_messageRomeasurementsintegralNumber = messageRomeasurementsintegralNumber == null ? null : WorkflowExpression.Compile(messageRomeasurementsintegralNumber);
+            WorkflowExpression.Validate(__workflow_messageRomeasurementsintegralNumber, nameof(messageRomeasurementsintegralNumber), required: false);
+            var __workflow_messageRomeasurementsLong = messageRomeasurementsLong == null ? null : WorkflowExpression.Compile(messageRomeasurementsLong);
+            WorkflowExpression.Validate(__workflow_messageRomeasurementsLong, nameof(messageRomeasurementsLong), required: false);
+            var __workflow_messageRomeasurementsmissingNode = messageRomeasurementsmissingNode == null ? null : WorkflowExpression.Compile(messageRomeasurementsmissingNode);
+            WorkflowExpression.Validate(__workflow_messageRomeasurementsmissingNode, nameof(messageRomeasurementsmissingNode), required: false);
+            var __workflow_messageRomeasurementsnodeType = messageRomeasurementsnodeType == null ? null : WorkflowExpression.Compile(messageRomeasurementsnodeType);
+            WorkflowExpression.Validate(__workflow_messageRomeasurementsnodeType, nameof(messageRomeasurementsnodeType), required: false);
+            var __workflow_messageRomeasurementsnull = messageRomeasurementsnull == null ? null : WorkflowExpression.Compile(messageRomeasurementsnull);
+            WorkflowExpression.Validate(__workflow_messageRomeasurementsnull, nameof(messageRomeasurementsnull), required: false);
+            var __workflow_messageRomeasurementsnumber = messageRomeasurementsnumber == null ? null : WorkflowExpression.Compile(messageRomeasurementsnumber);
+            WorkflowExpression.Validate(__workflow_messageRomeasurementsnumber, nameof(messageRomeasurementsnumber), required: false);
+            var __workflow_messageRomeasurementsObject = messageRomeasurementsObject == null ? null : WorkflowExpression.Compile(messageRomeasurementsObject);
+            WorkflowExpression.Validate(__workflow_messageRomeasurementsObject, nameof(messageRomeasurementsObject), required: false);
+            var __workflow_messageRomeasurementspojo = messageRomeasurementspojo == null ? null : WorkflowExpression.Compile(messageRomeasurementspojo);
+            WorkflowExpression.Validate(__workflow_messageRomeasurementspojo, nameof(messageRomeasurementspojo), required: false);
+            var __workflow_messageRomeasurementsShort = messageRomeasurementsShort == null ? null : WorkflowExpression.Compile(messageRomeasurementsShort);
+            WorkflowExpression.Validate(__workflow_messageRomeasurementsShort, nameof(messageRomeasurementsShort), required: false);
+            var __workflow_messageRomeasurementstextual = messageRomeasurementstextual == null ? null : WorkflowExpression.Compile(messageRomeasurementstextual);
+            WorkflowExpression.Validate(__workflow_messageRomeasurementstextual, nameof(messageRomeasurementstextual), required: false);
+            var __workflow_messageRomeasurementsvalueNode = messageRomeasurementsvalueNode == null ? null : WorkflowExpression.Compile(messageRomeasurementsvalueNode);
+            WorkflowExpression.Validate(__workflow_messageRomeasurementsvalueNode, nameof(messageRomeasurementsvalueNode), required: false);
+            var __workflow_messageRorawMeasurementsarray = messageRorawMeasurementsarray == null ? null : WorkflowExpression.Compile(messageRorawMeasurementsarray);
+            WorkflowExpression.Validate(__workflow_messageRorawMeasurementsarray, nameof(messageRorawMeasurementsarray), required: false);
+            var __workflow_messageRorawMeasurementsbigDecimal = messageRorawMeasurementsbigDecimal == null ? null : WorkflowExpression.Compile(messageRorawMeasurementsbigDecimal);
+            WorkflowExpression.Validate(__workflow_messageRorawMeasurementsbigDecimal, nameof(messageRorawMeasurementsbigDecimal), required: false);
+            var __workflow_messageRorawMeasurementsbigInteger = messageRorawMeasurementsbigInteger == null ? null : WorkflowExpression.Compile(messageRorawMeasurementsbigInteger);
+            WorkflowExpression.Validate(__workflow_messageRorawMeasurementsbigInteger, nameof(messageRorawMeasurementsbigInteger), required: false);
+            var __workflow_messageRorawMeasurementsbinary = messageRorawMeasurementsbinary == null ? null : WorkflowExpression.Compile(messageRorawMeasurementsbinary);
+            WorkflowExpression.Validate(__workflow_messageRorawMeasurementsbinary, nameof(messageRorawMeasurementsbinary), required: false);
+            var __workflow_messageRorawMeasurementsboolean = messageRorawMeasurementsboolean == null ? null : WorkflowExpression.Compile(messageRorawMeasurementsboolean);
+            WorkflowExpression.Validate(__workflow_messageRorawMeasurementsboolean, nameof(messageRorawMeasurementsboolean), required: false);
+            var __workflow_messageRorawMeasurementscontainerNode = messageRorawMeasurementscontainerNode == null ? null : WorkflowExpression.Compile(messageRorawMeasurementscontainerNode);
+            WorkflowExpression.Validate(__workflow_messageRorawMeasurementscontainerNode, nameof(messageRorawMeasurementscontainerNode), required: false);
+            var __workflow_messageRorawMeasurementsdouble = messageRorawMeasurementsdouble == null ? null : WorkflowExpression.Compile(messageRorawMeasurementsdouble);
+            WorkflowExpression.Validate(__workflow_messageRorawMeasurementsdouble, nameof(messageRorawMeasurementsdouble), required: false);
+            var __workflow_messageRorawMeasurementsfloat = messageRorawMeasurementsfloat == null ? null : WorkflowExpression.Compile(messageRorawMeasurementsfloat);
+            WorkflowExpression.Validate(__workflow_messageRorawMeasurementsfloat, nameof(messageRorawMeasurementsfloat), required: false);
+            var __workflow_messageRorawMeasurementsfloatingPointNumber = messageRorawMeasurementsfloatingPointNumber == null ? null : WorkflowExpression.Compile(messageRorawMeasurementsfloatingPointNumber);
+            WorkflowExpression.Validate(__workflow_messageRorawMeasurementsfloatingPointNumber, nameof(messageRorawMeasurementsfloatingPointNumber), required: false);
+            var __workflow_messageRorawMeasurementsint = messageRorawMeasurementsint == null ? null : WorkflowExpression.Compile(messageRorawMeasurementsint);
+            WorkflowExpression.Validate(__workflow_messageRorawMeasurementsint, nameof(messageRorawMeasurementsint), required: false);
+            var __workflow_messageRorawMeasurementsintegralNumber = messageRorawMeasurementsintegralNumber == null ? null : WorkflowExpression.Compile(messageRorawMeasurementsintegralNumber);
+            WorkflowExpression.Validate(__workflow_messageRorawMeasurementsintegralNumber, nameof(messageRorawMeasurementsintegralNumber), required: false);
+            var __workflow_messageRorawMeasurementsLong = messageRorawMeasurementsLong == null ? null : WorkflowExpression.Compile(messageRorawMeasurementsLong);
+            WorkflowExpression.Validate(__workflow_messageRorawMeasurementsLong, nameof(messageRorawMeasurementsLong), required: false);
+            var __workflow_messageRorawMeasurementsmissingNode = messageRorawMeasurementsmissingNode == null ? null : WorkflowExpression.Compile(messageRorawMeasurementsmissingNode);
+            WorkflowExpression.Validate(__workflow_messageRorawMeasurementsmissingNode, nameof(messageRorawMeasurementsmissingNode), required: false);
+            var __workflow_messageRorawMeasurementsnodeType = messageRorawMeasurementsnodeType == null ? null : WorkflowExpression.Compile(messageRorawMeasurementsnodeType);
+            WorkflowExpression.Validate(__workflow_messageRorawMeasurementsnodeType, nameof(messageRorawMeasurementsnodeType), required: false);
+            var __workflow_messageRorawMeasurementsnull = messageRorawMeasurementsnull == null ? null : WorkflowExpression.Compile(messageRorawMeasurementsnull);
+            WorkflowExpression.Validate(__workflow_messageRorawMeasurementsnull, nameof(messageRorawMeasurementsnull), required: false);
+            var __workflow_messageRorawMeasurementsnumber = messageRorawMeasurementsnumber == null ? null : WorkflowExpression.Compile(messageRorawMeasurementsnumber);
+            WorkflowExpression.Validate(__workflow_messageRorawMeasurementsnumber, nameof(messageRorawMeasurementsnumber), required: false);
+            var __workflow_messageRorawMeasurementsObject = messageRorawMeasurementsObject == null ? null : WorkflowExpression.Compile(messageRorawMeasurementsObject);
+            WorkflowExpression.Validate(__workflow_messageRorawMeasurementsObject, nameof(messageRorawMeasurementsObject), required: false);
+            var __workflow_messageRorawMeasurementspojo = messageRorawMeasurementspojo == null ? null : WorkflowExpression.Compile(messageRorawMeasurementspojo);
+            WorkflowExpression.Validate(__workflow_messageRorawMeasurementspojo, nameof(messageRorawMeasurementspojo), required: false);
+            var __workflow_messageRorawMeasurementsShort = messageRorawMeasurementsShort == null ? null : WorkflowExpression.Compile(messageRorawMeasurementsShort);
+            WorkflowExpression.Validate(__workflow_messageRorawMeasurementsShort, nameof(messageRorawMeasurementsShort), required: false);
+            var __workflow_messageRorawMeasurementstextual = messageRorawMeasurementstextual == null ? null : WorkflowExpression.Compile(messageRorawMeasurementstextual);
+            WorkflowExpression.Validate(__workflow_messageRorawMeasurementstextual, nameof(messageRorawMeasurementstextual), required: false);
+            var __workflow_messageRorawMeasurementsvalueNode = messageRorawMeasurementsvalueNode == null ? null : WorkflowExpression.Compile(messageRorawMeasurementsvalueNode);
+            WorkflowExpression.Validate(__workflow_messageRorawMeasurementsvalueNode, nameof(messageRorawMeasurementsvalueNode), required: false);
+            var __workflow_messageRothingdisplayName = messageRothingdisplayName == null ? null : WorkflowExpression.Compile(messageRothingdisplayName);
+            WorkflowExpression.Validate(__workflow_messageRothingdisplayName, nameof(messageRothingdisplayName), required: false);
+            var __workflow_messageRothingfixedName = messageRothingfixedName == null ? null : WorkflowExpression.Compile(messageRothingfixedName);
+            WorkflowExpression.Validate(__workflow_messageRothingfixedName, nameof(messageRothingfixedName), required: false);
+            var __workflow_messageRothingid = messageRothingid == null ? null : WorkflowExpression.Compile(messageRothingid);
+            WorkflowExpression.Validate(__workflow_messageRothingid, nameof(messageRothingid), required: false);
+            var __workflow_messageRothingnbAlerts = messageRothingnbAlerts == null ? null : WorkflowExpression.Compile(messageRothingnbAlerts);
+            WorkflowExpression.Validate(__workflow_messageRothingnbAlerts, nameof(messageRothingnbAlerts), required: false);
+            var __workflow_messageRothingtags = messageRothingtags == null ? null : WorkflowExpression.Compile(messageRothingtags);
+            WorkflowExpression.Validate(__workflow_messageRothingtags, nameof(messageRothingtags), required: false);
             return new DeferredBodyAction<MessageRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var messageRo = new JObject();
                 var messageRopropCount = 0;
                 messageRopropCount++;
-                messageRo["body"] = ExpressionConverter.ConvertO(messageRobody);
+                messageRo["body"] = ExpressionConverter.ConvertO(__workflow_messageRobody);
                 messageRopropCount++;
-                messageRo["creationDate"] = ExpressionConverter.ConvertO(messageRocreationDate);
+                messageRo["creationDate"] = ExpressionConverter.ConvertO(__workflow_messageRocreationDate);
                 messageRopropCount++;
-                messageRo["errorMessage"] = ExpressionConverter.ConvertO(messageRoerrorMessage);
-                if (messageRoid != null)
+                messageRo["errorMessage"] = ExpressionConverter.ConvertO(__workflow_messageRoerrorMessage);
+                if (__workflow_messageRoid != null)
                 {
-                    messageRo["id"] = ExpressionConverter.ConvertO(messageRoid);
+                    messageRo["id"] = ExpressionConverter.ConvertO(__workflow_messageRoid);
                     messageRopropCount++;
                 }
 
                 messageRopropCount++;
-                messageRo["latitude"] = ExpressionConverter.ConvertO(messageRolatitude);
+                messageRo["latitude"] = ExpressionConverter.ConvertO(__workflow_messageRolatitude);
                 var linkObject = new JObject();
                 var linkObjectpropCount = 0;
-                if (messageRolinkabsolute != null)
+                if (__workflow_messageRolinkabsolute != null)
                 {
-                    linkObject["absolute"] = ExpressionConverter.ConvertO(messageRolinkabsolute);
+                    linkObject["absolute"] = ExpressionConverter.ConvertO(__workflow_messageRolinkabsolute);
                     linkObjectpropCount++;
                 }
 
-                if (messageRolinkauthority != null)
+                if (__workflow_messageRolinkauthority != null)
                 {
-                    linkObject["authority"] = ExpressionConverter.ConvertO(messageRolinkauthority);
+                    linkObject["authority"] = ExpressionConverter.ConvertO(__workflow_messageRolinkauthority);
                     linkObjectpropCount++;
                 }
 
-                if (messageRolinkfragment != null)
+                if (__workflow_messageRolinkfragment != null)
                 {
-                    linkObject["fragment"] = ExpressionConverter.ConvertO(messageRolinkfragment);
+                    linkObject["fragment"] = ExpressionConverter.ConvertO(__workflow_messageRolinkfragment);
                     linkObjectpropCount++;
                 }
 
-                if (messageRolinkhost != null)
+                if (__workflow_messageRolinkhost != null)
                 {
-                    linkObject["host"] = ExpressionConverter.ConvertO(messageRolinkhost);
+                    linkObject["host"] = ExpressionConverter.ConvertO(__workflow_messageRolinkhost);
                     linkObjectpropCount++;
                 }
 
-                if (messageRolinkopaque != null)
+                if (__workflow_messageRolinkopaque != null)
                 {
-                    linkObject["opaque"] = ExpressionConverter.ConvertO(messageRolinkopaque);
+                    linkObject["opaque"] = ExpressionConverter.ConvertO(__workflow_messageRolinkopaque);
                     linkObjectpropCount++;
                 }
 
-                if (messageRolinkpath != null)
+                if (__workflow_messageRolinkpath != null)
                 {
-                    linkObject["path"] = ExpressionConverter.ConvertO(messageRolinkpath);
+                    linkObject["path"] = ExpressionConverter.ConvertO(__workflow_messageRolinkpath);
                     linkObjectpropCount++;
                 }
 
-                if (messageRolinkport != null)
+                if (__workflow_messageRolinkport != null)
                 {
-                    linkObject["port"] = ExpressionConverter.ConvertO(messageRolinkport);
+                    linkObject["port"] = ExpressionConverter.ConvertO(__workflow_messageRolinkport);
                     linkObjectpropCount++;
                 }
 
-                if (messageRolinkquery != null)
+                if (__workflow_messageRolinkquery != null)
                 {
-                    linkObject["query"] = ExpressionConverter.ConvertO(messageRolinkquery);
+                    linkObject["query"] = ExpressionConverter.ConvertO(__workflow_messageRolinkquery);
                     linkObjectpropCount++;
                 }
 
-                if (messageRolinkrawAuthority != null)
+                if (__workflow_messageRolinkrawAuthority != null)
                 {
-                    linkObject["rawAuthority"] = ExpressionConverter.ConvertO(messageRolinkrawAuthority);
+                    linkObject["rawAuthority"] = ExpressionConverter.ConvertO(__workflow_messageRolinkrawAuthority);
                     linkObjectpropCount++;
                 }
 
-                if (messageRolinkrawFragment != null)
+                if (__workflow_messageRolinkrawFragment != null)
                 {
-                    linkObject["rawFragment"] = ExpressionConverter.ConvertO(messageRolinkrawFragment);
+                    linkObject["rawFragment"] = ExpressionConverter.ConvertO(__workflow_messageRolinkrawFragment);
                     linkObjectpropCount++;
                 }
 
-                if (messageRolinkrawPath != null)
+                if (__workflow_messageRolinkrawPath != null)
                 {
-                    linkObject["rawPath"] = ExpressionConverter.ConvertO(messageRolinkrawPath);
+                    linkObject["rawPath"] = ExpressionConverter.ConvertO(__workflow_messageRolinkrawPath);
                     linkObjectpropCount++;
                 }
 
-                if (messageRolinkrawQuery != null)
+                if (__workflow_messageRolinkrawQuery != null)
                 {
-                    linkObject["rawQuery"] = ExpressionConverter.ConvertO(messageRolinkrawQuery);
+                    linkObject["rawQuery"] = ExpressionConverter.ConvertO(__workflow_messageRolinkrawQuery);
                     linkObjectpropCount++;
                 }
 
-                if (messageRolinkrawSchemeSpecificPart != null)
+                if (__workflow_messageRolinkrawSchemeSpecificPart != null)
                 {
-                    linkObject["rawSchemeSpecificPart"] = ExpressionConverter.ConvertO(messageRolinkrawSchemeSpecificPart);
+                    linkObject["rawSchemeSpecificPart"] = ExpressionConverter.ConvertO(__workflow_messageRolinkrawSchemeSpecificPart);
                     linkObjectpropCount++;
                 }
 
-                if (messageRolinkrawUserInfo != null)
+                if (__workflow_messageRolinkrawUserInfo != null)
                 {
-                    linkObject["rawUserInfo"] = ExpressionConverter.ConvertO(messageRolinkrawUserInfo);
+                    linkObject["rawUserInfo"] = ExpressionConverter.ConvertO(__workflow_messageRolinkrawUserInfo);
                     linkObjectpropCount++;
                 }
 
-                if (messageRolinkscheme != null)
+                if (__workflow_messageRolinkscheme != null)
                 {
-                    linkObject["scheme"] = ExpressionConverter.ConvertO(messageRolinkscheme);
+                    linkObject["scheme"] = ExpressionConverter.ConvertO(__workflow_messageRolinkscheme);
                     linkObjectpropCount++;
                 }
 
-                if (messageRolinkschemeSpecificPart != null)
+                if (__workflow_messageRolinkschemeSpecificPart != null)
                 {
-                    linkObject["schemeSpecificPart"] = ExpressionConverter.ConvertO(messageRolinkschemeSpecificPart);
+                    linkObject["schemeSpecificPart"] = ExpressionConverter.ConvertO(__workflow_messageRolinkschemeSpecificPart);
                     linkObjectpropCount++;
                 }
 
-                if (messageRolinkuserInfo != null)
+                if (__workflow_messageRolinkuserInfo != null)
                 {
-                    linkObject["userInfo"] = ExpressionConverter.ConvertO(messageRolinkuserInfo);
+                    linkObject["userInfo"] = ExpressionConverter.ConvertO(__workflow_messageRolinkuserInfo);
                     linkObjectpropCount++;
                 }
 
@@ -3067,132 +3219,132 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 }
 
                 messageRopropCount++;
-                messageRo["longitude"] = ExpressionConverter.ConvertO(messageRolongitude);
+                messageRo["longitude"] = ExpressionConverter.ConvertO(__workflow_messageRolongitude);
                 var measurementsObject = new JObject();
                 var measurementsObjectpropCount = 0;
-                if (messageRomeasurementsarray != null)
+                if (__workflow_messageRomeasurementsarray != null)
                 {
-                    measurementsObject["array"] = ExpressionConverter.ConvertO(messageRomeasurementsarray);
+                    measurementsObject["array"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsarray);
                     measurementsObjectpropCount++;
                 }
 
-                if (messageRomeasurementsbigDecimal != null)
+                if (__workflow_messageRomeasurementsbigDecimal != null)
                 {
-                    measurementsObject["bigDecimal"] = ExpressionConverter.ConvertO(messageRomeasurementsbigDecimal);
+                    measurementsObject["bigDecimal"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsbigDecimal);
                     measurementsObjectpropCount++;
                 }
 
-                if (messageRomeasurementsbigInteger != null)
+                if (__workflow_messageRomeasurementsbigInteger != null)
                 {
-                    measurementsObject["bigInteger"] = ExpressionConverter.ConvertO(messageRomeasurementsbigInteger);
+                    measurementsObject["bigInteger"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsbigInteger);
                     measurementsObjectpropCount++;
                 }
 
-                if (messageRomeasurementsbinary != null)
+                if (__workflow_messageRomeasurementsbinary != null)
                 {
-                    measurementsObject["binary"] = ExpressionConverter.ConvertO(messageRomeasurementsbinary);
+                    measurementsObject["binary"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsbinary);
                     measurementsObjectpropCount++;
                 }
 
-                if (messageRomeasurementsboolean != null)
+                if (__workflow_messageRomeasurementsboolean != null)
                 {
-                    measurementsObject["boolean"] = ExpressionConverter.ConvertO(messageRomeasurementsboolean);
+                    measurementsObject["boolean"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsboolean);
                     measurementsObjectpropCount++;
                 }
 
-                if (messageRomeasurementscontainerNode != null)
+                if (__workflow_messageRomeasurementscontainerNode != null)
                 {
-                    measurementsObject["containerNode"] = ExpressionConverter.ConvertO(messageRomeasurementscontainerNode);
+                    measurementsObject["containerNode"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementscontainerNode);
                     measurementsObjectpropCount++;
                 }
 
-                if (messageRomeasurementsdouble != null)
+                if (__workflow_messageRomeasurementsdouble != null)
                 {
-                    measurementsObject["double"] = ExpressionConverter.ConvertO(messageRomeasurementsdouble);
+                    measurementsObject["double"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsdouble);
                     measurementsObjectpropCount++;
                 }
 
-                if (messageRomeasurementsfloat != null)
+                if (__workflow_messageRomeasurementsfloat != null)
                 {
-                    measurementsObject["float"] = ExpressionConverter.ConvertO(messageRomeasurementsfloat);
+                    measurementsObject["float"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsfloat);
                     measurementsObjectpropCount++;
                 }
 
-                if (messageRomeasurementsfloatingPointNumber != null)
+                if (__workflow_messageRomeasurementsfloatingPointNumber != null)
                 {
-                    measurementsObject["floatingPointNumber"] = ExpressionConverter.ConvertO(messageRomeasurementsfloatingPointNumber);
+                    measurementsObject["floatingPointNumber"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsfloatingPointNumber);
                     measurementsObjectpropCount++;
                 }
 
-                if (messageRomeasurementsint != null)
+                if (__workflow_messageRomeasurementsint != null)
                 {
-                    measurementsObject["int"] = ExpressionConverter.ConvertO(messageRomeasurementsint);
+                    measurementsObject["int"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsint);
                     measurementsObjectpropCount++;
                 }
 
-                if (messageRomeasurementsintegralNumber != null)
+                if (__workflow_messageRomeasurementsintegralNumber != null)
                 {
-                    measurementsObject["integralNumber"] = ExpressionConverter.ConvertO(messageRomeasurementsintegralNumber);
+                    measurementsObject["integralNumber"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsintegralNumber);
                     measurementsObjectpropCount++;
                 }
 
-                if (messageRomeasurementsLong != null)
+                if (__workflow_messageRomeasurementsLong != null)
                 {
-                    measurementsObject["long"] = ExpressionConverter.ConvertO(messageRomeasurementsLong);
+                    measurementsObject["long"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsLong);
                     measurementsObjectpropCount++;
                 }
 
-                if (messageRomeasurementsmissingNode != null)
+                if (__workflow_messageRomeasurementsmissingNode != null)
                 {
-                    measurementsObject["missingNode"] = ExpressionConverter.ConvertO(messageRomeasurementsmissingNode);
+                    measurementsObject["missingNode"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsmissingNode);
                     measurementsObjectpropCount++;
                 }
 
-                if (messageRomeasurementsnodeType != null)
+                if (__workflow_messageRomeasurementsnodeType != null)
                 {
-                    measurementsObject["nodeType"] = ExpressionConverter.ConvertO(messageRomeasurementsnodeType);
+                    measurementsObject["nodeType"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsnodeType);
                     measurementsObjectpropCount++;
                 }
 
-                if (messageRomeasurementsnull != null)
+                if (__workflow_messageRomeasurementsnull != null)
                 {
-                    measurementsObject["null"] = ExpressionConverter.ConvertO(messageRomeasurementsnull);
+                    measurementsObject["null"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsnull);
                     measurementsObjectpropCount++;
                 }
 
-                if (messageRomeasurementsnumber != null)
+                if (__workflow_messageRomeasurementsnumber != null)
                 {
-                    measurementsObject["number"] = ExpressionConverter.ConvertO(messageRomeasurementsnumber);
+                    measurementsObject["number"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsnumber);
                     measurementsObjectpropCount++;
                 }
 
-                if (messageRomeasurementsObject != null)
+                if (__workflow_messageRomeasurementsObject != null)
                 {
-                    measurementsObject["object"] = ExpressionConverter.ConvertO(messageRomeasurementsObject);
+                    measurementsObject["object"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsObject);
                     measurementsObjectpropCount++;
                 }
 
-                if (messageRomeasurementspojo != null)
+                if (__workflow_messageRomeasurementspojo != null)
                 {
-                    measurementsObject["pojo"] = ExpressionConverter.ConvertO(messageRomeasurementspojo);
+                    measurementsObject["pojo"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementspojo);
                     measurementsObjectpropCount++;
                 }
 
-                if (messageRomeasurementsShort != null)
+                if (__workflow_messageRomeasurementsShort != null)
                 {
-                    measurementsObject["short"] = ExpressionConverter.ConvertO(messageRomeasurementsShort);
+                    measurementsObject["short"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsShort);
                     measurementsObjectpropCount++;
                 }
 
-                if (messageRomeasurementstextual != null)
+                if (__workflow_messageRomeasurementstextual != null)
                 {
-                    measurementsObject["textual"] = ExpressionConverter.ConvertO(messageRomeasurementstextual);
+                    measurementsObject["textual"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementstextual);
                     measurementsObjectpropCount++;
                 }
 
-                if (messageRomeasurementsvalueNode != null)
+                if (__workflow_messageRomeasurementsvalueNode != null)
                 {
-                    measurementsObject["valueNode"] = ExpressionConverter.ConvertO(messageRomeasurementsvalueNode);
+                    measurementsObject["valueNode"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsvalueNode);
                     measurementsObjectpropCount++;
                 }
 
@@ -3203,136 +3355,136 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 }
 
                 messageRopropCount++;
-                messageRo["metadata"] = ExpressionConverter.ConvertO(messageRometadata);
+                messageRo["metadata"] = ExpressionConverter.ConvertO(__workflow_messageRometadata);
                 messageRopropCount++;
-                messageRo["number"] = ExpressionConverter.ConvertO(messageRonumber);
+                messageRo["number"] = ExpressionConverter.ConvertO(__workflow_messageRonumber);
                 messageRopropCount++;
-                messageRo["processed"] = ExpressionConverter.ConvertO(messageRoprocessed);
+                messageRo["processed"] = ExpressionConverter.ConvertO(__workflow_messageRoprocessed);
                 var rawMeasurementsObject = new JObject();
                 var rawMeasurementsObjectpropCount = 0;
-                if (messageRomeasurementsarray != null)
+                if (__workflow_messageRomeasurementsarray != null)
                 {
-                    rawMeasurementsObject["array"] = ExpressionConverter.ConvertO(messageRomeasurementsarray);
+                    rawMeasurementsObject["array"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsarray);
                     rawMeasurementsObjectpropCount++;
                 }
 
-                if (messageRomeasurementsbigDecimal != null)
+                if (__workflow_messageRomeasurementsbigDecimal != null)
                 {
-                    rawMeasurementsObject["bigDecimal"] = ExpressionConverter.ConvertO(messageRomeasurementsbigDecimal);
+                    rawMeasurementsObject["bigDecimal"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsbigDecimal);
                     rawMeasurementsObjectpropCount++;
                 }
 
-                if (messageRomeasurementsbigInteger != null)
+                if (__workflow_messageRomeasurementsbigInteger != null)
                 {
-                    rawMeasurementsObject["bigInteger"] = ExpressionConverter.ConvertO(messageRomeasurementsbigInteger);
+                    rawMeasurementsObject["bigInteger"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsbigInteger);
                     rawMeasurementsObjectpropCount++;
                 }
 
-                if (messageRomeasurementsbinary != null)
+                if (__workflow_messageRomeasurementsbinary != null)
                 {
-                    rawMeasurementsObject["binary"] = ExpressionConverter.ConvertO(messageRomeasurementsbinary);
+                    rawMeasurementsObject["binary"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsbinary);
                     rawMeasurementsObjectpropCount++;
                 }
 
-                if (messageRomeasurementsboolean != null)
+                if (__workflow_messageRomeasurementsboolean != null)
                 {
-                    rawMeasurementsObject["boolean"] = ExpressionConverter.ConvertO(messageRomeasurementsboolean);
+                    rawMeasurementsObject["boolean"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsboolean);
                     rawMeasurementsObjectpropCount++;
                 }
 
-                if (messageRomeasurementscontainerNode != null)
+                if (__workflow_messageRomeasurementscontainerNode != null)
                 {
-                    rawMeasurementsObject["containerNode"] = ExpressionConverter.ConvertO(messageRomeasurementscontainerNode);
+                    rawMeasurementsObject["containerNode"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementscontainerNode);
                     rawMeasurementsObjectpropCount++;
                 }
 
-                if (messageRomeasurementsdouble != null)
+                if (__workflow_messageRomeasurementsdouble != null)
                 {
-                    rawMeasurementsObject["double"] = ExpressionConverter.ConvertO(messageRomeasurementsdouble);
+                    rawMeasurementsObject["double"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsdouble);
                     rawMeasurementsObjectpropCount++;
                 }
 
-                if (messageRomeasurementsfloat != null)
+                if (__workflow_messageRomeasurementsfloat != null)
                 {
-                    rawMeasurementsObject["float"] = ExpressionConverter.ConvertO(messageRomeasurementsfloat);
+                    rawMeasurementsObject["float"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsfloat);
                     rawMeasurementsObjectpropCount++;
                 }
 
-                if (messageRomeasurementsfloatingPointNumber != null)
+                if (__workflow_messageRomeasurementsfloatingPointNumber != null)
                 {
-                    rawMeasurementsObject["floatingPointNumber"] = ExpressionConverter.ConvertO(messageRomeasurementsfloatingPointNumber);
+                    rawMeasurementsObject["floatingPointNumber"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsfloatingPointNumber);
                     rawMeasurementsObjectpropCount++;
                 }
 
-                if (messageRomeasurementsint != null)
+                if (__workflow_messageRomeasurementsint != null)
                 {
-                    rawMeasurementsObject["int"] = ExpressionConverter.ConvertO(messageRomeasurementsint);
+                    rawMeasurementsObject["int"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsint);
                     rawMeasurementsObjectpropCount++;
                 }
 
-                if (messageRomeasurementsintegralNumber != null)
+                if (__workflow_messageRomeasurementsintegralNumber != null)
                 {
-                    rawMeasurementsObject["integralNumber"] = ExpressionConverter.ConvertO(messageRomeasurementsintegralNumber);
+                    rawMeasurementsObject["integralNumber"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsintegralNumber);
                     rawMeasurementsObjectpropCount++;
                 }
 
-                if (messageRomeasurementsLong != null)
+                if (__workflow_messageRomeasurementsLong != null)
                 {
-                    rawMeasurementsObject["long"] = ExpressionConverter.ConvertO(messageRomeasurementsLong);
+                    rawMeasurementsObject["long"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsLong);
                     rawMeasurementsObjectpropCount++;
                 }
 
-                if (messageRomeasurementsmissingNode != null)
+                if (__workflow_messageRomeasurementsmissingNode != null)
                 {
-                    rawMeasurementsObject["missingNode"] = ExpressionConverter.ConvertO(messageRomeasurementsmissingNode);
+                    rawMeasurementsObject["missingNode"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsmissingNode);
                     rawMeasurementsObjectpropCount++;
                 }
 
-                if (messageRomeasurementsnodeType != null)
+                if (__workflow_messageRomeasurementsnodeType != null)
                 {
-                    rawMeasurementsObject["nodeType"] = ExpressionConverter.ConvertO(messageRomeasurementsnodeType);
+                    rawMeasurementsObject["nodeType"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsnodeType);
                     rawMeasurementsObjectpropCount++;
                 }
 
-                if (messageRomeasurementsnull != null)
+                if (__workflow_messageRomeasurementsnull != null)
                 {
-                    rawMeasurementsObject["null"] = ExpressionConverter.ConvertO(messageRomeasurementsnull);
+                    rawMeasurementsObject["null"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsnull);
                     rawMeasurementsObjectpropCount++;
                 }
 
-                if (messageRomeasurementsnumber != null)
+                if (__workflow_messageRomeasurementsnumber != null)
                 {
-                    rawMeasurementsObject["number"] = ExpressionConverter.ConvertO(messageRomeasurementsnumber);
+                    rawMeasurementsObject["number"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsnumber);
                     rawMeasurementsObjectpropCount++;
                 }
 
-                if (messageRomeasurementsObject != null)
+                if (__workflow_messageRomeasurementsObject != null)
                 {
-                    rawMeasurementsObject["object"] = ExpressionConverter.ConvertO(messageRomeasurementsObject);
+                    rawMeasurementsObject["object"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsObject);
                     rawMeasurementsObjectpropCount++;
                 }
 
-                if (messageRomeasurementspojo != null)
+                if (__workflow_messageRomeasurementspojo != null)
                 {
-                    rawMeasurementsObject["pojo"] = ExpressionConverter.ConvertO(messageRomeasurementspojo);
+                    rawMeasurementsObject["pojo"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementspojo);
                     rawMeasurementsObjectpropCount++;
                 }
 
-                if (messageRomeasurementsShort != null)
+                if (__workflow_messageRomeasurementsShort != null)
                 {
-                    rawMeasurementsObject["short"] = ExpressionConverter.ConvertO(messageRomeasurementsShort);
+                    rawMeasurementsObject["short"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsShort);
                     rawMeasurementsObjectpropCount++;
                 }
 
-                if (messageRomeasurementstextual != null)
+                if (__workflow_messageRomeasurementstextual != null)
                 {
-                    rawMeasurementsObject["textual"] = ExpressionConverter.ConvertO(messageRomeasurementstextual);
+                    rawMeasurementsObject["textual"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementstextual);
                     rawMeasurementsObjectpropCount++;
                 }
 
-                if (messageRomeasurementsvalueNode != null)
+                if (__workflow_messageRomeasurementsvalueNode != null)
                 {
-                    rawMeasurementsObject["valueNode"] = ExpressionConverter.ConvertO(messageRomeasurementsvalueNode);
+                    rawMeasurementsObject["valueNode"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsvalueNode);
                     rawMeasurementsObjectpropCount++;
                 }
 
@@ -3344,35 +3496,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
 
                 var thingObject = new JObject();
                 var thingObjectpropCount = 0;
-                if (messageRothingdisplayName != null)
+                if (__workflow_messageRothingdisplayName != null)
                 {
-                    thingObject["displayName"] = ExpressionConverter.ConvertO(messageRothingdisplayName);
+                    thingObject["displayName"] = ExpressionConverter.ConvertO(__workflow_messageRothingdisplayName);
                     thingObjectpropCount++;
                 }
 
-                if (messageRothingfixedName != null)
+                if (__workflow_messageRothingfixedName != null)
                 {
-                    thingObject["fixedName"] = ExpressionConverter.ConvertO(messageRothingfixedName);
+                    thingObject["fixedName"] = ExpressionConverter.ConvertO(__workflow_messageRothingfixedName);
                     thingObjectpropCount++;
                 }
 
-                if (messageRothingid != null)
+                if (__workflow_messageRothingid != null)
                 {
-                    thingObject["id"] = ExpressionConverter.ConvertO(messageRothingid);
+                    thingObject["id"] = ExpressionConverter.ConvertO(__workflow_messageRothingid);
                     thingObjectpropCount++;
                 }
 
                 thingObjectpropCount++;
-                thingObject["name"] = ExpressionConverter.ConvertO(messageRothingname);
-                if (messageRothingnbAlerts != null)
+                thingObject["name"] = ExpressionConverter.ConvertO(__workflow_messageRothingname);
+                if (__workflow_messageRothingnbAlerts != null)
                 {
-                    thingObject["nbAlerts"] = ExpressionConverter.ConvertO(messageRothingnbAlerts);
+                    thingObject["nbAlerts"] = ExpressionConverter.ConvertO(__workflow_messageRothingnbAlerts);
                     thingObjectpropCount++;
                 }
 
-                if (messageRothingtags != null)
+                if (__workflow_messageRothingtags != null)
                 {
-                    thingObject["tags"] = ExpressionConverter.ConvertO(messageRothingtags);
+                    thingObject["tags"] = ExpressionConverter.ConvertO(__workflow_messageRothingtags);
                     thingObjectpropCount++;
                 }
 
@@ -3383,9 +3535,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                 }
 
                 messageRopropCount++;
-                messageRo["timestamp"] = ExpressionConverter.ConvertO(messageRotimestamp);
+                messageRo["timestamp"] = ExpressionConverter.ConvertO(__workflow_messageRotimestamp);
                 messageRopropCount++;
-                messageRo["topic"] = ExpressionConverter.ConvertO(messageRotopic);
+                messageRo["topic"] = ExpressionConverter.ConvertO(__workflow_messageRotopic);
                 if (messageRopropCount > 0)
                 {
                     callPayload.Body = messageRo;
@@ -3396,19 +3548,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildGetThingModel))]
-        public IBodyWorkflowAction<ModelRo> GetThingModel([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<ModelRo> GetThingModel(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ModelRo> __BuildGetThingModel(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<ModelRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/model", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/model", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ModelRo>(callPayload);
@@ -3416,19 +3562,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildGetThingOperations))]
-        public IBodyWorkflowAction<PageOperationRo> GetThingOperations([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<PageOperationRo> GetThingOperations(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PageOperationRo> __BuildGetThingOperations(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<PageOperationRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/operations", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/operations", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<PageOperationRo>(callPayload);
@@ -3436,168 +3576,184 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildExecuteThingOperation))]
-        public IBodyWorkflowAction<ResponseEntity> ExecuteThingOperation([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> operationId, [WorkflowExpression] Func<bool> placeholdersValuesarray = null, [WorkflowExpression] Func<bool> placeholdersValuesbigDecimal = null, [WorkflowExpression] Func<bool> placeholdersValuesbigInteger = null, [WorkflowExpression] Func<bool> placeholdersValuesbinary = null, [WorkflowExpression] Func<bool> placeholdersValuesboolean = null, [WorkflowExpression] Func<bool> placeholdersValuescontainerNode = null, [WorkflowExpression] Func<bool> placeholdersValuesdouble = null, [WorkflowExpression] Func<bool> placeholdersValuesfloat = null, [WorkflowExpression] Func<bool> placeholdersValuesfloatingPointNumber = null, [WorkflowExpression] Func<bool> placeholdersValuesint = null, [WorkflowExpression] Func<bool> placeholdersValuesintegralNumber = null, [WorkflowExpression] Func<bool> placeholdersValuesLong = null, [WorkflowExpression] Func<bool> placeholdersValuesmissingNode = null, [WorkflowExpression] Func<placeholdersValuesnodeTypeInput> placeholdersValuesnodeType = null, [WorkflowExpression] Func<bool> placeholdersValuesnull = null, [WorkflowExpression] Func<bool> placeholdersValuesnumber = null, [WorkflowExpression] Func<bool> placeholdersValuesObject = null, [WorkflowExpression] Func<bool> placeholdersValuespojo = null, [WorkflowExpression] Func<bool> placeholdersValuesShort = null, [WorkflowExpression] Func<bool> placeholdersValuestextual = null, [WorkflowExpression] Func<bool> placeholdersValuesvalueNode = null)
+        public IBodyWorkflowAction<ResponseEntity> ExecuteThingOperation(Expression<Func<string>> id, Expression<Func<string>> operationId, Expression<Func<bool>> placeholdersValuesarray = null, Expression<Func<bool>> placeholdersValuesbigDecimal = null, Expression<Func<bool>> placeholdersValuesbigInteger = null, Expression<Func<bool>> placeholdersValuesbinary = null, Expression<Func<bool>> placeholdersValuesboolean = null, Expression<Func<bool>> placeholdersValuescontainerNode = null, Expression<Func<bool>> placeholdersValuesdouble = null, Expression<Func<bool>> placeholdersValuesfloat = null, Expression<Func<bool>> placeholdersValuesfloatingPointNumber = null, Expression<Func<bool>> placeholdersValuesint = null, Expression<Func<bool>> placeholdersValuesintegralNumber = null, Expression<Func<bool>> placeholdersValuesLong = null, Expression<Func<bool>> placeholdersValuesmissingNode = null, Expression<Func<placeholdersValuesnodeTypeInput>> placeholdersValuesnodeType = null, Expression<Func<bool>> placeholdersValuesnull = null, Expression<Func<bool>> placeholdersValuesnumber = null, Expression<Func<bool>> placeholdersValuesObject = null, Expression<Func<bool>> placeholdersValuespojo = null, Expression<Func<bool>> placeholdersValuesShort = null, Expression<Func<bool>> placeholdersValuestextual = null, Expression<Func<bool>> placeholdersValuesvalueNode = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ResponseEntity> __BuildExecuteThingOperation(WorkflowExpression<string> id, WorkflowExpression<string> operationId, WorkflowExpression<bool> placeholdersValuesarray = null, WorkflowExpression<bool> placeholdersValuesbigDecimal = null, WorkflowExpression<bool> placeholdersValuesbigInteger = null, WorkflowExpression<bool> placeholdersValuesbinary = null, WorkflowExpression<bool> placeholdersValuesboolean = null, WorkflowExpression<bool> placeholdersValuescontainerNode = null, WorkflowExpression<bool> placeholdersValuesdouble = null, WorkflowExpression<bool> placeholdersValuesfloat = null, WorkflowExpression<bool> placeholdersValuesfloatingPointNumber = null, WorkflowExpression<bool> placeholdersValuesint = null, WorkflowExpression<bool> placeholdersValuesintegralNumber = null, WorkflowExpression<bool> placeholdersValuesLong = null, WorkflowExpression<bool> placeholdersValuesmissingNode = null, WorkflowExpression<placeholdersValuesnodeTypeInput> placeholdersValuesnodeType = null, WorkflowExpression<bool> placeholdersValuesnull = null, WorkflowExpression<bool> placeholdersValuesnumber = null, WorkflowExpression<bool> placeholdersValuesObject = null, WorkflowExpression<bool> placeholdersValuespojo = null, WorkflowExpression<bool> placeholdersValuesShort = null, WorkflowExpression<bool> placeholdersValuestextual = null, WorkflowExpression<bool> placeholdersValuesvalueNode = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(operationId, nameof(operationId), required: true);
-            WorkflowExpression.Validate(placeholdersValuesarray, nameof(placeholdersValuesarray), required: false);
-            WorkflowExpression.Validate(placeholdersValuesbigDecimal, nameof(placeholdersValuesbigDecimal), required: false);
-            WorkflowExpression.Validate(placeholdersValuesbigInteger, nameof(placeholdersValuesbigInteger), required: false);
-            WorkflowExpression.Validate(placeholdersValuesbinary, nameof(placeholdersValuesbinary), required: false);
-            WorkflowExpression.Validate(placeholdersValuesboolean, nameof(placeholdersValuesboolean), required: false);
-            WorkflowExpression.Validate(placeholdersValuescontainerNode, nameof(placeholdersValuescontainerNode), required: false);
-            WorkflowExpression.Validate(placeholdersValuesdouble, nameof(placeholdersValuesdouble), required: false);
-            WorkflowExpression.Validate(placeholdersValuesfloat, nameof(placeholdersValuesfloat), required: false);
-            WorkflowExpression.Validate(placeholdersValuesfloatingPointNumber, nameof(placeholdersValuesfloatingPointNumber), required: false);
-            WorkflowExpression.Validate(placeholdersValuesint, nameof(placeholdersValuesint), required: false);
-            WorkflowExpression.Validate(placeholdersValuesintegralNumber, nameof(placeholdersValuesintegralNumber), required: false);
-            WorkflowExpression.Validate(placeholdersValuesLong, nameof(placeholdersValuesLong), required: false);
-            WorkflowExpression.Validate(placeholdersValuesmissingNode, nameof(placeholdersValuesmissingNode), required: false);
-            WorkflowExpression.Validate(placeholdersValuesnodeType, nameof(placeholdersValuesnodeType), required: false);
-            WorkflowExpression.Validate(placeholdersValuesnull, nameof(placeholdersValuesnull), required: false);
-            WorkflowExpression.Validate(placeholdersValuesnumber, nameof(placeholdersValuesnumber), required: false);
-            WorkflowExpression.Validate(placeholdersValuesObject, nameof(placeholdersValuesObject), required: false);
-            WorkflowExpression.Validate(placeholdersValuespojo, nameof(placeholdersValuespojo), required: false);
-            WorkflowExpression.Validate(placeholdersValuesShort, nameof(placeholdersValuesShort), required: false);
-            WorkflowExpression.Validate(placeholdersValuestextual, nameof(placeholdersValuestextual), required: false);
-            WorkflowExpression.Validate(placeholdersValuesvalueNode, nameof(placeholdersValuesvalueNode), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_operationId = operationId == null ? null : WorkflowExpression.Compile(operationId);
+            WorkflowExpression.Validate(__workflow_operationId, nameof(operationId), required: true);
+            var __workflow_placeholdersValuesarray = placeholdersValuesarray == null ? null : WorkflowExpression.Compile(placeholdersValuesarray);
+            WorkflowExpression.Validate(__workflow_placeholdersValuesarray, nameof(placeholdersValuesarray), required: false);
+            var __workflow_placeholdersValuesbigDecimal = placeholdersValuesbigDecimal == null ? null : WorkflowExpression.Compile(placeholdersValuesbigDecimal);
+            WorkflowExpression.Validate(__workflow_placeholdersValuesbigDecimal, nameof(placeholdersValuesbigDecimal), required: false);
+            var __workflow_placeholdersValuesbigInteger = placeholdersValuesbigInteger == null ? null : WorkflowExpression.Compile(placeholdersValuesbigInteger);
+            WorkflowExpression.Validate(__workflow_placeholdersValuesbigInteger, nameof(placeholdersValuesbigInteger), required: false);
+            var __workflow_placeholdersValuesbinary = placeholdersValuesbinary == null ? null : WorkflowExpression.Compile(placeholdersValuesbinary);
+            WorkflowExpression.Validate(__workflow_placeholdersValuesbinary, nameof(placeholdersValuesbinary), required: false);
+            var __workflow_placeholdersValuesboolean = placeholdersValuesboolean == null ? null : WorkflowExpression.Compile(placeholdersValuesboolean);
+            WorkflowExpression.Validate(__workflow_placeholdersValuesboolean, nameof(placeholdersValuesboolean), required: false);
+            var __workflow_placeholdersValuescontainerNode = placeholdersValuescontainerNode == null ? null : WorkflowExpression.Compile(placeholdersValuescontainerNode);
+            WorkflowExpression.Validate(__workflow_placeholdersValuescontainerNode, nameof(placeholdersValuescontainerNode), required: false);
+            var __workflow_placeholdersValuesdouble = placeholdersValuesdouble == null ? null : WorkflowExpression.Compile(placeholdersValuesdouble);
+            WorkflowExpression.Validate(__workflow_placeholdersValuesdouble, nameof(placeholdersValuesdouble), required: false);
+            var __workflow_placeholdersValuesfloat = placeholdersValuesfloat == null ? null : WorkflowExpression.Compile(placeholdersValuesfloat);
+            WorkflowExpression.Validate(__workflow_placeholdersValuesfloat, nameof(placeholdersValuesfloat), required: false);
+            var __workflow_placeholdersValuesfloatingPointNumber = placeholdersValuesfloatingPointNumber == null ? null : WorkflowExpression.Compile(placeholdersValuesfloatingPointNumber);
+            WorkflowExpression.Validate(__workflow_placeholdersValuesfloatingPointNumber, nameof(placeholdersValuesfloatingPointNumber), required: false);
+            var __workflow_placeholdersValuesint = placeholdersValuesint == null ? null : WorkflowExpression.Compile(placeholdersValuesint);
+            WorkflowExpression.Validate(__workflow_placeholdersValuesint, nameof(placeholdersValuesint), required: false);
+            var __workflow_placeholdersValuesintegralNumber = placeholdersValuesintegralNumber == null ? null : WorkflowExpression.Compile(placeholdersValuesintegralNumber);
+            WorkflowExpression.Validate(__workflow_placeholdersValuesintegralNumber, nameof(placeholdersValuesintegralNumber), required: false);
+            var __workflow_placeholdersValuesLong = placeholdersValuesLong == null ? null : WorkflowExpression.Compile(placeholdersValuesLong);
+            WorkflowExpression.Validate(__workflow_placeholdersValuesLong, nameof(placeholdersValuesLong), required: false);
+            var __workflow_placeholdersValuesmissingNode = placeholdersValuesmissingNode == null ? null : WorkflowExpression.Compile(placeholdersValuesmissingNode);
+            WorkflowExpression.Validate(__workflow_placeholdersValuesmissingNode, nameof(placeholdersValuesmissingNode), required: false);
+            var __workflow_placeholdersValuesnodeType = placeholdersValuesnodeType == null ? null : WorkflowExpression.Compile(placeholdersValuesnodeType);
+            WorkflowExpression.Validate(__workflow_placeholdersValuesnodeType, nameof(placeholdersValuesnodeType), required: false);
+            var __workflow_placeholdersValuesnull = placeholdersValuesnull == null ? null : WorkflowExpression.Compile(placeholdersValuesnull);
+            WorkflowExpression.Validate(__workflow_placeholdersValuesnull, nameof(placeholdersValuesnull), required: false);
+            var __workflow_placeholdersValuesnumber = placeholdersValuesnumber == null ? null : WorkflowExpression.Compile(placeholdersValuesnumber);
+            WorkflowExpression.Validate(__workflow_placeholdersValuesnumber, nameof(placeholdersValuesnumber), required: false);
+            var __workflow_placeholdersValuesObject = placeholdersValuesObject == null ? null : WorkflowExpression.Compile(placeholdersValuesObject);
+            WorkflowExpression.Validate(__workflow_placeholdersValuesObject, nameof(placeholdersValuesObject), required: false);
+            var __workflow_placeholdersValuespojo = placeholdersValuespojo == null ? null : WorkflowExpression.Compile(placeholdersValuespojo);
+            WorkflowExpression.Validate(__workflow_placeholdersValuespojo, nameof(placeholdersValuespojo), required: false);
+            var __workflow_placeholdersValuesShort = placeholdersValuesShort == null ? null : WorkflowExpression.Compile(placeholdersValuesShort);
+            WorkflowExpression.Validate(__workflow_placeholdersValuesShort, nameof(placeholdersValuesShort), required: false);
+            var __workflow_placeholdersValuestextual = placeholdersValuestextual == null ? null : WorkflowExpression.Compile(placeholdersValuestextual);
+            WorkflowExpression.Validate(__workflow_placeholdersValuestextual, nameof(placeholdersValuestextual), required: false);
+            var __workflow_placeholdersValuesvalueNode = placeholdersValuesvalueNode == null ? null : WorkflowExpression.Compile(placeholdersValuesvalueNode);
+            WorkflowExpression.Validate(__workflow_placeholdersValuesvalueNode, nameof(placeholdersValuesvalueNode), required: false);
             return new DeferredBodyAction<ResponseEntity>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/operations/{1}", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(operationId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/operations/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_operationId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var placeholdersValues = new JObject();
                 var placeholdersValuespropCount = 0;
-                if (placeholdersValuesarray != null)
+                if (__workflow_placeholdersValuesarray != null)
                 {
-                    placeholdersValues["array"] = ExpressionConverter.ConvertO(placeholdersValuesarray);
+                    placeholdersValues["array"] = ExpressionConverter.ConvertO(__workflow_placeholdersValuesarray);
                     placeholdersValuespropCount++;
                 }
 
-                if (placeholdersValuesbigDecimal != null)
+                if (__workflow_placeholdersValuesbigDecimal != null)
                 {
-                    placeholdersValues["bigDecimal"] = ExpressionConverter.ConvertO(placeholdersValuesbigDecimal);
+                    placeholdersValues["bigDecimal"] = ExpressionConverter.ConvertO(__workflow_placeholdersValuesbigDecimal);
                     placeholdersValuespropCount++;
                 }
 
-                if (placeholdersValuesbigInteger != null)
+                if (__workflow_placeholdersValuesbigInteger != null)
                 {
-                    placeholdersValues["bigInteger"] = ExpressionConverter.ConvertO(placeholdersValuesbigInteger);
+                    placeholdersValues["bigInteger"] = ExpressionConverter.ConvertO(__workflow_placeholdersValuesbigInteger);
                     placeholdersValuespropCount++;
                 }
 
-                if (placeholdersValuesbinary != null)
+                if (__workflow_placeholdersValuesbinary != null)
                 {
-                    placeholdersValues["binary"] = ExpressionConverter.ConvertO(placeholdersValuesbinary);
+                    placeholdersValues["binary"] = ExpressionConverter.ConvertO(__workflow_placeholdersValuesbinary);
                     placeholdersValuespropCount++;
                 }
 
-                if (placeholdersValuesboolean != null)
+                if (__workflow_placeholdersValuesboolean != null)
                 {
-                    placeholdersValues["boolean"] = ExpressionConverter.ConvertO(placeholdersValuesboolean);
+                    placeholdersValues["boolean"] = ExpressionConverter.ConvertO(__workflow_placeholdersValuesboolean);
                     placeholdersValuespropCount++;
                 }
 
-                if (placeholdersValuescontainerNode != null)
+                if (__workflow_placeholdersValuescontainerNode != null)
                 {
-                    placeholdersValues["containerNode"] = ExpressionConverter.ConvertO(placeholdersValuescontainerNode);
+                    placeholdersValues["containerNode"] = ExpressionConverter.ConvertO(__workflow_placeholdersValuescontainerNode);
                     placeholdersValuespropCount++;
                 }
 
-                if (placeholdersValuesdouble != null)
+                if (__workflow_placeholdersValuesdouble != null)
                 {
-                    placeholdersValues["double"] = ExpressionConverter.ConvertO(placeholdersValuesdouble);
+                    placeholdersValues["double"] = ExpressionConverter.ConvertO(__workflow_placeholdersValuesdouble);
                     placeholdersValuespropCount++;
                 }
 
-                if (placeholdersValuesfloat != null)
+                if (__workflow_placeholdersValuesfloat != null)
                 {
-                    placeholdersValues["float"] = ExpressionConverter.ConvertO(placeholdersValuesfloat);
+                    placeholdersValues["float"] = ExpressionConverter.ConvertO(__workflow_placeholdersValuesfloat);
                     placeholdersValuespropCount++;
                 }
 
-                if (placeholdersValuesfloatingPointNumber != null)
+                if (__workflow_placeholdersValuesfloatingPointNumber != null)
                 {
-                    placeholdersValues["floatingPointNumber"] = ExpressionConverter.ConvertO(placeholdersValuesfloatingPointNumber);
+                    placeholdersValues["floatingPointNumber"] = ExpressionConverter.ConvertO(__workflow_placeholdersValuesfloatingPointNumber);
                     placeholdersValuespropCount++;
                 }
 
-                if (placeholdersValuesint != null)
+                if (__workflow_placeholdersValuesint != null)
                 {
-                    placeholdersValues["int"] = ExpressionConverter.ConvertO(placeholdersValuesint);
+                    placeholdersValues["int"] = ExpressionConverter.ConvertO(__workflow_placeholdersValuesint);
                     placeholdersValuespropCount++;
                 }
 
-                if (placeholdersValuesintegralNumber != null)
+                if (__workflow_placeholdersValuesintegralNumber != null)
                 {
-                    placeholdersValues["integralNumber"] = ExpressionConverter.ConvertO(placeholdersValuesintegralNumber);
+                    placeholdersValues["integralNumber"] = ExpressionConverter.ConvertO(__workflow_placeholdersValuesintegralNumber);
                     placeholdersValuespropCount++;
                 }
 
-                if (placeholdersValuesLong != null)
+                if (__workflow_placeholdersValuesLong != null)
                 {
-                    placeholdersValues["long"] = ExpressionConverter.ConvertO(placeholdersValuesLong);
+                    placeholdersValues["long"] = ExpressionConverter.ConvertO(__workflow_placeholdersValuesLong);
                     placeholdersValuespropCount++;
                 }
 
-                if (placeholdersValuesmissingNode != null)
+                if (__workflow_placeholdersValuesmissingNode != null)
                 {
-                    placeholdersValues["missingNode"] = ExpressionConverter.ConvertO(placeholdersValuesmissingNode);
+                    placeholdersValues["missingNode"] = ExpressionConverter.ConvertO(__workflow_placeholdersValuesmissingNode);
                     placeholdersValuespropCount++;
                 }
 
-                if (placeholdersValuesnodeType != null)
+                if (__workflow_placeholdersValuesnodeType != null)
                 {
-                    placeholdersValues["nodeType"] = ExpressionConverter.ConvertO(placeholdersValuesnodeType);
+                    placeholdersValues["nodeType"] = ExpressionConverter.ConvertO(__workflow_placeholdersValuesnodeType);
                     placeholdersValuespropCount++;
                 }
 
-                if (placeholdersValuesnull != null)
+                if (__workflow_placeholdersValuesnull != null)
                 {
-                    placeholdersValues["null"] = ExpressionConverter.ConvertO(placeholdersValuesnull);
+                    placeholdersValues["null"] = ExpressionConverter.ConvertO(__workflow_placeholdersValuesnull);
                     placeholdersValuespropCount++;
                 }
 
-                if (placeholdersValuesnumber != null)
+                if (__workflow_placeholdersValuesnumber != null)
                 {
-                    placeholdersValues["number"] = ExpressionConverter.ConvertO(placeholdersValuesnumber);
+                    placeholdersValues["number"] = ExpressionConverter.ConvertO(__workflow_placeholdersValuesnumber);
                     placeholdersValuespropCount++;
                 }
 
-                if (placeholdersValuesObject != null)
+                if (__workflow_placeholdersValuesObject != null)
                 {
-                    placeholdersValues["object"] = ExpressionConverter.ConvertO(placeholdersValuesObject);
+                    placeholdersValues["object"] = ExpressionConverter.ConvertO(__workflow_placeholdersValuesObject);
                     placeholdersValuespropCount++;
                 }
 
-                if (placeholdersValuespojo != null)
+                if (__workflow_placeholdersValuespojo != null)
                 {
-                    placeholdersValues["pojo"] = ExpressionConverter.ConvertO(placeholdersValuespojo);
+                    placeholdersValues["pojo"] = ExpressionConverter.ConvertO(__workflow_placeholdersValuespojo);
                     placeholdersValuespropCount++;
                 }
 
-                if (placeholdersValuesShort != null)
+                if (__workflow_placeholdersValuesShort != null)
                 {
-                    placeholdersValues["short"] = ExpressionConverter.ConvertO(placeholdersValuesShort);
+                    placeholdersValues["short"] = ExpressionConverter.ConvertO(__workflow_placeholdersValuesShort);
                     placeholdersValuespropCount++;
                 }
 
-                if (placeholdersValuestextual != null)
+                if (__workflow_placeholdersValuestextual != null)
                 {
-                    placeholdersValues["textual"] = ExpressionConverter.ConvertO(placeholdersValuestextual);
+                    placeholdersValues["textual"] = ExpressionConverter.ConvertO(__workflow_placeholdersValuestextual);
                     placeholdersValuespropCount++;
                 }
 
-                if (placeholdersValuesvalueNode != null)
+                if (__workflow_placeholdersValuesvalueNode != null)
                 {
-                    placeholdersValues["valueNode"] = ExpressionConverter.ConvertO(placeholdersValuesvalueNode);
+                    placeholdersValues["valueNode"] = ExpressionConverter.ConvertO(__workflow_placeholdersValuesvalueNode);
                     placeholdersValuespropCount++;
                 }
 
@@ -3611,280 +3767,340 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateThingFixedPosition))]
-        public IBodyWorkflowAction<SingleThingRo> UpdateThingFixedPosition([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> thingRoname, [WorkflowExpression] Func<string> thingRositeaddress, [WorkflowExpression] Func<string> thingRositecity, [WorkflowExpression] Func<string> thingRositename, [WorkflowExpression] Func<string> thingRositepostalCode, [WorkflowExpression] Func<CustomFieldRo[]> thingRocustomFields = null, [WorkflowExpression] Func<string> thingRodescription = null, [WorkflowExpression] Func<string> thingRodisplayName = null, [WorkflowExpression] Func<bool> thingRodynamicGps = null, [WorkflowExpression] Func<double> thingRofixedLatitude = null, [WorkflowExpression] Func<double> thingRofixedLongitude = null, [WorkflowExpression] Func<string> thingRofixedName = null, [WorkflowExpression] Func<string> thingRoid = null, [WorkflowExpression] Func<int> thingRolastActivityDate = null, [WorkflowExpression] Func<double> thingRolastLatitude = null, [WorkflowExpression] Func<double> thingRolastLongitude = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsarray = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsbigDecimal = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsbigInteger = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsbinary = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsboolean = null, [WorkflowExpression] Func<bool> thingRolastMeasurementscontainerNode = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsdouble = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsfloat = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsfloatingPointNumber = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsint = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsintegralNumber = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsLong = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsmissingNode = null, [WorkflowExpression] Func<thingRolastMeasurementsnodeTypeInput> thingRolastMeasurementsnodeType = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsnull = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsnumber = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsObject = null, [WorkflowExpression] Func<bool> thingRolastMeasurementspojo = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsShort = null, [WorkflowExpression] Func<bool> thingRolastMeasurementstextual = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsvalueNode = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsarray = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsbigDecimal = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsbigInteger = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsbinary = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsboolean = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampscontainerNode = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsdouble = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsfloat = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsfloatingPointNumber = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsint = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsintegralNumber = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsLong = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsmissingNode = null, [WorkflowExpression] Func<thingRolastMeasurementsTimestampsnodeTypeInput> thingRolastMeasurementsTimestampsnodeType = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsnull = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsnumber = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsObject = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampspojo = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsShort = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampstextual = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsvalueNode = null, [WorkflowExpression] Func<int> thingRolastMessageDate = null, [WorkflowExpression] Func<int> thingRomessageActivityTimeoutPeriod = null, [WorkflowExpression] Func<int> thingRonbAlerts = null, [WorkflowExpression] Func<string> thingRositeid = null, [WorkflowExpression] Func<double> thingRositelatitude = null, [WorkflowExpression] Func<double> thingRositelongitude = null, [WorkflowExpression] Func<thingRostatusInput> thingRostatus = null, [WorkflowExpression] Func<ThingTagRo[]> thingRotags = null)
+        public IBodyWorkflowAction<SingleThingRo> UpdateThingFixedPosition(Expression<Func<string>> id, Expression<Func<string>> thingRoname, Expression<Func<string>> thingRositeaddress, Expression<Func<string>> thingRositecity, Expression<Func<string>> thingRositename, Expression<Func<string>> thingRositepostalCode, Expression<Func<CustomFieldRo[]>> thingRocustomFields = null, Expression<Func<string>> thingRodescription = null, Expression<Func<string>> thingRodisplayName = null, Expression<Func<bool>> thingRodynamicGps = null, Expression<Func<double>> thingRofixedLatitude = null, Expression<Func<double>> thingRofixedLongitude = null, Expression<Func<string>> thingRofixedName = null, Expression<Func<string>> thingRoid = null, Expression<Func<int>> thingRolastActivityDate = null, Expression<Func<double>> thingRolastLatitude = null, Expression<Func<double>> thingRolastLongitude = null, Expression<Func<bool>> thingRolastMeasurementsarray = null, Expression<Func<bool>> thingRolastMeasurementsbigDecimal = null, Expression<Func<bool>> thingRolastMeasurementsbigInteger = null, Expression<Func<bool>> thingRolastMeasurementsbinary = null, Expression<Func<bool>> thingRolastMeasurementsboolean = null, Expression<Func<bool>> thingRolastMeasurementscontainerNode = null, Expression<Func<bool>> thingRolastMeasurementsdouble = null, Expression<Func<bool>> thingRolastMeasurementsfloat = null, Expression<Func<bool>> thingRolastMeasurementsfloatingPointNumber = null, Expression<Func<bool>> thingRolastMeasurementsint = null, Expression<Func<bool>> thingRolastMeasurementsintegralNumber = null, Expression<Func<bool>> thingRolastMeasurementsLong = null, Expression<Func<bool>> thingRolastMeasurementsmissingNode = null, Expression<Func<thingRolastMeasurementsnodeTypeInput>> thingRolastMeasurementsnodeType = null, Expression<Func<bool>> thingRolastMeasurementsnull = null, Expression<Func<bool>> thingRolastMeasurementsnumber = null, Expression<Func<bool>> thingRolastMeasurementsObject = null, Expression<Func<bool>> thingRolastMeasurementspojo = null, Expression<Func<bool>> thingRolastMeasurementsShort = null, Expression<Func<bool>> thingRolastMeasurementstextual = null, Expression<Func<bool>> thingRolastMeasurementsvalueNode = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsarray = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsbigDecimal = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsbigInteger = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsbinary = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsboolean = null, Expression<Func<bool>> thingRolastMeasurementsTimestampscontainerNode = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsdouble = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsfloat = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsfloatingPointNumber = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsint = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsintegralNumber = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsLong = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsmissingNode = null, Expression<Func<thingRolastMeasurementsTimestampsnodeTypeInput>> thingRolastMeasurementsTimestampsnodeType = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsnull = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsnumber = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsObject = null, Expression<Func<bool>> thingRolastMeasurementsTimestampspojo = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsShort = null, Expression<Func<bool>> thingRolastMeasurementsTimestampstextual = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsvalueNode = null, Expression<Func<int>> thingRolastMessageDate = null, Expression<Func<int>> thingRomessageActivityTimeoutPeriod = null, Expression<Func<int>> thingRonbAlerts = null, Expression<Func<string>> thingRositeid = null, Expression<Func<double>> thingRositelatitude = null, Expression<Func<double>> thingRositelongitude = null, Expression<Func<thingRostatusInput>> thingRostatus = null, Expression<Func<ThingTagRo[]>> thingRotags = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SingleThingRo> __BuildUpdateThingFixedPosition(WorkflowExpression<string> id, WorkflowExpression<string> thingRoname, WorkflowExpression<string> thingRositeaddress, WorkflowExpression<string> thingRositecity, WorkflowExpression<string> thingRositename, WorkflowExpression<string> thingRositepostalCode, WorkflowExpression<CustomFieldRo[]> thingRocustomFields = null, WorkflowExpression<string> thingRodescription = null, WorkflowExpression<string> thingRodisplayName = null, WorkflowExpression<bool> thingRodynamicGps = null, WorkflowExpression<double> thingRofixedLatitude = null, WorkflowExpression<double> thingRofixedLongitude = null, WorkflowExpression<string> thingRofixedName = null, WorkflowExpression<string> thingRoid = null, WorkflowExpression<int> thingRolastActivityDate = null, WorkflowExpression<double> thingRolastLatitude = null, WorkflowExpression<double> thingRolastLongitude = null, WorkflowExpression<bool> thingRolastMeasurementsarray = null, WorkflowExpression<bool> thingRolastMeasurementsbigDecimal = null, WorkflowExpression<bool> thingRolastMeasurementsbigInteger = null, WorkflowExpression<bool> thingRolastMeasurementsbinary = null, WorkflowExpression<bool> thingRolastMeasurementsboolean = null, WorkflowExpression<bool> thingRolastMeasurementscontainerNode = null, WorkflowExpression<bool> thingRolastMeasurementsdouble = null, WorkflowExpression<bool> thingRolastMeasurementsfloat = null, WorkflowExpression<bool> thingRolastMeasurementsfloatingPointNumber = null, WorkflowExpression<bool> thingRolastMeasurementsint = null, WorkflowExpression<bool> thingRolastMeasurementsintegralNumber = null, WorkflowExpression<bool> thingRolastMeasurementsLong = null, WorkflowExpression<bool> thingRolastMeasurementsmissingNode = null, WorkflowExpression<thingRolastMeasurementsnodeTypeInput> thingRolastMeasurementsnodeType = null, WorkflowExpression<bool> thingRolastMeasurementsnull = null, WorkflowExpression<bool> thingRolastMeasurementsnumber = null, WorkflowExpression<bool> thingRolastMeasurementsObject = null, WorkflowExpression<bool> thingRolastMeasurementspojo = null, WorkflowExpression<bool> thingRolastMeasurementsShort = null, WorkflowExpression<bool> thingRolastMeasurementstextual = null, WorkflowExpression<bool> thingRolastMeasurementsvalueNode = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsarray = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsbigDecimal = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsbigInteger = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsbinary = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsboolean = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampscontainerNode = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsdouble = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsfloat = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsfloatingPointNumber = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsint = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsintegralNumber = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsLong = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsmissingNode = null, WorkflowExpression<thingRolastMeasurementsTimestampsnodeTypeInput> thingRolastMeasurementsTimestampsnodeType = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsnull = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsnumber = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsObject = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampspojo = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsShort = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampstextual = null, WorkflowExpression<bool> thingRolastMeasurementsTimestampsvalueNode = null, WorkflowExpression<int> thingRolastMessageDate = null, WorkflowExpression<int> thingRomessageActivityTimeoutPeriod = null, WorkflowExpression<int> thingRonbAlerts = null, WorkflowExpression<string> thingRositeid = null, WorkflowExpression<double> thingRositelatitude = null, WorkflowExpression<double> thingRositelongitude = null, WorkflowExpression<thingRostatusInput> thingRostatus = null, WorkflowExpression<ThingTagRo[]> thingRotags = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(thingRoname, nameof(thingRoname), required: true);
-            WorkflowExpression.Validate(thingRositeaddress, nameof(thingRositeaddress), required: true);
-            WorkflowExpression.Validate(thingRositecity, nameof(thingRositecity), required: true);
-            WorkflowExpression.Validate(thingRositename, nameof(thingRositename), required: true);
-            WorkflowExpression.Validate(thingRositepostalCode, nameof(thingRositepostalCode), required: true);
-            WorkflowExpression.Validate(thingRocustomFields, nameof(thingRocustomFields), required: false);
-            WorkflowExpression.Validate(thingRodescription, nameof(thingRodescription), required: false);
-            WorkflowExpression.Validate(thingRodisplayName, nameof(thingRodisplayName), required: false);
-            WorkflowExpression.Validate(thingRodynamicGps, nameof(thingRodynamicGps), required: false);
-            WorkflowExpression.Validate(thingRofixedLatitude, nameof(thingRofixedLatitude), required: false);
-            WorkflowExpression.Validate(thingRofixedLongitude, nameof(thingRofixedLongitude), required: false);
-            WorkflowExpression.Validate(thingRofixedName, nameof(thingRofixedName), required: false);
-            WorkflowExpression.Validate(thingRoid, nameof(thingRoid), required: false);
-            WorkflowExpression.Validate(thingRolastActivityDate, nameof(thingRolastActivityDate), required: false);
-            WorkflowExpression.Validate(thingRolastLatitude, nameof(thingRolastLatitude), required: false);
-            WorkflowExpression.Validate(thingRolastLongitude, nameof(thingRolastLongitude), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsarray, nameof(thingRolastMeasurementsarray), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsbigDecimal, nameof(thingRolastMeasurementsbigDecimal), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsbigInteger, nameof(thingRolastMeasurementsbigInteger), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsbinary, nameof(thingRolastMeasurementsbinary), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsboolean, nameof(thingRolastMeasurementsboolean), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementscontainerNode, nameof(thingRolastMeasurementscontainerNode), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsdouble, nameof(thingRolastMeasurementsdouble), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsfloat, nameof(thingRolastMeasurementsfloat), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsfloatingPointNumber, nameof(thingRolastMeasurementsfloatingPointNumber), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsint, nameof(thingRolastMeasurementsint), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsintegralNumber, nameof(thingRolastMeasurementsintegralNumber), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsLong, nameof(thingRolastMeasurementsLong), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsmissingNode, nameof(thingRolastMeasurementsmissingNode), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsnodeType, nameof(thingRolastMeasurementsnodeType), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsnull, nameof(thingRolastMeasurementsnull), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsnumber, nameof(thingRolastMeasurementsnumber), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsObject, nameof(thingRolastMeasurementsObject), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementspojo, nameof(thingRolastMeasurementspojo), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsShort, nameof(thingRolastMeasurementsShort), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementstextual, nameof(thingRolastMeasurementstextual), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsvalueNode, nameof(thingRolastMeasurementsvalueNode), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsTimestampsarray, nameof(thingRolastMeasurementsTimestampsarray), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsTimestampsbigDecimal, nameof(thingRolastMeasurementsTimestampsbigDecimal), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsTimestampsbigInteger, nameof(thingRolastMeasurementsTimestampsbigInteger), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsTimestampsbinary, nameof(thingRolastMeasurementsTimestampsbinary), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsTimestampsboolean, nameof(thingRolastMeasurementsTimestampsboolean), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsTimestampscontainerNode, nameof(thingRolastMeasurementsTimestampscontainerNode), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsTimestampsdouble, nameof(thingRolastMeasurementsTimestampsdouble), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsTimestampsfloat, nameof(thingRolastMeasurementsTimestampsfloat), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsTimestampsfloatingPointNumber, nameof(thingRolastMeasurementsTimestampsfloatingPointNumber), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsTimestampsint, nameof(thingRolastMeasurementsTimestampsint), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsTimestampsintegralNumber, nameof(thingRolastMeasurementsTimestampsintegralNumber), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsTimestampsLong, nameof(thingRolastMeasurementsTimestampsLong), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsTimestampsmissingNode, nameof(thingRolastMeasurementsTimestampsmissingNode), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsTimestampsnodeType, nameof(thingRolastMeasurementsTimestampsnodeType), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsTimestampsnull, nameof(thingRolastMeasurementsTimestampsnull), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsTimestampsnumber, nameof(thingRolastMeasurementsTimestampsnumber), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsTimestampsObject, nameof(thingRolastMeasurementsTimestampsObject), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsTimestampspojo, nameof(thingRolastMeasurementsTimestampspojo), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsTimestampsShort, nameof(thingRolastMeasurementsTimestampsShort), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsTimestampstextual, nameof(thingRolastMeasurementsTimestampstextual), required: false);
-            WorkflowExpression.Validate(thingRolastMeasurementsTimestampsvalueNode, nameof(thingRolastMeasurementsTimestampsvalueNode), required: false);
-            WorkflowExpression.Validate(thingRolastMessageDate, nameof(thingRolastMessageDate), required: false);
-            WorkflowExpression.Validate(thingRomessageActivityTimeoutPeriod, nameof(thingRomessageActivityTimeoutPeriod), required: false);
-            WorkflowExpression.Validate(thingRonbAlerts, nameof(thingRonbAlerts), required: false);
-            WorkflowExpression.Validate(thingRositeid, nameof(thingRositeid), required: false);
-            WorkflowExpression.Validate(thingRositelatitude, nameof(thingRositelatitude), required: false);
-            WorkflowExpression.Validate(thingRositelongitude, nameof(thingRositelongitude), required: false);
-            WorkflowExpression.Validate(thingRostatus, nameof(thingRostatus), required: false);
-            WorkflowExpression.Validate(thingRotags, nameof(thingRotags), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_thingRoname = thingRoname == null ? null : WorkflowExpression.Compile(thingRoname);
+            WorkflowExpression.Validate(__workflow_thingRoname, nameof(thingRoname), required: true);
+            var __workflow_thingRositeaddress = thingRositeaddress == null ? null : WorkflowExpression.Compile(thingRositeaddress);
+            WorkflowExpression.Validate(__workflow_thingRositeaddress, nameof(thingRositeaddress), required: true);
+            var __workflow_thingRositecity = thingRositecity == null ? null : WorkflowExpression.Compile(thingRositecity);
+            WorkflowExpression.Validate(__workflow_thingRositecity, nameof(thingRositecity), required: true);
+            var __workflow_thingRositename = thingRositename == null ? null : WorkflowExpression.Compile(thingRositename);
+            WorkflowExpression.Validate(__workflow_thingRositename, nameof(thingRositename), required: true);
+            var __workflow_thingRositepostalCode = thingRositepostalCode == null ? null : WorkflowExpression.Compile(thingRositepostalCode);
+            WorkflowExpression.Validate(__workflow_thingRositepostalCode, nameof(thingRositepostalCode), required: true);
+            var __workflow_thingRocustomFields = thingRocustomFields == null ? null : WorkflowExpression.Compile(thingRocustomFields);
+            WorkflowExpression.Validate(__workflow_thingRocustomFields, nameof(thingRocustomFields), required: false);
+            var __workflow_thingRodescription = thingRodescription == null ? null : WorkflowExpression.Compile(thingRodescription);
+            WorkflowExpression.Validate(__workflow_thingRodescription, nameof(thingRodescription), required: false);
+            var __workflow_thingRodisplayName = thingRodisplayName == null ? null : WorkflowExpression.Compile(thingRodisplayName);
+            WorkflowExpression.Validate(__workflow_thingRodisplayName, nameof(thingRodisplayName), required: false);
+            var __workflow_thingRodynamicGps = thingRodynamicGps == null ? null : WorkflowExpression.Compile(thingRodynamicGps);
+            WorkflowExpression.Validate(__workflow_thingRodynamicGps, nameof(thingRodynamicGps), required: false);
+            var __workflow_thingRofixedLatitude = thingRofixedLatitude == null ? null : WorkflowExpression.Compile(thingRofixedLatitude);
+            WorkflowExpression.Validate(__workflow_thingRofixedLatitude, nameof(thingRofixedLatitude), required: false);
+            var __workflow_thingRofixedLongitude = thingRofixedLongitude == null ? null : WorkflowExpression.Compile(thingRofixedLongitude);
+            WorkflowExpression.Validate(__workflow_thingRofixedLongitude, nameof(thingRofixedLongitude), required: false);
+            var __workflow_thingRofixedName = thingRofixedName == null ? null : WorkflowExpression.Compile(thingRofixedName);
+            WorkflowExpression.Validate(__workflow_thingRofixedName, nameof(thingRofixedName), required: false);
+            var __workflow_thingRoid = thingRoid == null ? null : WorkflowExpression.Compile(thingRoid);
+            WorkflowExpression.Validate(__workflow_thingRoid, nameof(thingRoid), required: false);
+            var __workflow_thingRolastActivityDate = thingRolastActivityDate == null ? null : WorkflowExpression.Compile(thingRolastActivityDate);
+            WorkflowExpression.Validate(__workflow_thingRolastActivityDate, nameof(thingRolastActivityDate), required: false);
+            var __workflow_thingRolastLatitude = thingRolastLatitude == null ? null : WorkflowExpression.Compile(thingRolastLatitude);
+            WorkflowExpression.Validate(__workflow_thingRolastLatitude, nameof(thingRolastLatitude), required: false);
+            var __workflow_thingRolastLongitude = thingRolastLongitude == null ? null : WorkflowExpression.Compile(thingRolastLongitude);
+            WorkflowExpression.Validate(__workflow_thingRolastLongitude, nameof(thingRolastLongitude), required: false);
+            var __workflow_thingRolastMeasurementsarray = thingRolastMeasurementsarray == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsarray);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsarray, nameof(thingRolastMeasurementsarray), required: false);
+            var __workflow_thingRolastMeasurementsbigDecimal = thingRolastMeasurementsbigDecimal == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsbigDecimal);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsbigDecimal, nameof(thingRolastMeasurementsbigDecimal), required: false);
+            var __workflow_thingRolastMeasurementsbigInteger = thingRolastMeasurementsbigInteger == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsbigInteger);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsbigInteger, nameof(thingRolastMeasurementsbigInteger), required: false);
+            var __workflow_thingRolastMeasurementsbinary = thingRolastMeasurementsbinary == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsbinary);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsbinary, nameof(thingRolastMeasurementsbinary), required: false);
+            var __workflow_thingRolastMeasurementsboolean = thingRolastMeasurementsboolean == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsboolean);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsboolean, nameof(thingRolastMeasurementsboolean), required: false);
+            var __workflow_thingRolastMeasurementscontainerNode = thingRolastMeasurementscontainerNode == null ? null : WorkflowExpression.Compile(thingRolastMeasurementscontainerNode);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementscontainerNode, nameof(thingRolastMeasurementscontainerNode), required: false);
+            var __workflow_thingRolastMeasurementsdouble = thingRolastMeasurementsdouble == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsdouble);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsdouble, nameof(thingRolastMeasurementsdouble), required: false);
+            var __workflow_thingRolastMeasurementsfloat = thingRolastMeasurementsfloat == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsfloat);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsfloat, nameof(thingRolastMeasurementsfloat), required: false);
+            var __workflow_thingRolastMeasurementsfloatingPointNumber = thingRolastMeasurementsfloatingPointNumber == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsfloatingPointNumber);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsfloatingPointNumber, nameof(thingRolastMeasurementsfloatingPointNumber), required: false);
+            var __workflow_thingRolastMeasurementsint = thingRolastMeasurementsint == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsint);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsint, nameof(thingRolastMeasurementsint), required: false);
+            var __workflow_thingRolastMeasurementsintegralNumber = thingRolastMeasurementsintegralNumber == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsintegralNumber);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsintegralNumber, nameof(thingRolastMeasurementsintegralNumber), required: false);
+            var __workflow_thingRolastMeasurementsLong = thingRolastMeasurementsLong == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsLong);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsLong, nameof(thingRolastMeasurementsLong), required: false);
+            var __workflow_thingRolastMeasurementsmissingNode = thingRolastMeasurementsmissingNode == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsmissingNode);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsmissingNode, nameof(thingRolastMeasurementsmissingNode), required: false);
+            var __workflow_thingRolastMeasurementsnodeType = thingRolastMeasurementsnodeType == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsnodeType);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsnodeType, nameof(thingRolastMeasurementsnodeType), required: false);
+            var __workflow_thingRolastMeasurementsnull = thingRolastMeasurementsnull == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsnull);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsnull, nameof(thingRolastMeasurementsnull), required: false);
+            var __workflow_thingRolastMeasurementsnumber = thingRolastMeasurementsnumber == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsnumber);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsnumber, nameof(thingRolastMeasurementsnumber), required: false);
+            var __workflow_thingRolastMeasurementsObject = thingRolastMeasurementsObject == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsObject);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsObject, nameof(thingRolastMeasurementsObject), required: false);
+            var __workflow_thingRolastMeasurementspojo = thingRolastMeasurementspojo == null ? null : WorkflowExpression.Compile(thingRolastMeasurementspojo);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementspojo, nameof(thingRolastMeasurementspojo), required: false);
+            var __workflow_thingRolastMeasurementsShort = thingRolastMeasurementsShort == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsShort);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsShort, nameof(thingRolastMeasurementsShort), required: false);
+            var __workflow_thingRolastMeasurementstextual = thingRolastMeasurementstextual == null ? null : WorkflowExpression.Compile(thingRolastMeasurementstextual);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementstextual, nameof(thingRolastMeasurementstextual), required: false);
+            var __workflow_thingRolastMeasurementsvalueNode = thingRolastMeasurementsvalueNode == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsvalueNode);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsvalueNode, nameof(thingRolastMeasurementsvalueNode), required: false);
+            var __workflow_thingRolastMeasurementsTimestampsarray = thingRolastMeasurementsTimestampsarray == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsTimestampsarray);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsTimestampsarray, nameof(thingRolastMeasurementsTimestampsarray), required: false);
+            var __workflow_thingRolastMeasurementsTimestampsbigDecimal = thingRolastMeasurementsTimestampsbigDecimal == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsTimestampsbigDecimal);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsTimestampsbigDecimal, nameof(thingRolastMeasurementsTimestampsbigDecimal), required: false);
+            var __workflow_thingRolastMeasurementsTimestampsbigInteger = thingRolastMeasurementsTimestampsbigInteger == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsTimestampsbigInteger);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsTimestampsbigInteger, nameof(thingRolastMeasurementsTimestampsbigInteger), required: false);
+            var __workflow_thingRolastMeasurementsTimestampsbinary = thingRolastMeasurementsTimestampsbinary == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsTimestampsbinary);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsTimestampsbinary, nameof(thingRolastMeasurementsTimestampsbinary), required: false);
+            var __workflow_thingRolastMeasurementsTimestampsboolean = thingRolastMeasurementsTimestampsboolean == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsTimestampsboolean);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsTimestampsboolean, nameof(thingRolastMeasurementsTimestampsboolean), required: false);
+            var __workflow_thingRolastMeasurementsTimestampscontainerNode = thingRolastMeasurementsTimestampscontainerNode == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsTimestampscontainerNode);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsTimestampscontainerNode, nameof(thingRolastMeasurementsTimestampscontainerNode), required: false);
+            var __workflow_thingRolastMeasurementsTimestampsdouble = thingRolastMeasurementsTimestampsdouble == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsTimestampsdouble);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsTimestampsdouble, nameof(thingRolastMeasurementsTimestampsdouble), required: false);
+            var __workflow_thingRolastMeasurementsTimestampsfloat = thingRolastMeasurementsTimestampsfloat == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsTimestampsfloat);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsTimestampsfloat, nameof(thingRolastMeasurementsTimestampsfloat), required: false);
+            var __workflow_thingRolastMeasurementsTimestampsfloatingPointNumber = thingRolastMeasurementsTimestampsfloatingPointNumber == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsTimestampsfloatingPointNumber);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsTimestampsfloatingPointNumber, nameof(thingRolastMeasurementsTimestampsfloatingPointNumber), required: false);
+            var __workflow_thingRolastMeasurementsTimestampsint = thingRolastMeasurementsTimestampsint == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsTimestampsint);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsTimestampsint, nameof(thingRolastMeasurementsTimestampsint), required: false);
+            var __workflow_thingRolastMeasurementsTimestampsintegralNumber = thingRolastMeasurementsTimestampsintegralNumber == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsTimestampsintegralNumber);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsTimestampsintegralNumber, nameof(thingRolastMeasurementsTimestampsintegralNumber), required: false);
+            var __workflow_thingRolastMeasurementsTimestampsLong = thingRolastMeasurementsTimestampsLong == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsTimestampsLong);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsTimestampsLong, nameof(thingRolastMeasurementsTimestampsLong), required: false);
+            var __workflow_thingRolastMeasurementsTimestampsmissingNode = thingRolastMeasurementsTimestampsmissingNode == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsTimestampsmissingNode);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsTimestampsmissingNode, nameof(thingRolastMeasurementsTimestampsmissingNode), required: false);
+            var __workflow_thingRolastMeasurementsTimestampsnodeType = thingRolastMeasurementsTimestampsnodeType == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsTimestampsnodeType);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsTimestampsnodeType, nameof(thingRolastMeasurementsTimestampsnodeType), required: false);
+            var __workflow_thingRolastMeasurementsTimestampsnull = thingRolastMeasurementsTimestampsnull == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsTimestampsnull);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsTimestampsnull, nameof(thingRolastMeasurementsTimestampsnull), required: false);
+            var __workflow_thingRolastMeasurementsTimestampsnumber = thingRolastMeasurementsTimestampsnumber == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsTimestampsnumber);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsTimestampsnumber, nameof(thingRolastMeasurementsTimestampsnumber), required: false);
+            var __workflow_thingRolastMeasurementsTimestampsObject = thingRolastMeasurementsTimestampsObject == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsTimestampsObject);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsTimestampsObject, nameof(thingRolastMeasurementsTimestampsObject), required: false);
+            var __workflow_thingRolastMeasurementsTimestampspojo = thingRolastMeasurementsTimestampspojo == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsTimestampspojo);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsTimestampspojo, nameof(thingRolastMeasurementsTimestampspojo), required: false);
+            var __workflow_thingRolastMeasurementsTimestampsShort = thingRolastMeasurementsTimestampsShort == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsTimestampsShort);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsTimestampsShort, nameof(thingRolastMeasurementsTimestampsShort), required: false);
+            var __workflow_thingRolastMeasurementsTimestampstextual = thingRolastMeasurementsTimestampstextual == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsTimestampstextual);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsTimestampstextual, nameof(thingRolastMeasurementsTimestampstextual), required: false);
+            var __workflow_thingRolastMeasurementsTimestampsvalueNode = thingRolastMeasurementsTimestampsvalueNode == null ? null : WorkflowExpression.Compile(thingRolastMeasurementsTimestampsvalueNode);
+            WorkflowExpression.Validate(__workflow_thingRolastMeasurementsTimestampsvalueNode, nameof(thingRolastMeasurementsTimestampsvalueNode), required: false);
+            var __workflow_thingRolastMessageDate = thingRolastMessageDate == null ? null : WorkflowExpression.Compile(thingRolastMessageDate);
+            WorkflowExpression.Validate(__workflow_thingRolastMessageDate, nameof(thingRolastMessageDate), required: false);
+            var __workflow_thingRomessageActivityTimeoutPeriod = thingRomessageActivityTimeoutPeriod == null ? null : WorkflowExpression.Compile(thingRomessageActivityTimeoutPeriod);
+            WorkflowExpression.Validate(__workflow_thingRomessageActivityTimeoutPeriod, nameof(thingRomessageActivityTimeoutPeriod), required: false);
+            var __workflow_thingRonbAlerts = thingRonbAlerts == null ? null : WorkflowExpression.Compile(thingRonbAlerts);
+            WorkflowExpression.Validate(__workflow_thingRonbAlerts, nameof(thingRonbAlerts), required: false);
+            var __workflow_thingRositeid = thingRositeid == null ? null : WorkflowExpression.Compile(thingRositeid);
+            WorkflowExpression.Validate(__workflow_thingRositeid, nameof(thingRositeid), required: false);
+            var __workflow_thingRositelatitude = thingRositelatitude == null ? null : WorkflowExpression.Compile(thingRositelatitude);
+            WorkflowExpression.Validate(__workflow_thingRositelatitude, nameof(thingRositelatitude), required: false);
+            var __workflow_thingRositelongitude = thingRositelongitude == null ? null : WorkflowExpression.Compile(thingRositelongitude);
+            WorkflowExpression.Validate(__workflow_thingRositelongitude, nameof(thingRositelongitude), required: false);
+            var __workflow_thingRostatus = thingRostatus == null ? null : WorkflowExpression.Compile(thingRostatus);
+            WorkflowExpression.Validate(__workflow_thingRostatus, nameof(thingRostatus), required: false);
+            var __workflow_thingRotags = thingRotags == null ? null : WorkflowExpression.Compile(thingRotags);
+            WorkflowExpression.Validate(__workflow_thingRotags, nameof(thingRotags), required: false);
             return new DeferredBodyAction<SingleThingRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/positions", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/positions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var thingRo = new JObject();
                 var thingRopropCount = 0;
-                if (thingRocustomFields != null)
+                if (__workflow_thingRocustomFields != null)
                 {
-                    thingRo["customFields"] = ExpressionConverter.ConvertO(thingRocustomFields);
+                    thingRo["customFields"] = ExpressionConverter.ConvertO(__workflow_thingRocustomFields);
                     thingRopropCount++;
                 }
 
-                if (thingRodescription != null)
+                if (__workflow_thingRodescription != null)
                 {
-                    thingRo["description"] = ExpressionConverter.ConvertO(thingRodescription);
+                    thingRo["description"] = ExpressionConverter.ConvertO(__workflow_thingRodescription);
                     thingRopropCount++;
                 }
 
-                if (thingRodisplayName != null)
+                if (__workflow_thingRodisplayName != null)
                 {
-                    thingRo["displayName"] = ExpressionConverter.ConvertO(thingRodisplayName);
+                    thingRo["displayName"] = ExpressionConverter.ConvertO(__workflow_thingRodisplayName);
                     thingRopropCount++;
                 }
 
-                if (thingRodynamicGps != null)
+                if (__workflow_thingRodynamicGps != null)
                 {
-                    thingRo["dynamicGps"] = ExpressionConverter.ConvertO(thingRodynamicGps);
+                    thingRo["dynamicGps"] = ExpressionConverter.ConvertO(__workflow_thingRodynamicGps);
                     thingRopropCount++;
                 }
 
-                if (thingRofixedLatitude != null)
+                if (__workflow_thingRofixedLatitude != null)
                 {
-                    thingRo["fixedLatitude"] = ExpressionConverter.ConvertO(thingRofixedLatitude);
+                    thingRo["fixedLatitude"] = ExpressionConverter.ConvertO(__workflow_thingRofixedLatitude);
                     thingRopropCount++;
                 }
 
-                if (thingRofixedLongitude != null)
+                if (__workflow_thingRofixedLongitude != null)
                 {
-                    thingRo["fixedLongitude"] = ExpressionConverter.ConvertO(thingRofixedLongitude);
+                    thingRo["fixedLongitude"] = ExpressionConverter.ConvertO(__workflow_thingRofixedLongitude);
                     thingRopropCount++;
                 }
 
-                if (thingRofixedName != null)
+                if (__workflow_thingRofixedName != null)
                 {
-                    thingRo["fixedName"] = ExpressionConverter.ConvertO(thingRofixedName);
+                    thingRo["fixedName"] = ExpressionConverter.ConvertO(__workflow_thingRofixedName);
                     thingRopropCount++;
                 }
 
-                if (thingRoid != null)
+                if (__workflow_thingRoid != null)
                 {
-                    thingRo["id"] = ExpressionConverter.ConvertO(thingRoid);
+                    thingRo["id"] = ExpressionConverter.ConvertO(__workflow_thingRoid);
                     thingRopropCount++;
                 }
 
-                if (thingRolastActivityDate != null)
+                if (__workflow_thingRolastActivityDate != null)
                 {
-                    thingRo["lastActivityDate"] = ExpressionConverter.ConvertO(thingRolastActivityDate);
+                    thingRo["lastActivityDate"] = ExpressionConverter.ConvertO(__workflow_thingRolastActivityDate);
                     thingRopropCount++;
                 }
 
-                if (thingRolastLatitude != null)
+                if (__workflow_thingRolastLatitude != null)
                 {
-                    thingRo["lastLatitude"] = ExpressionConverter.ConvertO(thingRolastLatitude);
+                    thingRo["lastLatitude"] = ExpressionConverter.ConvertO(__workflow_thingRolastLatitude);
                     thingRopropCount++;
                 }
 
-                if (thingRolastLongitude != null)
+                if (__workflow_thingRolastLongitude != null)
                 {
-                    thingRo["lastLongitude"] = ExpressionConverter.ConvertO(thingRolastLongitude);
+                    thingRo["lastLongitude"] = ExpressionConverter.ConvertO(__workflow_thingRolastLongitude);
                     thingRopropCount++;
                 }
 
                 var lastMeasurementsObject = new JObject();
                 var lastMeasurementsObjectpropCount = 0;
-                if (thingRolastMeasurementsarray != null)
+                if (__workflow_thingRolastMeasurementsarray != null)
                 {
-                    lastMeasurementsObject["array"] = ExpressionConverter.ConvertO(thingRolastMeasurementsarray);
+                    lastMeasurementsObject["array"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsarray);
                     lastMeasurementsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsbigDecimal != null)
+                if (__workflow_thingRolastMeasurementsbigDecimal != null)
                 {
-                    lastMeasurementsObject["bigDecimal"] = ExpressionConverter.ConvertO(thingRolastMeasurementsbigDecimal);
+                    lastMeasurementsObject["bigDecimal"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsbigDecimal);
                     lastMeasurementsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsbigInteger != null)
+                if (__workflow_thingRolastMeasurementsbigInteger != null)
                 {
-                    lastMeasurementsObject["bigInteger"] = ExpressionConverter.ConvertO(thingRolastMeasurementsbigInteger);
+                    lastMeasurementsObject["bigInteger"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsbigInteger);
                     lastMeasurementsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsbinary != null)
+                if (__workflow_thingRolastMeasurementsbinary != null)
                 {
-                    lastMeasurementsObject["binary"] = ExpressionConverter.ConvertO(thingRolastMeasurementsbinary);
+                    lastMeasurementsObject["binary"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsbinary);
                     lastMeasurementsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsboolean != null)
+                if (__workflow_thingRolastMeasurementsboolean != null)
                 {
-                    lastMeasurementsObject["boolean"] = ExpressionConverter.ConvertO(thingRolastMeasurementsboolean);
+                    lastMeasurementsObject["boolean"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsboolean);
                     lastMeasurementsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementscontainerNode != null)
+                if (__workflow_thingRolastMeasurementscontainerNode != null)
                 {
-                    lastMeasurementsObject["containerNode"] = ExpressionConverter.ConvertO(thingRolastMeasurementscontainerNode);
+                    lastMeasurementsObject["containerNode"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementscontainerNode);
                     lastMeasurementsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsdouble != null)
+                if (__workflow_thingRolastMeasurementsdouble != null)
                 {
-                    lastMeasurementsObject["double"] = ExpressionConverter.ConvertO(thingRolastMeasurementsdouble);
+                    lastMeasurementsObject["double"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsdouble);
                     lastMeasurementsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsfloat != null)
+                if (__workflow_thingRolastMeasurementsfloat != null)
                 {
-                    lastMeasurementsObject["float"] = ExpressionConverter.ConvertO(thingRolastMeasurementsfloat);
+                    lastMeasurementsObject["float"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsfloat);
                     lastMeasurementsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsfloatingPointNumber != null)
+                if (__workflow_thingRolastMeasurementsfloatingPointNumber != null)
                 {
-                    lastMeasurementsObject["floatingPointNumber"] = ExpressionConverter.ConvertO(thingRolastMeasurementsfloatingPointNumber);
+                    lastMeasurementsObject["floatingPointNumber"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsfloatingPointNumber);
                     lastMeasurementsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsint != null)
+                if (__workflow_thingRolastMeasurementsint != null)
                 {
-                    lastMeasurementsObject["int"] = ExpressionConverter.ConvertO(thingRolastMeasurementsint);
+                    lastMeasurementsObject["int"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsint);
                     lastMeasurementsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsintegralNumber != null)
+                if (__workflow_thingRolastMeasurementsintegralNumber != null)
                 {
-                    lastMeasurementsObject["integralNumber"] = ExpressionConverter.ConvertO(thingRolastMeasurementsintegralNumber);
+                    lastMeasurementsObject["integralNumber"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsintegralNumber);
                     lastMeasurementsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsLong != null)
+                if (__workflow_thingRolastMeasurementsLong != null)
                 {
-                    lastMeasurementsObject["long"] = ExpressionConverter.ConvertO(thingRolastMeasurementsLong);
+                    lastMeasurementsObject["long"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsLong);
                     lastMeasurementsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsmissingNode != null)
+                if (__workflow_thingRolastMeasurementsmissingNode != null)
                 {
-                    lastMeasurementsObject["missingNode"] = ExpressionConverter.ConvertO(thingRolastMeasurementsmissingNode);
+                    lastMeasurementsObject["missingNode"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsmissingNode);
                     lastMeasurementsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsnodeType != null)
+                if (__workflow_thingRolastMeasurementsnodeType != null)
                 {
-                    lastMeasurementsObject["nodeType"] = ExpressionConverter.ConvertO(thingRolastMeasurementsnodeType);
+                    lastMeasurementsObject["nodeType"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsnodeType);
                     lastMeasurementsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsnull != null)
+                if (__workflow_thingRolastMeasurementsnull != null)
                 {
-                    lastMeasurementsObject["null"] = ExpressionConverter.ConvertO(thingRolastMeasurementsnull);
+                    lastMeasurementsObject["null"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsnull);
                     lastMeasurementsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsnumber != null)
+                if (__workflow_thingRolastMeasurementsnumber != null)
                 {
-                    lastMeasurementsObject["number"] = ExpressionConverter.ConvertO(thingRolastMeasurementsnumber);
+                    lastMeasurementsObject["number"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsnumber);
                     lastMeasurementsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsObject != null)
+                if (__workflow_thingRolastMeasurementsObject != null)
                 {
-                    lastMeasurementsObject["object"] = ExpressionConverter.ConvertO(thingRolastMeasurementsObject);
+                    lastMeasurementsObject["object"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsObject);
                     lastMeasurementsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementspojo != null)
+                if (__workflow_thingRolastMeasurementspojo != null)
                 {
-                    lastMeasurementsObject["pojo"] = ExpressionConverter.ConvertO(thingRolastMeasurementspojo);
+                    lastMeasurementsObject["pojo"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementspojo);
                     lastMeasurementsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsShort != null)
+                if (__workflow_thingRolastMeasurementsShort != null)
                 {
-                    lastMeasurementsObject["short"] = ExpressionConverter.ConvertO(thingRolastMeasurementsShort);
+                    lastMeasurementsObject["short"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsShort);
                     lastMeasurementsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementstextual != null)
+                if (__workflow_thingRolastMeasurementstextual != null)
                 {
-                    lastMeasurementsObject["textual"] = ExpressionConverter.ConvertO(thingRolastMeasurementstextual);
+                    lastMeasurementsObject["textual"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementstextual);
                     lastMeasurementsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsvalueNode != null)
+                if (__workflow_thingRolastMeasurementsvalueNode != null)
                 {
-                    lastMeasurementsObject["valueNode"] = ExpressionConverter.ConvertO(thingRolastMeasurementsvalueNode);
+                    lastMeasurementsObject["valueNode"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsvalueNode);
                     lastMeasurementsObjectpropCount++;
                 }
 
@@ -3896,129 +4112,129 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
 
                 var lastMeasurementsTimestampsObject = new JObject();
                 var lastMeasurementsTimestampsObjectpropCount = 0;
-                if (thingRolastMeasurementsarray != null)
+                if (__workflow_thingRolastMeasurementsarray != null)
                 {
-                    lastMeasurementsTimestampsObject["array"] = ExpressionConverter.ConvertO(thingRolastMeasurementsarray);
+                    lastMeasurementsTimestampsObject["array"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsarray);
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsbigDecimal != null)
+                if (__workflow_thingRolastMeasurementsbigDecimal != null)
                 {
-                    lastMeasurementsTimestampsObject["bigDecimal"] = ExpressionConverter.ConvertO(thingRolastMeasurementsbigDecimal);
+                    lastMeasurementsTimestampsObject["bigDecimal"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsbigDecimal);
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsbigInteger != null)
+                if (__workflow_thingRolastMeasurementsbigInteger != null)
                 {
-                    lastMeasurementsTimestampsObject["bigInteger"] = ExpressionConverter.ConvertO(thingRolastMeasurementsbigInteger);
+                    lastMeasurementsTimestampsObject["bigInteger"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsbigInteger);
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsbinary != null)
+                if (__workflow_thingRolastMeasurementsbinary != null)
                 {
-                    lastMeasurementsTimestampsObject["binary"] = ExpressionConverter.ConvertO(thingRolastMeasurementsbinary);
+                    lastMeasurementsTimestampsObject["binary"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsbinary);
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsboolean != null)
+                if (__workflow_thingRolastMeasurementsboolean != null)
                 {
-                    lastMeasurementsTimestampsObject["boolean"] = ExpressionConverter.ConvertO(thingRolastMeasurementsboolean);
+                    lastMeasurementsTimestampsObject["boolean"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsboolean);
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementscontainerNode != null)
+                if (__workflow_thingRolastMeasurementscontainerNode != null)
                 {
-                    lastMeasurementsTimestampsObject["containerNode"] = ExpressionConverter.ConvertO(thingRolastMeasurementscontainerNode);
+                    lastMeasurementsTimestampsObject["containerNode"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementscontainerNode);
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsdouble != null)
+                if (__workflow_thingRolastMeasurementsdouble != null)
                 {
-                    lastMeasurementsTimestampsObject["double"] = ExpressionConverter.ConvertO(thingRolastMeasurementsdouble);
+                    lastMeasurementsTimestampsObject["double"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsdouble);
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsfloat != null)
+                if (__workflow_thingRolastMeasurementsfloat != null)
                 {
-                    lastMeasurementsTimestampsObject["float"] = ExpressionConverter.ConvertO(thingRolastMeasurementsfloat);
+                    lastMeasurementsTimestampsObject["float"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsfloat);
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsfloatingPointNumber != null)
+                if (__workflow_thingRolastMeasurementsfloatingPointNumber != null)
                 {
-                    lastMeasurementsTimestampsObject["floatingPointNumber"] = ExpressionConverter.ConvertO(thingRolastMeasurementsfloatingPointNumber);
+                    lastMeasurementsTimestampsObject["floatingPointNumber"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsfloatingPointNumber);
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsint != null)
+                if (__workflow_thingRolastMeasurementsint != null)
                 {
-                    lastMeasurementsTimestampsObject["int"] = ExpressionConverter.ConvertO(thingRolastMeasurementsint);
+                    lastMeasurementsTimestampsObject["int"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsint);
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsintegralNumber != null)
+                if (__workflow_thingRolastMeasurementsintegralNumber != null)
                 {
-                    lastMeasurementsTimestampsObject["integralNumber"] = ExpressionConverter.ConvertO(thingRolastMeasurementsintegralNumber);
+                    lastMeasurementsTimestampsObject["integralNumber"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsintegralNumber);
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsLong != null)
+                if (__workflow_thingRolastMeasurementsLong != null)
                 {
-                    lastMeasurementsTimestampsObject["long"] = ExpressionConverter.ConvertO(thingRolastMeasurementsLong);
+                    lastMeasurementsTimestampsObject["long"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsLong);
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsmissingNode != null)
+                if (__workflow_thingRolastMeasurementsmissingNode != null)
                 {
-                    lastMeasurementsTimestampsObject["missingNode"] = ExpressionConverter.ConvertO(thingRolastMeasurementsmissingNode);
+                    lastMeasurementsTimestampsObject["missingNode"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsmissingNode);
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsnodeType != null)
+                if (__workflow_thingRolastMeasurementsnodeType != null)
                 {
-                    lastMeasurementsTimestampsObject["nodeType"] = ExpressionConverter.ConvertO(thingRolastMeasurementsnodeType);
+                    lastMeasurementsTimestampsObject["nodeType"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsnodeType);
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsnull != null)
+                if (__workflow_thingRolastMeasurementsnull != null)
                 {
-                    lastMeasurementsTimestampsObject["null"] = ExpressionConverter.ConvertO(thingRolastMeasurementsnull);
+                    lastMeasurementsTimestampsObject["null"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsnull);
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsnumber != null)
+                if (__workflow_thingRolastMeasurementsnumber != null)
                 {
-                    lastMeasurementsTimestampsObject["number"] = ExpressionConverter.ConvertO(thingRolastMeasurementsnumber);
+                    lastMeasurementsTimestampsObject["number"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsnumber);
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsObject != null)
+                if (__workflow_thingRolastMeasurementsObject != null)
                 {
-                    lastMeasurementsTimestampsObject["object"] = ExpressionConverter.ConvertO(thingRolastMeasurementsObject);
+                    lastMeasurementsTimestampsObject["object"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsObject);
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementspojo != null)
+                if (__workflow_thingRolastMeasurementspojo != null)
                 {
-                    lastMeasurementsTimestampsObject["pojo"] = ExpressionConverter.ConvertO(thingRolastMeasurementspojo);
+                    lastMeasurementsTimestampsObject["pojo"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementspojo);
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsShort != null)
+                if (__workflow_thingRolastMeasurementsShort != null)
                 {
-                    lastMeasurementsTimestampsObject["short"] = ExpressionConverter.ConvertO(thingRolastMeasurementsShort);
+                    lastMeasurementsTimestampsObject["short"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsShort);
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementstextual != null)
+                if (__workflow_thingRolastMeasurementstextual != null)
                 {
-                    lastMeasurementsTimestampsObject["textual"] = ExpressionConverter.ConvertO(thingRolastMeasurementstextual);
+                    lastMeasurementsTimestampsObject["textual"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementstextual);
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
-                if (thingRolastMeasurementsvalueNode != null)
+                if (__workflow_thingRolastMeasurementsvalueNode != null)
                 {
-                    lastMeasurementsTimestampsObject["valueNode"] = ExpressionConverter.ConvertO(thingRolastMeasurementsvalueNode);
+                    lastMeasurementsTimestampsObject["valueNode"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsvalueNode);
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
@@ -4028,69 +4244,69 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                     thingRopropCount++;
                 }
 
-                if (thingRolastMessageDate != null)
+                if (__workflow_thingRolastMessageDate != null)
                 {
-                    thingRo["lastMessageDate"] = ExpressionConverter.ConvertO(thingRolastMessageDate);
+                    thingRo["lastMessageDate"] = ExpressionConverter.ConvertO(__workflow_thingRolastMessageDate);
                     thingRopropCount++;
                 }
 
-                if (thingRomessageActivityTimeoutPeriod != null)
+                if (__workflow_thingRomessageActivityTimeoutPeriod != null)
                 {
-                    thingRo["messageActivityTimeoutPeriod"] = ExpressionConverter.ConvertO(thingRomessageActivityTimeoutPeriod);
+                    thingRo["messageActivityTimeoutPeriod"] = ExpressionConverter.ConvertO(__workflow_thingRomessageActivityTimeoutPeriod);
                     thingRopropCount++;
                 }
 
                 thingRopropCount++;
-                thingRo["name"] = ExpressionConverter.ConvertO(thingRoname);
-                if (thingRonbAlerts != null)
+                thingRo["name"] = ExpressionConverter.ConvertO(__workflow_thingRoname);
+                if (__workflow_thingRonbAlerts != null)
                 {
-                    thingRo["nbAlerts"] = ExpressionConverter.ConvertO(thingRonbAlerts);
+                    thingRo["nbAlerts"] = ExpressionConverter.ConvertO(__workflow_thingRonbAlerts);
                     thingRopropCount++;
                 }
 
                 var siteObject = new JObject();
                 var siteObjectpropCount = 0;
                 siteObjectpropCount++;
-                siteObject["address"] = ExpressionConverter.ConvertO(thingRositeaddress);
+                siteObject["address"] = ExpressionConverter.ConvertO(__workflow_thingRositeaddress);
                 siteObjectpropCount++;
-                siteObject["city"] = ExpressionConverter.ConvertO(thingRositecity);
-                if (thingRositeid != null)
+                siteObject["city"] = ExpressionConverter.ConvertO(__workflow_thingRositecity);
+                if (__workflow_thingRositeid != null)
                 {
-                    siteObject["id"] = ExpressionConverter.ConvertO(thingRositeid);
+                    siteObject["id"] = ExpressionConverter.ConvertO(__workflow_thingRositeid);
                     siteObjectpropCount++;
                 }
 
-                if (thingRositelatitude != null)
+                if (__workflow_thingRositelatitude != null)
                 {
-                    siteObject["latitude"] = ExpressionConverter.ConvertO(thingRositelatitude);
+                    siteObject["latitude"] = ExpressionConverter.ConvertO(__workflow_thingRositelatitude);
                     siteObjectpropCount++;
                 }
 
-                if (thingRositelongitude != null)
+                if (__workflow_thingRositelongitude != null)
                 {
-                    siteObject["longitude"] = ExpressionConverter.ConvertO(thingRositelongitude);
+                    siteObject["longitude"] = ExpressionConverter.ConvertO(__workflow_thingRositelongitude);
                     siteObjectpropCount++;
                 }
 
                 siteObjectpropCount++;
-                siteObject["name"] = ExpressionConverter.ConvertO(thingRositename);
+                siteObject["name"] = ExpressionConverter.ConvertO(__workflow_thingRositename);
                 siteObjectpropCount++;
-                siteObject["postalCode"] = ExpressionConverter.ConvertO(thingRositepostalCode);
+                siteObject["postalCode"] = ExpressionConverter.ConvertO(__workflow_thingRositepostalCode);
                 if (siteObjectpropCount > 0)
                 {
                     thingRo["site"] = siteObject;
                     thingRopropCount++;
                 }
 
-                if (thingRostatus != null)
+                if (__workflow_thingRostatus != null)
                 {
-                    thingRo["status"] = ExpressionConverter.ConvertO(thingRostatus);
+                    thingRo["status"] = ExpressionConverter.ConvertO(__workflow_thingRostatus);
                     thingRopropCount++;
                 }
 
-                if (thingRotags != null)
+                if (__workflow_thingRotags != null)
                 {
-                    thingRo["tags"] = ExpressionConverter.ConvertO(thingRotags);
+                    thingRo["tags"] = ExpressionConverter.ConvertO(__workflow_thingRotags);
                     thingRopropCount++;
                 }
 
@@ -4104,19 +4320,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildGetThingProduct))]
-        public IBodyWorkflowAction<ProductRo> GetThingProduct([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<ProductRo> GetThingProduct(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ProductRo> __BuildGetThingProduct(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<ProductRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/product", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/product", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ProductRo>(callPayload);
@@ -4124,19 +4334,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildDissociateThingProduct))]
-        public IBodyWorkflowAction<SingleThingRo> DissociateThingProduct([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<SingleThingRo> DissociateThingProduct(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SingleThingRo> __BuildDissociateThingProduct(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<SingleThingRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/product", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/product", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SingleThingRo>(callPayload);
@@ -4144,103 +4348,148 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildAssociateThingProduct))]
-        public IBodyWorkflowAction<SingleThingRo> AssociateThingProduct([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> productcertification = null, [WorkflowExpression] Func<productconnectivityTypesInputItem[]> productconnectivityTypes = null, [WorkflowExpression] Func<string> productdecoderid = null, [WorkflowExpression] Func<string> productdecoderlink = null, [WorkflowExpression] Func<bool> productdecodervisible = null, [WorkflowExpression] Func<string> productdescription = null, [WorkflowExpression] Func<string> productencoderid = null, [WorkflowExpression] Func<string> productencoderlink = null, [WorkflowExpression] Func<bool> productgenerateLinks = null, [WorkflowExpression] Func<bool> producthasImage = null, [WorkflowExpression] Func<string> productid = null, [WorkflowExpression] Func<string> productimageLink = null, [WorkflowExpression] Func<string> productinfoLink = null, [WorkflowExpression] Func<string> productlink = null, [WorkflowExpression] Func<bool> productmanufacturergenerateLinks = null, [WorkflowExpression] Func<string> productmanufacturerid = null, [WorkflowExpression] Func<string> productmanufacturerlink = null, [WorkflowExpression] Func<string> productmanufacturername = null, [WorkflowExpression] Func<string> productmanufacturerCategory = null, [WorkflowExpression] Func<string> productmodelcolor = null, [WorkflowExpression] Func<bool> productmodelgenerateLinks = null, [WorkflowExpression] Func<string> productmodelicon = null, [WorkflowExpression] Func<string> productmodelid = null, [WorkflowExpression] Func<bool> productmodelisCustomModel = null, [WorkflowExpression] Func<bool> productmodellinkabsolute = null, [WorkflowExpression] Func<string> productmodellinkauthority = null, [WorkflowExpression] Func<string> productmodellinkfragment = null, [WorkflowExpression] Func<string> productmodellinkhost = null, [WorkflowExpression] Func<bool> productmodellinkopaque = null, [WorkflowExpression] Func<string> productmodellinkpath = null, [WorkflowExpression] Func<int> productmodellinkport = null, [WorkflowExpression] Func<string> productmodellinkquery = null, [WorkflowExpression] Func<string> productmodellinkrawAuthority = null, [WorkflowExpression] Func<string> productmodellinkrawFragment = null, [WorkflowExpression] Func<string> productmodellinkrawPath = null, [WorkflowExpression] Func<string> productmodellinkrawQuery = null, [WorkflowExpression] Func<string> productmodellinkrawSchemeSpecificPart = null, [WorkflowExpression] Func<string> productmodellinkrawUserInfo = null, [WorkflowExpression] Func<string> productmodellinkscheme = null, [WorkflowExpression] Func<string> productmodellinkschemeSpecificPart = null, [WorkflowExpression] Func<string> productmodellinkuserInfo = null, [WorkflowExpression] Func<string> productmodelname = null, [WorkflowExpression] Func<bool> productmodelManufacturergenerateLinks = null, [WorkflowExpression] Func<string> productmodelManufacturerid = null, [WorkflowExpression] Func<string> productmodelManufacturerlink = null, [WorkflowExpression] Func<string> productmodelManufacturername = null, [WorkflowExpression] Func<string> productname = null, [WorkflowExpression] Func<bool> productreadOnly = null, [WorkflowExpression] Func<string> productreference = null, [WorkflowExpression] Func<TagRo[]> producttags = null, [WorkflowExpression] Func<ThingTinyRo[]> productthings = null)
+        public IBodyWorkflowAction<SingleThingRo> AssociateThingProduct(Expression<Func<string>> id, Expression<Func<string>> productcertification = null, Expression<Func<productconnectivityTypesInputItem[]>> productconnectivityTypes = null, Expression<Func<string>> productdecoderid = null, Expression<Func<string>> productdecoderlink = null, Expression<Func<bool>> productdecodervisible = null, Expression<Func<string>> productdescription = null, Expression<Func<string>> productencoderid = null, Expression<Func<string>> productencoderlink = null, Expression<Func<bool>> productgenerateLinks = null, Expression<Func<bool>> producthasImage = null, Expression<Func<string>> productid = null, Expression<Func<string>> productimageLink = null, Expression<Func<string>> productinfoLink = null, Expression<Func<string>> productlink = null, Expression<Func<bool>> productmanufacturergenerateLinks = null, Expression<Func<string>> productmanufacturerid = null, Expression<Func<string>> productmanufacturerlink = null, Expression<Func<string>> productmanufacturername = null, Expression<Func<string>> productmanufacturerCategory = null, Expression<Func<string>> productmodelcolor = null, Expression<Func<bool>> productmodelgenerateLinks = null, Expression<Func<string>> productmodelicon = null, Expression<Func<string>> productmodelid = null, Expression<Func<bool>> productmodelisCustomModel = null, Expression<Func<bool>> productmodellinkabsolute = null, Expression<Func<string>> productmodellinkauthority = null, Expression<Func<string>> productmodellinkfragment = null, Expression<Func<string>> productmodellinkhost = null, Expression<Func<bool>> productmodellinkopaque = null, Expression<Func<string>> productmodellinkpath = null, Expression<Func<int>> productmodellinkport = null, Expression<Func<string>> productmodellinkquery = null, Expression<Func<string>> productmodellinkrawAuthority = null, Expression<Func<string>> productmodellinkrawFragment = null, Expression<Func<string>> productmodellinkrawPath = null, Expression<Func<string>> productmodellinkrawQuery = null, Expression<Func<string>> productmodellinkrawSchemeSpecificPart = null, Expression<Func<string>> productmodellinkrawUserInfo = null, Expression<Func<string>> productmodellinkscheme = null, Expression<Func<string>> productmodellinkschemeSpecificPart = null, Expression<Func<string>> productmodellinkuserInfo = null, Expression<Func<string>> productmodelname = null, Expression<Func<bool>> productmodelManufacturergenerateLinks = null, Expression<Func<string>> productmodelManufacturerid = null, Expression<Func<string>> productmodelManufacturerlink = null, Expression<Func<string>> productmodelManufacturername = null, Expression<Func<string>> productname = null, Expression<Func<bool>> productreadOnly = null, Expression<Func<string>> productreference = null, Expression<Func<TagRo[]>> producttags = null, Expression<Func<ThingTinyRo[]>> productthings = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SingleThingRo> __BuildAssociateThingProduct(WorkflowExpression<string> id, WorkflowExpression<string> productcertification = null, WorkflowExpression<productconnectivityTypesInputItem[]> productconnectivityTypes = null, WorkflowExpression<string> productdecoderid = null, WorkflowExpression<string> productdecoderlink = null, WorkflowExpression<bool> productdecodervisible = null, WorkflowExpression<string> productdescription = null, WorkflowExpression<string> productencoderid = null, WorkflowExpression<string> productencoderlink = null, WorkflowExpression<bool> productgenerateLinks = null, WorkflowExpression<bool> producthasImage = null, WorkflowExpression<string> productid = null, WorkflowExpression<string> productimageLink = null, WorkflowExpression<string> productinfoLink = null, WorkflowExpression<string> productlink = null, WorkflowExpression<bool> productmanufacturergenerateLinks = null, WorkflowExpression<string> productmanufacturerid = null, WorkflowExpression<string> productmanufacturerlink = null, WorkflowExpression<string> productmanufacturername = null, WorkflowExpression<string> productmanufacturerCategory = null, WorkflowExpression<string> productmodelcolor = null, WorkflowExpression<bool> productmodelgenerateLinks = null, WorkflowExpression<string> productmodelicon = null, WorkflowExpression<string> productmodelid = null, WorkflowExpression<bool> productmodelisCustomModel = null, WorkflowExpression<bool> productmodellinkabsolute = null, WorkflowExpression<string> productmodellinkauthority = null, WorkflowExpression<string> productmodellinkfragment = null, WorkflowExpression<string> productmodellinkhost = null, WorkflowExpression<bool> productmodellinkopaque = null, WorkflowExpression<string> productmodellinkpath = null, WorkflowExpression<int> productmodellinkport = null, WorkflowExpression<string> productmodellinkquery = null, WorkflowExpression<string> productmodellinkrawAuthority = null, WorkflowExpression<string> productmodellinkrawFragment = null, WorkflowExpression<string> productmodellinkrawPath = null, WorkflowExpression<string> productmodellinkrawQuery = null, WorkflowExpression<string> productmodellinkrawSchemeSpecificPart = null, WorkflowExpression<string> productmodellinkrawUserInfo = null, WorkflowExpression<string> productmodellinkscheme = null, WorkflowExpression<string> productmodellinkschemeSpecificPart = null, WorkflowExpression<string> productmodellinkuserInfo = null, WorkflowExpression<string> productmodelname = null, WorkflowExpression<bool> productmodelManufacturergenerateLinks = null, WorkflowExpression<string> productmodelManufacturerid = null, WorkflowExpression<string> productmodelManufacturerlink = null, WorkflowExpression<string> productmodelManufacturername = null, WorkflowExpression<string> productname = null, WorkflowExpression<bool> productreadOnly = null, WorkflowExpression<string> productreference = null, WorkflowExpression<TagRo[]> producttags = null, WorkflowExpression<ThingTinyRo[]> productthings = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(productcertification, nameof(productcertification), required: false);
-            WorkflowExpression.Validate(productconnectivityTypes, nameof(productconnectivityTypes), required: false);
-            WorkflowExpression.Validate(productdecoderid, nameof(productdecoderid), required: false);
-            WorkflowExpression.Validate(productdecoderlink, nameof(productdecoderlink), required: false);
-            WorkflowExpression.Validate(productdecodervisible, nameof(productdecodervisible), required: false);
-            WorkflowExpression.Validate(productdescription, nameof(productdescription), required: false);
-            WorkflowExpression.Validate(productencoderid, nameof(productencoderid), required: false);
-            WorkflowExpression.Validate(productencoderlink, nameof(productencoderlink), required: false);
-            WorkflowExpression.Validate(productgenerateLinks, nameof(productgenerateLinks), required: false);
-            WorkflowExpression.Validate(producthasImage, nameof(producthasImage), required: false);
-            WorkflowExpression.Validate(productid, nameof(productid), required: false);
-            WorkflowExpression.Validate(productimageLink, nameof(productimageLink), required: false);
-            WorkflowExpression.Validate(productinfoLink, nameof(productinfoLink), required: false);
-            WorkflowExpression.Validate(productlink, nameof(productlink), required: false);
-            WorkflowExpression.Validate(productmanufacturergenerateLinks, nameof(productmanufacturergenerateLinks), required: false);
-            WorkflowExpression.Validate(productmanufacturerid, nameof(productmanufacturerid), required: false);
-            WorkflowExpression.Validate(productmanufacturerlink, nameof(productmanufacturerlink), required: false);
-            WorkflowExpression.Validate(productmanufacturername, nameof(productmanufacturername), required: false);
-            WorkflowExpression.Validate(productmanufacturerCategory, nameof(productmanufacturerCategory), required: false);
-            WorkflowExpression.Validate(productmodelcolor, nameof(productmodelcolor), required: false);
-            WorkflowExpression.Validate(productmodelgenerateLinks, nameof(productmodelgenerateLinks), required: false);
-            WorkflowExpression.Validate(productmodelicon, nameof(productmodelicon), required: false);
-            WorkflowExpression.Validate(productmodelid, nameof(productmodelid), required: false);
-            WorkflowExpression.Validate(productmodelisCustomModel, nameof(productmodelisCustomModel), required: false);
-            WorkflowExpression.Validate(productmodellinkabsolute, nameof(productmodellinkabsolute), required: false);
-            WorkflowExpression.Validate(productmodellinkauthority, nameof(productmodellinkauthority), required: false);
-            WorkflowExpression.Validate(productmodellinkfragment, nameof(productmodellinkfragment), required: false);
-            WorkflowExpression.Validate(productmodellinkhost, nameof(productmodellinkhost), required: false);
-            WorkflowExpression.Validate(productmodellinkopaque, nameof(productmodellinkopaque), required: false);
-            WorkflowExpression.Validate(productmodellinkpath, nameof(productmodellinkpath), required: false);
-            WorkflowExpression.Validate(productmodellinkport, nameof(productmodellinkport), required: false);
-            WorkflowExpression.Validate(productmodellinkquery, nameof(productmodellinkquery), required: false);
-            WorkflowExpression.Validate(productmodellinkrawAuthority, nameof(productmodellinkrawAuthority), required: false);
-            WorkflowExpression.Validate(productmodellinkrawFragment, nameof(productmodellinkrawFragment), required: false);
-            WorkflowExpression.Validate(productmodellinkrawPath, nameof(productmodellinkrawPath), required: false);
-            WorkflowExpression.Validate(productmodellinkrawQuery, nameof(productmodellinkrawQuery), required: false);
-            WorkflowExpression.Validate(productmodellinkrawSchemeSpecificPart, nameof(productmodellinkrawSchemeSpecificPart), required: false);
-            WorkflowExpression.Validate(productmodellinkrawUserInfo, nameof(productmodellinkrawUserInfo), required: false);
-            WorkflowExpression.Validate(productmodellinkscheme, nameof(productmodellinkscheme), required: false);
-            WorkflowExpression.Validate(productmodellinkschemeSpecificPart, nameof(productmodellinkschemeSpecificPart), required: false);
-            WorkflowExpression.Validate(productmodellinkuserInfo, nameof(productmodellinkuserInfo), required: false);
-            WorkflowExpression.Validate(productmodelname, nameof(productmodelname), required: false);
-            WorkflowExpression.Validate(productmodelManufacturergenerateLinks, nameof(productmodelManufacturergenerateLinks), required: false);
-            WorkflowExpression.Validate(productmodelManufacturerid, nameof(productmodelManufacturerid), required: false);
-            WorkflowExpression.Validate(productmodelManufacturerlink, nameof(productmodelManufacturerlink), required: false);
-            WorkflowExpression.Validate(productmodelManufacturername, nameof(productmodelManufacturername), required: false);
-            WorkflowExpression.Validate(productname, nameof(productname), required: false);
-            WorkflowExpression.Validate(productreadOnly, nameof(productreadOnly), required: false);
-            WorkflowExpression.Validate(productreference, nameof(productreference), required: false);
-            WorkflowExpression.Validate(producttags, nameof(producttags), required: false);
-            WorkflowExpression.Validate(productthings, nameof(productthings), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_productcertification = productcertification == null ? null : WorkflowExpression.Compile(productcertification);
+            WorkflowExpression.Validate(__workflow_productcertification, nameof(productcertification), required: false);
+            var __workflow_productconnectivityTypes = productconnectivityTypes == null ? null : WorkflowExpression.Compile(productconnectivityTypes);
+            WorkflowExpression.Validate(__workflow_productconnectivityTypes, nameof(productconnectivityTypes), required: false);
+            var __workflow_productdecoderid = productdecoderid == null ? null : WorkflowExpression.Compile(productdecoderid);
+            WorkflowExpression.Validate(__workflow_productdecoderid, nameof(productdecoderid), required: false);
+            var __workflow_productdecoderlink = productdecoderlink == null ? null : WorkflowExpression.Compile(productdecoderlink);
+            WorkflowExpression.Validate(__workflow_productdecoderlink, nameof(productdecoderlink), required: false);
+            var __workflow_productdecodervisible = productdecodervisible == null ? null : WorkflowExpression.Compile(productdecodervisible);
+            WorkflowExpression.Validate(__workflow_productdecodervisible, nameof(productdecodervisible), required: false);
+            var __workflow_productdescription = productdescription == null ? null : WorkflowExpression.Compile(productdescription);
+            WorkflowExpression.Validate(__workflow_productdescription, nameof(productdescription), required: false);
+            var __workflow_productencoderid = productencoderid == null ? null : WorkflowExpression.Compile(productencoderid);
+            WorkflowExpression.Validate(__workflow_productencoderid, nameof(productencoderid), required: false);
+            var __workflow_productencoderlink = productencoderlink == null ? null : WorkflowExpression.Compile(productencoderlink);
+            WorkflowExpression.Validate(__workflow_productencoderlink, nameof(productencoderlink), required: false);
+            var __workflow_productgenerateLinks = productgenerateLinks == null ? null : WorkflowExpression.Compile(productgenerateLinks);
+            WorkflowExpression.Validate(__workflow_productgenerateLinks, nameof(productgenerateLinks), required: false);
+            var __workflow_producthasImage = producthasImage == null ? null : WorkflowExpression.Compile(producthasImage);
+            WorkflowExpression.Validate(__workflow_producthasImage, nameof(producthasImage), required: false);
+            var __workflow_productid = productid == null ? null : WorkflowExpression.Compile(productid);
+            WorkflowExpression.Validate(__workflow_productid, nameof(productid), required: false);
+            var __workflow_productimageLink = productimageLink == null ? null : WorkflowExpression.Compile(productimageLink);
+            WorkflowExpression.Validate(__workflow_productimageLink, nameof(productimageLink), required: false);
+            var __workflow_productinfoLink = productinfoLink == null ? null : WorkflowExpression.Compile(productinfoLink);
+            WorkflowExpression.Validate(__workflow_productinfoLink, nameof(productinfoLink), required: false);
+            var __workflow_productlink = productlink == null ? null : WorkflowExpression.Compile(productlink);
+            WorkflowExpression.Validate(__workflow_productlink, nameof(productlink), required: false);
+            var __workflow_productmanufacturergenerateLinks = productmanufacturergenerateLinks == null ? null : WorkflowExpression.Compile(productmanufacturergenerateLinks);
+            WorkflowExpression.Validate(__workflow_productmanufacturergenerateLinks, nameof(productmanufacturergenerateLinks), required: false);
+            var __workflow_productmanufacturerid = productmanufacturerid == null ? null : WorkflowExpression.Compile(productmanufacturerid);
+            WorkflowExpression.Validate(__workflow_productmanufacturerid, nameof(productmanufacturerid), required: false);
+            var __workflow_productmanufacturerlink = productmanufacturerlink == null ? null : WorkflowExpression.Compile(productmanufacturerlink);
+            WorkflowExpression.Validate(__workflow_productmanufacturerlink, nameof(productmanufacturerlink), required: false);
+            var __workflow_productmanufacturername = productmanufacturername == null ? null : WorkflowExpression.Compile(productmanufacturername);
+            WorkflowExpression.Validate(__workflow_productmanufacturername, nameof(productmanufacturername), required: false);
+            var __workflow_productmanufacturerCategory = productmanufacturerCategory == null ? null : WorkflowExpression.Compile(productmanufacturerCategory);
+            WorkflowExpression.Validate(__workflow_productmanufacturerCategory, nameof(productmanufacturerCategory), required: false);
+            var __workflow_productmodelcolor = productmodelcolor == null ? null : WorkflowExpression.Compile(productmodelcolor);
+            WorkflowExpression.Validate(__workflow_productmodelcolor, nameof(productmodelcolor), required: false);
+            var __workflow_productmodelgenerateLinks = productmodelgenerateLinks == null ? null : WorkflowExpression.Compile(productmodelgenerateLinks);
+            WorkflowExpression.Validate(__workflow_productmodelgenerateLinks, nameof(productmodelgenerateLinks), required: false);
+            var __workflow_productmodelicon = productmodelicon == null ? null : WorkflowExpression.Compile(productmodelicon);
+            WorkflowExpression.Validate(__workflow_productmodelicon, nameof(productmodelicon), required: false);
+            var __workflow_productmodelid = productmodelid == null ? null : WorkflowExpression.Compile(productmodelid);
+            WorkflowExpression.Validate(__workflow_productmodelid, nameof(productmodelid), required: false);
+            var __workflow_productmodelisCustomModel = productmodelisCustomModel == null ? null : WorkflowExpression.Compile(productmodelisCustomModel);
+            WorkflowExpression.Validate(__workflow_productmodelisCustomModel, nameof(productmodelisCustomModel), required: false);
+            var __workflow_productmodellinkabsolute = productmodellinkabsolute == null ? null : WorkflowExpression.Compile(productmodellinkabsolute);
+            WorkflowExpression.Validate(__workflow_productmodellinkabsolute, nameof(productmodellinkabsolute), required: false);
+            var __workflow_productmodellinkauthority = productmodellinkauthority == null ? null : WorkflowExpression.Compile(productmodellinkauthority);
+            WorkflowExpression.Validate(__workflow_productmodellinkauthority, nameof(productmodellinkauthority), required: false);
+            var __workflow_productmodellinkfragment = productmodellinkfragment == null ? null : WorkflowExpression.Compile(productmodellinkfragment);
+            WorkflowExpression.Validate(__workflow_productmodellinkfragment, nameof(productmodellinkfragment), required: false);
+            var __workflow_productmodellinkhost = productmodellinkhost == null ? null : WorkflowExpression.Compile(productmodellinkhost);
+            WorkflowExpression.Validate(__workflow_productmodellinkhost, nameof(productmodellinkhost), required: false);
+            var __workflow_productmodellinkopaque = productmodellinkopaque == null ? null : WorkflowExpression.Compile(productmodellinkopaque);
+            WorkflowExpression.Validate(__workflow_productmodellinkopaque, nameof(productmodellinkopaque), required: false);
+            var __workflow_productmodellinkpath = productmodellinkpath == null ? null : WorkflowExpression.Compile(productmodellinkpath);
+            WorkflowExpression.Validate(__workflow_productmodellinkpath, nameof(productmodellinkpath), required: false);
+            var __workflow_productmodellinkport = productmodellinkport == null ? null : WorkflowExpression.Compile(productmodellinkport);
+            WorkflowExpression.Validate(__workflow_productmodellinkport, nameof(productmodellinkport), required: false);
+            var __workflow_productmodellinkquery = productmodellinkquery == null ? null : WorkflowExpression.Compile(productmodellinkquery);
+            WorkflowExpression.Validate(__workflow_productmodellinkquery, nameof(productmodellinkquery), required: false);
+            var __workflow_productmodellinkrawAuthority = productmodellinkrawAuthority == null ? null : WorkflowExpression.Compile(productmodellinkrawAuthority);
+            WorkflowExpression.Validate(__workflow_productmodellinkrawAuthority, nameof(productmodellinkrawAuthority), required: false);
+            var __workflow_productmodellinkrawFragment = productmodellinkrawFragment == null ? null : WorkflowExpression.Compile(productmodellinkrawFragment);
+            WorkflowExpression.Validate(__workflow_productmodellinkrawFragment, nameof(productmodellinkrawFragment), required: false);
+            var __workflow_productmodellinkrawPath = productmodellinkrawPath == null ? null : WorkflowExpression.Compile(productmodellinkrawPath);
+            WorkflowExpression.Validate(__workflow_productmodellinkrawPath, nameof(productmodellinkrawPath), required: false);
+            var __workflow_productmodellinkrawQuery = productmodellinkrawQuery == null ? null : WorkflowExpression.Compile(productmodellinkrawQuery);
+            WorkflowExpression.Validate(__workflow_productmodellinkrawQuery, nameof(productmodellinkrawQuery), required: false);
+            var __workflow_productmodellinkrawSchemeSpecificPart = productmodellinkrawSchemeSpecificPart == null ? null : WorkflowExpression.Compile(productmodellinkrawSchemeSpecificPart);
+            WorkflowExpression.Validate(__workflow_productmodellinkrawSchemeSpecificPart, nameof(productmodellinkrawSchemeSpecificPart), required: false);
+            var __workflow_productmodellinkrawUserInfo = productmodellinkrawUserInfo == null ? null : WorkflowExpression.Compile(productmodellinkrawUserInfo);
+            WorkflowExpression.Validate(__workflow_productmodellinkrawUserInfo, nameof(productmodellinkrawUserInfo), required: false);
+            var __workflow_productmodellinkscheme = productmodellinkscheme == null ? null : WorkflowExpression.Compile(productmodellinkscheme);
+            WorkflowExpression.Validate(__workflow_productmodellinkscheme, nameof(productmodellinkscheme), required: false);
+            var __workflow_productmodellinkschemeSpecificPart = productmodellinkschemeSpecificPart == null ? null : WorkflowExpression.Compile(productmodellinkschemeSpecificPart);
+            WorkflowExpression.Validate(__workflow_productmodellinkschemeSpecificPart, nameof(productmodellinkschemeSpecificPart), required: false);
+            var __workflow_productmodellinkuserInfo = productmodellinkuserInfo == null ? null : WorkflowExpression.Compile(productmodellinkuserInfo);
+            WorkflowExpression.Validate(__workflow_productmodellinkuserInfo, nameof(productmodellinkuserInfo), required: false);
+            var __workflow_productmodelname = productmodelname == null ? null : WorkflowExpression.Compile(productmodelname);
+            WorkflowExpression.Validate(__workflow_productmodelname, nameof(productmodelname), required: false);
+            var __workflow_productmodelManufacturergenerateLinks = productmodelManufacturergenerateLinks == null ? null : WorkflowExpression.Compile(productmodelManufacturergenerateLinks);
+            WorkflowExpression.Validate(__workflow_productmodelManufacturergenerateLinks, nameof(productmodelManufacturergenerateLinks), required: false);
+            var __workflow_productmodelManufacturerid = productmodelManufacturerid == null ? null : WorkflowExpression.Compile(productmodelManufacturerid);
+            WorkflowExpression.Validate(__workflow_productmodelManufacturerid, nameof(productmodelManufacturerid), required: false);
+            var __workflow_productmodelManufacturerlink = productmodelManufacturerlink == null ? null : WorkflowExpression.Compile(productmodelManufacturerlink);
+            WorkflowExpression.Validate(__workflow_productmodelManufacturerlink, nameof(productmodelManufacturerlink), required: false);
+            var __workflow_productmodelManufacturername = productmodelManufacturername == null ? null : WorkflowExpression.Compile(productmodelManufacturername);
+            WorkflowExpression.Validate(__workflow_productmodelManufacturername, nameof(productmodelManufacturername), required: false);
+            var __workflow_productname = productname == null ? null : WorkflowExpression.Compile(productname);
+            WorkflowExpression.Validate(__workflow_productname, nameof(productname), required: false);
+            var __workflow_productreadOnly = productreadOnly == null ? null : WorkflowExpression.Compile(productreadOnly);
+            WorkflowExpression.Validate(__workflow_productreadOnly, nameof(productreadOnly), required: false);
+            var __workflow_productreference = productreference == null ? null : WorkflowExpression.Compile(productreference);
+            WorkflowExpression.Validate(__workflow_productreference, nameof(productreference), required: false);
+            var __workflow_producttags = producttags == null ? null : WorkflowExpression.Compile(producttags);
+            WorkflowExpression.Validate(__workflow_producttags, nameof(producttags), required: false);
+            var __workflow_productthings = productthings == null ? null : WorkflowExpression.Compile(productthings);
+            WorkflowExpression.Validate(__workflow_productthings, nameof(productthings), required: false);
             return new DeferredBodyAction<SingleThingRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/product", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/product", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var product = new JObject();
                 var productpropCount = 0;
-                if (productcertification != null)
+                if (__workflow_productcertification != null)
                 {
-                    product["certification"] = ExpressionConverter.ConvertO(productcertification);
+                    product["certification"] = ExpressionConverter.ConvertO(__workflow_productcertification);
                     productpropCount++;
                 }
 
-                if (productconnectivityTypes != null)
+                if (__workflow_productconnectivityTypes != null)
                 {
-                    product["connectivityTypes"] = ExpressionConverter.ConvertO(productconnectivityTypes);
+                    product["connectivityTypes"] = ExpressionConverter.ConvertO(__workflow_productconnectivityTypes);
                     productpropCount++;
                 }
 
                 var decoderObject = new JObject();
                 var decoderObjectpropCount = 0;
-                if (productdecoderid != null)
+                if (__workflow_productdecoderid != null)
                 {
-                    decoderObject["id"] = ExpressionConverter.ConvertO(productdecoderid);
+                    decoderObject["id"] = ExpressionConverter.ConvertO(__workflow_productdecoderid);
                     decoderObjectpropCount++;
                 }
 
-                if (productdecoderlink != null)
+                if (__workflow_productdecoderlink != null)
                 {
-                    decoderObject["link"] = ExpressionConverter.ConvertO(productdecoderlink);
+                    decoderObject["link"] = ExpressionConverter.ConvertO(__workflow_productdecoderlink);
                     decoderObjectpropCount++;
                 }
 
-                if (productdecodervisible != null)
+                if (__workflow_productdecodervisible != null)
                 {
-                    decoderObject["visible"] = ExpressionConverter.ConvertO(productdecodervisible);
+                    decoderObject["visible"] = ExpressionConverter.ConvertO(__workflow_productdecodervisible);
                     decoderObjectpropCount++;
                 }
 
@@ -4250,23 +4499,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                     productpropCount++;
                 }
 
-                if (productdescription != null)
+                if (__workflow_productdescription != null)
                 {
-                    product["description"] = ExpressionConverter.ConvertO(productdescription);
+                    product["description"] = ExpressionConverter.ConvertO(__workflow_productdescription);
                     productpropCount++;
                 }
 
                 var encoderObject = new JObject();
                 var encoderObjectpropCount = 0;
-                if (productencoderid != null)
+                if (__workflow_productencoderid != null)
                 {
-                    encoderObject["id"] = ExpressionConverter.ConvertO(productencoderid);
+                    encoderObject["id"] = ExpressionConverter.ConvertO(__workflow_productencoderid);
                     encoderObjectpropCount++;
                 }
 
-                if (productencoderlink != null)
+                if (__workflow_productencoderlink != null)
                 {
-                    encoderObject["link"] = ExpressionConverter.ConvertO(productencoderlink);
+                    encoderObject["link"] = ExpressionConverter.ConvertO(__workflow_productencoderlink);
                     encoderObjectpropCount++;
                 }
 
@@ -4276,65 +4525,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                     productpropCount++;
                 }
 
-                if (productgenerateLinks != null)
+                if (__workflow_productgenerateLinks != null)
                 {
-                    product["generateLinks"] = ExpressionConverter.ConvertO(productgenerateLinks);
+                    product["generateLinks"] = ExpressionConverter.ConvertO(__workflow_productgenerateLinks);
                     productpropCount++;
                 }
 
-                if (producthasImage != null)
+                if (__workflow_producthasImage != null)
                 {
-                    product["hasImage"] = ExpressionConverter.ConvertO(producthasImage);
+                    product["hasImage"] = ExpressionConverter.ConvertO(__workflow_producthasImage);
                     productpropCount++;
                 }
 
-                if (productid != null)
+                if (__workflow_productid != null)
                 {
-                    product["id"] = ExpressionConverter.ConvertO(productid);
+                    product["id"] = ExpressionConverter.ConvertO(__workflow_productid);
                     productpropCount++;
                 }
 
-                if (productimageLink != null)
+                if (__workflow_productimageLink != null)
                 {
-                    product["imageLink"] = ExpressionConverter.ConvertO(productimageLink);
+                    product["imageLink"] = ExpressionConverter.ConvertO(__workflow_productimageLink);
                     productpropCount++;
                 }
 
-                if (productinfoLink != null)
+                if (__workflow_productinfoLink != null)
                 {
-                    product["infoLink"] = ExpressionConverter.ConvertO(productinfoLink);
+                    product["infoLink"] = ExpressionConverter.ConvertO(__workflow_productinfoLink);
                     productpropCount++;
                 }
 
-                if (productlink != null)
+                if (__workflow_productlink != null)
                 {
-                    product["link"] = ExpressionConverter.ConvertO(productlink);
+                    product["link"] = ExpressionConverter.ConvertO(__workflow_productlink);
                     productpropCount++;
                 }
 
                 var manufacturerObject = new JObject();
                 var manufacturerObjectpropCount = 0;
-                if (productmanufacturergenerateLinks != null)
+                if (__workflow_productmanufacturergenerateLinks != null)
                 {
-                    manufacturerObject["generateLinks"] = ExpressionConverter.ConvertO(productmanufacturergenerateLinks);
+                    manufacturerObject["generateLinks"] = ExpressionConverter.ConvertO(__workflow_productmanufacturergenerateLinks);
                     manufacturerObjectpropCount++;
                 }
 
-                if (productmanufacturerid != null)
+                if (__workflow_productmanufacturerid != null)
                 {
-                    manufacturerObject["id"] = ExpressionConverter.ConvertO(productmanufacturerid);
+                    manufacturerObject["id"] = ExpressionConverter.ConvertO(__workflow_productmanufacturerid);
                     manufacturerObjectpropCount++;
                 }
 
-                if (productmanufacturerlink != null)
+                if (__workflow_productmanufacturerlink != null)
                 {
-                    manufacturerObject["link"] = ExpressionConverter.ConvertO(productmanufacturerlink);
+                    manufacturerObject["link"] = ExpressionConverter.ConvertO(__workflow_productmanufacturerlink);
                     manufacturerObjectpropCount++;
                 }
 
-                if (productmanufacturername != null)
+                if (__workflow_productmanufacturername != null)
                 {
-                    manufacturerObject["name"] = ExpressionConverter.ConvertO(productmanufacturername);
+                    manufacturerObject["name"] = ExpressionConverter.ConvertO(__workflow_productmanufacturername);
                     manufacturerObjectpropCount++;
                 }
 
@@ -4344,145 +4593,145 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                     productpropCount++;
                 }
 
-                if (productmanufacturerCategory != null)
+                if (__workflow_productmanufacturerCategory != null)
                 {
-                    product["manufacturerCategory"] = ExpressionConverter.ConvertO(productmanufacturerCategory);
+                    product["manufacturerCategory"] = ExpressionConverter.ConvertO(__workflow_productmanufacturerCategory);
                     productpropCount++;
                 }
 
                 var modelObject = new JObject();
                 var modelObjectpropCount = 0;
-                if (productmodelcolor != null)
+                if (__workflow_productmodelcolor != null)
                 {
-                    modelObject["color"] = ExpressionConverter.ConvertO(productmodelcolor);
+                    modelObject["color"] = ExpressionConverter.ConvertO(__workflow_productmodelcolor);
                     modelObjectpropCount++;
                 }
 
-                if (productmodelgenerateLinks != null)
+                if (__workflow_productmodelgenerateLinks != null)
                 {
-                    modelObject["generateLinks"] = ExpressionConverter.ConvertO(productmodelgenerateLinks);
+                    modelObject["generateLinks"] = ExpressionConverter.ConvertO(__workflow_productmodelgenerateLinks);
                     modelObjectpropCount++;
                 }
 
-                if (productmodelicon != null)
+                if (__workflow_productmodelicon != null)
                 {
-                    modelObject["icon"] = ExpressionConverter.ConvertO(productmodelicon);
+                    modelObject["icon"] = ExpressionConverter.ConvertO(__workflow_productmodelicon);
                     modelObjectpropCount++;
                 }
 
-                if (productmodelid != null)
+                if (__workflow_productmodelid != null)
                 {
-                    modelObject["id"] = ExpressionConverter.ConvertO(productmodelid);
+                    modelObject["id"] = ExpressionConverter.ConvertO(__workflow_productmodelid);
                     modelObjectpropCount++;
                 }
 
-                if (productmodelisCustomModel != null)
+                if (__workflow_productmodelisCustomModel != null)
                 {
-                    modelObject["isCustomModel"] = ExpressionConverter.ConvertO(productmodelisCustomModel);
+                    modelObject["isCustomModel"] = ExpressionConverter.ConvertO(__workflow_productmodelisCustomModel);
                     modelObjectpropCount++;
                 }
 
                 var linkObject = new JObject();
                 var linkObjectpropCount = 0;
-                if (productmodellinkabsolute != null)
+                if (__workflow_productmodellinkabsolute != null)
                 {
-                    linkObject["absolute"] = ExpressionConverter.ConvertO(productmodellinkabsolute);
+                    linkObject["absolute"] = ExpressionConverter.ConvertO(__workflow_productmodellinkabsolute);
                     linkObjectpropCount++;
                 }
 
-                if (productmodellinkauthority != null)
+                if (__workflow_productmodellinkauthority != null)
                 {
-                    linkObject["authority"] = ExpressionConverter.ConvertO(productmodellinkauthority);
+                    linkObject["authority"] = ExpressionConverter.ConvertO(__workflow_productmodellinkauthority);
                     linkObjectpropCount++;
                 }
 
-                if (productmodellinkfragment != null)
+                if (__workflow_productmodellinkfragment != null)
                 {
-                    linkObject["fragment"] = ExpressionConverter.ConvertO(productmodellinkfragment);
+                    linkObject["fragment"] = ExpressionConverter.ConvertO(__workflow_productmodellinkfragment);
                     linkObjectpropCount++;
                 }
 
-                if (productmodellinkhost != null)
+                if (__workflow_productmodellinkhost != null)
                 {
-                    linkObject["host"] = ExpressionConverter.ConvertO(productmodellinkhost);
+                    linkObject["host"] = ExpressionConverter.ConvertO(__workflow_productmodellinkhost);
                     linkObjectpropCount++;
                 }
 
-                if (productmodellinkopaque != null)
+                if (__workflow_productmodellinkopaque != null)
                 {
-                    linkObject["opaque"] = ExpressionConverter.ConvertO(productmodellinkopaque);
+                    linkObject["opaque"] = ExpressionConverter.ConvertO(__workflow_productmodellinkopaque);
                     linkObjectpropCount++;
                 }
 
-                if (productmodellinkpath != null)
+                if (__workflow_productmodellinkpath != null)
                 {
-                    linkObject["path"] = ExpressionConverter.ConvertO(productmodellinkpath);
+                    linkObject["path"] = ExpressionConverter.ConvertO(__workflow_productmodellinkpath);
                     linkObjectpropCount++;
                 }
 
-                if (productmodellinkport != null)
+                if (__workflow_productmodellinkport != null)
                 {
-                    linkObject["port"] = ExpressionConverter.ConvertO(productmodellinkport);
+                    linkObject["port"] = ExpressionConverter.ConvertO(__workflow_productmodellinkport);
                     linkObjectpropCount++;
                 }
 
-                if (productmodellinkquery != null)
+                if (__workflow_productmodellinkquery != null)
                 {
-                    linkObject["query"] = ExpressionConverter.ConvertO(productmodellinkquery);
+                    linkObject["query"] = ExpressionConverter.ConvertO(__workflow_productmodellinkquery);
                     linkObjectpropCount++;
                 }
 
-                if (productmodellinkrawAuthority != null)
+                if (__workflow_productmodellinkrawAuthority != null)
                 {
-                    linkObject["rawAuthority"] = ExpressionConverter.ConvertO(productmodellinkrawAuthority);
+                    linkObject["rawAuthority"] = ExpressionConverter.ConvertO(__workflow_productmodellinkrawAuthority);
                     linkObjectpropCount++;
                 }
 
-                if (productmodellinkrawFragment != null)
+                if (__workflow_productmodellinkrawFragment != null)
                 {
-                    linkObject["rawFragment"] = ExpressionConverter.ConvertO(productmodellinkrawFragment);
+                    linkObject["rawFragment"] = ExpressionConverter.ConvertO(__workflow_productmodellinkrawFragment);
                     linkObjectpropCount++;
                 }
 
-                if (productmodellinkrawPath != null)
+                if (__workflow_productmodellinkrawPath != null)
                 {
-                    linkObject["rawPath"] = ExpressionConverter.ConvertO(productmodellinkrawPath);
+                    linkObject["rawPath"] = ExpressionConverter.ConvertO(__workflow_productmodellinkrawPath);
                     linkObjectpropCount++;
                 }
 
-                if (productmodellinkrawQuery != null)
+                if (__workflow_productmodellinkrawQuery != null)
                 {
-                    linkObject["rawQuery"] = ExpressionConverter.ConvertO(productmodellinkrawQuery);
+                    linkObject["rawQuery"] = ExpressionConverter.ConvertO(__workflow_productmodellinkrawQuery);
                     linkObjectpropCount++;
                 }
 
-                if (productmodellinkrawSchemeSpecificPart != null)
+                if (__workflow_productmodellinkrawSchemeSpecificPart != null)
                 {
-                    linkObject["rawSchemeSpecificPart"] = ExpressionConverter.ConvertO(productmodellinkrawSchemeSpecificPart);
+                    linkObject["rawSchemeSpecificPart"] = ExpressionConverter.ConvertO(__workflow_productmodellinkrawSchemeSpecificPart);
                     linkObjectpropCount++;
                 }
 
-                if (productmodellinkrawUserInfo != null)
+                if (__workflow_productmodellinkrawUserInfo != null)
                 {
-                    linkObject["rawUserInfo"] = ExpressionConverter.ConvertO(productmodellinkrawUserInfo);
+                    linkObject["rawUserInfo"] = ExpressionConverter.ConvertO(__workflow_productmodellinkrawUserInfo);
                     linkObjectpropCount++;
                 }
 
-                if (productmodellinkscheme != null)
+                if (__workflow_productmodellinkscheme != null)
                 {
-                    linkObject["scheme"] = ExpressionConverter.ConvertO(productmodellinkscheme);
+                    linkObject["scheme"] = ExpressionConverter.ConvertO(__workflow_productmodellinkscheme);
                     linkObjectpropCount++;
                 }
 
-                if (productmodellinkschemeSpecificPart != null)
+                if (__workflow_productmodellinkschemeSpecificPart != null)
                 {
-                    linkObject["schemeSpecificPart"] = ExpressionConverter.ConvertO(productmodellinkschemeSpecificPart);
+                    linkObject["schemeSpecificPart"] = ExpressionConverter.ConvertO(__workflow_productmodellinkschemeSpecificPart);
                     linkObjectpropCount++;
                 }
 
-                if (productmodellinkuserInfo != null)
+                if (__workflow_productmodellinkuserInfo != null)
                 {
-                    linkObject["userInfo"] = ExpressionConverter.ConvertO(productmodellinkuserInfo);
+                    linkObject["userInfo"] = ExpressionConverter.ConvertO(__workflow_productmodellinkuserInfo);
                     linkObjectpropCount++;
                 }
 
@@ -4492,9 +4741,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                     modelObjectpropCount++;
                 }
 
-                if (productmodelname != null)
+                if (__workflow_productmodelname != null)
                 {
-                    modelObject["name"] = ExpressionConverter.ConvertO(productmodelname);
+                    modelObject["name"] = ExpressionConverter.ConvertO(__workflow_productmodelname);
                     modelObjectpropCount++;
                 }
 
@@ -4506,27 +4755,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
 
                 var modelManufacturerObject = new JObject();
                 var modelManufacturerObjectpropCount = 0;
-                if (productmanufacturergenerateLinks != null)
+                if (__workflow_productmanufacturergenerateLinks != null)
                 {
-                    modelManufacturerObject["generateLinks"] = ExpressionConverter.ConvertO(productmanufacturergenerateLinks);
+                    modelManufacturerObject["generateLinks"] = ExpressionConverter.ConvertO(__workflow_productmanufacturergenerateLinks);
                     modelManufacturerObjectpropCount++;
                 }
 
-                if (productmanufacturerid != null)
+                if (__workflow_productmanufacturerid != null)
                 {
-                    modelManufacturerObject["id"] = ExpressionConverter.ConvertO(productmanufacturerid);
+                    modelManufacturerObject["id"] = ExpressionConverter.ConvertO(__workflow_productmanufacturerid);
                     modelManufacturerObjectpropCount++;
                 }
 
-                if (productmanufacturerlink != null)
+                if (__workflow_productmanufacturerlink != null)
                 {
-                    modelManufacturerObject["link"] = ExpressionConverter.ConvertO(productmanufacturerlink);
+                    modelManufacturerObject["link"] = ExpressionConverter.ConvertO(__workflow_productmanufacturerlink);
                     modelManufacturerObjectpropCount++;
                 }
 
-                if (productmanufacturername != null)
+                if (__workflow_productmanufacturername != null)
                 {
-                    modelManufacturerObject["name"] = ExpressionConverter.ConvertO(productmanufacturername);
+                    modelManufacturerObject["name"] = ExpressionConverter.ConvertO(__workflow_productmanufacturername);
                     modelManufacturerObjectpropCount++;
                 }
 
@@ -4536,33 +4785,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                     productpropCount++;
                 }
 
-                if (productname != null)
+                if (__workflow_productname != null)
                 {
-                    product["name"] = ExpressionConverter.ConvertO(productname);
+                    product["name"] = ExpressionConverter.ConvertO(__workflow_productname);
                     productpropCount++;
                 }
 
-                if (productreadOnly != null)
+                if (__workflow_productreadOnly != null)
                 {
-                    product["readOnly"] = ExpressionConverter.ConvertO(productreadOnly);
+                    product["readOnly"] = ExpressionConverter.ConvertO(__workflow_productreadOnly);
                     productpropCount++;
                 }
 
-                if (productreference != null)
+                if (__workflow_productreference != null)
                 {
-                    product["reference"] = ExpressionConverter.ConvertO(productreference);
+                    product["reference"] = ExpressionConverter.ConvertO(__workflow_productreference);
                     productpropCount++;
                 }
 
-                if (producttags != null)
+                if (__workflow_producttags != null)
                 {
-                    product["tags"] = ExpressionConverter.ConvertO(producttags);
+                    product["tags"] = ExpressionConverter.ConvertO(__workflow_producttags);
                     productpropCount++;
                 }
 
-                if (productthings != null)
+                if (__workflow_productthings != null)
                 {
-                    product["things"] = ExpressionConverter.ConvertO(productthings);
+                    product["things"] = ExpressionConverter.ConvertO(__workflow_productthings);
                     productpropCount++;
                 }
 
@@ -4576,19 +4825,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildGetFlowsRelatedToThing))]
-        public IBodyWorkflowAction<PageFlowRo> GetFlowsRelatedToThing([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<PageFlowRo> GetFlowsRelatedToThing(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PageFlowRo> __BuildGetFlowsRelatedToThing(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<PageFlowRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/related_flows", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/related_flows", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<PageFlowRo>(callPayload);
@@ -4596,19 +4839,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildGetThingTags))]
-        public IBodyWorkflowAction<PageThingTagRo> GetThingTags([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<PageThingTagRo> GetThingTags(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PageThingTagRo> __BuildGetThingTags(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<PageThingTagRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/things/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<PageThingTagRo>(callPayload);
@@ -4616,414 +4853,434 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildGetStatsAvg))]
-        public IBodyWorkflowAction<PageStatsMeasureRo> GetStatsAvg([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null, [WorkflowExpression] Func<int> start = null, [WorkflowExpression] Func<int> end = null)
+        public IBodyWorkflowAction<PageStatsMeasureRo> GetStatsAvg(Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null, Expression<Func<int>> start = null, Expression<Func<int>> end = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PageStatsMeasureRo> __BuildGetStatsAvg(WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sortValues = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> filter = null, WorkflowExpression<dirInput> dir = null, WorkflowExpression<string> orFilter = null, WorkflowExpression<int> start = null, WorkflowExpression<int> end = null)
-        {
-            WorkflowExpression.Validate(page, nameof(page), required: false);
-            WorkflowExpression.Validate(pageSize, nameof(pageSize), required: false);
-            WorkflowExpression.Validate(sortValues, nameof(sortValues), required: false);
-            WorkflowExpression.Validate(sort, nameof(sort), required: false);
-            WorkflowExpression.Validate(filter, nameof(filter), required: false);
-            WorkflowExpression.Validate(dir, nameof(dir), required: false);
-            WorkflowExpression.Validate(orFilter, nameof(orFilter), required: false);
-            WorkflowExpression.Validate(start, nameof(start), required: false);
-            WorkflowExpression.Validate(end, nameof(end), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
+            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_sortValues = sortValues == null ? null : WorkflowExpression.Compile(sortValues);
+            WorkflowExpression.Validate(__workflow_sortValues, nameof(sortValues), required: false);
+            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
+            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
+            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
+            var __workflow_dir = dir == null ? null : WorkflowExpression.Compile(dir);
+            WorkflowExpression.Validate(__workflow_dir, nameof(dir), required: false);
+            var __workflow_orFilter = orFilter == null ? null : WorkflowExpression.Compile(orFilter);
+            WorkflowExpression.Validate(__workflow_orFilter, nameof(orFilter), required: false);
+            var __workflow_start = start == null ? null : WorkflowExpression.Compile(start);
+            WorkflowExpression.Validate(__workflow_start, nameof(start), required: false);
+            var __workflow_end = end == null ? null : WorkflowExpression.Compile(end);
+            WorkflowExpression.Validate(__workflow_end, nameof(end), required: false);
             return new DeferredBodyAction<PageStatsMeasureRo>(() =>
             {
                 var apiCallPath = "/stats/avg";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-                if (pageSize != null)
-                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-                if (sortValues != null)
-                    callPayload.Queries["sortValues"] = ExpressionConverter.Convert(sortValues);
-                if (sort != null)
-                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-                if (filter != null)
-                    callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-                if (dir != null)
-                    callPayload.Queries["dir"] = ExpressionConverter.Convert(dir);
-                if (orFilter != null)
-                    callPayload.Queries["orFilter"] = ExpressionConverter.Convert(orFilter);
-                if (start != null)
-                    callPayload.Queries["start"] = ExpressionConverter.Convert(start);
-                if (end != null)
-                    callPayload.Queries["end"] = ExpressionConverter.Convert(end);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_pageSize != null)
+                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
+                if (__workflow_sortValues != null)
+                    callPayload.Queries["sortValues"] = ExpressionConverter.Convert(__workflow_sortValues);
+                if (__workflow_sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
+                if (__workflow_filter != null)
+                    callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
+                if (__workflow_dir != null)
+                    callPayload.Queries["dir"] = ExpressionConverter.Convert(__workflow_dir);
+                if (__workflow_orFilter != null)
+                    callPayload.Queries["orFilter"] = ExpressionConverter.Convert(__workflow_orFilter);
+                if (__workflow_start != null)
+                    callPayload.Queries["start"] = ExpressionConverter.Convert(__workflow_start);
+                if (__workflow_end != null)
+                    callPayload.Queries["end"] = ExpressionConverter.Convert(__workflow_end);
                 return new ApiConnectionAction<PageStatsMeasureRo>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildGetStatsCount))]
-        public IBodyWorkflowAction<StatsCountRo> GetStatsCount([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null, [WorkflowExpression] Func<int> start = null, [WorkflowExpression] Func<int> end = null)
+        public IBodyWorkflowAction<StatsCountRo> GetStatsCount(Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null, Expression<Func<int>> start = null, Expression<Func<int>> end = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<StatsCountRo> __BuildGetStatsCount(WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sortValues = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> filter = null, WorkflowExpression<dirInput> dir = null, WorkflowExpression<string> orFilter = null, WorkflowExpression<int> start = null, WorkflowExpression<int> end = null)
-        {
-            WorkflowExpression.Validate(page, nameof(page), required: false);
-            WorkflowExpression.Validate(pageSize, nameof(pageSize), required: false);
-            WorkflowExpression.Validate(sortValues, nameof(sortValues), required: false);
-            WorkflowExpression.Validate(sort, nameof(sort), required: false);
-            WorkflowExpression.Validate(filter, nameof(filter), required: false);
-            WorkflowExpression.Validate(dir, nameof(dir), required: false);
-            WorkflowExpression.Validate(orFilter, nameof(orFilter), required: false);
-            WorkflowExpression.Validate(start, nameof(start), required: false);
-            WorkflowExpression.Validate(end, nameof(end), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
+            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_sortValues = sortValues == null ? null : WorkflowExpression.Compile(sortValues);
+            WorkflowExpression.Validate(__workflow_sortValues, nameof(sortValues), required: false);
+            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
+            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
+            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
+            var __workflow_dir = dir == null ? null : WorkflowExpression.Compile(dir);
+            WorkflowExpression.Validate(__workflow_dir, nameof(dir), required: false);
+            var __workflow_orFilter = orFilter == null ? null : WorkflowExpression.Compile(orFilter);
+            WorkflowExpression.Validate(__workflow_orFilter, nameof(orFilter), required: false);
+            var __workflow_start = start == null ? null : WorkflowExpression.Compile(start);
+            WorkflowExpression.Validate(__workflow_start, nameof(start), required: false);
+            var __workflow_end = end == null ? null : WorkflowExpression.Compile(end);
+            WorkflowExpression.Validate(__workflow_end, nameof(end), required: false);
             return new DeferredBodyAction<StatsCountRo>(() =>
             {
                 var apiCallPath = "/stats/count";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-                if (pageSize != null)
-                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-                if (sortValues != null)
-                    callPayload.Queries["sortValues"] = ExpressionConverter.Convert(sortValues);
-                if (sort != null)
-                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-                if (filter != null)
-                    callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-                if (dir != null)
-                    callPayload.Queries["dir"] = ExpressionConverter.Convert(dir);
-                if (orFilter != null)
-                    callPayload.Queries["orFilter"] = ExpressionConverter.Convert(orFilter);
-                if (start != null)
-                    callPayload.Queries["start"] = ExpressionConverter.Convert(start);
-                if (end != null)
-                    callPayload.Queries["end"] = ExpressionConverter.Convert(end);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_pageSize != null)
+                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
+                if (__workflow_sortValues != null)
+                    callPayload.Queries["sortValues"] = ExpressionConverter.Convert(__workflow_sortValues);
+                if (__workflow_sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
+                if (__workflow_filter != null)
+                    callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
+                if (__workflow_dir != null)
+                    callPayload.Queries["dir"] = ExpressionConverter.Convert(__workflow_dir);
+                if (__workflow_orFilter != null)
+                    callPayload.Queries["orFilter"] = ExpressionConverter.Convert(__workflow_orFilter);
+                if (__workflow_start != null)
+                    callPayload.Queries["start"] = ExpressionConverter.Convert(__workflow_start);
+                if (__workflow_end != null)
+                    callPayload.Queries["end"] = ExpressionConverter.Convert(__workflow_end);
                 return new ApiConnectionAction<StatsCountRo>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildGetStatsLast))]
-        public IBodyWorkflowAction<PageStatsMeasureRo> GetStatsLast([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null)
+        public IBodyWorkflowAction<PageStatsMeasureRo> GetStatsLast(Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PageStatsMeasureRo> __BuildGetStatsLast(WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sortValues = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> filter = null, WorkflowExpression<dirInput> dir = null, WorkflowExpression<string> orFilter = null)
-        {
-            WorkflowExpression.Validate(page, nameof(page), required: false);
-            WorkflowExpression.Validate(pageSize, nameof(pageSize), required: false);
-            WorkflowExpression.Validate(sortValues, nameof(sortValues), required: false);
-            WorkflowExpression.Validate(sort, nameof(sort), required: false);
-            WorkflowExpression.Validate(filter, nameof(filter), required: false);
-            WorkflowExpression.Validate(dir, nameof(dir), required: false);
-            WorkflowExpression.Validate(orFilter, nameof(orFilter), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
+            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_sortValues = sortValues == null ? null : WorkflowExpression.Compile(sortValues);
+            WorkflowExpression.Validate(__workflow_sortValues, nameof(sortValues), required: false);
+            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
+            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
+            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
+            var __workflow_dir = dir == null ? null : WorkflowExpression.Compile(dir);
+            WorkflowExpression.Validate(__workflow_dir, nameof(dir), required: false);
+            var __workflow_orFilter = orFilter == null ? null : WorkflowExpression.Compile(orFilter);
+            WorkflowExpression.Validate(__workflow_orFilter, nameof(orFilter), required: false);
             return new DeferredBodyAction<PageStatsMeasureRo>(() =>
             {
                 var apiCallPath = "/stats/last";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-                if (pageSize != null)
-                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-                if (sortValues != null)
-                    callPayload.Queries["sortValues"] = ExpressionConverter.Convert(sortValues);
-                if (sort != null)
-                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-                if (filter != null)
-                    callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-                if (dir != null)
-                    callPayload.Queries["dir"] = ExpressionConverter.Convert(dir);
-                if (orFilter != null)
-                    callPayload.Queries["orFilter"] = ExpressionConverter.Convert(orFilter);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_pageSize != null)
+                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
+                if (__workflow_sortValues != null)
+                    callPayload.Queries["sortValues"] = ExpressionConverter.Convert(__workflow_sortValues);
+                if (__workflow_sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
+                if (__workflow_filter != null)
+                    callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
+                if (__workflow_dir != null)
+                    callPayload.Queries["dir"] = ExpressionConverter.Convert(__workflow_dir);
+                if (__workflow_orFilter != null)
+                    callPayload.Queries["orFilter"] = ExpressionConverter.Convert(__workflow_orFilter);
                 return new ApiConnectionAction<PageStatsMeasureRo>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildGetThingStatsLast))]
-        public IBodyWorkflowAction<PageStatsMeasureRo> GetThingStatsLast([WorkflowExpression] Func<string> thingId, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null)
+        public IBodyWorkflowAction<PageStatsMeasureRo> GetThingStatsLast(Expression<Func<string>> thingId, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PageStatsMeasureRo> __BuildGetThingStatsLast(WorkflowExpression<string> thingId, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sortValues = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> filter = null, WorkflowExpression<dirInput> dir = null, WorkflowExpression<string> orFilter = null)
-        {
-            WorkflowExpression.Validate(thingId, nameof(thingId), required: true);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
-            WorkflowExpression.Validate(pageSize, nameof(pageSize), required: false);
-            WorkflowExpression.Validate(sortValues, nameof(sortValues), required: false);
-            WorkflowExpression.Validate(sort, nameof(sort), required: false);
-            WorkflowExpression.Validate(filter, nameof(filter), required: false);
-            WorkflowExpression.Validate(dir, nameof(dir), required: false);
-            WorkflowExpression.Validate(orFilter, nameof(orFilter), required: false);
+            var __workflow_thingId = thingId == null ? null : WorkflowExpression.Compile(thingId);
+            WorkflowExpression.Validate(__workflow_thingId, nameof(thingId), required: true);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
+            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_sortValues = sortValues == null ? null : WorkflowExpression.Compile(sortValues);
+            WorkflowExpression.Validate(__workflow_sortValues, nameof(sortValues), required: false);
+            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
+            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
+            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
+            var __workflow_dir = dir == null ? null : WorkflowExpression.Compile(dir);
+            WorkflowExpression.Validate(__workflow_dir, nameof(dir), required: false);
+            var __workflow_orFilter = orFilter == null ? null : WorkflowExpression.Compile(orFilter);
+            WorkflowExpression.Validate(__workflow_orFilter, nameof(orFilter), required: false);
             return new DeferredBodyAction<PageStatsMeasureRo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/stats/last/things/{0}", ExpressionConverter.ConvertWithUrlEncoding(thingId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/stats/last/things/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_thingId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-                if (pageSize != null)
-                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-                if (sortValues != null)
-                    callPayload.Queries["sortValues"] = ExpressionConverter.Convert(sortValues);
-                if (sort != null)
-                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-                if (filter != null)
-                    callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-                if (dir != null)
-                    callPayload.Queries["dir"] = ExpressionConverter.Convert(dir);
-                if (orFilter != null)
-                    callPayload.Queries["orFilter"] = ExpressionConverter.Convert(orFilter);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_pageSize != null)
+                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
+                if (__workflow_sortValues != null)
+                    callPayload.Queries["sortValues"] = ExpressionConverter.Convert(__workflow_sortValues);
+                if (__workflow_sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
+                if (__workflow_filter != null)
+                    callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
+                if (__workflow_dir != null)
+                    callPayload.Queries["dir"] = ExpressionConverter.Convert(__workflow_dir);
+                if (__workflow_orFilter != null)
+                    callPayload.Queries["orFilter"] = ExpressionConverter.Convert(__workflow_orFilter);
                 return new ApiConnectionAction<PageStatsMeasureRo>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildGetStatsMax))]
-        public IBodyWorkflowAction<PageStatsMeasureRo> GetStatsMax([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null, [WorkflowExpression] Func<int> start = null, [WorkflowExpression] Func<int> end = null)
+        public IBodyWorkflowAction<PageStatsMeasureRo> GetStatsMax(Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null, Expression<Func<int>> start = null, Expression<Func<int>> end = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PageStatsMeasureRo> __BuildGetStatsMax(WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sortValues = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> filter = null, WorkflowExpression<dirInput> dir = null, WorkflowExpression<string> orFilter = null, WorkflowExpression<int> start = null, WorkflowExpression<int> end = null)
-        {
-            WorkflowExpression.Validate(page, nameof(page), required: false);
-            WorkflowExpression.Validate(pageSize, nameof(pageSize), required: false);
-            WorkflowExpression.Validate(sortValues, nameof(sortValues), required: false);
-            WorkflowExpression.Validate(sort, nameof(sort), required: false);
-            WorkflowExpression.Validate(filter, nameof(filter), required: false);
-            WorkflowExpression.Validate(dir, nameof(dir), required: false);
-            WorkflowExpression.Validate(orFilter, nameof(orFilter), required: false);
-            WorkflowExpression.Validate(start, nameof(start), required: false);
-            WorkflowExpression.Validate(end, nameof(end), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
+            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_sortValues = sortValues == null ? null : WorkflowExpression.Compile(sortValues);
+            WorkflowExpression.Validate(__workflow_sortValues, nameof(sortValues), required: false);
+            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
+            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
+            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
+            var __workflow_dir = dir == null ? null : WorkflowExpression.Compile(dir);
+            WorkflowExpression.Validate(__workflow_dir, nameof(dir), required: false);
+            var __workflow_orFilter = orFilter == null ? null : WorkflowExpression.Compile(orFilter);
+            WorkflowExpression.Validate(__workflow_orFilter, nameof(orFilter), required: false);
+            var __workflow_start = start == null ? null : WorkflowExpression.Compile(start);
+            WorkflowExpression.Validate(__workflow_start, nameof(start), required: false);
+            var __workflow_end = end == null ? null : WorkflowExpression.Compile(end);
+            WorkflowExpression.Validate(__workflow_end, nameof(end), required: false);
             return new DeferredBodyAction<PageStatsMeasureRo>(() =>
             {
                 var apiCallPath = "/stats/max";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-                if (pageSize != null)
-                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-                if (sortValues != null)
-                    callPayload.Queries["sortValues"] = ExpressionConverter.Convert(sortValues);
-                if (sort != null)
-                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-                if (filter != null)
-                    callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-                if (dir != null)
-                    callPayload.Queries["dir"] = ExpressionConverter.Convert(dir);
-                if (orFilter != null)
-                    callPayload.Queries["orFilter"] = ExpressionConverter.Convert(orFilter);
-                if (start != null)
-                    callPayload.Queries["start"] = ExpressionConverter.Convert(start);
-                if (end != null)
-                    callPayload.Queries["end"] = ExpressionConverter.Convert(end);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_pageSize != null)
+                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
+                if (__workflow_sortValues != null)
+                    callPayload.Queries["sortValues"] = ExpressionConverter.Convert(__workflow_sortValues);
+                if (__workflow_sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
+                if (__workflow_filter != null)
+                    callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
+                if (__workflow_dir != null)
+                    callPayload.Queries["dir"] = ExpressionConverter.Convert(__workflow_dir);
+                if (__workflow_orFilter != null)
+                    callPayload.Queries["orFilter"] = ExpressionConverter.Convert(__workflow_orFilter);
+                if (__workflow_start != null)
+                    callPayload.Queries["start"] = ExpressionConverter.Convert(__workflow_start);
+                if (__workflow_end != null)
+                    callPayload.Queries["end"] = ExpressionConverter.Convert(__workflow_end);
                 return new ApiConnectionAction<PageStatsMeasureRo>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildGetStatsMeasurements))]
-        public IBodyWorkflowAction<StatsGraphRo[]> GetStatsMeasurements([WorkflowExpression] Func<int> start, [WorkflowExpression] Func<int> end, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null, [WorkflowExpression] Func<int> time = null, [WorkflowExpression] Func<string> interval = null)
+        public IBodyWorkflowAction<StatsGraphRo[]> GetStatsMeasurements(Expression<Func<int>> start, Expression<Func<int>> end, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null, Expression<Func<int>> time = null, Expression<Func<string>> interval = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<StatsGraphRo[]> __BuildGetStatsMeasurements(WorkflowExpression<int> start, WorkflowExpression<int> end, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sortValues = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> filter = null, WorkflowExpression<dirInput> dir = null, WorkflowExpression<string> orFilter = null, WorkflowExpression<int> time = null, WorkflowExpression<string> interval = null)
-        {
-            WorkflowExpression.Validate(start, nameof(start), required: true);
-            WorkflowExpression.Validate(end, nameof(end), required: true);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
-            WorkflowExpression.Validate(pageSize, nameof(pageSize), required: false);
-            WorkflowExpression.Validate(sortValues, nameof(sortValues), required: false);
-            WorkflowExpression.Validate(sort, nameof(sort), required: false);
-            WorkflowExpression.Validate(filter, nameof(filter), required: false);
-            WorkflowExpression.Validate(dir, nameof(dir), required: false);
-            WorkflowExpression.Validate(orFilter, nameof(orFilter), required: false);
-            WorkflowExpression.Validate(time, nameof(time), required: false);
-            WorkflowExpression.Validate(interval, nameof(interval), required: false);
+            var __workflow_start = start == null ? null : WorkflowExpression.Compile(start);
+            WorkflowExpression.Validate(__workflow_start, nameof(start), required: true);
+            var __workflow_end = end == null ? null : WorkflowExpression.Compile(end);
+            WorkflowExpression.Validate(__workflow_end, nameof(end), required: true);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
+            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_sortValues = sortValues == null ? null : WorkflowExpression.Compile(sortValues);
+            WorkflowExpression.Validate(__workflow_sortValues, nameof(sortValues), required: false);
+            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
+            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
+            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
+            var __workflow_dir = dir == null ? null : WorkflowExpression.Compile(dir);
+            WorkflowExpression.Validate(__workflow_dir, nameof(dir), required: false);
+            var __workflow_orFilter = orFilter == null ? null : WorkflowExpression.Compile(orFilter);
+            WorkflowExpression.Validate(__workflow_orFilter, nameof(orFilter), required: false);
+            var __workflow_time = time == null ? null : WorkflowExpression.Compile(time);
+            WorkflowExpression.Validate(__workflow_time, nameof(time), required: false);
+            var __workflow_interval = interval == null ? null : WorkflowExpression.Compile(interval);
+            WorkflowExpression.Validate(__workflow_interval, nameof(interval), required: false);
             return new DeferredBodyAction<StatsGraphRo[]>(() =>
             {
                 var apiCallPath = "/stats/measurements";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-                if (pageSize != null)
-                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-                if (sortValues != null)
-                    callPayload.Queries["sortValues"] = ExpressionConverter.Convert(sortValues);
-                if (sort != null)
-                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-                if (filter != null)
-                    callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-                if (dir != null)
-                    callPayload.Queries["dir"] = ExpressionConverter.Convert(dir);
-                if (orFilter != null)
-                    callPayload.Queries["orFilter"] = ExpressionConverter.Convert(orFilter);
-                if (time != null)
-                    callPayload.Queries["time"] = ExpressionConverter.Convert(time);
-                if (interval != null)
-                    callPayload.Queries["interval"] = ExpressionConverter.Convert(interval);
-                callPayload.Queries["start"] = ExpressionConverter.Convert(start);
-                callPayload.Queries["end"] = ExpressionConverter.Convert(end);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_pageSize != null)
+                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
+                if (__workflow_sortValues != null)
+                    callPayload.Queries["sortValues"] = ExpressionConverter.Convert(__workflow_sortValues);
+                if (__workflow_sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
+                if (__workflow_filter != null)
+                    callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
+                if (__workflow_dir != null)
+                    callPayload.Queries["dir"] = ExpressionConverter.Convert(__workflow_dir);
+                if (__workflow_orFilter != null)
+                    callPayload.Queries["orFilter"] = ExpressionConverter.Convert(__workflow_orFilter);
+                if (__workflow_time != null)
+                    callPayload.Queries["time"] = ExpressionConverter.Convert(__workflow_time);
+                if (__workflow_interval != null)
+                    callPayload.Queries["interval"] = ExpressionConverter.Convert(__workflow_interval);
+                callPayload.Queries["start"] = ExpressionConverter.Convert(__workflow_start);
+                callPayload.Queries["end"] = ExpressionConverter.Convert(__workflow_end);
                 return new ApiConnectionAction<StatsGraphRo[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildGetStatsMin))]
-        public IBodyWorkflowAction<PageStatsMeasureRo> GetStatsMin([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null, [WorkflowExpression] Func<int> start = null, [WorkflowExpression] Func<int> end = null)
+        public IBodyWorkflowAction<PageStatsMeasureRo> GetStatsMin(Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null, Expression<Func<int>> start = null, Expression<Func<int>> end = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PageStatsMeasureRo> __BuildGetStatsMin(WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sortValues = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> filter = null, WorkflowExpression<dirInput> dir = null, WorkflowExpression<string> orFilter = null, WorkflowExpression<int> start = null, WorkflowExpression<int> end = null)
-        {
-            WorkflowExpression.Validate(page, nameof(page), required: false);
-            WorkflowExpression.Validate(pageSize, nameof(pageSize), required: false);
-            WorkflowExpression.Validate(sortValues, nameof(sortValues), required: false);
-            WorkflowExpression.Validate(sort, nameof(sort), required: false);
-            WorkflowExpression.Validate(filter, nameof(filter), required: false);
-            WorkflowExpression.Validate(dir, nameof(dir), required: false);
-            WorkflowExpression.Validate(orFilter, nameof(orFilter), required: false);
-            WorkflowExpression.Validate(start, nameof(start), required: false);
-            WorkflowExpression.Validate(end, nameof(end), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
+            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_sortValues = sortValues == null ? null : WorkflowExpression.Compile(sortValues);
+            WorkflowExpression.Validate(__workflow_sortValues, nameof(sortValues), required: false);
+            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
+            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
+            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
+            var __workflow_dir = dir == null ? null : WorkflowExpression.Compile(dir);
+            WorkflowExpression.Validate(__workflow_dir, nameof(dir), required: false);
+            var __workflow_orFilter = orFilter == null ? null : WorkflowExpression.Compile(orFilter);
+            WorkflowExpression.Validate(__workflow_orFilter, nameof(orFilter), required: false);
+            var __workflow_start = start == null ? null : WorkflowExpression.Compile(start);
+            WorkflowExpression.Validate(__workflow_start, nameof(start), required: false);
+            var __workflow_end = end == null ? null : WorkflowExpression.Compile(end);
+            WorkflowExpression.Validate(__workflow_end, nameof(end), required: false);
             return new DeferredBodyAction<PageStatsMeasureRo>(() =>
             {
                 var apiCallPath = "/stats/min";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-                if (pageSize != null)
-                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-                if (sortValues != null)
-                    callPayload.Queries["sortValues"] = ExpressionConverter.Convert(sortValues);
-                if (sort != null)
-                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-                if (filter != null)
-                    callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-                if (dir != null)
-                    callPayload.Queries["dir"] = ExpressionConverter.Convert(dir);
-                if (orFilter != null)
-                    callPayload.Queries["orFilter"] = ExpressionConverter.Convert(orFilter);
-                if (start != null)
-                    callPayload.Queries["start"] = ExpressionConverter.Convert(start);
-                if (end != null)
-                    callPayload.Queries["end"] = ExpressionConverter.Convert(end);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_pageSize != null)
+                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
+                if (__workflow_sortValues != null)
+                    callPayload.Queries["sortValues"] = ExpressionConverter.Convert(__workflow_sortValues);
+                if (__workflow_sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
+                if (__workflow_filter != null)
+                    callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
+                if (__workflow_dir != null)
+                    callPayload.Queries["dir"] = ExpressionConverter.Convert(__workflow_dir);
+                if (__workflow_orFilter != null)
+                    callPayload.Queries["orFilter"] = ExpressionConverter.Convert(__workflow_orFilter);
+                if (__workflow_start != null)
+                    callPayload.Queries["start"] = ExpressionConverter.Convert(__workflow_start);
+                if (__workflow_end != null)
+                    callPayload.Queries["end"] = ExpressionConverter.Convert(__workflow_end);
                 return new ApiConnectionAction<PageStatsMeasureRo>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildGetStatsRepartition))]
-        public IBodyWorkflowAction<StatsCountRo[]> GetStatsRepartition([WorkflowExpression] Func<string> attribute, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null, [WorkflowExpression] Func<int> start = null, [WorkflowExpression] Func<int> end = null)
+        public IBodyWorkflowAction<StatsCountRo[]> GetStatsRepartition(Expression<Func<string>> attribute, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null, Expression<Func<int>> start = null, Expression<Func<int>> end = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<StatsCountRo[]> __BuildGetStatsRepartition(WorkflowExpression<string> attribute, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sortValues = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> filter = null, WorkflowExpression<dirInput> dir = null, WorkflowExpression<string> orFilter = null, WorkflowExpression<int> start = null, WorkflowExpression<int> end = null)
-        {
-            WorkflowExpression.Validate(attribute, nameof(attribute), required: true);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
-            WorkflowExpression.Validate(pageSize, nameof(pageSize), required: false);
-            WorkflowExpression.Validate(sortValues, nameof(sortValues), required: false);
-            WorkflowExpression.Validate(sort, nameof(sort), required: false);
-            WorkflowExpression.Validate(filter, nameof(filter), required: false);
-            WorkflowExpression.Validate(dir, nameof(dir), required: false);
-            WorkflowExpression.Validate(orFilter, nameof(orFilter), required: false);
-            WorkflowExpression.Validate(start, nameof(start), required: false);
-            WorkflowExpression.Validate(end, nameof(end), required: false);
+            var __workflow_attribute = attribute == null ? null : WorkflowExpression.Compile(attribute);
+            WorkflowExpression.Validate(__workflow_attribute, nameof(attribute), required: true);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
+            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_sortValues = sortValues == null ? null : WorkflowExpression.Compile(sortValues);
+            WorkflowExpression.Validate(__workflow_sortValues, nameof(sortValues), required: false);
+            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
+            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
+            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
+            var __workflow_dir = dir == null ? null : WorkflowExpression.Compile(dir);
+            WorkflowExpression.Validate(__workflow_dir, nameof(dir), required: false);
+            var __workflow_orFilter = orFilter == null ? null : WorkflowExpression.Compile(orFilter);
+            WorkflowExpression.Validate(__workflow_orFilter, nameof(orFilter), required: false);
+            var __workflow_start = start == null ? null : WorkflowExpression.Compile(start);
+            WorkflowExpression.Validate(__workflow_start, nameof(start), required: false);
+            var __workflow_end = end == null ? null : WorkflowExpression.Compile(end);
+            WorkflowExpression.Validate(__workflow_end, nameof(end), required: false);
             return new DeferredBodyAction<StatsCountRo[]>(() =>
             {
                 var apiCallPath = "/stats/repartition";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["attribute"] = ExpressionConverter.Convert(attribute);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-                if (pageSize != null)
-                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-                if (sortValues != null)
-                    callPayload.Queries["sortValues"] = ExpressionConverter.Convert(sortValues);
-                if (sort != null)
-                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-                if (filter != null)
-                    callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-                if (dir != null)
-                    callPayload.Queries["dir"] = ExpressionConverter.Convert(dir);
-                if (orFilter != null)
-                    callPayload.Queries["orFilter"] = ExpressionConverter.Convert(orFilter);
-                if (start != null)
-                    callPayload.Queries["start"] = ExpressionConverter.Convert(start);
-                if (end != null)
-                    callPayload.Queries["end"] = ExpressionConverter.Convert(end);
+                callPayload.Queries["attribute"] = ExpressionConverter.Convert(__workflow_attribute);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_pageSize != null)
+                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
+                if (__workflow_sortValues != null)
+                    callPayload.Queries["sortValues"] = ExpressionConverter.Convert(__workflow_sortValues);
+                if (__workflow_sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
+                if (__workflow_filter != null)
+                    callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
+                if (__workflow_dir != null)
+                    callPayload.Queries["dir"] = ExpressionConverter.Convert(__workflow_dir);
+                if (__workflow_orFilter != null)
+                    callPayload.Queries["orFilter"] = ExpressionConverter.Convert(__workflow_orFilter);
+                if (__workflow_start != null)
+                    callPayload.Queries["start"] = ExpressionConverter.Convert(__workflow_start);
+                if (__workflow_end != null)
+                    callPayload.Queries["end"] = ExpressionConverter.Convert(__workflow_end);
                 return new ApiConnectionAction<StatsCountRo[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        [WorkflowExpressionFactory(nameof(__BuildGetStatsSum))]
-        public IBodyWorkflowAction<StatsGraphRo[]> GetStatsSum([WorkflowExpression] Func<int> start, [WorkflowExpression] Func<int> end, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null, [WorkflowExpression] Func<int> time = null, [WorkflowExpression] Func<string> interval = null)
+        public IBodyWorkflowAction<StatsGraphRo[]> GetStatsSum(Expression<Func<int>> start, Expression<Func<int>> end, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null, Expression<Func<int>> time = null, Expression<Func<string>> interval = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<StatsGraphRo[]> __BuildGetStatsSum(WorkflowExpression<int> start, WorkflowExpression<int> end, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sortValues = null, WorkflowExpression<string> sort = null, WorkflowExpression<string> filter = null, WorkflowExpression<dirInput> dir = null, WorkflowExpression<string> orFilter = null, WorkflowExpression<int> time = null, WorkflowExpression<string> interval = null)
-        {
-            WorkflowExpression.Validate(start, nameof(start), required: true);
-            WorkflowExpression.Validate(end, nameof(end), required: true);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
-            WorkflowExpression.Validate(pageSize, nameof(pageSize), required: false);
-            WorkflowExpression.Validate(sortValues, nameof(sortValues), required: false);
-            WorkflowExpression.Validate(sort, nameof(sort), required: false);
-            WorkflowExpression.Validate(filter, nameof(filter), required: false);
-            WorkflowExpression.Validate(dir, nameof(dir), required: false);
-            WorkflowExpression.Validate(orFilter, nameof(orFilter), required: false);
-            WorkflowExpression.Validate(time, nameof(time), required: false);
-            WorkflowExpression.Validate(interval, nameof(interval), required: false);
+            var __workflow_start = start == null ? null : WorkflowExpression.Compile(start);
+            WorkflowExpression.Validate(__workflow_start, nameof(start), required: true);
+            var __workflow_end = end == null ? null : WorkflowExpression.Compile(end);
+            WorkflowExpression.Validate(__workflow_end, nameof(end), required: true);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
+            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_sortValues = sortValues == null ? null : WorkflowExpression.Compile(sortValues);
+            WorkflowExpression.Validate(__workflow_sortValues, nameof(sortValues), required: false);
+            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
+            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
+            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
+            var __workflow_dir = dir == null ? null : WorkflowExpression.Compile(dir);
+            WorkflowExpression.Validate(__workflow_dir, nameof(dir), required: false);
+            var __workflow_orFilter = orFilter == null ? null : WorkflowExpression.Compile(orFilter);
+            WorkflowExpression.Validate(__workflow_orFilter, nameof(orFilter), required: false);
+            var __workflow_time = time == null ? null : WorkflowExpression.Compile(time);
+            WorkflowExpression.Validate(__workflow_time, nameof(time), required: false);
+            var __workflow_interval = interval == null ? null : WorkflowExpression.Compile(interval);
+            WorkflowExpression.Validate(__workflow_interval, nameof(interval), required: false);
             return new DeferredBodyAction<StatsGraphRo[]>(() =>
             {
                 var apiCallPath = "/stats/sum";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-                if (pageSize != null)
-                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-                if (sortValues != null)
-                    callPayload.Queries["sortValues"] = ExpressionConverter.Convert(sortValues);
-                if (sort != null)
-                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-                if (filter != null)
-                    callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-                if (dir != null)
-                    callPayload.Queries["dir"] = ExpressionConverter.Convert(dir);
-                if (orFilter != null)
-                    callPayload.Queries["orFilter"] = ExpressionConverter.Convert(orFilter);
-                if (time != null)
-                    callPayload.Queries["time"] = ExpressionConverter.Convert(time);
-                if (interval != null)
-                    callPayload.Queries["interval"] = ExpressionConverter.Convert(interval);
-                callPayload.Queries["start"] = ExpressionConverter.Convert(start);
-                callPayload.Queries["end"] = ExpressionConverter.Convert(end);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_pageSize != null)
+                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
+                if (__workflow_sortValues != null)
+                    callPayload.Queries["sortValues"] = ExpressionConverter.Convert(__workflow_sortValues);
+                if (__workflow_sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
+                if (__workflow_filter != null)
+                    callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
+                if (__workflow_dir != null)
+                    callPayload.Queries["dir"] = ExpressionConverter.Convert(__workflow_dir);
+                if (__workflow_orFilter != null)
+                    callPayload.Queries["orFilter"] = ExpressionConverter.Convert(__workflow_orFilter);
+                if (__workflow_time != null)
+                    callPayload.Queries["time"] = ExpressionConverter.Convert(__workflow_time);
+                if (__workflow_interval != null)
+                    callPayload.Queries["interval"] = ExpressionConverter.Convert(__workflow_interval);
+                callPayload.Queries["start"] = ExpressionConverter.Convert(__workflow_start);
+                callPayload.Queries["end"] = ExpressionConverter.Convert(__workflow_end);
                 return new ApiConnectionAction<StatsGraphRo[]>(callPayload);
             });
         }

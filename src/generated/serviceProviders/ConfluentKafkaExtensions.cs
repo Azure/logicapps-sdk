@@ -1,7 +1,6 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ConfluentKafka
 {
     using System;
@@ -9,43 +8,41 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ConfluentKafka
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class ConfluentKafkaActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "confluentKafka")]
-        [WorkflowExpressionFactory(nameof(__BuildSendMessage))]
-        public IBodyWorkflowAction<SendMessageOutput> SendMessage([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<object> message, [WorkflowExpression] Func<string> messageKey = null, [WorkflowExpression] Func<object> headers = null, [WorkflowExpression] Func<string> schemaSubjectName = null)
+        public IBodyWorkflowAction<SendMessageOutput> SendMessage(Expression<Func<string>> topicName, Expression<Func<object>> message, Expression<Func<string>> messageKey = null, Expression<Func<object>> headers = null, Expression<Func<string>> schemaSubjectName = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SendMessageOutput> __BuildSendMessage(WorkflowExpression<string> topicName, WorkflowExpression<object> message, WorkflowExpression<string> messageKey = null, WorkflowExpression<object> headers = null, WorkflowExpression<string> schemaSubjectName = null)
-        {
-            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
-            WorkflowExpression.Validate(message, nameof(message), required: true);
-            WorkflowExpression.Validate(messageKey, nameof(messageKey), required: false);
-            WorkflowExpression.Validate(headers, nameof(headers), required: false);
-            WorkflowExpression.Validate(schemaSubjectName, nameof(schemaSubjectName), required: false);
+            var __workflow_topicName = topicName == null ? null : WorkflowExpression.Compile(topicName);
+            WorkflowExpression.Validate(__workflow_topicName, nameof(topicName), required: true);
+            var __workflow_message = message == null ? null : WorkflowExpression.Compile(message);
+            WorkflowExpression.Validate(__workflow_message, nameof(message), required: true);
+            var __workflow_messageKey = messageKey == null ? null : WorkflowExpression.Compile(messageKey);
+            WorkflowExpression.Validate(__workflow_messageKey, nameof(messageKey), required: false);
+            var __workflow_headers = headers == null ? null : WorkflowExpression.Compile(headers);
+            WorkflowExpression.Validate(__workflow_headers, nameof(headers), required: false);
+            var __workflow_schemaSubjectName = schemaSubjectName == null ? null : WorkflowExpression.Compile(schemaSubjectName);
+            WorkflowExpression.Validate(__workflow_schemaSubjectName, nameof(schemaSubjectName), required: false);
             return new DeferredBodyAction<SendMessageOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["TopicName"] = ExpressionConverter.ConvertO(topicName);
-                serviceProviderParameters["Message"] = ExpressionConverter.ConvertO(message);
-                if (messageKey != null)
+                serviceProviderParameters["TopicName"] = ExpressionConverter.ConvertO(__workflow_topicName);
+                serviceProviderParameters["Message"] = ExpressionConverter.ConvertO(__workflow_message);
+                if (__workflow_messageKey != null)
                 {
-                    serviceProviderParameters["messageKey"] = ExpressionConverter.ConvertO(messageKey);
+                    serviceProviderParameters["messageKey"] = ExpressionConverter.ConvertO(__workflow_messageKey);
                 }
 
-                if (headers != null)
+                if (__workflow_headers != null)
                 {
-                    serviceProviderParameters["Headers"] = ExpressionConverter.ConvertO(headers);
+                    serviceProviderParameters["Headers"] = ExpressionConverter.ConvertO(__workflow_headers);
                 }
 
-                if (schemaSubjectName != null)
+                if (__workflow_schemaSubjectName != null)
                 {
-                    serviceProviderParameters["SchemaSubjectName"] = ExpressionConverter.ConvertO(schemaSubjectName);
+                    serviceProviderParameters["SchemaSubjectName"] = ExpressionConverter.ConvertO(__workflow_schemaSubjectName);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -60,55 +57,52 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ConfluentKafka
 
     public class ConfluentKafkaTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildReceiveMessage))]
-        public IBodyWorkflowTrigger<ReceiveMessageOutput> ReceiveMessage([WorkflowExpression] Func<string> topic, [WorkflowExpression] Func<string> consumerGroup = null, [WorkflowExpression] Func<ReceiveMessageInputAuthenticationModeType> authenticationMode = null, [WorkflowExpression] Func<ReceiveMessageInputProtocolType> protocol = null, [WorkflowExpression] Func<string> avroSchema = null)
+        public IBodyWorkflowTrigger<ReceiveMessageOutput> ReceiveMessage(Expression<Func<string>> topic, Expression<Func<string>> consumerGroup = null, Expression<Func<ReceiveMessageInputAuthenticationModeType>> authenticationMode = null, Expression<Func<ReceiveMessageInputProtocolType>> protocol = null, Expression<Func<string>> avroSchema = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ReceiveMessageOutput> __BuildReceiveMessage(WorkflowExpression<string> topic, WorkflowExpression<string> consumerGroup = null, WorkflowExpression<ReceiveMessageInputAuthenticationModeType> authenticationMode = null, WorkflowExpression<ReceiveMessageInputProtocolType> protocol = null, WorkflowExpression<string> avroSchema = null)
-        {
-            WorkflowExpression.Validate(topic, nameof(topic), required: true);
-            WorkflowExpression.Validate(consumerGroup, nameof(consumerGroup), required: false);
-            WorkflowExpression.Validate(authenticationMode, nameof(authenticationMode), required: false);
-            WorkflowExpression.Validate(protocol, nameof(protocol), required: false);
-            WorkflowExpression.Validate(avroSchema, nameof(avroSchema), required: false);
+            var __workflow_topic = topic == null ? null : WorkflowExpression.Compile(topic);
+            WorkflowExpression.Validate(__workflow_topic, nameof(topic), required: true);
+            var __workflow_consumerGroup = consumerGroup == null ? null : WorkflowExpression.Compile(consumerGroup);
+            WorkflowExpression.Validate(__workflow_consumerGroup, nameof(consumerGroup), required: false);
+            var __workflow_authenticationMode = authenticationMode == null ? null : WorkflowExpression.Compile(authenticationMode);
+            WorkflowExpression.Validate(__workflow_authenticationMode, nameof(authenticationMode), required: false);
+            var __workflow_protocol = protocol == null ? null : WorkflowExpression.Compile(protocol);
+            WorkflowExpression.Validate(__workflow_protocol, nameof(protocol), required: false);
+            var __workflow_avroSchema = avroSchema == null ? null : WorkflowExpression.Compile(avroSchema);
+            WorkflowExpression.Validate(__workflow_avroSchema, nameof(avroSchema), required: false);
             return new DeferredBodyTrigger<ReceiveMessageOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["Topic"] = ExpressionConverter.ConvertO(topic);
-                if (consumerGroup != null)
+                serviceProviderParameters["Topic"] = ExpressionConverter.ConvertO(__workflow_topic);
+                if (__workflow_consumerGroup != null)
                 {
-                    serviceProviderParameters["ConsumerGroup"] = ExpressionConverter.ConvertO(consumerGroup);
+                    serviceProviderParameters["ConsumerGroup"] = ExpressionConverter.ConvertO(__workflow_consumerGroup);
                 }
                 else
                 {
                     serviceProviderParameters["ConsumerGroup"] = "$Default";
                 }
 
-                if (authenticationMode != null)
+                if (__workflow_authenticationMode != null)
                 {
-                    serviceProviderParameters["AuthenticationMode"] = ExpressionConverter.ConvertO(authenticationMode);
+                    serviceProviderParameters["AuthenticationMode"] = ExpressionConverter.ConvertO(__workflow_authenticationMode);
                 }
                 else
                 {
                     serviceProviderParameters["AuthenticationMode"] = "Plain";
                 }
 
-                if (protocol != null)
+                if (__workflow_protocol != null)
                 {
-                    serviceProviderParameters["Protocol"] = ExpressionConverter.ConvertO(protocol);
+                    serviceProviderParameters["Protocol"] = ExpressionConverter.ConvertO(__workflow_protocol);
                 }
                 else
                 {
                     serviceProviderParameters["Protocol"] = "SaslSsl";
                 }
 
-                if (avroSchema != null)
+                if (__workflow_avroSchema != null)
                 {
-                    serviceProviderParameters["AvroSchema"] = ExpressionConverter.ConvertO(avroSchema);
+                    serviceProviderParameters["AvroSchema"] = ExpressionConverter.ConvertO(__workflow_avroSchema);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput

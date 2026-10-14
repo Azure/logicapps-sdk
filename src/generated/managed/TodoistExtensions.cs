@@ -1,32 +1,30 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class TodoistActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateItem))]
-        public IBodyWorkflowAction<TaskV2> CreateItem([WorkflowExpression] Func<string> newItemtitle, [WorkflowExpression] Func<string> newItemprojectId = null, [WorkflowExpression] Func<string> newItemdueDate = null, [WorkflowExpression] Func<int> newItempriority = null, [WorkflowExpression] Func<string> newItemparentId = null, [WorkflowExpression] Func<int> newItemchildOrder = null)
+        public IBodyWorkflowAction<TaskV2> CreateItem(Expression<Func<string>> newItemtitle, Expression<Func<string>> newItemprojectId = null, Expression<Func<string>> newItemdueDate = null, Expression<Func<int>> newItempriority = null, Expression<Func<string>> newItemparentId = null, Expression<Func<int>> newItemchildOrder = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TaskV2> __BuildCreateItem(WorkflowExpression<string> newItemtitle, WorkflowExpression<string> newItemprojectId = null, WorkflowExpression<string> newItemdueDate = null, WorkflowExpression<int> newItempriority = null, WorkflowExpression<string> newItemparentId = null, WorkflowExpression<int> newItemchildOrder = null)
-        {
-            WorkflowExpression.Validate(newItemtitle, nameof(newItemtitle), required: true);
-            WorkflowExpression.Validate(newItemprojectId, nameof(newItemprojectId), required: false);
-            WorkflowExpression.Validate(newItemdueDate, nameof(newItemdueDate), required: false);
-            WorkflowExpression.Validate(newItempriority, nameof(newItempriority), required: false);
-            WorkflowExpression.Validate(newItemparentId, nameof(newItemparentId), required: false);
-            WorkflowExpression.Validate(newItemchildOrder, nameof(newItemchildOrder), required: false);
+            var __workflow_newItemtitle = newItemtitle == null ? null : WorkflowExpression.Compile(newItemtitle);
+            WorkflowExpression.Validate(__workflow_newItemtitle, nameof(newItemtitle), required: true);
+            var __workflow_newItemprojectId = newItemprojectId == null ? null : WorkflowExpression.Compile(newItemprojectId);
+            WorkflowExpression.Validate(__workflow_newItemprojectId, nameof(newItemprojectId), required: false);
+            var __workflow_newItemdueDate = newItemdueDate == null ? null : WorkflowExpression.Compile(newItemdueDate);
+            WorkflowExpression.Validate(__workflow_newItemdueDate, nameof(newItemdueDate), required: false);
+            var __workflow_newItempriority = newItempriority == null ? null : WorkflowExpression.Compile(newItempriority);
+            WorkflowExpression.Validate(__workflow_newItempriority, nameof(newItempriority), required: false);
+            var __workflow_newItemparentId = newItemparentId == null ? null : WorkflowExpression.Compile(newItemparentId);
+            WorkflowExpression.Validate(__workflow_newItemparentId, nameof(newItemparentId), required: false);
+            var __workflow_newItemchildOrder = newItemchildOrder == null ? null : WorkflowExpression.Compile(newItemchildOrder);
+            WorkflowExpression.Validate(__workflow_newItemchildOrder, nameof(newItemchildOrder), required: false);
             return new DeferredBodyAction<TaskV2>(() =>
             {
                 var apiCallPath = "/v4/tasks/createTask";
@@ -35,34 +33,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
                 var newItem = new JObject();
                 var newItempropCount = 0;
                 newItempropCount++;
-                newItem["content"] = ExpressionConverter.ConvertO(newItemtitle);
-                if (newItemprojectId != null)
+                newItem["content"] = ExpressionConverter.ConvertO(__workflow_newItemtitle);
+                if (__workflow_newItemprojectId != null)
                 {
-                    newItem["project_id"] = ExpressionConverter.ConvertO(newItemprojectId);
+                    newItem["project_id"] = ExpressionConverter.ConvertO(__workflow_newItemprojectId);
                     newItempropCount++;
                 }
 
-                if (newItemdueDate != null)
+                if (__workflow_newItemdueDate != null)
                 {
-                    newItem["due_string"] = ExpressionConverter.ConvertO(newItemdueDate);
+                    newItem["due_string"] = ExpressionConverter.ConvertO(__workflow_newItemdueDate);
                     newItempropCount++;
                 }
 
-                if (newItempriority != null)
+                if (__workflow_newItempriority != null)
                 {
-                    newItem["priority"] = ExpressionConverter.ConvertO(newItempriority);
+                    newItem["priority"] = ExpressionConverter.ConvertO(__workflow_newItempriority);
                     newItempropCount++;
                 }
 
-                if (newItemparentId != null)
+                if (__workflow_newItemparentId != null)
                 {
-                    newItem["parent_id"] = ExpressionConverter.ConvertO(newItemparentId);
+                    newItem["parent_id"] = ExpressionConverter.ConvertO(__workflow_newItemparentId);
                     newItempropCount++;
                 }
 
-                if (newItemchildOrder != null)
+                if (__workflow_newItemchildOrder != null)
                 {
-                    newItem["order"] = ExpressionConverter.ConvertO(newItemchildOrder);
+                    newItem["order"] = ExpressionConverter.ConvertO(__workflow_newItemchildOrder);
                     newItempropCount++;
                 }
 
@@ -76,18 +74,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateLabel))]
-        public IBodyWorkflowAction<LabelV4> CreateLabel([WorkflowExpression] Func<string> newLabelname, [WorkflowExpression] Func<string> newLabelcolor = null, [WorkflowExpression] Func<int> newLabelorder = null)
+        public IBodyWorkflowAction<LabelV4> CreateLabel(Expression<Func<string>> newLabelname, Expression<Func<string>> newLabelcolor = null, Expression<Func<int>> newLabelorder = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<LabelV4> __BuildCreateLabel(WorkflowExpression<string> newLabelname, WorkflowExpression<string> newLabelcolor = null, WorkflowExpression<int> newLabelorder = null)
-        {
-            WorkflowExpression.Validate(newLabelname, nameof(newLabelname), required: true);
-            WorkflowExpression.Validate(newLabelcolor, nameof(newLabelcolor), required: false);
-            WorkflowExpression.Validate(newLabelorder, nameof(newLabelorder), required: false);
+            var __workflow_newLabelname = newLabelname == null ? null : WorkflowExpression.Compile(newLabelname);
+            WorkflowExpression.Validate(__workflow_newLabelname, nameof(newLabelname), required: true);
+            var __workflow_newLabelcolor = newLabelcolor == null ? null : WorkflowExpression.Compile(newLabelcolor);
+            WorkflowExpression.Validate(__workflow_newLabelcolor, nameof(newLabelcolor), required: false);
+            var __workflow_newLabelorder = newLabelorder == null ? null : WorkflowExpression.Compile(newLabelorder);
+            WorkflowExpression.Validate(__workflow_newLabelorder, nameof(newLabelorder), required: false);
             return new DeferredBodyAction<LabelV4>(() =>
             {
                 var apiCallPath = "/v4/labels/createLabel";
@@ -96,16 +90,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
                 var newLabel = new JObject();
                 var newLabelpropCount = 0;
                 newLabelpropCount++;
-                newLabel["name"] = ExpressionConverter.ConvertO(newLabelname);
-                if (newLabelcolor != null)
+                newLabel["name"] = ExpressionConverter.ConvertO(__workflow_newLabelname);
+                if (__workflow_newLabelcolor != null)
                 {
-                    newLabel["color"] = ExpressionConverter.ConvertO(newLabelcolor);
+                    newLabel["color"] = ExpressionConverter.ConvertO(__workflow_newLabelcolor);
                     newLabelpropCount++;
                 }
 
-                if (newLabelorder != null)
+                if (__workflow_newLabelorder != null)
                 {
-                    newLabel["order"] = ExpressionConverter.ConvertO(newLabelorder);
+                    newLabel["order"] = ExpressionConverter.ConvertO(__workflow_newLabelorder);
                     newLabelpropCount++;
                 }
 
@@ -119,19 +113,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateProject))]
-        public IBodyWorkflowAction<ProjectV4> CreateProject([WorkflowExpression] Func<string> newProjectname, [WorkflowExpression] Func<string> newProjectcolor = null, [WorkflowExpression] Func<string> newProjectparentId = null, [WorkflowExpression] Func<bool> newProjectisFavorite = null)
+        public IBodyWorkflowAction<ProjectV4> CreateProject(Expression<Func<string>> newProjectname, Expression<Func<string>> newProjectcolor = null, Expression<Func<string>> newProjectparentId = null, Expression<Func<bool>> newProjectisFavorite = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ProjectV4> __BuildCreateProject(WorkflowExpression<string> newProjectname, WorkflowExpression<string> newProjectcolor = null, WorkflowExpression<string> newProjectparentId = null, WorkflowExpression<bool> newProjectisFavorite = null)
-        {
-            WorkflowExpression.Validate(newProjectname, nameof(newProjectname), required: true);
-            WorkflowExpression.Validate(newProjectcolor, nameof(newProjectcolor), required: false);
-            WorkflowExpression.Validate(newProjectparentId, nameof(newProjectparentId), required: false);
-            WorkflowExpression.Validate(newProjectisFavorite, nameof(newProjectisFavorite), required: false);
+            var __workflow_newProjectname = newProjectname == null ? null : WorkflowExpression.Compile(newProjectname);
+            WorkflowExpression.Validate(__workflow_newProjectname, nameof(newProjectname), required: true);
+            var __workflow_newProjectcolor = newProjectcolor == null ? null : WorkflowExpression.Compile(newProjectcolor);
+            WorkflowExpression.Validate(__workflow_newProjectcolor, nameof(newProjectcolor), required: false);
+            var __workflow_newProjectparentId = newProjectparentId == null ? null : WorkflowExpression.Compile(newProjectparentId);
+            WorkflowExpression.Validate(__workflow_newProjectparentId, nameof(newProjectparentId), required: false);
+            var __workflow_newProjectisFavorite = newProjectisFavorite == null ? null : WorkflowExpression.Compile(newProjectisFavorite);
+            WorkflowExpression.Validate(__workflow_newProjectisFavorite, nameof(newProjectisFavorite), required: false);
             return new DeferredBodyAction<ProjectV4>(() =>
             {
                 var apiCallPath = "/v4/projects/createProject";
@@ -140,22 +131,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
                 var newProject = new JObject();
                 var newProjectpropCount = 0;
                 newProjectpropCount++;
-                newProject["name"] = ExpressionConverter.ConvertO(newProjectname);
-                if (newProjectcolor != null)
+                newProject["name"] = ExpressionConverter.ConvertO(__workflow_newProjectname);
+                if (__workflow_newProjectcolor != null)
                 {
-                    newProject["color"] = ExpressionConverter.ConvertO(newProjectcolor);
+                    newProject["color"] = ExpressionConverter.ConvertO(__workflow_newProjectcolor);
                     newProjectpropCount++;
                 }
 
-                if (newProjectparentId != null)
+                if (__workflow_newProjectparentId != null)
                 {
-                    newProject["parent_id"] = ExpressionConverter.ConvertO(newProjectparentId);
+                    newProject["parent_id"] = ExpressionConverter.ConvertO(__workflow_newProjectparentId);
                     newProjectpropCount++;
                 }
 
-                if (newProjectisFavorite != null)
+                if (__workflow_newProjectisFavorite != null)
                 {
-                    newProject["is_favorite"] = ExpressionConverter.ConvertO(newProjectisFavorite);
+                    newProject["is_favorite"] = ExpressionConverter.ConvertO(__workflow_newProjectisFavorite);
                     newProjectpropCount++;
                 }
 
@@ -178,22 +169,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
-        [WorkflowExpressionFactory(nameof(__BuildListItemsByProject))]
-        public IBodyWorkflowAction<TaskV2[]> ListItemsByProject([WorkflowExpression] Func<string> projectId)
+        public IBodyWorkflowAction<TaskV2[]> ListItemsByProject(Expression<Func<string>> projectId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TaskV2[]> __BuildListItemsByProject(WorkflowExpression<string> projectId)
-        {
-            WorkflowExpression.Validate(projectId, nameof(projectId), required: true);
+            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
+            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
             return new DeferredBodyAction<TaskV2[]>(() =>
             {
                 var apiCallPath = "/v4/tasks/getTasksByProject";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["project_id"] = ExpressionConverter.Convert(projectId);
+                callPayload.Queries["project_id"] = ExpressionConverter.Convert(__workflow_projectId);
                 return new ApiConnectionAction<TaskV2[]>(callPayload);
             });
         }
@@ -217,27 +202,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
-        [WorkflowExpressionFactory(nameof(__BuildShareProject))]
-        public IBodyWorkflowAction<ProjectV4> ShareProject([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> shareProjectemail)
+        public IBodyWorkflowAction<ProjectV4> ShareProject(Expression<Func<string>> projectId, Expression<Func<string>> shareProjectemail)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ProjectV4> __BuildShareProject(WorkflowExpression<string> projectId, WorkflowExpression<string> shareProjectemail)
-        {
-            WorkflowExpression.Validate(projectId, nameof(projectId), required: true);
-            WorkflowExpression.Validate(shareProjectemail, nameof(shareProjectemail), required: true);
+            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
+            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
+            var __workflow_shareProjectemail = shareProjectemail == null ? null : WorkflowExpression.Compile(shareProjectemail);
+            WorkflowExpression.Validate(__workflow_shareProjectemail, nameof(shareProjectemail), required: true);
             return new DeferredBodyAction<ProjectV4>(() =>
             {
                 var apiCallPath = "/v4/sync/shareProject";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["project_id"] = ExpressionConverter.Convert(projectId);
+                callPayload.Queries["project_id"] = ExpressionConverter.Convert(__workflow_projectId);
                 var shareProject = new JObject();
                 var shareProjectpropCount = 0;
                 shareProjectpropCount++;
-                shareProject["email"] = ExpressionConverter.ConvertO(shareProjectemail);
+                shareProject["email"] = ExpressionConverter.ConvertO(__workflow_shareProjectemail);
                 if (shareProjectpropCount > 0)
                 {
                     callPayload.Body = shareProject;
@@ -248,33 +228,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateItem))]
-        public IWorkflowAction UpdateItem([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> changeItemtitle, [WorkflowExpression] Func<int> changeItempriority = null)
+        public IWorkflowAction UpdateItem(Expression<Func<string>> projectId, Expression<Func<string>> id, Expression<Func<string>> changeItemtitle, Expression<Func<int>> changeItempriority = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildUpdateItem(WorkflowExpression<string> projectId, WorkflowExpression<string> id, WorkflowExpression<string> changeItemtitle, WorkflowExpression<int> changeItempriority = null)
-        {
-            WorkflowExpression.Validate(projectId, nameof(projectId), required: true);
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(changeItemtitle, nameof(changeItemtitle), required: true);
-            WorkflowExpression.Validate(changeItempriority, nameof(changeItempriority), required: false);
+            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
+            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_changeItemtitle = changeItemtitle == null ? null : WorkflowExpression.Compile(changeItemtitle);
+            WorkflowExpression.Validate(__workflow_changeItemtitle, nameof(changeItemtitle), required: true);
+            var __workflow_changeItempriority = changeItempriority == null ? null : WorkflowExpression.Compile(changeItempriority);
+            WorkflowExpression.Validate(__workflow_changeItempriority, nameof(changeItempriority), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v4/tasks/updateTask";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["project_id"] = ExpressionConverter.Convert(projectId);
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["project_id"] = ExpressionConverter.Convert(__workflow_projectId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 var changeItem = new JObject();
                 var changeItempropCount = 0;
                 changeItempropCount++;
-                changeItem["content"] = ExpressionConverter.ConvertO(changeItemtitle);
-                if (changeItempriority != null)
+                changeItem["content"] = ExpressionConverter.ConvertO(__workflow_changeItemtitle);
+                if (__workflow_changeItempriority != null)
                 {
-                    changeItem["priority"] = ExpressionConverter.ConvertO(changeItempriority);
+                    changeItem["priority"] = ExpressionConverter.ConvertO(__workflow_changeItempriority);
                     changeItempropCount++;
                 }
 
@@ -288,42 +265,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateLabel))]
-        public IWorkflowAction UpdateLabel([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> changeLabelname = null, [WorkflowExpression] Func<string> changeLabelcolor = null, [WorkflowExpression] Func<int> changeLabelorder = null)
+        public IWorkflowAction UpdateLabel(Expression<Func<string>> id, Expression<Func<string>> changeLabelname = null, Expression<Func<string>> changeLabelcolor = null, Expression<Func<int>> changeLabelorder = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildUpdateLabel(WorkflowExpression<string> id, WorkflowExpression<string> changeLabelname = null, WorkflowExpression<string> changeLabelcolor = null, WorkflowExpression<int> changeLabelorder = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(changeLabelname, nameof(changeLabelname), required: false);
-            WorkflowExpression.Validate(changeLabelcolor, nameof(changeLabelcolor), required: false);
-            WorkflowExpression.Validate(changeLabelorder, nameof(changeLabelorder), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_changeLabelname = changeLabelname == null ? null : WorkflowExpression.Compile(changeLabelname);
+            WorkflowExpression.Validate(__workflow_changeLabelname, nameof(changeLabelname), required: false);
+            var __workflow_changeLabelcolor = changeLabelcolor == null ? null : WorkflowExpression.Compile(changeLabelcolor);
+            WorkflowExpression.Validate(__workflow_changeLabelcolor, nameof(changeLabelcolor), required: false);
+            var __workflow_changeLabelorder = changeLabelorder == null ? null : WorkflowExpression.Compile(changeLabelorder);
+            WorkflowExpression.Validate(__workflow_changeLabelorder, nameof(changeLabelorder), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v4/labels/updateLabel";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 var changeLabel = new JObject();
                 var changeLabelpropCount = 0;
-                if (changeLabelname != null)
+                if (__workflow_changeLabelname != null)
                 {
-                    changeLabel["name"] = ExpressionConverter.ConvertO(changeLabelname);
+                    changeLabel["name"] = ExpressionConverter.ConvertO(__workflow_changeLabelname);
                     changeLabelpropCount++;
                 }
 
-                if (changeLabelcolor != null)
+                if (__workflow_changeLabelcolor != null)
                 {
-                    changeLabel["color"] = ExpressionConverter.ConvertO(changeLabelcolor);
+                    changeLabel["color"] = ExpressionConverter.ConvertO(__workflow_changeLabelcolor);
                     changeLabelpropCount++;
                 }
 
-                if (changeLabelorder != null)
+                if (__workflow_changeLabelorder != null)
                 {
-                    changeLabel["order"] = ExpressionConverter.ConvertO(changeLabelorder);
+                    changeLabel["order"] = ExpressionConverter.ConvertO(__workflow_changeLabelorder);
                     changeLabelpropCount++;
                 }
 
@@ -337,38 +311,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateProject))]
-        public IWorkflowAction UpdateProject([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> changeProjectname, [WorkflowExpression] Func<string> changeProjectcolor = null, [WorkflowExpression] Func<bool> changeProjectisFavorite = null)
+        public IWorkflowAction UpdateProject(Expression<Func<string>> id, Expression<Func<string>> changeProjectname, Expression<Func<string>> changeProjectcolor = null, Expression<Func<bool>> changeProjectisFavorite = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildUpdateProject(WorkflowExpression<string> id, WorkflowExpression<string> changeProjectname, WorkflowExpression<string> changeProjectcolor = null, WorkflowExpression<bool> changeProjectisFavorite = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(changeProjectname, nameof(changeProjectname), required: true);
-            WorkflowExpression.Validate(changeProjectcolor, nameof(changeProjectcolor), required: false);
-            WorkflowExpression.Validate(changeProjectisFavorite, nameof(changeProjectisFavorite), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_changeProjectname = changeProjectname == null ? null : WorkflowExpression.Compile(changeProjectname);
+            WorkflowExpression.Validate(__workflow_changeProjectname, nameof(changeProjectname), required: true);
+            var __workflow_changeProjectcolor = changeProjectcolor == null ? null : WorkflowExpression.Compile(changeProjectcolor);
+            WorkflowExpression.Validate(__workflow_changeProjectcolor, nameof(changeProjectcolor), required: false);
+            var __workflow_changeProjectisFavorite = changeProjectisFavorite == null ? null : WorkflowExpression.Compile(changeProjectisFavorite);
+            WorkflowExpression.Validate(__workflow_changeProjectisFavorite, nameof(changeProjectisFavorite), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v4/projects/updateProject";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 var changeProject = new JObject();
                 var changeProjectpropCount = 0;
                 changeProjectpropCount++;
-                changeProject["name"] = ExpressionConverter.ConvertO(changeProjectname);
-                if (changeProjectcolor != null)
+                changeProject["name"] = ExpressionConverter.ConvertO(__workflow_changeProjectname);
+                if (__workflow_changeProjectcolor != null)
                 {
-                    changeProject["color"] = ExpressionConverter.ConvertO(changeProjectcolor);
+                    changeProject["color"] = ExpressionConverter.ConvertO(__workflow_changeProjectcolor);
                     changeProjectpropCount++;
                 }
 
-                if (changeProjectisFavorite != null)
+                if (__workflow_changeProjectisFavorite != null)
                 {
-                    changeProject["is_favorite"] = ExpressionConverter.ConvertO(changeProjectisFavorite);
+                    changeProject["is_favorite"] = ExpressionConverter.ConvertO(__workflow_changeProjectisFavorite);
                     changeProjectpropCount++;
                 }
 
@@ -384,43 +355,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
 
     public class TodoistTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildOnItemCompleted))]
-        public IBodyWorkflowTrigger<OnItemCompletedV4Response> OnItemCompleted([WorkflowExpression] Func<string> projectId,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnItemCompletedV4Response> OnItemCompleted(Expression<Func<string>> projectId, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<OnItemCompletedV4Response> __BuildOnItemCompleted(WorkflowExpression<string> projectId,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(projectId, nameof(projectId), required: true);
+            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
+            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
             return new DeferredBodyTrigger<OnItemCompletedV4Response>(() =>
             {
                 var apiCallPath = "/v4/trigger/completed/get_all";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["project_id"] = ExpressionConverter.Convert(projectId);
+                callPayload.Queries["project_id"] = ExpressionConverter.Convert(__workflow_projectId);
                 return new ApiConnectionTrigger<OnItemCompletedV4Response>(callPayload, recurrence: recurrence);
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildOnItemCreated))]
-        public IBodyWorkflowTrigger<OnItemCreatedV4Response> OnItemCreated([WorkflowExpression] Func<string> projectId,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnItemCreatedV4Response> OnItemCreated(Expression<Func<string>> projectId, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<OnItemCreatedV4Response> __BuildOnItemCreated(WorkflowExpression<string> projectId,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(projectId, nameof(projectId), required: true);
+            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
+            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
             return new DeferredBodyTrigger<OnItemCreatedV4Response>(() =>
             {
                 var apiCallPath = "/v4/trigger/sync";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["project_id"] = ExpressionConverter.Convert(projectId);
+                callPayload.Queries["project_id"] = ExpressionConverter.Convert(__workflow_projectId);
                 return new ApiConnectionTrigger<OnItemCreatedV4Response>(callPayload, recurrence: recurrence);
             });
         }

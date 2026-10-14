@@ -1,413 +1,350 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class AletheiaActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        [WorkflowExpressionFactory(nameof(__BuildEntityFilings))]
-        public IBodyWorkflowAction<EntityFilingsResponseItem[]> EntityFilings([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> filing = null, [WorkflowExpression] Func<int> before = null)
+        public IBodyWorkflowAction<EntityFilingsResponseItem[]> EntityFilings(Expression<Func<string>> id, Expression<Func<string>> filing = null, Expression<Func<int>> before = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntityFilingsResponseItem[]> __BuildEntityFilings(WorkflowExpression<string> id, WorkflowExpression<string> filing = null, WorkflowExpression<int> before = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(filing, nameof(filing), required: false);
-            WorkflowExpression.Validate(before, nameof(before), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_filing = filing == null ? null : WorkflowExpression.Compile(filing);
+            WorkflowExpression.Validate(__workflow_filing, nameof(filing), required: false);
+            var __workflow_before = before == null ? null : WorkflowExpression.Compile(before);
+            WorkflowExpression.Validate(__workflow_before, nameof(before), required: false);
             return new DeferredBodyAction<EntityFilingsResponseItem[]>(() =>
             {
                 var apiCallPath = "/EntityFilings";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-                if (filing != null)
-                    callPayload.Queries["filing"] = ExpressionConverter.Convert(filing);
-                if (before != null)
-                    callPayload.Queries["before"] = ExpressionConverter.Convert(before);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
+                if (__workflow_filing != null)
+                    callPayload.Queries["filing"] = ExpressionConverter.Convert(__workflow_filing);
+                if (__workflow_before != null)
+                    callPayload.Queries["before"] = ExpressionConverter.Convert(__workflow_before);
                 return new ApiConnectionAction<EntityFilingsResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        [WorkflowExpressionFactory(nameof(__BuildOpenForm4))]
-        public IBodyWorkflowAction<OpenForm4Response> OpenForm4([WorkflowExpression] Func<string> filingurl)
+        public IBodyWorkflowAction<OpenForm4Response> OpenForm4(Expression<Func<string>> filingurl)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<OpenForm4Response> __BuildOpenForm4(WorkflowExpression<string> filingurl)
-        {
-            WorkflowExpression.Validate(filingurl, nameof(filingurl), required: true);
+            var __workflow_filingurl = filingurl == null ? null : WorkflowExpression.Compile(filingurl);
+            WorkflowExpression.Validate(__workflow_filingurl, nameof(filingurl), required: true);
             return new DeferredBodyAction<OpenForm4Response>(() =>
             {
                 var apiCallPath = "/OpenForm4";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["filingurl"] = ExpressionConverter.Convert(filingurl);
+                callPayload.Queries["filingurl"] = ExpressionConverter.Convert(__workflow_filingurl);
                 return new ApiConnectionAction<OpenForm4Response>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        [WorkflowExpressionFactory(nameof(__BuildOpenCommonFinancials))]
-        public IBodyWorkflowAction<OpenCommonFinancialsResponse> OpenCommonFinancials([WorkflowExpression] Func<string> filingurl)
+        public IBodyWorkflowAction<OpenCommonFinancialsResponse> OpenCommonFinancials(Expression<Func<string>> filingurl)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<OpenCommonFinancialsResponse> __BuildOpenCommonFinancials(WorkflowExpression<string> filingurl)
-        {
-            WorkflowExpression.Validate(filingurl, nameof(filingurl), required: true);
+            var __workflow_filingurl = filingurl == null ? null : WorkflowExpression.Compile(filingurl);
+            WorkflowExpression.Validate(__workflow_filingurl, nameof(filingurl), required: true);
             return new DeferredBodyAction<OpenCommonFinancialsResponse>(() =>
             {
                 var apiCallPath = "/OpenCommonFinancials";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["filingurl"] = ExpressionConverter.Convert(filingurl);
+                callPayload.Queries["filingurl"] = ExpressionConverter.Convert(__workflow_filingurl);
                 return new ApiConnectionAction<OpenCommonFinancialsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        [WorkflowExpressionFactory(nameof(__BuildSearchEntities))]
-        public IBodyWorkflowAction<SearchEntitiesResponseItem[]> SearchEntities([WorkflowExpression] Func<string> term, [WorkflowExpression] Func<int> top = null)
+        public IBodyWorkflowAction<SearchEntitiesResponseItem[]> SearchEntities(Expression<Func<string>> term, Expression<Func<int>> top = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SearchEntitiesResponseItem[]> __BuildSearchEntities(WorkflowExpression<string> term, WorkflowExpression<int> top = null)
-        {
-            WorkflowExpression.Validate(term, nameof(term), required: true);
-            WorkflowExpression.Validate(top, nameof(top), required: false);
+            var __workflow_term = term == null ? null : WorkflowExpression.Compile(term);
+            WorkflowExpression.Validate(__workflow_term, nameof(term), required: true);
+            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
+            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
             return new DeferredBodyAction<SearchEntitiesResponseItem[]>(() =>
             {
                 var apiCallPath = "/SearchEntities";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["term"] = ExpressionConverter.Convert(term);
+                callPayload.Queries["term"] = ExpressionConverter.Convert(__workflow_term);
                 callPayload.Queries["top"] = Convert.ToString(12);
-                if (top != null)
-                    callPayload.Queries["top"] = ExpressionConverter.Convert(top);
+                if (__workflow_top != null)
+                    callPayload.Queries["top"] = ExpressionConverter.Convert(__workflow_top);
                 return new ApiConnectionAction<SearchEntitiesResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        [WorkflowExpressionFactory(nameof(__BuildGetEntity))]
-        public IBodyWorkflowAction<GetEntityResponse> GetEntity([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<GetEntityResponse> GetEntity(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetEntityResponse> __BuildGetEntity(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<GetEntityResponse>(() =>
             {
                 var apiCallPath = "/GetEntity";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<GetEntityResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        [WorkflowExpressionFactory(nameof(__BuildGetFiling))]
-        public IBodyWorkflowAction<GetFilingResponse> GetFiling([WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> url = null)
+        public IBodyWorkflowAction<GetFilingResponse> GetFiling(Expression<Func<string>> id = null, Expression<Func<string>> url = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetFilingResponse> __BuildGetFiling(WorkflowExpression<string> id = null, WorkflowExpression<string> url = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: false);
-            WorkflowExpression.Validate(url, nameof(url), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: false);
+            var __workflow_url = url == null ? null : WorkflowExpression.Compile(url);
+            WorkflowExpression.Validate(__workflow_url, nameof(url), required: false);
             return new DeferredBodyAction<GetFilingResponse>(() =>
             {
                 var apiCallPath = "/GetFiling";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (id != null)
-                    callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-                if (url != null)
-                    callPayload.Queries["url"] = ExpressionConverter.Convert(url);
+                if (__workflow_id != null)
+                    callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
+                if (__workflow_url != null)
+                    callPayload.Queries["url"] = ExpressionConverter.Convert(__workflow_url);
                 return new ApiConnectionAction<GetFilingResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        [WorkflowExpressionFactory(nameof(__BuildLatestTransactions))]
-        public IBodyWorkflowAction<LatestTransactionsResponseItem[]> LatestTransactions([WorkflowExpression] Func<string> issuer = null, [WorkflowExpression] Func<int> owner = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<string> before = null, [WorkflowExpression] Func<int> securitytype = null, [WorkflowExpression] Func<int> transactiontype = null, [WorkflowExpression] Func<bool> cascade = null)
+        public IBodyWorkflowAction<LatestTransactionsResponseItem[]> LatestTransactions(Expression<Func<string>> issuer = null, Expression<Func<int>> owner = null, Expression<Func<int>> top = null, Expression<Func<string>> before = null, Expression<Func<int>> securitytype = null, Expression<Func<int>> transactiontype = null, Expression<Func<bool>> cascade = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<LatestTransactionsResponseItem[]> __BuildLatestTransactions(WorkflowExpression<string> issuer = null, WorkflowExpression<int> owner = null, WorkflowExpression<int> top = null, WorkflowExpression<string> before = null, WorkflowExpression<int> securitytype = null, WorkflowExpression<int> transactiontype = null, WorkflowExpression<bool> cascade = null)
-        {
-            WorkflowExpression.Validate(issuer, nameof(issuer), required: false);
-            WorkflowExpression.Validate(owner, nameof(owner), required: false);
-            WorkflowExpression.Validate(top, nameof(top), required: false);
-            WorkflowExpression.Validate(before, nameof(before), required: false);
-            WorkflowExpression.Validate(securitytype, nameof(securitytype), required: false);
-            WorkflowExpression.Validate(transactiontype, nameof(transactiontype), required: false);
-            WorkflowExpression.Validate(cascade, nameof(cascade), required: false);
+            var __workflow_issuer = issuer == null ? null : WorkflowExpression.Compile(issuer);
+            WorkflowExpression.Validate(__workflow_issuer, nameof(issuer), required: false);
+            var __workflow_owner = owner == null ? null : WorkflowExpression.Compile(owner);
+            WorkflowExpression.Validate(__workflow_owner, nameof(owner), required: false);
+            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
+            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_before = before == null ? null : WorkflowExpression.Compile(before);
+            WorkflowExpression.Validate(__workflow_before, nameof(before), required: false);
+            var __workflow_securitytype = securitytype == null ? null : WorkflowExpression.Compile(securitytype);
+            WorkflowExpression.Validate(__workflow_securitytype, nameof(securitytype), required: false);
+            var __workflow_transactiontype = transactiontype == null ? null : WorkflowExpression.Compile(transactiontype);
+            WorkflowExpression.Validate(__workflow_transactiontype, nameof(transactiontype), required: false);
+            var __workflow_cascade = cascade == null ? null : WorkflowExpression.Compile(cascade);
+            WorkflowExpression.Validate(__workflow_cascade, nameof(cascade), required: false);
             return new DeferredBodyAction<LatestTransactionsResponseItem[]>(() =>
             {
                 var apiCallPath = "/LatestTransactions";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (issuer != null)
-                    callPayload.Queries["issuer"] = ExpressionConverter.Convert(issuer);
-                if (owner != null)
-                    callPayload.Queries["owner"] = ExpressionConverter.Convert(owner);
+                if (__workflow_issuer != null)
+                    callPayload.Queries["issuer"] = ExpressionConverter.Convert(__workflow_issuer);
+                if (__workflow_owner != null)
+                    callPayload.Queries["owner"] = ExpressionConverter.Convert(__workflow_owner);
                 callPayload.Queries["top"] = Convert.ToString(20);
-                if (top != null)
-                    callPayload.Queries["top"] = ExpressionConverter.Convert(top);
-                if (before != null)
-                    callPayload.Queries["before"] = ExpressionConverter.Convert(before);
-                if (securitytype != null)
-                    callPayload.Queries["securitytype"] = ExpressionConverter.Convert(securitytype);
-                if (transactiontype != null)
-                    callPayload.Queries["transactiontype"] = ExpressionConverter.Convert(transactiontype);
-                if (cascade != null)
-                    callPayload.Queries["cascade"] = ExpressionConverter.Convert(cascade);
+                if (__workflow_top != null)
+                    callPayload.Queries["top"] = ExpressionConverter.Convert(__workflow_top);
+                if (__workflow_before != null)
+                    callPayload.Queries["before"] = ExpressionConverter.Convert(__workflow_before);
+                if (__workflow_securitytype != null)
+                    callPayload.Queries["securitytype"] = ExpressionConverter.Convert(__workflow_securitytype);
+                if (__workflow_transactiontype != null)
+                    callPayload.Queries["transactiontype"] = ExpressionConverter.Convert(__workflow_transactiontype);
+                if (__workflow_cascade != null)
+                    callPayload.Queries["cascade"] = ExpressionConverter.Convert(__workflow_cascade);
                 return new ApiConnectionAction<LatestTransactionsResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        [WorkflowExpressionFactory(nameof(__BuildAffiliatedOwners))]
-        public IBodyWorkflowAction<AffiliatedOwnersResponseItem[]> AffiliatedOwners([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<AffiliatedOwnersResponseItem[]> AffiliatedOwners(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AffiliatedOwnersResponseItem[]> __BuildAffiliatedOwners(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<AffiliatedOwnersResponseItem[]>(() =>
             {
                 var apiCallPath = "/AffiliatedOwners";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<AffiliatedOwnersResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        [WorkflowExpressionFactory(nameof(__BuildGetCommonFinancials))]
-        public IBodyWorkflowAction<GetCommonFinancialsResponse> GetCommonFinancials([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<periodInput> period = null, [WorkflowExpression] Func<string> before = null)
+        public IBodyWorkflowAction<GetCommonFinancialsResponse> GetCommonFinancials(Expression<Func<string>> id, Expression<Func<periodInput>> period = null, Expression<Func<string>> before = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetCommonFinancialsResponse> __BuildGetCommonFinancials(WorkflowExpression<string> id, WorkflowExpression<periodInput> period = null, WorkflowExpression<string> before = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(period, nameof(period), required: false);
-            WorkflowExpression.Validate(before, nameof(before), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_period = period == null ? null : WorkflowExpression.Compile(period);
+            WorkflowExpression.Validate(__workflow_period, nameof(period), required: false);
+            var __workflow_before = before == null ? null : WorkflowExpression.Compile(before);
+            WorkflowExpression.Validate(__workflow_before, nameof(before), required: false);
             return new DeferredBodyAction<GetCommonFinancialsResponse>(() =>
             {
                 var apiCallPath = "/CommonFinancials";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-                if (period != null)
-                    callPayload.Queries["period"] = ExpressionConverter.Convert(period);
-                if (before != null)
-                    callPayload.Queries["before"] = ExpressionConverter.Convert(before);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
+                if (__workflow_period != null)
+                    callPayload.Queries["period"] = ExpressionConverter.Convert(__workflow_period);
+                if (__workflow_before != null)
+                    callPayload.Queries["before"] = ExpressionConverter.Convert(__workflow_before);
                 return new ApiConnectionAction<GetCommonFinancialsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        [WorkflowExpressionFactory(nameof(__BuildFinancialFactTrend))]
-        public IBodyWorkflowAction<FinancialFactTrendResponseItem[]> FinancialFactTrend([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<int> label, [WorkflowExpression] Func<int> period = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> before = null)
+        public IBodyWorkflowAction<FinancialFactTrendResponseItem[]> FinancialFactTrend(Expression<Func<string>> id, Expression<Func<int>> label, Expression<Func<int>> period = null, Expression<Func<string>> after = null, Expression<Func<string>> before = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FinancialFactTrendResponseItem[]> __BuildFinancialFactTrend(WorkflowExpression<string> id, WorkflowExpression<int> label, WorkflowExpression<int> period = null, WorkflowExpression<string> after = null, WorkflowExpression<string> before = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(label, nameof(label), required: true);
-            WorkflowExpression.Validate(period, nameof(period), required: false);
-            WorkflowExpression.Validate(after, nameof(after), required: false);
-            WorkflowExpression.Validate(before, nameof(before), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_label = label == null ? null : WorkflowExpression.Compile(label);
+            WorkflowExpression.Validate(__workflow_label, nameof(label), required: true);
+            var __workflow_period = period == null ? null : WorkflowExpression.Compile(period);
+            WorkflowExpression.Validate(__workflow_period, nameof(period), required: false);
+            var __workflow_after = after == null ? null : WorkflowExpression.Compile(after);
+            WorkflowExpression.Validate(__workflow_after, nameof(after), required: false);
+            var __workflow_before = before == null ? null : WorkflowExpression.Compile(before);
+            WorkflowExpression.Validate(__workflow_before, nameof(before), required: false);
             return new DeferredBodyAction<FinancialFactTrendResponseItem[]>(() =>
             {
                 var apiCallPath = "/FinancialFactTrend";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-                callPayload.Queries["label"] = ExpressionConverter.Convert(label);
-                if (period != null)
-                    callPayload.Queries["period"] = ExpressionConverter.Convert(period);
-                if (after != null)
-                    callPayload.Queries["after"] = ExpressionConverter.Convert(after);
-                if (before != null)
-                    callPayload.Queries["before"] = ExpressionConverter.Convert(before);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
+                callPayload.Queries["label"] = ExpressionConverter.Convert(__workflow_label);
+                if (__workflow_period != null)
+                    callPayload.Queries["period"] = ExpressionConverter.Convert(__workflow_period);
+                if (__workflow_after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(__workflow_after);
+                if (__workflow_before != null)
+                    callPayload.Queries["before"] = ExpressionConverter.Convert(__workflow_before);
                 return new ApiConnectionAction<FinancialFactTrendResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        [WorkflowExpressionFactory(nameof(__BuildSearchEarningsCalls))]
-        public IBodyWorkflowAction<SearchEarningsCallsResponseItem[]> SearchEarningsCalls([WorkflowExpression] Func<string> company = null, [WorkflowExpression] Func<int> year = null, [WorkflowExpression] Func<string> quarter = null, [WorkflowExpression] Func<int> top = null)
+        public IBodyWorkflowAction<SearchEarningsCallsResponseItem[]> SearchEarningsCalls(Expression<Func<string>> company = null, Expression<Func<int>> year = null, Expression<Func<string>> quarter = null, Expression<Func<int>> top = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SearchEarningsCallsResponseItem[]> __BuildSearchEarningsCalls(WorkflowExpression<string> company = null, WorkflowExpression<int> year = null, WorkflowExpression<string> quarter = null, WorkflowExpression<int> top = null)
-        {
-            WorkflowExpression.Validate(company, nameof(company), required: false);
-            WorkflowExpression.Validate(year, nameof(year), required: false);
-            WorkflowExpression.Validate(quarter, nameof(quarter), required: false);
-            WorkflowExpression.Validate(top, nameof(top), required: false);
+            var __workflow_company = company == null ? null : WorkflowExpression.Compile(company);
+            WorkflowExpression.Validate(__workflow_company, nameof(company), required: false);
+            var __workflow_year = year == null ? null : WorkflowExpression.Compile(year);
+            WorkflowExpression.Validate(__workflow_year, nameof(year), required: false);
+            var __workflow_quarter = quarter == null ? null : WorkflowExpression.Compile(quarter);
+            WorkflowExpression.Validate(__workflow_quarter, nameof(quarter), required: false);
+            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
+            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
             return new DeferredBodyAction<SearchEarningsCallsResponseItem[]>(() =>
             {
                 var apiCallPath = "/SearchEarningsCalls";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (company != null)
-                    callPayload.Queries["company"] = ExpressionConverter.Convert(company);
-                if (year != null)
-                    callPayload.Queries["year"] = ExpressionConverter.Convert(year);
-                if (quarter != null)
-                    callPayload.Queries["quarter"] = ExpressionConverter.Convert(quarter);
-                if (top != null)
-                    callPayload.Queries["top"] = ExpressionConverter.Convert(top);
+                if (__workflow_company != null)
+                    callPayload.Queries["company"] = ExpressionConverter.Convert(__workflow_company);
+                if (__workflow_year != null)
+                    callPayload.Queries["year"] = ExpressionConverter.Convert(__workflow_year);
+                if (__workflow_quarter != null)
+                    callPayload.Queries["quarter"] = ExpressionConverter.Convert(__workflow_quarter);
+                if (__workflow_top != null)
+                    callPayload.Queries["top"] = ExpressionConverter.Convert(__workflow_top);
                 return new ApiConnectionAction<SearchEarningsCallsResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        [WorkflowExpressionFactory(nameof(__BuildEarningsCall))]
-        public IBodyWorkflowAction<EarningsCallResponse> EarningsCall([WorkflowExpression] Func<string> company, [WorkflowExpression] Func<int> year = null, [WorkflowExpression] Func<string> quarter = null, [WorkflowExpression] Func<int> begin = null, [WorkflowExpression] Func<int> end = null)
+        public IBodyWorkflowAction<EarningsCallResponse> EarningsCall(Expression<Func<string>> company, Expression<Func<int>> year = null, Expression<Func<string>> quarter = null, Expression<Func<int>> begin = null, Expression<Func<int>> end = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EarningsCallResponse> __BuildEarningsCall(WorkflowExpression<string> company, WorkflowExpression<int> year = null, WorkflowExpression<string> quarter = null, WorkflowExpression<int> begin = null, WorkflowExpression<int> end = null)
-        {
-            WorkflowExpression.Validate(company, nameof(company), required: true);
-            WorkflowExpression.Validate(year, nameof(year), required: false);
-            WorkflowExpression.Validate(quarter, nameof(quarter), required: false);
-            WorkflowExpression.Validate(begin, nameof(begin), required: false);
-            WorkflowExpression.Validate(end, nameof(end), required: false);
+            var __workflow_company = company == null ? null : WorkflowExpression.Compile(company);
+            WorkflowExpression.Validate(__workflow_company, nameof(company), required: true);
+            var __workflow_year = year == null ? null : WorkflowExpression.Compile(year);
+            WorkflowExpression.Validate(__workflow_year, nameof(year), required: false);
+            var __workflow_quarter = quarter == null ? null : WorkflowExpression.Compile(quarter);
+            WorkflowExpression.Validate(__workflow_quarter, nameof(quarter), required: false);
+            var __workflow_begin = begin == null ? null : WorkflowExpression.Compile(begin);
+            WorkflowExpression.Validate(__workflow_begin, nameof(begin), required: false);
+            var __workflow_end = end == null ? null : WorkflowExpression.Compile(end);
+            WorkflowExpression.Validate(__workflow_end, nameof(end), required: false);
             return new DeferredBodyAction<EarningsCallResponse>(() =>
             {
                 var apiCallPath = "/EarningsCall";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["company"] = ExpressionConverter.Convert(company);
-                if (year != null)
-                    callPayload.Queries["year"] = ExpressionConverter.Convert(year);
-                if (quarter != null)
-                    callPayload.Queries["quarter"] = ExpressionConverter.Convert(quarter);
-                if (begin != null)
-                    callPayload.Queries["begin"] = ExpressionConverter.Convert(begin);
-                if (end != null)
-                    callPayload.Queries["end"] = ExpressionConverter.Convert(end);
+                callPayload.Queries["company"] = ExpressionConverter.Convert(__workflow_company);
+                if (__workflow_year != null)
+                    callPayload.Queries["year"] = ExpressionConverter.Convert(__workflow_year);
+                if (__workflow_quarter != null)
+                    callPayload.Queries["quarter"] = ExpressionConverter.Convert(__workflow_quarter);
+                if (__workflow_begin != null)
+                    callPayload.Queries["begin"] = ExpressionConverter.Convert(__workflow_begin);
+                if (__workflow_end != null)
+                    callPayload.Queries["end"] = ExpressionConverter.Convert(__workflow_end);
                 return new ApiConnectionAction<EarningsCallResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        [WorkflowExpressionFactory(nameof(__BuildEarningsCallHighlights))]
-        public IBodyWorkflowAction<EarningsCallHighlightsResponseItem[]> EarningsCallHighlights([WorkflowExpression] Func<string> company, [WorkflowExpression] Func<int> year, [WorkflowExpression] Func<string> quarter, [WorkflowExpression] Func<int> category = null, [WorkflowExpression] Func<int> top = null)
+        public IBodyWorkflowAction<EarningsCallHighlightsResponseItem[]> EarningsCallHighlights(Expression<Func<string>> company, Expression<Func<int>> year, Expression<Func<string>> quarter, Expression<Func<int>> category = null, Expression<Func<int>> top = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EarningsCallHighlightsResponseItem[]> __BuildEarningsCallHighlights(WorkflowExpression<string> company, WorkflowExpression<int> year, WorkflowExpression<string> quarter, WorkflowExpression<int> category = null, WorkflowExpression<int> top = null)
-        {
-            WorkflowExpression.Validate(company, nameof(company), required: true);
-            WorkflowExpression.Validate(year, nameof(year), required: true);
-            WorkflowExpression.Validate(quarter, nameof(quarter), required: true);
-            WorkflowExpression.Validate(category, nameof(category), required: false);
-            WorkflowExpression.Validate(top, nameof(top), required: false);
+            var __workflow_company = company == null ? null : WorkflowExpression.Compile(company);
+            WorkflowExpression.Validate(__workflow_company, nameof(company), required: true);
+            var __workflow_year = year == null ? null : WorkflowExpression.Compile(year);
+            WorkflowExpression.Validate(__workflow_year, nameof(year), required: true);
+            var __workflow_quarter = quarter == null ? null : WorkflowExpression.Compile(quarter);
+            WorkflowExpression.Validate(__workflow_quarter, nameof(quarter), required: true);
+            var __workflow_category = category == null ? null : WorkflowExpression.Compile(category);
+            WorkflowExpression.Validate(__workflow_category, nameof(category), required: false);
+            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
+            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
             return new DeferredBodyAction<EarningsCallHighlightsResponseItem[]>(() =>
             {
                 var apiCallPath = "/EarningsCallHighlights";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["company"] = ExpressionConverter.Convert(company);
-                callPayload.Queries["year"] = ExpressionConverter.Convert(year);
-                callPayload.Queries["quarter"] = ExpressionConverter.Convert(quarter);
-                if (category != null)
-                    callPayload.Queries["category"] = ExpressionConverter.Convert(category);
-                if (top != null)
-                    callPayload.Queries["top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["company"] = ExpressionConverter.Convert(__workflow_company);
+                callPayload.Queries["year"] = ExpressionConverter.Convert(__workflow_year);
+                callPayload.Queries["quarter"] = ExpressionConverter.Convert(__workflow_quarter);
+                if (__workflow_category != null)
+                    callPayload.Queries["category"] = ExpressionConverter.Convert(__workflow_category);
+                if (__workflow_top != null)
+                    callPayload.Queries["top"] = ExpressionConverter.Convert(__workflow_top);
                 return new ApiConnectionAction<EarningsCallHighlightsResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        [WorkflowExpressionFactory(nameof(__BuildCryptoQuote))]
-        public IBodyWorkflowAction<CryptoQuoteResponse> CryptoQuote([WorkflowExpression] Func<string> symbol)
+        public IBodyWorkflowAction<CryptoQuoteResponse> CryptoQuote(Expression<Func<string>> symbol)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CryptoQuoteResponse> __BuildCryptoQuote(WorkflowExpression<string> symbol)
-        {
-            WorkflowExpression.Validate(symbol, nameof(symbol), required: true);
+            var __workflow_symbol = symbol == null ? null : WorkflowExpression.Compile(symbol);
+            WorkflowExpression.Validate(__workflow_symbol, nameof(symbol), required: true);
             return new DeferredBodyAction<CryptoQuoteResponse>(() =>
             {
                 var apiCallPath = "/Crypto";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["symbol"] = ExpressionConverter.Convert(symbol);
+                callPayload.Queries["symbol"] = ExpressionConverter.Convert(__workflow_symbol);
                 return new ApiConnectionAction<CryptoQuoteResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        [WorkflowExpressionFactory(nameof(__BuildStockData))]
-        public IBodyWorkflowAction<StockDataV2Response> StockData([WorkflowExpression] Func<string> symbol, [WorkflowExpression] Func<string> fields = null)
+        public IBodyWorkflowAction<StockDataV2Response> StockData(Expression<Func<string>> symbol, Expression<Func<string>> fields = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<StockDataV2Response> __BuildStockData(WorkflowExpression<string> symbol, WorkflowExpression<string> fields = null)
-        {
-            WorkflowExpression.Validate(symbol, nameof(symbol), required: true);
-            WorkflowExpression.Validate(fields, nameof(fields), required: false);
+            var __workflow_symbol = symbol == null ? null : WorkflowExpression.Compile(symbol);
+            WorkflowExpression.Validate(__workflow_symbol, nameof(symbol), required: true);
+            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
+            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
             return new DeferredBodyAction<StockDataV2Response>(() =>
             {
                 var apiCallPath = "/v2/StockData";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["symbol"] = ExpressionConverter.Convert(symbol);
-                if (fields != null)
-                    callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                callPayload.Queries["symbol"] = ExpressionConverter.Convert(__workflow_symbol);
+                if (__workflow_fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
                 callPayload.Headers["Accept-Version"] = Convert.ToString(2);
                 return new ApiConnectionAction<StockDataV2Response>(callPayload);
             });
@@ -433,19 +370,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
             return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildInsiderTrading))]
-        public IWorkflowTrigger InsiderTrading([WorkflowExpression] Func<string> bodyissuer = null,[WorkflowExpression] Func<int> bodyowner = null,[WorkflowExpression] Func<bodytransactionTypeInput> bodytransactionType = null,[WorkflowExpression] Func<bodysecurityTypeInput> bodysecurityType = null,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger InsiderTrading(Expression<Func<string>> bodyissuer = null, Expression<Func<int>> bodyowner = null, Expression<Func<bodytransactionTypeInput>> bodytransactionType = null, Expression<Func<bodysecurityTypeInput>> bodysecurityType = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildInsiderTrading(WorkflowExpression<string> bodyissuer = null,WorkflowExpression<int> bodyowner = null,WorkflowExpression<bodytransactionTypeInput> bodytransactionType = null,WorkflowExpression<bodysecurityTypeInput> bodysecurityType = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodyissuer, nameof(bodyissuer), required: false);
-            WorkflowExpression.Validate(bodyowner, nameof(bodyowner), required: false);
-            WorkflowExpression.Validate(bodytransactionType, nameof(bodytransactionType), required: false);
-            WorkflowExpression.Validate(bodysecurityType, nameof(bodysecurityType), required: false);
+            var __workflow_bodyissuer = bodyissuer == null ? null : WorkflowExpression.Compile(bodyissuer);
+            WorkflowExpression.Validate(__workflow_bodyissuer, nameof(bodyissuer), required: false);
+            var __workflow_bodyowner = bodyowner == null ? null : WorkflowExpression.Compile(bodyowner);
+            WorkflowExpression.Validate(__workflow_bodyowner, nameof(bodyowner), required: false);
+            var __workflow_bodytransactionType = bodytransactionType == null ? null : WorkflowExpression.Compile(bodytransactionType);
+            WorkflowExpression.Validate(__workflow_bodytransactionType, nameof(bodytransactionType), required: false);
+            var __workflow_bodysecurityType = bodysecurityType == null ? null : WorkflowExpression.Compile(bodysecurityType);
+            WorkflowExpression.Validate(__workflow_bodysecurityType, nameof(bodysecurityType), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/SubscribeToInsiderTradingWebhook";
@@ -455,27 +389,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
                 var bodypropCount = 0;
                 body["endpoint"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-                if (bodyissuer != null)
+                if (__workflow_bodyissuer != null)
                 {
-                    body["issuer"] = ExpressionConverter.ConvertO(bodyissuer);
+                    body["issuer"] = ExpressionConverter.ConvertO(__workflow_bodyissuer);
                     bodypropCount++;
                 }
 
-                if (bodyowner != null)
+                if (__workflow_bodyowner != null)
                 {
-                    body["owner"] = ExpressionConverter.ConvertO(bodyowner);
+                    body["owner"] = ExpressionConverter.ConvertO(__workflow_bodyowner);
                     bodypropCount++;
                 }
 
-                if (bodytransactionType != null)
+                if (__workflow_bodytransactionType != null)
                 {
-                    body["transactionType"] = ExpressionConverter.ConvertO(bodytransactionType);
+                    body["transactionType"] = ExpressionConverter.ConvertO(__workflow_bodytransactionType);
                     bodypropCount++;
                 }
 
-                if (bodysecurityType != null)
+                if (__workflow_bodysecurityType != null)
                 {
-                    body["securityType"] = ExpressionConverter.ConvertO(bodysecurityType);
+                    body["securityType"] = ExpressionConverter.ConvertO(__workflow_bodysecurityType);
                     bodypropCount++;
                 }
 

@@ -1,33 +1,26 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalizeioip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class NationalizeioipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalizeioip")]
-        [WorkflowExpressionFactory(nameof(__BuildCheckNamesNationality))]
-        public IBodyWorkflowAction<CheckNamesNationalityResponseItem[]> CheckNamesNationality([WorkflowExpression] Func<string> name)
+        public IBodyWorkflowAction<CheckNamesNationalityResponseItem[]> CheckNamesNationality(Expression<Func<string>> name)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CheckNamesNationalityResponseItem[]> __BuildCheckNamesNationality(WorkflowExpression<string> name)
-        {
-            WorkflowExpression.Validate(name, nameof(name), required: true);
+            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
+            WorkflowExpression.Validate(__workflow_name, nameof(name), required: true);
             return new DeferredBodyAction<CheckNamesNationalityResponseItem[]>(() =>
             {
                 var apiCallPath = "/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
+                callPayload.Queries["name"] = ExpressionConverter.Convert(__workflow_name);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<CheckNamesNationalityResponseItem[]>(callPayload);
             });

@@ -1,39 +1,44 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class TavilyActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tavily")]
-        [WorkflowExpressionFactory(nameof(__BuildSearch))]
-        public IBodyWorkflowAction<SearchPostResponse> Search([WorkflowExpression] Func<string> bodyquery, [WorkflowExpression] Func<bodytopicInput> bodytopic = null, [WorkflowExpression] Func<bodysearchDepthInput> bodysearchDepth = null, [WorkflowExpression] Func<int> bodychunksPerSource = null, [WorkflowExpression] Func<int> bodymaxResults = null, [WorkflowExpression] Func<bodytimeRangeInput> bodytimeRange = null, [WorkflowExpression] Func<int> bodydays = null, [WorkflowExpression] Func<bool> bodyincludeAnswer = null, [WorkflowExpression] Func<bool> bodyincludeRawContent = null, [WorkflowExpression] Func<bool> bodyincludeImages = null, [WorkflowExpression] Func<bool> bodyincludeImageDescriptions = null, [WorkflowExpression] Func<string[]> bodyincludeDomains = null, [WorkflowExpression] Func<string[]> bodyexcludeDomains = null)
+        public IBodyWorkflowAction<SearchPostResponse> Search(Expression<Func<string>> bodyquery, Expression<Func<bodytopicInput>> bodytopic = null, Expression<Func<bodysearchDepthInput>> bodysearchDepth = null, Expression<Func<int>> bodychunksPerSource = null, Expression<Func<int>> bodymaxResults = null, Expression<Func<bodytimeRangeInput>> bodytimeRange = null, Expression<Func<int>> bodydays = null, Expression<Func<bool>> bodyincludeAnswer = null, Expression<Func<bool>> bodyincludeRawContent = null, Expression<Func<bool>> bodyincludeImages = null, Expression<Func<bool>> bodyincludeImageDescriptions = null, Expression<Func<string[]>> bodyincludeDomains = null, Expression<Func<string[]>> bodyexcludeDomains = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SearchPostResponse> __BuildSearch(WorkflowExpression<string> bodyquery, WorkflowExpression<bodytopicInput> bodytopic = null, WorkflowExpression<bodysearchDepthInput> bodysearchDepth = null, WorkflowExpression<int> bodychunksPerSource = null, WorkflowExpression<int> bodymaxResults = null, WorkflowExpression<bodytimeRangeInput> bodytimeRange = null, WorkflowExpression<int> bodydays = null, WorkflowExpression<bool> bodyincludeAnswer = null, WorkflowExpression<bool> bodyincludeRawContent = null, WorkflowExpression<bool> bodyincludeImages = null, WorkflowExpression<bool> bodyincludeImageDescriptions = null, WorkflowExpression<string[]> bodyincludeDomains = null, WorkflowExpression<string[]> bodyexcludeDomains = null)
-        {
-            WorkflowExpression.Validate(bodyquery, nameof(bodyquery), required: true);
-            WorkflowExpression.Validate(bodytopic, nameof(bodytopic), required: false);
-            WorkflowExpression.Validate(bodysearchDepth, nameof(bodysearchDepth), required: false);
-            WorkflowExpression.Validate(bodychunksPerSource, nameof(bodychunksPerSource), required: false);
-            WorkflowExpression.Validate(bodymaxResults, nameof(bodymaxResults), required: false);
-            WorkflowExpression.Validate(bodytimeRange, nameof(bodytimeRange), required: false);
-            WorkflowExpression.Validate(bodydays, nameof(bodydays), required: false);
-            WorkflowExpression.Validate(bodyincludeAnswer, nameof(bodyincludeAnswer), required: false);
-            WorkflowExpression.Validate(bodyincludeRawContent, nameof(bodyincludeRawContent), required: false);
-            WorkflowExpression.Validate(bodyincludeImages, nameof(bodyincludeImages), required: false);
-            WorkflowExpression.Validate(bodyincludeImageDescriptions, nameof(bodyincludeImageDescriptions), required: false);
-            WorkflowExpression.Validate(bodyincludeDomains, nameof(bodyincludeDomains), required: false);
-            WorkflowExpression.Validate(bodyexcludeDomains, nameof(bodyexcludeDomains), required: false);
+            var __workflow_bodyquery = bodyquery == null ? null : WorkflowExpression.Compile(bodyquery);
+            WorkflowExpression.Validate(__workflow_bodyquery, nameof(bodyquery), required: true);
+            var __workflow_bodytopic = bodytopic == null ? null : WorkflowExpression.Compile(bodytopic);
+            WorkflowExpression.Validate(__workflow_bodytopic, nameof(bodytopic), required: false);
+            var __workflow_bodysearchDepth = bodysearchDepth == null ? null : WorkflowExpression.Compile(bodysearchDepth);
+            WorkflowExpression.Validate(__workflow_bodysearchDepth, nameof(bodysearchDepth), required: false);
+            var __workflow_bodychunksPerSource = bodychunksPerSource == null ? null : WorkflowExpression.Compile(bodychunksPerSource);
+            WorkflowExpression.Validate(__workflow_bodychunksPerSource, nameof(bodychunksPerSource), required: false);
+            var __workflow_bodymaxResults = bodymaxResults == null ? null : WorkflowExpression.Compile(bodymaxResults);
+            WorkflowExpression.Validate(__workflow_bodymaxResults, nameof(bodymaxResults), required: false);
+            var __workflow_bodytimeRange = bodytimeRange == null ? null : WorkflowExpression.Compile(bodytimeRange);
+            WorkflowExpression.Validate(__workflow_bodytimeRange, nameof(bodytimeRange), required: false);
+            var __workflow_bodydays = bodydays == null ? null : WorkflowExpression.Compile(bodydays);
+            WorkflowExpression.Validate(__workflow_bodydays, nameof(bodydays), required: false);
+            var __workflow_bodyincludeAnswer = bodyincludeAnswer == null ? null : WorkflowExpression.Compile(bodyincludeAnswer);
+            WorkflowExpression.Validate(__workflow_bodyincludeAnswer, nameof(bodyincludeAnswer), required: false);
+            var __workflow_bodyincludeRawContent = bodyincludeRawContent == null ? null : WorkflowExpression.Compile(bodyincludeRawContent);
+            WorkflowExpression.Validate(__workflow_bodyincludeRawContent, nameof(bodyincludeRawContent), required: false);
+            var __workflow_bodyincludeImages = bodyincludeImages == null ? null : WorkflowExpression.Compile(bodyincludeImages);
+            WorkflowExpression.Validate(__workflow_bodyincludeImages, nameof(bodyincludeImages), required: false);
+            var __workflow_bodyincludeImageDescriptions = bodyincludeImageDescriptions == null ? null : WorkflowExpression.Compile(bodyincludeImageDescriptions);
+            WorkflowExpression.Validate(__workflow_bodyincludeImageDescriptions, nameof(bodyincludeImageDescriptions), required: false);
+            var __workflow_bodyincludeDomains = bodyincludeDomains == null ? null : WorkflowExpression.Compile(bodyincludeDomains);
+            WorkflowExpression.Validate(__workflow_bodyincludeDomains, nameof(bodyincludeDomains), required: false);
+            var __workflow_bodyexcludeDomains = bodyexcludeDomains == null ? null : WorkflowExpression.Compile(bodyexcludeDomains);
+            WorkflowExpression.Validate(__workflow_bodyexcludeDomains, nameof(bodyexcludeDomains), required: false);
             return new DeferredBodyAction<SearchPostResponse>(() =>
             {
                 var apiCallPath = "/search";
@@ -42,12 +47,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
-                if (bodytopic != null)
+                body["query"] = ExpressionConverter.ConvertO(__workflow_bodyquery);
+                if (__workflow_bodytopic != null)
                 {
-                    if (bodytopic != null)
+                    if (__workflow_bodytopic != null)
                     {
-                        body["topic"] = ExpressionConverter.ConvertO(bodytopic);
+                        body["topic"] = ExpressionConverter.ConvertO(__workflow_bodytopic);
                         bodypropCount++;
                     }
 
@@ -59,11 +64,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
                     bodypropCount++;
                 }
 
-                if (bodysearchDepth != null)
+                if (__workflow_bodysearchDepth != null)
                 {
-                    if (bodysearchDepth != null)
+                    if (__workflow_bodysearchDepth != null)
                     {
-                        body["search_depth"] = ExpressionConverter.ConvertO(bodysearchDepth);
+                        body["search_depth"] = ExpressionConverter.ConvertO(__workflow_bodysearchDepth);
                         bodypropCount++;
                     }
 
@@ -75,17 +80,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
                     bodypropCount++;
                 }
 
-                if (bodychunksPerSource != null)
+                if (__workflow_bodychunksPerSource != null)
                 {
-                    body["chunks_per_source"] = ExpressionConverter.ConvertO(bodychunksPerSource);
+                    body["chunks_per_source"] = ExpressionConverter.ConvertO(__workflow_bodychunksPerSource);
                     bodypropCount++;
                 }
 
-                if (bodymaxResults != null)
+                if (__workflow_bodymaxResults != null)
                 {
-                    if (bodymaxResults != null)
+                    if (__workflow_bodymaxResults != null)
                     {
-                        body["max_results"] = ExpressionConverter.ConvertO(bodymaxResults);
+                        body["max_results"] = ExpressionConverter.ConvertO(__workflow_bodymaxResults);
                         bodypropCount++;
                     }
 
@@ -97,17 +102,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
                     bodypropCount++;
                 }
 
-                if (bodytimeRange != null)
+                if (__workflow_bodytimeRange != null)
                 {
-                    body["time_range"] = ExpressionConverter.ConvertO(bodytimeRange);
+                    body["time_range"] = ExpressionConverter.ConvertO(__workflow_bodytimeRange);
                     bodypropCount++;
                 }
 
-                if (bodydays != null)
+                if (__workflow_bodydays != null)
                 {
-                    if (bodydays != null)
+                    if (__workflow_bodydays != null)
                     {
-                        body["days"] = ExpressionConverter.ConvertO(bodydays);
+                        body["days"] = ExpressionConverter.ConvertO(__workflow_bodydays);
                         bodypropCount++;
                     }
 
@@ -119,11 +124,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
                     bodypropCount++;
                 }
 
-                if (bodyincludeAnswer != null)
+                if (__workflow_bodyincludeAnswer != null)
                 {
-                    if (bodyincludeAnswer != null)
+                    if (__workflow_bodyincludeAnswer != null)
                     {
-                        body["include_answer"] = ExpressionConverter.ConvertO(bodyincludeAnswer);
+                        body["include_answer"] = ExpressionConverter.ConvertO(__workflow_bodyincludeAnswer);
                         bodypropCount++;
                     }
 
@@ -135,11 +140,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
                     bodypropCount++;
                 }
 
-                if (bodyincludeRawContent != null)
+                if (__workflow_bodyincludeRawContent != null)
                 {
-                    if (bodyincludeRawContent != null)
+                    if (__workflow_bodyincludeRawContent != null)
                     {
-                        body["include_raw_content"] = ExpressionConverter.ConvertO(bodyincludeRawContent);
+                        body["include_raw_content"] = ExpressionConverter.ConvertO(__workflow_bodyincludeRawContent);
                         bodypropCount++;
                     }
 
@@ -151,11 +156,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
                     bodypropCount++;
                 }
 
-                if (bodyincludeImages != null)
+                if (__workflow_bodyincludeImages != null)
                 {
-                    if (bodyincludeImages != null)
+                    if (__workflow_bodyincludeImages != null)
                     {
-                        body["include_images"] = ExpressionConverter.ConvertO(bodyincludeImages);
+                        body["include_images"] = ExpressionConverter.ConvertO(__workflow_bodyincludeImages);
                         bodypropCount++;
                     }
 
@@ -167,21 +172,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
                     bodypropCount++;
                 }
 
-                if (bodyincludeImageDescriptions != null)
+                if (__workflow_bodyincludeImageDescriptions != null)
                 {
-                    body["include_image_descriptions"] = ExpressionConverter.ConvertO(bodyincludeImageDescriptions);
+                    body["include_image_descriptions"] = ExpressionConverter.ConvertO(__workflow_bodyincludeImageDescriptions);
                     bodypropCount++;
                 }
 
-                if (bodyincludeDomains != null)
+                if (__workflow_bodyincludeDomains != null)
                 {
-                    body["include_domains"] = ExpressionConverter.ConvertO(bodyincludeDomains);
+                    body["include_domains"] = ExpressionConverter.ConvertO(__workflow_bodyincludeDomains);
                     bodypropCount++;
                 }
 
-                if (bodyexcludeDomains != null)
+                if (__workflow_bodyexcludeDomains != null)
                 {
-                    body["exclude_domains"] = ExpressionConverter.ConvertO(bodyexcludeDomains);
+                    body["exclude_domains"] = ExpressionConverter.ConvertO(__workflow_bodyexcludeDomains);
                     bodypropCount++;
                 }
 
@@ -195,18 +200,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tavily")]
-        [WorkflowExpressionFactory(nameof(__BuildExtract))]
-        public IBodyWorkflowAction<ExtractPostResponse> Extract([WorkflowExpression] Func<string> bodyurls, [WorkflowExpression] Func<bool> bodyincludeImages = null, [WorkflowExpression] Func<bodyextractDepthInput> bodyextractDepth = null)
+        public IBodyWorkflowAction<ExtractPostResponse> Extract(Expression<Func<string>> bodyurls, Expression<Func<bool>> bodyincludeImages = null, Expression<Func<bodyextractDepthInput>> bodyextractDepth = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ExtractPostResponse> __BuildExtract(WorkflowExpression<string> bodyurls, WorkflowExpression<bool> bodyincludeImages = null, WorkflowExpression<bodyextractDepthInput> bodyextractDepth = null)
-        {
-            WorkflowExpression.Validate(bodyurls, nameof(bodyurls), required: true);
-            WorkflowExpression.Validate(bodyincludeImages, nameof(bodyincludeImages), required: false);
-            WorkflowExpression.Validate(bodyextractDepth, nameof(bodyextractDepth), required: false);
+            var __workflow_bodyurls = bodyurls == null ? null : WorkflowExpression.Compile(bodyurls);
+            WorkflowExpression.Validate(__workflow_bodyurls, nameof(bodyurls), required: true);
+            var __workflow_bodyincludeImages = bodyincludeImages == null ? null : WorkflowExpression.Compile(bodyincludeImages);
+            WorkflowExpression.Validate(__workflow_bodyincludeImages, nameof(bodyincludeImages), required: false);
+            var __workflow_bodyextractDepth = bodyextractDepth == null ? null : WorkflowExpression.Compile(bodyextractDepth);
+            WorkflowExpression.Validate(__workflow_bodyextractDepth, nameof(bodyextractDepth), required: false);
             return new DeferredBodyAction<ExtractPostResponse>(() =>
             {
                 var apiCallPath = "/extract";
@@ -215,12 +216,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["urls"] = ExpressionConverter.ConvertO(bodyurls);
-                if (bodyincludeImages != null)
+                body["urls"] = ExpressionConverter.ConvertO(__workflow_bodyurls);
+                if (__workflow_bodyincludeImages != null)
                 {
-                    if (bodyincludeImages != null)
+                    if (__workflow_bodyincludeImages != null)
                     {
-                        body["include_images"] = ExpressionConverter.ConvertO(bodyincludeImages);
+                        body["include_images"] = ExpressionConverter.ConvertO(__workflow_bodyincludeImages);
                         bodypropCount++;
                     }
 
@@ -232,11 +233,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
                     bodypropCount++;
                 }
 
-                if (bodyextractDepth != null)
+                if (__workflow_bodyextractDepth != null)
                 {
-                    if (bodyextractDepth != null)
+                    if (__workflow_bodyextractDepth != null)
                     {
-                        body["extract_depth"] = ExpressionConverter.ConvertO(bodyextractDepth);
+                        body["extract_depth"] = ExpressionConverter.ConvertO(__workflow_bodyextractDepth);
                         bodypropCount++;
                     }
 
@@ -258,28 +259,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tavily")]
-        [WorkflowExpressionFactory(nameof(__BuildCrawl))]
-        public IBodyWorkflowAction<CrawlPostResponse> Crawl([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<int> bodymaxDepth = null, [WorkflowExpression] Func<int> bodymaxBreadth = null, [WorkflowExpression] Func<int> bodylimit = null, [WorkflowExpression] Func<string> bodyinstructions = null, [WorkflowExpression] Func<string[]> bodyselectPaths = null, [WorkflowExpression] Func<string[]> bodyselectDomains = null, [WorkflowExpression] Func<string[]> bodyexcludePaths = null, [WorkflowExpression] Func<string[]> bodyexcludeDomains = null, [WorkflowExpression] Func<bool> bodyallowExternal = null, [WorkflowExpression] Func<bool> bodyincludeImages = null, [WorkflowExpression] Func<string[]> bodycategories = null, [WorkflowExpression] Func<bodyextractDepthInput> bodyextractDepth = null)
+        public IBodyWorkflowAction<CrawlPostResponse> Crawl(Expression<Func<string>> bodyurl, Expression<Func<int>> bodymaxDepth = null, Expression<Func<int>> bodymaxBreadth = null, Expression<Func<int>> bodylimit = null, Expression<Func<string>> bodyinstructions = null, Expression<Func<string[]>> bodyselectPaths = null, Expression<Func<string[]>> bodyselectDomains = null, Expression<Func<string[]>> bodyexcludePaths = null, Expression<Func<string[]>> bodyexcludeDomains = null, Expression<Func<bool>> bodyallowExternal = null, Expression<Func<bool>> bodyincludeImages = null, Expression<Func<string[]>> bodycategories = null, Expression<Func<bodyextractDepthInput>> bodyextractDepth = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CrawlPostResponse> __BuildCrawl(WorkflowExpression<string> bodyurl, WorkflowExpression<int> bodymaxDepth = null, WorkflowExpression<int> bodymaxBreadth = null, WorkflowExpression<int> bodylimit = null, WorkflowExpression<string> bodyinstructions = null, WorkflowExpression<string[]> bodyselectPaths = null, WorkflowExpression<string[]> bodyselectDomains = null, WorkflowExpression<string[]> bodyexcludePaths = null, WorkflowExpression<string[]> bodyexcludeDomains = null, WorkflowExpression<bool> bodyallowExternal = null, WorkflowExpression<bool> bodyincludeImages = null, WorkflowExpression<string[]> bodycategories = null, WorkflowExpression<bodyextractDepthInput> bodyextractDepth = null)
-        {
-            WorkflowExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            WorkflowExpression.Validate(bodymaxDepth, nameof(bodymaxDepth), required: false);
-            WorkflowExpression.Validate(bodymaxBreadth, nameof(bodymaxBreadth), required: false);
-            WorkflowExpression.Validate(bodylimit, nameof(bodylimit), required: false);
-            WorkflowExpression.Validate(bodyinstructions, nameof(bodyinstructions), required: false);
-            WorkflowExpression.Validate(bodyselectPaths, nameof(bodyselectPaths), required: false);
-            WorkflowExpression.Validate(bodyselectDomains, nameof(bodyselectDomains), required: false);
-            WorkflowExpression.Validate(bodyexcludePaths, nameof(bodyexcludePaths), required: false);
-            WorkflowExpression.Validate(bodyexcludeDomains, nameof(bodyexcludeDomains), required: false);
-            WorkflowExpression.Validate(bodyallowExternal, nameof(bodyallowExternal), required: false);
-            WorkflowExpression.Validate(bodyincludeImages, nameof(bodyincludeImages), required: false);
-            WorkflowExpression.Validate(bodycategories, nameof(bodycategories), required: false);
-            WorkflowExpression.Validate(bodyextractDepth, nameof(bodyextractDepth), required: false);
+            var __workflow_bodyurl = bodyurl == null ? null : WorkflowExpression.Compile(bodyurl);
+            WorkflowExpression.Validate(__workflow_bodyurl, nameof(bodyurl), required: true);
+            var __workflow_bodymaxDepth = bodymaxDepth == null ? null : WorkflowExpression.Compile(bodymaxDepth);
+            WorkflowExpression.Validate(__workflow_bodymaxDepth, nameof(bodymaxDepth), required: false);
+            var __workflow_bodymaxBreadth = bodymaxBreadth == null ? null : WorkflowExpression.Compile(bodymaxBreadth);
+            WorkflowExpression.Validate(__workflow_bodymaxBreadth, nameof(bodymaxBreadth), required: false);
+            var __workflow_bodylimit = bodylimit == null ? null : WorkflowExpression.Compile(bodylimit);
+            WorkflowExpression.Validate(__workflow_bodylimit, nameof(bodylimit), required: false);
+            var __workflow_bodyinstructions = bodyinstructions == null ? null : WorkflowExpression.Compile(bodyinstructions);
+            WorkflowExpression.Validate(__workflow_bodyinstructions, nameof(bodyinstructions), required: false);
+            var __workflow_bodyselectPaths = bodyselectPaths == null ? null : WorkflowExpression.Compile(bodyselectPaths);
+            WorkflowExpression.Validate(__workflow_bodyselectPaths, nameof(bodyselectPaths), required: false);
+            var __workflow_bodyselectDomains = bodyselectDomains == null ? null : WorkflowExpression.Compile(bodyselectDomains);
+            WorkflowExpression.Validate(__workflow_bodyselectDomains, nameof(bodyselectDomains), required: false);
+            var __workflow_bodyexcludePaths = bodyexcludePaths == null ? null : WorkflowExpression.Compile(bodyexcludePaths);
+            WorkflowExpression.Validate(__workflow_bodyexcludePaths, nameof(bodyexcludePaths), required: false);
+            var __workflow_bodyexcludeDomains = bodyexcludeDomains == null ? null : WorkflowExpression.Compile(bodyexcludeDomains);
+            WorkflowExpression.Validate(__workflow_bodyexcludeDomains, nameof(bodyexcludeDomains), required: false);
+            var __workflow_bodyallowExternal = bodyallowExternal == null ? null : WorkflowExpression.Compile(bodyallowExternal);
+            WorkflowExpression.Validate(__workflow_bodyallowExternal, nameof(bodyallowExternal), required: false);
+            var __workflow_bodyincludeImages = bodyincludeImages == null ? null : WorkflowExpression.Compile(bodyincludeImages);
+            WorkflowExpression.Validate(__workflow_bodyincludeImages, nameof(bodyincludeImages), required: false);
+            var __workflow_bodycategories = bodycategories == null ? null : WorkflowExpression.Compile(bodycategories);
+            WorkflowExpression.Validate(__workflow_bodycategories, nameof(bodycategories), required: false);
+            var __workflow_bodyextractDepth = bodyextractDepth == null ? null : WorkflowExpression.Compile(bodyextractDepth);
+            WorkflowExpression.Validate(__workflow_bodyextractDepth, nameof(bodyextractDepth), required: false);
             return new DeferredBodyAction<CrawlPostResponse>(() =>
             {
                 var apiCallPath = "/crawl";
@@ -288,18 +295,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["url"] = ExpressionConverter.ConvertO(bodyurl);
-                if (bodymaxDepth != null)
+                body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
+                if (__workflow_bodymaxDepth != null)
                 {
-                    body["max_depth"] = ExpressionConverter.ConvertO(bodymaxDepth);
+                    body["max_depth"] = ExpressionConverter.ConvertO(__workflow_bodymaxDepth);
                     bodypropCount++;
                 }
 
-                if (bodymaxBreadth != null)
+                if (__workflow_bodymaxBreadth != null)
                 {
-                    if (bodymaxBreadth != null)
+                    if (__workflow_bodymaxBreadth != null)
                     {
-                        body["max_breadth"] = ExpressionConverter.ConvertO(bodymaxBreadth);
+                        body["max_breadth"] = ExpressionConverter.ConvertO(__workflow_bodymaxBreadth);
                         bodypropCount++;
                     }
 
@@ -311,11 +318,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
                     bodypropCount++;
                 }
 
-                if (bodylimit != null)
+                if (__workflow_bodylimit != null)
                 {
-                    if (bodylimit != null)
+                    if (__workflow_bodylimit != null)
                     {
-                        body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                        body["limit"] = ExpressionConverter.ConvertO(__workflow_bodylimit);
                         bodypropCount++;
                     }
 
@@ -327,41 +334,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
                     bodypropCount++;
                 }
 
-                if (bodyinstructions != null)
+                if (__workflow_bodyinstructions != null)
                 {
-                    body["instructions"] = ExpressionConverter.ConvertO(bodyinstructions);
+                    body["instructions"] = ExpressionConverter.ConvertO(__workflow_bodyinstructions);
                     bodypropCount++;
                 }
 
-                if (bodyselectPaths != null)
+                if (__workflow_bodyselectPaths != null)
                 {
-                    body["select_paths"] = ExpressionConverter.ConvertO(bodyselectPaths);
+                    body["select_paths"] = ExpressionConverter.ConvertO(__workflow_bodyselectPaths);
                     bodypropCount++;
                 }
 
-                if (bodyselectDomains != null)
+                if (__workflow_bodyselectDomains != null)
                 {
-                    body["select_domains"] = ExpressionConverter.ConvertO(bodyselectDomains);
+                    body["select_domains"] = ExpressionConverter.ConvertO(__workflow_bodyselectDomains);
                     bodypropCount++;
                 }
 
-                if (bodyexcludePaths != null)
+                if (__workflow_bodyexcludePaths != null)
                 {
-                    body["exclude_paths"] = ExpressionConverter.ConvertO(bodyexcludePaths);
+                    body["exclude_paths"] = ExpressionConverter.ConvertO(__workflow_bodyexcludePaths);
                     bodypropCount++;
                 }
 
-                if (bodyexcludeDomains != null)
+                if (__workflow_bodyexcludeDomains != null)
                 {
-                    body["exclude_domains"] = ExpressionConverter.ConvertO(bodyexcludeDomains);
+                    body["exclude_domains"] = ExpressionConverter.ConvertO(__workflow_bodyexcludeDomains);
                     bodypropCount++;
                 }
 
-                if (bodyallowExternal != null)
+                if (__workflow_bodyallowExternal != null)
                 {
-                    if (bodyallowExternal != null)
+                    if (__workflow_bodyallowExternal != null)
                     {
-                        body["allow_external"] = ExpressionConverter.ConvertO(bodyallowExternal);
+                        body["allow_external"] = ExpressionConverter.ConvertO(__workflow_bodyallowExternal);
                         bodypropCount++;
                     }
 
@@ -373,11 +380,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
                     bodypropCount++;
                 }
 
-                if (bodyincludeImages != null)
+                if (__workflow_bodyincludeImages != null)
                 {
-                    if (bodyincludeImages != null)
+                    if (__workflow_bodyincludeImages != null)
                     {
-                        body["include_images"] = ExpressionConverter.ConvertO(bodyincludeImages);
+                        body["include_images"] = ExpressionConverter.ConvertO(__workflow_bodyincludeImages);
                         bodypropCount++;
                     }
 
@@ -389,17 +396,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
                     bodypropCount++;
                 }
 
-                if (bodycategories != null)
+                if (__workflow_bodycategories != null)
                 {
-                    body["categories"] = ExpressionConverter.ConvertO(bodycategories);
+                    body["categories"] = ExpressionConverter.ConvertO(__workflow_bodycategories);
                     bodypropCount++;
                 }
 
-                if (bodyextractDepth != null)
+                if (__workflow_bodyextractDepth != null)
                 {
-                    if (bodyextractDepth != null)
+                    if (__workflow_bodyextractDepth != null)
                     {
-                        body["extract_depth"] = ExpressionConverter.ConvertO(bodyextractDepth);
+                        body["extract_depth"] = ExpressionConverter.ConvertO(__workflow_bodyextractDepth);
                         bodypropCount++;
                     }
 
@@ -421,26 +428,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tavily")]
-        [WorkflowExpressionFactory(nameof(__BuildMap))]
-        public IBodyWorkflowAction<MapPostResponse> Map([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<int> bodymaxDepth = null, [WorkflowExpression] Func<int> bodymaxBreadth = null, [WorkflowExpression] Func<int> bodylimit = null, [WorkflowExpression] Func<string> bodyinstructions = null, [WorkflowExpression] Func<string[]> bodyselectPaths = null, [WorkflowExpression] Func<string[]> bodyselectDomains = null, [WorkflowExpression] Func<string[]> bodyexcludePaths = null, [WorkflowExpression] Func<string[]> bodyexcludeDomains = null, [WorkflowExpression] Func<bool> bodyallowExternal = null, [WorkflowExpression] Func<bodycategoriesInputItem[]> bodycategories = null)
+        public IBodyWorkflowAction<MapPostResponse> Map(Expression<Func<string>> bodyurl, Expression<Func<int>> bodymaxDepth = null, Expression<Func<int>> bodymaxBreadth = null, Expression<Func<int>> bodylimit = null, Expression<Func<string>> bodyinstructions = null, Expression<Func<string[]>> bodyselectPaths = null, Expression<Func<string[]>> bodyselectDomains = null, Expression<Func<string[]>> bodyexcludePaths = null, Expression<Func<string[]>> bodyexcludeDomains = null, Expression<Func<bool>> bodyallowExternal = null, Expression<Func<bodycategoriesInputItem[]>> bodycategories = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MapPostResponse> __BuildMap(WorkflowExpression<string> bodyurl, WorkflowExpression<int> bodymaxDepth = null, WorkflowExpression<int> bodymaxBreadth = null, WorkflowExpression<int> bodylimit = null, WorkflowExpression<string> bodyinstructions = null, WorkflowExpression<string[]> bodyselectPaths = null, WorkflowExpression<string[]> bodyselectDomains = null, WorkflowExpression<string[]> bodyexcludePaths = null, WorkflowExpression<string[]> bodyexcludeDomains = null, WorkflowExpression<bool> bodyallowExternal = null, WorkflowExpression<bodycategoriesInputItem[]> bodycategories = null)
-        {
-            WorkflowExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            WorkflowExpression.Validate(bodymaxDepth, nameof(bodymaxDepth), required: false);
-            WorkflowExpression.Validate(bodymaxBreadth, nameof(bodymaxBreadth), required: false);
-            WorkflowExpression.Validate(bodylimit, nameof(bodylimit), required: false);
-            WorkflowExpression.Validate(bodyinstructions, nameof(bodyinstructions), required: false);
-            WorkflowExpression.Validate(bodyselectPaths, nameof(bodyselectPaths), required: false);
-            WorkflowExpression.Validate(bodyselectDomains, nameof(bodyselectDomains), required: false);
-            WorkflowExpression.Validate(bodyexcludePaths, nameof(bodyexcludePaths), required: false);
-            WorkflowExpression.Validate(bodyexcludeDomains, nameof(bodyexcludeDomains), required: false);
-            WorkflowExpression.Validate(bodyallowExternal, nameof(bodyallowExternal), required: false);
-            WorkflowExpression.Validate(bodycategories, nameof(bodycategories), required: false);
+            var __workflow_bodyurl = bodyurl == null ? null : WorkflowExpression.Compile(bodyurl);
+            WorkflowExpression.Validate(__workflow_bodyurl, nameof(bodyurl), required: true);
+            var __workflow_bodymaxDepth = bodymaxDepth == null ? null : WorkflowExpression.Compile(bodymaxDepth);
+            WorkflowExpression.Validate(__workflow_bodymaxDepth, nameof(bodymaxDepth), required: false);
+            var __workflow_bodymaxBreadth = bodymaxBreadth == null ? null : WorkflowExpression.Compile(bodymaxBreadth);
+            WorkflowExpression.Validate(__workflow_bodymaxBreadth, nameof(bodymaxBreadth), required: false);
+            var __workflow_bodylimit = bodylimit == null ? null : WorkflowExpression.Compile(bodylimit);
+            WorkflowExpression.Validate(__workflow_bodylimit, nameof(bodylimit), required: false);
+            var __workflow_bodyinstructions = bodyinstructions == null ? null : WorkflowExpression.Compile(bodyinstructions);
+            WorkflowExpression.Validate(__workflow_bodyinstructions, nameof(bodyinstructions), required: false);
+            var __workflow_bodyselectPaths = bodyselectPaths == null ? null : WorkflowExpression.Compile(bodyselectPaths);
+            WorkflowExpression.Validate(__workflow_bodyselectPaths, nameof(bodyselectPaths), required: false);
+            var __workflow_bodyselectDomains = bodyselectDomains == null ? null : WorkflowExpression.Compile(bodyselectDomains);
+            WorkflowExpression.Validate(__workflow_bodyselectDomains, nameof(bodyselectDomains), required: false);
+            var __workflow_bodyexcludePaths = bodyexcludePaths == null ? null : WorkflowExpression.Compile(bodyexcludePaths);
+            WorkflowExpression.Validate(__workflow_bodyexcludePaths, nameof(bodyexcludePaths), required: false);
+            var __workflow_bodyexcludeDomains = bodyexcludeDomains == null ? null : WorkflowExpression.Compile(bodyexcludeDomains);
+            WorkflowExpression.Validate(__workflow_bodyexcludeDomains, nameof(bodyexcludeDomains), required: false);
+            var __workflow_bodyallowExternal = bodyallowExternal == null ? null : WorkflowExpression.Compile(bodyallowExternal);
+            WorkflowExpression.Validate(__workflow_bodyallowExternal, nameof(bodyallowExternal), required: false);
+            var __workflow_bodycategories = bodycategories == null ? null : WorkflowExpression.Compile(bodycategories);
+            WorkflowExpression.Validate(__workflow_bodycategories, nameof(bodycategories), required: false);
             return new DeferredBodyAction<MapPostResponse>(() =>
             {
                 var apiCallPath = "/map";
@@ -449,12 +460,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["url"] = ExpressionConverter.ConvertO(bodyurl);
-                if (bodymaxDepth != null)
+                body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
+                if (__workflow_bodymaxDepth != null)
                 {
-                    if (bodymaxDepth != null)
+                    if (__workflow_bodymaxDepth != null)
                     {
-                        body["max_depth"] = ExpressionConverter.ConvertO(bodymaxDepth);
+                        body["max_depth"] = ExpressionConverter.ConvertO(__workflow_bodymaxDepth);
                         bodypropCount++;
                     }
 
@@ -466,11 +477,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
                     bodypropCount++;
                 }
 
-                if (bodymaxBreadth != null)
+                if (__workflow_bodymaxBreadth != null)
                 {
-                    if (bodymaxBreadth != null)
+                    if (__workflow_bodymaxBreadth != null)
                     {
-                        body["max_breadth"] = ExpressionConverter.ConvertO(bodymaxBreadth);
+                        body["max_breadth"] = ExpressionConverter.ConvertO(__workflow_bodymaxBreadth);
                         bodypropCount++;
                     }
 
@@ -482,11 +493,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
                     bodypropCount++;
                 }
 
-                if (bodylimit != null)
+                if (__workflow_bodylimit != null)
                 {
-                    if (bodylimit != null)
+                    if (__workflow_bodylimit != null)
                     {
-                        body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                        body["limit"] = ExpressionConverter.ConvertO(__workflow_bodylimit);
                         bodypropCount++;
                     }
 
@@ -498,41 +509,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
                     bodypropCount++;
                 }
 
-                if (bodyinstructions != null)
+                if (__workflow_bodyinstructions != null)
                 {
-                    body["instructions"] = ExpressionConverter.ConvertO(bodyinstructions);
+                    body["instructions"] = ExpressionConverter.ConvertO(__workflow_bodyinstructions);
                     bodypropCount++;
                 }
 
-                if (bodyselectPaths != null)
+                if (__workflow_bodyselectPaths != null)
                 {
-                    body["select_paths"] = ExpressionConverter.ConvertO(bodyselectPaths);
+                    body["select_paths"] = ExpressionConverter.ConvertO(__workflow_bodyselectPaths);
                     bodypropCount++;
                 }
 
-                if (bodyselectDomains != null)
+                if (__workflow_bodyselectDomains != null)
                 {
-                    body["select_domains"] = ExpressionConverter.ConvertO(bodyselectDomains);
+                    body["select_domains"] = ExpressionConverter.ConvertO(__workflow_bodyselectDomains);
                     bodypropCount++;
                 }
 
-                if (bodyexcludePaths != null)
+                if (__workflow_bodyexcludePaths != null)
                 {
-                    body["exclude_paths"] = ExpressionConverter.ConvertO(bodyexcludePaths);
+                    body["exclude_paths"] = ExpressionConverter.ConvertO(__workflow_bodyexcludePaths);
                     bodypropCount++;
                 }
 
-                if (bodyexcludeDomains != null)
+                if (__workflow_bodyexcludeDomains != null)
                 {
-                    body["exclude_domains"] = ExpressionConverter.ConvertO(bodyexcludeDomains);
+                    body["exclude_domains"] = ExpressionConverter.ConvertO(__workflow_bodyexcludeDomains);
                     bodypropCount++;
                 }
 
-                if (bodyallowExternal != null)
+                if (__workflow_bodyallowExternal != null)
                 {
-                    if (bodyallowExternal != null)
+                    if (__workflow_bodyallowExternal != null)
                     {
-                        body["allow_external"] = ExpressionConverter.ConvertO(bodyallowExternal);
+                        body["allow_external"] = ExpressionConverter.ConvertO(__workflow_bodyallowExternal);
                         bodypropCount++;
                     }
 
@@ -544,9 +555,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
                     bodypropCount++;
                 }
 
-                if (bodycategories != null)
+                if (__workflow_bodycategories != null)
                 {
-                    body["categories"] = ExpressionConverter.ConvertO(bodycategories);
+                    body["categories"] = ExpressionConverter.ConvertO(__workflow_bodycategories);
                     bodypropCount++;
                 }
 

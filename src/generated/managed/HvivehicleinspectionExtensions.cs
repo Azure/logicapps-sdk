@@ -1,32 +1,30 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hvivehicleinspection
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class HvivehicleinspectionActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hvivehicleinspection")]
-        [WorkflowExpressionFactory(nameof(__BuildInspectionPerVehicle))]
-        public IBodyWorkflowAction<InspectionPerVehicleResponseItem[]> InspectionPerVehicle([WorkflowExpression] Func<string> sv, [WorkflowExpression] Func<string> bodymasterEmail, [WorkflowExpression] Func<string> bodypassword, [WorkflowExpression] Func<string> bodyvehicleNumber, [WorkflowExpression] Func<string> bodystartDate, [WorkflowExpression] Func<string> bodyendDate)
+        public IBodyWorkflowAction<InspectionPerVehicleResponseItem[]> InspectionPerVehicle(Expression<Func<string>> sv, Expression<Func<string>> bodymasterEmail, Expression<Func<string>> bodypassword, Expression<Func<string>> bodyvehicleNumber, Expression<Func<string>> bodystartDate, Expression<Func<string>> bodyendDate)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<InspectionPerVehicleResponseItem[]> __BuildInspectionPerVehicle(WorkflowExpression<string> sv, WorkflowExpression<string> bodymasterEmail, WorkflowExpression<string> bodypassword, WorkflowExpression<string> bodyvehicleNumber, WorkflowExpression<string> bodystartDate, WorkflowExpression<string> bodyendDate)
-        {
-            WorkflowExpression.Validate(sv, nameof(sv), required: true);
-            WorkflowExpression.Validate(bodymasterEmail, nameof(bodymasterEmail), required: true);
-            WorkflowExpression.Validate(bodypassword, nameof(bodypassword), required: true);
-            WorkflowExpression.Validate(bodyvehicleNumber, nameof(bodyvehicleNumber), required: true);
-            WorkflowExpression.Validate(bodystartDate, nameof(bodystartDate), required: true);
-            WorkflowExpression.Validate(bodyendDate, nameof(bodyendDate), required: true);
+            var __workflow_sv = sv == null ? null : WorkflowExpression.Compile(sv);
+            WorkflowExpression.Validate(__workflow_sv, nameof(sv), required: true);
+            var __workflow_bodymasterEmail = bodymasterEmail == null ? null : WorkflowExpression.Compile(bodymasterEmail);
+            WorkflowExpression.Validate(__workflow_bodymasterEmail, nameof(bodymasterEmail), required: true);
+            var __workflow_bodypassword = bodypassword == null ? null : WorkflowExpression.Compile(bodypassword);
+            WorkflowExpression.Validate(__workflow_bodypassword, nameof(bodypassword), required: true);
+            var __workflow_bodyvehicleNumber = bodyvehicleNumber == null ? null : WorkflowExpression.Compile(bodyvehicleNumber);
+            WorkflowExpression.Validate(__workflow_bodyvehicleNumber, nameof(bodyvehicleNumber), required: true);
+            var __workflow_bodystartDate = bodystartDate == null ? null : WorkflowExpression.Compile(bodystartDate);
+            WorkflowExpression.Validate(__workflow_bodystartDate, nameof(bodystartDate), required: true);
+            var __workflow_bodyendDate = bodyendDate == null ? null : WorkflowExpression.Compile(bodyendDate);
+            WorkflowExpression.Validate(__workflow_bodyendDate, nameof(bodyendDate), required: true);
             return new DeferredBodyAction<InspectionPerVehicleResponseItem[]>(() =>
             {
                 var apiCallPath = "/workflows/9bf21378f9924c97b16d3fed67e69200/triggers/manual/paths/invoke";
@@ -34,21 +32,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hvivehicleinspection
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2016-06-01");
                 callPayload.Queries["sp"] = Convert.ToString("/triggers/manual/run");
-                callPayload.Queries["sv"] = ExpressionConverter.Convert(sv);
+                callPayload.Queries["sv"] = ExpressionConverter.Convert(__workflow_sv);
                 callPayload.Queries["sig"] = Convert.ToString("byht1JYW63X3X6hvP1B3cRjYvZExaWoV9BsLb_Mm_vI");
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["master_email"] = ExpressionConverter.ConvertO(bodymasterEmail);
+                body["master_email"] = ExpressionConverter.ConvertO(__workflow_bodymasterEmail);
                 bodypropCount++;
-                body["password"] = ExpressionConverter.ConvertO(bodypassword);
+                body["password"] = ExpressionConverter.ConvertO(__workflow_bodypassword);
                 bodypropCount++;
-                body["vehicle_number"] = ExpressionConverter.ConvertO(bodyvehicleNumber);
+                body["vehicle_number"] = ExpressionConverter.ConvertO(__workflow_bodyvehicleNumber);
                 bodypropCount++;
-                body["start_date"] = ExpressionConverter.ConvertO(bodystartDate);
+                body["start_date"] = ExpressionConverter.ConvertO(__workflow_bodystartDate);
                 bodypropCount++;
-                body["end_date"] = ExpressionConverter.ConvertO(bodyendDate);
+                body["end_date"] = ExpressionConverter.ConvertO(__workflow_bodyendDate);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

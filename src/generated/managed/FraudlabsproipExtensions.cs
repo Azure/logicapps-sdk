@@ -1,59 +1,84 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fraudlabsproip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class FraudlabsproipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fraudlabsproip")]
-        [WorkflowExpressionFactory(nameof(__BuildScreen))]
-        public IBodyWorkflowAction<ScreenPostResponse> Screen([WorkflowExpression] Func<string> bodyip = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodybillAddr = null, [WorkflowExpression] Func<string> bodybillCity = null, [WorkflowExpression] Func<string> bodybillState = null, [WorkflowExpression] Func<string> bodybillCountry = null, [WorkflowExpression] Func<string> bodybillZipCode = null, [WorkflowExpression] Func<string> bodyshipLastName = null, [WorkflowExpression] Func<string> bodyshipFirstName = null, [WorkflowExpression] Func<string> bodyshipAddr = null, [WorkflowExpression] Func<string> bodyshipCity = null, [WorkflowExpression] Func<string> bodyshipState = null, [WorkflowExpression] Func<string> bodyshipCountry = null, [WorkflowExpression] Func<string> bodyshipZipCode = null, [WorkflowExpression] Func<string> bodyuserPhone = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyemailHash = null, [WorkflowExpression] Func<string> bodyemailDomain = null, [WorkflowExpression] Func<string> bodyusername = null, [WorkflowExpression] Func<string> bodybinNo = null, [WorkflowExpression] Func<string> bodycardHash = null, [WorkflowExpression] Func<string> bodyavsResult = null, [WorkflowExpression] Func<string> bodycvvResult = null, [WorkflowExpression] Func<string> bodyuserOrderId = null, [WorkflowExpression] Func<string> bodyuserOrderMemo = null, [WorkflowExpression] Func<double> bodyamount = null, [WorkflowExpression] Func<int> bodyquantity = null, [WorkflowExpression] Func<string> bodycurrency = null, [WorkflowExpression] Func<string> bodydepartment = null, [WorkflowExpression] Func<string> bodypaymentGateway = null, [WorkflowExpression] Func<bodypaymentModeInput> bodypaymentMode = null, [WorkflowExpression] Func<string> bodyflpChecksum = null)
+        public IBodyWorkflowAction<ScreenPostResponse> Screen(Expression<Func<string>> bodyip = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodybillAddr = null, Expression<Func<string>> bodybillCity = null, Expression<Func<string>> bodybillState = null, Expression<Func<string>> bodybillCountry = null, Expression<Func<string>> bodybillZipCode = null, Expression<Func<string>> bodyshipLastName = null, Expression<Func<string>> bodyshipFirstName = null, Expression<Func<string>> bodyshipAddr = null, Expression<Func<string>> bodyshipCity = null, Expression<Func<string>> bodyshipState = null, Expression<Func<string>> bodyshipCountry = null, Expression<Func<string>> bodyshipZipCode = null, Expression<Func<string>> bodyuserPhone = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyemailHash = null, Expression<Func<string>> bodyemailDomain = null, Expression<Func<string>> bodyusername = null, Expression<Func<string>> bodybinNo = null, Expression<Func<string>> bodycardHash = null, Expression<Func<string>> bodyavsResult = null, Expression<Func<string>> bodycvvResult = null, Expression<Func<string>> bodyuserOrderId = null, Expression<Func<string>> bodyuserOrderMemo = null, Expression<Func<double>> bodyamount = null, Expression<Func<int>> bodyquantity = null, Expression<Func<string>> bodycurrency = null, Expression<Func<string>> bodydepartment = null, Expression<Func<string>> bodypaymentGateway = null, Expression<Func<bodypaymentModeInput>> bodypaymentMode = null, Expression<Func<string>> bodyflpChecksum = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ScreenPostResponse> __BuildScreen(WorkflowExpression<string> bodyip = null, WorkflowExpression<string> bodylastName = null, WorkflowExpression<string> bodyfirstName = null, WorkflowExpression<string> bodybillAddr = null, WorkflowExpression<string> bodybillCity = null, WorkflowExpression<string> bodybillState = null, WorkflowExpression<string> bodybillCountry = null, WorkflowExpression<string> bodybillZipCode = null, WorkflowExpression<string> bodyshipLastName = null, WorkflowExpression<string> bodyshipFirstName = null, WorkflowExpression<string> bodyshipAddr = null, WorkflowExpression<string> bodyshipCity = null, WorkflowExpression<string> bodyshipState = null, WorkflowExpression<string> bodyshipCountry = null, WorkflowExpression<string> bodyshipZipCode = null, WorkflowExpression<string> bodyuserPhone = null, WorkflowExpression<string> bodyemail = null, WorkflowExpression<string> bodyemailHash = null, WorkflowExpression<string> bodyemailDomain = null, WorkflowExpression<string> bodyusername = null, WorkflowExpression<string> bodybinNo = null, WorkflowExpression<string> bodycardHash = null, WorkflowExpression<string> bodyavsResult = null, WorkflowExpression<string> bodycvvResult = null, WorkflowExpression<string> bodyuserOrderId = null, WorkflowExpression<string> bodyuserOrderMemo = null, WorkflowExpression<double> bodyamount = null, WorkflowExpression<int> bodyquantity = null, WorkflowExpression<string> bodycurrency = null, WorkflowExpression<string> bodydepartment = null, WorkflowExpression<string> bodypaymentGateway = null, WorkflowExpression<bodypaymentModeInput> bodypaymentMode = null, WorkflowExpression<string> bodyflpChecksum = null)
-        {
-            WorkflowExpression.Validate(bodyip, nameof(bodyip), required: false);
-            WorkflowExpression.Validate(bodylastName, nameof(bodylastName), required: false);
-            WorkflowExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
-            WorkflowExpression.Validate(bodybillAddr, nameof(bodybillAddr), required: false);
-            WorkflowExpression.Validate(bodybillCity, nameof(bodybillCity), required: false);
-            WorkflowExpression.Validate(bodybillState, nameof(bodybillState), required: false);
-            WorkflowExpression.Validate(bodybillCountry, nameof(bodybillCountry), required: false);
-            WorkflowExpression.Validate(bodybillZipCode, nameof(bodybillZipCode), required: false);
-            WorkflowExpression.Validate(bodyshipLastName, nameof(bodyshipLastName), required: false);
-            WorkflowExpression.Validate(bodyshipFirstName, nameof(bodyshipFirstName), required: false);
-            WorkflowExpression.Validate(bodyshipAddr, nameof(bodyshipAddr), required: false);
-            WorkflowExpression.Validate(bodyshipCity, nameof(bodyshipCity), required: false);
-            WorkflowExpression.Validate(bodyshipState, nameof(bodyshipState), required: false);
-            WorkflowExpression.Validate(bodyshipCountry, nameof(bodyshipCountry), required: false);
-            WorkflowExpression.Validate(bodyshipZipCode, nameof(bodyshipZipCode), required: false);
-            WorkflowExpression.Validate(bodyuserPhone, nameof(bodyuserPhone), required: false);
-            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            WorkflowExpression.Validate(bodyemailHash, nameof(bodyemailHash), required: false);
-            WorkflowExpression.Validate(bodyemailDomain, nameof(bodyemailDomain), required: false);
-            WorkflowExpression.Validate(bodyusername, nameof(bodyusername), required: false);
-            WorkflowExpression.Validate(bodybinNo, nameof(bodybinNo), required: false);
-            WorkflowExpression.Validate(bodycardHash, nameof(bodycardHash), required: false);
-            WorkflowExpression.Validate(bodyavsResult, nameof(bodyavsResult), required: false);
-            WorkflowExpression.Validate(bodycvvResult, nameof(bodycvvResult), required: false);
-            WorkflowExpression.Validate(bodyuserOrderId, nameof(bodyuserOrderId), required: false);
-            WorkflowExpression.Validate(bodyuserOrderMemo, nameof(bodyuserOrderMemo), required: false);
-            WorkflowExpression.Validate(bodyamount, nameof(bodyamount), required: false);
-            WorkflowExpression.Validate(bodyquantity, nameof(bodyquantity), required: false);
-            WorkflowExpression.Validate(bodycurrency, nameof(bodycurrency), required: false);
-            WorkflowExpression.Validate(bodydepartment, nameof(bodydepartment), required: false);
-            WorkflowExpression.Validate(bodypaymentGateway, nameof(bodypaymentGateway), required: false);
-            WorkflowExpression.Validate(bodypaymentMode, nameof(bodypaymentMode), required: false);
-            WorkflowExpression.Validate(bodyflpChecksum, nameof(bodyflpChecksum), required: false);
+            var __workflow_bodyip = bodyip == null ? null : WorkflowExpression.Compile(bodyip);
+            WorkflowExpression.Validate(__workflow_bodyip, nameof(bodyip), required: false);
+            var __workflow_bodylastName = bodylastName == null ? null : WorkflowExpression.Compile(bodylastName);
+            WorkflowExpression.Validate(__workflow_bodylastName, nameof(bodylastName), required: false);
+            var __workflow_bodyfirstName = bodyfirstName == null ? null : WorkflowExpression.Compile(bodyfirstName);
+            WorkflowExpression.Validate(__workflow_bodyfirstName, nameof(bodyfirstName), required: false);
+            var __workflow_bodybillAddr = bodybillAddr == null ? null : WorkflowExpression.Compile(bodybillAddr);
+            WorkflowExpression.Validate(__workflow_bodybillAddr, nameof(bodybillAddr), required: false);
+            var __workflow_bodybillCity = bodybillCity == null ? null : WorkflowExpression.Compile(bodybillCity);
+            WorkflowExpression.Validate(__workflow_bodybillCity, nameof(bodybillCity), required: false);
+            var __workflow_bodybillState = bodybillState == null ? null : WorkflowExpression.Compile(bodybillState);
+            WorkflowExpression.Validate(__workflow_bodybillState, nameof(bodybillState), required: false);
+            var __workflow_bodybillCountry = bodybillCountry == null ? null : WorkflowExpression.Compile(bodybillCountry);
+            WorkflowExpression.Validate(__workflow_bodybillCountry, nameof(bodybillCountry), required: false);
+            var __workflow_bodybillZipCode = bodybillZipCode == null ? null : WorkflowExpression.Compile(bodybillZipCode);
+            WorkflowExpression.Validate(__workflow_bodybillZipCode, nameof(bodybillZipCode), required: false);
+            var __workflow_bodyshipLastName = bodyshipLastName == null ? null : WorkflowExpression.Compile(bodyshipLastName);
+            WorkflowExpression.Validate(__workflow_bodyshipLastName, nameof(bodyshipLastName), required: false);
+            var __workflow_bodyshipFirstName = bodyshipFirstName == null ? null : WorkflowExpression.Compile(bodyshipFirstName);
+            WorkflowExpression.Validate(__workflow_bodyshipFirstName, nameof(bodyshipFirstName), required: false);
+            var __workflow_bodyshipAddr = bodyshipAddr == null ? null : WorkflowExpression.Compile(bodyshipAddr);
+            WorkflowExpression.Validate(__workflow_bodyshipAddr, nameof(bodyshipAddr), required: false);
+            var __workflow_bodyshipCity = bodyshipCity == null ? null : WorkflowExpression.Compile(bodyshipCity);
+            WorkflowExpression.Validate(__workflow_bodyshipCity, nameof(bodyshipCity), required: false);
+            var __workflow_bodyshipState = bodyshipState == null ? null : WorkflowExpression.Compile(bodyshipState);
+            WorkflowExpression.Validate(__workflow_bodyshipState, nameof(bodyshipState), required: false);
+            var __workflow_bodyshipCountry = bodyshipCountry == null ? null : WorkflowExpression.Compile(bodyshipCountry);
+            WorkflowExpression.Validate(__workflow_bodyshipCountry, nameof(bodyshipCountry), required: false);
+            var __workflow_bodyshipZipCode = bodyshipZipCode == null ? null : WorkflowExpression.Compile(bodyshipZipCode);
+            WorkflowExpression.Validate(__workflow_bodyshipZipCode, nameof(bodyshipZipCode), required: false);
+            var __workflow_bodyuserPhone = bodyuserPhone == null ? null : WorkflowExpression.Compile(bodyuserPhone);
+            WorkflowExpression.Validate(__workflow_bodyuserPhone, nameof(bodyuserPhone), required: false);
+            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
+            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: false);
+            var __workflow_bodyemailHash = bodyemailHash == null ? null : WorkflowExpression.Compile(bodyemailHash);
+            WorkflowExpression.Validate(__workflow_bodyemailHash, nameof(bodyemailHash), required: false);
+            var __workflow_bodyemailDomain = bodyemailDomain == null ? null : WorkflowExpression.Compile(bodyemailDomain);
+            WorkflowExpression.Validate(__workflow_bodyemailDomain, nameof(bodyemailDomain), required: false);
+            var __workflow_bodyusername = bodyusername == null ? null : WorkflowExpression.Compile(bodyusername);
+            WorkflowExpression.Validate(__workflow_bodyusername, nameof(bodyusername), required: false);
+            var __workflow_bodybinNo = bodybinNo == null ? null : WorkflowExpression.Compile(bodybinNo);
+            WorkflowExpression.Validate(__workflow_bodybinNo, nameof(bodybinNo), required: false);
+            var __workflow_bodycardHash = bodycardHash == null ? null : WorkflowExpression.Compile(bodycardHash);
+            WorkflowExpression.Validate(__workflow_bodycardHash, nameof(bodycardHash), required: false);
+            var __workflow_bodyavsResult = bodyavsResult == null ? null : WorkflowExpression.Compile(bodyavsResult);
+            WorkflowExpression.Validate(__workflow_bodyavsResult, nameof(bodyavsResult), required: false);
+            var __workflow_bodycvvResult = bodycvvResult == null ? null : WorkflowExpression.Compile(bodycvvResult);
+            WorkflowExpression.Validate(__workflow_bodycvvResult, nameof(bodycvvResult), required: false);
+            var __workflow_bodyuserOrderId = bodyuserOrderId == null ? null : WorkflowExpression.Compile(bodyuserOrderId);
+            WorkflowExpression.Validate(__workflow_bodyuserOrderId, nameof(bodyuserOrderId), required: false);
+            var __workflow_bodyuserOrderMemo = bodyuserOrderMemo == null ? null : WorkflowExpression.Compile(bodyuserOrderMemo);
+            WorkflowExpression.Validate(__workflow_bodyuserOrderMemo, nameof(bodyuserOrderMemo), required: false);
+            var __workflow_bodyamount = bodyamount == null ? null : WorkflowExpression.Compile(bodyamount);
+            WorkflowExpression.Validate(__workflow_bodyamount, nameof(bodyamount), required: false);
+            var __workflow_bodyquantity = bodyquantity == null ? null : WorkflowExpression.Compile(bodyquantity);
+            WorkflowExpression.Validate(__workflow_bodyquantity, nameof(bodyquantity), required: false);
+            var __workflow_bodycurrency = bodycurrency == null ? null : WorkflowExpression.Compile(bodycurrency);
+            WorkflowExpression.Validate(__workflow_bodycurrency, nameof(bodycurrency), required: false);
+            var __workflow_bodydepartment = bodydepartment == null ? null : WorkflowExpression.Compile(bodydepartment);
+            WorkflowExpression.Validate(__workflow_bodydepartment, nameof(bodydepartment), required: false);
+            var __workflow_bodypaymentGateway = bodypaymentGateway == null ? null : WorkflowExpression.Compile(bodypaymentGateway);
+            WorkflowExpression.Validate(__workflow_bodypaymentGateway, nameof(bodypaymentGateway), required: false);
+            var __workflow_bodypaymentMode = bodypaymentMode == null ? null : WorkflowExpression.Compile(bodypaymentMode);
+            WorkflowExpression.Validate(__workflow_bodypaymentMode, nameof(bodypaymentMode), required: false);
+            var __workflow_bodyflpChecksum = bodyflpChecksum == null ? null : WorkflowExpression.Compile(bodyflpChecksum);
+            WorkflowExpression.Validate(__workflow_bodyflpChecksum, nameof(bodyflpChecksum), required: false);
             return new DeferredBodyAction<ScreenPostResponse>(() =>
             {
                 var apiCallPath = "/screen";
@@ -61,201 +86,201 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fraudlabsproip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyip != null)
+                if (__workflow_bodyip != null)
                 {
-                    body["ip"] = ExpressionConverter.ConvertO(bodyip);
+                    body["ip"] = ExpressionConverter.ConvertO(__workflow_bodyip);
                     bodypropCount++;
                 }
 
-                if (bodylastName != null)
+                if (__workflow_bodylastName != null)
                 {
-                    body["last_name"] = ExpressionConverter.ConvertO(bodylastName);
+                    body["last_name"] = ExpressionConverter.ConvertO(__workflow_bodylastName);
                     bodypropCount++;
                 }
 
-                if (bodyfirstName != null)
+                if (__workflow_bodyfirstName != null)
                 {
-                    body["first_name"] = ExpressionConverter.ConvertO(bodyfirstName);
+                    body["first_name"] = ExpressionConverter.ConvertO(__workflow_bodyfirstName);
                     bodypropCount++;
                 }
 
-                if (bodybillAddr != null)
+                if (__workflow_bodybillAddr != null)
                 {
-                    body["bill_addr"] = ExpressionConverter.ConvertO(bodybillAddr);
+                    body["bill_addr"] = ExpressionConverter.ConvertO(__workflow_bodybillAddr);
                     bodypropCount++;
                 }
 
-                if (bodybillCity != null)
+                if (__workflow_bodybillCity != null)
                 {
-                    body["bill_city"] = ExpressionConverter.ConvertO(bodybillCity);
+                    body["bill_city"] = ExpressionConverter.ConvertO(__workflow_bodybillCity);
                     bodypropCount++;
                 }
 
-                if (bodybillState != null)
+                if (__workflow_bodybillState != null)
                 {
-                    body["bill_state"] = ExpressionConverter.ConvertO(bodybillState);
+                    body["bill_state"] = ExpressionConverter.ConvertO(__workflow_bodybillState);
                     bodypropCount++;
                 }
 
-                if (bodybillCountry != null)
+                if (__workflow_bodybillCountry != null)
                 {
-                    body["bill_country"] = ExpressionConverter.ConvertO(bodybillCountry);
+                    body["bill_country"] = ExpressionConverter.ConvertO(__workflow_bodybillCountry);
                     bodypropCount++;
                 }
 
-                if (bodybillZipCode != null)
+                if (__workflow_bodybillZipCode != null)
                 {
-                    body["bill_zip_code"] = ExpressionConverter.ConvertO(bodybillZipCode);
+                    body["bill_zip_code"] = ExpressionConverter.ConvertO(__workflow_bodybillZipCode);
                     bodypropCount++;
                 }
 
-                if (bodyshipLastName != null)
+                if (__workflow_bodyshipLastName != null)
                 {
-                    body["ship_last_name"] = ExpressionConverter.ConvertO(bodyshipLastName);
+                    body["ship_last_name"] = ExpressionConverter.ConvertO(__workflow_bodyshipLastName);
                     bodypropCount++;
                 }
 
-                if (bodyshipFirstName != null)
+                if (__workflow_bodyshipFirstName != null)
                 {
-                    body["ship_first_name"] = ExpressionConverter.ConvertO(bodyshipFirstName);
+                    body["ship_first_name"] = ExpressionConverter.ConvertO(__workflow_bodyshipFirstName);
                     bodypropCount++;
                 }
 
-                if (bodyshipAddr != null)
+                if (__workflow_bodyshipAddr != null)
                 {
-                    body["ship_addr"] = ExpressionConverter.ConvertO(bodyshipAddr);
+                    body["ship_addr"] = ExpressionConverter.ConvertO(__workflow_bodyshipAddr);
                     bodypropCount++;
                 }
 
-                if (bodyshipCity != null)
+                if (__workflow_bodyshipCity != null)
                 {
-                    body["ship_city"] = ExpressionConverter.ConvertO(bodyshipCity);
+                    body["ship_city"] = ExpressionConverter.ConvertO(__workflow_bodyshipCity);
                     bodypropCount++;
                 }
 
-                if (bodyshipState != null)
+                if (__workflow_bodyshipState != null)
                 {
-                    body["ship_state"] = ExpressionConverter.ConvertO(bodyshipState);
+                    body["ship_state"] = ExpressionConverter.ConvertO(__workflow_bodyshipState);
                     bodypropCount++;
                 }
 
-                if (bodyshipCountry != null)
+                if (__workflow_bodyshipCountry != null)
                 {
-                    body["ship_country"] = ExpressionConverter.ConvertO(bodyshipCountry);
+                    body["ship_country"] = ExpressionConverter.ConvertO(__workflow_bodyshipCountry);
                     bodypropCount++;
                 }
 
-                if (bodyshipZipCode != null)
+                if (__workflow_bodyshipZipCode != null)
                 {
-                    body["ship_zip_code"] = ExpressionConverter.ConvertO(bodyshipZipCode);
+                    body["ship_zip_code"] = ExpressionConverter.ConvertO(__workflow_bodyshipZipCode);
                     bodypropCount++;
                 }
 
-                if (bodyuserPhone != null)
+                if (__workflow_bodyuserPhone != null)
                 {
-                    body["user_phone"] = ExpressionConverter.ConvertO(bodyuserPhone);
+                    body["user_phone"] = ExpressionConverter.ConvertO(__workflow_bodyuserPhone);
                     bodypropCount++;
                 }
 
-                if (bodyemail != null)
+                if (__workflow_bodyemail != null)
                 {
-                    body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                    body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
                     bodypropCount++;
                 }
 
-                if (bodyemailHash != null)
+                if (__workflow_bodyemailHash != null)
                 {
-                    body["email_hash"] = ExpressionConverter.ConvertO(bodyemailHash);
+                    body["email_hash"] = ExpressionConverter.ConvertO(__workflow_bodyemailHash);
                     bodypropCount++;
                 }
 
-                if (bodyemailDomain != null)
+                if (__workflow_bodyemailDomain != null)
                 {
-                    body["email_domain"] = ExpressionConverter.ConvertO(bodyemailDomain);
+                    body["email_domain"] = ExpressionConverter.ConvertO(__workflow_bodyemailDomain);
                     bodypropCount++;
                 }
 
-                if (bodyusername != null)
+                if (__workflow_bodyusername != null)
                 {
-                    body["username"] = ExpressionConverter.ConvertO(bodyusername);
+                    body["username"] = ExpressionConverter.ConvertO(__workflow_bodyusername);
                     bodypropCount++;
                 }
 
-                if (bodybinNo != null)
+                if (__workflow_bodybinNo != null)
                 {
-                    body["bin_no"] = ExpressionConverter.ConvertO(bodybinNo);
+                    body["bin_no"] = ExpressionConverter.ConvertO(__workflow_bodybinNo);
                     bodypropCount++;
                 }
 
-                if (bodycardHash != null)
+                if (__workflow_bodycardHash != null)
                 {
-                    body["card_hash"] = ExpressionConverter.ConvertO(bodycardHash);
+                    body["card_hash"] = ExpressionConverter.ConvertO(__workflow_bodycardHash);
                     bodypropCount++;
                 }
 
-                if (bodyavsResult != null)
+                if (__workflow_bodyavsResult != null)
                 {
-                    body["avs_result"] = ExpressionConverter.ConvertO(bodyavsResult);
+                    body["avs_result"] = ExpressionConverter.ConvertO(__workflow_bodyavsResult);
                     bodypropCount++;
                 }
 
-                if (bodycvvResult != null)
+                if (__workflow_bodycvvResult != null)
                 {
-                    body["cvv_result"] = ExpressionConverter.ConvertO(bodycvvResult);
+                    body["cvv_result"] = ExpressionConverter.ConvertO(__workflow_bodycvvResult);
                     bodypropCount++;
                 }
 
-                if (bodyuserOrderId != null)
+                if (__workflow_bodyuserOrderId != null)
                 {
-                    body["user_order_id"] = ExpressionConverter.ConvertO(bodyuserOrderId);
+                    body["user_order_id"] = ExpressionConverter.ConvertO(__workflow_bodyuserOrderId);
                     bodypropCount++;
                 }
 
-                if (bodyuserOrderMemo != null)
+                if (__workflow_bodyuserOrderMemo != null)
                 {
-                    body["user_order_memo"] = ExpressionConverter.ConvertO(bodyuserOrderMemo);
+                    body["user_order_memo"] = ExpressionConverter.ConvertO(__workflow_bodyuserOrderMemo);
                     bodypropCount++;
                 }
 
-                if (bodyamount != null)
+                if (__workflow_bodyamount != null)
                 {
-                    body["amount"] = ExpressionConverter.ConvertO(bodyamount);
+                    body["amount"] = ExpressionConverter.ConvertO(__workflow_bodyamount);
                     bodypropCount++;
                 }
 
-                if (bodyquantity != null)
+                if (__workflow_bodyquantity != null)
                 {
-                    body["quantity"] = ExpressionConverter.ConvertO(bodyquantity);
+                    body["quantity"] = ExpressionConverter.ConvertO(__workflow_bodyquantity);
                     bodypropCount++;
                 }
 
-                if (bodycurrency != null)
+                if (__workflow_bodycurrency != null)
                 {
-                    body["currency"] = ExpressionConverter.ConvertO(bodycurrency);
+                    body["currency"] = ExpressionConverter.ConvertO(__workflow_bodycurrency);
                     bodypropCount++;
                 }
 
-                if (bodydepartment != null)
+                if (__workflow_bodydepartment != null)
                 {
-                    body["department"] = ExpressionConverter.ConvertO(bodydepartment);
+                    body["department"] = ExpressionConverter.ConvertO(__workflow_bodydepartment);
                     bodypropCount++;
                 }
 
-                if (bodypaymentGateway != null)
+                if (__workflow_bodypaymentGateway != null)
                 {
-                    body["payment_gateway"] = ExpressionConverter.ConvertO(bodypaymentGateway);
+                    body["payment_gateway"] = ExpressionConverter.ConvertO(__workflow_bodypaymentGateway);
                     bodypropCount++;
                 }
 
-                if (bodypaymentMode != null)
+                if (__workflow_bodypaymentMode != null)
                 {
-                    body["payment_mode"] = ExpressionConverter.ConvertO(bodypaymentMode);
+                    body["payment_mode"] = ExpressionConverter.ConvertO(__workflow_bodypaymentMode);
                     bodypropCount++;
                 }
 
-                if (bodyflpChecksum != null)
+                if (__workflow_bodyflpChecksum != null)
                 {
-                    body["flp_checksum"] = ExpressionConverter.ConvertO(bodyflpChecksum);
+                    body["flp_checksum"] = ExpressionConverter.ConvertO(__workflow_bodyflpChecksum);
                     bodypropCount++;
                 }
 
@@ -269,18 +294,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fraudlabsproip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fraudlabsproip")]
-        [WorkflowExpressionFactory(nameof(__BuildFeedback))]
-        public IBodyWorkflowAction<FeedbackPostResponse> Feedback([WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<bodyactionInput> bodyaction = null, [WorkflowExpression] Func<string> bodynote = null)
+        public IBodyWorkflowAction<FeedbackPostResponse> Feedback(Expression<Func<string>> bodyid = null, Expression<Func<bodyactionInput>> bodyaction = null, Expression<Func<string>> bodynote = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FeedbackPostResponse> __BuildFeedback(WorkflowExpression<string> bodyid = null, WorkflowExpression<bodyactionInput> bodyaction = null, WorkflowExpression<string> bodynote = null)
-        {
-            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: false);
-            WorkflowExpression.Validate(bodyaction, nameof(bodyaction), required: false);
-            WorkflowExpression.Validate(bodynote, nameof(bodynote), required: false);
+            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
+            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: false);
+            var __workflow_bodyaction = bodyaction == null ? null : WorkflowExpression.Compile(bodyaction);
+            WorkflowExpression.Validate(__workflow_bodyaction, nameof(bodyaction), required: false);
+            var __workflow_bodynote = bodynote == null ? null : WorkflowExpression.Compile(bodynote);
+            WorkflowExpression.Validate(__workflow_bodynote, nameof(bodynote), required: false);
             return new DeferredBodyAction<FeedbackPostResponse>(() =>
             {
                 var apiCallPath = "/feedback";
@@ -288,17 +309,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fraudlabsproip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyid != null)
+                if (__workflow_bodyid != null)
                 {
-                    body["id"] = ExpressionConverter.ConvertO(bodyid);
+                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
                     bodypropCount++;
                 }
 
-                if (bodyaction != null)
+                if (__workflow_bodyaction != null)
                 {
-                    if (bodyaction != null)
+                    if (__workflow_bodyaction != null)
                     {
-                        body["action"] = ExpressionConverter.ConvertO(bodyaction);
+                        body["action"] = ExpressionConverter.ConvertO(__workflow_bodyaction);
                         bodypropCount++;
                     }
 
@@ -310,9 +331,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fraudlabsproip
                     bodypropCount++;
                 }
 
-                if (bodynote != null)
+                if (__workflow_bodynote != null)
                 {
-                    body["note"] = ExpressionConverter.ConvertO(bodynote);
+                    body["note"] = ExpressionConverter.ConvertO(__workflow_bodynote);
                     bodypropCount++;
                 }
 
@@ -326,27 +347,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fraudlabsproip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fraudlabsproip")]
-        [WorkflowExpressionFactory(nameof(__BuildResultGet))]
-        public IBodyWorkflowAction<ResultGetResponse> ResultGet([WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<idTypeInput> idType = null)
+        public IBodyWorkflowAction<ResultGetResponse> ResultGet(Expression<Func<string>> id = null, Expression<Func<idTypeInput>> idType = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ResultGetResponse> __BuildResultGet(WorkflowExpression<string> id = null, WorkflowExpression<idTypeInput> idType = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: false);
-            WorkflowExpression.Validate(idType, nameof(idType), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: false);
+            var __workflow_idType = idType == null ? null : WorkflowExpression.Compile(idType);
+            WorkflowExpression.Validate(__workflow_idType, nameof(idType), required: false);
             return new DeferredBodyAction<ResultGetResponse>(() =>
             {
                 var apiCallPath = "/result";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (id != null)
-                    callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                if (__workflow_id != null)
+                    callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 callPayload.Queries["id_type"] = Convert.ToString("fraudlabspro_id");
-                if (idType != null)
-                    callPayload.Queries["id_type"] = ExpressionConverter.Convert(idType);
+                if (__workflow_idType != null)
+                    callPayload.Queries["id_type"] = ExpressionConverter.Convert(__workflow_idType);
                 return new ApiConnectionAction<ResultGetResponse>(callPayload);
             });
         }

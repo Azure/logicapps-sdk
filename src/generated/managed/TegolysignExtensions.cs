@@ -1,27 +1,20 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tegolysign
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class TegolysignActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tegolysign")]
-        [WorkflowExpressionFactory(nameof(__BuildImportPDF))]
-        public IWorkflowAction ImportPDF([WorkflowExpression] Func<object> file)
+        public IWorkflowAction ImportPDF(Expression<Func<object>> file)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildImportPDF(WorkflowExpression<object> file)
-        {
-            WorkflowExpression.Validate(file, nameof(file), required: true);
+            var __workflow_file = file == null ? null : WorkflowExpression.Compile(file);
+            WorkflowExpression.Validate(__workflow_file, nameof(file), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/webhook/create-draft";
@@ -34,17 +27,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tegolysign
 
     public class TegolysignTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildCompletelySigned))]
-        public IWorkflowTrigger CompletelySigned([WorkflowExpression] Func<string> bodyname,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CompletelySigned(Expression<Func<string>> bodyname, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildCompletelySigned(WorkflowExpression<string> bodyname,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/webhook/end-trigger";
@@ -53,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tegolysign
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
                 body["delivery_url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)

@@ -1,32 +1,30 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Saplingai
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class SaplingaiActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "saplingai")]
-        [WorkflowExpressionFactory(nameof(__BuildSpellcheck))]
-        public IBodyWorkflowAction<SpellcheckResponse> Spellcheck([WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<int> bodyminLength, [WorkflowExpression] Func<string> bodysessionId, [WorkflowExpression] Func<bool> bodymultipleEdits = null, [WorkflowExpression] Func<bool> bodyneuralSpellcheck = null, [WorkflowExpression] Func<string> bodylang = null)
+        public IBodyWorkflowAction<SpellcheckResponse> Spellcheck(Expression<Func<string>> bodytext, Expression<Func<int>> bodyminLength, Expression<Func<string>> bodysessionId, Expression<Func<bool>> bodymultipleEdits = null, Expression<Func<bool>> bodyneuralSpellcheck = null, Expression<Func<string>> bodylang = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SpellcheckResponse> __BuildSpellcheck(WorkflowExpression<string> bodytext, WorkflowExpression<int> bodyminLength, WorkflowExpression<string> bodysessionId, WorkflowExpression<bool> bodymultipleEdits = null, WorkflowExpression<bool> bodyneuralSpellcheck = null, WorkflowExpression<string> bodylang = null)
-        {
-            WorkflowExpression.Validate(bodytext, nameof(bodytext), required: true);
-            WorkflowExpression.Validate(bodyminLength, nameof(bodyminLength), required: true);
-            WorkflowExpression.Validate(bodysessionId, nameof(bodysessionId), required: true);
-            WorkflowExpression.Validate(bodymultipleEdits, nameof(bodymultipleEdits), required: false);
-            WorkflowExpression.Validate(bodyneuralSpellcheck, nameof(bodyneuralSpellcheck), required: false);
-            WorkflowExpression.Validate(bodylang, nameof(bodylang), required: false);
+            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
+            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: true);
+            var __workflow_bodyminLength = bodyminLength == null ? null : WorkflowExpression.Compile(bodyminLength);
+            WorkflowExpression.Validate(__workflow_bodyminLength, nameof(bodyminLength), required: true);
+            var __workflow_bodysessionId = bodysessionId == null ? null : WorkflowExpression.Compile(bodysessionId);
+            WorkflowExpression.Validate(__workflow_bodysessionId, nameof(bodysessionId), required: true);
+            var __workflow_bodymultipleEdits = bodymultipleEdits == null ? null : WorkflowExpression.Compile(bodymultipleEdits);
+            WorkflowExpression.Validate(__workflow_bodymultipleEdits, nameof(bodymultipleEdits), required: false);
+            var __workflow_bodyneuralSpellcheck = bodyneuralSpellcheck == null ? null : WorkflowExpression.Compile(bodyneuralSpellcheck);
+            WorkflowExpression.Validate(__workflow_bodyneuralSpellcheck, nameof(bodyneuralSpellcheck), required: false);
+            var __workflow_bodylang = bodylang == null ? null : WorkflowExpression.Compile(bodylang);
+            WorkflowExpression.Validate(__workflow_bodylang, nameof(bodylang), required: false);
             return new DeferredBodyAction<SpellcheckResponse>(() =>
             {
                 var apiCallPath = "/v1/spellcheck";
@@ -35,26 +33,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Saplingai
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
+                body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
                 bodypropCount++;
-                body["min_length"] = ExpressionConverter.ConvertO(bodyminLength);
+                body["min_length"] = ExpressionConverter.ConvertO(__workflow_bodyminLength);
                 bodypropCount++;
-                body["session_id"] = ExpressionConverter.ConvertO(bodysessionId);
-                if (bodymultipleEdits != null)
+                body["session_id"] = ExpressionConverter.ConvertO(__workflow_bodysessionId);
+                if (__workflow_bodymultipleEdits != null)
                 {
-                    body["multiple_edits"] = ExpressionConverter.ConvertO(bodymultipleEdits);
+                    body["multiple_edits"] = ExpressionConverter.ConvertO(__workflow_bodymultipleEdits);
                     bodypropCount++;
                 }
 
-                if (bodyneuralSpellcheck != null)
+                if (__workflow_bodyneuralSpellcheck != null)
                 {
-                    body["neural_spellcheck"] = ExpressionConverter.ConvertO(bodyneuralSpellcheck);
+                    body["neural_spellcheck"] = ExpressionConverter.ConvertO(__workflow_bodyneuralSpellcheck);
                     bodypropCount++;
                 }
 
-                if (bodylang != null)
+                if (__workflow_bodylang != null)
                 {
-                    body["lang"] = ExpressionConverter.ConvertO(bodylang);
+                    body["lang"] = ExpressionConverter.ConvertO(__workflow_bodylang);
                     bodypropCount++;
                 }
 
@@ -68,21 +66,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Saplingai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "saplingai")]
-        [WorkflowExpressionFactory(nameof(__BuildMedicalSpellcheck))]
-        public IBodyWorkflowAction<MedicalSpellcheckResponse> MedicalSpellcheck([WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<int> bodyminLength, [WorkflowExpression] Func<string> bodysessionId, [WorkflowExpression] Func<bool> bodymultipleEdits = null, [WorkflowExpression] Func<bool> bodyneuralSpellcheck = null, [WorkflowExpression] Func<string> bodylang = null)
+        public IBodyWorkflowAction<MedicalSpellcheckResponse> MedicalSpellcheck(Expression<Func<string>> bodytext, Expression<Func<int>> bodyminLength, Expression<Func<string>> bodysessionId, Expression<Func<bool>> bodymultipleEdits = null, Expression<Func<bool>> bodyneuralSpellcheck = null, Expression<Func<string>> bodylang = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MedicalSpellcheckResponse> __BuildMedicalSpellcheck(WorkflowExpression<string> bodytext, WorkflowExpression<int> bodyminLength, WorkflowExpression<string> bodysessionId, WorkflowExpression<bool> bodymultipleEdits = null, WorkflowExpression<bool> bodyneuralSpellcheck = null, WorkflowExpression<string> bodylang = null)
-        {
-            WorkflowExpression.Validate(bodytext, nameof(bodytext), required: true);
-            WorkflowExpression.Validate(bodyminLength, nameof(bodyminLength), required: true);
-            WorkflowExpression.Validate(bodysessionId, nameof(bodysessionId), required: true);
-            WorkflowExpression.Validate(bodymultipleEdits, nameof(bodymultipleEdits), required: false);
-            WorkflowExpression.Validate(bodyneuralSpellcheck, nameof(bodyneuralSpellcheck), required: false);
-            WorkflowExpression.Validate(bodylang, nameof(bodylang), required: false);
+            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
+            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: true);
+            var __workflow_bodyminLength = bodyminLength == null ? null : WorkflowExpression.Compile(bodyminLength);
+            WorkflowExpression.Validate(__workflow_bodyminLength, nameof(bodyminLength), required: true);
+            var __workflow_bodysessionId = bodysessionId == null ? null : WorkflowExpression.Compile(bodysessionId);
+            WorkflowExpression.Validate(__workflow_bodysessionId, nameof(bodysessionId), required: true);
+            var __workflow_bodymultipleEdits = bodymultipleEdits == null ? null : WorkflowExpression.Compile(bodymultipleEdits);
+            WorkflowExpression.Validate(__workflow_bodymultipleEdits, nameof(bodymultipleEdits), required: false);
+            var __workflow_bodyneuralSpellcheck = bodyneuralSpellcheck == null ? null : WorkflowExpression.Compile(bodyneuralSpellcheck);
+            WorkflowExpression.Validate(__workflow_bodyneuralSpellcheck, nameof(bodyneuralSpellcheck), required: false);
+            var __workflow_bodylang = bodylang == null ? null : WorkflowExpression.Compile(bodylang);
+            WorkflowExpression.Validate(__workflow_bodylang, nameof(bodylang), required: false);
             return new DeferredBodyAction<MedicalSpellcheckResponse>(() =>
             {
                 var apiCallPath = "/v1/medical-spellcheck";
@@ -91,26 +88,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Saplingai
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
+                body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
                 bodypropCount++;
-                body["min_length"] = ExpressionConverter.ConvertO(bodyminLength);
+                body["min_length"] = ExpressionConverter.ConvertO(__workflow_bodyminLength);
                 bodypropCount++;
-                body["session_id"] = ExpressionConverter.ConvertO(bodysessionId);
-                if (bodymultipleEdits != null)
+                body["session_id"] = ExpressionConverter.ConvertO(__workflow_bodysessionId);
+                if (__workflow_bodymultipleEdits != null)
                 {
-                    body["multiple_edits"] = ExpressionConverter.ConvertO(bodymultipleEdits);
+                    body["multiple_edits"] = ExpressionConverter.ConvertO(__workflow_bodymultipleEdits);
                     bodypropCount++;
                 }
 
-                if (bodyneuralSpellcheck != null)
+                if (__workflow_bodyneuralSpellcheck != null)
                 {
-                    body["neural_spellcheck"] = ExpressionConverter.ConvertO(bodyneuralSpellcheck);
+                    body["neural_spellcheck"] = ExpressionConverter.ConvertO(__workflow_bodyneuralSpellcheck);
                     bodypropCount++;
                 }
 
-                if (bodylang != null)
+                if (__workflow_bodylang != null)
                 {
-                    body["lang"] = ExpressionConverter.ConvertO(bodylang);
+                    body["lang"] = ExpressionConverter.ConvertO(__workflow_bodylang);
                     bodypropCount++;
                 }
 
@@ -124,17 +121,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Saplingai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "saplingai")]
-        [WorkflowExpressionFactory(nameof(__BuildAutocomplete))]
-        public IBodyWorkflowAction<AutocompleteResponse> Autocomplete([WorkflowExpression] Func<string> bodyquery, [WorkflowExpression] Func<string> bodysessionId)
+        public IBodyWorkflowAction<AutocompleteResponse> Autocomplete(Expression<Func<string>> bodyquery, Expression<Func<string>> bodysessionId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AutocompleteResponse> __BuildAutocomplete(WorkflowExpression<string> bodyquery, WorkflowExpression<string> bodysessionId)
-        {
-            WorkflowExpression.Validate(bodyquery, nameof(bodyquery), required: true);
-            WorkflowExpression.Validate(bodysessionId, nameof(bodysessionId), required: true);
+            var __workflow_bodyquery = bodyquery == null ? null : WorkflowExpression.Compile(bodyquery);
+            WorkflowExpression.Validate(__workflow_bodyquery, nameof(bodyquery), required: true);
+            var __workflow_bodysessionId = bodysessionId == null ? null : WorkflowExpression.Compile(bodysessionId);
+            WorkflowExpression.Validate(__workflow_bodysessionId, nameof(bodysessionId), required: true);
             return new DeferredBodyAction<AutocompleteResponse>(() =>
             {
                 var apiCallPath = "/v1/complete";
@@ -143,9 +135,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Saplingai
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
+                body["query"] = ExpressionConverter.ConvertO(__workflow_bodyquery);
                 bodypropCount++;
-                body["session_id"] = ExpressionConverter.ConvertO(bodysessionId);
+                body["session_id"] = ExpressionConverter.ConvertO(__workflow_bodysessionId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -156,17 +148,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Saplingai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "saplingai")]
-        [WorkflowExpressionFactory(nameof(__BuildStatistics))]
-        public IBodyWorkflowAction<StatisticsResponse> Statistics([WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<string> bodysessionId)
+        public IBodyWorkflowAction<StatisticsResponse> Statistics(Expression<Func<string>> bodytext, Expression<Func<string>> bodysessionId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<StatisticsResponse> __BuildStatistics(WorkflowExpression<string> bodytext, WorkflowExpression<string> bodysessionId)
-        {
-            WorkflowExpression.Validate(bodytext, nameof(bodytext), required: true);
-            WorkflowExpression.Validate(bodysessionId, nameof(bodysessionId), required: true);
+            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
+            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: true);
+            var __workflow_bodysessionId = bodysessionId == null ? null : WorkflowExpression.Compile(bodysessionId);
+            WorkflowExpression.Validate(__workflow_bodysessionId, nameof(bodysessionId), required: true);
             return new DeferredBodyAction<StatisticsResponse>(() =>
             {
                 var apiCallPath = "/v1/statistics";
@@ -175,9 +162,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Saplingai
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
+                body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
                 bodypropCount++;
-                body["session_id"] = ExpressionConverter.ConvertO(bodysessionId);
+                body["session_id"] = ExpressionConverter.ConvertO(__workflow_bodysessionId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -188,17 +175,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Saplingai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "saplingai")]
-        [WorkflowExpressionFactory(nameof(__BuildDetectAi))]
-        public IBodyWorkflowAction<DetectAiResponse> DetectAi([WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<bool> bodysentScores = null)
+        public IBodyWorkflowAction<DetectAiResponse> DetectAi(Expression<Func<string>> bodytext, Expression<Func<bool>> bodysentScores = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DetectAiResponse> __BuildDetectAi(WorkflowExpression<string> bodytext, WorkflowExpression<bool> bodysentScores = null)
-        {
-            WorkflowExpression.Validate(bodytext, nameof(bodytext), required: true);
-            WorkflowExpression.Validate(bodysentScores, nameof(bodysentScores), required: false);
+            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
+            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: true);
+            var __workflow_bodysentScores = bodysentScores == null ? null : WorkflowExpression.Compile(bodysentScores);
+            WorkflowExpression.Validate(__workflow_bodysentScores, nameof(bodysentScores), required: false);
             return new DeferredBodyAction<DetectAiResponse>(() =>
             {
                 var apiCallPath = "/v1/aidetect";
@@ -207,10 +189,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Saplingai
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
-                if (bodysentScores != null)
+                body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
+                if (__workflow_bodysentScores != null)
                 {
-                    body["sent_scores"] = ExpressionConverter.ConvertO(bodysentScores);
+                    body["sent_scores"] = ExpressionConverter.ConvertO(__workflow_bodysentScores);
                     bodypropCount++;
                 }
 

@@ -1,12 +1,12 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Poka
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class PokaActions([ConnectionName] string connectionId)
     {
@@ -14,22 +14,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Poka
 
     public class PokaTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildCreateWebhook))]
-        public IBodyWorkflowTrigger<WebHookDetail> CreateWebhook([WorkflowExpression] Func<string> bodyselectALanguage,[WorkflowExpression] Func<string> item,[WorkflowExpression] Func<string> operationName,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHookDetail> CreateWebhook(Expression<Func<string>> bodyselectALanguage, Expression<Func<string>> item, Expression<Func<string>> operationName, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<WebHookDetail> __BuildCreateWebhook(WorkflowExpression<string> bodyselectALanguage,WorkflowExpression<string> item,WorkflowExpression<string> operationName,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodyselectALanguage, nameof(bodyselectALanguage), required: true);
-            WorkflowExpression.Validate(item, nameof(item), required: true);
-            WorkflowExpression.Validate(operationName, nameof(operationName), required: true);
+            var __workflow_bodyselectALanguage = bodyselectALanguage == null ? null : WorkflowExpression.Compile(bodyselectALanguage);
+            WorkflowExpression.Validate(__workflow_bodyselectALanguage, nameof(bodyselectALanguage), required: true);
+            var __workflow_item = item == null ? null : WorkflowExpression.Compile(item);
+            WorkflowExpression.Validate(__workflow_item, nameof(item), required: true);
+            var __workflow_operationName = operationName == null ? null : WorkflowExpression.Compile(operationName);
+            WorkflowExpression.Validate(__workflow_operationName, nameof(operationName), required: true);
             return new DeferredBodyTrigger<WebHookDetail>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2.2/web-hooks/register/{0}/{1}/", ExpressionConverter.ConvertWithUrlEncoding(item, 1), ExpressionConverter.ConvertWithUrlEncoding(operationName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2.2/web-hooks/register/{0}/{1}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_item, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_operationName, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -37,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Poka
                 body["url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 bodypropCount++;
-                body["language"] = ExpressionConverter.ConvertO(bodyselectALanguage);
+                body["language"] = ExpressionConverter.ConvertO(__workflow_bodyselectALanguage);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

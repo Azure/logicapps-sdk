@@ -1,12 +1,12 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openrouter
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class OpenrouterActions([ConnectionName] string connectionId)
     {
@@ -20,20 +20,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openrouter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openrouter")]
-        [WorkflowExpressionFactory(nameof(__BuildListModelEndpoints))]
-        public IBodyWorkflowAction<ListModelEndpointsResponse> ListModelEndpoints([WorkflowExpression] Func<string> author, [WorkflowExpression] Func<string> slug)
+        public IBodyWorkflowAction<ListModelEndpointsResponse> ListModelEndpoints(Expression<Func<string>> author, Expression<Func<string>> slug)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListModelEndpointsResponse> __BuildListModelEndpoints(WorkflowExpression<string> author, WorkflowExpression<string> slug)
-        {
-            WorkflowExpression.Validate(author, nameof(author), required: true);
-            WorkflowExpression.Validate(slug, nameof(slug), required: true);
+            var __workflow_author = author == null ? null : WorkflowExpression.Compile(author);
+            WorkflowExpression.Validate(__workflow_author, nameof(author), required: true);
+            var __workflow_slug = slug == null ? null : WorkflowExpression.Compile(slug);
+            WorkflowExpression.Validate(__workflow_slug, nameof(slug), required: true);
             return new DeferredBodyAction<ListModelEndpointsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/models/{0}/{1}/endpoints", ExpressionConverter.ConvertWithUrlEncoding(author, 1), ExpressionConverter.ConvertWithUrlEncoding(slug, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/models/{0}/{1}/endpoints", ExpressionConverter.ConvertWithUrlEncoding(__workflow_author, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_slug, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ListModelEndpointsResponse>(callPayload);
@@ -50,38 +45,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openrouter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openrouter")]
-        [WorkflowExpressionFactory(nameof(__BuildGetGeneration))]
-        public IBodyWorkflowAction<GetGenerationResponse> GetGeneration([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<GetGenerationResponse> GetGeneration(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetGenerationResponse> __BuildGetGeneration(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<GetGenerationResponse>(() =>
             {
                 var apiCallPath = "/v1/generation";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<GetGenerationResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openrouter")]
-        [WorkflowExpressionFactory(nameof(__BuildChatCompletion))]
-        public IBodyWorkflowAction<ChatCompletionResponse> ChatCompletion([WorkflowExpression] Func<string> bodymodel, [WorkflowExpression] Func<bodymessagesInputItem[]> bodymessages)
+        public IBodyWorkflowAction<ChatCompletionResponse> ChatCompletion(Expression<Func<string>> bodymodel, Expression<Func<bodymessagesInputItem[]>> bodymessages)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ChatCompletionResponse> __BuildChatCompletion(WorkflowExpression<string> bodymodel, WorkflowExpression<bodymessagesInputItem[]> bodymessages)
-        {
-            WorkflowExpression.Validate(bodymodel, nameof(bodymodel), required: true);
-            WorkflowExpression.Validate(bodymessages, nameof(bodymessages), required: true);
+            var __workflow_bodymodel = bodymodel == null ? null : WorkflowExpression.Compile(bodymodel);
+            WorkflowExpression.Validate(__workflow_bodymodel, nameof(bodymodel), required: true);
+            var __workflow_bodymessages = bodymessages == null ? null : WorkflowExpression.Compile(bodymessages);
+            WorkflowExpression.Validate(__workflow_bodymessages, nameof(bodymessages), required: true);
             return new DeferredBodyAction<ChatCompletionResponse>(() =>
             {
                 var apiCallPath = "/v1/chat/completions";
@@ -90,9 +74,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openrouter
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["model"] = ExpressionConverter.ConvertO(bodymodel);
+                body["model"] = ExpressionConverter.ConvertO(__workflow_bodymodel);
                 bodypropCount++;
-                body["messages"] = ExpressionConverter.ConvertO(bodymessages);
+                body["messages"] = ExpressionConverter.ConvertO(__workflow_bodymessages);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -103,17 +87,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openrouter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openrouter")]
-        [WorkflowExpressionFactory(nameof(__BuildCompletion))]
-        public IBodyWorkflowAction<CompletionResponse> Completion([WorkflowExpression] Func<string> bodymodel, [WorkflowExpression] Func<string> bodyprompt)
+        public IBodyWorkflowAction<CompletionResponse> Completion(Expression<Func<string>> bodymodel, Expression<Func<string>> bodyprompt)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CompletionResponse> __BuildCompletion(WorkflowExpression<string> bodymodel, WorkflowExpression<string> bodyprompt)
-        {
-            WorkflowExpression.Validate(bodymodel, nameof(bodymodel), required: true);
-            WorkflowExpression.Validate(bodyprompt, nameof(bodyprompt), required: true);
+            var __workflow_bodymodel = bodymodel == null ? null : WorkflowExpression.Compile(bodymodel);
+            WorkflowExpression.Validate(__workflow_bodymodel, nameof(bodymodel), required: true);
+            var __workflow_bodyprompt = bodyprompt == null ? null : WorkflowExpression.Compile(bodyprompt);
+            WorkflowExpression.Validate(__workflow_bodyprompt, nameof(bodyprompt), required: true);
             return new DeferredBodyAction<CompletionResponse>(() =>
             {
                 var apiCallPath = "/v1/completions";
@@ -122,9 +101,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openrouter
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["model"] = ExpressionConverter.ConvertO(bodymodel);
+                body["model"] = ExpressionConverter.ConvertO(__workflow_bodymodel);
                 bodypropCount++;
-                body["prompt"] = ExpressionConverter.ConvertO(bodyprompt);
+                body["prompt"] = ExpressionConverter.ConvertO(__workflow_bodyprompt);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

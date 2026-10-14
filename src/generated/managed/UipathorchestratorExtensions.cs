@@ -1,85 +1,85 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class UipathorchestratorActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uipathorchestrator")]
-        [WorkflowExpressionFactory(nameof(__BuildStartJobs))]
-        public IBodyWorkflowAction<ODataValueOfIEnumerableOfJobDto> StartJobs([WorkflowExpression] Func<int> xUIPATHOrganizationUnitId, [WorkflowExpression] Func<string> bodystartInfoprocessName = null, [WorkflowExpression] Func<int> bodystartInfojobsCount = null, [WorkflowExpression] Func<bodystartInfosourceInput> bodystartInfosource = null, [WorkflowExpression] Func<bodystartInfojobPriorityInput> bodystartInfojobPriority = null, [WorkflowExpression] Func<bodystartInforuntimeTypeInput> bodystartInforuntimeType = null, [WorkflowExpression] Func<string> bodystartInfoinputArguments = null, [WorkflowExpression] Func<string> bodystartInforeference = null)
+        public IBodyWorkflowAction<ODataValueOfIEnumerableOfJobDto> StartJobs(Expression<Func<int>> xUIPATHOrganizationUnitId, Expression<Func<string>> bodystartInfoprocessName = null, Expression<Func<int>> bodystartInfojobsCount = null, Expression<Func<bodystartInfosourceInput>> bodystartInfosource = null, Expression<Func<bodystartInfojobPriorityInput>> bodystartInfojobPriority = null, Expression<Func<bodystartInforuntimeTypeInput>> bodystartInforuntimeType = null, Expression<Func<string>> bodystartInfoinputArguments = null, Expression<Func<string>> bodystartInforeference = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ODataValueOfIEnumerableOfJobDto> __BuildStartJobs(WorkflowExpression<int> xUIPATHOrganizationUnitId, WorkflowExpression<string> bodystartInfoprocessName = null, WorkflowExpression<int> bodystartInfojobsCount = null, WorkflowExpression<bodystartInfosourceInput> bodystartInfosource = null, WorkflowExpression<bodystartInfojobPriorityInput> bodystartInfojobPriority = null, WorkflowExpression<bodystartInforuntimeTypeInput> bodystartInforuntimeType = null, WorkflowExpression<string> bodystartInfoinputArguments = null, WorkflowExpression<string> bodystartInforeference = null)
-        {
-            WorkflowExpression.Validate(xUIPATHOrganizationUnitId, nameof(xUIPATHOrganizationUnitId), required: true);
-            WorkflowExpression.Validate(bodystartInfoprocessName, nameof(bodystartInfoprocessName), required: false);
-            WorkflowExpression.Validate(bodystartInfojobsCount, nameof(bodystartInfojobsCount), required: false);
-            WorkflowExpression.Validate(bodystartInfosource, nameof(bodystartInfosource), required: false);
-            WorkflowExpression.Validate(bodystartInfojobPriority, nameof(bodystartInfojobPriority), required: false);
-            WorkflowExpression.Validate(bodystartInforuntimeType, nameof(bodystartInforuntimeType), required: false);
-            WorkflowExpression.Validate(bodystartInfoinputArguments, nameof(bodystartInfoinputArguments), required: false);
-            WorkflowExpression.Validate(bodystartInforeference, nameof(bodystartInforeference), required: false);
+            var __workflow_xUIPATHOrganizationUnitId = xUIPATHOrganizationUnitId == null ? null : WorkflowExpression.Compile(xUIPATHOrganizationUnitId);
+            WorkflowExpression.Validate(__workflow_xUIPATHOrganizationUnitId, nameof(xUIPATHOrganizationUnitId), required: true);
+            var __workflow_bodystartInfoprocessName = bodystartInfoprocessName == null ? null : WorkflowExpression.Compile(bodystartInfoprocessName);
+            WorkflowExpression.Validate(__workflow_bodystartInfoprocessName, nameof(bodystartInfoprocessName), required: false);
+            var __workflow_bodystartInfojobsCount = bodystartInfojobsCount == null ? null : WorkflowExpression.Compile(bodystartInfojobsCount);
+            WorkflowExpression.Validate(__workflow_bodystartInfojobsCount, nameof(bodystartInfojobsCount), required: false);
+            var __workflow_bodystartInfosource = bodystartInfosource == null ? null : WorkflowExpression.Compile(bodystartInfosource);
+            WorkflowExpression.Validate(__workflow_bodystartInfosource, nameof(bodystartInfosource), required: false);
+            var __workflow_bodystartInfojobPriority = bodystartInfojobPriority == null ? null : WorkflowExpression.Compile(bodystartInfojobPriority);
+            WorkflowExpression.Validate(__workflow_bodystartInfojobPriority, nameof(bodystartInfojobPriority), required: false);
+            var __workflow_bodystartInforuntimeType = bodystartInforuntimeType == null ? null : WorkflowExpression.Compile(bodystartInforuntimeType);
+            WorkflowExpression.Validate(__workflow_bodystartInforuntimeType, nameof(bodystartInforuntimeType), required: false);
+            var __workflow_bodystartInfoinputArguments = bodystartInfoinputArguments == null ? null : WorkflowExpression.Compile(bodystartInfoinputArguments);
+            WorkflowExpression.Validate(__workflow_bodystartInfoinputArguments, nameof(bodystartInfoinputArguments), required: false);
+            var __workflow_bodystartInforeference = bodystartInforeference == null ? null : WorkflowExpression.Compile(bodystartInforeference);
+            WorkflowExpression.Validate(__workflow_bodystartInforeference, nameof(bodystartInforeference), required: false);
             return new DeferredBodyAction<ODataValueOfIEnumerableOfJobDto>(() =>
             {
                 var apiCallPath = "/odata/Jobs/UiPath.Server.Configuration.OData.StartJobs";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-UIPATH-OrganizationUnitId"] = ExpressionConverter.Convert(xUIPATHOrganizationUnitId);
+                callPayload.Headers["X-UIPATH-OrganizationUnitId"] = ExpressionConverter.Convert(__workflow_xUIPATHOrganizationUnitId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 var startInfoObject = new JObject();
                 var startInfoObjectpropCount = 0;
-                if (bodystartInfoprocessName != null)
+                if (__workflow_bodystartInfoprocessName != null)
                 {
-                    startInfoObject["ReleaseKey"] = ExpressionConverter.ConvertO(bodystartInfoprocessName);
+                    startInfoObject["ReleaseKey"] = ExpressionConverter.ConvertO(__workflow_bodystartInfoprocessName);
                     startInfoObjectpropCount++;
                 }
 
                 startInfoObject["Strategy"] = "ModernJobsCount";
                 startInfoObjectpropCount++;
-                if (bodystartInfojobsCount != null)
+                if (__workflow_bodystartInfojobsCount != null)
                 {
-                    startInfoObject["JobsCount"] = ExpressionConverter.ConvertO(bodystartInfojobsCount);
+                    startInfoObject["JobsCount"] = ExpressionConverter.ConvertO(__workflow_bodystartInfojobsCount);
                     startInfoObjectpropCount++;
                 }
 
-                if (bodystartInfosource != null)
+                if (__workflow_bodystartInfosource != null)
                 {
-                    startInfoObject["Source"] = ExpressionConverter.ConvertO(bodystartInfosource);
+                    startInfoObject["Source"] = ExpressionConverter.ConvertO(__workflow_bodystartInfosource);
                     startInfoObjectpropCount++;
                 }
 
-                if (bodystartInfojobPriority != null)
+                if (__workflow_bodystartInfojobPriority != null)
                 {
-                    startInfoObject["JobPriority"] = ExpressionConverter.ConvertO(bodystartInfojobPriority);
+                    startInfoObject["JobPriority"] = ExpressionConverter.ConvertO(__workflow_bodystartInfojobPriority);
                     startInfoObjectpropCount++;
                 }
 
-                if (bodystartInforuntimeType != null)
+                if (__workflow_bodystartInforuntimeType != null)
                 {
-                    startInfoObject["RuntimeType"] = ExpressionConverter.ConvertO(bodystartInforuntimeType);
+                    startInfoObject["RuntimeType"] = ExpressionConverter.ConvertO(__workflow_bodystartInforuntimeType);
                     startInfoObjectpropCount++;
                 }
 
-                if (bodystartInfoinputArguments != null)
+                if (__workflow_bodystartInfoinputArguments != null)
                 {
-                    startInfoObject["InputArguments"] = ExpressionConverter.ConvertO(bodystartInfoinputArguments);
+                    startInfoObject["InputArguments"] = ExpressionConverter.ConvertO(__workflow_bodystartInfoinputArguments);
                     startInfoObjectpropCount++;
                 }
 
-                if (bodystartInforeference != null)
+                if (__workflow_bodystartInforeference != null)
                 {
-                    startInfoObject["Reference"] = ExpressionConverter.ConvertO(bodystartInforeference);
+                    startInfoObject["Reference"] = ExpressionConverter.ConvertO(__workflow_bodystartInforeference);
                     startInfoObjectpropCount++;
                 }
 
@@ -99,44 +99,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uipathorchestrator")]
-        [WorkflowExpressionFactory(nameof(__BuildAddQueueItem))]
-        public IBodyWorkflowAction<QueueItemDto> AddQueueItem([WorkflowExpression] Func<int> xUIPATHOrganizationUnitId, [WorkflowExpression] Func<string> bodyitemDataname = null, [WorkflowExpression] Func<bodyitemDatapriorityInput> bodyitemDatapriority = null, [WorkflowExpression] Func<string> bodyitemDatadeferDate = null, [WorkflowExpression] Func<string> bodyitemDatadueDate = null, [WorkflowExpression] Func<string> bodyitemDatariskSLADate = null, [WorkflowExpression] Func<string> bodyitemDatareference = null, [WorkflowExpression] Func<string> bodyitemDataprogress = null)
+        public IBodyWorkflowAction<QueueItemDto> AddQueueItem(Expression<Func<int>> xUIPATHOrganizationUnitId, Expression<Func<string>> bodyitemDataname = null, Expression<Func<bodyitemDatapriorityInput>> bodyitemDatapriority = null, Expression<Func<string>> bodyitemDatadeferDate = null, Expression<Func<string>> bodyitemDatadueDate = null, Expression<Func<string>> bodyitemDatariskSLADate = null, Expression<Func<string>> bodyitemDatareference = null, Expression<Func<string>> bodyitemDataprogress = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<QueueItemDto> __BuildAddQueueItem(WorkflowExpression<int> xUIPATHOrganizationUnitId, WorkflowExpression<string> bodyitemDataname = null, WorkflowExpression<bodyitemDatapriorityInput> bodyitemDatapriority = null, WorkflowExpression<string> bodyitemDatadeferDate = null, WorkflowExpression<string> bodyitemDatadueDate = null, WorkflowExpression<string> bodyitemDatariskSLADate = null, WorkflowExpression<string> bodyitemDatareference = null, WorkflowExpression<string> bodyitemDataprogress = null)
-        {
-            WorkflowExpression.Validate(xUIPATHOrganizationUnitId, nameof(xUIPATHOrganizationUnitId), required: true);
-            WorkflowExpression.Validate(bodyitemDataname, nameof(bodyitemDataname), required: false);
-            WorkflowExpression.Validate(bodyitemDatapriority, nameof(bodyitemDatapriority), required: false);
-            WorkflowExpression.Validate(bodyitemDatadeferDate, nameof(bodyitemDatadeferDate), required: false);
-            WorkflowExpression.Validate(bodyitemDatadueDate, nameof(bodyitemDatadueDate), required: false);
-            WorkflowExpression.Validate(bodyitemDatariskSLADate, nameof(bodyitemDatariskSLADate), required: false);
-            WorkflowExpression.Validate(bodyitemDatareference, nameof(bodyitemDatareference), required: false);
-            WorkflowExpression.Validate(bodyitemDataprogress, nameof(bodyitemDataprogress), required: false);
+            var __workflow_xUIPATHOrganizationUnitId = xUIPATHOrganizationUnitId == null ? null : WorkflowExpression.Compile(xUIPATHOrganizationUnitId);
+            WorkflowExpression.Validate(__workflow_xUIPATHOrganizationUnitId, nameof(xUIPATHOrganizationUnitId), required: true);
+            var __workflow_bodyitemDataname = bodyitemDataname == null ? null : WorkflowExpression.Compile(bodyitemDataname);
+            WorkflowExpression.Validate(__workflow_bodyitemDataname, nameof(bodyitemDataname), required: false);
+            var __workflow_bodyitemDatapriority = bodyitemDatapriority == null ? null : WorkflowExpression.Compile(bodyitemDatapriority);
+            WorkflowExpression.Validate(__workflow_bodyitemDatapriority, nameof(bodyitemDatapriority), required: false);
+            var __workflow_bodyitemDatadeferDate = bodyitemDatadeferDate == null ? null : WorkflowExpression.Compile(bodyitemDatadeferDate);
+            WorkflowExpression.Validate(__workflow_bodyitemDatadeferDate, nameof(bodyitemDatadeferDate), required: false);
+            var __workflow_bodyitemDatadueDate = bodyitemDatadueDate == null ? null : WorkflowExpression.Compile(bodyitemDatadueDate);
+            WorkflowExpression.Validate(__workflow_bodyitemDatadueDate, nameof(bodyitemDatadueDate), required: false);
+            var __workflow_bodyitemDatariskSLADate = bodyitemDatariskSLADate == null ? null : WorkflowExpression.Compile(bodyitemDatariskSLADate);
+            WorkflowExpression.Validate(__workflow_bodyitemDatariskSLADate, nameof(bodyitemDatariskSLADate), required: false);
+            var __workflow_bodyitemDatareference = bodyitemDatareference == null ? null : WorkflowExpression.Compile(bodyitemDatareference);
+            WorkflowExpression.Validate(__workflow_bodyitemDatareference, nameof(bodyitemDatareference), required: false);
+            var __workflow_bodyitemDataprogress = bodyitemDataprogress == null ? null : WorkflowExpression.Compile(bodyitemDataprogress);
+            WorkflowExpression.Validate(__workflow_bodyitemDataprogress, nameof(bodyitemDataprogress), required: false);
             return new DeferredBodyAction<QueueItemDto>(() =>
             {
                 var apiCallPath = "/odata/Queues/UiPathODataSvc.AddQueueItem";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-UIPATH-OrganizationUnitId"] = ExpressionConverter.Convert(xUIPATHOrganizationUnitId);
+                callPayload.Headers["X-UIPATH-OrganizationUnitId"] = ExpressionConverter.Convert(__workflow_xUIPATHOrganizationUnitId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 var itemDataObject = new JObject();
                 var itemDataObjectpropCount = 0;
-                if (bodyitemDataname != null)
+                if (__workflow_bodyitemDataname != null)
                 {
-                    itemDataObject["Name"] = ExpressionConverter.ConvertO(bodyitemDataname);
+                    itemDataObject["Name"] = ExpressionConverter.ConvertO(__workflow_bodyitemDataname);
                     itemDataObjectpropCount++;
                 }
 
-                if (bodyitemDatapriority != null)
+                if (__workflow_bodyitemDatapriority != null)
                 {
-                    if (bodyitemDatapriority != null)
+                    if (__workflow_bodyitemDatapriority != null)
                     {
-                        itemDataObject["Priority"] = ExpressionConverter.ConvertO(bodyitemDatapriority);
+                        itemDataObject["Priority"] = ExpressionConverter.ConvertO(__workflow_bodyitemDatapriority);
                         itemDataObjectpropCount++;
                     }
 
@@ -156,33 +157,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
                     itemDataObjectpropCount++;
                 }
 
-                if (bodyitemDatadeferDate != null)
+                if (__workflow_bodyitemDatadeferDate != null)
                 {
-                    itemDataObject["DeferDate"] = ExpressionConverter.ConvertO(bodyitemDatadeferDate);
+                    itemDataObject["DeferDate"] = ExpressionConverter.ConvertO(__workflow_bodyitemDatadeferDate);
                     itemDataObjectpropCount++;
                 }
 
-                if (bodyitemDatadueDate != null)
+                if (__workflow_bodyitemDatadueDate != null)
                 {
-                    itemDataObject["DueDate"] = ExpressionConverter.ConvertO(bodyitemDatadueDate);
+                    itemDataObject["DueDate"] = ExpressionConverter.ConvertO(__workflow_bodyitemDatadueDate);
                     itemDataObjectpropCount++;
                 }
 
-                if (bodyitemDatariskSLADate != null)
+                if (__workflow_bodyitemDatariskSLADate != null)
                 {
-                    itemDataObject["RiskSlaDate"] = ExpressionConverter.ConvertO(bodyitemDatariskSLADate);
+                    itemDataObject["RiskSlaDate"] = ExpressionConverter.ConvertO(__workflow_bodyitemDatariskSLADate);
                     itemDataObjectpropCount++;
                 }
 
-                if (bodyitemDatareference != null)
+                if (__workflow_bodyitemDatareference != null)
                 {
-                    itemDataObject["Reference"] = ExpressionConverter.ConvertO(bodyitemDatareference);
+                    itemDataObject["Reference"] = ExpressionConverter.ConvertO(__workflow_bodyitemDatareference);
                     itemDataObjectpropCount++;
                 }
 
-                if (bodyitemDataprogress != null)
+                if (__workflow_bodyitemDataprogress != null)
                 {
-                    itemDataObject["Progress"] = ExpressionConverter.ConvertO(bodyitemDataprogress);
+                    itemDataObject["Progress"] = ExpressionConverter.ConvertO(__workflow_bodyitemDataprogress);
                     itemDataObjectpropCount++;
                 }
 

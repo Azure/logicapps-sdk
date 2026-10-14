@@ -1,32 +1,30 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certopus
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class CertopusActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "certopus")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateCredential))]
-        public IBodyWorkflowAction<CreateCredentialResponse> CreateCredential([WorkflowExpression] Func<string> bodyorganisationId, [WorkflowExpression] Func<string> bodyeventId, [WorkflowExpression] Func<string> bodycategoryId, [WorkflowExpression] Func<bool> bodygenerate = null, [WorkflowExpression] Func<bool> bodypublish = null, [WorkflowExpression] Func<bodyrecipientsInputItem[]> bodyrecipients = null)
+        public IBodyWorkflowAction<CreateCredentialResponse> CreateCredential(Expression<Func<string>> bodyorganisationId, Expression<Func<string>> bodyeventId, Expression<Func<string>> bodycategoryId, Expression<Func<bool>> bodygenerate = null, Expression<Func<bool>> bodypublish = null, Expression<Func<bodyrecipientsInputItem[]>> bodyrecipients = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateCredentialResponse> __BuildCreateCredential(WorkflowExpression<string> bodyorganisationId, WorkflowExpression<string> bodyeventId, WorkflowExpression<string> bodycategoryId, WorkflowExpression<bool> bodygenerate = null, WorkflowExpression<bool> bodypublish = null, WorkflowExpression<bodyrecipientsInputItem[]> bodyrecipients = null)
-        {
-            WorkflowExpression.Validate(bodyorganisationId, nameof(bodyorganisationId), required: true);
-            WorkflowExpression.Validate(bodyeventId, nameof(bodyeventId), required: true);
-            WorkflowExpression.Validate(bodycategoryId, nameof(bodycategoryId), required: true);
-            WorkflowExpression.Validate(bodygenerate, nameof(bodygenerate), required: false);
-            WorkflowExpression.Validate(bodypublish, nameof(bodypublish), required: false);
-            WorkflowExpression.Validate(bodyrecipients, nameof(bodyrecipients), required: false);
+            var __workflow_bodyorganisationId = bodyorganisationId == null ? null : WorkflowExpression.Compile(bodyorganisationId);
+            WorkflowExpression.Validate(__workflow_bodyorganisationId, nameof(bodyorganisationId), required: true);
+            var __workflow_bodyeventId = bodyeventId == null ? null : WorkflowExpression.Compile(bodyeventId);
+            WorkflowExpression.Validate(__workflow_bodyeventId, nameof(bodyeventId), required: true);
+            var __workflow_bodycategoryId = bodycategoryId == null ? null : WorkflowExpression.Compile(bodycategoryId);
+            WorkflowExpression.Validate(__workflow_bodycategoryId, nameof(bodycategoryId), required: true);
+            var __workflow_bodygenerate = bodygenerate == null ? null : WorkflowExpression.Compile(bodygenerate);
+            WorkflowExpression.Validate(__workflow_bodygenerate, nameof(bodygenerate), required: false);
+            var __workflow_bodypublish = bodypublish == null ? null : WorkflowExpression.Compile(bodypublish);
+            WorkflowExpression.Validate(__workflow_bodypublish, nameof(bodypublish), required: false);
+            var __workflow_bodyrecipients = bodyrecipients == null ? null : WorkflowExpression.Compile(bodyrecipients);
+            WorkflowExpression.Validate(__workflow_bodyrecipients, nameof(bodyrecipients), required: false);
             return new DeferredBodyAction<CreateCredentialResponse>(() =>
             {
                 var apiCallPath = "/certificates";
@@ -35,26 +33,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certopus
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["organisationId"] = ExpressionConverter.ConvertO(bodyorganisationId);
+                body["organisationId"] = ExpressionConverter.ConvertO(__workflow_bodyorganisationId);
                 bodypropCount++;
-                body["eventId"] = ExpressionConverter.ConvertO(bodyeventId);
+                body["eventId"] = ExpressionConverter.ConvertO(__workflow_bodyeventId);
                 bodypropCount++;
-                body["categoryId"] = ExpressionConverter.ConvertO(bodycategoryId);
-                if (bodygenerate != null)
+                body["categoryId"] = ExpressionConverter.ConvertO(__workflow_bodycategoryId);
+                if (__workflow_bodygenerate != null)
                 {
-                    body["generate"] = ExpressionConverter.ConvertO(bodygenerate);
+                    body["generate"] = ExpressionConverter.ConvertO(__workflow_bodygenerate);
                     bodypropCount++;
                 }
 
-                if (bodypublish != null)
+                if (__workflow_bodypublish != null)
                 {
-                    body["publish"] = ExpressionConverter.ConvertO(bodypublish);
+                    body["publish"] = ExpressionConverter.ConvertO(__workflow_bodypublish);
                     bodypropCount++;
                 }
 
-                if (bodyrecipients != null)
+                if (__workflow_bodyrecipients != null)
                 {
-                    body["recipients"] = ExpressionConverter.ConvertO(bodyrecipients);
+                    body["recipients"] = ExpressionConverter.ConvertO(__workflow_bodyrecipients);
                     bodypropCount++;
                 }
 

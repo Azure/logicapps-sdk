@@ -1,12 +1,12 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicscrmonline
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class DynamicscrmonlineActions([ConnectionName] string connectionId)
     {
@@ -14,21 +14,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicscrmonline
 
     public class DynamicscrmonlineTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildOnNewItems))]
-        public IBodyWorkflowTrigger<ItemsList> OnNewItems([WorkflowExpression] Func<string> dataset,[WorkflowExpression] Func<string> table,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemsList> OnNewItems(Expression<Func<string>> dataset, Expression<Func<string>> table, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ItemsList> __BuildOnNewItems(WorkflowExpression<string> dataset,WorkflowExpression<string> table,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(dataset, nameof(dataset), required: true);
-            WorkflowExpression.Validate(table, nameof(table), required: true);
+            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
+            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
+            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
+            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
             return new DeferredBodyTrigger<ItemsList>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/datasets/{0}/tables/{1}/onnewitems", ExpressionConverter.ConvertWithUrlEncoding(dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(table, 2));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/datasets/{0}/tables/{1}/onnewitems", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionTrigger<ItemsList>(callPayload, recurrence: recurrence);

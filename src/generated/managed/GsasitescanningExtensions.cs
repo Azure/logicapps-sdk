@@ -1,122 +1,119 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsasitescanning
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class GsasitescanningActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsasitescanning")]
-        [WorkflowExpressionFactory(nameof(__BuildAnalysisControllerGetResults))]
-        public IBodyWorkflowAction<AnalysisDto> AnalysisControllerGetResults([WorkflowExpression] Func<string> targetUrlDomain = null, [WorkflowExpression] Func<string> finalUrlDomain = null, [WorkflowExpression] Func<bool> finalUrlLive = null, [WorkflowExpression] Func<bool> targetUrlRedirects = null, [WorkflowExpression] Func<string> targetUrlAgencyOwner = null, [WorkflowExpression] Func<string> targetUrlBureauOwner = null, [WorkflowExpression] Func<primaryScanStatusInput> primaryScanStatus = null, [WorkflowExpression] Func<bool> dapDetectedFinalUrl = null)
+        public IBodyWorkflowAction<AnalysisDto> AnalysisControllerGetResults(Expression<Func<string>> targetUrlDomain = null, Expression<Func<string>> finalUrlDomain = null, Expression<Func<bool>> finalUrlLive = null, Expression<Func<bool>> targetUrlRedirects = null, Expression<Func<string>> targetUrlAgencyOwner = null, Expression<Func<string>> targetUrlBureauOwner = null, Expression<Func<primaryScanStatusInput>> primaryScanStatus = null, Expression<Func<bool>> dapDetectedFinalUrl = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AnalysisDto> __BuildAnalysisControllerGetResults(WorkflowExpression<string> targetUrlDomain = null, WorkflowExpression<string> finalUrlDomain = null, WorkflowExpression<bool> finalUrlLive = null, WorkflowExpression<bool> targetUrlRedirects = null, WorkflowExpression<string> targetUrlAgencyOwner = null, WorkflowExpression<string> targetUrlBureauOwner = null, WorkflowExpression<primaryScanStatusInput> primaryScanStatus = null, WorkflowExpression<bool> dapDetectedFinalUrl = null)
-        {
-            WorkflowExpression.Validate(targetUrlDomain, nameof(targetUrlDomain), required: false);
-            WorkflowExpression.Validate(finalUrlDomain, nameof(finalUrlDomain), required: false);
-            WorkflowExpression.Validate(finalUrlLive, nameof(finalUrlLive), required: false);
-            WorkflowExpression.Validate(targetUrlRedirects, nameof(targetUrlRedirects), required: false);
-            WorkflowExpression.Validate(targetUrlAgencyOwner, nameof(targetUrlAgencyOwner), required: false);
-            WorkflowExpression.Validate(targetUrlBureauOwner, nameof(targetUrlBureauOwner), required: false);
-            WorkflowExpression.Validate(primaryScanStatus, nameof(primaryScanStatus), required: false);
-            WorkflowExpression.Validate(dapDetectedFinalUrl, nameof(dapDetectedFinalUrl), required: false);
+            var __workflow_targetUrlDomain = targetUrlDomain == null ? null : WorkflowExpression.Compile(targetUrlDomain);
+            WorkflowExpression.Validate(__workflow_targetUrlDomain, nameof(targetUrlDomain), required: false);
+            var __workflow_finalUrlDomain = finalUrlDomain == null ? null : WorkflowExpression.Compile(finalUrlDomain);
+            WorkflowExpression.Validate(__workflow_finalUrlDomain, nameof(finalUrlDomain), required: false);
+            var __workflow_finalUrlLive = finalUrlLive == null ? null : WorkflowExpression.Compile(finalUrlLive);
+            WorkflowExpression.Validate(__workflow_finalUrlLive, nameof(finalUrlLive), required: false);
+            var __workflow_targetUrlRedirects = targetUrlRedirects == null ? null : WorkflowExpression.Compile(targetUrlRedirects);
+            WorkflowExpression.Validate(__workflow_targetUrlRedirects, nameof(targetUrlRedirects), required: false);
+            var __workflow_targetUrlAgencyOwner = targetUrlAgencyOwner == null ? null : WorkflowExpression.Compile(targetUrlAgencyOwner);
+            WorkflowExpression.Validate(__workflow_targetUrlAgencyOwner, nameof(targetUrlAgencyOwner), required: false);
+            var __workflow_targetUrlBureauOwner = targetUrlBureauOwner == null ? null : WorkflowExpression.Compile(targetUrlBureauOwner);
+            WorkflowExpression.Validate(__workflow_targetUrlBureauOwner, nameof(targetUrlBureauOwner), required: false);
+            var __workflow_primaryScanStatus = primaryScanStatus == null ? null : WorkflowExpression.Compile(primaryScanStatus);
+            WorkflowExpression.Validate(__workflow_primaryScanStatus, nameof(primaryScanStatus), required: false);
+            var __workflow_dapDetectedFinalUrl = dapDetectedFinalUrl == null ? null : WorkflowExpression.Compile(dapDetectedFinalUrl);
+            WorkflowExpression.Validate(__workflow_dapDetectedFinalUrl, nameof(dapDetectedFinalUrl), required: false);
             return new DeferredBodyAction<AnalysisDto>(() =>
             {
                 var apiCallPath = "/analysis";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (targetUrlDomain != null)
-                    callPayload.Queries["target_url_domain"] = ExpressionConverter.Convert(targetUrlDomain);
-                if (finalUrlDomain != null)
-                    callPayload.Queries["final_url_domain"] = ExpressionConverter.Convert(finalUrlDomain);
-                if (finalUrlLive != null)
-                    callPayload.Queries["final_url_live"] = ExpressionConverter.Convert(finalUrlLive);
-                if (targetUrlRedirects != null)
-                    callPayload.Queries["target_url_redirects"] = ExpressionConverter.Convert(targetUrlRedirects);
-                if (targetUrlAgencyOwner != null)
-                    callPayload.Queries["target_url_agency_owner"] = ExpressionConverter.Convert(targetUrlAgencyOwner);
-                if (targetUrlBureauOwner != null)
-                    callPayload.Queries["target_url_bureau_owner"] = ExpressionConverter.Convert(targetUrlBureauOwner);
-                if (primaryScanStatus != null)
-                    callPayload.Queries["primary_scan_status"] = ExpressionConverter.Convert(primaryScanStatus);
-                if (dapDetectedFinalUrl != null)
-                    callPayload.Queries["dap_detected_final_url"] = ExpressionConverter.Convert(dapDetectedFinalUrl);
+                if (__workflow_targetUrlDomain != null)
+                    callPayload.Queries["target_url_domain"] = ExpressionConverter.Convert(__workflow_targetUrlDomain);
+                if (__workflow_finalUrlDomain != null)
+                    callPayload.Queries["final_url_domain"] = ExpressionConverter.Convert(__workflow_finalUrlDomain);
+                if (__workflow_finalUrlLive != null)
+                    callPayload.Queries["final_url_live"] = ExpressionConverter.Convert(__workflow_finalUrlLive);
+                if (__workflow_targetUrlRedirects != null)
+                    callPayload.Queries["target_url_redirects"] = ExpressionConverter.Convert(__workflow_targetUrlRedirects);
+                if (__workflow_targetUrlAgencyOwner != null)
+                    callPayload.Queries["target_url_agency_owner"] = ExpressionConverter.Convert(__workflow_targetUrlAgencyOwner);
+                if (__workflow_targetUrlBureauOwner != null)
+                    callPayload.Queries["target_url_bureau_owner"] = ExpressionConverter.Convert(__workflow_targetUrlBureauOwner);
+                if (__workflow_primaryScanStatus != null)
+                    callPayload.Queries["primary_scan_status"] = ExpressionConverter.Convert(__workflow_primaryScanStatus);
+                if (__workflow_dapDetectedFinalUrl != null)
+                    callPayload.Queries["dap_detected_final_url"] = ExpressionConverter.Convert(__workflow_dapDetectedFinalUrl);
                 return new ApiConnectionAction<AnalysisDto>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsasitescanning")]
-        [WorkflowExpressionFactory(nameof(__BuildWebsiteControllerGetResults))]
-        public IBodyWorkflowAction<PaginatedWebsiteResponseDto> WebsiteControllerGetResults([WorkflowExpression] Func<string> targetUrlDomain = null, [WorkflowExpression] Func<string> finalUrlDomain = null, [WorkflowExpression] Func<bool> finalUrlLive = null, [WorkflowExpression] Func<bool> targetUrlRedirects = null, [WorkflowExpression] Func<string> targetUrlAgencyOwner = null, [WorkflowExpression] Func<string> targetUrlBureauOwner = null, [WorkflowExpression] Func<primaryScanStatusInput> primaryScanStatus = null, [WorkflowExpression] Func<bool> dapDetectedFinalUrl = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null)
+        public IBodyWorkflowAction<PaginatedWebsiteResponseDto> WebsiteControllerGetResults(Expression<Func<string>> targetUrlDomain = null, Expression<Func<string>> finalUrlDomain = null, Expression<Func<bool>> finalUrlLive = null, Expression<Func<bool>> targetUrlRedirects = null, Expression<Func<string>> targetUrlAgencyOwner = null, Expression<Func<string>> targetUrlBureauOwner = null, Expression<Func<primaryScanStatusInput>> primaryScanStatus = null, Expression<Func<bool>> dapDetectedFinalUrl = null, Expression<Func<int>> limit = null, Expression<Func<int>> page = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PaginatedWebsiteResponseDto> __BuildWebsiteControllerGetResults(WorkflowExpression<string> targetUrlDomain = null, WorkflowExpression<string> finalUrlDomain = null, WorkflowExpression<bool> finalUrlLive = null, WorkflowExpression<bool> targetUrlRedirects = null, WorkflowExpression<string> targetUrlAgencyOwner = null, WorkflowExpression<string> targetUrlBureauOwner = null, WorkflowExpression<primaryScanStatusInput> primaryScanStatus = null, WorkflowExpression<bool> dapDetectedFinalUrl = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null)
-        {
-            WorkflowExpression.Validate(targetUrlDomain, nameof(targetUrlDomain), required: false);
-            WorkflowExpression.Validate(finalUrlDomain, nameof(finalUrlDomain), required: false);
-            WorkflowExpression.Validate(finalUrlLive, nameof(finalUrlLive), required: false);
-            WorkflowExpression.Validate(targetUrlRedirects, nameof(targetUrlRedirects), required: false);
-            WorkflowExpression.Validate(targetUrlAgencyOwner, nameof(targetUrlAgencyOwner), required: false);
-            WorkflowExpression.Validate(targetUrlBureauOwner, nameof(targetUrlBureauOwner), required: false);
-            WorkflowExpression.Validate(primaryScanStatus, nameof(primaryScanStatus), required: false);
-            WorkflowExpression.Validate(dapDetectedFinalUrl, nameof(dapDetectedFinalUrl), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
+            var __workflow_targetUrlDomain = targetUrlDomain == null ? null : WorkflowExpression.Compile(targetUrlDomain);
+            WorkflowExpression.Validate(__workflow_targetUrlDomain, nameof(targetUrlDomain), required: false);
+            var __workflow_finalUrlDomain = finalUrlDomain == null ? null : WorkflowExpression.Compile(finalUrlDomain);
+            WorkflowExpression.Validate(__workflow_finalUrlDomain, nameof(finalUrlDomain), required: false);
+            var __workflow_finalUrlLive = finalUrlLive == null ? null : WorkflowExpression.Compile(finalUrlLive);
+            WorkflowExpression.Validate(__workflow_finalUrlLive, nameof(finalUrlLive), required: false);
+            var __workflow_targetUrlRedirects = targetUrlRedirects == null ? null : WorkflowExpression.Compile(targetUrlRedirects);
+            WorkflowExpression.Validate(__workflow_targetUrlRedirects, nameof(targetUrlRedirects), required: false);
+            var __workflow_targetUrlAgencyOwner = targetUrlAgencyOwner == null ? null : WorkflowExpression.Compile(targetUrlAgencyOwner);
+            WorkflowExpression.Validate(__workflow_targetUrlAgencyOwner, nameof(targetUrlAgencyOwner), required: false);
+            var __workflow_targetUrlBureauOwner = targetUrlBureauOwner == null ? null : WorkflowExpression.Compile(targetUrlBureauOwner);
+            WorkflowExpression.Validate(__workflow_targetUrlBureauOwner, nameof(targetUrlBureauOwner), required: false);
+            var __workflow_primaryScanStatus = primaryScanStatus == null ? null : WorkflowExpression.Compile(primaryScanStatus);
+            WorkflowExpression.Validate(__workflow_primaryScanStatus, nameof(primaryScanStatus), required: false);
+            var __workflow_dapDetectedFinalUrl = dapDetectedFinalUrl == null ? null : WorkflowExpression.Compile(dapDetectedFinalUrl);
+            WorkflowExpression.Validate(__workflow_dapDetectedFinalUrl, nameof(dapDetectedFinalUrl), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
             return new DeferredBodyAction<PaginatedWebsiteResponseDto>(() =>
             {
                 var apiCallPath = "/websites";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (targetUrlDomain != null)
-                    callPayload.Queries["target_url_domain"] = ExpressionConverter.Convert(targetUrlDomain);
-                if (finalUrlDomain != null)
-                    callPayload.Queries["final_url_domain"] = ExpressionConverter.Convert(finalUrlDomain);
-                if (finalUrlLive != null)
-                    callPayload.Queries["final_url_live"] = ExpressionConverter.Convert(finalUrlLive);
-                if (targetUrlRedirects != null)
-                    callPayload.Queries["target_url_redirects"] = ExpressionConverter.Convert(targetUrlRedirects);
-                if (targetUrlAgencyOwner != null)
-                    callPayload.Queries["target_url_agency_owner"] = ExpressionConverter.Convert(targetUrlAgencyOwner);
-                if (targetUrlBureauOwner != null)
-                    callPayload.Queries["target_url_bureau_owner"] = ExpressionConverter.Convert(targetUrlBureauOwner);
-                if (primaryScanStatus != null)
-                    callPayload.Queries["primary_scan_status"] = ExpressionConverter.Convert(primaryScanStatus);
-                if (dapDetectedFinalUrl != null)
-                    callPayload.Queries["dap_detected_final_url"] = ExpressionConverter.Convert(dapDetectedFinalUrl);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (__workflow_targetUrlDomain != null)
+                    callPayload.Queries["target_url_domain"] = ExpressionConverter.Convert(__workflow_targetUrlDomain);
+                if (__workflow_finalUrlDomain != null)
+                    callPayload.Queries["final_url_domain"] = ExpressionConverter.Convert(__workflow_finalUrlDomain);
+                if (__workflow_finalUrlLive != null)
+                    callPayload.Queries["final_url_live"] = ExpressionConverter.Convert(__workflow_finalUrlLive);
+                if (__workflow_targetUrlRedirects != null)
+                    callPayload.Queries["target_url_redirects"] = ExpressionConverter.Convert(__workflow_targetUrlRedirects);
+                if (__workflow_targetUrlAgencyOwner != null)
+                    callPayload.Queries["target_url_agency_owner"] = ExpressionConverter.Convert(__workflow_targetUrlAgencyOwner);
+                if (__workflow_targetUrlBureauOwner != null)
+                    callPayload.Queries["target_url_bureau_owner"] = ExpressionConverter.Convert(__workflow_targetUrlBureauOwner);
+                if (__workflow_primaryScanStatus != null)
+                    callPayload.Queries["primary_scan_status"] = ExpressionConverter.Convert(__workflow_primaryScanStatus);
+                if (__workflow_dapDetectedFinalUrl != null)
+                    callPayload.Queries["dap_detected_final_url"] = ExpressionConverter.Convert(__workflow_dapDetectedFinalUrl);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 return new ApiConnectionAction<PaginatedWebsiteResponseDto>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsasitescanning")]
-        [WorkflowExpressionFactory(nameof(__BuildWebsiteControllerGetResultByUrl))]
-        public IBodyWorkflowAction<WebsiteApiResultDto> WebsiteControllerGetResultByUrl([WorkflowExpression] Func<string> url)
+        public IBodyWorkflowAction<WebsiteApiResultDto> WebsiteControllerGetResultByUrl(Expression<Func<string>> url)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<WebsiteApiResultDto> __BuildWebsiteControllerGetResultByUrl(WorkflowExpression<string> url)
-        {
-            WorkflowExpression.Validate(url, nameof(url), required: true);
+            var __workflow_url = url == null ? null : WorkflowExpression.Compile(url);
+            WorkflowExpression.Validate(__workflow_url, nameof(url), required: true);
             return new DeferredBodyAction<WebsiteApiResultDto>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/websites/{0}", ExpressionConverter.ConvertWithUrlEncoding(url, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/websites/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_url, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<WebsiteApiResultDto>(callPayload);

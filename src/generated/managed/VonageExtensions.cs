@@ -1,41 +1,45 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vonage
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class VonageActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vonage")]
-        [WorkflowExpressionFactory(nameof(__BuildVerifyRequest))]
-        public IBodyWorkflowAction<VerifyRequestResponse> VerifyRequest([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string> apiKey, [WorkflowExpression] Func<string> apiSecret, [WorkflowExpression] Func<string> number, [WorkflowExpression] Func<string> brand, [WorkflowExpression] Func<string> country = null, [WorkflowExpression] Func<string> senderId = null, [WorkflowExpression] Func<codeLengthInput> codeLength = null, [WorkflowExpression] Func<lgInput> lg = null, [WorkflowExpression] Func<int> pinExpiry = null, [WorkflowExpression] Func<int> nextEventWait = null, [WorkflowExpression] Func<workflowIdInput> workflowId = null)
+        public IBodyWorkflowAction<VerifyRequestResponse> VerifyRequest(Expression<Func<formatInput>> format, Expression<Func<string>> apiKey, Expression<Func<string>> apiSecret, Expression<Func<string>> number, Expression<Func<string>> brand, Expression<Func<string>> country = null, Expression<Func<string>> senderId = null, Expression<Func<codeLengthInput>> codeLength = null, Expression<Func<lgInput>> lg = null, Expression<Func<int>> pinExpiry = null, Expression<Func<int>> nextEventWait = null, Expression<Func<workflowIdInput>> workflowId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<VerifyRequestResponse> __BuildVerifyRequest(WorkflowExpression<formatInput> format, WorkflowExpression<string> apiKey, WorkflowExpression<string> apiSecret, WorkflowExpression<string> number, WorkflowExpression<string> brand, WorkflowExpression<string> country = null, WorkflowExpression<string> senderId = null, WorkflowExpression<codeLengthInput> codeLength = null, WorkflowExpression<lgInput> lg = null, WorkflowExpression<int> pinExpiry = null, WorkflowExpression<int> nextEventWait = null, WorkflowExpression<workflowIdInput> workflowId = null)
-        {
-            WorkflowExpression.Validate(format, nameof(format), required: true);
-            WorkflowExpression.Validate(apiKey, nameof(apiKey), required: true);
-            WorkflowExpression.Validate(apiSecret, nameof(apiSecret), required: true);
-            WorkflowExpression.Validate(number, nameof(number), required: true);
-            WorkflowExpression.Validate(brand, nameof(brand), required: true);
-            WorkflowExpression.Validate(country, nameof(country), required: false);
-            WorkflowExpression.Validate(senderId, nameof(senderId), required: false);
-            WorkflowExpression.Validate(codeLength, nameof(codeLength), required: false);
-            WorkflowExpression.Validate(lg, nameof(lg), required: false);
-            WorkflowExpression.Validate(pinExpiry, nameof(pinExpiry), required: false);
-            WorkflowExpression.Validate(nextEventWait, nameof(nextEventWait), required: false);
-            WorkflowExpression.Validate(workflowId, nameof(workflowId), required: false);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: true);
+            var __workflow_apiKey = apiKey == null ? null : WorkflowExpression.Compile(apiKey);
+            WorkflowExpression.Validate(__workflow_apiKey, nameof(apiKey), required: true);
+            var __workflow_apiSecret = apiSecret == null ? null : WorkflowExpression.Compile(apiSecret);
+            WorkflowExpression.Validate(__workflow_apiSecret, nameof(apiSecret), required: true);
+            var __workflow_number = number == null ? null : WorkflowExpression.Compile(number);
+            WorkflowExpression.Validate(__workflow_number, nameof(number), required: true);
+            var __workflow_brand = brand == null ? null : WorkflowExpression.Compile(brand);
+            WorkflowExpression.Validate(__workflow_brand, nameof(brand), required: true);
+            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
+            WorkflowExpression.Validate(__workflow_country, nameof(country), required: false);
+            var __workflow_senderId = senderId == null ? null : WorkflowExpression.Compile(senderId);
+            WorkflowExpression.Validate(__workflow_senderId, nameof(senderId), required: false);
+            var __workflow_codeLength = codeLength == null ? null : WorkflowExpression.Compile(codeLength);
+            WorkflowExpression.Validate(__workflow_codeLength, nameof(codeLength), required: false);
+            var __workflow_lg = lg == null ? null : WorkflowExpression.Compile(lg);
+            WorkflowExpression.Validate(__workflow_lg, nameof(lg), required: false);
+            var __workflow_pinExpiry = pinExpiry == null ? null : WorkflowExpression.Compile(pinExpiry);
+            WorkflowExpression.Validate(__workflow_pinExpiry, nameof(pinExpiry), required: false);
+            var __workflow_nextEventWait = nextEventWait == null ? null : WorkflowExpression.Compile(nextEventWait);
+            WorkflowExpression.Validate(__workflow_nextEventWait, nameof(nextEventWait), required: false);
+            var __workflow_workflowId = workflowId == null ? null : WorkflowExpression.Compile(workflowId);
+            WorkflowExpression.Validate(__workflow_workflowId, nameof(workflowId), required: false);
             return new DeferredBodyAction<VerifyRequestResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/verify/{0}", ExpressionConverter.ConvertWithUrlEncoding(format, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/verify/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<VerifyRequestResponse>(callPayload);
@@ -43,23 +47,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vonage
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vonage")]
-        [WorkflowExpressionFactory(nameof(__BuildVerifyCheck))]
-        public IBodyWorkflowAction<VerifyCheckResponse> VerifyCheck([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string> apiKey, [WorkflowExpression] Func<string> apiSecret, [WorkflowExpression] Func<string> requestId, [WorkflowExpression] Func<string> code)
+        public IBodyWorkflowAction<VerifyCheckResponse> VerifyCheck(Expression<Func<formatInput>> format, Expression<Func<string>> apiKey, Expression<Func<string>> apiSecret, Expression<Func<string>> requestId, Expression<Func<string>> code)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<VerifyCheckResponse> __BuildVerifyCheck(WorkflowExpression<formatInput> format, WorkflowExpression<string> apiKey, WorkflowExpression<string> apiSecret, WorkflowExpression<string> requestId, WorkflowExpression<string> code)
-        {
-            WorkflowExpression.Validate(format, nameof(format), required: true);
-            WorkflowExpression.Validate(apiKey, nameof(apiKey), required: true);
-            WorkflowExpression.Validate(apiSecret, nameof(apiSecret), required: true);
-            WorkflowExpression.Validate(requestId, nameof(requestId), required: true);
-            WorkflowExpression.Validate(code, nameof(code), required: true);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: true);
+            var __workflow_apiKey = apiKey == null ? null : WorkflowExpression.Compile(apiKey);
+            WorkflowExpression.Validate(__workflow_apiKey, nameof(apiKey), required: true);
+            var __workflow_apiSecret = apiSecret == null ? null : WorkflowExpression.Compile(apiSecret);
+            WorkflowExpression.Validate(__workflow_apiSecret, nameof(apiSecret), required: true);
+            var __workflow_requestId = requestId == null ? null : WorkflowExpression.Compile(requestId);
+            WorkflowExpression.Validate(__workflow_requestId, nameof(requestId), required: true);
+            var __workflow_code = code == null ? null : WorkflowExpression.Compile(code);
+            WorkflowExpression.Validate(__workflow_code, nameof(code), required: true);
             return new DeferredBodyAction<VerifyCheckResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/verify/check/{0}", ExpressionConverter.ConvertWithUrlEncoding(format, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/verify/check/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<VerifyCheckResponse>(callPayload);
@@ -67,60 +69,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vonage
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vonage")]
-        [WorkflowExpressionFactory(nameof(__BuildBasicNumberInsight))]
-        public IBodyWorkflowAction<BasicNumberInsightResponse> BasicNumberInsight([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string> apiKey, [WorkflowExpression] Func<string> apiSecret, [WorkflowExpression] Func<string> number, [WorkflowExpression] Func<string> country)
+        public IBodyWorkflowAction<BasicNumberInsightResponse> BasicNumberInsight(Expression<Func<formatInput>> format, Expression<Func<string>> apiKey, Expression<Func<string>> apiSecret, Expression<Func<string>> number, Expression<Func<string>> country)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<BasicNumberInsightResponse> __BuildBasicNumberInsight(WorkflowExpression<formatInput> format, WorkflowExpression<string> apiKey, WorkflowExpression<string> apiSecret, WorkflowExpression<string> number, WorkflowExpression<string> country)
-        {
-            WorkflowExpression.Validate(format, nameof(format), required: true);
-            WorkflowExpression.Validate(apiKey, nameof(apiKey), required: true);
-            WorkflowExpression.Validate(apiSecret, nameof(apiSecret), required: true);
-            WorkflowExpression.Validate(number, nameof(number), required: true);
-            WorkflowExpression.Validate(country, nameof(country), required: true);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: true);
+            var __workflow_apiKey = apiKey == null ? null : WorkflowExpression.Compile(apiKey);
+            WorkflowExpression.Validate(__workflow_apiKey, nameof(apiKey), required: true);
+            var __workflow_apiSecret = apiSecret == null ? null : WorkflowExpression.Compile(apiSecret);
+            WorkflowExpression.Validate(__workflow_apiSecret, nameof(apiSecret), required: true);
+            var __workflow_number = number == null ? null : WorkflowExpression.Compile(number);
+            WorkflowExpression.Validate(__workflow_number, nameof(number), required: true);
+            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
+            WorkflowExpression.Validate(__workflow_country, nameof(country), required: true);
             return new DeferredBodyAction<BasicNumberInsightResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/ni/basic/{0}", ExpressionConverter.ConvertWithUrlEncoding(format, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/ni/basic/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["api_key"] = ExpressionConverter.Convert(apiKey);
-                callPayload.Queries["api_secret"] = ExpressionConverter.Convert(apiSecret);
-                callPayload.Queries["number"] = ExpressionConverter.Convert(number);
-                callPayload.Queries["country"] = ExpressionConverter.Convert(country);
+                callPayload.Queries["api_key"] = ExpressionConverter.Convert(__workflow_apiKey);
+                callPayload.Queries["api_secret"] = ExpressionConverter.Convert(__workflow_apiSecret);
+                callPayload.Queries["number"] = ExpressionConverter.Convert(__workflow_number);
+                callPayload.Queries["country"] = ExpressionConverter.Convert(__workflow_country);
                 return new ApiConnectionAction<BasicNumberInsightResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vonage")]
-        [WorkflowExpressionFactory(nameof(__BuildStandardNumberInsight))]
-        public IBodyWorkflowAction<StandardNumberInsightResponse> StandardNumberInsight([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string> apiKey, [WorkflowExpression] Func<string> apiSecret, [WorkflowExpression] Func<string> number, [WorkflowExpression] Func<string> country, [WorkflowExpression] Func<string> cnam = null)
+        public IBodyWorkflowAction<StandardNumberInsightResponse> StandardNumberInsight(Expression<Func<formatInput>> format, Expression<Func<string>> apiKey, Expression<Func<string>> apiSecret, Expression<Func<string>> number, Expression<Func<string>> country, Expression<Func<string>> cnam = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<StandardNumberInsightResponse> __BuildStandardNumberInsight(WorkflowExpression<formatInput> format, WorkflowExpression<string> apiKey, WorkflowExpression<string> apiSecret, WorkflowExpression<string> number, WorkflowExpression<string> country, WorkflowExpression<string> cnam = null)
-        {
-            WorkflowExpression.Validate(format, nameof(format), required: true);
-            WorkflowExpression.Validate(apiKey, nameof(apiKey), required: true);
-            WorkflowExpression.Validate(apiSecret, nameof(apiSecret), required: true);
-            WorkflowExpression.Validate(number, nameof(number), required: true);
-            WorkflowExpression.Validate(country, nameof(country), required: true);
-            WorkflowExpression.Validate(cnam, nameof(cnam), required: false);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: true);
+            var __workflow_apiKey = apiKey == null ? null : WorkflowExpression.Compile(apiKey);
+            WorkflowExpression.Validate(__workflow_apiKey, nameof(apiKey), required: true);
+            var __workflow_apiSecret = apiSecret == null ? null : WorkflowExpression.Compile(apiSecret);
+            WorkflowExpression.Validate(__workflow_apiSecret, nameof(apiSecret), required: true);
+            var __workflow_number = number == null ? null : WorkflowExpression.Compile(number);
+            WorkflowExpression.Validate(__workflow_number, nameof(number), required: true);
+            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
+            WorkflowExpression.Validate(__workflow_country, nameof(country), required: true);
+            var __workflow_cnam = cnam == null ? null : WorkflowExpression.Compile(cnam);
+            WorkflowExpression.Validate(__workflow_cnam, nameof(cnam), required: false);
             return new DeferredBodyAction<StandardNumberInsightResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/ni/standard/{0}", ExpressionConverter.ConvertWithUrlEncoding(format, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/ni/standard/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["api_key"] = ExpressionConverter.Convert(apiKey);
-                callPayload.Queries["api_secret"] = ExpressionConverter.Convert(apiSecret);
-                callPayload.Queries["number"] = ExpressionConverter.Convert(number);
-                callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-                if (cnam != null)
-                    callPayload.Queries["cnam"] = ExpressionConverter.Convert(cnam);
+                callPayload.Queries["api_key"] = ExpressionConverter.Convert(__workflow_apiKey);
+                callPayload.Queries["api_secret"] = ExpressionConverter.Convert(__workflow_apiSecret);
+                callPayload.Queries["number"] = ExpressionConverter.Convert(__workflow_number);
+                callPayload.Queries["country"] = ExpressionConverter.Convert(__workflow_country);
+                if (__workflow_cnam != null)
+                    callPayload.Queries["cnam"] = ExpressionConverter.Convert(__workflow_cnam);
                 return new ApiConnectionAction<StandardNumberInsightResponse>(callPayload);
             });
         }

@@ -1,47 +1,49 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Progressusadvancedpr
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class ProgressusadvancedprActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "progressusadvancedpr")]
-        [WorkflowExpressionFactory(nameof(__BuildGet))]
-        public IWorkflowAction Get([WorkflowExpression] Func<string> aPIVersion, [WorkflowExpression] Func<string> tenantID, [WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<aPINameInput> aPIName, [WorkflowExpression] Func<string> aPIVersion2, [WorkflowExpression] Func<string> companyID, [WorkflowExpression] Func<pluralAPINameInput> pluralAPIName, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> orderby = null)
+        public IWorkflowAction Get(Expression<Func<string>> aPIVersion, Expression<Func<string>> tenantID, Expression<Func<string>> environmentName, Expression<Func<aPINameInput>> aPIName, Expression<Func<string>> aPIVersion2, Expression<Func<string>> companyID, Expression<Func<pluralAPINameInput>> pluralAPIName, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> orderby = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGet(WorkflowExpression<string> aPIVersion, WorkflowExpression<string> tenantID, WorkflowExpression<string> environmentName, WorkflowExpression<aPINameInput> aPIName, WorkflowExpression<string> aPIVersion2, WorkflowExpression<string> companyID, WorkflowExpression<pluralAPINameInput> pluralAPIName, WorkflowExpression<string> filter = null, WorkflowExpression<string> select = null, WorkflowExpression<string> orderby = null)
-        {
-            WorkflowExpression.Validate(aPIVersion, nameof(aPIVersion), required: true);
-            WorkflowExpression.Validate(tenantID, nameof(tenantID), required: true);
-            WorkflowExpression.Validate(environmentName, nameof(environmentName), required: true);
-            WorkflowExpression.Validate(aPIName, nameof(aPIName), required: true);
-            WorkflowExpression.Validate(aPIVersion2, nameof(aPIVersion2), required: true);
-            WorkflowExpression.Validate(companyID, nameof(companyID), required: true);
-            WorkflowExpression.Validate(pluralAPIName, nameof(pluralAPIName), required: true);
-            WorkflowExpression.Validate(filter, nameof(filter), required: false);
-            WorkflowExpression.Validate(select, nameof(select), required: false);
-            WorkflowExpression.Validate(orderby, nameof(orderby), required: false);
+            var __workflow_aPIVersion = aPIVersion == null ? null : WorkflowExpression.Compile(aPIVersion);
+            WorkflowExpression.Validate(__workflow_aPIVersion, nameof(aPIVersion), required: true);
+            var __workflow_tenantID = tenantID == null ? null : WorkflowExpression.Compile(tenantID);
+            WorkflowExpression.Validate(__workflow_tenantID, nameof(tenantID), required: true);
+            var __workflow_environmentName = environmentName == null ? null : WorkflowExpression.Compile(environmentName);
+            WorkflowExpression.Validate(__workflow_environmentName, nameof(environmentName), required: true);
+            var __workflow_aPIName = aPIName == null ? null : WorkflowExpression.Compile(aPIName);
+            WorkflowExpression.Validate(__workflow_aPIName, nameof(aPIName), required: true);
+            var __workflow_aPIVersion2 = aPIVersion2 == null ? null : WorkflowExpression.Compile(aPIVersion2);
+            WorkflowExpression.Validate(__workflow_aPIVersion2, nameof(aPIVersion2), required: true);
+            var __workflow_companyID = companyID == null ? null : WorkflowExpression.Compile(companyID);
+            WorkflowExpression.Validate(__workflow_companyID, nameof(companyID), required: true);
+            var __workflow_pluralAPIName = pluralAPIName == null ? null : WorkflowExpression.Compile(pluralAPIName);
+            WorkflowExpression.Validate(__workflow_pluralAPIName, nameof(pluralAPIName), required: true);
+            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
+            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
+            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
+            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_orderby = orderby == null ? null : WorkflowExpression.Compile(orderby);
+            WorkflowExpression.Validate(__workflow_orderby, nameof(orderby), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}/api/progressus/{3}/{4}/companies({5})/{6}", ExpressionConverter.ConvertWithUrlEncoding(aPIVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(tenantID, 1), ExpressionConverter.ConvertWithUrlEncoding(environmentName, 1), ExpressionConverter.ConvertWithUrlEncoding(aPIName, 1), ExpressionConverter.ConvertWithUrlEncoding(aPIVersion2, 1), ExpressionConverter.ConvertWithUrlEncoding(companyID, 1), ExpressionConverter.ConvertWithUrlEncoding(pluralAPIName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}/api/progressus/{3}/{4}/companies({5})/{6}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_aPIVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_tenantID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_aPIName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_aPIVersion2, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_pluralAPIName, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (filter != null)
-                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-                if (select != null)
-                    callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-                if (orderby != null)
-                    callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
+                if (__workflow_filter != null)
+                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(__workflow_filter);
+                if (__workflow_select != null)
+                    callPayload.Queries["$select"] = ExpressionConverter.Convert(__workflow_select);
+                if (__workflow_orderby != null)
+                    callPayload.Queries["$orderby"] = ExpressionConverter.Convert(__workflow_orderby);
                 return new ApiConnectionAction(callPayload);
             });
         }

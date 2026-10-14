@@ -1,30 +1,23 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecportabilitycheck
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class TyntecportabilitycheckActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecportabilitycheck")]
-        [WorkflowExpressionFactory(nameof(__BuildVerifyPhoneNumber))]
-        public IBodyWorkflowAction<VerifyPhoneNumberResponse> VerifyPhoneNumber([WorkflowExpression] Func<string> phonenumber)
+        public IBodyWorkflowAction<VerifyPhoneNumberResponse> VerifyPhoneNumber(Expression<Func<string>> phonenumber)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<VerifyPhoneNumberResponse> __BuildVerifyPhoneNumber(WorkflowExpression<string> phonenumber)
-        {
-            WorkflowExpression.Validate(phonenumber, nameof(phonenumber), required: true);
+            var __workflow_phonenumber = phonenumber == null ? null : WorkflowExpression.Compile(phonenumber);
+            WorkflowExpression.Validate(__workflow_phonenumber, nameof(phonenumber), required: true);
             return new DeferredBodyAction<VerifyPhoneNumberResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/verification/v1/phone/{0}", ExpressionConverter.ConvertWithUrlEncoding(phonenumber, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/verification/v1/phone/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_phonenumber, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<VerifyPhoneNumberResponse>(callPayload);

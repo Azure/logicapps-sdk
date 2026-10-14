@@ -1,127 +1,101 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Varuna
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class VarunaActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "varuna")]
-        [WorkflowExpressionFactory(nameof(__BuildGetADocument))]
-        public IBodyWorkflowAction<JToken> GetADocument([WorkflowExpression] Func<string> documentType, [WorkflowExpression] Func<string> documentId)
+        public IBodyWorkflowAction<JToken> GetADocument(Expression<Func<string>> documentType, Expression<Func<string>> documentId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildGetADocument(WorkflowExpression<string> documentType, WorkflowExpression<string> documentId)
-        {
-            WorkflowExpression.Validate(documentType, nameof(documentType), required: true);
-            WorkflowExpression.Validate(documentId, nameof(documentId), required: true);
+            var __workflow_documentType = documentType == null ? null : WorkflowExpression.Compile(documentType);
+            WorkflowExpression.Validate(__workflow_documentType, nameof(documentType), required: true);
+            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
+            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/getdocument";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["document_type"] = ExpressionConverter.Convert(documentType);
-                callPayload.Headers["document_id"] = ExpressionConverter.Convert(documentId);
+                callPayload.Headers["document_type"] = ExpressionConverter.Convert(__workflow_documentType);
+                callPayload.Headers["document_id"] = ExpressionConverter.Convert(__workflow_documentId);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "varuna")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateADocument))]
-        public IBodyWorkflowAction<CreateADocumentResponse> CreateADocument([WorkflowExpression] Func<string> documentType, [WorkflowExpression] Func<object> createSchema = null)
+        public IBodyWorkflowAction<CreateADocumentResponse> CreateADocument(Expression<Func<string>> documentType, Expression<Func<object>> createSchema = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateADocumentResponse> __BuildCreateADocument(WorkflowExpression<string> documentType, WorkflowExpression<object> createSchema = null)
-        {
-            WorkflowExpression.Validate(documentType, nameof(documentType), required: true);
-            WorkflowExpression.Validate(createSchema, nameof(createSchema), required: false);
+            var __workflow_documentType = documentType == null ? null : WorkflowExpression.Compile(documentType);
+            WorkflowExpression.Validate(__workflow_documentType, nameof(documentType), required: true);
+            var __workflow_createSchema = createSchema == null ? null : WorkflowExpression.Compile(createSchema);
+            WorkflowExpression.Validate(__workflow_createSchema, nameof(createSchema), required: false);
             return new DeferredBodyAction<CreateADocumentResponse>(() =>
             {
                 var apiCallPath = "/createdocument";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["document_type"] = ExpressionConverter.Convert(documentType);
-                callPayload.Body = ExpressionConverter.ConvertO(createSchema);
+                callPayload.Headers["document_type"] = ExpressionConverter.Convert(__workflow_documentType);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_createSchema);
                 return new ApiConnectionAction<CreateADocumentResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "varuna")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteADocument))]
-        public IBodyWorkflowAction<DeleteADocumentResponse> DeleteADocument([WorkflowExpression] Func<string> documentType, [WorkflowExpression] Func<string> documentId)
+        public IBodyWorkflowAction<DeleteADocumentResponse> DeleteADocument(Expression<Func<string>> documentType, Expression<Func<string>> documentId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DeleteADocumentResponse> __BuildDeleteADocument(WorkflowExpression<string> documentType, WorkflowExpression<string> documentId)
-        {
-            WorkflowExpression.Validate(documentType, nameof(documentType), required: true);
-            WorkflowExpression.Validate(documentId, nameof(documentId), required: true);
+            var __workflow_documentType = documentType == null ? null : WorkflowExpression.Compile(documentType);
+            WorkflowExpression.Validate(__workflow_documentType, nameof(documentType), required: true);
+            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
+            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
             return new DeferredBodyAction<DeleteADocumentResponse>(() =>
             {
                 var apiCallPath = "/deletedocument";
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["document_type"] = ExpressionConverter.Convert(documentType);
-                callPayload.Headers["document_id"] = ExpressionConverter.Convert(documentId);
+                callPayload.Headers["document_type"] = ExpressionConverter.Convert(__workflow_documentType);
+                callPayload.Headers["document_id"] = ExpressionConverter.Convert(__workflow_documentId);
                 return new ApiConnectionAction<DeleteADocumentResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "varuna")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateADocument))]
-        public IBodyWorkflowAction<UpdateADocumentResponse> UpdateADocument([WorkflowExpression] Func<string> documentType, [WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<object> updateSchema = null)
+        public IBodyWorkflowAction<UpdateADocumentResponse> UpdateADocument(Expression<Func<string>> documentType, Expression<Func<string>> documentId, Expression<Func<object>> updateSchema = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UpdateADocumentResponse> __BuildUpdateADocument(WorkflowExpression<string> documentType, WorkflowExpression<string> documentId, WorkflowExpression<object> updateSchema = null)
-        {
-            WorkflowExpression.Validate(documentType, nameof(documentType), required: true);
-            WorkflowExpression.Validate(documentId, nameof(documentId), required: true);
-            WorkflowExpression.Validate(updateSchema, nameof(updateSchema), required: false);
+            var __workflow_documentType = documentType == null ? null : WorkflowExpression.Compile(documentType);
+            WorkflowExpression.Validate(__workflow_documentType, nameof(documentType), required: true);
+            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
+            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
+            var __workflow_updateSchema = updateSchema == null ? null : WorkflowExpression.Compile(updateSchema);
+            WorkflowExpression.Validate(__workflow_updateSchema, nameof(updateSchema), required: false);
             return new DeferredBodyAction<UpdateADocumentResponse>(() =>
             {
                 var apiCallPath = "/updatedocument";
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["document_type"] = ExpressionConverter.Convert(documentType);
-                callPayload.Headers["document_id"] = ExpressionConverter.Convert(documentId);
-                callPayload.Body = ExpressionConverter.ConvertO(updateSchema);
+                callPayload.Headers["document_type"] = ExpressionConverter.Convert(__workflow_documentType);
+                callPayload.Headers["document_id"] = ExpressionConverter.Convert(__workflow_documentId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_updateSchema);
                 return new ApiConnectionAction<UpdateADocumentResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "varuna")]
-        [WorkflowExpressionFactory(nameof(__BuildGetAllDocumentsByType))]
-        public IBodyWorkflowAction<JToken[]> GetAllDocumentsByType([WorkflowExpression] Func<string> documentType)
+        public IBodyWorkflowAction<JToken[]> GetAllDocumentsByType(Expression<Func<string>> documentType)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken[]> __BuildGetAllDocumentsByType(WorkflowExpression<string> documentType)
-        {
-            WorkflowExpression.Validate(documentType, nameof(documentType), required: true);
+            var __workflow_documentType = documentType == null ? null : WorkflowExpression.Compile(documentType);
+            WorkflowExpression.Validate(__workflow_documentType, nameof(documentType), required: true);
             return new DeferredBodyAction<JToken[]>(() =>
             {
                 var apiCallPath = "/getalldocumentsbytype";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["document_type"] = ExpressionConverter.Convert(documentType);
+                callPayload.Headers["document_type"] = ExpressionConverter.Convert(__workflow_documentType);
                 return new ApiConnectionAction<JToken[]>(callPayload);
             });
         }
@@ -129,18 +103,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Varuna
 
     public class VarunaTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildSubscribeTrigger))]
-        public IBodyWorkflowTrigger<JToken> SubscribeTrigger([WorkflowExpression] Func<string> bodytriggerName,[WorkflowExpression] Func<int> bodywhen = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> SubscribeTrigger(Expression<Func<string>> bodytriggerName, Expression<Func<int>> bodywhen = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildSubscribeTrigger(WorkflowExpression<string> bodytriggerName,WorkflowExpression<int> bodywhen = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodytriggerName, nameof(bodytriggerName), required: true);
-            WorkflowExpression.Validate(bodywhen, nameof(bodywhen), required: false);
+            var __workflow_bodytriggerName = bodytriggerName == null ? null : WorkflowExpression.Compile(bodytriggerName);
+            WorkflowExpression.Validate(__workflow_bodytriggerName, nameof(bodytriggerName), required: true);
+            var __workflow_bodywhen = bodywhen == null ? null : WorkflowExpression.Compile(bodywhen);
+            WorkflowExpression.Validate(__workflow_bodywhen, nameof(bodywhen), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = "/subscribewebhook";
@@ -155,10 +123,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Varuna
                 body["MessageTemplateFormat"] = "Json";
                 bodypropCount++;
                 bodypropCount++;
-                body["Name"] = ExpressionConverter.ConvertO(bodytriggerName);
-                if (bodywhen != null)
+                body["Name"] = ExpressionConverter.ConvertO(__workflow_bodytriggerName);
+                if (__workflow_bodywhen != null)
                 {
-                    body["When"] = ExpressionConverter.ConvertO(bodywhen);
+                    body["When"] = ExpressionConverter.ConvertO(__workflow_bodywhen);
                     bodypropCount++;
                 }
 

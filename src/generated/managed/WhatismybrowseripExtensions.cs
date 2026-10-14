@@ -1,27 +1,20 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whatismybrowserip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class WhatismybrowseripActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whatismybrowserip")]
-        [WorkflowExpressionFactory(nameof(__BuildDetect))]
-        public IBodyWorkflowAction<DetectPostResponse> Detect([WorkflowExpression] Func<bodyheadersInputItem[]> bodyheaders = null)
+        public IBodyWorkflowAction<DetectPostResponse> Detect(Expression<Func<bodyheadersInputItem[]>> bodyheaders = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DetectPostResponse> __BuildDetect(WorkflowExpression<bodyheadersInputItem[]> bodyheaders = null)
-        {
-            WorkflowExpression.Validate(bodyheaders, nameof(bodyheaders), required: false);
+            var __workflow_bodyheaders = bodyheaders == null ? null : WorkflowExpression.Compile(bodyheaders);
+            WorkflowExpression.Validate(__workflow_bodyheaders, nameof(bodyheaders), required: false);
             return new DeferredBodyAction<DetectPostResponse>(() =>
             {
                 var apiCallPath = "/detect";
@@ -29,9 +22,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whatismybrowserip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyheaders != null)
+                if (__workflow_bodyheaders != null)
                 {
-                    body["headers"] = ExpressionConverter.ConvertO(bodyheaders);
+                    body["headers"] = ExpressionConverter.ConvertO(__workflow_bodyheaders);
                     bodypropCount++;
                 }
 

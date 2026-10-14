@@ -1,65 +1,57 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Niftygatewayip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class NiftygatewayipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "niftygatewayip")]
-        [WorkflowExpressionFactory(nameof(__BuildNiftiesforUser))]
-        public IBodyWorkflowAction<NiftiesforUserResponse> NiftiesforUser([WorkflowExpression] Func<string> username, [WorkflowExpression] Func<string> contractAddress = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
+        public IBodyWorkflowAction<NiftiesforUserResponse> NiftiesforUser(Expression<Func<string>> username, Expression<Func<string>> contractAddress = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<NiftiesforUserResponse> __BuildNiftiesforUser(WorkflowExpression<string> username, WorkflowExpression<string> contractAddress = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
-        {
-            WorkflowExpression.Validate(username, nameof(username), required: true);
-            WorkflowExpression.Validate(contractAddress, nameof(contractAddress), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            var __workflow_username = username == null ? null : WorkflowExpression.Compile(username);
+            WorkflowExpression.Validate(__workflow_username, nameof(username), required: true);
+            var __workflow_contractAddress = contractAddress == null ? null : WorkflowExpression.Compile(contractAddress);
+            WorkflowExpression.Validate(__workflow_contractAddress, nameof(contractAddress), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
             return new DeferredBodyAction<NiftiesforUserResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}/nifties/", ExpressionConverter.ConvertWithUrlEncoding(username, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}/nifties/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_username, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (contractAddress != null)
-                    callPayload.Queries["contractAddress"] = ExpressionConverter.Convert(contractAddress);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (offset != null)
-                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (__workflow_contractAddress != null)
+                    callPayload.Queries["contractAddress"] = ExpressionConverter.Convert(__workflow_contractAddress);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<NiftiesforUserResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "niftygatewayip")]
-        [WorkflowExpressionFactory(nameof(__BuildNiftiesforCreator))]
-        public IBodyWorkflowAction<NiftiesforCreatorResponse> NiftiesforCreator([WorkflowExpression] Func<string> creatorProfileName, [WorkflowExpression] Func<int> limit, [WorkflowExpression] Func<int> offset)
+        public IBodyWorkflowAction<NiftiesforCreatorResponse> NiftiesforCreator(Expression<Func<string>> creatorProfileName, Expression<Func<int>> limit, Expression<Func<int>> offset)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<NiftiesforCreatorResponse> __BuildNiftiesforCreator(WorkflowExpression<string> creatorProfileName, WorkflowExpression<int> limit, WorkflowExpression<int> offset)
-        {
-            WorkflowExpression.Validate(creatorProfileName, nameof(creatorProfileName), required: true);
-            WorkflowExpression.Validate(limit, nameof(limit), required: true);
-            WorkflowExpression.Validate(offset, nameof(offset), required: true);
+            var __workflow_creatorProfileName = creatorProfileName == null ? null : WorkflowExpression.Compile(creatorProfileName);
+            WorkflowExpression.Validate(__workflow_creatorProfileName, nameof(creatorProfileName), required: true);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: true);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: true);
             return new DeferredBodyAction<NiftiesforCreatorResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/creators/{0}/collectors/", ExpressionConverter.ConvertWithUrlEncoding(creatorProfileName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/creators/{0}/collectors/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_creatorProfileName, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<NiftiesforCreatorResponse>(callPayload);
             });
         }

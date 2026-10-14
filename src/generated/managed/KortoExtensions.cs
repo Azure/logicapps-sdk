@@ -1,294 +1,254 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class KortoActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
-        [WorkflowExpressionFactory(nameof(__BuildGetTag))]
-        public IBodyWorkflowAction<QueryTagsResponse> GetTag([WorkflowExpression] Func<int> tagID = null, [WorkflowExpression] Func<string> tagName = null)
+        public IBodyWorkflowAction<QueryTagsResponse> GetTag(Expression<Func<int>> tagID = null, Expression<Func<string>> tagName = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<QueryTagsResponse> __BuildGetTag(WorkflowExpression<int> tagID = null, WorkflowExpression<string> tagName = null)
-        {
-            WorkflowExpression.Validate(tagID, nameof(tagID), required: false);
-            WorkflowExpression.Validate(tagName, nameof(tagName), required: false);
+            var __workflow_tagID = tagID == null ? null : WorkflowExpression.Compile(tagID);
+            WorkflowExpression.Validate(__workflow_tagID, nameof(tagID), required: false);
+            var __workflow_tagName = tagName == null ? null : WorkflowExpression.Compile(tagName);
+            WorkflowExpression.Validate(__workflow_tagName, nameof(tagName), required: false);
             return new DeferredBodyAction<QueryTagsResponse>(() =>
             {
                 var apiCallPath = "/Tag/v2";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (tagID != null)
-                    callPayload.Queries["tagID"] = ExpressionConverter.Convert(tagID);
-                if (tagName != null)
-                    callPayload.Queries["tagName"] = ExpressionConverter.Convert(tagName);
+                if (__workflow_tagID != null)
+                    callPayload.Queries["tagID"] = ExpressionConverter.Convert(__workflow_tagID);
+                if (__workflow_tagName != null)
+                    callPayload.Queries["tagName"] = ExpressionConverter.Convert(__workflow_tagName);
                 return new ApiConnectionAction<QueryTagsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteTag))]
-        public IWorkflowAction DeleteTag([WorkflowExpression] Func<int> tagID = null, [WorkflowExpression] Func<string> tagName = null)
+        public IWorkflowAction DeleteTag(Expression<Func<int>> tagID = null, Expression<Func<string>> tagName = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDeleteTag(WorkflowExpression<int> tagID = null, WorkflowExpression<string> tagName = null)
-        {
-            WorkflowExpression.Validate(tagID, nameof(tagID), required: false);
-            WorkflowExpression.Validate(tagName, nameof(tagName), required: false);
+            var __workflow_tagID = tagID == null ? null : WorkflowExpression.Compile(tagID);
+            WorkflowExpression.Validate(__workflow_tagID, nameof(tagID), required: false);
+            var __workflow_tagName = tagName == null ? null : WorkflowExpression.Compile(tagName);
+            WorkflowExpression.Validate(__workflow_tagName, nameof(tagName), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/Tag/v2";
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (tagID != null)
-                    callPayload.Queries["tagID"] = ExpressionConverter.Convert(tagID);
-                if (tagName != null)
-                    callPayload.Queries["tagName"] = ExpressionConverter.Convert(tagName);
+                if (__workflow_tagID != null)
+                    callPayload.Queries["tagID"] = ExpressionConverter.Convert(__workflow_tagID);
+                if (__workflow_tagName != null)
+                    callPayload.Queries["tagName"] = ExpressionConverter.Convert(__workflow_tagName);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateTag))]
-        public IBodyWorkflowAction<QueryTagResponseItem> CreateTag([WorkflowExpression] Func<string> tagName = null, [WorkflowExpression] Func<int> tagType = null, [WorkflowExpression] Func<int> tagValueType = null)
+        public IBodyWorkflowAction<QueryTagResponseItem> CreateTag(Expression<Func<string>> tagName = null, Expression<Func<int>> tagType = null, Expression<Func<int>> tagValueType = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<QueryTagResponseItem> __BuildCreateTag(WorkflowExpression<string> tagName = null, WorkflowExpression<int> tagType = null, WorkflowExpression<int> tagValueType = null)
-        {
-            WorkflowExpression.Validate(tagName, nameof(tagName), required: false);
-            WorkflowExpression.Validate(tagType, nameof(tagType), required: false);
-            WorkflowExpression.Validate(tagValueType, nameof(tagValueType), required: false);
+            var __workflow_tagName = tagName == null ? null : WorkflowExpression.Compile(tagName);
+            WorkflowExpression.Validate(__workflow_tagName, nameof(tagName), required: false);
+            var __workflow_tagType = tagType == null ? null : WorkflowExpression.Compile(tagType);
+            WorkflowExpression.Validate(__workflow_tagType, nameof(tagType), required: false);
+            var __workflow_tagValueType = tagValueType == null ? null : WorkflowExpression.Compile(tagValueType);
+            WorkflowExpression.Validate(__workflow_tagValueType, nameof(tagValueType), required: false);
             return new DeferredBodyAction<QueryTagResponseItem>(() =>
             {
                 var apiCallPath = "/Tag/v2";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (tagName != null)
-                    callPayload.Queries["tagName"] = ExpressionConverter.Convert(tagName);
+                if (__workflow_tagName != null)
+                    callPayload.Queries["tagName"] = ExpressionConverter.Convert(__workflow_tagName);
                 callPayload.Queries["tagType"] = Convert.ToString(1);
-                if (tagType != null)
-                    callPayload.Queries["tagType"] = ExpressionConverter.Convert(tagType);
-                if (tagValueType != null)
-                    callPayload.Queries["tagValueType"] = ExpressionConverter.Convert(tagValueType);
+                if (__workflow_tagType != null)
+                    callPayload.Queries["tagType"] = ExpressionConverter.Convert(__workflow_tagType);
+                if (__workflow_tagValueType != null)
+                    callPayload.Queries["tagValueType"] = ExpressionConverter.Convert(__workflow_tagValueType);
                 return new ApiConnectionAction<QueryTagResponseItem>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
-        [WorkflowExpressionFactory(nameof(__BuildGetRecord))]
-        public IBodyWorkflowAction<RecordQueryResponseItem> GetRecord([WorkflowExpression] Func<int> recordID = null, [WorkflowExpression] Func<string> externalRecordID = null)
+        public IBodyWorkflowAction<RecordQueryResponseItem> GetRecord(Expression<Func<int>> recordID = null, Expression<Func<string>> externalRecordID = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<RecordQueryResponseItem> __BuildGetRecord(WorkflowExpression<int> recordID = null, WorkflowExpression<string> externalRecordID = null)
-        {
-            WorkflowExpression.Validate(recordID, nameof(recordID), required: false);
-            WorkflowExpression.Validate(externalRecordID, nameof(externalRecordID), required: false);
+            var __workflow_recordID = recordID == null ? null : WorkflowExpression.Compile(recordID);
+            WorkflowExpression.Validate(__workflow_recordID, nameof(recordID), required: false);
+            var __workflow_externalRecordID = externalRecordID == null ? null : WorkflowExpression.Compile(externalRecordID);
+            WorkflowExpression.Validate(__workflow_externalRecordID, nameof(externalRecordID), required: false);
             return new DeferredBodyAction<RecordQueryResponseItem>(() =>
             {
                 var apiCallPath = "/Record/v2";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (recordID != null)
-                    callPayload.Queries["recordID"] = ExpressionConverter.Convert(recordID);
-                if (externalRecordID != null)
-                    callPayload.Queries["externalRecordID"] = ExpressionConverter.Convert(externalRecordID);
+                if (__workflow_recordID != null)
+                    callPayload.Queries["recordID"] = ExpressionConverter.Convert(__workflow_recordID);
+                if (__workflow_externalRecordID != null)
+                    callPayload.Queries["externalRecordID"] = ExpressionConverter.Convert(__workflow_externalRecordID);
                 return new ApiConnectionAction<RecordQueryResponseItem>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteRecord))]
-        public IWorkflowAction DeleteRecord([WorkflowExpression] Func<int> recordID = null, [WorkflowExpression] Func<string> externalRecordID = null)
+        public IWorkflowAction DeleteRecord(Expression<Func<int>> recordID = null, Expression<Func<string>> externalRecordID = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDeleteRecord(WorkflowExpression<int> recordID = null, WorkflowExpression<string> externalRecordID = null)
-        {
-            WorkflowExpression.Validate(recordID, nameof(recordID), required: false);
-            WorkflowExpression.Validate(externalRecordID, nameof(externalRecordID), required: false);
+            var __workflow_recordID = recordID == null ? null : WorkflowExpression.Compile(recordID);
+            WorkflowExpression.Validate(__workflow_recordID, nameof(recordID), required: false);
+            var __workflow_externalRecordID = externalRecordID == null ? null : WorkflowExpression.Compile(externalRecordID);
+            WorkflowExpression.Validate(__workflow_externalRecordID, nameof(externalRecordID), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/Record/v2";
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (recordID != null)
-                    callPayload.Queries["recordID"] = ExpressionConverter.Convert(recordID);
-                if (externalRecordID != null)
-                    callPayload.Queries["externalRecordID"] = ExpressionConverter.Convert(externalRecordID);
+                if (__workflow_recordID != null)
+                    callPayload.Queries["recordID"] = ExpressionConverter.Convert(__workflow_recordID);
+                if (__workflow_externalRecordID != null)
+                    callPayload.Queries["externalRecordID"] = ExpressionConverter.Convert(__workflow_externalRecordID);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateRecord))]
-        public IBodyWorkflowAction<RecordQueryResponseItem> CreateRecord([WorkflowExpression] Func<object> file, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> actor = null, [WorkflowExpression] Func<string> externalid = null, [WorkflowExpression] Func<string> externalurl = null, [WorkflowExpression] Func<string> createdAt = null, [WorkflowExpression] Func<string> createdBy = null)
+        public IBodyWorkflowAction<RecordQueryResponseItem> CreateRecord(Expression<Func<object>> file, Expression<Func<string>> name = null, Expression<Func<string>> actor = null, Expression<Func<string>> externalid = null, Expression<Func<string>> externalurl = null, Expression<Func<string>> createdAt = null, Expression<Func<string>> createdBy = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<RecordQueryResponseItem> __BuildCreateRecord(WorkflowExpression<object> file, WorkflowExpression<string> name = null, WorkflowExpression<string> actor = null, WorkflowExpression<string> externalid = null, WorkflowExpression<string> externalurl = null, WorkflowExpression<string> createdAt = null, WorkflowExpression<string> createdBy = null)
-        {
-            WorkflowExpression.Validate(file, nameof(file), required: true);
-            WorkflowExpression.Validate(name, nameof(name), required: false);
-            WorkflowExpression.Validate(actor, nameof(actor), required: false);
-            WorkflowExpression.Validate(externalid, nameof(externalid), required: false);
-            WorkflowExpression.Validate(externalurl, nameof(externalurl), required: false);
-            WorkflowExpression.Validate(createdAt, nameof(createdAt), required: false);
-            WorkflowExpression.Validate(createdBy, nameof(createdBy), required: false);
+            var __workflow_file = file == null ? null : WorkflowExpression.Compile(file);
+            WorkflowExpression.Validate(__workflow_file, nameof(file), required: true);
+            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
+            WorkflowExpression.Validate(__workflow_name, nameof(name), required: false);
+            var __workflow_actor = actor == null ? null : WorkflowExpression.Compile(actor);
+            WorkflowExpression.Validate(__workflow_actor, nameof(actor), required: false);
+            var __workflow_externalid = externalid == null ? null : WorkflowExpression.Compile(externalid);
+            WorkflowExpression.Validate(__workflow_externalid, nameof(externalid), required: false);
+            var __workflow_externalurl = externalurl == null ? null : WorkflowExpression.Compile(externalurl);
+            WorkflowExpression.Validate(__workflow_externalurl, nameof(externalurl), required: false);
+            var __workflow_createdAt = createdAt == null ? null : WorkflowExpression.Compile(createdAt);
+            WorkflowExpression.Validate(__workflow_createdAt, nameof(createdAt), required: false);
+            var __workflow_createdBy = createdBy == null ? null : WorkflowExpression.Compile(createdBy);
+            WorkflowExpression.Validate(__workflow_createdBy, nameof(createdBy), required: false);
             return new DeferredBodyAction<RecordQueryResponseItem>(() =>
             {
                 var apiCallPath = "/Record/v2";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (name != null)
-                    callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-                if (actor != null)
-                    callPayload.Queries["actor"] = ExpressionConverter.Convert(actor);
-                if (externalid != null)
-                    callPayload.Queries["externalid"] = ExpressionConverter.Convert(externalid);
-                if (externalurl != null)
-                    callPayload.Queries["externalurl"] = ExpressionConverter.Convert(externalurl);
-                if (createdAt != null)
-                    callPayload.Queries["createdAt"] = ExpressionConverter.Convert(createdAt);
-                if (createdBy != null)
-                    callPayload.Queries["createdBy"] = ExpressionConverter.Convert(createdBy);
+                if (__workflow_name != null)
+                    callPayload.Queries["name"] = ExpressionConverter.Convert(__workflow_name);
+                if (__workflow_actor != null)
+                    callPayload.Queries["actor"] = ExpressionConverter.Convert(__workflow_actor);
+                if (__workflow_externalid != null)
+                    callPayload.Queries["externalid"] = ExpressionConverter.Convert(__workflow_externalid);
+                if (__workflow_externalurl != null)
+                    callPayload.Queries["externalurl"] = ExpressionConverter.Convert(__workflow_externalurl);
+                if (__workflow_createdAt != null)
+                    callPayload.Queries["createdAt"] = ExpressionConverter.Convert(__workflow_createdAt);
+                if (__workflow_createdBy != null)
+                    callPayload.Queries["createdBy"] = ExpressionConverter.Convert(__workflow_createdBy);
                 return new ApiConnectionAction<RecordQueryResponseItem>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
-        [WorkflowExpressionFactory(nameof(__BuildDownloadRecord))]
-        public IBodyWorkflowAction<DownloadUrlMessage> DownloadRecord([WorkflowExpression] Func<int> recordID = null, [WorkflowExpression] Func<string> externalRecordID = null)
+        public IBodyWorkflowAction<DownloadUrlMessage> DownloadRecord(Expression<Func<int>> recordID = null, Expression<Func<string>> externalRecordID = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DownloadUrlMessage> __BuildDownloadRecord(WorkflowExpression<int> recordID = null, WorkflowExpression<string> externalRecordID = null)
-        {
-            WorkflowExpression.Validate(recordID, nameof(recordID), required: false);
-            WorkflowExpression.Validate(externalRecordID, nameof(externalRecordID), required: false);
+            var __workflow_recordID = recordID == null ? null : WorkflowExpression.Compile(recordID);
+            WorkflowExpression.Validate(__workflow_recordID, nameof(recordID), required: false);
+            var __workflow_externalRecordID = externalRecordID == null ? null : WorkflowExpression.Compile(externalRecordID);
+            WorkflowExpression.Validate(__workflow_externalRecordID, nameof(externalRecordID), required: false);
             return new DeferredBodyAction<DownloadUrlMessage>(() =>
             {
                 var apiCallPath = "/Record/v2/download";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (recordID != null)
-                    callPayload.Queries["recordID"] = ExpressionConverter.Convert(recordID);
-                if (externalRecordID != null)
-                    callPayload.Queries["externalRecordID"] = ExpressionConverter.Convert(externalRecordID);
+                if (__workflow_recordID != null)
+                    callPayload.Queries["recordID"] = ExpressionConverter.Convert(__workflow_recordID);
+                if (__workflow_externalRecordID != null)
+                    callPayload.Queries["externalRecordID"] = ExpressionConverter.Convert(__workflow_externalRecordID);
                 return new ApiConnectionAction<DownloadUrlMessage>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteTagFromRecord))]
-        public IWorkflowAction DeleteTagFromRecord([WorkflowExpression] Func<int> recordID = null, [WorkflowExpression] Func<string> externalRecordID = null, [WorkflowExpression] Func<string> tagName = null)
+        public IWorkflowAction DeleteTagFromRecord(Expression<Func<int>> recordID = null, Expression<Func<string>> externalRecordID = null, Expression<Func<string>> tagName = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDeleteTagFromRecord(WorkflowExpression<int> recordID = null, WorkflowExpression<string> externalRecordID = null, WorkflowExpression<string> tagName = null)
-        {
-            WorkflowExpression.Validate(recordID, nameof(recordID), required: false);
-            WorkflowExpression.Validate(externalRecordID, nameof(externalRecordID), required: false);
-            WorkflowExpression.Validate(tagName, nameof(tagName), required: false);
+            var __workflow_recordID = recordID == null ? null : WorkflowExpression.Compile(recordID);
+            WorkflowExpression.Validate(__workflow_recordID, nameof(recordID), required: false);
+            var __workflow_externalRecordID = externalRecordID == null ? null : WorkflowExpression.Compile(externalRecordID);
+            WorkflowExpression.Validate(__workflow_externalRecordID, nameof(externalRecordID), required: false);
+            var __workflow_tagName = tagName == null ? null : WorkflowExpression.Compile(tagName);
+            WorkflowExpression.Validate(__workflow_tagName, nameof(tagName), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/RecordTagValue/v2";
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (recordID != null)
-                    callPayload.Queries["recordID"] = ExpressionConverter.Convert(recordID);
-                if (externalRecordID != null)
-                    callPayload.Queries["externalRecordID"] = ExpressionConverter.Convert(externalRecordID);
-                if (tagName != null)
-                    callPayload.Queries["tagName"] = ExpressionConverter.Convert(tagName);
+                if (__workflow_recordID != null)
+                    callPayload.Queries["recordID"] = ExpressionConverter.Convert(__workflow_recordID);
+                if (__workflow_externalRecordID != null)
+                    callPayload.Queries["externalRecordID"] = ExpressionConverter.Convert(__workflow_externalRecordID);
+                if (__workflow_tagName != null)
+                    callPayload.Queries["tagName"] = ExpressionConverter.Convert(__workflow_tagName);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
-        [WorkflowExpressionFactory(nameof(__BuildAddTagToRecord))]
-        public IBodyWorkflowAction<RecordQueryResponseItem> AddTagToRecord([WorkflowExpression] Func<int> recordID = null, [WorkflowExpression] Func<string> externalRecordID = null, [WorkflowExpression] Func<string> tagName = null, [WorkflowExpression] Func<string> tagValue = null)
+        public IBodyWorkflowAction<RecordQueryResponseItem> AddTagToRecord(Expression<Func<int>> recordID = null, Expression<Func<string>> externalRecordID = null, Expression<Func<string>> tagName = null, Expression<Func<string>> tagValue = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<RecordQueryResponseItem> __BuildAddTagToRecord(WorkflowExpression<int> recordID = null, WorkflowExpression<string> externalRecordID = null, WorkflowExpression<string> tagName = null, WorkflowExpression<string> tagValue = null)
-        {
-            WorkflowExpression.Validate(recordID, nameof(recordID), required: false);
-            WorkflowExpression.Validate(externalRecordID, nameof(externalRecordID), required: false);
-            WorkflowExpression.Validate(tagName, nameof(tagName), required: false);
-            WorkflowExpression.Validate(tagValue, nameof(tagValue), required: false);
+            var __workflow_recordID = recordID == null ? null : WorkflowExpression.Compile(recordID);
+            WorkflowExpression.Validate(__workflow_recordID, nameof(recordID), required: false);
+            var __workflow_externalRecordID = externalRecordID == null ? null : WorkflowExpression.Compile(externalRecordID);
+            WorkflowExpression.Validate(__workflow_externalRecordID, nameof(externalRecordID), required: false);
+            var __workflow_tagName = tagName == null ? null : WorkflowExpression.Compile(tagName);
+            WorkflowExpression.Validate(__workflow_tagName, nameof(tagName), required: false);
+            var __workflow_tagValue = tagValue == null ? null : WorkflowExpression.Compile(tagValue);
+            WorkflowExpression.Validate(__workflow_tagValue, nameof(tagValue), required: false);
             return new DeferredBodyAction<RecordQueryResponseItem>(() =>
             {
                 var apiCallPath = "/RecordTagValue/v2";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (recordID != null)
-                    callPayload.Queries["recordID"] = ExpressionConverter.Convert(recordID);
-                if (externalRecordID != null)
-                    callPayload.Queries["externalRecordID"] = ExpressionConverter.Convert(externalRecordID);
-                if (tagName != null)
-                    callPayload.Queries["tagName"] = ExpressionConverter.Convert(tagName);
-                if (tagValue != null)
-                    callPayload.Queries["tagValue"] = ExpressionConverter.Convert(tagValue);
+                if (__workflow_recordID != null)
+                    callPayload.Queries["recordID"] = ExpressionConverter.Convert(__workflow_recordID);
+                if (__workflow_externalRecordID != null)
+                    callPayload.Queries["externalRecordID"] = ExpressionConverter.Convert(__workflow_externalRecordID);
+                if (__workflow_tagName != null)
+                    callPayload.Queries["tagName"] = ExpressionConverter.Convert(__workflow_tagName);
+                if (__workflow_tagValue != null)
+                    callPayload.Queries["tagValue"] = ExpressionConverter.Convert(__workflow_tagValue);
                 return new ApiConnectionAction<RecordQueryResponseItem>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateTagOnRecord))]
-        public IBodyWorkflowAction<RecordQueryResponseItem> UpdateTagOnRecord([WorkflowExpression] Func<int> recordID = null, [WorkflowExpression] Func<string> externalRecordID = null, [WorkflowExpression] Func<string> tagName = null, [WorkflowExpression] Func<string> tagValue = null)
+        public IBodyWorkflowAction<RecordQueryResponseItem> UpdateTagOnRecord(Expression<Func<int>> recordID = null, Expression<Func<string>> externalRecordID = null, Expression<Func<string>> tagName = null, Expression<Func<string>> tagValue = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<RecordQueryResponseItem> __BuildUpdateTagOnRecord(WorkflowExpression<int> recordID = null, WorkflowExpression<string> externalRecordID = null, WorkflowExpression<string> tagName = null, WorkflowExpression<string> tagValue = null)
-        {
-            WorkflowExpression.Validate(recordID, nameof(recordID), required: false);
-            WorkflowExpression.Validate(externalRecordID, nameof(externalRecordID), required: false);
-            WorkflowExpression.Validate(tagName, nameof(tagName), required: false);
-            WorkflowExpression.Validate(tagValue, nameof(tagValue), required: false);
+            var __workflow_recordID = recordID == null ? null : WorkflowExpression.Compile(recordID);
+            WorkflowExpression.Validate(__workflow_recordID, nameof(recordID), required: false);
+            var __workflow_externalRecordID = externalRecordID == null ? null : WorkflowExpression.Compile(externalRecordID);
+            WorkflowExpression.Validate(__workflow_externalRecordID, nameof(externalRecordID), required: false);
+            var __workflow_tagName = tagName == null ? null : WorkflowExpression.Compile(tagName);
+            WorkflowExpression.Validate(__workflow_tagName, nameof(tagName), required: false);
+            var __workflow_tagValue = tagValue == null ? null : WorkflowExpression.Compile(tagValue);
+            WorkflowExpression.Validate(__workflow_tagValue, nameof(tagValue), required: false);
             return new DeferredBodyAction<RecordQueryResponseItem>(() =>
             {
                 var apiCallPath = "/RecordTagValue/v2";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (recordID != null)
-                    callPayload.Queries["recordID"] = ExpressionConverter.Convert(recordID);
-                if (externalRecordID != null)
-                    callPayload.Queries["externalRecordID"] = ExpressionConverter.Convert(externalRecordID);
-                if (tagName != null)
-                    callPayload.Queries["tagName"] = ExpressionConverter.Convert(tagName);
-                if (tagValue != null)
-                    callPayload.Queries["tagValue"] = ExpressionConverter.Convert(tagValue);
+                if (__workflow_recordID != null)
+                    callPayload.Queries["recordID"] = ExpressionConverter.Convert(__workflow_recordID);
+                if (__workflow_externalRecordID != null)
+                    callPayload.Queries["externalRecordID"] = ExpressionConverter.Convert(__workflow_externalRecordID);
+                if (__workflow_tagName != null)
+                    callPayload.Queries["tagName"] = ExpressionConverter.Convert(__workflow_tagName);
+                if (__workflow_tagValue != null)
+                    callPayload.Queries["tagValue"] = ExpressionConverter.Convert(__workflow_tagValue);
                 return new ApiConnectionAction<RecordQueryResponseItem>(callPayload);
             });
         }

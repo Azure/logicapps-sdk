@@ -1,29 +1,24 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerappsnotification
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class PowerappsnotificationActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerappsnotification")]
-        [WorkflowExpressionFactory(nameof(__BuildSendPushNotification))]
-        public IWorkflowAction SendPushNotification([WorkflowExpression] Func<string[]> payloadrecipients = null, [WorkflowExpression] Func<string> payloadmessage = null, [WorkflowExpression] Func<bool> payloadopenApp = null)
+        public IWorkflowAction SendPushNotification(Expression<Func<string[]>> payloadrecipients = null, Expression<Func<string>> payloadmessage = null, Expression<Func<bool>> payloadopenApp = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildSendPushNotification(WorkflowExpression<string[]> payloadrecipients = null, WorkflowExpression<string> payloadmessage = null, WorkflowExpression<bool> payloadopenApp = null)
-        {
-            WorkflowExpression.Validate(payloadrecipients, nameof(payloadrecipients), required: false);
-            WorkflowExpression.Validate(payloadmessage, nameof(payloadmessage), required: false);
-            WorkflowExpression.Validate(payloadopenApp, nameof(payloadopenApp), required: false);
+            var __workflow_payloadrecipients = payloadrecipients == null ? null : WorkflowExpression.Compile(payloadrecipients);
+            WorkflowExpression.Validate(__workflow_payloadrecipients, nameof(payloadrecipients), required: false);
+            var __workflow_payloadmessage = payloadmessage == null ? null : WorkflowExpression.Compile(payloadmessage);
+            WorkflowExpression.Validate(__workflow_payloadmessage, nameof(payloadmessage), required: false);
+            var __workflow_payloadopenApp = payloadopenApp == null ? null : WorkflowExpression.Compile(payloadopenApp);
+            WorkflowExpression.Validate(__workflow_payloadopenApp, nameof(payloadopenApp), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/providers/Microsoft.PowerApps/scopes/connector/sendPushNotification";
@@ -31,21 +26,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerappsnotification
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var payload = new JObject();
                 var payloadpropCount = 0;
-                if (payloadrecipients != null)
+                if (__workflow_payloadrecipients != null)
                 {
-                    payload["recipients"] = ExpressionConverter.ConvertO(payloadrecipients);
+                    payload["recipients"] = ExpressionConverter.ConvertO(__workflow_payloadrecipients);
                     payloadpropCount++;
                 }
 
-                if (payloadmessage != null)
+                if (__workflow_payloadmessage != null)
                 {
-                    payload["message"] = ExpressionConverter.ConvertO(payloadmessage);
+                    payload["message"] = ExpressionConverter.ConvertO(__workflow_payloadmessage);
                     payloadpropCount++;
                 }
 
-                if (payloadopenApp != null)
+                if (__workflow_payloadopenApp != null)
                 {
-                    payload["openApp"] = ExpressionConverter.ConvertO(payloadopenApp);
+                    payload["openApp"] = ExpressionConverter.ConvertO(__workflow_payloadopenApp);
                     payloadpropCount++;
                 }
 

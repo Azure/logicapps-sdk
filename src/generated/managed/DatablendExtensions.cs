@@ -1,29 +1,24 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class DatablendActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "datablend")]
-        [WorkflowExpressionFactory(nameof(__BuildGroupsSearch))]
-        public IBodyWorkflowAction<GroupSearch> GroupsSearch([WorkflowExpression] Func<int> bodyoffset = null, [WorkflowExpression] Func<int> bodylimit = null, [WorkflowExpression] Func<bodyordersInputItem[]> bodyorders = null)
+        public IBodyWorkflowAction<GroupSearch> GroupsSearch(Expression<Func<int>> bodyoffset = null, Expression<Func<int>> bodylimit = null, Expression<Func<bodyordersInputItem[]>> bodyorders = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GroupSearch> __BuildGroupsSearch(WorkflowExpression<int> bodyoffset = null, WorkflowExpression<int> bodylimit = null, WorkflowExpression<bodyordersInputItem[]> bodyorders = null)
-        {
-            WorkflowExpression.Validate(bodyoffset, nameof(bodyoffset), required: false);
-            WorkflowExpression.Validate(bodylimit, nameof(bodylimit), required: false);
-            WorkflowExpression.Validate(bodyorders, nameof(bodyorders), required: false);
+            var __workflow_bodyoffset = bodyoffset == null ? null : WorkflowExpression.Compile(bodyoffset);
+            WorkflowExpression.Validate(__workflow_bodyoffset, nameof(bodyoffset), required: false);
+            var __workflow_bodylimit = bodylimit == null ? null : WorkflowExpression.Compile(bodylimit);
+            WorkflowExpression.Validate(__workflow_bodylimit, nameof(bodylimit), required: false);
+            var __workflow_bodyorders = bodyorders == null ? null : WorkflowExpression.Compile(bodyorders);
+            WorkflowExpression.Validate(__workflow_bodyorders, nameof(bodyorders), required: false);
             return new DeferredBodyAction<GroupSearch>(() =>
             {
                 var apiCallPath = "/groups/search";
@@ -31,11 +26,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyoffset != null)
+                if (__workflow_bodyoffset != null)
                 {
-                    if (bodyoffset != null)
+                    if (__workflow_bodyoffset != null)
                     {
-                        body["offset"] = ExpressionConverter.ConvertO(bodyoffset);
+                        body["offset"] = ExpressionConverter.ConvertO(__workflow_bodyoffset);
                         bodypropCount++;
                     }
 
@@ -47,11 +42,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
                     bodypropCount++;
                 }
 
-                if (bodylimit != null)
+                if (__workflow_bodylimit != null)
                 {
-                    if (bodylimit != null)
+                    if (__workflow_bodylimit != null)
                     {
-                        body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                        body["limit"] = ExpressionConverter.ConvertO(__workflow_bodylimit);
                         bodypropCount++;
                     }
 
@@ -63,9 +58,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
                     bodypropCount++;
                 }
 
-                if (bodyorders != null)
+                if (__workflow_bodyorders != null)
                 {
-                    body["orders"] = ExpressionConverter.ConvertO(bodyorders);
+                    body["orders"] = ExpressionConverter.ConvertO(__workflow_bodyorders);
                     bodypropCount++;
                 }
 
@@ -79,19 +74,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "datablend")]
-        [WorkflowExpressionFactory(nameof(__BuildGetQueryExecutionById))]
-        public IBodyWorkflowAction<QueryExecutionResults> GetQueryExecutionById([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<QueryExecutionResults> GetQueryExecutionById(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<QueryExecutionResults> __BuildGetQueryExecutionById(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<QueryExecutionResults>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/query-executions/{0}/results", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/query-executions/{0}/results", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<QueryExecutionResults>(callPayload);
@@ -99,21 +88,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "datablend")]
-        [WorkflowExpressionFactory(nameof(__BuildWorkflowExecutionsSearch))]
-        public IBodyWorkflowAction<WorkflowExecutionsSearch> WorkflowExecutionsSearch([WorkflowExpression] Func<int> bodylimit = null, [WorkflowExpression] Func<int> bodyoffset = null, [WorkflowExpression] Func<bodyordersInputItem[]> bodyorders = null, [WorkflowExpression] Func<string> bodypredicatepath = null, [WorkflowExpression] Func<string> bodypredicatevalue = null, [WorkflowExpression] Func<string> bodypredicatecomparator = null)
+        public IBodyWorkflowAction<WorkflowExecutionsSearch> WorkflowExecutionsSearch(Expression<Func<int>> bodylimit = null, Expression<Func<int>> bodyoffset = null, Expression<Func<bodyordersInputItem[]>> bodyorders = null, Expression<Func<string>> bodypredicatepath = null, Expression<Func<string>> bodypredicatevalue = null, Expression<Func<string>> bodypredicatecomparator = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<WorkflowExecutionsSearch> __BuildWorkflowExecutionsSearch(WorkflowExpression<int> bodylimit = null, WorkflowExpression<int> bodyoffset = null, WorkflowExpression<bodyordersInputItem[]> bodyorders = null, WorkflowExpression<string> bodypredicatepath = null, WorkflowExpression<string> bodypredicatevalue = null, WorkflowExpression<string> bodypredicatecomparator = null)
-        {
-            WorkflowExpression.Validate(bodylimit, nameof(bodylimit), required: false);
-            WorkflowExpression.Validate(bodyoffset, nameof(bodyoffset), required: false);
-            WorkflowExpression.Validate(bodyorders, nameof(bodyorders), required: false);
-            WorkflowExpression.Validate(bodypredicatepath, nameof(bodypredicatepath), required: false);
-            WorkflowExpression.Validate(bodypredicatevalue, nameof(bodypredicatevalue), required: false);
-            WorkflowExpression.Validate(bodypredicatecomparator, nameof(bodypredicatecomparator), required: false);
+            var __workflow_bodylimit = bodylimit == null ? null : WorkflowExpression.Compile(bodylimit);
+            WorkflowExpression.Validate(__workflow_bodylimit, nameof(bodylimit), required: false);
+            var __workflow_bodyoffset = bodyoffset == null ? null : WorkflowExpression.Compile(bodyoffset);
+            WorkflowExpression.Validate(__workflow_bodyoffset, nameof(bodyoffset), required: false);
+            var __workflow_bodyorders = bodyorders == null ? null : WorkflowExpression.Compile(bodyorders);
+            WorkflowExpression.Validate(__workflow_bodyorders, nameof(bodyorders), required: false);
+            var __workflow_bodypredicatepath = bodypredicatepath == null ? null : WorkflowExpression.Compile(bodypredicatepath);
+            WorkflowExpression.Validate(__workflow_bodypredicatepath, nameof(bodypredicatepath), required: false);
+            var __workflow_bodypredicatevalue = bodypredicatevalue == null ? null : WorkflowExpression.Compile(bodypredicatevalue);
+            WorkflowExpression.Validate(__workflow_bodypredicatevalue, nameof(bodypredicatevalue), required: false);
+            var __workflow_bodypredicatecomparator = bodypredicatecomparator == null ? null : WorkflowExpression.Compile(bodypredicatecomparator);
+            WorkflowExpression.Validate(__workflow_bodypredicatecomparator, nameof(bodypredicatecomparator), required: false);
             return new DeferredBodyAction<WorkflowExecutionsSearch>(() =>
             {
                 var apiCallPath = "/workflow-executions/search";
@@ -121,11 +109,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodylimit != null)
+                if (__workflow_bodylimit != null)
                 {
-                    if (bodylimit != null)
+                    if (__workflow_bodylimit != null)
                     {
-                        body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                        body["limit"] = ExpressionConverter.ConvertO(__workflow_bodylimit);
                         bodypropCount++;
                     }
 
@@ -137,11 +125,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
                     bodypropCount++;
                 }
 
-                if (bodyoffset != null)
+                if (__workflow_bodyoffset != null)
                 {
-                    if (bodyoffset != null)
+                    if (__workflow_bodyoffset != null)
                     {
-                        body["offset"] = ExpressionConverter.ConvertO(bodyoffset);
+                        body["offset"] = ExpressionConverter.ConvertO(__workflow_bodyoffset);
                         bodypropCount++;
                     }
 
@@ -153,19 +141,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
                     bodypropCount++;
                 }
 
-                if (bodyorders != null)
+                if (__workflow_bodyorders != null)
                 {
-                    body["orders"] = ExpressionConverter.ConvertO(bodyorders);
+                    body["orders"] = ExpressionConverter.ConvertO(__workflow_bodyorders);
                     bodypropCount++;
                 }
 
                 var predicateObject = new JObject();
                 var predicateObjectpropCount = 0;
-                if (bodypredicatepath != null)
+                if (__workflow_bodypredicatepath != null)
                 {
-                    if (bodypredicatepath != null)
+                    if (__workflow_bodypredicatepath != null)
                     {
-                        predicateObject["path"] = ExpressionConverter.ConvertO(bodypredicatepath);
+                        predicateObject["path"] = ExpressionConverter.ConvertO(__workflow_bodypredicatepath);
                         predicateObjectpropCount++;
                     }
 
@@ -177,17 +165,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
                     predicateObjectpropCount++;
                 }
 
-                if (bodypredicatevalue != null)
+                if (__workflow_bodypredicatevalue != null)
                 {
-                    predicateObject["value"] = ExpressionConverter.ConvertO(bodypredicatevalue);
+                    predicateObject["value"] = ExpressionConverter.ConvertO(__workflow_bodypredicatevalue);
                     predicateObjectpropCount++;
                 }
 
-                if (bodypredicatecomparator != null)
+                if (__workflow_bodypredicatecomparator != null)
                 {
-                    if (bodypredicatecomparator != null)
+                    if (__workflow_bodypredicatecomparator != null)
                     {
-                        predicateObject["comparator"] = ExpressionConverter.ConvertO(bodypredicatecomparator);
+                        predicateObject["comparator"] = ExpressionConverter.ConvertO(__workflow_bodypredicatecomparator);
                         predicateObjectpropCount++;
                     }
 
@@ -215,16 +203,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "datablend")]
-        [WorkflowExpressionFactory(nameof(__BuildWorkflowExecutions))]
-        public IBodyWorkflowAction<WorkflowExecutions> WorkflowExecutions([WorkflowExpression] Func<string> bodyparentid = null)
+        public IBodyWorkflowAction<WorkflowExecutions> WorkflowExecutions(Expression<Func<string>> bodyparentid = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<WorkflowExecutions> __BuildWorkflowExecutions(WorkflowExpression<string> bodyparentid = null)
-        {
-            WorkflowExpression.Validate(bodyparentid, nameof(bodyparentid), required: false);
+            var __workflow_bodyparentid = bodyparentid == null ? null : WorkflowExpression.Compile(bodyparentid);
+            WorkflowExpression.Validate(__workflow_bodyparentid, nameof(bodyparentid), required: false);
             return new DeferredBodyAction<WorkflowExecutions>(() =>
             {
                 var apiCallPath = "/workflow-executions";
@@ -234,9 +216,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
                 var bodypropCount = 0;
                 var parentObject = new JObject();
                 var parentObjectpropCount = 0;
-                if (bodyparentid != null)
+                if (__workflow_bodyparentid != null)
                 {
-                    parentObject["id"] = ExpressionConverter.ConvertO(bodyparentid);
+                    parentObject["id"] = ExpressionConverter.ConvertO(__workflow_bodyparentid);
                     parentObjectpropCount++;
                 }
 
@@ -256,20 +238,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "datablend")]
-        [WorkflowExpressionFactory(nameof(__BuildWorkflowsSearch))]
-        public IBodyWorkflowAction<WorkflowsSearch> WorkflowsSearch([WorkflowExpression] Func<int> bodyoffset = null, [WorkflowExpression] Func<bodyordersInputItem[]> bodyorders = null, [WorkflowExpression] Func<string> bodypredicatepath = null, [WorkflowExpression] Func<string> bodypredicatevalue = null, [WorkflowExpression] Func<string> bodypredicatecomparator = null)
+        public IBodyWorkflowAction<WorkflowsSearch> WorkflowsSearch(Expression<Func<int>> bodyoffset = null, Expression<Func<bodyordersInputItem[]>> bodyorders = null, Expression<Func<string>> bodypredicatepath = null, Expression<Func<string>> bodypredicatevalue = null, Expression<Func<string>> bodypredicatecomparator = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<WorkflowsSearch> __BuildWorkflowsSearch(WorkflowExpression<int> bodyoffset = null, WorkflowExpression<bodyordersInputItem[]> bodyorders = null, WorkflowExpression<string> bodypredicatepath = null, WorkflowExpression<string> bodypredicatevalue = null, WorkflowExpression<string> bodypredicatecomparator = null)
-        {
-            WorkflowExpression.Validate(bodyoffset, nameof(bodyoffset), required: false);
-            WorkflowExpression.Validate(bodyorders, nameof(bodyorders), required: false);
-            WorkflowExpression.Validate(bodypredicatepath, nameof(bodypredicatepath), required: false);
-            WorkflowExpression.Validate(bodypredicatevalue, nameof(bodypredicatevalue), required: false);
-            WorkflowExpression.Validate(bodypredicatecomparator, nameof(bodypredicatecomparator), required: false);
+            var __workflow_bodyoffset = bodyoffset == null ? null : WorkflowExpression.Compile(bodyoffset);
+            WorkflowExpression.Validate(__workflow_bodyoffset, nameof(bodyoffset), required: false);
+            var __workflow_bodyorders = bodyorders == null ? null : WorkflowExpression.Compile(bodyorders);
+            WorkflowExpression.Validate(__workflow_bodyorders, nameof(bodyorders), required: false);
+            var __workflow_bodypredicatepath = bodypredicatepath == null ? null : WorkflowExpression.Compile(bodypredicatepath);
+            WorkflowExpression.Validate(__workflow_bodypredicatepath, nameof(bodypredicatepath), required: false);
+            var __workflow_bodypredicatevalue = bodypredicatevalue == null ? null : WorkflowExpression.Compile(bodypredicatevalue);
+            WorkflowExpression.Validate(__workflow_bodypredicatevalue, nameof(bodypredicatevalue), required: false);
+            var __workflow_bodypredicatecomparator = bodypredicatecomparator == null ? null : WorkflowExpression.Compile(bodypredicatecomparator);
+            WorkflowExpression.Validate(__workflow_bodypredicatecomparator, nameof(bodypredicatecomparator), required: false);
             return new DeferredBodyAction<WorkflowsSearch>(() =>
             {
                 var apiCallPath = "/workflows/search";
@@ -277,11 +257,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyoffset != null)
+                if (__workflow_bodyoffset != null)
                 {
-                    if (bodyoffset != null)
+                    if (__workflow_bodyoffset != null)
                     {
-                        body["offset"] = ExpressionConverter.ConvertO(bodyoffset);
+                        body["offset"] = ExpressionConverter.ConvertO(__workflow_bodyoffset);
                         bodypropCount++;
                     }
 
@@ -293,19 +273,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
                     bodypropCount++;
                 }
 
-                if (bodyorders != null)
+                if (__workflow_bodyorders != null)
                 {
-                    body["orders"] = ExpressionConverter.ConvertO(bodyorders);
+                    body["orders"] = ExpressionConverter.ConvertO(__workflow_bodyorders);
                     bodypropCount++;
                 }
 
                 var predicateObject = new JObject();
                 var predicateObjectpropCount = 0;
-                if (bodypredicatepath != null)
+                if (__workflow_bodypredicatepath != null)
                 {
-                    if (bodypredicatepath != null)
+                    if (__workflow_bodypredicatepath != null)
                     {
-                        predicateObject["path"] = ExpressionConverter.ConvertO(bodypredicatepath);
+                        predicateObject["path"] = ExpressionConverter.ConvertO(__workflow_bodypredicatepath);
                         predicateObjectpropCount++;
                     }
 
@@ -317,17 +297,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
                     predicateObjectpropCount++;
                 }
 
-                if (bodypredicatevalue != null)
+                if (__workflow_bodypredicatevalue != null)
                 {
-                    predicateObject["value"] = ExpressionConverter.ConvertO(bodypredicatevalue);
+                    predicateObject["value"] = ExpressionConverter.ConvertO(__workflow_bodypredicatevalue);
                     predicateObjectpropCount++;
                 }
 
-                if (bodypredicatecomparator != null)
+                if (__workflow_bodypredicatecomparator != null)
                 {
-                    if (bodypredicatecomparator != null)
+                    if (__workflow_bodypredicatecomparator != null)
                     {
-                        predicateObject["comparator"] = ExpressionConverter.ConvertO(bodypredicatecomparator);
+                        predicateObject["comparator"] = ExpressionConverter.ConvertO(__workflow_bodypredicatecomparator);
                         predicateObjectpropCount++;
                     }
 

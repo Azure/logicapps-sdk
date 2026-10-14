@@ -1,276 +1,269 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class DailymedipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
-        [WorkflowExpressionFactory(nameof(__BuildApplicationNumber))]
-        public IBodyWorkflowAction<ApplicationNumberResponse> ApplicationNumber([WorkflowExpression] Func<string> applicationNumber = null, [WorkflowExpression] Func<string> marketingCategoryCode = null, [WorkflowExpression] Func<string> setid = null, [WorkflowExpression] Func<int> pagesize = null, [WorkflowExpression] Func<int> page = null)
+        public IBodyWorkflowAction<ApplicationNumberResponse> ApplicationNumber(Expression<Func<string>> applicationNumber = null, Expression<Func<string>> marketingCategoryCode = null, Expression<Func<string>> setid = null, Expression<Func<int>> pagesize = null, Expression<Func<int>> page = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ApplicationNumberResponse> __BuildApplicationNumber(WorkflowExpression<string> applicationNumber = null, WorkflowExpression<string> marketingCategoryCode = null, WorkflowExpression<string> setid = null, WorkflowExpression<int> pagesize = null, WorkflowExpression<int> page = null)
-        {
-            WorkflowExpression.Validate(applicationNumber, nameof(applicationNumber), required: false);
-            WorkflowExpression.Validate(marketingCategoryCode, nameof(marketingCategoryCode), required: false);
-            WorkflowExpression.Validate(setid, nameof(setid), required: false);
-            WorkflowExpression.Validate(pagesize, nameof(pagesize), required: false);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
+            var __workflow_applicationNumber = applicationNumber == null ? null : WorkflowExpression.Compile(applicationNumber);
+            WorkflowExpression.Validate(__workflow_applicationNumber, nameof(applicationNumber), required: false);
+            var __workflow_marketingCategoryCode = marketingCategoryCode == null ? null : WorkflowExpression.Compile(marketingCategoryCode);
+            WorkflowExpression.Validate(__workflow_marketingCategoryCode, nameof(marketingCategoryCode), required: false);
+            var __workflow_setid = setid == null ? null : WorkflowExpression.Compile(setid);
+            WorkflowExpression.Validate(__workflow_setid, nameof(setid), required: false);
+            var __workflow_pagesize = pagesize == null ? null : WorkflowExpression.Compile(pagesize);
+            WorkflowExpression.Validate(__workflow_pagesize, nameof(pagesize), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
             return new DeferredBodyAction<ApplicationNumberResponse>(() =>
             {
                 var apiCallPath = "/v2/applicationnumbers.json";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (applicationNumber != null)
-                    callPayload.Queries["application_number"] = ExpressionConverter.Convert(applicationNumber);
-                if (marketingCategoryCode != null)
-                    callPayload.Queries["marketing_category_code"] = ExpressionConverter.Convert(marketingCategoryCode);
-                if (setid != null)
-                    callPayload.Queries["setid"] = ExpressionConverter.Convert(setid);
-                if (pagesize != null)
-                    callPayload.Queries["pagesize"] = ExpressionConverter.Convert(pagesize);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (__workflow_applicationNumber != null)
+                    callPayload.Queries["application_number"] = ExpressionConverter.Convert(__workflow_applicationNumber);
+                if (__workflow_marketingCategoryCode != null)
+                    callPayload.Queries["marketing_category_code"] = ExpressionConverter.Convert(__workflow_marketingCategoryCode);
+                if (__workflow_setid != null)
+                    callPayload.Queries["setid"] = ExpressionConverter.Convert(__workflow_setid);
+                if (__workflow_pagesize != null)
+                    callPayload.Queries["pagesize"] = ExpressionConverter.Convert(__workflow_pagesize);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 return new ApiConnectionAction<ApplicationNumberResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
-        [WorkflowExpressionFactory(nameof(__BuildDrugClass))]
-        public IBodyWorkflowAction<DrugClassResponse> DrugClass([WorkflowExpression] Func<string> drugClassCode = null, [WorkflowExpression] Func<string> drugClassCodingSystem = null, [WorkflowExpression] Func<classCodeTypeInput> classCodeType = null, [WorkflowExpression] Func<string> className = null, [WorkflowExpression] Func<string> uniiCode = null, [WorkflowExpression] Func<int> pagesize = null, [WorkflowExpression] Func<int> page = null)
+        public IBodyWorkflowAction<DrugClassResponse> DrugClass(Expression<Func<string>> drugClassCode = null, Expression<Func<string>> drugClassCodingSystem = null, Expression<Func<classCodeTypeInput>> classCodeType = null, Expression<Func<string>> className = null, Expression<Func<string>> uniiCode = null, Expression<Func<int>> pagesize = null, Expression<Func<int>> page = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DrugClassResponse> __BuildDrugClass(WorkflowExpression<string> drugClassCode = null, WorkflowExpression<string> drugClassCodingSystem = null, WorkflowExpression<classCodeTypeInput> classCodeType = null, WorkflowExpression<string> className = null, WorkflowExpression<string> uniiCode = null, WorkflowExpression<int> pagesize = null, WorkflowExpression<int> page = null)
-        {
-            WorkflowExpression.Validate(drugClassCode, nameof(drugClassCode), required: false);
-            WorkflowExpression.Validate(drugClassCodingSystem, nameof(drugClassCodingSystem), required: false);
-            WorkflowExpression.Validate(classCodeType, nameof(classCodeType), required: false);
-            WorkflowExpression.Validate(className, nameof(className), required: false);
-            WorkflowExpression.Validate(uniiCode, nameof(uniiCode), required: false);
-            WorkflowExpression.Validate(pagesize, nameof(pagesize), required: false);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
+            var __workflow_drugClassCode = drugClassCode == null ? null : WorkflowExpression.Compile(drugClassCode);
+            WorkflowExpression.Validate(__workflow_drugClassCode, nameof(drugClassCode), required: false);
+            var __workflow_drugClassCodingSystem = drugClassCodingSystem == null ? null : WorkflowExpression.Compile(drugClassCodingSystem);
+            WorkflowExpression.Validate(__workflow_drugClassCodingSystem, nameof(drugClassCodingSystem), required: false);
+            var __workflow_classCodeType = classCodeType == null ? null : WorkflowExpression.Compile(classCodeType);
+            WorkflowExpression.Validate(__workflow_classCodeType, nameof(classCodeType), required: false);
+            var __workflow_className = className == null ? null : WorkflowExpression.Compile(className);
+            WorkflowExpression.Validate(__workflow_className, nameof(className), required: false);
+            var __workflow_uniiCode = uniiCode == null ? null : WorkflowExpression.Compile(uniiCode);
+            WorkflowExpression.Validate(__workflow_uniiCode, nameof(uniiCode), required: false);
+            var __workflow_pagesize = pagesize == null ? null : WorkflowExpression.Compile(pagesize);
+            WorkflowExpression.Validate(__workflow_pagesize, nameof(pagesize), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
             return new DeferredBodyAction<DrugClassResponse>(() =>
             {
                 var apiCallPath = "/v2/drugclasses.json";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (drugClassCode != null)
-                    callPayload.Queries["drug_class_code"] = ExpressionConverter.Convert(drugClassCode);
-                if (drugClassCodingSystem != null)
-                    callPayload.Queries["drug_class_coding_system"] = ExpressionConverter.Convert(drugClassCodingSystem);
+                if (__workflow_drugClassCode != null)
+                    callPayload.Queries["drug_class_code"] = ExpressionConverter.Convert(__workflow_drugClassCode);
+                if (__workflow_drugClassCodingSystem != null)
+                    callPayload.Queries["drug_class_coding_system"] = ExpressionConverter.Convert(__workflow_drugClassCodingSystem);
                 callPayload.Queries["class_code_type"] = Convert.ToString("all");
-                if (classCodeType != null)
-                    callPayload.Queries["class_code_type"] = ExpressionConverter.Convert(classCodeType);
-                if (className != null)
-                    callPayload.Queries["class_name"] = ExpressionConverter.Convert(className);
-                if (uniiCode != null)
-                    callPayload.Queries["unii_code"] = ExpressionConverter.Convert(uniiCode);
-                if (pagesize != null)
-                    callPayload.Queries["pagesize"] = ExpressionConverter.Convert(pagesize);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (__workflow_classCodeType != null)
+                    callPayload.Queries["class_code_type"] = ExpressionConverter.Convert(__workflow_classCodeType);
+                if (__workflow_className != null)
+                    callPayload.Queries["class_name"] = ExpressionConverter.Convert(__workflow_className);
+                if (__workflow_uniiCode != null)
+                    callPayload.Queries["unii_code"] = ExpressionConverter.Convert(__workflow_uniiCode);
+                if (__workflow_pagesize != null)
+                    callPayload.Queries["pagesize"] = ExpressionConverter.Convert(__workflow_pagesize);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 return new ApiConnectionAction<DrugClassResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
-        [WorkflowExpressionFactory(nameof(__BuildDrugName))]
-        public IBodyWorkflowAction<DrugNameResponse> DrugName([WorkflowExpression] Func<string> drugName = null, [WorkflowExpression] Func<nameTypeInput> nameType = null, [WorkflowExpression] Func<string> manufacturer = null, [WorkflowExpression] Func<int> pagesize = null, [WorkflowExpression] Func<int> page = null)
+        public IBodyWorkflowAction<DrugNameResponse> DrugName(Expression<Func<string>> drugName = null, Expression<Func<nameTypeInput>> nameType = null, Expression<Func<string>> manufacturer = null, Expression<Func<int>> pagesize = null, Expression<Func<int>> page = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DrugNameResponse> __BuildDrugName(WorkflowExpression<string> drugName = null, WorkflowExpression<nameTypeInput> nameType = null, WorkflowExpression<string> manufacturer = null, WorkflowExpression<int> pagesize = null, WorkflowExpression<int> page = null)
-        {
-            WorkflowExpression.Validate(drugName, nameof(drugName), required: false);
-            WorkflowExpression.Validate(nameType, nameof(nameType), required: false);
-            WorkflowExpression.Validate(manufacturer, nameof(manufacturer), required: false);
-            WorkflowExpression.Validate(pagesize, nameof(pagesize), required: false);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
+            var __workflow_drugName = drugName == null ? null : WorkflowExpression.Compile(drugName);
+            WorkflowExpression.Validate(__workflow_drugName, nameof(drugName), required: false);
+            var __workflow_nameType = nameType == null ? null : WorkflowExpression.Compile(nameType);
+            WorkflowExpression.Validate(__workflow_nameType, nameof(nameType), required: false);
+            var __workflow_manufacturer = manufacturer == null ? null : WorkflowExpression.Compile(manufacturer);
+            WorkflowExpression.Validate(__workflow_manufacturer, nameof(manufacturer), required: false);
+            var __workflow_pagesize = pagesize == null ? null : WorkflowExpression.Compile(pagesize);
+            WorkflowExpression.Validate(__workflow_pagesize, nameof(pagesize), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
             return new DeferredBodyAction<DrugNameResponse>(() =>
             {
                 var apiCallPath = "/v2/drugnames.json";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (drugName != null)
-                    callPayload.Queries["drug_name"] = ExpressionConverter.Convert(drugName);
+                if (__workflow_drugName != null)
+                    callPayload.Queries["drug_name"] = ExpressionConverter.Convert(__workflow_drugName);
                 callPayload.Queries["name_type"] = Convert.ToString("both");
-                if (nameType != null)
-                    callPayload.Queries["name_type"] = ExpressionConverter.Convert(nameType);
-                if (manufacturer != null)
-                    callPayload.Queries["manufacturer"] = ExpressionConverter.Convert(manufacturer);
-                if (pagesize != null)
-                    callPayload.Queries["pagesize"] = ExpressionConverter.Convert(pagesize);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (__workflow_nameType != null)
+                    callPayload.Queries["name_type"] = ExpressionConverter.Convert(__workflow_nameType);
+                if (__workflow_manufacturer != null)
+                    callPayload.Queries["manufacturer"] = ExpressionConverter.Convert(__workflow_manufacturer);
+                if (__workflow_pagesize != null)
+                    callPayload.Queries["pagesize"] = ExpressionConverter.Convert(__workflow_pagesize);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 return new ApiConnectionAction<DrugNameResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
-        [WorkflowExpressionFactory(nameof(__BuildNDC))]
-        public IBodyWorkflowAction<NDCResponse> NDC([WorkflowExpression] Func<int> pagesize = null, [WorkflowExpression] Func<int> page = null)
+        public IBodyWorkflowAction<NDCResponse> NDC(Expression<Func<int>> pagesize = null, Expression<Func<int>> page = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<NDCResponse> __BuildNDC(WorkflowExpression<int> pagesize = null, WorkflowExpression<int> page = null)
-        {
-            WorkflowExpression.Validate(pagesize, nameof(pagesize), required: false);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
+            var __workflow_pagesize = pagesize == null ? null : WorkflowExpression.Compile(pagesize);
+            WorkflowExpression.Validate(__workflow_pagesize, nameof(pagesize), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
             return new DeferredBodyAction<NDCResponse>(() =>
             {
                 var apiCallPath = "/v2/ndcs.json";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (pagesize != null)
-                    callPayload.Queries["pagesize"] = ExpressionConverter.Convert(pagesize);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (__workflow_pagesize != null)
+                    callPayload.Queries["pagesize"] = ExpressionConverter.Convert(__workflow_pagesize);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 return new ApiConnectionAction<NDCResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
-        [WorkflowExpressionFactory(nameof(__BuildRxCUI))]
-        public IBodyWorkflowAction<RxCUIResponse> RxCUI([WorkflowExpression] Func<rxttyInput> rxtty = null, [WorkflowExpression] Func<string> rxstring = null, [WorkflowExpression] Func<int> rxcui = null, [WorkflowExpression] Func<int> pagesize = null, [WorkflowExpression] Func<int> page = null)
+        public IBodyWorkflowAction<RxCUIResponse> RxCUI(Expression<Func<rxttyInput>> rxtty = null, Expression<Func<string>> rxstring = null, Expression<Func<int>> rxcui = null, Expression<Func<int>> pagesize = null, Expression<Func<int>> page = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<RxCUIResponse> __BuildRxCUI(WorkflowExpression<rxttyInput> rxtty = null, WorkflowExpression<string> rxstring = null, WorkflowExpression<int> rxcui = null, WorkflowExpression<int> pagesize = null, WorkflowExpression<int> page = null)
-        {
-            WorkflowExpression.Validate(rxtty, nameof(rxtty), required: false);
-            WorkflowExpression.Validate(rxstring, nameof(rxstring), required: false);
-            WorkflowExpression.Validate(rxcui, nameof(rxcui), required: false);
-            WorkflowExpression.Validate(pagesize, nameof(pagesize), required: false);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
+            var __workflow_rxtty = rxtty == null ? null : WorkflowExpression.Compile(rxtty);
+            WorkflowExpression.Validate(__workflow_rxtty, nameof(rxtty), required: false);
+            var __workflow_rxstring = rxstring == null ? null : WorkflowExpression.Compile(rxstring);
+            WorkflowExpression.Validate(__workflow_rxstring, nameof(rxstring), required: false);
+            var __workflow_rxcui = rxcui == null ? null : WorkflowExpression.Compile(rxcui);
+            WorkflowExpression.Validate(__workflow_rxcui, nameof(rxcui), required: false);
+            var __workflow_pagesize = pagesize == null ? null : WorkflowExpression.Compile(pagesize);
+            WorkflowExpression.Validate(__workflow_pagesize, nameof(pagesize), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
             return new DeferredBodyAction<RxCUIResponse>(() =>
             {
                 var apiCallPath = "/v2/rxcuis.json";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["rxtty"] = Convert.ToString("PSN");
-                if (rxtty != null)
-                    callPayload.Queries["rxtty"] = ExpressionConverter.Convert(rxtty);
-                if (rxstring != null)
-                    callPayload.Queries["rxstring"] = ExpressionConverter.Convert(rxstring);
-                if (rxcui != null)
-                    callPayload.Queries["rxcui"] = ExpressionConverter.Convert(rxcui);
-                if (pagesize != null)
-                    callPayload.Queries["pagesize"] = ExpressionConverter.Convert(pagesize);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (__workflow_rxtty != null)
+                    callPayload.Queries["rxtty"] = ExpressionConverter.Convert(__workflow_rxtty);
+                if (__workflow_rxstring != null)
+                    callPayload.Queries["rxstring"] = ExpressionConverter.Convert(__workflow_rxstring);
+                if (__workflow_rxcui != null)
+                    callPayload.Queries["rxcui"] = ExpressionConverter.Convert(__workflow_rxcui);
+                if (__workflow_pagesize != null)
+                    callPayload.Queries["pagesize"] = ExpressionConverter.Convert(__workflow_pagesize);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 return new ApiConnectionAction<RxCUIResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
-        [WorkflowExpressionFactory(nameof(__BuildSPLAll))]
-        public IBodyWorkflowAction<SPLAllResponse> SPLAll([WorkflowExpression] Func<string> applicationNumber = null, [WorkflowExpression] Func<bool> boxedWarning = null, [WorkflowExpression] Func<deaScheduleCodeInput> deaScheduleCode = null, [WorkflowExpression] Func<string> doctype = null, [WorkflowExpression] Func<string> drugClassCode = null, [WorkflowExpression] Func<string> drugClassCodingSystem = null, [WorkflowExpression] Func<string> drugName = null, [WorkflowExpression] Func<nameTypeInput> nameType = null, [WorkflowExpression] Func<string> labeler = null, [WorkflowExpression] Func<string> manufacturer = null, [WorkflowExpression] Func<string> marketingCategoryCode = null, [WorkflowExpression] Func<string> ndc = null, [WorkflowExpression] Func<string> publishedDate = null, [WorkflowExpression] Func<publishedDateComparisonInput> publishedDateComparison = null, [WorkflowExpression] Func<string> rxcui = null, [WorkflowExpression] Func<string> uniiCode = null, [WorkflowExpression] Func<int> pagesize = null, [WorkflowExpression] Func<int> page = null)
+        public IBodyWorkflowAction<SPLAllResponse> SPLAll(Expression<Func<string>> applicationNumber = null, Expression<Func<bool>> boxedWarning = null, Expression<Func<deaScheduleCodeInput>> deaScheduleCode = null, Expression<Func<string>> doctype = null, Expression<Func<string>> drugClassCode = null, Expression<Func<string>> drugClassCodingSystem = null, Expression<Func<string>> drugName = null, Expression<Func<nameTypeInput>> nameType = null, Expression<Func<string>> labeler = null, Expression<Func<string>> manufacturer = null, Expression<Func<string>> marketingCategoryCode = null, Expression<Func<string>> ndc = null, Expression<Func<string>> publishedDate = null, Expression<Func<publishedDateComparisonInput>> publishedDateComparison = null, Expression<Func<string>> rxcui = null, Expression<Func<string>> uniiCode = null, Expression<Func<int>> pagesize = null, Expression<Func<int>> page = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SPLAllResponse> __BuildSPLAll(WorkflowExpression<string> applicationNumber = null, WorkflowExpression<bool> boxedWarning = null, WorkflowExpression<deaScheduleCodeInput> deaScheduleCode = null, WorkflowExpression<string> doctype = null, WorkflowExpression<string> drugClassCode = null, WorkflowExpression<string> drugClassCodingSystem = null, WorkflowExpression<string> drugName = null, WorkflowExpression<nameTypeInput> nameType = null, WorkflowExpression<string> labeler = null, WorkflowExpression<string> manufacturer = null, WorkflowExpression<string> marketingCategoryCode = null, WorkflowExpression<string> ndc = null, WorkflowExpression<string> publishedDate = null, WorkflowExpression<publishedDateComparisonInput> publishedDateComparison = null, WorkflowExpression<string> rxcui = null, WorkflowExpression<string> uniiCode = null, WorkflowExpression<int> pagesize = null, WorkflowExpression<int> page = null)
-        {
-            WorkflowExpression.Validate(applicationNumber, nameof(applicationNumber), required: false);
-            WorkflowExpression.Validate(boxedWarning, nameof(boxedWarning), required: false);
-            WorkflowExpression.Validate(deaScheduleCode, nameof(deaScheduleCode), required: false);
-            WorkflowExpression.Validate(doctype, nameof(doctype), required: false);
-            WorkflowExpression.Validate(drugClassCode, nameof(drugClassCode), required: false);
-            WorkflowExpression.Validate(drugClassCodingSystem, nameof(drugClassCodingSystem), required: false);
-            WorkflowExpression.Validate(drugName, nameof(drugName), required: false);
-            WorkflowExpression.Validate(nameType, nameof(nameType), required: false);
-            WorkflowExpression.Validate(labeler, nameof(labeler), required: false);
-            WorkflowExpression.Validate(manufacturer, nameof(manufacturer), required: false);
-            WorkflowExpression.Validate(marketingCategoryCode, nameof(marketingCategoryCode), required: false);
-            WorkflowExpression.Validate(ndc, nameof(ndc), required: false);
-            WorkflowExpression.Validate(publishedDate, nameof(publishedDate), required: false);
-            WorkflowExpression.Validate(publishedDateComparison, nameof(publishedDateComparison), required: false);
-            WorkflowExpression.Validate(rxcui, nameof(rxcui), required: false);
-            WorkflowExpression.Validate(uniiCode, nameof(uniiCode), required: false);
-            WorkflowExpression.Validate(pagesize, nameof(pagesize), required: false);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
+            var __workflow_applicationNumber = applicationNumber == null ? null : WorkflowExpression.Compile(applicationNumber);
+            WorkflowExpression.Validate(__workflow_applicationNumber, nameof(applicationNumber), required: false);
+            var __workflow_boxedWarning = boxedWarning == null ? null : WorkflowExpression.Compile(boxedWarning);
+            WorkflowExpression.Validate(__workflow_boxedWarning, nameof(boxedWarning), required: false);
+            var __workflow_deaScheduleCode = deaScheduleCode == null ? null : WorkflowExpression.Compile(deaScheduleCode);
+            WorkflowExpression.Validate(__workflow_deaScheduleCode, nameof(deaScheduleCode), required: false);
+            var __workflow_doctype = doctype == null ? null : WorkflowExpression.Compile(doctype);
+            WorkflowExpression.Validate(__workflow_doctype, nameof(doctype), required: false);
+            var __workflow_drugClassCode = drugClassCode == null ? null : WorkflowExpression.Compile(drugClassCode);
+            WorkflowExpression.Validate(__workflow_drugClassCode, nameof(drugClassCode), required: false);
+            var __workflow_drugClassCodingSystem = drugClassCodingSystem == null ? null : WorkflowExpression.Compile(drugClassCodingSystem);
+            WorkflowExpression.Validate(__workflow_drugClassCodingSystem, nameof(drugClassCodingSystem), required: false);
+            var __workflow_drugName = drugName == null ? null : WorkflowExpression.Compile(drugName);
+            WorkflowExpression.Validate(__workflow_drugName, nameof(drugName), required: false);
+            var __workflow_nameType = nameType == null ? null : WorkflowExpression.Compile(nameType);
+            WorkflowExpression.Validate(__workflow_nameType, nameof(nameType), required: false);
+            var __workflow_labeler = labeler == null ? null : WorkflowExpression.Compile(labeler);
+            WorkflowExpression.Validate(__workflow_labeler, nameof(labeler), required: false);
+            var __workflow_manufacturer = manufacturer == null ? null : WorkflowExpression.Compile(manufacturer);
+            WorkflowExpression.Validate(__workflow_manufacturer, nameof(manufacturer), required: false);
+            var __workflow_marketingCategoryCode = marketingCategoryCode == null ? null : WorkflowExpression.Compile(marketingCategoryCode);
+            WorkflowExpression.Validate(__workflow_marketingCategoryCode, nameof(marketingCategoryCode), required: false);
+            var __workflow_ndc = ndc == null ? null : WorkflowExpression.Compile(ndc);
+            WorkflowExpression.Validate(__workflow_ndc, nameof(ndc), required: false);
+            var __workflow_publishedDate = publishedDate == null ? null : WorkflowExpression.Compile(publishedDate);
+            WorkflowExpression.Validate(__workflow_publishedDate, nameof(publishedDate), required: false);
+            var __workflow_publishedDateComparison = publishedDateComparison == null ? null : WorkflowExpression.Compile(publishedDateComparison);
+            WorkflowExpression.Validate(__workflow_publishedDateComparison, nameof(publishedDateComparison), required: false);
+            var __workflow_rxcui = rxcui == null ? null : WorkflowExpression.Compile(rxcui);
+            WorkflowExpression.Validate(__workflow_rxcui, nameof(rxcui), required: false);
+            var __workflow_uniiCode = uniiCode == null ? null : WorkflowExpression.Compile(uniiCode);
+            WorkflowExpression.Validate(__workflow_uniiCode, nameof(uniiCode), required: false);
+            var __workflow_pagesize = pagesize == null ? null : WorkflowExpression.Compile(pagesize);
+            WorkflowExpression.Validate(__workflow_pagesize, nameof(pagesize), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
             return new DeferredBodyAction<SPLAllResponse>(() =>
             {
                 var apiCallPath = "/v2/spls.json";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (applicationNumber != null)
-                    callPayload.Queries["application_number"] = ExpressionConverter.Convert(applicationNumber);
-                if (boxedWarning != null)
-                    callPayload.Queries["boxed_warning"] = ExpressionConverter.Convert(boxedWarning);
+                if (__workflow_applicationNumber != null)
+                    callPayload.Queries["application_number"] = ExpressionConverter.Convert(__workflow_applicationNumber);
+                if (__workflow_boxedWarning != null)
+                    callPayload.Queries["boxed_warning"] = ExpressionConverter.Convert(__workflow_boxedWarning);
                 callPayload.Queries["dea_schedule_code"] = Convert.ToString("none");
-                if (deaScheduleCode != null)
-                    callPayload.Queries["dea_schedule_code"] = ExpressionConverter.Convert(deaScheduleCode);
-                if (doctype != null)
-                    callPayload.Queries["doctype"] = ExpressionConverter.Convert(doctype);
-                if (drugClassCode != null)
-                    callPayload.Queries["drug_class_code"] = ExpressionConverter.Convert(drugClassCode);
-                if (drugClassCodingSystem != null)
-                    callPayload.Queries["drug_class_coding_system"] = ExpressionConverter.Convert(drugClassCodingSystem);
-                if (drugName != null)
-                    callPayload.Queries["drug_name"] = ExpressionConverter.Convert(drugName);
+                if (__workflow_deaScheduleCode != null)
+                    callPayload.Queries["dea_schedule_code"] = ExpressionConverter.Convert(__workflow_deaScheduleCode);
+                if (__workflow_doctype != null)
+                    callPayload.Queries["doctype"] = ExpressionConverter.Convert(__workflow_doctype);
+                if (__workflow_drugClassCode != null)
+                    callPayload.Queries["drug_class_code"] = ExpressionConverter.Convert(__workflow_drugClassCode);
+                if (__workflow_drugClassCodingSystem != null)
+                    callPayload.Queries["drug_class_coding_system"] = ExpressionConverter.Convert(__workflow_drugClassCodingSystem);
+                if (__workflow_drugName != null)
+                    callPayload.Queries["drug_name"] = ExpressionConverter.Convert(__workflow_drugName);
                 callPayload.Queries["name_type"] = Convert.ToString("both");
-                if (nameType != null)
-                    callPayload.Queries["name_type"] = ExpressionConverter.Convert(nameType);
-                if (labeler != null)
-                    callPayload.Queries["labeler"] = ExpressionConverter.Convert(labeler);
-                if (manufacturer != null)
-                    callPayload.Queries["manufacturer"] = ExpressionConverter.Convert(manufacturer);
-                if (marketingCategoryCode != null)
-                    callPayload.Queries["marketing_category_code"] = ExpressionConverter.Convert(marketingCategoryCode);
-                if (ndc != null)
-                    callPayload.Queries["ndc"] = ExpressionConverter.Convert(ndc);
-                if (publishedDate != null)
-                    callPayload.Queries["published_date"] = ExpressionConverter.Convert(publishedDate);
+                if (__workflow_nameType != null)
+                    callPayload.Queries["name_type"] = ExpressionConverter.Convert(__workflow_nameType);
+                if (__workflow_labeler != null)
+                    callPayload.Queries["labeler"] = ExpressionConverter.Convert(__workflow_labeler);
+                if (__workflow_manufacturer != null)
+                    callPayload.Queries["manufacturer"] = ExpressionConverter.Convert(__workflow_manufacturer);
+                if (__workflow_marketingCategoryCode != null)
+                    callPayload.Queries["marketing_category_code"] = ExpressionConverter.Convert(__workflow_marketingCategoryCode);
+                if (__workflow_ndc != null)
+                    callPayload.Queries["ndc"] = ExpressionConverter.Convert(__workflow_ndc);
+                if (__workflow_publishedDate != null)
+                    callPayload.Queries["published_date"] = ExpressionConverter.Convert(__workflow_publishedDate);
                 callPayload.Queries["published_date_comparison"] = Convert.ToString("lt");
-                if (publishedDateComparison != null)
-                    callPayload.Queries["published_date_comparison"] = ExpressionConverter.Convert(publishedDateComparison);
-                if (rxcui != null)
-                    callPayload.Queries["rxcui"] = ExpressionConverter.Convert(rxcui);
-                if (uniiCode != null)
-                    callPayload.Queries["unii_code"] = ExpressionConverter.Convert(uniiCode);
-                if (pagesize != null)
-                    callPayload.Queries["pagesize"] = ExpressionConverter.Convert(pagesize);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (__workflow_publishedDateComparison != null)
+                    callPayload.Queries["published_date_comparison"] = ExpressionConverter.Convert(__workflow_publishedDateComparison);
+                if (__workflow_rxcui != null)
+                    callPayload.Queries["rxcui"] = ExpressionConverter.Convert(__workflow_rxcui);
+                if (__workflow_uniiCode != null)
+                    callPayload.Queries["unii_code"] = ExpressionConverter.Convert(__workflow_uniiCode);
+                if (__workflow_pagesize != null)
+                    callPayload.Queries["pagesize"] = ExpressionConverter.Convert(__workflow_pagesize);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 return new ApiConnectionAction<SPLAllResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
-        [WorkflowExpressionFactory(nameof(__BuildSPLHistory))]
-        public IBodyWorkflowAction<SPLHistoryResponse> SPLHistory([WorkflowExpression] Func<string> sETID)
+        public IBodyWorkflowAction<SPLHistoryResponse> SPLHistory(Expression<Func<string>> sETID)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SPLHistoryResponse> __BuildSPLHistory(WorkflowExpression<string> sETID)
-        {
-            WorkflowExpression.Validate(sETID, nameof(sETID), required: true);
+            var __workflow_sETID = sETID == null ? null : WorkflowExpression.Compile(sETID);
+            WorkflowExpression.Validate(__workflow_sETID, nameof(sETID), required: true);
             return new DeferredBodyAction<SPLHistoryResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/spls/{0}/history.json", ExpressionConverter.ConvertWithUrlEncoding(sETID, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/spls/{0}/history.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sETID, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SPLHistoryResponse>(callPayload);
@@ -278,19 +271,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
-        [WorkflowExpressionFactory(nameof(__BuildSPLMedia))]
-        public IBodyWorkflowAction<SPLMediaResponse> SPLMedia([WorkflowExpression] Func<string> sETID)
+        public IBodyWorkflowAction<SPLMediaResponse> SPLMedia(Expression<Func<string>> sETID)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SPLMediaResponse> __BuildSPLMedia(WorkflowExpression<string> sETID)
-        {
-            WorkflowExpression.Validate(sETID, nameof(sETID), required: true);
+            var __workflow_sETID = sETID == null ? null : WorkflowExpression.Compile(sETID);
+            WorkflowExpression.Validate(__workflow_sETID, nameof(sETID), required: true);
             return new DeferredBodyAction<SPLMediaResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/spls/{0}/media.json", ExpressionConverter.ConvertWithUrlEncoding(sETID, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/spls/{0}/media.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sETID, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SPLMediaResponse>(callPayload);
@@ -298,19 +285,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
-        [WorkflowExpressionFactory(nameof(__BuildSPLNDC))]
-        public IBodyWorkflowAction<SPLNDCResponse> SPLNDC([WorkflowExpression] Func<string> sETID)
+        public IBodyWorkflowAction<SPLNDCResponse> SPLNDC(Expression<Func<string>> sETID)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SPLNDCResponse> __BuildSPLNDC(WorkflowExpression<string> sETID)
-        {
-            WorkflowExpression.Validate(sETID, nameof(sETID), required: true);
+            var __workflow_sETID = sETID == null ? null : WorkflowExpression.Compile(sETID);
+            WorkflowExpression.Validate(__workflow_sETID, nameof(sETID), required: true);
             return new DeferredBodyAction<SPLNDCResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/spls/{0}/ndcs.json", ExpressionConverter.ConvertWithUrlEncoding(sETID, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/spls/{0}/ndcs.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sETID, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SPLNDCResponse>(callPayload);
@@ -318,19 +299,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
-        [WorkflowExpressionFactory(nameof(__BuildSPLPackaging))]
-        public IBodyWorkflowAction<SPLPackagingResponse> SPLPackaging([WorkflowExpression] Func<string> sETID)
+        public IBodyWorkflowAction<SPLPackagingResponse> SPLPackaging(Expression<Func<string>> sETID)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SPLPackagingResponse> __BuildSPLPackaging(WorkflowExpression<string> sETID)
-        {
-            WorkflowExpression.Validate(sETID, nameof(sETID), required: true);
+            var __workflow_sETID = sETID == null ? null : WorkflowExpression.Compile(sETID);
+            WorkflowExpression.Validate(__workflow_sETID, nameof(sETID), required: true);
             return new DeferredBodyAction<SPLPackagingResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/spls/{0}/packaging.json", ExpressionConverter.ConvertWithUrlEncoding(sETID, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/spls/{0}/packaging.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sETID, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SPLPackagingResponse>(callPayload);
@@ -338,41 +313,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
-        [WorkflowExpressionFactory(nameof(__BuildUNII))]
-        public IBodyWorkflowAction<UNIIResponse> UNII([WorkflowExpression] Func<string> activeMoiety = null, [WorkflowExpression] Func<string> drugClassCode = null, [WorkflowExpression] Func<string> drugClassCodingSystem = null, [WorkflowExpression] Func<string> rxcui = null, [WorkflowExpression] Func<string> uniiCode = null, [WorkflowExpression] Func<int> pagesize = null, [WorkflowExpression] Func<int> page = null)
+        public IBodyWorkflowAction<UNIIResponse> UNII(Expression<Func<string>> activeMoiety = null, Expression<Func<string>> drugClassCode = null, Expression<Func<string>> drugClassCodingSystem = null, Expression<Func<string>> rxcui = null, Expression<Func<string>> uniiCode = null, Expression<Func<int>> pagesize = null, Expression<Func<int>> page = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UNIIResponse> __BuildUNII(WorkflowExpression<string> activeMoiety = null, WorkflowExpression<string> drugClassCode = null, WorkflowExpression<string> drugClassCodingSystem = null, WorkflowExpression<string> rxcui = null, WorkflowExpression<string> uniiCode = null, WorkflowExpression<int> pagesize = null, WorkflowExpression<int> page = null)
-        {
-            WorkflowExpression.Validate(activeMoiety, nameof(activeMoiety), required: false);
-            WorkflowExpression.Validate(drugClassCode, nameof(drugClassCode), required: false);
-            WorkflowExpression.Validate(drugClassCodingSystem, nameof(drugClassCodingSystem), required: false);
-            WorkflowExpression.Validate(rxcui, nameof(rxcui), required: false);
-            WorkflowExpression.Validate(uniiCode, nameof(uniiCode), required: false);
-            WorkflowExpression.Validate(pagesize, nameof(pagesize), required: false);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
+            var __workflow_activeMoiety = activeMoiety == null ? null : WorkflowExpression.Compile(activeMoiety);
+            WorkflowExpression.Validate(__workflow_activeMoiety, nameof(activeMoiety), required: false);
+            var __workflow_drugClassCode = drugClassCode == null ? null : WorkflowExpression.Compile(drugClassCode);
+            WorkflowExpression.Validate(__workflow_drugClassCode, nameof(drugClassCode), required: false);
+            var __workflow_drugClassCodingSystem = drugClassCodingSystem == null ? null : WorkflowExpression.Compile(drugClassCodingSystem);
+            WorkflowExpression.Validate(__workflow_drugClassCodingSystem, nameof(drugClassCodingSystem), required: false);
+            var __workflow_rxcui = rxcui == null ? null : WorkflowExpression.Compile(rxcui);
+            WorkflowExpression.Validate(__workflow_rxcui, nameof(rxcui), required: false);
+            var __workflow_uniiCode = uniiCode == null ? null : WorkflowExpression.Compile(uniiCode);
+            WorkflowExpression.Validate(__workflow_uniiCode, nameof(uniiCode), required: false);
+            var __workflow_pagesize = pagesize == null ? null : WorkflowExpression.Compile(pagesize);
+            WorkflowExpression.Validate(__workflow_pagesize, nameof(pagesize), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
             return new DeferredBodyAction<UNIIResponse>(() =>
             {
                 var apiCallPath = "/v2/uniis.json";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (activeMoiety != null)
-                    callPayload.Queries["active_moiety"] = ExpressionConverter.Convert(activeMoiety);
-                if (drugClassCode != null)
-                    callPayload.Queries["drug_class_code"] = ExpressionConverter.Convert(drugClassCode);
-                if (drugClassCodingSystem != null)
-                    callPayload.Queries["drug_class_coding_system"] = ExpressionConverter.Convert(drugClassCodingSystem);
-                if (rxcui != null)
-                    callPayload.Queries["rxcui"] = ExpressionConverter.Convert(rxcui);
-                if (uniiCode != null)
-                    callPayload.Queries["unii_code"] = ExpressionConverter.Convert(uniiCode);
-                if (pagesize != null)
-                    callPayload.Queries["pagesize"] = ExpressionConverter.Convert(pagesize);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (__workflow_activeMoiety != null)
+                    callPayload.Queries["active_moiety"] = ExpressionConverter.Convert(__workflow_activeMoiety);
+                if (__workflow_drugClassCode != null)
+                    callPayload.Queries["drug_class_code"] = ExpressionConverter.Convert(__workflow_drugClassCode);
+                if (__workflow_drugClassCodingSystem != null)
+                    callPayload.Queries["drug_class_coding_system"] = ExpressionConverter.Convert(__workflow_drugClassCodingSystem);
+                if (__workflow_rxcui != null)
+                    callPayload.Queries["rxcui"] = ExpressionConverter.Convert(__workflow_rxcui);
+                if (__workflow_uniiCode != null)
+                    callPayload.Queries["unii_code"] = ExpressionConverter.Convert(__workflow_uniiCode);
+                if (__workflow_pagesize != null)
+                    callPayload.Queries["pagesize"] = ExpressionConverter.Convert(__workflow_pagesize);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 return new ApiConnectionAction<UNIIResponse>(callPayload);
             });
         }

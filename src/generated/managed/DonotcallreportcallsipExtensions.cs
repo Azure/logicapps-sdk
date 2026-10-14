@@ -1,89 +1,88 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Donotcallreportcallsip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class DonotcallreportcallsipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "donotcallreportcallsip")]
-        [WorkflowExpressionFactory(nameof(__BuildComplaintsAll))]
-        public IBodyWorkflowAction<ComplaintsAllResponse> ComplaintsAll([WorkflowExpression] Func<string> createdDate = null, [WorkflowExpression] Func<string> createdDateFrom = null, [WorkflowExpression] Func<string> createdDateTo = null, [WorkflowExpression] Func<string> violationDate = null, [WorkflowExpression] Func<string> violationDateFrom = null, [WorkflowExpression] Func<string> violationDateTo = null, [WorkflowExpression] Func<string> state = null, [WorkflowExpression] Func<string> city = null, [WorkflowExpression] Func<int> areaCode = null, [WorkflowExpression] Func<bool> isRobocall = null, [WorkflowExpression] Func<sortOrderInput> sortOrder = null, [WorkflowExpression] Func<int> itemsPerPage = null, [WorkflowExpression] Func<int> offset = null)
+        public IBodyWorkflowAction<ComplaintsAllResponse> ComplaintsAll(Expression<Func<string>> createdDate = null, Expression<Func<string>> createdDateFrom = null, Expression<Func<string>> createdDateTo = null, Expression<Func<string>> violationDate = null, Expression<Func<string>> violationDateFrom = null, Expression<Func<string>> violationDateTo = null, Expression<Func<string>> state = null, Expression<Func<string>> city = null, Expression<Func<int>> areaCode = null, Expression<Func<bool>> isRobocall = null, Expression<Func<sortOrderInput>> sortOrder = null, Expression<Func<int>> itemsPerPage = null, Expression<Func<int>> offset = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ComplaintsAllResponse> __BuildComplaintsAll(WorkflowExpression<string> createdDate = null, WorkflowExpression<string> createdDateFrom = null, WorkflowExpression<string> createdDateTo = null, WorkflowExpression<string> violationDate = null, WorkflowExpression<string> violationDateFrom = null, WorkflowExpression<string> violationDateTo = null, WorkflowExpression<string> state = null, WorkflowExpression<string> city = null, WorkflowExpression<int> areaCode = null, WorkflowExpression<bool> isRobocall = null, WorkflowExpression<sortOrderInput> sortOrder = null, WorkflowExpression<int> itemsPerPage = null, WorkflowExpression<int> offset = null)
-        {
-            WorkflowExpression.Validate(createdDate, nameof(createdDate), required: false);
-            WorkflowExpression.Validate(createdDateFrom, nameof(createdDateFrom), required: false);
-            WorkflowExpression.Validate(createdDateTo, nameof(createdDateTo), required: false);
-            WorkflowExpression.Validate(violationDate, nameof(violationDate), required: false);
-            WorkflowExpression.Validate(violationDateFrom, nameof(violationDateFrom), required: false);
-            WorkflowExpression.Validate(violationDateTo, nameof(violationDateTo), required: false);
-            WorkflowExpression.Validate(state, nameof(state), required: false);
-            WorkflowExpression.Validate(city, nameof(city), required: false);
-            WorkflowExpression.Validate(areaCode, nameof(areaCode), required: false);
-            WorkflowExpression.Validate(isRobocall, nameof(isRobocall), required: false);
-            WorkflowExpression.Validate(sortOrder, nameof(sortOrder), required: false);
-            WorkflowExpression.Validate(itemsPerPage, nameof(itemsPerPage), required: false);
-            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            var __workflow_createdDate = createdDate == null ? null : WorkflowExpression.Compile(createdDate);
+            WorkflowExpression.Validate(__workflow_createdDate, nameof(createdDate), required: false);
+            var __workflow_createdDateFrom = createdDateFrom == null ? null : WorkflowExpression.Compile(createdDateFrom);
+            WorkflowExpression.Validate(__workflow_createdDateFrom, nameof(createdDateFrom), required: false);
+            var __workflow_createdDateTo = createdDateTo == null ? null : WorkflowExpression.Compile(createdDateTo);
+            WorkflowExpression.Validate(__workflow_createdDateTo, nameof(createdDateTo), required: false);
+            var __workflow_violationDate = violationDate == null ? null : WorkflowExpression.Compile(violationDate);
+            WorkflowExpression.Validate(__workflow_violationDate, nameof(violationDate), required: false);
+            var __workflow_violationDateFrom = violationDateFrom == null ? null : WorkflowExpression.Compile(violationDateFrom);
+            WorkflowExpression.Validate(__workflow_violationDateFrom, nameof(violationDateFrom), required: false);
+            var __workflow_violationDateTo = violationDateTo == null ? null : WorkflowExpression.Compile(violationDateTo);
+            WorkflowExpression.Validate(__workflow_violationDateTo, nameof(violationDateTo), required: false);
+            var __workflow_state = state == null ? null : WorkflowExpression.Compile(state);
+            WorkflowExpression.Validate(__workflow_state, nameof(state), required: false);
+            var __workflow_city = city == null ? null : WorkflowExpression.Compile(city);
+            WorkflowExpression.Validate(__workflow_city, nameof(city), required: false);
+            var __workflow_areaCode = areaCode == null ? null : WorkflowExpression.Compile(areaCode);
+            WorkflowExpression.Validate(__workflow_areaCode, nameof(areaCode), required: false);
+            var __workflow_isRobocall = isRobocall == null ? null : WorkflowExpression.Compile(isRobocall);
+            WorkflowExpression.Validate(__workflow_isRobocall, nameof(isRobocall), required: false);
+            var __workflow_sortOrder = sortOrder == null ? null : WorkflowExpression.Compile(sortOrder);
+            WorkflowExpression.Validate(__workflow_sortOrder, nameof(sortOrder), required: false);
+            var __workflow_itemsPerPage = itemsPerPage == null ? null : WorkflowExpression.Compile(itemsPerPage);
+            WorkflowExpression.Validate(__workflow_itemsPerPage, nameof(itemsPerPage), required: false);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
             return new DeferredBodyAction<ComplaintsAllResponse>(() =>
             {
                 var apiCallPath = "/dnc-complaints";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (createdDate != null)
-                    callPayload.Queries["created_date"] = ExpressionConverter.Convert(createdDate);
-                if (createdDateFrom != null)
-                    callPayload.Queries["created_date_from"] = ExpressionConverter.Convert(createdDateFrom);
-                if (createdDateTo != null)
-                    callPayload.Queries["created_date_to"] = ExpressionConverter.Convert(createdDateTo);
-                if (violationDate != null)
-                    callPayload.Queries["violation_date"] = ExpressionConverter.Convert(violationDate);
-                if (violationDateFrom != null)
-                    callPayload.Queries["violation_date_from"] = ExpressionConverter.Convert(violationDateFrom);
-                if (violationDateTo != null)
-                    callPayload.Queries["violation_date_to"] = ExpressionConverter.Convert(violationDateTo);
-                if (state != null)
-                    callPayload.Queries["state"] = ExpressionConverter.Convert(state);
-                if (city != null)
-                    callPayload.Queries["city"] = ExpressionConverter.Convert(city);
-                if (areaCode != null)
-                    callPayload.Queries["area_code"] = ExpressionConverter.Convert(areaCode);
-                if (isRobocall != null)
-                    callPayload.Queries["is_robocall"] = ExpressionConverter.Convert(isRobocall);
+                if (__workflow_createdDate != null)
+                    callPayload.Queries["created_date"] = ExpressionConverter.Convert(__workflow_createdDate);
+                if (__workflow_createdDateFrom != null)
+                    callPayload.Queries["created_date_from"] = ExpressionConverter.Convert(__workflow_createdDateFrom);
+                if (__workflow_createdDateTo != null)
+                    callPayload.Queries["created_date_to"] = ExpressionConverter.Convert(__workflow_createdDateTo);
+                if (__workflow_violationDate != null)
+                    callPayload.Queries["violation_date"] = ExpressionConverter.Convert(__workflow_violationDate);
+                if (__workflow_violationDateFrom != null)
+                    callPayload.Queries["violation_date_from"] = ExpressionConverter.Convert(__workflow_violationDateFrom);
+                if (__workflow_violationDateTo != null)
+                    callPayload.Queries["violation_date_to"] = ExpressionConverter.Convert(__workflow_violationDateTo);
+                if (__workflow_state != null)
+                    callPayload.Queries["state"] = ExpressionConverter.Convert(__workflow_state);
+                if (__workflow_city != null)
+                    callPayload.Queries["city"] = ExpressionConverter.Convert(__workflow_city);
+                if (__workflow_areaCode != null)
+                    callPayload.Queries["area_code"] = ExpressionConverter.Convert(__workflow_areaCode);
+                if (__workflow_isRobocall != null)
+                    callPayload.Queries["is_robocall"] = ExpressionConverter.Convert(__workflow_isRobocall);
                 callPayload.Queries["sort_order"] = Convert.ToString("DESC");
-                if (sortOrder != null)
-                    callPayload.Queries["sort_order"] = ExpressionConverter.Convert(sortOrder);
-                if (itemsPerPage != null)
-                    callPayload.Queries["items_per_page"] = ExpressionConverter.Convert(itemsPerPage);
-                if (offset != null)
-                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (__workflow_sortOrder != null)
+                    callPayload.Queries["sort_order"] = ExpressionConverter.Convert(__workflow_sortOrder);
+                if (__workflow_itemsPerPage != null)
+                    callPayload.Queries["items_per_page"] = ExpressionConverter.Convert(__workflow_itemsPerPage);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<ComplaintsAllResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "donotcallreportcallsip")]
-        [WorkflowExpressionFactory(nameof(__BuildComplaintID))]
-        public IBodyWorkflowAction<ComplaintIDResponse> ComplaintID([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<ComplaintIDResponse> ComplaintID(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ComplaintIDResponse> __BuildComplaintID(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<ComplaintIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/dnc-complaints/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/dnc-complaints/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ComplaintIDResponse>(callPayload);

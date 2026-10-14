@@ -1,30 +1,23 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class NozbeActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nozbe")]
-        [WorkflowExpressionFactory(nameof(__BuildGetTask))]
-        public IBodyWorkflowAction<GetTaskResponse> GetTask([WorkflowExpression] Func<string> taskId)
+        public IBodyWorkflowAction<GetTaskResponse> GetTask(Expression<Func<string>> taskId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetTaskResponse> __BuildGetTask(WorkflowExpression<string> taskId)
-        {
-            WorkflowExpression.Validate(taskId, nameof(taskId), required: true);
+            var __workflow_taskId = taskId == null ? null : WorkflowExpression.Compile(taskId);
+            WorkflowExpression.Validate(__workflow_taskId, nameof(taskId), required: true);
             return new DeferredBodyAction<GetTaskResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/tasks/{0}", ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/tasks/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["resolve_ids"] = Convert.ToString(1);
@@ -33,21 +26,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nozbe")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateTask))]
-        public IBodyWorkflowAction<CreateTaskResponse> CreateTask([WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyprojectId = null, [WorkflowExpression] Func<int> bodydueAt = null, [WorkflowExpression] Func<bool> bodyisAllDay = null, [WorkflowExpression] Func<bool> bodyisFollowed = null, [WorkflowExpression] Func<string> bodyresponsibleId = null)
+        public IBodyWorkflowAction<CreateTaskResponse> CreateTask(Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyprojectId = null, Expression<Func<int>> bodydueAt = null, Expression<Func<bool>> bodyisAllDay = null, Expression<Func<bool>> bodyisFollowed = null, Expression<Func<string>> bodyresponsibleId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateTaskResponse> __BuildCreateTask(WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyprojectId = null, WorkflowExpression<int> bodydueAt = null, WorkflowExpression<bool> bodyisAllDay = null, WorkflowExpression<bool> bodyisFollowed = null, WorkflowExpression<string> bodyresponsibleId = null)
-        {
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
-            WorkflowExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: false);
-            WorkflowExpression.Validate(bodydueAt, nameof(bodydueAt), required: false);
-            WorkflowExpression.Validate(bodyisAllDay, nameof(bodyisAllDay), required: false);
-            WorkflowExpression.Validate(bodyisFollowed, nameof(bodyisFollowed), required: false);
-            WorkflowExpression.Validate(bodyresponsibleId, nameof(bodyresponsibleId), required: false);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
+            var __workflow_bodyprojectId = bodyprojectId == null ? null : WorkflowExpression.Compile(bodyprojectId);
+            WorkflowExpression.Validate(__workflow_bodyprojectId, nameof(bodyprojectId), required: false);
+            var __workflow_bodydueAt = bodydueAt == null ? null : WorkflowExpression.Compile(bodydueAt);
+            WorkflowExpression.Validate(__workflow_bodydueAt, nameof(bodydueAt), required: false);
+            var __workflow_bodyisAllDay = bodyisAllDay == null ? null : WorkflowExpression.Compile(bodyisAllDay);
+            WorkflowExpression.Validate(__workflow_bodyisAllDay, nameof(bodyisAllDay), required: false);
+            var __workflow_bodyisFollowed = bodyisFollowed == null ? null : WorkflowExpression.Compile(bodyisFollowed);
+            WorkflowExpression.Validate(__workflow_bodyisFollowed, nameof(bodyisFollowed), required: false);
+            var __workflow_bodyresponsibleId = bodyresponsibleId == null ? null : WorkflowExpression.Compile(bodyresponsibleId);
+            WorkflowExpression.Validate(__workflow_bodyresponsibleId, nameof(bodyresponsibleId), required: false);
             return new DeferredBodyAction<CreateTaskResponse>(() =>
             {
                 var apiCallPath = "/tasks";
@@ -55,43 +47,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyname != null)
+                if (__workflow_bodyname != null)
                 {
-                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
                     bodypropCount++;
                 }
 
-                if (bodyprojectId != null)
+                if (__workflow_bodyprojectId != null)
                 {
-                    body["project_id"] = ExpressionConverter.ConvertO(bodyprojectId);
+                    body["project_id"] = ExpressionConverter.ConvertO(__workflow_bodyprojectId);
                     bodypropCount++;
                 }
 
                 body["review_reason"] = "newly_added";
                 bodypropCount++;
-                if (bodydueAt != null)
+                if (__workflow_bodydueAt != null)
                 {
-                    body["due_at"] = ExpressionConverter.ConvertO(bodydueAt);
+                    body["due_at"] = ExpressionConverter.ConvertO(__workflow_bodydueAt);
                     bodypropCount++;
                 }
 
-                if (bodyisAllDay != null)
+                if (__workflow_bodyisAllDay != null)
                 {
-                    body["is_all_day"] = ExpressionConverter.ConvertO(bodyisAllDay);
+                    body["is_all_day"] = ExpressionConverter.ConvertO(__workflow_bodyisAllDay);
                     bodypropCount++;
                 }
 
-                if (bodyisFollowed != null)
+                if (__workflow_bodyisFollowed != null)
                 {
-                    body["is_followed"] = ExpressionConverter.ConvertO(bodyisFollowed);
+                    body["is_followed"] = ExpressionConverter.ConvertO(__workflow_bodyisFollowed);
                     bodypropCount++;
                 }
 
                 body["review_triggered_at"] = 1;
                 bodypropCount++;
-                if (bodyresponsibleId != null)
+                if (__workflow_bodyresponsibleId != null)
                 {
-                    body["responsible_id"] = ExpressionConverter.ConvertO(bodyresponsibleId);
+                    body["responsible_id"] = ExpressionConverter.ConvertO(__workflow_bodyresponsibleId);
                     bodypropCount++;
                 }
 
@@ -105,18 +97,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nozbe")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateComment))]
-        public IBodyWorkflowAction<CreateCommentResponse> CreateComment([WorkflowExpression] Func<string> bodytaskId, [WorkflowExpression] Func<string> bodybody = null, [WorkflowExpression] Func<bool> bodyisPinned = null)
+        public IBodyWorkflowAction<CreateCommentResponse> CreateComment(Expression<Func<string>> bodytaskId, Expression<Func<string>> bodybody = null, Expression<Func<bool>> bodyisPinned = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateCommentResponse> __BuildCreateComment(WorkflowExpression<string> bodytaskId, WorkflowExpression<string> bodybody = null, WorkflowExpression<bool> bodyisPinned = null)
-        {
-            WorkflowExpression.Validate(bodytaskId, nameof(bodytaskId), required: true);
-            WorkflowExpression.Validate(bodybody, nameof(bodybody), required: false);
-            WorkflowExpression.Validate(bodyisPinned, nameof(bodyisPinned), required: false);
+            var __workflow_bodytaskId = bodytaskId == null ? null : WorkflowExpression.Compile(bodytaskId);
+            WorkflowExpression.Validate(__workflow_bodytaskId, nameof(bodytaskId), required: true);
+            var __workflow_bodybody = bodybody == null ? null : WorkflowExpression.Compile(bodybody);
+            WorkflowExpression.Validate(__workflow_bodybody, nameof(bodybody), required: false);
+            var __workflow_bodyisPinned = bodyisPinned == null ? null : WorkflowExpression.Compile(bodyisPinned);
+            WorkflowExpression.Validate(__workflow_bodyisPinned, nameof(bodyisPinned), required: false);
             return new DeferredBodyAction<CreateCommentResponse>(() =>
             {
                 var apiCallPath = "/comments";
@@ -124,20 +112,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodybody != null)
+                if (__workflow_bodybody != null)
                 {
-                    body["body"] = ExpressionConverter.ConvertO(bodybody);
+                    body["body"] = ExpressionConverter.ConvertO(__workflow_bodybody);
                     bodypropCount++;
                 }
 
-                if (bodyisPinned != null)
+                if (__workflow_bodyisPinned != null)
                 {
-                    body["is_pinned"] = ExpressionConverter.ConvertO(bodyisPinned);
+                    body["is_pinned"] = ExpressionConverter.ConvertO(__workflow_bodyisPinned);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["task_id"] = ExpressionConverter.ConvertO(bodytaskId);
+                body["task_id"] = ExpressionConverter.ConvertO(__workflow_bodytaskId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -158,16 +146,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nozbe")]
-        [WorkflowExpressionFactory(nameof(__BuildGetProjects))]
-        public IBodyWorkflowAction<GetProjectsResponseItem[]> GetProjects([WorkflowExpression] Func<string> sortBy = null)
+        public IBodyWorkflowAction<GetProjectsResponseItem[]> GetProjects(Expression<Func<string>> sortBy = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetProjectsResponseItem[]> __BuildGetProjects(WorkflowExpression<string> sortBy = null)
-        {
-            WorkflowExpression.Validate(sortBy, nameof(sortBy), required: false);
+            var __workflow_sortBy = sortBy == null ? null : WorkflowExpression.Compile(sortBy);
+            WorkflowExpression.Validate(__workflow_sortBy, nameof(sortBy), required: false);
             return new DeferredBodyAction<GetProjectsResponseItem[]>(() =>
             {
                 var apiCallPath = "/projects";
@@ -175,26 +157,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["ended_at"] = Convert.ToString("null");
                 callPayload.Queries["sortBy"] = Convert.ToString("-created_at");
-                if (sortBy != null)
-                    callPayload.Queries["sortBy"] = ExpressionConverter.Convert(sortBy);
+                if (__workflow_sortBy != null)
+                    callPayload.Queries["sortBy"] = ExpressionConverter.Convert(__workflow_sortBy);
                 return new ApiConnectionAction<GetProjectsResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nozbe")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateReminder))]
-        public IBodyWorkflowAction<CreateReminderResponse> CreateReminder([WorkflowExpression] Func<string> bodytaskId, [WorkflowExpression] Func<int> bodyremindAt, [WorkflowExpression] Func<bool> bodyisRelative, [WorkflowExpression] Func<bool> bodyisAllDay)
+        public IBodyWorkflowAction<CreateReminderResponse> CreateReminder(Expression<Func<string>> bodytaskId, Expression<Func<int>> bodyremindAt, Expression<Func<bool>> bodyisRelative, Expression<Func<bool>> bodyisAllDay)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateReminderResponse> __BuildCreateReminder(WorkflowExpression<string> bodytaskId, WorkflowExpression<int> bodyremindAt, WorkflowExpression<bool> bodyisRelative, WorkflowExpression<bool> bodyisAllDay)
-        {
-            WorkflowExpression.Validate(bodytaskId, nameof(bodytaskId), required: true);
-            WorkflowExpression.Validate(bodyremindAt, nameof(bodyremindAt), required: true);
-            WorkflowExpression.Validate(bodyisRelative, nameof(bodyisRelative), required: true);
-            WorkflowExpression.Validate(bodyisAllDay, nameof(bodyisAllDay), required: true);
+            var __workflow_bodytaskId = bodytaskId == null ? null : WorkflowExpression.Compile(bodytaskId);
+            WorkflowExpression.Validate(__workflow_bodytaskId, nameof(bodytaskId), required: true);
+            var __workflow_bodyremindAt = bodyremindAt == null ? null : WorkflowExpression.Compile(bodyremindAt);
+            WorkflowExpression.Validate(__workflow_bodyremindAt, nameof(bodyremindAt), required: true);
+            var __workflow_bodyisRelative = bodyisRelative == null ? null : WorkflowExpression.Compile(bodyisRelative);
+            WorkflowExpression.Validate(__workflow_bodyisRelative, nameof(bodyisRelative), required: true);
+            var __workflow_bodyisAllDay = bodyisAllDay == null ? null : WorkflowExpression.Compile(bodyisAllDay);
+            WorkflowExpression.Validate(__workflow_bodyisAllDay, nameof(bodyisAllDay), required: true);
             return new DeferredBodyAction<CreateReminderResponse>(() =>
             {
                 var apiCallPath = "/reminders";
@@ -203,13 +182,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["task_id"] = ExpressionConverter.ConvertO(bodytaskId);
+                body["task_id"] = ExpressionConverter.ConvertO(__workflow_bodytaskId);
                 bodypropCount++;
-                body["remind_at"] = ExpressionConverter.ConvertO(bodyremindAt);
+                body["remind_at"] = ExpressionConverter.ConvertO(__workflow_bodyremindAt);
                 bodypropCount++;
-                body["is_relative"] = ExpressionConverter.ConvertO(bodyisRelative);
+                body["is_relative"] = ExpressionConverter.ConvertO(__workflow_bodyisRelative);
                 bodypropCount++;
-                body["is_all_day"] = ExpressionConverter.ConvertO(bodyisAllDay);
+                body["is_all_day"] = ExpressionConverter.ConvertO(__workflow_bodyisAllDay);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -222,53 +201,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
 
     public class NozbeTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildPollNewTasks))]
-        public IBodyWorkflowTrigger<PollNewTasksResponseItem[]> PollNewTasks([WorkflowExpression] Func<string> projectId = null,[WorkflowExpression] Func<string> responsibleId = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollNewTasksResponseItem[]> PollNewTasks(Expression<Func<string>> projectId = null, Expression<Func<string>> responsibleId = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<PollNewTasksResponseItem[]> __BuildPollNewTasks(WorkflowExpression<string> projectId = null,WorkflowExpression<string> responsibleId = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(projectId, nameof(projectId), required: false);
-            WorkflowExpression.Validate(responsibleId, nameof(responsibleId), required: false);
+            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
+            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: false);
+            var __workflow_responsibleId = responsibleId == null ? null : WorkflowExpression.Compile(responsibleId);
+            WorkflowExpression.Validate(__workflow_responsibleId, nameof(responsibleId), required: false);
             return new DeferredBodyTrigger<PollNewTasksResponseItem[]>(() =>
             {
                 var apiCallPath = "/poll/tasks/new";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["resolve_ids"] = Convert.ToString(1);
-                if (projectId != null)
-                    callPayload.Queries["project_id"] = ExpressionConverter.Convert(projectId);
-                if (responsibleId != null)
-                    callPayload.Queries["responsible_id"] = ExpressionConverter.Convert(responsibleId);
+                if (__workflow_projectId != null)
+                    callPayload.Queries["project_id"] = ExpressionConverter.Convert(__workflow_projectId);
+                if (__workflow_responsibleId != null)
+                    callPayload.Queries["responsible_id"] = ExpressionConverter.Convert(__workflow_responsibleId);
                 return new ApiConnectionTrigger<PollNewTasksResponseItem[]>(callPayload, recurrence: recurrence);
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildPollUpdatedTasks))]
-        public IBodyWorkflowTrigger<PollUpdatedTasksResponseItem[]> PollUpdatedTasks([WorkflowExpression] Func<string> projectId = null,[WorkflowExpression] Func<string> responsibleId = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollUpdatedTasksResponseItem[]> PollUpdatedTasks(Expression<Func<string>> projectId = null, Expression<Func<string>> responsibleId = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<PollUpdatedTasksResponseItem[]> __BuildPollUpdatedTasks(WorkflowExpression<string> projectId = null,WorkflowExpression<string> responsibleId = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(projectId, nameof(projectId), required: false);
-            WorkflowExpression.Validate(responsibleId, nameof(responsibleId), required: false);
+            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
+            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: false);
+            var __workflow_responsibleId = responsibleId == null ? null : WorkflowExpression.Compile(responsibleId);
+            WorkflowExpression.Validate(__workflow_responsibleId, nameof(responsibleId), required: false);
             return new DeferredBodyTrigger<PollUpdatedTasksResponseItem[]>(() =>
             {
                 var apiCallPath = "/poll/tasks/updated";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["resolve_ids"] = Convert.ToString(1);
-                if (projectId != null)
-                    callPayload.Queries["project_id"] = ExpressionConverter.Convert(projectId);
-                if (responsibleId != null)
-                    callPayload.Queries["responsible_id"] = ExpressionConverter.Convert(responsibleId);
+                if (__workflow_projectId != null)
+                    callPayload.Queries["project_id"] = ExpressionConverter.Convert(__workflow_projectId);
+                if (__workflow_responsibleId != null)
+                    callPayload.Queries["responsible_id"] = ExpressionConverter.Convert(__workflow_responsibleId);
                 return new ApiConnectionTrigger<PollUpdatedTasksResponseItem[]>(callPayload, recurrence: recurrence);
             });
         }

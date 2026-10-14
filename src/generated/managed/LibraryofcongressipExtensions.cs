@@ -1,140 +1,132 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Libraryofcongressip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class LibraryofcongressipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "libraryofcongressip")]
-        [WorkflowExpressionFactory(nameof(__BuildSearch))]
-        public IBodyWorkflowAction<SearchResponse> Search([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<string> fa = null, [WorkflowExpression] Func<int> c = null, [WorkflowExpression] Func<int> sp = null, [WorkflowExpression] Func<string> at = null, [WorkflowExpression] Func<string> sb = null)
+        public IBodyWorkflowAction<SearchResponse> Search(Expression<Func<string>> q, Expression<Func<string>> fa = null, Expression<Func<int>> c = null, Expression<Func<int>> sp = null, Expression<Func<string>> at = null, Expression<Func<string>> sb = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SearchResponse> __BuildSearch(WorkflowExpression<string> q, WorkflowExpression<string> fa = null, WorkflowExpression<int> c = null, WorkflowExpression<int> sp = null, WorkflowExpression<string> at = null, WorkflowExpression<string> sb = null)
-        {
-            WorkflowExpression.Validate(q, nameof(q), required: true);
-            WorkflowExpression.Validate(fa, nameof(fa), required: false);
-            WorkflowExpression.Validate(c, nameof(c), required: false);
-            WorkflowExpression.Validate(sp, nameof(sp), required: false);
-            WorkflowExpression.Validate(at, nameof(at), required: false);
-            WorkflowExpression.Validate(sb, nameof(sb), required: false);
+            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
+            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
+            var __workflow_fa = fa == null ? null : WorkflowExpression.Compile(fa);
+            WorkflowExpression.Validate(__workflow_fa, nameof(fa), required: false);
+            var __workflow_c = c == null ? null : WorkflowExpression.Compile(c);
+            WorkflowExpression.Validate(__workflow_c, nameof(c), required: false);
+            var __workflow_sp = sp == null ? null : WorkflowExpression.Compile(sp);
+            WorkflowExpression.Validate(__workflow_sp, nameof(sp), required: false);
+            var __workflow_at = at == null ? null : WorkflowExpression.Compile(at);
+            WorkflowExpression.Validate(__workflow_at, nameof(at), required: false);
+            var __workflow_sb = sb == null ? null : WorkflowExpression.Compile(sb);
+            WorkflowExpression.Validate(__workflow_sb, nameof(sb), required: false);
             return new DeferredBodyAction<SearchResponse>(() =>
             {
                 var apiCallPath = "/search/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-                if (fa != null)
-                    callPayload.Queries["fa"] = ExpressionConverter.Convert(fa);
-                if (c != null)
-                    callPayload.Queries["c"] = ExpressionConverter.Convert(c);
-                if (sp != null)
-                    callPayload.Queries["sp"] = ExpressionConverter.Convert(sp);
-                if (at != null)
-                    callPayload.Queries["at"] = ExpressionConverter.Convert(at);
-                if (sb != null)
-                    callPayload.Queries["sb"] = ExpressionConverter.Convert(sb);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
+                if (__workflow_fa != null)
+                    callPayload.Queries["fa"] = ExpressionConverter.Convert(__workflow_fa);
+                if (__workflow_c != null)
+                    callPayload.Queries["c"] = ExpressionConverter.Convert(__workflow_c);
+                if (__workflow_sp != null)
+                    callPayload.Queries["sp"] = ExpressionConverter.Convert(__workflow_sp);
+                if (__workflow_at != null)
+                    callPayload.Queries["at"] = ExpressionConverter.Convert(__workflow_at);
+                if (__workflow_sb != null)
+                    callPayload.Queries["sb"] = ExpressionConverter.Convert(__workflow_sb);
                 return new ApiConnectionAction<SearchResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "libraryofcongressip")]
-        [WorkflowExpressionFactory(nameof(__BuildCollection))]
-        public IBodyWorkflowAction<CollectionResponse> Collection([WorkflowExpression] Func<string> collection, [WorkflowExpression] Func<string> q, [WorkflowExpression] Func<string> fa = null, [WorkflowExpression] Func<int> c = null, [WorkflowExpression] Func<int> sp = null, [WorkflowExpression] Func<string> at = null, [WorkflowExpression] Func<string> sb = null)
+        public IBodyWorkflowAction<CollectionResponse> Collection(Expression<Func<string>> collection, Expression<Func<string>> q, Expression<Func<string>> fa = null, Expression<Func<int>> c = null, Expression<Func<int>> sp = null, Expression<Func<string>> at = null, Expression<Func<string>> sb = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CollectionResponse> __BuildCollection(WorkflowExpression<string> collection, WorkflowExpression<string> q, WorkflowExpression<string> fa = null, WorkflowExpression<int> c = null, WorkflowExpression<int> sp = null, WorkflowExpression<string> at = null, WorkflowExpression<string> sb = null)
-        {
-            WorkflowExpression.Validate(collection, nameof(collection), required: true);
-            WorkflowExpression.Validate(q, nameof(q), required: true);
-            WorkflowExpression.Validate(fa, nameof(fa), required: false);
-            WorkflowExpression.Validate(c, nameof(c), required: false);
-            WorkflowExpression.Validate(sp, nameof(sp), required: false);
-            WorkflowExpression.Validate(at, nameof(at), required: false);
-            WorkflowExpression.Validate(sb, nameof(sb), required: false);
+            var __workflow_collection = collection == null ? null : WorkflowExpression.Compile(collection);
+            WorkflowExpression.Validate(__workflow_collection, nameof(collection), required: true);
+            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
+            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
+            var __workflow_fa = fa == null ? null : WorkflowExpression.Compile(fa);
+            WorkflowExpression.Validate(__workflow_fa, nameof(fa), required: false);
+            var __workflow_c = c == null ? null : WorkflowExpression.Compile(c);
+            WorkflowExpression.Validate(__workflow_c, nameof(c), required: false);
+            var __workflow_sp = sp == null ? null : WorkflowExpression.Compile(sp);
+            WorkflowExpression.Validate(__workflow_sp, nameof(sp), required: false);
+            var __workflow_at = at == null ? null : WorkflowExpression.Compile(at);
+            WorkflowExpression.Validate(__workflow_at, nameof(at), required: false);
+            var __workflow_sb = sb == null ? null : WorkflowExpression.Compile(sb);
+            WorkflowExpression.Validate(__workflow_sb, nameof(sb), required: false);
             return new DeferredBodyAction<CollectionResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/collections/{0}", ExpressionConverter.ConvertWithUrlEncoding(collection, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/collections/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_collection, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-                if (fa != null)
-                    callPayload.Queries["fa"] = ExpressionConverter.Convert(fa);
-                if (c != null)
-                    callPayload.Queries["c"] = ExpressionConverter.Convert(c);
-                if (sp != null)
-                    callPayload.Queries["sp"] = ExpressionConverter.Convert(sp);
-                if (at != null)
-                    callPayload.Queries["at"] = ExpressionConverter.Convert(at);
-                if (sb != null)
-                    callPayload.Queries["sb"] = ExpressionConverter.Convert(sb);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
+                if (__workflow_fa != null)
+                    callPayload.Queries["fa"] = ExpressionConverter.Convert(__workflow_fa);
+                if (__workflow_c != null)
+                    callPayload.Queries["c"] = ExpressionConverter.Convert(__workflow_c);
+                if (__workflow_sp != null)
+                    callPayload.Queries["sp"] = ExpressionConverter.Convert(__workflow_sp);
+                if (__workflow_at != null)
+                    callPayload.Queries["at"] = ExpressionConverter.Convert(__workflow_at);
+                if (__workflow_sb != null)
+                    callPayload.Queries["sb"] = ExpressionConverter.Convert(__workflow_sb);
                 return new ApiConnectionAction<CollectionResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "libraryofcongressip")]
-        [WorkflowExpressionFactory(nameof(__BuildFormat))]
-        public IBodyWorkflowAction<FormatResponse> Format([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string> q, [WorkflowExpression] Func<string> fa = null, [WorkflowExpression] Func<int> c = null, [WorkflowExpression] Func<int> sp = null, [WorkflowExpression] Func<string> at = null, [WorkflowExpression] Func<string> sb = null)
+        public IBodyWorkflowAction<FormatResponse> Format(Expression<Func<formatInput>> format, Expression<Func<string>> q, Expression<Func<string>> fa = null, Expression<Func<int>> c = null, Expression<Func<int>> sp = null, Expression<Func<string>> at = null, Expression<Func<string>> sb = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FormatResponse> __BuildFormat(WorkflowExpression<formatInput> format, WorkflowExpression<string> q, WorkflowExpression<string> fa = null, WorkflowExpression<int> c = null, WorkflowExpression<int> sp = null, WorkflowExpression<string> at = null, WorkflowExpression<string> sb = null)
-        {
-            WorkflowExpression.Validate(format, nameof(format), required: true);
-            WorkflowExpression.Validate(q, nameof(q), required: true);
-            WorkflowExpression.Validate(fa, nameof(fa), required: false);
-            WorkflowExpression.Validate(c, nameof(c), required: false);
-            WorkflowExpression.Validate(sp, nameof(sp), required: false);
-            WorkflowExpression.Validate(at, nameof(at), required: false);
-            WorkflowExpression.Validate(sb, nameof(sb), required: false);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: true);
+            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
+            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
+            var __workflow_fa = fa == null ? null : WorkflowExpression.Compile(fa);
+            WorkflowExpression.Validate(__workflow_fa, nameof(fa), required: false);
+            var __workflow_c = c == null ? null : WorkflowExpression.Compile(c);
+            WorkflowExpression.Validate(__workflow_c, nameof(c), required: false);
+            var __workflow_sp = sp == null ? null : WorkflowExpression.Compile(sp);
+            WorkflowExpression.Validate(__workflow_sp, nameof(sp), required: false);
+            var __workflow_at = at == null ? null : WorkflowExpression.Compile(at);
+            WorkflowExpression.Validate(__workflow_at, nameof(at), required: false);
+            var __workflow_sb = sb == null ? null : WorkflowExpression.Compile(sb);
+            WorkflowExpression.Validate(__workflow_sb, nameof(sb), required: false);
             return new DeferredBodyAction<FormatResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/", ExpressionConverter.ConvertWithUrlEncoding(format, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-                if (fa != null)
-                    callPayload.Queries["fa"] = ExpressionConverter.Convert(fa);
-                if (c != null)
-                    callPayload.Queries["c"] = ExpressionConverter.Convert(c);
-                if (sp != null)
-                    callPayload.Queries["sp"] = ExpressionConverter.Convert(sp);
-                if (at != null)
-                    callPayload.Queries["at"] = ExpressionConverter.Convert(at);
-                if (sb != null)
-                    callPayload.Queries["sb"] = ExpressionConverter.Convert(sb);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
+                if (__workflow_fa != null)
+                    callPayload.Queries["fa"] = ExpressionConverter.Convert(__workflow_fa);
+                if (__workflow_c != null)
+                    callPayload.Queries["c"] = ExpressionConverter.Convert(__workflow_c);
+                if (__workflow_sp != null)
+                    callPayload.Queries["sp"] = ExpressionConverter.Convert(__workflow_sp);
+                if (__workflow_at != null)
+                    callPayload.Queries["at"] = ExpressionConverter.Convert(__workflow_at);
+                if (__workflow_sb != null)
+                    callPayload.Queries["sb"] = ExpressionConverter.Convert(__workflow_sb);
                 return new ApiConnectionAction<FormatResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "libraryofcongressip")]
-        [WorkflowExpressionFactory(nameof(__BuildItem))]
-        public IBodyWorkflowAction<ItemResponse> Item([WorkflowExpression] Func<string> identifier)
+        public IBodyWorkflowAction<ItemResponse> Item(Expression<Func<string>> identifier)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ItemResponse> __BuildItem(WorkflowExpression<string> identifier)
-        {
-            WorkflowExpression.Validate(identifier, nameof(identifier), required: true);
+            var __workflow_identifier = identifier == null ? null : WorkflowExpression.Compile(identifier);
+            WorkflowExpression.Validate(__workflow_identifier, nameof(identifier), required: true);
             return new DeferredBodyAction<ItemResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/item/{0}/", ExpressionConverter.ConvertWithUrlEncoding(identifier, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/item/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_identifier, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ItemResponse>(callPayload);

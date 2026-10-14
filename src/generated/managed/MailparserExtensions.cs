@@ -1,12 +1,12 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailparser
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class MailparserActions([ConnectionName] string connectionId)
     {
@@ -22,21 +22,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailparser
 
     public class MailparserTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildWebhookCreate))]
-        public IBodyWorkflowTrigger<WebhookCreationResponse> WebhookCreate([WorkflowExpression] Func<string> inboxId,[WorkflowExpression] Func<string> requestBodyOfWebhooklabel = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreationResponse> WebhookCreate(Expression<Func<string>> inboxId, Expression<Func<string>> requestBodyOfWebhooklabel = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<WebhookCreationResponse> __BuildWebhookCreate(WorkflowExpression<string> inboxId,WorkflowExpression<string> requestBodyOfWebhooklabel = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(inboxId, nameof(inboxId), required: true);
-            WorkflowExpression.Validate(requestBodyOfWebhooklabel, nameof(requestBodyOfWebhooklabel), required: false);
+            var __workflow_inboxId = inboxId == null ? null : WorkflowExpression.Compile(inboxId);
+            WorkflowExpression.Validate(__workflow_inboxId, nameof(inboxId), required: true);
+            var __workflow_requestBodyOfWebhooklabel = requestBodyOfWebhooklabel == null ? null : WorkflowExpression.Compile(requestBodyOfWebhooklabel);
+            WorkflowExpression.Validate(__workflow_requestBodyOfWebhooklabel, nameof(requestBodyOfWebhooklabel), required: false);
             return new DeferredBodyTrigger<WebhookCreationResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/inboxes/{0}/dispatcher", ExpressionConverter.ConvertWithUrlEncoding(inboxId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/inboxes/{0}/dispatcher", ExpressionConverter.ConvertWithUrlEncoding(__workflow_inboxId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var requestBodyOfWebhook = new JObject();
@@ -45,9 +39,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailparser
                 requestBodyOfWebhookpropCount++;
                 requestBodyOfWebhook["provider"] = "flow";
                 requestBodyOfWebhookpropCount++;
-                if (requestBodyOfWebhooklabel != null)
+                if (__workflow_requestBodyOfWebhooklabel != null)
                 {
-                    requestBodyOfWebhook["label"] = ExpressionConverter.ConvertO(requestBodyOfWebhooklabel);
+                    requestBodyOfWebhook["label"] = ExpressionConverter.ConvertO(__workflow_requestBodyOfWebhooklabel);
                     requestBodyOfWebhookpropCount++;
                 }
 

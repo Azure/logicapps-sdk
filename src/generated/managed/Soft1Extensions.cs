@@ -1,28 +1,22 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class Soft1Actions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        [WorkflowExpressionFactory(nameof(__BuildMicroservice))]
-        public IWorkflowAction Microservice([WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<string> bodyendpoint)
+        public IWorkflowAction Microservice(Expression<Func<string>> bodybody, Expression<Func<string>> bodyendpoint)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildMicroservice(WorkflowExpression<string> bodybody, WorkflowExpression<string> bodyendpoint)
-        {
-            WorkflowExpression.Validate(bodybody, nameof(bodybody), required: true);
-            WorkflowExpression.Validate(bodyendpoint, nameof(bodyendpoint), required: true);
+            var __workflow_bodybody = bodybody == null ? null : WorkflowExpression.Compile(bodybody);
+            WorkflowExpression.Validate(__workflow_bodybody, nameof(bodybody), required: true);
+            var __workflow_bodyendpoint = bodyendpoint == null ? null : WorkflowExpression.Compile(bodyendpoint);
+            WorkflowExpression.Validate(__workflow_bodyendpoint, nameof(bodyendpoint), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/custom";
@@ -32,9 +26,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["body"] = ExpressionConverter.ConvertO(bodybody);
+                body["body"] = ExpressionConverter.ConvertO(__workflow_bodybody);
                 bodypropCount++;
-                body["endpoint"] = ExpressionConverter.ConvertO(bodyendpoint);
+                body["endpoint"] = ExpressionConverter.ConvertO(__workflow_bodyendpoint);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -45,18 +39,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        [WorkflowExpressionFactory(nameof(__BuildGetCFNCUSDOC))]
-        public IBodyWorkflowAction<GetCFNCUSDOCResponse> GetCFNCUSDOC([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodylOCATEINFO, [WorkflowExpression] Func<string> bodyfORM = null)
+        public IBodyWorkflowAction<GetCFNCUSDOCResponse> GetCFNCUSDOC(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetCFNCUSDOCResponse> __BuildGetCFNCUSDOC(WorkflowExpression<string> bodykEY, WorkflowExpression<string> bodylOCATEINFO, WorkflowExpression<string> bodyfORM = null)
-        {
-            WorkflowExpression.Validate(bodykEY, nameof(bodykEY), required: true);
-            WorkflowExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
-            WorkflowExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            var __workflow_bodykEY = bodykEY == null ? null : WorkflowExpression.Compile(bodykEY);
+            WorkflowExpression.Validate(__workflow_bodykEY, nameof(bodykEY), required: true);
+            var __workflow_bodylOCATEINFO = bodylOCATEINFO == null ? null : WorkflowExpression.Compile(bodylOCATEINFO);
+            WorkflowExpression.Validate(__workflow_bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
+            var __workflow_bodyfORM = bodyfORM == null ? null : WorkflowExpression.Compile(bodyfORM);
+            WorkflowExpression.Validate(__workflow_bodyfORM, nameof(bodyfORM), required: false);
             return new DeferredBodyAction<GetCFNCUSDOCResponse>(() =>
             {
                 var apiCallPath = "/getCFNCUSDOC";
@@ -65,16 +55,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 callPayload.Queries["op"] = Convert.ToString("s1service");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfORM != null)
+                if (__workflow_bodyfORM != null)
                 {
-                    body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                    body["FORM"] = ExpressionConverter.ConvertO(__workflow_bodyfORM);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                body["KEY"] = ExpressionConverter.ConvertO(__workflow_bodykEY);
                 bodypropCount++;
-                body["LOCATEINFO"] = ExpressionConverter.ConvertO(bodylOCATEINFO);
+                body["LOCATEINFO"] = ExpressionConverter.ConvertO(__workflow_bodylOCATEINFO);
                 body["MODE"] = "1";
                 bodypropCount++;
                 body["OBJECT"] = "CFNCUSDOC";
@@ -93,18 +83,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        [WorkflowExpressionFactory(nameof(__BuildGetCfnsupdoc))]
-        public IBodyWorkflowAction<GetCfnsupdocResponse> GetCfnsupdoc([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodylOCATEINFO, [WorkflowExpression] Func<string> bodyfORM = null)
+        public IBodyWorkflowAction<GetCfnsupdocResponse> GetCfnsupdoc(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetCfnsupdocResponse> __BuildGetCfnsupdoc(WorkflowExpression<string> bodykEY, WorkflowExpression<string> bodylOCATEINFO, WorkflowExpression<string> bodyfORM = null)
-        {
-            WorkflowExpression.Validate(bodykEY, nameof(bodykEY), required: true);
-            WorkflowExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
-            WorkflowExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            var __workflow_bodykEY = bodykEY == null ? null : WorkflowExpression.Compile(bodykEY);
+            WorkflowExpression.Validate(__workflow_bodykEY, nameof(bodykEY), required: true);
+            var __workflow_bodylOCATEINFO = bodylOCATEINFO == null ? null : WorkflowExpression.Compile(bodylOCATEINFO);
+            WorkflowExpression.Validate(__workflow_bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
+            var __workflow_bodyfORM = bodyfORM == null ? null : WorkflowExpression.Compile(bodyfORM);
+            WorkflowExpression.Validate(__workflow_bodyfORM, nameof(bodyfORM), required: false);
             return new DeferredBodyAction<GetCfnsupdocResponse>(() =>
             {
                 var apiCallPath = "/getCfnsupdoc";
@@ -113,16 +99,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 callPayload.Queries["op"] = Convert.ToString("s1service");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfORM != null)
+                if (__workflow_bodyfORM != null)
                 {
-                    body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                    body["FORM"] = ExpressionConverter.ConvertO(__workflow_bodyfORM);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                body["KEY"] = ExpressionConverter.ConvertO(__workflow_bodykEY);
                 bodypropCount++;
-                body["LOCATEINFO"] = ExpressionConverter.ConvertO(bodylOCATEINFO);
+                body["LOCATEINFO"] = ExpressionConverter.ConvertO(__workflow_bodylOCATEINFO);
                 body["MODE"] = "1";
                 bodypropCount++;
                 body["OBJECT"] = "CFNSUPDOC";
@@ -141,18 +127,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        [WorkflowExpressionFactory(nameof(__BuildGetCheque))]
-        public IBodyWorkflowAction<GetChequeResponse> GetCheque([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodylOCATEINFO, [WorkflowExpression] Func<string> bodyfORM = null)
+        public IBodyWorkflowAction<GetChequeResponse> GetCheque(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetChequeResponse> __BuildGetCheque(WorkflowExpression<string> bodykEY, WorkflowExpression<string> bodylOCATEINFO, WorkflowExpression<string> bodyfORM = null)
-        {
-            WorkflowExpression.Validate(bodykEY, nameof(bodykEY), required: true);
-            WorkflowExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
-            WorkflowExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            var __workflow_bodykEY = bodykEY == null ? null : WorkflowExpression.Compile(bodykEY);
+            WorkflowExpression.Validate(__workflow_bodykEY, nameof(bodykEY), required: true);
+            var __workflow_bodylOCATEINFO = bodylOCATEINFO == null ? null : WorkflowExpression.Compile(bodylOCATEINFO);
+            WorkflowExpression.Validate(__workflow_bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
+            var __workflow_bodyfORM = bodyfORM == null ? null : WorkflowExpression.Compile(bodyfORM);
+            WorkflowExpression.Validate(__workflow_bodyfORM, nameof(bodyfORM), required: false);
             return new DeferredBodyAction<GetChequeResponse>(() =>
             {
                 var apiCallPath = "/getCheque";
@@ -161,16 +143,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 callPayload.Queries["op"] = Convert.ToString("s1service");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfORM != null)
+                if (__workflow_bodyfORM != null)
                 {
-                    body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                    body["FORM"] = ExpressionConverter.ConvertO(__workflow_bodyfORM);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                body["KEY"] = ExpressionConverter.ConvertO(__workflow_bodykEY);
                 bodypropCount++;
-                body["LOCATEINFO"] = ExpressionConverter.ConvertO(bodylOCATEINFO);
+                body["LOCATEINFO"] = ExpressionConverter.ConvertO(__workflow_bodylOCATEINFO);
                 body["MODE"] = "1";
                 bodypropCount++;
                 body["OBJECT"] = "CHEQUE";
@@ -189,18 +171,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        [WorkflowExpressionFactory(nameof(__BuildGetContact))]
-        public IBodyWorkflowAction<GetContactResponse> GetContact([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodylOCATEINFO, [WorkflowExpression] Func<string> bodyfORM = null)
+        public IBodyWorkflowAction<GetContactResponse> GetContact(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetContactResponse> __BuildGetContact(WorkflowExpression<string> bodykEY, WorkflowExpression<string> bodylOCATEINFO, WorkflowExpression<string> bodyfORM = null)
-        {
-            WorkflowExpression.Validate(bodykEY, nameof(bodykEY), required: true);
-            WorkflowExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
-            WorkflowExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            var __workflow_bodykEY = bodykEY == null ? null : WorkflowExpression.Compile(bodykEY);
+            WorkflowExpression.Validate(__workflow_bodykEY, nameof(bodykEY), required: true);
+            var __workflow_bodylOCATEINFO = bodylOCATEINFO == null ? null : WorkflowExpression.Compile(bodylOCATEINFO);
+            WorkflowExpression.Validate(__workflow_bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
+            var __workflow_bodyfORM = bodyfORM == null ? null : WorkflowExpression.Compile(bodyfORM);
+            WorkflowExpression.Validate(__workflow_bodyfORM, nameof(bodyfORM), required: false);
             return new DeferredBodyAction<GetContactResponse>(() =>
             {
                 var apiCallPath = "/getContact";
@@ -211,16 +189,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 var bodypropCount = 0;
                 body["APPID"] = 702;
                 bodypropCount++;
-                if (bodyfORM != null)
+                if (__workflow_bodyfORM != null)
                 {
-                    body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                    body["FORM"] = ExpressionConverter.ConvertO(__workflow_bodyfORM);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                body["KEY"] = ExpressionConverter.ConvertO(__workflow_bodykEY);
                 bodypropCount++;
-                body["LOCATEINFO"] = ExpressionConverter.ConvertO(bodylOCATEINFO);
+                body["LOCATEINFO"] = ExpressionConverter.ConvertO(__workflow_bodylOCATEINFO);
                 body["MODE"] = "1";
                 bodypropCount++;
                 body["OBJECT"] = "PRSNOUT";
@@ -237,18 +215,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        [WorkflowExpressionFactory(nameof(__BuildGetCustomer))]
-        public IBodyWorkflowAction<GetCustomerResponse> GetCustomer([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodylOCATEINFO, [WorkflowExpression] Func<string> bodyfORM = null)
+        public IBodyWorkflowAction<GetCustomerResponse> GetCustomer(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetCustomerResponse> __BuildGetCustomer(WorkflowExpression<string> bodykEY, WorkflowExpression<string> bodylOCATEINFO, WorkflowExpression<string> bodyfORM = null)
-        {
-            WorkflowExpression.Validate(bodykEY, nameof(bodykEY), required: true);
-            WorkflowExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
-            WorkflowExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            var __workflow_bodykEY = bodykEY == null ? null : WorkflowExpression.Compile(bodykEY);
+            WorkflowExpression.Validate(__workflow_bodykEY, nameof(bodykEY), required: true);
+            var __workflow_bodylOCATEINFO = bodylOCATEINFO == null ? null : WorkflowExpression.Compile(bodylOCATEINFO);
+            WorkflowExpression.Validate(__workflow_bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
+            var __workflow_bodyfORM = bodyfORM == null ? null : WorkflowExpression.Compile(bodyfORM);
+            WorkflowExpression.Validate(__workflow_bodyfORM, nameof(bodyfORM), required: false);
             return new DeferredBodyAction<GetCustomerResponse>(() =>
             {
                 var apiCallPath = "/getCustomer";
@@ -257,16 +231,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 callPayload.Queries["op"] = Convert.ToString("s1service");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfORM != null)
+                if (__workflow_bodyfORM != null)
                 {
-                    body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                    body["FORM"] = ExpressionConverter.ConvertO(__workflow_bodyfORM);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                body["KEY"] = ExpressionConverter.ConvertO(__workflow_bodykEY);
                 bodypropCount++;
-                body["LOCATEINFO"] = ExpressionConverter.ConvertO(bodylOCATEINFO);
+                body["LOCATEINFO"] = ExpressionConverter.ConvertO(__workflow_bodylOCATEINFO);
                 body["MODE"] = "1";
                 bodypropCount++;
                 body["OBJECT"] = "CUSTOMER";
@@ -285,18 +259,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        [WorkflowExpressionFactory(nameof(__BuildGetDraftEntry))]
-        public IBodyWorkflowAction<GetDraftEntryResponse> GetDraftEntry([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodylOCATEINFO, [WorkflowExpression] Func<string> bodyfORM = null)
+        public IBodyWorkflowAction<GetDraftEntryResponse> GetDraftEntry(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetDraftEntryResponse> __BuildGetDraftEntry(WorkflowExpression<string> bodykEY, WorkflowExpression<string> bodylOCATEINFO, WorkflowExpression<string> bodyfORM = null)
-        {
-            WorkflowExpression.Validate(bodykEY, nameof(bodykEY), required: true);
-            WorkflowExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
-            WorkflowExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            var __workflow_bodykEY = bodykEY == null ? null : WorkflowExpression.Compile(bodykEY);
+            WorkflowExpression.Validate(__workflow_bodykEY, nameof(bodykEY), required: true);
+            var __workflow_bodylOCATEINFO = bodylOCATEINFO == null ? null : WorkflowExpression.Compile(bodylOCATEINFO);
+            WorkflowExpression.Validate(__workflow_bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
+            var __workflow_bodyfORM = bodyfORM == null ? null : WorkflowExpression.Compile(bodyfORM);
+            WorkflowExpression.Validate(__workflow_bodyfORM, nameof(bodyfORM), required: false);
             return new DeferredBodyAction<GetDraftEntryResponse>(() =>
             {
                 var apiCallPath = "/getDraftEntry";
@@ -307,16 +277,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 var bodypropCount = 0;
                 body["APPID"] = 702;
                 bodypropCount++;
-                if (bodyfORM != null)
+                if (__workflow_bodyfORM != null)
                 {
-                    body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                    body["FORM"] = ExpressionConverter.ConvertO(__workflow_bodyfORM);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                body["KEY"] = ExpressionConverter.ConvertO(__workflow_bodykEY);
                 bodypropCount++;
-                body["LOCATEINFO"] = ExpressionConverter.ConvertO(bodylOCATEINFO);
+                body["LOCATEINFO"] = ExpressionConverter.ConvertO(__workflow_bodylOCATEINFO);
                 body["MODE"] = "1";
                 bodypropCount++;
                 body["OBJECT"] = "SODRAFT";
@@ -333,18 +303,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        [WorkflowExpressionFactory(nameof(__BuildGetExpense))]
-        public IBodyWorkflowAction<GetExpenseResponse> GetExpense([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodylOCATEINFO, [WorkflowExpression] Func<string> bodyfORM = null)
+        public IBodyWorkflowAction<GetExpenseResponse> GetExpense(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetExpenseResponse> __BuildGetExpense(WorkflowExpression<string> bodykEY, WorkflowExpression<string> bodylOCATEINFO, WorkflowExpression<string> bodyfORM = null)
-        {
-            WorkflowExpression.Validate(bodykEY, nameof(bodykEY), required: true);
-            WorkflowExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
-            WorkflowExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            var __workflow_bodykEY = bodykEY == null ? null : WorkflowExpression.Compile(bodykEY);
+            WorkflowExpression.Validate(__workflow_bodykEY, nameof(bodykEY), required: true);
+            var __workflow_bodylOCATEINFO = bodylOCATEINFO == null ? null : WorkflowExpression.Compile(bodylOCATEINFO);
+            WorkflowExpression.Validate(__workflow_bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
+            var __workflow_bodyfORM = bodyfORM == null ? null : WorkflowExpression.Compile(bodyfORM);
+            WorkflowExpression.Validate(__workflow_bodyfORM, nameof(bodyfORM), required: false);
             return new DeferredBodyAction<GetExpenseResponse>(() =>
             {
                 var apiCallPath = "/getExpense";
@@ -353,16 +319,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 callPayload.Queries["op"] = Convert.ToString("s1service");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfORM != null)
+                if (__workflow_bodyfORM != null)
                 {
-                    body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                    body["FORM"] = ExpressionConverter.ConvertO(__workflow_bodyfORM);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                body["KEY"] = ExpressionConverter.ConvertO(__workflow_bodykEY);
                 bodypropCount++;
-                body["LOCATEINFO"] = ExpressionConverter.ConvertO(bodylOCATEINFO);
+                body["LOCATEINFO"] = ExpressionConverter.ConvertO(__workflow_bodylOCATEINFO);
                 body["MODE"] = "1";
                 bodypropCount++;
                 body["OBJECT"] = "LINEITEM";
@@ -381,18 +347,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        [WorkflowExpressionFactory(nameof(__BuildGetExpensesDoc))]
-        public IBodyWorkflowAction<GetExpensesDocResponse> GetExpensesDoc([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodylOCATEINFO = null)
+        public IBodyWorkflowAction<GetExpensesDocResponse> GetExpensesDoc(Expression<Func<string>> bodykEY, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodylOCATEINFO = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetExpensesDocResponse> __BuildGetExpensesDoc(WorkflowExpression<string> bodykEY, WorkflowExpression<string> bodyfORM = null, WorkflowExpression<string> bodylOCATEINFO = null)
-        {
-            WorkflowExpression.Validate(bodykEY, nameof(bodykEY), required: true);
-            WorkflowExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
-            WorkflowExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: false);
+            var __workflow_bodykEY = bodykEY == null ? null : WorkflowExpression.Compile(bodykEY);
+            WorkflowExpression.Validate(__workflow_bodykEY, nameof(bodykEY), required: true);
+            var __workflow_bodyfORM = bodyfORM == null ? null : WorkflowExpression.Compile(bodyfORM);
+            WorkflowExpression.Validate(__workflow_bodyfORM, nameof(bodyfORM), required: false);
+            var __workflow_bodylOCATEINFO = bodylOCATEINFO == null ? null : WorkflowExpression.Compile(bodylOCATEINFO);
+            WorkflowExpression.Validate(__workflow_bodylOCATEINFO, nameof(bodylOCATEINFO), required: false);
             return new DeferredBodyAction<GetExpensesDocResponse>(() =>
             {
                 var apiCallPath = "/getExpensesDoc";
@@ -403,19 +365,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 var bodypropCount = 0;
                 body["APPID"] = "702";
                 bodypropCount++;
-                if (bodyfORM != null)
+                if (__workflow_bodyfORM != null)
                 {
-                    body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                    body["FORM"] = ExpressionConverter.ConvertO(__workflow_bodyfORM);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
-                if (bodylOCATEINFO != null)
+                body["KEY"] = ExpressionConverter.ConvertO(__workflow_bodykEY);
+                if (__workflow_bodylOCATEINFO != null)
                 {
-                    if (bodylOCATEINFO != null)
+                    if (__workflow_bodylOCATEINFO != null)
                     {
-                        body["LOCATEINFO"] = ExpressionConverter.ConvertO(bodylOCATEINFO);
+                        body["LOCATEINFO"] = ExpressionConverter.ConvertO(__workflow_bodylOCATEINFO);
                         bodypropCount++;
                     }
 
@@ -443,18 +405,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        [WorkflowExpressionFactory(nameof(__BuildGetItedoc))]
-        public IBodyWorkflowAction<GetItedocResponse> GetItedoc([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodylOCATEINFO, [WorkflowExpression] Func<string> bodyfORM = null)
+        public IBodyWorkflowAction<GetItedocResponse> GetItedoc(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetItedocResponse> __BuildGetItedoc(WorkflowExpression<string> bodykEY, WorkflowExpression<string> bodylOCATEINFO, WorkflowExpression<string> bodyfORM = null)
-        {
-            WorkflowExpression.Validate(bodykEY, nameof(bodykEY), required: true);
-            WorkflowExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
-            WorkflowExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            var __workflow_bodykEY = bodykEY == null ? null : WorkflowExpression.Compile(bodykEY);
+            WorkflowExpression.Validate(__workflow_bodykEY, nameof(bodykEY), required: true);
+            var __workflow_bodylOCATEINFO = bodylOCATEINFO == null ? null : WorkflowExpression.Compile(bodylOCATEINFO);
+            WorkflowExpression.Validate(__workflow_bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
+            var __workflow_bodyfORM = bodyfORM == null ? null : WorkflowExpression.Compile(bodyfORM);
+            WorkflowExpression.Validate(__workflow_bodyfORM, nameof(bodyfORM), required: false);
             return new DeferredBodyAction<GetItedocResponse>(() =>
             {
                 var apiCallPath = "/getItedoc";
@@ -463,16 +421,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 callPayload.Queries["op"] = Convert.ToString("s1service");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfORM != null)
+                if (__workflow_bodyfORM != null)
                 {
-                    body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                    body["FORM"] = ExpressionConverter.ConvertO(__workflow_bodyfORM);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                body["KEY"] = ExpressionConverter.ConvertO(__workflow_bodykEY);
                 bodypropCount++;
-                body["LOCATEINFO"] = ExpressionConverter.ConvertO(bodylOCATEINFO);
+                body["LOCATEINFO"] = ExpressionConverter.ConvertO(__workflow_bodylOCATEINFO);
                 body["MODE"] = "1";
                 bodypropCount++;
                 body["OBJECT"] = "ITEDOC";
@@ -491,18 +449,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        [WorkflowExpressionFactory(nameof(__BuildGetItem))]
-        public IBodyWorkflowAction<GetItemResponse> GetItem([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodylOCATEINFO, [WorkflowExpression] Func<string> bodyfORM = null)
+        public IBodyWorkflowAction<GetItemResponse> GetItem(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetItemResponse> __BuildGetItem(WorkflowExpression<string> bodykEY, WorkflowExpression<string> bodylOCATEINFO, WorkflowExpression<string> bodyfORM = null)
-        {
-            WorkflowExpression.Validate(bodykEY, nameof(bodykEY), required: true);
-            WorkflowExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
-            WorkflowExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            var __workflow_bodykEY = bodykEY == null ? null : WorkflowExpression.Compile(bodykEY);
+            WorkflowExpression.Validate(__workflow_bodykEY, nameof(bodykEY), required: true);
+            var __workflow_bodylOCATEINFO = bodylOCATEINFO == null ? null : WorkflowExpression.Compile(bodylOCATEINFO);
+            WorkflowExpression.Validate(__workflow_bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
+            var __workflow_bodyfORM = bodyfORM == null ? null : WorkflowExpression.Compile(bodyfORM);
+            WorkflowExpression.Validate(__workflow_bodyfORM, nameof(bodyfORM), required: false);
             return new DeferredBodyAction<GetItemResponse>(() =>
             {
                 var apiCallPath = "/getItem";
@@ -511,16 +465,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 callPayload.Queries["op"] = Convert.ToString("s1service");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfORM != null)
+                if (__workflow_bodyfORM != null)
                 {
-                    body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                    body["FORM"] = ExpressionConverter.ConvertO(__workflow_bodyfORM);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                body["KEY"] = ExpressionConverter.ConvertO(__workflow_bodykEY);
                 bodypropCount++;
-                body["LOCATEINFO"] = ExpressionConverter.ConvertO(bodylOCATEINFO);
+                body["LOCATEINFO"] = ExpressionConverter.ConvertO(__workflow_bodylOCATEINFO);
                 body["MODE"] = "1";
                 bodypropCount++;
                 body["OBJECT"] = "ITEM";
@@ -539,18 +493,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        [WorkflowExpressionFactory(nameof(__BuildGetProject))]
-        public IBodyWorkflowAction<GetProjectResponse> GetProject([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodylOCATEINFO, [WorkflowExpression] Func<string> bodyfORM = null)
+        public IBodyWorkflowAction<GetProjectResponse> GetProject(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetProjectResponse> __BuildGetProject(WorkflowExpression<string> bodykEY, WorkflowExpression<string> bodylOCATEINFO, WorkflowExpression<string> bodyfORM = null)
-        {
-            WorkflowExpression.Validate(bodykEY, nameof(bodykEY), required: true);
-            WorkflowExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
-            WorkflowExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            var __workflow_bodykEY = bodykEY == null ? null : WorkflowExpression.Compile(bodykEY);
+            WorkflowExpression.Validate(__workflow_bodykEY, nameof(bodykEY), required: true);
+            var __workflow_bodylOCATEINFO = bodylOCATEINFO == null ? null : WorkflowExpression.Compile(bodylOCATEINFO);
+            WorkflowExpression.Validate(__workflow_bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
+            var __workflow_bodyfORM = bodyfORM == null ? null : WorkflowExpression.Compile(bodyfORM);
+            WorkflowExpression.Validate(__workflow_bodyfORM, nameof(bodyfORM), required: false);
             return new DeferredBodyAction<GetProjectResponse>(() =>
             {
                 var apiCallPath = "/getProject";
@@ -561,16 +511,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 var bodypropCount = 0;
                 body["APPID"] = 702;
                 bodypropCount++;
-                if (bodyfORM != null)
+                if (__workflow_bodyfORM != null)
                 {
-                    body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                    body["FORM"] = ExpressionConverter.ConvertO(__workflow_bodyfORM);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                body["KEY"] = ExpressionConverter.ConvertO(__workflow_bodykEY);
                 bodypropCount++;
-                body["LOCATEINFO"] = ExpressionConverter.ConvertO(bodylOCATEINFO);
+                body["LOCATEINFO"] = ExpressionConverter.ConvertO(__workflow_bodylOCATEINFO);
                 body["MODE"] = "1";
                 bodypropCount++;
                 body["OBJECT"] = "PRJC";
@@ -587,18 +537,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        [WorkflowExpressionFactory(nameof(__BuildGetPurdoc))]
-        public IBodyWorkflowAction<GetPurdocResponse> GetPurdoc([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodylOCATEINFO, [WorkflowExpression] Func<string> bodyfORM = null)
+        public IBodyWorkflowAction<GetPurdocResponse> GetPurdoc(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetPurdocResponse> __BuildGetPurdoc(WorkflowExpression<string> bodykEY, WorkflowExpression<string> bodylOCATEINFO, WorkflowExpression<string> bodyfORM = null)
-        {
-            WorkflowExpression.Validate(bodykEY, nameof(bodykEY), required: true);
-            WorkflowExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
-            WorkflowExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            var __workflow_bodykEY = bodykEY == null ? null : WorkflowExpression.Compile(bodykEY);
+            WorkflowExpression.Validate(__workflow_bodykEY, nameof(bodykEY), required: true);
+            var __workflow_bodylOCATEINFO = bodylOCATEINFO == null ? null : WorkflowExpression.Compile(bodylOCATEINFO);
+            WorkflowExpression.Validate(__workflow_bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
+            var __workflow_bodyfORM = bodyfORM == null ? null : WorkflowExpression.Compile(bodyfORM);
+            WorkflowExpression.Validate(__workflow_bodyfORM, nameof(bodyfORM), required: false);
             return new DeferredBodyAction<GetPurdocResponse>(() =>
             {
                 var apiCallPath = "/getPurdoc";
@@ -609,16 +555,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 var bodypropCount = 0;
                 body["APPID"] = 702;
                 bodypropCount++;
-                if (bodyfORM != null)
+                if (__workflow_bodyfORM != null)
                 {
-                    body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                    body["FORM"] = ExpressionConverter.ConvertO(__workflow_bodyfORM);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                body["KEY"] = ExpressionConverter.ConvertO(__workflow_bodykEY);
                 bodypropCount++;
-                body["LOCATEINFO"] = ExpressionConverter.ConvertO(bodylOCATEINFO);
+                body["LOCATEINFO"] = ExpressionConverter.ConvertO(__workflow_bodylOCATEINFO);
                 body["MODE"] = "1";
                 bodypropCount++;
                 body["OBJECT"] = "PURDOC";
@@ -635,18 +581,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        [WorkflowExpressionFactory(nameof(__BuildGetSaldoc))]
-        public IBodyWorkflowAction<GetSaldocResponse> GetSaldoc([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodylOCATEINFO, [WorkflowExpression] Func<string> bodyfORM = null)
+        public IBodyWorkflowAction<GetSaldocResponse> GetSaldoc(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetSaldocResponse> __BuildGetSaldoc(WorkflowExpression<string> bodykEY, WorkflowExpression<string> bodylOCATEINFO, WorkflowExpression<string> bodyfORM = null)
-        {
-            WorkflowExpression.Validate(bodykEY, nameof(bodykEY), required: true);
-            WorkflowExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
-            WorkflowExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            var __workflow_bodykEY = bodykEY == null ? null : WorkflowExpression.Compile(bodykEY);
+            WorkflowExpression.Validate(__workflow_bodykEY, nameof(bodykEY), required: true);
+            var __workflow_bodylOCATEINFO = bodylOCATEINFO == null ? null : WorkflowExpression.Compile(bodylOCATEINFO);
+            WorkflowExpression.Validate(__workflow_bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
+            var __workflow_bodyfORM = bodyfORM == null ? null : WorkflowExpression.Compile(bodyfORM);
+            WorkflowExpression.Validate(__workflow_bodyfORM, nameof(bodyfORM), required: false);
             return new DeferredBodyAction<GetSaldocResponse>(() =>
             {
                 var apiCallPath = "/getSaldoc";
@@ -655,16 +597,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 callPayload.Queries["op"] = Convert.ToString("s1service");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfORM != null)
+                if (__workflow_bodyfORM != null)
                 {
-                    body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                    body["FORM"] = ExpressionConverter.ConvertO(__workflow_bodyfORM);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                body["KEY"] = ExpressionConverter.ConvertO(__workflow_bodykEY);
                 bodypropCount++;
-                body["LOCATEINFO"] = ExpressionConverter.ConvertO(bodylOCATEINFO);
+                body["LOCATEINFO"] = ExpressionConverter.ConvertO(__workflow_bodylOCATEINFO);
                 body["MODE"] = "1";
                 bodypropCount++;
                 body["OBJECT"] = "SALDOC";
@@ -683,18 +625,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        [WorkflowExpressionFactory(nameof(__BuildGetService))]
-        public IBodyWorkflowAction<GetServiceResponse> GetService([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodylOCATEINFO, [WorkflowExpression] Func<string> bodyfORM = null)
+        public IBodyWorkflowAction<GetServiceResponse> GetService(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetServiceResponse> __BuildGetService(WorkflowExpression<string> bodykEY, WorkflowExpression<string> bodylOCATEINFO, WorkflowExpression<string> bodyfORM = null)
-        {
-            WorkflowExpression.Validate(bodykEY, nameof(bodykEY), required: true);
-            WorkflowExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
-            WorkflowExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            var __workflow_bodykEY = bodykEY == null ? null : WorkflowExpression.Compile(bodykEY);
+            WorkflowExpression.Validate(__workflow_bodykEY, nameof(bodykEY), required: true);
+            var __workflow_bodylOCATEINFO = bodylOCATEINFO == null ? null : WorkflowExpression.Compile(bodylOCATEINFO);
+            WorkflowExpression.Validate(__workflow_bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
+            var __workflow_bodyfORM = bodyfORM == null ? null : WorkflowExpression.Compile(bodyfORM);
+            WorkflowExpression.Validate(__workflow_bodyfORM, nameof(bodyfORM), required: false);
             return new DeferredBodyAction<GetServiceResponse>(() =>
             {
                 var apiCallPath = "/getService";
@@ -703,16 +641,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 callPayload.Queries["op"] = Convert.ToString("s1service");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfORM != null)
+                if (__workflow_bodyfORM != null)
                 {
-                    body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                    body["FORM"] = ExpressionConverter.ConvertO(__workflow_bodyfORM);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                body["KEY"] = ExpressionConverter.ConvertO(__workflow_bodykEY);
                 bodypropCount++;
-                body["LOCATEINFO"] = ExpressionConverter.ConvertO(bodylOCATEINFO);
+                body["LOCATEINFO"] = ExpressionConverter.ConvertO(__workflow_bodylOCATEINFO);
                 body["MODE"] = "1";
                 bodypropCount++;
                 body["OBJECT"] = "SERVICE";
@@ -731,18 +669,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        [WorkflowExpressionFactory(nameof(__BuildGetSOEMAIL))]
-        public IBodyWorkflowAction<GetSOEMAILResponse> GetSOEMAIL([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodylOCATEINFO, [WorkflowExpression] Func<string> bodyfORM = null)
+        public IBodyWorkflowAction<GetSOEMAILResponse> GetSOEMAIL(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetSOEMAILResponse> __BuildGetSOEMAIL(WorkflowExpression<string> bodykEY, WorkflowExpression<string> bodylOCATEINFO, WorkflowExpression<string> bodyfORM = null)
-        {
-            WorkflowExpression.Validate(bodykEY, nameof(bodykEY), required: true);
-            WorkflowExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
-            WorkflowExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            var __workflow_bodykEY = bodykEY == null ? null : WorkflowExpression.Compile(bodykEY);
+            WorkflowExpression.Validate(__workflow_bodykEY, nameof(bodykEY), required: true);
+            var __workflow_bodylOCATEINFO = bodylOCATEINFO == null ? null : WorkflowExpression.Compile(bodylOCATEINFO);
+            WorkflowExpression.Validate(__workflow_bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
+            var __workflow_bodyfORM = bodyfORM == null ? null : WorkflowExpression.Compile(bodyfORM);
+            WorkflowExpression.Validate(__workflow_bodyfORM, nameof(bodyfORM), required: false);
             return new DeferredBodyAction<GetSOEMAILResponse>(() =>
             {
                 var apiCallPath = "/getSoemail";
@@ -751,16 +685,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 callPayload.Queries["op"] = Convert.ToString("s1service");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfORM != null)
+                if (__workflow_bodyfORM != null)
                 {
-                    body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                    body["FORM"] = ExpressionConverter.ConvertO(__workflow_bodyfORM);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                body["KEY"] = ExpressionConverter.ConvertO(__workflow_bodykEY);
                 bodypropCount++;
-                body["LOCATEINFO"] = ExpressionConverter.ConvertO(bodylOCATEINFO);
+                body["LOCATEINFO"] = ExpressionConverter.ConvertO(__workflow_bodylOCATEINFO);
                 body["MODE"] = "1";
                 bodypropCount++;
                 body["OBJECT"] = "SOEMAIL";
@@ -779,18 +713,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        [WorkflowExpressionFactory(nameof(__BuildGetMeeting))]
-        public IBodyWorkflowAction<GetMeetingResponse> GetMeeting([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodylOCATEINFO, [WorkflowExpression] Func<string> bodyfORM = null)
+        public IBodyWorkflowAction<GetMeetingResponse> GetMeeting(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetMeetingResponse> __BuildGetMeeting(WorkflowExpression<string> bodykEY, WorkflowExpression<string> bodylOCATEINFO, WorkflowExpression<string> bodyfORM = null)
-        {
-            WorkflowExpression.Validate(bodykEY, nameof(bodykEY), required: true);
-            WorkflowExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
-            WorkflowExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            var __workflow_bodykEY = bodykEY == null ? null : WorkflowExpression.Compile(bodykEY);
+            WorkflowExpression.Validate(__workflow_bodykEY, nameof(bodykEY), required: true);
+            var __workflow_bodylOCATEINFO = bodylOCATEINFO == null ? null : WorkflowExpression.Compile(bodylOCATEINFO);
+            WorkflowExpression.Validate(__workflow_bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
+            var __workflow_bodyfORM = bodyfORM == null ? null : WorkflowExpression.Compile(bodyfORM);
+            WorkflowExpression.Validate(__workflow_bodyfORM, nameof(bodyfORM), required: false);
             return new DeferredBodyAction<GetMeetingResponse>(() =>
             {
                 var apiCallPath = "/getSomeeting";
@@ -799,16 +729,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 callPayload.Queries["op"] = Convert.ToString("s1service");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfORM != null)
+                if (__workflow_bodyfORM != null)
                 {
-                    body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                    body["FORM"] = ExpressionConverter.ConvertO(__workflow_bodyfORM);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                body["KEY"] = ExpressionConverter.ConvertO(__workflow_bodykEY);
                 bodypropCount++;
-                body["LOCATEINFO"] = ExpressionConverter.ConvertO(bodylOCATEINFO);
+                body["LOCATEINFO"] = ExpressionConverter.ConvertO(__workflow_bodylOCATEINFO);
                 body["MODE"] = "1";
                 bodypropCount++;
                 body["OBJECT"] = "SOMEETING";
@@ -827,18 +757,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        [WorkflowExpressionFactory(nameof(__BuildGetSOTASK))]
-        public IBodyWorkflowAction<GetSOTASKResponse> GetSOTASK([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodylOCATEINFO, [WorkflowExpression] Func<string> bodyfORM = null)
+        public IBodyWorkflowAction<GetSOTASKResponse> GetSOTASK(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetSOTASKResponse> __BuildGetSOTASK(WorkflowExpression<string> bodykEY, WorkflowExpression<string> bodylOCATEINFO, WorkflowExpression<string> bodyfORM = null)
-        {
-            WorkflowExpression.Validate(bodykEY, nameof(bodykEY), required: true);
-            WorkflowExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
-            WorkflowExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            var __workflow_bodykEY = bodykEY == null ? null : WorkflowExpression.Compile(bodykEY);
+            WorkflowExpression.Validate(__workflow_bodykEY, nameof(bodykEY), required: true);
+            var __workflow_bodylOCATEINFO = bodylOCATEINFO == null ? null : WorkflowExpression.Compile(bodylOCATEINFO);
+            WorkflowExpression.Validate(__workflow_bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
+            var __workflow_bodyfORM = bodyfORM == null ? null : WorkflowExpression.Compile(bodyfORM);
+            WorkflowExpression.Validate(__workflow_bodyfORM, nameof(bodyfORM), required: false);
             return new DeferredBodyAction<GetSOTASKResponse>(() =>
             {
                 var apiCallPath = "/getSotask";
@@ -847,16 +773,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 callPayload.Queries["op"] = Convert.ToString("s1service");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfORM != null)
+                if (__workflow_bodyfORM != null)
                 {
-                    body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                    body["FORM"] = ExpressionConverter.ConvertO(__workflow_bodyfORM);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                body["KEY"] = ExpressionConverter.ConvertO(__workflow_bodykEY);
                 bodypropCount++;
-                body["LOCATEINFO"] = ExpressionConverter.ConvertO(bodylOCATEINFO);
+                body["LOCATEINFO"] = ExpressionConverter.ConvertO(__workflow_bodylOCATEINFO);
                 body["MODE"] = "1";
                 bodypropCount++;
                 body["OBJECT"] = "SOTASK";
@@ -875,18 +801,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        [WorkflowExpressionFactory(nameof(__BuildGetSupplier))]
-        public IBodyWorkflowAction<GetSupplierResponse> GetSupplier([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodylOCATEINFO, [WorkflowExpression] Func<string> bodyfORM = null)
+        public IBodyWorkflowAction<GetSupplierResponse> GetSupplier(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetSupplierResponse> __BuildGetSupplier(WorkflowExpression<string> bodykEY, WorkflowExpression<string> bodylOCATEINFO, WorkflowExpression<string> bodyfORM = null)
-        {
-            WorkflowExpression.Validate(bodykEY, nameof(bodykEY), required: true);
-            WorkflowExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
-            WorkflowExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            var __workflow_bodykEY = bodykEY == null ? null : WorkflowExpression.Compile(bodykEY);
+            WorkflowExpression.Validate(__workflow_bodykEY, nameof(bodykEY), required: true);
+            var __workflow_bodylOCATEINFO = bodylOCATEINFO == null ? null : WorkflowExpression.Compile(bodylOCATEINFO);
+            WorkflowExpression.Validate(__workflow_bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
+            var __workflow_bodyfORM = bodyfORM == null ? null : WorkflowExpression.Compile(bodyfORM);
+            WorkflowExpression.Validate(__workflow_bodyfORM, nameof(bodyfORM), required: false);
             return new DeferredBodyAction<GetSupplierResponse>(() =>
             {
                 var apiCallPath = "/getSupplier";
@@ -897,16 +819,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 var bodypropCount = 0;
                 body["APPID"] = 702;
                 bodypropCount++;
-                if (bodyfORM != null)
+                if (__workflow_bodyfORM != null)
                 {
-                    body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                    body["FORM"] = ExpressionConverter.ConvertO(__workflow_bodyfORM);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                body["KEY"] = ExpressionConverter.ConvertO(__workflow_bodykEY);
                 bodypropCount++;
-                body["LOCATEINFO"] = ExpressionConverter.ConvertO(bodylOCATEINFO);
+                body["LOCATEINFO"] = ExpressionConverter.ConvertO(__workflow_bodylOCATEINFO);
                 body["MODE"] = "1";
                 bodypropCount++;
                 body["OBJECT"] = "SUPPLIER";
@@ -944,27 +866,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        [WorkflowExpressionFactory(nameof(__BuildSetCFNCUSDOC))]
-        public IBodyWorkflowAction<SetData200response> SetCFNCUSDOC([WorkflowExpression] Func<string> bodyvaluecFNCUSDOCsERIES, [WorkflowExpression] Func<string> bodyvaluecFNCUSDOCtRDR, [WorkflowExpression] Func<bodyvaluecARDLINESInputItem[]> bodyvaluecARDLINES = null, [WorkflowExpression] Func<bodyvaluecASHLINESInputItem[]> bodyvaluecASHLINES = null, [WorkflowExpression] Func<string> bodyvaluecFNCUSDOCcOLLECTOR = null, [WorkflowExpression] Func<string> bodyvaluecFNCUSDOCcOMMENTS = null, [WorkflowExpression] Func<string> bodyvaluecFNCUSDOCproject = null, [WorkflowExpression] Func<string> bodyvaluecFNCUSDOCsALESMAN = null, [WorkflowExpression] Func<string> bodyvaluecFNCUSDOCtRNDATE = null, [WorkflowExpression] Func<bodyvaluecHEQUELINESInputItem[]> bodyvaluecHEQUELINES = null, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null)
+        public IBodyWorkflowAction<SetData200response> SetCFNCUSDOC(Expression<Func<string>> bodyvaluecFNCUSDOCsERIES, Expression<Func<string>> bodyvaluecFNCUSDOCtRDR, Expression<Func<bodyvaluecARDLINESInputItem[]>> bodyvaluecARDLINES = null, Expression<Func<bodyvaluecASHLINESInputItem[]>> bodyvaluecASHLINES = null, Expression<Func<string>> bodyvaluecFNCUSDOCcOLLECTOR = null, Expression<Func<string>> bodyvaluecFNCUSDOCcOMMENTS = null, Expression<Func<string>> bodyvaluecFNCUSDOCproject = null, Expression<Func<string>> bodyvaluecFNCUSDOCsALESMAN = null, Expression<Func<string>> bodyvaluecFNCUSDOCtRNDATE = null, Expression<Func<bodyvaluecHEQUELINESInputItem[]>> bodyvaluecHEQUELINES = null, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SetData200response> __BuildSetCFNCUSDOC(WorkflowExpression<string> bodyvaluecFNCUSDOCsERIES, WorkflowExpression<string> bodyvaluecFNCUSDOCtRDR, WorkflowExpression<bodyvaluecARDLINESInputItem[]> bodyvaluecARDLINES = null, WorkflowExpression<bodyvaluecASHLINESInputItem[]> bodyvaluecASHLINES = null, WorkflowExpression<string> bodyvaluecFNCUSDOCcOLLECTOR = null, WorkflowExpression<string> bodyvaluecFNCUSDOCcOMMENTS = null, WorkflowExpression<string> bodyvaluecFNCUSDOCproject = null, WorkflowExpression<string> bodyvaluecFNCUSDOCsALESMAN = null, WorkflowExpression<string> bodyvaluecFNCUSDOCtRNDATE = null, WorkflowExpression<bodyvaluecHEQUELINESInputItem[]> bodyvaluecHEQUELINES = null, WorkflowExpression<string> bodyfORM = null, WorkflowExpression<string> bodykEY = null)
-        {
-            WorkflowExpression.Validate(bodyvaluecFNCUSDOCsERIES, nameof(bodyvaluecFNCUSDOCsERIES), required: true);
-            WorkflowExpression.Validate(bodyvaluecFNCUSDOCtRDR, nameof(bodyvaluecFNCUSDOCtRDR), required: true);
-            WorkflowExpression.Validate(bodyvaluecARDLINES, nameof(bodyvaluecARDLINES), required: false);
-            WorkflowExpression.Validate(bodyvaluecASHLINES, nameof(bodyvaluecASHLINES), required: false);
-            WorkflowExpression.Validate(bodyvaluecFNCUSDOCcOLLECTOR, nameof(bodyvaluecFNCUSDOCcOLLECTOR), required: false);
-            WorkflowExpression.Validate(bodyvaluecFNCUSDOCcOMMENTS, nameof(bodyvaluecFNCUSDOCcOMMENTS), required: false);
-            WorkflowExpression.Validate(bodyvaluecFNCUSDOCproject, nameof(bodyvaluecFNCUSDOCproject), required: false);
-            WorkflowExpression.Validate(bodyvaluecFNCUSDOCsALESMAN, nameof(bodyvaluecFNCUSDOCsALESMAN), required: false);
-            WorkflowExpression.Validate(bodyvaluecFNCUSDOCtRNDATE, nameof(bodyvaluecFNCUSDOCtRNDATE), required: false);
-            WorkflowExpression.Validate(bodyvaluecHEQUELINES, nameof(bodyvaluecHEQUELINES), required: false);
-            WorkflowExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
-            WorkflowExpression.Validate(bodykEY, nameof(bodykEY), required: false);
+            var __workflow_bodyvaluecFNCUSDOCsERIES = bodyvaluecFNCUSDOCsERIES == null ? null : WorkflowExpression.Compile(bodyvaluecFNCUSDOCsERIES);
+            WorkflowExpression.Validate(__workflow_bodyvaluecFNCUSDOCsERIES, nameof(bodyvaluecFNCUSDOCsERIES), required: true);
+            var __workflow_bodyvaluecFNCUSDOCtRDR = bodyvaluecFNCUSDOCtRDR == null ? null : WorkflowExpression.Compile(bodyvaluecFNCUSDOCtRDR);
+            WorkflowExpression.Validate(__workflow_bodyvaluecFNCUSDOCtRDR, nameof(bodyvaluecFNCUSDOCtRDR), required: true);
+            var __workflow_bodyvaluecARDLINES = bodyvaluecARDLINES == null ? null : WorkflowExpression.Compile(bodyvaluecARDLINES);
+            WorkflowExpression.Validate(__workflow_bodyvaluecARDLINES, nameof(bodyvaluecARDLINES), required: false);
+            var __workflow_bodyvaluecASHLINES = bodyvaluecASHLINES == null ? null : WorkflowExpression.Compile(bodyvaluecASHLINES);
+            WorkflowExpression.Validate(__workflow_bodyvaluecASHLINES, nameof(bodyvaluecASHLINES), required: false);
+            var __workflow_bodyvaluecFNCUSDOCcOLLECTOR = bodyvaluecFNCUSDOCcOLLECTOR == null ? null : WorkflowExpression.Compile(bodyvaluecFNCUSDOCcOLLECTOR);
+            WorkflowExpression.Validate(__workflow_bodyvaluecFNCUSDOCcOLLECTOR, nameof(bodyvaluecFNCUSDOCcOLLECTOR), required: false);
+            var __workflow_bodyvaluecFNCUSDOCcOMMENTS = bodyvaluecFNCUSDOCcOMMENTS == null ? null : WorkflowExpression.Compile(bodyvaluecFNCUSDOCcOMMENTS);
+            WorkflowExpression.Validate(__workflow_bodyvaluecFNCUSDOCcOMMENTS, nameof(bodyvaluecFNCUSDOCcOMMENTS), required: false);
+            var __workflow_bodyvaluecFNCUSDOCproject = bodyvaluecFNCUSDOCproject == null ? null : WorkflowExpression.Compile(bodyvaluecFNCUSDOCproject);
+            WorkflowExpression.Validate(__workflow_bodyvaluecFNCUSDOCproject, nameof(bodyvaluecFNCUSDOCproject), required: false);
+            var __workflow_bodyvaluecFNCUSDOCsALESMAN = bodyvaluecFNCUSDOCsALESMAN == null ? null : WorkflowExpression.Compile(bodyvaluecFNCUSDOCsALESMAN);
+            WorkflowExpression.Validate(__workflow_bodyvaluecFNCUSDOCsALESMAN, nameof(bodyvaluecFNCUSDOCsALESMAN), required: false);
+            var __workflow_bodyvaluecFNCUSDOCtRNDATE = bodyvaluecFNCUSDOCtRNDATE == null ? null : WorkflowExpression.Compile(bodyvaluecFNCUSDOCtRNDATE);
+            WorkflowExpression.Validate(__workflow_bodyvaluecFNCUSDOCtRNDATE, nameof(bodyvaluecFNCUSDOCtRNDATE), required: false);
+            var __workflow_bodyvaluecHEQUELINES = bodyvaluecHEQUELINES == null ? null : WorkflowExpression.Compile(bodyvaluecHEQUELINES);
+            WorkflowExpression.Validate(__workflow_bodyvaluecHEQUELINES, nameof(bodyvaluecHEQUELINES), required: false);
+            var __workflow_bodyfORM = bodyfORM == null ? null : WorkflowExpression.Compile(bodyfORM);
+            WorkflowExpression.Validate(__workflow_bodyfORM, nameof(bodyfORM), required: false);
+            var __workflow_bodykEY = bodykEY == null ? null : WorkflowExpression.Compile(bodykEY);
+            WorkflowExpression.Validate(__workflow_bodykEY, nameof(bodykEY), required: false);
             return new DeferredBodyAction<SetData200response>(() =>
             {
                 var apiCallPath = "/setCfncusdoc";
@@ -977,51 +904,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 bodypropCount++;
                 var dATAObject = new JObject();
                 var dATAObjectpropCount = 0;
-                if (bodyvaluecARDLINES != null)
+                if (__workflow_bodyvaluecARDLINES != null)
                 {
-                    dATAObject["CARDLINES"] = ExpressionConverter.ConvertO(bodyvaluecARDLINES);
+                    dATAObject["CARDLINES"] = ExpressionConverter.ConvertO(__workflow_bodyvaluecARDLINES);
                     dATAObjectpropCount++;
                 }
 
-                if (bodyvaluecASHLINES != null)
+                if (__workflow_bodyvaluecASHLINES != null)
                 {
-                    dATAObject["CASHLINES"] = ExpressionConverter.ConvertO(bodyvaluecASHLINES);
+                    dATAObject["CASHLINES"] = ExpressionConverter.ConvertO(__workflow_bodyvaluecASHLINES);
                     dATAObjectpropCount++;
                 }
 
                 var cFNCUSDOCObject = new JObject();
                 var cFNCUSDOCObjectpropCount = 0;
-                if (bodyvaluecFNCUSDOCcOLLECTOR != null)
+                if (__workflow_bodyvaluecFNCUSDOCcOLLECTOR != null)
                 {
-                    cFNCUSDOCObject["COLLECTOR"] = ExpressionConverter.ConvertO(bodyvaluecFNCUSDOCcOLLECTOR);
+                    cFNCUSDOCObject["COLLECTOR"] = ExpressionConverter.ConvertO(__workflow_bodyvaluecFNCUSDOCcOLLECTOR);
                     cFNCUSDOCObjectpropCount++;
                 }
 
-                if (bodyvaluecFNCUSDOCcOMMENTS != null)
+                if (__workflow_bodyvaluecFNCUSDOCcOMMENTS != null)
                 {
-                    cFNCUSDOCObject["COMMENTS"] = ExpressionConverter.ConvertO(bodyvaluecFNCUSDOCcOMMENTS);
+                    cFNCUSDOCObject["COMMENTS"] = ExpressionConverter.ConvertO(__workflow_bodyvaluecFNCUSDOCcOMMENTS);
                     cFNCUSDOCObjectpropCount++;
                 }
 
-                if (bodyvaluecFNCUSDOCproject != null)
+                if (__workflow_bodyvaluecFNCUSDOCproject != null)
                 {
-                    cFNCUSDOCObject["PRJC"] = ExpressionConverter.ConvertO(bodyvaluecFNCUSDOCproject);
+                    cFNCUSDOCObject["PRJC"] = ExpressionConverter.ConvertO(__workflow_bodyvaluecFNCUSDOCproject);
                     cFNCUSDOCObjectpropCount++;
                 }
 
-                if (bodyvaluecFNCUSDOCsALESMAN != null)
+                if (__workflow_bodyvaluecFNCUSDOCsALESMAN != null)
                 {
-                    cFNCUSDOCObject["SALESMAN"] = ExpressionConverter.ConvertO(bodyvaluecFNCUSDOCsALESMAN);
+                    cFNCUSDOCObject["SALESMAN"] = ExpressionConverter.ConvertO(__workflow_bodyvaluecFNCUSDOCsALESMAN);
                     cFNCUSDOCObjectpropCount++;
                 }
 
                 cFNCUSDOCObjectpropCount++;
-                cFNCUSDOCObject["SERIES"] = ExpressionConverter.ConvertO(bodyvaluecFNCUSDOCsERIES);
+                cFNCUSDOCObject["SERIES"] = ExpressionConverter.ConvertO(__workflow_bodyvaluecFNCUSDOCsERIES);
                 cFNCUSDOCObjectpropCount++;
-                cFNCUSDOCObject["TRDR"] = ExpressionConverter.ConvertO(bodyvaluecFNCUSDOCtRDR);
-                if (bodyvaluecFNCUSDOCtRNDATE != null)
+                cFNCUSDOCObject["TRDR"] = ExpressionConverter.ConvertO(__workflow_bodyvaluecFNCUSDOCtRDR);
+                if (__workflow_bodyvaluecFNCUSDOCtRNDATE != null)
                 {
-                    cFNCUSDOCObject["TRNDATE"] = ExpressionConverter.ConvertO(bodyvaluecFNCUSDOCtRNDATE);
+                    cFNCUSDOCObject["TRNDATE"] = ExpressionConverter.ConvertO(__workflow_bodyvaluecFNCUSDOCtRNDATE);
                     cFNCUSDOCObjectpropCount++;
                 }
 
@@ -1031,9 +958,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                     dATAObjectpropCount++;
                 }
 
-                if (bodyvaluecHEQUELINES != null)
+                if (__workflow_bodyvaluecHEQUELINES != null)
                 {
-                    dATAObject["CHEQUELINES"] = ExpressionConverter.ConvertO(bodyvaluecHEQUELINES);
+                    dATAObject["CHEQUELINES"] = ExpressionConverter.ConvertO(__workflow_bodyvaluecHEQUELINES);
                     dATAObjectpropCount++;
                 }
 
@@ -1043,15 +970,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                     bodypropCount++;
                 }
 
-                if (bodyfORM != null)
+                if (__workflow_bodyfORM != null)
                 {
-                    body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                    body["FORM"] = ExpressionConverter.ConvertO(__workflow_bodyfORM);
                     bodypropCount++;
                 }
 
-                if (bodykEY != null)
+                if (__workflow_bodykEY != null)
                 {
-                    body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                    body["KEY"] = ExpressionConverter.ConvertO(__workflow_bodykEY);
                     bodypropCount++;
                 }
 
@@ -1071,25 +998,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        [WorkflowExpressionFactory(nameof(__BuildSetCfnsupdoc))]
-        public IBodyWorkflowAction<SetData200response> SetCfnsupdoc([WorkflowExpression] Func<string> bodyvaluecFNSUPDOCsERIES, [WorkflowExpression] Func<string> bodyvaluecFNSUPDOCtRDR, [WorkflowExpression] Func<bodyvaluecARDLINESInputItem[]> bodyvaluecARDLINES = null, [WorkflowExpression] Func<bodyvaluecASHLINESInputItem2[]> bodyvaluecASHLINES = null, [WorkflowExpression] Func<string> bodyvaluecFNSUPDOCpRJC = null, [WorkflowExpression] Func<string> bodyvaluecFNSUPDOCrEMARKS = null, [WorkflowExpression] Func<string> bodyvaluecFNSUPDOCtRNDATE = null, [WorkflowExpression] Func<bodyvaluecHEQUELINESInputItem[]> bodyvaluecHEQUELINES = null, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null)
+        public IBodyWorkflowAction<SetData200response> SetCfnsupdoc(Expression<Func<string>> bodyvaluecFNSUPDOCsERIES, Expression<Func<string>> bodyvaluecFNSUPDOCtRDR, Expression<Func<bodyvaluecARDLINESInputItem[]>> bodyvaluecARDLINES = null, Expression<Func<bodyvaluecASHLINESInputItem2[]>> bodyvaluecASHLINES = null, Expression<Func<string>> bodyvaluecFNSUPDOCpRJC = null, Expression<Func<string>> bodyvaluecFNSUPDOCrEMARKS = null, Expression<Func<string>> bodyvaluecFNSUPDOCtRNDATE = null, Expression<Func<bodyvaluecHEQUELINESInputItem[]>> bodyvaluecHEQUELINES = null, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SetData200response> __BuildSetCfnsupdoc(WorkflowExpression<string> bodyvaluecFNSUPDOCsERIES, WorkflowExpression<string> bodyvaluecFNSUPDOCtRDR, WorkflowExpression<bodyvaluecARDLINESInputItem[]> bodyvaluecARDLINES = null, WorkflowExpression<bodyvaluecASHLINESInputItem2[]> bodyvaluecASHLINES = null, WorkflowExpression<string> bodyvaluecFNSUPDOCpRJC = null, WorkflowExpression<string> bodyvaluecFNSUPDOCrEMARKS = null, WorkflowExpression<string> bodyvaluecFNSUPDOCtRNDATE = null, WorkflowExpression<bodyvaluecHEQUELINESInputItem[]> bodyvaluecHEQUELINES = null, WorkflowExpression<string> bodyfORM = null, WorkflowExpression<string> bodykEY = null)
-        {
-            WorkflowExpression.Validate(bodyvaluecFNSUPDOCsERIES, nameof(bodyvaluecFNSUPDOCsERIES), required: true);
-            WorkflowExpression.Validate(bodyvaluecFNSUPDOCtRDR, nameof(bodyvaluecFNSUPDOCtRDR), required: true);
-            WorkflowExpression.Validate(bodyvaluecARDLINES, nameof(bodyvaluecARDLINES), required: false);
-            WorkflowExpression.Validate(bodyvaluecASHLINES, nameof(bodyvaluecASHLINES), required: false);
-            WorkflowExpression.Validate(bodyvaluecFNSUPDOCpRJC, nameof(bodyvaluecFNSUPDOCpRJC), required: false);
-            WorkflowExpression.Validate(bodyvaluecFNSUPDOCrEMARKS, nameof(bodyvaluecFNSUPDOCrEMARKS), required: false);
-            WorkflowExpression.Validate(bodyvaluecFNSUPDOCtRNDATE, nameof(bodyvaluecFNSUPDOCtRNDATE), required: false);
-            WorkflowExpression.Validate(bodyvaluecHEQUELINES, nameof(bodyvaluecHEQUELINES), required: false);
-            WorkflowExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
-            WorkflowExpression.Validate(bodykEY, nameof(bodykEY), required: false);
+            var __workflow_bodyvaluecFNSUPDOCsERIES = bodyvaluecFNSUPDOCsERIES == null ? null : WorkflowExpression.Compile(bodyvaluecFNSUPDOCsERIES);
+            WorkflowExpression.Validate(__workflow_bodyvaluecFNSUPDOCsERIES, nameof(bodyvaluecFNSUPDOCsERIES), required: true);
+            var __workflow_bodyvaluecFNSUPDOCtRDR = bodyvaluecFNSUPDOCtRDR == null ? null : WorkflowExpression.Compile(bodyvaluecFNSUPDOCtRDR);
+            WorkflowExpression.Validate(__workflow_bodyvaluecFNSUPDOCtRDR, nameof(bodyvaluecFNSUPDOCtRDR), required: true);
+            var __workflow_bodyvaluecARDLINES = bodyvaluecARDLINES == null ? null : WorkflowExpression.Compile(bodyvaluecARDLINES);
+            WorkflowExpression.Validate(__workflow_bodyvaluecARDLINES, nameof(bodyvaluecARDLINES), required: false);
+            var __workflow_bodyvaluecASHLINES = bodyvaluecASHLINES == null ? null : WorkflowExpression.Compile(bodyvaluecASHLINES);
+            WorkflowExpression.Validate(__workflow_bodyvaluecASHLINES, nameof(bodyvaluecASHLINES), required: false);
+            var __workflow_bodyvaluecFNSUPDOCpRJC = bodyvaluecFNSUPDOCpRJC == null ? null : WorkflowExpression.Compile(bodyvaluecFNSUPDOCpRJC);
+            WorkflowExpression.Validate(__workflow_bodyvaluecFNSUPDOCpRJC, nameof(bodyvaluecFNSUPDOCpRJC), required: false);
+            var __workflow_bodyvaluecFNSUPDOCrEMARKS = bodyvaluecFNSUPDOCrEMARKS == null ? null : WorkflowExpression.Compile(bodyvaluecFNSUPDOCrEMARKS);
+            WorkflowExpression.Validate(__workflow_bodyvaluecFNSUPDOCrEMARKS, nameof(bodyvaluecFNSUPDOCrEMARKS), required: false);
+            var __workflow_bodyvaluecFNSUPDOCtRNDATE = bodyvaluecFNSUPDOCtRNDATE == null ? null : WorkflowExpression.Compile(bodyvaluecFNSUPDOCtRNDATE);
+            WorkflowExpression.Validate(__workflow_bodyvaluecFNSUPDOCtRNDATE, nameof(bodyvaluecFNSUPDOCtRNDATE), required: false);
+            var __workflow_bodyvaluecHEQUELINES = bodyvaluecHEQUELINES == null ? null : WorkflowExpression.Compile(bodyvaluecHEQUELINES);
+            WorkflowExpression.Validate(__workflow_bodyvaluecHEQUELINES, nameof(bodyvaluecHEQUELINES), required: false);
+            var __workflow_bodyfORM = bodyfORM == null ? null : WorkflowExpression.Compile(bodyfORM);
+            WorkflowExpression.Validate(__workflow_bodyfORM, nameof(bodyfORM), required: false);
+            var __workflow_bodykEY = bodykEY == null ? null : WorkflowExpression.Compile(bodykEY);
+            WorkflowExpression.Validate(__workflow_bodykEY, nameof(bodykEY), required: false);
             return new DeferredBodyAction<SetData200response>(() =>
             {
                 var apiCallPath = "/setCfnsupdoc";
@@ -1102,39 +1032,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 bodypropCount++;
                 var dATAObject = new JObject();
                 var dATAObjectpropCount = 0;
-                if (bodyvaluecARDLINES != null)
+                if (__workflow_bodyvaluecARDLINES != null)
                 {
-                    dATAObject["CARDLINES"] = ExpressionConverter.ConvertO(bodyvaluecARDLINES);
+                    dATAObject["CARDLINES"] = ExpressionConverter.ConvertO(__workflow_bodyvaluecARDLINES);
                     dATAObjectpropCount++;
                 }
 
-                if (bodyvaluecASHLINES != null)
+                if (__workflow_bodyvaluecASHLINES != null)
                 {
-                    dATAObject["CASHLINES"] = ExpressionConverter.ConvertO(bodyvaluecASHLINES);
+                    dATAObject["CASHLINES"] = ExpressionConverter.ConvertO(__workflow_bodyvaluecASHLINES);
                     dATAObjectpropCount++;
                 }
 
                 var cFNSUPDOCObject = new JObject();
                 var cFNSUPDOCObjectpropCount = 0;
-                if (bodyvaluecFNSUPDOCpRJC != null)
+                if (__workflow_bodyvaluecFNSUPDOCpRJC != null)
                 {
-                    cFNSUPDOCObject["PRJC"] = ExpressionConverter.ConvertO(bodyvaluecFNSUPDOCpRJC);
+                    cFNSUPDOCObject["PRJC"] = ExpressionConverter.ConvertO(__workflow_bodyvaluecFNSUPDOCpRJC);
                     cFNSUPDOCObjectpropCount++;
                 }
 
-                if (bodyvaluecFNSUPDOCrEMARKS != null)
+                if (__workflow_bodyvaluecFNSUPDOCrEMARKS != null)
                 {
-                    cFNSUPDOCObject["REMARKS"] = ExpressionConverter.ConvertO(bodyvaluecFNSUPDOCrEMARKS);
+                    cFNSUPDOCObject["REMARKS"] = ExpressionConverter.ConvertO(__workflow_bodyvaluecFNSUPDOCrEMARKS);
                     cFNSUPDOCObjectpropCount++;
                 }
 
                 cFNSUPDOCObjectpropCount++;
-                cFNSUPDOCObject["SERIES"] = ExpressionConverter.ConvertO(bodyvaluecFNSUPDOCsERIES);
+                cFNSUPDOCObject["SERIES"] = ExpressionConverter.ConvertO(__workflow_bodyvaluecFNSUPDOCsERIES);
                 cFNSUPDOCObjectpropCount++;
-                cFNSUPDOCObject["TRDR"] = ExpressionConverter.ConvertO(bodyvaluecFNSUPDOCtRDR);
-                if (bodyvaluecFNSUPDOCtRNDATE != null)
+                cFNSUPDOCObject["TRDR"] = ExpressionConverter.ConvertO(__workflow_bodyvaluecFNSUPDOCtRDR);
+                if (__workflow_bodyvaluecFNSUPDOCtRNDATE != null)
                 {
-                    cFNSUPDOCObject["TRNDATE"] = ExpressionConverter.ConvertO(bodyvaluecFNSUPDOCtRNDATE);
+                    cFNSUPDOCObject["TRNDATE"] = ExpressionConverter.ConvertO(__workflow_bodyvaluecFNSUPDOCtRNDATE);
                     cFNSUPDOCObjectpropCount++;
                 }
 
@@ -1144,9 +1074,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                     dATAObjectpropCount++;
                 }
 
-                if (bodyvaluecHEQUELINES != null)
+                if (__workflow_bodyvaluecHEQUELINES != null)
                 {
-                    dATAObject["CHEQUELINES"] = ExpressionConverter.ConvertO(bodyvaluecHEQUELINES);
+                    dATAObject["CHEQUELINES"] = ExpressionConverter.ConvertO(__workflow_bodyvaluecHEQUELINES);
                     dATAObjectpropCount++;
                 }
 
@@ -1156,15 +1086,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                     bodypropCount++;
                 }
 
-                if (bodyfORM != null)
+                if (__workflow_bodyfORM != null)
                 {
-                    body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                    body["FORM"] = ExpressionConverter.ConvertO(__workflow_bodyfORM);
                     bodypropCount++;
                 }
 
-                if (bodykEY != null)
+                if (__workflow_bodykEY != null)
                 {
-                    body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                    body["KEY"] = ExpressionConverter.ConvertO(__workflow_bodykEY);
                     bodypropCount++;
                 }
 
@@ -1184,33 +1114,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        [WorkflowExpressionFactory(nameof(__BuildSetCheque))]
-        public IBodyWorkflowAction<SetData200response> SetCheque([WorkflowExpression] Func<string> bodyvaluecHEQUEbalance, [WorkflowExpression] Func<string> bodyvaluecHEQUEchequeNumber, [WorkflowExpression] Func<string> bodyvaluecHEQUEstatus, [WorkflowExpression] Func<string> bodyvaluecHEQUEvalue, [WorkflowExpression] Func<string> bodyvaluecHEQUEissueDate, [WorkflowExpression] Func<string> bodyvaluecHEQUEdueDate, [WorkflowExpression] Func<string> bodyvaluecHEQUEseries, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null, [WorkflowExpression] Func<string> bodyvaluecHEQUEbank = null, [WorkflowExpression] Func<string> bodyvaluecHEQUEissuerAddress = null, [WorkflowExpression] Func<string> bodyvaluecHEQUEissuerName = null, [WorkflowExpression] Func<string> bodyvaluecHEQUEissuerTelephone = null, [WorkflowExpression] Func<string> bodyvaluecHEQUEreceiptDate = null, [WorkflowExpression] Func<string> bodyvaluecHEQUEholderAddress = null, [WorkflowExpression] Func<string> bodyvaluecHEQUEholderName = null, [WorkflowExpression] Func<string> bodyvaluecHEQUEissuerTRNo = null, [WorkflowExpression] Func<string> bodyvaluecHEQUEcomments = null)
+        public IBodyWorkflowAction<SetData200response> SetCheque(Expression<Func<string>> bodyvaluecHEQUEbalance, Expression<Func<string>> bodyvaluecHEQUEchequeNumber, Expression<Func<string>> bodyvaluecHEQUEstatus, Expression<Func<string>> bodyvaluecHEQUEvalue, Expression<Func<string>> bodyvaluecHEQUEissueDate, Expression<Func<string>> bodyvaluecHEQUEdueDate, Expression<Func<string>> bodyvaluecHEQUEseries, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null, Expression<Func<string>> bodyvaluecHEQUEbank = null, Expression<Func<string>> bodyvaluecHEQUEissuerAddress = null, Expression<Func<string>> bodyvaluecHEQUEissuerName = null, Expression<Func<string>> bodyvaluecHEQUEissuerTelephone = null, Expression<Func<string>> bodyvaluecHEQUEreceiptDate = null, Expression<Func<string>> bodyvaluecHEQUEholderAddress = null, Expression<Func<string>> bodyvaluecHEQUEholderName = null, Expression<Func<string>> bodyvaluecHEQUEissuerTRNo = null, Expression<Func<string>> bodyvaluecHEQUEcomments = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SetData200response> __BuildSetCheque(WorkflowExpression<string> bodyvaluecHEQUEbalance, WorkflowExpression<string> bodyvaluecHEQUEchequeNumber, WorkflowExpression<string> bodyvaluecHEQUEstatus, WorkflowExpression<string> bodyvaluecHEQUEvalue, WorkflowExpression<string> bodyvaluecHEQUEissueDate, WorkflowExpression<string> bodyvaluecHEQUEdueDate, WorkflowExpression<string> bodyvaluecHEQUEseries, WorkflowExpression<string> bodyfORM = null, WorkflowExpression<string> bodykEY = null, WorkflowExpression<string> bodyvaluecHEQUEbank = null, WorkflowExpression<string> bodyvaluecHEQUEissuerAddress = null, WorkflowExpression<string> bodyvaluecHEQUEissuerName = null, WorkflowExpression<string> bodyvaluecHEQUEissuerTelephone = null, WorkflowExpression<string> bodyvaluecHEQUEreceiptDate = null, WorkflowExpression<string> bodyvaluecHEQUEholderAddress = null, WorkflowExpression<string> bodyvaluecHEQUEholderName = null, WorkflowExpression<string> bodyvaluecHEQUEissuerTRNo = null, WorkflowExpression<string> bodyvaluecHEQUEcomments = null)
-        {
-            WorkflowExpression.Validate(bodyvaluecHEQUEbalance, nameof(bodyvaluecHEQUEbalance), required: true);
-            WorkflowExpression.Validate(bodyvaluecHEQUEchequeNumber, nameof(bodyvaluecHEQUEchequeNumber), required: true);
-            WorkflowExpression.Validate(bodyvaluecHEQUEstatus, nameof(bodyvaluecHEQUEstatus), required: true);
-            WorkflowExpression.Validate(bodyvaluecHEQUEvalue, nameof(bodyvaluecHEQUEvalue), required: true);
-            WorkflowExpression.Validate(bodyvaluecHEQUEissueDate, nameof(bodyvaluecHEQUEissueDate), required: true);
-            WorkflowExpression.Validate(bodyvaluecHEQUEdueDate, nameof(bodyvaluecHEQUEdueDate), required: true);
-            WorkflowExpression.Validate(bodyvaluecHEQUEseries, nameof(bodyvaluecHEQUEseries), required: true);
-            WorkflowExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
-            WorkflowExpression.Validate(bodykEY, nameof(bodykEY), required: false);
-            WorkflowExpression.Validate(bodyvaluecHEQUEbank, nameof(bodyvaluecHEQUEbank), required: false);
-            WorkflowExpression.Validate(bodyvaluecHEQUEissuerAddress, nameof(bodyvaluecHEQUEissuerAddress), required: false);
-            WorkflowExpression.Validate(bodyvaluecHEQUEissuerName, nameof(bodyvaluecHEQUEissuerName), required: false);
-            WorkflowExpression.Validate(bodyvaluecHEQUEissuerTelephone, nameof(bodyvaluecHEQUEissuerTelephone), required: false);
-            WorkflowExpression.Validate(bodyvaluecHEQUEreceiptDate, nameof(bodyvaluecHEQUEreceiptDate), required: false);
-            WorkflowExpression.Validate(bodyvaluecHEQUEholderAddress, nameof(bodyvaluecHEQUEholderAddress), required: false);
-            WorkflowExpression.Validate(bodyvaluecHEQUEholderName, nameof(bodyvaluecHEQUEholderName), required: false);
-            WorkflowExpression.Validate(bodyvaluecHEQUEissuerTRNo, nameof(bodyvaluecHEQUEissuerTRNo), required: false);
-            WorkflowExpression.Validate(bodyvaluecHEQUEcomments, nameof(bodyvaluecHEQUEcomments), required: false);
+            var __workflow_bodyvaluecHEQUEbalance = bodyvaluecHEQUEbalance == null ? null : WorkflowExpression.Compile(bodyvaluecHEQUEbalance);
+            WorkflowExpression.Validate(__workflow_bodyvaluecHEQUEbalance, nameof(bodyvaluecHEQUEbalance), required: true);
+            var __workflow_bodyvaluecHEQUEchequeNumber = bodyvaluecHEQUEchequeNumber == null ? null : WorkflowExpression.Compile(bodyvaluecHEQUEchequeNumber);
+            WorkflowExpression.Validate(__workflow_bodyvaluecHEQUEchequeNumber, nameof(bodyvaluecHEQUEchequeNumber), required: true);
+            var __workflow_bodyvaluecHEQUEstatus = bodyvaluecHEQUEstatus == null ? null : WorkflowExpression.Compile(bodyvaluecHEQUEstatus);
+            WorkflowExpression.Validate(__workflow_bodyvaluecHEQUEstatus, nameof(bodyvaluecHEQUEstatus), required: true);
+            var __workflow_bodyvaluecHEQUEvalue = bodyvaluecHEQUEvalue == null ? null : WorkflowExpression.Compile(bodyvaluecHEQUEvalue);
+            WorkflowExpression.Validate(__workflow_bodyvaluecHEQUEvalue, nameof(bodyvaluecHEQUEvalue), required: true);
+            var __workflow_bodyvaluecHEQUEissueDate = bodyvaluecHEQUEissueDate == null ? null : WorkflowExpression.Compile(bodyvaluecHEQUEissueDate);
+            WorkflowExpression.Validate(__workflow_bodyvaluecHEQUEissueDate, nameof(bodyvaluecHEQUEissueDate), required: true);
+            var __workflow_bodyvaluecHEQUEdueDate = bodyvaluecHEQUEdueDate == null ? null : WorkflowExpression.Compile(bodyvaluecHEQUEdueDate);
+            WorkflowExpression.Validate(__workflow_bodyvaluecHEQUEdueDate, nameof(bodyvaluecHEQUEdueDate), required: true);
+            var __workflow_bodyvaluecHEQUEseries = bodyvaluecHEQUEseries == null ? null : WorkflowExpression.Compile(bodyvaluecHEQUEseries);
+            WorkflowExpression.Validate(__workflow_bodyvaluecHEQUEseries, nameof(bodyvaluecHEQUEseries), required: true);
+            var __workflow_bodyfORM = bodyfORM == null ? null : WorkflowExpression.Compile(bodyfORM);
+            WorkflowExpression.Validate(__workflow_bodyfORM, nameof(bodyfORM), required: false);
+            var __workflow_bodykEY = bodykEY == null ? null : WorkflowExpression.Compile(bodykEY);
+            WorkflowExpression.Validate(__workflow_bodykEY, nameof(bodykEY), required: false);
+            var __workflow_bodyvaluecHEQUEbank = bodyvaluecHEQUEbank == null ? null : WorkflowExpression.Compile(bodyvaluecHEQUEbank);
+            WorkflowExpression.Validate(__workflow_bodyvaluecHEQUEbank, nameof(bodyvaluecHEQUEbank), required: false);
+            var __workflow_bodyvaluecHEQUEissuerAddress = bodyvaluecHEQUEissuerAddress == null ? null : WorkflowExpression.Compile(bodyvaluecHEQUEissuerAddress);
+            WorkflowExpression.Validate(__workflow_bodyvaluecHEQUEissuerAddress, nameof(bodyvaluecHEQUEissuerAddress), required: false);
+            var __workflow_bodyvaluecHEQUEissuerName = bodyvaluecHEQUEissuerName == null ? null : WorkflowExpression.Compile(bodyvaluecHEQUEissuerName);
+            WorkflowExpression.Validate(__workflow_bodyvaluecHEQUEissuerName, nameof(bodyvaluecHEQUEissuerName), required: false);
+            var __workflow_bodyvaluecHEQUEissuerTelephone = bodyvaluecHEQUEissuerTelephone == null ? null : WorkflowExpression.Compile(bodyvaluecHEQUEissuerTelephone);
+            WorkflowExpression.Validate(__workflow_bodyvaluecHEQUEissuerTelephone, nameof(bodyvaluecHEQUEissuerTelephone), required: false);
+            var __workflow_bodyvaluecHEQUEreceiptDate = bodyvaluecHEQUEreceiptDate == null ? null : WorkflowExpression.Compile(bodyvaluecHEQUEreceiptDate);
+            WorkflowExpression.Validate(__workflow_bodyvaluecHEQUEreceiptDate, nameof(bodyvaluecHEQUEreceiptDate), required: false);
+            var __workflow_bodyvaluecHEQUEholderAddress = bodyvaluecHEQUEholderAddress == null ? null : WorkflowExpression.Compile(bodyvaluecHEQUEholderAddress);
+            WorkflowExpression.Validate(__workflow_bodyvaluecHEQUEholderAddress, nameof(bodyvaluecHEQUEholderAddress), required: false);
+            var __workflow_bodyvaluecHEQUEholderName = bodyvaluecHEQUEholderName == null ? null : WorkflowExpression.Compile(bodyvaluecHEQUEholderName);
+            WorkflowExpression.Validate(__workflow_bodyvaluecHEQUEholderName, nameof(bodyvaluecHEQUEholderName), required: false);
+            var __workflow_bodyvaluecHEQUEissuerTRNo = bodyvaluecHEQUEissuerTRNo == null ? null : WorkflowExpression.Compile(bodyvaluecHEQUEissuerTRNo);
+            WorkflowExpression.Validate(__workflow_bodyvaluecHEQUEissuerTRNo, nameof(bodyvaluecHEQUEissuerTRNo), required: false);
+            var __workflow_bodyvaluecHEQUEcomments = bodyvaluecHEQUEcomments == null ? null : WorkflowExpression.Compile(bodyvaluecHEQUEcomments);
+            WorkflowExpression.Validate(__workflow_bodyvaluecHEQUEcomments, nameof(bodyvaluecHEQUEcomments), required: false);
             return new DeferredBodyAction<SetData200response>(() =>
             {
                 var apiCallPath = "/setCheque";
@@ -1219,15 +1160,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 callPayload.Queries["op"] = Convert.ToString("s1service");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfORM != null)
+                if (__workflow_bodyfORM != null)
                 {
-                    body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                    body["FORM"] = ExpressionConverter.ConvertO(__workflow_bodyfORM);
                     bodypropCount++;
                 }
 
-                if (bodykEY != null)
+                if (__workflow_bodykEY != null)
                 {
-                    body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                    body["KEY"] = ExpressionConverter.ConvertO(__workflow_bodykEY);
                     bodypropCount++;
                 }
 
@@ -1241,74 +1182,74 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 var dataObjectpropCount = 0;
                 var cHEQUEObject = new JObject();
                 var cHEQUEObjectpropCount = 0;
-                if (bodyvaluecHEQUEbank != null)
+                if (__workflow_bodyvaluecHEQUEbank != null)
                 {
-                    cHEQUEObject["BANK"] = ExpressionConverter.ConvertO(bodyvaluecHEQUEbank);
+                    cHEQUEObject["BANK"] = ExpressionConverter.ConvertO(__workflow_bodyvaluecHEQUEbank);
                     cHEQUEObjectpropCount++;
                 }
 
                 cHEQUEObjectpropCount++;
-                cHEQUEObject["CHEQUEBAL"] = ExpressionConverter.ConvertO(bodyvaluecHEQUEbalance);
+                cHEQUEObject["CHEQUEBAL"] = ExpressionConverter.ConvertO(__workflow_bodyvaluecHEQUEbalance);
                 cHEQUEObjectpropCount++;
-                cHEQUEObject["CHEQUENUMBER"] = ExpressionConverter.ConvertO(bodyvaluecHEQUEchequeNumber);
+                cHEQUEObject["CHEQUENUMBER"] = ExpressionConverter.ConvertO(__workflow_bodyvaluecHEQUEchequeNumber);
                 cHEQUEObjectpropCount++;
-                cHEQUEObject["CHEQUESTATES"] = ExpressionConverter.ConvertO(bodyvaluecHEQUEstatus);
+                cHEQUEObject["CHEQUESTATES"] = ExpressionConverter.ConvertO(__workflow_bodyvaluecHEQUEstatus);
                 cHEQUEObjectpropCount++;
-                cHEQUEObject["CHEQUEVAL"] = ExpressionConverter.ConvertO(bodyvaluecHEQUEvalue);
-                if (bodyvaluecHEQUEissuerAddress != null)
+                cHEQUEObject["CHEQUEVAL"] = ExpressionConverter.ConvertO(__workflow_bodyvaluecHEQUEvalue);
+                if (__workflow_bodyvaluecHEQUEissuerAddress != null)
                 {
-                    cHEQUEObject["CREATORADDR"] = ExpressionConverter.ConvertO(bodyvaluecHEQUEissuerAddress);
+                    cHEQUEObject["CREATORADDR"] = ExpressionConverter.ConvertO(__workflow_bodyvaluecHEQUEissuerAddress);
                     cHEQUEObjectpropCount++;
                 }
 
-                if (bodyvaluecHEQUEissuerName != null)
+                if (__workflow_bodyvaluecHEQUEissuerName != null)
                 {
-                    cHEQUEObject["CREATORNAME"] = ExpressionConverter.ConvertO(bodyvaluecHEQUEissuerName);
+                    cHEQUEObject["CREATORNAME"] = ExpressionConverter.ConvertO(__workflow_bodyvaluecHEQUEissuerName);
                     cHEQUEObjectpropCount++;
                 }
 
-                if (bodyvaluecHEQUEissuerTelephone != null)
+                if (__workflow_bodyvaluecHEQUEissuerTelephone != null)
                 {
-                    cHEQUEObject["CREATORPHONE"] = ExpressionConverter.ConvertO(bodyvaluecHEQUEissuerTelephone);
+                    cHEQUEObject["CREATORPHONE"] = ExpressionConverter.ConvertO(__workflow_bodyvaluecHEQUEissuerTelephone);
                     cHEQUEObjectpropCount++;
                 }
 
-                if (bodyvaluecHEQUEreceiptDate != null)
+                if (__workflow_bodyvaluecHEQUEreceiptDate != null)
                 {
-                    cHEQUEObject["CRTDATE"] = ExpressionConverter.ConvertO(bodyvaluecHEQUEreceiptDate);
-                    cHEQUEObjectpropCount++;
-                }
-
-                cHEQUEObjectpropCount++;
-                cHEQUEObject["DATEOFS"] = ExpressionConverter.ConvertO(bodyvaluecHEQUEissueDate);
-                cHEQUEObjectpropCount++;
-                cHEQUEObject["FINALDATE"] = ExpressionConverter.ConvertO(bodyvaluecHEQUEdueDate);
-                if (bodyvaluecHEQUEholderAddress != null)
-                {
-                    cHEQUEObject["HOLDERADDR"] = ExpressionConverter.ConvertO(bodyvaluecHEQUEholderAddress);
-                    cHEQUEObjectpropCount++;
-                }
-
-                if (bodyvaluecHEQUEholderName != null)
-                {
-                    cHEQUEObject["HOLDERNAME"] = ExpressionConverter.ConvertO(bodyvaluecHEQUEholderName);
-                    cHEQUEObjectpropCount++;
-                }
-
-                if (bodyvaluecHEQUEissuerTRNo != null)
-                {
-                    cHEQUEObject["PUBLISHERAFM"] = ExpressionConverter.ConvertO(bodyvaluecHEQUEissuerTRNo);
-                    cHEQUEObjectpropCount++;
-                }
-
-                if (bodyvaluecHEQUEcomments != null)
-                {
-                    cHEQUEObject["REMARKS"] = ExpressionConverter.ConvertO(bodyvaluecHEQUEcomments);
+                    cHEQUEObject["CRTDATE"] = ExpressionConverter.ConvertO(__workflow_bodyvaluecHEQUEreceiptDate);
                     cHEQUEObjectpropCount++;
                 }
 
                 cHEQUEObjectpropCount++;
-                cHEQUEObject["SERIES"] = ExpressionConverter.ConvertO(bodyvaluecHEQUEseries);
+                cHEQUEObject["DATEOFS"] = ExpressionConverter.ConvertO(__workflow_bodyvaluecHEQUEissueDate);
+                cHEQUEObjectpropCount++;
+                cHEQUEObject["FINALDATE"] = ExpressionConverter.ConvertO(__workflow_bodyvaluecHEQUEdueDate);
+                if (__workflow_bodyvaluecHEQUEholderAddress != null)
+                {
+                    cHEQUEObject["HOLDERADDR"] = ExpressionConverter.ConvertO(__workflow_bodyvaluecHEQUEholderAddress);
+                    cHEQUEObjectpropCount++;
+                }
+
+                if (__workflow_bodyvaluecHEQUEholderName != null)
+                {
+                    cHEQUEObject["HOLDERNAME"] = ExpressionConverter.ConvertO(__workflow_bodyvaluecHEQUEholderName);
+                    cHEQUEObjectpropCount++;
+                }
+
+                if (__workflow_bodyvaluecHEQUEissuerTRNo != null)
+                {
+                    cHEQUEObject["PUBLISHERAFM"] = ExpressionConverter.ConvertO(__workflow_bodyvaluecHEQUEissuerTRNo);
+                    cHEQUEObjectpropCount++;
+                }
+
+                if (__workflow_bodyvaluecHEQUEcomments != null)
+                {
+                    cHEQUEObject["REMARKS"] = ExpressionConverter.ConvertO(__workflow_bodyvaluecHEQUEcomments);
+                    cHEQUEObjectpropCount++;
+                }
+
+                cHEQUEObjectpropCount++;
+                cHEQUEObject["SERIES"] = ExpressionConverter.ConvertO(__workflow_bodyvaluecHEQUEseries);
                 if (cHEQUEObjectpropCount > 0)
                 {
                     dataObject["CHEQUE"] = cHEQUEObject;
@@ -1333,48 +1274,74 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        [WorkflowExpressionFactory(nameof(__BuildSetContact))]
-        public IBodyWorkflowAction<SetData200response> SetContact([WorkflowExpression] Func<string> bodyvaluepRSNOUTcode, [WorkflowExpression] Func<string> bodyvaluepRSNOUTname, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTaddress = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTtRNo = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTgeographicalAreas = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTbIRTHDATE = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTcity = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTcountry = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTarea = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTprefecture = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTeducationLevel = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTemail = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTemail2 = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTfax = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTiDCardNo = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTtaxOffice = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTmobileTelephone = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTsurname = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTfatherSName = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTmotherSName = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTnameOfSpouse = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTnationality = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTtel1 = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTtel2 = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTinternalTelephone = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTpersonalTelephone = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTcomments = null, [WorkflowExpression] Func<bodyvaluepRSNOUTgenderInput> bodyvaluepRSNOUTgender = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTwebPage = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTzip = null, [WorkflowExpression] Func<bodyvaluexTRDOCDATAInputItem[]> bodyvaluexTRDOCDATA = null)
+        public IBodyWorkflowAction<SetData200response> SetContact(Expression<Func<string>> bodyvaluepRSNOUTcode, Expression<Func<string>> bodyvaluepRSNOUTname, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null, Expression<Func<string>> bodyvaluepRSNOUTaddress = null, Expression<Func<string>> bodyvaluepRSNOUTtRNo = null, Expression<Func<string>> bodyvaluepRSNOUTgeographicalAreas = null, Expression<Func<string>> bodyvaluepRSNOUTbIRTHDATE = null, Expression<Func<string>> bodyvaluepRSNOUTcity = null, Expression<Func<string>> bodyvaluepRSNOUTcountry = null, Expression<Func<string>> bodyvaluepRSNOUTarea = null, Expression<Func<string>> bodyvaluepRSNOUTprefecture = null, Expression<Func<string>> bodyvaluepRSNOUTeducationLevel = null, Expression<Func<string>> bodyvaluepRSNOUTemail = null, Expression<Func<string>> bodyvaluepRSNOUTemail2 = null, Expression<Func<string>> bodyvaluepRSNOUTfax = null, Expression<Func<string>> bodyvaluepRSNOUTiDCardNo = null, Expression<Func<string>> bodyvaluepRSNOUTtaxOffice = null, Expression<Func<string>> bodyvaluepRSNOUTmobileTelephone = null, Expression<Func<string>> bodyvaluepRSNOUTsurname = null, Expression<Func<string>> bodyvaluepRSNOUTfatherSName = null, Expression<Func<string>> bodyvaluepRSNOUTmotherSName = null, Expression<Func<string>> bodyvaluepRSNOUTnameOfSpouse = null, Expression<Func<string>> bodyvaluepRSNOUTnationality = null, Expression<Func<string>> bodyvaluepRSNOUTtel1 = null, Expression<Func<string>> bodyvaluepRSNOUTtel2 = null, Expression<Func<string>> bodyvaluepRSNOUTinternalTelephone = null, Expression<Func<string>> bodyvaluepRSNOUTpersonalTelephone = null, Expression<Func<string>> bodyvaluepRSNOUTcomments = null, Expression<Func<bodyvaluepRSNOUTgenderInput>> bodyvaluepRSNOUTgender = null, Expression<Func<string>> bodyvaluepRSNOUTwebPage = null, Expression<Func<string>> bodyvaluepRSNOUTzip = null, Expression<Func<bodyvaluexTRDOCDATAInputItem[]>> bodyvaluexTRDOCDATA = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SetData200response> __BuildSetContact(WorkflowExpression<string> bodyvaluepRSNOUTcode, WorkflowExpression<string> bodyvaluepRSNOUTname, WorkflowExpression<string> bodyfORM = null, WorkflowExpression<string> bodykEY = null, WorkflowExpression<string> bodyvaluepRSNOUTaddress = null, WorkflowExpression<string> bodyvaluepRSNOUTtRNo = null, WorkflowExpression<string> bodyvaluepRSNOUTgeographicalAreas = null, WorkflowExpression<string> bodyvaluepRSNOUTbIRTHDATE = null, WorkflowExpression<string> bodyvaluepRSNOUTcity = null, WorkflowExpression<string> bodyvaluepRSNOUTcountry = null, WorkflowExpression<string> bodyvaluepRSNOUTarea = null, WorkflowExpression<string> bodyvaluepRSNOUTprefecture = null, WorkflowExpression<string> bodyvaluepRSNOUTeducationLevel = null, WorkflowExpression<string> bodyvaluepRSNOUTemail = null, WorkflowExpression<string> bodyvaluepRSNOUTemail2 = null, WorkflowExpression<string> bodyvaluepRSNOUTfax = null, WorkflowExpression<string> bodyvaluepRSNOUTiDCardNo = null, WorkflowExpression<string> bodyvaluepRSNOUTtaxOffice = null, WorkflowExpression<string> bodyvaluepRSNOUTmobileTelephone = null, WorkflowExpression<string> bodyvaluepRSNOUTsurname = null, WorkflowExpression<string> bodyvaluepRSNOUTfatherSName = null, WorkflowExpression<string> bodyvaluepRSNOUTmotherSName = null, WorkflowExpression<string> bodyvaluepRSNOUTnameOfSpouse = null, WorkflowExpression<string> bodyvaluepRSNOUTnationality = null, WorkflowExpression<string> bodyvaluepRSNOUTtel1 = null, WorkflowExpression<string> bodyvaluepRSNOUTtel2 = null, WorkflowExpression<string> bodyvaluepRSNOUTinternalTelephone = null, WorkflowExpression<string> bodyvaluepRSNOUTpersonalTelephone = null, WorkflowExpression<string> bodyvaluepRSNOUTcomments = null, WorkflowExpression<bodyvaluepRSNOUTgenderInput> bodyvaluepRSNOUTgender = null, WorkflowExpression<string> bodyvaluepRSNOUTwebPage = null, WorkflowExpression<string> bodyvaluepRSNOUTzip = null, WorkflowExpression<bodyvaluexTRDOCDATAInputItem[]> bodyvaluexTRDOCDATA = null)
-        {
-            WorkflowExpression.Validate(bodyvaluepRSNOUTcode, nameof(bodyvaluepRSNOUTcode), required: true);
-            WorkflowExpression.Validate(bodyvaluepRSNOUTname, nameof(bodyvaluepRSNOUTname), required: true);
-            WorkflowExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
-            WorkflowExpression.Validate(bodykEY, nameof(bodykEY), required: false);
-            WorkflowExpression.Validate(bodyvaluepRSNOUTaddress, nameof(bodyvaluepRSNOUTaddress), required: false);
-            WorkflowExpression.Validate(bodyvaluepRSNOUTtRNo, nameof(bodyvaluepRSNOUTtRNo), required: false);
-            WorkflowExpression.Validate(bodyvaluepRSNOUTgeographicalAreas, nameof(bodyvaluepRSNOUTgeographicalAreas), required: false);
-            WorkflowExpression.Validate(bodyvaluepRSNOUTbIRTHDATE, nameof(bodyvaluepRSNOUTbIRTHDATE), required: false);
-            WorkflowExpression.Validate(bodyvaluepRSNOUTcity, nameof(bodyvaluepRSNOUTcity), required: false);
-            WorkflowExpression.Validate(bodyvaluepRSNOUTcountry, nameof(bodyvaluepRSNOUTcountry), required: false);
-            WorkflowExpression.Validate(bodyvaluepRSNOUTarea, nameof(bodyvaluepRSNOUTarea), required: false);
-            WorkflowExpression.Validate(bodyvaluepRSNOUTprefecture, nameof(bodyvaluepRSNOUTprefecture), required: false);
-            WorkflowExpression.Validate(bodyvaluepRSNOUTeducationLevel, nameof(bodyvaluepRSNOUTeducationLevel), required: false);
-            WorkflowExpression.Validate(bodyvaluepRSNOUTemail, nameof(bodyvaluepRSNOUTemail), required: false);
-            WorkflowExpression.Validate(bodyvaluepRSNOUTemail2, nameof(bodyvaluepRSNOUTemail2), required: false);
-            WorkflowExpression.Validate(bodyvaluepRSNOUTfax, nameof(bodyvaluepRSNOUTfax), required: false);
-            WorkflowExpression.Validate(bodyvaluepRSNOUTiDCardNo, nameof(bodyvaluepRSNOUTiDCardNo), required: false);
-            WorkflowExpression.Validate(bodyvaluepRSNOUTtaxOffice, nameof(bodyvaluepRSNOUTtaxOffice), required: false);
-            WorkflowExpression.Validate(bodyvaluepRSNOUTmobileTelephone, nameof(bodyvaluepRSNOUTmobileTelephone), required: false);
-            WorkflowExpression.Validate(bodyvaluepRSNOUTsurname, nameof(bodyvaluepRSNOUTsurname), required: false);
-            WorkflowExpression.Validate(bodyvaluepRSNOUTfatherSName, nameof(bodyvaluepRSNOUTfatherSName), required: false);
-            WorkflowExpression.Validate(bodyvaluepRSNOUTmotherSName, nameof(bodyvaluepRSNOUTmotherSName), required: false);
-            WorkflowExpression.Validate(bodyvaluepRSNOUTnameOfSpouse, nameof(bodyvaluepRSNOUTnameOfSpouse), required: false);
-            WorkflowExpression.Validate(bodyvaluepRSNOUTnationality, nameof(bodyvaluepRSNOUTnationality), required: false);
-            WorkflowExpression.Validate(bodyvaluepRSNOUTtel1, nameof(bodyvaluepRSNOUTtel1), required: false);
-            WorkflowExpression.Validate(bodyvaluepRSNOUTtel2, nameof(bodyvaluepRSNOUTtel2), required: false);
-            WorkflowExpression.Validate(bodyvaluepRSNOUTinternalTelephone, nameof(bodyvaluepRSNOUTinternalTelephone), required: false);
-            WorkflowExpression.Validate(bodyvaluepRSNOUTpersonalTelephone, nameof(bodyvaluepRSNOUTpersonalTelephone), required: false);
-            WorkflowExpression.Validate(bodyvaluepRSNOUTcomments, nameof(bodyvaluepRSNOUTcomments), required: false);
-            WorkflowExpression.Validate(bodyvaluepRSNOUTgender, nameof(bodyvaluepRSNOUTgender), required: false);
-            WorkflowExpression.Validate(bodyvaluepRSNOUTwebPage, nameof(bodyvaluepRSNOUTwebPage), required: false);
-            WorkflowExpression.Validate(bodyvaluepRSNOUTzip, nameof(bodyvaluepRSNOUTzip), required: false);
-            WorkflowExpression.Validate(bodyvaluexTRDOCDATA, nameof(bodyvaluexTRDOCDATA), required: false);
+            var __workflow_bodyvaluepRSNOUTcode = bodyvaluepRSNOUTcode == null ? null : WorkflowExpression.Compile(bodyvaluepRSNOUTcode);
+            WorkflowExpression.Validate(__workflow_bodyvaluepRSNOUTcode, nameof(bodyvaluepRSNOUTcode), required: true);
+            var __workflow_bodyvaluepRSNOUTname = bodyvaluepRSNOUTname == null ? null : WorkflowExpression.Compile(bodyvaluepRSNOUTname);
+            WorkflowExpression.Validate(__workflow_bodyvaluepRSNOUTname, nameof(bodyvaluepRSNOUTname), required: true);
+            var __workflow_bodyfORM = bodyfORM == null ? null : WorkflowExpression.Compile(bodyfORM);
+            WorkflowExpression.Validate(__workflow_bodyfORM, nameof(bodyfORM), required: false);
+            var __workflow_bodykEY = bodykEY == null ? null : WorkflowExpression.Compile(bodykEY);
+            WorkflowExpression.Validate(__workflow_bodykEY, nameof(bodykEY), required: false);
+            var __workflow_bodyvaluepRSNOUTaddress = bodyvaluepRSNOUTaddress == null ? null : WorkflowExpression.Compile(bodyvaluepRSNOUTaddress);
+            WorkflowExpression.Validate(__workflow_bodyvaluepRSNOUTaddress, nameof(bodyvaluepRSNOUTaddress), required: false);
+            var __workflow_bodyvaluepRSNOUTtRNo = bodyvaluepRSNOUTtRNo == null ? null : WorkflowExpression.Compile(bodyvaluepRSNOUTtRNo);
+            WorkflowExpression.Validate(__workflow_bodyvaluepRSNOUTtRNo, nameof(bodyvaluepRSNOUTtRNo), required: false);
+            var __workflow_bodyvaluepRSNOUTgeographicalAreas = bodyvaluepRSNOUTgeographicalAreas == null ? null : WorkflowExpression.Compile(bodyvaluepRSNOUTgeographicalAreas);
+            WorkflowExpression.Validate(__workflow_bodyvaluepRSNOUTgeographicalAreas, nameof(bodyvaluepRSNOUTgeographicalAreas), required: false);
+            var __workflow_bodyvaluepRSNOUTbIRTHDATE = bodyvaluepRSNOUTbIRTHDATE == null ? null : WorkflowExpression.Compile(bodyvaluepRSNOUTbIRTHDATE);
+            WorkflowExpression.Validate(__workflow_bodyvaluepRSNOUTbIRTHDATE, nameof(bodyvaluepRSNOUTbIRTHDATE), required: false);
+            var __workflow_bodyvaluepRSNOUTcity = bodyvaluepRSNOUTcity == null ? null : WorkflowExpression.Compile(bodyvaluepRSNOUTcity);
+            WorkflowExpression.Validate(__workflow_bodyvaluepRSNOUTcity, nameof(bodyvaluepRSNOUTcity), required: false);
+            var __workflow_bodyvaluepRSNOUTcountry = bodyvaluepRSNOUTcountry == null ? null : WorkflowExpression.Compile(bodyvaluepRSNOUTcountry);
+            WorkflowExpression.Validate(__workflow_bodyvaluepRSNOUTcountry, nameof(bodyvaluepRSNOUTcountry), required: false);
+            var __workflow_bodyvaluepRSNOUTarea = bodyvaluepRSNOUTarea == null ? null : WorkflowExpression.Compile(bodyvaluepRSNOUTarea);
+            WorkflowExpression.Validate(__workflow_bodyvaluepRSNOUTarea, nameof(bodyvaluepRSNOUTarea), required: false);
+            var __workflow_bodyvaluepRSNOUTprefecture = bodyvaluepRSNOUTprefecture == null ? null : WorkflowExpression.Compile(bodyvaluepRSNOUTprefecture);
+            WorkflowExpression.Validate(__workflow_bodyvaluepRSNOUTprefecture, nameof(bodyvaluepRSNOUTprefecture), required: false);
+            var __workflow_bodyvaluepRSNOUTeducationLevel = bodyvaluepRSNOUTeducationLevel == null ? null : WorkflowExpression.Compile(bodyvaluepRSNOUTeducationLevel);
+            WorkflowExpression.Validate(__workflow_bodyvaluepRSNOUTeducationLevel, nameof(bodyvaluepRSNOUTeducationLevel), required: false);
+            var __workflow_bodyvaluepRSNOUTemail = bodyvaluepRSNOUTemail == null ? null : WorkflowExpression.Compile(bodyvaluepRSNOUTemail);
+            WorkflowExpression.Validate(__workflow_bodyvaluepRSNOUTemail, nameof(bodyvaluepRSNOUTemail), required: false);
+            var __workflow_bodyvaluepRSNOUTemail2 = bodyvaluepRSNOUTemail2 == null ? null : WorkflowExpression.Compile(bodyvaluepRSNOUTemail2);
+            WorkflowExpression.Validate(__workflow_bodyvaluepRSNOUTemail2, nameof(bodyvaluepRSNOUTemail2), required: false);
+            var __workflow_bodyvaluepRSNOUTfax = bodyvaluepRSNOUTfax == null ? null : WorkflowExpression.Compile(bodyvaluepRSNOUTfax);
+            WorkflowExpression.Validate(__workflow_bodyvaluepRSNOUTfax, nameof(bodyvaluepRSNOUTfax), required: false);
+            var __workflow_bodyvaluepRSNOUTiDCardNo = bodyvaluepRSNOUTiDCardNo == null ? null : WorkflowExpression.Compile(bodyvaluepRSNOUTiDCardNo);
+            WorkflowExpression.Validate(__workflow_bodyvaluepRSNOUTiDCardNo, nameof(bodyvaluepRSNOUTiDCardNo), required: false);
+            var __workflow_bodyvaluepRSNOUTtaxOffice = bodyvaluepRSNOUTtaxOffice == null ? null : WorkflowExpression.Compile(bodyvaluepRSNOUTtaxOffice);
+            WorkflowExpression.Validate(__workflow_bodyvaluepRSNOUTtaxOffice, nameof(bodyvaluepRSNOUTtaxOffice), required: false);
+            var __workflow_bodyvaluepRSNOUTmobileTelephone = bodyvaluepRSNOUTmobileTelephone == null ? null : WorkflowExpression.Compile(bodyvaluepRSNOUTmobileTelephone);
+            WorkflowExpression.Validate(__workflow_bodyvaluepRSNOUTmobileTelephone, nameof(bodyvaluepRSNOUTmobileTelephone), required: false);
+            var __workflow_bodyvaluepRSNOUTsurname = bodyvaluepRSNOUTsurname == null ? null : WorkflowExpression.Compile(bodyvaluepRSNOUTsurname);
+            WorkflowExpression.Validate(__workflow_bodyvaluepRSNOUTsurname, nameof(bodyvaluepRSNOUTsurname), required: false);
+            var __workflow_bodyvaluepRSNOUTfatherSName = bodyvaluepRSNOUTfatherSName == null ? null : WorkflowExpression.Compile(bodyvaluepRSNOUTfatherSName);
+            WorkflowExpression.Validate(__workflow_bodyvaluepRSNOUTfatherSName, nameof(bodyvaluepRSNOUTfatherSName), required: false);
+            var __workflow_bodyvaluepRSNOUTmotherSName = bodyvaluepRSNOUTmotherSName == null ? null : WorkflowExpression.Compile(bodyvaluepRSNOUTmotherSName);
+            WorkflowExpression.Validate(__workflow_bodyvaluepRSNOUTmotherSName, nameof(bodyvaluepRSNOUTmotherSName), required: false);
+            var __workflow_bodyvaluepRSNOUTnameOfSpouse = bodyvaluepRSNOUTnameOfSpouse == null ? null : WorkflowExpression.Compile(bodyvaluepRSNOUTnameOfSpouse);
+            WorkflowExpression.Validate(__workflow_bodyvaluepRSNOUTnameOfSpouse, nameof(bodyvaluepRSNOUTnameOfSpouse), required: false);
+            var __workflow_bodyvaluepRSNOUTnationality = bodyvaluepRSNOUTnationality == null ? null : WorkflowExpression.Compile(bodyvaluepRSNOUTnationality);
+            WorkflowExpression.Validate(__workflow_bodyvaluepRSNOUTnationality, nameof(bodyvaluepRSNOUTnationality), required: false);
+            var __workflow_bodyvaluepRSNOUTtel1 = bodyvaluepRSNOUTtel1 == null ? null : WorkflowExpression.Compile(bodyvaluepRSNOUTtel1);
+            WorkflowExpression.Validate(__workflow_bodyvaluepRSNOUTtel1, nameof(bodyvaluepRSNOUTtel1), required: false);
+            var __workflow_bodyvaluepRSNOUTtel2 = bodyvaluepRSNOUTtel2 == null ? null : WorkflowExpression.Compile(bodyvaluepRSNOUTtel2);
+            WorkflowExpression.Validate(__workflow_bodyvaluepRSNOUTtel2, nameof(bodyvaluepRSNOUTtel2), required: false);
+            var __workflow_bodyvaluepRSNOUTinternalTelephone = bodyvaluepRSNOUTinternalTelephone == null ? null : WorkflowExpression.Compile(bodyvaluepRSNOUTinternalTelephone);
+            WorkflowExpression.Validate(__workflow_bodyvaluepRSNOUTinternalTelephone, nameof(bodyvaluepRSNOUTinternalTelephone), required: false);
+            var __workflow_bodyvaluepRSNOUTpersonalTelephone = bodyvaluepRSNOUTpersonalTelephone == null ? null : WorkflowExpression.Compile(bodyvaluepRSNOUTpersonalTelephone);
+            WorkflowExpression.Validate(__workflow_bodyvaluepRSNOUTpersonalTelephone, nameof(bodyvaluepRSNOUTpersonalTelephone), required: false);
+            var __workflow_bodyvaluepRSNOUTcomments = bodyvaluepRSNOUTcomments == null ? null : WorkflowExpression.Compile(bodyvaluepRSNOUTcomments);
+            WorkflowExpression.Validate(__workflow_bodyvaluepRSNOUTcomments, nameof(bodyvaluepRSNOUTcomments), required: false);
+            var __workflow_bodyvaluepRSNOUTgender = bodyvaluepRSNOUTgender == null ? null : WorkflowExpression.Compile(bodyvaluepRSNOUTgender);
+            WorkflowExpression.Validate(__workflow_bodyvaluepRSNOUTgender, nameof(bodyvaluepRSNOUTgender), required: false);
+            var __workflow_bodyvaluepRSNOUTwebPage = bodyvaluepRSNOUTwebPage == null ? null : WorkflowExpression.Compile(bodyvaluepRSNOUTwebPage);
+            WorkflowExpression.Validate(__workflow_bodyvaluepRSNOUTwebPage, nameof(bodyvaluepRSNOUTwebPage), required: false);
+            var __workflow_bodyvaluepRSNOUTzip = bodyvaluepRSNOUTzip == null ? null : WorkflowExpression.Compile(bodyvaluepRSNOUTzip);
+            WorkflowExpression.Validate(__workflow_bodyvaluepRSNOUTzip, nameof(bodyvaluepRSNOUTzip), required: false);
+            var __workflow_bodyvaluexTRDOCDATA = bodyvaluexTRDOCDATA == null ? null : WorkflowExpression.Compile(bodyvaluexTRDOCDATA);
+            WorkflowExpression.Validate(__workflow_bodyvaluexTRDOCDATA, nameof(bodyvaluexTRDOCDATA), required: false);
             return new DeferredBodyAction<SetData200response>(() =>
             {
                 var apiCallPath = "/setContact";
@@ -1383,15 +1350,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 callPayload.Queries["op"] = Convert.ToString("s1service");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfORM != null)
+                if (__workflow_bodyfORM != null)
                 {
-                    body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                    body["FORM"] = ExpressionConverter.ConvertO(__workflow_bodyfORM);
                     bodypropCount++;
                 }
 
-                if (bodykEY != null)
+                if (__workflow_bodykEY != null)
                 {
-                    body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                    body["KEY"] = ExpressionConverter.ConvertO(__workflow_bodykEY);
                     bodypropCount++;
                 }
 
@@ -1405,175 +1372,175 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 var dataObjectpropCount = 0;
                 var pRSNOUTObject = new JObject();
                 var pRSNOUTObjectpropCount = 0;
-                if (bodyvaluepRSNOUTaddress != null)
+                if (__workflow_bodyvaluepRSNOUTaddress != null)
                 {
-                    pRSNOUTObject["ADDRESS"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTaddress);
+                    pRSNOUTObject["ADDRESS"] = ExpressionConverter.ConvertO(__workflow_bodyvaluepRSNOUTaddress);
                     pRSNOUTObjectpropCount++;
                 }
 
-                if (bodyvaluepRSNOUTtRNo != null)
+                if (__workflow_bodyvaluepRSNOUTtRNo != null)
                 {
-                    pRSNOUTObject["AFM"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTtRNo);
+                    pRSNOUTObject["AFM"] = ExpressionConverter.ConvertO(__workflow_bodyvaluepRSNOUTtRNo);
                     pRSNOUTObjectpropCount++;
                 }
 
-                if (bodyvaluepRSNOUTgeographicalAreas != null)
+                if (__workflow_bodyvaluepRSNOUTgeographicalAreas != null)
                 {
-                    pRSNOUTObject["AREAS"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTgeographicalAreas);
+                    pRSNOUTObject["AREAS"] = ExpressionConverter.ConvertO(__workflow_bodyvaluepRSNOUTgeographicalAreas);
                     pRSNOUTObjectpropCount++;
                 }
 
-                if (bodyvaluepRSNOUTbIRTHDATE != null)
+                if (__workflow_bodyvaluepRSNOUTbIRTHDATE != null)
                 {
-                    pRSNOUTObject["BIRTHDATE"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTbIRTHDATE);
+                    pRSNOUTObject["BIRTHDATE"] = ExpressionConverter.ConvertO(__workflow_bodyvaluepRSNOUTbIRTHDATE);
                     pRSNOUTObjectpropCount++;
                 }
 
-                if (bodyvaluepRSNOUTcity != null)
+                if (__workflow_bodyvaluepRSNOUTcity != null)
                 {
-                    pRSNOUTObject["CITY"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTcity);
-                    pRSNOUTObjectpropCount++;
-                }
-
-                pRSNOUTObjectpropCount++;
-                pRSNOUTObject["CODE"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTcode);
-                if (bodyvaluepRSNOUTcountry != null)
-                {
-                    pRSNOUTObject["COUNTRY"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTcountry);
-                    pRSNOUTObjectpropCount++;
-                }
-
-                if (bodyvaluepRSNOUTarea != null)
-                {
-                    pRSNOUTObject["DISTRICT"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTarea);
-                    pRSNOUTObjectpropCount++;
-                }
-
-                if (bodyvaluepRSNOUTprefecture != null)
-                {
-                    pRSNOUTObject["DISTRICT1"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTprefecture);
-                    pRSNOUTObjectpropCount++;
-                }
-
-                if (bodyvaluepRSNOUTeducationLevel != null)
-                {
-                    pRSNOUTObject["EDUCAT"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTeducationLevel);
-                    pRSNOUTObjectpropCount++;
-                }
-
-                if (bodyvaluepRSNOUTemail != null)
-                {
-                    pRSNOUTObject["EMAIL"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTemail);
-                    pRSNOUTObjectpropCount++;
-                }
-
-                if (bodyvaluepRSNOUTemail2 != null)
-                {
-                    pRSNOUTObject["EMAIL1"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTemail2);
-                    pRSNOUTObjectpropCount++;
-                }
-
-                if (bodyvaluepRSNOUTfax != null)
-                {
-                    pRSNOUTObject["FAX"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTfax);
-                    pRSNOUTObjectpropCount++;
-                }
-
-                if (bodyvaluepRSNOUTiDCardNo != null)
-                {
-                    pRSNOUTObject["IDENTITYNUM"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTiDCardNo);
-                    pRSNOUTObjectpropCount++;
-                }
-
-                if (bodyvaluepRSNOUTtaxOffice != null)
-                {
-                    pRSNOUTObject["IRSDATA"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTtaxOffice);
-                    pRSNOUTObjectpropCount++;
-                }
-
-                if (bodyvaluepRSNOUTmobileTelephone != null)
-                {
-                    pRSNOUTObject["MOBILEPHONE"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTmobileTelephone);
+                    pRSNOUTObject["CITY"] = ExpressionConverter.ConvertO(__workflow_bodyvaluepRSNOUTcity);
                     pRSNOUTObjectpropCount++;
                 }
 
                 pRSNOUTObjectpropCount++;
-                pRSNOUTObject["NAME"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTname);
-                if (bodyvaluepRSNOUTsurname != null)
+                pRSNOUTObject["CODE"] = ExpressionConverter.ConvertO(__workflow_bodyvaluepRSNOUTcode);
+                if (__workflow_bodyvaluepRSNOUTcountry != null)
                 {
-                    pRSNOUTObject["NAME2"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTsurname);
+                    pRSNOUTObject["COUNTRY"] = ExpressionConverter.ConvertO(__workflow_bodyvaluepRSNOUTcountry);
                     pRSNOUTObjectpropCount++;
                 }
 
-                if (bodyvaluepRSNOUTfatherSName != null)
+                if (__workflow_bodyvaluepRSNOUTarea != null)
                 {
-                    pRSNOUTObject["NAME3"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTfatherSName);
+                    pRSNOUTObject["DISTRICT"] = ExpressionConverter.ConvertO(__workflow_bodyvaluepRSNOUTarea);
                     pRSNOUTObjectpropCount++;
                 }
 
-                if (bodyvaluepRSNOUTmotherSName != null)
+                if (__workflow_bodyvaluepRSNOUTprefecture != null)
                 {
-                    pRSNOUTObject["NAME4"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTmotherSName);
+                    pRSNOUTObject["DISTRICT1"] = ExpressionConverter.ConvertO(__workflow_bodyvaluepRSNOUTprefecture);
                     pRSNOUTObjectpropCount++;
                 }
 
-                if (bodyvaluepRSNOUTnameOfSpouse != null)
+                if (__workflow_bodyvaluepRSNOUTeducationLevel != null)
                 {
-                    pRSNOUTObject["NAME5"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTnameOfSpouse);
+                    pRSNOUTObject["EDUCAT"] = ExpressionConverter.ConvertO(__workflow_bodyvaluepRSNOUTeducationLevel);
                     pRSNOUTObjectpropCount++;
                 }
 
-                if (bodyvaluepRSNOUTnationality != null)
+                if (__workflow_bodyvaluepRSNOUTemail != null)
                 {
-                    pRSNOUTObject["NATIONALITY"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTnationality);
+                    pRSNOUTObject["EMAIL"] = ExpressionConverter.ConvertO(__workflow_bodyvaluepRSNOUTemail);
                     pRSNOUTObjectpropCount++;
                 }
 
-                if (bodyvaluepRSNOUTtel1 != null)
+                if (__workflow_bodyvaluepRSNOUTemail2 != null)
                 {
-                    pRSNOUTObject["PHONE1"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTtel1);
+                    pRSNOUTObject["EMAIL1"] = ExpressionConverter.ConvertO(__workflow_bodyvaluepRSNOUTemail2);
                     pRSNOUTObjectpropCount++;
                 }
 
-                if (bodyvaluepRSNOUTtel2 != null)
+                if (__workflow_bodyvaluepRSNOUTfax != null)
                 {
-                    pRSNOUTObject["PHONE2"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTtel2);
+                    pRSNOUTObject["FAX"] = ExpressionConverter.ConvertO(__workflow_bodyvaluepRSNOUTfax);
                     pRSNOUTObjectpropCount++;
                 }
 
-                if (bodyvaluepRSNOUTinternalTelephone != null)
+                if (__workflow_bodyvaluepRSNOUTiDCardNo != null)
                 {
-                    pRSNOUTObject["PHONEEXT"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTinternalTelephone);
+                    pRSNOUTObject["IDENTITYNUM"] = ExpressionConverter.ConvertO(__workflow_bodyvaluepRSNOUTiDCardNo);
                     pRSNOUTObjectpropCount++;
                 }
 
-                if (bodyvaluepRSNOUTpersonalTelephone != null)
+                if (__workflow_bodyvaluepRSNOUTtaxOffice != null)
                 {
-                    pRSNOUTObject["PHONELOCAL"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTpersonalTelephone);
+                    pRSNOUTObject["IRSDATA"] = ExpressionConverter.ConvertO(__workflow_bodyvaluepRSNOUTtaxOffice);
                     pRSNOUTObjectpropCount++;
                 }
 
-                if (bodyvaluepRSNOUTcomments != null)
+                if (__workflow_bodyvaluepRSNOUTmobileTelephone != null)
                 {
-                    pRSNOUTObject["REMARKS"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTcomments);
+                    pRSNOUTObject["MOBILEPHONE"] = ExpressionConverter.ConvertO(__workflow_bodyvaluepRSNOUTmobileTelephone);
                     pRSNOUTObjectpropCount++;
                 }
 
-                if (bodyvaluepRSNOUTgender != null)
+                pRSNOUTObjectpropCount++;
+                pRSNOUTObject["NAME"] = ExpressionConverter.ConvertO(__workflow_bodyvaluepRSNOUTname);
+                if (__workflow_bodyvaluepRSNOUTsurname != null)
                 {
-                    pRSNOUTObject["SOSEX"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTgender);
+                    pRSNOUTObject["NAME2"] = ExpressionConverter.ConvertO(__workflow_bodyvaluepRSNOUTsurname);
                     pRSNOUTObjectpropCount++;
                 }
 
-                if (bodyvaluepRSNOUTwebPage != null)
+                if (__workflow_bodyvaluepRSNOUTfatherSName != null)
                 {
-                    pRSNOUTObject["WEBPAGE"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTwebPage);
+                    pRSNOUTObject["NAME3"] = ExpressionConverter.ConvertO(__workflow_bodyvaluepRSNOUTfatherSName);
                     pRSNOUTObjectpropCount++;
                 }
 
-                if (bodyvaluepRSNOUTzip != null)
+                if (__workflow_bodyvaluepRSNOUTmotherSName != null)
                 {
-                    pRSNOUTObject["ZIP"] = ExpressionConverter.ConvertO(bodyvaluepRSNOUTzip);
+                    pRSNOUTObject["NAME4"] = ExpressionConverter.ConvertO(__workflow_bodyvaluepRSNOUTmotherSName);
+                    pRSNOUTObjectpropCount++;
+                }
+
+                if (__workflow_bodyvaluepRSNOUTnameOfSpouse != null)
+                {
+                    pRSNOUTObject["NAME5"] = ExpressionConverter.ConvertO(__workflow_bodyvaluepRSNOUTnameOfSpouse);
+                    pRSNOUTObjectpropCount++;
+                }
+
+                if (__workflow_bodyvaluepRSNOUTnationality != null)
+                {
+                    pRSNOUTObject["NATIONALITY"] = ExpressionConverter.ConvertO(__workflow_bodyvaluepRSNOUTnationality);
+                    pRSNOUTObjectpropCount++;
+                }
+
+                if (__workflow_bodyvaluepRSNOUTtel1 != null)
+                {
+                    pRSNOUTObject["PHONE1"] = ExpressionConverter.ConvertO(__workflow_bodyvaluepRSNOUTtel1);
+                    pRSNOUTObjectpropCount++;
+                }
+
+                if (__workflow_bodyvaluepRSNOUTtel2 != null)
+                {
+                    pRSNOUTObject["PHONE2"] = ExpressionConverter.ConvertO(__workflow_bodyvaluepRSNOUTtel2);
+                    pRSNOUTObjectpropCount++;
+                }
+
+                if (__workflow_bodyvaluepRSNOUTinternalTelephone != null)
+                {
+                    pRSNOUTObject["PHONEEXT"] = ExpressionConverter.ConvertO(__workflow_bodyvaluepRSNOUTinternalTelephone);
+                    pRSNOUTObjectpropCount++;
+                }
+
+                if (__workflow_bodyvaluepRSNOUTpersonalTelephone != null)
+                {
+                    pRSNOUTObject["PHONELOCAL"] = ExpressionConverter.ConvertO(__workflow_bodyvaluepRSNOUTpersonalTelephone);
+                    pRSNOUTObjectpropCount++;
+                }
+
+                if (__workflow_bodyvaluepRSNOUTcomments != null)
+                {
+                    pRSNOUTObject["REMARKS"] = ExpressionConverter.ConvertO(__workflow_bodyvaluepRSNOUTcomments);
+                    pRSNOUTObjectpropCount++;
+                }
+
+                if (__workflow_bodyvaluepRSNOUTgender != null)
+                {
+                    pRSNOUTObject["SOSEX"] = ExpressionConverter.ConvertO(__workflow_bodyvaluepRSNOUTgender);
+                    pRSNOUTObjectpropCount++;
+                }
+
+                if (__workflow_bodyvaluepRSNOUTwebPage != null)
+                {
+                    pRSNOUTObject["WEBPAGE"] = ExpressionConverter.ConvertO(__workflow_bodyvaluepRSNOUTwebPage);
+                    pRSNOUTObjectpropCount++;
+                }
+
+                if (__workflow_bodyvaluepRSNOUTzip != null)
+                {
+                    pRSNOUTObject["ZIP"] = ExpressionConverter.ConvertO(__workflow_bodyvaluepRSNOUTzip);
                     pRSNOUTObjectpropCount++;
                 }
 
@@ -1583,9 +1550,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                     dataObjectpropCount++;
                 }
 
-                if (bodyvaluexTRDOCDATA != null)
+                if (__workflow_bodyvaluexTRDOCDATA != null)
                 {
-                    dataObject["XTRDOCDATA"] = ExpressionConverter.ConvertO(bodyvaluexTRDOCDATA);
+                    dataObject["XTRDOCDATA"] = ExpressionConverter.ConvertO(__workflow_bodyvaluexTRDOCDATA);
                     dataObjectpropCount++;
                 }
 
@@ -1607,33 +1574,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        [WorkflowExpressionFactory(nameof(__BuildSetCustomer))]
-        public IBodyWorkflowAction<SetData200response> SetCustomer([WorkflowExpression] Func<string> bodyvaluecUSTOMERcode, [WorkflowExpression] Func<string> bodyvaluecUSTOMERname, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null, [WorkflowExpression] Func<string> bodyvaluecUSTOMERprimaryAddress = null, [WorkflowExpression] Func<string> bodyvaluecUSTOMERtRNo = null, [WorkflowExpression] Func<string> bodyvaluecUSTOMERgeographicalAreas = null, [WorkflowExpression] Func<string> bodyvaluecUSTOMERcity = null, [WorkflowExpression] Func<int> bodyvaluecUSTOMERdiscount = null, [WorkflowExpression] Func<string> bodyvaluecUSTOMERlocationArea = null, [WorkflowExpression] Func<string> bodyvaluecUSTOMEReMail = null, [WorkflowExpression] Func<string> bodyvaluecUSTOMERfax = null, [WorkflowExpression] Func<string> bodyvaluecUSTOMERtaxOffice = null, [WorkflowExpression] Func<string> bodyvaluecUSTOMERprofession = null, [WorkflowExpression] Func<string> bodyvaluecUSTOMERprimaryTelephone = null, [WorkflowExpression] Func<string> bodyvaluecUSTOMERcomments = null, [WorkflowExpression] Func<bodyvaluecUSTOMERtaxCategoryInput> bodyvaluecUSTOMERtaxCategory = null, [WorkflowExpression] Func<string> bodyvaluecUSTOMERzip = null)
+        public IBodyWorkflowAction<SetData200response> SetCustomer(Expression<Func<string>> bodyvaluecUSTOMERcode, Expression<Func<string>> bodyvaluecUSTOMERname, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null, Expression<Func<string>> bodyvaluecUSTOMERprimaryAddress = null, Expression<Func<string>> bodyvaluecUSTOMERtRNo = null, Expression<Func<string>> bodyvaluecUSTOMERgeographicalAreas = null, Expression<Func<string>> bodyvaluecUSTOMERcity = null, Expression<Func<int>> bodyvaluecUSTOMERdiscount = null, Expression<Func<string>> bodyvaluecUSTOMERlocationArea = null, Expression<Func<string>> bodyvaluecUSTOMEReMail = null, Expression<Func<string>> bodyvaluecUSTOMERfax = null, Expression<Func<string>> bodyvaluecUSTOMERtaxOffice = null, Expression<Func<string>> bodyvaluecUSTOMERprofession = null, Expression<Func<string>> bodyvaluecUSTOMERprimaryTelephone = null, Expression<Func<string>> bodyvaluecUSTOMERcomments = null, Expression<Func<bodyvaluecUSTOMERtaxCategoryInput>> bodyvaluecUSTOMERtaxCategory = null, Expression<Func<string>> bodyvaluecUSTOMERzip = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SetData200response> __BuildSetCustomer(WorkflowExpression<string> bodyvaluecUSTOMERcode, WorkflowExpression<string> bodyvaluecUSTOMERname, WorkflowExpression<string> bodyfORM = null, WorkflowExpression<string> bodykEY = null, WorkflowExpression<string> bodyvaluecUSTOMERprimaryAddress = null, WorkflowExpression<string> bodyvaluecUSTOMERtRNo = null, WorkflowExpression<string> bodyvaluecUSTOMERgeographicalAreas = null, WorkflowExpression<string> bodyvaluecUSTOMERcity = null, WorkflowExpression<int> bodyvaluecUSTOMERdiscount = null, WorkflowExpression<string> bodyvaluecUSTOMERlocationArea = null, WorkflowExpression<string> bodyvaluecUSTOMEReMail = null, WorkflowExpression<string> bodyvaluecUSTOMERfax = null, WorkflowExpression<string> bodyvaluecUSTOMERtaxOffice = null, WorkflowExpression<string> bodyvaluecUSTOMERprofession = null, WorkflowExpression<string> bodyvaluecUSTOMERprimaryTelephone = null, WorkflowExpression<string> bodyvaluecUSTOMERcomments = null, WorkflowExpression<bodyvaluecUSTOMERtaxCategoryInput> bodyvaluecUSTOMERtaxCategory = null, WorkflowExpression<string> bodyvaluecUSTOMERzip = null)
-        {
-            WorkflowExpression.Validate(bodyvaluecUSTOMERcode, nameof(bodyvaluecUSTOMERcode), required: true);
-            WorkflowExpression.Validate(bodyvaluecUSTOMERname, nameof(bodyvaluecUSTOMERname), required: true);
-            WorkflowExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
-            WorkflowExpression.Validate(bodykEY, nameof(bodykEY), required: false);
-            WorkflowExpression.Validate(bodyvaluecUSTOMERprimaryAddress, nameof(bodyvaluecUSTOMERprimaryAddress), required: false);
-            WorkflowExpression.Validate(bodyvaluecUSTOMERtRNo, nameof(bodyvaluecUSTOMERtRNo), required: false);
-            WorkflowExpression.Validate(bodyvaluecUSTOMERgeographicalAreas, nameof(bodyvaluecUSTOMERgeographicalAreas), required: false);
-            WorkflowExpression.Validate(bodyvaluecUSTOMERcity, nameof(bodyvaluecUSTOMERcity), required: false);
-            WorkflowExpression.Validate(bodyvaluecUSTOMERdiscount, nameof(bodyvaluecUSTOMERdiscount), required: false);
-            WorkflowExpression.Validate(bodyvaluecUSTOMERlocationArea, nameof(bodyvaluecUSTOMERlocationArea), required: false);
-            WorkflowExpression.Validate(bodyvaluecUSTOMEReMail, nameof(bodyvaluecUSTOMEReMail), required: false);
-            WorkflowExpression.Validate(bodyvaluecUSTOMERfax, nameof(bodyvaluecUSTOMERfax), required: false);
-            WorkflowExpression.Validate(bodyvaluecUSTOMERtaxOffice, nameof(bodyvaluecUSTOMERtaxOffice), required: false);
-            WorkflowExpression.Validate(bodyvaluecUSTOMERprofession, nameof(bodyvaluecUSTOMERprofession), required: false);
-            WorkflowExpression.Validate(bodyvaluecUSTOMERprimaryTelephone, nameof(bodyvaluecUSTOMERprimaryTelephone), required: false);
-            WorkflowExpression.Validate(bodyvaluecUSTOMERcomments, nameof(bodyvaluecUSTOMERcomments), required: false);
-            WorkflowExpression.Validate(bodyvaluecUSTOMERtaxCategory, nameof(bodyvaluecUSTOMERtaxCategory), required: false);
-            WorkflowExpression.Validate(bodyvaluecUSTOMERzip, nameof(bodyvaluecUSTOMERzip), required: false);
+            var __workflow_bodyvaluecUSTOMERcode = bodyvaluecUSTOMERcode == null ? null : WorkflowExpression.Compile(bodyvaluecUSTOMERcode);
+            WorkflowExpression.Validate(__workflow_bodyvaluecUSTOMERcode, nameof(bodyvaluecUSTOMERcode), required: true);
+            var __workflow_bodyvaluecUSTOMERname = bodyvaluecUSTOMERname == null ? null : WorkflowExpression.Compile(bodyvaluecUSTOMERname);
+            WorkflowExpression.Validate(__workflow_bodyvaluecUSTOMERname, nameof(bodyvaluecUSTOMERname), required: true);
+            var __workflow_bodyfORM = bodyfORM == null ? null : WorkflowExpression.Compile(bodyfORM);
+            WorkflowExpression.Validate(__workflow_bodyfORM, nameof(bodyfORM), required: false);
+            var __workflow_bodykEY = bodykEY == null ? null : WorkflowExpression.Compile(bodykEY);
+            WorkflowExpression.Validate(__workflow_bodykEY, nameof(bodykEY), required: false);
+            var __workflow_bodyvaluecUSTOMERprimaryAddress = bodyvaluecUSTOMERprimaryAddress == null ? null : WorkflowExpression.Compile(bodyvaluecUSTOMERprimaryAddress);
+            WorkflowExpression.Validate(__workflow_bodyvaluecUSTOMERprimaryAddress, nameof(bodyvaluecUSTOMERprimaryAddress), required: false);
+            var __workflow_bodyvaluecUSTOMERtRNo = bodyvaluecUSTOMERtRNo == null ? null : WorkflowExpression.Compile(bodyvaluecUSTOMERtRNo);
+            WorkflowExpression.Validate(__workflow_bodyvaluecUSTOMERtRNo, nameof(bodyvaluecUSTOMERtRNo), required: false);
+            var __workflow_bodyvaluecUSTOMERgeographicalAreas = bodyvaluecUSTOMERgeographicalAreas == null ? null : WorkflowExpression.Compile(bodyvaluecUSTOMERgeographicalAreas);
+            WorkflowExpression.Validate(__workflow_bodyvaluecUSTOMERgeographicalAreas, nameof(bodyvaluecUSTOMERgeographicalAreas), required: false);
+            var __workflow_bodyvaluecUSTOMERcity = bodyvaluecUSTOMERcity == null ? null : WorkflowExpression.Compile(bodyvaluecUSTOMERcity);
+            WorkflowExpression.Validate(__workflow_bodyvaluecUSTOMERcity, nameof(bodyvaluecUSTOMERcity), required: false);
+            var __workflow_bodyvaluecUSTOMERdiscount = bodyvaluecUSTOMERdiscount == null ? null : WorkflowExpression.Compile(bodyvaluecUSTOMERdiscount);
+            WorkflowExpression.Validate(__workflow_bodyvaluecUSTOMERdiscount, nameof(bodyvaluecUSTOMERdiscount), required: false);
+            var __workflow_bodyvaluecUSTOMERlocationArea = bodyvaluecUSTOMERlocationArea == null ? null : WorkflowExpression.Compile(bodyvaluecUSTOMERlocationArea);
+            WorkflowExpression.Validate(__workflow_bodyvaluecUSTOMERlocationArea, nameof(bodyvaluecUSTOMERlocationArea), required: false);
+            var __workflow_bodyvaluecUSTOMEReMail = bodyvaluecUSTOMEReMail == null ? null : WorkflowExpression.Compile(bodyvaluecUSTOMEReMail);
+            WorkflowExpression.Validate(__workflow_bodyvaluecUSTOMEReMail, nameof(bodyvaluecUSTOMEReMail), required: false);
+            var __workflow_bodyvaluecUSTOMERfax = bodyvaluecUSTOMERfax == null ? null : WorkflowExpression.Compile(bodyvaluecUSTOMERfax);
+            WorkflowExpression.Validate(__workflow_bodyvaluecUSTOMERfax, nameof(bodyvaluecUSTOMERfax), required: false);
+            var __workflow_bodyvaluecUSTOMERtaxOffice = bodyvaluecUSTOMERtaxOffice == null ? null : WorkflowExpression.Compile(bodyvaluecUSTOMERtaxOffice);
+            WorkflowExpression.Validate(__workflow_bodyvaluecUSTOMERtaxOffice, nameof(bodyvaluecUSTOMERtaxOffice), required: false);
+            var __workflow_bodyvaluecUSTOMERprofession = bodyvaluecUSTOMERprofession == null ? null : WorkflowExpression.Compile(bodyvaluecUSTOMERprofession);
+            WorkflowExpression.Validate(__workflow_bodyvaluecUSTOMERprofession, nameof(bodyvaluecUSTOMERprofession), required: false);
+            var __workflow_bodyvaluecUSTOMERprimaryTelephone = bodyvaluecUSTOMERprimaryTelephone == null ? null : WorkflowExpression.Compile(bodyvaluecUSTOMERprimaryTelephone);
+            WorkflowExpression.Validate(__workflow_bodyvaluecUSTOMERprimaryTelephone, nameof(bodyvaluecUSTOMERprimaryTelephone), required: false);
+            var __workflow_bodyvaluecUSTOMERcomments = bodyvaluecUSTOMERcomments == null ? null : WorkflowExpression.Compile(bodyvaluecUSTOMERcomments);
+            WorkflowExpression.Validate(__workflow_bodyvaluecUSTOMERcomments, nameof(bodyvaluecUSTOMERcomments), required: false);
+            var __workflow_bodyvaluecUSTOMERtaxCategory = bodyvaluecUSTOMERtaxCategory == null ? null : WorkflowExpression.Compile(bodyvaluecUSTOMERtaxCategory);
+            WorkflowExpression.Validate(__workflow_bodyvaluecUSTOMERtaxCategory, nameof(bodyvaluecUSTOMERtaxCategory), required: false);
+            var __workflow_bodyvaluecUSTOMERzip = bodyvaluecUSTOMERzip == null ? null : WorkflowExpression.Compile(bodyvaluecUSTOMERzip);
+            WorkflowExpression.Validate(__workflow_bodyvaluecUSTOMERzip, nameof(bodyvaluecUSTOMERzip), required: false);
             return new DeferredBodyAction<SetData200response>(() =>
             {
                 var apiCallPath = "/setCustomer";
@@ -1642,15 +1620,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 callPayload.Queries["op"] = Convert.ToString("s1service");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfORM != null)
+                if (__workflow_bodyfORM != null)
                 {
-                    body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                    body["FORM"] = ExpressionConverter.ConvertO(__workflow_bodyfORM);
                     bodypropCount++;
                 }
 
-                if (bodykEY != null)
+                if (__workflow_bodykEY != null)
                 {
-                    body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                    body["KEY"] = ExpressionConverter.ConvertO(__workflow_bodykEY);
                     bodypropCount++;
                 }
 
@@ -1664,91 +1642,91 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 var dataObjectpropCount = 0;
                 var cUSTOMERObject = new JObject();
                 var cUSTOMERObjectpropCount = 0;
-                if (bodyvaluecUSTOMERprimaryAddress != null)
+                if (__workflow_bodyvaluecUSTOMERprimaryAddress != null)
                 {
-                    cUSTOMERObject["ADDRESS"] = ExpressionConverter.ConvertO(bodyvaluecUSTOMERprimaryAddress);
+                    cUSTOMERObject["ADDRESS"] = ExpressionConverter.ConvertO(__workflow_bodyvaluecUSTOMERprimaryAddress);
                     cUSTOMERObjectpropCount++;
                 }
 
-                if (bodyvaluecUSTOMERtRNo != null)
+                if (__workflow_bodyvaluecUSTOMERtRNo != null)
                 {
-                    cUSTOMERObject["AFM"] = ExpressionConverter.ConvertO(bodyvaluecUSTOMERtRNo);
+                    cUSTOMERObject["AFM"] = ExpressionConverter.ConvertO(__workflow_bodyvaluecUSTOMERtRNo);
                     cUSTOMERObjectpropCount++;
                 }
 
-                if (bodyvaluecUSTOMERgeographicalAreas != null)
+                if (__workflow_bodyvaluecUSTOMERgeographicalAreas != null)
                 {
-                    cUSTOMERObject["AREAS"] = ExpressionConverter.ConvertO(bodyvaluecUSTOMERgeographicalAreas);
+                    cUSTOMERObject["AREAS"] = ExpressionConverter.ConvertO(__workflow_bodyvaluecUSTOMERgeographicalAreas);
                     cUSTOMERObjectpropCount++;
                 }
 
-                if (bodyvaluecUSTOMERcity != null)
+                if (__workflow_bodyvaluecUSTOMERcity != null)
                 {
-                    cUSTOMERObject["CITY"] = ExpressionConverter.ConvertO(bodyvaluecUSTOMERcity);
-                    cUSTOMERObjectpropCount++;
-                }
-
-                cUSTOMERObjectpropCount++;
-                cUSTOMERObject["CODE"] = ExpressionConverter.ConvertO(bodyvaluecUSTOMERcode);
-                if (bodyvaluecUSTOMERdiscount != null)
-                {
-                    cUSTOMERObject["DISCOUNT"] = ExpressionConverter.ConvertO(bodyvaluecUSTOMERdiscount);
-                    cUSTOMERObjectpropCount++;
-                }
-
-                if (bodyvaluecUSTOMERlocationArea != null)
-                {
-                    cUSTOMERObject["DISTRICT"] = ExpressionConverter.ConvertO(bodyvaluecUSTOMERlocationArea);
-                    cUSTOMERObjectpropCount++;
-                }
-
-                if (bodyvaluecUSTOMEReMail != null)
-                {
-                    cUSTOMERObject["EMAIL"] = ExpressionConverter.ConvertO(bodyvaluecUSTOMEReMail);
-                    cUSTOMERObjectpropCount++;
-                }
-
-                if (bodyvaluecUSTOMERfax != null)
-                {
-                    cUSTOMERObject["FAX"] = ExpressionConverter.ConvertO(bodyvaluecUSTOMERfax);
-                    cUSTOMERObjectpropCount++;
-                }
-
-                if (bodyvaluecUSTOMERtaxOffice != null)
-                {
-                    cUSTOMERObject["IRSDATA"] = ExpressionConverter.ConvertO(bodyvaluecUSTOMERtaxOffice);
-                    cUSTOMERObjectpropCount++;
-                }
-
-                if (bodyvaluecUSTOMERprofession != null)
-                {
-                    cUSTOMERObject["JOBTYPETRD"] = ExpressionConverter.ConvertO(bodyvaluecUSTOMERprofession);
+                    cUSTOMERObject["CITY"] = ExpressionConverter.ConvertO(__workflow_bodyvaluecUSTOMERcity);
                     cUSTOMERObjectpropCount++;
                 }
 
                 cUSTOMERObjectpropCount++;
-                cUSTOMERObject["NAME"] = ExpressionConverter.ConvertO(bodyvaluecUSTOMERname);
-                if (bodyvaluecUSTOMERprimaryTelephone != null)
+                cUSTOMERObject["CODE"] = ExpressionConverter.ConvertO(__workflow_bodyvaluecUSTOMERcode);
+                if (__workflow_bodyvaluecUSTOMERdiscount != null)
                 {
-                    cUSTOMERObject["PHONE01"] = ExpressionConverter.ConvertO(bodyvaluecUSTOMERprimaryTelephone);
+                    cUSTOMERObject["DISCOUNT"] = ExpressionConverter.ConvertO(__workflow_bodyvaluecUSTOMERdiscount);
                     cUSTOMERObjectpropCount++;
                 }
 
-                if (bodyvaluecUSTOMERcomments != null)
+                if (__workflow_bodyvaluecUSTOMERlocationArea != null)
                 {
-                    cUSTOMERObject["REMARKS"] = ExpressionConverter.ConvertO(bodyvaluecUSTOMERcomments);
+                    cUSTOMERObject["DISTRICT"] = ExpressionConverter.ConvertO(__workflow_bodyvaluecUSTOMERlocationArea);
                     cUSTOMERObjectpropCount++;
                 }
 
-                if (bodyvaluecUSTOMERtaxCategory != null)
+                if (__workflow_bodyvaluecUSTOMEReMail != null)
                 {
-                    cUSTOMERObject["VATSTS"] = ExpressionConverter.ConvertO(bodyvaluecUSTOMERtaxCategory);
+                    cUSTOMERObject["EMAIL"] = ExpressionConverter.ConvertO(__workflow_bodyvaluecUSTOMEReMail);
                     cUSTOMERObjectpropCount++;
                 }
 
-                if (bodyvaluecUSTOMERzip != null)
+                if (__workflow_bodyvaluecUSTOMERfax != null)
                 {
-                    cUSTOMERObject["ZIP"] = ExpressionConverter.ConvertO(bodyvaluecUSTOMERzip);
+                    cUSTOMERObject["FAX"] = ExpressionConverter.ConvertO(__workflow_bodyvaluecUSTOMERfax);
+                    cUSTOMERObjectpropCount++;
+                }
+
+                if (__workflow_bodyvaluecUSTOMERtaxOffice != null)
+                {
+                    cUSTOMERObject["IRSDATA"] = ExpressionConverter.ConvertO(__workflow_bodyvaluecUSTOMERtaxOffice);
+                    cUSTOMERObjectpropCount++;
+                }
+
+                if (__workflow_bodyvaluecUSTOMERprofession != null)
+                {
+                    cUSTOMERObject["JOBTYPETRD"] = ExpressionConverter.ConvertO(__workflow_bodyvaluecUSTOMERprofession);
+                    cUSTOMERObjectpropCount++;
+                }
+
+                cUSTOMERObjectpropCount++;
+                cUSTOMERObject["NAME"] = ExpressionConverter.ConvertO(__workflow_bodyvaluecUSTOMERname);
+                if (__workflow_bodyvaluecUSTOMERprimaryTelephone != null)
+                {
+                    cUSTOMERObject["PHONE01"] = ExpressionConverter.ConvertO(__workflow_bodyvaluecUSTOMERprimaryTelephone);
+                    cUSTOMERObjectpropCount++;
+                }
+
+                if (__workflow_bodyvaluecUSTOMERcomments != null)
+                {
+                    cUSTOMERObject["REMARKS"] = ExpressionConverter.ConvertO(__workflow_bodyvaluecUSTOMERcomments);
+                    cUSTOMERObjectpropCount++;
+                }
+
+                if (__workflow_bodyvaluecUSTOMERtaxCategory != null)
+                {
+                    cUSTOMERObject["VATSTS"] = ExpressionConverter.ConvertO(__workflow_bodyvaluecUSTOMERtaxCategory);
+                    cUSTOMERObjectpropCount++;
+                }
+
+                if (__workflow_bodyvaluecUSTOMERzip != null)
+                {
+                    cUSTOMERObject["ZIP"] = ExpressionConverter.ConvertO(__workflow_bodyvaluecUSTOMERzip);
                     cUSTOMERObjectpropCount++;
                 }
 
@@ -1776,47 +1754,72 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        [WorkflowExpressionFactory(nameof(__BuildSetDraftEntry))]
-        public IBodyWorkflowAction<SetData200response> SetDraftEntry([WorkflowExpression] Func<string> bodyvaluesODRAFTcode, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTaddress = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTtRNo = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTcity = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTcountry = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTarea = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTprefecture = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTcategory = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTcompanyEmail = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTbusinessEmail = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTpersonalEmail = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTiDCardNo = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTactivity = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTmobileTelephone = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTnameTitle = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTfirstName = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTsurname = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTzip = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTbusinessTelephone = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTinternalTelephone = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTpersonalTelephone = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTcomments = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTtitle = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTwebPage = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTzip2 = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTLNKbranch = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTLNKbusinessUnit = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTLNKdepartment = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTLNKproject = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTLNKsource = null)
+        public IBodyWorkflowAction<SetData200response> SetDraftEntry(Expression<Func<string>> bodyvaluesODRAFTcode, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null, Expression<Func<string>> bodyvaluesODRAFTaddress = null, Expression<Func<string>> bodyvaluesODRAFTtRNo = null, Expression<Func<string>> bodyvaluesODRAFTcity = null, Expression<Func<string>> bodyvaluesODRAFTcountry = null, Expression<Func<string>> bodyvaluesODRAFTarea = null, Expression<Func<string>> bodyvaluesODRAFTprefecture = null, Expression<Func<string>> bodyvaluesODRAFTcategory = null, Expression<Func<string>> bodyvaluesODRAFTcompanyEmail = null, Expression<Func<string>> bodyvaluesODRAFTbusinessEmail = null, Expression<Func<string>> bodyvaluesODRAFTpersonalEmail = null, Expression<Func<string>> bodyvaluesODRAFTiDCardNo = null, Expression<Func<string>> bodyvaluesODRAFTactivity = null, Expression<Func<string>> bodyvaluesODRAFTmobileTelephone = null, Expression<Func<string>> bodyvaluesODRAFTnameTitle = null, Expression<Func<string>> bodyvaluesODRAFTfirstName = null, Expression<Func<string>> bodyvaluesODRAFTsurname = null, Expression<Func<string>> bodyvaluesODRAFTzip = null, Expression<Func<string>> bodyvaluesODRAFTbusinessTelephone = null, Expression<Func<string>> bodyvaluesODRAFTinternalTelephone = null, Expression<Func<string>> bodyvaluesODRAFTpersonalTelephone = null, Expression<Func<string>> bodyvaluesODRAFTcomments = null, Expression<Func<string>> bodyvaluesODRAFTtitle = null, Expression<Func<string>> bodyvaluesODRAFTwebPage = null, Expression<Func<string>> bodyvaluesODRAFTzip2 = null, Expression<Func<string>> bodyvaluesODRAFTLNKbranch = null, Expression<Func<string>> bodyvaluesODRAFTLNKbusinessUnit = null, Expression<Func<string>> bodyvaluesODRAFTLNKdepartment = null, Expression<Func<string>> bodyvaluesODRAFTLNKproject = null, Expression<Func<string>> bodyvaluesODRAFTLNKsource = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SetData200response> __BuildSetDraftEntry(WorkflowExpression<string> bodyvaluesODRAFTcode, WorkflowExpression<string> bodyfORM = null, WorkflowExpression<string> bodykEY = null, WorkflowExpression<string> bodyvaluesODRAFTaddress = null, WorkflowExpression<string> bodyvaluesODRAFTtRNo = null, WorkflowExpression<string> bodyvaluesODRAFTcity = null, WorkflowExpression<string> bodyvaluesODRAFTcountry = null, WorkflowExpression<string> bodyvaluesODRAFTarea = null, WorkflowExpression<string> bodyvaluesODRAFTprefecture = null, WorkflowExpression<string> bodyvaluesODRAFTcategory = null, WorkflowExpression<string> bodyvaluesODRAFTcompanyEmail = null, WorkflowExpression<string> bodyvaluesODRAFTbusinessEmail = null, WorkflowExpression<string> bodyvaluesODRAFTpersonalEmail = null, WorkflowExpression<string> bodyvaluesODRAFTiDCardNo = null, WorkflowExpression<string> bodyvaluesODRAFTactivity = null, WorkflowExpression<string> bodyvaluesODRAFTmobileTelephone = null, WorkflowExpression<string> bodyvaluesODRAFTnameTitle = null, WorkflowExpression<string> bodyvaluesODRAFTfirstName = null, WorkflowExpression<string> bodyvaluesODRAFTsurname = null, WorkflowExpression<string> bodyvaluesODRAFTzip = null, WorkflowExpression<string> bodyvaluesODRAFTbusinessTelephone = null, WorkflowExpression<string> bodyvaluesODRAFTinternalTelephone = null, WorkflowExpression<string> bodyvaluesODRAFTpersonalTelephone = null, WorkflowExpression<string> bodyvaluesODRAFTcomments = null, WorkflowExpression<string> bodyvaluesODRAFTtitle = null, WorkflowExpression<string> bodyvaluesODRAFTwebPage = null, WorkflowExpression<string> bodyvaluesODRAFTzip2 = null, WorkflowExpression<string> bodyvaluesODRAFTLNKbranch = null, WorkflowExpression<string> bodyvaluesODRAFTLNKbusinessUnit = null, WorkflowExpression<string> bodyvaluesODRAFTLNKdepartment = null, WorkflowExpression<string> bodyvaluesODRAFTLNKproject = null, WorkflowExpression<string> bodyvaluesODRAFTLNKsource = null)
-        {
-            WorkflowExpression.Validate(bodyvaluesODRAFTcode, nameof(bodyvaluesODRAFTcode), required: true);
-            WorkflowExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
-            WorkflowExpression.Validate(bodykEY, nameof(bodykEY), required: false);
-            WorkflowExpression.Validate(bodyvaluesODRAFTaddress, nameof(bodyvaluesODRAFTaddress), required: false);
-            WorkflowExpression.Validate(bodyvaluesODRAFTtRNo, nameof(bodyvaluesODRAFTtRNo), required: false);
-            WorkflowExpression.Validate(bodyvaluesODRAFTcity, nameof(bodyvaluesODRAFTcity), required: false);
-            WorkflowExpression.Validate(bodyvaluesODRAFTcountry, nameof(bodyvaluesODRAFTcountry), required: false);
-            WorkflowExpression.Validate(bodyvaluesODRAFTarea, nameof(bodyvaluesODRAFTarea), required: false);
-            WorkflowExpression.Validate(bodyvaluesODRAFTprefecture, nameof(bodyvaluesODRAFTprefecture), required: false);
-            WorkflowExpression.Validate(bodyvaluesODRAFTcategory, nameof(bodyvaluesODRAFTcategory), required: false);
-            WorkflowExpression.Validate(bodyvaluesODRAFTcompanyEmail, nameof(bodyvaluesODRAFTcompanyEmail), required: false);
-            WorkflowExpression.Validate(bodyvaluesODRAFTbusinessEmail, nameof(bodyvaluesODRAFTbusinessEmail), required: false);
-            WorkflowExpression.Validate(bodyvaluesODRAFTpersonalEmail, nameof(bodyvaluesODRAFTpersonalEmail), required: false);
-            WorkflowExpression.Validate(bodyvaluesODRAFTiDCardNo, nameof(bodyvaluesODRAFTiDCardNo), required: false);
-            WorkflowExpression.Validate(bodyvaluesODRAFTactivity, nameof(bodyvaluesODRAFTactivity), required: false);
-            WorkflowExpression.Validate(bodyvaluesODRAFTmobileTelephone, nameof(bodyvaluesODRAFTmobileTelephone), required: false);
-            WorkflowExpression.Validate(bodyvaluesODRAFTnameTitle, nameof(bodyvaluesODRAFTnameTitle), required: false);
-            WorkflowExpression.Validate(bodyvaluesODRAFTfirstName, nameof(bodyvaluesODRAFTfirstName), required: false);
-            WorkflowExpression.Validate(bodyvaluesODRAFTsurname, nameof(bodyvaluesODRAFTsurname), required: false);
-            WorkflowExpression.Validate(bodyvaluesODRAFTzip, nameof(bodyvaluesODRAFTzip), required: false);
-            WorkflowExpression.Validate(bodyvaluesODRAFTbusinessTelephone, nameof(bodyvaluesODRAFTbusinessTelephone), required: false);
-            WorkflowExpression.Validate(bodyvaluesODRAFTinternalTelephone, nameof(bodyvaluesODRAFTinternalTelephone), required: false);
-            WorkflowExpression.Validate(bodyvaluesODRAFTpersonalTelephone, nameof(bodyvaluesODRAFTpersonalTelephone), required: false);
-            WorkflowExpression.Validate(bodyvaluesODRAFTcomments, nameof(bodyvaluesODRAFTcomments), required: false);
-            WorkflowExpression.Validate(bodyvaluesODRAFTtitle, nameof(bodyvaluesODRAFTtitle), required: false);
-            WorkflowExpression.Validate(bodyvaluesODRAFTwebPage, nameof(bodyvaluesODRAFTwebPage), required: false);
-            WorkflowExpression.Validate(bodyvaluesODRAFTzip2, nameof(bodyvaluesODRAFTzip2), required: false);
-            WorkflowExpression.Validate(bodyvaluesODRAFTLNKbranch, nameof(bodyvaluesODRAFTLNKbranch), required: false);
-            WorkflowExpression.Validate(bodyvaluesODRAFTLNKbusinessUnit, nameof(bodyvaluesODRAFTLNKbusinessUnit), required: false);
-            WorkflowExpression.Validate(bodyvaluesODRAFTLNKdepartment, nameof(bodyvaluesODRAFTLNKdepartment), required: false);
-            WorkflowExpression.Validate(bodyvaluesODRAFTLNKproject, nameof(bodyvaluesODRAFTLNKproject), required: false);
-            WorkflowExpression.Validate(bodyvaluesODRAFTLNKsource, nameof(bodyvaluesODRAFTLNKsource), required: false);
+            var __workflow_bodyvaluesODRAFTcode = bodyvaluesODRAFTcode == null ? null : WorkflowExpression.Compile(bodyvaluesODRAFTcode);
+            WorkflowExpression.Validate(__workflow_bodyvaluesODRAFTcode, nameof(bodyvaluesODRAFTcode), required: true);
+            var __workflow_bodyfORM = bodyfORM == null ? null : WorkflowExpression.Compile(bodyfORM);
+            WorkflowExpression.Validate(__workflow_bodyfORM, nameof(bodyfORM), required: false);
+            var __workflow_bodykEY = bodykEY == null ? null : WorkflowExpression.Compile(bodykEY);
+            WorkflowExpression.Validate(__workflow_bodykEY, nameof(bodykEY), required: false);
+            var __workflow_bodyvaluesODRAFTaddress = bodyvaluesODRAFTaddress == null ? null : WorkflowExpression.Compile(bodyvaluesODRAFTaddress);
+            WorkflowExpression.Validate(__workflow_bodyvaluesODRAFTaddress, nameof(bodyvaluesODRAFTaddress), required: false);
+            var __workflow_bodyvaluesODRAFTtRNo = bodyvaluesODRAFTtRNo == null ? null : WorkflowExpression.Compile(bodyvaluesODRAFTtRNo);
+            WorkflowExpression.Validate(__workflow_bodyvaluesODRAFTtRNo, nameof(bodyvaluesODRAFTtRNo), required: false);
+            var __workflow_bodyvaluesODRAFTcity = bodyvaluesODRAFTcity == null ? null : WorkflowExpression.Compile(bodyvaluesODRAFTcity);
+            WorkflowExpression.Validate(__workflow_bodyvaluesODRAFTcity, nameof(bodyvaluesODRAFTcity), required: false);
+            var __workflow_bodyvaluesODRAFTcountry = bodyvaluesODRAFTcountry == null ? null : WorkflowExpression.Compile(bodyvaluesODRAFTcountry);
+            WorkflowExpression.Validate(__workflow_bodyvaluesODRAFTcountry, nameof(bodyvaluesODRAFTcountry), required: false);
+            var __workflow_bodyvaluesODRAFTarea = bodyvaluesODRAFTarea == null ? null : WorkflowExpression.Compile(bodyvaluesODRAFTarea);
+            WorkflowExpression.Validate(__workflow_bodyvaluesODRAFTarea, nameof(bodyvaluesODRAFTarea), required: false);
+            var __workflow_bodyvaluesODRAFTprefecture = bodyvaluesODRAFTprefecture == null ? null : WorkflowExpression.Compile(bodyvaluesODRAFTprefecture);
+            WorkflowExpression.Validate(__workflow_bodyvaluesODRAFTprefecture, nameof(bodyvaluesODRAFTprefecture), required: false);
+            var __workflow_bodyvaluesODRAFTcategory = bodyvaluesODRAFTcategory == null ? null : WorkflowExpression.Compile(bodyvaluesODRAFTcategory);
+            WorkflowExpression.Validate(__workflow_bodyvaluesODRAFTcategory, nameof(bodyvaluesODRAFTcategory), required: false);
+            var __workflow_bodyvaluesODRAFTcompanyEmail = bodyvaluesODRAFTcompanyEmail == null ? null : WorkflowExpression.Compile(bodyvaluesODRAFTcompanyEmail);
+            WorkflowExpression.Validate(__workflow_bodyvaluesODRAFTcompanyEmail, nameof(bodyvaluesODRAFTcompanyEmail), required: false);
+            var __workflow_bodyvaluesODRAFTbusinessEmail = bodyvaluesODRAFTbusinessEmail == null ? null : WorkflowExpression.Compile(bodyvaluesODRAFTbusinessEmail);
+            WorkflowExpression.Validate(__workflow_bodyvaluesODRAFTbusinessEmail, nameof(bodyvaluesODRAFTbusinessEmail), required: false);
+            var __workflow_bodyvaluesODRAFTpersonalEmail = bodyvaluesODRAFTpersonalEmail == null ? null : WorkflowExpression.Compile(bodyvaluesODRAFTpersonalEmail);
+            WorkflowExpression.Validate(__workflow_bodyvaluesODRAFTpersonalEmail, nameof(bodyvaluesODRAFTpersonalEmail), required: false);
+            var __workflow_bodyvaluesODRAFTiDCardNo = bodyvaluesODRAFTiDCardNo == null ? null : WorkflowExpression.Compile(bodyvaluesODRAFTiDCardNo);
+            WorkflowExpression.Validate(__workflow_bodyvaluesODRAFTiDCardNo, nameof(bodyvaluesODRAFTiDCardNo), required: false);
+            var __workflow_bodyvaluesODRAFTactivity = bodyvaluesODRAFTactivity == null ? null : WorkflowExpression.Compile(bodyvaluesODRAFTactivity);
+            WorkflowExpression.Validate(__workflow_bodyvaluesODRAFTactivity, nameof(bodyvaluesODRAFTactivity), required: false);
+            var __workflow_bodyvaluesODRAFTmobileTelephone = bodyvaluesODRAFTmobileTelephone == null ? null : WorkflowExpression.Compile(bodyvaluesODRAFTmobileTelephone);
+            WorkflowExpression.Validate(__workflow_bodyvaluesODRAFTmobileTelephone, nameof(bodyvaluesODRAFTmobileTelephone), required: false);
+            var __workflow_bodyvaluesODRAFTnameTitle = bodyvaluesODRAFTnameTitle == null ? null : WorkflowExpression.Compile(bodyvaluesODRAFTnameTitle);
+            WorkflowExpression.Validate(__workflow_bodyvaluesODRAFTnameTitle, nameof(bodyvaluesODRAFTnameTitle), required: false);
+            var __workflow_bodyvaluesODRAFTfirstName = bodyvaluesODRAFTfirstName == null ? null : WorkflowExpression.Compile(bodyvaluesODRAFTfirstName);
+            WorkflowExpression.Validate(__workflow_bodyvaluesODRAFTfirstName, nameof(bodyvaluesODRAFTfirstName), required: false);
+            var __workflow_bodyvaluesODRAFTsurname = bodyvaluesODRAFTsurname == null ? null : WorkflowExpression.Compile(bodyvaluesODRAFTsurname);
+            WorkflowExpression.Validate(__workflow_bodyvaluesODRAFTsurname, nameof(bodyvaluesODRAFTsurname), required: false);
+            var __workflow_bodyvaluesODRAFTzip = bodyvaluesODRAFTzip == null ? null : WorkflowExpression.Compile(bodyvaluesODRAFTzip);
+            WorkflowExpression.Validate(__workflow_bodyvaluesODRAFTzip, nameof(bodyvaluesODRAFTzip), required: false);
+            var __workflow_bodyvaluesODRAFTbusinessTelephone = bodyvaluesODRAFTbusinessTelephone == null ? null : WorkflowExpression.Compile(bodyvaluesODRAFTbusinessTelephone);
+            WorkflowExpression.Validate(__workflow_bodyvaluesODRAFTbusinessTelephone, nameof(bodyvaluesODRAFTbusinessTelephone), required: false);
+            var __workflow_bodyvaluesODRAFTinternalTelephone = bodyvaluesODRAFTinternalTelephone == null ? null : WorkflowExpression.Compile(bodyvaluesODRAFTinternalTelephone);
+            WorkflowExpression.Validate(__workflow_bodyvaluesODRAFTinternalTelephone, nameof(bodyvaluesODRAFTinternalTelephone), required: false);
+            var __workflow_bodyvaluesODRAFTpersonalTelephone = bodyvaluesODRAFTpersonalTelephone == null ? null : WorkflowExpression.Compile(bodyvaluesODRAFTpersonalTelephone);
+            WorkflowExpression.Validate(__workflow_bodyvaluesODRAFTpersonalTelephone, nameof(bodyvaluesODRAFTpersonalTelephone), required: false);
+            var __workflow_bodyvaluesODRAFTcomments = bodyvaluesODRAFTcomments == null ? null : WorkflowExpression.Compile(bodyvaluesODRAFTcomments);
+            WorkflowExpression.Validate(__workflow_bodyvaluesODRAFTcomments, nameof(bodyvaluesODRAFTcomments), required: false);
+            var __workflow_bodyvaluesODRAFTtitle = bodyvaluesODRAFTtitle == null ? null : WorkflowExpression.Compile(bodyvaluesODRAFTtitle);
+            WorkflowExpression.Validate(__workflow_bodyvaluesODRAFTtitle, nameof(bodyvaluesODRAFTtitle), required: false);
+            var __workflow_bodyvaluesODRAFTwebPage = bodyvaluesODRAFTwebPage == null ? null : WorkflowExpression.Compile(bodyvaluesODRAFTwebPage);
+            WorkflowExpression.Validate(__workflow_bodyvaluesODRAFTwebPage, nameof(bodyvaluesODRAFTwebPage), required: false);
+            var __workflow_bodyvaluesODRAFTzip2 = bodyvaluesODRAFTzip2 == null ? null : WorkflowExpression.Compile(bodyvaluesODRAFTzip2);
+            WorkflowExpression.Validate(__workflow_bodyvaluesODRAFTzip2, nameof(bodyvaluesODRAFTzip2), required: false);
+            var __workflow_bodyvaluesODRAFTLNKbranch = bodyvaluesODRAFTLNKbranch == null ? null : WorkflowExpression.Compile(bodyvaluesODRAFTLNKbranch);
+            WorkflowExpression.Validate(__workflow_bodyvaluesODRAFTLNKbranch, nameof(bodyvaluesODRAFTLNKbranch), required: false);
+            var __workflow_bodyvaluesODRAFTLNKbusinessUnit = bodyvaluesODRAFTLNKbusinessUnit == null ? null : WorkflowExpression.Compile(bodyvaluesODRAFTLNKbusinessUnit);
+            WorkflowExpression.Validate(__workflow_bodyvaluesODRAFTLNKbusinessUnit, nameof(bodyvaluesODRAFTLNKbusinessUnit), required: false);
+            var __workflow_bodyvaluesODRAFTLNKdepartment = bodyvaluesODRAFTLNKdepartment == null ? null : WorkflowExpression.Compile(bodyvaluesODRAFTLNKdepartment);
+            WorkflowExpression.Validate(__workflow_bodyvaluesODRAFTLNKdepartment, nameof(bodyvaluesODRAFTLNKdepartment), required: false);
+            var __workflow_bodyvaluesODRAFTLNKproject = bodyvaluesODRAFTLNKproject == null ? null : WorkflowExpression.Compile(bodyvaluesODRAFTLNKproject);
+            WorkflowExpression.Validate(__workflow_bodyvaluesODRAFTLNKproject, nameof(bodyvaluesODRAFTLNKproject), required: false);
+            var __workflow_bodyvaluesODRAFTLNKsource = bodyvaluesODRAFTLNKsource == null ? null : WorkflowExpression.Compile(bodyvaluesODRAFTLNKsource);
+            WorkflowExpression.Validate(__workflow_bodyvaluesODRAFTLNKsource, nameof(bodyvaluesODRAFTLNKsource), required: false);
             return new DeferredBodyAction<SetData200response>(() =>
             {
                 var apiCallPath = "/setDraftEntry";
@@ -1825,15 +1828,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 callPayload.Queries["op"] = Convert.ToString("s1service");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfORM != null)
+                if (__workflow_bodyfORM != null)
                 {
-                    body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                    body["FORM"] = ExpressionConverter.ConvertO(__workflow_bodyfORM);
                     bodypropCount++;
                 }
 
-                if (bodykEY != null)
+                if (__workflow_bodykEY != null)
                 {
-                    body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                    body["KEY"] = ExpressionConverter.ConvertO(__workflow_bodykEY);
                     bodypropCount++;
                 }
 
@@ -1847,149 +1850,149 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 var dataObjectpropCount = 0;
                 var sODRAFTObject = new JObject();
                 var sODRAFTObjectpropCount = 0;
-                if (bodyvaluesODRAFTaddress != null)
+                if (__workflow_bodyvaluesODRAFTaddress != null)
                 {
-                    sODRAFTObject["ADDRESS"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTaddress);
+                    sODRAFTObject["ADDRESS"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesODRAFTaddress);
                     sODRAFTObjectpropCount++;
                 }
 
-                if (bodyvaluesODRAFTtRNo != null)
+                if (__workflow_bodyvaluesODRAFTtRNo != null)
                 {
-                    sODRAFTObject["AFM"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTtRNo);
+                    sODRAFTObject["AFM"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesODRAFTtRNo);
                     sODRAFTObjectpropCount++;
                 }
 
-                if (bodyvaluesODRAFTcity != null)
+                if (__workflow_bodyvaluesODRAFTcity != null)
                 {
-                    sODRAFTObject["CITY"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTcity);
+                    sODRAFTObject["CITY"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesODRAFTcity);
                     sODRAFTObjectpropCount++;
                 }
 
                 sODRAFTObjectpropCount++;
-                sODRAFTObject["CODE"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTcode);
-                if (bodyvaluesODRAFTcountry != null)
+                sODRAFTObject["CODE"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesODRAFTcode);
+                if (__workflow_bodyvaluesODRAFTcountry != null)
                 {
-                    sODRAFTObject["COUNTRY"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTcountry);
+                    sODRAFTObject["COUNTRY"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesODRAFTcountry);
                     sODRAFTObjectpropCount++;
                 }
 
-                if (bodyvaluesODRAFTarea != null)
+                if (__workflow_bodyvaluesODRAFTarea != null)
                 {
-                    sODRAFTObject["DISTRICT"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTarea);
+                    sODRAFTObject["DISTRICT"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesODRAFTarea);
                     sODRAFTObjectpropCount++;
                 }
 
-                if (bodyvaluesODRAFTprefecture != null)
+                if (__workflow_bodyvaluesODRAFTprefecture != null)
                 {
-                    sODRAFTObject["DISTRICT1"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTprefecture);
+                    sODRAFTObject["DISTRICT1"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesODRAFTprefecture);
                     sODRAFTObjectpropCount++;
                 }
 
-                if (bodyvaluesODRAFTcategory != null)
+                if (__workflow_bodyvaluesODRAFTcategory != null)
                 {
-                    sODRAFTObject["DRAFTTYPE"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTcategory);
+                    sODRAFTObject["DRAFTTYPE"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesODRAFTcategory);
                     sODRAFTObjectpropCount++;
                 }
 
-                if (bodyvaluesODRAFTcompanyEmail != null)
+                if (__workflow_bodyvaluesODRAFTcompanyEmail != null)
                 {
-                    sODRAFTObject["EMAIL"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTcompanyEmail);
+                    sODRAFTObject["EMAIL"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesODRAFTcompanyEmail);
                     sODRAFTObjectpropCount++;
                 }
 
-                if (bodyvaluesODRAFTbusinessEmail != null)
+                if (__workflow_bodyvaluesODRAFTbusinessEmail != null)
                 {
-                    sODRAFTObject["EMAIL1"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTbusinessEmail);
+                    sODRAFTObject["EMAIL1"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesODRAFTbusinessEmail);
                     sODRAFTObjectpropCount++;
                 }
 
-                if (bodyvaluesODRAFTpersonalEmail != null)
+                if (__workflow_bodyvaluesODRAFTpersonalEmail != null)
                 {
-                    sODRAFTObject["EMAIL2"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTpersonalEmail);
+                    sODRAFTObject["EMAIL2"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesODRAFTpersonalEmail);
                     sODRAFTObjectpropCount++;
                 }
 
-                if (bodyvaluesODRAFTiDCardNo != null)
+                if (__workflow_bodyvaluesODRAFTiDCardNo != null)
                 {
-                    sODRAFTObject["IDENTITYNUM"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTiDCardNo);
+                    sODRAFTObject["IDENTITYNUM"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesODRAFTiDCardNo);
                     sODRAFTObjectpropCount++;
                 }
 
-                if (bodyvaluesODRAFTactivity != null)
+                if (__workflow_bodyvaluesODRAFTactivity != null)
                 {
-                    sODRAFTObject["JOBTYPETRD"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTactivity);
+                    sODRAFTObject["JOBTYPETRD"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesODRAFTactivity);
                     sODRAFTObjectpropCount++;
                 }
 
-                if (bodyvaluesODRAFTmobileTelephone != null)
+                if (__workflow_bodyvaluesODRAFTmobileTelephone != null)
                 {
-                    sODRAFTObject["MOBILEPHONE"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTmobileTelephone);
+                    sODRAFTObject["MOBILEPHONE"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesODRAFTmobileTelephone);
                     sODRAFTObjectpropCount++;
                 }
 
-                if (bodyvaluesODRAFTnameTitle != null)
+                if (__workflow_bodyvaluesODRAFTnameTitle != null)
                 {
-                    sODRAFTObject["NAMEC"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTnameTitle);
+                    sODRAFTObject["NAMEC"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesODRAFTnameTitle);
                     sODRAFTObjectpropCount++;
                 }
 
-                if (bodyvaluesODRAFTfirstName != null)
+                if (__workflow_bodyvaluesODRAFTfirstName != null)
                 {
-                    sODRAFTObject["NAMEF"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTfirstName);
+                    sODRAFTObject["NAMEF"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesODRAFTfirstName);
                     sODRAFTObjectpropCount++;
                 }
 
-                if (bodyvaluesODRAFTsurname != null)
+                if (__workflow_bodyvaluesODRAFTsurname != null)
                 {
-                    sODRAFTObject["NAMEL"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTsurname);
+                    sODRAFTObject["NAMEL"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesODRAFTsurname);
                     sODRAFTObjectpropCount++;
                 }
 
-                if (bodyvaluesODRAFTzip != null)
+                if (__workflow_bodyvaluesODRAFTzip != null)
                 {
-                    sODRAFTObject["NUMCG"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTzip);
+                    sODRAFTObject["NUMCG"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesODRAFTzip);
                     sODRAFTObjectpropCount++;
                 }
 
-                if (bodyvaluesODRAFTbusinessTelephone != null)
+                if (__workflow_bodyvaluesODRAFTbusinessTelephone != null)
                 {
-                    sODRAFTObject["PHONE1"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTbusinessTelephone);
+                    sODRAFTObject["PHONE1"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesODRAFTbusinessTelephone);
                     sODRAFTObjectpropCount++;
                 }
 
-                if (bodyvaluesODRAFTinternalTelephone != null)
+                if (__workflow_bodyvaluesODRAFTinternalTelephone != null)
                 {
-                    sODRAFTObject["PHONEEXT"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTinternalTelephone);
+                    sODRAFTObject["PHONEEXT"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesODRAFTinternalTelephone);
                     sODRAFTObjectpropCount++;
                 }
 
-                if (bodyvaluesODRAFTpersonalTelephone != null)
+                if (__workflow_bodyvaluesODRAFTpersonalTelephone != null)
                 {
-                    sODRAFTObject["PHONELOCAL"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTpersonalTelephone);
+                    sODRAFTObject["PHONELOCAL"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesODRAFTpersonalTelephone);
                     sODRAFTObjectpropCount++;
                 }
 
-                if (bodyvaluesODRAFTcomments != null)
+                if (__workflow_bodyvaluesODRAFTcomments != null)
                 {
-                    sODRAFTObject["REMARKS"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTcomments);
+                    sODRAFTObject["REMARKS"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesODRAFTcomments);
                     sODRAFTObjectpropCount++;
                 }
 
-                if (bodyvaluesODRAFTtitle != null)
+                if (__workflow_bodyvaluesODRAFTtitle != null)
                 {
-                    sODRAFTObject["SOTITLENAME"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTtitle);
+                    sODRAFTObject["SOTITLENAME"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesODRAFTtitle);
                     sODRAFTObjectpropCount++;
                 }
 
-                if (bodyvaluesODRAFTwebPage != null)
+                if (__workflow_bodyvaluesODRAFTwebPage != null)
                 {
-                    sODRAFTObject["WEBPAGE"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTwebPage);
+                    sODRAFTObject["WEBPAGE"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesODRAFTwebPage);
                     sODRAFTObjectpropCount++;
                 }
 
-                if (bodyvaluesODRAFTzip2 != null)
+                if (__workflow_bodyvaluesODRAFTzip2 != null)
                 {
-                    sODRAFTObject["ZIP"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTzip2);
+                    sODRAFTObject["ZIP"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesODRAFTzip2);
                     sODRAFTObjectpropCount++;
                 }
 
@@ -2001,33 +2004,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
                 var sODRAFTLNKObject = new JObject();
                 var sODRAFTLNKObjectpropCount = 0;
-                if (bodyvaluesODRAFTLNKbranch != null)
+                if (__workflow_bodyvaluesODRAFTLNKbranch != null)
                 {
-                    sODRAFTLNKObject["BRANCH"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTLNKbranch);
+                    sODRAFTLNKObject["BRANCH"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesODRAFTLNKbranch);
                     sODRAFTLNKObjectpropCount++;
                 }
 
-                if (bodyvaluesODRAFTLNKbusinessUnit != null)
+                if (__workflow_bodyvaluesODRAFTLNKbusinessUnit != null)
                 {
-                    sODRAFTLNKObject["BUSUNITS"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTLNKbusinessUnit);
+                    sODRAFTLNKObject["BUSUNITS"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesODRAFTLNKbusinessUnit);
                     sODRAFTLNKObjectpropCount++;
                 }
 
-                if (bodyvaluesODRAFTLNKdepartment != null)
+                if (__workflow_bodyvaluesODRAFTLNKdepartment != null)
                 {
-                    sODRAFTLNKObject["DEPART"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTLNKdepartment);
+                    sODRAFTLNKObject["DEPART"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesODRAFTLNKdepartment);
                     sODRAFTLNKObjectpropCount++;
                 }
 
-                if (bodyvaluesODRAFTLNKproject != null)
+                if (__workflow_bodyvaluesODRAFTLNKproject != null)
                 {
-                    sODRAFTLNKObject["PRJC"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTLNKproject);
+                    sODRAFTLNKObject["PRJC"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesODRAFTLNKproject);
                     sODRAFTLNKObjectpropCount++;
                 }
 
-                if (bodyvaluesODRAFTLNKsource != null)
+                if (__workflow_bodyvaluesODRAFTLNKsource != null)
                 {
-                    sODRAFTLNKObject["PRJCLEAD"] = ExpressionConverter.ConvertO(bodyvaluesODRAFTLNKsource);
+                    sODRAFTLNKObject["PRJCLEAD"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesODRAFTLNKsource);
                     sODRAFTLNKObjectpropCount++;
                 }
 
@@ -2055,25 +2058,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        [WorkflowExpressionFactory(nameof(__BuildSetExpense))]
-        public IBodyWorkflowAction<SetData200response> SetExpense([WorkflowExpression] Func<string> bodyvaluelINEITEMcode, [WorkflowExpression] Func<bodyvaluelINEITEMinvoicingCategoryInput> bodyvaluelINEITEMinvoicingCategory, [WorkflowExpression] Func<string> bodyvaluelINEITEMname, [WorkflowExpression] Func<string> bodyvaluelINEITEMvatGroup, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null, [WorkflowExpression] Func<string> bodyvaluelINEITEMcommercialCategory = null, [WorkflowExpression] Func<bodyvaluelINEITEMtypeInput> bodyvaluelINEITEMtype = null, [WorkflowExpression] Func<string> bodyvaluelINEITEMcomments = null, [WorkflowExpression] Func<bodyvaluelINEITEMfeeValueInput> bodyvaluelINEITEMfeeValue = null)
+        public IBodyWorkflowAction<SetData200response> SetExpense(Expression<Func<string>> bodyvaluelINEITEMcode, Expression<Func<bodyvaluelINEITEMinvoicingCategoryInput>> bodyvaluelINEITEMinvoicingCategory, Expression<Func<string>> bodyvaluelINEITEMname, Expression<Func<string>> bodyvaluelINEITEMvatGroup, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null, Expression<Func<string>> bodyvaluelINEITEMcommercialCategory = null, Expression<Func<bodyvaluelINEITEMtypeInput>> bodyvaluelINEITEMtype = null, Expression<Func<string>> bodyvaluelINEITEMcomments = null, Expression<Func<bodyvaluelINEITEMfeeValueInput>> bodyvaluelINEITEMfeeValue = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SetData200response> __BuildSetExpense(WorkflowExpression<string> bodyvaluelINEITEMcode, WorkflowExpression<bodyvaluelINEITEMinvoicingCategoryInput> bodyvaluelINEITEMinvoicingCategory, WorkflowExpression<string> bodyvaluelINEITEMname, WorkflowExpression<string> bodyvaluelINEITEMvatGroup, WorkflowExpression<string> bodyfORM = null, WorkflowExpression<string> bodykEY = null, WorkflowExpression<string> bodyvaluelINEITEMcommercialCategory = null, WorkflowExpression<bodyvaluelINEITEMtypeInput> bodyvaluelINEITEMtype = null, WorkflowExpression<string> bodyvaluelINEITEMcomments = null, WorkflowExpression<bodyvaluelINEITEMfeeValueInput> bodyvaluelINEITEMfeeValue = null)
-        {
-            WorkflowExpression.Validate(bodyvaluelINEITEMcode, nameof(bodyvaluelINEITEMcode), required: true);
-            WorkflowExpression.Validate(bodyvaluelINEITEMinvoicingCategory, nameof(bodyvaluelINEITEMinvoicingCategory), required: true);
-            WorkflowExpression.Validate(bodyvaluelINEITEMname, nameof(bodyvaluelINEITEMname), required: true);
-            WorkflowExpression.Validate(bodyvaluelINEITEMvatGroup, nameof(bodyvaluelINEITEMvatGroup), required: true);
-            WorkflowExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
-            WorkflowExpression.Validate(bodykEY, nameof(bodykEY), required: false);
-            WorkflowExpression.Validate(bodyvaluelINEITEMcommercialCategory, nameof(bodyvaluelINEITEMcommercialCategory), required: false);
-            WorkflowExpression.Validate(bodyvaluelINEITEMtype, nameof(bodyvaluelINEITEMtype), required: false);
-            WorkflowExpression.Validate(bodyvaluelINEITEMcomments, nameof(bodyvaluelINEITEMcomments), required: false);
-            WorkflowExpression.Validate(bodyvaluelINEITEMfeeValue, nameof(bodyvaluelINEITEMfeeValue), required: false);
+            var __workflow_bodyvaluelINEITEMcode = bodyvaluelINEITEMcode == null ? null : WorkflowExpression.Compile(bodyvaluelINEITEMcode);
+            WorkflowExpression.Validate(__workflow_bodyvaluelINEITEMcode, nameof(bodyvaluelINEITEMcode), required: true);
+            var __workflow_bodyvaluelINEITEMinvoicingCategory = bodyvaluelINEITEMinvoicingCategory == null ? null : WorkflowExpression.Compile(bodyvaluelINEITEMinvoicingCategory);
+            WorkflowExpression.Validate(__workflow_bodyvaluelINEITEMinvoicingCategory, nameof(bodyvaluelINEITEMinvoicingCategory), required: true);
+            var __workflow_bodyvaluelINEITEMname = bodyvaluelINEITEMname == null ? null : WorkflowExpression.Compile(bodyvaluelINEITEMname);
+            WorkflowExpression.Validate(__workflow_bodyvaluelINEITEMname, nameof(bodyvaluelINEITEMname), required: true);
+            var __workflow_bodyvaluelINEITEMvatGroup = bodyvaluelINEITEMvatGroup == null ? null : WorkflowExpression.Compile(bodyvaluelINEITEMvatGroup);
+            WorkflowExpression.Validate(__workflow_bodyvaluelINEITEMvatGroup, nameof(bodyvaluelINEITEMvatGroup), required: true);
+            var __workflow_bodyfORM = bodyfORM == null ? null : WorkflowExpression.Compile(bodyfORM);
+            WorkflowExpression.Validate(__workflow_bodyfORM, nameof(bodyfORM), required: false);
+            var __workflow_bodykEY = bodykEY == null ? null : WorkflowExpression.Compile(bodykEY);
+            WorkflowExpression.Validate(__workflow_bodykEY, nameof(bodykEY), required: false);
+            var __workflow_bodyvaluelINEITEMcommercialCategory = bodyvaluelINEITEMcommercialCategory == null ? null : WorkflowExpression.Compile(bodyvaluelINEITEMcommercialCategory);
+            WorkflowExpression.Validate(__workflow_bodyvaluelINEITEMcommercialCategory, nameof(bodyvaluelINEITEMcommercialCategory), required: false);
+            var __workflow_bodyvaluelINEITEMtype = bodyvaluelINEITEMtype == null ? null : WorkflowExpression.Compile(bodyvaluelINEITEMtype);
+            WorkflowExpression.Validate(__workflow_bodyvaluelINEITEMtype, nameof(bodyvaluelINEITEMtype), required: false);
+            var __workflow_bodyvaluelINEITEMcomments = bodyvaluelINEITEMcomments == null ? null : WorkflowExpression.Compile(bodyvaluelINEITEMcomments);
+            WorkflowExpression.Validate(__workflow_bodyvaluelINEITEMcomments, nameof(bodyvaluelINEITEMcomments), required: false);
+            var __workflow_bodyvaluelINEITEMfeeValue = bodyvaluelINEITEMfeeValue == null ? null : WorkflowExpression.Compile(bodyvaluelINEITEMfeeValue);
+            WorkflowExpression.Validate(__workflow_bodyvaluelINEITEMfeeValue, nameof(bodyvaluelINEITEMfeeValue), required: false);
             return new DeferredBodyAction<SetData200response>(() =>
             {
                 var apiCallPath = "/setExpense";
@@ -2082,15 +2088,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 callPayload.Queries["op"] = Convert.ToString("s1service");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfORM != null)
+                if (__workflow_bodyfORM != null)
                 {
-                    body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                    body["FORM"] = ExpressionConverter.ConvertO(__workflow_bodyfORM);
                     bodypropCount++;
                 }
 
-                if (bodykEY != null)
+                if (__workflow_bodykEY != null)
                 {
-                    body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                    body["KEY"] = ExpressionConverter.ConvertO(__workflow_bodykEY);
                     bodypropCount++;
                 }
 
@@ -2105,37 +2111,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 var lINEITEMObject = new JObject();
                 var lINEITEMObjectpropCount = 0;
                 lINEITEMObjectpropCount++;
-                lINEITEMObject["CODE"] = ExpressionConverter.ConvertO(bodyvaluelINEITEMcode);
+                lINEITEMObject["CODE"] = ExpressionConverter.ConvertO(__workflow_bodyvaluelINEITEMcode);
                 lINEITEMObjectpropCount++;
-                lINEITEMObject["LISOURCETYPE"] = ExpressionConverter.ConvertO(bodyvaluelINEITEMinvoicingCategory);
-                if (bodyvaluelINEITEMcommercialCategory != null)
+                lINEITEMObject["LISOURCETYPE"] = ExpressionConverter.ConvertO(__workflow_bodyvaluelINEITEMinvoicingCategory);
+                if (__workflow_bodyvaluelINEITEMcommercialCategory != null)
                 {
-                    lINEITEMObject["MTRCATEGORY"] = ExpressionConverter.ConvertO(bodyvaluelINEITEMcommercialCategory);
+                    lINEITEMObject["MTRCATEGORY"] = ExpressionConverter.ConvertO(__workflow_bodyvaluelINEITEMcommercialCategory);
                     lINEITEMObjectpropCount++;
                 }
 
-                if (bodyvaluelINEITEMtype != null)
+                if (__workflow_bodyvaluelINEITEMtype != null)
                 {
-                    lINEITEMObject["MTRTYPE"] = ExpressionConverter.ConvertO(bodyvaluelINEITEMtype);
-                    lINEITEMObjectpropCount++;
-                }
-
-                lINEITEMObjectpropCount++;
-                lINEITEMObject["NAME"] = ExpressionConverter.ConvertO(bodyvaluelINEITEMname);
-                if (bodyvaluelINEITEMcomments != null)
-                {
-                    lINEITEMObject["REMARKS"] = ExpressionConverter.ConvertO(bodyvaluelINEITEMcomments);
-                    lINEITEMObjectpropCount++;
-                }
-
-                if (bodyvaluelINEITEMfeeValue != null)
-                {
-                    lINEITEMObject["SOPAYVALUE"] = ExpressionConverter.ConvertO(bodyvaluelINEITEMfeeValue);
+                    lINEITEMObject["MTRTYPE"] = ExpressionConverter.ConvertO(__workflow_bodyvaluelINEITEMtype);
                     lINEITEMObjectpropCount++;
                 }
 
                 lINEITEMObjectpropCount++;
-                lINEITEMObject["VAT"] = ExpressionConverter.ConvertO(bodyvaluelINEITEMvatGroup);
+                lINEITEMObject["NAME"] = ExpressionConverter.ConvertO(__workflow_bodyvaluelINEITEMname);
+                if (__workflow_bodyvaluelINEITEMcomments != null)
+                {
+                    lINEITEMObject["REMARKS"] = ExpressionConverter.ConvertO(__workflow_bodyvaluelINEITEMcomments);
+                    lINEITEMObjectpropCount++;
+                }
+
+                if (__workflow_bodyvaluelINEITEMfeeValue != null)
+                {
+                    lINEITEMObject["SOPAYVALUE"] = ExpressionConverter.ConvertO(__workflow_bodyvaluelINEITEMfeeValue);
+                    lINEITEMObjectpropCount++;
+                }
+
+                lINEITEMObjectpropCount++;
+                lINEITEMObject["VAT"] = ExpressionConverter.ConvertO(__workflow_bodyvaluelINEITEMvatGroup);
                 if (lINEITEMObjectpropCount > 0)
                 {
                     dataObject["LINEITEM"] = lINEITEMObject;
@@ -2160,23 +2166,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        [WorkflowExpressionFactory(nameof(__BuildSetExpensesDoc))]
-        public IBodyWorkflowAction<SetData200response> SetExpensesDoc([WorkflowExpression] Func<string> bodyvaluelINSUPDOCseries, [WorkflowExpression] Func<string> bodyvaluelINSUPDOCsupplier, [WorkflowExpression] Func<bodyvalueunnamedInputItem[]> bodyvalueunnamed = null, [WorkflowExpression] Func<string> bodyvaluelINSUPDOCproject = null, [WorkflowExpression] Func<string> bodyvaluelINSUPDOCcomments = null, [WorkflowExpression] Func<string> bodyvaluelINSUPDOCtRNDATE = null, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null)
+        public IBodyWorkflowAction<SetData200response> SetExpensesDoc(Expression<Func<string>> bodyvaluelINSUPDOCseries, Expression<Func<string>> bodyvaluelINSUPDOCsupplier, Expression<Func<bodyvalueunnamedInputItem[]>> bodyvalueunnamed = null, Expression<Func<string>> bodyvaluelINSUPDOCproject = null, Expression<Func<string>> bodyvaluelINSUPDOCcomments = null, Expression<Func<string>> bodyvaluelINSUPDOCtRNDATE = null, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SetData200response> __BuildSetExpensesDoc(WorkflowExpression<string> bodyvaluelINSUPDOCseries, WorkflowExpression<string> bodyvaluelINSUPDOCsupplier, WorkflowExpression<bodyvalueunnamedInputItem[]> bodyvalueunnamed = null, WorkflowExpression<string> bodyvaluelINSUPDOCproject = null, WorkflowExpression<string> bodyvaluelINSUPDOCcomments = null, WorkflowExpression<string> bodyvaluelINSUPDOCtRNDATE = null, WorkflowExpression<string> bodyfORM = null, WorkflowExpression<string> bodykEY = null)
-        {
-            WorkflowExpression.Validate(bodyvaluelINSUPDOCseries, nameof(bodyvaluelINSUPDOCseries), required: true);
-            WorkflowExpression.Validate(bodyvaluelINSUPDOCsupplier, nameof(bodyvaluelINSUPDOCsupplier), required: true);
-            WorkflowExpression.Validate(bodyvalueunnamed, nameof(bodyvalueunnamed), required: false);
-            WorkflowExpression.Validate(bodyvaluelINSUPDOCproject, nameof(bodyvaluelINSUPDOCproject), required: false);
-            WorkflowExpression.Validate(bodyvaluelINSUPDOCcomments, nameof(bodyvaluelINSUPDOCcomments), required: false);
-            WorkflowExpression.Validate(bodyvaluelINSUPDOCtRNDATE, nameof(bodyvaluelINSUPDOCtRNDATE), required: false);
-            WorkflowExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
-            WorkflowExpression.Validate(bodykEY, nameof(bodykEY), required: false);
+            var __workflow_bodyvaluelINSUPDOCseries = bodyvaluelINSUPDOCseries == null ? null : WorkflowExpression.Compile(bodyvaluelINSUPDOCseries);
+            WorkflowExpression.Validate(__workflow_bodyvaluelINSUPDOCseries, nameof(bodyvaluelINSUPDOCseries), required: true);
+            var __workflow_bodyvaluelINSUPDOCsupplier = bodyvaluelINSUPDOCsupplier == null ? null : WorkflowExpression.Compile(bodyvaluelINSUPDOCsupplier);
+            WorkflowExpression.Validate(__workflow_bodyvaluelINSUPDOCsupplier, nameof(bodyvaluelINSUPDOCsupplier), required: true);
+            var __workflow_bodyvalueunnamed = bodyvalueunnamed == null ? null : WorkflowExpression.Compile(bodyvalueunnamed);
+            WorkflowExpression.Validate(__workflow_bodyvalueunnamed, nameof(bodyvalueunnamed), required: false);
+            var __workflow_bodyvaluelINSUPDOCproject = bodyvaluelINSUPDOCproject == null ? null : WorkflowExpression.Compile(bodyvaluelINSUPDOCproject);
+            WorkflowExpression.Validate(__workflow_bodyvaluelINSUPDOCproject, nameof(bodyvaluelINSUPDOCproject), required: false);
+            var __workflow_bodyvaluelINSUPDOCcomments = bodyvaluelINSUPDOCcomments == null ? null : WorkflowExpression.Compile(bodyvaluelINSUPDOCcomments);
+            WorkflowExpression.Validate(__workflow_bodyvaluelINSUPDOCcomments, nameof(bodyvaluelINSUPDOCcomments), required: false);
+            var __workflow_bodyvaluelINSUPDOCtRNDATE = bodyvaluelINSUPDOCtRNDATE == null ? null : WorkflowExpression.Compile(bodyvaluelINSUPDOCtRNDATE);
+            WorkflowExpression.Validate(__workflow_bodyvaluelINSUPDOCtRNDATE, nameof(bodyvaluelINSUPDOCtRNDATE), required: false);
+            var __workflow_bodyfORM = bodyfORM == null ? null : WorkflowExpression.Compile(bodyfORM);
+            WorkflowExpression.Validate(__workflow_bodyfORM, nameof(bodyfORM), required: false);
+            var __workflow_bodykEY = bodykEY == null ? null : WorkflowExpression.Compile(bodykEY);
+            WorkflowExpression.Validate(__workflow_bodykEY, nameof(bodykEY), required: false);
             return new DeferredBodyAction<SetData200response>(() =>
             {
                 var apiCallPath = "/setExpensesDoc";
@@ -2189,33 +2196,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 bodypropCount++;
                 var dATAObject = new JObject();
                 var dATAObjectpropCount = 0;
-                if (bodyvalueunnamed != null)
+                if (__workflow_bodyvalueunnamed != null)
                 {
-                    dATAObject["LINLINES"] = ExpressionConverter.ConvertO(bodyvalueunnamed);
+                    dATAObject["LINLINES"] = ExpressionConverter.ConvertO(__workflow_bodyvalueunnamed);
                     dATAObjectpropCount++;
                 }
 
                 var lINSUPDOCObject = new JObject();
                 var lINSUPDOCObjectpropCount = 0;
-                if (bodyvaluelINSUPDOCproject != null)
+                if (__workflow_bodyvaluelINSUPDOCproject != null)
                 {
-                    lINSUPDOCObject["PRJC"] = ExpressionConverter.ConvertO(bodyvaluelINSUPDOCproject);
+                    lINSUPDOCObject["PRJC"] = ExpressionConverter.ConvertO(__workflow_bodyvaluelINSUPDOCproject);
                     lINSUPDOCObjectpropCount++;
                 }
 
-                if (bodyvaluelINSUPDOCcomments != null)
+                if (__workflow_bodyvaluelINSUPDOCcomments != null)
                 {
-                    lINSUPDOCObject["REMARKS"] = ExpressionConverter.ConvertO(bodyvaluelINSUPDOCcomments);
+                    lINSUPDOCObject["REMARKS"] = ExpressionConverter.ConvertO(__workflow_bodyvaluelINSUPDOCcomments);
                     lINSUPDOCObjectpropCount++;
                 }
 
                 lINSUPDOCObjectpropCount++;
-                lINSUPDOCObject["SERIES"] = ExpressionConverter.ConvertO(bodyvaluelINSUPDOCseries);
+                lINSUPDOCObject["SERIES"] = ExpressionConverter.ConvertO(__workflow_bodyvaluelINSUPDOCseries);
                 lINSUPDOCObjectpropCount++;
-                lINSUPDOCObject["TRDR"] = ExpressionConverter.ConvertO(bodyvaluelINSUPDOCsupplier);
-                if (bodyvaluelINSUPDOCtRNDATE != null)
+                lINSUPDOCObject["TRDR"] = ExpressionConverter.ConvertO(__workflow_bodyvaluelINSUPDOCsupplier);
+                if (__workflow_bodyvaluelINSUPDOCtRNDATE != null)
                 {
-                    lINSUPDOCObject["TRNDATE"] = ExpressionConverter.ConvertO(bodyvaluelINSUPDOCtRNDATE);
+                    lINSUPDOCObject["TRNDATE"] = ExpressionConverter.ConvertO(__workflow_bodyvaluelINSUPDOCtRNDATE);
                     lINSUPDOCObjectpropCount++;
                 }
 
@@ -2231,15 +2238,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                     bodypropCount++;
                 }
 
-                if (bodyfORM != null)
+                if (__workflow_bodyfORM != null)
                 {
-                    body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                    body["FORM"] = ExpressionConverter.ConvertO(__workflow_bodyfORM);
                     bodypropCount++;
                 }
 
-                if (bodykEY != null)
+                if (__workflow_bodykEY != null)
                 {
-                    body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                    body["KEY"] = ExpressionConverter.ConvertO(__workflow_bodykEY);
                     bodypropCount++;
                 }
 
@@ -2259,23 +2266,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        [WorkflowExpressionFactory(nameof(__BuildSetItedoc))]
-        public IBodyWorkflowAction<SetData200response> SetItedoc([WorkflowExpression] Func<string> bodyvalueiTEDOCseries, [WorkflowExpression] Func<string> bodyvaluemTRDOCwarehouse, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null, [WorkflowExpression] Func<string> bodyvalueiTEDOCreason = null, [WorkflowExpression] Func<string> bodyvalueiTEDOCrEMARKS = null, [WorkflowExpression] Func<string> bodyvalueiTEDOCtRNDATE = null, [WorkflowExpression] Func<bodyvalueiTELINESInputItem[]> bodyvalueiTELINES = null)
+        public IBodyWorkflowAction<SetData200response> SetItedoc(Expression<Func<string>> bodyvalueiTEDOCseries, Expression<Func<string>> bodyvaluemTRDOCwarehouse, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null, Expression<Func<string>> bodyvalueiTEDOCreason = null, Expression<Func<string>> bodyvalueiTEDOCrEMARKS = null, Expression<Func<string>> bodyvalueiTEDOCtRNDATE = null, Expression<Func<bodyvalueiTELINESInputItem[]>> bodyvalueiTELINES = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SetData200response> __BuildSetItedoc(WorkflowExpression<string> bodyvalueiTEDOCseries, WorkflowExpression<string> bodyvaluemTRDOCwarehouse, WorkflowExpression<string> bodyfORM = null, WorkflowExpression<string> bodykEY = null, WorkflowExpression<string> bodyvalueiTEDOCreason = null, WorkflowExpression<string> bodyvalueiTEDOCrEMARKS = null, WorkflowExpression<string> bodyvalueiTEDOCtRNDATE = null, WorkflowExpression<bodyvalueiTELINESInputItem[]> bodyvalueiTELINES = null)
-        {
-            WorkflowExpression.Validate(bodyvalueiTEDOCseries, nameof(bodyvalueiTEDOCseries), required: true);
-            WorkflowExpression.Validate(bodyvaluemTRDOCwarehouse, nameof(bodyvaluemTRDOCwarehouse), required: true);
-            WorkflowExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
-            WorkflowExpression.Validate(bodykEY, nameof(bodykEY), required: false);
-            WorkflowExpression.Validate(bodyvalueiTEDOCreason, nameof(bodyvalueiTEDOCreason), required: false);
-            WorkflowExpression.Validate(bodyvalueiTEDOCrEMARKS, nameof(bodyvalueiTEDOCrEMARKS), required: false);
-            WorkflowExpression.Validate(bodyvalueiTEDOCtRNDATE, nameof(bodyvalueiTEDOCtRNDATE), required: false);
-            WorkflowExpression.Validate(bodyvalueiTELINES, nameof(bodyvalueiTELINES), required: false);
+            var __workflow_bodyvalueiTEDOCseries = bodyvalueiTEDOCseries == null ? null : WorkflowExpression.Compile(bodyvalueiTEDOCseries);
+            WorkflowExpression.Validate(__workflow_bodyvalueiTEDOCseries, nameof(bodyvalueiTEDOCseries), required: true);
+            var __workflow_bodyvaluemTRDOCwarehouse = bodyvaluemTRDOCwarehouse == null ? null : WorkflowExpression.Compile(bodyvaluemTRDOCwarehouse);
+            WorkflowExpression.Validate(__workflow_bodyvaluemTRDOCwarehouse, nameof(bodyvaluemTRDOCwarehouse), required: true);
+            var __workflow_bodyfORM = bodyfORM == null ? null : WorkflowExpression.Compile(bodyfORM);
+            WorkflowExpression.Validate(__workflow_bodyfORM, nameof(bodyfORM), required: false);
+            var __workflow_bodykEY = bodykEY == null ? null : WorkflowExpression.Compile(bodykEY);
+            WorkflowExpression.Validate(__workflow_bodykEY, nameof(bodykEY), required: false);
+            var __workflow_bodyvalueiTEDOCreason = bodyvalueiTEDOCreason == null ? null : WorkflowExpression.Compile(bodyvalueiTEDOCreason);
+            WorkflowExpression.Validate(__workflow_bodyvalueiTEDOCreason, nameof(bodyvalueiTEDOCreason), required: false);
+            var __workflow_bodyvalueiTEDOCrEMARKS = bodyvalueiTEDOCrEMARKS == null ? null : WorkflowExpression.Compile(bodyvalueiTEDOCrEMARKS);
+            WorkflowExpression.Validate(__workflow_bodyvalueiTEDOCrEMARKS, nameof(bodyvalueiTEDOCrEMARKS), required: false);
+            var __workflow_bodyvalueiTEDOCtRNDATE = bodyvalueiTEDOCtRNDATE == null ? null : WorkflowExpression.Compile(bodyvalueiTEDOCtRNDATE);
+            WorkflowExpression.Validate(__workflow_bodyvalueiTEDOCtRNDATE, nameof(bodyvalueiTEDOCtRNDATE), required: false);
+            var __workflow_bodyvalueiTELINES = bodyvalueiTELINES == null ? null : WorkflowExpression.Compile(bodyvalueiTELINES);
+            WorkflowExpression.Validate(__workflow_bodyvalueiTELINES, nameof(bodyvalueiTELINES), required: false);
             return new DeferredBodyAction<SetData200response>(() =>
             {
                 var apiCallPath = "/setItedoc";
@@ -2284,15 +2292,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 callPayload.Queries["op"] = Convert.ToString("s1service");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfORM != null)
+                if (__workflow_bodyfORM != null)
                 {
-                    body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                    body["FORM"] = ExpressionConverter.ConvertO(__workflow_bodyfORM);
                     bodypropCount++;
                 }
 
-                if (bodykEY != null)
+                if (__workflow_bodykEY != null)
                 {
-                    body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                    body["KEY"] = ExpressionConverter.ConvertO(__workflow_bodykEY);
                     bodypropCount++;
                 }
 
@@ -2306,23 +2314,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 var dataObjectpropCount = 0;
                 var iTEDOCObject = new JObject();
                 var iTEDOCObjectpropCount = 0;
-                if (bodyvalueiTEDOCreason != null)
+                if (__workflow_bodyvalueiTEDOCreason != null)
                 {
-                    iTEDOCObject["COMMENTS"] = ExpressionConverter.ConvertO(bodyvalueiTEDOCreason);
+                    iTEDOCObject["COMMENTS"] = ExpressionConverter.ConvertO(__workflow_bodyvalueiTEDOCreason);
                     iTEDOCObjectpropCount++;
                 }
 
-                if (bodyvalueiTEDOCrEMARKS != null)
+                if (__workflow_bodyvalueiTEDOCrEMARKS != null)
                 {
-                    iTEDOCObject["REMARKS"] = ExpressionConverter.ConvertO(bodyvalueiTEDOCrEMARKS);
+                    iTEDOCObject["REMARKS"] = ExpressionConverter.ConvertO(__workflow_bodyvalueiTEDOCrEMARKS);
                     iTEDOCObjectpropCount++;
                 }
 
                 iTEDOCObjectpropCount++;
-                iTEDOCObject["SERIES"] = ExpressionConverter.ConvertO(bodyvalueiTEDOCseries);
-                if (bodyvalueiTEDOCtRNDATE != null)
+                iTEDOCObject["SERIES"] = ExpressionConverter.ConvertO(__workflow_bodyvalueiTEDOCseries);
+                if (__workflow_bodyvalueiTEDOCtRNDATE != null)
                 {
-                    iTEDOCObject["TRNDATE"] = ExpressionConverter.ConvertO(bodyvalueiTEDOCtRNDATE);
+                    iTEDOCObject["TRNDATE"] = ExpressionConverter.ConvertO(__workflow_bodyvalueiTEDOCtRNDATE);
                     iTEDOCObjectpropCount++;
                 }
 
@@ -2332,16 +2340,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                     dataObjectpropCount++;
                 }
 
-                if (bodyvalueiTELINES != null)
+                if (__workflow_bodyvalueiTELINES != null)
                 {
-                    dataObject["ITELINES"] = ExpressionConverter.ConvertO(bodyvalueiTELINES);
+                    dataObject["ITELINES"] = ExpressionConverter.ConvertO(__workflow_bodyvalueiTELINES);
                     dataObjectpropCount++;
                 }
 
                 var mTRDOCObject = new JObject();
                 var mTRDOCObjectpropCount = 0;
                 mTRDOCObjectpropCount++;
-                mTRDOCObject["WHOUSE"] = ExpressionConverter.ConvertO(bodyvaluemTRDOCwarehouse);
+                mTRDOCObject["WHOUSE"] = ExpressionConverter.ConvertO(__workflow_bodyvaluemTRDOCwarehouse);
                 if (mTRDOCObjectpropCount > 0)
                 {
                     dataObject["MTRDOC"] = mTRDOCObject;
@@ -2366,27 +2374,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        [WorkflowExpressionFactory(nameof(__BuildSetItem))]
-        public IBodyWorkflowAction<SetData200response> SetItem([WorkflowExpression] Func<string> bodyvalueiTEMcode, [WorkflowExpression] Func<string> bodyvalueiTEMbaseUnitOfMeasure, [WorkflowExpression] Func<string> bodyvalueiTEMname, [WorkflowExpression] Func<string> bodyvalueiTEMvatGroup, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null, [WorkflowExpression] Func<string> bodyvalueiTEMcommercialCategory = null, [WorkflowExpression] Func<string> bodyvalueiTEMitemGroup = null, [WorkflowExpression] Func<string> bodyvalueiTEMretailPrice = null, [WorkflowExpression] Func<string> bodyvalueiTEMwholesalePrice = null, [WorkflowExpression] Func<string> bodyvalueiTEMcomments = null, [WorkflowExpression] Func<string> bodyvalueiTEMdiscount1 = null)
+        public IBodyWorkflowAction<SetData200response> SetItem(Expression<Func<string>> bodyvalueiTEMcode, Expression<Func<string>> bodyvalueiTEMbaseUnitOfMeasure, Expression<Func<string>> bodyvalueiTEMname, Expression<Func<string>> bodyvalueiTEMvatGroup, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null, Expression<Func<string>> bodyvalueiTEMcommercialCategory = null, Expression<Func<string>> bodyvalueiTEMitemGroup = null, Expression<Func<string>> bodyvalueiTEMretailPrice = null, Expression<Func<string>> bodyvalueiTEMwholesalePrice = null, Expression<Func<string>> bodyvalueiTEMcomments = null, Expression<Func<string>> bodyvalueiTEMdiscount1 = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SetData200response> __BuildSetItem(WorkflowExpression<string> bodyvalueiTEMcode, WorkflowExpression<string> bodyvalueiTEMbaseUnitOfMeasure, WorkflowExpression<string> bodyvalueiTEMname, WorkflowExpression<string> bodyvalueiTEMvatGroup, WorkflowExpression<string> bodyfORM = null, WorkflowExpression<string> bodykEY = null, WorkflowExpression<string> bodyvalueiTEMcommercialCategory = null, WorkflowExpression<string> bodyvalueiTEMitemGroup = null, WorkflowExpression<string> bodyvalueiTEMretailPrice = null, WorkflowExpression<string> bodyvalueiTEMwholesalePrice = null, WorkflowExpression<string> bodyvalueiTEMcomments = null, WorkflowExpression<string> bodyvalueiTEMdiscount1 = null)
-        {
-            WorkflowExpression.Validate(bodyvalueiTEMcode, nameof(bodyvalueiTEMcode), required: true);
-            WorkflowExpression.Validate(bodyvalueiTEMbaseUnitOfMeasure, nameof(bodyvalueiTEMbaseUnitOfMeasure), required: true);
-            WorkflowExpression.Validate(bodyvalueiTEMname, nameof(bodyvalueiTEMname), required: true);
-            WorkflowExpression.Validate(bodyvalueiTEMvatGroup, nameof(bodyvalueiTEMvatGroup), required: true);
-            WorkflowExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
-            WorkflowExpression.Validate(bodykEY, nameof(bodykEY), required: false);
-            WorkflowExpression.Validate(bodyvalueiTEMcommercialCategory, nameof(bodyvalueiTEMcommercialCategory), required: false);
-            WorkflowExpression.Validate(bodyvalueiTEMitemGroup, nameof(bodyvalueiTEMitemGroup), required: false);
-            WorkflowExpression.Validate(bodyvalueiTEMretailPrice, nameof(bodyvalueiTEMretailPrice), required: false);
-            WorkflowExpression.Validate(bodyvalueiTEMwholesalePrice, nameof(bodyvalueiTEMwholesalePrice), required: false);
-            WorkflowExpression.Validate(bodyvalueiTEMcomments, nameof(bodyvalueiTEMcomments), required: false);
-            WorkflowExpression.Validate(bodyvalueiTEMdiscount1, nameof(bodyvalueiTEMdiscount1), required: false);
+            var __workflow_bodyvalueiTEMcode = bodyvalueiTEMcode == null ? null : WorkflowExpression.Compile(bodyvalueiTEMcode);
+            WorkflowExpression.Validate(__workflow_bodyvalueiTEMcode, nameof(bodyvalueiTEMcode), required: true);
+            var __workflow_bodyvalueiTEMbaseUnitOfMeasure = bodyvalueiTEMbaseUnitOfMeasure == null ? null : WorkflowExpression.Compile(bodyvalueiTEMbaseUnitOfMeasure);
+            WorkflowExpression.Validate(__workflow_bodyvalueiTEMbaseUnitOfMeasure, nameof(bodyvalueiTEMbaseUnitOfMeasure), required: true);
+            var __workflow_bodyvalueiTEMname = bodyvalueiTEMname == null ? null : WorkflowExpression.Compile(bodyvalueiTEMname);
+            WorkflowExpression.Validate(__workflow_bodyvalueiTEMname, nameof(bodyvalueiTEMname), required: true);
+            var __workflow_bodyvalueiTEMvatGroup = bodyvalueiTEMvatGroup == null ? null : WorkflowExpression.Compile(bodyvalueiTEMvatGroup);
+            WorkflowExpression.Validate(__workflow_bodyvalueiTEMvatGroup, nameof(bodyvalueiTEMvatGroup), required: true);
+            var __workflow_bodyfORM = bodyfORM == null ? null : WorkflowExpression.Compile(bodyfORM);
+            WorkflowExpression.Validate(__workflow_bodyfORM, nameof(bodyfORM), required: false);
+            var __workflow_bodykEY = bodykEY == null ? null : WorkflowExpression.Compile(bodykEY);
+            WorkflowExpression.Validate(__workflow_bodykEY, nameof(bodykEY), required: false);
+            var __workflow_bodyvalueiTEMcommercialCategory = bodyvalueiTEMcommercialCategory == null ? null : WorkflowExpression.Compile(bodyvalueiTEMcommercialCategory);
+            WorkflowExpression.Validate(__workflow_bodyvalueiTEMcommercialCategory, nameof(bodyvalueiTEMcommercialCategory), required: false);
+            var __workflow_bodyvalueiTEMitemGroup = bodyvalueiTEMitemGroup == null ? null : WorkflowExpression.Compile(bodyvalueiTEMitemGroup);
+            WorkflowExpression.Validate(__workflow_bodyvalueiTEMitemGroup, nameof(bodyvalueiTEMitemGroup), required: false);
+            var __workflow_bodyvalueiTEMretailPrice = bodyvalueiTEMretailPrice == null ? null : WorkflowExpression.Compile(bodyvalueiTEMretailPrice);
+            WorkflowExpression.Validate(__workflow_bodyvalueiTEMretailPrice, nameof(bodyvalueiTEMretailPrice), required: false);
+            var __workflow_bodyvalueiTEMwholesalePrice = bodyvalueiTEMwholesalePrice == null ? null : WorkflowExpression.Compile(bodyvalueiTEMwholesalePrice);
+            WorkflowExpression.Validate(__workflow_bodyvalueiTEMwholesalePrice, nameof(bodyvalueiTEMwholesalePrice), required: false);
+            var __workflow_bodyvalueiTEMcomments = bodyvalueiTEMcomments == null ? null : WorkflowExpression.Compile(bodyvalueiTEMcomments);
+            WorkflowExpression.Validate(__workflow_bodyvalueiTEMcomments, nameof(bodyvalueiTEMcomments), required: false);
+            var __workflow_bodyvalueiTEMdiscount1 = bodyvalueiTEMdiscount1 == null ? null : WorkflowExpression.Compile(bodyvalueiTEMdiscount1);
+            WorkflowExpression.Validate(__workflow_bodyvalueiTEMdiscount1, nameof(bodyvalueiTEMdiscount1), required: false);
             return new DeferredBodyAction<SetData200response>(() =>
             {
                 var apiCallPath = "/setItem";
@@ -2395,15 +2408,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 callPayload.Queries["op"] = Convert.ToString("s1service");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfORM != null)
+                if (__workflow_bodyfORM != null)
                 {
-                    body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                    body["FORM"] = ExpressionConverter.ConvertO(__workflow_bodyfORM);
                     bodypropCount++;
                 }
 
-                if (bodykEY != null)
+                if (__workflow_bodykEY != null)
                 {
-                    body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                    body["KEY"] = ExpressionConverter.ConvertO(__workflow_bodykEY);
                     bodypropCount++;
                 }
 
@@ -2418,49 +2431,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 var iTEMObject = new JObject();
                 var iTEMObjectpropCount = 0;
                 iTEMObjectpropCount++;
-                iTEMObject["CODE"] = ExpressionConverter.ConvertO(bodyvalueiTEMcode);
-                if (bodyvalueiTEMcommercialCategory != null)
+                iTEMObject["CODE"] = ExpressionConverter.ConvertO(__workflow_bodyvalueiTEMcode);
+                if (__workflow_bodyvalueiTEMcommercialCategory != null)
                 {
-                    iTEMObject["MTRCATEGORY"] = ExpressionConverter.ConvertO(bodyvalueiTEMcommercialCategory);
+                    iTEMObject["MTRCATEGORY"] = ExpressionConverter.ConvertO(__workflow_bodyvalueiTEMcommercialCategory);
                     iTEMObjectpropCount++;
                 }
 
-                if (bodyvalueiTEMitemGroup != null)
+                if (__workflow_bodyvalueiTEMitemGroup != null)
                 {
-                    iTEMObject["MTRGROUP"] = ExpressionConverter.ConvertO(bodyvalueiTEMitemGroup);
-                    iTEMObjectpropCount++;
-                }
-
-                iTEMObjectpropCount++;
-                iTEMObject["MTRUNIT1"] = ExpressionConverter.ConvertO(bodyvalueiTEMbaseUnitOfMeasure);
-                iTEMObjectpropCount++;
-                iTEMObject["NAME"] = ExpressionConverter.ConvertO(bodyvalueiTEMname);
-                if (bodyvalueiTEMretailPrice != null)
-                {
-                    iTEMObject["PRICER"] = ExpressionConverter.ConvertO(bodyvalueiTEMretailPrice);
-                    iTEMObjectpropCount++;
-                }
-
-                if (bodyvalueiTEMwholesalePrice != null)
-                {
-                    iTEMObject["PRICEW"] = ExpressionConverter.ConvertO(bodyvalueiTEMwholesalePrice);
-                    iTEMObjectpropCount++;
-                }
-
-                if (bodyvalueiTEMcomments != null)
-                {
-                    iTEMObject["REMARKS"] = ExpressionConverter.ConvertO(bodyvalueiTEMcomments);
-                    iTEMObjectpropCount++;
-                }
-
-                if (bodyvalueiTEMdiscount1 != null)
-                {
-                    iTEMObject["SODISCOUNT"] = ExpressionConverter.ConvertO(bodyvalueiTEMdiscount1);
+                    iTEMObject["MTRGROUP"] = ExpressionConverter.ConvertO(__workflow_bodyvalueiTEMitemGroup);
                     iTEMObjectpropCount++;
                 }
 
                 iTEMObjectpropCount++;
-                iTEMObject["VAT"] = ExpressionConverter.ConvertO(bodyvalueiTEMvatGroup);
+                iTEMObject["MTRUNIT1"] = ExpressionConverter.ConvertO(__workflow_bodyvalueiTEMbaseUnitOfMeasure);
+                iTEMObjectpropCount++;
+                iTEMObject["NAME"] = ExpressionConverter.ConvertO(__workflow_bodyvalueiTEMname);
+                if (__workflow_bodyvalueiTEMretailPrice != null)
+                {
+                    iTEMObject["PRICER"] = ExpressionConverter.ConvertO(__workflow_bodyvalueiTEMretailPrice);
+                    iTEMObjectpropCount++;
+                }
+
+                if (__workflow_bodyvalueiTEMwholesalePrice != null)
+                {
+                    iTEMObject["PRICEW"] = ExpressionConverter.ConvertO(__workflow_bodyvalueiTEMwholesalePrice);
+                    iTEMObjectpropCount++;
+                }
+
+                if (__workflow_bodyvalueiTEMcomments != null)
+                {
+                    iTEMObject["REMARKS"] = ExpressionConverter.ConvertO(__workflow_bodyvalueiTEMcomments);
+                    iTEMObjectpropCount++;
+                }
+
+                if (__workflow_bodyvalueiTEMdiscount1 != null)
+                {
+                    iTEMObject["SODISCOUNT"] = ExpressionConverter.ConvertO(__workflow_bodyvalueiTEMdiscount1);
+                    iTEMObjectpropCount++;
+                }
+
+                iTEMObjectpropCount++;
+                iTEMObject["VAT"] = ExpressionConverter.ConvertO(__workflow_bodyvalueiTEMvatGroup);
                 if (iTEMObjectpropCount > 0)
                 {
                     dataObject["ITEM"] = iTEMObject;
@@ -2485,25 +2498,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        [WorkflowExpressionFactory(nameof(__BuildSetProject))]
-        public IBodyWorkflowAction<SetData200response> SetProject([WorkflowExpression] Func<string> bodyvaluepRJCcode, [WorkflowExpression] Func<string> bodyvaluepRJCname, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null, [WorkflowExpression] Func<bodyvaluepRJCaCTSTATUSInput> bodyvaluepRJCaCTSTATUS = null, [WorkflowExpression] Func<string> bodyvaluepRJCfINALDATE = null, [WorkflowExpression] Func<string> bodyvaluepRJCfROMDATE = null, [WorkflowExpression] Func<bodyvaluepRJCpRJCRMInput> bodyvaluepRJCpRJCRM = null, [WorkflowExpression] Func<string> bodyvaluepRJCcomments = null, [WorkflowExpression] Func<bodyvaluexTRDOCDATAInputItem[]> bodyvaluexTRDOCDATA = null)
+        public IBodyWorkflowAction<SetData200response> SetProject(Expression<Func<string>> bodyvaluepRJCcode, Expression<Func<string>> bodyvaluepRJCname, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null, Expression<Func<bodyvaluepRJCaCTSTATUSInput>> bodyvaluepRJCaCTSTATUS = null, Expression<Func<string>> bodyvaluepRJCfINALDATE = null, Expression<Func<string>> bodyvaluepRJCfROMDATE = null, Expression<Func<bodyvaluepRJCpRJCRMInput>> bodyvaluepRJCpRJCRM = null, Expression<Func<string>> bodyvaluepRJCcomments = null, Expression<Func<bodyvaluexTRDOCDATAInputItem[]>> bodyvaluexTRDOCDATA = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SetData200response> __BuildSetProject(WorkflowExpression<string> bodyvaluepRJCcode, WorkflowExpression<string> bodyvaluepRJCname, WorkflowExpression<string> bodyfORM = null, WorkflowExpression<string> bodykEY = null, WorkflowExpression<bodyvaluepRJCaCTSTATUSInput> bodyvaluepRJCaCTSTATUS = null, WorkflowExpression<string> bodyvaluepRJCfINALDATE = null, WorkflowExpression<string> bodyvaluepRJCfROMDATE = null, WorkflowExpression<bodyvaluepRJCpRJCRMInput> bodyvaluepRJCpRJCRM = null, WorkflowExpression<string> bodyvaluepRJCcomments = null, WorkflowExpression<bodyvaluexTRDOCDATAInputItem[]> bodyvaluexTRDOCDATA = null)
-        {
-            WorkflowExpression.Validate(bodyvaluepRJCcode, nameof(bodyvaluepRJCcode), required: true);
-            WorkflowExpression.Validate(bodyvaluepRJCname, nameof(bodyvaluepRJCname), required: true);
-            WorkflowExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
-            WorkflowExpression.Validate(bodykEY, nameof(bodykEY), required: false);
-            WorkflowExpression.Validate(bodyvaluepRJCaCTSTATUS, nameof(bodyvaluepRJCaCTSTATUS), required: false);
-            WorkflowExpression.Validate(bodyvaluepRJCfINALDATE, nameof(bodyvaluepRJCfINALDATE), required: false);
-            WorkflowExpression.Validate(bodyvaluepRJCfROMDATE, nameof(bodyvaluepRJCfROMDATE), required: false);
-            WorkflowExpression.Validate(bodyvaluepRJCpRJCRM, nameof(bodyvaluepRJCpRJCRM), required: false);
-            WorkflowExpression.Validate(bodyvaluepRJCcomments, nameof(bodyvaluepRJCcomments), required: false);
-            WorkflowExpression.Validate(bodyvaluexTRDOCDATA, nameof(bodyvaluexTRDOCDATA), required: false);
+            var __workflow_bodyvaluepRJCcode = bodyvaluepRJCcode == null ? null : WorkflowExpression.Compile(bodyvaluepRJCcode);
+            WorkflowExpression.Validate(__workflow_bodyvaluepRJCcode, nameof(bodyvaluepRJCcode), required: true);
+            var __workflow_bodyvaluepRJCname = bodyvaluepRJCname == null ? null : WorkflowExpression.Compile(bodyvaluepRJCname);
+            WorkflowExpression.Validate(__workflow_bodyvaluepRJCname, nameof(bodyvaluepRJCname), required: true);
+            var __workflow_bodyfORM = bodyfORM == null ? null : WorkflowExpression.Compile(bodyfORM);
+            WorkflowExpression.Validate(__workflow_bodyfORM, nameof(bodyfORM), required: false);
+            var __workflow_bodykEY = bodykEY == null ? null : WorkflowExpression.Compile(bodykEY);
+            WorkflowExpression.Validate(__workflow_bodykEY, nameof(bodykEY), required: false);
+            var __workflow_bodyvaluepRJCaCTSTATUS = bodyvaluepRJCaCTSTATUS == null ? null : WorkflowExpression.Compile(bodyvaluepRJCaCTSTATUS);
+            WorkflowExpression.Validate(__workflow_bodyvaluepRJCaCTSTATUS, nameof(bodyvaluepRJCaCTSTATUS), required: false);
+            var __workflow_bodyvaluepRJCfINALDATE = bodyvaluepRJCfINALDATE == null ? null : WorkflowExpression.Compile(bodyvaluepRJCfINALDATE);
+            WorkflowExpression.Validate(__workflow_bodyvaluepRJCfINALDATE, nameof(bodyvaluepRJCfINALDATE), required: false);
+            var __workflow_bodyvaluepRJCfROMDATE = bodyvaluepRJCfROMDATE == null ? null : WorkflowExpression.Compile(bodyvaluepRJCfROMDATE);
+            WorkflowExpression.Validate(__workflow_bodyvaluepRJCfROMDATE, nameof(bodyvaluepRJCfROMDATE), required: false);
+            var __workflow_bodyvaluepRJCpRJCRM = bodyvaluepRJCpRJCRM == null ? null : WorkflowExpression.Compile(bodyvaluepRJCpRJCRM);
+            WorkflowExpression.Validate(__workflow_bodyvaluepRJCpRJCRM, nameof(bodyvaluepRJCpRJCRM), required: false);
+            var __workflow_bodyvaluepRJCcomments = bodyvaluepRJCcomments == null ? null : WorkflowExpression.Compile(bodyvaluepRJCcomments);
+            WorkflowExpression.Validate(__workflow_bodyvaluepRJCcomments, nameof(bodyvaluepRJCcomments), required: false);
+            var __workflow_bodyvaluexTRDOCDATA = bodyvaluexTRDOCDATA == null ? null : WorkflowExpression.Compile(bodyvaluexTRDOCDATA);
+            WorkflowExpression.Validate(__workflow_bodyvaluexTRDOCDATA, nameof(bodyvaluexTRDOCDATA), required: false);
             return new DeferredBodyAction<SetData200response>(() =>
             {
                 var apiCallPath = "/setProject";
@@ -2512,15 +2528,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 callPayload.Queries["op"] = Convert.ToString("s1service");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfORM != null)
+                if (__workflow_bodyfORM != null)
                 {
-                    body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                    body["FORM"] = ExpressionConverter.ConvertO(__workflow_bodyfORM);
                     bodypropCount++;
                 }
 
-                if (bodykEY != null)
+                if (__workflow_bodykEY != null)
                 {
-                    body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                    body["KEY"] = ExpressionConverter.ConvertO(__workflow_bodykEY);
                     bodypropCount++;
                 }
 
@@ -2534,37 +2550,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 var dataObjectpropCount = 0;
                 var pRJCObject = new JObject();
                 var pRJCObjectpropCount = 0;
-                if (bodyvaluepRJCaCTSTATUS != null)
+                if (__workflow_bodyvaluepRJCaCTSTATUS != null)
                 {
-                    pRJCObject["ACTSTATUS"] = ExpressionConverter.ConvertO(bodyvaluepRJCaCTSTATUS);
+                    pRJCObject["ACTSTATUS"] = ExpressionConverter.ConvertO(__workflow_bodyvaluepRJCaCTSTATUS);
                     pRJCObjectpropCount++;
                 }
 
                 pRJCObjectpropCount++;
-                pRJCObject["CODE"] = ExpressionConverter.ConvertO(bodyvaluepRJCcode);
-                if (bodyvaluepRJCfINALDATE != null)
+                pRJCObject["CODE"] = ExpressionConverter.ConvertO(__workflow_bodyvaluepRJCcode);
+                if (__workflow_bodyvaluepRJCfINALDATE != null)
                 {
-                    pRJCObject["FINALDATE"] = ExpressionConverter.ConvertO(bodyvaluepRJCfINALDATE);
+                    pRJCObject["FINALDATE"] = ExpressionConverter.ConvertO(__workflow_bodyvaluepRJCfINALDATE);
                     pRJCObjectpropCount++;
                 }
 
-                if (bodyvaluepRJCfROMDATE != null)
+                if (__workflow_bodyvaluepRJCfROMDATE != null)
                 {
-                    pRJCObject["FROMDATE"] = ExpressionConverter.ConvertO(bodyvaluepRJCfROMDATE);
+                    pRJCObject["FROMDATE"] = ExpressionConverter.ConvertO(__workflow_bodyvaluepRJCfROMDATE);
                     pRJCObjectpropCount++;
                 }
 
                 pRJCObjectpropCount++;
-                pRJCObject["NAME"] = ExpressionConverter.ConvertO(bodyvaluepRJCname);
-                if (bodyvaluepRJCpRJCRM != null)
+                pRJCObject["NAME"] = ExpressionConverter.ConvertO(__workflow_bodyvaluepRJCname);
+                if (__workflow_bodyvaluepRJCpRJCRM != null)
                 {
-                    pRJCObject["PRJCRM"] = ExpressionConverter.ConvertO(bodyvaluepRJCpRJCRM);
+                    pRJCObject["PRJCRM"] = ExpressionConverter.ConvertO(__workflow_bodyvaluepRJCpRJCRM);
                     pRJCObjectpropCount++;
                 }
 
-                if (bodyvaluepRJCcomments != null)
+                if (__workflow_bodyvaluepRJCcomments != null)
                 {
-                    pRJCObject["REMARKS"] = ExpressionConverter.ConvertO(bodyvaluepRJCcomments);
+                    pRJCObject["REMARKS"] = ExpressionConverter.ConvertO(__workflow_bodyvaluepRJCcomments);
                     pRJCObjectpropCount++;
                 }
 
@@ -2574,9 +2590,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                     dataObjectpropCount++;
                 }
 
-                if (bodyvaluexTRDOCDATA != null)
+                if (__workflow_bodyvaluexTRDOCDATA != null)
                 {
-                    dataObject["XTRDOCDATA"] = ExpressionConverter.ConvertO(bodyvaluexTRDOCDATA);
+                    dataObject["XTRDOCDATA"] = ExpressionConverter.ConvertO(__workflow_bodyvaluexTRDOCDATA);
                     dataObjectpropCount++;
                 }
 
@@ -2598,29 +2614,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        [WorkflowExpressionFactory(nameof(__BuildSetPurdoc))]
-        public IBodyWorkflowAction<SetData200response> SetPurdoc([WorkflowExpression] Func<string> bodyvaluemTRDOCwarehouse, [WorkflowExpression] Func<string> bodyvaluepURDOCsERIES, [WorkflowExpression] Func<string> bodyvaluepURDOCsOCURRENCY, [WorkflowExpression] Func<string> bodyvaluepURDOCtRDR, [WorkflowExpression] Func<bodyvalueiTELINESInputItem2[]> bodyvalueiTELINES = null, [WorkflowExpression] Func<string> bodyvaluepURDOCdISC1PRC = null, [WorkflowExpression] Func<string> bodyvaluepURDOCpAYMENT = null, [WorkflowExpression] Func<string> bodyvaluepURDOCpRJC = null, [WorkflowExpression] Func<string> bodyvaluepURDOCrEMARKS = null, [WorkflowExpression] Func<string> bodyvaluepURDOCsUMAMNT = null, [WorkflowExpression] Func<string> bodyvaluepURDOCtRNDATE = null, [WorkflowExpression] Func<bodyvaluesRVLINESInputItem[]> bodyvaluesRVLINES = null, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null)
+        public IBodyWorkflowAction<SetData200response> SetPurdoc(Expression<Func<string>> bodyvaluemTRDOCwarehouse, Expression<Func<string>> bodyvaluepURDOCsERIES, Expression<Func<string>> bodyvaluepURDOCsOCURRENCY, Expression<Func<string>> bodyvaluepURDOCtRDR, Expression<Func<bodyvalueiTELINESInputItem2[]>> bodyvalueiTELINES = null, Expression<Func<string>> bodyvaluepURDOCdISC1PRC = null, Expression<Func<string>> bodyvaluepURDOCpAYMENT = null, Expression<Func<string>> bodyvaluepURDOCpRJC = null, Expression<Func<string>> bodyvaluepURDOCrEMARKS = null, Expression<Func<string>> bodyvaluepURDOCsUMAMNT = null, Expression<Func<string>> bodyvaluepURDOCtRNDATE = null, Expression<Func<bodyvaluesRVLINESInputItem[]>> bodyvaluesRVLINES = null, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SetData200response> __BuildSetPurdoc(WorkflowExpression<string> bodyvaluemTRDOCwarehouse, WorkflowExpression<string> bodyvaluepURDOCsERIES, WorkflowExpression<string> bodyvaluepURDOCsOCURRENCY, WorkflowExpression<string> bodyvaluepURDOCtRDR, WorkflowExpression<bodyvalueiTELINESInputItem2[]> bodyvalueiTELINES = null, WorkflowExpression<string> bodyvaluepURDOCdISC1PRC = null, WorkflowExpression<string> bodyvaluepURDOCpAYMENT = null, WorkflowExpression<string> bodyvaluepURDOCpRJC = null, WorkflowExpression<string> bodyvaluepURDOCrEMARKS = null, WorkflowExpression<string> bodyvaluepURDOCsUMAMNT = null, WorkflowExpression<string> bodyvaluepURDOCtRNDATE = null, WorkflowExpression<bodyvaluesRVLINESInputItem[]> bodyvaluesRVLINES = null, WorkflowExpression<string> bodyfORM = null, WorkflowExpression<string> bodykEY = null)
-        {
-            WorkflowExpression.Validate(bodyvaluemTRDOCwarehouse, nameof(bodyvaluemTRDOCwarehouse), required: true);
-            WorkflowExpression.Validate(bodyvaluepURDOCsERIES, nameof(bodyvaluepURDOCsERIES), required: true);
-            WorkflowExpression.Validate(bodyvaluepURDOCsOCURRENCY, nameof(bodyvaluepURDOCsOCURRENCY), required: true);
-            WorkflowExpression.Validate(bodyvaluepURDOCtRDR, nameof(bodyvaluepURDOCtRDR), required: true);
-            WorkflowExpression.Validate(bodyvalueiTELINES, nameof(bodyvalueiTELINES), required: false);
-            WorkflowExpression.Validate(bodyvaluepURDOCdISC1PRC, nameof(bodyvaluepURDOCdISC1PRC), required: false);
-            WorkflowExpression.Validate(bodyvaluepURDOCpAYMENT, nameof(bodyvaluepURDOCpAYMENT), required: false);
-            WorkflowExpression.Validate(bodyvaluepURDOCpRJC, nameof(bodyvaluepURDOCpRJC), required: false);
-            WorkflowExpression.Validate(bodyvaluepURDOCrEMARKS, nameof(bodyvaluepURDOCrEMARKS), required: false);
-            WorkflowExpression.Validate(bodyvaluepURDOCsUMAMNT, nameof(bodyvaluepURDOCsUMAMNT), required: false);
-            WorkflowExpression.Validate(bodyvaluepURDOCtRNDATE, nameof(bodyvaluepURDOCtRNDATE), required: false);
-            WorkflowExpression.Validate(bodyvaluesRVLINES, nameof(bodyvaluesRVLINES), required: false);
-            WorkflowExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
-            WorkflowExpression.Validate(bodykEY, nameof(bodykEY), required: false);
+            var __workflow_bodyvaluemTRDOCwarehouse = bodyvaluemTRDOCwarehouse == null ? null : WorkflowExpression.Compile(bodyvaluemTRDOCwarehouse);
+            WorkflowExpression.Validate(__workflow_bodyvaluemTRDOCwarehouse, nameof(bodyvaluemTRDOCwarehouse), required: true);
+            var __workflow_bodyvaluepURDOCsERIES = bodyvaluepURDOCsERIES == null ? null : WorkflowExpression.Compile(bodyvaluepURDOCsERIES);
+            WorkflowExpression.Validate(__workflow_bodyvaluepURDOCsERIES, nameof(bodyvaluepURDOCsERIES), required: true);
+            var __workflow_bodyvaluepURDOCsOCURRENCY = bodyvaluepURDOCsOCURRENCY == null ? null : WorkflowExpression.Compile(bodyvaluepURDOCsOCURRENCY);
+            WorkflowExpression.Validate(__workflow_bodyvaluepURDOCsOCURRENCY, nameof(bodyvaluepURDOCsOCURRENCY), required: true);
+            var __workflow_bodyvaluepURDOCtRDR = bodyvaluepURDOCtRDR == null ? null : WorkflowExpression.Compile(bodyvaluepURDOCtRDR);
+            WorkflowExpression.Validate(__workflow_bodyvaluepURDOCtRDR, nameof(bodyvaluepURDOCtRDR), required: true);
+            var __workflow_bodyvalueiTELINES = bodyvalueiTELINES == null ? null : WorkflowExpression.Compile(bodyvalueiTELINES);
+            WorkflowExpression.Validate(__workflow_bodyvalueiTELINES, nameof(bodyvalueiTELINES), required: false);
+            var __workflow_bodyvaluepURDOCdISC1PRC = bodyvaluepURDOCdISC1PRC == null ? null : WorkflowExpression.Compile(bodyvaluepURDOCdISC1PRC);
+            WorkflowExpression.Validate(__workflow_bodyvaluepURDOCdISC1PRC, nameof(bodyvaluepURDOCdISC1PRC), required: false);
+            var __workflow_bodyvaluepURDOCpAYMENT = bodyvaluepURDOCpAYMENT == null ? null : WorkflowExpression.Compile(bodyvaluepURDOCpAYMENT);
+            WorkflowExpression.Validate(__workflow_bodyvaluepURDOCpAYMENT, nameof(bodyvaluepURDOCpAYMENT), required: false);
+            var __workflow_bodyvaluepURDOCpRJC = bodyvaluepURDOCpRJC == null ? null : WorkflowExpression.Compile(bodyvaluepURDOCpRJC);
+            WorkflowExpression.Validate(__workflow_bodyvaluepURDOCpRJC, nameof(bodyvaluepURDOCpRJC), required: false);
+            var __workflow_bodyvaluepURDOCrEMARKS = bodyvaluepURDOCrEMARKS == null ? null : WorkflowExpression.Compile(bodyvaluepURDOCrEMARKS);
+            WorkflowExpression.Validate(__workflow_bodyvaluepURDOCrEMARKS, nameof(bodyvaluepURDOCrEMARKS), required: false);
+            var __workflow_bodyvaluepURDOCsUMAMNT = bodyvaluepURDOCsUMAMNT == null ? null : WorkflowExpression.Compile(bodyvaluepURDOCsUMAMNT);
+            WorkflowExpression.Validate(__workflow_bodyvaluepURDOCsUMAMNT, nameof(bodyvaluepURDOCsUMAMNT), required: false);
+            var __workflow_bodyvaluepURDOCtRNDATE = bodyvaluepURDOCtRNDATE == null ? null : WorkflowExpression.Compile(bodyvaluepURDOCtRNDATE);
+            WorkflowExpression.Validate(__workflow_bodyvaluepURDOCtRNDATE, nameof(bodyvaluepURDOCtRNDATE), required: false);
+            var __workflow_bodyvaluesRVLINES = bodyvaluesRVLINES == null ? null : WorkflowExpression.Compile(bodyvaluesRVLINES);
+            WorkflowExpression.Validate(__workflow_bodyvaluesRVLINES, nameof(bodyvaluesRVLINES), required: false);
+            var __workflow_bodyfORM = bodyfORM == null ? null : WorkflowExpression.Compile(bodyfORM);
+            WorkflowExpression.Validate(__workflow_bodyfORM, nameof(bodyfORM), required: false);
+            var __workflow_bodykEY = bodykEY == null ? null : WorkflowExpression.Compile(bodykEY);
+            WorkflowExpression.Validate(__workflow_bodykEY, nameof(bodykEY), required: false);
             return new DeferredBodyAction<SetData200response>(() =>
             {
                 var apiCallPath = "/setPurdoc";
@@ -2633,16 +2656,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 bodypropCount++;
                 var dATAObject = new JObject();
                 var dATAObjectpropCount = 0;
-                if (bodyvalueiTELINES != null)
+                if (__workflow_bodyvalueiTELINES != null)
                 {
-                    dATAObject["ITELINES"] = ExpressionConverter.ConvertO(bodyvalueiTELINES);
+                    dATAObject["ITELINES"] = ExpressionConverter.ConvertO(__workflow_bodyvalueiTELINES);
                     dATAObjectpropCount++;
                 }
 
                 var mTRDOCObject = new JObject();
                 var mTRDOCObjectpropCount = 0;
                 mTRDOCObjectpropCount++;
-                mTRDOCObject["WHOUSE"] = ExpressionConverter.ConvertO(bodyvaluemTRDOCwarehouse);
+                mTRDOCObject["WHOUSE"] = ExpressionConverter.ConvertO(__workflow_bodyvaluemTRDOCwarehouse);
                 if (mTRDOCObjectpropCount > 0)
                 {
                     dATAObject["MTRDOC"] = mTRDOCObject;
@@ -2651,45 +2674,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
                 var pURDOCObject = new JObject();
                 var pURDOCObjectpropCount = 0;
-                if (bodyvaluepURDOCdISC1PRC != null)
+                if (__workflow_bodyvaluepURDOCdISC1PRC != null)
                 {
-                    pURDOCObject["DISC1PRC"] = ExpressionConverter.ConvertO(bodyvaluepURDOCdISC1PRC);
+                    pURDOCObject["DISC1PRC"] = ExpressionConverter.ConvertO(__workflow_bodyvaluepURDOCdISC1PRC);
                     pURDOCObjectpropCount++;
                 }
 
-                if (bodyvaluepURDOCpAYMENT != null)
+                if (__workflow_bodyvaluepURDOCpAYMENT != null)
                 {
-                    pURDOCObject["PAYMENT"] = ExpressionConverter.ConvertO(bodyvaluepURDOCpAYMENT);
+                    pURDOCObject["PAYMENT"] = ExpressionConverter.ConvertO(__workflow_bodyvaluepURDOCpAYMENT);
                     pURDOCObjectpropCount++;
                 }
 
-                if (bodyvaluepURDOCpRJC != null)
+                if (__workflow_bodyvaluepURDOCpRJC != null)
                 {
-                    pURDOCObject["PRJC"] = ExpressionConverter.ConvertO(bodyvaluepURDOCpRJC);
+                    pURDOCObject["PRJC"] = ExpressionConverter.ConvertO(__workflow_bodyvaluepURDOCpRJC);
                     pURDOCObjectpropCount++;
                 }
 
-                if (bodyvaluepURDOCrEMARKS != null)
+                if (__workflow_bodyvaluepURDOCrEMARKS != null)
                 {
-                    pURDOCObject["REMARKS"] = ExpressionConverter.ConvertO(bodyvaluepURDOCrEMARKS);
-                    pURDOCObjectpropCount++;
-                }
-
-                pURDOCObjectpropCount++;
-                pURDOCObject["SERIES"] = ExpressionConverter.ConvertO(bodyvaluepURDOCsERIES);
-                pURDOCObjectpropCount++;
-                pURDOCObject["SOCURRENCY"] = ExpressionConverter.ConvertO(bodyvaluepURDOCsOCURRENCY);
-                if (bodyvaluepURDOCsUMAMNT != null)
-                {
-                    pURDOCObject["SUMAMNT"] = ExpressionConverter.ConvertO(bodyvaluepURDOCsUMAMNT);
+                    pURDOCObject["REMARKS"] = ExpressionConverter.ConvertO(__workflow_bodyvaluepURDOCrEMARKS);
                     pURDOCObjectpropCount++;
                 }
 
                 pURDOCObjectpropCount++;
-                pURDOCObject["TRDR"] = ExpressionConverter.ConvertO(bodyvaluepURDOCtRDR);
-                if (bodyvaluepURDOCtRNDATE != null)
+                pURDOCObject["SERIES"] = ExpressionConverter.ConvertO(__workflow_bodyvaluepURDOCsERIES);
+                pURDOCObjectpropCount++;
+                pURDOCObject["SOCURRENCY"] = ExpressionConverter.ConvertO(__workflow_bodyvaluepURDOCsOCURRENCY);
+                if (__workflow_bodyvaluepURDOCsUMAMNT != null)
                 {
-                    pURDOCObject["TRNDATE"] = ExpressionConverter.ConvertO(bodyvaluepURDOCtRNDATE);
+                    pURDOCObject["SUMAMNT"] = ExpressionConverter.ConvertO(__workflow_bodyvaluepURDOCsUMAMNT);
+                    pURDOCObjectpropCount++;
+                }
+
+                pURDOCObjectpropCount++;
+                pURDOCObject["TRDR"] = ExpressionConverter.ConvertO(__workflow_bodyvaluepURDOCtRDR);
+                if (__workflow_bodyvaluepURDOCtRNDATE != null)
+                {
+                    pURDOCObject["TRNDATE"] = ExpressionConverter.ConvertO(__workflow_bodyvaluepURDOCtRNDATE);
                     pURDOCObjectpropCount++;
                 }
 
@@ -2699,9 +2722,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                     dATAObjectpropCount++;
                 }
 
-                if (bodyvaluesRVLINES != null)
+                if (__workflow_bodyvaluesRVLINES != null)
                 {
-                    dATAObject["SRVLINES"] = ExpressionConverter.ConvertO(bodyvaluesRVLINES);
+                    dATAObject["SRVLINES"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesRVLINES);
                     dATAObjectpropCount++;
                 }
 
@@ -2711,15 +2734,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                     bodypropCount++;
                 }
 
-                if (bodyfORM != null)
+                if (__workflow_bodyfORM != null)
                 {
-                    body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                    body["FORM"] = ExpressionConverter.ConvertO(__workflow_bodyfORM);
                     bodypropCount++;
                 }
 
-                if (bodykEY != null)
+                if (__workflow_bodykEY != null)
                 {
-                    body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                    body["KEY"] = ExpressionConverter.ConvertO(__workflow_bodykEY);
                     bodypropCount++;
                 }
 
@@ -2739,32 +2762,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        [WorkflowExpressionFactory(nameof(__BuildSetSaldoc))]
-        public IBodyWorkflowAction<SetData200response> SetSaldoc([WorkflowExpression] Func<string> bodyvaluemTRDOCwarehouse, [WorkflowExpression] Func<string> bodyvaluesALDOCpayment, [WorkflowExpression] Func<string> bodyvaluesALDOCseries, [WorkflowExpression] Func<string> bodyvaluesALDOCcurrency, [WorkflowExpression] Func<string> bodyvaluesALDOCcustomer, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null, [WorkflowExpression] Func<bodyvalueiTELINESInputItem22[]> bodyvalueiTELINES = null, [WorkflowExpression] Func<string> bodyvaluesALDOCdiscount = null, [WorkflowExpression] Func<string> bodyvaluesALDOCdiscountValue = null, [WorkflowExpression] Func<string> bodyvaluesALDOCnetAmount = null, [WorkflowExpression] Func<string> bodyvaluesALDOCproject = null, [WorkflowExpression] Func<string> bodyvaluesALDOCcomments = null, [WorkflowExpression] Func<string> bodyvaluesALDOCtotal = null, [WorkflowExpression] Func<string> bodyvaluesALDOCtRNDATE = null, [WorkflowExpression] Func<string> bodyvaluesALDOCvAT = null, [WorkflowExpression] Func<bodyvaluesRVLINESInputItem2[]> bodyvaluesRVLINES = null)
+        public IBodyWorkflowAction<SetData200response> SetSaldoc(Expression<Func<string>> bodyvaluemTRDOCwarehouse, Expression<Func<string>> bodyvaluesALDOCpayment, Expression<Func<string>> bodyvaluesALDOCseries, Expression<Func<string>> bodyvaluesALDOCcurrency, Expression<Func<string>> bodyvaluesALDOCcustomer, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null, Expression<Func<bodyvalueiTELINESInputItem22[]>> bodyvalueiTELINES = null, Expression<Func<string>> bodyvaluesALDOCdiscount = null, Expression<Func<string>> bodyvaluesALDOCdiscountValue = null, Expression<Func<string>> bodyvaluesALDOCnetAmount = null, Expression<Func<string>> bodyvaluesALDOCproject = null, Expression<Func<string>> bodyvaluesALDOCcomments = null, Expression<Func<string>> bodyvaluesALDOCtotal = null, Expression<Func<string>> bodyvaluesALDOCtRNDATE = null, Expression<Func<string>> bodyvaluesALDOCvAT = null, Expression<Func<bodyvaluesRVLINESInputItem2[]>> bodyvaluesRVLINES = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SetData200response> __BuildSetSaldoc(WorkflowExpression<string> bodyvaluemTRDOCwarehouse, WorkflowExpression<string> bodyvaluesALDOCpayment, WorkflowExpression<string> bodyvaluesALDOCseries, WorkflowExpression<string> bodyvaluesALDOCcurrency, WorkflowExpression<string> bodyvaluesALDOCcustomer, WorkflowExpression<string> bodyfORM = null, WorkflowExpression<string> bodykEY = null, WorkflowExpression<bodyvalueiTELINESInputItem22[]> bodyvalueiTELINES = null, WorkflowExpression<string> bodyvaluesALDOCdiscount = null, WorkflowExpression<string> bodyvaluesALDOCdiscountValue = null, WorkflowExpression<string> bodyvaluesALDOCnetAmount = null, WorkflowExpression<string> bodyvaluesALDOCproject = null, WorkflowExpression<string> bodyvaluesALDOCcomments = null, WorkflowExpression<string> bodyvaluesALDOCtotal = null, WorkflowExpression<string> bodyvaluesALDOCtRNDATE = null, WorkflowExpression<string> bodyvaluesALDOCvAT = null, WorkflowExpression<bodyvaluesRVLINESInputItem2[]> bodyvaluesRVLINES = null)
-        {
-            WorkflowExpression.Validate(bodyvaluemTRDOCwarehouse, nameof(bodyvaluemTRDOCwarehouse), required: true);
-            WorkflowExpression.Validate(bodyvaluesALDOCpayment, nameof(bodyvaluesALDOCpayment), required: true);
-            WorkflowExpression.Validate(bodyvaluesALDOCseries, nameof(bodyvaluesALDOCseries), required: true);
-            WorkflowExpression.Validate(bodyvaluesALDOCcurrency, nameof(bodyvaluesALDOCcurrency), required: true);
-            WorkflowExpression.Validate(bodyvaluesALDOCcustomer, nameof(bodyvaluesALDOCcustomer), required: true);
-            WorkflowExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
-            WorkflowExpression.Validate(bodykEY, nameof(bodykEY), required: false);
-            WorkflowExpression.Validate(bodyvalueiTELINES, nameof(bodyvalueiTELINES), required: false);
-            WorkflowExpression.Validate(bodyvaluesALDOCdiscount, nameof(bodyvaluesALDOCdiscount), required: false);
-            WorkflowExpression.Validate(bodyvaluesALDOCdiscountValue, nameof(bodyvaluesALDOCdiscountValue), required: false);
-            WorkflowExpression.Validate(bodyvaluesALDOCnetAmount, nameof(bodyvaluesALDOCnetAmount), required: false);
-            WorkflowExpression.Validate(bodyvaluesALDOCproject, nameof(bodyvaluesALDOCproject), required: false);
-            WorkflowExpression.Validate(bodyvaluesALDOCcomments, nameof(bodyvaluesALDOCcomments), required: false);
-            WorkflowExpression.Validate(bodyvaluesALDOCtotal, nameof(bodyvaluesALDOCtotal), required: false);
-            WorkflowExpression.Validate(bodyvaluesALDOCtRNDATE, nameof(bodyvaluesALDOCtRNDATE), required: false);
-            WorkflowExpression.Validate(bodyvaluesALDOCvAT, nameof(bodyvaluesALDOCvAT), required: false);
-            WorkflowExpression.Validate(bodyvaluesRVLINES, nameof(bodyvaluesRVLINES), required: false);
+            var __workflow_bodyvaluemTRDOCwarehouse = bodyvaluemTRDOCwarehouse == null ? null : WorkflowExpression.Compile(bodyvaluemTRDOCwarehouse);
+            WorkflowExpression.Validate(__workflow_bodyvaluemTRDOCwarehouse, nameof(bodyvaluemTRDOCwarehouse), required: true);
+            var __workflow_bodyvaluesALDOCpayment = bodyvaluesALDOCpayment == null ? null : WorkflowExpression.Compile(bodyvaluesALDOCpayment);
+            WorkflowExpression.Validate(__workflow_bodyvaluesALDOCpayment, nameof(bodyvaluesALDOCpayment), required: true);
+            var __workflow_bodyvaluesALDOCseries = bodyvaluesALDOCseries == null ? null : WorkflowExpression.Compile(bodyvaluesALDOCseries);
+            WorkflowExpression.Validate(__workflow_bodyvaluesALDOCseries, nameof(bodyvaluesALDOCseries), required: true);
+            var __workflow_bodyvaluesALDOCcurrency = bodyvaluesALDOCcurrency == null ? null : WorkflowExpression.Compile(bodyvaluesALDOCcurrency);
+            WorkflowExpression.Validate(__workflow_bodyvaluesALDOCcurrency, nameof(bodyvaluesALDOCcurrency), required: true);
+            var __workflow_bodyvaluesALDOCcustomer = bodyvaluesALDOCcustomer == null ? null : WorkflowExpression.Compile(bodyvaluesALDOCcustomer);
+            WorkflowExpression.Validate(__workflow_bodyvaluesALDOCcustomer, nameof(bodyvaluesALDOCcustomer), required: true);
+            var __workflow_bodyfORM = bodyfORM == null ? null : WorkflowExpression.Compile(bodyfORM);
+            WorkflowExpression.Validate(__workflow_bodyfORM, nameof(bodyfORM), required: false);
+            var __workflow_bodykEY = bodykEY == null ? null : WorkflowExpression.Compile(bodykEY);
+            WorkflowExpression.Validate(__workflow_bodykEY, nameof(bodykEY), required: false);
+            var __workflow_bodyvalueiTELINES = bodyvalueiTELINES == null ? null : WorkflowExpression.Compile(bodyvalueiTELINES);
+            WorkflowExpression.Validate(__workflow_bodyvalueiTELINES, nameof(bodyvalueiTELINES), required: false);
+            var __workflow_bodyvaluesALDOCdiscount = bodyvaluesALDOCdiscount == null ? null : WorkflowExpression.Compile(bodyvaluesALDOCdiscount);
+            WorkflowExpression.Validate(__workflow_bodyvaluesALDOCdiscount, nameof(bodyvaluesALDOCdiscount), required: false);
+            var __workflow_bodyvaluesALDOCdiscountValue = bodyvaluesALDOCdiscountValue == null ? null : WorkflowExpression.Compile(bodyvaluesALDOCdiscountValue);
+            WorkflowExpression.Validate(__workflow_bodyvaluesALDOCdiscountValue, nameof(bodyvaluesALDOCdiscountValue), required: false);
+            var __workflow_bodyvaluesALDOCnetAmount = bodyvaluesALDOCnetAmount == null ? null : WorkflowExpression.Compile(bodyvaluesALDOCnetAmount);
+            WorkflowExpression.Validate(__workflow_bodyvaluesALDOCnetAmount, nameof(bodyvaluesALDOCnetAmount), required: false);
+            var __workflow_bodyvaluesALDOCproject = bodyvaluesALDOCproject == null ? null : WorkflowExpression.Compile(bodyvaluesALDOCproject);
+            WorkflowExpression.Validate(__workflow_bodyvaluesALDOCproject, nameof(bodyvaluesALDOCproject), required: false);
+            var __workflow_bodyvaluesALDOCcomments = bodyvaluesALDOCcomments == null ? null : WorkflowExpression.Compile(bodyvaluesALDOCcomments);
+            WorkflowExpression.Validate(__workflow_bodyvaluesALDOCcomments, nameof(bodyvaluesALDOCcomments), required: false);
+            var __workflow_bodyvaluesALDOCtotal = bodyvaluesALDOCtotal == null ? null : WorkflowExpression.Compile(bodyvaluesALDOCtotal);
+            WorkflowExpression.Validate(__workflow_bodyvaluesALDOCtotal, nameof(bodyvaluesALDOCtotal), required: false);
+            var __workflow_bodyvaluesALDOCtRNDATE = bodyvaluesALDOCtRNDATE == null ? null : WorkflowExpression.Compile(bodyvaluesALDOCtRNDATE);
+            WorkflowExpression.Validate(__workflow_bodyvaluesALDOCtRNDATE, nameof(bodyvaluesALDOCtRNDATE), required: false);
+            var __workflow_bodyvaluesALDOCvAT = bodyvaluesALDOCvAT == null ? null : WorkflowExpression.Compile(bodyvaluesALDOCvAT);
+            WorkflowExpression.Validate(__workflow_bodyvaluesALDOCvAT, nameof(bodyvaluesALDOCvAT), required: false);
+            var __workflow_bodyvaluesRVLINES = bodyvaluesRVLINES == null ? null : WorkflowExpression.Compile(bodyvaluesRVLINES);
+            WorkflowExpression.Validate(__workflow_bodyvaluesRVLINES, nameof(bodyvaluesRVLINES), required: false);
             return new DeferredBodyAction<SetData200response>(() =>
             {
                 var apiCallPath = "/setSaldoc";
@@ -2773,15 +2806,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 callPayload.Queries["op"] = Convert.ToString("s1service");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfORM != null)
+                if (__workflow_bodyfORM != null)
                 {
-                    body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                    body["FORM"] = ExpressionConverter.ConvertO(__workflow_bodyfORM);
                     bodypropCount++;
                 }
 
-                if (bodykEY != null)
+                if (__workflow_bodykEY != null)
                 {
-                    body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                    body["KEY"] = ExpressionConverter.ConvertO(__workflow_bodykEY);
                     bodypropCount++;
                 }
 
@@ -2793,16 +2826,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 bodypropCount++;
                 var dataObject = new JObject();
                 var dataObjectpropCount = 0;
-                if (bodyvalueiTELINES != null)
+                if (__workflow_bodyvalueiTELINES != null)
                 {
-                    dataObject["ITELINES"] = ExpressionConverter.ConvertO(bodyvalueiTELINES);
+                    dataObject["ITELINES"] = ExpressionConverter.ConvertO(__workflow_bodyvalueiTELINES);
                     dataObjectpropCount++;
                 }
 
                 var mTRDOCObject = new JObject();
                 var mTRDOCObjectpropCount = 0;
                 mTRDOCObjectpropCount++;
-                mTRDOCObject["WHOUSE"] = ExpressionConverter.ConvertO(bodyvaluemTRDOCwarehouse);
+                mTRDOCObject["WHOUSE"] = ExpressionConverter.ConvertO(__workflow_bodyvaluemTRDOCwarehouse);
                 if (mTRDOCObjectpropCount > 0)
                 {
                     dataObject["MTRDOC"] = mTRDOCObject;
@@ -2811,59 +2844,59 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
                 var sALDOCObject = new JObject();
                 var sALDOCObjectpropCount = 0;
-                if (bodyvaluesALDOCdiscount != null)
+                if (__workflow_bodyvaluesALDOCdiscount != null)
                 {
-                    sALDOCObject["DISC1PRC"] = ExpressionConverter.ConvertO(bodyvaluesALDOCdiscount);
+                    sALDOCObject["DISC1PRC"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesALDOCdiscount);
                     sALDOCObjectpropCount++;
                 }
 
-                if (bodyvaluesALDOCdiscountValue != null)
+                if (__workflow_bodyvaluesALDOCdiscountValue != null)
                 {
-                    sALDOCObject["DISC1VAL"] = ExpressionConverter.ConvertO(bodyvaluesALDOCdiscountValue);
+                    sALDOCObject["DISC1VAL"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesALDOCdiscountValue);
                     sALDOCObjectpropCount++;
                 }
 
-                if (bodyvaluesALDOCnetAmount != null)
+                if (__workflow_bodyvaluesALDOCnetAmount != null)
                 {
-                    sALDOCObject["NETAMNT"] = ExpressionConverter.ConvertO(bodyvaluesALDOCnetAmount);
-                    sALDOCObjectpropCount++;
-                }
-
-                sALDOCObjectpropCount++;
-                sALDOCObject["PAYMENT"] = ExpressionConverter.ConvertO(bodyvaluesALDOCpayment);
-                if (bodyvaluesALDOCproject != null)
-                {
-                    sALDOCObject["PRJC"] = ExpressionConverter.ConvertO(bodyvaluesALDOCproject);
-                    sALDOCObjectpropCount++;
-                }
-
-                if (bodyvaluesALDOCcomments != null)
-                {
-                    sALDOCObject["REMARKS"] = ExpressionConverter.ConvertO(bodyvaluesALDOCcomments);
+                    sALDOCObject["NETAMNT"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesALDOCnetAmount);
                     sALDOCObjectpropCount++;
                 }
 
                 sALDOCObjectpropCount++;
-                sALDOCObject["SERIES"] = ExpressionConverter.ConvertO(bodyvaluesALDOCseries);
-                sALDOCObjectpropCount++;
-                sALDOCObject["SOCURRENCY"] = ExpressionConverter.ConvertO(bodyvaluesALDOCcurrency);
-                if (bodyvaluesALDOCtotal != null)
+                sALDOCObject["PAYMENT"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesALDOCpayment);
+                if (__workflow_bodyvaluesALDOCproject != null)
                 {
-                    sALDOCObject["SUMAMNT"] = ExpressionConverter.ConvertO(bodyvaluesALDOCtotal);
+                    sALDOCObject["PRJC"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesALDOCproject);
+                    sALDOCObjectpropCount++;
+                }
+
+                if (__workflow_bodyvaluesALDOCcomments != null)
+                {
+                    sALDOCObject["REMARKS"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesALDOCcomments);
                     sALDOCObjectpropCount++;
                 }
 
                 sALDOCObjectpropCount++;
-                sALDOCObject["TRDR"] = ExpressionConverter.ConvertO(bodyvaluesALDOCcustomer);
-                if (bodyvaluesALDOCtRNDATE != null)
+                sALDOCObject["SERIES"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesALDOCseries);
+                sALDOCObjectpropCount++;
+                sALDOCObject["SOCURRENCY"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesALDOCcurrency);
+                if (__workflow_bodyvaluesALDOCtotal != null)
                 {
-                    sALDOCObject["TRNDATE"] = ExpressionConverter.ConvertO(bodyvaluesALDOCtRNDATE);
+                    sALDOCObject["SUMAMNT"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesALDOCtotal);
                     sALDOCObjectpropCount++;
                 }
 
-                if (bodyvaluesALDOCvAT != null)
+                sALDOCObjectpropCount++;
+                sALDOCObject["TRDR"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesALDOCcustomer);
+                if (__workflow_bodyvaluesALDOCtRNDATE != null)
                 {
-                    sALDOCObject["VATAMNT"] = ExpressionConverter.ConvertO(bodyvaluesALDOCvAT);
+                    sALDOCObject["TRNDATE"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesALDOCtRNDATE);
+                    sALDOCObjectpropCount++;
+                }
+
+                if (__workflow_bodyvaluesALDOCvAT != null)
+                {
+                    sALDOCObject["VATAMNT"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesALDOCvAT);
                     sALDOCObjectpropCount++;
                 }
 
@@ -2873,9 +2906,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                     dataObjectpropCount++;
                 }
 
-                if (bodyvaluesRVLINES != null)
+                if (__workflow_bodyvaluesRVLINES != null)
                 {
-                    dataObject["SRVLINES"] = ExpressionConverter.ConvertO(bodyvaluesRVLINES);
+                    dataObject["SRVLINES"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesRVLINES);
                     dataObjectpropCount++;
                 }
 
@@ -2897,27 +2930,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        [WorkflowExpressionFactory(nameof(__BuildSetService))]
-        public IBodyWorkflowAction<SetData200response> SetService([WorkflowExpression] Func<string> bodyvaluesERVICEcode, [WorkflowExpression] Func<string> bodyvaluesERVICEbaseUnitOfMeasure, [WorkflowExpression] Func<string> bodyvaluesERVICEname, [WorkflowExpression] Func<string> bodyvaluesERVICEvatGroup, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null, [WorkflowExpression] Func<string> bodyvaluesERVICEcommercialCategory = null, [WorkflowExpression] Func<string> bodyvaluesERVICEserviceGroup = null, [WorkflowExpression] Func<string> bodyvaluesERVICEretailPrice = null, [WorkflowExpression] Func<string> bodyvaluesERVICEwholesalePrice = null, [WorkflowExpression] Func<string> bodyvaluesERVICEcomments = null, [WorkflowExpression] Func<string> bodyvaluesERVICEdiscount1 = null)
+        public IBodyWorkflowAction<SetData200response> SetService(Expression<Func<string>> bodyvaluesERVICEcode, Expression<Func<string>> bodyvaluesERVICEbaseUnitOfMeasure, Expression<Func<string>> bodyvaluesERVICEname, Expression<Func<string>> bodyvaluesERVICEvatGroup, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null, Expression<Func<string>> bodyvaluesERVICEcommercialCategory = null, Expression<Func<string>> bodyvaluesERVICEserviceGroup = null, Expression<Func<string>> bodyvaluesERVICEretailPrice = null, Expression<Func<string>> bodyvaluesERVICEwholesalePrice = null, Expression<Func<string>> bodyvaluesERVICEcomments = null, Expression<Func<string>> bodyvaluesERVICEdiscount1 = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SetData200response> __BuildSetService(WorkflowExpression<string> bodyvaluesERVICEcode, WorkflowExpression<string> bodyvaluesERVICEbaseUnitOfMeasure, WorkflowExpression<string> bodyvaluesERVICEname, WorkflowExpression<string> bodyvaluesERVICEvatGroup, WorkflowExpression<string> bodyfORM = null, WorkflowExpression<string> bodykEY = null, WorkflowExpression<string> bodyvaluesERVICEcommercialCategory = null, WorkflowExpression<string> bodyvaluesERVICEserviceGroup = null, WorkflowExpression<string> bodyvaluesERVICEretailPrice = null, WorkflowExpression<string> bodyvaluesERVICEwholesalePrice = null, WorkflowExpression<string> bodyvaluesERVICEcomments = null, WorkflowExpression<string> bodyvaluesERVICEdiscount1 = null)
-        {
-            WorkflowExpression.Validate(bodyvaluesERVICEcode, nameof(bodyvaluesERVICEcode), required: true);
-            WorkflowExpression.Validate(bodyvaluesERVICEbaseUnitOfMeasure, nameof(bodyvaluesERVICEbaseUnitOfMeasure), required: true);
-            WorkflowExpression.Validate(bodyvaluesERVICEname, nameof(bodyvaluesERVICEname), required: true);
-            WorkflowExpression.Validate(bodyvaluesERVICEvatGroup, nameof(bodyvaluesERVICEvatGroup), required: true);
-            WorkflowExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
-            WorkflowExpression.Validate(bodykEY, nameof(bodykEY), required: false);
-            WorkflowExpression.Validate(bodyvaluesERVICEcommercialCategory, nameof(bodyvaluesERVICEcommercialCategory), required: false);
-            WorkflowExpression.Validate(bodyvaluesERVICEserviceGroup, nameof(bodyvaluesERVICEserviceGroup), required: false);
-            WorkflowExpression.Validate(bodyvaluesERVICEretailPrice, nameof(bodyvaluesERVICEretailPrice), required: false);
-            WorkflowExpression.Validate(bodyvaluesERVICEwholesalePrice, nameof(bodyvaluesERVICEwholesalePrice), required: false);
-            WorkflowExpression.Validate(bodyvaluesERVICEcomments, nameof(bodyvaluesERVICEcomments), required: false);
-            WorkflowExpression.Validate(bodyvaluesERVICEdiscount1, nameof(bodyvaluesERVICEdiscount1), required: false);
+            var __workflow_bodyvaluesERVICEcode = bodyvaluesERVICEcode == null ? null : WorkflowExpression.Compile(bodyvaluesERVICEcode);
+            WorkflowExpression.Validate(__workflow_bodyvaluesERVICEcode, nameof(bodyvaluesERVICEcode), required: true);
+            var __workflow_bodyvaluesERVICEbaseUnitOfMeasure = bodyvaluesERVICEbaseUnitOfMeasure == null ? null : WorkflowExpression.Compile(bodyvaluesERVICEbaseUnitOfMeasure);
+            WorkflowExpression.Validate(__workflow_bodyvaluesERVICEbaseUnitOfMeasure, nameof(bodyvaluesERVICEbaseUnitOfMeasure), required: true);
+            var __workflow_bodyvaluesERVICEname = bodyvaluesERVICEname == null ? null : WorkflowExpression.Compile(bodyvaluesERVICEname);
+            WorkflowExpression.Validate(__workflow_bodyvaluesERVICEname, nameof(bodyvaluesERVICEname), required: true);
+            var __workflow_bodyvaluesERVICEvatGroup = bodyvaluesERVICEvatGroup == null ? null : WorkflowExpression.Compile(bodyvaluesERVICEvatGroup);
+            WorkflowExpression.Validate(__workflow_bodyvaluesERVICEvatGroup, nameof(bodyvaluesERVICEvatGroup), required: true);
+            var __workflow_bodyfORM = bodyfORM == null ? null : WorkflowExpression.Compile(bodyfORM);
+            WorkflowExpression.Validate(__workflow_bodyfORM, nameof(bodyfORM), required: false);
+            var __workflow_bodykEY = bodykEY == null ? null : WorkflowExpression.Compile(bodykEY);
+            WorkflowExpression.Validate(__workflow_bodykEY, nameof(bodykEY), required: false);
+            var __workflow_bodyvaluesERVICEcommercialCategory = bodyvaluesERVICEcommercialCategory == null ? null : WorkflowExpression.Compile(bodyvaluesERVICEcommercialCategory);
+            WorkflowExpression.Validate(__workflow_bodyvaluesERVICEcommercialCategory, nameof(bodyvaluesERVICEcommercialCategory), required: false);
+            var __workflow_bodyvaluesERVICEserviceGroup = bodyvaluesERVICEserviceGroup == null ? null : WorkflowExpression.Compile(bodyvaluesERVICEserviceGroup);
+            WorkflowExpression.Validate(__workflow_bodyvaluesERVICEserviceGroup, nameof(bodyvaluesERVICEserviceGroup), required: false);
+            var __workflow_bodyvaluesERVICEretailPrice = bodyvaluesERVICEretailPrice == null ? null : WorkflowExpression.Compile(bodyvaluesERVICEretailPrice);
+            WorkflowExpression.Validate(__workflow_bodyvaluesERVICEretailPrice, nameof(bodyvaluesERVICEretailPrice), required: false);
+            var __workflow_bodyvaluesERVICEwholesalePrice = bodyvaluesERVICEwholesalePrice == null ? null : WorkflowExpression.Compile(bodyvaluesERVICEwholesalePrice);
+            WorkflowExpression.Validate(__workflow_bodyvaluesERVICEwholesalePrice, nameof(bodyvaluesERVICEwholesalePrice), required: false);
+            var __workflow_bodyvaluesERVICEcomments = bodyvaluesERVICEcomments == null ? null : WorkflowExpression.Compile(bodyvaluesERVICEcomments);
+            WorkflowExpression.Validate(__workflow_bodyvaluesERVICEcomments, nameof(bodyvaluesERVICEcomments), required: false);
+            var __workflow_bodyvaluesERVICEdiscount1 = bodyvaluesERVICEdiscount1 == null ? null : WorkflowExpression.Compile(bodyvaluesERVICEdiscount1);
+            WorkflowExpression.Validate(__workflow_bodyvaluesERVICEdiscount1, nameof(bodyvaluesERVICEdiscount1), required: false);
             return new DeferredBodyAction<SetData200response>(() =>
             {
                 var apiCallPath = "/setService";
@@ -2926,15 +2964,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 callPayload.Queries["op"] = Convert.ToString("s1service");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfORM != null)
+                if (__workflow_bodyfORM != null)
                 {
-                    body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                    body["FORM"] = ExpressionConverter.ConvertO(__workflow_bodyfORM);
                     bodypropCount++;
                 }
 
-                if (bodykEY != null)
+                if (__workflow_bodykEY != null)
                 {
-                    body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                    body["KEY"] = ExpressionConverter.ConvertO(__workflow_bodykEY);
                     bodypropCount++;
                 }
 
@@ -2949,49 +2987,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 var sERVICEObject = new JObject();
                 var sERVICEObjectpropCount = 0;
                 sERVICEObjectpropCount++;
-                sERVICEObject["CODE"] = ExpressionConverter.ConvertO(bodyvaluesERVICEcode);
-                if (bodyvaluesERVICEcommercialCategory != null)
+                sERVICEObject["CODE"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesERVICEcode);
+                if (__workflow_bodyvaluesERVICEcommercialCategory != null)
                 {
-                    sERVICEObject["MTRCATEGORY"] = ExpressionConverter.ConvertO(bodyvaluesERVICEcommercialCategory);
+                    sERVICEObject["MTRCATEGORY"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesERVICEcommercialCategory);
                     sERVICEObjectpropCount++;
                 }
 
-                if (bodyvaluesERVICEserviceGroup != null)
+                if (__workflow_bodyvaluesERVICEserviceGroup != null)
                 {
-                    sERVICEObject["MTRGROUP"] = ExpressionConverter.ConvertO(bodyvaluesERVICEserviceGroup);
-                    sERVICEObjectpropCount++;
-                }
-
-                sERVICEObjectpropCount++;
-                sERVICEObject["MTRUNIT1"] = ExpressionConverter.ConvertO(bodyvaluesERVICEbaseUnitOfMeasure);
-                sERVICEObjectpropCount++;
-                sERVICEObject["NAME"] = ExpressionConverter.ConvertO(bodyvaluesERVICEname);
-                if (bodyvaluesERVICEretailPrice != null)
-                {
-                    sERVICEObject["PRICER"] = ExpressionConverter.ConvertO(bodyvaluesERVICEretailPrice);
-                    sERVICEObjectpropCount++;
-                }
-
-                if (bodyvaluesERVICEwholesalePrice != null)
-                {
-                    sERVICEObject["PRICEW"] = ExpressionConverter.ConvertO(bodyvaluesERVICEwholesalePrice);
-                    sERVICEObjectpropCount++;
-                }
-
-                if (bodyvaluesERVICEcomments != null)
-                {
-                    sERVICEObject["REMARKS"] = ExpressionConverter.ConvertO(bodyvaluesERVICEcomments);
-                    sERVICEObjectpropCount++;
-                }
-
-                if (bodyvaluesERVICEdiscount1 != null)
-                {
-                    sERVICEObject["SODISCOUNT"] = ExpressionConverter.ConvertO(bodyvaluesERVICEdiscount1);
+                    sERVICEObject["MTRGROUP"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesERVICEserviceGroup);
                     sERVICEObjectpropCount++;
                 }
 
                 sERVICEObjectpropCount++;
-                sERVICEObject["VAT"] = ExpressionConverter.ConvertO(bodyvaluesERVICEvatGroup);
+                sERVICEObject["MTRUNIT1"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesERVICEbaseUnitOfMeasure);
+                sERVICEObjectpropCount++;
+                sERVICEObject["NAME"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesERVICEname);
+                if (__workflow_bodyvaluesERVICEretailPrice != null)
+                {
+                    sERVICEObject["PRICER"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesERVICEretailPrice);
+                    sERVICEObjectpropCount++;
+                }
+
+                if (__workflow_bodyvaluesERVICEwholesalePrice != null)
+                {
+                    sERVICEObject["PRICEW"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesERVICEwholesalePrice);
+                    sERVICEObjectpropCount++;
+                }
+
+                if (__workflow_bodyvaluesERVICEcomments != null)
+                {
+                    sERVICEObject["REMARKS"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesERVICEcomments);
+                    sERVICEObjectpropCount++;
+                }
+
+                if (__workflow_bodyvaluesERVICEdiscount1 != null)
+                {
+                    sERVICEObject["SODISCOUNT"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesERVICEdiscount1);
+                    sERVICEObjectpropCount++;
+                }
+
+                sERVICEObjectpropCount++;
+                sERVICEObject["VAT"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesERVICEvatGroup);
                 if (sERVICEObjectpropCount > 0)
                 {
                     dataObject["SERVICE"] = sERVICEObject;
@@ -3016,28 +3054,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        [WorkflowExpressionFactory(nameof(__BuildSetSOEMAIL))]
-        public IBodyWorkflowAction<SetData200response> SetSOEMAIL([WorkflowExpression] Func<string> bodyvaluesOACTIONsERIES, [WorkflowExpression] Func<bodyvaluesOACTIONaCTSTATUSInput> bodyvaluesOACTIONaCTSTATUS = null, [WorkflowExpression] Func<string> bodyvaluesOACTIONcOMMENTS = null, [WorkflowExpression] Func<string> bodyvaluesOACTIONtRNDATE = null, [WorkflowExpression] Func<string> bodyvaluesOMAILfROMADDRESS = null, [WorkflowExpression] Func<string> bodyvaluesOMAILfROMNAME = null, [WorkflowExpression] Func<string> bodyvaluesOMAILsOBCC = null, [WorkflowExpression] Func<string> bodyvaluesOMAILsOBODY = null, [WorkflowExpression] Func<string> bodyvaluesOMAILsOCC = null, [WorkflowExpression] Func<string> bodyvaluesOMAILsOTO = null, [WorkflowExpression] Func<bodyvaluexTRDOCDATAInputItem[]> bodyvaluexTRDOCDATA = null, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null)
+        public IBodyWorkflowAction<SetData200response> SetSOEMAIL(Expression<Func<string>> bodyvaluesOACTIONsERIES, Expression<Func<bodyvaluesOACTIONaCTSTATUSInput>> bodyvaluesOACTIONaCTSTATUS = null, Expression<Func<string>> bodyvaluesOACTIONcOMMENTS = null, Expression<Func<string>> bodyvaluesOACTIONtRNDATE = null, Expression<Func<string>> bodyvaluesOMAILfROMADDRESS = null, Expression<Func<string>> bodyvaluesOMAILfROMNAME = null, Expression<Func<string>> bodyvaluesOMAILsOBCC = null, Expression<Func<string>> bodyvaluesOMAILsOBODY = null, Expression<Func<string>> bodyvaluesOMAILsOCC = null, Expression<Func<string>> bodyvaluesOMAILsOTO = null, Expression<Func<bodyvaluexTRDOCDATAInputItem[]>> bodyvaluexTRDOCDATA = null, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SetData200response> __BuildSetSOEMAIL(WorkflowExpression<string> bodyvaluesOACTIONsERIES, WorkflowExpression<bodyvaluesOACTIONaCTSTATUSInput> bodyvaluesOACTIONaCTSTATUS = null, WorkflowExpression<string> bodyvaluesOACTIONcOMMENTS = null, WorkflowExpression<string> bodyvaluesOACTIONtRNDATE = null, WorkflowExpression<string> bodyvaluesOMAILfROMADDRESS = null, WorkflowExpression<string> bodyvaluesOMAILfROMNAME = null, WorkflowExpression<string> bodyvaluesOMAILsOBCC = null, WorkflowExpression<string> bodyvaluesOMAILsOBODY = null, WorkflowExpression<string> bodyvaluesOMAILsOCC = null, WorkflowExpression<string> bodyvaluesOMAILsOTO = null, WorkflowExpression<bodyvaluexTRDOCDATAInputItem[]> bodyvaluexTRDOCDATA = null, WorkflowExpression<string> bodyfORM = null, WorkflowExpression<string> bodykEY = null)
-        {
-            WorkflowExpression.Validate(bodyvaluesOACTIONsERIES, nameof(bodyvaluesOACTIONsERIES), required: true);
-            WorkflowExpression.Validate(bodyvaluesOACTIONaCTSTATUS, nameof(bodyvaluesOACTIONaCTSTATUS), required: false);
-            WorkflowExpression.Validate(bodyvaluesOACTIONcOMMENTS, nameof(bodyvaluesOACTIONcOMMENTS), required: false);
-            WorkflowExpression.Validate(bodyvaluesOACTIONtRNDATE, nameof(bodyvaluesOACTIONtRNDATE), required: false);
-            WorkflowExpression.Validate(bodyvaluesOMAILfROMADDRESS, nameof(bodyvaluesOMAILfROMADDRESS), required: false);
-            WorkflowExpression.Validate(bodyvaluesOMAILfROMNAME, nameof(bodyvaluesOMAILfROMNAME), required: false);
-            WorkflowExpression.Validate(bodyvaluesOMAILsOBCC, nameof(bodyvaluesOMAILsOBCC), required: false);
-            WorkflowExpression.Validate(bodyvaluesOMAILsOBODY, nameof(bodyvaluesOMAILsOBODY), required: false);
-            WorkflowExpression.Validate(bodyvaluesOMAILsOCC, nameof(bodyvaluesOMAILsOCC), required: false);
-            WorkflowExpression.Validate(bodyvaluesOMAILsOTO, nameof(bodyvaluesOMAILsOTO), required: false);
-            WorkflowExpression.Validate(bodyvaluexTRDOCDATA, nameof(bodyvaluexTRDOCDATA), required: false);
-            WorkflowExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
-            WorkflowExpression.Validate(bodykEY, nameof(bodykEY), required: false);
+            var __workflow_bodyvaluesOACTIONsERIES = bodyvaluesOACTIONsERIES == null ? null : WorkflowExpression.Compile(bodyvaluesOACTIONsERIES);
+            WorkflowExpression.Validate(__workflow_bodyvaluesOACTIONsERIES, nameof(bodyvaluesOACTIONsERIES), required: true);
+            var __workflow_bodyvaluesOACTIONaCTSTATUS = bodyvaluesOACTIONaCTSTATUS == null ? null : WorkflowExpression.Compile(bodyvaluesOACTIONaCTSTATUS);
+            WorkflowExpression.Validate(__workflow_bodyvaluesOACTIONaCTSTATUS, nameof(bodyvaluesOACTIONaCTSTATUS), required: false);
+            var __workflow_bodyvaluesOACTIONcOMMENTS = bodyvaluesOACTIONcOMMENTS == null ? null : WorkflowExpression.Compile(bodyvaluesOACTIONcOMMENTS);
+            WorkflowExpression.Validate(__workflow_bodyvaluesOACTIONcOMMENTS, nameof(bodyvaluesOACTIONcOMMENTS), required: false);
+            var __workflow_bodyvaluesOACTIONtRNDATE = bodyvaluesOACTIONtRNDATE == null ? null : WorkflowExpression.Compile(bodyvaluesOACTIONtRNDATE);
+            WorkflowExpression.Validate(__workflow_bodyvaluesOACTIONtRNDATE, nameof(bodyvaluesOACTIONtRNDATE), required: false);
+            var __workflow_bodyvaluesOMAILfROMADDRESS = bodyvaluesOMAILfROMADDRESS == null ? null : WorkflowExpression.Compile(bodyvaluesOMAILfROMADDRESS);
+            WorkflowExpression.Validate(__workflow_bodyvaluesOMAILfROMADDRESS, nameof(bodyvaluesOMAILfROMADDRESS), required: false);
+            var __workflow_bodyvaluesOMAILfROMNAME = bodyvaluesOMAILfROMNAME == null ? null : WorkflowExpression.Compile(bodyvaluesOMAILfROMNAME);
+            WorkflowExpression.Validate(__workflow_bodyvaluesOMAILfROMNAME, nameof(bodyvaluesOMAILfROMNAME), required: false);
+            var __workflow_bodyvaluesOMAILsOBCC = bodyvaluesOMAILsOBCC == null ? null : WorkflowExpression.Compile(bodyvaluesOMAILsOBCC);
+            WorkflowExpression.Validate(__workflow_bodyvaluesOMAILsOBCC, nameof(bodyvaluesOMAILsOBCC), required: false);
+            var __workflow_bodyvaluesOMAILsOBODY = bodyvaluesOMAILsOBODY == null ? null : WorkflowExpression.Compile(bodyvaluesOMAILsOBODY);
+            WorkflowExpression.Validate(__workflow_bodyvaluesOMAILsOBODY, nameof(bodyvaluesOMAILsOBODY), required: false);
+            var __workflow_bodyvaluesOMAILsOCC = bodyvaluesOMAILsOCC == null ? null : WorkflowExpression.Compile(bodyvaluesOMAILsOCC);
+            WorkflowExpression.Validate(__workflow_bodyvaluesOMAILsOCC, nameof(bodyvaluesOMAILsOCC), required: false);
+            var __workflow_bodyvaluesOMAILsOTO = bodyvaluesOMAILsOTO == null ? null : WorkflowExpression.Compile(bodyvaluesOMAILsOTO);
+            WorkflowExpression.Validate(__workflow_bodyvaluesOMAILsOTO, nameof(bodyvaluesOMAILsOTO), required: false);
+            var __workflow_bodyvaluexTRDOCDATA = bodyvaluexTRDOCDATA == null ? null : WorkflowExpression.Compile(bodyvaluexTRDOCDATA);
+            WorkflowExpression.Validate(__workflow_bodyvaluexTRDOCDATA, nameof(bodyvaluexTRDOCDATA), required: false);
+            var __workflow_bodyfORM = bodyfORM == null ? null : WorkflowExpression.Compile(bodyfORM);
+            WorkflowExpression.Validate(__workflow_bodyfORM, nameof(bodyfORM), required: false);
+            var __workflow_bodykEY = bodykEY == null ? null : WorkflowExpression.Compile(bodykEY);
+            WorkflowExpression.Validate(__workflow_bodykEY, nameof(bodykEY), required: false);
             return new DeferredBodyAction<SetData200response>(() =>
             {
                 var apiCallPath = "/setSomail";
@@ -3052,23 +3096,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 var dATAObjectpropCount = 0;
                 var sOACTIONObject = new JObject();
                 var sOACTIONObjectpropCount = 0;
-                if (bodyvaluesOACTIONaCTSTATUS != null)
+                if (__workflow_bodyvaluesOACTIONaCTSTATUS != null)
                 {
-                    sOACTIONObject["ACTSTATUS"] = ExpressionConverter.ConvertO(bodyvaluesOACTIONaCTSTATUS);
+                    sOACTIONObject["ACTSTATUS"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesOACTIONaCTSTATUS);
                     sOACTIONObjectpropCount++;
                 }
 
-                if (bodyvaluesOACTIONcOMMENTS != null)
+                if (__workflow_bodyvaluesOACTIONcOMMENTS != null)
                 {
-                    sOACTIONObject["COMMENTS"] = ExpressionConverter.ConvertO(bodyvaluesOACTIONcOMMENTS);
+                    sOACTIONObject["COMMENTS"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesOACTIONcOMMENTS);
                     sOACTIONObjectpropCount++;
                 }
 
                 sOACTIONObjectpropCount++;
-                sOACTIONObject["SERIES"] = ExpressionConverter.ConvertO(bodyvaluesOACTIONsERIES);
-                if (bodyvaluesOACTIONtRNDATE != null)
+                sOACTIONObject["SERIES"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesOACTIONsERIES);
+                if (__workflow_bodyvaluesOACTIONtRNDATE != null)
                 {
-                    sOACTIONObject["TRNDATE"] = ExpressionConverter.ConvertO(bodyvaluesOACTIONtRNDATE);
+                    sOACTIONObject["TRNDATE"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesOACTIONtRNDATE);
                     sOACTIONObjectpropCount++;
                 }
 
@@ -3080,39 +3124,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
                 var sOMAILObject = new JObject();
                 var sOMAILObjectpropCount = 0;
-                if (bodyvaluesOMAILfROMADDRESS != null)
+                if (__workflow_bodyvaluesOMAILfROMADDRESS != null)
                 {
-                    sOMAILObject["FROMADDRESS"] = ExpressionConverter.ConvertO(bodyvaluesOMAILfROMADDRESS);
+                    sOMAILObject["FROMADDRESS"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesOMAILfROMADDRESS);
                     sOMAILObjectpropCount++;
                 }
 
-                if (bodyvaluesOMAILfROMNAME != null)
+                if (__workflow_bodyvaluesOMAILfROMNAME != null)
                 {
-                    sOMAILObject["FROMNAME"] = ExpressionConverter.ConvertO(bodyvaluesOMAILfROMNAME);
+                    sOMAILObject["FROMNAME"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesOMAILfROMNAME);
                     sOMAILObjectpropCount++;
                 }
 
-                if (bodyvaluesOMAILsOBCC != null)
+                if (__workflow_bodyvaluesOMAILsOBCC != null)
                 {
-                    sOMAILObject["SOBCC"] = ExpressionConverter.ConvertO(bodyvaluesOMAILsOBCC);
+                    sOMAILObject["SOBCC"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesOMAILsOBCC);
                     sOMAILObjectpropCount++;
                 }
 
-                if (bodyvaluesOMAILsOBODY != null)
+                if (__workflow_bodyvaluesOMAILsOBODY != null)
                 {
-                    sOMAILObject["SOBODY"] = ExpressionConverter.ConvertO(bodyvaluesOMAILsOBODY);
+                    sOMAILObject["SOBODY"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesOMAILsOBODY);
                     sOMAILObjectpropCount++;
                 }
 
-                if (bodyvaluesOMAILsOCC != null)
+                if (__workflow_bodyvaluesOMAILsOCC != null)
                 {
-                    sOMAILObject["SOCC"] = ExpressionConverter.ConvertO(bodyvaluesOMAILsOCC);
+                    sOMAILObject["SOCC"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesOMAILsOCC);
                     sOMAILObjectpropCount++;
                 }
 
-                if (bodyvaluesOMAILsOTO != null)
+                if (__workflow_bodyvaluesOMAILsOTO != null)
                 {
-                    sOMAILObject["SOTO"] = ExpressionConverter.ConvertO(bodyvaluesOMAILsOTO);
+                    sOMAILObject["SOTO"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesOMAILsOTO);
                     sOMAILObjectpropCount++;
                 }
 
@@ -3122,9 +3166,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                     dATAObjectpropCount++;
                 }
 
-                if (bodyvaluexTRDOCDATA != null)
+                if (__workflow_bodyvaluexTRDOCDATA != null)
                 {
-                    dATAObject["XTRDOCDATA"] = ExpressionConverter.ConvertO(bodyvaluexTRDOCDATA);
+                    dATAObject["XTRDOCDATA"] = ExpressionConverter.ConvertO(__workflow_bodyvaluexTRDOCDATA);
                     dATAObjectpropCount++;
                 }
 
@@ -3134,15 +3178,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                     bodypropCount++;
                 }
 
-                if (bodyfORM != null)
+                if (__workflow_bodyfORM != null)
                 {
-                    body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                    body["FORM"] = ExpressionConverter.ConvertO(__workflow_bodyfORM);
                     bodypropCount++;
                 }
 
-                if (bodykEY != null)
+                if (__workflow_bodykEY != null)
                 {
-                    body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                    body["KEY"] = ExpressionConverter.ConvertO(__workflow_bodykEY);
                     bodypropCount++;
                 }
 
@@ -3162,32 +3206,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        [WorkflowExpressionFactory(nameof(__BuildSetMeeting))]
-        public IBodyWorkflowAction<SetData200response> SetMeeting([WorkflowExpression] Func<string> bodydATAsOACTIONsERIES, [WorkflowExpression] Func<string> bodydATAsOACTIONoperator = null, [WorkflowExpression] Func<string> bodydATAsOACTIONoperatorContact = null, [WorkflowExpression] Func<bodydATAsOACTIONaCTSTATUSInput> bodydATAsOACTIONaCTSTATUS = null, [WorkflowExpression] Func<string> bodydATAsOACTIONcOMMENTS = null, [WorkflowExpression] Func<string> bodydATAsOACTIONfINALDATE = null, [WorkflowExpression] Func<string> bodydATAsOACTIONfROMDATE = null, [WorkflowExpression] Func<string> bodydATAsOACTIONorderedBy = null, [WorkflowExpression] Func<string> bodydATAsOACTIONorderedByContact = null, [WorkflowExpression] Func<string> bodydATAsOACTIONpriority = null, [WorkflowExpression] Func<string> bodydATAsOACTIONproject = null, [WorkflowExpression] Func<string> bodydATAsOACTIONrEMARKS = null, [WorkflowExpression] Func<string> bodydATAsOACTIONtRDR = null, [WorkflowExpression] Func<string> bodydATAsOACTIONtRNDATE = null, [WorkflowExpression] Func<bodydATAxTRDOCDATAInputItem[]> bodydATAxTRDOCDATA = null, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null)
+        public IBodyWorkflowAction<SetData200response> SetMeeting(Expression<Func<string>> bodydATAsOACTIONsERIES, Expression<Func<string>> bodydATAsOACTIONoperator = null, Expression<Func<string>> bodydATAsOACTIONoperatorContact = null, Expression<Func<bodydATAsOACTIONaCTSTATUSInput>> bodydATAsOACTIONaCTSTATUS = null, Expression<Func<string>> bodydATAsOACTIONcOMMENTS = null, Expression<Func<string>> bodydATAsOACTIONfINALDATE = null, Expression<Func<string>> bodydATAsOACTIONfROMDATE = null, Expression<Func<string>> bodydATAsOACTIONorderedBy = null, Expression<Func<string>> bodydATAsOACTIONorderedByContact = null, Expression<Func<string>> bodydATAsOACTIONpriority = null, Expression<Func<string>> bodydATAsOACTIONproject = null, Expression<Func<string>> bodydATAsOACTIONrEMARKS = null, Expression<Func<string>> bodydATAsOACTIONtRDR = null, Expression<Func<string>> bodydATAsOACTIONtRNDATE = null, Expression<Func<bodydATAxTRDOCDATAInputItem[]>> bodydATAxTRDOCDATA = null, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SetData200response> __BuildSetMeeting(WorkflowExpression<string> bodydATAsOACTIONsERIES, WorkflowExpression<string> bodydATAsOACTIONoperator = null, WorkflowExpression<string> bodydATAsOACTIONoperatorContact = null, WorkflowExpression<bodydATAsOACTIONaCTSTATUSInput> bodydATAsOACTIONaCTSTATUS = null, WorkflowExpression<string> bodydATAsOACTIONcOMMENTS = null, WorkflowExpression<string> bodydATAsOACTIONfINALDATE = null, WorkflowExpression<string> bodydATAsOACTIONfROMDATE = null, WorkflowExpression<string> bodydATAsOACTIONorderedBy = null, WorkflowExpression<string> bodydATAsOACTIONorderedByContact = null, WorkflowExpression<string> bodydATAsOACTIONpriority = null, WorkflowExpression<string> bodydATAsOACTIONproject = null, WorkflowExpression<string> bodydATAsOACTIONrEMARKS = null, WorkflowExpression<string> bodydATAsOACTIONtRDR = null, WorkflowExpression<string> bodydATAsOACTIONtRNDATE = null, WorkflowExpression<bodydATAxTRDOCDATAInputItem[]> bodydATAxTRDOCDATA = null, WorkflowExpression<string> bodyfORM = null, WorkflowExpression<string> bodykEY = null)
-        {
-            WorkflowExpression.Validate(bodydATAsOACTIONsERIES, nameof(bodydATAsOACTIONsERIES), required: true);
-            WorkflowExpression.Validate(bodydATAsOACTIONoperator, nameof(bodydATAsOACTIONoperator), required: false);
-            WorkflowExpression.Validate(bodydATAsOACTIONoperatorContact, nameof(bodydATAsOACTIONoperatorContact), required: false);
-            WorkflowExpression.Validate(bodydATAsOACTIONaCTSTATUS, nameof(bodydATAsOACTIONaCTSTATUS), required: false);
-            WorkflowExpression.Validate(bodydATAsOACTIONcOMMENTS, nameof(bodydATAsOACTIONcOMMENTS), required: false);
-            WorkflowExpression.Validate(bodydATAsOACTIONfINALDATE, nameof(bodydATAsOACTIONfINALDATE), required: false);
-            WorkflowExpression.Validate(bodydATAsOACTIONfROMDATE, nameof(bodydATAsOACTIONfROMDATE), required: false);
-            WorkflowExpression.Validate(bodydATAsOACTIONorderedBy, nameof(bodydATAsOACTIONorderedBy), required: false);
-            WorkflowExpression.Validate(bodydATAsOACTIONorderedByContact, nameof(bodydATAsOACTIONorderedByContact), required: false);
-            WorkflowExpression.Validate(bodydATAsOACTIONpriority, nameof(bodydATAsOACTIONpriority), required: false);
-            WorkflowExpression.Validate(bodydATAsOACTIONproject, nameof(bodydATAsOACTIONproject), required: false);
-            WorkflowExpression.Validate(bodydATAsOACTIONrEMARKS, nameof(bodydATAsOACTIONrEMARKS), required: false);
-            WorkflowExpression.Validate(bodydATAsOACTIONtRDR, nameof(bodydATAsOACTIONtRDR), required: false);
-            WorkflowExpression.Validate(bodydATAsOACTIONtRNDATE, nameof(bodydATAsOACTIONtRNDATE), required: false);
-            WorkflowExpression.Validate(bodydATAxTRDOCDATA, nameof(bodydATAxTRDOCDATA), required: false);
-            WorkflowExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
-            WorkflowExpression.Validate(bodykEY, nameof(bodykEY), required: false);
+            var __workflow_bodydATAsOACTIONsERIES = bodydATAsOACTIONsERIES == null ? null : WorkflowExpression.Compile(bodydATAsOACTIONsERIES);
+            WorkflowExpression.Validate(__workflow_bodydATAsOACTIONsERIES, nameof(bodydATAsOACTIONsERIES), required: true);
+            var __workflow_bodydATAsOACTIONoperator = bodydATAsOACTIONoperator == null ? null : WorkflowExpression.Compile(bodydATAsOACTIONoperator);
+            WorkflowExpression.Validate(__workflow_bodydATAsOACTIONoperator, nameof(bodydATAsOACTIONoperator), required: false);
+            var __workflow_bodydATAsOACTIONoperatorContact = bodydATAsOACTIONoperatorContact == null ? null : WorkflowExpression.Compile(bodydATAsOACTIONoperatorContact);
+            WorkflowExpression.Validate(__workflow_bodydATAsOACTIONoperatorContact, nameof(bodydATAsOACTIONoperatorContact), required: false);
+            var __workflow_bodydATAsOACTIONaCTSTATUS = bodydATAsOACTIONaCTSTATUS == null ? null : WorkflowExpression.Compile(bodydATAsOACTIONaCTSTATUS);
+            WorkflowExpression.Validate(__workflow_bodydATAsOACTIONaCTSTATUS, nameof(bodydATAsOACTIONaCTSTATUS), required: false);
+            var __workflow_bodydATAsOACTIONcOMMENTS = bodydATAsOACTIONcOMMENTS == null ? null : WorkflowExpression.Compile(bodydATAsOACTIONcOMMENTS);
+            WorkflowExpression.Validate(__workflow_bodydATAsOACTIONcOMMENTS, nameof(bodydATAsOACTIONcOMMENTS), required: false);
+            var __workflow_bodydATAsOACTIONfINALDATE = bodydATAsOACTIONfINALDATE == null ? null : WorkflowExpression.Compile(bodydATAsOACTIONfINALDATE);
+            WorkflowExpression.Validate(__workflow_bodydATAsOACTIONfINALDATE, nameof(bodydATAsOACTIONfINALDATE), required: false);
+            var __workflow_bodydATAsOACTIONfROMDATE = bodydATAsOACTIONfROMDATE == null ? null : WorkflowExpression.Compile(bodydATAsOACTIONfROMDATE);
+            WorkflowExpression.Validate(__workflow_bodydATAsOACTIONfROMDATE, nameof(bodydATAsOACTIONfROMDATE), required: false);
+            var __workflow_bodydATAsOACTIONorderedBy = bodydATAsOACTIONorderedBy == null ? null : WorkflowExpression.Compile(bodydATAsOACTIONorderedBy);
+            WorkflowExpression.Validate(__workflow_bodydATAsOACTIONorderedBy, nameof(bodydATAsOACTIONorderedBy), required: false);
+            var __workflow_bodydATAsOACTIONorderedByContact = bodydATAsOACTIONorderedByContact == null ? null : WorkflowExpression.Compile(bodydATAsOACTIONorderedByContact);
+            WorkflowExpression.Validate(__workflow_bodydATAsOACTIONorderedByContact, nameof(bodydATAsOACTIONorderedByContact), required: false);
+            var __workflow_bodydATAsOACTIONpriority = bodydATAsOACTIONpriority == null ? null : WorkflowExpression.Compile(bodydATAsOACTIONpriority);
+            WorkflowExpression.Validate(__workflow_bodydATAsOACTIONpriority, nameof(bodydATAsOACTIONpriority), required: false);
+            var __workflow_bodydATAsOACTIONproject = bodydATAsOACTIONproject == null ? null : WorkflowExpression.Compile(bodydATAsOACTIONproject);
+            WorkflowExpression.Validate(__workflow_bodydATAsOACTIONproject, nameof(bodydATAsOACTIONproject), required: false);
+            var __workflow_bodydATAsOACTIONrEMARKS = bodydATAsOACTIONrEMARKS == null ? null : WorkflowExpression.Compile(bodydATAsOACTIONrEMARKS);
+            WorkflowExpression.Validate(__workflow_bodydATAsOACTIONrEMARKS, nameof(bodydATAsOACTIONrEMARKS), required: false);
+            var __workflow_bodydATAsOACTIONtRDR = bodydATAsOACTIONtRDR == null ? null : WorkflowExpression.Compile(bodydATAsOACTIONtRDR);
+            WorkflowExpression.Validate(__workflow_bodydATAsOACTIONtRDR, nameof(bodydATAsOACTIONtRDR), required: false);
+            var __workflow_bodydATAsOACTIONtRNDATE = bodydATAsOACTIONtRNDATE == null ? null : WorkflowExpression.Compile(bodydATAsOACTIONtRNDATE);
+            WorkflowExpression.Validate(__workflow_bodydATAsOACTIONtRNDATE, nameof(bodydATAsOACTIONtRNDATE), required: false);
+            var __workflow_bodydATAxTRDOCDATA = bodydATAxTRDOCDATA == null ? null : WorkflowExpression.Compile(bodydATAxTRDOCDATA);
+            WorkflowExpression.Validate(__workflow_bodydATAxTRDOCDATA, nameof(bodydATAxTRDOCDATA), required: false);
+            var __workflow_bodyfORM = bodyfORM == null ? null : WorkflowExpression.Compile(bodyfORM);
+            WorkflowExpression.Validate(__workflow_bodyfORM, nameof(bodyfORM), required: false);
+            var __workflow_bodykEY = bodykEY == null ? null : WorkflowExpression.Compile(bodykEY);
+            WorkflowExpression.Validate(__workflow_bodykEY, nameof(bodykEY), required: false);
             return new DeferredBodyAction<SetData200response>(() =>
             {
                 var apiCallPath = "/setSomeeting";
@@ -3202,83 +3256,83 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 var dATAObjectpropCount = 0;
                 var sOACTIONObject = new JObject();
                 var sOACTIONObjectpropCount = 0;
-                if (bodydATAsOACTIONoperator != null)
+                if (__workflow_bodydATAsOACTIONoperator != null)
                 {
-                    sOACTIONObject["ACTOR"] = ExpressionConverter.ConvertO(bodydATAsOACTIONoperator);
+                    sOACTIONObject["ACTOR"] = ExpressionConverter.ConvertO(__workflow_bodydATAsOACTIONoperator);
                     sOACTIONObjectpropCount++;
                 }
 
-                if (bodydATAsOACTIONoperatorContact != null)
+                if (__workflow_bodydATAsOACTIONoperatorContact != null)
                 {
-                    sOACTIONObject["ACTPRSN"] = ExpressionConverter.ConvertO(bodydATAsOACTIONoperatorContact);
+                    sOACTIONObject["ACTPRSN"] = ExpressionConverter.ConvertO(__workflow_bodydATAsOACTIONoperatorContact);
                     sOACTIONObjectpropCount++;
                 }
 
-                if (bodydATAsOACTIONaCTSTATUS != null)
+                if (__workflow_bodydATAsOACTIONaCTSTATUS != null)
                 {
-                    sOACTIONObject["ACTSTATUS"] = ExpressionConverter.ConvertO(bodydATAsOACTIONaCTSTATUS);
+                    sOACTIONObject["ACTSTATUS"] = ExpressionConverter.ConvertO(__workflow_bodydATAsOACTIONaCTSTATUS);
                     sOACTIONObjectpropCount++;
                 }
 
-                if (bodydATAsOACTIONcOMMENTS != null)
+                if (__workflow_bodydATAsOACTIONcOMMENTS != null)
                 {
-                    sOACTIONObject["COMMENTS"] = ExpressionConverter.ConvertO(bodydATAsOACTIONcOMMENTS);
+                    sOACTIONObject["COMMENTS"] = ExpressionConverter.ConvertO(__workflow_bodydATAsOACTIONcOMMENTS);
                     sOACTIONObjectpropCount++;
                 }
 
-                if (bodydATAsOACTIONfINALDATE != null)
+                if (__workflow_bodydATAsOACTIONfINALDATE != null)
                 {
-                    sOACTIONObject["FINALDATE"] = ExpressionConverter.ConvertO(bodydATAsOACTIONfINALDATE);
+                    sOACTIONObject["FINALDATE"] = ExpressionConverter.ConvertO(__workflow_bodydATAsOACTIONfINALDATE);
                     sOACTIONObjectpropCount++;
                 }
 
-                if (bodydATAsOACTIONfROMDATE != null)
+                if (__workflow_bodydATAsOACTIONfROMDATE != null)
                 {
-                    sOACTIONObject["FROMDATE"] = ExpressionConverter.ConvertO(bodydATAsOACTIONfROMDATE);
+                    sOACTIONObject["FROMDATE"] = ExpressionConverter.ConvertO(__workflow_bodydATAsOACTIONfROMDATE);
                     sOACTIONObjectpropCount++;
                 }
 
-                if (bodydATAsOACTIONorderedBy != null)
+                if (__workflow_bodydATAsOACTIONorderedBy != null)
                 {
-                    sOACTIONObject["ORDEREDBY"] = ExpressionConverter.ConvertO(bodydATAsOACTIONorderedBy);
+                    sOACTIONObject["ORDEREDBY"] = ExpressionConverter.ConvertO(__workflow_bodydATAsOACTIONorderedBy);
                     sOACTIONObjectpropCount++;
                 }
 
-                if (bodydATAsOACTIONorderedByContact != null)
+                if (__workflow_bodydATAsOACTIONorderedByContact != null)
                 {
-                    sOACTIONObject["ORDPRSN"] = ExpressionConverter.ConvertO(bodydATAsOACTIONorderedByContact);
+                    sOACTIONObject["ORDPRSN"] = ExpressionConverter.ConvertO(__workflow_bodydATAsOACTIONorderedByContact);
                     sOACTIONObjectpropCount++;
                 }
 
-                if (bodydATAsOACTIONpriority != null)
+                if (__workflow_bodydATAsOACTIONpriority != null)
                 {
-                    sOACTIONObject["PRIORITY"] = ExpressionConverter.ConvertO(bodydATAsOACTIONpriority);
+                    sOACTIONObject["PRIORITY"] = ExpressionConverter.ConvertO(__workflow_bodydATAsOACTIONpriority);
                     sOACTIONObjectpropCount++;
                 }
 
-                if (bodydATAsOACTIONproject != null)
+                if (__workflow_bodydATAsOACTIONproject != null)
                 {
-                    sOACTIONObject["PRJC"] = ExpressionConverter.ConvertO(bodydATAsOACTIONproject);
+                    sOACTIONObject["PRJC"] = ExpressionConverter.ConvertO(__workflow_bodydATAsOACTIONproject);
                     sOACTIONObjectpropCount++;
                 }
 
-                if (bodydATAsOACTIONrEMARKS != null)
+                if (__workflow_bodydATAsOACTIONrEMARKS != null)
                 {
-                    sOACTIONObject["REMARKS"] = ExpressionConverter.ConvertO(bodydATAsOACTIONrEMARKS);
+                    sOACTIONObject["REMARKS"] = ExpressionConverter.ConvertO(__workflow_bodydATAsOACTIONrEMARKS);
                     sOACTIONObjectpropCount++;
                 }
 
                 sOACTIONObjectpropCount++;
-                sOACTIONObject["SERIES"] = ExpressionConverter.ConvertO(bodydATAsOACTIONsERIES);
-                if (bodydATAsOACTIONtRDR != null)
+                sOACTIONObject["SERIES"] = ExpressionConverter.ConvertO(__workflow_bodydATAsOACTIONsERIES);
+                if (__workflow_bodydATAsOACTIONtRDR != null)
                 {
-                    sOACTIONObject["TRDR"] = ExpressionConverter.ConvertO(bodydATAsOACTIONtRDR);
+                    sOACTIONObject["TRDR"] = ExpressionConverter.ConvertO(__workflow_bodydATAsOACTIONtRDR);
                     sOACTIONObjectpropCount++;
                 }
 
-                if (bodydATAsOACTIONtRNDATE != null)
+                if (__workflow_bodydATAsOACTIONtRNDATE != null)
                 {
-                    sOACTIONObject["TRNDATE"] = ExpressionConverter.ConvertO(bodydATAsOACTIONtRNDATE);
+                    sOACTIONObject["TRNDATE"] = ExpressionConverter.ConvertO(__workflow_bodydATAsOACTIONtRNDATE);
                     sOACTIONObjectpropCount++;
                 }
 
@@ -3288,9 +3342,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                     dATAObjectpropCount++;
                 }
 
-                if (bodydATAxTRDOCDATA != null)
+                if (__workflow_bodydATAxTRDOCDATA != null)
                 {
-                    dATAObject["XTRDOCDATA"] = ExpressionConverter.ConvertO(bodydATAxTRDOCDATA);
+                    dATAObject["XTRDOCDATA"] = ExpressionConverter.ConvertO(__workflow_bodydATAxTRDOCDATA);
                     dATAObjectpropCount++;
                 }
 
@@ -3300,15 +3354,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                     bodypropCount++;
                 }
 
-                if (bodyfORM != null)
+                if (__workflow_bodyfORM != null)
                 {
-                    body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                    body["FORM"] = ExpressionConverter.ConvertO(__workflow_bodyfORM);
                     bodypropCount++;
                 }
 
-                if (bodykEY != null)
+                if (__workflow_bodykEY != null)
                 {
-                    body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                    body["KEY"] = ExpressionConverter.ConvertO(__workflow_bodykEY);
                     bodypropCount++;
                 }
 
@@ -3328,32 +3382,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        [WorkflowExpressionFactory(nameof(__BuildSetSOTASK))]
-        public IBodyWorkflowAction<SetData200response> SetSOTASK([WorkflowExpression] Func<string> bodydATAsOACTIONsERIES, [WorkflowExpression] Func<string> bodydATAsOACTIONoperator = null, [WorkflowExpression] Func<string> bodydATAsOACTIONoperatorContact = null, [WorkflowExpression] Func<bodydATAsOACTIONaCTSTATUSInput> bodydATAsOACTIONaCTSTATUS = null, [WorkflowExpression] Func<string> bodydATAsOACTIONcOMMENTS = null, [WorkflowExpression] Func<string> bodydATAsOACTIONfINALDATE = null, [WorkflowExpression] Func<string> bodydATAsOACTIONfROMDATE = null, [WorkflowExpression] Func<string> bodydATAsOACTIONorderedBy = null, [WorkflowExpression] Func<string> bodydATAsOACTIONorderedByContact = null, [WorkflowExpression] Func<string> bodydATAsOACTIONpriority = null, [WorkflowExpression] Func<string> bodydATAsOACTIONproject = null, [WorkflowExpression] Func<string> bodydATAsOACTIONrEMARKS = null, [WorkflowExpression] Func<string> bodydATAsOACTIONtRDR = null, [WorkflowExpression] Func<string> bodydATAsOACTIONtRNDATE = null, [WorkflowExpression] Func<bodydATAxTRDOCDATAInputItem[]> bodydATAxTRDOCDATA = null, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null)
+        public IBodyWorkflowAction<SetData200response> SetSOTASK(Expression<Func<string>> bodydATAsOACTIONsERIES, Expression<Func<string>> bodydATAsOACTIONoperator = null, Expression<Func<string>> bodydATAsOACTIONoperatorContact = null, Expression<Func<bodydATAsOACTIONaCTSTATUSInput>> bodydATAsOACTIONaCTSTATUS = null, Expression<Func<string>> bodydATAsOACTIONcOMMENTS = null, Expression<Func<string>> bodydATAsOACTIONfINALDATE = null, Expression<Func<string>> bodydATAsOACTIONfROMDATE = null, Expression<Func<string>> bodydATAsOACTIONorderedBy = null, Expression<Func<string>> bodydATAsOACTIONorderedByContact = null, Expression<Func<string>> bodydATAsOACTIONpriority = null, Expression<Func<string>> bodydATAsOACTIONproject = null, Expression<Func<string>> bodydATAsOACTIONrEMARKS = null, Expression<Func<string>> bodydATAsOACTIONtRDR = null, Expression<Func<string>> bodydATAsOACTIONtRNDATE = null, Expression<Func<bodydATAxTRDOCDATAInputItem[]>> bodydATAxTRDOCDATA = null, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SetData200response> __BuildSetSOTASK(WorkflowExpression<string> bodydATAsOACTIONsERIES, WorkflowExpression<string> bodydATAsOACTIONoperator = null, WorkflowExpression<string> bodydATAsOACTIONoperatorContact = null, WorkflowExpression<bodydATAsOACTIONaCTSTATUSInput> bodydATAsOACTIONaCTSTATUS = null, WorkflowExpression<string> bodydATAsOACTIONcOMMENTS = null, WorkflowExpression<string> bodydATAsOACTIONfINALDATE = null, WorkflowExpression<string> bodydATAsOACTIONfROMDATE = null, WorkflowExpression<string> bodydATAsOACTIONorderedBy = null, WorkflowExpression<string> bodydATAsOACTIONorderedByContact = null, WorkflowExpression<string> bodydATAsOACTIONpriority = null, WorkflowExpression<string> bodydATAsOACTIONproject = null, WorkflowExpression<string> bodydATAsOACTIONrEMARKS = null, WorkflowExpression<string> bodydATAsOACTIONtRDR = null, WorkflowExpression<string> bodydATAsOACTIONtRNDATE = null, WorkflowExpression<bodydATAxTRDOCDATAInputItem[]> bodydATAxTRDOCDATA = null, WorkflowExpression<string> bodyfORM = null, WorkflowExpression<string> bodykEY = null)
-        {
-            WorkflowExpression.Validate(bodydATAsOACTIONsERIES, nameof(bodydATAsOACTIONsERIES), required: true);
-            WorkflowExpression.Validate(bodydATAsOACTIONoperator, nameof(bodydATAsOACTIONoperator), required: false);
-            WorkflowExpression.Validate(bodydATAsOACTIONoperatorContact, nameof(bodydATAsOACTIONoperatorContact), required: false);
-            WorkflowExpression.Validate(bodydATAsOACTIONaCTSTATUS, nameof(bodydATAsOACTIONaCTSTATUS), required: false);
-            WorkflowExpression.Validate(bodydATAsOACTIONcOMMENTS, nameof(bodydATAsOACTIONcOMMENTS), required: false);
-            WorkflowExpression.Validate(bodydATAsOACTIONfINALDATE, nameof(bodydATAsOACTIONfINALDATE), required: false);
-            WorkflowExpression.Validate(bodydATAsOACTIONfROMDATE, nameof(bodydATAsOACTIONfROMDATE), required: false);
-            WorkflowExpression.Validate(bodydATAsOACTIONorderedBy, nameof(bodydATAsOACTIONorderedBy), required: false);
-            WorkflowExpression.Validate(bodydATAsOACTIONorderedByContact, nameof(bodydATAsOACTIONorderedByContact), required: false);
-            WorkflowExpression.Validate(bodydATAsOACTIONpriority, nameof(bodydATAsOACTIONpriority), required: false);
-            WorkflowExpression.Validate(bodydATAsOACTIONproject, nameof(bodydATAsOACTIONproject), required: false);
-            WorkflowExpression.Validate(bodydATAsOACTIONrEMARKS, nameof(bodydATAsOACTIONrEMARKS), required: false);
-            WorkflowExpression.Validate(bodydATAsOACTIONtRDR, nameof(bodydATAsOACTIONtRDR), required: false);
-            WorkflowExpression.Validate(bodydATAsOACTIONtRNDATE, nameof(bodydATAsOACTIONtRNDATE), required: false);
-            WorkflowExpression.Validate(bodydATAxTRDOCDATA, nameof(bodydATAxTRDOCDATA), required: false);
-            WorkflowExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
-            WorkflowExpression.Validate(bodykEY, nameof(bodykEY), required: false);
+            var __workflow_bodydATAsOACTIONsERIES = bodydATAsOACTIONsERIES == null ? null : WorkflowExpression.Compile(bodydATAsOACTIONsERIES);
+            WorkflowExpression.Validate(__workflow_bodydATAsOACTIONsERIES, nameof(bodydATAsOACTIONsERIES), required: true);
+            var __workflow_bodydATAsOACTIONoperator = bodydATAsOACTIONoperator == null ? null : WorkflowExpression.Compile(bodydATAsOACTIONoperator);
+            WorkflowExpression.Validate(__workflow_bodydATAsOACTIONoperator, nameof(bodydATAsOACTIONoperator), required: false);
+            var __workflow_bodydATAsOACTIONoperatorContact = bodydATAsOACTIONoperatorContact == null ? null : WorkflowExpression.Compile(bodydATAsOACTIONoperatorContact);
+            WorkflowExpression.Validate(__workflow_bodydATAsOACTIONoperatorContact, nameof(bodydATAsOACTIONoperatorContact), required: false);
+            var __workflow_bodydATAsOACTIONaCTSTATUS = bodydATAsOACTIONaCTSTATUS == null ? null : WorkflowExpression.Compile(bodydATAsOACTIONaCTSTATUS);
+            WorkflowExpression.Validate(__workflow_bodydATAsOACTIONaCTSTATUS, nameof(bodydATAsOACTIONaCTSTATUS), required: false);
+            var __workflow_bodydATAsOACTIONcOMMENTS = bodydATAsOACTIONcOMMENTS == null ? null : WorkflowExpression.Compile(bodydATAsOACTIONcOMMENTS);
+            WorkflowExpression.Validate(__workflow_bodydATAsOACTIONcOMMENTS, nameof(bodydATAsOACTIONcOMMENTS), required: false);
+            var __workflow_bodydATAsOACTIONfINALDATE = bodydATAsOACTIONfINALDATE == null ? null : WorkflowExpression.Compile(bodydATAsOACTIONfINALDATE);
+            WorkflowExpression.Validate(__workflow_bodydATAsOACTIONfINALDATE, nameof(bodydATAsOACTIONfINALDATE), required: false);
+            var __workflow_bodydATAsOACTIONfROMDATE = bodydATAsOACTIONfROMDATE == null ? null : WorkflowExpression.Compile(bodydATAsOACTIONfROMDATE);
+            WorkflowExpression.Validate(__workflow_bodydATAsOACTIONfROMDATE, nameof(bodydATAsOACTIONfROMDATE), required: false);
+            var __workflow_bodydATAsOACTIONorderedBy = bodydATAsOACTIONorderedBy == null ? null : WorkflowExpression.Compile(bodydATAsOACTIONorderedBy);
+            WorkflowExpression.Validate(__workflow_bodydATAsOACTIONorderedBy, nameof(bodydATAsOACTIONorderedBy), required: false);
+            var __workflow_bodydATAsOACTIONorderedByContact = bodydATAsOACTIONorderedByContact == null ? null : WorkflowExpression.Compile(bodydATAsOACTIONorderedByContact);
+            WorkflowExpression.Validate(__workflow_bodydATAsOACTIONorderedByContact, nameof(bodydATAsOACTIONorderedByContact), required: false);
+            var __workflow_bodydATAsOACTIONpriority = bodydATAsOACTIONpriority == null ? null : WorkflowExpression.Compile(bodydATAsOACTIONpriority);
+            WorkflowExpression.Validate(__workflow_bodydATAsOACTIONpriority, nameof(bodydATAsOACTIONpriority), required: false);
+            var __workflow_bodydATAsOACTIONproject = bodydATAsOACTIONproject == null ? null : WorkflowExpression.Compile(bodydATAsOACTIONproject);
+            WorkflowExpression.Validate(__workflow_bodydATAsOACTIONproject, nameof(bodydATAsOACTIONproject), required: false);
+            var __workflow_bodydATAsOACTIONrEMARKS = bodydATAsOACTIONrEMARKS == null ? null : WorkflowExpression.Compile(bodydATAsOACTIONrEMARKS);
+            WorkflowExpression.Validate(__workflow_bodydATAsOACTIONrEMARKS, nameof(bodydATAsOACTIONrEMARKS), required: false);
+            var __workflow_bodydATAsOACTIONtRDR = bodydATAsOACTIONtRDR == null ? null : WorkflowExpression.Compile(bodydATAsOACTIONtRDR);
+            WorkflowExpression.Validate(__workflow_bodydATAsOACTIONtRDR, nameof(bodydATAsOACTIONtRDR), required: false);
+            var __workflow_bodydATAsOACTIONtRNDATE = bodydATAsOACTIONtRNDATE == null ? null : WorkflowExpression.Compile(bodydATAsOACTIONtRNDATE);
+            WorkflowExpression.Validate(__workflow_bodydATAsOACTIONtRNDATE, nameof(bodydATAsOACTIONtRNDATE), required: false);
+            var __workflow_bodydATAxTRDOCDATA = bodydATAxTRDOCDATA == null ? null : WorkflowExpression.Compile(bodydATAxTRDOCDATA);
+            WorkflowExpression.Validate(__workflow_bodydATAxTRDOCDATA, nameof(bodydATAxTRDOCDATA), required: false);
+            var __workflow_bodyfORM = bodyfORM == null ? null : WorkflowExpression.Compile(bodyfORM);
+            WorkflowExpression.Validate(__workflow_bodyfORM, nameof(bodyfORM), required: false);
+            var __workflow_bodykEY = bodykEY == null ? null : WorkflowExpression.Compile(bodykEY);
+            WorkflowExpression.Validate(__workflow_bodykEY, nameof(bodykEY), required: false);
             return new DeferredBodyAction<SetData200response>(() =>
             {
                 var apiCallPath = "/setSotask";
@@ -3368,83 +3432,83 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 var dATAObjectpropCount = 0;
                 var sOACTIONObject = new JObject();
                 var sOACTIONObjectpropCount = 0;
-                if (bodydATAsOACTIONoperator != null)
+                if (__workflow_bodydATAsOACTIONoperator != null)
                 {
-                    sOACTIONObject["ACTOR"] = ExpressionConverter.ConvertO(bodydATAsOACTIONoperator);
+                    sOACTIONObject["ACTOR"] = ExpressionConverter.ConvertO(__workflow_bodydATAsOACTIONoperator);
                     sOACTIONObjectpropCount++;
                 }
 
-                if (bodydATAsOACTIONoperatorContact != null)
+                if (__workflow_bodydATAsOACTIONoperatorContact != null)
                 {
-                    sOACTIONObject["ACTPRSN"] = ExpressionConverter.ConvertO(bodydATAsOACTIONoperatorContact);
+                    sOACTIONObject["ACTPRSN"] = ExpressionConverter.ConvertO(__workflow_bodydATAsOACTIONoperatorContact);
                     sOACTIONObjectpropCount++;
                 }
 
-                if (bodydATAsOACTIONaCTSTATUS != null)
+                if (__workflow_bodydATAsOACTIONaCTSTATUS != null)
                 {
-                    sOACTIONObject["ACTSTATUS"] = ExpressionConverter.ConvertO(bodydATAsOACTIONaCTSTATUS);
+                    sOACTIONObject["ACTSTATUS"] = ExpressionConverter.ConvertO(__workflow_bodydATAsOACTIONaCTSTATUS);
                     sOACTIONObjectpropCount++;
                 }
 
-                if (bodydATAsOACTIONcOMMENTS != null)
+                if (__workflow_bodydATAsOACTIONcOMMENTS != null)
                 {
-                    sOACTIONObject["COMMENTS"] = ExpressionConverter.ConvertO(bodydATAsOACTIONcOMMENTS);
+                    sOACTIONObject["COMMENTS"] = ExpressionConverter.ConvertO(__workflow_bodydATAsOACTIONcOMMENTS);
                     sOACTIONObjectpropCount++;
                 }
 
-                if (bodydATAsOACTIONfINALDATE != null)
+                if (__workflow_bodydATAsOACTIONfINALDATE != null)
                 {
-                    sOACTIONObject["FINALDATE"] = ExpressionConverter.ConvertO(bodydATAsOACTIONfINALDATE);
+                    sOACTIONObject["FINALDATE"] = ExpressionConverter.ConvertO(__workflow_bodydATAsOACTIONfINALDATE);
                     sOACTIONObjectpropCount++;
                 }
 
-                if (bodydATAsOACTIONfROMDATE != null)
+                if (__workflow_bodydATAsOACTIONfROMDATE != null)
                 {
-                    sOACTIONObject["FROMDATE"] = ExpressionConverter.ConvertO(bodydATAsOACTIONfROMDATE);
+                    sOACTIONObject["FROMDATE"] = ExpressionConverter.ConvertO(__workflow_bodydATAsOACTIONfROMDATE);
                     sOACTIONObjectpropCount++;
                 }
 
-                if (bodydATAsOACTIONorderedBy != null)
+                if (__workflow_bodydATAsOACTIONorderedBy != null)
                 {
-                    sOACTIONObject["ORDEREDBY"] = ExpressionConverter.ConvertO(bodydATAsOACTIONorderedBy);
+                    sOACTIONObject["ORDEREDBY"] = ExpressionConverter.ConvertO(__workflow_bodydATAsOACTIONorderedBy);
                     sOACTIONObjectpropCount++;
                 }
 
-                if (bodydATAsOACTIONorderedByContact != null)
+                if (__workflow_bodydATAsOACTIONorderedByContact != null)
                 {
-                    sOACTIONObject["ORDPRSN"] = ExpressionConverter.ConvertO(bodydATAsOACTIONorderedByContact);
+                    sOACTIONObject["ORDPRSN"] = ExpressionConverter.ConvertO(__workflow_bodydATAsOACTIONorderedByContact);
                     sOACTIONObjectpropCount++;
                 }
 
-                if (bodydATAsOACTIONpriority != null)
+                if (__workflow_bodydATAsOACTIONpriority != null)
                 {
-                    sOACTIONObject["PRIORITY"] = ExpressionConverter.ConvertO(bodydATAsOACTIONpriority);
+                    sOACTIONObject["PRIORITY"] = ExpressionConverter.ConvertO(__workflow_bodydATAsOACTIONpriority);
                     sOACTIONObjectpropCount++;
                 }
 
-                if (bodydATAsOACTIONproject != null)
+                if (__workflow_bodydATAsOACTIONproject != null)
                 {
-                    sOACTIONObject["PRJC"] = ExpressionConverter.ConvertO(bodydATAsOACTIONproject);
+                    sOACTIONObject["PRJC"] = ExpressionConverter.ConvertO(__workflow_bodydATAsOACTIONproject);
                     sOACTIONObjectpropCount++;
                 }
 
-                if (bodydATAsOACTIONrEMARKS != null)
+                if (__workflow_bodydATAsOACTIONrEMARKS != null)
                 {
-                    sOACTIONObject["REMARKS"] = ExpressionConverter.ConvertO(bodydATAsOACTIONrEMARKS);
+                    sOACTIONObject["REMARKS"] = ExpressionConverter.ConvertO(__workflow_bodydATAsOACTIONrEMARKS);
                     sOACTIONObjectpropCount++;
                 }
 
                 sOACTIONObjectpropCount++;
-                sOACTIONObject["SERIES"] = ExpressionConverter.ConvertO(bodydATAsOACTIONsERIES);
-                if (bodydATAsOACTIONtRDR != null)
+                sOACTIONObject["SERIES"] = ExpressionConverter.ConvertO(__workflow_bodydATAsOACTIONsERIES);
+                if (__workflow_bodydATAsOACTIONtRDR != null)
                 {
-                    sOACTIONObject["TRDR"] = ExpressionConverter.ConvertO(bodydATAsOACTIONtRDR);
+                    sOACTIONObject["TRDR"] = ExpressionConverter.ConvertO(__workflow_bodydATAsOACTIONtRDR);
                     sOACTIONObjectpropCount++;
                 }
 
-                if (bodydATAsOACTIONtRNDATE != null)
+                if (__workflow_bodydATAsOACTIONtRNDATE != null)
                 {
-                    sOACTIONObject["TRNDATE"] = ExpressionConverter.ConvertO(bodydATAsOACTIONtRNDATE);
+                    sOACTIONObject["TRNDATE"] = ExpressionConverter.ConvertO(__workflow_bodydATAsOACTIONtRNDATE);
                     sOACTIONObjectpropCount++;
                 }
 
@@ -3454,9 +3518,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                     dATAObjectpropCount++;
                 }
 
-                if (bodydATAxTRDOCDATA != null)
+                if (__workflow_bodydATAxTRDOCDATA != null)
                 {
-                    dATAObject["XTRDOCDATA"] = ExpressionConverter.ConvertO(bodydATAxTRDOCDATA);
+                    dATAObject["XTRDOCDATA"] = ExpressionConverter.ConvertO(__workflow_bodydATAxTRDOCDATA);
                     dATAObjectpropCount++;
                 }
 
@@ -3466,15 +3530,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                     bodypropCount++;
                 }
 
-                if (bodyfORM != null)
+                if (__workflow_bodyfORM != null)
                 {
-                    body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                    body["FORM"] = ExpressionConverter.ConvertO(__workflow_bodyfORM);
                     bodypropCount++;
                 }
 
-                if (bodykEY != null)
+                if (__workflow_bodykEY != null)
                 {
-                    body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                    body["KEY"] = ExpressionConverter.ConvertO(__workflow_bodykEY);
                     bodypropCount++;
                 }
 
@@ -3494,31 +3558,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        [WorkflowExpressionFactory(nameof(__BuildSetSupplier))]
-        public IBodyWorkflowAction<SetData200response> SetSupplier([WorkflowExpression] Func<string> bodyvaluesUPPLIERcODE, [WorkflowExpression] Func<string> bodyvaluesUPPLIERnAME, [WorkflowExpression] Func<bodyvaluesUPBANKACCInputItem[]> bodyvaluesUPBANKACC = null, [WorkflowExpression] Func<string> bodyvaluesUPPLIERaDDRESS = null, [WorkflowExpression] Func<string> bodyvaluesUPPLIERaFM = null, [WorkflowExpression] Func<string> bodyvaluesUPPLIERcITY = null, [WorkflowExpression] Func<string> bodyvaluesUPPLIERdISTRICT = null, [WorkflowExpression] Func<string> bodyvaluesUPPLIEReMAIL = null, [WorkflowExpression] Func<string> bodyvaluesUPPLIERfAX = null, [WorkflowExpression] Func<string> bodyvaluesUPPLIERiRSDATA = null, [WorkflowExpression] Func<string> bodyvaluesUPPLIERjOBTYPETRD = null, [WorkflowExpression] Func<string> bodyvaluesUPPLIERpHONE01 = null, [WorkflowExpression] Func<string> bodyvaluesUPPLIERrEMARKS = null, [WorkflowExpression] Func<string> bodyvaluesUPPLIERzIP = null, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null)
+        public IBodyWorkflowAction<SetData200response> SetSupplier(Expression<Func<string>> bodyvaluesUPPLIERcODE, Expression<Func<string>> bodyvaluesUPPLIERnAME, Expression<Func<bodyvaluesUPBANKACCInputItem[]>> bodyvaluesUPBANKACC = null, Expression<Func<string>> bodyvaluesUPPLIERaDDRESS = null, Expression<Func<string>> bodyvaluesUPPLIERaFM = null, Expression<Func<string>> bodyvaluesUPPLIERcITY = null, Expression<Func<string>> bodyvaluesUPPLIERdISTRICT = null, Expression<Func<string>> bodyvaluesUPPLIEReMAIL = null, Expression<Func<string>> bodyvaluesUPPLIERfAX = null, Expression<Func<string>> bodyvaluesUPPLIERiRSDATA = null, Expression<Func<string>> bodyvaluesUPPLIERjOBTYPETRD = null, Expression<Func<string>> bodyvaluesUPPLIERpHONE01 = null, Expression<Func<string>> bodyvaluesUPPLIERrEMARKS = null, Expression<Func<string>> bodyvaluesUPPLIERzIP = null, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SetData200response> __BuildSetSupplier(WorkflowExpression<string> bodyvaluesUPPLIERcODE, WorkflowExpression<string> bodyvaluesUPPLIERnAME, WorkflowExpression<bodyvaluesUPBANKACCInputItem[]> bodyvaluesUPBANKACC = null, WorkflowExpression<string> bodyvaluesUPPLIERaDDRESS = null, WorkflowExpression<string> bodyvaluesUPPLIERaFM = null, WorkflowExpression<string> bodyvaluesUPPLIERcITY = null, WorkflowExpression<string> bodyvaluesUPPLIERdISTRICT = null, WorkflowExpression<string> bodyvaluesUPPLIEReMAIL = null, WorkflowExpression<string> bodyvaluesUPPLIERfAX = null, WorkflowExpression<string> bodyvaluesUPPLIERiRSDATA = null, WorkflowExpression<string> bodyvaluesUPPLIERjOBTYPETRD = null, WorkflowExpression<string> bodyvaluesUPPLIERpHONE01 = null, WorkflowExpression<string> bodyvaluesUPPLIERrEMARKS = null, WorkflowExpression<string> bodyvaluesUPPLIERzIP = null, WorkflowExpression<string> bodyfORM = null, WorkflowExpression<string> bodykEY = null)
-        {
-            WorkflowExpression.Validate(bodyvaluesUPPLIERcODE, nameof(bodyvaluesUPPLIERcODE), required: true);
-            WorkflowExpression.Validate(bodyvaluesUPPLIERnAME, nameof(bodyvaluesUPPLIERnAME), required: true);
-            WorkflowExpression.Validate(bodyvaluesUPBANKACC, nameof(bodyvaluesUPBANKACC), required: false);
-            WorkflowExpression.Validate(bodyvaluesUPPLIERaDDRESS, nameof(bodyvaluesUPPLIERaDDRESS), required: false);
-            WorkflowExpression.Validate(bodyvaluesUPPLIERaFM, nameof(bodyvaluesUPPLIERaFM), required: false);
-            WorkflowExpression.Validate(bodyvaluesUPPLIERcITY, nameof(bodyvaluesUPPLIERcITY), required: false);
-            WorkflowExpression.Validate(bodyvaluesUPPLIERdISTRICT, nameof(bodyvaluesUPPLIERdISTRICT), required: false);
-            WorkflowExpression.Validate(bodyvaluesUPPLIEReMAIL, nameof(bodyvaluesUPPLIEReMAIL), required: false);
-            WorkflowExpression.Validate(bodyvaluesUPPLIERfAX, nameof(bodyvaluesUPPLIERfAX), required: false);
-            WorkflowExpression.Validate(bodyvaluesUPPLIERiRSDATA, nameof(bodyvaluesUPPLIERiRSDATA), required: false);
-            WorkflowExpression.Validate(bodyvaluesUPPLIERjOBTYPETRD, nameof(bodyvaluesUPPLIERjOBTYPETRD), required: false);
-            WorkflowExpression.Validate(bodyvaluesUPPLIERpHONE01, nameof(bodyvaluesUPPLIERpHONE01), required: false);
-            WorkflowExpression.Validate(bodyvaluesUPPLIERrEMARKS, nameof(bodyvaluesUPPLIERrEMARKS), required: false);
-            WorkflowExpression.Validate(bodyvaluesUPPLIERzIP, nameof(bodyvaluesUPPLIERzIP), required: false);
-            WorkflowExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
-            WorkflowExpression.Validate(bodykEY, nameof(bodykEY), required: false);
+            var __workflow_bodyvaluesUPPLIERcODE = bodyvaluesUPPLIERcODE == null ? null : WorkflowExpression.Compile(bodyvaluesUPPLIERcODE);
+            WorkflowExpression.Validate(__workflow_bodyvaluesUPPLIERcODE, nameof(bodyvaluesUPPLIERcODE), required: true);
+            var __workflow_bodyvaluesUPPLIERnAME = bodyvaluesUPPLIERnAME == null ? null : WorkflowExpression.Compile(bodyvaluesUPPLIERnAME);
+            WorkflowExpression.Validate(__workflow_bodyvaluesUPPLIERnAME, nameof(bodyvaluesUPPLIERnAME), required: true);
+            var __workflow_bodyvaluesUPBANKACC = bodyvaluesUPBANKACC == null ? null : WorkflowExpression.Compile(bodyvaluesUPBANKACC);
+            WorkflowExpression.Validate(__workflow_bodyvaluesUPBANKACC, nameof(bodyvaluesUPBANKACC), required: false);
+            var __workflow_bodyvaluesUPPLIERaDDRESS = bodyvaluesUPPLIERaDDRESS == null ? null : WorkflowExpression.Compile(bodyvaluesUPPLIERaDDRESS);
+            WorkflowExpression.Validate(__workflow_bodyvaluesUPPLIERaDDRESS, nameof(bodyvaluesUPPLIERaDDRESS), required: false);
+            var __workflow_bodyvaluesUPPLIERaFM = bodyvaluesUPPLIERaFM == null ? null : WorkflowExpression.Compile(bodyvaluesUPPLIERaFM);
+            WorkflowExpression.Validate(__workflow_bodyvaluesUPPLIERaFM, nameof(bodyvaluesUPPLIERaFM), required: false);
+            var __workflow_bodyvaluesUPPLIERcITY = bodyvaluesUPPLIERcITY == null ? null : WorkflowExpression.Compile(bodyvaluesUPPLIERcITY);
+            WorkflowExpression.Validate(__workflow_bodyvaluesUPPLIERcITY, nameof(bodyvaluesUPPLIERcITY), required: false);
+            var __workflow_bodyvaluesUPPLIERdISTRICT = bodyvaluesUPPLIERdISTRICT == null ? null : WorkflowExpression.Compile(bodyvaluesUPPLIERdISTRICT);
+            WorkflowExpression.Validate(__workflow_bodyvaluesUPPLIERdISTRICT, nameof(bodyvaluesUPPLIERdISTRICT), required: false);
+            var __workflow_bodyvaluesUPPLIEReMAIL = bodyvaluesUPPLIEReMAIL == null ? null : WorkflowExpression.Compile(bodyvaluesUPPLIEReMAIL);
+            WorkflowExpression.Validate(__workflow_bodyvaluesUPPLIEReMAIL, nameof(bodyvaluesUPPLIEReMAIL), required: false);
+            var __workflow_bodyvaluesUPPLIERfAX = bodyvaluesUPPLIERfAX == null ? null : WorkflowExpression.Compile(bodyvaluesUPPLIERfAX);
+            WorkflowExpression.Validate(__workflow_bodyvaluesUPPLIERfAX, nameof(bodyvaluesUPPLIERfAX), required: false);
+            var __workflow_bodyvaluesUPPLIERiRSDATA = bodyvaluesUPPLIERiRSDATA == null ? null : WorkflowExpression.Compile(bodyvaluesUPPLIERiRSDATA);
+            WorkflowExpression.Validate(__workflow_bodyvaluesUPPLIERiRSDATA, nameof(bodyvaluesUPPLIERiRSDATA), required: false);
+            var __workflow_bodyvaluesUPPLIERjOBTYPETRD = bodyvaluesUPPLIERjOBTYPETRD == null ? null : WorkflowExpression.Compile(bodyvaluesUPPLIERjOBTYPETRD);
+            WorkflowExpression.Validate(__workflow_bodyvaluesUPPLIERjOBTYPETRD, nameof(bodyvaluesUPPLIERjOBTYPETRD), required: false);
+            var __workflow_bodyvaluesUPPLIERpHONE01 = bodyvaluesUPPLIERpHONE01 == null ? null : WorkflowExpression.Compile(bodyvaluesUPPLIERpHONE01);
+            WorkflowExpression.Validate(__workflow_bodyvaluesUPPLIERpHONE01, nameof(bodyvaluesUPPLIERpHONE01), required: false);
+            var __workflow_bodyvaluesUPPLIERrEMARKS = bodyvaluesUPPLIERrEMARKS == null ? null : WorkflowExpression.Compile(bodyvaluesUPPLIERrEMARKS);
+            WorkflowExpression.Validate(__workflow_bodyvaluesUPPLIERrEMARKS, nameof(bodyvaluesUPPLIERrEMARKS), required: false);
+            var __workflow_bodyvaluesUPPLIERzIP = bodyvaluesUPPLIERzIP == null ? null : WorkflowExpression.Compile(bodyvaluesUPPLIERzIP);
+            WorkflowExpression.Validate(__workflow_bodyvaluesUPPLIERzIP, nameof(bodyvaluesUPPLIERzIP), required: false);
+            var __workflow_bodyfORM = bodyfORM == null ? null : WorkflowExpression.Compile(bodyfORM);
+            WorkflowExpression.Validate(__workflow_bodyfORM, nameof(bodyfORM), required: false);
+            var __workflow_bodykEY = bodykEY == null ? null : WorkflowExpression.Compile(bodykEY);
+            WorkflowExpression.Validate(__workflow_bodykEY, nameof(bodykEY), required: false);
             return new DeferredBodyAction<SetData200response>(() =>
             {
                 var apiCallPath = "/setSupplier";
@@ -3531,81 +3604,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 bodypropCount++;
                 var dATAObject = new JObject();
                 var dATAObjectpropCount = 0;
-                if (bodyvaluesUPBANKACC != null)
+                if (__workflow_bodyvaluesUPBANKACC != null)
                 {
-                    dATAObject["SUPBANKACC"] = ExpressionConverter.ConvertO(bodyvaluesUPBANKACC);
+                    dATAObject["SUPBANKACC"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesUPBANKACC);
                     dATAObjectpropCount++;
                 }
 
                 var sUPPLIERObject = new JObject();
                 var sUPPLIERObjectpropCount = 0;
-                if (bodyvaluesUPPLIERaDDRESS != null)
+                if (__workflow_bodyvaluesUPPLIERaDDRESS != null)
                 {
-                    sUPPLIERObject["ADDRESS"] = ExpressionConverter.ConvertO(bodyvaluesUPPLIERaDDRESS);
+                    sUPPLIERObject["ADDRESS"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesUPPLIERaDDRESS);
                     sUPPLIERObjectpropCount++;
                 }
 
-                if (bodyvaluesUPPLIERaFM != null)
+                if (__workflow_bodyvaluesUPPLIERaFM != null)
                 {
-                    sUPPLIERObject["AFM"] = ExpressionConverter.ConvertO(bodyvaluesUPPLIERaFM);
+                    sUPPLIERObject["AFM"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesUPPLIERaFM);
                     sUPPLIERObjectpropCount++;
                 }
 
-                if (bodyvaluesUPPLIERcITY != null)
+                if (__workflow_bodyvaluesUPPLIERcITY != null)
                 {
-                    sUPPLIERObject["CITY"] = ExpressionConverter.ConvertO(bodyvaluesUPPLIERcITY);
-                    sUPPLIERObjectpropCount++;
-                }
-
-                sUPPLIERObjectpropCount++;
-                sUPPLIERObject["CODE"] = ExpressionConverter.ConvertO(bodyvaluesUPPLIERcODE);
-                if (bodyvaluesUPPLIERdISTRICT != null)
-                {
-                    sUPPLIERObject["DISTRICT"] = ExpressionConverter.ConvertO(bodyvaluesUPPLIERdISTRICT);
-                    sUPPLIERObjectpropCount++;
-                }
-
-                if (bodyvaluesUPPLIEReMAIL != null)
-                {
-                    sUPPLIERObject["EMAIL"] = ExpressionConverter.ConvertO(bodyvaluesUPPLIEReMAIL);
-                    sUPPLIERObjectpropCount++;
-                }
-
-                if (bodyvaluesUPPLIERfAX != null)
-                {
-                    sUPPLIERObject["FAX"] = ExpressionConverter.ConvertO(bodyvaluesUPPLIERfAX);
-                    sUPPLIERObjectpropCount++;
-                }
-
-                if (bodyvaluesUPPLIERiRSDATA != null)
-                {
-                    sUPPLIERObject["IRSDATA"] = ExpressionConverter.ConvertO(bodyvaluesUPPLIERiRSDATA);
-                    sUPPLIERObjectpropCount++;
-                }
-
-                if (bodyvaluesUPPLIERjOBTYPETRD != null)
-                {
-                    sUPPLIERObject["JOBTYPETRD"] = ExpressionConverter.ConvertO(bodyvaluesUPPLIERjOBTYPETRD);
+                    sUPPLIERObject["CITY"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesUPPLIERcITY);
                     sUPPLIERObjectpropCount++;
                 }
 
                 sUPPLIERObjectpropCount++;
-                sUPPLIERObject["NAME"] = ExpressionConverter.ConvertO(bodyvaluesUPPLIERnAME);
-                if (bodyvaluesUPPLIERpHONE01 != null)
+                sUPPLIERObject["CODE"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesUPPLIERcODE);
+                if (__workflow_bodyvaluesUPPLIERdISTRICT != null)
                 {
-                    sUPPLIERObject["PHONE01"] = ExpressionConverter.ConvertO(bodyvaluesUPPLIERpHONE01);
+                    sUPPLIERObject["DISTRICT"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesUPPLIERdISTRICT);
                     sUPPLIERObjectpropCount++;
                 }
 
-                if (bodyvaluesUPPLIERrEMARKS != null)
+                if (__workflow_bodyvaluesUPPLIEReMAIL != null)
                 {
-                    sUPPLIERObject["REMARKS"] = ExpressionConverter.ConvertO(bodyvaluesUPPLIERrEMARKS);
+                    sUPPLIERObject["EMAIL"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesUPPLIEReMAIL);
                     sUPPLIERObjectpropCount++;
                 }
 
-                if (bodyvaluesUPPLIERzIP != null)
+                if (__workflow_bodyvaluesUPPLIERfAX != null)
                 {
-                    sUPPLIERObject["ZIP"] = ExpressionConverter.ConvertO(bodyvaluesUPPLIERzIP);
+                    sUPPLIERObject["FAX"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesUPPLIERfAX);
+                    sUPPLIERObjectpropCount++;
+                }
+
+                if (__workflow_bodyvaluesUPPLIERiRSDATA != null)
+                {
+                    sUPPLIERObject["IRSDATA"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesUPPLIERiRSDATA);
+                    sUPPLIERObjectpropCount++;
+                }
+
+                if (__workflow_bodyvaluesUPPLIERjOBTYPETRD != null)
+                {
+                    sUPPLIERObject["JOBTYPETRD"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesUPPLIERjOBTYPETRD);
+                    sUPPLIERObjectpropCount++;
+                }
+
+                sUPPLIERObjectpropCount++;
+                sUPPLIERObject["NAME"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesUPPLIERnAME);
+                if (__workflow_bodyvaluesUPPLIERpHONE01 != null)
+                {
+                    sUPPLIERObject["PHONE01"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesUPPLIERpHONE01);
+                    sUPPLIERObjectpropCount++;
+                }
+
+                if (__workflow_bodyvaluesUPPLIERrEMARKS != null)
+                {
+                    sUPPLIERObject["REMARKS"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesUPPLIERrEMARKS);
+                    sUPPLIERObjectpropCount++;
+                }
+
+                if (__workflow_bodyvaluesUPPLIERzIP != null)
+                {
+                    sUPPLIERObject["ZIP"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesUPPLIERzIP);
                     sUPPLIERObjectpropCount++;
                 }
 
@@ -3621,15 +3694,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                     bodypropCount++;
                 }
 
-                if (bodyfORM != null)
+                if (__workflow_bodyfORM != null)
                 {
-                    body["FORM"] = ExpressionConverter.ConvertO(bodyfORM);
+                    body["FORM"] = ExpressionConverter.ConvertO(__workflow_bodyfORM);
                     bodypropCount++;
                 }
 
-                if (bodykEY != null)
+                if (__workflow_bodykEY != null)
                 {
-                    body["KEY"] = ExpressionConverter.ConvertO(bodykEY);
+                    body["KEY"] = ExpressionConverter.ConvertO(__workflow_bodykEY);
                     bodypropCount++;
                 }
 
@@ -3651,18 +3724,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
     public class Soft1Triggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildWebhook))]
-        public IWorkflowTrigger Webhook([WorkflowExpression] Func<bodyObjectInput> bodyObject,[WorkflowExpression] Func<string> bodycondition = null,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger Webhook(Expression<Func<bodyObjectInput>> bodyObject, Expression<Func<string>> bodycondition = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildWebhook(WorkflowExpression<bodyObjectInput> bodyObject,WorkflowExpression<string> bodycondition = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodyObject, nameof(bodyObject), required: true);
-            WorkflowExpression.Validate(bodycondition, nameof(bodycondition), required: false);
+            var __workflow_bodyObject = bodyObject == null ? null : WorkflowExpression.Compile(bodyObject);
+            WorkflowExpression.Validate(__workflow_bodyObject, nameof(bodyObject), required: true);
+            var __workflow_bodycondition = bodycondition == null ? null : WorkflowExpression.Compile(bodycondition);
+            WorkflowExpression.Validate(__workflow_bodycondition, nameof(bodycondition), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/webhook";
@@ -3671,9 +3738,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 callPayload.Queries["op"] = Convert.ToString("create");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodycondition != null)
+                if (__workflow_bodycondition != null)
                 {
-                    body["condition"] = ExpressionConverter.ConvertO(bodycondition);
+                    body["condition"] = ExpressionConverter.ConvertO(__workflow_bodycondition);
                     bodypropCount++;
                 }
 
@@ -3690,7 +3757,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 body["event"] = "ONPOST";
                 bodypropCount++;
                 bodypropCount++;
-                body["object"] = ExpressionConverter.ConvertO(bodyObject);
+                body["object"] = ExpressionConverter.ConvertO(__workflow_bodyObject);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -3700,17 +3767,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildWebhookOnDelete))]
-        public IWorkflowTrigger WebhookOnDelete([WorkflowExpression] Func<bodyObjectInput> bodyObject,[WorkflowExpression] Func<string> bodycondition = null,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WebhookOnDelete(Expression<Func<bodyObjectInput>> bodyObject, Expression<Func<string>> bodycondition = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildWebhookOnDelete(WorkflowExpression<bodyObjectInput> bodyObject,WorkflowExpression<string> bodycondition = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodyObject, nameof(bodyObject), required: true);
-            WorkflowExpression.Validate(bodycondition, nameof(bodycondition), required: false);
+            var __workflow_bodyObject = bodyObject == null ? null : WorkflowExpression.Compile(bodyObject);
+            WorkflowExpression.Validate(__workflow_bodyObject, nameof(bodyObject), required: true);
+            var __workflow_bodycondition = bodycondition == null ? null : WorkflowExpression.Compile(bodycondition);
+            WorkflowExpression.Validate(__workflow_bodycondition, nameof(bodycondition), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/webhook/onDelete";
@@ -3719,9 +3781,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 callPayload.Queries["op"] = Convert.ToString("create");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodycondition != null)
+                if (__workflow_bodycondition != null)
                 {
-                    body["condition"] = ExpressionConverter.ConvertO(bodycondition);
+                    body["condition"] = ExpressionConverter.ConvertO(__workflow_bodycondition);
                     bodypropCount++;
                 }
 
@@ -3738,7 +3800,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 body["event"] = "ONDELETE";
                 bodypropCount++;
                 bodypropCount++;
-                body["object"] = ExpressionConverter.ConvertO(bodyObject);
+                body["object"] = ExpressionConverter.ConvertO(__workflow_bodyObject);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -3748,17 +3810,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildWebhookOnInsert))]
-        public IWorkflowTrigger WebhookOnInsert([WorkflowExpression] Func<bodyObjectInput> bodyObject,[WorkflowExpression] Func<string> bodycondition = null,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WebhookOnInsert(Expression<Func<bodyObjectInput>> bodyObject, Expression<Func<string>> bodycondition = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildWebhookOnInsert(WorkflowExpression<bodyObjectInput> bodyObject,WorkflowExpression<string> bodycondition = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodyObject, nameof(bodyObject), required: true);
-            WorkflowExpression.Validate(bodycondition, nameof(bodycondition), required: false);
+            var __workflow_bodyObject = bodyObject == null ? null : WorkflowExpression.Compile(bodyObject);
+            WorkflowExpression.Validate(__workflow_bodyObject, nameof(bodyObject), required: true);
+            var __workflow_bodycondition = bodycondition == null ? null : WorkflowExpression.Compile(bodycondition);
+            WorkflowExpression.Validate(__workflow_bodycondition, nameof(bodycondition), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/webhook/onInsert";
@@ -3767,9 +3824,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 callPayload.Queries["op"] = Convert.ToString("create");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodycondition != null)
+                if (__workflow_bodycondition != null)
                 {
-                    body["condition"] = ExpressionConverter.ConvertO(bodycondition);
+                    body["condition"] = ExpressionConverter.ConvertO(__workflow_bodycondition);
                     bodypropCount++;
                 }
 
@@ -3786,7 +3843,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 body["event"] = "ONINSERT";
                 bodypropCount++;
                 bodypropCount++;
-                body["object"] = ExpressionConverter.ConvertO(bodyObject);
+                body["object"] = ExpressionConverter.ConvertO(__workflow_bodyObject);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -3796,17 +3853,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildWebhookOnUpdate))]
-        public IWorkflowTrigger WebhookOnUpdate([WorkflowExpression] Func<bodyObjectInput> bodyObject,[WorkflowExpression] Func<string> bodycondition = null,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WebhookOnUpdate(Expression<Func<bodyObjectInput>> bodyObject, Expression<Func<string>> bodycondition = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildWebhookOnUpdate(WorkflowExpression<bodyObjectInput> bodyObject,WorkflowExpression<string> bodycondition = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodyObject, nameof(bodyObject), required: true);
-            WorkflowExpression.Validate(bodycondition, nameof(bodycondition), required: false);
+            var __workflow_bodyObject = bodyObject == null ? null : WorkflowExpression.Compile(bodyObject);
+            WorkflowExpression.Validate(__workflow_bodyObject, nameof(bodyObject), required: true);
+            var __workflow_bodycondition = bodycondition == null ? null : WorkflowExpression.Compile(bodycondition);
+            WorkflowExpression.Validate(__workflow_bodycondition, nameof(bodycondition), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/webhook/onUpdate";
@@ -3815,9 +3867,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 callPayload.Queries["op"] = Convert.ToString("create");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodycondition != null)
+                if (__workflow_bodycondition != null)
                 {
-                    body["condition"] = ExpressionConverter.ConvertO(bodycondition);
+                    body["condition"] = ExpressionConverter.ConvertO(__workflow_bodycondition);
                     bodypropCount++;
                 }
 
@@ -3834,7 +3886,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 body["event"] = "ONUPDATE";
                 bodypropCount++;
                 bodypropCount++;
-                body["object"] = ExpressionConverter.ConvertO(bodyObject);
+                body["object"] = ExpressionConverter.ConvertO(__workflow_bodyObject);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

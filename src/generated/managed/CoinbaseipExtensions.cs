@@ -1,30 +1,23 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coinbaseip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class CoinbaseipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "coinbaseip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetSpotPrice))]
-        public IBodyWorkflowAction<GetSpotPriceResponse> GetSpotPrice([WorkflowExpression] Func<string> currencyPair)
+        public IBodyWorkflowAction<GetSpotPriceResponse> GetSpotPrice(Expression<Func<string>> currencyPair)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetSpotPriceResponse> __BuildGetSpotPrice(WorkflowExpression<string> currencyPair)
-        {
-            WorkflowExpression.Validate(currencyPair, nameof(currencyPair), required: true);
+            var __workflow_currencyPair = currencyPair == null ? null : WorkflowExpression.Compile(currencyPair);
+            WorkflowExpression.Validate(__workflow_currencyPair, nameof(currencyPair), required: true);
             return new DeferredBodyAction<GetSpotPriceResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/prices/{0}/spot", ExpressionConverter.ConvertWithUrlEncoding(currencyPair, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/prices/{0}/spot", ExpressionConverter.ConvertWithUrlEncoding(__workflow_currencyPair, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetSpotPriceResponse>(callPayload);
@@ -41,22 +34,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coinbaseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "coinbaseip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetExchangeRate))]
-        public IBodyWorkflowAction<GetExchangeRateResponse> GetExchangeRate([WorkflowExpression] Func<string> currency)
+        public IBodyWorkflowAction<GetExchangeRateResponse> GetExchangeRate(Expression<Func<string>> currency)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetExchangeRateResponse> __BuildGetExchangeRate(WorkflowExpression<string> currency)
-        {
-            WorkflowExpression.Validate(currency, nameof(currency), required: true);
+            var __workflow_currency = currency == null ? null : WorkflowExpression.Compile(currency);
+            WorkflowExpression.Validate(__workflow_currency, nameof(currency), required: true);
             return new DeferredBodyAction<GetExchangeRateResponse>(() =>
             {
                 var apiCallPath = "/exchange-rates";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["currency"] = ExpressionConverter.Convert(currency);
+                callPayload.Queries["currency"] = ExpressionConverter.Convert(__workflow_currency);
                 return new ApiConnectionAction<GetExchangeRateResponse>(callPayload);
             });
         }

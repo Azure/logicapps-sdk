@@ -1,12 +1,12 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myacclaro
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class MyacclaroActions([ConnectionName] string connectionId)
     {
@@ -20,19 +20,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myacclaro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myacclaro")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteAnOrder))]
-        public IBodyWorkflowAction<string> DeleteAnOrder([WorkflowExpression] Func<string> orderid)
+        public IBodyWorkflowAction<string> DeleteAnOrder(Expression<Func<string>> orderid)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildDeleteAnOrder(WorkflowExpression<string> orderid)
-        {
-            WorkflowExpression.Validate(orderid, nameof(orderid), required: true);
+            var __workflow_orderid = orderid == null ? null : WorkflowExpression.Compile(orderid);
+            WorkflowExpression.Validate(__workflow_orderid, nameof(orderid), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/orders/{0}", ExpressionConverter.ConvertWithUrlEncoding(orderid, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/orders/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_orderid, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);

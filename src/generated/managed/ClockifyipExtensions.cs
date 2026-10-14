@@ -1,74 +1,69 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clockifyip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class ClockifyipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clockifyip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetClients))]
-        public IBodyWorkflowAction<GetClientsV1ResponseItem[]> GetClients([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<bool> archived = null)
+        public IBodyWorkflowAction<GetClientsV1ResponseItem[]> GetClients(Expression<Func<string>> workspaceId, Expression<Func<bool>> archived = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetClientsV1ResponseItem[]> __BuildGetClients(WorkflowExpression<string> workspaceId, WorkflowExpression<bool> archived = null)
-        {
-            WorkflowExpression.Validate(workspaceId, nameof(workspaceId), required: true);
-            WorkflowExpression.Validate(archived, nameof(archived), required: false);
+            var __workflow_workspaceId = workspaceId == null ? null : WorkflowExpression.Compile(workspaceId);
+            WorkflowExpression.Validate(__workflow_workspaceId, nameof(workspaceId), required: true);
+            var __workflow_archived = archived == null ? null : WorkflowExpression.Compile(archived);
+            WorkflowExpression.Validate(__workflow_archived, nameof(archived), required: false);
             return new DeferredBodyAction<GetClientsV1ResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/workspaces/{0}/clients", ExpressionConverter.ConvertWithUrlEncoding(workspaceId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/workspaces/{0}/clients", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (archived != null)
-                    callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                if (__workflow_archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
                 return new ApiConnectionAction<GetClientsV1ResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clockifyip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetTimeEntriesForUser))]
-        public IBodyWorkflowAction<GetTimeEntriesForUserV1ResponseItem[]> GetTimeEntriesForUser([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> start = null, [WorkflowExpression] Func<string> end = null, [WorkflowExpression] Func<string> project = null, [WorkflowExpression] Func<string> task = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
+        public IBodyWorkflowAction<GetTimeEntriesForUserV1ResponseItem[]> GetTimeEntriesForUser(Expression<Func<string>> workspaceId, Expression<Func<string>> userId, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> project = null, Expression<Func<string>> task = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetTimeEntriesForUserV1ResponseItem[]> __BuildGetTimeEntriesForUser(WorkflowExpression<string> workspaceId, WorkflowExpression<string> userId, WorkflowExpression<string> start = null, WorkflowExpression<string> end = null, WorkflowExpression<string> project = null, WorkflowExpression<string> task = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null)
-        {
-            WorkflowExpression.Validate(workspaceId, nameof(workspaceId), required: true);
-            WorkflowExpression.Validate(userId, nameof(userId), required: true);
-            WorkflowExpression.Validate(start, nameof(start), required: false);
-            WorkflowExpression.Validate(end, nameof(end), required: false);
-            WorkflowExpression.Validate(project, nameof(project), required: false);
-            WorkflowExpression.Validate(task, nameof(task), required: false);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
-            WorkflowExpression.Validate(pageSize, nameof(pageSize), required: false);
+            var __workflow_workspaceId = workspaceId == null ? null : WorkflowExpression.Compile(workspaceId);
+            WorkflowExpression.Validate(__workflow_workspaceId, nameof(workspaceId), required: true);
+            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
+            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
+            var __workflow_start = start == null ? null : WorkflowExpression.Compile(start);
+            WorkflowExpression.Validate(__workflow_start, nameof(start), required: false);
+            var __workflow_end = end == null ? null : WorkflowExpression.Compile(end);
+            WorkflowExpression.Validate(__workflow_end, nameof(end), required: false);
+            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
+            WorkflowExpression.Validate(__workflow_project, nameof(project), required: false);
+            var __workflow_task = task == null ? null : WorkflowExpression.Compile(task);
+            WorkflowExpression.Validate(__workflow_task, nameof(task), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
+            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<GetTimeEntriesForUserV1ResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/workspaces/{0}/user/{1}/time-entries", ExpressionConverter.ConvertWithUrlEncoding(workspaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/workspaces/{0}/user/{1}/time-entries", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (start != null)
-                    callPayload.Queries["start"] = ExpressionConverter.Convert(start);
-                if (end != null)
-                    callPayload.Queries["end"] = ExpressionConverter.Convert(end);
-                if (project != null)
-                    callPayload.Queries["project"] = ExpressionConverter.Convert(project);
-                if (task != null)
-                    callPayload.Queries["task"] = ExpressionConverter.Convert(task);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-                if (pageSize != null)
-                    callPayload.Queries["page-size"] = ExpressionConverter.Convert(pageSize);
+                if (__workflow_start != null)
+                    callPayload.Queries["start"] = ExpressionConverter.Convert(__workflow_start);
+                if (__workflow_end != null)
+                    callPayload.Queries["end"] = ExpressionConverter.Convert(__workflow_end);
+                if (__workflow_project != null)
+                    callPayload.Queries["project"] = ExpressionConverter.Convert(__workflow_project);
+                if (__workflow_task != null)
+                    callPayload.Queries["task"] = ExpressionConverter.Convert(__workflow_task);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_pageSize != null)
+                    callPayload.Queries["page-size"] = ExpressionConverter.Convert(__workflow_pageSize);
                 return new ApiConnectionAction<GetTimeEntriesForUserV1ResponseItem[]>(callPayload);
             });
         }

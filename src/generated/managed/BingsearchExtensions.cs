@@ -1,48 +1,45 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingsearch
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class BingsearchActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bingsearch")]
-        [WorkflowExpressionFactory(nameof(__BuildGetNews))]
-        public IBodyWorkflowAction<NewsArticle[]> GetNews([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<mktInput> mkt = null, [WorkflowExpression] Func<safeSearchInput> safeSearch = null, [WorkflowExpression] Func<string> count = null, [WorkflowExpression] Func<string> offset = null)
+        public IBodyWorkflowAction<NewsArticle[]> GetNews(Expression<Func<string>> q, Expression<Func<mktInput>> mkt = null, Expression<Func<safeSearchInput>> safeSearch = null, Expression<Func<string>> count = null, Expression<Func<string>> offset = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<NewsArticle[]> __BuildGetNews(WorkflowExpression<string> q, WorkflowExpression<mktInput> mkt = null, WorkflowExpression<safeSearchInput> safeSearch = null, WorkflowExpression<string> count = null, WorkflowExpression<string> offset = null)
-        {
-            WorkflowExpression.Validate(q, nameof(q), required: true);
-            WorkflowExpression.Validate(mkt, nameof(mkt), required: false);
-            WorkflowExpression.Validate(safeSearch, nameof(safeSearch), required: false);
-            WorkflowExpression.Validate(count, nameof(count), required: false);
-            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
+            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
+            var __workflow_mkt = mkt == null ? null : WorkflowExpression.Compile(mkt);
+            WorkflowExpression.Validate(__workflow_mkt, nameof(mkt), required: false);
+            var __workflow_safeSearch = safeSearch == null ? null : WorkflowExpression.Compile(safeSearch);
+            WorkflowExpression.Validate(__workflow_safeSearch, nameof(safeSearch), required: false);
+            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
+            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
             return new DeferredBodyAction<NewsArticle[]>(() =>
             {
                 var apiCallPath = "/news/search";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
                 callPayload.Queries["mkt"] = Convert.ToString("en-US");
-                if (mkt != null)
-                    callPayload.Queries["mkt"] = ExpressionConverter.Convert(mkt);
+                if (__workflow_mkt != null)
+                    callPayload.Queries["mkt"] = ExpressionConverter.Convert(__workflow_mkt);
                 callPayload.Queries["safeSearch"] = Convert.ToString("Moderate");
-                if (safeSearch != null)
-                    callPayload.Queries["safeSearch"] = ExpressionConverter.Convert(safeSearch);
+                if (__workflow_safeSearch != null)
+                    callPayload.Queries["safeSearch"] = ExpressionConverter.Convert(__workflow_safeSearch);
                 callPayload.Queries["count"] = Convert.ToString("20");
-                if (count != null)
-                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-                if (offset != null)
-                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<NewsArticle[]>(callPayload);
             });
         }
@@ -50,38 +47,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingsearch
 
     public class BingsearchTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildTrigNewNews))]
-        public IBodyWorkflowTrigger<NewsArticle[]> TrigNewNews([WorkflowExpression] Func<string> q,[WorkflowExpression] Func<mktInput> mkt = null,[WorkflowExpression] Func<safeSearchInput> safeSearch = null,[WorkflowExpression] Func<string> count = null,[WorkflowExpression] Func<string> offset = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewsArticle[]> TrigNewNews(Expression<Func<string>> q, Expression<Func<mktInput>> mkt = null, Expression<Func<safeSearchInput>> safeSearch = null, Expression<Func<string>> count = null, Expression<Func<string>> offset = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<NewsArticle[]> __BuildTrigNewNews(WorkflowExpression<string> q,WorkflowExpression<mktInput> mkt = null,WorkflowExpression<safeSearchInput> safeSearch = null,WorkflowExpression<string> count = null,WorkflowExpression<string> offset = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(q, nameof(q), required: true);
-            WorkflowExpression.Validate(mkt, nameof(mkt), required: false);
-            WorkflowExpression.Validate(safeSearch, nameof(safeSearch), required: false);
-            WorkflowExpression.Validate(count, nameof(count), required: false);
-            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
+            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
+            var __workflow_mkt = mkt == null ? null : WorkflowExpression.Compile(mkt);
+            WorkflowExpression.Validate(__workflow_mkt, nameof(mkt), required: false);
+            var __workflow_safeSearch = safeSearch == null ? null : WorkflowExpression.Compile(safeSearch);
+            WorkflowExpression.Validate(__workflow_safeSearch, nameof(safeSearch), required: false);
+            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
+            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
             return new DeferredBodyTrigger<NewsArticle[]>(() =>
             {
                 var apiCallPath = "/trigger/news/search";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
                 callPayload.Queries["mkt"] = Convert.ToString("en-US");
-                if (mkt != null)
-                    callPayload.Queries["mkt"] = ExpressionConverter.Convert(mkt);
+                if (__workflow_mkt != null)
+                    callPayload.Queries["mkt"] = ExpressionConverter.Convert(__workflow_mkt);
                 callPayload.Queries["safeSearch"] = Convert.ToString("Moderate");
-                if (safeSearch != null)
-                    callPayload.Queries["safeSearch"] = ExpressionConverter.Convert(safeSearch);
+                if (__workflow_safeSearch != null)
+                    callPayload.Queries["safeSearch"] = ExpressionConverter.Convert(__workflow_safeSearch);
                 callPayload.Queries["count"] = Convert.ToString("20");
-                if (count != null)
-                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-                if (offset != null)
-                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionTrigger<NewsArticle[]>(callPayload, recurrence: recurrence);
             });
         }

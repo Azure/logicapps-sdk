@@ -1,12 +1,12 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Decentralandip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class DecentralandipActions([ConnectionName] string connectionId)
     {
@@ -20,20 +20,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Decentralandip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "decentralandip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetParcelDetails))]
-        public IBodyWorkflowAction<GetParcelDetailsResponse> GetParcelDetails([WorkflowExpression] Func<string> x, [WorkflowExpression] Func<string> y)
+        public IBodyWorkflowAction<GetParcelDetailsResponse> GetParcelDetails(Expression<Func<string>> x, Expression<Func<string>> y)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetParcelDetailsResponse> __BuildGetParcelDetails(WorkflowExpression<string> x, WorkflowExpression<string> y)
-        {
-            WorkflowExpression.Validate(x, nameof(x), required: true);
-            WorkflowExpression.Validate(y, nameof(y), required: true);
+            var __workflow_x = x == null ? null : WorkflowExpression.Compile(x);
+            WorkflowExpression.Validate(__workflow_x, nameof(x), required: true);
+            var __workflow_y = y == null ? null : WorkflowExpression.Compile(y);
+            WorkflowExpression.Validate(__workflow_y, nameof(y), required: true);
             return new DeferredBodyAction<GetParcelDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/parcels/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(x, 1), ExpressionConverter.ConvertWithUrlEncoding(y, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/parcels/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_x, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_y, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetParcelDetailsResponse>(callPayload);
@@ -41,59 +36,56 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Decentralandip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "decentralandip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetParcelMap))]
-        public IBodyWorkflowAction<GetParcelMapResponse> GetParcelMap([WorkflowExpression] Func<string> x, [WorkflowExpression] Func<string> y, [WorkflowExpression] Func<int> width, [WorkflowExpression] Func<int> height, [WorkflowExpression] Func<int> size, [WorkflowExpression] Func<bool> publication)
+        public IBodyWorkflowAction<GetParcelMapResponse> GetParcelMap(Expression<Func<string>> x, Expression<Func<string>> y, Expression<Func<int>> width, Expression<Func<int>> height, Expression<Func<int>> size, Expression<Func<bool>> publication)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetParcelMapResponse> __BuildGetParcelMap(WorkflowExpression<string> x, WorkflowExpression<string> y, WorkflowExpression<int> width, WorkflowExpression<int> height, WorkflowExpression<int> size, WorkflowExpression<bool> publication)
-        {
-            WorkflowExpression.Validate(x, nameof(x), required: true);
-            WorkflowExpression.Validate(y, nameof(y), required: true);
-            WorkflowExpression.Validate(width, nameof(width), required: true);
-            WorkflowExpression.Validate(height, nameof(height), required: true);
-            WorkflowExpression.Validate(size, nameof(size), required: true);
-            WorkflowExpression.Validate(publication, nameof(publication), required: true);
+            var __workflow_x = x == null ? null : WorkflowExpression.Compile(x);
+            WorkflowExpression.Validate(__workflow_x, nameof(x), required: true);
+            var __workflow_y = y == null ? null : WorkflowExpression.Compile(y);
+            WorkflowExpression.Validate(__workflow_y, nameof(y), required: true);
+            var __workflow_width = width == null ? null : WorkflowExpression.Compile(width);
+            WorkflowExpression.Validate(__workflow_width, nameof(width), required: true);
+            var __workflow_height = height == null ? null : WorkflowExpression.Compile(height);
+            WorkflowExpression.Validate(__workflow_height, nameof(height), required: true);
+            var __workflow_size = size == null ? null : WorkflowExpression.Compile(size);
+            WorkflowExpression.Validate(__workflow_size, nameof(size), required: true);
+            var __workflow_publication = publication == null ? null : WorkflowExpression.Compile(publication);
+            WorkflowExpression.Validate(__workflow_publication, nameof(publication), required: true);
             return new DeferredBodyAction<GetParcelMapResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/parcels/{0}/{1}/map.png", ExpressionConverter.ConvertWithUrlEncoding(x, 1), ExpressionConverter.ConvertWithUrlEncoding(y, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/parcels/{0}/{1}/map.png", ExpressionConverter.ConvertWithUrlEncoding(__workflow_x, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_y, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["width"] = ExpressionConverter.Convert(width);
-                callPayload.Queries["height"] = ExpressionConverter.Convert(height);
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-                callPayload.Queries["publication"] = ExpressionConverter.Convert(publication);
+                callPayload.Queries["width"] = ExpressionConverter.Convert(__workflow_width);
+                callPayload.Queries["height"] = ExpressionConverter.Convert(__workflow_height);
+                callPayload.Queries["size"] = ExpressionConverter.Convert(__workflow_size);
+                callPayload.Queries["publication"] = ExpressionConverter.Convert(__workflow_publication);
                 return new ApiConnectionAction<GetParcelMapResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "decentralandip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetId))]
-        public IBodyWorkflowAction<GetTilesResponse> GetId([WorkflowExpression] Func<string> x1, [WorkflowExpression] Func<string> x2, [WorkflowExpression] Func<string> y1, [WorkflowExpression] Func<string> y2, [WorkflowExpression] Func<string> include)
+        public IBodyWorkflowAction<GetTilesResponse> GetId(Expression<Func<string>> x1, Expression<Func<string>> x2, Expression<Func<string>> y1, Expression<Func<string>> y2, Expression<Func<string>> include)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetTilesResponse> __BuildGetId(WorkflowExpression<string> x1, WorkflowExpression<string> x2, WorkflowExpression<string> y1, WorkflowExpression<string> y2, WorkflowExpression<string> include)
-        {
-            WorkflowExpression.Validate(x1, nameof(x1), required: true);
-            WorkflowExpression.Validate(x2, nameof(x2), required: true);
-            WorkflowExpression.Validate(y1, nameof(y1), required: true);
-            WorkflowExpression.Validate(y2, nameof(y2), required: true);
-            WorkflowExpression.Validate(include, nameof(include), required: true);
+            var __workflow_x1 = x1 == null ? null : WorkflowExpression.Compile(x1);
+            WorkflowExpression.Validate(__workflow_x1, nameof(x1), required: true);
+            var __workflow_x2 = x2 == null ? null : WorkflowExpression.Compile(x2);
+            WorkflowExpression.Validate(__workflow_x2, nameof(x2), required: true);
+            var __workflow_y1 = y1 == null ? null : WorkflowExpression.Compile(y1);
+            WorkflowExpression.Validate(__workflow_y1, nameof(y1), required: true);
+            var __workflow_y2 = y2 == null ? null : WorkflowExpression.Compile(y2);
+            WorkflowExpression.Validate(__workflow_y2, nameof(y2), required: true);
+            var __workflow_include = include == null ? null : WorkflowExpression.Compile(include);
+            WorkflowExpression.Validate(__workflow_include, nameof(include), required: true);
             return new DeferredBodyAction<GetTilesResponse>(() =>
             {
                 var apiCallPath = "/tiles";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["x1"] = ExpressionConverter.Convert(x1);
-                callPayload.Queries["x2"] = ExpressionConverter.Convert(x2);
-                callPayload.Queries["y1"] = ExpressionConverter.Convert(y1);
-                callPayload.Queries["y2"] = ExpressionConverter.Convert(y2);
-                callPayload.Queries["include"] = ExpressionConverter.Convert(include);
+                callPayload.Queries["x1"] = ExpressionConverter.Convert(__workflow_x1);
+                callPayload.Queries["x2"] = ExpressionConverter.Convert(__workflow_x2);
+                callPayload.Queries["y1"] = ExpressionConverter.Convert(__workflow_y1);
+                callPayload.Queries["y2"] = ExpressionConverter.Convert(__workflow_y2);
+                callPayload.Queries["include"] = ExpressionConverter.Convert(__workflow_include);
                 return new ApiConnectionAction<GetTilesResponse>(callPayload);
             });
         }

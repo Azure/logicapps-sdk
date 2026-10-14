@@ -1,83 +1,67 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturesandbo
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class RecordedfuturesandboActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturesandbo")]
-        [WorkflowExpressionFactory(nameof(__BuildGetReport))]
-        public IBodyWorkflowAction<GetReportResponse> GetReport([WorkflowExpression] Func<string> sandboxToken, [WorkflowExpression] Func<string> sampleID)
+        public IBodyWorkflowAction<GetReportResponse> GetReport(Expression<Func<string>> sandboxToken, Expression<Func<string>> sampleID)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetReportResponse> __BuildGetReport(WorkflowExpression<string> sandboxToken, WorkflowExpression<string> sampleID)
-        {
-            WorkflowExpression.Validate(sandboxToken, nameof(sandboxToken), required: true);
-            WorkflowExpression.Validate(sampleID, nameof(sampleID), required: true);
+            var __workflow_sandboxToken = sandboxToken == null ? null : WorkflowExpression.Compile(sandboxToken);
+            WorkflowExpression.Validate(__workflow_sandboxToken, nameof(sandboxToken), required: true);
+            var __workflow_sampleID = sampleID == null ? null : WorkflowExpression.Compile(sampleID);
+            WorkflowExpression.Validate(__workflow_sampleID, nameof(sampleID), required: true);
             return new DeferredBodyAction<GetReportResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/samples/{0}/overview.json", ExpressionConverter.ConvertWithUrlEncoding(sampleID, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/samples/{0}/overview.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sampleID, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["SandboxToken"] = ExpressionConverter.Convert(sandboxToken);
+                callPayload.Headers["SandboxToken"] = ExpressionConverter.Convert(__workflow_sandboxToken);
                 return new ApiConnectionAction<GetReportResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturesandbo")]
-        [WorkflowExpressionFactory(nameof(__BuildGetSummary))]
-        public IBodyWorkflowAction<GetSummaryResponse> GetSummary([WorkflowExpression] Func<string> sandboxToken, [WorkflowExpression] Func<string> sampleID)
+        public IBodyWorkflowAction<GetSummaryResponse> GetSummary(Expression<Func<string>> sandboxToken, Expression<Func<string>> sampleID)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetSummaryResponse> __BuildGetSummary(WorkflowExpression<string> sandboxToken, WorkflowExpression<string> sampleID)
-        {
-            WorkflowExpression.Validate(sandboxToken, nameof(sandboxToken), required: true);
-            WorkflowExpression.Validate(sampleID, nameof(sampleID), required: true);
+            var __workflow_sandboxToken = sandboxToken == null ? null : WorkflowExpression.Compile(sandboxToken);
+            WorkflowExpression.Validate(__workflow_sandboxToken, nameof(sandboxToken), required: true);
+            var __workflow_sampleID = sampleID == null ? null : WorkflowExpression.Compile(sampleID);
+            WorkflowExpression.Validate(__workflow_sampleID, nameof(sampleID), required: true);
             return new DeferredBodyAction<GetSummaryResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/samples/{0}", ExpressionConverter.ConvertWithUrlEncoding(sampleID, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/samples/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sampleID, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["SandboxToken"] = ExpressionConverter.Convert(sandboxToken);
+                callPayload.Headers["SandboxToken"] = ExpressionConverter.Convert(__workflow_sandboxToken);
                 return new ApiConnectionAction<GetSummaryResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturesandbo")]
-        [WorkflowExpressionFactory(nameof(__BuildSubmitUrlSample))]
-        public IBodyWorkflowAction<SubmitUrlSampleResponse> SubmitUrlSample([WorkflowExpression] Func<string> sandboxToken, [WorkflowExpression] Func<string> bodyurl = null)
+        public IBodyWorkflowAction<SubmitUrlSampleResponse> SubmitUrlSample(Expression<Func<string>> sandboxToken, Expression<Func<string>> bodyurl = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SubmitUrlSampleResponse> __BuildSubmitUrlSample(WorkflowExpression<string> sandboxToken, WorkflowExpression<string> bodyurl = null)
-        {
-            WorkflowExpression.Validate(sandboxToken, nameof(sandboxToken), required: true);
-            WorkflowExpression.Validate(bodyurl, nameof(bodyurl), required: false);
+            var __workflow_sandboxToken = sandboxToken == null ? null : WorkflowExpression.Compile(sandboxToken);
+            WorkflowExpression.Validate(__workflow_sandboxToken, nameof(sandboxToken), required: true);
+            var __workflow_bodyurl = bodyurl == null ? null : WorkflowExpression.Compile(bodyurl);
+            WorkflowExpression.Validate(__workflow_bodyurl, nameof(bodyurl), required: false);
             return new DeferredBodyAction<SubmitUrlSampleResponse>(() =>
             {
                 var apiCallPath = "/samples/url";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["SandboxToken"] = ExpressionConverter.Convert(sandboxToken);
+                callPayload.Headers["SandboxToken"] = ExpressionConverter.Convert(__workflow_sandboxToken);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyurl != null)
+                if (__workflow_bodyurl != null)
                 {
-                    body["url"] = ExpressionConverter.ConvertO(bodyurl);
+                    body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
                     bodypropCount++;
                 }
 
@@ -91,25 +75,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturesandbo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturesandbo")]
-        [WorkflowExpressionFactory(nameof(__BuildSubmitFileSample))]
-        public IBodyWorkflowAction<SubmitFileSampleResponse> SubmitFileSample([WorkflowExpression] Func<string> sandboxToken, [WorkflowExpression] Func<object> file, [WorkflowExpression] Func<string> password = null, [WorkflowExpression] Func<string> userTags = null)
+        public IBodyWorkflowAction<SubmitFileSampleResponse> SubmitFileSample(Expression<Func<string>> sandboxToken, Expression<Func<object>> file, Expression<Func<string>> password = null, Expression<Func<string>> userTags = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SubmitFileSampleResponse> __BuildSubmitFileSample(WorkflowExpression<string> sandboxToken, WorkflowExpression<object> file, WorkflowExpression<string> password = null, WorkflowExpression<string> userTags = null)
-        {
-            WorkflowExpression.Validate(sandboxToken, nameof(sandboxToken), required: true);
-            WorkflowExpression.Validate(file, nameof(file), required: true);
-            WorkflowExpression.Validate(password, nameof(password), required: false);
-            WorkflowExpression.Validate(userTags, nameof(userTags), required: false);
+            var __workflow_sandboxToken = sandboxToken == null ? null : WorkflowExpression.Compile(sandboxToken);
+            WorkflowExpression.Validate(__workflow_sandboxToken, nameof(sandboxToken), required: true);
+            var __workflow_file = file == null ? null : WorkflowExpression.Compile(file);
+            WorkflowExpression.Validate(__workflow_file, nameof(file), required: true);
+            var __workflow_password = password == null ? null : WorkflowExpression.Compile(password);
+            WorkflowExpression.Validate(__workflow_password, nameof(password), required: false);
+            var __workflow_userTags = userTags == null ? null : WorkflowExpression.Compile(userTags);
+            WorkflowExpression.Validate(__workflow_userTags, nameof(userTags), required: false);
             return new DeferredBodyAction<SubmitFileSampleResponse>(() =>
             {
                 var apiCallPath = "/samples/file";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["SandboxToken"] = ExpressionConverter.Convert(sandboxToken);
+                callPayload.Headers["SandboxToken"] = ExpressionConverter.Convert(__workflow_sandboxToken);
                 return new ApiConnectionAction<SubmitFileSampleResponse>(callPayload);
             });
         }

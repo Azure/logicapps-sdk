@@ -1,31 +1,28 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdf
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class IlovepdfActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdf")]
-        [WorkflowExpressionFactory(nameof(__BuildCompress))]
-        public IBodyWorkflowAction<CompressResponse> Compress([WorkflowExpression] Func<bodyfileSourceInput> bodyfileSource, [WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<string> bodyfile = null, [WorkflowExpression] Func<string> bodyfileUrl = null, [WorkflowExpression] Func<bodycompressionLevelInput> bodycompressionLevel = null)
+        public IBodyWorkflowAction<CompressResponse> Compress(Expression<Func<bodyfileSourceInput>> bodyfileSource, Expression<Func<string>> bodyfileName, Expression<Func<string>> bodyfile = null, Expression<Func<string>> bodyfileUrl = null, Expression<Func<bodycompressionLevelInput>> bodycompressionLevel = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CompressResponse> __BuildCompress(WorkflowExpression<bodyfileSourceInput> bodyfileSource, WorkflowExpression<string> bodyfileName, WorkflowExpression<string> bodyfile = null, WorkflowExpression<string> bodyfileUrl = null, WorkflowExpression<bodycompressionLevelInput> bodycompressionLevel = null)
-        {
-            WorkflowExpression.Validate(bodyfileSource, nameof(bodyfileSource), required: true);
-            WorkflowExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
-            WorkflowExpression.Validate(bodyfile, nameof(bodyfile), required: false);
-            WorkflowExpression.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
-            WorkflowExpression.Validate(bodycompressionLevel, nameof(bodycompressionLevel), required: false);
+            var __workflow_bodyfileSource = bodyfileSource == null ? null : WorkflowExpression.Compile(bodyfileSource);
+            WorkflowExpression.Validate(__workflow_bodyfileSource, nameof(bodyfileSource), required: true);
+            var __workflow_bodyfileName = bodyfileName == null ? null : WorkflowExpression.Compile(bodyfileName);
+            WorkflowExpression.Validate(__workflow_bodyfileName, nameof(bodyfileName), required: true);
+            var __workflow_bodyfile = bodyfile == null ? null : WorkflowExpression.Compile(bodyfile);
+            WorkflowExpression.Validate(__workflow_bodyfile, nameof(bodyfile), required: false);
+            var __workflow_bodyfileUrl = bodyfileUrl == null ? null : WorkflowExpression.Compile(bodyfileUrl);
+            WorkflowExpression.Validate(__workflow_bodyfileUrl, nameof(bodyfileUrl), required: false);
+            var __workflow_bodycompressionLevel = bodycompressionLevel == null ? null : WorkflowExpression.Compile(bodycompressionLevel);
+            WorkflowExpression.Validate(__workflow_bodycompressionLevel, nameof(bodycompressionLevel), required: false);
             return new DeferredBodyAction<CompressResponse>(() =>
             {
                 var apiCallPath = "/compress";
@@ -34,24 +31,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdf
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["file_source"] = ExpressionConverter.ConvertO(bodyfileSource);
+                body["file_source"] = ExpressionConverter.ConvertO(__workflow_bodyfileSource);
                 bodypropCount++;
-                body["file_name"] = ExpressionConverter.ConvertO(bodyfileName);
-                if (bodyfile != null)
+                body["file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
+                if (__workflow_bodyfile != null)
                 {
-                    body["file"] = ExpressionConverter.ConvertO(bodyfile);
+                    body["file"] = ExpressionConverter.ConvertO(__workflow_bodyfile);
                     bodypropCount++;
                 }
 
-                if (bodyfileUrl != null)
+                if (__workflow_bodyfileUrl != null)
                 {
-                    body["file_url"] = ExpressionConverter.ConvertO(bodyfileUrl);
+                    body["file_url"] = ExpressionConverter.ConvertO(__workflow_bodyfileUrl);
                     bodypropCount++;
                 }
 
-                if (bodycompressionLevel != null)
+                if (__workflow_bodycompressionLevel != null)
                 {
-                    body["compression_level"] = ExpressionConverter.ConvertO(bodycompressionLevel);
+                    body["compression_level"] = ExpressionConverter.ConvertO(__workflow_bodycompressionLevel);
                     bodypropCount++;
                 }
 
@@ -65,24 +62,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdf")]
-        [WorkflowExpressionFactory(nameof(__BuildSplit))]
-        public IBodyWorkflowAction<SplitResponse> Split([WorkflowExpression] Func<bodyfileSourceInput> bodyfileSource, [WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<bodysplitModeInput> bodysplitMode, [WorkflowExpression] Func<string> bodyfile = null, [WorkflowExpression] Func<string> bodyfileUrl = null, [WorkflowExpression] Func<string> bodyranges = null, [WorkflowExpression] Func<string> bodyfixedRange = null, [WorkflowExpression] Func<string> bodyremovePages = null, [WorkflowExpression] Func<bodymergeAfterInput> bodymergeAfter = null)
+        public IBodyWorkflowAction<SplitResponse> Split(Expression<Func<bodyfileSourceInput>> bodyfileSource, Expression<Func<string>> bodyfileName, Expression<Func<bodysplitModeInput>> bodysplitMode, Expression<Func<string>> bodyfile = null, Expression<Func<string>> bodyfileUrl = null, Expression<Func<string>> bodyranges = null, Expression<Func<string>> bodyfixedRange = null, Expression<Func<string>> bodyremovePages = null, Expression<Func<bodymergeAfterInput>> bodymergeAfter = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SplitResponse> __BuildSplit(WorkflowExpression<bodyfileSourceInput> bodyfileSource, WorkflowExpression<string> bodyfileName, WorkflowExpression<bodysplitModeInput> bodysplitMode, WorkflowExpression<string> bodyfile = null, WorkflowExpression<string> bodyfileUrl = null, WorkflowExpression<string> bodyranges = null, WorkflowExpression<string> bodyfixedRange = null, WorkflowExpression<string> bodyremovePages = null, WorkflowExpression<bodymergeAfterInput> bodymergeAfter = null)
-        {
-            WorkflowExpression.Validate(bodyfileSource, nameof(bodyfileSource), required: true);
-            WorkflowExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
-            WorkflowExpression.Validate(bodysplitMode, nameof(bodysplitMode), required: true);
-            WorkflowExpression.Validate(bodyfile, nameof(bodyfile), required: false);
-            WorkflowExpression.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
-            WorkflowExpression.Validate(bodyranges, nameof(bodyranges), required: false);
-            WorkflowExpression.Validate(bodyfixedRange, nameof(bodyfixedRange), required: false);
-            WorkflowExpression.Validate(bodyremovePages, nameof(bodyremovePages), required: false);
-            WorkflowExpression.Validate(bodymergeAfter, nameof(bodymergeAfter), required: false);
+            var __workflow_bodyfileSource = bodyfileSource == null ? null : WorkflowExpression.Compile(bodyfileSource);
+            WorkflowExpression.Validate(__workflow_bodyfileSource, nameof(bodyfileSource), required: true);
+            var __workflow_bodyfileName = bodyfileName == null ? null : WorkflowExpression.Compile(bodyfileName);
+            WorkflowExpression.Validate(__workflow_bodyfileName, nameof(bodyfileName), required: true);
+            var __workflow_bodysplitMode = bodysplitMode == null ? null : WorkflowExpression.Compile(bodysplitMode);
+            WorkflowExpression.Validate(__workflow_bodysplitMode, nameof(bodysplitMode), required: true);
+            var __workflow_bodyfile = bodyfile == null ? null : WorkflowExpression.Compile(bodyfile);
+            WorkflowExpression.Validate(__workflow_bodyfile, nameof(bodyfile), required: false);
+            var __workflow_bodyfileUrl = bodyfileUrl == null ? null : WorkflowExpression.Compile(bodyfileUrl);
+            WorkflowExpression.Validate(__workflow_bodyfileUrl, nameof(bodyfileUrl), required: false);
+            var __workflow_bodyranges = bodyranges == null ? null : WorkflowExpression.Compile(bodyranges);
+            WorkflowExpression.Validate(__workflow_bodyranges, nameof(bodyranges), required: false);
+            var __workflow_bodyfixedRange = bodyfixedRange == null ? null : WorkflowExpression.Compile(bodyfixedRange);
+            WorkflowExpression.Validate(__workflow_bodyfixedRange, nameof(bodyfixedRange), required: false);
+            var __workflow_bodyremovePages = bodyremovePages == null ? null : WorkflowExpression.Compile(bodyremovePages);
+            WorkflowExpression.Validate(__workflow_bodyremovePages, nameof(bodyremovePages), required: false);
+            var __workflow_bodymergeAfter = bodymergeAfter == null ? null : WorkflowExpression.Compile(bodymergeAfter);
+            WorkflowExpression.Validate(__workflow_bodymergeAfter, nameof(bodymergeAfter), required: false);
             return new DeferredBodyAction<SplitResponse>(() =>
             {
                 var apiCallPath = "/split";
@@ -91,44 +90,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdf
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["file_source"] = ExpressionConverter.ConvertO(bodyfileSource);
+                body["file_source"] = ExpressionConverter.ConvertO(__workflow_bodyfileSource);
                 bodypropCount++;
-                body["file_name"] = ExpressionConverter.ConvertO(bodyfileName);
-                if (bodyfile != null)
+                body["file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
+                if (__workflow_bodyfile != null)
                 {
-                    body["file"] = ExpressionConverter.ConvertO(bodyfile);
+                    body["file"] = ExpressionConverter.ConvertO(__workflow_bodyfile);
                     bodypropCount++;
                 }
 
-                if (bodyfileUrl != null)
+                if (__workflow_bodyfileUrl != null)
                 {
-                    body["file_url"] = ExpressionConverter.ConvertO(bodyfileUrl);
+                    body["file_url"] = ExpressionConverter.ConvertO(__workflow_bodyfileUrl);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["split_mode"] = ExpressionConverter.ConvertO(bodysplitMode);
-                if (bodyranges != null)
+                body["split_mode"] = ExpressionConverter.ConvertO(__workflow_bodysplitMode);
+                if (__workflow_bodyranges != null)
                 {
-                    body["ranges"] = ExpressionConverter.ConvertO(bodyranges);
+                    body["ranges"] = ExpressionConverter.ConvertO(__workflow_bodyranges);
                     bodypropCount++;
                 }
 
-                if (bodyfixedRange != null)
+                if (__workflow_bodyfixedRange != null)
                 {
-                    body["fixed_range"] = ExpressionConverter.ConvertO(bodyfixedRange);
+                    body["fixed_range"] = ExpressionConverter.ConvertO(__workflow_bodyfixedRange);
                     bodypropCount++;
                 }
 
-                if (bodyremovePages != null)
+                if (__workflow_bodyremovePages != null)
                 {
-                    body["remove_pages"] = ExpressionConverter.ConvertO(bodyremovePages);
+                    body["remove_pages"] = ExpressionConverter.ConvertO(__workflow_bodyremovePages);
                     bodypropCount++;
                 }
 
-                if (bodymergeAfter != null)
+                if (__workflow_bodymergeAfter != null)
                 {
-                    body["merge_after"] = ExpressionConverter.ConvertO(bodymergeAfter);
+                    body["merge_after"] = ExpressionConverter.ConvertO(__workflow_bodymergeAfter);
                     bodypropCount++;
                 }
 
@@ -142,20 +141,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdf")]
-        [WorkflowExpressionFactory(nameof(__BuildProtect))]
-        public IBodyWorkflowAction<ProtectResponse> Protect([WorkflowExpression] Func<bodyfileSourceInput> bodyfileSource, [WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<string> bodypassword, [WorkflowExpression] Func<string> bodyfile = null, [WorkflowExpression] Func<string> bodyfileUrl = null)
+        public IBodyWorkflowAction<ProtectResponse> Protect(Expression<Func<bodyfileSourceInput>> bodyfileSource, Expression<Func<string>> bodyfileName, Expression<Func<string>> bodypassword, Expression<Func<string>> bodyfile = null, Expression<Func<string>> bodyfileUrl = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ProtectResponse> __BuildProtect(WorkflowExpression<bodyfileSourceInput> bodyfileSource, WorkflowExpression<string> bodyfileName, WorkflowExpression<string> bodypassword, WorkflowExpression<string> bodyfile = null, WorkflowExpression<string> bodyfileUrl = null)
-        {
-            WorkflowExpression.Validate(bodyfileSource, nameof(bodyfileSource), required: true);
-            WorkflowExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
-            WorkflowExpression.Validate(bodypassword, nameof(bodypassword), required: true);
-            WorkflowExpression.Validate(bodyfile, nameof(bodyfile), required: false);
-            WorkflowExpression.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
+            var __workflow_bodyfileSource = bodyfileSource == null ? null : WorkflowExpression.Compile(bodyfileSource);
+            WorkflowExpression.Validate(__workflow_bodyfileSource, nameof(bodyfileSource), required: true);
+            var __workflow_bodyfileName = bodyfileName == null ? null : WorkflowExpression.Compile(bodyfileName);
+            WorkflowExpression.Validate(__workflow_bodyfileName, nameof(bodyfileName), required: true);
+            var __workflow_bodypassword = bodypassword == null ? null : WorkflowExpression.Compile(bodypassword);
+            WorkflowExpression.Validate(__workflow_bodypassword, nameof(bodypassword), required: true);
+            var __workflow_bodyfile = bodyfile == null ? null : WorkflowExpression.Compile(bodyfile);
+            WorkflowExpression.Validate(__workflow_bodyfile, nameof(bodyfile), required: false);
+            var __workflow_bodyfileUrl = bodyfileUrl == null ? null : WorkflowExpression.Compile(bodyfileUrl);
+            WorkflowExpression.Validate(__workflow_bodyfileUrl, nameof(bodyfileUrl), required: false);
             return new DeferredBodyAction<ProtectResponse>(() =>
             {
                 var apiCallPath = "/protect";
@@ -164,23 +161,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdf
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["file_source"] = ExpressionConverter.ConvertO(bodyfileSource);
+                body["file_source"] = ExpressionConverter.ConvertO(__workflow_bodyfileSource);
                 bodypropCount++;
-                body["file_name"] = ExpressionConverter.ConvertO(bodyfileName);
-                if (bodyfile != null)
+                body["file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
+                if (__workflow_bodyfile != null)
                 {
-                    body["file"] = ExpressionConverter.ConvertO(bodyfile);
+                    body["file"] = ExpressionConverter.ConvertO(__workflow_bodyfile);
                     bodypropCount++;
                 }
 
-                if (bodyfileUrl != null)
+                if (__workflow_bodyfileUrl != null)
                 {
-                    body["file_url"] = ExpressionConverter.ConvertO(bodyfileUrl);
+                    body["file_url"] = ExpressionConverter.ConvertO(__workflow_bodyfileUrl);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["password"] = ExpressionConverter.ConvertO(bodypassword);
+                body["password"] = ExpressionConverter.ConvertO(__workflow_bodypassword);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -191,20 +188,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdf")]
-        [WorkflowExpressionFactory(nameof(__BuildPDFtoJPG))]
-        public IBodyWorkflowAction<PDFtoJPGResponse> PDFtoJPG([WorkflowExpression] Func<bodyfileSourceInput> bodyfileSource, [WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<string> bodyfile = null, [WorkflowExpression] Func<string> bodyfileUrl = null, [WorkflowExpression] Func<bodypdfjpgModeInput> bodypdfjpgMode = null)
+        public IBodyWorkflowAction<PDFtoJPGResponse> PDFtoJPG(Expression<Func<bodyfileSourceInput>> bodyfileSource, Expression<Func<string>> bodyfileName, Expression<Func<string>> bodyfile = null, Expression<Func<string>> bodyfileUrl = null, Expression<Func<bodypdfjpgModeInput>> bodypdfjpgMode = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PDFtoJPGResponse> __BuildPDFtoJPG(WorkflowExpression<bodyfileSourceInput> bodyfileSource, WorkflowExpression<string> bodyfileName, WorkflowExpression<string> bodyfile = null, WorkflowExpression<string> bodyfileUrl = null, WorkflowExpression<bodypdfjpgModeInput> bodypdfjpgMode = null)
-        {
-            WorkflowExpression.Validate(bodyfileSource, nameof(bodyfileSource), required: true);
-            WorkflowExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
-            WorkflowExpression.Validate(bodyfile, nameof(bodyfile), required: false);
-            WorkflowExpression.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
-            WorkflowExpression.Validate(bodypdfjpgMode, nameof(bodypdfjpgMode), required: false);
+            var __workflow_bodyfileSource = bodyfileSource == null ? null : WorkflowExpression.Compile(bodyfileSource);
+            WorkflowExpression.Validate(__workflow_bodyfileSource, nameof(bodyfileSource), required: true);
+            var __workflow_bodyfileName = bodyfileName == null ? null : WorkflowExpression.Compile(bodyfileName);
+            WorkflowExpression.Validate(__workflow_bodyfileName, nameof(bodyfileName), required: true);
+            var __workflow_bodyfile = bodyfile == null ? null : WorkflowExpression.Compile(bodyfile);
+            WorkflowExpression.Validate(__workflow_bodyfile, nameof(bodyfile), required: false);
+            var __workflow_bodyfileUrl = bodyfileUrl == null ? null : WorkflowExpression.Compile(bodyfileUrl);
+            WorkflowExpression.Validate(__workflow_bodyfileUrl, nameof(bodyfileUrl), required: false);
+            var __workflow_bodypdfjpgMode = bodypdfjpgMode == null ? null : WorkflowExpression.Compile(bodypdfjpgMode);
+            WorkflowExpression.Validate(__workflow_bodypdfjpgMode, nameof(bodypdfjpgMode), required: false);
             return new DeferredBodyAction<PDFtoJPGResponse>(() =>
             {
                 var apiCallPath = "/pdftojpg";
@@ -213,24 +208,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdf
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["file_source"] = ExpressionConverter.ConvertO(bodyfileSource);
+                body["file_source"] = ExpressionConverter.ConvertO(__workflow_bodyfileSource);
                 bodypropCount++;
-                body["file_name"] = ExpressionConverter.ConvertO(bodyfileName);
-                if (bodyfile != null)
+                body["file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
+                if (__workflow_bodyfile != null)
                 {
-                    body["file"] = ExpressionConverter.ConvertO(bodyfile);
+                    body["file"] = ExpressionConverter.ConvertO(__workflow_bodyfile);
                     bodypropCount++;
                 }
 
-                if (bodyfileUrl != null)
+                if (__workflow_bodyfileUrl != null)
                 {
-                    body["file_url"] = ExpressionConverter.ConvertO(bodyfileUrl);
+                    body["file_url"] = ExpressionConverter.ConvertO(__workflow_bodyfileUrl);
                     bodypropCount++;
                 }
 
-                if (bodypdfjpgMode != null)
+                if (__workflow_bodypdfjpgMode != null)
                 {
-                    body["pdfjpg_mode"] = ExpressionConverter.ConvertO(bodypdfjpgMode);
+                    body["pdfjpg_mode"] = ExpressionConverter.ConvertO(__workflow_bodypdfjpgMode);
                     bodypropCount++;
                 }
 
@@ -244,22 +239,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdf")]
-        [WorkflowExpressionFactory(nameof(__BuildImageToPDF))]
-        public IBodyWorkflowAction<ImageToPDFResponse> ImageToPDF([WorkflowExpression] Func<bodyfileSourceInput> bodyfileSource, [WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<string> bodyfile = null, [WorkflowExpression] Func<string> bodyfileUrl = null, [WorkflowExpression] Func<string> bodyorientation = null, [WorkflowExpression] Func<string> bodymargin = null, [WorkflowExpression] Func<bodypagesizeInput> bodypagesize = null)
+        public IBodyWorkflowAction<ImageToPDFResponse> ImageToPDF(Expression<Func<bodyfileSourceInput>> bodyfileSource, Expression<Func<string>> bodyfileName, Expression<Func<string>> bodyfile = null, Expression<Func<string>> bodyfileUrl = null, Expression<Func<string>> bodyorientation = null, Expression<Func<string>> bodymargin = null, Expression<Func<bodypagesizeInput>> bodypagesize = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ImageToPDFResponse> __BuildImageToPDF(WorkflowExpression<bodyfileSourceInput> bodyfileSource, WorkflowExpression<string> bodyfileName, WorkflowExpression<string> bodyfile = null, WorkflowExpression<string> bodyfileUrl = null, WorkflowExpression<string> bodyorientation = null, WorkflowExpression<string> bodymargin = null, WorkflowExpression<bodypagesizeInput> bodypagesize = null)
-        {
-            WorkflowExpression.Validate(bodyfileSource, nameof(bodyfileSource), required: true);
-            WorkflowExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
-            WorkflowExpression.Validate(bodyfile, nameof(bodyfile), required: false);
-            WorkflowExpression.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
-            WorkflowExpression.Validate(bodyorientation, nameof(bodyorientation), required: false);
-            WorkflowExpression.Validate(bodymargin, nameof(bodymargin), required: false);
-            WorkflowExpression.Validate(bodypagesize, nameof(bodypagesize), required: false);
+            var __workflow_bodyfileSource = bodyfileSource == null ? null : WorkflowExpression.Compile(bodyfileSource);
+            WorkflowExpression.Validate(__workflow_bodyfileSource, nameof(bodyfileSource), required: true);
+            var __workflow_bodyfileName = bodyfileName == null ? null : WorkflowExpression.Compile(bodyfileName);
+            WorkflowExpression.Validate(__workflow_bodyfileName, nameof(bodyfileName), required: true);
+            var __workflow_bodyfile = bodyfile == null ? null : WorkflowExpression.Compile(bodyfile);
+            WorkflowExpression.Validate(__workflow_bodyfile, nameof(bodyfile), required: false);
+            var __workflow_bodyfileUrl = bodyfileUrl == null ? null : WorkflowExpression.Compile(bodyfileUrl);
+            WorkflowExpression.Validate(__workflow_bodyfileUrl, nameof(bodyfileUrl), required: false);
+            var __workflow_bodyorientation = bodyorientation == null ? null : WorkflowExpression.Compile(bodyorientation);
+            WorkflowExpression.Validate(__workflow_bodyorientation, nameof(bodyorientation), required: false);
+            var __workflow_bodymargin = bodymargin == null ? null : WorkflowExpression.Compile(bodymargin);
+            WorkflowExpression.Validate(__workflow_bodymargin, nameof(bodymargin), required: false);
+            var __workflow_bodypagesize = bodypagesize == null ? null : WorkflowExpression.Compile(bodypagesize);
+            WorkflowExpression.Validate(__workflow_bodypagesize, nameof(bodypagesize), required: false);
             return new DeferredBodyAction<ImageToPDFResponse>(() =>
             {
                 var apiCallPath = "/jpgtoimg";
@@ -268,36 +263,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdf
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["file_source"] = ExpressionConverter.ConvertO(bodyfileSource);
+                body["file_source"] = ExpressionConverter.ConvertO(__workflow_bodyfileSource);
                 bodypropCount++;
-                body["file_name"] = ExpressionConverter.ConvertO(bodyfileName);
-                if (bodyfile != null)
+                body["file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
+                if (__workflow_bodyfile != null)
                 {
-                    body["file"] = ExpressionConverter.ConvertO(bodyfile);
+                    body["file"] = ExpressionConverter.ConvertO(__workflow_bodyfile);
                     bodypropCount++;
                 }
 
-                if (bodyfileUrl != null)
+                if (__workflow_bodyfileUrl != null)
                 {
-                    body["file_url"] = ExpressionConverter.ConvertO(bodyfileUrl);
+                    body["file_url"] = ExpressionConverter.ConvertO(__workflow_bodyfileUrl);
                     bodypropCount++;
                 }
 
-                if (bodyorientation != null)
+                if (__workflow_bodyorientation != null)
                 {
-                    body["orientation"] = ExpressionConverter.ConvertO(bodyorientation);
+                    body["orientation"] = ExpressionConverter.ConvertO(__workflow_bodyorientation);
                     bodypropCount++;
                 }
 
-                if (bodymargin != null)
+                if (__workflow_bodymargin != null)
                 {
-                    body["margin"] = ExpressionConverter.ConvertO(bodymargin);
+                    body["margin"] = ExpressionConverter.ConvertO(__workflow_bodymargin);
                     bodypropCount++;
                 }
 
-                if (bodypagesize != null)
+                if (__workflow_bodypagesize != null)
                 {
-                    body["pagesize"] = ExpressionConverter.ConvertO(bodypagesize);
+                    body["pagesize"] = ExpressionConverter.ConvertO(__workflow_bodypagesize);
                     bodypropCount++;
                 }
 
@@ -311,21 +306,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdf")]
-        [WorkflowExpressionFactory(nameof(__BuildPDFtoPDFA))]
-        public IBodyWorkflowAction<PDFtoPDFAResponse> PDFtoPDFA([WorkflowExpression] Func<bodyfileSourceInput> bodyfileSource, [WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<string> bodyfile = null, [WorkflowExpression] Func<string> bodyfileUrl = null, [WorkflowExpression] Func<bodyconformanceInput> bodyconformance = null, [WorkflowExpression] Func<bodyallowDowngradeInput> bodyallowDowngrade = null)
+        public IBodyWorkflowAction<PDFtoPDFAResponse> PDFtoPDFA(Expression<Func<bodyfileSourceInput>> bodyfileSource, Expression<Func<string>> bodyfileName, Expression<Func<string>> bodyfile = null, Expression<Func<string>> bodyfileUrl = null, Expression<Func<bodyconformanceInput>> bodyconformance = null, Expression<Func<bodyallowDowngradeInput>> bodyallowDowngrade = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PDFtoPDFAResponse> __BuildPDFtoPDFA(WorkflowExpression<bodyfileSourceInput> bodyfileSource, WorkflowExpression<string> bodyfileName, WorkflowExpression<string> bodyfile = null, WorkflowExpression<string> bodyfileUrl = null, WorkflowExpression<bodyconformanceInput> bodyconformance = null, WorkflowExpression<bodyallowDowngradeInput> bodyallowDowngrade = null)
-        {
-            WorkflowExpression.Validate(bodyfileSource, nameof(bodyfileSource), required: true);
-            WorkflowExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
-            WorkflowExpression.Validate(bodyfile, nameof(bodyfile), required: false);
-            WorkflowExpression.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
-            WorkflowExpression.Validate(bodyconformance, nameof(bodyconformance), required: false);
-            WorkflowExpression.Validate(bodyallowDowngrade, nameof(bodyallowDowngrade), required: false);
+            var __workflow_bodyfileSource = bodyfileSource == null ? null : WorkflowExpression.Compile(bodyfileSource);
+            WorkflowExpression.Validate(__workflow_bodyfileSource, nameof(bodyfileSource), required: true);
+            var __workflow_bodyfileName = bodyfileName == null ? null : WorkflowExpression.Compile(bodyfileName);
+            WorkflowExpression.Validate(__workflow_bodyfileName, nameof(bodyfileName), required: true);
+            var __workflow_bodyfile = bodyfile == null ? null : WorkflowExpression.Compile(bodyfile);
+            WorkflowExpression.Validate(__workflow_bodyfile, nameof(bodyfile), required: false);
+            var __workflow_bodyfileUrl = bodyfileUrl == null ? null : WorkflowExpression.Compile(bodyfileUrl);
+            WorkflowExpression.Validate(__workflow_bodyfileUrl, nameof(bodyfileUrl), required: false);
+            var __workflow_bodyconformance = bodyconformance == null ? null : WorkflowExpression.Compile(bodyconformance);
+            WorkflowExpression.Validate(__workflow_bodyconformance, nameof(bodyconformance), required: false);
+            var __workflow_bodyallowDowngrade = bodyallowDowngrade == null ? null : WorkflowExpression.Compile(bodyallowDowngrade);
+            WorkflowExpression.Validate(__workflow_bodyallowDowngrade, nameof(bodyallowDowngrade), required: false);
             return new DeferredBodyAction<PDFtoPDFAResponse>(() =>
             {
                 var apiCallPath = "/pdftopdfa";
@@ -334,30 +328,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdf
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["file_source"] = ExpressionConverter.ConvertO(bodyfileSource);
+                body["file_source"] = ExpressionConverter.ConvertO(__workflow_bodyfileSource);
                 bodypropCount++;
-                body["file_name"] = ExpressionConverter.ConvertO(bodyfileName);
-                if (bodyfile != null)
+                body["file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
+                if (__workflow_bodyfile != null)
                 {
-                    body["file"] = ExpressionConverter.ConvertO(bodyfile);
+                    body["file"] = ExpressionConverter.ConvertO(__workflow_bodyfile);
                     bodypropCount++;
                 }
 
-                if (bodyfileUrl != null)
+                if (__workflow_bodyfileUrl != null)
                 {
-                    body["file_url"] = ExpressionConverter.ConvertO(bodyfileUrl);
+                    body["file_url"] = ExpressionConverter.ConvertO(__workflow_bodyfileUrl);
                     bodypropCount++;
                 }
 
-                if (bodyconformance != null)
+                if (__workflow_bodyconformance != null)
                 {
-                    body["conformance"] = ExpressionConverter.ConvertO(bodyconformance);
+                    body["conformance"] = ExpressionConverter.ConvertO(__workflow_bodyconformance);
                     bodypropCount++;
                 }
 
-                if (bodyallowDowngrade != null)
+                if (__workflow_bodyallowDowngrade != null)
                 {
-                    body["allow_downgrade"] = ExpressionConverter.ConvertO(bodyallowDowngrade);
+                    body["allow_downgrade"] = ExpressionConverter.ConvertO(__workflow_bodyallowDowngrade);
                     bodypropCount++;
                 }
 
@@ -371,20 +365,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdf")]
-        [WorkflowExpressionFactory(nameof(__BuildUnlock))]
-        public IBodyWorkflowAction<UnlockResponse> Unlock([WorkflowExpression] Func<bodyfileSourceInput> bodyfileSource, [WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<string> bodyfile = null, [WorkflowExpression] Func<string> bodyfileUrl = null, [WorkflowExpression] Func<string> bodypassword = null)
+        public IBodyWorkflowAction<UnlockResponse> Unlock(Expression<Func<bodyfileSourceInput>> bodyfileSource, Expression<Func<string>> bodyfileName, Expression<Func<string>> bodyfile = null, Expression<Func<string>> bodyfileUrl = null, Expression<Func<string>> bodypassword = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UnlockResponse> __BuildUnlock(WorkflowExpression<bodyfileSourceInput> bodyfileSource, WorkflowExpression<string> bodyfileName, WorkflowExpression<string> bodyfile = null, WorkflowExpression<string> bodyfileUrl = null, WorkflowExpression<string> bodypassword = null)
-        {
-            WorkflowExpression.Validate(bodyfileSource, nameof(bodyfileSource), required: true);
-            WorkflowExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
-            WorkflowExpression.Validate(bodyfile, nameof(bodyfile), required: false);
-            WorkflowExpression.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
-            WorkflowExpression.Validate(bodypassword, nameof(bodypassword), required: false);
+            var __workflow_bodyfileSource = bodyfileSource == null ? null : WorkflowExpression.Compile(bodyfileSource);
+            WorkflowExpression.Validate(__workflow_bodyfileSource, nameof(bodyfileSource), required: true);
+            var __workflow_bodyfileName = bodyfileName == null ? null : WorkflowExpression.Compile(bodyfileName);
+            WorkflowExpression.Validate(__workflow_bodyfileName, nameof(bodyfileName), required: true);
+            var __workflow_bodyfile = bodyfile == null ? null : WorkflowExpression.Compile(bodyfile);
+            WorkflowExpression.Validate(__workflow_bodyfile, nameof(bodyfile), required: false);
+            var __workflow_bodyfileUrl = bodyfileUrl == null ? null : WorkflowExpression.Compile(bodyfileUrl);
+            WorkflowExpression.Validate(__workflow_bodyfileUrl, nameof(bodyfileUrl), required: false);
+            var __workflow_bodypassword = bodypassword == null ? null : WorkflowExpression.Compile(bodypassword);
+            WorkflowExpression.Validate(__workflow_bodypassword, nameof(bodypassword), required: false);
             return new DeferredBodyAction<UnlockResponse>(() =>
             {
                 var apiCallPath = "/unlock";
@@ -393,24 +385,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdf
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["file_source"] = ExpressionConverter.ConvertO(bodyfileSource);
+                body["file_source"] = ExpressionConverter.ConvertO(__workflow_bodyfileSource);
                 bodypropCount++;
-                body["file_name"] = ExpressionConverter.ConvertO(bodyfileName);
-                if (bodyfile != null)
+                body["file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
+                if (__workflow_bodyfile != null)
                 {
-                    body["file"] = ExpressionConverter.ConvertO(bodyfile);
+                    body["file"] = ExpressionConverter.ConvertO(__workflow_bodyfile);
                     bodypropCount++;
                 }
 
-                if (bodyfileUrl != null)
+                if (__workflow_bodyfileUrl != null)
                 {
-                    body["file_url"] = ExpressionConverter.ConvertO(bodyfileUrl);
+                    body["file_url"] = ExpressionConverter.ConvertO(__workflow_bodyfileUrl);
                     bodypropCount++;
                 }
 
-                if (bodypassword != null)
+                if (__workflow_bodypassword != null)
                 {
-                    body["password"] = ExpressionConverter.ConvertO(bodypassword);
+                    body["password"] = ExpressionConverter.ConvertO(__workflow_bodypassword);
                     bodypropCount++;
                 }
 
@@ -424,31 +416,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdf")]
-        [WorkflowExpressionFactory(nameof(__BuildAddPageNumber))]
-        public IBodyWorkflowAction<AddPageNumberResponse> AddPageNumber([WorkflowExpression] Func<bodyfileSourceInput> bodyfileSource, [WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<string> bodyfile = null, [WorkflowExpression] Func<string> bodyfileUrl = null, [WorkflowExpression] Func<bodyfacingPagesInput> bodyfacingPages = null, [WorkflowExpression] Func<bodyfirstCoverInput> bodyfirstCover = null, [WorkflowExpression] Func<string> bodypages = null, [WorkflowExpression] Func<string> bodystartingNumber = null, [WorkflowExpression] Func<bodyverticalPositionInput> bodyverticalPosition = null, [WorkflowExpression] Func<bodyhorizontalPositionInput> bodyhorizontalPosition = null, [WorkflowExpression] Func<string> bodyverticalPositionAdjustment = null, [WorkflowExpression] Func<string> bodyhorizontalPositionAdjustment = null, [WorkflowExpression] Func<bodyfontFamilyInput> bodyfontFamily = null, [WorkflowExpression] Func<string> bodyfontSize = null, [WorkflowExpression] Func<string> bodyfontColor = null, [WorkflowExpression] Func<string> bodytext = null)
+        public IBodyWorkflowAction<AddPageNumberResponse> AddPageNumber(Expression<Func<bodyfileSourceInput>> bodyfileSource, Expression<Func<string>> bodyfileName, Expression<Func<string>> bodyfile = null, Expression<Func<string>> bodyfileUrl = null, Expression<Func<bodyfacingPagesInput>> bodyfacingPages = null, Expression<Func<bodyfirstCoverInput>> bodyfirstCover = null, Expression<Func<string>> bodypages = null, Expression<Func<string>> bodystartingNumber = null, Expression<Func<bodyverticalPositionInput>> bodyverticalPosition = null, Expression<Func<bodyhorizontalPositionInput>> bodyhorizontalPosition = null, Expression<Func<string>> bodyverticalPositionAdjustment = null, Expression<Func<string>> bodyhorizontalPositionAdjustment = null, Expression<Func<bodyfontFamilyInput>> bodyfontFamily = null, Expression<Func<string>> bodyfontSize = null, Expression<Func<string>> bodyfontColor = null, Expression<Func<string>> bodytext = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AddPageNumberResponse> __BuildAddPageNumber(WorkflowExpression<bodyfileSourceInput> bodyfileSource, WorkflowExpression<string> bodyfileName, WorkflowExpression<string> bodyfile = null, WorkflowExpression<string> bodyfileUrl = null, WorkflowExpression<bodyfacingPagesInput> bodyfacingPages = null, WorkflowExpression<bodyfirstCoverInput> bodyfirstCover = null, WorkflowExpression<string> bodypages = null, WorkflowExpression<string> bodystartingNumber = null, WorkflowExpression<bodyverticalPositionInput> bodyverticalPosition = null, WorkflowExpression<bodyhorizontalPositionInput> bodyhorizontalPosition = null, WorkflowExpression<string> bodyverticalPositionAdjustment = null, WorkflowExpression<string> bodyhorizontalPositionAdjustment = null, WorkflowExpression<bodyfontFamilyInput> bodyfontFamily = null, WorkflowExpression<string> bodyfontSize = null, WorkflowExpression<string> bodyfontColor = null, WorkflowExpression<string> bodytext = null)
-        {
-            WorkflowExpression.Validate(bodyfileSource, nameof(bodyfileSource), required: true);
-            WorkflowExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
-            WorkflowExpression.Validate(bodyfile, nameof(bodyfile), required: false);
-            WorkflowExpression.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
-            WorkflowExpression.Validate(bodyfacingPages, nameof(bodyfacingPages), required: false);
-            WorkflowExpression.Validate(bodyfirstCover, nameof(bodyfirstCover), required: false);
-            WorkflowExpression.Validate(bodypages, nameof(bodypages), required: false);
-            WorkflowExpression.Validate(bodystartingNumber, nameof(bodystartingNumber), required: false);
-            WorkflowExpression.Validate(bodyverticalPosition, nameof(bodyverticalPosition), required: false);
-            WorkflowExpression.Validate(bodyhorizontalPosition, nameof(bodyhorizontalPosition), required: false);
-            WorkflowExpression.Validate(bodyverticalPositionAdjustment, nameof(bodyverticalPositionAdjustment), required: false);
-            WorkflowExpression.Validate(bodyhorizontalPositionAdjustment, nameof(bodyhorizontalPositionAdjustment), required: false);
-            WorkflowExpression.Validate(bodyfontFamily, nameof(bodyfontFamily), required: false);
-            WorkflowExpression.Validate(bodyfontSize, nameof(bodyfontSize), required: false);
-            WorkflowExpression.Validate(bodyfontColor, nameof(bodyfontColor), required: false);
-            WorkflowExpression.Validate(bodytext, nameof(bodytext), required: false);
+            var __workflow_bodyfileSource = bodyfileSource == null ? null : WorkflowExpression.Compile(bodyfileSource);
+            WorkflowExpression.Validate(__workflow_bodyfileSource, nameof(bodyfileSource), required: true);
+            var __workflow_bodyfileName = bodyfileName == null ? null : WorkflowExpression.Compile(bodyfileName);
+            WorkflowExpression.Validate(__workflow_bodyfileName, nameof(bodyfileName), required: true);
+            var __workflow_bodyfile = bodyfile == null ? null : WorkflowExpression.Compile(bodyfile);
+            WorkflowExpression.Validate(__workflow_bodyfile, nameof(bodyfile), required: false);
+            var __workflow_bodyfileUrl = bodyfileUrl == null ? null : WorkflowExpression.Compile(bodyfileUrl);
+            WorkflowExpression.Validate(__workflow_bodyfileUrl, nameof(bodyfileUrl), required: false);
+            var __workflow_bodyfacingPages = bodyfacingPages == null ? null : WorkflowExpression.Compile(bodyfacingPages);
+            WorkflowExpression.Validate(__workflow_bodyfacingPages, nameof(bodyfacingPages), required: false);
+            var __workflow_bodyfirstCover = bodyfirstCover == null ? null : WorkflowExpression.Compile(bodyfirstCover);
+            WorkflowExpression.Validate(__workflow_bodyfirstCover, nameof(bodyfirstCover), required: false);
+            var __workflow_bodypages = bodypages == null ? null : WorkflowExpression.Compile(bodypages);
+            WorkflowExpression.Validate(__workflow_bodypages, nameof(bodypages), required: false);
+            var __workflow_bodystartingNumber = bodystartingNumber == null ? null : WorkflowExpression.Compile(bodystartingNumber);
+            WorkflowExpression.Validate(__workflow_bodystartingNumber, nameof(bodystartingNumber), required: false);
+            var __workflow_bodyverticalPosition = bodyverticalPosition == null ? null : WorkflowExpression.Compile(bodyverticalPosition);
+            WorkflowExpression.Validate(__workflow_bodyverticalPosition, nameof(bodyverticalPosition), required: false);
+            var __workflow_bodyhorizontalPosition = bodyhorizontalPosition == null ? null : WorkflowExpression.Compile(bodyhorizontalPosition);
+            WorkflowExpression.Validate(__workflow_bodyhorizontalPosition, nameof(bodyhorizontalPosition), required: false);
+            var __workflow_bodyverticalPositionAdjustment = bodyverticalPositionAdjustment == null ? null : WorkflowExpression.Compile(bodyverticalPositionAdjustment);
+            WorkflowExpression.Validate(__workflow_bodyverticalPositionAdjustment, nameof(bodyverticalPositionAdjustment), required: false);
+            var __workflow_bodyhorizontalPositionAdjustment = bodyhorizontalPositionAdjustment == null ? null : WorkflowExpression.Compile(bodyhorizontalPositionAdjustment);
+            WorkflowExpression.Validate(__workflow_bodyhorizontalPositionAdjustment, nameof(bodyhorizontalPositionAdjustment), required: false);
+            var __workflow_bodyfontFamily = bodyfontFamily == null ? null : WorkflowExpression.Compile(bodyfontFamily);
+            WorkflowExpression.Validate(__workflow_bodyfontFamily, nameof(bodyfontFamily), required: false);
+            var __workflow_bodyfontSize = bodyfontSize == null ? null : WorkflowExpression.Compile(bodyfontSize);
+            WorkflowExpression.Validate(__workflow_bodyfontSize, nameof(bodyfontSize), required: false);
+            var __workflow_bodyfontColor = bodyfontColor == null ? null : WorkflowExpression.Compile(bodyfontColor);
+            WorkflowExpression.Validate(__workflow_bodyfontColor, nameof(bodyfontColor), required: false);
+            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
+            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: false);
             return new DeferredBodyAction<AddPageNumberResponse>(() =>
             {
                 var apiCallPath = "/pagenumber";
@@ -457,90 +458,90 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdf
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["file_source"] = ExpressionConverter.ConvertO(bodyfileSource);
+                body["file_source"] = ExpressionConverter.ConvertO(__workflow_bodyfileSource);
                 bodypropCount++;
-                body["file_name"] = ExpressionConverter.ConvertO(bodyfileName);
-                if (bodyfile != null)
+                body["file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
+                if (__workflow_bodyfile != null)
                 {
-                    body["file"] = ExpressionConverter.ConvertO(bodyfile);
+                    body["file"] = ExpressionConverter.ConvertO(__workflow_bodyfile);
                     bodypropCount++;
                 }
 
-                if (bodyfileUrl != null)
+                if (__workflow_bodyfileUrl != null)
                 {
-                    body["file_url"] = ExpressionConverter.ConvertO(bodyfileUrl);
+                    body["file_url"] = ExpressionConverter.ConvertO(__workflow_bodyfileUrl);
                     bodypropCount++;
                 }
 
-                if (bodyfacingPages != null)
+                if (__workflow_bodyfacingPages != null)
                 {
-                    body["facing_pages"] = ExpressionConverter.ConvertO(bodyfacingPages);
+                    body["facing_pages"] = ExpressionConverter.ConvertO(__workflow_bodyfacingPages);
                     bodypropCount++;
                 }
 
-                if (bodyfirstCover != null)
+                if (__workflow_bodyfirstCover != null)
                 {
-                    body["first_cover"] = ExpressionConverter.ConvertO(bodyfirstCover);
+                    body["first_cover"] = ExpressionConverter.ConvertO(__workflow_bodyfirstCover);
                     bodypropCount++;
                 }
 
-                if (bodypages != null)
+                if (__workflow_bodypages != null)
                 {
-                    body["pages"] = ExpressionConverter.ConvertO(bodypages);
+                    body["pages"] = ExpressionConverter.ConvertO(__workflow_bodypages);
                     bodypropCount++;
                 }
 
-                if (bodystartingNumber != null)
+                if (__workflow_bodystartingNumber != null)
                 {
-                    body["starting_number"] = ExpressionConverter.ConvertO(bodystartingNumber);
+                    body["starting_number"] = ExpressionConverter.ConvertO(__workflow_bodystartingNumber);
                     bodypropCount++;
                 }
 
-                if (bodyverticalPosition != null)
+                if (__workflow_bodyverticalPosition != null)
                 {
-                    body["vertical_position"] = ExpressionConverter.ConvertO(bodyverticalPosition);
+                    body["vertical_position"] = ExpressionConverter.ConvertO(__workflow_bodyverticalPosition);
                     bodypropCount++;
                 }
 
-                if (bodyhorizontalPosition != null)
+                if (__workflow_bodyhorizontalPosition != null)
                 {
-                    body["horizontal_position"] = ExpressionConverter.ConvertO(bodyhorizontalPosition);
+                    body["horizontal_position"] = ExpressionConverter.ConvertO(__workflow_bodyhorizontalPosition);
                     bodypropCount++;
                 }
 
-                if (bodyverticalPositionAdjustment != null)
+                if (__workflow_bodyverticalPositionAdjustment != null)
                 {
-                    body["vertical_position_adjustment"] = ExpressionConverter.ConvertO(bodyverticalPositionAdjustment);
+                    body["vertical_position_adjustment"] = ExpressionConverter.ConvertO(__workflow_bodyverticalPositionAdjustment);
                     bodypropCount++;
                 }
 
-                if (bodyhorizontalPositionAdjustment != null)
+                if (__workflow_bodyhorizontalPositionAdjustment != null)
                 {
-                    body["horizontal_position_adjustment"] = ExpressionConverter.ConvertO(bodyhorizontalPositionAdjustment);
+                    body["horizontal_position_adjustment"] = ExpressionConverter.ConvertO(__workflow_bodyhorizontalPositionAdjustment);
                     bodypropCount++;
                 }
 
-                if (bodyfontFamily != null)
+                if (__workflow_bodyfontFamily != null)
                 {
-                    body["font_family"] = ExpressionConverter.ConvertO(bodyfontFamily);
+                    body["font_family"] = ExpressionConverter.ConvertO(__workflow_bodyfontFamily);
                     bodypropCount++;
                 }
 
-                if (bodyfontSize != null)
+                if (__workflow_bodyfontSize != null)
                 {
-                    body["font_size"] = ExpressionConverter.ConvertO(bodyfontSize);
+                    body["font_size"] = ExpressionConverter.ConvertO(__workflow_bodyfontSize);
                     bodypropCount++;
                 }
 
-                if (bodyfontColor != null)
+                if (__workflow_bodyfontColor != null)
                 {
-                    body["font_color"] = ExpressionConverter.ConvertO(bodyfontColor);
+                    body["font_color"] = ExpressionConverter.ConvertO(__workflow_bodyfontColor);
                     bodypropCount++;
                 }
 
-                if (bodytext != null)
+                if (__workflow_bodytext != null)
                 {
-                    body["text"] = ExpressionConverter.ConvertO(bodytext);
+                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
                     bodypropCount++;
                 }
 
@@ -554,23 +555,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdf")]
-        [WorkflowExpressionFactory(nameof(__BuildMerge))]
-        public IBodyWorkflowAction<MergeResponse> Merge([WorkflowExpression] Func<bodyfileSourceInput> bodyfileSource, [WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<string> bodyfile = null, [WorkflowExpression] Func<string> bodyfileUrl = null, [WorkflowExpression] Func<bodyfileSource2Input> bodyfileSource2 = null, [WorkflowExpression] Func<string> bodyfileName2 = null, [WorkflowExpression] Func<string> bodyfile2 = null, [WorkflowExpression] Func<string> bodyfileUrl2 = null)
+        public IBodyWorkflowAction<MergeResponse> Merge(Expression<Func<bodyfileSourceInput>> bodyfileSource, Expression<Func<string>> bodyfileName, Expression<Func<string>> bodyfile = null, Expression<Func<string>> bodyfileUrl = null, Expression<Func<bodyfileSource2Input>> bodyfileSource2 = null, Expression<Func<string>> bodyfileName2 = null, Expression<Func<string>> bodyfile2 = null, Expression<Func<string>> bodyfileUrl2 = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MergeResponse> __BuildMerge(WorkflowExpression<bodyfileSourceInput> bodyfileSource, WorkflowExpression<string> bodyfileName, WorkflowExpression<string> bodyfile = null, WorkflowExpression<string> bodyfileUrl = null, WorkflowExpression<bodyfileSource2Input> bodyfileSource2 = null, WorkflowExpression<string> bodyfileName2 = null, WorkflowExpression<string> bodyfile2 = null, WorkflowExpression<string> bodyfileUrl2 = null)
-        {
-            WorkflowExpression.Validate(bodyfileSource, nameof(bodyfileSource), required: true);
-            WorkflowExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
-            WorkflowExpression.Validate(bodyfile, nameof(bodyfile), required: false);
-            WorkflowExpression.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
-            WorkflowExpression.Validate(bodyfileSource2, nameof(bodyfileSource2), required: false);
-            WorkflowExpression.Validate(bodyfileName2, nameof(bodyfileName2), required: false);
-            WorkflowExpression.Validate(bodyfile2, nameof(bodyfile2), required: false);
-            WorkflowExpression.Validate(bodyfileUrl2, nameof(bodyfileUrl2), required: false);
+            var __workflow_bodyfileSource = bodyfileSource == null ? null : WorkflowExpression.Compile(bodyfileSource);
+            WorkflowExpression.Validate(__workflow_bodyfileSource, nameof(bodyfileSource), required: true);
+            var __workflow_bodyfileName = bodyfileName == null ? null : WorkflowExpression.Compile(bodyfileName);
+            WorkflowExpression.Validate(__workflow_bodyfileName, nameof(bodyfileName), required: true);
+            var __workflow_bodyfile = bodyfile == null ? null : WorkflowExpression.Compile(bodyfile);
+            WorkflowExpression.Validate(__workflow_bodyfile, nameof(bodyfile), required: false);
+            var __workflow_bodyfileUrl = bodyfileUrl == null ? null : WorkflowExpression.Compile(bodyfileUrl);
+            WorkflowExpression.Validate(__workflow_bodyfileUrl, nameof(bodyfileUrl), required: false);
+            var __workflow_bodyfileSource2 = bodyfileSource2 == null ? null : WorkflowExpression.Compile(bodyfileSource2);
+            WorkflowExpression.Validate(__workflow_bodyfileSource2, nameof(bodyfileSource2), required: false);
+            var __workflow_bodyfileName2 = bodyfileName2 == null ? null : WorkflowExpression.Compile(bodyfileName2);
+            WorkflowExpression.Validate(__workflow_bodyfileName2, nameof(bodyfileName2), required: false);
+            var __workflow_bodyfile2 = bodyfile2 == null ? null : WorkflowExpression.Compile(bodyfile2);
+            WorkflowExpression.Validate(__workflow_bodyfile2, nameof(bodyfile2), required: false);
+            var __workflow_bodyfileUrl2 = bodyfileUrl2 == null ? null : WorkflowExpression.Compile(bodyfileUrl2);
+            WorkflowExpression.Validate(__workflow_bodyfileUrl2, nameof(bodyfileUrl2), required: false);
             return new DeferredBodyAction<MergeResponse>(() =>
             {
                 var apiCallPath = "/merge";
@@ -579,42 +581,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdf
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["file_source"] = ExpressionConverter.ConvertO(bodyfileSource);
+                body["file_source"] = ExpressionConverter.ConvertO(__workflow_bodyfileSource);
                 bodypropCount++;
-                body["file_name"] = ExpressionConverter.ConvertO(bodyfileName);
-                if (bodyfile != null)
+                body["file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
+                if (__workflow_bodyfile != null)
                 {
-                    body["file"] = ExpressionConverter.ConvertO(bodyfile);
+                    body["file"] = ExpressionConverter.ConvertO(__workflow_bodyfile);
                     bodypropCount++;
                 }
 
-                if (bodyfileUrl != null)
+                if (__workflow_bodyfileUrl != null)
                 {
-                    body["file_url"] = ExpressionConverter.ConvertO(bodyfileUrl);
+                    body["file_url"] = ExpressionConverter.ConvertO(__workflow_bodyfileUrl);
                     bodypropCount++;
                 }
 
-                if (bodyfileSource2 != null)
+                if (__workflow_bodyfileSource2 != null)
                 {
-                    body["file_source2"] = ExpressionConverter.ConvertO(bodyfileSource2);
+                    body["file_source2"] = ExpressionConverter.ConvertO(__workflow_bodyfileSource2);
                     bodypropCount++;
                 }
 
-                if (bodyfileName2 != null)
+                if (__workflow_bodyfileName2 != null)
                 {
-                    body["file_name2"] = ExpressionConverter.ConvertO(bodyfileName2);
+                    body["file_name2"] = ExpressionConverter.ConvertO(__workflow_bodyfileName2);
                     bodypropCount++;
                 }
 
-                if (bodyfile2 != null)
+                if (__workflow_bodyfile2 != null)
                 {
-                    body["file2"] = ExpressionConverter.ConvertO(bodyfile2);
+                    body["file2"] = ExpressionConverter.ConvertO(__workflow_bodyfile2);
                     bodypropCount++;
                 }
 
-                if (bodyfileUrl2 != null)
+                if (__workflow_bodyfileUrl2 != null)
                 {
-                    body["file_url2"] = ExpressionConverter.ConvertO(bodyfileUrl2);
+                    body["file_url2"] = ExpressionConverter.ConvertO(__workflow_bodyfileUrl2);
                     bodypropCount++;
                 }
 
@@ -628,38 +630,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdf")]
-        [WorkflowExpressionFactory(nameof(__BuildWatermark))]
-        public IBodyWorkflowAction<WatermarkResponse> Watermark([WorkflowExpression] Func<bodyfileSourceInput> bodyfileSource, [WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<string> bodyfile = null, [WorkflowExpression] Func<string> bodyfileUrl = null, [WorkflowExpression] Func<bodymodeInput> bodymode = null, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<string> bodyimageSource = null, [WorkflowExpression] Func<string> bodyimageName = null, [WorkflowExpression] Func<string> bodyimageFile = null, [WorkflowExpression] Func<string> bodyimageUrl = null, [WorkflowExpression] Func<string> bodypages = null, [WorkflowExpression] Func<bodyverticalPositionInput> bodyverticalPosition = null, [WorkflowExpression] Func<bodyhorizontalPositionInput> bodyhorizontalPosition = null, [WorkflowExpression] Func<string> bodyverticalPositionAdjustment = null, [WorkflowExpression] Func<string> bodyhorizontalPositionAdjustment = null, [WorkflowExpression] Func<bodymosaicInput> bodymosaic = null, [WorkflowExpression] Func<string> bodyrotation = null, [WorkflowExpression] Func<bodyfontFamilyInput> bodyfontFamily = null, [WorkflowExpression] Func<bodyfontStyleInput> bodyfontStyle = null, [WorkflowExpression] Func<string> bodyfontSize = null, [WorkflowExpression] Func<string> bodyfontColor = null, [WorkflowExpression] Func<string> bodytransparency = null, [WorkflowExpression] Func<bodylayerInput> bodylayer = null)
+        public IBodyWorkflowAction<WatermarkResponse> Watermark(Expression<Func<bodyfileSourceInput>> bodyfileSource, Expression<Func<string>> bodyfileName, Expression<Func<string>> bodyfile = null, Expression<Func<string>> bodyfileUrl = null, Expression<Func<bodymodeInput>> bodymode = null, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodyimageSource = null, Expression<Func<string>> bodyimageName = null, Expression<Func<string>> bodyimageFile = null, Expression<Func<string>> bodyimageUrl = null, Expression<Func<string>> bodypages = null, Expression<Func<bodyverticalPositionInput>> bodyverticalPosition = null, Expression<Func<bodyhorizontalPositionInput>> bodyhorizontalPosition = null, Expression<Func<string>> bodyverticalPositionAdjustment = null, Expression<Func<string>> bodyhorizontalPositionAdjustment = null, Expression<Func<bodymosaicInput>> bodymosaic = null, Expression<Func<string>> bodyrotation = null, Expression<Func<bodyfontFamilyInput>> bodyfontFamily = null, Expression<Func<bodyfontStyleInput>> bodyfontStyle = null, Expression<Func<string>> bodyfontSize = null, Expression<Func<string>> bodyfontColor = null, Expression<Func<string>> bodytransparency = null, Expression<Func<bodylayerInput>> bodylayer = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<WatermarkResponse> __BuildWatermark(WorkflowExpression<bodyfileSourceInput> bodyfileSource, WorkflowExpression<string> bodyfileName, WorkflowExpression<string> bodyfile = null, WorkflowExpression<string> bodyfileUrl = null, WorkflowExpression<bodymodeInput> bodymode = null, WorkflowExpression<string> bodytext = null, WorkflowExpression<string> bodyimageSource = null, WorkflowExpression<string> bodyimageName = null, WorkflowExpression<string> bodyimageFile = null, WorkflowExpression<string> bodyimageUrl = null, WorkflowExpression<string> bodypages = null, WorkflowExpression<bodyverticalPositionInput> bodyverticalPosition = null, WorkflowExpression<bodyhorizontalPositionInput> bodyhorizontalPosition = null, WorkflowExpression<string> bodyverticalPositionAdjustment = null, WorkflowExpression<string> bodyhorizontalPositionAdjustment = null, WorkflowExpression<bodymosaicInput> bodymosaic = null, WorkflowExpression<string> bodyrotation = null, WorkflowExpression<bodyfontFamilyInput> bodyfontFamily = null, WorkflowExpression<bodyfontStyleInput> bodyfontStyle = null, WorkflowExpression<string> bodyfontSize = null, WorkflowExpression<string> bodyfontColor = null, WorkflowExpression<string> bodytransparency = null, WorkflowExpression<bodylayerInput> bodylayer = null)
-        {
-            WorkflowExpression.Validate(bodyfileSource, nameof(bodyfileSource), required: true);
-            WorkflowExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
-            WorkflowExpression.Validate(bodyfile, nameof(bodyfile), required: false);
-            WorkflowExpression.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
-            WorkflowExpression.Validate(bodymode, nameof(bodymode), required: false);
-            WorkflowExpression.Validate(bodytext, nameof(bodytext), required: false);
-            WorkflowExpression.Validate(bodyimageSource, nameof(bodyimageSource), required: false);
-            WorkflowExpression.Validate(bodyimageName, nameof(bodyimageName), required: false);
-            WorkflowExpression.Validate(bodyimageFile, nameof(bodyimageFile), required: false);
-            WorkflowExpression.Validate(bodyimageUrl, nameof(bodyimageUrl), required: false);
-            WorkflowExpression.Validate(bodypages, nameof(bodypages), required: false);
-            WorkflowExpression.Validate(bodyverticalPosition, nameof(bodyverticalPosition), required: false);
-            WorkflowExpression.Validate(bodyhorizontalPosition, nameof(bodyhorizontalPosition), required: false);
-            WorkflowExpression.Validate(bodyverticalPositionAdjustment, nameof(bodyverticalPositionAdjustment), required: false);
-            WorkflowExpression.Validate(bodyhorizontalPositionAdjustment, nameof(bodyhorizontalPositionAdjustment), required: false);
-            WorkflowExpression.Validate(bodymosaic, nameof(bodymosaic), required: false);
-            WorkflowExpression.Validate(bodyrotation, nameof(bodyrotation), required: false);
-            WorkflowExpression.Validate(bodyfontFamily, nameof(bodyfontFamily), required: false);
-            WorkflowExpression.Validate(bodyfontStyle, nameof(bodyfontStyle), required: false);
-            WorkflowExpression.Validate(bodyfontSize, nameof(bodyfontSize), required: false);
-            WorkflowExpression.Validate(bodyfontColor, nameof(bodyfontColor), required: false);
-            WorkflowExpression.Validate(bodytransparency, nameof(bodytransparency), required: false);
-            WorkflowExpression.Validate(bodylayer, nameof(bodylayer), required: false);
+            var __workflow_bodyfileSource = bodyfileSource == null ? null : WorkflowExpression.Compile(bodyfileSource);
+            WorkflowExpression.Validate(__workflow_bodyfileSource, nameof(bodyfileSource), required: true);
+            var __workflow_bodyfileName = bodyfileName == null ? null : WorkflowExpression.Compile(bodyfileName);
+            WorkflowExpression.Validate(__workflow_bodyfileName, nameof(bodyfileName), required: true);
+            var __workflow_bodyfile = bodyfile == null ? null : WorkflowExpression.Compile(bodyfile);
+            WorkflowExpression.Validate(__workflow_bodyfile, nameof(bodyfile), required: false);
+            var __workflow_bodyfileUrl = bodyfileUrl == null ? null : WorkflowExpression.Compile(bodyfileUrl);
+            WorkflowExpression.Validate(__workflow_bodyfileUrl, nameof(bodyfileUrl), required: false);
+            var __workflow_bodymode = bodymode == null ? null : WorkflowExpression.Compile(bodymode);
+            WorkflowExpression.Validate(__workflow_bodymode, nameof(bodymode), required: false);
+            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
+            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: false);
+            var __workflow_bodyimageSource = bodyimageSource == null ? null : WorkflowExpression.Compile(bodyimageSource);
+            WorkflowExpression.Validate(__workflow_bodyimageSource, nameof(bodyimageSource), required: false);
+            var __workflow_bodyimageName = bodyimageName == null ? null : WorkflowExpression.Compile(bodyimageName);
+            WorkflowExpression.Validate(__workflow_bodyimageName, nameof(bodyimageName), required: false);
+            var __workflow_bodyimageFile = bodyimageFile == null ? null : WorkflowExpression.Compile(bodyimageFile);
+            WorkflowExpression.Validate(__workflow_bodyimageFile, nameof(bodyimageFile), required: false);
+            var __workflow_bodyimageUrl = bodyimageUrl == null ? null : WorkflowExpression.Compile(bodyimageUrl);
+            WorkflowExpression.Validate(__workflow_bodyimageUrl, nameof(bodyimageUrl), required: false);
+            var __workflow_bodypages = bodypages == null ? null : WorkflowExpression.Compile(bodypages);
+            WorkflowExpression.Validate(__workflow_bodypages, nameof(bodypages), required: false);
+            var __workflow_bodyverticalPosition = bodyverticalPosition == null ? null : WorkflowExpression.Compile(bodyverticalPosition);
+            WorkflowExpression.Validate(__workflow_bodyverticalPosition, nameof(bodyverticalPosition), required: false);
+            var __workflow_bodyhorizontalPosition = bodyhorizontalPosition == null ? null : WorkflowExpression.Compile(bodyhorizontalPosition);
+            WorkflowExpression.Validate(__workflow_bodyhorizontalPosition, nameof(bodyhorizontalPosition), required: false);
+            var __workflow_bodyverticalPositionAdjustment = bodyverticalPositionAdjustment == null ? null : WorkflowExpression.Compile(bodyverticalPositionAdjustment);
+            WorkflowExpression.Validate(__workflow_bodyverticalPositionAdjustment, nameof(bodyverticalPositionAdjustment), required: false);
+            var __workflow_bodyhorizontalPositionAdjustment = bodyhorizontalPositionAdjustment == null ? null : WorkflowExpression.Compile(bodyhorizontalPositionAdjustment);
+            WorkflowExpression.Validate(__workflow_bodyhorizontalPositionAdjustment, nameof(bodyhorizontalPositionAdjustment), required: false);
+            var __workflow_bodymosaic = bodymosaic == null ? null : WorkflowExpression.Compile(bodymosaic);
+            WorkflowExpression.Validate(__workflow_bodymosaic, nameof(bodymosaic), required: false);
+            var __workflow_bodyrotation = bodyrotation == null ? null : WorkflowExpression.Compile(bodyrotation);
+            WorkflowExpression.Validate(__workflow_bodyrotation, nameof(bodyrotation), required: false);
+            var __workflow_bodyfontFamily = bodyfontFamily == null ? null : WorkflowExpression.Compile(bodyfontFamily);
+            WorkflowExpression.Validate(__workflow_bodyfontFamily, nameof(bodyfontFamily), required: false);
+            var __workflow_bodyfontStyle = bodyfontStyle == null ? null : WorkflowExpression.Compile(bodyfontStyle);
+            WorkflowExpression.Validate(__workflow_bodyfontStyle, nameof(bodyfontStyle), required: false);
+            var __workflow_bodyfontSize = bodyfontSize == null ? null : WorkflowExpression.Compile(bodyfontSize);
+            WorkflowExpression.Validate(__workflow_bodyfontSize, nameof(bodyfontSize), required: false);
+            var __workflow_bodyfontColor = bodyfontColor == null ? null : WorkflowExpression.Compile(bodyfontColor);
+            WorkflowExpression.Validate(__workflow_bodyfontColor, nameof(bodyfontColor), required: false);
+            var __workflow_bodytransparency = bodytransparency == null ? null : WorkflowExpression.Compile(bodytransparency);
+            WorkflowExpression.Validate(__workflow_bodytransparency, nameof(bodytransparency), required: false);
+            var __workflow_bodylayer = bodylayer == null ? null : WorkflowExpression.Compile(bodylayer);
+            WorkflowExpression.Validate(__workflow_bodylayer, nameof(bodylayer), required: false);
             return new DeferredBodyAction<WatermarkResponse>(() =>
             {
                 var apiCallPath = "/watermark";
@@ -668,132 +686,132 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdf
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["file_source"] = ExpressionConverter.ConvertO(bodyfileSource);
+                body["file_source"] = ExpressionConverter.ConvertO(__workflow_bodyfileSource);
                 bodypropCount++;
-                body["file_name"] = ExpressionConverter.ConvertO(bodyfileName);
-                if (bodyfile != null)
+                body["file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
+                if (__workflow_bodyfile != null)
                 {
-                    body["file"] = ExpressionConverter.ConvertO(bodyfile);
+                    body["file"] = ExpressionConverter.ConvertO(__workflow_bodyfile);
                     bodypropCount++;
                 }
 
-                if (bodyfileUrl != null)
+                if (__workflow_bodyfileUrl != null)
                 {
-                    body["file_url"] = ExpressionConverter.ConvertO(bodyfileUrl);
+                    body["file_url"] = ExpressionConverter.ConvertO(__workflow_bodyfileUrl);
                     bodypropCount++;
                 }
 
-                if (bodymode != null)
+                if (__workflow_bodymode != null)
                 {
-                    body["mode"] = ExpressionConverter.ConvertO(bodymode);
+                    body["mode"] = ExpressionConverter.ConvertO(__workflow_bodymode);
                     bodypropCount++;
                 }
 
-                if (bodytext != null)
+                if (__workflow_bodytext != null)
                 {
-                    body["text"] = ExpressionConverter.ConvertO(bodytext);
+                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
                     bodypropCount++;
                 }
 
-                if (bodyimageSource != null)
+                if (__workflow_bodyimageSource != null)
                 {
-                    body["image_source"] = ExpressionConverter.ConvertO(bodyimageSource);
+                    body["image_source"] = ExpressionConverter.ConvertO(__workflow_bodyimageSource);
                     bodypropCount++;
                 }
 
-                if (bodyimageName != null)
+                if (__workflow_bodyimageName != null)
                 {
-                    body["image_name"] = ExpressionConverter.ConvertO(bodyimageName);
+                    body["image_name"] = ExpressionConverter.ConvertO(__workflow_bodyimageName);
                     bodypropCount++;
                 }
 
-                if (bodyimageFile != null)
+                if (__workflow_bodyimageFile != null)
                 {
-                    body["image_file"] = ExpressionConverter.ConvertO(bodyimageFile);
+                    body["image_file"] = ExpressionConverter.ConvertO(__workflow_bodyimageFile);
                     bodypropCount++;
                 }
 
-                if (bodyimageUrl != null)
+                if (__workflow_bodyimageUrl != null)
                 {
-                    body["image_url"] = ExpressionConverter.ConvertO(bodyimageUrl);
+                    body["image_url"] = ExpressionConverter.ConvertO(__workflow_bodyimageUrl);
                     bodypropCount++;
                 }
 
-                if (bodypages != null)
+                if (__workflow_bodypages != null)
                 {
-                    body["pages"] = ExpressionConverter.ConvertO(bodypages);
+                    body["pages"] = ExpressionConverter.ConvertO(__workflow_bodypages);
                     bodypropCount++;
                 }
 
-                if (bodyverticalPosition != null)
+                if (__workflow_bodyverticalPosition != null)
                 {
-                    body["vertical_position"] = ExpressionConverter.ConvertO(bodyverticalPosition);
+                    body["vertical_position"] = ExpressionConverter.ConvertO(__workflow_bodyverticalPosition);
                     bodypropCount++;
                 }
 
-                if (bodyhorizontalPosition != null)
+                if (__workflow_bodyhorizontalPosition != null)
                 {
-                    body["horizontal_position"] = ExpressionConverter.ConvertO(bodyhorizontalPosition);
+                    body["horizontal_position"] = ExpressionConverter.ConvertO(__workflow_bodyhorizontalPosition);
                     bodypropCount++;
                 }
 
-                if (bodyverticalPositionAdjustment != null)
+                if (__workflow_bodyverticalPositionAdjustment != null)
                 {
-                    body["vertical_position_adjustment"] = ExpressionConverter.ConvertO(bodyverticalPositionAdjustment);
+                    body["vertical_position_adjustment"] = ExpressionConverter.ConvertO(__workflow_bodyverticalPositionAdjustment);
                     bodypropCount++;
                 }
 
-                if (bodyhorizontalPositionAdjustment != null)
+                if (__workflow_bodyhorizontalPositionAdjustment != null)
                 {
-                    body["horizontal_position_adjustment"] = ExpressionConverter.ConvertO(bodyhorizontalPositionAdjustment);
+                    body["horizontal_position_adjustment"] = ExpressionConverter.ConvertO(__workflow_bodyhorizontalPositionAdjustment);
                     bodypropCount++;
                 }
 
-                if (bodymosaic != null)
+                if (__workflow_bodymosaic != null)
                 {
-                    body["mosaic"] = ExpressionConverter.ConvertO(bodymosaic);
+                    body["mosaic"] = ExpressionConverter.ConvertO(__workflow_bodymosaic);
                     bodypropCount++;
                 }
 
-                if (bodyrotation != null)
+                if (__workflow_bodyrotation != null)
                 {
-                    body["rotation"] = ExpressionConverter.ConvertO(bodyrotation);
+                    body["rotation"] = ExpressionConverter.ConvertO(__workflow_bodyrotation);
                     bodypropCount++;
                 }
 
-                if (bodyfontFamily != null)
+                if (__workflow_bodyfontFamily != null)
                 {
-                    body["font_family"] = ExpressionConverter.ConvertO(bodyfontFamily);
+                    body["font_family"] = ExpressionConverter.ConvertO(__workflow_bodyfontFamily);
                     bodypropCount++;
                 }
 
-                if (bodyfontStyle != null)
+                if (__workflow_bodyfontStyle != null)
                 {
-                    body["font_style"] = ExpressionConverter.ConvertO(bodyfontStyle);
+                    body["font_style"] = ExpressionConverter.ConvertO(__workflow_bodyfontStyle);
                     bodypropCount++;
                 }
 
-                if (bodyfontSize != null)
+                if (__workflow_bodyfontSize != null)
                 {
-                    body["font_size"] = ExpressionConverter.ConvertO(bodyfontSize);
+                    body["font_size"] = ExpressionConverter.ConvertO(__workflow_bodyfontSize);
                     bodypropCount++;
                 }
 
-                if (bodyfontColor != null)
+                if (__workflow_bodyfontColor != null)
                 {
-                    body["font_color"] = ExpressionConverter.ConvertO(bodyfontColor);
+                    body["font_color"] = ExpressionConverter.ConvertO(__workflow_bodyfontColor);
                     bodypropCount++;
                 }
 
-                if (bodytransparency != null)
+                if (__workflow_bodytransparency != null)
                 {
-                    body["transparency"] = ExpressionConverter.ConvertO(bodytransparency);
+                    body["transparency"] = ExpressionConverter.ConvertO(__workflow_bodytransparency);
                     bodypropCount++;
                 }
 
-                if (bodylayer != null)
+                if (__workflow_bodylayer != null)
                 {
-                    body["layer"] = ExpressionConverter.ConvertO(bodylayer);
+                    body["layer"] = ExpressionConverter.ConvertO(__workflow_bodylayer);
                     bodypropCount++;
                 }
 
@@ -807,20 +825,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdf")]
-        [WorkflowExpressionFactory(nameof(__BuildRotate))]
-        public IBodyWorkflowAction<RotateResponse> Rotate([WorkflowExpression] Func<bodyfileSourceInput> bodyfileSource, [WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<string> bodyfile = null, [WorkflowExpression] Func<string> bodyfileUrl = null, [WorkflowExpression] Func<bodyrotateInput> bodyrotate = null)
+        public IBodyWorkflowAction<RotateResponse> Rotate(Expression<Func<bodyfileSourceInput>> bodyfileSource, Expression<Func<string>> bodyfileName, Expression<Func<string>> bodyfile = null, Expression<Func<string>> bodyfileUrl = null, Expression<Func<bodyrotateInput>> bodyrotate = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<RotateResponse> __BuildRotate(WorkflowExpression<bodyfileSourceInput> bodyfileSource, WorkflowExpression<string> bodyfileName, WorkflowExpression<string> bodyfile = null, WorkflowExpression<string> bodyfileUrl = null, WorkflowExpression<bodyrotateInput> bodyrotate = null)
-        {
-            WorkflowExpression.Validate(bodyfileSource, nameof(bodyfileSource), required: true);
-            WorkflowExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
-            WorkflowExpression.Validate(bodyfile, nameof(bodyfile), required: false);
-            WorkflowExpression.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
-            WorkflowExpression.Validate(bodyrotate, nameof(bodyrotate), required: false);
+            var __workflow_bodyfileSource = bodyfileSource == null ? null : WorkflowExpression.Compile(bodyfileSource);
+            WorkflowExpression.Validate(__workflow_bodyfileSource, nameof(bodyfileSource), required: true);
+            var __workflow_bodyfileName = bodyfileName == null ? null : WorkflowExpression.Compile(bodyfileName);
+            WorkflowExpression.Validate(__workflow_bodyfileName, nameof(bodyfileName), required: true);
+            var __workflow_bodyfile = bodyfile == null ? null : WorkflowExpression.Compile(bodyfile);
+            WorkflowExpression.Validate(__workflow_bodyfile, nameof(bodyfile), required: false);
+            var __workflow_bodyfileUrl = bodyfileUrl == null ? null : WorkflowExpression.Compile(bodyfileUrl);
+            WorkflowExpression.Validate(__workflow_bodyfileUrl, nameof(bodyfileUrl), required: false);
+            var __workflow_bodyrotate = bodyrotate == null ? null : WorkflowExpression.Compile(bodyrotate);
+            WorkflowExpression.Validate(__workflow_bodyrotate, nameof(bodyrotate), required: false);
             return new DeferredBodyAction<RotateResponse>(() =>
             {
                 var apiCallPath = "/rotate";
@@ -829,24 +845,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdf
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["file_source"] = ExpressionConverter.ConvertO(bodyfileSource);
+                body["file_source"] = ExpressionConverter.ConvertO(__workflow_bodyfileSource);
                 bodypropCount++;
-                body["file_name"] = ExpressionConverter.ConvertO(bodyfileName);
-                if (bodyfile != null)
+                body["file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
+                if (__workflow_bodyfile != null)
                 {
-                    body["file"] = ExpressionConverter.ConvertO(bodyfile);
+                    body["file"] = ExpressionConverter.ConvertO(__workflow_bodyfile);
                     bodypropCount++;
                 }
 
-                if (bodyfileUrl != null)
+                if (__workflow_bodyfileUrl != null)
                 {
-                    body["file_url"] = ExpressionConverter.ConvertO(bodyfileUrl);
+                    body["file_url"] = ExpressionConverter.ConvertO(__workflow_bodyfileUrl);
                     bodypropCount++;
                 }
 
-                if (bodyrotate != null)
+                if (__workflow_bodyrotate != null)
                 {
-                    body["rotate"] = ExpressionConverter.ConvertO(bodyrotate);
+                    body["rotate"] = ExpressionConverter.ConvertO(__workflow_bodyrotate);
                     bodypropCount++;
                 }
 
@@ -860,20 +876,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdf")]
-        [WorkflowExpressionFactory(nameof(__BuildPDFOCR))]
-        public IBodyWorkflowAction<PDFOCRResponse> PDFOCR([WorkflowExpression] Func<bodyfileSourceInput> bodyfileSource, [WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<string> bodyfile = null, [WorkflowExpression] Func<string> bodyfileUrl = null, [WorkflowExpression] Func<string> bodyocrLanguages = null)
+        public IBodyWorkflowAction<PDFOCRResponse> PDFOCR(Expression<Func<bodyfileSourceInput>> bodyfileSource, Expression<Func<string>> bodyfileName, Expression<Func<string>> bodyfile = null, Expression<Func<string>> bodyfileUrl = null, Expression<Func<string>> bodyocrLanguages = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PDFOCRResponse> __BuildPDFOCR(WorkflowExpression<bodyfileSourceInput> bodyfileSource, WorkflowExpression<string> bodyfileName, WorkflowExpression<string> bodyfile = null, WorkflowExpression<string> bodyfileUrl = null, WorkflowExpression<string> bodyocrLanguages = null)
-        {
-            WorkflowExpression.Validate(bodyfileSource, nameof(bodyfileSource), required: true);
-            WorkflowExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
-            WorkflowExpression.Validate(bodyfile, nameof(bodyfile), required: false);
-            WorkflowExpression.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
-            WorkflowExpression.Validate(bodyocrLanguages, nameof(bodyocrLanguages), required: false);
+            var __workflow_bodyfileSource = bodyfileSource == null ? null : WorkflowExpression.Compile(bodyfileSource);
+            WorkflowExpression.Validate(__workflow_bodyfileSource, nameof(bodyfileSource), required: true);
+            var __workflow_bodyfileName = bodyfileName == null ? null : WorkflowExpression.Compile(bodyfileName);
+            WorkflowExpression.Validate(__workflow_bodyfileName, nameof(bodyfileName), required: true);
+            var __workflow_bodyfile = bodyfile == null ? null : WorkflowExpression.Compile(bodyfile);
+            WorkflowExpression.Validate(__workflow_bodyfile, nameof(bodyfile), required: false);
+            var __workflow_bodyfileUrl = bodyfileUrl == null ? null : WorkflowExpression.Compile(bodyfileUrl);
+            WorkflowExpression.Validate(__workflow_bodyfileUrl, nameof(bodyfileUrl), required: false);
+            var __workflow_bodyocrLanguages = bodyocrLanguages == null ? null : WorkflowExpression.Compile(bodyocrLanguages);
+            WorkflowExpression.Validate(__workflow_bodyocrLanguages, nameof(bodyocrLanguages), required: false);
             return new DeferredBodyAction<PDFOCRResponse>(() =>
             {
                 var apiCallPath = "/pdfocr";
@@ -882,24 +896,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdf
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["file_source"] = ExpressionConverter.ConvertO(bodyfileSource);
+                body["file_source"] = ExpressionConverter.ConvertO(__workflow_bodyfileSource);
                 bodypropCount++;
-                body["file_name"] = ExpressionConverter.ConvertO(bodyfileName);
-                if (bodyfile != null)
+                body["file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
+                if (__workflow_bodyfile != null)
                 {
-                    body["file"] = ExpressionConverter.ConvertO(bodyfile);
+                    body["file"] = ExpressionConverter.ConvertO(__workflow_bodyfile);
                     bodypropCount++;
                 }
 
-                if (bodyfileUrl != null)
+                if (__workflow_bodyfileUrl != null)
                 {
-                    body["file_url"] = ExpressionConverter.ConvertO(bodyfileUrl);
+                    body["file_url"] = ExpressionConverter.ConvertO(__workflow_bodyfileUrl);
                     bodypropCount++;
                 }
 
-                if (bodyocrLanguages != null)
+                if (__workflow_bodyocrLanguages != null)
                 {
-                    body["ocr_languages"] = ExpressionConverter.ConvertO(bodyocrLanguages);
+                    body["ocr_languages"] = ExpressionConverter.ConvertO(__workflow_bodyocrLanguages);
                     bodypropCount++;
                 }
 
@@ -913,19 +927,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdf")]
-        [WorkflowExpressionFactory(nameof(__BuildOfficeToPDF))]
-        public IBodyWorkflowAction<OfficeToPDFResponse> OfficeToPDF([WorkflowExpression] Func<bodyfileSourceInput> bodyfileSource, [WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<string> bodyfile = null, [WorkflowExpression] Func<string> bodyfileUrl = null)
+        public IBodyWorkflowAction<OfficeToPDFResponse> OfficeToPDF(Expression<Func<bodyfileSourceInput>> bodyfileSource, Expression<Func<string>> bodyfileName, Expression<Func<string>> bodyfile = null, Expression<Func<string>> bodyfileUrl = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<OfficeToPDFResponse> __BuildOfficeToPDF(WorkflowExpression<bodyfileSourceInput> bodyfileSource, WorkflowExpression<string> bodyfileName, WorkflowExpression<string> bodyfile = null, WorkflowExpression<string> bodyfileUrl = null)
-        {
-            WorkflowExpression.Validate(bodyfileSource, nameof(bodyfileSource), required: true);
-            WorkflowExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
-            WorkflowExpression.Validate(bodyfile, nameof(bodyfile), required: false);
-            WorkflowExpression.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
+            var __workflow_bodyfileSource = bodyfileSource == null ? null : WorkflowExpression.Compile(bodyfileSource);
+            WorkflowExpression.Validate(__workflow_bodyfileSource, nameof(bodyfileSource), required: true);
+            var __workflow_bodyfileName = bodyfileName == null ? null : WorkflowExpression.Compile(bodyfileName);
+            WorkflowExpression.Validate(__workflow_bodyfileName, nameof(bodyfileName), required: true);
+            var __workflow_bodyfile = bodyfile == null ? null : WorkflowExpression.Compile(bodyfile);
+            WorkflowExpression.Validate(__workflow_bodyfile, nameof(bodyfile), required: false);
+            var __workflow_bodyfileUrl = bodyfileUrl == null ? null : WorkflowExpression.Compile(bodyfileUrl);
+            WorkflowExpression.Validate(__workflow_bodyfileUrl, nameof(bodyfileUrl), required: false);
             return new DeferredBodyAction<OfficeToPDFResponse>(() =>
             {
                 var apiCallPath = "/officetopdf";
@@ -934,18 +945,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdf
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["file_source"] = ExpressionConverter.ConvertO(bodyfileSource);
+                body["file_source"] = ExpressionConverter.ConvertO(__workflow_bodyfileSource);
                 bodypropCount++;
-                body["file_name"] = ExpressionConverter.ConvertO(bodyfileName);
-                if (bodyfile != null)
+                body["file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
+                if (__workflow_bodyfile != null)
                 {
-                    body["file"] = ExpressionConverter.ConvertO(bodyfile);
+                    body["file"] = ExpressionConverter.ConvertO(__workflow_bodyfile);
                     bodypropCount++;
                 }
 
-                if (bodyfileUrl != null)
+                if (__workflow_bodyfileUrl != null)
                 {
-                    body["file_url"] = ExpressionConverter.ConvertO(bodyfileUrl);
+                    body["file_url"] = ExpressionConverter.ConvertO(__workflow_bodyfileUrl);
                     bodypropCount++;
                 }
 

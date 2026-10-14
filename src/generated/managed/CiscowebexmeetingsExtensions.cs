@@ -1,31 +1,28 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciscowebexmeetings
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class CiscowebexmeetingsActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciscowebexmeetings")]
-        [WorkflowExpressionFactory(nameof(__BuildNewMeeting))]
-        public IBodyWorkflowAction<NewMeetingResponse> NewMeeting([WorkflowExpression] Func<string> bodytopic, [WorkflowExpression] Func<string> bodystartTime, [WorkflowExpression] Func<string> bodyendTime, [WorkflowExpression] Func<string> bodyattendees = null, [WorkflowExpression] Func<string> bodyagenda = null)
+        public IBodyWorkflowAction<NewMeetingResponse> NewMeeting(Expression<Func<string>> bodytopic, Expression<Func<string>> bodystartTime, Expression<Func<string>> bodyendTime, Expression<Func<string>> bodyattendees = null, Expression<Func<string>> bodyagenda = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<NewMeetingResponse> __BuildNewMeeting(WorkflowExpression<string> bodytopic, WorkflowExpression<string> bodystartTime, WorkflowExpression<string> bodyendTime, WorkflowExpression<string> bodyattendees = null, WorkflowExpression<string> bodyagenda = null)
-        {
-            WorkflowExpression.Validate(bodytopic, nameof(bodytopic), required: true);
-            WorkflowExpression.Validate(bodystartTime, nameof(bodystartTime), required: true);
-            WorkflowExpression.Validate(bodyendTime, nameof(bodyendTime), required: true);
-            WorkflowExpression.Validate(bodyattendees, nameof(bodyattendees), required: false);
-            WorkflowExpression.Validate(bodyagenda, nameof(bodyagenda), required: false);
+            var __workflow_bodytopic = bodytopic == null ? null : WorkflowExpression.Compile(bodytopic);
+            WorkflowExpression.Validate(__workflow_bodytopic, nameof(bodytopic), required: true);
+            var __workflow_bodystartTime = bodystartTime == null ? null : WorkflowExpression.Compile(bodystartTime);
+            WorkflowExpression.Validate(__workflow_bodystartTime, nameof(bodystartTime), required: true);
+            var __workflow_bodyendTime = bodyendTime == null ? null : WorkflowExpression.Compile(bodyendTime);
+            WorkflowExpression.Validate(__workflow_bodyendTime, nameof(bodyendTime), required: true);
+            var __workflow_bodyattendees = bodyattendees == null ? null : WorkflowExpression.Compile(bodyattendees);
+            WorkflowExpression.Validate(__workflow_bodyattendees, nameof(bodyattendees), required: false);
+            var __workflow_bodyagenda = bodyagenda == null ? null : WorkflowExpression.Compile(bodyagenda);
+            WorkflowExpression.Validate(__workflow_bodyagenda, nameof(bodyagenda), required: false);
             return new DeferredBodyAction<NewMeetingResponse>(() =>
             {
                 var apiCallPath = "/workflow/meetings/create";
@@ -36,20 +33,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciscowebexmeetings
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["topic"] = ExpressionConverter.ConvertO(bodytopic);
+                body["topic"] = ExpressionConverter.ConvertO(__workflow_bodytopic);
                 bodypropCount++;
-                body["startTime"] = ExpressionConverter.ConvertO(bodystartTime);
+                body["startTime"] = ExpressionConverter.ConvertO(__workflow_bodystartTime);
                 bodypropCount++;
-                body["endTime"] = ExpressionConverter.ConvertO(bodyendTime);
-                if (bodyattendees != null)
+                body["endTime"] = ExpressionConverter.ConvertO(__workflow_bodyendTime);
+                if (__workflow_bodyattendees != null)
                 {
-                    body["attendees"] = ExpressionConverter.ConvertO(bodyattendees);
+                    body["attendees"] = ExpressionConverter.ConvertO(__workflow_bodyattendees);
                     bodypropCount++;
                 }
 
-                if (bodyagenda != null)
+                if (__workflow_bodyagenda != null)
                 {
-                    body["agenda"] = ExpressionConverter.ConvertO(bodyagenda);
+                    body["agenda"] = ExpressionConverter.ConvertO(__workflow_bodyagenda);
                     bodypropCount++;
                 }
 

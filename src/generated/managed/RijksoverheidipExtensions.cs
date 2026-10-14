@@ -1,63 +1,52 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rijksoverheidip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class RijksoverheidipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rijksoverheidip")]
-        [WorkflowExpressionFactory(nameof(__BuildSchoolHolidays))]
-        public IBodyWorkflowAction<SchoolHolidaysResponseItem[]> SchoolHolidays([WorkflowExpression] Func<int> rows = null, [WorkflowExpression] Func<string> output = null)
+        public IBodyWorkflowAction<SchoolHolidaysResponseItem[]> SchoolHolidays(Expression<Func<int>> rows = null, Expression<Func<string>> output = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SchoolHolidaysResponseItem[]> __BuildSchoolHolidays(WorkflowExpression<int> rows = null, WorkflowExpression<string> output = null)
-        {
-            WorkflowExpression.Validate(rows, nameof(rows), required: false);
-            WorkflowExpression.Validate(output, nameof(output), required: false);
+            var __workflow_rows = rows == null ? null : WorkflowExpression.Compile(rows);
+            WorkflowExpression.Validate(__workflow_rows, nameof(rows), required: false);
+            var __workflow_output = output == null ? null : WorkflowExpression.Compile(output);
+            WorkflowExpression.Validate(__workflow_output, nameof(output), required: false);
             return new DeferredBodyAction<SchoolHolidaysResponseItem[]>(() =>
             {
                 var apiCallPath = "/v1/sources/rijksoverheid/infotypes/schoolholidays/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["rows"] = Convert.ToString(200);
-                if (rows != null)
-                    callPayload.Queries["rows"] = ExpressionConverter.Convert(rows);
+                if (__workflow_rows != null)
+                    callPayload.Queries["rows"] = ExpressionConverter.Convert(__workflow_rows);
                 callPayload.Queries["output"] = Convert.ToString("json");
-                if (output != null)
-                    callPayload.Queries["output"] = ExpressionConverter.Convert(output);
+                if (__workflow_output != null)
+                    callPayload.Queries["output"] = ExpressionConverter.Convert(__workflow_output);
                 return new ApiConnectionAction<SchoolHolidaysResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rijksoverheidip")]
-        [WorkflowExpressionFactory(nameof(__BuildSchoolHolidaysPerSchoolYear))]
-        public IBodyWorkflowAction<SchoolHolidaysPerSchoolYearResponse> SchoolHolidaysPerSchoolYear([WorkflowExpression] Func<string> schoolyear, [WorkflowExpression] Func<string> output = null)
+        public IBodyWorkflowAction<SchoolHolidaysPerSchoolYearResponse> SchoolHolidaysPerSchoolYear(Expression<Func<string>> schoolyear, Expression<Func<string>> output = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SchoolHolidaysPerSchoolYearResponse> __BuildSchoolHolidaysPerSchoolYear(WorkflowExpression<string> schoolyear, WorkflowExpression<string> output = null)
-        {
-            WorkflowExpression.Validate(schoolyear, nameof(schoolyear), required: true);
-            WorkflowExpression.Validate(output, nameof(output), required: false);
+            var __workflow_schoolyear = schoolyear == null ? null : WorkflowExpression.Compile(schoolyear);
+            WorkflowExpression.Validate(__workflow_schoolyear, nameof(schoolyear), required: true);
+            var __workflow_output = output == null ? null : WorkflowExpression.Compile(output);
+            WorkflowExpression.Validate(__workflow_output, nameof(output), required: false);
             return new DeferredBodyAction<SchoolHolidaysPerSchoolYearResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/sources/rijksoverheid/infotypes/schoolholidays/schoolyear/{0}", ExpressionConverter.ConvertWithUrlEncoding(schoolyear, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/sources/rijksoverheid/infotypes/schoolholidays/schoolyear/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_schoolyear, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["output"] = Convert.ToString("json");
-                if (output != null)
-                    callPayload.Queries["output"] = ExpressionConverter.Convert(output);
+                if (__workflow_output != null)
+                    callPayload.Queries["output"] = ExpressionConverter.Convert(__workflow_output);
                 return new ApiConnectionAction<SchoolHolidaysPerSchoolYearResponse>(callPayload);
             });
         }

@@ -1,27 +1,20 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alchemy
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class AlchemyActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "alchemy")]
-        [WorkflowExpressionFactory(nameof(__BuildGetSelfHelpInsights))]
-        public IBodyWorkflowAction<GetSelfHelpInsightsResponse> GetSelfHelpInsights([WorkflowExpression] Func<string> bodytext)
+        public IBodyWorkflowAction<GetSelfHelpInsightsResponse> GetSelfHelpInsights(Expression<Func<string>> bodytext)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetSelfHelpInsightsResponse> __BuildGetSelfHelpInsights(WorkflowExpression<string> bodytext)
-        {
-            WorkflowExpression.Validate(bodytext, nameof(bodytext), required: true);
+            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
+            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: true);
             return new DeferredBodyAction<GetSelfHelpInsightsResponse>(() =>
             {
                 var apiCallPath = "/api/v1/insights/dcp/esshelp-dcp";
@@ -30,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alchemy
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["Text"] = ExpressionConverter.ConvertO(bodytext);
+                body["Text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

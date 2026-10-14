@@ -1,27 +1,20 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maqtextanalytics
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class MaqtextanalyticsActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maqtextanalytics")]
-        [WorkflowExpressionFactory(nameof(__BuildSentimentClassifier))]
-        public IBodyWorkflowAction<SentimentClassifierResponseItem[]> SentimentClassifier([WorkflowExpression] Func<bodydataInputItem[]> bodydata = null)
+        public IBodyWorkflowAction<SentimentClassifierResponseItem[]> SentimentClassifier(Expression<Func<bodydataInputItem[]>> bodydata = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SentimentClassifierResponseItem[]> __BuildSentimentClassifier(WorkflowExpression<bodydataInputItem[]> bodydata = null)
-        {
-            WorkflowExpression.Validate(bodydata, nameof(bodydata), required: false);
+            var __workflow_bodydata = bodydata == null ? null : WorkflowExpression.Compile(bodydata);
+            WorkflowExpression.Validate(__workflow_bodydata, nameof(bodydata), required: false);
             return new DeferredBodyAction<SentimentClassifierResponseItem[]>(() =>
             {
                 var apiCallPath = "/text/SentimentClassifier";
@@ -29,9 +22,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maqtextanalytics
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodydata != null)
+                if (__workflow_bodydata != null)
                 {
-                    body["data"] = ExpressionConverter.ConvertO(bodydata);
+                    body["data"] = ExpressionConverter.ConvertO(__workflow_bodydata);
                     bodypropCount++;
                 }
 
@@ -45,17 +38,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maqtextanalytics
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maqtextanalytics")]
-        [WorkflowExpressionFactory(nameof(__BuildPIIScrubber))]
-        public IBodyWorkflowAction<PIIScrubberResponse> PIIScrubber([WorkflowExpression] Func<string> bodydata = null, [WorkflowExpression] Func<string> bodyentityList = null)
+        public IBodyWorkflowAction<PIIScrubberResponse> PIIScrubber(Expression<Func<string>> bodydata = null, Expression<Func<string>> bodyentityList = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PIIScrubberResponse> __BuildPIIScrubber(WorkflowExpression<string> bodydata = null, WorkflowExpression<string> bodyentityList = null)
-        {
-            WorkflowExpression.Validate(bodydata, nameof(bodydata), required: false);
-            WorkflowExpression.Validate(bodyentityList, nameof(bodyentityList), required: false);
+            var __workflow_bodydata = bodydata == null ? null : WorkflowExpression.Compile(bodydata);
+            WorkflowExpression.Validate(__workflow_bodydata, nameof(bodydata), required: false);
+            var __workflow_bodyentityList = bodyentityList == null ? null : WorkflowExpression.Compile(bodyentityList);
+            WorkflowExpression.Validate(__workflow_bodyentityList, nameof(bodyentityList), required: false);
             return new DeferredBodyAction<PIIScrubberResponse>(() =>
             {
                 var apiCallPath = "/text/PIIScrubber";
@@ -63,15 +51,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maqtextanalytics
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodydata != null)
+                if (__workflow_bodydata != null)
                 {
-                    body["data"] = ExpressionConverter.ConvertO(bodydata);
+                    body["data"] = ExpressionConverter.ConvertO(__workflow_bodydata);
                     bodypropCount++;
                 }
 
-                if (bodyentityList != null)
+                if (__workflow_bodyentityList != null)
                 {
-                    body["entity_list"] = ExpressionConverter.ConvertO(bodyentityList);
+                    body["entity_list"] = ExpressionConverter.ConvertO(__workflow_bodyentityList);
                     bodypropCount++;
                 }
 
@@ -85,19 +73,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maqtextanalytics
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maqtextanalytics")]
-        [WorkflowExpressionFactory(nameof(__BuildKeyPhraseExtractor))]
-        public IBodyWorkflowAction<KeyPhraseExtractorResponseItem[]> KeyPhraseExtractor([WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<int> bodykeyphrasesCount = null, [WorkflowExpression] Func<double> bodydiversityThreshold = null, [WorkflowExpression] Func<double> bodyaliasThreshold = null)
+        public IBodyWorkflowAction<KeyPhraseExtractorResponseItem[]> KeyPhraseExtractor(Expression<Func<string>> bodytext = null, Expression<Func<int>> bodykeyphrasesCount = null, Expression<Func<double>> bodydiversityThreshold = null, Expression<Func<double>> bodyaliasThreshold = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<KeyPhraseExtractorResponseItem[]> __BuildKeyPhraseExtractor(WorkflowExpression<string> bodytext = null, WorkflowExpression<int> bodykeyphrasesCount = null, WorkflowExpression<double> bodydiversityThreshold = null, WorkflowExpression<double> bodyaliasThreshold = null)
-        {
-            WorkflowExpression.Validate(bodytext, nameof(bodytext), required: false);
-            WorkflowExpression.Validate(bodykeyphrasesCount, nameof(bodykeyphrasesCount), required: false);
-            WorkflowExpression.Validate(bodydiversityThreshold, nameof(bodydiversityThreshold), required: false);
-            WorkflowExpression.Validate(bodyaliasThreshold, nameof(bodyaliasThreshold), required: false);
+            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
+            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: false);
+            var __workflow_bodykeyphrasesCount = bodykeyphrasesCount == null ? null : WorkflowExpression.Compile(bodykeyphrasesCount);
+            WorkflowExpression.Validate(__workflow_bodykeyphrasesCount, nameof(bodykeyphrasesCount), required: false);
+            var __workflow_bodydiversityThreshold = bodydiversityThreshold == null ? null : WorkflowExpression.Compile(bodydiversityThreshold);
+            WorkflowExpression.Validate(__workflow_bodydiversityThreshold, nameof(bodydiversityThreshold), required: false);
+            var __workflow_bodyaliasThreshold = bodyaliasThreshold == null ? null : WorkflowExpression.Compile(bodyaliasThreshold);
+            WorkflowExpression.Validate(__workflow_bodyaliasThreshold, nameof(bodyaliasThreshold), required: false);
             return new DeferredBodyAction<KeyPhraseExtractorResponseItem[]>(() =>
             {
                 var apiCallPath = "/text/KeyPhrase";
@@ -105,27 +90,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maqtextanalytics
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodytext != null)
+                if (__workflow_bodytext != null)
                 {
-                    body["text"] = ExpressionConverter.ConvertO(bodytext);
+                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
                     bodypropCount++;
                 }
 
-                if (bodykeyphrasesCount != null)
+                if (__workflow_bodykeyphrasesCount != null)
                 {
-                    body["keyphrases_count"] = ExpressionConverter.ConvertO(bodykeyphrasesCount);
+                    body["keyphrases_count"] = ExpressionConverter.ConvertO(__workflow_bodykeyphrasesCount);
                     bodypropCount++;
                 }
 
-                if (bodydiversityThreshold != null)
+                if (__workflow_bodydiversityThreshold != null)
                 {
-                    body["diversity_threshold"] = ExpressionConverter.ConvertO(bodydiversityThreshold);
+                    body["diversity_threshold"] = ExpressionConverter.ConvertO(__workflow_bodydiversityThreshold);
                     bodypropCount++;
                 }
 
-                if (bodyaliasThreshold != null)
+                if (__workflow_bodyaliasThreshold != null)
                 {
-                    body["alias_threshold"] = ExpressionConverter.ConvertO(bodyaliasThreshold);
+                    body["alias_threshold"] = ExpressionConverter.ConvertO(__workflow_bodyaliasThreshold);
                     bodypropCount++;
                 }
 

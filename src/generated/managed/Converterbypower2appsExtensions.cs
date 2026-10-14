@@ -1,28 +1,22 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class Converterbypower2appsActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildAddHtmlToWord))]
-        public IBodyWorkflowAction<DtoResponseV5101AddHtmlToWord> AddHtmlToWord([WorkflowExpression] Func<string> dtoRequestV5101AddHtmlToWordhTML, [WorkflowExpression] Func<string> dtoRequestV5101AddHtmlToWordexistingFileContent = null)
+        public IBodyWorkflowAction<DtoResponseV5101AddHtmlToWord> AddHtmlToWord(Expression<Func<string>> dtoRequestV5101AddHtmlToWordhTML, Expression<Func<string>> dtoRequestV5101AddHtmlToWordexistingFileContent = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV5101AddHtmlToWord> __BuildAddHtmlToWord(WorkflowExpression<string> dtoRequestV5101AddHtmlToWordhTML, WorkflowExpression<string> dtoRequestV5101AddHtmlToWordexistingFileContent = null)
-        {
-            WorkflowExpression.Validate(dtoRequestV5101AddHtmlToWordhTML, nameof(dtoRequestV5101AddHtmlToWordhTML), required: true);
-            WorkflowExpression.Validate(dtoRequestV5101AddHtmlToWordexistingFileContent, nameof(dtoRequestV5101AddHtmlToWordexistingFileContent), required: false);
+            var __workflow_dtoRequestV5101AddHtmlToWordhTML = dtoRequestV5101AddHtmlToWordhTML == null ? null : WorkflowExpression.Compile(dtoRequestV5101AddHtmlToWordhTML);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5101AddHtmlToWordhTML, nameof(dtoRequestV5101AddHtmlToWordhTML), required: true);
+            var __workflow_dtoRequestV5101AddHtmlToWordexistingFileContent = dtoRequestV5101AddHtmlToWordexistingFileContent == null ? null : WorkflowExpression.Compile(dtoRequestV5101AddHtmlToWordexistingFileContent);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5101AddHtmlToWordexistingFileContent, nameof(dtoRequestV5101AddHtmlToWordexistingFileContent), required: false);
             return new DeferredBodyAction<DtoResponseV5101AddHtmlToWord>(() =>
             {
                 var apiCallPath = "/V5101_AddHtmlToWord";
@@ -30,14 +24,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var dtoRequestV5101AddHtmlToWord = new JObject();
                 var dtoRequestV5101AddHtmlToWordpropCount = 0;
-                if (dtoRequestV5101AddHtmlToWordexistingFileContent != null)
+                if (__workflow_dtoRequestV5101AddHtmlToWordexistingFileContent != null)
                 {
-                    dtoRequestV5101AddHtmlToWord["existingFileContent"] = ExpressionConverter.ConvertO(dtoRequestV5101AddHtmlToWordexistingFileContent);
+                    dtoRequestV5101AddHtmlToWord["existingFileContent"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5101AddHtmlToWordexistingFileContent);
                     dtoRequestV5101AddHtmlToWordpropCount++;
                 }
 
                 dtoRequestV5101AddHtmlToWordpropCount++;
-                dtoRequestV5101AddHtmlToWord["html"] = ExpressionConverter.ConvertO(dtoRequestV5101AddHtmlToWordhTML);
+                dtoRequestV5101AddHtmlToWord["html"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5101AddHtmlToWordhTML);
                 if (dtoRequestV5101AddHtmlToWordpropCount > 0)
                 {
                     callPayload.Body = dtoRequestV5101AddHtmlToWord;
@@ -48,20 +42,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildAddImageToWord))]
-        public IBodyWorkflowAction<DtoResponseV5031AddImageToWord> AddImageToWord([WorkflowExpression] Func<string> dtoRequestV5031AddImageToWordimage, [WorkflowExpression] Func<string> dtoRequestV5031AddImageToWordexistingFileContent = null, [WorkflowExpression] Func<string> dtoRequestV5031AddImageToWordcaptionText = null, [WorkflowExpression] Func<int> dtoRequestV5031AddImageToWordmaximumImageWidth = null, [WorkflowExpression] Func<int> dtoRequestV5031AddImageToWordmaximumImageHeight = null)
+        public IBodyWorkflowAction<DtoResponseV5031AddImageToWord> AddImageToWord(Expression<Func<string>> dtoRequestV5031AddImageToWordimage, Expression<Func<string>> dtoRequestV5031AddImageToWordexistingFileContent = null, Expression<Func<string>> dtoRequestV5031AddImageToWordcaptionText = null, Expression<Func<int>> dtoRequestV5031AddImageToWordmaximumImageWidth = null, Expression<Func<int>> dtoRequestV5031AddImageToWordmaximumImageHeight = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV5031AddImageToWord> __BuildAddImageToWord(WorkflowExpression<string> dtoRequestV5031AddImageToWordimage, WorkflowExpression<string> dtoRequestV5031AddImageToWordexistingFileContent = null, WorkflowExpression<string> dtoRequestV5031AddImageToWordcaptionText = null, WorkflowExpression<int> dtoRequestV5031AddImageToWordmaximumImageWidth = null, WorkflowExpression<int> dtoRequestV5031AddImageToWordmaximumImageHeight = null)
-        {
-            WorkflowExpression.Validate(dtoRequestV5031AddImageToWordimage, nameof(dtoRequestV5031AddImageToWordimage), required: true);
-            WorkflowExpression.Validate(dtoRequestV5031AddImageToWordexistingFileContent, nameof(dtoRequestV5031AddImageToWordexistingFileContent), required: false);
-            WorkflowExpression.Validate(dtoRequestV5031AddImageToWordcaptionText, nameof(dtoRequestV5031AddImageToWordcaptionText), required: false);
-            WorkflowExpression.Validate(dtoRequestV5031AddImageToWordmaximumImageWidth, nameof(dtoRequestV5031AddImageToWordmaximumImageWidth), required: false);
-            WorkflowExpression.Validate(dtoRequestV5031AddImageToWordmaximumImageHeight, nameof(dtoRequestV5031AddImageToWordmaximumImageHeight), required: false);
+            var __workflow_dtoRequestV5031AddImageToWordimage = dtoRequestV5031AddImageToWordimage == null ? null : WorkflowExpression.Compile(dtoRequestV5031AddImageToWordimage);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5031AddImageToWordimage, nameof(dtoRequestV5031AddImageToWordimage), required: true);
+            var __workflow_dtoRequestV5031AddImageToWordexistingFileContent = dtoRequestV5031AddImageToWordexistingFileContent == null ? null : WorkflowExpression.Compile(dtoRequestV5031AddImageToWordexistingFileContent);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5031AddImageToWordexistingFileContent, nameof(dtoRequestV5031AddImageToWordexistingFileContent), required: false);
+            var __workflow_dtoRequestV5031AddImageToWordcaptionText = dtoRequestV5031AddImageToWordcaptionText == null ? null : WorkflowExpression.Compile(dtoRequestV5031AddImageToWordcaptionText);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5031AddImageToWordcaptionText, nameof(dtoRequestV5031AddImageToWordcaptionText), required: false);
+            var __workflow_dtoRequestV5031AddImageToWordmaximumImageWidth = dtoRequestV5031AddImageToWordmaximumImageWidth == null ? null : WorkflowExpression.Compile(dtoRequestV5031AddImageToWordmaximumImageWidth);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5031AddImageToWordmaximumImageWidth, nameof(dtoRequestV5031AddImageToWordmaximumImageWidth), required: false);
+            var __workflow_dtoRequestV5031AddImageToWordmaximumImageHeight = dtoRequestV5031AddImageToWordmaximumImageHeight == null ? null : WorkflowExpression.Compile(dtoRequestV5031AddImageToWordmaximumImageHeight);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5031AddImageToWordmaximumImageHeight, nameof(dtoRequestV5031AddImageToWordmaximumImageHeight), required: false);
             return new DeferredBodyAction<DtoResponseV5031AddImageToWord>(() =>
             {
                 var apiCallPath = "/V5031_AddImageToWord";
@@ -69,29 +61,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var dtoRequestV5031AddImageToWord = new JObject();
                 var dtoRequestV5031AddImageToWordpropCount = 0;
-                if (dtoRequestV5031AddImageToWordexistingFileContent != null)
+                if (__workflow_dtoRequestV5031AddImageToWordexistingFileContent != null)
                 {
-                    dtoRequestV5031AddImageToWord["existingFileContent"] = ExpressionConverter.ConvertO(dtoRequestV5031AddImageToWordexistingFileContent);
+                    dtoRequestV5031AddImageToWord["existingFileContent"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5031AddImageToWordexistingFileContent);
                     dtoRequestV5031AddImageToWordpropCount++;
                 }
 
                 dtoRequestV5031AddImageToWordpropCount++;
-                dtoRequestV5031AddImageToWord["image"] = ExpressionConverter.ConvertO(dtoRequestV5031AddImageToWordimage);
-                if (dtoRequestV5031AddImageToWordcaptionText != null)
+                dtoRequestV5031AddImageToWord["image"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5031AddImageToWordimage);
+                if (__workflow_dtoRequestV5031AddImageToWordcaptionText != null)
                 {
-                    dtoRequestV5031AddImageToWord["imageText"] = ExpressionConverter.ConvertO(dtoRequestV5031AddImageToWordcaptionText);
+                    dtoRequestV5031AddImageToWord["imageText"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5031AddImageToWordcaptionText);
                     dtoRequestV5031AddImageToWordpropCount++;
                 }
 
-                if (dtoRequestV5031AddImageToWordmaximumImageWidth != null)
+                if (__workflow_dtoRequestV5031AddImageToWordmaximumImageWidth != null)
                 {
-                    dtoRequestV5031AddImageToWord["maxWidth"] = ExpressionConverter.ConvertO(dtoRequestV5031AddImageToWordmaximumImageWidth);
+                    dtoRequestV5031AddImageToWord["maxWidth"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5031AddImageToWordmaximumImageWidth);
                     dtoRequestV5031AddImageToWordpropCount++;
                 }
 
-                if (dtoRequestV5031AddImageToWordmaximumImageHeight != null)
+                if (__workflow_dtoRequestV5031AddImageToWordmaximumImageHeight != null)
                 {
-                    dtoRequestV5031AddImageToWord["maxHeight"] = ExpressionConverter.ConvertO(dtoRequestV5031AddImageToWordmaximumImageHeight);
+                    dtoRequestV5031AddImageToWord["maxHeight"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5031AddImageToWordmaximumImageHeight);
                     dtoRequestV5031AddImageToWordpropCount++;
                 }
 
@@ -105,20 +97,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildAddImageWithinTableToWord))]
-        public IBodyWorkflowAction<DtoResponseV5042AddImageWithinTableToWord> AddImageWithinTableToWord([WorkflowExpression] Func<string> dtoRequestV5042AddImageWithinTableToWordimage, [WorkflowExpression] Func<string> dtoRequestV5042AddImageWithinTableToWordexistingFileContent = null, [WorkflowExpression] Func<string> dtoRequestV5042AddImageWithinTableToWorddescriptionText = null, [WorkflowExpression] Func<int> dtoRequestV5042AddImageWithinTableToWordmaximumImageWidth = null, [WorkflowExpression] Func<int> dtoRequestV5042AddImageWithinTableToWordmaximumImageHeight = null)
+        public IBodyWorkflowAction<DtoResponseV5042AddImageWithinTableToWord> AddImageWithinTableToWord(Expression<Func<string>> dtoRequestV5042AddImageWithinTableToWordimage, Expression<Func<string>> dtoRequestV5042AddImageWithinTableToWordexistingFileContent = null, Expression<Func<string>> dtoRequestV5042AddImageWithinTableToWorddescriptionText = null, Expression<Func<int>> dtoRequestV5042AddImageWithinTableToWordmaximumImageWidth = null, Expression<Func<int>> dtoRequestV5042AddImageWithinTableToWordmaximumImageHeight = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV5042AddImageWithinTableToWord> __BuildAddImageWithinTableToWord(WorkflowExpression<string> dtoRequestV5042AddImageWithinTableToWordimage, WorkflowExpression<string> dtoRequestV5042AddImageWithinTableToWordexistingFileContent = null, WorkflowExpression<string> dtoRequestV5042AddImageWithinTableToWorddescriptionText = null, WorkflowExpression<int> dtoRequestV5042AddImageWithinTableToWordmaximumImageWidth = null, WorkflowExpression<int> dtoRequestV5042AddImageWithinTableToWordmaximumImageHeight = null)
-        {
-            WorkflowExpression.Validate(dtoRequestV5042AddImageWithinTableToWordimage, nameof(dtoRequestV5042AddImageWithinTableToWordimage), required: true);
-            WorkflowExpression.Validate(dtoRequestV5042AddImageWithinTableToWordexistingFileContent, nameof(dtoRequestV5042AddImageWithinTableToWordexistingFileContent), required: false);
-            WorkflowExpression.Validate(dtoRequestV5042AddImageWithinTableToWorddescriptionText, nameof(dtoRequestV5042AddImageWithinTableToWorddescriptionText), required: false);
-            WorkflowExpression.Validate(dtoRequestV5042AddImageWithinTableToWordmaximumImageWidth, nameof(dtoRequestV5042AddImageWithinTableToWordmaximumImageWidth), required: false);
-            WorkflowExpression.Validate(dtoRequestV5042AddImageWithinTableToWordmaximumImageHeight, nameof(dtoRequestV5042AddImageWithinTableToWordmaximumImageHeight), required: false);
+            var __workflow_dtoRequestV5042AddImageWithinTableToWordimage = dtoRequestV5042AddImageWithinTableToWordimage == null ? null : WorkflowExpression.Compile(dtoRequestV5042AddImageWithinTableToWordimage);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5042AddImageWithinTableToWordimage, nameof(dtoRequestV5042AddImageWithinTableToWordimage), required: true);
+            var __workflow_dtoRequestV5042AddImageWithinTableToWordexistingFileContent = dtoRequestV5042AddImageWithinTableToWordexistingFileContent == null ? null : WorkflowExpression.Compile(dtoRequestV5042AddImageWithinTableToWordexistingFileContent);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5042AddImageWithinTableToWordexistingFileContent, nameof(dtoRequestV5042AddImageWithinTableToWordexistingFileContent), required: false);
+            var __workflow_dtoRequestV5042AddImageWithinTableToWorddescriptionText = dtoRequestV5042AddImageWithinTableToWorddescriptionText == null ? null : WorkflowExpression.Compile(dtoRequestV5042AddImageWithinTableToWorddescriptionText);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5042AddImageWithinTableToWorddescriptionText, nameof(dtoRequestV5042AddImageWithinTableToWorddescriptionText), required: false);
+            var __workflow_dtoRequestV5042AddImageWithinTableToWordmaximumImageWidth = dtoRequestV5042AddImageWithinTableToWordmaximumImageWidth == null ? null : WorkflowExpression.Compile(dtoRequestV5042AddImageWithinTableToWordmaximumImageWidth);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5042AddImageWithinTableToWordmaximumImageWidth, nameof(dtoRequestV5042AddImageWithinTableToWordmaximumImageWidth), required: false);
+            var __workflow_dtoRequestV5042AddImageWithinTableToWordmaximumImageHeight = dtoRequestV5042AddImageWithinTableToWordmaximumImageHeight == null ? null : WorkflowExpression.Compile(dtoRequestV5042AddImageWithinTableToWordmaximumImageHeight);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5042AddImageWithinTableToWordmaximumImageHeight, nameof(dtoRequestV5042AddImageWithinTableToWordmaximumImageHeight), required: false);
             return new DeferredBodyAction<DtoResponseV5042AddImageWithinTableToWord>(() =>
             {
                 var apiCallPath = "/V5042_AddImageWithinTableToWord";
@@ -126,29 +116,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var dtoRequestV5042AddImageWithinTableToWord = new JObject();
                 var dtoRequestV5042AddImageWithinTableToWordpropCount = 0;
-                if (dtoRequestV5042AddImageWithinTableToWordexistingFileContent != null)
+                if (__workflow_dtoRequestV5042AddImageWithinTableToWordexistingFileContent != null)
                 {
-                    dtoRequestV5042AddImageWithinTableToWord["existingFileContent"] = ExpressionConverter.ConvertO(dtoRequestV5042AddImageWithinTableToWordexistingFileContent);
+                    dtoRequestV5042AddImageWithinTableToWord["existingFileContent"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5042AddImageWithinTableToWordexistingFileContent);
                     dtoRequestV5042AddImageWithinTableToWordpropCount++;
                 }
 
                 dtoRequestV5042AddImageWithinTableToWordpropCount++;
-                dtoRequestV5042AddImageWithinTableToWord["image"] = ExpressionConverter.ConvertO(dtoRequestV5042AddImageWithinTableToWordimage);
-                if (dtoRequestV5042AddImageWithinTableToWorddescriptionText != null)
+                dtoRequestV5042AddImageWithinTableToWord["image"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5042AddImageWithinTableToWordimage);
+                if (__workflow_dtoRequestV5042AddImageWithinTableToWorddescriptionText != null)
                 {
-                    dtoRequestV5042AddImageWithinTableToWord["imageText"] = ExpressionConverter.ConvertO(dtoRequestV5042AddImageWithinTableToWorddescriptionText);
+                    dtoRequestV5042AddImageWithinTableToWord["imageText"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5042AddImageWithinTableToWorddescriptionText);
                     dtoRequestV5042AddImageWithinTableToWordpropCount++;
                 }
 
-                if (dtoRequestV5042AddImageWithinTableToWordmaximumImageWidth != null)
+                if (__workflow_dtoRequestV5042AddImageWithinTableToWordmaximumImageWidth != null)
                 {
-                    dtoRequestV5042AddImageWithinTableToWord["maxWidth"] = ExpressionConverter.ConvertO(dtoRequestV5042AddImageWithinTableToWordmaximumImageWidth);
+                    dtoRequestV5042AddImageWithinTableToWord["maxWidth"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5042AddImageWithinTableToWordmaximumImageWidth);
                     dtoRequestV5042AddImageWithinTableToWordpropCount++;
                 }
 
-                if (dtoRequestV5042AddImageWithinTableToWordmaximumImageHeight != null)
+                if (__workflow_dtoRequestV5042AddImageWithinTableToWordmaximumImageHeight != null)
                 {
-                    dtoRequestV5042AddImageWithinTableToWord["maxHeight"] = ExpressionConverter.ConvertO(dtoRequestV5042AddImageWithinTableToWordmaximumImageHeight);
+                    dtoRequestV5042AddImageWithinTableToWord["maxHeight"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5042AddImageWithinTableToWordmaximumImageHeight);
                     dtoRequestV5042AddImageWithinTableToWordpropCount++;
                 }
 
@@ -162,20 +152,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildAddTableToWord))]
-        public IBodyWorkflowAction<DtoResponseV5052AddTableToWord> AddTableToWord([WorkflowExpression] Func<string> dtoRequestV5052AddTableToWordtableData, [WorkflowExpression] Func<string> dtoRequestV5052AddTableToWordexistingFileContent = null, [WorkflowExpression] Func<bool> dtoRequestV5052AddTableToWordshowHeaders = null, [WorkflowExpression] Func<string> dtoRequestV5052AddTableToWordtableStyle = null, [WorkflowExpression] Func<string> dtoRequestV5052AddTableToWordtableCaption = null)
+        public IBodyWorkflowAction<DtoResponseV5052AddTableToWord> AddTableToWord(Expression<Func<string>> dtoRequestV5052AddTableToWordtableData, Expression<Func<string>> dtoRequestV5052AddTableToWordexistingFileContent = null, Expression<Func<bool>> dtoRequestV5052AddTableToWordshowHeaders = null, Expression<Func<string>> dtoRequestV5052AddTableToWordtableStyle = null, Expression<Func<string>> dtoRequestV5052AddTableToWordtableCaption = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV5052AddTableToWord> __BuildAddTableToWord(WorkflowExpression<string> dtoRequestV5052AddTableToWordtableData, WorkflowExpression<string> dtoRequestV5052AddTableToWordexistingFileContent = null, WorkflowExpression<bool> dtoRequestV5052AddTableToWordshowHeaders = null, WorkflowExpression<string> dtoRequestV5052AddTableToWordtableStyle = null, WorkflowExpression<string> dtoRequestV5052AddTableToWordtableCaption = null)
-        {
-            WorkflowExpression.Validate(dtoRequestV5052AddTableToWordtableData, nameof(dtoRequestV5052AddTableToWordtableData), required: true);
-            WorkflowExpression.Validate(dtoRequestV5052AddTableToWordexistingFileContent, nameof(dtoRequestV5052AddTableToWordexistingFileContent), required: false);
-            WorkflowExpression.Validate(dtoRequestV5052AddTableToWordshowHeaders, nameof(dtoRequestV5052AddTableToWordshowHeaders), required: false);
-            WorkflowExpression.Validate(dtoRequestV5052AddTableToWordtableStyle, nameof(dtoRequestV5052AddTableToWordtableStyle), required: false);
-            WorkflowExpression.Validate(dtoRequestV5052AddTableToWordtableCaption, nameof(dtoRequestV5052AddTableToWordtableCaption), required: false);
+            var __workflow_dtoRequestV5052AddTableToWordtableData = dtoRequestV5052AddTableToWordtableData == null ? null : WorkflowExpression.Compile(dtoRequestV5052AddTableToWordtableData);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5052AddTableToWordtableData, nameof(dtoRequestV5052AddTableToWordtableData), required: true);
+            var __workflow_dtoRequestV5052AddTableToWordexistingFileContent = dtoRequestV5052AddTableToWordexistingFileContent == null ? null : WorkflowExpression.Compile(dtoRequestV5052AddTableToWordexistingFileContent);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5052AddTableToWordexistingFileContent, nameof(dtoRequestV5052AddTableToWordexistingFileContent), required: false);
+            var __workflow_dtoRequestV5052AddTableToWordshowHeaders = dtoRequestV5052AddTableToWordshowHeaders == null ? null : WorkflowExpression.Compile(dtoRequestV5052AddTableToWordshowHeaders);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5052AddTableToWordshowHeaders, nameof(dtoRequestV5052AddTableToWordshowHeaders), required: false);
+            var __workflow_dtoRequestV5052AddTableToWordtableStyle = dtoRequestV5052AddTableToWordtableStyle == null ? null : WorkflowExpression.Compile(dtoRequestV5052AddTableToWordtableStyle);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5052AddTableToWordtableStyle, nameof(dtoRequestV5052AddTableToWordtableStyle), required: false);
+            var __workflow_dtoRequestV5052AddTableToWordtableCaption = dtoRequestV5052AddTableToWordtableCaption == null ? null : WorkflowExpression.Compile(dtoRequestV5052AddTableToWordtableCaption);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5052AddTableToWordtableCaption, nameof(dtoRequestV5052AddTableToWordtableCaption), required: false);
             return new DeferredBodyAction<DtoResponseV5052AddTableToWord>(() =>
             {
                 var apiCallPath = "/V5052_AddTableToWord";
@@ -183,19 +171,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var dtoRequestV5052AddTableToWord = new JObject();
                 var dtoRequestV5052AddTableToWordpropCount = 0;
-                if (dtoRequestV5052AddTableToWordexistingFileContent != null)
+                if (__workflow_dtoRequestV5052AddTableToWordexistingFileContent != null)
                 {
-                    dtoRequestV5052AddTableToWord["existingFileContent"] = ExpressionConverter.ConvertO(dtoRequestV5052AddTableToWordexistingFileContent);
+                    dtoRequestV5052AddTableToWord["existingFileContent"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5052AddTableToWordexistingFileContent);
                     dtoRequestV5052AddTableToWordpropCount++;
                 }
 
                 dtoRequestV5052AddTableToWordpropCount++;
-                dtoRequestV5052AddTableToWord["table"] = ExpressionConverter.ConvertO(dtoRequestV5052AddTableToWordtableData);
-                if (dtoRequestV5052AddTableToWordshowHeaders != null)
+                dtoRequestV5052AddTableToWord["table"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5052AddTableToWordtableData);
+                if (__workflow_dtoRequestV5052AddTableToWordshowHeaders != null)
                 {
-                    if (dtoRequestV5052AddTableToWordshowHeaders != null)
+                    if (__workflow_dtoRequestV5052AddTableToWordshowHeaders != null)
                     {
-                        dtoRequestV5052AddTableToWord["hasHeader"] = ExpressionConverter.ConvertO(dtoRequestV5052AddTableToWordshowHeaders);
+                        dtoRequestV5052AddTableToWord["hasHeader"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5052AddTableToWordshowHeaders);
                         dtoRequestV5052AddTableToWordpropCount++;
                     }
 
@@ -207,11 +195,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                     dtoRequestV5052AddTableToWordpropCount++;
                 }
 
-                if (dtoRequestV5052AddTableToWordtableStyle != null)
+                if (__workflow_dtoRequestV5052AddTableToWordtableStyle != null)
                 {
-                    if (dtoRequestV5052AddTableToWordtableStyle != null)
+                    if (__workflow_dtoRequestV5052AddTableToWordtableStyle != null)
                     {
-                        dtoRequestV5052AddTableToWord["tableStyle"] = ExpressionConverter.ConvertO(dtoRequestV5052AddTableToWordtableStyle);
+                        dtoRequestV5052AddTableToWord["tableStyle"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5052AddTableToWordtableStyle);
                         dtoRequestV5052AddTableToWordpropCount++;
                     }
 
@@ -223,9 +211,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                     dtoRequestV5052AddTableToWordpropCount++;
                 }
 
-                if (dtoRequestV5052AddTableToWordtableCaption != null)
+                if (__workflow_dtoRequestV5052AddTableToWordtableCaption != null)
                 {
-                    dtoRequestV5052AddTableToWord["tableText"] = ExpressionConverter.ConvertO(dtoRequestV5052AddTableToWordtableCaption);
+                    dtoRequestV5052AddTableToWord["tableText"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5052AddTableToWordtableCaption);
                     dtoRequestV5052AddTableToWordpropCount++;
                 }
 
@@ -239,18 +227,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildAddTextToWord))]
-        public IBodyWorkflowAction<DtoResponseV5061AddTextToWord> AddTextToWord([WorkflowExpression] Func<string> dtoRequestAddTextToWordDatatype, [WorkflowExpression] Func<string> dtoRequestAddTextToWordDatatext, [WorkflowExpression] Func<string> dtoRequestAddTextToWordDataexistingFileContent = null)
+        public IBodyWorkflowAction<DtoResponseV5061AddTextToWord> AddTextToWord(Expression<Func<string>> dtoRequestAddTextToWordDatatype, Expression<Func<string>> dtoRequestAddTextToWordDatatext, Expression<Func<string>> dtoRequestAddTextToWordDataexistingFileContent = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV5061AddTextToWord> __BuildAddTextToWord(WorkflowExpression<string> dtoRequestAddTextToWordDatatype, WorkflowExpression<string> dtoRequestAddTextToWordDatatext, WorkflowExpression<string> dtoRequestAddTextToWordDataexistingFileContent = null)
-        {
-            WorkflowExpression.Validate(dtoRequestAddTextToWordDatatype, nameof(dtoRequestAddTextToWordDatatype), required: true);
-            WorkflowExpression.Validate(dtoRequestAddTextToWordDatatext, nameof(dtoRequestAddTextToWordDatatext), required: true);
-            WorkflowExpression.Validate(dtoRequestAddTextToWordDataexistingFileContent, nameof(dtoRequestAddTextToWordDataexistingFileContent), required: false);
+            var __workflow_dtoRequestAddTextToWordDatatype = dtoRequestAddTextToWordDatatype == null ? null : WorkflowExpression.Compile(dtoRequestAddTextToWordDatatype);
+            WorkflowExpression.Validate(__workflow_dtoRequestAddTextToWordDatatype, nameof(dtoRequestAddTextToWordDatatype), required: true);
+            var __workflow_dtoRequestAddTextToWordDatatext = dtoRequestAddTextToWordDatatext == null ? null : WorkflowExpression.Compile(dtoRequestAddTextToWordDatatext);
+            WorkflowExpression.Validate(__workflow_dtoRequestAddTextToWordDatatext, nameof(dtoRequestAddTextToWordDatatext), required: true);
+            var __workflow_dtoRequestAddTextToWordDataexistingFileContent = dtoRequestAddTextToWordDataexistingFileContent == null ? null : WorkflowExpression.Compile(dtoRequestAddTextToWordDataexistingFileContent);
+            WorkflowExpression.Validate(__workflow_dtoRequestAddTextToWordDataexistingFileContent, nameof(dtoRequestAddTextToWordDataexistingFileContent), required: false);
             return new DeferredBodyAction<DtoResponseV5061AddTextToWord>(() =>
             {
                 var apiCallPath = "/V5061_AddTextToWord";
@@ -258,16 +242,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var dtoRequestAddTextToWordData = new JObject();
                 var dtoRequestAddTextToWordDatapropCount = 0;
-                if (dtoRequestAddTextToWordDataexistingFileContent != null)
+                if (__workflow_dtoRequestAddTextToWordDataexistingFileContent != null)
                 {
-                    dtoRequestAddTextToWordData["existingFileContent"] = ExpressionConverter.ConvertO(dtoRequestAddTextToWordDataexistingFileContent);
+                    dtoRequestAddTextToWordData["existingFileContent"] = ExpressionConverter.ConvertO(__workflow_dtoRequestAddTextToWordDataexistingFileContent);
                     dtoRequestAddTextToWordDatapropCount++;
                 }
 
                 dtoRequestAddTextToWordDatapropCount++;
-                dtoRequestAddTextToWordData["sectionType"] = ExpressionConverter.ConvertO(dtoRequestAddTextToWordDatatype);
+                dtoRequestAddTextToWordData["sectionType"] = ExpressionConverter.ConvertO(__workflow_dtoRequestAddTextToWordDatatype);
                 dtoRequestAddTextToWordDatapropCount++;
-                dtoRequestAddTextToWordData["text"] = ExpressionConverter.ConvertO(dtoRequestAddTextToWordDatatext);
+                dtoRequestAddTextToWordData["text"] = ExpressionConverter.ConvertO(__workflow_dtoRequestAddTextToWordDatatext);
                 if (dtoRequestAddTextToWordDatapropCount > 0)
                 {
                     callPayload.Body = dtoRequestAddTextToWordData;
@@ -278,19 +262,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildCombineCsvs))]
-        public IBodyWorkflowAction<DtoResponseV2081CombineCsvs> CombineCsvs([WorkflowExpression] Func<string> dtoRequestV2081CombineCsvsmainCSV, [WorkflowExpression] Func<string> dtoRequestV2081CombineCsvscombineColumnName, [WorkflowExpression] Func<string> dtoRequestV2081CombineCsvssecondCSV, [WorkflowExpression] Func<string> dtoRequestV2081CombineCsvssecondCSVColumn = null)
+        public IBodyWorkflowAction<DtoResponseV2081CombineCsvs> CombineCsvs(Expression<Func<string>> dtoRequestV2081CombineCsvsmainCSV, Expression<Func<string>> dtoRequestV2081CombineCsvscombineColumnName, Expression<Func<string>> dtoRequestV2081CombineCsvssecondCSV, Expression<Func<string>> dtoRequestV2081CombineCsvssecondCSVColumn = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV2081CombineCsvs> __BuildCombineCsvs(WorkflowExpression<string> dtoRequestV2081CombineCsvsmainCSV, WorkflowExpression<string> dtoRequestV2081CombineCsvscombineColumnName, WorkflowExpression<string> dtoRequestV2081CombineCsvssecondCSV, WorkflowExpression<string> dtoRequestV2081CombineCsvssecondCSVColumn = null)
-        {
-            WorkflowExpression.Validate(dtoRequestV2081CombineCsvsmainCSV, nameof(dtoRequestV2081CombineCsvsmainCSV), required: true);
-            WorkflowExpression.Validate(dtoRequestV2081CombineCsvscombineColumnName, nameof(dtoRequestV2081CombineCsvscombineColumnName), required: true);
-            WorkflowExpression.Validate(dtoRequestV2081CombineCsvssecondCSV, nameof(dtoRequestV2081CombineCsvssecondCSV), required: true);
-            WorkflowExpression.Validate(dtoRequestV2081CombineCsvssecondCSVColumn, nameof(dtoRequestV2081CombineCsvssecondCSVColumn), required: false);
+            var __workflow_dtoRequestV2081CombineCsvsmainCSV = dtoRequestV2081CombineCsvsmainCSV == null ? null : WorkflowExpression.Compile(dtoRequestV2081CombineCsvsmainCSV);
+            WorkflowExpression.Validate(__workflow_dtoRequestV2081CombineCsvsmainCSV, nameof(dtoRequestV2081CombineCsvsmainCSV), required: true);
+            var __workflow_dtoRequestV2081CombineCsvscombineColumnName = dtoRequestV2081CombineCsvscombineColumnName == null ? null : WorkflowExpression.Compile(dtoRequestV2081CombineCsvscombineColumnName);
+            WorkflowExpression.Validate(__workflow_dtoRequestV2081CombineCsvscombineColumnName, nameof(dtoRequestV2081CombineCsvscombineColumnName), required: true);
+            var __workflow_dtoRequestV2081CombineCsvssecondCSV = dtoRequestV2081CombineCsvssecondCSV == null ? null : WorkflowExpression.Compile(dtoRequestV2081CombineCsvssecondCSV);
+            WorkflowExpression.Validate(__workflow_dtoRequestV2081CombineCsvssecondCSV, nameof(dtoRequestV2081CombineCsvssecondCSV), required: true);
+            var __workflow_dtoRequestV2081CombineCsvssecondCSVColumn = dtoRequestV2081CombineCsvssecondCSVColumn == null ? null : WorkflowExpression.Compile(dtoRequestV2081CombineCsvssecondCSVColumn);
+            WorkflowExpression.Validate(__workflow_dtoRequestV2081CombineCsvssecondCSVColumn, nameof(dtoRequestV2081CombineCsvssecondCSVColumn), required: false);
             return new DeferredBodyAction<DtoResponseV2081CombineCsvs>(() =>
             {
                 var apiCallPath = "/V2081_CombineCsvs";
@@ -299,14 +280,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV2081CombineCsvs = new JObject();
                 var dtoRequestV2081CombineCsvspropCount = 0;
                 dtoRequestV2081CombineCsvspropCount++;
-                dtoRequestV2081CombineCsvs["mainCsv"] = ExpressionConverter.ConvertO(dtoRequestV2081CombineCsvsmainCSV);
+                dtoRequestV2081CombineCsvs["mainCsv"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV2081CombineCsvsmainCSV);
                 dtoRequestV2081CombineCsvspropCount++;
-                dtoRequestV2081CombineCsvs["mainCsvColumn"] = ExpressionConverter.ConvertO(dtoRequestV2081CombineCsvscombineColumnName);
+                dtoRequestV2081CombineCsvs["mainCsvColumn"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV2081CombineCsvscombineColumnName);
                 dtoRequestV2081CombineCsvspropCount++;
-                dtoRequestV2081CombineCsvs["secondCsv"] = ExpressionConverter.ConvertO(dtoRequestV2081CombineCsvssecondCSV);
-                if (dtoRequestV2081CombineCsvssecondCSVColumn != null)
+                dtoRequestV2081CombineCsvs["secondCsv"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV2081CombineCsvssecondCSV);
+                if (__workflow_dtoRequestV2081CombineCsvssecondCSVColumn != null)
                 {
-                    dtoRequestV2081CombineCsvs["secondCsvColumn"] = ExpressionConverter.ConvertO(dtoRequestV2081CombineCsvssecondCSVColumn);
+                    dtoRequestV2081CombineCsvs["secondCsvColumn"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV2081CombineCsvssecondCSVColumn);
                     dtoRequestV2081CombineCsvspropCount++;
                 }
 
@@ -320,19 +301,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildCombineJsonArrays))]
-        public IBodyWorkflowAction<DtoResponseV2091CombineJsonArrays> CombineJsonArrays([WorkflowExpression] Func<string> dtoRequestV2091CombineJsonArraysmainJSON, [WorkflowExpression] Func<string> dtoRequestV2091CombineJsonArrayscombinePropertyName, [WorkflowExpression] Func<string> dtoRequestV2091CombineJsonArrayssecondJSON, [WorkflowExpression] Func<string> dtoRequestV2091CombineJsonArrayssecondJSONProperty = null)
+        public IBodyWorkflowAction<DtoResponseV2091CombineJsonArrays> CombineJsonArrays(Expression<Func<string>> dtoRequestV2091CombineJsonArraysmainJSON, Expression<Func<string>> dtoRequestV2091CombineJsonArrayscombinePropertyName, Expression<Func<string>> dtoRequestV2091CombineJsonArrayssecondJSON, Expression<Func<string>> dtoRequestV2091CombineJsonArrayssecondJSONProperty = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV2091CombineJsonArrays> __BuildCombineJsonArrays(WorkflowExpression<string> dtoRequestV2091CombineJsonArraysmainJSON, WorkflowExpression<string> dtoRequestV2091CombineJsonArrayscombinePropertyName, WorkflowExpression<string> dtoRequestV2091CombineJsonArrayssecondJSON, WorkflowExpression<string> dtoRequestV2091CombineJsonArrayssecondJSONProperty = null)
-        {
-            WorkflowExpression.Validate(dtoRequestV2091CombineJsonArraysmainJSON, nameof(dtoRequestV2091CombineJsonArraysmainJSON), required: true);
-            WorkflowExpression.Validate(dtoRequestV2091CombineJsonArrayscombinePropertyName, nameof(dtoRequestV2091CombineJsonArrayscombinePropertyName), required: true);
-            WorkflowExpression.Validate(dtoRequestV2091CombineJsonArrayssecondJSON, nameof(dtoRequestV2091CombineJsonArrayssecondJSON), required: true);
-            WorkflowExpression.Validate(dtoRequestV2091CombineJsonArrayssecondJSONProperty, nameof(dtoRequestV2091CombineJsonArrayssecondJSONProperty), required: false);
+            var __workflow_dtoRequestV2091CombineJsonArraysmainJSON = dtoRequestV2091CombineJsonArraysmainJSON == null ? null : WorkflowExpression.Compile(dtoRequestV2091CombineJsonArraysmainJSON);
+            WorkflowExpression.Validate(__workflow_dtoRequestV2091CombineJsonArraysmainJSON, nameof(dtoRequestV2091CombineJsonArraysmainJSON), required: true);
+            var __workflow_dtoRequestV2091CombineJsonArrayscombinePropertyName = dtoRequestV2091CombineJsonArrayscombinePropertyName == null ? null : WorkflowExpression.Compile(dtoRequestV2091CombineJsonArrayscombinePropertyName);
+            WorkflowExpression.Validate(__workflow_dtoRequestV2091CombineJsonArrayscombinePropertyName, nameof(dtoRequestV2091CombineJsonArrayscombinePropertyName), required: true);
+            var __workflow_dtoRequestV2091CombineJsonArrayssecondJSON = dtoRequestV2091CombineJsonArrayssecondJSON == null ? null : WorkflowExpression.Compile(dtoRequestV2091CombineJsonArrayssecondJSON);
+            WorkflowExpression.Validate(__workflow_dtoRequestV2091CombineJsonArrayssecondJSON, nameof(dtoRequestV2091CombineJsonArrayssecondJSON), required: true);
+            var __workflow_dtoRequestV2091CombineJsonArrayssecondJSONProperty = dtoRequestV2091CombineJsonArrayssecondJSONProperty == null ? null : WorkflowExpression.Compile(dtoRequestV2091CombineJsonArrayssecondJSONProperty);
+            WorkflowExpression.Validate(__workflow_dtoRequestV2091CombineJsonArrayssecondJSONProperty, nameof(dtoRequestV2091CombineJsonArrayssecondJSONProperty), required: false);
             return new DeferredBodyAction<DtoResponseV2091CombineJsonArrays>(() =>
             {
                 var apiCallPath = "/V2091_CombineJsonArrays";
@@ -341,14 +319,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV2091CombineJsonArrays = new JObject();
                 var dtoRequestV2091CombineJsonArrayspropCount = 0;
                 dtoRequestV2091CombineJsonArrayspropCount++;
-                dtoRequestV2091CombineJsonArrays["mainJson"] = ExpressionConverter.ConvertO(dtoRequestV2091CombineJsonArraysmainJSON);
+                dtoRequestV2091CombineJsonArrays["mainJson"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV2091CombineJsonArraysmainJSON);
                 dtoRequestV2091CombineJsonArrayspropCount++;
-                dtoRequestV2091CombineJsonArrays["mainJsonProperty"] = ExpressionConverter.ConvertO(dtoRequestV2091CombineJsonArrayscombinePropertyName);
+                dtoRequestV2091CombineJsonArrays["mainJsonProperty"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV2091CombineJsonArrayscombinePropertyName);
                 dtoRequestV2091CombineJsonArrayspropCount++;
-                dtoRequestV2091CombineJsonArrays["secondJson"] = ExpressionConverter.ConvertO(dtoRequestV2091CombineJsonArrayssecondJSON);
-                if (dtoRequestV2091CombineJsonArrayssecondJSONProperty != null)
+                dtoRequestV2091CombineJsonArrays["secondJson"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV2091CombineJsonArrayssecondJSON);
+                if (__workflow_dtoRequestV2091CombineJsonArrayssecondJSONProperty != null)
                 {
-                    dtoRequestV2091CombineJsonArrays["secondJsonProperty"] = ExpressionConverter.ConvertO(dtoRequestV2091CombineJsonArrayssecondJSONProperty);
+                    dtoRequestV2091CombineJsonArrays["secondJsonProperty"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV2091CombineJsonArrayssecondJSONProperty);
                     dtoRequestV2091CombineJsonArrayspropCount++;
                 }
 
@@ -362,17 +340,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildCompressImage))]
-        public IBodyWorkflowAction<DtoResponseV3041CompressImage> CompressImage([WorkflowExpression] Func<string> dtoRequestCompressImageimageFile, [WorkflowExpression] Func<int> dtoRequestCompressImageimageQuality = null)
+        public IBodyWorkflowAction<DtoResponseV3041CompressImage> CompressImage(Expression<Func<string>> dtoRequestCompressImageimageFile, Expression<Func<int>> dtoRequestCompressImageimageQuality = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV3041CompressImage> __BuildCompressImage(WorkflowExpression<string> dtoRequestCompressImageimageFile, WorkflowExpression<int> dtoRequestCompressImageimageQuality = null)
-        {
-            WorkflowExpression.Validate(dtoRequestCompressImageimageFile, nameof(dtoRequestCompressImageimageFile), required: true);
-            WorkflowExpression.Validate(dtoRequestCompressImageimageQuality, nameof(dtoRequestCompressImageimageQuality), required: false);
+            var __workflow_dtoRequestCompressImageimageFile = dtoRequestCompressImageimageFile == null ? null : WorkflowExpression.Compile(dtoRequestCompressImageimageFile);
+            WorkflowExpression.Validate(__workflow_dtoRequestCompressImageimageFile, nameof(dtoRequestCompressImageimageFile), required: true);
+            var __workflow_dtoRequestCompressImageimageQuality = dtoRequestCompressImageimageQuality == null ? null : WorkflowExpression.Compile(dtoRequestCompressImageimageQuality);
+            WorkflowExpression.Validate(__workflow_dtoRequestCompressImageimageQuality, nameof(dtoRequestCompressImageimageQuality), required: false);
             return new DeferredBodyAction<DtoResponseV3041CompressImage>(() =>
             {
                 var apiCallPath = "/V3041_CompressImage";
@@ -381,10 +354,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestCompressImage = new JObject();
                 var dtoRequestCompressImagepropCount = 0;
                 dtoRequestCompressImagepropCount++;
-                dtoRequestCompressImage["file"] = ExpressionConverter.ConvertO(dtoRequestCompressImageimageFile);
-                if (dtoRequestCompressImageimageQuality != null)
+                dtoRequestCompressImage["file"] = ExpressionConverter.ConvertO(__workflow_dtoRequestCompressImageimageFile);
+                if (__workflow_dtoRequestCompressImageimageQuality != null)
                 {
-                    dtoRequestCompressImage["quality"] = ExpressionConverter.ConvertO(dtoRequestCompressImageimageQuality);
+                    dtoRequestCompressImage["quality"] = ExpressionConverter.ConvertO(__workflow_dtoRequestCompressImageimageQuality);
                     dtoRequestCompressImagepropCount++;
                 }
 
@@ -398,21 +371,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildCompressPdf))]
-        public IBodyWorkflowAction<DtoResponseV4080CompressPdf> CompressPdf([WorkflowExpression] Func<string> dtoRequestpDF, [WorkflowExpression] Func<bool> dtoRequestcompressImages = null, [WorkflowExpression] Func<int> dtoRequestimageQuality = null, [WorkflowExpression] Func<bool> dtoRequestoptimizeFonts = null, [WorkflowExpression] Func<bool> dtoRequestoptimizePageContents = null, [WorkflowExpression] Func<bool> dtoRequestremoveMetadata = null)
+        public IBodyWorkflowAction<DtoResponseV4080CompressPdf> CompressPdf(Expression<Func<string>> dtoRequestpDF, Expression<Func<bool>> dtoRequestcompressImages = null, Expression<Func<int>> dtoRequestimageQuality = null, Expression<Func<bool>> dtoRequestoptimizeFonts = null, Expression<Func<bool>> dtoRequestoptimizePageContents = null, Expression<Func<bool>> dtoRequestremoveMetadata = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV4080CompressPdf> __BuildCompressPdf(WorkflowExpression<string> dtoRequestpDF, WorkflowExpression<bool> dtoRequestcompressImages = null, WorkflowExpression<int> dtoRequestimageQuality = null, WorkflowExpression<bool> dtoRequestoptimizeFonts = null, WorkflowExpression<bool> dtoRequestoptimizePageContents = null, WorkflowExpression<bool> dtoRequestremoveMetadata = null)
-        {
-            WorkflowExpression.Validate(dtoRequestpDF, nameof(dtoRequestpDF), required: true);
-            WorkflowExpression.Validate(dtoRequestcompressImages, nameof(dtoRequestcompressImages), required: false);
-            WorkflowExpression.Validate(dtoRequestimageQuality, nameof(dtoRequestimageQuality), required: false);
-            WorkflowExpression.Validate(dtoRequestoptimizeFonts, nameof(dtoRequestoptimizeFonts), required: false);
-            WorkflowExpression.Validate(dtoRequestoptimizePageContents, nameof(dtoRequestoptimizePageContents), required: false);
-            WorkflowExpression.Validate(dtoRequestremoveMetadata, nameof(dtoRequestremoveMetadata), required: false);
+            var __workflow_dtoRequestpDF = dtoRequestpDF == null ? null : WorkflowExpression.Compile(dtoRequestpDF);
+            WorkflowExpression.Validate(__workflow_dtoRequestpDF, nameof(dtoRequestpDF), required: true);
+            var __workflow_dtoRequestcompressImages = dtoRequestcompressImages == null ? null : WorkflowExpression.Compile(dtoRequestcompressImages);
+            WorkflowExpression.Validate(__workflow_dtoRequestcompressImages, nameof(dtoRequestcompressImages), required: false);
+            var __workflow_dtoRequestimageQuality = dtoRequestimageQuality == null ? null : WorkflowExpression.Compile(dtoRequestimageQuality);
+            WorkflowExpression.Validate(__workflow_dtoRequestimageQuality, nameof(dtoRequestimageQuality), required: false);
+            var __workflow_dtoRequestoptimizeFonts = dtoRequestoptimizeFonts == null ? null : WorkflowExpression.Compile(dtoRequestoptimizeFonts);
+            WorkflowExpression.Validate(__workflow_dtoRequestoptimizeFonts, nameof(dtoRequestoptimizeFonts), required: false);
+            var __workflow_dtoRequestoptimizePageContents = dtoRequestoptimizePageContents == null ? null : WorkflowExpression.Compile(dtoRequestoptimizePageContents);
+            WorkflowExpression.Validate(__workflow_dtoRequestoptimizePageContents, nameof(dtoRequestoptimizePageContents), required: false);
+            var __workflow_dtoRequestremoveMetadata = dtoRequestremoveMetadata == null ? null : WorkflowExpression.Compile(dtoRequestremoveMetadata);
+            WorkflowExpression.Validate(__workflow_dtoRequestremoveMetadata, nameof(dtoRequestremoveMetadata), required: false);
             return new DeferredBodyAction<DtoResponseV4080CompressPdf>(() =>
             {
                 var apiCallPath = "/V4080_CompressPdf";
@@ -421,34 +393,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequest = new JObject();
                 var dtoRequestpropCount = 0;
                 dtoRequestpropCount++;
-                dtoRequest["pdf"] = ExpressionConverter.ConvertO(dtoRequestpDF);
-                if (dtoRequestcompressImages != null)
+                dtoRequest["pdf"] = ExpressionConverter.ConvertO(__workflow_dtoRequestpDF);
+                if (__workflow_dtoRequestcompressImages != null)
                 {
-                    dtoRequest["compressImages"] = ExpressionConverter.ConvertO(dtoRequestcompressImages);
+                    dtoRequest["compressImages"] = ExpressionConverter.ConvertO(__workflow_dtoRequestcompressImages);
                     dtoRequestpropCount++;
                 }
 
-                if (dtoRequestimageQuality != null)
+                if (__workflow_dtoRequestimageQuality != null)
                 {
-                    dtoRequest["imageQuality"] = ExpressionConverter.ConvertO(dtoRequestimageQuality);
+                    dtoRequest["imageQuality"] = ExpressionConverter.ConvertO(__workflow_dtoRequestimageQuality);
                     dtoRequestpropCount++;
                 }
 
-                if (dtoRequestoptimizeFonts != null)
+                if (__workflow_dtoRequestoptimizeFonts != null)
                 {
-                    dtoRequest["optimizeFont"] = ExpressionConverter.ConvertO(dtoRequestoptimizeFonts);
+                    dtoRequest["optimizeFont"] = ExpressionConverter.ConvertO(__workflow_dtoRequestoptimizeFonts);
                     dtoRequestpropCount++;
                 }
 
-                if (dtoRequestoptimizePageContents != null)
+                if (__workflow_dtoRequestoptimizePageContents != null)
                 {
-                    dtoRequest["optimizePageContents"] = ExpressionConverter.ConvertO(dtoRequestoptimizePageContents);
+                    dtoRequest["optimizePageContents"] = ExpressionConverter.ConvertO(__workflow_dtoRequestoptimizePageContents);
                     dtoRequestpropCount++;
                 }
 
-                if (dtoRequestremoveMetadata != null)
+                if (__workflow_dtoRequestremoveMetadata != null)
                 {
-                    dtoRequest["removeMetadata"] = ExpressionConverter.ConvertO(dtoRequestremoveMetadata);
+                    dtoRequest["removeMetadata"] = ExpressionConverter.ConvertO(__workflow_dtoRequestremoveMetadata);
                     dtoRequestpropCount++;
                 }
 
@@ -462,16 +434,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildConvertColor))]
-        public IBodyWorkflowAction<DtoResponseV2071ConvertColor> ConvertColor([WorkflowExpression] Func<string> dtoRequestV2071ConvertColorcolor)
+        public IBodyWorkflowAction<DtoResponseV2071ConvertColor> ConvertColor(Expression<Func<string>> dtoRequestV2071ConvertColorcolor)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV2071ConvertColor> __BuildConvertColor(WorkflowExpression<string> dtoRequestV2071ConvertColorcolor)
-        {
-            WorkflowExpression.Validate(dtoRequestV2071ConvertColorcolor, nameof(dtoRequestV2071ConvertColorcolor), required: true);
+            var __workflow_dtoRequestV2071ConvertColorcolor = dtoRequestV2071ConvertColorcolor == null ? null : WorkflowExpression.Compile(dtoRequestV2071ConvertColorcolor);
+            WorkflowExpression.Validate(__workflow_dtoRequestV2071ConvertColorcolor, nameof(dtoRequestV2071ConvertColorcolor), required: true);
             return new DeferredBodyAction<DtoResponseV2071ConvertColor>(() =>
             {
                 var apiCallPath = "/V2071_ConvertColor";
@@ -480,7 +446,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV2071ConvertColor = new JObject();
                 var dtoRequestV2071ConvertColorpropCount = 0;
                 dtoRequestV2071ConvertColorpropCount++;
-                dtoRequestV2071ConvertColor["color"] = ExpressionConverter.ConvertO(dtoRequestV2071ConvertColorcolor);
+                dtoRequestV2071ConvertColor["color"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV2071ConvertColorcolor);
                 if (dtoRequestV2071ConvertColorpropCount > 0)
                 {
                     callPayload.Body = dtoRequestV2071ConvertColor;
@@ -491,27 +457,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildConvertCsvToExcel))]
-        public IBodyWorkflowAction<DtoResponseV1033ConvertCsvToExcel> ConvertCsvToExcel([WorkflowExpression] Func<string> dtoRequestV1033ConvertCsvToExcelcSV, [WorkflowExpression] Func<bool> dtoRequestV1033ConvertCsvToExcelcSVHasHeaders = null, [WorkflowExpression] Func<bool> dtoRequestV1033ConvertCsvToExcelautoDetectFieldTypes = null, [WorkflowExpression] Func<int> dtoRequestV1033ConvertCsvToExcelnumberOfRowsForFieldTypeDetection = null, [WorkflowExpression] Func<bool> dtoRequestV1033ConvertCsvToExcelremoveEmptyRows = null, [WorkflowExpression] Func<int> dtoRequestV1033ConvertCsvToExcelskipANumberOfRows = null, [WorkflowExpression] Func<int> dtoRequestV1033ConvertCsvToExcelstopAtASpecificRow = null, [WorkflowExpression] Func<string> dtoRequestV1033ConvertCsvToExcelseparator = null, [WorkflowExpression] Func<bool> dtoRequestV1033ConvertCsvToExcelautoDetectQuoteDelimiter = null, [WorkflowExpression] Func<bool> dtoRequestV1033ConvertCsvToExceladjustExcelColumnToContent = null, [WorkflowExpression] Func<bool> dtoRequestV1033ConvertCsvToExcelwrapExcelColumnText = null, [WorkflowExpression] Func<int> dtoRequestV1033ConvertCsvToExcelmaxExcelColumnWidth = null)
+        public IBodyWorkflowAction<DtoResponseV1033ConvertCsvToExcel> ConvertCsvToExcel(Expression<Func<string>> dtoRequestV1033ConvertCsvToExcelcSV, Expression<Func<bool>> dtoRequestV1033ConvertCsvToExcelcSVHasHeaders = null, Expression<Func<bool>> dtoRequestV1033ConvertCsvToExcelautoDetectFieldTypes = null, Expression<Func<int>> dtoRequestV1033ConvertCsvToExcelnumberOfRowsForFieldTypeDetection = null, Expression<Func<bool>> dtoRequestV1033ConvertCsvToExcelremoveEmptyRows = null, Expression<Func<int>> dtoRequestV1033ConvertCsvToExcelskipANumberOfRows = null, Expression<Func<int>> dtoRequestV1033ConvertCsvToExcelstopAtASpecificRow = null, Expression<Func<string>> dtoRequestV1033ConvertCsvToExcelseparator = null, Expression<Func<bool>> dtoRequestV1033ConvertCsvToExcelautoDetectQuoteDelimiter = null, Expression<Func<bool>> dtoRequestV1033ConvertCsvToExceladjustExcelColumnToContent = null, Expression<Func<bool>> dtoRequestV1033ConvertCsvToExcelwrapExcelColumnText = null, Expression<Func<int>> dtoRequestV1033ConvertCsvToExcelmaxExcelColumnWidth = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV1033ConvertCsvToExcel> __BuildConvertCsvToExcel(WorkflowExpression<string> dtoRequestV1033ConvertCsvToExcelcSV, WorkflowExpression<bool> dtoRequestV1033ConvertCsvToExcelcSVHasHeaders = null, WorkflowExpression<bool> dtoRequestV1033ConvertCsvToExcelautoDetectFieldTypes = null, WorkflowExpression<int> dtoRequestV1033ConvertCsvToExcelnumberOfRowsForFieldTypeDetection = null, WorkflowExpression<bool> dtoRequestV1033ConvertCsvToExcelremoveEmptyRows = null, WorkflowExpression<int> dtoRequestV1033ConvertCsvToExcelskipANumberOfRows = null, WorkflowExpression<int> dtoRequestV1033ConvertCsvToExcelstopAtASpecificRow = null, WorkflowExpression<string> dtoRequestV1033ConvertCsvToExcelseparator = null, WorkflowExpression<bool> dtoRequestV1033ConvertCsvToExcelautoDetectQuoteDelimiter = null, WorkflowExpression<bool> dtoRequestV1033ConvertCsvToExceladjustExcelColumnToContent = null, WorkflowExpression<bool> dtoRequestV1033ConvertCsvToExcelwrapExcelColumnText = null, WorkflowExpression<int> dtoRequestV1033ConvertCsvToExcelmaxExcelColumnWidth = null)
-        {
-            WorkflowExpression.Validate(dtoRequestV1033ConvertCsvToExcelcSV, nameof(dtoRequestV1033ConvertCsvToExcelcSV), required: true);
-            WorkflowExpression.Validate(dtoRequestV1033ConvertCsvToExcelcSVHasHeaders, nameof(dtoRequestV1033ConvertCsvToExcelcSVHasHeaders), required: false);
-            WorkflowExpression.Validate(dtoRequestV1033ConvertCsvToExcelautoDetectFieldTypes, nameof(dtoRequestV1033ConvertCsvToExcelautoDetectFieldTypes), required: false);
-            WorkflowExpression.Validate(dtoRequestV1033ConvertCsvToExcelnumberOfRowsForFieldTypeDetection, nameof(dtoRequestV1033ConvertCsvToExcelnumberOfRowsForFieldTypeDetection), required: false);
-            WorkflowExpression.Validate(dtoRequestV1033ConvertCsvToExcelremoveEmptyRows, nameof(dtoRequestV1033ConvertCsvToExcelremoveEmptyRows), required: false);
-            WorkflowExpression.Validate(dtoRequestV1033ConvertCsvToExcelskipANumberOfRows, nameof(dtoRequestV1033ConvertCsvToExcelskipANumberOfRows), required: false);
-            WorkflowExpression.Validate(dtoRequestV1033ConvertCsvToExcelstopAtASpecificRow, nameof(dtoRequestV1033ConvertCsvToExcelstopAtASpecificRow), required: false);
-            WorkflowExpression.Validate(dtoRequestV1033ConvertCsvToExcelseparator, nameof(dtoRequestV1033ConvertCsvToExcelseparator), required: false);
-            WorkflowExpression.Validate(dtoRequestV1033ConvertCsvToExcelautoDetectQuoteDelimiter, nameof(dtoRequestV1033ConvertCsvToExcelautoDetectQuoteDelimiter), required: false);
-            WorkflowExpression.Validate(dtoRequestV1033ConvertCsvToExceladjustExcelColumnToContent, nameof(dtoRequestV1033ConvertCsvToExceladjustExcelColumnToContent), required: false);
-            WorkflowExpression.Validate(dtoRequestV1033ConvertCsvToExcelwrapExcelColumnText, nameof(dtoRequestV1033ConvertCsvToExcelwrapExcelColumnText), required: false);
-            WorkflowExpression.Validate(dtoRequestV1033ConvertCsvToExcelmaxExcelColumnWidth, nameof(dtoRequestV1033ConvertCsvToExcelmaxExcelColumnWidth), required: false);
+            var __workflow_dtoRequestV1033ConvertCsvToExcelcSV = dtoRequestV1033ConvertCsvToExcelcSV == null ? null : WorkflowExpression.Compile(dtoRequestV1033ConvertCsvToExcelcSV);
+            WorkflowExpression.Validate(__workflow_dtoRequestV1033ConvertCsvToExcelcSV, nameof(dtoRequestV1033ConvertCsvToExcelcSV), required: true);
+            var __workflow_dtoRequestV1033ConvertCsvToExcelcSVHasHeaders = dtoRequestV1033ConvertCsvToExcelcSVHasHeaders == null ? null : WorkflowExpression.Compile(dtoRequestV1033ConvertCsvToExcelcSVHasHeaders);
+            WorkflowExpression.Validate(__workflow_dtoRequestV1033ConvertCsvToExcelcSVHasHeaders, nameof(dtoRequestV1033ConvertCsvToExcelcSVHasHeaders), required: false);
+            var __workflow_dtoRequestV1033ConvertCsvToExcelautoDetectFieldTypes = dtoRequestV1033ConvertCsvToExcelautoDetectFieldTypes == null ? null : WorkflowExpression.Compile(dtoRequestV1033ConvertCsvToExcelautoDetectFieldTypes);
+            WorkflowExpression.Validate(__workflow_dtoRequestV1033ConvertCsvToExcelautoDetectFieldTypes, nameof(dtoRequestV1033ConvertCsvToExcelautoDetectFieldTypes), required: false);
+            var __workflow_dtoRequestV1033ConvertCsvToExcelnumberOfRowsForFieldTypeDetection = dtoRequestV1033ConvertCsvToExcelnumberOfRowsForFieldTypeDetection == null ? null : WorkflowExpression.Compile(dtoRequestV1033ConvertCsvToExcelnumberOfRowsForFieldTypeDetection);
+            WorkflowExpression.Validate(__workflow_dtoRequestV1033ConvertCsvToExcelnumberOfRowsForFieldTypeDetection, nameof(dtoRequestV1033ConvertCsvToExcelnumberOfRowsForFieldTypeDetection), required: false);
+            var __workflow_dtoRequestV1033ConvertCsvToExcelremoveEmptyRows = dtoRequestV1033ConvertCsvToExcelremoveEmptyRows == null ? null : WorkflowExpression.Compile(dtoRequestV1033ConvertCsvToExcelremoveEmptyRows);
+            WorkflowExpression.Validate(__workflow_dtoRequestV1033ConvertCsvToExcelremoveEmptyRows, nameof(dtoRequestV1033ConvertCsvToExcelremoveEmptyRows), required: false);
+            var __workflow_dtoRequestV1033ConvertCsvToExcelskipANumberOfRows = dtoRequestV1033ConvertCsvToExcelskipANumberOfRows == null ? null : WorkflowExpression.Compile(dtoRequestV1033ConvertCsvToExcelskipANumberOfRows);
+            WorkflowExpression.Validate(__workflow_dtoRequestV1033ConvertCsvToExcelskipANumberOfRows, nameof(dtoRequestV1033ConvertCsvToExcelskipANumberOfRows), required: false);
+            var __workflow_dtoRequestV1033ConvertCsvToExcelstopAtASpecificRow = dtoRequestV1033ConvertCsvToExcelstopAtASpecificRow == null ? null : WorkflowExpression.Compile(dtoRequestV1033ConvertCsvToExcelstopAtASpecificRow);
+            WorkflowExpression.Validate(__workflow_dtoRequestV1033ConvertCsvToExcelstopAtASpecificRow, nameof(dtoRequestV1033ConvertCsvToExcelstopAtASpecificRow), required: false);
+            var __workflow_dtoRequestV1033ConvertCsvToExcelseparator = dtoRequestV1033ConvertCsvToExcelseparator == null ? null : WorkflowExpression.Compile(dtoRequestV1033ConvertCsvToExcelseparator);
+            WorkflowExpression.Validate(__workflow_dtoRequestV1033ConvertCsvToExcelseparator, nameof(dtoRequestV1033ConvertCsvToExcelseparator), required: false);
+            var __workflow_dtoRequestV1033ConvertCsvToExcelautoDetectQuoteDelimiter = dtoRequestV1033ConvertCsvToExcelautoDetectQuoteDelimiter == null ? null : WorkflowExpression.Compile(dtoRequestV1033ConvertCsvToExcelautoDetectQuoteDelimiter);
+            WorkflowExpression.Validate(__workflow_dtoRequestV1033ConvertCsvToExcelautoDetectQuoteDelimiter, nameof(dtoRequestV1033ConvertCsvToExcelautoDetectQuoteDelimiter), required: false);
+            var __workflow_dtoRequestV1033ConvertCsvToExceladjustExcelColumnToContent = dtoRequestV1033ConvertCsvToExceladjustExcelColumnToContent == null ? null : WorkflowExpression.Compile(dtoRequestV1033ConvertCsvToExceladjustExcelColumnToContent);
+            WorkflowExpression.Validate(__workflow_dtoRequestV1033ConvertCsvToExceladjustExcelColumnToContent, nameof(dtoRequestV1033ConvertCsvToExceladjustExcelColumnToContent), required: false);
+            var __workflow_dtoRequestV1033ConvertCsvToExcelwrapExcelColumnText = dtoRequestV1033ConvertCsvToExcelwrapExcelColumnText == null ? null : WorkflowExpression.Compile(dtoRequestV1033ConvertCsvToExcelwrapExcelColumnText);
+            WorkflowExpression.Validate(__workflow_dtoRequestV1033ConvertCsvToExcelwrapExcelColumnText, nameof(dtoRequestV1033ConvertCsvToExcelwrapExcelColumnText), required: false);
+            var __workflow_dtoRequestV1033ConvertCsvToExcelmaxExcelColumnWidth = dtoRequestV1033ConvertCsvToExcelmaxExcelColumnWidth == null ? null : WorkflowExpression.Compile(dtoRequestV1033ConvertCsvToExcelmaxExcelColumnWidth);
+            WorkflowExpression.Validate(__workflow_dtoRequestV1033ConvertCsvToExcelmaxExcelColumnWidth, nameof(dtoRequestV1033ConvertCsvToExcelmaxExcelColumnWidth), required: false);
             return new DeferredBodyAction<DtoResponseV1033ConvertCsvToExcel>(() =>
             {
                 var apiCallPath = "/V1033_ConvertCsvToExcel";
@@ -520,12 +491,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV1033ConvertCsvToExcel = new JObject();
                 var dtoRequestV1033ConvertCsvToExcelpropCount = 0;
                 dtoRequestV1033ConvertCsvToExcelpropCount++;
-                dtoRequestV1033ConvertCsvToExcel["csv"] = ExpressionConverter.ConvertO(dtoRequestV1033ConvertCsvToExcelcSV);
-                if (dtoRequestV1033ConvertCsvToExcelcSVHasHeaders != null)
+                dtoRequestV1033ConvertCsvToExcel["csv"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV1033ConvertCsvToExcelcSV);
+                if (__workflow_dtoRequestV1033ConvertCsvToExcelcSVHasHeaders != null)
                 {
-                    if (dtoRequestV1033ConvertCsvToExcelcSVHasHeaders != null)
+                    if (__workflow_dtoRequestV1033ConvertCsvToExcelcSVHasHeaders != null)
                     {
-                        dtoRequestV1033ConvertCsvToExcel["dataIncludesHeader"] = ExpressionConverter.ConvertO(dtoRequestV1033ConvertCsvToExcelcSVHasHeaders);
+                        dtoRequestV1033ConvertCsvToExcel["dataIncludesHeader"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV1033ConvertCsvToExcelcSVHasHeaders);
                         dtoRequestV1033ConvertCsvToExcelpropCount++;
                     }
 
@@ -537,11 +508,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                     dtoRequestV1033ConvertCsvToExcelpropCount++;
                 }
 
-                if (dtoRequestV1033ConvertCsvToExcelautoDetectFieldTypes != null)
+                if (__workflow_dtoRequestV1033ConvertCsvToExcelautoDetectFieldTypes != null)
                 {
-                    if (dtoRequestV1033ConvertCsvToExcelautoDetectFieldTypes != null)
+                    if (__workflow_dtoRequestV1033ConvertCsvToExcelautoDetectFieldTypes != null)
                     {
-                        dtoRequestV1033ConvertCsvToExcel["autoDiscoverFieldTypes"] = ExpressionConverter.ConvertO(dtoRequestV1033ConvertCsvToExcelautoDetectFieldTypes);
+                        dtoRequestV1033ConvertCsvToExcel["autoDiscoverFieldTypes"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV1033ConvertCsvToExcelautoDetectFieldTypes);
                         dtoRequestV1033ConvertCsvToExcelpropCount++;
                     }
 
@@ -553,17 +524,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                     dtoRequestV1033ConvertCsvToExcelpropCount++;
                 }
 
-                if (dtoRequestV1033ConvertCsvToExcelnumberOfRowsForFieldTypeDetection != null)
+                if (__workflow_dtoRequestV1033ConvertCsvToExcelnumberOfRowsForFieldTypeDetection != null)
                 {
-                    dtoRequestV1033ConvertCsvToExcel["maxScanRows"] = ExpressionConverter.ConvertO(dtoRequestV1033ConvertCsvToExcelnumberOfRowsForFieldTypeDetection);
+                    dtoRequestV1033ConvertCsvToExcel["maxScanRows"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV1033ConvertCsvToExcelnumberOfRowsForFieldTypeDetection);
                     dtoRequestV1033ConvertCsvToExcelpropCount++;
                 }
 
-                if (dtoRequestV1033ConvertCsvToExcelremoveEmptyRows != null)
+                if (__workflow_dtoRequestV1033ConvertCsvToExcelremoveEmptyRows != null)
                 {
-                    if (dtoRequestV1033ConvertCsvToExcelremoveEmptyRows != null)
+                    if (__workflow_dtoRequestV1033ConvertCsvToExcelremoveEmptyRows != null)
                     {
-                        dtoRequestV1033ConvertCsvToExcel["ignoreEmptyLine"] = ExpressionConverter.ConvertO(dtoRequestV1033ConvertCsvToExcelremoveEmptyRows);
+                        dtoRequestV1033ConvertCsvToExcel["ignoreEmptyLine"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV1033ConvertCsvToExcelremoveEmptyRows);
                         dtoRequestV1033ConvertCsvToExcelpropCount++;
                     }
 
@@ -575,29 +546,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                     dtoRequestV1033ConvertCsvToExcelpropCount++;
                 }
 
-                if (dtoRequestV1033ConvertCsvToExcelskipANumberOfRows != null)
+                if (__workflow_dtoRequestV1033ConvertCsvToExcelskipANumberOfRows != null)
                 {
-                    dtoRequestV1033ConvertCsvToExcel["skip"] = ExpressionConverter.ConvertO(dtoRequestV1033ConvertCsvToExcelskipANumberOfRows);
+                    dtoRequestV1033ConvertCsvToExcel["skip"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV1033ConvertCsvToExcelskipANumberOfRows);
                     dtoRequestV1033ConvertCsvToExcelpropCount++;
                 }
 
-                if (dtoRequestV1033ConvertCsvToExcelstopAtASpecificRow != null)
+                if (__workflow_dtoRequestV1033ConvertCsvToExcelstopAtASpecificRow != null)
                 {
-                    dtoRequestV1033ConvertCsvToExcel["skipLast"] = ExpressionConverter.ConvertO(dtoRequestV1033ConvertCsvToExcelstopAtASpecificRow);
+                    dtoRequestV1033ConvertCsvToExcel["skipLast"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV1033ConvertCsvToExcelstopAtASpecificRow);
                     dtoRequestV1033ConvertCsvToExcelpropCount++;
                 }
 
-                if (dtoRequestV1033ConvertCsvToExcelseparator != null)
+                if (__workflow_dtoRequestV1033ConvertCsvToExcelseparator != null)
                 {
-                    dtoRequestV1033ConvertCsvToExcel["delimiter"] = ExpressionConverter.ConvertO(dtoRequestV1033ConvertCsvToExcelseparator);
+                    dtoRequestV1033ConvertCsvToExcel["delimiter"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV1033ConvertCsvToExcelseparator);
                     dtoRequestV1033ConvertCsvToExcelpropCount++;
                 }
 
-                if (dtoRequestV1033ConvertCsvToExcelautoDetectQuoteDelimiter != null)
+                if (__workflow_dtoRequestV1033ConvertCsvToExcelautoDetectQuoteDelimiter != null)
                 {
-                    if (dtoRequestV1033ConvertCsvToExcelautoDetectQuoteDelimiter != null)
+                    if (__workflow_dtoRequestV1033ConvertCsvToExcelautoDetectQuoteDelimiter != null)
                     {
-                        dtoRequestV1033ConvertCsvToExcel["mayHaveQuotedFields"] = ExpressionConverter.ConvertO(dtoRequestV1033ConvertCsvToExcelautoDetectQuoteDelimiter);
+                        dtoRequestV1033ConvertCsvToExcel["mayHaveQuotedFields"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV1033ConvertCsvToExcelautoDetectQuoteDelimiter);
                         dtoRequestV1033ConvertCsvToExcelpropCount++;
                     }
 
@@ -609,11 +580,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                     dtoRequestV1033ConvertCsvToExcelpropCount++;
                 }
 
-                if (dtoRequestV1033ConvertCsvToExceladjustExcelColumnToContent != null)
+                if (__workflow_dtoRequestV1033ConvertCsvToExceladjustExcelColumnToContent != null)
                 {
-                    if (dtoRequestV1033ConvertCsvToExceladjustExcelColumnToContent != null)
+                    if (__workflow_dtoRequestV1033ConvertCsvToExceladjustExcelColumnToContent != null)
                     {
-                        dtoRequestV1033ConvertCsvToExcel["adjustColumnToContent"] = ExpressionConverter.ConvertO(dtoRequestV1033ConvertCsvToExceladjustExcelColumnToContent);
+                        dtoRequestV1033ConvertCsvToExcel["adjustColumnToContent"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV1033ConvertCsvToExceladjustExcelColumnToContent);
                         dtoRequestV1033ConvertCsvToExcelpropCount++;
                     }
 
@@ -625,11 +596,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                     dtoRequestV1033ConvertCsvToExcelpropCount++;
                 }
 
-                if (dtoRequestV1033ConvertCsvToExcelwrapExcelColumnText != null)
+                if (__workflow_dtoRequestV1033ConvertCsvToExcelwrapExcelColumnText != null)
                 {
-                    if (dtoRequestV1033ConvertCsvToExcelwrapExcelColumnText != null)
+                    if (__workflow_dtoRequestV1033ConvertCsvToExcelwrapExcelColumnText != null)
                     {
-                        dtoRequestV1033ConvertCsvToExcel["wrapColumnText"] = ExpressionConverter.ConvertO(dtoRequestV1033ConvertCsvToExcelwrapExcelColumnText);
+                        dtoRequestV1033ConvertCsvToExcel["wrapColumnText"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV1033ConvertCsvToExcelwrapExcelColumnText);
                         dtoRequestV1033ConvertCsvToExcelpropCount++;
                     }
 
@@ -641,9 +612,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                     dtoRequestV1033ConvertCsvToExcelpropCount++;
                 }
 
-                if (dtoRequestV1033ConvertCsvToExcelmaxExcelColumnWidth != null)
+                if (__workflow_dtoRequestV1033ConvertCsvToExcelmaxExcelColumnWidth != null)
                 {
-                    dtoRequestV1033ConvertCsvToExcel["maxColumnWidth"] = ExpressionConverter.ConvertO(dtoRequestV1033ConvertCsvToExcelmaxExcelColumnWidth);
+                    dtoRequestV1033ConvertCsvToExcel["maxColumnWidth"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV1033ConvertCsvToExcelmaxExcelColumnWidth);
                     dtoRequestV1033ConvertCsvToExcelpropCount++;
                 }
 
@@ -657,24 +628,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildConvertCsvToHtmlTable))]
-        public IBodyWorkflowAction<DtoResponseHtml> ConvertCsvToHtmlTable([WorkflowExpression] Func<string> dtoRequestV7061ConvertCsvToHtmlTablecSV, [WorkflowExpression] Func<bool> dtoRequestV7061ConvertCsvToHtmlTablecSVHasHeaders = null, [WorkflowExpression] Func<bool> dtoRequestV7061ConvertCsvToHtmlTableautoDetectFieldTypes = null, [WorkflowExpression] Func<int> dtoRequestV7061ConvertCsvToHtmlTablenumberOfRowsForFieldTypeDetection = null, [WorkflowExpression] Func<bool> dtoRequestV7061ConvertCsvToHtmlTableremoveEmptyRows = null, [WorkflowExpression] Func<int> dtoRequestV7061ConvertCsvToHtmlTableskipANumberOfRows = null, [WorkflowExpression] Func<int> dtoRequestV7061ConvertCsvToHtmlTablestopAtASpecificRow = null, [WorkflowExpression] Func<string> dtoRequestV7061ConvertCsvToHtmlTableseparator = null, [WorkflowExpression] Func<bool> dtoRequestV7061ConvertCsvToHtmlTableautoDetectQuoteDelimiter = null)
+        public IBodyWorkflowAction<DtoResponseHtml> ConvertCsvToHtmlTable(Expression<Func<string>> dtoRequestV7061ConvertCsvToHtmlTablecSV, Expression<Func<bool>> dtoRequestV7061ConvertCsvToHtmlTablecSVHasHeaders = null, Expression<Func<bool>> dtoRequestV7061ConvertCsvToHtmlTableautoDetectFieldTypes = null, Expression<Func<int>> dtoRequestV7061ConvertCsvToHtmlTablenumberOfRowsForFieldTypeDetection = null, Expression<Func<bool>> dtoRequestV7061ConvertCsvToHtmlTableremoveEmptyRows = null, Expression<Func<int>> dtoRequestV7061ConvertCsvToHtmlTableskipANumberOfRows = null, Expression<Func<int>> dtoRequestV7061ConvertCsvToHtmlTablestopAtASpecificRow = null, Expression<Func<string>> dtoRequestV7061ConvertCsvToHtmlTableseparator = null, Expression<Func<bool>> dtoRequestV7061ConvertCsvToHtmlTableautoDetectQuoteDelimiter = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseHtml> __BuildConvertCsvToHtmlTable(WorkflowExpression<string> dtoRequestV7061ConvertCsvToHtmlTablecSV, WorkflowExpression<bool> dtoRequestV7061ConvertCsvToHtmlTablecSVHasHeaders = null, WorkflowExpression<bool> dtoRequestV7061ConvertCsvToHtmlTableautoDetectFieldTypes = null, WorkflowExpression<int> dtoRequestV7061ConvertCsvToHtmlTablenumberOfRowsForFieldTypeDetection = null, WorkflowExpression<bool> dtoRequestV7061ConvertCsvToHtmlTableremoveEmptyRows = null, WorkflowExpression<int> dtoRequestV7061ConvertCsvToHtmlTableskipANumberOfRows = null, WorkflowExpression<int> dtoRequestV7061ConvertCsvToHtmlTablestopAtASpecificRow = null, WorkflowExpression<string> dtoRequestV7061ConvertCsvToHtmlTableseparator = null, WorkflowExpression<bool> dtoRequestV7061ConvertCsvToHtmlTableautoDetectQuoteDelimiter = null)
-        {
-            WorkflowExpression.Validate(dtoRequestV7061ConvertCsvToHtmlTablecSV, nameof(dtoRequestV7061ConvertCsvToHtmlTablecSV), required: true);
-            WorkflowExpression.Validate(dtoRequestV7061ConvertCsvToHtmlTablecSVHasHeaders, nameof(dtoRequestV7061ConvertCsvToHtmlTablecSVHasHeaders), required: false);
-            WorkflowExpression.Validate(dtoRequestV7061ConvertCsvToHtmlTableautoDetectFieldTypes, nameof(dtoRequestV7061ConvertCsvToHtmlTableautoDetectFieldTypes), required: false);
-            WorkflowExpression.Validate(dtoRequestV7061ConvertCsvToHtmlTablenumberOfRowsForFieldTypeDetection, nameof(dtoRequestV7061ConvertCsvToHtmlTablenumberOfRowsForFieldTypeDetection), required: false);
-            WorkflowExpression.Validate(dtoRequestV7061ConvertCsvToHtmlTableremoveEmptyRows, nameof(dtoRequestV7061ConvertCsvToHtmlTableremoveEmptyRows), required: false);
-            WorkflowExpression.Validate(dtoRequestV7061ConvertCsvToHtmlTableskipANumberOfRows, nameof(dtoRequestV7061ConvertCsvToHtmlTableskipANumberOfRows), required: false);
-            WorkflowExpression.Validate(dtoRequestV7061ConvertCsvToHtmlTablestopAtASpecificRow, nameof(dtoRequestV7061ConvertCsvToHtmlTablestopAtASpecificRow), required: false);
-            WorkflowExpression.Validate(dtoRequestV7061ConvertCsvToHtmlTableseparator, nameof(dtoRequestV7061ConvertCsvToHtmlTableseparator), required: false);
-            WorkflowExpression.Validate(dtoRequestV7061ConvertCsvToHtmlTableautoDetectQuoteDelimiter, nameof(dtoRequestV7061ConvertCsvToHtmlTableautoDetectQuoteDelimiter), required: false);
+            var __workflow_dtoRequestV7061ConvertCsvToHtmlTablecSV = dtoRequestV7061ConvertCsvToHtmlTablecSV == null ? null : WorkflowExpression.Compile(dtoRequestV7061ConvertCsvToHtmlTablecSV);
+            WorkflowExpression.Validate(__workflow_dtoRequestV7061ConvertCsvToHtmlTablecSV, nameof(dtoRequestV7061ConvertCsvToHtmlTablecSV), required: true);
+            var __workflow_dtoRequestV7061ConvertCsvToHtmlTablecSVHasHeaders = dtoRequestV7061ConvertCsvToHtmlTablecSVHasHeaders == null ? null : WorkflowExpression.Compile(dtoRequestV7061ConvertCsvToHtmlTablecSVHasHeaders);
+            WorkflowExpression.Validate(__workflow_dtoRequestV7061ConvertCsvToHtmlTablecSVHasHeaders, nameof(dtoRequestV7061ConvertCsvToHtmlTablecSVHasHeaders), required: false);
+            var __workflow_dtoRequestV7061ConvertCsvToHtmlTableautoDetectFieldTypes = dtoRequestV7061ConvertCsvToHtmlTableautoDetectFieldTypes == null ? null : WorkflowExpression.Compile(dtoRequestV7061ConvertCsvToHtmlTableautoDetectFieldTypes);
+            WorkflowExpression.Validate(__workflow_dtoRequestV7061ConvertCsvToHtmlTableautoDetectFieldTypes, nameof(dtoRequestV7061ConvertCsvToHtmlTableautoDetectFieldTypes), required: false);
+            var __workflow_dtoRequestV7061ConvertCsvToHtmlTablenumberOfRowsForFieldTypeDetection = dtoRequestV7061ConvertCsvToHtmlTablenumberOfRowsForFieldTypeDetection == null ? null : WorkflowExpression.Compile(dtoRequestV7061ConvertCsvToHtmlTablenumberOfRowsForFieldTypeDetection);
+            WorkflowExpression.Validate(__workflow_dtoRequestV7061ConvertCsvToHtmlTablenumberOfRowsForFieldTypeDetection, nameof(dtoRequestV7061ConvertCsvToHtmlTablenumberOfRowsForFieldTypeDetection), required: false);
+            var __workflow_dtoRequestV7061ConvertCsvToHtmlTableremoveEmptyRows = dtoRequestV7061ConvertCsvToHtmlTableremoveEmptyRows == null ? null : WorkflowExpression.Compile(dtoRequestV7061ConvertCsvToHtmlTableremoveEmptyRows);
+            WorkflowExpression.Validate(__workflow_dtoRequestV7061ConvertCsvToHtmlTableremoveEmptyRows, nameof(dtoRequestV7061ConvertCsvToHtmlTableremoveEmptyRows), required: false);
+            var __workflow_dtoRequestV7061ConvertCsvToHtmlTableskipANumberOfRows = dtoRequestV7061ConvertCsvToHtmlTableskipANumberOfRows == null ? null : WorkflowExpression.Compile(dtoRequestV7061ConvertCsvToHtmlTableskipANumberOfRows);
+            WorkflowExpression.Validate(__workflow_dtoRequestV7061ConvertCsvToHtmlTableskipANumberOfRows, nameof(dtoRequestV7061ConvertCsvToHtmlTableskipANumberOfRows), required: false);
+            var __workflow_dtoRequestV7061ConvertCsvToHtmlTablestopAtASpecificRow = dtoRequestV7061ConvertCsvToHtmlTablestopAtASpecificRow == null ? null : WorkflowExpression.Compile(dtoRequestV7061ConvertCsvToHtmlTablestopAtASpecificRow);
+            WorkflowExpression.Validate(__workflow_dtoRequestV7061ConvertCsvToHtmlTablestopAtASpecificRow, nameof(dtoRequestV7061ConvertCsvToHtmlTablestopAtASpecificRow), required: false);
+            var __workflow_dtoRequestV7061ConvertCsvToHtmlTableseparator = dtoRequestV7061ConvertCsvToHtmlTableseparator == null ? null : WorkflowExpression.Compile(dtoRequestV7061ConvertCsvToHtmlTableseparator);
+            WorkflowExpression.Validate(__workflow_dtoRequestV7061ConvertCsvToHtmlTableseparator, nameof(dtoRequestV7061ConvertCsvToHtmlTableseparator), required: false);
+            var __workflow_dtoRequestV7061ConvertCsvToHtmlTableautoDetectQuoteDelimiter = dtoRequestV7061ConvertCsvToHtmlTableautoDetectQuoteDelimiter == null ? null : WorkflowExpression.Compile(dtoRequestV7061ConvertCsvToHtmlTableautoDetectQuoteDelimiter);
+            WorkflowExpression.Validate(__workflow_dtoRequestV7061ConvertCsvToHtmlTableautoDetectQuoteDelimiter, nameof(dtoRequestV7061ConvertCsvToHtmlTableautoDetectQuoteDelimiter), required: false);
             return new DeferredBodyAction<DtoResponseHtml>(() =>
             {
                 var apiCallPath = "/V7061_ConvertCsvToHtmlTable";
@@ -683,12 +656,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV7061ConvertCsvToHtmlTable = new JObject();
                 var dtoRequestV7061ConvertCsvToHtmlTablepropCount = 0;
                 dtoRequestV7061ConvertCsvToHtmlTablepropCount++;
-                dtoRequestV7061ConvertCsvToHtmlTable["csv"] = ExpressionConverter.ConvertO(dtoRequestV7061ConvertCsvToHtmlTablecSV);
-                if (dtoRequestV7061ConvertCsvToHtmlTablecSVHasHeaders != null)
+                dtoRequestV7061ConvertCsvToHtmlTable["csv"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV7061ConvertCsvToHtmlTablecSV);
+                if (__workflow_dtoRequestV7061ConvertCsvToHtmlTablecSVHasHeaders != null)
                 {
-                    if (dtoRequestV7061ConvertCsvToHtmlTablecSVHasHeaders != null)
+                    if (__workflow_dtoRequestV7061ConvertCsvToHtmlTablecSVHasHeaders != null)
                     {
-                        dtoRequestV7061ConvertCsvToHtmlTable["dataIncludesHeader"] = ExpressionConverter.ConvertO(dtoRequestV7061ConvertCsvToHtmlTablecSVHasHeaders);
+                        dtoRequestV7061ConvertCsvToHtmlTable["dataIncludesHeader"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV7061ConvertCsvToHtmlTablecSVHasHeaders);
                         dtoRequestV7061ConvertCsvToHtmlTablepropCount++;
                     }
 
@@ -700,11 +673,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                     dtoRequestV7061ConvertCsvToHtmlTablepropCount++;
                 }
 
-                if (dtoRequestV7061ConvertCsvToHtmlTableautoDetectFieldTypes != null)
+                if (__workflow_dtoRequestV7061ConvertCsvToHtmlTableautoDetectFieldTypes != null)
                 {
-                    if (dtoRequestV7061ConvertCsvToHtmlTableautoDetectFieldTypes != null)
+                    if (__workflow_dtoRequestV7061ConvertCsvToHtmlTableautoDetectFieldTypes != null)
                     {
-                        dtoRequestV7061ConvertCsvToHtmlTable["autoDiscoverFieldTypes"] = ExpressionConverter.ConvertO(dtoRequestV7061ConvertCsvToHtmlTableautoDetectFieldTypes);
+                        dtoRequestV7061ConvertCsvToHtmlTable["autoDiscoverFieldTypes"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV7061ConvertCsvToHtmlTableautoDetectFieldTypes);
                         dtoRequestV7061ConvertCsvToHtmlTablepropCount++;
                     }
 
@@ -716,17 +689,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                     dtoRequestV7061ConvertCsvToHtmlTablepropCount++;
                 }
 
-                if (dtoRequestV7061ConvertCsvToHtmlTablenumberOfRowsForFieldTypeDetection != null)
+                if (__workflow_dtoRequestV7061ConvertCsvToHtmlTablenumberOfRowsForFieldTypeDetection != null)
                 {
-                    dtoRequestV7061ConvertCsvToHtmlTable["maxScanRows"] = ExpressionConverter.ConvertO(dtoRequestV7061ConvertCsvToHtmlTablenumberOfRowsForFieldTypeDetection);
+                    dtoRequestV7061ConvertCsvToHtmlTable["maxScanRows"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV7061ConvertCsvToHtmlTablenumberOfRowsForFieldTypeDetection);
                     dtoRequestV7061ConvertCsvToHtmlTablepropCount++;
                 }
 
-                if (dtoRequestV7061ConvertCsvToHtmlTableremoveEmptyRows != null)
+                if (__workflow_dtoRequestV7061ConvertCsvToHtmlTableremoveEmptyRows != null)
                 {
-                    if (dtoRequestV7061ConvertCsvToHtmlTableremoveEmptyRows != null)
+                    if (__workflow_dtoRequestV7061ConvertCsvToHtmlTableremoveEmptyRows != null)
                     {
-                        dtoRequestV7061ConvertCsvToHtmlTable["ignoreEmptyLine"] = ExpressionConverter.ConvertO(dtoRequestV7061ConvertCsvToHtmlTableremoveEmptyRows);
+                        dtoRequestV7061ConvertCsvToHtmlTable["ignoreEmptyLine"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV7061ConvertCsvToHtmlTableremoveEmptyRows);
                         dtoRequestV7061ConvertCsvToHtmlTablepropCount++;
                     }
 
@@ -738,29 +711,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                     dtoRequestV7061ConvertCsvToHtmlTablepropCount++;
                 }
 
-                if (dtoRequestV7061ConvertCsvToHtmlTableskipANumberOfRows != null)
+                if (__workflow_dtoRequestV7061ConvertCsvToHtmlTableskipANumberOfRows != null)
                 {
-                    dtoRequestV7061ConvertCsvToHtmlTable["skip"] = ExpressionConverter.ConvertO(dtoRequestV7061ConvertCsvToHtmlTableskipANumberOfRows);
+                    dtoRequestV7061ConvertCsvToHtmlTable["skip"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV7061ConvertCsvToHtmlTableskipANumberOfRows);
                     dtoRequestV7061ConvertCsvToHtmlTablepropCount++;
                 }
 
-                if (dtoRequestV7061ConvertCsvToHtmlTablestopAtASpecificRow != null)
+                if (__workflow_dtoRequestV7061ConvertCsvToHtmlTablestopAtASpecificRow != null)
                 {
-                    dtoRequestV7061ConvertCsvToHtmlTable["skipLast"] = ExpressionConverter.ConvertO(dtoRequestV7061ConvertCsvToHtmlTablestopAtASpecificRow);
+                    dtoRequestV7061ConvertCsvToHtmlTable["skipLast"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV7061ConvertCsvToHtmlTablestopAtASpecificRow);
                     dtoRequestV7061ConvertCsvToHtmlTablepropCount++;
                 }
 
-                if (dtoRequestV7061ConvertCsvToHtmlTableseparator != null)
+                if (__workflow_dtoRequestV7061ConvertCsvToHtmlTableseparator != null)
                 {
-                    dtoRequestV7061ConvertCsvToHtmlTable["delimiter"] = ExpressionConverter.ConvertO(dtoRequestV7061ConvertCsvToHtmlTableseparator);
+                    dtoRequestV7061ConvertCsvToHtmlTable["delimiter"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV7061ConvertCsvToHtmlTableseparator);
                     dtoRequestV7061ConvertCsvToHtmlTablepropCount++;
                 }
 
-                if (dtoRequestV7061ConvertCsvToHtmlTableautoDetectQuoteDelimiter != null)
+                if (__workflow_dtoRequestV7061ConvertCsvToHtmlTableautoDetectQuoteDelimiter != null)
                 {
-                    if (dtoRequestV7061ConvertCsvToHtmlTableautoDetectQuoteDelimiter != null)
+                    if (__workflow_dtoRequestV7061ConvertCsvToHtmlTableautoDetectQuoteDelimiter != null)
                     {
-                        dtoRequestV7061ConvertCsvToHtmlTable["mayHaveQuotedFields"] = ExpressionConverter.ConvertO(dtoRequestV7061ConvertCsvToHtmlTableautoDetectQuoteDelimiter);
+                        dtoRequestV7061ConvertCsvToHtmlTable["mayHaveQuotedFields"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV7061ConvertCsvToHtmlTableautoDetectQuoteDelimiter);
                         dtoRequestV7061ConvertCsvToHtmlTablepropCount++;
                     }
 
@@ -782,24 +755,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildConvertCsvToJson))]
-        public IBodyWorkflowAction<DtoResponseV1022ConvertCsvToJson> ConvertCsvToJson([WorkflowExpression] Func<string> dtoRequestV1022ConvertCsvToJsoncSV, [WorkflowExpression] Func<bool> dtoRequestV1022ConvertCsvToJsoncSVHasHeaders = null, [WorkflowExpression] Func<bool> dtoRequestV1022ConvertCsvToJsonautoDetectFieldTypes = null, [WorkflowExpression] Func<int> dtoRequestV1022ConvertCsvToJsonnumberOfRowsForFieldTypeDetection = null, [WorkflowExpression] Func<bool> dtoRequestV1022ConvertCsvToJsonremoveEmptyRows = null, [WorkflowExpression] Func<int> dtoRequestV1022ConvertCsvToJsonskipANumberOfRows = null, [WorkflowExpression] Func<int> dtoRequestV1022ConvertCsvToJsonstopAtASpecificRow = null, [WorkflowExpression] Func<string> dtoRequestV1022ConvertCsvToJsonseparator = null, [WorkflowExpression] Func<bool> dtoRequestV1022ConvertCsvToJsonautoDetectQuoteDelimiter = null)
+        public IBodyWorkflowAction<DtoResponseV1022ConvertCsvToJson> ConvertCsvToJson(Expression<Func<string>> dtoRequestV1022ConvertCsvToJsoncSV, Expression<Func<bool>> dtoRequestV1022ConvertCsvToJsoncSVHasHeaders = null, Expression<Func<bool>> dtoRequestV1022ConvertCsvToJsonautoDetectFieldTypes = null, Expression<Func<int>> dtoRequestV1022ConvertCsvToJsonnumberOfRowsForFieldTypeDetection = null, Expression<Func<bool>> dtoRequestV1022ConvertCsvToJsonremoveEmptyRows = null, Expression<Func<int>> dtoRequestV1022ConvertCsvToJsonskipANumberOfRows = null, Expression<Func<int>> dtoRequestV1022ConvertCsvToJsonstopAtASpecificRow = null, Expression<Func<string>> dtoRequestV1022ConvertCsvToJsonseparator = null, Expression<Func<bool>> dtoRequestV1022ConvertCsvToJsonautoDetectQuoteDelimiter = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV1022ConvertCsvToJson> __BuildConvertCsvToJson(WorkflowExpression<string> dtoRequestV1022ConvertCsvToJsoncSV, WorkflowExpression<bool> dtoRequestV1022ConvertCsvToJsoncSVHasHeaders = null, WorkflowExpression<bool> dtoRequestV1022ConvertCsvToJsonautoDetectFieldTypes = null, WorkflowExpression<int> dtoRequestV1022ConvertCsvToJsonnumberOfRowsForFieldTypeDetection = null, WorkflowExpression<bool> dtoRequestV1022ConvertCsvToJsonremoveEmptyRows = null, WorkflowExpression<int> dtoRequestV1022ConvertCsvToJsonskipANumberOfRows = null, WorkflowExpression<int> dtoRequestV1022ConvertCsvToJsonstopAtASpecificRow = null, WorkflowExpression<string> dtoRequestV1022ConvertCsvToJsonseparator = null, WorkflowExpression<bool> dtoRequestV1022ConvertCsvToJsonautoDetectQuoteDelimiter = null)
-        {
-            WorkflowExpression.Validate(dtoRequestV1022ConvertCsvToJsoncSV, nameof(dtoRequestV1022ConvertCsvToJsoncSV), required: true);
-            WorkflowExpression.Validate(dtoRequestV1022ConvertCsvToJsoncSVHasHeaders, nameof(dtoRequestV1022ConvertCsvToJsoncSVHasHeaders), required: false);
-            WorkflowExpression.Validate(dtoRequestV1022ConvertCsvToJsonautoDetectFieldTypes, nameof(dtoRequestV1022ConvertCsvToJsonautoDetectFieldTypes), required: false);
-            WorkflowExpression.Validate(dtoRequestV1022ConvertCsvToJsonnumberOfRowsForFieldTypeDetection, nameof(dtoRequestV1022ConvertCsvToJsonnumberOfRowsForFieldTypeDetection), required: false);
-            WorkflowExpression.Validate(dtoRequestV1022ConvertCsvToJsonremoveEmptyRows, nameof(dtoRequestV1022ConvertCsvToJsonremoveEmptyRows), required: false);
-            WorkflowExpression.Validate(dtoRequestV1022ConvertCsvToJsonskipANumberOfRows, nameof(dtoRequestV1022ConvertCsvToJsonskipANumberOfRows), required: false);
-            WorkflowExpression.Validate(dtoRequestV1022ConvertCsvToJsonstopAtASpecificRow, nameof(dtoRequestV1022ConvertCsvToJsonstopAtASpecificRow), required: false);
-            WorkflowExpression.Validate(dtoRequestV1022ConvertCsvToJsonseparator, nameof(dtoRequestV1022ConvertCsvToJsonseparator), required: false);
-            WorkflowExpression.Validate(dtoRequestV1022ConvertCsvToJsonautoDetectQuoteDelimiter, nameof(dtoRequestV1022ConvertCsvToJsonautoDetectQuoteDelimiter), required: false);
+            var __workflow_dtoRequestV1022ConvertCsvToJsoncSV = dtoRequestV1022ConvertCsvToJsoncSV == null ? null : WorkflowExpression.Compile(dtoRequestV1022ConvertCsvToJsoncSV);
+            WorkflowExpression.Validate(__workflow_dtoRequestV1022ConvertCsvToJsoncSV, nameof(dtoRequestV1022ConvertCsvToJsoncSV), required: true);
+            var __workflow_dtoRequestV1022ConvertCsvToJsoncSVHasHeaders = dtoRequestV1022ConvertCsvToJsoncSVHasHeaders == null ? null : WorkflowExpression.Compile(dtoRequestV1022ConvertCsvToJsoncSVHasHeaders);
+            WorkflowExpression.Validate(__workflow_dtoRequestV1022ConvertCsvToJsoncSVHasHeaders, nameof(dtoRequestV1022ConvertCsvToJsoncSVHasHeaders), required: false);
+            var __workflow_dtoRequestV1022ConvertCsvToJsonautoDetectFieldTypes = dtoRequestV1022ConvertCsvToJsonautoDetectFieldTypes == null ? null : WorkflowExpression.Compile(dtoRequestV1022ConvertCsvToJsonautoDetectFieldTypes);
+            WorkflowExpression.Validate(__workflow_dtoRequestV1022ConvertCsvToJsonautoDetectFieldTypes, nameof(dtoRequestV1022ConvertCsvToJsonautoDetectFieldTypes), required: false);
+            var __workflow_dtoRequestV1022ConvertCsvToJsonnumberOfRowsForFieldTypeDetection = dtoRequestV1022ConvertCsvToJsonnumberOfRowsForFieldTypeDetection == null ? null : WorkflowExpression.Compile(dtoRequestV1022ConvertCsvToJsonnumberOfRowsForFieldTypeDetection);
+            WorkflowExpression.Validate(__workflow_dtoRequestV1022ConvertCsvToJsonnumberOfRowsForFieldTypeDetection, nameof(dtoRequestV1022ConvertCsvToJsonnumberOfRowsForFieldTypeDetection), required: false);
+            var __workflow_dtoRequestV1022ConvertCsvToJsonremoveEmptyRows = dtoRequestV1022ConvertCsvToJsonremoveEmptyRows == null ? null : WorkflowExpression.Compile(dtoRequestV1022ConvertCsvToJsonremoveEmptyRows);
+            WorkflowExpression.Validate(__workflow_dtoRequestV1022ConvertCsvToJsonremoveEmptyRows, nameof(dtoRequestV1022ConvertCsvToJsonremoveEmptyRows), required: false);
+            var __workflow_dtoRequestV1022ConvertCsvToJsonskipANumberOfRows = dtoRequestV1022ConvertCsvToJsonskipANumberOfRows == null ? null : WorkflowExpression.Compile(dtoRequestV1022ConvertCsvToJsonskipANumberOfRows);
+            WorkflowExpression.Validate(__workflow_dtoRequestV1022ConvertCsvToJsonskipANumberOfRows, nameof(dtoRequestV1022ConvertCsvToJsonskipANumberOfRows), required: false);
+            var __workflow_dtoRequestV1022ConvertCsvToJsonstopAtASpecificRow = dtoRequestV1022ConvertCsvToJsonstopAtASpecificRow == null ? null : WorkflowExpression.Compile(dtoRequestV1022ConvertCsvToJsonstopAtASpecificRow);
+            WorkflowExpression.Validate(__workflow_dtoRequestV1022ConvertCsvToJsonstopAtASpecificRow, nameof(dtoRequestV1022ConvertCsvToJsonstopAtASpecificRow), required: false);
+            var __workflow_dtoRequestV1022ConvertCsvToJsonseparator = dtoRequestV1022ConvertCsvToJsonseparator == null ? null : WorkflowExpression.Compile(dtoRequestV1022ConvertCsvToJsonseparator);
+            WorkflowExpression.Validate(__workflow_dtoRequestV1022ConvertCsvToJsonseparator, nameof(dtoRequestV1022ConvertCsvToJsonseparator), required: false);
+            var __workflow_dtoRequestV1022ConvertCsvToJsonautoDetectQuoteDelimiter = dtoRequestV1022ConvertCsvToJsonautoDetectQuoteDelimiter == null ? null : WorkflowExpression.Compile(dtoRequestV1022ConvertCsvToJsonautoDetectQuoteDelimiter);
+            WorkflowExpression.Validate(__workflow_dtoRequestV1022ConvertCsvToJsonautoDetectQuoteDelimiter, nameof(dtoRequestV1022ConvertCsvToJsonautoDetectQuoteDelimiter), required: false);
             return new DeferredBodyAction<DtoResponseV1022ConvertCsvToJson>(() =>
             {
                 var apiCallPath = "/V1022_ConvertCsvToJson";
@@ -808,12 +783,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV1022ConvertCsvToJson = new JObject();
                 var dtoRequestV1022ConvertCsvToJsonpropCount = 0;
                 dtoRequestV1022ConvertCsvToJsonpropCount++;
-                dtoRequestV1022ConvertCsvToJson["csv"] = ExpressionConverter.ConvertO(dtoRequestV1022ConvertCsvToJsoncSV);
-                if (dtoRequestV1022ConvertCsvToJsoncSVHasHeaders != null)
+                dtoRequestV1022ConvertCsvToJson["csv"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV1022ConvertCsvToJsoncSV);
+                if (__workflow_dtoRequestV1022ConvertCsvToJsoncSVHasHeaders != null)
                 {
-                    if (dtoRequestV1022ConvertCsvToJsoncSVHasHeaders != null)
+                    if (__workflow_dtoRequestV1022ConvertCsvToJsoncSVHasHeaders != null)
                     {
-                        dtoRequestV1022ConvertCsvToJson["dataIncludesHeader"] = ExpressionConverter.ConvertO(dtoRequestV1022ConvertCsvToJsoncSVHasHeaders);
+                        dtoRequestV1022ConvertCsvToJson["dataIncludesHeader"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV1022ConvertCsvToJsoncSVHasHeaders);
                         dtoRequestV1022ConvertCsvToJsonpropCount++;
                     }
 
@@ -825,11 +800,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                     dtoRequestV1022ConvertCsvToJsonpropCount++;
                 }
 
-                if (dtoRequestV1022ConvertCsvToJsonautoDetectFieldTypes != null)
+                if (__workflow_dtoRequestV1022ConvertCsvToJsonautoDetectFieldTypes != null)
                 {
-                    if (dtoRequestV1022ConvertCsvToJsonautoDetectFieldTypes != null)
+                    if (__workflow_dtoRequestV1022ConvertCsvToJsonautoDetectFieldTypes != null)
                     {
-                        dtoRequestV1022ConvertCsvToJson["autoDiscoverFieldTypes"] = ExpressionConverter.ConvertO(dtoRequestV1022ConvertCsvToJsonautoDetectFieldTypes);
+                        dtoRequestV1022ConvertCsvToJson["autoDiscoverFieldTypes"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV1022ConvertCsvToJsonautoDetectFieldTypes);
                         dtoRequestV1022ConvertCsvToJsonpropCount++;
                     }
 
@@ -841,17 +816,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                     dtoRequestV1022ConvertCsvToJsonpropCount++;
                 }
 
-                if (dtoRequestV1022ConvertCsvToJsonnumberOfRowsForFieldTypeDetection != null)
+                if (__workflow_dtoRequestV1022ConvertCsvToJsonnumberOfRowsForFieldTypeDetection != null)
                 {
-                    dtoRequestV1022ConvertCsvToJson["maxScanRows"] = ExpressionConverter.ConvertO(dtoRequestV1022ConvertCsvToJsonnumberOfRowsForFieldTypeDetection);
+                    dtoRequestV1022ConvertCsvToJson["maxScanRows"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV1022ConvertCsvToJsonnumberOfRowsForFieldTypeDetection);
                     dtoRequestV1022ConvertCsvToJsonpropCount++;
                 }
 
-                if (dtoRequestV1022ConvertCsvToJsonremoveEmptyRows != null)
+                if (__workflow_dtoRequestV1022ConvertCsvToJsonremoveEmptyRows != null)
                 {
-                    if (dtoRequestV1022ConvertCsvToJsonremoveEmptyRows != null)
+                    if (__workflow_dtoRequestV1022ConvertCsvToJsonremoveEmptyRows != null)
                     {
-                        dtoRequestV1022ConvertCsvToJson["ignoreEmptyLine"] = ExpressionConverter.ConvertO(dtoRequestV1022ConvertCsvToJsonremoveEmptyRows);
+                        dtoRequestV1022ConvertCsvToJson["ignoreEmptyLine"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV1022ConvertCsvToJsonremoveEmptyRows);
                         dtoRequestV1022ConvertCsvToJsonpropCount++;
                     }
 
@@ -863,29 +838,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                     dtoRequestV1022ConvertCsvToJsonpropCount++;
                 }
 
-                if (dtoRequestV1022ConvertCsvToJsonskipANumberOfRows != null)
+                if (__workflow_dtoRequestV1022ConvertCsvToJsonskipANumberOfRows != null)
                 {
-                    dtoRequestV1022ConvertCsvToJson["skip"] = ExpressionConverter.ConvertO(dtoRequestV1022ConvertCsvToJsonskipANumberOfRows);
+                    dtoRequestV1022ConvertCsvToJson["skip"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV1022ConvertCsvToJsonskipANumberOfRows);
                     dtoRequestV1022ConvertCsvToJsonpropCount++;
                 }
 
-                if (dtoRequestV1022ConvertCsvToJsonstopAtASpecificRow != null)
+                if (__workflow_dtoRequestV1022ConvertCsvToJsonstopAtASpecificRow != null)
                 {
-                    dtoRequestV1022ConvertCsvToJson["skipLast"] = ExpressionConverter.ConvertO(dtoRequestV1022ConvertCsvToJsonstopAtASpecificRow);
+                    dtoRequestV1022ConvertCsvToJson["skipLast"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV1022ConvertCsvToJsonstopAtASpecificRow);
                     dtoRequestV1022ConvertCsvToJsonpropCount++;
                 }
 
-                if (dtoRequestV1022ConvertCsvToJsonseparator != null)
+                if (__workflow_dtoRequestV1022ConvertCsvToJsonseparator != null)
                 {
-                    dtoRequestV1022ConvertCsvToJson["delimiter"] = ExpressionConverter.ConvertO(dtoRequestV1022ConvertCsvToJsonseparator);
+                    dtoRequestV1022ConvertCsvToJson["delimiter"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV1022ConvertCsvToJsonseparator);
                     dtoRequestV1022ConvertCsvToJsonpropCount++;
                 }
 
-                if (dtoRequestV1022ConvertCsvToJsonautoDetectQuoteDelimiter != null)
+                if (__workflow_dtoRequestV1022ConvertCsvToJsonautoDetectQuoteDelimiter != null)
                 {
-                    if (dtoRequestV1022ConvertCsvToJsonautoDetectQuoteDelimiter != null)
+                    if (__workflow_dtoRequestV1022ConvertCsvToJsonautoDetectQuoteDelimiter != null)
                     {
-                        dtoRequestV1022ConvertCsvToJson["mayHaveQuotedFields"] = ExpressionConverter.ConvertO(dtoRequestV1022ConvertCsvToJsonautoDetectQuoteDelimiter);
+                        dtoRequestV1022ConvertCsvToJson["mayHaveQuotedFields"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV1022ConvertCsvToJsonautoDetectQuoteDelimiter);
                         dtoRequestV1022ConvertCsvToJsonpropCount++;
                     }
 
@@ -907,19 +882,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildConvertExcelToJson))]
-        public IBodyWorkflowAction<DtoResponseV1100ConvertExcelToJson> ConvertExcelToJson([WorkflowExpression] Func<string> dtoRequestV1100ConvertExcelToJsonexcelFile, [WorkflowExpression] Func<bool> dtoRequestV1100ConvertExcelToJsonexcelHasHeaders = null, [WorkflowExpression] Func<string> dtoRequestV1100ConvertExcelToJsonstartCell = null, [WorkflowExpression] Func<string> dtoRequestV1100ConvertExcelToJsonsheetName = null)
+        public IBodyWorkflowAction<DtoResponseV1100ConvertExcelToJson> ConvertExcelToJson(Expression<Func<string>> dtoRequestV1100ConvertExcelToJsonexcelFile, Expression<Func<bool>> dtoRequestV1100ConvertExcelToJsonexcelHasHeaders = null, Expression<Func<string>> dtoRequestV1100ConvertExcelToJsonstartCell = null, Expression<Func<string>> dtoRequestV1100ConvertExcelToJsonsheetName = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV1100ConvertExcelToJson> __BuildConvertExcelToJson(WorkflowExpression<string> dtoRequestV1100ConvertExcelToJsonexcelFile, WorkflowExpression<bool> dtoRequestV1100ConvertExcelToJsonexcelHasHeaders = null, WorkflowExpression<string> dtoRequestV1100ConvertExcelToJsonstartCell = null, WorkflowExpression<string> dtoRequestV1100ConvertExcelToJsonsheetName = null)
-        {
-            WorkflowExpression.Validate(dtoRequestV1100ConvertExcelToJsonexcelFile, nameof(dtoRequestV1100ConvertExcelToJsonexcelFile), required: true);
-            WorkflowExpression.Validate(dtoRequestV1100ConvertExcelToJsonexcelHasHeaders, nameof(dtoRequestV1100ConvertExcelToJsonexcelHasHeaders), required: false);
-            WorkflowExpression.Validate(dtoRequestV1100ConvertExcelToJsonstartCell, nameof(dtoRequestV1100ConvertExcelToJsonstartCell), required: false);
-            WorkflowExpression.Validate(dtoRequestV1100ConvertExcelToJsonsheetName, nameof(dtoRequestV1100ConvertExcelToJsonsheetName), required: false);
+            var __workflow_dtoRequestV1100ConvertExcelToJsonexcelFile = dtoRequestV1100ConvertExcelToJsonexcelFile == null ? null : WorkflowExpression.Compile(dtoRequestV1100ConvertExcelToJsonexcelFile);
+            WorkflowExpression.Validate(__workflow_dtoRequestV1100ConvertExcelToJsonexcelFile, nameof(dtoRequestV1100ConvertExcelToJsonexcelFile), required: true);
+            var __workflow_dtoRequestV1100ConvertExcelToJsonexcelHasHeaders = dtoRequestV1100ConvertExcelToJsonexcelHasHeaders == null ? null : WorkflowExpression.Compile(dtoRequestV1100ConvertExcelToJsonexcelHasHeaders);
+            WorkflowExpression.Validate(__workflow_dtoRequestV1100ConvertExcelToJsonexcelHasHeaders, nameof(dtoRequestV1100ConvertExcelToJsonexcelHasHeaders), required: false);
+            var __workflow_dtoRequestV1100ConvertExcelToJsonstartCell = dtoRequestV1100ConvertExcelToJsonstartCell == null ? null : WorkflowExpression.Compile(dtoRequestV1100ConvertExcelToJsonstartCell);
+            WorkflowExpression.Validate(__workflow_dtoRequestV1100ConvertExcelToJsonstartCell, nameof(dtoRequestV1100ConvertExcelToJsonstartCell), required: false);
+            var __workflow_dtoRequestV1100ConvertExcelToJsonsheetName = dtoRequestV1100ConvertExcelToJsonsheetName == null ? null : WorkflowExpression.Compile(dtoRequestV1100ConvertExcelToJsonsheetName);
+            WorkflowExpression.Validate(__workflow_dtoRequestV1100ConvertExcelToJsonsheetName, nameof(dtoRequestV1100ConvertExcelToJsonsheetName), required: false);
             return new DeferredBodyAction<DtoResponseV1100ConvertExcelToJson>(() =>
             {
                 var apiCallPath = "/V1100_ConvertExcelToJson";
@@ -928,12 +900,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV1100ConvertExcelToJson = new JObject();
                 var dtoRequestV1100ConvertExcelToJsonpropCount = 0;
                 dtoRequestV1100ConvertExcelToJsonpropCount++;
-                dtoRequestV1100ConvertExcelToJson["file"] = ExpressionConverter.ConvertO(dtoRequestV1100ConvertExcelToJsonexcelFile);
-                if (dtoRequestV1100ConvertExcelToJsonexcelHasHeaders != null)
+                dtoRequestV1100ConvertExcelToJson["file"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV1100ConvertExcelToJsonexcelFile);
+                if (__workflow_dtoRequestV1100ConvertExcelToJsonexcelHasHeaders != null)
                 {
-                    if (dtoRequestV1100ConvertExcelToJsonexcelHasHeaders != null)
+                    if (__workflow_dtoRequestV1100ConvertExcelToJsonexcelHasHeaders != null)
                     {
-                        dtoRequestV1100ConvertExcelToJson["hasHeaders"] = ExpressionConverter.ConvertO(dtoRequestV1100ConvertExcelToJsonexcelHasHeaders);
+                        dtoRequestV1100ConvertExcelToJson["hasHeaders"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV1100ConvertExcelToJsonexcelHasHeaders);
                         dtoRequestV1100ConvertExcelToJsonpropCount++;
                     }
 
@@ -945,15 +917,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                     dtoRequestV1100ConvertExcelToJsonpropCount++;
                 }
 
-                if (dtoRequestV1100ConvertExcelToJsonstartCell != null)
+                if (__workflow_dtoRequestV1100ConvertExcelToJsonstartCell != null)
                 {
-                    dtoRequestV1100ConvertExcelToJson["startCell"] = ExpressionConverter.ConvertO(dtoRequestV1100ConvertExcelToJsonstartCell);
+                    dtoRequestV1100ConvertExcelToJson["startCell"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV1100ConvertExcelToJsonstartCell);
                     dtoRequestV1100ConvertExcelToJsonpropCount++;
                 }
 
-                if (dtoRequestV1100ConvertExcelToJsonsheetName != null)
+                if (__workflow_dtoRequestV1100ConvertExcelToJsonsheetName != null)
                 {
-                    dtoRequestV1100ConvertExcelToJson["sheetName"] = ExpressionConverter.ConvertO(dtoRequestV1100ConvertExcelToJsonsheetName);
+                    dtoRequestV1100ConvertExcelToJson["sheetName"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV1100ConvertExcelToJsonsheetName);
                     dtoRequestV1100ConvertExcelToJsonpropCount++;
                 }
 
@@ -967,19 +939,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildConvertFileToPdf))]
-        public IBodyWorkflowAction<DtoResponseV4013ConvertFileToPdf> ConvertFileToPdf([WorkflowExpression] Func<string> dtoRequestV4013FileToPdffile, [WorkflowExpression] Func<string> dtoRequestV4013FileToPdforiginFileName = null, [WorkflowExpression] Func<string> dtoRequestV4013FileToPdforiginFileExtension = null, [WorkflowExpression] Func<int> dtoRequestV4013FileToPdfconformanceLevel = null)
+        public IBodyWorkflowAction<DtoResponseV4013ConvertFileToPdf> ConvertFileToPdf(Expression<Func<string>> dtoRequestV4013FileToPdffile, Expression<Func<string>> dtoRequestV4013FileToPdforiginFileName = null, Expression<Func<string>> dtoRequestV4013FileToPdforiginFileExtension = null, Expression<Func<int>> dtoRequestV4013FileToPdfconformanceLevel = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV4013ConvertFileToPdf> __BuildConvertFileToPdf(WorkflowExpression<string> dtoRequestV4013FileToPdffile, WorkflowExpression<string> dtoRequestV4013FileToPdforiginFileName = null, WorkflowExpression<string> dtoRequestV4013FileToPdforiginFileExtension = null, WorkflowExpression<int> dtoRequestV4013FileToPdfconformanceLevel = null)
-        {
-            WorkflowExpression.Validate(dtoRequestV4013FileToPdffile, nameof(dtoRequestV4013FileToPdffile), required: true);
-            WorkflowExpression.Validate(dtoRequestV4013FileToPdforiginFileName, nameof(dtoRequestV4013FileToPdforiginFileName), required: false);
-            WorkflowExpression.Validate(dtoRequestV4013FileToPdforiginFileExtension, nameof(dtoRequestV4013FileToPdforiginFileExtension), required: false);
-            WorkflowExpression.Validate(dtoRequestV4013FileToPdfconformanceLevel, nameof(dtoRequestV4013FileToPdfconformanceLevel), required: false);
+            var __workflow_dtoRequestV4013FileToPdffile = dtoRequestV4013FileToPdffile == null ? null : WorkflowExpression.Compile(dtoRequestV4013FileToPdffile);
+            WorkflowExpression.Validate(__workflow_dtoRequestV4013FileToPdffile, nameof(dtoRequestV4013FileToPdffile), required: true);
+            var __workflow_dtoRequestV4013FileToPdforiginFileName = dtoRequestV4013FileToPdforiginFileName == null ? null : WorkflowExpression.Compile(dtoRequestV4013FileToPdforiginFileName);
+            WorkflowExpression.Validate(__workflow_dtoRequestV4013FileToPdforiginFileName, nameof(dtoRequestV4013FileToPdforiginFileName), required: false);
+            var __workflow_dtoRequestV4013FileToPdforiginFileExtension = dtoRequestV4013FileToPdforiginFileExtension == null ? null : WorkflowExpression.Compile(dtoRequestV4013FileToPdforiginFileExtension);
+            WorkflowExpression.Validate(__workflow_dtoRequestV4013FileToPdforiginFileExtension, nameof(dtoRequestV4013FileToPdforiginFileExtension), required: false);
+            var __workflow_dtoRequestV4013FileToPdfconformanceLevel = dtoRequestV4013FileToPdfconformanceLevel == null ? null : WorkflowExpression.Compile(dtoRequestV4013FileToPdfconformanceLevel);
+            WorkflowExpression.Validate(__workflow_dtoRequestV4013FileToPdfconformanceLevel, nameof(dtoRequestV4013FileToPdfconformanceLevel), required: false);
             return new DeferredBodyAction<DtoResponseV4013ConvertFileToPdf>(() =>
             {
                 var apiCallPath = "/V4013_ConvertFileToPdf";
@@ -988,22 +957,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV4013FileToPdf = new JObject();
                 var dtoRequestV4013FileToPdfpropCount = 0;
                 dtoRequestV4013FileToPdfpropCount++;
-                dtoRequestV4013FileToPdf["file"] = ExpressionConverter.ConvertO(dtoRequestV4013FileToPdffile);
-                if (dtoRequestV4013FileToPdforiginFileName != null)
+                dtoRequestV4013FileToPdf["file"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV4013FileToPdffile);
+                if (__workflow_dtoRequestV4013FileToPdforiginFileName != null)
                 {
-                    dtoRequestV4013FileToPdf["fileName"] = ExpressionConverter.ConvertO(dtoRequestV4013FileToPdforiginFileName);
+                    dtoRequestV4013FileToPdf["fileName"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV4013FileToPdforiginFileName);
                     dtoRequestV4013FileToPdfpropCount++;
                 }
 
-                if (dtoRequestV4013FileToPdforiginFileExtension != null)
+                if (__workflow_dtoRequestV4013FileToPdforiginFileExtension != null)
                 {
-                    dtoRequestV4013FileToPdf["fileExtension"] = ExpressionConverter.ConvertO(dtoRequestV4013FileToPdforiginFileExtension);
+                    dtoRequestV4013FileToPdf["fileExtension"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV4013FileToPdforiginFileExtension);
                     dtoRequestV4013FileToPdfpropCount++;
                 }
 
-                if (dtoRequestV4013FileToPdfconformanceLevel != null)
+                if (__workflow_dtoRequestV4013FileToPdfconformanceLevel != null)
                 {
-                    dtoRequestV4013FileToPdf["conformanceLevel"] = ExpressionConverter.ConvertO(dtoRequestV4013FileToPdfconformanceLevel);
+                    dtoRequestV4013FileToPdf["conformanceLevel"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV4013FileToPdfconformanceLevel);
                     dtoRequestV4013FileToPdfpropCount++;
                 }
 
@@ -1017,17 +986,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildConvertHtmlTableToCsv))]
-        public IBodyWorkflowAction<DtoResponseV7070ConvertHtmlTableToCsv> ConvertHtmlTableToCsv([WorkflowExpression] Func<string> dtoRequestV7070ConvertHtmlTableToCsvhTMLTable, [WorkflowExpression] Func<string> dtoRequestV7070ConvertHtmlTableToCsvseparator = null)
+        public IBodyWorkflowAction<DtoResponseV7070ConvertHtmlTableToCsv> ConvertHtmlTableToCsv(Expression<Func<string>> dtoRequestV7070ConvertHtmlTableToCsvhTMLTable, Expression<Func<string>> dtoRequestV7070ConvertHtmlTableToCsvseparator = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV7070ConvertHtmlTableToCsv> __BuildConvertHtmlTableToCsv(WorkflowExpression<string> dtoRequestV7070ConvertHtmlTableToCsvhTMLTable, WorkflowExpression<string> dtoRequestV7070ConvertHtmlTableToCsvseparator = null)
-        {
-            WorkflowExpression.Validate(dtoRequestV7070ConvertHtmlTableToCsvhTMLTable, nameof(dtoRequestV7070ConvertHtmlTableToCsvhTMLTable), required: true);
-            WorkflowExpression.Validate(dtoRequestV7070ConvertHtmlTableToCsvseparator, nameof(dtoRequestV7070ConvertHtmlTableToCsvseparator), required: false);
+            var __workflow_dtoRequestV7070ConvertHtmlTableToCsvhTMLTable = dtoRequestV7070ConvertHtmlTableToCsvhTMLTable == null ? null : WorkflowExpression.Compile(dtoRequestV7070ConvertHtmlTableToCsvhTMLTable);
+            WorkflowExpression.Validate(__workflow_dtoRequestV7070ConvertHtmlTableToCsvhTMLTable, nameof(dtoRequestV7070ConvertHtmlTableToCsvhTMLTable), required: true);
+            var __workflow_dtoRequestV7070ConvertHtmlTableToCsvseparator = dtoRequestV7070ConvertHtmlTableToCsvseparator == null ? null : WorkflowExpression.Compile(dtoRequestV7070ConvertHtmlTableToCsvseparator);
+            WorkflowExpression.Validate(__workflow_dtoRequestV7070ConvertHtmlTableToCsvseparator, nameof(dtoRequestV7070ConvertHtmlTableToCsvseparator), required: false);
             return new DeferredBodyAction<DtoResponseV7070ConvertHtmlTableToCsv>(() =>
             {
                 var apiCallPath = "/V7070_ConvertHtmlTableToCsv";
@@ -1036,10 +1000,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV7070ConvertHtmlTableToCsv = new JObject();
                 var dtoRequestV7070ConvertHtmlTableToCsvpropCount = 0;
                 dtoRequestV7070ConvertHtmlTableToCsvpropCount++;
-                dtoRequestV7070ConvertHtmlTableToCsv["htmlTable"] = ExpressionConverter.ConvertO(dtoRequestV7070ConvertHtmlTableToCsvhTMLTable);
-                if (dtoRequestV7070ConvertHtmlTableToCsvseparator != null)
+                dtoRequestV7070ConvertHtmlTableToCsv["htmlTable"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV7070ConvertHtmlTableToCsvhTMLTable);
+                if (__workflow_dtoRequestV7070ConvertHtmlTableToCsvseparator != null)
                 {
-                    dtoRequestV7070ConvertHtmlTableToCsv["delimiter"] = ExpressionConverter.ConvertO(dtoRequestV7070ConvertHtmlTableToCsvseparator);
+                    dtoRequestV7070ConvertHtmlTableToCsv["delimiter"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV7070ConvertHtmlTableToCsvseparator);
                     dtoRequestV7070ConvertHtmlTableToCsvpropCount++;
                 }
 
@@ -1053,16 +1017,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildConvertHtmlTableToExcel))]
-        public IBodyWorkflowAction<DtoResponseV7080ConvertHtmlTableToExcel> ConvertHtmlTableToExcel([WorkflowExpression] Func<string> dtoRequestV7080ConvertHtmlTableToExcelhTMLTable)
+        public IBodyWorkflowAction<DtoResponseV7080ConvertHtmlTableToExcel> ConvertHtmlTableToExcel(Expression<Func<string>> dtoRequestV7080ConvertHtmlTableToExcelhTMLTable)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV7080ConvertHtmlTableToExcel> __BuildConvertHtmlTableToExcel(WorkflowExpression<string> dtoRequestV7080ConvertHtmlTableToExcelhTMLTable)
-        {
-            WorkflowExpression.Validate(dtoRequestV7080ConvertHtmlTableToExcelhTMLTable, nameof(dtoRequestV7080ConvertHtmlTableToExcelhTMLTable), required: true);
+            var __workflow_dtoRequestV7080ConvertHtmlTableToExcelhTMLTable = dtoRequestV7080ConvertHtmlTableToExcelhTMLTable == null ? null : WorkflowExpression.Compile(dtoRequestV7080ConvertHtmlTableToExcelhTMLTable);
+            WorkflowExpression.Validate(__workflow_dtoRequestV7080ConvertHtmlTableToExcelhTMLTable, nameof(dtoRequestV7080ConvertHtmlTableToExcelhTMLTable), required: true);
             return new DeferredBodyAction<DtoResponseV7080ConvertHtmlTableToExcel>(() =>
             {
                 var apiCallPath = "/V7080_ConvertHtmlTableToExcel";
@@ -1071,7 +1029,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV7080ConvertHtmlTableToExcel = new JObject();
                 var dtoRequestV7080ConvertHtmlTableToExcelpropCount = 0;
                 dtoRequestV7080ConvertHtmlTableToExcelpropCount++;
-                dtoRequestV7080ConvertHtmlTableToExcel["htmlTable"] = ExpressionConverter.ConvertO(dtoRequestV7080ConvertHtmlTableToExcelhTMLTable);
+                dtoRequestV7080ConvertHtmlTableToExcel["htmlTable"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV7080ConvertHtmlTableToExcelhTMLTable);
                 if (dtoRequestV7080ConvertHtmlTableToExcelpropCount > 0)
                 {
                     callPayload.Body = dtoRequestV7080ConvertHtmlTableToExcel;
@@ -1082,16 +1040,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildConvertHtmlTableToJson))]
-        public IBodyWorkflowAction<DtoResponseV7012ConvertHtmlTableToJson> ConvertHtmlTableToJson([WorkflowExpression] Func<string> dtoRequestHtmlToTableDatahTMLTable)
+        public IBodyWorkflowAction<DtoResponseV7012ConvertHtmlTableToJson> ConvertHtmlTableToJson(Expression<Func<string>> dtoRequestHtmlToTableDatahTMLTable)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV7012ConvertHtmlTableToJson> __BuildConvertHtmlTableToJson(WorkflowExpression<string> dtoRequestHtmlToTableDatahTMLTable)
-        {
-            WorkflowExpression.Validate(dtoRequestHtmlToTableDatahTMLTable, nameof(dtoRequestHtmlToTableDatahTMLTable), required: true);
+            var __workflow_dtoRequestHtmlToTableDatahTMLTable = dtoRequestHtmlToTableDatahTMLTable == null ? null : WorkflowExpression.Compile(dtoRequestHtmlToTableDatahTMLTable);
+            WorkflowExpression.Validate(__workflow_dtoRequestHtmlToTableDatahTMLTable, nameof(dtoRequestHtmlToTableDatahTMLTable), required: true);
             return new DeferredBodyAction<DtoResponseV7012ConvertHtmlTableToJson>(() =>
             {
                 var apiCallPath = "/V7012_ConvertHtmlTableToJson";
@@ -1100,7 +1052,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestHtmlToTableData = new JObject();
                 var dtoRequestHtmlToTableDatapropCount = 0;
                 dtoRequestHtmlToTableDatapropCount++;
-                dtoRequestHtmlToTableData["htmlTable"] = ExpressionConverter.ConvertO(dtoRequestHtmlToTableDatahTMLTable);
+                dtoRequestHtmlToTableData["htmlTable"] = ExpressionConverter.ConvertO(__workflow_dtoRequestHtmlToTableDatahTMLTable);
                 if (dtoRequestHtmlToTableDatapropCount > 0)
                 {
                     callPayload.Body = dtoRequestHtmlToTableData;
@@ -1111,18 +1063,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildConvertHtmlToImage))]
-        public IBodyWorkflowAction<DtoResponseV7031ConvertHtmlToImage> ConvertHtmlToImage([WorkflowExpression] Func<string> dtoRequestV7031ConvertHtmlToImagehTML, [WorkflowExpression] Func<int> dtoRequestV7031ConvertHtmlToImagewidth = null, [WorkflowExpression] Func<int> dtoRequestV7031ConvertHtmlToImageheight = null)
+        public IBodyWorkflowAction<DtoResponseV7031ConvertHtmlToImage> ConvertHtmlToImage(Expression<Func<string>> dtoRequestV7031ConvertHtmlToImagehTML, Expression<Func<int>> dtoRequestV7031ConvertHtmlToImagewidth = null, Expression<Func<int>> dtoRequestV7031ConvertHtmlToImageheight = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV7031ConvertHtmlToImage> __BuildConvertHtmlToImage(WorkflowExpression<string> dtoRequestV7031ConvertHtmlToImagehTML, WorkflowExpression<int> dtoRequestV7031ConvertHtmlToImagewidth = null, WorkflowExpression<int> dtoRequestV7031ConvertHtmlToImageheight = null)
-        {
-            WorkflowExpression.Validate(dtoRequestV7031ConvertHtmlToImagehTML, nameof(dtoRequestV7031ConvertHtmlToImagehTML), required: true);
-            WorkflowExpression.Validate(dtoRequestV7031ConvertHtmlToImagewidth, nameof(dtoRequestV7031ConvertHtmlToImagewidth), required: false);
-            WorkflowExpression.Validate(dtoRequestV7031ConvertHtmlToImageheight, nameof(dtoRequestV7031ConvertHtmlToImageheight), required: false);
+            var __workflow_dtoRequestV7031ConvertHtmlToImagehTML = dtoRequestV7031ConvertHtmlToImagehTML == null ? null : WorkflowExpression.Compile(dtoRequestV7031ConvertHtmlToImagehTML);
+            WorkflowExpression.Validate(__workflow_dtoRequestV7031ConvertHtmlToImagehTML, nameof(dtoRequestV7031ConvertHtmlToImagehTML), required: true);
+            var __workflow_dtoRequestV7031ConvertHtmlToImagewidth = dtoRequestV7031ConvertHtmlToImagewidth == null ? null : WorkflowExpression.Compile(dtoRequestV7031ConvertHtmlToImagewidth);
+            WorkflowExpression.Validate(__workflow_dtoRequestV7031ConvertHtmlToImagewidth, nameof(dtoRequestV7031ConvertHtmlToImagewidth), required: false);
+            var __workflow_dtoRequestV7031ConvertHtmlToImageheight = dtoRequestV7031ConvertHtmlToImageheight == null ? null : WorkflowExpression.Compile(dtoRequestV7031ConvertHtmlToImageheight);
+            WorkflowExpression.Validate(__workflow_dtoRequestV7031ConvertHtmlToImageheight, nameof(dtoRequestV7031ConvertHtmlToImageheight), required: false);
             return new DeferredBodyAction<DtoResponseV7031ConvertHtmlToImage>(() =>
             {
                 var apiCallPath = "/V7031_ConvertHtmlToImage";
@@ -1131,16 +1079,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV7031ConvertHtmlToImage = new JObject();
                 var dtoRequestV7031ConvertHtmlToImagepropCount = 0;
                 dtoRequestV7031ConvertHtmlToImagepropCount++;
-                dtoRequestV7031ConvertHtmlToImage["html"] = ExpressionConverter.ConvertO(dtoRequestV7031ConvertHtmlToImagehTML);
-                if (dtoRequestV7031ConvertHtmlToImagewidth != null)
+                dtoRequestV7031ConvertHtmlToImage["html"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV7031ConvertHtmlToImagehTML);
+                if (__workflow_dtoRequestV7031ConvertHtmlToImagewidth != null)
                 {
-                    dtoRequestV7031ConvertHtmlToImage["width"] = ExpressionConverter.ConvertO(dtoRequestV7031ConvertHtmlToImagewidth);
+                    dtoRequestV7031ConvertHtmlToImage["width"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV7031ConvertHtmlToImagewidth);
                     dtoRequestV7031ConvertHtmlToImagepropCount++;
                 }
 
-                if (dtoRequestV7031ConvertHtmlToImageheight != null)
+                if (__workflow_dtoRequestV7031ConvertHtmlToImageheight != null)
                 {
-                    dtoRequestV7031ConvertHtmlToImage["height"] = ExpressionConverter.ConvertO(dtoRequestV7031ConvertHtmlToImageheight);
+                    dtoRequestV7031ConvertHtmlToImage["height"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV7031ConvertHtmlToImageheight);
                     dtoRequestV7031ConvertHtmlToImagepropCount++;
                 }
 
@@ -1154,27 +1102,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildConvertHtmlToPdf))]
-        public IBodyWorkflowAction<DtoResponseV7022ConvertHtmlToPdf> ConvertHtmlToPdf([WorkflowExpression] Func<string> dtoRequestV7022ConvertHtmlToPdfhTML, [WorkflowExpression] Func<bool> dtoRequestV7022ConvertHtmlToPdflandscapeFormat = null, [WorkflowExpression] Func<int> dtoRequestV7022ConvertHtmlToPdfqualityOfImageContent = null, [WorkflowExpression] Func<int> dtoRequestV7022ConvertHtmlToPdffooterOptions = null, [WorkflowExpression] Func<int> dtoRequestV7022ConvertHtmlToPdfheaderOptions = null, [WorkflowExpression] Func<string> dtoRequestV7022ConvertHtmlToPdfpaperFormat = null, [WorkflowExpression] Func<int> dtoRequestV7022ConvertHtmlToPdftopMargin = null, [WorkflowExpression] Func<int> dtoRequestV7022ConvertHtmlToPdfbottomMargin = null, [WorkflowExpression] Func<int> dtoRequestV7022ConvertHtmlToPdfleftMargin = null, [WorkflowExpression] Func<int> dtoRequestV7022ConvertHtmlToPdfrightMargin = null, [WorkflowExpression] Func<string> dtoRequestV7022ConvertHtmlToPdfpageRanges = null, [WorkflowExpression] Func<double> dtoRequestV7022ConvertHtmlToPdfscale = null)
+        public IBodyWorkflowAction<DtoResponseV7022ConvertHtmlToPdf> ConvertHtmlToPdf(Expression<Func<string>> dtoRequestV7022ConvertHtmlToPdfhTML, Expression<Func<bool>> dtoRequestV7022ConvertHtmlToPdflandscapeFormat = null, Expression<Func<int>> dtoRequestV7022ConvertHtmlToPdfqualityOfImageContent = null, Expression<Func<int>> dtoRequestV7022ConvertHtmlToPdffooterOptions = null, Expression<Func<int>> dtoRequestV7022ConvertHtmlToPdfheaderOptions = null, Expression<Func<string>> dtoRequestV7022ConvertHtmlToPdfpaperFormat = null, Expression<Func<int>> dtoRequestV7022ConvertHtmlToPdftopMargin = null, Expression<Func<int>> dtoRequestV7022ConvertHtmlToPdfbottomMargin = null, Expression<Func<int>> dtoRequestV7022ConvertHtmlToPdfleftMargin = null, Expression<Func<int>> dtoRequestV7022ConvertHtmlToPdfrightMargin = null, Expression<Func<string>> dtoRequestV7022ConvertHtmlToPdfpageRanges = null, Expression<Func<double>> dtoRequestV7022ConvertHtmlToPdfscale = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV7022ConvertHtmlToPdf> __BuildConvertHtmlToPdf(WorkflowExpression<string> dtoRequestV7022ConvertHtmlToPdfhTML, WorkflowExpression<bool> dtoRequestV7022ConvertHtmlToPdflandscapeFormat = null, WorkflowExpression<int> dtoRequestV7022ConvertHtmlToPdfqualityOfImageContent = null, WorkflowExpression<int> dtoRequestV7022ConvertHtmlToPdffooterOptions = null, WorkflowExpression<int> dtoRequestV7022ConvertHtmlToPdfheaderOptions = null, WorkflowExpression<string> dtoRequestV7022ConvertHtmlToPdfpaperFormat = null, WorkflowExpression<int> dtoRequestV7022ConvertHtmlToPdftopMargin = null, WorkflowExpression<int> dtoRequestV7022ConvertHtmlToPdfbottomMargin = null, WorkflowExpression<int> dtoRequestV7022ConvertHtmlToPdfleftMargin = null, WorkflowExpression<int> dtoRequestV7022ConvertHtmlToPdfrightMargin = null, WorkflowExpression<string> dtoRequestV7022ConvertHtmlToPdfpageRanges = null, WorkflowExpression<double> dtoRequestV7022ConvertHtmlToPdfscale = null)
-        {
-            WorkflowExpression.Validate(dtoRequestV7022ConvertHtmlToPdfhTML, nameof(dtoRequestV7022ConvertHtmlToPdfhTML), required: true);
-            WorkflowExpression.Validate(dtoRequestV7022ConvertHtmlToPdflandscapeFormat, nameof(dtoRequestV7022ConvertHtmlToPdflandscapeFormat), required: false);
-            WorkflowExpression.Validate(dtoRequestV7022ConvertHtmlToPdfqualityOfImageContent, nameof(dtoRequestV7022ConvertHtmlToPdfqualityOfImageContent), required: false);
-            WorkflowExpression.Validate(dtoRequestV7022ConvertHtmlToPdffooterOptions, nameof(dtoRequestV7022ConvertHtmlToPdffooterOptions), required: false);
-            WorkflowExpression.Validate(dtoRequestV7022ConvertHtmlToPdfheaderOptions, nameof(dtoRequestV7022ConvertHtmlToPdfheaderOptions), required: false);
-            WorkflowExpression.Validate(dtoRequestV7022ConvertHtmlToPdfpaperFormat, nameof(dtoRequestV7022ConvertHtmlToPdfpaperFormat), required: false);
-            WorkflowExpression.Validate(dtoRequestV7022ConvertHtmlToPdftopMargin, nameof(dtoRequestV7022ConvertHtmlToPdftopMargin), required: false);
-            WorkflowExpression.Validate(dtoRequestV7022ConvertHtmlToPdfbottomMargin, nameof(dtoRequestV7022ConvertHtmlToPdfbottomMargin), required: false);
-            WorkflowExpression.Validate(dtoRequestV7022ConvertHtmlToPdfleftMargin, nameof(dtoRequestV7022ConvertHtmlToPdfleftMargin), required: false);
-            WorkflowExpression.Validate(dtoRequestV7022ConvertHtmlToPdfrightMargin, nameof(dtoRequestV7022ConvertHtmlToPdfrightMargin), required: false);
-            WorkflowExpression.Validate(dtoRequestV7022ConvertHtmlToPdfpageRanges, nameof(dtoRequestV7022ConvertHtmlToPdfpageRanges), required: false);
-            WorkflowExpression.Validate(dtoRequestV7022ConvertHtmlToPdfscale, nameof(dtoRequestV7022ConvertHtmlToPdfscale), required: false);
+            var __workflow_dtoRequestV7022ConvertHtmlToPdfhTML = dtoRequestV7022ConvertHtmlToPdfhTML == null ? null : WorkflowExpression.Compile(dtoRequestV7022ConvertHtmlToPdfhTML);
+            WorkflowExpression.Validate(__workflow_dtoRequestV7022ConvertHtmlToPdfhTML, nameof(dtoRequestV7022ConvertHtmlToPdfhTML), required: true);
+            var __workflow_dtoRequestV7022ConvertHtmlToPdflandscapeFormat = dtoRequestV7022ConvertHtmlToPdflandscapeFormat == null ? null : WorkflowExpression.Compile(dtoRequestV7022ConvertHtmlToPdflandscapeFormat);
+            WorkflowExpression.Validate(__workflow_dtoRequestV7022ConvertHtmlToPdflandscapeFormat, nameof(dtoRequestV7022ConvertHtmlToPdflandscapeFormat), required: false);
+            var __workflow_dtoRequestV7022ConvertHtmlToPdfqualityOfImageContent = dtoRequestV7022ConvertHtmlToPdfqualityOfImageContent == null ? null : WorkflowExpression.Compile(dtoRequestV7022ConvertHtmlToPdfqualityOfImageContent);
+            WorkflowExpression.Validate(__workflow_dtoRequestV7022ConvertHtmlToPdfqualityOfImageContent, nameof(dtoRequestV7022ConvertHtmlToPdfqualityOfImageContent), required: false);
+            var __workflow_dtoRequestV7022ConvertHtmlToPdffooterOptions = dtoRequestV7022ConvertHtmlToPdffooterOptions == null ? null : WorkflowExpression.Compile(dtoRequestV7022ConvertHtmlToPdffooterOptions);
+            WorkflowExpression.Validate(__workflow_dtoRequestV7022ConvertHtmlToPdffooterOptions, nameof(dtoRequestV7022ConvertHtmlToPdffooterOptions), required: false);
+            var __workflow_dtoRequestV7022ConvertHtmlToPdfheaderOptions = dtoRequestV7022ConvertHtmlToPdfheaderOptions == null ? null : WorkflowExpression.Compile(dtoRequestV7022ConvertHtmlToPdfheaderOptions);
+            WorkflowExpression.Validate(__workflow_dtoRequestV7022ConvertHtmlToPdfheaderOptions, nameof(dtoRequestV7022ConvertHtmlToPdfheaderOptions), required: false);
+            var __workflow_dtoRequestV7022ConvertHtmlToPdfpaperFormat = dtoRequestV7022ConvertHtmlToPdfpaperFormat == null ? null : WorkflowExpression.Compile(dtoRequestV7022ConvertHtmlToPdfpaperFormat);
+            WorkflowExpression.Validate(__workflow_dtoRequestV7022ConvertHtmlToPdfpaperFormat, nameof(dtoRequestV7022ConvertHtmlToPdfpaperFormat), required: false);
+            var __workflow_dtoRequestV7022ConvertHtmlToPdftopMargin = dtoRequestV7022ConvertHtmlToPdftopMargin == null ? null : WorkflowExpression.Compile(dtoRequestV7022ConvertHtmlToPdftopMargin);
+            WorkflowExpression.Validate(__workflow_dtoRequestV7022ConvertHtmlToPdftopMargin, nameof(dtoRequestV7022ConvertHtmlToPdftopMargin), required: false);
+            var __workflow_dtoRequestV7022ConvertHtmlToPdfbottomMargin = dtoRequestV7022ConvertHtmlToPdfbottomMargin == null ? null : WorkflowExpression.Compile(dtoRequestV7022ConvertHtmlToPdfbottomMargin);
+            WorkflowExpression.Validate(__workflow_dtoRequestV7022ConvertHtmlToPdfbottomMargin, nameof(dtoRequestV7022ConvertHtmlToPdfbottomMargin), required: false);
+            var __workflow_dtoRequestV7022ConvertHtmlToPdfleftMargin = dtoRequestV7022ConvertHtmlToPdfleftMargin == null ? null : WorkflowExpression.Compile(dtoRequestV7022ConvertHtmlToPdfleftMargin);
+            WorkflowExpression.Validate(__workflow_dtoRequestV7022ConvertHtmlToPdfleftMargin, nameof(dtoRequestV7022ConvertHtmlToPdfleftMargin), required: false);
+            var __workflow_dtoRequestV7022ConvertHtmlToPdfrightMargin = dtoRequestV7022ConvertHtmlToPdfrightMargin == null ? null : WorkflowExpression.Compile(dtoRequestV7022ConvertHtmlToPdfrightMargin);
+            WorkflowExpression.Validate(__workflow_dtoRequestV7022ConvertHtmlToPdfrightMargin, nameof(dtoRequestV7022ConvertHtmlToPdfrightMargin), required: false);
+            var __workflow_dtoRequestV7022ConvertHtmlToPdfpageRanges = dtoRequestV7022ConvertHtmlToPdfpageRanges == null ? null : WorkflowExpression.Compile(dtoRequestV7022ConvertHtmlToPdfpageRanges);
+            WorkflowExpression.Validate(__workflow_dtoRequestV7022ConvertHtmlToPdfpageRanges, nameof(dtoRequestV7022ConvertHtmlToPdfpageRanges), required: false);
+            var __workflow_dtoRequestV7022ConvertHtmlToPdfscale = dtoRequestV7022ConvertHtmlToPdfscale == null ? null : WorkflowExpression.Compile(dtoRequestV7022ConvertHtmlToPdfscale);
+            WorkflowExpression.Validate(__workflow_dtoRequestV7022ConvertHtmlToPdfscale, nameof(dtoRequestV7022ConvertHtmlToPdfscale), required: false);
             return new DeferredBodyAction<DtoResponseV7022ConvertHtmlToPdf>(() =>
             {
                 var apiCallPath = "/V7022_ConvertHtmlToPdf";
@@ -1183,12 +1136,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV7022ConvertHtmlToPdf = new JObject();
                 var dtoRequestV7022ConvertHtmlToPdfpropCount = 0;
                 dtoRequestV7022ConvertHtmlToPdfpropCount++;
-                dtoRequestV7022ConvertHtmlToPdf["html"] = ExpressionConverter.ConvertO(dtoRequestV7022ConvertHtmlToPdfhTML);
-                if (dtoRequestV7022ConvertHtmlToPdflandscapeFormat != null)
+                dtoRequestV7022ConvertHtmlToPdf["html"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV7022ConvertHtmlToPdfhTML);
+                if (__workflow_dtoRequestV7022ConvertHtmlToPdflandscapeFormat != null)
                 {
-                    if (dtoRequestV7022ConvertHtmlToPdflandscapeFormat != null)
+                    if (__workflow_dtoRequestV7022ConvertHtmlToPdflandscapeFormat != null)
                     {
-                        dtoRequestV7022ConvertHtmlToPdf["isLandscape"] = ExpressionConverter.ConvertO(dtoRequestV7022ConvertHtmlToPdflandscapeFormat);
+                        dtoRequestV7022ConvertHtmlToPdf["isLandscape"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV7022ConvertHtmlToPdflandscapeFormat);
                         dtoRequestV7022ConvertHtmlToPdfpropCount++;
                     }
 
@@ -1200,63 +1153,63 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                     dtoRequestV7022ConvertHtmlToPdfpropCount++;
                 }
 
-                if (dtoRequestV7022ConvertHtmlToPdfqualityOfImageContent != null)
+                if (__workflow_dtoRequestV7022ConvertHtmlToPdfqualityOfImageContent != null)
                 {
-                    dtoRequestV7022ConvertHtmlToPdf["imageQuality"] = ExpressionConverter.ConvertO(dtoRequestV7022ConvertHtmlToPdfqualityOfImageContent);
+                    dtoRequestV7022ConvertHtmlToPdf["imageQuality"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV7022ConvertHtmlToPdfqualityOfImageContent);
                     dtoRequestV7022ConvertHtmlToPdfpropCount++;
                 }
 
-                if (dtoRequestV7022ConvertHtmlToPdffooterOptions != null)
+                if (__workflow_dtoRequestV7022ConvertHtmlToPdffooterOptions != null)
                 {
-                    dtoRequestV7022ConvertHtmlToPdf["footerOption"] = ExpressionConverter.ConvertO(dtoRequestV7022ConvertHtmlToPdffooterOptions);
+                    dtoRequestV7022ConvertHtmlToPdf["footerOption"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV7022ConvertHtmlToPdffooterOptions);
                     dtoRequestV7022ConvertHtmlToPdfpropCount++;
                 }
 
-                if (dtoRequestV7022ConvertHtmlToPdfheaderOptions != null)
+                if (__workflow_dtoRequestV7022ConvertHtmlToPdfheaderOptions != null)
                 {
-                    dtoRequestV7022ConvertHtmlToPdf["headerOption"] = ExpressionConverter.ConvertO(dtoRequestV7022ConvertHtmlToPdfheaderOptions);
+                    dtoRequestV7022ConvertHtmlToPdf["headerOption"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV7022ConvertHtmlToPdfheaderOptions);
                     dtoRequestV7022ConvertHtmlToPdfpropCount++;
                 }
 
-                if (dtoRequestV7022ConvertHtmlToPdfpaperFormat != null)
+                if (__workflow_dtoRequestV7022ConvertHtmlToPdfpaperFormat != null)
                 {
-                    dtoRequestV7022ConvertHtmlToPdf["paperFormat"] = ExpressionConverter.ConvertO(dtoRequestV7022ConvertHtmlToPdfpaperFormat);
+                    dtoRequestV7022ConvertHtmlToPdf["paperFormat"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV7022ConvertHtmlToPdfpaperFormat);
                     dtoRequestV7022ConvertHtmlToPdfpropCount++;
                 }
 
-                if (dtoRequestV7022ConvertHtmlToPdftopMargin != null)
+                if (__workflow_dtoRequestV7022ConvertHtmlToPdftopMargin != null)
                 {
-                    dtoRequestV7022ConvertHtmlToPdf["marginTop"] = ExpressionConverter.ConvertO(dtoRequestV7022ConvertHtmlToPdftopMargin);
+                    dtoRequestV7022ConvertHtmlToPdf["marginTop"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV7022ConvertHtmlToPdftopMargin);
                     dtoRequestV7022ConvertHtmlToPdfpropCount++;
                 }
 
-                if (dtoRequestV7022ConvertHtmlToPdfbottomMargin != null)
+                if (__workflow_dtoRequestV7022ConvertHtmlToPdfbottomMargin != null)
                 {
-                    dtoRequestV7022ConvertHtmlToPdf["marginBottom"] = ExpressionConverter.ConvertO(dtoRequestV7022ConvertHtmlToPdfbottomMargin);
+                    dtoRequestV7022ConvertHtmlToPdf["marginBottom"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV7022ConvertHtmlToPdfbottomMargin);
                     dtoRequestV7022ConvertHtmlToPdfpropCount++;
                 }
 
-                if (dtoRequestV7022ConvertHtmlToPdfleftMargin != null)
+                if (__workflow_dtoRequestV7022ConvertHtmlToPdfleftMargin != null)
                 {
-                    dtoRequestV7022ConvertHtmlToPdf["marginLeft"] = ExpressionConverter.ConvertO(dtoRequestV7022ConvertHtmlToPdfleftMargin);
+                    dtoRequestV7022ConvertHtmlToPdf["marginLeft"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV7022ConvertHtmlToPdfleftMargin);
                     dtoRequestV7022ConvertHtmlToPdfpropCount++;
                 }
 
-                if (dtoRequestV7022ConvertHtmlToPdfrightMargin != null)
+                if (__workflow_dtoRequestV7022ConvertHtmlToPdfrightMargin != null)
                 {
-                    dtoRequestV7022ConvertHtmlToPdf["marginRight"] = ExpressionConverter.ConvertO(dtoRequestV7022ConvertHtmlToPdfrightMargin);
+                    dtoRequestV7022ConvertHtmlToPdf["marginRight"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV7022ConvertHtmlToPdfrightMargin);
                     dtoRequestV7022ConvertHtmlToPdfpropCount++;
                 }
 
-                if (dtoRequestV7022ConvertHtmlToPdfpageRanges != null)
+                if (__workflow_dtoRequestV7022ConvertHtmlToPdfpageRanges != null)
                 {
-                    dtoRequestV7022ConvertHtmlToPdf["pageRanges"] = ExpressionConverter.ConvertO(dtoRequestV7022ConvertHtmlToPdfpageRanges);
+                    dtoRequestV7022ConvertHtmlToPdf["pageRanges"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV7022ConvertHtmlToPdfpageRanges);
                     dtoRequestV7022ConvertHtmlToPdfpropCount++;
                 }
 
-                if (dtoRequestV7022ConvertHtmlToPdfscale != null)
+                if (__workflow_dtoRequestV7022ConvertHtmlToPdfscale != null)
                 {
-                    dtoRequestV7022ConvertHtmlToPdf["scale"] = ExpressionConverter.ConvertO(dtoRequestV7022ConvertHtmlToPdfscale);
+                    dtoRequestV7022ConvertHtmlToPdf["scale"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV7022ConvertHtmlToPdfscale);
                     dtoRequestV7022ConvertHtmlToPdfpropCount++;
                 }
 
@@ -1270,16 +1223,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildConvertHtmlToWord))]
-        public IBodyWorkflowAction<DtoResponseFile> ConvertHtmlToWord([WorkflowExpression] Func<string> dtoRequestV7041ConvertHtmlToWordhTML)
+        public IBodyWorkflowAction<DtoResponseFile> ConvertHtmlToWord(Expression<Func<string>> dtoRequestV7041ConvertHtmlToWordhTML)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseFile> __BuildConvertHtmlToWord(WorkflowExpression<string> dtoRequestV7041ConvertHtmlToWordhTML)
-        {
-            WorkflowExpression.Validate(dtoRequestV7041ConvertHtmlToWordhTML, nameof(dtoRequestV7041ConvertHtmlToWordhTML), required: true);
+            var __workflow_dtoRequestV7041ConvertHtmlToWordhTML = dtoRequestV7041ConvertHtmlToWordhTML == null ? null : WorkflowExpression.Compile(dtoRequestV7041ConvertHtmlToWordhTML);
+            WorkflowExpression.Validate(__workflow_dtoRequestV7041ConvertHtmlToWordhTML, nameof(dtoRequestV7041ConvertHtmlToWordhTML), required: true);
             return new DeferredBodyAction<DtoResponseFile>(() =>
             {
                 var apiCallPath = "/V7041_ConvertHtmlToWord";
@@ -1288,7 +1235,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV7041ConvertHtmlToWord = new JObject();
                 var dtoRequestV7041ConvertHtmlToWordpropCount = 0;
                 dtoRequestV7041ConvertHtmlToWordpropCount++;
-                dtoRequestV7041ConvertHtmlToWord["html"] = ExpressionConverter.ConvertO(dtoRequestV7041ConvertHtmlToWordhTML);
+                dtoRequestV7041ConvertHtmlToWord["html"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV7041ConvertHtmlToWordhTML);
                 if (dtoRequestV7041ConvertHtmlToWordpropCount > 0)
                 {
                     callPayload.Body = dtoRequestV7041ConvertHtmlToWord;
@@ -1299,17 +1246,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildConvertImage))]
-        public IBodyWorkflowAction<DtoResponseFile> ConvertImage([WorkflowExpression] Func<string> dtoRequestV3012ConvertImageimageFile, [WorkflowExpression] Func<string> dtoRequestV3012ConvertImageoutputFormat = null)
+        public IBodyWorkflowAction<DtoResponseFile> ConvertImage(Expression<Func<string>> dtoRequestV3012ConvertImageimageFile, Expression<Func<string>> dtoRequestV3012ConvertImageoutputFormat = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseFile> __BuildConvertImage(WorkflowExpression<string> dtoRequestV3012ConvertImageimageFile, WorkflowExpression<string> dtoRequestV3012ConvertImageoutputFormat = null)
-        {
-            WorkflowExpression.Validate(dtoRequestV3012ConvertImageimageFile, nameof(dtoRequestV3012ConvertImageimageFile), required: true);
-            WorkflowExpression.Validate(dtoRequestV3012ConvertImageoutputFormat, nameof(dtoRequestV3012ConvertImageoutputFormat), required: false);
+            var __workflow_dtoRequestV3012ConvertImageimageFile = dtoRequestV3012ConvertImageimageFile == null ? null : WorkflowExpression.Compile(dtoRequestV3012ConvertImageimageFile);
+            WorkflowExpression.Validate(__workflow_dtoRequestV3012ConvertImageimageFile, nameof(dtoRequestV3012ConvertImageimageFile), required: true);
+            var __workflow_dtoRequestV3012ConvertImageoutputFormat = dtoRequestV3012ConvertImageoutputFormat == null ? null : WorkflowExpression.Compile(dtoRequestV3012ConvertImageoutputFormat);
+            WorkflowExpression.Validate(__workflow_dtoRequestV3012ConvertImageoutputFormat, nameof(dtoRequestV3012ConvertImageoutputFormat), required: false);
             return new DeferredBodyAction<DtoResponseFile>(() =>
             {
                 var apiCallPath = "/V3012_ConvertImage";
@@ -1318,12 +1260,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV3012ConvertImage = new JObject();
                 var dtoRequestV3012ConvertImagepropCount = 0;
                 dtoRequestV3012ConvertImagepropCount++;
-                dtoRequestV3012ConvertImage["file"] = ExpressionConverter.ConvertO(dtoRequestV3012ConvertImageimageFile);
-                if (dtoRequestV3012ConvertImageoutputFormat != null)
+                dtoRequestV3012ConvertImage["file"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV3012ConvertImageimageFile);
+                if (__workflow_dtoRequestV3012ConvertImageoutputFormat != null)
                 {
-                    if (dtoRequestV3012ConvertImageoutputFormat != null)
+                    if (__workflow_dtoRequestV3012ConvertImageoutputFormat != null)
                     {
-                        dtoRequestV3012ConvertImage["outFormat"] = ExpressionConverter.ConvertO(dtoRequestV3012ConvertImageoutputFormat);
+                        dtoRequestV3012ConvertImage["outFormat"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV3012ConvertImageoutputFormat);
                         dtoRequestV3012ConvertImagepropCount++;
                     }
 
@@ -1345,17 +1287,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildConvertJsonToCsv))]
-        public IBodyWorkflowAction<DtoResponseV1013ConvertJsonToCsv> ConvertJsonToCsv([WorkflowExpression] Func<string> dtoRequestV1013ConvertJsonToCsvjSON, [WorkflowExpression] Func<string> dtoRequestV1013ConvertJsonToCsvseparator = null)
+        public IBodyWorkflowAction<DtoResponseV1013ConvertJsonToCsv> ConvertJsonToCsv(Expression<Func<string>> dtoRequestV1013ConvertJsonToCsvjSON, Expression<Func<string>> dtoRequestV1013ConvertJsonToCsvseparator = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV1013ConvertJsonToCsv> __BuildConvertJsonToCsv(WorkflowExpression<string> dtoRequestV1013ConvertJsonToCsvjSON, WorkflowExpression<string> dtoRequestV1013ConvertJsonToCsvseparator = null)
-        {
-            WorkflowExpression.Validate(dtoRequestV1013ConvertJsonToCsvjSON, nameof(dtoRequestV1013ConvertJsonToCsvjSON), required: true);
-            WorkflowExpression.Validate(dtoRequestV1013ConvertJsonToCsvseparator, nameof(dtoRequestV1013ConvertJsonToCsvseparator), required: false);
+            var __workflow_dtoRequestV1013ConvertJsonToCsvjSON = dtoRequestV1013ConvertJsonToCsvjSON == null ? null : WorkflowExpression.Compile(dtoRequestV1013ConvertJsonToCsvjSON);
+            WorkflowExpression.Validate(__workflow_dtoRequestV1013ConvertJsonToCsvjSON, nameof(dtoRequestV1013ConvertJsonToCsvjSON), required: true);
+            var __workflow_dtoRequestV1013ConvertJsonToCsvseparator = dtoRequestV1013ConvertJsonToCsvseparator == null ? null : WorkflowExpression.Compile(dtoRequestV1013ConvertJsonToCsvseparator);
+            WorkflowExpression.Validate(__workflow_dtoRequestV1013ConvertJsonToCsvseparator, nameof(dtoRequestV1013ConvertJsonToCsvseparator), required: false);
             return new DeferredBodyAction<DtoResponseV1013ConvertJsonToCsv>(() =>
             {
                 var apiCallPath = "/V1013_ConvertJsonToCsv";
@@ -1364,10 +1301,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV1013ConvertJsonToCsv = new JObject();
                 var dtoRequestV1013ConvertJsonToCsvpropCount = 0;
                 dtoRequestV1013ConvertJsonToCsvpropCount++;
-                dtoRequestV1013ConvertJsonToCsv["json"] = ExpressionConverter.ConvertO(dtoRequestV1013ConvertJsonToCsvjSON);
-                if (dtoRequestV1013ConvertJsonToCsvseparator != null)
+                dtoRequestV1013ConvertJsonToCsv["json"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV1013ConvertJsonToCsvjSON);
+                if (__workflow_dtoRequestV1013ConvertJsonToCsvseparator != null)
                 {
-                    dtoRequestV1013ConvertJsonToCsv["delimiter"] = ExpressionConverter.ConvertO(dtoRequestV1013ConvertJsonToCsvseparator);
+                    dtoRequestV1013ConvertJsonToCsv["delimiter"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV1013ConvertJsonToCsvseparator);
                     dtoRequestV1013ConvertJsonToCsvpropCount++;
                 }
 
@@ -1381,20 +1318,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildConvertJsonToExcel))]
-        public IBodyWorkflowAction<DtoResponseV1063ConvertJsonToExcel> ConvertJsonToExcel([WorkflowExpression] Func<string> dtoRequestJsonToExcelDatajSON, [WorkflowExpression] Func<bool> dtoRequestJsonToExcelDataallInOneTable = null, [WorkflowExpression] Func<bool> dtoRequestJsonToExcelDataadjustExcelColumnToContent = null, [WorkflowExpression] Func<bool> dtoRequestJsonToExcelDatawrapExcelColumnText = null, [WorkflowExpression] Func<int> dtoRequestJsonToExcelDatamaxExcelColumnWidth = null)
+        public IBodyWorkflowAction<DtoResponseV1063ConvertJsonToExcel> ConvertJsonToExcel(Expression<Func<string>> dtoRequestJsonToExcelDatajSON, Expression<Func<bool>> dtoRequestJsonToExcelDataallInOneTable = null, Expression<Func<bool>> dtoRequestJsonToExcelDataadjustExcelColumnToContent = null, Expression<Func<bool>> dtoRequestJsonToExcelDatawrapExcelColumnText = null, Expression<Func<int>> dtoRequestJsonToExcelDatamaxExcelColumnWidth = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV1063ConvertJsonToExcel> __BuildConvertJsonToExcel(WorkflowExpression<string> dtoRequestJsonToExcelDatajSON, WorkflowExpression<bool> dtoRequestJsonToExcelDataallInOneTable = null, WorkflowExpression<bool> dtoRequestJsonToExcelDataadjustExcelColumnToContent = null, WorkflowExpression<bool> dtoRequestJsonToExcelDatawrapExcelColumnText = null, WorkflowExpression<int> dtoRequestJsonToExcelDatamaxExcelColumnWidth = null)
-        {
-            WorkflowExpression.Validate(dtoRequestJsonToExcelDatajSON, nameof(dtoRequestJsonToExcelDatajSON), required: true);
-            WorkflowExpression.Validate(dtoRequestJsonToExcelDataallInOneTable, nameof(dtoRequestJsonToExcelDataallInOneTable), required: false);
-            WorkflowExpression.Validate(dtoRequestJsonToExcelDataadjustExcelColumnToContent, nameof(dtoRequestJsonToExcelDataadjustExcelColumnToContent), required: false);
-            WorkflowExpression.Validate(dtoRequestJsonToExcelDatawrapExcelColumnText, nameof(dtoRequestJsonToExcelDatawrapExcelColumnText), required: false);
-            WorkflowExpression.Validate(dtoRequestJsonToExcelDatamaxExcelColumnWidth, nameof(dtoRequestJsonToExcelDatamaxExcelColumnWidth), required: false);
+            var __workflow_dtoRequestJsonToExcelDatajSON = dtoRequestJsonToExcelDatajSON == null ? null : WorkflowExpression.Compile(dtoRequestJsonToExcelDatajSON);
+            WorkflowExpression.Validate(__workflow_dtoRequestJsonToExcelDatajSON, nameof(dtoRequestJsonToExcelDatajSON), required: true);
+            var __workflow_dtoRequestJsonToExcelDataallInOneTable = dtoRequestJsonToExcelDataallInOneTable == null ? null : WorkflowExpression.Compile(dtoRequestJsonToExcelDataallInOneTable);
+            WorkflowExpression.Validate(__workflow_dtoRequestJsonToExcelDataallInOneTable, nameof(dtoRequestJsonToExcelDataallInOneTable), required: false);
+            var __workflow_dtoRequestJsonToExcelDataadjustExcelColumnToContent = dtoRequestJsonToExcelDataadjustExcelColumnToContent == null ? null : WorkflowExpression.Compile(dtoRequestJsonToExcelDataadjustExcelColumnToContent);
+            WorkflowExpression.Validate(__workflow_dtoRequestJsonToExcelDataadjustExcelColumnToContent, nameof(dtoRequestJsonToExcelDataadjustExcelColumnToContent), required: false);
+            var __workflow_dtoRequestJsonToExcelDatawrapExcelColumnText = dtoRequestJsonToExcelDatawrapExcelColumnText == null ? null : WorkflowExpression.Compile(dtoRequestJsonToExcelDatawrapExcelColumnText);
+            WorkflowExpression.Validate(__workflow_dtoRequestJsonToExcelDatawrapExcelColumnText, nameof(dtoRequestJsonToExcelDatawrapExcelColumnText), required: false);
+            var __workflow_dtoRequestJsonToExcelDatamaxExcelColumnWidth = dtoRequestJsonToExcelDatamaxExcelColumnWidth == null ? null : WorkflowExpression.Compile(dtoRequestJsonToExcelDatamaxExcelColumnWidth);
+            WorkflowExpression.Validate(__workflow_dtoRequestJsonToExcelDatamaxExcelColumnWidth, nameof(dtoRequestJsonToExcelDatamaxExcelColumnWidth), required: false);
             return new DeferredBodyAction<DtoResponseV1063ConvertJsonToExcel>(() =>
             {
                 var apiCallPath = "/V1063_ConvertJsonToExcel";
@@ -1403,12 +1338,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestJsonToExcelData = new JObject();
                 var dtoRequestJsonToExcelDatapropCount = 0;
                 dtoRequestJsonToExcelDatapropCount++;
-                dtoRequestJsonToExcelData["json"] = ExpressionConverter.ConvertO(dtoRequestJsonToExcelDatajSON);
-                if (dtoRequestJsonToExcelDataallInOneTable != null)
+                dtoRequestJsonToExcelData["json"] = ExpressionConverter.ConvertO(__workflow_dtoRequestJsonToExcelDatajSON);
+                if (__workflow_dtoRequestJsonToExcelDataallInOneTable != null)
                 {
-                    if (dtoRequestJsonToExcelDataallInOneTable != null)
+                    if (__workflow_dtoRequestJsonToExcelDataallInOneTable != null)
                     {
-                        dtoRequestJsonToExcelData["allInOneTable"] = ExpressionConverter.ConvertO(dtoRequestJsonToExcelDataallInOneTable);
+                        dtoRequestJsonToExcelData["allInOneTable"] = ExpressionConverter.ConvertO(__workflow_dtoRequestJsonToExcelDataallInOneTable);
                         dtoRequestJsonToExcelDatapropCount++;
                     }
 
@@ -1420,11 +1355,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                     dtoRequestJsonToExcelDatapropCount++;
                 }
 
-                if (dtoRequestJsonToExcelDataadjustExcelColumnToContent != null)
+                if (__workflow_dtoRequestJsonToExcelDataadjustExcelColumnToContent != null)
                 {
-                    if (dtoRequestJsonToExcelDataadjustExcelColumnToContent != null)
+                    if (__workflow_dtoRequestJsonToExcelDataadjustExcelColumnToContent != null)
                     {
-                        dtoRequestJsonToExcelData["adjustColumnToContent"] = ExpressionConverter.ConvertO(dtoRequestJsonToExcelDataadjustExcelColumnToContent);
+                        dtoRequestJsonToExcelData["adjustColumnToContent"] = ExpressionConverter.ConvertO(__workflow_dtoRequestJsonToExcelDataadjustExcelColumnToContent);
                         dtoRequestJsonToExcelDatapropCount++;
                     }
 
@@ -1436,11 +1371,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                     dtoRequestJsonToExcelDatapropCount++;
                 }
 
-                if (dtoRequestJsonToExcelDatawrapExcelColumnText != null)
+                if (__workflow_dtoRequestJsonToExcelDatawrapExcelColumnText != null)
                 {
-                    if (dtoRequestJsonToExcelDatawrapExcelColumnText != null)
+                    if (__workflow_dtoRequestJsonToExcelDatawrapExcelColumnText != null)
                     {
-                        dtoRequestJsonToExcelData["wrapColumnText"] = ExpressionConverter.ConvertO(dtoRequestJsonToExcelDatawrapExcelColumnText);
+                        dtoRequestJsonToExcelData["wrapColumnText"] = ExpressionConverter.ConvertO(__workflow_dtoRequestJsonToExcelDatawrapExcelColumnText);
                         dtoRequestJsonToExcelDatapropCount++;
                     }
 
@@ -1452,9 +1387,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                     dtoRequestJsonToExcelDatapropCount++;
                 }
 
-                if (dtoRequestJsonToExcelDatamaxExcelColumnWidth != null)
+                if (__workflow_dtoRequestJsonToExcelDatamaxExcelColumnWidth != null)
                 {
-                    dtoRequestJsonToExcelData["maxColumnWidth"] = ExpressionConverter.ConvertO(dtoRequestJsonToExcelDatamaxExcelColumnWidth);
+                    dtoRequestJsonToExcelData["maxColumnWidth"] = ExpressionConverter.ConvertO(__workflow_dtoRequestJsonToExcelDatamaxExcelColumnWidth);
                     dtoRequestJsonToExcelDatapropCount++;
                 }
 
@@ -1468,16 +1403,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildConvertJsonToHtmlTable))]
-        public IBodyWorkflowAction<DtoResponseHtml> ConvertJsonToHtmlTable([WorkflowExpression] Func<string> dtoRequestV7051ConvertJsonToHtmlTablejSON)
+        public IBodyWorkflowAction<DtoResponseHtml> ConvertJsonToHtmlTable(Expression<Func<string>> dtoRequestV7051ConvertJsonToHtmlTablejSON)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseHtml> __BuildConvertJsonToHtmlTable(WorkflowExpression<string> dtoRequestV7051ConvertJsonToHtmlTablejSON)
-        {
-            WorkflowExpression.Validate(dtoRequestV7051ConvertJsonToHtmlTablejSON, nameof(dtoRequestV7051ConvertJsonToHtmlTablejSON), required: true);
+            var __workflow_dtoRequestV7051ConvertJsonToHtmlTablejSON = dtoRequestV7051ConvertJsonToHtmlTablejSON == null ? null : WorkflowExpression.Compile(dtoRequestV7051ConvertJsonToHtmlTablejSON);
+            WorkflowExpression.Validate(__workflow_dtoRequestV7051ConvertJsonToHtmlTablejSON, nameof(dtoRequestV7051ConvertJsonToHtmlTablejSON), required: true);
             return new DeferredBodyAction<DtoResponseHtml>(() =>
             {
                 var apiCallPath = "/V7051_ConvertJsonToHtmlTable";
@@ -1486,7 +1415,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV7051ConvertJsonToHtmlTable = new JObject();
                 var dtoRequestV7051ConvertJsonToHtmlTablepropCount = 0;
                 dtoRequestV7051ConvertJsonToHtmlTablepropCount++;
-                dtoRequestV7051ConvertJsonToHtmlTable["json"] = ExpressionConverter.ConvertO(dtoRequestV7051ConvertJsonToHtmlTablejSON);
+                dtoRequestV7051ConvertJsonToHtmlTable["json"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV7051ConvertJsonToHtmlTablejSON);
                 if (dtoRequestV7051ConvertJsonToHtmlTablepropCount > 0)
                 {
                     callPayload.Body = dtoRequestV7051ConvertJsonToHtmlTable;
@@ -1497,16 +1426,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildConvertJsonToTextTable))]
-        public IBodyWorkflowAction<DtoResponseV1090ConvertJsonToTextTable> ConvertJsonToTextTable([WorkflowExpression] Func<string> dtoRequestV1090ConvertJsonToTextTablejSON)
+        public IBodyWorkflowAction<DtoResponseV1090ConvertJsonToTextTable> ConvertJsonToTextTable(Expression<Func<string>> dtoRequestV1090ConvertJsonToTextTablejSON)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV1090ConvertJsonToTextTable> __BuildConvertJsonToTextTable(WorkflowExpression<string> dtoRequestV1090ConvertJsonToTextTablejSON)
-        {
-            WorkflowExpression.Validate(dtoRequestV1090ConvertJsonToTextTablejSON, nameof(dtoRequestV1090ConvertJsonToTextTablejSON), required: true);
+            var __workflow_dtoRequestV1090ConvertJsonToTextTablejSON = dtoRequestV1090ConvertJsonToTextTablejSON == null ? null : WorkflowExpression.Compile(dtoRequestV1090ConvertJsonToTextTablejSON);
+            WorkflowExpression.Validate(__workflow_dtoRequestV1090ConvertJsonToTextTablejSON, nameof(dtoRequestV1090ConvertJsonToTextTablejSON), required: true);
             return new DeferredBodyAction<DtoResponseV1090ConvertJsonToTextTable>(() =>
             {
                 var apiCallPath = "/V1090_ConvertJsonToTextTable";
@@ -1515,7 +1438,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV1090ConvertJsonToTextTable = new JObject();
                 var dtoRequestV1090ConvertJsonToTextTablepropCount = 0;
                 dtoRequestV1090ConvertJsonToTextTablepropCount++;
-                dtoRequestV1090ConvertJsonToTextTable["json"] = ExpressionConverter.ConvertO(dtoRequestV1090ConvertJsonToTextTablejSON);
+                dtoRequestV1090ConvertJsonToTextTable["json"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV1090ConvertJsonToTextTablejSON);
                 if (dtoRequestV1090ConvertJsonToTextTablepropCount > 0)
                 {
                     callPayload.Body = dtoRequestV1090ConvertJsonToTextTable;
@@ -1526,16 +1449,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildConvertJsonToXml))]
-        public IBodyWorkflowAction<DtoResponseV1042ConvertJsonToXml> ConvertJsonToXml([WorkflowExpression] Func<string> dtoRequestV1042ConvertJsonToXmljSON)
+        public IBodyWorkflowAction<DtoResponseV1042ConvertJsonToXml> ConvertJsonToXml(Expression<Func<string>> dtoRequestV1042ConvertJsonToXmljSON)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV1042ConvertJsonToXml> __BuildConvertJsonToXml(WorkflowExpression<string> dtoRequestV1042ConvertJsonToXmljSON)
-        {
-            WorkflowExpression.Validate(dtoRequestV1042ConvertJsonToXmljSON, nameof(dtoRequestV1042ConvertJsonToXmljSON), required: true);
+            var __workflow_dtoRequestV1042ConvertJsonToXmljSON = dtoRequestV1042ConvertJsonToXmljSON == null ? null : WorkflowExpression.Compile(dtoRequestV1042ConvertJsonToXmljSON);
+            WorkflowExpression.Validate(__workflow_dtoRequestV1042ConvertJsonToXmljSON, nameof(dtoRequestV1042ConvertJsonToXmljSON), required: true);
             return new DeferredBodyAction<DtoResponseV1042ConvertJsonToXml>(() =>
             {
                 var apiCallPath = "/V1042_ConvertJsonToXml";
@@ -1544,7 +1461,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV1042ConvertJsonToXml = new JObject();
                 var dtoRequestV1042ConvertJsonToXmlpropCount = 0;
                 dtoRequestV1042ConvertJsonToXmlpropCount++;
-                dtoRequestV1042ConvertJsonToXml["json"] = ExpressionConverter.ConvertO(dtoRequestV1042ConvertJsonToXmljSON);
+                dtoRequestV1042ConvertJsonToXml["json"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV1042ConvertJsonToXmljSON);
                 if (dtoRequestV1042ConvertJsonToXmlpropCount > 0)
                 {
                     callPayload.Body = dtoRequestV1042ConvertJsonToXml;
@@ -1555,16 +1472,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildConvertJsonToYaml))]
-        public IBodyWorkflowAction<DtoResponseV1081ConvertJsonToYaml> ConvertJsonToYaml([WorkflowExpression] Func<string> dtoRequestV1081ConvertJsonToYamljSON)
+        public IBodyWorkflowAction<DtoResponseV1081ConvertJsonToYaml> ConvertJsonToYaml(Expression<Func<string>> dtoRequestV1081ConvertJsonToYamljSON)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV1081ConvertJsonToYaml> __BuildConvertJsonToYaml(WorkflowExpression<string> dtoRequestV1081ConvertJsonToYamljSON)
-        {
-            WorkflowExpression.Validate(dtoRequestV1081ConvertJsonToYamljSON, nameof(dtoRequestV1081ConvertJsonToYamljSON), required: true);
+            var __workflow_dtoRequestV1081ConvertJsonToYamljSON = dtoRequestV1081ConvertJsonToYamljSON == null ? null : WorkflowExpression.Compile(dtoRequestV1081ConvertJsonToYamljSON);
+            WorkflowExpression.Validate(__workflow_dtoRequestV1081ConvertJsonToYamljSON, nameof(dtoRequestV1081ConvertJsonToYamljSON), required: true);
             return new DeferredBodyAction<DtoResponseV1081ConvertJsonToYaml>(() =>
             {
                 var apiCallPath = "/V1081_ConvertJsonToYaml";
@@ -1573,7 +1484,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV1081ConvertJsonToYaml = new JObject();
                 var dtoRequestV1081ConvertJsonToYamlpropCount = 0;
                 dtoRequestV1081ConvertJsonToYamlpropCount++;
-                dtoRequestV1081ConvertJsonToYaml["json"] = ExpressionConverter.ConvertO(dtoRequestV1081ConvertJsonToYamljSON);
+                dtoRequestV1081ConvertJsonToYaml["json"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV1081ConvertJsonToYamljSON);
                 if (dtoRequestV1081ConvertJsonToYamlpropCount > 0)
                 {
                     callPayload.Body = dtoRequestV1081ConvertJsonToYaml;
@@ -1584,17 +1495,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildConvertPdfToPdfA))]
-        public IBodyWorkflowAction<DtoResponseV4070ConvertPdfToPdfA> ConvertPdfToPdfA([WorkflowExpression] Func<string> dtoRequestV4070ConvertPdfToPdfApDF, [WorkflowExpression] Func<int> dtoRequestV4070ConvertPdfToPdfAconformanceLevel = null)
+        public IBodyWorkflowAction<DtoResponseV4070ConvertPdfToPdfA> ConvertPdfToPdfA(Expression<Func<string>> dtoRequestV4070ConvertPdfToPdfApDF, Expression<Func<int>> dtoRequestV4070ConvertPdfToPdfAconformanceLevel = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV4070ConvertPdfToPdfA> __BuildConvertPdfToPdfA(WorkflowExpression<string> dtoRequestV4070ConvertPdfToPdfApDF, WorkflowExpression<int> dtoRequestV4070ConvertPdfToPdfAconformanceLevel = null)
-        {
-            WorkflowExpression.Validate(dtoRequestV4070ConvertPdfToPdfApDF, nameof(dtoRequestV4070ConvertPdfToPdfApDF), required: true);
-            WorkflowExpression.Validate(dtoRequestV4070ConvertPdfToPdfAconformanceLevel, nameof(dtoRequestV4070ConvertPdfToPdfAconformanceLevel), required: false);
+            var __workflow_dtoRequestV4070ConvertPdfToPdfApDF = dtoRequestV4070ConvertPdfToPdfApDF == null ? null : WorkflowExpression.Compile(dtoRequestV4070ConvertPdfToPdfApDF);
+            WorkflowExpression.Validate(__workflow_dtoRequestV4070ConvertPdfToPdfApDF, nameof(dtoRequestV4070ConvertPdfToPdfApDF), required: true);
+            var __workflow_dtoRequestV4070ConvertPdfToPdfAconformanceLevel = dtoRequestV4070ConvertPdfToPdfAconformanceLevel == null ? null : WorkflowExpression.Compile(dtoRequestV4070ConvertPdfToPdfAconformanceLevel);
+            WorkflowExpression.Validate(__workflow_dtoRequestV4070ConvertPdfToPdfAconformanceLevel, nameof(dtoRequestV4070ConvertPdfToPdfAconformanceLevel), required: false);
             return new DeferredBodyAction<DtoResponseV4070ConvertPdfToPdfA>(() =>
             {
                 var apiCallPath = "/V4070_ConvertPdfToPdfA";
@@ -1603,10 +1509,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV4070ConvertPdfToPdfA = new JObject();
                 var dtoRequestV4070ConvertPdfToPdfApropCount = 0;
                 dtoRequestV4070ConvertPdfToPdfApropCount++;
-                dtoRequestV4070ConvertPdfToPdfA["pdf"] = ExpressionConverter.ConvertO(dtoRequestV4070ConvertPdfToPdfApDF);
-                if (dtoRequestV4070ConvertPdfToPdfAconformanceLevel != null)
+                dtoRequestV4070ConvertPdfToPdfA["pdf"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV4070ConvertPdfToPdfApDF);
+                if (__workflow_dtoRequestV4070ConvertPdfToPdfAconformanceLevel != null)
                 {
-                    dtoRequestV4070ConvertPdfToPdfA["conformanceLevel"] = ExpressionConverter.ConvertO(dtoRequestV4070ConvertPdfToPdfAconformanceLevel);
+                    dtoRequestV4070ConvertPdfToPdfA["conformanceLevel"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV4070ConvertPdfToPdfAconformanceLevel);
                     dtoRequestV4070ConvertPdfToPdfApropCount++;
                 }
 
@@ -1620,16 +1526,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildConvertSharePointSearchResults))]
-        public IBodyWorkflowAction<DtoResponseV6011ConvertSharePointSearchResults> ConvertSharePointSearchResults([WorkflowExpression] Func<string> dtoRequestV6011ConvertSharePointSearchResultssPSearchResult)
+        public IBodyWorkflowAction<DtoResponseV6011ConvertSharePointSearchResults> ConvertSharePointSearchResults(Expression<Func<string>> dtoRequestV6011ConvertSharePointSearchResultssPSearchResult)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV6011ConvertSharePointSearchResults> __BuildConvertSharePointSearchResults(WorkflowExpression<string> dtoRequestV6011ConvertSharePointSearchResultssPSearchResult)
-        {
-            WorkflowExpression.Validate(dtoRequestV6011ConvertSharePointSearchResultssPSearchResult, nameof(dtoRequestV6011ConvertSharePointSearchResultssPSearchResult), required: true);
+            var __workflow_dtoRequestV6011ConvertSharePointSearchResultssPSearchResult = dtoRequestV6011ConvertSharePointSearchResultssPSearchResult == null ? null : WorkflowExpression.Compile(dtoRequestV6011ConvertSharePointSearchResultssPSearchResult);
+            WorkflowExpression.Validate(__workflow_dtoRequestV6011ConvertSharePointSearchResultssPSearchResult, nameof(dtoRequestV6011ConvertSharePointSearchResultssPSearchResult), required: true);
             return new DeferredBodyAction<DtoResponseV6011ConvertSharePointSearchResults>(() =>
             {
                 var apiCallPath = "/V6011_ConvertSharePointSearchResults";
@@ -1638,7 +1538,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV6011ConvertSharePointSearchResults = new JObject();
                 var dtoRequestV6011ConvertSharePointSearchResultspropCount = 0;
                 dtoRequestV6011ConvertSharePointSearchResultspropCount++;
-                dtoRequestV6011ConvertSharePointSearchResults["sharepointResult"] = ExpressionConverter.ConvertO(dtoRequestV6011ConvertSharePointSearchResultssPSearchResult);
+                dtoRequestV6011ConvertSharePointSearchResults["sharepointResult"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV6011ConvertSharePointSearchResultssPSearchResult);
                 if (dtoRequestV6011ConvertSharePointSearchResultspropCount > 0)
                 {
                     callPayload.Body = dtoRequestV6011ConvertSharePointSearchResults;
@@ -1649,19 +1549,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildConvertWordToHtml))]
-        public IBodyWorkflowAction<DtoResponseV5160ConvertWordToHtml> ConvertWordToHtml([WorkflowExpression] Func<string> dtoRequestword, [WorkflowExpression] Func<bool> dtoRequestembedImages = null, [WorkflowExpression] Func<bool> dtoRequestfullHTMLDocument = null, [WorkflowExpression] Func<string> dtoRequesttitle = null)
+        public IBodyWorkflowAction<DtoResponseV5160ConvertWordToHtml> ConvertWordToHtml(Expression<Func<string>> dtoRequestword, Expression<Func<bool>> dtoRequestembedImages = null, Expression<Func<bool>> dtoRequestfullHTMLDocument = null, Expression<Func<string>> dtoRequesttitle = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV5160ConvertWordToHtml> __BuildConvertWordToHtml(WorkflowExpression<string> dtoRequestword, WorkflowExpression<bool> dtoRequestembedImages = null, WorkflowExpression<bool> dtoRequestfullHTMLDocument = null, WorkflowExpression<string> dtoRequesttitle = null)
-        {
-            WorkflowExpression.Validate(dtoRequestword, nameof(dtoRequestword), required: true);
-            WorkflowExpression.Validate(dtoRequestembedImages, nameof(dtoRequestembedImages), required: false);
-            WorkflowExpression.Validate(dtoRequestfullHTMLDocument, nameof(dtoRequestfullHTMLDocument), required: false);
-            WorkflowExpression.Validate(dtoRequesttitle, nameof(dtoRequesttitle), required: false);
+            var __workflow_dtoRequestword = dtoRequestword == null ? null : WorkflowExpression.Compile(dtoRequestword);
+            WorkflowExpression.Validate(__workflow_dtoRequestword, nameof(dtoRequestword), required: true);
+            var __workflow_dtoRequestembedImages = dtoRequestembedImages == null ? null : WorkflowExpression.Compile(dtoRequestembedImages);
+            WorkflowExpression.Validate(__workflow_dtoRequestembedImages, nameof(dtoRequestembedImages), required: false);
+            var __workflow_dtoRequestfullHTMLDocument = dtoRequestfullHTMLDocument == null ? null : WorkflowExpression.Compile(dtoRequestfullHTMLDocument);
+            WorkflowExpression.Validate(__workflow_dtoRequestfullHTMLDocument, nameof(dtoRequestfullHTMLDocument), required: false);
+            var __workflow_dtoRequesttitle = dtoRequesttitle == null ? null : WorkflowExpression.Compile(dtoRequesttitle);
+            WorkflowExpression.Validate(__workflow_dtoRequesttitle, nameof(dtoRequesttitle), required: false);
             return new DeferredBodyAction<DtoResponseV5160ConvertWordToHtml>(() =>
             {
                 var apiCallPath = "/V5160_ConvertWordToHtml";
@@ -1670,22 +1567,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequest = new JObject();
                 var dtoRequestpropCount = 0;
                 dtoRequestpropCount++;
-                dtoRequest["word"] = ExpressionConverter.ConvertO(dtoRequestword);
-                if (dtoRequestembedImages != null)
+                dtoRequest["word"] = ExpressionConverter.ConvertO(__workflow_dtoRequestword);
+                if (__workflow_dtoRequestembedImages != null)
                 {
-                    dtoRequest["embedImages"] = ExpressionConverter.ConvertO(dtoRequestembedImages);
+                    dtoRequest["embedImages"] = ExpressionConverter.ConvertO(__workflow_dtoRequestembedImages);
                     dtoRequestpropCount++;
                 }
 
-                if (dtoRequestfullHTMLDocument != null)
+                if (__workflow_dtoRequestfullHTMLDocument != null)
                 {
-                    dtoRequest["fullHtmlDocument"] = ExpressionConverter.ConvertO(dtoRequestfullHTMLDocument);
+                    dtoRequest["fullHtmlDocument"] = ExpressionConverter.ConvertO(__workflow_dtoRequestfullHTMLDocument);
                     dtoRequestpropCount++;
                 }
 
-                if (dtoRequesttitle != null)
+                if (__workflow_dtoRequesttitle != null)
                 {
-                    dtoRequest["title"] = ExpressionConverter.ConvertO(dtoRequesttitle);
+                    dtoRequest["title"] = ExpressionConverter.ConvertO(__workflow_dtoRequesttitle);
                     dtoRequestpropCount++;
                 }
 
@@ -1699,16 +1596,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildConvertXmlToJson))]
-        public IBodyWorkflowAction<DtoResponseV1052ConvertXmlToJson> ConvertXmlToJson([WorkflowExpression] Func<string> dtoRequestV1052ConvertXmlToJsonxML)
+        public IBodyWorkflowAction<DtoResponseV1052ConvertXmlToJson> ConvertXmlToJson(Expression<Func<string>> dtoRequestV1052ConvertXmlToJsonxML)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV1052ConvertXmlToJson> __BuildConvertXmlToJson(WorkflowExpression<string> dtoRequestV1052ConvertXmlToJsonxML)
-        {
-            WorkflowExpression.Validate(dtoRequestV1052ConvertXmlToJsonxML, nameof(dtoRequestV1052ConvertXmlToJsonxML), required: true);
+            var __workflow_dtoRequestV1052ConvertXmlToJsonxML = dtoRequestV1052ConvertXmlToJsonxML == null ? null : WorkflowExpression.Compile(dtoRequestV1052ConvertXmlToJsonxML);
+            WorkflowExpression.Validate(__workflow_dtoRequestV1052ConvertXmlToJsonxML, nameof(dtoRequestV1052ConvertXmlToJsonxML), required: true);
             return new DeferredBodyAction<DtoResponseV1052ConvertXmlToJson>(() =>
             {
                 var apiCallPath = "/V1052_ConvertXmlToJson";
@@ -1717,7 +1608,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV1052ConvertXmlToJson = new JObject();
                 var dtoRequestV1052ConvertXmlToJsonpropCount = 0;
                 dtoRequestV1052ConvertXmlToJsonpropCount++;
-                dtoRequestV1052ConvertXmlToJson["xml"] = ExpressionConverter.ConvertO(dtoRequestV1052ConvertXmlToJsonxML);
+                dtoRequestV1052ConvertXmlToJson["xml"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV1052ConvertXmlToJsonxML);
                 if (dtoRequestV1052ConvertXmlToJsonpropCount > 0)
                 {
                     callPayload.Body = dtoRequestV1052ConvertXmlToJson;
@@ -1728,16 +1619,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildConvertXRechnungToPdf))]
-        public IBodyWorkflowAction<DtoResponseV8010ConvertXRechnungToPdf> ConvertXRechnungToPdf([WorkflowExpression] Func<string> dtoRequestV8010ConvertXRechnungToPdfxRechnung)
+        public IBodyWorkflowAction<DtoResponseV8010ConvertXRechnungToPdf> ConvertXRechnungToPdf(Expression<Func<string>> dtoRequestV8010ConvertXRechnungToPdfxRechnung)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV8010ConvertXRechnungToPdf> __BuildConvertXRechnungToPdf(WorkflowExpression<string> dtoRequestV8010ConvertXRechnungToPdfxRechnung)
-        {
-            WorkflowExpression.Validate(dtoRequestV8010ConvertXRechnungToPdfxRechnung, nameof(dtoRequestV8010ConvertXRechnungToPdfxRechnung), required: true);
+            var __workflow_dtoRequestV8010ConvertXRechnungToPdfxRechnung = dtoRequestV8010ConvertXRechnungToPdfxRechnung == null ? null : WorkflowExpression.Compile(dtoRequestV8010ConvertXRechnungToPdfxRechnung);
+            WorkflowExpression.Validate(__workflow_dtoRequestV8010ConvertXRechnungToPdfxRechnung, nameof(dtoRequestV8010ConvertXRechnungToPdfxRechnung), required: true);
             return new DeferredBodyAction<DtoResponseV8010ConvertXRechnungToPdf>(() =>
             {
                 var apiCallPath = "/V8010_ConvertXRechnungToPdf";
@@ -1746,7 +1631,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV8010ConvertXRechnungToPdf = new JObject();
                 var dtoRequestV8010ConvertXRechnungToPdfpropCount = 0;
                 dtoRequestV8010ConvertXRechnungToPdfpropCount++;
-                dtoRequestV8010ConvertXRechnungToPdf["xml"] = ExpressionConverter.ConvertO(dtoRequestV8010ConvertXRechnungToPdfxRechnung);
+                dtoRequestV8010ConvertXRechnungToPdf["xml"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV8010ConvertXRechnungToPdfxRechnung);
                 if (dtoRequestV8010ConvertXRechnungToPdfpropCount > 0)
                 {
                     callPayload.Body = dtoRequestV8010ConvertXRechnungToPdf;
@@ -1757,16 +1642,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildConvertYamlToJson))]
-        public IBodyWorkflowAction<DtoResponseV1071ConvertYamlToJson> ConvertYamlToJson([WorkflowExpression] Func<string> dtoRequestV1071YamlToJsonyAML)
+        public IBodyWorkflowAction<DtoResponseV1071ConvertYamlToJson> ConvertYamlToJson(Expression<Func<string>> dtoRequestV1071YamlToJsonyAML)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV1071ConvertYamlToJson> __BuildConvertYamlToJson(WorkflowExpression<string> dtoRequestV1071YamlToJsonyAML)
-        {
-            WorkflowExpression.Validate(dtoRequestV1071YamlToJsonyAML, nameof(dtoRequestV1071YamlToJsonyAML), required: true);
+            var __workflow_dtoRequestV1071YamlToJsonyAML = dtoRequestV1071YamlToJsonyAML == null ? null : WorkflowExpression.Compile(dtoRequestV1071YamlToJsonyAML);
+            WorkflowExpression.Validate(__workflow_dtoRequestV1071YamlToJsonyAML, nameof(dtoRequestV1071YamlToJsonyAML), required: true);
             return new DeferredBodyAction<DtoResponseV1071ConvertYamlToJson>(() =>
             {
                 var apiCallPath = "/V1071_ConvertYamlToJson";
@@ -1775,7 +1654,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV1071YamlToJson = new JObject();
                 var dtoRequestV1071YamlToJsonpropCount = 0;
                 dtoRequestV1071YamlToJsonpropCount++;
-                dtoRequestV1071YamlToJson["yaml"] = ExpressionConverter.ConvertO(dtoRequestV1071YamlToJsonyAML);
+                dtoRequestV1071YamlToJson["yaml"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV1071YamlToJsonyAML);
                 if (dtoRequestV1071YamlToJsonpropCount > 0)
                 {
                     callPayload.Body = dtoRequestV1071YamlToJson;
@@ -1786,21 +1665,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateChartImage))]
-        public IBodyWorkflowAction<DtoResponseV3091CreateChartImage> CreateChartImage([WorkflowExpression] Func<string> dtoRequestV3091CreateChartImagetableData, [WorkflowExpression] Func<int> dtoRequestV3091CreateChartImageimageWidth = null, [WorkflowExpression] Func<int> dtoRequestV3091CreateChartImageimageHeight = null, [WorkflowExpression] Func<string> dtoRequestV3091CreateChartImagebackgroundColor = null, [WorkflowExpression] Func<string> dtoRequestV3091CreateChartImageoutputFormat = null, [WorkflowExpression] Func<string> dtoRequestV3091CreateChartImagechartType = null)
+        public IBodyWorkflowAction<DtoResponseV3091CreateChartImage> CreateChartImage(Expression<Func<string>> dtoRequestV3091CreateChartImagetableData, Expression<Func<int>> dtoRequestV3091CreateChartImageimageWidth = null, Expression<Func<int>> dtoRequestV3091CreateChartImageimageHeight = null, Expression<Func<string>> dtoRequestV3091CreateChartImagebackgroundColor = null, Expression<Func<string>> dtoRequestV3091CreateChartImageoutputFormat = null, Expression<Func<string>> dtoRequestV3091CreateChartImagechartType = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV3091CreateChartImage> __BuildCreateChartImage(WorkflowExpression<string> dtoRequestV3091CreateChartImagetableData, WorkflowExpression<int> dtoRequestV3091CreateChartImageimageWidth = null, WorkflowExpression<int> dtoRequestV3091CreateChartImageimageHeight = null, WorkflowExpression<string> dtoRequestV3091CreateChartImagebackgroundColor = null, WorkflowExpression<string> dtoRequestV3091CreateChartImageoutputFormat = null, WorkflowExpression<string> dtoRequestV3091CreateChartImagechartType = null)
-        {
-            WorkflowExpression.Validate(dtoRequestV3091CreateChartImagetableData, nameof(dtoRequestV3091CreateChartImagetableData), required: true);
-            WorkflowExpression.Validate(dtoRequestV3091CreateChartImageimageWidth, nameof(dtoRequestV3091CreateChartImageimageWidth), required: false);
-            WorkflowExpression.Validate(dtoRequestV3091CreateChartImageimageHeight, nameof(dtoRequestV3091CreateChartImageimageHeight), required: false);
-            WorkflowExpression.Validate(dtoRequestV3091CreateChartImagebackgroundColor, nameof(dtoRequestV3091CreateChartImagebackgroundColor), required: false);
-            WorkflowExpression.Validate(dtoRequestV3091CreateChartImageoutputFormat, nameof(dtoRequestV3091CreateChartImageoutputFormat), required: false);
-            WorkflowExpression.Validate(dtoRequestV3091CreateChartImagechartType, nameof(dtoRequestV3091CreateChartImagechartType), required: false);
+            var __workflow_dtoRequestV3091CreateChartImagetableData = dtoRequestV3091CreateChartImagetableData == null ? null : WorkflowExpression.Compile(dtoRequestV3091CreateChartImagetableData);
+            WorkflowExpression.Validate(__workflow_dtoRequestV3091CreateChartImagetableData, nameof(dtoRequestV3091CreateChartImagetableData), required: true);
+            var __workflow_dtoRequestV3091CreateChartImageimageWidth = dtoRequestV3091CreateChartImageimageWidth == null ? null : WorkflowExpression.Compile(dtoRequestV3091CreateChartImageimageWidth);
+            WorkflowExpression.Validate(__workflow_dtoRequestV3091CreateChartImageimageWidth, nameof(dtoRequestV3091CreateChartImageimageWidth), required: false);
+            var __workflow_dtoRequestV3091CreateChartImageimageHeight = dtoRequestV3091CreateChartImageimageHeight == null ? null : WorkflowExpression.Compile(dtoRequestV3091CreateChartImageimageHeight);
+            WorkflowExpression.Validate(__workflow_dtoRequestV3091CreateChartImageimageHeight, nameof(dtoRequestV3091CreateChartImageimageHeight), required: false);
+            var __workflow_dtoRequestV3091CreateChartImagebackgroundColor = dtoRequestV3091CreateChartImagebackgroundColor == null ? null : WorkflowExpression.Compile(dtoRequestV3091CreateChartImagebackgroundColor);
+            WorkflowExpression.Validate(__workflow_dtoRequestV3091CreateChartImagebackgroundColor, nameof(dtoRequestV3091CreateChartImagebackgroundColor), required: false);
+            var __workflow_dtoRequestV3091CreateChartImageoutputFormat = dtoRequestV3091CreateChartImageoutputFormat == null ? null : WorkflowExpression.Compile(dtoRequestV3091CreateChartImageoutputFormat);
+            WorkflowExpression.Validate(__workflow_dtoRequestV3091CreateChartImageoutputFormat, nameof(dtoRequestV3091CreateChartImageoutputFormat), required: false);
+            var __workflow_dtoRequestV3091CreateChartImagechartType = dtoRequestV3091CreateChartImagechartType == null ? null : WorkflowExpression.Compile(dtoRequestV3091CreateChartImagechartType);
+            WorkflowExpression.Validate(__workflow_dtoRequestV3091CreateChartImagechartType, nameof(dtoRequestV3091CreateChartImagechartType), required: false);
             return new DeferredBodyAction<DtoResponseV3091CreateChartImage>(() =>
             {
                 var apiCallPath = "/V3091_CreateChartImage";
@@ -1808,35 +1686,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var dtoRequestV3091CreateChartImage = new JObject();
                 var dtoRequestV3091CreateChartImagepropCount = 0;
-                if (dtoRequestV3091CreateChartImageimageWidth != null)
+                if (__workflow_dtoRequestV3091CreateChartImageimageWidth != null)
                 {
-                    dtoRequestV3091CreateChartImage["width"] = ExpressionConverter.ConvertO(dtoRequestV3091CreateChartImageimageWidth);
+                    dtoRequestV3091CreateChartImage["width"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV3091CreateChartImageimageWidth);
                     dtoRequestV3091CreateChartImagepropCount++;
                 }
 
-                if (dtoRequestV3091CreateChartImageimageHeight != null)
+                if (__workflow_dtoRequestV3091CreateChartImageimageHeight != null)
                 {
-                    dtoRequestV3091CreateChartImage["height"] = ExpressionConverter.ConvertO(dtoRequestV3091CreateChartImageimageHeight);
+                    dtoRequestV3091CreateChartImage["height"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV3091CreateChartImageimageHeight);
                     dtoRequestV3091CreateChartImagepropCount++;
                 }
 
-                if (dtoRequestV3091CreateChartImagebackgroundColor != null)
+                if (__workflow_dtoRequestV3091CreateChartImagebackgroundColor != null)
                 {
-                    dtoRequestV3091CreateChartImage["backgroundColor"] = ExpressionConverter.ConvertO(dtoRequestV3091CreateChartImagebackgroundColor);
+                    dtoRequestV3091CreateChartImage["backgroundColor"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV3091CreateChartImagebackgroundColor);
                     dtoRequestV3091CreateChartImagepropCount++;
                 }
 
-                if (dtoRequestV3091CreateChartImageoutputFormat != null)
+                if (__workflow_dtoRequestV3091CreateChartImageoutputFormat != null)
                 {
-                    dtoRequestV3091CreateChartImage["format"] = ExpressionConverter.ConvertO(dtoRequestV3091CreateChartImageoutputFormat);
+                    dtoRequestV3091CreateChartImage["format"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV3091CreateChartImageoutputFormat);
                     dtoRequestV3091CreateChartImagepropCount++;
                 }
 
                 dtoRequestV3091CreateChartImagepropCount++;
-                dtoRequestV3091CreateChartImage["chart"] = ExpressionConverter.ConvertO(dtoRequestV3091CreateChartImagetableData);
-                if (dtoRequestV3091CreateChartImagechartType != null)
+                dtoRequestV3091CreateChartImage["chart"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV3091CreateChartImagetableData);
+                if (__workflow_dtoRequestV3091CreateChartImagechartType != null)
                 {
-                    dtoRequestV3091CreateChartImage["type"] = ExpressionConverter.ConvertO(dtoRequestV3091CreateChartImagechartType);
+                    dtoRequestV3091CreateChartImage["type"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV3091CreateChartImagechartType);
                     dtoRequestV3091CreateChartImagepropCount++;
                 }
 
@@ -1850,23 +1728,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateCode))]
-        public IBodyWorkflowAction<DtoResponseV3062CreateCode> CreateCode([WorkflowExpression] Func<string> dtoRequestV3062CreateCodecontent, [WorkflowExpression] Func<string> dtoRequestV3062CreateCodecodeFormat = null, [WorkflowExpression] Func<int> dtoRequestV3062CreateCodewidth = null, [WorkflowExpression] Func<int> dtoRequestV3062CreateCodeheight = null, [WorkflowExpression] Func<string> dtoRequestV3062CreateCodeoutputFormat = null, [WorkflowExpression] Func<string> dtoRequestV3062CreateCodeembeddedImage = null, [WorkflowExpression] Func<double> dtoRequestV3062CreateCodeembeddedImageOpacity = null, [WorkflowExpression] Func<double> dtoRequestV3062CreateCodeembeddedImageRatio = null)
+        public IBodyWorkflowAction<DtoResponseV3062CreateCode> CreateCode(Expression<Func<string>> dtoRequestV3062CreateCodecontent, Expression<Func<string>> dtoRequestV3062CreateCodecodeFormat = null, Expression<Func<int>> dtoRequestV3062CreateCodewidth = null, Expression<Func<int>> dtoRequestV3062CreateCodeheight = null, Expression<Func<string>> dtoRequestV3062CreateCodeoutputFormat = null, Expression<Func<string>> dtoRequestV3062CreateCodeembeddedImage = null, Expression<Func<double>> dtoRequestV3062CreateCodeembeddedImageOpacity = null, Expression<Func<double>> dtoRequestV3062CreateCodeembeddedImageRatio = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV3062CreateCode> __BuildCreateCode(WorkflowExpression<string> dtoRequestV3062CreateCodecontent, WorkflowExpression<string> dtoRequestV3062CreateCodecodeFormat = null, WorkflowExpression<int> dtoRequestV3062CreateCodewidth = null, WorkflowExpression<int> dtoRequestV3062CreateCodeheight = null, WorkflowExpression<string> dtoRequestV3062CreateCodeoutputFormat = null, WorkflowExpression<string> dtoRequestV3062CreateCodeembeddedImage = null, WorkflowExpression<double> dtoRequestV3062CreateCodeembeddedImageOpacity = null, WorkflowExpression<double> dtoRequestV3062CreateCodeembeddedImageRatio = null)
-        {
-            WorkflowExpression.Validate(dtoRequestV3062CreateCodecontent, nameof(dtoRequestV3062CreateCodecontent), required: true);
-            WorkflowExpression.Validate(dtoRequestV3062CreateCodecodeFormat, nameof(dtoRequestV3062CreateCodecodeFormat), required: false);
-            WorkflowExpression.Validate(dtoRequestV3062CreateCodewidth, nameof(dtoRequestV3062CreateCodewidth), required: false);
-            WorkflowExpression.Validate(dtoRequestV3062CreateCodeheight, nameof(dtoRequestV3062CreateCodeheight), required: false);
-            WorkflowExpression.Validate(dtoRequestV3062CreateCodeoutputFormat, nameof(dtoRequestV3062CreateCodeoutputFormat), required: false);
-            WorkflowExpression.Validate(dtoRequestV3062CreateCodeembeddedImage, nameof(dtoRequestV3062CreateCodeembeddedImage), required: false);
-            WorkflowExpression.Validate(dtoRequestV3062CreateCodeembeddedImageOpacity, nameof(dtoRequestV3062CreateCodeembeddedImageOpacity), required: false);
-            WorkflowExpression.Validate(dtoRequestV3062CreateCodeembeddedImageRatio, nameof(dtoRequestV3062CreateCodeembeddedImageRatio), required: false);
+            var __workflow_dtoRequestV3062CreateCodecontent = dtoRequestV3062CreateCodecontent == null ? null : WorkflowExpression.Compile(dtoRequestV3062CreateCodecontent);
+            WorkflowExpression.Validate(__workflow_dtoRequestV3062CreateCodecontent, nameof(dtoRequestV3062CreateCodecontent), required: true);
+            var __workflow_dtoRequestV3062CreateCodecodeFormat = dtoRequestV3062CreateCodecodeFormat == null ? null : WorkflowExpression.Compile(dtoRequestV3062CreateCodecodeFormat);
+            WorkflowExpression.Validate(__workflow_dtoRequestV3062CreateCodecodeFormat, nameof(dtoRequestV3062CreateCodecodeFormat), required: false);
+            var __workflow_dtoRequestV3062CreateCodewidth = dtoRequestV3062CreateCodewidth == null ? null : WorkflowExpression.Compile(dtoRequestV3062CreateCodewidth);
+            WorkflowExpression.Validate(__workflow_dtoRequestV3062CreateCodewidth, nameof(dtoRequestV3062CreateCodewidth), required: false);
+            var __workflow_dtoRequestV3062CreateCodeheight = dtoRequestV3062CreateCodeheight == null ? null : WorkflowExpression.Compile(dtoRequestV3062CreateCodeheight);
+            WorkflowExpression.Validate(__workflow_dtoRequestV3062CreateCodeheight, nameof(dtoRequestV3062CreateCodeheight), required: false);
+            var __workflow_dtoRequestV3062CreateCodeoutputFormat = dtoRequestV3062CreateCodeoutputFormat == null ? null : WorkflowExpression.Compile(dtoRequestV3062CreateCodeoutputFormat);
+            WorkflowExpression.Validate(__workflow_dtoRequestV3062CreateCodeoutputFormat, nameof(dtoRequestV3062CreateCodeoutputFormat), required: false);
+            var __workflow_dtoRequestV3062CreateCodeembeddedImage = dtoRequestV3062CreateCodeembeddedImage == null ? null : WorkflowExpression.Compile(dtoRequestV3062CreateCodeembeddedImage);
+            WorkflowExpression.Validate(__workflow_dtoRequestV3062CreateCodeembeddedImage, nameof(dtoRequestV3062CreateCodeembeddedImage), required: false);
+            var __workflow_dtoRequestV3062CreateCodeembeddedImageOpacity = dtoRequestV3062CreateCodeembeddedImageOpacity == null ? null : WorkflowExpression.Compile(dtoRequestV3062CreateCodeembeddedImageOpacity);
+            WorkflowExpression.Validate(__workflow_dtoRequestV3062CreateCodeembeddedImageOpacity, nameof(dtoRequestV3062CreateCodeembeddedImageOpacity), required: false);
+            var __workflow_dtoRequestV3062CreateCodeembeddedImageRatio = dtoRequestV3062CreateCodeembeddedImageRatio == null ? null : WorkflowExpression.Compile(dtoRequestV3062CreateCodeembeddedImageRatio);
+            WorkflowExpression.Validate(__workflow_dtoRequestV3062CreateCodeembeddedImageRatio, nameof(dtoRequestV3062CreateCodeembeddedImageRatio), required: false);
             return new DeferredBodyAction<DtoResponseV3062CreateCode>(() =>
             {
                 var apiCallPath = "/V3062_CreateCode";
@@ -1875,46 +1754,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV3062CreateCode = new JObject();
                 var dtoRequestV3062CreateCodepropCount = 0;
                 dtoRequestV3062CreateCodepropCount++;
-                dtoRequestV3062CreateCode["content"] = ExpressionConverter.ConvertO(dtoRequestV3062CreateCodecontent);
-                if (dtoRequestV3062CreateCodecodeFormat != null)
+                dtoRequestV3062CreateCode["content"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV3062CreateCodecontent);
+                if (__workflow_dtoRequestV3062CreateCodecodeFormat != null)
                 {
-                    dtoRequestV3062CreateCode["codeFormat"] = ExpressionConverter.ConvertO(dtoRequestV3062CreateCodecodeFormat);
+                    dtoRequestV3062CreateCode["codeFormat"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV3062CreateCodecodeFormat);
                     dtoRequestV3062CreateCodepropCount++;
                 }
 
-                if (dtoRequestV3062CreateCodewidth != null)
+                if (__workflow_dtoRequestV3062CreateCodewidth != null)
                 {
-                    dtoRequestV3062CreateCode["width"] = ExpressionConverter.ConvertO(dtoRequestV3062CreateCodewidth);
+                    dtoRequestV3062CreateCode["width"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV3062CreateCodewidth);
                     dtoRequestV3062CreateCodepropCount++;
                 }
 
-                if (dtoRequestV3062CreateCodeheight != null)
+                if (__workflow_dtoRequestV3062CreateCodeheight != null)
                 {
-                    dtoRequestV3062CreateCode["height"] = ExpressionConverter.ConvertO(dtoRequestV3062CreateCodeheight);
+                    dtoRequestV3062CreateCode["height"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV3062CreateCodeheight);
                     dtoRequestV3062CreateCodepropCount++;
                 }
 
-                if (dtoRequestV3062CreateCodeoutputFormat != null)
+                if (__workflow_dtoRequestV3062CreateCodeoutputFormat != null)
                 {
-                    dtoRequestV3062CreateCode["outFormat"] = ExpressionConverter.ConvertO(dtoRequestV3062CreateCodeoutputFormat);
+                    dtoRequestV3062CreateCode["outFormat"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV3062CreateCodeoutputFormat);
                     dtoRequestV3062CreateCodepropCount++;
                 }
 
-                if (dtoRequestV3062CreateCodeembeddedImage != null)
+                if (__workflow_dtoRequestV3062CreateCodeembeddedImage != null)
                 {
-                    dtoRequestV3062CreateCode["image"] = ExpressionConverter.ConvertO(dtoRequestV3062CreateCodeembeddedImage);
+                    dtoRequestV3062CreateCode["image"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV3062CreateCodeembeddedImage);
                     dtoRequestV3062CreateCodepropCount++;
                 }
 
-                if (dtoRequestV3062CreateCodeembeddedImageOpacity != null)
+                if (__workflow_dtoRequestV3062CreateCodeembeddedImageOpacity != null)
                 {
-                    dtoRequestV3062CreateCode["imageOpacity"] = ExpressionConverter.ConvertO(dtoRequestV3062CreateCodeembeddedImageOpacity);
+                    dtoRequestV3062CreateCode["imageOpacity"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV3062CreateCodeembeddedImageOpacity);
                     dtoRequestV3062CreateCodepropCount++;
                 }
 
-                if (dtoRequestV3062CreateCodeembeddedImageRatio != null)
+                if (__workflow_dtoRequestV3062CreateCodeembeddedImageRatio != null)
                 {
-                    dtoRequestV3062CreateCode["imageRatio"] = ExpressionConverter.ConvertO(dtoRequestV3062CreateCodeembeddedImageRatio);
+                    dtoRequestV3062CreateCode["imageRatio"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV3062CreateCodeembeddedImageRatio);
                     dtoRequestV3062CreateCodepropCount++;
                 }
 
@@ -1928,20 +1807,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateGraphImage))]
-        public IBodyWorkflowAction<DtoResponseV3111CreateGraphImage> CreateGraphImage([WorkflowExpression] Func<string> dtoRequestV3111CreateGraphImagegraphData, [WorkflowExpression] Func<int> dtoRequestV3111CreateGraphImageimageWidth = null, [WorkflowExpression] Func<int> dtoRequestV3111CreateGraphImageimageHeight = null, [WorkflowExpression] Func<string> dtoRequestV3111CreateGraphImagebackgroundColor = null, [WorkflowExpression] Func<string> dtoRequestV3111CreateGraphImageoutputFormat = null)
+        public IBodyWorkflowAction<DtoResponseV3111CreateGraphImage> CreateGraphImage(Expression<Func<string>> dtoRequestV3111CreateGraphImagegraphData, Expression<Func<int>> dtoRequestV3111CreateGraphImageimageWidth = null, Expression<Func<int>> dtoRequestV3111CreateGraphImageimageHeight = null, Expression<Func<string>> dtoRequestV3111CreateGraphImagebackgroundColor = null, Expression<Func<string>> dtoRequestV3111CreateGraphImageoutputFormat = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV3111CreateGraphImage> __BuildCreateGraphImage(WorkflowExpression<string> dtoRequestV3111CreateGraphImagegraphData, WorkflowExpression<int> dtoRequestV3111CreateGraphImageimageWidth = null, WorkflowExpression<int> dtoRequestV3111CreateGraphImageimageHeight = null, WorkflowExpression<string> dtoRequestV3111CreateGraphImagebackgroundColor = null, WorkflowExpression<string> dtoRequestV3111CreateGraphImageoutputFormat = null)
-        {
-            WorkflowExpression.Validate(dtoRequestV3111CreateGraphImagegraphData, nameof(dtoRequestV3111CreateGraphImagegraphData), required: true);
-            WorkflowExpression.Validate(dtoRequestV3111CreateGraphImageimageWidth, nameof(dtoRequestV3111CreateGraphImageimageWidth), required: false);
-            WorkflowExpression.Validate(dtoRequestV3111CreateGraphImageimageHeight, nameof(dtoRequestV3111CreateGraphImageimageHeight), required: false);
-            WorkflowExpression.Validate(dtoRequestV3111CreateGraphImagebackgroundColor, nameof(dtoRequestV3111CreateGraphImagebackgroundColor), required: false);
-            WorkflowExpression.Validate(dtoRequestV3111CreateGraphImageoutputFormat, nameof(dtoRequestV3111CreateGraphImageoutputFormat), required: false);
+            var __workflow_dtoRequestV3111CreateGraphImagegraphData = dtoRequestV3111CreateGraphImagegraphData == null ? null : WorkflowExpression.Compile(dtoRequestV3111CreateGraphImagegraphData);
+            WorkflowExpression.Validate(__workflow_dtoRequestV3111CreateGraphImagegraphData, nameof(dtoRequestV3111CreateGraphImagegraphData), required: true);
+            var __workflow_dtoRequestV3111CreateGraphImageimageWidth = dtoRequestV3111CreateGraphImageimageWidth == null ? null : WorkflowExpression.Compile(dtoRequestV3111CreateGraphImageimageWidth);
+            WorkflowExpression.Validate(__workflow_dtoRequestV3111CreateGraphImageimageWidth, nameof(dtoRequestV3111CreateGraphImageimageWidth), required: false);
+            var __workflow_dtoRequestV3111CreateGraphImageimageHeight = dtoRequestV3111CreateGraphImageimageHeight == null ? null : WorkflowExpression.Compile(dtoRequestV3111CreateGraphImageimageHeight);
+            WorkflowExpression.Validate(__workflow_dtoRequestV3111CreateGraphImageimageHeight, nameof(dtoRequestV3111CreateGraphImageimageHeight), required: false);
+            var __workflow_dtoRequestV3111CreateGraphImagebackgroundColor = dtoRequestV3111CreateGraphImagebackgroundColor == null ? null : WorkflowExpression.Compile(dtoRequestV3111CreateGraphImagebackgroundColor);
+            WorkflowExpression.Validate(__workflow_dtoRequestV3111CreateGraphImagebackgroundColor, nameof(dtoRequestV3111CreateGraphImagebackgroundColor), required: false);
+            var __workflow_dtoRequestV3111CreateGraphImageoutputFormat = dtoRequestV3111CreateGraphImageoutputFormat == null ? null : WorkflowExpression.Compile(dtoRequestV3111CreateGraphImageoutputFormat);
+            WorkflowExpression.Validate(__workflow_dtoRequestV3111CreateGraphImageoutputFormat, nameof(dtoRequestV3111CreateGraphImageoutputFormat), required: false);
             return new DeferredBodyAction<DtoResponseV3111CreateGraphImage>(() =>
             {
                 var apiCallPath = "/V3111_CreateGraphImage";
@@ -1949,32 +1826,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var dtoRequestV3111CreateGraphImage = new JObject();
                 var dtoRequestV3111CreateGraphImagepropCount = 0;
-                if (dtoRequestV3111CreateGraphImageimageWidth != null)
+                if (__workflow_dtoRequestV3111CreateGraphImageimageWidth != null)
                 {
-                    dtoRequestV3111CreateGraphImage["width"] = ExpressionConverter.ConvertO(dtoRequestV3111CreateGraphImageimageWidth);
+                    dtoRequestV3111CreateGraphImage["width"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV3111CreateGraphImageimageWidth);
                     dtoRequestV3111CreateGraphImagepropCount++;
                 }
 
-                if (dtoRequestV3111CreateGraphImageimageHeight != null)
+                if (__workflow_dtoRequestV3111CreateGraphImageimageHeight != null)
                 {
-                    dtoRequestV3111CreateGraphImage["height"] = ExpressionConverter.ConvertO(dtoRequestV3111CreateGraphImageimageHeight);
+                    dtoRequestV3111CreateGraphImage["height"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV3111CreateGraphImageimageHeight);
                     dtoRequestV3111CreateGraphImagepropCount++;
                 }
 
-                if (dtoRequestV3111CreateGraphImagebackgroundColor != null)
+                if (__workflow_dtoRequestV3111CreateGraphImagebackgroundColor != null)
                 {
-                    dtoRequestV3111CreateGraphImage["backgroundColor"] = ExpressionConverter.ConvertO(dtoRequestV3111CreateGraphImagebackgroundColor);
+                    dtoRequestV3111CreateGraphImage["backgroundColor"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV3111CreateGraphImagebackgroundColor);
                     dtoRequestV3111CreateGraphImagepropCount++;
                 }
 
-                if (dtoRequestV3111CreateGraphImageoutputFormat != null)
+                if (__workflow_dtoRequestV3111CreateGraphImageoutputFormat != null)
                 {
-                    dtoRequestV3111CreateGraphImage["format"] = ExpressionConverter.ConvertO(dtoRequestV3111CreateGraphImageoutputFormat);
+                    dtoRequestV3111CreateGraphImage["format"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV3111CreateGraphImageoutputFormat);
                     dtoRequestV3111CreateGraphImagepropCount++;
                 }
 
                 dtoRequestV3111CreateGraphImagepropCount++;
-                dtoRequestV3111CreateGraphImage["graph"] = ExpressionConverter.ConvertO(dtoRequestV3111CreateGraphImagegraphData);
+                dtoRequestV3111CreateGraphImage["graph"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV3111CreateGraphImagegraphData);
                 if (dtoRequestV3111CreateGraphImagepropCount > 0)
                 {
                     callPayload.Body = dtoRequestV3111CreateGraphImage;
@@ -1985,22 +1862,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateTableImage))]
-        public IBodyWorkflowAction<DtoResponseV3101CreateTableImage> CreateTableImage([WorkflowExpression] Func<string> dtoRequestV3101CreateTableImagetableData, [WorkflowExpression] Func<int> dtoRequestV3101CreateTableImageimageWidth = null, [WorkflowExpression] Func<int> dtoRequestV3101CreateTableImageimageHeight = null, [WorkflowExpression] Func<string> dtoRequestV3101CreateTableImagebackgroundColor = null, [WorkflowExpression] Func<string> dtoRequestV3101CreateTableImageoutputFormat = null, [WorkflowExpression] Func<string> dtoRequestV3101CreateTableImagetitle = null, [WorkflowExpression] Func<bool> dtoRequestV3101CreateTableImageshowTableBorders = null)
+        public IBodyWorkflowAction<DtoResponseV3101CreateTableImage> CreateTableImage(Expression<Func<string>> dtoRequestV3101CreateTableImagetableData, Expression<Func<int>> dtoRequestV3101CreateTableImageimageWidth = null, Expression<Func<int>> dtoRequestV3101CreateTableImageimageHeight = null, Expression<Func<string>> dtoRequestV3101CreateTableImagebackgroundColor = null, Expression<Func<string>> dtoRequestV3101CreateTableImageoutputFormat = null, Expression<Func<string>> dtoRequestV3101CreateTableImagetitle = null, Expression<Func<bool>> dtoRequestV3101CreateTableImageshowTableBorders = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV3101CreateTableImage> __BuildCreateTableImage(WorkflowExpression<string> dtoRequestV3101CreateTableImagetableData, WorkflowExpression<int> dtoRequestV3101CreateTableImageimageWidth = null, WorkflowExpression<int> dtoRequestV3101CreateTableImageimageHeight = null, WorkflowExpression<string> dtoRequestV3101CreateTableImagebackgroundColor = null, WorkflowExpression<string> dtoRequestV3101CreateTableImageoutputFormat = null, WorkflowExpression<string> dtoRequestV3101CreateTableImagetitle = null, WorkflowExpression<bool> dtoRequestV3101CreateTableImageshowTableBorders = null)
-        {
-            WorkflowExpression.Validate(dtoRequestV3101CreateTableImagetableData, nameof(dtoRequestV3101CreateTableImagetableData), required: true);
-            WorkflowExpression.Validate(dtoRequestV3101CreateTableImageimageWidth, nameof(dtoRequestV3101CreateTableImageimageWidth), required: false);
-            WorkflowExpression.Validate(dtoRequestV3101CreateTableImageimageHeight, nameof(dtoRequestV3101CreateTableImageimageHeight), required: false);
-            WorkflowExpression.Validate(dtoRequestV3101CreateTableImagebackgroundColor, nameof(dtoRequestV3101CreateTableImagebackgroundColor), required: false);
-            WorkflowExpression.Validate(dtoRequestV3101CreateTableImageoutputFormat, nameof(dtoRequestV3101CreateTableImageoutputFormat), required: false);
-            WorkflowExpression.Validate(dtoRequestV3101CreateTableImagetitle, nameof(dtoRequestV3101CreateTableImagetitle), required: false);
-            WorkflowExpression.Validate(dtoRequestV3101CreateTableImageshowTableBorders, nameof(dtoRequestV3101CreateTableImageshowTableBorders), required: false);
+            var __workflow_dtoRequestV3101CreateTableImagetableData = dtoRequestV3101CreateTableImagetableData == null ? null : WorkflowExpression.Compile(dtoRequestV3101CreateTableImagetableData);
+            WorkflowExpression.Validate(__workflow_dtoRequestV3101CreateTableImagetableData, nameof(dtoRequestV3101CreateTableImagetableData), required: true);
+            var __workflow_dtoRequestV3101CreateTableImageimageWidth = dtoRequestV3101CreateTableImageimageWidth == null ? null : WorkflowExpression.Compile(dtoRequestV3101CreateTableImageimageWidth);
+            WorkflowExpression.Validate(__workflow_dtoRequestV3101CreateTableImageimageWidth, nameof(dtoRequestV3101CreateTableImageimageWidth), required: false);
+            var __workflow_dtoRequestV3101CreateTableImageimageHeight = dtoRequestV3101CreateTableImageimageHeight == null ? null : WorkflowExpression.Compile(dtoRequestV3101CreateTableImageimageHeight);
+            WorkflowExpression.Validate(__workflow_dtoRequestV3101CreateTableImageimageHeight, nameof(dtoRequestV3101CreateTableImageimageHeight), required: false);
+            var __workflow_dtoRequestV3101CreateTableImagebackgroundColor = dtoRequestV3101CreateTableImagebackgroundColor == null ? null : WorkflowExpression.Compile(dtoRequestV3101CreateTableImagebackgroundColor);
+            WorkflowExpression.Validate(__workflow_dtoRequestV3101CreateTableImagebackgroundColor, nameof(dtoRequestV3101CreateTableImagebackgroundColor), required: false);
+            var __workflow_dtoRequestV3101CreateTableImageoutputFormat = dtoRequestV3101CreateTableImageoutputFormat == null ? null : WorkflowExpression.Compile(dtoRequestV3101CreateTableImageoutputFormat);
+            WorkflowExpression.Validate(__workflow_dtoRequestV3101CreateTableImageoutputFormat, nameof(dtoRequestV3101CreateTableImageoutputFormat), required: false);
+            var __workflow_dtoRequestV3101CreateTableImagetitle = dtoRequestV3101CreateTableImagetitle == null ? null : WorkflowExpression.Compile(dtoRequestV3101CreateTableImagetitle);
+            WorkflowExpression.Validate(__workflow_dtoRequestV3101CreateTableImagetitle, nameof(dtoRequestV3101CreateTableImagetitle), required: false);
+            var __workflow_dtoRequestV3101CreateTableImageshowTableBorders = dtoRequestV3101CreateTableImageshowTableBorders == null ? null : WorkflowExpression.Compile(dtoRequestV3101CreateTableImageshowTableBorders);
+            WorkflowExpression.Validate(__workflow_dtoRequestV3101CreateTableImageshowTableBorders, nameof(dtoRequestV3101CreateTableImageshowTableBorders), required: false);
             return new DeferredBodyAction<DtoResponseV3101CreateTableImage>(() =>
             {
                 var apiCallPath = "/V3101_CreateTableImage";
@@ -2008,43 +1885,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var dtoRequestV3101CreateTableImage = new JObject();
                 var dtoRequestV3101CreateTableImagepropCount = 0;
-                if (dtoRequestV3101CreateTableImageimageWidth != null)
+                if (__workflow_dtoRequestV3101CreateTableImageimageWidth != null)
                 {
-                    dtoRequestV3101CreateTableImage["width"] = ExpressionConverter.ConvertO(dtoRequestV3101CreateTableImageimageWidth);
+                    dtoRequestV3101CreateTableImage["width"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV3101CreateTableImageimageWidth);
                     dtoRequestV3101CreateTableImagepropCount++;
                 }
 
-                if (dtoRequestV3101CreateTableImageimageHeight != null)
+                if (__workflow_dtoRequestV3101CreateTableImageimageHeight != null)
                 {
-                    dtoRequestV3101CreateTableImage["height"] = ExpressionConverter.ConvertO(dtoRequestV3101CreateTableImageimageHeight);
+                    dtoRequestV3101CreateTableImage["height"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV3101CreateTableImageimageHeight);
                     dtoRequestV3101CreateTableImagepropCount++;
                 }
 
-                if (dtoRequestV3101CreateTableImagebackgroundColor != null)
+                if (__workflow_dtoRequestV3101CreateTableImagebackgroundColor != null)
                 {
-                    dtoRequestV3101CreateTableImage["backgroundColor"] = ExpressionConverter.ConvertO(dtoRequestV3101CreateTableImagebackgroundColor);
+                    dtoRequestV3101CreateTableImage["backgroundColor"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV3101CreateTableImagebackgroundColor);
                     dtoRequestV3101CreateTableImagepropCount++;
                 }
 
-                if (dtoRequestV3101CreateTableImageoutputFormat != null)
+                if (__workflow_dtoRequestV3101CreateTableImageoutputFormat != null)
                 {
-                    dtoRequestV3101CreateTableImage["format"] = ExpressionConverter.ConvertO(dtoRequestV3101CreateTableImageoutputFormat);
+                    dtoRequestV3101CreateTableImage["format"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV3101CreateTableImageoutputFormat);
                     dtoRequestV3101CreateTableImagepropCount++;
                 }
 
                 dtoRequestV3101CreateTableImagepropCount++;
-                dtoRequestV3101CreateTableImage["data"] = ExpressionConverter.ConvertO(dtoRequestV3101CreateTableImagetableData);
-                if (dtoRequestV3101CreateTableImagetitle != null)
+                dtoRequestV3101CreateTableImage["data"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV3101CreateTableImagetableData);
+                if (__workflow_dtoRequestV3101CreateTableImagetitle != null)
                 {
-                    dtoRequestV3101CreateTableImage["title"] = ExpressionConverter.ConvertO(dtoRequestV3101CreateTableImagetitle);
+                    dtoRequestV3101CreateTableImage["title"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV3101CreateTableImagetitle);
                     dtoRequestV3101CreateTableImagepropCount++;
                 }
 
-                if (dtoRequestV3101CreateTableImageshowTableBorders != null)
+                if (__workflow_dtoRequestV3101CreateTableImageshowTableBorders != null)
                 {
-                    if (dtoRequestV3101CreateTableImageshowTableBorders != null)
+                    if (__workflow_dtoRequestV3101CreateTableImageshowTableBorders != null)
                     {
-                        dtoRequestV3101CreateTableImage["hasLines"] = ExpressionConverter.ConvertO(dtoRequestV3101CreateTableImageshowTableBorders);
+                        dtoRequestV3101CreateTableImage["hasLines"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV3101CreateTableImageshowTableBorders);
                         dtoRequestV3101CreateTableImagepropCount++;
                     }
 
@@ -2066,21 +1943,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateWatermarkImage))]
-        public IBodyWorkflowAction<DtoResponseV3081CreateWatermarkImage> CreateWatermarkImage([WorkflowExpression] Func<string> dtoRequestV3081CreateWatermarkImagemainImage, [WorkflowExpression] Func<string> dtoRequestV3081CreateWatermarkImagewatermarkImage, [WorkflowExpression] Func<int> dtoRequestV3081CreateWatermarkImagewatermarkOpacity = null, [WorkflowExpression] Func<int> dtoRequestV3081CreateWatermarkImagewatermarkRatio = null, [WorkflowExpression] Func<string> dtoRequestV3081CreateWatermarkImagewatermarkHorizontalPosition = null, [WorkflowExpression] Func<string> dtoRequestV3081CreateWatermarkImagewatermarkVerticalPosition = null)
+        public IBodyWorkflowAction<DtoResponseV3081CreateWatermarkImage> CreateWatermarkImage(Expression<Func<string>> dtoRequestV3081CreateWatermarkImagemainImage, Expression<Func<string>> dtoRequestV3081CreateWatermarkImagewatermarkImage, Expression<Func<int>> dtoRequestV3081CreateWatermarkImagewatermarkOpacity = null, Expression<Func<int>> dtoRequestV3081CreateWatermarkImagewatermarkRatio = null, Expression<Func<string>> dtoRequestV3081CreateWatermarkImagewatermarkHorizontalPosition = null, Expression<Func<string>> dtoRequestV3081CreateWatermarkImagewatermarkVerticalPosition = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV3081CreateWatermarkImage> __BuildCreateWatermarkImage(WorkflowExpression<string> dtoRequestV3081CreateWatermarkImagemainImage, WorkflowExpression<string> dtoRequestV3081CreateWatermarkImagewatermarkImage, WorkflowExpression<int> dtoRequestV3081CreateWatermarkImagewatermarkOpacity = null, WorkflowExpression<int> dtoRequestV3081CreateWatermarkImagewatermarkRatio = null, WorkflowExpression<string> dtoRequestV3081CreateWatermarkImagewatermarkHorizontalPosition = null, WorkflowExpression<string> dtoRequestV3081CreateWatermarkImagewatermarkVerticalPosition = null)
-        {
-            WorkflowExpression.Validate(dtoRequestV3081CreateWatermarkImagemainImage, nameof(dtoRequestV3081CreateWatermarkImagemainImage), required: true);
-            WorkflowExpression.Validate(dtoRequestV3081CreateWatermarkImagewatermarkImage, nameof(dtoRequestV3081CreateWatermarkImagewatermarkImage), required: true);
-            WorkflowExpression.Validate(dtoRequestV3081CreateWatermarkImagewatermarkOpacity, nameof(dtoRequestV3081CreateWatermarkImagewatermarkOpacity), required: false);
-            WorkflowExpression.Validate(dtoRequestV3081CreateWatermarkImagewatermarkRatio, nameof(dtoRequestV3081CreateWatermarkImagewatermarkRatio), required: false);
-            WorkflowExpression.Validate(dtoRequestV3081CreateWatermarkImagewatermarkHorizontalPosition, nameof(dtoRequestV3081CreateWatermarkImagewatermarkHorizontalPosition), required: false);
-            WorkflowExpression.Validate(dtoRequestV3081CreateWatermarkImagewatermarkVerticalPosition, nameof(dtoRequestV3081CreateWatermarkImagewatermarkVerticalPosition), required: false);
+            var __workflow_dtoRequestV3081CreateWatermarkImagemainImage = dtoRequestV3081CreateWatermarkImagemainImage == null ? null : WorkflowExpression.Compile(dtoRequestV3081CreateWatermarkImagemainImage);
+            WorkflowExpression.Validate(__workflow_dtoRequestV3081CreateWatermarkImagemainImage, nameof(dtoRequestV3081CreateWatermarkImagemainImage), required: true);
+            var __workflow_dtoRequestV3081CreateWatermarkImagewatermarkImage = dtoRequestV3081CreateWatermarkImagewatermarkImage == null ? null : WorkflowExpression.Compile(dtoRequestV3081CreateWatermarkImagewatermarkImage);
+            WorkflowExpression.Validate(__workflow_dtoRequestV3081CreateWatermarkImagewatermarkImage, nameof(dtoRequestV3081CreateWatermarkImagewatermarkImage), required: true);
+            var __workflow_dtoRequestV3081CreateWatermarkImagewatermarkOpacity = dtoRequestV3081CreateWatermarkImagewatermarkOpacity == null ? null : WorkflowExpression.Compile(dtoRequestV3081CreateWatermarkImagewatermarkOpacity);
+            WorkflowExpression.Validate(__workflow_dtoRequestV3081CreateWatermarkImagewatermarkOpacity, nameof(dtoRequestV3081CreateWatermarkImagewatermarkOpacity), required: false);
+            var __workflow_dtoRequestV3081CreateWatermarkImagewatermarkRatio = dtoRequestV3081CreateWatermarkImagewatermarkRatio == null ? null : WorkflowExpression.Compile(dtoRequestV3081CreateWatermarkImagewatermarkRatio);
+            WorkflowExpression.Validate(__workflow_dtoRequestV3081CreateWatermarkImagewatermarkRatio, nameof(dtoRequestV3081CreateWatermarkImagewatermarkRatio), required: false);
+            var __workflow_dtoRequestV3081CreateWatermarkImagewatermarkHorizontalPosition = dtoRequestV3081CreateWatermarkImagewatermarkHorizontalPosition == null ? null : WorkflowExpression.Compile(dtoRequestV3081CreateWatermarkImagewatermarkHorizontalPosition);
+            WorkflowExpression.Validate(__workflow_dtoRequestV3081CreateWatermarkImagewatermarkHorizontalPosition, nameof(dtoRequestV3081CreateWatermarkImagewatermarkHorizontalPosition), required: false);
+            var __workflow_dtoRequestV3081CreateWatermarkImagewatermarkVerticalPosition = dtoRequestV3081CreateWatermarkImagewatermarkVerticalPosition == null ? null : WorkflowExpression.Compile(dtoRequestV3081CreateWatermarkImagewatermarkVerticalPosition);
+            WorkflowExpression.Validate(__workflow_dtoRequestV3081CreateWatermarkImagewatermarkVerticalPosition, nameof(dtoRequestV3081CreateWatermarkImagewatermarkVerticalPosition), required: false);
             return new DeferredBodyAction<DtoResponseV3081CreateWatermarkImage>(() =>
             {
                 var apiCallPath = "/V3081_CreateWatermarkImage";
@@ -2089,30 +1965,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV3081CreateWatermarkImage = new JObject();
                 var dtoRequestV3081CreateWatermarkImagepropCount = 0;
                 dtoRequestV3081CreateWatermarkImagepropCount++;
-                dtoRequestV3081CreateWatermarkImage["image"] = ExpressionConverter.ConvertO(dtoRequestV3081CreateWatermarkImagemainImage);
+                dtoRequestV3081CreateWatermarkImage["image"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV3081CreateWatermarkImagemainImage);
                 dtoRequestV3081CreateWatermarkImagepropCount++;
-                dtoRequestV3081CreateWatermarkImage["watermarkImage"] = ExpressionConverter.ConvertO(dtoRequestV3081CreateWatermarkImagewatermarkImage);
-                if (dtoRequestV3081CreateWatermarkImagewatermarkOpacity != null)
+                dtoRequestV3081CreateWatermarkImage["watermarkImage"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV3081CreateWatermarkImagewatermarkImage);
+                if (__workflow_dtoRequestV3081CreateWatermarkImagewatermarkOpacity != null)
                 {
-                    dtoRequestV3081CreateWatermarkImage["opacity"] = ExpressionConverter.ConvertO(dtoRequestV3081CreateWatermarkImagewatermarkOpacity);
+                    dtoRequestV3081CreateWatermarkImage["opacity"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV3081CreateWatermarkImagewatermarkOpacity);
                     dtoRequestV3081CreateWatermarkImagepropCount++;
                 }
 
-                if (dtoRequestV3081CreateWatermarkImagewatermarkRatio != null)
+                if (__workflow_dtoRequestV3081CreateWatermarkImagewatermarkRatio != null)
                 {
-                    dtoRequestV3081CreateWatermarkImage["ratio"] = ExpressionConverter.ConvertO(dtoRequestV3081CreateWatermarkImagewatermarkRatio);
+                    dtoRequestV3081CreateWatermarkImage["ratio"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV3081CreateWatermarkImagewatermarkRatio);
                     dtoRequestV3081CreateWatermarkImagepropCount++;
                 }
 
-                if (dtoRequestV3081CreateWatermarkImagewatermarkHorizontalPosition != null)
+                if (__workflow_dtoRequestV3081CreateWatermarkImagewatermarkHorizontalPosition != null)
                 {
-                    dtoRequestV3081CreateWatermarkImage["imagePositionHorizontal"] = ExpressionConverter.ConvertO(dtoRequestV3081CreateWatermarkImagewatermarkHorizontalPosition);
+                    dtoRequestV3081CreateWatermarkImage["imagePositionHorizontal"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV3081CreateWatermarkImagewatermarkHorizontalPosition);
                     dtoRequestV3081CreateWatermarkImagepropCount++;
                 }
 
-                if (dtoRequestV3081CreateWatermarkImagewatermarkVerticalPosition != null)
+                if (__workflow_dtoRequestV3081CreateWatermarkImagewatermarkVerticalPosition != null)
                 {
-                    dtoRequestV3081CreateWatermarkImage["imagePositionVertical"] = ExpressionConverter.ConvertO(dtoRequestV3081CreateWatermarkImagewatermarkVerticalPosition);
+                    dtoRequestV3081CreateWatermarkImage["imagePositionVertical"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV3081CreateWatermarkImagewatermarkVerticalPosition);
                     dtoRequestV3081CreateWatermarkImagepropCount++;
                 }
 
@@ -2126,17 +2002,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateWordFile))]
-        public IBodyWorkflowAction<DtoResponseV5011CreateWordFile> CreateWordFile([WorkflowExpression] Func<Section[]> dtoRequestV5011CreateWordFilesection, [WorkflowExpression] Func<string> dtoRequestV5011CreateWordFileexistingFileContent = null)
+        public IBodyWorkflowAction<DtoResponseV5011CreateWordFile> CreateWordFile(Expression<Func<Section[]>> dtoRequestV5011CreateWordFilesection, Expression<Func<string>> dtoRequestV5011CreateWordFileexistingFileContent = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV5011CreateWordFile> __BuildCreateWordFile(WorkflowExpression<Section[]> dtoRequestV5011CreateWordFilesection, WorkflowExpression<string> dtoRequestV5011CreateWordFileexistingFileContent = null)
-        {
-            WorkflowExpression.Validate(dtoRequestV5011CreateWordFilesection, nameof(dtoRequestV5011CreateWordFilesection), required: true);
-            WorkflowExpression.Validate(dtoRequestV5011CreateWordFileexistingFileContent, nameof(dtoRequestV5011CreateWordFileexistingFileContent), required: false);
+            var __workflow_dtoRequestV5011CreateWordFilesection = dtoRequestV5011CreateWordFilesection == null ? null : WorkflowExpression.Compile(dtoRequestV5011CreateWordFilesection);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5011CreateWordFilesection, nameof(dtoRequestV5011CreateWordFilesection), required: true);
+            var __workflow_dtoRequestV5011CreateWordFileexistingFileContent = dtoRequestV5011CreateWordFileexistingFileContent == null ? null : WorkflowExpression.Compile(dtoRequestV5011CreateWordFileexistingFileContent);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5011CreateWordFileexistingFileContent, nameof(dtoRequestV5011CreateWordFileexistingFileContent), required: false);
             return new DeferredBodyAction<DtoResponseV5011CreateWordFile>(() =>
             {
                 var apiCallPath = "/V5011_CreateWordFile";
@@ -2144,14 +2015,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var dtoRequestV5011CreateWordFile = new JObject();
                 var dtoRequestV5011CreateWordFilepropCount = 0;
-                if (dtoRequestV5011CreateWordFileexistingFileContent != null)
+                if (__workflow_dtoRequestV5011CreateWordFileexistingFileContent != null)
                 {
-                    dtoRequestV5011CreateWordFile["existingFileContent"] = ExpressionConverter.ConvertO(dtoRequestV5011CreateWordFileexistingFileContent);
+                    dtoRequestV5011CreateWordFile["existingFileContent"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5011CreateWordFileexistingFileContent);
                     dtoRequestV5011CreateWordFilepropCount++;
                 }
 
                 dtoRequestV5011CreateWordFilepropCount++;
-                dtoRequestV5011CreateWordFile["sections"] = ExpressionConverter.ConvertO(dtoRequestV5011CreateWordFilesection);
+                dtoRequestV5011CreateWordFile["sections"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5011CreateWordFilesection);
                 if (dtoRequestV5011CreateWordFilepropCount > 0)
                 {
                     callPayload.Body = dtoRequestV5011CreateWordFile;
@@ -2162,20 +2033,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildExtractImagesFromPdf))]
-        public IBodyWorkflowAction<DtoResponseV4090ExtractImagesFromPdf> ExtractImagesFromPdf([WorkflowExpression] Func<string> dtoRequestpDF, [WorkflowExpression] Func<int> dtoRequestfromPage = null, [WorkflowExpression] Func<int> dtoRequesttoPage = null, [WorkflowExpression] Func<string> dtoRequestfileNamePrefix = null, [WorkflowExpression] Func<bool> dtoRequestincludeBase64String = null)
+        public IBodyWorkflowAction<DtoResponseV4090ExtractImagesFromPdf> ExtractImagesFromPdf(Expression<Func<string>> dtoRequestpDF, Expression<Func<int>> dtoRequestfromPage = null, Expression<Func<int>> dtoRequesttoPage = null, Expression<Func<string>> dtoRequestfileNamePrefix = null, Expression<Func<bool>> dtoRequestincludeBase64String = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV4090ExtractImagesFromPdf> __BuildExtractImagesFromPdf(WorkflowExpression<string> dtoRequestpDF, WorkflowExpression<int> dtoRequestfromPage = null, WorkflowExpression<int> dtoRequesttoPage = null, WorkflowExpression<string> dtoRequestfileNamePrefix = null, WorkflowExpression<bool> dtoRequestincludeBase64String = null)
-        {
-            WorkflowExpression.Validate(dtoRequestpDF, nameof(dtoRequestpDF), required: true);
-            WorkflowExpression.Validate(dtoRequestfromPage, nameof(dtoRequestfromPage), required: false);
-            WorkflowExpression.Validate(dtoRequesttoPage, nameof(dtoRequesttoPage), required: false);
-            WorkflowExpression.Validate(dtoRequestfileNamePrefix, nameof(dtoRequestfileNamePrefix), required: false);
-            WorkflowExpression.Validate(dtoRequestincludeBase64String, nameof(dtoRequestincludeBase64String), required: false);
+            var __workflow_dtoRequestpDF = dtoRequestpDF == null ? null : WorkflowExpression.Compile(dtoRequestpDF);
+            WorkflowExpression.Validate(__workflow_dtoRequestpDF, nameof(dtoRequestpDF), required: true);
+            var __workflow_dtoRequestfromPage = dtoRequestfromPage == null ? null : WorkflowExpression.Compile(dtoRequestfromPage);
+            WorkflowExpression.Validate(__workflow_dtoRequestfromPage, nameof(dtoRequestfromPage), required: false);
+            var __workflow_dtoRequesttoPage = dtoRequesttoPage == null ? null : WorkflowExpression.Compile(dtoRequesttoPage);
+            WorkflowExpression.Validate(__workflow_dtoRequesttoPage, nameof(dtoRequesttoPage), required: false);
+            var __workflow_dtoRequestfileNamePrefix = dtoRequestfileNamePrefix == null ? null : WorkflowExpression.Compile(dtoRequestfileNamePrefix);
+            WorkflowExpression.Validate(__workflow_dtoRequestfileNamePrefix, nameof(dtoRequestfileNamePrefix), required: false);
+            var __workflow_dtoRequestincludeBase64String = dtoRequestincludeBase64String == null ? null : WorkflowExpression.Compile(dtoRequestincludeBase64String);
+            WorkflowExpression.Validate(__workflow_dtoRequestincludeBase64String, nameof(dtoRequestincludeBase64String), required: false);
             return new DeferredBodyAction<DtoResponseV4090ExtractImagesFromPdf>(() =>
             {
                 var apiCallPath = "/V4090_ExtractImagesFromPdf";
@@ -2184,28 +2053,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequest = new JObject();
                 var dtoRequestpropCount = 0;
                 dtoRequestpropCount++;
-                dtoRequest["pdf"] = ExpressionConverter.ConvertO(dtoRequestpDF);
-                if (dtoRequestfromPage != null)
+                dtoRequest["pdf"] = ExpressionConverter.ConvertO(__workflow_dtoRequestpDF);
+                if (__workflow_dtoRequestfromPage != null)
                 {
-                    dtoRequest["fromPage"] = ExpressionConverter.ConvertO(dtoRequestfromPage);
+                    dtoRequest["fromPage"] = ExpressionConverter.ConvertO(__workflow_dtoRequestfromPage);
                     dtoRequestpropCount++;
                 }
 
-                if (dtoRequesttoPage != null)
+                if (__workflow_dtoRequesttoPage != null)
                 {
-                    dtoRequest["toPage"] = ExpressionConverter.ConvertO(dtoRequesttoPage);
+                    dtoRequest["toPage"] = ExpressionConverter.ConvertO(__workflow_dtoRequesttoPage);
                     dtoRequestpropCount++;
                 }
 
-                if (dtoRequestfileNamePrefix != null)
+                if (__workflow_dtoRequestfileNamePrefix != null)
                 {
-                    dtoRequest["fileNamePrefix"] = ExpressionConverter.ConvertO(dtoRequestfileNamePrefix);
+                    dtoRequest["fileNamePrefix"] = ExpressionConverter.ConvertO(__workflow_dtoRequestfileNamePrefix);
                     dtoRequestpropCount++;
                 }
 
-                if (dtoRequestincludeBase64String != null)
+                if (__workflow_dtoRequestincludeBase64String != null)
                 {
-                    dtoRequest["includeFileString"] = ExpressionConverter.ConvertO(dtoRequestincludeBase64String);
+                    dtoRequest["includeFileString"] = ExpressionConverter.ConvertO(__workflow_dtoRequestincludeBase64String);
                     dtoRequestpropCount++;
                 }
 
@@ -2219,17 +2088,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildExtractJsonObjectProperties))]
-        public IBodyWorkflowAction<DtoResponseV2100ExtractJsonObjectProperties> ExtractJsonObjectProperties([WorkflowExpression] Func<string> dtoRequestV2100ExtractJsonObjectPropertiesjSON, [WorkflowExpression] Func<bool> dtoRequestV2100ExtractJsonObjectPropertiesextractNestedProperties = null)
+        public IBodyWorkflowAction<DtoResponseV2100ExtractJsonObjectProperties> ExtractJsonObjectProperties(Expression<Func<string>> dtoRequestV2100ExtractJsonObjectPropertiesjSON, Expression<Func<bool>> dtoRequestV2100ExtractJsonObjectPropertiesextractNestedProperties = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV2100ExtractJsonObjectProperties> __BuildExtractJsonObjectProperties(WorkflowExpression<string> dtoRequestV2100ExtractJsonObjectPropertiesjSON, WorkflowExpression<bool> dtoRequestV2100ExtractJsonObjectPropertiesextractNestedProperties = null)
-        {
-            WorkflowExpression.Validate(dtoRequestV2100ExtractJsonObjectPropertiesjSON, nameof(dtoRequestV2100ExtractJsonObjectPropertiesjSON), required: true);
-            WorkflowExpression.Validate(dtoRequestV2100ExtractJsonObjectPropertiesextractNestedProperties, nameof(dtoRequestV2100ExtractJsonObjectPropertiesextractNestedProperties), required: false);
+            var __workflow_dtoRequestV2100ExtractJsonObjectPropertiesjSON = dtoRequestV2100ExtractJsonObjectPropertiesjSON == null ? null : WorkflowExpression.Compile(dtoRequestV2100ExtractJsonObjectPropertiesjSON);
+            WorkflowExpression.Validate(__workflow_dtoRequestV2100ExtractJsonObjectPropertiesjSON, nameof(dtoRequestV2100ExtractJsonObjectPropertiesjSON), required: true);
+            var __workflow_dtoRequestV2100ExtractJsonObjectPropertiesextractNestedProperties = dtoRequestV2100ExtractJsonObjectPropertiesextractNestedProperties == null ? null : WorkflowExpression.Compile(dtoRequestV2100ExtractJsonObjectPropertiesextractNestedProperties);
+            WorkflowExpression.Validate(__workflow_dtoRequestV2100ExtractJsonObjectPropertiesextractNestedProperties, nameof(dtoRequestV2100ExtractJsonObjectPropertiesextractNestedProperties), required: false);
             return new DeferredBodyAction<DtoResponseV2100ExtractJsonObjectProperties>(() =>
             {
                 var apiCallPath = "/V2100_ExtractJsonObjectProperties";
@@ -2238,12 +2102,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV2100ExtractJsonObjectProperties = new JObject();
                 var dtoRequestV2100ExtractJsonObjectPropertiespropCount = 0;
                 dtoRequestV2100ExtractJsonObjectPropertiespropCount++;
-                dtoRequestV2100ExtractJsonObjectProperties["json"] = ExpressionConverter.ConvertO(dtoRequestV2100ExtractJsonObjectPropertiesjSON);
-                if (dtoRequestV2100ExtractJsonObjectPropertiesextractNestedProperties != null)
+                dtoRequestV2100ExtractJsonObjectProperties["json"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV2100ExtractJsonObjectPropertiesjSON);
+                if (__workflow_dtoRequestV2100ExtractJsonObjectPropertiesextractNestedProperties != null)
                 {
-                    if (dtoRequestV2100ExtractJsonObjectPropertiesextractNestedProperties != null)
+                    if (__workflow_dtoRequestV2100ExtractJsonObjectPropertiesextractNestedProperties != null)
                     {
-                        dtoRequestV2100ExtractJsonObjectProperties["nestedPropertyExtraction"] = ExpressionConverter.ConvertO(dtoRequestV2100ExtractJsonObjectPropertiesextractNestedProperties);
+                        dtoRequestV2100ExtractJsonObjectProperties["nestedPropertyExtraction"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV2100ExtractJsonObjectPropertiesextractNestedProperties);
                         dtoRequestV2100ExtractJsonObjectPropertiespropCount++;
                     }
 
@@ -2265,17 +2129,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildExtractPdfPages))]
-        public IBodyWorkflowAction<DtoResponseV4060ExtractPdfPages> ExtractPdfPages([WorkflowExpression] Func<string> dtoRequestV4060ExtractPdfPagespDFFile, [WorkflowExpression] Func<string> dtoRequestV4060ExtractPdfPagespagesToExtract)
+        public IBodyWorkflowAction<DtoResponseV4060ExtractPdfPages> ExtractPdfPages(Expression<Func<string>> dtoRequestV4060ExtractPdfPagespDFFile, Expression<Func<string>> dtoRequestV4060ExtractPdfPagespagesToExtract)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV4060ExtractPdfPages> __BuildExtractPdfPages(WorkflowExpression<string> dtoRequestV4060ExtractPdfPagespDFFile, WorkflowExpression<string> dtoRequestV4060ExtractPdfPagespagesToExtract)
-        {
-            WorkflowExpression.Validate(dtoRequestV4060ExtractPdfPagespDFFile, nameof(dtoRequestV4060ExtractPdfPagespDFFile), required: true);
-            WorkflowExpression.Validate(dtoRequestV4060ExtractPdfPagespagesToExtract, nameof(dtoRequestV4060ExtractPdfPagespagesToExtract), required: true);
+            var __workflow_dtoRequestV4060ExtractPdfPagespDFFile = dtoRequestV4060ExtractPdfPagespDFFile == null ? null : WorkflowExpression.Compile(dtoRequestV4060ExtractPdfPagespDFFile);
+            WorkflowExpression.Validate(__workflow_dtoRequestV4060ExtractPdfPagespDFFile, nameof(dtoRequestV4060ExtractPdfPagespDFFile), required: true);
+            var __workflow_dtoRequestV4060ExtractPdfPagespagesToExtract = dtoRequestV4060ExtractPdfPagespagesToExtract == null ? null : WorkflowExpression.Compile(dtoRequestV4060ExtractPdfPagespagesToExtract);
+            WorkflowExpression.Validate(__workflow_dtoRequestV4060ExtractPdfPagespagesToExtract, nameof(dtoRequestV4060ExtractPdfPagespagesToExtract), required: true);
             return new DeferredBodyAction<DtoResponseV4060ExtractPdfPages>(() =>
             {
                 var apiCallPath = "/V4060_ExtractPdfPages";
@@ -2284,9 +2143,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV4060ExtractPdfPages = new JObject();
                 var dtoRequestV4060ExtractPdfPagespropCount = 0;
                 dtoRequestV4060ExtractPdfPagespropCount++;
-                dtoRequestV4060ExtractPdfPages["file"] = ExpressionConverter.ConvertO(dtoRequestV4060ExtractPdfPagespDFFile);
+                dtoRequestV4060ExtractPdfPages["file"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV4060ExtractPdfPagespDFFile);
                 dtoRequestV4060ExtractPdfPagespropCount++;
-                dtoRequestV4060ExtractPdfPages["pages"] = ExpressionConverter.ConvertO(dtoRequestV4060ExtractPdfPagespagesToExtract);
+                dtoRequestV4060ExtractPdfPages["pages"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV4060ExtractPdfPagespagesToExtract);
                 if (dtoRequestV4060ExtractPdfPagespropCount > 0)
                 {
                     callPayload.Body = dtoRequestV4060ExtractPdfPages;
@@ -2297,19 +2156,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildExtractTextAccordingToPattern))]
-        public IBodyWorkflowAction<DtoResponseV2140ExtractTextAccordingToPattern> ExtractTextAccordingToPattern([WorkflowExpression] Func<string> dtoRequestV2140ExtractTextAccordingToPatterntext, [WorkflowExpression] Func<string> dtoRequestV2140ExtractTextAccordingToPatternmatchPattern, [WorkflowExpression] Func<bool> dtoRequestV2140ExtractTextAccordingToPatterntrimEnabled = null, [WorkflowExpression] Func<string> dtoRequestV2140ExtractTextAccordingToPatterntrimStrings = null)
+        public IBodyWorkflowAction<DtoResponseV2140ExtractTextAccordingToPattern> ExtractTextAccordingToPattern(Expression<Func<string>> dtoRequestV2140ExtractTextAccordingToPatterntext, Expression<Func<string>> dtoRequestV2140ExtractTextAccordingToPatternmatchPattern, Expression<Func<bool>> dtoRequestV2140ExtractTextAccordingToPatterntrimEnabled = null, Expression<Func<string>> dtoRequestV2140ExtractTextAccordingToPatterntrimStrings = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV2140ExtractTextAccordingToPattern> __BuildExtractTextAccordingToPattern(WorkflowExpression<string> dtoRequestV2140ExtractTextAccordingToPatterntext, WorkflowExpression<string> dtoRequestV2140ExtractTextAccordingToPatternmatchPattern, WorkflowExpression<bool> dtoRequestV2140ExtractTextAccordingToPatterntrimEnabled = null, WorkflowExpression<string> dtoRequestV2140ExtractTextAccordingToPatterntrimStrings = null)
-        {
-            WorkflowExpression.Validate(dtoRequestV2140ExtractTextAccordingToPatterntext, nameof(dtoRequestV2140ExtractTextAccordingToPatterntext), required: true);
-            WorkflowExpression.Validate(dtoRequestV2140ExtractTextAccordingToPatternmatchPattern, nameof(dtoRequestV2140ExtractTextAccordingToPatternmatchPattern), required: true);
-            WorkflowExpression.Validate(dtoRequestV2140ExtractTextAccordingToPatterntrimEnabled, nameof(dtoRequestV2140ExtractTextAccordingToPatterntrimEnabled), required: false);
-            WorkflowExpression.Validate(dtoRequestV2140ExtractTextAccordingToPatterntrimStrings, nameof(dtoRequestV2140ExtractTextAccordingToPatterntrimStrings), required: false);
+            var __workflow_dtoRequestV2140ExtractTextAccordingToPatterntext = dtoRequestV2140ExtractTextAccordingToPatterntext == null ? null : WorkflowExpression.Compile(dtoRequestV2140ExtractTextAccordingToPatterntext);
+            WorkflowExpression.Validate(__workflow_dtoRequestV2140ExtractTextAccordingToPatterntext, nameof(dtoRequestV2140ExtractTextAccordingToPatterntext), required: true);
+            var __workflow_dtoRequestV2140ExtractTextAccordingToPatternmatchPattern = dtoRequestV2140ExtractTextAccordingToPatternmatchPattern == null ? null : WorkflowExpression.Compile(dtoRequestV2140ExtractTextAccordingToPatternmatchPattern);
+            WorkflowExpression.Validate(__workflow_dtoRequestV2140ExtractTextAccordingToPatternmatchPattern, nameof(dtoRequestV2140ExtractTextAccordingToPatternmatchPattern), required: true);
+            var __workflow_dtoRequestV2140ExtractTextAccordingToPatterntrimEnabled = dtoRequestV2140ExtractTextAccordingToPatterntrimEnabled == null ? null : WorkflowExpression.Compile(dtoRequestV2140ExtractTextAccordingToPatterntrimEnabled);
+            WorkflowExpression.Validate(__workflow_dtoRequestV2140ExtractTextAccordingToPatterntrimEnabled, nameof(dtoRequestV2140ExtractTextAccordingToPatterntrimEnabled), required: false);
+            var __workflow_dtoRequestV2140ExtractTextAccordingToPatterntrimStrings = dtoRequestV2140ExtractTextAccordingToPatterntrimStrings == null ? null : WorkflowExpression.Compile(dtoRequestV2140ExtractTextAccordingToPatterntrimStrings);
+            WorkflowExpression.Validate(__workflow_dtoRequestV2140ExtractTextAccordingToPatterntrimStrings, nameof(dtoRequestV2140ExtractTextAccordingToPatterntrimStrings), required: false);
             return new DeferredBodyAction<DtoResponseV2140ExtractTextAccordingToPattern>(() =>
             {
                 var apiCallPath = "/V2140_ExtractTextAccordingToPattern";
@@ -2318,18 +2174,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV2140ExtractTextAccordingToPattern = new JObject();
                 var dtoRequestV2140ExtractTextAccordingToPatternpropCount = 0;
                 dtoRequestV2140ExtractTextAccordingToPatternpropCount++;
-                dtoRequestV2140ExtractTextAccordingToPattern["inputText"] = ExpressionConverter.ConvertO(dtoRequestV2140ExtractTextAccordingToPatterntext);
+                dtoRequestV2140ExtractTextAccordingToPattern["inputText"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV2140ExtractTextAccordingToPatterntext);
                 dtoRequestV2140ExtractTextAccordingToPatternpropCount++;
-                dtoRequestV2140ExtractTextAccordingToPattern["matchPattern"] = ExpressionConverter.ConvertO(dtoRequestV2140ExtractTextAccordingToPatternmatchPattern);
-                if (dtoRequestV2140ExtractTextAccordingToPatterntrimEnabled != null)
+                dtoRequestV2140ExtractTextAccordingToPattern["matchPattern"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV2140ExtractTextAccordingToPatternmatchPattern);
+                if (__workflow_dtoRequestV2140ExtractTextAccordingToPatterntrimEnabled != null)
                 {
-                    dtoRequestV2140ExtractTextAccordingToPattern["trimEnabled"] = ExpressionConverter.ConvertO(dtoRequestV2140ExtractTextAccordingToPatterntrimEnabled);
+                    dtoRequestV2140ExtractTextAccordingToPattern["trimEnabled"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV2140ExtractTextAccordingToPatterntrimEnabled);
                     dtoRequestV2140ExtractTextAccordingToPatternpropCount++;
                 }
 
-                if (dtoRequestV2140ExtractTextAccordingToPatterntrimStrings != null)
+                if (__workflow_dtoRequestV2140ExtractTextAccordingToPatterntrimStrings != null)
                 {
-                    dtoRequestV2140ExtractTextAccordingToPattern["trimStrings"] = ExpressionConverter.ConvertO(dtoRequestV2140ExtractTextAccordingToPatterntrimStrings);
+                    dtoRequestV2140ExtractTextAccordingToPattern["trimStrings"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV2140ExtractTextAccordingToPatterntrimStrings);
                     dtoRequestV2140ExtractTextAccordingToPatternpropCount++;
                 }
 
@@ -2343,22 +2199,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildExtractTextFromPdf))]
-        public IBodyWorkflowAction<DtoResponseV4100ExtractTextFromPdf> ExtractTextFromPdf([WorkflowExpression] Func<string> dtoRequestpDF, [WorkflowExpression] Func<int> dtoRequestfromPage = null, [WorkflowExpression] Func<int> dtoRequesttoPage = null, [WorkflowExpression] Func<bool> dtoRequestlayoutBased = null, [WorkflowExpression] Func<bool> dtoRequestincludePages = null, [WorkflowExpression] Func<string> dtoRequestpageSeparator = null, [WorkflowExpression] Func<bool> dtoRequestnormalizeWhitespace = null)
+        public IBodyWorkflowAction<DtoResponseV4100ExtractTextFromPdf> ExtractTextFromPdf(Expression<Func<string>> dtoRequestpDF, Expression<Func<int>> dtoRequestfromPage = null, Expression<Func<int>> dtoRequesttoPage = null, Expression<Func<bool>> dtoRequestlayoutBased = null, Expression<Func<bool>> dtoRequestincludePages = null, Expression<Func<string>> dtoRequestpageSeparator = null, Expression<Func<bool>> dtoRequestnormalizeWhitespace = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV4100ExtractTextFromPdf> __BuildExtractTextFromPdf(WorkflowExpression<string> dtoRequestpDF, WorkflowExpression<int> dtoRequestfromPage = null, WorkflowExpression<int> dtoRequesttoPage = null, WorkflowExpression<bool> dtoRequestlayoutBased = null, WorkflowExpression<bool> dtoRequestincludePages = null, WorkflowExpression<string> dtoRequestpageSeparator = null, WorkflowExpression<bool> dtoRequestnormalizeWhitespace = null)
-        {
-            WorkflowExpression.Validate(dtoRequestpDF, nameof(dtoRequestpDF), required: true);
-            WorkflowExpression.Validate(dtoRequestfromPage, nameof(dtoRequestfromPage), required: false);
-            WorkflowExpression.Validate(dtoRequesttoPage, nameof(dtoRequesttoPage), required: false);
-            WorkflowExpression.Validate(dtoRequestlayoutBased, nameof(dtoRequestlayoutBased), required: false);
-            WorkflowExpression.Validate(dtoRequestincludePages, nameof(dtoRequestincludePages), required: false);
-            WorkflowExpression.Validate(dtoRequestpageSeparator, nameof(dtoRequestpageSeparator), required: false);
-            WorkflowExpression.Validate(dtoRequestnormalizeWhitespace, nameof(dtoRequestnormalizeWhitespace), required: false);
+            var __workflow_dtoRequestpDF = dtoRequestpDF == null ? null : WorkflowExpression.Compile(dtoRequestpDF);
+            WorkflowExpression.Validate(__workflow_dtoRequestpDF, nameof(dtoRequestpDF), required: true);
+            var __workflow_dtoRequestfromPage = dtoRequestfromPage == null ? null : WorkflowExpression.Compile(dtoRequestfromPage);
+            WorkflowExpression.Validate(__workflow_dtoRequestfromPage, nameof(dtoRequestfromPage), required: false);
+            var __workflow_dtoRequesttoPage = dtoRequesttoPage == null ? null : WorkflowExpression.Compile(dtoRequesttoPage);
+            WorkflowExpression.Validate(__workflow_dtoRequesttoPage, nameof(dtoRequesttoPage), required: false);
+            var __workflow_dtoRequestlayoutBased = dtoRequestlayoutBased == null ? null : WorkflowExpression.Compile(dtoRequestlayoutBased);
+            WorkflowExpression.Validate(__workflow_dtoRequestlayoutBased, nameof(dtoRequestlayoutBased), required: false);
+            var __workflow_dtoRequestincludePages = dtoRequestincludePages == null ? null : WorkflowExpression.Compile(dtoRequestincludePages);
+            WorkflowExpression.Validate(__workflow_dtoRequestincludePages, nameof(dtoRequestincludePages), required: false);
+            var __workflow_dtoRequestpageSeparator = dtoRequestpageSeparator == null ? null : WorkflowExpression.Compile(dtoRequestpageSeparator);
+            WorkflowExpression.Validate(__workflow_dtoRequestpageSeparator, nameof(dtoRequestpageSeparator), required: false);
+            var __workflow_dtoRequestnormalizeWhitespace = dtoRequestnormalizeWhitespace == null ? null : WorkflowExpression.Compile(dtoRequestnormalizeWhitespace);
+            WorkflowExpression.Validate(__workflow_dtoRequestnormalizeWhitespace, nameof(dtoRequestnormalizeWhitespace), required: false);
             return new DeferredBodyAction<DtoResponseV4100ExtractTextFromPdf>(() =>
             {
                 var apiCallPath = "/V4100_ExtractTextFromPdf";
@@ -2367,40 +2223,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequest = new JObject();
                 var dtoRequestpropCount = 0;
                 dtoRequestpropCount++;
-                dtoRequest["pdf"] = ExpressionConverter.ConvertO(dtoRequestpDF);
-                if (dtoRequestfromPage != null)
+                dtoRequest["pdf"] = ExpressionConverter.ConvertO(__workflow_dtoRequestpDF);
+                if (__workflow_dtoRequestfromPage != null)
                 {
-                    dtoRequest["fromPage"] = ExpressionConverter.ConvertO(dtoRequestfromPage);
+                    dtoRequest["fromPage"] = ExpressionConverter.ConvertO(__workflow_dtoRequestfromPage);
                     dtoRequestpropCount++;
                 }
 
-                if (dtoRequesttoPage != null)
+                if (__workflow_dtoRequesttoPage != null)
                 {
-                    dtoRequest["toPage"] = ExpressionConverter.ConvertO(dtoRequesttoPage);
+                    dtoRequest["toPage"] = ExpressionConverter.ConvertO(__workflow_dtoRequesttoPage);
                     dtoRequestpropCount++;
                 }
 
-                if (dtoRequestlayoutBased != null)
+                if (__workflow_dtoRequestlayoutBased != null)
                 {
-                    dtoRequest["layoutBased"] = ExpressionConverter.ConvertO(dtoRequestlayoutBased);
+                    dtoRequest["layoutBased"] = ExpressionConverter.ConvertO(__workflow_dtoRequestlayoutBased);
                     dtoRequestpropCount++;
                 }
 
-                if (dtoRequestincludePages != null)
+                if (__workflow_dtoRequestincludePages != null)
                 {
-                    dtoRequest["includePages"] = ExpressionConverter.ConvertO(dtoRequestincludePages);
+                    dtoRequest["includePages"] = ExpressionConverter.ConvertO(__workflow_dtoRequestincludePages);
                     dtoRequestpropCount++;
                 }
 
-                if (dtoRequestpageSeparator != null)
+                if (__workflow_dtoRequestpageSeparator != null)
                 {
-                    dtoRequest["pageSeparator"] = ExpressionConverter.ConvertO(dtoRequestpageSeparator);
+                    dtoRequest["pageSeparator"] = ExpressionConverter.ConvertO(__workflow_dtoRequestpageSeparator);
                     dtoRequestpropCount++;
                 }
 
-                if (dtoRequestnormalizeWhitespace != null)
+                if (__workflow_dtoRequestnormalizeWhitespace != null)
                 {
-                    dtoRequest["normalizeWhitespace"] = ExpressionConverter.ConvertO(dtoRequestnormalizeWhitespace);
+                    dtoRequest["normalizeWhitespace"] = ExpressionConverter.ConvertO(__workflow_dtoRequestnormalizeWhitespace);
                     dtoRequestpropCount++;
                 }
 
@@ -2414,19 +2270,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildExtractWordBookmarks))]
-        public IBodyWorkflowAction<DtoResponseV5021ExtractWordBookmarks> ExtractWordBookmarks([WorkflowExpression] Func<string> dtoRequestV5021ExtractWordBookmarksfile, [WorkflowExpression] Func<bool> dtoRequestV5021ExtractWordBookmarksincludeHiddenBookmarks = null, [WorkflowExpression] Func<string> dtoRequestV5021ExtractWordBookmarkssearchName = null, [WorkflowExpression] Func<string> dtoRequestV5021ExtractWordBookmarkssearchContent = null)
+        public IBodyWorkflowAction<DtoResponseV5021ExtractWordBookmarks> ExtractWordBookmarks(Expression<Func<string>> dtoRequestV5021ExtractWordBookmarksfile, Expression<Func<bool>> dtoRequestV5021ExtractWordBookmarksincludeHiddenBookmarks = null, Expression<Func<string>> dtoRequestV5021ExtractWordBookmarkssearchName = null, Expression<Func<string>> dtoRequestV5021ExtractWordBookmarkssearchContent = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV5021ExtractWordBookmarks> __BuildExtractWordBookmarks(WorkflowExpression<string> dtoRequestV5021ExtractWordBookmarksfile, WorkflowExpression<bool> dtoRequestV5021ExtractWordBookmarksincludeHiddenBookmarks = null, WorkflowExpression<string> dtoRequestV5021ExtractWordBookmarkssearchName = null, WorkflowExpression<string> dtoRequestV5021ExtractWordBookmarkssearchContent = null)
-        {
-            WorkflowExpression.Validate(dtoRequestV5021ExtractWordBookmarksfile, nameof(dtoRequestV5021ExtractWordBookmarksfile), required: true);
-            WorkflowExpression.Validate(dtoRequestV5021ExtractWordBookmarksincludeHiddenBookmarks, nameof(dtoRequestV5021ExtractWordBookmarksincludeHiddenBookmarks), required: false);
-            WorkflowExpression.Validate(dtoRequestV5021ExtractWordBookmarkssearchName, nameof(dtoRequestV5021ExtractWordBookmarkssearchName), required: false);
-            WorkflowExpression.Validate(dtoRequestV5021ExtractWordBookmarkssearchContent, nameof(dtoRequestV5021ExtractWordBookmarkssearchContent), required: false);
+            var __workflow_dtoRequestV5021ExtractWordBookmarksfile = dtoRequestV5021ExtractWordBookmarksfile == null ? null : WorkflowExpression.Compile(dtoRequestV5021ExtractWordBookmarksfile);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5021ExtractWordBookmarksfile, nameof(dtoRequestV5021ExtractWordBookmarksfile), required: true);
+            var __workflow_dtoRequestV5021ExtractWordBookmarksincludeHiddenBookmarks = dtoRequestV5021ExtractWordBookmarksincludeHiddenBookmarks == null ? null : WorkflowExpression.Compile(dtoRequestV5021ExtractWordBookmarksincludeHiddenBookmarks);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5021ExtractWordBookmarksincludeHiddenBookmarks, nameof(dtoRequestV5021ExtractWordBookmarksincludeHiddenBookmarks), required: false);
+            var __workflow_dtoRequestV5021ExtractWordBookmarkssearchName = dtoRequestV5021ExtractWordBookmarkssearchName == null ? null : WorkflowExpression.Compile(dtoRequestV5021ExtractWordBookmarkssearchName);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5021ExtractWordBookmarkssearchName, nameof(dtoRequestV5021ExtractWordBookmarkssearchName), required: false);
+            var __workflow_dtoRequestV5021ExtractWordBookmarkssearchContent = dtoRequestV5021ExtractWordBookmarkssearchContent == null ? null : WorkflowExpression.Compile(dtoRequestV5021ExtractWordBookmarkssearchContent);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5021ExtractWordBookmarkssearchContent, nameof(dtoRequestV5021ExtractWordBookmarkssearchContent), required: false);
             return new DeferredBodyAction<DtoResponseV5021ExtractWordBookmarks>(() =>
             {
                 var apiCallPath = "/V5021_ExtractWordBookmarks";
@@ -2435,12 +2288,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV5021ExtractWordBookmarks = new JObject();
                 var dtoRequestV5021ExtractWordBookmarkspropCount = 0;
                 dtoRequestV5021ExtractWordBookmarkspropCount++;
-                dtoRequestV5021ExtractWordBookmarks["file"] = ExpressionConverter.ConvertO(dtoRequestV5021ExtractWordBookmarksfile);
-                if (dtoRequestV5021ExtractWordBookmarksincludeHiddenBookmarks != null)
+                dtoRequestV5021ExtractWordBookmarks["file"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5021ExtractWordBookmarksfile);
+                if (__workflow_dtoRequestV5021ExtractWordBookmarksincludeHiddenBookmarks != null)
                 {
-                    if (dtoRequestV5021ExtractWordBookmarksincludeHiddenBookmarks != null)
+                    if (__workflow_dtoRequestV5021ExtractWordBookmarksincludeHiddenBookmarks != null)
                     {
-                        dtoRequestV5021ExtractWordBookmarks["includeHiddenBookmarks"] = ExpressionConverter.ConvertO(dtoRequestV5021ExtractWordBookmarksincludeHiddenBookmarks);
+                        dtoRequestV5021ExtractWordBookmarks["includeHiddenBookmarks"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5021ExtractWordBookmarksincludeHiddenBookmarks);
                         dtoRequestV5021ExtractWordBookmarkspropCount++;
                     }
 
@@ -2452,15 +2305,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                     dtoRequestV5021ExtractWordBookmarkspropCount++;
                 }
 
-                if (dtoRequestV5021ExtractWordBookmarkssearchName != null)
+                if (__workflow_dtoRequestV5021ExtractWordBookmarkssearchName != null)
                 {
-                    dtoRequestV5021ExtractWordBookmarks["searchKey"] = ExpressionConverter.ConvertO(dtoRequestV5021ExtractWordBookmarkssearchName);
+                    dtoRequestV5021ExtractWordBookmarks["searchKey"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5021ExtractWordBookmarkssearchName);
                     dtoRequestV5021ExtractWordBookmarkspropCount++;
                 }
 
-                if (dtoRequestV5021ExtractWordBookmarkssearchContent != null)
+                if (__workflow_dtoRequestV5021ExtractWordBookmarkssearchContent != null)
                 {
-                    dtoRequestV5021ExtractWordBookmarks["searchValue"] = ExpressionConverter.ConvertO(dtoRequestV5021ExtractWordBookmarkssearchContent);
+                    dtoRequestV5021ExtractWordBookmarks["searchValue"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5021ExtractWordBookmarkssearchContent);
                     dtoRequestV5021ExtractWordBookmarkspropCount++;
                 }
 
@@ -2474,18 +2327,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildExtractWordContentControls))]
-        public IBodyWorkflowAction<DtoResponseV5120ExtractWordContentControls> ExtractWordContentControls([WorkflowExpression] Func<string> dtoRequestV5120ExtractWordContentControlsfile, [WorkflowExpression] Func<string> dtoRequestV5120ExtractWordContentControlssearchTag = null, [WorkflowExpression] Func<string> dtoRequestV5120ExtractWordContentControlssearchTitle = null)
+        public IBodyWorkflowAction<DtoResponseV5120ExtractWordContentControls> ExtractWordContentControls(Expression<Func<string>> dtoRequestV5120ExtractWordContentControlsfile, Expression<Func<string>> dtoRequestV5120ExtractWordContentControlssearchTag = null, Expression<Func<string>> dtoRequestV5120ExtractWordContentControlssearchTitle = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV5120ExtractWordContentControls> __BuildExtractWordContentControls(WorkflowExpression<string> dtoRequestV5120ExtractWordContentControlsfile, WorkflowExpression<string> dtoRequestV5120ExtractWordContentControlssearchTag = null, WorkflowExpression<string> dtoRequestV5120ExtractWordContentControlssearchTitle = null)
-        {
-            WorkflowExpression.Validate(dtoRequestV5120ExtractWordContentControlsfile, nameof(dtoRequestV5120ExtractWordContentControlsfile), required: true);
-            WorkflowExpression.Validate(dtoRequestV5120ExtractWordContentControlssearchTag, nameof(dtoRequestV5120ExtractWordContentControlssearchTag), required: false);
-            WorkflowExpression.Validate(dtoRequestV5120ExtractWordContentControlssearchTitle, nameof(dtoRequestV5120ExtractWordContentControlssearchTitle), required: false);
+            var __workflow_dtoRequestV5120ExtractWordContentControlsfile = dtoRequestV5120ExtractWordContentControlsfile == null ? null : WorkflowExpression.Compile(dtoRequestV5120ExtractWordContentControlsfile);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5120ExtractWordContentControlsfile, nameof(dtoRequestV5120ExtractWordContentControlsfile), required: true);
+            var __workflow_dtoRequestV5120ExtractWordContentControlssearchTag = dtoRequestV5120ExtractWordContentControlssearchTag == null ? null : WorkflowExpression.Compile(dtoRequestV5120ExtractWordContentControlssearchTag);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5120ExtractWordContentControlssearchTag, nameof(dtoRequestV5120ExtractWordContentControlssearchTag), required: false);
+            var __workflow_dtoRequestV5120ExtractWordContentControlssearchTitle = dtoRequestV5120ExtractWordContentControlssearchTitle == null ? null : WorkflowExpression.Compile(dtoRequestV5120ExtractWordContentControlssearchTitle);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5120ExtractWordContentControlssearchTitle, nameof(dtoRequestV5120ExtractWordContentControlssearchTitle), required: false);
             return new DeferredBodyAction<DtoResponseV5120ExtractWordContentControls>(() =>
             {
                 var apiCallPath = "/V5120_ExtractWordContentControls";
@@ -2494,16 +2343,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV5120ExtractWordContentControls = new JObject();
                 var dtoRequestV5120ExtractWordContentControlspropCount = 0;
                 dtoRequestV5120ExtractWordContentControlspropCount++;
-                dtoRequestV5120ExtractWordContentControls["file"] = ExpressionConverter.ConvertO(dtoRequestV5120ExtractWordContentControlsfile);
-                if (dtoRequestV5120ExtractWordContentControlssearchTag != null)
+                dtoRequestV5120ExtractWordContentControls["file"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5120ExtractWordContentControlsfile);
+                if (__workflow_dtoRequestV5120ExtractWordContentControlssearchTag != null)
                 {
-                    dtoRequestV5120ExtractWordContentControls["searchTag"] = ExpressionConverter.ConvertO(dtoRequestV5120ExtractWordContentControlssearchTag);
+                    dtoRequestV5120ExtractWordContentControls["searchTag"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5120ExtractWordContentControlssearchTag);
                     dtoRequestV5120ExtractWordContentControlspropCount++;
                 }
 
-                if (dtoRequestV5120ExtractWordContentControlssearchTitle != null)
+                if (__workflow_dtoRequestV5120ExtractWordContentControlssearchTitle != null)
                 {
-                    dtoRequestV5120ExtractWordContentControls["searchTitle"] = ExpressionConverter.ConvertO(dtoRequestV5120ExtractWordContentControlssearchTitle);
+                    dtoRequestV5120ExtractWordContentControls["searchTitle"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5120ExtractWordContentControlssearchTitle);
                     dtoRequestV5120ExtractWordContentControlspropCount++;
                 }
 
@@ -2517,16 +2366,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildIbanData))]
-        public IBodyWorkflowAction<DtoResponseV2021IbanData> IbanData([WorkflowExpression] Func<string> dtoRequestV2021IbanDataiBAN)
+        public IBodyWorkflowAction<DtoResponseV2021IbanData> IbanData(Expression<Func<string>> dtoRequestV2021IbanDataiBAN)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV2021IbanData> __BuildIbanData(WorkflowExpression<string> dtoRequestV2021IbanDataiBAN)
-        {
-            WorkflowExpression.Validate(dtoRequestV2021IbanDataiBAN, nameof(dtoRequestV2021IbanDataiBAN), required: true);
+            var __workflow_dtoRequestV2021IbanDataiBAN = dtoRequestV2021IbanDataiBAN == null ? null : WorkflowExpression.Compile(dtoRequestV2021IbanDataiBAN);
+            WorkflowExpression.Validate(__workflow_dtoRequestV2021IbanDataiBAN, nameof(dtoRequestV2021IbanDataiBAN), required: true);
             return new DeferredBodyAction<DtoResponseV2021IbanData>(() =>
             {
                 var apiCallPath = "/V2021_IbanData";
@@ -2535,7 +2378,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV2021IbanData = new JObject();
                 var dtoRequestV2021IbanDatapropCount = 0;
                 dtoRequestV2021IbanDatapropCount++;
-                dtoRequestV2021IbanData["iban"] = ExpressionConverter.ConvertO(dtoRequestV2021IbanDataiBAN);
+                dtoRequestV2021IbanData["iban"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV2021IbanDataiBAN);
                 if (dtoRequestV2021IbanDatapropCount > 0)
                 {
                     callPayload.Body = dtoRequestV2021IbanData;
@@ -2546,16 +2389,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildImageMetaData))]
-        public IBodyWorkflowAction<DtoResponseV3071ImageMetaData> ImageMetaData([WorkflowExpression] Func<string> dtoRequestV3071ImageMetaDataimageFile)
+        public IBodyWorkflowAction<DtoResponseV3071ImageMetaData> ImageMetaData(Expression<Func<string>> dtoRequestV3071ImageMetaDataimageFile)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV3071ImageMetaData> __BuildImageMetaData(WorkflowExpression<string> dtoRequestV3071ImageMetaDataimageFile)
-        {
-            WorkflowExpression.Validate(dtoRequestV3071ImageMetaDataimageFile, nameof(dtoRequestV3071ImageMetaDataimageFile), required: true);
+            var __workflow_dtoRequestV3071ImageMetaDataimageFile = dtoRequestV3071ImageMetaDataimageFile == null ? null : WorkflowExpression.Compile(dtoRequestV3071ImageMetaDataimageFile);
+            WorkflowExpression.Validate(__workflow_dtoRequestV3071ImageMetaDataimageFile, nameof(dtoRequestV3071ImageMetaDataimageFile), required: true);
             return new DeferredBodyAction<DtoResponseV3071ImageMetaData>(() =>
             {
                 var apiCallPath = "/V3071_ImageMetaData";
@@ -2564,7 +2401,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV3071ImageMetaData = new JObject();
                 var dtoRequestV3071ImageMetaDatapropCount = 0;
                 dtoRequestV3071ImageMetaDatapropCount++;
-                dtoRequestV3071ImageMetaData["file"] = ExpressionConverter.ConvertO(dtoRequestV3071ImageMetaDataimageFile);
+                dtoRequestV3071ImageMetaData["file"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV3071ImageMetaDataimageFile);
                 if (dtoRequestV3071ImageMetaDatapropCount > 0)
                 {
                     callPayload.Body = dtoRequestV3071ImageMetaData;
@@ -2575,22 +2412,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildInsertImageToPowerPoint))]
-        public IBodyWorkflowAction<DtoResponseFile> InsertImageToPowerPoint([WorkflowExpression] Func<string> dtoRequestV9020InsertImagePowerPointexistingFileContent, [WorkflowExpression] Func<string> dtoRequestV9020InsertImagePowerPointplaceholderImage, [WorkflowExpression] Func<string> dtoRequestV9020InsertImagePowerPointplaceholderName = null, [WorkflowExpression] Func<int> dtoRequestV9020InsertImagePowerPointmaximumImageWidth = null, [WorkflowExpression] Func<int> dtoRequestV9020InsertImagePowerPointmaximumImageHeight = null, [WorkflowExpression] Func<string> dtoRequestV9020InsertImagePowerPointplaceholderPrefix = null, [WorkflowExpression] Func<string> dtoRequestV9020InsertImagePowerPointplaceholderSuffix = null)
+        public IBodyWorkflowAction<DtoResponseFile> InsertImageToPowerPoint(Expression<Func<string>> dtoRequestV9020InsertImagePowerPointexistingFileContent, Expression<Func<string>> dtoRequestV9020InsertImagePowerPointplaceholderImage, Expression<Func<string>> dtoRequestV9020InsertImagePowerPointplaceholderName = null, Expression<Func<int>> dtoRequestV9020InsertImagePowerPointmaximumImageWidth = null, Expression<Func<int>> dtoRequestV9020InsertImagePowerPointmaximumImageHeight = null, Expression<Func<string>> dtoRequestV9020InsertImagePowerPointplaceholderPrefix = null, Expression<Func<string>> dtoRequestV9020InsertImagePowerPointplaceholderSuffix = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseFile> __BuildInsertImageToPowerPoint(WorkflowExpression<string> dtoRequestV9020InsertImagePowerPointexistingFileContent, WorkflowExpression<string> dtoRequestV9020InsertImagePowerPointplaceholderImage, WorkflowExpression<string> dtoRequestV9020InsertImagePowerPointplaceholderName = null, WorkflowExpression<int> dtoRequestV9020InsertImagePowerPointmaximumImageWidth = null, WorkflowExpression<int> dtoRequestV9020InsertImagePowerPointmaximumImageHeight = null, WorkflowExpression<string> dtoRequestV9020InsertImagePowerPointplaceholderPrefix = null, WorkflowExpression<string> dtoRequestV9020InsertImagePowerPointplaceholderSuffix = null)
-        {
-            WorkflowExpression.Validate(dtoRequestV9020InsertImagePowerPointexistingFileContent, nameof(dtoRequestV9020InsertImagePowerPointexistingFileContent), required: true);
-            WorkflowExpression.Validate(dtoRequestV9020InsertImagePowerPointplaceholderImage, nameof(dtoRequestV9020InsertImagePowerPointplaceholderImage), required: true);
-            WorkflowExpression.Validate(dtoRequestV9020InsertImagePowerPointplaceholderName, nameof(dtoRequestV9020InsertImagePowerPointplaceholderName), required: false);
-            WorkflowExpression.Validate(dtoRequestV9020InsertImagePowerPointmaximumImageWidth, nameof(dtoRequestV9020InsertImagePowerPointmaximumImageWidth), required: false);
-            WorkflowExpression.Validate(dtoRequestV9020InsertImagePowerPointmaximumImageHeight, nameof(dtoRequestV9020InsertImagePowerPointmaximumImageHeight), required: false);
-            WorkflowExpression.Validate(dtoRequestV9020InsertImagePowerPointplaceholderPrefix, nameof(dtoRequestV9020InsertImagePowerPointplaceholderPrefix), required: false);
-            WorkflowExpression.Validate(dtoRequestV9020InsertImagePowerPointplaceholderSuffix, nameof(dtoRequestV9020InsertImagePowerPointplaceholderSuffix), required: false);
+            var __workflow_dtoRequestV9020InsertImagePowerPointexistingFileContent = dtoRequestV9020InsertImagePowerPointexistingFileContent == null ? null : WorkflowExpression.Compile(dtoRequestV9020InsertImagePowerPointexistingFileContent);
+            WorkflowExpression.Validate(__workflow_dtoRequestV9020InsertImagePowerPointexistingFileContent, nameof(dtoRequestV9020InsertImagePowerPointexistingFileContent), required: true);
+            var __workflow_dtoRequestV9020InsertImagePowerPointplaceholderImage = dtoRequestV9020InsertImagePowerPointplaceholderImage == null ? null : WorkflowExpression.Compile(dtoRequestV9020InsertImagePowerPointplaceholderImage);
+            WorkflowExpression.Validate(__workflow_dtoRequestV9020InsertImagePowerPointplaceholderImage, nameof(dtoRequestV9020InsertImagePowerPointplaceholderImage), required: true);
+            var __workflow_dtoRequestV9020InsertImagePowerPointplaceholderName = dtoRequestV9020InsertImagePowerPointplaceholderName == null ? null : WorkflowExpression.Compile(dtoRequestV9020InsertImagePowerPointplaceholderName);
+            WorkflowExpression.Validate(__workflow_dtoRequestV9020InsertImagePowerPointplaceholderName, nameof(dtoRequestV9020InsertImagePowerPointplaceholderName), required: false);
+            var __workflow_dtoRequestV9020InsertImagePowerPointmaximumImageWidth = dtoRequestV9020InsertImagePowerPointmaximumImageWidth == null ? null : WorkflowExpression.Compile(dtoRequestV9020InsertImagePowerPointmaximumImageWidth);
+            WorkflowExpression.Validate(__workflow_dtoRequestV9020InsertImagePowerPointmaximumImageWidth, nameof(dtoRequestV9020InsertImagePowerPointmaximumImageWidth), required: false);
+            var __workflow_dtoRequestV9020InsertImagePowerPointmaximumImageHeight = dtoRequestV9020InsertImagePowerPointmaximumImageHeight == null ? null : WorkflowExpression.Compile(dtoRequestV9020InsertImagePowerPointmaximumImageHeight);
+            WorkflowExpression.Validate(__workflow_dtoRequestV9020InsertImagePowerPointmaximumImageHeight, nameof(dtoRequestV9020InsertImagePowerPointmaximumImageHeight), required: false);
+            var __workflow_dtoRequestV9020InsertImagePowerPointplaceholderPrefix = dtoRequestV9020InsertImagePowerPointplaceholderPrefix == null ? null : WorkflowExpression.Compile(dtoRequestV9020InsertImagePowerPointplaceholderPrefix);
+            WorkflowExpression.Validate(__workflow_dtoRequestV9020InsertImagePowerPointplaceholderPrefix, nameof(dtoRequestV9020InsertImagePowerPointplaceholderPrefix), required: false);
+            var __workflow_dtoRequestV9020InsertImagePowerPointplaceholderSuffix = dtoRequestV9020InsertImagePowerPointplaceholderSuffix == null ? null : WorkflowExpression.Compile(dtoRequestV9020InsertImagePowerPointplaceholderSuffix);
+            WorkflowExpression.Validate(__workflow_dtoRequestV9020InsertImagePowerPointplaceholderSuffix, nameof(dtoRequestV9020InsertImagePowerPointplaceholderSuffix), required: false);
             return new DeferredBodyAction<DtoResponseFile>(() =>
             {
                 var apiCallPath = "/V9020_InsertImageToPowerPoint";
@@ -2599,36 +2436,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV9020InsertImagePowerPoint = new JObject();
                 var dtoRequestV9020InsertImagePowerPointpropCount = 0;
                 dtoRequestV9020InsertImagePowerPointpropCount++;
-                dtoRequestV9020InsertImagePowerPoint["existingFileContent"] = ExpressionConverter.ConvertO(dtoRequestV9020InsertImagePowerPointexistingFileContent);
-                if (dtoRequestV9020InsertImagePowerPointplaceholderName != null)
+                dtoRequestV9020InsertImagePowerPoint["existingFileContent"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV9020InsertImagePowerPointexistingFileContent);
+                if (__workflow_dtoRequestV9020InsertImagePowerPointplaceholderName != null)
                 {
-                    dtoRequestV9020InsertImagePowerPoint["placeholderName"] = ExpressionConverter.ConvertO(dtoRequestV9020InsertImagePowerPointplaceholderName);
+                    dtoRequestV9020InsertImagePowerPoint["placeholderName"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV9020InsertImagePowerPointplaceholderName);
                     dtoRequestV9020InsertImagePowerPointpropCount++;
                 }
 
                 dtoRequestV9020InsertImagePowerPointpropCount++;
-                dtoRequestV9020InsertImagePowerPoint["placeholderImage"] = ExpressionConverter.ConvertO(dtoRequestV9020InsertImagePowerPointplaceholderImage);
-                if (dtoRequestV9020InsertImagePowerPointmaximumImageWidth != null)
+                dtoRequestV9020InsertImagePowerPoint["placeholderImage"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV9020InsertImagePowerPointplaceholderImage);
+                if (__workflow_dtoRequestV9020InsertImagePowerPointmaximumImageWidth != null)
                 {
-                    dtoRequestV9020InsertImagePowerPoint["width"] = ExpressionConverter.ConvertO(dtoRequestV9020InsertImagePowerPointmaximumImageWidth);
+                    dtoRequestV9020InsertImagePowerPoint["width"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV9020InsertImagePowerPointmaximumImageWidth);
                     dtoRequestV9020InsertImagePowerPointpropCount++;
                 }
 
-                if (dtoRequestV9020InsertImagePowerPointmaximumImageHeight != null)
+                if (__workflow_dtoRequestV9020InsertImagePowerPointmaximumImageHeight != null)
                 {
-                    dtoRequestV9020InsertImagePowerPoint["height"] = ExpressionConverter.ConvertO(dtoRequestV9020InsertImagePowerPointmaximumImageHeight);
+                    dtoRequestV9020InsertImagePowerPoint["height"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV9020InsertImagePowerPointmaximumImageHeight);
                     dtoRequestV9020InsertImagePowerPointpropCount++;
                 }
 
-                if (dtoRequestV9020InsertImagePowerPointplaceholderPrefix != null)
+                if (__workflow_dtoRequestV9020InsertImagePowerPointplaceholderPrefix != null)
                 {
-                    dtoRequestV9020InsertImagePowerPoint["placeholderPrefix"] = ExpressionConverter.ConvertO(dtoRequestV9020InsertImagePowerPointplaceholderPrefix);
+                    dtoRequestV9020InsertImagePowerPoint["placeholderPrefix"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV9020InsertImagePowerPointplaceholderPrefix);
                     dtoRequestV9020InsertImagePowerPointpropCount++;
                 }
 
-                if (dtoRequestV9020InsertImagePowerPointplaceholderSuffix != null)
+                if (__workflow_dtoRequestV9020InsertImagePowerPointplaceholderSuffix != null)
                 {
-                    dtoRequestV9020InsertImagePowerPoint["placeholderSuffix"] = ExpressionConverter.ConvertO(dtoRequestV9020InsertImagePowerPointplaceholderSuffix);
+                    dtoRequestV9020InsertImagePowerPoint["placeholderSuffix"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV9020InsertImagePowerPointplaceholderSuffix);
                     dtoRequestV9020InsertImagePowerPointpropCount++;
                 }
 
@@ -2642,22 +2479,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildInsertImageToWord))]
-        public IBodyWorkflowAction<DtoResponseFile> InsertImageToWord([WorkflowExpression] Func<string> dtoRequestV5081InsertImageToWordexistingFileContent, [WorkflowExpression] Func<string> dtoRequestV5081InsertImageToWordimage, [WorkflowExpression] Func<string> dtoRequestV5081InsertImageToWordplaceholderName = null, [WorkflowExpression] Func<int> dtoRequestV5081InsertImageToWordmaximumImageWidth = null, [WorkflowExpression] Func<int> dtoRequestV5081InsertImageToWordmaximumImageHeight = null, [WorkflowExpression] Func<string> dtoRequestV5081InsertImageToWordplaceholderPrefix = null, [WorkflowExpression] Func<string> dtoRequestV5081InsertImageToWordplaceholderSuffix = null)
+        public IBodyWorkflowAction<DtoResponseFile> InsertImageToWord(Expression<Func<string>> dtoRequestV5081InsertImageToWordexistingFileContent, Expression<Func<string>> dtoRequestV5081InsertImageToWordimage, Expression<Func<string>> dtoRequestV5081InsertImageToWordplaceholderName = null, Expression<Func<int>> dtoRequestV5081InsertImageToWordmaximumImageWidth = null, Expression<Func<int>> dtoRequestV5081InsertImageToWordmaximumImageHeight = null, Expression<Func<string>> dtoRequestV5081InsertImageToWordplaceholderPrefix = null, Expression<Func<string>> dtoRequestV5081InsertImageToWordplaceholderSuffix = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseFile> __BuildInsertImageToWord(WorkflowExpression<string> dtoRequestV5081InsertImageToWordexistingFileContent, WorkflowExpression<string> dtoRequestV5081InsertImageToWordimage, WorkflowExpression<string> dtoRequestV5081InsertImageToWordplaceholderName = null, WorkflowExpression<int> dtoRequestV5081InsertImageToWordmaximumImageWidth = null, WorkflowExpression<int> dtoRequestV5081InsertImageToWordmaximumImageHeight = null, WorkflowExpression<string> dtoRequestV5081InsertImageToWordplaceholderPrefix = null, WorkflowExpression<string> dtoRequestV5081InsertImageToWordplaceholderSuffix = null)
-        {
-            WorkflowExpression.Validate(dtoRequestV5081InsertImageToWordexistingFileContent, nameof(dtoRequestV5081InsertImageToWordexistingFileContent), required: true);
-            WorkflowExpression.Validate(dtoRequestV5081InsertImageToWordimage, nameof(dtoRequestV5081InsertImageToWordimage), required: true);
-            WorkflowExpression.Validate(dtoRequestV5081InsertImageToWordplaceholderName, nameof(dtoRequestV5081InsertImageToWordplaceholderName), required: false);
-            WorkflowExpression.Validate(dtoRequestV5081InsertImageToWordmaximumImageWidth, nameof(dtoRequestV5081InsertImageToWordmaximumImageWidth), required: false);
-            WorkflowExpression.Validate(dtoRequestV5081InsertImageToWordmaximumImageHeight, nameof(dtoRequestV5081InsertImageToWordmaximumImageHeight), required: false);
-            WorkflowExpression.Validate(dtoRequestV5081InsertImageToWordplaceholderPrefix, nameof(dtoRequestV5081InsertImageToWordplaceholderPrefix), required: false);
-            WorkflowExpression.Validate(dtoRequestV5081InsertImageToWordplaceholderSuffix, nameof(dtoRequestV5081InsertImageToWordplaceholderSuffix), required: false);
+            var __workflow_dtoRequestV5081InsertImageToWordexistingFileContent = dtoRequestV5081InsertImageToWordexistingFileContent == null ? null : WorkflowExpression.Compile(dtoRequestV5081InsertImageToWordexistingFileContent);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5081InsertImageToWordexistingFileContent, nameof(dtoRequestV5081InsertImageToWordexistingFileContent), required: true);
+            var __workflow_dtoRequestV5081InsertImageToWordimage = dtoRequestV5081InsertImageToWordimage == null ? null : WorkflowExpression.Compile(dtoRequestV5081InsertImageToWordimage);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5081InsertImageToWordimage, nameof(dtoRequestV5081InsertImageToWordimage), required: true);
+            var __workflow_dtoRequestV5081InsertImageToWordplaceholderName = dtoRequestV5081InsertImageToWordplaceholderName == null ? null : WorkflowExpression.Compile(dtoRequestV5081InsertImageToWordplaceholderName);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5081InsertImageToWordplaceholderName, nameof(dtoRequestV5081InsertImageToWordplaceholderName), required: false);
+            var __workflow_dtoRequestV5081InsertImageToWordmaximumImageWidth = dtoRequestV5081InsertImageToWordmaximumImageWidth == null ? null : WorkflowExpression.Compile(dtoRequestV5081InsertImageToWordmaximumImageWidth);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5081InsertImageToWordmaximumImageWidth, nameof(dtoRequestV5081InsertImageToWordmaximumImageWidth), required: false);
+            var __workflow_dtoRequestV5081InsertImageToWordmaximumImageHeight = dtoRequestV5081InsertImageToWordmaximumImageHeight == null ? null : WorkflowExpression.Compile(dtoRequestV5081InsertImageToWordmaximumImageHeight);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5081InsertImageToWordmaximumImageHeight, nameof(dtoRequestV5081InsertImageToWordmaximumImageHeight), required: false);
+            var __workflow_dtoRequestV5081InsertImageToWordplaceholderPrefix = dtoRequestV5081InsertImageToWordplaceholderPrefix == null ? null : WorkflowExpression.Compile(dtoRequestV5081InsertImageToWordplaceholderPrefix);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5081InsertImageToWordplaceholderPrefix, nameof(dtoRequestV5081InsertImageToWordplaceholderPrefix), required: false);
+            var __workflow_dtoRequestV5081InsertImageToWordplaceholderSuffix = dtoRequestV5081InsertImageToWordplaceholderSuffix == null ? null : WorkflowExpression.Compile(dtoRequestV5081InsertImageToWordplaceholderSuffix);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5081InsertImageToWordplaceholderSuffix, nameof(dtoRequestV5081InsertImageToWordplaceholderSuffix), required: false);
             return new DeferredBodyAction<DtoResponseFile>(() =>
             {
                 var apiCallPath = "/V5081_InsertImageToWord";
@@ -2666,36 +2503,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV5081InsertImageToWord = new JObject();
                 var dtoRequestV5081InsertImageToWordpropCount = 0;
                 dtoRequestV5081InsertImageToWordpropCount++;
-                dtoRequestV5081InsertImageToWord["existingFileContent"] = ExpressionConverter.ConvertO(dtoRequestV5081InsertImageToWordexistingFileContent);
-                if (dtoRequestV5081InsertImageToWordplaceholderName != null)
+                dtoRequestV5081InsertImageToWord["existingFileContent"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5081InsertImageToWordexistingFileContent);
+                if (__workflow_dtoRequestV5081InsertImageToWordplaceholderName != null)
                 {
-                    dtoRequestV5081InsertImageToWord["placeholderName"] = ExpressionConverter.ConvertO(dtoRequestV5081InsertImageToWordplaceholderName);
+                    dtoRequestV5081InsertImageToWord["placeholderName"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5081InsertImageToWordplaceholderName);
                     dtoRequestV5081InsertImageToWordpropCount++;
                 }
 
                 dtoRequestV5081InsertImageToWordpropCount++;
-                dtoRequestV5081InsertImageToWord["placeholderImage"] = ExpressionConverter.ConvertO(dtoRequestV5081InsertImageToWordimage);
-                if (dtoRequestV5081InsertImageToWordmaximumImageWidth != null)
+                dtoRequestV5081InsertImageToWord["placeholderImage"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5081InsertImageToWordimage);
+                if (__workflow_dtoRequestV5081InsertImageToWordmaximumImageWidth != null)
                 {
-                    dtoRequestV5081InsertImageToWord["maxWidth"] = ExpressionConverter.ConvertO(dtoRequestV5081InsertImageToWordmaximumImageWidth);
+                    dtoRequestV5081InsertImageToWord["maxWidth"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5081InsertImageToWordmaximumImageWidth);
                     dtoRequestV5081InsertImageToWordpropCount++;
                 }
 
-                if (dtoRequestV5081InsertImageToWordmaximumImageHeight != null)
+                if (__workflow_dtoRequestV5081InsertImageToWordmaximumImageHeight != null)
                 {
-                    dtoRequestV5081InsertImageToWord["maxHeight"] = ExpressionConverter.ConvertO(dtoRequestV5081InsertImageToWordmaximumImageHeight);
+                    dtoRequestV5081InsertImageToWord["maxHeight"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5081InsertImageToWordmaximumImageHeight);
                     dtoRequestV5081InsertImageToWordpropCount++;
                 }
 
-                if (dtoRequestV5081InsertImageToWordplaceholderPrefix != null)
+                if (__workflow_dtoRequestV5081InsertImageToWordplaceholderPrefix != null)
                 {
-                    dtoRequestV5081InsertImageToWord["placeholderPrefix"] = ExpressionConverter.ConvertO(dtoRequestV5081InsertImageToWordplaceholderPrefix);
+                    dtoRequestV5081InsertImageToWord["placeholderPrefix"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5081InsertImageToWordplaceholderPrefix);
                     dtoRequestV5081InsertImageToWordpropCount++;
                 }
 
-                if (dtoRequestV5081InsertImageToWordplaceholderSuffix != null)
+                if (__workflow_dtoRequestV5081InsertImageToWordplaceholderSuffix != null)
                 {
-                    dtoRequestV5081InsertImageToWord["placeholderSuffix"] = ExpressionConverter.ConvertO(dtoRequestV5081InsertImageToWordplaceholderSuffix);
+                    dtoRequestV5081InsertImageToWord["placeholderSuffix"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5081InsertImageToWordplaceholderSuffix);
                     dtoRequestV5081InsertImageToWordpropCount++;
                 }
 
@@ -2709,19 +2546,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildInsertMultipleTextSectionsToWord))]
-        public IBodyWorkflowAction<DtoResponseV5110InsertMultipleTextSectionsToWord> InsertMultipleTextSectionsToWord([WorkflowExpression] Func<string> dtoRequestV5110InsertMultipleTextSectionsToWordexistingFileContent, [WorkflowExpression] Func<InsertSection[]> dtoRequestV5110InsertMultipleTextSectionsToWordplaceholder, [WorkflowExpression] Func<string> dtoRequestV5110InsertMultipleTextSectionsToWordplaceholderPrefix = null, [WorkflowExpression] Func<string> dtoRequestV5110InsertMultipleTextSectionsToWordplaceholderSuffix = null)
+        public IBodyWorkflowAction<DtoResponseV5110InsertMultipleTextSectionsToWord> InsertMultipleTextSectionsToWord(Expression<Func<string>> dtoRequestV5110InsertMultipleTextSectionsToWordexistingFileContent, Expression<Func<InsertSection[]>> dtoRequestV5110InsertMultipleTextSectionsToWordplaceholder, Expression<Func<string>> dtoRequestV5110InsertMultipleTextSectionsToWordplaceholderPrefix = null, Expression<Func<string>> dtoRequestV5110InsertMultipleTextSectionsToWordplaceholderSuffix = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV5110InsertMultipleTextSectionsToWord> __BuildInsertMultipleTextSectionsToWord(WorkflowExpression<string> dtoRequestV5110InsertMultipleTextSectionsToWordexistingFileContent, WorkflowExpression<InsertSection[]> dtoRequestV5110InsertMultipleTextSectionsToWordplaceholder, WorkflowExpression<string> dtoRequestV5110InsertMultipleTextSectionsToWordplaceholderPrefix = null, WorkflowExpression<string> dtoRequestV5110InsertMultipleTextSectionsToWordplaceholderSuffix = null)
-        {
-            WorkflowExpression.Validate(dtoRequestV5110InsertMultipleTextSectionsToWordexistingFileContent, nameof(dtoRequestV5110InsertMultipleTextSectionsToWordexistingFileContent), required: true);
-            WorkflowExpression.Validate(dtoRequestV5110InsertMultipleTextSectionsToWordplaceholder, nameof(dtoRequestV5110InsertMultipleTextSectionsToWordplaceholder), required: true);
-            WorkflowExpression.Validate(dtoRequestV5110InsertMultipleTextSectionsToWordplaceholderPrefix, nameof(dtoRequestV5110InsertMultipleTextSectionsToWordplaceholderPrefix), required: false);
-            WorkflowExpression.Validate(dtoRequestV5110InsertMultipleTextSectionsToWordplaceholderSuffix, nameof(dtoRequestV5110InsertMultipleTextSectionsToWordplaceholderSuffix), required: false);
+            var __workflow_dtoRequestV5110InsertMultipleTextSectionsToWordexistingFileContent = dtoRequestV5110InsertMultipleTextSectionsToWordexistingFileContent == null ? null : WorkflowExpression.Compile(dtoRequestV5110InsertMultipleTextSectionsToWordexistingFileContent);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5110InsertMultipleTextSectionsToWordexistingFileContent, nameof(dtoRequestV5110InsertMultipleTextSectionsToWordexistingFileContent), required: true);
+            var __workflow_dtoRequestV5110InsertMultipleTextSectionsToWordplaceholder = dtoRequestV5110InsertMultipleTextSectionsToWordplaceholder == null ? null : WorkflowExpression.Compile(dtoRequestV5110InsertMultipleTextSectionsToWordplaceholder);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5110InsertMultipleTextSectionsToWordplaceholder, nameof(dtoRequestV5110InsertMultipleTextSectionsToWordplaceholder), required: true);
+            var __workflow_dtoRequestV5110InsertMultipleTextSectionsToWordplaceholderPrefix = dtoRequestV5110InsertMultipleTextSectionsToWordplaceholderPrefix == null ? null : WorkflowExpression.Compile(dtoRequestV5110InsertMultipleTextSectionsToWordplaceholderPrefix);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5110InsertMultipleTextSectionsToWordplaceholderPrefix, nameof(dtoRequestV5110InsertMultipleTextSectionsToWordplaceholderPrefix), required: false);
+            var __workflow_dtoRequestV5110InsertMultipleTextSectionsToWordplaceholderSuffix = dtoRequestV5110InsertMultipleTextSectionsToWordplaceholderSuffix == null ? null : WorkflowExpression.Compile(dtoRequestV5110InsertMultipleTextSectionsToWordplaceholderSuffix);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5110InsertMultipleTextSectionsToWordplaceholderSuffix, nameof(dtoRequestV5110InsertMultipleTextSectionsToWordplaceholderSuffix), required: false);
             return new DeferredBodyAction<DtoResponseV5110InsertMultipleTextSectionsToWord>(() =>
             {
                 var apiCallPath = "/V5110_InsertMultipleTextSectionsToWord";
@@ -2730,18 +2564,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV5110InsertMultipleTextSectionsToWord = new JObject();
                 var dtoRequestV5110InsertMultipleTextSectionsToWordpropCount = 0;
                 dtoRequestV5110InsertMultipleTextSectionsToWordpropCount++;
-                dtoRequestV5110InsertMultipleTextSectionsToWord["existingFileContent"] = ExpressionConverter.ConvertO(dtoRequestV5110InsertMultipleTextSectionsToWordexistingFileContent);
+                dtoRequestV5110InsertMultipleTextSectionsToWord["existingFileContent"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5110InsertMultipleTextSectionsToWordexistingFileContent);
                 dtoRequestV5110InsertMultipleTextSectionsToWordpropCount++;
-                dtoRequestV5110InsertMultipleTextSectionsToWord["insertSections"] = ExpressionConverter.ConvertO(dtoRequestV5110InsertMultipleTextSectionsToWordplaceholder);
-                if (dtoRequestV5110InsertMultipleTextSectionsToWordplaceholderPrefix != null)
+                dtoRequestV5110InsertMultipleTextSectionsToWord["insertSections"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5110InsertMultipleTextSectionsToWordplaceholder);
+                if (__workflow_dtoRequestV5110InsertMultipleTextSectionsToWordplaceholderPrefix != null)
                 {
-                    dtoRequestV5110InsertMultipleTextSectionsToWord["placeholderPrefix"] = ExpressionConverter.ConvertO(dtoRequestV5110InsertMultipleTextSectionsToWordplaceholderPrefix);
+                    dtoRequestV5110InsertMultipleTextSectionsToWord["placeholderPrefix"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5110InsertMultipleTextSectionsToWordplaceholderPrefix);
                     dtoRequestV5110InsertMultipleTextSectionsToWordpropCount++;
                 }
 
-                if (dtoRequestV5110InsertMultipleTextSectionsToWordplaceholderSuffix != null)
+                if (__workflow_dtoRequestV5110InsertMultipleTextSectionsToWordplaceholderSuffix != null)
                 {
-                    dtoRequestV5110InsertMultipleTextSectionsToWord["placeholderSuffix"] = ExpressionConverter.ConvertO(dtoRequestV5110InsertMultipleTextSectionsToWordplaceholderSuffix);
+                    dtoRequestV5110InsertMultipleTextSectionsToWord["placeholderSuffix"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5110InsertMultipleTextSectionsToWordplaceholderSuffix);
                     dtoRequestV5110InsertMultipleTextSectionsToWordpropCount++;
                 }
 
@@ -2755,22 +2589,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildInsertTableToWord))]
-        public IBodyWorkflowAction<DtoResponseV5091InsertTableToWord> InsertTableToWord([WorkflowExpression] Func<string> dtoRequestV5091InsertTableToWordexistingFileContent, [WorkflowExpression] Func<string> dtoRequestV5091InsertTableToWordplaceholderName = null, [WorkflowExpression] Func<string> dtoRequestV5091InsertTableToWordplaceholderTable = null, [WorkflowExpression] Func<string> dtoRequestV5091InsertTableToWordtableStyle = null, [WorkflowExpression] Func<bool> dtoRequestV5091InsertTableToWordshowHeaders = null, [WorkflowExpression] Func<string> dtoRequestV5091InsertTableToWordplaceholderPrefix = null, [WorkflowExpression] Func<string> dtoRequestV5091InsertTableToWordplaceholderSuffix = null)
+        public IBodyWorkflowAction<DtoResponseV5091InsertTableToWord> InsertTableToWord(Expression<Func<string>> dtoRequestV5091InsertTableToWordexistingFileContent, Expression<Func<string>> dtoRequestV5091InsertTableToWordplaceholderName = null, Expression<Func<string>> dtoRequestV5091InsertTableToWordplaceholderTable = null, Expression<Func<string>> dtoRequestV5091InsertTableToWordtableStyle = null, Expression<Func<bool>> dtoRequestV5091InsertTableToWordshowHeaders = null, Expression<Func<string>> dtoRequestV5091InsertTableToWordplaceholderPrefix = null, Expression<Func<string>> dtoRequestV5091InsertTableToWordplaceholderSuffix = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV5091InsertTableToWord> __BuildInsertTableToWord(WorkflowExpression<string> dtoRequestV5091InsertTableToWordexistingFileContent, WorkflowExpression<string> dtoRequestV5091InsertTableToWordplaceholderName = null, WorkflowExpression<string> dtoRequestV5091InsertTableToWordplaceholderTable = null, WorkflowExpression<string> dtoRequestV5091InsertTableToWordtableStyle = null, WorkflowExpression<bool> dtoRequestV5091InsertTableToWordshowHeaders = null, WorkflowExpression<string> dtoRequestV5091InsertTableToWordplaceholderPrefix = null, WorkflowExpression<string> dtoRequestV5091InsertTableToWordplaceholderSuffix = null)
-        {
-            WorkflowExpression.Validate(dtoRequestV5091InsertTableToWordexistingFileContent, nameof(dtoRequestV5091InsertTableToWordexistingFileContent), required: true);
-            WorkflowExpression.Validate(dtoRequestV5091InsertTableToWordplaceholderName, nameof(dtoRequestV5091InsertTableToWordplaceholderName), required: false);
-            WorkflowExpression.Validate(dtoRequestV5091InsertTableToWordplaceholderTable, nameof(dtoRequestV5091InsertTableToWordplaceholderTable), required: false);
-            WorkflowExpression.Validate(dtoRequestV5091InsertTableToWordtableStyle, nameof(dtoRequestV5091InsertTableToWordtableStyle), required: false);
-            WorkflowExpression.Validate(dtoRequestV5091InsertTableToWordshowHeaders, nameof(dtoRequestV5091InsertTableToWordshowHeaders), required: false);
-            WorkflowExpression.Validate(dtoRequestV5091InsertTableToWordplaceholderPrefix, nameof(dtoRequestV5091InsertTableToWordplaceholderPrefix), required: false);
-            WorkflowExpression.Validate(dtoRequestV5091InsertTableToWordplaceholderSuffix, nameof(dtoRequestV5091InsertTableToWordplaceholderSuffix), required: false);
+            var __workflow_dtoRequestV5091InsertTableToWordexistingFileContent = dtoRequestV5091InsertTableToWordexistingFileContent == null ? null : WorkflowExpression.Compile(dtoRequestV5091InsertTableToWordexistingFileContent);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5091InsertTableToWordexistingFileContent, nameof(dtoRequestV5091InsertTableToWordexistingFileContent), required: true);
+            var __workflow_dtoRequestV5091InsertTableToWordplaceholderName = dtoRequestV5091InsertTableToWordplaceholderName == null ? null : WorkflowExpression.Compile(dtoRequestV5091InsertTableToWordplaceholderName);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5091InsertTableToWordplaceholderName, nameof(dtoRequestV5091InsertTableToWordplaceholderName), required: false);
+            var __workflow_dtoRequestV5091InsertTableToWordplaceholderTable = dtoRequestV5091InsertTableToWordplaceholderTable == null ? null : WorkflowExpression.Compile(dtoRequestV5091InsertTableToWordplaceholderTable);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5091InsertTableToWordplaceholderTable, nameof(dtoRequestV5091InsertTableToWordplaceholderTable), required: false);
+            var __workflow_dtoRequestV5091InsertTableToWordtableStyle = dtoRequestV5091InsertTableToWordtableStyle == null ? null : WorkflowExpression.Compile(dtoRequestV5091InsertTableToWordtableStyle);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5091InsertTableToWordtableStyle, nameof(dtoRequestV5091InsertTableToWordtableStyle), required: false);
+            var __workflow_dtoRequestV5091InsertTableToWordshowHeaders = dtoRequestV5091InsertTableToWordshowHeaders == null ? null : WorkflowExpression.Compile(dtoRequestV5091InsertTableToWordshowHeaders);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5091InsertTableToWordshowHeaders, nameof(dtoRequestV5091InsertTableToWordshowHeaders), required: false);
+            var __workflow_dtoRequestV5091InsertTableToWordplaceholderPrefix = dtoRequestV5091InsertTableToWordplaceholderPrefix == null ? null : WorkflowExpression.Compile(dtoRequestV5091InsertTableToWordplaceholderPrefix);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5091InsertTableToWordplaceholderPrefix, nameof(dtoRequestV5091InsertTableToWordplaceholderPrefix), required: false);
+            var __workflow_dtoRequestV5091InsertTableToWordplaceholderSuffix = dtoRequestV5091InsertTableToWordplaceholderSuffix == null ? null : WorkflowExpression.Compile(dtoRequestV5091InsertTableToWordplaceholderSuffix);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5091InsertTableToWordplaceholderSuffix, nameof(dtoRequestV5091InsertTableToWordplaceholderSuffix), required: false);
             return new DeferredBodyAction<DtoResponseV5091InsertTableToWord>(() =>
             {
                 var apiCallPath = "/V5091_InsertTableToWord";
@@ -2779,24 +2613,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV5091InsertTableToWord = new JObject();
                 var dtoRequestV5091InsertTableToWordpropCount = 0;
                 dtoRequestV5091InsertTableToWordpropCount++;
-                dtoRequestV5091InsertTableToWord["existingFileContent"] = ExpressionConverter.ConvertO(dtoRequestV5091InsertTableToWordexistingFileContent);
-                if (dtoRequestV5091InsertTableToWordplaceholderName != null)
+                dtoRequestV5091InsertTableToWord["existingFileContent"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5091InsertTableToWordexistingFileContent);
+                if (__workflow_dtoRequestV5091InsertTableToWordplaceholderName != null)
                 {
-                    dtoRequestV5091InsertTableToWord["placeholderName"] = ExpressionConverter.ConvertO(dtoRequestV5091InsertTableToWordplaceholderName);
+                    dtoRequestV5091InsertTableToWord["placeholderName"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5091InsertTableToWordplaceholderName);
                     dtoRequestV5091InsertTableToWordpropCount++;
                 }
 
-                if (dtoRequestV5091InsertTableToWordplaceholderTable != null)
+                if (__workflow_dtoRequestV5091InsertTableToWordplaceholderTable != null)
                 {
-                    dtoRequestV5091InsertTableToWord["placeholderTable"] = ExpressionConverter.ConvertO(dtoRequestV5091InsertTableToWordplaceholderTable);
+                    dtoRequestV5091InsertTableToWord["placeholderTable"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5091InsertTableToWordplaceholderTable);
                     dtoRequestV5091InsertTableToWordpropCount++;
                 }
 
-                if (dtoRequestV5091InsertTableToWordtableStyle != null)
+                if (__workflow_dtoRequestV5091InsertTableToWordtableStyle != null)
                 {
-                    if (dtoRequestV5091InsertTableToWordtableStyle != null)
+                    if (__workflow_dtoRequestV5091InsertTableToWordtableStyle != null)
                     {
-                        dtoRequestV5091InsertTableToWord["tableStyle"] = ExpressionConverter.ConvertO(dtoRequestV5091InsertTableToWordtableStyle);
+                        dtoRequestV5091InsertTableToWord["tableStyle"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5091InsertTableToWordtableStyle);
                         dtoRequestV5091InsertTableToWordpropCount++;
                     }
 
@@ -2808,11 +2642,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                     dtoRequestV5091InsertTableToWordpropCount++;
                 }
 
-                if (dtoRequestV5091InsertTableToWordshowHeaders != null)
+                if (__workflow_dtoRequestV5091InsertTableToWordshowHeaders != null)
                 {
-                    if (dtoRequestV5091InsertTableToWordshowHeaders != null)
+                    if (__workflow_dtoRequestV5091InsertTableToWordshowHeaders != null)
                     {
-                        dtoRequestV5091InsertTableToWord["hasHeader"] = ExpressionConverter.ConvertO(dtoRequestV5091InsertTableToWordshowHeaders);
+                        dtoRequestV5091InsertTableToWord["hasHeader"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5091InsertTableToWordshowHeaders);
                         dtoRequestV5091InsertTableToWordpropCount++;
                     }
 
@@ -2824,15 +2658,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                     dtoRequestV5091InsertTableToWordpropCount++;
                 }
 
-                if (dtoRequestV5091InsertTableToWordplaceholderPrefix != null)
+                if (__workflow_dtoRequestV5091InsertTableToWordplaceholderPrefix != null)
                 {
-                    dtoRequestV5091InsertTableToWord["placeholderPrefix"] = ExpressionConverter.ConvertO(dtoRequestV5091InsertTableToWordplaceholderPrefix);
+                    dtoRequestV5091InsertTableToWord["placeholderPrefix"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5091InsertTableToWordplaceholderPrefix);
                     dtoRequestV5091InsertTableToWordpropCount++;
                 }
 
-                if (dtoRequestV5091InsertTableToWordplaceholderSuffix != null)
+                if (__workflow_dtoRequestV5091InsertTableToWordplaceholderSuffix != null)
                 {
-                    dtoRequestV5091InsertTableToWord["placeholderSuffix"] = ExpressionConverter.ConvertO(dtoRequestV5091InsertTableToWordplaceholderSuffix);
+                    dtoRequestV5091InsertTableToWord["placeholderSuffix"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5091InsertTableToWordplaceholderSuffix);
                     dtoRequestV5091InsertTableToWordpropCount++;
                 }
 
@@ -2846,20 +2680,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildInsertTextToPowerPoint))]
-        public IBodyWorkflowAction<DtoResponseFile> InsertTextToPowerPoint([WorkflowExpression] Func<string> dtoRequestV9010InsertTextToPowerPointexistingFileContent, [WorkflowExpression] Func<string> dtoRequestV9010InsertTextToPowerPointplaceholderName, [WorkflowExpression] Func<string> dtoRequestV9010InsertTextToPowerPointplaceholderText = null, [WorkflowExpression] Func<string> dtoRequestV9010InsertTextToPowerPointplaceholderPrefix = null, [WorkflowExpression] Func<string> dtoRequestV9010InsertTextToPowerPointplaceholderSuffix = null)
+        public IBodyWorkflowAction<DtoResponseFile> InsertTextToPowerPoint(Expression<Func<string>> dtoRequestV9010InsertTextToPowerPointexistingFileContent, Expression<Func<string>> dtoRequestV9010InsertTextToPowerPointplaceholderName, Expression<Func<string>> dtoRequestV9010InsertTextToPowerPointplaceholderText = null, Expression<Func<string>> dtoRequestV9010InsertTextToPowerPointplaceholderPrefix = null, Expression<Func<string>> dtoRequestV9010InsertTextToPowerPointplaceholderSuffix = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseFile> __BuildInsertTextToPowerPoint(WorkflowExpression<string> dtoRequestV9010InsertTextToPowerPointexistingFileContent, WorkflowExpression<string> dtoRequestV9010InsertTextToPowerPointplaceholderName, WorkflowExpression<string> dtoRequestV9010InsertTextToPowerPointplaceholderText = null, WorkflowExpression<string> dtoRequestV9010InsertTextToPowerPointplaceholderPrefix = null, WorkflowExpression<string> dtoRequestV9010InsertTextToPowerPointplaceholderSuffix = null)
-        {
-            WorkflowExpression.Validate(dtoRequestV9010InsertTextToPowerPointexistingFileContent, nameof(dtoRequestV9010InsertTextToPowerPointexistingFileContent), required: true);
-            WorkflowExpression.Validate(dtoRequestV9010InsertTextToPowerPointplaceholderName, nameof(dtoRequestV9010InsertTextToPowerPointplaceholderName), required: true);
-            WorkflowExpression.Validate(dtoRequestV9010InsertTextToPowerPointplaceholderText, nameof(dtoRequestV9010InsertTextToPowerPointplaceholderText), required: false);
-            WorkflowExpression.Validate(dtoRequestV9010InsertTextToPowerPointplaceholderPrefix, nameof(dtoRequestV9010InsertTextToPowerPointplaceholderPrefix), required: false);
-            WorkflowExpression.Validate(dtoRequestV9010InsertTextToPowerPointplaceholderSuffix, nameof(dtoRequestV9010InsertTextToPowerPointplaceholderSuffix), required: false);
+            var __workflow_dtoRequestV9010InsertTextToPowerPointexistingFileContent = dtoRequestV9010InsertTextToPowerPointexistingFileContent == null ? null : WorkflowExpression.Compile(dtoRequestV9010InsertTextToPowerPointexistingFileContent);
+            WorkflowExpression.Validate(__workflow_dtoRequestV9010InsertTextToPowerPointexistingFileContent, nameof(dtoRequestV9010InsertTextToPowerPointexistingFileContent), required: true);
+            var __workflow_dtoRequestV9010InsertTextToPowerPointplaceholderName = dtoRequestV9010InsertTextToPowerPointplaceholderName == null ? null : WorkflowExpression.Compile(dtoRequestV9010InsertTextToPowerPointplaceholderName);
+            WorkflowExpression.Validate(__workflow_dtoRequestV9010InsertTextToPowerPointplaceholderName, nameof(dtoRequestV9010InsertTextToPowerPointplaceholderName), required: true);
+            var __workflow_dtoRequestV9010InsertTextToPowerPointplaceholderText = dtoRequestV9010InsertTextToPowerPointplaceholderText == null ? null : WorkflowExpression.Compile(dtoRequestV9010InsertTextToPowerPointplaceholderText);
+            WorkflowExpression.Validate(__workflow_dtoRequestV9010InsertTextToPowerPointplaceholderText, nameof(dtoRequestV9010InsertTextToPowerPointplaceholderText), required: false);
+            var __workflow_dtoRequestV9010InsertTextToPowerPointplaceholderPrefix = dtoRequestV9010InsertTextToPowerPointplaceholderPrefix == null ? null : WorkflowExpression.Compile(dtoRequestV9010InsertTextToPowerPointplaceholderPrefix);
+            WorkflowExpression.Validate(__workflow_dtoRequestV9010InsertTextToPowerPointplaceholderPrefix, nameof(dtoRequestV9010InsertTextToPowerPointplaceholderPrefix), required: false);
+            var __workflow_dtoRequestV9010InsertTextToPowerPointplaceholderSuffix = dtoRequestV9010InsertTextToPowerPointplaceholderSuffix == null ? null : WorkflowExpression.Compile(dtoRequestV9010InsertTextToPowerPointplaceholderSuffix);
+            WorkflowExpression.Validate(__workflow_dtoRequestV9010InsertTextToPowerPointplaceholderSuffix, nameof(dtoRequestV9010InsertTextToPowerPointplaceholderSuffix), required: false);
             return new DeferredBodyAction<DtoResponseFile>(() =>
             {
                 var apiCallPath = "/V9010_InsertTextToPowerPoint";
@@ -2868,24 +2700,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV9010InsertTextToPowerPoint = new JObject();
                 var dtoRequestV9010InsertTextToPowerPointpropCount = 0;
                 dtoRequestV9010InsertTextToPowerPointpropCount++;
-                dtoRequestV9010InsertTextToPowerPoint["existingFileContent"] = ExpressionConverter.ConvertO(dtoRequestV9010InsertTextToPowerPointexistingFileContent);
+                dtoRequestV9010InsertTextToPowerPoint["existingFileContent"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV9010InsertTextToPowerPointexistingFileContent);
                 dtoRequestV9010InsertTextToPowerPointpropCount++;
-                dtoRequestV9010InsertTextToPowerPoint["placeholderName"] = ExpressionConverter.ConvertO(dtoRequestV9010InsertTextToPowerPointplaceholderName);
-                if (dtoRequestV9010InsertTextToPowerPointplaceholderText != null)
+                dtoRequestV9010InsertTextToPowerPoint["placeholderName"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV9010InsertTextToPowerPointplaceholderName);
+                if (__workflow_dtoRequestV9010InsertTextToPowerPointplaceholderText != null)
                 {
-                    dtoRequestV9010InsertTextToPowerPoint["placeholderText"] = ExpressionConverter.ConvertO(dtoRequestV9010InsertTextToPowerPointplaceholderText);
+                    dtoRequestV9010InsertTextToPowerPoint["placeholderText"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV9010InsertTextToPowerPointplaceholderText);
                     dtoRequestV9010InsertTextToPowerPointpropCount++;
                 }
 
-                if (dtoRequestV9010InsertTextToPowerPointplaceholderPrefix != null)
+                if (__workflow_dtoRequestV9010InsertTextToPowerPointplaceholderPrefix != null)
                 {
-                    dtoRequestV9010InsertTextToPowerPoint["placeholderPrefix"] = ExpressionConverter.ConvertO(dtoRequestV9010InsertTextToPowerPointplaceholderPrefix);
+                    dtoRequestV9010InsertTextToPowerPoint["placeholderPrefix"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV9010InsertTextToPowerPointplaceholderPrefix);
                     dtoRequestV9010InsertTextToPowerPointpropCount++;
                 }
 
-                if (dtoRequestV9010InsertTextToPowerPointplaceholderSuffix != null)
+                if (__workflow_dtoRequestV9010InsertTextToPowerPointplaceholderSuffix != null)
                 {
-                    dtoRequestV9010InsertTextToPowerPoint["placeholderSuffix"] = ExpressionConverter.ConvertO(dtoRequestV9010InsertTextToPowerPointplaceholderSuffix);
+                    dtoRequestV9010InsertTextToPowerPoint["placeholderSuffix"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV9010InsertTextToPowerPointplaceholderSuffix);
                     dtoRequestV9010InsertTextToPowerPointpropCount++;
                 }
 
@@ -2899,20 +2731,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildInsertTextToWord))]
-        public IBodyWorkflowAction<DtoResponseV5071InsertTextToWord> InsertTextToWord([WorkflowExpression] Func<string> dtoRequestV5071InsertTextToWordexistingFileContent, [WorkflowExpression] Func<string> dtoRequestV5071InsertTextToWordplaceholderName, [WorkflowExpression] Func<string> dtoRequestV5071InsertTextToWordplaceholderText = null, [WorkflowExpression] Func<string> dtoRequestV5071InsertTextToWordplaceholderPrefix = null, [WorkflowExpression] Func<string> dtoRequestV5071InsertTextToWordplaceholderSuffix = null)
+        public IBodyWorkflowAction<DtoResponseV5071InsertTextToWord> InsertTextToWord(Expression<Func<string>> dtoRequestV5071InsertTextToWordexistingFileContent, Expression<Func<string>> dtoRequestV5071InsertTextToWordplaceholderName, Expression<Func<string>> dtoRequestV5071InsertTextToWordplaceholderText = null, Expression<Func<string>> dtoRequestV5071InsertTextToWordplaceholderPrefix = null, Expression<Func<string>> dtoRequestV5071InsertTextToWordplaceholderSuffix = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV5071InsertTextToWord> __BuildInsertTextToWord(WorkflowExpression<string> dtoRequestV5071InsertTextToWordexistingFileContent, WorkflowExpression<string> dtoRequestV5071InsertTextToWordplaceholderName, WorkflowExpression<string> dtoRequestV5071InsertTextToWordplaceholderText = null, WorkflowExpression<string> dtoRequestV5071InsertTextToWordplaceholderPrefix = null, WorkflowExpression<string> dtoRequestV5071InsertTextToWordplaceholderSuffix = null)
-        {
-            WorkflowExpression.Validate(dtoRequestV5071InsertTextToWordexistingFileContent, nameof(dtoRequestV5071InsertTextToWordexistingFileContent), required: true);
-            WorkflowExpression.Validate(dtoRequestV5071InsertTextToWordplaceholderName, nameof(dtoRequestV5071InsertTextToWordplaceholderName), required: true);
-            WorkflowExpression.Validate(dtoRequestV5071InsertTextToWordplaceholderText, nameof(dtoRequestV5071InsertTextToWordplaceholderText), required: false);
-            WorkflowExpression.Validate(dtoRequestV5071InsertTextToWordplaceholderPrefix, nameof(dtoRequestV5071InsertTextToWordplaceholderPrefix), required: false);
-            WorkflowExpression.Validate(dtoRequestV5071InsertTextToWordplaceholderSuffix, nameof(dtoRequestV5071InsertTextToWordplaceholderSuffix), required: false);
+            var __workflow_dtoRequestV5071InsertTextToWordexistingFileContent = dtoRequestV5071InsertTextToWordexistingFileContent == null ? null : WorkflowExpression.Compile(dtoRequestV5071InsertTextToWordexistingFileContent);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5071InsertTextToWordexistingFileContent, nameof(dtoRequestV5071InsertTextToWordexistingFileContent), required: true);
+            var __workflow_dtoRequestV5071InsertTextToWordplaceholderName = dtoRequestV5071InsertTextToWordplaceholderName == null ? null : WorkflowExpression.Compile(dtoRequestV5071InsertTextToWordplaceholderName);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5071InsertTextToWordplaceholderName, nameof(dtoRequestV5071InsertTextToWordplaceholderName), required: true);
+            var __workflow_dtoRequestV5071InsertTextToWordplaceholderText = dtoRequestV5071InsertTextToWordplaceholderText == null ? null : WorkflowExpression.Compile(dtoRequestV5071InsertTextToWordplaceholderText);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5071InsertTextToWordplaceholderText, nameof(dtoRequestV5071InsertTextToWordplaceholderText), required: false);
+            var __workflow_dtoRequestV5071InsertTextToWordplaceholderPrefix = dtoRequestV5071InsertTextToWordplaceholderPrefix == null ? null : WorkflowExpression.Compile(dtoRequestV5071InsertTextToWordplaceholderPrefix);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5071InsertTextToWordplaceholderPrefix, nameof(dtoRequestV5071InsertTextToWordplaceholderPrefix), required: false);
+            var __workflow_dtoRequestV5071InsertTextToWordplaceholderSuffix = dtoRequestV5071InsertTextToWordplaceholderSuffix == null ? null : WorkflowExpression.Compile(dtoRequestV5071InsertTextToWordplaceholderSuffix);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5071InsertTextToWordplaceholderSuffix, nameof(dtoRequestV5071InsertTextToWordplaceholderSuffix), required: false);
             return new DeferredBodyAction<DtoResponseV5071InsertTextToWord>(() =>
             {
                 var apiCallPath = "/V5071_InsertTextToWord";
@@ -2921,24 +2751,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV5071InsertTextToWord = new JObject();
                 var dtoRequestV5071InsertTextToWordpropCount = 0;
                 dtoRequestV5071InsertTextToWordpropCount++;
-                dtoRequestV5071InsertTextToWord["existingFileContent"] = ExpressionConverter.ConvertO(dtoRequestV5071InsertTextToWordexistingFileContent);
+                dtoRequestV5071InsertTextToWord["existingFileContent"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5071InsertTextToWordexistingFileContent);
                 dtoRequestV5071InsertTextToWordpropCount++;
-                dtoRequestV5071InsertTextToWord["placeholderName"] = ExpressionConverter.ConvertO(dtoRequestV5071InsertTextToWordplaceholderName);
-                if (dtoRequestV5071InsertTextToWordplaceholderText != null)
+                dtoRequestV5071InsertTextToWord["placeholderName"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5071InsertTextToWordplaceholderName);
+                if (__workflow_dtoRequestV5071InsertTextToWordplaceholderText != null)
                 {
-                    dtoRequestV5071InsertTextToWord["placeholderText"] = ExpressionConverter.ConvertO(dtoRequestV5071InsertTextToWordplaceholderText);
+                    dtoRequestV5071InsertTextToWord["placeholderText"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5071InsertTextToWordplaceholderText);
                     dtoRequestV5071InsertTextToWordpropCount++;
                 }
 
-                if (dtoRequestV5071InsertTextToWordplaceholderPrefix != null)
+                if (__workflow_dtoRequestV5071InsertTextToWordplaceholderPrefix != null)
                 {
-                    dtoRequestV5071InsertTextToWord["placeholderPrefix"] = ExpressionConverter.ConvertO(dtoRequestV5071InsertTextToWordplaceholderPrefix);
+                    dtoRequestV5071InsertTextToWord["placeholderPrefix"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5071InsertTextToWordplaceholderPrefix);
                     dtoRequestV5071InsertTextToWordpropCount++;
                 }
 
-                if (dtoRequestV5071InsertTextToWordplaceholderSuffix != null)
+                if (__workflow_dtoRequestV5071InsertTextToWordplaceholderSuffix != null)
                 {
-                    dtoRequestV5071InsertTextToWord["placeholderSuffix"] = ExpressionConverter.ConvertO(dtoRequestV5071InsertTextToWordplaceholderSuffix);
+                    dtoRequestV5071InsertTextToWord["placeholderSuffix"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5071InsertTextToWordplaceholderSuffix);
                     dtoRequestV5071InsertTextToWordpropCount++;
                 }
 
@@ -2952,17 +2782,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildMergePdfs))]
-        public IBodyWorkflowAction<DtoResponseV4021MergePdfs> MergePdfs([WorkflowExpression] Func<string> dtoRequestV4021MergePdfsfile1, [WorkflowExpression] Func<string> dtoRequestV4021MergePdfsfile2)
+        public IBodyWorkflowAction<DtoResponseV4021MergePdfs> MergePdfs(Expression<Func<string>> dtoRequestV4021MergePdfsfile1, Expression<Func<string>> dtoRequestV4021MergePdfsfile2)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV4021MergePdfs> __BuildMergePdfs(WorkflowExpression<string> dtoRequestV4021MergePdfsfile1, WorkflowExpression<string> dtoRequestV4021MergePdfsfile2)
-        {
-            WorkflowExpression.Validate(dtoRequestV4021MergePdfsfile1, nameof(dtoRequestV4021MergePdfsfile1), required: true);
-            WorkflowExpression.Validate(dtoRequestV4021MergePdfsfile2, nameof(dtoRequestV4021MergePdfsfile2), required: true);
+            var __workflow_dtoRequestV4021MergePdfsfile1 = dtoRequestV4021MergePdfsfile1 == null ? null : WorkflowExpression.Compile(dtoRequestV4021MergePdfsfile1);
+            WorkflowExpression.Validate(__workflow_dtoRequestV4021MergePdfsfile1, nameof(dtoRequestV4021MergePdfsfile1), required: true);
+            var __workflow_dtoRequestV4021MergePdfsfile2 = dtoRequestV4021MergePdfsfile2 == null ? null : WorkflowExpression.Compile(dtoRequestV4021MergePdfsfile2);
+            WorkflowExpression.Validate(__workflow_dtoRequestV4021MergePdfsfile2, nameof(dtoRequestV4021MergePdfsfile2), required: true);
             return new DeferredBodyAction<DtoResponseV4021MergePdfs>(() =>
             {
                 var apiCallPath = "/V4021_MergePdfs";
@@ -2971,9 +2796,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV4021MergePdfs = new JObject();
                 var dtoRequestV4021MergePdfspropCount = 0;
                 dtoRequestV4021MergePdfspropCount++;
-                dtoRequestV4021MergePdfs["file1"] = ExpressionConverter.ConvertO(dtoRequestV4021MergePdfsfile1);
+                dtoRequestV4021MergePdfs["file1"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV4021MergePdfsfile1);
                 dtoRequestV4021MergePdfspropCount++;
-                dtoRequestV4021MergePdfs["file2"] = ExpressionConverter.ConvertO(dtoRequestV4021MergePdfsfile2);
+                dtoRequestV4021MergePdfs["file2"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV4021MergePdfsfile2);
                 if (dtoRequestV4021MergePdfspropCount > 0)
                 {
                     callPayload.Body = dtoRequestV4021MergePdfs;
@@ -2984,17 +2809,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildPatternMatchCheck))]
-        public IBodyWorkflowAction<DtoResponseV2120MatchPatternCheck> PatternMatchCheck([WorkflowExpression] Func<string> dtoRequestV2120PatternMatchCheckinputText, [WorkflowExpression] Func<string> dtoRequestV2120PatternMatchCheckmatchPattern)
+        public IBodyWorkflowAction<DtoResponseV2120MatchPatternCheck> PatternMatchCheck(Expression<Func<string>> dtoRequestV2120PatternMatchCheckinputText, Expression<Func<string>> dtoRequestV2120PatternMatchCheckmatchPattern)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV2120MatchPatternCheck> __BuildPatternMatchCheck(WorkflowExpression<string> dtoRequestV2120PatternMatchCheckinputText, WorkflowExpression<string> dtoRequestV2120PatternMatchCheckmatchPattern)
-        {
-            WorkflowExpression.Validate(dtoRequestV2120PatternMatchCheckinputText, nameof(dtoRequestV2120PatternMatchCheckinputText), required: true);
-            WorkflowExpression.Validate(dtoRequestV2120PatternMatchCheckmatchPattern, nameof(dtoRequestV2120PatternMatchCheckmatchPattern), required: true);
+            var __workflow_dtoRequestV2120PatternMatchCheckinputText = dtoRequestV2120PatternMatchCheckinputText == null ? null : WorkflowExpression.Compile(dtoRequestV2120PatternMatchCheckinputText);
+            WorkflowExpression.Validate(__workflow_dtoRequestV2120PatternMatchCheckinputText, nameof(dtoRequestV2120PatternMatchCheckinputText), required: true);
+            var __workflow_dtoRequestV2120PatternMatchCheckmatchPattern = dtoRequestV2120PatternMatchCheckmatchPattern == null ? null : WorkflowExpression.Compile(dtoRequestV2120PatternMatchCheckmatchPattern);
+            WorkflowExpression.Validate(__workflow_dtoRequestV2120PatternMatchCheckmatchPattern, nameof(dtoRequestV2120PatternMatchCheckmatchPattern), required: true);
             return new DeferredBodyAction<DtoResponseV2120MatchPatternCheck>(() =>
             {
                 var apiCallPath = "/V2120_PatternMatchCheck";
@@ -3003,9 +2823,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV2120PatternMatchCheck = new JObject();
                 var dtoRequestV2120PatternMatchCheckpropCount = 0;
                 dtoRequestV2120PatternMatchCheckpropCount++;
-                dtoRequestV2120PatternMatchCheck["inputText"] = ExpressionConverter.ConvertO(dtoRequestV2120PatternMatchCheckinputText);
+                dtoRequestV2120PatternMatchCheck["inputText"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV2120PatternMatchCheckinputText);
                 dtoRequestV2120PatternMatchCheckpropCount++;
-                dtoRequestV2120PatternMatchCheck["matchPattern"] = ExpressionConverter.ConvertO(dtoRequestV2120PatternMatchCheckmatchPattern);
+                dtoRequestV2120PatternMatchCheck["matchPattern"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV2120PatternMatchCheckmatchPattern);
                 if (dtoRequestV2120PatternMatchCheckpropCount > 0)
                 {
                     callPayload.Body = dtoRequestV2120PatternMatchCheck;
@@ -3016,16 +2836,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildPdfMetadata))]
-        public IBodyWorkflowAction<DtoResponseV4031PdfMetadata> PdfMetadata([WorkflowExpression] Func<string> dtoRequestV4031PdfMetadatafile)
+        public IBodyWorkflowAction<DtoResponseV4031PdfMetadata> PdfMetadata(Expression<Func<string>> dtoRequestV4031PdfMetadatafile)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV4031PdfMetadata> __BuildPdfMetadata(WorkflowExpression<string> dtoRequestV4031PdfMetadatafile)
-        {
-            WorkflowExpression.Validate(dtoRequestV4031PdfMetadatafile, nameof(dtoRequestV4031PdfMetadatafile), required: true);
+            var __workflow_dtoRequestV4031PdfMetadatafile = dtoRequestV4031PdfMetadatafile == null ? null : WorkflowExpression.Compile(dtoRequestV4031PdfMetadatafile);
+            WorkflowExpression.Validate(__workflow_dtoRequestV4031PdfMetadatafile, nameof(dtoRequestV4031PdfMetadatafile), required: true);
             return new DeferredBodyAction<DtoResponseV4031PdfMetadata>(() =>
             {
                 var apiCallPath = "/V4031_PdfMetadata";
@@ -3034,7 +2848,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV4031PdfMetadata = new JObject();
                 var dtoRequestV4031PdfMetadatapropCount = 0;
                 dtoRequestV4031PdfMetadatapropCount++;
-                dtoRequestV4031PdfMetadata["file"] = ExpressionConverter.ConvertO(dtoRequestV4031PdfMetadatafile);
+                dtoRequestV4031PdfMetadata["file"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV4031PdfMetadatafile);
                 if (dtoRequestV4031PdfMetadatapropCount > 0)
                 {
                     callPayload.Body = dtoRequestV4031PdfMetadata;
@@ -3045,18 +2859,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildProtectPdf))]
-        public IBodyWorkflowAction<DtoResponseV4041ProtectPdf> ProtectPdf([WorkflowExpression] Func<string> dtoRequestV4041ProtectPdffile, [WorkflowExpression] Func<string> dtoRequestV4041ProtectPdfownerPassword = null, [WorkflowExpression] Func<string> dtoRequestV4041ProtectPdfuserPassword = null)
+        public IBodyWorkflowAction<DtoResponseV4041ProtectPdf> ProtectPdf(Expression<Func<string>> dtoRequestV4041ProtectPdffile, Expression<Func<string>> dtoRequestV4041ProtectPdfownerPassword = null, Expression<Func<string>> dtoRequestV4041ProtectPdfuserPassword = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV4041ProtectPdf> __BuildProtectPdf(WorkflowExpression<string> dtoRequestV4041ProtectPdffile, WorkflowExpression<string> dtoRequestV4041ProtectPdfownerPassword = null, WorkflowExpression<string> dtoRequestV4041ProtectPdfuserPassword = null)
-        {
-            WorkflowExpression.Validate(dtoRequestV4041ProtectPdffile, nameof(dtoRequestV4041ProtectPdffile), required: true);
-            WorkflowExpression.Validate(dtoRequestV4041ProtectPdfownerPassword, nameof(dtoRequestV4041ProtectPdfownerPassword), required: false);
-            WorkflowExpression.Validate(dtoRequestV4041ProtectPdfuserPassword, nameof(dtoRequestV4041ProtectPdfuserPassword), required: false);
+            var __workflow_dtoRequestV4041ProtectPdffile = dtoRequestV4041ProtectPdffile == null ? null : WorkflowExpression.Compile(dtoRequestV4041ProtectPdffile);
+            WorkflowExpression.Validate(__workflow_dtoRequestV4041ProtectPdffile, nameof(dtoRequestV4041ProtectPdffile), required: true);
+            var __workflow_dtoRequestV4041ProtectPdfownerPassword = dtoRequestV4041ProtectPdfownerPassword == null ? null : WorkflowExpression.Compile(dtoRequestV4041ProtectPdfownerPassword);
+            WorkflowExpression.Validate(__workflow_dtoRequestV4041ProtectPdfownerPassword, nameof(dtoRequestV4041ProtectPdfownerPassword), required: false);
+            var __workflow_dtoRequestV4041ProtectPdfuserPassword = dtoRequestV4041ProtectPdfuserPassword == null ? null : WorkflowExpression.Compile(dtoRequestV4041ProtectPdfuserPassword);
+            WorkflowExpression.Validate(__workflow_dtoRequestV4041ProtectPdfuserPassword, nameof(dtoRequestV4041ProtectPdfuserPassword), required: false);
             return new DeferredBodyAction<DtoResponseV4041ProtectPdf>(() =>
             {
                 var apiCallPath = "/V4041_ProtectPdf";
@@ -3065,16 +2875,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV4041ProtectPdf = new JObject();
                 var dtoRequestV4041ProtectPdfpropCount = 0;
                 dtoRequestV4041ProtectPdfpropCount++;
-                dtoRequestV4041ProtectPdf["file"] = ExpressionConverter.ConvertO(dtoRequestV4041ProtectPdffile);
-                if (dtoRequestV4041ProtectPdfownerPassword != null)
+                dtoRequestV4041ProtectPdf["file"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV4041ProtectPdffile);
+                if (__workflow_dtoRequestV4041ProtectPdfownerPassword != null)
                 {
-                    dtoRequestV4041ProtectPdf["ownerPassword"] = ExpressionConverter.ConvertO(dtoRequestV4041ProtectPdfownerPassword);
+                    dtoRequestV4041ProtectPdf["ownerPassword"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV4041ProtectPdfownerPassword);
                     dtoRequestV4041ProtectPdfpropCount++;
                 }
 
-                if (dtoRequestV4041ProtectPdfuserPassword != null)
+                if (__workflow_dtoRequestV4041ProtectPdfuserPassword != null)
                 {
-                    dtoRequestV4041ProtectPdf["userPassword"] = ExpressionConverter.ConvertO(dtoRequestV4041ProtectPdfuserPassword);
+                    dtoRequestV4041ProtectPdf["userPassword"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV4041ProtectPdfuserPassword);
                     dtoRequestV4041ProtectPdfpropCount++;
                 }
 
@@ -3088,16 +2898,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildReadCode))]
-        public IBodyWorkflowAction<DtoResponseV3051ReadCode> ReadCode([WorkflowExpression] Func<string> dtoRequestReadCodeDataqROrBarcode)
+        public IBodyWorkflowAction<DtoResponseV3051ReadCode> ReadCode(Expression<Func<string>> dtoRequestReadCodeDataqROrBarcode)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV3051ReadCode> __BuildReadCode(WorkflowExpression<string> dtoRequestReadCodeDataqROrBarcode)
-        {
-            WorkflowExpression.Validate(dtoRequestReadCodeDataqROrBarcode, nameof(dtoRequestReadCodeDataqROrBarcode), required: true);
+            var __workflow_dtoRequestReadCodeDataqROrBarcode = dtoRequestReadCodeDataqROrBarcode == null ? null : WorkflowExpression.Compile(dtoRequestReadCodeDataqROrBarcode);
+            WorkflowExpression.Validate(__workflow_dtoRequestReadCodeDataqROrBarcode, nameof(dtoRequestReadCodeDataqROrBarcode), required: true);
             return new DeferredBodyAction<DtoResponseV3051ReadCode>(() =>
             {
                 var apiCallPath = "/V3051_ReadCode";
@@ -3106,7 +2910,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestReadCodeData = new JObject();
                 var dtoRequestReadCodeDatapropCount = 0;
                 dtoRequestReadCodeDatapropCount++;
-                dtoRequestReadCodeData["file"] = ExpressionConverter.ConvertO(dtoRequestReadCodeDataqROrBarcode);
+                dtoRequestReadCodeData["file"] = ExpressionConverter.ConvertO(__workflow_dtoRequestReadCodeDataqROrBarcode);
                 if (dtoRequestReadCodeDatapropCount > 0)
                 {
                     callPayload.Body = dtoRequestReadCodeData;
@@ -3117,18 +2921,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildRegularExpression))]
-        public IBodyWorkflowAction<DtoResponseV2011RegularExpression> RegularExpression([WorkflowExpression] Func<string> dtoRequestV2011RegularExpressiontextToMatch, [WorkflowExpression] Func<string> dtoRequestV2011RegularExpressionregularExpression = null, [WorkflowExpression] Func<string> dtoRequestV2011RegularExpressionregularExpressionOption = null)
+        public IBodyWorkflowAction<DtoResponseV2011RegularExpression> RegularExpression(Expression<Func<string>> dtoRequestV2011RegularExpressiontextToMatch, Expression<Func<string>> dtoRequestV2011RegularExpressionregularExpression = null, Expression<Func<string>> dtoRequestV2011RegularExpressionregularExpressionOption = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV2011RegularExpression> __BuildRegularExpression(WorkflowExpression<string> dtoRequestV2011RegularExpressiontextToMatch, WorkflowExpression<string> dtoRequestV2011RegularExpressionregularExpression = null, WorkflowExpression<string> dtoRequestV2011RegularExpressionregularExpressionOption = null)
-        {
-            WorkflowExpression.Validate(dtoRequestV2011RegularExpressiontextToMatch, nameof(dtoRequestV2011RegularExpressiontextToMatch), required: true);
-            WorkflowExpression.Validate(dtoRequestV2011RegularExpressionregularExpression, nameof(dtoRequestV2011RegularExpressionregularExpression), required: false);
-            WorkflowExpression.Validate(dtoRequestV2011RegularExpressionregularExpressionOption, nameof(dtoRequestV2011RegularExpressionregularExpressionOption), required: false);
+            var __workflow_dtoRequestV2011RegularExpressiontextToMatch = dtoRequestV2011RegularExpressiontextToMatch == null ? null : WorkflowExpression.Compile(dtoRequestV2011RegularExpressiontextToMatch);
+            WorkflowExpression.Validate(__workflow_dtoRequestV2011RegularExpressiontextToMatch, nameof(dtoRequestV2011RegularExpressiontextToMatch), required: true);
+            var __workflow_dtoRequestV2011RegularExpressionregularExpression = dtoRequestV2011RegularExpressionregularExpression == null ? null : WorkflowExpression.Compile(dtoRequestV2011RegularExpressionregularExpression);
+            WorkflowExpression.Validate(__workflow_dtoRequestV2011RegularExpressionregularExpression, nameof(dtoRequestV2011RegularExpressionregularExpression), required: false);
+            var __workflow_dtoRequestV2011RegularExpressionregularExpressionOption = dtoRequestV2011RegularExpressionregularExpressionOption == null ? null : WorkflowExpression.Compile(dtoRequestV2011RegularExpressionregularExpressionOption);
+            WorkflowExpression.Validate(__workflow_dtoRequestV2011RegularExpressionregularExpressionOption, nameof(dtoRequestV2011RegularExpressionregularExpressionOption), required: false);
             return new DeferredBodyAction<DtoResponseV2011RegularExpression>(() =>
             {
                 var apiCallPath = "/V2011_RegularExpression";
@@ -3137,16 +2937,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV2011RegularExpression = new JObject();
                 var dtoRequestV2011RegularExpressionpropCount = 0;
                 dtoRequestV2011RegularExpressionpropCount++;
-                dtoRequestV2011RegularExpression["input"] = ExpressionConverter.ConvertO(dtoRequestV2011RegularExpressiontextToMatch);
-                if (dtoRequestV2011RegularExpressionregularExpression != null)
+                dtoRequestV2011RegularExpression["input"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV2011RegularExpressiontextToMatch);
+                if (__workflow_dtoRequestV2011RegularExpressionregularExpression != null)
                 {
-                    dtoRequestV2011RegularExpression["pattern"] = ExpressionConverter.ConvertO(dtoRequestV2011RegularExpressionregularExpression);
+                    dtoRequestV2011RegularExpression["pattern"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV2011RegularExpressionregularExpression);
                     dtoRequestV2011RegularExpressionpropCount++;
                 }
 
-                if (dtoRequestV2011RegularExpressionregularExpressionOption != null)
+                if (__workflow_dtoRequestV2011RegularExpressionregularExpressionOption != null)
                 {
-                    dtoRequestV2011RegularExpression["option"] = ExpressionConverter.ConvertO(dtoRequestV2011RegularExpressionregularExpressionOption);
+                    dtoRequestV2011RegularExpression["option"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV2011RegularExpressionregularExpressionOption);
                     dtoRequestV2011RegularExpressionpropCount++;
                 }
 
@@ -3160,20 +2960,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildRemovePagesFromPdf))]
-        public IBodyWorkflowAction<DtoResponseV4110RemovePagesFromPdf> RemovePagesFromPdf([WorkflowExpression] Func<string> dtoRequestpDF, [WorkflowExpression] Func<string> dtoRequestpages, [WorkflowExpression] Func<bool> dtoRequestinputIs1Based = null, [WorkflowExpression] Func<int> dtoRequestmode = null, [WorkflowExpression] Func<bool> dtoRequestfailIfPageOutOfRange = null)
+        public IBodyWorkflowAction<DtoResponseV4110RemovePagesFromPdf> RemovePagesFromPdf(Expression<Func<string>> dtoRequestpDF, Expression<Func<string>> dtoRequestpages, Expression<Func<bool>> dtoRequestinputIs1Based = null, Expression<Func<int>> dtoRequestmode = null, Expression<Func<bool>> dtoRequestfailIfPageOutOfRange = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV4110RemovePagesFromPdf> __BuildRemovePagesFromPdf(WorkflowExpression<string> dtoRequestpDF, WorkflowExpression<string> dtoRequestpages, WorkflowExpression<bool> dtoRequestinputIs1Based = null, WorkflowExpression<int> dtoRequestmode = null, WorkflowExpression<bool> dtoRequestfailIfPageOutOfRange = null)
-        {
-            WorkflowExpression.Validate(dtoRequestpDF, nameof(dtoRequestpDF), required: true);
-            WorkflowExpression.Validate(dtoRequestpages, nameof(dtoRequestpages), required: true);
-            WorkflowExpression.Validate(dtoRequestinputIs1Based, nameof(dtoRequestinputIs1Based), required: false);
-            WorkflowExpression.Validate(dtoRequestmode, nameof(dtoRequestmode), required: false);
-            WorkflowExpression.Validate(dtoRequestfailIfPageOutOfRange, nameof(dtoRequestfailIfPageOutOfRange), required: false);
+            var __workflow_dtoRequestpDF = dtoRequestpDF == null ? null : WorkflowExpression.Compile(dtoRequestpDF);
+            WorkflowExpression.Validate(__workflow_dtoRequestpDF, nameof(dtoRequestpDF), required: true);
+            var __workflow_dtoRequestpages = dtoRequestpages == null ? null : WorkflowExpression.Compile(dtoRequestpages);
+            WorkflowExpression.Validate(__workflow_dtoRequestpages, nameof(dtoRequestpages), required: true);
+            var __workflow_dtoRequestinputIs1Based = dtoRequestinputIs1Based == null ? null : WorkflowExpression.Compile(dtoRequestinputIs1Based);
+            WorkflowExpression.Validate(__workflow_dtoRequestinputIs1Based, nameof(dtoRequestinputIs1Based), required: false);
+            var __workflow_dtoRequestmode = dtoRequestmode == null ? null : WorkflowExpression.Compile(dtoRequestmode);
+            WorkflowExpression.Validate(__workflow_dtoRequestmode, nameof(dtoRequestmode), required: false);
+            var __workflow_dtoRequestfailIfPageOutOfRange = dtoRequestfailIfPageOutOfRange == null ? null : WorkflowExpression.Compile(dtoRequestfailIfPageOutOfRange);
+            WorkflowExpression.Validate(__workflow_dtoRequestfailIfPageOutOfRange, nameof(dtoRequestfailIfPageOutOfRange), required: false);
             return new DeferredBodyAction<DtoResponseV4110RemovePagesFromPdf>(() =>
             {
                 var apiCallPath = "/V4110_RemovePagesFromPdf";
@@ -3182,24 +2980,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequest = new JObject();
                 var dtoRequestpropCount = 0;
                 dtoRequestpropCount++;
-                dtoRequest["pdf"] = ExpressionConverter.ConvertO(dtoRequestpDF);
+                dtoRequest["pdf"] = ExpressionConverter.ConvertO(__workflow_dtoRequestpDF);
                 dtoRequestpropCount++;
-                dtoRequest["pages"] = ExpressionConverter.ConvertO(dtoRequestpages);
-                if (dtoRequestinputIs1Based != null)
+                dtoRequest["pages"] = ExpressionConverter.ConvertO(__workflow_dtoRequestpages);
+                if (__workflow_dtoRequestinputIs1Based != null)
                 {
-                    dtoRequest["oneBased"] = ExpressionConverter.ConvertO(dtoRequestinputIs1Based);
+                    dtoRequest["oneBased"] = ExpressionConverter.ConvertO(__workflow_dtoRequestinputIs1Based);
                     dtoRequestpropCount++;
                 }
 
-                if (dtoRequestmode != null)
+                if (__workflow_dtoRequestmode != null)
                 {
-                    dtoRequest["mode"] = ExpressionConverter.ConvertO(dtoRequestmode);
+                    dtoRequest["mode"] = ExpressionConverter.ConvertO(__workflow_dtoRequestmode);
                     dtoRequestpropCount++;
                 }
 
-                if (dtoRequestfailIfPageOutOfRange != null)
+                if (__workflow_dtoRequestfailIfPageOutOfRange != null)
                 {
-                    dtoRequest["strict"] = ExpressionConverter.ConvertO(dtoRequestfailIfPageOutOfRange);
+                    dtoRequest["strict"] = ExpressionConverter.ConvertO(__workflow_dtoRequestfailIfPageOutOfRange);
                     dtoRequestpropCount++;
                 }
 
@@ -3213,18 +3011,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildReplaceTextWithPattern))]
-        public IBodyWorkflowAction<DtoResponseV2110ReplaceTextWithPattern> ReplaceTextWithPattern([WorkflowExpression] Func<string> dtoRequestV2110ReplaceTextWithPatterninputText, [WorkflowExpression] Func<string> dtoRequestV2110ReplaceTextWithPatternsearchPattern, [WorkflowExpression] Func<string> dtoRequestV2110ReplaceTextWithPatternreplacementText = null)
+        public IBodyWorkflowAction<DtoResponseV2110ReplaceTextWithPattern> ReplaceTextWithPattern(Expression<Func<string>> dtoRequestV2110ReplaceTextWithPatterninputText, Expression<Func<string>> dtoRequestV2110ReplaceTextWithPatternsearchPattern, Expression<Func<string>> dtoRequestV2110ReplaceTextWithPatternreplacementText = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV2110ReplaceTextWithPattern> __BuildReplaceTextWithPattern(WorkflowExpression<string> dtoRequestV2110ReplaceTextWithPatterninputText, WorkflowExpression<string> dtoRequestV2110ReplaceTextWithPatternsearchPattern, WorkflowExpression<string> dtoRequestV2110ReplaceTextWithPatternreplacementText = null)
-        {
-            WorkflowExpression.Validate(dtoRequestV2110ReplaceTextWithPatterninputText, nameof(dtoRequestV2110ReplaceTextWithPatterninputText), required: true);
-            WorkflowExpression.Validate(dtoRequestV2110ReplaceTextWithPatternsearchPattern, nameof(dtoRequestV2110ReplaceTextWithPatternsearchPattern), required: true);
-            WorkflowExpression.Validate(dtoRequestV2110ReplaceTextWithPatternreplacementText, nameof(dtoRequestV2110ReplaceTextWithPatternreplacementText), required: false);
+            var __workflow_dtoRequestV2110ReplaceTextWithPatterninputText = dtoRequestV2110ReplaceTextWithPatterninputText == null ? null : WorkflowExpression.Compile(dtoRequestV2110ReplaceTextWithPatterninputText);
+            WorkflowExpression.Validate(__workflow_dtoRequestV2110ReplaceTextWithPatterninputText, nameof(dtoRequestV2110ReplaceTextWithPatterninputText), required: true);
+            var __workflow_dtoRequestV2110ReplaceTextWithPatternsearchPattern = dtoRequestV2110ReplaceTextWithPatternsearchPattern == null ? null : WorkflowExpression.Compile(dtoRequestV2110ReplaceTextWithPatternsearchPattern);
+            WorkflowExpression.Validate(__workflow_dtoRequestV2110ReplaceTextWithPatternsearchPattern, nameof(dtoRequestV2110ReplaceTextWithPatternsearchPattern), required: true);
+            var __workflow_dtoRequestV2110ReplaceTextWithPatternreplacementText = dtoRequestV2110ReplaceTextWithPatternreplacementText == null ? null : WorkflowExpression.Compile(dtoRequestV2110ReplaceTextWithPatternreplacementText);
+            WorkflowExpression.Validate(__workflow_dtoRequestV2110ReplaceTextWithPatternreplacementText, nameof(dtoRequestV2110ReplaceTextWithPatternreplacementText), required: false);
             return new DeferredBodyAction<DtoResponseV2110ReplaceTextWithPattern>(() =>
             {
                 var apiCallPath = "/V2110_ReplaceTextWithPattern";
@@ -3233,12 +3027,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV2110ReplaceTextWithPattern = new JObject();
                 var dtoRequestV2110ReplaceTextWithPatternpropCount = 0;
                 dtoRequestV2110ReplaceTextWithPatternpropCount++;
-                dtoRequestV2110ReplaceTextWithPattern["inputText"] = ExpressionConverter.ConvertO(dtoRequestV2110ReplaceTextWithPatterninputText);
+                dtoRequestV2110ReplaceTextWithPattern["inputText"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV2110ReplaceTextWithPatterninputText);
                 dtoRequestV2110ReplaceTextWithPatternpropCount++;
-                dtoRequestV2110ReplaceTextWithPattern["searchPattern"] = ExpressionConverter.ConvertO(dtoRequestV2110ReplaceTextWithPatternsearchPattern);
-                if (dtoRequestV2110ReplaceTextWithPatternreplacementText != null)
+                dtoRequestV2110ReplaceTextWithPattern["searchPattern"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV2110ReplaceTextWithPatternsearchPattern);
+                if (__workflow_dtoRequestV2110ReplaceTextWithPatternreplacementText != null)
                 {
-                    dtoRequestV2110ReplaceTextWithPattern["replacementText"] = ExpressionConverter.ConvertO(dtoRequestV2110ReplaceTextWithPatternreplacementText);
+                    dtoRequestV2110ReplaceTextWithPattern["replacementText"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV2110ReplaceTextWithPatternreplacementText);
                     dtoRequestV2110ReplaceTextWithPatternpropCount++;
                 }
 
@@ -3252,19 +3046,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildResizeImage))]
-        public IBodyWorkflowAction<DtoResponseV3022ResizeImage> ResizeImage([WorkflowExpression] Func<string> dtoRequestV3022ResizeImageimageFile, [WorkflowExpression] Func<double> dtoRequestV3022ResizeImageimageWidth = null, [WorkflowExpression] Func<double> dtoRequestV3022ResizeImageimageHeight = null, [WorkflowExpression] Func<string> dtoRequestV3022ResizeImageresizeBy = null)
+        public IBodyWorkflowAction<DtoResponseV3022ResizeImage> ResizeImage(Expression<Func<string>> dtoRequestV3022ResizeImageimageFile, Expression<Func<double>> dtoRequestV3022ResizeImageimageWidth = null, Expression<Func<double>> dtoRequestV3022ResizeImageimageHeight = null, Expression<Func<string>> dtoRequestV3022ResizeImageresizeBy = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV3022ResizeImage> __BuildResizeImage(WorkflowExpression<string> dtoRequestV3022ResizeImageimageFile, WorkflowExpression<double> dtoRequestV3022ResizeImageimageWidth = null, WorkflowExpression<double> dtoRequestV3022ResizeImageimageHeight = null, WorkflowExpression<string> dtoRequestV3022ResizeImageresizeBy = null)
-        {
-            WorkflowExpression.Validate(dtoRequestV3022ResizeImageimageFile, nameof(dtoRequestV3022ResizeImageimageFile), required: true);
-            WorkflowExpression.Validate(dtoRequestV3022ResizeImageimageWidth, nameof(dtoRequestV3022ResizeImageimageWidth), required: false);
-            WorkflowExpression.Validate(dtoRequestV3022ResizeImageimageHeight, nameof(dtoRequestV3022ResizeImageimageHeight), required: false);
-            WorkflowExpression.Validate(dtoRequestV3022ResizeImageresizeBy, nameof(dtoRequestV3022ResizeImageresizeBy), required: false);
+            var __workflow_dtoRequestV3022ResizeImageimageFile = dtoRequestV3022ResizeImageimageFile == null ? null : WorkflowExpression.Compile(dtoRequestV3022ResizeImageimageFile);
+            WorkflowExpression.Validate(__workflow_dtoRequestV3022ResizeImageimageFile, nameof(dtoRequestV3022ResizeImageimageFile), required: true);
+            var __workflow_dtoRequestV3022ResizeImageimageWidth = dtoRequestV3022ResizeImageimageWidth == null ? null : WorkflowExpression.Compile(dtoRequestV3022ResizeImageimageWidth);
+            WorkflowExpression.Validate(__workflow_dtoRequestV3022ResizeImageimageWidth, nameof(dtoRequestV3022ResizeImageimageWidth), required: false);
+            var __workflow_dtoRequestV3022ResizeImageimageHeight = dtoRequestV3022ResizeImageimageHeight == null ? null : WorkflowExpression.Compile(dtoRequestV3022ResizeImageimageHeight);
+            WorkflowExpression.Validate(__workflow_dtoRequestV3022ResizeImageimageHeight, nameof(dtoRequestV3022ResizeImageimageHeight), required: false);
+            var __workflow_dtoRequestV3022ResizeImageresizeBy = dtoRequestV3022ResizeImageresizeBy == null ? null : WorkflowExpression.Compile(dtoRequestV3022ResizeImageresizeBy);
+            WorkflowExpression.Validate(__workflow_dtoRequestV3022ResizeImageresizeBy, nameof(dtoRequestV3022ResizeImageresizeBy), required: false);
             return new DeferredBodyAction<DtoResponseV3022ResizeImage>(() =>
             {
                 var apiCallPath = "/V3022_ResizeImage";
@@ -3273,22 +3064,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV3022ResizeImage = new JObject();
                 var dtoRequestV3022ResizeImagepropCount = 0;
                 dtoRequestV3022ResizeImagepropCount++;
-                dtoRequestV3022ResizeImage["file"] = ExpressionConverter.ConvertO(dtoRequestV3022ResizeImageimageFile);
-                if (dtoRequestV3022ResizeImageimageWidth != null)
+                dtoRequestV3022ResizeImage["file"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV3022ResizeImageimageFile);
+                if (__workflow_dtoRequestV3022ResizeImageimageWidth != null)
                 {
-                    dtoRequestV3022ResizeImage["width"] = ExpressionConverter.ConvertO(dtoRequestV3022ResizeImageimageWidth);
+                    dtoRequestV3022ResizeImage["width"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV3022ResizeImageimageWidth);
                     dtoRequestV3022ResizeImagepropCount++;
                 }
 
-                if (dtoRequestV3022ResizeImageimageHeight != null)
+                if (__workflow_dtoRequestV3022ResizeImageimageHeight != null)
                 {
-                    dtoRequestV3022ResizeImage["height"] = ExpressionConverter.ConvertO(dtoRequestV3022ResizeImageimageHeight);
+                    dtoRequestV3022ResizeImage["height"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV3022ResizeImageimageHeight);
                     dtoRequestV3022ResizeImagepropCount++;
                 }
 
-                if (dtoRequestV3022ResizeImageresizeBy != null)
+                if (__workflow_dtoRequestV3022ResizeImageresizeBy != null)
                 {
-                    dtoRequestV3022ResizeImage["resizeBy"] = ExpressionConverter.ConvertO(dtoRequestV3022ResizeImageresizeBy);
+                    dtoRequestV3022ResizeImage["resizeBy"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV3022ResizeImageresizeBy);
                     dtoRequestV3022ResizeImagepropCount++;
                 }
 
@@ -3302,18 +3093,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildRotateImage))]
-        public IBodyWorkflowAction<DtoResponseV3031RotateImage> RotateImage([WorkflowExpression] Func<string> dtoRequestV3031RotateImageimageFile, [WorkflowExpression] Func<double> dtoRequestV3031RotateImagerotate = null, [WorkflowExpression] Func<string> dtoRequestV3031RotateImageoutputFormat = null)
+        public IBodyWorkflowAction<DtoResponseV3031RotateImage> RotateImage(Expression<Func<string>> dtoRequestV3031RotateImageimageFile, Expression<Func<double>> dtoRequestV3031RotateImagerotate = null, Expression<Func<string>> dtoRequestV3031RotateImageoutputFormat = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV3031RotateImage> __BuildRotateImage(WorkflowExpression<string> dtoRequestV3031RotateImageimageFile, WorkflowExpression<double> dtoRequestV3031RotateImagerotate = null, WorkflowExpression<string> dtoRequestV3031RotateImageoutputFormat = null)
-        {
-            WorkflowExpression.Validate(dtoRequestV3031RotateImageimageFile, nameof(dtoRequestV3031RotateImageimageFile), required: true);
-            WorkflowExpression.Validate(dtoRequestV3031RotateImagerotate, nameof(dtoRequestV3031RotateImagerotate), required: false);
-            WorkflowExpression.Validate(dtoRequestV3031RotateImageoutputFormat, nameof(dtoRequestV3031RotateImageoutputFormat), required: false);
+            var __workflow_dtoRequestV3031RotateImageimageFile = dtoRequestV3031RotateImageimageFile == null ? null : WorkflowExpression.Compile(dtoRequestV3031RotateImageimageFile);
+            WorkflowExpression.Validate(__workflow_dtoRequestV3031RotateImageimageFile, nameof(dtoRequestV3031RotateImageimageFile), required: true);
+            var __workflow_dtoRequestV3031RotateImagerotate = dtoRequestV3031RotateImagerotate == null ? null : WorkflowExpression.Compile(dtoRequestV3031RotateImagerotate);
+            WorkflowExpression.Validate(__workflow_dtoRequestV3031RotateImagerotate, nameof(dtoRequestV3031RotateImagerotate), required: false);
+            var __workflow_dtoRequestV3031RotateImageoutputFormat = dtoRequestV3031RotateImageoutputFormat == null ? null : WorkflowExpression.Compile(dtoRequestV3031RotateImageoutputFormat);
+            WorkflowExpression.Validate(__workflow_dtoRequestV3031RotateImageoutputFormat, nameof(dtoRequestV3031RotateImageoutputFormat), required: false);
             return new DeferredBodyAction<DtoResponseV3031RotateImage>(() =>
             {
                 var apiCallPath = "/V3031_RotateImage";
@@ -3322,16 +3109,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV3031RotateImage = new JObject();
                 var dtoRequestV3031RotateImagepropCount = 0;
                 dtoRequestV3031RotateImagepropCount++;
-                dtoRequestV3031RotateImage["file"] = ExpressionConverter.ConvertO(dtoRequestV3031RotateImageimageFile);
-                if (dtoRequestV3031RotateImagerotate != null)
+                dtoRequestV3031RotateImage["file"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV3031RotateImageimageFile);
+                if (__workflow_dtoRequestV3031RotateImagerotate != null)
                 {
-                    dtoRequestV3031RotateImage["rotate"] = ExpressionConverter.ConvertO(dtoRequestV3031RotateImagerotate);
+                    dtoRequestV3031RotateImage["rotate"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV3031RotateImagerotate);
                     dtoRequestV3031RotateImagepropCount++;
                 }
 
-                if (dtoRequestV3031RotateImageoutputFormat != null)
+                if (__workflow_dtoRequestV3031RotateImageoutputFormat != null)
                 {
-                    dtoRequestV3031RotateImage["outFormat"] = ExpressionConverter.ConvertO(dtoRequestV3031RotateImageoutputFormat);
+                    dtoRequestV3031RotateImage["outFormat"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV3031RotateImageoutputFormat);
                     dtoRequestV3031RotateImagepropCount++;
                 }
 
@@ -3345,19 +3132,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildRunCode))]
-        public IBodyWorkflowAction<DtoResponseV2151RunCode> RunCode([WorkflowExpression] Func<string> dtopythonOrJavaScriptCode, [WorkflowExpression] Func<int> dtoruntime = null, [WorkflowExpression] Func<int> dtotimeoutSeconds = null, [WorkflowExpression] Func<bool> dtoprintLastExpression = null)
+        public IBodyWorkflowAction<DtoResponseV2151RunCode> RunCode(Expression<Func<string>> dtopythonOrJavaScriptCode, Expression<Func<int>> dtoruntime = null, Expression<Func<int>> dtotimeoutSeconds = null, Expression<Func<bool>> dtoprintLastExpression = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV2151RunCode> __BuildRunCode(WorkflowExpression<string> dtopythonOrJavaScriptCode, WorkflowExpression<int> dtoruntime = null, WorkflowExpression<int> dtotimeoutSeconds = null, WorkflowExpression<bool> dtoprintLastExpression = null)
-        {
-            WorkflowExpression.Validate(dtopythonOrJavaScriptCode, nameof(dtopythonOrJavaScriptCode), required: true);
-            WorkflowExpression.Validate(dtoruntime, nameof(dtoruntime), required: false);
-            WorkflowExpression.Validate(dtotimeoutSeconds, nameof(dtotimeoutSeconds), required: false);
-            WorkflowExpression.Validate(dtoprintLastExpression, nameof(dtoprintLastExpression), required: false);
+            var __workflow_dtopythonOrJavaScriptCode = dtopythonOrJavaScriptCode == null ? null : WorkflowExpression.Compile(dtopythonOrJavaScriptCode);
+            WorkflowExpression.Validate(__workflow_dtopythonOrJavaScriptCode, nameof(dtopythonOrJavaScriptCode), required: true);
+            var __workflow_dtoruntime = dtoruntime == null ? null : WorkflowExpression.Compile(dtoruntime);
+            WorkflowExpression.Validate(__workflow_dtoruntime, nameof(dtoruntime), required: false);
+            var __workflow_dtotimeoutSeconds = dtotimeoutSeconds == null ? null : WorkflowExpression.Compile(dtotimeoutSeconds);
+            WorkflowExpression.Validate(__workflow_dtotimeoutSeconds, nameof(dtotimeoutSeconds), required: false);
+            var __workflow_dtoprintLastExpression = dtoprintLastExpression == null ? null : WorkflowExpression.Compile(dtoprintLastExpression);
+            WorkflowExpression.Validate(__workflow_dtoprintLastExpression, nameof(dtoprintLastExpression), required: false);
             return new DeferredBodyAction<DtoResponseV2151RunCode>(() =>
             {
                 var apiCallPath = "/V2151_RunCode";
@@ -3366,22 +3150,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dto = new JObject();
                 var dtopropCount = 0;
                 dtopropCount++;
-                dto["code"] = ExpressionConverter.ConvertO(dtopythonOrJavaScriptCode);
-                if (dtoruntime != null)
+                dto["code"] = ExpressionConverter.ConvertO(__workflow_dtopythonOrJavaScriptCode);
+                if (__workflow_dtoruntime != null)
                 {
-                    dto["runtime"] = ExpressionConverter.ConvertO(dtoruntime);
+                    dto["runtime"] = ExpressionConverter.ConvertO(__workflow_dtoruntime);
                     dtopropCount++;
                 }
 
-                if (dtotimeoutSeconds != null)
+                if (__workflow_dtotimeoutSeconds != null)
                 {
-                    dto["timeoutSec"] = ExpressionConverter.ConvertO(dtotimeoutSeconds);
+                    dto["timeoutSec"] = ExpressionConverter.ConvertO(__workflow_dtotimeoutSeconds);
                     dtopropCount++;
                 }
 
-                if (dtoprintLastExpression != null)
+                if (__workflow_dtoprintLastExpression != null)
                 {
-                    dto["printLastExpression"] = ExpressionConverter.ConvertO(dtoprintLastExpression);
+                    dto["printLastExpression"] = ExpressionConverter.ConvertO(__workflow_dtoprintLastExpression);
                     dtopropCount++;
                 }
 
@@ -3395,19 +3179,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildSmartTextSplit))]
-        public IBodyWorkflowAction<DtoResponseV2130SmartTextSplit> SmartTextSplit([WorkflowExpression] Func<string> dtoRequestV2130SmartTextSplitinputText, [WorkflowExpression] Func<string> dtoRequestV2130SmartTextSplitsplitPattern = null, [WorkflowExpression] Func<bool> dtoRequestV2130SmartTextSplittrimEnabled = null, [WorkflowExpression] Func<string> dtoRequestV2130SmartTextSplittrimStrings = null)
+        public IBodyWorkflowAction<DtoResponseV2130SmartTextSplit> SmartTextSplit(Expression<Func<string>> dtoRequestV2130SmartTextSplitinputText, Expression<Func<string>> dtoRequestV2130SmartTextSplitsplitPattern = null, Expression<Func<bool>> dtoRequestV2130SmartTextSplittrimEnabled = null, Expression<Func<string>> dtoRequestV2130SmartTextSplittrimStrings = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV2130SmartTextSplit> __BuildSmartTextSplit(WorkflowExpression<string> dtoRequestV2130SmartTextSplitinputText, WorkflowExpression<string> dtoRequestV2130SmartTextSplitsplitPattern = null, WorkflowExpression<bool> dtoRequestV2130SmartTextSplittrimEnabled = null, WorkflowExpression<string> dtoRequestV2130SmartTextSplittrimStrings = null)
-        {
-            WorkflowExpression.Validate(dtoRequestV2130SmartTextSplitinputText, nameof(dtoRequestV2130SmartTextSplitinputText), required: true);
-            WorkflowExpression.Validate(dtoRequestV2130SmartTextSplitsplitPattern, nameof(dtoRequestV2130SmartTextSplitsplitPattern), required: false);
-            WorkflowExpression.Validate(dtoRequestV2130SmartTextSplittrimEnabled, nameof(dtoRequestV2130SmartTextSplittrimEnabled), required: false);
-            WorkflowExpression.Validate(dtoRequestV2130SmartTextSplittrimStrings, nameof(dtoRequestV2130SmartTextSplittrimStrings), required: false);
+            var __workflow_dtoRequestV2130SmartTextSplitinputText = dtoRequestV2130SmartTextSplitinputText == null ? null : WorkflowExpression.Compile(dtoRequestV2130SmartTextSplitinputText);
+            WorkflowExpression.Validate(__workflow_dtoRequestV2130SmartTextSplitinputText, nameof(dtoRequestV2130SmartTextSplitinputText), required: true);
+            var __workflow_dtoRequestV2130SmartTextSplitsplitPattern = dtoRequestV2130SmartTextSplitsplitPattern == null ? null : WorkflowExpression.Compile(dtoRequestV2130SmartTextSplitsplitPattern);
+            WorkflowExpression.Validate(__workflow_dtoRequestV2130SmartTextSplitsplitPattern, nameof(dtoRequestV2130SmartTextSplitsplitPattern), required: false);
+            var __workflow_dtoRequestV2130SmartTextSplittrimEnabled = dtoRequestV2130SmartTextSplittrimEnabled == null ? null : WorkflowExpression.Compile(dtoRequestV2130SmartTextSplittrimEnabled);
+            WorkflowExpression.Validate(__workflow_dtoRequestV2130SmartTextSplittrimEnabled, nameof(dtoRequestV2130SmartTextSplittrimEnabled), required: false);
+            var __workflow_dtoRequestV2130SmartTextSplittrimStrings = dtoRequestV2130SmartTextSplittrimStrings == null ? null : WorkflowExpression.Compile(dtoRequestV2130SmartTextSplittrimStrings);
+            WorkflowExpression.Validate(__workflow_dtoRequestV2130SmartTextSplittrimStrings, nameof(dtoRequestV2130SmartTextSplittrimStrings), required: false);
             return new DeferredBodyAction<DtoResponseV2130SmartTextSplit>(() =>
             {
                 var apiCallPath = "/V2130_SmartTextSplit";
@@ -3416,22 +3197,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV2130SmartTextSplit = new JObject();
                 var dtoRequestV2130SmartTextSplitpropCount = 0;
                 dtoRequestV2130SmartTextSplitpropCount++;
-                dtoRequestV2130SmartTextSplit["inputText"] = ExpressionConverter.ConvertO(dtoRequestV2130SmartTextSplitinputText);
-                if (dtoRequestV2130SmartTextSplitsplitPattern != null)
+                dtoRequestV2130SmartTextSplit["inputText"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV2130SmartTextSplitinputText);
+                if (__workflow_dtoRequestV2130SmartTextSplitsplitPattern != null)
                 {
-                    dtoRequestV2130SmartTextSplit["splitPattern"] = ExpressionConverter.ConvertO(dtoRequestV2130SmartTextSplitsplitPattern);
+                    dtoRequestV2130SmartTextSplit["splitPattern"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV2130SmartTextSplitsplitPattern);
                     dtoRequestV2130SmartTextSplitpropCount++;
                 }
 
-                if (dtoRequestV2130SmartTextSplittrimEnabled != null)
+                if (__workflow_dtoRequestV2130SmartTextSplittrimEnabled != null)
                 {
-                    dtoRequestV2130SmartTextSplit["trimEnabled"] = ExpressionConverter.ConvertO(dtoRequestV2130SmartTextSplittrimEnabled);
+                    dtoRequestV2130SmartTextSplit["trimEnabled"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV2130SmartTextSplittrimEnabled);
                     dtoRequestV2130SmartTextSplitpropCount++;
                 }
 
-                if (dtoRequestV2130SmartTextSplittrimStrings != null)
+                if (__workflow_dtoRequestV2130SmartTextSplittrimStrings != null)
                 {
-                    dtoRequestV2130SmartTextSplit["trimStrings"] = ExpressionConverter.ConvertO(dtoRequestV2130SmartTextSplittrimStrings);
+                    dtoRequestV2130SmartTextSplit["trimStrings"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV2130SmartTextSplittrimStrings);
                     dtoRequestV2130SmartTextSplitpropCount++;
                 }
 
@@ -3445,27 +3226,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildSortCsv))]
-        public IBodyWorkflowAction<DtoResponseV2061SortCsv> SortCsv([WorkflowExpression] Func<string> dtoRequestV2061SortCsvcSV, [WorkflowExpression] Func<bool> dtoRequestV2061SortCsvcSVHasHeaders = null, [WorkflowExpression] Func<bool> dtoRequestV2061SortCsvautoDetectFieldTypes = null, [WorkflowExpression] Func<int> dtoRequestV2061SortCsvnumberOfRowsForFieldTypeDetection = null, [WorkflowExpression] Func<bool> dtoRequestV2061SortCsvremoveEmptyRows = null, [WorkflowExpression] Func<int> dtoRequestV2061SortCsvskipANumberOfRows = null, [WorkflowExpression] Func<int> dtoRequestV2061SortCsvstopAtASpecificRow = null, [WorkflowExpression] Func<string> dtoRequestV2061SortCsvseparator = null, [WorkflowExpression] Func<bool> dtoRequestV2061SortCsvautoDetectQuoteDelimiter = null, [WorkflowExpression] Func<string> dtoRequestV2061SortCsvsortColumn = null, [WorkflowExpression] Func<string> dtoRequestV2061SortCsvfurtherSortingColumn = null, [WorkflowExpression] Func<bool> dtoRequestV2061SortCsvreverseOrder = null)
+        public IBodyWorkflowAction<DtoResponseV2061SortCsv> SortCsv(Expression<Func<string>> dtoRequestV2061SortCsvcSV, Expression<Func<bool>> dtoRequestV2061SortCsvcSVHasHeaders = null, Expression<Func<bool>> dtoRequestV2061SortCsvautoDetectFieldTypes = null, Expression<Func<int>> dtoRequestV2061SortCsvnumberOfRowsForFieldTypeDetection = null, Expression<Func<bool>> dtoRequestV2061SortCsvremoveEmptyRows = null, Expression<Func<int>> dtoRequestV2061SortCsvskipANumberOfRows = null, Expression<Func<int>> dtoRequestV2061SortCsvstopAtASpecificRow = null, Expression<Func<string>> dtoRequestV2061SortCsvseparator = null, Expression<Func<bool>> dtoRequestV2061SortCsvautoDetectQuoteDelimiter = null, Expression<Func<string>> dtoRequestV2061SortCsvsortColumn = null, Expression<Func<string>> dtoRequestV2061SortCsvfurtherSortingColumn = null, Expression<Func<bool>> dtoRequestV2061SortCsvreverseOrder = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV2061SortCsv> __BuildSortCsv(WorkflowExpression<string> dtoRequestV2061SortCsvcSV, WorkflowExpression<bool> dtoRequestV2061SortCsvcSVHasHeaders = null, WorkflowExpression<bool> dtoRequestV2061SortCsvautoDetectFieldTypes = null, WorkflowExpression<int> dtoRequestV2061SortCsvnumberOfRowsForFieldTypeDetection = null, WorkflowExpression<bool> dtoRequestV2061SortCsvremoveEmptyRows = null, WorkflowExpression<int> dtoRequestV2061SortCsvskipANumberOfRows = null, WorkflowExpression<int> dtoRequestV2061SortCsvstopAtASpecificRow = null, WorkflowExpression<string> dtoRequestV2061SortCsvseparator = null, WorkflowExpression<bool> dtoRequestV2061SortCsvautoDetectQuoteDelimiter = null, WorkflowExpression<string> dtoRequestV2061SortCsvsortColumn = null, WorkflowExpression<string> dtoRequestV2061SortCsvfurtherSortingColumn = null, WorkflowExpression<bool> dtoRequestV2061SortCsvreverseOrder = null)
-        {
-            WorkflowExpression.Validate(dtoRequestV2061SortCsvcSV, nameof(dtoRequestV2061SortCsvcSV), required: true);
-            WorkflowExpression.Validate(dtoRequestV2061SortCsvcSVHasHeaders, nameof(dtoRequestV2061SortCsvcSVHasHeaders), required: false);
-            WorkflowExpression.Validate(dtoRequestV2061SortCsvautoDetectFieldTypes, nameof(dtoRequestV2061SortCsvautoDetectFieldTypes), required: false);
-            WorkflowExpression.Validate(dtoRequestV2061SortCsvnumberOfRowsForFieldTypeDetection, nameof(dtoRequestV2061SortCsvnumberOfRowsForFieldTypeDetection), required: false);
-            WorkflowExpression.Validate(dtoRequestV2061SortCsvremoveEmptyRows, nameof(dtoRequestV2061SortCsvremoveEmptyRows), required: false);
-            WorkflowExpression.Validate(dtoRequestV2061SortCsvskipANumberOfRows, nameof(dtoRequestV2061SortCsvskipANumberOfRows), required: false);
-            WorkflowExpression.Validate(dtoRequestV2061SortCsvstopAtASpecificRow, nameof(dtoRequestV2061SortCsvstopAtASpecificRow), required: false);
-            WorkflowExpression.Validate(dtoRequestV2061SortCsvseparator, nameof(dtoRequestV2061SortCsvseparator), required: false);
-            WorkflowExpression.Validate(dtoRequestV2061SortCsvautoDetectQuoteDelimiter, nameof(dtoRequestV2061SortCsvautoDetectQuoteDelimiter), required: false);
-            WorkflowExpression.Validate(dtoRequestV2061SortCsvsortColumn, nameof(dtoRequestV2061SortCsvsortColumn), required: false);
-            WorkflowExpression.Validate(dtoRequestV2061SortCsvfurtherSortingColumn, nameof(dtoRequestV2061SortCsvfurtherSortingColumn), required: false);
-            WorkflowExpression.Validate(dtoRequestV2061SortCsvreverseOrder, nameof(dtoRequestV2061SortCsvreverseOrder), required: false);
+            var __workflow_dtoRequestV2061SortCsvcSV = dtoRequestV2061SortCsvcSV == null ? null : WorkflowExpression.Compile(dtoRequestV2061SortCsvcSV);
+            WorkflowExpression.Validate(__workflow_dtoRequestV2061SortCsvcSV, nameof(dtoRequestV2061SortCsvcSV), required: true);
+            var __workflow_dtoRequestV2061SortCsvcSVHasHeaders = dtoRequestV2061SortCsvcSVHasHeaders == null ? null : WorkflowExpression.Compile(dtoRequestV2061SortCsvcSVHasHeaders);
+            WorkflowExpression.Validate(__workflow_dtoRequestV2061SortCsvcSVHasHeaders, nameof(dtoRequestV2061SortCsvcSVHasHeaders), required: false);
+            var __workflow_dtoRequestV2061SortCsvautoDetectFieldTypes = dtoRequestV2061SortCsvautoDetectFieldTypes == null ? null : WorkflowExpression.Compile(dtoRequestV2061SortCsvautoDetectFieldTypes);
+            WorkflowExpression.Validate(__workflow_dtoRequestV2061SortCsvautoDetectFieldTypes, nameof(dtoRequestV2061SortCsvautoDetectFieldTypes), required: false);
+            var __workflow_dtoRequestV2061SortCsvnumberOfRowsForFieldTypeDetection = dtoRequestV2061SortCsvnumberOfRowsForFieldTypeDetection == null ? null : WorkflowExpression.Compile(dtoRequestV2061SortCsvnumberOfRowsForFieldTypeDetection);
+            WorkflowExpression.Validate(__workflow_dtoRequestV2061SortCsvnumberOfRowsForFieldTypeDetection, nameof(dtoRequestV2061SortCsvnumberOfRowsForFieldTypeDetection), required: false);
+            var __workflow_dtoRequestV2061SortCsvremoveEmptyRows = dtoRequestV2061SortCsvremoveEmptyRows == null ? null : WorkflowExpression.Compile(dtoRequestV2061SortCsvremoveEmptyRows);
+            WorkflowExpression.Validate(__workflow_dtoRequestV2061SortCsvremoveEmptyRows, nameof(dtoRequestV2061SortCsvremoveEmptyRows), required: false);
+            var __workflow_dtoRequestV2061SortCsvskipANumberOfRows = dtoRequestV2061SortCsvskipANumberOfRows == null ? null : WorkflowExpression.Compile(dtoRequestV2061SortCsvskipANumberOfRows);
+            WorkflowExpression.Validate(__workflow_dtoRequestV2061SortCsvskipANumberOfRows, nameof(dtoRequestV2061SortCsvskipANumberOfRows), required: false);
+            var __workflow_dtoRequestV2061SortCsvstopAtASpecificRow = dtoRequestV2061SortCsvstopAtASpecificRow == null ? null : WorkflowExpression.Compile(dtoRequestV2061SortCsvstopAtASpecificRow);
+            WorkflowExpression.Validate(__workflow_dtoRequestV2061SortCsvstopAtASpecificRow, nameof(dtoRequestV2061SortCsvstopAtASpecificRow), required: false);
+            var __workflow_dtoRequestV2061SortCsvseparator = dtoRequestV2061SortCsvseparator == null ? null : WorkflowExpression.Compile(dtoRequestV2061SortCsvseparator);
+            WorkflowExpression.Validate(__workflow_dtoRequestV2061SortCsvseparator, nameof(dtoRequestV2061SortCsvseparator), required: false);
+            var __workflow_dtoRequestV2061SortCsvautoDetectQuoteDelimiter = dtoRequestV2061SortCsvautoDetectQuoteDelimiter == null ? null : WorkflowExpression.Compile(dtoRequestV2061SortCsvautoDetectQuoteDelimiter);
+            WorkflowExpression.Validate(__workflow_dtoRequestV2061SortCsvautoDetectQuoteDelimiter, nameof(dtoRequestV2061SortCsvautoDetectQuoteDelimiter), required: false);
+            var __workflow_dtoRequestV2061SortCsvsortColumn = dtoRequestV2061SortCsvsortColumn == null ? null : WorkflowExpression.Compile(dtoRequestV2061SortCsvsortColumn);
+            WorkflowExpression.Validate(__workflow_dtoRequestV2061SortCsvsortColumn, nameof(dtoRequestV2061SortCsvsortColumn), required: false);
+            var __workflow_dtoRequestV2061SortCsvfurtherSortingColumn = dtoRequestV2061SortCsvfurtherSortingColumn == null ? null : WorkflowExpression.Compile(dtoRequestV2061SortCsvfurtherSortingColumn);
+            WorkflowExpression.Validate(__workflow_dtoRequestV2061SortCsvfurtherSortingColumn, nameof(dtoRequestV2061SortCsvfurtherSortingColumn), required: false);
+            var __workflow_dtoRequestV2061SortCsvreverseOrder = dtoRequestV2061SortCsvreverseOrder == null ? null : WorkflowExpression.Compile(dtoRequestV2061SortCsvreverseOrder);
+            WorkflowExpression.Validate(__workflow_dtoRequestV2061SortCsvreverseOrder, nameof(dtoRequestV2061SortCsvreverseOrder), required: false);
             return new DeferredBodyAction<DtoResponseV2061SortCsv>(() =>
             {
                 var apiCallPath = "/V2061_SortCsv";
@@ -3474,12 +3260,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV2061SortCsv = new JObject();
                 var dtoRequestV2061SortCsvpropCount = 0;
                 dtoRequestV2061SortCsvpropCount++;
-                dtoRequestV2061SortCsv["csv"] = ExpressionConverter.ConvertO(dtoRequestV2061SortCsvcSV);
-                if (dtoRequestV2061SortCsvcSVHasHeaders != null)
+                dtoRequestV2061SortCsv["csv"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV2061SortCsvcSV);
+                if (__workflow_dtoRequestV2061SortCsvcSVHasHeaders != null)
                 {
-                    if (dtoRequestV2061SortCsvcSVHasHeaders != null)
+                    if (__workflow_dtoRequestV2061SortCsvcSVHasHeaders != null)
                     {
-                        dtoRequestV2061SortCsv["dataIncludesHeader"] = ExpressionConverter.ConvertO(dtoRequestV2061SortCsvcSVHasHeaders);
+                        dtoRequestV2061SortCsv["dataIncludesHeader"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV2061SortCsvcSVHasHeaders);
                         dtoRequestV2061SortCsvpropCount++;
                     }
 
@@ -3491,11 +3277,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                     dtoRequestV2061SortCsvpropCount++;
                 }
 
-                if (dtoRequestV2061SortCsvautoDetectFieldTypes != null)
+                if (__workflow_dtoRequestV2061SortCsvautoDetectFieldTypes != null)
                 {
-                    if (dtoRequestV2061SortCsvautoDetectFieldTypes != null)
+                    if (__workflow_dtoRequestV2061SortCsvautoDetectFieldTypes != null)
                     {
-                        dtoRequestV2061SortCsv["autoDiscoverFieldTypes"] = ExpressionConverter.ConvertO(dtoRequestV2061SortCsvautoDetectFieldTypes);
+                        dtoRequestV2061SortCsv["autoDiscoverFieldTypes"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV2061SortCsvautoDetectFieldTypes);
                         dtoRequestV2061SortCsvpropCount++;
                     }
 
@@ -3507,17 +3293,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                     dtoRequestV2061SortCsvpropCount++;
                 }
 
-                if (dtoRequestV2061SortCsvnumberOfRowsForFieldTypeDetection != null)
+                if (__workflow_dtoRequestV2061SortCsvnumberOfRowsForFieldTypeDetection != null)
                 {
-                    dtoRequestV2061SortCsv["maxScanRows"] = ExpressionConverter.ConvertO(dtoRequestV2061SortCsvnumberOfRowsForFieldTypeDetection);
+                    dtoRequestV2061SortCsv["maxScanRows"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV2061SortCsvnumberOfRowsForFieldTypeDetection);
                     dtoRequestV2061SortCsvpropCount++;
                 }
 
-                if (dtoRequestV2061SortCsvremoveEmptyRows != null)
+                if (__workflow_dtoRequestV2061SortCsvremoveEmptyRows != null)
                 {
-                    if (dtoRequestV2061SortCsvremoveEmptyRows != null)
+                    if (__workflow_dtoRequestV2061SortCsvremoveEmptyRows != null)
                     {
-                        dtoRequestV2061SortCsv["ignoreEmptyLine"] = ExpressionConverter.ConvertO(dtoRequestV2061SortCsvremoveEmptyRows);
+                        dtoRequestV2061SortCsv["ignoreEmptyLine"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV2061SortCsvremoveEmptyRows);
                         dtoRequestV2061SortCsvpropCount++;
                     }
 
@@ -3529,29 +3315,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                     dtoRequestV2061SortCsvpropCount++;
                 }
 
-                if (dtoRequestV2061SortCsvskipANumberOfRows != null)
+                if (__workflow_dtoRequestV2061SortCsvskipANumberOfRows != null)
                 {
-                    dtoRequestV2061SortCsv["skip"] = ExpressionConverter.ConvertO(dtoRequestV2061SortCsvskipANumberOfRows);
+                    dtoRequestV2061SortCsv["skip"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV2061SortCsvskipANumberOfRows);
                     dtoRequestV2061SortCsvpropCount++;
                 }
 
-                if (dtoRequestV2061SortCsvstopAtASpecificRow != null)
+                if (__workflow_dtoRequestV2061SortCsvstopAtASpecificRow != null)
                 {
-                    dtoRequestV2061SortCsv["skipLast"] = ExpressionConverter.ConvertO(dtoRequestV2061SortCsvstopAtASpecificRow);
+                    dtoRequestV2061SortCsv["skipLast"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV2061SortCsvstopAtASpecificRow);
                     dtoRequestV2061SortCsvpropCount++;
                 }
 
-                if (dtoRequestV2061SortCsvseparator != null)
+                if (__workflow_dtoRequestV2061SortCsvseparator != null)
                 {
-                    dtoRequestV2061SortCsv["delimiter"] = ExpressionConverter.ConvertO(dtoRequestV2061SortCsvseparator);
+                    dtoRequestV2061SortCsv["delimiter"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV2061SortCsvseparator);
                     dtoRequestV2061SortCsvpropCount++;
                 }
 
-                if (dtoRequestV2061SortCsvautoDetectQuoteDelimiter != null)
+                if (__workflow_dtoRequestV2061SortCsvautoDetectQuoteDelimiter != null)
                 {
-                    if (dtoRequestV2061SortCsvautoDetectQuoteDelimiter != null)
+                    if (__workflow_dtoRequestV2061SortCsvautoDetectQuoteDelimiter != null)
                     {
-                        dtoRequestV2061SortCsv["mayHaveQuotedFields"] = ExpressionConverter.ConvertO(dtoRequestV2061SortCsvautoDetectQuoteDelimiter);
+                        dtoRequestV2061SortCsv["mayHaveQuotedFields"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV2061SortCsvautoDetectQuoteDelimiter);
                         dtoRequestV2061SortCsvpropCount++;
                     }
 
@@ -3563,23 +3349,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                     dtoRequestV2061SortCsvpropCount++;
                 }
 
-                if (dtoRequestV2061SortCsvsortColumn != null)
+                if (__workflow_dtoRequestV2061SortCsvsortColumn != null)
                 {
-                    dtoRequestV2061SortCsv["sortColumn"] = ExpressionConverter.ConvertO(dtoRequestV2061SortCsvsortColumn);
+                    dtoRequestV2061SortCsv["sortColumn"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV2061SortCsvsortColumn);
                     dtoRequestV2061SortCsvpropCount++;
                 }
 
-                if (dtoRequestV2061SortCsvfurtherSortingColumn != null)
+                if (__workflow_dtoRequestV2061SortCsvfurtherSortingColumn != null)
                 {
-                    dtoRequestV2061SortCsv["secondSortColumn"] = ExpressionConverter.ConvertO(dtoRequestV2061SortCsvfurtherSortingColumn);
+                    dtoRequestV2061SortCsv["secondSortColumn"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV2061SortCsvfurtherSortingColumn);
                     dtoRequestV2061SortCsvpropCount++;
                 }
 
-                if (dtoRequestV2061SortCsvreverseOrder != null)
+                if (__workflow_dtoRequestV2061SortCsvreverseOrder != null)
                 {
-                    if (dtoRequestV2061SortCsvreverseOrder != null)
+                    if (__workflow_dtoRequestV2061SortCsvreverseOrder != null)
                     {
-                        dtoRequestV2061SortCsv["isReverse"] = ExpressionConverter.ConvertO(dtoRequestV2061SortCsvreverseOrder);
+                        dtoRequestV2061SortCsv["isReverse"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV2061SortCsvreverseOrder);
                         dtoRequestV2061SortCsvpropCount++;
                     }
 
@@ -3601,19 +3387,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildSortJson))]
-        public IBodyWorkflowAction<DtoResponseV2051SortJson> SortJson([WorkflowExpression] Func<string> dtoRequestV2051SortJsonjSON, [WorkflowExpression] Func<string> dtoRequestV2051SortJsonsortProperty = null, [WorkflowExpression] Func<string> dtoRequestV2051SortJsonfurtherSortingProperty = null, [WorkflowExpression] Func<bool> dtoRequestV2051SortJsonreverseOrder = null)
+        public IBodyWorkflowAction<DtoResponseV2051SortJson> SortJson(Expression<Func<string>> dtoRequestV2051SortJsonjSON, Expression<Func<string>> dtoRequestV2051SortJsonsortProperty = null, Expression<Func<string>> dtoRequestV2051SortJsonfurtherSortingProperty = null, Expression<Func<bool>> dtoRequestV2051SortJsonreverseOrder = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV2051SortJson> __BuildSortJson(WorkflowExpression<string> dtoRequestV2051SortJsonjSON, WorkflowExpression<string> dtoRequestV2051SortJsonsortProperty = null, WorkflowExpression<string> dtoRequestV2051SortJsonfurtherSortingProperty = null, WorkflowExpression<bool> dtoRequestV2051SortJsonreverseOrder = null)
-        {
-            WorkflowExpression.Validate(dtoRequestV2051SortJsonjSON, nameof(dtoRequestV2051SortJsonjSON), required: true);
-            WorkflowExpression.Validate(dtoRequestV2051SortJsonsortProperty, nameof(dtoRequestV2051SortJsonsortProperty), required: false);
-            WorkflowExpression.Validate(dtoRequestV2051SortJsonfurtherSortingProperty, nameof(dtoRequestV2051SortJsonfurtherSortingProperty), required: false);
-            WorkflowExpression.Validate(dtoRequestV2051SortJsonreverseOrder, nameof(dtoRequestV2051SortJsonreverseOrder), required: false);
+            var __workflow_dtoRequestV2051SortJsonjSON = dtoRequestV2051SortJsonjSON == null ? null : WorkflowExpression.Compile(dtoRequestV2051SortJsonjSON);
+            WorkflowExpression.Validate(__workflow_dtoRequestV2051SortJsonjSON, nameof(dtoRequestV2051SortJsonjSON), required: true);
+            var __workflow_dtoRequestV2051SortJsonsortProperty = dtoRequestV2051SortJsonsortProperty == null ? null : WorkflowExpression.Compile(dtoRequestV2051SortJsonsortProperty);
+            WorkflowExpression.Validate(__workflow_dtoRequestV2051SortJsonsortProperty, nameof(dtoRequestV2051SortJsonsortProperty), required: false);
+            var __workflow_dtoRequestV2051SortJsonfurtherSortingProperty = dtoRequestV2051SortJsonfurtherSortingProperty == null ? null : WorkflowExpression.Compile(dtoRequestV2051SortJsonfurtherSortingProperty);
+            WorkflowExpression.Validate(__workflow_dtoRequestV2051SortJsonfurtherSortingProperty, nameof(dtoRequestV2051SortJsonfurtherSortingProperty), required: false);
+            var __workflow_dtoRequestV2051SortJsonreverseOrder = dtoRequestV2051SortJsonreverseOrder == null ? null : WorkflowExpression.Compile(dtoRequestV2051SortJsonreverseOrder);
+            WorkflowExpression.Validate(__workflow_dtoRequestV2051SortJsonreverseOrder, nameof(dtoRequestV2051SortJsonreverseOrder), required: false);
             return new DeferredBodyAction<DtoResponseV2051SortJson>(() =>
             {
                 var apiCallPath = "/V2051_SortJson";
@@ -3622,24 +3405,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV2051SortJson = new JObject();
                 var dtoRequestV2051SortJsonpropCount = 0;
                 dtoRequestV2051SortJsonpropCount++;
-                dtoRequestV2051SortJson["json"] = ExpressionConverter.ConvertO(dtoRequestV2051SortJsonjSON);
-                if (dtoRequestV2051SortJsonsortProperty != null)
+                dtoRequestV2051SortJson["json"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV2051SortJsonjSON);
+                if (__workflow_dtoRequestV2051SortJsonsortProperty != null)
                 {
-                    dtoRequestV2051SortJson["sortProperty"] = ExpressionConverter.ConvertO(dtoRequestV2051SortJsonsortProperty);
+                    dtoRequestV2051SortJson["sortProperty"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV2051SortJsonsortProperty);
                     dtoRequestV2051SortJsonpropCount++;
                 }
 
-                if (dtoRequestV2051SortJsonfurtherSortingProperty != null)
+                if (__workflow_dtoRequestV2051SortJsonfurtherSortingProperty != null)
                 {
-                    dtoRequestV2051SortJson["secondSortProperty"] = ExpressionConverter.ConvertO(dtoRequestV2051SortJsonfurtherSortingProperty);
+                    dtoRequestV2051SortJson["secondSortProperty"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV2051SortJsonfurtherSortingProperty);
                     dtoRequestV2051SortJsonpropCount++;
                 }
 
-                if (dtoRequestV2051SortJsonreverseOrder != null)
+                if (__workflow_dtoRequestV2051SortJsonreverseOrder != null)
                 {
-                    if (dtoRequestV2051SortJsonreverseOrder != null)
+                    if (__workflow_dtoRequestV2051SortJsonreverseOrder != null)
                     {
-                        dtoRequestV2051SortJson["isReverse"] = ExpressionConverter.ConvertO(dtoRequestV2051SortJsonreverseOrder);
+                        dtoRequestV2051SortJson["isReverse"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV2051SortJsonreverseOrder);
                         dtoRequestV2051SortJsonpropCount++;
                     }
 
@@ -3661,18 +3444,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildTranslate))]
-        public IBodyWorkflowAction<DtoResponseV2041Translate> Translate([WorkflowExpression] Func<string> dtoRequestV2041Translatetext, [WorkflowExpression] Func<string> dtoRequestV2041Translateto, [WorkflowExpression] Func<string> dtoRequestV2041Translatefrom = null)
+        public IBodyWorkflowAction<DtoResponseV2041Translate> Translate(Expression<Func<string>> dtoRequestV2041Translatetext, Expression<Func<string>> dtoRequestV2041Translateto, Expression<Func<string>> dtoRequestV2041Translatefrom = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV2041Translate> __BuildTranslate(WorkflowExpression<string> dtoRequestV2041Translatetext, WorkflowExpression<string> dtoRequestV2041Translateto, WorkflowExpression<string> dtoRequestV2041Translatefrom = null)
-        {
-            WorkflowExpression.Validate(dtoRequestV2041Translatetext, nameof(dtoRequestV2041Translatetext), required: true);
-            WorkflowExpression.Validate(dtoRequestV2041Translateto, nameof(dtoRequestV2041Translateto), required: true);
-            WorkflowExpression.Validate(dtoRequestV2041Translatefrom, nameof(dtoRequestV2041Translatefrom), required: false);
+            var __workflow_dtoRequestV2041Translatetext = dtoRequestV2041Translatetext == null ? null : WorkflowExpression.Compile(dtoRequestV2041Translatetext);
+            WorkflowExpression.Validate(__workflow_dtoRequestV2041Translatetext, nameof(dtoRequestV2041Translatetext), required: true);
+            var __workflow_dtoRequestV2041Translateto = dtoRequestV2041Translateto == null ? null : WorkflowExpression.Compile(dtoRequestV2041Translateto);
+            WorkflowExpression.Validate(__workflow_dtoRequestV2041Translateto, nameof(dtoRequestV2041Translateto), required: true);
+            var __workflow_dtoRequestV2041Translatefrom = dtoRequestV2041Translatefrom == null ? null : WorkflowExpression.Compile(dtoRequestV2041Translatefrom);
+            WorkflowExpression.Validate(__workflow_dtoRequestV2041Translatefrom, nameof(dtoRequestV2041Translatefrom), required: false);
             return new DeferredBodyAction<DtoResponseV2041Translate>(() =>
             {
                 var apiCallPath = "/V2041_Translate";
@@ -3681,15 +3460,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV2041Translate = new JObject();
                 var dtoRequestV2041TranslatepropCount = 0;
                 dtoRequestV2041TranslatepropCount++;
-                dtoRequestV2041Translate["text"] = ExpressionConverter.ConvertO(dtoRequestV2041Translatetext);
-                if (dtoRequestV2041Translatefrom != null)
+                dtoRequestV2041Translate["text"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV2041Translatetext);
+                if (__workflow_dtoRequestV2041Translatefrom != null)
                 {
-                    dtoRequestV2041Translate["from"] = ExpressionConverter.ConvertO(dtoRequestV2041Translatefrom);
+                    dtoRequestV2041Translate["from"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV2041Translatefrom);
                     dtoRequestV2041TranslatepropCount++;
                 }
 
                 dtoRequestV2041TranslatepropCount++;
-                dtoRequestV2041Translate["to"] = ExpressionConverter.ConvertO(dtoRequestV2041Translateto);
+                dtoRequestV2041Translate["to"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV2041Translateto);
                 if (dtoRequestV2041TranslatepropCount > 0)
                 {
                     callPayload.Body = dtoRequestV2041Translate;
@@ -3700,18 +3479,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildUnProtectPdf))]
-        public IBodyWorkflowAction<DtoResponseV4051UnProtectPdf> UnProtectPdf([WorkflowExpression] Func<string> dtoRequestV4051UnProtectPdffile, [WorkflowExpression] Func<string> dtoRequestV4051UnProtectPdfownerPassword = null, [WorkflowExpression] Func<bool> dtoRequestV4051UnProtectPdfremovePermissions = null)
+        public IBodyWorkflowAction<DtoResponseV4051UnProtectPdf> UnProtectPdf(Expression<Func<string>> dtoRequestV4051UnProtectPdffile, Expression<Func<string>> dtoRequestV4051UnProtectPdfownerPassword = null, Expression<Func<bool>> dtoRequestV4051UnProtectPdfremovePermissions = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV4051UnProtectPdf> __BuildUnProtectPdf(WorkflowExpression<string> dtoRequestV4051UnProtectPdffile, WorkflowExpression<string> dtoRequestV4051UnProtectPdfownerPassword = null, WorkflowExpression<bool> dtoRequestV4051UnProtectPdfremovePermissions = null)
-        {
-            WorkflowExpression.Validate(dtoRequestV4051UnProtectPdffile, nameof(dtoRequestV4051UnProtectPdffile), required: true);
-            WorkflowExpression.Validate(dtoRequestV4051UnProtectPdfownerPassword, nameof(dtoRequestV4051UnProtectPdfownerPassword), required: false);
-            WorkflowExpression.Validate(dtoRequestV4051UnProtectPdfremovePermissions, nameof(dtoRequestV4051UnProtectPdfremovePermissions), required: false);
+            var __workflow_dtoRequestV4051UnProtectPdffile = dtoRequestV4051UnProtectPdffile == null ? null : WorkflowExpression.Compile(dtoRequestV4051UnProtectPdffile);
+            WorkflowExpression.Validate(__workflow_dtoRequestV4051UnProtectPdffile, nameof(dtoRequestV4051UnProtectPdffile), required: true);
+            var __workflow_dtoRequestV4051UnProtectPdfownerPassword = dtoRequestV4051UnProtectPdfownerPassword == null ? null : WorkflowExpression.Compile(dtoRequestV4051UnProtectPdfownerPassword);
+            WorkflowExpression.Validate(__workflow_dtoRequestV4051UnProtectPdfownerPassword, nameof(dtoRequestV4051UnProtectPdfownerPassword), required: false);
+            var __workflow_dtoRequestV4051UnProtectPdfremovePermissions = dtoRequestV4051UnProtectPdfremovePermissions == null ? null : WorkflowExpression.Compile(dtoRequestV4051UnProtectPdfremovePermissions);
+            WorkflowExpression.Validate(__workflow_dtoRequestV4051UnProtectPdfremovePermissions, nameof(dtoRequestV4051UnProtectPdfremovePermissions), required: false);
             return new DeferredBodyAction<DtoResponseV4051UnProtectPdf>(() =>
             {
                 var apiCallPath = "/V4051_UnProtectPdf";
@@ -3720,16 +3495,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV4051UnProtectPdf = new JObject();
                 var dtoRequestV4051UnProtectPdfpropCount = 0;
                 dtoRequestV4051UnProtectPdfpropCount++;
-                dtoRequestV4051UnProtectPdf["file"] = ExpressionConverter.ConvertO(dtoRequestV4051UnProtectPdffile);
-                if (dtoRequestV4051UnProtectPdfownerPassword != null)
+                dtoRequestV4051UnProtectPdf["file"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV4051UnProtectPdffile);
+                if (__workflow_dtoRequestV4051UnProtectPdfownerPassword != null)
                 {
-                    dtoRequestV4051UnProtectPdf["ownerPassword"] = ExpressionConverter.ConvertO(dtoRequestV4051UnProtectPdfownerPassword);
+                    dtoRequestV4051UnProtectPdf["ownerPassword"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV4051UnProtectPdfownerPassword);
                     dtoRequestV4051UnProtectPdfpropCount++;
                 }
 
-                if (dtoRequestV4051UnProtectPdfremovePermissions != null)
+                if (__workflow_dtoRequestV4051UnProtectPdfremovePermissions != null)
                 {
-                    dtoRequestV4051UnProtectPdf["removePermissions"] = ExpressionConverter.ConvertO(dtoRequestV4051UnProtectPdfremovePermissions);
+                    dtoRequestV4051UnProtectPdf["removePermissions"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV4051UnProtectPdfremovePermissions);
                     dtoRequestV4051UnProtectPdfpropCount++;
                 }
 
@@ -3743,17 +3518,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateMultipleWordContentControls))]
-        public IBodyWorkflowAction<DtoResponseFile> UpdateMultipleWordContentControls([WorkflowExpression] Func<string> dtoRequestV5150UpdateMultipleWordContentControlsexistingFileContent, [WorkflowExpression] Func<ContentControl[]> dtoRequestV5150UpdateMultipleWordContentControlscontentControl)
+        public IBodyWorkflowAction<DtoResponseFile> UpdateMultipleWordContentControls(Expression<Func<string>> dtoRequestV5150UpdateMultipleWordContentControlsexistingFileContent, Expression<Func<ContentControl[]>> dtoRequestV5150UpdateMultipleWordContentControlscontentControl)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseFile> __BuildUpdateMultipleWordContentControls(WorkflowExpression<string> dtoRequestV5150UpdateMultipleWordContentControlsexistingFileContent, WorkflowExpression<ContentControl[]> dtoRequestV5150UpdateMultipleWordContentControlscontentControl)
-        {
-            WorkflowExpression.Validate(dtoRequestV5150UpdateMultipleWordContentControlsexistingFileContent, nameof(dtoRequestV5150UpdateMultipleWordContentControlsexistingFileContent), required: true);
-            WorkflowExpression.Validate(dtoRequestV5150UpdateMultipleWordContentControlscontentControl, nameof(dtoRequestV5150UpdateMultipleWordContentControlscontentControl), required: true);
+            var __workflow_dtoRequestV5150UpdateMultipleWordContentControlsexistingFileContent = dtoRequestV5150UpdateMultipleWordContentControlsexistingFileContent == null ? null : WorkflowExpression.Compile(dtoRequestV5150UpdateMultipleWordContentControlsexistingFileContent);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5150UpdateMultipleWordContentControlsexistingFileContent, nameof(dtoRequestV5150UpdateMultipleWordContentControlsexistingFileContent), required: true);
+            var __workflow_dtoRequestV5150UpdateMultipleWordContentControlscontentControl = dtoRequestV5150UpdateMultipleWordContentControlscontentControl == null ? null : WorkflowExpression.Compile(dtoRequestV5150UpdateMultipleWordContentControlscontentControl);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5150UpdateMultipleWordContentControlscontentControl, nameof(dtoRequestV5150UpdateMultipleWordContentControlscontentControl), required: true);
             return new DeferredBodyAction<DtoResponseFile>(() =>
             {
                 var apiCallPath = "/V5150_UpdateMultipleWordContentControls";
@@ -3762,9 +3532,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV5150UpdateMultipleWordContentControls = new JObject();
                 var dtoRequestV5150UpdateMultipleWordContentControlspropCount = 0;
                 dtoRequestV5150UpdateMultipleWordContentControlspropCount++;
-                dtoRequestV5150UpdateMultipleWordContentControls["file"] = ExpressionConverter.ConvertO(dtoRequestV5150UpdateMultipleWordContentControlsexistingFileContent);
+                dtoRequestV5150UpdateMultipleWordContentControls["file"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5150UpdateMultipleWordContentControlsexistingFileContent);
                 dtoRequestV5150UpdateMultipleWordContentControlspropCount++;
-                dtoRequestV5150UpdateMultipleWordContentControls["contentControls"] = ExpressionConverter.ConvertO(dtoRequestV5150UpdateMultipleWordContentControlscontentControl);
+                dtoRequestV5150UpdateMultipleWordContentControls["contentControls"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5150UpdateMultipleWordContentControlscontentControl);
                 if (dtoRequestV5150UpdateMultipleWordContentControlspropCount > 0)
                 {
                     callPayload.Body = dtoRequestV5150UpdateMultipleWordContentControls;
@@ -3775,18 +3545,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateWordContentControl))]
-        public IBodyWorkflowAction<DtoResponseFile> UpdateWordContentControl([WorkflowExpression] Func<string> dtoRequestV5140UpdateWordContentControlexistingFileContent, [WorkflowExpression] Func<string> dtoRequestV5140UpdateWordContentControlname, [WorkflowExpression] Func<string> dtoRequestV5140UpdateWordContentControlvalue = null)
+        public IBodyWorkflowAction<DtoResponseFile> UpdateWordContentControl(Expression<Func<string>> dtoRequestV5140UpdateWordContentControlexistingFileContent, Expression<Func<string>> dtoRequestV5140UpdateWordContentControlname, Expression<Func<string>> dtoRequestV5140UpdateWordContentControlvalue = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseFile> __BuildUpdateWordContentControl(WorkflowExpression<string> dtoRequestV5140UpdateWordContentControlexistingFileContent, WorkflowExpression<string> dtoRequestV5140UpdateWordContentControlname, WorkflowExpression<string> dtoRequestV5140UpdateWordContentControlvalue = null)
-        {
-            WorkflowExpression.Validate(dtoRequestV5140UpdateWordContentControlexistingFileContent, nameof(dtoRequestV5140UpdateWordContentControlexistingFileContent), required: true);
-            WorkflowExpression.Validate(dtoRequestV5140UpdateWordContentControlname, nameof(dtoRequestV5140UpdateWordContentControlname), required: true);
-            WorkflowExpression.Validate(dtoRequestV5140UpdateWordContentControlvalue, nameof(dtoRequestV5140UpdateWordContentControlvalue), required: false);
+            var __workflow_dtoRequestV5140UpdateWordContentControlexistingFileContent = dtoRequestV5140UpdateWordContentControlexistingFileContent == null ? null : WorkflowExpression.Compile(dtoRequestV5140UpdateWordContentControlexistingFileContent);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5140UpdateWordContentControlexistingFileContent, nameof(dtoRequestV5140UpdateWordContentControlexistingFileContent), required: true);
+            var __workflow_dtoRequestV5140UpdateWordContentControlname = dtoRequestV5140UpdateWordContentControlname == null ? null : WorkflowExpression.Compile(dtoRequestV5140UpdateWordContentControlname);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5140UpdateWordContentControlname, nameof(dtoRequestV5140UpdateWordContentControlname), required: true);
+            var __workflow_dtoRequestV5140UpdateWordContentControlvalue = dtoRequestV5140UpdateWordContentControlvalue == null ? null : WorkflowExpression.Compile(dtoRequestV5140UpdateWordContentControlvalue);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5140UpdateWordContentControlvalue, nameof(dtoRequestV5140UpdateWordContentControlvalue), required: false);
             return new DeferredBodyAction<DtoResponseFile>(() =>
             {
                 var apiCallPath = "/V5140_UpdateWordContentControl";
@@ -3795,12 +3561,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV5140UpdateWordContentControl = new JObject();
                 var dtoRequestV5140UpdateWordContentControlpropCount = 0;
                 dtoRequestV5140UpdateWordContentControlpropCount++;
-                dtoRequestV5140UpdateWordContentControl["file"] = ExpressionConverter.ConvertO(dtoRequestV5140UpdateWordContentControlexistingFileContent);
+                dtoRequestV5140UpdateWordContentControl["file"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5140UpdateWordContentControlexistingFileContent);
                 dtoRequestV5140UpdateWordContentControlpropCount++;
-                dtoRequestV5140UpdateWordContentControl["name"] = ExpressionConverter.ConvertO(dtoRequestV5140UpdateWordContentControlname);
-                if (dtoRequestV5140UpdateWordContentControlvalue != null)
+                dtoRequestV5140UpdateWordContentControl["name"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5140UpdateWordContentControlname);
+                if (__workflow_dtoRequestV5140UpdateWordContentControlvalue != null)
                 {
-                    dtoRequestV5140UpdateWordContentControl["value"] = ExpressionConverter.ConvertO(dtoRequestV5140UpdateWordContentControlvalue);
+                    dtoRequestV5140UpdateWordContentControl["value"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5140UpdateWordContentControlvalue);
                     dtoRequestV5140UpdateWordContentControlpropCount++;
                 }
 
@@ -3814,16 +3580,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateWordTableOfContents))]
-        public IBodyWorkflowAction<DtoResponseV5130UpdateWordTableOfContents> UpdateWordTableOfContents([WorkflowExpression] Func<string> dtoRequestV5130UpdateWordTableOfContentsexistingFileContent)
+        public IBodyWorkflowAction<DtoResponseV5130UpdateWordTableOfContents> UpdateWordTableOfContents(Expression<Func<string>> dtoRequestV5130UpdateWordTableOfContentsexistingFileContent)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV5130UpdateWordTableOfContents> __BuildUpdateWordTableOfContents(WorkflowExpression<string> dtoRequestV5130UpdateWordTableOfContentsexistingFileContent)
-        {
-            WorkflowExpression.Validate(dtoRequestV5130UpdateWordTableOfContentsexistingFileContent, nameof(dtoRequestV5130UpdateWordTableOfContentsexistingFileContent), required: true);
+            var __workflow_dtoRequestV5130UpdateWordTableOfContentsexistingFileContent = dtoRequestV5130UpdateWordTableOfContentsexistingFileContent == null ? null : WorkflowExpression.Compile(dtoRequestV5130UpdateWordTableOfContentsexistingFileContent);
+            WorkflowExpression.Validate(__workflow_dtoRequestV5130UpdateWordTableOfContentsexistingFileContent, nameof(dtoRequestV5130UpdateWordTableOfContentsexistingFileContent), required: true);
             return new DeferredBodyAction<DtoResponseV5130UpdateWordTableOfContents>(() =>
             {
                 var apiCallPath = "/V5130_UpdateWordTableOfContents";
@@ -3832,7 +3592,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV5130UpdateWordTableOfContents = new JObject();
                 var dtoRequestV5130UpdateWordTableOfContentspropCount = 0;
                 dtoRequestV5130UpdateWordTableOfContentspropCount++;
-                dtoRequestV5130UpdateWordTableOfContents["file"] = ExpressionConverter.ConvertO(dtoRequestV5130UpdateWordTableOfContentsexistingFileContent);
+                dtoRequestV5130UpdateWordTableOfContents["file"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV5130UpdateWordTableOfContentsexistingFileContent);
                 if (dtoRequestV5130UpdateWordTableOfContentspropCount > 0)
                 {
                     callPayload.Body = dtoRequestV5130UpdateWordTableOfContents;
@@ -3843,16 +3603,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        [WorkflowExpressionFactory(nameof(__BuildUrlToFile))]
-        public IBodyWorkflowAction<DtoResponseV2031UrlToFile> UrlToFile([WorkflowExpression] Func<string> dtoRequestV2031UrlToFileuRL)
+        public IBodyWorkflowAction<DtoResponseV2031UrlToFile> UrlToFile(Expression<Func<string>> dtoRequestV2031UrlToFileuRL)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DtoResponseV2031UrlToFile> __BuildUrlToFile(WorkflowExpression<string> dtoRequestV2031UrlToFileuRL)
-        {
-            WorkflowExpression.Validate(dtoRequestV2031UrlToFileuRL, nameof(dtoRequestV2031UrlToFileuRL), required: true);
+            var __workflow_dtoRequestV2031UrlToFileuRL = dtoRequestV2031UrlToFileuRL == null ? null : WorkflowExpression.Compile(dtoRequestV2031UrlToFileuRL);
+            WorkflowExpression.Validate(__workflow_dtoRequestV2031UrlToFileuRL, nameof(dtoRequestV2031UrlToFileuRL), required: true);
             return new DeferredBodyAction<DtoResponseV2031UrlToFile>(() =>
             {
                 var apiCallPath = "/V2031_UrlToFile";
@@ -3861,7 +3615,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV2031UrlToFile = new JObject();
                 var dtoRequestV2031UrlToFilepropCount = 0;
                 dtoRequestV2031UrlToFilepropCount++;
-                dtoRequestV2031UrlToFile["url"] = ExpressionConverter.ConvertO(dtoRequestV2031UrlToFileuRL);
+                dtoRequestV2031UrlToFile["url"] = ExpressionConverter.ConvertO(__workflow_dtoRequestV2031UrlToFileuRL);
                 if (dtoRequestV2031UrlToFilepropCount > 0)
                 {
                     callPayload.Body = dtoRequestV2031UrlToFile;

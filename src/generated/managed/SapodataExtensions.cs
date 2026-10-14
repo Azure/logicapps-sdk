@@ -1,196 +1,190 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class SapodataActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sapodata")]
-        [WorkflowExpressionFactory(nameof(__BuildGetEntityData))]
-        public IBodyWorkflowAction<Output> GetEntityData([WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<string> relativePath = null, [WorkflowExpression] Func<double> top = null, [WorkflowExpression] Func<double> skip = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> expand = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<inlinecountInput> inlinecount = null)
+        public IBodyWorkflowAction<Output> GetEntityData(Expression<Func<string>> entity, Expression<Func<string>> relativePath = null, Expression<Func<double>> top = null, Expression<Func<double>> skip = null, Expression<Func<string>> select = null, Expression<Func<string>> filter = null, Expression<Func<string>> expand = null, Expression<Func<string>> orderby = null, Expression<Func<string>> search = null, Expression<Func<inlinecountInput>> inlinecount = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Output> __BuildGetEntityData(WorkflowExpression<string> entity, WorkflowExpression<string> relativePath = null, WorkflowExpression<double> top = null, WorkflowExpression<double> skip = null, WorkflowExpression<string> select = null, WorkflowExpression<string> filter = null, WorkflowExpression<string> expand = null, WorkflowExpression<string> orderby = null, WorkflowExpression<string> search = null, WorkflowExpression<inlinecountInput> inlinecount = null)
-        {
-            WorkflowExpression.Validate(entity, nameof(entity), required: true);
-            WorkflowExpression.Validate(relativePath, nameof(relativePath), required: false);
-            WorkflowExpression.Validate(top, nameof(top), required: false);
-            WorkflowExpression.Validate(skip, nameof(skip), required: false);
-            WorkflowExpression.Validate(select, nameof(select), required: false);
-            WorkflowExpression.Validate(filter, nameof(filter), required: false);
-            WorkflowExpression.Validate(expand, nameof(expand), required: false);
-            WorkflowExpression.Validate(orderby, nameof(orderby), required: false);
-            WorkflowExpression.Validate(search, nameof(search), required: false);
-            WorkflowExpression.Validate(inlinecount, nameof(inlinecount), required: false);
+            var __workflow_entity = entity == null ? null : WorkflowExpression.Compile(entity);
+            WorkflowExpression.Validate(__workflow_entity, nameof(entity), required: true);
+            var __workflow_relativePath = relativePath == null ? null : WorkflowExpression.Compile(relativePath);
+            WorkflowExpression.Validate(__workflow_relativePath, nameof(relativePath), required: false);
+            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
+            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_skip = skip == null ? null : WorkflowExpression.Compile(skip);
+            WorkflowExpression.Validate(__workflow_skip, nameof(skip), required: false);
+            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
+            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
+            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
+            var __workflow_expand = expand == null ? null : WorkflowExpression.Compile(expand);
+            WorkflowExpression.Validate(__workflow_expand, nameof(expand), required: false);
+            var __workflow_orderby = orderby == null ? null : WorkflowExpression.Compile(orderby);
+            WorkflowExpression.Validate(__workflow_orderby, nameof(orderby), required: false);
+            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
+            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
+            var __workflow_inlinecount = inlinecount == null ? null : WorkflowExpression.Compile(inlinecount);
+            WorkflowExpression.Validate(__workflow_inlinecount, nameof(inlinecount), required: false);
             return new DeferredBodyAction<Output>(() =>
             {
                 var apiCallPath = "/getentitydata";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["entity"] = ExpressionConverter.Convert(entity);
+                callPayload.Queries["entity"] = ExpressionConverter.Convert(__workflow_entity);
                 callPayload.Queries["relativePath"] = Convert.ToString("/");
-                if (relativePath != null)
-                    callPayload.Queries["relativePath"] = ExpressionConverter.Convert(relativePath);
-                if (top != null)
-                    callPayload.Queries["top"] = ExpressionConverter.Convert(top);
-                if (skip != null)
-                    callPayload.Queries["skip"] = ExpressionConverter.Convert(skip);
-                if (select != null)
-                    callPayload.Queries["select"] = ExpressionConverter.Convert(select);
-                if (filter != null)
-                    callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-                if (expand != null)
-                    callPayload.Queries["expand"] = ExpressionConverter.Convert(expand);
-                if (orderby != null)
-                    callPayload.Queries["orderby"] = ExpressionConverter.Convert(orderby);
-                if (search != null)
-                    callPayload.Queries["search"] = ExpressionConverter.Convert(search);
-                if (inlinecount != null)
-                    callPayload.Queries["inlinecount"] = ExpressionConverter.Convert(inlinecount);
+                if (__workflow_relativePath != null)
+                    callPayload.Queries["relativePath"] = ExpressionConverter.Convert(__workflow_relativePath);
+                if (__workflow_top != null)
+                    callPayload.Queries["top"] = ExpressionConverter.Convert(__workflow_top);
+                if (__workflow_skip != null)
+                    callPayload.Queries["skip"] = ExpressionConverter.Convert(__workflow_skip);
+                if (__workflow_select != null)
+                    callPayload.Queries["select"] = ExpressionConverter.Convert(__workflow_select);
+                if (__workflow_filter != null)
+                    callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
+                if (__workflow_expand != null)
+                    callPayload.Queries["expand"] = ExpressionConverter.Convert(__workflow_expand);
+                if (__workflow_orderby != null)
+                    callPayload.Queries["orderby"] = ExpressionConverter.Convert(__workflow_orderby);
+                if (__workflow_search != null)
+                    callPayload.Queries["search"] = ExpressionConverter.Convert(__workflow_search);
+                if (__workflow_inlinecount != null)
+                    callPayload.Queries["inlinecount"] = ExpressionConverter.Convert(__workflow_inlinecount);
                 return new ApiConnectionAction<Output>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sapodata")]
-        [WorkflowExpressionFactory(nameof(__BuildGetEntry))]
-        public IBodyWorkflowAction<JToken> GetEntry([WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<object> entryInput = null, [WorkflowExpression] Func<string> relativePath = null, [WorkflowExpression] Func<double> top = null, [WorkflowExpression] Func<double> skip = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> expand = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<inlinecountInput> inlinecount = null)
+        public IBodyWorkflowAction<JToken> GetEntry(Expression<Func<string>> entity, Expression<Func<object>> entryInput = null, Expression<Func<string>> relativePath = null, Expression<Func<double>> top = null, Expression<Func<double>> skip = null, Expression<Func<string>> select = null, Expression<Func<string>> filter = null, Expression<Func<string>> expand = null, Expression<Func<string>> orderby = null, Expression<Func<string>> search = null, Expression<Func<inlinecountInput>> inlinecount = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildGetEntry(WorkflowExpression<string> entity, WorkflowExpression<object> entryInput = null, WorkflowExpression<string> relativePath = null, WorkflowExpression<double> top = null, WorkflowExpression<double> skip = null, WorkflowExpression<string> select = null, WorkflowExpression<string> filter = null, WorkflowExpression<string> expand = null, WorkflowExpression<string> orderby = null, WorkflowExpression<string> search = null, WorkflowExpression<inlinecountInput> inlinecount = null)
-        {
-            WorkflowExpression.Validate(entity, nameof(entity), required: true);
-            WorkflowExpression.Validate(entryInput, nameof(entryInput), required: false);
-            WorkflowExpression.Validate(relativePath, nameof(relativePath), required: false);
-            WorkflowExpression.Validate(top, nameof(top), required: false);
-            WorkflowExpression.Validate(skip, nameof(skip), required: false);
-            WorkflowExpression.Validate(select, nameof(select), required: false);
-            WorkflowExpression.Validate(filter, nameof(filter), required: false);
-            WorkflowExpression.Validate(expand, nameof(expand), required: false);
-            WorkflowExpression.Validate(orderby, nameof(orderby), required: false);
-            WorkflowExpression.Validate(search, nameof(search), required: false);
-            WorkflowExpression.Validate(inlinecount, nameof(inlinecount), required: false);
+            var __workflow_entity = entity == null ? null : WorkflowExpression.Compile(entity);
+            WorkflowExpression.Validate(__workflow_entity, nameof(entity), required: true);
+            var __workflow_entryInput = entryInput == null ? null : WorkflowExpression.Compile(entryInput);
+            WorkflowExpression.Validate(__workflow_entryInput, nameof(entryInput), required: false);
+            var __workflow_relativePath = relativePath == null ? null : WorkflowExpression.Compile(relativePath);
+            WorkflowExpression.Validate(__workflow_relativePath, nameof(relativePath), required: false);
+            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
+            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_skip = skip == null ? null : WorkflowExpression.Compile(skip);
+            WorkflowExpression.Validate(__workflow_skip, nameof(skip), required: false);
+            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
+            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
+            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
+            var __workflow_expand = expand == null ? null : WorkflowExpression.Compile(expand);
+            WorkflowExpression.Validate(__workflow_expand, nameof(expand), required: false);
+            var __workflow_orderby = orderby == null ? null : WorkflowExpression.Compile(orderby);
+            WorkflowExpression.Validate(__workflow_orderby, nameof(orderby), required: false);
+            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
+            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
+            var __workflow_inlinecount = inlinecount == null ? null : WorkflowExpression.Compile(inlinecount);
+            WorkflowExpression.Validate(__workflow_inlinecount, nameof(inlinecount), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/getentry";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["entity"] = ExpressionConverter.Convert(entity);
+                callPayload.Queries["entity"] = ExpressionConverter.Convert(__workflow_entity);
                 callPayload.Queries["relativePath"] = Convert.ToString("/");
-                if (relativePath != null)
-                    callPayload.Queries["relativePath"] = ExpressionConverter.Convert(relativePath);
-                if (top != null)
-                    callPayload.Queries["top"] = ExpressionConverter.Convert(top);
-                if (skip != null)
-                    callPayload.Queries["skip"] = ExpressionConverter.Convert(skip);
-                if (select != null)
-                    callPayload.Queries["select"] = ExpressionConverter.Convert(select);
-                if (filter != null)
-                    callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-                if (expand != null)
-                    callPayload.Queries["expand"] = ExpressionConverter.Convert(expand);
-                if (orderby != null)
-                    callPayload.Queries["orderby"] = ExpressionConverter.Convert(orderby);
-                if (search != null)
-                    callPayload.Queries["search"] = ExpressionConverter.Convert(search);
-                if (inlinecount != null)
-                    callPayload.Queries["inlinecount"] = ExpressionConverter.Convert(inlinecount);
-                callPayload.Body = ExpressionConverter.ConvertO(entryInput);
+                if (__workflow_relativePath != null)
+                    callPayload.Queries["relativePath"] = ExpressionConverter.Convert(__workflow_relativePath);
+                if (__workflow_top != null)
+                    callPayload.Queries["top"] = ExpressionConverter.Convert(__workflow_top);
+                if (__workflow_skip != null)
+                    callPayload.Queries["skip"] = ExpressionConverter.Convert(__workflow_skip);
+                if (__workflow_select != null)
+                    callPayload.Queries["select"] = ExpressionConverter.Convert(__workflow_select);
+                if (__workflow_filter != null)
+                    callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
+                if (__workflow_expand != null)
+                    callPayload.Queries["expand"] = ExpressionConverter.Convert(__workflow_expand);
+                if (__workflow_orderby != null)
+                    callPayload.Queries["orderby"] = ExpressionConverter.Convert(__workflow_orderby);
+                if (__workflow_search != null)
+                    callPayload.Queries["search"] = ExpressionConverter.Convert(__workflow_search);
+                if (__workflow_inlinecount != null)
+                    callPayload.Queries["inlinecount"] = ExpressionConverter.Convert(__workflow_inlinecount);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_entryInput);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sapodata")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateEntry))]
-        public IBodyWorkflowAction<JToken> CreateEntry([WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<object> entryInput = null, [WorkflowExpression] Func<string> relativePath = null)
+        public IBodyWorkflowAction<JToken> CreateEntry(Expression<Func<string>> entity, Expression<Func<object>> entryInput = null, Expression<Func<string>> relativePath = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildCreateEntry(WorkflowExpression<string> entity, WorkflowExpression<object> entryInput = null, WorkflowExpression<string> relativePath = null)
-        {
-            WorkflowExpression.Validate(entity, nameof(entity), required: true);
-            WorkflowExpression.Validate(entryInput, nameof(entryInput), required: false);
-            WorkflowExpression.Validate(relativePath, nameof(relativePath), required: false);
+            var __workflow_entity = entity == null ? null : WorkflowExpression.Compile(entity);
+            WorkflowExpression.Validate(__workflow_entity, nameof(entity), required: true);
+            var __workflow_entryInput = entryInput == null ? null : WorkflowExpression.Compile(entryInput);
+            WorkflowExpression.Validate(__workflow_entryInput, nameof(entryInput), required: false);
+            var __workflow_relativePath = relativePath == null ? null : WorkflowExpression.Compile(relativePath);
+            WorkflowExpression.Validate(__workflow_relativePath, nameof(relativePath), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/createentry";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["entity"] = ExpressionConverter.Convert(entity);
+                callPayload.Queries["entity"] = ExpressionConverter.Convert(__workflow_entity);
                 callPayload.Queries["relativePath"] = Convert.ToString("/");
-                if (relativePath != null)
-                    callPayload.Queries["relativePath"] = ExpressionConverter.Convert(relativePath);
-                callPayload.Body = ExpressionConverter.ConvertO(entryInput);
+                if (__workflow_relativePath != null)
+                    callPayload.Queries["relativePath"] = ExpressionConverter.Convert(__workflow_relativePath);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_entryInput);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sapodata")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateEntry))]
-        public IBodyWorkflowAction<JToken> UpdateEntry([WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<object> entryInput = null, [WorkflowExpression] Func<string> relativePath = null)
+        public IBodyWorkflowAction<JToken> UpdateEntry(Expression<Func<string>> entity, Expression<Func<object>> entryInput = null, Expression<Func<string>> relativePath = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildUpdateEntry(WorkflowExpression<string> entity, WorkflowExpression<object> entryInput = null, WorkflowExpression<string> relativePath = null)
-        {
-            WorkflowExpression.Validate(entity, nameof(entity), required: true);
-            WorkflowExpression.Validate(entryInput, nameof(entryInput), required: false);
-            WorkflowExpression.Validate(relativePath, nameof(relativePath), required: false);
+            var __workflow_entity = entity == null ? null : WorkflowExpression.Compile(entity);
+            WorkflowExpression.Validate(__workflow_entity, nameof(entity), required: true);
+            var __workflow_entryInput = entryInput == null ? null : WorkflowExpression.Compile(entryInput);
+            WorkflowExpression.Validate(__workflow_entryInput, nameof(entryInput), required: false);
+            var __workflow_relativePath = relativePath == null ? null : WorkflowExpression.Compile(relativePath);
+            WorkflowExpression.Validate(__workflow_relativePath, nameof(relativePath), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/updateentry";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["entity"] = ExpressionConverter.Convert(entity);
+                callPayload.Queries["entity"] = ExpressionConverter.Convert(__workflow_entity);
                 callPayload.Queries["relativePath"] = Convert.ToString("/");
-                if (relativePath != null)
-                    callPayload.Queries["relativePath"] = ExpressionConverter.Convert(relativePath);
-                callPayload.Body = ExpressionConverter.ConvertO(entryInput);
+                if (__workflow_relativePath != null)
+                    callPayload.Queries["relativePath"] = ExpressionConverter.Convert(__workflow_relativePath);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_entryInput);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sapodata")]
-        [WorkflowExpressionFactory(nameof(__BuildAdHocRequest))]
-        public IBodyWorkflowAction<AdHocRequestResponse> AdHocRequest([WorkflowExpression] Func<string> relativePath, [WorkflowExpression] Func<entryInputhttpMethodInput> entryInputhttpMethod, [WorkflowExpression] Func<bool> bypassMetadata = null)
+        public IBodyWorkflowAction<AdHocRequestResponse> AdHocRequest(Expression<Func<string>> relativePath, Expression<Func<entryInputhttpMethodInput>> entryInputhttpMethod, Expression<Func<bool>> bypassMetadata = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AdHocRequestResponse> __BuildAdHocRequest(WorkflowExpression<string> relativePath, WorkflowExpression<entryInputhttpMethodInput> entryInputhttpMethod, WorkflowExpression<bool> bypassMetadata = null)
-        {
-            WorkflowExpression.Validate(relativePath, nameof(relativePath), required: true);
-            WorkflowExpression.Validate(entryInputhttpMethod, nameof(entryInputhttpMethod), required: true);
-            WorkflowExpression.Validate(bypassMetadata, nameof(bypassMetadata), required: false);
+            var __workflow_relativePath = relativePath == null ? null : WorkflowExpression.Compile(relativePath);
+            WorkflowExpression.Validate(__workflow_relativePath, nameof(relativePath), required: true);
+            var __workflow_entryInputhttpMethod = entryInputhttpMethod == null ? null : WorkflowExpression.Compile(entryInputhttpMethod);
+            WorkflowExpression.Validate(__workflow_entryInputhttpMethod, nameof(entryInputhttpMethod), required: true);
+            var __workflow_bypassMetadata = bypassMetadata == null ? null : WorkflowExpression.Compile(bypassMetadata);
+            WorkflowExpression.Validate(__workflow_bypassMetadata, nameof(bypassMetadata), required: false);
             return new DeferredBodyAction<AdHocRequestResponse>(() =>
             {
                 var apiCallPath = "/adhoc";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["relativePath"] = ExpressionConverter.Convert(relativePath);
+                callPayload.Queries["relativePath"] = ExpressionConverter.Convert(__workflow_relativePath);
                 callPayload.Queries["bypassMetadata"] = Convert.ToString(false);
-                if (bypassMetadata != null)
-                    callPayload.Queries["bypassMetadata"] = ExpressionConverter.Convert(bypassMetadata);
+                if (__workflow_bypassMetadata != null)
+                    callPayload.Queries["bypassMetadata"] = ExpressionConverter.Convert(__workflow_bypassMetadata);
                 var entryInput = new JObject();
                 var entryInputpropCount = 0;
                 entryInputpropCount++;
-                entryInput["httpMethod"] = ExpressionConverter.ConvertO(entryInputhttpMethod);
+                entryInput["httpMethod"] = ExpressionConverter.ConvertO(__workflow_entryInputhttpMethod);
                 var queryStringObject = new JObject();
                 var queryStringObjectpropCount = 0;
                 if (queryStringObjectpropCount > 0)
@@ -217,32 +211,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sapodata")]
-        [WorkflowExpressionFactory(nameof(__BuildAdHocBulkRequest))]
-        public IBodyWorkflowAction<AdHocBulkRequestResponse> AdHocBulkRequest([WorkflowExpression] Func<string> relativePath, [WorkflowExpression] Func<entryInputhttpMethodInput> entryInputhttpMethod, [WorkflowExpression] Func<JToken[]> entryInputpayload = null, [WorkflowExpression] Func<bool> bypassMetadata = null)
+        public IBodyWorkflowAction<AdHocBulkRequestResponse> AdHocBulkRequest(Expression<Func<string>> relativePath, Expression<Func<entryInputhttpMethodInput>> entryInputhttpMethod, Expression<Func<JToken[]>> entryInputpayload = null, Expression<Func<bool>> bypassMetadata = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AdHocBulkRequestResponse> __BuildAdHocBulkRequest(WorkflowExpression<string> relativePath, WorkflowExpression<entryInputhttpMethodInput> entryInputhttpMethod, WorkflowExpression<JToken[]> entryInputpayload = null, WorkflowExpression<bool> bypassMetadata = null)
-        {
-            WorkflowExpression.Validate(relativePath, nameof(relativePath), required: true);
-            WorkflowExpression.Validate(entryInputhttpMethod, nameof(entryInputhttpMethod), required: true);
-            WorkflowExpression.Validate(entryInputpayload, nameof(entryInputpayload), required: false);
-            WorkflowExpression.Validate(bypassMetadata, nameof(bypassMetadata), required: false);
+            var __workflow_relativePath = relativePath == null ? null : WorkflowExpression.Compile(relativePath);
+            WorkflowExpression.Validate(__workflow_relativePath, nameof(relativePath), required: true);
+            var __workflow_entryInputhttpMethod = entryInputhttpMethod == null ? null : WorkflowExpression.Compile(entryInputhttpMethod);
+            WorkflowExpression.Validate(__workflow_entryInputhttpMethod, nameof(entryInputhttpMethod), required: true);
+            var __workflow_entryInputpayload = entryInputpayload == null ? null : WorkflowExpression.Compile(entryInputpayload);
+            WorkflowExpression.Validate(__workflow_entryInputpayload, nameof(entryInputpayload), required: false);
+            var __workflow_bypassMetadata = bypassMetadata == null ? null : WorkflowExpression.Compile(bypassMetadata);
+            WorkflowExpression.Validate(__workflow_bypassMetadata, nameof(bypassMetadata), required: false);
             return new DeferredBodyAction<AdHocBulkRequestResponse>(() =>
             {
                 var apiCallPath = "/adhocBulk";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["relativePath"] = ExpressionConverter.Convert(relativePath);
+                callPayload.Queries["relativePath"] = ExpressionConverter.Convert(__workflow_relativePath);
                 callPayload.Queries["bypassMetadata"] = Convert.ToString(false);
-                if (bypassMetadata != null)
-                    callPayload.Queries["bypassMetadata"] = ExpressionConverter.Convert(bypassMetadata);
+                if (__workflow_bypassMetadata != null)
+                    callPayload.Queries["bypassMetadata"] = ExpressionConverter.Convert(__workflow_bypassMetadata);
                 var entryInput = new JObject();
                 var entryInputpropCount = 0;
                 entryInputpropCount++;
-                entryInput["httpMethod"] = ExpressionConverter.ConvertO(entryInputhttpMethod);
+                entryInput["httpMethod"] = ExpressionConverter.ConvertO(__workflow_entryInputhttpMethod);
                 var queryStringObject = new JObject();
                 var queryStringObjectpropCount = 0;
                 if (queryStringObjectpropCount > 0)
@@ -251,9 +242,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
                     entryInputpropCount++;
                 }
 
-                if (entryInputpayload != null)
+                if (__workflow_entryInputpayload != null)
                 {
-                    entryInput["payload"] = ExpressionConverter.ConvertO(entryInputpayload);
+                    entryInput["payload"] = ExpressionConverter.ConvertO(__workflow_entryInputpayload);
                     entryInputpropCount++;
                 }
 
@@ -267,28 +258,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sapodata")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteEntry))]
-        public IBodyWorkflowAction<JToken> DeleteEntry([WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<object> entryInput = null, [WorkflowExpression] Func<string> relativePath = null)
+        public IBodyWorkflowAction<JToken> DeleteEntry(Expression<Func<string>> entity, Expression<Func<object>> entryInput = null, Expression<Func<string>> relativePath = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildDeleteEntry(WorkflowExpression<string> entity, WorkflowExpression<object> entryInput = null, WorkflowExpression<string> relativePath = null)
-        {
-            WorkflowExpression.Validate(entity, nameof(entity), required: true);
-            WorkflowExpression.Validate(entryInput, nameof(entryInput), required: false);
-            WorkflowExpression.Validate(relativePath, nameof(relativePath), required: false);
+            var __workflow_entity = entity == null ? null : WorkflowExpression.Compile(entity);
+            WorkflowExpression.Validate(__workflow_entity, nameof(entity), required: true);
+            var __workflow_entryInput = entryInput == null ? null : WorkflowExpression.Compile(entryInput);
+            WorkflowExpression.Validate(__workflow_entryInput, nameof(entryInput), required: false);
+            var __workflow_relativePath = relativePath == null ? null : WorkflowExpression.Compile(relativePath);
+            WorkflowExpression.Validate(__workflow_relativePath, nameof(relativePath), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/deleteentry";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["entity"] = ExpressionConverter.Convert(entity);
+                callPayload.Queries["entity"] = ExpressionConverter.Convert(__workflow_entity);
                 callPayload.Queries["relativePath"] = Convert.ToString("/");
-                if (relativePath != null)
-                    callPayload.Queries["relativePath"] = ExpressionConverter.Convert(relativePath);
-                callPayload.Body = ExpressionConverter.ConvertO(entryInput);
+                if (__workflow_relativePath != null)
+                    callPayload.Queries["relativePath"] = ExpressionConverter.Convert(__workflow_relativePath);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_entryInput);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }

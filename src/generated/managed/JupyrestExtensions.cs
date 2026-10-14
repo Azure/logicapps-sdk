@@ -1,59 +1,51 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jupyrest
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class JupyrestActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jupyrest")]
-        [WorkflowExpressionFactory(nameof(__BuildGetNotebookExecution))]
-        public IBodyWorkflowAction<NotebookResponse> GetNotebookExecution([WorkflowExpression] Func<string> executionId, [WorkflowExpression] Func<bool> output, [WorkflowExpression] Func<bool> html, [WorkflowExpression] Func<bool> report = null)
+        public IBodyWorkflowAction<NotebookResponse> GetNotebookExecution(Expression<Func<string>> executionId, Expression<Func<bool>> output, Expression<Func<bool>> html, Expression<Func<bool>> report = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<NotebookResponse> __BuildGetNotebookExecution(WorkflowExpression<string> executionId, WorkflowExpression<bool> output, WorkflowExpression<bool> html, WorkflowExpression<bool> report = null)
-        {
-            WorkflowExpression.Validate(executionId, nameof(executionId), required: true);
-            WorkflowExpression.Validate(output, nameof(output), required: true);
-            WorkflowExpression.Validate(html, nameof(html), required: true);
-            WorkflowExpression.Validate(report, nameof(report), required: false);
+            var __workflow_executionId = executionId == null ? null : WorkflowExpression.Compile(executionId);
+            WorkflowExpression.Validate(__workflow_executionId, nameof(executionId), required: true);
+            var __workflow_output = output == null ? null : WorkflowExpression.Compile(output);
+            WorkflowExpression.Validate(__workflow_output, nameof(output), required: true);
+            var __workflow_html = html == null ? null : WorkflowExpression.Compile(html);
+            WorkflowExpression.Validate(__workflow_html, nameof(html), required: true);
+            var __workflow_report = report == null ? null : WorkflowExpression.Compile(report);
+            WorkflowExpression.Validate(__workflow_report, nameof(report), required: false);
             return new DeferredBodyAction<NotebookResponse>(() =>
             {
                 var apiCallPath = "/NotebookExecutions";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["executionId"] = ExpressionConverter.Convert(executionId);
+                callPayload.Queries["executionId"] = ExpressionConverter.Convert(__workflow_executionId);
                 callPayload.Queries["disableRedirect"] = Convert.ToString(true);
-                callPayload.Queries["output"] = ExpressionConverter.Convert(output);
-                callPayload.Queries["html"] = ExpressionConverter.Convert(html);
+                callPayload.Queries["output"] = ExpressionConverter.Convert(__workflow_output);
+                callPayload.Queries["html"] = ExpressionConverter.Convert(__workflow_html);
                 callPayload.Queries["report"] = Convert.ToString(false);
-                if (report != null)
-                    callPayload.Queries["report"] = ExpressionConverter.Convert(report);
+                if (__workflow_report != null)
+                    callPayload.Queries["report"] = ExpressionConverter.Convert(__workflow_report);
                 return new ApiConnectionAction<NotebookResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jupyrest")]
-        [WorkflowExpressionFactory(nameof(__BuildNotebookExecution))]
-        public IBodyWorkflowAction<NotebookResponse> NotebookExecution([WorkflowExpression] Func<bool> report = null, [WorkflowExpression] Func<string> parametersnotebook = null, [WorkflowExpression] Func<object> parametersparameters = null)
+        public IBodyWorkflowAction<NotebookResponse> NotebookExecution(Expression<Func<bool>> report = null, Expression<Func<string>> parametersnotebook = null, Expression<Func<object>> parametersparameters = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<NotebookResponse> __BuildNotebookExecution(WorkflowExpression<bool> report = null, WorkflowExpression<string> parametersnotebook = null, WorkflowExpression<object> parametersparameters = null)
-        {
-            WorkflowExpression.Validate(report, nameof(report), required: false);
-            WorkflowExpression.Validate(parametersnotebook, nameof(parametersnotebook), required: false);
-            WorkflowExpression.Validate(parametersparameters, nameof(parametersparameters), required: false);
+            var __workflow_report = report == null ? null : WorkflowExpression.Compile(report);
+            WorkflowExpression.Validate(__workflow_report, nameof(report), required: false);
+            var __workflow_parametersnotebook = parametersnotebook == null ? null : WorkflowExpression.Compile(parametersnotebook);
+            WorkflowExpression.Validate(__workflow_parametersnotebook, nameof(parametersnotebook), required: false);
+            var __workflow_parametersparameters = parametersparameters == null ? null : WorkflowExpression.Compile(parametersparameters);
+            WorkflowExpression.Validate(__workflow_parametersparameters, nameof(parametersparameters), required: false);
             return new DeferredBodyAction<NotebookResponse>(() =>
             {
                 var apiCallPath = "/NotebookExecutions";
@@ -63,19 +55,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jupyrest
                 callPayload.Queries["output"] = Convert.ToString(true);
                 callPayload.Queries["html"] = Convert.ToString(true);
                 callPayload.Queries["report"] = Convert.ToString(false);
-                if (report != null)
-                    callPayload.Queries["report"] = ExpressionConverter.Convert(report);
+                if (__workflow_report != null)
+                    callPayload.Queries["report"] = ExpressionConverter.Convert(__workflow_report);
                 var parameters = new JObject();
                 var parameterspropCount = 0;
-                if (parametersnotebook != null)
+                if (__workflow_parametersnotebook != null)
                 {
-                    parameters["notebook"] = ExpressionConverter.ConvertO(parametersnotebook);
+                    parameters["notebook"] = ExpressionConverter.ConvertO(__workflow_parametersnotebook);
                     parameterspropCount++;
                 }
 
-                if (parametersparameters != null)
+                if (__workflow_parametersparameters != null)
                 {
-                    parameters["parameters"] = ExpressionConverter.ConvertO(parametersparameters);
+                    parameters["parameters"] = ExpressionConverter.ConvertO(__workflow_parametersparameters);
                     parameterspropCount++;
                 }
 
@@ -89,17 +81,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jupyrest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jupyrest")]
-        [WorkflowExpressionFactory(nameof(__BuildUploadToSynapse))]
-        public IBodyWorkflowAction<SynapseResponse> UploadToSynapse([WorkflowExpression] Func<string> parametersnotebook = null, [WorkflowExpression] Func<object> parametersparameters = null)
+        public IBodyWorkflowAction<SynapseResponse> UploadToSynapse(Expression<Func<string>> parametersnotebook = null, Expression<Func<object>> parametersparameters = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SynapseResponse> __BuildUploadToSynapse(WorkflowExpression<string> parametersnotebook = null, WorkflowExpression<object> parametersparameters = null)
-        {
-            WorkflowExpression.Validate(parametersnotebook, nameof(parametersnotebook), required: false);
-            WorkflowExpression.Validate(parametersparameters, nameof(parametersparameters), required: false);
+            var __workflow_parametersnotebook = parametersnotebook == null ? null : WorkflowExpression.Compile(parametersnotebook);
+            WorkflowExpression.Validate(__workflow_parametersnotebook, nameof(parametersnotebook), required: false);
+            var __workflow_parametersparameters = parametersparameters == null ? null : WorkflowExpression.Compile(parametersparameters);
+            WorkflowExpression.Validate(__workflow_parametersparameters, nameof(parametersparameters), required: false);
             return new DeferredBodyAction<SynapseResponse>(() =>
             {
                 var apiCallPath = "/Synapse";
@@ -107,15 +94,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jupyrest
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var parameters = new JObject();
                 var parameterspropCount = 0;
-                if (parametersnotebook != null)
+                if (__workflow_parametersnotebook != null)
                 {
-                    parameters["notebook"] = ExpressionConverter.ConvertO(parametersnotebook);
+                    parameters["notebook"] = ExpressionConverter.ConvertO(__workflow_parametersnotebook);
                     parameterspropCount++;
                 }
 
-                if (parametersparameters != null)
+                if (__workflow_parametersparameters != null)
                 {
-                    parameters["parameters"] = ExpressionConverter.ConvertO(parametersparameters);
+                    parameters["parameters"] = ExpressionConverter.ConvertO(__workflow_parametersparameters);
                     parameterspropCount++;
                 }
 

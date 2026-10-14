@@ -1,7 +1,6 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DocumentIntelligence
 {
     using System;
@@ -9,29 +8,24 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DocumentIntelligence
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class DocumentIntelligenceActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "documentIntelligence")]
-        [WorkflowExpressionFactory(nameof(__BuildAnalyzeDocument))]
-        public IBodyWorkflowAction<AnalyzeDocumentOutput> AnalyzeDocument([WorkflowExpression] Func<AnalyzeDocumentInputModelIdType> modelId, [WorkflowExpression] Func<object> modelIdInputs = null)
+        public IBodyWorkflowAction<AnalyzeDocumentOutput> AnalyzeDocument(Expression<Func<AnalyzeDocumentInputModelIdType>> modelId, Expression<Func<object>> modelIdInputs = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AnalyzeDocumentOutput> __BuildAnalyzeDocument(WorkflowExpression<AnalyzeDocumentInputModelIdType> modelId, WorkflowExpression<object> modelIdInputs = null)
-        {
-            WorkflowExpression.Validate(modelId, nameof(modelId), required: true);
-            WorkflowExpression.Validate(modelIdInputs, nameof(modelIdInputs), required: false);
+            var __workflow_modelId = modelId == null ? null : WorkflowExpression.Compile(modelId);
+            WorkflowExpression.Validate(__workflow_modelId, nameof(modelId), required: true);
+            var __workflow_modelIdInputs = modelIdInputs == null ? null : WorkflowExpression.Compile(modelIdInputs);
+            WorkflowExpression.Validate(__workflow_modelIdInputs, nameof(modelIdInputs), required: false);
             return new DeferredBodyAction<AnalyzeDocumentOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["modelId"] = ExpressionConverter.ConvertO(modelId);
-                if (modelIdInputs != null)
+                serviceProviderParameters["modelId"] = ExpressionConverter.ConvertO(__workflow_modelId);
+                if (__workflow_modelIdInputs != null)
                 {
-                    serviceProviderParameters["modelIdInputs"] = ExpressionConverter.ConvertO(modelIdInputs);
+                    serviceProviderParameters["modelIdInputs"] = ExpressionConverter.ConvertO(__workflow_modelIdInputs);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput

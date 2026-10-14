@@ -1,27 +1,20 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersive
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class CloudmersiveActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersive")]
-        [WorkflowExpressionFactory(nameof(__BuildScanFile))]
-        public IBodyWorkflowAction<VirusScanResult> ScanFile([WorkflowExpression] Func<string> inputFile)
+        public IBodyWorkflowAction<VirusScanResult> ScanFile(Expression<Func<string>> inputFile)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<VirusScanResult> __BuildScanFile(WorkflowExpression<string> inputFile)
-        {
-            WorkflowExpression.Validate(inputFile, nameof(inputFile), required: true);
+            var __workflow_inputFile = inputFile == null ? null : WorkflowExpression.Compile(inputFile);
+            WorkflowExpression.Validate(__workflow_inputFile, nameof(inputFile), required: true);
             return new DeferredBodyAction<VirusScanResult>(() =>
             {
                 var apiCallPath = "/virus/scan/file";
@@ -32,16 +25,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersive
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersive")]
-        [WorkflowExpressionFactory(nameof(__BuildScanWebsite))]
-        public IBodyWorkflowAction<WebsiteScanResult> ScanWebsite([WorkflowExpression] Func<string> inputurl = null)
+        public IBodyWorkflowAction<WebsiteScanResult> ScanWebsite(Expression<Func<string>> inputurl = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<WebsiteScanResult> __BuildScanWebsite(WorkflowExpression<string> inputurl = null)
-        {
-            WorkflowExpression.Validate(inputurl, nameof(inputurl), required: false);
+            var __workflow_inputurl = inputurl == null ? null : WorkflowExpression.Compile(inputurl);
+            WorkflowExpression.Validate(__workflow_inputurl, nameof(inputurl), required: false);
             return new DeferredBodyAction<WebsiteScanResult>(() =>
             {
                 var apiCallPath = "/virus/scan/website";
@@ -49,9 +36,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersive
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var input = new JObject();
                 var inputpropCount = 0;
-                if (inputurl != null)
+                if (__workflow_inputurl != null)
                 {
-                    input["Url"] = ExpressionConverter.ConvertO(inputurl);
+                    input["Url"] = ExpressionConverter.ConvertO(__workflow_inputurl);
                     inputpropCount++;
                 }
 

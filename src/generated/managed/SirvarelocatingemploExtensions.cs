@@ -1,12 +1,12 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sirvarelocatingemplo
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class SirvarelocatingemploActions([ConnectionName] string connectionId)
     {
@@ -20,19 +20,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sirvarelocatingemplo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sirvarelocatingemplo")]
-        [WorkflowExpressionFactory(nameof(__BuildGetRelocationPackage))]
-        public IBodyWorkflowAction<GetRelocationPackageResponse> GetRelocationPackage([WorkflowExpression] Func<string> relocationId)
+        public IBodyWorkflowAction<GetRelocationPackageResponse> GetRelocationPackage(Expression<Func<string>> relocationId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetRelocationPackageResponse> __BuildGetRelocationPackage(WorkflowExpression<string> relocationId)
-        {
-            WorkflowExpression.Validate(relocationId, nameof(relocationId), required: true);
+            var __workflow_relocationId = relocationId == null ? null : WorkflowExpression.Compile(relocationId);
+            WorkflowExpression.Validate(__workflow_relocationId, nameof(relocationId), required: true);
             return new DeferredBodyAction<GetRelocationPackageResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/package/{0}", ExpressionConverter.ConvertWithUrlEncoding(relocationId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/package/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_relocationId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetRelocationPackageResponse>(callPayload);
@@ -40,40 +34,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sirvarelocatingemplo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sirvarelocatingemplo")]
-        [WorkflowExpressionFactory(nameof(__BuildGetCounselorContactInformation))]
-        public IBodyWorkflowAction<GetCounselorContactInformationResponse> GetCounselorContactInformation([WorkflowExpression] Func<bool> includePicture, [WorkflowExpression] Func<string> relocationId)
+        public IBodyWorkflowAction<GetCounselorContactInformationResponse> GetCounselorContactInformation(Expression<Func<bool>> includePicture, Expression<Func<string>> relocationId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetCounselorContactInformationResponse> __BuildGetCounselorContactInformation(WorkflowExpression<bool> includePicture, WorkflowExpression<string> relocationId)
-        {
-            WorkflowExpression.Validate(includePicture, nameof(includePicture), required: true);
-            WorkflowExpression.Validate(relocationId, nameof(relocationId), required: true);
+            var __workflow_includePicture = includePicture == null ? null : WorkflowExpression.Compile(includePicture);
+            WorkflowExpression.Validate(__workflow_includePicture, nameof(includePicture), required: true);
+            var __workflow_relocationId = relocationId == null ? null : WorkflowExpression.Compile(relocationId);
+            WorkflowExpression.Validate(__workflow_relocationId, nameof(relocationId), required: true);
             return new DeferredBodyAction<GetCounselorContactInformationResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/relocation/counselor/{0}", ExpressionConverter.ConvertWithUrlEncoding(relocationId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/relocation/counselor/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_relocationId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["IncludePicture"] = ExpressionConverter.Convert(includePicture);
+                callPayload.Queries["IncludePicture"] = ExpressionConverter.Convert(__workflow_includePicture);
                 return new ApiConnectionAction<GetCounselorContactInformationResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sirvarelocatingemplo")]
-        [WorkflowExpressionFactory(nameof(__BuildAskSirvaBotAboutTopic))]
-        public IBodyWorkflowAction<AskSirvaBotAboutTopicResponse> AskSirvaBotAboutTopic([WorkflowExpression] Func<string> bodyrelocationId, [WorkflowExpression] Func<string> bodyquery, [WorkflowExpression] Func<bodytopicInput> bodytopic)
+        public IBodyWorkflowAction<AskSirvaBotAboutTopicResponse> AskSirvaBotAboutTopic(Expression<Func<string>> bodyrelocationId, Expression<Func<string>> bodyquery, Expression<Func<bodytopicInput>> bodytopic)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AskSirvaBotAboutTopicResponse> __BuildAskSirvaBotAboutTopic(WorkflowExpression<string> bodyrelocationId, WorkflowExpression<string> bodyquery, WorkflowExpression<bodytopicInput> bodytopic)
-        {
-            WorkflowExpression.Validate(bodyrelocationId, nameof(bodyrelocationId), required: true);
-            WorkflowExpression.Validate(bodyquery, nameof(bodyquery), required: true);
-            WorkflowExpression.Validate(bodytopic, nameof(bodytopic), required: true);
+            var __workflow_bodyrelocationId = bodyrelocationId == null ? null : WorkflowExpression.Compile(bodyrelocationId);
+            WorkflowExpression.Validate(__workflow_bodyrelocationId, nameof(bodyrelocationId), required: true);
+            var __workflow_bodyquery = bodyquery == null ? null : WorkflowExpression.Compile(bodyquery);
+            WorkflowExpression.Validate(__workflow_bodyquery, nameof(bodyquery), required: true);
+            var __workflow_bodytopic = bodytopic == null ? null : WorkflowExpression.Compile(bodytopic);
+            WorkflowExpression.Validate(__workflow_bodytopic, nameof(bodytopic), required: true);
             return new DeferredBodyAction<AskSirvaBotAboutTopicResponse>(() =>
             {
                 var apiCallPath = "/chat/topic";
@@ -82,11 +67,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sirvarelocatingemplo
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["RelocationId"] = ExpressionConverter.ConvertO(bodyrelocationId);
+                body["RelocationId"] = ExpressionConverter.ConvertO(__workflow_bodyrelocationId);
                 bodypropCount++;
-                body["Query"] = ExpressionConverter.ConvertO(bodyquery);
+                body["Query"] = ExpressionConverter.ConvertO(__workflow_bodyquery);
                 bodypropCount++;
-                body["Topic"] = ExpressionConverter.ConvertO(bodytopic);
+                body["Topic"] = ExpressionConverter.ConvertO(__workflow_bodytopic);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

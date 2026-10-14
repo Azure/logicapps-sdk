@@ -1,37 +1,31 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dexcomip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class DexcomipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dexcomip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetEGVs))]
-        public IBodyWorkflowAction<GetEGVsResponse> GetEGVs([WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null)
+        public IBodyWorkflowAction<GetEGVsResponse> GetEGVs(Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetEGVsResponse> __BuildGetEGVs(WorkflowExpression<string> startDate = null, WorkflowExpression<string> endDate = null)
-        {
-            WorkflowExpression.Validate(startDate, nameof(startDate), required: false);
-            WorkflowExpression.Validate(endDate, nameof(endDate), required: false);
+            var __workflow_startDate = startDate == null ? null : WorkflowExpression.Compile(startDate);
+            WorkflowExpression.Validate(__workflow_startDate, nameof(startDate), required: false);
+            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
+            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: false);
             return new DeferredBodyAction<GetEGVsResponse>(() =>
             {
                 var apiCallPath = "/v2/users/self/egvs";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (startDate != null)
-                    callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
-                if (endDate != null)
-                    callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
+                if (__workflow_startDate != null)
+                    callPayload.Queries["startDate"] = ExpressionConverter.Convert(__workflow_startDate);
+                if (__workflow_endDate != null)
+                    callPayload.Queries["endDate"] = ExpressionConverter.Convert(__workflow_endDate);
                 return new ApiConnectionAction<GetEGVsResponse>(callPayload);
             });
         }

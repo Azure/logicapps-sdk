@@ -1,27 +1,20 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harnesspdfx
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class HarnesspdfxActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harnesspdfx")]
-        [WorkflowExpressionFactory(nameof(__BuildPostPdf))]
-        public IBodyWorkflowAction<PostPdfResponse> PostPdf([WorkflowExpression] Func<object> fileToProcess = null)
+        public IBodyWorkflowAction<PostPdfResponse> PostPdf(Expression<Func<object>> fileToProcess = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PostPdfResponse> __BuildPostPdf(WorkflowExpression<object> fileToProcess = null)
-        {
-            WorkflowExpression.Validate(fileToProcess, nameof(fileToProcess), required: false);
+            var __workflow_fileToProcess = fileToProcess == null ? null : WorkflowExpression.Compile(fileToProcess);
+            WorkflowExpression.Validate(__workflow_fileToProcess, nameof(fileToProcess), required: false);
             return new DeferredBodyAction<PostPdfResponse>(() =>
             {
                 var apiCallPath = "/pdfs";

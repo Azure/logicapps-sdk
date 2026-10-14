@@ -1,30 +1,23 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class FreeagentipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteContact))]
-        public IWorkflowAction DeleteContact([WorkflowExpression] Func<string> contactId)
+        public IWorkflowAction DeleteContact(Expression<Func<string>> contactId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDeleteContact(WorkflowExpression<string> contactId)
-        {
-            WorkflowExpression.Validate(contactId, nameof(contactId), required: true);
+            var __workflow_contactId = contactId == null ? null : WorkflowExpression.Compile(contactId);
+            WorkflowExpression.Validate(__workflow_contactId, nameof(contactId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(contactId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_contactId, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -32,19 +25,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetContact))]
-        public IBodyWorkflowAction<GetContactResponse> GetContact([WorkflowExpression] Func<string> contactId)
+        public IBodyWorkflowAction<GetContactResponse> GetContact(Expression<Func<string>> contactId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetContactResponse> __BuildGetContact(WorkflowExpression<string> contactId)
-        {
-            WorkflowExpression.Validate(contactId, nameof(contactId), required: true);
+            var __workflow_contactId = contactId == null ? null : WorkflowExpression.Compile(contactId);
+            WorkflowExpression.Validate(__workflow_contactId, nameof(contactId), required: true);
             return new DeferredBodyAction<GetContactResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(contactId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_contactId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetContactResponse>(callPayload);
@@ -52,50 +39,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateContact))]
-        public IWorkflowAction UpdateContact([WorkflowExpression] Func<string> contactId, [WorkflowExpression] Func<bool> bodycontactcontactNameOnInvoices = null, [WorkflowExpression] Func<int> bodycontactdefaultPaymentTermsInDays = null, [WorkflowExpression] Func<string> bodycontactlocale = null, [WorkflowExpression] Func<string> bodycontactcountry = null)
+        public IWorkflowAction UpdateContact(Expression<Func<string>> contactId, Expression<Func<bool>> bodycontactcontactNameOnInvoices = null, Expression<Func<int>> bodycontactdefaultPaymentTermsInDays = null, Expression<Func<string>> bodycontactlocale = null, Expression<Func<string>> bodycontactcountry = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildUpdateContact(WorkflowExpression<string> contactId, WorkflowExpression<bool> bodycontactcontactNameOnInvoices = null, WorkflowExpression<int> bodycontactdefaultPaymentTermsInDays = null, WorkflowExpression<string> bodycontactlocale = null, WorkflowExpression<string> bodycontactcountry = null)
-        {
-            WorkflowExpression.Validate(contactId, nameof(contactId), required: true);
-            WorkflowExpression.Validate(bodycontactcontactNameOnInvoices, nameof(bodycontactcontactNameOnInvoices), required: false);
-            WorkflowExpression.Validate(bodycontactdefaultPaymentTermsInDays, nameof(bodycontactdefaultPaymentTermsInDays), required: false);
-            WorkflowExpression.Validate(bodycontactlocale, nameof(bodycontactlocale), required: false);
-            WorkflowExpression.Validate(bodycontactcountry, nameof(bodycontactcountry), required: false);
+            var __workflow_contactId = contactId == null ? null : WorkflowExpression.Compile(contactId);
+            WorkflowExpression.Validate(__workflow_contactId, nameof(contactId), required: true);
+            var __workflow_bodycontactcontactNameOnInvoices = bodycontactcontactNameOnInvoices == null ? null : WorkflowExpression.Compile(bodycontactcontactNameOnInvoices);
+            WorkflowExpression.Validate(__workflow_bodycontactcontactNameOnInvoices, nameof(bodycontactcontactNameOnInvoices), required: false);
+            var __workflow_bodycontactdefaultPaymentTermsInDays = bodycontactdefaultPaymentTermsInDays == null ? null : WorkflowExpression.Compile(bodycontactdefaultPaymentTermsInDays);
+            WorkflowExpression.Validate(__workflow_bodycontactdefaultPaymentTermsInDays, nameof(bodycontactdefaultPaymentTermsInDays), required: false);
+            var __workflow_bodycontactlocale = bodycontactlocale == null ? null : WorkflowExpression.Compile(bodycontactlocale);
+            WorkflowExpression.Validate(__workflow_bodycontactlocale, nameof(bodycontactlocale), required: false);
+            var __workflow_bodycontactcountry = bodycontactcountry == null ? null : WorkflowExpression.Compile(bodycontactcountry);
+            WorkflowExpression.Validate(__workflow_bodycontactcountry, nameof(bodycontactcountry), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(contactId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_contactId, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 var contactObject = new JObject();
                 var contactObjectpropCount = 0;
-                if (bodycontactcontactNameOnInvoices != null)
+                if (__workflow_bodycontactcontactNameOnInvoices != null)
                 {
-                    contactObject["contact_name_on_invoices"] = ExpressionConverter.ConvertO(bodycontactcontactNameOnInvoices);
+                    contactObject["contact_name_on_invoices"] = ExpressionConverter.ConvertO(__workflow_bodycontactcontactNameOnInvoices);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactdefaultPaymentTermsInDays != null)
+                if (__workflow_bodycontactdefaultPaymentTermsInDays != null)
                 {
-                    contactObject["default_payment_terms_in_days"] = ExpressionConverter.ConvertO(bodycontactdefaultPaymentTermsInDays);
+                    contactObject["default_payment_terms_in_days"] = ExpressionConverter.ConvertO(__workflow_bodycontactdefaultPaymentTermsInDays);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactlocale != null)
+                if (__workflow_bodycontactlocale != null)
                 {
-                    contactObject["locale"] = ExpressionConverter.ConvertO(bodycontactlocale);
+                    contactObject["locale"] = ExpressionConverter.ConvertO(__workflow_bodycontactlocale);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactcountry != null)
+                if (__workflow_bodycontactcountry != null)
                 {
-                    contactObject["country"] = ExpressionConverter.ConvertO(bodycontactcountry);
+                    contactObject["country"] = ExpressionConverter.ConvertO(__workflow_bodycontactcountry);
                     contactObjectpropCount++;
                 }
 
@@ -115,19 +100,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteInvoice))]
-        public IWorkflowAction DeleteInvoice([WorkflowExpression] Func<string> id)
+        public IWorkflowAction DeleteInvoice(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDeleteInvoice(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/invoices/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/invoices/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -135,19 +114,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
-        [WorkflowExpressionFactory(nameof(__BuildShowInvoice))]
-        public IBodyWorkflowAction<ShowInvoiceResponse> ShowInvoice([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<ShowInvoiceResponse> ShowInvoice(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ShowInvoiceResponse> __BuildShowInvoice(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<ShowInvoiceResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/invoices/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/invoices/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ShowInvoiceResponse>(callPayload);
@@ -155,64 +128,64 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateInvoice))]
-        public IWorkflowAction UpdateInvoice([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyinvoicedatedOn = null, [WorkflowExpression] Func<string> bodyinvoicedueOn = null, [WorkflowExpression] Func<string> bodyinvoicecurrency = null, [WorkflowExpression] Func<string> bodyinvoiceexchangeRate = null, [WorkflowExpression] Func<string> bodyinvoicestatus = null, [WorkflowExpression] Func<bodyinvoiceinvoiceItemsInputItem[]> bodyinvoiceinvoiceItems = null)
+        public IWorkflowAction UpdateInvoice(Expression<Func<string>> id, Expression<Func<string>> bodyinvoicedatedOn = null, Expression<Func<string>> bodyinvoicedueOn = null, Expression<Func<string>> bodyinvoicecurrency = null, Expression<Func<string>> bodyinvoiceexchangeRate = null, Expression<Func<string>> bodyinvoicestatus = null, Expression<Func<bodyinvoiceinvoiceItemsInputItem[]>> bodyinvoiceinvoiceItems = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildUpdateInvoice(WorkflowExpression<string> id, WorkflowExpression<string> bodyinvoicedatedOn = null, WorkflowExpression<string> bodyinvoicedueOn = null, WorkflowExpression<string> bodyinvoicecurrency = null, WorkflowExpression<string> bodyinvoiceexchangeRate = null, WorkflowExpression<string> bodyinvoicestatus = null, WorkflowExpression<bodyinvoiceinvoiceItemsInputItem[]> bodyinvoiceinvoiceItems = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(bodyinvoicedatedOn, nameof(bodyinvoicedatedOn), required: false);
-            WorkflowExpression.Validate(bodyinvoicedueOn, nameof(bodyinvoicedueOn), required: false);
-            WorkflowExpression.Validate(bodyinvoicecurrency, nameof(bodyinvoicecurrency), required: false);
-            WorkflowExpression.Validate(bodyinvoiceexchangeRate, nameof(bodyinvoiceexchangeRate), required: false);
-            WorkflowExpression.Validate(bodyinvoicestatus, nameof(bodyinvoicestatus), required: false);
-            WorkflowExpression.Validate(bodyinvoiceinvoiceItems, nameof(bodyinvoiceinvoiceItems), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_bodyinvoicedatedOn = bodyinvoicedatedOn == null ? null : WorkflowExpression.Compile(bodyinvoicedatedOn);
+            WorkflowExpression.Validate(__workflow_bodyinvoicedatedOn, nameof(bodyinvoicedatedOn), required: false);
+            var __workflow_bodyinvoicedueOn = bodyinvoicedueOn == null ? null : WorkflowExpression.Compile(bodyinvoicedueOn);
+            WorkflowExpression.Validate(__workflow_bodyinvoicedueOn, nameof(bodyinvoicedueOn), required: false);
+            var __workflow_bodyinvoicecurrency = bodyinvoicecurrency == null ? null : WorkflowExpression.Compile(bodyinvoicecurrency);
+            WorkflowExpression.Validate(__workflow_bodyinvoicecurrency, nameof(bodyinvoicecurrency), required: false);
+            var __workflow_bodyinvoiceexchangeRate = bodyinvoiceexchangeRate == null ? null : WorkflowExpression.Compile(bodyinvoiceexchangeRate);
+            WorkflowExpression.Validate(__workflow_bodyinvoiceexchangeRate, nameof(bodyinvoiceexchangeRate), required: false);
+            var __workflow_bodyinvoicestatus = bodyinvoicestatus == null ? null : WorkflowExpression.Compile(bodyinvoicestatus);
+            WorkflowExpression.Validate(__workflow_bodyinvoicestatus, nameof(bodyinvoicestatus), required: false);
+            var __workflow_bodyinvoiceinvoiceItems = bodyinvoiceinvoiceItems == null ? null : WorkflowExpression.Compile(bodyinvoiceinvoiceItems);
+            WorkflowExpression.Validate(__workflow_bodyinvoiceinvoiceItems, nameof(bodyinvoiceinvoiceItems), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/invoices/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/invoices/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 var invoiceObject = new JObject();
                 var invoiceObjectpropCount = 0;
-                if (bodyinvoicedatedOn != null)
+                if (__workflow_bodyinvoicedatedOn != null)
                 {
-                    invoiceObject["dated_on"] = ExpressionConverter.ConvertO(bodyinvoicedatedOn);
+                    invoiceObject["dated_on"] = ExpressionConverter.ConvertO(__workflow_bodyinvoicedatedOn);
                     invoiceObjectpropCount++;
                 }
 
-                if (bodyinvoicedueOn != null)
+                if (__workflow_bodyinvoicedueOn != null)
                 {
-                    invoiceObject["due_on"] = ExpressionConverter.ConvertO(bodyinvoicedueOn);
+                    invoiceObject["due_on"] = ExpressionConverter.ConvertO(__workflow_bodyinvoicedueOn);
                     invoiceObjectpropCount++;
                 }
 
-                if (bodyinvoicecurrency != null)
+                if (__workflow_bodyinvoicecurrency != null)
                 {
-                    invoiceObject["currency"] = ExpressionConverter.ConvertO(bodyinvoicecurrency);
+                    invoiceObject["currency"] = ExpressionConverter.ConvertO(__workflow_bodyinvoicecurrency);
                     invoiceObjectpropCount++;
                 }
 
-                if (bodyinvoiceexchangeRate != null)
+                if (__workflow_bodyinvoiceexchangeRate != null)
                 {
-                    invoiceObject["exchange_rate"] = ExpressionConverter.ConvertO(bodyinvoiceexchangeRate);
+                    invoiceObject["exchange_rate"] = ExpressionConverter.ConvertO(__workflow_bodyinvoiceexchangeRate);
                     invoiceObjectpropCount++;
                 }
 
-                if (bodyinvoicestatus != null)
+                if (__workflow_bodyinvoicestatus != null)
                 {
-                    invoiceObject["status"] = ExpressionConverter.ConvertO(bodyinvoicestatus);
+                    invoiceObject["status"] = ExpressionConverter.ConvertO(__workflow_bodyinvoicestatus);
                     invoiceObjectpropCount++;
                 }
 
-                if (bodyinvoiceinvoiceItems != null)
+                if (__workflow_bodyinvoiceinvoiceItems != null)
                 {
-                    invoiceObject["invoice_items"] = ExpressionConverter.ConvertO(bodyinvoiceinvoiceItems);
+                    invoiceObject["invoice_items"] = ExpressionConverter.ConvertO(__workflow_bodyinvoiceinvoiceItems);
                     invoiceObjectpropCount++;
                 }
 
@@ -241,28 +214,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateContact))]
-        public IBodyWorkflowAction<CreateContactResponse> CreateContact([WorkflowExpression] Func<string> bodycontactfirstName = null, [WorkflowExpression] Func<string> bodycontactlastName = null, [WorkflowExpression] Func<string> bodycontactorganisationName = null, [WorkflowExpression] Func<string> bodycontactemail = null, [WorkflowExpression] Func<string> bodycontacttelephone = null, [WorkflowExpression] Func<string> bodycontactmobile = null, [WorkflowExpression] Func<string> bodycontactaddress1 = null, [WorkflowExpression] Func<string> bodycontactaddress2 = null, [WorkflowExpression] Func<string> bodycontactaddress3 = null, [WorkflowExpression] Func<string> bodycontacttown = null, [WorkflowExpression] Func<string> bodycontactregion = null, [WorkflowExpression] Func<string> bodycontactpostcode = null, [WorkflowExpression] Func<string> bodycontactcountry = null)
+        public IBodyWorkflowAction<CreateContactResponse> CreateContact(Expression<Func<string>> bodycontactfirstName = null, Expression<Func<string>> bodycontactlastName = null, Expression<Func<string>> bodycontactorganisationName = null, Expression<Func<string>> bodycontactemail = null, Expression<Func<string>> bodycontacttelephone = null, Expression<Func<string>> bodycontactmobile = null, Expression<Func<string>> bodycontactaddress1 = null, Expression<Func<string>> bodycontactaddress2 = null, Expression<Func<string>> bodycontactaddress3 = null, Expression<Func<string>> bodycontacttown = null, Expression<Func<string>> bodycontactregion = null, Expression<Func<string>> bodycontactpostcode = null, Expression<Func<string>> bodycontactcountry = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateContactResponse> __BuildCreateContact(WorkflowExpression<string> bodycontactfirstName = null, WorkflowExpression<string> bodycontactlastName = null, WorkflowExpression<string> bodycontactorganisationName = null, WorkflowExpression<string> bodycontactemail = null, WorkflowExpression<string> bodycontacttelephone = null, WorkflowExpression<string> bodycontactmobile = null, WorkflowExpression<string> bodycontactaddress1 = null, WorkflowExpression<string> bodycontactaddress2 = null, WorkflowExpression<string> bodycontactaddress3 = null, WorkflowExpression<string> bodycontacttown = null, WorkflowExpression<string> bodycontactregion = null, WorkflowExpression<string> bodycontactpostcode = null, WorkflowExpression<string> bodycontactcountry = null)
-        {
-            WorkflowExpression.Validate(bodycontactfirstName, nameof(bodycontactfirstName), required: false);
-            WorkflowExpression.Validate(bodycontactlastName, nameof(bodycontactlastName), required: false);
-            WorkflowExpression.Validate(bodycontactorganisationName, nameof(bodycontactorganisationName), required: false);
-            WorkflowExpression.Validate(bodycontactemail, nameof(bodycontactemail), required: false);
-            WorkflowExpression.Validate(bodycontacttelephone, nameof(bodycontacttelephone), required: false);
-            WorkflowExpression.Validate(bodycontactmobile, nameof(bodycontactmobile), required: false);
-            WorkflowExpression.Validate(bodycontactaddress1, nameof(bodycontactaddress1), required: false);
-            WorkflowExpression.Validate(bodycontactaddress2, nameof(bodycontactaddress2), required: false);
-            WorkflowExpression.Validate(bodycontactaddress3, nameof(bodycontactaddress3), required: false);
-            WorkflowExpression.Validate(bodycontacttown, nameof(bodycontacttown), required: false);
-            WorkflowExpression.Validate(bodycontactregion, nameof(bodycontactregion), required: false);
-            WorkflowExpression.Validate(bodycontactpostcode, nameof(bodycontactpostcode), required: false);
-            WorkflowExpression.Validate(bodycontactcountry, nameof(bodycontactcountry), required: false);
+            var __workflow_bodycontactfirstName = bodycontactfirstName == null ? null : WorkflowExpression.Compile(bodycontactfirstName);
+            WorkflowExpression.Validate(__workflow_bodycontactfirstName, nameof(bodycontactfirstName), required: false);
+            var __workflow_bodycontactlastName = bodycontactlastName == null ? null : WorkflowExpression.Compile(bodycontactlastName);
+            WorkflowExpression.Validate(__workflow_bodycontactlastName, nameof(bodycontactlastName), required: false);
+            var __workflow_bodycontactorganisationName = bodycontactorganisationName == null ? null : WorkflowExpression.Compile(bodycontactorganisationName);
+            WorkflowExpression.Validate(__workflow_bodycontactorganisationName, nameof(bodycontactorganisationName), required: false);
+            var __workflow_bodycontactemail = bodycontactemail == null ? null : WorkflowExpression.Compile(bodycontactemail);
+            WorkflowExpression.Validate(__workflow_bodycontactemail, nameof(bodycontactemail), required: false);
+            var __workflow_bodycontacttelephone = bodycontacttelephone == null ? null : WorkflowExpression.Compile(bodycontacttelephone);
+            WorkflowExpression.Validate(__workflow_bodycontacttelephone, nameof(bodycontacttelephone), required: false);
+            var __workflow_bodycontactmobile = bodycontactmobile == null ? null : WorkflowExpression.Compile(bodycontactmobile);
+            WorkflowExpression.Validate(__workflow_bodycontactmobile, nameof(bodycontactmobile), required: false);
+            var __workflow_bodycontactaddress1 = bodycontactaddress1 == null ? null : WorkflowExpression.Compile(bodycontactaddress1);
+            WorkflowExpression.Validate(__workflow_bodycontactaddress1, nameof(bodycontactaddress1), required: false);
+            var __workflow_bodycontactaddress2 = bodycontactaddress2 == null ? null : WorkflowExpression.Compile(bodycontactaddress2);
+            WorkflowExpression.Validate(__workflow_bodycontactaddress2, nameof(bodycontactaddress2), required: false);
+            var __workflow_bodycontactaddress3 = bodycontactaddress3 == null ? null : WorkflowExpression.Compile(bodycontactaddress3);
+            WorkflowExpression.Validate(__workflow_bodycontactaddress3, nameof(bodycontactaddress3), required: false);
+            var __workflow_bodycontacttown = bodycontacttown == null ? null : WorkflowExpression.Compile(bodycontacttown);
+            WorkflowExpression.Validate(__workflow_bodycontacttown, nameof(bodycontacttown), required: false);
+            var __workflow_bodycontactregion = bodycontactregion == null ? null : WorkflowExpression.Compile(bodycontactregion);
+            WorkflowExpression.Validate(__workflow_bodycontactregion, nameof(bodycontactregion), required: false);
+            var __workflow_bodycontactpostcode = bodycontactpostcode == null ? null : WorkflowExpression.Compile(bodycontactpostcode);
+            WorkflowExpression.Validate(__workflow_bodycontactpostcode, nameof(bodycontactpostcode), required: false);
+            var __workflow_bodycontactcountry = bodycontactcountry == null ? null : WorkflowExpression.Compile(bodycontactcountry);
+            WorkflowExpression.Validate(__workflow_bodycontactcountry, nameof(bodycontactcountry), required: false);
             return new DeferredBodyAction<CreateContactResponse>(() =>
             {
                 var apiCallPath = "/contacts";
@@ -272,81 +251,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
                 var bodypropCount = 0;
                 var contactObject = new JObject();
                 var contactObjectpropCount = 0;
-                if (bodycontactfirstName != null)
+                if (__workflow_bodycontactfirstName != null)
                 {
-                    contactObject["first_name"] = ExpressionConverter.ConvertO(bodycontactfirstName);
+                    contactObject["first_name"] = ExpressionConverter.ConvertO(__workflow_bodycontactfirstName);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactlastName != null)
+                if (__workflow_bodycontactlastName != null)
                 {
-                    contactObject["last_name"] = ExpressionConverter.ConvertO(bodycontactlastName);
+                    contactObject["last_name"] = ExpressionConverter.ConvertO(__workflow_bodycontactlastName);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactorganisationName != null)
+                if (__workflow_bodycontactorganisationName != null)
                 {
-                    contactObject["organisation_name"] = ExpressionConverter.ConvertO(bodycontactorganisationName);
+                    contactObject["organisation_name"] = ExpressionConverter.ConvertO(__workflow_bodycontactorganisationName);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactemail != null)
+                if (__workflow_bodycontactemail != null)
                 {
-                    contactObject["email"] = ExpressionConverter.ConvertO(bodycontactemail);
+                    contactObject["email"] = ExpressionConverter.ConvertO(__workflow_bodycontactemail);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontacttelephone != null)
+                if (__workflow_bodycontacttelephone != null)
                 {
-                    contactObject["phone_number"] = ExpressionConverter.ConvertO(bodycontacttelephone);
+                    contactObject["phone_number"] = ExpressionConverter.ConvertO(__workflow_bodycontacttelephone);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactmobile != null)
+                if (__workflow_bodycontactmobile != null)
                 {
-                    contactObject["mobile"] = ExpressionConverter.ConvertO(bodycontactmobile);
+                    contactObject["mobile"] = ExpressionConverter.ConvertO(__workflow_bodycontactmobile);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactaddress1 != null)
+                if (__workflow_bodycontactaddress1 != null)
                 {
-                    contactObject["address1"] = ExpressionConverter.ConvertO(bodycontactaddress1);
+                    contactObject["address1"] = ExpressionConverter.ConvertO(__workflow_bodycontactaddress1);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactaddress2 != null)
+                if (__workflow_bodycontactaddress2 != null)
                 {
-                    contactObject["address2"] = ExpressionConverter.ConvertO(bodycontactaddress2);
+                    contactObject["address2"] = ExpressionConverter.ConvertO(__workflow_bodycontactaddress2);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactaddress3 != null)
+                if (__workflow_bodycontactaddress3 != null)
                 {
-                    contactObject["address3"] = ExpressionConverter.ConvertO(bodycontactaddress3);
+                    contactObject["address3"] = ExpressionConverter.ConvertO(__workflow_bodycontactaddress3);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontacttown != null)
+                if (__workflow_bodycontacttown != null)
                 {
-                    contactObject["town"] = ExpressionConverter.ConvertO(bodycontacttown);
+                    contactObject["town"] = ExpressionConverter.ConvertO(__workflow_bodycontacttown);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactregion != null)
+                if (__workflow_bodycontactregion != null)
                 {
-                    contactObject["region"] = ExpressionConverter.ConvertO(bodycontactregion);
+                    contactObject["region"] = ExpressionConverter.ConvertO(__workflow_bodycontactregion);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactpostcode != null)
+                if (__workflow_bodycontactpostcode != null)
                 {
-                    contactObject["postcode"] = ExpressionConverter.ConvertO(bodycontactpostcode);
+                    contactObject["postcode"] = ExpressionConverter.ConvertO(__workflow_bodycontactpostcode);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactcountry != null)
+                if (__workflow_bodycontactcountry != null)
                 {
-                    contactObject["country"] = ExpressionConverter.ConvertO(bodycontactcountry);
+                    contactObject["country"] = ExpressionConverter.ConvertO(__workflow_bodycontactcountry);
                     contactObjectpropCount++;
                 }
 
@@ -384,22 +363,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateInvoice))]
-        public IBodyWorkflowAction<CreateInvoiceResponse> CreateInvoice([WorkflowExpression] Func<string> bodyinvoicecontact = null, [WorkflowExpression] Func<string> bodyinvoicedatedOn = null, [WorkflowExpression] Func<string> bodyinvoicedueOn = null, [WorkflowExpression] Func<string> bodyinvoicecurrency = null, [WorkflowExpression] Func<bool> bodyinvoiceomitHeader = null, [WorkflowExpression] Func<bool> bodyinvoicealwaysShowBICAndIBAN = null, [WorkflowExpression] Func<int> bodyinvoicepaymentTermsInDays = null)
+        public IBodyWorkflowAction<CreateInvoiceResponse> CreateInvoice(Expression<Func<string>> bodyinvoicecontact = null, Expression<Func<string>> bodyinvoicedatedOn = null, Expression<Func<string>> bodyinvoicedueOn = null, Expression<Func<string>> bodyinvoicecurrency = null, Expression<Func<bool>> bodyinvoiceomitHeader = null, Expression<Func<bool>> bodyinvoicealwaysShowBICAndIBAN = null, Expression<Func<int>> bodyinvoicepaymentTermsInDays = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateInvoiceResponse> __BuildCreateInvoice(WorkflowExpression<string> bodyinvoicecontact = null, WorkflowExpression<string> bodyinvoicedatedOn = null, WorkflowExpression<string> bodyinvoicedueOn = null, WorkflowExpression<string> bodyinvoicecurrency = null, WorkflowExpression<bool> bodyinvoiceomitHeader = null, WorkflowExpression<bool> bodyinvoicealwaysShowBICAndIBAN = null, WorkflowExpression<int> bodyinvoicepaymentTermsInDays = null)
-        {
-            WorkflowExpression.Validate(bodyinvoicecontact, nameof(bodyinvoicecontact), required: false);
-            WorkflowExpression.Validate(bodyinvoicedatedOn, nameof(bodyinvoicedatedOn), required: false);
-            WorkflowExpression.Validate(bodyinvoicedueOn, nameof(bodyinvoicedueOn), required: false);
-            WorkflowExpression.Validate(bodyinvoicecurrency, nameof(bodyinvoicecurrency), required: false);
-            WorkflowExpression.Validate(bodyinvoiceomitHeader, nameof(bodyinvoiceomitHeader), required: false);
-            WorkflowExpression.Validate(bodyinvoicealwaysShowBICAndIBAN, nameof(bodyinvoicealwaysShowBICAndIBAN), required: false);
-            WorkflowExpression.Validate(bodyinvoicepaymentTermsInDays, nameof(bodyinvoicepaymentTermsInDays), required: false);
+            var __workflow_bodyinvoicecontact = bodyinvoicecontact == null ? null : WorkflowExpression.Compile(bodyinvoicecontact);
+            WorkflowExpression.Validate(__workflow_bodyinvoicecontact, nameof(bodyinvoicecontact), required: false);
+            var __workflow_bodyinvoicedatedOn = bodyinvoicedatedOn == null ? null : WorkflowExpression.Compile(bodyinvoicedatedOn);
+            WorkflowExpression.Validate(__workflow_bodyinvoicedatedOn, nameof(bodyinvoicedatedOn), required: false);
+            var __workflow_bodyinvoicedueOn = bodyinvoicedueOn == null ? null : WorkflowExpression.Compile(bodyinvoicedueOn);
+            WorkflowExpression.Validate(__workflow_bodyinvoicedueOn, nameof(bodyinvoicedueOn), required: false);
+            var __workflow_bodyinvoicecurrency = bodyinvoicecurrency == null ? null : WorkflowExpression.Compile(bodyinvoicecurrency);
+            WorkflowExpression.Validate(__workflow_bodyinvoicecurrency, nameof(bodyinvoicecurrency), required: false);
+            var __workflow_bodyinvoiceomitHeader = bodyinvoiceomitHeader == null ? null : WorkflowExpression.Compile(bodyinvoiceomitHeader);
+            WorkflowExpression.Validate(__workflow_bodyinvoiceomitHeader, nameof(bodyinvoiceomitHeader), required: false);
+            var __workflow_bodyinvoicealwaysShowBICAndIBAN = bodyinvoicealwaysShowBICAndIBAN == null ? null : WorkflowExpression.Compile(bodyinvoicealwaysShowBICAndIBAN);
+            WorkflowExpression.Validate(__workflow_bodyinvoicealwaysShowBICAndIBAN, nameof(bodyinvoicealwaysShowBICAndIBAN), required: false);
+            var __workflow_bodyinvoicepaymentTermsInDays = bodyinvoicepaymentTermsInDays == null ? null : WorkflowExpression.Compile(bodyinvoicepaymentTermsInDays);
+            WorkflowExpression.Validate(__workflow_bodyinvoicepaymentTermsInDays, nameof(bodyinvoicepaymentTermsInDays), required: false);
             return new DeferredBodyAction<CreateInvoiceResponse>(() =>
             {
                 var apiCallPath = "/invoices";
@@ -409,45 +388,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
                 var bodypropCount = 0;
                 var invoiceObject = new JObject();
                 var invoiceObjectpropCount = 0;
-                if (bodyinvoicecontact != null)
+                if (__workflow_bodyinvoicecontact != null)
                 {
-                    invoiceObject["contact"] = ExpressionConverter.ConvertO(bodyinvoicecontact);
+                    invoiceObject["contact"] = ExpressionConverter.ConvertO(__workflow_bodyinvoicecontact);
                     invoiceObjectpropCount++;
                 }
 
-                if (bodyinvoicedatedOn != null)
+                if (__workflow_bodyinvoicedatedOn != null)
                 {
-                    invoiceObject["dated_on"] = ExpressionConverter.ConvertO(bodyinvoicedatedOn);
+                    invoiceObject["dated_on"] = ExpressionConverter.ConvertO(__workflow_bodyinvoicedatedOn);
                     invoiceObjectpropCount++;
                 }
 
-                if (bodyinvoicedueOn != null)
+                if (__workflow_bodyinvoicedueOn != null)
                 {
-                    invoiceObject["due_on"] = ExpressionConverter.ConvertO(bodyinvoicedueOn);
+                    invoiceObject["due_on"] = ExpressionConverter.ConvertO(__workflow_bodyinvoicedueOn);
                     invoiceObjectpropCount++;
                 }
 
-                if (bodyinvoicecurrency != null)
+                if (__workflow_bodyinvoicecurrency != null)
                 {
-                    invoiceObject["currency"] = ExpressionConverter.ConvertO(bodyinvoicecurrency);
+                    invoiceObject["currency"] = ExpressionConverter.ConvertO(__workflow_bodyinvoicecurrency);
                     invoiceObjectpropCount++;
                 }
 
-                if (bodyinvoiceomitHeader != null)
+                if (__workflow_bodyinvoiceomitHeader != null)
                 {
-                    invoiceObject["omit_header"] = ExpressionConverter.ConvertO(bodyinvoiceomitHeader);
+                    invoiceObject["omit_header"] = ExpressionConverter.ConvertO(__workflow_bodyinvoiceomitHeader);
                     invoiceObjectpropCount++;
                 }
 
-                if (bodyinvoicealwaysShowBICAndIBAN != null)
+                if (__workflow_bodyinvoicealwaysShowBICAndIBAN != null)
                 {
-                    invoiceObject["always_show_bic_and_iban"] = ExpressionConverter.ConvertO(bodyinvoicealwaysShowBICAndIBAN);
+                    invoiceObject["always_show_bic_and_iban"] = ExpressionConverter.ConvertO(__workflow_bodyinvoicealwaysShowBICAndIBAN);
                     invoiceObjectpropCount++;
                 }
 
-                if (bodyinvoicepaymentTermsInDays != null)
+                if (__workflow_bodyinvoicepaymentTermsInDays != null)
                 {
-                    invoiceObject["payment_terms_in_days"] = ExpressionConverter.ConvertO(bodyinvoicepaymentTermsInDays);
+                    invoiceObject["payment_terms_in_days"] = ExpressionConverter.ConvertO(__workflow_bodyinvoicepaymentTermsInDays);
                     invoiceObjectpropCount++;
                 }
 
@@ -467,19 +446,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
-        [WorkflowExpressionFactory(nameof(__BuildShowRecurringInvoice))]
-        public IBodyWorkflowAction<ShowRecurringInvoiceResponse> ShowRecurringInvoice([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<ShowRecurringInvoiceResponse> ShowRecurringInvoice(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ShowRecurringInvoiceResponse> __BuildShowRecurringInvoice(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<ShowRecurringInvoiceResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/recurring_invoices/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/recurring_invoices/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ShowRecurringInvoiceResponse>(callPayload);
@@ -487,19 +460,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
-        [WorkflowExpressionFactory(nameof(__BuildMarkInvoiceAsCancelled))]
-        public IWorkflowAction MarkInvoiceAsCancelled([WorkflowExpression] Func<string> id)
+        public IWorkflowAction MarkInvoiceAsCancelled(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildMarkInvoiceAsCancelled(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/invoices/{0}/transitions/mark_as_cancelled", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/invoices/{0}/transitions/mark_as_cancelled", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -507,19 +474,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
-        [WorkflowExpressionFactory(nameof(__BuildMarkInvoiceAsDraft))]
-        public IWorkflowAction MarkInvoiceAsDraft([WorkflowExpression] Func<string> id)
+        public IWorkflowAction MarkInvoiceAsDraft(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildMarkInvoiceAsDraft(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/invoices/{0}/transitions/mark_as_draft", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/invoices/{0}/transitions/mark_as_draft", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -527,19 +488,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
-        [WorkflowExpressionFactory(nameof(__BuildMarkInvoiceAsScheduled))]
-        public IWorkflowAction MarkInvoiceAsScheduled([WorkflowExpression] Func<string> id)
+        public IWorkflowAction MarkInvoiceAsScheduled(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildMarkInvoiceAsScheduled(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/invoices/{0}/transitions/mark_as_scheduled", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/invoices/{0}/transitions/mark_as_scheduled", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -547,19 +502,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
-        [WorkflowExpressionFactory(nameof(__BuildMarkInvoiceAsSent))]
-        public IWorkflowAction MarkInvoiceAsSent([WorkflowExpression] Func<string> id)
+        public IWorkflowAction MarkInvoiceAsSent(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildMarkInvoiceAsSent(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/invoices/{0}/transitions/mark_as_sent", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/invoices/{0}/transitions/mark_as_sent", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);

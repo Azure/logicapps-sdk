@@ -1,52 +1,42 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Casper365
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class Casper365Actions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "casper365")]
-        [WorkflowExpressionFactory(nameof(__BuildCourseGet))]
-        public IBodyWorkflowAction<Course[]> CourseGet([WorkflowExpression] Func<string> course = null)
+        public IBodyWorkflowAction<Course[]> CourseGet(Expression<Func<string>> course = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Course[]> __BuildCourseGet(WorkflowExpression<string> course = null)
-        {
-            WorkflowExpression.Validate(course, nameof(course), required: false);
+            var __workflow_course = course == null ? null : WorkflowExpression.Compile(course);
+            WorkflowExpression.Validate(__workflow_course, nameof(course), required: false);
             return new DeferredBodyAction<Course[]>(() =>
             {
                 var apiCallPath = "/Course";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (course != null)
-                    callPayload.Queries["course"] = ExpressionConverter.Convert(course);
+                if (__workflow_course != null)
+                    callPayload.Queries["course"] = ExpressionConverter.Convert(__workflow_course);
                 return new ApiConnectionAction<Course[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "casper365")]
-        [WorkflowExpressionFactory(nameof(__BuildCourse))]
-        public IBodyWorkflowAction<bool> Course([WorkflowExpression] Func<string> courseaudience = null, [WorkflowExpression] Func<string> coursecourseName = null, [WorkflowExpression] Func<string> coursedos = null, [WorkflowExpression] Func<string> courseemail = null)
+        public IBodyWorkflowAction<bool> Course(Expression<Func<string>> courseaudience = null, Expression<Func<string>> coursecourseName = null, Expression<Func<string>> coursedos = null, Expression<Func<string>> courseemail = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<bool> __BuildCourse(WorkflowExpression<string> courseaudience = null, WorkflowExpression<string> coursecourseName = null, WorkflowExpression<string> coursedos = null, WorkflowExpression<string> courseemail = null)
-        {
-            WorkflowExpression.Validate(courseaudience, nameof(courseaudience), required: false);
-            WorkflowExpression.Validate(coursecourseName, nameof(coursecourseName), required: false);
-            WorkflowExpression.Validate(coursedos, nameof(coursedos), required: false);
-            WorkflowExpression.Validate(courseemail, nameof(courseemail), required: false);
+            var __workflow_courseaudience = courseaudience == null ? null : WorkflowExpression.Compile(courseaudience);
+            WorkflowExpression.Validate(__workflow_courseaudience, nameof(courseaudience), required: false);
+            var __workflow_coursecourseName = coursecourseName == null ? null : WorkflowExpression.Compile(coursecourseName);
+            WorkflowExpression.Validate(__workflow_coursecourseName, nameof(coursecourseName), required: false);
+            var __workflow_coursedos = coursedos == null ? null : WorkflowExpression.Compile(coursedos);
+            WorkflowExpression.Validate(__workflow_coursedos, nameof(coursedos), required: false);
+            var __workflow_courseemail = courseemail == null ? null : WorkflowExpression.Compile(courseemail);
+            WorkflowExpression.Validate(__workflow_courseemail, nameof(courseemail), required: false);
             return new DeferredBodyAction<bool>(() =>
             {
                 var apiCallPath = "/Course";
@@ -54,27 +44,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Casper365
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var course = new JObject();
                 var coursepropCount = 0;
-                if (courseaudience != null)
+                if (__workflow_courseaudience != null)
                 {
-                    course["audience"] = ExpressionConverter.ConvertO(courseaudience);
+                    course["audience"] = ExpressionConverter.ConvertO(__workflow_courseaudience);
                     coursepropCount++;
                 }
 
-                if (coursecourseName != null)
+                if (__workflow_coursecourseName != null)
                 {
-                    course["courseName"] = ExpressionConverter.ConvertO(coursecourseName);
+                    course["courseName"] = ExpressionConverter.ConvertO(__workflow_coursecourseName);
                     coursepropCount++;
                 }
 
-                if (coursedos != null)
+                if (__workflow_coursedos != null)
                 {
-                    course["dos"] = ExpressionConverter.ConvertO(coursedos);
+                    course["dos"] = ExpressionConverter.ConvertO(__workflow_coursedos);
                     coursepropCount++;
                 }
 
-                if (courseemail != null)
+                if (__workflow_courseemail != null)
                 {
-                    course["email"] = ExpressionConverter.ConvertO(courseemail);
+                    course["email"] = ExpressionConverter.ConvertO(__workflow_courseemail);
                     coursepropCount++;
                 }
 
@@ -88,141 +78,176 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Casper365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "casper365")]
-        [WorkflowExpressionFactory(nameof(__BuildLogEnd))]
-        public IWorkflowAction LogEnd([WorkflowExpression] Func<string> identifier = null)
+        public IWorkflowAction LogEnd(Expression<Func<string>> identifier = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildLogEnd(WorkflowExpression<string> identifier = null)
-        {
-            WorkflowExpression.Validate(identifier, nameof(identifier), required: false);
+            var __workflow_identifier = identifier == null ? null : WorkflowExpression.Compile(identifier);
+            WorkflowExpression.Validate(__workflow_identifier, nameof(identifier), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/Log/End";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (identifier != null)
-                    callPayload.Queries["identifier"] = ExpressionConverter.Convert(identifier);
+                if (__workflow_identifier != null)
+                    callPayload.Queries["identifier"] = ExpressionConverter.Convert(__workflow_identifier);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "casper365")]
-        [WorkflowExpressionFactory(nameof(__BuildLogStart))]
-        public IWorkflowAction LogStart([WorkflowExpression] Func<string> identifier = null)
+        public IWorkflowAction LogStart(Expression<Func<string>> identifier = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildLogStart(WorkflowExpression<string> identifier = null)
-        {
-            WorkflowExpression.Validate(identifier, nameof(identifier), required: false);
+            var __workflow_identifier = identifier == null ? null : WorkflowExpression.Compile(identifier);
+            WorkflowExpression.Validate(__workflow_identifier, nameof(identifier), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/Log/Start";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (identifier != null)
-                    callPayload.Queries["identifier"] = ExpressionConverter.Convert(identifier);
+                if (__workflow_identifier != null)
+                    callPayload.Queries["identifier"] = ExpressionConverter.Convert(__workflow_identifier);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "casper365")]
-        [WorkflowExpressionFactory(nameof(__BuildStudentGet))]
-        public IBodyWorkflowAction<Student> StudentGet([WorkflowExpression] Func<string> studentId = null)
+        public IBodyWorkflowAction<Student> StudentGet(Expression<Func<string>> studentId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Student> __BuildStudentGet(WorkflowExpression<string> studentId = null)
-        {
-            WorkflowExpression.Validate(studentId, nameof(studentId), required: false);
+            var __workflow_studentId = studentId == null ? null : WorkflowExpression.Compile(studentId);
+            WorkflowExpression.Validate(__workflow_studentId, nameof(studentId), required: false);
             return new DeferredBodyAction<Student>(() =>
             {
                 var apiCallPath = "/Student";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (studentId != null)
-                    callPayload.Queries["studentId"] = ExpressionConverter.Convert(studentId);
+                if (__workflow_studentId != null)
+                    callPayload.Queries["studentId"] = ExpressionConverter.Convert(__workflow_studentId);
                 return new ApiConnectionAction<Student>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "casper365")]
-        [WorkflowExpressionFactory(nameof(__BuildStudent))]
-        public IWorkflowAction Student([WorkflowExpression] Func<string> studentacadCareer = null, [WorkflowExpression] Func<string> studentacadOrgDescr = null, [WorkflowExpression] Func<string> studentacadProgram = null, [WorkflowExpression] Func<string> studentaddress1 = null, [WorkflowExpression] Func<string> studentaddress2 = null, [WorkflowExpression] Func<string> studentaddress3 = null, [WorkflowExpression] Func<string> studentaddress4 = null, [WorkflowExpression] Func<string> studentbarcode = null, [WorkflowExpression] Func<string> studentbirthCountryCode = null, [WorkflowExpression] Func<string> studentcellTel = null, [WorkflowExpression] Func<string> studentcity = null, [WorkflowExpression] Func<double> studentcollegeAccountNo = null, [WorkflowExpression] Func<string> studentcountry = null, [WorkflowExpression] Func<string> studentcountryCitizen = null, [WorkflowExpression] Func<string> studentcountryCitizen2 = null, [WorkflowExpression] Func<string> studentcrsid = null, [WorkflowExpression] Func<string> studentdegree = null, [WorkflowExpression] Func<string> studentdob = null, [WorkflowExpression] Func<string> studentdos = null, [WorkflowExpression] Func<string> studentdosEmail = null, [WorkflowExpression] Func<string> studentdosEmployeeId = null, [WorkflowExpression] Func<string> studentemail = null, [WorkflowExpression] Func<string> studentemailAddr = null, [WorkflowExpression] Func<string> studentemailPersonal = null, [WorkflowExpression] Func<string> studentendDate = null, [WorkflowExpression] Func<string> studentenqGrp = null, [WorkflowExpression] Func<string> studentfirstNames = null, [WorkflowExpression] Func<string> studentgradTutor = null, [WorkflowExpression] Func<string> studentgradTutorEmail = null, [WorkflowExpression] Func<string> studentgradTutorEmployeeId = null, [WorkflowExpression] Func<string> studentgrp = null, [WorkflowExpression] Func<string> studentgrpId = null, [WorkflowExpression] Func<string> studenthomeAddress1 = null, [WorkflowExpression] Func<string> studenthomeAddress2 = null, [WorkflowExpression] Func<string> studenthomeAddress3 = null, [WorkflowExpression] Func<string> studenthomeAddress4 = null, [WorkflowExpression] Func<string> studenthomeAddress5 = null, [WorkflowExpression] Func<string> studenthomeCountry = null, [WorkflowExpression] Func<string> studenthomePostal = null, [WorkflowExpression] Func<string> studenthomeState = null, [WorkflowExpression] Func<string> studenthomeTel = null, [WorkflowExpression] Func<string> studentmatriculation = null, [WorkflowExpression] Func<string> studentmobileTel = null, [WorkflowExpression] Func<string> studentnationality = null, [WorkflowExpression] Func<string> studentpostal = null, [WorkflowExpression] Func<string> studentprinSuper = null, [WorkflowExpression] Func<string> studentprinSuperEmail = null, [WorkflowExpression] Func<string> studentprinSuperEmployeeId = null, [WorkflowExpression] Func<string> studentsex = null, [WorkflowExpression] Func<string> studentstartDate = null, [WorkflowExpression] Func<string> studentstudentFeesClass = null, [WorkflowExpression] Func<string> studentstudyYear = null, [WorkflowExpression] Func<string> studentsubject = null, [WorkflowExpression] Func<string> studentsubjectDescr = null, [WorkflowExpression] Func<string> studentsuperEmail = null, [WorkflowExpression] Func<string> studentsurname = null, [WorkflowExpression] Func<string> studenttitle = null, [WorkflowExpression] Func<string> studenttutor = null, [WorkflowExpression] Func<string> studenttutorEmail = null, [WorkflowExpression] Func<string> studenttutorEmployeeId = null)
+        public IWorkflowAction Student(Expression<Func<string>> studentacadCareer = null, Expression<Func<string>> studentacadOrgDescr = null, Expression<Func<string>> studentacadProgram = null, Expression<Func<string>> studentaddress1 = null, Expression<Func<string>> studentaddress2 = null, Expression<Func<string>> studentaddress3 = null, Expression<Func<string>> studentaddress4 = null, Expression<Func<string>> studentbarcode = null, Expression<Func<string>> studentbirthCountryCode = null, Expression<Func<string>> studentcellTel = null, Expression<Func<string>> studentcity = null, Expression<Func<double>> studentcollegeAccountNo = null, Expression<Func<string>> studentcountry = null, Expression<Func<string>> studentcountryCitizen = null, Expression<Func<string>> studentcountryCitizen2 = null, Expression<Func<string>> studentcrsid = null, Expression<Func<string>> studentdegree = null, Expression<Func<string>> studentdob = null, Expression<Func<string>> studentdos = null, Expression<Func<string>> studentdosEmail = null, Expression<Func<string>> studentdosEmployeeId = null, Expression<Func<string>> studentemail = null, Expression<Func<string>> studentemailAddr = null, Expression<Func<string>> studentemailPersonal = null, Expression<Func<string>> studentendDate = null, Expression<Func<string>> studentenqGrp = null, Expression<Func<string>> studentfirstNames = null, Expression<Func<string>> studentgradTutor = null, Expression<Func<string>> studentgradTutorEmail = null, Expression<Func<string>> studentgradTutorEmployeeId = null, Expression<Func<string>> studentgrp = null, Expression<Func<string>> studentgrpId = null, Expression<Func<string>> studenthomeAddress1 = null, Expression<Func<string>> studenthomeAddress2 = null, Expression<Func<string>> studenthomeAddress3 = null, Expression<Func<string>> studenthomeAddress4 = null, Expression<Func<string>> studenthomeAddress5 = null, Expression<Func<string>> studenthomeCountry = null, Expression<Func<string>> studenthomePostal = null, Expression<Func<string>> studenthomeState = null, Expression<Func<string>> studenthomeTel = null, Expression<Func<string>> studentmatriculation = null, Expression<Func<string>> studentmobileTel = null, Expression<Func<string>> studentnationality = null, Expression<Func<string>> studentpostal = null, Expression<Func<string>> studentprinSuper = null, Expression<Func<string>> studentprinSuperEmail = null, Expression<Func<string>> studentprinSuperEmployeeId = null, Expression<Func<string>> studentsex = null, Expression<Func<string>> studentstartDate = null, Expression<Func<string>> studentstudentFeesClass = null, Expression<Func<string>> studentstudyYear = null, Expression<Func<string>> studentsubject = null, Expression<Func<string>> studentsubjectDescr = null, Expression<Func<string>> studentsuperEmail = null, Expression<Func<string>> studentsurname = null, Expression<Func<string>> studenttitle = null, Expression<Func<string>> studenttutor = null, Expression<Func<string>> studenttutorEmail = null, Expression<Func<string>> studenttutorEmployeeId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildStudent(WorkflowExpression<string> studentacadCareer = null, WorkflowExpression<string> studentacadOrgDescr = null, WorkflowExpression<string> studentacadProgram = null, WorkflowExpression<string> studentaddress1 = null, WorkflowExpression<string> studentaddress2 = null, WorkflowExpression<string> studentaddress3 = null, WorkflowExpression<string> studentaddress4 = null, WorkflowExpression<string> studentbarcode = null, WorkflowExpression<string> studentbirthCountryCode = null, WorkflowExpression<string> studentcellTel = null, WorkflowExpression<string> studentcity = null, WorkflowExpression<double> studentcollegeAccountNo = null, WorkflowExpression<string> studentcountry = null, WorkflowExpression<string> studentcountryCitizen = null, WorkflowExpression<string> studentcountryCitizen2 = null, WorkflowExpression<string> studentcrsid = null, WorkflowExpression<string> studentdegree = null, WorkflowExpression<string> studentdob = null, WorkflowExpression<string> studentdos = null, WorkflowExpression<string> studentdosEmail = null, WorkflowExpression<string> studentdosEmployeeId = null, WorkflowExpression<string> studentemail = null, WorkflowExpression<string> studentemailAddr = null, WorkflowExpression<string> studentemailPersonal = null, WorkflowExpression<string> studentendDate = null, WorkflowExpression<string> studentenqGrp = null, WorkflowExpression<string> studentfirstNames = null, WorkflowExpression<string> studentgradTutor = null, WorkflowExpression<string> studentgradTutorEmail = null, WorkflowExpression<string> studentgradTutorEmployeeId = null, WorkflowExpression<string> studentgrp = null, WorkflowExpression<string> studentgrpId = null, WorkflowExpression<string> studenthomeAddress1 = null, WorkflowExpression<string> studenthomeAddress2 = null, WorkflowExpression<string> studenthomeAddress3 = null, WorkflowExpression<string> studenthomeAddress4 = null, WorkflowExpression<string> studenthomeAddress5 = null, WorkflowExpression<string> studenthomeCountry = null, WorkflowExpression<string> studenthomePostal = null, WorkflowExpression<string> studenthomeState = null, WorkflowExpression<string> studenthomeTel = null, WorkflowExpression<string> studentmatriculation = null, WorkflowExpression<string> studentmobileTel = null, WorkflowExpression<string> studentnationality = null, WorkflowExpression<string> studentpostal = null, WorkflowExpression<string> studentprinSuper = null, WorkflowExpression<string> studentprinSuperEmail = null, WorkflowExpression<string> studentprinSuperEmployeeId = null, WorkflowExpression<string> studentsex = null, WorkflowExpression<string> studentstartDate = null, WorkflowExpression<string> studentstudentFeesClass = null, WorkflowExpression<string> studentstudyYear = null, WorkflowExpression<string> studentsubject = null, WorkflowExpression<string> studentsubjectDescr = null, WorkflowExpression<string> studentsuperEmail = null, WorkflowExpression<string> studentsurname = null, WorkflowExpression<string> studenttitle = null, WorkflowExpression<string> studenttutor = null, WorkflowExpression<string> studenttutorEmail = null, WorkflowExpression<string> studenttutorEmployeeId = null)
-        {
-            WorkflowExpression.Validate(studentacadCareer, nameof(studentacadCareer), required: false);
-            WorkflowExpression.Validate(studentacadOrgDescr, nameof(studentacadOrgDescr), required: false);
-            WorkflowExpression.Validate(studentacadProgram, nameof(studentacadProgram), required: false);
-            WorkflowExpression.Validate(studentaddress1, nameof(studentaddress1), required: false);
-            WorkflowExpression.Validate(studentaddress2, nameof(studentaddress2), required: false);
-            WorkflowExpression.Validate(studentaddress3, nameof(studentaddress3), required: false);
-            WorkflowExpression.Validate(studentaddress4, nameof(studentaddress4), required: false);
-            WorkflowExpression.Validate(studentbarcode, nameof(studentbarcode), required: false);
-            WorkflowExpression.Validate(studentbirthCountryCode, nameof(studentbirthCountryCode), required: false);
-            WorkflowExpression.Validate(studentcellTel, nameof(studentcellTel), required: false);
-            WorkflowExpression.Validate(studentcity, nameof(studentcity), required: false);
-            WorkflowExpression.Validate(studentcollegeAccountNo, nameof(studentcollegeAccountNo), required: false);
-            WorkflowExpression.Validate(studentcountry, nameof(studentcountry), required: false);
-            WorkflowExpression.Validate(studentcountryCitizen, nameof(studentcountryCitizen), required: false);
-            WorkflowExpression.Validate(studentcountryCitizen2, nameof(studentcountryCitizen2), required: false);
-            WorkflowExpression.Validate(studentcrsid, nameof(studentcrsid), required: false);
-            WorkflowExpression.Validate(studentdegree, nameof(studentdegree), required: false);
-            WorkflowExpression.Validate(studentdob, nameof(studentdob), required: false);
-            WorkflowExpression.Validate(studentdos, nameof(studentdos), required: false);
-            WorkflowExpression.Validate(studentdosEmail, nameof(studentdosEmail), required: false);
-            WorkflowExpression.Validate(studentdosEmployeeId, nameof(studentdosEmployeeId), required: false);
-            WorkflowExpression.Validate(studentemail, nameof(studentemail), required: false);
-            WorkflowExpression.Validate(studentemailAddr, nameof(studentemailAddr), required: false);
-            WorkflowExpression.Validate(studentemailPersonal, nameof(studentemailPersonal), required: false);
-            WorkflowExpression.Validate(studentendDate, nameof(studentendDate), required: false);
-            WorkflowExpression.Validate(studentenqGrp, nameof(studentenqGrp), required: false);
-            WorkflowExpression.Validate(studentfirstNames, nameof(studentfirstNames), required: false);
-            WorkflowExpression.Validate(studentgradTutor, nameof(studentgradTutor), required: false);
-            WorkflowExpression.Validate(studentgradTutorEmail, nameof(studentgradTutorEmail), required: false);
-            WorkflowExpression.Validate(studentgradTutorEmployeeId, nameof(studentgradTutorEmployeeId), required: false);
-            WorkflowExpression.Validate(studentgrp, nameof(studentgrp), required: false);
-            WorkflowExpression.Validate(studentgrpId, nameof(studentgrpId), required: false);
-            WorkflowExpression.Validate(studenthomeAddress1, nameof(studenthomeAddress1), required: false);
-            WorkflowExpression.Validate(studenthomeAddress2, nameof(studenthomeAddress2), required: false);
-            WorkflowExpression.Validate(studenthomeAddress3, nameof(studenthomeAddress3), required: false);
-            WorkflowExpression.Validate(studenthomeAddress4, nameof(studenthomeAddress4), required: false);
-            WorkflowExpression.Validate(studenthomeAddress5, nameof(studenthomeAddress5), required: false);
-            WorkflowExpression.Validate(studenthomeCountry, nameof(studenthomeCountry), required: false);
-            WorkflowExpression.Validate(studenthomePostal, nameof(studenthomePostal), required: false);
-            WorkflowExpression.Validate(studenthomeState, nameof(studenthomeState), required: false);
-            WorkflowExpression.Validate(studenthomeTel, nameof(studenthomeTel), required: false);
-            WorkflowExpression.Validate(studentmatriculation, nameof(studentmatriculation), required: false);
-            WorkflowExpression.Validate(studentmobileTel, nameof(studentmobileTel), required: false);
-            WorkflowExpression.Validate(studentnationality, nameof(studentnationality), required: false);
-            WorkflowExpression.Validate(studentpostal, nameof(studentpostal), required: false);
-            WorkflowExpression.Validate(studentprinSuper, nameof(studentprinSuper), required: false);
-            WorkflowExpression.Validate(studentprinSuperEmail, nameof(studentprinSuperEmail), required: false);
-            WorkflowExpression.Validate(studentprinSuperEmployeeId, nameof(studentprinSuperEmployeeId), required: false);
-            WorkflowExpression.Validate(studentsex, nameof(studentsex), required: false);
-            WorkflowExpression.Validate(studentstartDate, nameof(studentstartDate), required: false);
-            WorkflowExpression.Validate(studentstudentFeesClass, nameof(studentstudentFeesClass), required: false);
-            WorkflowExpression.Validate(studentstudyYear, nameof(studentstudyYear), required: false);
-            WorkflowExpression.Validate(studentsubject, nameof(studentsubject), required: false);
-            WorkflowExpression.Validate(studentsubjectDescr, nameof(studentsubjectDescr), required: false);
-            WorkflowExpression.Validate(studentsuperEmail, nameof(studentsuperEmail), required: false);
-            WorkflowExpression.Validate(studentsurname, nameof(studentsurname), required: false);
-            WorkflowExpression.Validate(studenttitle, nameof(studenttitle), required: false);
-            WorkflowExpression.Validate(studenttutor, nameof(studenttutor), required: false);
-            WorkflowExpression.Validate(studenttutorEmail, nameof(studenttutorEmail), required: false);
-            WorkflowExpression.Validate(studenttutorEmployeeId, nameof(studenttutorEmployeeId), required: false);
+            var __workflow_studentacadCareer = studentacadCareer == null ? null : WorkflowExpression.Compile(studentacadCareer);
+            WorkflowExpression.Validate(__workflow_studentacadCareer, nameof(studentacadCareer), required: false);
+            var __workflow_studentacadOrgDescr = studentacadOrgDescr == null ? null : WorkflowExpression.Compile(studentacadOrgDescr);
+            WorkflowExpression.Validate(__workflow_studentacadOrgDescr, nameof(studentacadOrgDescr), required: false);
+            var __workflow_studentacadProgram = studentacadProgram == null ? null : WorkflowExpression.Compile(studentacadProgram);
+            WorkflowExpression.Validate(__workflow_studentacadProgram, nameof(studentacadProgram), required: false);
+            var __workflow_studentaddress1 = studentaddress1 == null ? null : WorkflowExpression.Compile(studentaddress1);
+            WorkflowExpression.Validate(__workflow_studentaddress1, nameof(studentaddress1), required: false);
+            var __workflow_studentaddress2 = studentaddress2 == null ? null : WorkflowExpression.Compile(studentaddress2);
+            WorkflowExpression.Validate(__workflow_studentaddress2, nameof(studentaddress2), required: false);
+            var __workflow_studentaddress3 = studentaddress3 == null ? null : WorkflowExpression.Compile(studentaddress3);
+            WorkflowExpression.Validate(__workflow_studentaddress3, nameof(studentaddress3), required: false);
+            var __workflow_studentaddress4 = studentaddress4 == null ? null : WorkflowExpression.Compile(studentaddress4);
+            WorkflowExpression.Validate(__workflow_studentaddress4, nameof(studentaddress4), required: false);
+            var __workflow_studentbarcode = studentbarcode == null ? null : WorkflowExpression.Compile(studentbarcode);
+            WorkflowExpression.Validate(__workflow_studentbarcode, nameof(studentbarcode), required: false);
+            var __workflow_studentbirthCountryCode = studentbirthCountryCode == null ? null : WorkflowExpression.Compile(studentbirthCountryCode);
+            WorkflowExpression.Validate(__workflow_studentbirthCountryCode, nameof(studentbirthCountryCode), required: false);
+            var __workflow_studentcellTel = studentcellTel == null ? null : WorkflowExpression.Compile(studentcellTel);
+            WorkflowExpression.Validate(__workflow_studentcellTel, nameof(studentcellTel), required: false);
+            var __workflow_studentcity = studentcity == null ? null : WorkflowExpression.Compile(studentcity);
+            WorkflowExpression.Validate(__workflow_studentcity, nameof(studentcity), required: false);
+            var __workflow_studentcollegeAccountNo = studentcollegeAccountNo == null ? null : WorkflowExpression.Compile(studentcollegeAccountNo);
+            WorkflowExpression.Validate(__workflow_studentcollegeAccountNo, nameof(studentcollegeAccountNo), required: false);
+            var __workflow_studentcountry = studentcountry == null ? null : WorkflowExpression.Compile(studentcountry);
+            WorkflowExpression.Validate(__workflow_studentcountry, nameof(studentcountry), required: false);
+            var __workflow_studentcountryCitizen = studentcountryCitizen == null ? null : WorkflowExpression.Compile(studentcountryCitizen);
+            WorkflowExpression.Validate(__workflow_studentcountryCitizen, nameof(studentcountryCitizen), required: false);
+            var __workflow_studentcountryCitizen2 = studentcountryCitizen2 == null ? null : WorkflowExpression.Compile(studentcountryCitizen2);
+            WorkflowExpression.Validate(__workflow_studentcountryCitizen2, nameof(studentcountryCitizen2), required: false);
+            var __workflow_studentcrsid = studentcrsid == null ? null : WorkflowExpression.Compile(studentcrsid);
+            WorkflowExpression.Validate(__workflow_studentcrsid, nameof(studentcrsid), required: false);
+            var __workflow_studentdegree = studentdegree == null ? null : WorkflowExpression.Compile(studentdegree);
+            WorkflowExpression.Validate(__workflow_studentdegree, nameof(studentdegree), required: false);
+            var __workflow_studentdob = studentdob == null ? null : WorkflowExpression.Compile(studentdob);
+            WorkflowExpression.Validate(__workflow_studentdob, nameof(studentdob), required: false);
+            var __workflow_studentdos = studentdos == null ? null : WorkflowExpression.Compile(studentdos);
+            WorkflowExpression.Validate(__workflow_studentdos, nameof(studentdos), required: false);
+            var __workflow_studentdosEmail = studentdosEmail == null ? null : WorkflowExpression.Compile(studentdosEmail);
+            WorkflowExpression.Validate(__workflow_studentdosEmail, nameof(studentdosEmail), required: false);
+            var __workflow_studentdosEmployeeId = studentdosEmployeeId == null ? null : WorkflowExpression.Compile(studentdosEmployeeId);
+            WorkflowExpression.Validate(__workflow_studentdosEmployeeId, nameof(studentdosEmployeeId), required: false);
+            var __workflow_studentemail = studentemail == null ? null : WorkflowExpression.Compile(studentemail);
+            WorkflowExpression.Validate(__workflow_studentemail, nameof(studentemail), required: false);
+            var __workflow_studentemailAddr = studentemailAddr == null ? null : WorkflowExpression.Compile(studentemailAddr);
+            WorkflowExpression.Validate(__workflow_studentemailAddr, nameof(studentemailAddr), required: false);
+            var __workflow_studentemailPersonal = studentemailPersonal == null ? null : WorkflowExpression.Compile(studentemailPersonal);
+            WorkflowExpression.Validate(__workflow_studentemailPersonal, nameof(studentemailPersonal), required: false);
+            var __workflow_studentendDate = studentendDate == null ? null : WorkflowExpression.Compile(studentendDate);
+            WorkflowExpression.Validate(__workflow_studentendDate, nameof(studentendDate), required: false);
+            var __workflow_studentenqGrp = studentenqGrp == null ? null : WorkflowExpression.Compile(studentenqGrp);
+            WorkflowExpression.Validate(__workflow_studentenqGrp, nameof(studentenqGrp), required: false);
+            var __workflow_studentfirstNames = studentfirstNames == null ? null : WorkflowExpression.Compile(studentfirstNames);
+            WorkflowExpression.Validate(__workflow_studentfirstNames, nameof(studentfirstNames), required: false);
+            var __workflow_studentgradTutor = studentgradTutor == null ? null : WorkflowExpression.Compile(studentgradTutor);
+            WorkflowExpression.Validate(__workflow_studentgradTutor, nameof(studentgradTutor), required: false);
+            var __workflow_studentgradTutorEmail = studentgradTutorEmail == null ? null : WorkflowExpression.Compile(studentgradTutorEmail);
+            WorkflowExpression.Validate(__workflow_studentgradTutorEmail, nameof(studentgradTutorEmail), required: false);
+            var __workflow_studentgradTutorEmployeeId = studentgradTutorEmployeeId == null ? null : WorkflowExpression.Compile(studentgradTutorEmployeeId);
+            WorkflowExpression.Validate(__workflow_studentgradTutorEmployeeId, nameof(studentgradTutorEmployeeId), required: false);
+            var __workflow_studentgrp = studentgrp == null ? null : WorkflowExpression.Compile(studentgrp);
+            WorkflowExpression.Validate(__workflow_studentgrp, nameof(studentgrp), required: false);
+            var __workflow_studentgrpId = studentgrpId == null ? null : WorkflowExpression.Compile(studentgrpId);
+            WorkflowExpression.Validate(__workflow_studentgrpId, nameof(studentgrpId), required: false);
+            var __workflow_studenthomeAddress1 = studenthomeAddress1 == null ? null : WorkflowExpression.Compile(studenthomeAddress1);
+            WorkflowExpression.Validate(__workflow_studenthomeAddress1, nameof(studenthomeAddress1), required: false);
+            var __workflow_studenthomeAddress2 = studenthomeAddress2 == null ? null : WorkflowExpression.Compile(studenthomeAddress2);
+            WorkflowExpression.Validate(__workflow_studenthomeAddress2, nameof(studenthomeAddress2), required: false);
+            var __workflow_studenthomeAddress3 = studenthomeAddress3 == null ? null : WorkflowExpression.Compile(studenthomeAddress3);
+            WorkflowExpression.Validate(__workflow_studenthomeAddress3, nameof(studenthomeAddress3), required: false);
+            var __workflow_studenthomeAddress4 = studenthomeAddress4 == null ? null : WorkflowExpression.Compile(studenthomeAddress4);
+            WorkflowExpression.Validate(__workflow_studenthomeAddress4, nameof(studenthomeAddress4), required: false);
+            var __workflow_studenthomeAddress5 = studenthomeAddress5 == null ? null : WorkflowExpression.Compile(studenthomeAddress5);
+            WorkflowExpression.Validate(__workflow_studenthomeAddress5, nameof(studenthomeAddress5), required: false);
+            var __workflow_studenthomeCountry = studenthomeCountry == null ? null : WorkflowExpression.Compile(studenthomeCountry);
+            WorkflowExpression.Validate(__workflow_studenthomeCountry, nameof(studenthomeCountry), required: false);
+            var __workflow_studenthomePostal = studenthomePostal == null ? null : WorkflowExpression.Compile(studenthomePostal);
+            WorkflowExpression.Validate(__workflow_studenthomePostal, nameof(studenthomePostal), required: false);
+            var __workflow_studenthomeState = studenthomeState == null ? null : WorkflowExpression.Compile(studenthomeState);
+            WorkflowExpression.Validate(__workflow_studenthomeState, nameof(studenthomeState), required: false);
+            var __workflow_studenthomeTel = studenthomeTel == null ? null : WorkflowExpression.Compile(studenthomeTel);
+            WorkflowExpression.Validate(__workflow_studenthomeTel, nameof(studenthomeTel), required: false);
+            var __workflow_studentmatriculation = studentmatriculation == null ? null : WorkflowExpression.Compile(studentmatriculation);
+            WorkflowExpression.Validate(__workflow_studentmatriculation, nameof(studentmatriculation), required: false);
+            var __workflow_studentmobileTel = studentmobileTel == null ? null : WorkflowExpression.Compile(studentmobileTel);
+            WorkflowExpression.Validate(__workflow_studentmobileTel, nameof(studentmobileTel), required: false);
+            var __workflow_studentnationality = studentnationality == null ? null : WorkflowExpression.Compile(studentnationality);
+            WorkflowExpression.Validate(__workflow_studentnationality, nameof(studentnationality), required: false);
+            var __workflow_studentpostal = studentpostal == null ? null : WorkflowExpression.Compile(studentpostal);
+            WorkflowExpression.Validate(__workflow_studentpostal, nameof(studentpostal), required: false);
+            var __workflow_studentprinSuper = studentprinSuper == null ? null : WorkflowExpression.Compile(studentprinSuper);
+            WorkflowExpression.Validate(__workflow_studentprinSuper, nameof(studentprinSuper), required: false);
+            var __workflow_studentprinSuperEmail = studentprinSuperEmail == null ? null : WorkflowExpression.Compile(studentprinSuperEmail);
+            WorkflowExpression.Validate(__workflow_studentprinSuperEmail, nameof(studentprinSuperEmail), required: false);
+            var __workflow_studentprinSuperEmployeeId = studentprinSuperEmployeeId == null ? null : WorkflowExpression.Compile(studentprinSuperEmployeeId);
+            WorkflowExpression.Validate(__workflow_studentprinSuperEmployeeId, nameof(studentprinSuperEmployeeId), required: false);
+            var __workflow_studentsex = studentsex == null ? null : WorkflowExpression.Compile(studentsex);
+            WorkflowExpression.Validate(__workflow_studentsex, nameof(studentsex), required: false);
+            var __workflow_studentstartDate = studentstartDate == null ? null : WorkflowExpression.Compile(studentstartDate);
+            WorkflowExpression.Validate(__workflow_studentstartDate, nameof(studentstartDate), required: false);
+            var __workflow_studentstudentFeesClass = studentstudentFeesClass == null ? null : WorkflowExpression.Compile(studentstudentFeesClass);
+            WorkflowExpression.Validate(__workflow_studentstudentFeesClass, nameof(studentstudentFeesClass), required: false);
+            var __workflow_studentstudyYear = studentstudyYear == null ? null : WorkflowExpression.Compile(studentstudyYear);
+            WorkflowExpression.Validate(__workflow_studentstudyYear, nameof(studentstudyYear), required: false);
+            var __workflow_studentsubject = studentsubject == null ? null : WorkflowExpression.Compile(studentsubject);
+            WorkflowExpression.Validate(__workflow_studentsubject, nameof(studentsubject), required: false);
+            var __workflow_studentsubjectDescr = studentsubjectDescr == null ? null : WorkflowExpression.Compile(studentsubjectDescr);
+            WorkflowExpression.Validate(__workflow_studentsubjectDescr, nameof(studentsubjectDescr), required: false);
+            var __workflow_studentsuperEmail = studentsuperEmail == null ? null : WorkflowExpression.Compile(studentsuperEmail);
+            WorkflowExpression.Validate(__workflow_studentsuperEmail, nameof(studentsuperEmail), required: false);
+            var __workflow_studentsurname = studentsurname == null ? null : WorkflowExpression.Compile(studentsurname);
+            WorkflowExpression.Validate(__workflow_studentsurname, nameof(studentsurname), required: false);
+            var __workflow_studenttitle = studenttitle == null ? null : WorkflowExpression.Compile(studenttitle);
+            WorkflowExpression.Validate(__workflow_studenttitle, nameof(studenttitle), required: false);
+            var __workflow_studenttutor = studenttutor == null ? null : WorkflowExpression.Compile(studenttutor);
+            WorkflowExpression.Validate(__workflow_studenttutor, nameof(studenttutor), required: false);
+            var __workflow_studenttutorEmail = studenttutorEmail == null ? null : WorkflowExpression.Compile(studenttutorEmail);
+            WorkflowExpression.Validate(__workflow_studenttutorEmail, nameof(studenttutorEmail), required: false);
+            var __workflow_studenttutorEmployeeId = studenttutorEmployeeId == null ? null : WorkflowExpression.Compile(studenttutorEmployeeId);
+            WorkflowExpression.Validate(__workflow_studenttutorEmployeeId, nameof(studenttutorEmployeeId), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/Student";
@@ -230,363 +255,363 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Casper365
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var student = new JObject();
                 var studentpropCount = 0;
-                if (studentacadCareer != null)
+                if (__workflow_studentacadCareer != null)
                 {
-                    student["acadCareer"] = ExpressionConverter.ConvertO(studentacadCareer);
+                    student["acadCareer"] = ExpressionConverter.ConvertO(__workflow_studentacadCareer);
                     studentpropCount++;
                 }
 
-                if (studentacadOrgDescr != null)
+                if (__workflow_studentacadOrgDescr != null)
                 {
-                    student["acadOrgDescr"] = ExpressionConverter.ConvertO(studentacadOrgDescr);
+                    student["acadOrgDescr"] = ExpressionConverter.ConvertO(__workflow_studentacadOrgDescr);
                     studentpropCount++;
                 }
 
-                if (studentacadProgram != null)
+                if (__workflow_studentacadProgram != null)
                 {
-                    student["acadProgram"] = ExpressionConverter.ConvertO(studentacadProgram);
+                    student["acadProgram"] = ExpressionConverter.ConvertO(__workflow_studentacadProgram);
                     studentpropCount++;
                 }
 
-                if (studentaddress1 != null)
+                if (__workflow_studentaddress1 != null)
                 {
-                    student["address1"] = ExpressionConverter.ConvertO(studentaddress1);
+                    student["address1"] = ExpressionConverter.ConvertO(__workflow_studentaddress1);
                     studentpropCount++;
                 }
 
-                if (studentaddress2 != null)
+                if (__workflow_studentaddress2 != null)
                 {
-                    student["address2"] = ExpressionConverter.ConvertO(studentaddress2);
+                    student["address2"] = ExpressionConverter.ConvertO(__workflow_studentaddress2);
                     studentpropCount++;
                 }
 
-                if (studentaddress3 != null)
+                if (__workflow_studentaddress3 != null)
                 {
-                    student["address3"] = ExpressionConverter.ConvertO(studentaddress3);
+                    student["address3"] = ExpressionConverter.ConvertO(__workflow_studentaddress3);
                     studentpropCount++;
                 }
 
-                if (studentaddress4 != null)
+                if (__workflow_studentaddress4 != null)
                 {
-                    student["address4"] = ExpressionConverter.ConvertO(studentaddress4);
+                    student["address4"] = ExpressionConverter.ConvertO(__workflow_studentaddress4);
                     studentpropCount++;
                 }
 
-                if (studentbarcode != null)
+                if (__workflow_studentbarcode != null)
                 {
-                    student["barcode"] = ExpressionConverter.ConvertO(studentbarcode);
+                    student["barcode"] = ExpressionConverter.ConvertO(__workflow_studentbarcode);
                     studentpropCount++;
                 }
 
-                if (studentbirthCountryCode != null)
+                if (__workflow_studentbirthCountryCode != null)
                 {
-                    student["birthCountryCode"] = ExpressionConverter.ConvertO(studentbirthCountryCode);
+                    student["birthCountryCode"] = ExpressionConverter.ConvertO(__workflow_studentbirthCountryCode);
                     studentpropCount++;
                 }
 
-                if (studentcellTel != null)
+                if (__workflow_studentcellTel != null)
                 {
-                    student["cellTel"] = ExpressionConverter.ConvertO(studentcellTel);
+                    student["cellTel"] = ExpressionConverter.ConvertO(__workflow_studentcellTel);
                     studentpropCount++;
                 }
 
-                if (studentcity != null)
+                if (__workflow_studentcity != null)
                 {
-                    student["city"] = ExpressionConverter.ConvertO(studentcity);
+                    student["city"] = ExpressionConverter.ConvertO(__workflow_studentcity);
                     studentpropCount++;
                 }
 
-                if (studentcollegeAccountNo != null)
+                if (__workflow_studentcollegeAccountNo != null)
                 {
-                    student["collegeAccountNo"] = ExpressionConverter.ConvertO(studentcollegeAccountNo);
+                    student["collegeAccountNo"] = ExpressionConverter.ConvertO(__workflow_studentcollegeAccountNo);
                     studentpropCount++;
                 }
 
-                if (studentcountry != null)
+                if (__workflow_studentcountry != null)
                 {
-                    student["country"] = ExpressionConverter.ConvertO(studentcountry);
+                    student["country"] = ExpressionConverter.ConvertO(__workflow_studentcountry);
                     studentpropCount++;
                 }
 
-                if (studentcountryCitizen != null)
+                if (__workflow_studentcountryCitizen != null)
                 {
-                    student["countryCitizen"] = ExpressionConverter.ConvertO(studentcountryCitizen);
+                    student["countryCitizen"] = ExpressionConverter.ConvertO(__workflow_studentcountryCitizen);
                     studentpropCount++;
                 }
 
-                if (studentcountryCitizen2 != null)
+                if (__workflow_studentcountryCitizen2 != null)
                 {
-                    student["countryCitizen2"] = ExpressionConverter.ConvertO(studentcountryCitizen2);
+                    student["countryCitizen2"] = ExpressionConverter.ConvertO(__workflow_studentcountryCitizen2);
                     studentpropCount++;
                 }
 
-                if (studentcrsid != null)
+                if (__workflow_studentcrsid != null)
                 {
-                    student["crsid"] = ExpressionConverter.ConvertO(studentcrsid);
+                    student["crsid"] = ExpressionConverter.ConvertO(__workflow_studentcrsid);
                     studentpropCount++;
                 }
 
-                if (studentdegree != null)
+                if (__workflow_studentdegree != null)
                 {
-                    student["degree"] = ExpressionConverter.ConvertO(studentdegree);
+                    student["degree"] = ExpressionConverter.ConvertO(__workflow_studentdegree);
                     studentpropCount++;
                 }
 
-                if (studentdob != null)
+                if (__workflow_studentdob != null)
                 {
-                    student["dob"] = ExpressionConverter.ConvertO(studentdob);
+                    student["dob"] = ExpressionConverter.ConvertO(__workflow_studentdob);
                     studentpropCount++;
                 }
 
-                if (studentdos != null)
+                if (__workflow_studentdos != null)
                 {
-                    student["dos"] = ExpressionConverter.ConvertO(studentdos);
+                    student["dos"] = ExpressionConverter.ConvertO(__workflow_studentdos);
                     studentpropCount++;
                 }
 
-                if (studentdosEmail != null)
+                if (__workflow_studentdosEmail != null)
                 {
-                    student["dosEmail"] = ExpressionConverter.ConvertO(studentdosEmail);
+                    student["dosEmail"] = ExpressionConverter.ConvertO(__workflow_studentdosEmail);
                     studentpropCount++;
                 }
 
-                if (studentdosEmployeeId != null)
+                if (__workflow_studentdosEmployeeId != null)
                 {
-                    student["dosEmployeeId"] = ExpressionConverter.ConvertO(studentdosEmployeeId);
+                    student["dosEmployeeId"] = ExpressionConverter.ConvertO(__workflow_studentdosEmployeeId);
                     studentpropCount++;
                 }
 
-                if (studentemail != null)
+                if (__workflow_studentemail != null)
                 {
-                    student["email"] = ExpressionConverter.ConvertO(studentemail);
+                    student["email"] = ExpressionConverter.ConvertO(__workflow_studentemail);
                     studentpropCount++;
                 }
 
-                if (studentemailAddr != null)
+                if (__workflow_studentemailAddr != null)
                 {
-                    student["emailAddr"] = ExpressionConverter.ConvertO(studentemailAddr);
+                    student["emailAddr"] = ExpressionConverter.ConvertO(__workflow_studentemailAddr);
                     studentpropCount++;
                 }
 
-                if (studentemailPersonal != null)
+                if (__workflow_studentemailPersonal != null)
                 {
-                    student["emailPersonal"] = ExpressionConverter.ConvertO(studentemailPersonal);
+                    student["emailPersonal"] = ExpressionConverter.ConvertO(__workflow_studentemailPersonal);
                     studentpropCount++;
                 }
 
-                if (studentendDate != null)
+                if (__workflow_studentendDate != null)
                 {
-                    student["endDate"] = ExpressionConverter.ConvertO(studentendDate);
+                    student["endDate"] = ExpressionConverter.ConvertO(__workflow_studentendDate);
                     studentpropCount++;
                 }
 
-                if (studentenqGrp != null)
+                if (__workflow_studentenqGrp != null)
                 {
-                    student["enqGrp"] = ExpressionConverter.ConvertO(studentenqGrp);
+                    student["enqGrp"] = ExpressionConverter.ConvertO(__workflow_studentenqGrp);
                     studentpropCount++;
                 }
 
-                if (studentfirstNames != null)
+                if (__workflow_studentfirstNames != null)
                 {
-                    student["firstNames"] = ExpressionConverter.ConvertO(studentfirstNames);
+                    student["firstNames"] = ExpressionConverter.ConvertO(__workflow_studentfirstNames);
                     studentpropCount++;
                 }
 
-                if (studentgradTutor != null)
+                if (__workflow_studentgradTutor != null)
                 {
-                    student["gradTutor"] = ExpressionConverter.ConvertO(studentgradTutor);
+                    student["gradTutor"] = ExpressionConverter.ConvertO(__workflow_studentgradTutor);
                     studentpropCount++;
                 }
 
-                if (studentgradTutorEmail != null)
+                if (__workflow_studentgradTutorEmail != null)
                 {
-                    student["gradTutorEmail"] = ExpressionConverter.ConvertO(studentgradTutorEmail);
+                    student["gradTutorEmail"] = ExpressionConverter.ConvertO(__workflow_studentgradTutorEmail);
                     studentpropCount++;
                 }
 
-                if (studentgradTutorEmployeeId != null)
+                if (__workflow_studentgradTutorEmployeeId != null)
                 {
-                    student["gradTutorEmployeeId"] = ExpressionConverter.ConvertO(studentgradTutorEmployeeId);
+                    student["gradTutorEmployeeId"] = ExpressionConverter.ConvertO(__workflow_studentgradTutorEmployeeId);
                     studentpropCount++;
                 }
 
-                if (studentgrp != null)
+                if (__workflow_studentgrp != null)
                 {
-                    student["grp"] = ExpressionConverter.ConvertO(studentgrp);
+                    student["grp"] = ExpressionConverter.ConvertO(__workflow_studentgrp);
                     studentpropCount++;
                 }
 
-                if (studentgrpId != null)
+                if (__workflow_studentgrpId != null)
                 {
-                    student["grpId"] = ExpressionConverter.ConvertO(studentgrpId);
+                    student["grpId"] = ExpressionConverter.ConvertO(__workflow_studentgrpId);
                     studentpropCount++;
                 }
 
-                if (studenthomeAddress1 != null)
+                if (__workflow_studenthomeAddress1 != null)
                 {
-                    student["homeAddress1"] = ExpressionConverter.ConvertO(studenthomeAddress1);
+                    student["homeAddress1"] = ExpressionConverter.ConvertO(__workflow_studenthomeAddress1);
                     studentpropCount++;
                 }
 
-                if (studenthomeAddress2 != null)
+                if (__workflow_studenthomeAddress2 != null)
                 {
-                    student["homeAddress2"] = ExpressionConverter.ConvertO(studenthomeAddress2);
+                    student["homeAddress2"] = ExpressionConverter.ConvertO(__workflow_studenthomeAddress2);
                     studentpropCount++;
                 }
 
-                if (studenthomeAddress3 != null)
+                if (__workflow_studenthomeAddress3 != null)
                 {
-                    student["homeAddress3"] = ExpressionConverter.ConvertO(studenthomeAddress3);
+                    student["homeAddress3"] = ExpressionConverter.ConvertO(__workflow_studenthomeAddress3);
                     studentpropCount++;
                 }
 
-                if (studenthomeAddress4 != null)
+                if (__workflow_studenthomeAddress4 != null)
                 {
-                    student["homeAddress4"] = ExpressionConverter.ConvertO(studenthomeAddress4);
+                    student["homeAddress4"] = ExpressionConverter.ConvertO(__workflow_studenthomeAddress4);
                     studentpropCount++;
                 }
 
-                if (studenthomeAddress5 != null)
+                if (__workflow_studenthomeAddress5 != null)
                 {
-                    student["homeAddress5"] = ExpressionConverter.ConvertO(studenthomeAddress5);
+                    student["homeAddress5"] = ExpressionConverter.ConvertO(__workflow_studenthomeAddress5);
                     studentpropCount++;
                 }
 
-                if (studenthomeCountry != null)
+                if (__workflow_studenthomeCountry != null)
                 {
-                    student["homeCountry"] = ExpressionConverter.ConvertO(studenthomeCountry);
+                    student["homeCountry"] = ExpressionConverter.ConvertO(__workflow_studenthomeCountry);
                     studentpropCount++;
                 }
 
-                if (studenthomePostal != null)
+                if (__workflow_studenthomePostal != null)
                 {
-                    student["homePostal"] = ExpressionConverter.ConvertO(studenthomePostal);
+                    student["homePostal"] = ExpressionConverter.ConvertO(__workflow_studenthomePostal);
                     studentpropCount++;
                 }
 
-                if (studenthomeState != null)
+                if (__workflow_studenthomeState != null)
                 {
-                    student["homeState"] = ExpressionConverter.ConvertO(studenthomeState);
+                    student["homeState"] = ExpressionConverter.ConvertO(__workflow_studenthomeState);
                     studentpropCount++;
                 }
 
-                if (studenthomeTel != null)
+                if (__workflow_studenthomeTel != null)
                 {
-                    student["homeTel"] = ExpressionConverter.ConvertO(studenthomeTel);
+                    student["homeTel"] = ExpressionConverter.ConvertO(__workflow_studenthomeTel);
                     studentpropCount++;
                 }
 
-                if (studentmatriculation != null)
+                if (__workflow_studentmatriculation != null)
                 {
-                    student["matriculation"] = ExpressionConverter.ConvertO(studentmatriculation);
+                    student["matriculation"] = ExpressionConverter.ConvertO(__workflow_studentmatriculation);
                     studentpropCount++;
                 }
 
-                if (studentmobileTel != null)
+                if (__workflow_studentmobileTel != null)
                 {
-                    student["mobileTel"] = ExpressionConverter.ConvertO(studentmobileTel);
+                    student["mobileTel"] = ExpressionConverter.ConvertO(__workflow_studentmobileTel);
                     studentpropCount++;
                 }
 
-                if (studentnationality != null)
+                if (__workflow_studentnationality != null)
                 {
-                    student["nationality"] = ExpressionConverter.ConvertO(studentnationality);
+                    student["nationality"] = ExpressionConverter.ConvertO(__workflow_studentnationality);
                     studentpropCount++;
                 }
 
-                if (studentpostal != null)
+                if (__workflow_studentpostal != null)
                 {
-                    student["postal"] = ExpressionConverter.ConvertO(studentpostal);
+                    student["postal"] = ExpressionConverter.ConvertO(__workflow_studentpostal);
                     studentpropCount++;
                 }
 
-                if (studentprinSuper != null)
+                if (__workflow_studentprinSuper != null)
                 {
-                    student["prinSuper"] = ExpressionConverter.ConvertO(studentprinSuper);
+                    student["prinSuper"] = ExpressionConverter.ConvertO(__workflow_studentprinSuper);
                     studentpropCount++;
                 }
 
-                if (studentprinSuperEmail != null)
+                if (__workflow_studentprinSuperEmail != null)
                 {
-                    student["prinSuperEmail"] = ExpressionConverter.ConvertO(studentprinSuperEmail);
+                    student["prinSuperEmail"] = ExpressionConverter.ConvertO(__workflow_studentprinSuperEmail);
                     studentpropCount++;
                 }
 
-                if (studentprinSuperEmployeeId != null)
+                if (__workflow_studentprinSuperEmployeeId != null)
                 {
-                    student["prinSuperEmployeeId"] = ExpressionConverter.ConvertO(studentprinSuperEmployeeId);
+                    student["prinSuperEmployeeId"] = ExpressionConverter.ConvertO(__workflow_studentprinSuperEmployeeId);
                     studentpropCount++;
                 }
 
-                if (studentsex != null)
+                if (__workflow_studentsex != null)
                 {
-                    student["sex"] = ExpressionConverter.ConvertO(studentsex);
+                    student["sex"] = ExpressionConverter.ConvertO(__workflow_studentsex);
                     studentpropCount++;
                 }
 
-                if (studentstartDate != null)
+                if (__workflow_studentstartDate != null)
                 {
-                    student["startDate"] = ExpressionConverter.ConvertO(studentstartDate);
+                    student["startDate"] = ExpressionConverter.ConvertO(__workflow_studentstartDate);
                     studentpropCount++;
                 }
 
-                if (studentstudentFeesClass != null)
+                if (__workflow_studentstudentFeesClass != null)
                 {
-                    student["studentFeesClass"] = ExpressionConverter.ConvertO(studentstudentFeesClass);
+                    student["studentFeesClass"] = ExpressionConverter.ConvertO(__workflow_studentstudentFeesClass);
                     studentpropCount++;
                 }
 
-                if (studentstudyYear != null)
+                if (__workflow_studentstudyYear != null)
                 {
-                    student["studyYear"] = ExpressionConverter.ConvertO(studentstudyYear);
+                    student["studyYear"] = ExpressionConverter.ConvertO(__workflow_studentstudyYear);
                     studentpropCount++;
                 }
 
-                if (studentsubject != null)
+                if (__workflow_studentsubject != null)
                 {
-                    student["subject"] = ExpressionConverter.ConvertO(studentsubject);
+                    student["subject"] = ExpressionConverter.ConvertO(__workflow_studentsubject);
                     studentpropCount++;
                 }
 
-                if (studentsubjectDescr != null)
+                if (__workflow_studentsubjectDescr != null)
                 {
-                    student["subjectDescr"] = ExpressionConverter.ConvertO(studentsubjectDescr);
+                    student["subjectDescr"] = ExpressionConverter.ConvertO(__workflow_studentsubjectDescr);
                     studentpropCount++;
                 }
 
-                if (studentsuperEmail != null)
+                if (__workflow_studentsuperEmail != null)
                 {
-                    student["superEmail"] = ExpressionConverter.ConvertO(studentsuperEmail);
+                    student["superEmail"] = ExpressionConverter.ConvertO(__workflow_studentsuperEmail);
                     studentpropCount++;
                 }
 
-                if (studentsurname != null)
+                if (__workflow_studentsurname != null)
                 {
-                    student["surname"] = ExpressionConverter.ConvertO(studentsurname);
+                    student["surname"] = ExpressionConverter.ConvertO(__workflow_studentsurname);
                     studentpropCount++;
                 }
 
-                if (studenttitle != null)
+                if (__workflow_studenttitle != null)
                 {
-                    student["title"] = ExpressionConverter.ConvertO(studenttitle);
+                    student["title"] = ExpressionConverter.ConvertO(__workflow_studenttitle);
                     studentpropCount++;
                 }
 
-                if (studenttutor != null)
+                if (__workflow_studenttutor != null)
                 {
-                    student["tutor"] = ExpressionConverter.ConvertO(studenttutor);
+                    student["tutor"] = ExpressionConverter.ConvertO(__workflow_studenttutor);
                     studentpropCount++;
                 }
 
-                if (studenttutorEmail != null)
+                if (__workflow_studenttutorEmail != null)
                 {
-                    student["tutorEmail"] = ExpressionConverter.ConvertO(studenttutorEmail);
+                    student["tutorEmail"] = ExpressionConverter.ConvertO(__workflow_studenttutorEmail);
                     studentpropCount++;
                 }
 
-                if (studenttutorEmployeeId != null)
+                if (__workflow_studenttutorEmployeeId != null)
                 {
-                    student["tutorEmployeeId"] = ExpressionConverter.ConvertO(studenttutorEmployeeId);
+                    student["tutorEmployeeId"] = ExpressionConverter.ConvertO(__workflow_studenttutorEmployeeId);
                     studentpropCount++;
                 }
 

@@ -1,75 +1,73 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class OrbusinfinityActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
-        [WorkflowExpressionFactory(nameof(__BuildRelationshipsGet))]
-        public IBodyWorkflowAction<OfficeArchitectContractsSwaggerResponseODataPageResponseOfOfficeArchitectContractsODataModelRelationship> RelationshipsGet([WorkflowExpression] Func<bool> includeIntersectional = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> expand = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<bool> count = null)
+        public IBodyWorkflowAction<OfficeArchitectContractsSwaggerResponseODataPageResponseOfOfficeArchitectContractsODataModelRelationship> RelationshipsGet(Expression<Func<bool>> includeIntersectional = null, Expression<Func<string>> select = null, Expression<Func<string>> expand = null, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<OfficeArchitectContractsSwaggerResponseODataPageResponseOfOfficeArchitectContractsODataModelRelationship> __BuildRelationshipsGet(WorkflowExpression<bool> includeIntersectional = null, WorkflowExpression<string> select = null, WorkflowExpression<string> expand = null, WorkflowExpression<string> filter = null, WorkflowExpression<string> orderby = null, WorkflowExpression<int> top = null, WorkflowExpression<int> skip = null, WorkflowExpression<bool> count = null)
-        {
-            WorkflowExpression.Validate(includeIntersectional, nameof(includeIntersectional), required: false);
-            WorkflowExpression.Validate(select, nameof(select), required: false);
-            WorkflowExpression.Validate(expand, nameof(expand), required: false);
-            WorkflowExpression.Validate(filter, nameof(filter), required: false);
-            WorkflowExpression.Validate(orderby, nameof(orderby), required: false);
-            WorkflowExpression.Validate(top, nameof(top), required: false);
-            WorkflowExpression.Validate(skip, nameof(skip), required: false);
-            WorkflowExpression.Validate(count, nameof(count), required: false);
+            var __workflow_includeIntersectional = includeIntersectional == null ? null : WorkflowExpression.Compile(includeIntersectional);
+            WorkflowExpression.Validate(__workflow_includeIntersectional, nameof(includeIntersectional), required: false);
+            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
+            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_expand = expand == null ? null : WorkflowExpression.Compile(expand);
+            WorkflowExpression.Validate(__workflow_expand, nameof(expand), required: false);
+            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
+            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
+            var __workflow_orderby = orderby == null ? null : WorkflowExpression.Compile(orderby);
+            WorkflowExpression.Validate(__workflow_orderby, nameof(orderby), required: false);
+            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
+            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_skip = skip == null ? null : WorkflowExpression.Compile(skip);
+            WorkflowExpression.Validate(__workflow_skip, nameof(skip), required: false);
+            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
+            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
             return new DeferredBodyAction<OfficeArchitectContractsSwaggerResponseODataPageResponseOfOfficeArchitectContractsODataModelRelationship>(() =>
             {
                 var apiCallPath = "/odata/Relationships";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["includeIntersectional"] = Convert.ToString(false);
-                if (includeIntersectional != null)
-                    callPayload.Queries["includeIntersectional"] = ExpressionConverter.Convert(includeIntersectional);
-                if (select != null)
-                    callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-                if (expand != null)
-                    callPayload.Queries["$expand"] = ExpressionConverter.Convert(expand);
-                if (filter != null)
-                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-                if (orderby != null)
-                    callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
-                if (top != null)
-                    callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-                if (skip != null)
-                    callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-                if (count != null)
-                    callPayload.Queries["$count"] = ExpressionConverter.Convert(count);
+                if (__workflow_includeIntersectional != null)
+                    callPayload.Queries["includeIntersectional"] = ExpressionConverter.Convert(__workflow_includeIntersectional);
+                if (__workflow_select != null)
+                    callPayload.Queries["$select"] = ExpressionConverter.Convert(__workflow_select);
+                if (__workflow_expand != null)
+                    callPayload.Queries["$expand"] = ExpressionConverter.Convert(__workflow_expand);
+                if (__workflow_filter != null)
+                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(__workflow_filter);
+                if (__workflow_orderby != null)
+                    callPayload.Queries["$orderby"] = ExpressionConverter.Convert(__workflow_orderby);
+                if (__workflow_top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
+                if (__workflow_skip != null)
+                    callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
+                if (__workflow_count != null)
+                    callPayload.Queries["$count"] = ExpressionConverter.Convert(__workflow_count);
                 return new ApiConnectionAction<OfficeArchitectContractsSwaggerResponseODataPageResponseOfOfficeArchitectContractsODataModelRelationship>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
-        [WorkflowExpressionFactory(nameof(__BuildRelationships))]
-        public IBodyWorkflowAction<OfficeArchitectContractsRelationshipResponseCreateRelationshipResponseLevel0> Relationships([WorkflowExpression] Func<string> bodyrelationshipTypeId, [WorkflowExpression] Func<string> bodyleadModelItemId, [WorkflowExpression] Func<string> bodymemberModelItemId, [WorkflowExpression] Func<string> bodymodelId, [WorkflowExpression] Func<string> bodyrelationshipTypePairId = null)
+        public IBodyWorkflowAction<OfficeArchitectContractsRelationshipResponseCreateRelationshipResponseLevel0> Relationships(Expression<Func<string>> bodyrelationshipTypeId, Expression<Func<string>> bodyleadModelItemId, Expression<Func<string>> bodymemberModelItemId, Expression<Func<string>> bodymodelId, Expression<Func<string>> bodyrelationshipTypePairId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<OfficeArchitectContractsRelationshipResponseCreateRelationshipResponseLevel0> __BuildRelationships(WorkflowExpression<string> bodyrelationshipTypeId, WorkflowExpression<string> bodyleadModelItemId, WorkflowExpression<string> bodymemberModelItemId, WorkflowExpression<string> bodymodelId, WorkflowExpression<string> bodyrelationshipTypePairId = null)
-        {
-            WorkflowExpression.Validate(bodyrelationshipTypeId, nameof(bodyrelationshipTypeId), required: true);
-            WorkflowExpression.Validate(bodyleadModelItemId, nameof(bodyleadModelItemId), required: true);
-            WorkflowExpression.Validate(bodymemberModelItemId, nameof(bodymemberModelItemId), required: true);
-            WorkflowExpression.Validate(bodymodelId, nameof(bodymodelId), required: true);
-            WorkflowExpression.Validate(bodyrelationshipTypePairId, nameof(bodyrelationshipTypePairId), required: false);
+            var __workflow_bodyrelationshipTypeId = bodyrelationshipTypeId == null ? null : WorkflowExpression.Compile(bodyrelationshipTypeId);
+            WorkflowExpression.Validate(__workflow_bodyrelationshipTypeId, nameof(bodyrelationshipTypeId), required: true);
+            var __workflow_bodyleadModelItemId = bodyleadModelItemId == null ? null : WorkflowExpression.Compile(bodyleadModelItemId);
+            WorkflowExpression.Validate(__workflow_bodyleadModelItemId, nameof(bodyleadModelItemId), required: true);
+            var __workflow_bodymemberModelItemId = bodymemberModelItemId == null ? null : WorkflowExpression.Compile(bodymemberModelItemId);
+            WorkflowExpression.Validate(__workflow_bodymemberModelItemId, nameof(bodymemberModelItemId), required: true);
+            var __workflow_bodymodelId = bodymodelId == null ? null : WorkflowExpression.Compile(bodymodelId);
+            WorkflowExpression.Validate(__workflow_bodymodelId, nameof(bodymodelId), required: true);
+            var __workflow_bodyrelationshipTypePairId = bodyrelationshipTypePairId == null ? null : WorkflowExpression.Compile(bodyrelationshipTypePairId);
+            WorkflowExpression.Validate(__workflow_bodyrelationshipTypePairId, nameof(bodyrelationshipTypePairId), required: false);
             return new DeferredBodyAction<OfficeArchitectContractsRelationshipResponseCreateRelationshipResponseLevel0>(() =>
             {
                 var apiCallPath = "/odata/Relationships";
@@ -78,17 +76,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["relationshipTypeId"] = ExpressionConverter.ConvertO(bodyrelationshipTypeId);
-                if (bodyrelationshipTypePairId != null)
+                body["relationshipTypeId"] = ExpressionConverter.ConvertO(__workflow_bodyrelationshipTypeId);
+                if (__workflow_bodyrelationshipTypePairId != null)
                 {
-                    body["relationshipTypePairId"] = ExpressionConverter.ConvertO(bodyrelationshipTypePairId);
+                    body["relationshipTypePairId"] = ExpressionConverter.ConvertO(__workflow_bodyrelationshipTypePairId);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["leadModelItemId"] = ExpressionConverter.ConvertO(bodyleadModelItemId);
+                body["leadModelItemId"] = ExpressionConverter.ConvertO(__workflow_bodyleadModelItemId);
                 bodypropCount++;
-                body["memberModelItemId"] = ExpressionConverter.ConvertO(bodymemberModelItemId);
+                body["memberModelItemId"] = ExpressionConverter.ConvertO(__workflow_bodymemberModelItemId);
                 var attributeValuesFlatObject = new JObject();
                 var attributeValuesFlatObjectpropCount = 0;
                 if (attributeValuesFlatObjectpropCount > 0)
@@ -98,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
                 }
 
                 bodypropCount++;
-                body["modelId"] = ExpressionConverter.ConvertO(bodymodelId);
+                body["modelId"] = ExpressionConverter.ConvertO(__workflow_bodymodelId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -109,45 +107,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
-        [WorkflowExpressionFactory(nameof(__BuildRelationshipsGetSingle))]
-        public IBodyWorkflowAction<OfficeArchitectContractsODataModelRelationshipLevel0> RelationshipsGetSingle([WorkflowExpression] Func<string> key, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> expand = null)
+        public IBodyWorkflowAction<OfficeArchitectContractsODataModelRelationshipLevel0> RelationshipsGetSingle(Expression<Func<string>> key, Expression<Func<string>> select = null, Expression<Func<string>> expand = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<OfficeArchitectContractsODataModelRelationshipLevel0> __BuildRelationshipsGetSingle(WorkflowExpression<string> key, WorkflowExpression<string> select = null, WorkflowExpression<string> expand = null)
-        {
-            WorkflowExpression.Validate(key, nameof(key), required: true);
-            WorkflowExpression.Validate(select, nameof(select), required: false);
-            WorkflowExpression.Validate(expand, nameof(expand), required: false);
+            var __workflow_key = key == null ? null : WorkflowExpression.Compile(key);
+            WorkflowExpression.Validate(__workflow_key, nameof(key), required: true);
+            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
+            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_expand = expand == null ? null : WorkflowExpression.Compile(expand);
+            WorkflowExpression.Validate(__workflow_expand, nameof(expand), required: false);
             return new DeferredBodyAction<OfficeArchitectContractsODataModelRelationshipLevel0>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/odata/Relationships({0})", ExpressionConverter.ConvertWithUrlEncoding(key, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/odata/Relationships({0})", ExpressionConverter.ConvertWithUrlEncoding(__workflow_key, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (select != null)
-                    callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-                if (expand != null)
-                    callPayload.Queries["$expand"] = ExpressionConverter.Convert(expand);
+                if (__workflow_select != null)
+                    callPayload.Queries["$select"] = ExpressionConverter.Convert(__workflow_select);
+                if (__workflow_expand != null)
+                    callPayload.Queries["$expand"] = ExpressionConverter.Convert(__workflow_expand);
                 return new ApiConnectionAction<OfficeArchitectContractsODataModelRelationshipLevel0>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
-        [WorkflowExpressionFactory(nameof(__BuildRelationshipsDelete))]
-        public IBodyWorkflowAction<OfficeArchitectContractsRelationshipResponseDeleteRelationshipResponseLevel0> RelationshipsDelete([WorkflowExpression] Func<string> key)
+        public IBodyWorkflowAction<OfficeArchitectContractsRelationshipResponseDeleteRelationshipResponseLevel0> RelationshipsDelete(Expression<Func<string>> key)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<OfficeArchitectContractsRelationshipResponseDeleteRelationshipResponseLevel0> __BuildRelationshipsDelete(WorkflowExpression<string> key)
-        {
-            WorkflowExpression.Validate(key, nameof(key), required: true);
+            var __workflow_key = key == null ? null : WorkflowExpression.Compile(key);
+            WorkflowExpression.Validate(__workflow_key, nameof(key), required: true);
             return new DeferredBodyAction<OfficeArchitectContractsRelationshipResponseDeleteRelationshipResponseLevel0>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/odata/Relationships({0})", ExpressionConverter.ConvertWithUrlEncoding(key, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/odata/Relationships({0})", ExpressionConverter.ConvertWithUrlEncoding(__workflow_key, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<OfficeArchitectContractsRelationshipResponseDeleteRelationshipResponseLevel0>(callPayload);
@@ -155,19 +143,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
-        [WorkflowExpressionFactory(nameof(__BuildRelationshipsPatch))]
-        public IBodyWorkflowAction<OfficeArchitectContractsRelationshipResponseUpdateRelationshipResponseLevel0> RelationshipsPatch([WorkflowExpression] Func<string> key)
+        public IBodyWorkflowAction<OfficeArchitectContractsRelationshipResponseUpdateRelationshipResponseLevel0> RelationshipsPatch(Expression<Func<string>> key)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<OfficeArchitectContractsRelationshipResponseUpdateRelationshipResponseLevel0> __BuildRelationshipsPatch(WorkflowExpression<string> key)
-        {
-            WorkflowExpression.Validate(key, nameof(key), required: true);
+            var __workflow_key = key == null ? null : WorkflowExpression.Compile(key);
+            WorkflowExpression.Validate(__workflow_key, nameof(key), required: true);
             return new DeferredBodyAction<OfficeArchitectContractsRelationshipResponseUpdateRelationshipResponseLevel0>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/odata/Relationships({0})", ExpressionConverter.ConvertWithUrlEncoding(key, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/odata/Relationships({0})", ExpressionConverter.ConvertWithUrlEncoding(__workflow_key, 1));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -190,57 +172,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
-        [WorkflowExpressionFactory(nameof(__BuildObjectsGet))]
-        public IBodyWorkflowAction<OfficeArchitectContractsSwaggerResponseODataPageResponseOfOfficeArchitectContractsODataModelObject> ObjectsGet([WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> expand = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<bool> count = null)
+        public IBodyWorkflowAction<OfficeArchitectContractsSwaggerResponseODataPageResponseOfOfficeArchitectContractsODataModelObject> ObjectsGet(Expression<Func<string>> select = null, Expression<Func<string>> expand = null, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<OfficeArchitectContractsSwaggerResponseODataPageResponseOfOfficeArchitectContractsODataModelObject> __BuildObjectsGet(WorkflowExpression<string> select = null, WorkflowExpression<string> expand = null, WorkflowExpression<string> filter = null, WorkflowExpression<string> orderby = null, WorkflowExpression<int> top = null, WorkflowExpression<int> skip = null, WorkflowExpression<bool> count = null)
-        {
-            WorkflowExpression.Validate(select, nameof(select), required: false);
-            WorkflowExpression.Validate(expand, nameof(expand), required: false);
-            WorkflowExpression.Validate(filter, nameof(filter), required: false);
-            WorkflowExpression.Validate(orderby, nameof(orderby), required: false);
-            WorkflowExpression.Validate(top, nameof(top), required: false);
-            WorkflowExpression.Validate(skip, nameof(skip), required: false);
-            WorkflowExpression.Validate(count, nameof(count), required: false);
+            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
+            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_expand = expand == null ? null : WorkflowExpression.Compile(expand);
+            WorkflowExpression.Validate(__workflow_expand, nameof(expand), required: false);
+            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
+            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
+            var __workflow_orderby = orderby == null ? null : WorkflowExpression.Compile(orderby);
+            WorkflowExpression.Validate(__workflow_orderby, nameof(orderby), required: false);
+            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
+            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_skip = skip == null ? null : WorkflowExpression.Compile(skip);
+            WorkflowExpression.Validate(__workflow_skip, nameof(skip), required: false);
+            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
+            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
             return new DeferredBodyAction<OfficeArchitectContractsSwaggerResponseODataPageResponseOfOfficeArchitectContractsODataModelObject>(() =>
             {
                 var apiCallPath = "/odata/Objects";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (select != null)
-                    callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-                if (expand != null)
-                    callPayload.Queries["$expand"] = ExpressionConverter.Convert(expand);
-                if (filter != null)
-                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-                if (orderby != null)
-                    callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
-                if (top != null)
-                    callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-                if (skip != null)
-                    callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-                if (count != null)
-                    callPayload.Queries["$count"] = ExpressionConverter.Convert(count);
+                if (__workflow_select != null)
+                    callPayload.Queries["$select"] = ExpressionConverter.Convert(__workflow_select);
+                if (__workflow_expand != null)
+                    callPayload.Queries["$expand"] = ExpressionConverter.Convert(__workflow_expand);
+                if (__workflow_filter != null)
+                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(__workflow_filter);
+                if (__workflow_orderby != null)
+                    callPayload.Queries["$orderby"] = ExpressionConverter.Convert(__workflow_orderby);
+                if (__workflow_top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
+                if (__workflow_skip != null)
+                    callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
+                if (__workflow_count != null)
+                    callPayload.Queries["$count"] = ExpressionConverter.Convert(__workflow_count);
                 return new ApiConnectionAction<OfficeArchitectContractsSwaggerResponseODataPageResponseOfOfficeArchitectContractsODataModelObject>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
-        [WorkflowExpressionFactory(nameof(__BuildObjects))]
-        public IBodyWorkflowAction<OfficeArchitectContractsObjectResponseCreateObjectResponseLevel0> Objects([WorkflowExpression] Func<string> bodyobjectTypeId, [WorkflowExpression] Func<string> bodymodelId)
+        public IBodyWorkflowAction<OfficeArchitectContractsObjectResponseCreateObjectResponseLevel0> Objects(Expression<Func<string>> bodyobjectTypeId, Expression<Func<string>> bodymodelId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<OfficeArchitectContractsObjectResponseCreateObjectResponseLevel0> __BuildObjects(WorkflowExpression<string> bodyobjectTypeId, WorkflowExpression<string> bodymodelId)
-        {
-            WorkflowExpression.Validate(bodyobjectTypeId, nameof(bodyobjectTypeId), required: true);
-            WorkflowExpression.Validate(bodymodelId, nameof(bodymodelId), required: true);
+            var __workflow_bodyobjectTypeId = bodyobjectTypeId == null ? null : WorkflowExpression.Compile(bodyobjectTypeId);
+            WorkflowExpression.Validate(__workflow_bodyobjectTypeId, nameof(bodyobjectTypeId), required: true);
+            var __workflow_bodymodelId = bodymodelId == null ? null : WorkflowExpression.Compile(bodymodelId);
+            WorkflowExpression.Validate(__workflow_bodymodelId, nameof(bodymodelId), required: true);
             return new DeferredBodyAction<OfficeArchitectContractsObjectResponseCreateObjectResponseLevel0>(() =>
             {
                 var apiCallPath = "/odata/Objects";
@@ -249,7 +226,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["objectTypeId"] = ExpressionConverter.ConvertO(bodyobjectTypeId);
+                body["objectTypeId"] = ExpressionConverter.ConvertO(__workflow_bodyobjectTypeId);
                 var attributeValuesFlatObject = new JObject();
                 var attributeValuesFlatObjectpropCount = 0;
                 if (attributeValuesFlatObjectpropCount > 0)
@@ -259,7 +236,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
                 }
 
                 bodypropCount++;
-                body["modelId"] = ExpressionConverter.ConvertO(bodymodelId);
+                body["modelId"] = ExpressionConverter.ConvertO(__workflow_bodymodelId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -270,45 +247,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
-        [WorkflowExpressionFactory(nameof(__BuildObjectsGetSingle))]
-        public IBodyWorkflowAction<OfficeArchitectContractsODataModelObjectLevel0> ObjectsGetSingle([WorkflowExpression] Func<string> key, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> expand = null)
+        public IBodyWorkflowAction<OfficeArchitectContractsODataModelObjectLevel0> ObjectsGetSingle(Expression<Func<string>> key, Expression<Func<string>> select = null, Expression<Func<string>> expand = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<OfficeArchitectContractsODataModelObjectLevel0> __BuildObjectsGetSingle(WorkflowExpression<string> key, WorkflowExpression<string> select = null, WorkflowExpression<string> expand = null)
-        {
-            WorkflowExpression.Validate(key, nameof(key), required: true);
-            WorkflowExpression.Validate(select, nameof(select), required: false);
-            WorkflowExpression.Validate(expand, nameof(expand), required: false);
+            var __workflow_key = key == null ? null : WorkflowExpression.Compile(key);
+            WorkflowExpression.Validate(__workflow_key, nameof(key), required: true);
+            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
+            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_expand = expand == null ? null : WorkflowExpression.Compile(expand);
+            WorkflowExpression.Validate(__workflow_expand, nameof(expand), required: false);
             return new DeferredBodyAction<OfficeArchitectContractsODataModelObjectLevel0>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/odata/Objects({0})", ExpressionConverter.ConvertWithUrlEncoding(key, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/odata/Objects({0})", ExpressionConverter.ConvertWithUrlEncoding(__workflow_key, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (select != null)
-                    callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-                if (expand != null)
-                    callPayload.Queries["$expand"] = ExpressionConverter.Convert(expand);
+                if (__workflow_select != null)
+                    callPayload.Queries["$select"] = ExpressionConverter.Convert(__workflow_select);
+                if (__workflow_expand != null)
+                    callPayload.Queries["$expand"] = ExpressionConverter.Convert(__workflow_expand);
                 return new ApiConnectionAction<OfficeArchitectContractsODataModelObjectLevel0>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
-        [WorkflowExpressionFactory(nameof(__BuildObjectsDelete))]
-        public IBodyWorkflowAction<OfficeArchitectContractsObjectResponseDeleteObjectResponseLevel0> ObjectsDelete([WorkflowExpression] Func<string> key)
+        public IBodyWorkflowAction<OfficeArchitectContractsObjectResponseDeleteObjectResponseLevel0> ObjectsDelete(Expression<Func<string>> key)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<OfficeArchitectContractsObjectResponseDeleteObjectResponseLevel0> __BuildObjectsDelete(WorkflowExpression<string> key)
-        {
-            WorkflowExpression.Validate(key, nameof(key), required: true);
+            var __workflow_key = key == null ? null : WorkflowExpression.Compile(key);
+            WorkflowExpression.Validate(__workflow_key, nameof(key), required: true);
             return new DeferredBodyAction<OfficeArchitectContractsObjectResponseDeleteObjectResponseLevel0>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/odata/Objects({0})", ExpressionConverter.ConvertWithUrlEncoding(key, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/odata/Objects({0})", ExpressionConverter.ConvertWithUrlEncoding(__workflow_key, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<OfficeArchitectContractsObjectResponseDeleteObjectResponseLevel0>(callPayload);
@@ -316,19 +283,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
-        [WorkflowExpressionFactory(nameof(__BuildObjectsPatch))]
-        public IBodyWorkflowAction<OfficeArchitectContractsObjectResponseUpdateObjectResponseLevel0> ObjectsPatch([WorkflowExpression] Func<string> key)
+        public IBodyWorkflowAction<OfficeArchitectContractsObjectResponseUpdateObjectResponseLevel0> ObjectsPatch(Expression<Func<string>> key)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<OfficeArchitectContractsObjectResponseUpdateObjectResponseLevel0> __BuildObjectsPatch(WorkflowExpression<string> key)
-        {
-            WorkflowExpression.Validate(key, nameof(key), required: true);
+            var __workflow_key = key == null ? null : WorkflowExpression.Compile(key);
+            WorkflowExpression.Validate(__workflow_key, nameof(key), required: true);
             return new DeferredBodyAction<OfficeArchitectContractsObjectResponseUpdateObjectResponseLevel0>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/odata/Objects({0})", ExpressionConverter.ConvertWithUrlEncoding(key, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/odata/Objects({0})", ExpressionConverter.ConvertWithUrlEncoding(__workflow_key, 1));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -353,19 +314,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
 
     public class OrbusinfinityTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildPostWebhooks))]
-        public IBodyWorkflowTrigger<OfficeArchitectContractsNotificationResponseSaveWebhookResponseLevel0> PostWebhooks([WorkflowExpression] Func<string> bodyeventType,[WorkflowExpression] Func<string> bodysecret = null,[WorkflowExpression] Func<string> bodyexpirationDate = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OfficeArchitectContractsNotificationResponseSaveWebhookResponseLevel0> PostWebhooks(Expression<Func<string>> bodyeventType, Expression<Func<string>> bodysecret = null, Expression<Func<string>> bodyexpirationDate = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<OfficeArchitectContractsNotificationResponseSaveWebhookResponseLevel0> __BuildPostWebhooks(WorkflowExpression<string> bodyeventType,WorkflowExpression<string> bodysecret = null,WorkflowExpression<string> bodyexpirationDate = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodyeventType, nameof(bodyeventType), required: true);
-            WorkflowExpression.Validate(bodysecret, nameof(bodysecret), required: false);
-            WorkflowExpression.Validate(bodyexpirationDate, nameof(bodyexpirationDate), required: false);
+            var __workflow_bodyeventType = bodyeventType == null ? null : WorkflowExpression.Compile(bodyeventType);
+            WorkflowExpression.Validate(__workflow_bodyeventType, nameof(bodyeventType), required: true);
+            var __workflow_bodysecret = bodysecret == null ? null : WorkflowExpression.Compile(bodysecret);
+            WorkflowExpression.Validate(__workflow_bodysecret, nameof(bodysecret), required: false);
+            var __workflow_bodyexpirationDate = bodyexpirationDate == null ? null : WorkflowExpression.Compile(bodyexpirationDate);
+            WorkflowExpression.Validate(__workflow_bodyexpirationDate, nameof(bodyexpirationDate), required: false);
             return new DeferredBodyTrigger<OfficeArchitectContractsNotificationResponseSaveWebhookResponseLevel0>(() =>
             {
                 var apiCallPath = "/odata/Webhooks";
@@ -373,19 +329,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodysecret != null)
+                if (__workflow_bodysecret != null)
                 {
-                    body["secret"] = ExpressionConverter.ConvertO(bodysecret);
+                    body["secret"] = ExpressionConverter.ConvertO(__workflow_bodysecret);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["eventType"] = ExpressionConverter.ConvertO(bodyeventType);
+                body["eventType"] = ExpressionConverter.ConvertO(__workflow_bodyeventType);
                 body["url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-                if (bodyexpirationDate != null)
+                if (__workflow_bodyexpirationDate != null)
                 {
-                    body["expirationDate"] = ExpressionConverter.ConvertO(bodyexpirationDate);
+                    body["expirationDate"] = ExpressionConverter.ConvertO(__workflow_bodyexpirationDate);
                     bodypropCount++;
                 }
 

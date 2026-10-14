@@ -1,12 +1,12 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class AutoreviewActions([ConnectionName] string connectionId)
     {
@@ -20,23 +20,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autoreview")]
-        [WorkflowExpressionFactory(nameof(__BuildPOSTHttp))]
-        public IWorkflowAction POSTHttp([WorkflowExpression] Func<string> path = null)
+        public IWorkflowAction POSTHttp(Expression<Func<string>> path = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildPOSTHttp(WorkflowExpression<string> path = null)
-        {
-            WorkflowExpression.Validate(path, nameof(path), required: false);
+            var __workflow_path = path == null ? null : WorkflowExpression.Compile(path);
+            WorkflowExpression.Validate(__workflow_path, nameof(path), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v2/autoreview/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (path != null)
-                    callPayload.Queries["path"] = ExpressionConverter.Convert(path);
+                if (__workflow_path != null)
+                    callPayload.Queries["path"] = ExpressionConverter.Convert(__workflow_path);
                 var body = new JObject();
                 var bodypropCount = 0;
                 var configsObject = new JObject();
@@ -65,21 +59,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autoreview")]
-        [WorkflowExpressionFactory(nameof(__BuildPOSTJson))]
-        public IBodyWorkflowAction<POSTJsonResponse> POSTJson([WorkflowExpression] Func<string> bodyflowPropertiesdisplayName = null, [WorkflowExpression] Func<string> bodyflowPropertiesflowId = null, [WorkflowExpression] Func<string> bodyflowPropertiesowner = null, [WorkflowExpression] Func<string> bodyflowPropertiesenvironment = null, [WorkflowExpression] Func<string[]> bodyconfigscomplexity = null, [WorkflowExpression] Func<string[]> bodyconfigsscoring = null)
+        public IBodyWorkflowAction<POSTJsonResponse> POSTJson(Expression<Func<string>> bodyflowPropertiesdisplayName = null, Expression<Func<string>> bodyflowPropertiesflowId = null, Expression<Func<string>> bodyflowPropertiesowner = null, Expression<Func<string>> bodyflowPropertiesenvironment = null, Expression<Func<string[]>> bodyconfigscomplexity = null, Expression<Func<string[]>> bodyconfigsscoring = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<POSTJsonResponse> __BuildPOSTJson(WorkflowExpression<string> bodyflowPropertiesdisplayName = null, WorkflowExpression<string> bodyflowPropertiesflowId = null, WorkflowExpression<string> bodyflowPropertiesowner = null, WorkflowExpression<string> bodyflowPropertiesenvironment = null, WorkflowExpression<string[]> bodyconfigscomplexity = null, WorkflowExpression<string[]> bodyconfigsscoring = null)
-        {
-            WorkflowExpression.Validate(bodyflowPropertiesdisplayName, nameof(bodyflowPropertiesdisplayName), required: false);
-            WorkflowExpression.Validate(bodyflowPropertiesflowId, nameof(bodyflowPropertiesflowId), required: false);
-            WorkflowExpression.Validate(bodyflowPropertiesowner, nameof(bodyflowPropertiesowner), required: false);
-            WorkflowExpression.Validate(bodyflowPropertiesenvironment, nameof(bodyflowPropertiesenvironment), required: false);
-            WorkflowExpression.Validate(bodyconfigscomplexity, nameof(bodyconfigscomplexity), required: false);
-            WorkflowExpression.Validate(bodyconfigsscoring, nameof(bodyconfigsscoring), required: false);
+            var __workflow_bodyflowPropertiesdisplayName = bodyflowPropertiesdisplayName == null ? null : WorkflowExpression.Compile(bodyflowPropertiesdisplayName);
+            WorkflowExpression.Validate(__workflow_bodyflowPropertiesdisplayName, nameof(bodyflowPropertiesdisplayName), required: false);
+            var __workflow_bodyflowPropertiesflowId = bodyflowPropertiesflowId == null ? null : WorkflowExpression.Compile(bodyflowPropertiesflowId);
+            WorkflowExpression.Validate(__workflow_bodyflowPropertiesflowId, nameof(bodyflowPropertiesflowId), required: false);
+            var __workflow_bodyflowPropertiesowner = bodyflowPropertiesowner == null ? null : WorkflowExpression.Compile(bodyflowPropertiesowner);
+            WorkflowExpression.Validate(__workflow_bodyflowPropertiesowner, nameof(bodyflowPropertiesowner), required: false);
+            var __workflow_bodyflowPropertiesenvironment = bodyflowPropertiesenvironment == null ? null : WorkflowExpression.Compile(bodyflowPropertiesenvironment);
+            WorkflowExpression.Validate(__workflow_bodyflowPropertiesenvironment, nameof(bodyflowPropertiesenvironment), required: false);
+            var __workflow_bodyconfigscomplexity = bodyconfigscomplexity == null ? null : WorkflowExpression.Compile(bodyconfigscomplexity);
+            WorkflowExpression.Validate(__workflow_bodyconfigscomplexity, nameof(bodyconfigscomplexity), required: false);
+            var __workflow_bodyconfigsscoring = bodyconfigsscoring == null ? null : WorkflowExpression.Compile(bodyconfigsscoring);
+            WorkflowExpression.Validate(__workflow_bodyconfigsscoring, nameof(bodyconfigsscoring), required: false);
             return new DeferredBodyAction<POSTJsonResponse>(() =>
             {
                 var apiCallPath = "/v2/autoreview/json";
@@ -89,27 +82,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
                 var bodypropCount = 0;
                 var propertiesObject = new JObject();
                 var propertiesObjectpropCount = 0;
-                if (bodyflowPropertiesdisplayName != null)
+                if (__workflow_bodyflowPropertiesdisplayName != null)
                 {
-                    propertiesObject["displayName"] = ExpressionConverter.ConvertO(bodyflowPropertiesdisplayName);
+                    propertiesObject["displayName"] = ExpressionConverter.ConvertO(__workflow_bodyflowPropertiesdisplayName);
                     propertiesObjectpropCount++;
                 }
 
-                if (bodyflowPropertiesflowId != null)
+                if (__workflow_bodyflowPropertiesflowId != null)
                 {
-                    propertiesObject["name"] = ExpressionConverter.ConvertO(bodyflowPropertiesflowId);
+                    propertiesObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyflowPropertiesflowId);
                     propertiesObjectpropCount++;
                 }
 
-                if (bodyflowPropertiesowner != null)
+                if (__workflow_bodyflowPropertiesowner != null)
                 {
-                    propertiesObject["owner"] = ExpressionConverter.ConvertO(bodyflowPropertiesowner);
+                    propertiesObject["owner"] = ExpressionConverter.ConvertO(__workflow_bodyflowPropertiesowner);
                     propertiesObjectpropCount++;
                 }
 
-                if (bodyflowPropertiesenvironment != null)
+                if (__workflow_bodyflowPropertiesenvironment != null)
                 {
-                    propertiesObject["environment"] = ExpressionConverter.ConvertO(bodyflowPropertiesenvironment);
+                    propertiesObject["environment"] = ExpressionConverter.ConvertO(__workflow_bodyflowPropertiesenvironment);
                     propertiesObjectpropCount++;
                 }
 
@@ -137,9 +130,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
                     configsObjectpropCount++;
                 }
 
-                if (bodyconfigscomplexity != null)
+                if (__workflow_bodyconfigscomplexity != null)
                 {
-                    configsObject["complexity"] = ExpressionConverter.ConvertO(bodyconfigscomplexity);
+                    configsObject["complexity"] = ExpressionConverter.ConvertO(__workflow_bodyconfigscomplexity);
                     configsObjectpropCount++;
                 }
 
@@ -151,9 +144,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
                     configsObjectpropCount++;
                 }
 
-                if (bodyconfigsscoring != null)
+                if (__workflow_bodyconfigsscoring != null)
                 {
-                    configsObject["scoring"] = ExpressionConverter.ConvertO(bodyconfigsscoring);
+                    configsObject["scoring"] = ExpressionConverter.ConvertO(__workflow_bodyconfigsscoring);
                     configsObjectpropCount++;
                 }
 
@@ -175,22 +168,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autoreview")]
-        [WorkflowExpressionFactory(nameof(__BuildPOSTFile))]
-        public IWorkflowAction POSTFile([WorkflowExpression] Func<string> bodyflowPropertiesdisplayName = null, [WorkflowExpression] Func<string> bodyflowPropertiesflowId = null, [WorkflowExpression] Func<string> bodyflowPropertiesowner = null, [WorkflowExpression] Func<string> bodyflowPropertiesenvironment = null, [WorkflowExpression] Func<bodyconfigfileTypeInput> bodyconfigfileType = null, [WorkflowExpression] Func<string[]> bodyconfigcomplexity = null, [WorkflowExpression] Func<string[]> bodyconfigscoring = null)
+        public IWorkflowAction POSTFile(Expression<Func<string>> bodyflowPropertiesdisplayName = null, Expression<Func<string>> bodyflowPropertiesflowId = null, Expression<Func<string>> bodyflowPropertiesowner = null, Expression<Func<string>> bodyflowPropertiesenvironment = null, Expression<Func<bodyconfigfileTypeInput>> bodyconfigfileType = null, Expression<Func<string[]>> bodyconfigcomplexity = null, Expression<Func<string[]>> bodyconfigscoring = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildPOSTFile(WorkflowExpression<string> bodyflowPropertiesdisplayName = null, WorkflowExpression<string> bodyflowPropertiesflowId = null, WorkflowExpression<string> bodyflowPropertiesowner = null, WorkflowExpression<string> bodyflowPropertiesenvironment = null, WorkflowExpression<bodyconfigfileTypeInput> bodyconfigfileType = null, WorkflowExpression<string[]> bodyconfigcomplexity = null, WorkflowExpression<string[]> bodyconfigscoring = null)
-        {
-            WorkflowExpression.Validate(bodyflowPropertiesdisplayName, nameof(bodyflowPropertiesdisplayName), required: false);
-            WorkflowExpression.Validate(bodyflowPropertiesflowId, nameof(bodyflowPropertiesflowId), required: false);
-            WorkflowExpression.Validate(bodyflowPropertiesowner, nameof(bodyflowPropertiesowner), required: false);
-            WorkflowExpression.Validate(bodyflowPropertiesenvironment, nameof(bodyflowPropertiesenvironment), required: false);
-            WorkflowExpression.Validate(bodyconfigfileType, nameof(bodyconfigfileType), required: false);
-            WorkflowExpression.Validate(bodyconfigcomplexity, nameof(bodyconfigcomplexity), required: false);
-            WorkflowExpression.Validate(bodyconfigscoring, nameof(bodyconfigscoring), required: false);
+            var __workflow_bodyflowPropertiesdisplayName = bodyflowPropertiesdisplayName == null ? null : WorkflowExpression.Compile(bodyflowPropertiesdisplayName);
+            WorkflowExpression.Validate(__workflow_bodyflowPropertiesdisplayName, nameof(bodyflowPropertiesdisplayName), required: false);
+            var __workflow_bodyflowPropertiesflowId = bodyflowPropertiesflowId == null ? null : WorkflowExpression.Compile(bodyflowPropertiesflowId);
+            WorkflowExpression.Validate(__workflow_bodyflowPropertiesflowId, nameof(bodyflowPropertiesflowId), required: false);
+            var __workflow_bodyflowPropertiesowner = bodyflowPropertiesowner == null ? null : WorkflowExpression.Compile(bodyflowPropertiesowner);
+            WorkflowExpression.Validate(__workflow_bodyflowPropertiesowner, nameof(bodyflowPropertiesowner), required: false);
+            var __workflow_bodyflowPropertiesenvironment = bodyflowPropertiesenvironment == null ? null : WorkflowExpression.Compile(bodyflowPropertiesenvironment);
+            WorkflowExpression.Validate(__workflow_bodyflowPropertiesenvironment, nameof(bodyflowPropertiesenvironment), required: false);
+            var __workflow_bodyconfigfileType = bodyconfigfileType == null ? null : WorkflowExpression.Compile(bodyconfigfileType);
+            WorkflowExpression.Validate(__workflow_bodyconfigfileType, nameof(bodyconfigfileType), required: false);
+            var __workflow_bodyconfigcomplexity = bodyconfigcomplexity == null ? null : WorkflowExpression.Compile(bodyconfigcomplexity);
+            WorkflowExpression.Validate(__workflow_bodyconfigcomplexity, nameof(bodyconfigcomplexity), required: false);
+            var __workflow_bodyconfigscoring = bodyconfigscoring == null ? null : WorkflowExpression.Compile(bodyconfigscoring);
+            WorkflowExpression.Validate(__workflow_bodyconfigscoring, nameof(bodyconfigscoring), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v1/autoreview/file";
@@ -200,27 +193,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
                 var bodypropCount = 0;
                 var propertiesObject = new JObject();
                 var propertiesObjectpropCount = 0;
-                if (bodyflowPropertiesdisplayName != null)
+                if (__workflow_bodyflowPropertiesdisplayName != null)
                 {
-                    propertiesObject["displayName"] = ExpressionConverter.ConvertO(bodyflowPropertiesdisplayName);
+                    propertiesObject["displayName"] = ExpressionConverter.ConvertO(__workflow_bodyflowPropertiesdisplayName);
                     propertiesObjectpropCount++;
                 }
 
-                if (bodyflowPropertiesflowId != null)
+                if (__workflow_bodyflowPropertiesflowId != null)
                 {
-                    propertiesObject["name"] = ExpressionConverter.ConvertO(bodyflowPropertiesflowId);
+                    propertiesObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyflowPropertiesflowId);
                     propertiesObjectpropCount++;
                 }
 
-                if (bodyflowPropertiesowner != null)
+                if (__workflow_bodyflowPropertiesowner != null)
                 {
-                    propertiesObject["owner"] = ExpressionConverter.ConvertO(bodyflowPropertiesowner);
+                    propertiesObject["owner"] = ExpressionConverter.ConvertO(__workflow_bodyflowPropertiesowner);
                     propertiesObjectpropCount++;
                 }
 
-                if (bodyflowPropertiesenvironment != null)
+                if (__workflow_bodyflowPropertiesenvironment != null)
                 {
-                    propertiesObject["environment"] = ExpressionConverter.ConvertO(bodyflowPropertiesenvironment);
+                    propertiesObject["environment"] = ExpressionConverter.ConvertO(__workflow_bodyflowPropertiesenvironment);
                     propertiesObjectpropCount++;
                 }
 
@@ -240,11 +233,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
 
                 var configsObject = new JObject();
                 var configsObjectpropCount = 0;
-                if (bodyconfigfileType != null)
+                if (__workflow_bodyconfigfileType != null)
                 {
-                    if (bodyconfigfileType != null)
+                    if (__workflow_bodyconfigfileType != null)
                     {
-                        configsObject["type"] = ExpressionConverter.ConvertO(bodyconfigfileType);
+                        configsObject["type"] = ExpressionConverter.ConvertO(__workflow_bodyconfigfileType);
                         configsObjectpropCount++;
                     }
 
@@ -264,9 +257,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
                     configsObjectpropCount++;
                 }
 
-                if (bodyconfigcomplexity != null)
+                if (__workflow_bodyconfigcomplexity != null)
                 {
-                    configsObject["complexity"] = ExpressionConverter.ConvertO(bodyconfigcomplexity);
+                    configsObject["complexity"] = ExpressionConverter.ConvertO(__workflow_bodyconfigcomplexity);
                     configsObjectpropCount++;
                 }
 
@@ -278,9 +271,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
                     configsObjectpropCount++;
                 }
 
-                if (bodyconfigscoring != null)
+                if (__workflow_bodyconfigscoring != null)
                 {
-                    configsObject["scoring"] = ExpressionConverter.ConvertO(bodyconfigscoring);
+                    configsObject["scoring"] = ExpressionConverter.ConvertO(__workflow_bodyconfigscoring);
                     configsObjectpropCount++;
                 }
 
@@ -300,19 +293,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autoreview")]
-        [WorkflowExpressionFactory(nameof(__BuildPOSTDiagram))]
-        public IBodyWorkflowAction<POSTDiagramResponse> POSTDiagram([WorkflowExpression] Func<string> bodypropertiesdisplayName = null, [WorkflowExpression] Func<string> bodypropertiesflowId = null, [WorkflowExpression] Func<string> bodypropertiesowner = null, [WorkflowExpression] Func<string> bodypropertiesenvironment = null)
+        public IBodyWorkflowAction<POSTDiagramResponse> POSTDiagram(Expression<Func<string>> bodypropertiesdisplayName = null, Expression<Func<string>> bodypropertiesflowId = null, Expression<Func<string>> bodypropertiesowner = null, Expression<Func<string>> bodypropertiesenvironment = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<POSTDiagramResponse> __BuildPOSTDiagram(WorkflowExpression<string> bodypropertiesdisplayName = null, WorkflowExpression<string> bodypropertiesflowId = null, WorkflowExpression<string> bodypropertiesowner = null, WorkflowExpression<string> bodypropertiesenvironment = null)
-        {
-            WorkflowExpression.Validate(bodypropertiesdisplayName, nameof(bodypropertiesdisplayName), required: false);
-            WorkflowExpression.Validate(bodypropertiesflowId, nameof(bodypropertiesflowId), required: false);
-            WorkflowExpression.Validate(bodypropertiesowner, nameof(bodypropertiesowner), required: false);
-            WorkflowExpression.Validate(bodypropertiesenvironment, nameof(bodypropertiesenvironment), required: false);
+            var __workflow_bodypropertiesdisplayName = bodypropertiesdisplayName == null ? null : WorkflowExpression.Compile(bodypropertiesdisplayName);
+            WorkflowExpression.Validate(__workflow_bodypropertiesdisplayName, nameof(bodypropertiesdisplayName), required: false);
+            var __workflow_bodypropertiesflowId = bodypropertiesflowId == null ? null : WorkflowExpression.Compile(bodypropertiesflowId);
+            WorkflowExpression.Validate(__workflow_bodypropertiesflowId, nameof(bodypropertiesflowId), required: false);
+            var __workflow_bodypropertiesowner = bodypropertiesowner == null ? null : WorkflowExpression.Compile(bodypropertiesowner);
+            WorkflowExpression.Validate(__workflow_bodypropertiesowner, nameof(bodypropertiesowner), required: false);
+            var __workflow_bodypropertiesenvironment = bodypropertiesenvironment == null ? null : WorkflowExpression.Compile(bodypropertiesenvironment);
+            WorkflowExpression.Validate(__workflow_bodypropertiesenvironment, nameof(bodypropertiesenvironment), required: false);
             return new DeferredBodyAction<POSTDiagramResponse>(() =>
             {
                 var apiCallPath = "/v2/autoreview/diagram";
@@ -322,27 +312,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
                 var bodypropCount = 0;
                 var propertiesObject = new JObject();
                 var propertiesObjectpropCount = 0;
-                if (bodypropertiesdisplayName != null)
+                if (__workflow_bodypropertiesdisplayName != null)
                 {
-                    propertiesObject["displayName"] = ExpressionConverter.ConvertO(bodypropertiesdisplayName);
+                    propertiesObject["displayName"] = ExpressionConverter.ConvertO(__workflow_bodypropertiesdisplayName);
                     propertiesObjectpropCount++;
                 }
 
-                if (bodypropertiesflowId != null)
+                if (__workflow_bodypropertiesflowId != null)
                 {
-                    propertiesObject["name"] = ExpressionConverter.ConvertO(bodypropertiesflowId);
+                    propertiesObject["name"] = ExpressionConverter.ConvertO(__workflow_bodypropertiesflowId);
                     propertiesObjectpropCount++;
                 }
 
-                if (bodypropertiesowner != null)
+                if (__workflow_bodypropertiesowner != null)
                 {
-                    propertiesObject["owner"] = ExpressionConverter.ConvertO(bodypropertiesowner);
+                    propertiesObject["owner"] = ExpressionConverter.ConvertO(__workflow_bodypropertiesowner);
                     propertiesObjectpropCount++;
                 }
 
-                if (bodypropertiesenvironment != null)
+                if (__workflow_bodypropertiesenvironment != null)
                 {
-                    propertiesObject["environment"] = ExpressionConverter.ConvertO(bodypropertiesenvironment);
+                    propertiesObject["environment"] = ExpressionConverter.ConvertO(__workflow_bodypropertiesenvironment);
                     propertiesObjectpropCount++;
                 }
 

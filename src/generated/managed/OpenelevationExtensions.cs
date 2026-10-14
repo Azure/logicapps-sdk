@@ -1,33 +1,26 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openelevation
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class OpenelevationActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openelevation")]
-        [WorkflowExpressionFactory(nameof(__BuildLookup))]
-        public IBodyWorkflowAction<LookupResponse> Lookup([WorkflowExpression] Func<string> locations)
+        public IBodyWorkflowAction<LookupResponse> Lookup(Expression<Func<string>> locations)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<LookupResponse> __BuildLookup(WorkflowExpression<string> locations)
-        {
-            WorkflowExpression.Validate(locations, nameof(locations), required: true);
+            var __workflow_locations = locations == null ? null : WorkflowExpression.Compile(locations);
+            WorkflowExpression.Validate(__workflow_locations, nameof(locations), required: true);
             return new DeferredBodyAction<LookupResponse>(() =>
             {
                 var apiCallPath = "/api/v1/lookup";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["locations"] = ExpressionConverter.Convert(locations);
+                callPayload.Queries["locations"] = ExpressionConverter.Convert(__workflow_locations);
                 return new ApiConnectionAction<LookupResponse>(callPayload);
             });
         }

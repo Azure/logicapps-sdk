@@ -1,58 +1,46 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Co2signalip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class Co2signalipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "co2signalip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetLatestbyCode))]
-        public IBodyWorkflowAction<GetLatestbyCodeResponse> GetLatestbyCode([WorkflowExpression] Func<string> countryCode)
+        public IBodyWorkflowAction<GetLatestbyCodeResponse> GetLatestbyCode(Expression<Func<string>> countryCode)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetLatestbyCodeResponse> __BuildGetLatestbyCode(WorkflowExpression<string> countryCode)
-        {
-            WorkflowExpression.Validate(countryCode, nameof(countryCode), required: true);
+            var __workflow_countryCode = countryCode == null ? null : WorkflowExpression.Compile(countryCode);
+            WorkflowExpression.Validate(__workflow_countryCode, nameof(countryCode), required: true);
             return new DeferredBodyAction<GetLatestbyCodeResponse>(() =>
             {
                 var apiCallPath = "/latest";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["countryCode"] = ExpressionConverter.Convert(countryCode);
+                callPayload.Queries["countryCode"] = ExpressionConverter.Convert(__workflow_countryCode);
                 return new ApiConnectionAction<GetLatestbyCodeResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "co2signalip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetLatestbyLatLon))]
-        public IBodyWorkflowAction<GetLatestbyLatLonResponse> GetLatestbyLatLon([WorkflowExpression] Func<double> lon = null, [WorkflowExpression] Func<double> lat = null)
+        public IBodyWorkflowAction<GetLatestbyLatLonResponse> GetLatestbyLatLon(Expression<Func<double>> lon = null, Expression<Func<double>> lat = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetLatestbyLatLonResponse> __BuildGetLatestbyLatLon(WorkflowExpression<double> lon = null, WorkflowExpression<double> lat = null)
-        {
-            WorkflowExpression.Validate(lon, nameof(lon), required: false);
-            WorkflowExpression.Validate(lat, nameof(lat), required: false);
+            var __workflow_lon = lon == null ? null : WorkflowExpression.Compile(lon);
+            WorkflowExpression.Validate(__workflow_lon, nameof(lon), required: false);
+            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
+            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: false);
             return new DeferredBodyAction<GetLatestbyLatLonResponse>(() =>
             {
                 var apiCallPath = "/latestbyloc";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lon != null)
-                    callPayload.Queries["lon"] = ExpressionConverter.Convert(lon);
-                if (lat != null)
-                    callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
+                if (__workflow_lon != null)
+                    callPayload.Queries["lon"] = ExpressionConverter.Convert(__workflow_lon);
+                if (__workflow_lat != null)
+                    callPayload.Queries["lat"] = ExpressionConverter.Convert(__workflow_lat);
                 return new ApiConnectionAction<GetLatestbyLatLonResponse>(callPayload);
             });
         }

@@ -1,12 +1,12 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thegoodapiip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class ThegoodapiipActions([ConnectionName] string connectionId)
     {
@@ -20,16 +20,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thegoodapiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thegoodapiip")]
-        [WorkflowExpressionFactory(nameof(__BuildPlant))]
-        public IBodyWorkflowAction<PlantPostResponse> Plant([WorkflowExpression] Func<int> bodycount = null)
+        public IBodyWorkflowAction<PlantPostResponse> Plant(Expression<Func<int>> bodycount = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PlantPostResponse> __BuildPlant(WorkflowExpression<int> bodycount = null)
-        {
-            WorkflowExpression.Validate(bodycount, nameof(bodycount), required: false);
+            var __workflow_bodycount = bodycount == null ? null : WorkflowExpression.Compile(bodycount);
+            WorkflowExpression.Validate(__workflow_bodycount, nameof(bodycount), required: false);
             return new DeferredBodyAction<PlantPostResponse>(() =>
             {
                 var apiCallPath = "/plant/trees";
@@ -37,9 +31,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thegoodapiip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodycount != null)
+                if (__workflow_bodycount != null)
                 {
-                    body["count"] = ExpressionConverter.ConvertO(bodycount);
+                    body["count"] = ExpressionConverter.ConvertO(__workflow_bodycount);
                     bodypropCount++;
                 }
 

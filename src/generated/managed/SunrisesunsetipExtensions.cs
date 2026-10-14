@@ -1,42 +1,38 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sunrisesunsetip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class SunrisesunsetipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sunrisesunsetip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetData))]
-        public IBodyWorkflowAction<GetDataResponse> GetData([WorkflowExpression] Func<double> lat, [WorkflowExpression] Func<double> lng, [WorkflowExpression] Func<string> date = null, [WorkflowExpression] Func<formattedInput> formatted = null)
+        public IBodyWorkflowAction<GetDataResponse> GetData(Expression<Func<double>> lat, Expression<Func<double>> lng, Expression<Func<string>> date = null, Expression<Func<formattedInput>> formatted = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetDataResponse> __BuildGetData(WorkflowExpression<double> lat, WorkflowExpression<double> lng, WorkflowExpression<string> date = null, WorkflowExpression<formattedInput> formatted = null)
-        {
-            WorkflowExpression.Validate(lat, nameof(lat), required: true);
-            WorkflowExpression.Validate(lng, nameof(lng), required: true);
-            WorkflowExpression.Validate(date, nameof(date), required: false);
-            WorkflowExpression.Validate(formatted, nameof(formatted), required: false);
+            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
+            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: true);
+            var __workflow_lng = lng == null ? null : WorkflowExpression.Compile(lng);
+            WorkflowExpression.Validate(__workflow_lng, nameof(lng), required: true);
+            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
+            WorkflowExpression.Validate(__workflow_date, nameof(date), required: false);
+            var __workflow_formatted = formatted == null ? null : WorkflowExpression.Compile(formatted);
+            WorkflowExpression.Validate(__workflow_formatted, nameof(formatted), required: false);
             return new DeferredBodyAction<GetDataResponse>(() =>
             {
                 var apiCallPath = "/json";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
-                callPayload.Queries["lng"] = ExpressionConverter.Convert(lng);
+                callPayload.Queries["lat"] = ExpressionConverter.Convert(__workflow_lat);
+                callPayload.Queries["lng"] = ExpressionConverter.Convert(__workflow_lng);
                 callPayload.Queries["date"] = Convert.ToString("");
-                if (date != null)
-                    callPayload.Queries["date"] = ExpressionConverter.Convert(date);
-                if (formatted != null)
-                    callPayload.Queries["formatted"] = ExpressionConverter.Convert(formatted);
+                if (__workflow_date != null)
+                    callPayload.Queries["date"] = ExpressionConverter.Convert(__workflow_date);
+                if (__workflow_formatted != null)
+                    callPayload.Queries["formatted"] = ExpressionConverter.Convert(__workflow_formatted);
                 return new ApiConnectionAction<GetDataResponse>(callPayload);
             });
         }

@@ -1,47 +1,45 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jirasearch
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class JirasearchActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jirasearch")]
-        [WorkflowExpressionFactory(nameof(__BuildSimpleSearch))]
-        public IBodyWorkflowAction<SimpleSearchResponse> SimpleSearch([WorkflowExpression] Func<string> jql, [WorkflowExpression] Func<string> hostname, [WorkflowExpression] Func<string> fields, [WorkflowExpression] Func<string> expand = null, [WorkflowExpression] Func<int> startAt = null, [WorkflowExpression] Func<int> maxResults = null)
+        public IBodyWorkflowAction<SimpleSearchResponse> SimpleSearch(Expression<Func<string>> jql, Expression<Func<string>> hostname, Expression<Func<string>> fields, Expression<Func<string>> expand = null, Expression<Func<int>> startAt = null, Expression<Func<int>> maxResults = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SimpleSearchResponse> __BuildSimpleSearch(WorkflowExpression<string> jql, WorkflowExpression<string> hostname, WorkflowExpression<string> fields, WorkflowExpression<string> expand = null, WorkflowExpression<int> startAt = null, WorkflowExpression<int> maxResults = null)
-        {
-            WorkflowExpression.Validate(jql, nameof(jql), required: true);
-            WorkflowExpression.Validate(hostname, nameof(hostname), required: true);
-            WorkflowExpression.Validate(fields, nameof(fields), required: true);
-            WorkflowExpression.Validate(expand, nameof(expand), required: false);
-            WorkflowExpression.Validate(startAt, nameof(startAt), required: false);
-            WorkflowExpression.Validate(maxResults, nameof(maxResults), required: false);
+            var __workflow_jql = jql == null ? null : WorkflowExpression.Compile(jql);
+            WorkflowExpression.Validate(__workflow_jql, nameof(jql), required: true);
+            var __workflow_hostname = hostname == null ? null : WorkflowExpression.Compile(hostname);
+            WorkflowExpression.Validate(__workflow_hostname, nameof(hostname), required: true);
+            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
+            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: true);
+            var __workflow_expand = expand == null ? null : WorkflowExpression.Compile(expand);
+            WorkflowExpression.Validate(__workflow_expand, nameof(expand), required: false);
+            var __workflow_startAt = startAt == null ? null : WorkflowExpression.Compile(startAt);
+            WorkflowExpression.Validate(__workflow_startAt, nameof(startAt), required: false);
+            var __workflow_maxResults = maxResults == null ? null : WorkflowExpression.Compile(maxResults);
+            WorkflowExpression.Validate(__workflow_maxResults, nameof(maxResults), required: false);
             return new DeferredBodyAction<SimpleSearchResponse>(() =>
             {
                 var apiCallPath = "/rest/api/2/search";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["jql"] = ExpressionConverter.Convert(jql);
-                if (expand != null)
-                    callPayload.Queries["expand"] = ExpressionConverter.Convert(expand);
-                callPayload.Queries["hostname"] = ExpressionConverter.Convert(hostname);
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
-                if (startAt != null)
-                    callPayload.Queries["startAt"] = ExpressionConverter.Convert(startAt);
+                callPayload.Queries["jql"] = ExpressionConverter.Convert(__workflow_jql);
+                if (__workflow_expand != null)
+                    callPayload.Queries["expand"] = ExpressionConverter.Convert(__workflow_expand);
+                callPayload.Queries["hostname"] = ExpressionConverter.Convert(__workflow_hostname);
+                callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
+                if (__workflow_startAt != null)
+                    callPayload.Queries["startAt"] = ExpressionConverter.Convert(__workflow_startAt);
                 callPayload.Queries["maxResults"] = Convert.ToString(50);
-                if (maxResults != null)
-                    callPayload.Queries["maxResults"] = ExpressionConverter.Convert(maxResults);
+                if (__workflow_maxResults != null)
+                    callPayload.Queries["maxResults"] = ExpressionConverter.Convert(__workflow_maxResults);
                 return new ApiConnectionAction<SimpleSearchResponse>(callPayload);
             });
         }

@@ -1,34 +1,34 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ipqsfraudandriskscor
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class IpqsfraudandriskscorActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ipqsfraudandriskscor")]
-        [WorkflowExpressionFactory(nameof(__BuildIPREPUTATION))]
-        public IBodyWorkflowAction<IPREPUTATIONResponse> IPREPUTATION([WorkflowExpression] Func<string> ip, [WorkflowExpression] Func<strictnessInput> strictness, [WorkflowExpression] Func<string> userAgent = null, [WorkflowExpression] Func<string> userLanguage = null, [WorkflowExpression] Func<bool> fast = null, [WorkflowExpression] Func<bool> mobile = null, [WorkflowExpression] Func<bool> allowPublicAccessPoints = null, [WorkflowExpression] Func<bool> lighterPenalties = null)
+        public IBodyWorkflowAction<IPREPUTATIONResponse> IPREPUTATION(Expression<Func<string>> ip, Expression<Func<strictnessInput>> strictness, Expression<Func<string>> userAgent = null, Expression<Func<string>> userLanguage = null, Expression<Func<bool>> fast = null, Expression<Func<bool>> mobile = null, Expression<Func<bool>> allowPublicAccessPoints = null, Expression<Func<bool>> lighterPenalties = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<IPREPUTATIONResponse> __BuildIPREPUTATION(WorkflowExpression<string> ip, WorkflowExpression<strictnessInput> strictness, WorkflowExpression<string> userAgent = null, WorkflowExpression<string> userLanguage = null, WorkflowExpression<bool> fast = null, WorkflowExpression<bool> mobile = null, WorkflowExpression<bool> allowPublicAccessPoints = null, WorkflowExpression<bool> lighterPenalties = null)
-        {
-            WorkflowExpression.Validate(ip, nameof(ip), required: true);
-            WorkflowExpression.Validate(strictness, nameof(strictness), required: true);
-            WorkflowExpression.Validate(userAgent, nameof(userAgent), required: false);
-            WorkflowExpression.Validate(userLanguage, nameof(userLanguage), required: false);
-            WorkflowExpression.Validate(fast, nameof(fast), required: false);
-            WorkflowExpression.Validate(mobile, nameof(mobile), required: false);
-            WorkflowExpression.Validate(allowPublicAccessPoints, nameof(allowPublicAccessPoints), required: false);
-            WorkflowExpression.Validate(lighterPenalties, nameof(lighterPenalties), required: false);
+            var __workflow_ip = ip == null ? null : WorkflowExpression.Compile(ip);
+            WorkflowExpression.Validate(__workflow_ip, nameof(ip), required: true);
+            var __workflow_strictness = strictness == null ? null : WorkflowExpression.Compile(strictness);
+            WorkflowExpression.Validate(__workflow_strictness, nameof(strictness), required: true);
+            var __workflow_userAgent = userAgent == null ? null : WorkflowExpression.Compile(userAgent);
+            WorkflowExpression.Validate(__workflow_userAgent, nameof(userAgent), required: false);
+            var __workflow_userLanguage = userLanguage == null ? null : WorkflowExpression.Compile(userLanguage);
+            WorkflowExpression.Validate(__workflow_userLanguage, nameof(userLanguage), required: false);
+            var __workflow_fast = fast == null ? null : WorkflowExpression.Compile(fast);
+            WorkflowExpression.Validate(__workflow_fast, nameof(fast), required: false);
+            var __workflow_mobile = mobile == null ? null : WorkflowExpression.Compile(mobile);
+            WorkflowExpression.Validate(__workflow_mobile, nameof(mobile), required: false);
+            var __workflow_allowPublicAccessPoints = allowPublicAccessPoints == null ? null : WorkflowExpression.Compile(allowPublicAccessPoints);
+            WorkflowExpression.Validate(__workflow_allowPublicAccessPoints, nameof(allowPublicAccessPoints), required: false);
+            var __workflow_lighterPenalties = lighterPenalties == null ? null : WorkflowExpression.Compile(lighterPenalties);
+            WorkflowExpression.Validate(__workflow_lighterPenalties, nameof(lighterPenalties), required: false);
             return new DeferredBodyAction<IPREPUTATIONResponse>(() =>
             {
                 var apiCallPath = "/ip";
@@ -39,20 +39,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ipqsfraudandriskscor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ipqsfraudandriskscor")]
-        [WorkflowExpressionFactory(nameof(__BuildEMAILREPUTATION))]
-        public IBodyWorkflowAction<EMAILREPUTATIONResponse> EMAILREPUTATION([WorkflowExpression] Func<string> email, [WorkflowExpression] Func<abuseStrictnessInput> abuseStrictness, [WorkflowExpression] Func<bool> fast = null, [WorkflowExpression] Func<int> timeout = null, [WorkflowExpression] Func<bool> suggestDomain = null)
+        public IBodyWorkflowAction<EMAILREPUTATIONResponse> EMAILREPUTATION(Expression<Func<string>> email, Expression<Func<abuseStrictnessInput>> abuseStrictness, Expression<Func<bool>> fast = null, Expression<Func<int>> timeout = null, Expression<Func<bool>> suggestDomain = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EMAILREPUTATIONResponse> __BuildEMAILREPUTATION(WorkflowExpression<string> email, WorkflowExpression<abuseStrictnessInput> abuseStrictness, WorkflowExpression<bool> fast = null, WorkflowExpression<int> timeout = null, WorkflowExpression<bool> suggestDomain = null)
-        {
-            WorkflowExpression.Validate(email, nameof(email), required: true);
-            WorkflowExpression.Validate(abuseStrictness, nameof(abuseStrictness), required: true);
-            WorkflowExpression.Validate(fast, nameof(fast), required: false);
-            WorkflowExpression.Validate(timeout, nameof(timeout), required: false);
-            WorkflowExpression.Validate(suggestDomain, nameof(suggestDomain), required: false);
+            var __workflow_email = email == null ? null : WorkflowExpression.Compile(email);
+            WorkflowExpression.Validate(__workflow_email, nameof(email), required: true);
+            var __workflow_abuseStrictness = abuseStrictness == null ? null : WorkflowExpression.Compile(abuseStrictness);
+            WorkflowExpression.Validate(__workflow_abuseStrictness, nameof(abuseStrictness), required: true);
+            var __workflow_fast = fast == null ? null : WorkflowExpression.Compile(fast);
+            WorkflowExpression.Validate(__workflow_fast, nameof(fast), required: false);
+            var __workflow_timeout = timeout == null ? null : WorkflowExpression.Compile(timeout);
+            WorkflowExpression.Validate(__workflow_timeout, nameof(timeout), required: false);
+            var __workflow_suggestDomain = suggestDomain == null ? null : WorkflowExpression.Compile(suggestDomain);
+            WorkflowExpression.Validate(__workflow_suggestDomain, nameof(suggestDomain), required: false);
             return new DeferredBodyAction<EMAILREPUTATIONResponse>(() =>
             {
                 var apiCallPath = "/email";
@@ -63,18 +61,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ipqsfraudandriskscor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ipqsfraudandriskscor")]
-        [WorkflowExpressionFactory(nameof(__BuildURLREPUTATION))]
-        public IBodyWorkflowAction<URLREPUTATIONResponse> URLREPUTATION([WorkflowExpression] Func<string> url, [WorkflowExpression] Func<strictnessInput> strictness, [WorkflowExpression] Func<bool> fast = null)
+        public IBodyWorkflowAction<URLREPUTATIONResponse> URLREPUTATION(Expression<Func<string>> url, Expression<Func<strictnessInput>> strictness, Expression<Func<bool>> fast = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<URLREPUTATIONResponse> __BuildURLREPUTATION(WorkflowExpression<string> url, WorkflowExpression<strictnessInput> strictness, WorkflowExpression<bool> fast = null)
-        {
-            WorkflowExpression.Validate(url, nameof(url), required: true);
-            WorkflowExpression.Validate(strictness, nameof(strictness), required: true);
-            WorkflowExpression.Validate(fast, nameof(fast), required: false);
+            var __workflow_url = url == null ? null : WorkflowExpression.Compile(url);
+            WorkflowExpression.Validate(__workflow_url, nameof(url), required: true);
+            var __workflow_strictness = strictness == null ? null : WorkflowExpression.Compile(strictness);
+            WorkflowExpression.Validate(__workflow_strictness, nameof(strictness), required: true);
+            var __workflow_fast = fast == null ? null : WorkflowExpression.Compile(fast);
+            WorkflowExpression.Validate(__workflow_fast, nameof(fast), required: false);
             return new DeferredBodyAction<URLREPUTATIONResponse>(() =>
             {
                 var apiCallPath = "/url";
@@ -85,18 +79,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ipqsfraudandriskscor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ipqsfraudandriskscor")]
-        [WorkflowExpressionFactory(nameof(__BuildPHONEREPUTATION))]
-        public IBodyWorkflowAction<PHONEREPUTATIONResponse> PHONEREPUTATION([WorkflowExpression] Func<string> phone, [WorkflowExpression] Func<strictnessInput> strictness, [WorkflowExpression] Func<string> country = null)
+        public IBodyWorkflowAction<PHONEREPUTATIONResponse> PHONEREPUTATION(Expression<Func<string>> phone, Expression<Func<strictnessInput>> strictness, Expression<Func<string>> country = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PHONEREPUTATIONResponse> __BuildPHONEREPUTATION(WorkflowExpression<string> phone, WorkflowExpression<strictnessInput> strictness, WorkflowExpression<string> country = null)
-        {
-            WorkflowExpression.Validate(phone, nameof(phone), required: true);
-            WorkflowExpression.Validate(strictness, nameof(strictness), required: true);
-            WorkflowExpression.Validate(country, nameof(country), required: false);
+            var __workflow_phone = phone == null ? null : WorkflowExpression.Compile(phone);
+            WorkflowExpression.Validate(__workflow_phone, nameof(phone), required: true);
+            var __workflow_strictness = strictness == null ? null : WorkflowExpression.Compile(strictness);
+            WorkflowExpression.Validate(__workflow_strictness, nameof(strictness), required: true);
+            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
+            WorkflowExpression.Validate(__workflow_country, nameof(country), required: false);
             return new DeferredBodyAction<PHONEREPUTATIONResponse>(() =>
             {
                 var apiCallPath = "/phone";

@@ -1,12 +1,12 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class TeamformsActions([ConnectionName] string connectionId)
     {
@@ -20,139 +20,109 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamforms")]
-        [WorkflowExpressionFactory(nameof(__BuildForms))]
-        public IBodyWorkflowAction<FormMeta[]> Forms([WorkflowExpression] Func<string> groupId)
+        public IBodyWorkflowAction<FormMeta[]> Forms(Expression<Func<string>> groupId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FormMeta[]> __BuildForms(WorkflowExpression<string> groupId)
-        {
-            WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
+            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
+            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
             return new DeferredBodyAction<FormMeta[]>(() =>
             {
                 var apiCallPath = "/forms";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
+                callPayload.Queries["groupId"] = ExpressionConverter.Convert(__workflow_groupId);
                 return new ApiConnectionAction<FormMeta[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamforms")]
-        [WorkflowExpressionFactory(nameof(__BuildForm))]
-        public IBodyWorkflowAction<FormSchema> Form([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> formId)
+        public IBodyWorkflowAction<FormSchema> Form(Expression<Func<string>> groupId, Expression<Func<string>> formId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FormSchema> __BuildForm(WorkflowExpression<string> groupId, WorkflowExpression<string> formId)
-        {
-            WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
-            WorkflowExpression.Validate(formId, nameof(formId), required: true);
+            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
+            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
+            var __workflow_formId = formId == null ? null : WorkflowExpression.Compile(formId);
+            WorkflowExpression.Validate(__workflow_formId, nameof(formId), required: true);
             return new DeferredBodyAction<FormSchema>(() =>
             {
                 var apiCallPath = "/form";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
-                callPayload.Queries["formId"] = ExpressionConverter.Convert(formId);
+                callPayload.Queries["groupId"] = ExpressionConverter.Convert(__workflow_groupId);
+                callPayload.Queries["formId"] = ExpressionConverter.Convert(__workflow_formId);
                 return new ApiConnectionAction<FormSchema>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamforms")]
-        [WorkflowExpressionFactory(nameof(__BuildFiles))]
-        public IBodyWorkflowAction<File[]> Files([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> responseId)
+        public IBodyWorkflowAction<File[]> Files(Expression<Func<string>> groupId, Expression<Func<string>> responseId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<File[]> __BuildFiles(WorkflowExpression<string> groupId, WorkflowExpression<string> responseId)
-        {
-            WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
-            WorkflowExpression.Validate(responseId, nameof(responseId), required: true);
+            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
+            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
+            var __workflow_responseId = responseId == null ? null : WorkflowExpression.Compile(responseId);
+            WorkflowExpression.Validate(__workflow_responseId, nameof(responseId), required: true);
             return new DeferredBodyAction<File[]>(() =>
             {
                 var apiCallPath = "/files";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
-                callPayload.Queries["responseId"] = ExpressionConverter.Convert(responseId);
+                callPayload.Queries["groupId"] = ExpressionConverter.Convert(__workflow_groupId);
+                callPayload.Queries["responseId"] = ExpressionConverter.Convert(__workflow_responseId);
                 return new ApiConnectionAction<File[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamforms")]
-        [WorkflowExpressionFactory(nameof(__BuildPdf))]
-        public IBodyWorkflowAction<File> Pdf([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> responseId)
+        public IBodyWorkflowAction<File> Pdf(Expression<Func<string>> groupId, Expression<Func<string>> responseId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<File> __BuildPdf(WorkflowExpression<string> groupId, WorkflowExpression<string> responseId)
-        {
-            WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
-            WorkflowExpression.Validate(responseId, nameof(responseId), required: true);
+            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
+            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
+            var __workflow_responseId = responseId == null ? null : WorkflowExpression.Compile(responseId);
+            WorkflowExpression.Validate(__workflow_responseId, nameof(responseId), required: true);
             return new DeferredBodyAction<File>(() =>
             {
                 var apiCallPath = "/pdf";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
-                callPayload.Queries["responseId"] = ExpressionConverter.Convert(responseId);
+                callPayload.Queries["groupId"] = ExpressionConverter.Convert(__workflow_groupId);
+                callPayload.Queries["responseId"] = ExpressionConverter.Convert(__workflow_responseId);
                 return new ApiConnectionAction<File>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamforms")]
-        [WorkflowExpressionFactory(nameof(__BuildPdfContent))]
-        public IBodyWorkflowAction<string> PdfContent([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> responseId)
+        public IBodyWorkflowAction<string> PdfContent(Expression<Func<string>> groupId, Expression<Func<string>> responseId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildPdfContent(WorkflowExpression<string> groupId, WorkflowExpression<string> responseId)
-        {
-            WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
-            WorkflowExpression.Validate(responseId, nameof(responseId), required: true);
+            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
+            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
+            var __workflow_responseId = responseId == null ? null : WorkflowExpression.Compile(responseId);
+            WorkflowExpression.Validate(__workflow_responseId, nameof(responseId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/pdf-content";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
-                callPayload.Queries["responseId"] = ExpressionConverter.Convert(responseId);
+                callPayload.Queries["groupId"] = ExpressionConverter.Convert(__workflow_groupId);
+                callPayload.Queries["responseId"] = ExpressionConverter.Convert(__workflow_responseId);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamforms")]
-        [WorkflowExpressionFactory(nameof(__BuildResponse))]
-        public IBodyWorkflowAction<JToken> Response([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> formId, [WorkflowExpression] Func<string> responseId)
+        public IBodyWorkflowAction<JToken> Response(Expression<Func<string>> groupId, Expression<Func<string>> formId, Expression<Func<string>> responseId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildResponse(WorkflowExpression<string> groupId, WorkflowExpression<string> formId, WorkflowExpression<string> responseId)
-        {
-            WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
-            WorkflowExpression.Validate(formId, nameof(formId), required: true);
-            WorkflowExpression.Validate(responseId, nameof(responseId), required: true);
+            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
+            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
+            var __workflow_formId = formId == null ? null : WorkflowExpression.Compile(formId);
+            WorkflowExpression.Validate(__workflow_formId, nameof(formId), required: true);
+            var __workflow_responseId = responseId == null ? null : WorkflowExpression.Compile(responseId);
+            WorkflowExpression.Validate(__workflow_responseId, nameof(responseId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/response";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
-                callPayload.Queries["formId"] = ExpressionConverter.Convert(formId);
-                callPayload.Queries["responseId"] = ExpressionConverter.Convert(responseId);
+                callPayload.Queries["groupId"] = ExpressionConverter.Convert(__workflow_groupId);
+                callPayload.Queries["formId"] = ExpressionConverter.Convert(__workflow_formId);
+                callPayload.Queries["responseId"] = ExpressionConverter.Convert(__workflow_responseId);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
@@ -160,32 +130,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
 
     public class TeamformsTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildSubscribeResponse))]
-        public IWorkflowTrigger SubscribeResponse([WorkflowExpression] Func<string> groupId,[WorkflowExpression] Func<string> formId = null,[WorkflowExpression] Func<environmentInput> environment = null,[WorkflowExpression] Func<triggersInput> triggers = null,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger SubscribeResponse(Expression<Func<string>> groupId, Expression<Func<string>> formId = null, Expression<Func<environmentInput>> environment = null, Expression<Func<triggersInput>> triggers = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildSubscribeResponse(WorkflowExpression<string> groupId,WorkflowExpression<string> formId = null,WorkflowExpression<environmentInput> environment = null,WorkflowExpression<triggersInput> triggers = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
-            WorkflowExpression.Validate(formId, nameof(formId), required: false);
-            WorkflowExpression.Validate(environment, nameof(environment), required: false);
-            WorkflowExpression.Validate(triggers, nameof(triggers), required: false);
+            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
+            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
+            var __workflow_formId = formId == null ? null : WorkflowExpression.Compile(formId);
+            WorkflowExpression.Validate(__workflow_formId, nameof(formId), required: false);
+            var __workflow_environment = environment == null ? null : WorkflowExpression.Compile(environment);
+            WorkflowExpression.Validate(__workflow_environment, nameof(environment), required: false);
+            var __workflow_triggers = triggers == null ? null : WorkflowExpression.Compile(triggers);
+            WorkflowExpression.Validate(__workflow_triggers, nameof(triggers), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/response-subscription";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
-                if (formId != null)
-                    callPayload.Queries["formId"] = ExpressionConverter.Convert(formId);
-                if (environment != null)
-                    callPayload.Queries["environment"] = ExpressionConverter.Convert(environment);
-                if (triggers != null)
-                    callPayload.Queries["triggers"] = ExpressionConverter.Convert(triggers);
+                callPayload.Queries["groupId"] = ExpressionConverter.Convert(__workflow_groupId);
+                if (__workflow_formId != null)
+                    callPayload.Queries["formId"] = ExpressionConverter.Convert(__workflow_formId);
+                if (__workflow_environment != null)
+                    callPayload.Queries["environment"] = ExpressionConverter.Convert(__workflow_environment);
+                if (__workflow_triggers != null)
+                    callPayload.Queries["triggers"] = ExpressionConverter.Convert(__workflow_triggers);
                 var requestBody = new JObject();
                 var requestBodypropCount = 0;
                 requestBody["webHookUrl"] = "#{listCallbackUrl()}";
@@ -199,25 +165,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildSubscribeResponseDeletion))]
-        public IWorkflowTrigger SubscribeResponseDeletion([WorkflowExpression] Func<string> groupId,[WorkflowExpression] Func<string> formId = null,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger SubscribeResponseDeletion(Expression<Func<string>> groupId, Expression<Func<string>> formId = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildSubscribeResponseDeletion(WorkflowExpression<string> groupId,WorkflowExpression<string> formId = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
-            WorkflowExpression.Validate(formId, nameof(formId), required: false);
+            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
+            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
+            var __workflow_formId = formId == null ? null : WorkflowExpression.Compile(formId);
+            WorkflowExpression.Validate(__workflow_formId, nameof(formId), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/response-deletion-subscription";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
-                if (formId != null)
-                    callPayload.Queries["formId"] = ExpressionConverter.Convert(formId);
+                callPayload.Queries["groupId"] = ExpressionConverter.Convert(__workflow_groupId);
+                if (__workflow_formId != null)
+                    callPayload.Queries["formId"] = ExpressionConverter.Convert(__workflow_formId);
                 var requestBody = new JObject();
                 var requestBodypropCount = 0;
                 requestBody["webHookUrl"] = "#{listCallbackUrl()}";

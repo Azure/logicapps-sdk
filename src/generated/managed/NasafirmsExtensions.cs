@@ -1,32 +1,27 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasafirms
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class NasafirmsActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasafirms")]
-        [WorkflowExpressionFactory(nameof(__BuildGetArea))]
-        public IWorkflowAction GetArea([WorkflowExpression] Func<string> source, [WorkflowExpression] Func<string> areaCoord, [WorkflowExpression] Func<dayRangeInput> dayRange)
+        public IWorkflowAction GetArea(Expression<Func<string>> source, Expression<Func<string>> areaCoord, Expression<Func<dayRangeInput>> dayRange)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetArea(WorkflowExpression<string> source, WorkflowExpression<string> areaCoord, WorkflowExpression<dayRangeInput> dayRange)
-        {
-            WorkflowExpression.Validate(source, nameof(source), required: true);
-            WorkflowExpression.Validate(areaCoord, nameof(areaCoord), required: true);
-            WorkflowExpression.Validate(dayRange, nameof(dayRange), required: true);
+            var __workflow_source = source == null ? null : WorkflowExpression.Compile(source);
+            WorkflowExpression.Validate(__workflow_source, nameof(source), required: true);
+            var __workflow_areaCoord = areaCoord == null ? null : WorkflowExpression.Compile(areaCoord);
+            WorkflowExpression.Validate(__workflow_areaCoord, nameof(areaCoord), required: true);
+            var __workflow_dayRange = dayRange == null ? null : WorkflowExpression.Compile(dayRange);
+            WorkflowExpression.Validate(__workflow_dayRange, nameof(dayRange), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/area/csv/api_key/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(source, 1), ExpressionConverter.ConvertWithUrlEncoding(areaCoord, 1), ExpressionConverter.ConvertWithUrlEncoding(dayRange, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/area/csv/api_key/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_source, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_areaCoord, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dayRange, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -34,21 +29,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasafirms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasafirms")]
-        [WorkflowExpressionFactory(nameof(__BuildGetCountry))]
-        public IWorkflowAction GetCountry([WorkflowExpression] Func<string> source, [WorkflowExpression] Func<string> country, [WorkflowExpression] Func<dayRangeInput> dayRange)
+        public IWorkflowAction GetCountry(Expression<Func<string>> source, Expression<Func<string>> country, Expression<Func<dayRangeInput>> dayRange)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetCountry(WorkflowExpression<string> source, WorkflowExpression<string> country, WorkflowExpression<dayRangeInput> dayRange)
-        {
-            WorkflowExpression.Validate(source, nameof(source), required: true);
-            WorkflowExpression.Validate(country, nameof(country), required: true);
-            WorkflowExpression.Validate(dayRange, nameof(dayRange), required: true);
+            var __workflow_source = source == null ? null : WorkflowExpression.Compile(source);
+            WorkflowExpression.Validate(__workflow_source, nameof(source), required: true);
+            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
+            WorkflowExpression.Validate(__workflow_country, nameof(country), required: true);
+            var __workflow_dayRange = dayRange == null ? null : WorkflowExpression.Compile(dayRange);
+            WorkflowExpression.Validate(__workflow_dayRange, nameof(dayRange), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/country/csv/api_key/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(source, 1), ExpressionConverter.ConvertWithUrlEncoding(country, 1), ExpressionConverter.ConvertWithUrlEncoding(dayRange, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/country/csv/api_key/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_source, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_country, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dayRange, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -56,22 +47,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasafirms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasafirms")]
-        [WorkflowExpressionFactory(nameof(__BuildCheckMapKey))]
-        public IBodyWorkflowAction<CheckMapKeyResponse> CheckMapKey([WorkflowExpression] Func<string> mAPKEY)
+        public IBodyWorkflowAction<CheckMapKeyResponse> CheckMapKey(Expression<Func<string>> mAPKEY)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CheckMapKeyResponse> __BuildCheckMapKey(WorkflowExpression<string> mAPKEY)
-        {
-            WorkflowExpression.Validate(mAPKEY, nameof(mAPKEY), required: true);
+            var __workflow_mAPKEY = mAPKEY == null ? null : WorkflowExpression.Compile(mAPKEY);
+            WorkflowExpression.Validate(__workflow_mAPKEY, nameof(mAPKEY), required: true);
             return new DeferredBodyAction<CheckMapKeyResponse>(() =>
             {
                 var apiCallPath = "/mapserver/mapkey_status/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["MAP_KEY"] = ExpressionConverter.Convert(mAPKEY);
+                callPayload.Queries["MAP_KEY"] = ExpressionConverter.Convert(__workflow_mAPKEY);
                 return new ApiConnectionAction<CheckMapKeyResponse>(callPayload);
             });
         }

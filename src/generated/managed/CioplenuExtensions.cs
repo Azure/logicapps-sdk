@@ -1,29 +1,24 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cioplenu
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class CioplenuActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cioplenu")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateTask))]
-        public IBodyWorkflowAction<CreateTaskResponse> CreateTask([WorkflowExpression] Func<string> taskDatatitle, [WorkflowExpression] Func<string> taskDatadescription, [WorkflowExpression] Func<int> taskDatapriority)
+        public IBodyWorkflowAction<CreateTaskResponse> CreateTask(Expression<Func<string>> taskDatatitle, Expression<Func<string>> taskDatadescription, Expression<Func<int>> taskDatapriority)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateTaskResponse> __BuildCreateTask(WorkflowExpression<string> taskDatatitle, WorkflowExpression<string> taskDatadescription, WorkflowExpression<int> taskDatapriority)
-        {
-            WorkflowExpression.Validate(taskDatatitle, nameof(taskDatatitle), required: true);
-            WorkflowExpression.Validate(taskDatadescription, nameof(taskDatadescription), required: true);
-            WorkflowExpression.Validate(taskDatapriority, nameof(taskDatapriority), required: true);
+            var __workflow_taskDatatitle = taskDatatitle == null ? null : WorkflowExpression.Compile(taskDatatitle);
+            WorkflowExpression.Validate(__workflow_taskDatatitle, nameof(taskDatatitle), required: true);
+            var __workflow_taskDatadescription = taskDatadescription == null ? null : WorkflowExpression.Compile(taskDatadescription);
+            WorkflowExpression.Validate(__workflow_taskDatadescription, nameof(taskDatadescription), required: true);
+            var __workflow_taskDatapriority = taskDatapriority == null ? null : WorkflowExpression.Compile(taskDatapriority);
+            WorkflowExpression.Validate(__workflow_taskDatapriority, nameof(taskDatapriority), required: true);
             return new DeferredBodyAction<CreateTaskResponse>(() =>
             {
                 var apiCallPath = "/task";
@@ -32,11 +27,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cioplenu
                 var taskData = new JObject();
                 var taskDatapropCount = 0;
                 taskDatapropCount++;
-                taskData["title"] = ExpressionConverter.ConvertO(taskDatatitle);
+                taskData["title"] = ExpressionConverter.ConvertO(__workflow_taskDatatitle);
                 taskDatapropCount++;
-                taskData["description"] = ExpressionConverter.ConvertO(taskDatadescription);
+                taskData["description"] = ExpressionConverter.ConvertO(__workflow_taskDatadescription);
                 taskDatapropCount++;
-                taskData["priority"] = ExpressionConverter.ConvertO(taskDatapriority);
+                taskData["priority"] = ExpressionConverter.ConvertO(__workflow_taskDatapriority);
                 if (taskDatapropCount > 0)
                 {
                     callPayload.Body = taskData;

@@ -1,40 +1,46 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class Pdf4mebarcodeActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mebarcode")]
-        [WorkflowExpressionFactory(nameof(__BuildAddBarcode))]
-        public IBodyWorkflowAction<string> AddBarcode([WorkflowExpression] Func<string> bodydocContent, [WorkflowExpression] Func<string> bodydocName, [WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<bodybarcodeTypeInput> bodybarcodeType, [WorkflowExpression] Func<string> bodypages, [WorkflowExpression] Func<bodyalignXInput> bodyalignX, [WorkflowExpression] Func<bodyalignYInput> bodyalignY, [WorkflowExpression] Func<string> bodyheightInMM, [WorkflowExpression] Func<string> bodywidthInMM, [WorkflowExpression] Func<string> bodymarginXInMM, [WorkflowExpression] Func<string> bodymarginYInMM, [WorkflowExpression] Func<int> bodyopacity, [WorkflowExpression] Func<string> bodydisplayText = null, [WorkflowExpression] Func<bool> bodyisTextAbove = null)
+        public IBodyWorkflowAction<string> AddBarcode(Expression<Func<string>> bodydocContent, Expression<Func<string>> bodydocName, Expression<Func<string>> bodytext, Expression<Func<bodybarcodeTypeInput>> bodybarcodeType, Expression<Func<string>> bodypages, Expression<Func<bodyalignXInput>> bodyalignX, Expression<Func<bodyalignYInput>> bodyalignY, Expression<Func<string>> bodyheightInMM, Expression<Func<string>> bodywidthInMM, Expression<Func<string>> bodymarginXInMM, Expression<Func<string>> bodymarginYInMM, Expression<Func<int>> bodyopacity, Expression<Func<string>> bodydisplayText = null, Expression<Func<bool>> bodyisTextAbove = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildAddBarcode(WorkflowExpression<string> bodydocContent, WorkflowExpression<string> bodydocName, WorkflowExpression<string> bodytext, WorkflowExpression<bodybarcodeTypeInput> bodybarcodeType, WorkflowExpression<string> bodypages, WorkflowExpression<bodyalignXInput> bodyalignX, WorkflowExpression<bodyalignYInput> bodyalignY, WorkflowExpression<string> bodyheightInMM, WorkflowExpression<string> bodywidthInMM, WorkflowExpression<string> bodymarginXInMM, WorkflowExpression<string> bodymarginYInMM, WorkflowExpression<int> bodyopacity, WorkflowExpression<string> bodydisplayText = null, WorkflowExpression<bool> bodyisTextAbove = null)
-        {
-            WorkflowExpression.Validate(bodydocContent, nameof(bodydocContent), required: true);
-            WorkflowExpression.Validate(bodydocName, nameof(bodydocName), required: true);
-            WorkflowExpression.Validate(bodytext, nameof(bodytext), required: true);
-            WorkflowExpression.Validate(bodybarcodeType, nameof(bodybarcodeType), required: true);
-            WorkflowExpression.Validate(bodypages, nameof(bodypages), required: true);
-            WorkflowExpression.Validate(bodyalignX, nameof(bodyalignX), required: true);
-            WorkflowExpression.Validate(bodyalignY, nameof(bodyalignY), required: true);
-            WorkflowExpression.Validate(bodyheightInMM, nameof(bodyheightInMM), required: true);
-            WorkflowExpression.Validate(bodywidthInMM, nameof(bodywidthInMM), required: true);
-            WorkflowExpression.Validate(bodymarginXInMM, nameof(bodymarginXInMM), required: true);
-            WorkflowExpression.Validate(bodymarginYInMM, nameof(bodymarginYInMM), required: true);
-            WorkflowExpression.Validate(bodyopacity, nameof(bodyopacity), required: true);
-            WorkflowExpression.Validate(bodydisplayText, nameof(bodydisplayText), required: false);
-            WorkflowExpression.Validate(bodyisTextAbove, nameof(bodyisTextAbove), required: false);
+            var __workflow_bodydocContent = bodydocContent == null ? null : WorkflowExpression.Compile(bodydocContent);
+            WorkflowExpression.Validate(__workflow_bodydocContent, nameof(bodydocContent), required: true);
+            var __workflow_bodydocName = bodydocName == null ? null : WorkflowExpression.Compile(bodydocName);
+            WorkflowExpression.Validate(__workflow_bodydocName, nameof(bodydocName), required: true);
+            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
+            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: true);
+            var __workflow_bodybarcodeType = bodybarcodeType == null ? null : WorkflowExpression.Compile(bodybarcodeType);
+            WorkflowExpression.Validate(__workflow_bodybarcodeType, nameof(bodybarcodeType), required: true);
+            var __workflow_bodypages = bodypages == null ? null : WorkflowExpression.Compile(bodypages);
+            WorkflowExpression.Validate(__workflow_bodypages, nameof(bodypages), required: true);
+            var __workflow_bodyalignX = bodyalignX == null ? null : WorkflowExpression.Compile(bodyalignX);
+            WorkflowExpression.Validate(__workflow_bodyalignX, nameof(bodyalignX), required: true);
+            var __workflow_bodyalignY = bodyalignY == null ? null : WorkflowExpression.Compile(bodyalignY);
+            WorkflowExpression.Validate(__workflow_bodyalignY, nameof(bodyalignY), required: true);
+            var __workflow_bodyheightInMM = bodyheightInMM == null ? null : WorkflowExpression.Compile(bodyheightInMM);
+            WorkflowExpression.Validate(__workflow_bodyheightInMM, nameof(bodyheightInMM), required: true);
+            var __workflow_bodywidthInMM = bodywidthInMM == null ? null : WorkflowExpression.Compile(bodywidthInMM);
+            WorkflowExpression.Validate(__workflow_bodywidthInMM, nameof(bodywidthInMM), required: true);
+            var __workflow_bodymarginXInMM = bodymarginXInMM == null ? null : WorkflowExpression.Compile(bodymarginXInMM);
+            WorkflowExpression.Validate(__workflow_bodymarginXInMM, nameof(bodymarginXInMM), required: true);
+            var __workflow_bodymarginYInMM = bodymarginYInMM == null ? null : WorkflowExpression.Compile(bodymarginYInMM);
+            WorkflowExpression.Validate(__workflow_bodymarginYInMM, nameof(bodymarginYInMM), required: true);
+            var __workflow_bodyopacity = bodyopacity == null ? null : WorkflowExpression.Compile(bodyopacity);
+            WorkflowExpression.Validate(__workflow_bodyopacity, nameof(bodyopacity), required: true);
+            var __workflow_bodydisplayText = bodydisplayText == null ? null : WorkflowExpression.Compile(bodydisplayText);
+            WorkflowExpression.Validate(__workflow_bodydisplayText, nameof(bodydisplayText), required: false);
+            var __workflow_bodyisTextAbove = bodyisTextAbove == null ? null : WorkflowExpression.Compile(bodyisTextAbove);
+            WorkflowExpression.Validate(__workflow_bodyisTextAbove, nameof(bodyisTextAbove), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/AddBarcode";
@@ -43,40 +49,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["docContent"] = ExpressionConverter.ConvertO(bodydocContent);
+                body["docContent"] = ExpressionConverter.ConvertO(__workflow_bodydocContent);
                 bodypropCount++;
-                body["docName"] = ExpressionConverter.ConvertO(bodydocName);
+                body["docName"] = ExpressionConverter.ConvertO(__workflow_bodydocName);
                 bodypropCount++;
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
+                body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
                 bodypropCount++;
-                body["barcodeType"] = ExpressionConverter.ConvertO(bodybarcodeType);
+                body["barcodeType"] = ExpressionConverter.ConvertO(__workflow_bodybarcodeType);
                 bodypropCount++;
-                body["pages"] = ExpressionConverter.ConvertO(bodypages);
+                body["pages"] = ExpressionConverter.ConvertO(__workflow_bodypages);
                 bodypropCount++;
-                body["alignX"] = ExpressionConverter.ConvertO(bodyalignX);
+                body["alignX"] = ExpressionConverter.ConvertO(__workflow_bodyalignX);
                 bodypropCount++;
-                body["alignY"] = ExpressionConverter.ConvertO(bodyalignY);
+                body["alignY"] = ExpressionConverter.ConvertO(__workflow_bodyalignY);
                 bodypropCount++;
-                body["heightInMM"] = ExpressionConverter.ConvertO(bodyheightInMM);
+                body["heightInMM"] = ExpressionConverter.ConvertO(__workflow_bodyheightInMM);
                 bodypropCount++;
-                body["widthInMM"] = ExpressionConverter.ConvertO(bodywidthInMM);
+                body["widthInMM"] = ExpressionConverter.ConvertO(__workflow_bodywidthInMM);
                 bodypropCount++;
-                body["marginXInMM"] = ExpressionConverter.ConvertO(bodymarginXInMM);
+                body["marginXInMM"] = ExpressionConverter.ConvertO(__workflow_bodymarginXInMM);
                 bodypropCount++;
-                body["marginYInMM"] = ExpressionConverter.ConvertO(bodymarginYInMM);
+                body["marginYInMM"] = ExpressionConverter.ConvertO(__workflow_bodymarginYInMM);
                 bodypropCount++;
-                body["opacity"] = ExpressionConverter.ConvertO(bodyopacity);
-                if (bodydisplayText != null)
+                body["opacity"] = ExpressionConverter.ConvertO(__workflow_bodyopacity);
+                if (__workflow_bodydisplayText != null)
                 {
-                    body["displayText"] = ExpressionConverter.ConvertO(bodydisplayText);
+                    body["displayText"] = ExpressionConverter.ConvertO(__workflow_bodydisplayText);
                     bodypropCount++;
                 }
 
-                if (bodyisTextAbove != null)
+                if (__workflow_bodyisTextAbove != null)
                 {
-                    if (bodyisTextAbove != null)
+                    if (__workflow_bodyisTextAbove != null)
                     {
-                        body["isTextAbove"] = ExpressionConverter.ConvertO(bodyisTextAbove);
+                        body["isTextAbove"] = ExpressionConverter.ConvertO(__workflow_bodyisTextAbove);
                         bodypropCount++;
                     }
 
@@ -98,18 +104,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mebarcode")]
-        [WorkflowExpressionFactory(nameof(__BuildCreatebarcode))]
-        public IBodyWorkflowAction<string> Createbarcode([WorkflowExpression] Func<bodybarcodeTypeInput> bodybarcodeType, [WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<bool> bodyhideText = null)
+        public IBodyWorkflowAction<string> Createbarcode(Expression<Func<bodybarcodeTypeInput>> bodybarcodeType, Expression<Func<string>> bodytext, Expression<Func<bool>> bodyhideText = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildCreatebarcode(WorkflowExpression<bodybarcodeTypeInput> bodybarcodeType, WorkflowExpression<string> bodytext, WorkflowExpression<bool> bodyhideText = null)
-        {
-            WorkflowExpression.Validate(bodybarcodeType, nameof(bodybarcodeType), required: true);
-            WorkflowExpression.Validate(bodytext, nameof(bodytext), required: true);
-            WorkflowExpression.Validate(bodyhideText, nameof(bodyhideText), required: false);
+            var __workflow_bodybarcodeType = bodybarcodeType == null ? null : WorkflowExpression.Compile(bodybarcodeType);
+            WorkflowExpression.Validate(__workflow_bodybarcodeType, nameof(bodybarcodeType), required: true);
+            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
+            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: true);
+            var __workflow_bodyhideText = bodyhideText == null ? null : WorkflowExpression.Compile(bodyhideText);
+            WorkflowExpression.Validate(__workflow_bodyhideText, nameof(bodyhideText), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/CreateBarcode";
@@ -118,14 +120,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["barcodeType"] = ExpressionConverter.ConvertO(bodybarcodeType);
+                body["barcodeType"] = ExpressionConverter.ConvertO(__workflow_bodybarcodeType);
                 bodypropCount++;
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
-                if (bodyhideText != null)
+                body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
+                if (__workflow_bodyhideText != null)
                 {
-                    if (bodyhideText != null)
+                    if (__workflow_bodyhideText != null)
                     {
-                        body["hideText"] = ExpressionConverter.ConvertO(bodyhideText);
+                        body["hideText"] = ExpressionConverter.ConvertO(__workflow_bodyhideText);
                         bodypropCount++;
                     }
 
@@ -147,25 +149,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mebarcode")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateEpcQrCode))]
-        public IBodyWorkflowAction<string> CreateEpcQrCode([WorkflowExpression] Func<bodyepcQrCodeActionversionInput> bodyepcQrCodeActionversion = null, [WorkflowExpression] Func<bodyepcQrCodeActioncharacterSetInput> bodyepcQrCodeActioncharacterSet = null, [WorkflowExpression] Func<string> bodyepcQrCodeActionbic = null, [WorkflowExpression] Func<string> bodyepcQrCodeActionreceiverName = null, [WorkflowExpression] Func<string> bodyepcQrCodeActioniban = null, [WorkflowExpression] Func<double> bodyepcQrCodeActionamount = null, [WorkflowExpression] Func<string> bodyepcQrCodeActionpurpose = null, [WorkflowExpression] Func<string> bodyepcQrCodeActionremittanceReference = null, [WorkflowExpression] Func<string> bodyepcQrCodeActionremittanceText = null, [WorkflowExpression] Func<string> bodyepcQrCodeActioninformation = null)
+        public IBodyWorkflowAction<string> CreateEpcQrCode(Expression<Func<bodyepcQrCodeActionversionInput>> bodyepcQrCodeActionversion = null, Expression<Func<bodyepcQrCodeActioncharacterSetInput>> bodyepcQrCodeActioncharacterSet = null, Expression<Func<string>> bodyepcQrCodeActionbic = null, Expression<Func<string>> bodyepcQrCodeActionreceiverName = null, Expression<Func<string>> bodyepcQrCodeActioniban = null, Expression<Func<double>> bodyepcQrCodeActionamount = null, Expression<Func<string>> bodyepcQrCodeActionpurpose = null, Expression<Func<string>> bodyepcQrCodeActionremittanceReference = null, Expression<Func<string>> bodyepcQrCodeActionremittanceText = null, Expression<Func<string>> bodyepcQrCodeActioninformation = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildCreateEpcQrCode(WorkflowExpression<bodyepcQrCodeActionversionInput> bodyepcQrCodeActionversion = null, WorkflowExpression<bodyepcQrCodeActioncharacterSetInput> bodyepcQrCodeActioncharacterSet = null, WorkflowExpression<string> bodyepcQrCodeActionbic = null, WorkflowExpression<string> bodyepcQrCodeActionreceiverName = null, WorkflowExpression<string> bodyepcQrCodeActioniban = null, WorkflowExpression<double> bodyepcQrCodeActionamount = null, WorkflowExpression<string> bodyepcQrCodeActionpurpose = null, WorkflowExpression<string> bodyepcQrCodeActionremittanceReference = null, WorkflowExpression<string> bodyepcQrCodeActionremittanceText = null, WorkflowExpression<string> bodyepcQrCodeActioninformation = null)
-        {
-            WorkflowExpression.Validate(bodyepcQrCodeActionversion, nameof(bodyepcQrCodeActionversion), required: false);
-            WorkflowExpression.Validate(bodyepcQrCodeActioncharacterSet, nameof(bodyepcQrCodeActioncharacterSet), required: false);
-            WorkflowExpression.Validate(bodyepcQrCodeActionbic, nameof(bodyepcQrCodeActionbic), required: false);
-            WorkflowExpression.Validate(bodyepcQrCodeActionreceiverName, nameof(bodyepcQrCodeActionreceiverName), required: false);
-            WorkflowExpression.Validate(bodyepcQrCodeActioniban, nameof(bodyepcQrCodeActioniban), required: false);
-            WorkflowExpression.Validate(bodyepcQrCodeActionamount, nameof(bodyepcQrCodeActionamount), required: false);
-            WorkflowExpression.Validate(bodyepcQrCodeActionpurpose, nameof(bodyepcQrCodeActionpurpose), required: false);
-            WorkflowExpression.Validate(bodyepcQrCodeActionremittanceReference, nameof(bodyepcQrCodeActionremittanceReference), required: false);
-            WorkflowExpression.Validate(bodyepcQrCodeActionremittanceText, nameof(bodyepcQrCodeActionremittanceText), required: false);
-            WorkflowExpression.Validate(bodyepcQrCodeActioninformation, nameof(bodyepcQrCodeActioninformation), required: false);
+            var __workflow_bodyepcQrCodeActionversion = bodyepcQrCodeActionversion == null ? null : WorkflowExpression.Compile(bodyepcQrCodeActionversion);
+            WorkflowExpression.Validate(__workflow_bodyepcQrCodeActionversion, nameof(bodyepcQrCodeActionversion), required: false);
+            var __workflow_bodyepcQrCodeActioncharacterSet = bodyepcQrCodeActioncharacterSet == null ? null : WorkflowExpression.Compile(bodyepcQrCodeActioncharacterSet);
+            WorkflowExpression.Validate(__workflow_bodyepcQrCodeActioncharacterSet, nameof(bodyepcQrCodeActioncharacterSet), required: false);
+            var __workflow_bodyepcQrCodeActionbic = bodyepcQrCodeActionbic == null ? null : WorkflowExpression.Compile(bodyepcQrCodeActionbic);
+            WorkflowExpression.Validate(__workflow_bodyepcQrCodeActionbic, nameof(bodyepcQrCodeActionbic), required: false);
+            var __workflow_bodyepcQrCodeActionreceiverName = bodyepcQrCodeActionreceiverName == null ? null : WorkflowExpression.Compile(bodyepcQrCodeActionreceiverName);
+            WorkflowExpression.Validate(__workflow_bodyepcQrCodeActionreceiverName, nameof(bodyepcQrCodeActionreceiverName), required: false);
+            var __workflow_bodyepcQrCodeActioniban = bodyepcQrCodeActioniban == null ? null : WorkflowExpression.Compile(bodyepcQrCodeActioniban);
+            WorkflowExpression.Validate(__workflow_bodyepcQrCodeActioniban, nameof(bodyepcQrCodeActioniban), required: false);
+            var __workflow_bodyepcQrCodeActionamount = bodyepcQrCodeActionamount == null ? null : WorkflowExpression.Compile(bodyepcQrCodeActionamount);
+            WorkflowExpression.Validate(__workflow_bodyepcQrCodeActionamount, nameof(bodyepcQrCodeActionamount), required: false);
+            var __workflow_bodyepcQrCodeActionpurpose = bodyepcQrCodeActionpurpose == null ? null : WorkflowExpression.Compile(bodyepcQrCodeActionpurpose);
+            WorkflowExpression.Validate(__workflow_bodyepcQrCodeActionpurpose, nameof(bodyepcQrCodeActionpurpose), required: false);
+            var __workflow_bodyepcQrCodeActionremittanceReference = bodyepcQrCodeActionremittanceReference == null ? null : WorkflowExpression.Compile(bodyepcQrCodeActionremittanceReference);
+            WorkflowExpression.Validate(__workflow_bodyepcQrCodeActionremittanceReference, nameof(bodyepcQrCodeActionremittanceReference), required: false);
+            var __workflow_bodyepcQrCodeActionremittanceText = bodyepcQrCodeActionremittanceText == null ? null : WorkflowExpression.Compile(bodyepcQrCodeActionremittanceText);
+            WorkflowExpression.Validate(__workflow_bodyepcQrCodeActionremittanceText, nameof(bodyepcQrCodeActionremittanceText), required: false);
+            var __workflow_bodyepcQrCodeActioninformation = bodyepcQrCodeActioninformation == null ? null : WorkflowExpression.Compile(bodyepcQrCodeActioninformation);
+            WorkflowExpression.Validate(__workflow_bodyepcQrCodeActioninformation, nameof(bodyepcQrCodeActioninformation), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/CreateEpcQrCode";
@@ -177,11 +182,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
                 var epcQrCodeActionObjectpropCount = 0;
                 epcQrCodeActionObject["serviceTag"] = "BCD";
                 epcQrCodeActionObjectpropCount++;
-                if (bodyepcQrCodeActionversion != null)
+                if (__workflow_bodyepcQrCodeActionversion != null)
                 {
-                    if (bodyepcQrCodeActionversion != null)
+                    if (__workflow_bodyepcQrCodeActionversion != null)
                     {
-                        epcQrCodeActionObject["version"] = ExpressionConverter.ConvertO(bodyepcQrCodeActionversion);
+                        epcQrCodeActionObject["version"] = ExpressionConverter.ConvertO(__workflow_bodyepcQrCodeActionversion);
                         epcQrCodeActionObjectpropCount++;
                     }
 
@@ -193,11 +198,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
                     epcQrCodeActionObjectpropCount++;
                 }
 
-                if (bodyepcQrCodeActioncharacterSet != null)
+                if (__workflow_bodyepcQrCodeActioncharacterSet != null)
                 {
-                    if (bodyepcQrCodeActioncharacterSet != null)
+                    if (__workflow_bodyepcQrCodeActioncharacterSet != null)
                     {
-                        epcQrCodeActionObject["characterSet"] = ExpressionConverter.ConvertO(bodyepcQrCodeActioncharacterSet);
+                        epcQrCodeActionObject["characterSet"] = ExpressionConverter.ConvertO(__workflow_bodyepcQrCodeActioncharacterSet);
                         epcQrCodeActionObjectpropCount++;
                     }
 
@@ -211,53 +216,53 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
 
                 epcQrCodeActionObject["identificationCode"] = "SCT";
                 epcQrCodeActionObjectpropCount++;
-                if (bodyepcQrCodeActionbic != null)
+                if (__workflow_bodyepcQrCodeActionbic != null)
                 {
-                    epcQrCodeActionObject["bic"] = ExpressionConverter.ConvertO(bodyepcQrCodeActionbic);
+                    epcQrCodeActionObject["bic"] = ExpressionConverter.ConvertO(__workflow_bodyepcQrCodeActionbic);
                     epcQrCodeActionObjectpropCount++;
                 }
 
-                if (bodyepcQrCodeActionreceiverName != null)
+                if (__workflow_bodyepcQrCodeActionreceiverName != null)
                 {
-                    epcQrCodeActionObject["receiverName"] = ExpressionConverter.ConvertO(bodyepcQrCodeActionreceiverName);
+                    epcQrCodeActionObject["receiverName"] = ExpressionConverter.ConvertO(__workflow_bodyepcQrCodeActionreceiverName);
                     epcQrCodeActionObjectpropCount++;
                 }
 
-                if (bodyepcQrCodeActioniban != null)
+                if (__workflow_bodyepcQrCodeActioniban != null)
                 {
-                    epcQrCodeActionObject["iban"] = ExpressionConverter.ConvertO(bodyepcQrCodeActioniban);
+                    epcQrCodeActionObject["iban"] = ExpressionConverter.ConvertO(__workflow_bodyepcQrCodeActioniban);
                     epcQrCodeActionObjectpropCount++;
                 }
 
                 epcQrCodeActionObject["currency"] = "EUR";
                 epcQrCodeActionObjectpropCount++;
-                if (bodyepcQrCodeActionamount != null)
+                if (__workflow_bodyepcQrCodeActionamount != null)
                 {
-                    epcQrCodeActionObject["amount"] = ExpressionConverter.ConvertO(bodyepcQrCodeActionamount);
+                    epcQrCodeActionObject["amount"] = ExpressionConverter.ConvertO(__workflow_bodyepcQrCodeActionamount);
                     epcQrCodeActionObjectpropCount++;
                 }
 
-                if (bodyepcQrCodeActionpurpose != null)
+                if (__workflow_bodyepcQrCodeActionpurpose != null)
                 {
-                    epcQrCodeActionObject["purpose"] = ExpressionConverter.ConvertO(bodyepcQrCodeActionpurpose);
+                    epcQrCodeActionObject["purpose"] = ExpressionConverter.ConvertO(__workflow_bodyepcQrCodeActionpurpose);
                     epcQrCodeActionObjectpropCount++;
                 }
 
-                if (bodyepcQrCodeActionremittanceReference != null)
+                if (__workflow_bodyepcQrCodeActionremittanceReference != null)
                 {
-                    epcQrCodeActionObject["remittanceReference"] = ExpressionConverter.ConvertO(bodyepcQrCodeActionremittanceReference);
+                    epcQrCodeActionObject["remittanceReference"] = ExpressionConverter.ConvertO(__workflow_bodyepcQrCodeActionremittanceReference);
                     epcQrCodeActionObjectpropCount++;
                 }
 
-                if (bodyepcQrCodeActionremittanceText != null)
+                if (__workflow_bodyepcQrCodeActionremittanceText != null)
                 {
-                    epcQrCodeActionObject["remittanceText"] = ExpressionConverter.ConvertO(bodyepcQrCodeActionremittanceText);
+                    epcQrCodeActionObject["remittanceText"] = ExpressionConverter.ConvertO(__workflow_bodyepcQrCodeActionremittanceText);
                     epcQrCodeActionObjectpropCount++;
                 }
 
-                if (bodyepcQrCodeActioninformation != null)
+                if (__workflow_bodyepcQrCodeActioninformation != null)
                 {
-                    epcQrCodeActionObject["information"] = ExpressionConverter.ConvertO(bodyepcQrCodeActioninformation);
+                    epcQrCodeActionObject["information"] = ExpressionConverter.ConvertO(__workflow_bodyepcQrCodeActioninformation);
                     epcQrCodeActionObjectpropCount++;
                 }
 
@@ -277,40 +282,58 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mebarcode")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateSwissQrBill))]
-        public IBodyWorkflowAction<string> CreateSwissQrBill([WorkflowExpression] Func<bodycrAddressTypeInput> bodycrAddressType, [WorkflowExpression] Func<string> bodycrName, [WorkflowExpression] Func<string> bodydocContent, [WorkflowExpression] Func<string> bodyiban, [WorkflowExpression] Func<string> bodyamount = null, [WorkflowExpression] Func<string> bodyav1Parameters = null, [WorkflowExpression] Func<string> bodyav2Parameters = null, [WorkflowExpression] Func<string> bodybillingInfo = null, [WorkflowExpression] Func<string> bodycrCity = null, [WorkflowExpression] Func<string> bodycrPostalCode = null, [WorkflowExpression] Func<string> bodycrStreetOrAddressLine1 = null, [WorkflowExpression] Func<string> bodycrStreetOrAddressLine2 = null, [WorkflowExpression] Func<bodycurrencyInput> bodycurrency = null, [WorkflowExpression] Func<string> bodydocumentname = null, [WorkflowExpression] Func<bodylanguageTypeInput> bodylanguageType = null, [WorkflowExpression] Func<string> bodyreference = null, [WorkflowExpression] Func<bodyreferenceTypeInput> bodyreferenceType = null, [WorkflowExpression] Func<bodyseperatorLineInput> bodyseperatorLine = null, [WorkflowExpression] Func<bodyudAddressTypeInput> bodyudAddressType = null, [WorkflowExpression] Func<string> bodyudCity = null, [WorkflowExpression] Func<string> bodyudName = null, [WorkflowExpression] Func<string> bodyudPostalCode = null, [WorkflowExpression] Func<string> bodyudStreetOrAddressLine1 = null, [WorkflowExpression] Func<string> bodyudStreetOrAddressLine2 = null, [WorkflowExpression] Func<string> bodyunstructuredMessage = null)
+        public IBodyWorkflowAction<string> CreateSwissQrBill(Expression<Func<bodycrAddressTypeInput>> bodycrAddressType, Expression<Func<string>> bodycrName, Expression<Func<string>> bodydocContent, Expression<Func<string>> bodyiban, Expression<Func<string>> bodyamount = null, Expression<Func<string>> bodyav1Parameters = null, Expression<Func<string>> bodyav2Parameters = null, Expression<Func<string>> bodybillingInfo = null, Expression<Func<string>> bodycrCity = null, Expression<Func<string>> bodycrPostalCode = null, Expression<Func<string>> bodycrStreetOrAddressLine1 = null, Expression<Func<string>> bodycrStreetOrAddressLine2 = null, Expression<Func<bodycurrencyInput>> bodycurrency = null, Expression<Func<string>> bodydocumentname = null, Expression<Func<bodylanguageTypeInput>> bodylanguageType = null, Expression<Func<string>> bodyreference = null, Expression<Func<bodyreferenceTypeInput>> bodyreferenceType = null, Expression<Func<bodyseperatorLineInput>> bodyseperatorLine = null, Expression<Func<bodyudAddressTypeInput>> bodyudAddressType = null, Expression<Func<string>> bodyudCity = null, Expression<Func<string>> bodyudName = null, Expression<Func<string>> bodyudPostalCode = null, Expression<Func<string>> bodyudStreetOrAddressLine1 = null, Expression<Func<string>> bodyudStreetOrAddressLine2 = null, Expression<Func<string>> bodyunstructuredMessage = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildCreateSwissQrBill(WorkflowExpression<bodycrAddressTypeInput> bodycrAddressType, WorkflowExpression<string> bodycrName, WorkflowExpression<string> bodydocContent, WorkflowExpression<string> bodyiban, WorkflowExpression<string> bodyamount = null, WorkflowExpression<string> bodyav1Parameters = null, WorkflowExpression<string> bodyav2Parameters = null, WorkflowExpression<string> bodybillingInfo = null, WorkflowExpression<string> bodycrCity = null, WorkflowExpression<string> bodycrPostalCode = null, WorkflowExpression<string> bodycrStreetOrAddressLine1 = null, WorkflowExpression<string> bodycrStreetOrAddressLine2 = null, WorkflowExpression<bodycurrencyInput> bodycurrency = null, WorkflowExpression<string> bodydocumentname = null, WorkflowExpression<bodylanguageTypeInput> bodylanguageType = null, WorkflowExpression<string> bodyreference = null, WorkflowExpression<bodyreferenceTypeInput> bodyreferenceType = null, WorkflowExpression<bodyseperatorLineInput> bodyseperatorLine = null, WorkflowExpression<bodyudAddressTypeInput> bodyudAddressType = null, WorkflowExpression<string> bodyudCity = null, WorkflowExpression<string> bodyudName = null, WorkflowExpression<string> bodyudPostalCode = null, WorkflowExpression<string> bodyudStreetOrAddressLine1 = null, WorkflowExpression<string> bodyudStreetOrAddressLine2 = null, WorkflowExpression<string> bodyunstructuredMessage = null)
-        {
-            WorkflowExpression.Validate(bodycrAddressType, nameof(bodycrAddressType), required: true);
-            WorkflowExpression.Validate(bodycrName, nameof(bodycrName), required: true);
-            WorkflowExpression.Validate(bodydocContent, nameof(bodydocContent), required: true);
-            WorkflowExpression.Validate(bodyiban, nameof(bodyiban), required: true);
-            WorkflowExpression.Validate(bodyamount, nameof(bodyamount), required: false);
-            WorkflowExpression.Validate(bodyav1Parameters, nameof(bodyav1Parameters), required: false);
-            WorkflowExpression.Validate(bodyav2Parameters, nameof(bodyav2Parameters), required: false);
-            WorkflowExpression.Validate(bodybillingInfo, nameof(bodybillingInfo), required: false);
-            WorkflowExpression.Validate(bodycrCity, nameof(bodycrCity), required: false);
-            WorkflowExpression.Validate(bodycrPostalCode, nameof(bodycrPostalCode), required: false);
-            WorkflowExpression.Validate(bodycrStreetOrAddressLine1, nameof(bodycrStreetOrAddressLine1), required: false);
-            WorkflowExpression.Validate(bodycrStreetOrAddressLine2, nameof(bodycrStreetOrAddressLine2), required: false);
-            WorkflowExpression.Validate(bodycurrency, nameof(bodycurrency), required: false);
-            WorkflowExpression.Validate(bodydocumentname, nameof(bodydocumentname), required: false);
-            WorkflowExpression.Validate(bodylanguageType, nameof(bodylanguageType), required: false);
-            WorkflowExpression.Validate(bodyreference, nameof(bodyreference), required: false);
-            WorkflowExpression.Validate(bodyreferenceType, nameof(bodyreferenceType), required: false);
-            WorkflowExpression.Validate(bodyseperatorLine, nameof(bodyseperatorLine), required: false);
-            WorkflowExpression.Validate(bodyudAddressType, nameof(bodyudAddressType), required: false);
-            WorkflowExpression.Validate(bodyudCity, nameof(bodyudCity), required: false);
-            WorkflowExpression.Validate(bodyudName, nameof(bodyudName), required: false);
-            WorkflowExpression.Validate(bodyudPostalCode, nameof(bodyudPostalCode), required: false);
-            WorkflowExpression.Validate(bodyudStreetOrAddressLine1, nameof(bodyudStreetOrAddressLine1), required: false);
-            WorkflowExpression.Validate(bodyudStreetOrAddressLine2, nameof(bodyudStreetOrAddressLine2), required: false);
-            WorkflowExpression.Validate(bodyunstructuredMessage, nameof(bodyunstructuredMessage), required: false);
+            var __workflow_bodycrAddressType = bodycrAddressType == null ? null : WorkflowExpression.Compile(bodycrAddressType);
+            WorkflowExpression.Validate(__workflow_bodycrAddressType, nameof(bodycrAddressType), required: true);
+            var __workflow_bodycrName = bodycrName == null ? null : WorkflowExpression.Compile(bodycrName);
+            WorkflowExpression.Validate(__workflow_bodycrName, nameof(bodycrName), required: true);
+            var __workflow_bodydocContent = bodydocContent == null ? null : WorkflowExpression.Compile(bodydocContent);
+            WorkflowExpression.Validate(__workflow_bodydocContent, nameof(bodydocContent), required: true);
+            var __workflow_bodyiban = bodyiban == null ? null : WorkflowExpression.Compile(bodyiban);
+            WorkflowExpression.Validate(__workflow_bodyiban, nameof(bodyiban), required: true);
+            var __workflow_bodyamount = bodyamount == null ? null : WorkflowExpression.Compile(bodyamount);
+            WorkflowExpression.Validate(__workflow_bodyamount, nameof(bodyamount), required: false);
+            var __workflow_bodyav1Parameters = bodyav1Parameters == null ? null : WorkflowExpression.Compile(bodyav1Parameters);
+            WorkflowExpression.Validate(__workflow_bodyav1Parameters, nameof(bodyav1Parameters), required: false);
+            var __workflow_bodyav2Parameters = bodyav2Parameters == null ? null : WorkflowExpression.Compile(bodyav2Parameters);
+            WorkflowExpression.Validate(__workflow_bodyav2Parameters, nameof(bodyav2Parameters), required: false);
+            var __workflow_bodybillingInfo = bodybillingInfo == null ? null : WorkflowExpression.Compile(bodybillingInfo);
+            WorkflowExpression.Validate(__workflow_bodybillingInfo, nameof(bodybillingInfo), required: false);
+            var __workflow_bodycrCity = bodycrCity == null ? null : WorkflowExpression.Compile(bodycrCity);
+            WorkflowExpression.Validate(__workflow_bodycrCity, nameof(bodycrCity), required: false);
+            var __workflow_bodycrPostalCode = bodycrPostalCode == null ? null : WorkflowExpression.Compile(bodycrPostalCode);
+            WorkflowExpression.Validate(__workflow_bodycrPostalCode, nameof(bodycrPostalCode), required: false);
+            var __workflow_bodycrStreetOrAddressLine1 = bodycrStreetOrAddressLine1 == null ? null : WorkflowExpression.Compile(bodycrStreetOrAddressLine1);
+            WorkflowExpression.Validate(__workflow_bodycrStreetOrAddressLine1, nameof(bodycrStreetOrAddressLine1), required: false);
+            var __workflow_bodycrStreetOrAddressLine2 = bodycrStreetOrAddressLine2 == null ? null : WorkflowExpression.Compile(bodycrStreetOrAddressLine2);
+            WorkflowExpression.Validate(__workflow_bodycrStreetOrAddressLine2, nameof(bodycrStreetOrAddressLine2), required: false);
+            var __workflow_bodycurrency = bodycurrency == null ? null : WorkflowExpression.Compile(bodycurrency);
+            WorkflowExpression.Validate(__workflow_bodycurrency, nameof(bodycurrency), required: false);
+            var __workflow_bodydocumentname = bodydocumentname == null ? null : WorkflowExpression.Compile(bodydocumentname);
+            WorkflowExpression.Validate(__workflow_bodydocumentname, nameof(bodydocumentname), required: false);
+            var __workflow_bodylanguageType = bodylanguageType == null ? null : WorkflowExpression.Compile(bodylanguageType);
+            WorkflowExpression.Validate(__workflow_bodylanguageType, nameof(bodylanguageType), required: false);
+            var __workflow_bodyreference = bodyreference == null ? null : WorkflowExpression.Compile(bodyreference);
+            WorkflowExpression.Validate(__workflow_bodyreference, nameof(bodyreference), required: false);
+            var __workflow_bodyreferenceType = bodyreferenceType == null ? null : WorkflowExpression.Compile(bodyreferenceType);
+            WorkflowExpression.Validate(__workflow_bodyreferenceType, nameof(bodyreferenceType), required: false);
+            var __workflow_bodyseperatorLine = bodyseperatorLine == null ? null : WorkflowExpression.Compile(bodyseperatorLine);
+            WorkflowExpression.Validate(__workflow_bodyseperatorLine, nameof(bodyseperatorLine), required: false);
+            var __workflow_bodyudAddressType = bodyudAddressType == null ? null : WorkflowExpression.Compile(bodyudAddressType);
+            WorkflowExpression.Validate(__workflow_bodyudAddressType, nameof(bodyudAddressType), required: false);
+            var __workflow_bodyudCity = bodyudCity == null ? null : WorkflowExpression.Compile(bodyudCity);
+            WorkflowExpression.Validate(__workflow_bodyudCity, nameof(bodyudCity), required: false);
+            var __workflow_bodyudName = bodyudName == null ? null : WorkflowExpression.Compile(bodyudName);
+            WorkflowExpression.Validate(__workflow_bodyudName, nameof(bodyudName), required: false);
+            var __workflow_bodyudPostalCode = bodyudPostalCode == null ? null : WorkflowExpression.Compile(bodyudPostalCode);
+            WorkflowExpression.Validate(__workflow_bodyudPostalCode, nameof(bodyudPostalCode), required: false);
+            var __workflow_bodyudStreetOrAddressLine1 = bodyudStreetOrAddressLine1 == null ? null : WorkflowExpression.Compile(bodyudStreetOrAddressLine1);
+            WorkflowExpression.Validate(__workflow_bodyudStreetOrAddressLine1, nameof(bodyudStreetOrAddressLine1), required: false);
+            var __workflow_bodyudStreetOrAddressLine2 = bodyudStreetOrAddressLine2 == null ? null : WorkflowExpression.Compile(bodyudStreetOrAddressLine2);
+            WorkflowExpression.Validate(__workflow_bodyudStreetOrAddressLine2, nameof(bodyudStreetOrAddressLine2), required: false);
+            var __workflow_bodyunstructuredMessage = bodyunstructuredMessage == null ? null : WorkflowExpression.Compile(bodyunstructuredMessage);
+            WorkflowExpression.Validate(__workflow_bodyunstructuredMessage, nameof(bodyunstructuredMessage), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/CreateSwissQrBill";
@@ -318,63 +341,63 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyamount != null)
+                if (__workflow_bodyamount != null)
                 {
-                    body["amount"] = ExpressionConverter.ConvertO(bodyamount);
+                    body["amount"] = ExpressionConverter.ConvertO(__workflow_bodyamount);
                     bodypropCount++;
                 }
 
-                if (bodyav1Parameters != null)
+                if (__workflow_bodyav1Parameters != null)
                 {
-                    body["av1Parameters"] = ExpressionConverter.ConvertO(bodyav1Parameters);
+                    body["av1Parameters"] = ExpressionConverter.ConvertO(__workflow_bodyav1Parameters);
                     bodypropCount++;
                 }
 
-                if (bodyav2Parameters != null)
+                if (__workflow_bodyav2Parameters != null)
                 {
-                    body["av2Parameters"] = ExpressionConverter.ConvertO(bodyav2Parameters);
+                    body["av2Parameters"] = ExpressionConverter.ConvertO(__workflow_bodyav2Parameters);
                     bodypropCount++;
                 }
 
-                if (bodybillingInfo != null)
+                if (__workflow_bodybillingInfo != null)
                 {
-                    body["billingInfo"] = ExpressionConverter.ConvertO(bodybillingInfo);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["crAddressType"] = ExpressionConverter.ConvertO(bodycrAddressType);
-                if (bodycrCity != null)
-                {
-                    body["crCity"] = ExpressionConverter.ConvertO(bodycrCity);
+                    body["billingInfo"] = ExpressionConverter.ConvertO(__workflow_bodybillingInfo);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["crName"] = ExpressionConverter.ConvertO(bodycrName);
-                if (bodycrPostalCode != null)
+                body["crAddressType"] = ExpressionConverter.ConvertO(__workflow_bodycrAddressType);
+                if (__workflow_bodycrCity != null)
                 {
-                    body["crPostalCode"] = ExpressionConverter.ConvertO(bodycrPostalCode);
+                    body["crCity"] = ExpressionConverter.ConvertO(__workflow_bodycrCity);
                     bodypropCount++;
                 }
 
-                if (bodycrStreetOrAddressLine1 != null)
+                bodypropCount++;
+                body["crName"] = ExpressionConverter.ConvertO(__workflow_bodycrName);
+                if (__workflow_bodycrPostalCode != null)
                 {
-                    body["crStreetOrAddressLine1"] = ExpressionConverter.ConvertO(bodycrStreetOrAddressLine1);
+                    body["crPostalCode"] = ExpressionConverter.ConvertO(__workflow_bodycrPostalCode);
                     bodypropCount++;
                 }
 
-                if (bodycrStreetOrAddressLine2 != null)
+                if (__workflow_bodycrStreetOrAddressLine1 != null)
                 {
-                    body["crStreetOrAddressLine2"] = ExpressionConverter.ConvertO(bodycrStreetOrAddressLine2);
+                    body["crStreetOrAddressLine1"] = ExpressionConverter.ConvertO(__workflow_bodycrStreetOrAddressLine1);
                     bodypropCount++;
                 }
 
-                if (bodycurrency != null)
+                if (__workflow_bodycrStreetOrAddressLine2 != null)
                 {
-                    if (bodycurrency != null)
+                    body["crStreetOrAddressLine2"] = ExpressionConverter.ConvertO(__workflow_bodycrStreetOrAddressLine2);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodycurrency != null)
+                {
+                    if (__workflow_bodycurrency != null)
                     {
-                        body["currency"] = ExpressionConverter.ConvertO(bodycurrency);
+                        body["currency"] = ExpressionConverter.ConvertO(__workflow_bodycurrency);
                         bodypropCount++;
                     }
 
@@ -387,12 +410,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
                 }
 
                 bodypropCount++;
-                body["docContent"] = ExpressionConverter.ConvertO(bodydocContent);
+                body["docContent"] = ExpressionConverter.ConvertO(__workflow_bodydocContent);
                 var documentObject = new JObject();
                 var documentObjectpropCount = 0;
-                if (bodydocumentname != null)
+                if (__workflow_bodydocumentname != null)
                 {
-                    documentObject["Name"] = ExpressionConverter.ConvertO(bodydocumentname);
+                    documentObject["Name"] = ExpressionConverter.ConvertO(__workflow_bodydocumentname);
                     documentObjectpropCount++;
                 }
 
@@ -403,12 +426,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
                 }
 
                 bodypropCount++;
-                body["iban"] = ExpressionConverter.ConvertO(bodyiban);
-                if (bodylanguageType != null)
+                body["iban"] = ExpressionConverter.ConvertO(__workflow_bodyiban);
+                if (__workflow_bodylanguageType != null)
                 {
-                    if (bodylanguageType != null)
+                    if (__workflow_bodylanguageType != null)
                     {
-                        body["languageType"] = ExpressionConverter.ConvertO(bodylanguageType);
+                        body["languageType"] = ExpressionConverter.ConvertO(__workflow_bodylanguageType);
                         bodypropCount++;
                     }
 
@@ -420,17 +443,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
                     bodypropCount++;
                 }
 
-                if (bodyreference != null)
+                if (__workflow_bodyreference != null)
                 {
-                    body["reference"] = ExpressionConverter.ConvertO(bodyreference);
+                    body["reference"] = ExpressionConverter.ConvertO(__workflow_bodyreference);
                     bodypropCount++;
                 }
 
-                if (bodyreferenceType != null)
+                if (__workflow_bodyreferenceType != null)
                 {
-                    if (bodyreferenceType != null)
+                    if (__workflow_bodyreferenceType != null)
                     {
-                        body["referenceType"] = ExpressionConverter.ConvertO(bodyreferenceType);
+                        body["referenceType"] = ExpressionConverter.ConvertO(__workflow_bodyreferenceType);
                         bodypropCount++;
                     }
 
@@ -442,11 +465,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
                     bodypropCount++;
                 }
 
-                if (bodyseperatorLine != null)
+                if (__workflow_bodyseperatorLine != null)
                 {
-                    if (bodyseperatorLine != null)
+                    if (__workflow_bodyseperatorLine != null)
                     {
-                        body["seperatorLine"] = ExpressionConverter.ConvertO(bodyseperatorLine);
+                        body["seperatorLine"] = ExpressionConverter.ConvertO(__workflow_bodyseperatorLine);
                         bodypropCount++;
                     }
 
@@ -458,11 +481,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
                     bodypropCount++;
                 }
 
-                if (bodyudAddressType != null)
+                if (__workflow_bodyudAddressType != null)
                 {
-                    if (bodyudAddressType != null)
+                    if (__workflow_bodyudAddressType != null)
                     {
-                        body["udAddressType"] = ExpressionConverter.ConvertO(bodyudAddressType);
+                        body["udAddressType"] = ExpressionConverter.ConvertO(__workflow_bodyudAddressType);
                         bodypropCount++;
                     }
 
@@ -474,39 +497,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
                     bodypropCount++;
                 }
 
-                if (bodyudCity != null)
+                if (__workflow_bodyudCity != null)
                 {
-                    body["udCity"] = ExpressionConverter.ConvertO(bodyudCity);
+                    body["udCity"] = ExpressionConverter.ConvertO(__workflow_bodyudCity);
                     bodypropCount++;
                 }
 
-                if (bodyudName != null)
+                if (__workflow_bodyudName != null)
                 {
-                    body["udName"] = ExpressionConverter.ConvertO(bodyudName);
+                    body["udName"] = ExpressionConverter.ConvertO(__workflow_bodyudName);
                     bodypropCount++;
                 }
 
-                if (bodyudPostalCode != null)
+                if (__workflow_bodyudPostalCode != null)
                 {
-                    body["udPostalCode"] = ExpressionConverter.ConvertO(bodyudPostalCode);
+                    body["udPostalCode"] = ExpressionConverter.ConvertO(__workflow_bodyudPostalCode);
                     bodypropCount++;
                 }
 
-                if (bodyudStreetOrAddressLine1 != null)
+                if (__workflow_bodyudStreetOrAddressLine1 != null)
                 {
-                    body["udStreetOrAddressLine1"] = ExpressionConverter.ConvertO(bodyudStreetOrAddressLine1);
+                    body["udStreetOrAddressLine1"] = ExpressionConverter.ConvertO(__workflow_bodyudStreetOrAddressLine1);
                     bodypropCount++;
                 }
 
-                if (bodyudStreetOrAddressLine2 != null)
+                if (__workflow_bodyudStreetOrAddressLine2 != null)
                 {
-                    body["udStreetOrAddressLine2"] = ExpressionConverter.ConvertO(bodyudStreetOrAddressLine2);
+                    body["udStreetOrAddressLine2"] = ExpressionConverter.ConvertO(__workflow_bodyudStreetOrAddressLine2);
                     bodypropCount++;
                 }
 
-                if (bodyunstructuredMessage != null)
+                if (__workflow_bodyunstructuredMessage != null)
                 {
-                    body["unstructuredMessage"] = ExpressionConverter.ConvertO(bodyunstructuredMessage);
+                    body["unstructuredMessage"] = ExpressionConverter.ConvertO(__workflow_bodyunstructuredMessage);
                     bodypropCount++;
                 }
 
@@ -520,43 +543,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mebarcode")]
-        [WorkflowExpressionFactory(nameof(__BuildCustomAPI))]
-        public IWorkflowAction CustomAPI([WorkflowExpression] Func<string> featurePath, [WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> body = null)
+        public IWorkflowAction CustomAPI(Expression<Func<string>> featurePath, Expression<Func<string>> contentType, Expression<Func<string>> body = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildCustomAPI(WorkflowExpression<string> featurePath, WorkflowExpression<string> contentType, WorkflowExpression<string> body = null)
-        {
-            WorkflowExpression.Validate(featurePath, nameof(featurePath), required: true);
-            WorkflowExpression.Validate(contentType, nameof(contentType), required: true);
-            WorkflowExpression.Validate(body, nameof(body), required: false);
+            var __workflow_featurePath = featurePath == null ? null : WorkflowExpression.Compile(featurePath);
+            WorkflowExpression.Validate(__workflow_featurePath, nameof(featurePath), required: true);
+            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
+            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: true);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/FlowV2/{0}", ExpressionConverter.ConvertWithUrlEncoding(featurePath, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/FlowV2/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_featurePath, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["Content-type"] = ExpressionConverter.Convert(contentType);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Headers["Content-type"] = ExpressionConverter.Convert(__workflow_contentType);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mebarcode")]
-        [WorkflowExpressionFactory(nameof(__BuildReadBarcodes))]
-        public IBodyWorkflowAction<ReadBarcodesV1Response> ReadBarcodes([WorkflowExpression] Func<string> bodydocContent, [WorkflowExpression] Func<bodybarcodeTypeInputItem[]> bodybarcodeType, [WorkflowExpression] Func<string> bodydocumentname = null, [WorkflowExpression] Func<string> bodypages = null)
+        public IBodyWorkflowAction<ReadBarcodesV1Response> ReadBarcodes(Expression<Func<string>> bodydocContent, Expression<Func<bodybarcodeTypeInputItem[]>> bodybarcodeType, Expression<Func<string>> bodydocumentname = null, Expression<Func<string>> bodypages = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ReadBarcodesV1Response> __BuildReadBarcodes(WorkflowExpression<string> bodydocContent, WorkflowExpression<bodybarcodeTypeInputItem[]> bodybarcodeType, WorkflowExpression<string> bodydocumentname = null, WorkflowExpression<string> bodypages = null)
-        {
-            WorkflowExpression.Validate(bodydocContent, nameof(bodydocContent), required: true);
-            WorkflowExpression.Validate(bodybarcodeType, nameof(bodybarcodeType), required: true);
-            WorkflowExpression.Validate(bodydocumentname, nameof(bodydocumentname), required: false);
-            WorkflowExpression.Validate(bodypages, nameof(bodypages), required: false);
+            var __workflow_bodydocContent = bodydocContent == null ? null : WorkflowExpression.Compile(bodydocContent);
+            WorkflowExpression.Validate(__workflow_bodydocContent, nameof(bodydocContent), required: true);
+            var __workflow_bodybarcodeType = bodybarcodeType == null ? null : WorkflowExpression.Compile(bodybarcodeType);
+            WorkflowExpression.Validate(__workflow_bodybarcodeType, nameof(bodybarcodeType), required: true);
+            var __workflow_bodydocumentname = bodydocumentname == null ? null : WorkflowExpression.Compile(bodydocumentname);
+            WorkflowExpression.Validate(__workflow_bodydocumentname, nameof(bodydocumentname), required: false);
+            var __workflow_bodypages = bodypages == null ? null : WorkflowExpression.Compile(bodypages);
+            WorkflowExpression.Validate(__workflow_bodypages, nameof(bodypages), required: false);
             return new DeferredBodyAction<ReadBarcodesV1Response>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ReadBarcodes";
@@ -565,12 +581,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["docContent"] = ExpressionConverter.ConvertO(bodydocContent);
+                body["docContent"] = ExpressionConverter.ConvertO(__workflow_bodydocContent);
                 var documentObject = new JObject();
                 var documentObjectpropCount = 0;
-                if (bodydocumentname != null)
+                if (__workflow_bodydocumentname != null)
                 {
-                    documentObject["Name"] = ExpressionConverter.ConvertO(bodydocumentname);
+                    documentObject["Name"] = ExpressionConverter.ConvertO(__workflow_bodydocumentname);
                     documentObjectpropCount++;
                 }
 
@@ -581,12 +597,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
                 }
 
                 bodypropCount++;
-                body["barcodeType"] = ExpressionConverter.ConvertO(bodybarcodeType);
-                if (bodypages != null)
+                body["barcodeType"] = ExpressionConverter.ConvertO(__workflow_bodybarcodeType);
+                if (__workflow_bodypages != null)
                 {
-                    if (bodypages != null)
+                    if (__workflow_bodypages != null)
                     {
-                        body["pages"] = ExpressionConverter.ConvertO(bodypages);
+                        body["pages"] = ExpressionConverter.ConvertO(__workflow_bodypages);
                         bodypropCount++;
                     }
 
@@ -608,17 +624,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mebarcode")]
-        [WorkflowExpressionFactory(nameof(__BuildReadBarcodesFromImage))]
-        public IBodyWorkflowAction<ReadBarcodesFromImageV1Response> ReadBarcodesFromImage([WorkflowExpression] Func<string> bodydocContent, [WorkflowExpression] Func<string> bodydocumentname = null)
+        public IBodyWorkflowAction<ReadBarcodesFromImageV1Response> ReadBarcodesFromImage(Expression<Func<string>> bodydocContent, Expression<Func<string>> bodydocumentname = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ReadBarcodesFromImageV1Response> __BuildReadBarcodesFromImage(WorkflowExpression<string> bodydocContent, WorkflowExpression<string> bodydocumentname = null)
-        {
-            WorkflowExpression.Validate(bodydocContent, nameof(bodydocContent), required: true);
-            WorkflowExpression.Validate(bodydocumentname, nameof(bodydocumentname), required: false);
+            var __workflow_bodydocContent = bodydocContent == null ? null : WorkflowExpression.Compile(bodydocContent);
+            WorkflowExpression.Validate(__workflow_bodydocContent, nameof(bodydocContent), required: true);
+            var __workflow_bodydocumentname = bodydocumentname == null ? null : WorkflowExpression.Compile(bodydocumentname);
+            WorkflowExpression.Validate(__workflow_bodydocumentname, nameof(bodydocumentname), required: false);
             return new DeferredBodyAction<ReadBarcodesFromImageV1Response>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ReadBarcodesFromImage";
@@ -627,12 +638,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["docContent"] = ExpressionConverter.ConvertO(bodydocContent);
+                body["docContent"] = ExpressionConverter.ConvertO(__workflow_bodydocContent);
                 var documentObject = new JObject();
                 var documentObjectpropCount = 0;
-                if (bodydocumentname != null)
+                if (__workflow_bodydocumentname != null)
                 {
-                    documentObject["Name"] = ExpressionConverter.ConvertO(bodydocumentname);
+                    documentObject["Name"] = ExpressionConverter.ConvertO(__workflow_bodydocumentname);
                     documentObjectpropCount++;
                 }
 
@@ -652,17 +663,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mebarcode")]
-        [WorkflowExpressionFactory(nameof(__BuildReadSwissQrBill))]
-        public IBodyWorkflowAction<string> ReadSwissQrBill([WorkflowExpression] Func<string> bodydocContent, [WorkflowExpression] Func<string> bodydocumentname = null)
+        public IBodyWorkflowAction<string> ReadSwissQrBill(Expression<Func<string>> bodydocContent, Expression<Func<string>> bodydocumentname = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildReadSwissQrBill(WorkflowExpression<string> bodydocContent, WorkflowExpression<string> bodydocumentname = null)
-        {
-            WorkflowExpression.Validate(bodydocContent, nameof(bodydocContent), required: true);
-            WorkflowExpression.Validate(bodydocumentname, nameof(bodydocumentname), required: false);
+            var __workflow_bodydocContent = bodydocContent == null ? null : WorkflowExpression.Compile(bodydocContent);
+            WorkflowExpression.Validate(__workflow_bodydocContent, nameof(bodydocContent), required: true);
+            var __workflow_bodydocumentname = bodydocumentname == null ? null : WorkflowExpression.Compile(bodydocumentname);
+            WorkflowExpression.Validate(__workflow_bodydocumentname, nameof(bodydocumentname), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ReadSwissQrBill";
@@ -671,12 +677,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["docContent"] = ExpressionConverter.ConvertO(bodydocContent);
+                body["docContent"] = ExpressionConverter.ConvertO(__workflow_bodydocContent);
                 var documentObject = new JObject();
                 var documentObjectpropCount = 0;
-                if (bodydocumentname != null)
+                if (__workflow_bodydocumentname != null)
                 {
-                    documentObject["Name"] = ExpressionConverter.ConvertO(bodydocumentname);
+                    documentObject["Name"] = ExpressionConverter.ConvertO(__workflow_bodydocumentname);
                     documentObjectpropCount++;
                 }
 
@@ -696,24 +702,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mebarcode")]
-        [WorkflowExpressionFactory(nameof(__BuildSplitDocByBarcode))]
-        public IBodyWorkflowAction<SplitDocByBarcodeV1Response> SplitDocByBarcode([WorkflowExpression] Func<string> bodydocContent, [WorkflowExpression] Func<bodybarcodeFilterInput> bodybarcodeFilter, [WorkflowExpression] Func<string> bodybarcodeString, [WorkflowExpression] Func<bodybarcodeTypeInput> bodybarcodeType, [WorkflowExpression] Func<bodysplitBarcodePageInput> bodysplitBarcodePage, [WorkflowExpression] Func<string> bodydocumentname = null, [WorkflowExpression] Func<bool> bodycombinePagesWithSameConsecutiveBarcodes = null, [WorkflowExpression] Func<string> bodypdfRenderDpi = null, [WorkflowExpression] Func<bool> bodyisAsync = null)
+        public IBodyWorkflowAction<SplitDocByBarcodeV1Response> SplitDocByBarcode(Expression<Func<string>> bodydocContent, Expression<Func<bodybarcodeFilterInput>> bodybarcodeFilter, Expression<Func<string>> bodybarcodeString, Expression<Func<bodybarcodeTypeInput>> bodybarcodeType, Expression<Func<bodysplitBarcodePageInput>> bodysplitBarcodePage, Expression<Func<string>> bodydocumentname = null, Expression<Func<bool>> bodycombinePagesWithSameConsecutiveBarcodes = null, Expression<Func<string>> bodypdfRenderDpi = null, Expression<Func<bool>> bodyisAsync = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SplitDocByBarcodeV1Response> __BuildSplitDocByBarcode(WorkflowExpression<string> bodydocContent, WorkflowExpression<bodybarcodeFilterInput> bodybarcodeFilter, WorkflowExpression<string> bodybarcodeString, WorkflowExpression<bodybarcodeTypeInput> bodybarcodeType, WorkflowExpression<bodysplitBarcodePageInput> bodysplitBarcodePage, WorkflowExpression<string> bodydocumentname = null, WorkflowExpression<bool> bodycombinePagesWithSameConsecutiveBarcodes = null, WorkflowExpression<string> bodypdfRenderDpi = null, WorkflowExpression<bool> bodyisAsync = null)
-        {
-            WorkflowExpression.Validate(bodydocContent, nameof(bodydocContent), required: true);
-            WorkflowExpression.Validate(bodybarcodeFilter, nameof(bodybarcodeFilter), required: true);
-            WorkflowExpression.Validate(bodybarcodeString, nameof(bodybarcodeString), required: true);
-            WorkflowExpression.Validate(bodybarcodeType, nameof(bodybarcodeType), required: true);
-            WorkflowExpression.Validate(bodysplitBarcodePage, nameof(bodysplitBarcodePage), required: true);
-            WorkflowExpression.Validate(bodydocumentname, nameof(bodydocumentname), required: false);
-            WorkflowExpression.Validate(bodycombinePagesWithSameConsecutiveBarcodes, nameof(bodycombinePagesWithSameConsecutiveBarcodes), required: false);
-            WorkflowExpression.Validate(bodypdfRenderDpi, nameof(bodypdfRenderDpi), required: false);
-            WorkflowExpression.Validate(bodyisAsync, nameof(bodyisAsync), required: false);
+            var __workflow_bodydocContent = bodydocContent == null ? null : WorkflowExpression.Compile(bodydocContent);
+            WorkflowExpression.Validate(__workflow_bodydocContent, nameof(bodydocContent), required: true);
+            var __workflow_bodybarcodeFilter = bodybarcodeFilter == null ? null : WorkflowExpression.Compile(bodybarcodeFilter);
+            WorkflowExpression.Validate(__workflow_bodybarcodeFilter, nameof(bodybarcodeFilter), required: true);
+            var __workflow_bodybarcodeString = bodybarcodeString == null ? null : WorkflowExpression.Compile(bodybarcodeString);
+            WorkflowExpression.Validate(__workflow_bodybarcodeString, nameof(bodybarcodeString), required: true);
+            var __workflow_bodybarcodeType = bodybarcodeType == null ? null : WorkflowExpression.Compile(bodybarcodeType);
+            WorkflowExpression.Validate(__workflow_bodybarcodeType, nameof(bodybarcodeType), required: true);
+            var __workflow_bodysplitBarcodePage = bodysplitBarcodePage == null ? null : WorkflowExpression.Compile(bodysplitBarcodePage);
+            WorkflowExpression.Validate(__workflow_bodysplitBarcodePage, nameof(bodysplitBarcodePage), required: true);
+            var __workflow_bodydocumentname = bodydocumentname == null ? null : WorkflowExpression.Compile(bodydocumentname);
+            WorkflowExpression.Validate(__workflow_bodydocumentname, nameof(bodydocumentname), required: false);
+            var __workflow_bodycombinePagesWithSameConsecutiveBarcodes = bodycombinePagesWithSameConsecutiveBarcodes == null ? null : WorkflowExpression.Compile(bodycombinePagesWithSameConsecutiveBarcodes);
+            WorkflowExpression.Validate(__workflow_bodycombinePagesWithSameConsecutiveBarcodes, nameof(bodycombinePagesWithSameConsecutiveBarcodes), required: false);
+            var __workflow_bodypdfRenderDpi = bodypdfRenderDpi == null ? null : WorkflowExpression.Compile(bodypdfRenderDpi);
+            WorkflowExpression.Validate(__workflow_bodypdfRenderDpi, nameof(bodypdfRenderDpi), required: false);
+            var __workflow_bodyisAsync = bodyisAsync == null ? null : WorkflowExpression.Compile(bodyisAsync);
+            WorkflowExpression.Validate(__workflow_bodyisAsync, nameof(bodyisAsync), required: false);
             return new DeferredBodyAction<SplitDocByBarcodeV1Response>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/SplitPdfByBarcode";
@@ -722,12 +730,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["docContent"] = ExpressionConverter.ConvertO(bodydocContent);
+                body["docContent"] = ExpressionConverter.ConvertO(__workflow_bodydocContent);
                 var documentObject = new JObject();
                 var documentObjectpropCount = 0;
-                if (bodydocumentname != null)
+                if (__workflow_bodydocumentname != null)
                 {
-                    documentObject["Name"] = ExpressionConverter.ConvertO(bodydocumentname);
+                    documentObject["Name"] = ExpressionConverter.ConvertO(__workflow_bodydocumentname);
                     documentObjectpropCount++;
                 }
 
@@ -738,18 +746,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
                 }
 
                 bodypropCount++;
-                body["barcodeFilter"] = ExpressionConverter.ConvertO(bodybarcodeFilter);
+                body["barcodeFilter"] = ExpressionConverter.ConvertO(__workflow_bodybarcodeFilter);
                 bodypropCount++;
-                body["barcodeString"] = ExpressionConverter.ConvertO(bodybarcodeString);
+                body["barcodeString"] = ExpressionConverter.ConvertO(__workflow_bodybarcodeString);
                 bodypropCount++;
-                body["barcodeType"] = ExpressionConverter.ConvertO(bodybarcodeType);
+                body["barcodeType"] = ExpressionConverter.ConvertO(__workflow_bodybarcodeType);
                 bodypropCount++;
-                body["splitBarcodePage"] = ExpressionConverter.ConvertO(bodysplitBarcodePage);
-                if (bodycombinePagesWithSameConsecutiveBarcodes != null)
+                body["splitBarcodePage"] = ExpressionConverter.ConvertO(__workflow_bodysplitBarcodePage);
+                if (__workflow_bodycombinePagesWithSameConsecutiveBarcodes != null)
                 {
-                    if (bodycombinePagesWithSameConsecutiveBarcodes != null)
+                    if (__workflow_bodycombinePagesWithSameConsecutiveBarcodes != null)
                     {
-                        body["combinePagesWithSameConsecutiveBarcodes"] = ExpressionConverter.ConvertO(bodycombinePagesWithSameConsecutiveBarcodes);
+                        body["combinePagesWithSameConsecutiveBarcodes"] = ExpressionConverter.ConvertO(__workflow_bodycombinePagesWithSameConsecutiveBarcodes);
                         bodypropCount++;
                     }
 
@@ -761,11 +769,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
                     bodypropCount++;
                 }
 
-                if (bodypdfRenderDpi != null)
+                if (__workflow_bodypdfRenderDpi != null)
                 {
-                    if (bodypdfRenderDpi != null)
+                    if (__workflow_bodypdfRenderDpi != null)
                     {
-                        body["pdfRenderDpi"] = ExpressionConverter.ConvertO(bodypdfRenderDpi);
+                        body["pdfRenderDpi"] = ExpressionConverter.ConvertO(__workflow_bodypdfRenderDpi);
                         bodypropCount++;
                     }
 
@@ -777,11 +785,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
                     bodypropCount++;
                 }
 
-                if (bodyisAsync != null)
+                if (__workflow_bodyisAsync != null)
                 {
-                    if (bodyisAsync != null)
+                    if (__workflow_bodyisAsync != null)
                     {
-                        body["isAsync"] = ExpressionConverter.ConvertO(bodyisAsync);
+                        body["isAsync"] = ExpressionConverter.ConvertO(__workflow_bodyisAsync);
                         bodypropCount++;
                     }
 

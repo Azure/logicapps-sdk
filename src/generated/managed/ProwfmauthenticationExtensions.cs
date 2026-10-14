@@ -1,30 +1,26 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prowfmauthentication
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class ProwfmauthenticationActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "prowfmauthentication")]
-        [WorkflowExpressionFactory(nameof(__BuildGetAccessToken))]
-        public IBodyWorkflowAction<GetAccessTokenResponse> GetAccessToken([WorkflowExpression] Func<string> bodyusername, [WorkflowExpression] Func<string> bodypassword, [WorkflowExpression] Func<string> bodyclientId, [WorkflowExpression] Func<string> bodyclientSecret)
+        public IBodyWorkflowAction<GetAccessTokenResponse> GetAccessToken(Expression<Func<string>> bodyusername, Expression<Func<string>> bodypassword, Expression<Func<string>> bodyclientId, Expression<Func<string>> bodyclientSecret)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetAccessTokenResponse> __BuildGetAccessToken(WorkflowExpression<string> bodyusername, WorkflowExpression<string> bodypassword, WorkflowExpression<string> bodyclientId, WorkflowExpression<string> bodyclientSecret)
-        {
-            WorkflowExpression.Validate(bodyusername, nameof(bodyusername), required: true);
-            WorkflowExpression.Validate(bodypassword, nameof(bodypassword), required: true);
-            WorkflowExpression.Validate(bodyclientId, nameof(bodyclientId), required: true);
-            WorkflowExpression.Validate(bodyclientSecret, nameof(bodyclientSecret), required: true);
+            var __workflow_bodyusername = bodyusername == null ? null : WorkflowExpression.Compile(bodyusername);
+            WorkflowExpression.Validate(__workflow_bodyusername, nameof(bodyusername), required: true);
+            var __workflow_bodypassword = bodypassword == null ? null : WorkflowExpression.Compile(bodypassword);
+            WorkflowExpression.Validate(__workflow_bodypassword, nameof(bodypassword), required: true);
+            var __workflow_bodyclientId = bodyclientId == null ? null : WorkflowExpression.Compile(bodyclientId);
+            WorkflowExpression.Validate(__workflow_bodyclientId, nameof(bodyclientId), required: true);
+            var __workflow_bodyclientSecret = bodyclientSecret == null ? null : WorkflowExpression.Compile(bodyclientSecret);
+            WorkflowExpression.Validate(__workflow_bodyclientSecret, nameof(bodyclientSecret), required: true);
             return new DeferredBodyAction<GetAccessTokenResponse>(() =>
             {
                 var apiCallPath = "/api/authentication/access_token";
@@ -35,13 +31,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prowfmauthentication
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["username"] = ExpressionConverter.ConvertO(bodyusername);
+                body["username"] = ExpressionConverter.ConvertO(__workflow_bodyusername);
                 bodypropCount++;
-                body["password"] = ExpressionConverter.ConvertO(bodypassword);
+                body["password"] = ExpressionConverter.ConvertO(__workflow_bodypassword);
                 bodypropCount++;
-                body["client_id"] = ExpressionConverter.ConvertO(bodyclientId);
+                body["client_id"] = ExpressionConverter.ConvertO(__workflow_bodyclientId);
                 bodypropCount++;
-                body["client_secret"] = ExpressionConverter.ConvertO(bodyclientSecret);
+                body["client_secret"] = ExpressionConverter.ConvertO(__workflow_bodyclientSecret);
                 body["grant_type"] = "password";
                 bodypropCount++;
                 body["auth_chain"] = "OAuthLdapService";

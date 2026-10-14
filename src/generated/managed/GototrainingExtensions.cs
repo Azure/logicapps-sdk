@@ -1,30 +1,23 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gototraining
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class GototrainingActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gototraining")]
-        [WorkflowExpressionFactory(nameof(__BuildGetTraining))]
-        public IBodyWorkflowAction<Training> GetTraining([WorkflowExpression] Func<string> trainingid)
+        public IBodyWorkflowAction<Training> GetTraining(Expression<Func<string>> trainingid)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Training> __BuildGetTraining(WorkflowExpression<string> trainingid)
-        {
-            WorkflowExpression.Validate(trainingid, nameof(trainingid), required: true);
+            var __workflow_trainingid = trainingid == null ? null : WorkflowExpression.Compile(trainingid);
+            WorkflowExpression.Validate(__workflow_trainingid, nameof(trainingid), required: true);
             return new DeferredBodyAction<Training>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/G2T/rest/organizers/organizerKey/trainings/{0}", ExpressionConverter.ConvertWithUrlEncoding(trainingid, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/G2T/rest/organizers/organizerKey/trainings/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_trainingid, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Training>(callPayload);
@@ -32,19 +25,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gototraining
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gototraining")]
-        [WorkflowExpressionFactory(nameof(__BuildListRegistrations))]
-        public IBodyWorkflowAction<Registrant[]> ListRegistrations([WorkflowExpression] Func<string> trainingid)
+        public IBodyWorkflowAction<Registrant[]> ListRegistrations(Expression<Func<string>> trainingid)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Registrant[]> __BuildListRegistrations(WorkflowExpression<string> trainingid)
-        {
-            WorkflowExpression.Validate(trainingid, nameof(trainingid), required: true);
+            var __workflow_trainingid = trainingid == null ? null : WorkflowExpression.Compile(trainingid);
+            WorkflowExpression.Validate(__workflow_trainingid, nameof(trainingid), required: true);
             return new DeferredBodyAction<Registrant[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/G2T/rest/organizers/organizerKey/trainings/{0}/registrants", ExpressionConverter.ConvertWithUrlEncoding(trainingid, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/G2T/rest/organizers/organizerKey/trainings/{0}/registrants", ExpressionConverter.ConvertWithUrlEncoding(__workflow_trainingid, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Registrant[]>(callPayload);
@@ -52,32 +39,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gototraining
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gototraining")]
-        [WorkflowExpressionFactory(nameof(__BuildAddRegistrant))]
-        public IBodyWorkflowAction<AddRegistrantResponse> AddRegistrant([WorkflowExpression] Func<string> trainingid, [WorkflowExpression] Func<string> bodyregistrantEmail, [WorkflowExpression] Func<string> bodyfirstName, [WorkflowExpression] Func<string> bodylastName)
+        public IBodyWorkflowAction<AddRegistrantResponse> AddRegistrant(Expression<Func<string>> trainingid, Expression<Func<string>> bodyregistrantEmail, Expression<Func<string>> bodyfirstName, Expression<Func<string>> bodylastName)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AddRegistrantResponse> __BuildAddRegistrant(WorkflowExpression<string> trainingid, WorkflowExpression<string> bodyregistrantEmail, WorkflowExpression<string> bodyfirstName, WorkflowExpression<string> bodylastName)
-        {
-            WorkflowExpression.Validate(trainingid, nameof(trainingid), required: true);
-            WorkflowExpression.Validate(bodyregistrantEmail, nameof(bodyregistrantEmail), required: true);
-            WorkflowExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: true);
-            WorkflowExpression.Validate(bodylastName, nameof(bodylastName), required: true);
+            var __workflow_trainingid = trainingid == null ? null : WorkflowExpression.Compile(trainingid);
+            WorkflowExpression.Validate(__workflow_trainingid, nameof(trainingid), required: true);
+            var __workflow_bodyregistrantEmail = bodyregistrantEmail == null ? null : WorkflowExpression.Compile(bodyregistrantEmail);
+            WorkflowExpression.Validate(__workflow_bodyregistrantEmail, nameof(bodyregistrantEmail), required: true);
+            var __workflow_bodyfirstName = bodyfirstName == null ? null : WorkflowExpression.Compile(bodyfirstName);
+            WorkflowExpression.Validate(__workflow_bodyfirstName, nameof(bodyfirstName), required: true);
+            var __workflow_bodylastName = bodylastName == null ? null : WorkflowExpression.Compile(bodylastName);
+            WorkflowExpression.Validate(__workflow_bodylastName, nameof(bodylastName), required: true);
             return new DeferredBodyAction<AddRegistrantResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/G2T/rest/organizers/organizerKey/trainings/{0}/registrants", ExpressionConverter.ConvertWithUrlEncoding(trainingid, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/G2T/rest/organizers/organizerKey/trainings/{0}/registrants", ExpressionConverter.ConvertWithUrlEncoding(__workflow_trainingid, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["email"] = ExpressionConverter.ConvertO(bodyregistrantEmail);
+                body["email"] = ExpressionConverter.ConvertO(__workflow_bodyregistrantEmail);
                 bodypropCount++;
-                body["givenName"] = ExpressionConverter.ConvertO(bodyfirstName);
+                body["givenName"] = ExpressionConverter.ConvertO(__workflow_bodyfirstName);
                 bodypropCount++;
-                body["surname"] = ExpressionConverter.ConvertO(bodylastName);
+                body["surname"] = ExpressionConverter.ConvertO(__workflow_bodylastName);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -88,20 +72,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gototraining
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gototraining")]
-        [WorkflowExpressionFactory(nameof(__BuildGetRegistrant))]
-        public IBodyWorkflowAction<Registrant> GetRegistrant([WorkflowExpression] Func<string> trainingid, [WorkflowExpression] Func<string> registrantKey)
+        public IBodyWorkflowAction<Registrant> GetRegistrant(Expression<Func<string>> trainingid, Expression<Func<string>> registrantKey)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Registrant> __BuildGetRegistrant(WorkflowExpression<string> trainingid, WorkflowExpression<string> registrantKey)
-        {
-            WorkflowExpression.Validate(trainingid, nameof(trainingid), required: true);
-            WorkflowExpression.Validate(registrantKey, nameof(registrantKey), required: true);
+            var __workflow_trainingid = trainingid == null ? null : WorkflowExpression.Compile(trainingid);
+            WorkflowExpression.Validate(__workflow_trainingid, nameof(trainingid), required: true);
+            var __workflow_registrantKey = registrantKey == null ? null : WorkflowExpression.Compile(registrantKey);
+            WorkflowExpression.Validate(__workflow_registrantKey, nameof(registrantKey), required: true);
             return new DeferredBodyAction<Registrant>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/G2T/rest/organizers/organizerKey/trainings/{0}/registrants/{1}", ExpressionConverter.ConvertWithUrlEncoding(trainingid, 1), ExpressionConverter.ConvertWithUrlEncoding(registrantKey, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/G2T/rest/organizers/organizerKey/trainings/{0}/registrants/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_trainingid, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_registrantKey, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Registrant>(callPayload);

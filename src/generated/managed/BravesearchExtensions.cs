@@ -1,308 +1,319 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class BravesearchActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bravesearch")]
-        [WorkflowExpressionFactory(nameof(__BuildWebSearchGet))]
-        public IBodyWorkflowAction<WebSearchGetResponse> WebSearchGet([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<cacheControlInput> cacheControl = null, [WorkflowExpression] Func<string> userAgent = null, [WorkflowExpression] Func<string> xLocLat = null, [WorkflowExpression] Func<string> xLocLong = null, [WorkflowExpression] Func<string> xLocTimezone = null, [WorkflowExpression] Func<string> xLocCity = null, [WorkflowExpression] Func<string> xLocState = null, [WorkflowExpression] Func<string> xLocStateName = null, [WorkflowExpression] Func<string> xLocCountry = null, [WorkflowExpression] Func<string> xLocPostalCode = null, [WorkflowExpression] Func<countryInput> country = null, [WorkflowExpression] Func<searchLangInput> searchLang = null, [WorkflowExpression] Func<uiLangInput> uiLang = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<safesearchInput> safesearch = null, [WorkflowExpression] Func<string> freshness = null, [WorkflowExpression] Func<bool> textDecorations = null, [WorkflowExpression] Func<bool> spellcheck = null, [WorkflowExpression] Func<string> resultFilter = null, [WorkflowExpression] Func<string> gogglesId = null, [WorkflowExpression] Func<string> units = null, [WorkflowExpression] Func<bool> extraSnippets = null, [WorkflowExpression] Func<bool> summary = null)
+        public IBodyWorkflowAction<WebSearchGetResponse> WebSearchGet(Expression<Func<string>> q, Expression<Func<cacheControlInput>> cacheControl = null, Expression<Func<string>> userAgent = null, Expression<Func<string>> xLocLat = null, Expression<Func<string>> xLocLong = null, Expression<Func<string>> xLocTimezone = null, Expression<Func<string>> xLocCity = null, Expression<Func<string>> xLocState = null, Expression<Func<string>> xLocStateName = null, Expression<Func<string>> xLocCountry = null, Expression<Func<string>> xLocPostalCode = null, Expression<Func<countryInput>> country = null, Expression<Func<searchLangInput>> searchLang = null, Expression<Func<uiLangInput>> uiLang = null, Expression<Func<int>> count = null, Expression<Func<int>> offset = null, Expression<Func<safesearchInput>> safesearch = null, Expression<Func<string>> freshness = null, Expression<Func<bool>> textDecorations = null, Expression<Func<bool>> spellcheck = null, Expression<Func<string>> resultFilter = null, Expression<Func<string>> gogglesId = null, Expression<Func<string>> units = null, Expression<Func<bool>> extraSnippets = null, Expression<Func<bool>> summary = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<WebSearchGetResponse> __BuildWebSearchGet(WorkflowExpression<string> q, WorkflowExpression<cacheControlInput> cacheControl = null, WorkflowExpression<string> userAgent = null, WorkflowExpression<string> xLocLat = null, WorkflowExpression<string> xLocLong = null, WorkflowExpression<string> xLocTimezone = null, WorkflowExpression<string> xLocCity = null, WorkflowExpression<string> xLocState = null, WorkflowExpression<string> xLocStateName = null, WorkflowExpression<string> xLocCountry = null, WorkflowExpression<string> xLocPostalCode = null, WorkflowExpression<countryInput> country = null, WorkflowExpression<searchLangInput> searchLang = null, WorkflowExpression<uiLangInput> uiLang = null, WorkflowExpression<int> count = null, WorkflowExpression<int> offset = null, WorkflowExpression<safesearchInput> safesearch = null, WorkflowExpression<string> freshness = null, WorkflowExpression<bool> textDecorations = null, WorkflowExpression<bool> spellcheck = null, WorkflowExpression<string> resultFilter = null, WorkflowExpression<string> gogglesId = null, WorkflowExpression<string> units = null, WorkflowExpression<bool> extraSnippets = null, WorkflowExpression<bool> summary = null)
-        {
-            WorkflowExpression.Validate(q, nameof(q), required: true);
-            WorkflowExpression.Validate(cacheControl, nameof(cacheControl), required: false);
-            WorkflowExpression.Validate(userAgent, nameof(userAgent), required: false);
-            WorkflowExpression.Validate(xLocLat, nameof(xLocLat), required: false);
-            WorkflowExpression.Validate(xLocLong, nameof(xLocLong), required: false);
-            WorkflowExpression.Validate(xLocTimezone, nameof(xLocTimezone), required: false);
-            WorkflowExpression.Validate(xLocCity, nameof(xLocCity), required: false);
-            WorkflowExpression.Validate(xLocState, nameof(xLocState), required: false);
-            WorkflowExpression.Validate(xLocStateName, nameof(xLocStateName), required: false);
-            WorkflowExpression.Validate(xLocCountry, nameof(xLocCountry), required: false);
-            WorkflowExpression.Validate(xLocPostalCode, nameof(xLocPostalCode), required: false);
-            WorkflowExpression.Validate(country, nameof(country), required: false);
-            WorkflowExpression.Validate(searchLang, nameof(searchLang), required: false);
-            WorkflowExpression.Validate(uiLang, nameof(uiLang), required: false);
-            WorkflowExpression.Validate(count, nameof(count), required: false);
-            WorkflowExpression.Validate(offset, nameof(offset), required: false);
-            WorkflowExpression.Validate(safesearch, nameof(safesearch), required: false);
-            WorkflowExpression.Validate(freshness, nameof(freshness), required: false);
-            WorkflowExpression.Validate(textDecorations, nameof(textDecorations), required: false);
-            WorkflowExpression.Validate(spellcheck, nameof(spellcheck), required: false);
-            WorkflowExpression.Validate(resultFilter, nameof(resultFilter), required: false);
-            WorkflowExpression.Validate(gogglesId, nameof(gogglesId), required: false);
-            WorkflowExpression.Validate(units, nameof(units), required: false);
-            WorkflowExpression.Validate(extraSnippets, nameof(extraSnippets), required: false);
-            WorkflowExpression.Validate(summary, nameof(summary), required: false);
+            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
+            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
+            var __workflow_cacheControl = cacheControl == null ? null : WorkflowExpression.Compile(cacheControl);
+            WorkflowExpression.Validate(__workflow_cacheControl, nameof(cacheControl), required: false);
+            var __workflow_userAgent = userAgent == null ? null : WorkflowExpression.Compile(userAgent);
+            WorkflowExpression.Validate(__workflow_userAgent, nameof(userAgent), required: false);
+            var __workflow_xLocLat = xLocLat == null ? null : WorkflowExpression.Compile(xLocLat);
+            WorkflowExpression.Validate(__workflow_xLocLat, nameof(xLocLat), required: false);
+            var __workflow_xLocLong = xLocLong == null ? null : WorkflowExpression.Compile(xLocLong);
+            WorkflowExpression.Validate(__workflow_xLocLong, nameof(xLocLong), required: false);
+            var __workflow_xLocTimezone = xLocTimezone == null ? null : WorkflowExpression.Compile(xLocTimezone);
+            WorkflowExpression.Validate(__workflow_xLocTimezone, nameof(xLocTimezone), required: false);
+            var __workflow_xLocCity = xLocCity == null ? null : WorkflowExpression.Compile(xLocCity);
+            WorkflowExpression.Validate(__workflow_xLocCity, nameof(xLocCity), required: false);
+            var __workflow_xLocState = xLocState == null ? null : WorkflowExpression.Compile(xLocState);
+            WorkflowExpression.Validate(__workflow_xLocState, nameof(xLocState), required: false);
+            var __workflow_xLocStateName = xLocStateName == null ? null : WorkflowExpression.Compile(xLocStateName);
+            WorkflowExpression.Validate(__workflow_xLocStateName, nameof(xLocStateName), required: false);
+            var __workflow_xLocCountry = xLocCountry == null ? null : WorkflowExpression.Compile(xLocCountry);
+            WorkflowExpression.Validate(__workflow_xLocCountry, nameof(xLocCountry), required: false);
+            var __workflow_xLocPostalCode = xLocPostalCode == null ? null : WorkflowExpression.Compile(xLocPostalCode);
+            WorkflowExpression.Validate(__workflow_xLocPostalCode, nameof(xLocPostalCode), required: false);
+            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
+            WorkflowExpression.Validate(__workflow_country, nameof(country), required: false);
+            var __workflow_searchLang = searchLang == null ? null : WorkflowExpression.Compile(searchLang);
+            WorkflowExpression.Validate(__workflow_searchLang, nameof(searchLang), required: false);
+            var __workflow_uiLang = uiLang == null ? null : WorkflowExpression.Compile(uiLang);
+            WorkflowExpression.Validate(__workflow_uiLang, nameof(uiLang), required: false);
+            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
+            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_safesearch = safesearch == null ? null : WorkflowExpression.Compile(safesearch);
+            WorkflowExpression.Validate(__workflow_safesearch, nameof(safesearch), required: false);
+            var __workflow_freshness = freshness == null ? null : WorkflowExpression.Compile(freshness);
+            WorkflowExpression.Validate(__workflow_freshness, nameof(freshness), required: false);
+            var __workflow_textDecorations = textDecorations == null ? null : WorkflowExpression.Compile(textDecorations);
+            WorkflowExpression.Validate(__workflow_textDecorations, nameof(textDecorations), required: false);
+            var __workflow_spellcheck = spellcheck == null ? null : WorkflowExpression.Compile(spellcheck);
+            WorkflowExpression.Validate(__workflow_spellcheck, nameof(spellcheck), required: false);
+            var __workflow_resultFilter = resultFilter == null ? null : WorkflowExpression.Compile(resultFilter);
+            WorkflowExpression.Validate(__workflow_resultFilter, nameof(resultFilter), required: false);
+            var __workflow_gogglesId = gogglesId == null ? null : WorkflowExpression.Compile(gogglesId);
+            WorkflowExpression.Validate(__workflow_gogglesId, nameof(gogglesId), required: false);
+            var __workflow_units = units == null ? null : WorkflowExpression.Compile(units);
+            WorkflowExpression.Validate(__workflow_units, nameof(units), required: false);
+            var __workflow_extraSnippets = extraSnippets == null ? null : WorkflowExpression.Compile(extraSnippets);
+            WorkflowExpression.Validate(__workflow_extraSnippets, nameof(extraSnippets), required: false);
+            var __workflow_summary = summary == null ? null : WorkflowExpression.Compile(summary);
+            WorkflowExpression.Validate(__workflow_summary, nameof(summary), required: false);
             return new DeferredBodyAction<WebSearchGetResponse>(() =>
             {
                 var apiCallPath = "/res/v1/web/search";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
                 callPayload.Queries["country"] = Convert.ToString("US");
-                if (country != null)
-                    callPayload.Queries["country"] = ExpressionConverter.Convert(country);
+                if (__workflow_country != null)
+                    callPayload.Queries["country"] = ExpressionConverter.Convert(__workflow_country);
                 callPayload.Queries["search_lang"] = Convert.ToString("en");
-                if (searchLang != null)
-                    callPayload.Queries["search_lang"] = ExpressionConverter.Convert(searchLang);
+                if (__workflow_searchLang != null)
+                    callPayload.Queries["search_lang"] = ExpressionConverter.Convert(__workflow_searchLang);
                 callPayload.Queries["ui_lang"] = Convert.ToString("en");
-                if (uiLang != null)
-                    callPayload.Queries["ui_lang"] = ExpressionConverter.Convert(uiLang);
-                if (count != null)
-                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-                if (offset != null)
-                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (__workflow_uiLang != null)
+                    callPayload.Queries["ui_lang"] = ExpressionConverter.Convert(__workflow_uiLang);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 callPayload.Queries["safesearch"] = Convert.ToString("strict");
-                if (safesearch != null)
-                    callPayload.Queries["safesearch"] = ExpressionConverter.Convert(safesearch);
-                if (freshness != null)
-                    callPayload.Queries["freshness"] = ExpressionConverter.Convert(freshness);
-                if (textDecorations != null)
-                    callPayload.Queries["text_decorations"] = ExpressionConverter.Convert(textDecorations);
+                if (__workflow_safesearch != null)
+                    callPayload.Queries["safesearch"] = ExpressionConverter.Convert(__workflow_safesearch);
+                if (__workflow_freshness != null)
+                    callPayload.Queries["freshness"] = ExpressionConverter.Convert(__workflow_freshness);
+                if (__workflow_textDecorations != null)
+                    callPayload.Queries["text_decorations"] = ExpressionConverter.Convert(__workflow_textDecorations);
                 callPayload.Queries["spellcheck"] = Convert.ToString(true);
-                if (spellcheck != null)
-                    callPayload.Queries["spellcheck"] = ExpressionConverter.Convert(spellcheck);
-                if (resultFilter != null)
-                    callPayload.Queries["result_filter"] = ExpressionConverter.Convert(resultFilter);
-                if (gogglesId != null)
-                    callPayload.Queries["goggles_id"] = ExpressionConverter.Convert(gogglesId);
-                if (units != null)
-                    callPayload.Queries["units"] = ExpressionConverter.Convert(units);
-                if (extraSnippets != null)
-                    callPayload.Queries["extra_snippets"] = ExpressionConverter.Convert(extraSnippets);
-                if (summary != null)
-                    callPayload.Queries["summary"] = ExpressionConverter.Convert(summary);
+                if (__workflow_spellcheck != null)
+                    callPayload.Queries["spellcheck"] = ExpressionConverter.Convert(__workflow_spellcheck);
+                if (__workflow_resultFilter != null)
+                    callPayload.Queries["result_filter"] = ExpressionConverter.Convert(__workflow_resultFilter);
+                if (__workflow_gogglesId != null)
+                    callPayload.Queries["goggles_id"] = ExpressionConverter.Convert(__workflow_gogglesId);
+                if (__workflow_units != null)
+                    callPayload.Queries["units"] = ExpressionConverter.Convert(__workflow_units);
+                if (__workflow_extraSnippets != null)
+                    callPayload.Queries["extra_snippets"] = ExpressionConverter.Convert(__workflow_extraSnippets);
+                if (__workflow_summary != null)
+                    callPayload.Queries["summary"] = ExpressionConverter.Convert(__workflow_summary);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                if (cacheControl != null)
-                    callPayload.Headers["Cache-Control"] = ExpressionConverter.Convert(cacheControl);
-                if (userAgent != null)
-                    callPayload.Headers["User-Agent"] = ExpressionConverter.Convert(userAgent);
-                if (xLocLat != null)
-                    callPayload.Headers["X-Loc-Lat"] = ExpressionConverter.Convert(xLocLat);
-                if (xLocLong != null)
-                    callPayload.Headers["X-Loc-Long"] = ExpressionConverter.Convert(xLocLong);
-                if (xLocTimezone != null)
-                    callPayload.Headers["X-Loc-Timezone"] = ExpressionConverter.Convert(xLocTimezone);
-                if (xLocCity != null)
-                    callPayload.Headers["X-Loc-City"] = ExpressionConverter.Convert(xLocCity);
-                if (xLocState != null)
-                    callPayload.Headers["X-Loc-State"] = ExpressionConverter.Convert(xLocState);
-                if (xLocStateName != null)
-                    callPayload.Headers["X-Loc-State-Name"] = ExpressionConverter.Convert(xLocStateName);
-                if (xLocCountry != null)
-                    callPayload.Headers["X-Loc-Country"] = ExpressionConverter.Convert(xLocCountry);
-                if (xLocPostalCode != null)
-                    callPayload.Headers["X-Loc-Postal-Code"] = ExpressionConverter.Convert(xLocPostalCode);
+                if (__workflow_cacheControl != null)
+                    callPayload.Headers["Cache-Control"] = ExpressionConverter.Convert(__workflow_cacheControl);
+                if (__workflow_userAgent != null)
+                    callPayload.Headers["User-Agent"] = ExpressionConverter.Convert(__workflow_userAgent);
+                if (__workflow_xLocLat != null)
+                    callPayload.Headers["X-Loc-Lat"] = ExpressionConverter.Convert(__workflow_xLocLat);
+                if (__workflow_xLocLong != null)
+                    callPayload.Headers["X-Loc-Long"] = ExpressionConverter.Convert(__workflow_xLocLong);
+                if (__workflow_xLocTimezone != null)
+                    callPayload.Headers["X-Loc-Timezone"] = ExpressionConverter.Convert(__workflow_xLocTimezone);
+                if (__workflow_xLocCity != null)
+                    callPayload.Headers["X-Loc-City"] = ExpressionConverter.Convert(__workflow_xLocCity);
+                if (__workflow_xLocState != null)
+                    callPayload.Headers["X-Loc-State"] = ExpressionConverter.Convert(__workflow_xLocState);
+                if (__workflow_xLocStateName != null)
+                    callPayload.Headers["X-Loc-State-Name"] = ExpressionConverter.Convert(__workflow_xLocStateName);
+                if (__workflow_xLocCountry != null)
+                    callPayload.Headers["X-Loc-Country"] = ExpressionConverter.Convert(__workflow_xLocCountry);
+                if (__workflow_xLocPostalCode != null)
+                    callPayload.Headers["X-Loc-Postal-Code"] = ExpressionConverter.Convert(__workflow_xLocPostalCode);
                 return new ApiConnectionAction<WebSearchGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bravesearch")]
-        [WorkflowExpressionFactory(nameof(__BuildImageSearchGet))]
-        public IBodyWorkflowAction<ImageSearchGetResponse> ImageSearchGet([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<countryInput> country = null, [WorkflowExpression] Func<searchLangInput> searchLang = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<safesearchInput> safesearch = null, [WorkflowExpression] Func<bool> spellcheck = null)
+        public IBodyWorkflowAction<ImageSearchGetResponse> ImageSearchGet(Expression<Func<string>> q, Expression<Func<countryInput>> country = null, Expression<Func<searchLangInput>> searchLang = null, Expression<Func<int>> count = null, Expression<Func<safesearchInput>> safesearch = null, Expression<Func<bool>> spellcheck = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ImageSearchGetResponse> __BuildImageSearchGet(WorkflowExpression<string> q, WorkflowExpression<countryInput> country = null, WorkflowExpression<searchLangInput> searchLang = null, WorkflowExpression<int> count = null, WorkflowExpression<safesearchInput> safesearch = null, WorkflowExpression<bool> spellcheck = null)
-        {
-            WorkflowExpression.Validate(q, nameof(q), required: true);
-            WorkflowExpression.Validate(country, nameof(country), required: false);
-            WorkflowExpression.Validate(searchLang, nameof(searchLang), required: false);
-            WorkflowExpression.Validate(count, nameof(count), required: false);
-            WorkflowExpression.Validate(safesearch, nameof(safesearch), required: false);
-            WorkflowExpression.Validate(spellcheck, nameof(spellcheck), required: false);
+            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
+            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
+            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
+            WorkflowExpression.Validate(__workflow_country, nameof(country), required: false);
+            var __workflow_searchLang = searchLang == null ? null : WorkflowExpression.Compile(searchLang);
+            WorkflowExpression.Validate(__workflow_searchLang, nameof(searchLang), required: false);
+            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
+            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
+            var __workflow_safesearch = safesearch == null ? null : WorkflowExpression.Compile(safesearch);
+            WorkflowExpression.Validate(__workflow_safesearch, nameof(safesearch), required: false);
+            var __workflow_spellcheck = spellcheck == null ? null : WorkflowExpression.Compile(spellcheck);
+            WorkflowExpression.Validate(__workflow_spellcheck, nameof(spellcheck), required: false);
             return new DeferredBodyAction<ImageSearchGetResponse>(() =>
             {
                 var apiCallPath = "/res/v1/images/search";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
                 callPayload.Queries["country"] = Convert.ToString("US");
-                if (country != null)
-                    callPayload.Queries["country"] = ExpressionConverter.Convert(country);
+                if (__workflow_country != null)
+                    callPayload.Queries["country"] = ExpressionConverter.Convert(__workflow_country);
                 callPayload.Queries["search_lang"] = Convert.ToString("en");
-                if (searchLang != null)
-                    callPayload.Queries["search_lang"] = ExpressionConverter.Convert(searchLang);
-                if (count != null)
-                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                if (__workflow_searchLang != null)
+                    callPayload.Queries["search_lang"] = ExpressionConverter.Convert(__workflow_searchLang);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
                 callPayload.Queries["safesearch"] = Convert.ToString("strict");
-                if (safesearch != null)
-                    callPayload.Queries["safesearch"] = ExpressionConverter.Convert(safesearch);
+                if (__workflow_safesearch != null)
+                    callPayload.Queries["safesearch"] = ExpressionConverter.Convert(__workflow_safesearch);
                 callPayload.Queries["spellcheck"] = Convert.ToString(true);
-                if (spellcheck != null)
-                    callPayload.Queries["spellcheck"] = ExpressionConverter.Convert(spellcheck);
+                if (__workflow_spellcheck != null)
+                    callPayload.Queries["spellcheck"] = ExpressionConverter.Convert(__workflow_spellcheck);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<ImageSearchGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bravesearch")]
-        [WorkflowExpressionFactory(nameof(__BuildVideoSearchGet))]
-        public IBodyWorkflowAction<VideoSearchGetResponse> VideoSearchGet([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<countryInput> country = null, [WorkflowExpression] Func<searchLangInput> searchLang = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<safesearchInput> safesearch = null, [WorkflowExpression] Func<bool> spellcheck = null)
+        public IBodyWorkflowAction<VideoSearchGetResponse> VideoSearchGet(Expression<Func<string>> q, Expression<Func<countryInput>> country = null, Expression<Func<searchLangInput>> searchLang = null, Expression<Func<int>> count = null, Expression<Func<safesearchInput>> safesearch = null, Expression<Func<bool>> spellcheck = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<VideoSearchGetResponse> __BuildVideoSearchGet(WorkflowExpression<string> q, WorkflowExpression<countryInput> country = null, WorkflowExpression<searchLangInput> searchLang = null, WorkflowExpression<int> count = null, WorkflowExpression<safesearchInput> safesearch = null, WorkflowExpression<bool> spellcheck = null)
-        {
-            WorkflowExpression.Validate(q, nameof(q), required: true);
-            WorkflowExpression.Validate(country, nameof(country), required: false);
-            WorkflowExpression.Validate(searchLang, nameof(searchLang), required: false);
-            WorkflowExpression.Validate(count, nameof(count), required: false);
-            WorkflowExpression.Validate(safesearch, nameof(safesearch), required: false);
-            WorkflowExpression.Validate(spellcheck, nameof(spellcheck), required: false);
+            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
+            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
+            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
+            WorkflowExpression.Validate(__workflow_country, nameof(country), required: false);
+            var __workflow_searchLang = searchLang == null ? null : WorkflowExpression.Compile(searchLang);
+            WorkflowExpression.Validate(__workflow_searchLang, nameof(searchLang), required: false);
+            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
+            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
+            var __workflow_safesearch = safesearch == null ? null : WorkflowExpression.Compile(safesearch);
+            WorkflowExpression.Validate(__workflow_safesearch, nameof(safesearch), required: false);
+            var __workflow_spellcheck = spellcheck == null ? null : WorkflowExpression.Compile(spellcheck);
+            WorkflowExpression.Validate(__workflow_spellcheck, nameof(spellcheck), required: false);
             return new DeferredBodyAction<VideoSearchGetResponse>(() =>
             {
                 var apiCallPath = "/res/v1/videos/search";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
                 callPayload.Queries["country"] = Convert.ToString("US");
-                if (country != null)
-                    callPayload.Queries["country"] = ExpressionConverter.Convert(country);
+                if (__workflow_country != null)
+                    callPayload.Queries["country"] = ExpressionConverter.Convert(__workflow_country);
                 callPayload.Queries["search_lang"] = Convert.ToString("en");
-                if (searchLang != null)
-                    callPayload.Queries["search_lang"] = ExpressionConverter.Convert(searchLang);
-                if (count != null)
-                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                if (__workflow_searchLang != null)
+                    callPayload.Queries["search_lang"] = ExpressionConverter.Convert(__workflow_searchLang);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
                 callPayload.Queries["safesearch"] = Convert.ToString("strict");
-                if (safesearch != null)
-                    callPayload.Queries["safesearch"] = ExpressionConverter.Convert(safesearch);
+                if (__workflow_safesearch != null)
+                    callPayload.Queries["safesearch"] = ExpressionConverter.Convert(__workflow_safesearch);
                 callPayload.Queries["spellcheck"] = Convert.ToString(true);
-                if (spellcheck != null)
-                    callPayload.Queries["spellcheck"] = ExpressionConverter.Convert(spellcheck);
+                if (__workflow_spellcheck != null)
+                    callPayload.Queries["spellcheck"] = ExpressionConverter.Convert(__workflow_spellcheck);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<VideoSearchGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bravesearch")]
-        [WorkflowExpressionFactory(nameof(__BuildNewsSearchGet))]
-        public IBodyWorkflowAction<NewsSearchGetResponse> NewsSearchGet([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<countryInput> country = null, [WorkflowExpression] Func<searchLangInput> searchLang = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<safesearchInput> safesearch = null, [WorkflowExpression] Func<bool> spellcheck = null, [WorkflowExpression] Func<freshnessInput> freshness = null, [WorkflowExpression] Func<bool> extraSnippets = null)
+        public IBodyWorkflowAction<NewsSearchGetResponse> NewsSearchGet(Expression<Func<string>> q, Expression<Func<countryInput>> country = null, Expression<Func<searchLangInput>> searchLang = null, Expression<Func<int>> count = null, Expression<Func<int>> offset = null, Expression<Func<safesearchInput>> safesearch = null, Expression<Func<bool>> spellcheck = null, Expression<Func<freshnessInput>> freshness = null, Expression<Func<bool>> extraSnippets = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<NewsSearchGetResponse> __BuildNewsSearchGet(WorkflowExpression<string> q, WorkflowExpression<countryInput> country = null, WorkflowExpression<searchLangInput> searchLang = null, WorkflowExpression<int> count = null, WorkflowExpression<int> offset = null, WorkflowExpression<safesearchInput> safesearch = null, WorkflowExpression<bool> spellcheck = null, WorkflowExpression<freshnessInput> freshness = null, WorkflowExpression<bool> extraSnippets = null)
-        {
-            WorkflowExpression.Validate(q, nameof(q), required: true);
-            WorkflowExpression.Validate(country, nameof(country), required: false);
-            WorkflowExpression.Validate(searchLang, nameof(searchLang), required: false);
-            WorkflowExpression.Validate(count, nameof(count), required: false);
-            WorkflowExpression.Validate(offset, nameof(offset), required: false);
-            WorkflowExpression.Validate(safesearch, nameof(safesearch), required: false);
-            WorkflowExpression.Validate(spellcheck, nameof(spellcheck), required: false);
-            WorkflowExpression.Validate(freshness, nameof(freshness), required: false);
-            WorkflowExpression.Validate(extraSnippets, nameof(extraSnippets), required: false);
+            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
+            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
+            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
+            WorkflowExpression.Validate(__workflow_country, nameof(country), required: false);
+            var __workflow_searchLang = searchLang == null ? null : WorkflowExpression.Compile(searchLang);
+            WorkflowExpression.Validate(__workflow_searchLang, nameof(searchLang), required: false);
+            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
+            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_safesearch = safesearch == null ? null : WorkflowExpression.Compile(safesearch);
+            WorkflowExpression.Validate(__workflow_safesearch, nameof(safesearch), required: false);
+            var __workflow_spellcheck = spellcheck == null ? null : WorkflowExpression.Compile(spellcheck);
+            WorkflowExpression.Validate(__workflow_spellcheck, nameof(spellcheck), required: false);
+            var __workflow_freshness = freshness == null ? null : WorkflowExpression.Compile(freshness);
+            WorkflowExpression.Validate(__workflow_freshness, nameof(freshness), required: false);
+            var __workflow_extraSnippets = extraSnippets == null ? null : WorkflowExpression.Compile(extraSnippets);
+            WorkflowExpression.Validate(__workflow_extraSnippets, nameof(extraSnippets), required: false);
             return new DeferredBodyAction<NewsSearchGetResponse>(() =>
             {
                 var apiCallPath = "/res/v1/news/search";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
                 callPayload.Queries["country"] = Convert.ToString("US");
-                if (country != null)
-                    callPayload.Queries["country"] = ExpressionConverter.Convert(country);
+                if (__workflow_country != null)
+                    callPayload.Queries["country"] = ExpressionConverter.Convert(__workflow_country);
                 callPayload.Queries["search_lang"] = Convert.ToString("en");
-                if (searchLang != null)
-                    callPayload.Queries["search_lang"] = ExpressionConverter.Convert(searchLang);
-                if (count != null)
-                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-                if (offset != null)
-                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (__workflow_searchLang != null)
+                    callPayload.Queries["search_lang"] = ExpressionConverter.Convert(__workflow_searchLang);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 callPayload.Queries["safesearch"] = Convert.ToString("strict");
-                if (safesearch != null)
-                    callPayload.Queries["safesearch"] = ExpressionConverter.Convert(safesearch);
+                if (__workflow_safesearch != null)
+                    callPayload.Queries["safesearch"] = ExpressionConverter.Convert(__workflow_safesearch);
                 callPayload.Queries["spellcheck"] = Convert.ToString(true);
-                if (spellcheck != null)
-                    callPayload.Queries["spellcheck"] = ExpressionConverter.Convert(spellcheck);
-                if (freshness != null)
-                    callPayload.Queries["freshness"] = ExpressionConverter.Convert(freshness);
-                if (extraSnippets != null)
-                    callPayload.Queries["extra_snippets"] = ExpressionConverter.Convert(extraSnippets);
+                if (__workflow_spellcheck != null)
+                    callPayload.Queries["spellcheck"] = ExpressionConverter.Convert(__workflow_spellcheck);
+                if (__workflow_freshness != null)
+                    callPayload.Queries["freshness"] = ExpressionConverter.Convert(__workflow_freshness);
+                if (__workflow_extraSnippets != null)
+                    callPayload.Queries["extra_snippets"] = ExpressionConverter.Convert(__workflow_extraSnippets);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<NewsSearchGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bravesearch")]
-        [WorkflowExpressionFactory(nameof(__BuildSuggestionSearchGet))]
-        public IBodyWorkflowAction<SuggestionSearchGetResponse> SuggestionSearchGet([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<countryInput> country = null, [WorkflowExpression] Func<langInput> lang = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<bool> rich = null)
+        public IBodyWorkflowAction<SuggestionSearchGetResponse> SuggestionSearchGet(Expression<Func<string>> q, Expression<Func<countryInput>> country = null, Expression<Func<langInput>> lang = null, Expression<Func<int>> count = null, Expression<Func<bool>> rich = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SuggestionSearchGetResponse> __BuildSuggestionSearchGet(WorkflowExpression<string> q, WorkflowExpression<countryInput> country = null, WorkflowExpression<langInput> lang = null, WorkflowExpression<int> count = null, WorkflowExpression<bool> rich = null)
-        {
-            WorkflowExpression.Validate(q, nameof(q), required: true);
-            WorkflowExpression.Validate(country, nameof(country), required: false);
-            WorkflowExpression.Validate(lang, nameof(lang), required: false);
-            WorkflowExpression.Validate(count, nameof(count), required: false);
-            WorkflowExpression.Validate(rich, nameof(rich), required: false);
+            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
+            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
+            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
+            WorkflowExpression.Validate(__workflow_country, nameof(country), required: false);
+            var __workflow_lang = lang == null ? null : WorkflowExpression.Compile(lang);
+            WorkflowExpression.Validate(__workflow_lang, nameof(lang), required: false);
+            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
+            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
+            var __workflow_rich = rich == null ? null : WorkflowExpression.Compile(rich);
+            WorkflowExpression.Validate(__workflow_rich, nameof(rich), required: false);
             return new DeferredBodyAction<SuggestionSearchGetResponse>(() =>
             {
                 var apiCallPath = "/res/v1/suggest/search";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
                 callPayload.Queries["country"] = Convert.ToString("US");
-                if (country != null)
-                    callPayload.Queries["country"] = ExpressionConverter.Convert(country);
+                if (__workflow_country != null)
+                    callPayload.Queries["country"] = ExpressionConverter.Convert(__workflow_country);
                 callPayload.Queries["lang"] = Convert.ToString("en");
-                if (lang != null)
-                    callPayload.Queries["lang"] = ExpressionConverter.Convert(lang);
-                if (count != null)
-                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-                if (rich != null)
-                    callPayload.Queries["rich"] = ExpressionConverter.Convert(rich);
+                if (__workflow_lang != null)
+                    callPayload.Queries["lang"] = ExpressionConverter.Convert(__workflow_lang);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_rich != null)
+                    callPayload.Queries["rich"] = ExpressionConverter.Convert(__workflow_rich);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<SuggestionSearchGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bravesearch")]
-        [WorkflowExpressionFactory(nameof(__BuildSpellcheckSearchGet))]
-        public IBodyWorkflowAction<SpellcheckSearchGetResponse> SpellcheckSearchGet([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<countryInput> country = null, [WorkflowExpression] Func<langInput> lang = null)
+        public IBodyWorkflowAction<SpellcheckSearchGetResponse> SpellcheckSearchGet(Expression<Func<string>> q, Expression<Func<countryInput>> country = null, Expression<Func<langInput>> lang = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SpellcheckSearchGetResponse> __BuildSpellcheckSearchGet(WorkflowExpression<string> q, WorkflowExpression<countryInput> country = null, WorkflowExpression<langInput> lang = null)
-        {
-            WorkflowExpression.Validate(q, nameof(q), required: true);
-            WorkflowExpression.Validate(country, nameof(country), required: false);
-            WorkflowExpression.Validate(lang, nameof(lang), required: false);
+            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
+            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
+            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
+            WorkflowExpression.Validate(__workflow_country, nameof(country), required: false);
+            var __workflow_lang = lang == null ? null : WorkflowExpression.Compile(lang);
+            WorkflowExpression.Validate(__workflow_lang, nameof(lang), required: false);
             return new DeferredBodyAction<SpellcheckSearchGetResponse>(() =>
             {
                 var apiCallPath = "/res/v1/spellcheck/search";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
                 callPayload.Queries["country"] = Convert.ToString("US");
-                if (country != null)
-                    callPayload.Queries["country"] = ExpressionConverter.Convert(country);
+                if (__workflow_country != null)
+                    callPayload.Queries["country"] = ExpressionConverter.Convert(__workflow_country);
                 callPayload.Queries["lang"] = Convert.ToString("en");
-                if (lang != null)
-                    callPayload.Queries["lang"] = ExpressionConverter.Convert(lang);
+                if (__workflow_lang != null)
+                    callPayload.Queries["lang"] = ExpressionConverter.Convert(__workflow_lang);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<SpellcheckSearchGetResponse>(callPayload);
             });

@@ -1,88 +1,92 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class SmartdialogActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
-        [WorkflowExpressionFactory(nameof(__BuildSendMessage))]
-        public IBodyWorkflowAction<SendMessageResponse> SendMessage([WorkflowExpression] Func<string> customerId, [WorkflowExpression] Func<string> serviceId, [WorkflowExpression] Func<string> requestBodysender, [WorkflowExpression] Func<string> requestBodycontent, [WorkflowExpression] Func<requestBodyprotocolInput> requestBodyprotocol, [WorkflowExpression] Func<requestBodyrecipientsInputItem[]> requestBodyrecipients, [WorkflowExpression] Func<string> requestBodysendDateTime = null, [WorkflowExpression] Func<string> requestBodyattachmentUri = null, [WorkflowExpression] Func<string> requestBodycustomerData = null, [WorkflowExpression] Func<bool> requestBodyadMessage = null, [WorkflowExpression] Func<string> requestBodydlrUrl = null, [WorkflowExpression] Func<string> requestBodyrequestId = null)
+        public IBodyWorkflowAction<SendMessageResponse> SendMessage(Expression<Func<string>> customerId, Expression<Func<string>> serviceId, Expression<Func<string>> requestBodysender, Expression<Func<string>> requestBodycontent, Expression<Func<requestBodyprotocolInput>> requestBodyprotocol, Expression<Func<requestBodyrecipientsInputItem[]>> requestBodyrecipients, Expression<Func<string>> requestBodysendDateTime = null, Expression<Func<string>> requestBodyattachmentUri = null, Expression<Func<string>> requestBodycustomerData = null, Expression<Func<bool>> requestBodyadMessage = null, Expression<Func<string>> requestBodydlrUrl = null, Expression<Func<string>> requestBodyrequestId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SendMessageResponse> __BuildSendMessage(WorkflowExpression<string> customerId, WorkflowExpression<string> serviceId, WorkflowExpression<string> requestBodysender, WorkflowExpression<string> requestBodycontent, WorkflowExpression<requestBodyprotocolInput> requestBodyprotocol, WorkflowExpression<requestBodyrecipientsInputItem[]> requestBodyrecipients, WorkflowExpression<string> requestBodysendDateTime = null, WorkflowExpression<string> requestBodyattachmentUri = null, WorkflowExpression<string> requestBodycustomerData = null, WorkflowExpression<bool> requestBodyadMessage = null, WorkflowExpression<string> requestBodydlrUrl = null, WorkflowExpression<string> requestBodyrequestId = null)
-        {
-            WorkflowExpression.Validate(customerId, nameof(customerId), required: true);
-            WorkflowExpression.Validate(serviceId, nameof(serviceId), required: true);
-            WorkflowExpression.Validate(requestBodysender, nameof(requestBodysender), required: true);
-            WorkflowExpression.Validate(requestBodycontent, nameof(requestBodycontent), required: true);
-            WorkflowExpression.Validate(requestBodyprotocol, nameof(requestBodyprotocol), required: true);
-            WorkflowExpression.Validate(requestBodyrecipients, nameof(requestBodyrecipients), required: true);
-            WorkflowExpression.Validate(requestBodysendDateTime, nameof(requestBodysendDateTime), required: false);
-            WorkflowExpression.Validate(requestBodyattachmentUri, nameof(requestBodyattachmentUri), required: false);
-            WorkflowExpression.Validate(requestBodycustomerData, nameof(requestBodycustomerData), required: false);
-            WorkflowExpression.Validate(requestBodyadMessage, nameof(requestBodyadMessage), required: false);
-            WorkflowExpression.Validate(requestBodydlrUrl, nameof(requestBodydlrUrl), required: false);
-            WorkflowExpression.Validate(requestBodyrequestId, nameof(requestBodyrequestId), required: false);
+            var __workflow_customerId = customerId == null ? null : WorkflowExpression.Compile(customerId);
+            WorkflowExpression.Validate(__workflow_customerId, nameof(customerId), required: true);
+            var __workflow_serviceId = serviceId == null ? null : WorkflowExpression.Compile(serviceId);
+            WorkflowExpression.Validate(__workflow_serviceId, nameof(serviceId), required: true);
+            var __workflow_requestBodysender = requestBodysender == null ? null : WorkflowExpression.Compile(requestBodysender);
+            WorkflowExpression.Validate(__workflow_requestBodysender, nameof(requestBodysender), required: true);
+            var __workflow_requestBodycontent = requestBodycontent == null ? null : WorkflowExpression.Compile(requestBodycontent);
+            WorkflowExpression.Validate(__workflow_requestBodycontent, nameof(requestBodycontent), required: true);
+            var __workflow_requestBodyprotocol = requestBodyprotocol == null ? null : WorkflowExpression.Compile(requestBodyprotocol);
+            WorkflowExpression.Validate(__workflow_requestBodyprotocol, nameof(requestBodyprotocol), required: true);
+            var __workflow_requestBodyrecipients = requestBodyrecipients == null ? null : WorkflowExpression.Compile(requestBodyrecipients);
+            WorkflowExpression.Validate(__workflow_requestBodyrecipients, nameof(requestBodyrecipients), required: true);
+            var __workflow_requestBodysendDateTime = requestBodysendDateTime == null ? null : WorkflowExpression.Compile(requestBodysendDateTime);
+            WorkflowExpression.Validate(__workflow_requestBodysendDateTime, nameof(requestBodysendDateTime), required: false);
+            var __workflow_requestBodyattachmentUri = requestBodyattachmentUri == null ? null : WorkflowExpression.Compile(requestBodyattachmentUri);
+            WorkflowExpression.Validate(__workflow_requestBodyattachmentUri, nameof(requestBodyattachmentUri), required: false);
+            var __workflow_requestBodycustomerData = requestBodycustomerData == null ? null : WorkflowExpression.Compile(requestBodycustomerData);
+            WorkflowExpression.Validate(__workflow_requestBodycustomerData, nameof(requestBodycustomerData), required: false);
+            var __workflow_requestBodyadMessage = requestBodyadMessage == null ? null : WorkflowExpression.Compile(requestBodyadMessage);
+            WorkflowExpression.Validate(__workflow_requestBodyadMessage, nameof(requestBodyadMessage), required: false);
+            var __workflow_requestBodydlrUrl = requestBodydlrUrl == null ? null : WorkflowExpression.Compile(requestBodydlrUrl);
+            WorkflowExpression.Validate(__workflow_requestBodydlrUrl, nameof(requestBodydlrUrl), required: false);
+            var __workflow_requestBodyrequestId = requestBodyrequestId == null ? null : WorkflowExpression.Compile(requestBodyrequestId);
+            WorkflowExpression.Validate(__workflow_requestBodyrequestId, nameof(requestBodyrequestId), required: false);
             return new DeferredBodyAction<SendMessageResponse>(() =>
             {
                 var apiCallPath = "/messages";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["Customer-Id"] = ExpressionConverter.Convert(customerId);
-                callPayload.Headers["Service-Id"] = ExpressionConverter.Convert(serviceId);
+                callPayload.Headers["Customer-Id"] = ExpressionConverter.Convert(__workflow_customerId);
+                callPayload.Headers["Service-Id"] = ExpressionConverter.Convert(__workflow_serviceId);
                 var requestBody = new JObject();
                 var requestBodypropCount = 0;
                 requestBodypropCount++;
-                requestBody["Sender"] = ExpressionConverter.ConvertO(requestBodysender);
+                requestBody["Sender"] = ExpressionConverter.ConvertO(__workflow_requestBodysender);
                 requestBodypropCount++;
-                requestBody["Content"] = ExpressionConverter.ConvertO(requestBodycontent);
+                requestBody["Content"] = ExpressionConverter.ConvertO(__workflow_requestBodycontent);
                 requestBodypropCount++;
-                requestBody["Protocol"] = ExpressionConverter.ConvertO(requestBodyprotocol);
-                if (requestBodysendDateTime != null)
+                requestBody["Protocol"] = ExpressionConverter.ConvertO(__workflow_requestBodyprotocol);
+                if (__workflow_requestBodysendDateTime != null)
                 {
-                    requestBody["SendDateTime"] = ExpressionConverter.ConvertO(requestBodysendDateTime);
+                    requestBody["SendDateTime"] = ExpressionConverter.ConvertO(__workflow_requestBodysendDateTime);
                     requestBodypropCount++;
                 }
 
                 requestBodypropCount++;
-                requestBody["Recipients"] = ExpressionConverter.ConvertO(requestBodyrecipients);
-                if (requestBodyattachmentUri != null)
+                requestBody["Recipients"] = ExpressionConverter.ConvertO(__workflow_requestBodyrecipients);
+                if (__workflow_requestBodyattachmentUri != null)
                 {
-                    requestBody["AttachmentUri"] = ExpressionConverter.ConvertO(requestBodyattachmentUri);
+                    requestBody["AttachmentUri"] = ExpressionConverter.ConvertO(__workflow_requestBodyattachmentUri);
                     requestBodypropCount++;
                 }
 
-                if (requestBodycustomerData != null)
+                if (__workflow_requestBodycustomerData != null)
                 {
-                    requestBody["CustomerData"] = ExpressionConverter.ConvertO(requestBodycustomerData);
+                    requestBody["CustomerData"] = ExpressionConverter.ConvertO(__workflow_requestBodycustomerData);
                     requestBodypropCount++;
                 }
 
-                if (requestBodyadMessage != null)
+                if (__workflow_requestBodyadMessage != null)
                 {
-                    requestBody["AdMessage"] = ExpressionConverter.ConvertO(requestBodyadMessage);
+                    requestBody["AdMessage"] = ExpressionConverter.ConvertO(__workflow_requestBodyadMessage);
                     requestBodypropCount++;
                 }
 
-                if (requestBodydlrUrl != null)
+                if (__workflow_requestBodydlrUrl != null)
                 {
-                    requestBody["DlrUrl"] = ExpressionConverter.ConvertO(requestBodydlrUrl);
+                    requestBody["DlrUrl"] = ExpressionConverter.ConvertO(__workflow_requestBodydlrUrl);
                     requestBodypropCount++;
                 }
 
-                if (requestBodyrequestId != null)
+                if (__workflow_requestBodyrequestId != null)
                 {
-                    requestBody["RequestId"] = ExpressionConverter.ConvertO(requestBodyrequestId);
+                    requestBody["RequestId"] = ExpressionConverter.ConvertO(__workflow_requestBodyrequestId);
                     requestBodypropCount++;
                 }
 
@@ -96,78 +100,84 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
-        [WorkflowExpressionFactory(nameof(__BuildSendReplyMessage))]
-        public IBodyWorkflowAction<SendReplyMessageResponse> SendReplyMessage([WorkflowExpression] Func<string> parentMessageId, [WorkflowExpression] Func<string> customerId, [WorkflowExpression] Func<string> serviceId, [WorkflowExpression] Func<string> requestBodysender, [WorkflowExpression] Func<string> requestBodycontent, [WorkflowExpression] Func<requestBodyprotocolInput> requestBodyprotocol, [WorkflowExpression] Func<requestBodyrecipientsInputItem[]> requestBodyrecipients, [WorkflowExpression] Func<string> requestBodysendDateTime = null, [WorkflowExpression] Func<string> requestBodyattachmentUri = null, [WorkflowExpression] Func<string> requestBodycustomerData = null, [WorkflowExpression] Func<bool> requestBodyadMessage = null, [WorkflowExpression] Func<string> requestBodydlrUrl = null, [WorkflowExpression] Func<string> requestBodyrequestId = null)
+        public IBodyWorkflowAction<SendReplyMessageResponse> SendReplyMessage(Expression<Func<string>> parentMessageId, Expression<Func<string>> customerId, Expression<Func<string>> serviceId, Expression<Func<string>> requestBodysender, Expression<Func<string>> requestBodycontent, Expression<Func<requestBodyprotocolInput>> requestBodyprotocol, Expression<Func<requestBodyrecipientsInputItem[]>> requestBodyrecipients, Expression<Func<string>> requestBodysendDateTime = null, Expression<Func<string>> requestBodyattachmentUri = null, Expression<Func<string>> requestBodycustomerData = null, Expression<Func<bool>> requestBodyadMessage = null, Expression<Func<string>> requestBodydlrUrl = null, Expression<Func<string>> requestBodyrequestId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SendReplyMessageResponse> __BuildSendReplyMessage(WorkflowExpression<string> parentMessageId, WorkflowExpression<string> customerId, WorkflowExpression<string> serviceId, WorkflowExpression<string> requestBodysender, WorkflowExpression<string> requestBodycontent, WorkflowExpression<requestBodyprotocolInput> requestBodyprotocol, WorkflowExpression<requestBodyrecipientsInputItem[]> requestBodyrecipients, WorkflowExpression<string> requestBodysendDateTime = null, WorkflowExpression<string> requestBodyattachmentUri = null, WorkflowExpression<string> requestBodycustomerData = null, WorkflowExpression<bool> requestBodyadMessage = null, WorkflowExpression<string> requestBodydlrUrl = null, WorkflowExpression<string> requestBodyrequestId = null)
-        {
-            WorkflowExpression.Validate(parentMessageId, nameof(parentMessageId), required: true);
-            WorkflowExpression.Validate(customerId, nameof(customerId), required: true);
-            WorkflowExpression.Validate(serviceId, nameof(serviceId), required: true);
-            WorkflowExpression.Validate(requestBodysender, nameof(requestBodysender), required: true);
-            WorkflowExpression.Validate(requestBodycontent, nameof(requestBodycontent), required: true);
-            WorkflowExpression.Validate(requestBodyprotocol, nameof(requestBodyprotocol), required: true);
-            WorkflowExpression.Validate(requestBodyrecipients, nameof(requestBodyrecipients), required: true);
-            WorkflowExpression.Validate(requestBodysendDateTime, nameof(requestBodysendDateTime), required: false);
-            WorkflowExpression.Validate(requestBodyattachmentUri, nameof(requestBodyattachmentUri), required: false);
-            WorkflowExpression.Validate(requestBodycustomerData, nameof(requestBodycustomerData), required: false);
-            WorkflowExpression.Validate(requestBodyadMessage, nameof(requestBodyadMessage), required: false);
-            WorkflowExpression.Validate(requestBodydlrUrl, nameof(requestBodydlrUrl), required: false);
-            WorkflowExpression.Validate(requestBodyrequestId, nameof(requestBodyrequestId), required: false);
+            var __workflow_parentMessageId = parentMessageId == null ? null : WorkflowExpression.Compile(parentMessageId);
+            WorkflowExpression.Validate(__workflow_parentMessageId, nameof(parentMessageId), required: true);
+            var __workflow_customerId = customerId == null ? null : WorkflowExpression.Compile(customerId);
+            WorkflowExpression.Validate(__workflow_customerId, nameof(customerId), required: true);
+            var __workflow_serviceId = serviceId == null ? null : WorkflowExpression.Compile(serviceId);
+            WorkflowExpression.Validate(__workflow_serviceId, nameof(serviceId), required: true);
+            var __workflow_requestBodysender = requestBodysender == null ? null : WorkflowExpression.Compile(requestBodysender);
+            WorkflowExpression.Validate(__workflow_requestBodysender, nameof(requestBodysender), required: true);
+            var __workflow_requestBodycontent = requestBodycontent == null ? null : WorkflowExpression.Compile(requestBodycontent);
+            WorkflowExpression.Validate(__workflow_requestBodycontent, nameof(requestBodycontent), required: true);
+            var __workflow_requestBodyprotocol = requestBodyprotocol == null ? null : WorkflowExpression.Compile(requestBodyprotocol);
+            WorkflowExpression.Validate(__workflow_requestBodyprotocol, nameof(requestBodyprotocol), required: true);
+            var __workflow_requestBodyrecipients = requestBodyrecipients == null ? null : WorkflowExpression.Compile(requestBodyrecipients);
+            WorkflowExpression.Validate(__workflow_requestBodyrecipients, nameof(requestBodyrecipients), required: true);
+            var __workflow_requestBodysendDateTime = requestBodysendDateTime == null ? null : WorkflowExpression.Compile(requestBodysendDateTime);
+            WorkflowExpression.Validate(__workflow_requestBodysendDateTime, nameof(requestBodysendDateTime), required: false);
+            var __workflow_requestBodyattachmentUri = requestBodyattachmentUri == null ? null : WorkflowExpression.Compile(requestBodyattachmentUri);
+            WorkflowExpression.Validate(__workflow_requestBodyattachmentUri, nameof(requestBodyattachmentUri), required: false);
+            var __workflow_requestBodycustomerData = requestBodycustomerData == null ? null : WorkflowExpression.Compile(requestBodycustomerData);
+            WorkflowExpression.Validate(__workflow_requestBodycustomerData, nameof(requestBodycustomerData), required: false);
+            var __workflow_requestBodyadMessage = requestBodyadMessage == null ? null : WorkflowExpression.Compile(requestBodyadMessage);
+            WorkflowExpression.Validate(__workflow_requestBodyadMessage, nameof(requestBodyadMessage), required: false);
+            var __workflow_requestBodydlrUrl = requestBodydlrUrl == null ? null : WorkflowExpression.Compile(requestBodydlrUrl);
+            WorkflowExpression.Validate(__workflow_requestBodydlrUrl, nameof(requestBodydlrUrl), required: false);
+            var __workflow_requestBodyrequestId = requestBodyrequestId == null ? null : WorkflowExpression.Compile(requestBodyrequestId);
+            WorkflowExpression.Validate(__workflow_requestBodyrequestId, nameof(requestBodyrequestId), required: false);
             return new DeferredBodyAction<SendReplyMessageResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/messages/reply/{0}", ExpressionConverter.ConvertWithUrlEncoding(parentMessageId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/messages/reply/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_parentMessageId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["Customer-Id"] = ExpressionConverter.Convert(customerId);
-                callPayload.Headers["Service-Id"] = ExpressionConverter.Convert(serviceId);
+                callPayload.Headers["Customer-Id"] = ExpressionConverter.Convert(__workflow_customerId);
+                callPayload.Headers["Service-Id"] = ExpressionConverter.Convert(__workflow_serviceId);
                 var requestBody = new JObject();
                 var requestBodypropCount = 0;
                 requestBodypropCount++;
-                requestBody["Sender"] = ExpressionConverter.ConvertO(requestBodysender);
+                requestBody["Sender"] = ExpressionConverter.ConvertO(__workflow_requestBodysender);
                 requestBodypropCount++;
-                requestBody["Content"] = ExpressionConverter.ConvertO(requestBodycontent);
+                requestBody["Content"] = ExpressionConverter.ConvertO(__workflow_requestBodycontent);
                 requestBodypropCount++;
-                requestBody["Protocol"] = ExpressionConverter.ConvertO(requestBodyprotocol);
-                if (requestBodysendDateTime != null)
+                requestBody["Protocol"] = ExpressionConverter.ConvertO(__workflow_requestBodyprotocol);
+                if (__workflow_requestBodysendDateTime != null)
                 {
-                    requestBody["SendDateTime"] = ExpressionConverter.ConvertO(requestBodysendDateTime);
+                    requestBody["SendDateTime"] = ExpressionConverter.ConvertO(__workflow_requestBodysendDateTime);
                     requestBodypropCount++;
                 }
 
                 requestBodypropCount++;
-                requestBody["Recipients"] = ExpressionConverter.ConvertO(requestBodyrecipients);
-                if (requestBodyattachmentUri != null)
+                requestBody["Recipients"] = ExpressionConverter.ConvertO(__workflow_requestBodyrecipients);
+                if (__workflow_requestBodyattachmentUri != null)
                 {
-                    requestBody["AttachmentUri"] = ExpressionConverter.ConvertO(requestBodyattachmentUri);
+                    requestBody["AttachmentUri"] = ExpressionConverter.ConvertO(__workflow_requestBodyattachmentUri);
                     requestBodypropCount++;
                 }
 
-                if (requestBodycustomerData != null)
+                if (__workflow_requestBodycustomerData != null)
                 {
-                    requestBody["CustomerData"] = ExpressionConverter.ConvertO(requestBodycustomerData);
+                    requestBody["CustomerData"] = ExpressionConverter.ConvertO(__workflow_requestBodycustomerData);
                     requestBodypropCount++;
                 }
 
-                if (requestBodyadMessage != null)
+                if (__workflow_requestBodyadMessage != null)
                 {
-                    requestBody["AdMessage"] = ExpressionConverter.ConvertO(requestBodyadMessage);
+                    requestBody["AdMessage"] = ExpressionConverter.ConvertO(__workflow_requestBodyadMessage);
                     requestBodypropCount++;
                 }
 
-                if (requestBodydlrUrl != null)
+                if (__workflow_requestBodydlrUrl != null)
                 {
-                    requestBody["DlrUrl"] = ExpressionConverter.ConvertO(requestBodydlrUrl);
+                    requestBody["DlrUrl"] = ExpressionConverter.ConvertO(__workflow_requestBodydlrUrl);
                     requestBodypropCount++;
                 }
 
-                if (requestBodyrequestId != null)
+                if (__workflow_requestBodyrequestId != null)
                 {
-                    requestBody["RequestId"] = ExpressionConverter.ConvertO(requestBodyrequestId);
+                    requestBody["RequestId"] = ExpressionConverter.ConvertO(__workflow_requestBodyrequestId);
                     requestBodypropCount++;
                 }
 
@@ -181,34 +191,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
-        [WorkflowExpressionFactory(nameof(__BuildSendDiscussionReplyMessage))]
-        public IBodyWorkflowAction<SendDiscussionReplyMessageResponse> SendDiscussionReplyMessage([WorkflowExpression] Func<string> customerId, [WorkflowExpression] Func<string> requestBodythreadId, [WorkflowExpression] Func<string> requestBodycontent, [WorkflowExpression] Func<string> requestBodycustomerData = null)
+        public IBodyWorkflowAction<SendDiscussionReplyMessageResponse> SendDiscussionReplyMessage(Expression<Func<string>> customerId, Expression<Func<string>> requestBodythreadId, Expression<Func<string>> requestBodycontent, Expression<Func<string>> requestBodycustomerData = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SendDiscussionReplyMessageResponse> __BuildSendDiscussionReplyMessage(WorkflowExpression<string> customerId, WorkflowExpression<string> requestBodythreadId, WorkflowExpression<string> requestBodycontent, WorkflowExpression<string> requestBodycustomerData = null)
-        {
-            WorkflowExpression.Validate(customerId, nameof(customerId), required: true);
-            WorkflowExpression.Validate(requestBodythreadId, nameof(requestBodythreadId), required: true);
-            WorkflowExpression.Validate(requestBodycontent, nameof(requestBodycontent), required: true);
-            WorkflowExpression.Validate(requestBodycustomerData, nameof(requestBodycustomerData), required: false);
+            var __workflow_customerId = customerId == null ? null : WorkflowExpression.Compile(customerId);
+            WorkflowExpression.Validate(__workflow_customerId, nameof(customerId), required: true);
+            var __workflow_requestBodythreadId = requestBodythreadId == null ? null : WorkflowExpression.Compile(requestBodythreadId);
+            WorkflowExpression.Validate(__workflow_requestBodythreadId, nameof(requestBodythreadId), required: true);
+            var __workflow_requestBodycontent = requestBodycontent == null ? null : WorkflowExpression.Compile(requestBodycontent);
+            WorkflowExpression.Validate(__workflow_requestBodycontent, nameof(requestBodycontent), required: true);
+            var __workflow_requestBodycustomerData = requestBodycustomerData == null ? null : WorkflowExpression.Compile(requestBodycustomerData);
+            WorkflowExpression.Validate(__workflow_requestBodycustomerData, nameof(requestBodycustomerData), required: false);
             return new DeferredBodyAction<SendDiscussionReplyMessageResponse>(() =>
             {
                 var apiCallPath = "/messages/discussion/reply";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["CustomerId"] = ExpressionConverter.Convert(customerId);
+                callPayload.Headers["CustomerId"] = ExpressionConverter.Convert(__workflow_customerId);
                 var requestBody = new JObject();
                 var requestBodypropCount = 0;
                 requestBodypropCount++;
-                requestBody["ThreadId"] = ExpressionConverter.ConvertO(requestBodythreadId);
+                requestBody["ThreadId"] = ExpressionConverter.ConvertO(__workflow_requestBodythreadId);
                 requestBodypropCount++;
-                requestBody["Content"] = ExpressionConverter.ConvertO(requestBodycontent);
-                if (requestBodycustomerData != null)
+                requestBody["Content"] = ExpressionConverter.ConvertO(__workflow_requestBodycontent);
+                if (__workflow_requestBodycustomerData != null)
                 {
-                    requestBody["CustomerData"] = ExpressionConverter.ConvertO(requestBodycustomerData);
+                    requestBody["CustomerData"] = ExpressionConverter.ConvertO(__workflow_requestBodycustomerData);
                     requestBodypropCount++;
                 }
 
@@ -222,47 +229,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateWhatsappTemplate))]
-        public IWorkflowAction CreateWhatsappTemplate([WorkflowExpression] Func<string> customerId, [WorkflowExpression] Func<string> identityNumber, [WorkflowExpression] Func<string> requestBodydisplayName, [WorkflowExpression] Func<string> requestBodyrawContent, [WorkflowExpression] Func<string> requestBodycategory, [WorkflowExpression] Func<string> requestBodylanguage, [WorkflowExpression] Func<requestBodybuttonsInputItem[]> requestBodybuttons = null, [WorkflowExpression] Func<string> requestBodyattachmentUrl = null)
+        public IWorkflowAction CreateWhatsappTemplate(Expression<Func<string>> customerId, Expression<Func<string>> identityNumber, Expression<Func<string>> requestBodydisplayName, Expression<Func<string>> requestBodyrawContent, Expression<Func<string>> requestBodycategory, Expression<Func<string>> requestBodylanguage, Expression<Func<requestBodybuttonsInputItem[]>> requestBodybuttons = null, Expression<Func<string>> requestBodyattachmentUrl = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildCreateWhatsappTemplate(WorkflowExpression<string> customerId, WorkflowExpression<string> identityNumber, WorkflowExpression<string> requestBodydisplayName, WorkflowExpression<string> requestBodyrawContent, WorkflowExpression<string> requestBodycategory, WorkflowExpression<string> requestBodylanguage, WorkflowExpression<requestBodybuttonsInputItem[]> requestBodybuttons = null, WorkflowExpression<string> requestBodyattachmentUrl = null)
-        {
-            WorkflowExpression.Validate(customerId, nameof(customerId), required: true);
-            WorkflowExpression.Validate(identityNumber, nameof(identityNumber), required: true);
-            WorkflowExpression.Validate(requestBodydisplayName, nameof(requestBodydisplayName), required: true);
-            WorkflowExpression.Validate(requestBodyrawContent, nameof(requestBodyrawContent), required: true);
-            WorkflowExpression.Validate(requestBodycategory, nameof(requestBodycategory), required: true);
-            WorkflowExpression.Validate(requestBodylanguage, nameof(requestBodylanguage), required: true);
-            WorkflowExpression.Validate(requestBodybuttons, nameof(requestBodybuttons), required: false);
-            WorkflowExpression.Validate(requestBodyattachmentUrl, nameof(requestBodyattachmentUrl), required: false);
+            var __workflow_customerId = customerId == null ? null : WorkflowExpression.Compile(customerId);
+            WorkflowExpression.Validate(__workflow_customerId, nameof(customerId), required: true);
+            var __workflow_identityNumber = identityNumber == null ? null : WorkflowExpression.Compile(identityNumber);
+            WorkflowExpression.Validate(__workflow_identityNumber, nameof(identityNumber), required: true);
+            var __workflow_requestBodydisplayName = requestBodydisplayName == null ? null : WorkflowExpression.Compile(requestBodydisplayName);
+            WorkflowExpression.Validate(__workflow_requestBodydisplayName, nameof(requestBodydisplayName), required: true);
+            var __workflow_requestBodyrawContent = requestBodyrawContent == null ? null : WorkflowExpression.Compile(requestBodyrawContent);
+            WorkflowExpression.Validate(__workflow_requestBodyrawContent, nameof(requestBodyrawContent), required: true);
+            var __workflow_requestBodycategory = requestBodycategory == null ? null : WorkflowExpression.Compile(requestBodycategory);
+            WorkflowExpression.Validate(__workflow_requestBodycategory, nameof(requestBodycategory), required: true);
+            var __workflow_requestBodylanguage = requestBodylanguage == null ? null : WorkflowExpression.Compile(requestBodylanguage);
+            WorkflowExpression.Validate(__workflow_requestBodylanguage, nameof(requestBodylanguage), required: true);
+            var __workflow_requestBodybuttons = requestBodybuttons == null ? null : WorkflowExpression.Compile(requestBodybuttons);
+            WorkflowExpression.Validate(__workflow_requestBodybuttons, nameof(requestBodybuttons), required: false);
+            var __workflow_requestBodyattachmentUrl = requestBodyattachmentUrl == null ? null : WorkflowExpression.Compile(requestBodyattachmentUrl);
+            WorkflowExpression.Validate(__workflow_requestBodyattachmentUrl, nameof(requestBodyattachmentUrl), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/whatsapp/templates/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(customerId, 1), ExpressionConverter.ConvertWithUrlEncoding(identityNumber, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/whatsapp/templates/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_customerId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_identityNumber, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var requestBody = new JObject();
                 var requestBodypropCount = 0;
                 requestBodypropCount++;
-                requestBody["DisplayName"] = ExpressionConverter.ConvertO(requestBodydisplayName);
+                requestBody["DisplayName"] = ExpressionConverter.ConvertO(__workflow_requestBodydisplayName);
                 requestBodypropCount++;
-                requestBody["RawContent"] = ExpressionConverter.ConvertO(requestBodyrawContent);
+                requestBody["RawContent"] = ExpressionConverter.ConvertO(__workflow_requestBodyrawContent);
                 requestBodypropCount++;
-                requestBody["Category"] = ExpressionConverter.ConvertO(requestBodycategory);
+                requestBody["Category"] = ExpressionConverter.ConvertO(__workflow_requestBodycategory);
                 requestBodypropCount++;
-                requestBody["Language"] = ExpressionConverter.ConvertO(requestBodylanguage);
-                if (requestBodybuttons != null)
+                requestBody["Language"] = ExpressionConverter.ConvertO(__workflow_requestBodylanguage);
+                if (__workflow_requestBodybuttons != null)
                 {
-                    requestBody["Buttons"] = ExpressionConverter.ConvertO(requestBodybuttons);
+                    requestBody["Buttons"] = ExpressionConverter.ConvertO(__workflow_requestBodybuttons);
                     requestBodypropCount++;
                 }
 
-                if (requestBodyattachmentUrl != null)
+                if (__workflow_requestBodyattachmentUrl != null)
                 {
-                    requestBody["AttachmentUrl"] = ExpressionConverter.ConvertO(requestBodyattachmentUrl);
+                    requestBody["AttachmentUrl"] = ExpressionConverter.ConvertO(__workflow_requestBodyattachmentUrl);
                     requestBodypropCount++;
                 }
 
@@ -276,92 +284,98 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
-        [WorkflowExpressionFactory(nameof(__BuildSendWhatsappTemplateMessage))]
-        public IBodyWorkflowAction<SendWhatsappTemplateMessageResponse> SendWhatsappTemplateMessage([WorkflowExpression] Func<string> customerId, [WorkflowExpression] Func<string> serviceId, [WorkflowExpression] Func<string> requestBodytemplateName, [WorkflowExpression] Func<requestBodyrecipientsInputItem2[]> requestBodyrecipients, [WorkflowExpression] Func<string[]> requestBodybodyParameters = null, [WorkflowExpression] Func<string[]> requestBodyheaderParameters = null, [WorkflowExpression] Func<requestBodybuttonsInputItem2[]> requestBodybuttons = null, [WorkflowExpression] Func<string> requestBodysendDateTime = null, [WorkflowExpression] Func<string> requestBodyattachmentUri = null, [WorkflowExpression] Func<bool> requestBodyuseSmsFallback = null, [WorkflowExpression] Func<string> requestBodydlrUrl = null, [WorkflowExpression] Func<string> requestBodycustomerData = null, [WorkflowExpression] Func<string> requestBodyrequestId = null)
+        public IBodyWorkflowAction<SendWhatsappTemplateMessageResponse> SendWhatsappTemplateMessage(Expression<Func<string>> customerId, Expression<Func<string>> serviceId, Expression<Func<string>> requestBodytemplateName, Expression<Func<requestBodyrecipientsInputItem2[]>> requestBodyrecipients, Expression<Func<string[]>> requestBodybodyParameters = null, Expression<Func<string[]>> requestBodyheaderParameters = null, Expression<Func<requestBodybuttonsInputItem2[]>> requestBodybuttons = null, Expression<Func<string>> requestBodysendDateTime = null, Expression<Func<string>> requestBodyattachmentUri = null, Expression<Func<bool>> requestBodyuseSmsFallback = null, Expression<Func<string>> requestBodydlrUrl = null, Expression<Func<string>> requestBodycustomerData = null, Expression<Func<string>> requestBodyrequestId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SendWhatsappTemplateMessageResponse> __BuildSendWhatsappTemplateMessage(WorkflowExpression<string> customerId, WorkflowExpression<string> serviceId, WorkflowExpression<string> requestBodytemplateName, WorkflowExpression<requestBodyrecipientsInputItem2[]> requestBodyrecipients, WorkflowExpression<string[]> requestBodybodyParameters = null, WorkflowExpression<string[]> requestBodyheaderParameters = null, WorkflowExpression<requestBodybuttonsInputItem2[]> requestBodybuttons = null, WorkflowExpression<string> requestBodysendDateTime = null, WorkflowExpression<string> requestBodyattachmentUri = null, WorkflowExpression<bool> requestBodyuseSmsFallback = null, WorkflowExpression<string> requestBodydlrUrl = null, WorkflowExpression<string> requestBodycustomerData = null, WorkflowExpression<string> requestBodyrequestId = null)
-        {
-            WorkflowExpression.Validate(customerId, nameof(customerId), required: true);
-            WorkflowExpression.Validate(serviceId, nameof(serviceId), required: true);
-            WorkflowExpression.Validate(requestBodytemplateName, nameof(requestBodytemplateName), required: true);
-            WorkflowExpression.Validate(requestBodyrecipients, nameof(requestBodyrecipients), required: true);
-            WorkflowExpression.Validate(requestBodybodyParameters, nameof(requestBodybodyParameters), required: false);
-            WorkflowExpression.Validate(requestBodyheaderParameters, nameof(requestBodyheaderParameters), required: false);
-            WorkflowExpression.Validate(requestBodybuttons, nameof(requestBodybuttons), required: false);
-            WorkflowExpression.Validate(requestBodysendDateTime, nameof(requestBodysendDateTime), required: false);
-            WorkflowExpression.Validate(requestBodyattachmentUri, nameof(requestBodyattachmentUri), required: false);
-            WorkflowExpression.Validate(requestBodyuseSmsFallback, nameof(requestBodyuseSmsFallback), required: false);
-            WorkflowExpression.Validate(requestBodydlrUrl, nameof(requestBodydlrUrl), required: false);
-            WorkflowExpression.Validate(requestBodycustomerData, nameof(requestBodycustomerData), required: false);
-            WorkflowExpression.Validate(requestBodyrequestId, nameof(requestBodyrequestId), required: false);
+            var __workflow_customerId = customerId == null ? null : WorkflowExpression.Compile(customerId);
+            WorkflowExpression.Validate(__workflow_customerId, nameof(customerId), required: true);
+            var __workflow_serviceId = serviceId == null ? null : WorkflowExpression.Compile(serviceId);
+            WorkflowExpression.Validate(__workflow_serviceId, nameof(serviceId), required: true);
+            var __workflow_requestBodytemplateName = requestBodytemplateName == null ? null : WorkflowExpression.Compile(requestBodytemplateName);
+            WorkflowExpression.Validate(__workflow_requestBodytemplateName, nameof(requestBodytemplateName), required: true);
+            var __workflow_requestBodyrecipients = requestBodyrecipients == null ? null : WorkflowExpression.Compile(requestBodyrecipients);
+            WorkflowExpression.Validate(__workflow_requestBodyrecipients, nameof(requestBodyrecipients), required: true);
+            var __workflow_requestBodybodyParameters = requestBodybodyParameters == null ? null : WorkflowExpression.Compile(requestBodybodyParameters);
+            WorkflowExpression.Validate(__workflow_requestBodybodyParameters, nameof(requestBodybodyParameters), required: false);
+            var __workflow_requestBodyheaderParameters = requestBodyheaderParameters == null ? null : WorkflowExpression.Compile(requestBodyheaderParameters);
+            WorkflowExpression.Validate(__workflow_requestBodyheaderParameters, nameof(requestBodyheaderParameters), required: false);
+            var __workflow_requestBodybuttons = requestBodybuttons == null ? null : WorkflowExpression.Compile(requestBodybuttons);
+            WorkflowExpression.Validate(__workflow_requestBodybuttons, nameof(requestBodybuttons), required: false);
+            var __workflow_requestBodysendDateTime = requestBodysendDateTime == null ? null : WorkflowExpression.Compile(requestBodysendDateTime);
+            WorkflowExpression.Validate(__workflow_requestBodysendDateTime, nameof(requestBodysendDateTime), required: false);
+            var __workflow_requestBodyattachmentUri = requestBodyattachmentUri == null ? null : WorkflowExpression.Compile(requestBodyattachmentUri);
+            WorkflowExpression.Validate(__workflow_requestBodyattachmentUri, nameof(requestBodyattachmentUri), required: false);
+            var __workflow_requestBodyuseSmsFallback = requestBodyuseSmsFallback == null ? null : WorkflowExpression.Compile(requestBodyuseSmsFallback);
+            WorkflowExpression.Validate(__workflow_requestBodyuseSmsFallback, nameof(requestBodyuseSmsFallback), required: false);
+            var __workflow_requestBodydlrUrl = requestBodydlrUrl == null ? null : WorkflowExpression.Compile(requestBodydlrUrl);
+            WorkflowExpression.Validate(__workflow_requestBodydlrUrl, nameof(requestBodydlrUrl), required: false);
+            var __workflow_requestBodycustomerData = requestBodycustomerData == null ? null : WorkflowExpression.Compile(requestBodycustomerData);
+            WorkflowExpression.Validate(__workflow_requestBodycustomerData, nameof(requestBodycustomerData), required: false);
+            var __workflow_requestBodyrequestId = requestBodyrequestId == null ? null : WorkflowExpression.Compile(requestBodyrequestId);
+            WorkflowExpression.Validate(__workflow_requestBodyrequestId, nameof(requestBodyrequestId), required: false);
             return new DeferredBodyAction<SendWhatsappTemplateMessageResponse>(() =>
             {
                 var apiCallPath = "/messages/templates/whatsapp";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["Customer-Id"] = ExpressionConverter.Convert(customerId);
-                callPayload.Headers["Service-Id"] = ExpressionConverter.Convert(serviceId);
+                callPayload.Headers["Customer-Id"] = ExpressionConverter.Convert(__workflow_customerId);
+                callPayload.Headers["Service-Id"] = ExpressionConverter.Convert(__workflow_serviceId);
                 var requestBody = new JObject();
                 var requestBodypropCount = 0;
                 requestBodypropCount++;
-                requestBody["TemplateName"] = ExpressionConverter.ConvertO(requestBodytemplateName);
+                requestBody["TemplateName"] = ExpressionConverter.ConvertO(__workflow_requestBodytemplateName);
                 requestBodypropCount++;
-                requestBody["Recipients"] = ExpressionConverter.ConvertO(requestBodyrecipients);
-                if (requestBodybodyParameters != null)
+                requestBody["Recipients"] = ExpressionConverter.ConvertO(__workflow_requestBodyrecipients);
+                if (__workflow_requestBodybodyParameters != null)
                 {
-                    requestBody["BodyParameters"] = ExpressionConverter.ConvertO(requestBodybodyParameters);
+                    requestBody["BodyParameters"] = ExpressionConverter.ConvertO(__workflow_requestBodybodyParameters);
                     requestBodypropCount++;
                 }
 
-                if (requestBodyheaderParameters != null)
+                if (__workflow_requestBodyheaderParameters != null)
                 {
-                    requestBody["HeaderParameters"] = ExpressionConverter.ConvertO(requestBodyheaderParameters);
+                    requestBody["HeaderParameters"] = ExpressionConverter.ConvertO(__workflow_requestBodyheaderParameters);
                     requestBodypropCount++;
                 }
 
-                if (requestBodybuttons != null)
+                if (__workflow_requestBodybuttons != null)
                 {
-                    requestBody["Buttons"] = ExpressionConverter.ConvertO(requestBodybuttons);
+                    requestBody["Buttons"] = ExpressionConverter.ConvertO(__workflow_requestBodybuttons);
                     requestBodypropCount++;
                 }
 
-                if (requestBodysendDateTime != null)
+                if (__workflow_requestBodysendDateTime != null)
                 {
-                    requestBody["SendDateTime"] = ExpressionConverter.ConvertO(requestBodysendDateTime);
+                    requestBody["SendDateTime"] = ExpressionConverter.ConvertO(__workflow_requestBodysendDateTime);
                     requestBodypropCount++;
                 }
 
-                if (requestBodyattachmentUri != null)
+                if (__workflow_requestBodyattachmentUri != null)
                 {
-                    requestBody["AttachmentUri"] = ExpressionConverter.ConvertO(requestBodyattachmentUri);
+                    requestBody["AttachmentUri"] = ExpressionConverter.ConvertO(__workflow_requestBodyattachmentUri);
                     requestBodypropCount++;
                 }
 
-                if (requestBodyuseSmsFallback != null)
+                if (__workflow_requestBodyuseSmsFallback != null)
                 {
-                    requestBody["UseSmsFallback"] = ExpressionConverter.ConvertO(requestBodyuseSmsFallback);
+                    requestBody["UseSmsFallback"] = ExpressionConverter.ConvertO(__workflow_requestBodyuseSmsFallback);
                     requestBodypropCount++;
                 }
 
-                if (requestBodydlrUrl != null)
+                if (__workflow_requestBodydlrUrl != null)
                 {
-                    requestBody["DlrUrl"] = ExpressionConverter.ConvertO(requestBodydlrUrl);
+                    requestBody["DlrUrl"] = ExpressionConverter.ConvertO(__workflow_requestBodydlrUrl);
                     requestBodypropCount++;
                 }
 
-                if (requestBodycustomerData != null)
+                if (__workflow_requestBodycustomerData != null)
                 {
-                    requestBody["CustomerData"] = ExpressionConverter.ConvertO(requestBodycustomerData);
+                    requestBody["CustomerData"] = ExpressionConverter.ConvertO(__workflow_requestBodycustomerData);
                     requestBodypropCount++;
                 }
 
-                if (requestBodyrequestId != null)
+                if (__workflow_requestBodyrequestId != null)
                 {
-                    requestBody["RequestId"] = ExpressionConverter.ConvertO(requestBodyrequestId);
+                    requestBody["RequestId"] = ExpressionConverter.ConvertO(__workflow_requestBodyrequestId);
                     requestBodypropCount++;
                 }
 
@@ -375,46 +389,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
-        [WorkflowExpressionFactory(nameof(__BuildGetGroupContact))]
-        public IBodyWorkflowAction<GetGroupContactResponse> GetGroupContact([WorkflowExpression] Func<string> customer, [WorkflowExpression] Func<string> groupService, [WorkflowExpression] Func<string> phone, [WorkflowExpression] Func<string> region = null)
+        public IBodyWorkflowAction<GetGroupContactResponse> GetGroupContact(Expression<Func<string>> customer, Expression<Func<string>> groupService, Expression<Func<string>> phone, Expression<Func<string>> region = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetGroupContactResponse> __BuildGetGroupContact(WorkflowExpression<string> customer, WorkflowExpression<string> groupService, WorkflowExpression<string> phone, WorkflowExpression<string> region = null)
-        {
-            WorkflowExpression.Validate(customer, nameof(customer), required: true);
-            WorkflowExpression.Validate(groupService, nameof(groupService), required: true);
-            WorkflowExpression.Validate(phone, nameof(phone), required: true);
-            WorkflowExpression.Validate(region, nameof(region), required: false);
+            var __workflow_customer = customer == null ? null : WorkflowExpression.Compile(customer);
+            WorkflowExpression.Validate(__workflow_customer, nameof(customer), required: true);
+            var __workflow_groupService = groupService == null ? null : WorkflowExpression.Compile(groupService);
+            WorkflowExpression.Validate(__workflow_groupService, nameof(groupService), required: true);
+            var __workflow_phone = phone == null ? null : WorkflowExpression.Compile(phone);
+            WorkflowExpression.Validate(__workflow_phone, nameof(phone), required: true);
+            var __workflow_region = region == null ? null : WorkflowExpression.Compile(region);
+            WorkflowExpression.Validate(__workflow_region, nameof(region), required: false);
             return new DeferredBodyAction<GetGroupContactResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groupcontact/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(customer, 1), ExpressionConverter.ConvertWithUrlEncoding(groupService, 1), ExpressionConverter.ConvertWithUrlEncoding(phone, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groupcontact/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_customer, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupService, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_phone, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (region != null)
-                    callPayload.Queries["Region"] = ExpressionConverter.Convert(region);
+                if (__workflow_region != null)
+                    callPayload.Queries["Region"] = ExpressionConverter.Convert(__workflow_region);
                 return new ApiConnectionAction<GetGroupContactResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteGroupContact))]
-        public IBodyWorkflowAction<bool> DeleteGroupContact([WorkflowExpression] Func<string> customer, [WorkflowExpression] Func<string> groupService, [WorkflowExpression] Func<string> phone)
+        public IBodyWorkflowAction<bool> DeleteGroupContact(Expression<Func<string>> customer, Expression<Func<string>> groupService, Expression<Func<string>> phone)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<bool> __BuildDeleteGroupContact(WorkflowExpression<string> customer, WorkflowExpression<string> groupService, WorkflowExpression<string> phone)
-        {
-            WorkflowExpression.Validate(customer, nameof(customer), required: true);
-            WorkflowExpression.Validate(groupService, nameof(groupService), required: true);
-            WorkflowExpression.Validate(phone, nameof(phone), required: true);
+            var __workflow_customer = customer == null ? null : WorkflowExpression.Compile(customer);
+            WorkflowExpression.Validate(__workflow_customer, nameof(customer), required: true);
+            var __workflow_groupService = groupService == null ? null : WorkflowExpression.Compile(groupService);
+            WorkflowExpression.Validate(__workflow_groupService, nameof(groupService), required: true);
+            var __workflow_phone = phone == null ? null : WorkflowExpression.Compile(phone);
+            WorkflowExpression.Validate(__workflow_phone, nameof(phone), required: true);
             return new DeferredBodyAction<bool>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groupcontact/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(customer, 1), ExpressionConverter.ConvertWithUrlEncoding(groupService, 1), ExpressionConverter.ConvertWithUrlEncoding(phone, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groupcontact/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_customer, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupService, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_phone, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<bool>(callPayload);
@@ -422,42 +429,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateGroupContact))]
-        public IBodyWorkflowAction<bool> UpdateGroupContact([WorkflowExpression] Func<string> customer, [WorkflowExpression] Func<string> groupService, [WorkflowExpression] Func<string> phone, [WorkflowExpression] Func<bool> requestBodyactive = null, [WorkflowExpression] Func<string> requestBodyemail = null, [WorkflowExpression] Func<string> requestBodyfirstName = null, [WorkflowExpression] Func<string> requestBodylastName = null, [WorkflowExpression] Func<requestBodygenderInput> requestBodygender = null, [WorkflowExpression] Func<int> requestBodybirthYear = null, [WorkflowExpression] Func<string> requestBodystreetAddress = null, [WorkflowExpression] Func<string> requestBodyzipCode = null, [WorkflowExpression] Func<string> requestBodycity = null, [WorkflowExpression] Func<string> requestBodycountryCode = null, [WorkflowExpression] Func<requestBodycustomContactPropertiesInputItem[]> requestBodycustomContactProperties = null, [WorkflowExpression] Func<string[]> requestBodyphoneNumberRegions = null)
+        public IBodyWorkflowAction<bool> UpdateGroupContact(Expression<Func<string>> customer, Expression<Func<string>> groupService, Expression<Func<string>> phone, Expression<Func<bool>> requestBodyactive = null, Expression<Func<string>> requestBodyemail = null, Expression<Func<string>> requestBodyfirstName = null, Expression<Func<string>> requestBodylastName = null, Expression<Func<requestBodygenderInput>> requestBodygender = null, Expression<Func<int>> requestBodybirthYear = null, Expression<Func<string>> requestBodystreetAddress = null, Expression<Func<string>> requestBodyzipCode = null, Expression<Func<string>> requestBodycity = null, Expression<Func<string>> requestBodycountryCode = null, Expression<Func<requestBodycustomContactPropertiesInputItem[]>> requestBodycustomContactProperties = null, Expression<Func<string[]>> requestBodyphoneNumberRegions = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<bool> __BuildUpdateGroupContact(WorkflowExpression<string> customer, WorkflowExpression<string> groupService, WorkflowExpression<string> phone, WorkflowExpression<bool> requestBodyactive = null, WorkflowExpression<string> requestBodyemail = null, WorkflowExpression<string> requestBodyfirstName = null, WorkflowExpression<string> requestBodylastName = null, WorkflowExpression<requestBodygenderInput> requestBodygender = null, WorkflowExpression<int> requestBodybirthYear = null, WorkflowExpression<string> requestBodystreetAddress = null, WorkflowExpression<string> requestBodyzipCode = null, WorkflowExpression<string> requestBodycity = null, WorkflowExpression<string> requestBodycountryCode = null, WorkflowExpression<requestBodycustomContactPropertiesInputItem[]> requestBodycustomContactProperties = null, WorkflowExpression<string[]> requestBodyphoneNumberRegions = null)
-        {
-            WorkflowExpression.Validate(customer, nameof(customer), required: true);
-            WorkflowExpression.Validate(groupService, nameof(groupService), required: true);
-            WorkflowExpression.Validate(phone, nameof(phone), required: true);
-            WorkflowExpression.Validate(requestBodyactive, nameof(requestBodyactive), required: false);
-            WorkflowExpression.Validate(requestBodyemail, nameof(requestBodyemail), required: false);
-            WorkflowExpression.Validate(requestBodyfirstName, nameof(requestBodyfirstName), required: false);
-            WorkflowExpression.Validate(requestBodylastName, nameof(requestBodylastName), required: false);
-            WorkflowExpression.Validate(requestBodygender, nameof(requestBodygender), required: false);
-            WorkflowExpression.Validate(requestBodybirthYear, nameof(requestBodybirthYear), required: false);
-            WorkflowExpression.Validate(requestBodystreetAddress, nameof(requestBodystreetAddress), required: false);
-            WorkflowExpression.Validate(requestBodyzipCode, nameof(requestBodyzipCode), required: false);
-            WorkflowExpression.Validate(requestBodycity, nameof(requestBodycity), required: false);
-            WorkflowExpression.Validate(requestBodycountryCode, nameof(requestBodycountryCode), required: false);
-            WorkflowExpression.Validate(requestBodycustomContactProperties, nameof(requestBodycustomContactProperties), required: false);
-            WorkflowExpression.Validate(requestBodyphoneNumberRegions, nameof(requestBodyphoneNumberRegions), required: false);
+            var __workflow_customer = customer == null ? null : WorkflowExpression.Compile(customer);
+            WorkflowExpression.Validate(__workflow_customer, nameof(customer), required: true);
+            var __workflow_groupService = groupService == null ? null : WorkflowExpression.Compile(groupService);
+            WorkflowExpression.Validate(__workflow_groupService, nameof(groupService), required: true);
+            var __workflow_phone = phone == null ? null : WorkflowExpression.Compile(phone);
+            WorkflowExpression.Validate(__workflow_phone, nameof(phone), required: true);
+            var __workflow_requestBodyactive = requestBodyactive == null ? null : WorkflowExpression.Compile(requestBodyactive);
+            WorkflowExpression.Validate(__workflow_requestBodyactive, nameof(requestBodyactive), required: false);
+            var __workflow_requestBodyemail = requestBodyemail == null ? null : WorkflowExpression.Compile(requestBodyemail);
+            WorkflowExpression.Validate(__workflow_requestBodyemail, nameof(requestBodyemail), required: false);
+            var __workflow_requestBodyfirstName = requestBodyfirstName == null ? null : WorkflowExpression.Compile(requestBodyfirstName);
+            WorkflowExpression.Validate(__workflow_requestBodyfirstName, nameof(requestBodyfirstName), required: false);
+            var __workflow_requestBodylastName = requestBodylastName == null ? null : WorkflowExpression.Compile(requestBodylastName);
+            WorkflowExpression.Validate(__workflow_requestBodylastName, nameof(requestBodylastName), required: false);
+            var __workflow_requestBodygender = requestBodygender == null ? null : WorkflowExpression.Compile(requestBodygender);
+            WorkflowExpression.Validate(__workflow_requestBodygender, nameof(requestBodygender), required: false);
+            var __workflow_requestBodybirthYear = requestBodybirthYear == null ? null : WorkflowExpression.Compile(requestBodybirthYear);
+            WorkflowExpression.Validate(__workflow_requestBodybirthYear, nameof(requestBodybirthYear), required: false);
+            var __workflow_requestBodystreetAddress = requestBodystreetAddress == null ? null : WorkflowExpression.Compile(requestBodystreetAddress);
+            WorkflowExpression.Validate(__workflow_requestBodystreetAddress, nameof(requestBodystreetAddress), required: false);
+            var __workflow_requestBodyzipCode = requestBodyzipCode == null ? null : WorkflowExpression.Compile(requestBodyzipCode);
+            WorkflowExpression.Validate(__workflow_requestBodyzipCode, nameof(requestBodyzipCode), required: false);
+            var __workflow_requestBodycity = requestBodycity == null ? null : WorkflowExpression.Compile(requestBodycity);
+            WorkflowExpression.Validate(__workflow_requestBodycity, nameof(requestBodycity), required: false);
+            var __workflow_requestBodycountryCode = requestBodycountryCode == null ? null : WorkflowExpression.Compile(requestBodycountryCode);
+            WorkflowExpression.Validate(__workflow_requestBodycountryCode, nameof(requestBodycountryCode), required: false);
+            var __workflow_requestBodycustomContactProperties = requestBodycustomContactProperties == null ? null : WorkflowExpression.Compile(requestBodycustomContactProperties);
+            WorkflowExpression.Validate(__workflow_requestBodycustomContactProperties, nameof(requestBodycustomContactProperties), required: false);
+            var __workflow_requestBodyphoneNumberRegions = requestBodyphoneNumberRegions == null ? null : WorkflowExpression.Compile(requestBodyphoneNumberRegions);
+            WorkflowExpression.Validate(__workflow_requestBodyphoneNumberRegions, nameof(requestBodyphoneNumberRegions), required: false);
             return new DeferredBodyAction<bool>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groupcontact/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(customer, 1), ExpressionConverter.ConvertWithUrlEncoding(groupService, 1), ExpressionConverter.ConvertWithUrlEncoding(phone, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groupcontact/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_customer, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupService, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_phone, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var requestBody = new JObject();
                 var requestBodypropCount = 0;
-                if (requestBodyactive != null)
+                if (__workflow_requestBodyactive != null)
                 {
-                    if (requestBodyactive != null)
+                    if (__workflow_requestBodyactive != null)
                     {
-                        requestBody["active"] = ExpressionConverter.ConvertO(requestBodyactive);
+                        requestBody["active"] = ExpressionConverter.ConvertO(__workflow_requestBodyactive);
                         requestBodypropCount++;
                     }
 
@@ -469,69 +484,69 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
                     requestBodypropCount++;
                 }
 
-                if (requestBodyemail != null)
+                if (__workflow_requestBodyemail != null)
                 {
-                    requestBody["email"] = ExpressionConverter.ConvertO(requestBodyemail);
+                    requestBody["email"] = ExpressionConverter.ConvertO(__workflow_requestBodyemail);
                     requestBodypropCount++;
                 }
 
-                if (requestBodyfirstName != null)
+                if (__workflow_requestBodyfirstName != null)
                 {
-                    requestBody["firstName"] = ExpressionConverter.ConvertO(requestBodyfirstName);
+                    requestBody["firstName"] = ExpressionConverter.ConvertO(__workflow_requestBodyfirstName);
                     requestBodypropCount++;
                 }
 
-                if (requestBodylastName != null)
+                if (__workflow_requestBodylastName != null)
                 {
-                    requestBody["lastName"] = ExpressionConverter.ConvertO(requestBodylastName);
+                    requestBody["lastName"] = ExpressionConverter.ConvertO(__workflow_requestBodylastName);
                     requestBodypropCount++;
                 }
 
-                if (requestBodygender != null)
+                if (__workflow_requestBodygender != null)
                 {
-                    requestBody["gender"] = ExpressionConverter.ConvertO(requestBodygender);
+                    requestBody["gender"] = ExpressionConverter.ConvertO(__workflow_requestBodygender);
                     requestBodypropCount++;
                 }
 
-                if (requestBodybirthYear != null)
+                if (__workflow_requestBodybirthYear != null)
                 {
-                    requestBody["birthYear"] = ExpressionConverter.ConvertO(requestBodybirthYear);
+                    requestBody["birthYear"] = ExpressionConverter.ConvertO(__workflow_requestBodybirthYear);
                     requestBodypropCount++;
                 }
 
-                if (requestBodystreetAddress != null)
+                if (__workflow_requestBodystreetAddress != null)
                 {
-                    requestBody["streetAddress"] = ExpressionConverter.ConvertO(requestBodystreetAddress);
+                    requestBody["streetAddress"] = ExpressionConverter.ConvertO(__workflow_requestBodystreetAddress);
                     requestBodypropCount++;
                 }
 
-                if (requestBodyzipCode != null)
+                if (__workflow_requestBodyzipCode != null)
                 {
-                    requestBody["zipCode"] = ExpressionConverter.ConvertO(requestBodyzipCode);
+                    requestBody["zipCode"] = ExpressionConverter.ConvertO(__workflow_requestBodyzipCode);
                     requestBodypropCount++;
                 }
 
-                if (requestBodycity != null)
+                if (__workflow_requestBodycity != null)
                 {
-                    requestBody["city"] = ExpressionConverter.ConvertO(requestBodycity);
+                    requestBody["city"] = ExpressionConverter.ConvertO(__workflow_requestBodycity);
                     requestBodypropCount++;
                 }
 
-                if (requestBodycountryCode != null)
+                if (__workflow_requestBodycountryCode != null)
                 {
-                    requestBody["countryCode"] = ExpressionConverter.ConvertO(requestBodycountryCode);
+                    requestBody["countryCode"] = ExpressionConverter.ConvertO(__workflow_requestBodycountryCode);
                     requestBodypropCount++;
                 }
 
-                if (requestBodycustomContactProperties != null)
+                if (__workflow_requestBodycustomContactProperties != null)
                 {
-                    requestBody["customContactProperties"] = ExpressionConverter.ConvertO(requestBodycustomContactProperties);
+                    requestBody["customContactProperties"] = ExpressionConverter.ConvertO(__workflow_requestBodycustomContactProperties);
                     requestBodypropCount++;
                 }
 
-                if (requestBodyphoneNumberRegions != null)
+                if (__workflow_requestBodyphoneNumberRegions != null)
                 {
-                    requestBody["phoneNumberRegions"] = ExpressionConverter.ConvertO(requestBodyphoneNumberRegions);
+                    requestBody["phoneNumberRegions"] = ExpressionConverter.ConvertO(__workflow_requestBodyphoneNumberRegions);
                     requestBodypropCount++;
                 }
 
@@ -545,20 +560,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteAllGroupContacts))]
-        public IBodyWorkflowAction<bool> DeleteAllGroupContacts([WorkflowExpression] Func<string> customer, [WorkflowExpression] Func<string> groupService)
+        public IBodyWorkflowAction<bool> DeleteAllGroupContacts(Expression<Func<string>> customer, Expression<Func<string>> groupService)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<bool> __BuildDeleteAllGroupContacts(WorkflowExpression<string> customer, WorkflowExpression<string> groupService)
-        {
-            WorkflowExpression.Validate(customer, nameof(customer), required: true);
-            WorkflowExpression.Validate(groupService, nameof(groupService), required: true);
+            var __workflow_customer = customer == null ? null : WorkflowExpression.Compile(customer);
+            WorkflowExpression.Validate(__workflow_customer, nameof(customer), required: true);
+            var __workflow_groupService = groupService == null ? null : WorkflowExpression.Compile(groupService);
+            WorkflowExpression.Validate(__workflow_groupService, nameof(groupService), required: true);
             return new DeferredBodyAction<bool>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groupcontact/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(customer, 1), ExpressionConverter.ConvertWithUrlEncoding(groupService, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groupcontact/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_customer, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupService, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<bool>(callPayload);
@@ -566,42 +576,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateGroupContact))]
-        public IBodyWorkflowAction<string> CreateGroupContact([WorkflowExpression] Func<string> customer, [WorkflowExpression] Func<string> groupService, [WorkflowExpression] Func<string> requestBodyphone, [WorkflowExpression] Func<bool> requestBodyactive = null, [WorkflowExpression] Func<string> requestBodyemail = null, [WorkflowExpression] Func<string> requestBodyfirstName = null, [WorkflowExpression] Func<string> requestBodylastName = null, [WorkflowExpression] Func<requestBodygenderInput> requestBodygender = null, [WorkflowExpression] Func<int> requestBodybirthYear = null, [WorkflowExpression] Func<string> requestBodystreetAddress = null, [WorkflowExpression] Func<string> requestBodyzipCode = null, [WorkflowExpression] Func<string> requestBodycity = null, [WorkflowExpression] Func<string> requestBodycountryCode = null, [WorkflowExpression] Func<requestBodycustomContactPropertiesInputItem[]> requestBodycustomContactProperties = null, [WorkflowExpression] Func<string[]> requestBodyphoneNumberRegions = null)
+        public IBodyWorkflowAction<string> CreateGroupContact(Expression<Func<string>> customer, Expression<Func<string>> groupService, Expression<Func<string>> requestBodyphone, Expression<Func<bool>> requestBodyactive = null, Expression<Func<string>> requestBodyemail = null, Expression<Func<string>> requestBodyfirstName = null, Expression<Func<string>> requestBodylastName = null, Expression<Func<requestBodygenderInput>> requestBodygender = null, Expression<Func<int>> requestBodybirthYear = null, Expression<Func<string>> requestBodystreetAddress = null, Expression<Func<string>> requestBodyzipCode = null, Expression<Func<string>> requestBodycity = null, Expression<Func<string>> requestBodycountryCode = null, Expression<Func<requestBodycustomContactPropertiesInputItem[]>> requestBodycustomContactProperties = null, Expression<Func<string[]>> requestBodyphoneNumberRegions = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildCreateGroupContact(WorkflowExpression<string> customer, WorkflowExpression<string> groupService, WorkflowExpression<string> requestBodyphone, WorkflowExpression<bool> requestBodyactive = null, WorkflowExpression<string> requestBodyemail = null, WorkflowExpression<string> requestBodyfirstName = null, WorkflowExpression<string> requestBodylastName = null, WorkflowExpression<requestBodygenderInput> requestBodygender = null, WorkflowExpression<int> requestBodybirthYear = null, WorkflowExpression<string> requestBodystreetAddress = null, WorkflowExpression<string> requestBodyzipCode = null, WorkflowExpression<string> requestBodycity = null, WorkflowExpression<string> requestBodycountryCode = null, WorkflowExpression<requestBodycustomContactPropertiesInputItem[]> requestBodycustomContactProperties = null, WorkflowExpression<string[]> requestBodyphoneNumberRegions = null)
-        {
-            WorkflowExpression.Validate(customer, nameof(customer), required: true);
-            WorkflowExpression.Validate(groupService, nameof(groupService), required: true);
-            WorkflowExpression.Validate(requestBodyphone, nameof(requestBodyphone), required: true);
-            WorkflowExpression.Validate(requestBodyactive, nameof(requestBodyactive), required: false);
-            WorkflowExpression.Validate(requestBodyemail, nameof(requestBodyemail), required: false);
-            WorkflowExpression.Validate(requestBodyfirstName, nameof(requestBodyfirstName), required: false);
-            WorkflowExpression.Validate(requestBodylastName, nameof(requestBodylastName), required: false);
-            WorkflowExpression.Validate(requestBodygender, nameof(requestBodygender), required: false);
-            WorkflowExpression.Validate(requestBodybirthYear, nameof(requestBodybirthYear), required: false);
-            WorkflowExpression.Validate(requestBodystreetAddress, nameof(requestBodystreetAddress), required: false);
-            WorkflowExpression.Validate(requestBodyzipCode, nameof(requestBodyzipCode), required: false);
-            WorkflowExpression.Validate(requestBodycity, nameof(requestBodycity), required: false);
-            WorkflowExpression.Validate(requestBodycountryCode, nameof(requestBodycountryCode), required: false);
-            WorkflowExpression.Validate(requestBodycustomContactProperties, nameof(requestBodycustomContactProperties), required: false);
-            WorkflowExpression.Validate(requestBodyphoneNumberRegions, nameof(requestBodyphoneNumberRegions), required: false);
+            var __workflow_customer = customer == null ? null : WorkflowExpression.Compile(customer);
+            WorkflowExpression.Validate(__workflow_customer, nameof(customer), required: true);
+            var __workflow_groupService = groupService == null ? null : WorkflowExpression.Compile(groupService);
+            WorkflowExpression.Validate(__workflow_groupService, nameof(groupService), required: true);
+            var __workflow_requestBodyphone = requestBodyphone == null ? null : WorkflowExpression.Compile(requestBodyphone);
+            WorkflowExpression.Validate(__workflow_requestBodyphone, nameof(requestBodyphone), required: true);
+            var __workflow_requestBodyactive = requestBodyactive == null ? null : WorkflowExpression.Compile(requestBodyactive);
+            WorkflowExpression.Validate(__workflow_requestBodyactive, nameof(requestBodyactive), required: false);
+            var __workflow_requestBodyemail = requestBodyemail == null ? null : WorkflowExpression.Compile(requestBodyemail);
+            WorkflowExpression.Validate(__workflow_requestBodyemail, nameof(requestBodyemail), required: false);
+            var __workflow_requestBodyfirstName = requestBodyfirstName == null ? null : WorkflowExpression.Compile(requestBodyfirstName);
+            WorkflowExpression.Validate(__workflow_requestBodyfirstName, nameof(requestBodyfirstName), required: false);
+            var __workflow_requestBodylastName = requestBodylastName == null ? null : WorkflowExpression.Compile(requestBodylastName);
+            WorkflowExpression.Validate(__workflow_requestBodylastName, nameof(requestBodylastName), required: false);
+            var __workflow_requestBodygender = requestBodygender == null ? null : WorkflowExpression.Compile(requestBodygender);
+            WorkflowExpression.Validate(__workflow_requestBodygender, nameof(requestBodygender), required: false);
+            var __workflow_requestBodybirthYear = requestBodybirthYear == null ? null : WorkflowExpression.Compile(requestBodybirthYear);
+            WorkflowExpression.Validate(__workflow_requestBodybirthYear, nameof(requestBodybirthYear), required: false);
+            var __workflow_requestBodystreetAddress = requestBodystreetAddress == null ? null : WorkflowExpression.Compile(requestBodystreetAddress);
+            WorkflowExpression.Validate(__workflow_requestBodystreetAddress, nameof(requestBodystreetAddress), required: false);
+            var __workflow_requestBodyzipCode = requestBodyzipCode == null ? null : WorkflowExpression.Compile(requestBodyzipCode);
+            WorkflowExpression.Validate(__workflow_requestBodyzipCode, nameof(requestBodyzipCode), required: false);
+            var __workflow_requestBodycity = requestBodycity == null ? null : WorkflowExpression.Compile(requestBodycity);
+            WorkflowExpression.Validate(__workflow_requestBodycity, nameof(requestBodycity), required: false);
+            var __workflow_requestBodycountryCode = requestBodycountryCode == null ? null : WorkflowExpression.Compile(requestBodycountryCode);
+            WorkflowExpression.Validate(__workflow_requestBodycountryCode, nameof(requestBodycountryCode), required: false);
+            var __workflow_requestBodycustomContactProperties = requestBodycustomContactProperties == null ? null : WorkflowExpression.Compile(requestBodycustomContactProperties);
+            WorkflowExpression.Validate(__workflow_requestBodycustomContactProperties, nameof(requestBodycustomContactProperties), required: false);
+            var __workflow_requestBodyphoneNumberRegions = requestBodyphoneNumberRegions == null ? null : WorkflowExpression.Compile(requestBodyphoneNumberRegions);
+            WorkflowExpression.Validate(__workflow_requestBodyphoneNumberRegions, nameof(requestBodyphoneNumberRegions), required: false);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groupcontact/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(customer, 1), ExpressionConverter.ConvertWithUrlEncoding(groupService, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groupcontact/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_customer, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupService, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var requestBody = new JObject();
                 var requestBodypropCount = 0;
-                if (requestBodyactive != null)
+                if (__workflow_requestBodyactive != null)
                 {
-                    if (requestBodyactive != null)
+                    if (__workflow_requestBodyactive != null)
                     {
-                        requestBody["active"] = ExpressionConverter.ConvertO(requestBodyactive);
+                        requestBody["active"] = ExpressionConverter.ConvertO(__workflow_requestBodyactive);
                         requestBodypropCount++;
                     }
 
@@ -614,70 +632,70 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
                 }
 
                 requestBodypropCount++;
-                requestBody["phone"] = ExpressionConverter.ConvertO(requestBodyphone);
-                if (requestBodyemail != null)
+                requestBody["phone"] = ExpressionConverter.ConvertO(__workflow_requestBodyphone);
+                if (__workflow_requestBodyemail != null)
                 {
-                    requestBody["email"] = ExpressionConverter.ConvertO(requestBodyemail);
+                    requestBody["email"] = ExpressionConverter.ConvertO(__workflow_requestBodyemail);
                     requestBodypropCount++;
                 }
 
-                if (requestBodyfirstName != null)
+                if (__workflow_requestBodyfirstName != null)
                 {
-                    requestBody["firstName"] = ExpressionConverter.ConvertO(requestBodyfirstName);
+                    requestBody["firstName"] = ExpressionConverter.ConvertO(__workflow_requestBodyfirstName);
                     requestBodypropCount++;
                 }
 
-                if (requestBodylastName != null)
+                if (__workflow_requestBodylastName != null)
                 {
-                    requestBody["lastName"] = ExpressionConverter.ConvertO(requestBodylastName);
+                    requestBody["lastName"] = ExpressionConverter.ConvertO(__workflow_requestBodylastName);
                     requestBodypropCount++;
                 }
 
-                if (requestBodygender != null)
+                if (__workflow_requestBodygender != null)
                 {
-                    requestBody["gender"] = ExpressionConverter.ConvertO(requestBodygender);
+                    requestBody["gender"] = ExpressionConverter.ConvertO(__workflow_requestBodygender);
                     requestBodypropCount++;
                 }
 
-                if (requestBodybirthYear != null)
+                if (__workflow_requestBodybirthYear != null)
                 {
-                    requestBody["birthYear"] = ExpressionConverter.ConvertO(requestBodybirthYear);
+                    requestBody["birthYear"] = ExpressionConverter.ConvertO(__workflow_requestBodybirthYear);
                     requestBodypropCount++;
                 }
 
-                if (requestBodystreetAddress != null)
+                if (__workflow_requestBodystreetAddress != null)
                 {
-                    requestBody["streetAddress"] = ExpressionConverter.ConvertO(requestBodystreetAddress);
+                    requestBody["streetAddress"] = ExpressionConverter.ConvertO(__workflow_requestBodystreetAddress);
                     requestBodypropCount++;
                 }
 
-                if (requestBodyzipCode != null)
+                if (__workflow_requestBodyzipCode != null)
                 {
-                    requestBody["zipCode"] = ExpressionConverter.ConvertO(requestBodyzipCode);
+                    requestBody["zipCode"] = ExpressionConverter.ConvertO(__workflow_requestBodyzipCode);
                     requestBodypropCount++;
                 }
 
-                if (requestBodycity != null)
+                if (__workflow_requestBodycity != null)
                 {
-                    requestBody["city"] = ExpressionConverter.ConvertO(requestBodycity);
+                    requestBody["city"] = ExpressionConverter.ConvertO(__workflow_requestBodycity);
                     requestBodypropCount++;
                 }
 
-                if (requestBodycountryCode != null)
+                if (__workflow_requestBodycountryCode != null)
                 {
-                    requestBody["countryCode"] = ExpressionConverter.ConvertO(requestBodycountryCode);
+                    requestBody["countryCode"] = ExpressionConverter.ConvertO(__workflow_requestBodycountryCode);
                     requestBodypropCount++;
                 }
 
-                if (requestBodycustomContactProperties != null)
+                if (__workflow_requestBodycustomContactProperties != null)
                 {
-                    requestBody["customContactProperties"] = ExpressionConverter.ConvertO(requestBodycustomContactProperties);
+                    requestBody["customContactProperties"] = ExpressionConverter.ConvertO(__workflow_requestBodycustomContactProperties);
                     requestBodypropCount++;
                 }
 
-                if (requestBodyphoneNumberRegions != null)
+                if (__workflow_requestBodyphoneNumberRegions != null)
                 {
-                    requestBody["phoneNumberRegions"] = ExpressionConverter.ConvertO(requestBodyphoneNumberRegions);
+                    requestBody["phoneNumberRegions"] = ExpressionConverter.ConvertO(__workflow_requestBodyphoneNumberRegions);
                     requestBodypropCount++;
                 }
 
@@ -693,24 +711,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
 
     public class SmartdialogTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildNewMessage))]
-        public IBodyWorkflowTrigger<NewMessageResponse> NewMessage([WorkflowExpression] Func<string> customer,[WorkflowExpression] Func<string> service,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewMessageResponse> NewMessage(Expression<Func<string>> customer, Expression<Func<string>> service, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<NewMessageResponse> __BuildNewMessage(WorkflowExpression<string> customer,WorkflowExpression<string> service,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(customer, nameof(customer), required: true);
-            WorkflowExpression.Validate(service, nameof(service), required: true);
+            var __workflow_customer = customer == null ? null : WorkflowExpression.Compile(customer);
+            WorkflowExpression.Validate(__workflow_customer, nameof(customer), required: true);
+            var __workflow_service = service == null ? null : WorkflowExpression.Compile(service);
+            WorkflowExpression.Validate(__workflow_service, nameof(service), required: true);
             return new DeferredBodyTrigger<NewMessageResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/service/{0}/pipelines/actions", ExpressionConverter.ConvertWithUrlEncoding(service, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/service/{0}/pipelines/actions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_service, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["Customer"] = ExpressionConverter.Convert(customer);
+                callPayload.Headers["Customer"] = ExpressionConverter.Convert(__workflow_customer);
                 var createWebhookRequestBody = new JObject();
                 var createWebhookRequestBodypropCount = 0;
                 createWebhookRequestBody["name"] = "PowerAutomate (Auto Created Webhook)";

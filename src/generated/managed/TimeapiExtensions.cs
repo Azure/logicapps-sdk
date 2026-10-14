@@ -1,77 +1,59 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class TimeapiActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
-        [WorkflowExpressionFactory(nameof(__BuildGetCurrentTime))]
-        public IBodyWorkflowAction<CurrentTime> GetCurrentTime([WorkflowExpression] Func<string> timeZone)
+        public IBodyWorkflowAction<CurrentTime> GetCurrentTime(Expression<Func<string>> timeZone)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CurrentTime> __BuildGetCurrentTime(WorkflowExpression<string> timeZone)
-        {
-            WorkflowExpression.Validate(timeZone, nameof(timeZone), required: true);
+            var __workflow_timeZone = timeZone == null ? null : WorkflowExpression.Compile(timeZone);
+            WorkflowExpression.Validate(__workflow_timeZone, nameof(timeZone), required: true);
             return new DeferredBodyAction<CurrentTime>(() =>
             {
                 var apiCallPath = "/Time/current/zone";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["timeZone"] = ExpressionConverter.Convert(timeZone);
+                callPayload.Queries["timeZone"] = ExpressionConverter.Convert(__workflow_timeZone);
                 return new ApiConnectionAction<CurrentTime>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
-        [WorkflowExpressionFactory(nameof(__BuildGetCurrentTimeByTimezone))]
-        public IBodyWorkflowAction<CurrentTime> GetCurrentTimeByTimezone([WorkflowExpression] Func<double> latitude, [WorkflowExpression] Func<double> longitude)
+        public IBodyWorkflowAction<CurrentTime> GetCurrentTimeByTimezone(Expression<Func<double>> latitude, Expression<Func<double>> longitude)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CurrentTime> __BuildGetCurrentTimeByTimezone(WorkflowExpression<double> latitude, WorkflowExpression<double> longitude)
-        {
-            WorkflowExpression.Validate(latitude, nameof(latitude), required: true);
-            WorkflowExpression.Validate(longitude, nameof(longitude), required: true);
+            var __workflow_latitude = latitude == null ? null : WorkflowExpression.Compile(latitude);
+            WorkflowExpression.Validate(__workflow_latitude, nameof(latitude), required: true);
+            var __workflow_longitude = longitude == null ? null : WorkflowExpression.Compile(longitude);
+            WorkflowExpression.Validate(__workflow_longitude, nameof(longitude), required: true);
             return new DeferredBodyAction<CurrentTime>(() =>
             {
                 var apiCallPath = "/Time/current/coordinate";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["latitude"] = ExpressionConverter.Convert(latitude);
-                callPayload.Queries["longitude"] = ExpressionConverter.Convert(longitude);
+                callPayload.Queries["latitude"] = ExpressionConverter.Convert(__workflow_latitude);
+                callPayload.Queries["longitude"] = ExpressionConverter.Convert(__workflow_longitude);
                 return new ApiConnectionAction<CurrentTime>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
-        [WorkflowExpressionFactory(nameof(__BuildGetCurrentTimeByIp))]
-        public IBodyWorkflowAction<CurrentTime> GetCurrentTimeByIp([WorkflowExpression] Func<string> ipAddress)
+        public IBodyWorkflowAction<CurrentTime> GetCurrentTimeByIp(Expression<Func<string>> ipAddress)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CurrentTime> __BuildGetCurrentTimeByIp(WorkflowExpression<string> ipAddress)
-        {
-            WorkflowExpression.Validate(ipAddress, nameof(ipAddress), required: true);
+            var __workflow_ipAddress = ipAddress == null ? null : WorkflowExpression.Compile(ipAddress);
+            WorkflowExpression.Validate(__workflow_ipAddress, nameof(ipAddress), required: true);
             return new DeferredBodyAction<CurrentTime>(() =>
             {
                 var apiCallPath = "/Time/current/ip";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["ipAddress"] = ExpressionConverter.Convert(ipAddress);
+                callPayload.Queries["ipAddress"] = ExpressionConverter.Convert(__workflow_ipAddress);
                 return new ApiConnectionAction<CurrentTime>(callPayload);
             });
         }
@@ -86,84 +68,64 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
-        [WorkflowExpressionFactory(nameof(__BuildGetTimezone))]
-        public IBodyWorkflowAction<TimeZoneData> GetTimezone([WorkflowExpression] Func<string> timeZone)
+        public IBodyWorkflowAction<TimeZoneData> GetTimezone(Expression<Func<string>> timeZone)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TimeZoneData> __BuildGetTimezone(WorkflowExpression<string> timeZone)
-        {
-            WorkflowExpression.Validate(timeZone, nameof(timeZone), required: true);
+            var __workflow_timeZone = timeZone == null ? null : WorkflowExpression.Compile(timeZone);
+            WorkflowExpression.Validate(__workflow_timeZone, nameof(timeZone), required: true);
             return new DeferredBodyAction<TimeZoneData>(() =>
             {
                 var apiCallPath = "/TimeZone/zone";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["timeZone"] = ExpressionConverter.Convert(timeZone);
+                callPayload.Queries["timeZone"] = ExpressionConverter.Convert(__workflow_timeZone);
                 return new ApiConnectionAction<TimeZoneData>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
-        [WorkflowExpressionFactory(nameof(__BuildGetTimezoneByCoordinate))]
-        public IBodyWorkflowAction<TimeZoneData> GetTimezoneByCoordinate([WorkflowExpression] Func<double> latitude, [WorkflowExpression] Func<double> longitude)
+        public IBodyWorkflowAction<TimeZoneData> GetTimezoneByCoordinate(Expression<Func<double>> latitude, Expression<Func<double>> longitude)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TimeZoneData> __BuildGetTimezoneByCoordinate(WorkflowExpression<double> latitude, WorkflowExpression<double> longitude)
-        {
-            WorkflowExpression.Validate(latitude, nameof(latitude), required: true);
-            WorkflowExpression.Validate(longitude, nameof(longitude), required: true);
+            var __workflow_latitude = latitude == null ? null : WorkflowExpression.Compile(latitude);
+            WorkflowExpression.Validate(__workflow_latitude, nameof(latitude), required: true);
+            var __workflow_longitude = longitude == null ? null : WorkflowExpression.Compile(longitude);
+            WorkflowExpression.Validate(__workflow_longitude, nameof(longitude), required: true);
             return new DeferredBodyAction<TimeZoneData>(() =>
             {
                 var apiCallPath = "/TimeZone/coordinate";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["latitude"] = ExpressionConverter.Convert(latitude);
-                callPayload.Queries["longitude"] = ExpressionConverter.Convert(longitude);
+                callPayload.Queries["latitude"] = ExpressionConverter.Convert(__workflow_latitude);
+                callPayload.Queries["longitude"] = ExpressionConverter.Convert(__workflow_longitude);
                 return new ApiConnectionAction<TimeZoneData>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
-        [WorkflowExpressionFactory(nameof(__BuildGetTimezoneByIp))]
-        public IBodyWorkflowAction<TimeZoneData> GetTimezoneByIp([WorkflowExpression] Func<string> ipAddress)
+        public IBodyWorkflowAction<TimeZoneData> GetTimezoneByIp(Expression<Func<string>> ipAddress)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TimeZoneData> __BuildGetTimezoneByIp(WorkflowExpression<string> ipAddress)
-        {
-            WorkflowExpression.Validate(ipAddress, nameof(ipAddress), required: true);
+            var __workflow_ipAddress = ipAddress == null ? null : WorkflowExpression.Compile(ipAddress);
+            WorkflowExpression.Validate(__workflow_ipAddress, nameof(ipAddress), required: true);
             return new DeferredBodyAction<TimeZoneData>(() =>
             {
                 var apiCallPath = "/TimeZone/ip";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["ipAddress"] = ExpressionConverter.Convert(ipAddress);
+                callPayload.Queries["ipAddress"] = ExpressionConverter.Convert(__workflow_ipAddress);
                 return new ApiConnectionAction<TimeZoneData>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
-        [WorkflowExpressionFactory(nameof(__BuildConvertTime))]
-        public IBodyWorkflowAction<Conversion> ConvertTime([WorkflowExpression] Func<string> bodyfromTimeZone, [WorkflowExpression] Func<string> bodydateTime, [WorkflowExpression] Func<string> bodytoTimeZone, [WorkflowExpression] Func<bodydstAmbiguityInput> bodydstAmbiguity)
+        public IBodyWorkflowAction<Conversion> ConvertTime(Expression<Func<string>> bodyfromTimeZone, Expression<Func<string>> bodydateTime, Expression<Func<string>> bodytoTimeZone, Expression<Func<bodydstAmbiguityInput>> bodydstAmbiguity)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Conversion> __BuildConvertTime(WorkflowExpression<string> bodyfromTimeZone, WorkflowExpression<string> bodydateTime, WorkflowExpression<string> bodytoTimeZone, WorkflowExpression<bodydstAmbiguityInput> bodydstAmbiguity)
-        {
-            WorkflowExpression.Validate(bodyfromTimeZone, nameof(bodyfromTimeZone), required: true);
-            WorkflowExpression.Validate(bodydateTime, nameof(bodydateTime), required: true);
-            WorkflowExpression.Validate(bodytoTimeZone, nameof(bodytoTimeZone), required: true);
-            WorkflowExpression.Validate(bodydstAmbiguity, nameof(bodydstAmbiguity), required: true);
+            var __workflow_bodyfromTimeZone = bodyfromTimeZone == null ? null : WorkflowExpression.Compile(bodyfromTimeZone);
+            WorkflowExpression.Validate(__workflow_bodyfromTimeZone, nameof(bodyfromTimeZone), required: true);
+            var __workflow_bodydateTime = bodydateTime == null ? null : WorkflowExpression.Compile(bodydateTime);
+            WorkflowExpression.Validate(__workflow_bodydateTime, nameof(bodydateTime), required: true);
+            var __workflow_bodytoTimeZone = bodytoTimeZone == null ? null : WorkflowExpression.Compile(bodytoTimeZone);
+            WorkflowExpression.Validate(__workflow_bodytoTimeZone, nameof(bodytoTimeZone), required: true);
+            var __workflow_bodydstAmbiguity = bodydstAmbiguity == null ? null : WorkflowExpression.Compile(bodydstAmbiguity);
+            WorkflowExpression.Validate(__workflow_bodydstAmbiguity, nameof(bodydstAmbiguity), required: true);
             return new DeferredBodyAction<Conversion>(() =>
             {
                 var apiCallPath = "/Conversion/ConvertTimeZone";
@@ -172,13 +134,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["fromTimeZone"] = ExpressionConverter.ConvertO(bodyfromTimeZone);
+                body["fromTimeZone"] = ExpressionConverter.ConvertO(__workflow_bodyfromTimeZone);
                 bodypropCount++;
-                body["dateTime"] = ExpressionConverter.ConvertO(bodydateTime);
+                body["dateTime"] = ExpressionConverter.ConvertO(__workflow_bodydateTime);
                 bodypropCount++;
-                body["toTimeZone"] = ExpressionConverter.ConvertO(bodytoTimeZone);
+                body["toTimeZone"] = ExpressionConverter.ConvertO(__workflow_bodytoTimeZone);
                 bodypropCount++;
-                body["dstAmbiguity"] = ExpressionConverter.ConvertO(bodydstAmbiguity);
+                body["dstAmbiguity"] = ExpressionConverter.ConvertO(__workflow_bodydstAmbiguity);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -189,17 +151,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
-        [WorkflowExpressionFactory(nameof(__BuildLocalizeTime))]
-        public IBodyWorkflowAction<Translation> LocalizeTime([WorkflowExpression] Func<string> bodydateTime, [WorkflowExpression] Func<string> bodylanguageCode)
+        public IBodyWorkflowAction<Translation> LocalizeTime(Expression<Func<string>> bodydateTime, Expression<Func<string>> bodylanguageCode)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Translation> __BuildLocalizeTime(WorkflowExpression<string> bodydateTime, WorkflowExpression<string> bodylanguageCode)
-        {
-            WorkflowExpression.Validate(bodydateTime, nameof(bodydateTime), required: true);
-            WorkflowExpression.Validate(bodylanguageCode, nameof(bodylanguageCode), required: true);
+            var __workflow_bodydateTime = bodydateTime == null ? null : WorkflowExpression.Compile(bodydateTime);
+            WorkflowExpression.Validate(__workflow_bodydateTime, nameof(bodydateTime), required: true);
+            var __workflow_bodylanguageCode = bodylanguageCode == null ? null : WorkflowExpression.Compile(bodylanguageCode);
+            WorkflowExpression.Validate(__workflow_bodylanguageCode, nameof(bodylanguageCode), required: true);
             return new DeferredBodyAction<Translation>(() =>
             {
                 var apiCallPath = "/Conversion/Translate";
@@ -208,9 +165,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["dateTime"] = ExpressionConverter.ConvertO(bodydateTime);
+                body["dateTime"] = ExpressionConverter.ConvertO(__workflow_bodydateTime);
                 bodypropCount++;
-                body["languageCode"] = ExpressionConverter.ConvertO(bodylanguageCode);
+                body["languageCode"] = ExpressionConverter.ConvertO(__workflow_bodylanguageCode);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -221,19 +178,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
-        [WorkflowExpressionFactory(nameof(__BuildConvertTimeToDay))]
-        public IBodyWorkflowAction<DayOfTheWeekResult> ConvertTimeToDay([WorkflowExpression] Func<string> date)
+        public IBodyWorkflowAction<DayOfTheWeekResult> ConvertTimeToDay(Expression<Func<string>> date)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DayOfTheWeekResult> __BuildConvertTimeToDay(WorkflowExpression<string> date)
-        {
-            WorkflowExpression.Validate(date, nameof(date), required: true);
+            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
+            WorkflowExpression.Validate(__workflow_date, nameof(date), required: true);
             return new DeferredBodyAction<DayOfTheWeekResult>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Conversion/DayOfTheWeek/{0}", ExpressionConverter.ConvertWithUrlEncoding(date, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Conversion/DayOfTheWeek/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_date, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DayOfTheWeekResult>(callPayload);
@@ -241,19 +192,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
-        [WorkflowExpressionFactory(nameof(__BuildIncrementByTimespan))]
-        public IBodyWorkflowAction<Calculation> IncrementByTimespan([WorkflowExpression] Func<string> bodytimeZone, [WorkflowExpression] Func<string> bodydateTime, [WorkflowExpression] Func<string> bodytimeSpan, [WorkflowExpression] Func<bodydstAmbiguityInput> bodydstAmbiguity)
+        public IBodyWorkflowAction<Calculation> IncrementByTimespan(Expression<Func<string>> bodytimeZone, Expression<Func<string>> bodydateTime, Expression<Func<string>> bodytimeSpan, Expression<Func<bodydstAmbiguityInput>> bodydstAmbiguity)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Calculation> __BuildIncrementByTimespan(WorkflowExpression<string> bodytimeZone, WorkflowExpression<string> bodydateTime, WorkflowExpression<string> bodytimeSpan, WorkflowExpression<bodydstAmbiguityInput> bodydstAmbiguity)
-        {
-            WorkflowExpression.Validate(bodytimeZone, nameof(bodytimeZone), required: true);
-            WorkflowExpression.Validate(bodydateTime, nameof(bodydateTime), required: true);
-            WorkflowExpression.Validate(bodytimeSpan, nameof(bodytimeSpan), required: true);
-            WorkflowExpression.Validate(bodydstAmbiguity, nameof(bodydstAmbiguity), required: true);
+            var __workflow_bodytimeZone = bodytimeZone == null ? null : WorkflowExpression.Compile(bodytimeZone);
+            WorkflowExpression.Validate(__workflow_bodytimeZone, nameof(bodytimeZone), required: true);
+            var __workflow_bodydateTime = bodydateTime == null ? null : WorkflowExpression.Compile(bodydateTime);
+            WorkflowExpression.Validate(__workflow_bodydateTime, nameof(bodydateTime), required: true);
+            var __workflow_bodytimeSpan = bodytimeSpan == null ? null : WorkflowExpression.Compile(bodytimeSpan);
+            WorkflowExpression.Validate(__workflow_bodytimeSpan, nameof(bodytimeSpan), required: true);
+            var __workflow_bodydstAmbiguity = bodydstAmbiguity == null ? null : WorkflowExpression.Compile(bodydstAmbiguity);
+            WorkflowExpression.Validate(__workflow_bodydstAmbiguity, nameof(bodydstAmbiguity), required: true);
             return new DeferredBodyAction<Calculation>(() =>
             {
                 var apiCallPath = "/Calculation/custom/increment";
@@ -262,13 +210,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["timeZone"] = ExpressionConverter.ConvertO(bodytimeZone);
+                body["timeZone"] = ExpressionConverter.ConvertO(__workflow_bodytimeZone);
                 bodypropCount++;
-                body["dateTime"] = ExpressionConverter.ConvertO(bodydateTime);
+                body["dateTime"] = ExpressionConverter.ConvertO(__workflow_bodydateTime);
                 bodypropCount++;
-                body["timeSpan"] = ExpressionConverter.ConvertO(bodytimeSpan);
+                body["timeSpan"] = ExpressionConverter.ConvertO(__workflow_bodytimeSpan);
                 bodypropCount++;
-                body["dstAmbiguity"] = ExpressionConverter.ConvertO(bodydstAmbiguity);
+                body["dstAmbiguity"] = ExpressionConverter.ConvertO(__workflow_bodydstAmbiguity);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -279,19 +227,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
-        [WorkflowExpressionFactory(nameof(__BuildDecrementByTimespan))]
-        public IBodyWorkflowAction<Calculation> DecrementByTimespan([WorkflowExpression] Func<string> bodytimeZone, [WorkflowExpression] Func<string> bodydateTime, [WorkflowExpression] Func<string> bodytimeSpan, [WorkflowExpression] Func<bodydstAmbiguityInput> bodydstAmbiguity)
+        public IBodyWorkflowAction<Calculation> DecrementByTimespan(Expression<Func<string>> bodytimeZone, Expression<Func<string>> bodydateTime, Expression<Func<string>> bodytimeSpan, Expression<Func<bodydstAmbiguityInput>> bodydstAmbiguity)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Calculation> __BuildDecrementByTimespan(WorkflowExpression<string> bodytimeZone, WorkflowExpression<string> bodydateTime, WorkflowExpression<string> bodytimeSpan, WorkflowExpression<bodydstAmbiguityInput> bodydstAmbiguity)
-        {
-            WorkflowExpression.Validate(bodytimeZone, nameof(bodytimeZone), required: true);
-            WorkflowExpression.Validate(bodydateTime, nameof(bodydateTime), required: true);
-            WorkflowExpression.Validate(bodytimeSpan, nameof(bodytimeSpan), required: true);
-            WorkflowExpression.Validate(bodydstAmbiguity, nameof(bodydstAmbiguity), required: true);
+            var __workflow_bodytimeZone = bodytimeZone == null ? null : WorkflowExpression.Compile(bodytimeZone);
+            WorkflowExpression.Validate(__workflow_bodytimeZone, nameof(bodytimeZone), required: true);
+            var __workflow_bodydateTime = bodydateTime == null ? null : WorkflowExpression.Compile(bodydateTime);
+            WorkflowExpression.Validate(__workflow_bodydateTime, nameof(bodydateTime), required: true);
+            var __workflow_bodytimeSpan = bodytimeSpan == null ? null : WorkflowExpression.Compile(bodytimeSpan);
+            WorkflowExpression.Validate(__workflow_bodytimeSpan, nameof(bodytimeSpan), required: true);
+            var __workflow_bodydstAmbiguity = bodydstAmbiguity == null ? null : WorkflowExpression.Compile(bodydstAmbiguity);
+            WorkflowExpression.Validate(__workflow_bodydstAmbiguity, nameof(bodydstAmbiguity), required: true);
             return new DeferredBodyAction<Calculation>(() =>
             {
                 var apiCallPath = "/Calculation/custom/decrement";
@@ -300,13 +245,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["timeZone"] = ExpressionConverter.ConvertO(bodytimeZone);
+                body["timeZone"] = ExpressionConverter.ConvertO(__workflow_bodytimeZone);
                 bodypropCount++;
-                body["dateTime"] = ExpressionConverter.ConvertO(bodydateTime);
+                body["dateTime"] = ExpressionConverter.ConvertO(__workflow_bodydateTime);
                 bodypropCount++;
-                body["timeSpan"] = ExpressionConverter.ConvertO(bodytimeSpan);
+                body["timeSpan"] = ExpressionConverter.ConvertO(__workflow_bodytimeSpan);
                 bodypropCount++;
-                body["dstAmbiguity"] = ExpressionConverter.ConvertO(bodydstAmbiguity);
+                body["dstAmbiguity"] = ExpressionConverter.ConvertO(__workflow_bodydstAmbiguity);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

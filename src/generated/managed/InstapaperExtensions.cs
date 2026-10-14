@@ -1,27 +1,20 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class InstapaperActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
-        [WorkflowExpressionFactory(nameof(__BuildListBookmarksLiked))]
-        public IBodyWorkflowAction<BookmarksResponse> ListBookmarksLiked([WorkflowExpression] Func<string> readFilterreadFilter = null)
+        public IBodyWorkflowAction<BookmarksResponse> ListBookmarksLiked(Expression<Func<string>> readFilterreadFilter = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<BookmarksResponse> __BuildListBookmarksLiked(WorkflowExpression<string> readFilterreadFilter = null)
-        {
-            WorkflowExpression.Validate(readFilterreadFilter, nameof(readFilterreadFilter), required: false);
+            var __workflow_readFilterreadFilter = readFilterreadFilter == null ? null : WorkflowExpression.Compile(readFilterreadFilter);
+            WorkflowExpression.Validate(__workflow_readFilterreadFilter, nameof(readFilterreadFilter), required: false);
             return new DeferredBodyAction<BookmarksResponse>(() =>
             {
                 var apiCallPath = "/1/bookmarks/list/starred";
@@ -29,9 +22,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var readFilter = new JObject();
                 var readFilterpropCount = 0;
-                if (readFilterreadFilter != null)
+                if (__workflow_readFilterreadFilter != null)
                 {
-                    readFilter["readFilter"] = ExpressionConverter.ConvertO(readFilterreadFilter);
+                    readFilter["readFilter"] = ExpressionConverter.ConvertO(__workflow_readFilterreadFilter);
                     readFilterpropCount++;
                 }
 
@@ -45,17 +38,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
-        [WorkflowExpressionFactory(nameof(__BuildListBookmarksArchived))]
-        public IBodyWorkflowAction<BookmarksResponse> ListBookmarksArchived([WorkflowExpression] Func<filterslikedFilterDefaultAllInput> filterslikedFilterDefaultAll = null, [WorkflowExpression] Func<filtersreadFilterDefaultAllInput> filtersreadFilterDefaultAll = null)
+        public IBodyWorkflowAction<BookmarksResponse> ListBookmarksArchived(Expression<Func<filterslikedFilterDefaultAllInput>> filterslikedFilterDefaultAll = null, Expression<Func<filtersreadFilterDefaultAllInput>> filtersreadFilterDefaultAll = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<BookmarksResponse> __BuildListBookmarksArchived(WorkflowExpression<filterslikedFilterDefaultAllInput> filterslikedFilterDefaultAll = null, WorkflowExpression<filtersreadFilterDefaultAllInput> filtersreadFilterDefaultAll = null)
-        {
-            WorkflowExpression.Validate(filterslikedFilterDefaultAll, nameof(filterslikedFilterDefaultAll), required: false);
-            WorkflowExpression.Validate(filtersreadFilterDefaultAll, nameof(filtersreadFilterDefaultAll), required: false);
+            var __workflow_filterslikedFilterDefaultAll = filterslikedFilterDefaultAll == null ? null : WorkflowExpression.Compile(filterslikedFilterDefaultAll);
+            WorkflowExpression.Validate(__workflow_filterslikedFilterDefaultAll, nameof(filterslikedFilterDefaultAll), required: false);
+            var __workflow_filtersreadFilterDefaultAll = filtersreadFilterDefaultAll == null ? null : WorkflowExpression.Compile(filtersreadFilterDefaultAll);
+            WorkflowExpression.Validate(__workflow_filtersreadFilterDefaultAll, nameof(filtersreadFilterDefaultAll), required: false);
             return new DeferredBodyAction<BookmarksResponse>(() =>
             {
                 var apiCallPath = "/1/bookmarks/list/archive";
@@ -63,15 +51,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var filters = new JObject();
                 var filterspropCount = 0;
-                if (filterslikedFilterDefaultAll != null)
+                if (__workflow_filterslikedFilterDefaultAll != null)
                 {
-                    filters["likedFilter"] = ExpressionConverter.ConvertO(filterslikedFilterDefaultAll);
+                    filters["likedFilter"] = ExpressionConverter.ConvertO(__workflow_filterslikedFilterDefaultAll);
                     filterspropCount++;
                 }
 
-                if (filtersreadFilterDefaultAll != null)
+                if (__workflow_filtersreadFilterDefaultAll != null)
                 {
-                    filters["readFilter"] = ExpressionConverter.ConvertO(filtersreadFilterDefaultAll);
+                    filters["readFilter"] = ExpressionConverter.ConvertO(__workflow_filtersreadFilterDefaultAll);
                     filterspropCount++;
                 }
 
@@ -85,28 +73,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
-        [WorkflowExpressionFactory(nameof(__BuildListBookmarksInFolder))]
-        public IBodyWorkflowAction<BookmarksResponse> ListBookmarksInFolder([WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<likedFilterInput> likedFilter = null, [WorkflowExpression] Func<readFilterInput> readFilter = null)
+        public IBodyWorkflowAction<BookmarksResponse> ListBookmarksInFolder(Expression<Func<string>> folderId, Expression<Func<likedFilterInput>> likedFilter = null, Expression<Func<readFilterInput>> readFilter = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<BookmarksResponse> __BuildListBookmarksInFolder(WorkflowExpression<string> folderId, WorkflowExpression<likedFilterInput> likedFilter = null, WorkflowExpression<readFilterInput> readFilter = null)
-        {
-            WorkflowExpression.Validate(folderId, nameof(folderId), required: true);
-            WorkflowExpression.Validate(likedFilter, nameof(likedFilter), required: false);
-            WorkflowExpression.Validate(readFilter, nameof(readFilter), required: false);
+            var __workflow_folderId = folderId == null ? null : WorkflowExpression.Compile(folderId);
+            WorkflowExpression.Validate(__workflow_folderId, nameof(folderId), required: true);
+            var __workflow_likedFilter = likedFilter == null ? null : WorkflowExpression.Compile(likedFilter);
+            WorkflowExpression.Validate(__workflow_likedFilter, nameof(likedFilter), required: false);
+            var __workflow_readFilter = readFilter == null ? null : WorkflowExpression.Compile(readFilter);
+            WorkflowExpression.Validate(__workflow_readFilter, nameof(readFilter), required: false);
             return new DeferredBodyAction<BookmarksResponse>(() =>
             {
                 var apiCallPath = "/1/bookmarks/list/folder_id";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["folder_id"] = ExpressionConverter.Convert(folderId);
-                if (likedFilter != null)
-                    callPayload.Queries["likedFilter"] = ExpressionConverter.Convert(likedFilter);
-                if (readFilter != null)
-                    callPayload.Queries["readFilter"] = ExpressionConverter.Convert(readFilter);
+                callPayload.Queries["folder_id"] = ExpressionConverter.Convert(__workflow_folderId);
+                if (__workflow_likedFilter != null)
+                    callPayload.Queries["likedFilter"] = ExpressionConverter.Convert(__workflow_likedFilter);
+                if (__workflow_readFilter != null)
+                    callPayload.Queries["readFilter"] = ExpressionConverter.Convert(__workflow_readFilter);
                 return new ApiConnectionAction<BookmarksResponse>(callPayload);
             });
         }
@@ -121,19 +105,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
-        [WorkflowExpressionFactory(nameof(__BuildListHighlights))]
-        public IBodyWorkflowAction<HighlighstResponse> ListHighlights([WorkflowExpression] Func<string> bookmarkId)
+        public IBodyWorkflowAction<HighlighstResponse> ListHighlights(Expression<Func<string>> bookmarkId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<HighlighstResponse> __BuildListHighlights(WorkflowExpression<string> bookmarkId)
-        {
-            WorkflowExpression.Validate(bookmarkId, nameof(bookmarkId), required: true);
+            var __workflow_bookmarkId = bookmarkId == null ? null : WorkflowExpression.Compile(bookmarkId);
+            WorkflowExpression.Validate(__workflow_bookmarkId, nameof(bookmarkId), required: true);
             return new DeferredBodyAction<HighlighstResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1.1/bookmarks/{0}/highlights", ExpressionConverter.ConvertWithUrlEncoding(bookmarkId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1.1/bookmarks/{0}/highlights", ExpressionConverter.ConvertWithUrlEncoding(__workflow_bookmarkId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<HighlighstResponse>(callPayload);
@@ -141,191 +119,138 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
-        [WorkflowExpressionFactory(nameof(__BuildUnlikeBookmark))]
-        public IBodyWorkflowAction<BookmarkResponse> UnlikeBookmark([WorkflowExpression] Func<string> bookmarkId)
+        public IBodyWorkflowAction<BookmarkResponse> UnlikeBookmark(Expression<Func<string>> bookmarkId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<BookmarkResponse> __BuildUnlikeBookmark(WorkflowExpression<string> bookmarkId)
-        {
-            WorkflowExpression.Validate(bookmarkId, nameof(bookmarkId), required: true);
+            var __workflow_bookmarkId = bookmarkId == null ? null : WorkflowExpression.Compile(bookmarkId);
+            WorkflowExpression.Validate(__workflow_bookmarkId, nameof(bookmarkId), required: true);
             return new DeferredBodyAction<BookmarkResponse>(() =>
             {
                 var apiCallPath = "/1/bookmarks/unstar";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["bookmark_id"] = ExpressionConverter.Convert(bookmarkId);
+                callPayload.Queries["bookmark_id"] = ExpressionConverter.Convert(__workflow_bookmarkId);
                 return new ApiConnectionAction<BookmarkResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
-        [WorkflowExpressionFactory(nameof(__BuildLikeBookmark))]
-        public IBodyWorkflowAction<BookmarkResponse> LikeBookmark([WorkflowExpression] Func<string> bookmarkId)
+        public IBodyWorkflowAction<BookmarkResponse> LikeBookmark(Expression<Func<string>> bookmarkId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<BookmarkResponse> __BuildLikeBookmark(WorkflowExpression<string> bookmarkId)
-        {
-            WorkflowExpression.Validate(bookmarkId, nameof(bookmarkId), required: true);
+            var __workflow_bookmarkId = bookmarkId == null ? null : WorkflowExpression.Compile(bookmarkId);
+            WorkflowExpression.Validate(__workflow_bookmarkId, nameof(bookmarkId), required: true);
             return new DeferredBodyAction<BookmarkResponse>(() =>
             {
                 var apiCallPath = "/1/bookmarks/star";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["bookmark_id"] = ExpressionConverter.Convert(bookmarkId);
+                callPayload.Queries["bookmark_id"] = ExpressionConverter.Convert(__workflow_bookmarkId);
                 return new ApiConnectionAction<BookmarkResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
-        [WorkflowExpressionFactory(nameof(__BuildArchiveBookmark))]
-        public IBodyWorkflowAction<BookmarkResponse> ArchiveBookmark([WorkflowExpression] Func<string> bookmarkId)
+        public IBodyWorkflowAction<BookmarkResponse> ArchiveBookmark(Expression<Func<string>> bookmarkId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<BookmarkResponse> __BuildArchiveBookmark(WorkflowExpression<string> bookmarkId)
-        {
-            WorkflowExpression.Validate(bookmarkId, nameof(bookmarkId), required: true);
+            var __workflow_bookmarkId = bookmarkId == null ? null : WorkflowExpression.Compile(bookmarkId);
+            WorkflowExpression.Validate(__workflow_bookmarkId, nameof(bookmarkId), required: true);
             return new DeferredBodyAction<BookmarkResponse>(() =>
             {
                 var apiCallPath = "/1/bookmarks/archive";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["bookmark_id"] = ExpressionConverter.Convert(bookmarkId);
+                callPayload.Queries["bookmark_id"] = ExpressionConverter.Convert(__workflow_bookmarkId);
                 return new ApiConnectionAction<BookmarkResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
-        [WorkflowExpressionFactory(nameof(__BuildUnarchiveBookmark))]
-        public IBodyWorkflowAction<BookmarkResponse> UnarchiveBookmark([WorkflowExpression] Func<string> bookmarkId)
+        public IBodyWorkflowAction<BookmarkResponse> UnarchiveBookmark(Expression<Func<string>> bookmarkId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<BookmarkResponse> __BuildUnarchiveBookmark(WorkflowExpression<string> bookmarkId)
-        {
-            WorkflowExpression.Validate(bookmarkId, nameof(bookmarkId), required: true);
+            var __workflow_bookmarkId = bookmarkId == null ? null : WorkflowExpression.Compile(bookmarkId);
+            WorkflowExpression.Validate(__workflow_bookmarkId, nameof(bookmarkId), required: true);
             return new DeferredBodyAction<BookmarkResponse>(() =>
             {
                 var apiCallPath = "/1/bookmarks/unarchive";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["bookmark_id"] = ExpressionConverter.Convert(bookmarkId);
+                callPayload.Queries["bookmark_id"] = ExpressionConverter.Convert(__workflow_bookmarkId);
                 return new ApiConnectionAction<BookmarkResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteBookmark))]
-        public IBodyWorkflowAction<JToken> DeleteBookmark([WorkflowExpression] Func<string> bookmarkId)
+        public IBodyWorkflowAction<JToken> DeleteBookmark(Expression<Func<string>> bookmarkId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildDeleteBookmark(WorkflowExpression<string> bookmarkId)
-        {
-            WorkflowExpression.Validate(bookmarkId, nameof(bookmarkId), required: true);
+            var __workflow_bookmarkId = bookmarkId == null ? null : WorkflowExpression.Compile(bookmarkId);
+            WorkflowExpression.Validate(__workflow_bookmarkId, nameof(bookmarkId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/1/bookmarks/delete";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["bookmark_id"] = ExpressionConverter.Convert(bookmarkId);
+                callPayload.Queries["bookmark_id"] = ExpressionConverter.Convert(__workflow_bookmarkId);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
-        [WorkflowExpressionFactory(nameof(__BuildMarkReadBookmark))]
-        public IBodyWorkflowAction<JToken> MarkReadBookmark([WorkflowExpression] Func<string> bookmarkId)
+        public IBodyWorkflowAction<JToken> MarkReadBookmark(Expression<Func<string>> bookmarkId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildMarkReadBookmark(WorkflowExpression<string> bookmarkId)
-        {
-            WorkflowExpression.Validate(bookmarkId, nameof(bookmarkId), required: true);
+            var __workflow_bookmarkId = bookmarkId == null ? null : WorkflowExpression.Compile(bookmarkId);
+            WorkflowExpression.Validate(__workflow_bookmarkId, nameof(bookmarkId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/1/bookmarks/update_read_progress/read";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["bookmark_id"] = ExpressionConverter.Convert(bookmarkId);
+                callPayload.Queries["bookmark_id"] = ExpressionConverter.Convert(__workflow_bookmarkId);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
-        [WorkflowExpressionFactory(nameof(__BuildMarkUnreadBookmark))]
-        public IBodyWorkflowAction<JToken> MarkUnreadBookmark([WorkflowExpression] Func<string> bookmarkId)
+        public IBodyWorkflowAction<JToken> MarkUnreadBookmark(Expression<Func<string>> bookmarkId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildMarkUnreadBookmark(WorkflowExpression<string> bookmarkId)
-        {
-            WorkflowExpression.Validate(bookmarkId, nameof(bookmarkId), required: true);
+            var __workflow_bookmarkId = bookmarkId == null ? null : WorkflowExpression.Compile(bookmarkId);
+            WorkflowExpression.Validate(__workflow_bookmarkId, nameof(bookmarkId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/1/bookmarks/update_read_progress/unread";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["bookmark_id"] = ExpressionConverter.Convert(bookmarkId);
+                callPayload.Queries["bookmark_id"] = ExpressionConverter.Convert(__workflow_bookmarkId);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
-        [WorkflowExpressionFactory(nameof(__BuildAddHighlight))]
-        public IBodyWorkflowAction<HighlightResponse> AddHighlight([WorkflowExpression] Func<string> bookmarkId, [WorkflowExpression] Func<string> text)
+        public IBodyWorkflowAction<HighlightResponse> AddHighlight(Expression<Func<string>> bookmarkId, Expression<Func<string>> text)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<HighlightResponse> __BuildAddHighlight(WorkflowExpression<string> bookmarkId, WorkflowExpression<string> text)
-        {
-            WorkflowExpression.Validate(bookmarkId, nameof(bookmarkId), required: true);
-            WorkflowExpression.Validate(text, nameof(text), required: true);
+            var __workflow_bookmarkId = bookmarkId == null ? null : WorkflowExpression.Compile(bookmarkId);
+            WorkflowExpression.Validate(__workflow_bookmarkId, nameof(bookmarkId), required: true);
+            var __workflow_text = text == null ? null : WorkflowExpression.Compile(text);
+            WorkflowExpression.Validate(__workflow_text, nameof(text), required: true);
             return new DeferredBodyAction<HighlightResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1.1/bookmarks/{0}/highlight", ExpressionConverter.ConvertWithUrlEncoding(bookmarkId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1.1/bookmarks/{0}/highlight", ExpressionConverter.ConvertWithUrlEncoding(__workflow_bookmarkId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["text"] = ExpressionConverter.Convert(text);
+                callPayload.Queries["text"] = ExpressionConverter.Convert(__workflow_text);
                 return new ApiConnectionAction<HighlightResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateFolder))]
-        public IBodyWorkflowAction<FolderResponse> CreateFolder([WorkflowExpression] Func<string> title)
+        public IBodyWorkflowAction<FolderResponse> CreateFolder(Expression<Func<string>> title)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FolderResponse> __BuildCreateFolder(WorkflowExpression<string> title)
-        {
-            WorkflowExpression.Validate(title, nameof(title), required: true);
+            var __workflow_title = title == null ? null : WorkflowExpression.Compile(title);
+            WorkflowExpression.Validate(__workflow_title, nameof(title), required: true);
             return new DeferredBodyAction<FolderResponse>(() =>
             {
                 var apiCallPath = "/1/folders/add";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["title"] = ExpressionConverter.Convert(title);
+                callPayload.Queries["title"] = ExpressionConverter.Convert(__workflow_title);
                 return new ApiConnectionAction<FolderResponse>(callPayload);
             });
         }
@@ -333,43 +258,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
 
     public class InstapaperTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildOnBookmarkAdded))]
-        public IBodyWorkflowTrigger<BookmarksResponse> OnBookmarkAdded([WorkflowExpression] Func<string> folderId,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BookmarksResponse> OnBookmarkAdded(Expression<Func<string>> folderId, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<BookmarksResponse> __BuildOnBookmarkAdded(WorkflowExpression<string> folderId,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(folderId, nameof(folderId), required: true);
+            var __workflow_folderId = folderId == null ? null : WorkflowExpression.Compile(folderId);
+            WorkflowExpression.Validate(__workflow_folderId, nameof(folderId), required: true);
             return new DeferredBodyTrigger<BookmarksResponse>(() =>
             {
                 var apiCallPath = "/bookmark_folder_trigger/1/bookmarks/list/folder_id";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["folder_id"] = ExpressionConverter.Convert(folderId);
+                callPayload.Queries["folder_id"] = ExpressionConverter.Convert(__workflow_folderId);
                 return new ApiConnectionTrigger<BookmarksResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildOnBookmarkRemoved))]
-        public IBodyWorkflowTrigger<int[]> OnBookmarkRemoved([WorkflowExpression] Func<string> folderId,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<int[]> OnBookmarkRemoved(Expression<Func<string>> folderId, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<int[]> __BuildOnBookmarkRemoved(WorkflowExpression<string> folderId,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(folderId, nameof(folderId), required: true);
+            var __workflow_folderId = folderId == null ? null : WorkflowExpression.Compile(folderId);
+            WorkflowExpression.Validate(__workflow_folderId, nameof(folderId), required: true);
             return new DeferredBodyTrigger<int[]>(() =>
             {
                 var apiCallPath = "/bookmark_removed_folder_trigger/1/bookmarks/list/folder_id";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["folder_id"] = ExpressionConverter.Convert(folderId);
+                callPayload.Queries["folder_id"] = ExpressionConverter.Convert(__workflow_folderId);
                 return new ApiConnectionTrigger<int[]>(callPayload, recurrence: recurrence);
             });
         }
@@ -398,63 +310,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
             return new ApiConnectionTrigger<FoldersResponse>(callPayload, recurrence: recurrence);
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildOnBookmarkProgressUpdated))]
-        public IBodyWorkflowTrigger<BookmarksResponse> OnBookmarkProgressUpdated([WorkflowExpression] Func<string> folderId,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BookmarksResponse> OnBookmarkProgressUpdated(Expression<Func<string>> folderId, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<BookmarksResponse> __BuildOnBookmarkProgressUpdated(WorkflowExpression<string> folderId,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(folderId, nameof(folderId), required: true);
+            var __workflow_folderId = folderId == null ? null : WorkflowExpression.Compile(folderId);
+            WorkflowExpression.Validate(__workflow_folderId, nameof(folderId), required: true);
             return new DeferredBodyTrigger<BookmarksResponse>(() =>
             {
                 var apiCallPath = "/bookmark_progress_trigger/1/bookmarks/list/folder_id";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["folder_id"] = ExpressionConverter.Convert(folderId);
+                callPayload.Queries["folder_id"] = ExpressionConverter.Convert(__workflow_folderId);
                 return new ApiConnectionTrigger<BookmarksResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildOnBookmarkProgressRead))]
-        public IBodyWorkflowTrigger<BookmarksResponse> OnBookmarkProgressRead([WorkflowExpression] Func<string> folderId,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BookmarksResponse> OnBookmarkProgressRead(Expression<Func<string>> folderId, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<BookmarksResponse> __BuildOnBookmarkProgressRead(WorkflowExpression<string> folderId,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(folderId, nameof(folderId), required: true);
+            var __workflow_folderId = folderId == null ? null : WorkflowExpression.Compile(folderId);
+            WorkflowExpression.Validate(__workflow_folderId, nameof(folderId), required: true);
             return new DeferredBodyTrigger<BookmarksResponse>(() =>
             {
                 var apiCallPath = "/bookmark_progressread_trigger/1/bookmarks/list/folder_id";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["folder_id"] = ExpressionConverter.Convert(folderId);
+                callPayload.Queries["folder_id"] = ExpressionConverter.Convert(__workflow_folderId);
                 return new ApiConnectionTrigger<BookmarksResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildOnHighlightAdded))]
-        public IBodyWorkflowTrigger<HighlighstResponse> OnHighlightAdded([WorkflowExpression] Func<string> folderId,[WorkflowExpression] Func<string> bookmarkId,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<HighlighstResponse> OnHighlightAdded(Expression<Func<string>> folderId, Expression<Func<string>> bookmarkId, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<HighlighstResponse> __BuildOnHighlightAdded(WorkflowExpression<string> folderId,WorkflowExpression<string> bookmarkId,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(folderId, nameof(folderId), required: true);
-            WorkflowExpression.Validate(bookmarkId, nameof(bookmarkId), required: true);
+            var __workflow_folderId = folderId == null ? null : WorkflowExpression.Compile(folderId);
+            WorkflowExpression.Validate(__workflow_folderId, nameof(folderId), required: true);
+            var __workflow_bookmarkId = bookmarkId == null ? null : WorkflowExpression.Compile(bookmarkId);
+            WorkflowExpression.Validate(__workflow_bookmarkId, nameof(bookmarkId), required: true);
             return new DeferredBodyTrigger<HighlighstResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/highlight_added_trigger/1.1/bookmarks/{0}/highlights", ExpressionConverter.ConvertWithUrlEncoding(bookmarkId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/highlight_added_trigger/1.1/bookmarks/{0}/highlights", ExpressionConverter.ConvertWithUrlEncoding(__workflow_bookmarkId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["folder_id"] = ExpressionConverter.Convert(folderId);
+                callPayload.Queries["folder_id"] = ExpressionConverter.Convert(__workflow_folderId);
                 return new ApiConnectionTrigger<HighlighstResponse>(callPayload, recurrence: recurrence);
             });
         }

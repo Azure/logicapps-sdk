@@ -1,27 +1,20 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitly
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class BitlyActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitly")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateBitlink))]
-        public IBodyWorkflowAction<BitlinkV2> CreateBitlink([WorkflowExpression] Func<string> bodyuRL)
+        public IBodyWorkflowAction<BitlinkV2> CreateBitlink(Expression<Func<string>> bodyuRL)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<BitlinkV2> __BuildCreateBitlink(WorkflowExpression<string> bodyuRL)
-        {
-            WorkflowExpression.Validate(bodyuRL, nameof(bodyuRL), required: true);
+            var __workflow_bodyuRL = bodyuRL == null ? null : WorkflowExpression.Compile(bodyuRL);
+            WorkflowExpression.Validate(__workflow_bodyuRL, nameof(bodyuRL), required: true);
             return new DeferredBodyAction<BitlinkV2>(() =>
             {
                 var apiCallPath = "/shorten";
@@ -30,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitly
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["long_url"] = ExpressionConverter.ConvertO(bodyuRL);
+                body["long_url"] = ExpressionConverter.ConvertO(__workflow_bodyuRL);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -43,20 +36,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitly
 
     public class BitlyTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildOnBitlinkCreated))]
-        public IBodyWorkflowTrigger<OnBitlinkCreatedResponse> OnBitlinkCreated([WorkflowExpression] Func<string> id,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnBitlinkCreatedResponse> OnBitlinkCreated(Expression<Func<string>> id, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<OnBitlinkCreatedResponse> __BuildOnBitlinkCreated(WorkflowExpression<string> id,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyTrigger<OnBitlinkCreatedResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groups/{0}/bitlinks", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groups/{0}/bitlinks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionTrigger<OnBitlinkCreatedResponse>(callPayload, recurrence: recurrence);

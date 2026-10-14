@@ -1,12 +1,12 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class ImprezianActions([ConnectionName] string connectionId)
     {
@@ -20,21 +20,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        [WorkflowExpressionFactory(nameof(__BuildCampaignPostValue))]
-        public IBodyWorkflowAction<JToken> CampaignPostValue([WorkflowExpression] Func<string> bodydescription, [WorkflowExpression] Func<string> bodyexpires, [WorkflowExpression] Func<double> bodybudget, [WorkflowExpression] Func<string> bodystartdate = null, [WorkflowExpression] Func<string> bodypromotype = null, [WorkflowExpression] Func<string> bodymanager = null)
+        public IBodyWorkflowAction<JToken> CampaignPostValue(Expression<Func<string>> bodydescription, Expression<Func<string>> bodyexpires, Expression<Func<double>> bodybudget, Expression<Func<string>> bodystartdate = null, Expression<Func<string>> bodypromotype = null, Expression<Func<string>> bodymanager = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildCampaignPostValue(WorkflowExpression<string> bodydescription, WorkflowExpression<string> bodyexpires, WorkflowExpression<double> bodybudget, WorkflowExpression<string> bodystartdate = null, WorkflowExpression<string> bodypromotype = null, WorkflowExpression<string> bodymanager = null)
-        {
-            WorkflowExpression.Validate(bodydescription, nameof(bodydescription), required: true);
-            WorkflowExpression.Validate(bodyexpires, nameof(bodyexpires), required: true);
-            WorkflowExpression.Validate(bodybudget, nameof(bodybudget), required: true);
-            WorkflowExpression.Validate(bodystartdate, nameof(bodystartdate), required: false);
-            WorkflowExpression.Validate(bodypromotype, nameof(bodypromotype), required: false);
-            WorkflowExpression.Validate(bodymanager, nameof(bodymanager), required: false);
+            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
+            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: true);
+            var __workflow_bodyexpires = bodyexpires == null ? null : WorkflowExpression.Compile(bodyexpires);
+            WorkflowExpression.Validate(__workflow_bodyexpires, nameof(bodyexpires), required: true);
+            var __workflow_bodybudget = bodybudget == null ? null : WorkflowExpression.Compile(bodybudget);
+            WorkflowExpression.Validate(__workflow_bodybudget, nameof(bodybudget), required: true);
+            var __workflow_bodystartdate = bodystartdate == null ? null : WorkflowExpression.Compile(bodystartdate);
+            WorkflowExpression.Validate(__workflow_bodystartdate, nameof(bodystartdate), required: false);
+            var __workflow_bodypromotype = bodypromotype == null ? null : WorkflowExpression.Compile(bodypromotype);
+            WorkflowExpression.Validate(__workflow_bodypromotype, nameof(bodypromotype), required: false);
+            var __workflow_bodymanager = bodymanager == null ? null : WorkflowExpression.Compile(bodymanager);
+            WorkflowExpression.Validate(__workflow_bodymanager, nameof(bodymanager), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/api/Campaign";
@@ -43,26 +42,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
-                if (bodystartdate != null)
+                body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
+                if (__workflow_bodystartdate != null)
                 {
-                    body["startdate"] = ExpressionConverter.ConvertO(bodystartdate);
+                    body["startdate"] = ExpressionConverter.ConvertO(__workflow_bodystartdate);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["expires"] = ExpressionConverter.ConvertO(bodyexpires);
+                body["expires"] = ExpressionConverter.ConvertO(__workflow_bodyexpires);
                 bodypropCount++;
-                body["budget"] = ExpressionConverter.ConvertO(bodybudget);
-                if (bodypromotype != null)
+                body["budget"] = ExpressionConverter.ConvertO(__workflow_bodybudget);
+                if (__workflow_bodypromotype != null)
                 {
-                    body["promotype"] = ExpressionConverter.ConvertO(bodypromotype);
+                    body["promotype"] = ExpressionConverter.ConvertO(__workflow_bodypromotype);
                     bodypropCount++;
                 }
 
-                if (bodymanager != null)
+                if (__workflow_bodymanager != null)
                 {
-                    body["manager"] = ExpressionConverter.ConvertO(bodymanager);
+                    body["manager"] = ExpressionConverter.ConvertO(__workflow_bodymanager);
                     bodypropCount++;
                 }
 
@@ -76,19 +75,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        [WorkflowExpressionFactory(nameof(__BuildCampaignGetValue))]
-        public IBodyWorkflowAction<CampaignGetValueResponse> CampaignGetValue([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<CampaignGetValueResponse> CampaignGetValue(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CampaignGetValueResponse> __BuildCampaignGetValue(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<CampaignGetValueResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/Campaign/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/Campaign/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CampaignGetValueResponse>(callPayload);
@@ -96,62 +89,62 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        [WorkflowExpressionFactory(nameof(__BuildCampaignPutValue))]
-        public IBodyWorkflowAction<JToken> CampaignPutValue([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodystartdate = null, [WorkflowExpression] Func<string> bodyexpires = null, [WorkflowExpression] Func<double> bodybudget = null, [WorkflowExpression] Func<string> bodymanager = null, [WorkflowExpression] Func<bool> bodyhistory = null)
+        public IBodyWorkflowAction<JToken> CampaignPutValue(Expression<Func<string>> id, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodystartdate = null, Expression<Func<string>> bodyexpires = null, Expression<Func<double>> bodybudget = null, Expression<Func<string>> bodymanager = null, Expression<Func<bool>> bodyhistory = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildCampaignPutValue(WorkflowExpression<string> id, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodystartdate = null, WorkflowExpression<string> bodyexpires = null, WorkflowExpression<double> bodybudget = null, WorkflowExpression<string> bodymanager = null, WorkflowExpression<bool> bodyhistory = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            WorkflowExpression.Validate(bodystartdate, nameof(bodystartdate), required: false);
-            WorkflowExpression.Validate(bodyexpires, nameof(bodyexpires), required: false);
-            WorkflowExpression.Validate(bodybudget, nameof(bodybudget), required: false);
-            WorkflowExpression.Validate(bodymanager, nameof(bodymanager), required: false);
-            WorkflowExpression.Validate(bodyhistory, nameof(bodyhistory), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
+            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodystartdate = bodystartdate == null ? null : WorkflowExpression.Compile(bodystartdate);
+            WorkflowExpression.Validate(__workflow_bodystartdate, nameof(bodystartdate), required: false);
+            var __workflow_bodyexpires = bodyexpires == null ? null : WorkflowExpression.Compile(bodyexpires);
+            WorkflowExpression.Validate(__workflow_bodyexpires, nameof(bodyexpires), required: false);
+            var __workflow_bodybudget = bodybudget == null ? null : WorkflowExpression.Compile(bodybudget);
+            WorkflowExpression.Validate(__workflow_bodybudget, nameof(bodybudget), required: false);
+            var __workflow_bodymanager = bodymanager == null ? null : WorkflowExpression.Compile(bodymanager);
+            WorkflowExpression.Validate(__workflow_bodymanager, nameof(bodymanager), required: false);
+            var __workflow_bodyhistory = bodyhistory == null ? null : WorkflowExpression.Compile(bodyhistory);
+            WorkflowExpression.Validate(__workflow_bodyhistory, nameof(bodyhistory), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/Campaign/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/Campaign/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodydescription != null)
+                if (__workflow_bodydescription != null)
                 {
-                    body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
                     bodypropCount++;
                 }
 
-                if (bodystartdate != null)
+                if (__workflow_bodystartdate != null)
                 {
-                    body["startdate"] = ExpressionConverter.ConvertO(bodystartdate);
+                    body["startdate"] = ExpressionConverter.ConvertO(__workflow_bodystartdate);
                     bodypropCount++;
                 }
 
-                if (bodyexpires != null)
+                if (__workflow_bodyexpires != null)
                 {
-                    body["expires"] = ExpressionConverter.ConvertO(bodyexpires);
+                    body["expires"] = ExpressionConverter.ConvertO(__workflow_bodyexpires);
                     bodypropCount++;
                 }
 
-                if (bodybudget != null)
+                if (__workflow_bodybudget != null)
                 {
-                    body["budget"] = ExpressionConverter.ConvertO(bodybudget);
+                    body["budget"] = ExpressionConverter.ConvertO(__workflow_bodybudget);
                     bodypropCount++;
                 }
 
-                if (bodymanager != null)
+                if (__workflow_bodymanager != null)
                 {
-                    body["manager"] = ExpressionConverter.ConvertO(bodymanager);
+                    body["manager"] = ExpressionConverter.ConvertO(__workflow_bodymanager);
                     bodypropCount++;
                 }
 
-                if (bodyhistory != null)
+                if (__workflow_bodyhistory != null)
                 {
-                    body["history"] = ExpressionConverter.ConvertO(bodyhistory);
+                    body["history"] = ExpressionConverter.ConvertO(__workflow_bodyhistory);
                     bodypropCount++;
                 }
 
@@ -174,29 +167,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        [WorkflowExpressionFactory(nameof(__BuildComLogPostValue))]
-        public IBodyWorkflowAction<JToken> ComLogPostValue([WorkflowExpression] Func<string> bodycontactid = null, [WorkflowExpression] Func<string> bodyleadid = null, [WorkflowExpression] Func<bodytypeInput> bodytype = null, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<string> bodybody = null, [WorkflowExpression] Func<string> bodyemployee = null, [WorkflowExpression] Func<string> bodystarttime = null, [WorkflowExpression] Func<string> bodyendtime = null, [WorkflowExpression] Func<string> bodyworkorder = null, [WorkflowExpression] Func<string> bodyproject = null, [WorkflowExpression] Func<string> bodycampaign = null, [WorkflowExpression] Func<double> bodylength = null, [WorkflowExpression] Func<bool> bodybilled = null, [WorkflowExpression] Func<bool> bodyinbound = null)
+        public IBodyWorkflowAction<JToken> ComLogPostValue(Expression<Func<string>> bodycontactid = null, Expression<Func<string>> bodyleadid = null, Expression<Func<bodytypeInput>> bodytype = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodybody = null, Expression<Func<string>> bodyemployee = null, Expression<Func<string>> bodystarttime = null, Expression<Func<string>> bodyendtime = null, Expression<Func<string>> bodyworkorder = null, Expression<Func<string>> bodyproject = null, Expression<Func<string>> bodycampaign = null, Expression<Func<double>> bodylength = null, Expression<Func<bool>> bodybilled = null, Expression<Func<bool>> bodyinbound = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildComLogPostValue(WorkflowExpression<string> bodycontactid = null, WorkflowExpression<string> bodyleadid = null, WorkflowExpression<bodytypeInput> bodytype = null, WorkflowExpression<string> bodysubject = null, WorkflowExpression<string> bodybody = null, WorkflowExpression<string> bodyemployee = null, WorkflowExpression<string> bodystarttime = null, WorkflowExpression<string> bodyendtime = null, WorkflowExpression<string> bodyworkorder = null, WorkflowExpression<string> bodyproject = null, WorkflowExpression<string> bodycampaign = null, WorkflowExpression<double> bodylength = null, WorkflowExpression<bool> bodybilled = null, WorkflowExpression<bool> bodyinbound = null)
-        {
-            WorkflowExpression.Validate(bodycontactid, nameof(bodycontactid), required: false);
-            WorkflowExpression.Validate(bodyleadid, nameof(bodyleadid), required: false);
-            WorkflowExpression.Validate(bodytype, nameof(bodytype), required: false);
-            WorkflowExpression.Validate(bodysubject, nameof(bodysubject), required: false);
-            WorkflowExpression.Validate(bodybody, nameof(bodybody), required: false);
-            WorkflowExpression.Validate(bodyemployee, nameof(bodyemployee), required: false);
-            WorkflowExpression.Validate(bodystarttime, nameof(bodystarttime), required: false);
-            WorkflowExpression.Validate(bodyendtime, nameof(bodyendtime), required: false);
-            WorkflowExpression.Validate(bodyworkorder, nameof(bodyworkorder), required: false);
-            WorkflowExpression.Validate(bodyproject, nameof(bodyproject), required: false);
-            WorkflowExpression.Validate(bodycampaign, nameof(bodycampaign), required: false);
-            WorkflowExpression.Validate(bodylength, nameof(bodylength), required: false);
-            WorkflowExpression.Validate(bodybilled, nameof(bodybilled), required: false);
-            WorkflowExpression.Validate(bodyinbound, nameof(bodyinbound), required: false);
+            var __workflow_bodycontactid = bodycontactid == null ? null : WorkflowExpression.Compile(bodycontactid);
+            WorkflowExpression.Validate(__workflow_bodycontactid, nameof(bodycontactid), required: false);
+            var __workflow_bodyleadid = bodyleadid == null ? null : WorkflowExpression.Compile(bodyleadid);
+            WorkflowExpression.Validate(__workflow_bodyleadid, nameof(bodyleadid), required: false);
+            var __workflow_bodytype = bodytype == null ? null : WorkflowExpression.Compile(bodytype);
+            WorkflowExpression.Validate(__workflow_bodytype, nameof(bodytype), required: false);
+            var __workflow_bodysubject = bodysubject == null ? null : WorkflowExpression.Compile(bodysubject);
+            WorkflowExpression.Validate(__workflow_bodysubject, nameof(bodysubject), required: false);
+            var __workflow_bodybody = bodybody == null ? null : WorkflowExpression.Compile(bodybody);
+            WorkflowExpression.Validate(__workflow_bodybody, nameof(bodybody), required: false);
+            var __workflow_bodyemployee = bodyemployee == null ? null : WorkflowExpression.Compile(bodyemployee);
+            WorkflowExpression.Validate(__workflow_bodyemployee, nameof(bodyemployee), required: false);
+            var __workflow_bodystarttime = bodystarttime == null ? null : WorkflowExpression.Compile(bodystarttime);
+            WorkflowExpression.Validate(__workflow_bodystarttime, nameof(bodystarttime), required: false);
+            var __workflow_bodyendtime = bodyendtime == null ? null : WorkflowExpression.Compile(bodyendtime);
+            WorkflowExpression.Validate(__workflow_bodyendtime, nameof(bodyendtime), required: false);
+            var __workflow_bodyworkorder = bodyworkorder == null ? null : WorkflowExpression.Compile(bodyworkorder);
+            WorkflowExpression.Validate(__workflow_bodyworkorder, nameof(bodyworkorder), required: false);
+            var __workflow_bodyproject = bodyproject == null ? null : WorkflowExpression.Compile(bodyproject);
+            WorkflowExpression.Validate(__workflow_bodyproject, nameof(bodyproject), required: false);
+            var __workflow_bodycampaign = bodycampaign == null ? null : WorkflowExpression.Compile(bodycampaign);
+            WorkflowExpression.Validate(__workflow_bodycampaign, nameof(bodycampaign), required: false);
+            var __workflow_bodylength = bodylength == null ? null : WorkflowExpression.Compile(bodylength);
+            WorkflowExpression.Validate(__workflow_bodylength, nameof(bodylength), required: false);
+            var __workflow_bodybilled = bodybilled == null ? null : WorkflowExpression.Compile(bodybilled);
+            WorkflowExpression.Validate(__workflow_bodybilled, nameof(bodybilled), required: false);
+            var __workflow_bodyinbound = bodyinbound == null ? null : WorkflowExpression.Compile(bodyinbound);
+            WorkflowExpression.Validate(__workflow_bodyinbound, nameof(bodyinbound), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/api/ComLog";
@@ -204,87 +204,87 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodycontactid != null)
+                if (__workflow_bodycontactid != null)
                 {
-                    body["contactid"] = ExpressionConverter.ConvertO(bodycontactid);
+                    body["contactid"] = ExpressionConverter.ConvertO(__workflow_bodycontactid);
                     bodypropCount++;
                 }
 
-                if (bodyleadid != null)
+                if (__workflow_bodyleadid != null)
                 {
-                    body["leadid"] = ExpressionConverter.ConvertO(bodyleadid);
+                    body["leadid"] = ExpressionConverter.ConvertO(__workflow_bodyleadid);
                     bodypropCount++;
                 }
 
-                if (bodytype != null)
+                if (__workflow_bodytype != null)
                 {
-                    body["type"] = ExpressionConverter.ConvertO(bodytype);
+                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
                     bodypropCount++;
                 }
 
-                if (bodysubject != null)
+                if (__workflow_bodysubject != null)
                 {
-                    body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+                    body["subject"] = ExpressionConverter.ConvertO(__workflow_bodysubject);
                     bodypropCount++;
                 }
 
-                if (bodybody != null)
+                if (__workflow_bodybody != null)
                 {
-                    body["body"] = ExpressionConverter.ConvertO(bodybody);
+                    body["body"] = ExpressionConverter.ConvertO(__workflow_bodybody);
                     bodypropCount++;
                 }
 
-                if (bodyemployee != null)
+                if (__workflow_bodyemployee != null)
                 {
-                    body["employee"] = ExpressionConverter.ConvertO(bodyemployee);
+                    body["employee"] = ExpressionConverter.ConvertO(__workflow_bodyemployee);
                     bodypropCount++;
                 }
 
-                if (bodystarttime != null)
+                if (__workflow_bodystarttime != null)
                 {
-                    body["starttime"] = ExpressionConverter.ConvertO(bodystarttime);
+                    body["starttime"] = ExpressionConverter.ConvertO(__workflow_bodystarttime);
                     bodypropCount++;
                 }
 
-                if (bodyendtime != null)
+                if (__workflow_bodyendtime != null)
                 {
-                    body["endtime"] = ExpressionConverter.ConvertO(bodyendtime);
+                    body["endtime"] = ExpressionConverter.ConvertO(__workflow_bodyendtime);
                     bodypropCount++;
                 }
 
-                if (bodyworkorder != null)
+                if (__workflow_bodyworkorder != null)
                 {
-                    body["workorder"] = ExpressionConverter.ConvertO(bodyworkorder);
+                    body["workorder"] = ExpressionConverter.ConvertO(__workflow_bodyworkorder);
                     bodypropCount++;
                 }
 
-                if (bodyproject != null)
+                if (__workflow_bodyproject != null)
                 {
-                    body["project"] = ExpressionConverter.ConvertO(bodyproject);
+                    body["project"] = ExpressionConverter.ConvertO(__workflow_bodyproject);
                     bodypropCount++;
                 }
 
-                if (bodycampaign != null)
+                if (__workflow_bodycampaign != null)
                 {
-                    body["campaign"] = ExpressionConverter.ConvertO(bodycampaign);
+                    body["campaign"] = ExpressionConverter.ConvertO(__workflow_bodycampaign);
                     bodypropCount++;
                 }
 
-                if (bodylength != null)
+                if (__workflow_bodylength != null)
                 {
-                    body["length"] = ExpressionConverter.ConvertO(bodylength);
+                    body["length"] = ExpressionConverter.ConvertO(__workflow_bodylength);
                     bodypropCount++;
                 }
 
-                if (bodybilled != null)
+                if (__workflow_bodybilled != null)
                 {
-                    body["billed"] = ExpressionConverter.ConvertO(bodybilled);
+                    body["billed"] = ExpressionConverter.ConvertO(__workflow_bodybilled);
                     bodypropCount++;
                 }
 
-                if (bodyinbound != null)
+                if (__workflow_bodyinbound != null)
                 {
-                    body["inbound"] = ExpressionConverter.ConvertO(bodyinbound);
+                    body["inbound"] = ExpressionConverter.ConvertO(__workflow_bodyinbound);
                     bodypropCount++;
                 }
 
@@ -298,19 +298,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        [WorkflowExpressionFactory(nameof(__BuildComLogGetValue))]
-        public IBodyWorkflowAction<ComLogGetValueResponse> ComLogGetValue([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<ComLogGetValueResponse> ComLogGetValue(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ComLogGetValueResponse> __BuildComLogGetValue(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<ComLogGetValueResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ComLog/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ComLog/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ComLogGetValueResponse>(callPayload);
@@ -318,104 +312,110 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        [WorkflowExpressionFactory(nameof(__BuildComLogPutValue))]
-        public IWorkflowAction ComLogPutValue([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bodytypeInput> bodytype = null, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<string> bodybody = null, [WorkflowExpression] Func<string> bodyemployee = null, [WorkflowExpression] Func<string> bodystarttime = null, [WorkflowExpression] Func<string> bodyendtime = null, [WorkflowExpression] Func<string> bodyworkorder = null, [WorkflowExpression] Func<string> bodyproject = null, [WorkflowExpression] Func<string> bodycampaign = null, [WorkflowExpression] Func<double> bodylength = null, [WorkflowExpression] Func<bool> bodybilled = null, [WorkflowExpression] Func<bool> bodyinbound = null)
+        public IWorkflowAction ComLogPutValue(Expression<Func<string>> id, Expression<Func<bodytypeInput>> bodytype = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodybody = null, Expression<Func<string>> bodyemployee = null, Expression<Func<string>> bodystarttime = null, Expression<Func<string>> bodyendtime = null, Expression<Func<string>> bodyworkorder = null, Expression<Func<string>> bodyproject = null, Expression<Func<string>> bodycampaign = null, Expression<Func<double>> bodylength = null, Expression<Func<bool>> bodybilled = null, Expression<Func<bool>> bodyinbound = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildComLogPutValue(WorkflowExpression<string> id, WorkflowExpression<bodytypeInput> bodytype = null, WorkflowExpression<string> bodysubject = null, WorkflowExpression<string> bodybody = null, WorkflowExpression<string> bodyemployee = null, WorkflowExpression<string> bodystarttime = null, WorkflowExpression<string> bodyendtime = null, WorkflowExpression<string> bodyworkorder = null, WorkflowExpression<string> bodyproject = null, WorkflowExpression<string> bodycampaign = null, WorkflowExpression<double> bodylength = null, WorkflowExpression<bool> bodybilled = null, WorkflowExpression<bool> bodyinbound = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(bodytype, nameof(bodytype), required: false);
-            WorkflowExpression.Validate(bodysubject, nameof(bodysubject), required: false);
-            WorkflowExpression.Validate(bodybody, nameof(bodybody), required: false);
-            WorkflowExpression.Validate(bodyemployee, nameof(bodyemployee), required: false);
-            WorkflowExpression.Validate(bodystarttime, nameof(bodystarttime), required: false);
-            WorkflowExpression.Validate(bodyendtime, nameof(bodyendtime), required: false);
-            WorkflowExpression.Validate(bodyworkorder, nameof(bodyworkorder), required: false);
-            WorkflowExpression.Validate(bodyproject, nameof(bodyproject), required: false);
-            WorkflowExpression.Validate(bodycampaign, nameof(bodycampaign), required: false);
-            WorkflowExpression.Validate(bodylength, nameof(bodylength), required: false);
-            WorkflowExpression.Validate(bodybilled, nameof(bodybilled), required: false);
-            WorkflowExpression.Validate(bodyinbound, nameof(bodyinbound), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_bodytype = bodytype == null ? null : WorkflowExpression.Compile(bodytype);
+            WorkflowExpression.Validate(__workflow_bodytype, nameof(bodytype), required: false);
+            var __workflow_bodysubject = bodysubject == null ? null : WorkflowExpression.Compile(bodysubject);
+            WorkflowExpression.Validate(__workflow_bodysubject, nameof(bodysubject), required: false);
+            var __workflow_bodybody = bodybody == null ? null : WorkflowExpression.Compile(bodybody);
+            WorkflowExpression.Validate(__workflow_bodybody, nameof(bodybody), required: false);
+            var __workflow_bodyemployee = bodyemployee == null ? null : WorkflowExpression.Compile(bodyemployee);
+            WorkflowExpression.Validate(__workflow_bodyemployee, nameof(bodyemployee), required: false);
+            var __workflow_bodystarttime = bodystarttime == null ? null : WorkflowExpression.Compile(bodystarttime);
+            WorkflowExpression.Validate(__workflow_bodystarttime, nameof(bodystarttime), required: false);
+            var __workflow_bodyendtime = bodyendtime == null ? null : WorkflowExpression.Compile(bodyendtime);
+            WorkflowExpression.Validate(__workflow_bodyendtime, nameof(bodyendtime), required: false);
+            var __workflow_bodyworkorder = bodyworkorder == null ? null : WorkflowExpression.Compile(bodyworkorder);
+            WorkflowExpression.Validate(__workflow_bodyworkorder, nameof(bodyworkorder), required: false);
+            var __workflow_bodyproject = bodyproject == null ? null : WorkflowExpression.Compile(bodyproject);
+            WorkflowExpression.Validate(__workflow_bodyproject, nameof(bodyproject), required: false);
+            var __workflow_bodycampaign = bodycampaign == null ? null : WorkflowExpression.Compile(bodycampaign);
+            WorkflowExpression.Validate(__workflow_bodycampaign, nameof(bodycampaign), required: false);
+            var __workflow_bodylength = bodylength == null ? null : WorkflowExpression.Compile(bodylength);
+            WorkflowExpression.Validate(__workflow_bodylength, nameof(bodylength), required: false);
+            var __workflow_bodybilled = bodybilled == null ? null : WorkflowExpression.Compile(bodybilled);
+            WorkflowExpression.Validate(__workflow_bodybilled, nameof(bodybilled), required: false);
+            var __workflow_bodyinbound = bodyinbound == null ? null : WorkflowExpression.Compile(bodyinbound);
+            WorkflowExpression.Validate(__workflow_bodyinbound, nameof(bodyinbound), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ComLog/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ComLog/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodytype != null)
+                if (__workflow_bodytype != null)
                 {
-                    body["type"] = ExpressionConverter.ConvertO(bodytype);
+                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
                     bodypropCount++;
                 }
 
-                if (bodysubject != null)
+                if (__workflow_bodysubject != null)
                 {
-                    body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+                    body["subject"] = ExpressionConverter.ConvertO(__workflow_bodysubject);
                     bodypropCount++;
                 }
 
-                if (bodybody != null)
+                if (__workflow_bodybody != null)
                 {
-                    body["body"] = ExpressionConverter.ConvertO(bodybody);
+                    body["body"] = ExpressionConverter.ConvertO(__workflow_bodybody);
                     bodypropCount++;
                 }
 
-                if (bodyemployee != null)
+                if (__workflow_bodyemployee != null)
                 {
-                    body["employee"] = ExpressionConverter.ConvertO(bodyemployee);
+                    body["employee"] = ExpressionConverter.ConvertO(__workflow_bodyemployee);
                     bodypropCount++;
                 }
 
-                if (bodystarttime != null)
+                if (__workflow_bodystarttime != null)
                 {
-                    body["starttime"] = ExpressionConverter.ConvertO(bodystarttime);
+                    body["starttime"] = ExpressionConverter.ConvertO(__workflow_bodystarttime);
                     bodypropCount++;
                 }
 
-                if (bodyendtime != null)
+                if (__workflow_bodyendtime != null)
                 {
-                    body["endtime"] = ExpressionConverter.ConvertO(bodyendtime);
+                    body["endtime"] = ExpressionConverter.ConvertO(__workflow_bodyendtime);
                     bodypropCount++;
                 }
 
-                if (bodyworkorder != null)
+                if (__workflow_bodyworkorder != null)
                 {
-                    body["workorder"] = ExpressionConverter.ConvertO(bodyworkorder);
+                    body["workorder"] = ExpressionConverter.ConvertO(__workflow_bodyworkorder);
                     bodypropCount++;
                 }
 
-                if (bodyproject != null)
+                if (__workflow_bodyproject != null)
                 {
-                    body["project"] = ExpressionConverter.ConvertO(bodyproject);
+                    body["project"] = ExpressionConverter.ConvertO(__workflow_bodyproject);
                     bodypropCount++;
                 }
 
-                if (bodycampaign != null)
+                if (__workflow_bodycampaign != null)
                 {
-                    body["campaign"] = ExpressionConverter.ConvertO(bodycampaign);
+                    body["campaign"] = ExpressionConverter.ConvertO(__workflow_bodycampaign);
                     bodypropCount++;
                 }
 
-                if (bodylength != null)
+                if (__workflow_bodylength != null)
                 {
-                    body["length"] = ExpressionConverter.ConvertO(bodylength);
+                    body["length"] = ExpressionConverter.ConvertO(__workflow_bodylength);
                     bodypropCount++;
                 }
 
-                if (bodybilled != null)
+                if (__workflow_bodybilled != null)
                 {
-                    body["billed"] = ExpressionConverter.ConvertO(bodybilled);
+                    body["billed"] = ExpressionConverter.ConvertO(__workflow_bodybilled);
                     bodypropCount++;
                 }
 
-                if (bodyinbound != null)
+                if (__workflow_bodyinbound != null)
                 {
-                    body["inbound"] = ExpressionConverter.ConvertO(bodyinbound);
+                    body["inbound"] = ExpressionConverter.ConvertO(__workflow_bodyinbound);
                     bodypropCount++;
                 }
 
@@ -438,47 +438,72 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        [WorkflowExpressionFactory(nameof(__BuildContactPostValue))]
-        public IBodyWorkflowAction<JToken> ContactPostValue([WorkflowExpression] Func<string> bodyaccount = null, [WorkflowExpression] Func<string> bodysal = null, [WorkflowExpression] Func<string> bodyfirstname = null, [WorkflowExpression] Func<string> bodymiddlename = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodylastname = null, [WorkflowExpression] Func<string> bodycompany = null, [WorkflowExpression] Func<string> bodyaddr1 = null, [WorkflowExpression] Func<string> bodyaddr2 = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodystate = null, [WorkflowExpression] Func<string> bodypostal = null, [WorkflowExpression] Func<string> bodyemail1 = null, [WorkflowExpression] Func<string> bodyemail2 = null, [WorkflowExpression] Func<string> bodyemail3 = null, [WorkflowExpression] Func<string> bodyemail4 = null, [WorkflowExpression] Func<string> bodyphonetype1 = null, [WorkflowExpression] Func<string> bodyphone1 = null, [WorkflowExpression] Func<string> bodyphonetype2 = null, [WorkflowExpression] Func<string> bodyphone2 = null, [WorkflowExpression] Func<string> bodyphonetype3 = null, [WorkflowExpression] Func<string> bodyphone3 = null, [WorkflowExpression] Func<string> bodyphonetype4 = null, [WorkflowExpression] Func<string> bodyphone4 = null, [WorkflowExpression] Func<string> bodyremark = null, [WorkflowExpression] Func<string> bodynotes = null, [WorkflowExpression] Func<string> bodycampaign = null, [WorkflowExpression] Func<string> bodycategory = null, [WorkflowExpression] Func<string> bodymarket = null, [WorkflowExpression] Func<string> bodyterritory = null, [WorkflowExpression] Func<string> bodysalesrep = null, [WorkflowExpression] Func<string> bodylastcontact = null)
+        public IBodyWorkflowAction<JToken> ContactPostValue(Expression<Func<string>> bodyaccount = null, Expression<Func<string>> bodysal = null, Expression<Func<string>> bodyfirstname = null, Expression<Func<string>> bodymiddlename = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodylastname = null, Expression<Func<string>> bodycompany = null, Expression<Func<string>> bodyaddr1 = null, Expression<Func<string>> bodyaddr2 = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodypostal = null, Expression<Func<string>> bodyemail1 = null, Expression<Func<string>> bodyemail2 = null, Expression<Func<string>> bodyemail3 = null, Expression<Func<string>> bodyemail4 = null, Expression<Func<string>> bodyphonetype1 = null, Expression<Func<string>> bodyphone1 = null, Expression<Func<string>> bodyphonetype2 = null, Expression<Func<string>> bodyphone2 = null, Expression<Func<string>> bodyphonetype3 = null, Expression<Func<string>> bodyphone3 = null, Expression<Func<string>> bodyphonetype4 = null, Expression<Func<string>> bodyphone4 = null, Expression<Func<string>> bodyremark = null, Expression<Func<string>> bodynotes = null, Expression<Func<string>> bodycampaign = null, Expression<Func<string>> bodycategory = null, Expression<Func<string>> bodymarket = null, Expression<Func<string>> bodyterritory = null, Expression<Func<string>> bodysalesrep = null, Expression<Func<string>> bodylastcontact = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildContactPostValue(WorkflowExpression<string> bodyaccount = null, WorkflowExpression<string> bodysal = null, WorkflowExpression<string> bodyfirstname = null, WorkflowExpression<string> bodymiddlename = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodylastname = null, WorkflowExpression<string> bodycompany = null, WorkflowExpression<string> bodyaddr1 = null, WorkflowExpression<string> bodyaddr2 = null, WorkflowExpression<string> bodycity = null, WorkflowExpression<string> bodystate = null, WorkflowExpression<string> bodypostal = null, WorkflowExpression<string> bodyemail1 = null, WorkflowExpression<string> bodyemail2 = null, WorkflowExpression<string> bodyemail3 = null, WorkflowExpression<string> bodyemail4 = null, WorkflowExpression<string> bodyphonetype1 = null, WorkflowExpression<string> bodyphone1 = null, WorkflowExpression<string> bodyphonetype2 = null, WorkflowExpression<string> bodyphone2 = null, WorkflowExpression<string> bodyphonetype3 = null, WorkflowExpression<string> bodyphone3 = null, WorkflowExpression<string> bodyphonetype4 = null, WorkflowExpression<string> bodyphone4 = null, WorkflowExpression<string> bodyremark = null, WorkflowExpression<string> bodynotes = null, WorkflowExpression<string> bodycampaign = null, WorkflowExpression<string> bodycategory = null, WorkflowExpression<string> bodymarket = null, WorkflowExpression<string> bodyterritory = null, WorkflowExpression<string> bodysalesrep = null, WorkflowExpression<string> bodylastcontact = null)
-        {
-            WorkflowExpression.Validate(bodyaccount, nameof(bodyaccount), required: false);
-            WorkflowExpression.Validate(bodysal, nameof(bodysal), required: false);
-            WorkflowExpression.Validate(bodyfirstname, nameof(bodyfirstname), required: false);
-            WorkflowExpression.Validate(bodymiddlename, nameof(bodymiddlename), required: false);
-            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            WorkflowExpression.Validate(bodylastname, nameof(bodylastname), required: false);
-            WorkflowExpression.Validate(bodycompany, nameof(bodycompany), required: false);
-            WorkflowExpression.Validate(bodyaddr1, nameof(bodyaddr1), required: false);
-            WorkflowExpression.Validate(bodyaddr2, nameof(bodyaddr2), required: false);
-            WorkflowExpression.Validate(bodycity, nameof(bodycity), required: false);
-            WorkflowExpression.Validate(bodystate, nameof(bodystate), required: false);
-            WorkflowExpression.Validate(bodypostal, nameof(bodypostal), required: false);
-            WorkflowExpression.Validate(bodyemail1, nameof(bodyemail1), required: false);
-            WorkflowExpression.Validate(bodyemail2, nameof(bodyemail2), required: false);
-            WorkflowExpression.Validate(bodyemail3, nameof(bodyemail3), required: false);
-            WorkflowExpression.Validate(bodyemail4, nameof(bodyemail4), required: false);
-            WorkflowExpression.Validate(bodyphonetype1, nameof(bodyphonetype1), required: false);
-            WorkflowExpression.Validate(bodyphone1, nameof(bodyphone1), required: false);
-            WorkflowExpression.Validate(bodyphonetype2, nameof(bodyphonetype2), required: false);
-            WorkflowExpression.Validate(bodyphone2, nameof(bodyphone2), required: false);
-            WorkflowExpression.Validate(bodyphonetype3, nameof(bodyphonetype3), required: false);
-            WorkflowExpression.Validate(bodyphone3, nameof(bodyphone3), required: false);
-            WorkflowExpression.Validate(bodyphonetype4, nameof(bodyphonetype4), required: false);
-            WorkflowExpression.Validate(bodyphone4, nameof(bodyphone4), required: false);
-            WorkflowExpression.Validate(bodyremark, nameof(bodyremark), required: false);
-            WorkflowExpression.Validate(bodynotes, nameof(bodynotes), required: false);
-            WorkflowExpression.Validate(bodycampaign, nameof(bodycampaign), required: false);
-            WorkflowExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            WorkflowExpression.Validate(bodymarket, nameof(bodymarket), required: false);
-            WorkflowExpression.Validate(bodyterritory, nameof(bodyterritory), required: false);
-            WorkflowExpression.Validate(bodysalesrep, nameof(bodysalesrep), required: false);
-            WorkflowExpression.Validate(bodylastcontact, nameof(bodylastcontact), required: false);
+            var __workflow_bodyaccount = bodyaccount == null ? null : WorkflowExpression.Compile(bodyaccount);
+            WorkflowExpression.Validate(__workflow_bodyaccount, nameof(bodyaccount), required: false);
+            var __workflow_bodysal = bodysal == null ? null : WorkflowExpression.Compile(bodysal);
+            WorkflowExpression.Validate(__workflow_bodysal, nameof(bodysal), required: false);
+            var __workflow_bodyfirstname = bodyfirstname == null ? null : WorkflowExpression.Compile(bodyfirstname);
+            WorkflowExpression.Validate(__workflow_bodyfirstname, nameof(bodyfirstname), required: false);
+            var __workflow_bodymiddlename = bodymiddlename == null ? null : WorkflowExpression.Compile(bodymiddlename);
+            WorkflowExpression.Validate(__workflow_bodymiddlename, nameof(bodymiddlename), required: false);
+            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
+            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodylastname = bodylastname == null ? null : WorkflowExpression.Compile(bodylastname);
+            WorkflowExpression.Validate(__workflow_bodylastname, nameof(bodylastname), required: false);
+            var __workflow_bodycompany = bodycompany == null ? null : WorkflowExpression.Compile(bodycompany);
+            WorkflowExpression.Validate(__workflow_bodycompany, nameof(bodycompany), required: false);
+            var __workflow_bodyaddr1 = bodyaddr1 == null ? null : WorkflowExpression.Compile(bodyaddr1);
+            WorkflowExpression.Validate(__workflow_bodyaddr1, nameof(bodyaddr1), required: false);
+            var __workflow_bodyaddr2 = bodyaddr2 == null ? null : WorkflowExpression.Compile(bodyaddr2);
+            WorkflowExpression.Validate(__workflow_bodyaddr2, nameof(bodyaddr2), required: false);
+            var __workflow_bodycity = bodycity == null ? null : WorkflowExpression.Compile(bodycity);
+            WorkflowExpression.Validate(__workflow_bodycity, nameof(bodycity), required: false);
+            var __workflow_bodystate = bodystate == null ? null : WorkflowExpression.Compile(bodystate);
+            WorkflowExpression.Validate(__workflow_bodystate, nameof(bodystate), required: false);
+            var __workflow_bodypostal = bodypostal == null ? null : WorkflowExpression.Compile(bodypostal);
+            WorkflowExpression.Validate(__workflow_bodypostal, nameof(bodypostal), required: false);
+            var __workflow_bodyemail1 = bodyemail1 == null ? null : WorkflowExpression.Compile(bodyemail1);
+            WorkflowExpression.Validate(__workflow_bodyemail1, nameof(bodyemail1), required: false);
+            var __workflow_bodyemail2 = bodyemail2 == null ? null : WorkflowExpression.Compile(bodyemail2);
+            WorkflowExpression.Validate(__workflow_bodyemail2, nameof(bodyemail2), required: false);
+            var __workflow_bodyemail3 = bodyemail3 == null ? null : WorkflowExpression.Compile(bodyemail3);
+            WorkflowExpression.Validate(__workflow_bodyemail3, nameof(bodyemail3), required: false);
+            var __workflow_bodyemail4 = bodyemail4 == null ? null : WorkflowExpression.Compile(bodyemail4);
+            WorkflowExpression.Validate(__workflow_bodyemail4, nameof(bodyemail4), required: false);
+            var __workflow_bodyphonetype1 = bodyphonetype1 == null ? null : WorkflowExpression.Compile(bodyphonetype1);
+            WorkflowExpression.Validate(__workflow_bodyphonetype1, nameof(bodyphonetype1), required: false);
+            var __workflow_bodyphone1 = bodyphone1 == null ? null : WorkflowExpression.Compile(bodyphone1);
+            WorkflowExpression.Validate(__workflow_bodyphone1, nameof(bodyphone1), required: false);
+            var __workflow_bodyphonetype2 = bodyphonetype2 == null ? null : WorkflowExpression.Compile(bodyphonetype2);
+            WorkflowExpression.Validate(__workflow_bodyphonetype2, nameof(bodyphonetype2), required: false);
+            var __workflow_bodyphone2 = bodyphone2 == null ? null : WorkflowExpression.Compile(bodyphone2);
+            WorkflowExpression.Validate(__workflow_bodyphone2, nameof(bodyphone2), required: false);
+            var __workflow_bodyphonetype3 = bodyphonetype3 == null ? null : WorkflowExpression.Compile(bodyphonetype3);
+            WorkflowExpression.Validate(__workflow_bodyphonetype3, nameof(bodyphonetype3), required: false);
+            var __workflow_bodyphone3 = bodyphone3 == null ? null : WorkflowExpression.Compile(bodyphone3);
+            WorkflowExpression.Validate(__workflow_bodyphone3, nameof(bodyphone3), required: false);
+            var __workflow_bodyphonetype4 = bodyphonetype4 == null ? null : WorkflowExpression.Compile(bodyphonetype4);
+            WorkflowExpression.Validate(__workflow_bodyphonetype4, nameof(bodyphonetype4), required: false);
+            var __workflow_bodyphone4 = bodyphone4 == null ? null : WorkflowExpression.Compile(bodyphone4);
+            WorkflowExpression.Validate(__workflow_bodyphone4, nameof(bodyphone4), required: false);
+            var __workflow_bodyremark = bodyremark == null ? null : WorkflowExpression.Compile(bodyremark);
+            WorkflowExpression.Validate(__workflow_bodyremark, nameof(bodyremark), required: false);
+            var __workflow_bodynotes = bodynotes == null ? null : WorkflowExpression.Compile(bodynotes);
+            WorkflowExpression.Validate(__workflow_bodynotes, nameof(bodynotes), required: false);
+            var __workflow_bodycampaign = bodycampaign == null ? null : WorkflowExpression.Compile(bodycampaign);
+            WorkflowExpression.Validate(__workflow_bodycampaign, nameof(bodycampaign), required: false);
+            var __workflow_bodycategory = bodycategory == null ? null : WorkflowExpression.Compile(bodycategory);
+            WorkflowExpression.Validate(__workflow_bodycategory, nameof(bodycategory), required: false);
+            var __workflow_bodymarket = bodymarket == null ? null : WorkflowExpression.Compile(bodymarket);
+            WorkflowExpression.Validate(__workflow_bodymarket, nameof(bodymarket), required: false);
+            var __workflow_bodyterritory = bodyterritory == null ? null : WorkflowExpression.Compile(bodyterritory);
+            WorkflowExpression.Validate(__workflow_bodyterritory, nameof(bodyterritory), required: false);
+            var __workflow_bodysalesrep = bodysalesrep == null ? null : WorkflowExpression.Compile(bodysalesrep);
+            WorkflowExpression.Validate(__workflow_bodysalesrep, nameof(bodysalesrep), required: false);
+            var __workflow_bodylastcontact = bodylastcontact == null ? null : WorkflowExpression.Compile(bodylastcontact);
+            WorkflowExpression.Validate(__workflow_bodylastcontact, nameof(bodylastcontact), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/api/Contact";
@@ -486,195 +511,195 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyaccount != null)
+                if (__workflow_bodyaccount != null)
                 {
-                    body["account"] = ExpressionConverter.ConvertO(bodyaccount);
+                    body["account"] = ExpressionConverter.ConvertO(__workflow_bodyaccount);
                     bodypropCount++;
                 }
 
-                if (bodysal != null)
+                if (__workflow_bodysal != null)
                 {
-                    body["sal"] = ExpressionConverter.ConvertO(bodysal);
+                    body["sal"] = ExpressionConverter.ConvertO(__workflow_bodysal);
                     bodypropCount++;
                 }
 
-                if (bodyfirstname != null)
+                if (__workflow_bodyfirstname != null)
                 {
-                    body["firstname"] = ExpressionConverter.ConvertO(bodyfirstname);
+                    body["firstname"] = ExpressionConverter.ConvertO(__workflow_bodyfirstname);
                     bodypropCount++;
                 }
 
-                if (bodymiddlename != null)
+                if (__workflow_bodymiddlename != null)
                 {
-                    body["middlename"] = ExpressionConverter.ConvertO(bodymiddlename);
+                    body["middlename"] = ExpressionConverter.ConvertO(__workflow_bodymiddlename);
                     bodypropCount++;
                 }
 
-                if (bodytitle != null)
+                if (__workflow_bodytitle != null)
                 {
-                    body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
                     bodypropCount++;
                 }
 
-                if (bodylastname != null)
+                if (__workflow_bodylastname != null)
                 {
-                    body["lastname"] = ExpressionConverter.ConvertO(bodylastname);
+                    body["lastname"] = ExpressionConverter.ConvertO(__workflow_bodylastname);
                     bodypropCount++;
                 }
 
-                if (bodycompany != null)
+                if (__workflow_bodycompany != null)
                 {
-                    body["company"] = ExpressionConverter.ConvertO(bodycompany);
+                    body["company"] = ExpressionConverter.ConvertO(__workflow_bodycompany);
                     bodypropCount++;
                 }
 
-                if (bodyaddr1 != null)
+                if (__workflow_bodyaddr1 != null)
                 {
-                    body["addr1"] = ExpressionConverter.ConvertO(bodyaddr1);
+                    body["addr1"] = ExpressionConverter.ConvertO(__workflow_bodyaddr1);
                     bodypropCount++;
                 }
 
-                if (bodyaddr2 != null)
+                if (__workflow_bodyaddr2 != null)
                 {
-                    body["addr2"] = ExpressionConverter.ConvertO(bodyaddr2);
+                    body["addr2"] = ExpressionConverter.ConvertO(__workflow_bodyaddr2);
                     bodypropCount++;
                 }
 
-                if (bodycity != null)
+                if (__workflow_bodycity != null)
                 {
-                    body["city"] = ExpressionConverter.ConvertO(bodycity);
+                    body["city"] = ExpressionConverter.ConvertO(__workflow_bodycity);
                     bodypropCount++;
                 }
 
-                if (bodystate != null)
+                if (__workflow_bodystate != null)
                 {
-                    body["state"] = ExpressionConverter.ConvertO(bodystate);
+                    body["state"] = ExpressionConverter.ConvertO(__workflow_bodystate);
                     bodypropCount++;
                 }
 
-                if (bodypostal != null)
+                if (__workflow_bodypostal != null)
                 {
-                    body["postal"] = ExpressionConverter.ConvertO(bodypostal);
+                    body["postal"] = ExpressionConverter.ConvertO(__workflow_bodypostal);
                     bodypropCount++;
                 }
 
-                if (bodyemail1 != null)
+                if (__workflow_bodyemail1 != null)
                 {
-                    body["email1"] = ExpressionConverter.ConvertO(bodyemail1);
+                    body["email1"] = ExpressionConverter.ConvertO(__workflow_bodyemail1);
                     bodypropCount++;
                 }
 
-                if (bodyemail2 != null)
+                if (__workflow_bodyemail2 != null)
                 {
-                    body["email2"] = ExpressionConverter.ConvertO(bodyemail2);
+                    body["email2"] = ExpressionConverter.ConvertO(__workflow_bodyemail2);
                     bodypropCount++;
                 }
 
-                if (bodyemail3 != null)
+                if (__workflow_bodyemail3 != null)
                 {
-                    body["email3"] = ExpressionConverter.ConvertO(bodyemail3);
+                    body["email3"] = ExpressionConverter.ConvertO(__workflow_bodyemail3);
                     bodypropCount++;
                 }
 
-                if (bodyemail4 != null)
+                if (__workflow_bodyemail4 != null)
                 {
-                    body["email4"] = ExpressionConverter.ConvertO(bodyemail4);
+                    body["email4"] = ExpressionConverter.ConvertO(__workflow_bodyemail4);
                     bodypropCount++;
                 }
 
-                if (bodyphonetype1 != null)
+                if (__workflow_bodyphonetype1 != null)
                 {
-                    body["phonetype1"] = ExpressionConverter.ConvertO(bodyphonetype1);
+                    body["phonetype1"] = ExpressionConverter.ConvertO(__workflow_bodyphonetype1);
                     bodypropCount++;
                 }
 
-                if (bodyphone1 != null)
+                if (__workflow_bodyphone1 != null)
                 {
-                    body["phone1"] = ExpressionConverter.ConvertO(bodyphone1);
+                    body["phone1"] = ExpressionConverter.ConvertO(__workflow_bodyphone1);
                     bodypropCount++;
                 }
 
-                if (bodyphonetype2 != null)
+                if (__workflow_bodyphonetype2 != null)
                 {
-                    body["phonetype2"] = ExpressionConverter.ConvertO(bodyphonetype2);
+                    body["phonetype2"] = ExpressionConverter.ConvertO(__workflow_bodyphonetype2);
                     bodypropCount++;
                 }
 
-                if (bodyphone2 != null)
+                if (__workflow_bodyphone2 != null)
                 {
-                    body["phone2"] = ExpressionConverter.ConvertO(bodyphone2);
+                    body["phone2"] = ExpressionConverter.ConvertO(__workflow_bodyphone2);
                     bodypropCount++;
                 }
 
-                if (bodyphonetype3 != null)
+                if (__workflow_bodyphonetype3 != null)
                 {
-                    body["phonetype3"] = ExpressionConverter.ConvertO(bodyphonetype3);
+                    body["phonetype3"] = ExpressionConverter.ConvertO(__workflow_bodyphonetype3);
                     bodypropCount++;
                 }
 
-                if (bodyphone3 != null)
+                if (__workflow_bodyphone3 != null)
                 {
-                    body["phone3"] = ExpressionConverter.ConvertO(bodyphone3);
+                    body["phone3"] = ExpressionConverter.ConvertO(__workflow_bodyphone3);
                     bodypropCount++;
                 }
 
-                if (bodyphonetype4 != null)
+                if (__workflow_bodyphonetype4 != null)
                 {
-                    body["phonetype4"] = ExpressionConverter.ConvertO(bodyphonetype4);
+                    body["phonetype4"] = ExpressionConverter.ConvertO(__workflow_bodyphonetype4);
                     bodypropCount++;
                 }
 
-                if (bodyphone4 != null)
+                if (__workflow_bodyphone4 != null)
                 {
-                    body["phone4"] = ExpressionConverter.ConvertO(bodyphone4);
+                    body["phone4"] = ExpressionConverter.ConvertO(__workflow_bodyphone4);
                     bodypropCount++;
                 }
 
-                if (bodyremark != null)
+                if (__workflow_bodyremark != null)
                 {
-                    body["remark"] = ExpressionConverter.ConvertO(bodyremark);
+                    body["remark"] = ExpressionConverter.ConvertO(__workflow_bodyremark);
                     bodypropCount++;
                 }
 
-                if (bodynotes != null)
+                if (__workflow_bodynotes != null)
                 {
-                    body["notes"] = ExpressionConverter.ConvertO(bodynotes);
+                    body["notes"] = ExpressionConverter.ConvertO(__workflow_bodynotes);
                     bodypropCount++;
                 }
 
-                if (bodycampaign != null)
+                if (__workflow_bodycampaign != null)
                 {
-                    body["campaign"] = ExpressionConverter.ConvertO(bodycampaign);
+                    body["campaign"] = ExpressionConverter.ConvertO(__workflow_bodycampaign);
                     bodypropCount++;
                 }
 
-                if (bodycategory != null)
+                if (__workflow_bodycategory != null)
                 {
-                    body["category"] = ExpressionConverter.ConvertO(bodycategory);
+                    body["category"] = ExpressionConverter.ConvertO(__workflow_bodycategory);
                     bodypropCount++;
                 }
 
-                if (bodymarket != null)
+                if (__workflow_bodymarket != null)
                 {
-                    body["market"] = ExpressionConverter.ConvertO(bodymarket);
+                    body["market"] = ExpressionConverter.ConvertO(__workflow_bodymarket);
                     bodypropCount++;
                 }
 
-                if (bodyterritory != null)
+                if (__workflow_bodyterritory != null)
                 {
-                    body["territory"] = ExpressionConverter.ConvertO(bodyterritory);
+                    body["territory"] = ExpressionConverter.ConvertO(__workflow_bodyterritory);
                     bodypropCount++;
                 }
 
-                if (bodysalesrep != null)
+                if (__workflow_bodysalesrep != null)
                 {
-                    body["salesrep"] = ExpressionConverter.ConvertO(bodysalesrep);
+                    body["salesrep"] = ExpressionConverter.ConvertO(__workflow_bodysalesrep);
                     bodypropCount++;
                 }
 
-                if (bodylastcontact != null)
+                if (__workflow_bodylastcontact != null)
                 {
-                    body["lastcontact"] = ExpressionConverter.ConvertO(bodylastcontact);
+                    body["lastcontact"] = ExpressionConverter.ConvertO(__workflow_bodylastcontact);
                     bodypropCount++;
                 }
 
@@ -688,19 +713,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        [WorkflowExpressionFactory(nameof(__BuildContactGetValue))]
-        public IBodyWorkflowAction<JToken> ContactGetValue([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<JToken> ContactGetValue(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildContactGetValue(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/Contact/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/Contact/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<JToken>(callPayload);
@@ -708,237 +727,262 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        [WorkflowExpressionFactory(nameof(__BuildContactPutValue))]
-        public IBodyWorkflowAction<JToken> ContactPutValue([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodysal = null, [WorkflowExpression] Func<string> bodyfirstname = null, [WorkflowExpression] Func<string> bodymiddlename = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodylastname = null, [WorkflowExpression] Func<string> bodycompany = null, [WorkflowExpression] Func<string> bodyaddr1 = null, [WorkflowExpression] Func<string> bodyaddr2 = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodystate = null, [WorkflowExpression] Func<string> bodypostal = null, [WorkflowExpression] Func<string> bodyemail1 = null, [WorkflowExpression] Func<string> bodyemail2 = null, [WorkflowExpression] Func<string> bodyemail3 = null, [WorkflowExpression] Func<string> bodyemail4 = null, [WorkflowExpression] Func<string> bodyphonetype1 = null, [WorkflowExpression] Func<string> bodyphone1 = null, [WorkflowExpression] Func<string> bodyphonetype2 = null, [WorkflowExpression] Func<string> bodyphone2 = null, [WorkflowExpression] Func<string> bodyphonetype3 = null, [WorkflowExpression] Func<string> bodyphone3 = null, [WorkflowExpression] Func<string> bodyphonetype4 = null, [WorkflowExpression] Func<string> bodyphone4 = null, [WorkflowExpression] Func<string> bodyremark = null, [WorkflowExpression] Func<string> bodynotes = null, [WorkflowExpression] Func<string> bodycampaign = null, [WorkflowExpression] Func<string> bodycategory = null, [WorkflowExpression] Func<string> bodymarket = null, [WorkflowExpression] Func<string> bodyterritory = null, [WorkflowExpression] Func<string> bodysalesrep = null, [WorkflowExpression] Func<string> bodylastcontact = null)
+        public IBodyWorkflowAction<JToken> ContactPutValue(Expression<Func<string>> id, Expression<Func<string>> bodysal = null, Expression<Func<string>> bodyfirstname = null, Expression<Func<string>> bodymiddlename = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodylastname = null, Expression<Func<string>> bodycompany = null, Expression<Func<string>> bodyaddr1 = null, Expression<Func<string>> bodyaddr2 = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodypostal = null, Expression<Func<string>> bodyemail1 = null, Expression<Func<string>> bodyemail2 = null, Expression<Func<string>> bodyemail3 = null, Expression<Func<string>> bodyemail4 = null, Expression<Func<string>> bodyphonetype1 = null, Expression<Func<string>> bodyphone1 = null, Expression<Func<string>> bodyphonetype2 = null, Expression<Func<string>> bodyphone2 = null, Expression<Func<string>> bodyphonetype3 = null, Expression<Func<string>> bodyphone3 = null, Expression<Func<string>> bodyphonetype4 = null, Expression<Func<string>> bodyphone4 = null, Expression<Func<string>> bodyremark = null, Expression<Func<string>> bodynotes = null, Expression<Func<string>> bodycampaign = null, Expression<Func<string>> bodycategory = null, Expression<Func<string>> bodymarket = null, Expression<Func<string>> bodyterritory = null, Expression<Func<string>> bodysalesrep = null, Expression<Func<string>> bodylastcontact = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildContactPutValue(WorkflowExpression<string> id, WorkflowExpression<string> bodysal = null, WorkflowExpression<string> bodyfirstname = null, WorkflowExpression<string> bodymiddlename = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodylastname = null, WorkflowExpression<string> bodycompany = null, WorkflowExpression<string> bodyaddr1 = null, WorkflowExpression<string> bodyaddr2 = null, WorkflowExpression<string> bodycity = null, WorkflowExpression<string> bodystate = null, WorkflowExpression<string> bodypostal = null, WorkflowExpression<string> bodyemail1 = null, WorkflowExpression<string> bodyemail2 = null, WorkflowExpression<string> bodyemail3 = null, WorkflowExpression<string> bodyemail4 = null, WorkflowExpression<string> bodyphonetype1 = null, WorkflowExpression<string> bodyphone1 = null, WorkflowExpression<string> bodyphonetype2 = null, WorkflowExpression<string> bodyphone2 = null, WorkflowExpression<string> bodyphonetype3 = null, WorkflowExpression<string> bodyphone3 = null, WorkflowExpression<string> bodyphonetype4 = null, WorkflowExpression<string> bodyphone4 = null, WorkflowExpression<string> bodyremark = null, WorkflowExpression<string> bodynotes = null, WorkflowExpression<string> bodycampaign = null, WorkflowExpression<string> bodycategory = null, WorkflowExpression<string> bodymarket = null, WorkflowExpression<string> bodyterritory = null, WorkflowExpression<string> bodysalesrep = null, WorkflowExpression<string> bodylastcontact = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(bodysal, nameof(bodysal), required: false);
-            WorkflowExpression.Validate(bodyfirstname, nameof(bodyfirstname), required: false);
-            WorkflowExpression.Validate(bodymiddlename, nameof(bodymiddlename), required: false);
-            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            WorkflowExpression.Validate(bodylastname, nameof(bodylastname), required: false);
-            WorkflowExpression.Validate(bodycompany, nameof(bodycompany), required: false);
-            WorkflowExpression.Validate(bodyaddr1, nameof(bodyaddr1), required: false);
-            WorkflowExpression.Validate(bodyaddr2, nameof(bodyaddr2), required: false);
-            WorkflowExpression.Validate(bodycity, nameof(bodycity), required: false);
-            WorkflowExpression.Validate(bodystate, nameof(bodystate), required: false);
-            WorkflowExpression.Validate(bodypostal, nameof(bodypostal), required: false);
-            WorkflowExpression.Validate(bodyemail1, nameof(bodyemail1), required: false);
-            WorkflowExpression.Validate(bodyemail2, nameof(bodyemail2), required: false);
-            WorkflowExpression.Validate(bodyemail3, nameof(bodyemail3), required: false);
-            WorkflowExpression.Validate(bodyemail4, nameof(bodyemail4), required: false);
-            WorkflowExpression.Validate(bodyphonetype1, nameof(bodyphonetype1), required: false);
-            WorkflowExpression.Validate(bodyphone1, nameof(bodyphone1), required: false);
-            WorkflowExpression.Validate(bodyphonetype2, nameof(bodyphonetype2), required: false);
-            WorkflowExpression.Validate(bodyphone2, nameof(bodyphone2), required: false);
-            WorkflowExpression.Validate(bodyphonetype3, nameof(bodyphonetype3), required: false);
-            WorkflowExpression.Validate(bodyphone3, nameof(bodyphone3), required: false);
-            WorkflowExpression.Validate(bodyphonetype4, nameof(bodyphonetype4), required: false);
-            WorkflowExpression.Validate(bodyphone4, nameof(bodyphone4), required: false);
-            WorkflowExpression.Validate(bodyremark, nameof(bodyremark), required: false);
-            WorkflowExpression.Validate(bodynotes, nameof(bodynotes), required: false);
-            WorkflowExpression.Validate(bodycampaign, nameof(bodycampaign), required: false);
-            WorkflowExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            WorkflowExpression.Validate(bodymarket, nameof(bodymarket), required: false);
-            WorkflowExpression.Validate(bodyterritory, nameof(bodyterritory), required: false);
-            WorkflowExpression.Validate(bodysalesrep, nameof(bodysalesrep), required: false);
-            WorkflowExpression.Validate(bodylastcontact, nameof(bodylastcontact), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_bodysal = bodysal == null ? null : WorkflowExpression.Compile(bodysal);
+            WorkflowExpression.Validate(__workflow_bodysal, nameof(bodysal), required: false);
+            var __workflow_bodyfirstname = bodyfirstname == null ? null : WorkflowExpression.Compile(bodyfirstname);
+            WorkflowExpression.Validate(__workflow_bodyfirstname, nameof(bodyfirstname), required: false);
+            var __workflow_bodymiddlename = bodymiddlename == null ? null : WorkflowExpression.Compile(bodymiddlename);
+            WorkflowExpression.Validate(__workflow_bodymiddlename, nameof(bodymiddlename), required: false);
+            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
+            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodylastname = bodylastname == null ? null : WorkflowExpression.Compile(bodylastname);
+            WorkflowExpression.Validate(__workflow_bodylastname, nameof(bodylastname), required: false);
+            var __workflow_bodycompany = bodycompany == null ? null : WorkflowExpression.Compile(bodycompany);
+            WorkflowExpression.Validate(__workflow_bodycompany, nameof(bodycompany), required: false);
+            var __workflow_bodyaddr1 = bodyaddr1 == null ? null : WorkflowExpression.Compile(bodyaddr1);
+            WorkflowExpression.Validate(__workflow_bodyaddr1, nameof(bodyaddr1), required: false);
+            var __workflow_bodyaddr2 = bodyaddr2 == null ? null : WorkflowExpression.Compile(bodyaddr2);
+            WorkflowExpression.Validate(__workflow_bodyaddr2, nameof(bodyaddr2), required: false);
+            var __workflow_bodycity = bodycity == null ? null : WorkflowExpression.Compile(bodycity);
+            WorkflowExpression.Validate(__workflow_bodycity, nameof(bodycity), required: false);
+            var __workflow_bodystate = bodystate == null ? null : WorkflowExpression.Compile(bodystate);
+            WorkflowExpression.Validate(__workflow_bodystate, nameof(bodystate), required: false);
+            var __workflow_bodypostal = bodypostal == null ? null : WorkflowExpression.Compile(bodypostal);
+            WorkflowExpression.Validate(__workflow_bodypostal, nameof(bodypostal), required: false);
+            var __workflow_bodyemail1 = bodyemail1 == null ? null : WorkflowExpression.Compile(bodyemail1);
+            WorkflowExpression.Validate(__workflow_bodyemail1, nameof(bodyemail1), required: false);
+            var __workflow_bodyemail2 = bodyemail2 == null ? null : WorkflowExpression.Compile(bodyemail2);
+            WorkflowExpression.Validate(__workflow_bodyemail2, nameof(bodyemail2), required: false);
+            var __workflow_bodyemail3 = bodyemail3 == null ? null : WorkflowExpression.Compile(bodyemail3);
+            WorkflowExpression.Validate(__workflow_bodyemail3, nameof(bodyemail3), required: false);
+            var __workflow_bodyemail4 = bodyemail4 == null ? null : WorkflowExpression.Compile(bodyemail4);
+            WorkflowExpression.Validate(__workflow_bodyemail4, nameof(bodyemail4), required: false);
+            var __workflow_bodyphonetype1 = bodyphonetype1 == null ? null : WorkflowExpression.Compile(bodyphonetype1);
+            WorkflowExpression.Validate(__workflow_bodyphonetype1, nameof(bodyphonetype1), required: false);
+            var __workflow_bodyphone1 = bodyphone1 == null ? null : WorkflowExpression.Compile(bodyphone1);
+            WorkflowExpression.Validate(__workflow_bodyphone1, nameof(bodyphone1), required: false);
+            var __workflow_bodyphonetype2 = bodyphonetype2 == null ? null : WorkflowExpression.Compile(bodyphonetype2);
+            WorkflowExpression.Validate(__workflow_bodyphonetype2, nameof(bodyphonetype2), required: false);
+            var __workflow_bodyphone2 = bodyphone2 == null ? null : WorkflowExpression.Compile(bodyphone2);
+            WorkflowExpression.Validate(__workflow_bodyphone2, nameof(bodyphone2), required: false);
+            var __workflow_bodyphonetype3 = bodyphonetype3 == null ? null : WorkflowExpression.Compile(bodyphonetype3);
+            WorkflowExpression.Validate(__workflow_bodyphonetype3, nameof(bodyphonetype3), required: false);
+            var __workflow_bodyphone3 = bodyphone3 == null ? null : WorkflowExpression.Compile(bodyphone3);
+            WorkflowExpression.Validate(__workflow_bodyphone3, nameof(bodyphone3), required: false);
+            var __workflow_bodyphonetype4 = bodyphonetype4 == null ? null : WorkflowExpression.Compile(bodyphonetype4);
+            WorkflowExpression.Validate(__workflow_bodyphonetype4, nameof(bodyphonetype4), required: false);
+            var __workflow_bodyphone4 = bodyphone4 == null ? null : WorkflowExpression.Compile(bodyphone4);
+            WorkflowExpression.Validate(__workflow_bodyphone4, nameof(bodyphone4), required: false);
+            var __workflow_bodyremark = bodyremark == null ? null : WorkflowExpression.Compile(bodyremark);
+            WorkflowExpression.Validate(__workflow_bodyremark, nameof(bodyremark), required: false);
+            var __workflow_bodynotes = bodynotes == null ? null : WorkflowExpression.Compile(bodynotes);
+            WorkflowExpression.Validate(__workflow_bodynotes, nameof(bodynotes), required: false);
+            var __workflow_bodycampaign = bodycampaign == null ? null : WorkflowExpression.Compile(bodycampaign);
+            WorkflowExpression.Validate(__workflow_bodycampaign, nameof(bodycampaign), required: false);
+            var __workflow_bodycategory = bodycategory == null ? null : WorkflowExpression.Compile(bodycategory);
+            WorkflowExpression.Validate(__workflow_bodycategory, nameof(bodycategory), required: false);
+            var __workflow_bodymarket = bodymarket == null ? null : WorkflowExpression.Compile(bodymarket);
+            WorkflowExpression.Validate(__workflow_bodymarket, nameof(bodymarket), required: false);
+            var __workflow_bodyterritory = bodyterritory == null ? null : WorkflowExpression.Compile(bodyterritory);
+            WorkflowExpression.Validate(__workflow_bodyterritory, nameof(bodyterritory), required: false);
+            var __workflow_bodysalesrep = bodysalesrep == null ? null : WorkflowExpression.Compile(bodysalesrep);
+            WorkflowExpression.Validate(__workflow_bodysalesrep, nameof(bodysalesrep), required: false);
+            var __workflow_bodylastcontact = bodylastcontact == null ? null : WorkflowExpression.Compile(bodylastcontact);
+            WorkflowExpression.Validate(__workflow_bodylastcontact, nameof(bodylastcontact), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/Contact/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/Contact/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodysal != null)
+                if (__workflow_bodysal != null)
                 {
-                    body["sal"] = ExpressionConverter.ConvertO(bodysal);
+                    body["sal"] = ExpressionConverter.ConvertO(__workflow_bodysal);
                     bodypropCount++;
                 }
 
-                if (bodyfirstname != null)
+                if (__workflow_bodyfirstname != null)
                 {
-                    body["firstname"] = ExpressionConverter.ConvertO(bodyfirstname);
+                    body["firstname"] = ExpressionConverter.ConvertO(__workflow_bodyfirstname);
                     bodypropCount++;
                 }
 
-                if (bodymiddlename != null)
+                if (__workflow_bodymiddlename != null)
                 {
-                    body["middlename"] = ExpressionConverter.ConvertO(bodymiddlename);
+                    body["middlename"] = ExpressionConverter.ConvertO(__workflow_bodymiddlename);
                     bodypropCount++;
                 }
 
-                if (bodytitle != null)
+                if (__workflow_bodytitle != null)
                 {
-                    body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
                     bodypropCount++;
                 }
 
-                if (bodylastname != null)
+                if (__workflow_bodylastname != null)
                 {
-                    body["lastname"] = ExpressionConverter.ConvertO(bodylastname);
+                    body["lastname"] = ExpressionConverter.ConvertO(__workflow_bodylastname);
                     bodypropCount++;
                 }
 
-                if (bodycompany != null)
+                if (__workflow_bodycompany != null)
                 {
-                    body["company"] = ExpressionConverter.ConvertO(bodycompany);
+                    body["company"] = ExpressionConverter.ConvertO(__workflow_bodycompany);
                     bodypropCount++;
                 }
 
-                if (bodyaddr1 != null)
+                if (__workflow_bodyaddr1 != null)
                 {
-                    body["addr1"] = ExpressionConverter.ConvertO(bodyaddr1);
+                    body["addr1"] = ExpressionConverter.ConvertO(__workflow_bodyaddr1);
                     bodypropCount++;
                 }
 
-                if (bodyaddr2 != null)
+                if (__workflow_bodyaddr2 != null)
                 {
-                    body["addr2"] = ExpressionConverter.ConvertO(bodyaddr2);
+                    body["addr2"] = ExpressionConverter.ConvertO(__workflow_bodyaddr2);
                     bodypropCount++;
                 }
 
-                if (bodycity != null)
+                if (__workflow_bodycity != null)
                 {
-                    body["city"] = ExpressionConverter.ConvertO(bodycity);
+                    body["city"] = ExpressionConverter.ConvertO(__workflow_bodycity);
                     bodypropCount++;
                 }
 
-                if (bodystate != null)
+                if (__workflow_bodystate != null)
                 {
-                    body["state"] = ExpressionConverter.ConvertO(bodystate);
+                    body["state"] = ExpressionConverter.ConvertO(__workflow_bodystate);
                     bodypropCount++;
                 }
 
-                if (bodypostal != null)
+                if (__workflow_bodypostal != null)
                 {
-                    body["postal"] = ExpressionConverter.ConvertO(bodypostal);
+                    body["postal"] = ExpressionConverter.ConvertO(__workflow_bodypostal);
                     bodypropCount++;
                 }
 
-                if (bodyemail1 != null)
+                if (__workflow_bodyemail1 != null)
                 {
-                    body["email1"] = ExpressionConverter.ConvertO(bodyemail1);
+                    body["email1"] = ExpressionConverter.ConvertO(__workflow_bodyemail1);
                     bodypropCount++;
                 }
 
-                if (bodyemail2 != null)
+                if (__workflow_bodyemail2 != null)
                 {
-                    body["email2"] = ExpressionConverter.ConvertO(bodyemail2);
+                    body["email2"] = ExpressionConverter.ConvertO(__workflow_bodyemail2);
                     bodypropCount++;
                 }
 
-                if (bodyemail3 != null)
+                if (__workflow_bodyemail3 != null)
                 {
-                    body["email3"] = ExpressionConverter.ConvertO(bodyemail3);
+                    body["email3"] = ExpressionConverter.ConvertO(__workflow_bodyemail3);
                     bodypropCount++;
                 }
 
-                if (bodyemail4 != null)
+                if (__workflow_bodyemail4 != null)
                 {
-                    body["email4"] = ExpressionConverter.ConvertO(bodyemail4);
+                    body["email4"] = ExpressionConverter.ConvertO(__workflow_bodyemail4);
                     bodypropCount++;
                 }
 
-                if (bodyphonetype1 != null)
+                if (__workflow_bodyphonetype1 != null)
                 {
-                    body["phonetype1"] = ExpressionConverter.ConvertO(bodyphonetype1);
+                    body["phonetype1"] = ExpressionConverter.ConvertO(__workflow_bodyphonetype1);
                     bodypropCount++;
                 }
 
-                if (bodyphone1 != null)
+                if (__workflow_bodyphone1 != null)
                 {
-                    body["phone1"] = ExpressionConverter.ConvertO(bodyphone1);
+                    body["phone1"] = ExpressionConverter.ConvertO(__workflow_bodyphone1);
                     bodypropCount++;
                 }
 
-                if (bodyphonetype2 != null)
+                if (__workflow_bodyphonetype2 != null)
                 {
-                    body["phonetype2"] = ExpressionConverter.ConvertO(bodyphonetype2);
+                    body["phonetype2"] = ExpressionConverter.ConvertO(__workflow_bodyphonetype2);
                     bodypropCount++;
                 }
 
-                if (bodyphone2 != null)
+                if (__workflow_bodyphone2 != null)
                 {
-                    body["phone2"] = ExpressionConverter.ConvertO(bodyphone2);
+                    body["phone2"] = ExpressionConverter.ConvertO(__workflow_bodyphone2);
                     bodypropCount++;
                 }
 
-                if (bodyphonetype3 != null)
+                if (__workflow_bodyphonetype3 != null)
                 {
-                    body["phonetype3"] = ExpressionConverter.ConvertO(bodyphonetype3);
+                    body["phonetype3"] = ExpressionConverter.ConvertO(__workflow_bodyphonetype3);
                     bodypropCount++;
                 }
 
-                if (bodyphone3 != null)
+                if (__workflow_bodyphone3 != null)
                 {
-                    body["phone3"] = ExpressionConverter.ConvertO(bodyphone3);
+                    body["phone3"] = ExpressionConverter.ConvertO(__workflow_bodyphone3);
                     bodypropCount++;
                 }
 
-                if (bodyphonetype4 != null)
+                if (__workflow_bodyphonetype4 != null)
                 {
-                    body["phonetype4"] = ExpressionConverter.ConvertO(bodyphonetype4);
+                    body["phonetype4"] = ExpressionConverter.ConvertO(__workflow_bodyphonetype4);
                     bodypropCount++;
                 }
 
-                if (bodyphone4 != null)
+                if (__workflow_bodyphone4 != null)
                 {
-                    body["phone4"] = ExpressionConverter.ConvertO(bodyphone4);
+                    body["phone4"] = ExpressionConverter.ConvertO(__workflow_bodyphone4);
                     bodypropCount++;
                 }
 
-                if (bodyremark != null)
+                if (__workflow_bodyremark != null)
                 {
-                    body["remark"] = ExpressionConverter.ConvertO(bodyremark);
+                    body["remark"] = ExpressionConverter.ConvertO(__workflow_bodyremark);
                     bodypropCount++;
                 }
 
-                if (bodynotes != null)
+                if (__workflow_bodynotes != null)
                 {
-                    body["notes"] = ExpressionConverter.ConvertO(bodynotes);
+                    body["notes"] = ExpressionConverter.ConvertO(__workflow_bodynotes);
                     bodypropCount++;
                 }
 
-                if (bodycampaign != null)
+                if (__workflow_bodycampaign != null)
                 {
-                    body["campaign"] = ExpressionConverter.ConvertO(bodycampaign);
+                    body["campaign"] = ExpressionConverter.ConvertO(__workflow_bodycampaign);
                     bodypropCount++;
                 }
 
-                if (bodycategory != null)
+                if (__workflow_bodycategory != null)
                 {
-                    body["category"] = ExpressionConverter.ConvertO(bodycategory);
+                    body["category"] = ExpressionConverter.ConvertO(__workflow_bodycategory);
                     bodypropCount++;
                 }
 
-                if (bodymarket != null)
+                if (__workflow_bodymarket != null)
                 {
-                    body["market"] = ExpressionConverter.ConvertO(bodymarket);
+                    body["market"] = ExpressionConverter.ConvertO(__workflow_bodymarket);
                     bodypropCount++;
                 }
 
-                if (bodyterritory != null)
+                if (__workflow_bodyterritory != null)
                 {
-                    body["territory"] = ExpressionConverter.ConvertO(bodyterritory);
+                    body["territory"] = ExpressionConverter.ConvertO(__workflow_bodyterritory);
                     bodypropCount++;
                 }
 
-                if (bodysalesrep != null)
+                if (__workflow_bodysalesrep != null)
                 {
-                    body["salesrep"] = ExpressionConverter.ConvertO(bodysalesrep);
+                    body["salesrep"] = ExpressionConverter.ConvertO(__workflow_bodysalesrep);
                     bodypropCount++;
                 }
 
-                if (bodylastcontact != null)
+                if (__workflow_bodylastcontact != null)
                 {
-                    body["lastcontact"] = ExpressionConverter.ConvertO(bodylastcontact);
+                    body["lastcontact"] = ExpressionConverter.ConvertO(__workflow_bodylastcontact);
                     bodypropCount++;
                 }
 
@@ -961,25 +1005,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        [WorkflowExpressionFactory(nameof(__BuildFollowUpPostValue))]
-        public IBodyWorkflowAction<JToken> FollowUpPostValue([WorkflowExpression] Func<string> bodycontactid = null, [WorkflowExpression] Func<string> bodyleadid = null, [WorkflowExpression] Func<string> bodytype = null, [WorkflowExpression] Func<string> bodycomments = null, [WorkflowExpression] Func<string> bodyassignedto = null, [WorkflowExpression] Func<string> bodysetby = null, [WorkflowExpression] Func<string> bodyduedate = null, [WorkflowExpression] Func<bool> bodyurgent = null, [WorkflowExpression] Func<double> bodyreminderminutes = null, [WorkflowExpression] Func<bool> bodycleared = null)
+        public IBodyWorkflowAction<JToken> FollowUpPostValue(Expression<Func<string>> bodycontactid = null, Expression<Func<string>> bodyleadid = null, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodycomments = null, Expression<Func<string>> bodyassignedto = null, Expression<Func<string>> bodysetby = null, Expression<Func<string>> bodyduedate = null, Expression<Func<bool>> bodyurgent = null, Expression<Func<double>> bodyreminderminutes = null, Expression<Func<bool>> bodycleared = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildFollowUpPostValue(WorkflowExpression<string> bodycontactid = null, WorkflowExpression<string> bodyleadid = null, WorkflowExpression<string> bodytype = null, WorkflowExpression<string> bodycomments = null, WorkflowExpression<string> bodyassignedto = null, WorkflowExpression<string> bodysetby = null, WorkflowExpression<string> bodyduedate = null, WorkflowExpression<bool> bodyurgent = null, WorkflowExpression<double> bodyreminderminutes = null, WorkflowExpression<bool> bodycleared = null)
-        {
-            WorkflowExpression.Validate(bodycontactid, nameof(bodycontactid), required: false);
-            WorkflowExpression.Validate(bodyleadid, nameof(bodyleadid), required: false);
-            WorkflowExpression.Validate(bodytype, nameof(bodytype), required: false);
-            WorkflowExpression.Validate(bodycomments, nameof(bodycomments), required: false);
-            WorkflowExpression.Validate(bodyassignedto, nameof(bodyassignedto), required: false);
-            WorkflowExpression.Validate(bodysetby, nameof(bodysetby), required: false);
-            WorkflowExpression.Validate(bodyduedate, nameof(bodyduedate), required: false);
-            WorkflowExpression.Validate(bodyurgent, nameof(bodyurgent), required: false);
-            WorkflowExpression.Validate(bodyreminderminutes, nameof(bodyreminderminutes), required: false);
-            WorkflowExpression.Validate(bodycleared, nameof(bodycleared), required: false);
+            var __workflow_bodycontactid = bodycontactid == null ? null : WorkflowExpression.Compile(bodycontactid);
+            WorkflowExpression.Validate(__workflow_bodycontactid, nameof(bodycontactid), required: false);
+            var __workflow_bodyleadid = bodyleadid == null ? null : WorkflowExpression.Compile(bodyleadid);
+            WorkflowExpression.Validate(__workflow_bodyleadid, nameof(bodyleadid), required: false);
+            var __workflow_bodytype = bodytype == null ? null : WorkflowExpression.Compile(bodytype);
+            WorkflowExpression.Validate(__workflow_bodytype, nameof(bodytype), required: false);
+            var __workflow_bodycomments = bodycomments == null ? null : WorkflowExpression.Compile(bodycomments);
+            WorkflowExpression.Validate(__workflow_bodycomments, nameof(bodycomments), required: false);
+            var __workflow_bodyassignedto = bodyassignedto == null ? null : WorkflowExpression.Compile(bodyassignedto);
+            WorkflowExpression.Validate(__workflow_bodyassignedto, nameof(bodyassignedto), required: false);
+            var __workflow_bodysetby = bodysetby == null ? null : WorkflowExpression.Compile(bodysetby);
+            WorkflowExpression.Validate(__workflow_bodysetby, nameof(bodysetby), required: false);
+            var __workflow_bodyduedate = bodyduedate == null ? null : WorkflowExpression.Compile(bodyduedate);
+            WorkflowExpression.Validate(__workflow_bodyduedate, nameof(bodyduedate), required: false);
+            var __workflow_bodyurgent = bodyurgent == null ? null : WorkflowExpression.Compile(bodyurgent);
+            WorkflowExpression.Validate(__workflow_bodyurgent, nameof(bodyurgent), required: false);
+            var __workflow_bodyreminderminutes = bodyreminderminutes == null ? null : WorkflowExpression.Compile(bodyreminderminutes);
+            WorkflowExpression.Validate(__workflow_bodyreminderminutes, nameof(bodyreminderminutes), required: false);
+            var __workflow_bodycleared = bodycleared == null ? null : WorkflowExpression.Compile(bodycleared);
+            WorkflowExpression.Validate(__workflow_bodycleared, nameof(bodycleared), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/api/FollowUp";
@@ -987,63 +1034,63 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodycontactid != null)
+                if (__workflow_bodycontactid != null)
                 {
-                    body["contactid"] = ExpressionConverter.ConvertO(bodycontactid);
+                    body["contactid"] = ExpressionConverter.ConvertO(__workflow_bodycontactid);
                     bodypropCount++;
                 }
 
-                if (bodyleadid != null)
+                if (__workflow_bodyleadid != null)
                 {
-                    body["leadid"] = ExpressionConverter.ConvertO(bodyleadid);
+                    body["leadid"] = ExpressionConverter.ConvertO(__workflow_bodyleadid);
                     bodypropCount++;
                 }
 
-                if (bodytype != null)
+                if (__workflow_bodytype != null)
                 {
-                    body["type"] = ExpressionConverter.ConvertO(bodytype);
+                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
                     bodypropCount++;
                 }
 
-                if (bodycomments != null)
+                if (__workflow_bodycomments != null)
                 {
-                    body["comments"] = ExpressionConverter.ConvertO(bodycomments);
+                    body["comments"] = ExpressionConverter.ConvertO(__workflow_bodycomments);
                     bodypropCount++;
                 }
 
-                if (bodyassignedto != null)
+                if (__workflow_bodyassignedto != null)
                 {
-                    body["assignedto"] = ExpressionConverter.ConvertO(bodyassignedto);
+                    body["assignedto"] = ExpressionConverter.ConvertO(__workflow_bodyassignedto);
                     bodypropCount++;
                 }
 
-                if (bodysetby != null)
+                if (__workflow_bodysetby != null)
                 {
-                    body["setby"] = ExpressionConverter.ConvertO(bodysetby);
+                    body["setby"] = ExpressionConverter.ConvertO(__workflow_bodysetby);
                     bodypropCount++;
                 }
 
-                if (bodyduedate != null)
+                if (__workflow_bodyduedate != null)
                 {
-                    body["duedate"] = ExpressionConverter.ConvertO(bodyduedate);
+                    body["duedate"] = ExpressionConverter.ConvertO(__workflow_bodyduedate);
                     bodypropCount++;
                 }
 
-                if (bodyurgent != null)
+                if (__workflow_bodyurgent != null)
                 {
-                    body["urgent"] = ExpressionConverter.ConvertO(bodyurgent);
+                    body["urgent"] = ExpressionConverter.ConvertO(__workflow_bodyurgent);
                     bodypropCount++;
                 }
 
-                if (bodyreminderminutes != null)
+                if (__workflow_bodyreminderminutes != null)
                 {
-                    body["reminderminutes"] = ExpressionConverter.ConvertO(bodyreminderminutes);
+                    body["reminderminutes"] = ExpressionConverter.ConvertO(__workflow_bodyreminderminutes);
                     bodypropCount++;
                 }
 
-                if (bodycleared != null)
+                if (__workflow_bodycleared != null)
                 {
-                    body["cleared"] = ExpressionConverter.ConvertO(bodycleared);
+                    body["cleared"] = ExpressionConverter.ConvertO(__workflow_bodycleared);
                     bodypropCount++;
                 }
 
@@ -1057,19 +1104,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        [WorkflowExpressionFactory(nameof(__BuildFollowUpGetValue))]
-        public IBodyWorkflowAction<FollowUpGetValueResponse> FollowUpGetValue([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<FollowUpGetValueResponse> FollowUpGetValue(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FollowUpGetValueResponse> __BuildFollowUpGetValue(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<FollowUpGetValueResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/FollowUp/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/FollowUp/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FollowUpGetValueResponse>(callPayload);
@@ -1077,76 +1118,78 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        [WorkflowExpressionFactory(nameof(__BuildFollowUpPutValue))]
-        public IWorkflowAction FollowUpPutValue([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodytype = null, [WorkflowExpression] Func<string> bodycomments = null, [WorkflowExpression] Func<string> bodyassignedto = null, [WorkflowExpression] Func<string> bodysetby = null, [WorkflowExpression] Func<string> bodyduedate = null, [WorkflowExpression] Func<string> bodyurgent = null, [WorkflowExpression] Func<double> bodyreminderminutes = null, [WorkflowExpression] Func<bool> bodycleared = null)
+        public IWorkflowAction FollowUpPutValue(Expression<Func<string>> id, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodycomments = null, Expression<Func<string>> bodyassignedto = null, Expression<Func<string>> bodysetby = null, Expression<Func<string>> bodyduedate = null, Expression<Func<string>> bodyurgent = null, Expression<Func<double>> bodyreminderminutes = null, Expression<Func<bool>> bodycleared = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildFollowUpPutValue(WorkflowExpression<string> id, WorkflowExpression<string> bodytype = null, WorkflowExpression<string> bodycomments = null, WorkflowExpression<string> bodyassignedto = null, WorkflowExpression<string> bodysetby = null, WorkflowExpression<string> bodyduedate = null, WorkflowExpression<string> bodyurgent = null, WorkflowExpression<double> bodyreminderminutes = null, WorkflowExpression<bool> bodycleared = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(bodytype, nameof(bodytype), required: false);
-            WorkflowExpression.Validate(bodycomments, nameof(bodycomments), required: false);
-            WorkflowExpression.Validate(bodyassignedto, nameof(bodyassignedto), required: false);
-            WorkflowExpression.Validate(bodysetby, nameof(bodysetby), required: false);
-            WorkflowExpression.Validate(bodyduedate, nameof(bodyduedate), required: false);
-            WorkflowExpression.Validate(bodyurgent, nameof(bodyurgent), required: false);
-            WorkflowExpression.Validate(bodyreminderminutes, nameof(bodyreminderminutes), required: false);
-            WorkflowExpression.Validate(bodycleared, nameof(bodycleared), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_bodytype = bodytype == null ? null : WorkflowExpression.Compile(bodytype);
+            WorkflowExpression.Validate(__workflow_bodytype, nameof(bodytype), required: false);
+            var __workflow_bodycomments = bodycomments == null ? null : WorkflowExpression.Compile(bodycomments);
+            WorkflowExpression.Validate(__workflow_bodycomments, nameof(bodycomments), required: false);
+            var __workflow_bodyassignedto = bodyassignedto == null ? null : WorkflowExpression.Compile(bodyassignedto);
+            WorkflowExpression.Validate(__workflow_bodyassignedto, nameof(bodyassignedto), required: false);
+            var __workflow_bodysetby = bodysetby == null ? null : WorkflowExpression.Compile(bodysetby);
+            WorkflowExpression.Validate(__workflow_bodysetby, nameof(bodysetby), required: false);
+            var __workflow_bodyduedate = bodyduedate == null ? null : WorkflowExpression.Compile(bodyduedate);
+            WorkflowExpression.Validate(__workflow_bodyduedate, nameof(bodyduedate), required: false);
+            var __workflow_bodyurgent = bodyurgent == null ? null : WorkflowExpression.Compile(bodyurgent);
+            WorkflowExpression.Validate(__workflow_bodyurgent, nameof(bodyurgent), required: false);
+            var __workflow_bodyreminderminutes = bodyreminderminutes == null ? null : WorkflowExpression.Compile(bodyreminderminutes);
+            WorkflowExpression.Validate(__workflow_bodyreminderminutes, nameof(bodyreminderminutes), required: false);
+            var __workflow_bodycleared = bodycleared == null ? null : WorkflowExpression.Compile(bodycleared);
+            WorkflowExpression.Validate(__workflow_bodycleared, nameof(bodycleared), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/FollowUp/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/FollowUp/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodytype != null)
+                if (__workflow_bodytype != null)
                 {
-                    body["type"] = ExpressionConverter.ConvertO(bodytype);
+                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
                     bodypropCount++;
                 }
 
-                if (bodycomments != null)
+                if (__workflow_bodycomments != null)
                 {
-                    body["comments"] = ExpressionConverter.ConvertO(bodycomments);
+                    body["comments"] = ExpressionConverter.ConvertO(__workflow_bodycomments);
                     bodypropCount++;
                 }
 
-                if (bodyassignedto != null)
+                if (__workflow_bodyassignedto != null)
                 {
-                    body["assignedto"] = ExpressionConverter.ConvertO(bodyassignedto);
+                    body["assignedto"] = ExpressionConverter.ConvertO(__workflow_bodyassignedto);
                     bodypropCount++;
                 }
 
-                if (bodysetby != null)
+                if (__workflow_bodysetby != null)
                 {
-                    body["setby"] = ExpressionConverter.ConvertO(bodysetby);
+                    body["setby"] = ExpressionConverter.ConvertO(__workflow_bodysetby);
                     bodypropCount++;
                 }
 
-                if (bodyduedate != null)
+                if (__workflow_bodyduedate != null)
                 {
-                    body["duedate"] = ExpressionConverter.ConvertO(bodyduedate);
+                    body["duedate"] = ExpressionConverter.ConvertO(__workflow_bodyduedate);
                     bodypropCount++;
                 }
 
-                if (bodyurgent != null)
+                if (__workflow_bodyurgent != null)
                 {
-                    body["urgent"] = ExpressionConverter.ConvertO(bodyurgent);
+                    body["urgent"] = ExpressionConverter.ConvertO(__workflow_bodyurgent);
                     bodypropCount++;
                 }
 
-                if (bodyreminderminutes != null)
+                if (__workflow_bodyreminderminutes != null)
                 {
-                    body["reminderminutes"] = ExpressionConverter.ConvertO(bodyreminderminutes);
+                    body["reminderminutes"] = ExpressionConverter.ConvertO(__workflow_bodyreminderminutes);
                     bodypropCount++;
                 }
 
-                if (bodycleared != null)
+                if (__workflow_bodycleared != null)
                 {
-                    body["cleared"] = ExpressionConverter.ConvertO(bodycleared);
+                    body["cleared"] = ExpressionConverter.ConvertO(__workflow_bodycleared);
                     bodypropCount++;
                 }
 
@@ -1169,21 +1212,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        [WorkflowExpressionFactory(nameof(__BuildItemListPostValue))]
-        public IBodyWorkflowAction<ItemListPostValueResponse> ItemListPostValue([WorkflowExpression] Func<string> bodymodelno = null, [WorkflowExpression] Func<string> bodydescrip = null, [WorkflowExpression] Func<bodyitemtypeInput> bodyitemtype = null, [WorkflowExpression] Func<double> bodyprice = null, [WorkflowExpression] Func<double> bodycost = null, [WorkflowExpression] Func<string> bodyvendor = null)
+        public IBodyWorkflowAction<ItemListPostValueResponse> ItemListPostValue(Expression<Func<string>> bodymodelno = null, Expression<Func<string>> bodydescrip = null, Expression<Func<bodyitemtypeInput>> bodyitemtype = null, Expression<Func<double>> bodyprice = null, Expression<Func<double>> bodycost = null, Expression<Func<string>> bodyvendor = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ItemListPostValueResponse> __BuildItemListPostValue(WorkflowExpression<string> bodymodelno = null, WorkflowExpression<string> bodydescrip = null, WorkflowExpression<bodyitemtypeInput> bodyitemtype = null, WorkflowExpression<double> bodyprice = null, WorkflowExpression<double> bodycost = null, WorkflowExpression<string> bodyvendor = null)
-        {
-            WorkflowExpression.Validate(bodymodelno, nameof(bodymodelno), required: false);
-            WorkflowExpression.Validate(bodydescrip, nameof(bodydescrip), required: false);
-            WorkflowExpression.Validate(bodyitemtype, nameof(bodyitemtype), required: false);
-            WorkflowExpression.Validate(bodyprice, nameof(bodyprice), required: false);
-            WorkflowExpression.Validate(bodycost, nameof(bodycost), required: false);
-            WorkflowExpression.Validate(bodyvendor, nameof(bodyvendor), required: false);
+            var __workflow_bodymodelno = bodymodelno == null ? null : WorkflowExpression.Compile(bodymodelno);
+            WorkflowExpression.Validate(__workflow_bodymodelno, nameof(bodymodelno), required: false);
+            var __workflow_bodydescrip = bodydescrip == null ? null : WorkflowExpression.Compile(bodydescrip);
+            WorkflowExpression.Validate(__workflow_bodydescrip, nameof(bodydescrip), required: false);
+            var __workflow_bodyitemtype = bodyitemtype == null ? null : WorkflowExpression.Compile(bodyitemtype);
+            WorkflowExpression.Validate(__workflow_bodyitemtype, nameof(bodyitemtype), required: false);
+            var __workflow_bodyprice = bodyprice == null ? null : WorkflowExpression.Compile(bodyprice);
+            WorkflowExpression.Validate(__workflow_bodyprice, nameof(bodyprice), required: false);
+            var __workflow_bodycost = bodycost == null ? null : WorkflowExpression.Compile(bodycost);
+            WorkflowExpression.Validate(__workflow_bodycost, nameof(bodycost), required: false);
+            var __workflow_bodyvendor = bodyvendor == null ? null : WorkflowExpression.Compile(bodyvendor);
+            WorkflowExpression.Validate(__workflow_bodyvendor, nameof(bodyvendor), required: false);
             return new DeferredBodyAction<ItemListPostValueResponse>(() =>
             {
                 var apiCallPath = "/api/ItemList";
@@ -1191,39 +1233,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodymodelno != null)
+                if (__workflow_bodymodelno != null)
                 {
-                    body["modelno"] = ExpressionConverter.ConvertO(bodymodelno);
+                    body["modelno"] = ExpressionConverter.ConvertO(__workflow_bodymodelno);
                     bodypropCount++;
                 }
 
-                if (bodydescrip != null)
+                if (__workflow_bodydescrip != null)
                 {
-                    body["descrip"] = ExpressionConverter.ConvertO(bodydescrip);
+                    body["descrip"] = ExpressionConverter.ConvertO(__workflow_bodydescrip);
                     bodypropCount++;
                 }
 
-                if (bodyitemtype != null)
+                if (__workflow_bodyitemtype != null)
                 {
-                    body["itemtype"] = ExpressionConverter.ConvertO(bodyitemtype);
+                    body["itemtype"] = ExpressionConverter.ConvertO(__workflow_bodyitemtype);
                     bodypropCount++;
                 }
 
-                if (bodyprice != null)
+                if (__workflow_bodyprice != null)
                 {
-                    body["price"] = ExpressionConverter.ConvertO(bodyprice);
+                    body["price"] = ExpressionConverter.ConvertO(__workflow_bodyprice);
                     bodypropCount++;
                 }
 
-                if (bodycost != null)
+                if (__workflow_bodycost != null)
                 {
-                    body["cost"] = ExpressionConverter.ConvertO(bodycost);
+                    body["cost"] = ExpressionConverter.ConvertO(__workflow_bodycost);
                     bodypropCount++;
                 }
 
-                if (bodyvendor != null)
+                if (__workflow_bodyvendor != null)
                 {
-                    body["vendor"] = ExpressionConverter.ConvertO(bodyvendor);
+                    body["vendor"] = ExpressionConverter.ConvertO(__workflow_bodyvendor);
                     bodypropCount++;
                 }
 
@@ -1237,19 +1279,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        [WorkflowExpressionFactory(nameof(__BuildItemListGetValue))]
-        public IBodyWorkflowAction<ItemListGetValueResponse> ItemListGetValue([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<ItemListGetValueResponse> ItemListGetValue(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ItemListGetValueResponse> __BuildItemListGetValue(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<ItemListGetValueResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ItemList/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ItemList/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ItemListGetValueResponse>(callPayload);
@@ -1257,48 +1293,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        [WorkflowExpressionFactory(nameof(__BuildItemListPutValue))]
-        public IWorkflowAction ItemListPutValue([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodydescrip = null, [WorkflowExpression] Func<double> bodyprice = null, [WorkflowExpression] Func<double> bodycost = null, [WorkflowExpression] Func<string> bodyvendor = null)
+        public IWorkflowAction ItemListPutValue(Expression<Func<string>> id, Expression<Func<string>> bodydescrip = null, Expression<Func<double>> bodyprice = null, Expression<Func<double>> bodycost = null, Expression<Func<string>> bodyvendor = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildItemListPutValue(WorkflowExpression<string> id, WorkflowExpression<string> bodydescrip = null, WorkflowExpression<double> bodyprice = null, WorkflowExpression<double> bodycost = null, WorkflowExpression<string> bodyvendor = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(bodydescrip, nameof(bodydescrip), required: false);
-            WorkflowExpression.Validate(bodyprice, nameof(bodyprice), required: false);
-            WorkflowExpression.Validate(bodycost, nameof(bodycost), required: false);
-            WorkflowExpression.Validate(bodyvendor, nameof(bodyvendor), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_bodydescrip = bodydescrip == null ? null : WorkflowExpression.Compile(bodydescrip);
+            WorkflowExpression.Validate(__workflow_bodydescrip, nameof(bodydescrip), required: false);
+            var __workflow_bodyprice = bodyprice == null ? null : WorkflowExpression.Compile(bodyprice);
+            WorkflowExpression.Validate(__workflow_bodyprice, nameof(bodyprice), required: false);
+            var __workflow_bodycost = bodycost == null ? null : WorkflowExpression.Compile(bodycost);
+            WorkflowExpression.Validate(__workflow_bodycost, nameof(bodycost), required: false);
+            var __workflow_bodyvendor = bodyvendor == null ? null : WorkflowExpression.Compile(bodyvendor);
+            WorkflowExpression.Validate(__workflow_bodyvendor, nameof(bodyvendor), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ItemList/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ItemList/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodydescrip != null)
+                if (__workflow_bodydescrip != null)
                 {
-                    body["descrip"] = ExpressionConverter.ConvertO(bodydescrip);
+                    body["descrip"] = ExpressionConverter.ConvertO(__workflow_bodydescrip);
                     bodypropCount++;
                 }
 
-                if (bodyprice != null)
+                if (__workflow_bodyprice != null)
                 {
-                    body["price"] = ExpressionConverter.ConvertO(bodyprice);
+                    body["price"] = ExpressionConverter.ConvertO(__workflow_bodyprice);
                     bodypropCount++;
                 }
 
-                if (bodycost != null)
+                if (__workflow_bodycost != null)
                 {
-                    body["cost"] = ExpressionConverter.ConvertO(bodycost);
+                    body["cost"] = ExpressionConverter.ConvertO(__workflow_bodycost);
                     bodypropCount++;
                 }
 
-                if (bodyvendor != null)
+                if (__workflow_bodyvendor != null)
                 {
-                    body["vendor"] = ExpressionConverter.ConvertO(bodyvendor);
+                    body["vendor"] = ExpressionConverter.ConvertO(__workflow_bodyvendor);
                     bodypropCount++;
                 }
 
@@ -1321,47 +1355,72 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        [WorkflowExpressionFactory(nameof(__BuildLeadPostValue))]
-        public IBodyWorkflowAction<JToken> LeadPostValue([WorkflowExpression] Func<string> bodysal = null, [WorkflowExpression] Func<string> bodyfirstname = null, [WorkflowExpression] Func<string> bodymiddlename = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodylastname = null, [WorkflowExpression] Func<string> bodycompany = null, [WorkflowExpression] Func<string> bodyaddr1 = null, [WorkflowExpression] Func<string> bodyaddr2 = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodystate = null, [WorkflowExpression] Func<string> bodypostal = null, [WorkflowExpression] Func<string> bodyemail1 = null, [WorkflowExpression] Func<string> bodyemail2 = null, [WorkflowExpression] Func<string> bodyemail3 = null, [WorkflowExpression] Func<string> bodyemail4 = null, [WorkflowExpression] Func<string> bodyphonetype1 = null, [WorkflowExpression] Func<string> bodyphone1 = null, [WorkflowExpression] Func<string> bodyphonetype2 = null, [WorkflowExpression] Func<string> bodyphone2 = null, [WorkflowExpression] Func<string> bodyphonetype3 = null, [WorkflowExpression] Func<string> bodyphone3 = null, [WorkflowExpression] Func<string> bodyphonetype4 = null, [WorkflowExpression] Func<string> bodyphone4 = null, [WorkflowExpression] Func<string> bodyremark = null, [WorkflowExpression] Func<string> bodynotes = null, [WorkflowExpression] Func<string> bodycampaign = null, [WorkflowExpression] Func<string> bodycategory = null, [WorkflowExpression] Func<string> bodyrole = null, [WorkflowExpression] Func<string> bodymarket = null, [WorkflowExpression] Func<string> bodyterritory = null, [WorkflowExpression] Func<string> bodysalesrep = null, [WorkflowExpression] Func<string> bodylastcontact = null)
+        public IBodyWorkflowAction<JToken> LeadPostValue(Expression<Func<string>> bodysal = null, Expression<Func<string>> bodyfirstname = null, Expression<Func<string>> bodymiddlename = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodylastname = null, Expression<Func<string>> bodycompany = null, Expression<Func<string>> bodyaddr1 = null, Expression<Func<string>> bodyaddr2 = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodypostal = null, Expression<Func<string>> bodyemail1 = null, Expression<Func<string>> bodyemail2 = null, Expression<Func<string>> bodyemail3 = null, Expression<Func<string>> bodyemail4 = null, Expression<Func<string>> bodyphonetype1 = null, Expression<Func<string>> bodyphone1 = null, Expression<Func<string>> bodyphonetype2 = null, Expression<Func<string>> bodyphone2 = null, Expression<Func<string>> bodyphonetype3 = null, Expression<Func<string>> bodyphone3 = null, Expression<Func<string>> bodyphonetype4 = null, Expression<Func<string>> bodyphone4 = null, Expression<Func<string>> bodyremark = null, Expression<Func<string>> bodynotes = null, Expression<Func<string>> bodycampaign = null, Expression<Func<string>> bodycategory = null, Expression<Func<string>> bodyrole = null, Expression<Func<string>> bodymarket = null, Expression<Func<string>> bodyterritory = null, Expression<Func<string>> bodysalesrep = null, Expression<Func<string>> bodylastcontact = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildLeadPostValue(WorkflowExpression<string> bodysal = null, WorkflowExpression<string> bodyfirstname = null, WorkflowExpression<string> bodymiddlename = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodylastname = null, WorkflowExpression<string> bodycompany = null, WorkflowExpression<string> bodyaddr1 = null, WorkflowExpression<string> bodyaddr2 = null, WorkflowExpression<string> bodycity = null, WorkflowExpression<string> bodystate = null, WorkflowExpression<string> bodypostal = null, WorkflowExpression<string> bodyemail1 = null, WorkflowExpression<string> bodyemail2 = null, WorkflowExpression<string> bodyemail3 = null, WorkflowExpression<string> bodyemail4 = null, WorkflowExpression<string> bodyphonetype1 = null, WorkflowExpression<string> bodyphone1 = null, WorkflowExpression<string> bodyphonetype2 = null, WorkflowExpression<string> bodyphone2 = null, WorkflowExpression<string> bodyphonetype3 = null, WorkflowExpression<string> bodyphone3 = null, WorkflowExpression<string> bodyphonetype4 = null, WorkflowExpression<string> bodyphone4 = null, WorkflowExpression<string> bodyremark = null, WorkflowExpression<string> bodynotes = null, WorkflowExpression<string> bodycampaign = null, WorkflowExpression<string> bodycategory = null, WorkflowExpression<string> bodyrole = null, WorkflowExpression<string> bodymarket = null, WorkflowExpression<string> bodyterritory = null, WorkflowExpression<string> bodysalesrep = null, WorkflowExpression<string> bodylastcontact = null)
-        {
-            WorkflowExpression.Validate(bodysal, nameof(bodysal), required: false);
-            WorkflowExpression.Validate(bodyfirstname, nameof(bodyfirstname), required: false);
-            WorkflowExpression.Validate(bodymiddlename, nameof(bodymiddlename), required: false);
-            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            WorkflowExpression.Validate(bodylastname, nameof(bodylastname), required: false);
-            WorkflowExpression.Validate(bodycompany, nameof(bodycompany), required: false);
-            WorkflowExpression.Validate(bodyaddr1, nameof(bodyaddr1), required: false);
-            WorkflowExpression.Validate(bodyaddr2, nameof(bodyaddr2), required: false);
-            WorkflowExpression.Validate(bodycity, nameof(bodycity), required: false);
-            WorkflowExpression.Validate(bodystate, nameof(bodystate), required: false);
-            WorkflowExpression.Validate(bodypostal, nameof(bodypostal), required: false);
-            WorkflowExpression.Validate(bodyemail1, nameof(bodyemail1), required: false);
-            WorkflowExpression.Validate(bodyemail2, nameof(bodyemail2), required: false);
-            WorkflowExpression.Validate(bodyemail3, nameof(bodyemail3), required: false);
-            WorkflowExpression.Validate(bodyemail4, nameof(bodyemail4), required: false);
-            WorkflowExpression.Validate(bodyphonetype1, nameof(bodyphonetype1), required: false);
-            WorkflowExpression.Validate(bodyphone1, nameof(bodyphone1), required: false);
-            WorkflowExpression.Validate(bodyphonetype2, nameof(bodyphonetype2), required: false);
-            WorkflowExpression.Validate(bodyphone2, nameof(bodyphone2), required: false);
-            WorkflowExpression.Validate(bodyphonetype3, nameof(bodyphonetype3), required: false);
-            WorkflowExpression.Validate(bodyphone3, nameof(bodyphone3), required: false);
-            WorkflowExpression.Validate(bodyphonetype4, nameof(bodyphonetype4), required: false);
-            WorkflowExpression.Validate(bodyphone4, nameof(bodyphone4), required: false);
-            WorkflowExpression.Validate(bodyremark, nameof(bodyremark), required: false);
-            WorkflowExpression.Validate(bodynotes, nameof(bodynotes), required: false);
-            WorkflowExpression.Validate(bodycampaign, nameof(bodycampaign), required: false);
-            WorkflowExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            WorkflowExpression.Validate(bodyrole, nameof(bodyrole), required: false);
-            WorkflowExpression.Validate(bodymarket, nameof(bodymarket), required: false);
-            WorkflowExpression.Validate(bodyterritory, nameof(bodyterritory), required: false);
-            WorkflowExpression.Validate(bodysalesrep, nameof(bodysalesrep), required: false);
-            WorkflowExpression.Validate(bodylastcontact, nameof(bodylastcontact), required: false);
+            var __workflow_bodysal = bodysal == null ? null : WorkflowExpression.Compile(bodysal);
+            WorkflowExpression.Validate(__workflow_bodysal, nameof(bodysal), required: false);
+            var __workflow_bodyfirstname = bodyfirstname == null ? null : WorkflowExpression.Compile(bodyfirstname);
+            WorkflowExpression.Validate(__workflow_bodyfirstname, nameof(bodyfirstname), required: false);
+            var __workflow_bodymiddlename = bodymiddlename == null ? null : WorkflowExpression.Compile(bodymiddlename);
+            WorkflowExpression.Validate(__workflow_bodymiddlename, nameof(bodymiddlename), required: false);
+            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
+            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodylastname = bodylastname == null ? null : WorkflowExpression.Compile(bodylastname);
+            WorkflowExpression.Validate(__workflow_bodylastname, nameof(bodylastname), required: false);
+            var __workflow_bodycompany = bodycompany == null ? null : WorkflowExpression.Compile(bodycompany);
+            WorkflowExpression.Validate(__workflow_bodycompany, nameof(bodycompany), required: false);
+            var __workflow_bodyaddr1 = bodyaddr1 == null ? null : WorkflowExpression.Compile(bodyaddr1);
+            WorkflowExpression.Validate(__workflow_bodyaddr1, nameof(bodyaddr1), required: false);
+            var __workflow_bodyaddr2 = bodyaddr2 == null ? null : WorkflowExpression.Compile(bodyaddr2);
+            WorkflowExpression.Validate(__workflow_bodyaddr2, nameof(bodyaddr2), required: false);
+            var __workflow_bodycity = bodycity == null ? null : WorkflowExpression.Compile(bodycity);
+            WorkflowExpression.Validate(__workflow_bodycity, nameof(bodycity), required: false);
+            var __workflow_bodystate = bodystate == null ? null : WorkflowExpression.Compile(bodystate);
+            WorkflowExpression.Validate(__workflow_bodystate, nameof(bodystate), required: false);
+            var __workflow_bodypostal = bodypostal == null ? null : WorkflowExpression.Compile(bodypostal);
+            WorkflowExpression.Validate(__workflow_bodypostal, nameof(bodypostal), required: false);
+            var __workflow_bodyemail1 = bodyemail1 == null ? null : WorkflowExpression.Compile(bodyemail1);
+            WorkflowExpression.Validate(__workflow_bodyemail1, nameof(bodyemail1), required: false);
+            var __workflow_bodyemail2 = bodyemail2 == null ? null : WorkflowExpression.Compile(bodyemail2);
+            WorkflowExpression.Validate(__workflow_bodyemail2, nameof(bodyemail2), required: false);
+            var __workflow_bodyemail3 = bodyemail3 == null ? null : WorkflowExpression.Compile(bodyemail3);
+            WorkflowExpression.Validate(__workflow_bodyemail3, nameof(bodyemail3), required: false);
+            var __workflow_bodyemail4 = bodyemail4 == null ? null : WorkflowExpression.Compile(bodyemail4);
+            WorkflowExpression.Validate(__workflow_bodyemail4, nameof(bodyemail4), required: false);
+            var __workflow_bodyphonetype1 = bodyphonetype1 == null ? null : WorkflowExpression.Compile(bodyphonetype1);
+            WorkflowExpression.Validate(__workflow_bodyphonetype1, nameof(bodyphonetype1), required: false);
+            var __workflow_bodyphone1 = bodyphone1 == null ? null : WorkflowExpression.Compile(bodyphone1);
+            WorkflowExpression.Validate(__workflow_bodyphone1, nameof(bodyphone1), required: false);
+            var __workflow_bodyphonetype2 = bodyphonetype2 == null ? null : WorkflowExpression.Compile(bodyphonetype2);
+            WorkflowExpression.Validate(__workflow_bodyphonetype2, nameof(bodyphonetype2), required: false);
+            var __workflow_bodyphone2 = bodyphone2 == null ? null : WorkflowExpression.Compile(bodyphone2);
+            WorkflowExpression.Validate(__workflow_bodyphone2, nameof(bodyphone2), required: false);
+            var __workflow_bodyphonetype3 = bodyphonetype3 == null ? null : WorkflowExpression.Compile(bodyphonetype3);
+            WorkflowExpression.Validate(__workflow_bodyphonetype3, nameof(bodyphonetype3), required: false);
+            var __workflow_bodyphone3 = bodyphone3 == null ? null : WorkflowExpression.Compile(bodyphone3);
+            WorkflowExpression.Validate(__workflow_bodyphone3, nameof(bodyphone3), required: false);
+            var __workflow_bodyphonetype4 = bodyphonetype4 == null ? null : WorkflowExpression.Compile(bodyphonetype4);
+            WorkflowExpression.Validate(__workflow_bodyphonetype4, nameof(bodyphonetype4), required: false);
+            var __workflow_bodyphone4 = bodyphone4 == null ? null : WorkflowExpression.Compile(bodyphone4);
+            WorkflowExpression.Validate(__workflow_bodyphone4, nameof(bodyphone4), required: false);
+            var __workflow_bodyremark = bodyremark == null ? null : WorkflowExpression.Compile(bodyremark);
+            WorkflowExpression.Validate(__workflow_bodyremark, nameof(bodyremark), required: false);
+            var __workflow_bodynotes = bodynotes == null ? null : WorkflowExpression.Compile(bodynotes);
+            WorkflowExpression.Validate(__workflow_bodynotes, nameof(bodynotes), required: false);
+            var __workflow_bodycampaign = bodycampaign == null ? null : WorkflowExpression.Compile(bodycampaign);
+            WorkflowExpression.Validate(__workflow_bodycampaign, nameof(bodycampaign), required: false);
+            var __workflow_bodycategory = bodycategory == null ? null : WorkflowExpression.Compile(bodycategory);
+            WorkflowExpression.Validate(__workflow_bodycategory, nameof(bodycategory), required: false);
+            var __workflow_bodyrole = bodyrole == null ? null : WorkflowExpression.Compile(bodyrole);
+            WorkflowExpression.Validate(__workflow_bodyrole, nameof(bodyrole), required: false);
+            var __workflow_bodymarket = bodymarket == null ? null : WorkflowExpression.Compile(bodymarket);
+            WorkflowExpression.Validate(__workflow_bodymarket, nameof(bodymarket), required: false);
+            var __workflow_bodyterritory = bodyterritory == null ? null : WorkflowExpression.Compile(bodyterritory);
+            WorkflowExpression.Validate(__workflow_bodyterritory, nameof(bodyterritory), required: false);
+            var __workflow_bodysalesrep = bodysalesrep == null ? null : WorkflowExpression.Compile(bodysalesrep);
+            WorkflowExpression.Validate(__workflow_bodysalesrep, nameof(bodysalesrep), required: false);
+            var __workflow_bodylastcontact = bodylastcontact == null ? null : WorkflowExpression.Compile(bodylastcontact);
+            WorkflowExpression.Validate(__workflow_bodylastcontact, nameof(bodylastcontact), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/api/Lead";
@@ -1369,195 +1428,195 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodysal != null)
+                if (__workflow_bodysal != null)
                 {
-                    body["sal"] = ExpressionConverter.ConvertO(bodysal);
+                    body["sal"] = ExpressionConverter.ConvertO(__workflow_bodysal);
                     bodypropCount++;
                 }
 
-                if (bodyfirstname != null)
+                if (__workflow_bodyfirstname != null)
                 {
-                    body["firstname"] = ExpressionConverter.ConvertO(bodyfirstname);
+                    body["firstname"] = ExpressionConverter.ConvertO(__workflow_bodyfirstname);
                     bodypropCount++;
                 }
 
-                if (bodymiddlename != null)
+                if (__workflow_bodymiddlename != null)
                 {
-                    body["middlename"] = ExpressionConverter.ConvertO(bodymiddlename);
+                    body["middlename"] = ExpressionConverter.ConvertO(__workflow_bodymiddlename);
                     bodypropCount++;
                 }
 
-                if (bodytitle != null)
+                if (__workflow_bodytitle != null)
                 {
-                    body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
                     bodypropCount++;
                 }
 
-                if (bodylastname != null)
+                if (__workflow_bodylastname != null)
                 {
-                    body["lastname"] = ExpressionConverter.ConvertO(bodylastname);
+                    body["lastname"] = ExpressionConverter.ConvertO(__workflow_bodylastname);
                     bodypropCount++;
                 }
 
-                if (bodycompany != null)
+                if (__workflow_bodycompany != null)
                 {
-                    body["company"] = ExpressionConverter.ConvertO(bodycompany);
+                    body["company"] = ExpressionConverter.ConvertO(__workflow_bodycompany);
                     bodypropCount++;
                 }
 
-                if (bodyaddr1 != null)
+                if (__workflow_bodyaddr1 != null)
                 {
-                    body["addr1"] = ExpressionConverter.ConvertO(bodyaddr1);
+                    body["addr1"] = ExpressionConverter.ConvertO(__workflow_bodyaddr1);
                     bodypropCount++;
                 }
 
-                if (bodyaddr2 != null)
+                if (__workflow_bodyaddr2 != null)
                 {
-                    body["addr2"] = ExpressionConverter.ConvertO(bodyaddr2);
+                    body["addr2"] = ExpressionConverter.ConvertO(__workflow_bodyaddr2);
                     bodypropCount++;
                 }
 
-                if (bodycity != null)
+                if (__workflow_bodycity != null)
                 {
-                    body["city"] = ExpressionConverter.ConvertO(bodycity);
+                    body["city"] = ExpressionConverter.ConvertO(__workflow_bodycity);
                     bodypropCount++;
                 }
 
-                if (bodystate != null)
+                if (__workflow_bodystate != null)
                 {
-                    body["state"] = ExpressionConverter.ConvertO(bodystate);
+                    body["state"] = ExpressionConverter.ConvertO(__workflow_bodystate);
                     bodypropCount++;
                 }
 
-                if (bodypostal != null)
+                if (__workflow_bodypostal != null)
                 {
-                    body["postal"] = ExpressionConverter.ConvertO(bodypostal);
+                    body["postal"] = ExpressionConverter.ConvertO(__workflow_bodypostal);
                     bodypropCount++;
                 }
 
-                if (bodyemail1 != null)
+                if (__workflow_bodyemail1 != null)
                 {
-                    body["email1"] = ExpressionConverter.ConvertO(bodyemail1);
+                    body["email1"] = ExpressionConverter.ConvertO(__workflow_bodyemail1);
                     bodypropCount++;
                 }
 
-                if (bodyemail2 != null)
+                if (__workflow_bodyemail2 != null)
                 {
-                    body["email2"] = ExpressionConverter.ConvertO(bodyemail2);
+                    body["email2"] = ExpressionConverter.ConvertO(__workflow_bodyemail2);
                     bodypropCount++;
                 }
 
-                if (bodyemail3 != null)
+                if (__workflow_bodyemail3 != null)
                 {
-                    body["email3"] = ExpressionConverter.ConvertO(bodyemail3);
+                    body["email3"] = ExpressionConverter.ConvertO(__workflow_bodyemail3);
                     bodypropCount++;
                 }
 
-                if (bodyemail4 != null)
+                if (__workflow_bodyemail4 != null)
                 {
-                    body["email4"] = ExpressionConverter.ConvertO(bodyemail4);
+                    body["email4"] = ExpressionConverter.ConvertO(__workflow_bodyemail4);
                     bodypropCount++;
                 }
 
-                if (bodyphonetype1 != null)
+                if (__workflow_bodyphonetype1 != null)
                 {
-                    body["phonetype1"] = ExpressionConverter.ConvertO(bodyphonetype1);
+                    body["phonetype1"] = ExpressionConverter.ConvertO(__workflow_bodyphonetype1);
                     bodypropCount++;
                 }
 
-                if (bodyphone1 != null)
+                if (__workflow_bodyphone1 != null)
                 {
-                    body["phone1"] = ExpressionConverter.ConvertO(bodyphone1);
+                    body["phone1"] = ExpressionConverter.ConvertO(__workflow_bodyphone1);
                     bodypropCount++;
                 }
 
-                if (bodyphonetype2 != null)
+                if (__workflow_bodyphonetype2 != null)
                 {
-                    body["phonetype2"] = ExpressionConverter.ConvertO(bodyphonetype2);
+                    body["phonetype2"] = ExpressionConverter.ConvertO(__workflow_bodyphonetype2);
                     bodypropCount++;
                 }
 
-                if (bodyphone2 != null)
+                if (__workflow_bodyphone2 != null)
                 {
-                    body["phone2"] = ExpressionConverter.ConvertO(bodyphone2);
+                    body["phone2"] = ExpressionConverter.ConvertO(__workflow_bodyphone2);
                     bodypropCount++;
                 }
 
-                if (bodyphonetype3 != null)
+                if (__workflow_bodyphonetype3 != null)
                 {
-                    body["phonetype3"] = ExpressionConverter.ConvertO(bodyphonetype3);
+                    body["phonetype3"] = ExpressionConverter.ConvertO(__workflow_bodyphonetype3);
                     bodypropCount++;
                 }
 
-                if (bodyphone3 != null)
+                if (__workflow_bodyphone3 != null)
                 {
-                    body["phone3"] = ExpressionConverter.ConvertO(bodyphone3);
+                    body["phone3"] = ExpressionConverter.ConvertO(__workflow_bodyphone3);
                     bodypropCount++;
                 }
 
-                if (bodyphonetype4 != null)
+                if (__workflow_bodyphonetype4 != null)
                 {
-                    body["phonetype4"] = ExpressionConverter.ConvertO(bodyphonetype4);
+                    body["phonetype4"] = ExpressionConverter.ConvertO(__workflow_bodyphonetype4);
                     bodypropCount++;
                 }
 
-                if (bodyphone4 != null)
+                if (__workflow_bodyphone4 != null)
                 {
-                    body["phone4"] = ExpressionConverter.ConvertO(bodyphone4);
+                    body["phone4"] = ExpressionConverter.ConvertO(__workflow_bodyphone4);
                     bodypropCount++;
                 }
 
-                if (bodyremark != null)
+                if (__workflow_bodyremark != null)
                 {
-                    body["remark"] = ExpressionConverter.ConvertO(bodyremark);
+                    body["remark"] = ExpressionConverter.ConvertO(__workflow_bodyremark);
                     bodypropCount++;
                 }
 
-                if (bodynotes != null)
+                if (__workflow_bodynotes != null)
                 {
-                    body["notes"] = ExpressionConverter.ConvertO(bodynotes);
+                    body["notes"] = ExpressionConverter.ConvertO(__workflow_bodynotes);
                     bodypropCount++;
                 }
 
-                if (bodycampaign != null)
+                if (__workflow_bodycampaign != null)
                 {
-                    body["campaign"] = ExpressionConverter.ConvertO(bodycampaign);
+                    body["campaign"] = ExpressionConverter.ConvertO(__workflow_bodycampaign);
                     bodypropCount++;
                 }
 
-                if (bodycategory != null)
+                if (__workflow_bodycategory != null)
                 {
-                    body["category"] = ExpressionConverter.ConvertO(bodycategory);
+                    body["category"] = ExpressionConverter.ConvertO(__workflow_bodycategory);
                     bodypropCount++;
                 }
 
-                if (bodyrole != null)
+                if (__workflow_bodyrole != null)
                 {
-                    body["role"] = ExpressionConverter.ConvertO(bodyrole);
+                    body["role"] = ExpressionConverter.ConvertO(__workflow_bodyrole);
                     bodypropCount++;
                 }
 
-                if (bodymarket != null)
+                if (__workflow_bodymarket != null)
                 {
-                    body["market"] = ExpressionConverter.ConvertO(bodymarket);
+                    body["market"] = ExpressionConverter.ConvertO(__workflow_bodymarket);
                     bodypropCount++;
                 }
 
-                if (bodyterritory != null)
+                if (__workflow_bodyterritory != null)
                 {
-                    body["territory"] = ExpressionConverter.ConvertO(bodyterritory);
+                    body["territory"] = ExpressionConverter.ConvertO(__workflow_bodyterritory);
                     bodypropCount++;
                 }
 
-                if (bodysalesrep != null)
+                if (__workflow_bodysalesrep != null)
                 {
-                    body["salesrep"] = ExpressionConverter.ConvertO(bodysalesrep);
+                    body["salesrep"] = ExpressionConverter.ConvertO(__workflow_bodysalesrep);
                     bodypropCount++;
                 }
 
-                if (bodylastcontact != null)
+                if (__workflow_bodylastcontact != null)
                 {
-                    body["lastcontact"] = ExpressionConverter.ConvertO(bodylastcontact);
+                    body["lastcontact"] = ExpressionConverter.ConvertO(__workflow_bodylastcontact);
                     bodypropCount++;
                 }
 
@@ -1571,19 +1630,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        [WorkflowExpressionFactory(nameof(__BuildLeadGetValue))]
-        public IBodyWorkflowAction<LeadGetValueResponse> LeadGetValue([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<LeadGetValueResponse> LeadGetValue(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<LeadGetValueResponse> __BuildLeadGetValue(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<LeadGetValueResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/Lead/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/Lead/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<LeadGetValueResponse>(callPayload);
@@ -1591,244 +1644,270 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        [WorkflowExpressionFactory(nameof(__BuildLeadPutValue))]
-        public IBodyWorkflowAction<JToken> LeadPutValue([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodysal = null, [WorkflowExpression] Func<string> bodyfirstname = null, [WorkflowExpression] Func<string> bodymiddlename = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodylastname = null, [WorkflowExpression] Func<string> bodycompany = null, [WorkflowExpression] Func<string> bodyaddr1 = null, [WorkflowExpression] Func<string> bodyaddr2 = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodystate = null, [WorkflowExpression] Func<string> bodypostal = null, [WorkflowExpression] Func<string> bodyemail1 = null, [WorkflowExpression] Func<string> bodyemail2 = null, [WorkflowExpression] Func<string> bodyemail3 = null, [WorkflowExpression] Func<string> bodyemail4 = null, [WorkflowExpression] Func<string> bodyphonetype1 = null, [WorkflowExpression] Func<string> bodyphone1 = null, [WorkflowExpression] Func<string> bodyphonetype2 = null, [WorkflowExpression] Func<string> bodyphone2 = null, [WorkflowExpression] Func<string> bodyphonetype3 = null, [WorkflowExpression] Func<string> bodyphone3 = null, [WorkflowExpression] Func<string> bodyphonetype4 = null, [WorkflowExpression] Func<string> bodyphone4 = null, [WorkflowExpression] Func<string> bodyremark = null, [WorkflowExpression] Func<string> bodynotes = null, [WorkflowExpression] Func<string> bodycampaign = null, [WorkflowExpression] Func<string> bodycategory = null, [WorkflowExpression] Func<string> bodyrole = null, [WorkflowExpression] Func<string> bodymarket = null, [WorkflowExpression] Func<string> bodyterritory = null, [WorkflowExpression] Func<string> bodysalesrep = null, [WorkflowExpression] Func<string> bodylastcontact = null)
+        public IBodyWorkflowAction<JToken> LeadPutValue(Expression<Func<string>> id, Expression<Func<string>> bodysal = null, Expression<Func<string>> bodyfirstname = null, Expression<Func<string>> bodymiddlename = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodylastname = null, Expression<Func<string>> bodycompany = null, Expression<Func<string>> bodyaddr1 = null, Expression<Func<string>> bodyaddr2 = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodypostal = null, Expression<Func<string>> bodyemail1 = null, Expression<Func<string>> bodyemail2 = null, Expression<Func<string>> bodyemail3 = null, Expression<Func<string>> bodyemail4 = null, Expression<Func<string>> bodyphonetype1 = null, Expression<Func<string>> bodyphone1 = null, Expression<Func<string>> bodyphonetype2 = null, Expression<Func<string>> bodyphone2 = null, Expression<Func<string>> bodyphonetype3 = null, Expression<Func<string>> bodyphone3 = null, Expression<Func<string>> bodyphonetype4 = null, Expression<Func<string>> bodyphone4 = null, Expression<Func<string>> bodyremark = null, Expression<Func<string>> bodynotes = null, Expression<Func<string>> bodycampaign = null, Expression<Func<string>> bodycategory = null, Expression<Func<string>> bodyrole = null, Expression<Func<string>> bodymarket = null, Expression<Func<string>> bodyterritory = null, Expression<Func<string>> bodysalesrep = null, Expression<Func<string>> bodylastcontact = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildLeadPutValue(WorkflowExpression<string> id, WorkflowExpression<string> bodysal = null, WorkflowExpression<string> bodyfirstname = null, WorkflowExpression<string> bodymiddlename = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodylastname = null, WorkflowExpression<string> bodycompany = null, WorkflowExpression<string> bodyaddr1 = null, WorkflowExpression<string> bodyaddr2 = null, WorkflowExpression<string> bodycity = null, WorkflowExpression<string> bodystate = null, WorkflowExpression<string> bodypostal = null, WorkflowExpression<string> bodyemail1 = null, WorkflowExpression<string> bodyemail2 = null, WorkflowExpression<string> bodyemail3 = null, WorkflowExpression<string> bodyemail4 = null, WorkflowExpression<string> bodyphonetype1 = null, WorkflowExpression<string> bodyphone1 = null, WorkflowExpression<string> bodyphonetype2 = null, WorkflowExpression<string> bodyphone2 = null, WorkflowExpression<string> bodyphonetype3 = null, WorkflowExpression<string> bodyphone3 = null, WorkflowExpression<string> bodyphonetype4 = null, WorkflowExpression<string> bodyphone4 = null, WorkflowExpression<string> bodyremark = null, WorkflowExpression<string> bodynotes = null, WorkflowExpression<string> bodycampaign = null, WorkflowExpression<string> bodycategory = null, WorkflowExpression<string> bodyrole = null, WorkflowExpression<string> bodymarket = null, WorkflowExpression<string> bodyterritory = null, WorkflowExpression<string> bodysalesrep = null, WorkflowExpression<string> bodylastcontact = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(bodysal, nameof(bodysal), required: false);
-            WorkflowExpression.Validate(bodyfirstname, nameof(bodyfirstname), required: false);
-            WorkflowExpression.Validate(bodymiddlename, nameof(bodymiddlename), required: false);
-            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            WorkflowExpression.Validate(bodylastname, nameof(bodylastname), required: false);
-            WorkflowExpression.Validate(bodycompany, nameof(bodycompany), required: false);
-            WorkflowExpression.Validate(bodyaddr1, nameof(bodyaddr1), required: false);
-            WorkflowExpression.Validate(bodyaddr2, nameof(bodyaddr2), required: false);
-            WorkflowExpression.Validate(bodycity, nameof(bodycity), required: false);
-            WorkflowExpression.Validate(bodystate, nameof(bodystate), required: false);
-            WorkflowExpression.Validate(bodypostal, nameof(bodypostal), required: false);
-            WorkflowExpression.Validate(bodyemail1, nameof(bodyemail1), required: false);
-            WorkflowExpression.Validate(bodyemail2, nameof(bodyemail2), required: false);
-            WorkflowExpression.Validate(bodyemail3, nameof(bodyemail3), required: false);
-            WorkflowExpression.Validate(bodyemail4, nameof(bodyemail4), required: false);
-            WorkflowExpression.Validate(bodyphonetype1, nameof(bodyphonetype1), required: false);
-            WorkflowExpression.Validate(bodyphone1, nameof(bodyphone1), required: false);
-            WorkflowExpression.Validate(bodyphonetype2, nameof(bodyphonetype2), required: false);
-            WorkflowExpression.Validate(bodyphone2, nameof(bodyphone2), required: false);
-            WorkflowExpression.Validate(bodyphonetype3, nameof(bodyphonetype3), required: false);
-            WorkflowExpression.Validate(bodyphone3, nameof(bodyphone3), required: false);
-            WorkflowExpression.Validate(bodyphonetype4, nameof(bodyphonetype4), required: false);
-            WorkflowExpression.Validate(bodyphone4, nameof(bodyphone4), required: false);
-            WorkflowExpression.Validate(bodyremark, nameof(bodyremark), required: false);
-            WorkflowExpression.Validate(bodynotes, nameof(bodynotes), required: false);
-            WorkflowExpression.Validate(bodycampaign, nameof(bodycampaign), required: false);
-            WorkflowExpression.Validate(bodycategory, nameof(bodycategory), required: false);
-            WorkflowExpression.Validate(bodyrole, nameof(bodyrole), required: false);
-            WorkflowExpression.Validate(bodymarket, nameof(bodymarket), required: false);
-            WorkflowExpression.Validate(bodyterritory, nameof(bodyterritory), required: false);
-            WorkflowExpression.Validate(bodysalesrep, nameof(bodysalesrep), required: false);
-            WorkflowExpression.Validate(bodylastcontact, nameof(bodylastcontact), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_bodysal = bodysal == null ? null : WorkflowExpression.Compile(bodysal);
+            WorkflowExpression.Validate(__workflow_bodysal, nameof(bodysal), required: false);
+            var __workflow_bodyfirstname = bodyfirstname == null ? null : WorkflowExpression.Compile(bodyfirstname);
+            WorkflowExpression.Validate(__workflow_bodyfirstname, nameof(bodyfirstname), required: false);
+            var __workflow_bodymiddlename = bodymiddlename == null ? null : WorkflowExpression.Compile(bodymiddlename);
+            WorkflowExpression.Validate(__workflow_bodymiddlename, nameof(bodymiddlename), required: false);
+            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
+            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodylastname = bodylastname == null ? null : WorkflowExpression.Compile(bodylastname);
+            WorkflowExpression.Validate(__workflow_bodylastname, nameof(bodylastname), required: false);
+            var __workflow_bodycompany = bodycompany == null ? null : WorkflowExpression.Compile(bodycompany);
+            WorkflowExpression.Validate(__workflow_bodycompany, nameof(bodycompany), required: false);
+            var __workflow_bodyaddr1 = bodyaddr1 == null ? null : WorkflowExpression.Compile(bodyaddr1);
+            WorkflowExpression.Validate(__workflow_bodyaddr1, nameof(bodyaddr1), required: false);
+            var __workflow_bodyaddr2 = bodyaddr2 == null ? null : WorkflowExpression.Compile(bodyaddr2);
+            WorkflowExpression.Validate(__workflow_bodyaddr2, nameof(bodyaddr2), required: false);
+            var __workflow_bodycity = bodycity == null ? null : WorkflowExpression.Compile(bodycity);
+            WorkflowExpression.Validate(__workflow_bodycity, nameof(bodycity), required: false);
+            var __workflow_bodystate = bodystate == null ? null : WorkflowExpression.Compile(bodystate);
+            WorkflowExpression.Validate(__workflow_bodystate, nameof(bodystate), required: false);
+            var __workflow_bodypostal = bodypostal == null ? null : WorkflowExpression.Compile(bodypostal);
+            WorkflowExpression.Validate(__workflow_bodypostal, nameof(bodypostal), required: false);
+            var __workflow_bodyemail1 = bodyemail1 == null ? null : WorkflowExpression.Compile(bodyemail1);
+            WorkflowExpression.Validate(__workflow_bodyemail1, nameof(bodyemail1), required: false);
+            var __workflow_bodyemail2 = bodyemail2 == null ? null : WorkflowExpression.Compile(bodyemail2);
+            WorkflowExpression.Validate(__workflow_bodyemail2, nameof(bodyemail2), required: false);
+            var __workflow_bodyemail3 = bodyemail3 == null ? null : WorkflowExpression.Compile(bodyemail3);
+            WorkflowExpression.Validate(__workflow_bodyemail3, nameof(bodyemail3), required: false);
+            var __workflow_bodyemail4 = bodyemail4 == null ? null : WorkflowExpression.Compile(bodyemail4);
+            WorkflowExpression.Validate(__workflow_bodyemail4, nameof(bodyemail4), required: false);
+            var __workflow_bodyphonetype1 = bodyphonetype1 == null ? null : WorkflowExpression.Compile(bodyphonetype1);
+            WorkflowExpression.Validate(__workflow_bodyphonetype1, nameof(bodyphonetype1), required: false);
+            var __workflow_bodyphone1 = bodyphone1 == null ? null : WorkflowExpression.Compile(bodyphone1);
+            WorkflowExpression.Validate(__workflow_bodyphone1, nameof(bodyphone1), required: false);
+            var __workflow_bodyphonetype2 = bodyphonetype2 == null ? null : WorkflowExpression.Compile(bodyphonetype2);
+            WorkflowExpression.Validate(__workflow_bodyphonetype2, nameof(bodyphonetype2), required: false);
+            var __workflow_bodyphone2 = bodyphone2 == null ? null : WorkflowExpression.Compile(bodyphone2);
+            WorkflowExpression.Validate(__workflow_bodyphone2, nameof(bodyphone2), required: false);
+            var __workflow_bodyphonetype3 = bodyphonetype3 == null ? null : WorkflowExpression.Compile(bodyphonetype3);
+            WorkflowExpression.Validate(__workflow_bodyphonetype3, nameof(bodyphonetype3), required: false);
+            var __workflow_bodyphone3 = bodyphone3 == null ? null : WorkflowExpression.Compile(bodyphone3);
+            WorkflowExpression.Validate(__workflow_bodyphone3, nameof(bodyphone3), required: false);
+            var __workflow_bodyphonetype4 = bodyphonetype4 == null ? null : WorkflowExpression.Compile(bodyphonetype4);
+            WorkflowExpression.Validate(__workflow_bodyphonetype4, nameof(bodyphonetype4), required: false);
+            var __workflow_bodyphone4 = bodyphone4 == null ? null : WorkflowExpression.Compile(bodyphone4);
+            WorkflowExpression.Validate(__workflow_bodyphone4, nameof(bodyphone4), required: false);
+            var __workflow_bodyremark = bodyremark == null ? null : WorkflowExpression.Compile(bodyremark);
+            WorkflowExpression.Validate(__workflow_bodyremark, nameof(bodyremark), required: false);
+            var __workflow_bodynotes = bodynotes == null ? null : WorkflowExpression.Compile(bodynotes);
+            WorkflowExpression.Validate(__workflow_bodynotes, nameof(bodynotes), required: false);
+            var __workflow_bodycampaign = bodycampaign == null ? null : WorkflowExpression.Compile(bodycampaign);
+            WorkflowExpression.Validate(__workflow_bodycampaign, nameof(bodycampaign), required: false);
+            var __workflow_bodycategory = bodycategory == null ? null : WorkflowExpression.Compile(bodycategory);
+            WorkflowExpression.Validate(__workflow_bodycategory, nameof(bodycategory), required: false);
+            var __workflow_bodyrole = bodyrole == null ? null : WorkflowExpression.Compile(bodyrole);
+            WorkflowExpression.Validate(__workflow_bodyrole, nameof(bodyrole), required: false);
+            var __workflow_bodymarket = bodymarket == null ? null : WorkflowExpression.Compile(bodymarket);
+            WorkflowExpression.Validate(__workflow_bodymarket, nameof(bodymarket), required: false);
+            var __workflow_bodyterritory = bodyterritory == null ? null : WorkflowExpression.Compile(bodyterritory);
+            WorkflowExpression.Validate(__workflow_bodyterritory, nameof(bodyterritory), required: false);
+            var __workflow_bodysalesrep = bodysalesrep == null ? null : WorkflowExpression.Compile(bodysalesrep);
+            WorkflowExpression.Validate(__workflow_bodysalesrep, nameof(bodysalesrep), required: false);
+            var __workflow_bodylastcontact = bodylastcontact == null ? null : WorkflowExpression.Compile(bodylastcontact);
+            WorkflowExpression.Validate(__workflow_bodylastcontact, nameof(bodylastcontact), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/Lead/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/Lead/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodysal != null)
+                if (__workflow_bodysal != null)
                 {
-                    body["sal"] = ExpressionConverter.ConvertO(bodysal);
+                    body["sal"] = ExpressionConverter.ConvertO(__workflow_bodysal);
                     bodypropCount++;
                 }
 
-                if (bodyfirstname != null)
+                if (__workflow_bodyfirstname != null)
                 {
-                    body["firstname"] = ExpressionConverter.ConvertO(bodyfirstname);
+                    body["firstname"] = ExpressionConverter.ConvertO(__workflow_bodyfirstname);
                     bodypropCount++;
                 }
 
-                if (bodymiddlename != null)
+                if (__workflow_bodymiddlename != null)
                 {
-                    body["middlename"] = ExpressionConverter.ConvertO(bodymiddlename);
+                    body["middlename"] = ExpressionConverter.ConvertO(__workflow_bodymiddlename);
                     bodypropCount++;
                 }
 
-                if (bodytitle != null)
+                if (__workflow_bodytitle != null)
                 {
-                    body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
                     bodypropCount++;
                 }
 
-                if (bodylastname != null)
+                if (__workflow_bodylastname != null)
                 {
-                    body["lastname"] = ExpressionConverter.ConvertO(bodylastname);
+                    body["lastname"] = ExpressionConverter.ConvertO(__workflow_bodylastname);
                     bodypropCount++;
                 }
 
-                if (bodycompany != null)
+                if (__workflow_bodycompany != null)
                 {
-                    body["company"] = ExpressionConverter.ConvertO(bodycompany);
+                    body["company"] = ExpressionConverter.ConvertO(__workflow_bodycompany);
                     bodypropCount++;
                 }
 
-                if (bodyaddr1 != null)
+                if (__workflow_bodyaddr1 != null)
                 {
-                    body["addr1"] = ExpressionConverter.ConvertO(bodyaddr1);
+                    body["addr1"] = ExpressionConverter.ConvertO(__workflow_bodyaddr1);
                     bodypropCount++;
                 }
 
-                if (bodyaddr2 != null)
+                if (__workflow_bodyaddr2 != null)
                 {
-                    body["addr2"] = ExpressionConverter.ConvertO(bodyaddr2);
+                    body["addr2"] = ExpressionConverter.ConvertO(__workflow_bodyaddr2);
                     bodypropCount++;
                 }
 
-                if (bodycity != null)
+                if (__workflow_bodycity != null)
                 {
-                    body["city"] = ExpressionConverter.ConvertO(bodycity);
+                    body["city"] = ExpressionConverter.ConvertO(__workflow_bodycity);
                     bodypropCount++;
                 }
 
-                if (bodystate != null)
+                if (__workflow_bodystate != null)
                 {
-                    body["state"] = ExpressionConverter.ConvertO(bodystate);
+                    body["state"] = ExpressionConverter.ConvertO(__workflow_bodystate);
                     bodypropCount++;
                 }
 
-                if (bodypostal != null)
+                if (__workflow_bodypostal != null)
                 {
-                    body["postal"] = ExpressionConverter.ConvertO(bodypostal);
+                    body["postal"] = ExpressionConverter.ConvertO(__workflow_bodypostal);
                     bodypropCount++;
                 }
 
-                if (bodyemail1 != null)
+                if (__workflow_bodyemail1 != null)
                 {
-                    body["email1"] = ExpressionConverter.ConvertO(bodyemail1);
+                    body["email1"] = ExpressionConverter.ConvertO(__workflow_bodyemail1);
                     bodypropCount++;
                 }
 
-                if (bodyemail2 != null)
+                if (__workflow_bodyemail2 != null)
                 {
-                    body["email2"] = ExpressionConverter.ConvertO(bodyemail2);
+                    body["email2"] = ExpressionConverter.ConvertO(__workflow_bodyemail2);
                     bodypropCount++;
                 }
 
-                if (bodyemail3 != null)
+                if (__workflow_bodyemail3 != null)
                 {
-                    body["email3"] = ExpressionConverter.ConvertO(bodyemail3);
+                    body["email3"] = ExpressionConverter.ConvertO(__workflow_bodyemail3);
                     bodypropCount++;
                 }
 
-                if (bodyemail4 != null)
+                if (__workflow_bodyemail4 != null)
                 {
-                    body["email4"] = ExpressionConverter.ConvertO(bodyemail4);
+                    body["email4"] = ExpressionConverter.ConvertO(__workflow_bodyemail4);
                     bodypropCount++;
                 }
 
-                if (bodyphonetype1 != null)
+                if (__workflow_bodyphonetype1 != null)
                 {
-                    body["phonetype1"] = ExpressionConverter.ConvertO(bodyphonetype1);
+                    body["phonetype1"] = ExpressionConverter.ConvertO(__workflow_bodyphonetype1);
                     bodypropCount++;
                 }
 
-                if (bodyphone1 != null)
+                if (__workflow_bodyphone1 != null)
                 {
-                    body["phone1"] = ExpressionConverter.ConvertO(bodyphone1);
+                    body["phone1"] = ExpressionConverter.ConvertO(__workflow_bodyphone1);
                     bodypropCount++;
                 }
 
-                if (bodyphonetype2 != null)
+                if (__workflow_bodyphonetype2 != null)
                 {
-                    body["phonetype2"] = ExpressionConverter.ConvertO(bodyphonetype2);
+                    body["phonetype2"] = ExpressionConverter.ConvertO(__workflow_bodyphonetype2);
                     bodypropCount++;
                 }
 
-                if (bodyphone2 != null)
+                if (__workflow_bodyphone2 != null)
                 {
-                    body["phone2"] = ExpressionConverter.ConvertO(bodyphone2);
+                    body["phone2"] = ExpressionConverter.ConvertO(__workflow_bodyphone2);
                     bodypropCount++;
                 }
 
-                if (bodyphonetype3 != null)
+                if (__workflow_bodyphonetype3 != null)
                 {
-                    body["phonetype3"] = ExpressionConverter.ConvertO(bodyphonetype3);
+                    body["phonetype3"] = ExpressionConverter.ConvertO(__workflow_bodyphonetype3);
                     bodypropCount++;
                 }
 
-                if (bodyphone3 != null)
+                if (__workflow_bodyphone3 != null)
                 {
-                    body["phone3"] = ExpressionConverter.ConvertO(bodyphone3);
+                    body["phone3"] = ExpressionConverter.ConvertO(__workflow_bodyphone3);
                     bodypropCount++;
                 }
 
-                if (bodyphonetype4 != null)
+                if (__workflow_bodyphonetype4 != null)
                 {
-                    body["phonetype4"] = ExpressionConverter.ConvertO(bodyphonetype4);
+                    body["phonetype4"] = ExpressionConverter.ConvertO(__workflow_bodyphonetype4);
                     bodypropCount++;
                 }
 
-                if (bodyphone4 != null)
+                if (__workflow_bodyphone4 != null)
                 {
-                    body["phone4"] = ExpressionConverter.ConvertO(bodyphone4);
+                    body["phone4"] = ExpressionConverter.ConvertO(__workflow_bodyphone4);
                     bodypropCount++;
                 }
 
-                if (bodyremark != null)
+                if (__workflow_bodyremark != null)
                 {
-                    body["remark"] = ExpressionConverter.ConvertO(bodyremark);
+                    body["remark"] = ExpressionConverter.ConvertO(__workflow_bodyremark);
                     bodypropCount++;
                 }
 
-                if (bodynotes != null)
+                if (__workflow_bodynotes != null)
                 {
-                    body["notes"] = ExpressionConverter.ConvertO(bodynotes);
+                    body["notes"] = ExpressionConverter.ConvertO(__workflow_bodynotes);
                     bodypropCount++;
                 }
 
-                if (bodycampaign != null)
+                if (__workflow_bodycampaign != null)
                 {
-                    body["campaign"] = ExpressionConverter.ConvertO(bodycampaign);
+                    body["campaign"] = ExpressionConverter.ConvertO(__workflow_bodycampaign);
                     bodypropCount++;
                 }
 
-                if (bodycategory != null)
+                if (__workflow_bodycategory != null)
                 {
-                    body["category"] = ExpressionConverter.ConvertO(bodycategory);
+                    body["category"] = ExpressionConverter.ConvertO(__workflow_bodycategory);
                     bodypropCount++;
                 }
 
-                if (bodyrole != null)
+                if (__workflow_bodyrole != null)
                 {
-                    body["role"] = ExpressionConverter.ConvertO(bodyrole);
+                    body["role"] = ExpressionConverter.ConvertO(__workflow_bodyrole);
                     bodypropCount++;
                 }
 
-                if (bodymarket != null)
+                if (__workflow_bodymarket != null)
                 {
-                    body["market"] = ExpressionConverter.ConvertO(bodymarket);
+                    body["market"] = ExpressionConverter.ConvertO(__workflow_bodymarket);
                     bodypropCount++;
                 }
 
-                if (bodyterritory != null)
+                if (__workflow_bodyterritory != null)
                 {
-                    body["territory"] = ExpressionConverter.ConvertO(bodyterritory);
+                    body["territory"] = ExpressionConverter.ConvertO(__workflow_bodyterritory);
                     bodypropCount++;
                 }
 
-                if (bodysalesrep != null)
+                if (__workflow_bodysalesrep != null)
                 {
-                    body["salesrep"] = ExpressionConverter.ConvertO(bodysalesrep);
+                    body["salesrep"] = ExpressionConverter.ConvertO(__workflow_bodysalesrep);
                     bodypropCount++;
                 }
 
-                if (bodylastcontact != null)
+                if (__workflow_bodylastcontact != null)
                 {
-                    body["lastcontact"] = ExpressionConverter.ConvertO(bodylastcontact);
+                    body["lastcontact"] = ExpressionConverter.ConvertO(__workflow_bodylastcontact);
                     bodypropCount++;
                 }
 
@@ -1842,39 +1921,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        [WorkflowExpressionFactory(nameof(__BuildMembersGetValues))]
-        public IBodyWorkflowAction<string[]> MembersGetValues([WorkflowExpression] Func<typeInput> type)
+        public IBodyWorkflowAction<string[]> MembersGetValues(Expression<Func<typeInput>> type)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string[]> __BuildMembersGetValues(WorkflowExpression<typeInput> type)
-        {
-            WorkflowExpression.Validate(type, nameof(type), required: true);
+            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
+            WorkflowExpression.Validate(__workflow_type, nameof(type), required: true);
             return new DeferredBodyAction<string[]>(() =>
             {
                 var apiCallPath = "/api/Members";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
                 return new ApiConnectionAction<string[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        [WorkflowExpressionFactory(nameof(__BuildMembersPostValue))]
-        public IBodyWorkflowAction<JToken> MembersPostValue([WorkflowExpression] Func<string> bodypromoid = null, [WorkflowExpression] Func<bodyrecordtypeInput> bodyrecordtype = null, [WorkflowExpression] Func<string> bodyrecordid = null)
+        public IBodyWorkflowAction<JToken> MembersPostValue(Expression<Func<string>> bodypromoid = null, Expression<Func<bodyrecordtypeInput>> bodyrecordtype = null, Expression<Func<string>> bodyrecordid = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildMembersPostValue(WorkflowExpression<string> bodypromoid = null, WorkflowExpression<bodyrecordtypeInput> bodyrecordtype = null, WorkflowExpression<string> bodyrecordid = null)
-        {
-            WorkflowExpression.Validate(bodypromoid, nameof(bodypromoid), required: false);
-            WorkflowExpression.Validate(bodyrecordtype, nameof(bodyrecordtype), required: false);
-            WorkflowExpression.Validate(bodyrecordid, nameof(bodyrecordid), required: false);
+            var __workflow_bodypromoid = bodypromoid == null ? null : WorkflowExpression.Compile(bodypromoid);
+            WorkflowExpression.Validate(__workflow_bodypromoid, nameof(bodypromoid), required: false);
+            var __workflow_bodyrecordtype = bodyrecordtype == null ? null : WorkflowExpression.Compile(bodyrecordtype);
+            WorkflowExpression.Validate(__workflow_bodyrecordtype, nameof(bodyrecordtype), required: false);
+            var __workflow_bodyrecordid = bodyrecordid == null ? null : WorkflowExpression.Compile(bodyrecordid);
+            WorkflowExpression.Validate(__workflow_bodyrecordid, nameof(bodyrecordid), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/api/Members";
@@ -1882,21 +1951,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodypromoid != null)
+                if (__workflow_bodypromoid != null)
                 {
-                    body["promoid"] = ExpressionConverter.ConvertO(bodypromoid);
+                    body["promoid"] = ExpressionConverter.ConvertO(__workflow_bodypromoid);
                     bodypropCount++;
                 }
 
-                if (bodyrecordtype != null)
+                if (__workflow_bodyrecordtype != null)
                 {
-                    body["recordtype"] = ExpressionConverter.ConvertO(bodyrecordtype);
+                    body["recordtype"] = ExpressionConverter.ConvertO(__workflow_bodyrecordtype);
                     bodypropCount++;
                 }
 
-                if (bodyrecordid != null)
+                if (__workflow_bodyrecordid != null)
                 {
-                    body["recordid"] = ExpressionConverter.ConvertO(bodyrecordid);
+                    body["recordid"] = ExpressionConverter.ConvertO(__workflow_bodyrecordid);
                     bodypropCount++;
                 }
 
@@ -1910,19 +1979,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        [WorkflowExpressionFactory(nameof(__BuildMembersGetValue))]
-        public IBodyWorkflowAction<MembersGetValueResponse> MembersGetValue([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<MembersGetValueResponse> MembersGetValue(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MembersGetValueResponse> __BuildMembersGetValue(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<MembersGetValueResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/Members/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/Members/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<MembersGetValueResponse>(callPayload);
@@ -1930,48 +1993,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        [WorkflowExpressionFactory(nameof(__BuildMembersPutValue))]
-        public IBodyWorkflowAction<JToken> MembersPutValue([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bodyoperationInput> bodyoperation = null, [WorkflowExpression] Func<bodyrecordtypeInput> bodyrecordtype = null, [WorkflowExpression] Func<string> bodypromoid = null, [WorkflowExpression] Func<string> bodyrecordid = null)
+        public IBodyWorkflowAction<JToken> MembersPutValue(Expression<Func<string>> id, Expression<Func<bodyoperationInput>> bodyoperation = null, Expression<Func<bodyrecordtypeInput>> bodyrecordtype = null, Expression<Func<string>> bodypromoid = null, Expression<Func<string>> bodyrecordid = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildMembersPutValue(WorkflowExpression<string> id, WorkflowExpression<bodyoperationInput> bodyoperation = null, WorkflowExpression<bodyrecordtypeInput> bodyrecordtype = null, WorkflowExpression<string> bodypromoid = null, WorkflowExpression<string> bodyrecordid = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(bodyoperation, nameof(bodyoperation), required: false);
-            WorkflowExpression.Validate(bodyrecordtype, nameof(bodyrecordtype), required: false);
-            WorkflowExpression.Validate(bodypromoid, nameof(bodypromoid), required: false);
-            WorkflowExpression.Validate(bodyrecordid, nameof(bodyrecordid), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_bodyoperation = bodyoperation == null ? null : WorkflowExpression.Compile(bodyoperation);
+            WorkflowExpression.Validate(__workflow_bodyoperation, nameof(bodyoperation), required: false);
+            var __workflow_bodyrecordtype = bodyrecordtype == null ? null : WorkflowExpression.Compile(bodyrecordtype);
+            WorkflowExpression.Validate(__workflow_bodyrecordtype, nameof(bodyrecordtype), required: false);
+            var __workflow_bodypromoid = bodypromoid == null ? null : WorkflowExpression.Compile(bodypromoid);
+            WorkflowExpression.Validate(__workflow_bodypromoid, nameof(bodypromoid), required: false);
+            var __workflow_bodyrecordid = bodyrecordid == null ? null : WorkflowExpression.Compile(bodyrecordid);
+            WorkflowExpression.Validate(__workflow_bodyrecordid, nameof(bodyrecordid), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/Members/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/Members/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyoperation != null)
+                if (__workflow_bodyoperation != null)
                 {
-                    body["operation"] = ExpressionConverter.ConvertO(bodyoperation);
+                    body["operation"] = ExpressionConverter.ConvertO(__workflow_bodyoperation);
                     bodypropCount++;
                 }
 
-                if (bodyrecordtype != null)
+                if (__workflow_bodyrecordtype != null)
                 {
-                    body["recordtype"] = ExpressionConverter.ConvertO(bodyrecordtype);
+                    body["recordtype"] = ExpressionConverter.ConvertO(__workflow_bodyrecordtype);
                     bodypropCount++;
                 }
 
-                if (bodypromoid != null)
+                if (__workflow_bodypromoid != null)
                 {
-                    body["promoid"] = ExpressionConverter.ConvertO(bodypromoid);
+                    body["promoid"] = ExpressionConverter.ConvertO(__workflow_bodypromoid);
                     bodypropCount++;
                 }
 
-                if (bodyrecordid != null)
+                if (__workflow_bodyrecordid != null)
                 {
-                    body["recordid"] = ExpressionConverter.ConvertO(bodyrecordid);
+                    body["recordid"] = ExpressionConverter.ConvertO(__workflow_bodyrecordid);
                     bodypropCount++;
                 }
 
@@ -1994,27 +2055,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        [WorkflowExpressionFactory(nameof(__BuildShippingPostValue))]
-        public IBodyWorkflowAction<JToken> ShippingPostValue([WorkflowExpression] Func<string> bodyorderid = null, [WorkflowExpression] Func<string> bodyshipdate = null, [WorkflowExpression] Func<string> bodycarrier = null, [WorkflowExpression] Func<string> bodymethod = null, [WorkflowExpression] Func<double> bodyweight = null, [WorkflowExpression] Func<string> bodypackagetype = null, [WorkflowExpression] Func<string> bodyreference1 = null, [WorkflowExpression] Func<string> bodyreference2 = null, [WorkflowExpression] Func<string> bodytrackingnumber = null, [WorkflowExpression] Func<string> bodytrackingurl = null, [WorkflowExpression] Func<double> bodyshippingcost = null, [WorkflowExpression] Func<bool> bodytohistory = null)
+        public IBodyWorkflowAction<JToken> ShippingPostValue(Expression<Func<string>> bodyorderid = null, Expression<Func<string>> bodyshipdate = null, Expression<Func<string>> bodycarrier = null, Expression<Func<string>> bodymethod = null, Expression<Func<double>> bodyweight = null, Expression<Func<string>> bodypackagetype = null, Expression<Func<string>> bodyreference1 = null, Expression<Func<string>> bodyreference2 = null, Expression<Func<string>> bodytrackingnumber = null, Expression<Func<string>> bodytrackingurl = null, Expression<Func<double>> bodyshippingcost = null, Expression<Func<bool>> bodytohistory = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildShippingPostValue(WorkflowExpression<string> bodyorderid = null, WorkflowExpression<string> bodyshipdate = null, WorkflowExpression<string> bodycarrier = null, WorkflowExpression<string> bodymethod = null, WorkflowExpression<double> bodyweight = null, WorkflowExpression<string> bodypackagetype = null, WorkflowExpression<string> bodyreference1 = null, WorkflowExpression<string> bodyreference2 = null, WorkflowExpression<string> bodytrackingnumber = null, WorkflowExpression<string> bodytrackingurl = null, WorkflowExpression<double> bodyshippingcost = null, WorkflowExpression<bool> bodytohistory = null)
-        {
-            WorkflowExpression.Validate(bodyorderid, nameof(bodyorderid), required: false);
-            WorkflowExpression.Validate(bodyshipdate, nameof(bodyshipdate), required: false);
-            WorkflowExpression.Validate(bodycarrier, nameof(bodycarrier), required: false);
-            WorkflowExpression.Validate(bodymethod, nameof(bodymethod), required: false);
-            WorkflowExpression.Validate(bodyweight, nameof(bodyweight), required: false);
-            WorkflowExpression.Validate(bodypackagetype, nameof(bodypackagetype), required: false);
-            WorkflowExpression.Validate(bodyreference1, nameof(bodyreference1), required: false);
-            WorkflowExpression.Validate(bodyreference2, nameof(bodyreference2), required: false);
-            WorkflowExpression.Validate(bodytrackingnumber, nameof(bodytrackingnumber), required: false);
-            WorkflowExpression.Validate(bodytrackingurl, nameof(bodytrackingurl), required: false);
-            WorkflowExpression.Validate(bodyshippingcost, nameof(bodyshippingcost), required: false);
-            WorkflowExpression.Validate(bodytohistory, nameof(bodytohistory), required: false);
+            var __workflow_bodyorderid = bodyorderid == null ? null : WorkflowExpression.Compile(bodyorderid);
+            WorkflowExpression.Validate(__workflow_bodyorderid, nameof(bodyorderid), required: false);
+            var __workflow_bodyshipdate = bodyshipdate == null ? null : WorkflowExpression.Compile(bodyshipdate);
+            WorkflowExpression.Validate(__workflow_bodyshipdate, nameof(bodyshipdate), required: false);
+            var __workflow_bodycarrier = bodycarrier == null ? null : WorkflowExpression.Compile(bodycarrier);
+            WorkflowExpression.Validate(__workflow_bodycarrier, nameof(bodycarrier), required: false);
+            var __workflow_bodymethod = bodymethod == null ? null : WorkflowExpression.Compile(bodymethod);
+            WorkflowExpression.Validate(__workflow_bodymethod, nameof(bodymethod), required: false);
+            var __workflow_bodyweight = bodyweight == null ? null : WorkflowExpression.Compile(bodyweight);
+            WorkflowExpression.Validate(__workflow_bodyweight, nameof(bodyweight), required: false);
+            var __workflow_bodypackagetype = bodypackagetype == null ? null : WorkflowExpression.Compile(bodypackagetype);
+            WorkflowExpression.Validate(__workflow_bodypackagetype, nameof(bodypackagetype), required: false);
+            var __workflow_bodyreference1 = bodyreference1 == null ? null : WorkflowExpression.Compile(bodyreference1);
+            WorkflowExpression.Validate(__workflow_bodyreference1, nameof(bodyreference1), required: false);
+            var __workflow_bodyreference2 = bodyreference2 == null ? null : WorkflowExpression.Compile(bodyreference2);
+            WorkflowExpression.Validate(__workflow_bodyreference2, nameof(bodyreference2), required: false);
+            var __workflow_bodytrackingnumber = bodytrackingnumber == null ? null : WorkflowExpression.Compile(bodytrackingnumber);
+            WorkflowExpression.Validate(__workflow_bodytrackingnumber, nameof(bodytrackingnumber), required: false);
+            var __workflow_bodytrackingurl = bodytrackingurl == null ? null : WorkflowExpression.Compile(bodytrackingurl);
+            WorkflowExpression.Validate(__workflow_bodytrackingurl, nameof(bodytrackingurl), required: false);
+            var __workflow_bodyshippingcost = bodyshippingcost == null ? null : WorkflowExpression.Compile(bodyshippingcost);
+            WorkflowExpression.Validate(__workflow_bodyshippingcost, nameof(bodyshippingcost), required: false);
+            var __workflow_bodytohistory = bodytohistory == null ? null : WorkflowExpression.Compile(bodytohistory);
+            WorkflowExpression.Validate(__workflow_bodytohistory, nameof(bodytohistory), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/api/Shipping";
@@ -2022,75 +2088,75 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyorderid != null)
+                if (__workflow_bodyorderid != null)
                 {
-                    body["orderid"] = ExpressionConverter.ConvertO(bodyorderid);
+                    body["orderid"] = ExpressionConverter.ConvertO(__workflow_bodyorderid);
                     bodypropCount++;
                 }
 
-                if (bodyshipdate != null)
+                if (__workflow_bodyshipdate != null)
                 {
-                    body["shipdate"] = ExpressionConverter.ConvertO(bodyshipdate);
+                    body["shipdate"] = ExpressionConverter.ConvertO(__workflow_bodyshipdate);
                     bodypropCount++;
                 }
 
-                if (bodycarrier != null)
+                if (__workflow_bodycarrier != null)
                 {
-                    body["carrier"] = ExpressionConverter.ConvertO(bodycarrier);
+                    body["carrier"] = ExpressionConverter.ConvertO(__workflow_bodycarrier);
                     bodypropCount++;
                 }
 
-                if (bodymethod != null)
+                if (__workflow_bodymethod != null)
                 {
-                    body["method"] = ExpressionConverter.ConvertO(bodymethod);
+                    body["method"] = ExpressionConverter.ConvertO(__workflow_bodymethod);
                     bodypropCount++;
                 }
 
-                if (bodyweight != null)
+                if (__workflow_bodyweight != null)
                 {
-                    body["weight"] = ExpressionConverter.ConvertO(bodyweight);
+                    body["weight"] = ExpressionConverter.ConvertO(__workflow_bodyweight);
                     bodypropCount++;
                 }
 
-                if (bodypackagetype != null)
+                if (__workflow_bodypackagetype != null)
                 {
-                    body["packagetype"] = ExpressionConverter.ConvertO(bodypackagetype);
+                    body["packagetype"] = ExpressionConverter.ConvertO(__workflow_bodypackagetype);
                     bodypropCount++;
                 }
 
-                if (bodyreference1 != null)
+                if (__workflow_bodyreference1 != null)
                 {
-                    body["reference1"] = ExpressionConverter.ConvertO(bodyreference1);
+                    body["reference1"] = ExpressionConverter.ConvertO(__workflow_bodyreference1);
                     bodypropCount++;
                 }
 
-                if (bodyreference2 != null)
+                if (__workflow_bodyreference2 != null)
                 {
-                    body["reference2"] = ExpressionConverter.ConvertO(bodyreference2);
+                    body["reference2"] = ExpressionConverter.ConvertO(__workflow_bodyreference2);
                     bodypropCount++;
                 }
 
-                if (bodytrackingnumber != null)
+                if (__workflow_bodytrackingnumber != null)
                 {
-                    body["trackingnumber"] = ExpressionConverter.ConvertO(bodytrackingnumber);
+                    body["trackingnumber"] = ExpressionConverter.ConvertO(__workflow_bodytrackingnumber);
                     bodypropCount++;
                 }
 
-                if (bodytrackingurl != null)
+                if (__workflow_bodytrackingurl != null)
                 {
-                    body["trackingurl"] = ExpressionConverter.ConvertO(bodytrackingurl);
+                    body["trackingurl"] = ExpressionConverter.ConvertO(__workflow_bodytrackingurl);
                     bodypropCount++;
                 }
 
-                if (bodyshippingcost != null)
+                if (__workflow_bodyshippingcost != null)
                 {
-                    body["shippingcost"] = ExpressionConverter.ConvertO(bodyshippingcost);
+                    body["shippingcost"] = ExpressionConverter.ConvertO(__workflow_bodyshippingcost);
                     bodypropCount++;
                 }
 
-                if (bodytohistory != null)
+                if (__workflow_bodytohistory != null)
                 {
-                    body["tohistory"] = ExpressionConverter.ConvertO(bodytohistory);
+                    body["tohistory"] = ExpressionConverter.ConvertO(__workflow_bodytohistory);
                     bodypropCount++;
                 }
 
@@ -2104,19 +2170,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        [WorkflowExpressionFactory(nameof(__BuildShippingGetValue))]
-        public IBodyWorkflowAction<ShippingGetValueResponse> ShippingGetValue([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<ShippingGetValueResponse> ShippingGetValue(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ShippingGetValueResponse> __BuildShippingGetValue(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<ShippingGetValueResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/Shipping/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/Shipping/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ShippingGetValueResponse>(callPayload);
@@ -2124,90 +2184,94 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        [WorkflowExpressionFactory(nameof(__BuildShippingPutValue))]
-        public IWorkflowAction ShippingPutValue([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyshipdate = null, [WorkflowExpression] Func<string> bodycarrier = null, [WorkflowExpression] Func<string> bodymethod = null, [WorkflowExpression] Func<double> bodyweight = null, [WorkflowExpression] Func<string> bodypackagetype = null, [WorkflowExpression] Func<string> bodyreference1 = null, [WorkflowExpression] Func<string> bodyreference2 = null, [WorkflowExpression] Func<string> bodytrackingnumber = null, [WorkflowExpression] Func<string> bodytrackingurl = null, [WorkflowExpression] Func<double> bodyshippingcost = null)
+        public IWorkflowAction ShippingPutValue(Expression<Func<string>> id, Expression<Func<string>> bodyshipdate = null, Expression<Func<string>> bodycarrier = null, Expression<Func<string>> bodymethod = null, Expression<Func<double>> bodyweight = null, Expression<Func<string>> bodypackagetype = null, Expression<Func<string>> bodyreference1 = null, Expression<Func<string>> bodyreference2 = null, Expression<Func<string>> bodytrackingnumber = null, Expression<Func<string>> bodytrackingurl = null, Expression<Func<double>> bodyshippingcost = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildShippingPutValue(WorkflowExpression<string> id, WorkflowExpression<string> bodyshipdate = null, WorkflowExpression<string> bodycarrier = null, WorkflowExpression<string> bodymethod = null, WorkflowExpression<double> bodyweight = null, WorkflowExpression<string> bodypackagetype = null, WorkflowExpression<string> bodyreference1 = null, WorkflowExpression<string> bodyreference2 = null, WorkflowExpression<string> bodytrackingnumber = null, WorkflowExpression<string> bodytrackingurl = null, WorkflowExpression<double> bodyshippingcost = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(bodyshipdate, nameof(bodyshipdate), required: false);
-            WorkflowExpression.Validate(bodycarrier, nameof(bodycarrier), required: false);
-            WorkflowExpression.Validate(bodymethod, nameof(bodymethod), required: false);
-            WorkflowExpression.Validate(bodyweight, nameof(bodyweight), required: false);
-            WorkflowExpression.Validate(bodypackagetype, nameof(bodypackagetype), required: false);
-            WorkflowExpression.Validate(bodyreference1, nameof(bodyreference1), required: false);
-            WorkflowExpression.Validate(bodyreference2, nameof(bodyreference2), required: false);
-            WorkflowExpression.Validate(bodytrackingnumber, nameof(bodytrackingnumber), required: false);
-            WorkflowExpression.Validate(bodytrackingurl, nameof(bodytrackingurl), required: false);
-            WorkflowExpression.Validate(bodyshippingcost, nameof(bodyshippingcost), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_bodyshipdate = bodyshipdate == null ? null : WorkflowExpression.Compile(bodyshipdate);
+            WorkflowExpression.Validate(__workflow_bodyshipdate, nameof(bodyshipdate), required: false);
+            var __workflow_bodycarrier = bodycarrier == null ? null : WorkflowExpression.Compile(bodycarrier);
+            WorkflowExpression.Validate(__workflow_bodycarrier, nameof(bodycarrier), required: false);
+            var __workflow_bodymethod = bodymethod == null ? null : WorkflowExpression.Compile(bodymethod);
+            WorkflowExpression.Validate(__workflow_bodymethod, nameof(bodymethod), required: false);
+            var __workflow_bodyweight = bodyweight == null ? null : WorkflowExpression.Compile(bodyweight);
+            WorkflowExpression.Validate(__workflow_bodyweight, nameof(bodyweight), required: false);
+            var __workflow_bodypackagetype = bodypackagetype == null ? null : WorkflowExpression.Compile(bodypackagetype);
+            WorkflowExpression.Validate(__workflow_bodypackagetype, nameof(bodypackagetype), required: false);
+            var __workflow_bodyreference1 = bodyreference1 == null ? null : WorkflowExpression.Compile(bodyreference1);
+            WorkflowExpression.Validate(__workflow_bodyreference1, nameof(bodyreference1), required: false);
+            var __workflow_bodyreference2 = bodyreference2 == null ? null : WorkflowExpression.Compile(bodyreference2);
+            WorkflowExpression.Validate(__workflow_bodyreference2, nameof(bodyreference2), required: false);
+            var __workflow_bodytrackingnumber = bodytrackingnumber == null ? null : WorkflowExpression.Compile(bodytrackingnumber);
+            WorkflowExpression.Validate(__workflow_bodytrackingnumber, nameof(bodytrackingnumber), required: false);
+            var __workflow_bodytrackingurl = bodytrackingurl == null ? null : WorkflowExpression.Compile(bodytrackingurl);
+            WorkflowExpression.Validate(__workflow_bodytrackingurl, nameof(bodytrackingurl), required: false);
+            var __workflow_bodyshippingcost = bodyshippingcost == null ? null : WorkflowExpression.Compile(bodyshippingcost);
+            WorkflowExpression.Validate(__workflow_bodyshippingcost, nameof(bodyshippingcost), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/Shipping/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/Shipping/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyshipdate != null)
+                if (__workflow_bodyshipdate != null)
                 {
-                    body["shipdate"] = ExpressionConverter.ConvertO(bodyshipdate);
+                    body["shipdate"] = ExpressionConverter.ConvertO(__workflow_bodyshipdate);
                     bodypropCount++;
                 }
 
-                if (bodycarrier != null)
+                if (__workflow_bodycarrier != null)
                 {
-                    body["carrier"] = ExpressionConverter.ConvertO(bodycarrier);
+                    body["carrier"] = ExpressionConverter.ConvertO(__workflow_bodycarrier);
                     bodypropCount++;
                 }
 
-                if (bodymethod != null)
+                if (__workflow_bodymethod != null)
                 {
-                    body["method"] = ExpressionConverter.ConvertO(bodymethod);
+                    body["method"] = ExpressionConverter.ConvertO(__workflow_bodymethod);
                     bodypropCount++;
                 }
 
-                if (bodyweight != null)
+                if (__workflow_bodyweight != null)
                 {
-                    body["weight"] = ExpressionConverter.ConvertO(bodyweight);
+                    body["weight"] = ExpressionConverter.ConvertO(__workflow_bodyweight);
                     bodypropCount++;
                 }
 
-                if (bodypackagetype != null)
+                if (__workflow_bodypackagetype != null)
                 {
-                    body["packagetype"] = ExpressionConverter.ConvertO(bodypackagetype);
+                    body["packagetype"] = ExpressionConverter.ConvertO(__workflow_bodypackagetype);
                     bodypropCount++;
                 }
 
-                if (bodyreference1 != null)
+                if (__workflow_bodyreference1 != null)
                 {
-                    body["reference1"] = ExpressionConverter.ConvertO(bodyreference1);
+                    body["reference1"] = ExpressionConverter.ConvertO(__workflow_bodyreference1);
                     bodypropCount++;
                 }
 
-                if (bodyreference2 != null)
+                if (__workflow_bodyreference2 != null)
                 {
-                    body["reference2"] = ExpressionConverter.ConvertO(bodyreference2);
+                    body["reference2"] = ExpressionConverter.ConvertO(__workflow_bodyreference2);
                     bodypropCount++;
                 }
 
-                if (bodytrackingnumber != null)
+                if (__workflow_bodytrackingnumber != null)
                 {
-                    body["trackingnumber"] = ExpressionConverter.ConvertO(bodytrackingnumber);
+                    body["trackingnumber"] = ExpressionConverter.ConvertO(__workflow_bodytrackingnumber);
                     bodypropCount++;
                 }
 
-                if (bodytrackingurl != null)
+                if (__workflow_bodytrackingurl != null)
                 {
-                    body["trackingurl"] = ExpressionConverter.ConvertO(bodytrackingurl);
+                    body["trackingurl"] = ExpressionConverter.ConvertO(__workflow_bodytrackingurl);
                     bodypropCount++;
                 }
 
-                if (bodyshippingcost != null)
+                if (__workflow_bodyshippingcost != null)
                 {
-                    body["shippingcost"] = ExpressionConverter.ConvertO(bodyshippingcost);
+                    body["shippingcost"] = ExpressionConverter.ConvertO(__workflow_bodyshippingcost);
                     bodypropCount++;
                 }
 
@@ -2230,55 +2294,88 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        [WorkflowExpressionFactory(nameof(__BuildSOPostValue))]
-        public IBodyWorkflowAction<JToken> SOPostValue([WorkflowExpression] Func<string> bodyorderid = null, [WorkflowExpression] Func<string> bodyorderdate = null, [WorkflowExpression] Func<string> bodyorderdescription = null, [WorkflowExpression] Func<string> bodyaccount = null, [WorkflowExpression] Func<string> bodyaccountname = null, [WorkflowExpression] Func<string> bodysalesrep = null, [WorkflowExpression] Func<string> bodyfirstname = null, [WorkflowExpression] Func<string> bodylastname = null, [WorkflowExpression] Func<string> bodybillemail = null, [WorkflowExpression] Func<string> bodybilladdr1 = null, [WorkflowExpression] Func<string> bodybilladdr2 = null, [WorkflowExpression] Func<string> bodybillcity = null, [WorkflowExpression] Func<string> bodybillstate = null, [WorkflowExpression] Func<string> bodybillzipcode = null, [WorkflowExpression] Func<string> bodybillcountry = null, [WorkflowExpression] Func<string> bodybillphone = null, [WorkflowExpression] Func<string> bodybillfax = null, [WorkflowExpression] Func<string> bodyshipcompany = null, [WorkflowExpression] Func<string> bodyshipcontact = null, [WorkflowExpression] Func<string> bodyshipaddr1 = null, [WorkflowExpression] Func<string> bodyshipaddr2 = null, [WorkflowExpression] Func<string> bodyshipcity = null, [WorkflowExpression] Func<string> bodyshipstate = null, [WorkflowExpression] Func<string> bodyshipzipcode = null, [WorkflowExpression] Func<string> bodyshipcountry = null, [WorkflowExpression] Func<string> bodyshipphone = null, [WorkflowExpression] Func<string> bodyshipemail = null, [WorkflowExpression] Func<bodyorderstatusInput> bodyorderstatus = null, [WorkflowExpression] Func<string> bodycustomstatus = null, [WorkflowExpression] Func<string> bodytaxdistrict = null, [WorkflowExpression] Func<double> bodytaxrate = null, [WorkflowExpression] Func<string> bodycampaign = null, [WorkflowExpression] Func<string> bodyordertax = null, [WorkflowExpression] Func<string> bodyshippingcost = null, [WorkflowExpression] Func<string> bodyshippingmethod = null, [WorkflowExpression] Func<double> bodycouponamount = null, [WorkflowExpression] Func<string> bodycouponcode = null, [WorkflowExpression] Func<string> bodypaymentmethod = null, [WorkflowExpression] Func<string> bodycomments = null, [WorkflowExpression] Func<bodylinedataInputItem[]> bodylinedata = null)
+        public IBodyWorkflowAction<JToken> SOPostValue(Expression<Func<string>> bodyorderid = null, Expression<Func<string>> bodyorderdate = null, Expression<Func<string>> bodyorderdescription = null, Expression<Func<string>> bodyaccount = null, Expression<Func<string>> bodyaccountname = null, Expression<Func<string>> bodysalesrep = null, Expression<Func<string>> bodyfirstname = null, Expression<Func<string>> bodylastname = null, Expression<Func<string>> bodybillemail = null, Expression<Func<string>> bodybilladdr1 = null, Expression<Func<string>> bodybilladdr2 = null, Expression<Func<string>> bodybillcity = null, Expression<Func<string>> bodybillstate = null, Expression<Func<string>> bodybillzipcode = null, Expression<Func<string>> bodybillcountry = null, Expression<Func<string>> bodybillphone = null, Expression<Func<string>> bodybillfax = null, Expression<Func<string>> bodyshipcompany = null, Expression<Func<string>> bodyshipcontact = null, Expression<Func<string>> bodyshipaddr1 = null, Expression<Func<string>> bodyshipaddr2 = null, Expression<Func<string>> bodyshipcity = null, Expression<Func<string>> bodyshipstate = null, Expression<Func<string>> bodyshipzipcode = null, Expression<Func<string>> bodyshipcountry = null, Expression<Func<string>> bodyshipphone = null, Expression<Func<string>> bodyshipemail = null, Expression<Func<bodyorderstatusInput>> bodyorderstatus = null, Expression<Func<string>> bodycustomstatus = null, Expression<Func<string>> bodytaxdistrict = null, Expression<Func<double>> bodytaxrate = null, Expression<Func<string>> bodycampaign = null, Expression<Func<string>> bodyordertax = null, Expression<Func<string>> bodyshippingcost = null, Expression<Func<string>> bodyshippingmethod = null, Expression<Func<double>> bodycouponamount = null, Expression<Func<string>> bodycouponcode = null, Expression<Func<string>> bodypaymentmethod = null, Expression<Func<string>> bodycomments = null, Expression<Func<bodylinedataInputItem[]>> bodylinedata = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildSOPostValue(WorkflowExpression<string> bodyorderid = null, WorkflowExpression<string> bodyorderdate = null, WorkflowExpression<string> bodyorderdescription = null, WorkflowExpression<string> bodyaccount = null, WorkflowExpression<string> bodyaccountname = null, WorkflowExpression<string> bodysalesrep = null, WorkflowExpression<string> bodyfirstname = null, WorkflowExpression<string> bodylastname = null, WorkflowExpression<string> bodybillemail = null, WorkflowExpression<string> bodybilladdr1 = null, WorkflowExpression<string> bodybilladdr2 = null, WorkflowExpression<string> bodybillcity = null, WorkflowExpression<string> bodybillstate = null, WorkflowExpression<string> bodybillzipcode = null, WorkflowExpression<string> bodybillcountry = null, WorkflowExpression<string> bodybillphone = null, WorkflowExpression<string> bodybillfax = null, WorkflowExpression<string> bodyshipcompany = null, WorkflowExpression<string> bodyshipcontact = null, WorkflowExpression<string> bodyshipaddr1 = null, WorkflowExpression<string> bodyshipaddr2 = null, WorkflowExpression<string> bodyshipcity = null, WorkflowExpression<string> bodyshipstate = null, WorkflowExpression<string> bodyshipzipcode = null, WorkflowExpression<string> bodyshipcountry = null, WorkflowExpression<string> bodyshipphone = null, WorkflowExpression<string> bodyshipemail = null, WorkflowExpression<bodyorderstatusInput> bodyorderstatus = null, WorkflowExpression<string> bodycustomstatus = null, WorkflowExpression<string> bodytaxdistrict = null, WorkflowExpression<double> bodytaxrate = null, WorkflowExpression<string> bodycampaign = null, WorkflowExpression<string> bodyordertax = null, WorkflowExpression<string> bodyshippingcost = null, WorkflowExpression<string> bodyshippingmethod = null, WorkflowExpression<double> bodycouponamount = null, WorkflowExpression<string> bodycouponcode = null, WorkflowExpression<string> bodypaymentmethod = null, WorkflowExpression<string> bodycomments = null, WorkflowExpression<bodylinedataInputItem[]> bodylinedata = null)
-        {
-            WorkflowExpression.Validate(bodyorderid, nameof(bodyorderid), required: false);
-            WorkflowExpression.Validate(bodyorderdate, nameof(bodyorderdate), required: false);
-            WorkflowExpression.Validate(bodyorderdescription, nameof(bodyorderdescription), required: false);
-            WorkflowExpression.Validate(bodyaccount, nameof(bodyaccount), required: false);
-            WorkflowExpression.Validate(bodyaccountname, nameof(bodyaccountname), required: false);
-            WorkflowExpression.Validate(bodysalesrep, nameof(bodysalesrep), required: false);
-            WorkflowExpression.Validate(bodyfirstname, nameof(bodyfirstname), required: false);
-            WorkflowExpression.Validate(bodylastname, nameof(bodylastname), required: false);
-            WorkflowExpression.Validate(bodybillemail, nameof(bodybillemail), required: false);
-            WorkflowExpression.Validate(bodybilladdr1, nameof(bodybilladdr1), required: false);
-            WorkflowExpression.Validate(bodybilladdr2, nameof(bodybilladdr2), required: false);
-            WorkflowExpression.Validate(bodybillcity, nameof(bodybillcity), required: false);
-            WorkflowExpression.Validate(bodybillstate, nameof(bodybillstate), required: false);
-            WorkflowExpression.Validate(bodybillzipcode, nameof(bodybillzipcode), required: false);
-            WorkflowExpression.Validate(bodybillcountry, nameof(bodybillcountry), required: false);
-            WorkflowExpression.Validate(bodybillphone, nameof(bodybillphone), required: false);
-            WorkflowExpression.Validate(bodybillfax, nameof(bodybillfax), required: false);
-            WorkflowExpression.Validate(bodyshipcompany, nameof(bodyshipcompany), required: false);
-            WorkflowExpression.Validate(bodyshipcontact, nameof(bodyshipcontact), required: false);
-            WorkflowExpression.Validate(bodyshipaddr1, nameof(bodyshipaddr1), required: false);
-            WorkflowExpression.Validate(bodyshipaddr2, nameof(bodyshipaddr2), required: false);
-            WorkflowExpression.Validate(bodyshipcity, nameof(bodyshipcity), required: false);
-            WorkflowExpression.Validate(bodyshipstate, nameof(bodyshipstate), required: false);
-            WorkflowExpression.Validate(bodyshipzipcode, nameof(bodyshipzipcode), required: false);
-            WorkflowExpression.Validate(bodyshipcountry, nameof(bodyshipcountry), required: false);
-            WorkflowExpression.Validate(bodyshipphone, nameof(bodyshipphone), required: false);
-            WorkflowExpression.Validate(bodyshipemail, nameof(bodyshipemail), required: false);
-            WorkflowExpression.Validate(bodyorderstatus, nameof(bodyorderstatus), required: false);
-            WorkflowExpression.Validate(bodycustomstatus, nameof(bodycustomstatus), required: false);
-            WorkflowExpression.Validate(bodytaxdistrict, nameof(bodytaxdistrict), required: false);
-            WorkflowExpression.Validate(bodytaxrate, nameof(bodytaxrate), required: false);
-            WorkflowExpression.Validate(bodycampaign, nameof(bodycampaign), required: false);
-            WorkflowExpression.Validate(bodyordertax, nameof(bodyordertax), required: false);
-            WorkflowExpression.Validate(bodyshippingcost, nameof(bodyshippingcost), required: false);
-            WorkflowExpression.Validate(bodyshippingmethod, nameof(bodyshippingmethod), required: false);
-            WorkflowExpression.Validate(bodycouponamount, nameof(bodycouponamount), required: false);
-            WorkflowExpression.Validate(bodycouponcode, nameof(bodycouponcode), required: false);
-            WorkflowExpression.Validate(bodypaymentmethod, nameof(bodypaymentmethod), required: false);
-            WorkflowExpression.Validate(bodycomments, nameof(bodycomments), required: false);
-            WorkflowExpression.Validate(bodylinedata, nameof(bodylinedata), required: false);
+            var __workflow_bodyorderid = bodyorderid == null ? null : WorkflowExpression.Compile(bodyorderid);
+            WorkflowExpression.Validate(__workflow_bodyorderid, nameof(bodyorderid), required: false);
+            var __workflow_bodyorderdate = bodyorderdate == null ? null : WorkflowExpression.Compile(bodyorderdate);
+            WorkflowExpression.Validate(__workflow_bodyorderdate, nameof(bodyorderdate), required: false);
+            var __workflow_bodyorderdescription = bodyorderdescription == null ? null : WorkflowExpression.Compile(bodyorderdescription);
+            WorkflowExpression.Validate(__workflow_bodyorderdescription, nameof(bodyorderdescription), required: false);
+            var __workflow_bodyaccount = bodyaccount == null ? null : WorkflowExpression.Compile(bodyaccount);
+            WorkflowExpression.Validate(__workflow_bodyaccount, nameof(bodyaccount), required: false);
+            var __workflow_bodyaccountname = bodyaccountname == null ? null : WorkflowExpression.Compile(bodyaccountname);
+            WorkflowExpression.Validate(__workflow_bodyaccountname, nameof(bodyaccountname), required: false);
+            var __workflow_bodysalesrep = bodysalesrep == null ? null : WorkflowExpression.Compile(bodysalesrep);
+            WorkflowExpression.Validate(__workflow_bodysalesrep, nameof(bodysalesrep), required: false);
+            var __workflow_bodyfirstname = bodyfirstname == null ? null : WorkflowExpression.Compile(bodyfirstname);
+            WorkflowExpression.Validate(__workflow_bodyfirstname, nameof(bodyfirstname), required: false);
+            var __workflow_bodylastname = bodylastname == null ? null : WorkflowExpression.Compile(bodylastname);
+            WorkflowExpression.Validate(__workflow_bodylastname, nameof(bodylastname), required: false);
+            var __workflow_bodybillemail = bodybillemail == null ? null : WorkflowExpression.Compile(bodybillemail);
+            WorkflowExpression.Validate(__workflow_bodybillemail, nameof(bodybillemail), required: false);
+            var __workflow_bodybilladdr1 = bodybilladdr1 == null ? null : WorkflowExpression.Compile(bodybilladdr1);
+            WorkflowExpression.Validate(__workflow_bodybilladdr1, nameof(bodybilladdr1), required: false);
+            var __workflow_bodybilladdr2 = bodybilladdr2 == null ? null : WorkflowExpression.Compile(bodybilladdr2);
+            WorkflowExpression.Validate(__workflow_bodybilladdr2, nameof(bodybilladdr2), required: false);
+            var __workflow_bodybillcity = bodybillcity == null ? null : WorkflowExpression.Compile(bodybillcity);
+            WorkflowExpression.Validate(__workflow_bodybillcity, nameof(bodybillcity), required: false);
+            var __workflow_bodybillstate = bodybillstate == null ? null : WorkflowExpression.Compile(bodybillstate);
+            WorkflowExpression.Validate(__workflow_bodybillstate, nameof(bodybillstate), required: false);
+            var __workflow_bodybillzipcode = bodybillzipcode == null ? null : WorkflowExpression.Compile(bodybillzipcode);
+            WorkflowExpression.Validate(__workflow_bodybillzipcode, nameof(bodybillzipcode), required: false);
+            var __workflow_bodybillcountry = bodybillcountry == null ? null : WorkflowExpression.Compile(bodybillcountry);
+            WorkflowExpression.Validate(__workflow_bodybillcountry, nameof(bodybillcountry), required: false);
+            var __workflow_bodybillphone = bodybillphone == null ? null : WorkflowExpression.Compile(bodybillphone);
+            WorkflowExpression.Validate(__workflow_bodybillphone, nameof(bodybillphone), required: false);
+            var __workflow_bodybillfax = bodybillfax == null ? null : WorkflowExpression.Compile(bodybillfax);
+            WorkflowExpression.Validate(__workflow_bodybillfax, nameof(bodybillfax), required: false);
+            var __workflow_bodyshipcompany = bodyshipcompany == null ? null : WorkflowExpression.Compile(bodyshipcompany);
+            WorkflowExpression.Validate(__workflow_bodyshipcompany, nameof(bodyshipcompany), required: false);
+            var __workflow_bodyshipcontact = bodyshipcontact == null ? null : WorkflowExpression.Compile(bodyshipcontact);
+            WorkflowExpression.Validate(__workflow_bodyshipcontact, nameof(bodyshipcontact), required: false);
+            var __workflow_bodyshipaddr1 = bodyshipaddr1 == null ? null : WorkflowExpression.Compile(bodyshipaddr1);
+            WorkflowExpression.Validate(__workflow_bodyshipaddr1, nameof(bodyshipaddr1), required: false);
+            var __workflow_bodyshipaddr2 = bodyshipaddr2 == null ? null : WorkflowExpression.Compile(bodyshipaddr2);
+            WorkflowExpression.Validate(__workflow_bodyshipaddr2, nameof(bodyshipaddr2), required: false);
+            var __workflow_bodyshipcity = bodyshipcity == null ? null : WorkflowExpression.Compile(bodyshipcity);
+            WorkflowExpression.Validate(__workflow_bodyshipcity, nameof(bodyshipcity), required: false);
+            var __workflow_bodyshipstate = bodyshipstate == null ? null : WorkflowExpression.Compile(bodyshipstate);
+            WorkflowExpression.Validate(__workflow_bodyshipstate, nameof(bodyshipstate), required: false);
+            var __workflow_bodyshipzipcode = bodyshipzipcode == null ? null : WorkflowExpression.Compile(bodyshipzipcode);
+            WorkflowExpression.Validate(__workflow_bodyshipzipcode, nameof(bodyshipzipcode), required: false);
+            var __workflow_bodyshipcountry = bodyshipcountry == null ? null : WorkflowExpression.Compile(bodyshipcountry);
+            WorkflowExpression.Validate(__workflow_bodyshipcountry, nameof(bodyshipcountry), required: false);
+            var __workflow_bodyshipphone = bodyshipphone == null ? null : WorkflowExpression.Compile(bodyshipphone);
+            WorkflowExpression.Validate(__workflow_bodyshipphone, nameof(bodyshipphone), required: false);
+            var __workflow_bodyshipemail = bodyshipemail == null ? null : WorkflowExpression.Compile(bodyshipemail);
+            WorkflowExpression.Validate(__workflow_bodyshipemail, nameof(bodyshipemail), required: false);
+            var __workflow_bodyorderstatus = bodyorderstatus == null ? null : WorkflowExpression.Compile(bodyorderstatus);
+            WorkflowExpression.Validate(__workflow_bodyorderstatus, nameof(bodyorderstatus), required: false);
+            var __workflow_bodycustomstatus = bodycustomstatus == null ? null : WorkflowExpression.Compile(bodycustomstatus);
+            WorkflowExpression.Validate(__workflow_bodycustomstatus, nameof(bodycustomstatus), required: false);
+            var __workflow_bodytaxdistrict = bodytaxdistrict == null ? null : WorkflowExpression.Compile(bodytaxdistrict);
+            WorkflowExpression.Validate(__workflow_bodytaxdistrict, nameof(bodytaxdistrict), required: false);
+            var __workflow_bodytaxrate = bodytaxrate == null ? null : WorkflowExpression.Compile(bodytaxrate);
+            WorkflowExpression.Validate(__workflow_bodytaxrate, nameof(bodytaxrate), required: false);
+            var __workflow_bodycampaign = bodycampaign == null ? null : WorkflowExpression.Compile(bodycampaign);
+            WorkflowExpression.Validate(__workflow_bodycampaign, nameof(bodycampaign), required: false);
+            var __workflow_bodyordertax = bodyordertax == null ? null : WorkflowExpression.Compile(bodyordertax);
+            WorkflowExpression.Validate(__workflow_bodyordertax, nameof(bodyordertax), required: false);
+            var __workflow_bodyshippingcost = bodyshippingcost == null ? null : WorkflowExpression.Compile(bodyshippingcost);
+            WorkflowExpression.Validate(__workflow_bodyshippingcost, nameof(bodyshippingcost), required: false);
+            var __workflow_bodyshippingmethod = bodyshippingmethod == null ? null : WorkflowExpression.Compile(bodyshippingmethod);
+            WorkflowExpression.Validate(__workflow_bodyshippingmethod, nameof(bodyshippingmethod), required: false);
+            var __workflow_bodycouponamount = bodycouponamount == null ? null : WorkflowExpression.Compile(bodycouponamount);
+            WorkflowExpression.Validate(__workflow_bodycouponamount, nameof(bodycouponamount), required: false);
+            var __workflow_bodycouponcode = bodycouponcode == null ? null : WorkflowExpression.Compile(bodycouponcode);
+            WorkflowExpression.Validate(__workflow_bodycouponcode, nameof(bodycouponcode), required: false);
+            var __workflow_bodypaymentmethod = bodypaymentmethod == null ? null : WorkflowExpression.Compile(bodypaymentmethod);
+            WorkflowExpression.Validate(__workflow_bodypaymentmethod, nameof(bodypaymentmethod), required: false);
+            var __workflow_bodycomments = bodycomments == null ? null : WorkflowExpression.Compile(bodycomments);
+            WorkflowExpression.Validate(__workflow_bodycomments, nameof(bodycomments), required: false);
+            var __workflow_bodylinedata = bodylinedata == null ? null : WorkflowExpression.Compile(bodylinedata);
+            WorkflowExpression.Validate(__workflow_bodylinedata, nameof(bodylinedata), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/api/SO";
@@ -2286,243 +2383,243 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyorderid != null)
+                if (__workflow_bodyorderid != null)
                 {
-                    body["orderid"] = ExpressionConverter.ConvertO(bodyorderid);
+                    body["orderid"] = ExpressionConverter.ConvertO(__workflow_bodyorderid);
                     bodypropCount++;
                 }
 
-                if (bodyorderdate != null)
+                if (__workflow_bodyorderdate != null)
                 {
-                    body["orderdate"] = ExpressionConverter.ConvertO(bodyorderdate);
+                    body["orderdate"] = ExpressionConverter.ConvertO(__workflow_bodyorderdate);
                     bodypropCount++;
                 }
 
-                if (bodyorderdescription != null)
+                if (__workflow_bodyorderdescription != null)
                 {
-                    body["orderdescription"] = ExpressionConverter.ConvertO(bodyorderdescription);
+                    body["orderdescription"] = ExpressionConverter.ConvertO(__workflow_bodyorderdescription);
                     bodypropCount++;
                 }
 
-                if (bodyaccount != null)
+                if (__workflow_bodyaccount != null)
                 {
-                    body["account"] = ExpressionConverter.ConvertO(bodyaccount);
+                    body["account"] = ExpressionConverter.ConvertO(__workflow_bodyaccount);
                     bodypropCount++;
                 }
 
-                if (bodyaccountname != null)
+                if (__workflow_bodyaccountname != null)
                 {
-                    body["accountname"] = ExpressionConverter.ConvertO(bodyaccountname);
+                    body["accountname"] = ExpressionConverter.ConvertO(__workflow_bodyaccountname);
                     bodypropCount++;
                 }
 
-                if (bodysalesrep != null)
+                if (__workflow_bodysalesrep != null)
                 {
-                    body["salesrep"] = ExpressionConverter.ConvertO(bodysalesrep);
+                    body["salesrep"] = ExpressionConverter.ConvertO(__workflow_bodysalesrep);
                     bodypropCount++;
                 }
 
-                if (bodyfirstname != null)
+                if (__workflow_bodyfirstname != null)
                 {
-                    body["firstname"] = ExpressionConverter.ConvertO(bodyfirstname);
+                    body["firstname"] = ExpressionConverter.ConvertO(__workflow_bodyfirstname);
                     bodypropCount++;
                 }
 
-                if (bodylastname != null)
+                if (__workflow_bodylastname != null)
                 {
-                    body["lastname"] = ExpressionConverter.ConvertO(bodylastname);
+                    body["lastname"] = ExpressionConverter.ConvertO(__workflow_bodylastname);
                     bodypropCount++;
                 }
 
-                if (bodybillemail != null)
+                if (__workflow_bodybillemail != null)
                 {
-                    body["billemail"] = ExpressionConverter.ConvertO(bodybillemail);
+                    body["billemail"] = ExpressionConverter.ConvertO(__workflow_bodybillemail);
                     bodypropCount++;
                 }
 
-                if (bodybilladdr1 != null)
+                if (__workflow_bodybilladdr1 != null)
                 {
-                    body["billaddr1"] = ExpressionConverter.ConvertO(bodybilladdr1);
+                    body["billaddr1"] = ExpressionConverter.ConvertO(__workflow_bodybilladdr1);
                     bodypropCount++;
                 }
 
-                if (bodybilladdr2 != null)
+                if (__workflow_bodybilladdr2 != null)
                 {
-                    body["billaddr2"] = ExpressionConverter.ConvertO(bodybilladdr2);
+                    body["billaddr2"] = ExpressionConverter.ConvertO(__workflow_bodybilladdr2);
                     bodypropCount++;
                 }
 
-                if (bodybillcity != null)
+                if (__workflow_bodybillcity != null)
                 {
-                    body["billcity"] = ExpressionConverter.ConvertO(bodybillcity);
+                    body["billcity"] = ExpressionConverter.ConvertO(__workflow_bodybillcity);
                     bodypropCount++;
                 }
 
-                if (bodybillstate != null)
+                if (__workflow_bodybillstate != null)
                 {
-                    body["billstate"] = ExpressionConverter.ConvertO(bodybillstate);
+                    body["billstate"] = ExpressionConverter.ConvertO(__workflow_bodybillstate);
                     bodypropCount++;
                 }
 
-                if (bodybillzipcode != null)
+                if (__workflow_bodybillzipcode != null)
                 {
-                    body["billzipcode"] = ExpressionConverter.ConvertO(bodybillzipcode);
+                    body["billzipcode"] = ExpressionConverter.ConvertO(__workflow_bodybillzipcode);
                     bodypropCount++;
                 }
 
-                if (bodybillcountry != null)
+                if (__workflow_bodybillcountry != null)
                 {
-                    body["billcountry"] = ExpressionConverter.ConvertO(bodybillcountry);
+                    body["billcountry"] = ExpressionConverter.ConvertO(__workflow_bodybillcountry);
                     bodypropCount++;
                 }
 
-                if (bodybillphone != null)
+                if (__workflow_bodybillphone != null)
                 {
-                    body["billphone"] = ExpressionConverter.ConvertO(bodybillphone);
+                    body["billphone"] = ExpressionConverter.ConvertO(__workflow_bodybillphone);
                     bodypropCount++;
                 }
 
-                if (bodybillfax != null)
+                if (__workflow_bodybillfax != null)
                 {
-                    body["billfax"] = ExpressionConverter.ConvertO(bodybillfax);
+                    body["billfax"] = ExpressionConverter.ConvertO(__workflow_bodybillfax);
                     bodypropCount++;
                 }
 
-                if (bodyshipcompany != null)
+                if (__workflow_bodyshipcompany != null)
                 {
-                    body["shipcompany"] = ExpressionConverter.ConvertO(bodyshipcompany);
+                    body["shipcompany"] = ExpressionConverter.ConvertO(__workflow_bodyshipcompany);
                     bodypropCount++;
                 }
 
-                if (bodyshipcontact != null)
+                if (__workflow_bodyshipcontact != null)
                 {
-                    body["shipcontact"] = ExpressionConverter.ConvertO(bodyshipcontact);
+                    body["shipcontact"] = ExpressionConverter.ConvertO(__workflow_bodyshipcontact);
                     bodypropCount++;
                 }
 
-                if (bodyshipaddr1 != null)
+                if (__workflow_bodyshipaddr1 != null)
                 {
-                    body["shipaddr1"] = ExpressionConverter.ConvertO(bodyshipaddr1);
+                    body["shipaddr1"] = ExpressionConverter.ConvertO(__workflow_bodyshipaddr1);
                     bodypropCount++;
                 }
 
-                if (bodyshipaddr2 != null)
+                if (__workflow_bodyshipaddr2 != null)
                 {
-                    body["shipaddr2"] = ExpressionConverter.ConvertO(bodyshipaddr2);
+                    body["shipaddr2"] = ExpressionConverter.ConvertO(__workflow_bodyshipaddr2);
                     bodypropCount++;
                 }
 
-                if (bodyshipcity != null)
+                if (__workflow_bodyshipcity != null)
                 {
-                    body["shipcity"] = ExpressionConverter.ConvertO(bodyshipcity);
+                    body["shipcity"] = ExpressionConverter.ConvertO(__workflow_bodyshipcity);
                     bodypropCount++;
                 }
 
-                if (bodyshipstate != null)
+                if (__workflow_bodyshipstate != null)
                 {
-                    body["shipstate"] = ExpressionConverter.ConvertO(bodyshipstate);
+                    body["shipstate"] = ExpressionConverter.ConvertO(__workflow_bodyshipstate);
                     bodypropCount++;
                 }
 
-                if (bodyshipzipcode != null)
+                if (__workflow_bodyshipzipcode != null)
                 {
-                    body["shipzipcode"] = ExpressionConverter.ConvertO(bodyshipzipcode);
+                    body["shipzipcode"] = ExpressionConverter.ConvertO(__workflow_bodyshipzipcode);
                     bodypropCount++;
                 }
 
-                if (bodyshipcountry != null)
+                if (__workflow_bodyshipcountry != null)
                 {
-                    body["shipcountry"] = ExpressionConverter.ConvertO(bodyshipcountry);
+                    body["shipcountry"] = ExpressionConverter.ConvertO(__workflow_bodyshipcountry);
                     bodypropCount++;
                 }
 
-                if (bodyshipphone != null)
+                if (__workflow_bodyshipphone != null)
                 {
-                    body["shipphone"] = ExpressionConverter.ConvertO(bodyshipphone);
+                    body["shipphone"] = ExpressionConverter.ConvertO(__workflow_bodyshipphone);
                     bodypropCount++;
                 }
 
-                if (bodyshipemail != null)
+                if (__workflow_bodyshipemail != null)
                 {
-                    body["shipemail"] = ExpressionConverter.ConvertO(bodyshipemail);
+                    body["shipemail"] = ExpressionConverter.ConvertO(__workflow_bodyshipemail);
                     bodypropCount++;
                 }
 
-                if (bodyorderstatus != null)
+                if (__workflow_bodyorderstatus != null)
                 {
-                    body["orderstatus"] = ExpressionConverter.ConvertO(bodyorderstatus);
+                    body["orderstatus"] = ExpressionConverter.ConvertO(__workflow_bodyorderstatus);
                     bodypropCount++;
                 }
 
-                if (bodycustomstatus != null)
+                if (__workflow_bodycustomstatus != null)
                 {
-                    body["customstatus"] = ExpressionConverter.ConvertO(bodycustomstatus);
+                    body["customstatus"] = ExpressionConverter.ConvertO(__workflow_bodycustomstatus);
                     bodypropCount++;
                 }
 
-                if (bodytaxdistrict != null)
+                if (__workflow_bodytaxdistrict != null)
                 {
-                    body["taxdistrict"] = ExpressionConverter.ConvertO(bodytaxdistrict);
+                    body["taxdistrict"] = ExpressionConverter.ConvertO(__workflow_bodytaxdistrict);
                     bodypropCount++;
                 }
 
-                if (bodytaxrate != null)
+                if (__workflow_bodytaxrate != null)
                 {
-                    body["taxrate"] = ExpressionConverter.ConvertO(bodytaxrate);
+                    body["taxrate"] = ExpressionConverter.ConvertO(__workflow_bodytaxrate);
                     bodypropCount++;
                 }
 
-                if (bodycampaign != null)
+                if (__workflow_bodycampaign != null)
                 {
-                    body["campaign"] = ExpressionConverter.ConvertO(bodycampaign);
+                    body["campaign"] = ExpressionConverter.ConvertO(__workflow_bodycampaign);
                     bodypropCount++;
                 }
 
-                if (bodyordertax != null)
+                if (__workflow_bodyordertax != null)
                 {
-                    body["ordertax"] = ExpressionConverter.ConvertO(bodyordertax);
+                    body["ordertax"] = ExpressionConverter.ConvertO(__workflow_bodyordertax);
                     bodypropCount++;
                 }
 
-                if (bodyshippingcost != null)
+                if (__workflow_bodyshippingcost != null)
                 {
-                    body["shippingcost"] = ExpressionConverter.ConvertO(bodyshippingcost);
+                    body["shippingcost"] = ExpressionConverter.ConvertO(__workflow_bodyshippingcost);
                     bodypropCount++;
                 }
 
-                if (bodyshippingmethod != null)
+                if (__workflow_bodyshippingmethod != null)
                 {
-                    body["shippingmethod"] = ExpressionConverter.ConvertO(bodyshippingmethod);
+                    body["shippingmethod"] = ExpressionConverter.ConvertO(__workflow_bodyshippingmethod);
                     bodypropCount++;
                 }
 
-                if (bodycouponamount != null)
+                if (__workflow_bodycouponamount != null)
                 {
-                    body["couponamount"] = ExpressionConverter.ConvertO(bodycouponamount);
+                    body["couponamount"] = ExpressionConverter.ConvertO(__workflow_bodycouponamount);
                     bodypropCount++;
                 }
 
-                if (bodycouponcode != null)
+                if (__workflow_bodycouponcode != null)
                 {
-                    body["couponcode"] = ExpressionConverter.ConvertO(bodycouponcode);
+                    body["couponcode"] = ExpressionConverter.ConvertO(__workflow_bodycouponcode);
                     bodypropCount++;
                 }
 
-                if (bodypaymentmethod != null)
+                if (__workflow_bodypaymentmethod != null)
                 {
-                    body["paymentmethod"] = ExpressionConverter.ConvertO(bodypaymentmethod);
+                    body["paymentmethod"] = ExpressionConverter.ConvertO(__workflow_bodypaymentmethod);
                     bodypropCount++;
                 }
 
-                if (bodycomments != null)
+                if (__workflow_bodycomments != null)
                 {
-                    body["comments"] = ExpressionConverter.ConvertO(bodycomments);
+                    body["comments"] = ExpressionConverter.ConvertO(__workflow_bodycomments);
                     bodypropCount++;
                 }
 
-                if (bodylinedata != null)
+                if (__workflow_bodylinedata != null)
                 {
-                    body["linedata"] = ExpressionConverter.ConvertO(bodylinedata);
+                    body["linedata"] = ExpressionConverter.ConvertO(__workflow_bodylinedata);
                     bodypropCount++;
                 }
 
@@ -2536,19 +2633,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        [WorkflowExpressionFactory(nameof(__BuildSOGetValue))]
-        public IBodyWorkflowAction<SOGetValueResponse> SOGetValue([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<SOGetValueResponse> SOGetValue(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SOGetValueResponse> __BuildSOGetValue(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<SOGetValueResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/SO/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/SO/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SOGetValueResponse>(callPayload);
@@ -2556,41 +2647,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        [WorkflowExpressionFactory(nameof(__BuildSOPutValue))]
-        public IWorkflowAction SOPutValue([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodycomments = null, [WorkflowExpression] Func<string> bodycustomstatus = null, [WorkflowExpression] Func<bodyorderstatusInput> bodyorderstatus = null)
+        public IWorkflowAction SOPutValue(Expression<Func<string>> id, Expression<Func<string>> bodycomments = null, Expression<Func<string>> bodycustomstatus = null, Expression<Func<bodyorderstatusInput>> bodyorderstatus = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildSOPutValue(WorkflowExpression<string> id, WorkflowExpression<string> bodycomments = null, WorkflowExpression<string> bodycustomstatus = null, WorkflowExpression<bodyorderstatusInput> bodyorderstatus = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(bodycomments, nameof(bodycomments), required: false);
-            WorkflowExpression.Validate(bodycustomstatus, nameof(bodycustomstatus), required: false);
-            WorkflowExpression.Validate(bodyorderstatus, nameof(bodyorderstatus), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_bodycomments = bodycomments == null ? null : WorkflowExpression.Compile(bodycomments);
+            WorkflowExpression.Validate(__workflow_bodycomments, nameof(bodycomments), required: false);
+            var __workflow_bodycustomstatus = bodycustomstatus == null ? null : WorkflowExpression.Compile(bodycustomstatus);
+            WorkflowExpression.Validate(__workflow_bodycustomstatus, nameof(bodycustomstatus), required: false);
+            var __workflow_bodyorderstatus = bodyorderstatus == null ? null : WorkflowExpression.Compile(bodyorderstatus);
+            WorkflowExpression.Validate(__workflow_bodyorderstatus, nameof(bodyorderstatus), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/SO/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/SO/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodycomments != null)
+                if (__workflow_bodycomments != null)
                 {
-                    body["comments"] = ExpressionConverter.ConvertO(bodycomments);
+                    body["comments"] = ExpressionConverter.ConvertO(__workflow_bodycomments);
                     bodypropCount++;
                 }
 
-                if (bodycustomstatus != null)
+                if (__workflow_bodycustomstatus != null)
                 {
-                    body["customstatus"] = ExpressionConverter.ConvertO(bodycustomstatus);
+                    body["customstatus"] = ExpressionConverter.ConvertO(__workflow_bodycustomstatus);
                     bodypropCount++;
                 }
 
-                if (bodyorderstatus != null)
+                if (__workflow_bodyorderstatus != null)
                 {
-                    body["orderstatus"] = ExpressionConverter.ConvertO(bodyorderstatus);
+                    body["orderstatus"] = ExpressionConverter.ConvertO(__workflow_bodyorderstatus);
                     bodypropCount++;
                 }
 
@@ -2613,45 +2701,68 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        [WorkflowExpressionFactory(nameof(__BuildWorkOrderPostValue))]
-        public IBodyWorkflowAction<JToken> WorkOrderPostValue([WorkflowExpression] Func<string> bodyfromaddress = null, [WorkflowExpression] Func<string> bodyfirstname = null, [WorkflowExpression] Func<string> bodylastname = null, [WorkflowExpression] Func<string> bodycompanyname = null, [WorkflowExpression] Func<string> bodybilladdr1 = null, [WorkflowExpression] Func<string> bodybilladdr2 = null, [WorkflowExpression] Func<string> bodybillcity = null, [WorkflowExpression] Func<string> bodybillstate = null, [WorkflowExpression] Func<string> bodybillzipcode = null, [WorkflowExpression] Func<string> bodybillcountry = null, [WorkflowExpression] Func<string> bodybillphone = null, [WorkflowExpression] Func<string> bodybillfax = null, [WorkflowExpression] Func<string> bodyserviceaddr1 = null, [WorkflowExpression] Func<string> bodyserviceaddr2 = null, [WorkflowExpression] Func<string> bodyservicecity = null, [WorkflowExpression] Func<string> bodyservicestate = null, [WorkflowExpression] Func<string> bodyservicezipcode = null, [WorkflowExpression] Func<string> bodyservicecountry = null, [WorkflowExpression] Func<string> bodyservicephone = null, [WorkflowExpression] Func<string> bodyreceiveddate = null, [WorkflowExpression] Func<string> bodyponumber = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyreasoncode = null, [WorkflowExpression] Func<string> bodysource = null, [WorkflowExpression] Func<string> bodyassignedto = null, [WorkflowExpression] Func<string> bodybackup = null, [WorkflowExpression] Func<bodypriorityInput> bodypriority = null, [WorkflowExpression] Func<string> bodyduedate = null, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<string> bodybody = null)
+        public IBodyWorkflowAction<JToken> WorkOrderPostValue(Expression<Func<string>> bodyfromaddress = null, Expression<Func<string>> bodyfirstname = null, Expression<Func<string>> bodylastname = null, Expression<Func<string>> bodycompanyname = null, Expression<Func<string>> bodybilladdr1 = null, Expression<Func<string>> bodybilladdr2 = null, Expression<Func<string>> bodybillcity = null, Expression<Func<string>> bodybillstate = null, Expression<Func<string>> bodybillzipcode = null, Expression<Func<string>> bodybillcountry = null, Expression<Func<string>> bodybillphone = null, Expression<Func<string>> bodybillfax = null, Expression<Func<string>> bodyserviceaddr1 = null, Expression<Func<string>> bodyserviceaddr2 = null, Expression<Func<string>> bodyservicecity = null, Expression<Func<string>> bodyservicestate = null, Expression<Func<string>> bodyservicezipcode = null, Expression<Func<string>> bodyservicecountry = null, Expression<Func<string>> bodyservicephone = null, Expression<Func<string>> bodyreceiveddate = null, Expression<Func<string>> bodyponumber = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyreasoncode = null, Expression<Func<string>> bodysource = null, Expression<Func<string>> bodyassignedto = null, Expression<Func<string>> bodybackup = null, Expression<Func<bodypriorityInput>> bodypriority = null, Expression<Func<string>> bodyduedate = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodybody = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildWorkOrderPostValue(WorkflowExpression<string> bodyfromaddress = null, WorkflowExpression<string> bodyfirstname = null, WorkflowExpression<string> bodylastname = null, WorkflowExpression<string> bodycompanyname = null, WorkflowExpression<string> bodybilladdr1 = null, WorkflowExpression<string> bodybilladdr2 = null, WorkflowExpression<string> bodybillcity = null, WorkflowExpression<string> bodybillstate = null, WorkflowExpression<string> bodybillzipcode = null, WorkflowExpression<string> bodybillcountry = null, WorkflowExpression<string> bodybillphone = null, WorkflowExpression<string> bodybillfax = null, WorkflowExpression<string> bodyserviceaddr1 = null, WorkflowExpression<string> bodyserviceaddr2 = null, WorkflowExpression<string> bodyservicecity = null, WorkflowExpression<string> bodyservicestate = null, WorkflowExpression<string> bodyservicezipcode = null, WorkflowExpression<string> bodyservicecountry = null, WorkflowExpression<string> bodyservicephone = null, WorkflowExpression<string> bodyreceiveddate = null, WorkflowExpression<string> bodyponumber = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<string> bodyreasoncode = null, WorkflowExpression<string> bodysource = null, WorkflowExpression<string> bodyassignedto = null, WorkflowExpression<string> bodybackup = null, WorkflowExpression<bodypriorityInput> bodypriority = null, WorkflowExpression<string> bodyduedate = null, WorkflowExpression<string> bodysubject = null, WorkflowExpression<string> bodybody = null)
-        {
-            WorkflowExpression.Validate(bodyfromaddress, nameof(bodyfromaddress), required: false);
-            WorkflowExpression.Validate(bodyfirstname, nameof(bodyfirstname), required: false);
-            WorkflowExpression.Validate(bodylastname, nameof(bodylastname), required: false);
-            WorkflowExpression.Validate(bodycompanyname, nameof(bodycompanyname), required: false);
-            WorkflowExpression.Validate(bodybilladdr1, nameof(bodybilladdr1), required: false);
-            WorkflowExpression.Validate(bodybilladdr2, nameof(bodybilladdr2), required: false);
-            WorkflowExpression.Validate(bodybillcity, nameof(bodybillcity), required: false);
-            WorkflowExpression.Validate(bodybillstate, nameof(bodybillstate), required: false);
-            WorkflowExpression.Validate(bodybillzipcode, nameof(bodybillzipcode), required: false);
-            WorkflowExpression.Validate(bodybillcountry, nameof(bodybillcountry), required: false);
-            WorkflowExpression.Validate(bodybillphone, nameof(bodybillphone), required: false);
-            WorkflowExpression.Validate(bodybillfax, nameof(bodybillfax), required: false);
-            WorkflowExpression.Validate(bodyserviceaddr1, nameof(bodyserviceaddr1), required: false);
-            WorkflowExpression.Validate(bodyserviceaddr2, nameof(bodyserviceaddr2), required: false);
-            WorkflowExpression.Validate(bodyservicecity, nameof(bodyservicecity), required: false);
-            WorkflowExpression.Validate(bodyservicestate, nameof(bodyservicestate), required: false);
-            WorkflowExpression.Validate(bodyservicezipcode, nameof(bodyservicezipcode), required: false);
-            WorkflowExpression.Validate(bodyservicecountry, nameof(bodyservicecountry), required: false);
-            WorkflowExpression.Validate(bodyservicephone, nameof(bodyservicephone), required: false);
-            WorkflowExpression.Validate(bodyreceiveddate, nameof(bodyreceiveddate), required: false);
-            WorkflowExpression.Validate(bodyponumber, nameof(bodyponumber), required: false);
-            WorkflowExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            WorkflowExpression.Validate(bodyreasoncode, nameof(bodyreasoncode), required: false);
-            WorkflowExpression.Validate(bodysource, nameof(bodysource), required: false);
-            WorkflowExpression.Validate(bodyassignedto, nameof(bodyassignedto), required: false);
-            WorkflowExpression.Validate(bodybackup, nameof(bodybackup), required: false);
-            WorkflowExpression.Validate(bodypriority, nameof(bodypriority), required: false);
-            WorkflowExpression.Validate(bodyduedate, nameof(bodyduedate), required: false);
-            WorkflowExpression.Validate(bodysubject, nameof(bodysubject), required: false);
-            WorkflowExpression.Validate(bodybody, nameof(bodybody), required: false);
+            var __workflow_bodyfromaddress = bodyfromaddress == null ? null : WorkflowExpression.Compile(bodyfromaddress);
+            WorkflowExpression.Validate(__workflow_bodyfromaddress, nameof(bodyfromaddress), required: false);
+            var __workflow_bodyfirstname = bodyfirstname == null ? null : WorkflowExpression.Compile(bodyfirstname);
+            WorkflowExpression.Validate(__workflow_bodyfirstname, nameof(bodyfirstname), required: false);
+            var __workflow_bodylastname = bodylastname == null ? null : WorkflowExpression.Compile(bodylastname);
+            WorkflowExpression.Validate(__workflow_bodylastname, nameof(bodylastname), required: false);
+            var __workflow_bodycompanyname = bodycompanyname == null ? null : WorkflowExpression.Compile(bodycompanyname);
+            WorkflowExpression.Validate(__workflow_bodycompanyname, nameof(bodycompanyname), required: false);
+            var __workflow_bodybilladdr1 = bodybilladdr1 == null ? null : WorkflowExpression.Compile(bodybilladdr1);
+            WorkflowExpression.Validate(__workflow_bodybilladdr1, nameof(bodybilladdr1), required: false);
+            var __workflow_bodybilladdr2 = bodybilladdr2 == null ? null : WorkflowExpression.Compile(bodybilladdr2);
+            WorkflowExpression.Validate(__workflow_bodybilladdr2, nameof(bodybilladdr2), required: false);
+            var __workflow_bodybillcity = bodybillcity == null ? null : WorkflowExpression.Compile(bodybillcity);
+            WorkflowExpression.Validate(__workflow_bodybillcity, nameof(bodybillcity), required: false);
+            var __workflow_bodybillstate = bodybillstate == null ? null : WorkflowExpression.Compile(bodybillstate);
+            WorkflowExpression.Validate(__workflow_bodybillstate, nameof(bodybillstate), required: false);
+            var __workflow_bodybillzipcode = bodybillzipcode == null ? null : WorkflowExpression.Compile(bodybillzipcode);
+            WorkflowExpression.Validate(__workflow_bodybillzipcode, nameof(bodybillzipcode), required: false);
+            var __workflow_bodybillcountry = bodybillcountry == null ? null : WorkflowExpression.Compile(bodybillcountry);
+            WorkflowExpression.Validate(__workflow_bodybillcountry, nameof(bodybillcountry), required: false);
+            var __workflow_bodybillphone = bodybillphone == null ? null : WorkflowExpression.Compile(bodybillphone);
+            WorkflowExpression.Validate(__workflow_bodybillphone, nameof(bodybillphone), required: false);
+            var __workflow_bodybillfax = bodybillfax == null ? null : WorkflowExpression.Compile(bodybillfax);
+            WorkflowExpression.Validate(__workflow_bodybillfax, nameof(bodybillfax), required: false);
+            var __workflow_bodyserviceaddr1 = bodyserviceaddr1 == null ? null : WorkflowExpression.Compile(bodyserviceaddr1);
+            WorkflowExpression.Validate(__workflow_bodyserviceaddr1, nameof(bodyserviceaddr1), required: false);
+            var __workflow_bodyserviceaddr2 = bodyserviceaddr2 == null ? null : WorkflowExpression.Compile(bodyserviceaddr2);
+            WorkflowExpression.Validate(__workflow_bodyserviceaddr2, nameof(bodyserviceaddr2), required: false);
+            var __workflow_bodyservicecity = bodyservicecity == null ? null : WorkflowExpression.Compile(bodyservicecity);
+            WorkflowExpression.Validate(__workflow_bodyservicecity, nameof(bodyservicecity), required: false);
+            var __workflow_bodyservicestate = bodyservicestate == null ? null : WorkflowExpression.Compile(bodyservicestate);
+            WorkflowExpression.Validate(__workflow_bodyservicestate, nameof(bodyservicestate), required: false);
+            var __workflow_bodyservicezipcode = bodyservicezipcode == null ? null : WorkflowExpression.Compile(bodyservicezipcode);
+            WorkflowExpression.Validate(__workflow_bodyservicezipcode, nameof(bodyservicezipcode), required: false);
+            var __workflow_bodyservicecountry = bodyservicecountry == null ? null : WorkflowExpression.Compile(bodyservicecountry);
+            WorkflowExpression.Validate(__workflow_bodyservicecountry, nameof(bodyservicecountry), required: false);
+            var __workflow_bodyservicephone = bodyservicephone == null ? null : WorkflowExpression.Compile(bodyservicephone);
+            WorkflowExpression.Validate(__workflow_bodyservicephone, nameof(bodyservicephone), required: false);
+            var __workflow_bodyreceiveddate = bodyreceiveddate == null ? null : WorkflowExpression.Compile(bodyreceiveddate);
+            WorkflowExpression.Validate(__workflow_bodyreceiveddate, nameof(bodyreceiveddate), required: false);
+            var __workflow_bodyponumber = bodyponumber == null ? null : WorkflowExpression.Compile(bodyponumber);
+            WorkflowExpression.Validate(__workflow_bodyponumber, nameof(bodyponumber), required: false);
+            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
+            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodyreasoncode = bodyreasoncode == null ? null : WorkflowExpression.Compile(bodyreasoncode);
+            WorkflowExpression.Validate(__workflow_bodyreasoncode, nameof(bodyreasoncode), required: false);
+            var __workflow_bodysource = bodysource == null ? null : WorkflowExpression.Compile(bodysource);
+            WorkflowExpression.Validate(__workflow_bodysource, nameof(bodysource), required: false);
+            var __workflow_bodyassignedto = bodyassignedto == null ? null : WorkflowExpression.Compile(bodyassignedto);
+            WorkflowExpression.Validate(__workflow_bodyassignedto, nameof(bodyassignedto), required: false);
+            var __workflow_bodybackup = bodybackup == null ? null : WorkflowExpression.Compile(bodybackup);
+            WorkflowExpression.Validate(__workflow_bodybackup, nameof(bodybackup), required: false);
+            var __workflow_bodypriority = bodypriority == null ? null : WorkflowExpression.Compile(bodypriority);
+            WorkflowExpression.Validate(__workflow_bodypriority, nameof(bodypriority), required: false);
+            var __workflow_bodyduedate = bodyduedate == null ? null : WorkflowExpression.Compile(bodyduedate);
+            WorkflowExpression.Validate(__workflow_bodyduedate, nameof(bodyduedate), required: false);
+            var __workflow_bodysubject = bodysubject == null ? null : WorkflowExpression.Compile(bodysubject);
+            WorkflowExpression.Validate(__workflow_bodysubject, nameof(bodysubject), required: false);
+            var __workflow_bodybody = bodybody == null ? null : WorkflowExpression.Compile(bodybody);
+            WorkflowExpression.Validate(__workflow_bodybody, nameof(bodybody), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/api/WorkOrder";
@@ -2659,183 +2770,183 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfromaddress != null)
+                if (__workflow_bodyfromaddress != null)
                 {
-                    body["fromaddress"] = ExpressionConverter.ConvertO(bodyfromaddress);
+                    body["fromaddress"] = ExpressionConverter.ConvertO(__workflow_bodyfromaddress);
                     bodypropCount++;
                 }
 
-                if (bodyfirstname != null)
+                if (__workflow_bodyfirstname != null)
                 {
-                    body["firstname"] = ExpressionConverter.ConvertO(bodyfirstname);
+                    body["firstname"] = ExpressionConverter.ConvertO(__workflow_bodyfirstname);
                     bodypropCount++;
                 }
 
-                if (bodylastname != null)
+                if (__workflow_bodylastname != null)
                 {
-                    body["lastname"] = ExpressionConverter.ConvertO(bodylastname);
+                    body["lastname"] = ExpressionConverter.ConvertO(__workflow_bodylastname);
                     bodypropCount++;
                 }
 
-                if (bodycompanyname != null)
+                if (__workflow_bodycompanyname != null)
                 {
-                    body["companyname"] = ExpressionConverter.ConvertO(bodycompanyname);
+                    body["companyname"] = ExpressionConverter.ConvertO(__workflow_bodycompanyname);
                     bodypropCount++;
                 }
 
-                if (bodybilladdr1 != null)
+                if (__workflow_bodybilladdr1 != null)
                 {
-                    body["billaddr1"] = ExpressionConverter.ConvertO(bodybilladdr1);
+                    body["billaddr1"] = ExpressionConverter.ConvertO(__workflow_bodybilladdr1);
                     bodypropCount++;
                 }
 
-                if (bodybilladdr2 != null)
+                if (__workflow_bodybilladdr2 != null)
                 {
-                    body["billaddr2"] = ExpressionConverter.ConvertO(bodybilladdr2);
+                    body["billaddr2"] = ExpressionConverter.ConvertO(__workflow_bodybilladdr2);
                     bodypropCount++;
                 }
 
-                if (bodybillcity != null)
+                if (__workflow_bodybillcity != null)
                 {
-                    body["billcity"] = ExpressionConverter.ConvertO(bodybillcity);
+                    body["billcity"] = ExpressionConverter.ConvertO(__workflow_bodybillcity);
                     bodypropCount++;
                 }
 
-                if (bodybillstate != null)
+                if (__workflow_bodybillstate != null)
                 {
-                    body["billstate"] = ExpressionConverter.ConvertO(bodybillstate);
+                    body["billstate"] = ExpressionConverter.ConvertO(__workflow_bodybillstate);
                     bodypropCount++;
                 }
 
-                if (bodybillzipcode != null)
+                if (__workflow_bodybillzipcode != null)
                 {
-                    body["billzipcode"] = ExpressionConverter.ConvertO(bodybillzipcode);
+                    body["billzipcode"] = ExpressionConverter.ConvertO(__workflow_bodybillzipcode);
                     bodypropCount++;
                 }
 
-                if (bodybillcountry != null)
+                if (__workflow_bodybillcountry != null)
                 {
-                    body["billcountry"] = ExpressionConverter.ConvertO(bodybillcountry);
+                    body["billcountry"] = ExpressionConverter.ConvertO(__workflow_bodybillcountry);
                     bodypropCount++;
                 }
 
-                if (bodybillphone != null)
+                if (__workflow_bodybillphone != null)
                 {
-                    body["billphone"] = ExpressionConverter.ConvertO(bodybillphone);
+                    body["billphone"] = ExpressionConverter.ConvertO(__workflow_bodybillphone);
                     bodypropCount++;
                 }
 
-                if (bodybillfax != null)
+                if (__workflow_bodybillfax != null)
                 {
-                    body["billfax"] = ExpressionConverter.ConvertO(bodybillfax);
+                    body["billfax"] = ExpressionConverter.ConvertO(__workflow_bodybillfax);
                     bodypropCount++;
                 }
 
-                if (bodyserviceaddr1 != null)
+                if (__workflow_bodyserviceaddr1 != null)
                 {
-                    body["serviceaddr1"] = ExpressionConverter.ConvertO(bodyserviceaddr1);
+                    body["serviceaddr1"] = ExpressionConverter.ConvertO(__workflow_bodyserviceaddr1);
                     bodypropCount++;
                 }
 
-                if (bodyserviceaddr2 != null)
+                if (__workflow_bodyserviceaddr2 != null)
                 {
-                    body["serviceaddr2"] = ExpressionConverter.ConvertO(bodyserviceaddr2);
+                    body["serviceaddr2"] = ExpressionConverter.ConvertO(__workflow_bodyserviceaddr2);
                     bodypropCount++;
                 }
 
-                if (bodyservicecity != null)
+                if (__workflow_bodyservicecity != null)
                 {
-                    body["servicecity"] = ExpressionConverter.ConvertO(bodyservicecity);
+                    body["servicecity"] = ExpressionConverter.ConvertO(__workflow_bodyservicecity);
                     bodypropCount++;
                 }
 
-                if (bodyservicestate != null)
+                if (__workflow_bodyservicestate != null)
                 {
-                    body["servicestate"] = ExpressionConverter.ConvertO(bodyservicestate);
+                    body["servicestate"] = ExpressionConverter.ConvertO(__workflow_bodyservicestate);
                     bodypropCount++;
                 }
 
-                if (bodyservicezipcode != null)
+                if (__workflow_bodyservicezipcode != null)
                 {
-                    body["servicezipcode"] = ExpressionConverter.ConvertO(bodyservicezipcode);
+                    body["servicezipcode"] = ExpressionConverter.ConvertO(__workflow_bodyservicezipcode);
                     bodypropCount++;
                 }
 
-                if (bodyservicecountry != null)
+                if (__workflow_bodyservicecountry != null)
                 {
-                    body["servicecountry"] = ExpressionConverter.ConvertO(bodyservicecountry);
+                    body["servicecountry"] = ExpressionConverter.ConvertO(__workflow_bodyservicecountry);
                     bodypropCount++;
                 }
 
-                if (bodyservicephone != null)
+                if (__workflow_bodyservicephone != null)
                 {
-                    body["servicephone"] = ExpressionConverter.ConvertO(bodyservicephone);
+                    body["servicephone"] = ExpressionConverter.ConvertO(__workflow_bodyservicephone);
                     bodypropCount++;
                 }
 
-                if (bodyreceiveddate != null)
+                if (__workflow_bodyreceiveddate != null)
                 {
-                    body["receiveddate"] = ExpressionConverter.ConvertO(bodyreceiveddate);
+                    body["receiveddate"] = ExpressionConverter.ConvertO(__workflow_bodyreceiveddate);
                     bodypropCount++;
                 }
 
-                if (bodyponumber != null)
+                if (__workflow_bodyponumber != null)
                 {
-                    body["ponumber"] = ExpressionConverter.ConvertO(bodyponumber);
+                    body["ponumber"] = ExpressionConverter.ConvertO(__workflow_bodyponumber);
                     bodypropCount++;
                 }
 
-                if (bodystatus != null)
+                if (__workflow_bodystatus != null)
                 {
-                    body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                    body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
                     bodypropCount++;
                 }
 
-                if (bodyreasoncode != null)
+                if (__workflow_bodyreasoncode != null)
                 {
-                    body["reasoncode"] = ExpressionConverter.ConvertO(bodyreasoncode);
+                    body["reasoncode"] = ExpressionConverter.ConvertO(__workflow_bodyreasoncode);
                     bodypropCount++;
                 }
 
-                if (bodysource != null)
+                if (__workflow_bodysource != null)
                 {
-                    body["source"] = ExpressionConverter.ConvertO(bodysource);
+                    body["source"] = ExpressionConverter.ConvertO(__workflow_bodysource);
                     bodypropCount++;
                 }
 
-                if (bodyassignedto != null)
+                if (__workflow_bodyassignedto != null)
                 {
-                    body["assignedto"] = ExpressionConverter.ConvertO(bodyassignedto);
+                    body["assignedto"] = ExpressionConverter.ConvertO(__workflow_bodyassignedto);
                     bodypropCount++;
                 }
 
-                if (bodybackup != null)
+                if (__workflow_bodybackup != null)
                 {
-                    body["backup"] = ExpressionConverter.ConvertO(bodybackup);
+                    body["backup"] = ExpressionConverter.ConvertO(__workflow_bodybackup);
                     bodypropCount++;
                 }
 
-                if (bodypriority != null)
+                if (__workflow_bodypriority != null)
                 {
-                    body["priority"] = ExpressionConverter.ConvertO(bodypriority);
+                    body["priority"] = ExpressionConverter.ConvertO(__workflow_bodypriority);
                     bodypropCount++;
                 }
 
-                if (bodyduedate != null)
+                if (__workflow_bodyduedate != null)
                 {
-                    body["duedate"] = ExpressionConverter.ConvertO(bodyduedate);
+                    body["duedate"] = ExpressionConverter.ConvertO(__workflow_bodyduedate);
                     bodypropCount++;
                 }
 
-                if (bodysubject != null)
+                if (__workflow_bodysubject != null)
                 {
-                    body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+                    body["subject"] = ExpressionConverter.ConvertO(__workflow_bodysubject);
                     bodypropCount++;
                 }
 
-                if (bodybody != null)
+                if (__workflow_bodybody != null)
                 {
-                    body["body"] = ExpressionConverter.ConvertO(bodybody);
+                    body["body"] = ExpressionConverter.ConvertO(__workflow_bodybody);
                     bodypropCount++;
                 }
 
@@ -2849,19 +2960,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        [WorkflowExpressionFactory(nameof(__BuildWorkOrderGetValue))]
-        public IBodyWorkflowAction<WorkOrderGetValueResponse> WorkOrderGetValue([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<WorkOrderGetValueResponse> WorkOrderGetValue(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<WorkOrderGetValueResponse> __BuildWorkOrderGetValue(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<WorkOrderGetValueResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/WorkOrder/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/WorkOrder/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<WorkOrderGetValueResponse>(callPayload);
@@ -2869,97 +2974,102 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        [WorkflowExpressionFactory(nameof(__BuildWorkOrderPutValue))]
-        public IWorkflowAction WorkOrderPutValue([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyponumber = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyreasoncode = null, [WorkflowExpression] Func<string> bodysource = null, [WorkflowExpression] Func<string> bodyassignedto = null, [WorkflowExpression] Func<string> bodybackup = null, [WorkflowExpression] Func<bodypriorityInput> bodypriority = null, [WorkflowExpression] Func<string> bodyduedate = null, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<string> bodybody = null, [WorkflowExpression] Func<bool> bodyhistory = null)
+        public IWorkflowAction WorkOrderPutValue(Expression<Func<string>> id, Expression<Func<string>> bodyponumber = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyreasoncode = null, Expression<Func<string>> bodysource = null, Expression<Func<string>> bodyassignedto = null, Expression<Func<string>> bodybackup = null, Expression<Func<bodypriorityInput>> bodypriority = null, Expression<Func<string>> bodyduedate = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodybody = null, Expression<Func<bool>> bodyhistory = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildWorkOrderPutValue(WorkflowExpression<string> id, WorkflowExpression<string> bodyponumber = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<string> bodyreasoncode = null, WorkflowExpression<string> bodysource = null, WorkflowExpression<string> bodyassignedto = null, WorkflowExpression<string> bodybackup = null, WorkflowExpression<bodypriorityInput> bodypriority = null, WorkflowExpression<string> bodyduedate = null, WorkflowExpression<string> bodysubject = null, WorkflowExpression<string> bodybody = null, WorkflowExpression<bool> bodyhistory = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(bodyponumber, nameof(bodyponumber), required: false);
-            WorkflowExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            WorkflowExpression.Validate(bodyreasoncode, nameof(bodyreasoncode), required: false);
-            WorkflowExpression.Validate(bodysource, nameof(bodysource), required: false);
-            WorkflowExpression.Validate(bodyassignedto, nameof(bodyassignedto), required: false);
-            WorkflowExpression.Validate(bodybackup, nameof(bodybackup), required: false);
-            WorkflowExpression.Validate(bodypriority, nameof(bodypriority), required: false);
-            WorkflowExpression.Validate(bodyduedate, nameof(bodyduedate), required: false);
-            WorkflowExpression.Validate(bodysubject, nameof(bodysubject), required: false);
-            WorkflowExpression.Validate(bodybody, nameof(bodybody), required: false);
-            WorkflowExpression.Validate(bodyhistory, nameof(bodyhistory), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_bodyponumber = bodyponumber == null ? null : WorkflowExpression.Compile(bodyponumber);
+            WorkflowExpression.Validate(__workflow_bodyponumber, nameof(bodyponumber), required: false);
+            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
+            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodyreasoncode = bodyreasoncode == null ? null : WorkflowExpression.Compile(bodyreasoncode);
+            WorkflowExpression.Validate(__workflow_bodyreasoncode, nameof(bodyreasoncode), required: false);
+            var __workflow_bodysource = bodysource == null ? null : WorkflowExpression.Compile(bodysource);
+            WorkflowExpression.Validate(__workflow_bodysource, nameof(bodysource), required: false);
+            var __workflow_bodyassignedto = bodyassignedto == null ? null : WorkflowExpression.Compile(bodyassignedto);
+            WorkflowExpression.Validate(__workflow_bodyassignedto, nameof(bodyassignedto), required: false);
+            var __workflow_bodybackup = bodybackup == null ? null : WorkflowExpression.Compile(bodybackup);
+            WorkflowExpression.Validate(__workflow_bodybackup, nameof(bodybackup), required: false);
+            var __workflow_bodypriority = bodypriority == null ? null : WorkflowExpression.Compile(bodypriority);
+            WorkflowExpression.Validate(__workflow_bodypriority, nameof(bodypriority), required: false);
+            var __workflow_bodyduedate = bodyduedate == null ? null : WorkflowExpression.Compile(bodyduedate);
+            WorkflowExpression.Validate(__workflow_bodyduedate, nameof(bodyduedate), required: false);
+            var __workflow_bodysubject = bodysubject == null ? null : WorkflowExpression.Compile(bodysubject);
+            WorkflowExpression.Validate(__workflow_bodysubject, nameof(bodysubject), required: false);
+            var __workflow_bodybody = bodybody == null ? null : WorkflowExpression.Compile(bodybody);
+            WorkflowExpression.Validate(__workflow_bodybody, nameof(bodybody), required: false);
+            var __workflow_bodyhistory = bodyhistory == null ? null : WorkflowExpression.Compile(bodyhistory);
+            WorkflowExpression.Validate(__workflow_bodyhistory, nameof(bodyhistory), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/WorkOrder/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/WorkOrder/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyponumber != null)
+                if (__workflow_bodyponumber != null)
                 {
-                    body["ponumber"] = ExpressionConverter.ConvertO(bodyponumber);
+                    body["ponumber"] = ExpressionConverter.ConvertO(__workflow_bodyponumber);
                     bodypropCount++;
                 }
 
-                if (bodystatus != null)
+                if (__workflow_bodystatus != null)
                 {
-                    body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                    body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
                     bodypropCount++;
                 }
 
-                if (bodyreasoncode != null)
+                if (__workflow_bodyreasoncode != null)
                 {
-                    body["reasoncode"] = ExpressionConverter.ConvertO(bodyreasoncode);
+                    body["reasoncode"] = ExpressionConverter.ConvertO(__workflow_bodyreasoncode);
                     bodypropCount++;
                 }
 
-                if (bodysource != null)
+                if (__workflow_bodysource != null)
                 {
-                    body["source"] = ExpressionConverter.ConvertO(bodysource);
+                    body["source"] = ExpressionConverter.ConvertO(__workflow_bodysource);
                     bodypropCount++;
                 }
 
-                if (bodyassignedto != null)
+                if (__workflow_bodyassignedto != null)
                 {
-                    body["assignedto"] = ExpressionConverter.ConvertO(bodyassignedto);
+                    body["assignedto"] = ExpressionConverter.ConvertO(__workflow_bodyassignedto);
                     bodypropCount++;
                 }
 
-                if (bodybackup != null)
+                if (__workflow_bodybackup != null)
                 {
-                    body["backup"] = ExpressionConverter.ConvertO(bodybackup);
+                    body["backup"] = ExpressionConverter.ConvertO(__workflow_bodybackup);
                     bodypropCount++;
                 }
 
-                if (bodypriority != null)
+                if (__workflow_bodypriority != null)
                 {
-                    body["priority"] = ExpressionConverter.ConvertO(bodypriority);
+                    body["priority"] = ExpressionConverter.ConvertO(__workflow_bodypriority);
                     bodypropCount++;
                 }
 
-                if (bodyduedate != null)
+                if (__workflow_bodyduedate != null)
                 {
-                    body["duedate"] = ExpressionConverter.ConvertO(bodyduedate);
+                    body["duedate"] = ExpressionConverter.ConvertO(__workflow_bodyduedate);
                     bodypropCount++;
                 }
 
-                if (bodysubject != null)
+                if (__workflow_bodysubject != null)
                 {
-                    body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+                    body["subject"] = ExpressionConverter.ConvertO(__workflow_bodysubject);
                     bodypropCount++;
                 }
 
-                if (bodybody != null)
+                if (__workflow_bodybody != null)
                 {
-                    body["body"] = ExpressionConverter.ConvertO(bodybody);
+                    body["body"] = ExpressionConverter.ConvertO(__workflow_bodybody);
                     bodypropCount++;
                 }
 
-                if (bodyhistory != null)
+                if (__workflow_bodyhistory != null)
                 {
-                    body["history"] = ExpressionConverter.ConvertO(bodyhistory);
+                    body["history"] = ExpressionConverter.ConvertO(__workflow_bodyhistory);
                     bodypropCount++;
                 }
 
@@ -2991,22 +3101,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
             return new ApiConnectionTrigger<NewMarketingCampaignResponseItem[]>(callPayload, recurrence: recurrence);
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildNewMembersLeads))]
-        public IBodyWorkflowTrigger<NewMembersLeadsResponseItem[]> NewMembersLeads([WorkflowExpression] Func<int> promotionID,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewMembersLeadsResponseItem[]> NewMembersLeads(Expression<Func<int>> promotionID, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<NewMembersLeadsResponseItem[]> __BuildNewMembersLeads(WorkflowExpression<int> promotionID,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(promotionID, nameof(promotionID), required: true);
+            var __workflow_promotionID = promotionID == null ? null : WorkflowExpression.Compile(promotionID);
+            WorkflowExpression.Validate(__workflow_promotionID, nameof(promotionID), required: true);
             return new DeferredBodyTrigger<NewMembersLeadsResponseItem[]>(() =>
             {
                 var apiCallPath = "/trigger/api/new_members_leads";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["PromotionID"] = ExpressionConverter.Convert(promotionID);
+                callPayload.Queries["PromotionID"] = ExpressionConverter.Convert(__workflow_promotionID);
                 return new ApiConnectionTrigger<NewMembersLeadsResponseItem[]>(callPayload, recurrence: recurrence);
             });
         }
@@ -3027,22 +3131,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
             return new ApiConnectionTrigger<NewProposalCreatedResponseItem[]>(callPayload, recurrence: recurrence);
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildOrderStatusChanged))]
-        public IBodyWorkflowTrigger<OrderStatusChangedResponseItem[]> OrderStatusChanged([WorkflowExpression] Func<string> status,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OrderStatusChangedResponseItem[]> OrderStatusChanged(Expression<Func<string>> status, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<OrderStatusChangedResponseItem[]> __BuildOrderStatusChanged(WorkflowExpression<string> status,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(status, nameof(status), required: true);
+            var __workflow_status = status == null ? null : WorkflowExpression.Compile(status);
+            WorkflowExpression.Validate(__workflow_status, nameof(status), required: true);
             return new DeferredBodyTrigger<OrderStatusChangedResponseItem[]>(() =>
             {
                 var apiCallPath = "/trigger/api/order_status";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["Status"] = ExpressionConverter.Convert(status);
+                callPayload.Queries["Status"] = ExpressionConverter.Convert(__workflow_status);
                 return new ApiConnectionTrigger<OrderStatusChangedResponseItem[]>(callPayload, recurrence: recurrence);
             });
         }
@@ -3103,22 +3201,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
             return new ApiConnectionTrigger<WorkOrderPastDueResponseItem[]>(callPayload, recurrence: recurrence);
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildWorkOrderStatusChanged))]
-        public IBodyWorkflowTrigger<WorkOrderStatusChangedResponseItem[]> WorkOrderStatusChanged([WorkflowExpression] Func<string> status,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WorkOrderStatusChangedResponseItem[]> WorkOrderStatusChanged(Expression<Func<string>> status, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<WorkOrderStatusChangedResponseItem[]> __BuildWorkOrderStatusChanged(WorkflowExpression<string> status,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(status, nameof(status), required: true);
+            var __workflow_status = status == null ? null : WorkflowExpression.Compile(status);
+            WorkflowExpression.Validate(__workflow_status, nameof(status), required: true);
             return new DeferredBodyTrigger<WorkOrderStatusChangedResponseItem[]>(() =>
             {
                 var apiCallPath = "/trigger/api/wo_status";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["Status"] = ExpressionConverter.Convert(status);
+                callPayload.Queries["Status"] = ExpressionConverter.Convert(__workflow_status);
                 return new ApiConnectionTrigger<WorkOrderStatusChangedResponseItem[]>(callPayload, recurrence: recurrence);
             });
         }

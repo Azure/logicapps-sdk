@@ -1,28 +1,22 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashgeneratorip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class HashgeneratoripActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashgeneratorip")]
-        [WorkflowExpressionFactory(nameof(__BuildHash))]
-        public IBodyWorkflowAction<HashResponse> Hash([WorkflowExpression] Func<string> bodystring, [WorkflowExpression] Func<bodytypeInput> bodytype = null)
+        public IBodyWorkflowAction<HashResponse> Hash(Expression<Func<string>> bodystring, Expression<Func<bodytypeInput>> bodytype = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<HashResponse> __BuildHash(WorkflowExpression<string> bodystring, WorkflowExpression<bodytypeInput> bodytype = null)
-        {
-            WorkflowExpression.Validate(bodystring, nameof(bodystring), required: true);
-            WorkflowExpression.Validate(bodytype, nameof(bodytype), required: false);
+            var __workflow_bodystring = bodystring == null ? null : WorkflowExpression.Compile(bodystring);
+            WorkflowExpression.Validate(__workflow_bodystring, nameof(bodystring), required: true);
+            var __workflow_bodytype = bodytype == null ? null : WorkflowExpression.Compile(bodytype);
+            WorkflowExpression.Validate(__workflow_bodytype, nameof(bodytype), required: false);
             return new DeferredBodyAction<HashResponse>(() =>
             {
                 var apiCallPath = "/";
@@ -31,12 +25,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashgeneratorip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["string"] = ExpressionConverter.ConvertO(bodystring);
-                if (bodytype != null)
+                body["string"] = ExpressionConverter.ConvertO(__workflow_bodystring);
+                if (__workflow_bodytype != null)
                 {
-                    if (bodytype != null)
+                    if (__workflow_bodytype != null)
                     {
-                        body["type"] = ExpressionConverter.ConvertO(bodytype);
+                        body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
                         bodypropCount++;
                     }
 

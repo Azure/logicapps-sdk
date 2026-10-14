@@ -1,275 +1,292 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tsheetsquickbooksip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class TsheetsquickbooksipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tsheetsquickbooksip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetJobcodes))]
-        public IBodyWorkflowAction<GetJobcodesResponse> GetJobcodes([WorkflowExpression] Func<string> ids = null, [WorkflowExpression] Func<string> parentIds = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<typeInput> type = null, [WorkflowExpression] Func<bool> customfields = null, [WorkflowExpression] Func<string> modifiedBefore = null, [WorkflowExpression] Func<string> modifiedSince = null, [WorkflowExpression] Func<supplementalDataInput> supplementalData = null, [WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<activeInput> active = null)
+        public IBodyWorkflowAction<GetJobcodesResponse> GetJobcodes(Expression<Func<string>> ids = null, Expression<Func<string>> parentIds = null, Expression<Func<string>> name = null, Expression<Func<typeInput>> type = null, Expression<Func<bool>> customfields = null, Expression<Func<string>> modifiedBefore = null, Expression<Func<string>> modifiedSince = null, Expression<Func<supplementalDataInput>> supplementalData = null, Expression<Func<int>> perPage = null, Expression<Func<int>> page = null, Expression<Func<activeInput>> active = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetJobcodesResponse> __BuildGetJobcodes(WorkflowExpression<string> ids = null, WorkflowExpression<string> parentIds = null, WorkflowExpression<string> name = null, WorkflowExpression<typeInput> type = null, WorkflowExpression<bool> customfields = null, WorkflowExpression<string> modifiedBefore = null, WorkflowExpression<string> modifiedSince = null, WorkflowExpression<supplementalDataInput> supplementalData = null, WorkflowExpression<int> perPage = null, WorkflowExpression<int> page = null, WorkflowExpression<activeInput> active = null)
-        {
-            WorkflowExpression.Validate(ids, nameof(ids), required: false);
-            WorkflowExpression.Validate(parentIds, nameof(parentIds), required: false);
-            WorkflowExpression.Validate(name, nameof(name), required: false);
-            WorkflowExpression.Validate(type, nameof(type), required: false);
-            WorkflowExpression.Validate(customfields, nameof(customfields), required: false);
-            WorkflowExpression.Validate(modifiedBefore, nameof(modifiedBefore), required: false);
-            WorkflowExpression.Validate(modifiedSince, nameof(modifiedSince), required: false);
-            WorkflowExpression.Validate(supplementalData, nameof(supplementalData), required: false);
-            WorkflowExpression.Validate(perPage, nameof(perPage), required: false);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
-            WorkflowExpression.Validate(active, nameof(active), required: false);
+            var __workflow_ids = ids == null ? null : WorkflowExpression.Compile(ids);
+            WorkflowExpression.Validate(__workflow_ids, nameof(ids), required: false);
+            var __workflow_parentIds = parentIds == null ? null : WorkflowExpression.Compile(parentIds);
+            WorkflowExpression.Validate(__workflow_parentIds, nameof(parentIds), required: false);
+            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
+            WorkflowExpression.Validate(__workflow_name, nameof(name), required: false);
+            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
+            WorkflowExpression.Validate(__workflow_type, nameof(type), required: false);
+            var __workflow_customfields = customfields == null ? null : WorkflowExpression.Compile(customfields);
+            WorkflowExpression.Validate(__workflow_customfields, nameof(customfields), required: false);
+            var __workflow_modifiedBefore = modifiedBefore == null ? null : WorkflowExpression.Compile(modifiedBefore);
+            WorkflowExpression.Validate(__workflow_modifiedBefore, nameof(modifiedBefore), required: false);
+            var __workflow_modifiedSince = modifiedSince == null ? null : WorkflowExpression.Compile(modifiedSince);
+            WorkflowExpression.Validate(__workflow_modifiedSince, nameof(modifiedSince), required: false);
+            var __workflow_supplementalData = supplementalData == null ? null : WorkflowExpression.Compile(supplementalData);
+            WorkflowExpression.Validate(__workflow_supplementalData, nameof(supplementalData), required: false);
+            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
+            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_active = active == null ? null : WorkflowExpression.Compile(active);
+            WorkflowExpression.Validate(__workflow_active, nameof(active), required: false);
             return new DeferredBodyAction<GetJobcodesResponse>(() =>
             {
                 var apiCallPath = "/jobcodes";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (ids != null)
-                    callPayload.Queries["ids"] = ExpressionConverter.Convert(ids);
-                if (parentIds != null)
-                    callPayload.Queries["parent_ids"] = ExpressionConverter.Convert(parentIds);
-                if (name != null)
-                    callPayload.Queries["name"] = ExpressionConverter.Convert(name);
+                if (__workflow_ids != null)
+                    callPayload.Queries["ids"] = ExpressionConverter.Convert(__workflow_ids);
+                if (__workflow_parentIds != null)
+                    callPayload.Queries["parent_ids"] = ExpressionConverter.Convert(__workflow_parentIds);
+                if (__workflow_name != null)
+                    callPayload.Queries["name"] = ExpressionConverter.Convert(__workflow_name);
                 callPayload.Queries["type"] = Convert.ToString("regular");
-                if (type != null)
-                    callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-                if (customfields != null)
-                    callPayload.Queries["customfields"] = ExpressionConverter.Convert(customfields);
-                if (modifiedBefore != null)
-                    callPayload.Queries["modified_before"] = ExpressionConverter.Convert(modifiedBefore);
-                if (modifiedSince != null)
-                    callPayload.Queries["modified_since"] = ExpressionConverter.Convert(modifiedSince);
+                if (__workflow_type != null)
+                    callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
+                if (__workflow_customfields != null)
+                    callPayload.Queries["customfields"] = ExpressionConverter.Convert(__workflow_customfields);
+                if (__workflow_modifiedBefore != null)
+                    callPayload.Queries["modified_before"] = ExpressionConverter.Convert(__workflow_modifiedBefore);
+                if (__workflow_modifiedSince != null)
+                    callPayload.Queries["modified_since"] = ExpressionConverter.Convert(__workflow_modifiedSince);
                 callPayload.Queries["supplemental_data"] = Convert.ToString("yes");
-                if (supplementalData != null)
-                    callPayload.Queries["supplemental_data"] = ExpressionConverter.Convert(supplementalData);
-                if (perPage != null)
-                    callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (__workflow_supplementalData != null)
+                    callPayload.Queries["supplemental_data"] = ExpressionConverter.Convert(__workflow_supplementalData);
+                if (__workflow_perPage != null)
+                    callPayload.Queries["per_page"] = ExpressionConverter.Convert(__workflow_perPage);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 callPayload.Queries["active"] = Convert.ToString("yes");
-                if (active != null)
-                    callPayload.Queries["active"] = ExpressionConverter.Convert(active);
+                if (__workflow_active != null)
+                    callPayload.Queries["active"] = ExpressionConverter.Convert(__workflow_active);
                 return new ApiConnectionAction<GetJobcodesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tsheetsquickbooksip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetProjects))]
-        public IBodyWorkflowAction<GetProjectsResponse> GetProjects([WorkflowExpression] Func<string> ids = null, [WorkflowExpression] Func<string> jobcodeIds = null, [WorkflowExpression] Func<int> parentJobcodeId = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<activeInput> active = null, [WorkflowExpression] Func<bool> byJobcodeAssignment = null)
+        public IBodyWorkflowAction<GetProjectsResponse> GetProjects(Expression<Func<string>> ids = null, Expression<Func<string>> jobcodeIds = null, Expression<Func<int>> parentJobcodeId = null, Expression<Func<string>> name = null, Expression<Func<activeInput>> active = null, Expression<Func<bool>> byJobcodeAssignment = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetProjectsResponse> __BuildGetProjects(WorkflowExpression<string> ids = null, WorkflowExpression<string> jobcodeIds = null, WorkflowExpression<int> parentJobcodeId = null, WorkflowExpression<string> name = null, WorkflowExpression<activeInput> active = null, WorkflowExpression<bool> byJobcodeAssignment = null)
-        {
-            WorkflowExpression.Validate(ids, nameof(ids), required: false);
-            WorkflowExpression.Validate(jobcodeIds, nameof(jobcodeIds), required: false);
-            WorkflowExpression.Validate(parentJobcodeId, nameof(parentJobcodeId), required: false);
-            WorkflowExpression.Validate(name, nameof(name), required: false);
-            WorkflowExpression.Validate(active, nameof(active), required: false);
-            WorkflowExpression.Validate(byJobcodeAssignment, nameof(byJobcodeAssignment), required: false);
+            var __workflow_ids = ids == null ? null : WorkflowExpression.Compile(ids);
+            WorkflowExpression.Validate(__workflow_ids, nameof(ids), required: false);
+            var __workflow_jobcodeIds = jobcodeIds == null ? null : WorkflowExpression.Compile(jobcodeIds);
+            WorkflowExpression.Validate(__workflow_jobcodeIds, nameof(jobcodeIds), required: false);
+            var __workflow_parentJobcodeId = parentJobcodeId == null ? null : WorkflowExpression.Compile(parentJobcodeId);
+            WorkflowExpression.Validate(__workflow_parentJobcodeId, nameof(parentJobcodeId), required: false);
+            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
+            WorkflowExpression.Validate(__workflow_name, nameof(name), required: false);
+            var __workflow_active = active == null ? null : WorkflowExpression.Compile(active);
+            WorkflowExpression.Validate(__workflow_active, nameof(active), required: false);
+            var __workflow_byJobcodeAssignment = byJobcodeAssignment == null ? null : WorkflowExpression.Compile(byJobcodeAssignment);
+            WorkflowExpression.Validate(__workflow_byJobcodeAssignment, nameof(byJobcodeAssignment), required: false);
             return new DeferredBodyAction<GetProjectsResponse>(() =>
             {
                 var apiCallPath = "/projects";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (ids != null)
-                    callPayload.Queries["ids"] = ExpressionConverter.Convert(ids);
-                if (jobcodeIds != null)
-                    callPayload.Queries["jobcode_ids"] = ExpressionConverter.Convert(jobcodeIds);
-                if (parentJobcodeId != null)
-                    callPayload.Queries["parent_jobcode_id"] = ExpressionConverter.Convert(parentJobcodeId);
-                if (name != null)
-                    callPayload.Queries["name"] = ExpressionConverter.Convert(name);
+                if (__workflow_ids != null)
+                    callPayload.Queries["ids"] = ExpressionConverter.Convert(__workflow_ids);
+                if (__workflow_jobcodeIds != null)
+                    callPayload.Queries["jobcode_ids"] = ExpressionConverter.Convert(__workflow_jobcodeIds);
+                if (__workflow_parentJobcodeId != null)
+                    callPayload.Queries["parent_jobcode_id"] = ExpressionConverter.Convert(__workflow_parentJobcodeId);
+                if (__workflow_name != null)
+                    callPayload.Queries["name"] = ExpressionConverter.Convert(__workflow_name);
                 callPayload.Queries["active"] = Convert.ToString("yes");
-                if (active != null)
-                    callPayload.Queries["active"] = ExpressionConverter.Convert(active);
-                if (byJobcodeAssignment != null)
-                    callPayload.Queries["by_jobcode_assignment"] = ExpressionConverter.Convert(byJobcodeAssignment);
+                if (__workflow_active != null)
+                    callPayload.Queries["active"] = ExpressionConverter.Convert(__workflow_active);
+                if (__workflow_byJobcodeAssignment != null)
+                    callPayload.Queries["by_jobcode_assignment"] = ExpressionConverter.Convert(__workflow_byJobcodeAssignment);
                 return new ApiConnectionAction<GetProjectsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tsheetsquickbooksip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetUsers))]
-        public IBodyWorkflowAction<GetUsersResponse> GetUsers([WorkflowExpression] Func<string> ids = null, [WorkflowExpression] Func<string> notIds = null, [WorkflowExpression] Func<string> employeeNumbers = null, [WorkflowExpression] Func<string> usernames = null, [WorkflowExpression] Func<string> groupIds = null, [WorkflowExpression] Func<string> notGroupIds = null, [WorkflowExpression] Func<string> payrollIds = null, [WorkflowExpression] Func<activeInput> active = null, [WorkflowExpression] Func<string> firstName = null, [WorkflowExpression] Func<string> lastName = null, [WorkflowExpression] Func<string> modifiedBefore = null, [WorkflowExpression] Func<string> modifiedSince = null, [WorkflowExpression] Func<supplementalDataInput> supplementalData = null, [WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<int> page = null)
+        public IBodyWorkflowAction<GetUsersResponse> GetUsers(Expression<Func<string>> ids = null, Expression<Func<string>> notIds = null, Expression<Func<string>> employeeNumbers = null, Expression<Func<string>> usernames = null, Expression<Func<string>> groupIds = null, Expression<Func<string>> notGroupIds = null, Expression<Func<string>> payrollIds = null, Expression<Func<activeInput>> active = null, Expression<Func<string>> firstName = null, Expression<Func<string>> lastName = null, Expression<Func<string>> modifiedBefore = null, Expression<Func<string>> modifiedSince = null, Expression<Func<supplementalDataInput>> supplementalData = null, Expression<Func<int>> perPage = null, Expression<Func<int>> page = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetUsersResponse> __BuildGetUsers(WorkflowExpression<string> ids = null, WorkflowExpression<string> notIds = null, WorkflowExpression<string> employeeNumbers = null, WorkflowExpression<string> usernames = null, WorkflowExpression<string> groupIds = null, WorkflowExpression<string> notGroupIds = null, WorkflowExpression<string> payrollIds = null, WorkflowExpression<activeInput> active = null, WorkflowExpression<string> firstName = null, WorkflowExpression<string> lastName = null, WorkflowExpression<string> modifiedBefore = null, WorkflowExpression<string> modifiedSince = null, WorkflowExpression<supplementalDataInput> supplementalData = null, WorkflowExpression<int> perPage = null, WorkflowExpression<int> page = null)
-        {
-            WorkflowExpression.Validate(ids, nameof(ids), required: false);
-            WorkflowExpression.Validate(notIds, nameof(notIds), required: false);
-            WorkflowExpression.Validate(employeeNumbers, nameof(employeeNumbers), required: false);
-            WorkflowExpression.Validate(usernames, nameof(usernames), required: false);
-            WorkflowExpression.Validate(groupIds, nameof(groupIds), required: false);
-            WorkflowExpression.Validate(notGroupIds, nameof(notGroupIds), required: false);
-            WorkflowExpression.Validate(payrollIds, nameof(payrollIds), required: false);
-            WorkflowExpression.Validate(active, nameof(active), required: false);
-            WorkflowExpression.Validate(firstName, nameof(firstName), required: false);
-            WorkflowExpression.Validate(lastName, nameof(lastName), required: false);
-            WorkflowExpression.Validate(modifiedBefore, nameof(modifiedBefore), required: false);
-            WorkflowExpression.Validate(modifiedSince, nameof(modifiedSince), required: false);
-            WorkflowExpression.Validate(supplementalData, nameof(supplementalData), required: false);
-            WorkflowExpression.Validate(perPage, nameof(perPage), required: false);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
+            var __workflow_ids = ids == null ? null : WorkflowExpression.Compile(ids);
+            WorkflowExpression.Validate(__workflow_ids, nameof(ids), required: false);
+            var __workflow_notIds = notIds == null ? null : WorkflowExpression.Compile(notIds);
+            WorkflowExpression.Validate(__workflow_notIds, nameof(notIds), required: false);
+            var __workflow_employeeNumbers = employeeNumbers == null ? null : WorkflowExpression.Compile(employeeNumbers);
+            WorkflowExpression.Validate(__workflow_employeeNumbers, nameof(employeeNumbers), required: false);
+            var __workflow_usernames = usernames == null ? null : WorkflowExpression.Compile(usernames);
+            WorkflowExpression.Validate(__workflow_usernames, nameof(usernames), required: false);
+            var __workflow_groupIds = groupIds == null ? null : WorkflowExpression.Compile(groupIds);
+            WorkflowExpression.Validate(__workflow_groupIds, nameof(groupIds), required: false);
+            var __workflow_notGroupIds = notGroupIds == null ? null : WorkflowExpression.Compile(notGroupIds);
+            WorkflowExpression.Validate(__workflow_notGroupIds, nameof(notGroupIds), required: false);
+            var __workflow_payrollIds = payrollIds == null ? null : WorkflowExpression.Compile(payrollIds);
+            WorkflowExpression.Validate(__workflow_payrollIds, nameof(payrollIds), required: false);
+            var __workflow_active = active == null ? null : WorkflowExpression.Compile(active);
+            WorkflowExpression.Validate(__workflow_active, nameof(active), required: false);
+            var __workflow_firstName = firstName == null ? null : WorkflowExpression.Compile(firstName);
+            WorkflowExpression.Validate(__workflow_firstName, nameof(firstName), required: false);
+            var __workflow_lastName = lastName == null ? null : WorkflowExpression.Compile(lastName);
+            WorkflowExpression.Validate(__workflow_lastName, nameof(lastName), required: false);
+            var __workflow_modifiedBefore = modifiedBefore == null ? null : WorkflowExpression.Compile(modifiedBefore);
+            WorkflowExpression.Validate(__workflow_modifiedBefore, nameof(modifiedBefore), required: false);
+            var __workflow_modifiedSince = modifiedSince == null ? null : WorkflowExpression.Compile(modifiedSince);
+            WorkflowExpression.Validate(__workflow_modifiedSince, nameof(modifiedSince), required: false);
+            var __workflow_supplementalData = supplementalData == null ? null : WorkflowExpression.Compile(supplementalData);
+            WorkflowExpression.Validate(__workflow_supplementalData, nameof(supplementalData), required: false);
+            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
+            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
             return new DeferredBodyAction<GetUsersResponse>(() =>
             {
                 var apiCallPath = "/users";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (ids != null)
-                    callPayload.Queries["ids"] = ExpressionConverter.Convert(ids);
-                if (notIds != null)
-                    callPayload.Queries["not_ids"] = ExpressionConverter.Convert(notIds);
-                if (employeeNumbers != null)
-                    callPayload.Queries["employee_numbers"] = ExpressionConverter.Convert(employeeNumbers);
-                if (usernames != null)
-                    callPayload.Queries["usernames"] = ExpressionConverter.Convert(usernames);
-                if (groupIds != null)
-                    callPayload.Queries["group_ids"] = ExpressionConverter.Convert(groupIds);
-                if (notGroupIds != null)
-                    callPayload.Queries["not_group_ids"] = ExpressionConverter.Convert(notGroupIds);
-                if (payrollIds != null)
-                    callPayload.Queries["payroll_ids"] = ExpressionConverter.Convert(payrollIds);
+                if (__workflow_ids != null)
+                    callPayload.Queries["ids"] = ExpressionConverter.Convert(__workflow_ids);
+                if (__workflow_notIds != null)
+                    callPayload.Queries["not_ids"] = ExpressionConverter.Convert(__workflow_notIds);
+                if (__workflow_employeeNumbers != null)
+                    callPayload.Queries["employee_numbers"] = ExpressionConverter.Convert(__workflow_employeeNumbers);
+                if (__workflow_usernames != null)
+                    callPayload.Queries["usernames"] = ExpressionConverter.Convert(__workflow_usernames);
+                if (__workflow_groupIds != null)
+                    callPayload.Queries["group_ids"] = ExpressionConverter.Convert(__workflow_groupIds);
+                if (__workflow_notGroupIds != null)
+                    callPayload.Queries["not_group_ids"] = ExpressionConverter.Convert(__workflow_notGroupIds);
+                if (__workflow_payrollIds != null)
+                    callPayload.Queries["payroll_ids"] = ExpressionConverter.Convert(__workflow_payrollIds);
                 callPayload.Queries["active"] = Convert.ToString("yes");
-                if (active != null)
-                    callPayload.Queries["active"] = ExpressionConverter.Convert(active);
-                if (firstName != null)
-                    callPayload.Queries["first_name"] = ExpressionConverter.Convert(firstName);
-                if (lastName != null)
-                    callPayload.Queries["last_name"] = ExpressionConverter.Convert(lastName);
-                if (modifiedBefore != null)
-                    callPayload.Queries["modified_before"] = ExpressionConverter.Convert(modifiedBefore);
-                if (modifiedSince != null)
-                    callPayload.Queries["modified_since"] = ExpressionConverter.Convert(modifiedSince);
+                if (__workflow_active != null)
+                    callPayload.Queries["active"] = ExpressionConverter.Convert(__workflow_active);
+                if (__workflow_firstName != null)
+                    callPayload.Queries["first_name"] = ExpressionConverter.Convert(__workflow_firstName);
+                if (__workflow_lastName != null)
+                    callPayload.Queries["last_name"] = ExpressionConverter.Convert(__workflow_lastName);
+                if (__workflow_modifiedBefore != null)
+                    callPayload.Queries["modified_before"] = ExpressionConverter.Convert(__workflow_modifiedBefore);
+                if (__workflow_modifiedSince != null)
+                    callPayload.Queries["modified_since"] = ExpressionConverter.Convert(__workflow_modifiedSince);
                 callPayload.Queries["supplemental_data"] = Convert.ToString("yes");
-                if (supplementalData != null)
-                    callPayload.Queries["supplemental_data"] = ExpressionConverter.Convert(supplementalData);
-                if (perPage != null)
-                    callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (__workflow_supplementalData != null)
+                    callPayload.Queries["supplemental_data"] = ExpressionConverter.Convert(__workflow_supplementalData);
+                if (__workflow_perPage != null)
+                    callPayload.Queries["per_page"] = ExpressionConverter.Convert(__workflow_perPage);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 return new ApiConnectionAction<GetUsersResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tsheetsquickbooksip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetTimesheets))]
-        public IBodyWorkflowAction<GetTimesheetsResponse> GetTimesheets([WorkflowExpression] Func<string> ids = null, [WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<string> jobcodeIds = null, [WorkflowExpression] Func<string> payrollIds = null, [WorkflowExpression] Func<string> userIds = null, [WorkflowExpression] Func<string> groupIds = null, [WorkflowExpression] Func<onTheClockInput> onTheClock = null, [WorkflowExpression] Func<jobcodeTypeInput> jobcodeType = null, [WorkflowExpression] Func<string> modifiedBefore = null, [WorkflowExpression] Func<string> modifiedSince = null, [WorkflowExpression] Func<supplementalDataInput> supplementalData = null, [WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<int> page = null)
+        public IBodyWorkflowAction<GetTimesheetsResponse> GetTimesheets(Expression<Func<string>> ids = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> jobcodeIds = null, Expression<Func<string>> payrollIds = null, Expression<Func<string>> userIds = null, Expression<Func<string>> groupIds = null, Expression<Func<onTheClockInput>> onTheClock = null, Expression<Func<jobcodeTypeInput>> jobcodeType = null, Expression<Func<string>> modifiedBefore = null, Expression<Func<string>> modifiedSince = null, Expression<Func<supplementalDataInput>> supplementalData = null, Expression<Func<int>> perPage = null, Expression<Func<int>> page = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetTimesheetsResponse> __BuildGetTimesheets(WorkflowExpression<string> ids = null, WorkflowExpression<string> startDate = null, WorkflowExpression<string> endDate = null, WorkflowExpression<string> jobcodeIds = null, WorkflowExpression<string> payrollIds = null, WorkflowExpression<string> userIds = null, WorkflowExpression<string> groupIds = null, WorkflowExpression<onTheClockInput> onTheClock = null, WorkflowExpression<jobcodeTypeInput> jobcodeType = null, WorkflowExpression<string> modifiedBefore = null, WorkflowExpression<string> modifiedSince = null, WorkflowExpression<supplementalDataInput> supplementalData = null, WorkflowExpression<int> perPage = null, WorkflowExpression<int> page = null)
-        {
-            WorkflowExpression.Validate(ids, nameof(ids), required: false);
-            WorkflowExpression.Validate(startDate, nameof(startDate), required: false);
-            WorkflowExpression.Validate(endDate, nameof(endDate), required: false);
-            WorkflowExpression.Validate(jobcodeIds, nameof(jobcodeIds), required: false);
-            WorkflowExpression.Validate(payrollIds, nameof(payrollIds), required: false);
-            WorkflowExpression.Validate(userIds, nameof(userIds), required: false);
-            WorkflowExpression.Validate(groupIds, nameof(groupIds), required: false);
-            WorkflowExpression.Validate(onTheClock, nameof(onTheClock), required: false);
-            WorkflowExpression.Validate(jobcodeType, nameof(jobcodeType), required: false);
-            WorkflowExpression.Validate(modifiedBefore, nameof(modifiedBefore), required: false);
-            WorkflowExpression.Validate(modifiedSince, nameof(modifiedSince), required: false);
-            WorkflowExpression.Validate(supplementalData, nameof(supplementalData), required: false);
-            WorkflowExpression.Validate(perPage, nameof(perPage), required: false);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
+            var __workflow_ids = ids == null ? null : WorkflowExpression.Compile(ids);
+            WorkflowExpression.Validate(__workflow_ids, nameof(ids), required: false);
+            var __workflow_startDate = startDate == null ? null : WorkflowExpression.Compile(startDate);
+            WorkflowExpression.Validate(__workflow_startDate, nameof(startDate), required: false);
+            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
+            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: false);
+            var __workflow_jobcodeIds = jobcodeIds == null ? null : WorkflowExpression.Compile(jobcodeIds);
+            WorkflowExpression.Validate(__workflow_jobcodeIds, nameof(jobcodeIds), required: false);
+            var __workflow_payrollIds = payrollIds == null ? null : WorkflowExpression.Compile(payrollIds);
+            WorkflowExpression.Validate(__workflow_payrollIds, nameof(payrollIds), required: false);
+            var __workflow_userIds = userIds == null ? null : WorkflowExpression.Compile(userIds);
+            WorkflowExpression.Validate(__workflow_userIds, nameof(userIds), required: false);
+            var __workflow_groupIds = groupIds == null ? null : WorkflowExpression.Compile(groupIds);
+            WorkflowExpression.Validate(__workflow_groupIds, nameof(groupIds), required: false);
+            var __workflow_onTheClock = onTheClock == null ? null : WorkflowExpression.Compile(onTheClock);
+            WorkflowExpression.Validate(__workflow_onTheClock, nameof(onTheClock), required: false);
+            var __workflow_jobcodeType = jobcodeType == null ? null : WorkflowExpression.Compile(jobcodeType);
+            WorkflowExpression.Validate(__workflow_jobcodeType, nameof(jobcodeType), required: false);
+            var __workflow_modifiedBefore = modifiedBefore == null ? null : WorkflowExpression.Compile(modifiedBefore);
+            WorkflowExpression.Validate(__workflow_modifiedBefore, nameof(modifiedBefore), required: false);
+            var __workflow_modifiedSince = modifiedSince == null ? null : WorkflowExpression.Compile(modifiedSince);
+            WorkflowExpression.Validate(__workflow_modifiedSince, nameof(modifiedSince), required: false);
+            var __workflow_supplementalData = supplementalData == null ? null : WorkflowExpression.Compile(supplementalData);
+            WorkflowExpression.Validate(__workflow_supplementalData, nameof(supplementalData), required: false);
+            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
+            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
             return new DeferredBodyAction<GetTimesheetsResponse>(() =>
             {
                 var apiCallPath = "/timesheets";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (ids != null)
-                    callPayload.Queries["ids"] = ExpressionConverter.Convert(ids);
-                if (startDate != null)
-                    callPayload.Queries["start_date"] = ExpressionConverter.Convert(startDate);
-                if (endDate != null)
-                    callPayload.Queries["end_date"] = ExpressionConverter.Convert(endDate);
-                if (jobcodeIds != null)
-                    callPayload.Queries["jobcode_ids"] = ExpressionConverter.Convert(jobcodeIds);
-                if (payrollIds != null)
-                    callPayload.Queries["payroll_ids"] = ExpressionConverter.Convert(payrollIds);
-                if (userIds != null)
-                    callPayload.Queries["user_ids"] = ExpressionConverter.Convert(userIds);
-                if (groupIds != null)
-                    callPayload.Queries["group_ids"] = ExpressionConverter.Convert(groupIds);
+                if (__workflow_ids != null)
+                    callPayload.Queries["ids"] = ExpressionConverter.Convert(__workflow_ids);
+                if (__workflow_startDate != null)
+                    callPayload.Queries["start_date"] = ExpressionConverter.Convert(__workflow_startDate);
+                if (__workflow_endDate != null)
+                    callPayload.Queries["end_date"] = ExpressionConverter.Convert(__workflow_endDate);
+                if (__workflow_jobcodeIds != null)
+                    callPayload.Queries["jobcode_ids"] = ExpressionConverter.Convert(__workflow_jobcodeIds);
+                if (__workflow_payrollIds != null)
+                    callPayload.Queries["payroll_ids"] = ExpressionConverter.Convert(__workflow_payrollIds);
+                if (__workflow_userIds != null)
+                    callPayload.Queries["user_ids"] = ExpressionConverter.Convert(__workflow_userIds);
+                if (__workflow_groupIds != null)
+                    callPayload.Queries["group_ids"] = ExpressionConverter.Convert(__workflow_groupIds);
                 callPayload.Queries["on_the_clock"] = Convert.ToString("no");
-                if (onTheClock != null)
-                    callPayload.Queries["on_the_clock"] = ExpressionConverter.Convert(onTheClock);
+                if (__workflow_onTheClock != null)
+                    callPayload.Queries["on_the_clock"] = ExpressionConverter.Convert(__workflow_onTheClock);
                 callPayload.Queries["jobcode_type"] = Convert.ToString("all");
-                if (jobcodeType != null)
-                    callPayload.Queries["jobcode_type"] = ExpressionConverter.Convert(jobcodeType);
-                if (modifiedBefore != null)
-                    callPayload.Queries["modified_before"] = ExpressionConverter.Convert(modifiedBefore);
-                if (modifiedSince != null)
-                    callPayload.Queries["modified_since"] = ExpressionConverter.Convert(modifiedSince);
+                if (__workflow_jobcodeType != null)
+                    callPayload.Queries["jobcode_type"] = ExpressionConverter.Convert(__workflow_jobcodeType);
+                if (__workflow_modifiedBefore != null)
+                    callPayload.Queries["modified_before"] = ExpressionConverter.Convert(__workflow_modifiedBefore);
+                if (__workflow_modifiedSince != null)
+                    callPayload.Queries["modified_since"] = ExpressionConverter.Convert(__workflow_modifiedSince);
                 callPayload.Queries["supplemental_data"] = Convert.ToString("yes");
-                if (supplementalData != null)
-                    callPayload.Queries["supplemental_data"] = ExpressionConverter.Convert(supplementalData);
-                if (perPage != null)
-                    callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (__workflow_supplementalData != null)
+                    callPayload.Queries["supplemental_data"] = ExpressionConverter.Convert(__workflow_supplementalData);
+                if (__workflow_perPage != null)
+                    callPayload.Queries["per_page"] = ExpressionConverter.Convert(__workflow_perPage);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 return new ApiConnectionAction<GetTimesheetsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tsheetsquickbooksip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetNotifications))]
-        public IBodyWorkflowAction<GetNotificationsResponse> GetNotifications([WorkflowExpression] Func<string> ids = null, [WorkflowExpression] Func<string> deliveryBefore = null, [WorkflowExpression] Func<string> deliveryAfter = null, [WorkflowExpression] Func<int> userId = null, [WorkflowExpression] Func<string> msgTrackingId = null, [WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<int> page = null)
+        public IBodyWorkflowAction<GetNotificationsResponse> GetNotifications(Expression<Func<string>> ids = null, Expression<Func<string>> deliveryBefore = null, Expression<Func<string>> deliveryAfter = null, Expression<Func<int>> userId = null, Expression<Func<string>> msgTrackingId = null, Expression<Func<int>> perPage = null, Expression<Func<int>> page = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetNotificationsResponse> __BuildGetNotifications(WorkflowExpression<string> ids = null, WorkflowExpression<string> deliveryBefore = null, WorkflowExpression<string> deliveryAfter = null, WorkflowExpression<int> userId = null, WorkflowExpression<string> msgTrackingId = null, WorkflowExpression<int> perPage = null, WorkflowExpression<int> page = null)
-        {
-            WorkflowExpression.Validate(ids, nameof(ids), required: false);
-            WorkflowExpression.Validate(deliveryBefore, nameof(deliveryBefore), required: false);
-            WorkflowExpression.Validate(deliveryAfter, nameof(deliveryAfter), required: false);
-            WorkflowExpression.Validate(userId, nameof(userId), required: false);
-            WorkflowExpression.Validate(msgTrackingId, nameof(msgTrackingId), required: false);
-            WorkflowExpression.Validate(perPage, nameof(perPage), required: false);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
+            var __workflow_ids = ids == null ? null : WorkflowExpression.Compile(ids);
+            WorkflowExpression.Validate(__workflow_ids, nameof(ids), required: false);
+            var __workflow_deliveryBefore = deliveryBefore == null ? null : WorkflowExpression.Compile(deliveryBefore);
+            WorkflowExpression.Validate(__workflow_deliveryBefore, nameof(deliveryBefore), required: false);
+            var __workflow_deliveryAfter = deliveryAfter == null ? null : WorkflowExpression.Compile(deliveryAfter);
+            WorkflowExpression.Validate(__workflow_deliveryAfter, nameof(deliveryAfter), required: false);
+            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
+            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: false);
+            var __workflow_msgTrackingId = msgTrackingId == null ? null : WorkflowExpression.Compile(msgTrackingId);
+            WorkflowExpression.Validate(__workflow_msgTrackingId, nameof(msgTrackingId), required: false);
+            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
+            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
             return new DeferredBodyAction<GetNotificationsResponse>(() =>
             {
                 var apiCallPath = "/notifications";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (ids != null)
-                    callPayload.Queries["ids"] = ExpressionConverter.Convert(ids);
-                if (deliveryBefore != null)
-                    callPayload.Queries["delivery_before"] = ExpressionConverter.Convert(deliveryBefore);
-                if (deliveryAfter != null)
-                    callPayload.Queries["delivery_after"] = ExpressionConverter.Convert(deliveryAfter);
-                if (userId != null)
-                    callPayload.Queries["user_id"] = ExpressionConverter.Convert(userId);
-                if (msgTrackingId != null)
-                    callPayload.Queries["msg_tracking_id"] = ExpressionConverter.Convert(msgTrackingId);
-                if (perPage != null)
-                    callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (__workflow_ids != null)
+                    callPayload.Queries["ids"] = ExpressionConverter.Convert(__workflow_ids);
+                if (__workflow_deliveryBefore != null)
+                    callPayload.Queries["delivery_before"] = ExpressionConverter.Convert(__workflow_deliveryBefore);
+                if (__workflow_deliveryAfter != null)
+                    callPayload.Queries["delivery_after"] = ExpressionConverter.Convert(__workflow_deliveryAfter);
+                if (__workflow_userId != null)
+                    callPayload.Queries["user_id"] = ExpressionConverter.Convert(__workflow_userId);
+                if (__workflow_msgTrackingId != null)
+                    callPayload.Queries["msg_tracking_id"] = ExpressionConverter.Convert(__workflow_msgTrackingId);
+                if (__workflow_perPage != null)
+                    callPayload.Queries["per_page"] = ExpressionConverter.Convert(__workflow_perPage);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 return new ApiConnectionAction<GetNotificationsResponse>(callPayload);
             });
         }

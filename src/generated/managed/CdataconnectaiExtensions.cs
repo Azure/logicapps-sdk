@@ -1,58 +1,55 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdataconnectai
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class CdataconnectaiActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdataconnectai")]
-        [WorkflowExpressionFactory(nameof(__BuildInvokeMCP))]
-        public IWorkflowAction InvokeMCP([WorkflowExpression] Func<string> accept = null, [WorkflowExpression] Func<string> mcpSessionId = null, [WorkflowExpression] Func<string> queryRequestjsonrpc = null, [WorkflowExpression] Func<string> queryRequestid = null, [WorkflowExpression] Func<string> queryRequestmethod = null)
+        public IWorkflowAction InvokeMCP(Expression<Func<string>> accept = null, Expression<Func<string>> mcpSessionId = null, Expression<Func<string>> queryRequestjsonrpc = null, Expression<Func<string>> queryRequestid = null, Expression<Func<string>> queryRequestmethod = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildInvokeMCP(WorkflowExpression<string> accept = null, WorkflowExpression<string> mcpSessionId = null, WorkflowExpression<string> queryRequestjsonrpc = null, WorkflowExpression<string> queryRequestid = null, WorkflowExpression<string> queryRequestmethod = null)
-        {
-            WorkflowExpression.Validate(accept, nameof(accept), required: false);
-            WorkflowExpression.Validate(mcpSessionId, nameof(mcpSessionId), required: false);
-            WorkflowExpression.Validate(queryRequestjsonrpc, nameof(queryRequestjsonrpc), required: false);
-            WorkflowExpression.Validate(queryRequestid, nameof(queryRequestid), required: false);
-            WorkflowExpression.Validate(queryRequestmethod, nameof(queryRequestmethod), required: false);
+            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
+            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: false);
+            var __workflow_mcpSessionId = mcpSessionId == null ? null : WorkflowExpression.Compile(mcpSessionId);
+            WorkflowExpression.Validate(__workflow_mcpSessionId, nameof(mcpSessionId), required: false);
+            var __workflow_queryRequestjsonrpc = queryRequestjsonrpc == null ? null : WorkflowExpression.Compile(queryRequestjsonrpc);
+            WorkflowExpression.Validate(__workflow_queryRequestjsonrpc, nameof(queryRequestjsonrpc), required: false);
+            var __workflow_queryRequestid = queryRequestid == null ? null : WorkflowExpression.Compile(queryRequestid);
+            WorkflowExpression.Validate(__workflow_queryRequestid, nameof(queryRequestid), required: false);
+            var __workflow_queryRequestmethod = queryRequestmethod == null ? null : WorkflowExpression.Compile(queryRequestmethod);
+            WorkflowExpression.Validate(__workflow_queryRequestmethod, nameof(queryRequestmethod), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/mcp";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json, text/event-stream");
-                if (accept != null)
-                    callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-                if (mcpSessionId != null)
-                    callPayload.Headers["Mcp-Session-Id"] = ExpressionConverter.Convert(mcpSessionId);
+                if (__workflow_accept != null)
+                    callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
+                if (__workflow_mcpSessionId != null)
+                    callPayload.Headers["Mcp-Session-Id"] = ExpressionConverter.Convert(__workflow_mcpSessionId);
                 var queryRequest = new JObject();
                 var queryRequestpropCount = 0;
-                if (queryRequestjsonrpc != null)
+                if (__workflow_queryRequestjsonrpc != null)
                 {
-                    queryRequest["jsonrpc"] = ExpressionConverter.ConvertO(queryRequestjsonrpc);
+                    queryRequest["jsonrpc"] = ExpressionConverter.ConvertO(__workflow_queryRequestjsonrpc);
                     queryRequestpropCount++;
                 }
 
-                if (queryRequestid != null)
+                if (__workflow_queryRequestid != null)
                 {
-                    queryRequest["id"] = ExpressionConverter.ConvertO(queryRequestid);
+                    queryRequest["id"] = ExpressionConverter.ConvertO(__workflow_queryRequestid);
                     queryRequestpropCount++;
                 }
 
-                if (queryRequestmethod != null)
+                if (__workflow_queryRequestmethod != null)
                 {
-                    queryRequest["method"] = ExpressionConverter.ConvertO(queryRequestmethod);
+                    queryRequest["method"] = ExpressionConverter.ConvertO(__workflow_queryRequestmethod);
                     queryRequestpropCount++;
                 }
 

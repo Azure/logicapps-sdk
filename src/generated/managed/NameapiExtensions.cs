@@ -1,28 +1,22 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nameapi
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class NameapiActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nameapi")]
-        [WorkflowExpressionFactory(nameof(__BuildParseName))]
-        public IBodyWorkflowAction<ParseNameResponse> ParseName([WorkflowExpression] Func<JToken[]> bodyinputPersonpersonNamepersonNames, [WorkflowExpression] Func<bodyinputPersongenderInput> bodyinputPersongender = null)
+        public IBodyWorkflowAction<ParseNameResponse> ParseName(Expression<Func<JToken[]>> bodyinputPersonpersonNamepersonNames, Expression<Func<bodyinputPersongenderInput>> bodyinputPersongender = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ParseNameResponse> __BuildParseName(WorkflowExpression<JToken[]> bodyinputPersonpersonNamepersonNames, WorkflowExpression<bodyinputPersongenderInput> bodyinputPersongender = null)
-        {
-            WorkflowExpression.Validate(bodyinputPersonpersonNamepersonNames, nameof(bodyinputPersonpersonNamepersonNames), required: true);
-            WorkflowExpression.Validate(bodyinputPersongender, nameof(bodyinputPersongender), required: false);
+            var __workflow_bodyinputPersonpersonNamepersonNames = bodyinputPersonpersonNamepersonNames == null ? null : WorkflowExpression.Compile(bodyinputPersonpersonNamepersonNames);
+            WorkflowExpression.Validate(__workflow_bodyinputPersonpersonNamepersonNames, nameof(bodyinputPersonpersonNamepersonNames), required: true);
+            var __workflow_bodyinputPersongender = bodyinputPersongender == null ? null : WorkflowExpression.Compile(bodyinputPersongender);
+            WorkflowExpression.Validate(__workflow_bodyinputPersongender, nameof(bodyinputPersongender), required: false);
             return new DeferredBodyAction<ParseNameResponse>(() =>
             {
                 var apiCallPath = "/v5.3/parser/personnameparser";
@@ -37,16 +31,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nameapi
                 var personNameObject = new JObject();
                 var personNameObjectpropCount = 0;
                 personNameObjectpropCount++;
-                personNameObject["nameFields"] = ExpressionConverter.ConvertO(bodyinputPersonpersonNamepersonNames);
+                personNameObject["nameFields"] = ExpressionConverter.ConvertO(__workflow_bodyinputPersonpersonNamepersonNames);
                 if (personNameObjectpropCount > 0)
                 {
                     inputPersonObject["personName"] = personNameObject;
                     inputPersonObjectpropCount++;
                 }
 
-                if (bodyinputPersongender != null)
+                if (__workflow_bodyinputPersongender != null)
                 {
-                    inputPersonObject["gender"] = ExpressionConverter.ConvertO(bodyinputPersongender);
+                    inputPersonObject["gender"] = ExpressionConverter.ConvertO(__workflow_bodyinputPersongender);
                     inputPersonObjectpropCount++;
                 }
 
@@ -66,22 +60,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nameapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nameapi")]
-        [WorkflowExpressionFactory(nameof(__BuildDetectDea))]
-        public IBodyWorkflowAction<DetectDeaResponse> DetectDea([WorkflowExpression] Func<string> emailAddress)
+        public IBodyWorkflowAction<DetectDeaResponse> DetectDea(Expression<Func<string>> emailAddress)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DetectDeaResponse> __BuildDetectDea(WorkflowExpression<string> emailAddress)
-        {
-            WorkflowExpression.Validate(emailAddress, nameof(emailAddress), required: true);
+            var __workflow_emailAddress = emailAddress == null ? null : WorkflowExpression.Compile(emailAddress);
+            WorkflowExpression.Validate(__workflow_emailAddress, nameof(emailAddress), required: true);
             return new DeferredBodyAction<DetectDeaResponse>(() =>
             {
                 var apiCallPath = "/v5.3/email/disposableemailaddressdetector";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["emailAddress"] = ExpressionConverter.Convert(emailAddress);
+                callPayload.Queries["emailAddress"] = ExpressionConverter.Convert(__workflow_emailAddress);
                 return new ApiConnectionAction<DetectDeaResponse>(callPayload);
             });
         }

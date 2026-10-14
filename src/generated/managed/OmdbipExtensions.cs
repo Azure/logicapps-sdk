@@ -1,49 +1,47 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Omdbip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class OmdbipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "omdbip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetSearchResults))]
-        public IBodyWorkflowAction<GetSearchResultsResponse> GetSearchResults([WorkflowExpression] Func<string> apikey, [WorkflowExpression] Func<string> s = null, [WorkflowExpression] Func<string> i = null, [WorkflowExpression] Func<int> y = null, [WorkflowExpression] Func<typeInput> type = null, [WorkflowExpression] Func<int> page = null)
+        public IBodyWorkflowAction<GetSearchResultsResponse> GetSearchResults(Expression<Func<string>> apikey, Expression<Func<string>> s = null, Expression<Func<string>> i = null, Expression<Func<int>> y = null, Expression<Func<typeInput>> type = null, Expression<Func<int>> page = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetSearchResultsResponse> __BuildGetSearchResults(WorkflowExpression<string> apikey, WorkflowExpression<string> s = null, WorkflowExpression<string> i = null, WorkflowExpression<int> y = null, WorkflowExpression<typeInput> type = null, WorkflowExpression<int> page = null)
-        {
-            WorkflowExpression.Validate(apikey, nameof(apikey), required: true);
-            WorkflowExpression.Validate(s, nameof(s), required: false);
-            WorkflowExpression.Validate(i, nameof(i), required: false);
-            WorkflowExpression.Validate(y, nameof(y), required: false);
-            WorkflowExpression.Validate(type, nameof(type), required: false);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
+            var __workflow_apikey = apikey == null ? null : WorkflowExpression.Compile(apikey);
+            WorkflowExpression.Validate(__workflow_apikey, nameof(apikey), required: true);
+            var __workflow_s = s == null ? null : WorkflowExpression.Compile(s);
+            WorkflowExpression.Validate(__workflow_s, nameof(s), required: false);
+            var __workflow_i = i == null ? null : WorkflowExpression.Compile(i);
+            WorkflowExpression.Validate(__workflow_i, nameof(i), required: false);
+            var __workflow_y = y == null ? null : WorkflowExpression.Compile(y);
+            WorkflowExpression.Validate(__workflow_y, nameof(y), required: false);
+            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
+            WorkflowExpression.Validate(__workflow_type, nameof(type), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
             return new DeferredBodyAction<GetSearchResultsResponse>(() =>
             {
                 var apiCallPath = "/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["apikey"] = ExpressionConverter.Convert(apikey);
-                if (s != null)
-                    callPayload.Queries["s"] = ExpressionConverter.Convert(s);
-                if (i != null)
-                    callPayload.Queries["i"] = ExpressionConverter.Convert(i);
-                if (y != null)
-                    callPayload.Queries["y"] = ExpressionConverter.Convert(y);
-                if (type != null)
-                    callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                callPayload.Queries["apikey"] = ExpressionConverter.Convert(__workflow_apikey);
+                if (__workflow_s != null)
+                    callPayload.Queries["s"] = ExpressionConverter.Convert(__workflow_s);
+                if (__workflow_i != null)
+                    callPayload.Queries["i"] = ExpressionConverter.Convert(__workflow_i);
+                if (__workflow_y != null)
+                    callPayload.Queries["y"] = ExpressionConverter.Convert(__workflow_y);
+                if (__workflow_type != null)
+                    callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
                 callPayload.Queries["page"] = Convert.ToString(1);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 return new ApiConnectionAction<GetSearchResultsResponse>(callPayload);
             });
         }

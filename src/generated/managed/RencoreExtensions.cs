@@ -1,29 +1,24 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rencore
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class RencoreActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rencore")]
-        [WorkflowExpressionFactory(nameof(__BuildApiAnalyze))]
-        public IWorkflowAction ApiAnalyze([WorkflowExpression] Func<string> analysisRequestfile, [WorkflowExpression] Func<string> analysisRequestfileName, [WorkflowExpression] Func<string> analysisRequestlicense = null)
+        public IWorkflowAction ApiAnalyze(Expression<Func<string>> analysisRequestfile, Expression<Func<string>> analysisRequestfileName, Expression<Func<string>> analysisRequestlicense = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildApiAnalyze(WorkflowExpression<string> analysisRequestfile, WorkflowExpression<string> analysisRequestfileName, WorkflowExpression<string> analysisRequestlicense = null)
-        {
-            WorkflowExpression.Validate(analysisRequestfile, nameof(analysisRequestfile), required: true);
-            WorkflowExpression.Validate(analysisRequestfileName, nameof(analysisRequestfileName), required: true);
-            WorkflowExpression.Validate(analysisRequestlicense, nameof(analysisRequestlicense), required: false);
+            var __workflow_analysisRequestfile = analysisRequestfile == null ? null : WorkflowExpression.Compile(analysisRequestfile);
+            WorkflowExpression.Validate(__workflow_analysisRequestfile, nameof(analysisRequestfile), required: true);
+            var __workflow_analysisRequestfileName = analysisRequestfileName == null ? null : WorkflowExpression.Compile(analysisRequestfileName);
+            WorkflowExpression.Validate(__workflow_analysisRequestfileName, nameof(analysisRequestfileName), required: true);
+            var __workflow_analysisRequestlicense = analysisRequestlicense == null ? null : WorkflowExpression.Compile(analysisRequestlicense);
+            WorkflowExpression.Validate(__workflow_analysisRequestlicense, nameof(analysisRequestlicense), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/analyze";
@@ -32,12 +27,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rencore
                 var analysisRequest = new JObject();
                 var analysisRequestpropCount = 0;
                 analysisRequestpropCount++;
-                analysisRequest["file"] = ExpressionConverter.ConvertO(analysisRequestfile);
+                analysisRequest["file"] = ExpressionConverter.ConvertO(__workflow_analysisRequestfile);
                 analysisRequestpropCount++;
-                analysisRequest["fileName"] = ExpressionConverter.ConvertO(analysisRequestfileName);
-                if (analysisRequestlicense != null)
+                analysisRequest["fileName"] = ExpressionConverter.ConvertO(__workflow_analysisRequestfileName);
+                if (__workflow_analysisRequestlicense != null)
                 {
-                    analysisRequest["license"] = ExpressionConverter.ConvertO(analysisRequestlicense);
+                    analysisRequest["license"] = ExpressionConverter.ConvertO(__workflow_analysisRequestlicense);
                     analysisRequestpropCount++;
                 }
 

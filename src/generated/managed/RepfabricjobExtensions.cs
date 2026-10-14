@@ -1,59 +1,84 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Repfabricjob
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class RepfabricjobActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "repfabricjob")]
-        [WorkflowExpressionFactory(nameof(__BuildRepfabricCreateJob))]
-        public IWorkflowAction RepfabricCreateJob([WorkflowExpression] Func<string> bodydomainName, [WorkflowExpression] Func<string> bodyjobName, [WorkflowExpression] Func<string> bodycompany, [WorkflowExpression] Func<string> bodycontactFirstName, [WorkflowExpression] Func<string> bodyjobNumber = null, [WorkflowExpression] Func<string> bodyjobBidDate = null, [WorkflowExpression] Func<string> bodyjobOrderDate = null, [WorkflowExpression] Func<string> bodyjobTypeName = null, [WorkflowExpression] Func<string> bodyjobStage = null, [WorkflowExpression] Func<string> bodyjobValue = null, [WorkflowExpression] Func<string> bodystreet1 = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodystate = null, [WorkflowExpression] Func<string> bodyzip = null, [WorkflowExpression] Func<string> bodycountry = null, [WorkflowExpression] Func<string> bodyjobUrl = null, [WorkflowExpression] Func<string> bodycompanyPhone1 = null, [WorkflowExpression] Func<string> bodycompanyFax = null, [WorkflowExpression] Func<string> bodycompanyType = null, [WorkflowExpression] Func<string> bodycompanyWebsite = null, [WorkflowExpression] Func<string> bodycompanySalesTeam = null, [WorkflowExpression] Func<int> bodycompanySalesTeamId = null, [WorkflowExpression] Func<string> bodycontactLastName = null, [WorkflowExpression] Func<string> bodycontactFullName = null, [WorkflowExpression] Func<string> bodycontactTitle = null, [WorkflowExpression] Func<string> bodycontactEmail = null, [WorkflowExpression] Func<string> bodycontactPhone = null, [WorkflowExpression] Func<string> bodycontactFax = null, [WorkflowExpression] Func<string> bodycontactStreet1 = null, [WorkflowExpression] Func<string> bodycontactCity = null, [WorkflowExpression] Func<string> bodycontactState = null, [WorkflowExpression] Func<string> bodycontactZip = null, [WorkflowExpression] Func<bool> bodycontactPrimaryContact = null)
+        public IWorkflowAction RepfabricCreateJob(Expression<Func<string>> bodydomainName, Expression<Func<string>> bodyjobName, Expression<Func<string>> bodycompany, Expression<Func<string>> bodycontactFirstName, Expression<Func<string>> bodyjobNumber = null, Expression<Func<string>> bodyjobBidDate = null, Expression<Func<string>> bodyjobOrderDate = null, Expression<Func<string>> bodyjobTypeName = null, Expression<Func<string>> bodyjobStage = null, Expression<Func<string>> bodyjobValue = null, Expression<Func<string>> bodystreet1 = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodyzip = null, Expression<Func<string>> bodycountry = null, Expression<Func<string>> bodyjobUrl = null, Expression<Func<string>> bodycompanyPhone1 = null, Expression<Func<string>> bodycompanyFax = null, Expression<Func<string>> bodycompanyType = null, Expression<Func<string>> bodycompanyWebsite = null, Expression<Func<string>> bodycompanySalesTeam = null, Expression<Func<int>> bodycompanySalesTeamId = null, Expression<Func<string>> bodycontactLastName = null, Expression<Func<string>> bodycontactFullName = null, Expression<Func<string>> bodycontactTitle = null, Expression<Func<string>> bodycontactEmail = null, Expression<Func<string>> bodycontactPhone = null, Expression<Func<string>> bodycontactFax = null, Expression<Func<string>> bodycontactStreet1 = null, Expression<Func<string>> bodycontactCity = null, Expression<Func<string>> bodycontactState = null, Expression<Func<string>> bodycontactZip = null, Expression<Func<bool>> bodycontactPrimaryContact = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildRepfabricCreateJob(WorkflowExpression<string> bodydomainName, WorkflowExpression<string> bodyjobName, WorkflowExpression<string> bodycompany, WorkflowExpression<string> bodycontactFirstName, WorkflowExpression<string> bodyjobNumber = null, WorkflowExpression<string> bodyjobBidDate = null, WorkflowExpression<string> bodyjobOrderDate = null, WorkflowExpression<string> bodyjobTypeName = null, WorkflowExpression<string> bodyjobStage = null, WorkflowExpression<string> bodyjobValue = null, WorkflowExpression<string> bodystreet1 = null, WorkflowExpression<string> bodycity = null, WorkflowExpression<string> bodystate = null, WorkflowExpression<string> bodyzip = null, WorkflowExpression<string> bodycountry = null, WorkflowExpression<string> bodyjobUrl = null, WorkflowExpression<string> bodycompanyPhone1 = null, WorkflowExpression<string> bodycompanyFax = null, WorkflowExpression<string> bodycompanyType = null, WorkflowExpression<string> bodycompanyWebsite = null, WorkflowExpression<string> bodycompanySalesTeam = null, WorkflowExpression<int> bodycompanySalesTeamId = null, WorkflowExpression<string> bodycontactLastName = null, WorkflowExpression<string> bodycontactFullName = null, WorkflowExpression<string> bodycontactTitle = null, WorkflowExpression<string> bodycontactEmail = null, WorkflowExpression<string> bodycontactPhone = null, WorkflowExpression<string> bodycontactFax = null, WorkflowExpression<string> bodycontactStreet1 = null, WorkflowExpression<string> bodycontactCity = null, WorkflowExpression<string> bodycontactState = null, WorkflowExpression<string> bodycontactZip = null, WorkflowExpression<bool> bodycontactPrimaryContact = null)
-        {
-            WorkflowExpression.Validate(bodydomainName, nameof(bodydomainName), required: true);
-            WorkflowExpression.Validate(bodyjobName, nameof(bodyjobName), required: true);
-            WorkflowExpression.Validate(bodycompany, nameof(bodycompany), required: true);
-            WorkflowExpression.Validate(bodycontactFirstName, nameof(bodycontactFirstName), required: true);
-            WorkflowExpression.Validate(bodyjobNumber, nameof(bodyjobNumber), required: false);
-            WorkflowExpression.Validate(bodyjobBidDate, nameof(bodyjobBidDate), required: false);
-            WorkflowExpression.Validate(bodyjobOrderDate, nameof(bodyjobOrderDate), required: false);
-            WorkflowExpression.Validate(bodyjobTypeName, nameof(bodyjobTypeName), required: false);
-            WorkflowExpression.Validate(bodyjobStage, nameof(bodyjobStage), required: false);
-            WorkflowExpression.Validate(bodyjobValue, nameof(bodyjobValue), required: false);
-            WorkflowExpression.Validate(bodystreet1, nameof(bodystreet1), required: false);
-            WorkflowExpression.Validate(bodycity, nameof(bodycity), required: false);
-            WorkflowExpression.Validate(bodystate, nameof(bodystate), required: false);
-            WorkflowExpression.Validate(bodyzip, nameof(bodyzip), required: false);
-            WorkflowExpression.Validate(bodycountry, nameof(bodycountry), required: false);
-            WorkflowExpression.Validate(bodyjobUrl, nameof(bodyjobUrl), required: false);
-            WorkflowExpression.Validate(bodycompanyPhone1, nameof(bodycompanyPhone1), required: false);
-            WorkflowExpression.Validate(bodycompanyFax, nameof(bodycompanyFax), required: false);
-            WorkflowExpression.Validate(bodycompanyType, nameof(bodycompanyType), required: false);
-            WorkflowExpression.Validate(bodycompanyWebsite, nameof(bodycompanyWebsite), required: false);
-            WorkflowExpression.Validate(bodycompanySalesTeam, nameof(bodycompanySalesTeam), required: false);
-            WorkflowExpression.Validate(bodycompanySalesTeamId, nameof(bodycompanySalesTeamId), required: false);
-            WorkflowExpression.Validate(bodycontactLastName, nameof(bodycontactLastName), required: false);
-            WorkflowExpression.Validate(bodycontactFullName, nameof(bodycontactFullName), required: false);
-            WorkflowExpression.Validate(bodycontactTitle, nameof(bodycontactTitle), required: false);
-            WorkflowExpression.Validate(bodycontactEmail, nameof(bodycontactEmail), required: false);
-            WorkflowExpression.Validate(bodycontactPhone, nameof(bodycontactPhone), required: false);
-            WorkflowExpression.Validate(bodycontactFax, nameof(bodycontactFax), required: false);
-            WorkflowExpression.Validate(bodycontactStreet1, nameof(bodycontactStreet1), required: false);
-            WorkflowExpression.Validate(bodycontactCity, nameof(bodycontactCity), required: false);
-            WorkflowExpression.Validate(bodycontactState, nameof(bodycontactState), required: false);
-            WorkflowExpression.Validate(bodycontactZip, nameof(bodycontactZip), required: false);
-            WorkflowExpression.Validate(bodycontactPrimaryContact, nameof(bodycontactPrimaryContact), required: false);
+            var __workflow_bodydomainName = bodydomainName == null ? null : WorkflowExpression.Compile(bodydomainName);
+            WorkflowExpression.Validate(__workflow_bodydomainName, nameof(bodydomainName), required: true);
+            var __workflow_bodyjobName = bodyjobName == null ? null : WorkflowExpression.Compile(bodyjobName);
+            WorkflowExpression.Validate(__workflow_bodyjobName, nameof(bodyjobName), required: true);
+            var __workflow_bodycompany = bodycompany == null ? null : WorkflowExpression.Compile(bodycompany);
+            WorkflowExpression.Validate(__workflow_bodycompany, nameof(bodycompany), required: true);
+            var __workflow_bodycontactFirstName = bodycontactFirstName == null ? null : WorkflowExpression.Compile(bodycontactFirstName);
+            WorkflowExpression.Validate(__workflow_bodycontactFirstName, nameof(bodycontactFirstName), required: true);
+            var __workflow_bodyjobNumber = bodyjobNumber == null ? null : WorkflowExpression.Compile(bodyjobNumber);
+            WorkflowExpression.Validate(__workflow_bodyjobNumber, nameof(bodyjobNumber), required: false);
+            var __workflow_bodyjobBidDate = bodyjobBidDate == null ? null : WorkflowExpression.Compile(bodyjobBidDate);
+            WorkflowExpression.Validate(__workflow_bodyjobBidDate, nameof(bodyjobBidDate), required: false);
+            var __workflow_bodyjobOrderDate = bodyjobOrderDate == null ? null : WorkflowExpression.Compile(bodyjobOrderDate);
+            WorkflowExpression.Validate(__workflow_bodyjobOrderDate, nameof(bodyjobOrderDate), required: false);
+            var __workflow_bodyjobTypeName = bodyjobTypeName == null ? null : WorkflowExpression.Compile(bodyjobTypeName);
+            WorkflowExpression.Validate(__workflow_bodyjobTypeName, nameof(bodyjobTypeName), required: false);
+            var __workflow_bodyjobStage = bodyjobStage == null ? null : WorkflowExpression.Compile(bodyjobStage);
+            WorkflowExpression.Validate(__workflow_bodyjobStage, nameof(bodyjobStage), required: false);
+            var __workflow_bodyjobValue = bodyjobValue == null ? null : WorkflowExpression.Compile(bodyjobValue);
+            WorkflowExpression.Validate(__workflow_bodyjobValue, nameof(bodyjobValue), required: false);
+            var __workflow_bodystreet1 = bodystreet1 == null ? null : WorkflowExpression.Compile(bodystreet1);
+            WorkflowExpression.Validate(__workflow_bodystreet1, nameof(bodystreet1), required: false);
+            var __workflow_bodycity = bodycity == null ? null : WorkflowExpression.Compile(bodycity);
+            WorkflowExpression.Validate(__workflow_bodycity, nameof(bodycity), required: false);
+            var __workflow_bodystate = bodystate == null ? null : WorkflowExpression.Compile(bodystate);
+            WorkflowExpression.Validate(__workflow_bodystate, nameof(bodystate), required: false);
+            var __workflow_bodyzip = bodyzip == null ? null : WorkflowExpression.Compile(bodyzip);
+            WorkflowExpression.Validate(__workflow_bodyzip, nameof(bodyzip), required: false);
+            var __workflow_bodycountry = bodycountry == null ? null : WorkflowExpression.Compile(bodycountry);
+            WorkflowExpression.Validate(__workflow_bodycountry, nameof(bodycountry), required: false);
+            var __workflow_bodyjobUrl = bodyjobUrl == null ? null : WorkflowExpression.Compile(bodyjobUrl);
+            WorkflowExpression.Validate(__workflow_bodyjobUrl, nameof(bodyjobUrl), required: false);
+            var __workflow_bodycompanyPhone1 = bodycompanyPhone1 == null ? null : WorkflowExpression.Compile(bodycompanyPhone1);
+            WorkflowExpression.Validate(__workflow_bodycompanyPhone1, nameof(bodycompanyPhone1), required: false);
+            var __workflow_bodycompanyFax = bodycompanyFax == null ? null : WorkflowExpression.Compile(bodycompanyFax);
+            WorkflowExpression.Validate(__workflow_bodycompanyFax, nameof(bodycompanyFax), required: false);
+            var __workflow_bodycompanyType = bodycompanyType == null ? null : WorkflowExpression.Compile(bodycompanyType);
+            WorkflowExpression.Validate(__workflow_bodycompanyType, nameof(bodycompanyType), required: false);
+            var __workflow_bodycompanyWebsite = bodycompanyWebsite == null ? null : WorkflowExpression.Compile(bodycompanyWebsite);
+            WorkflowExpression.Validate(__workflow_bodycompanyWebsite, nameof(bodycompanyWebsite), required: false);
+            var __workflow_bodycompanySalesTeam = bodycompanySalesTeam == null ? null : WorkflowExpression.Compile(bodycompanySalesTeam);
+            WorkflowExpression.Validate(__workflow_bodycompanySalesTeam, nameof(bodycompanySalesTeam), required: false);
+            var __workflow_bodycompanySalesTeamId = bodycompanySalesTeamId == null ? null : WorkflowExpression.Compile(bodycompanySalesTeamId);
+            WorkflowExpression.Validate(__workflow_bodycompanySalesTeamId, nameof(bodycompanySalesTeamId), required: false);
+            var __workflow_bodycontactLastName = bodycontactLastName == null ? null : WorkflowExpression.Compile(bodycontactLastName);
+            WorkflowExpression.Validate(__workflow_bodycontactLastName, nameof(bodycontactLastName), required: false);
+            var __workflow_bodycontactFullName = bodycontactFullName == null ? null : WorkflowExpression.Compile(bodycontactFullName);
+            WorkflowExpression.Validate(__workflow_bodycontactFullName, nameof(bodycontactFullName), required: false);
+            var __workflow_bodycontactTitle = bodycontactTitle == null ? null : WorkflowExpression.Compile(bodycontactTitle);
+            WorkflowExpression.Validate(__workflow_bodycontactTitle, nameof(bodycontactTitle), required: false);
+            var __workflow_bodycontactEmail = bodycontactEmail == null ? null : WorkflowExpression.Compile(bodycontactEmail);
+            WorkflowExpression.Validate(__workflow_bodycontactEmail, nameof(bodycontactEmail), required: false);
+            var __workflow_bodycontactPhone = bodycontactPhone == null ? null : WorkflowExpression.Compile(bodycontactPhone);
+            WorkflowExpression.Validate(__workflow_bodycontactPhone, nameof(bodycontactPhone), required: false);
+            var __workflow_bodycontactFax = bodycontactFax == null ? null : WorkflowExpression.Compile(bodycontactFax);
+            WorkflowExpression.Validate(__workflow_bodycontactFax, nameof(bodycontactFax), required: false);
+            var __workflow_bodycontactStreet1 = bodycontactStreet1 == null ? null : WorkflowExpression.Compile(bodycontactStreet1);
+            WorkflowExpression.Validate(__workflow_bodycontactStreet1, nameof(bodycontactStreet1), required: false);
+            var __workflow_bodycontactCity = bodycontactCity == null ? null : WorkflowExpression.Compile(bodycontactCity);
+            WorkflowExpression.Validate(__workflow_bodycontactCity, nameof(bodycontactCity), required: false);
+            var __workflow_bodycontactState = bodycontactState == null ? null : WorkflowExpression.Compile(bodycontactState);
+            WorkflowExpression.Validate(__workflow_bodycontactState, nameof(bodycontactState), required: false);
+            var __workflow_bodycontactZip = bodycontactZip == null ? null : WorkflowExpression.Compile(bodycontactZip);
+            WorkflowExpression.Validate(__workflow_bodycontactZip, nameof(bodycontactZip), required: false);
+            var __workflow_bodycontactPrimaryContact = bodycontactPrimaryContact == null ? null : WorkflowExpression.Compile(bodycontactPrimaryContact);
+            WorkflowExpression.Validate(__workflow_bodycontactPrimaryContact, nameof(bodycontactPrimaryContact), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/default/jobs";
@@ -62,184 +87,184 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Repfabricjob
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["domain-name"] = ExpressionConverter.ConvertO(bodydomainName);
+                body["domain-name"] = ExpressionConverter.ConvertO(__workflow_bodydomainName);
                 bodypropCount++;
-                body["job-name"] = ExpressionConverter.ConvertO(bodyjobName);
-                if (bodyjobNumber != null)
+                body["job-name"] = ExpressionConverter.ConvertO(__workflow_bodyjobName);
+                if (__workflow_bodyjobNumber != null)
                 {
-                    body["job-number"] = ExpressionConverter.ConvertO(bodyjobNumber);
+                    body["job-number"] = ExpressionConverter.ConvertO(__workflow_bodyjobNumber);
                     bodypropCount++;
                 }
 
-                if (bodyjobBidDate != null)
+                if (__workflow_bodyjobBidDate != null)
                 {
-                    body["job-bid-date"] = ExpressionConverter.ConvertO(bodyjobBidDate);
+                    body["job-bid-date"] = ExpressionConverter.ConvertO(__workflow_bodyjobBidDate);
                     bodypropCount++;
                 }
 
-                if (bodyjobOrderDate != null)
+                if (__workflow_bodyjobOrderDate != null)
                 {
-                    body["job-order-date"] = ExpressionConverter.ConvertO(bodyjobOrderDate);
+                    body["job-order-date"] = ExpressionConverter.ConvertO(__workflow_bodyjobOrderDate);
                     bodypropCount++;
                 }
 
-                if (bodyjobTypeName != null)
+                if (__workflow_bodyjobTypeName != null)
                 {
-                    body["job-type-name"] = ExpressionConverter.ConvertO(bodyjobTypeName);
+                    body["job-type-name"] = ExpressionConverter.ConvertO(__workflow_bodyjobTypeName);
                     bodypropCount++;
                 }
 
-                if (bodyjobStage != null)
+                if (__workflow_bodyjobStage != null)
                 {
-                    body["job-stage"] = ExpressionConverter.ConvertO(bodyjobStage);
+                    body["job-stage"] = ExpressionConverter.ConvertO(__workflow_bodyjobStage);
                     bodypropCount++;
                 }
 
-                if (bodyjobValue != null)
+                if (__workflow_bodyjobValue != null)
                 {
-                    body["job-value"] = ExpressionConverter.ConvertO(bodyjobValue);
+                    body["job-value"] = ExpressionConverter.ConvertO(__workflow_bodyjobValue);
                     bodypropCount++;
                 }
 
-                if (bodystreet1 != null)
+                if (__workflow_bodystreet1 != null)
                 {
-                    body["street-1"] = ExpressionConverter.ConvertO(bodystreet1);
+                    body["street-1"] = ExpressionConverter.ConvertO(__workflow_bodystreet1);
                     bodypropCount++;
                 }
 
-                if (bodycity != null)
+                if (__workflow_bodycity != null)
                 {
-                    body["city"] = ExpressionConverter.ConvertO(bodycity);
+                    body["city"] = ExpressionConverter.ConvertO(__workflow_bodycity);
                     bodypropCount++;
                 }
 
-                if (bodystate != null)
+                if (__workflow_bodystate != null)
                 {
-                    body["state"] = ExpressionConverter.ConvertO(bodystate);
+                    body["state"] = ExpressionConverter.ConvertO(__workflow_bodystate);
                     bodypropCount++;
                 }
 
-                if (bodyzip != null)
+                if (__workflow_bodyzip != null)
                 {
-                    body["zip"] = ExpressionConverter.ConvertO(bodyzip);
+                    body["zip"] = ExpressionConverter.ConvertO(__workflow_bodyzip);
                     bodypropCount++;
                 }
 
-                if (bodycountry != null)
+                if (__workflow_bodycountry != null)
                 {
-                    body["country"] = ExpressionConverter.ConvertO(bodycountry);
+                    body["country"] = ExpressionConverter.ConvertO(__workflow_bodycountry);
                     bodypropCount++;
                 }
 
-                if (bodyjobUrl != null)
+                if (__workflow_bodyjobUrl != null)
                 {
-                    body["job-url"] = ExpressionConverter.ConvertO(bodyjobUrl);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["company"] = ExpressionConverter.ConvertO(bodycompany);
-                if (bodycompanyPhone1 != null)
-                {
-                    body["company-phone1"] = ExpressionConverter.ConvertO(bodycompanyPhone1);
-                    bodypropCount++;
-                }
-
-                if (bodycompanyFax != null)
-                {
-                    body["company-fax"] = ExpressionConverter.ConvertO(bodycompanyFax);
-                    bodypropCount++;
-                }
-
-                if (bodycompanyType != null)
-                {
-                    body["company-type"] = ExpressionConverter.ConvertO(bodycompanyType);
-                    bodypropCount++;
-                }
-
-                if (bodycompanyWebsite != null)
-                {
-                    body["company-website"] = ExpressionConverter.ConvertO(bodycompanyWebsite);
-                    bodypropCount++;
-                }
-
-                if (bodycompanySalesTeam != null)
-                {
-                    body["company-sales-team"] = ExpressionConverter.ConvertO(bodycompanySalesTeam);
-                    bodypropCount++;
-                }
-
-                if (bodycompanySalesTeamId != null)
-                {
-                    body["company-sales-team-id"] = ExpressionConverter.ConvertO(bodycompanySalesTeamId);
+                    body["job-url"] = ExpressionConverter.ConvertO(__workflow_bodyjobUrl);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["contact-first-name"] = ExpressionConverter.ConvertO(bodycontactFirstName);
-                if (bodycontactLastName != null)
+                body["company"] = ExpressionConverter.ConvertO(__workflow_bodycompany);
+                if (__workflow_bodycompanyPhone1 != null)
                 {
-                    body["contact-last-name"] = ExpressionConverter.ConvertO(bodycontactLastName);
+                    body["company-phone1"] = ExpressionConverter.ConvertO(__workflow_bodycompanyPhone1);
                     bodypropCount++;
                 }
 
-                if (bodycontactFullName != null)
+                if (__workflow_bodycompanyFax != null)
                 {
-                    body["contact-full-name"] = ExpressionConverter.ConvertO(bodycontactFullName);
+                    body["company-fax"] = ExpressionConverter.ConvertO(__workflow_bodycompanyFax);
                     bodypropCount++;
                 }
 
-                if (bodycontactTitle != null)
+                if (__workflow_bodycompanyType != null)
                 {
-                    body["contact-title"] = ExpressionConverter.ConvertO(bodycontactTitle);
+                    body["company-type"] = ExpressionConverter.ConvertO(__workflow_bodycompanyType);
                     bodypropCount++;
                 }
 
-                if (bodycontactEmail != null)
+                if (__workflow_bodycompanyWebsite != null)
                 {
-                    body["contact-email"] = ExpressionConverter.ConvertO(bodycontactEmail);
+                    body["company-website"] = ExpressionConverter.ConvertO(__workflow_bodycompanyWebsite);
                     bodypropCount++;
                 }
 
-                if (bodycontactPhone != null)
+                if (__workflow_bodycompanySalesTeam != null)
                 {
-                    body["contact-phone"] = ExpressionConverter.ConvertO(bodycontactPhone);
+                    body["company-sales-team"] = ExpressionConverter.ConvertO(__workflow_bodycompanySalesTeam);
                     bodypropCount++;
                 }
 
-                if (bodycontactFax != null)
+                if (__workflow_bodycompanySalesTeamId != null)
                 {
-                    body["contact-fax"] = ExpressionConverter.ConvertO(bodycontactFax);
+                    body["company-sales-team-id"] = ExpressionConverter.ConvertO(__workflow_bodycompanySalesTeamId);
                     bodypropCount++;
                 }
 
-                if (bodycontactStreet1 != null)
+                bodypropCount++;
+                body["contact-first-name"] = ExpressionConverter.ConvertO(__workflow_bodycontactFirstName);
+                if (__workflow_bodycontactLastName != null)
                 {
-                    body["contact-street-1"] = ExpressionConverter.ConvertO(bodycontactStreet1);
+                    body["contact-last-name"] = ExpressionConverter.ConvertO(__workflow_bodycontactLastName);
                     bodypropCount++;
                 }
 
-                if (bodycontactCity != null)
+                if (__workflow_bodycontactFullName != null)
                 {
-                    body["contact-city"] = ExpressionConverter.ConvertO(bodycontactCity);
+                    body["contact-full-name"] = ExpressionConverter.ConvertO(__workflow_bodycontactFullName);
                     bodypropCount++;
                 }
 
-                if (bodycontactState != null)
+                if (__workflow_bodycontactTitle != null)
                 {
-                    body["contact-state"] = ExpressionConverter.ConvertO(bodycontactState);
+                    body["contact-title"] = ExpressionConverter.ConvertO(__workflow_bodycontactTitle);
                     bodypropCount++;
                 }
 
-                if (bodycontactZip != null)
+                if (__workflow_bodycontactEmail != null)
                 {
-                    body["contact-zip"] = ExpressionConverter.ConvertO(bodycontactZip);
+                    body["contact-email"] = ExpressionConverter.ConvertO(__workflow_bodycontactEmail);
                     bodypropCount++;
                 }
 
-                if (bodycontactPrimaryContact != null)
+                if (__workflow_bodycontactPhone != null)
                 {
-                    body["contact-primary-contact"] = ExpressionConverter.ConvertO(bodycontactPrimaryContact);
+                    body["contact-phone"] = ExpressionConverter.ConvertO(__workflow_bodycontactPhone);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodycontactFax != null)
+                {
+                    body["contact-fax"] = ExpressionConverter.ConvertO(__workflow_bodycontactFax);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodycontactStreet1 != null)
+                {
+                    body["contact-street-1"] = ExpressionConverter.ConvertO(__workflow_bodycontactStreet1);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodycontactCity != null)
+                {
+                    body["contact-city"] = ExpressionConverter.ConvertO(__workflow_bodycontactCity);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodycontactState != null)
+                {
+                    body["contact-state"] = ExpressionConverter.ConvertO(__workflow_bodycontactState);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodycontactZip != null)
+                {
+                    body["contact-zip"] = ExpressionConverter.ConvertO(__workflow_bodycontactZip);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodycontactPrimaryContact != null)
+                {
+                    body["contact-primary-contact"] = ExpressionConverter.ConvertO(__workflow_bodycontactPrimaryContact);
                     bodypropCount++;
                 }
 

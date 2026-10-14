@@ -1,32 +1,27 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rencoregovernance
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class RencoregovernanceActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rencoregovernance")]
-        [WorkflowExpressionFactory(nameof(__BuildGetViolations))]
-        public IBodyWorkflowAction<GetViolationsResponse> GetViolations([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> checkId)
+        public IBodyWorkflowAction<GetViolationsResponse> GetViolations(Expression<Func<string>> workspaceId, Expression<Func<string>> environmentId, Expression<Func<string>> checkId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetViolationsResponse> __BuildGetViolations(WorkflowExpression<string> workspaceId, WorkflowExpression<string> environmentId, WorkflowExpression<string> checkId)
-        {
-            WorkflowExpression.Validate(workspaceId, nameof(workspaceId), required: true);
-            WorkflowExpression.Validate(environmentId, nameof(environmentId), required: true);
-            WorkflowExpression.Validate(checkId, nameof(checkId), required: true);
+            var __workflow_workspaceId = workspaceId == null ? null : WorkflowExpression.Compile(workspaceId);
+            WorkflowExpression.Validate(__workflow_workspaceId, nameof(workspaceId), required: true);
+            var __workflow_environmentId = environmentId == null ? null : WorkflowExpression.Compile(environmentId);
+            WorkflowExpression.Validate(__workflow_environmentId, nameof(environmentId), required: true);
+            var __workflow_checkId = checkId == null ? null : WorkflowExpression.Compile(checkId);
+            WorkflowExpression.Validate(__workflow_checkId, nameof(checkId), required: true);
             return new DeferredBodyAction<GetViolationsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/workspaces/{0}/environments/{1}/checks/{2}/results", ExpressionConverter.ConvertWithUrlEncoding(workspaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1), ExpressionConverter.ConvertWithUrlEncoding(checkId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/workspaces/{0}/environments/{1}/checks/{2}/results", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_checkId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetViolationsResponse>(callPayload);
@@ -36,22 +31,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rencoregovernance
 
     public class RencoregovernanceTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildCheckNotificationTrigger))]
-        public IWorkflowTrigger CheckNotificationTrigger([WorkflowExpression] Func<string> workspaceId,[WorkflowExpression] Func<string> environmentId,[WorkflowExpression] Func<string> checkId,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CheckNotificationTrigger(Expression<Func<string>> workspaceId, Expression<Func<string>> environmentId, Expression<Func<string>> checkId, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildCheckNotificationTrigger(WorkflowExpression<string> workspaceId,WorkflowExpression<string> environmentId,WorkflowExpression<string> checkId,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(workspaceId, nameof(workspaceId), required: true);
-            WorkflowExpression.Validate(environmentId, nameof(environmentId), required: true);
-            WorkflowExpression.Validate(checkId, nameof(checkId), required: true);
+            var __workflow_workspaceId = workspaceId == null ? null : WorkflowExpression.Compile(workspaceId);
+            WorkflowExpression.Validate(__workflow_workspaceId, nameof(workspaceId), required: true);
+            var __workflow_environmentId = environmentId == null ? null : WorkflowExpression.Compile(environmentId);
+            WorkflowExpression.Validate(__workflow_environmentId, nameof(environmentId), required: true);
+            var __workflow_checkId = checkId == null ? null : WorkflowExpression.Compile(checkId);
+            WorkflowExpression.Validate(__workflow_checkId, nameof(checkId), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/workspaces/{0}/environments/{1}/checks/{2}/hooks", ExpressionConverter.ConvertWithUrlEncoding(workspaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1), ExpressionConverter.ConvertWithUrlEncoding(checkId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/workspaces/{0}/environments/{1}/checks/{2}/hooks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_checkId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

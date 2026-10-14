@@ -1,27 +1,20 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theittipster
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class TheittipsterActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theittipster")]
-        [WorkflowExpressionFactory(nameof(__BuildGenerateBarcode))]
-        public IBodyWorkflowAction<GenerateBarcodeResponse> GenerateBarcode([WorkflowExpression] Func<string> bodybarcodeNumber = null)
+        public IBodyWorkflowAction<GenerateBarcodeResponse> GenerateBarcode(Expression<Func<string>> bodybarcodeNumber = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GenerateBarcodeResponse> __BuildGenerateBarcode(WorkflowExpression<string> bodybarcodeNumber = null)
-        {
-            WorkflowExpression.Validate(bodybarcodeNumber, nameof(bodybarcodeNumber), required: false);
+            var __workflow_bodybarcodeNumber = bodybarcodeNumber == null ? null : WorkflowExpression.Compile(bodybarcodeNumber);
+            WorkflowExpression.Validate(__workflow_bodybarcodeNumber, nameof(bodybarcodeNumber), required: false);
             return new DeferredBodyAction<GenerateBarcodeResponse>(() =>
             {
                 var apiCallPath = "/api/generateBarcode";
@@ -29,9 +22,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theittipster
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodybarcodeNumber != null)
+                if (__workflow_bodybarcodeNumber != null)
                 {
-                    body["barcodeNumber"] = ExpressionConverter.ConvertO(bodybarcodeNumber);
+                    body["barcodeNumber"] = ExpressionConverter.ConvertO(__workflow_bodybarcodeNumber);
                     bodypropCount++;
                 }
 
@@ -45,16 +38,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theittipster
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theittipster")]
-        [WorkflowExpressionFactory(nameof(__BuildGenerateQRCode))]
-        public IBodyWorkflowAction<GenerateQRCodeResponse> GenerateQRCode([WorkflowExpression] Func<string> bodyqrcodeText = null)
+        public IBodyWorkflowAction<GenerateQRCodeResponse> GenerateQRCode(Expression<Func<string>> bodyqrcodeText = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GenerateQRCodeResponse> __BuildGenerateQRCode(WorkflowExpression<string> bodyqrcodeText = null)
-        {
-            WorkflowExpression.Validate(bodyqrcodeText, nameof(bodyqrcodeText), required: false);
+            var __workflow_bodyqrcodeText = bodyqrcodeText == null ? null : WorkflowExpression.Compile(bodyqrcodeText);
+            WorkflowExpression.Validate(__workflow_bodyqrcodeText, nameof(bodyqrcodeText), required: false);
             return new DeferredBodyAction<GenerateQRCodeResponse>(() =>
             {
                 var apiCallPath = "/api/generateQRCode";
@@ -62,9 +49,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theittipster
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyqrcodeText != null)
+                if (__workflow_bodyqrcodeText != null)
                 {
-                    body["qrcodeText"] = ExpressionConverter.ConvertO(bodyqrcodeText);
+                    body["qrcodeText"] = ExpressionConverter.ConvertO(__workflow_bodyqrcodeText);
                     bodypropCount++;
                 }
 

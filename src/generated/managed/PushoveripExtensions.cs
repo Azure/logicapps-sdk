@@ -1,36 +1,38 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushoverip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class PushoveripActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pushoverip")]
-        [WorkflowExpressionFactory(nameof(__BuildSendMessage))]
-        public IBodyWorkflowAction<SendMessageResponse> SendMessage([WorkflowExpression] Func<string> bodyuser, [WorkflowExpression] Func<string> bodymessage, [WorkflowExpression] Func<string> bodydevice = null, [WorkflowExpression] Func<bodypriorityInput> bodypriority = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<bodyhtmlInput> bodyhtml = null, [WorkflowExpression] Func<string> bodysound = null, [WorkflowExpression] Func<string> bodytimestamp = null, [WorkflowExpression] Func<string> bodyurl = null, [WorkflowExpression] Func<string> bodyurlTitle = null)
+        public IBodyWorkflowAction<SendMessageResponse> SendMessage(Expression<Func<string>> bodyuser, Expression<Func<string>> bodymessage, Expression<Func<string>> bodydevice = null, Expression<Func<bodypriorityInput>> bodypriority = null, Expression<Func<string>> bodytitle = null, Expression<Func<bodyhtmlInput>> bodyhtml = null, Expression<Func<string>> bodysound = null, Expression<Func<string>> bodytimestamp = null, Expression<Func<string>> bodyurl = null, Expression<Func<string>> bodyurlTitle = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SendMessageResponse> __BuildSendMessage(WorkflowExpression<string> bodyuser, WorkflowExpression<string> bodymessage, WorkflowExpression<string> bodydevice = null, WorkflowExpression<bodypriorityInput> bodypriority = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<bodyhtmlInput> bodyhtml = null, WorkflowExpression<string> bodysound = null, WorkflowExpression<string> bodytimestamp = null, WorkflowExpression<string> bodyurl = null, WorkflowExpression<string> bodyurlTitle = null)
-        {
-            WorkflowExpression.Validate(bodyuser, nameof(bodyuser), required: true);
-            WorkflowExpression.Validate(bodymessage, nameof(bodymessage), required: true);
-            WorkflowExpression.Validate(bodydevice, nameof(bodydevice), required: false);
-            WorkflowExpression.Validate(bodypriority, nameof(bodypriority), required: false);
-            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            WorkflowExpression.Validate(bodyhtml, nameof(bodyhtml), required: false);
-            WorkflowExpression.Validate(bodysound, nameof(bodysound), required: false);
-            WorkflowExpression.Validate(bodytimestamp, nameof(bodytimestamp), required: false);
-            WorkflowExpression.Validate(bodyurl, nameof(bodyurl), required: false);
-            WorkflowExpression.Validate(bodyurlTitle, nameof(bodyurlTitle), required: false);
+            var __workflow_bodyuser = bodyuser == null ? null : WorkflowExpression.Compile(bodyuser);
+            WorkflowExpression.Validate(__workflow_bodyuser, nameof(bodyuser), required: true);
+            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
+            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: true);
+            var __workflow_bodydevice = bodydevice == null ? null : WorkflowExpression.Compile(bodydevice);
+            WorkflowExpression.Validate(__workflow_bodydevice, nameof(bodydevice), required: false);
+            var __workflow_bodypriority = bodypriority == null ? null : WorkflowExpression.Compile(bodypriority);
+            WorkflowExpression.Validate(__workflow_bodypriority, nameof(bodypriority), required: false);
+            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
+            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodyhtml = bodyhtml == null ? null : WorkflowExpression.Compile(bodyhtml);
+            WorkflowExpression.Validate(__workflow_bodyhtml, nameof(bodyhtml), required: false);
+            var __workflow_bodysound = bodysound == null ? null : WorkflowExpression.Compile(bodysound);
+            WorkflowExpression.Validate(__workflow_bodysound, nameof(bodysound), required: false);
+            var __workflow_bodytimestamp = bodytimestamp == null ? null : WorkflowExpression.Compile(bodytimestamp);
+            WorkflowExpression.Validate(__workflow_bodytimestamp, nameof(bodytimestamp), required: false);
+            var __workflow_bodyurl = bodyurl == null ? null : WorkflowExpression.Compile(bodyurl);
+            WorkflowExpression.Validate(__workflow_bodyurl, nameof(bodyurl), required: false);
+            var __workflow_bodyurlTitle = bodyurlTitle == null ? null : WorkflowExpression.Compile(bodyurlTitle);
+            WorkflowExpression.Validate(__workflow_bodyurlTitle, nameof(bodyurlTitle), required: false);
             return new DeferredBodyAction<SendMessageResponse>(() =>
             {
                 var apiCallPath = "/1/messages.json";
@@ -39,54 +41,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushoverip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["user"] = ExpressionConverter.ConvertO(bodyuser);
-                if (bodydevice != null)
+                body["user"] = ExpressionConverter.ConvertO(__workflow_bodyuser);
+                if (__workflow_bodydevice != null)
                 {
-                    body["device"] = ExpressionConverter.ConvertO(bodydevice);
+                    body["device"] = ExpressionConverter.ConvertO(__workflow_bodydevice);
                     bodypropCount++;
                 }
 
-                if (bodypriority != null)
+                if (__workflow_bodypriority != null)
                 {
-                    body["priority"] = ExpressionConverter.ConvertO(bodypriority);
+                    body["priority"] = ExpressionConverter.ConvertO(__workflow_bodypriority);
                     bodypropCount++;
                 }
 
-                if (bodytitle != null)
+                if (__workflow_bodytitle != null)
                 {
-                    body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
                     bodypropCount++;
                 }
 
-                if (bodyhtml != null)
+                if (__workflow_bodyhtml != null)
                 {
-                    body["html"] = ExpressionConverter.ConvertO(bodyhtml);
+                    body["html"] = ExpressionConverter.ConvertO(__workflow_bodyhtml);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["message"] = ExpressionConverter.ConvertO(bodymessage);
-                if (bodysound != null)
+                body["message"] = ExpressionConverter.ConvertO(__workflow_bodymessage);
+                if (__workflow_bodysound != null)
                 {
-                    body["sound"] = ExpressionConverter.ConvertO(bodysound);
+                    body["sound"] = ExpressionConverter.ConvertO(__workflow_bodysound);
                     bodypropCount++;
                 }
 
-                if (bodytimestamp != null)
+                if (__workflow_bodytimestamp != null)
                 {
-                    body["timestamp"] = ExpressionConverter.ConvertO(bodytimestamp);
+                    body["timestamp"] = ExpressionConverter.ConvertO(__workflow_bodytimestamp);
                     bodypropCount++;
                 }
 
-                if (bodyurl != null)
+                if (__workflow_bodyurl != null)
                 {
-                    body["url"] = ExpressionConverter.ConvertO(bodyurl);
+                    body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
                     bodypropCount++;
                 }
 
-                if (bodyurlTitle != null)
+                if (__workflow_bodyurlTitle != null)
                 {
-                    body["url_title"] = ExpressionConverter.ConvertO(bodyurlTitle);
+                    body["url_title"] = ExpressionConverter.ConvertO(__workflow_bodyurlTitle);
                     bodypropCount++;
                 }
 
@@ -109,17 +111,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushoverip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pushoverip")]
-        [WorkflowExpressionFactory(nameof(__BuildValidateKey))]
-        public IBodyWorkflowAction<ValidateKeyResponse> ValidateKey([WorkflowExpression] Func<string> bodyuser, [WorkflowExpression] Func<string> bodydevice = null)
+        public IBodyWorkflowAction<ValidateKeyResponse> ValidateKey(Expression<Func<string>> bodyuser, Expression<Func<string>> bodydevice = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ValidateKeyResponse> __BuildValidateKey(WorkflowExpression<string> bodyuser, WorkflowExpression<string> bodydevice = null)
-        {
-            WorkflowExpression.Validate(bodyuser, nameof(bodyuser), required: true);
-            WorkflowExpression.Validate(bodydevice, nameof(bodydevice), required: false);
+            var __workflow_bodyuser = bodyuser == null ? null : WorkflowExpression.Compile(bodyuser);
+            WorkflowExpression.Validate(__workflow_bodyuser, nameof(bodyuser), required: true);
+            var __workflow_bodydevice = bodydevice == null ? null : WorkflowExpression.Compile(bodydevice);
+            WorkflowExpression.Validate(__workflow_bodydevice, nameof(bodydevice), required: false);
             return new DeferredBodyAction<ValidateKeyResponse>(() =>
             {
                 var apiCallPath = "/1/users/validate.json";
@@ -128,10 +125,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushoverip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["user"] = ExpressionConverter.ConvertO(bodyuser);
-                if (bodydevice != null)
+                body["user"] = ExpressionConverter.ConvertO(__workflow_bodyuser);
+                if (__workflow_bodydevice != null)
                 {
-                    body["device"] = ExpressionConverter.ConvertO(bodydevice);
+                    body["device"] = ExpressionConverter.ConvertO(__workflow_bodydevice);
                     bodypropCount++;
                 }
 

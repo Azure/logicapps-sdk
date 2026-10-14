@@ -1,27 +1,20 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docq
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class DocqActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docq")]
-        [WorkflowExpressionFactory(nameof(__BuildExtractInformation))]
-        public IBodyWorkflowAction<ExtractInformationResponse> ExtractInformation([WorkflowExpression] Func<string> bodyimageFileContent = null)
+        public IBodyWorkflowAction<ExtractInformationResponse> ExtractInformation(Expression<Func<string>> bodyimageFileContent = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ExtractInformationResponse> __BuildExtractInformation(WorkflowExpression<string> bodyimageFileContent = null)
-        {
-            WorkflowExpression.Validate(bodyimageFileContent, nameof(bodyimageFileContent), required: false);
+            var __workflow_bodyimageFileContent = bodyimageFileContent == null ? null : WorkflowExpression.Compile(bodyimageFileContent);
+            WorkflowExpression.Validate(__workflow_bodyimageFileContent, nameof(bodyimageFileContent), required: false);
             return new DeferredBodyAction<ExtractInformationResponse>(() =>
             {
                 var apiCallPath = "/api/Flow/ExtractInformation";
@@ -32,9 +25,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docq
                 var bodypropCount = 0;
                 body["Image Content Type"] = "image/jpeg";
                 bodypropCount++;
-                if (bodyimageFileContent != null)
+                if (__workflow_bodyimageFileContent != null)
                 {
-                    body["Image File Content"] = ExpressionConverter.ConvertO(bodyimageFileContent);
+                    body["Image File Content"] = ExpressionConverter.ConvertO(__workflow_bodyimageFileContent);
                     bodypropCount++;
                 }
 
@@ -48,17 +41,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docq")]
-        [WorkflowExpressionFactory(nameof(__BuildGenerateDocument))]
-        public IBodyWorkflowAction<string> GenerateDocument([WorkflowExpression] Func<string> bodydocumentInformation, [WorkflowExpression] Func<string> bodydocumentTemplateContent)
+        public IBodyWorkflowAction<string> GenerateDocument(Expression<Func<string>> bodydocumentInformation, Expression<Func<string>> bodydocumentTemplateContent)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildGenerateDocument(WorkflowExpression<string> bodydocumentInformation, WorkflowExpression<string> bodydocumentTemplateContent)
-        {
-            WorkflowExpression.Validate(bodydocumentInformation, nameof(bodydocumentInformation), required: true);
-            WorkflowExpression.Validate(bodydocumentTemplateContent, nameof(bodydocumentTemplateContent), required: true);
+            var __workflow_bodydocumentInformation = bodydocumentInformation == null ? null : WorkflowExpression.Compile(bodydocumentInformation);
+            WorkflowExpression.Validate(__workflow_bodydocumentInformation, nameof(bodydocumentInformation), required: true);
+            var __workflow_bodydocumentTemplateContent = bodydocumentTemplateContent == null ? null : WorkflowExpression.Compile(bodydocumentTemplateContent);
+            WorkflowExpression.Validate(__workflow_bodydocumentTemplateContent, nameof(bodydocumentTemplateContent), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/api/Flow/GenerateDocument";
@@ -68,9 +56,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docq
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["documentInformation"] = ExpressionConverter.ConvertO(bodydocumentInformation);
+                body["documentInformation"] = ExpressionConverter.ConvertO(__workflow_bodydocumentInformation);
                 bodypropCount++;
-                body["templateFile"] = ExpressionConverter.ConvertO(bodydocumentTemplateContent);
+                body["templateFile"] = ExpressionConverter.ConvertO(__workflow_bodydocumentTemplateContent);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

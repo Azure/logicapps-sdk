@@ -1,28 +1,22 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Transform2all
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class Transform2allActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "transform2all")]
-        [WorkflowExpressionFactory(nameof(__BuildTransform))]
-        public IWorkflowAction Transform([WorkflowExpression] Func<string> bodybase64Content, [WorkflowExpression] Func<string> bodyconfigId)
+        public IWorkflowAction Transform(Expression<Func<string>> bodybase64Content, Expression<Func<string>> bodyconfigId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildTransform(WorkflowExpression<string> bodybase64Content, WorkflowExpression<string> bodyconfigId)
-        {
-            WorkflowExpression.Validate(bodybase64Content, nameof(bodybase64Content), required: true);
-            WorkflowExpression.Validate(bodyconfigId, nameof(bodyconfigId), required: true);
+            var __workflow_bodybase64Content = bodybase64Content == null ? null : WorkflowExpression.Compile(bodybase64Content);
+            WorkflowExpression.Validate(__workflow_bodybase64Content, nameof(bodybase64Content), required: true);
+            var __workflow_bodyconfigId = bodyconfigId == null ? null : WorkflowExpression.Compile(bodyconfigId);
+            WorkflowExpression.Validate(__workflow_bodyconfigId, nameof(bodyconfigId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/1.0/translate";
@@ -31,9 +25,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Transform2all
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["base64Content"] = ExpressionConverter.ConvertO(bodybase64Content);
+                body["base64Content"] = ExpressionConverter.ConvertO(__workflow_bodybase64Content);
                 bodypropCount++;
-                body["configId"] = ExpressionConverter.ConvertO(bodyconfigId);
+                body["configId"] = ExpressionConverter.ConvertO(__workflow_bodyconfigId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

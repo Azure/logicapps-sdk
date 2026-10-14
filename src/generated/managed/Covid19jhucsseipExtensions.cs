@@ -1,12 +1,12 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Covid19jhucsseip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class Covid19jhucsseipActions([ConnectionName] string connectionId)
     {
@@ -74,19 +74,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Covid19jhucsseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "covid19jhucsseip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetCountryV2CountryCountryNameGet))]
-        public IBodyWorkflowAction<GetCountryV2CountryCountryNameGetResponse> GetCountryV2CountryCountryNameGet([WorkflowExpression] Func<string> countryName)
+        public IBodyWorkflowAction<GetCountryV2CountryCountryNameGetResponse> GetCountryV2CountryCountryNameGet(Expression<Func<string>> countryName)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetCountryV2CountryCountryNameGetResponse> __BuildGetCountryV2CountryCountryNameGet(WorkflowExpression<string> countryName)
-        {
-            WorkflowExpression.Validate(countryName, nameof(countryName), required: true);
+            var __workflow_countryName = countryName == null ? null : WorkflowExpression.Compile(countryName);
+            WorkflowExpression.Validate(__workflow_countryName, nameof(countryName), required: true);
             return new DeferredBodyAction<GetCountryV2CountryCountryNameGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/country/{0}", ExpressionConverter.ConvertWithUrlEncoding(countryName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/country/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_countryName, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetCountryV2CountryCountryNameGetResponse>(callPayload);
@@ -94,19 +88,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Covid19jhucsseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "covid19jhucsseip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetTimeSeriesV2TimeseriesCaseGet))]
-        public IBodyWorkflowAction<GetTimeSeriesV2TimeseriesCaseGetResponse> GetTimeSeriesV2TimeseriesCaseGet([WorkflowExpression] Func<string> @case)
+        public IBodyWorkflowAction<GetTimeSeriesV2TimeseriesCaseGetResponse> GetTimeSeriesV2TimeseriesCaseGet(Expression<Func<string>> @case)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetTimeSeriesV2TimeseriesCaseGetResponse> __BuildGetTimeSeriesV2TimeseriesCaseGet(WorkflowExpression<string> @case)
-        {
-            WorkflowExpression.Validate(@case, nameof(@case), required: true);
+            var __workflow_case = @case == null ? null : WorkflowExpression.Compile(@case);
+            WorkflowExpression.Validate(__workflow_case, nameof(@case), required: true);
             return new DeferredBodyAction<GetTimeSeriesV2TimeseriesCaseGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/timeseries/{0}", ExpressionConverter.ConvertWithUrlEncoding(@case, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/timeseries/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_case, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetTimeSeriesV2TimeseriesCaseGetResponse>(callPayload);

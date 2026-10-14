@@ -1,68 +1,61 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hellosign
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class HellosignActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hellosign")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateRequest))]
-        public IBodyWorkflowAction<RequestResponse> CreateRequest([WorkflowExpression] Func<string> templateId, [WorkflowExpression] Func<testModeInput> testMode = null, [WorkflowExpression] Func<string> subject = null, [WorkflowExpression] Func<string> message = null, [WorkflowExpression] Func<string> signingRedirectUrl = null, [WorkflowExpression] Func<bool> allowDecline = null, [WorkflowExpression] Func<object> signers = null)
+        public IBodyWorkflowAction<RequestResponse> CreateRequest(Expression<Func<string>> templateId, Expression<Func<testModeInput>> testMode = null, Expression<Func<string>> subject = null, Expression<Func<string>> message = null, Expression<Func<string>> signingRedirectUrl = null, Expression<Func<bool>> allowDecline = null, Expression<Func<object>> signers = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<RequestResponse> __BuildCreateRequest(WorkflowExpression<string> templateId, WorkflowExpression<testModeInput> testMode = null, WorkflowExpression<string> subject = null, WorkflowExpression<string> message = null, WorkflowExpression<string> signingRedirectUrl = null, WorkflowExpression<bool> allowDecline = null, WorkflowExpression<object> signers = null)
-        {
-            WorkflowExpression.Validate(templateId, nameof(templateId), required: true);
-            WorkflowExpression.Validate(testMode, nameof(testMode), required: false);
-            WorkflowExpression.Validate(subject, nameof(subject), required: false);
-            WorkflowExpression.Validate(message, nameof(message), required: false);
-            WorkflowExpression.Validate(signingRedirectUrl, nameof(signingRedirectUrl), required: false);
-            WorkflowExpression.Validate(allowDecline, nameof(allowDecline), required: false);
-            WorkflowExpression.Validate(signers, nameof(signers), required: false);
+            var __workflow_templateId = templateId == null ? null : WorkflowExpression.Compile(templateId);
+            WorkflowExpression.Validate(__workflow_templateId, nameof(templateId), required: true);
+            var __workflow_testMode = testMode == null ? null : WorkflowExpression.Compile(testMode);
+            WorkflowExpression.Validate(__workflow_testMode, nameof(testMode), required: false);
+            var __workflow_subject = subject == null ? null : WorkflowExpression.Compile(subject);
+            WorkflowExpression.Validate(__workflow_subject, nameof(subject), required: false);
+            var __workflow_message = message == null ? null : WorkflowExpression.Compile(message);
+            WorkflowExpression.Validate(__workflow_message, nameof(message), required: false);
+            var __workflow_signingRedirectUrl = signingRedirectUrl == null ? null : WorkflowExpression.Compile(signingRedirectUrl);
+            WorkflowExpression.Validate(__workflow_signingRedirectUrl, nameof(signingRedirectUrl), required: false);
+            var __workflow_allowDecline = allowDecline == null ? null : WorkflowExpression.Compile(allowDecline);
+            WorkflowExpression.Validate(__workflow_allowDecline, nameof(allowDecline), required: false);
+            var __workflow_signers = signers == null ? null : WorkflowExpression.Compile(signers);
+            WorkflowExpression.Validate(__workflow_signers, nameof(signers), required: false);
             return new DeferredBodyAction<RequestResponse>(() =>
             {
                 var apiCallPath = "/v3/signature_request/send_with_template";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (testMode != null)
-                    callPayload.Queries["test_mode"] = ExpressionConverter.Convert(testMode);
-                callPayload.Queries["template_id"] = ExpressionConverter.Convert(templateId);
-                if (subject != null)
-                    callPayload.Queries["subject"] = ExpressionConverter.Convert(subject);
-                if (message != null)
-                    callPayload.Queries["message"] = ExpressionConverter.Convert(message);
-                if (signingRedirectUrl != null)
-                    callPayload.Queries["signing_redirect_url"] = ExpressionConverter.Convert(signingRedirectUrl);
-                if (allowDecline != null)
-                    callPayload.Queries["allow_decline"] = ExpressionConverter.Convert(allowDecline);
-                callPayload.Body = ExpressionConverter.ConvertO(signers);
+                if (__workflow_testMode != null)
+                    callPayload.Queries["test_mode"] = ExpressionConverter.Convert(__workflow_testMode);
+                callPayload.Queries["template_id"] = ExpressionConverter.Convert(__workflow_templateId);
+                if (__workflow_subject != null)
+                    callPayload.Queries["subject"] = ExpressionConverter.Convert(__workflow_subject);
+                if (__workflow_message != null)
+                    callPayload.Queries["message"] = ExpressionConverter.Convert(__workflow_message);
+                if (__workflow_signingRedirectUrl != null)
+                    callPayload.Queries["signing_redirect_url"] = ExpressionConverter.Convert(__workflow_signingRedirectUrl);
+                if (__workflow_allowDecline != null)
+                    callPayload.Queries["allow_decline"] = ExpressionConverter.Convert(__workflow_allowDecline);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_signers);
                 return new ApiConnectionAction<RequestResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hellosign")]
-        [WorkflowExpressionFactory(nameof(__BuildGetRequest))]
-        public IBodyWorkflowAction<RequestResponse> GetRequest([WorkflowExpression] Func<string> requestId)
+        public IBodyWorkflowAction<RequestResponse> GetRequest(Expression<Func<string>> requestId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<RequestResponse> __BuildGetRequest(WorkflowExpression<string> requestId)
-        {
-            WorkflowExpression.Validate(requestId, nameof(requestId), required: true);
+            var __workflow_requestId = requestId == null ? null : WorkflowExpression.Compile(requestId);
+            WorkflowExpression.Validate(__workflow_requestId, nameof(requestId), required: true);
             return new DeferredBodyAction<RequestResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/signature_request/{0}", ExpressionConverter.ConvertWithUrlEncoding(requestId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/signature_request/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_requestId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<RequestResponse>(callPayload);
@@ -70,19 +63,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hellosign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hellosign")]
-        [WorkflowExpressionFactory(nameof(__BuildCancelRequest))]
-        public IWorkflowAction CancelRequest([WorkflowExpression] Func<string> requestId)
+        public IWorkflowAction CancelRequest(Expression<Func<string>> requestId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildCancelRequest(WorkflowExpression<string> requestId)
-        {
-            WorkflowExpression.Validate(requestId, nameof(requestId), required: true);
+            var __workflow_requestId = requestId == null ? null : WorkflowExpression.Compile(requestId);
+            WorkflowExpression.Validate(__workflow_requestId, nameof(requestId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/signature_request/cancel/{0}", ExpressionConverter.ConvertWithUrlEncoding(requestId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/signature_request/cancel/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_requestId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);

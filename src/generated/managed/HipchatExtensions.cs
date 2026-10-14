@@ -1,30 +1,23 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class HipchatActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hipchat")]
-        [WorkflowExpressionFactory(nameof(__BuildListUsers))]
-        public IBodyWorkflowAction<UserList> ListUsers([WorkflowExpression] Func<string> roomId)
+        public IBodyWorkflowAction<UserList> ListUsers(Expression<Func<string>> roomId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UserList> __BuildListUsers(WorkflowExpression<string> roomId)
-        {
-            WorkflowExpression.Validate(roomId, nameof(roomId), required: true);
+            var __workflow_roomId = roomId == null ? null : WorkflowExpression.Compile(roomId);
+            WorkflowExpression.Validate(__workflow_roomId, nameof(roomId), required: true);
             return new DeferredBodyAction<UserList>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/room/{0}/participant", ExpressionConverter.ConvertWithUrlEncoding(roomId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/room/{0}/participant", ExpressionConverter.ConvertWithUrlEncoding(__workflow_roomId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<UserList>(callPayload);
@@ -32,19 +25,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hipchat")]
-        [WorkflowExpressionFactory(nameof(__BuildGetUserByID))]
-        public IBodyWorkflowAction<UserResponse> GetUserByID([WorkflowExpression] Func<string> userid)
+        public IBodyWorkflowAction<UserResponse> GetUserByID(Expression<Func<string>> userid)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UserResponse> __BuildGetUserByID(WorkflowExpression<string> userid)
-        {
-            WorkflowExpression.Validate(userid, nameof(userid), required: true);
+            var __workflow_userid = userid == null ? null : WorkflowExpression.Compile(userid);
+            WorkflowExpression.Validate(__workflow_userid, nameof(userid), required: true);
             return new DeferredBodyAction<UserResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/user/{0}", ExpressionConverter.ConvertWithUrlEncoding(userid, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/user/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userid, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<UserResponse>(callPayload);
@@ -52,26 +39,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hipchat")]
-        [WorkflowExpressionFactory(nameof(__BuildPostMessage))]
-        public IBodyWorkflowAction<NewMessage> PostMessage([WorkflowExpression] Func<string> roomId, [WorkflowExpression] Func<string> bodymessage)
+        public IBodyWorkflowAction<NewMessage> PostMessage(Expression<Func<string>> roomId, Expression<Func<string>> bodymessage)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<NewMessage> __BuildPostMessage(WorkflowExpression<string> roomId, WorkflowExpression<string> bodymessage)
-        {
-            WorkflowExpression.Validate(roomId, nameof(roomId), required: true);
-            WorkflowExpression.Validate(bodymessage, nameof(bodymessage), required: true);
+            var __workflow_roomId = roomId == null ? null : WorkflowExpression.Compile(roomId);
+            WorkflowExpression.Validate(__workflow_roomId, nameof(roomId), required: true);
+            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
+            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: true);
             return new DeferredBodyAction<NewMessage>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/room/{0}/message", ExpressionConverter.ConvertWithUrlEncoding(roomId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/room/{0}/message", ExpressionConverter.ConvertWithUrlEncoding(__workflow_roomId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                body["message"] = ExpressionConverter.ConvertO(__workflow_bodymessage);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -82,20 +64,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hipchat")]
-        [WorkflowExpressionFactory(nameof(__BuildAddUserToRoom))]
-        public IBodyWorkflowAction<string> AddUserToRoom([WorkflowExpression] Func<string> roomId, [WorkflowExpression] Func<string> memberid)
+        public IBodyWorkflowAction<string> AddUserToRoom(Expression<Func<string>> roomId, Expression<Func<string>> memberid)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildAddUserToRoom(WorkflowExpression<string> roomId, WorkflowExpression<string> memberid)
-        {
-            WorkflowExpression.Validate(roomId, nameof(roomId), required: true);
-            WorkflowExpression.Validate(memberid, nameof(memberid), required: true);
+            var __workflow_roomId = roomId == null ? null : WorkflowExpression.Compile(roomId);
+            WorkflowExpression.Validate(__workflow_roomId, nameof(roomId), required: true);
+            var __workflow_memberid = memberid == null ? null : WorkflowExpression.Compile(memberid);
+            WorkflowExpression.Validate(__workflow_memberid, nameof(memberid), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/room/{0}/member/{1}", ExpressionConverter.ConvertWithUrlEncoding(roomId, 1), ExpressionConverter.ConvertWithUrlEncoding(memberid, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/room/{0}/member/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_roomId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_memberid, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -105,39 +82,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
 
     public class HipchatTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildOnNewMessage))]
-        public IBodyWorkflowTrigger<HistoryResponse> OnNewMessage([WorkflowExpression] Func<string> roomId,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<HistoryResponse> OnNewMessage(Expression<Func<string>> roomId, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<HistoryResponse> __BuildOnNewMessage(WorkflowExpression<string> roomId,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(roomId, nameof(roomId), required: true);
+            var __workflow_roomId = roomId == null ? null : WorkflowExpression.Compile(roomId);
+            WorkflowExpression.Validate(__workflow_roomId, nameof(roomId), required: true);
             return new DeferredBodyTrigger<HistoryResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/message_trigger/room/{0}/history", ExpressionConverter.ConvertWithUrlEncoding(roomId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/message_trigger/room/{0}/history", ExpressionConverter.ConvertWithUrlEncoding(__workflow_roomId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionTrigger<HistoryResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildOnNewFile))]
-        public IBodyWorkflowTrigger<HistoryResponse> OnNewFile([WorkflowExpression] Func<string> roomId,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<HistoryResponse> OnNewFile(Expression<Func<string>> roomId, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<HistoryResponse> __BuildOnNewFile(WorkflowExpression<string> roomId,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(roomId, nameof(roomId), required: true);
+            var __workflow_roomId = roomId == null ? null : WorkflowExpression.Compile(roomId);
+            WorkflowExpression.Validate(__workflow_roomId, nameof(roomId), required: true);
             return new DeferredBodyTrigger<HistoryResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/file_trigger/room/{0}/history", ExpressionConverter.ConvertWithUrlEncoding(roomId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/file_trigger/room/{0}/history", ExpressionConverter.ConvertWithUrlEncoding(__workflow_roomId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionTrigger<HistoryResponse>(callPayload, recurrence: recurrence);

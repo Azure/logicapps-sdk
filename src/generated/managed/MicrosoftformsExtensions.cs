@@ -1,52 +1,40 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftforms
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class MicrosoftformsActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftforms")]
-        [WorkflowExpressionFactory(nameof(__BuildGetFormResponseById))]
-        public IBodyWorkflowAction<JToken> GetFormResponseById([WorkflowExpression] Func<string> formId, [WorkflowExpression] Func<int> responseId)
+        public IBodyWorkflowAction<JToken> GetFormResponseById(Expression<Func<string>> formId, Expression<Func<int>> responseId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildGetFormResponseById(WorkflowExpression<string> formId, WorkflowExpression<int> responseId)
-        {
-            WorkflowExpression.Validate(formId, nameof(formId), required: true);
-            WorkflowExpression.Validate(responseId, nameof(responseId), required: true);
+            var __workflow_formId = formId == null ? null : WorkflowExpression.Compile(formId);
+            WorkflowExpression.Validate(__workflow_formId, nameof(formId), required: true);
+            var __workflow_responseId = responseId == null ? null : WorkflowExpression.Compile(responseId);
+            WorkflowExpression.Validate(__workflow_responseId, nameof(responseId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/formapi/api/forms('{0}')/responses", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/formapi/api/forms('{0}')/responses", ExpressionConverter.ConvertWithUrlEncoding(__workflow_formId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["response_id"] = ExpressionConverter.Convert(responseId);
+                callPayload.Queries["response_id"] = ExpressionConverter.Convert(__workflow_responseId);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftforms")]
-        [WorkflowExpressionFactory(nameof(__BuildGetFormDetailsById))]
-        public IBodyWorkflowAction<GetFormDetailsByIdResult> GetFormDetailsById([WorkflowExpression] Func<string> formId)
+        public IBodyWorkflowAction<GetFormDetailsByIdResult> GetFormDetailsById(Expression<Func<string>> formId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetFormDetailsByIdResult> __BuildGetFormDetailsById(WorkflowExpression<string> formId)
-        {
-            WorkflowExpression.Validate(formId, nameof(formId), required: true);
+            var __workflow_formId = formId == null ? null : WorkflowExpression.Compile(formId);
+            WorkflowExpression.Validate(__workflow_formId, nameof(formId), required: true);
             return new DeferredBodyAction<GetFormDetailsByIdResult>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/formapi/api/forms('{0}')", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/formapi/api/forms('{0}')", ExpressionConverter.ConvertWithUrlEncoding(__workflow_formId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["$select"] = Convert.ToString("title,modifiedDate,createdDate,status,createdBy");
@@ -57,20 +45,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftforms
 
     public class MicrosoftformsTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildCreateFormWebhook))]
-        public IWorkflowTrigger CreateFormWebhook([WorkflowExpression] Func<string> formId,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CreateFormWebhook(Expression<Func<string>> formId, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildCreateFormWebhook(WorkflowExpression<string> formId,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(formId, nameof(formId), required: true);
+            var __workflow_formId = formId == null ? null : WorkflowExpression.Compile(formId);
+            WorkflowExpression.Validate(__workflow_formId, nameof(formId), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/formapi/api/forms/{0}/webhooks", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/formapi/api/forms/{0}/webhooks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_formId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var requestBodyOfWebhook = new JObject();

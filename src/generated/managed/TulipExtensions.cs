@@ -1,53 +1,42 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tulip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class TulipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tulip")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateRecord))]
-        public IBodyWorkflowAction<JToken> CreateRecord([WorkflowExpression] Func<string> tableId, [WorkflowExpression] Func<object> dynamicTableSchema = null)
+        public IBodyWorkflowAction<JToken> CreateRecord(Expression<Func<string>> tableId, Expression<Func<object>> dynamicTableSchema = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildCreateRecord(WorkflowExpression<string> tableId, WorkflowExpression<object> dynamicTableSchema = null)
-        {
-            WorkflowExpression.Validate(tableId, nameof(tableId), required: true);
-            WorkflowExpression.Validate(dynamicTableSchema, nameof(dynamicTableSchema), required: false);
+            var __workflow_tableId = tableId == null ? null : WorkflowExpression.Compile(tableId);
+            WorkflowExpression.Validate(__workflow_tableId, nameof(tableId), required: true);
+            var __workflow_dynamicTableSchema = dynamicTableSchema == null ? null : WorkflowExpression.Compile(dynamicTableSchema);
+            WorkflowExpression.Validate(__workflow_dynamicTableSchema, nameof(dynamicTableSchema), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/tables/{0}/records", ExpressionConverter.ConvertWithUrlEncoding(tableId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/tables/{0}/records", ExpressionConverter.ConvertWithUrlEncoding(__workflow_tableId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(dynamicTableSchema);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_dynamicTableSchema);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tulip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetRecord))]
-        public IBodyWorkflowAction<JToken> GetRecord([WorkflowExpression] Func<string> tableId, [WorkflowExpression] Func<string> recordId)
+        public IBodyWorkflowAction<JToken> GetRecord(Expression<Func<string>> tableId, Expression<Func<string>> recordId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildGetRecord(WorkflowExpression<string> tableId, WorkflowExpression<string> recordId)
-        {
-            WorkflowExpression.Validate(tableId, nameof(tableId), required: true);
-            WorkflowExpression.Validate(recordId, nameof(recordId), required: true);
+            var __workflow_tableId = tableId == null ? null : WorkflowExpression.Compile(tableId);
+            WorkflowExpression.Validate(__workflow_tableId, nameof(tableId), required: true);
+            var __workflow_recordId = recordId == null ? null : WorkflowExpression.Compile(recordId);
+            WorkflowExpression.Validate(__workflow_recordId, nameof(recordId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/tables/{0}/records/{1}", ExpressionConverter.ConvertWithUrlEncoding(tableId, 1), ExpressionConverter.ConvertWithUrlEncoding(recordId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/tables/{0}/records/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_tableId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_recordId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<JToken>(callPayload);
@@ -55,24 +44,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tulip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tulip")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateRecord))]
-        public IBodyWorkflowAction<JToken> UpdateRecord([WorkflowExpression] Func<string> tableId, [WorkflowExpression] Func<string> recordId, [WorkflowExpression] Func<object> dynamicTableSchema = null)
+        public IBodyWorkflowAction<JToken> UpdateRecord(Expression<Func<string>> tableId, Expression<Func<string>> recordId, Expression<Func<object>> dynamicTableSchema = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildUpdateRecord(WorkflowExpression<string> tableId, WorkflowExpression<string> recordId, WorkflowExpression<object> dynamicTableSchema = null)
-        {
-            WorkflowExpression.Validate(tableId, nameof(tableId), required: true);
-            WorkflowExpression.Validate(recordId, nameof(recordId), required: true);
-            WorkflowExpression.Validate(dynamicTableSchema, nameof(dynamicTableSchema), required: false);
+            var __workflow_tableId = tableId == null ? null : WorkflowExpression.Compile(tableId);
+            WorkflowExpression.Validate(__workflow_tableId, nameof(tableId), required: true);
+            var __workflow_recordId = recordId == null ? null : WorkflowExpression.Compile(recordId);
+            WorkflowExpression.Validate(__workflow_recordId, nameof(recordId), required: true);
+            var __workflow_dynamicTableSchema = dynamicTableSchema == null ? null : WorkflowExpression.Compile(dynamicTableSchema);
+            WorkflowExpression.Validate(__workflow_dynamicTableSchema, nameof(dynamicTableSchema), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/tables/{0}/records/{1}", ExpressionConverter.ConvertWithUrlEncoding(tableId, 1), ExpressionConverter.ConvertWithUrlEncoding(recordId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/tables/{0}/records/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_tableId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_recordId, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(dynamicTableSchema);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_dynamicTableSchema);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }

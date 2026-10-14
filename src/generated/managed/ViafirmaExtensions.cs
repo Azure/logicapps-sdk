@@ -1,46 +1,47 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viafirma
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class ViafirmaActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "viafirma")]
-        [WorkflowExpressionFactory(nameof(__BuildSendSignRequest))]
-        public IBodyWorkflowAction<SendSignRequestResponse> SendSignRequest([WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> bodygroupCode, [WorkflowExpression] Func<string> bodynotificationsharedLinkemail, [WorkflowExpression] Func<string> bodynotificationtext = null, [WorkflowExpression] Func<string> bodynotificationdetail = null, [WorkflowExpression] Func<string> bodynotificationsharedLinksubject = null, [WorkflowExpression] Func<string> bodydocumenttemplateCode = null, [WorkflowExpression] Func<string> bodycallbackMails = null)
+        public IBodyWorkflowAction<SendSignRequestResponse> SendSignRequest(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<string>> bodygroupCode, Expression<Func<string>> bodynotificationsharedLinkemail, Expression<Func<string>> bodynotificationtext = null, Expression<Func<string>> bodynotificationdetail = null, Expression<Func<string>> bodynotificationsharedLinksubject = null, Expression<Func<string>> bodydocumenttemplateCode = null, Expression<Func<string>> bodycallbackMails = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SendSignRequestResponse> __BuildSendSignRequest(WorkflowExpression<string> contentType, WorkflowExpression<string> accept, WorkflowExpression<string> bodygroupCode, WorkflowExpression<string> bodynotificationsharedLinkemail, WorkflowExpression<string> bodynotificationtext = null, WorkflowExpression<string> bodynotificationdetail = null, WorkflowExpression<string> bodynotificationsharedLinksubject = null, WorkflowExpression<string> bodydocumenttemplateCode = null, WorkflowExpression<string> bodycallbackMails = null)
-        {
-            WorkflowExpression.Validate(contentType, nameof(contentType), required: true);
-            WorkflowExpression.Validate(accept, nameof(accept), required: true);
-            WorkflowExpression.Validate(bodygroupCode, nameof(bodygroupCode), required: true);
-            WorkflowExpression.Validate(bodynotificationsharedLinkemail, nameof(bodynotificationsharedLinkemail), required: true);
-            WorkflowExpression.Validate(bodynotificationtext, nameof(bodynotificationtext), required: false);
-            WorkflowExpression.Validate(bodynotificationdetail, nameof(bodynotificationdetail), required: false);
-            WorkflowExpression.Validate(bodynotificationsharedLinksubject, nameof(bodynotificationsharedLinksubject), required: false);
-            WorkflowExpression.Validate(bodydocumenttemplateCode, nameof(bodydocumenttemplateCode), required: false);
-            WorkflowExpression.Validate(bodycallbackMails, nameof(bodycallbackMails), required: false);
+            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
+            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: true);
+            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
+            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: true);
+            var __workflow_bodygroupCode = bodygroupCode == null ? null : WorkflowExpression.Compile(bodygroupCode);
+            WorkflowExpression.Validate(__workflow_bodygroupCode, nameof(bodygroupCode), required: true);
+            var __workflow_bodynotificationsharedLinkemail = bodynotificationsharedLinkemail == null ? null : WorkflowExpression.Compile(bodynotificationsharedLinkemail);
+            WorkflowExpression.Validate(__workflow_bodynotificationsharedLinkemail, nameof(bodynotificationsharedLinkemail), required: true);
+            var __workflow_bodynotificationtext = bodynotificationtext == null ? null : WorkflowExpression.Compile(bodynotificationtext);
+            WorkflowExpression.Validate(__workflow_bodynotificationtext, nameof(bodynotificationtext), required: false);
+            var __workflow_bodynotificationdetail = bodynotificationdetail == null ? null : WorkflowExpression.Compile(bodynotificationdetail);
+            WorkflowExpression.Validate(__workflow_bodynotificationdetail, nameof(bodynotificationdetail), required: false);
+            var __workflow_bodynotificationsharedLinksubject = bodynotificationsharedLinksubject == null ? null : WorkflowExpression.Compile(bodynotificationsharedLinksubject);
+            WorkflowExpression.Validate(__workflow_bodynotificationsharedLinksubject, nameof(bodynotificationsharedLinksubject), required: false);
+            var __workflow_bodydocumenttemplateCode = bodydocumenttemplateCode == null ? null : WorkflowExpression.Compile(bodydocumenttemplateCode);
+            WorkflowExpression.Validate(__workflow_bodydocumenttemplateCode, nameof(bodydocumenttemplateCode), required: false);
+            var __workflow_bodycallbackMails = bodycallbackMails == null ? null : WorkflowExpression.Compile(bodycallbackMails);
+            WorkflowExpression.Validate(__workflow_bodycallbackMails, nameof(bodycallbackMails), required: false);
             return new DeferredBodyAction<SendSignRequestResponse>(() =>
             {
                 var apiCallPath = "/documents/api/v3/messages/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["groupCode"] = ExpressionConverter.ConvertO(bodygroupCode);
+                body["groupCode"] = ExpressionConverter.ConvertO(__workflow_bodygroupCode);
                 var workflowObject = new JObject();
                 var workflowObjectpropCount = 0;
                 workflowObject["type"] = "WEB";
@@ -53,25 +54,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viafirma
 
                 var notificationObject = new JObject();
                 var notificationObjectpropCount = 0;
-                if (bodynotificationtext != null)
+                if (__workflow_bodynotificationtext != null)
                 {
-                    notificationObject["text"] = ExpressionConverter.ConvertO(bodynotificationtext);
+                    notificationObject["text"] = ExpressionConverter.ConvertO(__workflow_bodynotificationtext);
                     notificationObjectpropCount++;
                 }
 
-                if (bodynotificationdetail != null)
+                if (__workflow_bodynotificationdetail != null)
                 {
-                    notificationObject["detail"] = ExpressionConverter.ConvertO(bodynotificationdetail);
+                    notificationObject["detail"] = ExpressionConverter.ConvertO(__workflow_bodynotificationdetail);
                     notificationObjectpropCount++;
                 }
 
                 var sharedLinkObject = new JObject();
                 var sharedLinkObjectpropCount = 0;
                 sharedLinkObjectpropCount++;
-                sharedLinkObject["email"] = ExpressionConverter.ConvertO(bodynotificationsharedLinkemail);
-                if (bodynotificationsharedLinksubject != null)
+                sharedLinkObject["email"] = ExpressionConverter.ConvertO(__workflow_bodynotificationsharedLinkemail);
+                if (__workflow_bodynotificationsharedLinksubject != null)
                 {
-                    sharedLinkObject["subject"] = ExpressionConverter.ConvertO(bodynotificationsharedLinksubject);
+                    sharedLinkObject["subject"] = ExpressionConverter.ConvertO(__workflow_bodynotificationsharedLinksubject);
                     sharedLinkObjectpropCount++;
                 }
 
@@ -89,9 +90,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viafirma
 
                 var documentObject = new JObject();
                 var documentObjectpropCount = 0;
-                if (bodydocumenttemplateCode != null)
+                if (__workflow_bodydocumenttemplateCode != null)
                 {
-                    documentObject["templateCode"] = ExpressionConverter.ConvertO(bodydocumenttemplateCode);
+                    documentObject["templateCode"] = ExpressionConverter.ConvertO(__workflow_bodydocumenttemplateCode);
                     documentObjectpropCount++;
                 }
 
@@ -101,9 +102,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viafirma
                     bodypropCount++;
                 }
 
-                if (bodycallbackMails != null)
+                if (__workflow_bodycallbackMails != null)
                 {
-                    body["callbackMails"] = ExpressionConverter.ConvertO(bodycallbackMails);
+                    body["callbackMails"] = ExpressionConverter.ConvertO(__workflow_bodycallbackMails);
                     bodypropCount++;
                 }
 
@@ -117,30 +118,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viafirma
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "viafirma")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateSignRequest))]
-        public IBodyWorkflowAction<CreateSignRequestResponse> CreateSignRequest([WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> bodygroupCode, [WorkflowExpression] Func<string> bodydocumenttemplateCode = null)
+        public IBodyWorkflowAction<CreateSignRequestResponse> CreateSignRequest(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<string>> bodygroupCode, Expression<Func<string>> bodydocumenttemplateCode = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateSignRequestResponse> __BuildCreateSignRequest(WorkflowExpression<string> contentType, WorkflowExpression<string> accept, WorkflowExpression<string> bodygroupCode, WorkflowExpression<string> bodydocumenttemplateCode = null)
-        {
-            WorkflowExpression.Validate(contentType, nameof(contentType), required: true);
-            WorkflowExpression.Validate(accept, nameof(accept), required: true);
-            WorkflowExpression.Validate(bodygroupCode, nameof(bodygroupCode), required: true);
-            WorkflowExpression.Validate(bodydocumenttemplateCode, nameof(bodydocumenttemplateCode), required: false);
+            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
+            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: true);
+            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
+            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: true);
+            var __workflow_bodygroupCode = bodygroupCode == null ? null : WorkflowExpression.Compile(bodygroupCode);
+            WorkflowExpression.Validate(__workflow_bodygroupCode, nameof(bodygroupCode), required: true);
+            var __workflow_bodydocumenttemplateCode = bodydocumenttemplateCode == null ? null : WorkflowExpression.Compile(bodydocumenttemplateCode);
+            WorkflowExpression.Validate(__workflow_bodydocumenttemplateCode, nameof(bodydocumenttemplateCode), required: false);
             return new DeferredBodyAction<CreateSignRequestResponse>(() =>
             {
                 var apiCallPath = "/documents/api/v3/messages/dispatch";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["groupCode"] = ExpressionConverter.ConvertO(bodygroupCode);
+                body["groupCode"] = ExpressionConverter.ConvertO(__workflow_bodygroupCode);
                 var workflowObject = new JObject();
                 var workflowObjectpropCount = 0;
                 workflowObject["type"] = "PRESENTIAL";
@@ -153,9 +151,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viafirma
 
                 var documentObject = new JObject();
                 var documentObjectpropCount = 0;
-                if (bodydocumenttemplateCode != null)
+                if (__workflow_bodydocumenttemplateCode != null)
                 {
-                    documentObject["templateCode"] = ExpressionConverter.ConvertO(bodydocumenttemplateCode);
+                    documentObject["templateCode"] = ExpressionConverter.ConvertO(__workflow_bodydocumenttemplateCode);
                     documentObjectpropCount++;
                 }
 

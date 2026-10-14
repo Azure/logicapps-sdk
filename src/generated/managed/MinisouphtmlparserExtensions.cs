@@ -1,27 +1,20 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class MinisouphtmlparserActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "minisouphtmlparser")]
-        [WorkflowExpressionFactory(nameof(__BuildFetchHTML))]
-        public IBodyWorkflowAction<FetchHTMLResponse> FetchHTML([WorkflowExpression] Func<string> bodyurl)
+        public IBodyWorkflowAction<FetchHTMLResponse> FetchHTML(Expression<Func<string>> bodyurl)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FetchHTMLResponse> __BuildFetchHTML(WorkflowExpression<string> bodyurl)
-        {
-            WorkflowExpression.Validate(bodyurl, nameof(bodyurl), required: true);
+            var __workflow_bodyurl = bodyurl == null ? null : WorkflowExpression.Compile(bodyurl);
+            WorkflowExpression.Validate(__workflow_bodyurl, nameof(bodyurl), required: true);
             return new DeferredBodyAction<FetchHTMLResponse>(() =>
             {
                 var apiCallPath = "/fetch-html";
@@ -32,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
                 body["operation"] = "fetch_html";
                 bodypropCount++;
                 bodypropCount++;
-                body["url"] = ExpressionConverter.ConvertO(bodyurl);
+                body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -43,18 +36,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "minisouphtmlparser")]
-        [WorkflowExpressionFactory(nameof(__BuildSelectElements))]
-        public IBodyWorkflowAction<SelectElementsResponse> SelectElements([WorkflowExpression] Func<string> bodyhtml, [WorkflowExpression] Func<string> bodyselector, [WorkflowExpression] Func<bodyselectorTypeInput> bodyselectorType = null)
+        public IBodyWorkflowAction<SelectElementsResponse> SelectElements(Expression<Func<string>> bodyhtml, Expression<Func<string>> bodyselector, Expression<Func<bodyselectorTypeInput>> bodyselectorType = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SelectElementsResponse> __BuildSelectElements(WorkflowExpression<string> bodyhtml, WorkflowExpression<string> bodyselector, WorkflowExpression<bodyselectorTypeInput> bodyselectorType = null)
-        {
-            WorkflowExpression.Validate(bodyhtml, nameof(bodyhtml), required: true);
-            WorkflowExpression.Validate(bodyselector, nameof(bodyselector), required: true);
-            WorkflowExpression.Validate(bodyselectorType, nameof(bodyselectorType), required: false);
+            var __workflow_bodyhtml = bodyhtml == null ? null : WorkflowExpression.Compile(bodyhtml);
+            WorkflowExpression.Validate(__workflow_bodyhtml, nameof(bodyhtml), required: true);
+            var __workflow_bodyselector = bodyselector == null ? null : WorkflowExpression.Compile(bodyselector);
+            WorkflowExpression.Validate(__workflow_bodyselector, nameof(bodyselector), required: true);
+            var __workflow_bodyselectorType = bodyselectorType == null ? null : WorkflowExpression.Compile(bodyselectorType);
+            WorkflowExpression.Validate(__workflow_bodyselectorType, nameof(bodyselectorType), required: false);
             return new DeferredBodyAction<SelectElementsResponse>(() =>
             {
                 var apiCallPath = "/select";
@@ -65,14 +54,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
                 body["operation"] = "select";
                 bodypropCount++;
                 bodypropCount++;
-                body["html"] = ExpressionConverter.ConvertO(bodyhtml);
+                body["html"] = ExpressionConverter.ConvertO(__workflow_bodyhtml);
                 bodypropCount++;
-                body["selector"] = ExpressionConverter.ConvertO(bodyselector);
-                if (bodyselectorType != null)
+                body["selector"] = ExpressionConverter.ConvertO(__workflow_bodyselector);
+                if (__workflow_bodyselectorType != null)
                 {
-                    if (bodyselectorType != null)
+                    if (__workflow_bodyselectorType != null)
                     {
-                        body["selector_type"] = ExpressionConverter.ConvertO(bodyselectorType);
+                        body["selector_type"] = ExpressionConverter.ConvertO(__workflow_bodyselectorType);
                         bodypropCount++;
                     }
 
@@ -94,19 +83,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "minisouphtmlparser")]
-        [WorkflowExpressionFactory(nameof(__BuildExtractValues))]
-        public IBodyWorkflowAction<ExtractValuesResponse> ExtractValues([WorkflowExpression] Func<string> bodyhtml, [WorkflowExpression] Func<string> bodyselector, [WorkflowExpression] Func<string> bodyattribute, [WorkflowExpression] Func<bodyselectorTypeInput> bodyselectorType = null)
+        public IBodyWorkflowAction<ExtractValuesResponse> ExtractValues(Expression<Func<string>> bodyhtml, Expression<Func<string>> bodyselector, Expression<Func<string>> bodyattribute, Expression<Func<bodyselectorTypeInput>> bodyselectorType = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ExtractValuesResponse> __BuildExtractValues(WorkflowExpression<string> bodyhtml, WorkflowExpression<string> bodyselector, WorkflowExpression<string> bodyattribute, WorkflowExpression<bodyselectorTypeInput> bodyselectorType = null)
-        {
-            WorkflowExpression.Validate(bodyhtml, nameof(bodyhtml), required: true);
-            WorkflowExpression.Validate(bodyselector, nameof(bodyselector), required: true);
-            WorkflowExpression.Validate(bodyattribute, nameof(bodyattribute), required: true);
-            WorkflowExpression.Validate(bodyselectorType, nameof(bodyselectorType), required: false);
+            var __workflow_bodyhtml = bodyhtml == null ? null : WorkflowExpression.Compile(bodyhtml);
+            WorkflowExpression.Validate(__workflow_bodyhtml, nameof(bodyhtml), required: true);
+            var __workflow_bodyselector = bodyselector == null ? null : WorkflowExpression.Compile(bodyselector);
+            WorkflowExpression.Validate(__workflow_bodyselector, nameof(bodyselector), required: true);
+            var __workflow_bodyattribute = bodyattribute == null ? null : WorkflowExpression.Compile(bodyattribute);
+            WorkflowExpression.Validate(__workflow_bodyattribute, nameof(bodyattribute), required: true);
+            var __workflow_bodyselectorType = bodyselectorType == null ? null : WorkflowExpression.Compile(bodyselectorType);
+            WorkflowExpression.Validate(__workflow_bodyselectorType, nameof(bodyselectorType), required: false);
             return new DeferredBodyAction<ExtractValuesResponse>(() =>
             {
                 var apiCallPath = "/extract";
@@ -117,16 +103,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
                 body["operation"] = "extract";
                 bodypropCount++;
                 bodypropCount++;
-                body["html"] = ExpressionConverter.ConvertO(bodyhtml);
+                body["html"] = ExpressionConverter.ConvertO(__workflow_bodyhtml);
                 bodypropCount++;
-                body["selector"] = ExpressionConverter.ConvertO(bodyselector);
+                body["selector"] = ExpressionConverter.ConvertO(__workflow_bodyselector);
                 bodypropCount++;
-                body["attribute"] = ExpressionConverter.ConvertO(bodyattribute);
-                if (bodyselectorType != null)
+                body["attribute"] = ExpressionConverter.ConvertO(__workflow_bodyattribute);
+                if (__workflow_bodyselectorType != null)
                 {
-                    if (bodyselectorType != null)
+                    if (__workflow_bodyselectorType != null)
                     {
-                        body["selector_type"] = ExpressionConverter.ConvertO(bodyselectorType);
+                        body["selector_type"] = ExpressionConverter.ConvertO(__workflow_bodyselectorType);
                         bodypropCount++;
                     }
 
@@ -148,19 +134,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "minisouphtmlparser")]
-        [WorkflowExpressionFactory(nameof(__BuildFindAllElements))]
-        public IBodyWorkflowAction<FindAllElementsResponse> FindAllElements([WorkflowExpression] Func<string> bodyhtml, [WorkflowExpression] Func<string> bodytagName, [WorkflowExpression] Func<string> bodyattributesid = null, [WorkflowExpression] Func<string> bodyattributesClass = null)
+        public IBodyWorkflowAction<FindAllElementsResponse> FindAllElements(Expression<Func<string>> bodyhtml, Expression<Func<string>> bodytagName, Expression<Func<string>> bodyattributesid = null, Expression<Func<string>> bodyattributesClass = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FindAllElementsResponse> __BuildFindAllElements(WorkflowExpression<string> bodyhtml, WorkflowExpression<string> bodytagName, WorkflowExpression<string> bodyattributesid = null, WorkflowExpression<string> bodyattributesClass = null)
-        {
-            WorkflowExpression.Validate(bodyhtml, nameof(bodyhtml), required: true);
-            WorkflowExpression.Validate(bodytagName, nameof(bodytagName), required: true);
-            WorkflowExpression.Validate(bodyattributesid, nameof(bodyattributesid), required: false);
-            WorkflowExpression.Validate(bodyattributesClass, nameof(bodyattributesClass), required: false);
+            var __workflow_bodyhtml = bodyhtml == null ? null : WorkflowExpression.Compile(bodyhtml);
+            WorkflowExpression.Validate(__workflow_bodyhtml, nameof(bodyhtml), required: true);
+            var __workflow_bodytagName = bodytagName == null ? null : WorkflowExpression.Compile(bodytagName);
+            WorkflowExpression.Validate(__workflow_bodytagName, nameof(bodytagName), required: true);
+            var __workflow_bodyattributesid = bodyattributesid == null ? null : WorkflowExpression.Compile(bodyattributesid);
+            WorkflowExpression.Validate(__workflow_bodyattributesid, nameof(bodyattributesid), required: false);
+            var __workflow_bodyattributesClass = bodyattributesClass == null ? null : WorkflowExpression.Compile(bodyattributesClass);
+            WorkflowExpression.Validate(__workflow_bodyattributesClass, nameof(bodyattributesClass), required: false);
             return new DeferredBodyAction<FindAllElementsResponse>(() =>
             {
                 var apiCallPath = "/find-all";
@@ -171,20 +154,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
                 body["operation"] = "find_all";
                 bodypropCount++;
                 bodypropCount++;
-                body["html"] = ExpressionConverter.ConvertO(bodyhtml);
+                body["html"] = ExpressionConverter.ConvertO(__workflow_bodyhtml);
                 bodypropCount++;
-                body["tag_name"] = ExpressionConverter.ConvertO(bodytagName);
+                body["tag_name"] = ExpressionConverter.ConvertO(__workflow_bodytagName);
                 var attributesObject = new JObject();
                 var attributesObjectpropCount = 0;
-                if (bodyattributesid != null)
+                if (__workflow_bodyattributesid != null)
                 {
-                    attributesObject["id"] = ExpressionConverter.ConvertO(bodyattributesid);
+                    attributesObject["id"] = ExpressionConverter.ConvertO(__workflow_bodyattributesid);
                     attributesObjectpropCount++;
                 }
 
-                if (bodyattributesClass != null)
+                if (__workflow_bodyattributesClass != null)
                 {
-                    attributesObject["class"] = ExpressionConverter.ConvertO(bodyattributesClass);
+                    attributesObject["class"] = ExpressionConverter.ConvertO(__workflow_bodyattributesClass);
                     attributesObjectpropCount++;
                 }
 
@@ -204,18 +187,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "minisouphtmlparser")]
-        [WorkflowExpressionFactory(nameof(__BuildParseTable))]
-        public IBodyWorkflowAction<ParseTableResponse> ParseTable([WorkflowExpression] Func<string> bodyhtml, [WorkflowExpression] Func<string> bodytableSelector = null, [WorkflowExpression] Func<bool> bodyheaderRowsExist = null)
+        public IBodyWorkflowAction<ParseTableResponse> ParseTable(Expression<Func<string>> bodyhtml, Expression<Func<string>> bodytableSelector = null, Expression<Func<bool>> bodyheaderRowsExist = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ParseTableResponse> __BuildParseTable(WorkflowExpression<string> bodyhtml, WorkflowExpression<string> bodytableSelector = null, WorkflowExpression<bool> bodyheaderRowsExist = null)
-        {
-            WorkflowExpression.Validate(bodyhtml, nameof(bodyhtml), required: true);
-            WorkflowExpression.Validate(bodytableSelector, nameof(bodytableSelector), required: false);
-            WorkflowExpression.Validate(bodyheaderRowsExist, nameof(bodyheaderRowsExist), required: false);
+            var __workflow_bodyhtml = bodyhtml == null ? null : WorkflowExpression.Compile(bodyhtml);
+            WorkflowExpression.Validate(__workflow_bodyhtml, nameof(bodyhtml), required: true);
+            var __workflow_bodytableSelector = bodytableSelector == null ? null : WorkflowExpression.Compile(bodytableSelector);
+            WorkflowExpression.Validate(__workflow_bodytableSelector, nameof(bodytableSelector), required: false);
+            var __workflow_bodyheaderRowsExist = bodyheaderRowsExist == null ? null : WorkflowExpression.Compile(bodyheaderRowsExist);
+            WorkflowExpression.Validate(__workflow_bodyheaderRowsExist, nameof(bodyheaderRowsExist), required: false);
             return new DeferredBodyAction<ParseTableResponse>(() =>
             {
                 var apiCallPath = "/parse-table";
@@ -226,12 +205,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
                 body["operation"] = "parse_table";
                 bodypropCount++;
                 bodypropCount++;
-                body["html"] = ExpressionConverter.ConvertO(bodyhtml);
-                if (bodytableSelector != null)
+                body["html"] = ExpressionConverter.ConvertO(__workflow_bodyhtml);
+                if (__workflow_bodytableSelector != null)
                 {
-                    if (bodytableSelector != null)
+                    if (__workflow_bodytableSelector != null)
                     {
-                        body["table_selector"] = ExpressionConverter.ConvertO(bodytableSelector);
+                        body["table_selector"] = ExpressionConverter.ConvertO(__workflow_bodytableSelector);
                         bodypropCount++;
                     }
 
@@ -243,11 +222,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
                     bodypropCount++;
                 }
 
-                if (bodyheaderRowsExist != null)
+                if (__workflow_bodyheaderRowsExist != null)
                 {
-                    if (bodyheaderRowsExist != null)
+                    if (__workflow_bodyheaderRowsExist != null)
                     {
-                        body["header_rows_exist"] = ExpressionConverter.ConvertO(bodyheaderRowsExist);
+                        body["header_rows_exist"] = ExpressionConverter.ConvertO(__workflow_bodyheaderRowsExist);
                         bodypropCount++;
                     }
 

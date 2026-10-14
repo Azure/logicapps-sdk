@@ -1,126 +1,122 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hithorizons
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class HithorizonsActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hithorizons")]
-        [WorkflowExpressionFactory(nameof(__BuildCompanyGet))]
-        public IBodyWorkflowAction<CompanyDetailResultApiResponse> CompanyGet([WorkflowExpression] Func<string> hitHorizonsId)
+        public IBodyWorkflowAction<CompanyDetailResultApiResponse> CompanyGet(Expression<Func<string>> hitHorizonsId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CompanyDetailResultApiResponse> __BuildCompanyGet(WorkflowExpression<string> hitHorizonsId)
-        {
-            WorkflowExpression.Validate(hitHorizonsId, nameof(hitHorizonsId), required: true);
+            var __workflow_hitHorizonsId = hitHorizonsId == null ? null : WorkflowExpression.Compile(hitHorizonsId);
+            WorkflowExpression.Validate(__workflow_hitHorizonsId, nameof(hitHorizonsId), required: true);
             return new DeferredBodyAction<CompanyDetailResultApiResponse>(() =>
             {
                 var apiCallPath = "/Company/Get";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["HitHorizonsId"] = ExpressionConverter.Convert(hitHorizonsId);
+                callPayload.Queries["HitHorizonsId"] = ExpressionConverter.Convert(__workflow_hitHorizonsId);
                 return new ApiConnectionAction<CompanyDetailResultApiResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hithorizons")]
-        [WorkflowExpressionFactory(nameof(__BuildCompanySearch))]
-        public IBodyWorkflowAction<CompanySearchResponseApiResponse> CompanySearch([WorkflowExpression] Func<string> dUNSNumber = null, [WorkflowExpression] Func<string> companyName = null, [WorkflowExpression] Func<string> nationalId = null, [WorkflowExpression] Func<string> addressUnstructured = null, [WorkflowExpression] Func<string> addressStreet = null, [WorkflowExpression] Func<string> city = null, [WorkflowExpression] Func<string> stateProvince = null, [WorkflowExpression] Func<string> country = null, [WorkflowExpression] Func<bool> showBranches = null, [WorkflowExpression] Func<string> companyTypes = null, [WorkflowExpression] Func<int> maxResults = null)
+        public IBodyWorkflowAction<CompanySearchResponseApiResponse> CompanySearch(Expression<Func<string>> dUNSNumber = null, Expression<Func<string>> companyName = null, Expression<Func<string>> nationalId = null, Expression<Func<string>> addressUnstructured = null, Expression<Func<string>> addressStreet = null, Expression<Func<string>> city = null, Expression<Func<string>> stateProvince = null, Expression<Func<string>> country = null, Expression<Func<bool>> showBranches = null, Expression<Func<string>> companyTypes = null, Expression<Func<int>> maxResults = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CompanySearchResponseApiResponse> __BuildCompanySearch(WorkflowExpression<string> dUNSNumber = null, WorkflowExpression<string> companyName = null, WorkflowExpression<string> nationalId = null, WorkflowExpression<string> addressUnstructured = null, WorkflowExpression<string> addressStreet = null, WorkflowExpression<string> city = null, WorkflowExpression<string> stateProvince = null, WorkflowExpression<string> country = null, WorkflowExpression<bool> showBranches = null, WorkflowExpression<string> companyTypes = null, WorkflowExpression<int> maxResults = null)
-        {
-            WorkflowExpression.Validate(dUNSNumber, nameof(dUNSNumber), required: false);
-            WorkflowExpression.Validate(companyName, nameof(companyName), required: false);
-            WorkflowExpression.Validate(nationalId, nameof(nationalId), required: false);
-            WorkflowExpression.Validate(addressUnstructured, nameof(addressUnstructured), required: false);
-            WorkflowExpression.Validate(addressStreet, nameof(addressStreet), required: false);
-            WorkflowExpression.Validate(city, nameof(city), required: false);
-            WorkflowExpression.Validate(stateProvince, nameof(stateProvince), required: false);
-            WorkflowExpression.Validate(country, nameof(country), required: false);
-            WorkflowExpression.Validate(showBranches, nameof(showBranches), required: false);
-            WorkflowExpression.Validate(companyTypes, nameof(companyTypes), required: false);
-            WorkflowExpression.Validate(maxResults, nameof(maxResults), required: false);
+            var __workflow_dUNSNumber = dUNSNumber == null ? null : WorkflowExpression.Compile(dUNSNumber);
+            WorkflowExpression.Validate(__workflow_dUNSNumber, nameof(dUNSNumber), required: false);
+            var __workflow_companyName = companyName == null ? null : WorkflowExpression.Compile(companyName);
+            WorkflowExpression.Validate(__workflow_companyName, nameof(companyName), required: false);
+            var __workflow_nationalId = nationalId == null ? null : WorkflowExpression.Compile(nationalId);
+            WorkflowExpression.Validate(__workflow_nationalId, nameof(nationalId), required: false);
+            var __workflow_addressUnstructured = addressUnstructured == null ? null : WorkflowExpression.Compile(addressUnstructured);
+            WorkflowExpression.Validate(__workflow_addressUnstructured, nameof(addressUnstructured), required: false);
+            var __workflow_addressStreet = addressStreet == null ? null : WorkflowExpression.Compile(addressStreet);
+            WorkflowExpression.Validate(__workflow_addressStreet, nameof(addressStreet), required: false);
+            var __workflow_city = city == null ? null : WorkflowExpression.Compile(city);
+            WorkflowExpression.Validate(__workflow_city, nameof(city), required: false);
+            var __workflow_stateProvince = stateProvince == null ? null : WorkflowExpression.Compile(stateProvince);
+            WorkflowExpression.Validate(__workflow_stateProvince, nameof(stateProvince), required: false);
+            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
+            WorkflowExpression.Validate(__workflow_country, nameof(country), required: false);
+            var __workflow_showBranches = showBranches == null ? null : WorkflowExpression.Compile(showBranches);
+            WorkflowExpression.Validate(__workflow_showBranches, nameof(showBranches), required: false);
+            var __workflow_companyTypes = companyTypes == null ? null : WorkflowExpression.Compile(companyTypes);
+            WorkflowExpression.Validate(__workflow_companyTypes, nameof(companyTypes), required: false);
+            var __workflow_maxResults = maxResults == null ? null : WorkflowExpression.Compile(maxResults);
+            WorkflowExpression.Validate(__workflow_maxResults, nameof(maxResults), required: false);
             return new DeferredBodyAction<CompanySearchResponseApiResponse>(() =>
             {
                 var apiCallPath = "/Company/Search";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (dUNSNumber != null)
-                    callPayload.Queries["DUNSNumber"] = ExpressionConverter.Convert(dUNSNumber);
-                if (companyName != null)
-                    callPayload.Queries["CompanyName"] = ExpressionConverter.Convert(companyName);
-                if (nationalId != null)
-                    callPayload.Queries["NationalId"] = ExpressionConverter.Convert(nationalId);
-                if (addressUnstructured != null)
-                    callPayload.Queries["AddressUnstructured"] = ExpressionConverter.Convert(addressUnstructured);
-                if (addressStreet != null)
-                    callPayload.Queries["AddressStreet"] = ExpressionConverter.Convert(addressStreet);
-                if (city != null)
-                    callPayload.Queries["City"] = ExpressionConverter.Convert(city);
-                if (stateProvince != null)
-                    callPayload.Queries["StateProvince"] = ExpressionConverter.Convert(stateProvince);
-                if (country != null)
-                    callPayload.Queries["Country"] = ExpressionConverter.Convert(country);
+                if (__workflow_dUNSNumber != null)
+                    callPayload.Queries["DUNSNumber"] = ExpressionConverter.Convert(__workflow_dUNSNumber);
+                if (__workflow_companyName != null)
+                    callPayload.Queries["CompanyName"] = ExpressionConverter.Convert(__workflow_companyName);
+                if (__workflow_nationalId != null)
+                    callPayload.Queries["NationalId"] = ExpressionConverter.Convert(__workflow_nationalId);
+                if (__workflow_addressUnstructured != null)
+                    callPayload.Queries["AddressUnstructured"] = ExpressionConverter.Convert(__workflow_addressUnstructured);
+                if (__workflow_addressStreet != null)
+                    callPayload.Queries["AddressStreet"] = ExpressionConverter.Convert(__workflow_addressStreet);
+                if (__workflow_city != null)
+                    callPayload.Queries["City"] = ExpressionConverter.Convert(__workflow_city);
+                if (__workflow_stateProvince != null)
+                    callPayload.Queries["StateProvince"] = ExpressionConverter.Convert(__workflow_stateProvince);
+                if (__workflow_country != null)
+                    callPayload.Queries["Country"] = ExpressionConverter.Convert(__workflow_country);
                 callPayload.Queries["ShowBranches"] = Convert.ToString(false);
-                if (showBranches != null)
-                    callPayload.Queries["ShowBranches"] = ExpressionConverter.Convert(showBranches);
-                if (companyTypes != null)
-                    callPayload.Queries["CompanyTypes"] = ExpressionConverter.Convert(companyTypes);
+                if (__workflow_showBranches != null)
+                    callPayload.Queries["ShowBranches"] = ExpressionConverter.Convert(__workflow_showBranches);
+                if (__workflow_companyTypes != null)
+                    callPayload.Queries["CompanyTypes"] = ExpressionConverter.Convert(__workflow_companyTypes);
                 callPayload.Queries["MaxResults"] = Convert.ToString(20);
-                if (maxResults != null)
-                    callPayload.Queries["MaxResults"] = ExpressionConverter.Convert(maxResults);
+                if (__workflow_maxResults != null)
+                    callPayload.Queries["MaxResults"] = ExpressionConverter.Convert(__workflow_maxResults);
                 return new ApiConnectionAction<CompanySearchResponseApiResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hithorizons")]
-        [WorkflowExpressionFactory(nameof(__BuildCompanySearchUnstructured))]
-        public IBodyWorkflowAction<CompanySearchResponseApiResponse> CompanySearchUnstructured([WorkflowExpression] Func<string> ids = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> address = null, [WorkflowExpression] Func<bool> showBranches = null, [WorkflowExpression] Func<string> companyTypes = null, [WorkflowExpression] Func<int> maxResults = null)
+        public IBodyWorkflowAction<CompanySearchResponseApiResponse> CompanySearchUnstructured(Expression<Func<string>> ids = null, Expression<Func<string>> name = null, Expression<Func<string>> address = null, Expression<Func<bool>> showBranches = null, Expression<Func<string>> companyTypes = null, Expression<Func<int>> maxResults = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CompanySearchResponseApiResponse> __BuildCompanySearchUnstructured(WorkflowExpression<string> ids = null, WorkflowExpression<string> name = null, WorkflowExpression<string> address = null, WorkflowExpression<bool> showBranches = null, WorkflowExpression<string> companyTypes = null, WorkflowExpression<int> maxResults = null)
-        {
-            WorkflowExpression.Validate(ids, nameof(ids), required: false);
-            WorkflowExpression.Validate(name, nameof(name), required: false);
-            WorkflowExpression.Validate(address, nameof(address), required: false);
-            WorkflowExpression.Validate(showBranches, nameof(showBranches), required: false);
-            WorkflowExpression.Validate(companyTypes, nameof(companyTypes), required: false);
-            WorkflowExpression.Validate(maxResults, nameof(maxResults), required: false);
+            var __workflow_ids = ids == null ? null : WorkflowExpression.Compile(ids);
+            WorkflowExpression.Validate(__workflow_ids, nameof(ids), required: false);
+            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
+            WorkflowExpression.Validate(__workflow_name, nameof(name), required: false);
+            var __workflow_address = address == null ? null : WorkflowExpression.Compile(address);
+            WorkflowExpression.Validate(__workflow_address, nameof(address), required: false);
+            var __workflow_showBranches = showBranches == null ? null : WorkflowExpression.Compile(showBranches);
+            WorkflowExpression.Validate(__workflow_showBranches, nameof(showBranches), required: false);
+            var __workflow_companyTypes = companyTypes == null ? null : WorkflowExpression.Compile(companyTypes);
+            WorkflowExpression.Validate(__workflow_companyTypes, nameof(companyTypes), required: false);
+            var __workflow_maxResults = maxResults == null ? null : WorkflowExpression.Compile(maxResults);
+            WorkflowExpression.Validate(__workflow_maxResults, nameof(maxResults), required: false);
             return new DeferredBodyAction<CompanySearchResponseApiResponse>(() =>
             {
                 var apiCallPath = "/Company/SearchUnstructured";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (ids != null)
-                    callPayload.Queries["Ids"] = ExpressionConverter.Convert(ids);
-                if (name != null)
-                    callPayload.Queries["Name"] = ExpressionConverter.Convert(name);
-                if (address != null)
-                    callPayload.Queries["Address"] = ExpressionConverter.Convert(address);
+                if (__workflow_ids != null)
+                    callPayload.Queries["Ids"] = ExpressionConverter.Convert(__workflow_ids);
+                if (__workflow_name != null)
+                    callPayload.Queries["Name"] = ExpressionConverter.Convert(__workflow_name);
+                if (__workflow_address != null)
+                    callPayload.Queries["Address"] = ExpressionConverter.Convert(__workflow_address);
                 callPayload.Queries["ShowBranches"] = Convert.ToString(false);
-                if (showBranches != null)
-                    callPayload.Queries["ShowBranches"] = ExpressionConverter.Convert(showBranches);
-                if (companyTypes != null)
-                    callPayload.Queries["CompanyTypes"] = ExpressionConverter.Convert(companyTypes);
+                if (__workflow_showBranches != null)
+                    callPayload.Queries["ShowBranches"] = ExpressionConverter.Convert(__workflow_showBranches);
+                if (__workflow_companyTypes != null)
+                    callPayload.Queries["CompanyTypes"] = ExpressionConverter.Convert(__workflow_companyTypes);
                 callPayload.Queries["MaxResults"] = Convert.ToString(20);
-                if (maxResults != null)
-                    callPayload.Queries["MaxResults"] = ExpressionConverter.Convert(maxResults);
+                if (__workflow_maxResults != null)
+                    callPayload.Queries["MaxResults"] = ExpressionConverter.Convert(__workflow_maxResults);
                 return new ApiConnectionAction<CompanySearchResponseApiResponse>(callPayload);
             });
         }

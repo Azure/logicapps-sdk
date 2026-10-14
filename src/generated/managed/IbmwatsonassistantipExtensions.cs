@@ -1,89 +1,73 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsonassistantip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class IbmwatsonassistantipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsonassistantip")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateSession))]
-        public IBodyWorkflowAction<CreateSessionResponse> CreateSession([WorkflowExpression] Func<string> version)
+        public IBodyWorkflowAction<CreateSessionResponse> CreateSession(Expression<Func<string>> version)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateSessionResponse> __BuildCreateSession(WorkflowExpression<string> version)
-        {
-            WorkflowExpression.Validate(version, nameof(version), required: true);
+            var __workflow_version = version == null ? null : WorkflowExpression.Compile(version);
+            WorkflowExpression.Validate(__workflow_version, nameof(version), required: true);
             return new DeferredBodyAction<CreateSessionResponse>(() =>
             {
                 var apiCallPath = "/sessions";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["version"] = ExpressionConverter.Convert(version);
+                callPayload.Queries["version"] = ExpressionConverter.Convert(__workflow_version);
                 return new ApiConnectionAction<CreateSessionResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsonassistantip")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteSession))]
-        public IWorkflowAction DeleteSession([WorkflowExpression] Func<string> session, [WorkflowExpression] Func<string> version = null)
+        public IWorkflowAction DeleteSession(Expression<Func<string>> session, Expression<Func<string>> version = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDeleteSession(WorkflowExpression<string> session, WorkflowExpression<string> version = null)
-        {
-            WorkflowExpression.Validate(session, nameof(session), required: true);
-            WorkflowExpression.Validate(version, nameof(version), required: false);
+            var __workflow_session = session == null ? null : WorkflowExpression.Compile(session);
+            WorkflowExpression.Validate(__workflow_session, nameof(session), required: true);
+            var __workflow_version = version == null ? null : WorkflowExpression.Compile(version);
+            WorkflowExpression.Validate(__workflow_version, nameof(version), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sessions/{0}", ExpressionConverter.ConvertWithUrlEncoding(session, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sessions/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_session, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["version"] = Convert.ToString("2021-11-27");
-                if (version != null)
-                    callPayload.Queries["version"] = ExpressionConverter.Convert(version);
+                if (__workflow_version != null)
+                    callPayload.Queries["version"] = ExpressionConverter.Convert(__workflow_version);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsonassistantip")]
-        [WorkflowExpressionFactory(nameof(__BuildStatefulMessage))]
-        public IBodyWorkflowAction<StatefulMessageResponse> StatefulMessage([WorkflowExpression] Func<string> session, [WorkflowExpression] Func<string> version = null, [WorkflowExpression] Func<string> bodyinputtext = null)
+        public IBodyWorkflowAction<StatefulMessageResponse> StatefulMessage(Expression<Func<string>> session, Expression<Func<string>> version = null, Expression<Func<string>> bodyinputtext = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<StatefulMessageResponse> __BuildStatefulMessage(WorkflowExpression<string> session, WorkflowExpression<string> version = null, WorkflowExpression<string> bodyinputtext = null)
-        {
-            WorkflowExpression.Validate(session, nameof(session), required: true);
-            WorkflowExpression.Validate(version, nameof(version), required: false);
-            WorkflowExpression.Validate(bodyinputtext, nameof(bodyinputtext), required: false);
+            var __workflow_session = session == null ? null : WorkflowExpression.Compile(session);
+            WorkflowExpression.Validate(__workflow_session, nameof(session), required: true);
+            var __workflow_version = version == null ? null : WorkflowExpression.Compile(version);
+            WorkflowExpression.Validate(__workflow_version, nameof(version), required: false);
+            var __workflow_bodyinputtext = bodyinputtext == null ? null : WorkflowExpression.Compile(bodyinputtext);
+            WorkflowExpression.Validate(__workflow_bodyinputtext, nameof(bodyinputtext), required: false);
             return new DeferredBodyAction<StatefulMessageResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sessions/{0}/message", ExpressionConverter.ConvertWithUrlEncoding(session, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sessions/{0}/message", ExpressionConverter.ConvertWithUrlEncoding(__workflow_session, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["version"] = Convert.ToString("2021-11-27");
-                if (version != null)
-                    callPayload.Queries["version"] = ExpressionConverter.Convert(version);
+                if (__workflow_version != null)
+                    callPayload.Queries["version"] = ExpressionConverter.Convert(__workflow_version);
                 var body = new JObject();
                 var bodypropCount = 0;
                 var inputObject = new JObject();
                 var inputObjectpropCount = 0;
-                if (bodyinputtext != null)
+                if (__workflow_bodyinputtext != null)
                 {
-                    inputObject["text"] = ExpressionConverter.ConvertO(bodyinputtext);
+                    inputObject["text"] = ExpressionConverter.ConvertO(__workflow_bodyinputtext);
                     inputObjectpropCount++;
                 }
 
@@ -103,32 +87,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsonassistantip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsonassistantip")]
-        [WorkflowExpressionFactory(nameof(__BuildStatelessMessage))]
-        public IBodyWorkflowAction<StatelessMessageResponse> StatelessMessage([WorkflowExpression] Func<string> version = null, [WorkflowExpression] Func<string> bodyinputtext = null)
+        public IBodyWorkflowAction<StatelessMessageResponse> StatelessMessage(Expression<Func<string>> version = null, Expression<Func<string>> bodyinputtext = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<StatelessMessageResponse> __BuildStatelessMessage(WorkflowExpression<string> version = null, WorkflowExpression<string> bodyinputtext = null)
-        {
-            WorkflowExpression.Validate(version, nameof(version), required: false);
-            WorkflowExpression.Validate(bodyinputtext, nameof(bodyinputtext), required: false);
+            var __workflow_version = version == null ? null : WorkflowExpression.Compile(version);
+            WorkflowExpression.Validate(__workflow_version, nameof(version), required: false);
+            var __workflow_bodyinputtext = bodyinputtext == null ? null : WorkflowExpression.Compile(bodyinputtext);
+            WorkflowExpression.Validate(__workflow_bodyinputtext, nameof(bodyinputtext), required: false);
             return new DeferredBodyAction<StatelessMessageResponse>(() =>
             {
                 var apiCallPath = "/message";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["version"] = Convert.ToString("2021-11-27");
-                if (version != null)
-                    callPayload.Queries["version"] = ExpressionConverter.Convert(version);
+                if (__workflow_version != null)
+                    callPayload.Queries["version"] = ExpressionConverter.Convert(__workflow_version);
                 var body = new JObject();
                 var bodypropCount = 0;
                 var inputObject = new JObject();
                 var inputObjectpropCount = 0;
-                if (bodyinputtext != null)
+                if (__workflow_bodyinputtext != null)
                 {
-                    inputObject["text"] = ExpressionConverter.ConvertO(bodyinputtext);
+                    inputObject["text"] = ExpressionConverter.ConvertO(__workflow_bodyinputtext);
                     inputObjectpropCount++;
                 }
 

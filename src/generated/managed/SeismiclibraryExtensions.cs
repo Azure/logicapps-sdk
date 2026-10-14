@@ -1,57 +1,48 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class SeismiclibraryActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateLibraryFile))]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFileDetailsResponse> CreateLibraryFile([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<bool> resolveNameCollision = null, [WorkflowExpression] Func<string> metadata = null, [WorkflowExpression] Func<object> content = null)
+        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFileDetailsResponse> CreateLibraryFile(Expression<Func<string>> teamsiteId, Expression<Func<bool>> resolveNameCollision = null, Expression<Func<string>> metadata = null, Expression<Func<object>> content = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFileDetailsResponse> __BuildCreateLibraryFile(WorkflowExpression<string> teamsiteId, WorkflowExpression<bool> resolveNameCollision = null, WorkflowExpression<string> metadata = null, WorkflowExpression<object> content = null)
-        {
-            WorkflowExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            WorkflowExpression.Validate(resolveNameCollision, nameof(resolveNameCollision), required: false);
-            WorkflowExpression.Validate(metadata, nameof(metadata), required: false);
-            WorkflowExpression.Validate(content, nameof(content), required: false);
+            var __workflow_teamsiteId = teamsiteId == null ? null : WorkflowExpression.Compile(teamsiteId);
+            WorkflowExpression.Validate(__workflow_teamsiteId, nameof(teamsiteId), required: true);
+            var __workflow_resolveNameCollision = resolveNameCollision == null ? null : WorkflowExpression.Compile(resolveNameCollision);
+            WorkflowExpression.Validate(__workflow_resolveNameCollision, nameof(resolveNameCollision), required: false);
+            var __workflow_metadata = metadata == null ? null : WorkflowExpression.Compile(metadata);
+            WorkflowExpression.Validate(__workflow_metadata, nameof(metadata), required: false);
+            var __workflow_content = content == null ? null : WorkflowExpression.Compile(content);
+            WorkflowExpression.Validate(__workflow_content, nameof(content), required: false);
             return new DeferredBodyAction<SeismicLibraryContentManagementLibraryFileDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/files", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/files", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["resolveNameCollision"] = Convert.ToString(false);
-                if (resolveNameCollision != null)
-                    callPayload.Queries["resolveNameCollision"] = ExpressionConverter.Convert(resolveNameCollision);
+                if (__workflow_resolveNameCollision != null)
+                    callPayload.Queries["resolveNameCollision"] = ExpressionConverter.Convert(__workflow_resolveNameCollision);
                 return new ApiConnectionAction<SeismicLibraryContentManagementLibraryFileDetailsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        [WorkflowExpressionFactory(nameof(__BuildGetLibraryFileDetails))]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFileDetailsResponse> GetLibraryFileDetails([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId)
+        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFileDetailsResponse> GetLibraryFileDetails(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFileDetailsResponse> __BuildGetLibraryFileDetails(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentId)
-        {
-            WorkflowExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            WorkflowExpression.Validate(libraryContentId, nameof(libraryContentId), required: true);
+            var __workflow_teamsiteId = teamsiteId == null ? null : WorkflowExpression.Compile(teamsiteId);
+            WorkflowExpression.Validate(__workflow_teamsiteId, nameof(teamsiteId), required: true);
+            var __workflow_libraryContentId = libraryContentId == null ? null : WorkflowExpression.Compile(libraryContentId);
+            WorkflowExpression.Validate(__workflow_libraryContentId, nameof(libraryContentId), required: true);
             return new DeferredBodyAction<SeismicLibraryContentManagementLibraryFileDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/files/{1}", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/files/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SeismicLibraryContentManagementLibraryFileDetailsResponse>(callPayload);
@@ -59,88 +50,93 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateLibraryFile))]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFileDetailsResponse> UpdateLibraryFile([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId, [WorkflowExpression] Func<bool> includeResponse = null, [WorkflowExpression] Func<string> bodyownerId = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyexpiresAt = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyparentFolderId = null, [WorkflowExpression] Func<string> bodyexternalId = null, [WorkflowExpression] Func<string> bodyexternalConnectionId = null, [WorkflowExpression] Func<SeismicLibraryContentManagementContentExperts[]> bodyexperts = null, [WorkflowExpression] Func<SeismicLibraryContentManagementCustomProperties[]> bodycontentProperties = null)
+        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFileDetailsResponse> UpdateLibraryFile(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<bool>> includeResponse = null, Expression<Func<string>> bodyownerId = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyexpiresAt = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyparentFolderId = null, Expression<Func<string>> bodyexternalId = null, Expression<Func<string>> bodyexternalConnectionId = null, Expression<Func<SeismicLibraryContentManagementContentExperts[]>> bodyexperts = null, Expression<Func<SeismicLibraryContentManagementCustomProperties[]>> bodycontentProperties = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFileDetailsResponse> __BuildUpdateLibraryFile(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentId, WorkflowExpression<bool> includeResponse = null, WorkflowExpression<string> bodyownerId = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodyexpiresAt = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyparentFolderId = null, WorkflowExpression<string> bodyexternalId = null, WorkflowExpression<string> bodyexternalConnectionId = null, WorkflowExpression<SeismicLibraryContentManagementContentExperts[]> bodyexperts = null, WorkflowExpression<SeismicLibraryContentManagementCustomProperties[]> bodycontentProperties = null)
-        {
-            WorkflowExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            WorkflowExpression.Validate(libraryContentId, nameof(libraryContentId), required: true);
-            WorkflowExpression.Validate(includeResponse, nameof(includeResponse), required: false);
-            WorkflowExpression.Validate(bodyownerId, nameof(bodyownerId), required: false);
-            WorkflowExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            WorkflowExpression.Validate(bodyexpiresAt, nameof(bodyexpiresAt), required: false);
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
-            WorkflowExpression.Validate(bodyparentFolderId, nameof(bodyparentFolderId), required: false);
-            WorkflowExpression.Validate(bodyexternalId, nameof(bodyexternalId), required: false);
-            WorkflowExpression.Validate(bodyexternalConnectionId, nameof(bodyexternalConnectionId), required: false);
-            WorkflowExpression.Validate(bodyexperts, nameof(bodyexperts), required: false);
-            WorkflowExpression.Validate(bodycontentProperties, nameof(bodycontentProperties), required: false);
+            var __workflow_teamsiteId = teamsiteId == null ? null : WorkflowExpression.Compile(teamsiteId);
+            WorkflowExpression.Validate(__workflow_teamsiteId, nameof(teamsiteId), required: true);
+            var __workflow_libraryContentId = libraryContentId == null ? null : WorkflowExpression.Compile(libraryContentId);
+            WorkflowExpression.Validate(__workflow_libraryContentId, nameof(libraryContentId), required: true);
+            var __workflow_includeResponse = includeResponse == null ? null : WorkflowExpression.Compile(includeResponse);
+            WorkflowExpression.Validate(__workflow_includeResponse, nameof(includeResponse), required: false);
+            var __workflow_bodyownerId = bodyownerId == null ? null : WorkflowExpression.Compile(bodyownerId);
+            WorkflowExpression.Validate(__workflow_bodyownerId, nameof(bodyownerId), required: false);
+            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
+            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyexpiresAt = bodyexpiresAt == null ? null : WorkflowExpression.Compile(bodyexpiresAt);
+            WorkflowExpression.Validate(__workflow_bodyexpiresAt, nameof(bodyexpiresAt), required: false);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
+            var __workflow_bodyparentFolderId = bodyparentFolderId == null ? null : WorkflowExpression.Compile(bodyparentFolderId);
+            WorkflowExpression.Validate(__workflow_bodyparentFolderId, nameof(bodyparentFolderId), required: false);
+            var __workflow_bodyexternalId = bodyexternalId == null ? null : WorkflowExpression.Compile(bodyexternalId);
+            WorkflowExpression.Validate(__workflow_bodyexternalId, nameof(bodyexternalId), required: false);
+            var __workflow_bodyexternalConnectionId = bodyexternalConnectionId == null ? null : WorkflowExpression.Compile(bodyexternalConnectionId);
+            WorkflowExpression.Validate(__workflow_bodyexternalConnectionId, nameof(bodyexternalConnectionId), required: false);
+            var __workflow_bodyexperts = bodyexperts == null ? null : WorkflowExpression.Compile(bodyexperts);
+            WorkflowExpression.Validate(__workflow_bodyexperts, nameof(bodyexperts), required: false);
+            var __workflow_bodycontentProperties = bodycontentProperties == null ? null : WorkflowExpression.Compile(bodycontentProperties);
+            WorkflowExpression.Validate(__workflow_bodycontentProperties, nameof(bodycontentProperties), required: false);
             return new DeferredBodyAction<SeismicLibraryContentManagementLibraryFileDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/files/{1}", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/files/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentId, 1));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["includeResponse"] = Convert.ToString(true);
-                if (includeResponse != null)
-                    callPayload.Queries["includeResponse"] = ExpressionConverter.Convert(includeResponse);
+                if (__workflow_includeResponse != null)
+                    callPayload.Queries["includeResponse"] = ExpressionConverter.Convert(__workflow_includeResponse);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyownerId != null)
+                if (__workflow_bodyownerId != null)
                 {
-                    body["ownerId"] = ExpressionConverter.ConvertO(bodyownerId);
+                    body["ownerId"] = ExpressionConverter.ConvertO(__workflow_bodyownerId);
                     bodypropCount++;
                 }
 
-                if (bodydescription != null)
+                if (__workflow_bodydescription != null)
                 {
-                    body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
                     bodypropCount++;
                 }
 
-                if (bodyexpiresAt != null)
+                if (__workflow_bodyexpiresAt != null)
                 {
-                    body["expiresAt"] = ExpressionConverter.ConvertO(bodyexpiresAt);
+                    body["expiresAt"] = ExpressionConverter.ConvertO(__workflow_bodyexpiresAt);
                     bodypropCount++;
                 }
 
-                if (bodyname != null)
+                if (__workflow_bodyname != null)
                 {
-                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
                     bodypropCount++;
                 }
 
-                if (bodyparentFolderId != null)
+                if (__workflow_bodyparentFolderId != null)
                 {
-                    body["parentFolderId"] = ExpressionConverter.ConvertO(bodyparentFolderId);
+                    body["parentFolderId"] = ExpressionConverter.ConvertO(__workflow_bodyparentFolderId);
                     bodypropCount++;
                 }
 
-                if (bodyexternalId != null)
+                if (__workflow_bodyexternalId != null)
                 {
-                    body["externalId"] = ExpressionConverter.ConvertO(bodyexternalId);
+                    body["externalId"] = ExpressionConverter.ConvertO(__workflow_bodyexternalId);
                     bodypropCount++;
                 }
 
-                if (bodyexternalConnectionId != null)
+                if (__workflow_bodyexternalConnectionId != null)
                 {
-                    body["externalConnectionId"] = ExpressionConverter.ConvertO(bodyexternalConnectionId);
+                    body["externalConnectionId"] = ExpressionConverter.ConvertO(__workflow_bodyexternalConnectionId);
                     bodypropCount++;
                 }
 
-                if (bodyexperts != null)
+                if (__workflow_bodyexperts != null)
                 {
-                    body["experts"] = ExpressionConverter.ConvertO(bodyexperts);
+                    body["experts"] = ExpressionConverter.ConvertO(__workflow_bodyexperts);
                     bodypropCount++;
                 }
 
-                if (bodycontentProperties != null)
+                if (__workflow_bodycontentProperties != null)
                 {
-                    body["properties"] = ExpressionConverter.ConvertO(bodycontentProperties);
+                    body["properties"] = ExpressionConverter.ConvertO(__workflow_bodycontentProperties);
                     bodypropCount++;
                 }
 
@@ -154,46 +150,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        [WorkflowExpressionFactory(nameof(__BuildDownloadLibraryFile))]
-        public IBodyWorkflowAction<SeismicCommonDownloadLocationResp> DownloadLibraryFile([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId, [WorkflowExpression] Func<bool> redirect = null)
+        public IBodyWorkflowAction<SeismicCommonDownloadLocationResp> DownloadLibraryFile(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<bool>> redirect = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicCommonDownloadLocationResp> __BuildDownloadLibraryFile(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentId, WorkflowExpression<bool> redirect = null)
-        {
-            WorkflowExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            WorkflowExpression.Validate(libraryContentId, nameof(libraryContentId), required: true);
-            WorkflowExpression.Validate(redirect, nameof(redirect), required: false);
+            var __workflow_teamsiteId = teamsiteId == null ? null : WorkflowExpression.Compile(teamsiteId);
+            WorkflowExpression.Validate(__workflow_teamsiteId, nameof(teamsiteId), required: true);
+            var __workflow_libraryContentId = libraryContentId == null ? null : WorkflowExpression.Compile(libraryContentId);
+            WorkflowExpression.Validate(__workflow_libraryContentId, nameof(libraryContentId), required: true);
+            var __workflow_redirect = redirect == null ? null : WorkflowExpression.Compile(redirect);
+            WorkflowExpression.Validate(__workflow_redirect, nameof(redirect), required: false);
             return new DeferredBodyAction<SeismicCommonDownloadLocationResp>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/files/{1}/content", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/files/{1}/content", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["redirect"] = Convert.ToString(true);
-                if (redirect != null)
-                    callPayload.Queries["redirect"] = ExpressionConverter.Convert(redirect);
+                if (__workflow_redirect != null)
+                    callPayload.Queries["redirect"] = ExpressionConverter.Convert(__workflow_redirect);
                 return new ApiConnectionAction<SeismicCommonDownloadLocationResp>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateLibraryFileVersion))]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFileDetailsResponse> CreateLibraryFileVersion([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId, [WorkflowExpression] Func<object> content = null)
+        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFileDetailsResponse> CreateLibraryFileVersion(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<object>> content = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFileDetailsResponse> __BuildCreateLibraryFileVersion(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentId, WorkflowExpression<object> content = null)
-        {
-            WorkflowExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            WorkflowExpression.Validate(libraryContentId, nameof(libraryContentId), required: true);
-            WorkflowExpression.Validate(content, nameof(content), required: false);
+            var __workflow_teamsiteId = teamsiteId == null ? null : WorkflowExpression.Compile(teamsiteId);
+            WorkflowExpression.Validate(__workflow_teamsiteId, nameof(teamsiteId), required: true);
+            var __workflow_libraryContentId = libraryContentId == null ? null : WorkflowExpression.Compile(libraryContentId);
+            WorkflowExpression.Validate(__workflow_libraryContentId, nameof(libraryContentId), required: true);
+            var __workflow_content = content == null ? null : WorkflowExpression.Compile(content);
+            WorkflowExpression.Validate(__workflow_content, nameof(content), required: false);
             return new DeferredBodyAction<SeismicLibraryContentManagementLibraryFileDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/files/{1}/content", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/files/{1}/content", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentId, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SeismicLibraryContentManagementLibraryFileDetailsResponse>(callPayload);
@@ -201,53 +189,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        [WorkflowExpressionFactory(nameof(__BuildDownloadLibraryFileVersion))]
-        public IBodyWorkflowAction<SeismicCommonDownloadLocationResp> DownloadLibraryFileVersion([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId, [WorkflowExpression] Func<string> libraryVersionId, [WorkflowExpression] Func<bool> redirect = null)
+        public IBodyWorkflowAction<SeismicCommonDownloadLocationResp> DownloadLibraryFileVersion(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<string>> libraryVersionId, Expression<Func<bool>> redirect = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicCommonDownloadLocationResp> __BuildDownloadLibraryFileVersion(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentId, WorkflowExpression<string> libraryVersionId, WorkflowExpression<bool> redirect = null)
-        {
-            WorkflowExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            WorkflowExpression.Validate(libraryContentId, nameof(libraryContentId), required: true);
-            WorkflowExpression.Validate(libraryVersionId, nameof(libraryVersionId), required: true);
-            WorkflowExpression.Validate(redirect, nameof(redirect), required: false);
+            var __workflow_teamsiteId = teamsiteId == null ? null : WorkflowExpression.Compile(teamsiteId);
+            WorkflowExpression.Validate(__workflow_teamsiteId, nameof(teamsiteId), required: true);
+            var __workflow_libraryContentId = libraryContentId == null ? null : WorkflowExpression.Compile(libraryContentId);
+            WorkflowExpression.Validate(__workflow_libraryContentId, nameof(libraryContentId), required: true);
+            var __workflow_libraryVersionId = libraryVersionId == null ? null : WorkflowExpression.Compile(libraryVersionId);
+            WorkflowExpression.Validate(__workflow_libraryVersionId, nameof(libraryVersionId), required: true);
+            var __workflow_redirect = redirect == null ? null : WorkflowExpression.Compile(redirect);
+            WorkflowExpression.Validate(__workflow_redirect, nameof(redirect), required: false);
             return new DeferredBodyAction<SeismicCommonDownloadLocationResp>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/files/{1}/versions/{2}/content", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryVersionId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/files/{1}/versions/{2}/content", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryVersionId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["redirect"] = Convert.ToString(true);
-                if (redirect != null)
-                    callPayload.Queries["redirect"] = ExpressionConverter.Convert(redirect);
+                if (__workflow_redirect != null)
+                    callPayload.Queries["redirect"] = ExpressionConverter.Convert(__workflow_redirect);
                 return new ApiConnectionAction<SeismicCommonDownloadLocationResp>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        [WorkflowExpressionFactory(nameof(__BuildCopyLibraryFile))]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFileDetailsResponse> CopyLibraryFile([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId, [WorkflowExpression] Func<string> bodyparentFolderId)
+        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFileDetailsResponse> CopyLibraryFile(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<string>> bodyparentFolderId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFileDetailsResponse> __BuildCopyLibraryFile(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentId, WorkflowExpression<string> bodyparentFolderId)
-        {
-            WorkflowExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            WorkflowExpression.Validate(libraryContentId, nameof(libraryContentId), required: true);
-            WorkflowExpression.Validate(bodyparentFolderId, nameof(bodyparentFolderId), required: true);
+            var __workflow_teamsiteId = teamsiteId == null ? null : WorkflowExpression.Compile(teamsiteId);
+            WorkflowExpression.Validate(__workflow_teamsiteId, nameof(teamsiteId), required: true);
+            var __workflow_libraryContentId = libraryContentId == null ? null : WorkflowExpression.Compile(libraryContentId);
+            WorkflowExpression.Validate(__workflow_libraryContentId, nameof(libraryContentId), required: true);
+            var __workflow_bodyparentFolderId = bodyparentFolderId == null ? null : WorkflowExpression.Compile(bodyparentFolderId);
+            WorkflowExpression.Validate(__workflow_bodyparentFolderId, nameof(bodyparentFolderId), required: true);
             return new DeferredBodyAction<SeismicLibraryContentManagementLibraryFileDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/files/{1}/copy", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/files/{1}/copy", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["parentFolderId"] = ExpressionConverter.ConvertO(bodyparentFolderId);
+                body["parentFolderId"] = ExpressionConverter.ConvertO(__workflow_bodyparentFolderId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -258,44 +239,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateLibraryFolder))]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFolderResponse> CreateLibraryFolder([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyparentFolderId = null, [WorkflowExpression] Func<string> bodyexternalId = null, [WorkflowExpression] Func<string> bodyexternalConnectionId = null)
+        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFolderResponse> CreateLibraryFolder(Expression<Func<string>> teamsiteId, Expression<Func<string>> bodyname, Expression<Func<string>> bodyparentFolderId = null, Expression<Func<string>> bodyexternalId = null, Expression<Func<string>> bodyexternalConnectionId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFolderResponse> __BuildCreateLibraryFolder(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> bodyname, WorkflowExpression<string> bodyparentFolderId = null, WorkflowExpression<string> bodyexternalId = null, WorkflowExpression<string> bodyexternalConnectionId = null)
-        {
-            WorkflowExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
-            WorkflowExpression.Validate(bodyparentFolderId, nameof(bodyparentFolderId), required: false);
-            WorkflowExpression.Validate(bodyexternalId, nameof(bodyexternalId), required: false);
-            WorkflowExpression.Validate(bodyexternalConnectionId, nameof(bodyexternalConnectionId), required: false);
+            var __workflow_teamsiteId = teamsiteId == null ? null : WorkflowExpression.Compile(teamsiteId);
+            WorkflowExpression.Validate(__workflow_teamsiteId, nameof(teamsiteId), required: true);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
+            var __workflow_bodyparentFolderId = bodyparentFolderId == null ? null : WorkflowExpression.Compile(bodyparentFolderId);
+            WorkflowExpression.Validate(__workflow_bodyparentFolderId, nameof(bodyparentFolderId), required: false);
+            var __workflow_bodyexternalId = bodyexternalId == null ? null : WorkflowExpression.Compile(bodyexternalId);
+            WorkflowExpression.Validate(__workflow_bodyexternalId, nameof(bodyexternalId), required: false);
+            var __workflow_bodyexternalConnectionId = bodyexternalConnectionId == null ? null : WorkflowExpression.Compile(bodyexternalConnectionId);
+            WorkflowExpression.Validate(__workflow_bodyexternalConnectionId, nameof(bodyexternalConnectionId), required: false);
             return new DeferredBodyAction<SeismicLibraryContentManagementLibraryFolderResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/folders", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/folders", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                if (bodyparentFolderId != null)
+                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
+                if (__workflow_bodyparentFolderId != null)
                 {
-                    body["parentFolderId"] = ExpressionConverter.ConvertO(bodyparentFolderId);
+                    body["parentFolderId"] = ExpressionConverter.ConvertO(__workflow_bodyparentFolderId);
                     bodypropCount++;
                 }
 
-                if (bodyexternalId != null)
+                if (__workflow_bodyexternalId != null)
                 {
-                    body["externalId"] = ExpressionConverter.ConvertO(bodyexternalId);
+                    body["externalId"] = ExpressionConverter.ConvertO(__workflow_bodyexternalId);
                     bodypropCount++;
                 }
 
-                if (bodyexternalConnectionId != null)
+                if (__workflow_bodyexternalConnectionId != null)
                 {
-                    body["externalConnectionId"] = ExpressionConverter.ConvertO(bodyexternalConnectionId);
+                    body["externalConnectionId"] = ExpressionConverter.ConvertO(__workflow_bodyexternalConnectionId);
                     bodypropCount++;
                 }
 
@@ -309,20 +288,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        [WorkflowExpressionFactory(nameof(__BuildGetLibraryFolderDetails))]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFolderResponse> GetLibraryFolderDetails([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId)
+        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFolderResponse> GetLibraryFolderDetails(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFolderResponse> __BuildGetLibraryFolderDetails(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentId)
-        {
-            WorkflowExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            WorkflowExpression.Validate(libraryContentId, nameof(libraryContentId), required: true);
+            var __workflow_teamsiteId = teamsiteId == null ? null : WorkflowExpression.Compile(teamsiteId);
+            WorkflowExpression.Validate(__workflow_teamsiteId, nameof(teamsiteId), required: true);
+            var __workflow_libraryContentId = libraryContentId == null ? null : WorkflowExpression.Compile(libraryContentId);
+            WorkflowExpression.Validate(__workflow_libraryContentId, nameof(libraryContentId), required: true);
             return new DeferredBodyAction<SeismicLibraryContentManagementLibraryFolderResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/folders/{1}", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/folders/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SeismicLibraryContentManagementLibraryFolderResponse>(callPayload);
@@ -330,45 +304,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateLibraryFolder))]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFolderResponse> UpdateLibraryFolder([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyparentFolderId = null, [WorkflowExpression] Func<string> bodyexternalId = null, [WorkflowExpression] Func<string> bodyexternalConnectionId = null)
+        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFolderResponse> UpdateLibraryFolder(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<string>> bodyname, Expression<Func<string>> bodyparentFolderId = null, Expression<Func<string>> bodyexternalId = null, Expression<Func<string>> bodyexternalConnectionId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFolderResponse> __BuildUpdateLibraryFolder(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentId, WorkflowExpression<string> bodyname, WorkflowExpression<string> bodyparentFolderId = null, WorkflowExpression<string> bodyexternalId = null, WorkflowExpression<string> bodyexternalConnectionId = null)
-        {
-            WorkflowExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            WorkflowExpression.Validate(libraryContentId, nameof(libraryContentId), required: true);
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
-            WorkflowExpression.Validate(bodyparentFolderId, nameof(bodyparentFolderId), required: false);
-            WorkflowExpression.Validate(bodyexternalId, nameof(bodyexternalId), required: false);
-            WorkflowExpression.Validate(bodyexternalConnectionId, nameof(bodyexternalConnectionId), required: false);
+            var __workflow_teamsiteId = teamsiteId == null ? null : WorkflowExpression.Compile(teamsiteId);
+            WorkflowExpression.Validate(__workflow_teamsiteId, nameof(teamsiteId), required: true);
+            var __workflow_libraryContentId = libraryContentId == null ? null : WorkflowExpression.Compile(libraryContentId);
+            WorkflowExpression.Validate(__workflow_libraryContentId, nameof(libraryContentId), required: true);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
+            var __workflow_bodyparentFolderId = bodyparentFolderId == null ? null : WorkflowExpression.Compile(bodyparentFolderId);
+            WorkflowExpression.Validate(__workflow_bodyparentFolderId, nameof(bodyparentFolderId), required: false);
+            var __workflow_bodyexternalId = bodyexternalId == null ? null : WorkflowExpression.Compile(bodyexternalId);
+            WorkflowExpression.Validate(__workflow_bodyexternalId, nameof(bodyexternalId), required: false);
+            var __workflow_bodyexternalConnectionId = bodyexternalConnectionId == null ? null : WorkflowExpression.Compile(bodyexternalConnectionId);
+            WorkflowExpression.Validate(__workflow_bodyexternalConnectionId, nameof(bodyexternalConnectionId), required: false);
             return new DeferredBodyAction<SeismicLibraryContentManagementLibraryFolderResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/folders/{1}", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/folders/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentId, 1));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                if (bodyparentFolderId != null)
+                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
+                if (__workflow_bodyparentFolderId != null)
                 {
-                    body["parentFolderId"] = ExpressionConverter.ConvertO(bodyparentFolderId);
+                    body["parentFolderId"] = ExpressionConverter.ConvertO(__workflow_bodyparentFolderId);
                     bodypropCount++;
                 }
 
-                if (bodyexternalId != null)
+                if (__workflow_bodyexternalId != null)
                 {
-                    body["externalId"] = ExpressionConverter.ConvertO(bodyexternalId);
+                    body["externalId"] = ExpressionConverter.ConvertO(__workflow_bodyexternalId);
                     bodypropCount++;
                 }
 
-                if (bodyexternalConnectionId != null)
+                if (__workflow_bodyexternalConnectionId != null)
                 {
-                    body["externalConnectionId"] = ExpressionConverter.ConvertO(bodyexternalConnectionId);
+                    body["externalConnectionId"] = ExpressionConverter.ConvertO(__workflow_bodyexternalConnectionId);
                     bodypropCount++;
                 }
 
@@ -382,50 +355,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateNestedLibraryFolders))]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementNestedLibraryFoldersResponse> CreateNestedLibraryFolders([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> folderPath = null)
+        public IBodyWorkflowAction<SeismicLibraryContentManagementNestedLibraryFoldersResponse> CreateNestedLibraryFolders(Expression<Func<string>> teamsiteId, Expression<Func<string>> folderPath = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementNestedLibraryFoldersResponse> __BuildCreateNestedLibraryFolders(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> folderPath = null)
-        {
-            WorkflowExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            WorkflowExpression.Validate(folderPath, nameof(folderPath), required: false);
+            var __workflow_teamsiteId = teamsiteId == null ? null : WorkflowExpression.Compile(teamsiteId);
+            WorkflowExpression.Validate(__workflow_teamsiteId, nameof(teamsiteId), required: true);
+            var __workflow_folderPath = folderPath == null ? null : WorkflowExpression.Compile(folderPath);
+            WorkflowExpression.Validate(__workflow_folderPath, nameof(folderPath), required: false);
             return new DeferredBodyAction<SeismicLibraryContentManagementNestedLibraryFoldersResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/folders/createPath", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/folders/createPath", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (folderPath != null)
-                    callPayload.Queries["folderPath"] = ExpressionConverter.Convert(folderPath);
+                if (__workflow_folderPath != null)
+                    callPayload.Queries["folderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
                 return new ApiConnectionAction<SeismicLibraryContentManagementNestedLibraryFoldersResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        [WorkflowExpressionFactory(nameof(__BuildCopyLibraryFolder))]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFolderResponse> CopyLibraryFolder([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId, [WorkflowExpression] Func<string> bodyparentFolderId)
+        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFolderResponse> CopyLibraryFolder(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<string>> bodyparentFolderId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFolderResponse> __BuildCopyLibraryFolder(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentId, WorkflowExpression<string> bodyparentFolderId)
-        {
-            WorkflowExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            WorkflowExpression.Validate(libraryContentId, nameof(libraryContentId), required: true);
-            WorkflowExpression.Validate(bodyparentFolderId, nameof(bodyparentFolderId), required: true);
+            var __workflow_teamsiteId = teamsiteId == null ? null : WorkflowExpression.Compile(teamsiteId);
+            WorkflowExpression.Validate(__workflow_teamsiteId, nameof(teamsiteId), required: true);
+            var __workflow_libraryContentId = libraryContentId == null ? null : WorkflowExpression.Compile(libraryContentId);
+            WorkflowExpression.Validate(__workflow_libraryContentId, nameof(libraryContentId), required: true);
+            var __workflow_bodyparentFolderId = bodyparentFolderId == null ? null : WorkflowExpression.Compile(bodyparentFolderId);
+            WorkflowExpression.Validate(__workflow_bodyparentFolderId, nameof(bodyparentFolderId), required: true);
             return new DeferredBodyAction<SeismicLibraryContentManagementLibraryFolderResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/folders/{1}/copy", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/folders/{1}/copy", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["parentFolderId"] = ExpressionConverter.ConvertO(bodyparentFolderId);
+                body["parentFolderId"] = ExpressionConverter.ConvertO(__workflow_bodyparentFolderId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -436,55 +400,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        [WorkflowExpressionFactory(nameof(__BuildGetLibraryFolderItems))]
-        public IBodyWorkflowAction<SeismicPagingLibraryContentManagementLibraryGenericItemDetailsResponse> GetLibraryFolderItems([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<bool> includeExpiration = null, [WorkflowExpression] Func<bool> includeProperties = null)
+        public IBodyWorkflowAction<SeismicPagingLibraryContentManagementLibraryGenericItemDetailsResponse> GetLibraryFolderItems(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<bool>> includeExpiration = null, Expression<Func<bool>> includeProperties = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicPagingLibraryContentManagementLibraryGenericItemDetailsResponse> __BuildGetLibraryFolderItems(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentId, WorkflowExpression<int> offset = null, WorkflowExpression<int> limit = null, WorkflowExpression<bool> includeExpiration = null, WorkflowExpression<bool> includeProperties = null)
-        {
-            WorkflowExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            WorkflowExpression.Validate(libraryContentId, nameof(libraryContentId), required: true);
-            WorkflowExpression.Validate(offset, nameof(offset), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(includeExpiration, nameof(includeExpiration), required: false);
-            WorkflowExpression.Validate(includeProperties, nameof(includeProperties), required: false);
+            var __workflow_teamsiteId = teamsiteId == null ? null : WorkflowExpression.Compile(teamsiteId);
+            WorkflowExpression.Validate(__workflow_teamsiteId, nameof(teamsiteId), required: true);
+            var __workflow_libraryContentId = libraryContentId == null ? null : WorkflowExpression.Compile(libraryContentId);
+            WorkflowExpression.Validate(__workflow_libraryContentId, nameof(libraryContentId), required: true);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_includeExpiration = includeExpiration == null ? null : WorkflowExpression.Compile(includeExpiration);
+            WorkflowExpression.Validate(__workflow_includeExpiration, nameof(includeExpiration), required: false);
+            var __workflow_includeProperties = includeProperties == null ? null : WorkflowExpression.Compile(includeProperties);
+            WorkflowExpression.Validate(__workflow_includeProperties, nameof(includeProperties), required: false);
             return new DeferredBodyAction<SeismicPagingLibraryContentManagementLibraryGenericItemDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/folders/{1}/items", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/folders/{1}/items", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (offset != null)
-                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 callPayload.Queries["includeExpiration"] = Convert.ToString(false);
-                if (includeExpiration != null)
-                    callPayload.Queries["includeExpiration"] = ExpressionConverter.Convert(includeExpiration);
+                if (__workflow_includeExpiration != null)
+                    callPayload.Queries["includeExpiration"] = ExpressionConverter.Convert(__workflow_includeExpiration);
                 callPayload.Queries["includeProperties"] = Convert.ToString(false);
-                if (includeProperties != null)
-                    callPayload.Queries["includeProperties"] = ExpressionConverter.Convert(includeProperties);
+                if (__workflow_includeProperties != null)
+                    callPayload.Queries["includeProperties"] = ExpressionConverter.Convert(__workflow_includeProperties);
                 return new ApiConnectionAction<SeismicPagingLibraryContentManagementLibraryGenericItemDetailsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        [WorkflowExpressionFactory(nameof(__BuildGetLibraryItemDetails))]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryGenericItemDetailsResponse> GetLibraryItemDetails([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId)
+        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryGenericItemDetailsResponse> GetLibraryItemDetails(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryGenericItemDetailsResponse> __BuildGetLibraryItemDetails(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentId)
-        {
-            WorkflowExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            WorkflowExpression.Validate(libraryContentId, nameof(libraryContentId), required: true);
+            var __workflow_teamsiteId = teamsiteId == null ? null : WorkflowExpression.Compile(teamsiteId);
+            WorkflowExpression.Validate(__workflow_teamsiteId, nameof(teamsiteId), required: true);
+            var __workflow_libraryContentId = libraryContentId == null ? null : WorkflowExpression.Compile(libraryContentId);
+            WorkflowExpression.Validate(__workflow_libraryContentId, nameof(libraryContentId), required: true);
             return new DeferredBodyAction<SeismicLibraryContentManagementLibraryGenericItemDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SeismicLibraryContentManagementLibraryGenericItemDetailsResponse>(callPayload);
@@ -492,20 +450,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteLibraryItem))]
-        public IWorkflowAction DeleteLibraryItem([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId)
+        public IWorkflowAction DeleteLibraryItem(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDeleteLibraryItem(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentId)
-        {
-            WorkflowExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            WorkflowExpression.Validate(libraryContentId, nameof(libraryContentId), required: true);
+            var __workflow_teamsiteId = teamsiteId == null ? null : WorkflowExpression.Compile(teamsiteId);
+            WorkflowExpression.Validate(__workflow_teamsiteId, nameof(teamsiteId), required: true);
+            var __workflow_libraryContentId = libraryContentId == null ? null : WorkflowExpression.Compile(libraryContentId);
+            WorkflowExpression.Validate(__workflow_libraryContentId, nameof(libraryContentId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentId, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -513,27 +466,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        [WorkflowExpressionFactory(nameof(__BuildCopyLibraryItem))]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryGenericItemDetailsResponse> CopyLibraryItem([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId, [WorkflowExpression] Func<string> bodyparentFolderId)
+        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryGenericItemDetailsResponse> CopyLibraryItem(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<string>> bodyparentFolderId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryGenericItemDetailsResponse> __BuildCopyLibraryItem(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentId, WorkflowExpression<string> bodyparentFolderId)
-        {
-            WorkflowExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            WorkflowExpression.Validate(libraryContentId, nameof(libraryContentId), required: true);
-            WorkflowExpression.Validate(bodyparentFolderId, nameof(bodyparentFolderId), required: true);
+            var __workflow_teamsiteId = teamsiteId == null ? null : WorkflowExpression.Compile(teamsiteId);
+            WorkflowExpression.Validate(__workflow_teamsiteId, nameof(teamsiteId), required: true);
+            var __workflow_libraryContentId = libraryContentId == null ? null : WorkflowExpression.Compile(libraryContentId);
+            WorkflowExpression.Validate(__workflow_libraryContentId, nameof(libraryContentId), required: true);
+            var __workflow_bodyparentFolderId = bodyparentFolderId == null ? null : WorkflowExpression.Compile(bodyparentFolderId);
+            WorkflowExpression.Validate(__workflow_bodyparentFolderId, nameof(bodyparentFolderId), required: true);
             return new DeferredBodyAction<SeismicLibraryContentManagementLibraryGenericItemDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}/copy", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}/copy", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["parentFolderId"] = ExpressionConverter.ConvertO(bodyparentFolderId);
+                body["parentFolderId"] = ExpressionConverter.ConvertO(__workflow_bodyparentFolderId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -544,20 +493,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        [WorkflowExpressionFactory(nameof(__BuildGetLibraryItemVersion))]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementSimpleItemVersion[]> GetLibraryItemVersion([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId)
+        public IBodyWorkflowAction<SeismicLibraryContentManagementSimpleItemVersion[]> GetLibraryItemVersion(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementSimpleItemVersion[]> __BuildGetLibraryItemVersion(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentId)
-        {
-            WorkflowExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            WorkflowExpression.Validate(libraryContentId, nameof(libraryContentId), required: true);
+            var __workflow_teamsiteId = teamsiteId == null ? null : WorkflowExpression.Compile(teamsiteId);
+            WorkflowExpression.Validate(__workflow_teamsiteId, nameof(teamsiteId), required: true);
+            var __workflow_libraryContentId = libraryContentId == null ? null : WorkflowExpression.Compile(libraryContentId);
+            WorkflowExpression.Validate(__workflow_libraryContentId, nameof(libraryContentId), required: true);
             return new DeferredBodyAction<SeismicLibraryContentManagementSimpleItemVersion[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}/versions", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}/versions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SeismicLibraryContentManagementSimpleItemVersion[]>(callPayload);
@@ -565,118 +509,105 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        [WorkflowExpressionFactory(nameof(__BuildGetLibraryItemsByQuery))]
-        public IBodyWorkflowAction<SeismicCommonItemsOfSeismicLibraryContentManagementLibraryGenericItemDetailsResponse> GetLibraryItemsByQuery([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> externalId = null, [WorkflowExpression] Func<string> externalConnectionId = null)
+        public IBodyWorkflowAction<SeismicCommonItemsOfSeismicLibraryContentManagementLibraryGenericItemDetailsResponse> GetLibraryItemsByQuery(Expression<Func<string>> teamsiteId, Expression<Func<string>> externalId = null, Expression<Func<string>> externalConnectionId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicCommonItemsOfSeismicLibraryContentManagementLibraryGenericItemDetailsResponse> __BuildGetLibraryItemsByQuery(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> externalId = null, WorkflowExpression<string> externalConnectionId = null)
-        {
-            WorkflowExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            WorkflowExpression.Validate(externalId, nameof(externalId), required: false);
-            WorkflowExpression.Validate(externalConnectionId, nameof(externalConnectionId), required: false);
+            var __workflow_teamsiteId = teamsiteId == null ? null : WorkflowExpression.Compile(teamsiteId);
+            WorkflowExpression.Validate(__workflow_teamsiteId, nameof(teamsiteId), required: true);
+            var __workflow_externalId = externalId == null ? null : WorkflowExpression.Compile(externalId);
+            WorkflowExpression.Validate(__workflow_externalId, nameof(externalId), required: false);
+            var __workflow_externalConnectionId = externalConnectionId == null ? null : WorkflowExpression.Compile(externalConnectionId);
+            WorkflowExpression.Validate(__workflow_externalConnectionId, nameof(externalConnectionId), required: false);
             return new DeferredBodyAction<SeismicCommonItemsOfSeismicLibraryContentManagementLibraryGenericItemDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (externalId != null)
-                    callPayload.Queries["externalId"] = ExpressionConverter.Convert(externalId);
-                if (externalConnectionId != null)
-                    callPayload.Queries["externalConnectionId"] = ExpressionConverter.Convert(externalConnectionId);
+                if (__workflow_externalId != null)
+                    callPayload.Queries["externalId"] = ExpressionConverter.Convert(__workflow_externalId);
+                if (__workflow_externalConnectionId != null)
+                    callPayload.Queries["externalConnectionId"] = ExpressionConverter.Convert(__workflow_externalConnectionId);
                 return new ApiConnectionAction<SeismicCommonItemsOfSeismicLibraryContentManagementLibraryGenericItemDetailsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateThumbnailItem))]
-        public IBodyWorkflowAction<string> UpdateThumbnailItem([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId, [WorkflowExpression] Func<string> body = null)
+        public IBodyWorkflowAction<string> UpdateThumbnailItem(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<string>> body = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildUpdateThumbnailItem(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentId, WorkflowExpression<string> body = null)
-        {
-            WorkflowExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            WorkflowExpression.Validate(libraryContentId, nameof(libraryContentId), required: true);
-            WorkflowExpression.Validate(body, nameof(body), required: false);
+            var __workflow_teamsiteId = teamsiteId == null ? null : WorkflowExpression.Compile(teamsiteId);
+            WorkflowExpression.Validate(__workflow_teamsiteId, nameof(teamsiteId), required: true);
+            var __workflow_libraryContentId = libraryContentId == null ? null : WorkflowExpression.Compile(libraryContentId);
+            WorkflowExpression.Validate(__workflow_libraryContentId, nameof(libraryContentId), required: true);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}/thumbnail", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}/thumbnail", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentId, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        [WorkflowExpressionFactory(nameof(__BuildGetLibraryInstructions))]
-        public IBodyWorkflowAction<SeismicPagingLibraryInstructionsInstructionInfoResponse> GetLibraryInstructions([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null)
+        public IBodyWorkflowAction<SeismicPagingLibraryInstructionsInstructionInfoResponse> GetLibraryInstructions(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicPagingLibraryInstructionsInstructionInfoResponse> __BuildGetLibraryInstructions(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentId, WorkflowExpression<int> offset = null, WorkflowExpression<int> limit = null)
-        {
-            WorkflowExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            WorkflowExpression.Validate(libraryContentId, nameof(libraryContentId), required: true);
-            WorkflowExpression.Validate(offset, nameof(offset), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
+            var __workflow_teamsiteId = teamsiteId == null ? null : WorkflowExpression.Compile(teamsiteId);
+            WorkflowExpression.Validate(__workflow_teamsiteId, nameof(teamsiteId), required: true);
+            var __workflow_libraryContentId = libraryContentId == null ? null : WorkflowExpression.Compile(libraryContentId);
+            WorkflowExpression.Validate(__workflow_libraryContentId, nameof(libraryContentId), required: true);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
             return new DeferredBodyAction<SeismicPagingLibraryInstructionsInstructionInfoResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}/instructions", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}/instructions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (offset != null)
-                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction<SeismicPagingLibraryInstructionsInstructionInfoResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        [WorkflowExpressionFactory(nameof(__BuildAddLibraryInstruction))]
-        public IBodyWorkflowAction<SeismicLibraryInstructionsInstructionInfoResponse> AddLibraryInstruction([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId, [WorkflowExpression] Func<bodytypeInput> bodytype = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodytext = null)
+        public IBodyWorkflowAction<SeismicLibraryInstructionsInstructionInfoResponse> AddLibraryInstruction(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<bodytypeInput>> bodytype = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodytext = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicLibraryInstructionsInstructionInfoResponse> __BuildAddLibraryInstruction(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentId, WorkflowExpression<bodytypeInput> bodytype = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodytext = null)
-        {
-            WorkflowExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            WorkflowExpression.Validate(libraryContentId, nameof(libraryContentId), required: true);
-            WorkflowExpression.Validate(bodytype, nameof(bodytype), required: false);
-            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            WorkflowExpression.Validate(bodytext, nameof(bodytext), required: false);
+            var __workflow_teamsiteId = teamsiteId == null ? null : WorkflowExpression.Compile(teamsiteId);
+            WorkflowExpression.Validate(__workflow_teamsiteId, nameof(teamsiteId), required: true);
+            var __workflow_libraryContentId = libraryContentId == null ? null : WorkflowExpression.Compile(libraryContentId);
+            WorkflowExpression.Validate(__workflow_libraryContentId, nameof(libraryContentId), required: true);
+            var __workflow_bodytype = bodytype == null ? null : WorkflowExpression.Compile(bodytype);
+            WorkflowExpression.Validate(__workflow_bodytype, nameof(bodytype), required: false);
+            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
+            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
+            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: false);
             return new DeferredBodyAction<SeismicLibraryInstructionsInstructionInfoResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}/instructions", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}/instructions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodytype != null)
+                if (__workflow_bodytype != null)
                 {
-                    body["type"] = ExpressionConverter.ConvertO(bodytype);
+                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
                     bodypropCount++;
                 }
 
-                if (bodytitle != null)
+                if (__workflow_bodytitle != null)
                 {
-                    body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
                     bodypropCount++;
                 }
 
-                if (bodytext != null)
+                if (__workflow_bodytext != null)
                 {
-                    body["text"] = ExpressionConverter.ConvertO(bodytext);
+                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
                     bodypropCount++;
                 }
 
@@ -690,21 +621,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteLibraryInstruction))]
-        public IWorkflowAction DeleteLibraryInstruction([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId, [WorkflowExpression] Func<string> instructionId)
+        public IWorkflowAction DeleteLibraryInstruction(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<string>> instructionId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDeleteLibraryInstruction(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentId, WorkflowExpression<string> instructionId)
-        {
-            WorkflowExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            WorkflowExpression.Validate(libraryContentId, nameof(libraryContentId), required: true);
-            WorkflowExpression.Validate(instructionId, nameof(instructionId), required: true);
+            var __workflow_teamsiteId = teamsiteId == null ? null : WorkflowExpression.Compile(teamsiteId);
+            WorkflowExpression.Validate(__workflow_teamsiteId, nameof(teamsiteId), required: true);
+            var __workflow_libraryContentId = libraryContentId == null ? null : WorkflowExpression.Compile(libraryContentId);
+            WorkflowExpression.Validate(__workflow_libraryContentId, nameof(libraryContentId), required: true);
+            var __workflow_instructionId = instructionId == null ? null : WorkflowExpression.Compile(instructionId);
+            WorkflowExpression.Validate(__workflow_instructionId, nameof(instructionId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}/instructions/{2}", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1), ExpressionConverter.ConvertWithUrlEncoding(instructionId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}/instructions/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_instructionId, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -712,28 +639,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        [WorkflowExpressionFactory(nameof(__BuildSubmitLibraryItemToWorkflow))]
-        public IBodyWorkflowAction<string[]> SubmitLibraryItemToWorkflow([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId, [WorkflowExpression] Func<string> bodycomments = null)
+        public IBodyWorkflowAction<string[]> SubmitLibraryItemToWorkflow(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<string>> bodycomments = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string[]> __BuildSubmitLibraryItemToWorkflow(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentId, WorkflowExpression<string> bodycomments = null)
-        {
-            WorkflowExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            WorkflowExpression.Validate(libraryContentId, nameof(libraryContentId), required: true);
-            WorkflowExpression.Validate(bodycomments, nameof(bodycomments), required: false);
+            var __workflow_teamsiteId = teamsiteId == null ? null : WorkflowExpression.Compile(teamsiteId);
+            WorkflowExpression.Validate(__workflow_teamsiteId, nameof(teamsiteId), required: true);
+            var __workflow_libraryContentId = libraryContentId == null ? null : WorkflowExpression.Compile(libraryContentId);
+            WorkflowExpression.Validate(__workflow_libraryContentId, nameof(libraryContentId), required: true);
+            var __workflow_bodycomments = bodycomments == null ? null : WorkflowExpression.Compile(bodycomments);
+            WorkflowExpression.Validate(__workflow_bodycomments, nameof(bodycomments), required: false);
             return new DeferredBodyAction<string[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}/submit", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}/submit", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentId, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodycomments != null)
+                if (__workflow_bodycomments != null)
                 {
-                    body["comments"] = ExpressionConverter.ConvertO(bodycomments);
+                    body["comments"] = ExpressionConverter.ConvertO(__workflow_bodycomments);
                     bodypropCount++;
                 }
 
@@ -747,28 +670,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        [WorkflowExpressionFactory(nameof(__BuildRecallItemFromWorkflow))]
-        public IWorkflowAction RecallItemFromWorkflow([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId, [WorkflowExpression] Func<string> bodycomments = null)
+        public IWorkflowAction RecallItemFromWorkflow(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<string>> bodycomments = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildRecallItemFromWorkflow(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentId, WorkflowExpression<string> bodycomments = null)
-        {
-            WorkflowExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            WorkflowExpression.Validate(libraryContentId, nameof(libraryContentId), required: true);
-            WorkflowExpression.Validate(bodycomments, nameof(bodycomments), required: false);
+            var __workflow_teamsiteId = teamsiteId == null ? null : WorkflowExpression.Compile(teamsiteId);
+            WorkflowExpression.Validate(__workflow_teamsiteId, nameof(teamsiteId), required: true);
+            var __workflow_libraryContentId = libraryContentId == null ? null : WorkflowExpression.Compile(libraryContentId);
+            WorkflowExpression.Validate(__workflow_libraryContentId, nameof(libraryContentId), required: true);
+            var __workflow_bodycomments = bodycomments == null ? null : WorkflowExpression.Compile(bodycomments);
+            WorkflowExpression.Validate(__workflow_bodycomments, nameof(bodycomments), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}/recall", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}/recall", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentId, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodycomments != null)
+                if (__workflow_bodycomments != null)
                 {
-                    body["comments"] = ExpressionConverter.ConvertO(bodycomments);
+                    body["comments"] = ExpressionConverter.ConvertO(__workflow_bodycomments);
                     bodypropCount++;
                 }
 
@@ -782,41 +701,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        [WorkflowExpressionFactory(nameof(__BuildPublishLibraryItems))]
-        public IBodyWorkflowAction<SeismicLibraryPublishingPublishResponse> PublishLibraryItems([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> bodycomment = null, [WorkflowExpression] Func<string> bodypublishAt = null, [WorkflowExpression] Func<SeismicContentManagerPublishContentItem[]> bodycontent = null)
+        public IBodyWorkflowAction<SeismicLibraryPublishingPublishResponse> PublishLibraryItems(Expression<Func<string>> teamsiteId, Expression<Func<string>> bodycomment = null, Expression<Func<string>> bodypublishAt = null, Expression<Func<SeismicContentManagerPublishContentItem[]>> bodycontent = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicLibraryPublishingPublishResponse> __BuildPublishLibraryItems(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> bodycomment = null, WorkflowExpression<string> bodypublishAt = null, WorkflowExpression<SeismicContentManagerPublishContentItem[]> bodycontent = null)
-        {
-            WorkflowExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            WorkflowExpression.Validate(bodycomment, nameof(bodycomment), required: false);
-            WorkflowExpression.Validate(bodypublishAt, nameof(bodypublishAt), required: false);
-            WorkflowExpression.Validate(bodycontent, nameof(bodycontent), required: false);
+            var __workflow_teamsiteId = teamsiteId == null ? null : WorkflowExpression.Compile(teamsiteId);
+            WorkflowExpression.Validate(__workflow_teamsiteId, nameof(teamsiteId), required: true);
+            var __workflow_bodycomment = bodycomment == null ? null : WorkflowExpression.Compile(bodycomment);
+            WorkflowExpression.Validate(__workflow_bodycomment, nameof(bodycomment), required: false);
+            var __workflow_bodypublishAt = bodypublishAt == null ? null : WorkflowExpression.Compile(bodypublishAt);
+            WorkflowExpression.Validate(__workflow_bodypublishAt, nameof(bodypublishAt), required: false);
+            var __workflow_bodycontent = bodycontent == null ? null : WorkflowExpression.Compile(bodycontent);
+            WorkflowExpression.Validate(__workflow_bodycontent, nameof(bodycontent), required: false);
             return new DeferredBodyAction<SeismicLibraryPublishingPublishResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/publish", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/publish", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodycomment != null)
+                if (__workflow_bodycomment != null)
                 {
-                    body["comment"] = ExpressionConverter.ConvertO(bodycomment);
+                    body["comment"] = ExpressionConverter.ConvertO(__workflow_bodycomment);
                     bodypropCount++;
                 }
 
-                if (bodypublishAt != null)
+                if (__workflow_bodypublishAt != null)
                 {
-                    body["publishAt"] = ExpressionConverter.ConvertO(bodypublishAt);
+                    body["publishAt"] = ExpressionConverter.ConvertO(__workflow_bodypublishAt);
                     bodypropCount++;
                 }
 
-                if (bodycontent != null)
+                if (__workflow_bodycontent != null)
                 {
-                    body["content"] = ExpressionConverter.ConvertO(bodycontent);
+                    body["content"] = ExpressionConverter.ConvertO(__workflow_bodycontent);
                     bodypropCount++;
                 }
 
@@ -830,20 +746,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        [WorkflowExpressionFactory(nameof(__BuildUnpublishLibraryItem))]
-        public IWorkflowAction UnpublishLibraryItem([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId)
+        public IWorkflowAction UnpublishLibraryItem(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildUnpublishLibraryItem(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentId)
-        {
-            WorkflowExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            WorkflowExpression.Validate(libraryContentId, nameof(libraryContentId), required: true);
+            var __workflow_teamsiteId = teamsiteId == null ? null : WorkflowExpression.Compile(teamsiteId);
+            WorkflowExpression.Validate(__workflow_teamsiteId, nameof(teamsiteId), required: true);
+            var __workflow_libraryContentId = libraryContentId == null ? null : WorkflowExpression.Compile(libraryContentId);
+            WorkflowExpression.Validate(__workflow_libraryContentId, nameof(libraryContentId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}/unpublish", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}/unpublish", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentId, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -851,51 +762,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateLibraryWorkflowStep))]
-        public IBodyWorkflowAction<SeismicLibraryWorkflowWorkflowResponse> UpdateLibraryWorkflowStep([WorkflowExpression] Func<string> approvalWorkflowId, [WorkflowExpression] Func<string> stepId, [WorkflowExpression] Func<bodyactionInput> bodyaction = null, [WorkflowExpression] Func<string> bodycomment = null, [WorkflowExpression] Func<string> bodynextApprovernextApproverUsedId = null, [WorkflowExpression] Func<string> bodynextApprovernextApproverUserType = null)
+        public IBodyWorkflowAction<SeismicLibraryWorkflowWorkflowResponse> UpdateLibraryWorkflowStep(Expression<Func<string>> approvalWorkflowId, Expression<Func<string>> stepId, Expression<Func<bodyactionInput>> bodyaction = null, Expression<Func<string>> bodycomment = null, Expression<Func<string>> bodynextApprovernextApproverUsedId = null, Expression<Func<string>> bodynextApprovernextApproverUserType = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicLibraryWorkflowWorkflowResponse> __BuildUpdateLibraryWorkflowStep(WorkflowExpression<string> approvalWorkflowId, WorkflowExpression<string> stepId, WorkflowExpression<bodyactionInput> bodyaction = null, WorkflowExpression<string> bodycomment = null, WorkflowExpression<string> bodynextApprovernextApproverUsedId = null, WorkflowExpression<string> bodynextApprovernextApproverUserType = null)
-        {
-            WorkflowExpression.Validate(approvalWorkflowId, nameof(approvalWorkflowId), required: true);
-            WorkflowExpression.Validate(stepId, nameof(stepId), required: true);
-            WorkflowExpression.Validate(bodyaction, nameof(bodyaction), required: false);
-            WorkflowExpression.Validate(bodycomment, nameof(bodycomment), required: false);
-            WorkflowExpression.Validate(bodynextApprovernextApproverUsedId, nameof(bodynextApprovernextApproverUsedId), required: false);
-            WorkflowExpression.Validate(bodynextApprovernextApproverUserType, nameof(bodynextApprovernextApproverUserType), required: false);
+            var __workflow_approvalWorkflowId = approvalWorkflowId == null ? null : WorkflowExpression.Compile(approvalWorkflowId);
+            WorkflowExpression.Validate(__workflow_approvalWorkflowId, nameof(approvalWorkflowId), required: true);
+            var __workflow_stepId = stepId == null ? null : WorkflowExpression.Compile(stepId);
+            WorkflowExpression.Validate(__workflow_stepId, nameof(stepId), required: true);
+            var __workflow_bodyaction = bodyaction == null ? null : WorkflowExpression.Compile(bodyaction);
+            WorkflowExpression.Validate(__workflow_bodyaction, nameof(bodyaction), required: false);
+            var __workflow_bodycomment = bodycomment == null ? null : WorkflowExpression.Compile(bodycomment);
+            WorkflowExpression.Validate(__workflow_bodycomment, nameof(bodycomment), required: false);
+            var __workflow_bodynextApprovernextApproverUsedId = bodynextApprovernextApproverUsedId == null ? null : WorkflowExpression.Compile(bodynextApprovernextApproverUsedId);
+            WorkflowExpression.Validate(__workflow_bodynextApprovernextApproverUsedId, nameof(bodynextApprovernextApproverUsedId), required: false);
+            var __workflow_bodynextApprovernextApproverUserType = bodynextApprovernextApproverUserType == null ? null : WorkflowExpression.Compile(bodynextApprovernextApproverUserType);
+            WorkflowExpression.Validate(__workflow_bodynextApprovernextApproverUserType, nameof(bodynextApprovernextApproverUserType), required: false);
             return new DeferredBodyAction<SeismicLibraryWorkflowWorkflowResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/approvalWorkflows/{0}/steps/{1}", ExpressionConverter.ConvertWithUrlEncoding(approvalWorkflowId, 1), ExpressionConverter.ConvertWithUrlEncoding(stepId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/approvalWorkflows/{0}/steps/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_approvalWorkflowId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_stepId, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyaction != null)
+                if (__workflow_bodyaction != null)
                 {
-                    body["action"] = ExpressionConverter.ConvertO(bodyaction);
+                    body["action"] = ExpressionConverter.ConvertO(__workflow_bodyaction);
                     bodypropCount++;
                 }
 
-                if (bodycomment != null)
+                if (__workflow_bodycomment != null)
                 {
-                    body["comment"] = ExpressionConverter.ConvertO(bodycomment);
+                    body["comment"] = ExpressionConverter.ConvertO(__workflow_bodycomment);
                     bodypropCount++;
                 }
 
                 var nextApproverObject = new JObject();
                 var nextApproverObjectpropCount = 0;
-                if (bodynextApprovernextApproverUsedId != null)
+                if (__workflow_bodynextApprovernextApproverUsedId != null)
                 {
-                    nextApproverObject["id"] = ExpressionConverter.ConvertO(bodynextApprovernextApproverUsedId);
+                    nextApproverObject["id"] = ExpressionConverter.ConvertO(__workflow_bodynextApprovernextApproverUsedId);
                     nextApproverObjectpropCount++;
                 }
 
-                if (bodynextApprovernextApproverUserType != null)
+                if (__workflow_bodynextApprovernextApproverUserType != null)
                 {
-                    nextApproverObject["type"] = ExpressionConverter.ConvertO(bodynextApprovernextApproverUserType);
+                    nextApproverObject["type"] = ExpressionConverter.ConvertO(__workflow_bodynextApprovernextApproverUserType);
                     nextApproverObjectpropCount++;
                 }
 
@@ -915,19 +825,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        [WorkflowExpressionFactory(nameof(__BuildGetLibraryWorkflow))]
-        public IBodyWorkflowAction<SeismicLibraryWorkflowWorkflowResponse> GetLibraryWorkflow([WorkflowExpression] Func<string> approvalWorkflowId)
+        public IBodyWorkflowAction<SeismicLibraryWorkflowWorkflowResponse> GetLibraryWorkflow(Expression<Func<string>> approvalWorkflowId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicLibraryWorkflowWorkflowResponse> __BuildGetLibraryWorkflow(WorkflowExpression<string> approvalWorkflowId)
-        {
-            WorkflowExpression.Validate(approvalWorkflowId, nameof(approvalWorkflowId), required: true);
+            var __workflow_approvalWorkflowId = approvalWorkflowId == null ? null : WorkflowExpression.Compile(approvalWorkflowId);
+            WorkflowExpression.Validate(__workflow_approvalWorkflowId, nameof(approvalWorkflowId), required: true);
             return new DeferredBodyAction<SeismicLibraryWorkflowWorkflowResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/approvalWorkflows/{0}", ExpressionConverter.ConvertWithUrlEncoding(approvalWorkflowId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/approvalWorkflows/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_approvalWorkflowId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SeismicLibraryWorkflowWorkflowResponse>(callPayload);
@@ -935,86 +839,90 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        [WorkflowExpressionFactory(nameof(__BuildGetWorkflows))]
-        public IBodyWorkflowAction<SeismicPagingLibraryWorkflowWorkflowResponse> GetWorkflows([WorkflowExpression] Func<string> teamsiteId = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> currentStepAssignedTo = null, [WorkflowExpression] Func<string> status = null)
+        public IBodyWorkflowAction<SeismicPagingLibraryWorkflowWorkflowResponse> GetWorkflows(Expression<Func<string>> teamsiteId = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<string>> currentStepAssignedTo = null, Expression<Func<string>> status = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicPagingLibraryWorkflowWorkflowResponse> __BuildGetWorkflows(WorkflowExpression<string> teamsiteId = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null, WorkflowExpression<string> currentStepAssignedTo = null, WorkflowExpression<string> status = null)
-        {
-            WorkflowExpression.Validate(teamsiteId, nameof(teamsiteId), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(offset, nameof(offset), required: false);
-            WorkflowExpression.Validate(currentStepAssignedTo, nameof(currentStepAssignedTo), required: false);
-            WorkflowExpression.Validate(status, nameof(status), required: false);
+            var __workflow_teamsiteId = teamsiteId == null ? null : WorkflowExpression.Compile(teamsiteId);
+            WorkflowExpression.Validate(__workflow_teamsiteId, nameof(teamsiteId), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_currentStepAssignedTo = currentStepAssignedTo == null ? null : WorkflowExpression.Compile(currentStepAssignedTo);
+            WorkflowExpression.Validate(__workflow_currentStepAssignedTo, nameof(currentStepAssignedTo), required: false);
+            var __workflow_status = status == null ? null : WorkflowExpression.Compile(status);
+            WorkflowExpression.Validate(__workflow_status, nameof(status), required: false);
             return new DeferredBodyAction<SeismicPagingLibraryWorkflowWorkflowResponse>(() =>
             {
                 var apiCallPath = "/approvalWorkflows";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (teamsiteId != null)
-                    callPayload.Queries["teamsiteId"] = ExpressionConverter.Convert(teamsiteId);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (offset != null)
-                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-                if (currentStepAssignedTo != null)
-                    callPayload.Queries["currentStepAssignedTo"] = ExpressionConverter.Convert(currentStepAssignedTo);
-                if (status != null)
-                    callPayload.Queries["status"] = ExpressionConverter.Convert(status);
+                if (__workflow_teamsiteId != null)
+                    callPayload.Queries["teamsiteId"] = ExpressionConverter.Convert(__workflow_teamsiteId);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                if (__workflow_currentStepAssignedTo != null)
+                    callPayload.Queries["currentStepAssignedTo"] = ExpressionConverter.Convert(__workflow_currentStepAssignedTo);
+                if (__workflow_status != null)
+                    callPayload.Queries["status"] = ExpressionConverter.Convert(__workflow_status);
                 return new ApiConnectionAction<SeismicPagingLibraryWorkflowWorkflowResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateLibraryUrl))]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse> CreateLibraryUrl([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> bodyformat = null, [WorkflowExpression] Func<string> bodyurlurl = null, [WorkflowExpression] Func<bool> bodyurlopenInNewWindow = null, [WorkflowExpression] Func<string> bodyownerId = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyparentFolderId = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyexpiresAt = null, [WorkflowExpression] Func<string> bodyexternalId = null, [WorkflowExpression] Func<string> bodyexternalConnectionId = null, [WorkflowExpression] Func<SeismicLibraryContentManagementContentExperts[]> bodyexperts = null, [WorkflowExpression] Func<SeismicLibraryContentManagementCustomProperties[]> bodycontentProperties = null)
+        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse> CreateLibraryUrl(Expression<Func<string>> teamsiteId, Expression<Func<string>> bodyformat = null, Expression<Func<string>> bodyurlurl = null, Expression<Func<bool>> bodyurlopenInNewWindow = null, Expression<Func<string>> bodyownerId = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyparentFolderId = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyexpiresAt = null, Expression<Func<string>> bodyexternalId = null, Expression<Func<string>> bodyexternalConnectionId = null, Expression<Func<SeismicLibraryContentManagementContentExperts[]>> bodyexperts = null, Expression<Func<SeismicLibraryContentManagementCustomProperties[]>> bodycontentProperties = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse> __BuildCreateLibraryUrl(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> bodyformat = null, WorkflowExpression<string> bodyurlurl = null, WorkflowExpression<bool> bodyurlopenInNewWindow = null, WorkflowExpression<string> bodyownerId = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyparentFolderId = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodyexpiresAt = null, WorkflowExpression<string> bodyexternalId = null, WorkflowExpression<string> bodyexternalConnectionId = null, WorkflowExpression<SeismicLibraryContentManagementContentExperts[]> bodyexperts = null, WorkflowExpression<SeismicLibraryContentManagementCustomProperties[]> bodycontentProperties = null)
-        {
-            WorkflowExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            WorkflowExpression.Validate(bodyformat, nameof(bodyformat), required: false);
-            WorkflowExpression.Validate(bodyurlurl, nameof(bodyurlurl), required: false);
-            WorkflowExpression.Validate(bodyurlopenInNewWindow, nameof(bodyurlopenInNewWindow), required: false);
-            WorkflowExpression.Validate(bodyownerId, nameof(bodyownerId), required: false);
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
-            WorkflowExpression.Validate(bodyparentFolderId, nameof(bodyparentFolderId), required: false);
-            WorkflowExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            WorkflowExpression.Validate(bodyexpiresAt, nameof(bodyexpiresAt), required: false);
-            WorkflowExpression.Validate(bodyexternalId, nameof(bodyexternalId), required: false);
-            WorkflowExpression.Validate(bodyexternalConnectionId, nameof(bodyexternalConnectionId), required: false);
-            WorkflowExpression.Validate(bodyexperts, nameof(bodyexperts), required: false);
-            WorkflowExpression.Validate(bodycontentProperties, nameof(bodycontentProperties), required: false);
+            var __workflow_teamsiteId = teamsiteId == null ? null : WorkflowExpression.Compile(teamsiteId);
+            WorkflowExpression.Validate(__workflow_teamsiteId, nameof(teamsiteId), required: true);
+            var __workflow_bodyformat = bodyformat == null ? null : WorkflowExpression.Compile(bodyformat);
+            WorkflowExpression.Validate(__workflow_bodyformat, nameof(bodyformat), required: false);
+            var __workflow_bodyurlurl = bodyurlurl == null ? null : WorkflowExpression.Compile(bodyurlurl);
+            WorkflowExpression.Validate(__workflow_bodyurlurl, nameof(bodyurlurl), required: false);
+            var __workflow_bodyurlopenInNewWindow = bodyurlopenInNewWindow == null ? null : WorkflowExpression.Compile(bodyurlopenInNewWindow);
+            WorkflowExpression.Validate(__workflow_bodyurlopenInNewWindow, nameof(bodyurlopenInNewWindow), required: false);
+            var __workflow_bodyownerId = bodyownerId == null ? null : WorkflowExpression.Compile(bodyownerId);
+            WorkflowExpression.Validate(__workflow_bodyownerId, nameof(bodyownerId), required: false);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
+            var __workflow_bodyparentFolderId = bodyparentFolderId == null ? null : WorkflowExpression.Compile(bodyparentFolderId);
+            WorkflowExpression.Validate(__workflow_bodyparentFolderId, nameof(bodyparentFolderId), required: false);
+            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
+            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyexpiresAt = bodyexpiresAt == null ? null : WorkflowExpression.Compile(bodyexpiresAt);
+            WorkflowExpression.Validate(__workflow_bodyexpiresAt, nameof(bodyexpiresAt), required: false);
+            var __workflow_bodyexternalId = bodyexternalId == null ? null : WorkflowExpression.Compile(bodyexternalId);
+            WorkflowExpression.Validate(__workflow_bodyexternalId, nameof(bodyexternalId), required: false);
+            var __workflow_bodyexternalConnectionId = bodyexternalConnectionId == null ? null : WorkflowExpression.Compile(bodyexternalConnectionId);
+            WorkflowExpression.Validate(__workflow_bodyexternalConnectionId, nameof(bodyexternalConnectionId), required: false);
+            var __workflow_bodyexperts = bodyexperts == null ? null : WorkflowExpression.Compile(bodyexperts);
+            WorkflowExpression.Validate(__workflow_bodyexperts, nameof(bodyexperts), required: false);
+            var __workflow_bodycontentProperties = bodycontentProperties == null ? null : WorkflowExpression.Compile(bodycontentProperties);
+            WorkflowExpression.Validate(__workflow_bodycontentProperties, nameof(bodycontentProperties), required: false);
             return new DeferredBodyAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/urls", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/urls", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyformat != null)
+                if (__workflow_bodyformat != null)
                 {
-                    body["format"] = ExpressionConverter.ConvertO(bodyformat);
+                    body["format"] = ExpressionConverter.ConvertO(__workflow_bodyformat);
                     bodypropCount++;
                 }
 
                 var urlObject = new JObject();
                 var urlObjectpropCount = 0;
-                if (bodyurlurl != null)
+                if (__workflow_bodyurlurl != null)
                 {
-                    urlObject["url"] = ExpressionConverter.ConvertO(bodyurlurl);
+                    urlObject["url"] = ExpressionConverter.ConvertO(__workflow_bodyurlurl);
                     urlObjectpropCount++;
                 }
 
-                if (bodyurlopenInNewWindow != null)
+                if (__workflow_bodyurlopenInNewWindow != null)
                 {
-                    urlObject["openInNewWindow"] = ExpressionConverter.ConvertO(bodyurlopenInNewWindow);
+                    urlObject["openInNewWindow"] = ExpressionConverter.ConvertO(__workflow_bodyurlopenInNewWindow);
                     urlObjectpropCount++;
                 }
 
@@ -1024,57 +932,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
                     bodypropCount++;
                 }
 
-                if (bodyownerId != null)
+                if (__workflow_bodyownerId != null)
                 {
-                    body["ownerId"] = ExpressionConverter.ConvertO(bodyownerId);
+                    body["ownerId"] = ExpressionConverter.ConvertO(__workflow_bodyownerId);
                     bodypropCount++;
                 }
 
-                if (bodyname != null)
+                if (__workflow_bodyname != null)
                 {
-                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
                     bodypropCount++;
                 }
 
-                if (bodyparentFolderId != null)
+                if (__workflow_bodyparentFolderId != null)
                 {
-                    body["parentFolderId"] = ExpressionConverter.ConvertO(bodyparentFolderId);
+                    body["parentFolderId"] = ExpressionConverter.ConvertO(__workflow_bodyparentFolderId);
                     bodypropCount++;
                 }
 
-                if (bodydescription != null)
+                if (__workflow_bodydescription != null)
                 {
-                    body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
                     bodypropCount++;
                 }
 
-                if (bodyexpiresAt != null)
+                if (__workflow_bodyexpiresAt != null)
                 {
-                    body["expiresAt"] = ExpressionConverter.ConvertO(bodyexpiresAt);
+                    body["expiresAt"] = ExpressionConverter.ConvertO(__workflow_bodyexpiresAt);
                     bodypropCount++;
                 }
 
-                if (bodyexternalId != null)
+                if (__workflow_bodyexternalId != null)
                 {
-                    body["externalId"] = ExpressionConverter.ConvertO(bodyexternalId);
+                    body["externalId"] = ExpressionConverter.ConvertO(__workflow_bodyexternalId);
                     bodypropCount++;
                 }
 
-                if (bodyexternalConnectionId != null)
+                if (__workflow_bodyexternalConnectionId != null)
                 {
-                    body["externalConnectionId"] = ExpressionConverter.ConvertO(bodyexternalConnectionId);
+                    body["externalConnectionId"] = ExpressionConverter.ConvertO(__workflow_bodyexternalConnectionId);
                     bodypropCount++;
                 }
 
-                if (bodyexperts != null)
+                if (__workflow_bodyexperts != null)
                 {
-                    body["experts"] = ExpressionConverter.ConvertO(bodyexperts);
+                    body["experts"] = ExpressionConverter.ConvertO(__workflow_bodyexperts);
                     bodypropCount++;
                 }
 
-                if (bodycontentProperties != null)
+                if (__workflow_bodycontentProperties != null)
                 {
-                    body["properties"] = ExpressionConverter.ConvertO(bodycontentProperties);
+                    body["properties"] = ExpressionConverter.ConvertO(__workflow_bodycontentProperties);
                     bodypropCount++;
                 }
 
@@ -1088,20 +996,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        [WorkflowExpressionFactory(nameof(__BuildGetLibraryUrlDetails))]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse> GetLibraryUrlDetails([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId)
+        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse> GetLibraryUrlDetails(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse> __BuildGetLibraryUrlDetails(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentId)
-        {
-            WorkflowExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            WorkflowExpression.Validate(libraryContentId, nameof(libraryContentId), required: true);
+            var __workflow_teamsiteId = teamsiteId == null ? null : WorkflowExpression.Compile(teamsiteId);
+            WorkflowExpression.Validate(__workflow_teamsiteId, nameof(teamsiteId), required: true);
+            var __workflow_libraryContentId = libraryContentId == null ? null : WorkflowExpression.Compile(libraryContentId);
+            WorkflowExpression.Validate(__workflow_libraryContentId, nameof(libraryContentId), required: true);
             return new DeferredBodyAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/urls/{1}", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/urls/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse>(callPayload);
@@ -1109,50 +1012,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateLibraryUrl))]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse> UpdateLibraryUrl([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId, [WorkflowExpression] Func<bool> includeResponse = null, [WorkflowExpression] Func<string> bodyurlurl = null, [WorkflowExpression] Func<bool> bodyurlopenInNewWindow = null, [WorkflowExpression] Func<string> bodyownerId = null, [WorkflowExpression] Func<SeismicLibraryContentManagementContentExperts[]> bodyexperts = null, [WorkflowExpression] Func<SeismicLibraryContentManagementCustomProperties[]> bodycontentProperties = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyexpiresAt = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyparentFolderId = null, [WorkflowExpression] Func<string> bodyexternalId = null, [WorkflowExpression] Func<string> bodyexternalConnectionId = null)
+        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse> UpdateLibraryUrl(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<bool>> includeResponse = null, Expression<Func<string>> bodyurlurl = null, Expression<Func<bool>> bodyurlopenInNewWindow = null, Expression<Func<string>> bodyownerId = null, Expression<Func<SeismicLibraryContentManagementContentExperts[]>> bodyexperts = null, Expression<Func<SeismicLibraryContentManagementCustomProperties[]>> bodycontentProperties = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyexpiresAt = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyparentFolderId = null, Expression<Func<string>> bodyexternalId = null, Expression<Func<string>> bodyexternalConnectionId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse> __BuildUpdateLibraryUrl(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentId, WorkflowExpression<bool> includeResponse = null, WorkflowExpression<string> bodyurlurl = null, WorkflowExpression<bool> bodyurlopenInNewWindow = null, WorkflowExpression<string> bodyownerId = null, WorkflowExpression<SeismicLibraryContentManagementContentExperts[]> bodyexperts = null, WorkflowExpression<SeismicLibraryContentManagementCustomProperties[]> bodycontentProperties = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodyexpiresAt = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyparentFolderId = null, WorkflowExpression<string> bodyexternalId = null, WorkflowExpression<string> bodyexternalConnectionId = null)
-        {
-            WorkflowExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            WorkflowExpression.Validate(libraryContentId, nameof(libraryContentId), required: true);
-            WorkflowExpression.Validate(includeResponse, nameof(includeResponse), required: false);
-            WorkflowExpression.Validate(bodyurlurl, nameof(bodyurlurl), required: false);
-            WorkflowExpression.Validate(bodyurlopenInNewWindow, nameof(bodyurlopenInNewWindow), required: false);
-            WorkflowExpression.Validate(bodyownerId, nameof(bodyownerId), required: false);
-            WorkflowExpression.Validate(bodyexperts, nameof(bodyexperts), required: false);
-            WorkflowExpression.Validate(bodycontentProperties, nameof(bodycontentProperties), required: false);
-            WorkflowExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            WorkflowExpression.Validate(bodyexpiresAt, nameof(bodyexpiresAt), required: false);
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
-            WorkflowExpression.Validate(bodyparentFolderId, nameof(bodyparentFolderId), required: false);
-            WorkflowExpression.Validate(bodyexternalId, nameof(bodyexternalId), required: false);
-            WorkflowExpression.Validate(bodyexternalConnectionId, nameof(bodyexternalConnectionId), required: false);
+            var __workflow_teamsiteId = teamsiteId == null ? null : WorkflowExpression.Compile(teamsiteId);
+            WorkflowExpression.Validate(__workflow_teamsiteId, nameof(teamsiteId), required: true);
+            var __workflow_libraryContentId = libraryContentId == null ? null : WorkflowExpression.Compile(libraryContentId);
+            WorkflowExpression.Validate(__workflow_libraryContentId, nameof(libraryContentId), required: true);
+            var __workflow_includeResponse = includeResponse == null ? null : WorkflowExpression.Compile(includeResponse);
+            WorkflowExpression.Validate(__workflow_includeResponse, nameof(includeResponse), required: false);
+            var __workflow_bodyurlurl = bodyurlurl == null ? null : WorkflowExpression.Compile(bodyurlurl);
+            WorkflowExpression.Validate(__workflow_bodyurlurl, nameof(bodyurlurl), required: false);
+            var __workflow_bodyurlopenInNewWindow = bodyurlopenInNewWindow == null ? null : WorkflowExpression.Compile(bodyurlopenInNewWindow);
+            WorkflowExpression.Validate(__workflow_bodyurlopenInNewWindow, nameof(bodyurlopenInNewWindow), required: false);
+            var __workflow_bodyownerId = bodyownerId == null ? null : WorkflowExpression.Compile(bodyownerId);
+            WorkflowExpression.Validate(__workflow_bodyownerId, nameof(bodyownerId), required: false);
+            var __workflow_bodyexperts = bodyexperts == null ? null : WorkflowExpression.Compile(bodyexperts);
+            WorkflowExpression.Validate(__workflow_bodyexperts, nameof(bodyexperts), required: false);
+            var __workflow_bodycontentProperties = bodycontentProperties == null ? null : WorkflowExpression.Compile(bodycontentProperties);
+            WorkflowExpression.Validate(__workflow_bodycontentProperties, nameof(bodycontentProperties), required: false);
+            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
+            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyexpiresAt = bodyexpiresAt == null ? null : WorkflowExpression.Compile(bodyexpiresAt);
+            WorkflowExpression.Validate(__workflow_bodyexpiresAt, nameof(bodyexpiresAt), required: false);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
+            var __workflow_bodyparentFolderId = bodyparentFolderId == null ? null : WorkflowExpression.Compile(bodyparentFolderId);
+            WorkflowExpression.Validate(__workflow_bodyparentFolderId, nameof(bodyparentFolderId), required: false);
+            var __workflow_bodyexternalId = bodyexternalId == null ? null : WorkflowExpression.Compile(bodyexternalId);
+            WorkflowExpression.Validate(__workflow_bodyexternalId, nameof(bodyexternalId), required: false);
+            var __workflow_bodyexternalConnectionId = bodyexternalConnectionId == null ? null : WorkflowExpression.Compile(bodyexternalConnectionId);
+            WorkflowExpression.Validate(__workflow_bodyexternalConnectionId, nameof(bodyexternalConnectionId), required: false);
             return new DeferredBodyAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/urls/{1}", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/urls/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentId, 1));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["includeResponse"] = Convert.ToString(true);
-                if (includeResponse != null)
-                    callPayload.Queries["includeResponse"] = ExpressionConverter.Convert(includeResponse);
+                if (__workflow_includeResponse != null)
+                    callPayload.Queries["includeResponse"] = ExpressionConverter.Convert(__workflow_includeResponse);
                 var body = new JObject();
                 var bodypropCount = 0;
                 var urlObject = new JObject();
                 var urlObjectpropCount = 0;
-                if (bodyurlurl != null)
+                if (__workflow_bodyurlurl != null)
                 {
-                    urlObject["url"] = ExpressionConverter.ConvertO(bodyurlurl);
+                    urlObject["url"] = ExpressionConverter.ConvertO(__workflow_bodyurlurl);
                     urlObjectpropCount++;
                 }
 
-                if (bodyurlopenInNewWindow != null)
+                if (__workflow_bodyurlopenInNewWindow != null)
                 {
-                    urlObject["openInNewWindow"] = ExpressionConverter.ConvertO(bodyurlopenInNewWindow);
+                    urlObject["openInNewWindow"] = ExpressionConverter.ConvertO(__workflow_bodyurlopenInNewWindow);
                     urlObjectpropCount++;
                 }
 
@@ -1162,57 +1072,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
                     bodypropCount++;
                 }
 
-                if (bodyownerId != null)
+                if (__workflow_bodyownerId != null)
                 {
-                    body["ownerId"] = ExpressionConverter.ConvertO(bodyownerId);
+                    body["ownerId"] = ExpressionConverter.ConvertO(__workflow_bodyownerId);
                     bodypropCount++;
                 }
 
-                if (bodyexperts != null)
+                if (__workflow_bodyexperts != null)
                 {
-                    body["experts"] = ExpressionConverter.ConvertO(bodyexperts);
+                    body["experts"] = ExpressionConverter.ConvertO(__workflow_bodyexperts);
                     bodypropCount++;
                 }
 
-                if (bodycontentProperties != null)
+                if (__workflow_bodycontentProperties != null)
                 {
-                    body["properties"] = ExpressionConverter.ConvertO(bodycontentProperties);
+                    body["properties"] = ExpressionConverter.ConvertO(__workflow_bodycontentProperties);
                     bodypropCount++;
                 }
 
-                if (bodydescription != null)
+                if (__workflow_bodydescription != null)
                 {
-                    body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
                     bodypropCount++;
                 }
 
-                if (bodyexpiresAt != null)
+                if (__workflow_bodyexpiresAt != null)
                 {
-                    body["expiresAt"] = ExpressionConverter.ConvertO(bodyexpiresAt);
+                    body["expiresAt"] = ExpressionConverter.ConvertO(__workflow_bodyexpiresAt);
                     bodypropCount++;
                 }
 
-                if (bodyname != null)
+                if (__workflow_bodyname != null)
                 {
-                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
                     bodypropCount++;
                 }
 
-                if (bodyparentFolderId != null)
+                if (__workflow_bodyparentFolderId != null)
                 {
-                    body["parentFolderId"] = ExpressionConverter.ConvertO(bodyparentFolderId);
+                    body["parentFolderId"] = ExpressionConverter.ConvertO(__workflow_bodyparentFolderId);
                     bodypropCount++;
                 }
 
-                if (bodyexternalId != null)
+                if (__workflow_bodyexternalId != null)
                 {
-                    body["externalId"] = ExpressionConverter.ConvertO(bodyexternalId);
+                    body["externalId"] = ExpressionConverter.ConvertO(__workflow_bodyexternalId);
                     bodypropCount++;
                 }
 
-                if (bodyexternalConnectionId != null)
+                if (__workflow_bodyexternalConnectionId != null)
                 {
-                    body["externalConnectionId"] = ExpressionConverter.ConvertO(bodyexternalConnectionId);
+                    body["externalConnectionId"] = ExpressionConverter.ConvertO(__workflow_bodyexternalConnectionId);
                     bodypropCount++;
                 }
 
@@ -1226,27 +1136,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        [WorkflowExpressionFactory(nameof(__BuildCopyLibraryUrl))]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse> CopyLibraryUrl([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId, [WorkflowExpression] Func<string> bodyparentFolderId)
+        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse> CopyLibraryUrl(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<string>> bodyparentFolderId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse> __BuildCopyLibraryUrl(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentId, WorkflowExpression<string> bodyparentFolderId)
-        {
-            WorkflowExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            WorkflowExpression.Validate(libraryContentId, nameof(libraryContentId), required: true);
-            WorkflowExpression.Validate(bodyparentFolderId, nameof(bodyparentFolderId), required: true);
+            var __workflow_teamsiteId = teamsiteId == null ? null : WorkflowExpression.Compile(teamsiteId);
+            WorkflowExpression.Validate(__workflow_teamsiteId, nameof(teamsiteId), required: true);
+            var __workflow_libraryContentId = libraryContentId == null ? null : WorkflowExpression.Compile(libraryContentId);
+            WorkflowExpression.Validate(__workflow_libraryContentId, nameof(libraryContentId), required: true);
+            var __workflow_bodyparentFolderId = bodyparentFolderId == null ? null : WorkflowExpression.Compile(bodyparentFolderId);
+            WorkflowExpression.Validate(__workflow_bodyparentFolderId, nameof(bodyparentFolderId), required: true);
             return new DeferredBodyAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/urls/{1}/copy", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/urls/{1}/copy", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["parentFolderId"] = ExpressionConverter.ConvertO(bodyparentFolderId);
+                body["parentFolderId"] = ExpressionConverter.ConvertO(__workflow_bodyparentFolderId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

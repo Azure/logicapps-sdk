@@ -1,38 +1,32 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class ChatterActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "chatter")]
-        [WorkflowExpressionFactory(nameof(__BuildCreatePostInGroup))]
-        public IBodyWorkflowAction<CreatePostInGroupResponse> CreatePostInGroup([WorkflowExpression] Func<string> bodygroupID, [WorkflowExpression] Func<string> createPostInGroupText)
+        public IBodyWorkflowAction<CreatePostInGroupResponse> CreatePostInGroup(Expression<Func<string>> bodygroupID, Expression<Func<string>> createPostInGroupText)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreatePostInGroupResponse> __BuildCreatePostInGroup(WorkflowExpression<string> bodygroupID, WorkflowExpression<string> createPostInGroupText)
-        {
-            WorkflowExpression.Validate(bodygroupID, nameof(bodygroupID), required: true);
-            WorkflowExpression.Validate(createPostInGroupText, nameof(createPostInGroupText), required: true);
+            var __workflow_bodygroupID = bodygroupID == null ? null : WorkflowExpression.Compile(bodygroupID);
+            WorkflowExpression.Validate(__workflow_bodygroupID, nameof(bodygroupID), required: true);
+            var __workflow_createPostInGroupText = createPostInGroupText == null ? null : WorkflowExpression.Compile(createPostInGroupText);
+            WorkflowExpression.Validate(__workflow_createPostInGroupText, nameof(createPostInGroupText), required: true);
             return new DeferredBodyAction<CreatePostInGroupResponse>(() =>
             {
                 var apiCallPath = "/services/data/v38.0/chatter/feed-elements";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["CreatePostInGroupText"] = ExpressionConverter.Convert(createPostInGroupText);
+                callPayload.Queries["CreatePostInGroupText"] = ExpressionConverter.Convert(__workflow_createPostInGroupText);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["subjectId"] = ExpressionConverter.ConvertO(bodygroupID);
+                body["subjectId"] = ExpressionConverter.ConvertO(__workflow_bodygroupID);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -43,19 +37,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "chatter")]
-        [WorkflowExpressionFactory(nameof(__BuildListGroupMembers))]
-        public IBodyWorkflowAction<ListGroupMembersResponse> ListGroupMembers([WorkflowExpression] Func<string> groupId)
+        public IBodyWorkflowAction<ListGroupMembersResponse> ListGroupMembers(Expression<Func<string>> groupId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListGroupMembersResponse> __BuildListGroupMembers(WorkflowExpression<string> groupId)
-        {
-            WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
+            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
+            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
             return new DeferredBodyAction<ListGroupMembersResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/services/data/v38.0/chatter/groups/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/services/data/v38.0/chatter/groups/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ListGroupMembersResponse>(callPayload);
@@ -63,26 +51,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "chatter")]
-        [WorkflowExpressionFactory(nameof(__BuildAddUserToGroup))]
-        public IBodyWorkflowAction<GroupMemberResponse> AddUserToGroup([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> bodysalesforceUserID)
+        public IBodyWorkflowAction<GroupMemberResponse> AddUserToGroup(Expression<Func<string>> groupId, Expression<Func<string>> bodysalesforceUserID)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GroupMemberResponse> __BuildAddUserToGroup(WorkflowExpression<string> groupId, WorkflowExpression<string> bodysalesforceUserID)
-        {
-            WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
-            WorkflowExpression.Validate(bodysalesforceUserID, nameof(bodysalesforceUserID), required: true);
+            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
+            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
+            var __workflow_bodysalesforceUserID = bodysalesforceUserID == null ? null : WorkflowExpression.Compile(bodysalesforceUserID);
+            WorkflowExpression.Validate(__workflow_bodysalesforceUserID, nameof(bodysalesforceUserID), required: true);
             return new DeferredBodyAction<GroupMemberResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/services/data/v38.0/chatter/groups/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/services/data/v38.0/chatter/groups/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["userId"] = ExpressionConverter.ConvertO(bodysalesforceUserID);
+                body["userId"] = ExpressionConverter.ConvertO(__workflow_bodysalesforceUserID);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -93,19 +76,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "chatter")]
-        [WorkflowExpressionFactory(nameof(__BuildGetUser))]
-        public IBodyWorkflowAction<UserUserResponse> GetUser([WorkflowExpression] Func<string> userId)
+        public IBodyWorkflowAction<UserUserResponse> GetUser(Expression<Func<string>> userId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UserUserResponse> __BuildGetUser(WorkflowExpression<string> userId)
-        {
-            WorkflowExpression.Validate(userId, nameof(userId), required: true);
+            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
+            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
             return new DeferredBodyAction<UserUserResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/services/data/v38.0/chatter/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/services/data/v38.0/chatter/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<UserUserResponse>(callPayload);
@@ -113,19 +90,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "chatter")]
-        [WorkflowExpressionFactory(nameof(__BuildGet))]
-        public IBodyWorkflowAction<GetPostResponse> Get([WorkflowExpression] Func<string> postId)
+        public IBodyWorkflowAction<GetPostResponse> Get(Expression<Func<string>> postId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetPostResponse> __BuildGet(WorkflowExpression<string> postId)
-        {
-            WorkflowExpression.Validate(postId, nameof(postId), required: true);
+            var __workflow_postId = postId == null ? null : WorkflowExpression.Compile(postId);
+            WorkflowExpression.Validate(__workflow_postId, nameof(postId), required: true);
             return new DeferredBodyAction<GetPostResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/services/data/v38.0/chatter/feed-elements/{0}", ExpressionConverter.ConvertWithUrlEncoding(postId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/services/data/v38.0/chatter/feed-elements/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_postId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetPostResponse>(callPayload);
@@ -135,20 +106,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
 
     public class ChatterTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildTrigNewPostInGroup))]
-        public IBodyWorkflowTrigger<ListPostsByGroupResponse> TrigNewPostInGroup([WorkflowExpression] Func<string> groupId,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListPostsByGroupResponse> TrigNewPostInGroup(Expression<Func<string>> groupId, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ListPostsByGroupResponse> __BuildTrigNewPostInGroup(WorkflowExpression<string> groupId,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
+            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
+            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
             return new DeferredBodyTrigger<ListPostsByGroupResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/new_post_trigger/services/data/v38.0/chatter/feeds/record/{0}/feed-elements", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/new_post_trigger/services/data/v38.0/chatter/feeds/record/{0}/feed-elements", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionTrigger<ListPostsByGroupResponse>(callPayload, recurrence: recurrence);

@@ -1,30 +1,23 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordpress
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class WordpressActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wordpress")]
-        [WorkflowExpressionFactory(nameof(__BuildSiteStats))]
-        public IBodyWorkflowAction<SiteStatsModel> SiteStats([WorkflowExpression] Func<string> siteId)
+        public IBodyWorkflowAction<SiteStatsModel> SiteStats(Expression<Func<string>> siteId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SiteStatsModel> __BuildSiteStats(WorkflowExpression<string> siteId)
-        {
-            WorkflowExpression.Validate(siteId, nameof(siteId), required: true);
+            var __workflow_siteId = siteId == null ? null : WorkflowExpression.Compile(siteId);
+            WorkflowExpression.Validate(__workflow_siteId, nameof(siteId), required: true);
             return new DeferredBodyAction<SiteStatsModel>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sites/{0}/stats", ExpressionConverter.ConvertWithUrlEncoding(siteId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sites/{0}/stats", ExpressionConverter.ConvertWithUrlEncoding(__workflow_siteId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["fields"] = Convert.ToString("stats");
@@ -33,20 +26,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordpress
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wordpress")]
-        [WorkflowExpressionFactory(nameof(__BuildGet))]
-        public IBodyWorkflowAction<PostModel> Get([WorkflowExpression] Func<string> siteId, [WorkflowExpression] Func<string> postId)
+        public IBodyWorkflowAction<PostModel> Get(Expression<Func<string>> siteId, Expression<Func<string>> postId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PostModel> __BuildGet(WorkflowExpression<string> siteId, WorkflowExpression<string> postId)
-        {
-            WorkflowExpression.Validate(siteId, nameof(siteId), required: true);
-            WorkflowExpression.Validate(postId, nameof(postId), required: true);
+            var __workflow_siteId = siteId == null ? null : WorkflowExpression.Compile(siteId);
+            WorkflowExpression.Validate(__workflow_siteId, nameof(siteId), required: true);
+            var __workflow_postId = postId == null ? null : WorkflowExpression.Compile(postId);
+            WorkflowExpression.Validate(__workflow_postId, nameof(postId), required: true);
             return new DeferredBodyAction<PostModel>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sites/{0}/posts/{1}", ExpressionConverter.ConvertWithUrlEncoding(siteId, 1), ExpressionConverter.ConvertWithUrlEncoding(postId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sites/{0}/posts/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_siteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_postId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<PostModel>(callPayload);
@@ -54,48 +42,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordpress
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wordpress")]
-        [WorkflowExpressionFactory(nameof(__BuildCreate))]
-        public IBodyWorkflowAction<PostModel> Create([WorkflowExpression] Func<string> siteId, [WorkflowExpression] Func<string> posttitle = null, [WorkflowExpression] Func<string> postcontent = null, [WorkflowExpression] Func<poststatusInput> poststatus = null, [WorkflowExpression] Func<string> posttags = null)
+        public IBodyWorkflowAction<PostModel> Create(Expression<Func<string>> siteId, Expression<Func<string>> posttitle = null, Expression<Func<string>> postcontent = null, Expression<Func<poststatusInput>> poststatus = null, Expression<Func<string>> posttags = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PostModel> __BuildCreate(WorkflowExpression<string> siteId, WorkflowExpression<string> posttitle = null, WorkflowExpression<string> postcontent = null, WorkflowExpression<poststatusInput> poststatus = null, WorkflowExpression<string> posttags = null)
-        {
-            WorkflowExpression.Validate(siteId, nameof(siteId), required: true);
-            WorkflowExpression.Validate(posttitle, nameof(posttitle), required: false);
-            WorkflowExpression.Validate(postcontent, nameof(postcontent), required: false);
-            WorkflowExpression.Validate(poststatus, nameof(poststatus), required: false);
-            WorkflowExpression.Validate(posttags, nameof(posttags), required: false);
+            var __workflow_siteId = siteId == null ? null : WorkflowExpression.Compile(siteId);
+            WorkflowExpression.Validate(__workflow_siteId, nameof(siteId), required: true);
+            var __workflow_posttitle = posttitle == null ? null : WorkflowExpression.Compile(posttitle);
+            WorkflowExpression.Validate(__workflow_posttitle, nameof(posttitle), required: false);
+            var __workflow_postcontent = postcontent == null ? null : WorkflowExpression.Compile(postcontent);
+            WorkflowExpression.Validate(__workflow_postcontent, nameof(postcontent), required: false);
+            var __workflow_poststatus = poststatus == null ? null : WorkflowExpression.Compile(poststatus);
+            WorkflowExpression.Validate(__workflow_poststatus, nameof(poststatus), required: false);
+            var __workflow_posttags = posttags == null ? null : WorkflowExpression.Compile(posttags);
+            WorkflowExpression.Validate(__workflow_posttags, nameof(posttags), required: false);
             return new DeferredBodyAction<PostModel>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sites/{0}/posts/new", ExpressionConverter.ConvertWithUrlEncoding(siteId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sites/{0}/posts/new", ExpressionConverter.ConvertWithUrlEncoding(__workflow_siteId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var post = new JObject();
                 var postpropCount = 0;
-                if (posttitle != null)
+                if (__workflow_posttitle != null)
                 {
-                    post["title"] = ExpressionConverter.ConvertO(posttitle);
+                    post["title"] = ExpressionConverter.ConvertO(__workflow_posttitle);
                     postpropCount++;
                 }
 
-                if (postcontent != null)
+                if (__workflow_postcontent != null)
                 {
-                    post["content"] = ExpressionConverter.ConvertO(postcontent);
+                    post["content"] = ExpressionConverter.ConvertO(__workflow_postcontent);
                     postpropCount++;
                 }
 
-                if (poststatus != null)
+                if (__workflow_poststatus != null)
                 {
-                    post["status"] = ExpressionConverter.ConvertO(poststatus);
+                    post["status"] = ExpressionConverter.ConvertO(__workflow_poststatus);
                     postpropCount++;
                 }
 
-                if (posttags != null)
+                if (__workflow_posttags != null)
                 {
-                    post["tags"] = ExpressionConverter.ConvertO(posttags);
+                    post["tags"] = ExpressionConverter.ConvertO(__workflow_posttags);
                     postpropCount++;
                 }
 

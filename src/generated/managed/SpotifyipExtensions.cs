@@ -1,12 +1,12 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spotifyip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class SpotifyipActions([ConnectionName] string connectionId)
     {
@@ -38,23 +38,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spotifyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spotifyip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetNewReleases))]
-        public IBodyWorkflowAction<GetNewReleasesResponse> GetNewReleases([WorkflowExpression] Func<string> country = null)
+        public IBodyWorkflowAction<GetNewReleasesResponse> GetNewReleases(Expression<Func<string>> country = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetNewReleasesResponse> __BuildGetNewReleases(WorkflowExpression<string> country = null)
-        {
-            WorkflowExpression.Validate(country, nameof(country), required: false);
+            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
+            WorkflowExpression.Validate(__workflow_country, nameof(country), required: false);
             return new DeferredBodyAction<GetNewReleasesResponse>(() =>
             {
                 var apiCallPath = "/v1/browse/new-releases";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (country != null)
-                    callPayload.Queries["country"] = ExpressionConverter.Convert(country);
+                if (__workflow_country != null)
+                    callPayload.Queries["country"] = ExpressionConverter.Convert(__workflow_country);
                 return new ApiConnectionAction<GetNewReleasesResponse>(callPayload);
             });
         }

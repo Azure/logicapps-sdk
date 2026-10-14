@@ -1,12 +1,12 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class GlaassproActions([ConnectionName] string connectionId)
     {
@@ -29,46 +29,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
-        [WorkflowExpressionFactory(nameof(__BuildSearchGet))]
-        public IBodyWorkflowAction<SearchResponse[]> SearchGet([WorkflowExpression] Func<string> query, [WorkflowExpression] Func<filterInput> filter = null, [WorkflowExpression] Func<int> take = null)
+        public IBodyWorkflowAction<SearchResponse[]> SearchGet(Expression<Func<string>> query, Expression<Func<filterInput>> filter = null, Expression<Func<int>> take = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SearchResponse[]> __BuildSearchGet(WorkflowExpression<string> query, WorkflowExpression<filterInput> filter = null, WorkflowExpression<int> take = null)
-        {
-            WorkflowExpression.Validate(query, nameof(query), required: true);
-            WorkflowExpression.Validate(filter, nameof(filter), required: false);
-            WorkflowExpression.Validate(take, nameof(take), required: false);
+            var __workflow_query = query == null ? null : WorkflowExpression.Compile(query);
+            WorkflowExpression.Validate(__workflow_query, nameof(query), required: true);
+            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
+            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
+            var __workflow_take = take == null ? null : WorkflowExpression.Compile(take);
+            WorkflowExpression.Validate(__workflow_take, nameof(take), required: false);
             return new DeferredBodyAction<SearchResponse[]>(() =>
             {
                 var apiCallPath = "/api/q";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["query"] = ExpressionConverter.Convert(query);
-                if (filter != null)
-                    callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-                if (take != null)
-                    callPayload.Queries["take"] = ExpressionConverter.Convert(take);
+                callPayload.Queries["query"] = ExpressionConverter.Convert(__workflow_query);
+                if (__workflow_filter != null)
+                    callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
+                if (__workflow_take != null)
+                    callPayload.Queries["take"] = ExpressionConverter.Convert(__workflow_take);
                 return new ApiConnectionAction<SearchResponse[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
-        [WorkflowExpressionFactory(nameof(__BuildCaseGet))]
-        public IBodyWorkflowAction<CaseResponse> CaseGet([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<CaseResponse> CaseGet(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CaseResponse> __BuildCaseGet(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<CaseResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/c/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/c/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CaseResponse>(callPayload);
@@ -76,19 +66,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
-        [WorkflowExpressionFactory(nameof(__BuildCaseFieldGet))]
-        public IBodyWorkflowAction<CaseFieldsResponse> CaseFieldGet([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<CaseFieldsResponse> CaseFieldGet(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CaseFieldsResponse> __BuildCaseFieldGet(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<CaseFieldsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/c/{0}/fields", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/c/{0}/fields", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CaseFieldsResponse>(callPayload);
@@ -96,48 +80,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
-        [WorkflowExpressionFactory(nameof(__BuildCasePrint))]
-        public IBodyWorkflowAction<object> CasePrint([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bool> bodyasynchronous = null, [WorkflowExpression] Func<bool> bodyuseCustom = null, [WorkflowExpression] Func<bodydisplayGalleryInput> bodydisplayGallery = null, [WorkflowExpression] Func<bodydisplayTextInput> bodydisplayText = null)
+        public IBodyWorkflowAction<object> CasePrint(Expression<Func<string>> id, Expression<Func<bool>> bodyasynchronous = null, Expression<Func<bool>> bodyuseCustom = null, Expression<Func<bodydisplayGalleryInput>> bodydisplayGallery = null, Expression<Func<bodydisplayTextInput>> bodydisplayText = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<object> __BuildCasePrint(WorkflowExpression<string> id, WorkflowExpression<bool> bodyasynchronous = null, WorkflowExpression<bool> bodyuseCustom = null, WorkflowExpression<bodydisplayGalleryInput> bodydisplayGallery = null, WorkflowExpression<bodydisplayTextInput> bodydisplayText = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(bodyasynchronous, nameof(bodyasynchronous), required: false);
-            WorkflowExpression.Validate(bodyuseCustom, nameof(bodyuseCustom), required: false);
-            WorkflowExpression.Validate(bodydisplayGallery, nameof(bodydisplayGallery), required: false);
-            WorkflowExpression.Validate(bodydisplayText, nameof(bodydisplayText), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_bodyasynchronous = bodyasynchronous == null ? null : WorkflowExpression.Compile(bodyasynchronous);
+            WorkflowExpression.Validate(__workflow_bodyasynchronous, nameof(bodyasynchronous), required: false);
+            var __workflow_bodyuseCustom = bodyuseCustom == null ? null : WorkflowExpression.Compile(bodyuseCustom);
+            WorkflowExpression.Validate(__workflow_bodyuseCustom, nameof(bodyuseCustom), required: false);
+            var __workflow_bodydisplayGallery = bodydisplayGallery == null ? null : WorkflowExpression.Compile(bodydisplayGallery);
+            WorkflowExpression.Validate(__workflow_bodydisplayGallery, nameof(bodydisplayGallery), required: false);
+            var __workflow_bodydisplayText = bodydisplayText == null ? null : WorkflowExpression.Compile(bodydisplayText);
+            WorkflowExpression.Validate(__workflow_bodydisplayText, nameof(bodydisplayText), required: false);
             return new DeferredBodyAction<object>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/c/{0}/print", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/c/{0}/print", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyasynchronous != null)
+                if (__workflow_bodyasynchronous != null)
                 {
-                    body["Asynchronous"] = ExpressionConverter.ConvertO(bodyasynchronous);
+                    body["Asynchronous"] = ExpressionConverter.ConvertO(__workflow_bodyasynchronous);
                     bodypropCount++;
                 }
 
-                if (bodyuseCustom != null)
+                if (__workflow_bodyuseCustom != null)
                 {
-                    body["UseCustom"] = ExpressionConverter.ConvertO(bodyuseCustom);
+                    body["UseCustom"] = ExpressionConverter.ConvertO(__workflow_bodyuseCustom);
                     bodypropCount++;
                 }
 
-                if (bodydisplayGallery != null)
+                if (__workflow_bodydisplayGallery != null)
                 {
-                    body["DisplayGallery"] = ExpressionConverter.ConvertO(bodydisplayGallery);
+                    body["DisplayGallery"] = ExpressionConverter.ConvertO(__workflow_bodydisplayGallery);
                     bodypropCount++;
                 }
 
-                if (bodydisplayText != null)
+                if (__workflow_bodydisplayText != null)
                 {
-                    body["DisplayText"] = ExpressionConverter.ConvertO(bodydisplayText);
+                    body["DisplayText"] = ExpressionConverter.ConvertO(__workflow_bodydisplayText);
                     bodypropCount++;
                 }
 
@@ -151,20 +133,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
-        [WorkflowExpressionFactory(nameof(__BuildCasePrintGet))]
-        public IBodyWorkflowAction<object> CasePrintGet([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> requestId)
+        public IBodyWorkflowAction<object> CasePrintGet(Expression<Func<string>> id, Expression<Func<string>> requestId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<object> __BuildCasePrintGet(WorkflowExpression<string> id, WorkflowExpression<string> requestId)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(requestId, nameof(requestId), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_requestId = requestId == null ? null : WorkflowExpression.Compile(requestId);
+            WorkflowExpression.Validate(__workflow_requestId, nameof(requestId), required: true);
             return new DeferredBodyAction<object>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/c/{0}/print/{1}", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(requestId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/c/{0}/print/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_requestId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<object>(callPayload);
@@ -172,19 +149,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
-        [WorkflowExpressionFactory(nameof(__BuildCaseReplyGet))]
-        public IBodyWorkflowAction<CaseReplyResponse> CaseReplyGet([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<CaseReplyResponse> CaseReplyGet(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CaseReplyResponse> __BuildCaseReplyGet(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<CaseReplyResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/c/{0}/reply", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/c/{0}/reply", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CaseReplyResponse>(callPayload);
@@ -192,33 +163,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
-        [WorkflowExpressionFactory(nameof(__BuildCaseReply))]
-        public IBodyWorkflowAction<CaseReplyResponse> CaseReply([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bool> bodywithoutNotification, [WorkflowExpression] Func<string> bodymessage = null)
+        public IBodyWorkflowAction<CaseReplyResponse> CaseReply(Expression<Func<string>> id, Expression<Func<bool>> bodywithoutNotification, Expression<Func<string>> bodymessage = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CaseReplyResponse> __BuildCaseReply(WorkflowExpression<string> id, WorkflowExpression<bool> bodywithoutNotification, WorkflowExpression<string> bodymessage = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(bodywithoutNotification, nameof(bodywithoutNotification), required: true);
-            WorkflowExpression.Validate(bodymessage, nameof(bodymessage), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_bodywithoutNotification = bodywithoutNotification == null ? null : WorkflowExpression.Compile(bodywithoutNotification);
+            WorkflowExpression.Validate(__workflow_bodywithoutNotification, nameof(bodywithoutNotification), required: true);
+            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
+            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: false);
             return new DeferredBodyAction<CaseReplyResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/c/{0}/reply", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/c/{0}/reply", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodymessage != null)
+                if (__workflow_bodymessage != null)
                 {
-                    body["Message"] = ExpressionConverter.ConvertO(bodymessage);
+                    body["Message"] = ExpressionConverter.ConvertO(__workflow_bodymessage);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["WithoutNotification"] = ExpressionConverter.ConvertO(bodywithoutNotification);
+                body["WithoutNotification"] = ExpressionConverter.ConvertO(__workflow_bodywithoutNotification);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -231,18 +198,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
 
     public class GlaassproTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildCaseCreatedTrigger))]
-        public IWorkflowTrigger CaseCreatedTrigger([WorkflowExpression] Func<string> bodytemplateId = null,[WorkflowExpression] Func<bodyscopeInput> bodyscope = null,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CaseCreatedTrigger(Expression<Func<string>> bodytemplateId = null, Expression<Func<bodyscopeInput>> bodyscope = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildCaseCreatedTrigger(WorkflowExpression<string> bodytemplateId = null,WorkflowExpression<bodyscopeInput> bodyscope = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodytemplateId, nameof(bodytemplateId), required: false);
-            WorkflowExpression.Validate(bodyscope, nameof(bodyscope), required: false);
+            var __workflow_bodytemplateId = bodytemplateId == null ? null : WorkflowExpression.Compile(bodytemplateId);
+            WorkflowExpression.Validate(__workflow_bodytemplateId, nameof(bodytemplateId), required: false);
+            var __workflow_bodyscope = bodyscope == null ? null : WorkflowExpression.Compile(bodyscope);
+            WorkflowExpression.Validate(__workflow_bodyscope, nameof(bodyscope), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/t/casecreated";
@@ -250,15 +211,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodytemplateId != null)
+                if (__workflow_bodytemplateId != null)
                 {
-                    body["TemplateId"] = ExpressionConverter.ConvertO(bodytemplateId);
+                    body["TemplateId"] = ExpressionConverter.ConvertO(__workflow_bodytemplateId);
                     bodypropCount++;
                 }
 
-                if (bodyscope != null)
+                if (__workflow_bodyscope != null)
                 {
-                    body["Scope"] = ExpressionConverter.ConvertO(bodyscope);
+                    body["Scope"] = ExpressionConverter.ConvertO(__workflow_bodyscope);
                     bodypropCount++;
                 }
 
@@ -273,17 +234,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildCaseUpdatedTrigger))]
-        public IWorkflowTrigger CaseUpdatedTrigger([WorkflowExpression] Func<string> bodytemplateId = null,[WorkflowExpression] Func<bodyscopeInput> bodyscope = null,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CaseUpdatedTrigger(Expression<Func<string>> bodytemplateId = null, Expression<Func<bodyscopeInput>> bodyscope = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildCaseUpdatedTrigger(WorkflowExpression<string> bodytemplateId = null,WorkflowExpression<bodyscopeInput> bodyscope = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodytemplateId, nameof(bodytemplateId), required: false);
-            WorkflowExpression.Validate(bodyscope, nameof(bodyscope), required: false);
+            var __workflow_bodytemplateId = bodytemplateId == null ? null : WorkflowExpression.Compile(bodytemplateId);
+            WorkflowExpression.Validate(__workflow_bodytemplateId, nameof(bodytemplateId), required: false);
+            var __workflow_bodyscope = bodyscope == null ? null : WorkflowExpression.Compile(bodyscope);
+            WorkflowExpression.Validate(__workflow_bodyscope, nameof(bodyscope), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/t/caseupdated";
@@ -291,15 +247,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodytemplateId != null)
+                if (__workflow_bodytemplateId != null)
                 {
-                    body["TemplateId"] = ExpressionConverter.ConvertO(bodytemplateId);
+                    body["TemplateId"] = ExpressionConverter.ConvertO(__workflow_bodytemplateId);
                     bodypropCount++;
                 }
 
-                if (bodyscope != null)
+                if (__workflow_bodyscope != null)
                 {
-                    body["Scope"] = ExpressionConverter.ConvertO(bodyscope);
+                    body["Scope"] = ExpressionConverter.ConvertO(__workflow_bodyscope);
                     bodypropCount++;
                 }
 
@@ -314,17 +270,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildCaseClosedTrigger))]
-        public IWorkflowTrigger CaseClosedTrigger([WorkflowExpression] Func<string> bodytemplateId = null,[WorkflowExpression] Func<bodyscopeInput> bodyscope = null,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CaseClosedTrigger(Expression<Func<string>> bodytemplateId = null, Expression<Func<bodyscopeInput>> bodyscope = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildCaseClosedTrigger(WorkflowExpression<string> bodytemplateId = null,WorkflowExpression<bodyscopeInput> bodyscope = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodytemplateId, nameof(bodytemplateId), required: false);
-            WorkflowExpression.Validate(bodyscope, nameof(bodyscope), required: false);
+            var __workflow_bodytemplateId = bodytemplateId == null ? null : WorkflowExpression.Compile(bodytemplateId);
+            WorkflowExpression.Validate(__workflow_bodytemplateId, nameof(bodytemplateId), required: false);
+            var __workflow_bodyscope = bodyscope == null ? null : WorkflowExpression.Compile(bodyscope);
+            WorkflowExpression.Validate(__workflow_bodyscope, nameof(bodyscope), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/t/caseclosed";
@@ -332,15 +283,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodytemplateId != null)
+                if (__workflow_bodytemplateId != null)
                 {
-                    body["TemplateId"] = ExpressionConverter.ConvertO(bodytemplateId);
+                    body["TemplateId"] = ExpressionConverter.ConvertO(__workflow_bodytemplateId);
                     bodypropCount++;
                 }
 
-                if (bodyscope != null)
+                if (__workflow_bodyscope != null)
                 {
-                    body["Scope"] = ExpressionConverter.ConvertO(bodyscope);
+                    body["Scope"] = ExpressionConverter.ConvertO(__workflow_bodyscope);
                     bodypropCount++;
                 }
 

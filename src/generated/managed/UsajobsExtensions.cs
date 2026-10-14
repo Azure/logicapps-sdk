@@ -1,1029 +1,807 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class UsajobsActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        [WorkflowExpressionFactory(nameof(__BuildSearchJobs))]
-        public IBodyWorkflowAction<SearchJobsResponse> SearchJobs([WorkflowExpression] Func<string> keyword = null, [WorkflowExpression] Func<string> positionTitle = null, [WorkflowExpression] Func<int> remunerationMinimumAmount = null, [WorkflowExpression] Func<int> remunerationMaximumAmount = null, [WorkflowExpression] Func<string> payGradeHigh = null, [WorkflowExpression] Func<string> payGradeLow = null, [WorkflowExpression] Func<string> jobCategoryCode = null, [WorkflowExpression] Func<bool> remoteIndicator = null, [WorkflowExpression] Func<string> locationName = null, [WorkflowExpression] Func<int> radius = null, [WorkflowExpression] Func<bool> relocationIndicator = null, [WorkflowExpression] Func<string> travelPercentage = null, [WorkflowExpression] Func<string> organization = null, [WorkflowExpression] Func<string> positionOfferingTypeCode = null, [WorkflowExpression] Func<string> positionScheduleTypeCode = null, [WorkflowExpression] Func<string> securityClearanceRequired = null, [WorkflowExpression] Func<positionSensitivityInput> positionSensitivity = null, [WorkflowExpression] Func<bool> supervisoryStatus = null, [WorkflowExpression] Func<int> datePosted = null, [WorkflowExpression] Func<string> jobGradeCode = null, [WorkflowExpression] Func<string> whoMayApply = null, [WorkflowExpression] Func<string> salaryBucket = null, [WorkflowExpression] Func<string> gradeBucket = null, [WorkflowExpression] Func<string> hiringPath = null, [WorkflowExpression] Func<string> missionCriticalTags = null, [WorkflowExpression] Func<string> postingChannel = null, [WorkflowExpression] Func<fieldsInput> fields = null, [WorkflowExpression] Func<sortFieldInput> sortField = null, [WorkflowExpression] Func<sortDirectionInput> sortDirection = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> resultsPerPage = null)
+        public IBodyWorkflowAction<SearchJobsResponse> SearchJobs(Expression<Func<string>> keyword = null, Expression<Func<string>> positionTitle = null, Expression<Func<int>> remunerationMinimumAmount = null, Expression<Func<int>> remunerationMaximumAmount = null, Expression<Func<string>> payGradeHigh = null, Expression<Func<string>> payGradeLow = null, Expression<Func<string>> jobCategoryCode = null, Expression<Func<bool>> remoteIndicator = null, Expression<Func<string>> locationName = null, Expression<Func<int>> radius = null, Expression<Func<bool>> relocationIndicator = null, Expression<Func<string>> travelPercentage = null, Expression<Func<string>> organization = null, Expression<Func<string>> positionOfferingTypeCode = null, Expression<Func<string>> positionScheduleTypeCode = null, Expression<Func<string>> securityClearanceRequired = null, Expression<Func<positionSensitivityInput>> positionSensitivity = null, Expression<Func<bool>> supervisoryStatus = null, Expression<Func<int>> datePosted = null, Expression<Func<string>> jobGradeCode = null, Expression<Func<string>> whoMayApply = null, Expression<Func<string>> salaryBucket = null, Expression<Func<string>> gradeBucket = null, Expression<Func<string>> hiringPath = null, Expression<Func<string>> missionCriticalTags = null, Expression<Func<string>> postingChannel = null, Expression<Func<fieldsInput>> fields = null, Expression<Func<sortFieldInput>> sortField = null, Expression<Func<sortDirectionInput>> sortDirection = null, Expression<Func<int>> page = null, Expression<Func<int>> resultsPerPage = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SearchJobsResponse> __BuildSearchJobs(WorkflowExpression<string> keyword = null, WorkflowExpression<string> positionTitle = null, WorkflowExpression<int> remunerationMinimumAmount = null, WorkflowExpression<int> remunerationMaximumAmount = null, WorkflowExpression<string> payGradeHigh = null, WorkflowExpression<string> payGradeLow = null, WorkflowExpression<string> jobCategoryCode = null, WorkflowExpression<bool> remoteIndicator = null, WorkflowExpression<string> locationName = null, WorkflowExpression<int> radius = null, WorkflowExpression<bool> relocationIndicator = null, WorkflowExpression<string> travelPercentage = null, WorkflowExpression<string> organization = null, WorkflowExpression<string> positionOfferingTypeCode = null, WorkflowExpression<string> positionScheduleTypeCode = null, WorkflowExpression<string> securityClearanceRequired = null, WorkflowExpression<positionSensitivityInput> positionSensitivity = null, WorkflowExpression<bool> supervisoryStatus = null, WorkflowExpression<int> datePosted = null, WorkflowExpression<string> jobGradeCode = null, WorkflowExpression<string> whoMayApply = null, WorkflowExpression<string> salaryBucket = null, WorkflowExpression<string> gradeBucket = null, WorkflowExpression<string> hiringPath = null, WorkflowExpression<string> missionCriticalTags = null, WorkflowExpression<string> postingChannel = null, WorkflowExpression<fieldsInput> fields = null, WorkflowExpression<sortFieldInput> sortField = null, WorkflowExpression<sortDirectionInput> sortDirection = null, WorkflowExpression<int> page = null, WorkflowExpression<int> resultsPerPage = null)
-        {
-            WorkflowExpression.Validate(keyword, nameof(keyword), required: false);
-            WorkflowExpression.Validate(positionTitle, nameof(positionTitle), required: false);
-            WorkflowExpression.Validate(remunerationMinimumAmount, nameof(remunerationMinimumAmount), required: false);
-            WorkflowExpression.Validate(remunerationMaximumAmount, nameof(remunerationMaximumAmount), required: false);
-            WorkflowExpression.Validate(payGradeHigh, nameof(payGradeHigh), required: false);
-            WorkflowExpression.Validate(payGradeLow, nameof(payGradeLow), required: false);
-            WorkflowExpression.Validate(jobCategoryCode, nameof(jobCategoryCode), required: false);
-            WorkflowExpression.Validate(remoteIndicator, nameof(remoteIndicator), required: false);
-            WorkflowExpression.Validate(locationName, nameof(locationName), required: false);
-            WorkflowExpression.Validate(radius, nameof(radius), required: false);
-            WorkflowExpression.Validate(relocationIndicator, nameof(relocationIndicator), required: false);
-            WorkflowExpression.Validate(travelPercentage, nameof(travelPercentage), required: false);
-            WorkflowExpression.Validate(organization, nameof(organization), required: false);
-            WorkflowExpression.Validate(positionOfferingTypeCode, nameof(positionOfferingTypeCode), required: false);
-            WorkflowExpression.Validate(positionScheduleTypeCode, nameof(positionScheduleTypeCode), required: false);
-            WorkflowExpression.Validate(securityClearanceRequired, nameof(securityClearanceRequired), required: false);
-            WorkflowExpression.Validate(positionSensitivity, nameof(positionSensitivity), required: false);
-            WorkflowExpression.Validate(supervisoryStatus, nameof(supervisoryStatus), required: false);
-            WorkflowExpression.Validate(datePosted, nameof(datePosted), required: false);
-            WorkflowExpression.Validate(jobGradeCode, nameof(jobGradeCode), required: false);
-            WorkflowExpression.Validate(whoMayApply, nameof(whoMayApply), required: false);
-            WorkflowExpression.Validate(salaryBucket, nameof(salaryBucket), required: false);
-            WorkflowExpression.Validate(gradeBucket, nameof(gradeBucket), required: false);
-            WorkflowExpression.Validate(hiringPath, nameof(hiringPath), required: false);
-            WorkflowExpression.Validate(missionCriticalTags, nameof(missionCriticalTags), required: false);
-            WorkflowExpression.Validate(postingChannel, nameof(postingChannel), required: false);
-            WorkflowExpression.Validate(fields, nameof(fields), required: false);
-            WorkflowExpression.Validate(sortField, nameof(sortField), required: false);
-            WorkflowExpression.Validate(sortDirection, nameof(sortDirection), required: false);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
-            WorkflowExpression.Validate(resultsPerPage, nameof(resultsPerPage), required: false);
+            var __workflow_keyword = keyword == null ? null : WorkflowExpression.Compile(keyword);
+            WorkflowExpression.Validate(__workflow_keyword, nameof(keyword), required: false);
+            var __workflow_positionTitle = positionTitle == null ? null : WorkflowExpression.Compile(positionTitle);
+            WorkflowExpression.Validate(__workflow_positionTitle, nameof(positionTitle), required: false);
+            var __workflow_remunerationMinimumAmount = remunerationMinimumAmount == null ? null : WorkflowExpression.Compile(remunerationMinimumAmount);
+            WorkflowExpression.Validate(__workflow_remunerationMinimumAmount, nameof(remunerationMinimumAmount), required: false);
+            var __workflow_remunerationMaximumAmount = remunerationMaximumAmount == null ? null : WorkflowExpression.Compile(remunerationMaximumAmount);
+            WorkflowExpression.Validate(__workflow_remunerationMaximumAmount, nameof(remunerationMaximumAmount), required: false);
+            var __workflow_payGradeHigh = payGradeHigh == null ? null : WorkflowExpression.Compile(payGradeHigh);
+            WorkflowExpression.Validate(__workflow_payGradeHigh, nameof(payGradeHigh), required: false);
+            var __workflow_payGradeLow = payGradeLow == null ? null : WorkflowExpression.Compile(payGradeLow);
+            WorkflowExpression.Validate(__workflow_payGradeLow, nameof(payGradeLow), required: false);
+            var __workflow_jobCategoryCode = jobCategoryCode == null ? null : WorkflowExpression.Compile(jobCategoryCode);
+            WorkflowExpression.Validate(__workflow_jobCategoryCode, nameof(jobCategoryCode), required: false);
+            var __workflow_remoteIndicator = remoteIndicator == null ? null : WorkflowExpression.Compile(remoteIndicator);
+            WorkflowExpression.Validate(__workflow_remoteIndicator, nameof(remoteIndicator), required: false);
+            var __workflow_locationName = locationName == null ? null : WorkflowExpression.Compile(locationName);
+            WorkflowExpression.Validate(__workflow_locationName, nameof(locationName), required: false);
+            var __workflow_radius = radius == null ? null : WorkflowExpression.Compile(radius);
+            WorkflowExpression.Validate(__workflow_radius, nameof(radius), required: false);
+            var __workflow_relocationIndicator = relocationIndicator == null ? null : WorkflowExpression.Compile(relocationIndicator);
+            WorkflowExpression.Validate(__workflow_relocationIndicator, nameof(relocationIndicator), required: false);
+            var __workflow_travelPercentage = travelPercentage == null ? null : WorkflowExpression.Compile(travelPercentage);
+            WorkflowExpression.Validate(__workflow_travelPercentage, nameof(travelPercentage), required: false);
+            var __workflow_organization = organization == null ? null : WorkflowExpression.Compile(organization);
+            WorkflowExpression.Validate(__workflow_organization, nameof(organization), required: false);
+            var __workflow_positionOfferingTypeCode = positionOfferingTypeCode == null ? null : WorkflowExpression.Compile(positionOfferingTypeCode);
+            WorkflowExpression.Validate(__workflow_positionOfferingTypeCode, nameof(positionOfferingTypeCode), required: false);
+            var __workflow_positionScheduleTypeCode = positionScheduleTypeCode == null ? null : WorkflowExpression.Compile(positionScheduleTypeCode);
+            WorkflowExpression.Validate(__workflow_positionScheduleTypeCode, nameof(positionScheduleTypeCode), required: false);
+            var __workflow_securityClearanceRequired = securityClearanceRequired == null ? null : WorkflowExpression.Compile(securityClearanceRequired);
+            WorkflowExpression.Validate(__workflow_securityClearanceRequired, nameof(securityClearanceRequired), required: false);
+            var __workflow_positionSensitivity = positionSensitivity == null ? null : WorkflowExpression.Compile(positionSensitivity);
+            WorkflowExpression.Validate(__workflow_positionSensitivity, nameof(positionSensitivity), required: false);
+            var __workflow_supervisoryStatus = supervisoryStatus == null ? null : WorkflowExpression.Compile(supervisoryStatus);
+            WorkflowExpression.Validate(__workflow_supervisoryStatus, nameof(supervisoryStatus), required: false);
+            var __workflow_datePosted = datePosted == null ? null : WorkflowExpression.Compile(datePosted);
+            WorkflowExpression.Validate(__workflow_datePosted, nameof(datePosted), required: false);
+            var __workflow_jobGradeCode = jobGradeCode == null ? null : WorkflowExpression.Compile(jobGradeCode);
+            WorkflowExpression.Validate(__workflow_jobGradeCode, nameof(jobGradeCode), required: false);
+            var __workflow_whoMayApply = whoMayApply == null ? null : WorkflowExpression.Compile(whoMayApply);
+            WorkflowExpression.Validate(__workflow_whoMayApply, nameof(whoMayApply), required: false);
+            var __workflow_salaryBucket = salaryBucket == null ? null : WorkflowExpression.Compile(salaryBucket);
+            WorkflowExpression.Validate(__workflow_salaryBucket, nameof(salaryBucket), required: false);
+            var __workflow_gradeBucket = gradeBucket == null ? null : WorkflowExpression.Compile(gradeBucket);
+            WorkflowExpression.Validate(__workflow_gradeBucket, nameof(gradeBucket), required: false);
+            var __workflow_hiringPath = hiringPath == null ? null : WorkflowExpression.Compile(hiringPath);
+            WorkflowExpression.Validate(__workflow_hiringPath, nameof(hiringPath), required: false);
+            var __workflow_missionCriticalTags = missionCriticalTags == null ? null : WorkflowExpression.Compile(missionCriticalTags);
+            WorkflowExpression.Validate(__workflow_missionCriticalTags, nameof(missionCriticalTags), required: false);
+            var __workflow_postingChannel = postingChannel == null ? null : WorkflowExpression.Compile(postingChannel);
+            WorkflowExpression.Validate(__workflow_postingChannel, nameof(postingChannel), required: false);
+            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
+            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
+            var __workflow_sortField = sortField == null ? null : WorkflowExpression.Compile(sortField);
+            WorkflowExpression.Validate(__workflow_sortField, nameof(sortField), required: false);
+            var __workflow_sortDirection = sortDirection == null ? null : WorkflowExpression.Compile(sortDirection);
+            WorkflowExpression.Validate(__workflow_sortDirection, nameof(sortDirection), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_resultsPerPage = resultsPerPage == null ? null : WorkflowExpression.Compile(resultsPerPage);
+            WorkflowExpression.Validate(__workflow_resultsPerPage, nameof(resultsPerPage), required: false);
             return new DeferredBodyAction<SearchJobsResponse>(() =>
             {
                 var apiCallPath = "/search";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (keyword != null)
-                    callPayload.Queries["Keyword"] = ExpressionConverter.Convert(keyword);
-                if (positionTitle != null)
-                    callPayload.Queries["PositionTitle"] = ExpressionConverter.Convert(positionTitle);
-                if (remunerationMinimumAmount != null)
-                    callPayload.Queries["RemunerationMinimumAmount"] = ExpressionConverter.Convert(remunerationMinimumAmount);
-                if (remunerationMaximumAmount != null)
-                    callPayload.Queries["RemunerationMaximumAmount"] = ExpressionConverter.Convert(remunerationMaximumAmount);
-                if (payGradeHigh != null)
-                    callPayload.Queries["PayGradeHigh"] = ExpressionConverter.Convert(payGradeHigh);
-                if (payGradeLow != null)
-                    callPayload.Queries["PayGradeLow"] = ExpressionConverter.Convert(payGradeLow);
-                if (jobCategoryCode != null)
-                    callPayload.Queries["JobCategoryCode"] = ExpressionConverter.Convert(jobCategoryCode);
-                if (remoteIndicator != null)
-                    callPayload.Queries["RemoteIndicator"] = ExpressionConverter.Convert(remoteIndicator);
-                if (locationName != null)
-                    callPayload.Queries["LocationName"] = ExpressionConverter.Convert(locationName);
-                if (radius != null)
-                    callPayload.Queries["Radius"] = ExpressionConverter.Convert(radius);
-                if (relocationIndicator != null)
-                    callPayload.Queries["RelocationIndicator"] = ExpressionConverter.Convert(relocationIndicator);
-                if (travelPercentage != null)
-                    callPayload.Queries["TravelPercentage"] = ExpressionConverter.Convert(travelPercentage);
-                if (organization != null)
-                    callPayload.Queries["Organization"] = ExpressionConverter.Convert(organization);
-                if (positionOfferingTypeCode != null)
-                    callPayload.Queries["PositionOfferingTypeCode"] = ExpressionConverter.Convert(positionOfferingTypeCode);
-                if (positionScheduleTypeCode != null)
-                    callPayload.Queries["PositionScheduleTypeCode"] = ExpressionConverter.Convert(positionScheduleTypeCode);
-                if (securityClearanceRequired != null)
-                    callPayload.Queries["SecurityClearanceRequired"] = ExpressionConverter.Convert(securityClearanceRequired);
-                if (positionSensitivity != null)
-                    callPayload.Queries["PositionSensitivity"] = ExpressionConverter.Convert(positionSensitivity);
-                if (supervisoryStatus != null)
-                    callPayload.Queries["SupervisoryStatus"] = ExpressionConverter.Convert(supervisoryStatus);
-                if (datePosted != null)
-                    callPayload.Queries["DatePosted"] = ExpressionConverter.Convert(datePosted);
-                if (jobGradeCode != null)
-                    callPayload.Queries["JobGradeCode"] = ExpressionConverter.Convert(jobGradeCode);
-                if (whoMayApply != null)
-                    callPayload.Queries["WhoMayApply"] = ExpressionConverter.Convert(whoMayApply);
-                if (salaryBucket != null)
-                    callPayload.Queries["SalaryBucket"] = ExpressionConverter.Convert(salaryBucket);
-                if (gradeBucket != null)
-                    callPayload.Queries["GradeBucket"] = ExpressionConverter.Convert(gradeBucket);
-                if (hiringPath != null)
-                    callPayload.Queries["HiringPath"] = ExpressionConverter.Convert(hiringPath);
-                if (missionCriticalTags != null)
-                    callPayload.Queries["MissionCriticalTags"] = ExpressionConverter.Convert(missionCriticalTags);
-                if (postingChannel != null)
-                    callPayload.Queries["PostingChannel"] = ExpressionConverter.Convert(postingChannel);
-                if (fields != null)
-                    callPayload.Queries["Fields"] = ExpressionConverter.Convert(fields);
-                if (sortField != null)
-                    callPayload.Queries["SortField"] = ExpressionConverter.Convert(sortField);
-                if (sortDirection != null)
-                    callPayload.Queries["SortDirection"] = ExpressionConverter.Convert(sortDirection);
-                if (page != null)
-                    callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
-                if (resultsPerPage != null)
-                    callPayload.Queries["ResultsPerPage"] = ExpressionConverter.Convert(resultsPerPage);
+                if (__workflow_keyword != null)
+                    callPayload.Queries["Keyword"] = ExpressionConverter.Convert(__workflow_keyword);
+                if (__workflow_positionTitle != null)
+                    callPayload.Queries["PositionTitle"] = ExpressionConverter.Convert(__workflow_positionTitle);
+                if (__workflow_remunerationMinimumAmount != null)
+                    callPayload.Queries["RemunerationMinimumAmount"] = ExpressionConverter.Convert(__workflow_remunerationMinimumAmount);
+                if (__workflow_remunerationMaximumAmount != null)
+                    callPayload.Queries["RemunerationMaximumAmount"] = ExpressionConverter.Convert(__workflow_remunerationMaximumAmount);
+                if (__workflow_payGradeHigh != null)
+                    callPayload.Queries["PayGradeHigh"] = ExpressionConverter.Convert(__workflow_payGradeHigh);
+                if (__workflow_payGradeLow != null)
+                    callPayload.Queries["PayGradeLow"] = ExpressionConverter.Convert(__workflow_payGradeLow);
+                if (__workflow_jobCategoryCode != null)
+                    callPayload.Queries["JobCategoryCode"] = ExpressionConverter.Convert(__workflow_jobCategoryCode);
+                if (__workflow_remoteIndicator != null)
+                    callPayload.Queries["RemoteIndicator"] = ExpressionConverter.Convert(__workflow_remoteIndicator);
+                if (__workflow_locationName != null)
+                    callPayload.Queries["LocationName"] = ExpressionConverter.Convert(__workflow_locationName);
+                if (__workflow_radius != null)
+                    callPayload.Queries["Radius"] = ExpressionConverter.Convert(__workflow_radius);
+                if (__workflow_relocationIndicator != null)
+                    callPayload.Queries["RelocationIndicator"] = ExpressionConverter.Convert(__workflow_relocationIndicator);
+                if (__workflow_travelPercentage != null)
+                    callPayload.Queries["TravelPercentage"] = ExpressionConverter.Convert(__workflow_travelPercentage);
+                if (__workflow_organization != null)
+                    callPayload.Queries["Organization"] = ExpressionConverter.Convert(__workflow_organization);
+                if (__workflow_positionOfferingTypeCode != null)
+                    callPayload.Queries["PositionOfferingTypeCode"] = ExpressionConverter.Convert(__workflow_positionOfferingTypeCode);
+                if (__workflow_positionScheduleTypeCode != null)
+                    callPayload.Queries["PositionScheduleTypeCode"] = ExpressionConverter.Convert(__workflow_positionScheduleTypeCode);
+                if (__workflow_securityClearanceRequired != null)
+                    callPayload.Queries["SecurityClearanceRequired"] = ExpressionConverter.Convert(__workflow_securityClearanceRequired);
+                if (__workflow_positionSensitivity != null)
+                    callPayload.Queries["PositionSensitivity"] = ExpressionConverter.Convert(__workflow_positionSensitivity);
+                if (__workflow_supervisoryStatus != null)
+                    callPayload.Queries["SupervisoryStatus"] = ExpressionConverter.Convert(__workflow_supervisoryStatus);
+                if (__workflow_datePosted != null)
+                    callPayload.Queries["DatePosted"] = ExpressionConverter.Convert(__workflow_datePosted);
+                if (__workflow_jobGradeCode != null)
+                    callPayload.Queries["JobGradeCode"] = ExpressionConverter.Convert(__workflow_jobGradeCode);
+                if (__workflow_whoMayApply != null)
+                    callPayload.Queries["WhoMayApply"] = ExpressionConverter.Convert(__workflow_whoMayApply);
+                if (__workflow_salaryBucket != null)
+                    callPayload.Queries["SalaryBucket"] = ExpressionConverter.Convert(__workflow_salaryBucket);
+                if (__workflow_gradeBucket != null)
+                    callPayload.Queries["GradeBucket"] = ExpressionConverter.Convert(__workflow_gradeBucket);
+                if (__workflow_hiringPath != null)
+                    callPayload.Queries["HiringPath"] = ExpressionConverter.Convert(__workflow_hiringPath);
+                if (__workflow_missionCriticalTags != null)
+                    callPayload.Queries["MissionCriticalTags"] = ExpressionConverter.Convert(__workflow_missionCriticalTags);
+                if (__workflow_postingChannel != null)
+                    callPayload.Queries["PostingChannel"] = ExpressionConverter.Convert(__workflow_postingChannel);
+                if (__workflow_fields != null)
+                    callPayload.Queries["Fields"] = ExpressionConverter.Convert(__workflow_fields);
+                if (__workflow_sortField != null)
+                    callPayload.Queries["SortField"] = ExpressionConverter.Convert(__workflow_sortField);
+                if (__workflow_sortDirection != null)
+                    callPayload.Queries["SortDirection"] = ExpressionConverter.Convert(__workflow_sortDirection);
+                if (__workflow_page != null)
+                    callPayload.Queries["Page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_resultsPerPage != null)
+                    callPayload.Queries["ResultsPerPage"] = ExpressionConverter.Convert(__workflow_resultsPerPage);
                 return new ApiConnectionAction<SearchJobsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        [WorkflowExpressionFactory(nameof(__BuildListAcademicHonors))]
-        public IBodyWorkflowAction<ListAcademicHonorsResponse> ListAcademicHonors([WorkflowExpression] Func<string> lastmodified = null)
+        public IBodyWorkflowAction<ListAcademicHonorsResponse> ListAcademicHonors(Expression<Func<string>> lastmodified = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListAcademicHonorsResponse> __BuildListAcademicHonors(WorkflowExpression<string> lastmodified = null)
-        {
-            WorkflowExpression.Validate(lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
+            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListAcademicHonorsResponse>(() =>
             {
                 var apiCallPath = "/codelist/academichonors";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lastmodified != null)
-                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                if (__workflow_lastmodified != null)
+                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListAcademicHonorsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        [WorkflowExpressionFactory(nameof(__BuildListAcademicLevels))]
-        public IBodyWorkflowAction<ListAcademicLevelsResponse> ListAcademicLevels([WorkflowExpression] Func<string> lastmodified = null)
+        public IBodyWorkflowAction<ListAcademicLevelsResponse> ListAcademicLevels(Expression<Func<string>> lastmodified = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListAcademicLevelsResponse> __BuildListAcademicLevels(WorkflowExpression<string> lastmodified = null)
-        {
-            WorkflowExpression.Validate(lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
+            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListAcademicLevelsResponse>(() =>
             {
                 var apiCallPath = "/codelist/academiclevels";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lastmodified != null)
-                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                if (__workflow_lastmodified != null)
+                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListAcademicLevelsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        [WorkflowExpressionFactory(nameof(__BuildListActionCodes))]
-        public IBodyWorkflowAction<ListActionCodesResponse> ListActionCodes([WorkflowExpression] Func<string> lastmodified = null)
+        public IBodyWorkflowAction<ListActionCodesResponse> ListActionCodes(Expression<Func<string>> lastmodified = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListActionCodesResponse> __BuildListActionCodes(WorkflowExpression<string> lastmodified = null)
-        {
-            WorkflowExpression.Validate(lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
+            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListActionCodesResponse>(() =>
             {
                 var apiCallPath = "/codelist/actioncodes";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lastmodified != null)
-                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                if (__workflow_lastmodified != null)
+                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListActionCodesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        [WorkflowExpressionFactory(nameof(__BuildListAgencySubelements))]
-        public IBodyWorkflowAction<ListAgencySubelementsResponse> ListAgencySubelements([WorkflowExpression] Func<string> lastmodified = null)
+        public IBodyWorkflowAction<ListAgencySubelementsResponse> ListAgencySubelements(Expression<Func<string>> lastmodified = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListAgencySubelementsResponse> __BuildListAgencySubelements(WorkflowExpression<string> lastmodified = null)
-        {
-            WorkflowExpression.Validate(lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
+            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListAgencySubelementsResponse>(() =>
             {
                 var apiCallPath = "/codelist/agencysubelements";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lastmodified != null)
-                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                if (__workflow_lastmodified != null)
+                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListAgencySubelementsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        [WorkflowExpressionFactory(nameof(__BuildListAnnouncementClosingTypes))]
-        public IBodyWorkflowAction<ListAnnouncementClosingTypesResponse> ListAnnouncementClosingTypes([WorkflowExpression] Func<string> lastmodified = null)
+        public IBodyWorkflowAction<ListAnnouncementClosingTypesResponse> ListAnnouncementClosingTypes(Expression<Func<string>> lastmodified = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListAnnouncementClosingTypesResponse> __BuildListAnnouncementClosingTypes(WorkflowExpression<string> lastmodified = null)
-        {
-            WorkflowExpression.Validate(lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
+            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListAnnouncementClosingTypesResponse>(() =>
             {
                 var apiCallPath = "/codelist/announcementclosingtypes";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lastmodified != null)
-                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                if (__workflow_lastmodified != null)
+                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListAnnouncementClosingTypesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        [WorkflowExpressionFactory(nameof(__BuildListApplicantSuppliers))]
-        public IBodyWorkflowAction<ListApplicantSuppliersResponse> ListApplicantSuppliers([WorkflowExpression] Func<string> lastmodified = null)
+        public IBodyWorkflowAction<ListApplicantSuppliersResponse> ListApplicantSuppliers(Expression<Func<string>> lastmodified = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListApplicantSuppliersResponse> __BuildListApplicantSuppliers(WorkflowExpression<string> lastmodified = null)
-        {
-            WorkflowExpression.Validate(lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
+            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListApplicantSuppliersResponse>(() =>
             {
                 var apiCallPath = "/codelist/applicantsuppliers";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lastmodified != null)
-                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                if (__workflow_lastmodified != null)
+                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListApplicantSuppliersResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        [WorkflowExpressionFactory(nameof(__BuildListApplicationStatuses))]
-        public IBodyWorkflowAction<ListApplicationStatusesResponse> ListApplicationStatuses([WorkflowExpression] Func<string> lastmodified = null)
+        public IBodyWorkflowAction<ListApplicationStatusesResponse> ListApplicationStatuses(Expression<Func<string>> lastmodified = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListApplicationStatusesResponse> __BuildListApplicationStatuses(WorkflowExpression<string> lastmodified = null)
-        {
-            WorkflowExpression.Validate(lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
+            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListApplicationStatusesResponse>(() =>
             {
                 var apiCallPath = "/codelist/applicationstatuses";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lastmodified != null)
-                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                if (__workflow_lastmodified != null)
+                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListApplicationStatusesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        [WorkflowExpressionFactory(nameof(__BuildListCountries))]
-        public IBodyWorkflowAction<ListCountriesResponse> ListCountries([WorkflowExpression] Func<string> lastmodified = null)
+        public IBodyWorkflowAction<ListCountriesResponse> ListCountries(Expression<Func<string>> lastmodified = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListCountriesResponse> __BuildListCountries(WorkflowExpression<string> lastmodified = null)
-        {
-            WorkflowExpression.Validate(lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
+            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListCountriesResponse>(() =>
             {
                 var apiCallPath = "/codelist/countries";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lastmodified != null)
-                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                if (__workflow_lastmodified != null)
+                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListCountriesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        [WorkflowExpressionFactory(nameof(__BuildListCountrySubdivisions))]
-        public IBodyWorkflowAction<ListCountrySubdivisionsResponse> ListCountrySubdivisions([WorkflowExpression] Func<string> country = null, [WorkflowExpression] Func<string> lastmodified = null)
+        public IBodyWorkflowAction<ListCountrySubdivisionsResponse> ListCountrySubdivisions(Expression<Func<string>> country = null, Expression<Func<string>> lastmodified = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListCountrySubdivisionsResponse> __BuildListCountrySubdivisions(WorkflowExpression<string> country = null, WorkflowExpression<string> lastmodified = null)
-        {
-            WorkflowExpression.Validate(country, nameof(country), required: false);
-            WorkflowExpression.Validate(lastmodified, nameof(lastmodified), required: false);
+            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
+            WorkflowExpression.Validate(__workflow_country, nameof(country), required: false);
+            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
+            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListCountrySubdivisionsResponse>(() =>
             {
                 var apiCallPath = "/codelist/countrysubdivisions";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (country != null)
-                    callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-                if (lastmodified != null)
-                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                if (__workflow_country != null)
+                    callPayload.Queries["country"] = ExpressionConverter.Convert(__workflow_country);
+                if (__workflow_lastmodified != null)
+                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListCountrySubdivisionsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        [WorkflowExpressionFactory(nameof(__BuildListCyberWorkGroupings))]
-        public IBodyWorkflowAction<ListCyberWorkGroupingsResponse> ListCyberWorkGroupings([WorkflowExpression] Func<string> lastmodified = null)
+        public IBodyWorkflowAction<ListCyberWorkGroupingsResponse> ListCyberWorkGroupings(Expression<Func<string>> lastmodified = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListCyberWorkGroupingsResponse> __BuildListCyberWorkGroupings(WorkflowExpression<string> lastmodified = null)
-        {
-            WorkflowExpression.Validate(lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
+            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListCyberWorkGroupingsResponse>(() =>
             {
                 var apiCallPath = "/codelist/cyberworkgroupings";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lastmodified != null)
-                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                if (__workflow_lastmodified != null)
+                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListCyberWorkGroupingsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        [WorkflowExpressionFactory(nameof(__BuildListCyberWorkRoles))]
-        public IBodyWorkflowAction<ListCyberWorkRolesResponse> ListCyberWorkRoles([WorkflowExpression] Func<string> lastmodified = null)
+        public IBodyWorkflowAction<ListCyberWorkRolesResponse> ListCyberWorkRoles(Expression<Func<string>> lastmodified = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListCyberWorkRolesResponse> __BuildListCyberWorkRoles(WorkflowExpression<string> lastmodified = null)
-        {
-            WorkflowExpression.Validate(lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
+            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListCyberWorkRolesResponse>(() =>
             {
                 var apiCallPath = "/codelist/cyberworkroles";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lastmodified != null)
-                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                if (__workflow_lastmodified != null)
+                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListCyberWorkRolesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        [WorkflowExpressionFactory(nameof(__BuildListDegreeTypeCodes))]
-        public IBodyWorkflowAction<ListDegreeTypeCodesResponse> ListDegreeTypeCodes([WorkflowExpression] Func<string> lastmodified = null)
+        public IBodyWorkflowAction<ListDegreeTypeCodesResponse> ListDegreeTypeCodes(Expression<Func<string>> lastmodified = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListDegreeTypeCodesResponse> __BuildListDegreeTypeCodes(WorkflowExpression<string> lastmodified = null)
-        {
-            WorkflowExpression.Validate(lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
+            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListDegreeTypeCodesResponse>(() =>
             {
                 var apiCallPath = "/codelist/degreetypecodes";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lastmodified != null)
-                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                if (__workflow_lastmodified != null)
+                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListDegreeTypeCodesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        [WorkflowExpressionFactory(nameof(__BuildListDisabilities))]
-        public IBodyWorkflowAction<ListDisabilitiesResponse> ListDisabilities([WorkflowExpression] Func<string> lastmodified = null)
+        public IBodyWorkflowAction<ListDisabilitiesResponse> ListDisabilities(Expression<Func<string>> lastmodified = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListDisabilitiesResponse> __BuildListDisabilities(WorkflowExpression<string> lastmodified = null)
-        {
-            WorkflowExpression.Validate(lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
+            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListDisabilitiesResponse>(() =>
             {
                 var apiCallPath = "/codelist/disabilities";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lastmodified != null)
-                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                if (__workflow_lastmodified != null)
+                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListDisabilitiesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        [WorkflowExpressionFactory(nameof(__BuildListDocumentations))]
-        public IBodyWorkflowAction<ListDocumentationsResponse> ListDocumentations([WorkflowExpression] Func<string> lastmodified = null)
+        public IBodyWorkflowAction<ListDocumentationsResponse> ListDocumentations(Expression<Func<string>> lastmodified = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListDocumentationsResponse> __BuildListDocumentations(WorkflowExpression<string> lastmodified = null)
-        {
-            WorkflowExpression.Validate(lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
+            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListDocumentationsResponse>(() =>
             {
                 var apiCallPath = "/codelist/documentations";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lastmodified != null)
-                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                if (__workflow_lastmodified != null)
+                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListDocumentationsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        [WorkflowExpressionFactory(nameof(__BuildListDocumentFormats))]
-        public IBodyWorkflowAction<ListDocumentFormatsResponse> ListDocumentFormats([WorkflowExpression] Func<string> lastmodified = null)
+        public IBodyWorkflowAction<ListDocumentFormatsResponse> ListDocumentFormats(Expression<Func<string>> lastmodified = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListDocumentFormatsResponse> __BuildListDocumentFormats(WorkflowExpression<string> lastmodified = null)
-        {
-            WorkflowExpression.Validate(lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
+            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListDocumentFormatsResponse>(() =>
             {
                 var apiCallPath = "/codelist/documentformats";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lastmodified != null)
-                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                if (__workflow_lastmodified != null)
+                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListDocumentFormatsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        [WorkflowExpressionFactory(nameof(__BuildListEthnicities))]
-        public IBodyWorkflowAction<ListEthnicitiesResponse> ListEthnicities([WorkflowExpression] Func<string> lastmodified = null)
+        public IBodyWorkflowAction<ListEthnicitiesResponse> ListEthnicities(Expression<Func<string>> lastmodified = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListEthnicitiesResponse> __BuildListEthnicities(WorkflowExpression<string> lastmodified = null)
-        {
-            WorkflowExpression.Validate(lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
+            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListEthnicitiesResponse>(() =>
             {
                 var apiCallPath = "/codelist/ethnicities";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lastmodified != null)
-                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                if (__workflow_lastmodified != null)
+                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListEthnicitiesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        [WorkflowExpressionFactory(nameof(__BuildListFederalEmploymentStatuses))]
-        public IBodyWorkflowAction<ListFederalEmploymentStatusesResponse> ListFederalEmploymentStatuses([WorkflowExpression] Func<string> lastmodified = null)
+        public IBodyWorkflowAction<ListFederalEmploymentStatusesResponse> ListFederalEmploymentStatuses(Expression<Func<string>> lastmodified = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListFederalEmploymentStatusesResponse> __BuildListFederalEmploymentStatuses(WorkflowExpression<string> lastmodified = null)
-        {
-            WorkflowExpression.Validate(lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
+            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListFederalEmploymentStatusesResponse>(() =>
             {
                 var apiCallPath = "/codelist/federalemploymentstatuses";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lastmodified != null)
-                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                if (__workflow_lastmodified != null)
+                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListFederalEmploymentStatusesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        [WorkflowExpressionFactory(nameof(__BuildListGeolocCodes))]
-        public IBodyWorkflowAction<ListGeolocCodesResponse> ListGeolocCodes([WorkflowExpression] Func<string> lastmodified = null)
+        public IBodyWorkflowAction<ListGeolocCodesResponse> ListGeolocCodes(Expression<Func<string>> lastmodified = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListGeolocCodesResponse> __BuildListGeolocCodes(WorkflowExpression<string> lastmodified = null)
-        {
-            WorkflowExpression.Validate(lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
+            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListGeolocCodesResponse>(() =>
             {
                 var apiCallPath = "/codelist/geoloccodes";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lastmodified != null)
-                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                if (__workflow_lastmodified != null)
+                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListGeolocCodesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        [WorkflowExpressionFactory(nameof(__BuildListGsaGeolocCodes))]
-        public IBodyWorkflowAction<ListGsaGeolocCodesResponse> ListGsaGeolocCodes([WorkflowExpression] Func<string> lastmodified = null)
+        public IBodyWorkflowAction<ListGsaGeolocCodesResponse> ListGsaGeolocCodes(Expression<Func<string>> lastmodified = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListGsaGeolocCodesResponse> __BuildListGsaGeolocCodes(WorkflowExpression<string> lastmodified = null)
-        {
-            WorkflowExpression.Validate(lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
+            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListGsaGeolocCodesResponse>(() =>
             {
                 var apiCallPath = "/codelist/gsageoloccodes";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lastmodified != null)
-                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                if (__workflow_lastmodified != null)
+                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListGsaGeolocCodesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        [WorkflowExpressionFactory(nameof(__BuildListHiringPaths))]
-        public IBodyWorkflowAction<ListHiringPathsResponse> ListHiringPaths([WorkflowExpression] Func<string> lastmodified = null)
+        public IBodyWorkflowAction<ListHiringPathsResponse> ListHiringPaths(Expression<Func<string>> lastmodified = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListHiringPathsResponse> __BuildListHiringPaths(WorkflowExpression<string> lastmodified = null)
-        {
-            WorkflowExpression.Validate(lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
+            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListHiringPathsResponse>(() =>
             {
                 var apiCallPath = "/codelist/hiringpaths";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lastmodified != null)
-                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                if (__workflow_lastmodified != null)
+                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListHiringPathsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        [WorkflowExpressionFactory(nameof(__BuildListKeyStandardRequirements))]
-        public IBodyWorkflowAction<ListKeyStandardRequirementsResponse> ListKeyStandardRequirements([WorkflowExpression] Func<string> lastmodified = null)
+        public IBodyWorkflowAction<ListKeyStandardRequirementsResponse> ListKeyStandardRequirements(Expression<Func<string>> lastmodified = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListKeyStandardRequirementsResponse> __BuildListKeyStandardRequirements(WorkflowExpression<string> lastmodified = null)
-        {
-            WorkflowExpression.Validate(lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
+            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListKeyStandardRequirementsResponse>(() =>
             {
                 var apiCallPath = "/codelist/keystandardrequirements";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lastmodified != null)
-                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                if (__workflow_lastmodified != null)
+                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListKeyStandardRequirementsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        [WorkflowExpressionFactory(nameof(__BuildListLanguageCodes))]
-        public IBodyWorkflowAction<ListLanguageCodesResponse> ListLanguageCodes([WorkflowExpression] Func<string> lastmodified = null)
+        public IBodyWorkflowAction<ListLanguageCodesResponse> ListLanguageCodes(Expression<Func<string>> lastmodified = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListLanguageCodesResponse> __BuildListLanguageCodes(WorkflowExpression<string> lastmodified = null)
-        {
-            WorkflowExpression.Validate(lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
+            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListLanguageCodesResponse>(() =>
             {
                 var apiCallPath = "/codelist/languagecodes";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lastmodified != null)
-                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                if (__workflow_lastmodified != null)
+                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListLanguageCodesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        [WorkflowExpressionFactory(nameof(__BuildListLanguageProficiencies))]
-        public IBodyWorkflowAction<ListLanguageProficienciesResponse> ListLanguageProficiencies([WorkflowExpression] Func<string> lastmodified = null)
+        public IBodyWorkflowAction<ListLanguageProficienciesResponse> ListLanguageProficiencies(Expression<Func<string>> lastmodified = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListLanguageProficienciesResponse> __BuildListLanguageProficiencies(WorkflowExpression<string> lastmodified = null)
-        {
-            WorkflowExpression.Validate(lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
+            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListLanguageProficienciesResponse>(() =>
             {
                 var apiCallPath = "/codelist/languageproficiencies";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lastmodified != null)
-                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                if (__workflow_lastmodified != null)
+                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListLanguageProficienciesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        [WorkflowExpressionFactory(nameof(__BuildListLocationExpansions))]
-        public IBodyWorkflowAction<ListLocationExpansionsResponse> ListLocationExpansions([WorkflowExpression] Func<string> lastmodified = null)
+        public IBodyWorkflowAction<ListLocationExpansionsResponse> ListLocationExpansions(Expression<Func<string>> lastmodified = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListLocationExpansionsResponse> __BuildListLocationExpansions(WorkflowExpression<string> lastmodified = null)
-        {
-            WorkflowExpression.Validate(lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
+            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListLocationExpansionsResponse>(() =>
             {
                 var apiCallPath = "/codelist/locationexpansions";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lastmodified != null)
-                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                if (__workflow_lastmodified != null)
+                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListLocationExpansionsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        [WorkflowExpressionFactory(nameof(__BuildListMilitaryStatusCodes))]
-        public IBodyWorkflowAction<ListMilitaryStatusCodesResponse> ListMilitaryStatusCodes([WorkflowExpression] Func<string> lastmodified = null)
+        public IBodyWorkflowAction<ListMilitaryStatusCodesResponse> ListMilitaryStatusCodes(Expression<Func<string>> lastmodified = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListMilitaryStatusCodesResponse> __BuildListMilitaryStatusCodes(WorkflowExpression<string> lastmodified = null)
-        {
-            WorkflowExpression.Validate(lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
+            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListMilitaryStatusCodesResponse>(() =>
             {
                 var apiCallPath = "/codelist/militarystatuscodes";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lastmodified != null)
-                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                if (__workflow_lastmodified != null)
+                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListMilitaryStatusCodesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        [WorkflowExpressionFactory(nameof(__BuildListMissionCriticalCodes))]
-        public IBodyWorkflowAction<ListMissionCriticalCodesResponse> ListMissionCriticalCodes([WorkflowExpression] Func<string> lastmodified = null)
+        public IBodyWorkflowAction<ListMissionCriticalCodesResponse> ListMissionCriticalCodes(Expression<Func<string>> lastmodified = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListMissionCriticalCodesResponse> __BuildListMissionCriticalCodes(WorkflowExpression<string> lastmodified = null)
-        {
-            WorkflowExpression.Validate(lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
+            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListMissionCriticalCodesResponse>(() =>
             {
                 var apiCallPath = "/codelist/missioncriticalcodes";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lastmodified != null)
-                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                if (__workflow_lastmodified != null)
+                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListMissionCriticalCodesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        [WorkflowExpressionFactory(nameof(__BuildListOccupationalSeries))]
-        public IBodyWorkflowAction<ListOccupationalSeriesResponse> ListOccupationalSeries([WorkflowExpression] Func<string> lastmodified = null)
+        public IBodyWorkflowAction<ListOccupationalSeriesResponse> ListOccupationalSeries(Expression<Func<string>> lastmodified = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListOccupationalSeriesResponse> __BuildListOccupationalSeries(WorkflowExpression<string> lastmodified = null)
-        {
-            WorkflowExpression.Validate(lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
+            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListOccupationalSeriesResponse>(() =>
             {
                 var apiCallPath = "/codelist/occupationalseries";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lastmodified != null)
-                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                if (__workflow_lastmodified != null)
+                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListOccupationalSeriesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        [WorkflowExpressionFactory(nameof(__BuildListPayPlans))]
-        public IBodyWorkflowAction<ListPayPlansResponse> ListPayPlans([WorkflowExpression] Func<string> lastmodified = null)
+        public IBodyWorkflowAction<ListPayPlansResponse> ListPayPlans(Expression<Func<string>> lastmodified = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListPayPlansResponse> __BuildListPayPlans(WorkflowExpression<string> lastmodified = null)
-        {
-            WorkflowExpression.Validate(lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
+            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListPayPlansResponse>(() =>
             {
                 var apiCallPath = "/codelist/payplans";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lastmodified != null)
-                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                if (__workflow_lastmodified != null)
+                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListPayPlansResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        [WorkflowExpressionFactory(nameof(__BuildListPositionOfferingTypes))]
-        public IBodyWorkflowAction<ListPositionOfferingTypesResponse> ListPositionOfferingTypes([WorkflowExpression] Func<string> lastmodified = null)
+        public IBodyWorkflowAction<ListPositionOfferingTypesResponse> ListPositionOfferingTypes(Expression<Func<string>> lastmodified = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListPositionOfferingTypesResponse> __BuildListPositionOfferingTypes(WorkflowExpression<string> lastmodified = null)
-        {
-            WorkflowExpression.Validate(lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
+            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListPositionOfferingTypesResponse>(() =>
             {
                 var apiCallPath = "/codelist/positionofferingtypes";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lastmodified != null)
-                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                if (__workflow_lastmodified != null)
+                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListPositionOfferingTypesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        [WorkflowExpressionFactory(nameof(__BuildListPositionOpeningStatuses))]
-        public IBodyWorkflowAction<ListPositionOpeningStatusesResponse> ListPositionOpeningStatuses([WorkflowExpression] Func<string> lastmodified = null)
+        public IBodyWorkflowAction<ListPositionOpeningStatusesResponse> ListPositionOpeningStatuses(Expression<Func<string>> lastmodified = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListPositionOpeningStatusesResponse> __BuildListPositionOpeningStatuses(WorkflowExpression<string> lastmodified = null)
-        {
-            WorkflowExpression.Validate(lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
+            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListPositionOpeningStatusesResponse>(() =>
             {
                 var apiCallPath = "/codelist/positionopeningstatuses";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lastmodified != null)
-                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                if (__workflow_lastmodified != null)
+                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListPositionOpeningStatusesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        [WorkflowExpressionFactory(nameof(__BuildListPositionScheduleTypes))]
-        public IBodyWorkflowAction<ListPositionScheduleTypesResponse> ListPositionScheduleTypes([WorkflowExpression] Func<string> lastmodified = null)
+        public IBodyWorkflowAction<ListPositionScheduleTypesResponse> ListPositionScheduleTypes(Expression<Func<string>> lastmodified = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListPositionScheduleTypesResponse> __BuildListPositionScheduleTypes(WorkflowExpression<string> lastmodified = null)
-        {
-            WorkflowExpression.Validate(lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
+            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListPositionScheduleTypesResponse>(() =>
             {
                 var apiCallPath = "/codelist/positionscheduletypes";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lastmodified != null)
-                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                if (__workflow_lastmodified != null)
+                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListPositionScheduleTypesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        [WorkflowExpressionFactory(nameof(__BuildListPostalCodes))]
-        public IBodyWorkflowAction<ListPostalCodesResponse> ListPostalCodes([WorkflowExpression] Func<string> lastmodified = null)
+        public IBodyWorkflowAction<ListPostalCodesResponse> ListPostalCodes(Expression<Func<string>> lastmodified = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListPostalCodesResponse> __BuildListPostalCodes(WorkflowExpression<string> lastmodified = null)
-        {
-            WorkflowExpression.Validate(lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
+            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListPostalCodesResponse>(() =>
             {
                 var apiCallPath = "/codelist/postalcodes";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lastmodified != null)
-                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                if (__workflow_lastmodified != null)
+                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListPostalCodesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        [WorkflowExpressionFactory(nameof(__BuildListRaceCodes))]
-        public IBodyWorkflowAction<ListRaceCodesResponse> ListRaceCodes([WorkflowExpression] Func<string> lastmodified = null)
+        public IBodyWorkflowAction<ListRaceCodesResponse> ListRaceCodes(Expression<Func<string>> lastmodified = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListRaceCodesResponse> __BuildListRaceCodes(WorkflowExpression<string> lastmodified = null)
-        {
-            WorkflowExpression.Validate(lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
+            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListRaceCodesResponse>(() =>
             {
                 var apiCallPath = "/codelist/racecodes";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lastmodified != null)
-                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                if (__workflow_lastmodified != null)
+                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListRaceCodesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        [WorkflowExpressionFactory(nameof(__BuildListRefereeTypeCodes))]
-        public IBodyWorkflowAction<ListRefereeTypeCodesResponse> ListRefereeTypeCodes([WorkflowExpression] Func<string> lastmodified = null)
+        public IBodyWorkflowAction<ListRefereeTypeCodesResponse> ListRefereeTypeCodes(Expression<Func<string>> lastmodified = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListRefereeTypeCodesResponse> __BuildListRefereeTypeCodes(WorkflowExpression<string> lastmodified = null)
-        {
-            WorkflowExpression.Validate(lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
+            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListRefereeTypeCodesResponse>(() =>
             {
                 var apiCallPath = "/codelist/refereetypecodes";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lastmodified != null)
-                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                if (__workflow_lastmodified != null)
+                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListRefereeTypeCodesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        [WorkflowExpressionFactory(nameof(__BuildListRemunerationRateIntervalCodes))]
-        public IBodyWorkflowAction<ListRemunerationRateIntervalCodesResponse> ListRemunerationRateIntervalCodes([WorkflowExpression] Func<string> lastmodified = null)
+        public IBodyWorkflowAction<ListRemunerationRateIntervalCodesResponse> ListRemunerationRateIntervalCodes(Expression<Func<string>> lastmodified = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListRemunerationRateIntervalCodesResponse> __BuildListRemunerationRateIntervalCodes(WorkflowExpression<string> lastmodified = null)
-        {
-            WorkflowExpression.Validate(lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
+            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListRemunerationRateIntervalCodesResponse>(() =>
             {
                 var apiCallPath = "/codelist/remunerationrateintervalcodes";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lastmodified != null)
-                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                if (__workflow_lastmodified != null)
+                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListRemunerationRateIntervalCodesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        [WorkflowExpressionFactory(nameof(__BuildListRequiredStandardDocuments))]
-        public IBodyWorkflowAction<ListRequiredStandardDocumentsResponse> ListRequiredStandardDocuments([WorkflowExpression] Func<string> lastmodified = null)
+        public IBodyWorkflowAction<ListRequiredStandardDocumentsResponse> ListRequiredStandardDocuments(Expression<Func<string>> lastmodified = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListRequiredStandardDocumentsResponse> __BuildListRequiredStandardDocuments(WorkflowExpression<string> lastmodified = null)
-        {
-            WorkflowExpression.Validate(lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
+            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListRequiredStandardDocumentsResponse>(() =>
             {
                 var apiCallPath = "/codelist/requiredstandarddocuments";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lastmodified != null)
-                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                if (__workflow_lastmodified != null)
+                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListRequiredStandardDocumentsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        [WorkflowExpressionFactory(nameof(__BuildListSecurityClearances))]
-        public IBodyWorkflowAction<ListSecurityClearancesResponse> ListSecurityClearances([WorkflowExpression] Func<string> lastmodified = null)
+        public IBodyWorkflowAction<ListSecurityClearancesResponse> ListSecurityClearances(Expression<Func<string>> lastmodified = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListSecurityClearancesResponse> __BuildListSecurityClearances(WorkflowExpression<string> lastmodified = null)
-        {
-            WorkflowExpression.Validate(lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
+            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListSecurityClearancesResponse>(() =>
             {
                 var apiCallPath = "/codelist/securityclearances";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lastmodified != null)
-                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                if (__workflow_lastmodified != null)
+                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListSecurityClearancesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        [WorkflowExpressionFactory(nameof(__BuildListServiceTypes))]
-        public IBodyWorkflowAction<ListServiceTypesResponse> ListServiceTypes([WorkflowExpression] Func<string> lastmodified = null)
+        public IBodyWorkflowAction<ListServiceTypesResponse> ListServiceTypes(Expression<Func<string>> lastmodified = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListServiceTypesResponse> __BuildListServiceTypes(WorkflowExpression<string> lastmodified = null)
-        {
-            WorkflowExpression.Validate(lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
+            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListServiceTypesResponse>(() =>
             {
                 var apiCallPath = "/codelist/servicetypes";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lastmodified != null)
-                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                if (__workflow_lastmodified != null)
+                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListServiceTypesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        [WorkflowExpressionFactory(nameof(__BuildListSpecialHirings))]
-        public IBodyWorkflowAction<ListSpecialHiringsResponse> ListSpecialHirings([WorkflowExpression] Func<string> lastmodified = null)
+        public IBodyWorkflowAction<ListSpecialHiringsResponse> ListSpecialHirings(Expression<Func<string>> lastmodified = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListSpecialHiringsResponse> __BuildListSpecialHirings(WorkflowExpression<string> lastmodified = null)
-        {
-            WorkflowExpression.Validate(lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
+            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListSpecialHiringsResponse>(() =>
             {
                 var apiCallPath = "/codelist/specialhirings";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lastmodified != null)
-                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                if (__workflow_lastmodified != null)
+                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListSpecialHiringsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        [WorkflowExpressionFactory(nameof(__BuildListTravelPercentages))]
-        public IBodyWorkflowAction<ListTravelPercentagesResponse> ListTravelPercentages([WorkflowExpression] Func<string> lastmodified = null)
+        public IBodyWorkflowAction<ListTravelPercentagesResponse> ListTravelPercentages(Expression<Func<string>> lastmodified = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListTravelPercentagesResponse> __BuildListTravelPercentages(WorkflowExpression<string> lastmodified = null)
-        {
-            WorkflowExpression.Validate(lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
+            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListTravelPercentagesResponse>(() =>
             {
                 var apiCallPath = "/codelist/travelpercentages";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lastmodified != null)
-                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                if (__workflow_lastmodified != null)
+                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListTravelPercentagesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        [WorkflowExpressionFactory(nameof(__BuildListWhoMayApply))]
-        public IBodyWorkflowAction<ListWhoMayApplyResponse> ListWhoMayApply([WorkflowExpression] Func<string> lastmodified = null)
+        public IBodyWorkflowAction<ListWhoMayApplyResponse> ListWhoMayApply(Expression<Func<string>> lastmodified = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListWhoMayApplyResponse> __BuildListWhoMayApply(WorkflowExpression<string> lastmodified = null)
-        {
-            WorkflowExpression.Validate(lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
+            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListWhoMayApplyResponse>(() =>
             {
                 var apiCallPath = "/codelist/whomayapply";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lastmodified != null)
-                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
+                if (__workflow_lastmodified != null)
+                    callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(__workflow_lastmodified);
                 return new ApiConnectionAction<ListWhoMayApplyResponse>(callPayload);
             });
         }

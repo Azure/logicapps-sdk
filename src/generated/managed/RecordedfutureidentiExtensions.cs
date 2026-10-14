@@ -1,42 +1,50 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfutureidenti
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class RecordedfutureidentiActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfutureidenti")]
-        [WorkflowExpressionFactory(nameof(__BuildCredentialLookup))]
-        public IBodyWorkflowAction<LookupResponse> CredentialLookup([WorkflowExpression] Func<string[]> bodyfilterauthorizationProtocols = null, [WorkflowExpression] Func<string[]> bodyfilterauthorizationTechnologies = null, [WorkflowExpression] Func<string> bodyfilterbreachPropertiesdate = null, [WorkflowExpression] Func<string> bodyfilterbreachPropertiesname = null, [WorkflowExpression] Func<string> bodyfilterdumpPropertiesdate = null, [WorkflowExpression] Func<string> bodyfilterdumpPropertiesname = null, [WorkflowExpression] Func<string> bodyfilterexfiltrationDateGte = null, [WorkflowExpression] Func<string> bodyfilterfirstDownloadedGte = null, [WorkflowExpression] Func<string> bodyfilterlatestDownloadedGte = null, [WorkflowExpression] Func<string[]> bodyfiltermalwareFamilies = null, [WorkflowExpression] Func<bodyfilterpropertiesInputItem[]> bodyfilterproperties = null, [WorkflowExpression] Func<bodyfilterusernamePropertiesInputItem[]> bodyfilterusernameProperties = null, [WorkflowExpression] Func<string> bodyorganizationId = null, [WorkflowExpression] Func<string[]> bodysubjects = null, [WorkflowExpression] Func<DomainLogin[]> bodysubjectsLogin = null, [WorkflowExpression] Func<string[]> bodysubjectsSha1 = null)
+        public IBodyWorkflowAction<LookupResponse> CredentialLookup(Expression<Func<string[]>> bodyfilterauthorizationProtocols = null, Expression<Func<string[]>> bodyfilterauthorizationTechnologies = null, Expression<Func<string>> bodyfilterbreachPropertiesdate = null, Expression<Func<string>> bodyfilterbreachPropertiesname = null, Expression<Func<string>> bodyfilterdumpPropertiesdate = null, Expression<Func<string>> bodyfilterdumpPropertiesname = null, Expression<Func<string>> bodyfilterexfiltrationDateGte = null, Expression<Func<string>> bodyfilterfirstDownloadedGte = null, Expression<Func<string>> bodyfilterlatestDownloadedGte = null, Expression<Func<string[]>> bodyfiltermalwareFamilies = null, Expression<Func<bodyfilterpropertiesInputItem[]>> bodyfilterproperties = null, Expression<Func<bodyfilterusernamePropertiesInputItem[]>> bodyfilterusernameProperties = null, Expression<Func<string>> bodyorganizationId = null, Expression<Func<string[]>> bodysubjects = null, Expression<Func<DomainLogin[]>> bodysubjectsLogin = null, Expression<Func<string[]>> bodysubjectsSha1 = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<LookupResponse> __BuildCredentialLookup(WorkflowExpression<string[]> bodyfilterauthorizationProtocols = null, WorkflowExpression<string[]> bodyfilterauthorizationTechnologies = null, WorkflowExpression<string> bodyfilterbreachPropertiesdate = null, WorkflowExpression<string> bodyfilterbreachPropertiesname = null, WorkflowExpression<string> bodyfilterdumpPropertiesdate = null, WorkflowExpression<string> bodyfilterdumpPropertiesname = null, WorkflowExpression<string> bodyfilterexfiltrationDateGte = null, WorkflowExpression<string> bodyfilterfirstDownloadedGte = null, WorkflowExpression<string> bodyfilterlatestDownloadedGte = null, WorkflowExpression<string[]> bodyfiltermalwareFamilies = null, WorkflowExpression<bodyfilterpropertiesInputItem[]> bodyfilterproperties = null, WorkflowExpression<bodyfilterusernamePropertiesInputItem[]> bodyfilterusernameProperties = null, WorkflowExpression<string> bodyorganizationId = null, WorkflowExpression<string[]> bodysubjects = null, WorkflowExpression<DomainLogin[]> bodysubjectsLogin = null, WorkflowExpression<string[]> bodysubjectsSha1 = null)
-        {
-            WorkflowExpression.Validate(bodyfilterauthorizationProtocols, nameof(bodyfilterauthorizationProtocols), required: false);
-            WorkflowExpression.Validate(bodyfilterauthorizationTechnologies, nameof(bodyfilterauthorizationTechnologies), required: false);
-            WorkflowExpression.Validate(bodyfilterbreachPropertiesdate, nameof(bodyfilterbreachPropertiesdate), required: false);
-            WorkflowExpression.Validate(bodyfilterbreachPropertiesname, nameof(bodyfilterbreachPropertiesname), required: false);
-            WorkflowExpression.Validate(bodyfilterdumpPropertiesdate, nameof(bodyfilterdumpPropertiesdate), required: false);
-            WorkflowExpression.Validate(bodyfilterdumpPropertiesname, nameof(bodyfilterdumpPropertiesname), required: false);
-            WorkflowExpression.Validate(bodyfilterexfiltrationDateGte, nameof(bodyfilterexfiltrationDateGte), required: false);
-            WorkflowExpression.Validate(bodyfilterfirstDownloadedGte, nameof(bodyfilterfirstDownloadedGte), required: false);
-            WorkflowExpression.Validate(bodyfilterlatestDownloadedGte, nameof(bodyfilterlatestDownloadedGte), required: false);
-            WorkflowExpression.Validate(bodyfiltermalwareFamilies, nameof(bodyfiltermalwareFamilies), required: false);
-            WorkflowExpression.Validate(bodyfilterproperties, nameof(bodyfilterproperties), required: false);
-            WorkflowExpression.Validate(bodyfilterusernameProperties, nameof(bodyfilterusernameProperties), required: false);
-            WorkflowExpression.Validate(bodyorganizationId, nameof(bodyorganizationId), required: false);
-            WorkflowExpression.Validate(bodysubjects, nameof(bodysubjects), required: false);
-            WorkflowExpression.Validate(bodysubjectsLogin, nameof(bodysubjectsLogin), required: false);
-            WorkflowExpression.Validate(bodysubjectsSha1, nameof(bodysubjectsSha1), required: false);
+            var __workflow_bodyfilterauthorizationProtocols = bodyfilterauthorizationProtocols == null ? null : WorkflowExpression.Compile(bodyfilterauthorizationProtocols);
+            WorkflowExpression.Validate(__workflow_bodyfilterauthorizationProtocols, nameof(bodyfilterauthorizationProtocols), required: false);
+            var __workflow_bodyfilterauthorizationTechnologies = bodyfilterauthorizationTechnologies == null ? null : WorkflowExpression.Compile(bodyfilterauthorizationTechnologies);
+            WorkflowExpression.Validate(__workflow_bodyfilterauthorizationTechnologies, nameof(bodyfilterauthorizationTechnologies), required: false);
+            var __workflow_bodyfilterbreachPropertiesdate = bodyfilterbreachPropertiesdate == null ? null : WorkflowExpression.Compile(bodyfilterbreachPropertiesdate);
+            WorkflowExpression.Validate(__workflow_bodyfilterbreachPropertiesdate, nameof(bodyfilterbreachPropertiesdate), required: false);
+            var __workflow_bodyfilterbreachPropertiesname = bodyfilterbreachPropertiesname == null ? null : WorkflowExpression.Compile(bodyfilterbreachPropertiesname);
+            WorkflowExpression.Validate(__workflow_bodyfilterbreachPropertiesname, nameof(bodyfilterbreachPropertiesname), required: false);
+            var __workflow_bodyfilterdumpPropertiesdate = bodyfilterdumpPropertiesdate == null ? null : WorkflowExpression.Compile(bodyfilterdumpPropertiesdate);
+            WorkflowExpression.Validate(__workflow_bodyfilterdumpPropertiesdate, nameof(bodyfilterdumpPropertiesdate), required: false);
+            var __workflow_bodyfilterdumpPropertiesname = bodyfilterdumpPropertiesname == null ? null : WorkflowExpression.Compile(bodyfilterdumpPropertiesname);
+            WorkflowExpression.Validate(__workflow_bodyfilterdumpPropertiesname, nameof(bodyfilterdumpPropertiesname), required: false);
+            var __workflow_bodyfilterexfiltrationDateGte = bodyfilterexfiltrationDateGte == null ? null : WorkflowExpression.Compile(bodyfilterexfiltrationDateGte);
+            WorkflowExpression.Validate(__workflow_bodyfilterexfiltrationDateGte, nameof(bodyfilterexfiltrationDateGte), required: false);
+            var __workflow_bodyfilterfirstDownloadedGte = bodyfilterfirstDownloadedGte == null ? null : WorkflowExpression.Compile(bodyfilterfirstDownloadedGte);
+            WorkflowExpression.Validate(__workflow_bodyfilterfirstDownloadedGte, nameof(bodyfilterfirstDownloadedGte), required: false);
+            var __workflow_bodyfilterlatestDownloadedGte = bodyfilterlatestDownloadedGte == null ? null : WorkflowExpression.Compile(bodyfilterlatestDownloadedGte);
+            WorkflowExpression.Validate(__workflow_bodyfilterlatestDownloadedGte, nameof(bodyfilterlatestDownloadedGte), required: false);
+            var __workflow_bodyfiltermalwareFamilies = bodyfiltermalwareFamilies == null ? null : WorkflowExpression.Compile(bodyfiltermalwareFamilies);
+            WorkflowExpression.Validate(__workflow_bodyfiltermalwareFamilies, nameof(bodyfiltermalwareFamilies), required: false);
+            var __workflow_bodyfilterproperties = bodyfilterproperties == null ? null : WorkflowExpression.Compile(bodyfilterproperties);
+            WorkflowExpression.Validate(__workflow_bodyfilterproperties, nameof(bodyfilterproperties), required: false);
+            var __workflow_bodyfilterusernameProperties = bodyfilterusernameProperties == null ? null : WorkflowExpression.Compile(bodyfilterusernameProperties);
+            WorkflowExpression.Validate(__workflow_bodyfilterusernameProperties, nameof(bodyfilterusernameProperties), required: false);
+            var __workflow_bodyorganizationId = bodyorganizationId == null ? null : WorkflowExpression.Compile(bodyorganizationId);
+            WorkflowExpression.Validate(__workflow_bodyorganizationId, nameof(bodyorganizationId), required: false);
+            var __workflow_bodysubjects = bodysubjects == null ? null : WorkflowExpression.Compile(bodysubjects);
+            WorkflowExpression.Validate(__workflow_bodysubjects, nameof(bodysubjects), required: false);
+            var __workflow_bodysubjectsLogin = bodysubjectsLogin == null ? null : WorkflowExpression.Compile(bodysubjectsLogin);
+            WorkflowExpression.Validate(__workflow_bodysubjectsLogin, nameof(bodysubjectsLogin), required: false);
+            var __workflow_bodysubjectsSha1 = bodysubjectsSha1 == null ? null : WorkflowExpression.Compile(bodysubjectsSha1);
+            WorkflowExpression.Validate(__workflow_bodysubjectsSha1, nameof(bodysubjectsSha1), required: false);
             return new DeferredBodyAction<LookupResponse>(() =>
             {
                 var apiCallPath = "/v2/credentials/lookup";
@@ -46,29 +54,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfutureidenti
                 var bodypropCount = 0;
                 var filterObject = new JObject();
                 var filterObjectpropCount = 0;
-                if (bodyfilterauthorizationProtocols != null)
+                if (__workflow_bodyfilterauthorizationProtocols != null)
                 {
-                    filterObject["authorization_protocols"] = ExpressionConverter.ConvertO(bodyfilterauthorizationProtocols);
+                    filterObject["authorization_protocols"] = ExpressionConverter.ConvertO(__workflow_bodyfilterauthorizationProtocols);
                     filterObjectpropCount++;
                 }
 
-                if (bodyfilterauthorizationTechnologies != null)
+                if (__workflow_bodyfilterauthorizationTechnologies != null)
                 {
-                    filterObject["authorization_technologies"] = ExpressionConverter.ConvertO(bodyfilterauthorizationTechnologies);
+                    filterObject["authorization_technologies"] = ExpressionConverter.ConvertO(__workflow_bodyfilterauthorizationTechnologies);
                     filterObjectpropCount++;
                 }
 
                 var breachPropertiesObject = new JObject();
                 var breachPropertiesObjectpropCount = 0;
-                if (bodyfilterbreachPropertiesdate != null)
+                if (__workflow_bodyfilterbreachPropertiesdate != null)
                 {
-                    breachPropertiesObject["date"] = ExpressionConverter.ConvertO(bodyfilterbreachPropertiesdate);
+                    breachPropertiesObject["date"] = ExpressionConverter.ConvertO(__workflow_bodyfilterbreachPropertiesdate);
                     breachPropertiesObjectpropCount++;
                 }
 
-                if (bodyfilterbreachPropertiesname != null)
+                if (__workflow_bodyfilterbreachPropertiesname != null)
                 {
-                    breachPropertiesObject["name"] = ExpressionConverter.ConvertO(bodyfilterbreachPropertiesname);
+                    breachPropertiesObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyfilterbreachPropertiesname);
                     breachPropertiesObjectpropCount++;
                 }
 
@@ -80,15 +88,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfutureidenti
 
                 var dumpPropertiesObject = new JObject();
                 var dumpPropertiesObjectpropCount = 0;
-                if (bodyfilterdumpPropertiesdate != null)
+                if (__workflow_bodyfilterdumpPropertiesdate != null)
                 {
-                    dumpPropertiesObject["date"] = ExpressionConverter.ConvertO(bodyfilterdumpPropertiesdate);
+                    dumpPropertiesObject["date"] = ExpressionConverter.ConvertO(__workflow_bodyfilterdumpPropertiesdate);
                     dumpPropertiesObjectpropCount++;
                 }
 
-                if (bodyfilterdumpPropertiesname != null)
+                if (__workflow_bodyfilterdumpPropertiesname != null)
                 {
-                    dumpPropertiesObject["name"] = ExpressionConverter.ConvertO(bodyfilterdumpPropertiesname);
+                    dumpPropertiesObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyfilterdumpPropertiesname);
                     dumpPropertiesObjectpropCount++;
                 }
 
@@ -98,39 +106,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfutureidenti
                     filterObjectpropCount++;
                 }
 
-                if (bodyfilterexfiltrationDateGte != null)
+                if (__workflow_bodyfilterexfiltrationDateGte != null)
                 {
-                    filterObject["exfiltration_date_gte"] = ExpressionConverter.ConvertO(bodyfilterexfiltrationDateGte);
+                    filterObject["exfiltration_date_gte"] = ExpressionConverter.ConvertO(__workflow_bodyfilterexfiltrationDateGte);
                     filterObjectpropCount++;
                 }
 
-                if (bodyfilterfirstDownloadedGte != null)
+                if (__workflow_bodyfilterfirstDownloadedGte != null)
                 {
-                    filterObject["first_downloaded_gte"] = ExpressionConverter.ConvertO(bodyfilterfirstDownloadedGte);
+                    filterObject["first_downloaded_gte"] = ExpressionConverter.ConvertO(__workflow_bodyfilterfirstDownloadedGte);
                     filterObjectpropCount++;
                 }
 
-                if (bodyfilterlatestDownloadedGte != null)
+                if (__workflow_bodyfilterlatestDownloadedGte != null)
                 {
-                    filterObject["latest_downloaded_gte"] = ExpressionConverter.ConvertO(bodyfilterlatestDownloadedGte);
+                    filterObject["latest_downloaded_gte"] = ExpressionConverter.ConvertO(__workflow_bodyfilterlatestDownloadedGte);
                     filterObjectpropCount++;
                 }
 
-                if (bodyfiltermalwareFamilies != null)
+                if (__workflow_bodyfiltermalwareFamilies != null)
                 {
-                    filterObject["malware_families"] = ExpressionConverter.ConvertO(bodyfiltermalwareFamilies);
+                    filterObject["malware_families"] = ExpressionConverter.ConvertO(__workflow_bodyfiltermalwareFamilies);
                     filterObjectpropCount++;
                 }
 
-                if (bodyfilterproperties != null)
+                if (__workflow_bodyfilterproperties != null)
                 {
-                    filterObject["properties"] = ExpressionConverter.ConvertO(bodyfilterproperties);
+                    filterObject["properties"] = ExpressionConverter.ConvertO(__workflow_bodyfilterproperties);
                     filterObjectpropCount++;
                 }
 
-                if (bodyfilterusernameProperties != null)
+                if (__workflow_bodyfilterusernameProperties != null)
                 {
-                    filterObject["username_properties"] = ExpressionConverter.ConvertO(bodyfilterusernameProperties);
+                    filterObject["username_properties"] = ExpressionConverter.ConvertO(__workflow_bodyfilterusernameProperties);
                     filterObjectpropCount++;
                 }
 
@@ -140,27 +148,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfutureidenti
                     bodypropCount++;
                 }
 
-                if (bodyorganizationId != null)
+                if (__workflow_bodyorganizationId != null)
                 {
-                    body["organization_id"] = ExpressionConverter.ConvertO(bodyorganizationId);
+                    body["organization_id"] = ExpressionConverter.ConvertO(__workflow_bodyorganizationId);
                     bodypropCount++;
                 }
 
-                if (bodysubjects != null)
+                if (__workflow_bodysubjects != null)
                 {
-                    body["subjects"] = ExpressionConverter.ConvertO(bodysubjects);
+                    body["subjects"] = ExpressionConverter.ConvertO(__workflow_bodysubjects);
                     bodypropCount++;
                 }
 
-                if (bodysubjectsLogin != null)
+                if (__workflow_bodysubjectsLogin != null)
                 {
-                    body["subjects_login"] = ExpressionConverter.ConvertO(bodysubjectsLogin);
+                    body["subjects_login"] = ExpressionConverter.ConvertO(__workflow_bodysubjectsLogin);
                     bodypropCount++;
                 }
 
-                if (bodysubjectsSha1 != null)
+                if (__workflow_bodysubjectsSha1 != null)
                 {
-                    body["subjects_sha1"] = ExpressionConverter.ConvertO(bodysubjectsSha1);
+                    body["subjects_sha1"] = ExpressionConverter.ConvertO(__workflow_bodysubjectsSha1);
                     bodypropCount++;
                 }
 

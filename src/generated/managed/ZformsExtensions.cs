@@ -1,12 +1,12 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zforms
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class ZformsActions([ConnectionName] string connectionId)
     {
@@ -23,23 +23,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zforms
 
     public class ZformsTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildFormSubmitted))]
-        public IBodyWorkflowTrigger<FormSubmittedResponse> FormSubmitted([WorkflowExpression] Func<string> formlinkname,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<FormSubmittedResponse> FormSubmitted(Expression<Func<string>> formlinkname, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<FormSubmittedResponse> __BuildFormSubmitted(WorkflowExpression<string> formlinkname,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(formlinkname, nameof(formlinkname), required: true);
+            var __workflow_formlinkname = formlinkname == null ? null : WorkflowExpression.Compile(formlinkname);
+            WorkflowExpression.Validate(__workflow_formlinkname, nameof(formlinkname), required: true);
             return new DeferredBodyTrigger<FormSubmittedResponse>(() =>
             {
                 var apiCallPath = "/api/resthooks";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["formlinkname"] = ExpressionConverter.Convert(formlinkname);
+                callPayload.Queries["formlinkname"] = ExpressionConverter.Convert(__workflow_formlinkname);
                 callPayload.Headers["zf_service"] = Convert.ToString("MSPowerAutomate");
                 callPayload.Headers["zf_version"] = Convert.ToString(2);
                 callPayload.Headers["webhooks_url"] = Convert.ToString("#{listCallbackUrl()}");

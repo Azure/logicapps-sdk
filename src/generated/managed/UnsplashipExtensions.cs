@@ -1,191 +1,161 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class UnsplashipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
-        [WorkflowExpressionFactory(nameof(__BuildUserGet))]
-        public IBodyWorkflowAction<Users> UserGet([WorkflowExpression] Func<string> username, [WorkflowExpression] Func<int> w = null, [WorkflowExpression] Func<int> h = null)
+        public IBodyWorkflowAction<Users> UserGet(Expression<Func<string>> username, Expression<Func<int>> w = null, Expression<Func<int>> h = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Users> __BuildUserGet(WorkflowExpression<string> username, WorkflowExpression<int> w = null, WorkflowExpression<int> h = null)
-        {
-            WorkflowExpression.Validate(username, nameof(username), required: true);
-            WorkflowExpression.Validate(w, nameof(w), required: false);
-            WorkflowExpression.Validate(h, nameof(h), required: false);
+            var __workflow_username = username == null ? null : WorkflowExpression.Compile(username);
+            WorkflowExpression.Validate(__workflow_username, nameof(username), required: true);
+            var __workflow_w = w == null ? null : WorkflowExpression.Compile(w);
+            WorkflowExpression.Validate(__workflow_w, nameof(w), required: false);
+            var __workflow_h = h == null ? null : WorkflowExpression.Compile(h);
+            WorkflowExpression.Validate(__workflow_h, nameof(h), required: false);
             return new DeferredBodyAction<Users>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(username, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_username, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (w != null)
-                    callPayload.Queries["w"] = ExpressionConverter.Convert(w);
-                if (h != null)
-                    callPayload.Queries["h"] = ExpressionConverter.Convert(h);
+                if (__workflow_w != null)
+                    callPayload.Queries["w"] = ExpressionConverter.Convert(__workflow_w);
+                if (__workflow_h != null)
+                    callPayload.Queries["h"] = ExpressionConverter.Convert(__workflow_h);
                 return new ApiConnectionAction<Users>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
-        [WorkflowExpressionFactory(nameof(__BuildUserGetPhotos))]
-        public IBodyWorkflowAction<Photos[]> UserGetPhotos([WorkflowExpression] Func<string> username, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<string> orderBy = null)
+        public IBodyWorkflowAction<Photos[]> UserGetPhotos(Expression<Func<string>> username, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<string>> orderBy = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Photos[]> __BuildUserGetPhotos(WorkflowExpression<string> username, WorkflowExpression<int> page = null, WorkflowExpression<int> perPage = null, WorkflowExpression<string> orderBy = null)
-        {
-            WorkflowExpression.Validate(username, nameof(username), required: true);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
-            WorkflowExpression.Validate(perPage, nameof(perPage), required: false);
-            WorkflowExpression.Validate(orderBy, nameof(orderBy), required: false);
+            var __workflow_username = username == null ? null : WorkflowExpression.Compile(username);
+            WorkflowExpression.Validate(__workflow_username, nameof(username), required: true);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
+            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
+            var __workflow_orderBy = orderBy == null ? null : WorkflowExpression.Compile(orderBy);
+            WorkflowExpression.Validate(__workflow_orderBy, nameof(orderBy), required: false);
             return new DeferredBodyAction<Photos[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}/photos", ExpressionConverter.ConvertWithUrlEncoding(username, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}/photos", ExpressionConverter.ConvertWithUrlEncoding(__workflow_username, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-                if (perPage != null)
-                    callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
-                if (orderBy != null)
-                    callPayload.Queries["order_by"] = ExpressionConverter.Convert(orderBy);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_perPage != null)
+                    callPayload.Queries["per_page"] = ExpressionConverter.Convert(__workflow_perPage);
+                if (__workflow_orderBy != null)
+                    callPayload.Queries["order_by"] = ExpressionConverter.Convert(__workflow_orderBy);
                 return new ApiConnectionAction<Photos[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
-        [WorkflowExpressionFactory(nameof(__BuildUserGetLiked))]
-        public IBodyWorkflowAction<Photos[]> UserGetLiked([WorkflowExpression] Func<string> username, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<string> orderBy = null)
+        public IBodyWorkflowAction<Photos[]> UserGetLiked(Expression<Func<string>> username, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<string>> orderBy = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Photos[]> __BuildUserGetLiked(WorkflowExpression<string> username, WorkflowExpression<int> page = null, WorkflowExpression<int> perPage = null, WorkflowExpression<string> orderBy = null)
-        {
-            WorkflowExpression.Validate(username, nameof(username), required: true);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
-            WorkflowExpression.Validate(perPage, nameof(perPage), required: false);
-            WorkflowExpression.Validate(orderBy, nameof(orderBy), required: false);
+            var __workflow_username = username == null ? null : WorkflowExpression.Compile(username);
+            WorkflowExpression.Validate(__workflow_username, nameof(username), required: true);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
+            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
+            var __workflow_orderBy = orderBy == null ? null : WorkflowExpression.Compile(orderBy);
+            WorkflowExpression.Validate(__workflow_orderBy, nameof(orderBy), required: false);
             return new DeferredBodyAction<Photos[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}/likes", ExpressionConverter.ConvertWithUrlEncoding(username, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}/likes", ExpressionConverter.ConvertWithUrlEncoding(__workflow_username, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-                if (perPage != null)
-                    callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
-                if (orderBy != null)
-                    callPayload.Queries["order_by"] = ExpressionConverter.Convert(orderBy);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_perPage != null)
+                    callPayload.Queries["per_page"] = ExpressionConverter.Convert(__workflow_perPage);
+                if (__workflow_orderBy != null)
+                    callPayload.Queries["order_by"] = ExpressionConverter.Convert(__workflow_orderBy);
                 return new ApiConnectionAction<Photos[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
-        [WorkflowExpressionFactory(nameof(__BuildUserGetCollections))]
-        public IBodyWorkflowAction<Collections[]> UserGetCollections([WorkflowExpression] Func<string> username, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null)
+        public IBodyWorkflowAction<Collections[]> UserGetCollections(Expression<Func<string>> username, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Collections[]> __BuildUserGetCollections(WorkflowExpression<string> username, WorkflowExpression<int> page = null, WorkflowExpression<int> perPage = null)
-        {
-            WorkflowExpression.Validate(username, nameof(username), required: true);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
-            WorkflowExpression.Validate(perPage, nameof(perPage), required: false);
+            var __workflow_username = username == null ? null : WorkflowExpression.Compile(username);
+            WorkflowExpression.Validate(__workflow_username, nameof(username), required: true);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
+            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
             return new DeferredBodyAction<Collections[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}/collections", ExpressionConverter.ConvertWithUrlEncoding(username, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}/collections", ExpressionConverter.ConvertWithUrlEncoding(__workflow_username, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-                if (perPage != null)
-                    callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_perPage != null)
+                    callPayload.Queries["per_page"] = ExpressionConverter.Convert(__workflow_perPage);
                 return new ApiConnectionAction<Collections[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
-        [WorkflowExpressionFactory(nameof(__BuildPhotoGetPage))]
-        public IBodyWorkflowAction<Photos[]> PhotoGetPage([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<string> orderBy = null)
+        public IBodyWorkflowAction<Photos[]> PhotoGetPage(Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<string>> orderBy = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Photos[]> __BuildPhotoGetPage(WorkflowExpression<int> page = null, WorkflowExpression<int> perPage = null, WorkflowExpression<string> orderBy = null)
-        {
-            WorkflowExpression.Validate(page, nameof(page), required: false);
-            WorkflowExpression.Validate(perPage, nameof(perPage), required: false);
-            WorkflowExpression.Validate(orderBy, nameof(orderBy), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
+            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
+            var __workflow_orderBy = orderBy == null ? null : WorkflowExpression.Compile(orderBy);
+            WorkflowExpression.Validate(__workflow_orderBy, nameof(orderBy), required: false);
             return new DeferredBodyAction<Photos[]>(() =>
             {
                 var apiCallPath = "/photos";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-                if (perPage != null)
-                    callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
-                if (orderBy != null)
-                    callPayload.Queries["order_by"] = ExpressionConverter.Convert(orderBy);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_perPage != null)
+                    callPayload.Queries["per_page"] = ExpressionConverter.Convert(__workflow_perPage);
+                if (__workflow_orderBy != null)
+                    callPayload.Queries["order_by"] = ExpressionConverter.Convert(__workflow_orderBy);
                 return new ApiConnectionAction<Photos[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
-        [WorkflowExpressionFactory(nameof(__BuildPhotoSearch))]
-        public IBodyWorkflowAction<Photos[]> PhotoSearch([WorkflowExpression] Func<string> query, [WorkflowExpression] Func<string> category)
+        public IBodyWorkflowAction<Photos[]> PhotoSearch(Expression<Func<string>> query, Expression<Func<string>> category)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Photos[]> __BuildPhotoSearch(WorkflowExpression<string> query, WorkflowExpression<string> category)
-        {
-            WorkflowExpression.Validate(query, nameof(query), required: true);
-            WorkflowExpression.Validate(category, nameof(category), required: true);
+            var __workflow_query = query == null ? null : WorkflowExpression.Compile(query);
+            WorkflowExpression.Validate(__workflow_query, nameof(query), required: true);
+            var __workflow_category = category == null ? null : WorkflowExpression.Compile(category);
+            WorkflowExpression.Validate(__workflow_category, nameof(category), required: true);
             return new DeferredBodyAction<Photos[]>(() =>
             {
                 var apiCallPath = "/photos/search";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["query"] = ExpressionConverter.Convert(query);
-                callPayload.Queries["category"] = ExpressionConverter.Convert(category);
+                callPayload.Queries["query"] = ExpressionConverter.Convert(__workflow_query);
+                callPayload.Queries["category"] = ExpressionConverter.Convert(__workflow_category);
                 return new ApiConnectionAction<Photos[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
-        [WorkflowExpressionFactory(nameof(__BuildPhotoGet))]
-        public IBodyWorkflowAction<Photo> PhotoGet([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<Photo> PhotoGet(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Photo> __BuildPhotoGet(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<Photo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/photos/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/photos/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Photo>(callPayload);
@@ -193,39 +163,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
-        [WorkflowExpressionFactory(nameof(__BuildPhotoGetRandom))]
-        public IBodyWorkflowAction<Photo> PhotoGetRandom([WorkflowExpression] Func<string> collections = null, [WorkflowExpression] Func<string> topics = null, [WorkflowExpression] Func<string> username = null, [WorkflowExpression] Func<string> query = null, [WorkflowExpression] Func<orientationInput> orientation = null, [WorkflowExpression] Func<contentFilterInput> contentFilter = null)
+        public IBodyWorkflowAction<Photo> PhotoGetRandom(Expression<Func<string>> collections = null, Expression<Func<string>> topics = null, Expression<Func<string>> username = null, Expression<Func<string>> query = null, Expression<Func<orientationInput>> orientation = null, Expression<Func<contentFilterInput>> contentFilter = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Photo> __BuildPhotoGetRandom(WorkflowExpression<string> collections = null, WorkflowExpression<string> topics = null, WorkflowExpression<string> username = null, WorkflowExpression<string> query = null, WorkflowExpression<orientationInput> orientation = null, WorkflowExpression<contentFilterInput> contentFilter = null)
-        {
-            WorkflowExpression.Validate(collections, nameof(collections), required: false);
-            WorkflowExpression.Validate(topics, nameof(topics), required: false);
-            WorkflowExpression.Validate(username, nameof(username), required: false);
-            WorkflowExpression.Validate(query, nameof(query), required: false);
-            WorkflowExpression.Validate(orientation, nameof(orientation), required: false);
-            WorkflowExpression.Validate(contentFilter, nameof(contentFilter), required: false);
+            var __workflow_collections = collections == null ? null : WorkflowExpression.Compile(collections);
+            WorkflowExpression.Validate(__workflow_collections, nameof(collections), required: false);
+            var __workflow_topics = topics == null ? null : WorkflowExpression.Compile(topics);
+            WorkflowExpression.Validate(__workflow_topics, nameof(topics), required: false);
+            var __workflow_username = username == null ? null : WorkflowExpression.Compile(username);
+            WorkflowExpression.Validate(__workflow_username, nameof(username), required: false);
+            var __workflow_query = query == null ? null : WorkflowExpression.Compile(query);
+            WorkflowExpression.Validate(__workflow_query, nameof(query), required: false);
+            var __workflow_orientation = orientation == null ? null : WorkflowExpression.Compile(orientation);
+            WorkflowExpression.Validate(__workflow_orientation, nameof(orientation), required: false);
+            var __workflow_contentFilter = contentFilter == null ? null : WorkflowExpression.Compile(contentFilter);
+            WorkflowExpression.Validate(__workflow_contentFilter, nameof(contentFilter), required: false);
             return new DeferredBodyAction<Photo>(() =>
             {
                 var apiCallPath = "/photos/random";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (collections != null)
-                    callPayload.Queries["collections"] = ExpressionConverter.Convert(collections);
-                if (topics != null)
-                    callPayload.Queries["topics"] = ExpressionConverter.Convert(topics);
-                if (username != null)
-                    callPayload.Queries["username"] = ExpressionConverter.Convert(username);
-                if (query != null)
-                    callPayload.Queries["query"] = ExpressionConverter.Convert(query);
-                if (orientation != null)
-                    callPayload.Queries["orientation"] = ExpressionConverter.Convert(orientation);
+                if (__workflow_collections != null)
+                    callPayload.Queries["collections"] = ExpressionConverter.Convert(__workflow_collections);
+                if (__workflow_topics != null)
+                    callPayload.Queries["topics"] = ExpressionConverter.Convert(__workflow_topics);
+                if (__workflow_username != null)
+                    callPayload.Queries["username"] = ExpressionConverter.Convert(__workflow_username);
+                if (__workflow_query != null)
+                    callPayload.Queries["query"] = ExpressionConverter.Convert(__workflow_query);
+                if (__workflow_orientation != null)
+                    callPayload.Queries["orientation"] = ExpressionConverter.Convert(__workflow_orientation);
                 callPayload.Queries["content_filter"] = Convert.ToString("low");
-                if (contentFilter != null)
-                    callPayload.Queries["content_filter"] = ExpressionConverter.Convert(contentFilter);
+                if (__workflow_contentFilter != null)
+                    callPayload.Queries["content_filter"] = ExpressionConverter.Convert(__workflow_contentFilter);
                 return new ApiConnectionAction<Photo>(callPayload);
             });
         }

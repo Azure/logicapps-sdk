@@ -1,62 +1,90 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class SignrequestActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signrequest")]
-        [WorkflowExpressionFactory(nameof(__BuildSignrequestQuickCreateCreate))]
-        public IBodyWorkflowAction<SignRequestQuickCreate> SignrequestQuickCreateCreate([WorkflowExpression] Func<Signer[]> datasigners, [WorkflowExpression] Func<int> dataautoDeleteDays = null, [WorkflowExpression] Func<int> dataautoExpireDays = null, [WorkflowExpression] Func<bool> datadisableAttachments = null, [WorkflowExpression] Func<bool> datadisableBlockchainProof = null, [WorkflowExpression] Func<bool> datadisableDate = null, [WorkflowExpression] Func<bool> datadisableEmails = null, [WorkflowExpression] Func<bool> datadisableText = null, [WorkflowExpression] Func<bool> datadisableTextSignatures = null, [WorkflowExpression] Func<bool> datadisableUploadSignatures = null, [WorkflowExpression] Func<string> datadocument = null, [WorkflowExpression] Func<string> dataeventsCallbackUrl = null, [WorkflowExpression] Func<string> dataexternalId = null, [WorkflowExpression] Func<string> datafile = null, [WorkflowExpression] Func<string> datafileFromContent = null, [WorkflowExpression] Func<string> datafileFromContentName = null, [WorkflowExpression] Func<string> datafileFromUrl = null, [WorkflowExpression] Func<string> datafromEmail = null, [WorkflowExpression] Func<string> datafromEmailName = null, [WorkflowExpression] Func<string> datafrontendId = null, [WorkflowExpression] Func<bool> dataisBeingPrepared = null, [WorkflowExpression] Func<string> datamessage = null, [WorkflowExpression] Func<string> dataname = null, [WorkflowExpression] Func<InlinePrefillTags[]> dataprefillTags = null, [WorkflowExpression] Func<string> dataprepareUrl = null, [WorkflowExpression] Func<string> dataredirectUrl = null, [WorkflowExpression] Func<string> dataredirectUrlDeclined = null, [WorkflowExpression] Func<RequiredAttachment[]> datarequiredAttachments = null, [WorkflowExpression] Func<bool> datasendReminders = null, [WorkflowExpression] Func<string> datasubdomain = null, [WorkflowExpression] Func<string> datasubject = null, [WorkflowExpression] Func<string> datatemplate = null, [WorkflowExpression] Func<bool> datatextMessageVerificationLocked = null, [WorkflowExpression] Func<string> dataurl = null, [WorkflowExpression] Func<string> datauuid = null, [WorkflowExpression] Func<datawhoInput> datawho = null)
+        public IBodyWorkflowAction<SignRequestQuickCreate> SignrequestQuickCreateCreate(Expression<Func<Signer[]>> datasigners, Expression<Func<int>> dataautoDeleteDays = null, Expression<Func<int>> dataautoExpireDays = null, Expression<Func<bool>> datadisableAttachments = null, Expression<Func<bool>> datadisableBlockchainProof = null, Expression<Func<bool>> datadisableDate = null, Expression<Func<bool>> datadisableEmails = null, Expression<Func<bool>> datadisableText = null, Expression<Func<bool>> datadisableTextSignatures = null, Expression<Func<bool>> datadisableUploadSignatures = null, Expression<Func<string>> datadocument = null, Expression<Func<string>> dataeventsCallbackUrl = null, Expression<Func<string>> dataexternalId = null, Expression<Func<string>> datafile = null, Expression<Func<string>> datafileFromContent = null, Expression<Func<string>> datafileFromContentName = null, Expression<Func<string>> datafileFromUrl = null, Expression<Func<string>> datafromEmail = null, Expression<Func<string>> datafromEmailName = null, Expression<Func<string>> datafrontendId = null, Expression<Func<bool>> dataisBeingPrepared = null, Expression<Func<string>> datamessage = null, Expression<Func<string>> dataname = null, Expression<Func<InlinePrefillTags[]>> dataprefillTags = null, Expression<Func<string>> dataprepareUrl = null, Expression<Func<string>> dataredirectUrl = null, Expression<Func<string>> dataredirectUrlDeclined = null, Expression<Func<RequiredAttachment[]>> datarequiredAttachments = null, Expression<Func<bool>> datasendReminders = null, Expression<Func<string>> datasubdomain = null, Expression<Func<string>> datasubject = null, Expression<Func<string>> datatemplate = null, Expression<Func<bool>> datatextMessageVerificationLocked = null, Expression<Func<string>> dataurl = null, Expression<Func<string>> datauuid = null, Expression<Func<datawhoInput>> datawho = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SignRequestQuickCreate> __BuildSignrequestQuickCreateCreate(WorkflowExpression<Signer[]> datasigners, WorkflowExpression<int> dataautoDeleteDays = null, WorkflowExpression<int> dataautoExpireDays = null, WorkflowExpression<bool> datadisableAttachments = null, WorkflowExpression<bool> datadisableBlockchainProof = null, WorkflowExpression<bool> datadisableDate = null, WorkflowExpression<bool> datadisableEmails = null, WorkflowExpression<bool> datadisableText = null, WorkflowExpression<bool> datadisableTextSignatures = null, WorkflowExpression<bool> datadisableUploadSignatures = null, WorkflowExpression<string> datadocument = null, WorkflowExpression<string> dataeventsCallbackUrl = null, WorkflowExpression<string> dataexternalId = null, WorkflowExpression<string> datafile = null, WorkflowExpression<string> datafileFromContent = null, WorkflowExpression<string> datafileFromContentName = null, WorkflowExpression<string> datafileFromUrl = null, WorkflowExpression<string> datafromEmail = null, WorkflowExpression<string> datafromEmailName = null, WorkflowExpression<string> datafrontendId = null, WorkflowExpression<bool> dataisBeingPrepared = null, WorkflowExpression<string> datamessage = null, WorkflowExpression<string> dataname = null, WorkflowExpression<InlinePrefillTags[]> dataprefillTags = null, WorkflowExpression<string> dataprepareUrl = null, WorkflowExpression<string> dataredirectUrl = null, WorkflowExpression<string> dataredirectUrlDeclined = null, WorkflowExpression<RequiredAttachment[]> datarequiredAttachments = null, WorkflowExpression<bool> datasendReminders = null, WorkflowExpression<string> datasubdomain = null, WorkflowExpression<string> datasubject = null, WorkflowExpression<string> datatemplate = null, WorkflowExpression<bool> datatextMessageVerificationLocked = null, WorkflowExpression<string> dataurl = null, WorkflowExpression<string> datauuid = null, WorkflowExpression<datawhoInput> datawho = null)
-        {
-            WorkflowExpression.Validate(datasigners, nameof(datasigners), required: true);
-            WorkflowExpression.Validate(dataautoDeleteDays, nameof(dataautoDeleteDays), required: false);
-            WorkflowExpression.Validate(dataautoExpireDays, nameof(dataautoExpireDays), required: false);
-            WorkflowExpression.Validate(datadisableAttachments, nameof(datadisableAttachments), required: false);
-            WorkflowExpression.Validate(datadisableBlockchainProof, nameof(datadisableBlockchainProof), required: false);
-            WorkflowExpression.Validate(datadisableDate, nameof(datadisableDate), required: false);
-            WorkflowExpression.Validate(datadisableEmails, nameof(datadisableEmails), required: false);
-            WorkflowExpression.Validate(datadisableText, nameof(datadisableText), required: false);
-            WorkflowExpression.Validate(datadisableTextSignatures, nameof(datadisableTextSignatures), required: false);
-            WorkflowExpression.Validate(datadisableUploadSignatures, nameof(datadisableUploadSignatures), required: false);
-            WorkflowExpression.Validate(datadocument, nameof(datadocument), required: false);
-            WorkflowExpression.Validate(dataeventsCallbackUrl, nameof(dataeventsCallbackUrl), required: false);
-            WorkflowExpression.Validate(dataexternalId, nameof(dataexternalId), required: false);
-            WorkflowExpression.Validate(datafile, nameof(datafile), required: false);
-            WorkflowExpression.Validate(datafileFromContent, nameof(datafileFromContent), required: false);
-            WorkflowExpression.Validate(datafileFromContentName, nameof(datafileFromContentName), required: false);
-            WorkflowExpression.Validate(datafileFromUrl, nameof(datafileFromUrl), required: false);
-            WorkflowExpression.Validate(datafromEmail, nameof(datafromEmail), required: false);
-            WorkflowExpression.Validate(datafromEmailName, nameof(datafromEmailName), required: false);
-            WorkflowExpression.Validate(datafrontendId, nameof(datafrontendId), required: false);
-            WorkflowExpression.Validate(dataisBeingPrepared, nameof(dataisBeingPrepared), required: false);
-            WorkflowExpression.Validate(datamessage, nameof(datamessage), required: false);
-            WorkflowExpression.Validate(dataname, nameof(dataname), required: false);
-            WorkflowExpression.Validate(dataprefillTags, nameof(dataprefillTags), required: false);
-            WorkflowExpression.Validate(dataprepareUrl, nameof(dataprepareUrl), required: false);
-            WorkflowExpression.Validate(dataredirectUrl, nameof(dataredirectUrl), required: false);
-            WorkflowExpression.Validate(dataredirectUrlDeclined, nameof(dataredirectUrlDeclined), required: false);
-            WorkflowExpression.Validate(datarequiredAttachments, nameof(datarequiredAttachments), required: false);
-            WorkflowExpression.Validate(datasendReminders, nameof(datasendReminders), required: false);
-            WorkflowExpression.Validate(datasubdomain, nameof(datasubdomain), required: false);
-            WorkflowExpression.Validate(datasubject, nameof(datasubject), required: false);
-            WorkflowExpression.Validate(datatemplate, nameof(datatemplate), required: false);
-            WorkflowExpression.Validate(datatextMessageVerificationLocked, nameof(datatextMessageVerificationLocked), required: false);
-            WorkflowExpression.Validate(dataurl, nameof(dataurl), required: false);
-            WorkflowExpression.Validate(datauuid, nameof(datauuid), required: false);
-            WorkflowExpression.Validate(datawho, nameof(datawho), required: false);
+            var __workflow_datasigners = datasigners == null ? null : WorkflowExpression.Compile(datasigners);
+            WorkflowExpression.Validate(__workflow_datasigners, nameof(datasigners), required: true);
+            var __workflow_dataautoDeleteDays = dataautoDeleteDays == null ? null : WorkflowExpression.Compile(dataautoDeleteDays);
+            WorkflowExpression.Validate(__workflow_dataautoDeleteDays, nameof(dataautoDeleteDays), required: false);
+            var __workflow_dataautoExpireDays = dataautoExpireDays == null ? null : WorkflowExpression.Compile(dataautoExpireDays);
+            WorkflowExpression.Validate(__workflow_dataautoExpireDays, nameof(dataautoExpireDays), required: false);
+            var __workflow_datadisableAttachments = datadisableAttachments == null ? null : WorkflowExpression.Compile(datadisableAttachments);
+            WorkflowExpression.Validate(__workflow_datadisableAttachments, nameof(datadisableAttachments), required: false);
+            var __workflow_datadisableBlockchainProof = datadisableBlockchainProof == null ? null : WorkflowExpression.Compile(datadisableBlockchainProof);
+            WorkflowExpression.Validate(__workflow_datadisableBlockchainProof, nameof(datadisableBlockchainProof), required: false);
+            var __workflow_datadisableDate = datadisableDate == null ? null : WorkflowExpression.Compile(datadisableDate);
+            WorkflowExpression.Validate(__workflow_datadisableDate, nameof(datadisableDate), required: false);
+            var __workflow_datadisableEmails = datadisableEmails == null ? null : WorkflowExpression.Compile(datadisableEmails);
+            WorkflowExpression.Validate(__workflow_datadisableEmails, nameof(datadisableEmails), required: false);
+            var __workflow_datadisableText = datadisableText == null ? null : WorkflowExpression.Compile(datadisableText);
+            WorkflowExpression.Validate(__workflow_datadisableText, nameof(datadisableText), required: false);
+            var __workflow_datadisableTextSignatures = datadisableTextSignatures == null ? null : WorkflowExpression.Compile(datadisableTextSignatures);
+            WorkflowExpression.Validate(__workflow_datadisableTextSignatures, nameof(datadisableTextSignatures), required: false);
+            var __workflow_datadisableUploadSignatures = datadisableUploadSignatures == null ? null : WorkflowExpression.Compile(datadisableUploadSignatures);
+            WorkflowExpression.Validate(__workflow_datadisableUploadSignatures, nameof(datadisableUploadSignatures), required: false);
+            var __workflow_datadocument = datadocument == null ? null : WorkflowExpression.Compile(datadocument);
+            WorkflowExpression.Validate(__workflow_datadocument, nameof(datadocument), required: false);
+            var __workflow_dataeventsCallbackUrl = dataeventsCallbackUrl == null ? null : WorkflowExpression.Compile(dataeventsCallbackUrl);
+            WorkflowExpression.Validate(__workflow_dataeventsCallbackUrl, nameof(dataeventsCallbackUrl), required: false);
+            var __workflow_dataexternalId = dataexternalId == null ? null : WorkflowExpression.Compile(dataexternalId);
+            WorkflowExpression.Validate(__workflow_dataexternalId, nameof(dataexternalId), required: false);
+            var __workflow_datafile = datafile == null ? null : WorkflowExpression.Compile(datafile);
+            WorkflowExpression.Validate(__workflow_datafile, nameof(datafile), required: false);
+            var __workflow_datafileFromContent = datafileFromContent == null ? null : WorkflowExpression.Compile(datafileFromContent);
+            WorkflowExpression.Validate(__workflow_datafileFromContent, nameof(datafileFromContent), required: false);
+            var __workflow_datafileFromContentName = datafileFromContentName == null ? null : WorkflowExpression.Compile(datafileFromContentName);
+            WorkflowExpression.Validate(__workflow_datafileFromContentName, nameof(datafileFromContentName), required: false);
+            var __workflow_datafileFromUrl = datafileFromUrl == null ? null : WorkflowExpression.Compile(datafileFromUrl);
+            WorkflowExpression.Validate(__workflow_datafileFromUrl, nameof(datafileFromUrl), required: false);
+            var __workflow_datafromEmail = datafromEmail == null ? null : WorkflowExpression.Compile(datafromEmail);
+            WorkflowExpression.Validate(__workflow_datafromEmail, nameof(datafromEmail), required: false);
+            var __workflow_datafromEmailName = datafromEmailName == null ? null : WorkflowExpression.Compile(datafromEmailName);
+            WorkflowExpression.Validate(__workflow_datafromEmailName, nameof(datafromEmailName), required: false);
+            var __workflow_datafrontendId = datafrontendId == null ? null : WorkflowExpression.Compile(datafrontendId);
+            WorkflowExpression.Validate(__workflow_datafrontendId, nameof(datafrontendId), required: false);
+            var __workflow_dataisBeingPrepared = dataisBeingPrepared == null ? null : WorkflowExpression.Compile(dataisBeingPrepared);
+            WorkflowExpression.Validate(__workflow_dataisBeingPrepared, nameof(dataisBeingPrepared), required: false);
+            var __workflow_datamessage = datamessage == null ? null : WorkflowExpression.Compile(datamessage);
+            WorkflowExpression.Validate(__workflow_datamessage, nameof(datamessage), required: false);
+            var __workflow_dataname = dataname == null ? null : WorkflowExpression.Compile(dataname);
+            WorkflowExpression.Validate(__workflow_dataname, nameof(dataname), required: false);
+            var __workflow_dataprefillTags = dataprefillTags == null ? null : WorkflowExpression.Compile(dataprefillTags);
+            WorkflowExpression.Validate(__workflow_dataprefillTags, nameof(dataprefillTags), required: false);
+            var __workflow_dataprepareUrl = dataprepareUrl == null ? null : WorkflowExpression.Compile(dataprepareUrl);
+            WorkflowExpression.Validate(__workflow_dataprepareUrl, nameof(dataprepareUrl), required: false);
+            var __workflow_dataredirectUrl = dataredirectUrl == null ? null : WorkflowExpression.Compile(dataredirectUrl);
+            WorkflowExpression.Validate(__workflow_dataredirectUrl, nameof(dataredirectUrl), required: false);
+            var __workflow_dataredirectUrlDeclined = dataredirectUrlDeclined == null ? null : WorkflowExpression.Compile(dataredirectUrlDeclined);
+            WorkflowExpression.Validate(__workflow_dataredirectUrlDeclined, nameof(dataredirectUrlDeclined), required: false);
+            var __workflow_datarequiredAttachments = datarequiredAttachments == null ? null : WorkflowExpression.Compile(datarequiredAttachments);
+            WorkflowExpression.Validate(__workflow_datarequiredAttachments, nameof(datarequiredAttachments), required: false);
+            var __workflow_datasendReminders = datasendReminders == null ? null : WorkflowExpression.Compile(datasendReminders);
+            WorkflowExpression.Validate(__workflow_datasendReminders, nameof(datasendReminders), required: false);
+            var __workflow_datasubdomain = datasubdomain == null ? null : WorkflowExpression.Compile(datasubdomain);
+            WorkflowExpression.Validate(__workflow_datasubdomain, nameof(datasubdomain), required: false);
+            var __workflow_datasubject = datasubject == null ? null : WorkflowExpression.Compile(datasubject);
+            WorkflowExpression.Validate(__workflow_datasubject, nameof(datasubject), required: false);
+            var __workflow_datatemplate = datatemplate == null ? null : WorkflowExpression.Compile(datatemplate);
+            WorkflowExpression.Validate(__workflow_datatemplate, nameof(datatemplate), required: false);
+            var __workflow_datatextMessageVerificationLocked = datatextMessageVerificationLocked == null ? null : WorkflowExpression.Compile(datatextMessageVerificationLocked);
+            WorkflowExpression.Validate(__workflow_datatextMessageVerificationLocked, nameof(datatextMessageVerificationLocked), required: false);
+            var __workflow_dataurl = dataurl == null ? null : WorkflowExpression.Compile(dataurl);
+            WorkflowExpression.Validate(__workflow_dataurl, nameof(dataurl), required: false);
+            var __workflow_datauuid = datauuid == null ? null : WorkflowExpression.Compile(datauuid);
+            WorkflowExpression.Validate(__workflow_datauuid, nameof(datauuid), required: false);
+            var __workflow_datawho = datawho == null ? null : WorkflowExpression.Compile(datawho);
+            WorkflowExpression.Validate(__workflow_datawho, nameof(datawho), required: false);
             return new DeferredBodyAction<SignRequestQuickCreate>(() =>
             {
                 var apiCallPath = "/signrequest-quick-create/";
@@ -64,217 +92,217 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var data = new JObject();
                 var datapropCount = 0;
-                if (dataautoDeleteDays != null)
+                if (__workflow_dataautoDeleteDays != null)
                 {
-                    data["auto_delete_days"] = ExpressionConverter.ConvertO(dataautoDeleteDays);
+                    data["auto_delete_days"] = ExpressionConverter.ConvertO(__workflow_dataautoDeleteDays);
                     datapropCount++;
                 }
 
-                if (dataautoExpireDays != null)
+                if (__workflow_dataautoExpireDays != null)
                 {
-                    data["auto_expire_days"] = ExpressionConverter.ConvertO(dataautoExpireDays);
+                    data["auto_expire_days"] = ExpressionConverter.ConvertO(__workflow_dataautoExpireDays);
                     datapropCount++;
                 }
 
-                if (datadisableAttachments != null)
+                if (__workflow_datadisableAttachments != null)
                 {
-                    data["disable_attachments"] = ExpressionConverter.ConvertO(datadisableAttachments);
+                    data["disable_attachments"] = ExpressionConverter.ConvertO(__workflow_datadisableAttachments);
                     datapropCount++;
                 }
 
-                if (datadisableBlockchainProof != null)
+                if (__workflow_datadisableBlockchainProof != null)
                 {
-                    data["disable_blockchain_proof"] = ExpressionConverter.ConvertO(datadisableBlockchainProof);
+                    data["disable_blockchain_proof"] = ExpressionConverter.ConvertO(__workflow_datadisableBlockchainProof);
                     datapropCount++;
                 }
 
-                if (datadisableDate != null)
+                if (__workflow_datadisableDate != null)
                 {
-                    data["disable_date"] = ExpressionConverter.ConvertO(datadisableDate);
+                    data["disable_date"] = ExpressionConverter.ConvertO(__workflow_datadisableDate);
                     datapropCount++;
                 }
 
-                if (datadisableEmails != null)
+                if (__workflow_datadisableEmails != null)
                 {
-                    data["disable_emails"] = ExpressionConverter.ConvertO(datadisableEmails);
+                    data["disable_emails"] = ExpressionConverter.ConvertO(__workflow_datadisableEmails);
                     datapropCount++;
                 }
 
-                if (datadisableText != null)
+                if (__workflow_datadisableText != null)
                 {
-                    data["disable_text"] = ExpressionConverter.ConvertO(datadisableText);
+                    data["disable_text"] = ExpressionConverter.ConvertO(__workflow_datadisableText);
                     datapropCount++;
                 }
 
-                if (datadisableTextSignatures != null)
+                if (__workflow_datadisableTextSignatures != null)
                 {
-                    data["disable_text_signatures"] = ExpressionConverter.ConvertO(datadisableTextSignatures);
+                    data["disable_text_signatures"] = ExpressionConverter.ConvertO(__workflow_datadisableTextSignatures);
                     datapropCount++;
                 }
 
-                if (datadisableUploadSignatures != null)
+                if (__workflow_datadisableUploadSignatures != null)
                 {
-                    data["disable_upload_signatures"] = ExpressionConverter.ConvertO(datadisableUploadSignatures);
+                    data["disable_upload_signatures"] = ExpressionConverter.ConvertO(__workflow_datadisableUploadSignatures);
                     datapropCount++;
                 }
 
-                if (datadocument != null)
+                if (__workflow_datadocument != null)
                 {
-                    data["document"] = ExpressionConverter.ConvertO(datadocument);
+                    data["document"] = ExpressionConverter.ConvertO(__workflow_datadocument);
                     datapropCount++;
                 }
 
-                if (dataeventsCallbackUrl != null)
+                if (__workflow_dataeventsCallbackUrl != null)
                 {
-                    data["events_callback_url"] = ExpressionConverter.ConvertO(dataeventsCallbackUrl);
+                    data["events_callback_url"] = ExpressionConverter.ConvertO(__workflow_dataeventsCallbackUrl);
                     datapropCount++;
                 }
 
-                if (dataexternalId != null)
+                if (__workflow_dataexternalId != null)
                 {
-                    data["external_id"] = ExpressionConverter.ConvertO(dataexternalId);
+                    data["external_id"] = ExpressionConverter.ConvertO(__workflow_dataexternalId);
                     datapropCount++;
                 }
 
-                if (datafile != null)
+                if (__workflow_datafile != null)
                 {
-                    data["file"] = ExpressionConverter.ConvertO(datafile);
+                    data["file"] = ExpressionConverter.ConvertO(__workflow_datafile);
                     datapropCount++;
                 }
 
-                if (datafileFromContent != null)
+                if (__workflow_datafileFromContent != null)
                 {
-                    data["file_from_content"] = ExpressionConverter.ConvertO(datafileFromContent);
+                    data["file_from_content"] = ExpressionConverter.ConvertO(__workflow_datafileFromContent);
                     datapropCount++;
                 }
 
-                if (datafileFromContentName != null)
+                if (__workflow_datafileFromContentName != null)
                 {
-                    data["file_from_content_name"] = ExpressionConverter.ConvertO(datafileFromContentName);
+                    data["file_from_content_name"] = ExpressionConverter.ConvertO(__workflow_datafileFromContentName);
                     datapropCount++;
                 }
 
-                if (datafileFromUrl != null)
+                if (__workflow_datafileFromUrl != null)
                 {
-                    data["file_from_url"] = ExpressionConverter.ConvertO(datafileFromUrl);
+                    data["file_from_url"] = ExpressionConverter.ConvertO(__workflow_datafileFromUrl);
                     datapropCount++;
                 }
 
-                if (datafromEmail != null)
+                if (__workflow_datafromEmail != null)
                 {
-                    data["from_email"] = ExpressionConverter.ConvertO(datafromEmail);
+                    data["from_email"] = ExpressionConverter.ConvertO(__workflow_datafromEmail);
                     datapropCount++;
                 }
 
-                if (datafromEmailName != null)
+                if (__workflow_datafromEmailName != null)
                 {
-                    data["from_email_name"] = ExpressionConverter.ConvertO(datafromEmailName);
+                    data["from_email_name"] = ExpressionConverter.ConvertO(__workflow_datafromEmailName);
                     datapropCount++;
                 }
 
-                if (datafrontendId != null)
+                if (__workflow_datafrontendId != null)
                 {
-                    data["frontend_id"] = ExpressionConverter.ConvertO(datafrontendId);
+                    data["frontend_id"] = ExpressionConverter.ConvertO(__workflow_datafrontendId);
                     datapropCount++;
                 }
 
-                if (dataisBeingPrepared != null)
+                if (__workflow_dataisBeingPrepared != null)
                 {
-                    data["is_being_prepared"] = ExpressionConverter.ConvertO(dataisBeingPrepared);
+                    data["is_being_prepared"] = ExpressionConverter.ConvertO(__workflow_dataisBeingPrepared);
                     datapropCount++;
                 }
 
-                if (datamessage != null)
+                if (__workflow_datamessage != null)
                 {
-                    data["message"] = ExpressionConverter.ConvertO(datamessage);
+                    data["message"] = ExpressionConverter.ConvertO(__workflow_datamessage);
                     datapropCount++;
                 }
 
-                if (dataname != null)
+                if (__workflow_dataname != null)
                 {
-                    data["name"] = ExpressionConverter.ConvertO(dataname);
+                    data["name"] = ExpressionConverter.ConvertO(__workflow_dataname);
                     datapropCount++;
                 }
 
-                if (dataprefillTags != null)
+                if (__workflow_dataprefillTags != null)
                 {
-                    data["prefill_tags"] = ExpressionConverter.ConvertO(dataprefillTags);
+                    data["prefill_tags"] = ExpressionConverter.ConvertO(__workflow_dataprefillTags);
                     datapropCount++;
                 }
 
-                if (dataprepareUrl != null)
+                if (__workflow_dataprepareUrl != null)
                 {
-                    data["prepare_url"] = ExpressionConverter.ConvertO(dataprepareUrl);
+                    data["prepare_url"] = ExpressionConverter.ConvertO(__workflow_dataprepareUrl);
                     datapropCount++;
                 }
 
-                if (dataredirectUrl != null)
+                if (__workflow_dataredirectUrl != null)
                 {
-                    data["redirect_url"] = ExpressionConverter.ConvertO(dataredirectUrl);
+                    data["redirect_url"] = ExpressionConverter.ConvertO(__workflow_dataredirectUrl);
                     datapropCount++;
                 }
 
-                if (dataredirectUrlDeclined != null)
+                if (__workflow_dataredirectUrlDeclined != null)
                 {
-                    data["redirect_url_declined"] = ExpressionConverter.ConvertO(dataredirectUrlDeclined);
+                    data["redirect_url_declined"] = ExpressionConverter.ConvertO(__workflow_dataredirectUrlDeclined);
                     datapropCount++;
                 }
 
-                if (datarequiredAttachments != null)
+                if (__workflow_datarequiredAttachments != null)
                 {
-                    data["required_attachments"] = ExpressionConverter.ConvertO(datarequiredAttachments);
+                    data["required_attachments"] = ExpressionConverter.ConvertO(__workflow_datarequiredAttachments);
                     datapropCount++;
                 }
 
-                if (datasendReminders != null)
+                if (__workflow_datasendReminders != null)
                 {
-                    data["send_reminders"] = ExpressionConverter.ConvertO(datasendReminders);
+                    data["send_reminders"] = ExpressionConverter.ConvertO(__workflow_datasendReminders);
                     datapropCount++;
                 }
 
                 datapropCount++;
-                data["signers"] = ExpressionConverter.ConvertO(datasigners);
-                if (datasubdomain != null)
+                data["signers"] = ExpressionConverter.ConvertO(__workflow_datasigners);
+                if (__workflow_datasubdomain != null)
                 {
-                    data["subdomain"] = ExpressionConverter.ConvertO(datasubdomain);
+                    data["subdomain"] = ExpressionConverter.ConvertO(__workflow_datasubdomain);
                     datapropCount++;
                 }
 
-                if (datasubject != null)
+                if (__workflow_datasubject != null)
                 {
-                    data["subject"] = ExpressionConverter.ConvertO(datasubject);
+                    data["subject"] = ExpressionConverter.ConvertO(__workflow_datasubject);
                     datapropCount++;
                 }
 
-                if (datatemplate != null)
+                if (__workflow_datatemplate != null)
                 {
-                    data["template"] = ExpressionConverter.ConvertO(datatemplate);
+                    data["template"] = ExpressionConverter.ConvertO(__workflow_datatemplate);
                     datapropCount++;
                 }
 
-                if (datatextMessageVerificationLocked != null)
+                if (__workflow_datatextMessageVerificationLocked != null)
                 {
-                    data["text_message_verification_locked"] = ExpressionConverter.ConvertO(datatextMessageVerificationLocked);
+                    data["text_message_verification_locked"] = ExpressionConverter.ConvertO(__workflow_datatextMessageVerificationLocked);
                     datapropCount++;
                 }
 
-                if (dataurl != null)
+                if (__workflow_dataurl != null)
                 {
-                    data["url"] = ExpressionConverter.ConvertO(dataurl);
+                    data["url"] = ExpressionConverter.ConvertO(__workflow_dataurl);
                     datapropCount++;
                 }
 
-                if (datauuid != null)
+                if (__workflow_datauuid != null)
                 {
-                    data["uuid"] = ExpressionConverter.ConvertO(datauuid);
+                    data["uuid"] = ExpressionConverter.ConvertO(__workflow_datauuid);
                     datapropCount++;
                 }
 
-                if (datawho != null)
+                if (__workflow_datawho != null)
                 {
-                    if (datawho != null)
+                    if (__workflow_datawho != null)
                     {
-                        data["who"] = ExpressionConverter.ConvertO(datawho);
+                        data["who"] = ExpressionConverter.ConvertO(__workflow_datawho);
                         datapropCount++;
                     }
 
@@ -298,25 +326,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
 
     public class SignrequestTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildWebhooksCreate))]
-        public IBodyWorkflowTrigger<WebhookSubscription> WebhooksCreate([WorkflowExpression] Func<dataeventTypeInput> dataeventType,[WorkflowExpression] Func<string> datacreated = null,[WorkflowExpression] Func<string> dataname = null,[WorkflowExpression] Func<string> datasubdomain = null,[WorkflowExpression] Func<string> datateamname = null,[WorkflowExpression] Func<string> datateamsubdomain = null,[WorkflowExpression] Func<string> datateamurl = null,[WorkflowExpression] Func<string> dataurl = null,[WorkflowExpression] Func<string> datauuid = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookSubscription> WebhooksCreate(Expression<Func<dataeventTypeInput>> dataeventType, Expression<Func<string>> datacreated = null, Expression<Func<string>> dataname = null, Expression<Func<string>> datasubdomain = null, Expression<Func<string>> datateamname = null, Expression<Func<string>> datateamsubdomain = null, Expression<Func<string>> datateamurl = null, Expression<Func<string>> dataurl = null, Expression<Func<string>> datauuid = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<WebhookSubscription> __BuildWebhooksCreate(WorkflowExpression<dataeventTypeInput> dataeventType,WorkflowExpression<string> datacreated = null,WorkflowExpression<string> dataname = null,WorkflowExpression<string> datasubdomain = null,WorkflowExpression<string> datateamname = null,WorkflowExpression<string> datateamsubdomain = null,WorkflowExpression<string> datateamurl = null,WorkflowExpression<string> dataurl = null,WorkflowExpression<string> datauuid = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(dataeventType, nameof(dataeventType), required: true);
-            WorkflowExpression.Validate(datacreated, nameof(datacreated), required: false);
-            WorkflowExpression.Validate(dataname, nameof(dataname), required: false);
-            WorkflowExpression.Validate(datasubdomain, nameof(datasubdomain), required: false);
-            WorkflowExpression.Validate(datateamname, nameof(datateamname), required: false);
-            WorkflowExpression.Validate(datateamsubdomain, nameof(datateamsubdomain), required: false);
-            WorkflowExpression.Validate(datateamurl, nameof(datateamurl), required: false);
-            WorkflowExpression.Validate(dataurl, nameof(dataurl), required: false);
-            WorkflowExpression.Validate(datauuid, nameof(datauuid), required: false);
+            var __workflow_dataeventType = dataeventType == null ? null : WorkflowExpression.Compile(dataeventType);
+            WorkflowExpression.Validate(__workflow_dataeventType, nameof(dataeventType), required: true);
+            var __workflow_datacreated = datacreated == null ? null : WorkflowExpression.Compile(datacreated);
+            WorkflowExpression.Validate(__workflow_datacreated, nameof(datacreated), required: false);
+            var __workflow_dataname = dataname == null ? null : WorkflowExpression.Compile(dataname);
+            WorkflowExpression.Validate(__workflow_dataname, nameof(dataname), required: false);
+            var __workflow_datasubdomain = datasubdomain == null ? null : WorkflowExpression.Compile(datasubdomain);
+            WorkflowExpression.Validate(__workflow_datasubdomain, nameof(datasubdomain), required: false);
+            var __workflow_datateamname = datateamname == null ? null : WorkflowExpression.Compile(datateamname);
+            WorkflowExpression.Validate(__workflow_datateamname, nameof(datateamname), required: false);
+            var __workflow_datateamsubdomain = datateamsubdomain == null ? null : WorkflowExpression.Compile(datateamsubdomain);
+            WorkflowExpression.Validate(__workflow_datateamsubdomain, nameof(datateamsubdomain), required: false);
+            var __workflow_datateamurl = datateamurl == null ? null : WorkflowExpression.Compile(datateamurl);
+            WorkflowExpression.Validate(__workflow_datateamurl, nameof(datateamurl), required: false);
+            var __workflow_dataurl = dataurl == null ? null : WorkflowExpression.Compile(dataurl);
+            WorkflowExpression.Validate(__workflow_dataurl, nameof(dataurl), required: false);
+            var __workflow_datauuid = datauuid == null ? null : WorkflowExpression.Compile(datauuid);
+            WorkflowExpression.Validate(__workflow_datauuid, nameof(datauuid), required: false);
             return new DeferredBodyTrigger<WebhookSubscription>(() =>
             {
                 var apiCallPath = "/webhooks/";
@@ -326,43 +355,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
                 var datapropCount = 0;
                 data["callback_url"] = "#{listCallbackUrl()}";
                 datapropCount++;
-                if (datacreated != null)
+                if (__workflow_datacreated != null)
                 {
-                    data["created"] = ExpressionConverter.ConvertO(datacreated);
+                    data["created"] = ExpressionConverter.ConvertO(__workflow_datacreated);
                     datapropCount++;
                 }
 
                 datapropCount++;
-                data["event_type"] = ExpressionConverter.ConvertO(dataeventType);
-                if (dataname != null)
+                data["event_type"] = ExpressionConverter.ConvertO(__workflow_dataeventType);
+                if (__workflow_dataname != null)
                 {
-                    data["name"] = ExpressionConverter.ConvertO(dataname);
+                    data["name"] = ExpressionConverter.ConvertO(__workflow_dataname);
                     datapropCount++;
                 }
 
-                if (datasubdomain != null)
+                if (__workflow_datasubdomain != null)
                 {
-                    data["subdomain"] = ExpressionConverter.ConvertO(datasubdomain);
+                    data["subdomain"] = ExpressionConverter.ConvertO(__workflow_datasubdomain);
                     datapropCount++;
                 }
 
                 var teamObject = new JObject();
                 var teamObjectpropCount = 0;
-                if (datateamname != null)
+                if (__workflow_datateamname != null)
                 {
-                    teamObject["name"] = ExpressionConverter.ConvertO(datateamname);
+                    teamObject["name"] = ExpressionConverter.ConvertO(__workflow_datateamname);
                     teamObjectpropCount++;
                 }
 
-                if (datateamsubdomain != null)
+                if (__workflow_datateamsubdomain != null)
                 {
-                    teamObject["subdomain"] = ExpressionConverter.ConvertO(datateamsubdomain);
+                    teamObject["subdomain"] = ExpressionConverter.ConvertO(__workflow_datateamsubdomain);
                     teamObjectpropCount++;
                 }
 
-                if (datateamurl != null)
+                if (__workflow_datateamurl != null)
                 {
-                    teamObject["url"] = ExpressionConverter.ConvertO(datateamurl);
+                    teamObject["url"] = ExpressionConverter.ConvertO(__workflow_datateamurl);
                     teamObjectpropCount++;
                 }
 
@@ -372,15 +401,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
                     datapropCount++;
                 }
 
-                if (dataurl != null)
+                if (__workflow_dataurl != null)
                 {
-                    data["url"] = ExpressionConverter.ConvertO(dataurl);
+                    data["url"] = ExpressionConverter.ConvertO(__workflow_dataurl);
                     datapropCount++;
                 }
 
-                if (datauuid != null)
+                if (__workflow_datauuid != null)
                 {
-                    data["uuid"] = ExpressionConverter.ConvertO(datauuid);
+                    data["uuid"] = ExpressionConverter.ConvertO(__workflow_datauuid);
                     datapropCount++;
                 }
 

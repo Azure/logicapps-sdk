@@ -1,12 +1,12 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gravityformsbyreenhanced
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class GravityformsbyreenhancedActions([ConnectionName] string connectionId)
     {
@@ -14,17 +14,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gravityformsbyreenhanced
 
     public class GravityformsbyreenhancedTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildCreateWebhook))]
-        public IWorkflowTrigger CreateWebhook([WorkflowExpression] Func<string> webhookform,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CreateWebhook(Expression<Func<string>> webhookform, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildCreateWebhook(WorkflowExpression<string> webhookform,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(webhookform, nameof(webhookform), required: true);
+            var __workflow_webhookform = webhookform == null ? null : WorkflowExpression.Compile(webhookform);
+            WorkflowExpression.Validate(__workflow_webhookform, nameof(webhookform), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/webhooks";
@@ -35,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gravityformsbyreenhanced
                 webhook["callback_url"] = "#{listCallbackUrl()}";
                 webhookpropCount++;
                 webhookpropCount++;
-                webhook["form_id"] = ExpressionConverter.ConvertO(webhookform);
+                webhook["form_id"] = ExpressionConverter.ConvertO(__workflow_webhookform);
                 if (webhookpropCount > 0)
                 {
                     callPayload.Body = webhook;

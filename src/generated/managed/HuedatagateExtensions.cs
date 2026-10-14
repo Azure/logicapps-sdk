@@ -1,39 +1,35 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huedatagate
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class HuedatagateActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huedatagate")]
-        [WorkflowExpressionFactory(nameof(__BuildOdata))]
-        public IWorkflowAction Odata([WorkflowExpression] Func<string> query, [WorkflowExpression] Func<string> hostUrl, [WorkflowExpression] Func<string> roleId, [WorkflowExpression] Func<string> roleSecret)
+        public IWorkflowAction Odata(Expression<Func<string>> query, Expression<Func<string>> hostUrl, Expression<Func<string>> roleId, Expression<Func<string>> roleSecret)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildOdata(WorkflowExpression<string> query, WorkflowExpression<string> hostUrl, WorkflowExpression<string> roleId, WorkflowExpression<string> roleSecret)
-        {
-            WorkflowExpression.Validate(query, nameof(query), required: true);
-            WorkflowExpression.Validate(hostUrl, nameof(hostUrl), required: true);
-            WorkflowExpression.Validate(roleId, nameof(roleId), required: true);
-            WorkflowExpression.Validate(roleSecret, nameof(roleSecret), required: true);
+            var __workflow_query = query == null ? null : WorkflowExpression.Compile(query);
+            WorkflowExpression.Validate(__workflow_query, nameof(query), required: true);
+            var __workflow_hostUrl = hostUrl == null ? null : WorkflowExpression.Compile(hostUrl);
+            WorkflowExpression.Validate(__workflow_hostUrl, nameof(hostUrl), required: true);
+            var __workflow_roleId = roleId == null ? null : WorkflowExpression.Compile(roleId);
+            WorkflowExpression.Validate(__workflow_roleId, nameof(roleId), required: true);
+            var __workflow_roleSecret = roleSecret == null ? null : WorkflowExpression.Compile(roleSecret);
+            WorkflowExpression.Validate(__workflow_roleSecret, nameof(roleSecret), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/v2/odata";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["query"] = ExpressionConverter.Convert(query);
-                callPayload.Queries["host_url"] = ExpressionConverter.Convert(hostUrl);
-                callPayload.Headers["role-id"] = ExpressionConverter.Convert(roleId);
-                callPayload.Headers["role-secret"] = ExpressionConverter.Convert(roleSecret);
+                callPayload.Queries["query"] = ExpressionConverter.Convert(__workflow_query);
+                callPayload.Queries["host_url"] = ExpressionConverter.Convert(__workflow_hostUrl);
+                callPayload.Headers["role-id"] = ExpressionConverter.Convert(__workflow_roleId);
+                callPayload.Headers["role-secret"] = ExpressionConverter.Convert(__workflow_roleSecret);
                 return new ApiConnectionAction(callPayload);
             });
         }

@@ -1,635 +1,535 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class MocksterActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        [WorkflowExpressionFactory(nameof(__BuildGetAirlines))]
-        public IBodyWorkflowAction<GetAirlinesResponseItem[]> GetAirlines([WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
+        public IBodyWorkflowAction<GetAirlinesResponseItem[]> GetAirlines(Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetAirlinesResponseItem[]> __BuildGetAirlines(WorkflowExpression<int> count = null, WorkflowExpression<int> seed = null)
-        {
-            WorkflowExpression.Validate(count, nameof(count), required: false);
-            WorkflowExpression.Validate(seed, nameof(seed), required: false);
+            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
+            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
+            var __workflow_seed = seed == null ? null : WorkflowExpression.Compile(seed);
+            WorkflowExpression.Validate(__workflow_seed, nameof(seed), required: false);
             return new DeferredBodyAction<GetAirlinesResponseItem[]>(() =>
             {
                 var apiCallPath = "/airlines";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (count != null)
-                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-                if (seed != null)
-                    callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
                 return new ApiConnectionAction<GetAirlinesResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        [WorkflowExpressionFactory(nameof(__BuildGetAnimals))]
-        public IBodyWorkflowAction<GetAnimalsResponseItem[]> GetAnimals([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
+        public IBodyWorkflowAction<GetAnimalsResponseItem[]> GetAnimals(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetAnimalsResponseItem[]> __BuildGetAnimals(WorkflowExpression<availableLocalesInput> availableLocales = null, WorkflowExpression<int> count = null, WorkflowExpression<int> seed = null)
-        {
-            WorkflowExpression.Validate(availableLocales, nameof(availableLocales), required: false);
-            WorkflowExpression.Validate(count, nameof(count), required: false);
-            WorkflowExpression.Validate(seed, nameof(seed), required: false);
+            var __workflow_availableLocales = availableLocales == null ? null : WorkflowExpression.Compile(availableLocales);
+            WorkflowExpression.Validate(__workflow_availableLocales, nameof(availableLocales), required: false);
+            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
+            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
+            var __workflow_seed = seed == null ? null : WorkflowExpression.Compile(seed);
+            WorkflowExpression.Validate(__workflow_seed, nameof(seed), required: false);
             return new DeferredBodyAction<GetAnimalsResponseItem[]>(() =>
             {
                 var apiCallPath = "/animals";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (availableLocales != null)
-                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
-                if (count != null)
-                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-                if (seed != null)
-                    callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                if (__workflow_availableLocales != null)
+                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(__workflow_availableLocales);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
                 return new ApiConnectionAction<GetAnimalsResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        [WorkflowExpressionFactory(nameof(__BuildGetColors))]
-        public IBodyWorkflowAction<GetColorsResponseItem[]> GetColors([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
+        public IBodyWorkflowAction<GetColorsResponseItem[]> GetColors(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetColorsResponseItem[]> __BuildGetColors(WorkflowExpression<availableLocalesInput> availableLocales = null, WorkflowExpression<int> count = null, WorkflowExpression<int> seed = null)
-        {
-            WorkflowExpression.Validate(availableLocales, nameof(availableLocales), required: false);
-            WorkflowExpression.Validate(count, nameof(count), required: false);
-            WorkflowExpression.Validate(seed, nameof(seed), required: false);
+            var __workflow_availableLocales = availableLocales == null ? null : WorkflowExpression.Compile(availableLocales);
+            WorkflowExpression.Validate(__workflow_availableLocales, nameof(availableLocales), required: false);
+            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
+            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
+            var __workflow_seed = seed == null ? null : WorkflowExpression.Compile(seed);
+            WorkflowExpression.Validate(__workflow_seed, nameof(seed), required: false);
             return new DeferredBodyAction<GetColorsResponseItem[]>(() =>
             {
                 var apiCallPath = "/colors";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (availableLocales != null)
-                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
-                if (count != null)
-                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-                if (seed != null)
-                    callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                if (__workflow_availableLocales != null)
+                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(__workflow_availableLocales);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
                 return new ApiConnectionAction<GetColorsResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        [WorkflowExpressionFactory(nameof(__BuildGetCompanies))]
-        public IBodyWorkflowAction<GetCompaniesResponseItem[]> GetCompanies([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
+        public IBodyWorkflowAction<GetCompaniesResponseItem[]> GetCompanies(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetCompaniesResponseItem[]> __BuildGetCompanies(WorkflowExpression<availableLocalesInput> availableLocales = null, WorkflowExpression<int> count = null, WorkflowExpression<int> seed = null)
-        {
-            WorkflowExpression.Validate(availableLocales, nameof(availableLocales), required: false);
-            WorkflowExpression.Validate(count, nameof(count), required: false);
-            WorkflowExpression.Validate(seed, nameof(seed), required: false);
+            var __workflow_availableLocales = availableLocales == null ? null : WorkflowExpression.Compile(availableLocales);
+            WorkflowExpression.Validate(__workflow_availableLocales, nameof(availableLocales), required: false);
+            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
+            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
+            var __workflow_seed = seed == null ? null : WorkflowExpression.Compile(seed);
+            WorkflowExpression.Validate(__workflow_seed, nameof(seed), required: false);
             return new DeferredBodyAction<GetCompaniesResponseItem[]>(() =>
             {
                 var apiCallPath = "/companies";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (availableLocales != null)
-                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
-                if (count != null)
-                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-                if (seed != null)
-                    callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                if (__workflow_availableLocales != null)
+                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(__workflow_availableLocales);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
                 return new ApiConnectionAction<GetCompaniesResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        [WorkflowExpressionFactory(nameof(__BuildGetDatabases))]
-        public IBodyWorkflowAction<GetDatabasesResponseItem[]> GetDatabases([WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
+        public IBodyWorkflowAction<GetDatabasesResponseItem[]> GetDatabases(Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetDatabasesResponseItem[]> __BuildGetDatabases(WorkflowExpression<int> count = null, WorkflowExpression<int> seed = null)
-        {
-            WorkflowExpression.Validate(count, nameof(count), required: false);
-            WorkflowExpression.Validate(seed, nameof(seed), required: false);
+            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
+            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
+            var __workflow_seed = seed == null ? null : WorkflowExpression.Compile(seed);
+            WorkflowExpression.Validate(__workflow_seed, nameof(seed), required: false);
             return new DeferredBodyAction<GetDatabasesResponseItem[]>(() =>
             {
                 var apiCallPath = "/databases";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (count != null)
-                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-                if (seed != null)
-                    callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
                 return new ApiConnectionAction<GetDatabasesResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        [WorkflowExpressionFactory(nameof(__BuildGetDates))]
-        public IBodyWorkflowAction<GetDatesResponseItem[]> GetDates([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
+        public IBodyWorkflowAction<GetDatesResponseItem[]> GetDates(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetDatesResponseItem[]> __BuildGetDates(WorkflowExpression<availableLocalesInput> availableLocales = null, WorkflowExpression<int> count = null, WorkflowExpression<int> seed = null)
-        {
-            WorkflowExpression.Validate(availableLocales, nameof(availableLocales), required: false);
-            WorkflowExpression.Validate(count, nameof(count), required: false);
-            WorkflowExpression.Validate(seed, nameof(seed), required: false);
+            var __workflow_availableLocales = availableLocales == null ? null : WorkflowExpression.Compile(availableLocales);
+            WorkflowExpression.Validate(__workflow_availableLocales, nameof(availableLocales), required: false);
+            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
+            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
+            var __workflow_seed = seed == null ? null : WorkflowExpression.Compile(seed);
+            WorkflowExpression.Validate(__workflow_seed, nameof(seed), required: false);
             return new DeferredBodyAction<GetDatesResponseItem[]>(() =>
             {
                 var apiCallPath = "/dates";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (availableLocales != null)
-                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
-                if (count != null)
-                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-                if (seed != null)
-                    callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                if (__workflow_availableLocales != null)
+                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(__workflow_availableLocales);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
                 return new ApiConnectionAction<GetDatesResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        [WorkflowExpressionFactory(nameof(__BuildGetFinances))]
-        public IBodyWorkflowAction<GetFinancesResponseItem[]> GetFinances([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
+        public IBodyWorkflowAction<GetFinancesResponseItem[]> GetFinances(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetFinancesResponseItem[]> __BuildGetFinances(WorkflowExpression<availableLocalesInput> availableLocales = null, WorkflowExpression<int> count = null, WorkflowExpression<int> seed = null)
-        {
-            WorkflowExpression.Validate(availableLocales, nameof(availableLocales), required: false);
-            WorkflowExpression.Validate(count, nameof(count), required: false);
-            WorkflowExpression.Validate(seed, nameof(seed), required: false);
+            var __workflow_availableLocales = availableLocales == null ? null : WorkflowExpression.Compile(availableLocales);
+            WorkflowExpression.Validate(__workflow_availableLocales, nameof(availableLocales), required: false);
+            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
+            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
+            var __workflow_seed = seed == null ? null : WorkflowExpression.Compile(seed);
+            WorkflowExpression.Validate(__workflow_seed, nameof(seed), required: false);
             return new DeferredBodyAction<GetFinancesResponseItem[]>(() =>
             {
                 var apiCallPath = "/finances";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (availableLocales != null)
-                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
-                if (count != null)
-                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-                if (seed != null)
-                    callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                if (__workflow_availableLocales != null)
+                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(__workflow_availableLocales);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
                 return new ApiConnectionAction<GetFinancesResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        [WorkflowExpressionFactory(nameof(__BuildGetGits))]
-        public IBodyWorkflowAction<GetGitsResponseItem[]> GetGits([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
+        public IBodyWorkflowAction<GetGitsResponseItem[]> GetGits(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetGitsResponseItem[]> __BuildGetGits(WorkflowExpression<availableLocalesInput> availableLocales = null, WorkflowExpression<int> count = null, WorkflowExpression<int> seed = null)
-        {
-            WorkflowExpression.Validate(availableLocales, nameof(availableLocales), required: false);
-            WorkflowExpression.Validate(count, nameof(count), required: false);
-            WorkflowExpression.Validate(seed, nameof(seed), required: false);
+            var __workflow_availableLocales = availableLocales == null ? null : WorkflowExpression.Compile(availableLocales);
+            WorkflowExpression.Validate(__workflow_availableLocales, nameof(availableLocales), required: false);
+            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
+            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
+            var __workflow_seed = seed == null ? null : WorkflowExpression.Compile(seed);
+            WorkflowExpression.Validate(__workflow_seed, nameof(seed), required: false);
             return new DeferredBodyAction<GetGitsResponseItem[]>(() =>
             {
                 var apiCallPath = "/gits";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (availableLocales != null)
-                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
-                if (count != null)
-                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-                if (seed != null)
-                    callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                if (__workflow_availableLocales != null)
+                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(__workflow_availableLocales);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
                 return new ApiConnectionAction<GetGitsResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        [WorkflowExpressionFactory(nameof(__BuildGetHackers))]
-        public IBodyWorkflowAction<GetHackersResponseItem[]> GetHackers([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
+        public IBodyWorkflowAction<GetHackersResponseItem[]> GetHackers(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetHackersResponseItem[]> __BuildGetHackers(WorkflowExpression<availableLocalesInput> availableLocales = null, WorkflowExpression<int> count = null, WorkflowExpression<int> seed = null)
-        {
-            WorkflowExpression.Validate(availableLocales, nameof(availableLocales), required: false);
-            WorkflowExpression.Validate(count, nameof(count), required: false);
-            WorkflowExpression.Validate(seed, nameof(seed), required: false);
+            var __workflow_availableLocales = availableLocales == null ? null : WorkflowExpression.Compile(availableLocales);
+            WorkflowExpression.Validate(__workflow_availableLocales, nameof(availableLocales), required: false);
+            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
+            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
+            var __workflow_seed = seed == null ? null : WorkflowExpression.Compile(seed);
+            WorkflowExpression.Validate(__workflow_seed, nameof(seed), required: false);
             return new DeferredBodyAction<GetHackersResponseItem[]>(() =>
             {
                 var apiCallPath = "/hackers";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (availableLocales != null)
-                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
-                if (count != null)
-                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-                if (seed != null)
-                    callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                if (__workflow_availableLocales != null)
+                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(__workflow_availableLocales);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
                 return new ApiConnectionAction<GetHackersResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        [WorkflowExpressionFactory(nameof(__BuildGetRandomImages))]
-        public IBodyWorkflowAction<GetRandomImagesResponseItem[]> GetRandomImages([WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> width = null, [WorkflowExpression] Func<int> height = null, [WorkflowExpression] Func<categoryInput> category = null)
+        public IBodyWorkflowAction<GetRandomImagesResponseItem[]> GetRandomImages(Expression<Func<int>> count = null, Expression<Func<int>> width = null, Expression<Func<int>> height = null, Expression<Func<categoryInput>> category = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetRandomImagesResponseItem[]> __BuildGetRandomImages(WorkflowExpression<int> count = null, WorkflowExpression<int> width = null, WorkflowExpression<int> height = null, WorkflowExpression<categoryInput> category = null)
-        {
-            WorkflowExpression.Validate(count, nameof(count), required: false);
-            WorkflowExpression.Validate(width, nameof(width), required: false);
-            WorkflowExpression.Validate(height, nameof(height), required: false);
-            WorkflowExpression.Validate(category, nameof(category), required: false);
+            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
+            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
+            var __workflow_width = width == null ? null : WorkflowExpression.Compile(width);
+            WorkflowExpression.Validate(__workflow_width, nameof(width), required: false);
+            var __workflow_height = height == null ? null : WorkflowExpression.Compile(height);
+            WorkflowExpression.Validate(__workflow_height, nameof(height), required: false);
+            var __workflow_category = category == null ? null : WorkflowExpression.Compile(category);
+            WorkflowExpression.Validate(__workflow_category, nameof(category), required: false);
             return new DeferredBodyAction<GetRandomImagesResponseItem[]>(() =>
             {
                 var apiCallPath = "/images";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (count != null)
-                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-                if (width != null)
-                    callPayload.Queries["width"] = ExpressionConverter.Convert(width);
-                if (height != null)
-                    callPayload.Queries["height"] = ExpressionConverter.Convert(height);
-                if (category != null)
-                    callPayload.Queries["category"] = ExpressionConverter.Convert(category);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_width != null)
+                    callPayload.Queries["width"] = ExpressionConverter.Convert(__workflow_width);
+                if (__workflow_height != null)
+                    callPayload.Queries["height"] = ExpressionConverter.Convert(__workflow_height);
+                if (__workflow_category != null)
+                    callPayload.Queries["category"] = ExpressionConverter.Convert(__workflow_category);
                 return new ApiConnectionAction<GetRandomImagesResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        [WorkflowExpressionFactory(nameof(__BuildGetInternet))]
-        public IBodyWorkflowAction<GetInternetResponseItem[]> GetInternet([WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
+        public IBodyWorkflowAction<GetInternetResponseItem[]> GetInternet(Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetInternetResponseItem[]> __BuildGetInternet(WorkflowExpression<int> count = null, WorkflowExpression<int> seed = null)
-        {
-            WorkflowExpression.Validate(count, nameof(count), required: false);
-            WorkflowExpression.Validate(seed, nameof(seed), required: false);
+            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
+            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
+            var __workflow_seed = seed == null ? null : WorkflowExpression.Compile(seed);
+            WorkflowExpression.Validate(__workflow_seed, nameof(seed), required: false);
             return new DeferredBodyAction<GetInternetResponseItem[]>(() =>
             {
                 var apiCallPath = "/internets";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (count != null)
-                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-                if (seed != null)
-                    callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
                 return new ApiConnectionAction<GetInternetResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        [WorkflowExpressionFactory(nameof(__BuildGetLocations))]
-        public IBodyWorkflowAction<GetLocationsResponseItem[]> GetLocations([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
+        public IBodyWorkflowAction<GetLocationsResponseItem[]> GetLocations(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetLocationsResponseItem[]> __BuildGetLocations(WorkflowExpression<availableLocalesInput> availableLocales = null, WorkflowExpression<int> count = null, WorkflowExpression<int> seed = null)
-        {
-            WorkflowExpression.Validate(availableLocales, nameof(availableLocales), required: false);
-            WorkflowExpression.Validate(count, nameof(count), required: false);
-            WorkflowExpression.Validate(seed, nameof(seed), required: false);
+            var __workflow_availableLocales = availableLocales == null ? null : WorkflowExpression.Compile(availableLocales);
+            WorkflowExpression.Validate(__workflow_availableLocales, nameof(availableLocales), required: false);
+            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
+            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
+            var __workflow_seed = seed == null ? null : WorkflowExpression.Compile(seed);
+            WorkflowExpression.Validate(__workflow_seed, nameof(seed), required: false);
             return new DeferredBodyAction<GetLocationsResponseItem[]>(() =>
             {
                 var apiCallPath = "/locations";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (availableLocales != null)
-                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
-                if (count != null)
-                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-                if (seed != null)
-                    callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                if (__workflow_availableLocales != null)
+                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(__workflow_availableLocales);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
                 return new ApiConnectionAction<GetLocationsResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        [WorkflowExpressionFactory(nameof(__BuildGetLorems))]
-        public IBodyWorkflowAction<GetLoremsResponseItem[]> GetLorems([WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
+        public IBodyWorkflowAction<GetLoremsResponseItem[]> GetLorems(Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetLoremsResponseItem[]> __BuildGetLorems(WorkflowExpression<int> count = null, WorkflowExpression<int> seed = null)
-        {
-            WorkflowExpression.Validate(count, nameof(count), required: false);
-            WorkflowExpression.Validate(seed, nameof(seed), required: false);
+            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
+            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
+            var __workflow_seed = seed == null ? null : WorkflowExpression.Compile(seed);
+            WorkflowExpression.Validate(__workflow_seed, nameof(seed), required: false);
             return new DeferredBodyAction<GetLoremsResponseItem[]>(() =>
             {
                 var apiCallPath = "/lorems";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (count != null)
-                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-                if (seed != null)
-                    callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
                 return new ApiConnectionAction<GetLoremsResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        [WorkflowExpressionFactory(nameof(__BuildGetMusics))]
-        public IBodyWorkflowAction<GetMusicsResponseItem[]> GetMusics([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
+        public IBodyWorkflowAction<GetMusicsResponseItem[]> GetMusics(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetMusicsResponseItem[]> __BuildGetMusics(WorkflowExpression<availableLocalesInput> availableLocales = null, WorkflowExpression<int> count = null, WorkflowExpression<int> seed = null)
-        {
-            WorkflowExpression.Validate(availableLocales, nameof(availableLocales), required: false);
-            WorkflowExpression.Validate(count, nameof(count), required: false);
-            WorkflowExpression.Validate(seed, nameof(seed), required: false);
+            var __workflow_availableLocales = availableLocales == null ? null : WorkflowExpression.Compile(availableLocales);
+            WorkflowExpression.Validate(__workflow_availableLocales, nameof(availableLocales), required: false);
+            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
+            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
+            var __workflow_seed = seed == null ? null : WorkflowExpression.Compile(seed);
+            WorkflowExpression.Validate(__workflow_seed, nameof(seed), required: false);
             return new DeferredBodyAction<GetMusicsResponseItem[]>(() =>
             {
                 var apiCallPath = "/musics";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (availableLocales != null)
-                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
-                if (count != null)
-                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-                if (seed != null)
-                    callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                if (__workflow_availableLocales != null)
+                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(__workflow_availableLocales);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
                 return new ApiConnectionAction<GetMusicsResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        [WorkflowExpressionFactory(nameof(__BuildGetNumbers))]
-        public IBodyWorkflowAction<GetNumbersResponseItem[]> GetNumbers([WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
+        public IBodyWorkflowAction<GetNumbersResponseItem[]> GetNumbers(Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetNumbersResponseItem[]> __BuildGetNumbers(WorkflowExpression<int> count = null, WorkflowExpression<int> seed = null)
-        {
-            WorkflowExpression.Validate(count, nameof(count), required: false);
-            WorkflowExpression.Validate(seed, nameof(seed), required: false);
+            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
+            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
+            var __workflow_seed = seed == null ? null : WorkflowExpression.Compile(seed);
+            WorkflowExpression.Validate(__workflow_seed, nameof(seed), required: false);
             return new DeferredBodyAction<GetNumbersResponseItem[]>(() =>
             {
                 var apiCallPath = "/numbers";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (count != null)
-                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-                if (seed != null)
-                    callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
                 return new ApiConnectionAction<GetNumbersResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        [WorkflowExpressionFactory(nameof(__BuildGetPeople))]
-        public IBodyWorkflowAction<GetPeopleResponseItem[]> GetPeople([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
+        public IBodyWorkflowAction<GetPeopleResponseItem[]> GetPeople(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetPeopleResponseItem[]> __BuildGetPeople(WorkflowExpression<availableLocalesInput> availableLocales = null, WorkflowExpression<int> count = null, WorkflowExpression<int> seed = null)
-        {
-            WorkflowExpression.Validate(availableLocales, nameof(availableLocales), required: false);
-            WorkflowExpression.Validate(count, nameof(count), required: false);
-            WorkflowExpression.Validate(seed, nameof(seed), required: false);
+            var __workflow_availableLocales = availableLocales == null ? null : WorkflowExpression.Compile(availableLocales);
+            WorkflowExpression.Validate(__workflow_availableLocales, nameof(availableLocales), required: false);
+            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
+            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
+            var __workflow_seed = seed == null ? null : WorkflowExpression.Compile(seed);
+            WorkflowExpression.Validate(__workflow_seed, nameof(seed), required: false);
             return new DeferredBodyAction<GetPeopleResponseItem[]>(() =>
             {
                 var apiCallPath = "/persons";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (availableLocales != null)
-                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
-                if (count != null)
-                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-                if (seed != null)
-                    callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                if (__workflow_availableLocales != null)
+                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(__workflow_availableLocales);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
                 return new ApiConnectionAction<GetPeopleResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        [WorkflowExpressionFactory(nameof(__BuildGetPhones))]
-        public IBodyWorkflowAction<GetPhonesResponseItem[]> GetPhones([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
+        public IBodyWorkflowAction<GetPhonesResponseItem[]> GetPhones(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetPhonesResponseItem[]> __BuildGetPhones(WorkflowExpression<availableLocalesInput> availableLocales = null, WorkflowExpression<int> count = null, WorkflowExpression<int> seed = null)
-        {
-            WorkflowExpression.Validate(availableLocales, nameof(availableLocales), required: false);
-            WorkflowExpression.Validate(count, nameof(count), required: false);
-            WorkflowExpression.Validate(seed, nameof(seed), required: false);
+            var __workflow_availableLocales = availableLocales == null ? null : WorkflowExpression.Compile(availableLocales);
+            WorkflowExpression.Validate(__workflow_availableLocales, nameof(availableLocales), required: false);
+            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
+            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
+            var __workflow_seed = seed == null ? null : WorkflowExpression.Compile(seed);
+            WorkflowExpression.Validate(__workflow_seed, nameof(seed), required: false);
             return new DeferredBodyAction<GetPhonesResponseItem[]>(() =>
             {
                 var apiCallPath = "/phones";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (availableLocales != null)
-                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
-                if (count != null)
-                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-                if (seed != null)
-                    callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                if (__workflow_availableLocales != null)
+                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(__workflow_availableLocales);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
                 return new ApiConnectionAction<GetPhonesResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        [WorkflowExpressionFactory(nameof(__BuildGetProducts))]
-        public IBodyWorkflowAction<GetProductsResponseItem[]> GetProducts([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
+        public IBodyWorkflowAction<GetProductsResponseItem[]> GetProducts(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetProductsResponseItem[]> __BuildGetProducts(WorkflowExpression<availableLocalesInput> availableLocales = null, WorkflowExpression<int> count = null, WorkflowExpression<int> seed = null)
-        {
-            WorkflowExpression.Validate(availableLocales, nameof(availableLocales), required: false);
-            WorkflowExpression.Validate(count, nameof(count), required: false);
-            WorkflowExpression.Validate(seed, nameof(seed), required: false);
+            var __workflow_availableLocales = availableLocales == null ? null : WorkflowExpression.Compile(availableLocales);
+            WorkflowExpression.Validate(__workflow_availableLocales, nameof(availableLocales), required: false);
+            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
+            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
+            var __workflow_seed = seed == null ? null : WorkflowExpression.Compile(seed);
+            WorkflowExpression.Validate(__workflow_seed, nameof(seed), required: false);
             return new DeferredBodyAction<GetProductsResponseItem[]>(() =>
             {
                 var apiCallPath = "/products";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (availableLocales != null)
-                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
-                if (count != null)
-                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-                if (seed != null)
-                    callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                if (__workflow_availableLocales != null)
+                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(__workflow_availableLocales);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
                 return new ApiConnectionAction<GetProductsResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        [WorkflowExpressionFactory(nameof(__BuildGetSciences))]
-        public IBodyWorkflowAction<GetSciencesResponseItem[]> GetSciences([WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
+        public IBodyWorkflowAction<GetSciencesResponseItem[]> GetSciences(Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetSciencesResponseItem[]> __BuildGetSciences(WorkflowExpression<int> count = null, WorkflowExpression<int> seed = null)
-        {
-            WorkflowExpression.Validate(count, nameof(count), required: false);
-            WorkflowExpression.Validate(seed, nameof(seed), required: false);
+            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
+            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
+            var __workflow_seed = seed == null ? null : WorkflowExpression.Compile(seed);
+            WorkflowExpression.Validate(__workflow_seed, nameof(seed), required: false);
             return new DeferredBodyAction<GetSciencesResponseItem[]>(() =>
             {
                 var apiCallPath = "/sciences";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (count != null)
-                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-                if (seed != null)
-                    callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
                 return new ApiConnectionAction<GetSciencesResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        [WorkflowExpressionFactory(nameof(__BuildGetStrings))]
-        public IBodyWorkflowAction<GetStringsResponseItem[]> GetStrings([WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
+        public IBodyWorkflowAction<GetStringsResponseItem[]> GetStrings(Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetStringsResponseItem[]> __BuildGetStrings(WorkflowExpression<int> count = null, WorkflowExpression<int> seed = null)
-        {
-            WorkflowExpression.Validate(count, nameof(count), required: false);
-            WorkflowExpression.Validate(seed, nameof(seed), required: false);
+            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
+            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
+            var __workflow_seed = seed == null ? null : WorkflowExpression.Compile(seed);
+            WorkflowExpression.Validate(__workflow_seed, nameof(seed), required: false);
             return new DeferredBodyAction<GetStringsResponseItem[]>(() =>
             {
                 var apiCallPath = "/strings";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (count != null)
-                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-                if (seed != null)
-                    callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
                 return new ApiConnectionAction<GetStringsResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        [WorkflowExpressionFactory(nameof(__BuildGetSystems))]
-        public IBodyWorkflowAction<GetSystemsResponseItem[]> GetSystems([WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
+        public IBodyWorkflowAction<GetSystemsResponseItem[]> GetSystems(Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetSystemsResponseItem[]> __BuildGetSystems(WorkflowExpression<int> count = null, WorkflowExpression<int> seed = null)
-        {
-            WorkflowExpression.Validate(count, nameof(count), required: false);
-            WorkflowExpression.Validate(seed, nameof(seed), required: false);
+            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
+            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
+            var __workflow_seed = seed == null ? null : WorkflowExpression.Compile(seed);
+            WorkflowExpression.Validate(__workflow_seed, nameof(seed), required: false);
             return new DeferredBodyAction<GetSystemsResponseItem[]>(() =>
             {
                 var apiCallPath = "/systems";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (count != null)
-                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-                if (seed != null)
-                    callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
                 return new ApiConnectionAction<GetSystemsResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        [WorkflowExpressionFactory(nameof(__BuildGetVehicles))]
-        public IBodyWorkflowAction<GetVehiclesResponseItem[]> GetVehicles([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
+        public IBodyWorkflowAction<GetVehiclesResponseItem[]> GetVehicles(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetVehiclesResponseItem[]> __BuildGetVehicles(WorkflowExpression<availableLocalesInput> availableLocales = null, WorkflowExpression<int> count = null, WorkflowExpression<int> seed = null)
-        {
-            WorkflowExpression.Validate(availableLocales, nameof(availableLocales), required: false);
-            WorkflowExpression.Validate(count, nameof(count), required: false);
-            WorkflowExpression.Validate(seed, nameof(seed), required: false);
+            var __workflow_availableLocales = availableLocales == null ? null : WorkflowExpression.Compile(availableLocales);
+            WorkflowExpression.Validate(__workflow_availableLocales, nameof(availableLocales), required: false);
+            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
+            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
+            var __workflow_seed = seed == null ? null : WorkflowExpression.Compile(seed);
+            WorkflowExpression.Validate(__workflow_seed, nameof(seed), required: false);
             return new DeferredBodyAction<GetVehiclesResponseItem[]>(() =>
             {
                 var apiCallPath = "/vehicles";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (availableLocales != null)
-                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
-                if (count != null)
-                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-                if (seed != null)
-                    callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                if (__workflow_availableLocales != null)
+                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(__workflow_availableLocales);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
                 return new ApiConnectionAction<GetVehiclesResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        [WorkflowExpressionFactory(nameof(__BuildGetWords))]
-        public IBodyWorkflowAction<GetWordsResponseItem[]> GetWords([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
+        public IBodyWorkflowAction<GetWordsResponseItem[]> GetWords(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetWordsResponseItem[]> __BuildGetWords(WorkflowExpression<availableLocalesInput> availableLocales = null, WorkflowExpression<int> count = null, WorkflowExpression<int> seed = null)
-        {
-            WorkflowExpression.Validate(availableLocales, nameof(availableLocales), required: false);
-            WorkflowExpression.Validate(count, nameof(count), required: false);
-            WorkflowExpression.Validate(seed, nameof(seed), required: false);
+            var __workflow_availableLocales = availableLocales == null ? null : WorkflowExpression.Compile(availableLocales);
+            WorkflowExpression.Validate(__workflow_availableLocales, nameof(availableLocales), required: false);
+            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
+            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
+            var __workflow_seed = seed == null ? null : WorkflowExpression.Compile(seed);
+            WorkflowExpression.Validate(__workflow_seed, nameof(seed), required: false);
             return new DeferredBodyAction<GetWordsResponseItem[]>(() =>
             {
                 var apiCallPath = "/words";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (availableLocales != null)
-                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
-                if (count != null)
-                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-                if (seed != null)
-                    callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                if (__workflow_availableLocales != null)
+                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(__workflow_availableLocales);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(__workflow_seed);
                 return new ApiConnectionAction<GetWordsResponseItem[]>(callPayload);
             });
         }

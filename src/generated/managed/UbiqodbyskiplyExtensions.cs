@@ -1,12 +1,12 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ubiqodbyskiply
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class UbiqodbyskiplyActions([ConnectionName] string connectionId)
     {
@@ -14,17 +14,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ubiqodbyskiply
 
     public class UbiqodbyskiplyTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildDataIn))]
-        public IWorkflowTrigger DataIn([WorkflowExpression] Func<int> bodygroupId,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger DataIn(Expression<Func<int>> bodygroupId, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildDataIn(WorkflowExpression<int> bodygroupId,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodygroupId, nameof(bodygroupId), required: true);
+            var __workflow_bodygroupId = bodygroupId == null ? null : WorkflowExpression.Compile(bodygroupId);
+            WorkflowExpression.Validate(__workflow_bodygroupId, nameof(bodygroupId), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/key/subscribe";
@@ -35,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ubiqodbyskiply
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["group_id"] = ExpressionConverter.ConvertO(bodygroupId);
+                body["group_id"] = ExpressionConverter.ConvertO(__workflow_bodygroupId);
                 body["hookUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)

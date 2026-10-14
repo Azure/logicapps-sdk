@@ -1,36 +1,38 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smtp
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class SmtpActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smtp")]
-        [WorkflowExpressionFactory(nameof(__BuildSendEmail))]
-        public IWorkflowAction SendEmail([WorkflowExpression] Func<string> emailMessagefrom = null, [WorkflowExpression] Func<string> emailMessageto = null, [WorkflowExpression] Func<string> emailMessagecC = null, [WorkflowExpression] Func<string> emailMessagesubject = null, [WorkflowExpression] Func<string> emailMessagebody = null, [WorkflowExpression] Func<string> emailMessagebcc = null, [WorkflowExpression] Func<emailMessageimportanceInput> emailMessageimportance = null, [WorkflowExpression] Func<string> emailMessagereadReceipt = null, [WorkflowExpression] Func<string> emailMessagedeliveryReceipt = null, [WorkflowExpression] Func<AttachmentV2[]> emailMessageattachments = null)
+        public IWorkflowAction SendEmail(Expression<Func<string>> emailMessagefrom = null, Expression<Func<string>> emailMessageto = null, Expression<Func<string>> emailMessagecC = null, Expression<Func<string>> emailMessagesubject = null, Expression<Func<string>> emailMessagebody = null, Expression<Func<string>> emailMessagebcc = null, Expression<Func<emailMessageimportanceInput>> emailMessageimportance = null, Expression<Func<string>> emailMessagereadReceipt = null, Expression<Func<string>> emailMessagedeliveryReceipt = null, Expression<Func<AttachmentV2[]>> emailMessageattachments = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildSendEmail(WorkflowExpression<string> emailMessagefrom = null, WorkflowExpression<string> emailMessageto = null, WorkflowExpression<string> emailMessagecC = null, WorkflowExpression<string> emailMessagesubject = null, WorkflowExpression<string> emailMessagebody = null, WorkflowExpression<string> emailMessagebcc = null, WorkflowExpression<emailMessageimportanceInput> emailMessageimportance = null, WorkflowExpression<string> emailMessagereadReceipt = null, WorkflowExpression<string> emailMessagedeliveryReceipt = null, WorkflowExpression<AttachmentV2[]> emailMessageattachments = null)
-        {
-            WorkflowExpression.Validate(emailMessagefrom, nameof(emailMessagefrom), required: false);
-            WorkflowExpression.Validate(emailMessageto, nameof(emailMessageto), required: false);
-            WorkflowExpression.Validate(emailMessagecC, nameof(emailMessagecC), required: false);
-            WorkflowExpression.Validate(emailMessagesubject, nameof(emailMessagesubject), required: false);
-            WorkflowExpression.Validate(emailMessagebody, nameof(emailMessagebody), required: false);
-            WorkflowExpression.Validate(emailMessagebcc, nameof(emailMessagebcc), required: false);
-            WorkflowExpression.Validate(emailMessageimportance, nameof(emailMessageimportance), required: false);
-            WorkflowExpression.Validate(emailMessagereadReceipt, nameof(emailMessagereadReceipt), required: false);
-            WorkflowExpression.Validate(emailMessagedeliveryReceipt, nameof(emailMessagedeliveryReceipt), required: false);
-            WorkflowExpression.Validate(emailMessageattachments, nameof(emailMessageattachments), required: false);
+            var __workflow_emailMessagefrom = emailMessagefrom == null ? null : WorkflowExpression.Compile(emailMessagefrom);
+            WorkflowExpression.Validate(__workflow_emailMessagefrom, nameof(emailMessagefrom), required: false);
+            var __workflow_emailMessageto = emailMessageto == null ? null : WorkflowExpression.Compile(emailMessageto);
+            WorkflowExpression.Validate(__workflow_emailMessageto, nameof(emailMessageto), required: false);
+            var __workflow_emailMessagecC = emailMessagecC == null ? null : WorkflowExpression.Compile(emailMessagecC);
+            WorkflowExpression.Validate(__workflow_emailMessagecC, nameof(emailMessagecC), required: false);
+            var __workflow_emailMessagesubject = emailMessagesubject == null ? null : WorkflowExpression.Compile(emailMessagesubject);
+            WorkflowExpression.Validate(__workflow_emailMessagesubject, nameof(emailMessagesubject), required: false);
+            var __workflow_emailMessagebody = emailMessagebody == null ? null : WorkflowExpression.Compile(emailMessagebody);
+            WorkflowExpression.Validate(__workflow_emailMessagebody, nameof(emailMessagebody), required: false);
+            var __workflow_emailMessagebcc = emailMessagebcc == null ? null : WorkflowExpression.Compile(emailMessagebcc);
+            WorkflowExpression.Validate(__workflow_emailMessagebcc, nameof(emailMessagebcc), required: false);
+            var __workflow_emailMessageimportance = emailMessageimportance == null ? null : WorkflowExpression.Compile(emailMessageimportance);
+            WorkflowExpression.Validate(__workflow_emailMessageimportance, nameof(emailMessageimportance), required: false);
+            var __workflow_emailMessagereadReceipt = emailMessagereadReceipt == null ? null : WorkflowExpression.Compile(emailMessagereadReceipt);
+            WorkflowExpression.Validate(__workflow_emailMessagereadReceipt, nameof(emailMessagereadReceipt), required: false);
+            var __workflow_emailMessagedeliveryReceipt = emailMessagedeliveryReceipt == null ? null : WorkflowExpression.Compile(emailMessagedeliveryReceipt);
+            WorkflowExpression.Validate(__workflow_emailMessagedeliveryReceipt, nameof(emailMessagedeliveryReceipt), required: false);
+            var __workflow_emailMessageattachments = emailMessageattachments == null ? null : WorkflowExpression.Compile(emailMessageattachments);
+            WorkflowExpression.Validate(__workflow_emailMessageattachments, nameof(emailMessageattachments), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SendEmailV3";
@@ -38,63 +40,63 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smtp
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var emailMessage = new JObject();
                 var emailMessagepropCount = 0;
-                if (emailMessagefrom != null)
+                if (__workflow_emailMessagefrom != null)
                 {
-                    emailMessage["From"] = ExpressionConverter.ConvertO(emailMessagefrom);
+                    emailMessage["From"] = ExpressionConverter.ConvertO(__workflow_emailMessagefrom);
                     emailMessagepropCount++;
                 }
 
-                if (emailMessageto != null)
+                if (__workflow_emailMessageto != null)
                 {
-                    emailMessage["To"] = ExpressionConverter.ConvertO(emailMessageto);
+                    emailMessage["To"] = ExpressionConverter.ConvertO(__workflow_emailMessageto);
                     emailMessagepropCount++;
                 }
 
-                if (emailMessagecC != null)
+                if (__workflow_emailMessagecC != null)
                 {
-                    emailMessage["CC"] = ExpressionConverter.ConvertO(emailMessagecC);
+                    emailMessage["CC"] = ExpressionConverter.ConvertO(__workflow_emailMessagecC);
                     emailMessagepropCount++;
                 }
 
-                if (emailMessagesubject != null)
+                if (__workflow_emailMessagesubject != null)
                 {
-                    emailMessage["Subject"] = ExpressionConverter.ConvertO(emailMessagesubject);
+                    emailMessage["Subject"] = ExpressionConverter.ConvertO(__workflow_emailMessagesubject);
                     emailMessagepropCount++;
                 }
 
-                if (emailMessagebody != null)
+                if (__workflow_emailMessagebody != null)
                 {
-                    emailMessage["Body"] = ExpressionConverter.ConvertO(emailMessagebody);
+                    emailMessage["Body"] = ExpressionConverter.ConvertO(__workflow_emailMessagebody);
                     emailMessagepropCount++;
                 }
 
-                if (emailMessagebcc != null)
+                if (__workflow_emailMessagebcc != null)
                 {
-                    emailMessage["Bcc"] = ExpressionConverter.ConvertO(emailMessagebcc);
+                    emailMessage["Bcc"] = ExpressionConverter.ConvertO(__workflow_emailMessagebcc);
                     emailMessagepropCount++;
                 }
 
-                if (emailMessageimportance != null)
+                if (__workflow_emailMessageimportance != null)
                 {
-                    emailMessage["Importance"] = ExpressionConverter.ConvertO(emailMessageimportance);
+                    emailMessage["Importance"] = ExpressionConverter.ConvertO(__workflow_emailMessageimportance);
                     emailMessagepropCount++;
                 }
 
-                if (emailMessagereadReceipt != null)
+                if (__workflow_emailMessagereadReceipt != null)
                 {
-                    emailMessage["ReadReceipt"] = ExpressionConverter.ConvertO(emailMessagereadReceipt);
+                    emailMessage["ReadReceipt"] = ExpressionConverter.ConvertO(__workflow_emailMessagereadReceipt);
                     emailMessagepropCount++;
                 }
 
-                if (emailMessagedeliveryReceipt != null)
+                if (__workflow_emailMessagedeliveryReceipt != null)
                 {
-                    emailMessage["DeliveryReceipt"] = ExpressionConverter.ConvertO(emailMessagedeliveryReceipt);
+                    emailMessage["DeliveryReceipt"] = ExpressionConverter.ConvertO(__workflow_emailMessagedeliveryReceipt);
                     emailMessagepropCount++;
                 }
 
-                if (emailMessageattachments != null)
+                if (__workflow_emailMessageattachments != null)
                 {
-                    emailMessage["Attachments"] = ExpressionConverter.ConvertO(emailMessageattachments);
+                    emailMessage["Attachments"] = ExpressionConverter.ConvertO(__workflow_emailMessageattachments);
                     emailMessagepropCount++;
                 }
 

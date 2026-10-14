@@ -1,187 +1,158 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openlegacyibmmainframe
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class OpenlegacyibmmainframeActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openlegacyibmmainframe")]
-        [WorkflowExpressionFactory(nameof(__BuildMfCicsCobol))]
-        public IBodyWorkflowAction<JToken> MfCicsCobol([WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> method, [WorkflowExpression] Func<object> body = null)
+        public IBodyWorkflowAction<JToken> MfCicsCobol(Expression<Func<string>> project, Expression<Func<string>> method, Expression<Func<object>> body = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildMfCicsCobol(WorkflowExpression<string> project, WorkflowExpression<string> method, WorkflowExpression<object> body = null)
-        {
-            WorkflowExpression.Validate(project, nameof(project), required: true);
-            WorkflowExpression.Validate(method, nameof(method), required: true);
-            WorkflowExpression.Validate(body, nameof(body), required: false);
+            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
+            WorkflowExpression.Validate(__workflow_project, nameof(project), required: true);
+            var __workflow_method = method == null ? null : WorkflowExpression.Compile(method);
+            WorkflowExpression.Validate(__workflow_method, nameof(method), required: true);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/dummy-MfCicsCobol";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["project"] = ExpressionConverter.Convert(project);
-                callPayload.Queries["method"] = ExpressionConverter.Convert(method);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["project"] = ExpressionConverter.Convert(__workflow_project);
+                callPayload.Queries["method"] = ExpressionConverter.Convert(__workflow_method);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openlegacyibmmainframe")]
-        [WorkflowExpressionFactory(nameof(__BuildMfCtgCobol))]
-        public IBodyWorkflowAction<JToken> MfCtgCobol([WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> method, [WorkflowExpression] Func<object> body = null)
+        public IBodyWorkflowAction<JToken> MfCtgCobol(Expression<Func<string>> project, Expression<Func<string>> method, Expression<Func<object>> body = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildMfCtgCobol(WorkflowExpression<string> project, WorkflowExpression<string> method, WorkflowExpression<object> body = null)
-        {
-            WorkflowExpression.Validate(project, nameof(project), required: true);
-            WorkflowExpression.Validate(method, nameof(method), required: true);
-            WorkflowExpression.Validate(body, nameof(body), required: false);
+            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
+            WorkflowExpression.Validate(__workflow_project, nameof(project), required: true);
+            var __workflow_method = method == null ? null : WorkflowExpression.Compile(method);
+            WorkflowExpression.Validate(__workflow_method, nameof(method), required: true);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/dummy-MfCtgCobol";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["project"] = ExpressionConverter.Convert(project);
-                callPayload.Queries["method"] = ExpressionConverter.Convert(method);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["project"] = ExpressionConverter.Convert(__workflow_project);
+                callPayload.Queries["method"] = ExpressionConverter.Convert(__workflow_method);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openlegacyibmmainframe")]
-        [WorkflowExpressionFactory(nameof(__BuildMfImsCobol))]
-        public IBodyWorkflowAction<JToken> MfImsCobol([WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> method, [WorkflowExpression] Func<object> body = null)
+        public IBodyWorkflowAction<JToken> MfImsCobol(Expression<Func<string>> project, Expression<Func<string>> method, Expression<Func<object>> body = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildMfImsCobol(WorkflowExpression<string> project, WorkflowExpression<string> method, WorkflowExpression<object> body = null)
-        {
-            WorkflowExpression.Validate(project, nameof(project), required: true);
-            WorkflowExpression.Validate(method, nameof(method), required: true);
-            WorkflowExpression.Validate(body, nameof(body), required: false);
+            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
+            WorkflowExpression.Validate(__workflow_project, nameof(project), required: true);
+            var __workflow_method = method == null ? null : WorkflowExpression.Compile(method);
+            WorkflowExpression.Validate(__workflow_method, nameof(method), required: true);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/dummy-MfImsCobol";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["project"] = ExpressionConverter.Convert(project);
-                callPayload.Queries["method"] = ExpressionConverter.Convert(method);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["project"] = ExpressionConverter.Convert(__workflow_project);
+                callPayload.Queries["method"] = ExpressionConverter.Convert(__workflow_method);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openlegacyibmmainframe")]
-        [WorkflowExpressionFactory(nameof(__BuildMfNatural))]
-        public IBodyWorkflowAction<JToken> MfNatural([WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> method, [WorkflowExpression] Func<object> body = null)
+        public IBodyWorkflowAction<JToken> MfNatural(Expression<Func<string>> project, Expression<Func<string>> method, Expression<Func<object>> body = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildMfNatural(WorkflowExpression<string> project, WorkflowExpression<string> method, WorkflowExpression<object> body = null)
-        {
-            WorkflowExpression.Validate(project, nameof(project), required: true);
-            WorkflowExpression.Validate(method, nameof(method), required: true);
-            WorkflowExpression.Validate(body, nameof(body), required: false);
+            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
+            WorkflowExpression.Validate(__workflow_project, nameof(project), required: true);
+            var __workflow_method = method == null ? null : WorkflowExpression.Compile(method);
+            WorkflowExpression.Validate(__workflow_method, nameof(method), required: true);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/dummy-MfNatural";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["project"] = ExpressionConverter.Convert(project);
-                callPayload.Queries["method"] = ExpressionConverter.Convert(method);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["project"] = ExpressionConverter.Convert(__workflow_project);
+                callPayload.Queries["method"] = ExpressionConverter.Convert(__workflow_method);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openlegacyibmmainframe")]
-        [WorkflowExpressionFactory(nameof(__BuildMfVsamCics))]
-        public IBodyWorkflowAction<JToken> MfVsamCics([WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> method, [WorkflowExpression] Func<object> body = null)
+        public IBodyWorkflowAction<JToken> MfVsamCics(Expression<Func<string>> project, Expression<Func<string>> method, Expression<Func<object>> body = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildMfVsamCics(WorkflowExpression<string> project, WorkflowExpression<string> method, WorkflowExpression<object> body = null)
-        {
-            WorkflowExpression.Validate(project, nameof(project), required: true);
-            WorkflowExpression.Validate(method, nameof(method), required: true);
-            WorkflowExpression.Validate(body, nameof(body), required: false);
+            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
+            WorkflowExpression.Validate(__workflow_project, nameof(project), required: true);
+            var __workflow_method = method == null ? null : WorkflowExpression.Compile(method);
+            WorkflowExpression.Validate(__workflow_method, nameof(method), required: true);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/dummy-MfVsamCics";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["project"] = ExpressionConverter.Convert(project);
-                callPayload.Queries["method"] = ExpressionConverter.Convert(method);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["project"] = ExpressionConverter.Convert(__workflow_project);
+                callPayload.Queries["method"] = ExpressionConverter.Convert(__workflow_method);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openlegacyibmmainframe")]
-        [WorkflowExpressionFactory(nameof(__BuildMf3270Screens))]
-        public IBodyWorkflowAction<JToken> Mf3270Screens([WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> method, [WorkflowExpression] Func<object> body = null)
+        public IBodyWorkflowAction<JToken> Mf3270Screens(Expression<Func<string>> project, Expression<Func<string>> method, Expression<Func<object>> body = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildMf3270Screens(WorkflowExpression<string> project, WorkflowExpression<string> method, WorkflowExpression<object> body = null)
-        {
-            WorkflowExpression.Validate(project, nameof(project), required: true);
-            WorkflowExpression.Validate(method, nameof(method), required: true);
-            WorkflowExpression.Validate(body, nameof(body), required: false);
+            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
+            WorkflowExpression.Validate(__workflow_project, nameof(project), required: true);
+            var __workflow_method = method == null ? null : WorkflowExpression.Compile(method);
+            WorkflowExpression.Validate(__workflow_method, nameof(method), required: true);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/dummy-Mf3270Screens";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["project"] = ExpressionConverter.Convert(project);
-                callPayload.Queries["method"] = ExpressionConverter.Convert(method);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["project"] = ExpressionConverter.Convert(__workflow_project);
+                callPayload.Queries["method"] = ExpressionConverter.Convert(__workflow_method);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openlegacyibmmainframe")]
-        [WorkflowExpressionFactory(nameof(__BuildMfMq))]
-        public IBodyWorkflowAction<JToken> MfMq([WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> method, [WorkflowExpression] Func<object> body = null)
+        public IBodyWorkflowAction<JToken> MfMq(Expression<Func<string>> project, Expression<Func<string>> method, Expression<Func<object>> body = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildMfMq(WorkflowExpression<string> project, WorkflowExpression<string> method, WorkflowExpression<object> body = null)
-        {
-            WorkflowExpression.Validate(project, nameof(project), required: true);
-            WorkflowExpression.Validate(method, nameof(method), required: true);
-            WorkflowExpression.Validate(body, nameof(body), required: false);
+            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
+            WorkflowExpression.Validate(__workflow_project, nameof(project), required: true);
+            var __workflow_method = method == null ? null : WorkflowExpression.Compile(method);
+            WorkflowExpression.Validate(__workflow_method, nameof(method), required: true);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/dummy-MfMq";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["project"] = ExpressionConverter.Convert(project);
-                callPayload.Queries["method"] = ExpressionConverter.Convert(method);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["project"] = ExpressionConverter.Convert(__workflow_project);
+                callPayload.Queries["method"] = ExpressionConverter.Convert(__workflow_method);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }

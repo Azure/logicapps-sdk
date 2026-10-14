@@ -1,12 +1,12 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohesitygaia
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class CohesitygaiaActions([ConnectionName] string connectionId)
     {
@@ -29,19 +29,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohesitygaia
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohesitygaia")]
-        [WorkflowExpressionFactory(nameof(__BuildSendQuery))]
-        public IBodyWorkflowAction<QueryResponse> SendQuery([WorkflowExpression] Func<string> bodyllmName, [WorkflowExpression] Func<string> bodyllmId, [WorkflowExpression] Func<string[]> bodydatasetNames, [WorkflowExpression] Func<string> bodyqueryString)
+        public IBodyWorkflowAction<QueryResponse> SendQuery(Expression<Func<string>> bodyllmName, Expression<Func<string>> bodyllmId, Expression<Func<string[]>> bodydatasetNames, Expression<Func<string>> bodyqueryString)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<QueryResponse> __BuildSendQuery(WorkflowExpression<string> bodyllmName, WorkflowExpression<string> bodyllmId, WorkflowExpression<string[]> bodydatasetNames, WorkflowExpression<string> bodyqueryString)
-        {
-            WorkflowExpression.Validate(bodyllmName, nameof(bodyllmName), required: true);
-            WorkflowExpression.Validate(bodyllmId, nameof(bodyllmId), required: true);
-            WorkflowExpression.Validate(bodydatasetNames, nameof(bodydatasetNames), required: true);
-            WorkflowExpression.Validate(bodyqueryString, nameof(bodyqueryString), required: true);
+            var __workflow_bodyllmName = bodyllmName == null ? null : WorkflowExpression.Compile(bodyllmName);
+            WorkflowExpression.Validate(__workflow_bodyllmName, nameof(bodyllmName), required: true);
+            var __workflow_bodyllmId = bodyllmId == null ? null : WorkflowExpression.Compile(bodyllmId);
+            WorkflowExpression.Validate(__workflow_bodyllmId, nameof(bodyllmId), required: true);
+            var __workflow_bodydatasetNames = bodydatasetNames == null ? null : WorkflowExpression.Compile(bodydatasetNames);
+            WorkflowExpression.Validate(__workflow_bodydatasetNames, nameof(bodydatasetNames), required: true);
+            var __workflow_bodyqueryString = bodyqueryString == null ? null : WorkflowExpression.Compile(bodyqueryString);
+            WorkflowExpression.Validate(__workflow_bodyqueryString, nameof(bodyqueryString), required: true);
             return new DeferredBodyAction<QueryResponse>(() =>
             {
                 var apiCallPath = "/mcm/gaia/ask";
@@ -50,13 +47,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohesitygaia
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["llmName"] = ExpressionConverter.ConvertO(bodyllmName);
+                body["llmName"] = ExpressionConverter.ConvertO(__workflow_bodyllmName);
                 bodypropCount++;
-                body["llmId"] = ExpressionConverter.ConvertO(bodyllmId);
+                body["llmId"] = ExpressionConverter.ConvertO(__workflow_bodyllmId);
                 bodypropCount++;
-                body["datasetNames"] = ExpressionConverter.ConvertO(bodydatasetNames);
+                body["datasetNames"] = ExpressionConverter.ConvertO(__workflow_bodydatasetNames);
                 bodypropCount++;
-                body["queryString"] = ExpressionConverter.ConvertO(bodyqueryString);
+                body["queryString"] = ExpressionConverter.ConvertO(__workflow_bodyqueryString);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

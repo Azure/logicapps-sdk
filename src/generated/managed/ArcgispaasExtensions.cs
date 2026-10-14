@@ -1,80 +1,65 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class ArcgispaasActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
-        [WorkflowExpressionFactory(nameof(__BuildReverseGeocode))]
-        public IBodyWorkflowAction<ReverseGeocodeResponse> ReverseGeocode([WorkflowExpression] Func<double> x, [WorkflowExpression] Func<double> y, [WorkflowExpression] Func<string> srs = null, [WorkflowExpression] Func<locationTypeInput> locationType = null)
+        public IBodyWorkflowAction<ReverseGeocodeResponse> ReverseGeocode(Expression<Func<double>> x, Expression<Func<double>> y, Expression<Func<string>> srs = null, Expression<Func<locationTypeInput>> locationType = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ReverseGeocodeResponse> __BuildReverseGeocode(WorkflowExpression<double> x, WorkflowExpression<double> y, WorkflowExpression<string> srs = null, WorkflowExpression<locationTypeInput> locationType = null)
-        {
-            WorkflowExpression.Validate(x, nameof(x), required: true);
-            WorkflowExpression.Validate(y, nameof(y), required: true);
-            WorkflowExpression.Validate(srs, nameof(srs), required: false);
-            WorkflowExpression.Validate(locationType, nameof(locationType), required: false);
+            var __workflow_x = x == null ? null : WorkflowExpression.Compile(x);
+            WorkflowExpression.Validate(__workflow_x, nameof(x), required: true);
+            var __workflow_y = y == null ? null : WorkflowExpression.Compile(y);
+            WorkflowExpression.Validate(__workflow_y, nameof(y), required: true);
+            var __workflow_srs = srs == null ? null : WorkflowExpression.Compile(srs);
+            WorkflowExpression.Validate(__workflow_srs, nameof(srs), required: false);
+            var __workflow_locationType = locationType == null ? null : WorkflowExpression.Compile(locationType);
+            WorkflowExpression.Validate(__workflow_locationType, nameof(locationType), required: false);
             return new DeferredBodyAction<ReverseGeocodeResponse>(() =>
             {
                 var apiCallPath = "/v1/geocode/reverseGeocode";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["x"] = ExpressionConverter.Convert(x);
-                callPayload.Queries["y"] = ExpressionConverter.Convert(y);
-                if (srs != null)
-                    callPayload.Queries["srs"] = ExpressionConverter.Convert(srs);
+                callPayload.Queries["x"] = ExpressionConverter.Convert(__workflow_x);
+                callPayload.Queries["y"] = ExpressionConverter.Convert(__workflow_y);
+                if (__workflow_srs != null)
+                    callPayload.Queries["srs"] = ExpressionConverter.Convert(__workflow_srs);
                 callPayload.Queries["locationType"] = Convert.ToString("Rooftop");
-                if (locationType != null)
-                    callPayload.Queries["locationType"] = ExpressionConverter.Convert(locationType);
+                if (__workflow_locationType != null)
+                    callPayload.Queries["locationType"] = ExpressionConverter.Convert(__workflow_locationType);
                 return new ApiConnectionAction<ReverseGeocodeResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
-        [WorkflowExpressionFactory(nameof(__BuildGeometryService))]
-        public IBodyWorkflowAction<JToken> GeometryService([WorkflowExpression] Func<string> operation, [WorkflowExpression] Func<object> data = null)
+        public IBodyWorkflowAction<JToken> GeometryService(Expression<Func<string>> operation, Expression<Func<object>> data = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildGeometryService(WorkflowExpression<string> operation, WorkflowExpression<object> data = null)
-        {
-            WorkflowExpression.Validate(operation, nameof(operation), required: true);
-            WorkflowExpression.Validate(data, nameof(data), required: false);
+            var __workflow_operation = operation == null ? null : WorkflowExpression.Compile(operation);
+            WorkflowExpression.Validate(__workflow_operation, nameof(operation), required: true);
+            var __workflow_data = data == null ? null : WorkflowExpression.Compile(data);
+            WorkflowExpression.Validate(__workflow_data, nameof(data), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/v1/geometry/process";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["operation"] = ExpressionConverter.Convert(operation);
-                callPayload.Body = ExpressionConverter.ConvertO(data);
+                callPayload.Queries["operation"] = ExpressionConverter.Convert(__workflow_operation);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_data);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
-        [WorkflowExpressionFactory(nameof(__BuildTimeConversionHelper))]
-        public IBodyWorkflowAction<TimeConversionHelperResponse> TimeConversionHelper([WorkflowExpression] Func<string> datadateTime)
+        public IBodyWorkflowAction<TimeConversionHelperResponse> TimeConversionHelper(Expression<Func<string>> datadateTime)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TimeConversionHelperResponse> __BuildTimeConversionHelper(WorkflowExpression<string> datadateTime)
-        {
-            WorkflowExpression.Validate(datadateTime, nameof(datadateTime), required: true);
+            var __workflow_datadateTime = datadateTime == null ? null : WorkflowExpression.Compile(datadateTime);
+            WorkflowExpression.Validate(__workflow_datadateTime, nameof(datadateTime), required: true);
             return new DeferredBodyAction<TimeConversionHelperResponse>(() =>
             {
                 var apiCallPath = "/v1/helper/convertTime";
@@ -83,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
                 var data = new JObject();
                 var datapropCount = 0;
                 datapropCount++;
-                data["dateTime"] = ExpressionConverter.ConvertO(datadateTime);
+                data["dateTime"] = ExpressionConverter.ConvertO(__workflow_datadateTime);
                 if (datapropCount > 0)
                 {
                     callPayload.Body = data;
@@ -94,63 +79,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
-        [WorkflowExpressionFactory(nameof(__BuildCreatePointGeometryHelper))]
-        public IBodyWorkflowAction<CreatePointGeometryHelperResponse> CreatePointGeometryHelper([WorkflowExpression] Func<double> x, [WorkflowExpression] Func<double> y, [WorkflowExpression] Func<string> srs = null)
+        public IBodyWorkflowAction<CreatePointGeometryHelperResponse> CreatePointGeometryHelper(Expression<Func<double>> x, Expression<Func<double>> y, Expression<Func<string>> srs = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreatePointGeometryHelperResponse> __BuildCreatePointGeometryHelper(WorkflowExpression<double> x, WorkflowExpression<double> y, WorkflowExpression<string> srs = null)
-        {
-            WorkflowExpression.Validate(x, nameof(x), required: true);
-            WorkflowExpression.Validate(y, nameof(y), required: true);
-            WorkflowExpression.Validate(srs, nameof(srs), required: false);
+            var __workflow_x = x == null ? null : WorkflowExpression.Compile(x);
+            WorkflowExpression.Validate(__workflow_x, nameof(x), required: true);
+            var __workflow_y = y == null ? null : WorkflowExpression.Compile(y);
+            WorkflowExpression.Validate(__workflow_y, nameof(y), required: true);
+            var __workflow_srs = srs == null ? null : WorkflowExpression.Compile(srs);
+            WorkflowExpression.Validate(__workflow_srs, nameof(srs), required: false);
             return new DeferredBodyAction<CreatePointGeometryHelperResponse>(() =>
             {
                 var apiCallPath = "/v1/helper/createPointGeometry";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["x"] = ExpressionConverter.Convert(x);
-                callPayload.Queries["y"] = ExpressionConverter.Convert(y);
-                if (srs != null)
-                    callPayload.Queries["srs"] = ExpressionConverter.Convert(srs);
+                callPayload.Queries["x"] = ExpressionConverter.Convert(__workflow_x);
+                callPayload.Queries["y"] = ExpressionConverter.Convert(__workflow_y);
+                if (__workflow_srs != null)
+                    callPayload.Queries["srs"] = ExpressionConverter.Convert(__workflow_srs);
                 return new ApiConnectionAction<CreatePointGeometryHelperResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
-        [WorkflowExpressionFactory(nameof(__BuildEXIF))]
-        public IBodyWorkflowAction<JToken> EXIF([WorkflowExpression] Func<string> data = null)
+        public IBodyWorkflowAction<JToken> EXIF(Expression<Func<string>> data = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildEXIF(WorkflowExpression<string> data = null)
-        {
-            WorkflowExpression.Validate(data, nameof(data), required: false);
+            var __workflow_data = data == null ? null : WorkflowExpression.Compile(data);
+            WorkflowExpression.Validate(__workflow_data, nameof(data), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/v1/helper/exif";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(data);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_data);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
-        [WorkflowExpressionFactory(nameof(__BuildGeocodeAddresses))]
-        public IBodyWorkflowAction<JToken> GeocodeAddresses([WorkflowExpression] Func<string> dataaddresses)
+        public IBodyWorkflowAction<JToken> GeocodeAddresses(Expression<Func<string>> dataaddresses)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildGeocodeAddresses(WorkflowExpression<string> dataaddresses)
-        {
-            WorkflowExpression.Validate(dataaddresses, nameof(dataaddresses), required: true);
+            var __workflow_dataaddresses = dataaddresses == null ? null : WorkflowExpression.Compile(dataaddresses);
+            WorkflowExpression.Validate(__workflow_dataaddresses, nameof(dataaddresses), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/v2/geocode/geocodeAddresses";
@@ -159,7 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
                 var data = new JObject();
                 var datapropCount = 0;
                 datapropCount++;
-                data["addresses"] = ExpressionConverter.ConvertO(dataaddresses);
+                data["addresses"] = ExpressionConverter.ConvertO(__workflow_dataaddresses);
                 if (datapropCount > 0)
                 {
                     callPayload.Body = data;
@@ -170,67 +139,63 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
-        [WorkflowExpressionFactory(nameof(__BuildGeoenrich))]
-        public IBodyWorkflowAction<GeoenrichV2Response> Geoenrich([WorkflowExpression] Func<string> country, [WorkflowExpression] Func<string> datacollection, [WorkflowExpression] Func<string> parameter, [WorkflowExpression] Func<buffertypeInput> buffertype, [WorkflowExpression] Func<object> body = null)
+        public IBodyWorkflowAction<GeoenrichV2Response> Geoenrich(Expression<Func<string>> country, Expression<Func<string>> datacollection, Expression<Func<string>> parameter, Expression<Func<buffertypeInput>> buffertype, Expression<Func<object>> body = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GeoenrichV2Response> __BuildGeoenrich(WorkflowExpression<string> country, WorkflowExpression<string> datacollection, WorkflowExpression<string> parameter, WorkflowExpression<buffertypeInput> buffertype, WorkflowExpression<object> body = null)
-        {
-            WorkflowExpression.Validate(country, nameof(country), required: true);
-            WorkflowExpression.Validate(datacollection, nameof(datacollection), required: true);
-            WorkflowExpression.Validate(parameter, nameof(parameter), required: true);
-            WorkflowExpression.Validate(buffertype, nameof(buffertype), required: true);
-            WorkflowExpression.Validate(body, nameof(body), required: false);
+            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
+            WorkflowExpression.Validate(__workflow_country, nameof(country), required: true);
+            var __workflow_datacollection = datacollection == null ? null : WorkflowExpression.Compile(datacollection);
+            WorkflowExpression.Validate(__workflow_datacollection, nameof(datacollection), required: true);
+            var __workflow_parameter = parameter == null ? null : WorkflowExpression.Compile(parameter);
+            WorkflowExpression.Validate(__workflow_parameter, nameof(parameter), required: true);
+            var __workflow_buffertype = buffertype == null ? null : WorkflowExpression.Compile(buffertype);
+            WorkflowExpression.Validate(__workflow_buffertype, nameof(buffertype), required: true);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
             return new DeferredBodyAction<GeoenrichV2Response>(() =>
             {
                 var apiCallPath = "/v2/geoenrichment/enrich";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-                callPayload.Queries["datacollection"] = ExpressionConverter.Convert(datacollection);
-                callPayload.Queries["parameter"] = ExpressionConverter.Convert(parameter);
-                callPayload.Queries["buffertype"] = ExpressionConverter.Convert(buffertype);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["country"] = ExpressionConverter.Convert(__workflow_country);
+                callPayload.Queries["datacollection"] = ExpressionConverter.Convert(__workflow_datacollection);
+                callPayload.Queries["parameter"] = ExpressionConverter.Convert(__workflow_parameter);
+                callPayload.Queries["buffertype"] = ExpressionConverter.Convert(__workflow_buffertype);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GeoenrichV2Response>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
-        [WorkflowExpressionFactory(nameof(__BuildGetRoute))]
-        public IBodyWorkflowAction<GetRouteV2Response> GetRoute([WorkflowExpression] Func<string> routingroutingStops, [WorkflowExpression] Func<string> travelModeName = null, [WorkflowExpression] Func<bool> findBestSequence = null, [WorkflowExpression] Func<bool> preserveFirstStop = null, [WorkflowExpression] Func<bool> returnDirections = null)
+        public IBodyWorkflowAction<GetRouteV2Response> GetRoute(Expression<Func<string>> routingroutingStops, Expression<Func<string>> travelModeName = null, Expression<Func<bool>> findBestSequence = null, Expression<Func<bool>> preserveFirstStop = null, Expression<Func<bool>> returnDirections = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetRouteV2Response> __BuildGetRoute(WorkflowExpression<string> routingroutingStops, WorkflowExpression<string> travelModeName = null, WorkflowExpression<bool> findBestSequence = null, WorkflowExpression<bool> preserveFirstStop = null, WorkflowExpression<bool> returnDirections = null)
-        {
-            WorkflowExpression.Validate(routingroutingStops, nameof(routingroutingStops), required: true);
-            WorkflowExpression.Validate(travelModeName, nameof(travelModeName), required: false);
-            WorkflowExpression.Validate(findBestSequence, nameof(findBestSequence), required: false);
-            WorkflowExpression.Validate(preserveFirstStop, nameof(preserveFirstStop), required: false);
-            WorkflowExpression.Validate(returnDirections, nameof(returnDirections), required: false);
+            var __workflow_routingroutingStops = routingroutingStops == null ? null : WorkflowExpression.Compile(routingroutingStops);
+            WorkflowExpression.Validate(__workflow_routingroutingStops, nameof(routingroutingStops), required: true);
+            var __workflow_travelModeName = travelModeName == null ? null : WorkflowExpression.Compile(travelModeName);
+            WorkflowExpression.Validate(__workflow_travelModeName, nameof(travelModeName), required: false);
+            var __workflow_findBestSequence = findBestSequence == null ? null : WorkflowExpression.Compile(findBestSequence);
+            WorkflowExpression.Validate(__workflow_findBestSequence, nameof(findBestSequence), required: false);
+            var __workflow_preserveFirstStop = preserveFirstStop == null ? null : WorkflowExpression.Compile(preserveFirstStop);
+            WorkflowExpression.Validate(__workflow_preserveFirstStop, nameof(preserveFirstStop), required: false);
+            var __workflow_returnDirections = returnDirections == null ? null : WorkflowExpression.Compile(returnDirections);
+            WorkflowExpression.Validate(__workflow_returnDirections, nameof(returnDirections), required: false);
             return new DeferredBodyAction<GetRouteV2Response>(() =>
             {
                 var apiCallPath = "/v2/routing";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (travelModeName != null)
-                    callPayload.Queries["travelModeName"] = ExpressionConverter.Convert(travelModeName);
-                if (findBestSequence != null)
-                    callPayload.Queries["findBestSequence"] = ExpressionConverter.Convert(findBestSequence);
-                if (preserveFirstStop != null)
-                    callPayload.Queries["preserveFirstStop"] = ExpressionConverter.Convert(preserveFirstStop);
+                if (__workflow_travelModeName != null)
+                    callPayload.Queries["travelModeName"] = ExpressionConverter.Convert(__workflow_travelModeName);
+                if (__workflow_findBestSequence != null)
+                    callPayload.Queries["findBestSequence"] = ExpressionConverter.Convert(__workflow_findBestSequence);
+                if (__workflow_preserveFirstStop != null)
+                    callPayload.Queries["preserveFirstStop"] = ExpressionConverter.Convert(__workflow_preserveFirstStop);
                 callPayload.Queries["returnDirections"] = Convert.ToString(true);
-                if (returnDirections != null)
-                    callPayload.Queries["returnDirections"] = ExpressionConverter.Convert(returnDirections);
+                if (__workflow_returnDirections != null)
+                    callPayload.Queries["returnDirections"] = ExpressionConverter.Convert(__workflow_returnDirections);
                 var routing = new JObject();
                 var routingpropCount = 0;
                 routingpropCount++;
-                routing["stops"] = ExpressionConverter.ConvertO(routingroutingStops);
+                routing["stops"] = ExpressionConverter.ConvertO(__workflow_routingroutingStops);
                 if (routingpropCount > 0)
                 {
                     callPayload.Body = routing;

@@ -1,202 +1,190 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgeonerecfind6
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class Knowledgeonerecfind6Actions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "knowledgeonerecfind6")]
-        [WorkflowExpressionFactory(nameof(__BuildQueryList))]
-        public IBodyWorkflowAction<QueryListResponse> QueryList([WorkflowExpression] Func<string> hostUrl = null, [WorkflowExpression] Func<string> userName = null)
+        public IBodyWorkflowAction<QueryListResponse> QueryList(Expression<Func<string>> hostUrl = null, Expression<Func<string>> userName = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<QueryListResponse> __BuildQueryList(WorkflowExpression<string> hostUrl = null, WorkflowExpression<string> userName = null)
-        {
-            WorkflowExpression.Validate(hostUrl, nameof(hostUrl), required: false);
-            WorkflowExpression.Validate(userName, nameof(userName), required: false);
+            var __workflow_hostUrl = hostUrl == null ? null : WorkflowExpression.Compile(hostUrl);
+            WorkflowExpression.Validate(__workflow_hostUrl, nameof(hostUrl), required: false);
+            var __workflow_userName = userName == null ? null : WorkflowExpression.Compile(userName);
+            WorkflowExpression.Validate(__workflow_userName, nameof(userName), required: false);
             return new DeferredBodyAction<QueryListResponse>(() =>
             {
                 var apiCallPath = "/QueryList";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (hostUrl != null)
-                    callPayload.Queries["HostUrl"] = ExpressionConverter.Convert(hostUrl);
-                if (userName != null)
-                    callPayload.Queries["UserName"] = ExpressionConverter.Convert(userName);
+                if (__workflow_hostUrl != null)
+                    callPayload.Queries["HostUrl"] = ExpressionConverter.Convert(__workflow_hostUrl);
+                if (__workflow_userName != null)
+                    callPayload.Queries["UserName"] = ExpressionConverter.Convert(__workflow_userName);
                 return new ApiConnectionAction<QueryListResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "knowledgeonerecfind6")]
-        [WorkflowExpressionFactory(nameof(__BuildQueryTable))]
-        public IBodyWorkflowAction<JToken[]> QueryTable([WorkflowExpression] Func<string> hostUrl = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> queryName = null, [WorkflowExpression] Func<string> searchText = null)
+        public IBodyWorkflowAction<JToken[]> QueryTable(Expression<Func<string>> hostUrl = null, Expression<Func<string>> userName = null, Expression<Func<string>> queryName = null, Expression<Func<string>> searchText = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken[]> __BuildQueryTable(WorkflowExpression<string> hostUrl = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> queryName = null, WorkflowExpression<string> searchText = null)
-        {
-            WorkflowExpression.Validate(hostUrl, nameof(hostUrl), required: false);
-            WorkflowExpression.Validate(userName, nameof(userName), required: false);
-            WorkflowExpression.Validate(queryName, nameof(queryName), required: false);
-            WorkflowExpression.Validate(searchText, nameof(searchText), required: false);
+            var __workflow_hostUrl = hostUrl == null ? null : WorkflowExpression.Compile(hostUrl);
+            WorkflowExpression.Validate(__workflow_hostUrl, nameof(hostUrl), required: false);
+            var __workflow_userName = userName == null ? null : WorkflowExpression.Compile(userName);
+            WorkflowExpression.Validate(__workflow_userName, nameof(userName), required: false);
+            var __workflow_queryName = queryName == null ? null : WorkflowExpression.Compile(queryName);
+            WorkflowExpression.Validate(__workflow_queryName, nameof(queryName), required: false);
+            var __workflow_searchText = searchText == null ? null : WorkflowExpression.Compile(searchText);
+            WorkflowExpression.Validate(__workflow_searchText, nameof(searchText), required: false);
             return new DeferredBodyAction<JToken[]>(() =>
             {
                 var apiCallPath = "/QueryTable";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (hostUrl != null)
-                    callPayload.Queries["HostUrl"] = ExpressionConverter.Convert(hostUrl);
-                if (userName != null)
-                    callPayload.Queries["UserName"] = ExpressionConverter.Convert(userName);
-                if (queryName != null)
-                    callPayload.Queries["QueryName"] = ExpressionConverter.Convert(queryName);
-                if (searchText != null)
-                    callPayload.Queries["SearchText"] = ExpressionConverter.Convert(searchText);
+                if (__workflow_hostUrl != null)
+                    callPayload.Queries["HostUrl"] = ExpressionConverter.Convert(__workflow_hostUrl);
+                if (__workflow_userName != null)
+                    callPayload.Queries["UserName"] = ExpressionConverter.Convert(__workflow_userName);
+                if (__workflow_queryName != null)
+                    callPayload.Queries["QueryName"] = ExpressionConverter.Convert(__workflow_queryName);
+                if (__workflow_searchText != null)
+                    callPayload.Queries["SearchText"] = ExpressionConverter.Convert(__workflow_searchText);
                 return new ApiConnectionAction<JToken[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "knowledgeonerecfind6")]
-        [WorkflowExpressionFactory(nameof(__BuildQueryData))]
-        public IBodyWorkflowAction<QueryDataResponse> QueryData([WorkflowExpression] Func<string> hostUrl = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> queryName = null, [WorkflowExpression] Func<int> startPosition = null, [WorkflowExpression] Func<int> numberOfRecords = null, [WorkflowExpression] Func<string> searchText = null)
+        public IBodyWorkflowAction<QueryDataResponse> QueryData(Expression<Func<string>> hostUrl = null, Expression<Func<string>> userName = null, Expression<Func<string>> queryName = null, Expression<Func<int>> startPosition = null, Expression<Func<int>> numberOfRecords = null, Expression<Func<string>> searchText = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<QueryDataResponse> __BuildQueryData(WorkflowExpression<string> hostUrl = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> queryName = null, WorkflowExpression<int> startPosition = null, WorkflowExpression<int> numberOfRecords = null, WorkflowExpression<string> searchText = null)
-        {
-            WorkflowExpression.Validate(hostUrl, nameof(hostUrl), required: false);
-            WorkflowExpression.Validate(userName, nameof(userName), required: false);
-            WorkflowExpression.Validate(queryName, nameof(queryName), required: false);
-            WorkflowExpression.Validate(startPosition, nameof(startPosition), required: false);
-            WorkflowExpression.Validate(numberOfRecords, nameof(numberOfRecords), required: false);
-            WorkflowExpression.Validate(searchText, nameof(searchText), required: false);
+            var __workflow_hostUrl = hostUrl == null ? null : WorkflowExpression.Compile(hostUrl);
+            WorkflowExpression.Validate(__workflow_hostUrl, nameof(hostUrl), required: false);
+            var __workflow_userName = userName == null ? null : WorkflowExpression.Compile(userName);
+            WorkflowExpression.Validate(__workflow_userName, nameof(userName), required: false);
+            var __workflow_queryName = queryName == null ? null : WorkflowExpression.Compile(queryName);
+            WorkflowExpression.Validate(__workflow_queryName, nameof(queryName), required: false);
+            var __workflow_startPosition = startPosition == null ? null : WorkflowExpression.Compile(startPosition);
+            WorkflowExpression.Validate(__workflow_startPosition, nameof(startPosition), required: false);
+            var __workflow_numberOfRecords = numberOfRecords == null ? null : WorkflowExpression.Compile(numberOfRecords);
+            WorkflowExpression.Validate(__workflow_numberOfRecords, nameof(numberOfRecords), required: false);
+            var __workflow_searchText = searchText == null ? null : WorkflowExpression.Compile(searchText);
+            WorkflowExpression.Validate(__workflow_searchText, nameof(searchText), required: false);
             return new DeferredBodyAction<QueryDataResponse>(() =>
             {
                 var apiCallPath = "/QueryData";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (hostUrl != null)
-                    callPayload.Queries["HostUrl"] = ExpressionConverter.Convert(hostUrl);
-                if (userName != null)
-                    callPayload.Queries["UserName"] = ExpressionConverter.Convert(userName);
-                if (queryName != null)
-                    callPayload.Queries["QueryName"] = ExpressionConverter.Convert(queryName);
-                if (startPosition != null)
-                    callPayload.Queries["StartPosition"] = ExpressionConverter.Convert(startPosition);
-                if (numberOfRecords != null)
-                    callPayload.Queries["NumberOfRecords"] = ExpressionConverter.Convert(numberOfRecords);
-                if (searchText != null)
-                    callPayload.Queries["SearchText"] = ExpressionConverter.Convert(searchText);
+                if (__workflow_hostUrl != null)
+                    callPayload.Queries["HostUrl"] = ExpressionConverter.Convert(__workflow_hostUrl);
+                if (__workflow_userName != null)
+                    callPayload.Queries["UserName"] = ExpressionConverter.Convert(__workflow_userName);
+                if (__workflow_queryName != null)
+                    callPayload.Queries["QueryName"] = ExpressionConverter.Convert(__workflow_queryName);
+                if (__workflow_startPosition != null)
+                    callPayload.Queries["StartPosition"] = ExpressionConverter.Convert(__workflow_startPosition);
+                if (__workflow_numberOfRecords != null)
+                    callPayload.Queries["NumberOfRecords"] = ExpressionConverter.Convert(__workflow_numberOfRecords);
+                if (__workflow_searchText != null)
+                    callPayload.Queries["SearchText"] = ExpressionConverter.Convert(__workflow_searchText);
                 return new ApiConnectionAction<QueryDataResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "knowledgeonerecfind6")]
-        [WorkflowExpressionFactory(nameof(__BuildSavedSearch))]
-        public IBodyWorkflowAction<JToken[]> SavedSearch([WorkflowExpression] Func<string> hostUrl = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> savedSearchName = null, [WorkflowExpression] Func<string> queryParams = null)
+        public IBodyWorkflowAction<JToken[]> SavedSearch(Expression<Func<string>> hostUrl = null, Expression<Func<string>> userName = null, Expression<Func<string>> savedSearchName = null, Expression<Func<string>> queryParams = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken[]> __BuildSavedSearch(WorkflowExpression<string> hostUrl = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> savedSearchName = null, WorkflowExpression<string> queryParams = null)
-        {
-            WorkflowExpression.Validate(hostUrl, nameof(hostUrl), required: false);
-            WorkflowExpression.Validate(userName, nameof(userName), required: false);
-            WorkflowExpression.Validate(savedSearchName, nameof(savedSearchName), required: false);
-            WorkflowExpression.Validate(queryParams, nameof(queryParams), required: false);
+            var __workflow_hostUrl = hostUrl == null ? null : WorkflowExpression.Compile(hostUrl);
+            WorkflowExpression.Validate(__workflow_hostUrl, nameof(hostUrl), required: false);
+            var __workflow_userName = userName == null ? null : WorkflowExpression.Compile(userName);
+            WorkflowExpression.Validate(__workflow_userName, nameof(userName), required: false);
+            var __workflow_savedSearchName = savedSearchName == null ? null : WorkflowExpression.Compile(savedSearchName);
+            WorkflowExpression.Validate(__workflow_savedSearchName, nameof(savedSearchName), required: false);
+            var __workflow_queryParams = queryParams == null ? null : WorkflowExpression.Compile(queryParams);
+            WorkflowExpression.Validate(__workflow_queryParams, nameof(queryParams), required: false);
             return new DeferredBodyAction<JToken[]>(() =>
             {
                 var apiCallPath = "/SavedSearch";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (hostUrl != null)
-                    callPayload.Queries["HostUrl"] = ExpressionConverter.Convert(hostUrl);
-                if (userName != null)
-                    callPayload.Queries["UserName"] = ExpressionConverter.Convert(userName);
-                if (savedSearchName != null)
-                    callPayload.Queries["SavedSearchName"] = ExpressionConverter.Convert(savedSearchName);
-                if (queryParams != null)
-                    callPayload.Queries["QueryParams"] = ExpressionConverter.Convert(queryParams);
+                if (__workflow_hostUrl != null)
+                    callPayload.Queries["HostUrl"] = ExpressionConverter.Convert(__workflow_hostUrl);
+                if (__workflow_userName != null)
+                    callPayload.Queries["UserName"] = ExpressionConverter.Convert(__workflow_userName);
+                if (__workflow_savedSearchName != null)
+                    callPayload.Queries["SavedSearchName"] = ExpressionConverter.Convert(__workflow_savedSearchName);
+                if (__workflow_queryParams != null)
+                    callPayload.Queries["QueryParams"] = ExpressionConverter.Convert(__workflow_queryParams);
                 return new ApiConnectionAction<JToken[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "knowledgeonerecfind6")]
-        [WorkflowExpressionFactory(nameof(__BuildSendFile))]
-        public IBodyWorkflowAction<SendFileResponse> SendFile([WorkflowExpression] Func<string> hostUrl = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> bodyfileContents = null, [WorkflowExpression] Func<string> bodyfileName = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodycreatedDate = null, [WorkflowExpression] Func<string> bodyeDOCType = null, [WorkflowExpression] Func<bodyextraFieldsInputItem[]> bodyextraFields = null)
+        public IBodyWorkflowAction<SendFileResponse> SendFile(Expression<Func<string>> hostUrl = null, Expression<Func<string>> userName = null, Expression<Func<string>> bodyfileContents = null, Expression<Func<string>> bodyfileName = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodycreatedDate = null, Expression<Func<string>> bodyeDOCType = null, Expression<Func<bodyextraFieldsInputItem[]>> bodyextraFields = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SendFileResponse> __BuildSendFile(WorkflowExpression<string> hostUrl = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> bodyfileContents = null, WorkflowExpression<string> bodyfileName = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodycreatedDate = null, WorkflowExpression<string> bodyeDOCType = null, WorkflowExpression<bodyextraFieldsInputItem[]> bodyextraFields = null)
-        {
-            WorkflowExpression.Validate(hostUrl, nameof(hostUrl), required: false);
-            WorkflowExpression.Validate(userName, nameof(userName), required: false);
-            WorkflowExpression.Validate(bodyfileContents, nameof(bodyfileContents), required: false);
-            WorkflowExpression.Validate(bodyfileName, nameof(bodyfileName), required: false);
-            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            WorkflowExpression.Validate(bodycreatedDate, nameof(bodycreatedDate), required: false);
-            WorkflowExpression.Validate(bodyeDOCType, nameof(bodyeDOCType), required: false);
-            WorkflowExpression.Validate(bodyextraFields, nameof(bodyextraFields), required: false);
+            var __workflow_hostUrl = hostUrl == null ? null : WorkflowExpression.Compile(hostUrl);
+            WorkflowExpression.Validate(__workflow_hostUrl, nameof(hostUrl), required: false);
+            var __workflow_userName = userName == null ? null : WorkflowExpression.Compile(userName);
+            WorkflowExpression.Validate(__workflow_userName, nameof(userName), required: false);
+            var __workflow_bodyfileContents = bodyfileContents == null ? null : WorkflowExpression.Compile(bodyfileContents);
+            WorkflowExpression.Validate(__workflow_bodyfileContents, nameof(bodyfileContents), required: false);
+            var __workflow_bodyfileName = bodyfileName == null ? null : WorkflowExpression.Compile(bodyfileName);
+            WorkflowExpression.Validate(__workflow_bodyfileName, nameof(bodyfileName), required: false);
+            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
+            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodycreatedDate = bodycreatedDate == null ? null : WorkflowExpression.Compile(bodycreatedDate);
+            WorkflowExpression.Validate(__workflow_bodycreatedDate, nameof(bodycreatedDate), required: false);
+            var __workflow_bodyeDOCType = bodyeDOCType == null ? null : WorkflowExpression.Compile(bodyeDOCType);
+            WorkflowExpression.Validate(__workflow_bodyeDOCType, nameof(bodyeDOCType), required: false);
+            var __workflow_bodyextraFields = bodyextraFields == null ? null : WorkflowExpression.Compile(bodyextraFields);
+            WorkflowExpression.Validate(__workflow_bodyextraFields, nameof(bodyextraFields), required: false);
             return new DeferredBodyAction<SendFileResponse>(() =>
             {
                 var apiCallPath = "/SendFile";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (hostUrl != null)
-                    callPayload.Queries["HostUrl"] = ExpressionConverter.Convert(hostUrl);
-                if (userName != null)
-                    callPayload.Queries["UserName"] = ExpressionConverter.Convert(userName);
+                if (__workflow_hostUrl != null)
+                    callPayload.Queries["HostUrl"] = ExpressionConverter.Convert(__workflow_hostUrl);
+                if (__workflow_userName != null)
+                    callPayload.Queries["UserName"] = ExpressionConverter.Convert(__workflow_userName);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfileContents != null)
+                if (__workflow_bodyfileContents != null)
                 {
-                    body["FileContents"] = ExpressionConverter.ConvertO(bodyfileContents);
+                    body["FileContents"] = ExpressionConverter.ConvertO(__workflow_bodyfileContents);
                     bodypropCount++;
                 }
 
-                if (bodyfileName != null)
+                if (__workflow_bodyfileName != null)
                 {
-                    body["FileName"] = ExpressionConverter.ConvertO(bodyfileName);
+                    body["FileName"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
                     bodypropCount++;
                 }
 
-                if (bodytitle != null)
+                if (__workflow_bodytitle != null)
                 {
-                    body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                    body["Title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
                     bodypropCount++;
                 }
 
-                if (bodycreatedDate != null)
+                if (__workflow_bodycreatedDate != null)
                 {
-                    body["CreatedDate"] = ExpressionConverter.ConvertO(bodycreatedDate);
+                    body["CreatedDate"] = ExpressionConverter.ConvertO(__workflow_bodycreatedDate);
                     bodypropCount++;
                 }
 
-                if (bodyeDOCType != null)
+                if (__workflow_bodyeDOCType != null)
                 {
-                    body["EDOCType"] = ExpressionConverter.ConvertO(bodyeDOCType);
+                    body["EDOCType"] = ExpressionConverter.ConvertO(__workflow_bodyeDOCType);
                     bodypropCount++;
                 }
 
-                if (bodyextraFields != null)
+                if (__workflow_bodyextraFields != null)
                 {
-                    body["ExtraFields"] = ExpressionConverter.ConvertO(bodyextraFields);
+                    body["ExtraFields"] = ExpressionConverter.ConvertO(__workflow_bodyextraFields);
                     bodypropCount++;
                 }
 

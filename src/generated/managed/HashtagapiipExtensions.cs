@@ -1,33 +1,26 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class HashtagapiipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashtagapiip")]
-        [WorkflowExpressionFactory(nameof(__BuildHashtagsSimilarGet))]
-        public IBodyWorkflowAction<HashtagsSimilarGetResponse> HashtagsSimilarGet([WorkflowExpression] Func<string> keyword)
+        public IBodyWorkflowAction<HashtagsSimilarGetResponse> HashtagsSimilarGet(Expression<Func<string>> keyword)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<HashtagsSimilarGetResponse> __BuildHashtagsSimilarGet(WorkflowExpression<string> keyword)
-        {
-            WorkflowExpression.Validate(keyword, nameof(keyword), required: true);
+            var __workflow_keyword = keyword == null ? null : WorkflowExpression.Compile(keyword);
+            WorkflowExpression.Validate(__workflow_keyword, nameof(keyword), required: true);
             return new DeferredBodyAction<HashtagsSimilarGetResponse>(() =>
             {
                 var apiCallPath = "/tag/predict";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["keyword"] = ExpressionConverter.Convert(keyword);
+                callPayload.Queries["keyword"] = ExpressionConverter.Convert(__workflow_keyword);
                 return new ApiConnectionAction<HashtagsSimilarGetResponse>(callPayload);
             });
         }
@@ -51,37 +44,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashtagapiip")]
-        [WorkflowExpressionFactory(nameof(__BuildPostCountGet))]
-        public IBodyWorkflowAction<PostCountGetResponse> PostCountGet([WorkflowExpression] Func<string> tag)
+        public IBodyWorkflowAction<PostCountGetResponse> PostCountGet(Expression<Func<string>> tag)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PostCountGetResponse> __BuildPostCountGet(WorkflowExpression<string> tag)
-        {
-            WorkflowExpression.Validate(tag, nameof(tag), required: true);
+            var __workflow_tag = tag == null ? null : WorkflowExpression.Compile(tag);
+            WorkflowExpression.Validate(__workflow_tag, nameof(tag), required: true);
             return new DeferredBodyAction<PostCountGetResponse>(() =>
             {
                 var apiCallPath = "/tag/count";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["tag"] = ExpressionConverter.Convert(tag);
+                callPayload.Queries["tag"] = ExpressionConverter.Convert(__workflow_tag);
                 return new ApiConnectionAction<PostCountGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashtagapiip")]
-        [WorkflowExpressionFactory(nameof(__BuildImageHashtags))]
-        public IBodyWorkflowAction<ImageHashtagsPostResponse> ImageHashtags([WorkflowExpression] Func<string> bodyimage)
+        public IBodyWorkflowAction<ImageHashtagsPostResponse> ImageHashtags(Expression<Func<string>> bodyimage)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ImageHashtagsPostResponse> __BuildImageHashtags(WorkflowExpression<string> bodyimage)
-        {
-            WorkflowExpression.Validate(bodyimage, nameof(bodyimage), required: true);
+            var __workflow_bodyimage = bodyimage == null ? null : WorkflowExpression.Compile(bodyimage);
+            WorkflowExpression.Validate(__workflow_bodyimage, nameof(bodyimage), required: true);
             return new DeferredBodyAction<ImageHashtagsPostResponse>(() =>
             {
                 var apiCallPath = "/tag/generate";
@@ -90,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["image"] = ExpressionConverter.ConvertO(bodyimage);
+                body["image"] = ExpressionConverter.ConvertO(__workflow_bodyimage);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -110,19 +91,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashtagapiip")]
-        [WorkflowExpressionFactory(nameof(__BuildCategoryGet))]
-        public IBodyWorkflowAction<CategoryGetResponse> CategoryGet([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<CategoryGetResponse> CategoryGet(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CategoryGetResponse> __BuildCategoryGet(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<CategoryGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/categories/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/categories/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CategoryGetResponse>(callPayload);
@@ -130,19 +105,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashtagapiip")]
-        [WorkflowExpressionFactory(nameof(__BuildCategoryTagsGet))]
-        public IBodyWorkflowAction<CategoryTagsGetResponse> CategoryTagsGet([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<CategoryTagsGetResponse> CategoryTagsGet(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CategoryTagsGetResponse> __BuildCategoryTagsGet(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<CategoryTagsGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/categories/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/categories/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CategoryTagsGetResponse>(callPayload);
@@ -159,19 +128,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashtagapiip")]
-        [WorkflowExpressionFactory(nameof(__BuildCountryTagsGet))]
-        public IBodyWorkflowAction<CountryTagsGetResponse> CountryTagsGet([WorkflowExpression] Func<string> countryName)
+        public IBodyWorkflowAction<CountryTagsGetResponse> CountryTagsGet(Expression<Func<string>> countryName)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CountryTagsGetResponse> __BuildCountryTagsGet(WorkflowExpression<string> countryName)
-        {
-            WorkflowExpression.Validate(countryName, nameof(countryName), required: true);
+            var __workflow_countryName = countryName == null ? null : WorkflowExpression.Compile(countryName);
+            WorkflowExpression.Validate(__workflow_countryName, nameof(countryName), required: true);
             return new DeferredBodyAction<CountryTagsGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trending/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(countryName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trending/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(__workflow_countryName, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CountryTagsGetResponse>(callPayload);

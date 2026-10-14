@@ -1,12 +1,12 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Paylocity
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class PaylocityActions([ConnectionName] string connectionId)
     {
@@ -14,17 +14,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Paylocity
 
     public class PaylocityTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildWebhookTrigger))]
-        public IWorkflowTrigger WebhookTrigger([WorkflowExpression] Func<string> requestBodyOfWebhookCompanyId = null,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WebhookTrigger(Expression<Func<string>> requestBodyOfWebhookCompanyId = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildWebhookTrigger(WorkflowExpression<string> requestBodyOfWebhookCompanyId = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(requestBodyOfWebhookCompanyId, nameof(requestBodyOfWebhookCompanyId), required: false);
+            var __workflow_requestBodyOfWebhookCompanyId = requestBodyOfWebhookCompanyId == null ? null : WorkflowExpression.Compile(requestBodyOfWebhookCompanyId);
+            WorkflowExpression.Validate(__workflow_requestBodyOfWebhookCompanyId, nameof(requestBodyOfWebhookCompanyId), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/v2/webhooks/TimeOffRequestApprovalNotification";
@@ -32,9 +25,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Paylocity
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var requestBodyOfWebhook = new JObject();
                 var requestBodyOfWebhookpropCount = 0;
-                if (requestBodyOfWebhookCompanyId != null)
+                if (__workflow_requestBodyOfWebhookCompanyId != null)
                 {
-                    requestBodyOfWebhook["companyId"] = ExpressionConverter.ConvertO(requestBodyOfWebhookCompanyId);
+                    requestBodyOfWebhook["companyId"] = ExpressionConverter.ConvertO(__workflow_requestBodyOfWebhookCompanyId);
                     requestBodyOfWebhookpropCount++;
                 }
 

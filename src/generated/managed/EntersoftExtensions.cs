@@ -1,30 +1,23 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class EntersoftActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildES00DocumentsInfo))]
-        public IBodyWorkflowAction<EntersoftWebApiModelsES00DocumentInfo> ES00DocumentsInfo([WorkflowExpression] Func<string> routeid)
+        public IBodyWorkflowAction<EntersoftWebApiModelsES00DocumentInfo> ES00DocumentsInfo(Expression<Func<string>> routeid)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApiModelsES00DocumentInfo> __BuildES00DocumentsInfo(WorkflowExpression<string> routeid)
-        {
-            WorkflowExpression.Validate(routeid, nameof(routeid), required: true);
+            var __workflow_routeid = routeid == null ? null : WorkflowExpression.Compile(routeid);
+            WorkflowExpression.Validate(__workflow_routeid, nameof(routeid), required: true);
             return new DeferredBodyAction<EntersoftWebApiModelsES00DocumentInfo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ES00Documents/Info/{0}", ExpressionConverter.ConvertWithUrlEncoding(routeid, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ES00Documents/Info/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_routeid, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApiModelsES00DocumentInfo>(callPayload);
@@ -32,19 +25,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildES00DocumentsInfoByEntityGid))]
-        public IBodyWorkflowAction<EntersoftWebApiModelsES00DocumentInfo[]> ES00DocumentsInfoByEntityGid([WorkflowExpression] Func<string> routeid)
+        public IBodyWorkflowAction<EntersoftWebApiModelsES00DocumentInfo[]> ES00DocumentsInfoByEntityGid(Expression<Func<string>> routeid)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApiModelsES00DocumentInfo[]> __BuildES00DocumentsInfoByEntityGid(WorkflowExpression<string> routeid)
-        {
-            WorkflowExpression.Validate(routeid, nameof(routeid), required: true);
+            var __workflow_routeid = routeid == null ? null : WorkflowExpression.Compile(routeid);
+            WorkflowExpression.Validate(__workflow_routeid, nameof(routeid), required: true);
             return new DeferredBodyAction<EntersoftWebApiModelsES00DocumentInfo[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ES00Documents/InfoByEntityGid/{0}", ExpressionConverter.ConvertWithUrlEncoding(routeid, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ES00Documents/InfoByEntityGid/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_routeid, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApiModelsES00DocumentInfo[]>(callPayload);
@@ -52,133 +39,120 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildES00DocumentsBlobDataByGid))]
-        public IBodyWorkflowAction<JToken> ES00DocumentsBlobDataByGid([WorkflowExpression] Func<string> routeid, [WorkflowExpression] Func<string> webapitoken = null)
+        public IBodyWorkflowAction<JToken> ES00DocumentsBlobDataByGid(Expression<Func<string>> routeid, Expression<Func<string>> webapitoken = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildES00DocumentsBlobDataByGid(WorkflowExpression<string> routeid, WorkflowExpression<string> webapitoken = null)
-        {
-            WorkflowExpression.Validate(routeid, nameof(routeid), required: true);
-            WorkflowExpression.Validate(webapitoken, nameof(webapitoken), required: false);
+            var __workflow_routeid = routeid == null ? null : WorkflowExpression.Compile(routeid);
+            WorkflowExpression.Validate(__workflow_routeid, nameof(routeid), required: true);
+            var __workflow_webapitoken = webapitoken == null ? null : WorkflowExpression.Compile(webapitoken);
+            WorkflowExpression.Validate(__workflow_webapitoken, nameof(webapitoken), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ES00Documents/BlobDataByGid/{0}", ExpressionConverter.ConvertWithUrlEncoding(routeid, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ES00Documents/BlobDataByGid/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_routeid, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (webapitoken != null)
-                    callPayload.Queries["webapitoken"] = ExpressionConverter.Convert(webapitoken);
+                if (__workflow_webapitoken != null)
+                    callPayload.Queries["webapitoken"] = ExpressionConverter.Convert(__workflow_webapitoken);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildES00DocumentsDownloadBlobDataByGID))]
-        public IBodyWorkflowAction<JToken> ES00DocumentsDownloadBlobDataByGID([WorkflowExpression] Func<string> routeid, [WorkflowExpression] Func<string> webapitoken = null, [WorkflowExpression] Func<bool> partialMode = null)
+        public IBodyWorkflowAction<JToken> ES00DocumentsDownloadBlobDataByGID(Expression<Func<string>> routeid, Expression<Func<string>> webapitoken = null, Expression<Func<bool>> partialMode = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildES00DocumentsDownloadBlobDataByGID(WorkflowExpression<string> routeid, WorkflowExpression<string> webapitoken = null, WorkflowExpression<bool> partialMode = null)
-        {
-            WorkflowExpression.Validate(routeid, nameof(routeid), required: true);
-            WorkflowExpression.Validate(webapitoken, nameof(webapitoken), required: false);
-            WorkflowExpression.Validate(partialMode, nameof(partialMode), required: false);
+            var __workflow_routeid = routeid == null ? null : WorkflowExpression.Compile(routeid);
+            WorkflowExpression.Validate(__workflow_routeid, nameof(routeid), required: true);
+            var __workflow_webapitoken = webapitoken == null ? null : WorkflowExpression.Compile(webapitoken);
+            WorkflowExpression.Validate(__workflow_webapitoken, nameof(webapitoken), required: false);
+            var __workflow_partialMode = partialMode == null ? null : WorkflowExpression.Compile(partialMode);
+            WorkflowExpression.Validate(__workflow_partialMode, nameof(partialMode), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ES00Documents/DownloadBlobDataByGID/{0}", ExpressionConverter.ConvertWithUrlEncoding(routeid, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ES00Documents/DownloadBlobDataByGID/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_routeid, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (webapitoken != null)
-                    callPayload.Queries["webapitoken"] = ExpressionConverter.Convert(webapitoken);
-                if (partialMode != null)
-                    callPayload.Queries["PartialMode"] = ExpressionConverter.Convert(partialMode);
+                if (__workflow_webapitoken != null)
+                    callPayload.Queries["webapitoken"] = ExpressionConverter.Convert(__workflow_webapitoken);
+                if (__workflow_partialMode != null)
+                    callPayload.Queries["PartialMode"] = ExpressionConverter.Convert(__workflow_partialMode);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildES00DocumentsGetES00Blob))]
-        public IBodyWorkflowAction<JToken> ES00DocumentsGetES00Blob([WorkflowExpression] Func<string> routeid, [WorkflowExpression] Func<string> extType = null, [WorkflowExpression] Func<string> webapitoken = null, [WorkflowExpression] Func<bool> partialMode = null)
+        public IBodyWorkflowAction<JToken> ES00DocumentsGetES00Blob(Expression<Func<string>> routeid, Expression<Func<string>> extType = null, Expression<Func<string>> webapitoken = null, Expression<Func<bool>> partialMode = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildES00DocumentsGetES00Blob(WorkflowExpression<string> routeid, WorkflowExpression<string> extType = null, WorkflowExpression<string> webapitoken = null, WorkflowExpression<bool> partialMode = null)
-        {
-            WorkflowExpression.Validate(routeid, nameof(routeid), required: true);
-            WorkflowExpression.Validate(extType, nameof(extType), required: false);
-            WorkflowExpression.Validate(webapitoken, nameof(webapitoken), required: false);
-            WorkflowExpression.Validate(partialMode, nameof(partialMode), required: false);
+            var __workflow_routeid = routeid == null ? null : WorkflowExpression.Compile(routeid);
+            WorkflowExpression.Validate(__workflow_routeid, nameof(routeid), required: true);
+            var __workflow_extType = extType == null ? null : WorkflowExpression.Compile(extType);
+            WorkflowExpression.Validate(__workflow_extType, nameof(extType), required: false);
+            var __workflow_webapitoken = webapitoken == null ? null : WorkflowExpression.Compile(webapitoken);
+            WorkflowExpression.Validate(__workflow_webapitoken, nameof(webapitoken), required: false);
+            var __workflow_partialMode = partialMode == null ? null : WorkflowExpression.Compile(partialMode);
+            WorkflowExpression.Validate(__workflow_partialMode, nameof(partialMode), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ES00Documents/GetES00Blob/{0}", ExpressionConverter.ConvertWithUrlEncoding(routeid, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ES00Documents/GetES00Blob/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_routeid, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (extType != null)
-                    callPayload.Queries["extType"] = ExpressionConverter.Convert(extType);
-                if (webapitoken != null)
-                    callPayload.Queries["webapitoken"] = ExpressionConverter.Convert(webapitoken);
-                if (partialMode != null)
-                    callPayload.Queries["PartialMode"] = ExpressionConverter.Convert(partialMode);
+                if (__workflow_extType != null)
+                    callPayload.Queries["extType"] = ExpressionConverter.Convert(__workflow_extType);
+                if (__workflow_webapitoken != null)
+                    callPayload.Queries["webapitoken"] = ExpressionConverter.Convert(__workflow_webapitoken);
+                if (__workflow_partialMode != null)
+                    callPayload.Queries["PartialMode"] = ExpressionConverter.Convert(__workflow_partialMode);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildES00DocumentsGetES00BlobFromObject))]
-        public IBodyWorkflowAction<JToken> ES00DocumentsGetES00BlobFromObject([WorkflowExpression] Func<string> routeid, [WorkflowExpression] Func<string> keyid, [WorkflowExpression] Func<int> typeid, [WorkflowExpression] Func<string> extType = null, [WorkflowExpression] Func<string> webapitoken = null, [WorkflowExpression] Func<bool> partialMode = null)
+        public IBodyWorkflowAction<JToken> ES00DocumentsGetES00BlobFromObject(Expression<Func<string>> routeid, Expression<Func<string>> keyid, Expression<Func<int>> typeid, Expression<Func<string>> extType = null, Expression<Func<string>> webapitoken = null, Expression<Func<bool>> partialMode = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildES00DocumentsGetES00BlobFromObject(WorkflowExpression<string> routeid, WorkflowExpression<string> keyid, WorkflowExpression<int> typeid, WorkflowExpression<string> extType = null, WorkflowExpression<string> webapitoken = null, WorkflowExpression<bool> partialMode = null)
-        {
-            WorkflowExpression.Validate(routeid, nameof(routeid), required: true);
-            WorkflowExpression.Validate(keyid, nameof(keyid), required: true);
-            WorkflowExpression.Validate(typeid, nameof(typeid), required: true);
-            WorkflowExpression.Validate(extType, nameof(extType), required: false);
-            WorkflowExpression.Validate(webapitoken, nameof(webapitoken), required: false);
-            WorkflowExpression.Validate(partialMode, nameof(partialMode), required: false);
+            var __workflow_routeid = routeid == null ? null : WorkflowExpression.Compile(routeid);
+            WorkflowExpression.Validate(__workflow_routeid, nameof(routeid), required: true);
+            var __workflow_keyid = keyid == null ? null : WorkflowExpression.Compile(keyid);
+            WorkflowExpression.Validate(__workflow_keyid, nameof(keyid), required: true);
+            var __workflow_typeid = typeid == null ? null : WorkflowExpression.Compile(typeid);
+            WorkflowExpression.Validate(__workflow_typeid, nameof(typeid), required: true);
+            var __workflow_extType = extType == null ? null : WorkflowExpression.Compile(extType);
+            WorkflowExpression.Validate(__workflow_extType, nameof(extType), required: false);
+            var __workflow_webapitoken = webapitoken == null ? null : WorkflowExpression.Compile(webapitoken);
+            WorkflowExpression.Validate(__workflow_webapitoken, nameof(webapitoken), required: false);
+            var __workflow_partialMode = partialMode == null ? null : WorkflowExpression.Compile(partialMode);
+            WorkflowExpression.Validate(__workflow_partialMode, nameof(partialMode), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ES00Documents/GetES00BlobFromObject/{0}", ExpressionConverter.ConvertWithUrlEncoding(routeid, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ES00Documents/GetES00BlobFromObject/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_routeid, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["keyid"] = ExpressionConverter.Convert(keyid);
-                callPayload.Queries["typeid"] = ExpressionConverter.Convert(typeid);
-                if (extType != null)
-                    callPayload.Queries["extType"] = ExpressionConverter.Convert(extType);
-                if (webapitoken != null)
-                    callPayload.Queries["webapitoken"] = ExpressionConverter.Convert(webapitoken);
-                if (partialMode != null)
-                    callPayload.Queries["PartialMode"] = ExpressionConverter.Convert(partialMode);
+                callPayload.Queries["keyid"] = ExpressionConverter.Convert(__workflow_keyid);
+                callPayload.Queries["typeid"] = ExpressionConverter.Convert(__workflow_typeid);
+                if (__workflow_extType != null)
+                    callPayload.Queries["extType"] = ExpressionConverter.Convert(__workflow_extType);
+                if (__workflow_webapitoken != null)
+                    callPayload.Queries["webapitoken"] = ExpressionConverter.Convert(__workflow_webapitoken);
+                if (__workflow_partialMode != null)
+                    callPayload.Queries["PartialMode"] = ExpressionConverter.Convert(__workflow_partialMode);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildES00DocumentsPostBodyToES00Blob))]
-        public IBodyWorkflowAction<string> ES00DocumentsPostBodyToES00Blob([WorkflowExpression] Func<string> blobInfogID = null, [WorkflowExpression] Func<string> blobInfoobjectID = null, [WorkflowExpression] Func<string> blobInfokeyID = null, [WorkflowExpression] Func<int> blobInfotypeID = null, [WorkflowExpression] Func<string> blobInfoext = null, [WorkflowExpression] Func<string> blobInfotextBody = null, [WorkflowExpression] Func<bool> blobInfoisNew = null)
+        public IBodyWorkflowAction<string> ES00DocumentsPostBodyToES00Blob(Expression<Func<string>> blobInfogID = null, Expression<Func<string>> blobInfoobjectID = null, Expression<Func<string>> blobInfokeyID = null, Expression<Func<int>> blobInfotypeID = null, Expression<Func<string>> blobInfoext = null, Expression<Func<string>> blobInfotextBody = null, Expression<Func<bool>> blobInfoisNew = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildES00DocumentsPostBodyToES00Blob(WorkflowExpression<string> blobInfogID = null, WorkflowExpression<string> blobInfoobjectID = null, WorkflowExpression<string> blobInfokeyID = null, WorkflowExpression<int> blobInfotypeID = null, WorkflowExpression<string> blobInfoext = null, WorkflowExpression<string> blobInfotextBody = null, WorkflowExpression<bool> blobInfoisNew = null)
-        {
-            WorkflowExpression.Validate(blobInfogID, nameof(blobInfogID), required: false);
-            WorkflowExpression.Validate(blobInfoobjectID, nameof(blobInfoobjectID), required: false);
-            WorkflowExpression.Validate(blobInfokeyID, nameof(blobInfokeyID), required: false);
-            WorkflowExpression.Validate(blobInfotypeID, nameof(blobInfotypeID), required: false);
-            WorkflowExpression.Validate(blobInfoext, nameof(blobInfoext), required: false);
-            WorkflowExpression.Validate(blobInfotextBody, nameof(blobInfotextBody), required: false);
-            WorkflowExpression.Validate(blobInfoisNew, nameof(blobInfoisNew), required: false);
+            var __workflow_blobInfogID = blobInfogID == null ? null : WorkflowExpression.Compile(blobInfogID);
+            WorkflowExpression.Validate(__workflow_blobInfogID, nameof(blobInfogID), required: false);
+            var __workflow_blobInfoobjectID = blobInfoobjectID == null ? null : WorkflowExpression.Compile(blobInfoobjectID);
+            WorkflowExpression.Validate(__workflow_blobInfoobjectID, nameof(blobInfoobjectID), required: false);
+            var __workflow_blobInfokeyID = blobInfokeyID == null ? null : WorkflowExpression.Compile(blobInfokeyID);
+            WorkflowExpression.Validate(__workflow_blobInfokeyID, nameof(blobInfokeyID), required: false);
+            var __workflow_blobInfotypeID = blobInfotypeID == null ? null : WorkflowExpression.Compile(blobInfotypeID);
+            WorkflowExpression.Validate(__workflow_blobInfotypeID, nameof(blobInfotypeID), required: false);
+            var __workflow_blobInfoext = blobInfoext == null ? null : WorkflowExpression.Compile(blobInfoext);
+            WorkflowExpression.Validate(__workflow_blobInfoext, nameof(blobInfoext), required: false);
+            var __workflow_blobInfotextBody = blobInfotextBody == null ? null : WorkflowExpression.Compile(blobInfotextBody);
+            WorkflowExpression.Validate(__workflow_blobInfotextBody, nameof(blobInfotextBody), required: false);
+            var __workflow_blobInfoisNew = blobInfoisNew == null ? null : WorkflowExpression.Compile(blobInfoisNew);
+            WorkflowExpression.Validate(__workflow_blobInfoisNew, nameof(blobInfoisNew), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/api/ES00Documents/PostBodyToES00Blob/";
@@ -186,45 +160,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var blobInfo = new JObject();
                 var blobInfopropCount = 0;
-                if (blobInfogID != null)
+                if (__workflow_blobInfogID != null)
                 {
-                    blobInfo["GID"] = ExpressionConverter.ConvertO(blobInfogID);
+                    blobInfo["GID"] = ExpressionConverter.ConvertO(__workflow_blobInfogID);
                     blobInfopropCount++;
                 }
 
-                if (blobInfoobjectID != null)
+                if (__workflow_blobInfoobjectID != null)
                 {
-                    blobInfo["ObjectID"] = ExpressionConverter.ConvertO(blobInfoobjectID);
+                    blobInfo["ObjectID"] = ExpressionConverter.ConvertO(__workflow_blobInfoobjectID);
                     blobInfopropCount++;
                 }
 
-                if (blobInfokeyID != null)
+                if (__workflow_blobInfokeyID != null)
                 {
-                    blobInfo["KeyID"] = ExpressionConverter.ConvertO(blobInfokeyID);
+                    blobInfo["KeyID"] = ExpressionConverter.ConvertO(__workflow_blobInfokeyID);
                     blobInfopropCount++;
                 }
 
-                if (blobInfotypeID != null)
+                if (__workflow_blobInfotypeID != null)
                 {
-                    blobInfo["TypeID"] = ExpressionConverter.ConvertO(blobInfotypeID);
+                    blobInfo["TypeID"] = ExpressionConverter.ConvertO(__workflow_blobInfotypeID);
                     blobInfopropCount++;
                 }
 
-                if (blobInfoext != null)
+                if (__workflow_blobInfoext != null)
                 {
-                    blobInfo["Ext"] = ExpressionConverter.ConvertO(blobInfoext);
+                    blobInfo["Ext"] = ExpressionConverter.ConvertO(__workflow_blobInfoext);
                     blobInfopropCount++;
                 }
 
-                if (blobInfotextBody != null)
+                if (__workflow_blobInfotextBody != null)
                 {
-                    blobInfo["TextBody"] = ExpressionConverter.ConvertO(blobInfotextBody);
+                    blobInfo["TextBody"] = ExpressionConverter.ConvertO(__workflow_blobInfotextBody);
                     blobInfopropCount++;
                 }
 
-                if (blobInfoisNew != null)
+                if (__workflow_blobInfoisNew != null)
                 {
-                    blobInfo["IsNew"] = ExpressionConverter.ConvertO(blobInfoisNew);
+                    blobInfo["IsNew"] = ExpressionConverter.ConvertO(__workflow_blobInfoisNew);
                     blobInfopropCount++;
                 }
 
@@ -238,69 +212,86 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildES00DocumentsGetBodyFromES00Blob))]
-        public IBodyWorkflowAction<EntersoftWebApiModelsES00BlobInfo> ES00DocumentsGetBodyFromES00Blob([WorkflowExpression] Func<string> routeid, [WorkflowExpression] Func<string> keyid = null, [WorkflowExpression] Func<int> typeid = null)
+        public IBodyWorkflowAction<EntersoftWebApiModelsES00BlobInfo> ES00DocumentsGetBodyFromES00Blob(Expression<Func<string>> routeid, Expression<Func<string>> keyid = null, Expression<Func<int>> typeid = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApiModelsES00BlobInfo> __BuildES00DocumentsGetBodyFromES00Blob(WorkflowExpression<string> routeid, WorkflowExpression<string> keyid = null, WorkflowExpression<int> typeid = null)
-        {
-            WorkflowExpression.Validate(routeid, nameof(routeid), required: true);
-            WorkflowExpression.Validate(keyid, nameof(keyid), required: false);
-            WorkflowExpression.Validate(typeid, nameof(typeid), required: false);
+            var __workflow_routeid = routeid == null ? null : WorkflowExpression.Compile(routeid);
+            WorkflowExpression.Validate(__workflow_routeid, nameof(routeid), required: true);
+            var __workflow_keyid = keyid == null ? null : WorkflowExpression.Compile(keyid);
+            WorkflowExpression.Validate(__workflow_keyid, nameof(keyid), required: false);
+            var __workflow_typeid = typeid == null ? null : WorkflowExpression.Compile(typeid);
+            WorkflowExpression.Validate(__workflow_typeid, nameof(typeid), required: false);
             return new DeferredBodyAction<EntersoftWebApiModelsES00BlobInfo>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ES00Documents/GetBodyFromES00Blob/{0}", ExpressionConverter.ConvertWithUrlEncoding(routeid, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ES00Documents/GetBodyFromES00Blob/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_routeid, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (keyid != null)
-                    callPayload.Queries["keyid"] = ExpressionConverter.Convert(keyid);
-                if (typeid != null)
-                    callPayload.Queries["typeid"] = ExpressionConverter.Convert(typeid);
+                if (__workflow_keyid != null)
+                    callPayload.Queries["keyid"] = ExpressionConverter.Convert(__workflow_keyid);
+                if (__workflow_typeid != null)
+                    callPayload.Queries["typeid"] = ExpressionConverter.Convert(__workflow_typeid);
                 return new ApiConnectionAction<EntersoftWebApiModelsES00BlobInfo>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildES00DocumentsDeleteES00Document))]
-        public IBodyWorkflowAction<JToken> ES00DocumentsDeleteES00Document([WorkflowExpression] Func<string> paramsgID = null, [WorkflowExpression] Func<string> paramscode = null, [WorkflowExpression] Func<string> paramstitle = null, [WorkflowExpression] Func<string> paramsdescription = null, [WorkflowExpression] Func<string> paramscaption = null, [WorkflowExpression] Func<string> paramseDate = null, [WorkflowExpression] Func<string> paramsfType = null, [WorkflowExpression] Func<string> paramstableID = null, [WorkflowExpression] Func<string> paramstableName = null, [WorkflowExpression] Func<string> paramsfGID = null, [WorkflowExpression] Func<string> paramsfDetailLineGID = null, [WorkflowExpression] Func<string> paramsuNCPath = null, [WorkflowExpression] Func<string> paramsoriginalPath = null, [WorkflowExpression] Func<string> paramsoriginalFN = null, [WorkflowExpression] Func<string> paramsfDocCategoryCode = null, [WorkflowExpression] Func<string> paramsfDocGroupCode = null, [WorkflowExpression] Func<string> paramsfCompanyCode = null, [WorkflowExpression] Func<string> paramsfDocumentCategoryCode = null, [WorkflowExpression] Func<string> paramsfDocumentLocationCode = null, [WorkflowExpression] Func<string> paramseSDModified = null, [WorkflowExpression] Func<string> paramseSUModified = null, [WorkflowExpression] Func<string> paramseSDCreated = null, [WorkflowExpression] Func<string> paramseSUCreated = null, [WorkflowExpression] Func<bool> paramsisBLOB = null, [WorkflowExpression] Func<bool> paramsingoing = null, [WorkflowExpression] Func<string> paramsfRLSNodeGID = null, [WorkflowExpression] Func<int> paramsbLOBDATALength = null, [WorkflowExpression] Func<string> paramsbLOBDATA = null)
+        public IBodyWorkflowAction<JToken> ES00DocumentsDeleteES00Document(Expression<Func<string>> paramsgID = null, Expression<Func<string>> paramscode = null, Expression<Func<string>> paramstitle = null, Expression<Func<string>> paramsdescription = null, Expression<Func<string>> paramscaption = null, Expression<Func<string>> paramseDate = null, Expression<Func<string>> paramsfType = null, Expression<Func<string>> paramstableID = null, Expression<Func<string>> paramstableName = null, Expression<Func<string>> paramsfGID = null, Expression<Func<string>> paramsfDetailLineGID = null, Expression<Func<string>> paramsuNCPath = null, Expression<Func<string>> paramsoriginalPath = null, Expression<Func<string>> paramsoriginalFN = null, Expression<Func<string>> paramsfDocCategoryCode = null, Expression<Func<string>> paramsfDocGroupCode = null, Expression<Func<string>> paramsfCompanyCode = null, Expression<Func<string>> paramsfDocumentCategoryCode = null, Expression<Func<string>> paramsfDocumentLocationCode = null, Expression<Func<string>> paramseSDModified = null, Expression<Func<string>> paramseSUModified = null, Expression<Func<string>> paramseSDCreated = null, Expression<Func<string>> paramseSUCreated = null, Expression<Func<bool>> paramsisBLOB = null, Expression<Func<bool>> paramsingoing = null, Expression<Func<string>> paramsfRLSNodeGID = null, Expression<Func<int>> paramsbLOBDATALength = null, Expression<Func<string>> paramsbLOBDATA = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildES00DocumentsDeleteES00Document(WorkflowExpression<string> paramsgID = null, WorkflowExpression<string> paramscode = null, WorkflowExpression<string> paramstitle = null, WorkflowExpression<string> paramsdescription = null, WorkflowExpression<string> paramscaption = null, WorkflowExpression<string> paramseDate = null, WorkflowExpression<string> paramsfType = null, WorkflowExpression<string> paramstableID = null, WorkflowExpression<string> paramstableName = null, WorkflowExpression<string> paramsfGID = null, WorkflowExpression<string> paramsfDetailLineGID = null, WorkflowExpression<string> paramsuNCPath = null, WorkflowExpression<string> paramsoriginalPath = null, WorkflowExpression<string> paramsoriginalFN = null, WorkflowExpression<string> paramsfDocCategoryCode = null, WorkflowExpression<string> paramsfDocGroupCode = null, WorkflowExpression<string> paramsfCompanyCode = null, WorkflowExpression<string> paramsfDocumentCategoryCode = null, WorkflowExpression<string> paramsfDocumentLocationCode = null, WorkflowExpression<string> paramseSDModified = null, WorkflowExpression<string> paramseSUModified = null, WorkflowExpression<string> paramseSDCreated = null, WorkflowExpression<string> paramseSUCreated = null, WorkflowExpression<bool> paramsisBLOB = null, WorkflowExpression<bool> paramsingoing = null, WorkflowExpression<string> paramsfRLSNodeGID = null, WorkflowExpression<int> paramsbLOBDATALength = null, WorkflowExpression<string> paramsbLOBDATA = null)
-        {
-            WorkflowExpression.Validate(paramsgID, nameof(paramsgID), required: false);
-            WorkflowExpression.Validate(paramscode, nameof(paramscode), required: false);
-            WorkflowExpression.Validate(paramstitle, nameof(paramstitle), required: false);
-            WorkflowExpression.Validate(paramsdescription, nameof(paramsdescription), required: false);
-            WorkflowExpression.Validate(paramscaption, nameof(paramscaption), required: false);
-            WorkflowExpression.Validate(paramseDate, nameof(paramseDate), required: false);
-            WorkflowExpression.Validate(paramsfType, nameof(paramsfType), required: false);
-            WorkflowExpression.Validate(paramstableID, nameof(paramstableID), required: false);
-            WorkflowExpression.Validate(paramstableName, nameof(paramstableName), required: false);
-            WorkflowExpression.Validate(paramsfGID, nameof(paramsfGID), required: false);
-            WorkflowExpression.Validate(paramsfDetailLineGID, nameof(paramsfDetailLineGID), required: false);
-            WorkflowExpression.Validate(paramsuNCPath, nameof(paramsuNCPath), required: false);
-            WorkflowExpression.Validate(paramsoriginalPath, nameof(paramsoriginalPath), required: false);
-            WorkflowExpression.Validate(paramsoriginalFN, nameof(paramsoriginalFN), required: false);
-            WorkflowExpression.Validate(paramsfDocCategoryCode, nameof(paramsfDocCategoryCode), required: false);
-            WorkflowExpression.Validate(paramsfDocGroupCode, nameof(paramsfDocGroupCode), required: false);
-            WorkflowExpression.Validate(paramsfCompanyCode, nameof(paramsfCompanyCode), required: false);
-            WorkflowExpression.Validate(paramsfDocumentCategoryCode, nameof(paramsfDocumentCategoryCode), required: false);
-            WorkflowExpression.Validate(paramsfDocumentLocationCode, nameof(paramsfDocumentLocationCode), required: false);
-            WorkflowExpression.Validate(paramseSDModified, nameof(paramseSDModified), required: false);
-            WorkflowExpression.Validate(paramseSUModified, nameof(paramseSUModified), required: false);
-            WorkflowExpression.Validate(paramseSDCreated, nameof(paramseSDCreated), required: false);
-            WorkflowExpression.Validate(paramseSUCreated, nameof(paramseSUCreated), required: false);
-            WorkflowExpression.Validate(paramsisBLOB, nameof(paramsisBLOB), required: false);
-            WorkflowExpression.Validate(paramsingoing, nameof(paramsingoing), required: false);
-            WorkflowExpression.Validate(paramsfRLSNodeGID, nameof(paramsfRLSNodeGID), required: false);
-            WorkflowExpression.Validate(paramsbLOBDATALength, nameof(paramsbLOBDATALength), required: false);
-            WorkflowExpression.Validate(paramsbLOBDATA, nameof(paramsbLOBDATA), required: false);
+            var __workflow_paramsgID = paramsgID == null ? null : WorkflowExpression.Compile(paramsgID);
+            WorkflowExpression.Validate(__workflow_paramsgID, nameof(paramsgID), required: false);
+            var __workflow_paramscode = paramscode == null ? null : WorkflowExpression.Compile(paramscode);
+            WorkflowExpression.Validate(__workflow_paramscode, nameof(paramscode), required: false);
+            var __workflow_paramstitle = paramstitle == null ? null : WorkflowExpression.Compile(paramstitle);
+            WorkflowExpression.Validate(__workflow_paramstitle, nameof(paramstitle), required: false);
+            var __workflow_paramsdescription = paramsdescription == null ? null : WorkflowExpression.Compile(paramsdescription);
+            WorkflowExpression.Validate(__workflow_paramsdescription, nameof(paramsdescription), required: false);
+            var __workflow_paramscaption = paramscaption == null ? null : WorkflowExpression.Compile(paramscaption);
+            WorkflowExpression.Validate(__workflow_paramscaption, nameof(paramscaption), required: false);
+            var __workflow_paramseDate = paramseDate == null ? null : WorkflowExpression.Compile(paramseDate);
+            WorkflowExpression.Validate(__workflow_paramseDate, nameof(paramseDate), required: false);
+            var __workflow_paramsfType = paramsfType == null ? null : WorkflowExpression.Compile(paramsfType);
+            WorkflowExpression.Validate(__workflow_paramsfType, nameof(paramsfType), required: false);
+            var __workflow_paramstableID = paramstableID == null ? null : WorkflowExpression.Compile(paramstableID);
+            WorkflowExpression.Validate(__workflow_paramstableID, nameof(paramstableID), required: false);
+            var __workflow_paramstableName = paramstableName == null ? null : WorkflowExpression.Compile(paramstableName);
+            WorkflowExpression.Validate(__workflow_paramstableName, nameof(paramstableName), required: false);
+            var __workflow_paramsfGID = paramsfGID == null ? null : WorkflowExpression.Compile(paramsfGID);
+            WorkflowExpression.Validate(__workflow_paramsfGID, nameof(paramsfGID), required: false);
+            var __workflow_paramsfDetailLineGID = paramsfDetailLineGID == null ? null : WorkflowExpression.Compile(paramsfDetailLineGID);
+            WorkflowExpression.Validate(__workflow_paramsfDetailLineGID, nameof(paramsfDetailLineGID), required: false);
+            var __workflow_paramsuNCPath = paramsuNCPath == null ? null : WorkflowExpression.Compile(paramsuNCPath);
+            WorkflowExpression.Validate(__workflow_paramsuNCPath, nameof(paramsuNCPath), required: false);
+            var __workflow_paramsoriginalPath = paramsoriginalPath == null ? null : WorkflowExpression.Compile(paramsoriginalPath);
+            WorkflowExpression.Validate(__workflow_paramsoriginalPath, nameof(paramsoriginalPath), required: false);
+            var __workflow_paramsoriginalFN = paramsoriginalFN == null ? null : WorkflowExpression.Compile(paramsoriginalFN);
+            WorkflowExpression.Validate(__workflow_paramsoriginalFN, nameof(paramsoriginalFN), required: false);
+            var __workflow_paramsfDocCategoryCode = paramsfDocCategoryCode == null ? null : WorkflowExpression.Compile(paramsfDocCategoryCode);
+            WorkflowExpression.Validate(__workflow_paramsfDocCategoryCode, nameof(paramsfDocCategoryCode), required: false);
+            var __workflow_paramsfDocGroupCode = paramsfDocGroupCode == null ? null : WorkflowExpression.Compile(paramsfDocGroupCode);
+            WorkflowExpression.Validate(__workflow_paramsfDocGroupCode, nameof(paramsfDocGroupCode), required: false);
+            var __workflow_paramsfCompanyCode = paramsfCompanyCode == null ? null : WorkflowExpression.Compile(paramsfCompanyCode);
+            WorkflowExpression.Validate(__workflow_paramsfCompanyCode, nameof(paramsfCompanyCode), required: false);
+            var __workflow_paramsfDocumentCategoryCode = paramsfDocumentCategoryCode == null ? null : WorkflowExpression.Compile(paramsfDocumentCategoryCode);
+            WorkflowExpression.Validate(__workflow_paramsfDocumentCategoryCode, nameof(paramsfDocumentCategoryCode), required: false);
+            var __workflow_paramsfDocumentLocationCode = paramsfDocumentLocationCode == null ? null : WorkflowExpression.Compile(paramsfDocumentLocationCode);
+            WorkflowExpression.Validate(__workflow_paramsfDocumentLocationCode, nameof(paramsfDocumentLocationCode), required: false);
+            var __workflow_paramseSDModified = paramseSDModified == null ? null : WorkflowExpression.Compile(paramseSDModified);
+            WorkflowExpression.Validate(__workflow_paramseSDModified, nameof(paramseSDModified), required: false);
+            var __workflow_paramseSUModified = paramseSUModified == null ? null : WorkflowExpression.Compile(paramseSUModified);
+            WorkflowExpression.Validate(__workflow_paramseSUModified, nameof(paramseSUModified), required: false);
+            var __workflow_paramseSDCreated = paramseSDCreated == null ? null : WorkflowExpression.Compile(paramseSDCreated);
+            WorkflowExpression.Validate(__workflow_paramseSDCreated, nameof(paramseSDCreated), required: false);
+            var __workflow_paramseSUCreated = paramseSUCreated == null ? null : WorkflowExpression.Compile(paramseSUCreated);
+            WorkflowExpression.Validate(__workflow_paramseSUCreated, nameof(paramseSUCreated), required: false);
+            var __workflow_paramsisBLOB = paramsisBLOB == null ? null : WorkflowExpression.Compile(paramsisBLOB);
+            WorkflowExpression.Validate(__workflow_paramsisBLOB, nameof(paramsisBLOB), required: false);
+            var __workflow_paramsingoing = paramsingoing == null ? null : WorkflowExpression.Compile(paramsingoing);
+            WorkflowExpression.Validate(__workflow_paramsingoing, nameof(paramsingoing), required: false);
+            var __workflow_paramsfRLSNodeGID = paramsfRLSNodeGID == null ? null : WorkflowExpression.Compile(paramsfRLSNodeGID);
+            WorkflowExpression.Validate(__workflow_paramsfRLSNodeGID, nameof(paramsfRLSNodeGID), required: false);
+            var __workflow_paramsbLOBDATALength = paramsbLOBDATALength == null ? null : WorkflowExpression.Compile(paramsbLOBDATALength);
+            WorkflowExpression.Validate(__workflow_paramsbLOBDATALength, nameof(paramsbLOBDATALength), required: false);
+            var __workflow_paramsbLOBDATA = paramsbLOBDATA == null ? null : WorkflowExpression.Compile(paramsbLOBDATA);
+            WorkflowExpression.Validate(__workflow_paramsbLOBDATA, nameof(paramsbLOBDATA), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/api/ES00Documents/DeleteES00Document/";
@@ -308,171 +299,171 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var @params = new JObject();
                 var @paramspropCount = 0;
-                if (paramsgID != null)
+                if (__workflow_paramsgID != null)
                 {
-                    @params["GID"] = ExpressionConverter.ConvertO(paramsgID);
+                    @params["GID"] = ExpressionConverter.ConvertO(__workflow_paramsgID);
                     @paramspropCount++;
                 }
 
-                if (paramscode != null)
+                if (__workflow_paramscode != null)
                 {
-                    @params["Code"] = ExpressionConverter.ConvertO(paramscode);
+                    @params["Code"] = ExpressionConverter.ConvertO(__workflow_paramscode);
                     @paramspropCount++;
                 }
 
-                if (paramstitle != null)
+                if (__workflow_paramstitle != null)
                 {
-                    @params["Title"] = ExpressionConverter.ConvertO(paramstitle);
+                    @params["Title"] = ExpressionConverter.ConvertO(__workflow_paramstitle);
                     @paramspropCount++;
                 }
 
-                if (paramsdescription != null)
+                if (__workflow_paramsdescription != null)
                 {
-                    @params["Description"] = ExpressionConverter.ConvertO(paramsdescription);
+                    @params["Description"] = ExpressionConverter.ConvertO(__workflow_paramsdescription);
                     @paramspropCount++;
                 }
 
-                if (paramscaption != null)
+                if (__workflow_paramscaption != null)
                 {
-                    @params["Caption"] = ExpressionConverter.ConvertO(paramscaption);
+                    @params["Caption"] = ExpressionConverter.ConvertO(__workflow_paramscaption);
                     @paramspropCount++;
                 }
 
-                if (paramseDate != null)
+                if (__workflow_paramseDate != null)
                 {
-                    @params["EDate"] = ExpressionConverter.ConvertO(paramseDate);
+                    @params["EDate"] = ExpressionConverter.ConvertO(__workflow_paramseDate);
                     @paramspropCount++;
                 }
 
-                if (paramsfType != null)
+                if (__workflow_paramsfType != null)
                 {
-                    @params["FType"] = ExpressionConverter.ConvertO(paramsfType);
+                    @params["FType"] = ExpressionConverter.ConvertO(__workflow_paramsfType);
                     @paramspropCount++;
                 }
 
-                if (paramstableID != null)
+                if (__workflow_paramstableID != null)
                 {
-                    @params["TableID"] = ExpressionConverter.ConvertO(paramstableID);
+                    @params["TableID"] = ExpressionConverter.ConvertO(__workflow_paramstableID);
                     @paramspropCount++;
                 }
 
-                if (paramstableName != null)
+                if (__workflow_paramstableName != null)
                 {
-                    @params["TableName"] = ExpressionConverter.ConvertO(paramstableName);
+                    @params["TableName"] = ExpressionConverter.ConvertO(__workflow_paramstableName);
                     @paramspropCount++;
                 }
 
-                if (paramsfGID != null)
+                if (__workflow_paramsfGID != null)
                 {
-                    @params["fGID"] = ExpressionConverter.ConvertO(paramsfGID);
+                    @params["fGID"] = ExpressionConverter.ConvertO(__workflow_paramsfGID);
                     @paramspropCount++;
                 }
 
-                if (paramsfDetailLineGID != null)
+                if (__workflow_paramsfDetailLineGID != null)
                 {
-                    @params["fDetailLineGID"] = ExpressionConverter.ConvertO(paramsfDetailLineGID);
+                    @params["fDetailLineGID"] = ExpressionConverter.ConvertO(__workflow_paramsfDetailLineGID);
                     @paramspropCount++;
                 }
 
-                if (paramsuNCPath != null)
+                if (__workflow_paramsuNCPath != null)
                 {
-                    @params["UNCPath"] = ExpressionConverter.ConvertO(paramsuNCPath);
+                    @params["UNCPath"] = ExpressionConverter.ConvertO(__workflow_paramsuNCPath);
                     @paramspropCount++;
                 }
 
-                if (paramsoriginalPath != null)
+                if (__workflow_paramsoriginalPath != null)
                 {
-                    @params["OriginalPath"] = ExpressionConverter.ConvertO(paramsoriginalPath);
+                    @params["OriginalPath"] = ExpressionConverter.ConvertO(__workflow_paramsoriginalPath);
                     @paramspropCount++;
                 }
 
-                if (paramsoriginalFN != null)
+                if (__workflow_paramsoriginalFN != null)
                 {
-                    @params["OriginalFN"] = ExpressionConverter.ConvertO(paramsoriginalFN);
+                    @params["OriginalFN"] = ExpressionConverter.ConvertO(__workflow_paramsoriginalFN);
                     @paramspropCount++;
                 }
 
-                if (paramsfDocCategoryCode != null)
+                if (__workflow_paramsfDocCategoryCode != null)
                 {
-                    @params["fDocCategoryCode"] = ExpressionConverter.ConvertO(paramsfDocCategoryCode);
+                    @params["fDocCategoryCode"] = ExpressionConverter.ConvertO(__workflow_paramsfDocCategoryCode);
                     @paramspropCount++;
                 }
 
-                if (paramsfDocGroupCode != null)
+                if (__workflow_paramsfDocGroupCode != null)
                 {
-                    @params["fDocGroupCode"] = ExpressionConverter.ConvertO(paramsfDocGroupCode);
+                    @params["fDocGroupCode"] = ExpressionConverter.ConvertO(__workflow_paramsfDocGroupCode);
                     @paramspropCount++;
                 }
 
-                if (paramsfCompanyCode != null)
+                if (__workflow_paramsfCompanyCode != null)
                 {
-                    @params["fCompanyCode"] = ExpressionConverter.ConvertO(paramsfCompanyCode);
+                    @params["fCompanyCode"] = ExpressionConverter.ConvertO(__workflow_paramsfCompanyCode);
                     @paramspropCount++;
                 }
 
-                if (paramsfDocumentCategoryCode != null)
+                if (__workflow_paramsfDocumentCategoryCode != null)
                 {
-                    @params["fDocumentCategoryCode"] = ExpressionConverter.ConvertO(paramsfDocumentCategoryCode);
+                    @params["fDocumentCategoryCode"] = ExpressionConverter.ConvertO(__workflow_paramsfDocumentCategoryCode);
                     @paramspropCount++;
                 }
 
-                if (paramsfDocumentLocationCode != null)
+                if (__workflow_paramsfDocumentLocationCode != null)
                 {
-                    @params["fDocumentLocationCode"] = ExpressionConverter.ConvertO(paramsfDocumentLocationCode);
+                    @params["fDocumentLocationCode"] = ExpressionConverter.ConvertO(__workflow_paramsfDocumentLocationCode);
                     @paramspropCount++;
                 }
 
-                if (paramseSDModified != null)
+                if (__workflow_paramseSDModified != null)
                 {
-                    @params["ESDModified"] = ExpressionConverter.ConvertO(paramseSDModified);
+                    @params["ESDModified"] = ExpressionConverter.ConvertO(__workflow_paramseSDModified);
                     @paramspropCount++;
                 }
 
-                if (paramseSUModified != null)
+                if (__workflow_paramseSUModified != null)
                 {
-                    @params["ESUModified"] = ExpressionConverter.ConvertO(paramseSUModified);
+                    @params["ESUModified"] = ExpressionConverter.ConvertO(__workflow_paramseSUModified);
                     @paramspropCount++;
                 }
 
-                if (paramseSDCreated != null)
+                if (__workflow_paramseSDCreated != null)
                 {
-                    @params["ESDCreated"] = ExpressionConverter.ConvertO(paramseSDCreated);
+                    @params["ESDCreated"] = ExpressionConverter.ConvertO(__workflow_paramseSDCreated);
                     @paramspropCount++;
                 }
 
-                if (paramseSUCreated != null)
+                if (__workflow_paramseSUCreated != null)
                 {
-                    @params["ESUCreated"] = ExpressionConverter.ConvertO(paramseSUCreated);
+                    @params["ESUCreated"] = ExpressionConverter.ConvertO(__workflow_paramseSUCreated);
                     @paramspropCount++;
                 }
 
-                if (paramsisBLOB != null)
+                if (__workflow_paramsisBLOB != null)
                 {
-                    @params["IsBLOB"] = ExpressionConverter.ConvertO(paramsisBLOB);
+                    @params["IsBLOB"] = ExpressionConverter.ConvertO(__workflow_paramsisBLOB);
                     @paramspropCount++;
                 }
 
-                if (paramsingoing != null)
+                if (__workflow_paramsingoing != null)
                 {
-                    @params["Ingoing"] = ExpressionConverter.ConvertO(paramsingoing);
+                    @params["Ingoing"] = ExpressionConverter.ConvertO(__workflow_paramsingoing);
                     @paramspropCount++;
                 }
 
-                if (paramsfRLSNodeGID != null)
+                if (__workflow_paramsfRLSNodeGID != null)
                 {
-                    @params["fRLSNodeGID"] = ExpressionConverter.ConvertO(paramsfRLSNodeGID);
+                    @params["fRLSNodeGID"] = ExpressionConverter.ConvertO(__workflow_paramsfRLSNodeGID);
                     @paramspropCount++;
                 }
 
-                if (paramsbLOBDATALength != null)
+                if (__workflow_paramsbLOBDATALength != null)
                 {
-                    @params["BLOBDATALength"] = ExpressionConverter.ConvertO(paramsbLOBDATALength);
+                    @params["BLOBDATALength"] = ExpressionConverter.ConvertO(__workflow_paramsbLOBDATALength);
                     @paramspropCount++;
                 }
 
-                if (paramsbLOBDATA != null)
+                if (__workflow_paramsbLOBDATA != null)
                 {
-                    @params["BLOBDATA"] = ExpressionConverter.ConvertO(paramsbLOBDATA);
+                    @params["BLOBDATA"] = ExpressionConverter.ConvertO(__workflow_paramsbLOBDATA);
                     @paramspropCount++;
                 }
 
@@ -486,43 +477,64 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildES00DocumentsAddOrUpdateAttachedDocument))]
-        public IBodyWorkflowAction<EntersoftWebApiModelsES00DocumentInfo> ES00DocumentsAddOrUpdateAttachedDocument([WorkflowExpression] Func<string> inDocgID = null, [WorkflowExpression] Func<string> inDoccode = null, [WorkflowExpression] Func<string> inDoctitle = null, [WorkflowExpression] Func<string> inDocdescription = null, [WorkflowExpression] Func<string> inDoccaption = null, [WorkflowExpression] Func<string> inDoceDate = null, [WorkflowExpression] Func<string> inDocfType = null, [WorkflowExpression] Func<string> inDoctableID = null, [WorkflowExpression] Func<string> inDoctableName = null, [WorkflowExpression] Func<string> inDocfGID = null, [WorkflowExpression] Func<string> inDocfDetailLineGID = null, [WorkflowExpression] Func<string> inDocuNCPath = null, [WorkflowExpression] Func<string> inDocoriginalPath = null, [WorkflowExpression] Func<string> inDocoriginalFN = null, [WorkflowExpression] Func<string> inDocfDocCategoryCode = null, [WorkflowExpression] Func<string> inDocfDocGroupCode = null, [WorkflowExpression] Func<string> inDocfCompanyCode = null, [WorkflowExpression] Func<string> inDocfDocumentCategoryCode = null, [WorkflowExpression] Func<string> inDocfDocumentLocationCode = null, [WorkflowExpression] Func<string> inDoceSDModified = null, [WorkflowExpression] Func<string> inDoceSUModified = null, [WorkflowExpression] Func<string> inDoceSDCreated = null, [WorkflowExpression] Func<string> inDoceSUCreated = null, [WorkflowExpression] Func<bool> inDocisBLOB = null, [WorkflowExpression] Func<bool> inDocingoing = null, [WorkflowExpression] Func<string> inDocfRLSNodeGID = null, [WorkflowExpression] Func<int> inDocbLOBDATALength = null, [WorkflowExpression] Func<string> inDocbLOBDATA = null)
+        public IBodyWorkflowAction<EntersoftWebApiModelsES00DocumentInfo> ES00DocumentsAddOrUpdateAttachedDocument(Expression<Func<string>> inDocgID = null, Expression<Func<string>> inDoccode = null, Expression<Func<string>> inDoctitle = null, Expression<Func<string>> inDocdescription = null, Expression<Func<string>> inDoccaption = null, Expression<Func<string>> inDoceDate = null, Expression<Func<string>> inDocfType = null, Expression<Func<string>> inDoctableID = null, Expression<Func<string>> inDoctableName = null, Expression<Func<string>> inDocfGID = null, Expression<Func<string>> inDocfDetailLineGID = null, Expression<Func<string>> inDocuNCPath = null, Expression<Func<string>> inDocoriginalPath = null, Expression<Func<string>> inDocoriginalFN = null, Expression<Func<string>> inDocfDocCategoryCode = null, Expression<Func<string>> inDocfDocGroupCode = null, Expression<Func<string>> inDocfCompanyCode = null, Expression<Func<string>> inDocfDocumentCategoryCode = null, Expression<Func<string>> inDocfDocumentLocationCode = null, Expression<Func<string>> inDoceSDModified = null, Expression<Func<string>> inDoceSUModified = null, Expression<Func<string>> inDoceSDCreated = null, Expression<Func<string>> inDoceSUCreated = null, Expression<Func<bool>> inDocisBLOB = null, Expression<Func<bool>> inDocingoing = null, Expression<Func<string>> inDocfRLSNodeGID = null, Expression<Func<int>> inDocbLOBDATALength = null, Expression<Func<string>> inDocbLOBDATA = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApiModelsES00DocumentInfo> __BuildES00DocumentsAddOrUpdateAttachedDocument(WorkflowExpression<string> inDocgID = null, WorkflowExpression<string> inDoccode = null, WorkflowExpression<string> inDoctitle = null, WorkflowExpression<string> inDocdescription = null, WorkflowExpression<string> inDoccaption = null, WorkflowExpression<string> inDoceDate = null, WorkflowExpression<string> inDocfType = null, WorkflowExpression<string> inDoctableID = null, WorkflowExpression<string> inDoctableName = null, WorkflowExpression<string> inDocfGID = null, WorkflowExpression<string> inDocfDetailLineGID = null, WorkflowExpression<string> inDocuNCPath = null, WorkflowExpression<string> inDocoriginalPath = null, WorkflowExpression<string> inDocoriginalFN = null, WorkflowExpression<string> inDocfDocCategoryCode = null, WorkflowExpression<string> inDocfDocGroupCode = null, WorkflowExpression<string> inDocfCompanyCode = null, WorkflowExpression<string> inDocfDocumentCategoryCode = null, WorkflowExpression<string> inDocfDocumentLocationCode = null, WorkflowExpression<string> inDoceSDModified = null, WorkflowExpression<string> inDoceSUModified = null, WorkflowExpression<string> inDoceSDCreated = null, WorkflowExpression<string> inDoceSUCreated = null, WorkflowExpression<bool> inDocisBLOB = null, WorkflowExpression<bool> inDocingoing = null, WorkflowExpression<string> inDocfRLSNodeGID = null, WorkflowExpression<int> inDocbLOBDATALength = null, WorkflowExpression<string> inDocbLOBDATA = null)
-        {
-            WorkflowExpression.Validate(inDocgID, nameof(inDocgID), required: false);
-            WorkflowExpression.Validate(inDoccode, nameof(inDoccode), required: false);
-            WorkflowExpression.Validate(inDoctitle, nameof(inDoctitle), required: false);
-            WorkflowExpression.Validate(inDocdescription, nameof(inDocdescription), required: false);
-            WorkflowExpression.Validate(inDoccaption, nameof(inDoccaption), required: false);
-            WorkflowExpression.Validate(inDoceDate, nameof(inDoceDate), required: false);
-            WorkflowExpression.Validate(inDocfType, nameof(inDocfType), required: false);
-            WorkflowExpression.Validate(inDoctableID, nameof(inDoctableID), required: false);
-            WorkflowExpression.Validate(inDoctableName, nameof(inDoctableName), required: false);
-            WorkflowExpression.Validate(inDocfGID, nameof(inDocfGID), required: false);
-            WorkflowExpression.Validate(inDocfDetailLineGID, nameof(inDocfDetailLineGID), required: false);
-            WorkflowExpression.Validate(inDocuNCPath, nameof(inDocuNCPath), required: false);
-            WorkflowExpression.Validate(inDocoriginalPath, nameof(inDocoriginalPath), required: false);
-            WorkflowExpression.Validate(inDocoriginalFN, nameof(inDocoriginalFN), required: false);
-            WorkflowExpression.Validate(inDocfDocCategoryCode, nameof(inDocfDocCategoryCode), required: false);
-            WorkflowExpression.Validate(inDocfDocGroupCode, nameof(inDocfDocGroupCode), required: false);
-            WorkflowExpression.Validate(inDocfCompanyCode, nameof(inDocfCompanyCode), required: false);
-            WorkflowExpression.Validate(inDocfDocumentCategoryCode, nameof(inDocfDocumentCategoryCode), required: false);
-            WorkflowExpression.Validate(inDocfDocumentLocationCode, nameof(inDocfDocumentLocationCode), required: false);
-            WorkflowExpression.Validate(inDoceSDModified, nameof(inDoceSDModified), required: false);
-            WorkflowExpression.Validate(inDoceSUModified, nameof(inDoceSUModified), required: false);
-            WorkflowExpression.Validate(inDoceSDCreated, nameof(inDoceSDCreated), required: false);
-            WorkflowExpression.Validate(inDoceSUCreated, nameof(inDoceSUCreated), required: false);
-            WorkflowExpression.Validate(inDocisBLOB, nameof(inDocisBLOB), required: false);
-            WorkflowExpression.Validate(inDocingoing, nameof(inDocingoing), required: false);
-            WorkflowExpression.Validate(inDocfRLSNodeGID, nameof(inDocfRLSNodeGID), required: false);
-            WorkflowExpression.Validate(inDocbLOBDATALength, nameof(inDocbLOBDATALength), required: false);
-            WorkflowExpression.Validate(inDocbLOBDATA, nameof(inDocbLOBDATA), required: false);
+            var __workflow_inDocgID = inDocgID == null ? null : WorkflowExpression.Compile(inDocgID);
+            WorkflowExpression.Validate(__workflow_inDocgID, nameof(inDocgID), required: false);
+            var __workflow_inDoccode = inDoccode == null ? null : WorkflowExpression.Compile(inDoccode);
+            WorkflowExpression.Validate(__workflow_inDoccode, nameof(inDoccode), required: false);
+            var __workflow_inDoctitle = inDoctitle == null ? null : WorkflowExpression.Compile(inDoctitle);
+            WorkflowExpression.Validate(__workflow_inDoctitle, nameof(inDoctitle), required: false);
+            var __workflow_inDocdescription = inDocdescription == null ? null : WorkflowExpression.Compile(inDocdescription);
+            WorkflowExpression.Validate(__workflow_inDocdescription, nameof(inDocdescription), required: false);
+            var __workflow_inDoccaption = inDoccaption == null ? null : WorkflowExpression.Compile(inDoccaption);
+            WorkflowExpression.Validate(__workflow_inDoccaption, nameof(inDoccaption), required: false);
+            var __workflow_inDoceDate = inDoceDate == null ? null : WorkflowExpression.Compile(inDoceDate);
+            WorkflowExpression.Validate(__workflow_inDoceDate, nameof(inDoceDate), required: false);
+            var __workflow_inDocfType = inDocfType == null ? null : WorkflowExpression.Compile(inDocfType);
+            WorkflowExpression.Validate(__workflow_inDocfType, nameof(inDocfType), required: false);
+            var __workflow_inDoctableID = inDoctableID == null ? null : WorkflowExpression.Compile(inDoctableID);
+            WorkflowExpression.Validate(__workflow_inDoctableID, nameof(inDoctableID), required: false);
+            var __workflow_inDoctableName = inDoctableName == null ? null : WorkflowExpression.Compile(inDoctableName);
+            WorkflowExpression.Validate(__workflow_inDoctableName, nameof(inDoctableName), required: false);
+            var __workflow_inDocfGID = inDocfGID == null ? null : WorkflowExpression.Compile(inDocfGID);
+            WorkflowExpression.Validate(__workflow_inDocfGID, nameof(inDocfGID), required: false);
+            var __workflow_inDocfDetailLineGID = inDocfDetailLineGID == null ? null : WorkflowExpression.Compile(inDocfDetailLineGID);
+            WorkflowExpression.Validate(__workflow_inDocfDetailLineGID, nameof(inDocfDetailLineGID), required: false);
+            var __workflow_inDocuNCPath = inDocuNCPath == null ? null : WorkflowExpression.Compile(inDocuNCPath);
+            WorkflowExpression.Validate(__workflow_inDocuNCPath, nameof(inDocuNCPath), required: false);
+            var __workflow_inDocoriginalPath = inDocoriginalPath == null ? null : WorkflowExpression.Compile(inDocoriginalPath);
+            WorkflowExpression.Validate(__workflow_inDocoriginalPath, nameof(inDocoriginalPath), required: false);
+            var __workflow_inDocoriginalFN = inDocoriginalFN == null ? null : WorkflowExpression.Compile(inDocoriginalFN);
+            WorkflowExpression.Validate(__workflow_inDocoriginalFN, nameof(inDocoriginalFN), required: false);
+            var __workflow_inDocfDocCategoryCode = inDocfDocCategoryCode == null ? null : WorkflowExpression.Compile(inDocfDocCategoryCode);
+            WorkflowExpression.Validate(__workflow_inDocfDocCategoryCode, nameof(inDocfDocCategoryCode), required: false);
+            var __workflow_inDocfDocGroupCode = inDocfDocGroupCode == null ? null : WorkflowExpression.Compile(inDocfDocGroupCode);
+            WorkflowExpression.Validate(__workflow_inDocfDocGroupCode, nameof(inDocfDocGroupCode), required: false);
+            var __workflow_inDocfCompanyCode = inDocfCompanyCode == null ? null : WorkflowExpression.Compile(inDocfCompanyCode);
+            WorkflowExpression.Validate(__workflow_inDocfCompanyCode, nameof(inDocfCompanyCode), required: false);
+            var __workflow_inDocfDocumentCategoryCode = inDocfDocumentCategoryCode == null ? null : WorkflowExpression.Compile(inDocfDocumentCategoryCode);
+            WorkflowExpression.Validate(__workflow_inDocfDocumentCategoryCode, nameof(inDocfDocumentCategoryCode), required: false);
+            var __workflow_inDocfDocumentLocationCode = inDocfDocumentLocationCode == null ? null : WorkflowExpression.Compile(inDocfDocumentLocationCode);
+            WorkflowExpression.Validate(__workflow_inDocfDocumentLocationCode, nameof(inDocfDocumentLocationCode), required: false);
+            var __workflow_inDoceSDModified = inDoceSDModified == null ? null : WorkflowExpression.Compile(inDoceSDModified);
+            WorkflowExpression.Validate(__workflow_inDoceSDModified, nameof(inDoceSDModified), required: false);
+            var __workflow_inDoceSUModified = inDoceSUModified == null ? null : WorkflowExpression.Compile(inDoceSUModified);
+            WorkflowExpression.Validate(__workflow_inDoceSUModified, nameof(inDoceSUModified), required: false);
+            var __workflow_inDoceSDCreated = inDoceSDCreated == null ? null : WorkflowExpression.Compile(inDoceSDCreated);
+            WorkflowExpression.Validate(__workflow_inDoceSDCreated, nameof(inDoceSDCreated), required: false);
+            var __workflow_inDoceSUCreated = inDoceSUCreated == null ? null : WorkflowExpression.Compile(inDoceSUCreated);
+            WorkflowExpression.Validate(__workflow_inDoceSUCreated, nameof(inDoceSUCreated), required: false);
+            var __workflow_inDocisBLOB = inDocisBLOB == null ? null : WorkflowExpression.Compile(inDocisBLOB);
+            WorkflowExpression.Validate(__workflow_inDocisBLOB, nameof(inDocisBLOB), required: false);
+            var __workflow_inDocingoing = inDocingoing == null ? null : WorkflowExpression.Compile(inDocingoing);
+            WorkflowExpression.Validate(__workflow_inDocingoing, nameof(inDocingoing), required: false);
+            var __workflow_inDocfRLSNodeGID = inDocfRLSNodeGID == null ? null : WorkflowExpression.Compile(inDocfRLSNodeGID);
+            WorkflowExpression.Validate(__workflow_inDocfRLSNodeGID, nameof(inDocfRLSNodeGID), required: false);
+            var __workflow_inDocbLOBDATALength = inDocbLOBDATALength == null ? null : WorkflowExpression.Compile(inDocbLOBDATALength);
+            WorkflowExpression.Validate(__workflow_inDocbLOBDATALength, nameof(inDocbLOBDATALength), required: false);
+            var __workflow_inDocbLOBDATA = inDocbLOBDATA == null ? null : WorkflowExpression.Compile(inDocbLOBDATA);
+            WorkflowExpression.Validate(__workflow_inDocbLOBDATA, nameof(inDocbLOBDATA), required: false);
             return new DeferredBodyAction<EntersoftWebApiModelsES00DocumentInfo>(() =>
             {
                 var apiCallPath = "/api/ES00Documents/AddOrUpdateAttachedDocument/";
@@ -530,171 +542,171 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var inDoc = new JObject();
                 var inDocpropCount = 0;
-                if (inDocgID != null)
+                if (__workflow_inDocgID != null)
                 {
-                    inDoc["GID"] = ExpressionConverter.ConvertO(inDocgID);
+                    inDoc["GID"] = ExpressionConverter.ConvertO(__workflow_inDocgID);
                     inDocpropCount++;
                 }
 
-                if (inDoccode != null)
+                if (__workflow_inDoccode != null)
                 {
-                    inDoc["Code"] = ExpressionConverter.ConvertO(inDoccode);
+                    inDoc["Code"] = ExpressionConverter.ConvertO(__workflow_inDoccode);
                     inDocpropCount++;
                 }
 
-                if (inDoctitle != null)
+                if (__workflow_inDoctitle != null)
                 {
-                    inDoc["Title"] = ExpressionConverter.ConvertO(inDoctitle);
+                    inDoc["Title"] = ExpressionConverter.ConvertO(__workflow_inDoctitle);
                     inDocpropCount++;
                 }
 
-                if (inDocdescription != null)
+                if (__workflow_inDocdescription != null)
                 {
-                    inDoc["Description"] = ExpressionConverter.ConvertO(inDocdescription);
+                    inDoc["Description"] = ExpressionConverter.ConvertO(__workflow_inDocdescription);
                     inDocpropCount++;
                 }
 
-                if (inDoccaption != null)
+                if (__workflow_inDoccaption != null)
                 {
-                    inDoc["Caption"] = ExpressionConverter.ConvertO(inDoccaption);
+                    inDoc["Caption"] = ExpressionConverter.ConvertO(__workflow_inDoccaption);
                     inDocpropCount++;
                 }
 
-                if (inDoceDate != null)
+                if (__workflow_inDoceDate != null)
                 {
-                    inDoc["EDate"] = ExpressionConverter.ConvertO(inDoceDate);
+                    inDoc["EDate"] = ExpressionConverter.ConvertO(__workflow_inDoceDate);
                     inDocpropCount++;
                 }
 
-                if (inDocfType != null)
+                if (__workflow_inDocfType != null)
                 {
-                    inDoc["FType"] = ExpressionConverter.ConvertO(inDocfType);
+                    inDoc["FType"] = ExpressionConverter.ConvertO(__workflow_inDocfType);
                     inDocpropCount++;
                 }
 
-                if (inDoctableID != null)
+                if (__workflow_inDoctableID != null)
                 {
-                    inDoc["TableID"] = ExpressionConverter.ConvertO(inDoctableID);
+                    inDoc["TableID"] = ExpressionConverter.ConvertO(__workflow_inDoctableID);
                     inDocpropCount++;
                 }
 
-                if (inDoctableName != null)
+                if (__workflow_inDoctableName != null)
                 {
-                    inDoc["TableName"] = ExpressionConverter.ConvertO(inDoctableName);
+                    inDoc["TableName"] = ExpressionConverter.ConvertO(__workflow_inDoctableName);
                     inDocpropCount++;
                 }
 
-                if (inDocfGID != null)
+                if (__workflow_inDocfGID != null)
                 {
-                    inDoc["fGID"] = ExpressionConverter.ConvertO(inDocfGID);
+                    inDoc["fGID"] = ExpressionConverter.ConvertO(__workflow_inDocfGID);
                     inDocpropCount++;
                 }
 
-                if (inDocfDetailLineGID != null)
+                if (__workflow_inDocfDetailLineGID != null)
                 {
-                    inDoc["fDetailLineGID"] = ExpressionConverter.ConvertO(inDocfDetailLineGID);
+                    inDoc["fDetailLineGID"] = ExpressionConverter.ConvertO(__workflow_inDocfDetailLineGID);
                     inDocpropCount++;
                 }
 
-                if (inDocuNCPath != null)
+                if (__workflow_inDocuNCPath != null)
                 {
-                    inDoc["UNCPath"] = ExpressionConverter.ConvertO(inDocuNCPath);
+                    inDoc["UNCPath"] = ExpressionConverter.ConvertO(__workflow_inDocuNCPath);
                     inDocpropCount++;
                 }
 
-                if (inDocoriginalPath != null)
+                if (__workflow_inDocoriginalPath != null)
                 {
-                    inDoc["OriginalPath"] = ExpressionConverter.ConvertO(inDocoriginalPath);
+                    inDoc["OriginalPath"] = ExpressionConverter.ConvertO(__workflow_inDocoriginalPath);
                     inDocpropCount++;
                 }
 
-                if (inDocoriginalFN != null)
+                if (__workflow_inDocoriginalFN != null)
                 {
-                    inDoc["OriginalFN"] = ExpressionConverter.ConvertO(inDocoriginalFN);
+                    inDoc["OriginalFN"] = ExpressionConverter.ConvertO(__workflow_inDocoriginalFN);
                     inDocpropCount++;
                 }
 
-                if (inDocfDocCategoryCode != null)
+                if (__workflow_inDocfDocCategoryCode != null)
                 {
-                    inDoc["fDocCategoryCode"] = ExpressionConverter.ConvertO(inDocfDocCategoryCode);
+                    inDoc["fDocCategoryCode"] = ExpressionConverter.ConvertO(__workflow_inDocfDocCategoryCode);
                     inDocpropCount++;
                 }
 
-                if (inDocfDocGroupCode != null)
+                if (__workflow_inDocfDocGroupCode != null)
                 {
-                    inDoc["fDocGroupCode"] = ExpressionConverter.ConvertO(inDocfDocGroupCode);
+                    inDoc["fDocGroupCode"] = ExpressionConverter.ConvertO(__workflow_inDocfDocGroupCode);
                     inDocpropCount++;
                 }
 
-                if (inDocfCompanyCode != null)
+                if (__workflow_inDocfCompanyCode != null)
                 {
-                    inDoc["fCompanyCode"] = ExpressionConverter.ConvertO(inDocfCompanyCode);
+                    inDoc["fCompanyCode"] = ExpressionConverter.ConvertO(__workflow_inDocfCompanyCode);
                     inDocpropCount++;
                 }
 
-                if (inDocfDocumentCategoryCode != null)
+                if (__workflow_inDocfDocumentCategoryCode != null)
                 {
-                    inDoc["fDocumentCategoryCode"] = ExpressionConverter.ConvertO(inDocfDocumentCategoryCode);
+                    inDoc["fDocumentCategoryCode"] = ExpressionConverter.ConvertO(__workflow_inDocfDocumentCategoryCode);
                     inDocpropCount++;
                 }
 
-                if (inDocfDocumentLocationCode != null)
+                if (__workflow_inDocfDocumentLocationCode != null)
                 {
-                    inDoc["fDocumentLocationCode"] = ExpressionConverter.ConvertO(inDocfDocumentLocationCode);
+                    inDoc["fDocumentLocationCode"] = ExpressionConverter.ConvertO(__workflow_inDocfDocumentLocationCode);
                     inDocpropCount++;
                 }
 
-                if (inDoceSDModified != null)
+                if (__workflow_inDoceSDModified != null)
                 {
-                    inDoc["ESDModified"] = ExpressionConverter.ConvertO(inDoceSDModified);
+                    inDoc["ESDModified"] = ExpressionConverter.ConvertO(__workflow_inDoceSDModified);
                     inDocpropCount++;
                 }
 
-                if (inDoceSUModified != null)
+                if (__workflow_inDoceSUModified != null)
                 {
-                    inDoc["ESUModified"] = ExpressionConverter.ConvertO(inDoceSUModified);
+                    inDoc["ESUModified"] = ExpressionConverter.ConvertO(__workflow_inDoceSUModified);
                     inDocpropCount++;
                 }
 
-                if (inDoceSDCreated != null)
+                if (__workflow_inDoceSDCreated != null)
                 {
-                    inDoc["ESDCreated"] = ExpressionConverter.ConvertO(inDoceSDCreated);
+                    inDoc["ESDCreated"] = ExpressionConverter.ConvertO(__workflow_inDoceSDCreated);
                     inDocpropCount++;
                 }
 
-                if (inDoceSUCreated != null)
+                if (__workflow_inDoceSUCreated != null)
                 {
-                    inDoc["ESUCreated"] = ExpressionConverter.ConvertO(inDoceSUCreated);
+                    inDoc["ESUCreated"] = ExpressionConverter.ConvertO(__workflow_inDoceSUCreated);
                     inDocpropCount++;
                 }
 
-                if (inDocisBLOB != null)
+                if (__workflow_inDocisBLOB != null)
                 {
-                    inDoc["IsBLOB"] = ExpressionConverter.ConvertO(inDocisBLOB);
+                    inDoc["IsBLOB"] = ExpressionConverter.ConvertO(__workflow_inDocisBLOB);
                     inDocpropCount++;
                 }
 
-                if (inDocingoing != null)
+                if (__workflow_inDocingoing != null)
                 {
-                    inDoc["Ingoing"] = ExpressionConverter.ConvertO(inDocingoing);
+                    inDoc["Ingoing"] = ExpressionConverter.ConvertO(__workflow_inDocingoing);
                     inDocpropCount++;
                 }
 
-                if (inDocfRLSNodeGID != null)
+                if (__workflow_inDocfRLSNodeGID != null)
                 {
-                    inDoc["fRLSNodeGID"] = ExpressionConverter.ConvertO(inDocfRLSNodeGID);
+                    inDoc["fRLSNodeGID"] = ExpressionConverter.ConvertO(__workflow_inDocfRLSNodeGID);
                     inDocpropCount++;
                 }
 
-                if (inDocbLOBDATALength != null)
+                if (__workflow_inDocbLOBDATALength != null)
                 {
-                    inDoc["BLOBDATALength"] = ExpressionConverter.ConvertO(inDocbLOBDATALength);
+                    inDoc["BLOBDATALength"] = ExpressionConverter.ConvertO(__workflow_inDocbLOBDATALength);
                     inDocpropCount++;
                 }
 
-                if (inDocbLOBDATA != null)
+                if (__workflow_inDocbLOBDATA != null)
                 {
-                    inDoc["BLOBDATA"] = ExpressionConverter.ConvertO(inDocbLOBDATA);
+                    inDoc["BLOBDATA"] = ExpressionConverter.ConvertO(__workflow_inDocbLOBDATA);
                     inDocpropCount++;
                 }
 
@@ -708,74 +720,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESAsset2FetchWebAsset))]
-        public IBodyWorkflowAction<JToken> ESAsset2FetchWebAsset([WorkflowExpression] Func<string> routeId, [WorkflowExpression] Func<bool> base64 = null, [WorkflowExpression] Func<string> webapitoken = null, [WorkflowExpression] Func<bool> partialMode = null)
+        public IBodyWorkflowAction<JToken> ESAsset2FetchWebAsset(Expression<Func<string>> routeId, Expression<Func<bool>> base64 = null, Expression<Func<string>> webapitoken = null, Expression<Func<bool>> partialMode = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildESAsset2FetchWebAsset(WorkflowExpression<string> routeId, WorkflowExpression<bool> base64 = null, WorkflowExpression<string> webapitoken = null, WorkflowExpression<bool> partialMode = null)
-        {
-            WorkflowExpression.Validate(routeId, nameof(routeId), required: true);
-            WorkflowExpression.Validate(base64, nameof(base64), required: false);
-            WorkflowExpression.Validate(webapitoken, nameof(webapitoken), required: false);
-            WorkflowExpression.Validate(partialMode, nameof(partialMode), required: false);
+            var __workflow_routeId = routeId == null ? null : WorkflowExpression.Compile(routeId);
+            WorkflowExpression.Validate(__workflow_routeId, nameof(routeId), required: true);
+            var __workflow_base64 = base64 == null ? null : WorkflowExpression.Compile(base64);
+            WorkflowExpression.Validate(__workflow_base64, nameof(base64), required: false);
+            var __workflow_webapitoken = webapitoken == null ? null : WorkflowExpression.Compile(webapitoken);
+            WorkflowExpression.Validate(__workflow_webapitoken, nameof(webapitoken), required: false);
+            var __workflow_partialMode = partialMode == null ? null : WorkflowExpression.Compile(partialMode);
+            WorkflowExpression.Validate(__workflow_partialMode, nameof(partialMode), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/asset2/fetchWebAsset/{0}", ExpressionConverter.ConvertWithUrlEncoding(routeId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/asset2/fetchWebAsset/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_routeId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (base64 != null)
-                    callPayload.Queries["base64"] = ExpressionConverter.Convert(base64);
-                if (webapitoken != null)
-                    callPayload.Queries["webapitoken"] = ExpressionConverter.Convert(webapitoken);
-                if (partialMode != null)
-                    callPayload.Queries["PartialMode"] = ExpressionConverter.Convert(partialMode);
+                if (__workflow_base64 != null)
+                    callPayload.Queries["base64"] = ExpressionConverter.Convert(__workflow_base64);
+                if (__workflow_webapitoken != null)
+                    callPayload.Queries["webapitoken"] = ExpressionConverter.Convert(__workflow_webapitoken);
+                if (__workflow_partialMode != null)
+                    callPayload.Queries["PartialMode"] = ExpressionConverter.Convert(__workflow_partialMode);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESAsset2DownloadAsset))]
-        public IBodyWorkflowAction<JToken> ESAsset2DownloadAsset([WorkflowExpression] Func<string> routeId, [WorkflowExpression] Func<string> webapitoken = null, [WorkflowExpression] Func<bool> partialMode = null)
+        public IBodyWorkflowAction<JToken> ESAsset2DownloadAsset(Expression<Func<string>> routeId, Expression<Func<string>> webapitoken = null, Expression<Func<bool>> partialMode = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildESAsset2DownloadAsset(WorkflowExpression<string> routeId, WorkflowExpression<string> webapitoken = null, WorkflowExpression<bool> partialMode = null)
-        {
-            WorkflowExpression.Validate(routeId, nameof(routeId), required: true);
-            WorkflowExpression.Validate(webapitoken, nameof(webapitoken), required: false);
-            WorkflowExpression.Validate(partialMode, nameof(partialMode), required: false);
+            var __workflow_routeId = routeId == null ? null : WorkflowExpression.Compile(routeId);
+            WorkflowExpression.Validate(__workflow_routeId, nameof(routeId), required: true);
+            var __workflow_webapitoken = webapitoken == null ? null : WorkflowExpression.Compile(webapitoken);
+            WorkflowExpression.Validate(__workflow_webapitoken, nameof(webapitoken), required: false);
+            var __workflow_partialMode = partialMode == null ? null : WorkflowExpression.Compile(partialMode);
+            WorkflowExpression.Validate(__workflow_partialMode, nameof(partialMode), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/asset2/downloadAsset/{0}", ExpressionConverter.ConvertWithUrlEncoding(routeId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/asset2/downloadAsset/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_routeId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (webapitoken != null)
-                    callPayload.Queries["webapitoken"] = ExpressionConverter.Convert(webapitoken);
-                if (partialMode != null)
-                    callPayload.Queries["PartialMode"] = ExpressionConverter.Convert(partialMode);
+                if (__workflow_webapitoken != null)
+                    callPayload.Queries["webapitoken"] = ExpressionConverter.Convert(__workflow_webapitoken);
+                if (__workflow_partialMode != null)
+                    callPayload.Queries["PartialMode"] = ExpressionConverter.Convert(__workflow_partialMode);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESBudgetESBGBudgetSheet))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESBGBudgetSheetObj> ESBudgetESBGBudgetSheet([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESBGBudgetSheetObj> ESBudgetESBGBudgetSheet(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESBGBudgetSheetObj> __BuildESBudgetESBGBudgetSheet(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESBGBudgetSheetObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESBudget/ESBGBudgetSheet/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESBudget/ESBGBudgetSheet/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESBGBudgetSheetObj>(callPayload);
@@ -783,17 +782,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESCollaborationBroadcastMessage))]
-        public IBodyWorkflowAction<JToken> ESCollaborationBroadcastMessage([WorkflowExpression] Func<string[]> msgrecipients = null, [WorkflowExpression] Func<string> msgmessage = null)
+        public IBodyWorkflowAction<JToken> ESCollaborationBroadcastMessage(Expression<Func<string[]>> msgrecipients = null, Expression<Func<string>> msgmessage = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildESCollaborationBroadcastMessage(WorkflowExpression<string[]> msgrecipients = null, WorkflowExpression<string> msgmessage = null)
-        {
-            WorkflowExpression.Validate(msgrecipients, nameof(msgrecipients), required: false);
-            WorkflowExpression.Validate(msgmessage, nameof(msgmessage), required: false);
+            var __workflow_msgrecipients = msgrecipients == null ? null : WorkflowExpression.Compile(msgrecipients);
+            WorkflowExpression.Validate(__workflow_msgrecipients, nameof(msgrecipients), required: false);
+            var __workflow_msgmessage = msgmessage == null ? null : WorkflowExpression.Compile(msgmessage);
+            WorkflowExpression.Validate(__workflow_msgmessage, nameof(msgmessage), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/api/collaboration/BroadcastMessage/";
@@ -801,15 +795,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var msg = new JObject();
                 var msgpropCount = 0;
-                if (msgrecipients != null)
+                if (__workflow_msgrecipients != null)
                 {
-                    msg["Recipients"] = ExpressionConverter.ConvertO(msgrecipients);
+                    msg["Recipients"] = ExpressionConverter.ConvertO(__workflow_msgrecipients);
                     msgpropCount++;
                 }
 
-                if (msgmessage != null)
+                if (__workflow_msgmessage != null)
                 {
-                    msg["Message"] = ExpressionConverter.ConvertO(msgmessage);
+                    msg["Message"] = ExpressionConverter.ConvertO(__workflow_msgmessage);
                     msgpropCount++;
                 }
 
@@ -823,19 +817,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESCollaborationSendEmail))]
-        public IWorkflowAction ESCollaborationSendEmail([WorkflowExpression] Func<string> msgfromEmailAddr = null, [WorkflowExpression] Func<string> msgtoEmailAddr = null, [WorkflowExpression] Func<string> msgsubject = null, [WorkflowExpression] Func<string> msgbody = null)
+        public IWorkflowAction ESCollaborationSendEmail(Expression<Func<string>> msgfromEmailAddr = null, Expression<Func<string>> msgtoEmailAddr = null, Expression<Func<string>> msgsubject = null, Expression<Func<string>> msgbody = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildESCollaborationSendEmail(WorkflowExpression<string> msgfromEmailAddr = null, WorkflowExpression<string> msgtoEmailAddr = null, WorkflowExpression<string> msgsubject = null, WorkflowExpression<string> msgbody = null)
-        {
-            WorkflowExpression.Validate(msgfromEmailAddr, nameof(msgfromEmailAddr), required: false);
-            WorkflowExpression.Validate(msgtoEmailAddr, nameof(msgtoEmailAddr), required: false);
-            WorkflowExpression.Validate(msgsubject, nameof(msgsubject), required: false);
-            WorkflowExpression.Validate(msgbody, nameof(msgbody), required: false);
+            var __workflow_msgfromEmailAddr = msgfromEmailAddr == null ? null : WorkflowExpression.Compile(msgfromEmailAddr);
+            WorkflowExpression.Validate(__workflow_msgfromEmailAddr, nameof(msgfromEmailAddr), required: false);
+            var __workflow_msgtoEmailAddr = msgtoEmailAddr == null ? null : WorkflowExpression.Compile(msgtoEmailAddr);
+            WorkflowExpression.Validate(__workflow_msgtoEmailAddr, nameof(msgtoEmailAddr), required: false);
+            var __workflow_msgsubject = msgsubject == null ? null : WorkflowExpression.Compile(msgsubject);
+            WorkflowExpression.Validate(__workflow_msgsubject, nameof(msgsubject), required: false);
+            var __workflow_msgbody = msgbody == null ? null : WorkflowExpression.Compile(msgbody);
+            WorkflowExpression.Validate(__workflow_msgbody, nameof(msgbody), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/collaboration/SendEmail/";
@@ -843,27 +834,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var msg = new JObject();
                 var msgpropCount = 0;
-                if (msgfromEmailAddr != null)
+                if (__workflow_msgfromEmailAddr != null)
                 {
-                    msg["FromEmailAddr"] = ExpressionConverter.ConvertO(msgfromEmailAddr);
+                    msg["FromEmailAddr"] = ExpressionConverter.ConvertO(__workflow_msgfromEmailAddr);
                     msgpropCount++;
                 }
 
-                if (msgtoEmailAddr != null)
+                if (__workflow_msgtoEmailAddr != null)
                 {
-                    msg["ToEmailAddr"] = ExpressionConverter.ConvertO(msgtoEmailAddr);
+                    msg["ToEmailAddr"] = ExpressionConverter.ConvertO(__workflow_msgtoEmailAddr);
                     msgpropCount++;
                 }
 
-                if (msgsubject != null)
+                if (__workflow_msgsubject != null)
                 {
-                    msg["Subject"] = ExpressionConverter.ConvertO(msgsubject);
+                    msg["Subject"] = ExpressionConverter.ConvertO(__workflow_msgsubject);
                     msgpropCount++;
                 }
 
-                if (msgbody != null)
+                if (__workflow_msgbody != null)
                 {
-                    msg["Body"] = ExpressionConverter.ConvertO(msgbody);
+                    msg["Body"] = ExpressionConverter.ConvertO(__workflow_msgbody);
                     msgpropCount++;
                 }
 
@@ -877,18 +868,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESCollaborationSendSMS))]
-        public IBodyWorkflowAction<string[]> ESCollaborationSendSMS([WorkflowExpression] Func<string> msgbody = null, [WorkflowExpression] Func<string[]> msgrecipients = null, [WorkflowExpression] Func<string[]> msgusers = null)
+        public IBodyWorkflowAction<string[]> ESCollaborationSendSMS(Expression<Func<string>> msgbody = null, Expression<Func<string[]>> msgrecipients = null, Expression<Func<string[]>> msgusers = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string[]> __BuildESCollaborationSendSMS(WorkflowExpression<string> msgbody = null, WorkflowExpression<string[]> msgrecipients = null, WorkflowExpression<string[]> msgusers = null)
-        {
-            WorkflowExpression.Validate(msgbody, nameof(msgbody), required: false);
-            WorkflowExpression.Validate(msgrecipients, nameof(msgrecipients), required: false);
-            WorkflowExpression.Validate(msgusers, nameof(msgusers), required: false);
+            var __workflow_msgbody = msgbody == null ? null : WorkflowExpression.Compile(msgbody);
+            WorkflowExpression.Validate(__workflow_msgbody, nameof(msgbody), required: false);
+            var __workflow_msgrecipients = msgrecipients == null ? null : WorkflowExpression.Compile(msgrecipients);
+            WorkflowExpression.Validate(__workflow_msgrecipients, nameof(msgrecipients), required: false);
+            var __workflow_msgusers = msgusers == null ? null : WorkflowExpression.Compile(msgusers);
+            WorkflowExpression.Validate(__workflow_msgusers, nameof(msgusers), required: false);
             return new DeferredBodyAction<string[]>(() =>
             {
                 var apiCallPath = "/api/collaboration/SendSMS/";
@@ -896,21 +883,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var msg = new JObject();
                 var msgpropCount = 0;
-                if (msgbody != null)
+                if (__workflow_msgbody != null)
                 {
-                    msg["Body"] = ExpressionConverter.ConvertO(msgbody);
+                    msg["Body"] = ExpressionConverter.ConvertO(__workflow_msgbody);
                     msgpropCount++;
                 }
 
-                if (msgrecipients != null)
+                if (__workflow_msgrecipients != null)
                 {
-                    msg["Recipients"] = ExpressionConverter.ConvertO(msgrecipients);
+                    msg["Recipients"] = ExpressionConverter.ConvertO(__workflow_msgrecipients);
                     msgpropCount++;
                 }
 
-                if (msgusers != null)
+                if (__workflow_msgusers != null)
                 {
-                    msg["Users"] = ExpressionConverter.ConvertO(msgusers);
+                    msg["Users"] = ExpressionConverter.ConvertO(__workflow_msgusers);
                     msgpropCount++;
                 }
 
@@ -924,26 +911,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESCollaborationSendViberMessage))]
-        public IBodyWorkflowAction<EntersoftWebApiControllersESViberResponse> ESCollaborationSendViberMessage([WorkflowExpression] Func<string[]> msgrecipients = null, [WorkflowExpression] Func<string> msgdateToSend = null, [WorkflowExpression] Func<int> msgexpiresInSecs = null, [WorkflowExpression] Func<string> msgexpiryText = null, [WorkflowExpression] Func<string> msgfReferenceID = null, [WorkflowExpression] Func<bool> msgcallback = null, [WorkflowExpression] Func<string> msgbody = null, [WorkflowExpression] Func<string> msgimage = null, [WorkflowExpression] Func<string> msgbuttonAction = null, [WorkflowExpression] Func<string> msgbuttonCaption = null, [WorkflowExpression] Func<string> msgsMSFallbacksMSText = null)
+        public IBodyWorkflowAction<EntersoftWebApiControllersESViberResponse> ESCollaborationSendViberMessage(Expression<Func<string[]>> msgrecipients = null, Expression<Func<string>> msgdateToSend = null, Expression<Func<int>> msgexpiresInSecs = null, Expression<Func<string>> msgexpiryText = null, Expression<Func<string>> msgfReferenceID = null, Expression<Func<bool>> msgcallback = null, Expression<Func<string>> msgbody = null, Expression<Func<string>> msgimage = null, Expression<Func<string>> msgbuttonAction = null, Expression<Func<string>> msgbuttonCaption = null, Expression<Func<string>> msgsMSFallbacksMSText = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApiControllersESViberResponse> __BuildESCollaborationSendViberMessage(WorkflowExpression<string[]> msgrecipients = null, WorkflowExpression<string> msgdateToSend = null, WorkflowExpression<int> msgexpiresInSecs = null, WorkflowExpression<string> msgexpiryText = null, WorkflowExpression<string> msgfReferenceID = null, WorkflowExpression<bool> msgcallback = null, WorkflowExpression<string> msgbody = null, WorkflowExpression<string> msgimage = null, WorkflowExpression<string> msgbuttonAction = null, WorkflowExpression<string> msgbuttonCaption = null, WorkflowExpression<string> msgsMSFallbacksMSText = null)
-        {
-            WorkflowExpression.Validate(msgrecipients, nameof(msgrecipients), required: false);
-            WorkflowExpression.Validate(msgdateToSend, nameof(msgdateToSend), required: false);
-            WorkflowExpression.Validate(msgexpiresInSecs, nameof(msgexpiresInSecs), required: false);
-            WorkflowExpression.Validate(msgexpiryText, nameof(msgexpiryText), required: false);
-            WorkflowExpression.Validate(msgfReferenceID, nameof(msgfReferenceID), required: false);
-            WorkflowExpression.Validate(msgcallback, nameof(msgcallback), required: false);
-            WorkflowExpression.Validate(msgbody, nameof(msgbody), required: false);
-            WorkflowExpression.Validate(msgimage, nameof(msgimage), required: false);
-            WorkflowExpression.Validate(msgbuttonAction, nameof(msgbuttonAction), required: false);
-            WorkflowExpression.Validate(msgbuttonCaption, nameof(msgbuttonCaption), required: false);
-            WorkflowExpression.Validate(msgsMSFallbacksMSText, nameof(msgsMSFallbacksMSText), required: false);
+            var __workflow_msgrecipients = msgrecipients == null ? null : WorkflowExpression.Compile(msgrecipients);
+            WorkflowExpression.Validate(__workflow_msgrecipients, nameof(msgrecipients), required: false);
+            var __workflow_msgdateToSend = msgdateToSend == null ? null : WorkflowExpression.Compile(msgdateToSend);
+            WorkflowExpression.Validate(__workflow_msgdateToSend, nameof(msgdateToSend), required: false);
+            var __workflow_msgexpiresInSecs = msgexpiresInSecs == null ? null : WorkflowExpression.Compile(msgexpiresInSecs);
+            WorkflowExpression.Validate(__workflow_msgexpiresInSecs, nameof(msgexpiresInSecs), required: false);
+            var __workflow_msgexpiryText = msgexpiryText == null ? null : WorkflowExpression.Compile(msgexpiryText);
+            WorkflowExpression.Validate(__workflow_msgexpiryText, nameof(msgexpiryText), required: false);
+            var __workflow_msgfReferenceID = msgfReferenceID == null ? null : WorkflowExpression.Compile(msgfReferenceID);
+            WorkflowExpression.Validate(__workflow_msgfReferenceID, nameof(msgfReferenceID), required: false);
+            var __workflow_msgcallback = msgcallback == null ? null : WorkflowExpression.Compile(msgcallback);
+            WorkflowExpression.Validate(__workflow_msgcallback, nameof(msgcallback), required: false);
+            var __workflow_msgbody = msgbody == null ? null : WorkflowExpression.Compile(msgbody);
+            WorkflowExpression.Validate(__workflow_msgbody, nameof(msgbody), required: false);
+            var __workflow_msgimage = msgimage == null ? null : WorkflowExpression.Compile(msgimage);
+            WorkflowExpression.Validate(__workflow_msgimage, nameof(msgimage), required: false);
+            var __workflow_msgbuttonAction = msgbuttonAction == null ? null : WorkflowExpression.Compile(msgbuttonAction);
+            WorkflowExpression.Validate(__workflow_msgbuttonAction, nameof(msgbuttonAction), required: false);
+            var __workflow_msgbuttonCaption = msgbuttonCaption == null ? null : WorkflowExpression.Compile(msgbuttonCaption);
+            WorkflowExpression.Validate(__workflow_msgbuttonCaption, nameof(msgbuttonCaption), required: false);
+            var __workflow_msgsMSFallbacksMSText = msgsMSFallbacksMSText == null ? null : WorkflowExpression.Compile(msgsMSFallbacksMSText);
+            WorkflowExpression.Validate(__workflow_msgsMSFallbacksMSText, nameof(msgsMSFallbacksMSText), required: false);
             return new DeferredBodyAction<EntersoftWebApiControllersESViberResponse>(() =>
             {
                 var apiCallPath = "/api/collaboration/SendViberMessage/";
@@ -951,63 +942,63 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var msg = new JObject();
                 var msgpropCount = 0;
-                if (msgrecipients != null)
+                if (__workflow_msgrecipients != null)
                 {
-                    msg["Recipients"] = ExpressionConverter.ConvertO(msgrecipients);
+                    msg["Recipients"] = ExpressionConverter.ConvertO(__workflow_msgrecipients);
                     msgpropCount++;
                 }
 
-                if (msgdateToSend != null)
+                if (__workflow_msgdateToSend != null)
                 {
-                    msg["DateToSend"] = ExpressionConverter.ConvertO(msgdateToSend);
+                    msg["DateToSend"] = ExpressionConverter.ConvertO(__workflow_msgdateToSend);
                     msgpropCount++;
                 }
 
-                if (msgexpiresInSecs != null)
+                if (__workflow_msgexpiresInSecs != null)
                 {
-                    msg["ExpiresInSecs"] = ExpressionConverter.ConvertO(msgexpiresInSecs);
+                    msg["ExpiresInSecs"] = ExpressionConverter.ConvertO(__workflow_msgexpiresInSecs);
                     msgpropCount++;
                 }
 
-                if (msgexpiryText != null)
+                if (__workflow_msgexpiryText != null)
                 {
-                    msg["ExpiryText"] = ExpressionConverter.ConvertO(msgexpiryText);
+                    msg["ExpiryText"] = ExpressionConverter.ConvertO(__workflow_msgexpiryText);
                     msgpropCount++;
                 }
 
-                if (msgfReferenceID != null)
+                if (__workflow_msgfReferenceID != null)
                 {
-                    msg["fReferenceID"] = ExpressionConverter.ConvertO(msgfReferenceID);
+                    msg["fReferenceID"] = ExpressionConverter.ConvertO(__workflow_msgfReferenceID);
                     msgpropCount++;
                 }
 
-                if (msgcallback != null)
+                if (__workflow_msgcallback != null)
                 {
-                    msg["Callback"] = ExpressionConverter.ConvertO(msgcallback);
+                    msg["Callback"] = ExpressionConverter.ConvertO(__workflow_msgcallback);
                     msgpropCount++;
                 }
 
-                if (msgbody != null)
+                if (__workflow_msgbody != null)
                 {
-                    msg["Body"] = ExpressionConverter.ConvertO(msgbody);
+                    msg["Body"] = ExpressionConverter.ConvertO(__workflow_msgbody);
                     msgpropCount++;
                 }
 
-                if (msgimage != null)
+                if (__workflow_msgimage != null)
                 {
-                    msg["Image"] = ExpressionConverter.ConvertO(msgimage);
+                    msg["Image"] = ExpressionConverter.ConvertO(__workflow_msgimage);
                     msgpropCount++;
                 }
 
-                if (msgbuttonAction != null)
+                if (__workflow_msgbuttonAction != null)
                 {
-                    msg["ButtonAction"] = ExpressionConverter.ConvertO(msgbuttonAction);
+                    msg["ButtonAction"] = ExpressionConverter.ConvertO(__workflow_msgbuttonAction);
                     msgpropCount++;
                 }
 
-                if (msgbuttonCaption != null)
+                if (__workflow_msgbuttonCaption != null)
                 {
-                    msg["ButtonCaption"] = ExpressionConverter.ConvertO(msgbuttonCaption);
+                    msg["ButtonCaption"] = ExpressionConverter.ConvertO(__workflow_msgbuttonCaption);
                     msgpropCount++;
                 }
 
@@ -1021,9 +1012,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
                 var sMSFallbackObject = new JObject();
                 var sMSFallbackObjectpropCount = 0;
-                if (msgsMSFallbacksMSText != null)
+                if (__workflow_msgsMSFallbacksMSText != null)
                 {
-                    sMSFallbackObject["SMSText"] = ExpressionConverter.ConvertO(msgsMSFallbacksMSText);
+                    sMSFallbackObject["SMSText"] = ExpressionConverter.ConvertO(__workflow_msgsMSFallbacksMSText);
                     sMSFallbackObjectpropCount++;
                 }
 
@@ -1043,31 +1034,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESCollaborationCreateRFARequest))]
-        public IWorkflowAction ESCollaborationCreateRFARequest([WorkflowExpression] Func<string> rFARequestid, [WorkflowExpression] Func<string> rFARequestcode, [WorkflowExpression] Func<string> rFARequestrequestedBy, [WorkflowExpression] Func<bool> rFARequestisExternal, [WorkflowExpression] Func<rFARequestpriorityInput> rFARequestpriority = null, [WorkflowExpression] Func<string> rFARequestrequestClass = null, [WorkflowExpression] Func<string> rFARequestrequestCategory = null, [WorkflowExpression] Func<double> rFARequestnumericValue = null, [WorkflowExpression] Func<string> rFARequesttitle = null, [WorkflowExpression] Func<string[]> rFARequestrecipientUsers = null, [WorkflowExpression] Func<string[]> rFARequestrecipientGroups = null, [WorkflowExpression] Func<string> rFARequestrecipienteMail = null, [WorkflowExpression] Func<string> rFARequestrecipientPhone = null, [WorkflowExpression] Func<string> rFARequestrequestedOnUTC = null, [WorkflowExpression] Func<string> rFARequestexpiresOnUTC = null, [WorkflowExpression] Func<string> rFARequesttriggeredOn = null)
+        public IWorkflowAction ESCollaborationCreateRFARequest(Expression<Func<string>> rFARequestid, Expression<Func<string>> rFARequestcode, Expression<Func<string>> rFARequestrequestedBy, Expression<Func<bool>> rFARequestisExternal, Expression<Func<rFARequestpriorityInput>> rFARequestpriority = null, Expression<Func<string>> rFARequestrequestClass = null, Expression<Func<string>> rFARequestrequestCategory = null, Expression<Func<double>> rFARequestnumericValue = null, Expression<Func<string>> rFARequesttitle = null, Expression<Func<string[]>> rFARequestrecipientUsers = null, Expression<Func<string[]>> rFARequestrecipientGroups = null, Expression<Func<string>> rFARequestrecipienteMail = null, Expression<Func<string>> rFARequestrecipientPhone = null, Expression<Func<string>> rFARequestrequestedOnUTC = null, Expression<Func<string>> rFARequestexpiresOnUTC = null, Expression<Func<string>> rFARequesttriggeredOn = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildESCollaborationCreateRFARequest(WorkflowExpression<string> rFARequestid, WorkflowExpression<string> rFARequestcode, WorkflowExpression<string> rFARequestrequestedBy, WorkflowExpression<bool> rFARequestisExternal, WorkflowExpression<rFARequestpriorityInput> rFARequestpriority = null, WorkflowExpression<string> rFARequestrequestClass = null, WorkflowExpression<string> rFARequestrequestCategory = null, WorkflowExpression<double> rFARequestnumericValue = null, WorkflowExpression<string> rFARequesttitle = null, WorkflowExpression<string[]> rFARequestrecipientUsers = null, WorkflowExpression<string[]> rFARequestrecipientGroups = null, WorkflowExpression<string> rFARequestrecipienteMail = null, WorkflowExpression<string> rFARequestrecipientPhone = null, WorkflowExpression<string> rFARequestrequestedOnUTC = null, WorkflowExpression<string> rFARequestexpiresOnUTC = null, WorkflowExpression<string> rFARequesttriggeredOn = null)
-        {
-            WorkflowExpression.Validate(rFARequestid, nameof(rFARequestid), required: true);
-            WorkflowExpression.Validate(rFARequestcode, nameof(rFARequestcode), required: true);
-            WorkflowExpression.Validate(rFARequestrequestedBy, nameof(rFARequestrequestedBy), required: true);
-            WorkflowExpression.Validate(rFARequestisExternal, nameof(rFARequestisExternal), required: true);
-            WorkflowExpression.Validate(rFARequestpriority, nameof(rFARequestpriority), required: false);
-            WorkflowExpression.Validate(rFARequestrequestClass, nameof(rFARequestrequestClass), required: false);
-            WorkflowExpression.Validate(rFARequestrequestCategory, nameof(rFARequestrequestCategory), required: false);
-            WorkflowExpression.Validate(rFARequestnumericValue, nameof(rFARequestnumericValue), required: false);
-            WorkflowExpression.Validate(rFARequesttitle, nameof(rFARequesttitle), required: false);
-            WorkflowExpression.Validate(rFARequestrecipientUsers, nameof(rFARequestrecipientUsers), required: false);
-            WorkflowExpression.Validate(rFARequestrecipientGroups, nameof(rFARequestrecipientGroups), required: false);
-            WorkflowExpression.Validate(rFARequestrecipienteMail, nameof(rFARequestrecipienteMail), required: false);
-            WorkflowExpression.Validate(rFARequestrecipientPhone, nameof(rFARequestrecipientPhone), required: false);
-            WorkflowExpression.Validate(rFARequestrequestedOnUTC, nameof(rFARequestrequestedOnUTC), required: false);
-            WorkflowExpression.Validate(rFARequestexpiresOnUTC, nameof(rFARequestexpiresOnUTC), required: false);
-            WorkflowExpression.Validate(rFARequesttriggeredOn, nameof(rFARequesttriggeredOn), required: false);
+            var __workflow_rFARequestid = rFARequestid == null ? null : WorkflowExpression.Compile(rFARequestid);
+            WorkflowExpression.Validate(__workflow_rFARequestid, nameof(rFARequestid), required: true);
+            var __workflow_rFARequestcode = rFARequestcode == null ? null : WorkflowExpression.Compile(rFARequestcode);
+            WorkflowExpression.Validate(__workflow_rFARequestcode, nameof(rFARequestcode), required: true);
+            var __workflow_rFARequestrequestedBy = rFARequestrequestedBy == null ? null : WorkflowExpression.Compile(rFARequestrequestedBy);
+            WorkflowExpression.Validate(__workflow_rFARequestrequestedBy, nameof(rFARequestrequestedBy), required: true);
+            var __workflow_rFARequestisExternal = rFARequestisExternal == null ? null : WorkflowExpression.Compile(rFARequestisExternal);
+            WorkflowExpression.Validate(__workflow_rFARequestisExternal, nameof(rFARequestisExternal), required: true);
+            var __workflow_rFARequestpriority = rFARequestpriority == null ? null : WorkflowExpression.Compile(rFARequestpriority);
+            WorkflowExpression.Validate(__workflow_rFARequestpriority, nameof(rFARequestpriority), required: false);
+            var __workflow_rFARequestrequestClass = rFARequestrequestClass == null ? null : WorkflowExpression.Compile(rFARequestrequestClass);
+            WorkflowExpression.Validate(__workflow_rFARequestrequestClass, nameof(rFARequestrequestClass), required: false);
+            var __workflow_rFARequestrequestCategory = rFARequestrequestCategory == null ? null : WorkflowExpression.Compile(rFARequestrequestCategory);
+            WorkflowExpression.Validate(__workflow_rFARequestrequestCategory, nameof(rFARequestrequestCategory), required: false);
+            var __workflow_rFARequestnumericValue = rFARequestnumericValue == null ? null : WorkflowExpression.Compile(rFARequestnumericValue);
+            WorkflowExpression.Validate(__workflow_rFARequestnumericValue, nameof(rFARequestnumericValue), required: false);
+            var __workflow_rFARequesttitle = rFARequesttitle == null ? null : WorkflowExpression.Compile(rFARequesttitle);
+            WorkflowExpression.Validate(__workflow_rFARequesttitle, nameof(rFARequesttitle), required: false);
+            var __workflow_rFARequestrecipientUsers = rFARequestrecipientUsers == null ? null : WorkflowExpression.Compile(rFARequestrecipientUsers);
+            WorkflowExpression.Validate(__workflow_rFARequestrecipientUsers, nameof(rFARequestrecipientUsers), required: false);
+            var __workflow_rFARequestrecipientGroups = rFARequestrecipientGroups == null ? null : WorkflowExpression.Compile(rFARequestrecipientGroups);
+            WorkflowExpression.Validate(__workflow_rFARequestrecipientGroups, nameof(rFARequestrecipientGroups), required: false);
+            var __workflow_rFARequestrecipienteMail = rFARequestrecipienteMail == null ? null : WorkflowExpression.Compile(rFARequestrecipienteMail);
+            WorkflowExpression.Validate(__workflow_rFARequestrecipienteMail, nameof(rFARequestrecipienteMail), required: false);
+            var __workflow_rFARequestrecipientPhone = rFARequestrecipientPhone == null ? null : WorkflowExpression.Compile(rFARequestrecipientPhone);
+            WorkflowExpression.Validate(__workflow_rFARequestrecipientPhone, nameof(rFARequestrecipientPhone), required: false);
+            var __workflow_rFARequestrequestedOnUTC = rFARequestrequestedOnUTC == null ? null : WorkflowExpression.Compile(rFARequestrequestedOnUTC);
+            WorkflowExpression.Validate(__workflow_rFARequestrequestedOnUTC, nameof(rFARequestrequestedOnUTC), required: false);
+            var __workflow_rFARequestexpiresOnUTC = rFARequestexpiresOnUTC == null ? null : WorkflowExpression.Compile(rFARequestexpiresOnUTC);
+            WorkflowExpression.Validate(__workflow_rFARequestexpiresOnUTC, nameof(rFARequestexpiresOnUTC), required: false);
+            var __workflow_rFARequesttriggeredOn = rFARequesttriggeredOn == null ? null : WorkflowExpression.Compile(rFARequesttriggeredOn);
+            WorkflowExpression.Validate(__workflow_rFARequesttriggeredOn, nameof(rFARequesttriggeredOn), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/collaboration/CreateRFARequest/";
@@ -1076,16 +1076,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var rFARequest = new JObject();
                 var rFARequestpropCount = 0;
                 rFARequestpropCount++;
-                rFARequest["id"] = ExpressionConverter.ConvertO(rFARequestid);
+                rFARequest["id"] = ExpressionConverter.ConvertO(__workflow_rFARequestid);
                 rFARequestpropCount++;
-                rFARequest["Code"] = ExpressionConverter.ConvertO(rFARequestcode);
+                rFARequest["Code"] = ExpressionConverter.ConvertO(__workflow_rFARequestcode);
                 rFARequestpropCount++;
-                rFARequest["RequestedBy"] = ExpressionConverter.ConvertO(rFARequestrequestedBy);
-                if (rFARequestpriority != null)
+                rFARequest["RequestedBy"] = ExpressionConverter.ConvertO(__workflow_rFARequestrequestedBy);
+                if (__workflow_rFARequestpriority != null)
                 {
-                    if (rFARequestpriority != null)
+                    if (__workflow_rFARequestpriority != null)
                     {
-                        rFARequest["Priority"] = ExpressionConverter.ConvertO(rFARequestpriority);
+                        rFARequest["Priority"] = ExpressionConverter.ConvertO(__workflow_rFARequestpriority);
                         rFARequestpropCount++;
                     }
 
@@ -1098,24 +1098,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 }
 
                 rFARequestpropCount++;
-                rFARequest["IsExternal"] = ExpressionConverter.ConvertO(rFARequestisExternal);
-                if (rFARequestrequestClass != null)
+                rFARequest["IsExternal"] = ExpressionConverter.ConvertO(__workflow_rFARequestisExternal);
+                if (__workflow_rFARequestrequestClass != null)
                 {
-                    rFARequest["RequestClass"] = ExpressionConverter.ConvertO(rFARequestrequestClass);
+                    rFARequest["RequestClass"] = ExpressionConverter.ConvertO(__workflow_rFARequestrequestClass);
                     rFARequestpropCount++;
                 }
 
-                if (rFARequestrequestCategory != null)
+                if (__workflow_rFARequestrequestCategory != null)
                 {
-                    rFARequest["RequestCategory"] = ExpressionConverter.ConvertO(rFARequestrequestCategory);
+                    rFARequest["RequestCategory"] = ExpressionConverter.ConvertO(__workflow_rFARequestrequestCategory);
                     rFARequestpropCount++;
                 }
 
-                if (rFARequestnumericValue != null)
+                if (__workflow_rFARequestnumericValue != null)
                 {
-                    if (rFARequestnumericValue != null)
+                    if (__workflow_rFARequestnumericValue != null)
                     {
-                        rFARequest["NumericValue"] = ExpressionConverter.ConvertO(rFARequestnumericValue);
+                        rFARequest["NumericValue"] = ExpressionConverter.ConvertO(__workflow_rFARequestnumericValue);
                         rFARequestpropCount++;
                     }
 
@@ -1127,51 +1127,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                     rFARequestpropCount++;
                 }
 
-                if (rFARequesttitle != null)
+                if (__workflow_rFARequesttitle != null)
                 {
-                    rFARequest["Title"] = ExpressionConverter.ConvertO(rFARequesttitle);
+                    rFARequest["Title"] = ExpressionConverter.ConvertO(__workflow_rFARequesttitle);
                     rFARequestpropCount++;
                 }
 
-                if (rFARequestrecipientUsers != null)
+                if (__workflow_rFARequestrecipientUsers != null)
                 {
-                    rFARequest["RecipientUsers"] = ExpressionConverter.ConvertO(rFARequestrecipientUsers);
+                    rFARequest["RecipientUsers"] = ExpressionConverter.ConvertO(__workflow_rFARequestrecipientUsers);
                     rFARequestpropCount++;
                 }
 
-                if (rFARequestrecipientGroups != null)
+                if (__workflow_rFARequestrecipientGroups != null)
                 {
-                    rFARequest["RecipientGroups"] = ExpressionConverter.ConvertO(rFARequestrecipientGroups);
+                    rFARequest["RecipientGroups"] = ExpressionConverter.ConvertO(__workflow_rFARequestrecipientGroups);
                     rFARequestpropCount++;
                 }
 
-                if (rFARequestrecipienteMail != null)
+                if (__workflow_rFARequestrecipienteMail != null)
                 {
-                    rFARequest["RecipienteMail"] = ExpressionConverter.ConvertO(rFARequestrecipienteMail);
+                    rFARequest["RecipienteMail"] = ExpressionConverter.ConvertO(__workflow_rFARequestrecipienteMail);
                     rFARequestpropCount++;
                 }
 
-                if (rFARequestrecipientPhone != null)
+                if (__workflow_rFARequestrecipientPhone != null)
                 {
-                    rFARequest["RecipientPhone"] = ExpressionConverter.ConvertO(rFARequestrecipientPhone);
+                    rFARequest["RecipientPhone"] = ExpressionConverter.ConvertO(__workflow_rFARequestrecipientPhone);
                     rFARequestpropCount++;
                 }
 
-                if (rFARequestrequestedOnUTC != null)
+                if (__workflow_rFARequestrequestedOnUTC != null)
                 {
-                    rFARequest["RequestedOnUTC"] = ExpressionConverter.ConvertO(rFARequestrequestedOnUTC);
+                    rFARequest["RequestedOnUTC"] = ExpressionConverter.ConvertO(__workflow_rFARequestrequestedOnUTC);
                     rFARequestpropCount++;
                 }
 
-                if (rFARequestexpiresOnUTC != null)
+                if (__workflow_rFARequestexpiresOnUTC != null)
                 {
-                    rFARequest["ExpiresOnUTC"] = ExpressionConverter.ConvertO(rFARequestexpiresOnUTC);
+                    rFARequest["ExpiresOnUTC"] = ExpressionConverter.ConvertO(__workflow_rFARequestexpiresOnUTC);
                     rFARequestpropCount++;
                 }
 
-                if (rFARequesttriggeredOn != null)
+                if (__workflow_rFARequesttriggeredOn != null)
                 {
-                    rFARequest["TriggeredOn"] = ExpressionConverter.ConvertO(rFARequesttriggeredOn);
+                    rFARequest["TriggeredOn"] = ExpressionConverter.ConvertO(__workflow_rFARequesttriggeredOn);
                     rFARequestpropCount++;
                 }
 
@@ -1185,21 +1185,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESCollaborationRespondToRFARequest))]
-        public IWorkflowAction ESCollaborationRespondToRFARequest([WorkflowExpression] Func<string> rFAResponseid, [WorkflowExpression] Func<string> rFAResponsecode, [WorkflowExpression] Func<string> rFAResponseresponseBy, [WorkflowExpression] Func<string> rFAResponseresponseOrigin, [WorkflowExpression] Func<string> rFAResponseresponseOnUTC, [WorkflowExpression] Func<string> rFAResponseresponseComments = null)
+        public IWorkflowAction ESCollaborationRespondToRFARequest(Expression<Func<string>> rFAResponseid, Expression<Func<string>> rFAResponsecode, Expression<Func<string>> rFAResponseresponseBy, Expression<Func<string>> rFAResponseresponseOrigin, Expression<Func<string>> rFAResponseresponseOnUTC, Expression<Func<string>> rFAResponseresponseComments = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildESCollaborationRespondToRFARequest(WorkflowExpression<string> rFAResponseid, WorkflowExpression<string> rFAResponsecode, WorkflowExpression<string> rFAResponseresponseBy, WorkflowExpression<string> rFAResponseresponseOrigin, WorkflowExpression<string> rFAResponseresponseOnUTC, WorkflowExpression<string> rFAResponseresponseComments = null)
-        {
-            WorkflowExpression.Validate(rFAResponseid, nameof(rFAResponseid), required: true);
-            WorkflowExpression.Validate(rFAResponsecode, nameof(rFAResponsecode), required: true);
-            WorkflowExpression.Validate(rFAResponseresponseBy, nameof(rFAResponseresponseBy), required: true);
-            WorkflowExpression.Validate(rFAResponseresponseOrigin, nameof(rFAResponseresponseOrigin), required: true);
-            WorkflowExpression.Validate(rFAResponseresponseOnUTC, nameof(rFAResponseresponseOnUTC), required: true);
-            WorkflowExpression.Validate(rFAResponseresponseComments, nameof(rFAResponseresponseComments), required: false);
+            var __workflow_rFAResponseid = rFAResponseid == null ? null : WorkflowExpression.Compile(rFAResponseid);
+            WorkflowExpression.Validate(__workflow_rFAResponseid, nameof(rFAResponseid), required: true);
+            var __workflow_rFAResponsecode = rFAResponsecode == null ? null : WorkflowExpression.Compile(rFAResponsecode);
+            WorkflowExpression.Validate(__workflow_rFAResponsecode, nameof(rFAResponsecode), required: true);
+            var __workflow_rFAResponseresponseBy = rFAResponseresponseBy == null ? null : WorkflowExpression.Compile(rFAResponseresponseBy);
+            WorkflowExpression.Validate(__workflow_rFAResponseresponseBy, nameof(rFAResponseresponseBy), required: true);
+            var __workflow_rFAResponseresponseOrigin = rFAResponseresponseOrigin == null ? null : WorkflowExpression.Compile(rFAResponseresponseOrigin);
+            WorkflowExpression.Validate(__workflow_rFAResponseresponseOrigin, nameof(rFAResponseresponseOrigin), required: true);
+            var __workflow_rFAResponseresponseOnUTC = rFAResponseresponseOnUTC == null ? null : WorkflowExpression.Compile(rFAResponseresponseOnUTC);
+            WorkflowExpression.Validate(__workflow_rFAResponseresponseOnUTC, nameof(rFAResponseresponseOnUTC), required: true);
+            var __workflow_rFAResponseresponseComments = rFAResponseresponseComments == null ? null : WorkflowExpression.Compile(rFAResponseresponseComments);
+            WorkflowExpression.Validate(__workflow_rFAResponseresponseComments, nameof(rFAResponseresponseComments), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/collaboration/RespondToRFARequest/";
@@ -1208,21 +1207,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var rFAResponse = new JObject();
                 var rFAResponsepropCount = 0;
                 rFAResponsepropCount++;
-                rFAResponse["id"] = ExpressionConverter.ConvertO(rFAResponseid);
+                rFAResponse["id"] = ExpressionConverter.ConvertO(__workflow_rFAResponseid);
                 rFAResponsepropCount++;
-                rFAResponse["Code"] = ExpressionConverter.ConvertO(rFAResponsecode);
-                if (rFAResponseresponseComments != null)
+                rFAResponse["Code"] = ExpressionConverter.ConvertO(__workflow_rFAResponsecode);
+                if (__workflow_rFAResponseresponseComments != null)
                 {
-                    rFAResponse["ResponseComments"] = ExpressionConverter.ConvertO(rFAResponseresponseComments);
+                    rFAResponse["ResponseComments"] = ExpressionConverter.ConvertO(__workflow_rFAResponseresponseComments);
                     rFAResponsepropCount++;
                 }
 
                 rFAResponsepropCount++;
-                rFAResponse["ResponseBy"] = ExpressionConverter.ConvertO(rFAResponseresponseBy);
+                rFAResponse["ResponseBy"] = ExpressionConverter.ConvertO(__workflow_rFAResponseresponseBy);
                 rFAResponsepropCount++;
-                rFAResponse["ResponseOrigin"] = ExpressionConverter.ConvertO(rFAResponseresponseOrigin);
+                rFAResponse["ResponseOrigin"] = ExpressionConverter.ConvertO(__workflow_rFAResponseresponseOrigin);
                 rFAResponsepropCount++;
-                rFAResponse["ResponseOnUTC"] = ExpressionConverter.ConvertO(rFAResponseresponseOnUTC);
+                rFAResponse["ResponseOnUTC"] = ExpressionConverter.ConvertO(__workflow_rFAResponseresponseOnUTC);
                 if (rFAResponsepropCount > 0)
                 {
                     callPayload.Body = rFAResponse;
@@ -1233,40 +1232,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESCollaborationFetchRequest))]
-        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESRFARequest> ESCollaborationFetchRequest([WorkflowExpression] Func<string> requestID)
+        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESRFARequest> ESCollaborationFetchRequest(Expression<Func<string>> requestID)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESRFARequest> __BuildESCollaborationFetchRequest(WorkflowExpression<string> requestID)
-        {
-            WorkflowExpression.Validate(requestID, nameof(requestID), required: true);
+            var __workflow_requestID = requestID == null ? null : WorkflowExpression.Compile(requestID);
+            WorkflowExpression.Validate(__workflow_requestID, nameof(requestID), required: true);
             return new DeferredBodyAction<EntersoftWebApiInfrastructureESRFARequest>(() =>
             {
                 var apiCallPath = "/api/collaboration/FetchRequest/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["RequestID"] = ExpressionConverter.Convert(requestID);
+                callPayload.Queries["RequestID"] = ExpressionConverter.Convert(__workflow_requestID);
                 return new ApiConnectionAction<EntersoftWebApiInfrastructureESRFARequest>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESRPCPingServer))]
-        public IBodyWorkflowAction<string> ESRPCPingServer([WorkflowExpression] Func<string> routeid)
+        public IBodyWorkflowAction<string> ESRPCPingServer(Expression<Func<string>> routeid)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildESRPCPingServer(WorkflowExpression<string> routeid)
-        {
-            WorkflowExpression.Validate(routeid, nameof(routeid), required: true);
+            var __workflow_routeid = routeid == null ? null : WorkflowExpression.Compile(routeid);
+            WorkflowExpression.Validate(__workflow_routeid, nameof(routeid), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/rpc/PingServer/{0}", ExpressionConverter.ConvertWithUrlEncoding(routeid, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/rpc/PingServer/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_routeid, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -1274,19 +1261,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESTestEBSConnectionTest))]
-        public IBodyWorkflowAction<JToken> ESTestEBSConnectionTest([WorkflowExpression] Func<string> routeid)
+        public IBodyWorkflowAction<JToken> ESTestEBSConnectionTest(Expression<Func<string>> routeid)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildESTestEBSConnectionTest(WorkflowExpression<string> routeid)
-        {
-            WorkflowExpression.Validate(routeid, nameof(routeid), required: true);
+            var __workflow_routeid = routeid == null ? null : WorkflowExpression.Compile(routeid);
+            WorkflowExpression.Validate(__workflow_routeid, nameof(routeid), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/esapi/estest/EBSConnectionTest/{0}", ExpressionConverter.ConvertWithUrlEncoding(routeid, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/esapi/estest/EBSConnectionTest/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_routeid, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<JToken>(callPayload);
@@ -1294,70 +1275,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESEntityDeleteEntityByID))]
-        public IWorkflowAction ESEntityDeleteEntityByID([WorkflowExpression] Func<string> entityID, [WorkflowExpression] Func<string> pK)
+        public IWorkflowAction ESEntityDeleteEntityByID(Expression<Func<string>> entityID, Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildESEntityDeleteEntityByID(WorkflowExpression<string> entityID, WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(entityID, nameof(entityID), required: true);
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_entityID = entityID == null ? null : WorkflowExpression.Compile(entityID);
+            WorkflowExpression.Validate(__workflow_entityID, nameof(entityID), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/esentity/DeleteEntityByID/";
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["EntityID"] = ExpressionConverter.Convert(entityID);
-                callPayload.Queries["PK"] = ExpressionConverter.Convert(pK);
+                callPayload.Queries["EntityID"] = ExpressionConverter.Convert(__workflow_entityID);
+                callPayload.Queries["PK"] = ExpressionConverter.Convert(__workflow_pK);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESEntityDeleteEntityByType))]
-        public IWorkflowAction ESEntityDeleteEntityByType([WorkflowExpression] Func<entityTypeInput> entityType, [WorkflowExpression] Func<string> pK)
+        public IWorkflowAction ESEntityDeleteEntityByType(Expression<Func<entityTypeInput>> entityType, Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildESEntityDeleteEntityByType(WorkflowExpression<entityTypeInput> entityType, WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(entityType, nameof(entityType), required: true);
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_entityType = entityType == null ? null : WorkflowExpression.Compile(entityType);
+            WorkflowExpression.Validate(__workflow_entityType, nameof(entityType), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/esentity/DeleteEntityByType/";
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["EntityType"] = ExpressionConverter.Convert(entityType);
-                callPayload.Queries["PK"] = ExpressionConverter.Convert(pK);
+                callPayload.Queries["EntityType"] = ExpressionConverter.Convert(__workflow_entityType);
+                callPayload.Queries["PK"] = ExpressionConverter.Convert(__workflow_pK);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESEntityUpdateEntityByID))]
-        public IWorkflowAction ESEntityUpdateEntityByID([WorkflowExpression] Func<string> entityID, [WorkflowExpression] Func<string> pK)
+        public IWorkflowAction ESEntityUpdateEntityByID(Expression<Func<string>> entityID, Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildESEntityUpdateEntityByID(WorkflowExpression<string> entityID, WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(entityID, nameof(entityID), required: true);
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_entityID = entityID == null ? null : WorkflowExpression.Compile(entityID);
+            WorkflowExpression.Validate(__workflow_entityID, nameof(entityID), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/esentity/UpdateEntityByID/";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["EntityID"] = ExpressionConverter.Convert(entityID);
-                callPayload.Queries["PK"] = ExpressionConverter.Convert(pK);
+                callPayload.Queries["EntityID"] = ExpressionConverter.Convert(__workflow_entityID);
+                callPayload.Queries["PK"] = ExpressionConverter.Convert(__workflow_pK);
                 var updProperties = new JObject();
                 var updPropertiespropCount = 0;
                 if (updPropertiespropCount > 0)
@@ -1370,24 +1336,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESEntityUpdateEntityByType))]
-        public IWorkflowAction ESEntityUpdateEntityByType([WorkflowExpression] Func<entityTypeInput> entityType, [WorkflowExpression] Func<string> pK)
+        public IWorkflowAction ESEntityUpdateEntityByType(Expression<Func<entityTypeInput>> entityType, Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildESEntityUpdateEntityByType(WorkflowExpression<entityTypeInput> entityType, WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(entityType, nameof(entityType), required: true);
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_entityType = entityType == null ? null : WorkflowExpression.Compile(entityType);
+            WorkflowExpression.Validate(__workflow_entityType, nameof(entityType), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/esentity/UpdateEntityByType/";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["EntityType"] = ExpressionConverter.Convert(entityType);
-                callPayload.Queries["PK"] = ExpressionConverter.Convert(pK);
+                callPayload.Queries["EntityType"] = ExpressionConverter.Convert(__workflow_entityType);
+                callPayload.Queries["PK"] = ExpressionConverter.Convert(__workflow_pK);
                 var updProperties = new JObject();
                 var updPropertiespropCount = 0;
                 if (updPropertiespropCount > 0)
@@ -1400,22 +1361,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESEntityCreateEntityByID))]
-        public IBodyWorkflowAction<EntersoftWebApiApiControllersESCreatedEntityInfo> ESEntityCreateEntityByID([WorkflowExpression] Func<string> entityID)
+        public IBodyWorkflowAction<EntersoftWebApiApiControllersESCreatedEntityInfo> ESEntityCreateEntityByID(Expression<Func<string>> entityID)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApiApiControllersESCreatedEntityInfo> __BuildESEntityCreateEntityByID(WorkflowExpression<string> entityID)
-        {
-            WorkflowExpression.Validate(entityID, nameof(entityID), required: true);
+            var __workflow_entityID = entityID == null ? null : WorkflowExpression.Compile(entityID);
+            WorkflowExpression.Validate(__workflow_entityID, nameof(entityID), required: true);
             return new DeferredBodyAction<EntersoftWebApiApiControllersESCreatedEntityInfo>(() =>
             {
                 var apiCallPath = "/api/esentity/CreateEntityByID/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["EntityID"] = ExpressionConverter.Convert(entityID);
+                callPayload.Queries["EntityID"] = ExpressionConverter.Convert(__workflow_entityID);
                 var updProperties = new JObject();
                 var updPropertiespropCount = 0;
                 if (updPropertiespropCount > 0)
@@ -1428,22 +1383,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESEntityCreateEntityByType))]
-        public IBodyWorkflowAction<EntersoftWebApiApiControllersESCreatedEntityInfo> ESEntityCreateEntityByType([WorkflowExpression] Func<entityTypeInput> entityType)
+        public IBodyWorkflowAction<EntersoftWebApiApiControllersESCreatedEntityInfo> ESEntityCreateEntityByType(Expression<Func<entityTypeInput>> entityType)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApiApiControllersESCreatedEntityInfo> __BuildESEntityCreateEntityByType(WorkflowExpression<entityTypeInput> entityType)
-        {
-            WorkflowExpression.Validate(entityType, nameof(entityType), required: true);
+            var __workflow_entityType = entityType == null ? null : WorkflowExpression.Compile(entityType);
+            WorkflowExpression.Validate(__workflow_entityType, nameof(entityType), required: true);
             return new DeferredBodyAction<EntersoftWebApiApiControllersESCreatedEntityInfo>(() =>
             {
                 var apiCallPath = "/api/esentity/CreateEntityByType/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["EntityType"] = ExpressionConverter.Convert(entityType);
+                callPayload.Queries["EntityType"] = ExpressionConverter.Convert(__workflow_entityType);
                 var updProperties = new JObject();
                 var updPropertiespropCount = 0;
                 if (updPropertiespropCount > 0)
@@ -1456,83 +1405,71 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESEntityEntityByID))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESBaseEntity> ESEntityEntityByID([WorkflowExpression] Func<string> entityID, [WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESBaseEntity> ESEntityEntityByID(Expression<Func<string>> entityID, Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESBaseEntity> __BuildESEntityEntityByID(WorkflowExpression<string> entityID, WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(entityID, nameof(entityID), required: true);
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_entityID = entityID == null ? null : WorkflowExpression.Compile(entityID);
+            WorkflowExpression.Validate(__workflow_entityID, nameof(entityID), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESBaseEntity>(() =>
             {
                 var apiCallPath = "/api/esentity/EntityByID/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["EntityID"] = ExpressionConverter.Convert(entityID);
-                callPayload.Queries["PK"] = ExpressionConverter.Convert(pK);
+                callPayload.Queries["EntityID"] = ExpressionConverter.Convert(__workflow_entityID);
+                callPayload.Queries["PK"] = ExpressionConverter.Convert(__workflow_pK);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESBaseEntity>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESEntityEntityByType))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESBaseEntity> ESEntityEntityByType([WorkflowExpression] Func<entityTypeInput> entityType, [WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESBaseEntity> ESEntityEntityByType(Expression<Func<entityTypeInput>> entityType, Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESBaseEntity> __BuildESEntityEntityByType(WorkflowExpression<entityTypeInput> entityType, WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(entityType, nameof(entityType), required: true);
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_entityType = entityType == null ? null : WorkflowExpression.Compile(entityType);
+            WorkflowExpression.Validate(__workflow_entityType, nameof(entityType), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESBaseEntity>(() =>
             {
                 var apiCallPath = "/api/esentity/EntityByType/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["EntityType"] = ExpressionConverter.Convert(entityType);
-                callPayload.Queries["PK"] = ExpressionConverter.Convert(pK);
+                callPayload.Queries["EntityType"] = ExpressionConverter.Convert(__workflow_entityType);
+                callPayload.Queries["PK"] = ExpressionConverter.Convert(__workflow_pK);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESBaseEntity>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESEntityEntitiesByID))]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESPQResult> ESEntityEntitiesByID([WorkflowExpression] Func<string> entityID, [WorkflowExpression] Func<string[]> fetchOptionsselectFields = null, [WorkflowExpression] Func<string[]> fetchOptionsorderByFields = null, [WorkflowExpression] Func<int> fetchOptionspage = null, [WorkflowExpression] Func<int> fetchOptionspageSize = null)
+        public IBodyWorkflowAction<EntersoftWebApiModelsESPQResult> ESEntityEntitiesByID(Expression<Func<string>> entityID, Expression<Func<string[]>> fetchOptionsselectFields = null, Expression<Func<string[]>> fetchOptionsorderByFields = null, Expression<Func<int>> fetchOptionspage = null, Expression<Func<int>> fetchOptionspageSize = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESPQResult> __BuildESEntityEntitiesByID(WorkflowExpression<string> entityID, WorkflowExpression<string[]> fetchOptionsselectFields = null, WorkflowExpression<string[]> fetchOptionsorderByFields = null, WorkflowExpression<int> fetchOptionspage = null, WorkflowExpression<int> fetchOptionspageSize = null)
-        {
-            WorkflowExpression.Validate(entityID, nameof(entityID), required: true);
-            WorkflowExpression.Validate(fetchOptionsselectFields, nameof(fetchOptionsselectFields), required: false);
-            WorkflowExpression.Validate(fetchOptionsorderByFields, nameof(fetchOptionsorderByFields), required: false);
-            WorkflowExpression.Validate(fetchOptionspage, nameof(fetchOptionspage), required: false);
-            WorkflowExpression.Validate(fetchOptionspageSize, nameof(fetchOptionspageSize), required: false);
+            var __workflow_entityID = entityID == null ? null : WorkflowExpression.Compile(entityID);
+            WorkflowExpression.Validate(__workflow_entityID, nameof(entityID), required: true);
+            var __workflow_fetchOptionsselectFields = fetchOptionsselectFields == null ? null : WorkflowExpression.Compile(fetchOptionsselectFields);
+            WorkflowExpression.Validate(__workflow_fetchOptionsselectFields, nameof(fetchOptionsselectFields), required: false);
+            var __workflow_fetchOptionsorderByFields = fetchOptionsorderByFields == null ? null : WorkflowExpression.Compile(fetchOptionsorderByFields);
+            WorkflowExpression.Validate(__workflow_fetchOptionsorderByFields, nameof(fetchOptionsorderByFields), required: false);
+            var __workflow_fetchOptionspage = fetchOptionspage == null ? null : WorkflowExpression.Compile(fetchOptionspage);
+            WorkflowExpression.Validate(__workflow_fetchOptionspage, nameof(fetchOptionspage), required: false);
+            var __workflow_fetchOptionspageSize = fetchOptionspageSize == null ? null : WorkflowExpression.Compile(fetchOptionspageSize);
+            WorkflowExpression.Validate(__workflow_fetchOptionspageSize, nameof(fetchOptionspageSize), required: false);
             return new DeferredBodyAction<EntersoftWebApiModelsESPQResult>(() =>
             {
                 var apiCallPath = "/api/esentity/EntitiesByID/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["EntityID"] = ExpressionConverter.Convert(entityID);
+                callPayload.Queries["EntityID"] = ExpressionConverter.Convert(__workflow_entityID);
                 var fetchOptions = new JObject();
                 var fetchOptionspropCount = 0;
-                if (fetchOptionsselectFields != null)
+                if (__workflow_fetchOptionsselectFields != null)
                 {
-                    fetchOptions["SelectFields"] = ExpressionConverter.ConvertO(fetchOptionsselectFields);
+                    fetchOptions["SelectFields"] = ExpressionConverter.ConvertO(__workflow_fetchOptionsselectFields);
                     fetchOptionspropCount++;
                 }
 
-                if (fetchOptionsorderByFields != null)
+                if (__workflow_fetchOptionsorderByFields != null)
                 {
-                    fetchOptions["OrderByFields"] = ExpressionConverter.ConvertO(fetchOptionsorderByFields);
+                    fetchOptions["OrderByFields"] = ExpressionConverter.ConvertO(__workflow_fetchOptionsorderByFields);
                     fetchOptionspropCount++;
                 }
 
@@ -1544,11 +1481,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                     fetchOptionspropCount++;
                 }
 
-                if (fetchOptionspage != null)
+                if (__workflow_fetchOptionspage != null)
                 {
-                    if (fetchOptionspage != null)
+                    if (__workflow_fetchOptionspage != null)
                     {
-                        fetchOptions["Page"] = ExpressionConverter.ConvertO(fetchOptionspage);
+                        fetchOptions["Page"] = ExpressionConverter.ConvertO(__workflow_fetchOptionspage);
                         fetchOptionspropCount++;
                     }
 
@@ -1560,11 +1497,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                     fetchOptionspropCount++;
                 }
 
-                if (fetchOptionspageSize != null)
+                if (__workflow_fetchOptionspageSize != null)
                 {
-                    if (fetchOptionspageSize != null)
+                    if (__workflow_fetchOptionspageSize != null)
                     {
-                        fetchOptions["PageSize"] = ExpressionConverter.ConvertO(fetchOptionspageSize);
+                        fetchOptions["PageSize"] = ExpressionConverter.ConvertO(__workflow_fetchOptionspageSize);
                         fetchOptionspropCount++;
                     }
 
@@ -1586,37 +1523,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESEntityEntitiesByType))]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESPQResult> ESEntityEntitiesByType([WorkflowExpression] Func<entityTypeInput> entityType, [WorkflowExpression] Func<string[]> fetchOptionsselectFields = null, [WorkflowExpression] Func<string[]> fetchOptionsorderByFields = null, [WorkflowExpression] Func<int> fetchOptionspage = null, [WorkflowExpression] Func<int> fetchOptionspageSize = null)
+        public IBodyWorkflowAction<EntersoftWebApiModelsESPQResult> ESEntityEntitiesByType(Expression<Func<entityTypeInput>> entityType, Expression<Func<string[]>> fetchOptionsselectFields = null, Expression<Func<string[]>> fetchOptionsorderByFields = null, Expression<Func<int>> fetchOptionspage = null, Expression<Func<int>> fetchOptionspageSize = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESPQResult> __BuildESEntityEntitiesByType(WorkflowExpression<entityTypeInput> entityType, WorkflowExpression<string[]> fetchOptionsselectFields = null, WorkflowExpression<string[]> fetchOptionsorderByFields = null, WorkflowExpression<int> fetchOptionspage = null, WorkflowExpression<int> fetchOptionspageSize = null)
-        {
-            WorkflowExpression.Validate(entityType, nameof(entityType), required: true);
-            WorkflowExpression.Validate(fetchOptionsselectFields, nameof(fetchOptionsselectFields), required: false);
-            WorkflowExpression.Validate(fetchOptionsorderByFields, nameof(fetchOptionsorderByFields), required: false);
-            WorkflowExpression.Validate(fetchOptionspage, nameof(fetchOptionspage), required: false);
-            WorkflowExpression.Validate(fetchOptionspageSize, nameof(fetchOptionspageSize), required: false);
+            var __workflow_entityType = entityType == null ? null : WorkflowExpression.Compile(entityType);
+            WorkflowExpression.Validate(__workflow_entityType, nameof(entityType), required: true);
+            var __workflow_fetchOptionsselectFields = fetchOptionsselectFields == null ? null : WorkflowExpression.Compile(fetchOptionsselectFields);
+            WorkflowExpression.Validate(__workflow_fetchOptionsselectFields, nameof(fetchOptionsselectFields), required: false);
+            var __workflow_fetchOptionsorderByFields = fetchOptionsorderByFields == null ? null : WorkflowExpression.Compile(fetchOptionsorderByFields);
+            WorkflowExpression.Validate(__workflow_fetchOptionsorderByFields, nameof(fetchOptionsorderByFields), required: false);
+            var __workflow_fetchOptionspage = fetchOptionspage == null ? null : WorkflowExpression.Compile(fetchOptionspage);
+            WorkflowExpression.Validate(__workflow_fetchOptionspage, nameof(fetchOptionspage), required: false);
+            var __workflow_fetchOptionspageSize = fetchOptionspageSize == null ? null : WorkflowExpression.Compile(fetchOptionspageSize);
+            WorkflowExpression.Validate(__workflow_fetchOptionspageSize, nameof(fetchOptionspageSize), required: false);
             return new DeferredBodyAction<EntersoftWebApiModelsESPQResult>(() =>
             {
                 var apiCallPath = "/api/esentity/EntitiesByType/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["EntityType"] = ExpressionConverter.Convert(entityType);
+                callPayload.Queries["EntityType"] = ExpressionConverter.Convert(__workflow_entityType);
                 var fetchOptions = new JObject();
                 var fetchOptionspropCount = 0;
-                if (fetchOptionsselectFields != null)
+                if (__workflow_fetchOptionsselectFields != null)
                 {
-                    fetchOptions["SelectFields"] = ExpressionConverter.ConvertO(fetchOptionsselectFields);
+                    fetchOptions["SelectFields"] = ExpressionConverter.ConvertO(__workflow_fetchOptionsselectFields);
                     fetchOptionspropCount++;
                 }
 
-                if (fetchOptionsorderByFields != null)
+                if (__workflow_fetchOptionsorderByFields != null)
                 {
-                    fetchOptions["OrderByFields"] = ExpressionConverter.ConvertO(fetchOptionsorderByFields);
+                    fetchOptions["OrderByFields"] = ExpressionConverter.ConvertO(__workflow_fetchOptionsorderByFields);
                     fetchOptionspropCount++;
                 }
 
@@ -1628,11 +1563,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                     fetchOptionspropCount++;
                 }
 
-                if (fetchOptionspage != null)
+                if (__workflow_fetchOptionspage != null)
                 {
-                    if (fetchOptionspage != null)
+                    if (__workflow_fetchOptionspage != null)
                     {
-                        fetchOptions["Page"] = ExpressionConverter.ConvertO(fetchOptionspage);
+                        fetchOptions["Page"] = ExpressionConverter.ConvertO(__workflow_fetchOptionspage);
                         fetchOptionspropCount++;
                     }
 
@@ -1644,11 +1579,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                     fetchOptionspropCount++;
                 }
 
-                if (fetchOptionspageSize != null)
+                if (__workflow_fetchOptionspageSize != null)
                 {
-                    if (fetchOptionspageSize != null)
+                    if (__workflow_fetchOptionspageSize != null)
                     {
-                        fetchOptions["PageSize"] = ExpressionConverter.ConvertO(fetchOptionspageSize);
+                        fetchOptions["PageSize"] = ExpressionConverter.ConvertO(__workflow_fetchOptionspageSize);
                         fetchOptionspropCount++;
                     }
 
@@ -1670,24 +1605,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESEntityEntityAutomationNew))]
-        public IBodyWorkflowAction<JToken> ESEntityEntityAutomationNew([WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<string> operation)
+        public IBodyWorkflowAction<JToken> ESEntityEntityAutomationNew(Expression<Func<string>> entity, Expression<Func<string>> operation)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildESEntityEntityAutomationNew(WorkflowExpression<string> entity, WorkflowExpression<string> operation)
-        {
-            WorkflowExpression.Validate(entity, nameof(entity), required: true);
-            WorkflowExpression.Validate(operation, nameof(operation), required: true);
+            var __workflow_entity = entity == null ? null : WorkflowExpression.Compile(entity);
+            WorkflowExpression.Validate(__workflow_entity, nameof(entity), required: true);
+            var __workflow_operation = operation == null ? null : WorkflowExpression.Compile(operation);
+            WorkflowExpression.Validate(__workflow_operation, nameof(operation), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/api/esentity/EntityAutomationNew/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["entity"] = ExpressionConverter.Convert(entity);
-                callPayload.Queries["operation"] = ExpressionConverter.Convert(operation);
+                callPayload.Queries["entity"] = ExpressionConverter.Convert(__workflow_entity);
+                callPayload.Queries["operation"] = ExpressionConverter.Convert(__workflow_operation);
                 var commandParams = new JObject();
                 var commandParamspropCount = 0;
                 if (commandParamspropCount > 0)
@@ -1700,28 +1630,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESEntityEntityAutomationUpdate))]
-        public IBodyWorkflowAction<JToken> ESEntityEntityAutomationUpdate([WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<string> field, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> operation)
+        public IBodyWorkflowAction<JToken> ESEntityEntityAutomationUpdate(Expression<Func<string>> entity, Expression<Func<string>> field, Expression<Func<string>> id, Expression<Func<string>> operation)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildESEntityEntityAutomationUpdate(WorkflowExpression<string> entity, WorkflowExpression<string> field, WorkflowExpression<string> id, WorkflowExpression<string> operation)
-        {
-            WorkflowExpression.Validate(entity, nameof(entity), required: true);
-            WorkflowExpression.Validate(field, nameof(field), required: true);
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(operation, nameof(operation), required: true);
+            var __workflow_entity = entity == null ? null : WorkflowExpression.Compile(entity);
+            WorkflowExpression.Validate(__workflow_entity, nameof(entity), required: true);
+            var __workflow_field = field == null ? null : WorkflowExpression.Compile(field);
+            WorkflowExpression.Validate(__workflow_field, nameof(field), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_operation = operation == null ? null : WorkflowExpression.Compile(operation);
+            WorkflowExpression.Validate(__workflow_operation, nameof(operation), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/api/esentity/EntityAutomationUpdate/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["entity"] = ExpressionConverter.Convert(entity);
-                callPayload.Queries["field"] = ExpressionConverter.Convert(field);
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-                callPayload.Queries["operation"] = ExpressionConverter.Convert(operation);
+                callPayload.Queries["entity"] = ExpressionConverter.Convert(__workflow_entity);
+                callPayload.Queries["field"] = ExpressionConverter.Convert(__workflow_field);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
+                callPayload.Queries["operation"] = ExpressionConverter.Convert(__workflow_operation);
                 var commandParams = new JObject();
                 var commandParamspropCount = 0;
                 if (commandParamspropCount > 0)
@@ -1734,26 +1661,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESEntityEntityAutomationUpdateByCode))]
-        public IBodyWorkflowAction<JToken> ESEntityEntityAutomationUpdateByCode([WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> operation)
+        public IBodyWorkflowAction<JToken> ESEntityEntityAutomationUpdateByCode(Expression<Func<string>> entity, Expression<Func<string>> id, Expression<Func<string>> operation)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildESEntityEntityAutomationUpdateByCode(WorkflowExpression<string> entity, WorkflowExpression<string> id, WorkflowExpression<string> operation)
-        {
-            WorkflowExpression.Validate(entity, nameof(entity), required: true);
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(operation, nameof(operation), required: true);
+            var __workflow_entity = entity == null ? null : WorkflowExpression.Compile(entity);
+            WorkflowExpression.Validate(__workflow_entity, nameof(entity), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_operation = operation == null ? null : WorkflowExpression.Compile(operation);
+            WorkflowExpression.Validate(__workflow_operation, nameof(operation), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/api/esentity/EntityAutomationUpdateByCode/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["entity"] = ExpressionConverter.Convert(entity);
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-                callPayload.Queries["operation"] = ExpressionConverter.Convert(operation);
+                callPayload.Queries["entity"] = ExpressionConverter.Convert(__workflow_entity);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
+                callPayload.Queries["operation"] = ExpressionConverter.Convert(__workflow_operation);
                 var commandParams = new JObject();
                 var commandParamspropCount = 0;
                 if (commandParamspropCount > 0)
@@ -1766,19 +1689,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESFinancialsESFIDocumentTrade))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIDocumentTradeObj> ESFinancialsESFIDocumentTrade([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIDocumentTradeObj> ESFinancialsESFIDocumentTrade(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIDocumentTradeObj> __BuildESFinancialsESFIDocumentTrade(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFIDocumentTradeObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIDocumentTrade/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIDocumentTrade/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIDocumentTradeObj>(callPayload);
@@ -1786,19 +1703,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESFinancialsESFIItemExpenses))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIItemExpensesObj> ESFinancialsESFIItemExpenses([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIItemExpensesObj> ESFinancialsESFIItemExpenses(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIItemExpensesObj> __BuildESFinancialsESFIItemExpenses(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFIItemExpensesObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIItemExpenses/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIItemExpenses/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIItemExpensesObj>(callPayload);
@@ -1806,19 +1717,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESFinancialsESFICreditor))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFICreditorObj> ESFinancialsESFICreditor([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFICreditorObj> ESFinancialsESFICreditor(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFICreditorObj> __BuildESFinancialsESFICreditor(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFICreditorObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFICreditor/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFICreditor/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFICreditorObj>(callPayload);
@@ -1826,19 +1731,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESFinancialsESFIDocumentCash))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIDocumentCashObj> ESFinancialsESFIDocumentCash([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIDocumentCashObj> ESFinancialsESFIDocumentCash(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIDocumentCashObj> __BuildESFinancialsESFIDocumentCash(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFIDocumentCashObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIDocumentCash/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIDocumentCash/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIDocumentCashObj>(callPayload);
@@ -1846,19 +1745,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESFinancialsESMMStockOrderPlan))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMStockOrderPlanObj> ESFinancialsESMMStockOrderPlan([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMStockOrderPlanObj> ESFinancialsESMMStockOrderPlan(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMStockOrderPlanObj> __BuildESFinancialsESMMStockOrderPlan(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESMMStockOrderPlanObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESMMStockOrderPlan/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESMMStockOrderPlan/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMStockOrderPlanObj>(callPayload);
@@ -1866,19 +1759,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESFinancialsESFISupplier))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFISupplierObj> ESFinancialsESFISupplier([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFISupplierObj> ESFinancialsESFISupplier(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFISupplierObj> __BuildESFinancialsESFISupplier(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFISupplierObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFISupplier/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFISupplier/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFISupplierObj>(callPayload);
@@ -1886,19 +1773,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESFinancialsESFIItemExpense))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIItemExpenseObj> ESFinancialsESFIItemExpense([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIItemExpenseObj> ESFinancialsESFIItemExpense(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIItemExpenseObj> __BuildESFinancialsESFIItemExpense(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFIItemExpenseObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIItemExpense/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIItemExpense/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIItemExpenseObj>(callPayload);
@@ -1906,19 +1787,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESFinancialsESFISalesPerson))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFISalesPersonObj> ESFinancialsESFISalesPerson([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFISalesPersonObj> ESFinancialsESFISalesPerson(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFISalesPersonObj> __BuildESFinancialsESFISalesPerson(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFISalesPersonObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFISalesPerson/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFISalesPerson/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFISalesPersonObj>(callPayload);
@@ -1926,19 +1801,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESFinancialsESFIPaymentMethod))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIPaymentMethodObj> ESFinancialsESFIPaymentMethod([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIPaymentMethodObj> ESFinancialsESFIPaymentMethod(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIPaymentMethodObj> __BuildESFinancialsESFIPaymentMethod(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFIPaymentMethodObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIPaymentMethod/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIPaymentMethod/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIPaymentMethodObj>(callPayload);
@@ -1946,19 +1815,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESFinancialsESFIItem))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIItemObj> ESFinancialsESFIItem([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIItemObj> ESFinancialsESFIItem(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIItemObj> __BuildESFinancialsESFIItem(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFIItemObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIItem/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIItem/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIItemObj>(callPayload);
@@ -1966,19 +1829,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESFinancialsESFISpecialAccount))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFISpecialAccountObj> ESFinancialsESFISpecialAccount([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFISpecialAccountObj> ESFinancialsESFISpecialAccount(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFISpecialAccountObj> __BuildESFinancialsESFISpecialAccount(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFISpecialAccountObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFISpecialAccount/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFISpecialAccount/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFISpecialAccountObj>(callPayload);
@@ -1986,19 +1843,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESFinancialsESFIDocumentStock))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIDocumentStockObj> ESFinancialsESFIDocumentStock([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIDocumentStockObj> ESFinancialsESFIDocumentStock(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIDocumentStockObj> __BuildESFinancialsESFIDocumentStock(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFIDocumentStockObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIDocumentStock/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIDocumentStock/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIDocumentStockObj>(callPayload);
@@ -2006,19 +1857,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESFinancialsESFINote))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFINoteObj> ESFinancialsESFINote([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFINoteObj> ESFinancialsESFINote(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFINoteObj> __BuildESFinancialsESFINote(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFINoteObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFINote/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFINote/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFINoteObj>(callPayload);
@@ -2026,19 +1871,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESFinancialsESFITradeAccountContract))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFITradeAccountContractObj> ESFinancialsESFITradeAccountContract([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFITradeAccountContractObj> ESFinancialsESFITradeAccountContract(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFITradeAccountContractObj> __BuildESFinancialsESFITradeAccountContract(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFITradeAccountContractObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFITradeAccountContract/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFITradeAccountContract/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFITradeAccountContractObj>(callPayload);
@@ -2046,19 +1885,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESFinancialsESFIVoucher))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIVoucherObj> ESFinancialsESFIVoucher([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIVoucherObj> ESFinancialsESFIVoucher(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIVoucherObj> __BuildESFinancialsESFIVoucher(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFIVoucherObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIVoucher/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIVoucher/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIVoucherObj>(callPayload);
@@ -2066,19 +1899,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESFinancialsESFICustomer))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFICustomerObj> ESFinancialsESFICustomer([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFICustomerObj> ESFinancialsESFICustomer(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFICustomerObj> __BuildESFinancialsESFICustomer(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFICustomerObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFICustomer/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFICustomer/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFICustomerObj>(callPayload);
@@ -2086,19 +1913,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESFinancialsESFIDebtor))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIDebtorObj> ESFinancialsESFIDebtor([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIDebtorObj> ESFinancialsESFIDebtor(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIDebtorObj> __BuildESFinancialsESFIDebtor(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFIDebtorObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIDebtor/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIDebtor/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIDebtorObj>(callPayload);
@@ -2106,19 +1927,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESFinancialsESFIPricelist))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIPricelistObj> ESFinancialsESFIPricelist([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIPricelistObj> ESFinancialsESFIPricelist(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIPricelistObj> __BuildESFinancialsESFIPricelist(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFIPricelistObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIPricelist/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIPricelist/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIPricelistObj>(callPayload);
@@ -2126,19 +1941,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESFinancialsESFIItemService))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIItemServiceObj> ESFinancialsESFIItemService([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIItemServiceObj> ESFinancialsESFIItemService(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIItemServiceObj> __BuildESFinancialsESFIItemService(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFIItemServiceObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIItemService/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIItemService/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIItemServiceObj>(callPayload);
@@ -2146,19 +1955,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESFinancialsESFICashAccount))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFICashAccountObj> ESFinancialsESFICashAccount([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFICashAccountObj> ESFinancialsESFICashAccount(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFICashAccountObj> __BuildESFinancialsESFICashAccount(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFICashAccountObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFICashAccount/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFICashAccount/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFICashAccountObj>(callPayload);
@@ -2166,19 +1969,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESFinancialsESFIDocumentAdjustment))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIDocumentAdjustmentObj> ESFinancialsESFIDocumentAdjustment([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIDocumentAdjustmentObj> ESFinancialsESFIDocumentAdjustment(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIDocumentAdjustmentObj> __BuildESFinancialsESFIDocumentAdjustment(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFIDocumentAdjustmentObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIDocumentAdjustment/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIDocumentAdjustment/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIDocumentAdjustmentObj>(callPayload);
@@ -2186,19 +1983,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESFinancialsESFITradeAccount))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFITradeAccountObj> ESFinancialsESFITradeAccount([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFITradeAccountObj> ESFinancialsESFITradeAccount(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFITradeAccountObj> __BuildESFinancialsESFITradeAccount(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFITradeAccountObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFITradeAccount/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFITradeAccount/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFITradeAccountObj>(callPayload);
@@ -2206,19 +1997,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESFixedAssetESFAFixedAsset))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFAFixedAssetObj> ESFixedAssetESFAFixedAsset([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFAFixedAssetObj> ESFixedAssetESFAFixedAsset(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFAFixedAssetObj> __BuildESFixedAssetESFAFixedAsset(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFAFixedAssetObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESFixedAsset/ESFAFixedAsset/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESFixedAsset/ESFAFixedAsset/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFAFixedAssetObj>(callPayload);
@@ -2226,19 +2011,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESGlobalObjectsESGOPerson))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESGOPersonObj> ESGlobalObjectsESGOPerson([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESGOPersonObj> ESGlobalObjectsESGOPerson(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESGOPersonObj> __BuildESGlobalObjectsESGOPerson(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESGOPersonObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESGlobalObjects/ESGOPerson/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESGlobalObjects/ESGOPerson/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESGOPersonObj>(callPayload);
@@ -2246,19 +2025,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESGlobalObjectsES00Device))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsES00DeviceObj> ESGlobalObjectsES00Device([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsES00DeviceObj> ESGlobalObjectsES00Device(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsES00DeviceObj> __BuildESGlobalObjectsES00Device(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsES00DeviceObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESGlobalObjects/ES00Device/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESGlobalObjects/ES00Device/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsES00DeviceObj>(callPayload);
@@ -2266,19 +2039,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESGlobalObjectsESGOWebUser))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESGOWebUserObj> ESGlobalObjectsESGOWebUser([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESGOWebUserObj> ESGlobalObjectsESGOWebUser(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESGOWebUserObj> __BuildESGlobalObjectsESGOWebUser(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESGOWebUserObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESGlobalObjects/ESGOWebUser/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESGlobalObjects/ESGOWebUser/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESGOWebUserObj>(callPayload);
@@ -2286,19 +2053,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESGlobalObjectsESGOUser))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESGOUserObj> ESGlobalObjectsESGOUser([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESGOUserObj> ESGlobalObjectsESGOUser(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESGOUserObj> __BuildESGlobalObjectsESGOUser(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESGOUserObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESGlobalObjects/ESGOUser/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESGlobalObjects/ESGOUser/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESGOUserObj>(callPayload);
@@ -2306,19 +2067,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESBusinessHookGet))]
-        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse> ESBusinessHookGet([WorkflowExpression] Func<string> hookID)
+        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse> ESBusinessHookGet(Expression<Func<string>> hookID)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse> __BuildESBusinessHookGet(WorkflowExpression<string> hookID)
-        {
-            WorkflowExpression.Validate(hookID, nameof(hookID), required: true);
+            var __workflow_hookID = hookID == null ? null : WorkflowExpression.Compile(hookID);
+            WorkflowExpression.Validate(__workflow_hookID, nameof(hookID), required: true);
             return new DeferredBodyAction<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/businesshook/{0}", ExpressionConverter.ConvertWithUrlEncoding(hookID, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/businesshook/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hookID, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse>(callPayload);
@@ -2326,19 +2081,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESPodHookGet))]
-        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESPodHookRegistrationResponse> ESPodHookGet([WorkflowExpression] Func<string> hookID)
+        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESPodHookRegistrationResponse> ESPodHookGet(Expression<Func<string>> hookID)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESPodHookRegistrationResponse> __BuildESPodHookGet(WorkflowExpression<string> hookID)
-        {
-            WorkflowExpression.Validate(hookID, nameof(hookID), required: true);
+            var __workflow_hookID = hookID == null ? null : WorkflowExpression.Compile(hookID);
+            WorkflowExpression.Validate(__workflow_hookID, nameof(hookID), required: true);
             return new DeferredBodyAction<EntersoftWebApiInfrastructureESPodHookRegistrationResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/podhook/{0}", ExpressionConverter.ConvertWithUrlEncoding(hookID, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/podhook/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hookID, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApiInfrastructureESPodHookRegistrationResponse>(callPayload);
@@ -2346,19 +2095,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESRFAHookGet))]
-        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse> ESRFAHookGet([WorkflowExpression] Func<string> hookID)
+        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse> ESRFAHookGet(Expression<Func<string>> hookID)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse> __BuildESRFAHookGet(WorkflowExpression<string> hookID)
-        {
-            WorkflowExpression.Validate(hookID, nameof(hookID), required: true);
+            var __workflow_hookID = hookID == null ? null : WorkflowExpression.Compile(hookID);
+            WorkflowExpression.Validate(__workflow_hookID, nameof(hookID), required: true);
             return new DeferredBodyAction<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/rfahook/{0}", ExpressionConverter.ConvertWithUrlEncoding(hookID, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/rfahook/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hookID, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse>(callPayload);
@@ -2366,19 +2109,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESHookGet))]
-        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse> ESHookGet([WorkflowExpression] Func<string> hookID)
+        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse> ESHookGet(Expression<Func<string>> hookID)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse> __BuildESHookGet(WorkflowExpression<string> hookID)
-        {
-            WorkflowExpression.Validate(hookID, nameof(hookID), required: true);
+            var __workflow_hookID = hookID == null ? null : WorkflowExpression.Compile(hookID);
+            WorkflowExpression.Validate(__workflow_hookID, nameof(hookID), required: true);
             return new DeferredBodyAction<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/hook/{0}", ExpressionConverter.ConvertWithUrlEncoding(hookID, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/hook/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hookID, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse>(callPayload);
@@ -2386,19 +2123,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESSystemHookGet))]
-        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse> ESSystemHookGet([WorkflowExpression] Func<string> hookID)
+        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse> ESSystemHookGet(Expression<Func<string>> hookID)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse> __BuildESSystemHookGet(WorkflowExpression<string> hookID)
-        {
-            WorkflowExpression.Validate(hookID, nameof(hookID), required: true);
+            var __workflow_hookID = hookID == null ? null : WorkflowExpression.Compile(hookID);
+            WorkflowExpression.Validate(__workflow_hookID, nameof(hookID), required: true);
             return new DeferredBodyAction<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/systemhook/{0}", ExpressionConverter.ConvertWithUrlEncoding(hookID, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/systemhook/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hookID, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse>(callPayload);
@@ -2406,19 +2137,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESMachineLearningESMLModel))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMLModelObj> ESMachineLearningESMLModel([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMLModelObj> ESMachineLearningESMLModel(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMLModelObj> __BuildESMachineLearningESMLModel(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESMLModelObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESMachineLearning/ESMLModel/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESMachineLearning/ESMLModel/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMLModelObj>(callPayload);
@@ -2426,19 +2151,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESMaterialManagementESMMSerialNumber))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMSerialNumberObj> ESMaterialManagementESMMSerialNumber([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMSerialNumberObj> ESMaterialManagementESMMSerialNumber(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMSerialNumberObj> __BuildESMaterialManagementESMMSerialNumber(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESMMSerialNumberObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESMaterialManagement/ESMMSerialNumber/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESMaterialManagement/ESMMSerialNumber/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMSerialNumberObj>(callPayload);
@@ -2446,19 +2165,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESMaterialManagementESMMCatalogueItem))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMCatalogueItemObj> ESMaterialManagementESMMCatalogueItem([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMCatalogueItemObj> ESMaterialManagementESMMCatalogueItem(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMCatalogueItemObj> __BuildESMaterialManagementESMMCatalogueItem(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESMMCatalogueItemObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESMaterialManagement/ESMMCatalogueItem/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESMaterialManagement/ESMMCatalogueItem/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMCatalogueItemObj>(callPayload);
@@ -2466,19 +2179,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESMaterialManagementESMMStorageLocation))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMStorageLocationObj> ESMaterialManagementESMMStorageLocation([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMStorageLocationObj> ESMaterialManagementESMMStorageLocation(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMStorageLocationObj> __BuildESMaterialManagementESMMStorageLocation(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESMMStorageLocationObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESMaterialManagement/ESMMStorageLocation/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESMaterialManagement/ESMMStorageLocation/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMStorageLocationObj>(callPayload);
@@ -2486,19 +2193,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESMaterialManagementESMMStockItem))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMStockItemObj> ESMaterialManagementESMMStockItem([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMStockItemObj> ESMaterialManagementESMMStockItem(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMStockItemObj> __BuildESMaterialManagementESMMStockItem(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESMMStockItemObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESMaterialManagement/ESMMStockItem/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESMaterialManagement/ESMMStockItem/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMStockItemObj>(callPayload);
@@ -2506,19 +2207,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESMaterialManagementESMMCommercialProfile))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMCommercialProfileObj> ESMaterialManagementESMMCommercialProfile([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMCommercialProfileObj> ESMaterialManagementESMMCommercialProfile(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMCommercialProfileObj> __BuildESMaterialManagementESMMCommercialProfile(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESMMCommercialProfileObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESMaterialManagement/ESMMCommercialProfile/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESMaterialManagement/ESMMCommercialProfile/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMCommercialProfileObj>(callPayload);
@@ -2526,19 +2221,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESMaterialManagementESMMSortiment))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMSortimentObj> ESMaterialManagementESMMSortiment([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMSortimentObj> ESMaterialManagementESMMSortiment(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMSortimentObj> __BuildESMaterialManagementESMMSortiment(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESMMSortimentObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESMaterialManagement/ESMMSortiment/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESMaterialManagement/ESMMSortiment/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMSortimentObj>(callPayload);
@@ -2546,19 +2235,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESMaterialManagementESMMLot))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMLotObj> ESMaterialManagementESMMLot([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMLotObj> ESMaterialManagementESMMLot(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMLotObj> __BuildESMaterialManagementESMMLot(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESMMLotObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESMaterialManagement/ESMMLot/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESMaterialManagement/ESMMLot/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMLotObj>(callPayload);
@@ -2566,19 +2249,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESMaterialManagementESMMProductionPlan))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMProductionPlanObj> ESMaterialManagementESMMProductionPlan([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMProductionPlanObj> ESMaterialManagementESMMProductionPlan(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMProductionPlanObj> __BuildESMaterialManagementESMMProductionPlan(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESMMProductionPlanObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESMaterialManagement/ESMMProductionPlan/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESMaterialManagement/ESMMProductionPlan/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMProductionPlanObj>(callPayload);
@@ -2586,19 +2263,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESDeviceFetchDeviceInfo))]
-        public IBodyWorkflowAction<JToken> ESDeviceFetchDeviceInfo([WorkflowExpression] Func<string> deviceCode)
+        public IBodyWorkflowAction<JToken> ESDeviceFetchDeviceInfo(Expression<Func<string>> deviceCode)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildESDeviceFetchDeviceInfo(WorkflowExpression<string> deviceCode)
-        {
-            WorkflowExpression.Validate(deviceCode, nameof(deviceCode), required: true);
+            var __workflow_deviceCode = deviceCode == null ? null : WorkflowExpression.Compile(deviceCode);
+            WorkflowExpression.Validate(__workflow_deviceCode, nameof(deviceCode), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/device/fetchDeviceInfo/{0}", ExpressionConverter.ConvertWithUrlEncoding(deviceCode, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/device/fetchDeviceInfo/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_deviceCode, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<JToken>(callPayload);
@@ -2606,19 +2277,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESRPCFetchPropertySet))]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESPropertySet> ESRPCFetchPropertySet([WorkflowExpression] Func<string> routeId)
+        public IBodyWorkflowAction<EntersoftWebApiModelsESPropertySet> ESRPCFetchPropertySet(Expression<Func<string>> routeId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESPropertySet> __BuildESRPCFetchPropertySet(WorkflowExpression<string> routeId)
-        {
-            WorkflowExpression.Validate(routeId, nameof(routeId), required: true);
+            var __workflow_routeId = routeId == null ? null : WorkflowExpression.Compile(routeId);
+            WorkflowExpression.Validate(__workflow_routeId, nameof(routeId), required: true);
             return new DeferredBodyAction<EntersoftWebApiModelsESPropertySet>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/rpc/fetchPropertySet/{0}", ExpressionConverter.ConvertWithUrlEncoding(routeId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/rpc/fetchPropertySet/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_routeId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApiModelsESPropertySet>(callPayload);
@@ -2626,19 +2291,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESRPCFetchESScale))]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESScale> ESRPCFetchESScale([WorkflowExpression] Func<string> routeId)
+        public IBodyWorkflowAction<EntersoftWebApiModelsESScale> ESRPCFetchESScale(Expression<Func<string>> routeId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESScale> __BuildESRPCFetchESScale(WorkflowExpression<string> routeId)
-        {
-            WorkflowExpression.Validate(routeId, nameof(routeId), required: true);
+            var __workflow_routeId = routeId == null ? null : WorkflowExpression.Compile(routeId);
+            WorkflowExpression.Validate(__workflow_routeId, nameof(routeId), required: true);
             return new DeferredBodyAction<EntersoftWebApiModelsESScale>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/rpc/fetchESScale/{0}", ExpressionConverter.ConvertWithUrlEncoding(routeId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/rpc/fetchESScale/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_routeId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApiModelsESScale>(callPayload);
@@ -2646,19 +2305,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESRPCPublicQueryLayout))]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESPQLayout> ESRPCPublicQueryLayout([WorkflowExpression] Func<string> routeId)
+        public IBodyWorkflowAction<EntersoftWebApiModelsESPQLayout> ESRPCPublicQueryLayout(Expression<Func<string>> routeId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESPQLayout> __BuildESRPCPublicQueryLayout(WorkflowExpression<string> routeId)
-        {
-            WorkflowExpression.Validate(routeId, nameof(routeId), required: true);
+            var __workflow_routeId = routeId == null ? null : WorkflowExpression.Compile(routeId);
+            WorkflowExpression.Validate(__workflow_routeId, nameof(routeId), required: true);
             return new DeferredBodyAction<EntersoftWebApiModelsESPQLayout>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/rpc/PublicQueryLayout/{0}", ExpressionConverter.ConvertWithUrlEncoding(routeId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/rpc/PublicQueryLayout/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_routeId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApiModelsESPQLayout>(callPayload);
@@ -2666,80 +2319,68 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESRPCGetPQData))]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESPQResult> ESRPCGetPQData([WorkflowExpression] Func<string> routeId, [WorkflowExpression] Func<int> pqOptionsPage = null, [WorkflowExpression] Func<int> pqOptionsPageSize = null, [WorkflowExpression] Func<bool> pqOptionsWithCount = null)
+        public IBodyWorkflowAction<EntersoftWebApiModelsESPQResult> ESRPCGetPQData(Expression<Func<string>> routeId, Expression<Func<int>> pqOptionsPage = null, Expression<Func<int>> pqOptionsPageSize = null, Expression<Func<bool>> pqOptionsWithCount = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESPQResult> __BuildESRPCGetPQData(WorkflowExpression<string> routeId, WorkflowExpression<int> pqOptionsPage = null, WorkflowExpression<int> pqOptionsPageSize = null, WorkflowExpression<bool> pqOptionsWithCount = null)
-        {
-            WorkflowExpression.Validate(routeId, nameof(routeId), required: true);
-            WorkflowExpression.Validate(pqOptionsPage, nameof(pqOptionsPage), required: false);
-            WorkflowExpression.Validate(pqOptionsPageSize, nameof(pqOptionsPageSize), required: false);
-            WorkflowExpression.Validate(pqOptionsWithCount, nameof(pqOptionsWithCount), required: false);
+            var __workflow_routeId = routeId == null ? null : WorkflowExpression.Compile(routeId);
+            WorkflowExpression.Validate(__workflow_routeId, nameof(routeId), required: true);
+            var __workflow_pqOptionsPage = pqOptionsPage == null ? null : WorkflowExpression.Compile(pqOptionsPage);
+            WorkflowExpression.Validate(__workflow_pqOptionsPage, nameof(pqOptionsPage), required: false);
+            var __workflow_pqOptionsPageSize = pqOptionsPageSize == null ? null : WorkflowExpression.Compile(pqOptionsPageSize);
+            WorkflowExpression.Validate(__workflow_pqOptionsPageSize, nameof(pqOptionsPageSize), required: false);
+            var __workflow_pqOptionsWithCount = pqOptionsWithCount == null ? null : WorkflowExpression.Compile(pqOptionsWithCount);
+            WorkflowExpression.Validate(__workflow_pqOptionsWithCount, nameof(pqOptionsWithCount), required: false);
             return new DeferredBodyAction<EntersoftWebApiModelsESPQResult>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/rpc/GetPQData/{0}", ExpressionConverter.ConvertWithUrlEncoding(routeId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/rpc/GetPQData/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_routeId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (pqOptionsPage != null)
-                    callPayload.Queries["pqOptions.page"] = ExpressionConverter.Convert(pqOptionsPage);
-                if (pqOptionsPageSize != null)
-                    callPayload.Queries["pqOptions.pageSize"] = ExpressionConverter.Convert(pqOptionsPageSize);
-                if (pqOptionsWithCount != null)
-                    callPayload.Queries["pqOptions.withCount"] = ExpressionConverter.Convert(pqOptionsWithCount);
+                if (__workflow_pqOptionsPage != null)
+                    callPayload.Queries["pqOptions.page"] = ExpressionConverter.Convert(__workflow_pqOptionsPage);
+                if (__workflow_pqOptionsPageSize != null)
+                    callPayload.Queries["pqOptions.pageSize"] = ExpressionConverter.Convert(__workflow_pqOptionsPageSize);
+                if (__workflow_pqOptionsWithCount != null)
+                    callPayload.Queries["pqOptions.withCount"] = ExpressionConverter.Convert(__workflow_pqOptionsWithCount);
                 return new ApiConnectionAction<EntersoftWebApiModelsESPQResult>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESRPCFIImportDocument))]
-        public IBodyWorkflowAction<string> ESRPCFIImportDocument([WorkflowExpression] Func<string> inputXMLAsString = null)
+        public IBodyWorkflowAction<string> ESRPCFIImportDocument(Expression<Func<string>> inputXMLAsString = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildESRPCFIImportDocument(WorkflowExpression<string> inputXMLAsString = null)
-        {
-            WorkflowExpression.Validate(inputXMLAsString, nameof(inputXMLAsString), required: false);
+            var __workflow_inputXMLAsString = inputXMLAsString == null ? null : WorkflowExpression.Compile(inputXMLAsString);
+            WorkflowExpression.Validate(__workflow_inputXMLAsString, nameof(inputXMLAsString), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/api/rpc/FIImportDocument/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(inputXMLAsString);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_inputXMLAsString);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESRPCGetPQData2))]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESPQResult> ESRPCGetPQData2([WorkflowExpression] Func<string> routeId, [WorkflowExpression] Func<int> pqOptionsPage = null, [WorkflowExpression] Func<int> pqOptionsPageSize = null, [WorkflowExpression] Func<bool> pqOptionsWithCount = null)
+        public IBodyWorkflowAction<EntersoftWebApiModelsESPQResult> ESRPCGetPQData2(Expression<Func<string>> routeId, Expression<Func<int>> pqOptionsPage = null, Expression<Func<int>> pqOptionsPageSize = null, Expression<Func<bool>> pqOptionsWithCount = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESPQResult> __BuildESRPCGetPQData2(WorkflowExpression<string> routeId, WorkflowExpression<int> pqOptionsPage = null, WorkflowExpression<int> pqOptionsPageSize = null, WorkflowExpression<bool> pqOptionsWithCount = null)
-        {
-            WorkflowExpression.Validate(routeId, nameof(routeId), required: true);
-            WorkflowExpression.Validate(pqOptionsPage, nameof(pqOptionsPage), required: false);
-            WorkflowExpression.Validate(pqOptionsPageSize, nameof(pqOptionsPageSize), required: false);
-            WorkflowExpression.Validate(pqOptionsWithCount, nameof(pqOptionsWithCount), required: false);
+            var __workflow_routeId = routeId == null ? null : WorkflowExpression.Compile(routeId);
+            WorkflowExpression.Validate(__workflow_routeId, nameof(routeId), required: true);
+            var __workflow_pqOptionsPage = pqOptionsPage == null ? null : WorkflowExpression.Compile(pqOptionsPage);
+            WorkflowExpression.Validate(__workflow_pqOptionsPage, nameof(pqOptionsPage), required: false);
+            var __workflow_pqOptionsPageSize = pqOptionsPageSize == null ? null : WorkflowExpression.Compile(pqOptionsPageSize);
+            WorkflowExpression.Validate(__workflow_pqOptionsPageSize, nameof(pqOptionsPageSize), required: false);
+            var __workflow_pqOptionsWithCount = pqOptionsWithCount == null ? null : WorkflowExpression.Compile(pqOptionsWithCount);
+            WorkflowExpression.Validate(__workflow_pqOptionsWithCount, nameof(pqOptionsWithCount), required: false);
             return new DeferredBodyAction<EntersoftWebApiModelsESPQResult>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/rpc/GetPQData2/{0}", ExpressionConverter.ConvertWithUrlEncoding(routeId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/rpc/GetPQData2/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_routeId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (pqOptionsPage != null)
-                    callPayload.Queries["pqOptions.page"] = ExpressionConverter.Convert(pqOptionsPage);
-                if (pqOptionsPageSize != null)
-                    callPayload.Queries["pqOptions.pageSize"] = ExpressionConverter.Convert(pqOptionsPageSize);
-                if (pqOptionsWithCount != null)
-                    callPayload.Queries["pqOptions.withCount"] = ExpressionConverter.Convert(pqOptionsWithCount);
+                if (__workflow_pqOptionsPage != null)
+                    callPayload.Queries["pqOptions.page"] = ExpressionConverter.Convert(__workflow_pqOptionsPage);
+                if (__workflow_pqOptionsPageSize != null)
+                    callPayload.Queries["pqOptions.pageSize"] = ExpressionConverter.Convert(__workflow_pqOptionsPageSize);
+                if (__workflow_pqOptionsWithCount != null)
+                    callPayload.Queries["pqOptions.withCount"] = ExpressionConverter.Convert(__workflow_pqOptionsWithCount);
                 var @params = new JObject();
                 var @paramspropCount = 0;
                 if (@paramspropCount > 0)
@@ -2752,46 +2393,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESRPCLog))]
-        public IBodyWorkflowAction<bool> ESRPCLog([WorkflowExpression] Func<string> iD, [WorkflowExpression] Func<string> description = null, [WorkflowExpression] Func<severityInput> severity = null)
+        public IBodyWorkflowAction<bool> ESRPCLog(Expression<Func<string>> iD, Expression<Func<string>> description = null, Expression<Func<severityInput>> severity = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<bool> __BuildESRPCLog(WorkflowExpression<string> iD, WorkflowExpression<string> description = null, WorkflowExpression<severityInput> severity = null)
-        {
-            WorkflowExpression.Validate(iD, nameof(iD), required: true);
-            WorkflowExpression.Validate(description, nameof(description), required: false);
-            WorkflowExpression.Validate(severity, nameof(severity), required: false);
+            var __workflow_iD = iD == null ? null : WorkflowExpression.Compile(iD);
+            WorkflowExpression.Validate(__workflow_iD, nameof(iD), required: true);
+            var __workflow_description = description == null ? null : WorkflowExpression.Compile(description);
+            WorkflowExpression.Validate(__workflow_description, nameof(description), required: false);
+            var __workflow_severity = severity == null ? null : WorkflowExpression.Compile(severity);
+            WorkflowExpression.Validate(__workflow_severity, nameof(severity), required: false);
             return new DeferredBodyAction<bool>(() =>
             {
                 var apiCallPath = "/api/rpc/Log/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["ID"] = ExpressionConverter.Convert(iD);
-                if (description != null)
-                    callPayload.Queries["Description"] = ExpressionConverter.Convert(description);
-                if (severity != null)
-                    callPayload.Queries["Severity"] = ExpressionConverter.Convert(severity);
+                callPayload.Queries["ID"] = ExpressionConverter.Convert(__workflow_iD);
+                if (__workflow_description != null)
+                    callPayload.Queries["Description"] = ExpressionConverter.Convert(__workflow_description);
+                if (__workflow_severity != null)
+                    callPayload.Queries["Severity"] = ExpressionConverter.Convert(__workflow_severity);
                 return new ApiConnectionAction<bool>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESRPCFetchCompanyParam))]
-        public IBodyWorkflowAction<EntersoftWebApiModelsCompanyParamEx> ESRPCFetchCompanyParam([WorkflowExpression] Func<string> routeId)
+        public IBodyWorkflowAction<EntersoftWebApiModelsCompanyParamEx> ESRPCFetchCompanyParam(Expression<Func<string>> routeId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApiModelsCompanyParamEx> __BuildESRPCFetchCompanyParam(WorkflowExpression<string> routeId)
-        {
-            WorkflowExpression.Validate(routeId, nameof(routeId), required: true);
+            var __workflow_routeId = routeId == null ? null : WorkflowExpression.Compile(routeId);
+            WorkflowExpression.Validate(__workflow_routeId, nameof(routeId), required: true);
             return new DeferredBodyAction<EntersoftWebApiModelsCompanyParamEx>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/rpc/FetchCompanyParam/{0}", ExpressionConverter.ConvertWithUrlEncoding(routeId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/rpc/FetchCompanyParam/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_routeId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApiModelsCompanyParamEx>(callPayload);
@@ -2799,19 +2430,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESRPCParameterValue))]
-        public IBodyWorkflowAction<JToken> ESRPCParameterValue([WorkflowExpression] Func<string> routeId)
+        public IBodyWorkflowAction<JToken> ESRPCParameterValue(Expression<Func<string>> routeId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildESRPCParameterValue(WorkflowExpression<string> routeId)
-        {
-            WorkflowExpression.Validate(routeId, nameof(routeId), required: true);
+            var __workflow_routeId = routeId == null ? null : WorkflowExpression.Compile(routeId);
+            WorkflowExpression.Validate(__workflow_routeId, nameof(routeId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/rpc/ParameterValue/{0}", ExpressionConverter.ConvertWithUrlEncoding(routeId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/rpc/ParameterValue/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_routeId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<JToken>(callPayload);
@@ -2819,19 +2444,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESRPCFetchCompanyParams))]
-        public IBodyWorkflowAction<EntersoftWebApiModelsCompanyParamEx[]> ESRPCFetchCompanyParams([WorkflowExpression] Func<string> routeId)
+        public IBodyWorkflowAction<EntersoftWebApiModelsCompanyParamEx[]> ESRPCFetchCompanyParams(Expression<Func<string>> routeId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApiModelsCompanyParamEx[]> __BuildESRPCFetchCompanyParams(WorkflowExpression<string> routeId)
-        {
-            WorkflowExpression.Validate(routeId, nameof(routeId), required: true);
+            var __workflow_routeId = routeId == null ? null : WorkflowExpression.Compile(routeId);
+            WorkflowExpression.Validate(__workflow_routeId, nameof(routeId), required: true);
             return new DeferredBodyAction<EntersoftWebApiModelsCompanyParamEx[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/rpc/FetchCompanyParams/{0}", ExpressionConverter.ConvertWithUrlEncoding(routeId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/rpc/FetchCompanyParams/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_routeId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApiModelsCompanyParamEx[]>(callPayload);
@@ -2839,23 +2458,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESRPCExecuteScrollerCommand))]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESScrollerCommandOut> ESRPCExecuteScrollerCommand([WorkflowExpression] Func<string> eSScrollerCommandscrollerID, [WorkflowExpression] Func<string> eSScrollerCommandcommandID, [WorkflowExpression] Func<string> eSScrollerCommandscrollerDatasetJson = null, [WorkflowExpression] Func<bool> eSScrollerCommandrequiresTransaction = null, [WorkflowExpression] Func<bool> eSScrollerCommandonlyPrepareTargetDatasets = null, [WorkflowExpression] Func<bool> eSScrollerCommandreturnTargetDatasets = null, [WorkflowExpression] Func<bool> eSScrollerCommandreturnScrollerDataset = null, [WorkflowExpression] Func<bool> eSScrollerCommandreturnEntersoftDatasets = null)
+        public IBodyWorkflowAction<EntersoftWebApiModelsESScrollerCommandOut> ESRPCExecuteScrollerCommand(Expression<Func<string>> eSScrollerCommandscrollerID, Expression<Func<string>> eSScrollerCommandcommandID, Expression<Func<string>> eSScrollerCommandscrollerDatasetJson = null, Expression<Func<bool>> eSScrollerCommandrequiresTransaction = null, Expression<Func<bool>> eSScrollerCommandonlyPrepareTargetDatasets = null, Expression<Func<bool>> eSScrollerCommandreturnTargetDatasets = null, Expression<Func<bool>> eSScrollerCommandreturnScrollerDataset = null, Expression<Func<bool>> eSScrollerCommandreturnEntersoftDatasets = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESScrollerCommandOut> __BuildESRPCExecuteScrollerCommand(WorkflowExpression<string> eSScrollerCommandscrollerID, WorkflowExpression<string> eSScrollerCommandcommandID, WorkflowExpression<string> eSScrollerCommandscrollerDatasetJson = null, WorkflowExpression<bool> eSScrollerCommandrequiresTransaction = null, WorkflowExpression<bool> eSScrollerCommandonlyPrepareTargetDatasets = null, WorkflowExpression<bool> eSScrollerCommandreturnTargetDatasets = null, WorkflowExpression<bool> eSScrollerCommandreturnScrollerDataset = null, WorkflowExpression<bool> eSScrollerCommandreturnEntersoftDatasets = null)
-        {
-            WorkflowExpression.Validate(eSScrollerCommandscrollerID, nameof(eSScrollerCommandscrollerID), required: true);
-            WorkflowExpression.Validate(eSScrollerCommandcommandID, nameof(eSScrollerCommandcommandID), required: true);
-            WorkflowExpression.Validate(eSScrollerCommandscrollerDatasetJson, nameof(eSScrollerCommandscrollerDatasetJson), required: false);
-            WorkflowExpression.Validate(eSScrollerCommandrequiresTransaction, nameof(eSScrollerCommandrequiresTransaction), required: false);
-            WorkflowExpression.Validate(eSScrollerCommandonlyPrepareTargetDatasets, nameof(eSScrollerCommandonlyPrepareTargetDatasets), required: false);
-            WorkflowExpression.Validate(eSScrollerCommandreturnTargetDatasets, nameof(eSScrollerCommandreturnTargetDatasets), required: false);
-            WorkflowExpression.Validate(eSScrollerCommandreturnScrollerDataset, nameof(eSScrollerCommandreturnScrollerDataset), required: false);
-            WorkflowExpression.Validate(eSScrollerCommandreturnEntersoftDatasets, nameof(eSScrollerCommandreturnEntersoftDatasets), required: false);
+            var __workflow_eSScrollerCommandscrollerID = eSScrollerCommandscrollerID == null ? null : WorkflowExpression.Compile(eSScrollerCommandscrollerID);
+            WorkflowExpression.Validate(__workflow_eSScrollerCommandscrollerID, nameof(eSScrollerCommandscrollerID), required: true);
+            var __workflow_eSScrollerCommandcommandID = eSScrollerCommandcommandID == null ? null : WorkflowExpression.Compile(eSScrollerCommandcommandID);
+            WorkflowExpression.Validate(__workflow_eSScrollerCommandcommandID, nameof(eSScrollerCommandcommandID), required: true);
+            var __workflow_eSScrollerCommandscrollerDatasetJson = eSScrollerCommandscrollerDatasetJson == null ? null : WorkflowExpression.Compile(eSScrollerCommandscrollerDatasetJson);
+            WorkflowExpression.Validate(__workflow_eSScrollerCommandscrollerDatasetJson, nameof(eSScrollerCommandscrollerDatasetJson), required: false);
+            var __workflow_eSScrollerCommandrequiresTransaction = eSScrollerCommandrequiresTransaction == null ? null : WorkflowExpression.Compile(eSScrollerCommandrequiresTransaction);
+            WorkflowExpression.Validate(__workflow_eSScrollerCommandrequiresTransaction, nameof(eSScrollerCommandrequiresTransaction), required: false);
+            var __workflow_eSScrollerCommandonlyPrepareTargetDatasets = eSScrollerCommandonlyPrepareTargetDatasets == null ? null : WorkflowExpression.Compile(eSScrollerCommandonlyPrepareTargetDatasets);
+            WorkflowExpression.Validate(__workflow_eSScrollerCommandonlyPrepareTargetDatasets, nameof(eSScrollerCommandonlyPrepareTargetDatasets), required: false);
+            var __workflow_eSScrollerCommandreturnTargetDatasets = eSScrollerCommandreturnTargetDatasets == null ? null : WorkflowExpression.Compile(eSScrollerCommandreturnTargetDatasets);
+            WorkflowExpression.Validate(__workflow_eSScrollerCommandreturnTargetDatasets, nameof(eSScrollerCommandreturnTargetDatasets), required: false);
+            var __workflow_eSScrollerCommandreturnScrollerDataset = eSScrollerCommandreturnScrollerDataset == null ? null : WorkflowExpression.Compile(eSScrollerCommandreturnScrollerDataset);
+            WorkflowExpression.Validate(__workflow_eSScrollerCommandreturnScrollerDataset, nameof(eSScrollerCommandreturnScrollerDataset), required: false);
+            var __workflow_eSScrollerCommandreturnEntersoftDatasets = eSScrollerCommandreturnEntersoftDatasets == null ? null : WorkflowExpression.Compile(eSScrollerCommandreturnEntersoftDatasets);
+            WorkflowExpression.Validate(__workflow_eSScrollerCommandreturnEntersoftDatasets, nameof(eSScrollerCommandreturnEntersoftDatasets), required: false);
             return new DeferredBodyAction<EntersoftWebApiModelsESScrollerCommandOut>(() =>
             {
                 var apiCallPath = "/api/rpc/ExecuteScrollerCommand/";
@@ -2879,46 +2499,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                     eSScrollerCommandpropCount++;
                 }
 
-                if (eSScrollerCommandscrollerDatasetJson != null)
+                if (__workflow_eSScrollerCommandscrollerDatasetJson != null)
                 {
-                    eSScrollerCommand["ScrollerDatasetJson"] = ExpressionConverter.ConvertO(eSScrollerCommandscrollerDatasetJson);
+                    eSScrollerCommand["ScrollerDatasetJson"] = ExpressionConverter.ConvertO(__workflow_eSScrollerCommandscrollerDatasetJson);
                     eSScrollerCommandpropCount++;
                 }
 
-                if (eSScrollerCommandrequiresTransaction != null)
+                if (__workflow_eSScrollerCommandrequiresTransaction != null)
                 {
-                    eSScrollerCommand["RequiresTransaction"] = ExpressionConverter.ConvertO(eSScrollerCommandrequiresTransaction);
+                    eSScrollerCommand["RequiresTransaction"] = ExpressionConverter.ConvertO(__workflow_eSScrollerCommandrequiresTransaction);
                     eSScrollerCommandpropCount++;
                 }
 
-                if (eSScrollerCommandonlyPrepareTargetDatasets != null)
+                if (__workflow_eSScrollerCommandonlyPrepareTargetDatasets != null)
                 {
-                    eSScrollerCommand["OnlyPrepareTargetDatasets"] = ExpressionConverter.ConvertO(eSScrollerCommandonlyPrepareTargetDatasets);
+                    eSScrollerCommand["OnlyPrepareTargetDatasets"] = ExpressionConverter.ConvertO(__workflow_eSScrollerCommandonlyPrepareTargetDatasets);
                     eSScrollerCommandpropCount++;
                 }
 
-                if (eSScrollerCommandreturnTargetDatasets != null)
+                if (__workflow_eSScrollerCommandreturnTargetDatasets != null)
                 {
-                    eSScrollerCommand["ReturnTargetDatasets"] = ExpressionConverter.ConvertO(eSScrollerCommandreturnTargetDatasets);
+                    eSScrollerCommand["ReturnTargetDatasets"] = ExpressionConverter.ConvertO(__workflow_eSScrollerCommandreturnTargetDatasets);
                     eSScrollerCommandpropCount++;
                 }
 
-                if (eSScrollerCommandreturnScrollerDataset != null)
+                if (__workflow_eSScrollerCommandreturnScrollerDataset != null)
                 {
-                    eSScrollerCommand["ReturnScrollerDataset"] = ExpressionConverter.ConvertO(eSScrollerCommandreturnScrollerDataset);
+                    eSScrollerCommand["ReturnScrollerDataset"] = ExpressionConverter.ConvertO(__workflow_eSScrollerCommandreturnScrollerDataset);
                     eSScrollerCommandpropCount++;
                 }
 
-                if (eSScrollerCommandreturnEntersoftDatasets != null)
+                if (__workflow_eSScrollerCommandreturnEntersoftDatasets != null)
                 {
-                    eSScrollerCommand["ReturnEntersoftDatasets"] = ExpressionConverter.ConvertO(eSScrollerCommandreturnEntersoftDatasets);
+                    eSScrollerCommand["ReturnEntersoftDatasets"] = ExpressionConverter.ConvertO(__workflow_eSScrollerCommandreturnEntersoftDatasets);
                     eSScrollerCommandpropCount++;
                 }
 
                 eSScrollerCommandpropCount++;
-                eSScrollerCommand["ScrollerID"] = ExpressionConverter.ConvertO(eSScrollerCommandscrollerID);
+                eSScrollerCommand["ScrollerID"] = ExpressionConverter.ConvertO(__workflow_eSScrollerCommandscrollerID);
                 eSScrollerCommandpropCount++;
-                eSScrollerCommand["CommandID"] = ExpressionConverter.ConvertO(eSScrollerCommandcommandID);
+                eSScrollerCommand["CommandID"] = ExpressionConverter.ConvertO(__workflow_eSScrollerCommandcommandID);
                 var commandParamsObject = new JObject();
                 var commandParamsObjectpropCount = 0;
                 if (commandParamsObjectpropCount > 0)
@@ -2945,17 +2565,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESRPCExecuteCommand))]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESScrollerCommandOut> ESRPCExecuteCommand([WorkflowExpression] Func<string> eSCommandInscrollerID, [WorkflowExpression] Func<string> eSCommandIncommandID)
+        public IBodyWorkflowAction<EntersoftWebApiModelsESScrollerCommandOut> ESRPCExecuteCommand(Expression<Func<string>> eSCommandInscrollerID, Expression<Func<string>> eSCommandIncommandID)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESScrollerCommandOut> __BuildESRPCExecuteCommand(WorkflowExpression<string> eSCommandInscrollerID, WorkflowExpression<string> eSCommandIncommandID)
-        {
-            WorkflowExpression.Validate(eSCommandInscrollerID, nameof(eSCommandInscrollerID), required: true);
-            WorkflowExpression.Validate(eSCommandIncommandID, nameof(eSCommandIncommandID), required: true);
+            var __workflow_eSCommandInscrollerID = eSCommandInscrollerID == null ? null : WorkflowExpression.Compile(eSCommandInscrollerID);
+            WorkflowExpression.Validate(__workflow_eSCommandInscrollerID, nameof(eSCommandInscrollerID), required: true);
+            var __workflow_eSCommandIncommandID = eSCommandIncommandID == null ? null : WorkflowExpression.Compile(eSCommandIncommandID);
+            WorkflowExpression.Validate(__workflow_eSCommandIncommandID, nameof(eSCommandIncommandID), required: true);
             return new DeferredBodyAction<EntersoftWebApiModelsESScrollerCommandOut>(() =>
             {
                 var apiCallPath = "/api/rpc/ExecuteCommand/";
@@ -2964,9 +2579,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var eSCommandIn = new JObject();
                 var eSCommandInpropCount = 0;
                 eSCommandInpropCount++;
-                eSCommandIn["ScrollerID"] = ExpressionConverter.ConvertO(eSCommandInscrollerID);
+                eSCommandIn["ScrollerID"] = ExpressionConverter.ConvertO(__workflow_eSCommandInscrollerID);
                 eSCommandInpropCount++;
-                eSCommandIn["CommandID"] = ExpressionConverter.ConvertO(eSCommandIncommandID);
+                eSCommandIn["CommandID"] = ExpressionConverter.ConvertO(__workflow_eSCommandIncommandID);
                 var commandParamsObject = new JObject();
                 var commandParamsObjectpropCount = 0;
                 if (commandParamsObjectpropCount > 0)
@@ -2993,30 +2608,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESRPCExecuteFormCommand))]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESFormCommandOut> ESRPCExecuteFormCommand([WorkflowExpression] Func<string> formCommandentityID = null, [WorkflowExpression] Func<string> formCommandcommandID = null, [WorkflowExpression] Func<string> formCommandentityDatasetJson = null, [WorkflowExpression] Func<string> formCommandentityGID = null, [WorkflowExpression] Func<string[]> formCommandentityGIDs = null, [WorkflowExpression] Func<string> formCommandentityCode = null, [WorkflowExpression] Func<string[]> formCommandentityCodes = null, [WorkflowExpression] Func<string> formCommandentityScrollerID = null, [WorkflowExpression] Func<bool> formCommandrequiresTransaction = null, [WorkflowExpression] Func<bool> formCommandcreateNewEmptySourceEntity = null, [WorkflowExpression] Func<bool> formCommandonlyPrepareTargetDatasets = null, [WorkflowExpression] Func<bool> formCommandreturnSourceDatasets = null, [WorkflowExpression] Func<bool> formCommandreturnTargetDatasets = null, [WorkflowExpression] Func<bool> formCommandreturnMap = null, [WorkflowExpression] Func<bool> formCommandreturnEntersoftDatasets = null)
+        public IBodyWorkflowAction<EntersoftWebApiModelsESFormCommandOut> ESRPCExecuteFormCommand(Expression<Func<string>> formCommandentityID = null, Expression<Func<string>> formCommandcommandID = null, Expression<Func<string>> formCommandentityDatasetJson = null, Expression<Func<string>> formCommandentityGID = null, Expression<Func<string[]>> formCommandentityGIDs = null, Expression<Func<string>> formCommandentityCode = null, Expression<Func<string[]>> formCommandentityCodes = null, Expression<Func<string>> formCommandentityScrollerID = null, Expression<Func<bool>> formCommandrequiresTransaction = null, Expression<Func<bool>> formCommandcreateNewEmptySourceEntity = null, Expression<Func<bool>> formCommandonlyPrepareTargetDatasets = null, Expression<Func<bool>> formCommandreturnSourceDatasets = null, Expression<Func<bool>> formCommandreturnTargetDatasets = null, Expression<Func<bool>> formCommandreturnMap = null, Expression<Func<bool>> formCommandreturnEntersoftDatasets = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESFormCommandOut> __BuildESRPCExecuteFormCommand(WorkflowExpression<string> formCommandentityID = null, WorkflowExpression<string> formCommandcommandID = null, WorkflowExpression<string> formCommandentityDatasetJson = null, WorkflowExpression<string> formCommandentityGID = null, WorkflowExpression<string[]> formCommandentityGIDs = null, WorkflowExpression<string> formCommandentityCode = null, WorkflowExpression<string[]> formCommandentityCodes = null, WorkflowExpression<string> formCommandentityScrollerID = null, WorkflowExpression<bool> formCommandrequiresTransaction = null, WorkflowExpression<bool> formCommandcreateNewEmptySourceEntity = null, WorkflowExpression<bool> formCommandonlyPrepareTargetDatasets = null, WorkflowExpression<bool> formCommandreturnSourceDatasets = null, WorkflowExpression<bool> formCommandreturnTargetDatasets = null, WorkflowExpression<bool> formCommandreturnMap = null, WorkflowExpression<bool> formCommandreturnEntersoftDatasets = null)
-        {
-            WorkflowExpression.Validate(formCommandentityID, nameof(formCommandentityID), required: false);
-            WorkflowExpression.Validate(formCommandcommandID, nameof(formCommandcommandID), required: false);
-            WorkflowExpression.Validate(formCommandentityDatasetJson, nameof(formCommandentityDatasetJson), required: false);
-            WorkflowExpression.Validate(formCommandentityGID, nameof(formCommandentityGID), required: false);
-            WorkflowExpression.Validate(formCommandentityGIDs, nameof(formCommandentityGIDs), required: false);
-            WorkflowExpression.Validate(formCommandentityCode, nameof(formCommandentityCode), required: false);
-            WorkflowExpression.Validate(formCommandentityCodes, nameof(formCommandentityCodes), required: false);
-            WorkflowExpression.Validate(formCommandentityScrollerID, nameof(formCommandentityScrollerID), required: false);
-            WorkflowExpression.Validate(formCommandrequiresTransaction, nameof(formCommandrequiresTransaction), required: false);
-            WorkflowExpression.Validate(formCommandcreateNewEmptySourceEntity, nameof(formCommandcreateNewEmptySourceEntity), required: false);
-            WorkflowExpression.Validate(formCommandonlyPrepareTargetDatasets, nameof(formCommandonlyPrepareTargetDatasets), required: false);
-            WorkflowExpression.Validate(formCommandreturnSourceDatasets, nameof(formCommandreturnSourceDatasets), required: false);
-            WorkflowExpression.Validate(formCommandreturnTargetDatasets, nameof(formCommandreturnTargetDatasets), required: false);
-            WorkflowExpression.Validate(formCommandreturnMap, nameof(formCommandreturnMap), required: false);
-            WorkflowExpression.Validate(formCommandreturnEntersoftDatasets, nameof(formCommandreturnEntersoftDatasets), required: false);
+            var __workflow_formCommandentityID = formCommandentityID == null ? null : WorkflowExpression.Compile(formCommandentityID);
+            WorkflowExpression.Validate(__workflow_formCommandentityID, nameof(formCommandentityID), required: false);
+            var __workflow_formCommandcommandID = formCommandcommandID == null ? null : WorkflowExpression.Compile(formCommandcommandID);
+            WorkflowExpression.Validate(__workflow_formCommandcommandID, nameof(formCommandcommandID), required: false);
+            var __workflow_formCommandentityDatasetJson = formCommandentityDatasetJson == null ? null : WorkflowExpression.Compile(formCommandentityDatasetJson);
+            WorkflowExpression.Validate(__workflow_formCommandentityDatasetJson, nameof(formCommandentityDatasetJson), required: false);
+            var __workflow_formCommandentityGID = formCommandentityGID == null ? null : WorkflowExpression.Compile(formCommandentityGID);
+            WorkflowExpression.Validate(__workflow_formCommandentityGID, nameof(formCommandentityGID), required: false);
+            var __workflow_formCommandentityGIDs = formCommandentityGIDs == null ? null : WorkflowExpression.Compile(formCommandentityGIDs);
+            WorkflowExpression.Validate(__workflow_formCommandentityGIDs, nameof(formCommandentityGIDs), required: false);
+            var __workflow_formCommandentityCode = formCommandentityCode == null ? null : WorkflowExpression.Compile(formCommandentityCode);
+            WorkflowExpression.Validate(__workflow_formCommandentityCode, nameof(formCommandentityCode), required: false);
+            var __workflow_formCommandentityCodes = formCommandentityCodes == null ? null : WorkflowExpression.Compile(formCommandentityCodes);
+            WorkflowExpression.Validate(__workflow_formCommandentityCodes, nameof(formCommandentityCodes), required: false);
+            var __workflow_formCommandentityScrollerID = formCommandentityScrollerID == null ? null : WorkflowExpression.Compile(formCommandentityScrollerID);
+            WorkflowExpression.Validate(__workflow_formCommandentityScrollerID, nameof(formCommandentityScrollerID), required: false);
+            var __workflow_formCommandrequiresTransaction = formCommandrequiresTransaction == null ? null : WorkflowExpression.Compile(formCommandrequiresTransaction);
+            WorkflowExpression.Validate(__workflow_formCommandrequiresTransaction, nameof(formCommandrequiresTransaction), required: false);
+            var __workflow_formCommandcreateNewEmptySourceEntity = formCommandcreateNewEmptySourceEntity == null ? null : WorkflowExpression.Compile(formCommandcreateNewEmptySourceEntity);
+            WorkflowExpression.Validate(__workflow_formCommandcreateNewEmptySourceEntity, nameof(formCommandcreateNewEmptySourceEntity), required: false);
+            var __workflow_formCommandonlyPrepareTargetDatasets = formCommandonlyPrepareTargetDatasets == null ? null : WorkflowExpression.Compile(formCommandonlyPrepareTargetDatasets);
+            WorkflowExpression.Validate(__workflow_formCommandonlyPrepareTargetDatasets, nameof(formCommandonlyPrepareTargetDatasets), required: false);
+            var __workflow_formCommandreturnSourceDatasets = formCommandreturnSourceDatasets == null ? null : WorkflowExpression.Compile(formCommandreturnSourceDatasets);
+            WorkflowExpression.Validate(__workflow_formCommandreturnSourceDatasets, nameof(formCommandreturnSourceDatasets), required: false);
+            var __workflow_formCommandreturnTargetDatasets = formCommandreturnTargetDatasets == null ? null : WorkflowExpression.Compile(formCommandreturnTargetDatasets);
+            WorkflowExpression.Validate(__workflow_formCommandreturnTargetDatasets, nameof(formCommandreturnTargetDatasets), required: false);
+            var __workflow_formCommandreturnMap = formCommandreturnMap == null ? null : WorkflowExpression.Compile(formCommandreturnMap);
+            WorkflowExpression.Validate(__workflow_formCommandreturnMap, nameof(formCommandreturnMap), required: false);
+            var __workflow_formCommandreturnEntersoftDatasets = formCommandreturnEntersoftDatasets == null ? null : WorkflowExpression.Compile(formCommandreturnEntersoftDatasets);
+            WorkflowExpression.Validate(__workflow_formCommandreturnEntersoftDatasets, nameof(formCommandreturnEntersoftDatasets), required: false);
             return new DeferredBodyAction<EntersoftWebApiModelsESFormCommandOut>(() =>
             {
                 var apiCallPath = "/api/rpc/ExecuteFormCommand/";
@@ -3024,15 +2647,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var formCommand = new JObject();
                 var formCommandpropCount = 0;
-                if (formCommandentityID != null)
+                if (__workflow_formCommandentityID != null)
                 {
-                    formCommand["EntityID"] = ExpressionConverter.ConvertO(formCommandentityID);
+                    formCommand["EntityID"] = ExpressionConverter.ConvertO(__workflow_formCommandentityID);
                     formCommandpropCount++;
                 }
 
-                if (formCommandcommandID != null)
+                if (__workflow_formCommandcommandID != null)
                 {
-                    formCommand["CommandID"] = ExpressionConverter.ConvertO(formCommandcommandID);
+                    formCommand["CommandID"] = ExpressionConverter.ConvertO(__workflow_formCommandcommandID);
                     formCommandpropCount++;
                 }
 
@@ -3044,33 +2667,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                     formCommandpropCount++;
                 }
 
-                if (formCommandentityDatasetJson != null)
+                if (__workflow_formCommandentityDatasetJson != null)
                 {
-                    formCommand["EntityDatasetJson"] = ExpressionConverter.ConvertO(formCommandentityDatasetJson);
+                    formCommand["EntityDatasetJson"] = ExpressionConverter.ConvertO(__workflow_formCommandentityDatasetJson);
                     formCommandpropCount++;
                 }
 
-                if (formCommandentityGID != null)
+                if (__workflow_formCommandentityGID != null)
                 {
-                    formCommand["EntityGID"] = ExpressionConverter.ConvertO(formCommandentityGID);
+                    formCommand["EntityGID"] = ExpressionConverter.ConvertO(__workflow_formCommandentityGID);
                     formCommandpropCount++;
                 }
 
-                if (formCommandentityGIDs != null)
+                if (__workflow_formCommandentityGIDs != null)
                 {
-                    formCommand["EntityGIDs"] = ExpressionConverter.ConvertO(formCommandentityGIDs);
+                    formCommand["EntityGIDs"] = ExpressionConverter.ConvertO(__workflow_formCommandentityGIDs);
                     formCommandpropCount++;
                 }
 
-                if (formCommandentityCode != null)
+                if (__workflow_formCommandentityCode != null)
                 {
-                    formCommand["EntityCode"] = ExpressionConverter.ConvertO(formCommandentityCode);
+                    formCommand["EntityCode"] = ExpressionConverter.ConvertO(__workflow_formCommandentityCode);
                     formCommandpropCount++;
                 }
 
-                if (formCommandentityCodes != null)
+                if (__workflow_formCommandentityCodes != null)
                 {
-                    formCommand["EntityCodes"] = ExpressionConverter.ConvertO(formCommandentityCodes);
+                    formCommand["EntityCodes"] = ExpressionConverter.ConvertO(__workflow_formCommandentityCodes);
                     formCommandpropCount++;
                 }
 
@@ -3082,9 +2705,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                     formCommandpropCount++;
                 }
 
-                if (formCommandentityScrollerID != null)
+                if (__workflow_formCommandentityScrollerID != null)
                 {
-                    formCommand["EntityScrollerID"] = ExpressionConverter.ConvertO(formCommandentityScrollerID);
+                    formCommand["EntityScrollerID"] = ExpressionConverter.ConvertO(__workflow_formCommandentityScrollerID);
                     formCommandpropCount++;
                 }
 
@@ -3096,9 +2719,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                     formCommandpropCount++;
                 }
 
-                if (formCommandrequiresTransaction != null)
+                if (__workflow_formCommandrequiresTransaction != null)
                 {
-                    formCommand["RequiresTransaction"] = ExpressionConverter.ConvertO(formCommandrequiresTransaction);
+                    formCommand["RequiresTransaction"] = ExpressionConverter.ConvertO(__workflow_formCommandrequiresTransaction);
                     formCommandpropCount++;
                 }
 
@@ -3118,39 +2741,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                     formCommandpropCount++;
                 }
 
-                if (formCommandcreateNewEmptySourceEntity != null)
+                if (__workflow_formCommandcreateNewEmptySourceEntity != null)
                 {
-                    formCommand["CreateNewEmptySourceEntity"] = ExpressionConverter.ConvertO(formCommandcreateNewEmptySourceEntity);
+                    formCommand["CreateNewEmptySourceEntity"] = ExpressionConverter.ConvertO(__workflow_formCommandcreateNewEmptySourceEntity);
                     formCommandpropCount++;
                 }
 
-                if (formCommandonlyPrepareTargetDatasets != null)
+                if (__workflow_formCommandonlyPrepareTargetDatasets != null)
                 {
-                    formCommand["OnlyPrepareTargetDatasets"] = ExpressionConverter.ConvertO(formCommandonlyPrepareTargetDatasets);
+                    formCommand["OnlyPrepareTargetDatasets"] = ExpressionConverter.ConvertO(__workflow_formCommandonlyPrepareTargetDatasets);
                     formCommandpropCount++;
                 }
 
-                if (formCommandreturnSourceDatasets != null)
+                if (__workflow_formCommandreturnSourceDatasets != null)
                 {
-                    formCommand["ReturnSourceDatasets"] = ExpressionConverter.ConvertO(formCommandreturnSourceDatasets);
+                    formCommand["ReturnSourceDatasets"] = ExpressionConverter.ConvertO(__workflow_formCommandreturnSourceDatasets);
                     formCommandpropCount++;
                 }
 
-                if (formCommandreturnTargetDatasets != null)
+                if (__workflow_formCommandreturnTargetDatasets != null)
                 {
-                    formCommand["ReturnTargetDatasets"] = ExpressionConverter.ConvertO(formCommandreturnTargetDatasets);
+                    formCommand["ReturnTargetDatasets"] = ExpressionConverter.ConvertO(__workflow_formCommandreturnTargetDatasets);
                     formCommandpropCount++;
                 }
 
-                if (formCommandreturnMap != null)
+                if (__workflow_formCommandreturnMap != null)
                 {
-                    formCommand["ReturnMap"] = ExpressionConverter.ConvertO(formCommandreturnMap);
+                    formCommand["ReturnMap"] = ExpressionConverter.ConvertO(__workflow_formCommandreturnMap);
                     formCommandpropCount++;
                 }
 
-                if (formCommandreturnEntersoftDatasets != null)
+                if (__workflow_formCommandreturnEntersoftDatasets != null)
                 {
-                    formCommand["ReturnEntersoftDatasets"] = ExpressionConverter.ConvertO(formCommandreturnEntersoftDatasets);
+                    formCommand["ReturnEntersoftDatasets"] = ExpressionConverter.ConvertO(__workflow_formCommandreturnEntersoftDatasets);
                     formCommandpropCount++;
                 }
 
@@ -3164,19 +2787,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildGETESRPCEbsService2))]
-        public IBodyWorkflowAction<JToken> GETESRPCEbsService2([WorkflowExpression] Func<string> routeId)
+        public IBodyWorkflowAction<JToken> GETESRPCEbsService2(Expression<Func<string>> routeId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildGETESRPCEbsService2(WorkflowExpression<string> routeId)
-        {
-            WorkflowExpression.Validate(routeId, nameof(routeId), required: true);
+            var __workflow_routeId = routeId == null ? null : WorkflowExpression.Compile(routeId);
+            WorkflowExpression.Validate(__workflow_routeId, nameof(routeId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/rpc/EbsService2/{0}", ExpressionConverter.ConvertWithUrlEncoding(routeId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/rpc/EbsService2/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_routeId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<JToken>(callPayload);
@@ -3184,19 +2801,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildPOSTESRPCEbsService2))]
-        public IBodyWorkflowAction<JToken> POSTESRPCEbsService2([WorkflowExpression] Func<string> routeId)
+        public IBodyWorkflowAction<JToken> POSTESRPCEbsService2(Expression<Func<string>> routeId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildPOSTESRPCEbsService2(WorkflowExpression<string> routeId)
-        {
-            WorkflowExpression.Validate(routeId, nameof(routeId), required: true);
+            var __workflow_routeId = routeId == null ? null : WorkflowExpression.Compile(routeId);
+            WorkflowExpression.Validate(__workflow_routeId, nameof(routeId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/rpc/EbsService2/{0}", ExpressionConverter.ConvertWithUrlEncoding(routeId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/rpc/EbsService2/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_routeId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<JToken>(callPayload);
@@ -3204,19 +2815,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESTaskManagementESTMMobileTaskType))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMMobileTaskTypeObj> ESTaskManagementESTMMobileTaskType([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMMobileTaskTypeObj> ESTaskManagementESTMMobileTaskType(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMMobileTaskTypeObj> __BuildESTaskManagementESTMMobileTaskType(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESTMMobileTaskTypeObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMMobileTaskType/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMMobileTaskType/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMMobileTaskTypeObj>(callPayload);
@@ -3224,19 +2829,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESTaskManagementESTMServiceRequest))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMServiceRequestObj> ESTaskManagementESTMServiceRequest([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMServiceRequestObj> ESTaskManagementESTMServiceRequest(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMServiceRequestObj> __BuildESTaskManagementESTMServiceRequest(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESTMServiceRequestObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMServiceRequest/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMServiceRequest/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMServiceRequestObj>(callPayload);
@@ -3244,19 +2843,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESTaskManagementESTMRFMModel))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMRFMModelObj> ESTaskManagementESTMRFMModel([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMRFMModelObj> ESTaskManagementESTMRFMModel(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMRFMModelObj> __BuildESTaskManagementESTMRFMModel(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESTMRFMModelObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMRFMModel/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMRFMModel/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMRFMModelObj>(callPayload);
@@ -3264,19 +2857,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESTaskManagementESTMNewsletterRecipient))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMNewsletterRecipientObj> ESTaskManagementESTMNewsletterRecipient([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMNewsletterRecipientObj> ESTaskManagementESTMNewsletterRecipient(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMNewsletterRecipientObj> __BuildESTaskManagementESTMNewsletterRecipient(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESTMNewsletterRecipientObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMNewsletterRecipient/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMNewsletterRecipient/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMNewsletterRecipientObj>(callPayload);
@@ -3284,19 +2871,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESTaskManagementESTMInteraction))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMInteractionObj> ESTaskManagementESTMInteraction([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMInteractionObj> ESTaskManagementESTMInteraction(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMInteractionObj> __BuildESTaskManagementESTMInteraction(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESTMInteractionObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMInteraction/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMInteraction/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMInteractionObj>(callPayload);
@@ -3304,19 +2885,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESTaskManagementESTMObjectRating))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMObjectRatingObj> ESTaskManagementESTMObjectRating([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMObjectRatingObj> ESTaskManagementESTMObjectRating(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMObjectRatingObj> __BuildESTaskManagementESTMObjectRating(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESTMObjectRatingObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMObjectRating/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMObjectRating/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMObjectRatingObj>(callPayload);
@@ -3324,19 +2899,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESTaskManagementESTMTask))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMTaskObj> ESTaskManagementESTMTask([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMTaskObj> ESTaskManagementESTMTask(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMTaskObj> __BuildESTaskManagementESTMTask(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESTMTaskObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMTask/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMTask/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMTaskObj>(callPayload);
@@ -3344,19 +2913,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESTaskManagementESTMResource))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMResourceObj> ESTaskManagementESTMResource([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMResourceObj> ESTaskManagementESTMResource(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMResourceObj> __BuildESTaskManagementESTMResource(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESTMResourceObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMResource/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMResource/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMResourceObj>(callPayload);
@@ -3364,19 +2927,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESTaskManagementESTMCampaign))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMCampaignObj> ESTaskManagementESTMCampaign([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMCampaignObj> ESTaskManagementESTMCampaign(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMCampaignObj> __BuildESTaskManagementESTMCampaign(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESTMCampaignObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMCampaign/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMCampaign/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMCampaignObj>(callPayload);
@@ -3384,19 +2941,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESTaskManagementESTMSMActivity))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMSMActivityObj> ESTaskManagementESTMSMActivity([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMSMActivityObj> ESTaskManagementESTMSMActivity(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMSMActivityObj> __BuildESTaskManagementESTMSMActivity(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESTMSMActivityObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMSMActivity/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMSMActivity/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMSMActivityObj>(callPayload);
@@ -3404,19 +2955,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESTaskManagementESTMOpportunity))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMOpportunityObj> ESTaskManagementESTMOpportunity([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMOpportunityObj> ESTaskManagementESTMOpportunity(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMOpportunityObj> __BuildESTaskManagementESTMOpportunity(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESTMOpportunityObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMOpportunity/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMOpportunity/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMOpportunityObj>(callPayload);
@@ -3424,19 +2969,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESWarehouseManagementESWMTransportAction))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMTransportActionObj> ESWarehouseManagementESWMTransportAction([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMTransportActionObj> ESWarehouseManagementESWMTransportAction(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMTransportActionObj> __BuildESWarehouseManagementESWMTransportAction(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESWMTransportActionObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESWarehouseManagement/ESWMTransportAction/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESWarehouseManagement/ESWMTransportAction/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWMTransportActionObj>(callPayload);
@@ -3444,19 +2983,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESWarehouseManagementESWMAction))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMActionObj> ESWarehouseManagementESWMAction([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMActionObj> ESWarehouseManagementESWMAction(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMActionObj> __BuildESWarehouseManagementESWMAction(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESWMActionObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESWarehouseManagement/ESWMAction/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESWarehouseManagement/ESWMAction/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWMActionObj>(callPayload);
@@ -3464,19 +2997,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESWarehouseManagementESWMShipment))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMShipmentObj> ESWarehouseManagementESWMShipment([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMShipmentObj> ESWarehouseManagementESWMShipment(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMShipmentObj> __BuildESWarehouseManagementESWMShipment(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESWMShipmentObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESWarehouseManagement/ESWMShipment/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESWarehouseManagement/ESWMShipment/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWMShipmentObj>(callPayload);
@@ -3484,19 +3011,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESWarehouseManagementESWMWorkPackage))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMWorkPackageObj> ESWarehouseManagementESWMWorkPackage([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMWorkPackageObj> ESWarehouseManagementESWMWorkPackage(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMWorkPackageObj> __BuildESWarehouseManagementESWMWorkPackage(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESWMWorkPackageObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESWarehouseManagement/ESWMWorkPackage/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESWarehouseManagement/ESWMWorkPackage/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWMWorkPackageObj>(callPayload);
@@ -3504,19 +3025,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESWarehouseManagementESWMRequest))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMRequestObj> ESWarehouseManagementESWMRequest([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMRequestObj> ESWarehouseManagementESWMRequest(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMRequestObj> __BuildESWarehouseManagementESWMRequest(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESWMRequestObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESWarehouseManagement/ESWMRequest/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESWarehouseManagement/ESWMRequest/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWMRequestObj>(callPayload);
@@ -3524,19 +3039,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESWarehouseManagementESWMContainer))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMContainerObj> ESWarehouseManagementESWMContainer([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMContainerObj> ESWarehouseManagementESWMContainer(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMContainerObj> __BuildESWarehouseManagementESWMContainer(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESWMContainerObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESWarehouseManagement/ESWMContainer/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESWarehouseManagement/ESWMContainer/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWMContainerObj>(callPayload);
@@ -3544,19 +3053,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESWorkInProgressESWPTaskRequest))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWPTaskRequestObj> ESWorkInProgressESWPTaskRequest([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWPTaskRequestObj> ESWorkInProgressESWPTaskRequest(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWPTaskRequestObj> __BuildESWorkInProgressESWPTaskRequest(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESWPTaskRequestObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESWorkInProgress/ESWPTaskRequest/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESWorkInProgress/ESWPTaskRequest/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWPTaskRequestObj>(callPayload);
@@ -3564,19 +3067,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESWorkInProgressESWPWorkPackage))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWPWorkPackageObj> ESWorkInProgressESWPWorkPackage([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWPWorkPackageObj> ESWorkInProgressESWPWorkPackage(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWPWorkPackageObj> __BuildESWorkInProgressESWPWorkPackage(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESWPWorkPackageObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESWorkInProgress/ESWPWorkPackage/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESWorkInProgress/ESWPWorkPackage/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWPWorkPackageObj>(callPayload);
@@ -3584,19 +3081,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        [WorkflowExpressionFactory(nameof(__BuildESWorkInProgressESWPActualTask))]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWPActualTaskObj> ESWorkInProgressESWPActualTask([WorkflowExpression] Func<string> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWPActualTaskObj> ESWorkInProgressESWPActualTask(Expression<Func<string>> pK)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWPActualTaskObj> __BuildESWorkInProgressESWPActualTask(WorkflowExpression<string> pK)
-        {
-            WorkflowExpression.Validate(pK, nameof(pK), required: true);
+            var __workflow_pK = pK == null ? null : WorkflowExpression.Compile(pK);
+            WorkflowExpression.Validate(__workflow_pK, nameof(pK), required: true);
             return new DeferredBodyAction<EntersoftWebApi2ODSModelsESWPActualTaskObj>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESWorkInProgress/ESWPActualTask/{0}", ExpressionConverter.ConvertWithUrlEncoding(pK, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/ESWorkInProgress/ESWPActualTask/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pK, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWPActualTaskObj>(callPayload);
@@ -3606,22 +3097,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
     public class EntersoftTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildESBusinessHookPost))]
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse> ESBusinessHookPost([WorkflowExpression] Func<registrationbusinessEventTypeInput> registrationbusinessEventType,[WorkflowExpression] Func<string> registrationcontext = null,[WorkflowExpression] Func<double> registrationvalue = null,[WorkflowExpression] Func<string> registrationexternalID = null,[WorkflowExpression] Func<string> registrationdescription = null,[WorkflowExpression] Func<bool> registrationisActive = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse> ESBusinessHookPost(Expression<Func<registrationbusinessEventTypeInput>> registrationbusinessEventType, Expression<Func<string>> registrationcontext = null, Expression<Func<double>> registrationvalue = null, Expression<Func<string>> registrationexternalID = null, Expression<Func<string>> registrationdescription = null, Expression<Func<bool>> registrationisActive = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse> __BuildESBusinessHookPost(WorkflowExpression<registrationbusinessEventTypeInput> registrationbusinessEventType,WorkflowExpression<string> registrationcontext = null,WorkflowExpression<double> registrationvalue = null,WorkflowExpression<string> registrationexternalID = null,WorkflowExpression<string> registrationdescription = null,WorkflowExpression<bool> registrationisActive = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(registrationbusinessEventType, nameof(registrationbusinessEventType), required: true);
-            WorkflowExpression.Validate(registrationcontext, nameof(registrationcontext), required: false);
-            WorkflowExpression.Validate(registrationvalue, nameof(registrationvalue), required: false);
-            WorkflowExpression.Validate(registrationexternalID, nameof(registrationexternalID), required: false);
-            WorkflowExpression.Validate(registrationdescription, nameof(registrationdescription), required: false);
-            WorkflowExpression.Validate(registrationisActive, nameof(registrationisActive), required: false);
+            var __workflow_registrationbusinessEventType = registrationbusinessEventType == null ? null : WorkflowExpression.Compile(registrationbusinessEventType);
+            WorkflowExpression.Validate(__workflow_registrationbusinessEventType, nameof(registrationbusinessEventType), required: true);
+            var __workflow_registrationcontext = registrationcontext == null ? null : WorkflowExpression.Compile(registrationcontext);
+            WorkflowExpression.Validate(__workflow_registrationcontext, nameof(registrationcontext), required: false);
+            var __workflow_registrationvalue = registrationvalue == null ? null : WorkflowExpression.Compile(registrationvalue);
+            WorkflowExpression.Validate(__workflow_registrationvalue, nameof(registrationvalue), required: false);
+            var __workflow_registrationexternalID = registrationexternalID == null ? null : WorkflowExpression.Compile(registrationexternalID);
+            WorkflowExpression.Validate(__workflow_registrationexternalID, nameof(registrationexternalID), required: false);
+            var __workflow_registrationdescription = registrationdescription == null ? null : WorkflowExpression.Compile(registrationdescription);
+            WorkflowExpression.Validate(__workflow_registrationdescription, nameof(registrationdescription), required: false);
+            var __workflow_registrationisActive = registrationisActive == null ? null : WorkflowExpression.Compile(registrationisActive);
+            WorkflowExpression.Validate(__workflow_registrationisActive, nameof(registrationisActive), required: false);
             return new DeferredBodyTrigger<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse>(() =>
             {
                 var apiCallPath = "/api/businesshook";
@@ -3630,18 +3119,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var registration = new JObject();
                 var registrationpropCount = 0;
                 registrationpropCount++;
-                registration["BusinessEventType"] = ExpressionConverter.ConvertO(registrationbusinessEventType);
-                if (registrationcontext != null)
+                registration["BusinessEventType"] = ExpressionConverter.ConvertO(__workflow_registrationbusinessEventType);
+                if (__workflow_registrationcontext != null)
                 {
-                    registration["Context"] = ExpressionConverter.ConvertO(registrationcontext);
+                    registration["Context"] = ExpressionConverter.ConvertO(__workflow_registrationcontext);
                     registrationpropCount++;
                 }
 
-                if (registrationvalue != null)
+                if (__workflow_registrationvalue != null)
                 {
-                    if (registrationvalue != null)
+                    if (__workflow_registrationvalue != null)
                     {
-                        registration["Value"] = ExpressionConverter.ConvertO(registrationvalue);
+                        registration["Value"] = ExpressionConverter.ConvertO(__workflow_registrationvalue);
                         registrationpropCount++;
                     }
 
@@ -3653,23 +3142,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                     registrationpropCount++;
                 }
 
-                if (registrationexternalID != null)
+                if (__workflow_registrationexternalID != null)
                 {
-                    registration["ExternalID"] = ExpressionConverter.ConvertO(registrationexternalID);
+                    registration["ExternalID"] = ExpressionConverter.ConvertO(__workflow_registrationexternalID);
                     registrationpropCount++;
                 }
 
-                if (registrationdescription != null)
+                if (__workflow_registrationdescription != null)
                 {
-                    registration["Description"] = ExpressionConverter.ConvertO(registrationdescription);
+                    registration["Description"] = ExpressionConverter.ConvertO(__workflow_registrationdescription);
                     registrationpropCount++;
                 }
 
-                if (registrationisActive != null)
+                if (__workflow_registrationisActive != null)
                 {
-                    if (registrationisActive != null)
+                    if (__workflow_registrationisActive != null)
                     {
-                        registration["IsActive"] = ExpressionConverter.ConvertO(registrationisActive);
+                        registration["IsActive"] = ExpressionConverter.ConvertO(__workflow_registrationisActive);
                         registrationpropCount++;
                     }
 
@@ -3692,24 +3181,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildESPodHookPost))]
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESPodHookRegistrationResponse> ESPodHookPost([WorkflowExpression] Func<registrationstateInput> registrationstate = null,[WorkflowExpression] Func<registrationpackageTypeInput> registrationpackageType = null,[WorkflowExpression] Func<string> registrationconveyanceLicencePlate = null,[WorkflowExpression] Func<string> registrationbranchID = null,[WorkflowExpression] Func<string> registrationtradeAccountName = null,[WorkflowExpression] Func<string> registrationdriverCode = null,[WorkflowExpression] Func<string> registrationexternalID = null,[WorkflowExpression] Func<string> registrationdescription = null,[WorkflowExpression] Func<bool> registrationisActive = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESPodHookRegistrationResponse> ESPodHookPost(Expression<Func<registrationstateInput>> registrationstate = null, Expression<Func<registrationpackageTypeInput>> registrationpackageType = null, Expression<Func<string>> registrationconveyanceLicencePlate = null, Expression<Func<string>> registrationbranchID = null, Expression<Func<string>> registrationtradeAccountName = null, Expression<Func<string>> registrationdriverCode = null, Expression<Func<string>> registrationexternalID = null, Expression<Func<string>> registrationdescription = null, Expression<Func<bool>> registrationisActive = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESPodHookRegistrationResponse> __BuildESPodHookPost(WorkflowExpression<registrationstateInput> registrationstate = null,WorkflowExpression<registrationpackageTypeInput> registrationpackageType = null,WorkflowExpression<string> registrationconveyanceLicencePlate = null,WorkflowExpression<string> registrationbranchID = null,WorkflowExpression<string> registrationtradeAccountName = null,WorkflowExpression<string> registrationdriverCode = null,WorkflowExpression<string> registrationexternalID = null,WorkflowExpression<string> registrationdescription = null,WorkflowExpression<bool> registrationisActive = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(registrationstate, nameof(registrationstate), required: false);
-            WorkflowExpression.Validate(registrationpackageType, nameof(registrationpackageType), required: false);
-            WorkflowExpression.Validate(registrationconveyanceLicencePlate, nameof(registrationconveyanceLicencePlate), required: false);
-            WorkflowExpression.Validate(registrationbranchID, nameof(registrationbranchID), required: false);
-            WorkflowExpression.Validate(registrationtradeAccountName, nameof(registrationtradeAccountName), required: false);
-            WorkflowExpression.Validate(registrationdriverCode, nameof(registrationdriverCode), required: false);
-            WorkflowExpression.Validate(registrationexternalID, nameof(registrationexternalID), required: false);
-            WorkflowExpression.Validate(registrationdescription, nameof(registrationdescription), required: false);
-            WorkflowExpression.Validate(registrationisActive, nameof(registrationisActive), required: false);
+            var __workflow_registrationstate = registrationstate == null ? null : WorkflowExpression.Compile(registrationstate);
+            WorkflowExpression.Validate(__workflow_registrationstate, nameof(registrationstate), required: false);
+            var __workflow_registrationpackageType = registrationpackageType == null ? null : WorkflowExpression.Compile(registrationpackageType);
+            WorkflowExpression.Validate(__workflow_registrationpackageType, nameof(registrationpackageType), required: false);
+            var __workflow_registrationconveyanceLicencePlate = registrationconveyanceLicencePlate == null ? null : WorkflowExpression.Compile(registrationconveyanceLicencePlate);
+            WorkflowExpression.Validate(__workflow_registrationconveyanceLicencePlate, nameof(registrationconveyanceLicencePlate), required: false);
+            var __workflow_registrationbranchID = registrationbranchID == null ? null : WorkflowExpression.Compile(registrationbranchID);
+            WorkflowExpression.Validate(__workflow_registrationbranchID, nameof(registrationbranchID), required: false);
+            var __workflow_registrationtradeAccountName = registrationtradeAccountName == null ? null : WorkflowExpression.Compile(registrationtradeAccountName);
+            WorkflowExpression.Validate(__workflow_registrationtradeAccountName, nameof(registrationtradeAccountName), required: false);
+            var __workflow_registrationdriverCode = registrationdriverCode == null ? null : WorkflowExpression.Compile(registrationdriverCode);
+            WorkflowExpression.Validate(__workflow_registrationdriverCode, nameof(registrationdriverCode), required: false);
+            var __workflow_registrationexternalID = registrationexternalID == null ? null : WorkflowExpression.Compile(registrationexternalID);
+            WorkflowExpression.Validate(__workflow_registrationexternalID, nameof(registrationexternalID), required: false);
+            var __workflow_registrationdescription = registrationdescription == null ? null : WorkflowExpression.Compile(registrationdescription);
+            WorkflowExpression.Validate(__workflow_registrationdescription, nameof(registrationdescription), required: false);
+            var __workflow_registrationisActive = registrationisActive == null ? null : WorkflowExpression.Compile(registrationisActive);
+            WorkflowExpression.Validate(__workflow_registrationisActive, nameof(registrationisActive), required: false);
             return new DeferredBodyTrigger<EntersoftWebApiInfrastructureESPodHookRegistrationResponse>(() =>
             {
                 var apiCallPath = "/api/podhook";
@@ -3717,11 +3208,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var registration = new JObject();
                 var registrationpropCount = 0;
-                if (registrationstate != null)
+                if (__workflow_registrationstate != null)
                 {
-                    if (registrationstate != null)
+                    if (__workflow_registrationstate != null)
                     {
-                        registration["State"] = ExpressionConverter.ConvertO(registrationstate);
+                        registration["State"] = ExpressionConverter.ConvertO(__workflow_registrationstate);
                         registrationpropCount++;
                     }
 
@@ -3733,11 +3224,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                     registrationpropCount++;
                 }
 
-                if (registrationpackageType != null)
+                if (__workflow_registrationpackageType != null)
                 {
-                    if (registrationpackageType != null)
+                    if (__workflow_registrationpackageType != null)
                     {
-                        registration["PackageType"] = ExpressionConverter.ConvertO(registrationpackageType);
+                        registration["PackageType"] = ExpressionConverter.ConvertO(__workflow_registrationpackageType);
                         registrationpropCount++;
                     }
 
@@ -3749,47 +3240,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                     registrationpropCount++;
                 }
 
-                if (registrationconveyanceLicencePlate != null)
+                if (__workflow_registrationconveyanceLicencePlate != null)
                 {
-                    registration["ConveyanceLicencePlate"] = ExpressionConverter.ConvertO(registrationconveyanceLicencePlate);
+                    registration["ConveyanceLicencePlate"] = ExpressionConverter.ConvertO(__workflow_registrationconveyanceLicencePlate);
                     registrationpropCount++;
                 }
 
-                if (registrationbranchID != null)
+                if (__workflow_registrationbranchID != null)
                 {
-                    registration["BranchID"] = ExpressionConverter.ConvertO(registrationbranchID);
+                    registration["BranchID"] = ExpressionConverter.ConvertO(__workflow_registrationbranchID);
                     registrationpropCount++;
                 }
 
-                if (registrationtradeAccountName != null)
+                if (__workflow_registrationtradeAccountName != null)
                 {
-                    registration["TradeAccountName"] = ExpressionConverter.ConvertO(registrationtradeAccountName);
+                    registration["TradeAccountName"] = ExpressionConverter.ConvertO(__workflow_registrationtradeAccountName);
                     registrationpropCount++;
                 }
 
-                if (registrationdriverCode != null)
+                if (__workflow_registrationdriverCode != null)
                 {
-                    registration["DriverCode"] = ExpressionConverter.ConvertO(registrationdriverCode);
+                    registration["DriverCode"] = ExpressionConverter.ConvertO(__workflow_registrationdriverCode);
                     registrationpropCount++;
                 }
 
-                if (registrationexternalID != null)
+                if (__workflow_registrationexternalID != null)
                 {
-                    registration["ExternalID"] = ExpressionConverter.ConvertO(registrationexternalID);
+                    registration["ExternalID"] = ExpressionConverter.ConvertO(__workflow_registrationexternalID);
                     registrationpropCount++;
                 }
 
-                if (registrationdescription != null)
+                if (__workflow_registrationdescription != null)
                 {
-                    registration["Description"] = ExpressionConverter.ConvertO(registrationdescription);
+                    registration["Description"] = ExpressionConverter.ConvertO(__workflow_registrationdescription);
                     registrationpropCount++;
                 }
 
-                if (registrationisActive != null)
+                if (__workflow_registrationisActive != null)
                 {
-                    if (registrationisActive != null)
+                    if (__workflow_registrationisActive != null)
                     {
-                        registration["IsActive"] = ExpressionConverter.ConvertO(registrationisActive);
+                        registration["IsActive"] = ExpressionConverter.ConvertO(__workflow_registrationisActive);
                         registrationpropCount++;
                     }
 
@@ -3812,23 +3303,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildESRFAHookPost))]
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse> ESRFAHookPost([WorkflowExpression] Func<string> registrationrequestedBy = null,[WorkflowExpression] Func<registrationpriorityInput> registrationpriority = null,[WorkflowExpression] Func<string> registrationrequestClass = null,[WorkflowExpression] Func<string> registrationrequestCategory = null,[WorkflowExpression] Func<double> registrationnumericValue = null,[WorkflowExpression] Func<string> registrationexternalID = null,[WorkflowExpression] Func<string> registrationdescription = null,[WorkflowExpression] Func<bool> registrationisActive = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse> ESRFAHookPost(Expression<Func<string>> registrationrequestedBy = null, Expression<Func<registrationpriorityInput>> registrationpriority = null, Expression<Func<string>> registrationrequestClass = null, Expression<Func<string>> registrationrequestCategory = null, Expression<Func<double>> registrationnumericValue = null, Expression<Func<string>> registrationexternalID = null, Expression<Func<string>> registrationdescription = null, Expression<Func<bool>> registrationisActive = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse> __BuildESRFAHookPost(WorkflowExpression<string> registrationrequestedBy = null,WorkflowExpression<registrationpriorityInput> registrationpriority = null,WorkflowExpression<string> registrationrequestClass = null,WorkflowExpression<string> registrationrequestCategory = null,WorkflowExpression<double> registrationnumericValue = null,WorkflowExpression<string> registrationexternalID = null,WorkflowExpression<string> registrationdescription = null,WorkflowExpression<bool> registrationisActive = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(registrationrequestedBy, nameof(registrationrequestedBy), required: false);
-            WorkflowExpression.Validate(registrationpriority, nameof(registrationpriority), required: false);
-            WorkflowExpression.Validate(registrationrequestClass, nameof(registrationrequestClass), required: false);
-            WorkflowExpression.Validate(registrationrequestCategory, nameof(registrationrequestCategory), required: false);
-            WorkflowExpression.Validate(registrationnumericValue, nameof(registrationnumericValue), required: false);
-            WorkflowExpression.Validate(registrationexternalID, nameof(registrationexternalID), required: false);
-            WorkflowExpression.Validate(registrationdescription, nameof(registrationdescription), required: false);
-            WorkflowExpression.Validate(registrationisActive, nameof(registrationisActive), required: false);
+            var __workflow_registrationrequestedBy = registrationrequestedBy == null ? null : WorkflowExpression.Compile(registrationrequestedBy);
+            WorkflowExpression.Validate(__workflow_registrationrequestedBy, nameof(registrationrequestedBy), required: false);
+            var __workflow_registrationpriority = registrationpriority == null ? null : WorkflowExpression.Compile(registrationpriority);
+            WorkflowExpression.Validate(__workflow_registrationpriority, nameof(registrationpriority), required: false);
+            var __workflow_registrationrequestClass = registrationrequestClass == null ? null : WorkflowExpression.Compile(registrationrequestClass);
+            WorkflowExpression.Validate(__workflow_registrationrequestClass, nameof(registrationrequestClass), required: false);
+            var __workflow_registrationrequestCategory = registrationrequestCategory == null ? null : WorkflowExpression.Compile(registrationrequestCategory);
+            WorkflowExpression.Validate(__workflow_registrationrequestCategory, nameof(registrationrequestCategory), required: false);
+            var __workflow_registrationnumericValue = registrationnumericValue == null ? null : WorkflowExpression.Compile(registrationnumericValue);
+            WorkflowExpression.Validate(__workflow_registrationnumericValue, nameof(registrationnumericValue), required: false);
+            var __workflow_registrationexternalID = registrationexternalID == null ? null : WorkflowExpression.Compile(registrationexternalID);
+            WorkflowExpression.Validate(__workflow_registrationexternalID, nameof(registrationexternalID), required: false);
+            var __workflow_registrationdescription = registrationdescription == null ? null : WorkflowExpression.Compile(registrationdescription);
+            WorkflowExpression.Validate(__workflow_registrationdescription, nameof(registrationdescription), required: false);
+            var __workflow_registrationisActive = registrationisActive == null ? null : WorkflowExpression.Compile(registrationisActive);
+            WorkflowExpression.Validate(__workflow_registrationisActive, nameof(registrationisActive), required: false);
             return new DeferredBodyTrigger<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse>(() =>
             {
                 var apiCallPath = "/api/rfahook";
@@ -3836,35 +3328,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var registration = new JObject();
                 var registrationpropCount = 0;
-                if (registrationrequestedBy != null)
+                if (__workflow_registrationrequestedBy != null)
                 {
-                    registration["RequestedBy"] = ExpressionConverter.ConvertO(registrationrequestedBy);
+                    registration["RequestedBy"] = ExpressionConverter.ConvertO(__workflow_registrationrequestedBy);
                     registrationpropCount++;
                 }
 
-                if (registrationpriority != null)
+                if (__workflow_registrationpriority != null)
                 {
-                    registration["Priority"] = ExpressionConverter.ConvertO(registrationpriority);
+                    registration["Priority"] = ExpressionConverter.ConvertO(__workflow_registrationpriority);
                     registrationpropCount++;
                 }
 
-                if (registrationrequestClass != null)
+                if (__workflow_registrationrequestClass != null)
                 {
-                    registration["RequestClass"] = ExpressionConverter.ConvertO(registrationrequestClass);
+                    registration["RequestClass"] = ExpressionConverter.ConvertO(__workflow_registrationrequestClass);
                     registrationpropCount++;
                 }
 
-                if (registrationrequestCategory != null)
+                if (__workflow_registrationrequestCategory != null)
                 {
-                    registration["RequestCategory"] = ExpressionConverter.ConvertO(registrationrequestCategory);
+                    registration["RequestCategory"] = ExpressionConverter.ConvertO(__workflow_registrationrequestCategory);
                     registrationpropCount++;
                 }
 
-                if (registrationnumericValue != null)
+                if (__workflow_registrationnumericValue != null)
                 {
-                    if (registrationnumericValue != null)
+                    if (__workflow_registrationnumericValue != null)
                     {
-                        registration["NumericValue"] = ExpressionConverter.ConvertO(registrationnumericValue);
+                        registration["NumericValue"] = ExpressionConverter.ConvertO(__workflow_registrationnumericValue);
                         registrationpropCount++;
                     }
 
@@ -3876,23 +3368,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                     registrationpropCount++;
                 }
 
-                if (registrationexternalID != null)
+                if (__workflow_registrationexternalID != null)
                 {
-                    registration["ExternalID"] = ExpressionConverter.ConvertO(registrationexternalID);
+                    registration["ExternalID"] = ExpressionConverter.ConvertO(__workflow_registrationexternalID);
                     registrationpropCount++;
                 }
 
-                if (registrationdescription != null)
+                if (__workflow_registrationdescription != null)
                 {
-                    registration["Description"] = ExpressionConverter.ConvertO(registrationdescription);
+                    registration["Description"] = ExpressionConverter.ConvertO(__workflow_registrationdescription);
                     registrationpropCount++;
                 }
 
-                if (registrationisActive != null)
+                if (__workflow_registrationisActive != null)
                 {
-                    if (registrationisActive != null)
+                    if (__workflow_registrationisActive != null)
                     {
-                        registration["IsActive"] = ExpressionConverter.ConvertO(registrationisActive);
+                        registration["IsActive"] = ExpressionConverter.ConvertO(__workflow_registrationisActive);
                         registrationpropCount++;
                     }
 
@@ -3915,20 +3407,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildESHookPost))]
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse> ESHookPost([WorkflowExpression] Func<registrationentityTypeInput> registrationentityType,[WorkflowExpression] Func<registrationeventTypeInput> registrationeventType,[WorkflowExpression] Func<string> registrationexternalID = null,[WorkflowExpression] Func<string> registrationdescription = null,[WorkflowExpression] Func<bool> registrationisActive = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse> ESHookPost(Expression<Func<registrationentityTypeInput>> registrationentityType, Expression<Func<registrationeventTypeInput>> registrationeventType, Expression<Func<string>> registrationexternalID = null, Expression<Func<string>> registrationdescription = null, Expression<Func<bool>> registrationisActive = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse> __BuildESHookPost(WorkflowExpression<registrationentityTypeInput> registrationentityType,WorkflowExpression<registrationeventTypeInput> registrationeventType,WorkflowExpression<string> registrationexternalID = null,WorkflowExpression<string> registrationdescription = null,WorkflowExpression<bool> registrationisActive = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(registrationentityType, nameof(registrationentityType), required: true);
-            WorkflowExpression.Validate(registrationeventType, nameof(registrationeventType), required: true);
-            WorkflowExpression.Validate(registrationexternalID, nameof(registrationexternalID), required: false);
-            WorkflowExpression.Validate(registrationdescription, nameof(registrationdescription), required: false);
-            WorkflowExpression.Validate(registrationisActive, nameof(registrationisActive), required: false);
+            var __workflow_registrationentityType = registrationentityType == null ? null : WorkflowExpression.Compile(registrationentityType);
+            WorkflowExpression.Validate(__workflow_registrationentityType, nameof(registrationentityType), required: true);
+            var __workflow_registrationeventType = registrationeventType == null ? null : WorkflowExpression.Compile(registrationeventType);
+            WorkflowExpression.Validate(__workflow_registrationeventType, nameof(registrationeventType), required: true);
+            var __workflow_registrationexternalID = registrationexternalID == null ? null : WorkflowExpression.Compile(registrationexternalID);
+            WorkflowExpression.Validate(__workflow_registrationexternalID, nameof(registrationexternalID), required: false);
+            var __workflow_registrationdescription = registrationdescription == null ? null : WorkflowExpression.Compile(registrationdescription);
+            WorkflowExpression.Validate(__workflow_registrationdescription, nameof(registrationdescription), required: false);
+            var __workflow_registrationisActive = registrationisActive == null ? null : WorkflowExpression.Compile(registrationisActive);
+            WorkflowExpression.Validate(__workflow_registrationisActive, nameof(registrationisActive), required: false);
             return new DeferredBodyTrigger<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse>(() =>
             {
                 var apiCallPath = "/api/hook";
@@ -3937,26 +3427,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var registration = new JObject();
                 var registrationpropCount = 0;
                 registrationpropCount++;
-                registration["EntityType"] = ExpressionConverter.ConvertO(registrationentityType);
+                registration["EntityType"] = ExpressionConverter.ConvertO(__workflow_registrationentityType);
                 registrationpropCount++;
-                registration["EventType"] = ExpressionConverter.ConvertO(registrationeventType);
-                if (registrationexternalID != null)
+                registration["EventType"] = ExpressionConverter.ConvertO(__workflow_registrationeventType);
+                if (__workflow_registrationexternalID != null)
                 {
-                    registration["ExternalID"] = ExpressionConverter.ConvertO(registrationexternalID);
+                    registration["ExternalID"] = ExpressionConverter.ConvertO(__workflow_registrationexternalID);
                     registrationpropCount++;
                 }
 
-                if (registrationdescription != null)
+                if (__workflow_registrationdescription != null)
                 {
-                    registration["Description"] = ExpressionConverter.ConvertO(registrationdescription);
+                    registration["Description"] = ExpressionConverter.ConvertO(__workflow_registrationdescription);
                     registrationpropCount++;
                 }
 
-                if (registrationisActive != null)
+                if (__workflow_registrationisActive != null)
                 {
-                    if (registrationisActive != null)
+                    if (__workflow_registrationisActive != null)
                     {
-                        registration["IsActive"] = ExpressionConverter.ConvertO(registrationisActive);
+                        registration["IsActive"] = ExpressionConverter.ConvertO(__workflow_registrationisActive);
                         registrationpropCount++;
                     }
 
@@ -3979,20 +3469,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildESSystemHookPost))]
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse> ESSystemHookPost([WorkflowExpression] Func<registrationsystemEventTypeInputItem[]> registrationsystemEventType,[WorkflowExpression] Func<string> registrationotherEvent = null,[WorkflowExpression] Func<string> registrationexternalID = null,[WorkflowExpression] Func<string> registrationdescription = null,[WorkflowExpression] Func<bool> registrationisActive = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse> ESSystemHookPost(Expression<Func<registrationsystemEventTypeInputItem[]>> registrationsystemEventType, Expression<Func<string>> registrationotherEvent = null, Expression<Func<string>> registrationexternalID = null, Expression<Func<string>> registrationdescription = null, Expression<Func<bool>> registrationisActive = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse> __BuildESSystemHookPost(WorkflowExpression<registrationsystemEventTypeInputItem[]> registrationsystemEventType,WorkflowExpression<string> registrationotherEvent = null,WorkflowExpression<string> registrationexternalID = null,WorkflowExpression<string> registrationdescription = null,WorkflowExpression<bool> registrationisActive = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(registrationsystemEventType, nameof(registrationsystemEventType), required: true);
-            WorkflowExpression.Validate(registrationotherEvent, nameof(registrationotherEvent), required: false);
-            WorkflowExpression.Validate(registrationexternalID, nameof(registrationexternalID), required: false);
-            WorkflowExpression.Validate(registrationdescription, nameof(registrationdescription), required: false);
-            WorkflowExpression.Validate(registrationisActive, nameof(registrationisActive), required: false);
+            var __workflow_registrationsystemEventType = registrationsystemEventType == null ? null : WorkflowExpression.Compile(registrationsystemEventType);
+            WorkflowExpression.Validate(__workflow_registrationsystemEventType, nameof(registrationsystemEventType), required: true);
+            var __workflow_registrationotherEvent = registrationotherEvent == null ? null : WorkflowExpression.Compile(registrationotherEvent);
+            WorkflowExpression.Validate(__workflow_registrationotherEvent, nameof(registrationotherEvent), required: false);
+            var __workflow_registrationexternalID = registrationexternalID == null ? null : WorkflowExpression.Compile(registrationexternalID);
+            WorkflowExpression.Validate(__workflow_registrationexternalID, nameof(registrationexternalID), required: false);
+            var __workflow_registrationdescription = registrationdescription == null ? null : WorkflowExpression.Compile(registrationdescription);
+            WorkflowExpression.Validate(__workflow_registrationdescription, nameof(registrationdescription), required: false);
+            var __workflow_registrationisActive = registrationisActive == null ? null : WorkflowExpression.Compile(registrationisActive);
+            WorkflowExpression.Validate(__workflow_registrationisActive, nameof(registrationisActive), required: false);
             return new DeferredBodyTrigger<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse>(() =>
             {
                 var apiCallPath = "/api/systemhook";
@@ -4001,30 +3489,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 var registration = new JObject();
                 var registrationpropCount = 0;
                 registrationpropCount++;
-                registration["SystemEventType"] = ExpressionConverter.ConvertO(registrationsystemEventType);
-                if (registrationotherEvent != null)
+                registration["SystemEventType"] = ExpressionConverter.ConvertO(__workflow_registrationsystemEventType);
+                if (__workflow_registrationotherEvent != null)
                 {
-                    registration["OtherEvent"] = ExpressionConverter.ConvertO(registrationotherEvent);
+                    registration["OtherEvent"] = ExpressionConverter.ConvertO(__workflow_registrationotherEvent);
                     registrationpropCount++;
                 }
 
-                if (registrationexternalID != null)
+                if (__workflow_registrationexternalID != null)
                 {
-                    registration["ExternalID"] = ExpressionConverter.ConvertO(registrationexternalID);
+                    registration["ExternalID"] = ExpressionConverter.ConvertO(__workflow_registrationexternalID);
                     registrationpropCount++;
                 }
 
-                if (registrationdescription != null)
+                if (__workflow_registrationdescription != null)
                 {
-                    registration["Description"] = ExpressionConverter.ConvertO(registrationdescription);
+                    registration["Description"] = ExpressionConverter.ConvertO(__workflow_registrationdescription);
                     registrationpropCount++;
                 }
 
-                if (registrationisActive != null)
+                if (__workflow_registrationisActive != null)
                 {
-                    if (registrationisActive != null)
+                    if (__workflow_registrationisActive != null)
                     {
-                        registration["IsActive"] = ExpressionConverter.ConvertO(registrationisActive);
+                        registration["IsActive"] = ExpressionConverter.ConvertO(__workflow_registrationisActive);
                         registrationpropCount++;
                     }
 

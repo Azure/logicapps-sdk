@@ -1,12 +1,12 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendfoxip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class SendfoxipActions([ConnectionName] string connectionId)
     {
@@ -29,16 +29,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendfoxip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
-        [WorkflowExpressionFactory(nameof(__BuildList))]
-        public IBodyWorkflowAction<ListPostResponse> List([WorkflowExpression] Func<string> bodyname)
+        public IBodyWorkflowAction<ListPostResponse> List(Expression<Func<string>> bodyname)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListPostResponse> __BuildList(WorkflowExpression<string> bodyname)
-        {
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
             return new DeferredBodyAction<ListPostResponse>(() =>
             {
                 var apiCallPath = "/lists";
@@ -47,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendfoxip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -58,19 +52,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendfoxip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
-        [WorkflowExpressionFactory(nameof(__BuildListGet))]
-        public IBodyWorkflowAction<ListGetResponse> ListGet([WorkflowExpression] Func<string> listId)
+        public IBodyWorkflowAction<ListGetResponse> ListGet(Expression<Func<string>> listId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListGetResponse> __BuildListGet(WorkflowExpression<string> listId)
-        {
-            WorkflowExpression.Validate(listId, nameof(listId), required: true);
+            var __workflow_listId = listId == null ? null : WorkflowExpression.Compile(listId);
+            WorkflowExpression.Validate(__workflow_listId, nameof(listId), required: true);
             return new DeferredBodyAction<ListGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/{0}", ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ListGetResponse>(callPayload);
@@ -78,20 +66,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendfoxip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
-        [WorkflowExpressionFactory(nameof(__BuildListContactDelete))]
-        public IBodyWorkflowAction<ListContactDeleteResponse> ListContactDelete([WorkflowExpression] Func<string> listId, [WorkflowExpression] Func<string> contactId)
+        public IBodyWorkflowAction<ListContactDeleteResponse> ListContactDelete(Expression<Func<string>> listId, Expression<Func<string>> contactId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListContactDeleteResponse> __BuildListContactDelete(WorkflowExpression<string> listId, WorkflowExpression<string> contactId)
-        {
-            WorkflowExpression.Validate(listId, nameof(listId), required: true);
-            WorkflowExpression.Validate(contactId, nameof(contactId), required: true);
+            var __workflow_listId = listId == null ? null : WorkflowExpression.Compile(listId);
+            WorkflowExpression.Validate(__workflow_listId, nameof(listId), required: true);
+            var __workflow_contactId = contactId == null ? null : WorkflowExpression.Compile(contactId);
+            WorkflowExpression.Validate(__workflow_contactId, nameof(contactId), required: true);
             return new DeferredBodyAction<ListContactDeleteResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/{0}/contacts/{1}", ExpressionConverter.ConvertWithUrlEncoding(listId, 1), ExpressionConverter.ConvertWithUrlEncoding(contactId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/{0}/contacts/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_contactId, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ListContactDeleteResponse>(callPayload);
@@ -108,19 +91,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendfoxip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
-        [WorkflowExpressionFactory(nameof(__BuildContact))]
-        public IBodyWorkflowAction<ContactPostResponse> Contact([WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string[]> bodylists = null)
+        public IBodyWorkflowAction<ContactPostResponse> Contact(Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string[]>> bodylists = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ContactPostResponse> __BuildContact(WorkflowExpression<string> bodyemail = null, WorkflowExpression<string> bodyfirstName = null, WorkflowExpression<string> bodylastName = null, WorkflowExpression<string[]> bodylists = null)
-        {
-            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            WorkflowExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
-            WorkflowExpression.Validate(bodylastName, nameof(bodylastName), required: false);
-            WorkflowExpression.Validate(bodylists, nameof(bodylists), required: false);
+            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
+            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: false);
+            var __workflow_bodyfirstName = bodyfirstName == null ? null : WorkflowExpression.Compile(bodyfirstName);
+            WorkflowExpression.Validate(__workflow_bodyfirstName, nameof(bodyfirstName), required: false);
+            var __workflow_bodylastName = bodylastName == null ? null : WorkflowExpression.Compile(bodylastName);
+            WorkflowExpression.Validate(__workflow_bodylastName, nameof(bodylastName), required: false);
+            var __workflow_bodylists = bodylists == null ? null : WorkflowExpression.Compile(bodylists);
+            WorkflowExpression.Validate(__workflow_bodylists, nameof(bodylists), required: false);
             return new DeferredBodyAction<ContactPostResponse>(() =>
             {
                 var apiCallPath = "/contacts";
@@ -128,27 +108,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendfoxip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyemail != null)
+                if (__workflow_bodyemail != null)
                 {
-                    body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                    body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
                     bodypropCount++;
                 }
 
-                if (bodyfirstName != null)
+                if (__workflow_bodyfirstName != null)
                 {
-                    body["first_name"] = ExpressionConverter.ConvertO(bodyfirstName);
+                    body["first_name"] = ExpressionConverter.ConvertO(__workflow_bodyfirstName);
                     bodypropCount++;
                 }
 
-                if (bodylastName != null)
+                if (__workflow_bodylastName != null)
                 {
-                    body["last_name"] = ExpressionConverter.ConvertO(bodylastName);
+                    body["last_name"] = ExpressionConverter.ConvertO(__workflow_bodylastName);
                     bodypropCount++;
                 }
 
-                if (bodylists != null)
+                if (__workflow_bodylists != null)
                 {
-                    body["lists"] = ExpressionConverter.ConvertO(bodylists);
+                    body["lists"] = ExpressionConverter.ConvertO(__workflow_bodylists);
                     bodypropCount++;
                 }
 
@@ -162,19 +142,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendfoxip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
-        [WorkflowExpressionFactory(nameof(__BuildContactGet))]
-        public IBodyWorkflowAction<ContactGetResponse> ContactGet([WorkflowExpression] Func<string> contactId)
+        public IBodyWorkflowAction<ContactGetResponse> ContactGet(Expression<Func<string>> contactId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ContactGetResponse> __BuildContactGet(WorkflowExpression<string> contactId)
-        {
-            WorkflowExpression.Validate(contactId, nameof(contactId), required: true);
+            var __workflow_contactId = contactId == null ? null : WorkflowExpression.Compile(contactId);
+            WorkflowExpression.Validate(__workflow_contactId, nameof(contactId), required: true);
             return new DeferredBodyAction<ContactGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(contactId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_contactId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ContactGetResponse>(callPayload);
@@ -182,16 +156,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendfoxip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
-        [WorkflowExpressionFactory(nameof(__BuildUnsubscribePatch))]
-        public IBodyWorkflowAction<UnsubscribePatchResponse> UnsubscribePatch([WorkflowExpression] Func<string> bodyemail)
+        public IBodyWorkflowAction<UnsubscribePatchResponse> UnsubscribePatch(Expression<Func<string>> bodyemail)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UnsubscribePatchResponse> __BuildUnsubscribePatch(WorkflowExpression<string> bodyemail)
-        {
-            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: true);
+            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
+            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
             return new DeferredBodyAction<UnsubscribePatchResponse>(() =>
             {
                 var apiCallPath = "/unsubscribe";
@@ -200,7 +168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendfoxip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -220,19 +188,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendfoxip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
-        [WorkflowExpressionFactory(nameof(__BuildCampaignGet))]
-        public IBodyWorkflowAction<CampaignGetResponse> CampaignGet([WorkflowExpression] Func<string> campaignId)
+        public IBodyWorkflowAction<CampaignGetResponse> CampaignGet(Expression<Func<string>> campaignId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CampaignGetResponse> __BuildCampaignGet(WorkflowExpression<string> campaignId)
-        {
-            WorkflowExpression.Validate(campaignId, nameof(campaignId), required: true);
+            var __workflow_campaignId = campaignId == null ? null : WorkflowExpression.Compile(campaignId);
+            WorkflowExpression.Validate(__workflow_campaignId, nameof(campaignId), required: true);
             return new DeferredBodyAction<CampaignGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/campaigns/{0}", ExpressionConverter.ConvertWithUrlEncoding(campaignId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/campaigns/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_campaignId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CampaignGetResponse>(callPayload);

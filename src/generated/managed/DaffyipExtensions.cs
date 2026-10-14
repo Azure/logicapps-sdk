@@ -1,12 +1,12 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Daffyip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class DaffyipActions([ConnectionName] string connectionId)
     {
@@ -29,109 +29,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Daffyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "daffyip")]
-        [WorkflowExpressionFactory(nameof(__BuildCausesGet))]
-        public IBodyWorkflowAction<CausesGetResponseItem[]> CausesGet([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<int> page = null)
+        public IBodyWorkflowAction<CausesGetResponseItem[]> CausesGet(Expression<Func<string>> userId, Expression<Func<int>> page = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CausesGetResponseItem[]> __BuildCausesGet(WorkflowExpression<string> userId, WorkflowExpression<int> page = null)
-        {
-            WorkflowExpression.Validate(userId, nameof(userId), required: true);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
+            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
+            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
             return new DeferredBodyAction<CausesGetResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}/causes", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}/causes", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 return new ApiConnectionAction<CausesGetResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "daffyip")]
-        [WorkflowExpressionFactory(nameof(__BuildContributionsGet))]
-        public IBodyWorkflowAction<ContributionsGetResponse> ContributionsGet([WorkflowExpression] Func<int> page = null)
+        public IBodyWorkflowAction<ContributionsGetResponse> ContributionsGet(Expression<Func<int>> page = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ContributionsGetResponse> __BuildContributionsGet(WorkflowExpression<int> page = null)
-        {
-            WorkflowExpression.Validate(page, nameof(page), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
             return new DeferredBodyAction<ContributionsGetResponse>(() =>
             {
                 var apiCallPath = "/contributions";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 return new ApiConnectionAction<ContributionsGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "daffyip")]
-        [WorkflowExpressionFactory(nameof(__BuildDonationsGet))]
-        public IBodyWorkflowAction<DonationsGetResponse> DonationsGet([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<int> page = null)
+        public IBodyWorkflowAction<DonationsGetResponse> DonationsGet(Expression<Func<string>> userId, Expression<Func<int>> page = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DonationsGetResponse> __BuildDonationsGet(WorkflowExpression<string> userId, WorkflowExpression<int> page = null)
-        {
-            WorkflowExpression.Validate(userId, nameof(userId), required: true);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
+            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
+            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
             return new DeferredBodyAction<DonationsGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}/donations", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}/donations", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 return new ApiConnectionAction<DonationsGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "daffyip")]
-        [WorkflowExpressionFactory(nameof(__BuildGiftsGet))]
-        public IBodyWorkflowAction<GiftsGetResponse> GiftsGet([WorkflowExpression] Func<int> page = null)
+        public IBodyWorkflowAction<GiftsGetResponse> GiftsGet(Expression<Func<int>> page = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GiftsGetResponse> __BuildGiftsGet(WorkflowExpression<int> page = null)
-        {
-            WorkflowExpression.Validate(page, nameof(page), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
             return new DeferredBodyAction<GiftsGetResponse>(() =>
             {
                 var apiCallPath = "/gifts";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 return new ApiConnectionAction<GiftsGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "daffyip")]
-        [WorkflowExpressionFactory(nameof(__BuildNonProfitGet))]
-        public IBodyWorkflowAction<NonProfitGetResponse> NonProfitGet([WorkflowExpression] Func<string> ein)
+        public IBodyWorkflowAction<NonProfitGetResponse> NonProfitGet(Expression<Func<string>> ein)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<NonProfitGetResponse> __BuildNonProfitGet(WorkflowExpression<string> ein)
-        {
-            WorkflowExpression.Validate(ein, nameof(ein), required: true);
+            var __workflow_ein = ein == null ? null : WorkflowExpression.Compile(ein);
+            WorkflowExpression.Validate(__workflow_ein, nameof(ein), required: true);
             return new DeferredBodyAction<NonProfitGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/non_profits/{0}", ExpressionConverter.ConvertWithUrlEncoding(ein, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/non_profits/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_ein, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<NonProfitGetResponse>(callPayload);

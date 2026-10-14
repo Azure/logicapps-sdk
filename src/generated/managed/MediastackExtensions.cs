@@ -1,99 +1,99 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mediastack
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class MediastackActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mediastack")]
-        [WorkflowExpressionFactory(nameof(__BuildListNews))]
-        public IBodyWorkflowAction<ListNewsResponse> ListNews([WorkflowExpression] Func<string> sources = null, [WorkflowExpression] Func<string> categories = null, [WorkflowExpression] Func<string> countries = null, [WorkflowExpression] Func<string> languages = null, [WorkflowExpression] Func<string> keywords = null, [WorkflowExpression] Func<string> date = null, [WorkflowExpression] Func<sortInput> sort = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
+        public IBodyWorkflowAction<ListNewsResponse> ListNews(Expression<Func<string>> sources = null, Expression<Func<string>> categories = null, Expression<Func<string>> countries = null, Expression<Func<string>> languages = null, Expression<Func<string>> keywords = null, Expression<Func<string>> date = null, Expression<Func<sortInput>> sort = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListNewsResponse> __BuildListNews(WorkflowExpression<string> sources = null, WorkflowExpression<string> categories = null, WorkflowExpression<string> countries = null, WorkflowExpression<string> languages = null, WorkflowExpression<string> keywords = null, WorkflowExpression<string> date = null, WorkflowExpression<sortInput> sort = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
-        {
-            WorkflowExpression.Validate(sources, nameof(sources), required: false);
-            WorkflowExpression.Validate(categories, nameof(categories), required: false);
-            WorkflowExpression.Validate(countries, nameof(countries), required: false);
-            WorkflowExpression.Validate(languages, nameof(languages), required: false);
-            WorkflowExpression.Validate(keywords, nameof(keywords), required: false);
-            WorkflowExpression.Validate(date, nameof(date), required: false);
-            WorkflowExpression.Validate(sort, nameof(sort), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            var __workflow_sources = sources == null ? null : WorkflowExpression.Compile(sources);
+            WorkflowExpression.Validate(__workflow_sources, nameof(sources), required: false);
+            var __workflow_categories = categories == null ? null : WorkflowExpression.Compile(categories);
+            WorkflowExpression.Validate(__workflow_categories, nameof(categories), required: false);
+            var __workflow_countries = countries == null ? null : WorkflowExpression.Compile(countries);
+            WorkflowExpression.Validate(__workflow_countries, nameof(countries), required: false);
+            var __workflow_languages = languages == null ? null : WorkflowExpression.Compile(languages);
+            WorkflowExpression.Validate(__workflow_languages, nameof(languages), required: false);
+            var __workflow_keywords = keywords == null ? null : WorkflowExpression.Compile(keywords);
+            WorkflowExpression.Validate(__workflow_keywords, nameof(keywords), required: false);
+            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
+            WorkflowExpression.Validate(__workflow_date, nameof(date), required: false);
+            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
+            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
             return new DeferredBodyAction<ListNewsResponse>(() =>
             {
                 var apiCallPath = "/v1/news";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (sources != null)
-                    callPayload.Queries["sources"] = ExpressionConverter.Convert(sources);
-                if (categories != null)
-                    callPayload.Queries["categories"] = ExpressionConverter.Convert(categories);
-                if (countries != null)
-                    callPayload.Queries["countries"] = ExpressionConverter.Convert(countries);
-                if (languages != null)
-                    callPayload.Queries["languages"] = ExpressionConverter.Convert(languages);
-                if (keywords != null)
-                    callPayload.Queries["keywords"] = ExpressionConverter.Convert(keywords);
-                if (date != null)
-                    callPayload.Queries["date"] = ExpressionConverter.Convert(date);
+                if (__workflow_sources != null)
+                    callPayload.Queries["sources"] = ExpressionConverter.Convert(__workflow_sources);
+                if (__workflow_categories != null)
+                    callPayload.Queries["categories"] = ExpressionConverter.Convert(__workflow_categories);
+                if (__workflow_countries != null)
+                    callPayload.Queries["countries"] = ExpressionConverter.Convert(__workflow_countries);
+                if (__workflow_languages != null)
+                    callPayload.Queries["languages"] = ExpressionConverter.Convert(__workflow_languages);
+                if (__workflow_keywords != null)
+                    callPayload.Queries["keywords"] = ExpressionConverter.Convert(__workflow_keywords);
+                if (__workflow_date != null)
+                    callPayload.Queries["date"] = ExpressionConverter.Convert(__workflow_date);
                 callPayload.Queries["sort"] = Convert.ToString("published_desc");
-                if (sort != null)
-                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                if (__workflow_sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
                 callPayload.Queries["limit"] = Convert.ToString(25);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 callPayload.Queries["offset"] = Convert.ToString(0);
-                if (offset != null)
-                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<ListNewsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mediastack")]
-        [WorkflowExpressionFactory(nameof(__BuildListSources))]
-        public IBodyWorkflowAction<ListSourcesResponse> ListSources([WorkflowExpression] Func<string> search, [WorkflowExpression] Func<string> countries = null, [WorkflowExpression] Func<string> languages = null, [WorkflowExpression] Func<string> categories = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
+        public IBodyWorkflowAction<ListSourcesResponse> ListSources(Expression<Func<string>> search, Expression<Func<string>> countries = null, Expression<Func<string>> languages = null, Expression<Func<string>> categories = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListSourcesResponse> __BuildListSources(WorkflowExpression<string> search, WorkflowExpression<string> countries = null, WorkflowExpression<string> languages = null, WorkflowExpression<string> categories = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
-        {
-            WorkflowExpression.Validate(search, nameof(search), required: true);
-            WorkflowExpression.Validate(countries, nameof(countries), required: false);
-            WorkflowExpression.Validate(languages, nameof(languages), required: false);
-            WorkflowExpression.Validate(categories, nameof(categories), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
+            WorkflowExpression.Validate(__workflow_search, nameof(search), required: true);
+            var __workflow_countries = countries == null ? null : WorkflowExpression.Compile(countries);
+            WorkflowExpression.Validate(__workflow_countries, nameof(countries), required: false);
+            var __workflow_languages = languages == null ? null : WorkflowExpression.Compile(languages);
+            WorkflowExpression.Validate(__workflow_languages, nameof(languages), required: false);
+            var __workflow_categories = categories == null ? null : WorkflowExpression.Compile(categories);
+            WorkflowExpression.Validate(__workflow_categories, nameof(categories), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
             return new DeferredBodyAction<ListSourcesResponse>(() =>
             {
                 var apiCallPath = "/v1/sources";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["search"] = ExpressionConverter.Convert(search);
-                if (countries != null)
-                    callPayload.Queries["countries"] = ExpressionConverter.Convert(countries);
-                if (languages != null)
-                    callPayload.Queries["languages"] = ExpressionConverter.Convert(languages);
-                if (categories != null)
-                    callPayload.Queries["categories"] = ExpressionConverter.Convert(categories);
+                callPayload.Queries["search"] = ExpressionConverter.Convert(__workflow_search);
+                if (__workflow_countries != null)
+                    callPayload.Queries["countries"] = ExpressionConverter.Convert(__workflow_countries);
+                if (__workflow_languages != null)
+                    callPayload.Queries["languages"] = ExpressionConverter.Convert(__workflow_languages);
+                if (__workflow_categories != null)
+                    callPayload.Queries["categories"] = ExpressionConverter.Convert(__workflow_categories);
                 callPayload.Queries["limit"] = Convert.ToString(25);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 callPayload.Queries["offset"] = Convert.ToString(0);
-                if (offset != null)
-                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<ListSourcesResponse>(callPayload);
             });
         }

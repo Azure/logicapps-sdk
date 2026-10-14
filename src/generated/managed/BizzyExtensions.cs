@@ -1,32 +1,30 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class BizzyActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        [WorkflowExpressionFactory(nameof(__BuildSendReply))]
-        public IBodyWorkflowAction<BotReplyResponse> SendReply([WorkflowExpression] Func<string> contentreplyText, [WorkflowExpression] Func<string> contentreplyActivity, [WorkflowExpression] Func<bool> contentshowInChat = null, [WorkflowExpression] Func<string> contentcustomChannelData = null, [WorkflowExpression] Func<string> contentsignalResponseJSON = null, [WorkflowExpression] Func<string> contentmessageID = null)
+        public IBodyWorkflowAction<BotReplyResponse> SendReply(Expression<Func<string>> contentreplyText, Expression<Func<string>> contentreplyActivity, Expression<Func<bool>> contentshowInChat = null, Expression<Func<string>> contentcustomChannelData = null, Expression<Func<string>> contentsignalResponseJSON = null, Expression<Func<string>> contentmessageID = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<BotReplyResponse> __BuildSendReply(WorkflowExpression<string> contentreplyText, WorkflowExpression<string> contentreplyActivity, WorkflowExpression<bool> contentshowInChat = null, WorkflowExpression<string> contentcustomChannelData = null, WorkflowExpression<string> contentsignalResponseJSON = null, WorkflowExpression<string> contentmessageID = null)
-        {
-            WorkflowExpression.Validate(contentreplyText, nameof(contentreplyText), required: true);
-            WorkflowExpression.Validate(contentreplyActivity, nameof(contentreplyActivity), required: true);
-            WorkflowExpression.Validate(contentshowInChat, nameof(contentshowInChat), required: false);
-            WorkflowExpression.Validate(contentcustomChannelData, nameof(contentcustomChannelData), required: false);
-            WorkflowExpression.Validate(contentsignalResponseJSON, nameof(contentsignalResponseJSON), required: false);
-            WorkflowExpression.Validate(contentmessageID, nameof(contentmessageID), required: false);
+            var __workflow_contentreplyText = contentreplyText == null ? null : WorkflowExpression.Compile(contentreplyText);
+            WorkflowExpression.Validate(__workflow_contentreplyText, nameof(contentreplyText), required: true);
+            var __workflow_contentreplyActivity = contentreplyActivity == null ? null : WorkflowExpression.Compile(contentreplyActivity);
+            WorkflowExpression.Validate(__workflow_contentreplyActivity, nameof(contentreplyActivity), required: true);
+            var __workflow_contentshowInChat = contentshowInChat == null ? null : WorkflowExpression.Compile(contentshowInChat);
+            WorkflowExpression.Validate(__workflow_contentshowInChat, nameof(contentshowInChat), required: false);
+            var __workflow_contentcustomChannelData = contentcustomChannelData == null ? null : WorkflowExpression.Compile(contentcustomChannelData);
+            WorkflowExpression.Validate(__workflow_contentcustomChannelData, nameof(contentcustomChannelData), required: false);
+            var __workflow_contentsignalResponseJSON = contentsignalResponseJSON == null ? null : WorkflowExpression.Compile(contentsignalResponseJSON);
+            WorkflowExpression.Validate(__workflow_contentsignalResponseJSON, nameof(contentsignalResponseJSON), required: false);
+            var __workflow_contentmessageID = contentmessageID == null ? null : WorkflowExpression.Compile(contentmessageID);
+            WorkflowExpression.Validate(__workflow_contentmessageID, nameof(contentmessageID), required: false);
             return new DeferredBodyAction<BotReplyResponse>(() =>
             {
                 var apiCallPath = "/api/triggers/bot/reply";
@@ -35,14 +33,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 var content = new JObject();
                 var contentpropCount = 0;
                 contentpropCount++;
-                content["message"] = ExpressionConverter.ConvertO(contentreplyText);
+                content["message"] = ExpressionConverter.ConvertO(__workflow_contentreplyText);
                 contentpropCount++;
-                content["activityJson"] = ExpressionConverter.ConvertO(contentreplyActivity);
-                if (contentshowInChat != null)
+                content["activityJson"] = ExpressionConverter.ConvertO(__workflow_contentreplyActivity);
+                if (__workflow_contentshowInChat != null)
                 {
-                    if (contentshowInChat != null)
+                    if (__workflow_contentshowInChat != null)
                     {
-                        content["showInChat"] = ExpressionConverter.ConvertO(contentshowInChat);
+                        content["showInChat"] = ExpressionConverter.ConvertO(__workflow_contentshowInChat);
                         contentpropCount++;
                     }
 
@@ -54,21 +52,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                     contentpropCount++;
                 }
 
-                if (contentcustomChannelData != null)
+                if (__workflow_contentcustomChannelData != null)
                 {
-                    content["customChannelDataJson"] = ExpressionConverter.ConvertO(contentcustomChannelData);
+                    content["customChannelDataJson"] = ExpressionConverter.ConvertO(__workflow_contentcustomChannelData);
                     contentpropCount++;
                 }
 
-                if (contentsignalResponseJSON != null)
+                if (__workflow_contentsignalResponseJSON != null)
                 {
-                    content["signalResponse"] = ExpressionConverter.ConvertO(contentsignalResponseJSON);
+                    content["signalResponse"] = ExpressionConverter.ConvertO(__workflow_contentsignalResponseJSON);
                     contentpropCount++;
                 }
 
-                if (contentmessageID != null)
+                if (__workflow_contentmessageID != null)
                 {
-                    content["messageId"] = ExpressionConverter.ConvertO(contentmessageID);
+                    content["messageId"] = ExpressionConverter.ConvertO(__workflow_contentmessageID);
                     contentpropCount++;
                 }
 
@@ -82,64 +80,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        [WorkflowExpressionFactory(nameof(__BuildSendReplyWithAdaptiveCard))]
-        public IBodyWorkflowAction<BotReplyResponse> SendReplyWithAdaptiveCard([WorkflowExpression] Func<string> selectedCard, [WorkflowExpression] Func<object> content = null)
+        public IBodyWorkflowAction<BotReplyResponse> SendReplyWithAdaptiveCard(Expression<Func<string>> selectedCard, Expression<Func<object>> content = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<BotReplyResponse> __BuildSendReplyWithAdaptiveCard(WorkflowExpression<string> selectedCard, WorkflowExpression<object> content = null)
-        {
-            WorkflowExpression.Validate(selectedCard, nameof(selectedCard), required: true);
-            WorkflowExpression.Validate(content, nameof(content), required: false);
+            var __workflow_selectedCard = selectedCard == null ? null : WorkflowExpression.Compile(selectedCard);
+            WorkflowExpression.Validate(__workflow_selectedCard, nameof(selectedCard), required: true);
+            var __workflow_content = content == null ? null : WorkflowExpression.Compile(content);
+            WorkflowExpression.Validate(__workflow_content, nameof(content), required: false);
             return new DeferredBodyAction<BotReplyResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/triggers/bot/adaptiveCards/{0}/replyWithAdaptiveCard", ExpressionConverter.ConvertWithUrlEncoding(selectedCard, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/triggers/bot/adaptiveCards/{0}/replyWithAdaptiveCard", ExpressionConverter.ConvertWithUrlEncoding(__workflow_selectedCard, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(content);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_content);
                 return new ApiConnectionAction<BotReplyResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        [WorkflowExpressionFactory(nameof(__BuildGenerateAdaptiveCard))]
-        public IBodyWorkflowAction<JToken> GenerateAdaptiveCard([WorkflowExpression] Func<string> selectedCard, [WorkflowExpression] Func<object> content = null)
+        public IBodyWorkflowAction<JToken> GenerateAdaptiveCard(Expression<Func<string>> selectedCard, Expression<Func<object>> content = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildGenerateAdaptiveCard(WorkflowExpression<string> selectedCard, WorkflowExpression<object> content = null)
-        {
-            WorkflowExpression.Validate(selectedCard, nameof(selectedCard), required: true);
-            WorkflowExpression.Validate(content, nameof(content), required: false);
+            var __workflow_selectedCard = selectedCard == null ? null : WorkflowExpression.Compile(selectedCard);
+            WorkflowExpression.Validate(__workflow_selectedCard, nameof(selectedCard), required: true);
+            var __workflow_content = content == null ? null : WorkflowExpression.Compile(content);
+            WorkflowExpression.Validate(__workflow_content, nameof(content), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/triggers/bot/adaptiveCards/{0}/generateAdaptiveCard", ExpressionConverter.ConvertWithUrlEncoding(selectedCard, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/triggers/bot/adaptiveCards/{0}/generateAdaptiveCard", ExpressionConverter.ConvertWithUrlEncoding(__workflow_selectedCard, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(content);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_content);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        [WorkflowExpressionFactory(nameof(__BuildSendReplyWithAdaptiveCardSet))]
-        public IBodyWorkflowAction<BotReplyResponse> SendReplyWithAdaptiveCardSet([WorkflowExpression] Func<cardSetdisplayStyleInput> cardSetdisplayStyle, [WorkflowExpression] Func<string> cardSetreplyActivity, [WorkflowExpression] Func<bool> cardSetshowInTab = null, [WorkflowExpression] Func<string> cardSettabButtonLabel = null, [WorkflowExpression] Func<string> cardSettabButtonMessage = null)
+        public IBodyWorkflowAction<BotReplyResponse> SendReplyWithAdaptiveCardSet(Expression<Func<cardSetdisplayStyleInput>> cardSetdisplayStyle, Expression<Func<string>> cardSetreplyActivity, Expression<Func<bool>> cardSetshowInTab = null, Expression<Func<string>> cardSettabButtonLabel = null, Expression<Func<string>> cardSettabButtonMessage = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<BotReplyResponse> __BuildSendReplyWithAdaptiveCardSet(WorkflowExpression<cardSetdisplayStyleInput> cardSetdisplayStyle, WorkflowExpression<string> cardSetreplyActivity, WorkflowExpression<bool> cardSetshowInTab = null, WorkflowExpression<string> cardSettabButtonLabel = null, WorkflowExpression<string> cardSettabButtonMessage = null)
-        {
-            WorkflowExpression.Validate(cardSetdisplayStyle, nameof(cardSetdisplayStyle), required: true);
-            WorkflowExpression.Validate(cardSetreplyActivity, nameof(cardSetreplyActivity), required: true);
-            WorkflowExpression.Validate(cardSetshowInTab, nameof(cardSetshowInTab), required: false);
-            WorkflowExpression.Validate(cardSettabButtonLabel, nameof(cardSettabButtonLabel), required: false);
-            WorkflowExpression.Validate(cardSettabButtonMessage, nameof(cardSettabButtonMessage), required: false);
+            var __workflow_cardSetdisplayStyle = cardSetdisplayStyle == null ? null : WorkflowExpression.Compile(cardSetdisplayStyle);
+            WorkflowExpression.Validate(__workflow_cardSetdisplayStyle, nameof(cardSetdisplayStyle), required: true);
+            var __workflow_cardSetreplyActivity = cardSetreplyActivity == null ? null : WorkflowExpression.Compile(cardSetreplyActivity);
+            WorkflowExpression.Validate(__workflow_cardSetreplyActivity, nameof(cardSetreplyActivity), required: true);
+            var __workflow_cardSetshowInTab = cardSetshowInTab == null ? null : WorkflowExpression.Compile(cardSetshowInTab);
+            WorkflowExpression.Validate(__workflow_cardSetshowInTab, nameof(cardSetshowInTab), required: false);
+            var __workflow_cardSettabButtonLabel = cardSettabButtonLabel == null ? null : WorkflowExpression.Compile(cardSettabButtonLabel);
+            WorkflowExpression.Validate(__workflow_cardSettabButtonLabel, nameof(cardSettabButtonLabel), required: false);
+            var __workflow_cardSettabButtonMessage = cardSettabButtonMessage == null ? null : WorkflowExpression.Compile(cardSettabButtonMessage);
+            WorkflowExpression.Validate(__workflow_cardSettabButtonMessage, nameof(cardSettabButtonMessage), required: false);
             return new DeferredBodyAction<BotReplyResponse>(() =>
             {
                 var apiCallPath = "/api/triggers/bot/adaptiveCards/sendCardSet";
@@ -156,14 +142,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 }
 
                 cardSetpropCount++;
-                cardSet["displayStyle"] = ExpressionConverter.ConvertO(cardSetdisplayStyle);
+                cardSet["displayStyle"] = ExpressionConverter.ConvertO(__workflow_cardSetdisplayStyle);
                 cardSetpropCount++;
-                cardSet["activityJson"] = ExpressionConverter.ConvertO(cardSetreplyActivity);
-                if (cardSetshowInTab != null)
+                cardSet["activityJson"] = ExpressionConverter.ConvertO(__workflow_cardSetreplyActivity);
+                if (__workflow_cardSetshowInTab != null)
                 {
-                    if (cardSetshowInTab != null)
+                    if (__workflow_cardSetshowInTab != null)
                     {
-                        cardSet["showInTab"] = ExpressionConverter.ConvertO(cardSetshowInTab);
+                        cardSet["showInTab"] = ExpressionConverter.ConvertO(__workflow_cardSetshowInTab);
                         cardSetpropCount++;
                     }
 
@@ -175,15 +161,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                     cardSetpropCount++;
                 }
 
-                if (cardSettabButtonLabel != null)
+                if (__workflow_cardSettabButtonLabel != null)
                 {
-                    cardSet["deepLinkButtonLabel"] = ExpressionConverter.ConvertO(cardSettabButtonLabel);
+                    cardSet["deepLinkButtonLabel"] = ExpressionConverter.ConvertO(__workflow_cardSettabButtonLabel);
                     cardSetpropCount++;
                 }
 
-                if (cardSettabButtonMessage != null)
+                if (__workflow_cardSettabButtonMessage != null)
                 {
-                    cardSet["deepLinkMessage"] = ExpressionConverter.ConvertO(cardSettabButtonMessage);
+                    cardSet["deepLinkMessage"] = ExpressionConverter.ConvertO(__workflow_cardSettabButtonMessage);
                     cardSetpropCount++;
                 }
 
@@ -197,16 +183,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateAdaptiveCard))]
-        public IBodyWorkflowAction<BotReplyResponse> UpdateAdaptiveCard([WorkflowExpression] Func<string> cardInforeplyActivity)
+        public IBodyWorkflowAction<BotReplyResponse> UpdateAdaptiveCard(Expression<Func<string>> cardInforeplyActivity)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<BotReplyResponse> __BuildUpdateAdaptiveCard(WorkflowExpression<string> cardInforeplyActivity)
-        {
-            WorkflowExpression.Validate(cardInforeplyActivity, nameof(cardInforeplyActivity), required: true);
+            var __workflow_cardInforeplyActivity = cardInforeplyActivity == null ? null : WorkflowExpression.Compile(cardInforeplyActivity);
+            WorkflowExpression.Validate(__workflow_cardInforeplyActivity, nameof(cardInforeplyActivity), required: true);
             return new DeferredBodyAction<BotReplyResponse>(() =>
             {
                 var apiCallPath = "/api/triggers/bot/adaptiveCards/updateCard";
@@ -223,7 +203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 }
 
                 cardInfopropCount++;
-                cardInfo["activityJson"] = ExpressionConverter.ConvertO(cardInforeplyActivity);
+                cardInfo["activityJson"] = ExpressionConverter.ConvertO(__workflow_cardInforeplyActivity);
                 if (cardInfopropCount > 0)
                 {
                     callPayload.Body = cardInfo;
@@ -234,18 +214,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        [WorkflowExpressionFactory(nameof(__BuildStartConversation))]
-        public IBodyWorkflowAction<BotConversationStartResponse> StartConversation([WorkflowExpression] Func<string> contenttargetBot, [WorkflowExpression] Func<string> contentconversationText, [WorkflowExpression] Func<string> contentuser)
+        public IBodyWorkflowAction<BotConversationStartResponse> StartConversation(Expression<Func<string>> contenttargetBot, Expression<Func<string>> contentconversationText, Expression<Func<string>> contentuser)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<BotConversationStartResponse> __BuildStartConversation(WorkflowExpression<string> contenttargetBot, WorkflowExpression<string> contentconversationText, WorkflowExpression<string> contentuser)
-        {
-            WorkflowExpression.Validate(contenttargetBot, nameof(contenttargetBot), required: true);
-            WorkflowExpression.Validate(contentconversationText, nameof(contentconversationText), required: true);
-            WorkflowExpression.Validate(contentuser, nameof(contentuser), required: true);
+            var __workflow_contenttargetBot = contenttargetBot == null ? null : WorkflowExpression.Compile(contenttargetBot);
+            WorkflowExpression.Validate(__workflow_contenttargetBot, nameof(contenttargetBot), required: true);
+            var __workflow_contentconversationText = contentconversationText == null ? null : WorkflowExpression.Compile(contentconversationText);
+            WorkflowExpression.Validate(__workflow_contentconversationText, nameof(contentconversationText), required: true);
+            var __workflow_contentuser = contentuser == null ? null : WorkflowExpression.Compile(contentuser);
+            WorkflowExpression.Validate(__workflow_contentuser, nameof(contentuser), required: true);
             return new DeferredBodyAction<BotConversationStartResponse>(() =>
             {
                 var apiCallPath = "/api/triggers/bot/startConversation";
@@ -254,11 +230,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 var content = new JObject();
                 var contentpropCount = 0;
                 contentpropCount++;
-                content["EnterpriseBot"] = ExpressionConverter.ConvertO(contenttargetBot);
+                content["EnterpriseBot"] = ExpressionConverter.ConvertO(__workflow_contenttargetBot);
                 contentpropCount++;
-                content["message"] = ExpressionConverter.ConvertO(contentconversationText);
+                content["message"] = ExpressionConverter.ConvertO(__workflow_contentconversationText);
                 contentpropCount++;
-                content["user"] = ExpressionConverter.ConvertO(contentuser);
+                content["user"] = ExpressionConverter.ConvertO(__workflow_contentuser);
                 if (contentpropCount > 0)
                 {
                     callPayload.Body = content;
@@ -269,18 +245,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        [WorkflowExpressionFactory(nameof(__BuildStartGroupConversation))]
-        public IBodyWorkflowAction<BotGroupConversationStartResponse> StartGroupConversation([WorkflowExpression] Func<string> contenttargetBot, [WorkflowExpression] Func<string> contentchannelName, [WorkflowExpression] Func<string> contentconversationText)
+        public IBodyWorkflowAction<BotGroupConversationStartResponse> StartGroupConversation(Expression<Func<string>> contenttargetBot, Expression<Func<string>> contentchannelName, Expression<Func<string>> contentconversationText)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<BotGroupConversationStartResponse> __BuildStartGroupConversation(WorkflowExpression<string> contenttargetBot, WorkflowExpression<string> contentchannelName, WorkflowExpression<string> contentconversationText)
-        {
-            WorkflowExpression.Validate(contenttargetBot, nameof(contenttargetBot), required: true);
-            WorkflowExpression.Validate(contentchannelName, nameof(contentchannelName), required: true);
-            WorkflowExpression.Validate(contentconversationText, nameof(contentconversationText), required: true);
+            var __workflow_contenttargetBot = contenttargetBot == null ? null : WorkflowExpression.Compile(contenttargetBot);
+            WorkflowExpression.Validate(__workflow_contenttargetBot, nameof(contenttargetBot), required: true);
+            var __workflow_contentchannelName = contentchannelName == null ? null : WorkflowExpression.Compile(contentchannelName);
+            WorkflowExpression.Validate(__workflow_contentchannelName, nameof(contentchannelName), required: true);
+            var __workflow_contentconversationText = contentconversationText == null ? null : WorkflowExpression.Compile(contentconversationText);
+            WorkflowExpression.Validate(__workflow_contentconversationText, nameof(contentconversationText), required: true);
             return new DeferredBodyAction<BotGroupConversationStartResponse>(() =>
             {
                 var apiCallPath = "/api/triggers/bot/startGroupConversation";
@@ -289,7 +261,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 var content = new JObject();
                 var contentpropCount = 0;
                 contentpropCount++;
-                content["EnterpriseBot"] = ExpressionConverter.ConvertO(contenttargetBot);
+                content["EnterpriseBot"] = ExpressionConverter.ConvertO(__workflow_contenttargetBot);
                 var teamIDStrObject = new JObject();
                 var teamIDStrObjectpropCount = 0;
                 if (teamIDStrObjectpropCount > 0)
@@ -299,9 +271,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 }
 
                 contentpropCount++;
-                content["channelId"] = ExpressionConverter.ConvertO(contentchannelName);
+                content["channelId"] = ExpressionConverter.ConvertO(__workflow_contentchannelName);
                 contentpropCount++;
-                content["message"] = ExpressionConverter.ConvertO(contentconversationText);
+                content["message"] = ExpressionConverter.ConvertO(__workflow_contentconversationText);
                 if (contentpropCount > 0)
                 {
                     callPayload.Body = content;
@@ -312,16 +284,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        [WorkflowExpressionFactory(nameof(__BuildSendBridgeEvent))]
-        public IWorkflowAction SendBridgeEvent([WorkflowExpression] Func<string> contentreplyActivity)
+        public IWorkflowAction SendBridgeEvent(Expression<Func<string>> contentreplyActivity)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildSendBridgeEvent(WorkflowExpression<string> contentreplyActivity)
-        {
-            WorkflowExpression.Validate(contentreplyActivity, nameof(contentreplyActivity), required: true);
+            var __workflow_contentreplyActivity = contentreplyActivity == null ? null : WorkflowExpression.Compile(contentreplyActivity);
+            WorkflowExpression.Validate(__workflow_contentreplyActivity, nameof(contentreplyActivity), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/triggers/bot/sendBridgeEvent";
@@ -330,7 +296,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 var content = new JObject();
                 var contentpropCount = 0;
                 contentpropCount++;
-                content["activityJson"] = ExpressionConverter.ConvertO(contentreplyActivity);
+                content["activityJson"] = ExpressionConverter.ConvertO(__workflow_contentreplyActivity);
                 var eventObjectObject = new JObject();
                 var eventObjectObjectpropCount = 0;
                 if (eventObjectObjectpropCount > 0)
@@ -349,20 +315,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        [WorkflowExpressionFactory(nameof(__BuildWebHookRegistrationsInputResponse))]
-        public IBodyWorkflowAction<WebHook> WebHookRegistrationsInputResponse([WorkflowExpression] Func<string> webHookmessage, [WorkflowExpression] Func<string> webHookreplyActivity, [WorkflowExpression] Func<string[]> webHookfilters = null, [WorkflowExpression] Func<webHookacceptResponseFromInput> webHookacceptResponseFrom = null, [WorkflowExpression] Func<bool> webHookshowInChat = null)
+        public IBodyWorkflowAction<WebHook> WebHookRegistrationsInputResponse(Expression<Func<string>> webHookmessage, Expression<Func<string>> webHookreplyActivity, Expression<Func<string[]>> webHookfilters = null, Expression<Func<webHookacceptResponseFromInput>> webHookacceptResponseFrom = null, Expression<Func<bool>> webHookshowInChat = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<WebHook> __BuildWebHookRegistrationsInputResponse(WorkflowExpression<string> webHookmessage, WorkflowExpression<string> webHookreplyActivity, WorkflowExpression<string[]> webHookfilters = null, WorkflowExpression<webHookacceptResponseFromInput> webHookacceptResponseFrom = null, WorkflowExpression<bool> webHookshowInChat = null)
-        {
-            WorkflowExpression.Validate(webHookmessage, nameof(webHookmessage), required: true);
-            WorkflowExpression.Validate(webHookreplyActivity, nameof(webHookreplyActivity), required: true);
-            WorkflowExpression.Validate(webHookfilters, nameof(webHookfilters), required: false);
-            WorkflowExpression.Validate(webHookacceptResponseFrom, nameof(webHookacceptResponseFrom), required: false);
-            WorkflowExpression.Validate(webHookshowInChat, nameof(webHookshowInChat), required: false);
+            var __workflow_webHookmessage = webHookmessage == null ? null : WorkflowExpression.Compile(webHookmessage);
+            WorkflowExpression.Validate(__workflow_webHookmessage, nameof(webHookmessage), required: true);
+            var __workflow_webHookreplyActivity = webHookreplyActivity == null ? null : WorkflowExpression.Compile(webHookreplyActivity);
+            WorkflowExpression.Validate(__workflow_webHookreplyActivity, nameof(webHookreplyActivity), required: true);
+            var __workflow_webHookfilters = webHookfilters == null ? null : WorkflowExpression.Compile(webHookfilters);
+            WorkflowExpression.Validate(__workflow_webHookfilters, nameof(webHookfilters), required: false);
+            var __workflow_webHookacceptResponseFrom = webHookacceptResponseFrom == null ? null : WorkflowExpression.Compile(webHookacceptResponseFrom);
+            WorkflowExpression.Validate(__workflow_webHookacceptResponseFrom, nameof(webHookacceptResponseFrom), required: false);
+            var __workflow_webHookshowInChat = webHookshowInChat == null ? null : WorkflowExpression.Compile(webHookshowInChat);
+            WorkflowExpression.Validate(__workflow_webHookshowInChat, nameof(webHookshowInChat), required: false);
             return new DeferredBodyAction<WebHook>(() =>
             {
                 var apiCallPath = "/api/triggers/webhooks/registerResponse";
@@ -372,9 +336,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 var webHookpropCount = 0;
                 webHook["webHookUri"] = "#{listCallbackUrl()}";
                 webHookpropCount++;
-                if (webHookfilters != null)
+                if (__workflow_webHookfilters != null)
                 {
-                    webHook["filters"] = ExpressionConverter.ConvertO(webHookfilters);
+                    webHook["filters"] = ExpressionConverter.ConvertO(__workflow_webHookfilters);
                     webHookpropCount++;
                 }
 
@@ -395,14 +359,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 }
 
                 webHookpropCount++;
-                webHook["message"] = ExpressionConverter.ConvertO(webHookmessage);
+                webHook["message"] = ExpressionConverter.ConvertO(__workflow_webHookmessage);
                 webHookpropCount++;
-                webHook["activityJson"] = ExpressionConverter.ConvertO(webHookreplyActivity);
-                if (webHookacceptResponseFrom != null)
+                webHook["activityJson"] = ExpressionConverter.ConvertO(__workflow_webHookreplyActivity);
+                if (__workflow_webHookacceptResponseFrom != null)
                 {
-                    if (webHookacceptResponseFrom != null)
+                    if (__workflow_webHookacceptResponseFrom != null)
                     {
-                        webHook["acceptResponseFrom"] = ExpressionConverter.ConvertO(webHookacceptResponseFrom);
+                        webHook["acceptResponseFrom"] = ExpressionConverter.ConvertO(__workflow_webHookacceptResponseFrom);
                         webHookpropCount++;
                     }
 
@@ -414,11 +378,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                     webHookpropCount++;
                 }
 
-                if (webHookshowInChat != null)
+                if (__workflow_webHookshowInChat != null)
                 {
-                    if (webHookshowInChat != null)
+                    if (__workflow_webHookshowInChat != null)
                     {
-                        webHook["showInChat"] = ExpressionConverter.ConvertO(webHookshowInChat);
+                        webHook["showInChat"] = ExpressionConverter.ConvertO(__workflow_webHookshowInChat);
                         webHookpropCount++;
                     }
 
@@ -440,22 +404,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        [WorkflowExpressionFactory(nameof(__BuildWebHookRegistrationsInputResponseDATE))]
-        public IBodyWorkflowAction<WebHook> WebHookRegistrationsInputResponseDATE([WorkflowExpression] Func<webHookdateScopeInput> webHookdateScope, [WorkflowExpression] Func<string> webHookmessage, [WorkflowExpression] Func<string> webHookreplyActivity, [WorkflowExpression] Func<string[]> webHookfilters = null, [WorkflowExpression] Func<webHookacceptResponseFromInput> webHookacceptResponseFrom = null, [WorkflowExpression] Func<webHookallowBranchingInput> webHookallowBranching = null, [WorkflowExpression] Func<bool> webHookshowInChat = null)
+        public IBodyWorkflowAction<WebHook> WebHookRegistrationsInputResponseDATE(Expression<Func<webHookdateScopeInput>> webHookdateScope, Expression<Func<string>> webHookmessage, Expression<Func<string>> webHookreplyActivity, Expression<Func<string[]>> webHookfilters = null, Expression<Func<webHookacceptResponseFromInput>> webHookacceptResponseFrom = null, Expression<Func<webHookallowBranchingInput>> webHookallowBranching = null, Expression<Func<bool>> webHookshowInChat = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<WebHook> __BuildWebHookRegistrationsInputResponseDATE(WorkflowExpression<webHookdateScopeInput> webHookdateScope, WorkflowExpression<string> webHookmessage, WorkflowExpression<string> webHookreplyActivity, WorkflowExpression<string[]> webHookfilters = null, WorkflowExpression<webHookacceptResponseFromInput> webHookacceptResponseFrom = null, WorkflowExpression<webHookallowBranchingInput> webHookallowBranching = null, WorkflowExpression<bool> webHookshowInChat = null)
-        {
-            WorkflowExpression.Validate(webHookdateScope, nameof(webHookdateScope), required: true);
-            WorkflowExpression.Validate(webHookmessage, nameof(webHookmessage), required: true);
-            WorkflowExpression.Validate(webHookreplyActivity, nameof(webHookreplyActivity), required: true);
-            WorkflowExpression.Validate(webHookfilters, nameof(webHookfilters), required: false);
-            WorkflowExpression.Validate(webHookacceptResponseFrom, nameof(webHookacceptResponseFrom), required: false);
-            WorkflowExpression.Validate(webHookallowBranching, nameof(webHookallowBranching), required: false);
-            WorkflowExpression.Validate(webHookshowInChat, nameof(webHookshowInChat), required: false);
+            var __workflow_webHookdateScope = webHookdateScope == null ? null : WorkflowExpression.Compile(webHookdateScope);
+            WorkflowExpression.Validate(__workflow_webHookdateScope, nameof(webHookdateScope), required: true);
+            var __workflow_webHookmessage = webHookmessage == null ? null : WorkflowExpression.Compile(webHookmessage);
+            WorkflowExpression.Validate(__workflow_webHookmessage, nameof(webHookmessage), required: true);
+            var __workflow_webHookreplyActivity = webHookreplyActivity == null ? null : WorkflowExpression.Compile(webHookreplyActivity);
+            WorkflowExpression.Validate(__workflow_webHookreplyActivity, nameof(webHookreplyActivity), required: true);
+            var __workflow_webHookfilters = webHookfilters == null ? null : WorkflowExpression.Compile(webHookfilters);
+            WorkflowExpression.Validate(__workflow_webHookfilters, nameof(webHookfilters), required: false);
+            var __workflow_webHookacceptResponseFrom = webHookacceptResponseFrom == null ? null : WorkflowExpression.Compile(webHookacceptResponseFrom);
+            WorkflowExpression.Validate(__workflow_webHookacceptResponseFrom, nameof(webHookacceptResponseFrom), required: false);
+            var __workflow_webHookallowBranching = webHookallowBranching == null ? null : WorkflowExpression.Compile(webHookallowBranching);
+            WorkflowExpression.Validate(__workflow_webHookallowBranching, nameof(webHookallowBranching), required: false);
+            var __workflow_webHookshowInChat = webHookshowInChat == null ? null : WorkflowExpression.Compile(webHookshowInChat);
+            WorkflowExpression.Validate(__workflow_webHookshowInChat, nameof(webHookshowInChat), required: false);
             return new DeferredBodyAction<WebHook>(() =>
             {
                 var apiCallPath = "/api/triggers/webhooks/registerResponse_Date";
@@ -465,9 +429,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 var webHookpropCount = 0;
                 webHook["webHookUri"] = "#{listCallbackUrl()}";
                 webHookpropCount++;
-                if (webHookfilters != null)
+                if (__workflow_webHookfilters != null)
                 {
-                    webHook["filters"] = ExpressionConverter.ConvertO(webHookfilters);
+                    webHook["filters"] = ExpressionConverter.ConvertO(__workflow_webHookfilters);
                     webHookpropCount++;
                 }
 
@@ -488,16 +452,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 }
 
                 webHookpropCount++;
-                webHook["dateScope"] = ExpressionConverter.ConvertO(webHookdateScope);
+                webHook["dateScope"] = ExpressionConverter.ConvertO(__workflow_webHookdateScope);
                 webHookpropCount++;
-                webHook["message"] = ExpressionConverter.ConvertO(webHookmessage);
+                webHook["message"] = ExpressionConverter.ConvertO(__workflow_webHookmessage);
                 webHookpropCount++;
-                webHook["activityJson"] = ExpressionConverter.ConvertO(webHookreplyActivity);
-                if (webHookacceptResponseFrom != null)
+                webHook["activityJson"] = ExpressionConverter.ConvertO(__workflow_webHookreplyActivity);
+                if (__workflow_webHookacceptResponseFrom != null)
                 {
-                    if (webHookacceptResponseFrom != null)
+                    if (__workflow_webHookacceptResponseFrom != null)
                     {
-                        webHook["acceptResponseFrom"] = ExpressionConverter.ConvertO(webHookacceptResponseFrom);
+                        webHook["acceptResponseFrom"] = ExpressionConverter.ConvertO(__workflow_webHookacceptResponseFrom);
                         webHookpropCount++;
                     }
 
@@ -509,11 +473,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                     webHookpropCount++;
                 }
 
-                if (webHookallowBranching != null)
+                if (__workflow_webHookallowBranching != null)
                 {
-                    if (webHookallowBranching != null)
+                    if (__workflow_webHookallowBranching != null)
                     {
-                        webHook["allowBranching"] = ExpressionConverter.ConvertO(webHookallowBranching);
+                        webHook["allowBranching"] = ExpressionConverter.ConvertO(__workflow_webHookallowBranching);
                         webHookpropCount++;
                     }
 
@@ -525,11 +489,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                     webHookpropCount++;
                 }
 
-                if (webHookshowInChat != null)
+                if (__workflow_webHookshowInChat != null)
                 {
-                    if (webHookshowInChat != null)
+                    if (__workflow_webHookshowInChat != null)
                     {
-                        webHook["showInChat"] = ExpressionConverter.ConvertO(webHookshowInChat);
+                        webHook["showInChat"] = ExpressionConverter.ConvertO(__workflow_webHookshowInChat);
                         webHookpropCount++;
                     }
 
@@ -551,23 +515,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        [WorkflowExpressionFactory(nameof(__BuildWebHookRegistrationsInputResponseCHOICE))]
-        public IBodyWorkflowAction<WebHook> WebHookRegistrationsInputResponseCHOICE([WorkflowExpression] Func<string> webHookmessage, [WorkflowExpression] Func<string> webHookchoiceValues, [WorkflowExpression] Func<string> webHookreplyActivity, [WorkflowExpression] Func<string[]> webHookfilters = null, [WorkflowExpression] Func<webHookacceptResponseFromInput> webHookacceptResponseFrom = null, [WorkflowExpression] Func<webHookallowBranchingInput> webHookallowBranching = null, [WorkflowExpression] Func<bool> webHookshowInChat = null, [WorkflowExpression] Func<bool> webHooklistenForVoiceResponse = null)
+        public IBodyWorkflowAction<WebHook> WebHookRegistrationsInputResponseCHOICE(Expression<Func<string>> webHookmessage, Expression<Func<string>> webHookchoiceValues, Expression<Func<string>> webHookreplyActivity, Expression<Func<string[]>> webHookfilters = null, Expression<Func<webHookacceptResponseFromInput>> webHookacceptResponseFrom = null, Expression<Func<webHookallowBranchingInput>> webHookallowBranching = null, Expression<Func<bool>> webHookshowInChat = null, Expression<Func<bool>> webHooklistenForVoiceResponse = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<WebHook> __BuildWebHookRegistrationsInputResponseCHOICE(WorkflowExpression<string> webHookmessage, WorkflowExpression<string> webHookchoiceValues, WorkflowExpression<string> webHookreplyActivity, WorkflowExpression<string[]> webHookfilters = null, WorkflowExpression<webHookacceptResponseFromInput> webHookacceptResponseFrom = null, WorkflowExpression<webHookallowBranchingInput> webHookallowBranching = null, WorkflowExpression<bool> webHookshowInChat = null, WorkflowExpression<bool> webHooklistenForVoiceResponse = null)
-        {
-            WorkflowExpression.Validate(webHookmessage, nameof(webHookmessage), required: true);
-            WorkflowExpression.Validate(webHookchoiceValues, nameof(webHookchoiceValues), required: true);
-            WorkflowExpression.Validate(webHookreplyActivity, nameof(webHookreplyActivity), required: true);
-            WorkflowExpression.Validate(webHookfilters, nameof(webHookfilters), required: false);
-            WorkflowExpression.Validate(webHookacceptResponseFrom, nameof(webHookacceptResponseFrom), required: false);
-            WorkflowExpression.Validate(webHookallowBranching, nameof(webHookallowBranching), required: false);
-            WorkflowExpression.Validate(webHookshowInChat, nameof(webHookshowInChat), required: false);
-            WorkflowExpression.Validate(webHooklistenForVoiceResponse, nameof(webHooklistenForVoiceResponse), required: false);
+            var __workflow_webHookmessage = webHookmessage == null ? null : WorkflowExpression.Compile(webHookmessage);
+            WorkflowExpression.Validate(__workflow_webHookmessage, nameof(webHookmessage), required: true);
+            var __workflow_webHookchoiceValues = webHookchoiceValues == null ? null : WorkflowExpression.Compile(webHookchoiceValues);
+            WorkflowExpression.Validate(__workflow_webHookchoiceValues, nameof(webHookchoiceValues), required: true);
+            var __workflow_webHookreplyActivity = webHookreplyActivity == null ? null : WorkflowExpression.Compile(webHookreplyActivity);
+            WorkflowExpression.Validate(__workflow_webHookreplyActivity, nameof(webHookreplyActivity), required: true);
+            var __workflow_webHookfilters = webHookfilters == null ? null : WorkflowExpression.Compile(webHookfilters);
+            WorkflowExpression.Validate(__workflow_webHookfilters, nameof(webHookfilters), required: false);
+            var __workflow_webHookacceptResponseFrom = webHookacceptResponseFrom == null ? null : WorkflowExpression.Compile(webHookacceptResponseFrom);
+            WorkflowExpression.Validate(__workflow_webHookacceptResponseFrom, nameof(webHookacceptResponseFrom), required: false);
+            var __workflow_webHookallowBranching = webHookallowBranching == null ? null : WorkflowExpression.Compile(webHookallowBranching);
+            WorkflowExpression.Validate(__workflow_webHookallowBranching, nameof(webHookallowBranching), required: false);
+            var __workflow_webHookshowInChat = webHookshowInChat == null ? null : WorkflowExpression.Compile(webHookshowInChat);
+            WorkflowExpression.Validate(__workflow_webHookshowInChat, nameof(webHookshowInChat), required: false);
+            var __workflow_webHooklistenForVoiceResponse = webHooklistenForVoiceResponse == null ? null : WorkflowExpression.Compile(webHooklistenForVoiceResponse);
+            WorkflowExpression.Validate(__workflow_webHooklistenForVoiceResponse, nameof(webHooklistenForVoiceResponse), required: false);
             return new DeferredBodyAction<WebHook>(() =>
             {
                 var apiCallPath = "/api/triggers/webhooks/registerResponse_Choice";
@@ -577,9 +542,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 var webHookpropCount = 0;
                 webHook["webHookUri"] = "#{listCallbackUrl()}";
                 webHookpropCount++;
-                if (webHookfilters != null)
+                if (__workflow_webHookfilters != null)
                 {
-                    webHook["filters"] = ExpressionConverter.ConvertO(webHookfilters);
+                    webHook["filters"] = ExpressionConverter.ConvertO(__workflow_webHookfilters);
                     webHookpropCount++;
                 }
 
@@ -600,16 +565,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 }
 
                 webHookpropCount++;
-                webHook["message"] = ExpressionConverter.ConvertO(webHookmessage);
+                webHook["message"] = ExpressionConverter.ConvertO(__workflow_webHookmessage);
                 webHookpropCount++;
-                webHook["choices"] = ExpressionConverter.ConvertO(webHookchoiceValues);
+                webHook["choices"] = ExpressionConverter.ConvertO(__workflow_webHookchoiceValues);
                 webHookpropCount++;
-                webHook["activityJson"] = ExpressionConverter.ConvertO(webHookreplyActivity);
-                if (webHookacceptResponseFrom != null)
+                webHook["activityJson"] = ExpressionConverter.ConvertO(__workflow_webHookreplyActivity);
+                if (__workflow_webHookacceptResponseFrom != null)
                 {
-                    if (webHookacceptResponseFrom != null)
+                    if (__workflow_webHookacceptResponseFrom != null)
                     {
-                        webHook["acceptResponseFrom"] = ExpressionConverter.ConvertO(webHookacceptResponseFrom);
+                        webHook["acceptResponseFrom"] = ExpressionConverter.ConvertO(__workflow_webHookacceptResponseFrom);
                         webHookpropCount++;
                     }
 
@@ -621,11 +586,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                     webHookpropCount++;
                 }
 
-                if (webHookallowBranching != null)
+                if (__workflow_webHookallowBranching != null)
                 {
-                    if (webHookallowBranching != null)
+                    if (__workflow_webHookallowBranching != null)
                     {
-                        webHook["allowBranching"] = ExpressionConverter.ConvertO(webHookallowBranching);
+                        webHook["allowBranching"] = ExpressionConverter.ConvertO(__workflow_webHookallowBranching);
                         webHookpropCount++;
                     }
 
@@ -637,11 +602,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                     webHookpropCount++;
                 }
 
-                if (webHookshowInChat != null)
+                if (__workflow_webHookshowInChat != null)
                 {
-                    if (webHookshowInChat != null)
+                    if (__workflow_webHookshowInChat != null)
                     {
-                        webHook["showInChat"] = ExpressionConverter.ConvertO(webHookshowInChat);
+                        webHook["showInChat"] = ExpressionConverter.ConvertO(__workflow_webHookshowInChat);
                         webHookpropCount++;
                     }
 
@@ -653,11 +618,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                     webHookpropCount++;
                 }
 
-                if (webHooklistenForVoiceResponse != null)
+                if (__workflow_webHooklistenForVoiceResponse != null)
                 {
-                    if (webHooklistenForVoiceResponse != null)
+                    if (__workflow_webHooklistenForVoiceResponse != null)
                     {
-                        webHook["listenForInput"] = ExpressionConverter.ConvertO(webHooklistenForVoiceResponse);
+                        webHook["listenForInput"] = ExpressionConverter.ConvertO(__workflow_webHooklistenForVoiceResponse);
                         webHookpropCount++;
                     }
 
@@ -679,23 +644,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        [WorkflowExpressionFactory(nameof(__BuildWebHookRegistrationsInputResponseCHOICELIST))]
-        public IBodyWorkflowAction<WebHook> WebHookRegistrationsInputResponseCHOICELIST([WorkflowExpression] Func<string> webHookmessage, [WorkflowExpression] Func<string> webHookreplyActivity, [WorkflowExpression] Func<string[]> webHookfilters = null, [WorkflowExpression] Func<string> webHookiconURL = null, [WorkflowExpression] Func<webHookacceptResponseFromInput> webHookacceptResponseFrom = null, [WorkflowExpression] Func<webHookallowBranchingInput> webHookallowBranching = null, [WorkflowExpression] Func<bool> webHookshowInChat = null, [WorkflowExpression] Func<bool> webHooklistenForVoiceResponse = null)
+        public IBodyWorkflowAction<WebHook> WebHookRegistrationsInputResponseCHOICELIST(Expression<Func<string>> webHookmessage, Expression<Func<string>> webHookreplyActivity, Expression<Func<string[]>> webHookfilters = null, Expression<Func<string>> webHookiconURL = null, Expression<Func<webHookacceptResponseFromInput>> webHookacceptResponseFrom = null, Expression<Func<webHookallowBranchingInput>> webHookallowBranching = null, Expression<Func<bool>> webHookshowInChat = null, Expression<Func<bool>> webHooklistenForVoiceResponse = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<WebHook> __BuildWebHookRegistrationsInputResponseCHOICELIST(WorkflowExpression<string> webHookmessage, WorkflowExpression<string> webHookreplyActivity, WorkflowExpression<string[]> webHookfilters = null, WorkflowExpression<string> webHookiconURL = null, WorkflowExpression<webHookacceptResponseFromInput> webHookacceptResponseFrom = null, WorkflowExpression<webHookallowBranchingInput> webHookallowBranching = null, WorkflowExpression<bool> webHookshowInChat = null, WorkflowExpression<bool> webHooklistenForVoiceResponse = null)
-        {
-            WorkflowExpression.Validate(webHookmessage, nameof(webHookmessage), required: true);
-            WorkflowExpression.Validate(webHookreplyActivity, nameof(webHookreplyActivity), required: true);
-            WorkflowExpression.Validate(webHookfilters, nameof(webHookfilters), required: false);
-            WorkflowExpression.Validate(webHookiconURL, nameof(webHookiconURL), required: false);
-            WorkflowExpression.Validate(webHookacceptResponseFrom, nameof(webHookacceptResponseFrom), required: false);
-            WorkflowExpression.Validate(webHookallowBranching, nameof(webHookallowBranching), required: false);
-            WorkflowExpression.Validate(webHookshowInChat, nameof(webHookshowInChat), required: false);
-            WorkflowExpression.Validate(webHooklistenForVoiceResponse, nameof(webHooklistenForVoiceResponse), required: false);
+            var __workflow_webHookmessage = webHookmessage == null ? null : WorkflowExpression.Compile(webHookmessage);
+            WorkflowExpression.Validate(__workflow_webHookmessage, nameof(webHookmessage), required: true);
+            var __workflow_webHookreplyActivity = webHookreplyActivity == null ? null : WorkflowExpression.Compile(webHookreplyActivity);
+            WorkflowExpression.Validate(__workflow_webHookreplyActivity, nameof(webHookreplyActivity), required: true);
+            var __workflow_webHookfilters = webHookfilters == null ? null : WorkflowExpression.Compile(webHookfilters);
+            WorkflowExpression.Validate(__workflow_webHookfilters, nameof(webHookfilters), required: false);
+            var __workflow_webHookiconURL = webHookiconURL == null ? null : WorkflowExpression.Compile(webHookiconURL);
+            WorkflowExpression.Validate(__workflow_webHookiconURL, nameof(webHookiconURL), required: false);
+            var __workflow_webHookacceptResponseFrom = webHookacceptResponseFrom == null ? null : WorkflowExpression.Compile(webHookacceptResponseFrom);
+            WorkflowExpression.Validate(__workflow_webHookacceptResponseFrom, nameof(webHookacceptResponseFrom), required: false);
+            var __workflow_webHookallowBranching = webHookallowBranching == null ? null : WorkflowExpression.Compile(webHookallowBranching);
+            WorkflowExpression.Validate(__workflow_webHookallowBranching, nameof(webHookallowBranching), required: false);
+            var __workflow_webHookshowInChat = webHookshowInChat == null ? null : WorkflowExpression.Compile(webHookshowInChat);
+            WorkflowExpression.Validate(__workflow_webHookshowInChat, nameof(webHookshowInChat), required: false);
+            var __workflow_webHooklistenForVoiceResponse = webHooklistenForVoiceResponse == null ? null : WorkflowExpression.Compile(webHooklistenForVoiceResponse);
+            WorkflowExpression.Validate(__workflow_webHooklistenForVoiceResponse, nameof(webHooklistenForVoiceResponse), required: false);
             return new DeferredBodyAction<WebHook>(() =>
             {
                 var apiCallPath = "/api/triggers/webhooks/registerResponse_ChoiceList";
@@ -705,9 +671,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 var webHookpropCount = 0;
                 webHook["webHookUri"] = "#{listCallbackUrl()}";
                 webHookpropCount++;
-                if (webHookfilters != null)
+                if (__workflow_webHookfilters != null)
                 {
-                    webHook["filters"] = ExpressionConverter.ConvertO(webHookfilters);
+                    webHook["filters"] = ExpressionConverter.ConvertO(__workflow_webHookfilters);
                     webHookpropCount++;
                 }
 
@@ -727,14 +693,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                     webHookpropCount++;
                 }
 
-                if (webHookiconURL != null)
+                if (__workflow_webHookiconURL != null)
                 {
-                    webHook["icon"] = ExpressionConverter.ConvertO(webHookiconURL);
+                    webHook["icon"] = ExpressionConverter.ConvertO(__workflow_webHookiconURL);
                     webHookpropCount++;
                 }
 
                 webHookpropCount++;
-                webHook["message"] = ExpressionConverter.ConvertO(webHookmessage);
+                webHook["message"] = ExpressionConverter.ConvertO(__workflow_webHookmessage);
                 var choicesObject = new JObject();
                 var choicesObjectpropCount = 0;
                 if (choicesObjectpropCount > 0)
@@ -744,12 +710,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 }
 
                 webHookpropCount++;
-                webHook["activityJson"] = ExpressionConverter.ConvertO(webHookreplyActivity);
-                if (webHookacceptResponseFrom != null)
+                webHook["activityJson"] = ExpressionConverter.ConvertO(__workflow_webHookreplyActivity);
+                if (__workflow_webHookacceptResponseFrom != null)
                 {
-                    if (webHookacceptResponseFrom != null)
+                    if (__workflow_webHookacceptResponseFrom != null)
                     {
-                        webHook["acceptResponseFrom"] = ExpressionConverter.ConvertO(webHookacceptResponseFrom);
+                        webHook["acceptResponseFrom"] = ExpressionConverter.ConvertO(__workflow_webHookacceptResponseFrom);
                         webHookpropCount++;
                     }
 
@@ -761,11 +727,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                     webHookpropCount++;
                 }
 
-                if (webHookallowBranching != null)
+                if (__workflow_webHookallowBranching != null)
                 {
-                    if (webHookallowBranching != null)
+                    if (__workflow_webHookallowBranching != null)
                     {
-                        webHook["allowBranching"] = ExpressionConverter.ConvertO(webHookallowBranching);
+                        webHook["allowBranching"] = ExpressionConverter.ConvertO(__workflow_webHookallowBranching);
                         webHookpropCount++;
                     }
 
@@ -777,11 +743,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                     webHookpropCount++;
                 }
 
-                if (webHookshowInChat != null)
+                if (__workflow_webHookshowInChat != null)
                 {
-                    if (webHookshowInChat != null)
+                    if (__workflow_webHookshowInChat != null)
                     {
-                        webHook["showInChat"] = ExpressionConverter.ConvertO(webHookshowInChat);
+                        webHook["showInChat"] = ExpressionConverter.ConvertO(__workflow_webHookshowInChat);
                         webHookpropCount++;
                     }
 
@@ -793,11 +759,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                     webHookpropCount++;
                 }
 
-                if (webHooklistenForVoiceResponse != null)
+                if (__workflow_webHooklistenForVoiceResponse != null)
                 {
-                    if (webHooklistenForVoiceResponse != null)
+                    if (__workflow_webHooklistenForVoiceResponse != null)
                     {
-                        webHook["listenForInput"] = ExpressionConverter.ConvertO(webHooklistenForVoiceResponse);
+                        webHook["listenForInput"] = ExpressionConverter.ConvertO(__workflow_webHooklistenForVoiceResponse);
                         webHookpropCount++;
                     }
 
@@ -819,24 +785,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        [WorkflowExpressionFactory(nameof(__BuildWebHookRegistrationsInputResponsePEOPLE))]
-        public IBodyWorkflowAction<WebHook> WebHookRegistrationsInputResponsePEOPLE([WorkflowExpression] Func<string> webHookmessage, [WorkflowExpression] Func<webHookmodeInput> webHookmode, [WorkflowExpression] Func<string> webHookreplyActivity, [WorkflowExpression] Func<string[]> webHookfilters = null, [WorkflowExpression] Func<string> webHooksearchString = null, [WorkflowExpression] Func<webHookacceptResponseFromInput> webHookacceptResponseFrom = null, [WorkflowExpression] Func<webHookallowBranchingInput> webHookallowBranching = null, [WorkflowExpression] Func<bool> webHookshowInChat = null, [WorkflowExpression] Func<bool> webHooklistenForVoiceResponse = null)
+        public IBodyWorkflowAction<WebHook> WebHookRegistrationsInputResponsePEOPLE(Expression<Func<string>> webHookmessage, Expression<Func<webHookmodeInput>> webHookmode, Expression<Func<string>> webHookreplyActivity, Expression<Func<string[]>> webHookfilters = null, Expression<Func<string>> webHooksearchString = null, Expression<Func<webHookacceptResponseFromInput>> webHookacceptResponseFrom = null, Expression<Func<webHookallowBranchingInput>> webHookallowBranching = null, Expression<Func<bool>> webHookshowInChat = null, Expression<Func<bool>> webHooklistenForVoiceResponse = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<WebHook> __BuildWebHookRegistrationsInputResponsePEOPLE(WorkflowExpression<string> webHookmessage, WorkflowExpression<webHookmodeInput> webHookmode, WorkflowExpression<string> webHookreplyActivity, WorkflowExpression<string[]> webHookfilters = null, WorkflowExpression<string> webHooksearchString = null, WorkflowExpression<webHookacceptResponseFromInput> webHookacceptResponseFrom = null, WorkflowExpression<webHookallowBranchingInput> webHookallowBranching = null, WorkflowExpression<bool> webHookshowInChat = null, WorkflowExpression<bool> webHooklistenForVoiceResponse = null)
-        {
-            WorkflowExpression.Validate(webHookmessage, nameof(webHookmessage), required: true);
-            WorkflowExpression.Validate(webHookmode, nameof(webHookmode), required: true);
-            WorkflowExpression.Validate(webHookreplyActivity, nameof(webHookreplyActivity), required: true);
-            WorkflowExpression.Validate(webHookfilters, nameof(webHookfilters), required: false);
-            WorkflowExpression.Validate(webHooksearchString, nameof(webHooksearchString), required: false);
-            WorkflowExpression.Validate(webHookacceptResponseFrom, nameof(webHookacceptResponseFrom), required: false);
-            WorkflowExpression.Validate(webHookallowBranching, nameof(webHookallowBranching), required: false);
-            WorkflowExpression.Validate(webHookshowInChat, nameof(webHookshowInChat), required: false);
-            WorkflowExpression.Validate(webHooklistenForVoiceResponse, nameof(webHooklistenForVoiceResponse), required: false);
+            var __workflow_webHookmessage = webHookmessage == null ? null : WorkflowExpression.Compile(webHookmessage);
+            WorkflowExpression.Validate(__workflow_webHookmessage, nameof(webHookmessage), required: true);
+            var __workflow_webHookmode = webHookmode == null ? null : WorkflowExpression.Compile(webHookmode);
+            WorkflowExpression.Validate(__workflow_webHookmode, nameof(webHookmode), required: true);
+            var __workflow_webHookreplyActivity = webHookreplyActivity == null ? null : WorkflowExpression.Compile(webHookreplyActivity);
+            WorkflowExpression.Validate(__workflow_webHookreplyActivity, nameof(webHookreplyActivity), required: true);
+            var __workflow_webHookfilters = webHookfilters == null ? null : WorkflowExpression.Compile(webHookfilters);
+            WorkflowExpression.Validate(__workflow_webHookfilters, nameof(webHookfilters), required: false);
+            var __workflow_webHooksearchString = webHooksearchString == null ? null : WorkflowExpression.Compile(webHooksearchString);
+            WorkflowExpression.Validate(__workflow_webHooksearchString, nameof(webHooksearchString), required: false);
+            var __workflow_webHookacceptResponseFrom = webHookacceptResponseFrom == null ? null : WorkflowExpression.Compile(webHookacceptResponseFrom);
+            WorkflowExpression.Validate(__workflow_webHookacceptResponseFrom, nameof(webHookacceptResponseFrom), required: false);
+            var __workflow_webHookallowBranching = webHookallowBranching == null ? null : WorkflowExpression.Compile(webHookallowBranching);
+            WorkflowExpression.Validate(__workflow_webHookallowBranching, nameof(webHookallowBranching), required: false);
+            var __workflow_webHookshowInChat = webHookshowInChat == null ? null : WorkflowExpression.Compile(webHookshowInChat);
+            WorkflowExpression.Validate(__workflow_webHookshowInChat, nameof(webHookshowInChat), required: false);
+            var __workflow_webHooklistenForVoiceResponse = webHooklistenForVoiceResponse == null ? null : WorkflowExpression.Compile(webHooklistenForVoiceResponse);
+            WorkflowExpression.Validate(__workflow_webHooklistenForVoiceResponse, nameof(webHooklistenForVoiceResponse), required: false);
             return new DeferredBodyAction<WebHook>(() =>
             {
                 var apiCallPath = "/api/triggers/webhooks/registerResponse_People";
@@ -846,9 +814,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 var webHookpropCount = 0;
                 webHook["webHookUri"] = "#{listCallbackUrl()}";
                 webHookpropCount++;
-                if (webHookfilters != null)
+                if (__workflow_webHookfilters != null)
                 {
-                    webHook["filters"] = ExpressionConverter.ConvertO(webHookfilters);
+                    webHook["filters"] = ExpressionConverter.ConvertO(__workflow_webHookfilters);
                     webHookpropCount++;
                 }
 
@@ -869,22 +837,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 }
 
                 webHookpropCount++;
-                webHook["message"] = ExpressionConverter.ConvertO(webHookmessage);
+                webHook["message"] = ExpressionConverter.ConvertO(__workflow_webHookmessage);
                 webHookpropCount++;
-                webHook["mode"] = ExpressionConverter.ConvertO(webHookmode);
-                if (webHooksearchString != null)
+                webHook["mode"] = ExpressionConverter.ConvertO(__workflow_webHookmode);
+                if (__workflow_webHooksearchString != null)
                 {
-                    webHook["searchstr"] = ExpressionConverter.ConvertO(webHooksearchString);
+                    webHook["searchstr"] = ExpressionConverter.ConvertO(__workflow_webHooksearchString);
                     webHookpropCount++;
                 }
 
                 webHookpropCount++;
-                webHook["activityJson"] = ExpressionConverter.ConvertO(webHookreplyActivity);
-                if (webHookacceptResponseFrom != null)
+                webHook["activityJson"] = ExpressionConverter.ConvertO(__workflow_webHookreplyActivity);
+                if (__workflow_webHookacceptResponseFrom != null)
                 {
-                    if (webHookacceptResponseFrom != null)
+                    if (__workflow_webHookacceptResponseFrom != null)
                     {
-                        webHook["acceptResponseFrom"] = ExpressionConverter.ConvertO(webHookacceptResponseFrom);
+                        webHook["acceptResponseFrom"] = ExpressionConverter.ConvertO(__workflow_webHookacceptResponseFrom);
                         webHookpropCount++;
                     }
 
@@ -896,11 +864,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                     webHookpropCount++;
                 }
 
-                if (webHookallowBranching != null)
+                if (__workflow_webHookallowBranching != null)
                 {
-                    if (webHookallowBranching != null)
+                    if (__workflow_webHookallowBranching != null)
                     {
-                        webHook["allowBranching"] = ExpressionConverter.ConvertO(webHookallowBranching);
+                        webHook["allowBranching"] = ExpressionConverter.ConvertO(__workflow_webHookallowBranching);
                         webHookpropCount++;
                     }
 
@@ -912,11 +880,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                     webHookpropCount++;
                 }
 
-                if (webHookshowInChat != null)
+                if (__workflow_webHookshowInChat != null)
                 {
-                    if (webHookshowInChat != null)
+                    if (__workflow_webHookshowInChat != null)
                     {
-                        webHook["showInChat"] = ExpressionConverter.ConvertO(webHookshowInChat);
+                        webHook["showInChat"] = ExpressionConverter.ConvertO(__workflow_webHookshowInChat);
                         webHookpropCount++;
                     }
 
@@ -928,11 +896,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                     webHookpropCount++;
                 }
 
-                if (webHooklistenForVoiceResponse != null)
+                if (__workflow_webHooklistenForVoiceResponse != null)
                 {
-                    if (webHooklistenForVoiceResponse != null)
+                    if (__workflow_webHooklistenForVoiceResponse != null)
                     {
-                        webHook["listenForInput"] = ExpressionConverter.ConvertO(webHooklistenForVoiceResponse);
+                        webHook["listenForInput"] = ExpressionConverter.ConvertO(__workflow_webHooklistenForVoiceResponse);
                         webHookpropCount++;
                     }
 
@@ -954,22 +922,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        [WorkflowExpressionFactory(nameof(__BuildWebHookRegistrationsInputResponseINTENTVECTOR))]
-        public IBodyWorkflowAction<WebHook> WebHookRegistrationsInputResponseINTENTVECTOR([WorkflowExpression] Func<string> webHookmessage, [WorkflowExpression] Func<string> webHooklUISIntentVector, [WorkflowExpression] Func<string> webHookreplyActivity, [WorkflowExpression] Func<string[]> webHookfilters = null, [WorkflowExpression] Func<webHookacceptResponseFromInput> webHookacceptResponseFrom = null, [WorkflowExpression] Func<webHookallowBranchingInput> webHookallowBranching = null, [WorkflowExpression] Func<bool> webHookshowInChat = null)
+        public IBodyWorkflowAction<WebHook> WebHookRegistrationsInputResponseINTENTVECTOR(Expression<Func<string>> webHookmessage, Expression<Func<string>> webHooklUISIntentVector, Expression<Func<string>> webHookreplyActivity, Expression<Func<string[]>> webHookfilters = null, Expression<Func<webHookacceptResponseFromInput>> webHookacceptResponseFrom = null, Expression<Func<webHookallowBranchingInput>> webHookallowBranching = null, Expression<Func<bool>> webHookshowInChat = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<WebHook> __BuildWebHookRegistrationsInputResponseINTENTVECTOR(WorkflowExpression<string> webHookmessage, WorkflowExpression<string> webHooklUISIntentVector, WorkflowExpression<string> webHookreplyActivity, WorkflowExpression<string[]> webHookfilters = null, WorkflowExpression<webHookacceptResponseFromInput> webHookacceptResponseFrom = null, WorkflowExpression<webHookallowBranchingInput> webHookallowBranching = null, WorkflowExpression<bool> webHookshowInChat = null)
-        {
-            WorkflowExpression.Validate(webHookmessage, nameof(webHookmessage), required: true);
-            WorkflowExpression.Validate(webHooklUISIntentVector, nameof(webHooklUISIntentVector), required: true);
-            WorkflowExpression.Validate(webHookreplyActivity, nameof(webHookreplyActivity), required: true);
-            WorkflowExpression.Validate(webHookfilters, nameof(webHookfilters), required: false);
-            WorkflowExpression.Validate(webHookacceptResponseFrom, nameof(webHookacceptResponseFrom), required: false);
-            WorkflowExpression.Validate(webHookallowBranching, nameof(webHookallowBranching), required: false);
-            WorkflowExpression.Validate(webHookshowInChat, nameof(webHookshowInChat), required: false);
+            var __workflow_webHookmessage = webHookmessage == null ? null : WorkflowExpression.Compile(webHookmessage);
+            WorkflowExpression.Validate(__workflow_webHookmessage, nameof(webHookmessage), required: true);
+            var __workflow_webHooklUISIntentVector = webHooklUISIntentVector == null ? null : WorkflowExpression.Compile(webHooklUISIntentVector);
+            WorkflowExpression.Validate(__workflow_webHooklUISIntentVector, nameof(webHooklUISIntentVector), required: true);
+            var __workflow_webHookreplyActivity = webHookreplyActivity == null ? null : WorkflowExpression.Compile(webHookreplyActivity);
+            WorkflowExpression.Validate(__workflow_webHookreplyActivity, nameof(webHookreplyActivity), required: true);
+            var __workflow_webHookfilters = webHookfilters == null ? null : WorkflowExpression.Compile(webHookfilters);
+            WorkflowExpression.Validate(__workflow_webHookfilters, nameof(webHookfilters), required: false);
+            var __workflow_webHookacceptResponseFrom = webHookacceptResponseFrom == null ? null : WorkflowExpression.Compile(webHookacceptResponseFrom);
+            WorkflowExpression.Validate(__workflow_webHookacceptResponseFrom, nameof(webHookacceptResponseFrom), required: false);
+            var __workflow_webHookallowBranching = webHookallowBranching == null ? null : WorkflowExpression.Compile(webHookallowBranching);
+            WorkflowExpression.Validate(__workflow_webHookallowBranching, nameof(webHookallowBranching), required: false);
+            var __workflow_webHookshowInChat = webHookshowInChat == null ? null : WorkflowExpression.Compile(webHookshowInChat);
+            WorkflowExpression.Validate(__workflow_webHookshowInChat, nameof(webHookshowInChat), required: false);
             return new DeferredBodyAction<WebHook>(() =>
             {
                 var apiCallPath = "/api/triggers/webhooks/registerResponse_IntentVector";
@@ -979,9 +947,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 var webHookpropCount = 0;
                 webHook["webHookUri"] = "#{listCallbackUrl()}";
                 webHookpropCount++;
-                if (webHookfilters != null)
+                if (__workflow_webHookfilters != null)
                 {
-                    webHook["filters"] = ExpressionConverter.ConvertO(webHookfilters);
+                    webHook["filters"] = ExpressionConverter.ConvertO(__workflow_webHookfilters);
                     webHookpropCount++;
                 }
 
@@ -1002,16 +970,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 }
 
                 webHookpropCount++;
-                webHook["message"] = ExpressionConverter.ConvertO(webHookmessage);
+                webHook["message"] = ExpressionConverter.ConvertO(__workflow_webHookmessage);
                 webHookpropCount++;
-                webHook["intentVector"] = ExpressionConverter.ConvertO(webHooklUISIntentVector);
+                webHook["intentVector"] = ExpressionConverter.ConvertO(__workflow_webHooklUISIntentVector);
                 webHookpropCount++;
-                webHook["activityJson"] = ExpressionConverter.ConvertO(webHookreplyActivity);
-                if (webHookacceptResponseFrom != null)
+                webHook["activityJson"] = ExpressionConverter.ConvertO(__workflow_webHookreplyActivity);
+                if (__workflow_webHookacceptResponseFrom != null)
                 {
-                    if (webHookacceptResponseFrom != null)
+                    if (__workflow_webHookacceptResponseFrom != null)
                     {
-                        webHook["acceptResponseFrom"] = ExpressionConverter.ConvertO(webHookacceptResponseFrom);
+                        webHook["acceptResponseFrom"] = ExpressionConverter.ConvertO(__workflow_webHookacceptResponseFrom);
                         webHookpropCount++;
                     }
 
@@ -1023,11 +991,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                     webHookpropCount++;
                 }
 
-                if (webHookallowBranching != null)
+                if (__workflow_webHookallowBranching != null)
                 {
-                    if (webHookallowBranching != null)
+                    if (__workflow_webHookallowBranching != null)
                     {
-                        webHook["allowBranching"] = ExpressionConverter.ConvertO(webHookallowBranching);
+                        webHook["allowBranching"] = ExpressionConverter.ConvertO(__workflow_webHookallowBranching);
                         webHookpropCount++;
                     }
 
@@ -1039,11 +1007,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                     webHookpropCount++;
                 }
 
-                if (webHookshowInChat != null)
+                if (__workflow_webHookshowInChat != null)
                 {
-                    if (webHookshowInChat != null)
+                    if (__workflow_webHookshowInChat != null)
                     {
-                        webHook["showInChat"] = ExpressionConverter.ConvertO(webHookshowInChat);
+                        webHook["showInChat"] = ExpressionConverter.ConvertO(__workflow_webHookshowInChat);
                         webHookpropCount++;
                     }
 
@@ -1065,24 +1033,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        [WorkflowExpressionFactory(nameof(__BuildWebHookRegistrationsInputResponseMEMORY))]
-        public IBodyWorkflowAction<WebHook> WebHookRegistrationsInputResponseMEMORY([WorkflowExpression] Func<string> webHookmessage, [WorkflowExpression] Func<string> webHookmemoryType, [WorkflowExpression] Func<string> webHookreplyActivity, [WorkflowExpression] Func<string[]> webHookfilters = null, [WorkflowExpression] Func<string> webHookiconURL = null, [WorkflowExpression] Func<webHookacceptResponseFromInput> webHookacceptResponseFrom = null, [WorkflowExpression] Func<string> webHooktargetUser = null, [WorkflowExpression] Func<webHookallowBranchingInput> webHookallowBranching = null, [WorkflowExpression] Func<bool> webHookshowInChat = null)
+        public IBodyWorkflowAction<WebHook> WebHookRegistrationsInputResponseMEMORY(Expression<Func<string>> webHookmessage, Expression<Func<string>> webHookmemoryType, Expression<Func<string>> webHookreplyActivity, Expression<Func<string[]>> webHookfilters = null, Expression<Func<string>> webHookiconURL = null, Expression<Func<webHookacceptResponseFromInput>> webHookacceptResponseFrom = null, Expression<Func<string>> webHooktargetUser = null, Expression<Func<webHookallowBranchingInput>> webHookallowBranching = null, Expression<Func<bool>> webHookshowInChat = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<WebHook> __BuildWebHookRegistrationsInputResponseMEMORY(WorkflowExpression<string> webHookmessage, WorkflowExpression<string> webHookmemoryType, WorkflowExpression<string> webHookreplyActivity, WorkflowExpression<string[]> webHookfilters = null, WorkflowExpression<string> webHookiconURL = null, WorkflowExpression<webHookacceptResponseFromInput> webHookacceptResponseFrom = null, WorkflowExpression<string> webHooktargetUser = null, WorkflowExpression<webHookallowBranchingInput> webHookallowBranching = null, WorkflowExpression<bool> webHookshowInChat = null)
-        {
-            WorkflowExpression.Validate(webHookmessage, nameof(webHookmessage), required: true);
-            WorkflowExpression.Validate(webHookmemoryType, nameof(webHookmemoryType), required: true);
-            WorkflowExpression.Validate(webHookreplyActivity, nameof(webHookreplyActivity), required: true);
-            WorkflowExpression.Validate(webHookfilters, nameof(webHookfilters), required: false);
-            WorkflowExpression.Validate(webHookiconURL, nameof(webHookiconURL), required: false);
-            WorkflowExpression.Validate(webHookacceptResponseFrom, nameof(webHookacceptResponseFrom), required: false);
-            WorkflowExpression.Validate(webHooktargetUser, nameof(webHooktargetUser), required: false);
-            WorkflowExpression.Validate(webHookallowBranching, nameof(webHookallowBranching), required: false);
-            WorkflowExpression.Validate(webHookshowInChat, nameof(webHookshowInChat), required: false);
+            var __workflow_webHookmessage = webHookmessage == null ? null : WorkflowExpression.Compile(webHookmessage);
+            WorkflowExpression.Validate(__workflow_webHookmessage, nameof(webHookmessage), required: true);
+            var __workflow_webHookmemoryType = webHookmemoryType == null ? null : WorkflowExpression.Compile(webHookmemoryType);
+            WorkflowExpression.Validate(__workflow_webHookmemoryType, nameof(webHookmemoryType), required: true);
+            var __workflow_webHookreplyActivity = webHookreplyActivity == null ? null : WorkflowExpression.Compile(webHookreplyActivity);
+            WorkflowExpression.Validate(__workflow_webHookreplyActivity, nameof(webHookreplyActivity), required: true);
+            var __workflow_webHookfilters = webHookfilters == null ? null : WorkflowExpression.Compile(webHookfilters);
+            WorkflowExpression.Validate(__workflow_webHookfilters, nameof(webHookfilters), required: false);
+            var __workflow_webHookiconURL = webHookiconURL == null ? null : WorkflowExpression.Compile(webHookiconURL);
+            WorkflowExpression.Validate(__workflow_webHookiconURL, nameof(webHookiconURL), required: false);
+            var __workflow_webHookacceptResponseFrom = webHookacceptResponseFrom == null ? null : WorkflowExpression.Compile(webHookacceptResponseFrom);
+            WorkflowExpression.Validate(__workflow_webHookacceptResponseFrom, nameof(webHookacceptResponseFrom), required: false);
+            var __workflow_webHooktargetUser = webHooktargetUser == null ? null : WorkflowExpression.Compile(webHooktargetUser);
+            WorkflowExpression.Validate(__workflow_webHooktargetUser, nameof(webHooktargetUser), required: false);
+            var __workflow_webHookallowBranching = webHookallowBranching == null ? null : WorkflowExpression.Compile(webHookallowBranching);
+            WorkflowExpression.Validate(__workflow_webHookallowBranching, nameof(webHookallowBranching), required: false);
+            var __workflow_webHookshowInChat = webHookshowInChat == null ? null : WorkflowExpression.Compile(webHookshowInChat);
+            WorkflowExpression.Validate(__workflow_webHookshowInChat, nameof(webHookshowInChat), required: false);
             return new DeferredBodyAction<WebHook>(() =>
             {
                 var apiCallPath = "/api/triggers/webhooks/registerResponse_Memory";
@@ -1092,9 +1062,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 var webHookpropCount = 0;
                 webHook["webHookUri"] = "#{listCallbackUrl()}";
                 webHookpropCount++;
-                if (webHookfilters != null)
+                if (__workflow_webHookfilters != null)
                 {
-                    webHook["filters"] = ExpressionConverter.ConvertO(webHookfilters);
+                    webHook["filters"] = ExpressionConverter.ConvertO(__workflow_webHookfilters);
                     webHookpropCount++;
                 }
 
@@ -1115,22 +1085,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 }
 
                 webHookpropCount++;
-                webHook["message"] = ExpressionConverter.ConvertO(webHookmessage);
+                webHook["message"] = ExpressionConverter.ConvertO(__workflow_webHookmessage);
                 webHookpropCount++;
-                webHook["type"] = ExpressionConverter.ConvertO(webHookmemoryType);
+                webHook["type"] = ExpressionConverter.ConvertO(__workflow_webHookmemoryType);
                 webHookpropCount++;
-                webHook["activityJson"] = ExpressionConverter.ConvertO(webHookreplyActivity);
-                if (webHookiconURL != null)
+                webHook["activityJson"] = ExpressionConverter.ConvertO(__workflow_webHookreplyActivity);
+                if (__workflow_webHookiconURL != null)
                 {
-                    webHook["icon"] = ExpressionConverter.ConvertO(webHookiconURL);
+                    webHook["icon"] = ExpressionConverter.ConvertO(__workflow_webHookiconURL);
                     webHookpropCount++;
                 }
 
-                if (webHookacceptResponseFrom != null)
+                if (__workflow_webHookacceptResponseFrom != null)
                 {
-                    if (webHookacceptResponseFrom != null)
+                    if (__workflow_webHookacceptResponseFrom != null)
                     {
-                        webHook["acceptResponseFrom"] = ExpressionConverter.ConvertO(webHookacceptResponseFrom);
+                        webHook["acceptResponseFrom"] = ExpressionConverter.ConvertO(__workflow_webHookacceptResponseFrom);
                         webHookpropCount++;
                     }
 
@@ -1142,17 +1112,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                     webHookpropCount++;
                 }
 
-                if (webHooktargetUser != null)
+                if (__workflow_webHooktargetUser != null)
                 {
-                    webHook["targetUserMemory"] = ExpressionConverter.ConvertO(webHooktargetUser);
+                    webHook["targetUserMemory"] = ExpressionConverter.ConvertO(__workflow_webHooktargetUser);
                     webHookpropCount++;
                 }
 
-                if (webHookallowBranching != null)
+                if (__workflow_webHookallowBranching != null)
                 {
-                    if (webHookallowBranching != null)
+                    if (__workflow_webHookallowBranching != null)
                     {
-                        webHook["allowBranching"] = ExpressionConverter.ConvertO(webHookallowBranching);
+                        webHook["allowBranching"] = ExpressionConverter.ConvertO(__workflow_webHookallowBranching);
                         webHookpropCount++;
                     }
 
@@ -1164,11 +1134,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                     webHookpropCount++;
                 }
 
-                if (webHookshowInChat != null)
+                if (__workflow_webHookshowInChat != null)
                 {
-                    if (webHookshowInChat != null)
+                    if (__workflow_webHookshowInChat != null)
                     {
-                        webHook["showInChat"] = ExpressionConverter.ConvertO(webHookshowInChat);
+                        webHook["showInChat"] = ExpressionConverter.ConvertO(__workflow_webHookshowInChat);
                         webHookpropCount++;
                     }
 
@@ -1190,42 +1160,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        [WorkflowExpressionFactory(nameof(__BuildWebHookRegistrationsInputResponseADAPTIVECARD))]
-        public IBodyWorkflowAction<WebHook> WebHookRegistrationsInputResponseADAPTIVECARD([WorkflowExpression] Func<string> selectedCard, [WorkflowExpression] Func<object> webHook = null)
+        public IBodyWorkflowAction<WebHook> WebHookRegistrationsInputResponseADAPTIVECARD(Expression<Func<string>> selectedCard, Expression<Func<object>> webHook = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<WebHook> __BuildWebHookRegistrationsInputResponseADAPTIVECARD(WorkflowExpression<string> selectedCard, WorkflowExpression<object> webHook = null)
-        {
-            WorkflowExpression.Validate(selectedCard, nameof(selectedCard), required: true);
-            WorkflowExpression.Validate(webHook, nameof(webHook), required: false);
+            var __workflow_selectedCard = selectedCard == null ? null : WorkflowExpression.Compile(selectedCard);
+            WorkflowExpression.Validate(__workflow_selectedCard, nameof(selectedCard), required: true);
+            var __workflow_webHook = webHook == null ? null : WorkflowExpression.Compile(webHook);
+            WorkflowExpression.Validate(__workflow_webHook, nameof(webHook), required: false);
             return new DeferredBodyAction<WebHook>(() =>
             {
                 var apiCallPath = "/api/triggers/webhooks/registerResponse_AdaptiveCard";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["selectedCard"] = ExpressionConverter.Convert(selectedCard);
-                callPayload.Body = ExpressionConverter.ConvertO(webHook);
+                callPayload.Headers["selectedCard"] = ExpressionConverter.Convert(__workflow_selectedCard);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_webHook);
                 return new ApiConnectionAction<WebHook>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        [WorkflowExpressionFactory(nameof(__BuildWebHookRegistrationsInitiateBridge))]
-        public IBodyWorkflowAction<WebHook> WebHookRegistrationsInitiateBridge([WorkflowExpression] Func<webHookparticipantsInputItem[]> webHookparticipants, [WorkflowExpression] Func<string> webHookendChatCommand, [WorkflowExpression] Func<int> webHookidleTimeout, [WorkflowExpression] Func<string[]> webHookfilters = null)
+        public IBodyWorkflowAction<WebHook> WebHookRegistrationsInitiateBridge(Expression<Func<webHookparticipantsInputItem[]>> webHookparticipants, Expression<Func<string>> webHookendChatCommand, Expression<Func<int>> webHookidleTimeout, Expression<Func<string[]>> webHookfilters = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<WebHook> __BuildWebHookRegistrationsInitiateBridge(WorkflowExpression<webHookparticipantsInputItem[]> webHookparticipants, WorkflowExpression<string> webHookendChatCommand, WorkflowExpression<int> webHookidleTimeout, WorkflowExpression<string[]> webHookfilters = null)
-        {
-            WorkflowExpression.Validate(webHookparticipants, nameof(webHookparticipants), required: true);
-            WorkflowExpression.Validate(webHookendChatCommand, nameof(webHookendChatCommand), required: true);
-            WorkflowExpression.Validate(webHookidleTimeout, nameof(webHookidleTimeout), required: true);
-            WorkflowExpression.Validate(webHookfilters, nameof(webHookfilters), required: false);
+            var __workflow_webHookparticipants = webHookparticipants == null ? null : WorkflowExpression.Compile(webHookparticipants);
+            WorkflowExpression.Validate(__workflow_webHookparticipants, nameof(webHookparticipants), required: true);
+            var __workflow_webHookendChatCommand = webHookendChatCommand == null ? null : WorkflowExpression.Compile(webHookendChatCommand);
+            WorkflowExpression.Validate(__workflow_webHookendChatCommand, nameof(webHookendChatCommand), required: true);
+            var __workflow_webHookidleTimeout = webHookidleTimeout == null ? null : WorkflowExpression.Compile(webHookidleTimeout);
+            WorkflowExpression.Validate(__workflow_webHookidleTimeout, nameof(webHookidleTimeout), required: true);
+            var __workflow_webHookfilters = webHookfilters == null ? null : WorkflowExpression.Compile(webHookfilters);
+            WorkflowExpression.Validate(__workflow_webHookfilters, nameof(webHookfilters), required: false);
             return new DeferredBodyAction<WebHook>(() =>
             {
                 var apiCallPath = "/api/triggers/webhooks/registerBridge";
@@ -1235,9 +1197,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 var webHookpropCount = 0;
                 webHook["webHookUri"] = "#{listCallbackUrl()}";
                 webHookpropCount++;
-                if (webHookfilters != null)
+                if (__workflow_webHookfilters != null)
                 {
-                    webHook["filters"] = ExpressionConverter.ConvertO(webHookfilters);
+                    webHook["filters"] = ExpressionConverter.ConvertO(__workflow_webHookfilters);
                     webHookpropCount++;
                 }
 
@@ -1258,11 +1220,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 }
 
                 webHookpropCount++;
-                webHook["participants"] = ExpressionConverter.ConvertO(webHookparticipants);
+                webHook["participants"] = ExpressionConverter.ConvertO(__workflow_webHookparticipants);
                 webHookpropCount++;
-                webHook["endBridgeCommand"] = ExpressionConverter.ConvertO(webHookendChatCommand);
+                webHook["endBridgeCommand"] = ExpressionConverter.ConvertO(__workflow_webHookendChatCommand);
                 webHookpropCount++;
-                webHook["idleTimeoutDuration"] = ExpressionConverter.ConvertO(webHookidleTimeout);
+                webHook["idleTimeoutDuration"] = ExpressionConverter.ConvertO(__workflow_webHookidleTimeout);
                 if (webHookpropCount > 0)
                 {
                     callPayload.Body = webHook;
@@ -1273,19 +1235,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        [WorkflowExpressionFactory(nameof(__BuildSaveBotMemory))]
-        public IBodyWorkflowAction<ResponseSaveBotMemory> SaveBotMemory([WorkflowExpression] Func<string> contentuserPrincipalName, [WorkflowExpression] Func<string> contentmemoryType, [WorkflowExpression] Func<string> contenttitle, [WorkflowExpression] Func<string> contentvalue)
+        public IBodyWorkflowAction<ResponseSaveBotMemory> SaveBotMemory(Expression<Func<string>> contentuserPrincipalName, Expression<Func<string>> contentmemoryType, Expression<Func<string>> contenttitle, Expression<Func<string>> contentvalue)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ResponseSaveBotMemory> __BuildSaveBotMemory(WorkflowExpression<string> contentuserPrincipalName, WorkflowExpression<string> contentmemoryType, WorkflowExpression<string> contenttitle, WorkflowExpression<string> contentvalue)
-        {
-            WorkflowExpression.Validate(contentuserPrincipalName, nameof(contentuserPrincipalName), required: true);
-            WorkflowExpression.Validate(contentmemoryType, nameof(contentmemoryType), required: true);
-            WorkflowExpression.Validate(contenttitle, nameof(contenttitle), required: true);
-            WorkflowExpression.Validate(contentvalue, nameof(contentvalue), required: true);
+            var __workflow_contentuserPrincipalName = contentuserPrincipalName == null ? null : WorkflowExpression.Compile(contentuserPrincipalName);
+            WorkflowExpression.Validate(__workflow_contentuserPrincipalName, nameof(contentuserPrincipalName), required: true);
+            var __workflow_contentmemoryType = contentmemoryType == null ? null : WorkflowExpression.Compile(contentmemoryType);
+            WorkflowExpression.Validate(__workflow_contentmemoryType, nameof(contentmemoryType), required: true);
+            var __workflow_contenttitle = contenttitle == null ? null : WorkflowExpression.Compile(contenttitle);
+            WorkflowExpression.Validate(__workflow_contenttitle, nameof(contenttitle), required: true);
+            var __workflow_contentvalue = contentvalue == null ? null : WorkflowExpression.Compile(contentvalue);
+            WorkflowExpression.Validate(__workflow_contentvalue, nameof(contentvalue), required: true);
             return new DeferredBodyAction<ResponseSaveBotMemory>(() =>
             {
                 var apiCallPath = "/api/triggers/bot/saveBotMemory";
@@ -1294,13 +1253,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 var content = new JObject();
                 var contentpropCount = 0;
                 contentpropCount++;
-                content["user"] = ExpressionConverter.ConvertO(contentuserPrincipalName);
+                content["user"] = ExpressionConverter.ConvertO(__workflow_contentuserPrincipalName);
                 contentpropCount++;
-                content["type"] = ExpressionConverter.ConvertO(contentmemoryType);
+                content["type"] = ExpressionConverter.ConvertO(__workflow_contentmemoryType);
                 contentpropCount++;
-                content["title"] = ExpressionConverter.ConvertO(contenttitle);
+                content["title"] = ExpressionConverter.ConvertO(__workflow_contenttitle);
                 contentpropCount++;
-                content["value"] = ExpressionConverter.ConvertO(contentvalue);
+                content["value"] = ExpressionConverter.ConvertO(__workflow_contentvalue);
                 if (contentpropCount > 0)
                 {
                     callPayload.Body = content;
@@ -1311,18 +1270,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteBotMemory))]
-        public IBodyWorkflowAction<ResponseDeleteBotMemory> DeleteBotMemory([WorkflowExpression] Func<string> contentuserPrincipalName, [WorkflowExpression] Func<string> contentmemoryType, [WorkflowExpression] Func<string> contentvalue)
+        public IBodyWorkflowAction<ResponseDeleteBotMemory> DeleteBotMemory(Expression<Func<string>> contentuserPrincipalName, Expression<Func<string>> contentmemoryType, Expression<Func<string>> contentvalue)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ResponseDeleteBotMemory> __BuildDeleteBotMemory(WorkflowExpression<string> contentuserPrincipalName, WorkflowExpression<string> contentmemoryType, WorkflowExpression<string> contentvalue)
-        {
-            WorkflowExpression.Validate(contentuserPrincipalName, nameof(contentuserPrincipalName), required: true);
-            WorkflowExpression.Validate(contentmemoryType, nameof(contentmemoryType), required: true);
-            WorkflowExpression.Validate(contentvalue, nameof(contentvalue), required: true);
+            var __workflow_contentuserPrincipalName = contentuserPrincipalName == null ? null : WorkflowExpression.Compile(contentuserPrincipalName);
+            WorkflowExpression.Validate(__workflow_contentuserPrincipalName, nameof(contentuserPrincipalName), required: true);
+            var __workflow_contentmemoryType = contentmemoryType == null ? null : WorkflowExpression.Compile(contentmemoryType);
+            WorkflowExpression.Validate(__workflow_contentmemoryType, nameof(contentmemoryType), required: true);
+            var __workflow_contentvalue = contentvalue == null ? null : WorkflowExpression.Compile(contentvalue);
+            WorkflowExpression.Validate(__workflow_contentvalue, nameof(contentvalue), required: true);
             return new DeferredBodyAction<ResponseDeleteBotMemory>(() =>
             {
                 var apiCallPath = "/api/triggers/bot/deleteBotMemory";
@@ -1331,11 +1286,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 var content = new JObject();
                 var contentpropCount = 0;
                 contentpropCount++;
-                content["user"] = ExpressionConverter.ConvertO(contentuserPrincipalName);
+                content["user"] = ExpressionConverter.ConvertO(__workflow_contentuserPrincipalName);
                 contentpropCount++;
-                content["type"] = ExpressionConverter.ConvertO(contentmemoryType);
+                content["type"] = ExpressionConverter.ConvertO(__workflow_contentmemoryType);
                 contentpropCount++;
-                content["value"] = ExpressionConverter.ConvertO(contentvalue);
+                content["value"] = ExpressionConverter.ConvertO(__workflow_contentvalue);
                 if (contentpropCount > 0)
                 {
                     callPayload.Body = content;
@@ -1346,17 +1301,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        [WorkflowExpressionFactory(nameof(__BuildGetMemoryItemsByType))]
-        public IBodyWorkflowAction<MemoryItem[]> GetMemoryItemsByType([WorkflowExpression] Func<string> checkMemoryInfouserPrincipalName, [WorkflowExpression] Func<string> checkMemoryInfomemoryType)
+        public IBodyWorkflowAction<MemoryItem[]> GetMemoryItemsByType(Expression<Func<string>> checkMemoryInfouserPrincipalName, Expression<Func<string>> checkMemoryInfomemoryType)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MemoryItem[]> __BuildGetMemoryItemsByType(WorkflowExpression<string> checkMemoryInfouserPrincipalName, WorkflowExpression<string> checkMemoryInfomemoryType)
-        {
-            WorkflowExpression.Validate(checkMemoryInfouserPrincipalName, nameof(checkMemoryInfouserPrincipalName), required: true);
-            WorkflowExpression.Validate(checkMemoryInfomemoryType, nameof(checkMemoryInfomemoryType), required: true);
+            var __workflow_checkMemoryInfouserPrincipalName = checkMemoryInfouserPrincipalName == null ? null : WorkflowExpression.Compile(checkMemoryInfouserPrincipalName);
+            WorkflowExpression.Validate(__workflow_checkMemoryInfouserPrincipalName, nameof(checkMemoryInfouserPrincipalName), required: true);
+            var __workflow_checkMemoryInfomemoryType = checkMemoryInfomemoryType == null ? null : WorkflowExpression.Compile(checkMemoryInfomemoryType);
+            WorkflowExpression.Validate(__workflow_checkMemoryInfomemoryType, nameof(checkMemoryInfomemoryType), required: true);
             return new DeferredBodyAction<MemoryItem[]>(() =>
             {
                 var apiCallPath = "/api/triggers/bot/CheckMemoryByType";
@@ -1365,9 +1315,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 var checkMemoryInfo = new JObject();
                 var checkMemoryInfopropCount = 0;
                 checkMemoryInfopropCount++;
-                checkMemoryInfo["user"] = ExpressionConverter.ConvertO(checkMemoryInfouserPrincipalName);
+                checkMemoryInfo["user"] = ExpressionConverter.ConvertO(__workflow_checkMemoryInfouserPrincipalName);
                 checkMemoryInfopropCount++;
-                checkMemoryInfo["type"] = ExpressionConverter.ConvertO(checkMemoryInfomemoryType);
+                checkMemoryInfo["type"] = ExpressionConverter.ConvertO(__workflow_checkMemoryInfomemoryType);
                 if (checkMemoryInfopropCount > 0)
                 {
                     callPayload.Body = checkMemoryInfo;
@@ -1380,23 +1330,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
 
     public class BizzyTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildWebHookRegistrationsPost))]
-        public IBodyWorkflowTrigger<WebHook> WebHookRegistrationsPost([WorkflowExpression] Func<string> webHooktriggerDescription,[WorkflowExpression] Func<webHookbotTriggerTypeInput> webHookbotTriggerType,[WorkflowExpression] Func<string[]> webHookfilters = null,[WorkflowExpression] Func<string> webHookkeywords = null,[WorkflowExpression] Func<string> webHookDeprecatedLUISAPIKey = null,[WorkflowExpression] Func<string> webHookDeprecatedLUISApp = null,[WorkflowExpression] Func<string> webHookDeprecatedLUISIntent = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHook> WebHookRegistrationsPost(Expression<Func<string>> webHooktriggerDescription, Expression<Func<webHookbotTriggerTypeInput>> webHookbotTriggerType, Expression<Func<string[]>> webHookfilters = null, Expression<Func<string>> webHookkeywords = null, Expression<Func<string>> webHookDeprecatedLUISAPIKey = null, Expression<Func<string>> webHookDeprecatedLUISApp = null, Expression<Func<string>> webHookDeprecatedLUISIntent = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<WebHook> __BuildWebHookRegistrationsPost(WorkflowExpression<string> webHooktriggerDescription,WorkflowExpression<webHookbotTriggerTypeInput> webHookbotTriggerType,WorkflowExpression<string[]> webHookfilters = null,WorkflowExpression<string> webHookkeywords = null,WorkflowExpression<string> webHookDeprecatedLUISAPIKey = null,WorkflowExpression<string> webHookDeprecatedLUISApp = null,WorkflowExpression<string> webHookDeprecatedLUISIntent = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(webHooktriggerDescription, nameof(webHooktriggerDescription), required: true);
-            WorkflowExpression.Validate(webHookbotTriggerType, nameof(webHookbotTriggerType), required: true);
-            WorkflowExpression.Validate(webHookfilters, nameof(webHookfilters), required: false);
-            WorkflowExpression.Validate(webHookkeywords, nameof(webHookkeywords), required: false);
-            WorkflowExpression.Validate(webHookDeprecatedLUISAPIKey, nameof(webHookDeprecatedLUISAPIKey), required: false);
-            WorkflowExpression.Validate(webHookDeprecatedLUISApp, nameof(webHookDeprecatedLUISApp), required: false);
-            WorkflowExpression.Validate(webHookDeprecatedLUISIntent, nameof(webHookDeprecatedLUISIntent), required: false);
+            var __workflow_webHooktriggerDescription = webHooktriggerDescription == null ? null : WorkflowExpression.Compile(webHooktriggerDescription);
+            WorkflowExpression.Validate(__workflow_webHooktriggerDescription, nameof(webHooktriggerDescription), required: true);
+            var __workflow_webHookbotTriggerType = webHookbotTriggerType == null ? null : WorkflowExpression.Compile(webHookbotTriggerType);
+            WorkflowExpression.Validate(__workflow_webHookbotTriggerType, nameof(webHookbotTriggerType), required: true);
+            var __workflow_webHookfilters = webHookfilters == null ? null : WorkflowExpression.Compile(webHookfilters);
+            WorkflowExpression.Validate(__workflow_webHookfilters, nameof(webHookfilters), required: false);
+            var __workflow_webHookkeywords = webHookkeywords == null ? null : WorkflowExpression.Compile(webHookkeywords);
+            WorkflowExpression.Validate(__workflow_webHookkeywords, nameof(webHookkeywords), required: false);
+            var __workflow_webHookDeprecatedLUISAPIKey = webHookDeprecatedLUISAPIKey == null ? null : WorkflowExpression.Compile(webHookDeprecatedLUISAPIKey);
+            WorkflowExpression.Validate(__workflow_webHookDeprecatedLUISAPIKey, nameof(webHookDeprecatedLUISAPIKey), required: false);
+            var __workflow_webHookDeprecatedLUISApp = webHookDeprecatedLUISApp == null ? null : WorkflowExpression.Compile(webHookDeprecatedLUISApp);
+            WorkflowExpression.Validate(__workflow_webHookDeprecatedLUISApp, nameof(webHookDeprecatedLUISApp), required: false);
+            var __workflow_webHookDeprecatedLUISIntent = webHookDeprecatedLUISIntent == null ? null : WorkflowExpression.Compile(webHookDeprecatedLUISIntent);
+            WorkflowExpression.Validate(__workflow_webHookDeprecatedLUISIntent, nameof(webHookDeprecatedLUISIntent), required: false);
             return new DeferredBodyTrigger<WebHook>(() =>
             {
                 var apiCallPath = "/api/triggers/webhooks/register";
@@ -1406,9 +1355,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 var webHookpropCount = 0;
                 webHook["webHookUri"] = "#{listCallbackUrl()}";
                 webHookpropCount++;
-                if (webHookfilters != null)
+                if (__workflow_webHookfilters != null)
                 {
-                    webHook["filters"] = ExpressionConverter.ConvertO(webHookfilters);
+                    webHook["filters"] = ExpressionConverter.ConvertO(__workflow_webHookfilters);
                     webHookpropCount++;
                 }
 
@@ -1429,30 +1378,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 }
 
                 webHookpropCount++;
-                webHook["triggerDescription"] = ExpressionConverter.ConvertO(webHooktriggerDescription);
+                webHook["triggerDescription"] = ExpressionConverter.ConvertO(__workflow_webHooktriggerDescription);
                 webHookpropCount++;
-                webHook["triggerType"] = ExpressionConverter.ConvertO(webHookbotTriggerType);
-                if (webHookkeywords != null)
+                webHook["triggerType"] = ExpressionConverter.ConvertO(__workflow_webHookbotTriggerType);
+                if (__workflow_webHookkeywords != null)
                 {
-                    webHook["keywords"] = ExpressionConverter.ConvertO(webHookkeywords);
+                    webHook["keywords"] = ExpressionConverter.ConvertO(__workflow_webHookkeywords);
                     webHookpropCount++;
                 }
 
-                if (webHookDeprecatedLUISAPIKey != null)
+                if (__workflow_webHookDeprecatedLUISAPIKey != null)
                 {
-                    webHook["luisApiKey"] = ExpressionConverter.ConvertO(webHookDeprecatedLUISAPIKey);
+                    webHook["luisApiKey"] = ExpressionConverter.ConvertO(__workflow_webHookDeprecatedLUISAPIKey);
                     webHookpropCount++;
                 }
 
-                if (webHookDeprecatedLUISApp != null)
+                if (__workflow_webHookDeprecatedLUISApp != null)
                 {
-                    webHook["luisAppId"] = ExpressionConverter.ConvertO(webHookDeprecatedLUISApp);
+                    webHook["luisAppId"] = ExpressionConverter.ConvertO(__workflow_webHookDeprecatedLUISApp);
                     webHookpropCount++;
                 }
 
-                if (webHookDeprecatedLUISIntent != null)
+                if (__workflow_webHookDeprecatedLUISIntent != null)
                 {
-                    webHook["luisIntent"] = ExpressionConverter.ConvertO(webHookDeprecatedLUISIntent);
+                    webHook["luisIntent"] = ExpressionConverter.ConvertO(__workflow_webHookDeprecatedLUISIntent);
                     webHookpropCount++;
                 }
 
@@ -1465,20 +1414,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildWebHookRegistrationsVectorPost))]
-        public IBodyWorkflowTrigger<WebHook> WebHookRegistrationsVectorPost([WorkflowExpression] Func<string> webHooktriggerDescription,[WorkflowExpression] Func<webHookbotTriggerTypeInput> webHookbotTriggerType,[WorkflowExpression] Func<string[]> webHookfilters = null,[WorkflowExpression] Func<string> webHooklUISIntentVector = null,[WorkflowExpression] Func<webHookallowBranchingInput> webHookallowBranching = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHook> WebHookRegistrationsVectorPost(Expression<Func<string>> webHooktriggerDescription, Expression<Func<webHookbotTriggerTypeInput>> webHookbotTriggerType, Expression<Func<string[]>> webHookfilters = null, Expression<Func<string>> webHooklUISIntentVector = null, Expression<Func<webHookallowBranchingInput>> webHookallowBranching = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<WebHook> __BuildWebHookRegistrationsVectorPost(WorkflowExpression<string> webHooktriggerDescription,WorkflowExpression<webHookbotTriggerTypeInput> webHookbotTriggerType,WorkflowExpression<string[]> webHookfilters = null,WorkflowExpression<string> webHooklUISIntentVector = null,WorkflowExpression<webHookallowBranchingInput> webHookallowBranching = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(webHooktriggerDescription, nameof(webHooktriggerDescription), required: true);
-            WorkflowExpression.Validate(webHookbotTriggerType, nameof(webHookbotTriggerType), required: true);
-            WorkflowExpression.Validate(webHookfilters, nameof(webHookfilters), required: false);
-            WorkflowExpression.Validate(webHooklUISIntentVector, nameof(webHooklUISIntentVector), required: false);
-            WorkflowExpression.Validate(webHookallowBranching, nameof(webHookallowBranching), required: false);
+            var __workflow_webHooktriggerDescription = webHooktriggerDescription == null ? null : WorkflowExpression.Compile(webHooktriggerDescription);
+            WorkflowExpression.Validate(__workflow_webHooktriggerDescription, nameof(webHooktriggerDescription), required: true);
+            var __workflow_webHookbotTriggerType = webHookbotTriggerType == null ? null : WorkflowExpression.Compile(webHookbotTriggerType);
+            WorkflowExpression.Validate(__workflow_webHookbotTriggerType, nameof(webHookbotTriggerType), required: true);
+            var __workflow_webHookfilters = webHookfilters == null ? null : WorkflowExpression.Compile(webHookfilters);
+            WorkflowExpression.Validate(__workflow_webHookfilters, nameof(webHookfilters), required: false);
+            var __workflow_webHooklUISIntentVector = webHooklUISIntentVector == null ? null : WorkflowExpression.Compile(webHooklUISIntentVector);
+            WorkflowExpression.Validate(__workflow_webHooklUISIntentVector, nameof(webHooklUISIntentVector), required: false);
+            var __workflow_webHookallowBranching = webHookallowBranching == null ? null : WorkflowExpression.Compile(webHookallowBranching);
+            WorkflowExpression.Validate(__workflow_webHookallowBranching, nameof(webHookallowBranching), required: false);
             return new DeferredBodyTrigger<WebHook>(() =>
             {
                 var apiCallPath = "/api/triggers/webhooks/registerVector";
@@ -1488,9 +1435,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 var webHookpropCount = 0;
                 webHook["webHookUri"] = "#{listCallbackUrl()}";
                 webHookpropCount++;
-                if (webHookfilters != null)
+                if (__workflow_webHookfilters != null)
                 {
-                    webHook["filters"] = ExpressionConverter.ConvertO(webHookfilters);
+                    webHook["filters"] = ExpressionConverter.ConvertO(__workflow_webHookfilters);
                     webHookpropCount++;
                 }
 
@@ -1511,20 +1458,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 }
 
                 webHookpropCount++;
-                webHook["triggerDescription"] = ExpressionConverter.ConvertO(webHooktriggerDescription);
+                webHook["triggerDescription"] = ExpressionConverter.ConvertO(__workflow_webHooktriggerDescription);
                 webHookpropCount++;
-                webHook["triggerType"] = ExpressionConverter.ConvertO(webHookbotTriggerType);
-                if (webHooklUISIntentVector != null)
+                webHook["triggerType"] = ExpressionConverter.ConvertO(__workflow_webHookbotTriggerType);
+                if (__workflow_webHooklUISIntentVector != null)
                 {
-                    webHook["intentVector"] = ExpressionConverter.ConvertO(webHooklUISIntentVector);
+                    webHook["intentVector"] = ExpressionConverter.ConvertO(__workflow_webHooklUISIntentVector);
                     webHookpropCount++;
                 }
 
-                if (webHookallowBranching != null)
+                if (__workflow_webHookallowBranching != null)
                 {
-                    if (webHookallowBranching != null)
+                    if (__workflow_webHookallowBranching != null)
                     {
-                        webHook["allowBranching"] = ExpressionConverter.ConvertO(webHookallowBranching);
+                        webHook["allowBranching"] = ExpressionConverter.ConvertO(__workflow_webHookallowBranching);
                         webHookpropCount++;
                     }
 

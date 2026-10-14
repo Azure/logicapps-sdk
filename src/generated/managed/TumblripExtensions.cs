@@ -1,30 +1,23 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class TumblripActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        [WorkflowExpressionFactory(nameof(__BuildBlogGet))]
-        public IBodyWorkflowAction<BlogGetResponse> BlogGet([WorkflowExpression] Func<string> blogIdentifier)
+        public IBodyWorkflowAction<BlogGetResponse> BlogGet(Expression<Func<string>> blogIdentifier)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<BlogGetResponse> __BuildBlogGet(WorkflowExpression<string> blogIdentifier)
-        {
-            WorkflowExpression.Validate(blogIdentifier, nameof(blogIdentifier), required: true);
+            var __workflow_blogIdentifier = blogIdentifier == null ? null : WorkflowExpression.Compile(blogIdentifier);
+            WorkflowExpression.Validate(__workflow_blogIdentifier, nameof(blogIdentifier), required: true);
             return new DeferredBodyAction<BlogGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/info", ExpressionConverter.ConvertWithUrlEncoding(blogIdentifier, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/info", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blogIdentifier, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<BlogGetResponse>(callPayload);
@@ -32,19 +25,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        [WorkflowExpressionFactory(nameof(__BuildBlocksGet))]
-        public IBodyWorkflowAction<BlocksGetResponse> BlocksGet([WorkflowExpression] Func<string> blogIdentifier)
+        public IBodyWorkflowAction<BlocksGetResponse> BlocksGet(Expression<Func<string>> blogIdentifier)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<BlocksGetResponse> __BuildBlocksGet(WorkflowExpression<string> blogIdentifier)
-        {
-            WorkflowExpression.Validate(blogIdentifier, nameof(blogIdentifier), required: true);
+            var __workflow_blogIdentifier = blogIdentifier == null ? null : WorkflowExpression.Compile(blogIdentifier);
+            WorkflowExpression.Validate(__workflow_blogIdentifier, nameof(blogIdentifier), required: true);
             return new DeferredBodyAction<BlocksGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/blocks", ExpressionConverter.ConvertWithUrlEncoding(blogIdentifier, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/blocks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blogIdentifier, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<BlocksGetResponse>(callPayload);
@@ -52,34 +39,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        [WorkflowExpressionFactory(nameof(__BuildPostUnblock))]
-        public IBodyWorkflowAction<string> PostUnblock([WorkflowExpression] Func<string> blogIdentifier, [WorkflowExpression] Func<string> bodyblockedTumblelog = null, [WorkflowExpression] Func<bool> bodyanonymousOnly = null)
+        public IBodyWorkflowAction<string> PostUnblock(Expression<Func<string>> blogIdentifier, Expression<Func<string>> bodyblockedTumblelog = null, Expression<Func<bool>> bodyanonymousOnly = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildPostUnblock(WorkflowExpression<string> blogIdentifier, WorkflowExpression<string> bodyblockedTumblelog = null, WorkflowExpression<bool> bodyanonymousOnly = null)
-        {
-            WorkflowExpression.Validate(blogIdentifier, nameof(blogIdentifier), required: true);
-            WorkflowExpression.Validate(bodyblockedTumblelog, nameof(bodyblockedTumblelog), required: false);
-            WorkflowExpression.Validate(bodyanonymousOnly, nameof(bodyanonymousOnly), required: false);
+            var __workflow_blogIdentifier = blogIdentifier == null ? null : WorkflowExpression.Compile(blogIdentifier);
+            WorkflowExpression.Validate(__workflow_blogIdentifier, nameof(blogIdentifier), required: true);
+            var __workflow_bodyblockedTumblelog = bodyblockedTumblelog == null ? null : WorkflowExpression.Compile(bodyblockedTumblelog);
+            WorkflowExpression.Validate(__workflow_bodyblockedTumblelog, nameof(bodyblockedTumblelog), required: false);
+            var __workflow_bodyanonymousOnly = bodyanonymousOnly == null ? null : WorkflowExpression.Compile(bodyanonymousOnly);
+            WorkflowExpression.Validate(__workflow_bodyanonymousOnly, nameof(bodyanonymousOnly), required: false);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/blocks", ExpressionConverter.ConvertWithUrlEncoding(blogIdentifier, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/blocks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blogIdentifier, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyblockedTumblelog != null)
+                if (__workflow_bodyblockedTumblelog != null)
                 {
-                    body["blocked_tumblelog"] = ExpressionConverter.ConvertO(bodyblockedTumblelog);
+                    body["blocked_tumblelog"] = ExpressionConverter.ConvertO(__workflow_bodyblockedTumblelog);
                     bodypropCount++;
                 }
 
-                if (bodyanonymousOnly != null)
+                if (__workflow_bodyanonymousOnly != null)
                 {
-                    body["anonymous_only"] = ExpressionConverter.ConvertO(bodyanonymousOnly);
+                    body["anonymous_only"] = ExpressionConverter.ConvertO(__workflow_bodyanonymousOnly);
                     bodypropCount++;
                 }
 
@@ -93,34 +76,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        [WorkflowExpressionFactory(nameof(__BuildPostBlock))]
-        public IBodyWorkflowAction<string> PostBlock([WorkflowExpression] Func<string> blogIdentifier, [WorkflowExpression] Func<string> bodyblockedTumblelog = null, [WorkflowExpression] Func<string> bodypostId = null)
+        public IBodyWorkflowAction<string> PostBlock(Expression<Func<string>> blogIdentifier, Expression<Func<string>> bodyblockedTumblelog = null, Expression<Func<string>> bodypostId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildPostBlock(WorkflowExpression<string> blogIdentifier, WorkflowExpression<string> bodyblockedTumblelog = null, WorkflowExpression<string> bodypostId = null)
-        {
-            WorkflowExpression.Validate(blogIdentifier, nameof(blogIdentifier), required: true);
-            WorkflowExpression.Validate(bodyblockedTumblelog, nameof(bodyblockedTumblelog), required: false);
-            WorkflowExpression.Validate(bodypostId, nameof(bodypostId), required: false);
+            var __workflow_blogIdentifier = blogIdentifier == null ? null : WorkflowExpression.Compile(blogIdentifier);
+            WorkflowExpression.Validate(__workflow_blogIdentifier, nameof(blogIdentifier), required: true);
+            var __workflow_bodyblockedTumblelog = bodyblockedTumblelog == null ? null : WorkflowExpression.Compile(bodyblockedTumblelog);
+            WorkflowExpression.Validate(__workflow_bodyblockedTumblelog, nameof(bodyblockedTumblelog), required: false);
+            var __workflow_bodypostId = bodypostId == null ? null : WorkflowExpression.Compile(bodypostId);
+            WorkflowExpression.Validate(__workflow_bodypostId, nameof(bodypostId), required: false);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/blocks", ExpressionConverter.ConvertWithUrlEncoding(blogIdentifier, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/blocks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blogIdentifier, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyblockedTumblelog != null)
+                if (__workflow_bodyblockedTumblelog != null)
                 {
-                    body["blocked_tumblelog"] = ExpressionConverter.ConvertO(bodyblockedTumblelog);
+                    body["blocked_tumblelog"] = ExpressionConverter.ConvertO(__workflow_bodyblockedTumblelog);
                     bodypropCount++;
                 }
 
-                if (bodypostId != null)
+                if (__workflow_bodypostId != null)
                 {
-                    body["post_id"] = ExpressionConverter.ConvertO(bodypostId);
+                    body["post_id"] = ExpressionConverter.ConvertO(__workflow_bodypostId);
                     bodypropCount++;
                 }
 
@@ -134,34 +113,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        [WorkflowExpressionFactory(nameof(__BuildPostsBlock))]
-        public IBodyWorkflowAction<string> PostsBlock([WorkflowExpression] Func<string> blogIdentifier, [WorkflowExpression] Func<string> bodyblockedTumblelogs = null, [WorkflowExpression] Func<bool> bodyforce = null)
+        public IBodyWorkflowAction<string> PostsBlock(Expression<Func<string>> blogIdentifier, Expression<Func<string>> bodyblockedTumblelogs = null, Expression<Func<bool>> bodyforce = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildPostsBlock(WorkflowExpression<string> blogIdentifier, WorkflowExpression<string> bodyblockedTumblelogs = null, WorkflowExpression<bool> bodyforce = null)
-        {
-            WorkflowExpression.Validate(blogIdentifier, nameof(blogIdentifier), required: true);
-            WorkflowExpression.Validate(bodyblockedTumblelogs, nameof(bodyblockedTumblelogs), required: false);
-            WorkflowExpression.Validate(bodyforce, nameof(bodyforce), required: false);
+            var __workflow_blogIdentifier = blogIdentifier == null ? null : WorkflowExpression.Compile(blogIdentifier);
+            WorkflowExpression.Validate(__workflow_blogIdentifier, nameof(blogIdentifier), required: true);
+            var __workflow_bodyblockedTumblelogs = bodyblockedTumblelogs == null ? null : WorkflowExpression.Compile(bodyblockedTumblelogs);
+            WorkflowExpression.Validate(__workflow_bodyblockedTumblelogs, nameof(bodyblockedTumblelogs), required: false);
+            var __workflow_bodyforce = bodyforce == null ? null : WorkflowExpression.Compile(bodyforce);
+            WorkflowExpression.Validate(__workflow_bodyforce, nameof(bodyforce), required: false);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/blocks/bulk", ExpressionConverter.ConvertWithUrlEncoding(blogIdentifier, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/blocks/bulk", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blogIdentifier, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyblockedTumblelogs != null)
+                if (__workflow_bodyblockedTumblelogs != null)
                 {
-                    body["blocked_tumblelogs"] = ExpressionConverter.ConvertO(bodyblockedTumblelogs);
+                    body["blocked_tumblelogs"] = ExpressionConverter.ConvertO(__workflow_bodyblockedTumblelogs);
                     bodypropCount++;
                 }
 
-                if (bodyforce != null)
+                if (__workflow_bodyforce != null)
                 {
-                    body["force"] = ExpressionConverter.ConvertO(bodyforce);
+                    body["force"] = ExpressionConverter.ConvertO(__workflow_bodyforce);
                     bodypropCount++;
                 }
 
@@ -175,169 +150,147 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        [WorkflowExpressionFactory(nameof(__BuildBlogLikesGet))]
-        public IBodyWorkflowAction<BlogLikesGetResponse> BlogLikesGet([WorkflowExpression] Func<string> blogIdentifier, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> before = null, [WorkflowExpression] Func<int> after = null)
+        public IBodyWorkflowAction<BlogLikesGetResponse> BlogLikesGet(Expression<Func<string>> blogIdentifier, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<int>> before = null, Expression<Func<int>> after = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<BlogLikesGetResponse> __BuildBlogLikesGet(WorkflowExpression<string> blogIdentifier, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null, WorkflowExpression<int> before = null, WorkflowExpression<int> after = null)
-        {
-            WorkflowExpression.Validate(blogIdentifier, nameof(blogIdentifier), required: true);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(offset, nameof(offset), required: false);
-            WorkflowExpression.Validate(before, nameof(before), required: false);
-            WorkflowExpression.Validate(after, nameof(after), required: false);
+            var __workflow_blogIdentifier = blogIdentifier == null ? null : WorkflowExpression.Compile(blogIdentifier);
+            WorkflowExpression.Validate(__workflow_blogIdentifier, nameof(blogIdentifier), required: true);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_before = before == null ? null : WorkflowExpression.Compile(before);
+            WorkflowExpression.Validate(__workflow_before, nameof(before), required: false);
+            var __workflow_after = after == null ? null : WorkflowExpression.Compile(after);
+            WorkflowExpression.Validate(__workflow_after, nameof(after), required: false);
             return new DeferredBodyAction<BlogLikesGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/likes", ExpressionConverter.ConvertWithUrlEncoding(blogIdentifier, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/likes", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blogIdentifier, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (offset != null)
-                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-                if (before != null)
-                    callPayload.Queries["before"] = ExpressionConverter.Convert(before);
-                if (after != null)
-                    callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                if (__workflow_before != null)
+                    callPayload.Queries["before"] = ExpressionConverter.Convert(__workflow_before);
+                if (__workflow_after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(__workflow_after);
                 return new ApiConnectionAction<BlogLikesGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        [WorkflowExpressionFactory(nameof(__BuildBlogFollowingGet))]
-        public IBodyWorkflowAction<BlogFollowingGetResponse> BlogFollowingGet([WorkflowExpression] Func<string> blogIdentifier, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
+        public IBodyWorkflowAction<BlogFollowingGetResponse> BlogFollowingGet(Expression<Func<string>> blogIdentifier, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<BlogFollowingGetResponse> __BuildBlogFollowingGet(WorkflowExpression<string> blogIdentifier, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
-        {
-            WorkflowExpression.Validate(blogIdentifier, nameof(blogIdentifier), required: true);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            var __workflow_blogIdentifier = blogIdentifier == null ? null : WorkflowExpression.Compile(blogIdentifier);
+            WorkflowExpression.Validate(__workflow_blogIdentifier, nameof(blogIdentifier), required: true);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
             return new DeferredBodyAction<BlogFollowingGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/following", ExpressionConverter.ConvertWithUrlEncoding(blogIdentifier, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/following", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blogIdentifier, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (offset != null)
-                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<BlogFollowingGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        [WorkflowExpressionFactory(nameof(__BuildBlogFollowersGet))]
-        public IBodyWorkflowAction<BlogFollowersGetResponse> BlogFollowersGet([WorkflowExpression] Func<string> blogIdentifier, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
+        public IBodyWorkflowAction<BlogFollowersGetResponse> BlogFollowersGet(Expression<Func<string>> blogIdentifier, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<BlogFollowersGetResponse> __BuildBlogFollowersGet(WorkflowExpression<string> blogIdentifier, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
-        {
-            WorkflowExpression.Validate(blogIdentifier, nameof(blogIdentifier), required: true);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            var __workflow_blogIdentifier = blogIdentifier == null ? null : WorkflowExpression.Compile(blogIdentifier);
+            WorkflowExpression.Validate(__workflow_blogIdentifier, nameof(blogIdentifier), required: true);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
             return new DeferredBodyAction<BlogFollowersGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/followers", ExpressionConverter.ConvertWithUrlEncoding(blogIdentifier, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/followers", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blogIdentifier, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (offset != null)
-                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<BlogFollowersGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        [WorkflowExpressionFactory(nameof(__BuildBlogFollowCheckGet))]
-        public IBodyWorkflowAction<BlogFollowCheckGetResponse> BlogFollowCheckGet([WorkflowExpression] Func<string> blogIdentifier, [WorkflowExpression] Func<string> query)
+        public IBodyWorkflowAction<BlogFollowCheckGetResponse> BlogFollowCheckGet(Expression<Func<string>> blogIdentifier, Expression<Func<string>> query)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<BlogFollowCheckGetResponse> __BuildBlogFollowCheckGet(WorkflowExpression<string> blogIdentifier, WorkflowExpression<string> query)
-        {
-            WorkflowExpression.Validate(blogIdentifier, nameof(blogIdentifier), required: true);
-            WorkflowExpression.Validate(query, nameof(query), required: true);
+            var __workflow_blogIdentifier = blogIdentifier == null ? null : WorkflowExpression.Compile(blogIdentifier);
+            WorkflowExpression.Validate(__workflow_blogIdentifier, nameof(blogIdentifier), required: true);
+            var __workflow_query = query == null ? null : WorkflowExpression.Compile(query);
+            WorkflowExpression.Validate(__workflow_query, nameof(query), required: true);
             return new DeferredBodyAction<BlogFollowCheckGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/followed_by", ExpressionConverter.ConvertWithUrlEncoding(blogIdentifier, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/followed_by", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blogIdentifier, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["query"] = ExpressionConverter.Convert(query);
+                callPayload.Queries["query"] = ExpressionConverter.Convert(__workflow_query);
                 return new ApiConnectionAction<BlogFollowCheckGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        [WorkflowExpressionFactory(nameof(__BuildPostsQueuedGet))]
-        public IBodyWorkflowAction<PostsQueuedGetResponse> PostsQueuedGet([WorkflowExpression] Func<string> blogIdentifier, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<int> offset = null)
+        public IBodyWorkflowAction<PostsQueuedGetResponse> PostsQueuedGet(Expression<Func<string>> blogIdentifier, Expression<Func<string>> filter = null, Expression<Func<string>> limit = null, Expression<Func<int>> offset = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PostsQueuedGetResponse> __BuildPostsQueuedGet(WorkflowExpression<string> blogIdentifier, WorkflowExpression<string> filter = null, WorkflowExpression<string> limit = null, WorkflowExpression<int> offset = null)
-        {
-            WorkflowExpression.Validate(blogIdentifier, nameof(blogIdentifier), required: true);
-            WorkflowExpression.Validate(filter, nameof(filter), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            var __workflow_blogIdentifier = blogIdentifier == null ? null : WorkflowExpression.Compile(blogIdentifier);
+            WorkflowExpression.Validate(__workflow_blogIdentifier, nameof(blogIdentifier), required: true);
+            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
+            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
             return new DeferredBodyAction<PostsQueuedGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/posts/queue", ExpressionConverter.ConvertWithUrlEncoding(blogIdentifier, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/posts/queue", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blogIdentifier, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (filter != null)
-                    callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (offset != null)
-                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (__workflow_filter != null)
+                    callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<PostsQueuedGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        [WorkflowExpressionFactory(nameof(__BuildPostQueuedReorder))]
-        public IBodyWorkflowAction<string> PostQueuedReorder([WorkflowExpression] Func<string> blogIdentifier, [WorkflowExpression] Func<string> bodypostId = null, [WorkflowExpression] Func<string> bodyinsertAfter = null)
+        public IBodyWorkflowAction<string> PostQueuedReorder(Expression<Func<string>> blogIdentifier, Expression<Func<string>> bodypostId = null, Expression<Func<string>> bodyinsertAfter = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildPostQueuedReorder(WorkflowExpression<string> blogIdentifier, WorkflowExpression<string> bodypostId = null, WorkflowExpression<string> bodyinsertAfter = null)
-        {
-            WorkflowExpression.Validate(blogIdentifier, nameof(blogIdentifier), required: true);
-            WorkflowExpression.Validate(bodypostId, nameof(bodypostId), required: false);
-            WorkflowExpression.Validate(bodyinsertAfter, nameof(bodyinsertAfter), required: false);
+            var __workflow_blogIdentifier = blogIdentifier == null ? null : WorkflowExpression.Compile(blogIdentifier);
+            WorkflowExpression.Validate(__workflow_blogIdentifier, nameof(blogIdentifier), required: true);
+            var __workflow_bodypostId = bodypostId == null ? null : WorkflowExpression.Compile(bodypostId);
+            WorkflowExpression.Validate(__workflow_bodypostId, nameof(bodypostId), required: false);
+            var __workflow_bodyinsertAfter = bodyinsertAfter == null ? null : WorkflowExpression.Compile(bodyinsertAfter);
+            WorkflowExpression.Validate(__workflow_bodyinsertAfter, nameof(bodyinsertAfter), required: false);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/posts/queue/reorder", ExpressionConverter.ConvertWithUrlEncoding(blogIdentifier, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/posts/queue/reorder", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blogIdentifier, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodypostId != null)
+                if (__workflow_bodypostId != null)
                 {
-                    body["post_id"] = ExpressionConverter.ConvertO(bodypostId);
+                    body["post_id"] = ExpressionConverter.ConvertO(__workflow_bodypostId);
                     bodypropCount++;
                 }
 
-                if (bodyinsertAfter != null)
+                if (__workflow_bodyinsertAfter != null)
                 {
-                    body["insert_after"] = ExpressionConverter.ConvertO(bodyinsertAfter);
+                    body["insert_after"] = ExpressionConverter.ConvertO(__workflow_bodyinsertAfter);
                     bodypropCount++;
                 }
 
@@ -351,19 +304,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        [WorkflowExpressionFactory(nameof(__BuildPostQueuedShuffle))]
-        public IBodyWorkflowAction<string> PostQueuedShuffle([WorkflowExpression] Func<string> blogIdentifier)
+        public IBodyWorkflowAction<string> PostQueuedShuffle(Expression<Func<string>> blogIdentifier)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildPostQueuedShuffle(WorkflowExpression<string> blogIdentifier)
-        {
-            WorkflowExpression.Validate(blogIdentifier, nameof(blogIdentifier), required: true);
+            var __workflow_blogIdentifier = blogIdentifier == null ? null : WorkflowExpression.Compile(blogIdentifier);
+            WorkflowExpression.Validate(__workflow_blogIdentifier, nameof(blogIdentifier), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/posts/queue/shuffle", ExpressionConverter.ConvertWithUrlEncoding(blogIdentifier, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/posts/queue/shuffle", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blogIdentifier, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -371,206 +318,204 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        [WorkflowExpressionFactory(nameof(__BuildPostDraftsGet))]
-        public IBodyWorkflowAction<PostDraftsGetResponse> PostDraftsGet([WorkflowExpression] Func<string> blogIdentifier, [WorkflowExpression] Func<double> beforeId = null, [WorkflowExpression] Func<string> filter = null)
+        public IBodyWorkflowAction<PostDraftsGetResponse> PostDraftsGet(Expression<Func<string>> blogIdentifier, Expression<Func<double>> beforeId = null, Expression<Func<string>> filter = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PostDraftsGetResponse> __BuildPostDraftsGet(WorkflowExpression<string> blogIdentifier, WorkflowExpression<double> beforeId = null, WorkflowExpression<string> filter = null)
-        {
-            WorkflowExpression.Validate(blogIdentifier, nameof(blogIdentifier), required: true);
-            WorkflowExpression.Validate(beforeId, nameof(beforeId), required: false);
-            WorkflowExpression.Validate(filter, nameof(filter), required: false);
+            var __workflow_blogIdentifier = blogIdentifier == null ? null : WorkflowExpression.Compile(blogIdentifier);
+            WorkflowExpression.Validate(__workflow_blogIdentifier, nameof(blogIdentifier), required: true);
+            var __workflow_beforeId = beforeId == null ? null : WorkflowExpression.Compile(beforeId);
+            WorkflowExpression.Validate(__workflow_beforeId, nameof(beforeId), required: false);
+            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
+            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
             return new DeferredBodyAction<PostDraftsGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/posts/draft", ExpressionConverter.ConvertWithUrlEncoding(blogIdentifier, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/posts/draft", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blogIdentifier, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (beforeId != null)
-                    callPayload.Queries["before_id"] = ExpressionConverter.Convert(beforeId);
-                if (filter != null)
-                    callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
+                if (__workflow_beforeId != null)
+                    callPayload.Queries["before_id"] = ExpressionConverter.Convert(__workflow_beforeId);
+                if (__workflow_filter != null)
+                    callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
                 return new ApiConnectionAction<PostDraftsGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        [WorkflowExpressionFactory(nameof(__BuildPostSubmissionGet))]
-        public IBodyWorkflowAction<PostSubmissionGetResponse> PostSubmissionGet([WorkflowExpression] Func<string> blogIdentifier, [WorkflowExpression] Func<string> offset = null, [WorkflowExpression] Func<string> filter = null)
+        public IBodyWorkflowAction<PostSubmissionGetResponse> PostSubmissionGet(Expression<Func<string>> blogIdentifier, Expression<Func<string>> offset = null, Expression<Func<string>> filter = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PostSubmissionGetResponse> __BuildPostSubmissionGet(WorkflowExpression<string> blogIdentifier, WorkflowExpression<string> offset = null, WorkflowExpression<string> filter = null)
-        {
-            WorkflowExpression.Validate(blogIdentifier, nameof(blogIdentifier), required: true);
-            WorkflowExpression.Validate(offset, nameof(offset), required: false);
-            WorkflowExpression.Validate(filter, nameof(filter), required: false);
+            var __workflow_blogIdentifier = blogIdentifier == null ? null : WorkflowExpression.Compile(blogIdentifier);
+            WorkflowExpression.Validate(__workflow_blogIdentifier, nameof(blogIdentifier), required: true);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
+            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
             return new DeferredBodyAction<PostSubmissionGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/posts/submission", ExpressionConverter.ConvertWithUrlEncoding(blogIdentifier, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/posts/submission", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blogIdentifier, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (offset != null)
-                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-                if (filter != null)
-                    callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                if (__workflow_filter != null)
+                    callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
                 return new ApiConnectionAction<PostSubmissionGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        [WorkflowExpressionFactory(nameof(__BuildActivityFeedGet))]
-        public IBodyWorkflowAction<ActivityFeedGetResponse> ActivityFeedGet([WorkflowExpression] Func<string> blogIdentifier, [WorkflowExpression] Func<string> types = null, [WorkflowExpression] Func<int> before = null, [WorkflowExpression] Func<bool> rollups = null)
+        public IBodyWorkflowAction<ActivityFeedGetResponse> ActivityFeedGet(Expression<Func<string>> blogIdentifier, Expression<Func<string>> types = null, Expression<Func<int>> before = null, Expression<Func<bool>> rollups = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ActivityFeedGetResponse> __BuildActivityFeedGet(WorkflowExpression<string> blogIdentifier, WorkflowExpression<string> types = null, WorkflowExpression<int> before = null, WorkflowExpression<bool> rollups = null)
-        {
-            WorkflowExpression.Validate(blogIdentifier, nameof(blogIdentifier), required: true);
-            WorkflowExpression.Validate(types, nameof(types), required: false);
-            WorkflowExpression.Validate(before, nameof(before), required: false);
-            WorkflowExpression.Validate(rollups, nameof(rollups), required: false);
+            var __workflow_blogIdentifier = blogIdentifier == null ? null : WorkflowExpression.Compile(blogIdentifier);
+            WorkflowExpression.Validate(__workflow_blogIdentifier, nameof(blogIdentifier), required: true);
+            var __workflow_types = types == null ? null : WorkflowExpression.Compile(types);
+            WorkflowExpression.Validate(__workflow_types, nameof(types), required: false);
+            var __workflow_before = before == null ? null : WorkflowExpression.Compile(before);
+            WorkflowExpression.Validate(__workflow_before, nameof(before), required: false);
+            var __workflow_rollups = rollups == null ? null : WorkflowExpression.Compile(rollups);
+            WorkflowExpression.Validate(__workflow_rollups, nameof(rollups), required: false);
             return new DeferredBodyAction<ActivityFeedGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/notifications", ExpressionConverter.ConvertWithUrlEncoding(blogIdentifier, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/notifications", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blogIdentifier, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (types != null)
-                    callPayload.Queries["types"] = ExpressionConverter.Convert(types);
-                if (before != null)
-                    callPayload.Queries["before"] = ExpressionConverter.Convert(before);
-                if (rollups != null)
-                    callPayload.Queries["rollups"] = ExpressionConverter.Convert(rollups);
+                if (__workflow_types != null)
+                    callPayload.Queries["types"] = ExpressionConverter.Convert(__workflow_types);
+                if (__workflow_before != null)
+                    callPayload.Queries["before"] = ExpressionConverter.Convert(__workflow_before);
+                if (__workflow_rollups != null)
+                    callPayload.Queries["rollups"] = ExpressionConverter.Convert(__workflow_rollups);
                 return new ApiConnectionAction<ActivityFeedGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        [WorkflowExpressionFactory(nameof(__BuildPostCreate))]
-        public IBodyWorkflowAction<PostCreatePostResponse> PostCreate([WorkflowExpression] Func<string> blogIdentifier, [WorkflowExpression] Func<bodycontentInputItem[]> bodycontent = null, [WorkflowExpression] Func<bodylayoutInputItem[]> bodylayout = null, [WorkflowExpression] Func<string> bodystate = null, [WorkflowExpression] Func<string> bodypublishedOn = null, [WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<string> bodytags = null, [WorkflowExpression] Func<string> bodysourceUrl = null, [WorkflowExpression] Func<bool> bodysendToTwitter = null, [WorkflowExpression] Func<bool> bodyisPrivate = null, [WorkflowExpression] Func<string> bodyslug = null, [WorkflowExpression] Func<string> bodyinteractabilityReblog = null, [WorkflowExpression] Func<string> bodyparentTumblelogUuid = null, [WorkflowExpression] Func<int> bodyparentPostId = null, [WorkflowExpression] Func<string> bodyreblogKey = null, [WorkflowExpression] Func<bool> bodyhideTrail = null)
+        public IBodyWorkflowAction<PostCreatePostResponse> PostCreate(Expression<Func<string>> blogIdentifier, Expression<Func<bodycontentInputItem[]>> bodycontent = null, Expression<Func<bodylayoutInputItem[]>> bodylayout = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodypublishedOn = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodytags = null, Expression<Func<string>> bodysourceUrl = null, Expression<Func<bool>> bodysendToTwitter = null, Expression<Func<bool>> bodyisPrivate = null, Expression<Func<string>> bodyslug = null, Expression<Func<string>> bodyinteractabilityReblog = null, Expression<Func<string>> bodyparentTumblelogUuid = null, Expression<Func<int>> bodyparentPostId = null, Expression<Func<string>> bodyreblogKey = null, Expression<Func<bool>> bodyhideTrail = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PostCreatePostResponse> __BuildPostCreate(WorkflowExpression<string> blogIdentifier, WorkflowExpression<bodycontentInputItem[]> bodycontent = null, WorkflowExpression<bodylayoutInputItem[]> bodylayout = null, WorkflowExpression<string> bodystate = null, WorkflowExpression<string> bodypublishedOn = null, WorkflowExpression<string> bodydate = null, WorkflowExpression<string> bodytags = null, WorkflowExpression<string> bodysourceUrl = null, WorkflowExpression<bool> bodysendToTwitter = null, WorkflowExpression<bool> bodyisPrivate = null, WorkflowExpression<string> bodyslug = null, WorkflowExpression<string> bodyinteractabilityReblog = null, WorkflowExpression<string> bodyparentTumblelogUuid = null, WorkflowExpression<int> bodyparentPostId = null, WorkflowExpression<string> bodyreblogKey = null, WorkflowExpression<bool> bodyhideTrail = null)
-        {
-            WorkflowExpression.Validate(blogIdentifier, nameof(blogIdentifier), required: true);
-            WorkflowExpression.Validate(bodycontent, nameof(bodycontent), required: false);
-            WorkflowExpression.Validate(bodylayout, nameof(bodylayout), required: false);
-            WorkflowExpression.Validate(bodystate, nameof(bodystate), required: false);
-            WorkflowExpression.Validate(bodypublishedOn, nameof(bodypublishedOn), required: false);
-            WorkflowExpression.Validate(bodydate, nameof(bodydate), required: false);
-            WorkflowExpression.Validate(bodytags, nameof(bodytags), required: false);
-            WorkflowExpression.Validate(bodysourceUrl, nameof(bodysourceUrl), required: false);
-            WorkflowExpression.Validate(bodysendToTwitter, nameof(bodysendToTwitter), required: false);
-            WorkflowExpression.Validate(bodyisPrivate, nameof(bodyisPrivate), required: false);
-            WorkflowExpression.Validate(bodyslug, nameof(bodyslug), required: false);
-            WorkflowExpression.Validate(bodyinteractabilityReblog, nameof(bodyinteractabilityReblog), required: false);
-            WorkflowExpression.Validate(bodyparentTumblelogUuid, nameof(bodyparentTumblelogUuid), required: false);
-            WorkflowExpression.Validate(bodyparentPostId, nameof(bodyparentPostId), required: false);
-            WorkflowExpression.Validate(bodyreblogKey, nameof(bodyreblogKey), required: false);
-            WorkflowExpression.Validate(bodyhideTrail, nameof(bodyhideTrail), required: false);
+            var __workflow_blogIdentifier = blogIdentifier == null ? null : WorkflowExpression.Compile(blogIdentifier);
+            WorkflowExpression.Validate(__workflow_blogIdentifier, nameof(blogIdentifier), required: true);
+            var __workflow_bodycontent = bodycontent == null ? null : WorkflowExpression.Compile(bodycontent);
+            WorkflowExpression.Validate(__workflow_bodycontent, nameof(bodycontent), required: false);
+            var __workflow_bodylayout = bodylayout == null ? null : WorkflowExpression.Compile(bodylayout);
+            WorkflowExpression.Validate(__workflow_bodylayout, nameof(bodylayout), required: false);
+            var __workflow_bodystate = bodystate == null ? null : WorkflowExpression.Compile(bodystate);
+            WorkflowExpression.Validate(__workflow_bodystate, nameof(bodystate), required: false);
+            var __workflow_bodypublishedOn = bodypublishedOn == null ? null : WorkflowExpression.Compile(bodypublishedOn);
+            WorkflowExpression.Validate(__workflow_bodypublishedOn, nameof(bodypublishedOn), required: false);
+            var __workflow_bodydate = bodydate == null ? null : WorkflowExpression.Compile(bodydate);
+            WorkflowExpression.Validate(__workflow_bodydate, nameof(bodydate), required: false);
+            var __workflow_bodytags = bodytags == null ? null : WorkflowExpression.Compile(bodytags);
+            WorkflowExpression.Validate(__workflow_bodytags, nameof(bodytags), required: false);
+            var __workflow_bodysourceUrl = bodysourceUrl == null ? null : WorkflowExpression.Compile(bodysourceUrl);
+            WorkflowExpression.Validate(__workflow_bodysourceUrl, nameof(bodysourceUrl), required: false);
+            var __workflow_bodysendToTwitter = bodysendToTwitter == null ? null : WorkflowExpression.Compile(bodysendToTwitter);
+            WorkflowExpression.Validate(__workflow_bodysendToTwitter, nameof(bodysendToTwitter), required: false);
+            var __workflow_bodyisPrivate = bodyisPrivate == null ? null : WorkflowExpression.Compile(bodyisPrivate);
+            WorkflowExpression.Validate(__workflow_bodyisPrivate, nameof(bodyisPrivate), required: false);
+            var __workflow_bodyslug = bodyslug == null ? null : WorkflowExpression.Compile(bodyslug);
+            WorkflowExpression.Validate(__workflow_bodyslug, nameof(bodyslug), required: false);
+            var __workflow_bodyinteractabilityReblog = bodyinteractabilityReblog == null ? null : WorkflowExpression.Compile(bodyinteractabilityReblog);
+            WorkflowExpression.Validate(__workflow_bodyinteractabilityReblog, nameof(bodyinteractabilityReblog), required: false);
+            var __workflow_bodyparentTumblelogUuid = bodyparentTumblelogUuid == null ? null : WorkflowExpression.Compile(bodyparentTumblelogUuid);
+            WorkflowExpression.Validate(__workflow_bodyparentTumblelogUuid, nameof(bodyparentTumblelogUuid), required: false);
+            var __workflow_bodyparentPostId = bodyparentPostId == null ? null : WorkflowExpression.Compile(bodyparentPostId);
+            WorkflowExpression.Validate(__workflow_bodyparentPostId, nameof(bodyparentPostId), required: false);
+            var __workflow_bodyreblogKey = bodyreblogKey == null ? null : WorkflowExpression.Compile(bodyreblogKey);
+            WorkflowExpression.Validate(__workflow_bodyreblogKey, nameof(bodyreblogKey), required: false);
+            var __workflow_bodyhideTrail = bodyhideTrail == null ? null : WorkflowExpression.Compile(bodyhideTrail);
+            WorkflowExpression.Validate(__workflow_bodyhideTrail, nameof(bodyhideTrail), required: false);
             return new DeferredBodyAction<PostCreatePostResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/posts", ExpressionConverter.ConvertWithUrlEncoding(blogIdentifier, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/posts", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blogIdentifier, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodycontent != null)
+                if (__workflow_bodycontent != null)
                 {
-                    body["content"] = ExpressionConverter.ConvertO(bodycontent);
+                    body["content"] = ExpressionConverter.ConvertO(__workflow_bodycontent);
                     bodypropCount++;
                 }
 
-                if (bodylayout != null)
+                if (__workflow_bodylayout != null)
                 {
-                    body["layout"] = ExpressionConverter.ConvertO(bodylayout);
+                    body["layout"] = ExpressionConverter.ConvertO(__workflow_bodylayout);
                     bodypropCount++;
                 }
 
-                if (bodystate != null)
+                if (__workflow_bodystate != null)
                 {
-                    body["state"] = ExpressionConverter.ConvertO(bodystate);
+                    body["state"] = ExpressionConverter.ConvertO(__workflow_bodystate);
                     bodypropCount++;
                 }
 
-                if (bodypublishedOn != null)
+                if (__workflow_bodypublishedOn != null)
                 {
-                    body["published_on"] = ExpressionConverter.ConvertO(bodypublishedOn);
+                    body["published_on"] = ExpressionConverter.ConvertO(__workflow_bodypublishedOn);
                     bodypropCount++;
                 }
 
-                if (bodydate != null)
+                if (__workflow_bodydate != null)
                 {
-                    body["date"] = ExpressionConverter.ConvertO(bodydate);
+                    body["date"] = ExpressionConverter.ConvertO(__workflow_bodydate);
                     bodypropCount++;
                 }
 
-                if (bodytags != null)
+                if (__workflow_bodytags != null)
                 {
-                    body["tags"] = ExpressionConverter.ConvertO(bodytags);
+                    body["tags"] = ExpressionConverter.ConvertO(__workflow_bodytags);
                     bodypropCount++;
                 }
 
-                if (bodysourceUrl != null)
+                if (__workflow_bodysourceUrl != null)
                 {
-                    body["source_url"] = ExpressionConverter.ConvertO(bodysourceUrl);
+                    body["source_url"] = ExpressionConverter.ConvertO(__workflow_bodysourceUrl);
                     bodypropCount++;
                 }
 
-                if (bodysendToTwitter != null)
+                if (__workflow_bodysendToTwitter != null)
                 {
-                    body["send_to_twitter"] = ExpressionConverter.ConvertO(bodysendToTwitter);
+                    body["send_to_twitter"] = ExpressionConverter.ConvertO(__workflow_bodysendToTwitter);
                     bodypropCount++;
                 }
 
-                if (bodyisPrivate != null)
+                if (__workflow_bodyisPrivate != null)
                 {
-                    body["is_private"] = ExpressionConverter.ConvertO(bodyisPrivate);
+                    body["is_private"] = ExpressionConverter.ConvertO(__workflow_bodyisPrivate);
                     bodypropCount++;
                 }
 
-                if (bodyslug != null)
+                if (__workflow_bodyslug != null)
                 {
-                    body["slug"] = ExpressionConverter.ConvertO(bodyslug);
+                    body["slug"] = ExpressionConverter.ConvertO(__workflow_bodyslug);
                     bodypropCount++;
                 }
 
-                if (bodyinteractabilityReblog != null)
+                if (__workflow_bodyinteractabilityReblog != null)
                 {
-                    body["interactability_reblog"] = ExpressionConverter.ConvertO(bodyinteractabilityReblog);
+                    body["interactability_reblog"] = ExpressionConverter.ConvertO(__workflow_bodyinteractabilityReblog);
                     bodypropCount++;
                 }
 
-                if (bodyparentTumblelogUuid != null)
+                if (__workflow_bodyparentTumblelogUuid != null)
                 {
-                    body["parent_tumblelog_uuid"] = ExpressionConverter.ConvertO(bodyparentTumblelogUuid);
+                    body["parent_tumblelog_uuid"] = ExpressionConverter.ConvertO(__workflow_bodyparentTumblelogUuid);
                     bodypropCount++;
                 }
 
-                if (bodyparentPostId != null)
+                if (__workflow_bodyparentPostId != null)
                 {
-                    body["parent_post_id"] = ExpressionConverter.ConvertO(bodyparentPostId);
+                    body["parent_post_id"] = ExpressionConverter.ConvertO(__workflow_bodyparentPostId);
                     bodypropCount++;
                 }
 
-                if (bodyreblogKey != null)
+                if (__workflow_bodyreblogKey != null)
                 {
-                    body["reblog_key"] = ExpressionConverter.ConvertO(bodyreblogKey);
+                    body["reblog_key"] = ExpressionConverter.ConvertO(__workflow_bodyreblogKey);
                     bodypropCount++;
                 }
 
-                if (bodyhideTrail != null)
+                if (__workflow_bodyhideTrail != null)
                 {
-                    body["hide_trail"] = ExpressionConverter.ConvertO(bodyhideTrail);
+                    body["hide_trail"] = ExpressionConverter.ConvertO(__workflow_bodyhideTrail);
                     bodypropCount++;
                 }
 
@@ -584,151 +529,157 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        [WorkflowExpressionFactory(nameof(__BuildPostRetrieveGet))]
-        public IBodyWorkflowAction<PostRetrieveGetResponse> PostRetrieveGet([WorkflowExpression] Func<string> blogIdentifier, [WorkflowExpression] Func<string> postId, [WorkflowExpression] Func<postFormatInput> postFormat = null)
+        public IBodyWorkflowAction<PostRetrieveGetResponse> PostRetrieveGet(Expression<Func<string>> blogIdentifier, Expression<Func<string>> postId, Expression<Func<postFormatInput>> postFormat = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PostRetrieveGetResponse> __BuildPostRetrieveGet(WorkflowExpression<string> blogIdentifier, WorkflowExpression<string> postId, WorkflowExpression<postFormatInput> postFormat = null)
-        {
-            WorkflowExpression.Validate(blogIdentifier, nameof(blogIdentifier), required: true);
-            WorkflowExpression.Validate(postId, nameof(postId), required: true);
-            WorkflowExpression.Validate(postFormat, nameof(postFormat), required: false);
+            var __workflow_blogIdentifier = blogIdentifier == null ? null : WorkflowExpression.Compile(blogIdentifier);
+            WorkflowExpression.Validate(__workflow_blogIdentifier, nameof(blogIdentifier), required: true);
+            var __workflow_postId = postId == null ? null : WorkflowExpression.Compile(postId);
+            WorkflowExpression.Validate(__workflow_postId, nameof(postId), required: true);
+            var __workflow_postFormat = postFormat == null ? null : WorkflowExpression.Compile(postFormat);
+            WorkflowExpression.Validate(__workflow_postFormat, nameof(postFormat), required: false);
             return new DeferredBodyAction<PostRetrieveGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/posts/{1}", ExpressionConverter.ConvertWithUrlEncoding(blogIdentifier, 1), ExpressionConverter.ConvertWithUrlEncoding(postId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/posts/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blogIdentifier, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_postId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["post_format"] = Convert.ToString("npf");
-                if (postFormat != null)
-                    callPayload.Queries["post_format"] = ExpressionConverter.Convert(postFormat);
+                if (__workflow_postFormat != null)
+                    callPayload.Queries["post_format"] = ExpressionConverter.Convert(__workflow_postFormat);
                 return new ApiConnectionAction<PostRetrieveGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        [WorkflowExpressionFactory(nameof(__BuildPostEditPut))]
-        public IBodyWorkflowAction<PostEditPutResponse> PostEditPut([WorkflowExpression] Func<string> blogIdentifier, [WorkflowExpression] Func<string> postId, [WorkflowExpression] Func<bodycontentInputItem[]> bodycontent = null, [WorkflowExpression] Func<bodylayoutInputItem[]> bodylayout = null, [WorkflowExpression] Func<string> bodystate = null, [WorkflowExpression] Func<string> bodypublishedOn = null, [WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<string> bodytags = null, [WorkflowExpression] Func<string> bodysourceUrl = null, [WorkflowExpression] Func<bool> bodysendToTwitter = null, [WorkflowExpression] Func<bool> bodyisPrivate = null, [WorkflowExpression] Func<string> bodyslug = null, [WorkflowExpression] Func<string> bodyinteractabilityReblog = null, [WorkflowExpression] Func<string> bodyparentTumblelogUuid = null, [WorkflowExpression] Func<int> bodyparentPostId = null, [WorkflowExpression] Func<string> bodyreblogKey = null, [WorkflowExpression] Func<bool> bodyhideTrail = null)
+        public IBodyWorkflowAction<PostEditPutResponse> PostEditPut(Expression<Func<string>> blogIdentifier, Expression<Func<string>> postId, Expression<Func<bodycontentInputItem[]>> bodycontent = null, Expression<Func<bodylayoutInputItem[]>> bodylayout = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodypublishedOn = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodytags = null, Expression<Func<string>> bodysourceUrl = null, Expression<Func<bool>> bodysendToTwitter = null, Expression<Func<bool>> bodyisPrivate = null, Expression<Func<string>> bodyslug = null, Expression<Func<string>> bodyinteractabilityReblog = null, Expression<Func<string>> bodyparentTumblelogUuid = null, Expression<Func<int>> bodyparentPostId = null, Expression<Func<string>> bodyreblogKey = null, Expression<Func<bool>> bodyhideTrail = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PostEditPutResponse> __BuildPostEditPut(WorkflowExpression<string> blogIdentifier, WorkflowExpression<string> postId, WorkflowExpression<bodycontentInputItem[]> bodycontent = null, WorkflowExpression<bodylayoutInputItem[]> bodylayout = null, WorkflowExpression<string> bodystate = null, WorkflowExpression<string> bodypublishedOn = null, WorkflowExpression<string> bodydate = null, WorkflowExpression<string> bodytags = null, WorkflowExpression<string> bodysourceUrl = null, WorkflowExpression<bool> bodysendToTwitter = null, WorkflowExpression<bool> bodyisPrivate = null, WorkflowExpression<string> bodyslug = null, WorkflowExpression<string> bodyinteractabilityReblog = null, WorkflowExpression<string> bodyparentTumblelogUuid = null, WorkflowExpression<int> bodyparentPostId = null, WorkflowExpression<string> bodyreblogKey = null, WorkflowExpression<bool> bodyhideTrail = null)
-        {
-            WorkflowExpression.Validate(blogIdentifier, nameof(blogIdentifier), required: true);
-            WorkflowExpression.Validate(postId, nameof(postId), required: true);
-            WorkflowExpression.Validate(bodycontent, nameof(bodycontent), required: false);
-            WorkflowExpression.Validate(bodylayout, nameof(bodylayout), required: false);
-            WorkflowExpression.Validate(bodystate, nameof(bodystate), required: false);
-            WorkflowExpression.Validate(bodypublishedOn, nameof(bodypublishedOn), required: false);
-            WorkflowExpression.Validate(bodydate, nameof(bodydate), required: false);
-            WorkflowExpression.Validate(bodytags, nameof(bodytags), required: false);
-            WorkflowExpression.Validate(bodysourceUrl, nameof(bodysourceUrl), required: false);
-            WorkflowExpression.Validate(bodysendToTwitter, nameof(bodysendToTwitter), required: false);
-            WorkflowExpression.Validate(bodyisPrivate, nameof(bodyisPrivate), required: false);
-            WorkflowExpression.Validate(bodyslug, nameof(bodyslug), required: false);
-            WorkflowExpression.Validate(bodyinteractabilityReblog, nameof(bodyinteractabilityReblog), required: false);
-            WorkflowExpression.Validate(bodyparentTumblelogUuid, nameof(bodyparentTumblelogUuid), required: false);
-            WorkflowExpression.Validate(bodyparentPostId, nameof(bodyparentPostId), required: false);
-            WorkflowExpression.Validate(bodyreblogKey, nameof(bodyreblogKey), required: false);
-            WorkflowExpression.Validate(bodyhideTrail, nameof(bodyhideTrail), required: false);
+            var __workflow_blogIdentifier = blogIdentifier == null ? null : WorkflowExpression.Compile(blogIdentifier);
+            WorkflowExpression.Validate(__workflow_blogIdentifier, nameof(blogIdentifier), required: true);
+            var __workflow_postId = postId == null ? null : WorkflowExpression.Compile(postId);
+            WorkflowExpression.Validate(__workflow_postId, nameof(postId), required: true);
+            var __workflow_bodycontent = bodycontent == null ? null : WorkflowExpression.Compile(bodycontent);
+            WorkflowExpression.Validate(__workflow_bodycontent, nameof(bodycontent), required: false);
+            var __workflow_bodylayout = bodylayout == null ? null : WorkflowExpression.Compile(bodylayout);
+            WorkflowExpression.Validate(__workflow_bodylayout, nameof(bodylayout), required: false);
+            var __workflow_bodystate = bodystate == null ? null : WorkflowExpression.Compile(bodystate);
+            WorkflowExpression.Validate(__workflow_bodystate, nameof(bodystate), required: false);
+            var __workflow_bodypublishedOn = bodypublishedOn == null ? null : WorkflowExpression.Compile(bodypublishedOn);
+            WorkflowExpression.Validate(__workflow_bodypublishedOn, nameof(bodypublishedOn), required: false);
+            var __workflow_bodydate = bodydate == null ? null : WorkflowExpression.Compile(bodydate);
+            WorkflowExpression.Validate(__workflow_bodydate, nameof(bodydate), required: false);
+            var __workflow_bodytags = bodytags == null ? null : WorkflowExpression.Compile(bodytags);
+            WorkflowExpression.Validate(__workflow_bodytags, nameof(bodytags), required: false);
+            var __workflow_bodysourceUrl = bodysourceUrl == null ? null : WorkflowExpression.Compile(bodysourceUrl);
+            WorkflowExpression.Validate(__workflow_bodysourceUrl, nameof(bodysourceUrl), required: false);
+            var __workflow_bodysendToTwitter = bodysendToTwitter == null ? null : WorkflowExpression.Compile(bodysendToTwitter);
+            WorkflowExpression.Validate(__workflow_bodysendToTwitter, nameof(bodysendToTwitter), required: false);
+            var __workflow_bodyisPrivate = bodyisPrivate == null ? null : WorkflowExpression.Compile(bodyisPrivate);
+            WorkflowExpression.Validate(__workflow_bodyisPrivate, nameof(bodyisPrivate), required: false);
+            var __workflow_bodyslug = bodyslug == null ? null : WorkflowExpression.Compile(bodyslug);
+            WorkflowExpression.Validate(__workflow_bodyslug, nameof(bodyslug), required: false);
+            var __workflow_bodyinteractabilityReblog = bodyinteractabilityReblog == null ? null : WorkflowExpression.Compile(bodyinteractabilityReblog);
+            WorkflowExpression.Validate(__workflow_bodyinteractabilityReblog, nameof(bodyinteractabilityReblog), required: false);
+            var __workflow_bodyparentTumblelogUuid = bodyparentTumblelogUuid == null ? null : WorkflowExpression.Compile(bodyparentTumblelogUuid);
+            WorkflowExpression.Validate(__workflow_bodyparentTumblelogUuid, nameof(bodyparentTumblelogUuid), required: false);
+            var __workflow_bodyparentPostId = bodyparentPostId == null ? null : WorkflowExpression.Compile(bodyparentPostId);
+            WorkflowExpression.Validate(__workflow_bodyparentPostId, nameof(bodyparentPostId), required: false);
+            var __workflow_bodyreblogKey = bodyreblogKey == null ? null : WorkflowExpression.Compile(bodyreblogKey);
+            WorkflowExpression.Validate(__workflow_bodyreblogKey, nameof(bodyreblogKey), required: false);
+            var __workflow_bodyhideTrail = bodyhideTrail == null ? null : WorkflowExpression.Compile(bodyhideTrail);
+            WorkflowExpression.Validate(__workflow_bodyhideTrail, nameof(bodyhideTrail), required: false);
             return new DeferredBodyAction<PostEditPutResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/posts/{1}", ExpressionConverter.ConvertWithUrlEncoding(blogIdentifier, 1), ExpressionConverter.ConvertWithUrlEncoding(postId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/posts/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blogIdentifier, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_postId, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodycontent != null)
+                if (__workflow_bodycontent != null)
                 {
-                    body["content"] = ExpressionConverter.ConvertO(bodycontent);
+                    body["content"] = ExpressionConverter.ConvertO(__workflow_bodycontent);
                     bodypropCount++;
                 }
 
-                if (bodylayout != null)
+                if (__workflow_bodylayout != null)
                 {
-                    body["layout"] = ExpressionConverter.ConvertO(bodylayout);
+                    body["layout"] = ExpressionConverter.ConvertO(__workflow_bodylayout);
                     bodypropCount++;
                 }
 
-                if (bodystate != null)
+                if (__workflow_bodystate != null)
                 {
-                    body["state"] = ExpressionConverter.ConvertO(bodystate);
+                    body["state"] = ExpressionConverter.ConvertO(__workflow_bodystate);
                     bodypropCount++;
                 }
 
-                if (bodypublishedOn != null)
+                if (__workflow_bodypublishedOn != null)
                 {
-                    body["published_on"] = ExpressionConverter.ConvertO(bodypublishedOn);
+                    body["published_on"] = ExpressionConverter.ConvertO(__workflow_bodypublishedOn);
                     bodypropCount++;
                 }
 
-                if (bodydate != null)
+                if (__workflow_bodydate != null)
                 {
-                    body["date"] = ExpressionConverter.ConvertO(bodydate);
+                    body["date"] = ExpressionConverter.ConvertO(__workflow_bodydate);
                     bodypropCount++;
                 }
 
-                if (bodytags != null)
+                if (__workflow_bodytags != null)
                 {
-                    body["tags"] = ExpressionConverter.ConvertO(bodytags);
+                    body["tags"] = ExpressionConverter.ConvertO(__workflow_bodytags);
                     bodypropCount++;
                 }
 
-                if (bodysourceUrl != null)
+                if (__workflow_bodysourceUrl != null)
                 {
-                    body["source_url"] = ExpressionConverter.ConvertO(bodysourceUrl);
+                    body["source_url"] = ExpressionConverter.ConvertO(__workflow_bodysourceUrl);
                     bodypropCount++;
                 }
 
-                if (bodysendToTwitter != null)
+                if (__workflow_bodysendToTwitter != null)
                 {
-                    body["send_to_twitter"] = ExpressionConverter.ConvertO(bodysendToTwitter);
+                    body["send_to_twitter"] = ExpressionConverter.ConvertO(__workflow_bodysendToTwitter);
                     bodypropCount++;
                 }
 
-                if (bodyisPrivate != null)
+                if (__workflow_bodyisPrivate != null)
                 {
-                    body["is_private"] = ExpressionConverter.ConvertO(bodyisPrivate);
+                    body["is_private"] = ExpressionConverter.ConvertO(__workflow_bodyisPrivate);
                     bodypropCount++;
                 }
 
-                if (bodyslug != null)
+                if (__workflow_bodyslug != null)
                 {
-                    body["slug"] = ExpressionConverter.ConvertO(bodyslug);
+                    body["slug"] = ExpressionConverter.ConvertO(__workflow_bodyslug);
                     bodypropCount++;
                 }
 
-                if (bodyinteractabilityReblog != null)
+                if (__workflow_bodyinteractabilityReblog != null)
                 {
-                    body["interactability_reblog"] = ExpressionConverter.ConvertO(bodyinteractabilityReblog);
+                    body["interactability_reblog"] = ExpressionConverter.ConvertO(__workflow_bodyinteractabilityReblog);
                     bodypropCount++;
                 }
 
-                if (bodyparentTumblelogUuid != null)
+                if (__workflow_bodyparentTumblelogUuid != null)
                 {
-                    body["parent_tumblelog_uuid"] = ExpressionConverter.ConvertO(bodyparentTumblelogUuid);
+                    body["parent_tumblelog_uuid"] = ExpressionConverter.ConvertO(__workflow_bodyparentTumblelogUuid);
                     bodypropCount++;
                 }
 
-                if (bodyparentPostId != null)
+                if (__workflow_bodyparentPostId != null)
                 {
-                    body["parent_post_id"] = ExpressionConverter.ConvertO(bodyparentPostId);
+                    body["parent_post_id"] = ExpressionConverter.ConvertO(__workflow_bodyparentPostId);
                     bodypropCount++;
                 }
 
-                if (bodyreblogKey != null)
+                if (__workflow_bodyreblogKey != null)
                 {
-                    body["reblog_key"] = ExpressionConverter.ConvertO(bodyreblogKey);
+                    body["reblog_key"] = ExpressionConverter.ConvertO(__workflow_bodyreblogKey);
                     bodypropCount++;
                 }
 
-                if (bodyhideTrail != null)
+                if (__workflow_bodyhideTrail != null)
                 {
-                    body["hide_trail"] = ExpressionConverter.ConvertO(bodyhideTrail);
+                    body["hide_trail"] = ExpressionConverter.ConvertO(__workflow_bodyhideTrail);
                     bodypropCount++;
                 }
 
@@ -742,26 +693,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        [WorkflowExpressionFactory(nameof(__BuildPostDelete))]
-        public IBodyWorkflowAction<PostDeleteResponse> PostDelete([WorkflowExpression] Func<string> blogIdentifier, [WorkflowExpression] Func<string> bodyid)
+        public IBodyWorkflowAction<PostDeleteResponse> PostDelete(Expression<Func<string>> blogIdentifier, Expression<Func<string>> bodyid)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PostDeleteResponse> __BuildPostDelete(WorkflowExpression<string> blogIdentifier, WorkflowExpression<string> bodyid)
-        {
-            WorkflowExpression.Validate(blogIdentifier, nameof(blogIdentifier), required: true);
-            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: true);
+            var __workflow_blogIdentifier = blogIdentifier == null ? null : WorkflowExpression.Compile(blogIdentifier);
+            WorkflowExpression.Validate(__workflow_blogIdentifier, nameof(blogIdentifier), required: true);
+            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
+            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: true);
             return new DeferredBodyAction<PostDeleteResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/post/delete", ExpressionConverter.ConvertWithUrlEncoding(blogIdentifier, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/post/delete", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blogIdentifier, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -772,30 +718,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        [WorkflowExpressionFactory(nameof(__BuildPostNotesGet))]
-        public IBodyWorkflowAction<PostNotesGetResponse> PostNotesGet([WorkflowExpression] Func<string> blogIdentifier, [WorkflowExpression] Func<double> id, [WorkflowExpression] Func<double> beforeTimestamp = null, [WorkflowExpression] Func<modeInput> mode = null)
+        public IBodyWorkflowAction<PostNotesGetResponse> PostNotesGet(Expression<Func<string>> blogIdentifier, Expression<Func<double>> id, Expression<Func<double>> beforeTimestamp = null, Expression<Func<modeInput>> mode = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PostNotesGetResponse> __BuildPostNotesGet(WorkflowExpression<string> blogIdentifier, WorkflowExpression<double> id, WorkflowExpression<double> beforeTimestamp = null, WorkflowExpression<modeInput> mode = null)
-        {
-            WorkflowExpression.Validate(blogIdentifier, nameof(blogIdentifier), required: true);
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(beforeTimestamp, nameof(beforeTimestamp), required: false);
-            WorkflowExpression.Validate(mode, nameof(mode), required: false);
+            var __workflow_blogIdentifier = blogIdentifier == null ? null : WorkflowExpression.Compile(blogIdentifier);
+            WorkflowExpression.Validate(__workflow_blogIdentifier, nameof(blogIdentifier), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_beforeTimestamp = beforeTimestamp == null ? null : WorkflowExpression.Compile(beforeTimestamp);
+            WorkflowExpression.Validate(__workflow_beforeTimestamp, nameof(beforeTimestamp), required: false);
+            var __workflow_mode = mode == null ? null : WorkflowExpression.Compile(mode);
+            WorkflowExpression.Validate(__workflow_mode, nameof(mode), required: false);
             return new DeferredBodyAction<PostNotesGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/notes", ExpressionConverter.ConvertWithUrlEncoding(blogIdentifier, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/blog/{0}/notes", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blogIdentifier, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-                if (beforeTimestamp != null)
-                    callPayload.Queries["before_timestamp"] = ExpressionConverter.Convert(beforeTimestamp);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
+                if (__workflow_beforeTimestamp != null)
+                    callPayload.Queries["before_timestamp"] = ExpressionConverter.Convert(__workflow_beforeTimestamp);
                 callPayload.Queries["mode"] = Convert.ToString("all");
-                if (mode != null)
-                    callPayload.Queries["mode"] = ExpressionConverter.Convert(mode);
+                if (__workflow_mode != null)
+                    callPayload.Queries["mode"] = ExpressionConverter.Convert(__workflow_mode);
                 return new ApiConnectionAction<PostNotesGetResponse>(callPayload);
             });
         }
@@ -846,17 +789,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        [WorkflowExpressionFactory(nameof(__BuildBlogFollow))]
-        public IBodyWorkflowAction<BlogFollowPostResponse> BlogFollow([WorkflowExpression] Func<string> bodyurl = null, [WorkflowExpression] Func<string> bodyemail = null)
+        public IBodyWorkflowAction<BlogFollowPostResponse> BlogFollow(Expression<Func<string>> bodyurl = null, Expression<Func<string>> bodyemail = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<BlogFollowPostResponse> __BuildBlogFollow(WorkflowExpression<string> bodyurl = null, WorkflowExpression<string> bodyemail = null)
-        {
-            WorkflowExpression.Validate(bodyurl, nameof(bodyurl), required: false);
-            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: false);
+            var __workflow_bodyurl = bodyurl == null ? null : WorkflowExpression.Compile(bodyurl);
+            WorkflowExpression.Validate(__workflow_bodyurl, nameof(bodyurl), required: false);
+            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
+            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: false);
             return new DeferredBodyAction<BlogFollowPostResponse>(() =>
             {
                 var apiCallPath = "/v2/user/follow";
@@ -864,15 +802,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyurl != null)
+                if (__workflow_bodyurl != null)
                 {
-                    body["url"] = ExpressionConverter.ConvertO(bodyurl);
+                    body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
                     bodypropCount++;
                 }
 
-                if (bodyemail != null)
+                if (__workflow_bodyemail != null)
                 {
-                    body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                    body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
                     bodypropCount++;
                 }
 
@@ -886,16 +824,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        [WorkflowExpressionFactory(nameof(__BuildBlogUnfollow))]
-        public IBodyWorkflowAction<BlogUnfollowPostResponse> BlogUnfollow([WorkflowExpression] Func<string> bodyurl = null)
+        public IBodyWorkflowAction<BlogUnfollowPostResponse> BlogUnfollow(Expression<Func<string>> bodyurl = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<BlogUnfollowPostResponse> __BuildBlogUnfollow(WorkflowExpression<string> bodyurl = null)
-        {
-            WorkflowExpression.Validate(bodyurl, nameof(bodyurl), required: false);
+            var __workflow_bodyurl = bodyurl == null ? null : WorkflowExpression.Compile(bodyurl);
+            WorkflowExpression.Validate(__workflow_bodyurl, nameof(bodyurl), required: false);
             return new DeferredBodyAction<BlogUnfollowPostResponse>(() =>
             {
                 var apiCallPath = "/v2/user/unfollow";
@@ -903,9 +835,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyurl != null)
+                if (__workflow_bodyurl != null)
                 {
-                    body["url"] = ExpressionConverter.ConvertO(bodyurl);
+                    body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
                     bodypropCount++;
                 }
 
@@ -919,17 +851,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        [WorkflowExpressionFactory(nameof(__BuildPostLike))]
-        public IBodyWorkflowAction<string> PostLike([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyreblogKey)
+        public IBodyWorkflowAction<string> PostLike(Expression<Func<string>> bodyid, Expression<Func<string>> bodyreblogKey)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildPostLike(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyreblogKey)
-        {
-            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: true);
-            WorkflowExpression.Validate(bodyreblogKey, nameof(bodyreblogKey), required: true);
+            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
+            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: true);
+            var __workflow_bodyreblogKey = bodyreblogKey == null ? null : WorkflowExpression.Compile(bodyreblogKey);
+            WorkflowExpression.Validate(__workflow_bodyreblogKey, nameof(bodyreblogKey), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/v2/user/like";
@@ -938,9 +865,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
                 bodypropCount++;
-                body["reblog_key"] = ExpressionConverter.ConvertO(bodyreblogKey);
+                body["reblog_key"] = ExpressionConverter.ConvertO(__workflow_bodyreblogKey);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -951,17 +878,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        [WorkflowExpressionFactory(nameof(__BuildPostUnlike))]
-        public IBodyWorkflowAction<string> PostUnlike([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyreblogKey)
+        public IBodyWorkflowAction<string> PostUnlike(Expression<Func<string>> bodyid, Expression<Func<string>> bodyreblogKey)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildPostUnlike(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyreblogKey)
-        {
-            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: true);
-            WorkflowExpression.Validate(bodyreblogKey, nameof(bodyreblogKey), required: true);
+            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
+            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: true);
+            var __workflow_bodyreblogKey = bodyreblogKey == null ? null : WorkflowExpression.Compile(bodyreblogKey);
+            WorkflowExpression.Validate(__workflow_bodyreblogKey, nameof(bodyreblogKey), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/v2/user/unlike";
@@ -970,9 +892,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
                 bodypropCount++;
-                body["reblog_key"] = ExpressionConverter.ConvertO(bodyreblogKey);
+                body["reblog_key"] = ExpressionConverter.ConvertO(__workflow_bodyreblogKey);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -983,31 +905,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        [WorkflowExpressionFactory(nameof(__BuildPostTagGet))]
-        public IBodyWorkflowAction<PostTagGetResponseItem[]> PostTagGet([WorkflowExpression] Func<string> tag, [WorkflowExpression] Func<int> before = null, [WorkflowExpression] Func<double> limit = null, [WorkflowExpression] Func<string> filter = null)
+        public IBodyWorkflowAction<PostTagGetResponseItem[]> PostTagGet(Expression<Func<string>> tag, Expression<Func<int>> before = null, Expression<Func<double>> limit = null, Expression<Func<string>> filter = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PostTagGetResponseItem[]> __BuildPostTagGet(WorkflowExpression<string> tag, WorkflowExpression<int> before = null, WorkflowExpression<double> limit = null, WorkflowExpression<string> filter = null)
-        {
-            WorkflowExpression.Validate(tag, nameof(tag), required: true);
-            WorkflowExpression.Validate(before, nameof(before), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(filter, nameof(filter), required: false);
+            var __workflow_tag = tag == null ? null : WorkflowExpression.Compile(tag);
+            WorkflowExpression.Validate(__workflow_tag, nameof(tag), required: true);
+            var __workflow_before = before == null ? null : WorkflowExpression.Compile(before);
+            WorkflowExpression.Validate(__workflow_before, nameof(before), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
+            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
             return new DeferredBodyAction<PostTagGetResponseItem[]>(() =>
             {
                 var apiCallPath = "/v2/tagged";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["tag"] = ExpressionConverter.Convert(tag);
-                if (before != null)
-                    callPayload.Queries["before"] = ExpressionConverter.Convert(before);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (filter != null)
-                    callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["tag"] = ExpressionConverter.Convert(__workflow_tag);
+                if (__workflow_before != null)
+                    callPayload.Queries["before"] = ExpressionConverter.Convert(__workflow_before);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_filter != null)
+                    callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
                 return new ApiConnectionAction<PostTagGetResponseItem[]>(callPayload);
             });
         }

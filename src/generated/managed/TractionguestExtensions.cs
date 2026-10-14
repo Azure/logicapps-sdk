@@ -1,30 +1,23 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tractionguest
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class TractionguestActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tractionguest")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteWebhook))]
-        public IWorkflowAction DeleteWebhook([WorkflowExpression] Func<string> hookId)
+        public IWorkflowAction DeleteWebhook(Expression<Func<string>> hookId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDeleteWebhook(WorkflowExpression<string> hookId)
-        {
-            WorkflowExpression.Validate(hookId, nameof(hookId), required: true);
+            var __workflow_hookId = hookId == null ? null : WorkflowExpression.Compile(hookId);
+            WorkflowExpression.Validate(__workflow_hookId, nameof(hookId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/webhooks/{0}", ExpressionConverter.ConvertWithUrlEncoding(hookId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/webhooks/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hookId, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);

@@ -1,27 +1,20 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class PdfcrossActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfcross")]
-        [WorkflowExpressionFactory(nameof(__BuildMergePDF))]
-        public IBodyWorkflowAction<string> MergePDF([WorkflowExpression] Func<string[]> filesfileContent)
+        public IBodyWorkflowAction<string> MergePDF(Expression<Func<string[]>> filesfileContent)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildMergePDF(WorkflowExpression<string[]> filesfileContent)
-        {
-            WorkflowExpression.Validate(filesfileContent, nameof(filesfileContent), required: true);
+            var __workflow_filesfileContent = filesfileContent == null ? null : WorkflowExpression.Compile(filesfileContent);
+            WorkflowExpression.Validate(__workflow_filesfileContent, nameof(filesfileContent), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/merge";
@@ -30,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
                 var files = new JObject();
                 var filespropCount = 0;
                 filespropCount++;
-                files["fileContent"] = ExpressionConverter.ConvertO(filesfileContent);
+                files["fileContent"] = ExpressionConverter.ConvertO(__workflow_filesfileContent);
                 if (filespropCount > 0)
                 {
                     callPayload.Body = files;
@@ -41,17 +34,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfcross")]
-        [WorkflowExpressionFactory(nameof(__BuildAddWatermarkText))]
-        public IBodyWorkflowAction<string> AddWatermarkText([WorkflowExpression] Func<string> filefileContent, [WorkflowExpression] Func<string> filewatermarkText)
+        public IBodyWorkflowAction<string> AddWatermarkText(Expression<Func<string>> filefileContent, Expression<Func<string>> filewatermarkText)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildAddWatermarkText(WorkflowExpression<string> filefileContent, WorkflowExpression<string> filewatermarkText)
-        {
-            WorkflowExpression.Validate(filefileContent, nameof(filefileContent), required: true);
-            WorkflowExpression.Validate(filewatermarkText, nameof(filewatermarkText), required: true);
+            var __workflow_filefileContent = filefileContent == null ? null : WorkflowExpression.Compile(filefileContent);
+            WorkflowExpression.Validate(__workflow_filefileContent, nameof(filefileContent), required: true);
+            var __workflow_filewatermarkText = filewatermarkText == null ? null : WorkflowExpression.Compile(filewatermarkText);
+            WorkflowExpression.Validate(__workflow_filewatermarkText, nameof(filewatermarkText), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/watermark_text";
@@ -60,9 +48,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
                 var file = new JObject();
                 var filepropCount = 0;
                 filepropCount++;
-                file["fileContent"] = ExpressionConverter.ConvertO(filefileContent);
+                file["fileContent"] = ExpressionConverter.ConvertO(__workflow_filefileContent);
                 filepropCount++;
-                file["watermarkText"] = ExpressionConverter.ConvertO(filewatermarkText);
+                file["watermarkText"] = ExpressionConverter.ConvertO(__workflow_filewatermarkText);
                 if (filepropCount > 0)
                 {
                     callPayload.Body = file;
@@ -73,17 +61,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfcross")]
-        [WorkflowExpressionFactory(nameof(__BuildAddPassword))]
-        public IBodyWorkflowAction<string> AddPassword([WorkflowExpression] Func<string> filefileContent, [WorkflowExpression] Func<string> filepassword)
+        public IBodyWorkflowAction<string> AddPassword(Expression<Func<string>> filefileContent, Expression<Func<string>> filepassword)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildAddPassword(WorkflowExpression<string> filefileContent, WorkflowExpression<string> filepassword)
-        {
-            WorkflowExpression.Validate(filefileContent, nameof(filefileContent), required: true);
-            WorkflowExpression.Validate(filepassword, nameof(filepassword), required: true);
+            var __workflow_filefileContent = filefileContent == null ? null : WorkflowExpression.Compile(filefileContent);
+            WorkflowExpression.Validate(__workflow_filefileContent, nameof(filefileContent), required: true);
+            var __workflow_filepassword = filepassword == null ? null : WorkflowExpression.Compile(filepassword);
+            WorkflowExpression.Validate(__workflow_filepassword, nameof(filepassword), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/password";
@@ -92,9 +75,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
                 var file = new JObject();
                 var filepropCount = 0;
                 filepropCount++;
-                file["fileContent"] = ExpressionConverter.ConvertO(filefileContent);
+                file["fileContent"] = ExpressionConverter.ConvertO(__workflow_filefileContent);
                 filepropCount++;
-                file["password"] = ExpressionConverter.ConvertO(filepassword);
+                file["password"] = ExpressionConverter.ConvertO(__workflow_filepassword);
                 if (filepropCount > 0)
                 {
                     callPayload.Body = file;
@@ -105,22 +88,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfcross")]
-        [WorkflowExpressionFactory(nameof(__BuildAddImage))]
-        public IBodyWorkflowAction<string> AddImage([WorkflowExpression] Func<string> filefileContent, [WorkflowExpression] Func<string> fileimageContent, [WorkflowExpression] Func<double> filepositionX, [WorkflowExpression] Func<double> filepositionY, [WorkflowExpression] Func<string> fileaddType, [WorkflowExpression] Func<double> filefromPage = null, [WorkflowExpression] Func<double> filetoPage = null)
+        public IBodyWorkflowAction<string> AddImage(Expression<Func<string>> filefileContent, Expression<Func<string>> fileimageContent, Expression<Func<double>> filepositionX, Expression<Func<double>> filepositionY, Expression<Func<string>> fileaddType, Expression<Func<double>> filefromPage = null, Expression<Func<double>> filetoPage = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildAddImage(WorkflowExpression<string> filefileContent, WorkflowExpression<string> fileimageContent, WorkflowExpression<double> filepositionX, WorkflowExpression<double> filepositionY, WorkflowExpression<string> fileaddType, WorkflowExpression<double> filefromPage = null, WorkflowExpression<double> filetoPage = null)
-        {
-            WorkflowExpression.Validate(filefileContent, nameof(filefileContent), required: true);
-            WorkflowExpression.Validate(fileimageContent, nameof(fileimageContent), required: true);
-            WorkflowExpression.Validate(filepositionX, nameof(filepositionX), required: true);
-            WorkflowExpression.Validate(filepositionY, nameof(filepositionY), required: true);
-            WorkflowExpression.Validate(fileaddType, nameof(fileaddType), required: true);
-            WorkflowExpression.Validate(filefromPage, nameof(filefromPage), required: false);
-            WorkflowExpression.Validate(filetoPage, nameof(filetoPage), required: false);
+            var __workflow_filefileContent = filefileContent == null ? null : WorkflowExpression.Compile(filefileContent);
+            WorkflowExpression.Validate(__workflow_filefileContent, nameof(filefileContent), required: true);
+            var __workflow_fileimageContent = fileimageContent == null ? null : WorkflowExpression.Compile(fileimageContent);
+            WorkflowExpression.Validate(__workflow_fileimageContent, nameof(fileimageContent), required: true);
+            var __workflow_filepositionX = filepositionX == null ? null : WorkflowExpression.Compile(filepositionX);
+            WorkflowExpression.Validate(__workflow_filepositionX, nameof(filepositionX), required: true);
+            var __workflow_filepositionY = filepositionY == null ? null : WorkflowExpression.Compile(filepositionY);
+            WorkflowExpression.Validate(__workflow_filepositionY, nameof(filepositionY), required: true);
+            var __workflow_fileaddType = fileaddType == null ? null : WorkflowExpression.Compile(fileaddType);
+            WorkflowExpression.Validate(__workflow_fileaddType, nameof(fileaddType), required: true);
+            var __workflow_filefromPage = filefromPage == null ? null : WorkflowExpression.Compile(filefromPage);
+            WorkflowExpression.Validate(__workflow_filefromPage, nameof(filefromPage), required: false);
+            var __workflow_filetoPage = filetoPage == null ? null : WorkflowExpression.Compile(filetoPage);
+            WorkflowExpression.Validate(__workflow_filetoPage, nameof(filetoPage), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/image";
@@ -129,24 +112,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
                 var file = new JObject();
                 var filepropCount = 0;
                 filepropCount++;
-                file["fileContent"] = ExpressionConverter.ConvertO(filefileContent);
+                file["fileContent"] = ExpressionConverter.ConvertO(__workflow_filefileContent);
                 filepropCount++;
-                file["imageContent"] = ExpressionConverter.ConvertO(fileimageContent);
+                file["imageContent"] = ExpressionConverter.ConvertO(__workflow_fileimageContent);
                 filepropCount++;
-                file["positionX"] = ExpressionConverter.ConvertO(filepositionX);
+                file["positionX"] = ExpressionConverter.ConvertO(__workflow_filepositionX);
                 filepropCount++;
-                file["positionY"] = ExpressionConverter.ConvertO(filepositionY);
+                file["positionY"] = ExpressionConverter.ConvertO(__workflow_filepositionY);
                 filepropCount++;
-                file["addType"] = ExpressionConverter.ConvertO(fileaddType);
-                if (filefromPage != null)
+                file["addType"] = ExpressionConverter.ConvertO(__workflow_fileaddType);
+                if (__workflow_filefromPage != null)
                 {
-                    file["fromPage"] = ExpressionConverter.ConvertO(filefromPage);
+                    file["fromPage"] = ExpressionConverter.ConvertO(__workflow_filefromPage);
                     filepropCount++;
                 }
 
-                if (filetoPage != null)
+                if (__workflow_filetoPage != null)
                 {
-                    file["toPage"] = ExpressionConverter.ConvertO(filetoPage);
+                    file["toPage"] = ExpressionConverter.ConvertO(__workflow_filetoPage);
                     filepropCount++;
                 }
 

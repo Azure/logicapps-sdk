@@ -1,12 +1,12 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msgraphgroupsanduser
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class MsgraphgroupsanduserActions([ConnectionName] string connectionId)
     {
@@ -20,24 +20,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msgraphgroupsanduser
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msgraphgroupsanduser")]
-        [WorkflowExpressionFactory(nameof(__BuildListGroupsByDisplayNameSearch))]
-        public IBodyWorkflowAction<ListGroupsByDisplayNameSearchResponse> ListGroupsByDisplayNameSearch([WorkflowExpression] Func<string> search = null)
+        public IBodyWorkflowAction<ListGroupsByDisplayNameSearchResponse> ListGroupsByDisplayNameSearch(Expression<Func<string>> search = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListGroupsByDisplayNameSearchResponse> __BuildListGroupsByDisplayNameSearch(WorkflowExpression<string> search = null)
-        {
-            WorkflowExpression.Validate(search, nameof(search), required: false);
+            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
+            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
             return new DeferredBodyAction<ListGroupsByDisplayNameSearchResponse>(() =>
             {
                 var apiCallPath = "/v1.0/groups";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["$search"] = Convert.ToString("\"displayName:Sales\"");
-                if (search != null)
-                    callPayload.Queries["$search"] = ExpressionConverter.Convert(search);
+                if (__workflow_search != null)
+                    callPayload.Queries["$search"] = ExpressionConverter.Convert(__workflow_search);
                 callPayload.Queries["$count"] = Convert.ToString("true");
                 callPayload.Headers["ConsistencyLevel"] = Convert.ToString("eventual");
                 return new ApiConnectionAction<ListGroupsByDisplayNameSearchResponse>(callPayload);
@@ -54,29 +48,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msgraphgroupsanduser
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msgraphgroupsanduser")]
-        [WorkflowExpressionFactory(nameof(__BuildListDirectGroupMembers))]
-        public IBodyWorkflowAction<ListDirectGroupMembersResponse> ListDirectGroupMembers([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null)
+        public IBodyWorkflowAction<ListDirectGroupMembersResponse> ListDirectGroupMembers(Expression<Func<string>> groupId, Expression<Func<string>> filter = null, Expression<Func<string>> select = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListDirectGroupMembersResponse> __BuildListDirectGroupMembers(WorkflowExpression<string> groupId, WorkflowExpression<string> filter = null, WorkflowExpression<string> select = null)
-        {
-            WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
-            WorkflowExpression.Validate(filter, nameof(filter), required: false);
-            WorkflowExpression.Validate(select, nameof(select), required: false);
+            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
+            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
+            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
+            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
+            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
+            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
             return new DeferredBodyAction<ListDirectGroupMembersResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["$filter"] = Convert.ToString("jobTitle ne null");
-                if (filter != null)
-                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                if (__workflow_filter != null)
+                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(__workflow_filter);
                 callPayload.Queries["$select"] = Convert.ToString("displayName,userPrincipalName,id,jobTitle,mailNickname");
-                if (select != null)
-                    callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                if (__workflow_select != null)
+                    callPayload.Queries["$select"] = ExpressionConverter.Convert(__workflow_select);
                 callPayload.Queries["$count"] = Convert.ToString("true");
                 callPayload.Headers["ConsistencyLevel"] = Convert.ToString("eventual");
                 return new ApiConnectionAction<ListDirectGroupMembersResponse>(callPayload);
@@ -84,43 +74,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msgraphgroupsanduser
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msgraphgroupsanduser")]
-        [WorkflowExpressionFactory(nameof(__BuildGetMemberLicenseDetails))]
-        public IBodyWorkflowAction<GetMemberLicenseDetailsResponse> GetMemberLicenseDetails([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> select = null)
+        public IBodyWorkflowAction<GetMemberLicenseDetailsResponse> GetMemberLicenseDetails(Expression<Func<string>> id, Expression<Func<string>> select = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetMemberLicenseDetailsResponse> __BuildGetMemberLicenseDetails(WorkflowExpression<string> id, WorkflowExpression<string> select = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(select, nameof(select), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
+            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
             return new DeferredBodyAction<GetMemberLicenseDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/users/{0}/licenseDetails", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/users/{0}/licenseDetails", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["$select"] = Convert.ToString("skuPartNumber,servicePlans");
-                if (select != null)
-                    callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                if (__workflow_select != null)
+                    callPayload.Queries["$select"] = ExpressionConverter.Convert(__workflow_select);
                 return new ApiConnectionAction<GetMemberLicenseDetailsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msgraphgroupsanduser")]
-        [WorkflowExpressionFactory(nameof(__BuildGetGroupProperties))]
-        public IBodyWorkflowAction<GetGroupPropertiesResponse> GetGroupProperties([WorkflowExpression] Func<string> groupId)
+        public IBodyWorkflowAction<GetGroupPropertiesResponse> GetGroupProperties(Expression<Func<string>> groupId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetGroupPropertiesResponse> __BuildGetGroupProperties(WorkflowExpression<string> groupId)
-        {
-            WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
+            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
+            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
             return new DeferredBodyAction<GetGroupPropertiesResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetGroupPropertiesResponse>(callPayload);
@@ -128,26 +107,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msgraphgroupsanduser
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msgraphgroupsanduser")]
-        [WorkflowExpressionFactory(nameof(__BuildGetMemberGroups))]
-        public IBodyWorkflowAction<GetMemberGroupsResponse> GetMemberGroups([WorkflowExpression] Func<string> memberId, [WorkflowExpression] Func<bool> bodysecurityEnabledOnly)
+        public IBodyWorkflowAction<GetMemberGroupsResponse> GetMemberGroups(Expression<Func<string>> memberId, Expression<Func<bool>> bodysecurityEnabledOnly)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetMemberGroupsResponse> __BuildGetMemberGroups(WorkflowExpression<string> memberId, WorkflowExpression<bool> bodysecurityEnabledOnly)
-        {
-            WorkflowExpression.Validate(memberId, nameof(memberId), required: true);
-            WorkflowExpression.Validate(bodysecurityEnabledOnly, nameof(bodysecurityEnabledOnly), required: true);
+            var __workflow_memberId = memberId == null ? null : WorkflowExpression.Compile(memberId);
+            WorkflowExpression.Validate(__workflow_memberId, nameof(memberId), required: true);
+            var __workflow_bodysecurityEnabledOnly = bodysecurityEnabledOnly == null ? null : WorkflowExpression.Compile(bodysecurityEnabledOnly);
+            WorkflowExpression.Validate(__workflow_bodysecurityEnabledOnly, nameof(bodysecurityEnabledOnly), required: true);
             return new DeferredBodyAction<GetMemberGroupsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/users/{0}/getMemberGroups", ExpressionConverter.ConvertWithUrlEncoding(memberId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/users/{0}/getMemberGroups", ExpressionConverter.ConvertWithUrlEncoding(__workflow_memberId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["securityEnabledOnly"] = ExpressionConverter.ConvertO(bodysecurityEnabledOnly);
+                body["securityEnabledOnly"] = ExpressionConverter.ConvertO(__workflow_bodysecurityEnabledOnly);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

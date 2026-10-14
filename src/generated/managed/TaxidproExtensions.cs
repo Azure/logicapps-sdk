@@ -1,76 +1,71 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taxidpro
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class TaxidproActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taxidpro")]
-        [WorkflowExpressionFactory(nameof(__BuildValidate))]
-        public IBodyWorkflowAction<ValidateResponse> Validate([WorkflowExpression] Func<string> country, [WorkflowExpression] Func<string> tin, [WorkflowExpression] Func<typeInput> type = null, [WorkflowExpression] Func<localeInput> locale = null, [WorkflowExpression] Func<bool> isIrs = null)
+        public IBodyWorkflowAction<ValidateResponse> Validate(Expression<Func<string>> country, Expression<Func<string>> tin, Expression<Func<typeInput>> type = null, Expression<Func<localeInput>> locale = null, Expression<Func<bool>> isIrs = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ValidateResponse> __BuildValidate(WorkflowExpression<string> country, WorkflowExpression<string> tin, WorkflowExpression<typeInput> type = null, WorkflowExpression<localeInput> locale = null, WorkflowExpression<bool> isIrs = null)
-        {
-            WorkflowExpression.Validate(country, nameof(country), required: true);
-            WorkflowExpression.Validate(tin, nameof(tin), required: true);
-            WorkflowExpression.Validate(type, nameof(type), required: false);
-            WorkflowExpression.Validate(locale, nameof(locale), required: false);
-            WorkflowExpression.Validate(isIrs, nameof(isIrs), required: false);
+            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
+            WorkflowExpression.Validate(__workflow_country, nameof(country), required: true);
+            var __workflow_tin = tin == null ? null : WorkflowExpression.Compile(tin);
+            WorkflowExpression.Validate(__workflow_tin, nameof(tin), required: true);
+            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
+            WorkflowExpression.Validate(__workflow_type, nameof(type), required: false);
+            var __workflow_locale = locale == null ? null : WorkflowExpression.Compile(locale);
+            WorkflowExpression.Validate(__workflow_locale, nameof(locale), required: false);
+            var __workflow_isIrs = isIrs == null ? null : WorkflowExpression.Compile(isIrs);
+            WorkflowExpression.Validate(__workflow_isIrs, nameof(isIrs), required: false);
             return new DeferredBodyAction<ValidateResponse>(() =>
             {
                 var apiCallPath = "/validate";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-                callPayload.Queries["tin"] = ExpressionConverter.Convert(tin);
-                if (type != null)
-                    callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-                if (locale != null)
-                    callPayload.Queries["locale"] = ExpressionConverter.Convert(locale);
-                if (isIrs != null)
-                    callPayload.Queries["is_irs"] = ExpressionConverter.Convert(isIrs);
+                callPayload.Queries["country"] = ExpressionConverter.Convert(__workflow_country);
+                callPayload.Queries["tin"] = ExpressionConverter.Convert(__workflow_tin);
+                if (__workflow_type != null)
+                    callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
+                if (__workflow_locale != null)
+                    callPayload.Queries["locale"] = ExpressionConverter.Convert(__workflow_locale);
+                if (__workflow_isIrs != null)
+                    callPayload.Queries["is_irs"] = ExpressionConverter.Convert(__workflow_isIrs);
                 return new ApiConnectionAction<ValidateResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taxidpro")]
-        [WorkflowExpressionFactory(nameof(__BuildLookup))]
-        public IBodyWorkflowAction<LookupResponse> Lookup([WorkflowExpression] Func<string> country, [WorkflowExpression] Func<string> tin, [WorkflowExpression] Func<typeInput> type = null, [WorkflowExpression] Func<localeInput> locale = null, [WorkflowExpression] Func<bool> isIrs = null)
+        public IBodyWorkflowAction<LookupResponse> Lookup(Expression<Func<string>> country, Expression<Func<string>> tin, Expression<Func<typeInput>> type = null, Expression<Func<localeInput>> locale = null, Expression<Func<bool>> isIrs = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<LookupResponse> __BuildLookup(WorkflowExpression<string> country, WorkflowExpression<string> tin, WorkflowExpression<typeInput> type = null, WorkflowExpression<localeInput> locale = null, WorkflowExpression<bool> isIrs = null)
-        {
-            WorkflowExpression.Validate(country, nameof(country), required: true);
-            WorkflowExpression.Validate(tin, nameof(tin), required: true);
-            WorkflowExpression.Validate(type, nameof(type), required: false);
-            WorkflowExpression.Validate(locale, nameof(locale), required: false);
-            WorkflowExpression.Validate(isIrs, nameof(isIrs), required: false);
+            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
+            WorkflowExpression.Validate(__workflow_country, nameof(country), required: true);
+            var __workflow_tin = tin == null ? null : WorkflowExpression.Compile(tin);
+            WorkflowExpression.Validate(__workflow_tin, nameof(tin), required: true);
+            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
+            WorkflowExpression.Validate(__workflow_type, nameof(type), required: false);
+            var __workflow_locale = locale == null ? null : WorkflowExpression.Compile(locale);
+            WorkflowExpression.Validate(__workflow_locale, nameof(locale), required: false);
+            var __workflow_isIrs = isIrs == null ? null : WorkflowExpression.Compile(isIrs);
+            WorkflowExpression.Validate(__workflow_isIrs, nameof(isIrs), required: false);
             return new DeferredBodyAction<LookupResponse>(() =>
             {
                 var apiCallPath = "/lookup";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-                callPayload.Queries["tin"] = ExpressionConverter.Convert(tin);
-                if (type != null)
-                    callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-                if (locale != null)
-                    callPayload.Queries["locale"] = ExpressionConverter.Convert(locale);
-                if (isIrs != null)
-                    callPayload.Queries["is_irs"] = ExpressionConverter.Convert(isIrs);
+                callPayload.Queries["country"] = ExpressionConverter.Convert(__workflow_country);
+                callPayload.Queries["tin"] = ExpressionConverter.Convert(__workflow_tin);
+                if (__workflow_type != null)
+                    callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
+                if (__workflow_locale != null)
+                    callPayload.Queries["locale"] = ExpressionConverter.Convert(__workflow_locale);
+                if (__workflow_isIrs != null)
+                    callPayload.Queries["is_irs"] = ExpressionConverter.Convert(__workflow_isIrs);
                 return new ApiConnectionAction<LookupResponse>(callPayload);
             });
         }

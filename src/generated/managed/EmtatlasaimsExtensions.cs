@@ -1,118 +1,109 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emtatlasaims
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class EmtatlasaimsActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emtatlasaims")]
-        [WorkflowExpressionFactory(nameof(__BuildListAssetsConfigurationBaseline))]
-        public IBodyWorkflowAction<ListBaseline[]> ListAssetsConfigurationBaseline([WorkflowExpression] Func<string> baseUrl, [WorkflowExpression] Func<string> status = null)
+        public IBodyWorkflowAction<ListBaseline[]> ListAssetsConfigurationBaseline(Expression<Func<string>> baseUrl, Expression<Func<string>> status = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListBaseline[]> __BuildListAssetsConfigurationBaseline(WorkflowExpression<string> baseUrl, WorkflowExpression<string> status = null)
-        {
-            WorkflowExpression.Validate(baseUrl, nameof(baseUrl), required: true);
-            WorkflowExpression.Validate(status, nameof(status), required: false);
+            var __workflow_baseUrl = baseUrl == null ? null : WorkflowExpression.Compile(baseUrl);
+            WorkflowExpression.Validate(__workflow_baseUrl, nameof(baseUrl), required: true);
+            var __workflow_status = status == null ? null : WorkflowExpression.Compile(status);
+            WorkflowExpression.Validate(__workflow_status, nameof(status), required: false);
             return new DeferredBodyAction<ListBaseline[]>(() =>
             {
                 var apiCallPath = "/aimsapi/assets/configuration/base_line/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (status != null)
-                    callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-                callPayload.Queries["baseUrl"] = ExpressionConverter.Convert(baseUrl);
+                if (__workflow_status != null)
+                    callPayload.Queries["status"] = ExpressionConverter.Convert(__workflow_status);
+                callPayload.Queries["baseUrl"] = ExpressionConverter.Convert(__workflow_baseUrl);
                 return new ApiConnectionAction<ListBaseline[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emtatlasaims")]
-        [WorkflowExpressionFactory(nameof(__BuildGetAssetsConfigurationBaseline))]
-        public IBodyWorkflowAction<ListBaseline> GetAssetsConfigurationBaseline([WorkflowExpression] Func<string> baselineId, [WorkflowExpression] Func<string> baseUrl)
+        public IBodyWorkflowAction<ListBaseline> GetAssetsConfigurationBaseline(Expression<Func<string>> baselineId, Expression<Func<string>> baseUrl)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListBaseline> __BuildGetAssetsConfigurationBaseline(WorkflowExpression<string> baselineId, WorkflowExpression<string> baseUrl)
-        {
-            WorkflowExpression.Validate(baselineId, nameof(baselineId), required: true);
-            WorkflowExpression.Validate(baseUrl, nameof(baseUrl), required: true);
+            var __workflow_baselineId = baselineId == null ? null : WorkflowExpression.Compile(baselineId);
+            WorkflowExpression.Validate(__workflow_baselineId, nameof(baselineId), required: true);
+            var __workflow_baseUrl = baseUrl == null ? null : WorkflowExpression.Compile(baseUrl);
+            WorkflowExpression.Validate(__workflow_baseUrl, nameof(baseUrl), required: true);
             return new DeferredBodyAction<ListBaseline>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/aimsapi/assets/configuration/base_line/{0}/", ExpressionConverter.ConvertWithUrlEncoding(baselineId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/aimsapi/assets/configuration/base_line/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_baselineId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["baseUrl"] = ExpressionConverter.Convert(baseUrl);
+                callPayload.Queries["baseUrl"] = ExpressionConverter.Convert(__workflow_baseUrl);
                 return new ApiConnectionAction<ListBaseline>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emtatlasaims")]
-        [WorkflowExpressionFactory(nameof(__BuildAssetsSearch))]
-        public IBodyWorkflowAction<AssetSearchResult> AssetsSearch([WorkflowExpression] Func<string> baseUrl, [WorkflowExpression] Func<string> bodycontractId = null, [WorkflowExpression] Func<int> bodypageNumber = null, [WorkflowExpression] Func<int> bodypageSize = null, [WorkflowExpression] Func<string> bodymodifiedDategreaterThan = null, [WorkflowExpression] Func<string> bodymodifiedDatelessThan = null, [WorkflowExpression] Func<string> bodysortKey = null, [WorkflowExpression] Func<string> bodysortOrder = null, [WorkflowExpression] Func<string[]> bodyfilteredAssetClassCode = null)
+        public IBodyWorkflowAction<AssetSearchResult> AssetsSearch(Expression<Func<string>> baseUrl, Expression<Func<string>> bodycontractId = null, Expression<Func<int>> bodypageNumber = null, Expression<Func<int>> bodypageSize = null, Expression<Func<string>> bodymodifiedDategreaterThan = null, Expression<Func<string>> bodymodifiedDatelessThan = null, Expression<Func<string>> bodysortKey = null, Expression<Func<string>> bodysortOrder = null, Expression<Func<string[]>> bodyfilteredAssetClassCode = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AssetSearchResult> __BuildAssetsSearch(WorkflowExpression<string> baseUrl, WorkflowExpression<string> bodycontractId = null, WorkflowExpression<int> bodypageNumber = null, WorkflowExpression<int> bodypageSize = null, WorkflowExpression<string> bodymodifiedDategreaterThan = null, WorkflowExpression<string> bodymodifiedDatelessThan = null, WorkflowExpression<string> bodysortKey = null, WorkflowExpression<string> bodysortOrder = null, WorkflowExpression<string[]> bodyfilteredAssetClassCode = null)
-        {
-            WorkflowExpression.Validate(baseUrl, nameof(baseUrl), required: true);
-            WorkflowExpression.Validate(bodycontractId, nameof(bodycontractId), required: false);
-            WorkflowExpression.Validate(bodypageNumber, nameof(bodypageNumber), required: false);
-            WorkflowExpression.Validate(bodypageSize, nameof(bodypageSize), required: false);
-            WorkflowExpression.Validate(bodymodifiedDategreaterThan, nameof(bodymodifiedDategreaterThan), required: false);
-            WorkflowExpression.Validate(bodymodifiedDatelessThan, nameof(bodymodifiedDatelessThan), required: false);
-            WorkflowExpression.Validate(bodysortKey, nameof(bodysortKey), required: false);
-            WorkflowExpression.Validate(bodysortOrder, nameof(bodysortOrder), required: false);
-            WorkflowExpression.Validate(bodyfilteredAssetClassCode, nameof(bodyfilteredAssetClassCode), required: false);
+            var __workflow_baseUrl = baseUrl == null ? null : WorkflowExpression.Compile(baseUrl);
+            WorkflowExpression.Validate(__workflow_baseUrl, nameof(baseUrl), required: true);
+            var __workflow_bodycontractId = bodycontractId == null ? null : WorkflowExpression.Compile(bodycontractId);
+            WorkflowExpression.Validate(__workflow_bodycontractId, nameof(bodycontractId), required: false);
+            var __workflow_bodypageNumber = bodypageNumber == null ? null : WorkflowExpression.Compile(bodypageNumber);
+            WorkflowExpression.Validate(__workflow_bodypageNumber, nameof(bodypageNumber), required: false);
+            var __workflow_bodypageSize = bodypageSize == null ? null : WorkflowExpression.Compile(bodypageSize);
+            WorkflowExpression.Validate(__workflow_bodypageSize, nameof(bodypageSize), required: false);
+            var __workflow_bodymodifiedDategreaterThan = bodymodifiedDategreaterThan == null ? null : WorkflowExpression.Compile(bodymodifiedDategreaterThan);
+            WorkflowExpression.Validate(__workflow_bodymodifiedDategreaterThan, nameof(bodymodifiedDategreaterThan), required: false);
+            var __workflow_bodymodifiedDatelessThan = bodymodifiedDatelessThan == null ? null : WorkflowExpression.Compile(bodymodifiedDatelessThan);
+            WorkflowExpression.Validate(__workflow_bodymodifiedDatelessThan, nameof(bodymodifiedDatelessThan), required: false);
+            var __workflow_bodysortKey = bodysortKey == null ? null : WorkflowExpression.Compile(bodysortKey);
+            WorkflowExpression.Validate(__workflow_bodysortKey, nameof(bodysortKey), required: false);
+            var __workflow_bodysortOrder = bodysortOrder == null ? null : WorkflowExpression.Compile(bodysortOrder);
+            WorkflowExpression.Validate(__workflow_bodysortOrder, nameof(bodysortOrder), required: false);
+            var __workflow_bodyfilteredAssetClassCode = bodyfilteredAssetClassCode == null ? null : WorkflowExpression.Compile(bodyfilteredAssetClassCode);
+            WorkflowExpression.Validate(__workflow_bodyfilteredAssetClassCode, nameof(bodyfilteredAssetClassCode), required: false);
             return new DeferredBodyAction<AssetSearchResult>(() =>
             {
                 var apiCallPath = "/aimsapi/assets/search/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["baseUrl"] = ExpressionConverter.Convert(baseUrl);
+                callPayload.Queries["baseUrl"] = ExpressionConverter.Convert(__workflow_baseUrl);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodycontractId != null)
+                if (__workflow_bodycontractId != null)
                 {
-                    body["contract"] = ExpressionConverter.ConvertO(bodycontractId);
+                    body["contract"] = ExpressionConverter.ConvertO(__workflow_bodycontractId);
                     bodypropCount++;
                 }
 
-                if (bodypageNumber != null)
+                if (__workflow_bodypageNumber != null)
                 {
-                    body["page"] = ExpressionConverter.ConvertO(bodypageNumber);
+                    body["page"] = ExpressionConverter.ConvertO(__workflow_bodypageNumber);
                     bodypropCount++;
                 }
 
-                if (bodypageSize != null)
+                if (__workflow_bodypageSize != null)
                 {
-                    body["pageSize"] = ExpressionConverter.ConvertO(bodypageSize);
+                    body["pageSize"] = ExpressionConverter.ConvertO(__workflow_bodypageSize);
                     bodypropCount++;
                 }
 
                 var modifiedDateObject = new JObject();
                 var modifiedDateObjectpropCount = 0;
-                if (bodymodifiedDategreaterThan != null)
+                if (__workflow_bodymodifiedDategreaterThan != null)
                 {
-                    modifiedDateObject["gt"] = ExpressionConverter.ConvertO(bodymodifiedDategreaterThan);
+                    modifiedDateObject["gt"] = ExpressionConverter.ConvertO(__workflow_bodymodifiedDategreaterThan);
                     modifiedDateObjectpropCount++;
                 }
 
-                if (bodymodifiedDatelessThan != null)
+                if (__workflow_bodymodifiedDatelessThan != null)
                 {
-                    modifiedDateObject["lt"] = ExpressionConverter.ConvertO(bodymodifiedDatelessThan);
+                    modifiedDateObject["lt"] = ExpressionConverter.ConvertO(__workflow_bodymodifiedDatelessThan);
                     modifiedDateObjectpropCount++;
                 }
 
@@ -122,21 +113,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emtatlasaims
                     bodypropCount++;
                 }
 
-                if (bodysortKey != null)
+                if (__workflow_bodysortKey != null)
                 {
-                    body["sortKey"] = ExpressionConverter.ConvertO(bodysortKey);
+                    body["sortKey"] = ExpressionConverter.ConvertO(__workflow_bodysortKey);
                     bodypropCount++;
                 }
 
-                if (bodysortOrder != null)
+                if (__workflow_bodysortOrder != null)
                 {
-                    body["sortOrder"] = ExpressionConverter.ConvertO(bodysortOrder);
+                    body["sortOrder"] = ExpressionConverter.ConvertO(__workflow_bodysortOrder);
                     bodypropCount++;
                 }
 
-                if (bodyfilteredAssetClassCode != null)
+                if (__workflow_bodyfilteredAssetClassCode != null)
                 {
-                    body["filteredAssetClassCode"] = ExpressionConverter.ConvertO(bodyfilteredAssetClassCode);
+                    body["filteredAssetClassCode"] = ExpressionConverter.ConvertO(__workflow_bodyfilteredAssetClassCode);
                     bodypropCount++;
                 }
 
@@ -150,22 +141,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emtatlasaims
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emtatlasaims")]
-        [WorkflowExpressionFactory(nameof(__BuildGetUserData))]
-        public IBodyWorkflowAction<UserDataResponseDoc> GetUserData([WorkflowExpression] Func<string> baseUrl)
+        public IBodyWorkflowAction<UserDataResponseDoc> GetUserData(Expression<Func<string>> baseUrl)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UserDataResponseDoc> __BuildGetUserData(WorkflowExpression<string> baseUrl)
-        {
-            WorkflowExpression.Validate(baseUrl, nameof(baseUrl), required: true);
+            var __workflow_baseUrl = baseUrl == null ? null : WorkflowExpression.Compile(baseUrl);
+            WorkflowExpression.Validate(__workflow_baseUrl, nameof(baseUrl), required: true);
             return new DeferredBodyAction<UserDataResponseDoc>(() =>
             {
                 var apiCallPath = "/aimsapi/user/user_data/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["baseUrl"] = ExpressionConverter.Convert(baseUrl);
+                callPayload.Queries["baseUrl"] = ExpressionConverter.Convert(__workflow_baseUrl);
                 return new ApiConnectionAction<UserDataResponseDoc>(callPayload);
             });
         }

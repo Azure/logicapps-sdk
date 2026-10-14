@@ -1,30 +1,26 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class Data8Actions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        [WorkflowExpressionFactory(nameof(__BuildIsUsableName))]
-        public IBodyWorkflowAction<IsUsableNameResponse> IsUsableName([WorkflowExpression] Func<string> bodynametitle = null, [WorkflowExpression] Func<string> bodynameforename = null, [WorkflowExpression] Func<string> bodynamemiddleName = null, [WorkflowExpression] Func<string> bodynamesurname = null)
+        public IBodyWorkflowAction<IsUsableNameResponse> IsUsableName(Expression<Func<string>> bodynametitle = null, Expression<Func<string>> bodynameforename = null, Expression<Func<string>> bodynamemiddleName = null, Expression<Func<string>> bodynamesurname = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<IsUsableNameResponse> __BuildIsUsableName(WorkflowExpression<string> bodynametitle = null, WorkflowExpression<string> bodynameforename = null, WorkflowExpression<string> bodynamemiddleName = null, WorkflowExpression<string> bodynamesurname = null)
-        {
-            WorkflowExpression.Validate(bodynametitle, nameof(bodynametitle), required: false);
-            WorkflowExpression.Validate(bodynameforename, nameof(bodynameforename), required: false);
-            WorkflowExpression.Validate(bodynamemiddleName, nameof(bodynamemiddleName), required: false);
-            WorkflowExpression.Validate(bodynamesurname, nameof(bodynamesurname), required: false);
+            var __workflow_bodynametitle = bodynametitle == null ? null : WorkflowExpression.Compile(bodynametitle);
+            WorkflowExpression.Validate(__workflow_bodynametitle, nameof(bodynametitle), required: false);
+            var __workflow_bodynameforename = bodynameforename == null ? null : WorkflowExpression.Compile(bodynameforename);
+            WorkflowExpression.Validate(__workflow_bodynameforename, nameof(bodynameforename), required: false);
+            var __workflow_bodynamemiddleName = bodynamemiddleName == null ? null : WorkflowExpression.Compile(bodynamemiddleName);
+            WorkflowExpression.Validate(__workflow_bodynamemiddleName, nameof(bodynamemiddleName), required: false);
+            var __workflow_bodynamesurname = bodynamesurname == null ? null : WorkflowExpression.Compile(bodynamesurname);
+            WorkflowExpression.Validate(__workflow_bodynamesurname, nameof(bodynamesurname), required: false);
             return new DeferredBodyAction<IsUsableNameResponse>(() =>
             {
                 var apiCallPath = "/SalaciousName/IsUnusableName.json";
@@ -34,27 +30,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
                 var bodypropCount = 0;
                 var nameObject = new JObject();
                 var nameObjectpropCount = 0;
-                if (bodynametitle != null)
+                if (__workflow_bodynametitle != null)
                 {
-                    nameObject["Title"] = ExpressionConverter.ConvertO(bodynametitle);
+                    nameObject["Title"] = ExpressionConverter.ConvertO(__workflow_bodynametitle);
                     nameObjectpropCount++;
                 }
 
-                if (bodynameforename != null)
+                if (__workflow_bodynameforename != null)
                 {
-                    nameObject["Forename"] = ExpressionConverter.ConvertO(bodynameforename);
+                    nameObject["Forename"] = ExpressionConverter.ConvertO(__workflow_bodynameforename);
                     nameObjectpropCount++;
                 }
 
-                if (bodynamemiddleName != null)
+                if (__workflow_bodynamemiddleName != null)
                 {
-                    nameObject["MiddleName"] = ExpressionConverter.ConvertO(bodynamemiddleName);
+                    nameObject["MiddleName"] = ExpressionConverter.ConvertO(__workflow_bodynamemiddleName);
                     nameObjectpropCount++;
                 }
 
-                if (bodynamesurname != null)
+                if (__workflow_bodynamesurname != null)
                 {
-                    nameObject["Surname"] = ExpressionConverter.ConvertO(bodynamesurname);
+                    nameObject["Surname"] = ExpressionConverter.ConvertO(__workflow_bodynamesurname);
                     nameObjectpropCount++;
                 }
 
@@ -74,16 +70,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        [WorkflowExpressionFactory(nameof(__BuildIsCallableTPS))]
-        public IBodyWorkflowAction<IsCallableTPSResponse> IsCallableTPS([WorkflowExpression] Func<string> bodynumber)
+        public IBodyWorkflowAction<IsCallableTPSResponse> IsCallableTPS(Expression<Func<string>> bodynumber)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<IsCallableTPSResponse> __BuildIsCallableTPS(WorkflowExpression<string> bodynumber)
-        {
-            WorkflowExpression.Validate(bodynumber, nameof(bodynumber), required: true);
+            var __workflow_bodynumber = bodynumber == null ? null : WorkflowExpression.Compile(bodynumber);
+            WorkflowExpression.Validate(__workflow_bodynumber, nameof(bodynumber), required: true);
             return new DeferredBodyAction<IsCallableTPSResponse>(() =>
             {
                 var apiCallPath = "/TPS/IsCallable.json";
@@ -92,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["number"] = ExpressionConverter.ConvertO(bodynumber);
+                body["number"] = ExpressionConverter.ConvertO(__workflow_bodynumber);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -103,16 +93,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        [WorkflowExpressionFactory(nameof(__BuildIsCallableCTPS))]
-        public IBodyWorkflowAction<IsCallableCTPSResponse> IsCallableCTPS([WorkflowExpression] Func<string> bodynumber)
+        public IBodyWorkflowAction<IsCallableCTPSResponse> IsCallableCTPS(Expression<Func<string>> bodynumber)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<IsCallableCTPSResponse> __BuildIsCallableCTPS(WorkflowExpression<string> bodynumber)
-        {
-            WorkflowExpression.Validate(bodynumber, nameof(bodynumber), required: true);
+            var __workflow_bodynumber = bodynumber == null ? null : WorkflowExpression.Compile(bodynumber);
+            WorkflowExpression.Validate(__workflow_bodynumber, nameof(bodynumber), required: true);
             return new DeferredBodyAction<IsCallableCTPSResponse>(() =>
             {
                 var apiCallPath = "/CTPS/IsCallable.json";
@@ -121,7 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["number"] = ExpressionConverter.ConvertO(bodynumber);
+                body["number"] = ExpressionConverter.ConvertO(__workflow_bodynumber);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -132,17 +116,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        [WorkflowExpressionFactory(nameof(__BuildIsValidBankAccount))]
-        public IBodyWorkflowAction<IsValidBankAccountResponse> IsValidBankAccount([WorkflowExpression] Func<string> bodysortCode, [WorkflowExpression] Func<string> bodybankAccountNumber = null)
+        public IBodyWorkflowAction<IsValidBankAccountResponse> IsValidBankAccount(Expression<Func<string>> bodysortCode, Expression<Func<string>> bodybankAccountNumber = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<IsValidBankAccountResponse> __BuildIsValidBankAccount(WorkflowExpression<string> bodysortCode, WorkflowExpression<string> bodybankAccountNumber = null)
-        {
-            WorkflowExpression.Validate(bodysortCode, nameof(bodysortCode), required: true);
-            WorkflowExpression.Validate(bodybankAccountNumber, nameof(bodybankAccountNumber), required: false);
+            var __workflow_bodysortCode = bodysortCode == null ? null : WorkflowExpression.Compile(bodysortCode);
+            WorkflowExpression.Validate(__workflow_bodysortCode, nameof(bodysortCode), required: true);
+            var __workflow_bodybankAccountNumber = bodybankAccountNumber == null ? null : WorkflowExpression.Compile(bodybankAccountNumber);
+            WorkflowExpression.Validate(__workflow_bodybankAccountNumber, nameof(bodybankAccountNumber), required: false);
             return new DeferredBodyAction<IsValidBankAccountResponse>(() =>
             {
                 var apiCallPath = "/BankAccountValidation/IsValid.json";
@@ -151,10 +130,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["sortCode"] = ExpressionConverter.ConvertO(bodysortCode);
-                if (bodybankAccountNumber != null)
+                body["sortCode"] = ExpressionConverter.ConvertO(__workflow_bodysortCode);
+                if (__workflow_bodybankAccountNumber != null)
                 {
-                    body["bankAccountNumber"] = ExpressionConverter.ConvertO(bodybankAccountNumber);
+                    body["bankAccountNumber"] = ExpressionConverter.ConvertO(__workflow_bodybankAccountNumber);
                     bodypropCount++;
                 }
 
@@ -168,17 +147,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        [WorkflowExpressionFactory(nameof(__BuildIsValidEmail))]
-        public IBodyWorkflowAction<IsValidEmailResponse> IsValidEmail([WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<bodylevelInput> bodylevel)
+        public IBodyWorkflowAction<IsValidEmailResponse> IsValidEmail(Expression<Func<string>> bodyemail, Expression<Func<bodylevelInput>> bodylevel)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<IsValidEmailResponse> __BuildIsValidEmail(WorkflowExpression<string> bodyemail, WorkflowExpression<bodylevelInput> bodylevel)
-        {
-            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: true);
-            WorkflowExpression.Validate(bodylevel, nameof(bodylevel), required: true);
+            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
+            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
+            var __workflow_bodylevel = bodylevel == null ? null : WorkflowExpression.Compile(bodylevel);
+            WorkflowExpression.Validate(__workflow_bodylevel, nameof(bodylevel), required: true);
             return new DeferredBodyAction<IsValidEmailResponse>(() =>
             {
                 var apiCallPath = "/EmailValidation/IsValid.json";
@@ -187,9 +161,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
                 bodypropCount++;
-                body["level"] = ExpressionConverter.ConvertO(bodylevel);
+                body["level"] = ExpressionConverter.ConvertO(__workflow_bodylevel);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -200,19 +174,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        [WorkflowExpressionFactory(nameof(__BuildIsValidTelephone))]
-        public IBodyWorkflowAction<IsValidTelephoneResponse> IsValidTelephone([WorkflowExpression] Func<string> bodytelephoneNumber, [WorkflowExpression] Func<string> bodydefaultCountry, [WorkflowExpression] Func<bool> bodyoptionsuseLineValidation = null, [WorkflowExpression] Func<bool> bodyoptionsuseMobileValidation = null)
+        public IBodyWorkflowAction<IsValidTelephoneResponse> IsValidTelephone(Expression<Func<string>> bodytelephoneNumber, Expression<Func<string>> bodydefaultCountry, Expression<Func<bool>> bodyoptionsuseLineValidation = null, Expression<Func<bool>> bodyoptionsuseMobileValidation = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<IsValidTelephoneResponse> __BuildIsValidTelephone(WorkflowExpression<string> bodytelephoneNumber, WorkflowExpression<string> bodydefaultCountry, WorkflowExpression<bool> bodyoptionsuseLineValidation = null, WorkflowExpression<bool> bodyoptionsuseMobileValidation = null)
-        {
-            WorkflowExpression.Validate(bodytelephoneNumber, nameof(bodytelephoneNumber), required: true);
-            WorkflowExpression.Validate(bodydefaultCountry, nameof(bodydefaultCountry), required: true);
-            WorkflowExpression.Validate(bodyoptionsuseLineValidation, nameof(bodyoptionsuseLineValidation), required: false);
-            WorkflowExpression.Validate(bodyoptionsuseMobileValidation, nameof(bodyoptionsuseMobileValidation), required: false);
+            var __workflow_bodytelephoneNumber = bodytelephoneNumber == null ? null : WorkflowExpression.Compile(bodytelephoneNumber);
+            WorkflowExpression.Validate(__workflow_bodytelephoneNumber, nameof(bodytelephoneNumber), required: true);
+            var __workflow_bodydefaultCountry = bodydefaultCountry == null ? null : WorkflowExpression.Compile(bodydefaultCountry);
+            WorkflowExpression.Validate(__workflow_bodydefaultCountry, nameof(bodydefaultCountry), required: true);
+            var __workflow_bodyoptionsuseLineValidation = bodyoptionsuseLineValidation == null ? null : WorkflowExpression.Compile(bodyoptionsuseLineValidation);
+            WorkflowExpression.Validate(__workflow_bodyoptionsuseLineValidation, nameof(bodyoptionsuseLineValidation), required: false);
+            var __workflow_bodyoptionsuseMobileValidation = bodyoptionsuseMobileValidation == null ? null : WorkflowExpression.Compile(bodyoptionsuseMobileValidation);
+            WorkflowExpression.Validate(__workflow_bodyoptionsuseMobileValidation, nameof(bodyoptionsuseMobileValidation), required: false);
             return new DeferredBodyAction<IsValidTelephoneResponse>(() =>
             {
                 var apiCallPath = "/InternationalTelephoneValidation/IsValid.json";
@@ -221,20 +192,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["telephoneNumber"] = ExpressionConverter.ConvertO(bodytelephoneNumber);
+                body["telephoneNumber"] = ExpressionConverter.ConvertO(__workflow_bodytelephoneNumber);
                 bodypropCount++;
-                body["defaultCountry"] = ExpressionConverter.ConvertO(bodydefaultCountry);
+                body["defaultCountry"] = ExpressionConverter.ConvertO(__workflow_bodydefaultCountry);
                 var optionsObject = new JObject();
                 var optionsObjectpropCount = 0;
-                if (bodyoptionsuseLineValidation != null)
+                if (__workflow_bodyoptionsuseLineValidation != null)
                 {
-                    optionsObject["UseLineValidation"] = ExpressionConverter.ConvertO(bodyoptionsuseLineValidation);
+                    optionsObject["UseLineValidation"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsuseLineValidation);
                     optionsObjectpropCount++;
                 }
 
-                if (bodyoptionsuseMobileValidation != null)
+                if (__workflow_bodyoptionsuseMobileValidation != null)
                 {
-                    optionsObject["UseMobileValidation"] = ExpressionConverter.ConvertO(bodyoptionsuseMobileValidation);
+                    optionsObject["UseMobileValidation"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsuseMobileValidation);
                     optionsObjectpropCount++;
                 }
 
@@ -254,20 +225,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        [WorkflowExpressionFactory(nameof(__BuildCleanAddress))]
-        public IBodyWorkflowAction<CleanAddressResponse> CleanAddress([WorkflowExpression] Func<string[]> bodyaddresslines = null, [WorkflowExpression] Func<string> bodyoptionsdefaultCountryCode = null, [WorkflowExpression] Func<bool> bodyoptionsdetectCountry = null, [WorkflowExpression] Func<string> bodyoptionscountry = null, [WorkflowExpression] Func<bool> bodyoptionsincludeCountry = null)
+        public IBodyWorkflowAction<CleanAddressResponse> CleanAddress(Expression<Func<string[]>> bodyaddresslines = null, Expression<Func<string>> bodyoptionsdefaultCountryCode = null, Expression<Func<bool>> bodyoptionsdetectCountry = null, Expression<Func<string>> bodyoptionscountry = null, Expression<Func<bool>> bodyoptionsincludeCountry = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CleanAddressResponse> __BuildCleanAddress(WorkflowExpression<string[]> bodyaddresslines = null, WorkflowExpression<string> bodyoptionsdefaultCountryCode = null, WorkflowExpression<bool> bodyoptionsdetectCountry = null, WorkflowExpression<string> bodyoptionscountry = null, WorkflowExpression<bool> bodyoptionsincludeCountry = null)
-        {
-            WorkflowExpression.Validate(bodyaddresslines, nameof(bodyaddresslines), required: false);
-            WorkflowExpression.Validate(bodyoptionsdefaultCountryCode, nameof(bodyoptionsdefaultCountryCode), required: false);
-            WorkflowExpression.Validate(bodyoptionsdetectCountry, nameof(bodyoptionsdetectCountry), required: false);
-            WorkflowExpression.Validate(bodyoptionscountry, nameof(bodyoptionscountry), required: false);
-            WorkflowExpression.Validate(bodyoptionsincludeCountry, nameof(bodyoptionsincludeCountry), required: false);
+            var __workflow_bodyaddresslines = bodyaddresslines == null ? null : WorkflowExpression.Compile(bodyaddresslines);
+            WorkflowExpression.Validate(__workflow_bodyaddresslines, nameof(bodyaddresslines), required: false);
+            var __workflow_bodyoptionsdefaultCountryCode = bodyoptionsdefaultCountryCode == null ? null : WorkflowExpression.Compile(bodyoptionsdefaultCountryCode);
+            WorkflowExpression.Validate(__workflow_bodyoptionsdefaultCountryCode, nameof(bodyoptionsdefaultCountryCode), required: false);
+            var __workflow_bodyoptionsdetectCountry = bodyoptionsdetectCountry == null ? null : WorkflowExpression.Compile(bodyoptionsdetectCountry);
+            WorkflowExpression.Validate(__workflow_bodyoptionsdetectCountry, nameof(bodyoptionsdetectCountry), required: false);
+            var __workflow_bodyoptionscountry = bodyoptionscountry == null ? null : WorkflowExpression.Compile(bodyoptionscountry);
+            WorkflowExpression.Validate(__workflow_bodyoptionscountry, nameof(bodyoptionscountry), required: false);
+            var __workflow_bodyoptionsincludeCountry = bodyoptionsincludeCountry == null ? null : WorkflowExpression.Compile(bodyoptionsincludeCountry);
+            WorkflowExpression.Validate(__workflow_bodyoptionsincludeCountry, nameof(bodyoptionsincludeCountry), required: false);
             return new DeferredBodyAction<CleanAddressResponse>(() =>
             {
                 var apiCallPath = "/Postcoder/CleanAddress.json";
@@ -277,9 +246,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
                 var bodypropCount = 0;
                 var addressObject = new JObject();
                 var addressObjectpropCount = 0;
-                if (bodyaddresslines != null)
+                if (__workflow_bodyaddresslines != null)
                 {
-                    addressObject["Lines"] = ExpressionConverter.ConvertO(bodyaddresslines);
+                    addressObject["Lines"] = ExpressionConverter.ConvertO(__workflow_bodyaddresslines);
                     addressObjectpropCount++;
                 }
 
@@ -291,27 +260,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
 
                 var optionsObject = new JObject();
                 var optionsObjectpropCount = 0;
-                if (bodyoptionsdefaultCountryCode != null)
+                if (__workflow_bodyoptionsdefaultCountryCode != null)
                 {
-                    optionsObject["DefaultCountryCode"] = ExpressionConverter.ConvertO(bodyoptionsdefaultCountryCode);
+                    optionsObject["DefaultCountryCode"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsdefaultCountryCode);
                     optionsObjectpropCount++;
                 }
 
-                if (bodyoptionsdetectCountry != null)
+                if (__workflow_bodyoptionsdetectCountry != null)
                 {
-                    optionsObject["DetectCountry"] = ExpressionConverter.ConvertO(bodyoptionsdetectCountry);
+                    optionsObject["DetectCountry"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsdetectCountry);
                     optionsObjectpropCount++;
                 }
 
-                if (bodyoptionscountry != null)
+                if (__workflow_bodyoptionscountry != null)
                 {
-                    optionsObject["Country"] = ExpressionConverter.ConvertO(bodyoptionscountry);
+                    optionsObject["Country"] = ExpressionConverter.ConvertO(__workflow_bodyoptionscountry);
                     optionsObjectpropCount++;
                 }
 
-                if (bodyoptionsincludeCountry != null)
+                if (__workflow_bodyoptionsincludeCountry != null)
                 {
-                    optionsObject["IncludeCountry"] = ExpressionConverter.ConvertO(bodyoptionsincludeCountry);
+                    optionsObject["IncludeCountry"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsincludeCountry);
                     optionsObjectpropCount++;
                 }
 
@@ -331,33 +300,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        [WorkflowExpressionFactory(nameof(__BuildGetFullAddress))]
-        public IBodyWorkflowAction<GetFullAddressResponse> GetFullAddress([WorkflowExpression] Func<bodylicenceInput> bodylicence, [WorkflowExpression] Func<string> bodypostcode, [WorkflowExpression] Func<string> bodybuilding = null, [WorkflowExpression] Func<bool> bodyoptionsfixTownCounty = null, [WorkflowExpression] Func<int> bodyoptionsmaxLines = null, [WorkflowExpression] Func<int> bodyoptionsmaxLineLength = null, [WorkflowExpression] Func<bool> bodyoptionsnormalizeCase = null, [WorkflowExpression] Func<bool> bodyoptionsnormalizeTownCase = null, [WorkflowExpression] Func<bool> bodyoptionsexcludeCounty = null, [WorkflowExpression] Func<bool> bodyoptionsuseAnyAvailableCounty = null, [WorkflowExpression] Func<bool> bodyoptionsunwantedPunctuation = null, [WorkflowExpression] Func<bool> bodyoptionsfixBuilding = null, [WorkflowExpression] Func<bool> bodyoptionsincludeUDPRN = null, [WorkflowExpression] Func<bool> bodyoptionsincludeLocation = null, [WorkflowExpression] Func<bool> bodyoptionsreturnResultCount = null, [WorkflowExpression] Func<bool> bodyoptionsincludeNYB = null, [WorkflowExpression] Func<bool> bodyoptionsincludeMR = null, [WorkflowExpression] Func<bodyoptionsformatterInput> bodyoptionsformatter = null)
+        public IBodyWorkflowAction<GetFullAddressResponse> GetFullAddress(Expression<Func<bodylicenceInput>> bodylicence, Expression<Func<string>> bodypostcode, Expression<Func<string>> bodybuilding = null, Expression<Func<bool>> bodyoptionsfixTownCounty = null, Expression<Func<int>> bodyoptionsmaxLines = null, Expression<Func<int>> bodyoptionsmaxLineLength = null, Expression<Func<bool>> bodyoptionsnormalizeCase = null, Expression<Func<bool>> bodyoptionsnormalizeTownCase = null, Expression<Func<bool>> bodyoptionsexcludeCounty = null, Expression<Func<bool>> bodyoptionsuseAnyAvailableCounty = null, Expression<Func<bool>> bodyoptionsunwantedPunctuation = null, Expression<Func<bool>> bodyoptionsfixBuilding = null, Expression<Func<bool>> bodyoptionsincludeUDPRN = null, Expression<Func<bool>> bodyoptionsincludeLocation = null, Expression<Func<bool>> bodyoptionsreturnResultCount = null, Expression<Func<bool>> bodyoptionsincludeNYB = null, Expression<Func<bool>> bodyoptionsincludeMR = null, Expression<Func<bodyoptionsformatterInput>> bodyoptionsformatter = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetFullAddressResponse> __BuildGetFullAddress(WorkflowExpression<bodylicenceInput> bodylicence, WorkflowExpression<string> bodypostcode, WorkflowExpression<string> bodybuilding = null, WorkflowExpression<bool> bodyoptionsfixTownCounty = null, WorkflowExpression<int> bodyoptionsmaxLines = null, WorkflowExpression<int> bodyoptionsmaxLineLength = null, WorkflowExpression<bool> bodyoptionsnormalizeCase = null, WorkflowExpression<bool> bodyoptionsnormalizeTownCase = null, WorkflowExpression<bool> bodyoptionsexcludeCounty = null, WorkflowExpression<bool> bodyoptionsuseAnyAvailableCounty = null, WorkflowExpression<bool> bodyoptionsunwantedPunctuation = null, WorkflowExpression<bool> bodyoptionsfixBuilding = null, WorkflowExpression<bool> bodyoptionsincludeUDPRN = null, WorkflowExpression<bool> bodyoptionsincludeLocation = null, WorkflowExpression<bool> bodyoptionsreturnResultCount = null, WorkflowExpression<bool> bodyoptionsincludeNYB = null, WorkflowExpression<bool> bodyoptionsincludeMR = null, WorkflowExpression<bodyoptionsformatterInput> bodyoptionsformatter = null)
-        {
-            WorkflowExpression.Validate(bodylicence, nameof(bodylicence), required: true);
-            WorkflowExpression.Validate(bodypostcode, nameof(bodypostcode), required: true);
-            WorkflowExpression.Validate(bodybuilding, nameof(bodybuilding), required: false);
-            WorkflowExpression.Validate(bodyoptionsfixTownCounty, nameof(bodyoptionsfixTownCounty), required: false);
-            WorkflowExpression.Validate(bodyoptionsmaxLines, nameof(bodyoptionsmaxLines), required: false);
-            WorkflowExpression.Validate(bodyoptionsmaxLineLength, nameof(bodyoptionsmaxLineLength), required: false);
-            WorkflowExpression.Validate(bodyoptionsnormalizeCase, nameof(bodyoptionsnormalizeCase), required: false);
-            WorkflowExpression.Validate(bodyoptionsnormalizeTownCase, nameof(bodyoptionsnormalizeTownCase), required: false);
-            WorkflowExpression.Validate(bodyoptionsexcludeCounty, nameof(bodyoptionsexcludeCounty), required: false);
-            WorkflowExpression.Validate(bodyoptionsuseAnyAvailableCounty, nameof(bodyoptionsuseAnyAvailableCounty), required: false);
-            WorkflowExpression.Validate(bodyoptionsunwantedPunctuation, nameof(bodyoptionsunwantedPunctuation), required: false);
-            WorkflowExpression.Validate(bodyoptionsfixBuilding, nameof(bodyoptionsfixBuilding), required: false);
-            WorkflowExpression.Validate(bodyoptionsincludeUDPRN, nameof(bodyoptionsincludeUDPRN), required: false);
-            WorkflowExpression.Validate(bodyoptionsincludeLocation, nameof(bodyoptionsincludeLocation), required: false);
-            WorkflowExpression.Validate(bodyoptionsreturnResultCount, nameof(bodyoptionsreturnResultCount), required: false);
-            WorkflowExpression.Validate(bodyoptionsincludeNYB, nameof(bodyoptionsincludeNYB), required: false);
-            WorkflowExpression.Validate(bodyoptionsincludeMR, nameof(bodyoptionsincludeMR), required: false);
-            WorkflowExpression.Validate(bodyoptionsformatter, nameof(bodyoptionsformatter), required: false);
+            var __workflow_bodylicence = bodylicence == null ? null : WorkflowExpression.Compile(bodylicence);
+            WorkflowExpression.Validate(__workflow_bodylicence, nameof(bodylicence), required: true);
+            var __workflow_bodypostcode = bodypostcode == null ? null : WorkflowExpression.Compile(bodypostcode);
+            WorkflowExpression.Validate(__workflow_bodypostcode, nameof(bodypostcode), required: true);
+            var __workflow_bodybuilding = bodybuilding == null ? null : WorkflowExpression.Compile(bodybuilding);
+            WorkflowExpression.Validate(__workflow_bodybuilding, nameof(bodybuilding), required: false);
+            var __workflow_bodyoptionsfixTownCounty = bodyoptionsfixTownCounty == null ? null : WorkflowExpression.Compile(bodyoptionsfixTownCounty);
+            WorkflowExpression.Validate(__workflow_bodyoptionsfixTownCounty, nameof(bodyoptionsfixTownCounty), required: false);
+            var __workflow_bodyoptionsmaxLines = bodyoptionsmaxLines == null ? null : WorkflowExpression.Compile(bodyoptionsmaxLines);
+            WorkflowExpression.Validate(__workflow_bodyoptionsmaxLines, nameof(bodyoptionsmaxLines), required: false);
+            var __workflow_bodyoptionsmaxLineLength = bodyoptionsmaxLineLength == null ? null : WorkflowExpression.Compile(bodyoptionsmaxLineLength);
+            WorkflowExpression.Validate(__workflow_bodyoptionsmaxLineLength, nameof(bodyoptionsmaxLineLength), required: false);
+            var __workflow_bodyoptionsnormalizeCase = bodyoptionsnormalizeCase == null ? null : WorkflowExpression.Compile(bodyoptionsnormalizeCase);
+            WorkflowExpression.Validate(__workflow_bodyoptionsnormalizeCase, nameof(bodyoptionsnormalizeCase), required: false);
+            var __workflow_bodyoptionsnormalizeTownCase = bodyoptionsnormalizeTownCase == null ? null : WorkflowExpression.Compile(bodyoptionsnormalizeTownCase);
+            WorkflowExpression.Validate(__workflow_bodyoptionsnormalizeTownCase, nameof(bodyoptionsnormalizeTownCase), required: false);
+            var __workflow_bodyoptionsexcludeCounty = bodyoptionsexcludeCounty == null ? null : WorkflowExpression.Compile(bodyoptionsexcludeCounty);
+            WorkflowExpression.Validate(__workflow_bodyoptionsexcludeCounty, nameof(bodyoptionsexcludeCounty), required: false);
+            var __workflow_bodyoptionsuseAnyAvailableCounty = bodyoptionsuseAnyAvailableCounty == null ? null : WorkflowExpression.Compile(bodyoptionsuseAnyAvailableCounty);
+            WorkflowExpression.Validate(__workflow_bodyoptionsuseAnyAvailableCounty, nameof(bodyoptionsuseAnyAvailableCounty), required: false);
+            var __workflow_bodyoptionsunwantedPunctuation = bodyoptionsunwantedPunctuation == null ? null : WorkflowExpression.Compile(bodyoptionsunwantedPunctuation);
+            WorkflowExpression.Validate(__workflow_bodyoptionsunwantedPunctuation, nameof(bodyoptionsunwantedPunctuation), required: false);
+            var __workflow_bodyoptionsfixBuilding = bodyoptionsfixBuilding == null ? null : WorkflowExpression.Compile(bodyoptionsfixBuilding);
+            WorkflowExpression.Validate(__workflow_bodyoptionsfixBuilding, nameof(bodyoptionsfixBuilding), required: false);
+            var __workflow_bodyoptionsincludeUDPRN = bodyoptionsincludeUDPRN == null ? null : WorkflowExpression.Compile(bodyoptionsincludeUDPRN);
+            WorkflowExpression.Validate(__workflow_bodyoptionsincludeUDPRN, nameof(bodyoptionsincludeUDPRN), required: false);
+            var __workflow_bodyoptionsincludeLocation = bodyoptionsincludeLocation == null ? null : WorkflowExpression.Compile(bodyoptionsincludeLocation);
+            WorkflowExpression.Validate(__workflow_bodyoptionsincludeLocation, nameof(bodyoptionsincludeLocation), required: false);
+            var __workflow_bodyoptionsreturnResultCount = bodyoptionsreturnResultCount == null ? null : WorkflowExpression.Compile(bodyoptionsreturnResultCount);
+            WorkflowExpression.Validate(__workflow_bodyoptionsreturnResultCount, nameof(bodyoptionsreturnResultCount), required: false);
+            var __workflow_bodyoptionsincludeNYB = bodyoptionsincludeNYB == null ? null : WorkflowExpression.Compile(bodyoptionsincludeNYB);
+            WorkflowExpression.Validate(__workflow_bodyoptionsincludeNYB, nameof(bodyoptionsincludeNYB), required: false);
+            var __workflow_bodyoptionsincludeMR = bodyoptionsincludeMR == null ? null : WorkflowExpression.Compile(bodyoptionsincludeMR);
+            WorkflowExpression.Validate(__workflow_bodyoptionsincludeMR, nameof(bodyoptionsincludeMR), required: false);
+            var __workflow_bodyoptionsformatter = bodyoptionsformatter == null ? null : WorkflowExpression.Compile(bodyoptionsformatter);
+            WorkflowExpression.Validate(__workflow_bodyoptionsformatter, nameof(bodyoptionsformatter), required: false);
             return new DeferredBodyAction<GetFullAddressResponse>(() =>
             {
                 var apiCallPath = "/AddressCapture/GetFullAddress.json";
@@ -366,28 +346,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["licence"] = ExpressionConverter.ConvertO(bodylicence);
+                body["licence"] = ExpressionConverter.ConvertO(__workflow_bodylicence);
                 bodypropCount++;
-                body["postcode"] = ExpressionConverter.ConvertO(bodypostcode);
-                if (bodybuilding != null)
+                body["postcode"] = ExpressionConverter.ConvertO(__workflow_bodypostcode);
+                if (__workflow_bodybuilding != null)
                 {
-                    body["building"] = ExpressionConverter.ConvertO(bodybuilding);
+                    body["building"] = ExpressionConverter.ConvertO(__workflow_bodybuilding);
                     bodypropCount++;
                 }
 
                 var optionsObject = new JObject();
                 var optionsObjectpropCount = 0;
-                if (bodyoptionsfixTownCounty != null)
+                if (__workflow_bodyoptionsfixTownCounty != null)
                 {
-                    optionsObject["FixTownCounty"] = ExpressionConverter.ConvertO(bodyoptionsfixTownCounty);
+                    optionsObject["FixTownCounty"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsfixTownCounty);
                     optionsObjectpropCount++;
                 }
 
-                if (bodyoptionsmaxLines != null)
+                if (__workflow_bodyoptionsmaxLines != null)
                 {
-                    if (bodyoptionsmaxLines != null)
+                    if (__workflow_bodyoptionsmaxLines != null)
                     {
-                        optionsObject["MaxLines"] = ExpressionConverter.ConvertO(bodyoptionsmaxLines);
+                        optionsObject["MaxLines"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsmaxLines);
                         optionsObjectpropCount++;
                     }
 
@@ -399,59 +379,59 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
                     optionsObjectpropCount++;
                 }
 
-                if (bodyoptionsmaxLineLength != null)
+                if (__workflow_bodyoptionsmaxLineLength != null)
                 {
-                    optionsObject["MaxLineLength"] = ExpressionConverter.ConvertO(bodyoptionsmaxLineLength);
+                    optionsObject["MaxLineLength"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsmaxLineLength);
                     optionsObjectpropCount++;
                 }
 
-                if (bodyoptionsnormalizeCase != null)
+                if (__workflow_bodyoptionsnormalizeCase != null)
                 {
-                    optionsObject["NormalizeCase"] = ExpressionConverter.ConvertO(bodyoptionsnormalizeCase);
+                    optionsObject["NormalizeCase"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsnormalizeCase);
                     optionsObjectpropCount++;
                 }
 
-                if (bodyoptionsnormalizeTownCase != null)
+                if (__workflow_bodyoptionsnormalizeTownCase != null)
                 {
-                    optionsObject["NormalizeTownCase"] = ExpressionConverter.ConvertO(bodyoptionsnormalizeTownCase);
+                    optionsObject["NormalizeTownCase"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsnormalizeTownCase);
                     optionsObjectpropCount++;
                 }
 
-                if (bodyoptionsexcludeCounty != null)
+                if (__workflow_bodyoptionsexcludeCounty != null)
                 {
-                    optionsObject["ExcludeCounty"] = ExpressionConverter.ConvertO(bodyoptionsexcludeCounty);
+                    optionsObject["ExcludeCounty"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsexcludeCounty);
                     optionsObjectpropCount++;
                 }
 
-                if (bodyoptionsuseAnyAvailableCounty != null)
+                if (__workflow_bodyoptionsuseAnyAvailableCounty != null)
                 {
-                    optionsObject["UseAnyAvailableCounty"] = ExpressionConverter.ConvertO(bodyoptionsuseAnyAvailableCounty);
+                    optionsObject["UseAnyAvailableCounty"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsuseAnyAvailableCounty);
                     optionsObjectpropCount++;
                 }
 
-                if (bodyoptionsunwantedPunctuation != null)
+                if (__workflow_bodyoptionsunwantedPunctuation != null)
                 {
-                    optionsObject["UnwantedPunctuation"] = ExpressionConverter.ConvertO(bodyoptionsunwantedPunctuation);
+                    optionsObject["UnwantedPunctuation"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsunwantedPunctuation);
                     optionsObjectpropCount++;
                 }
 
-                if (bodyoptionsfixBuilding != null)
+                if (__workflow_bodyoptionsfixBuilding != null)
                 {
-                    optionsObject["FixBuilding"] = ExpressionConverter.ConvertO(bodyoptionsfixBuilding);
+                    optionsObject["FixBuilding"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsfixBuilding);
                     optionsObjectpropCount++;
                 }
 
-                if (bodyoptionsincludeUDPRN != null)
+                if (__workflow_bodyoptionsincludeUDPRN != null)
                 {
-                    optionsObject["IncludeUDPRN"] = ExpressionConverter.ConvertO(bodyoptionsincludeUDPRN);
+                    optionsObject["IncludeUDPRN"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsincludeUDPRN);
                     optionsObjectpropCount++;
                 }
 
-                if (bodyoptionsincludeLocation != null)
+                if (__workflow_bodyoptionsincludeLocation != null)
                 {
-                    if (bodyoptionsincludeLocation != null)
+                    if (__workflow_bodyoptionsincludeLocation != null)
                     {
-                        optionsObject["IncludeLocation"] = ExpressionConverter.ConvertO(bodyoptionsincludeLocation);
+                        optionsObject["IncludeLocation"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsincludeLocation);
                         optionsObjectpropCount++;
                     }
 
@@ -463,27 +443,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
                     optionsObjectpropCount++;
                 }
 
-                if (bodyoptionsreturnResultCount != null)
+                if (__workflow_bodyoptionsreturnResultCount != null)
                 {
-                    optionsObject["ReturnResultCount"] = ExpressionConverter.ConvertO(bodyoptionsreturnResultCount);
+                    optionsObject["ReturnResultCount"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsreturnResultCount);
                     optionsObjectpropCount++;
                 }
 
-                if (bodyoptionsincludeNYB != null)
+                if (__workflow_bodyoptionsincludeNYB != null)
                 {
-                    optionsObject["IncludeNYB"] = ExpressionConverter.ConvertO(bodyoptionsincludeNYB);
+                    optionsObject["IncludeNYB"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsincludeNYB);
                     optionsObjectpropCount++;
                 }
 
-                if (bodyoptionsincludeMR != null)
+                if (__workflow_bodyoptionsincludeMR != null)
                 {
-                    optionsObject["IncludeMR"] = ExpressionConverter.ConvertO(bodyoptionsincludeMR);
+                    optionsObject["IncludeMR"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsincludeMR);
                     optionsObjectpropCount++;
                 }
 
-                if (bodyoptionsformatter != null)
+                if (__workflow_bodyoptionsformatter != null)
                 {
-                    optionsObject["Formatter"] = ExpressionConverter.ConvertO(bodyoptionsformatter);
+                    optionsObject["Formatter"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsformatter);
                     optionsObjectpropCount++;
                 }
 
@@ -503,22 +483,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        [WorkflowExpressionFactory(nameof(__BuildIsDeceased))]
-        public IBodyWorkflowAction<IsDeceasedResponse> IsDeceased([WorkflowExpression] Func<string> bodyrecordnamesurname, [WorkflowExpression] Func<string[]> bodyrecordaddresslines, [WorkflowExpression] Func<bool> bodymarketing, [WorkflowExpression] Func<string> bodyrecordnametitle = null, [WorkflowExpression] Func<string> bodyrecordnameforename = null, [WorkflowExpression] Func<string> bodyrecordnamemiddleName = null, [WorkflowExpression] Func<bodyoptionsmatchLevelInput> bodyoptionsmatchLevel = null)
+        public IBodyWorkflowAction<IsDeceasedResponse> IsDeceased(Expression<Func<string>> bodyrecordnamesurname, Expression<Func<string[]>> bodyrecordaddresslines, Expression<Func<bool>> bodymarketing, Expression<Func<string>> bodyrecordnametitle = null, Expression<Func<string>> bodyrecordnameforename = null, Expression<Func<string>> bodyrecordnamemiddleName = null, Expression<Func<bodyoptionsmatchLevelInput>> bodyoptionsmatchLevel = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<IsDeceasedResponse> __BuildIsDeceased(WorkflowExpression<string> bodyrecordnamesurname, WorkflowExpression<string[]> bodyrecordaddresslines, WorkflowExpression<bool> bodymarketing, WorkflowExpression<string> bodyrecordnametitle = null, WorkflowExpression<string> bodyrecordnameforename = null, WorkflowExpression<string> bodyrecordnamemiddleName = null, WorkflowExpression<bodyoptionsmatchLevelInput> bodyoptionsmatchLevel = null)
-        {
-            WorkflowExpression.Validate(bodyrecordnamesurname, nameof(bodyrecordnamesurname), required: true);
-            WorkflowExpression.Validate(bodyrecordaddresslines, nameof(bodyrecordaddresslines), required: true);
-            WorkflowExpression.Validate(bodymarketing, nameof(bodymarketing), required: true);
-            WorkflowExpression.Validate(bodyrecordnametitle, nameof(bodyrecordnametitle), required: false);
-            WorkflowExpression.Validate(bodyrecordnameforename, nameof(bodyrecordnameforename), required: false);
-            WorkflowExpression.Validate(bodyrecordnamemiddleName, nameof(bodyrecordnamemiddleName), required: false);
-            WorkflowExpression.Validate(bodyoptionsmatchLevel, nameof(bodyoptionsmatchLevel), required: false);
+            var __workflow_bodyrecordnamesurname = bodyrecordnamesurname == null ? null : WorkflowExpression.Compile(bodyrecordnamesurname);
+            WorkflowExpression.Validate(__workflow_bodyrecordnamesurname, nameof(bodyrecordnamesurname), required: true);
+            var __workflow_bodyrecordaddresslines = bodyrecordaddresslines == null ? null : WorkflowExpression.Compile(bodyrecordaddresslines);
+            WorkflowExpression.Validate(__workflow_bodyrecordaddresslines, nameof(bodyrecordaddresslines), required: true);
+            var __workflow_bodymarketing = bodymarketing == null ? null : WorkflowExpression.Compile(bodymarketing);
+            WorkflowExpression.Validate(__workflow_bodymarketing, nameof(bodymarketing), required: true);
+            var __workflow_bodyrecordnametitle = bodyrecordnametitle == null ? null : WorkflowExpression.Compile(bodyrecordnametitle);
+            WorkflowExpression.Validate(__workflow_bodyrecordnametitle, nameof(bodyrecordnametitle), required: false);
+            var __workflow_bodyrecordnameforename = bodyrecordnameforename == null ? null : WorkflowExpression.Compile(bodyrecordnameforename);
+            WorkflowExpression.Validate(__workflow_bodyrecordnameforename, nameof(bodyrecordnameforename), required: false);
+            var __workflow_bodyrecordnamemiddleName = bodyrecordnamemiddleName == null ? null : WorkflowExpression.Compile(bodyrecordnamemiddleName);
+            WorkflowExpression.Validate(__workflow_bodyrecordnamemiddleName, nameof(bodyrecordnamemiddleName), required: false);
+            var __workflow_bodyoptionsmatchLevel = bodyoptionsmatchLevel == null ? null : WorkflowExpression.Compile(bodyoptionsmatchLevel);
+            WorkflowExpression.Validate(__workflow_bodyoptionsmatchLevel, nameof(bodyoptionsmatchLevel), required: false);
             return new DeferredBodyAction<IsDeceasedResponse>(() =>
             {
                 var apiCallPath = "/Deceased/IsDeceased.json";
@@ -530,26 +510,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
                 var recordObjectpropCount = 0;
                 var nameObject = new JObject();
                 var nameObjectpropCount = 0;
-                if (bodyrecordnametitle != null)
+                if (__workflow_bodyrecordnametitle != null)
                 {
-                    nameObject["Title"] = ExpressionConverter.ConvertO(bodyrecordnametitle);
+                    nameObject["Title"] = ExpressionConverter.ConvertO(__workflow_bodyrecordnametitle);
                     nameObjectpropCount++;
                 }
 
-                if (bodyrecordnameforename != null)
+                if (__workflow_bodyrecordnameforename != null)
                 {
-                    nameObject["Forename"] = ExpressionConverter.ConvertO(bodyrecordnameforename);
+                    nameObject["Forename"] = ExpressionConverter.ConvertO(__workflow_bodyrecordnameforename);
                     nameObjectpropCount++;
                 }
 
-                if (bodyrecordnamemiddleName != null)
+                if (__workflow_bodyrecordnamemiddleName != null)
                 {
-                    nameObject["MiddleName"] = ExpressionConverter.ConvertO(bodyrecordnamemiddleName);
+                    nameObject["MiddleName"] = ExpressionConverter.ConvertO(__workflow_bodyrecordnamemiddleName);
                     nameObjectpropCount++;
                 }
 
                 nameObjectpropCount++;
-                nameObject["Surname"] = ExpressionConverter.ConvertO(bodyrecordnamesurname);
+                nameObject["Surname"] = ExpressionConverter.ConvertO(__workflow_bodyrecordnamesurname);
                 if (nameObjectpropCount > 0)
                 {
                     recordObject["Name"] = nameObject;
@@ -559,7 +539,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
                 var addressObject = new JObject();
                 var addressObjectpropCount = 0;
                 addressObjectpropCount++;
-                addressObject["Lines"] = ExpressionConverter.ConvertO(bodyrecordaddresslines);
+                addressObject["Lines"] = ExpressionConverter.ConvertO(__workflow_bodyrecordaddresslines);
                 if (addressObjectpropCount > 0)
                 {
                     recordObject["Address"] = addressObject;
@@ -573,14 +553,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
                 }
 
                 bodypropCount++;
-                body["marketing"] = ExpressionConverter.ConvertO(bodymarketing);
+                body["marketing"] = ExpressionConverter.ConvertO(__workflow_bodymarketing);
                 var optionsObject = new JObject();
                 var optionsObjectpropCount = 0;
-                if (bodyoptionsmatchLevel != null)
+                if (__workflow_bodyoptionsmatchLevel != null)
                 {
-                    if (bodyoptionsmatchLevel != null)
+                    if (__workflow_bodyoptionsmatchLevel != null)
                     {
-                        optionsObject["MatchLevel"] = ExpressionConverter.ConvertO(bodyoptionsmatchLevel);
+                        optionsObject["MatchLevel"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsmatchLevel);
                         optionsObjectpropCount++;
                     }
 
@@ -608,21 +588,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        [WorkflowExpressionFactory(nameof(__BuildSearchPredictiveAddress))]
-        public IBodyWorkflowAction<SearchPredictiveAddressResponse> SearchPredictiveAddress([WorkflowExpression] Func<string> bodycountry, [WorkflowExpression] Func<string> bodysearch, [WorkflowExpression] Func<string> bodytelephoneNumber = null, [WorkflowExpression] Func<string> bodysession = null, [WorkflowExpression] Func<bool> bodyoptionsincludeMR = null, [WorkflowExpression] Func<bool> bodyoptionsincludeNYB = null)
+        public IBodyWorkflowAction<SearchPredictiveAddressResponse> SearchPredictiveAddress(Expression<Func<string>> bodycountry, Expression<Func<string>> bodysearch, Expression<Func<string>> bodytelephoneNumber = null, Expression<Func<string>> bodysession = null, Expression<Func<bool>> bodyoptionsincludeMR = null, Expression<Func<bool>> bodyoptionsincludeNYB = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SearchPredictiveAddressResponse> __BuildSearchPredictiveAddress(WorkflowExpression<string> bodycountry, WorkflowExpression<string> bodysearch, WorkflowExpression<string> bodytelephoneNumber = null, WorkflowExpression<string> bodysession = null, WorkflowExpression<bool> bodyoptionsincludeMR = null, WorkflowExpression<bool> bodyoptionsincludeNYB = null)
-        {
-            WorkflowExpression.Validate(bodycountry, nameof(bodycountry), required: true);
-            WorkflowExpression.Validate(bodysearch, nameof(bodysearch), required: true);
-            WorkflowExpression.Validate(bodytelephoneNumber, nameof(bodytelephoneNumber), required: false);
-            WorkflowExpression.Validate(bodysession, nameof(bodysession), required: false);
-            WorkflowExpression.Validate(bodyoptionsincludeMR, nameof(bodyoptionsincludeMR), required: false);
-            WorkflowExpression.Validate(bodyoptionsincludeNYB, nameof(bodyoptionsincludeNYB), required: false);
+            var __workflow_bodycountry = bodycountry == null ? null : WorkflowExpression.Compile(bodycountry);
+            WorkflowExpression.Validate(__workflow_bodycountry, nameof(bodycountry), required: true);
+            var __workflow_bodysearch = bodysearch == null ? null : WorkflowExpression.Compile(bodysearch);
+            WorkflowExpression.Validate(__workflow_bodysearch, nameof(bodysearch), required: true);
+            var __workflow_bodytelephoneNumber = bodytelephoneNumber == null ? null : WorkflowExpression.Compile(bodytelephoneNumber);
+            WorkflowExpression.Validate(__workflow_bodytelephoneNumber, nameof(bodytelephoneNumber), required: false);
+            var __workflow_bodysession = bodysession == null ? null : WorkflowExpression.Compile(bodysession);
+            WorkflowExpression.Validate(__workflow_bodysession, nameof(bodysession), required: false);
+            var __workflow_bodyoptionsincludeMR = bodyoptionsincludeMR == null ? null : WorkflowExpression.Compile(bodyoptionsincludeMR);
+            WorkflowExpression.Validate(__workflow_bodyoptionsincludeMR, nameof(bodyoptionsincludeMR), required: false);
+            var __workflow_bodyoptionsincludeNYB = bodyoptionsincludeNYB == null ? null : WorkflowExpression.Compile(bodyoptionsincludeNYB);
+            WorkflowExpression.Validate(__workflow_bodyoptionsincludeNYB, nameof(bodyoptionsincludeNYB), required: false);
             return new DeferredBodyAction<SearchPredictiveAddressResponse>(() =>
             {
                 var apiCallPath = "/PredictiveAddress/Search.json";
@@ -631,32 +610,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["country"] = ExpressionConverter.ConvertO(bodycountry);
+                body["country"] = ExpressionConverter.ConvertO(__workflow_bodycountry);
                 bodypropCount++;
-                body["search"] = ExpressionConverter.ConvertO(bodysearch);
-                if (bodytelephoneNumber != null)
+                body["search"] = ExpressionConverter.ConvertO(__workflow_bodysearch);
+                if (__workflow_bodytelephoneNumber != null)
                 {
-                    body["telephoneNumber"] = ExpressionConverter.ConvertO(bodytelephoneNumber);
+                    body["telephoneNumber"] = ExpressionConverter.ConvertO(__workflow_bodytelephoneNumber);
                     bodypropCount++;
                 }
 
-                if (bodysession != null)
+                if (__workflow_bodysession != null)
                 {
-                    body["session"] = ExpressionConverter.ConvertO(bodysession);
+                    body["session"] = ExpressionConverter.ConvertO(__workflow_bodysession);
                     bodypropCount++;
                 }
 
                 var optionsObject = new JObject();
                 var optionsObjectpropCount = 0;
-                if (bodyoptionsincludeMR != null)
+                if (__workflow_bodyoptionsincludeMR != null)
                 {
-                    optionsObject["IncludeMR"] = ExpressionConverter.ConvertO(bodyoptionsincludeMR);
+                    optionsObject["IncludeMR"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsincludeMR);
                     optionsObjectpropCount++;
                 }
 
-                if (bodyoptionsincludeNYB != null)
+                if (__workflow_bodyoptionsincludeNYB != null)
                 {
-                    optionsObject["IncludeNYB"] = ExpressionConverter.ConvertO(bodyoptionsincludeNYB);
+                    optionsObject["IncludeNYB"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsincludeNYB);
                     optionsObjectpropCount++;
                 }
 
@@ -676,19 +655,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        [WorkflowExpressionFactory(nameof(__BuildDrilldownPredictiveAddress))]
-        public IBodyWorkflowAction<DrilldownPredictiveAddressResponse> DrilldownPredictiveAddress([WorkflowExpression] Func<string> bodycountry, [WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<bool> bodyoptionsincludeMR = null, [WorkflowExpression] Func<bool> bodyoptionsincludeNYB = null)
+        public IBodyWorkflowAction<DrilldownPredictiveAddressResponse> DrilldownPredictiveAddress(Expression<Func<string>> bodycountry, Expression<Func<string>> bodyid, Expression<Func<bool>> bodyoptionsincludeMR = null, Expression<Func<bool>> bodyoptionsincludeNYB = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DrilldownPredictiveAddressResponse> __BuildDrilldownPredictiveAddress(WorkflowExpression<string> bodycountry, WorkflowExpression<string> bodyid, WorkflowExpression<bool> bodyoptionsincludeMR = null, WorkflowExpression<bool> bodyoptionsincludeNYB = null)
-        {
-            WorkflowExpression.Validate(bodycountry, nameof(bodycountry), required: true);
-            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: true);
-            WorkflowExpression.Validate(bodyoptionsincludeMR, nameof(bodyoptionsincludeMR), required: false);
-            WorkflowExpression.Validate(bodyoptionsincludeNYB, nameof(bodyoptionsincludeNYB), required: false);
+            var __workflow_bodycountry = bodycountry == null ? null : WorkflowExpression.Compile(bodycountry);
+            WorkflowExpression.Validate(__workflow_bodycountry, nameof(bodycountry), required: true);
+            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
+            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: true);
+            var __workflow_bodyoptionsincludeMR = bodyoptionsincludeMR == null ? null : WorkflowExpression.Compile(bodyoptionsincludeMR);
+            WorkflowExpression.Validate(__workflow_bodyoptionsincludeMR, nameof(bodyoptionsincludeMR), required: false);
+            var __workflow_bodyoptionsincludeNYB = bodyoptionsincludeNYB == null ? null : WorkflowExpression.Compile(bodyoptionsincludeNYB);
+            WorkflowExpression.Validate(__workflow_bodyoptionsincludeNYB, nameof(bodyoptionsincludeNYB), required: false);
             return new DeferredBodyAction<DrilldownPredictiveAddressResponse>(() =>
             {
                 var apiCallPath = "/PredictiveAddress/DrillDown.json";
@@ -697,20 +673,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["country"] = ExpressionConverter.ConvertO(bodycountry);
+                body["country"] = ExpressionConverter.ConvertO(__workflow_bodycountry);
                 bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
                 var optionsObject = new JObject();
                 var optionsObjectpropCount = 0;
-                if (bodyoptionsincludeMR != null)
+                if (__workflow_bodyoptionsincludeMR != null)
                 {
-                    optionsObject["IncludeMR"] = ExpressionConverter.ConvertO(bodyoptionsincludeMR);
+                    optionsObject["IncludeMR"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsincludeMR);
                     optionsObjectpropCount++;
                 }
 
-                if (bodyoptionsincludeNYB != null)
+                if (__workflow_bodyoptionsincludeNYB != null)
                 {
-                    optionsObject["IncludeNYB"] = ExpressionConverter.ConvertO(bodyoptionsincludeNYB);
+                    optionsObject["IncludeNYB"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsincludeNYB);
                     optionsObjectpropCount++;
                 }
 
@@ -730,26 +706,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        [WorkflowExpressionFactory(nameof(__BuildRetrievePredictiveAddress))]
-        public IBodyWorkflowAction<RetrievePredictiveAddressResponse> RetrievePredictiveAddress([WorkflowExpression] Func<string> bodycountry, [WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<int> bodyoptionsmaxLineLength = null, [WorkflowExpression] Func<int> bodyoptionsmaxLines = null, [WorkflowExpression] Func<bool> bodyoptionsfixTownCounty = null, [WorkflowExpression] Func<bool> bodyoptionsfixPostcode = null, [WorkflowExpression] Func<bool> bodyoptionsfixBuilding = null, [WorkflowExpression] Func<string> bodyoptionsunwantedPunctuation = null, [WorkflowExpression] Func<bodyoptionsformatterInput> bodyoptionsformatter = null, [WorkflowExpression] Func<bool> bodyoptionsincludeUDPRN = null, [WorkflowExpression] Func<bool> bodyoptionsincludeUPRN = null)
+        public IBodyWorkflowAction<RetrievePredictiveAddressResponse> RetrievePredictiveAddress(Expression<Func<string>> bodycountry, Expression<Func<string>> bodyid, Expression<Func<int>> bodyoptionsmaxLineLength = null, Expression<Func<int>> bodyoptionsmaxLines = null, Expression<Func<bool>> bodyoptionsfixTownCounty = null, Expression<Func<bool>> bodyoptionsfixPostcode = null, Expression<Func<bool>> bodyoptionsfixBuilding = null, Expression<Func<string>> bodyoptionsunwantedPunctuation = null, Expression<Func<bodyoptionsformatterInput>> bodyoptionsformatter = null, Expression<Func<bool>> bodyoptionsincludeUDPRN = null, Expression<Func<bool>> bodyoptionsincludeUPRN = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<RetrievePredictiveAddressResponse> __BuildRetrievePredictiveAddress(WorkflowExpression<string> bodycountry, WorkflowExpression<string> bodyid, WorkflowExpression<int> bodyoptionsmaxLineLength = null, WorkflowExpression<int> bodyoptionsmaxLines = null, WorkflowExpression<bool> bodyoptionsfixTownCounty = null, WorkflowExpression<bool> bodyoptionsfixPostcode = null, WorkflowExpression<bool> bodyoptionsfixBuilding = null, WorkflowExpression<string> bodyoptionsunwantedPunctuation = null, WorkflowExpression<bodyoptionsformatterInput> bodyoptionsformatter = null, WorkflowExpression<bool> bodyoptionsincludeUDPRN = null, WorkflowExpression<bool> bodyoptionsincludeUPRN = null)
-        {
-            WorkflowExpression.Validate(bodycountry, nameof(bodycountry), required: true);
-            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: true);
-            WorkflowExpression.Validate(bodyoptionsmaxLineLength, nameof(bodyoptionsmaxLineLength), required: false);
-            WorkflowExpression.Validate(bodyoptionsmaxLines, nameof(bodyoptionsmaxLines), required: false);
-            WorkflowExpression.Validate(bodyoptionsfixTownCounty, nameof(bodyoptionsfixTownCounty), required: false);
-            WorkflowExpression.Validate(bodyoptionsfixPostcode, nameof(bodyoptionsfixPostcode), required: false);
-            WorkflowExpression.Validate(bodyoptionsfixBuilding, nameof(bodyoptionsfixBuilding), required: false);
-            WorkflowExpression.Validate(bodyoptionsunwantedPunctuation, nameof(bodyoptionsunwantedPunctuation), required: false);
-            WorkflowExpression.Validate(bodyoptionsformatter, nameof(bodyoptionsformatter), required: false);
-            WorkflowExpression.Validate(bodyoptionsincludeUDPRN, nameof(bodyoptionsincludeUDPRN), required: false);
-            WorkflowExpression.Validate(bodyoptionsincludeUPRN, nameof(bodyoptionsincludeUPRN), required: false);
+            var __workflow_bodycountry = bodycountry == null ? null : WorkflowExpression.Compile(bodycountry);
+            WorkflowExpression.Validate(__workflow_bodycountry, nameof(bodycountry), required: true);
+            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
+            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: true);
+            var __workflow_bodyoptionsmaxLineLength = bodyoptionsmaxLineLength == null ? null : WorkflowExpression.Compile(bodyoptionsmaxLineLength);
+            WorkflowExpression.Validate(__workflow_bodyoptionsmaxLineLength, nameof(bodyoptionsmaxLineLength), required: false);
+            var __workflow_bodyoptionsmaxLines = bodyoptionsmaxLines == null ? null : WorkflowExpression.Compile(bodyoptionsmaxLines);
+            WorkflowExpression.Validate(__workflow_bodyoptionsmaxLines, nameof(bodyoptionsmaxLines), required: false);
+            var __workflow_bodyoptionsfixTownCounty = bodyoptionsfixTownCounty == null ? null : WorkflowExpression.Compile(bodyoptionsfixTownCounty);
+            WorkflowExpression.Validate(__workflow_bodyoptionsfixTownCounty, nameof(bodyoptionsfixTownCounty), required: false);
+            var __workflow_bodyoptionsfixPostcode = bodyoptionsfixPostcode == null ? null : WorkflowExpression.Compile(bodyoptionsfixPostcode);
+            WorkflowExpression.Validate(__workflow_bodyoptionsfixPostcode, nameof(bodyoptionsfixPostcode), required: false);
+            var __workflow_bodyoptionsfixBuilding = bodyoptionsfixBuilding == null ? null : WorkflowExpression.Compile(bodyoptionsfixBuilding);
+            WorkflowExpression.Validate(__workflow_bodyoptionsfixBuilding, nameof(bodyoptionsfixBuilding), required: false);
+            var __workflow_bodyoptionsunwantedPunctuation = bodyoptionsunwantedPunctuation == null ? null : WorkflowExpression.Compile(bodyoptionsunwantedPunctuation);
+            WorkflowExpression.Validate(__workflow_bodyoptionsunwantedPunctuation, nameof(bodyoptionsunwantedPunctuation), required: false);
+            var __workflow_bodyoptionsformatter = bodyoptionsformatter == null ? null : WorkflowExpression.Compile(bodyoptionsformatter);
+            WorkflowExpression.Validate(__workflow_bodyoptionsformatter, nameof(bodyoptionsformatter), required: false);
+            var __workflow_bodyoptionsincludeUDPRN = bodyoptionsincludeUDPRN == null ? null : WorkflowExpression.Compile(bodyoptionsincludeUDPRN);
+            WorkflowExpression.Validate(__workflow_bodyoptionsincludeUDPRN, nameof(bodyoptionsincludeUDPRN), required: false);
+            var __workflow_bodyoptionsincludeUPRN = bodyoptionsincludeUPRN == null ? null : WorkflowExpression.Compile(bodyoptionsincludeUPRN);
+            WorkflowExpression.Validate(__workflow_bodyoptionsincludeUPRN, nameof(bodyoptionsincludeUPRN), required: false);
             return new DeferredBodyAction<RetrievePredictiveAddressResponse>(() =>
             {
                 var apiCallPath = "/PredictiveAddress/Retrieve.json";
@@ -758,16 +738,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["country"] = ExpressionConverter.ConvertO(bodycountry);
+                body["country"] = ExpressionConverter.ConvertO(__workflow_bodycountry);
                 bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
                 var optionsObject = new JObject();
                 var optionsObjectpropCount = 0;
-                if (bodyoptionsmaxLineLength != null)
+                if (__workflow_bodyoptionsmaxLineLength != null)
                 {
-                    if (bodyoptionsmaxLineLength != null)
+                    if (__workflow_bodyoptionsmaxLineLength != null)
                     {
-                        optionsObject["MaxLineLength"] = ExpressionConverter.ConvertO(bodyoptionsmaxLineLength);
+                        optionsObject["MaxLineLength"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsmaxLineLength);
                         optionsObjectpropCount++;
                     }
 
@@ -779,11 +759,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
                     optionsObjectpropCount++;
                 }
 
-                if (bodyoptionsmaxLines != null)
+                if (__workflow_bodyoptionsmaxLines != null)
                 {
-                    if (bodyoptionsmaxLines != null)
+                    if (__workflow_bodyoptionsmaxLines != null)
                     {
-                        optionsObject["MaxLines"] = ExpressionConverter.ConvertO(bodyoptionsmaxLines);
+                        optionsObject["MaxLines"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsmaxLines);
                         optionsObjectpropCount++;
                     }
 
@@ -795,11 +775,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
                     optionsObjectpropCount++;
                 }
 
-                if (bodyoptionsfixTownCounty != null)
+                if (__workflow_bodyoptionsfixTownCounty != null)
                 {
-                    if (bodyoptionsfixTownCounty != null)
+                    if (__workflow_bodyoptionsfixTownCounty != null)
                     {
-                        optionsObject["FixTownCounty"] = ExpressionConverter.ConvertO(bodyoptionsfixTownCounty);
+                        optionsObject["FixTownCounty"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsfixTownCounty);
                         optionsObjectpropCount++;
                     }
 
@@ -811,11 +791,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
                     optionsObjectpropCount++;
                 }
 
-                if (bodyoptionsfixPostcode != null)
+                if (__workflow_bodyoptionsfixPostcode != null)
                 {
-                    if (bodyoptionsfixPostcode != null)
+                    if (__workflow_bodyoptionsfixPostcode != null)
                     {
-                        optionsObject["FixPostcode"] = ExpressionConverter.ConvertO(bodyoptionsfixPostcode);
+                        optionsObject["FixPostcode"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsfixPostcode);
                         optionsObjectpropCount++;
                     }
 
@@ -827,11 +807,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
                     optionsObjectpropCount++;
                 }
 
-                if (bodyoptionsfixBuilding != null)
+                if (__workflow_bodyoptionsfixBuilding != null)
                 {
-                    if (bodyoptionsfixBuilding != null)
+                    if (__workflow_bodyoptionsfixBuilding != null)
                     {
-                        optionsObject["FixBuilding"] = ExpressionConverter.ConvertO(bodyoptionsfixBuilding);
+                        optionsObject["FixBuilding"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsfixBuilding);
                         optionsObjectpropCount++;
                     }
 
@@ -843,17 +823,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
                     optionsObjectpropCount++;
                 }
 
-                if (bodyoptionsunwantedPunctuation != null)
+                if (__workflow_bodyoptionsunwantedPunctuation != null)
                 {
-                    optionsObject["UnwantedPunctuation"] = ExpressionConverter.ConvertO(bodyoptionsunwantedPunctuation);
+                    optionsObject["UnwantedPunctuation"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsunwantedPunctuation);
                     optionsObjectpropCount++;
                 }
 
-                if (bodyoptionsformatter != null)
+                if (__workflow_bodyoptionsformatter != null)
                 {
-                    if (bodyoptionsformatter != null)
+                    if (__workflow_bodyoptionsformatter != null)
                     {
-                        optionsObject["Formatter"] = ExpressionConverter.ConvertO(bodyoptionsformatter);
+                        optionsObject["Formatter"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsformatter);
                         optionsObjectpropCount++;
                     }
 
@@ -865,11 +845,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
                     optionsObjectpropCount++;
                 }
 
-                if (bodyoptionsincludeUDPRN != null)
+                if (__workflow_bodyoptionsincludeUDPRN != null)
                 {
-                    if (bodyoptionsincludeUDPRN != null)
+                    if (__workflow_bodyoptionsincludeUDPRN != null)
                     {
-                        optionsObject["IncludeUDPRN"] = ExpressionConverter.ConvertO(bodyoptionsincludeUDPRN);
+                        optionsObject["IncludeUDPRN"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsincludeUDPRN);
                         optionsObjectpropCount++;
                     }
 
@@ -881,11 +861,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
                     optionsObjectpropCount++;
                 }
 
-                if (bodyoptionsincludeUPRN != null)
+                if (__workflow_bodyoptionsincludeUPRN != null)
                 {
-                    if (bodyoptionsincludeUPRN != null)
+                    if (__workflow_bodyoptionsincludeUPRN != null)
                     {
-                        optionsObject["IncludeUPRN"] = ExpressionConverter.ConvertO(bodyoptionsincludeUPRN);
+                        optionsObject["IncludeUPRN"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsincludeUPRN);
                         optionsObjectpropCount++;
                     }
 
@@ -913,22 +893,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        [WorkflowExpressionFactory(nameof(__BuildCleanseEmail))]
-        public IBodyWorkflowAction<CleanseEmailResponse> CleanseEmail([WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<bodylevelInput> bodylevel, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodyforename = null, [WorkflowExpression] Func<string> bodymiddleName = null, [WorkflowExpression] Func<string> bodysurname = null, [WorkflowExpression] Func<string> bodycompany = null)
+        public IBodyWorkflowAction<CleanseEmailResponse> CleanseEmail(Expression<Func<string>> bodyemail, Expression<Func<bodylevelInput>> bodylevel, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyforename = null, Expression<Func<string>> bodymiddleName = null, Expression<Func<string>> bodysurname = null, Expression<Func<string>> bodycompany = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CleanseEmailResponse> __BuildCleanseEmail(WorkflowExpression<string> bodyemail, WorkflowExpression<bodylevelInput> bodylevel, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodyforename = null, WorkflowExpression<string> bodymiddleName = null, WorkflowExpression<string> bodysurname = null, WorkflowExpression<string> bodycompany = null)
-        {
-            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: true);
-            WorkflowExpression.Validate(bodylevel, nameof(bodylevel), required: true);
-            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            WorkflowExpression.Validate(bodyforename, nameof(bodyforename), required: false);
-            WorkflowExpression.Validate(bodymiddleName, nameof(bodymiddleName), required: false);
-            WorkflowExpression.Validate(bodysurname, nameof(bodysurname), required: false);
-            WorkflowExpression.Validate(bodycompany, nameof(bodycompany), required: false);
+            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
+            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
+            var __workflow_bodylevel = bodylevel == null ? null : WorkflowExpression.Compile(bodylevel);
+            WorkflowExpression.Validate(__workflow_bodylevel, nameof(bodylevel), required: true);
+            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
+            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodyforename = bodyforename == null ? null : WorkflowExpression.Compile(bodyforename);
+            WorkflowExpression.Validate(__workflow_bodyforename, nameof(bodyforename), required: false);
+            var __workflow_bodymiddleName = bodymiddleName == null ? null : WorkflowExpression.Compile(bodymiddleName);
+            WorkflowExpression.Validate(__workflow_bodymiddleName, nameof(bodymiddleName), required: false);
+            var __workflow_bodysurname = bodysurname == null ? null : WorkflowExpression.Compile(bodysurname);
+            WorkflowExpression.Validate(__workflow_bodysurname, nameof(bodysurname), required: false);
+            var __workflow_bodycompany = bodycompany == null ? null : WorkflowExpression.Compile(bodycompany);
+            WorkflowExpression.Validate(__workflow_bodycompany, nameof(bodycompany), required: false);
             return new DeferredBodyAction<CleanseEmailResponse>(() =>
             {
                 var apiCallPath = "/EmailValidation/CleanseSimple.json";
@@ -937,36 +917,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["Email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["Email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
                 bodypropCount++;
-                body["Level"] = ExpressionConverter.ConvertO(bodylevel);
-                if (bodytitle != null)
+                body["Level"] = ExpressionConverter.ConvertO(__workflow_bodylevel);
+                if (__workflow_bodytitle != null)
                 {
-                    body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                    body["Title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
                     bodypropCount++;
                 }
 
-                if (bodyforename != null)
+                if (__workflow_bodyforename != null)
                 {
-                    body["Forename"] = ExpressionConverter.ConvertO(bodyforename);
+                    body["Forename"] = ExpressionConverter.ConvertO(__workflow_bodyforename);
                     bodypropCount++;
                 }
 
-                if (bodymiddleName != null)
+                if (__workflow_bodymiddleName != null)
                 {
-                    body["MiddleName"] = ExpressionConverter.ConvertO(bodymiddleName);
+                    body["MiddleName"] = ExpressionConverter.ConvertO(__workflow_bodymiddleName);
                     bodypropCount++;
                 }
 
-                if (bodysurname != null)
+                if (__workflow_bodysurname != null)
                 {
-                    body["Surname"] = ExpressionConverter.ConvertO(bodysurname);
+                    body["Surname"] = ExpressionConverter.ConvertO(__workflow_bodysurname);
                     bodypropCount++;
                 }
 
-                if (bodycompany != null)
+                if (__workflow_bodycompany != null)
                 {
-                    body["Company"] = ExpressionConverter.ConvertO(bodycompany);
+                    body["Company"] = ExpressionConverter.ConvertO(__workflow_bodycompany);
                     bodypropCount++;
                 }
 
@@ -980,17 +960,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        [WorkflowExpressionFactory(nameof(__BuildIsValidPhone))]
-        public IBodyWorkflowAction<IsValidPhoneResponse> IsValidPhone([WorkflowExpression] Func<string> bodytelephoneNumber, [WorkflowExpression] Func<int> bodydefaultCountry)
+        public IBodyWorkflowAction<IsValidPhoneResponse> IsValidPhone(Expression<Func<string>> bodytelephoneNumber, Expression<Func<int>> bodydefaultCountry)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<IsValidPhoneResponse> __BuildIsValidPhone(WorkflowExpression<string> bodytelephoneNumber, WorkflowExpression<int> bodydefaultCountry)
-        {
-            WorkflowExpression.Validate(bodytelephoneNumber, nameof(bodytelephoneNumber), required: true);
-            WorkflowExpression.Validate(bodydefaultCountry, nameof(bodydefaultCountry), required: true);
+            var __workflow_bodytelephoneNumber = bodytelephoneNumber == null ? null : WorkflowExpression.Compile(bodytelephoneNumber);
+            WorkflowExpression.Validate(__workflow_bodytelephoneNumber, nameof(bodytelephoneNumber), required: true);
+            var __workflow_bodydefaultCountry = bodydefaultCountry == null ? null : WorkflowExpression.Compile(bodydefaultCountry);
+            WorkflowExpression.Validate(__workflow_bodydefaultCountry, nameof(bodydefaultCountry), required: true);
             return new DeferredBodyAction<IsValidPhoneResponse>(() =>
             {
                 var apiCallPath = "/PhoneValidation/IsValid.json";
@@ -999,9 +974,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["telephoneNumber"] = ExpressionConverter.ConvertO(bodytelephoneNumber);
+                body["telephoneNumber"] = ExpressionConverter.ConvertO(__workflow_bodytelephoneNumber);
                 bodypropCount++;
-                body["defaultCountry"] = ExpressionConverter.ConvertO(bodydefaultCountry);
+                body["defaultCountry"] = ExpressionConverter.ConvertO(__workflow_bodydefaultCountry);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

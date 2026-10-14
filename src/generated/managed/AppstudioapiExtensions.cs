@@ -1,12 +1,12 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appstudioapi
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class AppstudioapiActions([ConnectionName] string connectionId)
     {
@@ -14,23 +14,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appstudioapi
 
     public class AppstudioapiTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildApiHooksSubscribePost))]
-        public IWorkflowTrigger ApiHooksSubscribePost([WorkflowExpression] Func<string> solutionId,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ApiHooksSubscribePost(Expression<Func<string>> solutionId, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildApiHooksSubscribePost(WorkflowExpression<string> solutionId,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(solutionId, nameof(solutionId), required: true);
+            var __workflow_solutionId = solutionId == null ? null : WorkflowExpression.Compile(solutionId);
+            WorkflowExpression.Validate(__workflow_solutionId, nameof(solutionId), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/Hooks/subscribe";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["solutionId"] = ExpressionConverter.Convert(solutionId);
+                callPayload.Queries["solutionId"] = ExpressionConverter.Convert(__workflow_solutionId);
                 var data = new JObject();
                 var datapropCount = 0;
                 data["url"] = "#{listCallbackUrl()}";

@@ -1,63 +1,53 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class ImanageworkforadminsActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        [WorkflowExpressionFactory(nameof(__BuildGetLibraryRoles))]
-        public IBodyWorkflowAction<GetLibraryRolesResponse> GetLibraryRoles([WorkflowExpression] Func<string> libraryId, [WorkflowExpression] Func<bool> isExternal = null)
+        public IBodyWorkflowAction<GetLibraryRolesResponse> GetLibraryRoles(Expression<Func<string>> libraryId, Expression<Func<bool>> isExternal = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetLibraryRolesResponse> __BuildGetLibraryRoles(WorkflowExpression<string> libraryId, WorkflowExpression<bool> isExternal = null)
-        {
-            WorkflowExpression.Validate(libraryId, nameof(libraryId), required: true);
-            WorkflowExpression.Validate(isExternal, nameof(isExternal), required: false);
+            var __workflow_libraryId = libraryId == null ? null : WorkflowExpression.Compile(libraryId);
+            WorkflowExpression.Validate(__workflow_libraryId, nameof(libraryId), required: true);
+            var __workflow_isExternal = isExternal == null ? null : WorkflowExpression.Compile(isExternal);
+            WorkflowExpression.Validate(__workflow_isExternal, nameof(isExternal), required: false);
             return new DeferredBodyAction<GetLibraryRolesResponse>(() =>
             {
                 var apiCallPath = "/getLibraryRoles";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["libraryId"] = ExpressionConverter.Convert(libraryId);
-                if (isExternal != null)
-                    callPayload.Queries["is_external"] = ExpressionConverter.Convert(isExternal);
+                callPayload.Queries["libraryId"] = ExpressionConverter.Convert(__workflow_libraryId);
+                if (__workflow_isExternal != null)
+                    callPayload.Queries["is_external"] = ExpressionConverter.Convert(__workflow_isExternal);
                 callPayload.Headers["x-im-connector-id"] = Convert.ToString("imanage-work-for-admins");
                 return new ApiConnectionAction<GetLibraryRolesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        [WorkflowExpressionFactory(nameof(__BuildGetLookupAliases))]
-        public IBodyWorkflowAction<GetLookupAliasesResponse> GetLookupAliases([WorkflowExpression] Func<string> libraryId, [WorkflowExpression] Func<string> lookupFieldId, [WorkflowExpression] Func<string> parentAlias = null)
+        public IBodyWorkflowAction<GetLookupAliasesResponse> GetLookupAliases(Expression<Func<string>> libraryId, Expression<Func<string>> lookupFieldId, Expression<Func<string>> parentAlias = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetLookupAliasesResponse> __BuildGetLookupAliases(WorkflowExpression<string> libraryId, WorkflowExpression<string> lookupFieldId, WorkflowExpression<string> parentAlias = null)
-        {
-            WorkflowExpression.Validate(libraryId, nameof(libraryId), required: true);
-            WorkflowExpression.Validate(lookupFieldId, nameof(lookupFieldId), required: true);
-            WorkflowExpression.Validate(parentAlias, nameof(parentAlias), required: false);
+            var __workflow_libraryId = libraryId == null ? null : WorkflowExpression.Compile(libraryId);
+            WorkflowExpression.Validate(__workflow_libraryId, nameof(libraryId), required: true);
+            var __workflow_lookupFieldId = lookupFieldId == null ? null : WorkflowExpression.Compile(lookupFieldId);
+            WorkflowExpression.Validate(__workflow_lookupFieldId, nameof(lookupFieldId), required: true);
+            var __workflow_parentAlias = parentAlias == null ? null : WorkflowExpression.Compile(parentAlias);
+            WorkflowExpression.Validate(__workflow_parentAlias, nameof(parentAlias), required: false);
             return new DeferredBodyAction<GetLookupAliasesResponse>(() =>
             {
                 var apiCallPath = "/getLookupAliases";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["libraryId"] = ExpressionConverter.Convert(libraryId);
-                callPayload.Queries["lookupFieldId"] = ExpressionConverter.Convert(lookupFieldId);
-                if (parentAlias != null)
-                    callPayload.Queries["parentAlias"] = ExpressionConverter.Convert(parentAlias);
+                callPayload.Queries["libraryId"] = ExpressionConverter.Convert(__workflow_libraryId);
+                callPayload.Queries["lookupFieldId"] = ExpressionConverter.Convert(__workflow_lookupFieldId);
+                if (__workflow_parentAlias != null)
+                    callPayload.Queries["parentAlias"] = ExpressionConverter.Convert(__workflow_parentAlias);
                 callPayload.Queries["getParentAliases"] = Convert.ToString(false);
                 callPayload.Headers["x-im-connector-id"] = Convert.ToString("imanage-work-for-admins");
                 return new ApiConnectionAction<GetLookupAliasesResponse>(callPayload);
@@ -65,59 +55,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        [WorkflowExpressionFactory(nameof(__BuildSearchCustomPropertyAliases))]
-        public IBodyWorkflowAction<SearchCustomPropertyResponseBody> SearchCustomPropertyAliases([WorkflowExpression] Func<string> libraryId, [WorkflowExpression] Func<string> lookupFieldId, [WorkflowExpression] Func<string> parentAlias = null, [WorkflowExpression] Func<string> alias = null, [WorkflowExpression] Func<string> description = null, [WorkflowExpression] Func<bool> hipaa = null, [WorkflowExpression] Func<enabledStateInput> enabledState = null)
+        public IBodyWorkflowAction<SearchCustomPropertyResponseBody> SearchCustomPropertyAliases(Expression<Func<string>> libraryId, Expression<Func<string>> lookupFieldId, Expression<Func<string>> parentAlias = null, Expression<Func<string>> alias = null, Expression<Func<string>> description = null, Expression<Func<bool>> hipaa = null, Expression<Func<enabledStateInput>> enabledState = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SearchCustomPropertyResponseBody> __BuildSearchCustomPropertyAliases(WorkflowExpression<string> libraryId, WorkflowExpression<string> lookupFieldId, WorkflowExpression<string> parentAlias = null, WorkflowExpression<string> alias = null, WorkflowExpression<string> description = null, WorkflowExpression<bool> hipaa = null, WorkflowExpression<enabledStateInput> enabledState = null)
-        {
-            WorkflowExpression.Validate(libraryId, nameof(libraryId), required: true);
-            WorkflowExpression.Validate(lookupFieldId, nameof(lookupFieldId), required: true);
-            WorkflowExpression.Validate(parentAlias, nameof(parentAlias), required: false);
-            WorkflowExpression.Validate(alias, nameof(alias), required: false);
-            WorkflowExpression.Validate(description, nameof(description), required: false);
-            WorkflowExpression.Validate(hipaa, nameof(hipaa), required: false);
-            WorkflowExpression.Validate(enabledState, nameof(enabledState), required: false);
+            var __workflow_libraryId = libraryId == null ? null : WorkflowExpression.Compile(libraryId);
+            WorkflowExpression.Validate(__workflow_libraryId, nameof(libraryId), required: true);
+            var __workflow_lookupFieldId = lookupFieldId == null ? null : WorkflowExpression.Compile(lookupFieldId);
+            WorkflowExpression.Validate(__workflow_lookupFieldId, nameof(lookupFieldId), required: true);
+            var __workflow_parentAlias = parentAlias == null ? null : WorkflowExpression.Compile(parentAlias);
+            WorkflowExpression.Validate(__workflow_parentAlias, nameof(parentAlias), required: false);
+            var __workflow_alias = alias == null ? null : WorkflowExpression.Compile(alias);
+            WorkflowExpression.Validate(__workflow_alias, nameof(alias), required: false);
+            var __workflow_description = description == null ? null : WorkflowExpression.Compile(description);
+            WorkflowExpression.Validate(__workflow_description, nameof(description), required: false);
+            var __workflow_hipaa = hipaa == null ? null : WorkflowExpression.Compile(hipaa);
+            WorkflowExpression.Validate(__workflow_hipaa, nameof(hipaa), required: false);
+            var __workflow_enabledState = enabledState == null ? null : WorkflowExpression.Compile(enabledState);
+            WorkflowExpression.Validate(__workflow_enabledState, nameof(enabledState), required: false);
             return new DeferredBodyAction<SearchCustomPropertyResponseBody>(() =>
             {
                 var apiCallPath = "/searchCustomPropertyAliases";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["libraryId"] = ExpressionConverter.Convert(libraryId);
-                callPayload.Queries["lookupFieldId"] = ExpressionConverter.Convert(lookupFieldId);
-                if (parentAlias != null)
-                    callPayload.Queries["parentAlias"] = ExpressionConverter.Convert(parentAlias);
-                if (alias != null)
-                    callPayload.Queries["alias"] = ExpressionConverter.Convert(alias);
-                if (description != null)
-                    callPayload.Queries["description"] = ExpressionConverter.Convert(description);
+                callPayload.Queries["libraryId"] = ExpressionConverter.Convert(__workflow_libraryId);
+                callPayload.Queries["lookupFieldId"] = ExpressionConverter.Convert(__workflow_lookupFieldId);
+                if (__workflow_parentAlias != null)
+                    callPayload.Queries["parentAlias"] = ExpressionConverter.Convert(__workflow_parentAlias);
+                if (__workflow_alias != null)
+                    callPayload.Queries["alias"] = ExpressionConverter.Convert(__workflow_alias);
+                if (__workflow_description != null)
+                    callPayload.Queries["description"] = ExpressionConverter.Convert(__workflow_description);
                 callPayload.Queries["hipaa"] = Convert.ToString(false);
-                if (hipaa != null)
-                    callPayload.Queries["hipaa"] = ExpressionConverter.Convert(hipaa);
+                if (__workflow_hipaa != null)
+                    callPayload.Queries["hipaa"] = ExpressionConverter.Convert(__workflow_hipaa);
                 callPayload.Queries["enabled_state"] = Convert.ToString("Both Enabled and Disabled");
-                if (enabledState != null)
-                    callPayload.Queries["enabled_state"] = ExpressionConverter.Convert(enabledState);
+                if (__workflow_enabledState != null)
+                    callPayload.Queries["enabled_state"] = ExpressionConverter.Convert(__workflow_enabledState);
                 callPayload.Headers["x-im-connector-id"] = Convert.ToString("imanage-work-for-admins");
                 return new ApiConnectionAction<SearchCustomPropertyResponseBody>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateCustomOrPropertyLookup))]
-        public IBodyWorkflowAction<JToken> CreateCustomOrPropertyLookup([WorkflowExpression] Func<string> bodylibraryId, [WorkflowExpression] Func<string> bodylookupFieldId, [WorkflowExpression] Func<object> bodyaliasInfo)
+        public IBodyWorkflowAction<JToken> CreateCustomOrPropertyLookup(Expression<Func<string>> bodylibraryId, Expression<Func<string>> bodylookupFieldId, Expression<Func<object>> bodyaliasInfo)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildCreateCustomOrPropertyLookup(WorkflowExpression<string> bodylibraryId, WorkflowExpression<string> bodylookupFieldId, WorkflowExpression<object> bodyaliasInfo)
-        {
-            WorkflowExpression.Validate(bodylibraryId, nameof(bodylibraryId), required: true);
-            WorkflowExpression.Validate(bodylookupFieldId, nameof(bodylookupFieldId), required: true);
-            WorkflowExpression.Validate(bodyaliasInfo, nameof(bodyaliasInfo), required: true);
+            var __workflow_bodylibraryId = bodylibraryId == null ? null : WorkflowExpression.Compile(bodylibraryId);
+            WorkflowExpression.Validate(__workflow_bodylibraryId, nameof(bodylibraryId), required: true);
+            var __workflow_bodylookupFieldId = bodylookupFieldId == null ? null : WorkflowExpression.Compile(bodylookupFieldId);
+            WorkflowExpression.Validate(__workflow_bodylookupFieldId, nameof(bodylookupFieldId), required: true);
+            var __workflow_bodyaliasInfo = bodyaliasInfo == null ? null : WorkflowExpression.Compile(bodyaliasInfo);
+            WorkflowExpression.Validate(__workflow_bodyaliasInfo, nameof(bodyaliasInfo), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/createCustomOrPropertyLookup";
@@ -127,11 +113,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["libraryId"] = ExpressionConverter.ConvertO(bodylibraryId);
+                body["libraryId"] = ExpressionConverter.ConvertO(__workflow_bodylibraryId);
                 bodypropCount++;
-                body["lookupFieldId"] = ExpressionConverter.ConvertO(bodylookupFieldId);
+                body["lookupFieldId"] = ExpressionConverter.ConvertO(__workflow_bodylookupFieldId);
                 bodypropCount++;
-                body["aliasInfo"] = ExpressionConverter.ConvertO(bodyaliasInfo);
+                body["aliasInfo"] = ExpressionConverter.ConvertO(__workflow_bodyaliasInfo);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -142,24 +128,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateUser))]
-        public IBodyWorkflowAction<CreateUserResponse> CreateUser([WorkflowExpression] Func<string> bodyfullName, [WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<bool> bodyisExternal, [WorkflowExpression] Func<string> bodypreferredLibrary, [WorkflowExpression] Func<string> bodyrole, [WorkflowExpression] Func<bool> bodyignoreIfUserAlreadyExists, [WorkflowExpression] Func<bodypasswordCreateMethodInput> bodypasswordCreateMethod, [WorkflowExpression] Func<object> bodycreatePassword)
+        public IBodyWorkflowAction<CreateUserResponse> CreateUser(Expression<Func<string>> bodyfullName, Expression<Func<string>> bodyid, Expression<Func<string>> bodyemail, Expression<Func<bool>> bodyisExternal, Expression<Func<string>> bodypreferredLibrary, Expression<Func<string>> bodyrole, Expression<Func<bool>> bodyignoreIfUserAlreadyExists, Expression<Func<bodypasswordCreateMethodInput>> bodypasswordCreateMethod, Expression<Func<object>> bodycreatePassword)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateUserResponse> __BuildCreateUser(WorkflowExpression<string> bodyfullName, WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyemail, WorkflowExpression<bool> bodyisExternal, WorkflowExpression<string> bodypreferredLibrary, WorkflowExpression<string> bodyrole, WorkflowExpression<bool> bodyignoreIfUserAlreadyExists, WorkflowExpression<bodypasswordCreateMethodInput> bodypasswordCreateMethod, WorkflowExpression<object> bodycreatePassword)
-        {
-            WorkflowExpression.Validate(bodyfullName, nameof(bodyfullName), required: true);
-            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: true);
-            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: true);
-            WorkflowExpression.Validate(bodyisExternal, nameof(bodyisExternal), required: true);
-            WorkflowExpression.Validate(bodypreferredLibrary, nameof(bodypreferredLibrary), required: true);
-            WorkflowExpression.Validate(bodyrole, nameof(bodyrole), required: true);
-            WorkflowExpression.Validate(bodyignoreIfUserAlreadyExists, nameof(bodyignoreIfUserAlreadyExists), required: true);
-            WorkflowExpression.Validate(bodypasswordCreateMethod, nameof(bodypasswordCreateMethod), required: true);
-            WorkflowExpression.Validate(bodycreatePassword, nameof(bodycreatePassword), required: true);
+            var __workflow_bodyfullName = bodyfullName == null ? null : WorkflowExpression.Compile(bodyfullName);
+            WorkflowExpression.Validate(__workflow_bodyfullName, nameof(bodyfullName), required: true);
+            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
+            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: true);
+            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
+            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
+            var __workflow_bodyisExternal = bodyisExternal == null ? null : WorkflowExpression.Compile(bodyisExternal);
+            WorkflowExpression.Validate(__workflow_bodyisExternal, nameof(bodyisExternal), required: true);
+            var __workflow_bodypreferredLibrary = bodypreferredLibrary == null ? null : WorkflowExpression.Compile(bodypreferredLibrary);
+            WorkflowExpression.Validate(__workflow_bodypreferredLibrary, nameof(bodypreferredLibrary), required: true);
+            var __workflow_bodyrole = bodyrole == null ? null : WorkflowExpression.Compile(bodyrole);
+            WorkflowExpression.Validate(__workflow_bodyrole, nameof(bodyrole), required: true);
+            var __workflow_bodyignoreIfUserAlreadyExists = bodyignoreIfUserAlreadyExists == null ? null : WorkflowExpression.Compile(bodyignoreIfUserAlreadyExists);
+            WorkflowExpression.Validate(__workflow_bodyignoreIfUserAlreadyExists, nameof(bodyignoreIfUserAlreadyExists), required: true);
+            var __workflow_bodypasswordCreateMethod = bodypasswordCreateMethod == null ? null : WorkflowExpression.Compile(bodypasswordCreateMethod);
+            WorkflowExpression.Validate(__workflow_bodypasswordCreateMethod, nameof(bodypasswordCreateMethod), required: true);
+            var __workflow_bodycreatePassword = bodycreatePassword == null ? null : WorkflowExpression.Compile(bodycreatePassword);
+            WorkflowExpression.Validate(__workflow_bodycreatePassword, nameof(bodycreatePassword), required: true);
             return new DeferredBodyAction<CreateUserResponse>(() =>
             {
                 var apiCallPath = "/createUser";
@@ -169,23 +157,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["full_name"] = ExpressionConverter.ConvertO(bodyfullName);
+                body["full_name"] = ExpressionConverter.ConvertO(__workflow_bodyfullName);
                 bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
                 bodypropCount++;
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
                 bodypropCount++;
-                body["is_external"] = ExpressionConverter.ConvertO(bodyisExternal);
+                body["is_external"] = ExpressionConverter.ConvertO(__workflow_bodyisExternal);
                 bodypropCount++;
-                body["preferred_library"] = ExpressionConverter.ConvertO(bodypreferredLibrary);
+                body["preferred_library"] = ExpressionConverter.ConvertO(__workflow_bodypreferredLibrary);
                 bodypropCount++;
-                body["role"] = ExpressionConverter.ConvertO(bodyrole);
+                body["role"] = ExpressionConverter.ConvertO(__workflow_bodyrole);
                 bodypropCount++;
-                body["ignore_if_user_already_exists"] = ExpressionConverter.ConvertO(bodyignoreIfUserAlreadyExists);
+                body["ignore_if_user_already_exists"] = ExpressionConverter.ConvertO(__workflow_bodyignoreIfUserAlreadyExists);
                 bodypropCount++;
-                body["password_create_method"] = ExpressionConverter.ConvertO(bodypasswordCreateMethod);
+                body["password_create_method"] = ExpressionConverter.ConvertO(__workflow_bodypasswordCreateMethod);
                 bodypropCount++;
-                body["create_password"] = ExpressionConverter.ConvertO(bodycreatePassword);
+                body["create_password"] = ExpressionConverter.ConvertO(__workflow_bodycreatePassword);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -196,19 +184,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        [WorkflowExpressionFactory(nameof(__BuildAssignUserToLibrary))]
-        public IBodyWorkflowAction<AssignUserToLibraryResponse> AssignUserToLibrary([WorkflowExpression] Func<string> bodylibraryId, [WorkflowExpression] Func<string> bodyuserId, [WorkflowExpression] Func<string> bodyrole, [WorkflowExpression] Func<bool> bodyisPreferredLibrary)
+        public IBodyWorkflowAction<AssignUserToLibraryResponse> AssignUserToLibrary(Expression<Func<string>> bodylibraryId, Expression<Func<string>> bodyuserId, Expression<Func<string>> bodyrole, Expression<Func<bool>> bodyisPreferredLibrary)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AssignUserToLibraryResponse> __BuildAssignUserToLibrary(WorkflowExpression<string> bodylibraryId, WorkflowExpression<string> bodyuserId, WorkflowExpression<string> bodyrole, WorkflowExpression<bool> bodyisPreferredLibrary)
-        {
-            WorkflowExpression.Validate(bodylibraryId, nameof(bodylibraryId), required: true);
-            WorkflowExpression.Validate(bodyuserId, nameof(bodyuserId), required: true);
-            WorkflowExpression.Validate(bodyrole, nameof(bodyrole), required: true);
-            WorkflowExpression.Validate(bodyisPreferredLibrary, nameof(bodyisPreferredLibrary), required: true);
+            var __workflow_bodylibraryId = bodylibraryId == null ? null : WorkflowExpression.Compile(bodylibraryId);
+            WorkflowExpression.Validate(__workflow_bodylibraryId, nameof(bodylibraryId), required: true);
+            var __workflow_bodyuserId = bodyuserId == null ? null : WorkflowExpression.Compile(bodyuserId);
+            WorkflowExpression.Validate(__workflow_bodyuserId, nameof(bodyuserId), required: true);
+            var __workflow_bodyrole = bodyrole == null ? null : WorkflowExpression.Compile(bodyrole);
+            WorkflowExpression.Validate(__workflow_bodyrole, nameof(bodyrole), required: true);
+            var __workflow_bodyisPreferredLibrary = bodyisPreferredLibrary == null ? null : WorkflowExpression.Compile(bodyisPreferredLibrary);
+            WorkflowExpression.Validate(__workflow_bodyisPreferredLibrary, nameof(bodyisPreferredLibrary), required: true);
             return new DeferredBodyAction<AssignUserToLibraryResponse>(() =>
             {
                 var apiCallPath = "/assignUserToLibrary";
@@ -218,13 +203,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["libraryId"] = ExpressionConverter.ConvertO(bodylibraryId);
+                body["libraryId"] = ExpressionConverter.ConvertO(__workflow_bodylibraryId);
                 bodypropCount++;
-                body["user_id"] = ExpressionConverter.ConvertO(bodyuserId);
+                body["user_id"] = ExpressionConverter.ConvertO(__workflow_bodyuserId);
                 bodypropCount++;
-                body["role"] = ExpressionConverter.ConvertO(bodyrole);
+                body["role"] = ExpressionConverter.ConvertO(__workflow_bodyrole);
                 bodypropCount++;
-                body["is_preferred_library"] = ExpressionConverter.ConvertO(bodyisPreferredLibrary);
+                body["is_preferred_library"] = ExpressionConverter.ConvertO(__workflow_bodyisPreferredLibrary);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -235,27 +220,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        [WorkflowExpressionFactory(nameof(__BuildAddFolder))]
-        public IBodyWorkflowAction<CreateFolderResponseBody> AddFolder([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyparentId, [WorkflowExpression] Func<bodyparentTypeInput> bodyparentType, [WorkflowExpression] Func<bodydefaultSecurityInput> bodydefaultSecurity, [WorkflowExpression] Func<bodyinheritProfileFromWorkspaceInput> bodyinheritProfileFromWorkspace, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyowner = null, [WorkflowExpression] Func<string> bodyClass = null, [WorkflowExpression] Func<string> bodysubclass = null, [WorkflowExpression] Func<bool> bodyisExternalAsNormal = null, [WorkflowExpression] Func<object> bodyprofileProperties = null)
+        public IBodyWorkflowAction<CreateFolderResponseBody> AddFolder(Expression<Func<string>> bodyname, Expression<Func<string>> bodyparentId, Expression<Func<bodyparentTypeInput>> bodyparentType, Expression<Func<bodydefaultSecurityInput>> bodydefaultSecurity, Expression<Func<bodyinheritProfileFromWorkspaceInput>> bodyinheritProfileFromWorkspace, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyowner = null, Expression<Func<string>> bodyClass = null, Expression<Func<string>> bodysubclass = null, Expression<Func<bool>> bodyisExternalAsNormal = null, Expression<Func<object>> bodyprofileProperties = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateFolderResponseBody> __BuildAddFolder(WorkflowExpression<string> bodyname, WorkflowExpression<string> bodyparentId, WorkflowExpression<bodyparentTypeInput> bodyparentType, WorkflowExpression<bodydefaultSecurityInput> bodydefaultSecurity, WorkflowExpression<bodyinheritProfileFromWorkspaceInput> bodyinheritProfileFromWorkspace, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodyemail = null, WorkflowExpression<string> bodyowner = null, WorkflowExpression<string> bodyClass = null, WorkflowExpression<string> bodysubclass = null, WorkflowExpression<bool> bodyisExternalAsNormal = null, WorkflowExpression<object> bodyprofileProperties = null)
-        {
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
-            WorkflowExpression.Validate(bodyparentId, nameof(bodyparentId), required: true);
-            WorkflowExpression.Validate(bodyparentType, nameof(bodyparentType), required: true);
-            WorkflowExpression.Validate(bodydefaultSecurity, nameof(bodydefaultSecurity), required: true);
-            WorkflowExpression.Validate(bodyinheritProfileFromWorkspace, nameof(bodyinheritProfileFromWorkspace), required: true);
-            WorkflowExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            WorkflowExpression.Validate(bodyowner, nameof(bodyowner), required: false);
-            WorkflowExpression.Validate(bodyClass, nameof(bodyClass), required: false);
-            WorkflowExpression.Validate(bodysubclass, nameof(bodysubclass), required: false);
-            WorkflowExpression.Validate(bodyisExternalAsNormal, nameof(bodyisExternalAsNormal), required: false);
-            WorkflowExpression.Validate(bodyprofileProperties, nameof(bodyprofileProperties), required: false);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
+            var __workflow_bodyparentId = bodyparentId == null ? null : WorkflowExpression.Compile(bodyparentId);
+            WorkflowExpression.Validate(__workflow_bodyparentId, nameof(bodyparentId), required: true);
+            var __workflow_bodyparentType = bodyparentType == null ? null : WorkflowExpression.Compile(bodyparentType);
+            WorkflowExpression.Validate(__workflow_bodyparentType, nameof(bodyparentType), required: true);
+            var __workflow_bodydefaultSecurity = bodydefaultSecurity == null ? null : WorkflowExpression.Compile(bodydefaultSecurity);
+            WorkflowExpression.Validate(__workflow_bodydefaultSecurity, nameof(bodydefaultSecurity), required: true);
+            var __workflow_bodyinheritProfileFromWorkspace = bodyinheritProfileFromWorkspace == null ? null : WorkflowExpression.Compile(bodyinheritProfileFromWorkspace);
+            WorkflowExpression.Validate(__workflow_bodyinheritProfileFromWorkspace, nameof(bodyinheritProfileFromWorkspace), required: true);
+            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
+            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
+            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: false);
+            var __workflow_bodyowner = bodyowner == null ? null : WorkflowExpression.Compile(bodyowner);
+            WorkflowExpression.Validate(__workflow_bodyowner, nameof(bodyowner), required: false);
+            var __workflow_bodyClass = bodyClass == null ? null : WorkflowExpression.Compile(bodyClass);
+            WorkflowExpression.Validate(__workflow_bodyClass, nameof(bodyClass), required: false);
+            var __workflow_bodysubclass = bodysubclass == null ? null : WorkflowExpression.Compile(bodysubclass);
+            WorkflowExpression.Validate(__workflow_bodysubclass, nameof(bodysubclass), required: false);
+            var __workflow_bodyisExternalAsNormal = bodyisExternalAsNormal == null ? null : WorkflowExpression.Compile(bodyisExternalAsNormal);
+            WorkflowExpression.Validate(__workflow_bodyisExternalAsNormal, nameof(bodyisExternalAsNormal), required: false);
+            var __workflow_bodyprofileProperties = bodyprofileProperties == null ? null : WorkflowExpression.Compile(bodyprofileProperties);
+            WorkflowExpression.Validate(__workflow_bodyprofileProperties, nameof(bodyprofileProperties), required: false);
             return new DeferredBodyAction<CreateFolderResponseBody>(() =>
             {
                 var apiCallPath = "/addFolder";
@@ -265,48 +255,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
                 bodypropCount++;
-                body["parentId"] = ExpressionConverter.ConvertO(bodyparentId);
+                body["parentId"] = ExpressionConverter.ConvertO(__workflow_bodyparentId);
                 bodypropCount++;
-                body["parentType"] = ExpressionConverter.ConvertO(bodyparentType);
+                body["parentType"] = ExpressionConverter.ConvertO(__workflow_bodyparentType);
                 bodypropCount++;
-                body["default_security"] = ExpressionConverter.ConvertO(bodydefaultSecurity);
-                if (bodydescription != null)
+                body["default_security"] = ExpressionConverter.ConvertO(__workflow_bodydefaultSecurity);
+                if (__workflow_bodydescription != null)
                 {
-                    body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
                     bodypropCount++;
                 }
 
-                if (bodyemail != null)
+                if (__workflow_bodyemail != null)
                 {
-                    body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                    body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
                     bodypropCount++;
                 }
 
-                if (bodyowner != null)
+                if (__workflow_bodyowner != null)
                 {
-                    body["owner"] = ExpressionConverter.ConvertO(bodyowner);
+                    body["owner"] = ExpressionConverter.ConvertO(__workflow_bodyowner);
                     bodypropCount++;
                 }
 
-                if (bodyClass != null)
+                if (__workflow_bodyClass != null)
                 {
-                    body["class"] = ExpressionConverter.ConvertO(bodyClass);
+                    body["class"] = ExpressionConverter.ConvertO(__workflow_bodyClass);
                     bodypropCount++;
                 }
 
-                if (bodysubclass != null)
+                if (__workflow_bodysubclass != null)
                 {
-                    body["subclass"] = ExpressionConverter.ConvertO(bodysubclass);
+                    body["subclass"] = ExpressionConverter.ConvertO(__workflow_bodysubclass);
                     bodypropCount++;
                 }
 
-                if (bodyisExternalAsNormal != null)
+                if (__workflow_bodyisExternalAsNormal != null)
                 {
-                    if (bodyisExternalAsNormal != null)
+                    if (__workflow_bodyisExternalAsNormal != null)
                     {
-                        body["is_external_as_normal"] = ExpressionConverter.ConvertO(bodyisExternalAsNormal);
+                        body["is_external_as_normal"] = ExpressionConverter.ConvertO(__workflow_bodyisExternalAsNormal);
                         bodypropCount++;
                     }
 
@@ -319,10 +309,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
                 }
 
                 bodypropCount++;
-                body["inherit_profile_from_workspace"] = ExpressionConverter.ConvertO(bodyinheritProfileFromWorkspace);
-                if (bodyprofileProperties != null)
+                body["inherit_profile_from_workspace"] = ExpressionConverter.ConvertO(__workflow_bodyinheritProfileFromWorkspace);
+                if (__workflow_bodyprofileProperties != null)
                 {
-                    body["profileProperties"] = ExpressionConverter.ConvertO(bodyprofileProperties);
+                    body["profileProperties"] = ExpressionConverter.ConvertO(__workflow_bodyprofileProperties);
                     bodypropCount++;
                 }
 
@@ -336,20 +326,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        [WorkflowExpressionFactory(nameof(__BuildAddTab))]
-        public IBodyWorkflowAction<CreateTabResponseBody> AddTab([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyparentId, [WorkflowExpression] Func<bodydefaultSecurityInput> bodydefaultSecurity, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyowner = null)
+        public IBodyWorkflowAction<CreateTabResponseBody> AddTab(Expression<Func<string>> bodyname, Expression<Func<string>> bodyparentId, Expression<Func<bodydefaultSecurityInput>> bodydefaultSecurity, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyowner = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateTabResponseBody> __BuildAddTab(WorkflowExpression<string> bodyname, WorkflowExpression<string> bodyparentId, WorkflowExpression<bodydefaultSecurityInput> bodydefaultSecurity, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodyowner = null)
-        {
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
-            WorkflowExpression.Validate(bodyparentId, nameof(bodyparentId), required: true);
-            WorkflowExpression.Validate(bodydefaultSecurity, nameof(bodydefaultSecurity), required: true);
-            WorkflowExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            WorkflowExpression.Validate(bodyowner, nameof(bodyowner), required: false);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
+            var __workflow_bodyparentId = bodyparentId == null ? null : WorkflowExpression.Compile(bodyparentId);
+            WorkflowExpression.Validate(__workflow_bodyparentId, nameof(bodyparentId), required: true);
+            var __workflow_bodydefaultSecurity = bodydefaultSecurity == null ? null : WorkflowExpression.Compile(bodydefaultSecurity);
+            WorkflowExpression.Validate(__workflow_bodydefaultSecurity, nameof(bodydefaultSecurity), required: true);
+            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
+            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyowner = bodyowner == null ? null : WorkflowExpression.Compile(bodyowner);
+            WorkflowExpression.Validate(__workflow_bodyowner, nameof(bodyowner), required: false);
             return new DeferredBodyAction<CreateTabResponseBody>(() =>
             {
                 var apiCallPath = "/addTab";
@@ -359,20 +347,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
                 bodypropCount++;
-                body["parentId"] = ExpressionConverter.ConvertO(bodyparentId);
+                body["parentId"] = ExpressionConverter.ConvertO(__workflow_bodyparentId);
                 bodypropCount++;
-                body["default_security"] = ExpressionConverter.ConvertO(bodydefaultSecurity);
-                if (bodydescription != null)
+                body["default_security"] = ExpressionConverter.ConvertO(__workflow_bodydefaultSecurity);
+                if (__workflow_bodydescription != null)
                 {
-                    body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
                     bodypropCount++;
                 }
 
-                if (bodyowner != null)
+                if (__workflow_bodyowner != null)
                 {
-                    body["owner"] = ExpressionConverter.ConvertO(bodyowner);
+                    body["owner"] = ExpressionConverter.ConvertO(__workflow_bodyowner);
                     bodypropCount++;
                 }
 
@@ -386,40 +374,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        [WorkflowExpressionFactory(nameof(__BuildGetMyMattersCategories))]
-        public IBodyWorkflowAction<GetMyMattersCategoriesResponse> GetMyMattersCategories([WorkflowExpression] Func<string> userId)
+        public IBodyWorkflowAction<GetMyMattersCategoriesResponse> GetMyMattersCategories(Expression<Func<string>> userId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetMyMattersCategoriesResponse> __BuildGetMyMattersCategories(WorkflowExpression<string> userId)
-        {
-            WorkflowExpression.Validate(userId, nameof(userId), required: true);
+            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
+            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
             return new DeferredBodyAction<GetMyMattersCategoriesResponse>(() =>
             {
                 var apiCallPath = "/getMyMattersCategories";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["user_id"] = ExpressionConverter.Convert(userId);
+                callPayload.Queries["user_id"] = ExpressionConverter.Convert(__workflow_userId);
                 callPayload.Headers["x-im-connector-id"] = Convert.ToString("imanage-work-for-admins");
                 return new ApiConnectionAction<GetMyMattersCategoriesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        [WorkflowExpressionFactory(nameof(__BuildAddShortcutsToMyMattersAdmin))]
-        public IBodyWorkflowAction<AddShortcutsToMyMattersAdminResponse> AddShortcutsToMyMattersAdmin([WorkflowExpression] Func<string> bodyuserId, [WorkflowExpression] Func<string> bodyworkspaceId, [WorkflowExpression] Func<string> bodycategoryId = null)
+        public IBodyWorkflowAction<AddShortcutsToMyMattersAdminResponse> AddShortcutsToMyMattersAdmin(Expression<Func<string>> bodyuserId, Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodycategoryId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AddShortcutsToMyMattersAdminResponse> __BuildAddShortcutsToMyMattersAdmin(WorkflowExpression<string> bodyuserId, WorkflowExpression<string> bodyworkspaceId, WorkflowExpression<string> bodycategoryId = null)
-        {
-            WorkflowExpression.Validate(bodyuserId, nameof(bodyuserId), required: true);
-            WorkflowExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            WorkflowExpression.Validate(bodycategoryId, nameof(bodycategoryId), required: false);
+            var __workflow_bodyuserId = bodyuserId == null ? null : WorkflowExpression.Compile(bodyuserId);
+            WorkflowExpression.Validate(__workflow_bodyuserId, nameof(bodyuserId), required: true);
+            var __workflow_bodyworkspaceId = bodyworkspaceId == null ? null : WorkflowExpression.Compile(bodyworkspaceId);
+            WorkflowExpression.Validate(__workflow_bodyworkspaceId, nameof(bodyworkspaceId), required: true);
+            var __workflow_bodycategoryId = bodycategoryId == null ? null : WorkflowExpression.Compile(bodycategoryId);
+            WorkflowExpression.Validate(__workflow_bodycategoryId, nameof(bodycategoryId), required: false);
             return new DeferredBodyAction<AddShortcutsToMyMattersAdminResponse>(() =>
             {
                 var apiCallPath = "/addShortcutsToMyMattersAdmin";
@@ -429,12 +407,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["user_id"] = ExpressionConverter.ConvertO(bodyuserId);
+                body["user_id"] = ExpressionConverter.ConvertO(__workflow_bodyuserId);
                 bodypropCount++;
-                body["workspace_id"] = ExpressionConverter.ConvertO(bodyworkspaceId);
-                if (bodycategoryId != null)
+                body["workspace_id"] = ExpressionConverter.ConvertO(__workflow_bodyworkspaceId);
+                if (__workflow_bodycategoryId != null)
                 {
-                    body["category_id"] = ExpressionConverter.ConvertO(bodycategoryId);
+                    body["category_id"] = ExpressionConverter.ConvertO(__workflow_bodycategoryId);
                     bodypropCount++;
                 }
 
@@ -448,18 +426,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateCustomField))]
-        public IBodyWorkflowAction<JToken> UpdateCustomField([WorkflowExpression] Func<string> bodylibraryId, [WorkflowExpression] Func<string> bodylookupFieldId, [WorkflowExpression] Func<object> bodyaliasInfo)
+        public IBodyWorkflowAction<JToken> UpdateCustomField(Expression<Func<string>> bodylibraryId, Expression<Func<string>> bodylookupFieldId, Expression<Func<object>> bodyaliasInfo)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildUpdateCustomField(WorkflowExpression<string> bodylibraryId, WorkflowExpression<string> bodylookupFieldId, WorkflowExpression<object> bodyaliasInfo)
-        {
-            WorkflowExpression.Validate(bodylibraryId, nameof(bodylibraryId), required: true);
-            WorkflowExpression.Validate(bodylookupFieldId, nameof(bodylookupFieldId), required: true);
-            WorkflowExpression.Validate(bodyaliasInfo, nameof(bodyaliasInfo), required: true);
+            var __workflow_bodylibraryId = bodylibraryId == null ? null : WorkflowExpression.Compile(bodylibraryId);
+            WorkflowExpression.Validate(__workflow_bodylibraryId, nameof(bodylibraryId), required: true);
+            var __workflow_bodylookupFieldId = bodylookupFieldId == null ? null : WorkflowExpression.Compile(bodylookupFieldId);
+            WorkflowExpression.Validate(__workflow_bodylookupFieldId, nameof(bodylookupFieldId), required: true);
+            var __workflow_bodyaliasInfo = bodyaliasInfo == null ? null : WorkflowExpression.Compile(bodyaliasInfo);
+            WorkflowExpression.Validate(__workflow_bodyaliasInfo, nameof(bodyaliasInfo), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/updateCustomField";
@@ -469,11 +443,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["libraryId"] = ExpressionConverter.ConvertO(bodylibraryId);
+                body["libraryId"] = ExpressionConverter.ConvertO(__workflow_bodylibraryId);
                 bodypropCount++;
-                body["lookupFieldId"] = ExpressionConverter.ConvertO(bodylookupFieldId);
+                body["lookupFieldId"] = ExpressionConverter.ConvertO(__workflow_bodylookupFieldId);
                 bodypropCount++;
-                body["aliasInfo"] = ExpressionConverter.ConvertO(bodyaliasInfo);
+                body["aliasInfo"] = ExpressionConverter.ConvertO(__workflow_bodyaliasInfo);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -484,18 +458,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        [WorkflowExpressionFactory(nameof(__BuildGetRowsFromCSVDocument))]
-        public IBodyWorkflowAction<GetRowsFromCSVDocumentResponse> GetRowsFromCSVDocument([WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<string> bodycolumnNames, [WorkflowExpression] Func<bool> bodylatest = null)
+        public IBodyWorkflowAction<GetRowsFromCSVDocumentResponse> GetRowsFromCSVDocument(Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodycolumnNames, Expression<Func<bool>> bodylatest = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetRowsFromCSVDocumentResponse> __BuildGetRowsFromCSVDocument(WorkflowExpression<string> bodydocumentId, WorkflowExpression<string> bodycolumnNames, WorkflowExpression<bool> bodylatest = null)
-        {
-            WorkflowExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
-            WorkflowExpression.Validate(bodycolumnNames, nameof(bodycolumnNames), required: true);
-            WorkflowExpression.Validate(bodylatest, nameof(bodylatest), required: false);
+            var __workflow_bodydocumentId = bodydocumentId == null ? null : WorkflowExpression.Compile(bodydocumentId);
+            WorkflowExpression.Validate(__workflow_bodydocumentId, nameof(bodydocumentId), required: true);
+            var __workflow_bodycolumnNames = bodycolumnNames == null ? null : WorkflowExpression.Compile(bodycolumnNames);
+            WorkflowExpression.Validate(__workflow_bodycolumnNames, nameof(bodycolumnNames), required: true);
+            var __workflow_bodylatest = bodylatest == null ? null : WorkflowExpression.Compile(bodylatest);
+            WorkflowExpression.Validate(__workflow_bodylatest, nameof(bodylatest), required: false);
             return new DeferredBodyAction<GetRowsFromCSVDocumentResponse>(() =>
             {
                 var apiCallPath = "/getRowsFromCSVDocument";
@@ -505,14 +475,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+                body["documentId"] = ExpressionConverter.ConvertO(__workflow_bodydocumentId);
                 bodypropCount++;
-                body["column_names"] = ExpressionConverter.ConvertO(bodycolumnNames);
-                if (bodylatest != null)
+                body["column_names"] = ExpressionConverter.ConvertO(__workflow_bodycolumnNames);
+                if (__workflow_bodylatest != null)
                 {
-                    if (bodylatest != null)
+                    if (__workflow_bodylatest != null)
                     {
-                        body["latest"] = ExpressionConverter.ConvertO(bodylatest);
+                        body["latest"] = ExpressionConverter.ConvertO(__workflow_bodylatest);
                         bodypropCount++;
                     }
 
@@ -534,17 +504,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        [WorkflowExpressionFactory(nameof(__BuildMoveFolder))]
-        public IBodyWorkflowAction<MoveFolderResponseBody> MoveFolder([WorkflowExpression] Func<string> bodyfolderId, [WorkflowExpression] Func<string> bodydestinationId)
+        public IBodyWorkflowAction<MoveFolderResponseBody> MoveFolder(Expression<Func<string>> bodyfolderId, Expression<Func<string>> bodydestinationId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MoveFolderResponseBody> __BuildMoveFolder(WorkflowExpression<string> bodyfolderId, WorkflowExpression<string> bodydestinationId)
-        {
-            WorkflowExpression.Validate(bodyfolderId, nameof(bodyfolderId), required: true);
-            WorkflowExpression.Validate(bodydestinationId, nameof(bodydestinationId), required: true);
+            var __workflow_bodyfolderId = bodyfolderId == null ? null : WorkflowExpression.Compile(bodyfolderId);
+            WorkflowExpression.Validate(__workflow_bodyfolderId, nameof(bodyfolderId), required: true);
+            var __workflow_bodydestinationId = bodydestinationId == null ? null : WorkflowExpression.Compile(bodydestinationId);
+            WorkflowExpression.Validate(__workflow_bodydestinationId, nameof(bodydestinationId), required: true);
             return new DeferredBodyAction<MoveFolderResponseBody>(() =>
             {
                 var apiCallPath = "/moveFolder";
@@ -554,9 +519,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["folder_id"] = ExpressionConverter.ConvertO(bodyfolderId);
+                body["folder_id"] = ExpressionConverter.ConvertO(__workflow_bodyfolderId);
                 bodypropCount++;
-                body["destination_id"] = ExpressionConverter.ConvertO(bodydestinationId);
+                body["destination_id"] = ExpressionConverter.ConvertO(__workflow_bodydestinationId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -567,25 +532,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateFolder))]
-        public IBodyWorkflowAction<UpdateFolderPropertiesResponseBody> UpdateFolder([WorkflowExpression] Func<string> bodyfolderId, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<bodydefaultSecurityInput> bodydefaultSecurity = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyowner = null, [WorkflowExpression] Func<string> bodyClass = null, [WorkflowExpression] Func<string> bodysubclass = null, [WorkflowExpression] Func<bool> bodyisExternalAsNormal = null, [WorkflowExpression] Func<object> bodyprofile = null)
+        public IBodyWorkflowAction<UpdateFolderPropertiesResponseBody> UpdateFolder(Expression<Func<string>> bodyfolderId, Expression<Func<string>> bodyname = null, Expression<Func<bodydefaultSecurityInput>> bodydefaultSecurity = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyowner = null, Expression<Func<string>> bodyClass = null, Expression<Func<string>> bodysubclass = null, Expression<Func<bool>> bodyisExternalAsNormal = null, Expression<Func<object>> bodyprofile = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UpdateFolderPropertiesResponseBody> __BuildUpdateFolder(WorkflowExpression<string> bodyfolderId, WorkflowExpression<string> bodyname = null, WorkflowExpression<bodydefaultSecurityInput> bodydefaultSecurity = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodyemail = null, WorkflowExpression<string> bodyowner = null, WorkflowExpression<string> bodyClass = null, WorkflowExpression<string> bodysubclass = null, WorkflowExpression<bool> bodyisExternalAsNormal = null, WorkflowExpression<object> bodyprofile = null)
-        {
-            WorkflowExpression.Validate(bodyfolderId, nameof(bodyfolderId), required: true);
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
-            WorkflowExpression.Validate(bodydefaultSecurity, nameof(bodydefaultSecurity), required: false);
-            WorkflowExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            WorkflowExpression.Validate(bodyowner, nameof(bodyowner), required: false);
-            WorkflowExpression.Validate(bodyClass, nameof(bodyClass), required: false);
-            WorkflowExpression.Validate(bodysubclass, nameof(bodysubclass), required: false);
-            WorkflowExpression.Validate(bodyisExternalAsNormal, nameof(bodyisExternalAsNormal), required: false);
-            WorkflowExpression.Validate(bodyprofile, nameof(bodyprofile), required: false);
+            var __workflow_bodyfolderId = bodyfolderId == null ? null : WorkflowExpression.Compile(bodyfolderId);
+            WorkflowExpression.Validate(__workflow_bodyfolderId, nameof(bodyfolderId), required: true);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
+            var __workflow_bodydefaultSecurity = bodydefaultSecurity == null ? null : WorkflowExpression.Compile(bodydefaultSecurity);
+            WorkflowExpression.Validate(__workflow_bodydefaultSecurity, nameof(bodydefaultSecurity), required: false);
+            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
+            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
+            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: false);
+            var __workflow_bodyowner = bodyowner == null ? null : WorkflowExpression.Compile(bodyowner);
+            WorkflowExpression.Validate(__workflow_bodyowner, nameof(bodyowner), required: false);
+            var __workflow_bodyClass = bodyClass == null ? null : WorkflowExpression.Compile(bodyClass);
+            WorkflowExpression.Validate(__workflow_bodyClass, nameof(bodyClass), required: false);
+            var __workflow_bodysubclass = bodysubclass == null ? null : WorkflowExpression.Compile(bodysubclass);
+            WorkflowExpression.Validate(__workflow_bodysubclass, nameof(bodysubclass), required: false);
+            var __workflow_bodyisExternalAsNormal = bodyisExternalAsNormal == null ? null : WorkflowExpression.Compile(bodyisExternalAsNormal);
+            WorkflowExpression.Validate(__workflow_bodyisExternalAsNormal, nameof(bodyisExternalAsNormal), required: false);
+            var __workflow_bodyprofile = bodyprofile == null ? null : WorkflowExpression.Compile(bodyprofile);
+            WorkflowExpression.Validate(__workflow_bodyprofile, nameof(bodyprofile), required: false);
             return new DeferredBodyAction<UpdateFolderPropertiesResponseBody>(() =>
             {
                 var apiCallPath = "/updateFolder";
@@ -595,18 +563,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["folderId"] = ExpressionConverter.ConvertO(bodyfolderId);
-                if (bodyname != null)
+                body["folderId"] = ExpressionConverter.ConvertO(__workflow_bodyfolderId);
+                if (__workflow_bodyname != null)
                 {
-                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
                     bodypropCount++;
                 }
 
-                if (bodydefaultSecurity != null)
+                if (__workflow_bodydefaultSecurity != null)
                 {
-                    if (bodydefaultSecurity != null)
+                    if (__workflow_bodydefaultSecurity != null)
                     {
-                        body["default_security"] = ExpressionConverter.ConvertO(bodydefaultSecurity);
+                        body["default_security"] = ExpressionConverter.ConvertO(__workflow_bodydefaultSecurity);
                         bodypropCount++;
                     }
 
@@ -618,41 +586,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
                     bodypropCount++;
                 }
 
-                if (bodydescription != null)
+                if (__workflow_bodydescription != null)
                 {
-                    body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
                     bodypropCount++;
                 }
 
-                if (bodyemail != null)
+                if (__workflow_bodyemail != null)
                 {
-                    body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                    body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
                     bodypropCount++;
                 }
 
-                if (bodyowner != null)
+                if (__workflow_bodyowner != null)
                 {
-                    body["owner"] = ExpressionConverter.ConvertO(bodyowner);
+                    body["owner"] = ExpressionConverter.ConvertO(__workflow_bodyowner);
                     bodypropCount++;
                 }
 
-                if (bodyClass != null)
+                if (__workflow_bodyClass != null)
                 {
-                    body["class"] = ExpressionConverter.ConvertO(bodyClass);
+                    body["class"] = ExpressionConverter.ConvertO(__workflow_bodyClass);
                     bodypropCount++;
                 }
 
-                if (bodysubclass != null)
+                if (__workflow_bodysubclass != null)
                 {
-                    body["subclass"] = ExpressionConverter.ConvertO(bodysubclass);
+                    body["subclass"] = ExpressionConverter.ConvertO(__workflow_bodysubclass);
                     bodypropCount++;
                 }
 
-                if (bodyisExternalAsNormal != null)
+                if (__workflow_bodyisExternalAsNormal != null)
                 {
-                    if (bodyisExternalAsNormal != null)
+                    if (__workflow_bodyisExternalAsNormal != null)
                     {
-                        body["is_external_as_normal"] = ExpressionConverter.ConvertO(bodyisExternalAsNormal);
+                        body["is_external_as_normal"] = ExpressionConverter.ConvertO(__workflow_bodyisExternalAsNormal);
                         bodypropCount++;
                     }
 
@@ -664,9 +632,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
                     bodypropCount++;
                 }
 
-                if (bodyprofile != null)
+                if (__workflow_bodyprofile != null)
                 {
-                    body["profile"] = ExpressionConverter.ConvertO(bodyprofile);
+                    body["profile"] = ExpressionConverter.ConvertO(__workflow_bodyprofile);
                     bodypropCount++;
                 }
 

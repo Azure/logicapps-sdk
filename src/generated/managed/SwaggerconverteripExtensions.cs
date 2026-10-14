@@ -1,33 +1,26 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Swaggerconverterip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class SwaggerconverteripActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "swaggerconverterip")]
-        [WorkflowExpressionFactory(nameof(__BuildConvertByUrl))]
-        public IBodyWorkflowAction<JToken> ConvertByUrl([WorkflowExpression] Func<string> url)
+        public IBodyWorkflowAction<JToken> ConvertByUrl(Expression<Func<string>> url)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildConvertByUrl(WorkflowExpression<string> url)
-        {
-            WorkflowExpression.Validate(url, nameof(url), required: true);
+            var __workflow_url = url == null ? null : WorkflowExpression.Compile(url);
+            WorkflowExpression.Validate(__workflow_url, nameof(url), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/convert";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["url"] = ExpressionConverter.Convert(url);
+                callPayload.Queries["url"] = ExpressionConverter.Convert(__workflow_url);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<JToken>(callPayload);
             });

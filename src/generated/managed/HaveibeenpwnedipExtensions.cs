@@ -1,43 +1,39 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Haveibeenpwnedip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class HaveibeenpwnedipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "haveibeenpwnedip")]
-        [WorkflowExpressionFactory(nameof(__BuildAllBreachesAccount))]
-        public IBodyWorkflowAction<AllBreachesAccountResponseItem[]> AllBreachesAccount([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<bool> truncateResponse = null, [WorkflowExpression] Func<string> domain = null, [WorkflowExpression] Func<bool> includeUnverified = null)
+        public IBodyWorkflowAction<AllBreachesAccountResponseItem[]> AllBreachesAccount(Expression<Func<string>> account, Expression<Func<bool>> truncateResponse = null, Expression<Func<string>> domain = null, Expression<Func<bool>> includeUnverified = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AllBreachesAccountResponseItem[]> __BuildAllBreachesAccount(WorkflowExpression<string> account, WorkflowExpression<bool> truncateResponse = null, WorkflowExpression<string> domain = null, WorkflowExpression<bool> includeUnverified = null)
-        {
-            WorkflowExpression.Validate(account, nameof(account), required: true);
-            WorkflowExpression.Validate(truncateResponse, nameof(truncateResponse), required: false);
-            WorkflowExpression.Validate(domain, nameof(domain), required: false);
-            WorkflowExpression.Validate(includeUnverified, nameof(includeUnverified), required: false);
+            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
+            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
+            var __workflow_truncateResponse = truncateResponse == null ? null : WorkflowExpression.Compile(truncateResponse);
+            WorkflowExpression.Validate(__workflow_truncateResponse, nameof(truncateResponse), required: false);
+            var __workflow_domain = domain == null ? null : WorkflowExpression.Compile(domain);
+            WorkflowExpression.Validate(__workflow_domain, nameof(domain), required: false);
+            var __workflow_includeUnverified = includeUnverified == null ? null : WorkflowExpression.Compile(includeUnverified);
+            WorkflowExpression.Validate(__workflow_includeUnverified, nameof(includeUnverified), required: false);
             return new DeferredBodyAction<AllBreachesAccountResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v3/breachedaccount/{0}", ExpressionConverter.ConvertWithUrlEncoding(account, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v3/breachedaccount/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["truncateResponse"] = Convert.ToString(false);
-                if (truncateResponse != null)
-                    callPayload.Queries["truncateResponse"] = ExpressionConverter.Convert(truncateResponse);
-                if (domain != null)
-                    callPayload.Queries["domain"] = ExpressionConverter.Convert(domain);
+                if (__workflow_truncateResponse != null)
+                    callPayload.Queries["truncateResponse"] = ExpressionConverter.Convert(__workflow_truncateResponse);
+                if (__workflow_domain != null)
+                    callPayload.Queries["domain"] = ExpressionConverter.Convert(__workflow_domain);
                 callPayload.Queries["includeUnverified"] = Convert.ToString(true);
-                if (includeUnverified != null)
-                    callPayload.Queries["includeUnverified"] = ExpressionConverter.Convert(includeUnverified);
+                if (__workflow_includeUnverified != null)
+                    callPayload.Queries["includeUnverified"] = ExpressionConverter.Convert(__workflow_includeUnverified);
                 return new ApiConnectionAction<AllBreachesAccountResponseItem[]>(callPayload);
             });
         }
@@ -52,19 +48,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Haveibeenpwnedip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "haveibeenpwnedip")]
-        [WorkflowExpressionFactory(nameof(__BuildPastes))]
-        public IBodyWorkflowAction<PastesResponseItem[]> Pastes([WorkflowExpression] Func<string> account)
+        public IBodyWorkflowAction<PastesResponseItem[]> Pastes(Expression<Func<string>> account)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PastesResponseItem[]> __BuildPastes(WorkflowExpression<string> account)
-        {
-            WorkflowExpression.Validate(account, nameof(account), required: true);
+            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
+            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
             return new DeferredBodyAction<PastesResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v3/pasteaccount/{0}", ExpressionConverter.ConvertWithUrlEncoding(account, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v3/pasteaccount/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<PastesResponseItem[]>(callPayload);
@@ -81,19 +71,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Haveibeenpwnedip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "haveibeenpwnedip")]
-        [WorkflowExpressionFactory(nameof(__BuildBreachSingle))]
-        public IBodyWorkflowAction<BreachSingleResponse> BreachSingle([WorkflowExpression] Func<string> name)
+        public IBodyWorkflowAction<BreachSingleResponse> BreachSingle(Expression<Func<string>> name)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<BreachSingleResponse> __BuildBreachSingle(WorkflowExpression<string> name)
-        {
-            WorkflowExpression.Validate(name, nameof(name), required: true);
+            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
+            WorkflowExpression.Validate(__workflow_name, nameof(name), required: true);
             return new DeferredBodyAction<BreachSingleResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v3/breach/{0}", ExpressionConverter.ConvertWithUrlEncoding(name, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v3/breach/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_name, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<BreachSingleResponse>(callPayload);

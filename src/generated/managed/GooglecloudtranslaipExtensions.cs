@@ -1,93 +1,79 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecloudtranslaip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class GooglecloudtranslaipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlecloudtranslaip")]
-        [WorkflowExpressionFactory(nameof(__BuildTextTranslate))]
-        public IBodyWorkflowAction<TextTranslateResponse> TextTranslate([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<string> target, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<string> source = null, [WorkflowExpression] Func<string> model = null)
+        public IBodyWorkflowAction<TextTranslateResponse> TextTranslate(Expression<Func<string>> q, Expression<Func<string>> target, Expression<Func<formatInput>> format = null, Expression<Func<string>> source = null, Expression<Func<string>> model = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TextTranslateResponse> __BuildTextTranslate(WorkflowExpression<string> q, WorkflowExpression<string> target, WorkflowExpression<formatInput> format = null, WorkflowExpression<string> source = null, WorkflowExpression<string> model = null)
-        {
-            WorkflowExpression.Validate(q, nameof(q), required: true);
-            WorkflowExpression.Validate(target, nameof(target), required: true);
-            WorkflowExpression.Validate(format, nameof(format), required: false);
-            WorkflowExpression.Validate(source, nameof(source), required: false);
-            WorkflowExpression.Validate(model, nameof(model), required: false);
+            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
+            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
+            var __workflow_target = target == null ? null : WorkflowExpression.Compile(target);
+            WorkflowExpression.Validate(__workflow_target, nameof(target), required: true);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
+            var __workflow_source = source == null ? null : WorkflowExpression.Compile(source);
+            WorkflowExpression.Validate(__workflow_source, nameof(source), required: false);
+            var __workflow_model = model == null ? null : WorkflowExpression.Compile(model);
+            WorkflowExpression.Validate(__workflow_model, nameof(model), required: false);
             return new DeferredBodyAction<TextTranslateResponse>(() =>
             {
                 var apiCallPath = "/language/translate/v2";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-                callPayload.Queries["target"] = ExpressionConverter.Convert(target);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
+                callPayload.Queries["target"] = ExpressionConverter.Convert(__workflow_target);
                 callPayload.Queries["format"] = Convert.ToString("text");
-                if (format != null)
-                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-                if (source != null)
-                    callPayload.Queries["source"] = ExpressionConverter.Convert(source);
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                if (__workflow_source != null)
+                    callPayload.Queries["source"] = ExpressionConverter.Convert(__workflow_source);
                 callPayload.Queries["model"] = Convert.ToString("base");
-                if (model != null)
-                    callPayload.Queries["model"] = ExpressionConverter.Convert(model);
+                if (__workflow_model != null)
+                    callPayload.Queries["model"] = ExpressionConverter.Convert(__workflow_model);
                 return new ApiConnectionAction<TextTranslateResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlecloudtranslaip")]
-        [WorkflowExpressionFactory(nameof(__BuildLanguageDetect))]
-        public IBodyWorkflowAction<LanguageDetectResponse> LanguageDetect([WorkflowExpression] Func<string> q)
+        public IBodyWorkflowAction<LanguageDetectResponse> LanguageDetect(Expression<Func<string>> q)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<LanguageDetectResponse> __BuildLanguageDetect(WorkflowExpression<string> q)
-        {
-            WorkflowExpression.Validate(q, nameof(q), required: true);
+            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
+            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
             return new DeferredBodyAction<LanguageDetectResponse>(() =>
             {
                 var apiCallPath = "/language/translate/v2/detect";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
                 return new ApiConnectionAction<LanguageDetectResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlecloudtranslaip")]
-        [WorkflowExpressionFactory(nameof(__BuildLanguageGet))]
-        public IBodyWorkflowAction<LanguageGetResponse> LanguageGet([WorkflowExpression] Func<string> target = null, [WorkflowExpression] Func<string> model = null)
+        public IBodyWorkflowAction<LanguageGetResponse> LanguageGet(Expression<Func<string>> target = null, Expression<Func<string>> model = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<LanguageGetResponse> __BuildLanguageGet(WorkflowExpression<string> target = null, WorkflowExpression<string> model = null)
-        {
-            WorkflowExpression.Validate(target, nameof(target), required: false);
-            WorkflowExpression.Validate(model, nameof(model), required: false);
+            var __workflow_target = target == null ? null : WorkflowExpression.Compile(target);
+            WorkflowExpression.Validate(__workflow_target, nameof(target), required: false);
+            var __workflow_model = model == null ? null : WorkflowExpression.Compile(model);
+            WorkflowExpression.Validate(__workflow_model, nameof(model), required: false);
             return new DeferredBodyAction<LanguageGetResponse>(() =>
             {
                 var apiCallPath = "/language/translate/v2/languages";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (target != null)
-                    callPayload.Queries["target"] = ExpressionConverter.Convert(target);
+                if (__workflow_target != null)
+                    callPayload.Queries["target"] = ExpressionConverter.Convert(__workflow_target);
                 callPayload.Queries["model"] = Convert.ToString("nmt");
-                if (model != null)
-                    callPayload.Queries["model"] = ExpressionConverter.Convert(model);
+                if (__workflow_model != null)
+                    callPayload.Queries["model"] = ExpressionConverter.Convert(__workflow_model);
                 return new ApiConnectionAction<LanguageGetResponse>(callPayload);
             });
         }

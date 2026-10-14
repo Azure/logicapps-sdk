@@ -1,35 +1,30 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientworkflowauto
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class NutrientworkflowautoActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientworkflowauto")]
-        [WorkflowExpressionFactory(nameof(__BuildSubmitForm))]
-        public IBodyWorkflowAction<SubmitFormResponse> SubmitForm([WorkflowExpression] Func<string> processGuid, [WorkflowExpression] Func<string> processTaskGuid, [WorkflowExpression] Func<object> dynamicListSchema = null)
+        public IBodyWorkflowAction<SubmitFormResponse> SubmitForm(Expression<Func<string>> processGuid, Expression<Func<string>> processTaskGuid, Expression<Func<object>> dynamicListSchema = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SubmitFormResponse> __BuildSubmitForm(WorkflowExpression<string> processGuid, WorkflowExpression<string> processTaskGuid, WorkflowExpression<object> dynamicListSchema = null)
-        {
-            WorkflowExpression.Validate(processGuid, nameof(processGuid), required: true);
-            WorkflowExpression.Validate(processTaskGuid, nameof(processTaskGuid), required: true);
-            WorkflowExpression.Validate(dynamicListSchema, nameof(dynamicListSchema), required: false);
+            var __workflow_processGuid = processGuid == null ? null : WorkflowExpression.Compile(processGuid);
+            WorkflowExpression.Validate(__workflow_processGuid, nameof(processGuid), required: true);
+            var __workflow_processTaskGuid = processTaskGuid == null ? null : WorkflowExpression.Compile(processTaskGuid);
+            WorkflowExpression.Validate(__workflow_processTaskGuid, nameof(processTaskGuid), required: true);
+            var __workflow_dynamicListSchema = dynamicListSchema == null ? null : WorkflowExpression.Compile(dynamicListSchema);
+            WorkflowExpression.Validate(__workflow_dynamicListSchema, nameof(dynamicListSchema), required: false);
             return new DeferredBodyAction<SubmitFormResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/instance/start/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(processGuid, 1), ExpressionConverter.ConvertWithUrlEncoding(processTaskGuid, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/instance/start/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_processGuid, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_processTaskGuid, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(dynamicListSchema);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_dynamicListSchema);
                 return new ApiConnectionAction<SubmitFormResponse>(callPayload);
             });
         }

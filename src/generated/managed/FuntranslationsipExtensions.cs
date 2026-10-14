@@ -1,37 +1,31 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Funtranslationsip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class FuntranslationsipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "funtranslationsip")]
-        [WorkflowExpressionFactory(nameof(__BuildTranslate))]
-        public IBodyWorkflowAction<TranslatePostResponse> Translate([WorkflowExpression] Func<languageInput> language, [WorkflowExpression] Func<string> bodytext)
+        public IBodyWorkflowAction<TranslatePostResponse> Translate(Expression<Func<languageInput>> language, Expression<Func<string>> bodytext)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TranslatePostResponse> __BuildTranslate(WorkflowExpression<languageInput> language, WorkflowExpression<string> bodytext)
-        {
-            WorkflowExpression.Validate(language, nameof(language), required: true);
-            WorkflowExpression.Validate(bodytext, nameof(bodytext), required: true);
+            var __workflow_language = language == null ? null : WorkflowExpression.Compile(language);
+            WorkflowExpression.Validate(__workflow_language, nameof(language), required: true);
+            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
+            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: true);
             return new DeferredBodyAction<TranslatePostResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(language, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_language, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
+                body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

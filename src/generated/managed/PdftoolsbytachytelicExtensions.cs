@@ -1,31 +1,28 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdftoolsbytachytelic
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class PdftoolsbytachytelicActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdftoolsbytachytelic")]
-        [WorkflowExpressionFactory(nameof(__BuildOptimizePdf))]
-        public IBodyWorkflowAction<OptimizePdfResponse> OptimizePdf([WorkflowExpression] Func<string> bodypDFFileContent, [WorkflowExpression] Func<bodymodeInput> bodymode = null, [WorkflowExpression] Func<int> bodygarbageLevel = null, [WorkflowExpression] Func<bool> bodydeflate = null, [WorkflowExpression] Func<bool> bodyclean = null)
+        public IBodyWorkflowAction<OptimizePdfResponse> OptimizePdf(Expression<Func<string>> bodypDFFileContent, Expression<Func<bodymodeInput>> bodymode = null, Expression<Func<int>> bodygarbageLevel = null, Expression<Func<bool>> bodydeflate = null, Expression<Func<bool>> bodyclean = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<OptimizePdfResponse> __BuildOptimizePdf(WorkflowExpression<string> bodypDFFileContent, WorkflowExpression<bodymodeInput> bodymode = null, WorkflowExpression<int> bodygarbageLevel = null, WorkflowExpression<bool> bodydeflate = null, WorkflowExpression<bool> bodyclean = null)
-        {
-            WorkflowExpression.Validate(bodypDFFileContent, nameof(bodypDFFileContent), required: true);
-            WorkflowExpression.Validate(bodymode, nameof(bodymode), required: false);
-            WorkflowExpression.Validate(bodygarbageLevel, nameof(bodygarbageLevel), required: false);
-            WorkflowExpression.Validate(bodydeflate, nameof(bodydeflate), required: false);
-            WorkflowExpression.Validate(bodyclean, nameof(bodyclean), required: false);
+            var __workflow_bodypDFFileContent = bodypDFFileContent == null ? null : WorkflowExpression.Compile(bodypDFFileContent);
+            WorkflowExpression.Validate(__workflow_bodypDFFileContent, nameof(bodypDFFileContent), required: true);
+            var __workflow_bodymode = bodymode == null ? null : WorkflowExpression.Compile(bodymode);
+            WorkflowExpression.Validate(__workflow_bodymode, nameof(bodymode), required: false);
+            var __workflow_bodygarbageLevel = bodygarbageLevel == null ? null : WorkflowExpression.Compile(bodygarbageLevel);
+            WorkflowExpression.Validate(__workflow_bodygarbageLevel, nameof(bodygarbageLevel), required: false);
+            var __workflow_bodydeflate = bodydeflate == null ? null : WorkflowExpression.Compile(bodydeflate);
+            WorkflowExpression.Validate(__workflow_bodydeflate, nameof(bodydeflate), required: false);
+            var __workflow_bodyclean = bodyclean == null ? null : WorkflowExpression.Compile(bodyclean);
+            WorkflowExpression.Validate(__workflow_bodyclean, nameof(bodyclean), required: false);
             return new DeferredBodyAction<OptimizePdfResponse>(() =>
             {
                 var apiCallPath = "/optimize";
@@ -34,12 +31,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdftoolsbytachytelic
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["PdfFileContent"] = ExpressionConverter.ConvertO(bodypDFFileContent);
-                if (bodymode != null)
+                body["PdfFileContent"] = ExpressionConverter.ConvertO(__workflow_bodypDFFileContent);
+                if (__workflow_bodymode != null)
                 {
-                    if (bodymode != null)
+                    if (__workflow_bodymode != null)
                     {
-                        body["Mode"] = ExpressionConverter.ConvertO(bodymode);
+                        body["Mode"] = ExpressionConverter.ConvertO(__workflow_bodymode);
                         bodypropCount++;
                     }
 
@@ -51,11 +48,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdftoolsbytachytelic
                     bodypropCount++;
                 }
 
-                if (bodygarbageLevel != null)
+                if (__workflow_bodygarbageLevel != null)
                 {
-                    if (bodygarbageLevel != null)
+                    if (__workflow_bodygarbageLevel != null)
                     {
-                        body["Garbage"] = ExpressionConverter.ConvertO(bodygarbageLevel);
+                        body["Garbage"] = ExpressionConverter.ConvertO(__workflow_bodygarbageLevel);
                         bodypropCount++;
                     }
 
@@ -67,11 +64,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdftoolsbytachytelic
                     bodypropCount++;
                 }
 
-                if (bodydeflate != null)
+                if (__workflow_bodydeflate != null)
                 {
-                    if (bodydeflate != null)
+                    if (__workflow_bodydeflate != null)
                     {
-                        body["Deflate"] = ExpressionConverter.ConvertO(bodydeflate);
+                        body["Deflate"] = ExpressionConverter.ConvertO(__workflow_bodydeflate);
                         bodypropCount++;
                     }
 
@@ -83,11 +80,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdftoolsbytachytelic
                     bodypropCount++;
                 }
 
-                if (bodyclean != null)
+                if (__workflow_bodyclean != null)
                 {
-                    if (bodyclean != null)
+                    if (__workflow_bodyclean != null)
                     {
-                        body["Clean"] = ExpressionConverter.ConvertO(bodyclean);
+                        body["Clean"] = ExpressionConverter.ConvertO(__workflow_bodyclean);
                         bodypropCount++;
                     }
 

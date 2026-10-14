@@ -1,43 +1,52 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebms
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class EbmsActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebms")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateProduct))]
-        public IBodyWorkflowAction<JToken> CreateProduct([WorkflowExpression] Func<string> bodytREEID, [WorkflowExpression] Func<string> bodyiD = null, [WorkflowExpression] Func<double> bodycTYPE = null, [WorkflowExpression] Func<string> bodydESCR1 = null, [WorkflowExpression] Func<string> bodydESCR2 = null, [WorkflowExpression] Func<string> bodydESCR3 = null, [WorkflowExpression] Func<string> bodytYPE = null, [WorkflowExpression] Func<string> bodymEMO = null, [WorkflowExpression] Func<string> bodyuPC = null, [WorkflowExpression] Func<string> bodymFG = null, [WorkflowExpression] Func<string> bodymFGPART = null, [WorkflowExpression] Func<string> bodypRIVENDOR = null, [WorkflowExpression] Func<string> bodyeACHUNIT = null, [WorkflowExpression] Func<double> bodywEIGHT = null, [WorkflowExpression] Func<double> bodycOST = null, [WorkflowExpression] Func<double> bodybASE = null, [WorkflowExpression] Func<string> bodyeXTERNALID = null)
+        public IBodyWorkflowAction<JToken> CreateProduct(Expression<Func<string>> bodytREEID, Expression<Func<string>> bodyiD = null, Expression<Func<double>> bodycTYPE = null, Expression<Func<string>> bodydESCR1 = null, Expression<Func<string>> bodydESCR2 = null, Expression<Func<string>> bodydESCR3 = null, Expression<Func<string>> bodytYPE = null, Expression<Func<string>> bodymEMO = null, Expression<Func<string>> bodyuPC = null, Expression<Func<string>> bodymFG = null, Expression<Func<string>> bodymFGPART = null, Expression<Func<string>> bodypRIVENDOR = null, Expression<Func<string>> bodyeACHUNIT = null, Expression<Func<double>> bodywEIGHT = null, Expression<Func<double>> bodycOST = null, Expression<Func<double>> bodybASE = null, Expression<Func<string>> bodyeXTERNALID = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildCreateProduct(WorkflowExpression<string> bodytREEID, WorkflowExpression<string> bodyiD = null, WorkflowExpression<double> bodycTYPE = null, WorkflowExpression<string> bodydESCR1 = null, WorkflowExpression<string> bodydESCR2 = null, WorkflowExpression<string> bodydESCR3 = null, WorkflowExpression<string> bodytYPE = null, WorkflowExpression<string> bodymEMO = null, WorkflowExpression<string> bodyuPC = null, WorkflowExpression<string> bodymFG = null, WorkflowExpression<string> bodymFGPART = null, WorkflowExpression<string> bodypRIVENDOR = null, WorkflowExpression<string> bodyeACHUNIT = null, WorkflowExpression<double> bodywEIGHT = null, WorkflowExpression<double> bodycOST = null, WorkflowExpression<double> bodybASE = null, WorkflowExpression<string> bodyeXTERNALID = null)
-        {
-            WorkflowExpression.Validate(bodytREEID, nameof(bodytREEID), required: true);
-            WorkflowExpression.Validate(bodyiD, nameof(bodyiD), required: false);
-            WorkflowExpression.Validate(bodycTYPE, nameof(bodycTYPE), required: false);
-            WorkflowExpression.Validate(bodydESCR1, nameof(bodydESCR1), required: false);
-            WorkflowExpression.Validate(bodydESCR2, nameof(bodydESCR2), required: false);
-            WorkflowExpression.Validate(bodydESCR3, nameof(bodydESCR3), required: false);
-            WorkflowExpression.Validate(bodytYPE, nameof(bodytYPE), required: false);
-            WorkflowExpression.Validate(bodymEMO, nameof(bodymEMO), required: false);
-            WorkflowExpression.Validate(bodyuPC, nameof(bodyuPC), required: false);
-            WorkflowExpression.Validate(bodymFG, nameof(bodymFG), required: false);
-            WorkflowExpression.Validate(bodymFGPART, nameof(bodymFGPART), required: false);
-            WorkflowExpression.Validate(bodypRIVENDOR, nameof(bodypRIVENDOR), required: false);
-            WorkflowExpression.Validate(bodyeACHUNIT, nameof(bodyeACHUNIT), required: false);
-            WorkflowExpression.Validate(bodywEIGHT, nameof(bodywEIGHT), required: false);
-            WorkflowExpression.Validate(bodycOST, nameof(bodycOST), required: false);
-            WorkflowExpression.Validate(bodybASE, nameof(bodybASE), required: false);
-            WorkflowExpression.Validate(bodyeXTERNALID, nameof(bodyeXTERNALID), required: false);
+            var __workflow_bodytREEID = bodytREEID == null ? null : WorkflowExpression.Compile(bodytREEID);
+            WorkflowExpression.Validate(__workflow_bodytREEID, nameof(bodytREEID), required: true);
+            var __workflow_bodyiD = bodyiD == null ? null : WorkflowExpression.Compile(bodyiD);
+            WorkflowExpression.Validate(__workflow_bodyiD, nameof(bodyiD), required: false);
+            var __workflow_bodycTYPE = bodycTYPE == null ? null : WorkflowExpression.Compile(bodycTYPE);
+            WorkflowExpression.Validate(__workflow_bodycTYPE, nameof(bodycTYPE), required: false);
+            var __workflow_bodydESCR1 = bodydESCR1 == null ? null : WorkflowExpression.Compile(bodydESCR1);
+            WorkflowExpression.Validate(__workflow_bodydESCR1, nameof(bodydESCR1), required: false);
+            var __workflow_bodydESCR2 = bodydESCR2 == null ? null : WorkflowExpression.Compile(bodydESCR2);
+            WorkflowExpression.Validate(__workflow_bodydESCR2, nameof(bodydESCR2), required: false);
+            var __workflow_bodydESCR3 = bodydESCR3 == null ? null : WorkflowExpression.Compile(bodydESCR3);
+            WorkflowExpression.Validate(__workflow_bodydESCR3, nameof(bodydESCR3), required: false);
+            var __workflow_bodytYPE = bodytYPE == null ? null : WorkflowExpression.Compile(bodytYPE);
+            WorkflowExpression.Validate(__workflow_bodytYPE, nameof(bodytYPE), required: false);
+            var __workflow_bodymEMO = bodymEMO == null ? null : WorkflowExpression.Compile(bodymEMO);
+            WorkflowExpression.Validate(__workflow_bodymEMO, nameof(bodymEMO), required: false);
+            var __workflow_bodyuPC = bodyuPC == null ? null : WorkflowExpression.Compile(bodyuPC);
+            WorkflowExpression.Validate(__workflow_bodyuPC, nameof(bodyuPC), required: false);
+            var __workflow_bodymFG = bodymFG == null ? null : WorkflowExpression.Compile(bodymFG);
+            WorkflowExpression.Validate(__workflow_bodymFG, nameof(bodymFG), required: false);
+            var __workflow_bodymFGPART = bodymFGPART == null ? null : WorkflowExpression.Compile(bodymFGPART);
+            WorkflowExpression.Validate(__workflow_bodymFGPART, nameof(bodymFGPART), required: false);
+            var __workflow_bodypRIVENDOR = bodypRIVENDOR == null ? null : WorkflowExpression.Compile(bodypRIVENDOR);
+            WorkflowExpression.Validate(__workflow_bodypRIVENDOR, nameof(bodypRIVENDOR), required: false);
+            var __workflow_bodyeACHUNIT = bodyeACHUNIT == null ? null : WorkflowExpression.Compile(bodyeACHUNIT);
+            WorkflowExpression.Validate(__workflow_bodyeACHUNIT, nameof(bodyeACHUNIT), required: false);
+            var __workflow_bodywEIGHT = bodywEIGHT == null ? null : WorkflowExpression.Compile(bodywEIGHT);
+            WorkflowExpression.Validate(__workflow_bodywEIGHT, nameof(bodywEIGHT), required: false);
+            var __workflow_bodycOST = bodycOST == null ? null : WorkflowExpression.Compile(bodycOST);
+            WorkflowExpression.Validate(__workflow_bodycOST, nameof(bodycOST), required: false);
+            var __workflow_bodybASE = bodybASE == null ? null : WorkflowExpression.Compile(bodybASE);
+            WorkflowExpression.Validate(__workflow_bodybASE, nameof(bodybASE), required: false);
+            var __workflow_bodyeXTERNALID = bodyeXTERNALID == null ? null : WorkflowExpression.Compile(bodyeXTERNALID);
+            WorkflowExpression.Validate(__workflow_bodyeXTERNALID, nameof(bodyeXTERNALID), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/INVENTRY";
@@ -45,101 +54,101 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebms
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyiD != null)
+                if (__workflow_bodyiD != null)
                 {
-                    body["ID"] = ExpressionConverter.ConvertO(bodyiD);
+                    body["ID"] = ExpressionConverter.ConvertO(__workflow_bodyiD);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["TREE_ID"] = ExpressionConverter.ConvertO(bodytREEID);
-                if (bodycTYPE != null)
+                body["TREE_ID"] = ExpressionConverter.ConvertO(__workflow_bodytREEID);
+                if (__workflow_bodycTYPE != null)
                 {
-                    body["C_TYPE"] = ExpressionConverter.ConvertO(bodycTYPE);
+                    body["C_TYPE"] = ExpressionConverter.ConvertO(__workflow_bodycTYPE);
                     bodypropCount++;
                 }
 
-                if (bodydESCR1 != null)
+                if (__workflow_bodydESCR1 != null)
                 {
-                    body["DESCR_1"] = ExpressionConverter.ConvertO(bodydESCR1);
+                    body["DESCR_1"] = ExpressionConverter.ConvertO(__workflow_bodydESCR1);
                     bodypropCount++;
                 }
 
-                if (bodydESCR2 != null)
+                if (__workflow_bodydESCR2 != null)
                 {
-                    body["DESCR_2"] = ExpressionConverter.ConvertO(bodydESCR2);
+                    body["DESCR_2"] = ExpressionConverter.ConvertO(__workflow_bodydESCR2);
                     bodypropCount++;
                 }
 
-                if (bodydESCR3 != null)
+                if (__workflow_bodydESCR3 != null)
                 {
-                    body["DESCR_3"] = ExpressionConverter.ConvertO(bodydESCR3);
+                    body["DESCR_3"] = ExpressionConverter.ConvertO(__workflow_bodydESCR3);
                     bodypropCount++;
                 }
 
-                if (bodytYPE != null)
+                if (__workflow_bodytYPE != null)
                 {
-                    body["TYPE"] = ExpressionConverter.ConvertO(bodytYPE);
+                    body["TYPE"] = ExpressionConverter.ConvertO(__workflow_bodytYPE);
                     bodypropCount++;
                 }
 
-                if (bodymEMO != null)
+                if (__workflow_bodymEMO != null)
                 {
-                    body["MEMO"] = ExpressionConverter.ConvertO(bodymEMO);
+                    body["MEMO"] = ExpressionConverter.ConvertO(__workflow_bodymEMO);
                     bodypropCount++;
                 }
 
-                if (bodyuPC != null)
+                if (__workflow_bodyuPC != null)
                 {
-                    body["UPC"] = ExpressionConverter.ConvertO(bodyuPC);
+                    body["UPC"] = ExpressionConverter.ConvertO(__workflow_bodyuPC);
                     bodypropCount++;
                 }
 
-                if (bodymFG != null)
+                if (__workflow_bodymFG != null)
                 {
-                    body["MFG"] = ExpressionConverter.ConvertO(bodymFG);
+                    body["MFG"] = ExpressionConverter.ConvertO(__workflow_bodymFG);
                     bodypropCount++;
                 }
 
-                if (bodymFGPART != null)
+                if (__workflow_bodymFGPART != null)
                 {
-                    body["MFG_PART"] = ExpressionConverter.ConvertO(bodymFGPART);
+                    body["MFG_PART"] = ExpressionConverter.ConvertO(__workflow_bodymFGPART);
                     bodypropCount++;
                 }
 
-                if (bodypRIVENDOR != null)
+                if (__workflow_bodypRIVENDOR != null)
                 {
-                    body["PRI_VENDOR"] = ExpressionConverter.ConvertO(bodypRIVENDOR);
+                    body["PRI_VENDOR"] = ExpressionConverter.ConvertO(__workflow_bodypRIVENDOR);
                     bodypropCount++;
                 }
 
-                if (bodyeACHUNIT != null)
+                if (__workflow_bodyeACHUNIT != null)
                 {
-                    body["EACH_UNIT"] = ExpressionConverter.ConvertO(bodyeACHUNIT);
+                    body["EACH_UNIT"] = ExpressionConverter.ConvertO(__workflow_bodyeACHUNIT);
                     bodypropCount++;
                 }
 
-                if (bodywEIGHT != null)
+                if (__workflow_bodywEIGHT != null)
                 {
-                    body["WEIGHT"] = ExpressionConverter.ConvertO(bodywEIGHT);
+                    body["WEIGHT"] = ExpressionConverter.ConvertO(__workflow_bodywEIGHT);
                     bodypropCount++;
                 }
 
-                if (bodycOST != null)
+                if (__workflow_bodycOST != null)
                 {
-                    body["COST"] = ExpressionConverter.ConvertO(bodycOST);
+                    body["COST"] = ExpressionConverter.ConvertO(__workflow_bodycOST);
                     bodypropCount++;
                 }
 
-                if (bodybASE != null)
+                if (__workflow_bodybASE != null)
                 {
-                    body["BASE"] = ExpressionConverter.ConvertO(bodybASE);
+                    body["BASE"] = ExpressionConverter.ConvertO(__workflow_bodybASE);
                     bodypropCount++;
                 }
 
-                if (bodyeXTERNALID != null)
+                if (__workflow_bodyeXTERNALID != null)
                 {
-                    body["EXTERNALID"] = ExpressionConverter.ConvertO(bodyeXTERNALID);
+                    body["EXTERNALID"] = ExpressionConverter.ConvertO(__workflow_bodyeXTERNALID);
                     bodypropCount++;
                 }
 
@@ -153,118 +162,126 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebms")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateProduct))]
-        public IBodyWorkflowAction<JToken> UpdateProduct([WorkflowExpression] Func<string> productId, [WorkflowExpression] Func<string> bodydESCR1 = null, [WorkflowExpression] Func<string> bodydESCR2 = null, [WorkflowExpression] Func<string> bodydESCR3 = null, [WorkflowExpression] Func<string> bodytYPE = null, [WorkflowExpression] Func<string> bodymEMO = null, [WorkflowExpression] Func<string> bodyuPC = null, [WorkflowExpression] Func<string> bodymFG = null, [WorkflowExpression] Func<string> bodymFGPART = null, [WorkflowExpression] Func<string> bodypRIVENDOR = null, [WorkflowExpression] Func<string> bodyeACHUNIT = null, [WorkflowExpression] Func<double> bodywEIGHT = null, [WorkflowExpression] Func<double> bodycOST = null, [WorkflowExpression] Func<double> bodybASE = null, [WorkflowExpression] Func<string> bodyeXTERNALID = null)
+        public IBodyWorkflowAction<JToken> UpdateProduct(Expression<Func<string>> productId, Expression<Func<string>> bodydESCR1 = null, Expression<Func<string>> bodydESCR2 = null, Expression<Func<string>> bodydESCR3 = null, Expression<Func<string>> bodytYPE = null, Expression<Func<string>> bodymEMO = null, Expression<Func<string>> bodyuPC = null, Expression<Func<string>> bodymFG = null, Expression<Func<string>> bodymFGPART = null, Expression<Func<string>> bodypRIVENDOR = null, Expression<Func<string>> bodyeACHUNIT = null, Expression<Func<double>> bodywEIGHT = null, Expression<Func<double>> bodycOST = null, Expression<Func<double>> bodybASE = null, Expression<Func<string>> bodyeXTERNALID = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildUpdateProduct(WorkflowExpression<string> productId, WorkflowExpression<string> bodydESCR1 = null, WorkflowExpression<string> bodydESCR2 = null, WorkflowExpression<string> bodydESCR3 = null, WorkflowExpression<string> bodytYPE = null, WorkflowExpression<string> bodymEMO = null, WorkflowExpression<string> bodyuPC = null, WorkflowExpression<string> bodymFG = null, WorkflowExpression<string> bodymFGPART = null, WorkflowExpression<string> bodypRIVENDOR = null, WorkflowExpression<string> bodyeACHUNIT = null, WorkflowExpression<double> bodywEIGHT = null, WorkflowExpression<double> bodycOST = null, WorkflowExpression<double> bodybASE = null, WorkflowExpression<string> bodyeXTERNALID = null)
-        {
-            WorkflowExpression.Validate(productId, nameof(productId), required: true);
-            WorkflowExpression.Validate(bodydESCR1, nameof(bodydESCR1), required: false);
-            WorkflowExpression.Validate(bodydESCR2, nameof(bodydESCR2), required: false);
-            WorkflowExpression.Validate(bodydESCR3, nameof(bodydESCR3), required: false);
-            WorkflowExpression.Validate(bodytYPE, nameof(bodytYPE), required: false);
-            WorkflowExpression.Validate(bodymEMO, nameof(bodymEMO), required: false);
-            WorkflowExpression.Validate(bodyuPC, nameof(bodyuPC), required: false);
-            WorkflowExpression.Validate(bodymFG, nameof(bodymFG), required: false);
-            WorkflowExpression.Validate(bodymFGPART, nameof(bodymFGPART), required: false);
-            WorkflowExpression.Validate(bodypRIVENDOR, nameof(bodypRIVENDOR), required: false);
-            WorkflowExpression.Validate(bodyeACHUNIT, nameof(bodyeACHUNIT), required: false);
-            WorkflowExpression.Validate(bodywEIGHT, nameof(bodywEIGHT), required: false);
-            WorkflowExpression.Validate(bodycOST, nameof(bodycOST), required: false);
-            WorkflowExpression.Validate(bodybASE, nameof(bodybASE), required: false);
-            WorkflowExpression.Validate(bodyeXTERNALID, nameof(bodyeXTERNALID), required: false);
+            var __workflow_productId = productId == null ? null : WorkflowExpression.Compile(productId);
+            WorkflowExpression.Validate(__workflow_productId, nameof(productId), required: true);
+            var __workflow_bodydESCR1 = bodydESCR1 == null ? null : WorkflowExpression.Compile(bodydESCR1);
+            WorkflowExpression.Validate(__workflow_bodydESCR1, nameof(bodydESCR1), required: false);
+            var __workflow_bodydESCR2 = bodydESCR2 == null ? null : WorkflowExpression.Compile(bodydESCR2);
+            WorkflowExpression.Validate(__workflow_bodydESCR2, nameof(bodydESCR2), required: false);
+            var __workflow_bodydESCR3 = bodydESCR3 == null ? null : WorkflowExpression.Compile(bodydESCR3);
+            WorkflowExpression.Validate(__workflow_bodydESCR3, nameof(bodydESCR3), required: false);
+            var __workflow_bodytYPE = bodytYPE == null ? null : WorkflowExpression.Compile(bodytYPE);
+            WorkflowExpression.Validate(__workflow_bodytYPE, nameof(bodytYPE), required: false);
+            var __workflow_bodymEMO = bodymEMO == null ? null : WorkflowExpression.Compile(bodymEMO);
+            WorkflowExpression.Validate(__workflow_bodymEMO, nameof(bodymEMO), required: false);
+            var __workflow_bodyuPC = bodyuPC == null ? null : WorkflowExpression.Compile(bodyuPC);
+            WorkflowExpression.Validate(__workflow_bodyuPC, nameof(bodyuPC), required: false);
+            var __workflow_bodymFG = bodymFG == null ? null : WorkflowExpression.Compile(bodymFG);
+            WorkflowExpression.Validate(__workflow_bodymFG, nameof(bodymFG), required: false);
+            var __workflow_bodymFGPART = bodymFGPART == null ? null : WorkflowExpression.Compile(bodymFGPART);
+            WorkflowExpression.Validate(__workflow_bodymFGPART, nameof(bodymFGPART), required: false);
+            var __workflow_bodypRIVENDOR = bodypRIVENDOR == null ? null : WorkflowExpression.Compile(bodypRIVENDOR);
+            WorkflowExpression.Validate(__workflow_bodypRIVENDOR, nameof(bodypRIVENDOR), required: false);
+            var __workflow_bodyeACHUNIT = bodyeACHUNIT == null ? null : WorkflowExpression.Compile(bodyeACHUNIT);
+            WorkflowExpression.Validate(__workflow_bodyeACHUNIT, nameof(bodyeACHUNIT), required: false);
+            var __workflow_bodywEIGHT = bodywEIGHT == null ? null : WorkflowExpression.Compile(bodywEIGHT);
+            WorkflowExpression.Validate(__workflow_bodywEIGHT, nameof(bodywEIGHT), required: false);
+            var __workflow_bodycOST = bodycOST == null ? null : WorkflowExpression.Compile(bodycOST);
+            WorkflowExpression.Validate(__workflow_bodycOST, nameof(bodycOST), required: false);
+            var __workflow_bodybASE = bodybASE == null ? null : WorkflowExpression.Compile(bodybASE);
+            WorkflowExpression.Validate(__workflow_bodybASE, nameof(bodybASE), required: false);
+            var __workflow_bodyeXTERNALID = bodyeXTERNALID == null ? null : WorkflowExpression.Compile(bodyeXTERNALID);
+            WorkflowExpression.Validate(__workflow_bodyeXTERNALID, nameof(bodyeXTERNALID), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/INVENTRY(ID='{0}')", ExpressionConverter.ConvertWithUrlEncoding(productId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/INVENTRY(ID='{0}')", ExpressionConverter.ConvertWithUrlEncoding(__workflow_productId, 1));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodydESCR1 != null)
+                if (__workflow_bodydESCR1 != null)
                 {
-                    body["DESCR_1"] = ExpressionConverter.ConvertO(bodydESCR1);
+                    body["DESCR_1"] = ExpressionConverter.ConvertO(__workflow_bodydESCR1);
                     bodypropCount++;
                 }
 
-                if (bodydESCR2 != null)
+                if (__workflow_bodydESCR2 != null)
                 {
-                    body["DESCR_2"] = ExpressionConverter.ConvertO(bodydESCR2);
+                    body["DESCR_2"] = ExpressionConverter.ConvertO(__workflow_bodydESCR2);
                     bodypropCount++;
                 }
 
-                if (bodydESCR3 != null)
+                if (__workflow_bodydESCR3 != null)
                 {
-                    body["DESCR_3"] = ExpressionConverter.ConvertO(bodydESCR3);
+                    body["DESCR_3"] = ExpressionConverter.ConvertO(__workflow_bodydESCR3);
                     bodypropCount++;
                 }
 
-                if (bodytYPE != null)
+                if (__workflow_bodytYPE != null)
                 {
-                    body["TYPE"] = ExpressionConverter.ConvertO(bodytYPE);
+                    body["TYPE"] = ExpressionConverter.ConvertO(__workflow_bodytYPE);
                     bodypropCount++;
                 }
 
-                if (bodymEMO != null)
+                if (__workflow_bodymEMO != null)
                 {
-                    body["MEMO"] = ExpressionConverter.ConvertO(bodymEMO);
+                    body["MEMO"] = ExpressionConverter.ConvertO(__workflow_bodymEMO);
                     bodypropCount++;
                 }
 
-                if (bodyuPC != null)
+                if (__workflow_bodyuPC != null)
                 {
-                    body["UPC"] = ExpressionConverter.ConvertO(bodyuPC);
+                    body["UPC"] = ExpressionConverter.ConvertO(__workflow_bodyuPC);
                     bodypropCount++;
                 }
 
-                if (bodymFG != null)
+                if (__workflow_bodymFG != null)
                 {
-                    body["MFG"] = ExpressionConverter.ConvertO(bodymFG);
+                    body["MFG"] = ExpressionConverter.ConvertO(__workflow_bodymFG);
                     bodypropCount++;
                 }
 
-                if (bodymFGPART != null)
+                if (__workflow_bodymFGPART != null)
                 {
-                    body["MFG_PART"] = ExpressionConverter.ConvertO(bodymFGPART);
+                    body["MFG_PART"] = ExpressionConverter.ConvertO(__workflow_bodymFGPART);
                     bodypropCount++;
                 }
 
-                if (bodypRIVENDOR != null)
+                if (__workflow_bodypRIVENDOR != null)
                 {
-                    body["PRI_VENDOR"] = ExpressionConverter.ConvertO(bodypRIVENDOR);
+                    body["PRI_VENDOR"] = ExpressionConverter.ConvertO(__workflow_bodypRIVENDOR);
                     bodypropCount++;
                 }
 
-                if (bodyeACHUNIT != null)
+                if (__workflow_bodyeACHUNIT != null)
                 {
-                    body["EACH_UNIT"] = ExpressionConverter.ConvertO(bodyeACHUNIT);
+                    body["EACH_UNIT"] = ExpressionConverter.ConvertO(__workflow_bodyeACHUNIT);
                     bodypropCount++;
                 }
 
-                if (bodywEIGHT != null)
+                if (__workflow_bodywEIGHT != null)
                 {
-                    body["WEIGHT"] = ExpressionConverter.ConvertO(bodywEIGHT);
+                    body["WEIGHT"] = ExpressionConverter.ConvertO(__workflow_bodywEIGHT);
                     bodypropCount++;
                 }
 
-                if (bodycOST != null)
+                if (__workflow_bodycOST != null)
                 {
-                    body["COST"] = ExpressionConverter.ConvertO(bodycOST);
+                    body["COST"] = ExpressionConverter.ConvertO(__workflow_bodycOST);
                     bodypropCount++;
                 }
 
-                if (bodybASE != null)
+                if (__workflow_bodybASE != null)
                 {
-                    body["BASE"] = ExpressionConverter.ConvertO(bodybASE);
+                    body["BASE"] = ExpressionConverter.ConvertO(__workflow_bodybASE);
                     bodypropCount++;
                 }
 
-                if (bodyeXTERNALID != null)
+                if (__workflow_bodyeXTERNALID != null)
                 {
-                    body["EXTERNALID"] = ExpressionConverter.ConvertO(bodyeXTERNALID);
+                    body["EXTERNALID"] = ExpressionConverter.ConvertO(__workflow_bodyeXTERNALID);
                     bodypropCount++;
                 }
 

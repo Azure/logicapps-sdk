@@ -1,30 +1,23 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Owlbotip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class OwlbotipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "owlbotip")]
-        [WorkflowExpressionFactory(nameof(__BuildDef))]
-        public IBodyWorkflowAction<DefResponse> Def([WorkflowExpression] Func<string> word)
+        public IBodyWorkflowAction<DefResponse> Def(Expression<Func<string>> word)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DefResponse> __BuildDef(WorkflowExpression<string> word)
-        {
-            WorkflowExpression.Validate(word, nameof(word), required: true);
+            var __workflow_word = word == null ? null : WorkflowExpression.Compile(word);
+            WorkflowExpression.Validate(__workflow_word, nameof(word), required: true);
             return new DeferredBodyAction<DefResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}", ExpressionConverter.ConvertWithUrlEncoding(word, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_word, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DefResponse>(callPayload);

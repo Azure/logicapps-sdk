@@ -1,57 +1,46 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Newyorktimesip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class NewyorktimesipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "newyorktimesip")]
-        [WorkflowExpressionFactory(nameof(__BuildArticleSearch))]
-        public IBodyWorkflowAction<ArticleSearchResponse> ArticleSearch([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<string> beginDate = null, [WorkflowExpression] Func<string> endDate = null)
+        public IBodyWorkflowAction<ArticleSearchResponse> ArticleSearch(Expression<Func<string>> q, Expression<Func<string>> beginDate = null, Expression<Func<string>> endDate = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ArticleSearchResponse> __BuildArticleSearch(WorkflowExpression<string> q, WorkflowExpression<string> beginDate = null, WorkflowExpression<string> endDate = null)
-        {
-            WorkflowExpression.Validate(q, nameof(q), required: true);
-            WorkflowExpression.Validate(beginDate, nameof(beginDate), required: false);
-            WorkflowExpression.Validate(endDate, nameof(endDate), required: false);
+            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
+            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
+            var __workflow_beginDate = beginDate == null ? null : WorkflowExpression.Compile(beginDate);
+            WorkflowExpression.Validate(__workflow_beginDate, nameof(beginDate), required: false);
+            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
+            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: false);
             return new DeferredBodyAction<ArticleSearchResponse>(() =>
             {
                 var apiCallPath = "/search/v2/articlesearch.json";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-                if (beginDate != null)
-                    callPayload.Queries["begin_date"] = ExpressionConverter.Convert(beginDate);
-                if (endDate != null)
-                    callPayload.Queries["end_date"] = ExpressionConverter.Convert(endDate);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
+                if (__workflow_beginDate != null)
+                    callPayload.Queries["begin_date"] = ExpressionConverter.Convert(__workflow_beginDate);
+                if (__workflow_endDate != null)
+                    callPayload.Queries["end_date"] = ExpressionConverter.Convert(__workflow_endDate);
                 return new ApiConnectionAction<ArticleSearchResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "newyorktimesip")]
-        [WorkflowExpressionFactory(nameof(__BuildTopStories))]
-        public IBodyWorkflowAction<TopStoriesResponse> TopStories([WorkflowExpression] Func<sectionInput> section)
+        public IBodyWorkflowAction<TopStoriesResponse> TopStories(Expression<Func<sectionInput>> section)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TopStoriesResponse> __BuildTopStories(WorkflowExpression<sectionInput> section)
-        {
-            WorkflowExpression.Validate(section, nameof(section), required: true);
+            var __workflow_section = section == null ? null : WorkflowExpression.Compile(section);
+            WorkflowExpression.Validate(__workflow_section, nameof(section), required: true);
             return new DeferredBodyAction<TopStoriesResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/topstories/v2/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(section, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/topstories/v2/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_section, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TopStoriesResponse>(callPayload);
@@ -59,19 +48,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Newyorktimesip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "newyorktimesip")]
-        [WorkflowExpressionFactory(nameof(__BuildMostViewed))]
-        public IBodyWorkflowAction<MostViewedResponse> MostViewed([WorkflowExpression] Func<periodInput> period)
+        public IBodyWorkflowAction<MostViewedResponse> MostViewed(Expression<Func<periodInput>> period)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MostViewedResponse> __BuildMostViewed(WorkflowExpression<periodInput> period)
-        {
-            WorkflowExpression.Validate(period, nameof(period), required: true);
+            var __workflow_period = period == null ? null : WorkflowExpression.Compile(period);
+            WorkflowExpression.Validate(__workflow_period, nameof(period), required: true);
             return new DeferredBodyAction<MostViewedResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/mostpopular/v2/viewed/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(period, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/mostpopular/v2/viewed/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_period, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<MostViewedResponse>(callPayload);

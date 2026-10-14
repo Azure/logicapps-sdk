@@ -1,32 +1,30 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class CraftmypdfipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
-        [WorkflowExpressionFactory(nameof(__BuildCreate))]
-        public IBodyWorkflowAction<ResponseSuccessSingleFile> Create([WorkflowExpression] Func<string> bodydata, [WorkflowExpression] Func<string> bodytemplateId, [WorkflowExpression] Func<string> bodyexportType = null, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<string> bodyoutputFile = null, [WorkflowExpression] Func<bool> bodyisCmyk = null)
+        public IBodyWorkflowAction<ResponseSuccessSingleFile> Create(Expression<Func<string>> bodydata, Expression<Func<string>> bodytemplateId, Expression<Func<string>> bodyexportType = null, Expression<Func<int>> bodyexpiration = null, Expression<Func<string>> bodyoutputFile = null, Expression<Func<bool>> bodyisCmyk = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ResponseSuccessSingleFile> __BuildCreate(WorkflowExpression<string> bodydata, WorkflowExpression<string> bodytemplateId, WorkflowExpression<string> bodyexportType = null, WorkflowExpression<int> bodyexpiration = null, WorkflowExpression<string> bodyoutputFile = null, WorkflowExpression<bool> bodyisCmyk = null)
-        {
-            WorkflowExpression.Validate(bodydata, nameof(bodydata), required: true);
-            WorkflowExpression.Validate(bodytemplateId, nameof(bodytemplateId), required: true);
-            WorkflowExpression.Validate(bodyexportType, nameof(bodyexportType), required: false);
-            WorkflowExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
-            WorkflowExpression.Validate(bodyoutputFile, nameof(bodyoutputFile), required: false);
-            WorkflowExpression.Validate(bodyisCmyk, nameof(bodyisCmyk), required: false);
+            var __workflow_bodydata = bodydata == null ? null : WorkflowExpression.Compile(bodydata);
+            WorkflowExpression.Validate(__workflow_bodydata, nameof(bodydata), required: true);
+            var __workflow_bodytemplateId = bodytemplateId == null ? null : WorkflowExpression.Compile(bodytemplateId);
+            WorkflowExpression.Validate(__workflow_bodytemplateId, nameof(bodytemplateId), required: true);
+            var __workflow_bodyexportType = bodyexportType == null ? null : WorkflowExpression.Compile(bodyexportType);
+            WorkflowExpression.Validate(__workflow_bodyexportType, nameof(bodyexportType), required: false);
+            var __workflow_bodyexpiration = bodyexpiration == null ? null : WorkflowExpression.Compile(bodyexpiration);
+            WorkflowExpression.Validate(__workflow_bodyexpiration, nameof(bodyexpiration), required: false);
+            var __workflow_bodyoutputFile = bodyoutputFile == null ? null : WorkflowExpression.Compile(bodyoutputFile);
+            WorkflowExpression.Validate(__workflow_bodyoutputFile, nameof(bodyoutputFile), required: false);
+            var __workflow_bodyisCmyk = bodyisCmyk == null ? null : WorkflowExpression.Compile(bodyisCmyk);
+            WorkflowExpression.Validate(__workflow_bodyisCmyk, nameof(bodyisCmyk), required: false);
             return new DeferredBodyAction<ResponseSuccessSingleFile>(() =>
             {
                 var apiCallPath = "/create";
@@ -35,30 +33,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["data"] = ExpressionConverter.ConvertO(bodydata);
+                body["data"] = ExpressionConverter.ConvertO(__workflow_bodydata);
                 bodypropCount++;
-                body["template_id"] = ExpressionConverter.ConvertO(bodytemplateId);
-                if (bodyexportType != null)
+                body["template_id"] = ExpressionConverter.ConvertO(__workflow_bodytemplateId);
+                if (__workflow_bodyexportType != null)
                 {
-                    body["export_type"] = ExpressionConverter.ConvertO(bodyexportType);
+                    body["export_type"] = ExpressionConverter.ConvertO(__workflow_bodyexportType);
                     bodypropCount++;
                 }
 
-                if (bodyexpiration != null)
+                if (__workflow_bodyexpiration != null)
                 {
-                    body["expiration"] = ExpressionConverter.ConvertO(bodyexpiration);
+                    body["expiration"] = ExpressionConverter.ConvertO(__workflow_bodyexpiration);
                     bodypropCount++;
                 }
 
-                if (bodyoutputFile != null)
+                if (__workflow_bodyoutputFile != null)
                 {
-                    body["output_file"] = ExpressionConverter.ConvertO(bodyoutputFile);
+                    body["output_file"] = ExpressionConverter.ConvertO(__workflow_bodyoutputFile);
                     bodypropCount++;
                 }
 
-                if (bodyisCmyk != null)
+                if (__workflow_bodyisCmyk != null)
                 {
-                    body["is_cmyk"] = ExpressionConverter.ConvertO(bodyisCmyk);
+                    body["is_cmyk"] = ExpressionConverter.ConvertO(__workflow_bodyisCmyk);
                     bodypropCount++;
                 }
 
@@ -72,20 +70,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateMerge))]
-        public IBodyWorkflowAction<ResponseSuccessSingleFile> CreateMerge([WorkflowExpression] Func<JToken[]> bodytemplates, [WorkflowExpression] Func<string> bodyexportType = null, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<string> bodyoutputFile = null, [WorkflowExpression] Func<string> bodypaging = null)
+        public IBodyWorkflowAction<ResponseSuccessSingleFile> CreateMerge(Expression<Func<JToken[]>> bodytemplates, Expression<Func<string>> bodyexportType = null, Expression<Func<int>> bodyexpiration = null, Expression<Func<string>> bodyoutputFile = null, Expression<Func<string>> bodypaging = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ResponseSuccessSingleFile> __BuildCreateMerge(WorkflowExpression<JToken[]> bodytemplates, WorkflowExpression<string> bodyexportType = null, WorkflowExpression<int> bodyexpiration = null, WorkflowExpression<string> bodyoutputFile = null, WorkflowExpression<string> bodypaging = null)
-        {
-            WorkflowExpression.Validate(bodytemplates, nameof(bodytemplates), required: true);
-            WorkflowExpression.Validate(bodyexportType, nameof(bodyexportType), required: false);
-            WorkflowExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
-            WorkflowExpression.Validate(bodyoutputFile, nameof(bodyoutputFile), required: false);
-            WorkflowExpression.Validate(bodypaging, nameof(bodypaging), required: false);
+            var __workflow_bodytemplates = bodytemplates == null ? null : WorkflowExpression.Compile(bodytemplates);
+            WorkflowExpression.Validate(__workflow_bodytemplates, nameof(bodytemplates), required: true);
+            var __workflow_bodyexportType = bodyexportType == null ? null : WorkflowExpression.Compile(bodyexportType);
+            WorkflowExpression.Validate(__workflow_bodyexportType, nameof(bodyexportType), required: false);
+            var __workflow_bodyexpiration = bodyexpiration == null ? null : WorkflowExpression.Compile(bodyexpiration);
+            WorkflowExpression.Validate(__workflow_bodyexpiration, nameof(bodyexpiration), required: false);
+            var __workflow_bodyoutputFile = bodyoutputFile == null ? null : WorkflowExpression.Compile(bodyoutputFile);
+            WorkflowExpression.Validate(__workflow_bodyoutputFile, nameof(bodyoutputFile), required: false);
+            var __workflow_bodypaging = bodypaging == null ? null : WorkflowExpression.Compile(bodypaging);
+            WorkflowExpression.Validate(__workflow_bodypaging, nameof(bodypaging), required: false);
             return new DeferredBodyAction<ResponseSuccessSingleFile>(() =>
             {
                 var apiCallPath = "/create-merge";
@@ -94,28 +90,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["templates"] = ExpressionConverter.ConvertO(bodytemplates);
-                if (bodyexportType != null)
+                body["templates"] = ExpressionConverter.ConvertO(__workflow_bodytemplates);
+                if (__workflow_bodyexportType != null)
                 {
-                    body["export_type"] = ExpressionConverter.ConvertO(bodyexportType);
+                    body["export_type"] = ExpressionConverter.ConvertO(__workflow_bodyexportType);
                     bodypropCount++;
                 }
 
-                if (bodyexpiration != null)
+                if (__workflow_bodyexpiration != null)
                 {
-                    body["expiration"] = ExpressionConverter.ConvertO(bodyexpiration);
+                    body["expiration"] = ExpressionConverter.ConvertO(__workflow_bodyexpiration);
                     bodypropCount++;
                 }
 
-                if (bodyoutputFile != null)
+                if (__workflow_bodyoutputFile != null)
                 {
-                    body["output_file"] = ExpressionConverter.ConvertO(bodyoutputFile);
+                    body["output_file"] = ExpressionConverter.ConvertO(__workflow_bodyoutputFile);
                     bodypropCount++;
                 }
 
-                if (bodypaging != null)
+                if (__workflow_bodypaging != null)
                 {
-                    body["paging"] = ExpressionConverter.ConvertO(bodypaging);
+                    body["paging"] = ExpressionConverter.ConvertO(__workflow_bodypaging);
                     bodypropCount++;
                 }
 
@@ -129,42 +125,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
-        [WorkflowExpressionFactory(nameof(__BuildListTemplates))]
-        public IBodyWorkflowAction<ResponseListTemplate> ListTemplates([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
+        public IBodyWorkflowAction<ResponseListTemplate> ListTemplates(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ResponseListTemplate> __BuildListTemplates(WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
-        {
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
             return new DeferredBodyAction<ResponseListTemplate>(() =>
             {
                 var apiCallPath = "/list-templates";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (offset != null)
-                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<ResponseListTemplate>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
-        [WorkflowExpressionFactory(nameof(__BuildNewTemplateFrom))]
-        public IBodyWorkflowAction<ResponseSuccessCreateNewTemplate> NewTemplateFrom([WorkflowExpression] Func<string> bodytemplateId, [WorkflowExpression] Func<string> bodyname = null)
+        public IBodyWorkflowAction<ResponseSuccessCreateNewTemplate> NewTemplateFrom(Expression<Func<string>> bodytemplateId, Expression<Func<string>> bodyname = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ResponseSuccessCreateNewTemplate> __BuildNewTemplateFrom(WorkflowExpression<string> bodytemplateId, WorkflowExpression<string> bodyname = null)
-        {
-            WorkflowExpression.Validate(bodytemplateId, nameof(bodytemplateId), required: true);
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodytemplateId = bodytemplateId == null ? null : WorkflowExpression.Compile(bodytemplateId);
+            WorkflowExpression.Validate(__workflow_bodytemplateId, nameof(bodytemplateId), required: true);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
             return new DeferredBodyAction<ResponseSuccessCreateNewTemplate>(() =>
             {
                 var apiCallPath = "/new-template-from";
@@ -173,10 +159,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["template_id"] = ExpressionConverter.ConvertO(bodytemplateId);
-                if (bodyname != null)
+                body["template_id"] = ExpressionConverter.ConvertO(__workflow_bodytemplateId);
+                if (__workflow_bodyname != null)
                 {
-                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
                     bodypropCount++;
                 }
 
@@ -190,18 +176,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateTemplate))]
-        public IBodyWorkflowAction<ResponseUpdateTemplate> UpdateTemplate([WorkflowExpression] Func<string> bodytemplateId, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyjson = null)
+        public IBodyWorkflowAction<ResponseUpdateTemplate> UpdateTemplate(Expression<Func<string>> bodytemplateId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyjson = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ResponseUpdateTemplate> __BuildUpdateTemplate(WorkflowExpression<string> bodytemplateId, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyjson = null)
-        {
-            WorkflowExpression.Validate(bodytemplateId, nameof(bodytemplateId), required: true);
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
-            WorkflowExpression.Validate(bodyjson, nameof(bodyjson), required: false);
+            var __workflow_bodytemplateId = bodytemplateId == null ? null : WorkflowExpression.Compile(bodytemplateId);
+            WorkflowExpression.Validate(__workflow_bodytemplateId, nameof(bodytemplateId), required: true);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
+            var __workflow_bodyjson = bodyjson == null ? null : WorkflowExpression.Compile(bodyjson);
+            WorkflowExpression.Validate(__workflow_bodyjson, nameof(bodyjson), required: false);
             return new DeferredBodyAction<ResponseUpdateTemplate>(() =>
             {
                 var apiCallPath = "/update-template";
@@ -210,16 +192,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["template_id"] = ExpressionConverter.ConvertO(bodytemplateId);
-                if (bodyname != null)
+                body["template_id"] = ExpressionConverter.ConvertO(__workflow_bodytemplateId);
+                if (__workflow_bodyname != null)
                 {
-                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
                     bodypropCount++;
                 }
 
-                if (bodyjson != null)
+                if (__workflow_bodyjson != null)
                 {
-                    body["json"] = ExpressionConverter.ConvertO(bodyjson);
+                    body["json"] = ExpressionConverter.ConvertO(__workflow_bodyjson);
                     bodypropCount++;
                 }
 
@@ -233,45 +215,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteTemplate))]
-        public IBodyWorkflowAction<ResponseSuccessDeleteTemplate> DeleteTemplate([WorkflowExpression] Func<string> templateId)
+        public IBodyWorkflowAction<ResponseSuccessDeleteTemplate> DeleteTemplate(Expression<Func<string>> templateId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ResponseSuccessDeleteTemplate> __BuildDeleteTemplate(WorkflowExpression<string> templateId)
-        {
-            WorkflowExpression.Validate(templateId, nameof(templateId), required: true);
+            var __workflow_templateId = templateId == null ? null : WorkflowExpression.Compile(templateId);
+            WorkflowExpression.Validate(__workflow_templateId, nameof(templateId), required: true);
             return new DeferredBodyAction<ResponseSuccessDeleteTemplate>(() =>
             {
                 var apiCallPath = "/delete-template";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["template_id"] = ExpressionConverter.Convert(templateId);
+                callPayload.Queries["template_id"] = ExpressionConverter.Convert(__workflow_templateId);
                 return new ApiConnectionAction<ResponseSuccessDeleteTemplate>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateEditorSession))]
-        public IBodyWorkflowAction<ResponseSuccessCreateNewEditorSession> CreateEditorSession([WorkflowExpression] Func<string> bodytemplateId, [WorkflowExpression] Func<bool> bodycanSave = null, [WorkflowExpression] Func<bool> bodycanCreatePDF = null, [WorkflowExpression] Func<bool> bodycanViewSettings = null, [WorkflowExpression] Func<bool> bodycanPreview = null, [WorkflowExpression] Func<bool> bodycanEditJSON = null, [WorkflowExpression] Func<bool> bodycanShowHeader = null, [WorkflowExpression] Func<int> bodyjsonMode = null, [WorkflowExpression] Func<string> bodybackURL = null)
+        public IBodyWorkflowAction<ResponseSuccessCreateNewEditorSession> CreateEditorSession(Expression<Func<string>> bodytemplateId, Expression<Func<bool>> bodycanSave = null, Expression<Func<bool>> bodycanCreatePDF = null, Expression<Func<bool>> bodycanViewSettings = null, Expression<Func<bool>> bodycanPreview = null, Expression<Func<bool>> bodycanEditJSON = null, Expression<Func<bool>> bodycanShowHeader = null, Expression<Func<int>> bodyjsonMode = null, Expression<Func<string>> bodybackURL = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ResponseSuccessCreateNewEditorSession> __BuildCreateEditorSession(WorkflowExpression<string> bodytemplateId, WorkflowExpression<bool> bodycanSave = null, WorkflowExpression<bool> bodycanCreatePDF = null, WorkflowExpression<bool> bodycanViewSettings = null, WorkflowExpression<bool> bodycanPreview = null, WorkflowExpression<bool> bodycanEditJSON = null, WorkflowExpression<bool> bodycanShowHeader = null, WorkflowExpression<int> bodyjsonMode = null, WorkflowExpression<string> bodybackURL = null)
-        {
-            WorkflowExpression.Validate(bodytemplateId, nameof(bodytemplateId), required: true);
-            WorkflowExpression.Validate(bodycanSave, nameof(bodycanSave), required: false);
-            WorkflowExpression.Validate(bodycanCreatePDF, nameof(bodycanCreatePDF), required: false);
-            WorkflowExpression.Validate(bodycanViewSettings, nameof(bodycanViewSettings), required: false);
-            WorkflowExpression.Validate(bodycanPreview, nameof(bodycanPreview), required: false);
-            WorkflowExpression.Validate(bodycanEditJSON, nameof(bodycanEditJSON), required: false);
-            WorkflowExpression.Validate(bodycanShowHeader, nameof(bodycanShowHeader), required: false);
-            WorkflowExpression.Validate(bodyjsonMode, nameof(bodyjsonMode), required: false);
-            WorkflowExpression.Validate(bodybackURL, nameof(bodybackURL), required: false);
+            var __workflow_bodytemplateId = bodytemplateId == null ? null : WorkflowExpression.Compile(bodytemplateId);
+            WorkflowExpression.Validate(__workflow_bodytemplateId, nameof(bodytemplateId), required: true);
+            var __workflow_bodycanSave = bodycanSave == null ? null : WorkflowExpression.Compile(bodycanSave);
+            WorkflowExpression.Validate(__workflow_bodycanSave, nameof(bodycanSave), required: false);
+            var __workflow_bodycanCreatePDF = bodycanCreatePDF == null ? null : WorkflowExpression.Compile(bodycanCreatePDF);
+            WorkflowExpression.Validate(__workflow_bodycanCreatePDF, nameof(bodycanCreatePDF), required: false);
+            var __workflow_bodycanViewSettings = bodycanViewSettings == null ? null : WorkflowExpression.Compile(bodycanViewSettings);
+            WorkflowExpression.Validate(__workflow_bodycanViewSettings, nameof(bodycanViewSettings), required: false);
+            var __workflow_bodycanPreview = bodycanPreview == null ? null : WorkflowExpression.Compile(bodycanPreview);
+            WorkflowExpression.Validate(__workflow_bodycanPreview, nameof(bodycanPreview), required: false);
+            var __workflow_bodycanEditJSON = bodycanEditJSON == null ? null : WorkflowExpression.Compile(bodycanEditJSON);
+            WorkflowExpression.Validate(__workflow_bodycanEditJSON, nameof(bodycanEditJSON), required: false);
+            var __workflow_bodycanShowHeader = bodycanShowHeader == null ? null : WorkflowExpression.Compile(bodycanShowHeader);
+            WorkflowExpression.Validate(__workflow_bodycanShowHeader, nameof(bodycanShowHeader), required: false);
+            var __workflow_bodyjsonMode = bodyjsonMode == null ? null : WorkflowExpression.Compile(bodyjsonMode);
+            WorkflowExpression.Validate(__workflow_bodyjsonMode, nameof(bodyjsonMode), required: false);
+            var __workflow_bodybackURL = bodybackURL == null ? null : WorkflowExpression.Compile(bodybackURL);
+            WorkflowExpression.Validate(__workflow_bodybackURL, nameof(bodybackURL), required: false);
             return new DeferredBodyAction<ResponseSuccessCreateNewEditorSession>(() =>
             {
                 var apiCallPath = "/create-editor-session";
@@ -280,7 +258,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["template_id"] = ExpressionConverter.ConvertO(bodytemplateId);
+                body["template_id"] = ExpressionConverter.ConvertO(__workflow_bodytemplateId);
                 var expirationObject = new JObject();
                 var expirationObjectpropCount = 0;
                 if (expirationObjectpropCount > 0)
@@ -289,51 +267,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
                     bodypropCount++;
                 }
 
-                if (bodycanSave != null)
+                if (__workflow_bodycanSave != null)
                 {
-                    body["canSave"] = ExpressionConverter.ConvertO(bodycanSave);
+                    body["canSave"] = ExpressionConverter.ConvertO(__workflow_bodycanSave);
                     bodypropCount++;
                 }
 
-                if (bodycanCreatePDF != null)
+                if (__workflow_bodycanCreatePDF != null)
                 {
-                    body["canCreatePDF"] = ExpressionConverter.ConvertO(bodycanCreatePDF);
+                    body["canCreatePDF"] = ExpressionConverter.ConvertO(__workflow_bodycanCreatePDF);
                     bodypropCount++;
                 }
 
-                if (bodycanViewSettings != null)
+                if (__workflow_bodycanViewSettings != null)
                 {
-                    body["canViewSettings"] = ExpressionConverter.ConvertO(bodycanViewSettings);
+                    body["canViewSettings"] = ExpressionConverter.ConvertO(__workflow_bodycanViewSettings);
                     bodypropCount++;
                 }
 
-                if (bodycanPreview != null)
+                if (__workflow_bodycanPreview != null)
                 {
-                    body["canPreview"] = ExpressionConverter.ConvertO(bodycanPreview);
+                    body["canPreview"] = ExpressionConverter.ConvertO(__workflow_bodycanPreview);
                     bodypropCount++;
                 }
 
-                if (bodycanEditJSON != null)
+                if (__workflow_bodycanEditJSON != null)
                 {
-                    body["canEditJSON"] = ExpressionConverter.ConvertO(bodycanEditJSON);
+                    body["canEditJSON"] = ExpressionConverter.ConvertO(__workflow_bodycanEditJSON);
                     bodypropCount++;
                 }
 
-                if (bodycanShowHeader != null)
+                if (__workflow_bodycanShowHeader != null)
                 {
-                    body["canShowHeader"] = ExpressionConverter.ConvertO(bodycanShowHeader);
+                    body["canShowHeader"] = ExpressionConverter.ConvertO(__workflow_bodycanShowHeader);
                     bodypropCount++;
                 }
 
-                if (bodyjsonMode != null)
+                if (__workflow_bodyjsonMode != null)
                 {
-                    body["jsonMode"] = ExpressionConverter.ConvertO(bodyjsonMode);
+                    body["jsonMode"] = ExpressionConverter.ConvertO(__workflow_bodyjsonMode);
                     bodypropCount++;
                 }
 
-                if (bodybackURL != null)
+                if (__workflow_bodybackURL != null)
                 {
-                    body["backURL"] = ExpressionConverter.ConvertO(bodybackURL);
+                    body["backURL"] = ExpressionConverter.ConvertO(__workflow_bodybackURL);
                     bodypropCount++;
                 }
 
@@ -347,26 +325,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
-        [WorkflowExpressionFactory(nameof(__BuildListTransactions))]
-        public IBodyWorkflowAction<ResponseListTransactions> ListTransactions([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
+        public IBodyWorkflowAction<ResponseListTransactions> ListTransactions(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ResponseListTransactions> __BuildListTransactions(WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
-        {
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
             return new DeferredBodyAction<ResponseListTransactions>(() =>
             {
                 var apiCallPath = "/list-transactions";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (offset != null)
-                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<ResponseListTransactions>(callPayload);
             });
         }
@@ -381,18 +354,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
-        [WorkflowExpressionFactory(nameof(__BuildMergePdfs))]
-        public IBodyWorkflowAction<ResponseSuccessSingleFile> MergePdfs([WorkflowExpression] Func<JToken[]> bodyurls, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<string> bodyoutputFile = null)
+        public IBodyWorkflowAction<ResponseSuccessSingleFile> MergePdfs(Expression<Func<JToken[]>> bodyurls, Expression<Func<int>> bodyexpiration = null, Expression<Func<string>> bodyoutputFile = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ResponseSuccessSingleFile> __BuildMergePdfs(WorkflowExpression<JToken[]> bodyurls, WorkflowExpression<int> bodyexpiration = null, WorkflowExpression<string> bodyoutputFile = null)
-        {
-            WorkflowExpression.Validate(bodyurls, nameof(bodyurls), required: true);
-            WorkflowExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
-            WorkflowExpression.Validate(bodyoutputFile, nameof(bodyoutputFile), required: false);
+            var __workflow_bodyurls = bodyurls == null ? null : WorkflowExpression.Compile(bodyurls);
+            WorkflowExpression.Validate(__workflow_bodyurls, nameof(bodyurls), required: true);
+            var __workflow_bodyexpiration = bodyexpiration == null ? null : WorkflowExpression.Compile(bodyexpiration);
+            WorkflowExpression.Validate(__workflow_bodyexpiration, nameof(bodyexpiration), required: false);
+            var __workflow_bodyoutputFile = bodyoutputFile == null ? null : WorkflowExpression.Compile(bodyoutputFile);
+            WorkflowExpression.Validate(__workflow_bodyoutputFile, nameof(bodyoutputFile), required: false);
             return new DeferredBodyAction<ResponseSuccessSingleFile>(() =>
             {
                 var apiCallPath = "/merge-pdfs";
@@ -401,16 +370,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["urls"] = ExpressionConverter.ConvertO(bodyurls);
-                if (bodyexpiration != null)
+                body["urls"] = ExpressionConverter.ConvertO(__workflow_bodyurls);
+                if (__workflow_bodyexpiration != null)
                 {
-                    body["expiration"] = ExpressionConverter.ConvertO(bodyexpiration);
+                    body["expiration"] = ExpressionConverter.ConvertO(__workflow_bodyexpiration);
                     bodypropCount++;
                 }
 
-                if (bodyoutputFile != null)
+                if (__workflow_bodyoutputFile != null)
                 {
-                    body["output_file"] = ExpressionConverter.ConvertO(bodyoutputFile);
+                    body["output_file"] = ExpressionConverter.ConvertO(__workflow_bodyoutputFile);
                     bodypropCount++;
                 }
 
@@ -424,24 +393,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
-        [WorkflowExpressionFactory(nameof(__BuildAddWatermark))]
-        public IBodyWorkflowAction<ResponseSuccessSingleFile> AddWatermark([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<int> bodyfontSize = null, [WorkflowExpression] Func<int> bodyopacity = null, [WorkflowExpression] Func<int> bodyrotation = null, [WorkflowExpression] Func<string> bodyhexColor = null, [WorkflowExpression] Func<string> bodyfontFamily = null, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<string> bodyoutputFile = null)
+        public IBodyWorkflowAction<ResponseSuccessSingleFile> AddWatermark(Expression<Func<string>> bodyurl, Expression<Func<string>> bodytext, Expression<Func<int>> bodyfontSize = null, Expression<Func<int>> bodyopacity = null, Expression<Func<int>> bodyrotation = null, Expression<Func<string>> bodyhexColor = null, Expression<Func<string>> bodyfontFamily = null, Expression<Func<int>> bodyexpiration = null, Expression<Func<string>> bodyoutputFile = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ResponseSuccessSingleFile> __BuildAddWatermark(WorkflowExpression<string> bodyurl, WorkflowExpression<string> bodytext, WorkflowExpression<int> bodyfontSize = null, WorkflowExpression<int> bodyopacity = null, WorkflowExpression<int> bodyrotation = null, WorkflowExpression<string> bodyhexColor = null, WorkflowExpression<string> bodyfontFamily = null, WorkflowExpression<int> bodyexpiration = null, WorkflowExpression<string> bodyoutputFile = null)
-        {
-            WorkflowExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            WorkflowExpression.Validate(bodytext, nameof(bodytext), required: true);
-            WorkflowExpression.Validate(bodyfontSize, nameof(bodyfontSize), required: false);
-            WorkflowExpression.Validate(bodyopacity, nameof(bodyopacity), required: false);
-            WorkflowExpression.Validate(bodyrotation, nameof(bodyrotation), required: false);
-            WorkflowExpression.Validate(bodyhexColor, nameof(bodyhexColor), required: false);
-            WorkflowExpression.Validate(bodyfontFamily, nameof(bodyfontFamily), required: false);
-            WorkflowExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
-            WorkflowExpression.Validate(bodyoutputFile, nameof(bodyoutputFile), required: false);
+            var __workflow_bodyurl = bodyurl == null ? null : WorkflowExpression.Compile(bodyurl);
+            WorkflowExpression.Validate(__workflow_bodyurl, nameof(bodyurl), required: true);
+            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
+            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: true);
+            var __workflow_bodyfontSize = bodyfontSize == null ? null : WorkflowExpression.Compile(bodyfontSize);
+            WorkflowExpression.Validate(__workflow_bodyfontSize, nameof(bodyfontSize), required: false);
+            var __workflow_bodyopacity = bodyopacity == null ? null : WorkflowExpression.Compile(bodyopacity);
+            WorkflowExpression.Validate(__workflow_bodyopacity, nameof(bodyopacity), required: false);
+            var __workflow_bodyrotation = bodyrotation == null ? null : WorkflowExpression.Compile(bodyrotation);
+            WorkflowExpression.Validate(__workflow_bodyrotation, nameof(bodyrotation), required: false);
+            var __workflow_bodyhexColor = bodyhexColor == null ? null : WorkflowExpression.Compile(bodyhexColor);
+            WorkflowExpression.Validate(__workflow_bodyhexColor, nameof(bodyhexColor), required: false);
+            var __workflow_bodyfontFamily = bodyfontFamily == null ? null : WorkflowExpression.Compile(bodyfontFamily);
+            WorkflowExpression.Validate(__workflow_bodyfontFamily, nameof(bodyfontFamily), required: false);
+            var __workflow_bodyexpiration = bodyexpiration == null ? null : WorkflowExpression.Compile(bodyexpiration);
+            WorkflowExpression.Validate(__workflow_bodyexpiration, nameof(bodyexpiration), required: false);
+            var __workflow_bodyoutputFile = bodyoutputFile == null ? null : WorkflowExpression.Compile(bodyoutputFile);
+            WorkflowExpression.Validate(__workflow_bodyoutputFile, nameof(bodyoutputFile), required: false);
             return new DeferredBodyAction<ResponseSuccessSingleFile>(() =>
             {
                 var apiCallPath = "/add-watermark";
@@ -450,48 +421,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["url"] = ExpressionConverter.ConvertO(bodyurl);
+                body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
                 bodypropCount++;
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
-                if (bodyfontSize != null)
+                body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
+                if (__workflow_bodyfontSize != null)
                 {
-                    body["font_size"] = ExpressionConverter.ConvertO(bodyfontSize);
+                    body["font_size"] = ExpressionConverter.ConvertO(__workflow_bodyfontSize);
                     bodypropCount++;
                 }
 
-                if (bodyopacity != null)
+                if (__workflow_bodyopacity != null)
                 {
-                    body["opacity"] = ExpressionConverter.ConvertO(bodyopacity);
+                    body["opacity"] = ExpressionConverter.ConvertO(__workflow_bodyopacity);
                     bodypropCount++;
                 }
 
-                if (bodyrotation != null)
+                if (__workflow_bodyrotation != null)
                 {
-                    body["rotation"] = ExpressionConverter.ConvertO(bodyrotation);
+                    body["rotation"] = ExpressionConverter.ConvertO(__workflow_bodyrotation);
                     bodypropCount++;
                 }
 
-                if (bodyhexColor != null)
+                if (__workflow_bodyhexColor != null)
                 {
-                    body["hex_color"] = ExpressionConverter.ConvertO(bodyhexColor);
+                    body["hex_color"] = ExpressionConverter.ConvertO(__workflow_bodyhexColor);
                     bodypropCount++;
                 }
 
-                if (bodyfontFamily != null)
+                if (__workflow_bodyfontFamily != null)
                 {
-                    body["font_family"] = ExpressionConverter.ConvertO(bodyfontFamily);
+                    body["font_family"] = ExpressionConverter.ConvertO(__workflow_bodyfontFamily);
                     bodypropCount++;
                 }
 
-                if (bodyexpiration != null)
+                if (__workflow_bodyexpiration != null)
                 {
-                    body["expiration"] = ExpressionConverter.ConvertO(bodyexpiration);
+                    body["expiration"] = ExpressionConverter.ConvertO(__workflow_bodyexpiration);
                     bodypropCount++;
                 }
 
-                if (bodyoutputFile != null)
+                if (__workflow_bodyoutputFile != null)
                 {
-                    body["output_file"] = ExpressionConverter.ConvertO(bodyoutputFile);
+                    body["output_file"] = ExpressionConverter.ConvertO(__workflow_bodyoutputFile);
                     bodypropCount++;
                 }
 

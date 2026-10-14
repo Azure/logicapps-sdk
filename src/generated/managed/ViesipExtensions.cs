@@ -1,28 +1,22 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viesip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class ViesipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "viesip")]
-        [WorkflowExpressionFactory(nameof(__BuildCheckVATValidity))]
-        public IBodyWorkflowAction<CheckVATValidityResponse> CheckVATValidity([WorkflowExpression] Func<bodycountryCodeInput> bodycountryCode, [WorkflowExpression] Func<string> bodyvatNumber)
+        public IBodyWorkflowAction<CheckVATValidityResponse> CheckVATValidity(Expression<Func<bodycountryCodeInput>> bodycountryCode, Expression<Func<string>> bodyvatNumber)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CheckVATValidityResponse> __BuildCheckVATValidity(WorkflowExpression<bodycountryCodeInput> bodycountryCode, WorkflowExpression<string> bodyvatNumber)
-        {
-            WorkflowExpression.Validate(bodycountryCode, nameof(bodycountryCode), required: true);
-            WorkflowExpression.Validate(bodyvatNumber, nameof(bodyvatNumber), required: true);
+            var __workflow_bodycountryCode = bodycountryCode == null ? null : WorkflowExpression.Compile(bodycountryCode);
+            WorkflowExpression.Validate(__workflow_bodycountryCode, nameof(bodycountryCode), required: true);
+            var __workflow_bodyvatNumber = bodyvatNumber == null ? null : WorkflowExpression.Compile(bodyvatNumber);
+            WorkflowExpression.Validate(__workflow_bodyvatNumber, nameof(bodyvatNumber), required: true);
             return new DeferredBodyAction<CheckVATValidityResponse>(() =>
             {
                 var apiCallPath = "/taxation_customs/vies/services/checkVatService";
@@ -31,9 +25,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viesip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["countryCode"] = ExpressionConverter.ConvertO(bodycountryCode);
+                body["countryCode"] = ExpressionConverter.ConvertO(__workflow_bodycountryCode);
                 bodypropCount++;
-                body["vatNumber"] = ExpressionConverter.ConvertO(bodyvatNumber);
+                body["vatNumber"] = ExpressionConverter.ConvertO(__workflow_bodyvatNumber);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

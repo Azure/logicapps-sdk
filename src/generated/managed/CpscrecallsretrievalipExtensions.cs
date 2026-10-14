@@ -1,109 +1,127 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cpscrecallsretrievalip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class CpscrecallsretrievalipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cpscrecallsretrievalip")]
-        [WorkflowExpressionFactory(nameof(__BuildRecallGet))]
-        public IBodyWorkflowAction<RecallGetResponseItem[]> RecallGet([WorkflowExpression] Func<string> recallID = null, [WorkflowExpression] Func<string> recallNumber = null, [WorkflowExpression] Func<string> recallDateStart = null, [WorkflowExpression] Func<string> recallDateEnd = null, [WorkflowExpression] Func<string> lastPublishDateStart = null, [WorkflowExpression] Func<string> lastPublishDateEnd = null, [WorkflowExpression] Func<string> recallURL = null, [WorkflowExpression] Func<string> recallTitle = null, [WorkflowExpression] Func<string> consumerContact = null, [WorkflowExpression] Func<string> recallDescription = null, [WorkflowExpression] Func<string> productName = null, [WorkflowExpression] Func<string> productDescription = null, [WorkflowExpression] Func<string> productModel = null, [WorkflowExpression] Func<string> productType = null, [WorkflowExpression] Func<string> inconjunctionURL = null, [WorkflowExpression] Func<string> imageURL = null, [WorkflowExpression] Func<string> injury = null, [WorkflowExpression] Func<string> manufacturer = null, [WorkflowExpression] Func<string> retailer = null, [WorkflowExpression] Func<string> importer = null, [WorkflowExpression] Func<string> distributor = null, [WorkflowExpression] Func<string> manufacturerCountry = null, [WorkflowExpression] Func<string> uPC = null, [WorkflowExpression] Func<string> hazard = null, [WorkflowExpression] Func<string> remedy = null, [WorkflowExpression] Func<string> remedyOption = null)
+        public IBodyWorkflowAction<RecallGetResponseItem[]> RecallGet(Expression<Func<string>> recallID = null, Expression<Func<string>> recallNumber = null, Expression<Func<string>> recallDateStart = null, Expression<Func<string>> recallDateEnd = null, Expression<Func<string>> lastPublishDateStart = null, Expression<Func<string>> lastPublishDateEnd = null, Expression<Func<string>> recallURL = null, Expression<Func<string>> recallTitle = null, Expression<Func<string>> consumerContact = null, Expression<Func<string>> recallDescription = null, Expression<Func<string>> productName = null, Expression<Func<string>> productDescription = null, Expression<Func<string>> productModel = null, Expression<Func<string>> productType = null, Expression<Func<string>> inconjunctionURL = null, Expression<Func<string>> imageURL = null, Expression<Func<string>> injury = null, Expression<Func<string>> manufacturer = null, Expression<Func<string>> retailer = null, Expression<Func<string>> importer = null, Expression<Func<string>> distributor = null, Expression<Func<string>> manufacturerCountry = null, Expression<Func<string>> uPC = null, Expression<Func<string>> hazard = null, Expression<Func<string>> remedy = null, Expression<Func<string>> remedyOption = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<RecallGetResponseItem[]> __BuildRecallGet(WorkflowExpression<string> recallID = null, WorkflowExpression<string> recallNumber = null, WorkflowExpression<string> recallDateStart = null, WorkflowExpression<string> recallDateEnd = null, WorkflowExpression<string> lastPublishDateStart = null, WorkflowExpression<string> lastPublishDateEnd = null, WorkflowExpression<string> recallURL = null, WorkflowExpression<string> recallTitle = null, WorkflowExpression<string> consumerContact = null, WorkflowExpression<string> recallDescription = null, WorkflowExpression<string> productName = null, WorkflowExpression<string> productDescription = null, WorkflowExpression<string> productModel = null, WorkflowExpression<string> productType = null, WorkflowExpression<string> inconjunctionURL = null, WorkflowExpression<string> imageURL = null, WorkflowExpression<string> injury = null, WorkflowExpression<string> manufacturer = null, WorkflowExpression<string> retailer = null, WorkflowExpression<string> importer = null, WorkflowExpression<string> distributor = null, WorkflowExpression<string> manufacturerCountry = null, WorkflowExpression<string> uPC = null, WorkflowExpression<string> hazard = null, WorkflowExpression<string> remedy = null, WorkflowExpression<string> remedyOption = null)
-        {
-            WorkflowExpression.Validate(recallID, nameof(recallID), required: false);
-            WorkflowExpression.Validate(recallNumber, nameof(recallNumber), required: false);
-            WorkflowExpression.Validate(recallDateStart, nameof(recallDateStart), required: false);
-            WorkflowExpression.Validate(recallDateEnd, nameof(recallDateEnd), required: false);
-            WorkflowExpression.Validate(lastPublishDateStart, nameof(lastPublishDateStart), required: false);
-            WorkflowExpression.Validate(lastPublishDateEnd, nameof(lastPublishDateEnd), required: false);
-            WorkflowExpression.Validate(recallURL, nameof(recallURL), required: false);
-            WorkflowExpression.Validate(recallTitle, nameof(recallTitle), required: false);
-            WorkflowExpression.Validate(consumerContact, nameof(consumerContact), required: false);
-            WorkflowExpression.Validate(recallDescription, nameof(recallDescription), required: false);
-            WorkflowExpression.Validate(productName, nameof(productName), required: false);
-            WorkflowExpression.Validate(productDescription, nameof(productDescription), required: false);
-            WorkflowExpression.Validate(productModel, nameof(productModel), required: false);
-            WorkflowExpression.Validate(productType, nameof(productType), required: false);
-            WorkflowExpression.Validate(inconjunctionURL, nameof(inconjunctionURL), required: false);
-            WorkflowExpression.Validate(imageURL, nameof(imageURL), required: false);
-            WorkflowExpression.Validate(injury, nameof(injury), required: false);
-            WorkflowExpression.Validate(manufacturer, nameof(manufacturer), required: false);
-            WorkflowExpression.Validate(retailer, nameof(retailer), required: false);
-            WorkflowExpression.Validate(importer, nameof(importer), required: false);
-            WorkflowExpression.Validate(distributor, nameof(distributor), required: false);
-            WorkflowExpression.Validate(manufacturerCountry, nameof(manufacturerCountry), required: false);
-            WorkflowExpression.Validate(uPC, nameof(uPC), required: false);
-            WorkflowExpression.Validate(hazard, nameof(hazard), required: false);
-            WorkflowExpression.Validate(remedy, nameof(remedy), required: false);
-            WorkflowExpression.Validate(remedyOption, nameof(remedyOption), required: false);
+            var __workflow_recallID = recallID == null ? null : WorkflowExpression.Compile(recallID);
+            WorkflowExpression.Validate(__workflow_recallID, nameof(recallID), required: false);
+            var __workflow_recallNumber = recallNumber == null ? null : WorkflowExpression.Compile(recallNumber);
+            WorkflowExpression.Validate(__workflow_recallNumber, nameof(recallNumber), required: false);
+            var __workflow_recallDateStart = recallDateStart == null ? null : WorkflowExpression.Compile(recallDateStart);
+            WorkflowExpression.Validate(__workflow_recallDateStart, nameof(recallDateStart), required: false);
+            var __workflow_recallDateEnd = recallDateEnd == null ? null : WorkflowExpression.Compile(recallDateEnd);
+            WorkflowExpression.Validate(__workflow_recallDateEnd, nameof(recallDateEnd), required: false);
+            var __workflow_lastPublishDateStart = lastPublishDateStart == null ? null : WorkflowExpression.Compile(lastPublishDateStart);
+            WorkflowExpression.Validate(__workflow_lastPublishDateStart, nameof(lastPublishDateStart), required: false);
+            var __workflow_lastPublishDateEnd = lastPublishDateEnd == null ? null : WorkflowExpression.Compile(lastPublishDateEnd);
+            WorkflowExpression.Validate(__workflow_lastPublishDateEnd, nameof(lastPublishDateEnd), required: false);
+            var __workflow_recallURL = recallURL == null ? null : WorkflowExpression.Compile(recallURL);
+            WorkflowExpression.Validate(__workflow_recallURL, nameof(recallURL), required: false);
+            var __workflow_recallTitle = recallTitle == null ? null : WorkflowExpression.Compile(recallTitle);
+            WorkflowExpression.Validate(__workflow_recallTitle, nameof(recallTitle), required: false);
+            var __workflow_consumerContact = consumerContact == null ? null : WorkflowExpression.Compile(consumerContact);
+            WorkflowExpression.Validate(__workflow_consumerContact, nameof(consumerContact), required: false);
+            var __workflow_recallDescription = recallDescription == null ? null : WorkflowExpression.Compile(recallDescription);
+            WorkflowExpression.Validate(__workflow_recallDescription, nameof(recallDescription), required: false);
+            var __workflow_productName = productName == null ? null : WorkflowExpression.Compile(productName);
+            WorkflowExpression.Validate(__workflow_productName, nameof(productName), required: false);
+            var __workflow_productDescription = productDescription == null ? null : WorkflowExpression.Compile(productDescription);
+            WorkflowExpression.Validate(__workflow_productDescription, nameof(productDescription), required: false);
+            var __workflow_productModel = productModel == null ? null : WorkflowExpression.Compile(productModel);
+            WorkflowExpression.Validate(__workflow_productModel, nameof(productModel), required: false);
+            var __workflow_productType = productType == null ? null : WorkflowExpression.Compile(productType);
+            WorkflowExpression.Validate(__workflow_productType, nameof(productType), required: false);
+            var __workflow_inconjunctionURL = inconjunctionURL == null ? null : WorkflowExpression.Compile(inconjunctionURL);
+            WorkflowExpression.Validate(__workflow_inconjunctionURL, nameof(inconjunctionURL), required: false);
+            var __workflow_imageURL = imageURL == null ? null : WorkflowExpression.Compile(imageURL);
+            WorkflowExpression.Validate(__workflow_imageURL, nameof(imageURL), required: false);
+            var __workflow_injury = injury == null ? null : WorkflowExpression.Compile(injury);
+            WorkflowExpression.Validate(__workflow_injury, nameof(injury), required: false);
+            var __workflow_manufacturer = manufacturer == null ? null : WorkflowExpression.Compile(manufacturer);
+            WorkflowExpression.Validate(__workflow_manufacturer, nameof(manufacturer), required: false);
+            var __workflow_retailer = retailer == null ? null : WorkflowExpression.Compile(retailer);
+            WorkflowExpression.Validate(__workflow_retailer, nameof(retailer), required: false);
+            var __workflow_importer = importer == null ? null : WorkflowExpression.Compile(importer);
+            WorkflowExpression.Validate(__workflow_importer, nameof(importer), required: false);
+            var __workflow_distributor = distributor == null ? null : WorkflowExpression.Compile(distributor);
+            WorkflowExpression.Validate(__workflow_distributor, nameof(distributor), required: false);
+            var __workflow_manufacturerCountry = manufacturerCountry == null ? null : WorkflowExpression.Compile(manufacturerCountry);
+            WorkflowExpression.Validate(__workflow_manufacturerCountry, nameof(manufacturerCountry), required: false);
+            var __workflow_uPC = uPC == null ? null : WorkflowExpression.Compile(uPC);
+            WorkflowExpression.Validate(__workflow_uPC, nameof(uPC), required: false);
+            var __workflow_hazard = hazard == null ? null : WorkflowExpression.Compile(hazard);
+            WorkflowExpression.Validate(__workflow_hazard, nameof(hazard), required: false);
+            var __workflow_remedy = remedy == null ? null : WorkflowExpression.Compile(remedy);
+            WorkflowExpression.Validate(__workflow_remedy, nameof(remedy), required: false);
+            var __workflow_remedyOption = remedyOption == null ? null : WorkflowExpression.Compile(remedyOption);
+            WorkflowExpression.Validate(__workflow_remedyOption, nameof(remedyOption), required: false);
             return new DeferredBodyAction<RecallGetResponseItem[]>(() =>
             {
                 var apiCallPath = "/Recall";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (recallID != null)
-                    callPayload.Queries["RecallID"] = ExpressionConverter.Convert(recallID);
-                if (recallNumber != null)
-                    callPayload.Queries["RecallNumber"] = ExpressionConverter.Convert(recallNumber);
-                if (recallDateStart != null)
-                    callPayload.Queries["RecallDateStart"] = ExpressionConverter.Convert(recallDateStart);
-                if (recallDateEnd != null)
-                    callPayload.Queries["RecallDateEnd"] = ExpressionConverter.Convert(recallDateEnd);
-                if (lastPublishDateStart != null)
-                    callPayload.Queries["LastPublishDateStart"] = ExpressionConverter.Convert(lastPublishDateStart);
-                if (lastPublishDateEnd != null)
-                    callPayload.Queries["LastPublishDateEnd"] = ExpressionConverter.Convert(lastPublishDateEnd);
-                if (recallURL != null)
-                    callPayload.Queries["RecallURL"] = ExpressionConverter.Convert(recallURL);
-                if (recallTitle != null)
-                    callPayload.Queries["RecallTitle"] = ExpressionConverter.Convert(recallTitle);
-                if (consumerContact != null)
-                    callPayload.Queries["ConsumerContact"] = ExpressionConverter.Convert(consumerContact);
-                if (recallDescription != null)
-                    callPayload.Queries["RecallDescription"] = ExpressionConverter.Convert(recallDescription);
-                if (productName != null)
-                    callPayload.Queries["ProductName"] = ExpressionConverter.Convert(productName);
-                if (productDescription != null)
-                    callPayload.Queries["ProductDescription"] = ExpressionConverter.Convert(productDescription);
-                if (productModel != null)
-                    callPayload.Queries["ProductModel"] = ExpressionConverter.Convert(productModel);
-                if (productType != null)
-                    callPayload.Queries["ProductType"] = ExpressionConverter.Convert(productType);
-                if (inconjunctionURL != null)
-                    callPayload.Queries["InconjunctionURL"] = ExpressionConverter.Convert(inconjunctionURL);
-                if (imageURL != null)
-                    callPayload.Queries["ImageURL"] = ExpressionConverter.Convert(imageURL);
-                if (injury != null)
-                    callPayload.Queries["Injury"] = ExpressionConverter.Convert(injury);
-                if (manufacturer != null)
-                    callPayload.Queries["Manufacturer"] = ExpressionConverter.Convert(manufacturer);
-                if (retailer != null)
-                    callPayload.Queries["Retailer"] = ExpressionConverter.Convert(retailer);
-                if (importer != null)
-                    callPayload.Queries["Importer"] = ExpressionConverter.Convert(importer);
-                if (distributor != null)
-                    callPayload.Queries["Distributor"] = ExpressionConverter.Convert(distributor);
-                if (manufacturerCountry != null)
-                    callPayload.Queries["ManufacturerCountry"] = ExpressionConverter.Convert(manufacturerCountry);
-                if (uPC != null)
-                    callPayload.Queries["UPC"] = ExpressionConverter.Convert(uPC);
-                if (hazard != null)
-                    callPayload.Queries["Hazard"] = ExpressionConverter.Convert(hazard);
-                if (remedy != null)
-                    callPayload.Queries["Remedy"] = ExpressionConverter.Convert(remedy);
-                if (remedyOption != null)
-                    callPayload.Queries["RemedyOption"] = ExpressionConverter.Convert(remedyOption);
+                if (__workflow_recallID != null)
+                    callPayload.Queries["RecallID"] = ExpressionConverter.Convert(__workflow_recallID);
+                if (__workflow_recallNumber != null)
+                    callPayload.Queries["RecallNumber"] = ExpressionConverter.Convert(__workflow_recallNumber);
+                if (__workflow_recallDateStart != null)
+                    callPayload.Queries["RecallDateStart"] = ExpressionConverter.Convert(__workflow_recallDateStart);
+                if (__workflow_recallDateEnd != null)
+                    callPayload.Queries["RecallDateEnd"] = ExpressionConverter.Convert(__workflow_recallDateEnd);
+                if (__workflow_lastPublishDateStart != null)
+                    callPayload.Queries["LastPublishDateStart"] = ExpressionConverter.Convert(__workflow_lastPublishDateStart);
+                if (__workflow_lastPublishDateEnd != null)
+                    callPayload.Queries["LastPublishDateEnd"] = ExpressionConverter.Convert(__workflow_lastPublishDateEnd);
+                if (__workflow_recallURL != null)
+                    callPayload.Queries["RecallURL"] = ExpressionConverter.Convert(__workflow_recallURL);
+                if (__workflow_recallTitle != null)
+                    callPayload.Queries["RecallTitle"] = ExpressionConverter.Convert(__workflow_recallTitle);
+                if (__workflow_consumerContact != null)
+                    callPayload.Queries["ConsumerContact"] = ExpressionConverter.Convert(__workflow_consumerContact);
+                if (__workflow_recallDescription != null)
+                    callPayload.Queries["RecallDescription"] = ExpressionConverter.Convert(__workflow_recallDescription);
+                if (__workflow_productName != null)
+                    callPayload.Queries["ProductName"] = ExpressionConverter.Convert(__workflow_productName);
+                if (__workflow_productDescription != null)
+                    callPayload.Queries["ProductDescription"] = ExpressionConverter.Convert(__workflow_productDescription);
+                if (__workflow_productModel != null)
+                    callPayload.Queries["ProductModel"] = ExpressionConverter.Convert(__workflow_productModel);
+                if (__workflow_productType != null)
+                    callPayload.Queries["ProductType"] = ExpressionConverter.Convert(__workflow_productType);
+                if (__workflow_inconjunctionURL != null)
+                    callPayload.Queries["InconjunctionURL"] = ExpressionConverter.Convert(__workflow_inconjunctionURL);
+                if (__workflow_imageURL != null)
+                    callPayload.Queries["ImageURL"] = ExpressionConverter.Convert(__workflow_imageURL);
+                if (__workflow_injury != null)
+                    callPayload.Queries["Injury"] = ExpressionConverter.Convert(__workflow_injury);
+                if (__workflow_manufacturer != null)
+                    callPayload.Queries["Manufacturer"] = ExpressionConverter.Convert(__workflow_manufacturer);
+                if (__workflow_retailer != null)
+                    callPayload.Queries["Retailer"] = ExpressionConverter.Convert(__workflow_retailer);
+                if (__workflow_importer != null)
+                    callPayload.Queries["Importer"] = ExpressionConverter.Convert(__workflow_importer);
+                if (__workflow_distributor != null)
+                    callPayload.Queries["Distributor"] = ExpressionConverter.Convert(__workflow_distributor);
+                if (__workflow_manufacturerCountry != null)
+                    callPayload.Queries["ManufacturerCountry"] = ExpressionConverter.Convert(__workflow_manufacturerCountry);
+                if (__workflow_uPC != null)
+                    callPayload.Queries["UPC"] = ExpressionConverter.Convert(__workflow_uPC);
+                if (__workflow_hazard != null)
+                    callPayload.Queries["Hazard"] = ExpressionConverter.Convert(__workflow_hazard);
+                if (__workflow_remedy != null)
+                    callPayload.Queries["Remedy"] = ExpressionConverter.Convert(__workflow_remedy);
+                if (__workflow_remedyOption != null)
+                    callPayload.Queries["RemedyOption"] = ExpressionConverter.Convert(__workflow_remedyOption);
                 return new ApiConnectionAction<RecallGetResponseItem[]>(callPayload);
             });
         }

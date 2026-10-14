@@ -1,12 +1,12 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infuraethereumip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class InfuraethereumipActions([ConnectionName] string connectionId)
     {
@@ -55,17 +55,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infuraethereumip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infuraethereumip")]
-        [WorkflowExpressionFactory(nameof(__BuildEthGetBalance))]
-        public IBodyWorkflowAction<EthGetBalanceResponse> EthGetBalance([WorkflowExpression] Func<string> bodyParamsaddress = null, [WorkflowExpression] Func<bodyParamsblockInput> bodyParamsblock = null)
+        public IBodyWorkflowAction<EthGetBalanceResponse> EthGetBalance(Expression<Func<string>> bodyParamsaddress = null, Expression<Func<bodyParamsblockInput>> bodyParamsblock = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EthGetBalanceResponse> __BuildEthGetBalance(WorkflowExpression<string> bodyParamsaddress = null, WorkflowExpression<bodyParamsblockInput> bodyParamsblock = null)
-        {
-            WorkflowExpression.Validate(bodyParamsaddress, nameof(bodyParamsaddress), required: false);
-            WorkflowExpression.Validate(bodyParamsblock, nameof(bodyParamsblock), required: false);
+            var __workflow_bodyParamsaddress = bodyParamsaddress == null ? null : WorkflowExpression.Compile(bodyParamsaddress);
+            WorkflowExpression.Validate(__workflow_bodyParamsaddress, nameof(bodyParamsaddress), required: false);
+            var __workflow_bodyParamsblock = bodyParamsblock == null ? null : WorkflowExpression.Compile(bodyParamsblock);
+            WorkflowExpression.Validate(__workflow_bodyParamsblock, nameof(bodyParamsblock), required: false);
             return new DeferredBodyAction<EthGetBalanceResponse>(() =>
             {
                 var apiCallPath = "/eth_getBalance";
@@ -81,17 +76,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infuraethereumip
                 bodypropCount++;
                 var @paramsObject = new JObject();
                 var @paramsObjectpropCount = 0;
-                if (bodyParamsaddress != null)
+                if (__workflow_bodyParamsaddress != null)
                 {
-                    @paramsObject["Address"] = ExpressionConverter.ConvertO(bodyParamsaddress);
+                    @paramsObject["Address"] = ExpressionConverter.ConvertO(__workflow_bodyParamsaddress);
                     @paramsObjectpropCount++;
                 }
 
-                if (bodyParamsblock != null)
+                if (__workflow_bodyParamsblock != null)
                 {
-                    if (bodyParamsblock != null)
+                    if (__workflow_bodyParamsblock != null)
                     {
-                        @paramsObject["Block"] = ExpressionConverter.ConvertO(bodyParamsblock);
+                        @paramsObject["Block"] = ExpressionConverter.ConvertO(__workflow_bodyParamsblock);
                         @paramsObjectpropCount++;
                     }
 

@@ -1,40 +1,46 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class SurvalyzerswissActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateAndInviteMembers))]
-        public IBodyWorkflowAction<CreateAndInviteMembersResponse> CreateAndInviteMembers([WorkflowExpression] Func<int> bodysurveyId, [WorkflowExpression] Func<int> bodypanelId, [WorkflowExpression] Func<int> bodymessageTemplateId, [WorkflowExpression] Func<Member[]> bodymembers, [WorkflowExpression] Func<int> bodysamplingProjectId = null, [WorkflowExpression] Func<bodychannelInput> bodychannel = null, [WorkflowExpression] Func<TextBlock[]> bodytextBlocks = null, [WorkflowExpression] Func<string> bodyscheduleDateTime = null, [WorkflowExpression] Func<bool> bodyasyncProcess = null, [WorkflowExpression] Func<string> bodyinterviewExpiryDate = null, [WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyfromName = null, [WorkflowExpression] Func<string> bodyreplyTo = null, [WorkflowExpression] Func<string> bodyreplyToName = null)
+        public IBodyWorkflowAction<CreateAndInviteMembersResponse> CreateAndInviteMembers(Expression<Func<int>> bodysurveyId, Expression<Func<int>> bodypanelId, Expression<Func<int>> bodymessageTemplateId, Expression<Func<Member[]>> bodymembers, Expression<Func<int>> bodysamplingProjectId = null, Expression<Func<bodychannelInput>> bodychannel = null, Expression<Func<TextBlock[]>> bodytextBlocks = null, Expression<Func<string>> bodyscheduleDateTime = null, Expression<Func<bool>> bodyasyncProcess = null, Expression<Func<string>> bodyinterviewExpiryDate = null, Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyfromName = null, Expression<Func<string>> bodyreplyTo = null, Expression<Func<string>> bodyreplyToName = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateAndInviteMembersResponse> __BuildCreateAndInviteMembers(WorkflowExpression<int> bodysurveyId, WorkflowExpression<int> bodypanelId, WorkflowExpression<int> bodymessageTemplateId, WorkflowExpression<Member[]> bodymembers, WorkflowExpression<int> bodysamplingProjectId = null, WorkflowExpression<bodychannelInput> bodychannel = null, WorkflowExpression<TextBlock[]> bodytextBlocks = null, WorkflowExpression<string> bodyscheduleDateTime = null, WorkflowExpression<bool> bodyasyncProcess = null, WorkflowExpression<string> bodyinterviewExpiryDate = null, WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyfromName = null, WorkflowExpression<string> bodyreplyTo = null, WorkflowExpression<string> bodyreplyToName = null)
-        {
-            WorkflowExpression.Validate(bodysurveyId, nameof(bodysurveyId), required: true);
-            WorkflowExpression.Validate(bodypanelId, nameof(bodypanelId), required: true);
-            WorkflowExpression.Validate(bodymessageTemplateId, nameof(bodymessageTemplateId), required: true);
-            WorkflowExpression.Validate(bodymembers, nameof(bodymembers), required: true);
-            WorkflowExpression.Validate(bodysamplingProjectId, nameof(bodysamplingProjectId), required: false);
-            WorkflowExpression.Validate(bodychannel, nameof(bodychannel), required: false);
-            WorkflowExpression.Validate(bodytextBlocks, nameof(bodytextBlocks), required: false);
-            WorkflowExpression.Validate(bodyscheduleDateTime, nameof(bodyscheduleDateTime), required: false);
-            WorkflowExpression.Validate(bodyasyncProcess, nameof(bodyasyncProcess), required: false);
-            WorkflowExpression.Validate(bodyinterviewExpiryDate, nameof(bodyinterviewExpiryDate), required: false);
-            WorkflowExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
-            WorkflowExpression.Validate(bodyfromName, nameof(bodyfromName), required: false);
-            WorkflowExpression.Validate(bodyreplyTo, nameof(bodyreplyTo), required: false);
-            WorkflowExpression.Validate(bodyreplyToName, nameof(bodyreplyToName), required: false);
+            var __workflow_bodysurveyId = bodysurveyId == null ? null : WorkflowExpression.Compile(bodysurveyId);
+            WorkflowExpression.Validate(__workflow_bodysurveyId, nameof(bodysurveyId), required: true);
+            var __workflow_bodypanelId = bodypanelId == null ? null : WorkflowExpression.Compile(bodypanelId);
+            WorkflowExpression.Validate(__workflow_bodypanelId, nameof(bodypanelId), required: true);
+            var __workflow_bodymessageTemplateId = bodymessageTemplateId == null ? null : WorkflowExpression.Compile(bodymessageTemplateId);
+            WorkflowExpression.Validate(__workflow_bodymessageTemplateId, nameof(bodymessageTemplateId), required: true);
+            var __workflow_bodymembers = bodymembers == null ? null : WorkflowExpression.Compile(bodymembers);
+            WorkflowExpression.Validate(__workflow_bodymembers, nameof(bodymembers), required: true);
+            var __workflow_bodysamplingProjectId = bodysamplingProjectId == null ? null : WorkflowExpression.Compile(bodysamplingProjectId);
+            WorkflowExpression.Validate(__workflow_bodysamplingProjectId, nameof(bodysamplingProjectId), required: false);
+            var __workflow_bodychannel = bodychannel == null ? null : WorkflowExpression.Compile(bodychannel);
+            WorkflowExpression.Validate(__workflow_bodychannel, nameof(bodychannel), required: false);
+            var __workflow_bodytextBlocks = bodytextBlocks == null ? null : WorkflowExpression.Compile(bodytextBlocks);
+            WorkflowExpression.Validate(__workflow_bodytextBlocks, nameof(bodytextBlocks), required: false);
+            var __workflow_bodyscheduleDateTime = bodyscheduleDateTime == null ? null : WorkflowExpression.Compile(bodyscheduleDateTime);
+            WorkflowExpression.Validate(__workflow_bodyscheduleDateTime, nameof(bodyscheduleDateTime), required: false);
+            var __workflow_bodyasyncProcess = bodyasyncProcess == null ? null : WorkflowExpression.Compile(bodyasyncProcess);
+            WorkflowExpression.Validate(__workflow_bodyasyncProcess, nameof(bodyasyncProcess), required: false);
+            var __workflow_bodyinterviewExpiryDate = bodyinterviewExpiryDate == null ? null : WorkflowExpression.Compile(bodyinterviewExpiryDate);
+            WorkflowExpression.Validate(__workflow_bodyinterviewExpiryDate, nameof(bodyinterviewExpiryDate), required: false);
+            var __workflow_bodyfrom = bodyfrom == null ? null : WorkflowExpression.Compile(bodyfrom);
+            WorkflowExpression.Validate(__workflow_bodyfrom, nameof(bodyfrom), required: false);
+            var __workflow_bodyfromName = bodyfromName == null ? null : WorkflowExpression.Compile(bodyfromName);
+            WorkflowExpression.Validate(__workflow_bodyfromName, nameof(bodyfromName), required: false);
+            var __workflow_bodyreplyTo = bodyreplyTo == null ? null : WorkflowExpression.Compile(bodyreplyTo);
+            WorkflowExpression.Validate(__workflow_bodyreplyTo, nameof(bodyreplyTo), required: false);
+            var __workflow_bodyreplyToName = bodyreplyToName == null ? null : WorkflowExpression.Compile(bodyreplyToName);
+            WorkflowExpression.Validate(__workflow_bodyreplyToName, nameof(bodyreplyToName), required: false);
             return new DeferredBodyAction<CreateAndInviteMembersResponse>(() =>
             {
                 var apiCallPath = "/publicapi/Distribute/v3/CreateAndInviteMembers";
@@ -42,71 +48,71 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodysamplingProjectId != null)
+                if (__workflow_bodysamplingProjectId != null)
                 {
-                    body["samplingProjectId"] = ExpressionConverter.ConvertO(bodysamplingProjectId);
+                    body["samplingProjectId"] = ExpressionConverter.ConvertO(__workflow_bodysamplingProjectId);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["surveyId"] = ExpressionConverter.ConvertO(bodysurveyId);
+                body["surveyId"] = ExpressionConverter.ConvertO(__workflow_bodysurveyId);
                 bodypropCount++;
-                body["panelId"] = ExpressionConverter.ConvertO(bodypanelId);
-                if (bodychannel != null)
+                body["panelId"] = ExpressionConverter.ConvertO(__workflow_bodypanelId);
+                if (__workflow_bodychannel != null)
                 {
-                    body["channel"] = ExpressionConverter.ConvertO(bodychannel);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["messageTemplateId"] = ExpressionConverter.ConvertO(bodymessageTemplateId);
-                if (bodytextBlocks != null)
-                {
-                    body["textBlocks"] = ExpressionConverter.ConvertO(bodytextBlocks);
+                    body["channel"] = ExpressionConverter.ConvertO(__workflow_bodychannel);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["members"] = ExpressionConverter.ConvertO(bodymembers);
-                if (bodyscheduleDateTime != null)
+                body["messageTemplateId"] = ExpressionConverter.ConvertO(__workflow_bodymessageTemplateId);
+                if (__workflow_bodytextBlocks != null)
                 {
-                    body["scheduleDateTime"] = ExpressionConverter.ConvertO(bodyscheduleDateTime);
+                    body["textBlocks"] = ExpressionConverter.ConvertO(__workflow_bodytextBlocks);
                     bodypropCount++;
                 }
 
-                if (bodyasyncProcess != null)
+                bodypropCount++;
+                body["members"] = ExpressionConverter.ConvertO(__workflow_bodymembers);
+                if (__workflow_bodyscheduleDateTime != null)
                 {
-                    body["asyncProcess"] = ExpressionConverter.ConvertO(bodyasyncProcess);
+                    body["scheduleDateTime"] = ExpressionConverter.ConvertO(__workflow_bodyscheduleDateTime);
                     bodypropCount++;
                 }
 
-                if (bodyinterviewExpiryDate != null)
+                if (__workflow_bodyasyncProcess != null)
                 {
-                    body["interviewExpiryDate"] = ExpressionConverter.ConvertO(bodyinterviewExpiryDate);
+                    body["asyncProcess"] = ExpressionConverter.ConvertO(__workflow_bodyasyncProcess);
                     bodypropCount++;
                 }
 
-                if (bodyfrom != null)
+                if (__workflow_bodyinterviewExpiryDate != null)
                 {
-                    body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                    body["interviewExpiryDate"] = ExpressionConverter.ConvertO(__workflow_bodyinterviewExpiryDate);
                     bodypropCount++;
                 }
 
-                if (bodyfromName != null)
+                if (__workflow_bodyfrom != null)
                 {
-                    body["fromName"] = ExpressionConverter.ConvertO(bodyfromName);
+                    body["from"] = ExpressionConverter.ConvertO(__workflow_bodyfrom);
                     bodypropCount++;
                 }
 
-                if (bodyreplyTo != null)
+                if (__workflow_bodyfromName != null)
                 {
-                    body["replyTo"] = ExpressionConverter.ConvertO(bodyreplyTo);
+                    body["fromName"] = ExpressionConverter.ConvertO(__workflow_bodyfromName);
                     bodypropCount++;
                 }
 
-                if (bodyreplyToName != null)
+                if (__workflow_bodyreplyTo != null)
                 {
-                    body["replyToName"] = ExpressionConverter.ConvertO(bodyreplyToName);
+                    body["replyTo"] = ExpressionConverter.ConvertO(__workflow_bodyreplyTo);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyreplyToName != null)
+                {
+                    body["replyToName"] = ExpressionConverter.ConvertO(__workflow_bodyreplyToName);
                     bodypropCount++;
                 }
 
@@ -120,17 +126,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateArtifact))]
-        public IBodyWorkflowAction<CreateArtifactResponse> CreateArtifact([WorkflowExpression] Func<int> bodyworkspaceId = null, [WorkflowExpression] Func<string> bodypath = null)
+        public IBodyWorkflowAction<CreateArtifactResponse> CreateArtifact(Expression<Func<int>> bodyworkspaceId = null, Expression<Func<string>> bodypath = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateArtifactResponse> __BuildCreateArtifact(WorkflowExpression<int> bodyworkspaceId = null, WorkflowExpression<string> bodypath = null)
-        {
-            WorkflowExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: false);
-            WorkflowExpression.Validate(bodypath, nameof(bodypath), required: false);
+            var __workflow_bodyworkspaceId = bodyworkspaceId == null ? null : WorkflowExpression.Compile(bodyworkspaceId);
+            WorkflowExpression.Validate(__workflow_bodyworkspaceId, nameof(bodyworkspaceId), required: false);
+            var __workflow_bodypath = bodypath == null ? null : WorkflowExpression.Compile(bodypath);
+            WorkflowExpression.Validate(__workflow_bodypath, nameof(bodypath), required: false);
             return new DeferredBodyAction<CreateArtifactResponse>(() =>
             {
                 var apiCallPath = "/publicapi/Common/v3/CreateArtifact";
@@ -138,15 +139,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyworkspaceId != null)
+                if (__workflow_bodyworkspaceId != null)
                 {
-                    body["workspaceId"] = ExpressionConverter.ConvertO(bodyworkspaceId);
+                    body["workspaceId"] = ExpressionConverter.ConvertO(__workflow_bodyworkspaceId);
                     bodypropCount++;
                 }
 
-                if (bodypath != null)
+                if (__workflow_bodypath != null)
                 {
-                    body["path"] = ExpressionConverter.ConvertO(bodypath);
+                    body["path"] = ExpressionConverter.ConvertO(__workflow_bodypath);
                     bodypropCount++;
                 }
 
@@ -160,18 +161,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateMembers))]
-        public IBodyWorkflowAction<CreateMembersResponse> CreateMembers([WorkflowExpression] Func<int> bodypanelId, [WorkflowExpression] Func<Member[]> bodymembers, [WorkflowExpression] Func<string> bodytenant = null)
+        public IBodyWorkflowAction<CreateMembersResponse> CreateMembers(Expression<Func<int>> bodypanelId, Expression<Func<Member[]>> bodymembers, Expression<Func<string>> bodytenant = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateMembersResponse> __BuildCreateMembers(WorkflowExpression<int> bodypanelId, WorkflowExpression<Member[]> bodymembers, WorkflowExpression<string> bodytenant = null)
-        {
-            WorkflowExpression.Validate(bodypanelId, nameof(bodypanelId), required: true);
-            WorkflowExpression.Validate(bodymembers, nameof(bodymembers), required: true);
-            WorkflowExpression.Validate(bodytenant, nameof(bodytenant), required: false);
+            var __workflow_bodypanelId = bodypanelId == null ? null : WorkflowExpression.Compile(bodypanelId);
+            WorkflowExpression.Validate(__workflow_bodypanelId, nameof(bodypanelId), required: true);
+            var __workflow_bodymembers = bodymembers == null ? null : WorkflowExpression.Compile(bodymembers);
+            WorkflowExpression.Validate(__workflow_bodymembers, nameof(bodymembers), required: true);
+            var __workflow_bodytenant = bodytenant == null ? null : WorkflowExpression.Compile(bodytenant);
+            WorkflowExpression.Validate(__workflow_bodytenant, nameof(bodytenant), required: false);
             return new DeferredBodyAction<CreateMembersResponse>(() =>
             {
                 var apiCallPath = "/publicapi/Panel/v3/CreateMembers";
@@ -179,16 +176,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodytenant != null)
+                if (__workflow_bodytenant != null)
                 {
-                    body["tenant"] = ExpressionConverter.ConvertO(bodytenant);
+                    body["tenant"] = ExpressionConverter.ConvertO(__workflow_bodytenant);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["panelId"] = ExpressionConverter.ConvertO(bodypanelId);
+                body["panelId"] = ExpressionConverter.ConvertO(__workflow_bodypanelId);
                 bodypropCount++;
-                body["members"] = ExpressionConverter.ConvertO(bodymembers);
+                body["members"] = ExpressionConverter.ConvertO(__workflow_bodymembers);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -199,18 +196,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        [WorkflowExpressionFactory(nameof(__BuildCreatePanel))]
-        public IBodyWorkflowAction<CreatePanelResponse> CreatePanel([WorkflowExpression] Func<int> bodyworkspaceId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<bodypanelTypeInput> bodypanelType = null)
+        public IBodyWorkflowAction<CreatePanelResponse> CreatePanel(Expression<Func<int>> bodyworkspaceId, Expression<Func<string>> bodyname, Expression<Func<bodypanelTypeInput>> bodypanelType = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreatePanelResponse> __BuildCreatePanel(WorkflowExpression<int> bodyworkspaceId, WorkflowExpression<string> bodyname, WorkflowExpression<bodypanelTypeInput> bodypanelType = null)
-        {
-            WorkflowExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
-            WorkflowExpression.Validate(bodypanelType, nameof(bodypanelType), required: false);
+            var __workflow_bodyworkspaceId = bodyworkspaceId == null ? null : WorkflowExpression.Compile(bodyworkspaceId);
+            WorkflowExpression.Validate(__workflow_bodyworkspaceId, nameof(bodyworkspaceId), required: true);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
+            var __workflow_bodypanelType = bodypanelType == null ? null : WorkflowExpression.Compile(bodypanelType);
+            WorkflowExpression.Validate(__workflow_bodypanelType, nameof(bodypanelType), required: false);
             return new DeferredBodyAction<CreatePanelResponse>(() =>
             {
                 var apiCallPath = "/publicapi/Panel/v3/CreatePanel";
@@ -219,12 +212,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["workspaceId"] = ExpressionConverter.ConvertO(bodyworkspaceId);
+                body["workspaceId"] = ExpressionConverter.ConvertO(__workflow_bodyworkspaceId);
                 bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                if (bodypanelType != null)
+                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
+                if (__workflow_bodypanelType != null)
                 {
-                    body["panelType"] = ExpressionConverter.ConvertO(bodypanelType);
+                    body["panelType"] = ExpressionConverter.ConvertO(__workflow_bodypanelType);
                     bodypropCount++;
                 }
 
@@ -238,43 +231,64 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateSurvey))]
-        public IBodyWorkflowAction<CreateSurveyResponse> CreateSurvey([WorkflowExpression] Func<int> bodyworkspaceId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<bool> bodysurveyDefinitionallowMultipleParticipation, [WorkflowExpression] Func<bool> bodysurveyDefinitionallowNavigateBack, [WorkflowExpression] Func<bool> bodysurveyDefinitionrandomizeSections, [WorkflowExpression] Func<string> bodysurveyDefinitiondefaultLanguage, [WorkflowExpression] Func<string[]> bodysurveyDefinitionlanguages, [WorkflowExpression] Func<Section[]> bodysurveyDefinitionsections, [WorkflowExpression] Func<CustomVariable[]> bodysurveyDefinitioncustomVariables, [WorkflowExpression] Func<TranslationElement[]> bodysurveyDefinitionsurveyEndText, [WorkflowExpression] Func<bool> bodysurveyConfigurationanonymizingConfigurationlogIp, [WorkflowExpression] Func<bool> bodysurveyConfigurationanonymizingConfigurationlogUserAgent, [WorkflowExpression] Func<bool> bodysurveyConfigurationanonymizingConfigurationlogReferer, [WorkflowExpression] Func<bool> bodysurveyDefinitionallowSaveProgress = null, [WorkflowExpression] Func<bool> bodysurveyDefinitionenableAutoScroll = null, [WorkflowExpression] Func<bool> bodysurveyDefinitionenableCodeAccess = null, [WorkflowExpression] Func<bodysurveyDefinitiondataAccessControlaccessTypeInput> bodysurveyDefinitiondataAccessControlaccessType = null, [WorkflowExpression] Func<Condition[]> bodysurveyDefinitiondataAccessControlconditions = null, [WorkflowExpression] Func<int[]> bodysurveyDefinitionassociatedPanels = null, [WorkflowExpression] Func<bodysurveyDefinitioncodeAccessModeInput> bodysurveyDefinitioncodeAccessMode = null, [WorkflowExpression] Func<bool> bodysurveyDefinitionenablePanelSync = null, [WorkflowExpression] Func<bodysurveyDefinitionpanelSyncBehaviourInput> bodysurveyDefinitionpanelSyncBehaviour = null, [WorkflowExpression] Func<PanelSyncElement[]> bodysurveyDefinitionpanelSyncs = null, [WorkflowExpression] Func<string> bodysurveyDefinitionendDate = null, [WorkflowExpression] Func<int> bodysurveyConfigurationdesignConfigurationsurveyDesignLayout = null, [WorkflowExpression] Func<bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSizeInput> bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize = null, [WorkflowExpression] Func<TextBlock[]> bodysurveyConfigurationdesignConfigurationtextBlocks = null, [WorkflowExpression] Func<bodysurveyConfigurationanonymizingConfigurationanonymizingModeInput> bodysurveyConfigurationanonymizingConfigurationanonymizingMode = null)
+        public IBodyWorkflowAction<CreateSurveyResponse> CreateSurvey(Expression<Func<int>> bodyworkspaceId, Expression<Func<string>> bodyname, Expression<Func<bool>> bodysurveyDefinitionallowMultipleParticipation, Expression<Func<bool>> bodysurveyDefinitionallowNavigateBack, Expression<Func<bool>> bodysurveyDefinitionrandomizeSections, Expression<Func<string>> bodysurveyDefinitiondefaultLanguage, Expression<Func<string[]>> bodysurveyDefinitionlanguages, Expression<Func<Section[]>> bodysurveyDefinitionsections, Expression<Func<CustomVariable[]>> bodysurveyDefinitioncustomVariables, Expression<Func<TranslationElement[]>> bodysurveyDefinitionsurveyEndText, Expression<Func<bool>> bodysurveyConfigurationanonymizingConfigurationlogIp, Expression<Func<bool>> bodysurveyConfigurationanonymizingConfigurationlogUserAgent, Expression<Func<bool>> bodysurveyConfigurationanonymizingConfigurationlogReferer, Expression<Func<bool>> bodysurveyDefinitionallowSaveProgress = null, Expression<Func<bool>> bodysurveyDefinitionenableAutoScroll = null, Expression<Func<bool>> bodysurveyDefinitionenableCodeAccess = null, Expression<Func<bodysurveyDefinitiondataAccessControlaccessTypeInput>> bodysurveyDefinitiondataAccessControlaccessType = null, Expression<Func<Condition[]>> bodysurveyDefinitiondataAccessControlconditions = null, Expression<Func<int[]>> bodysurveyDefinitionassociatedPanels = null, Expression<Func<bodysurveyDefinitioncodeAccessModeInput>> bodysurveyDefinitioncodeAccessMode = null, Expression<Func<bool>> bodysurveyDefinitionenablePanelSync = null, Expression<Func<bodysurveyDefinitionpanelSyncBehaviourInput>> bodysurveyDefinitionpanelSyncBehaviour = null, Expression<Func<PanelSyncElement[]>> bodysurveyDefinitionpanelSyncs = null, Expression<Func<string>> bodysurveyDefinitionendDate = null, Expression<Func<int>> bodysurveyConfigurationdesignConfigurationsurveyDesignLayout = null, Expression<Func<bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSizeInput>> bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize = null, Expression<Func<TextBlock[]>> bodysurveyConfigurationdesignConfigurationtextBlocks = null, Expression<Func<bodysurveyConfigurationanonymizingConfigurationanonymizingModeInput>> bodysurveyConfigurationanonymizingConfigurationanonymizingMode = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateSurveyResponse> __BuildCreateSurvey(WorkflowExpression<int> bodyworkspaceId, WorkflowExpression<string> bodyname, WorkflowExpression<bool> bodysurveyDefinitionallowMultipleParticipation, WorkflowExpression<bool> bodysurveyDefinitionallowNavigateBack, WorkflowExpression<bool> bodysurveyDefinitionrandomizeSections, WorkflowExpression<string> bodysurveyDefinitiondefaultLanguage, WorkflowExpression<string[]> bodysurveyDefinitionlanguages, WorkflowExpression<Section[]> bodysurveyDefinitionsections, WorkflowExpression<CustomVariable[]> bodysurveyDefinitioncustomVariables, WorkflowExpression<TranslationElement[]> bodysurveyDefinitionsurveyEndText, WorkflowExpression<bool> bodysurveyConfigurationanonymizingConfigurationlogIp, WorkflowExpression<bool> bodysurveyConfigurationanonymizingConfigurationlogUserAgent, WorkflowExpression<bool> bodysurveyConfigurationanonymizingConfigurationlogReferer, WorkflowExpression<bool> bodysurveyDefinitionallowSaveProgress = null, WorkflowExpression<bool> bodysurveyDefinitionenableAutoScroll = null, WorkflowExpression<bool> bodysurveyDefinitionenableCodeAccess = null, WorkflowExpression<bodysurveyDefinitiondataAccessControlaccessTypeInput> bodysurveyDefinitiondataAccessControlaccessType = null, WorkflowExpression<Condition[]> bodysurveyDefinitiondataAccessControlconditions = null, WorkflowExpression<int[]> bodysurveyDefinitionassociatedPanels = null, WorkflowExpression<bodysurveyDefinitioncodeAccessModeInput> bodysurveyDefinitioncodeAccessMode = null, WorkflowExpression<bool> bodysurveyDefinitionenablePanelSync = null, WorkflowExpression<bodysurveyDefinitionpanelSyncBehaviourInput> bodysurveyDefinitionpanelSyncBehaviour = null, WorkflowExpression<PanelSyncElement[]> bodysurveyDefinitionpanelSyncs = null, WorkflowExpression<string> bodysurveyDefinitionendDate = null, WorkflowExpression<int> bodysurveyConfigurationdesignConfigurationsurveyDesignLayout = null, WorkflowExpression<bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSizeInput> bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize = null, WorkflowExpression<TextBlock[]> bodysurveyConfigurationdesignConfigurationtextBlocks = null, WorkflowExpression<bodysurveyConfigurationanonymizingConfigurationanonymizingModeInput> bodysurveyConfigurationanonymizingConfigurationanonymizingMode = null)
-        {
-            WorkflowExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
-            WorkflowExpression.Validate(bodysurveyDefinitionallowMultipleParticipation, nameof(bodysurveyDefinitionallowMultipleParticipation), required: true);
-            WorkflowExpression.Validate(bodysurveyDefinitionallowNavigateBack, nameof(bodysurveyDefinitionallowNavigateBack), required: true);
-            WorkflowExpression.Validate(bodysurveyDefinitionrandomizeSections, nameof(bodysurveyDefinitionrandomizeSections), required: true);
-            WorkflowExpression.Validate(bodysurveyDefinitiondefaultLanguage, nameof(bodysurveyDefinitiondefaultLanguage), required: true);
-            WorkflowExpression.Validate(bodysurveyDefinitionlanguages, nameof(bodysurveyDefinitionlanguages), required: true);
-            WorkflowExpression.Validate(bodysurveyDefinitionsections, nameof(bodysurveyDefinitionsections), required: true);
-            WorkflowExpression.Validate(bodysurveyDefinitioncustomVariables, nameof(bodysurveyDefinitioncustomVariables), required: true);
-            WorkflowExpression.Validate(bodysurveyDefinitionsurveyEndText, nameof(bodysurveyDefinitionsurveyEndText), required: true);
-            WorkflowExpression.Validate(bodysurveyConfigurationanonymizingConfigurationlogIp, nameof(bodysurveyConfigurationanonymizingConfigurationlogIp), required: true);
-            WorkflowExpression.Validate(bodysurveyConfigurationanonymizingConfigurationlogUserAgent, nameof(bodysurveyConfigurationanonymizingConfigurationlogUserAgent), required: true);
-            WorkflowExpression.Validate(bodysurveyConfigurationanonymizingConfigurationlogReferer, nameof(bodysurveyConfigurationanonymizingConfigurationlogReferer), required: true);
-            WorkflowExpression.Validate(bodysurveyDefinitionallowSaveProgress, nameof(bodysurveyDefinitionallowSaveProgress), required: false);
-            WorkflowExpression.Validate(bodysurveyDefinitionenableAutoScroll, nameof(bodysurveyDefinitionenableAutoScroll), required: false);
-            WorkflowExpression.Validate(bodysurveyDefinitionenableCodeAccess, nameof(bodysurveyDefinitionenableCodeAccess), required: false);
-            WorkflowExpression.Validate(bodysurveyDefinitiondataAccessControlaccessType, nameof(bodysurveyDefinitiondataAccessControlaccessType), required: false);
-            WorkflowExpression.Validate(bodysurveyDefinitiondataAccessControlconditions, nameof(bodysurveyDefinitiondataAccessControlconditions), required: false);
-            WorkflowExpression.Validate(bodysurveyDefinitionassociatedPanels, nameof(bodysurveyDefinitionassociatedPanels), required: false);
-            WorkflowExpression.Validate(bodysurveyDefinitioncodeAccessMode, nameof(bodysurveyDefinitioncodeAccessMode), required: false);
-            WorkflowExpression.Validate(bodysurveyDefinitionenablePanelSync, nameof(bodysurveyDefinitionenablePanelSync), required: false);
-            WorkflowExpression.Validate(bodysurveyDefinitionpanelSyncBehaviour, nameof(bodysurveyDefinitionpanelSyncBehaviour), required: false);
-            WorkflowExpression.Validate(bodysurveyDefinitionpanelSyncs, nameof(bodysurveyDefinitionpanelSyncs), required: false);
-            WorkflowExpression.Validate(bodysurveyDefinitionendDate, nameof(bodysurveyDefinitionendDate), required: false);
-            WorkflowExpression.Validate(bodysurveyConfigurationdesignConfigurationsurveyDesignLayout, nameof(bodysurveyConfigurationdesignConfigurationsurveyDesignLayout), required: false);
-            WorkflowExpression.Validate(bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize, nameof(bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize), required: false);
-            WorkflowExpression.Validate(bodysurveyConfigurationdesignConfigurationtextBlocks, nameof(bodysurveyConfigurationdesignConfigurationtextBlocks), required: false);
-            WorkflowExpression.Validate(bodysurveyConfigurationanonymizingConfigurationanonymizingMode, nameof(bodysurveyConfigurationanonymizingConfigurationanonymizingMode), required: false);
+            var __workflow_bodyworkspaceId = bodyworkspaceId == null ? null : WorkflowExpression.Compile(bodyworkspaceId);
+            WorkflowExpression.Validate(__workflow_bodyworkspaceId, nameof(bodyworkspaceId), required: true);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
+            var __workflow_bodysurveyDefinitionallowMultipleParticipation = bodysurveyDefinitionallowMultipleParticipation == null ? null : WorkflowExpression.Compile(bodysurveyDefinitionallowMultipleParticipation);
+            WorkflowExpression.Validate(__workflow_bodysurveyDefinitionallowMultipleParticipation, nameof(bodysurveyDefinitionallowMultipleParticipation), required: true);
+            var __workflow_bodysurveyDefinitionallowNavigateBack = bodysurveyDefinitionallowNavigateBack == null ? null : WorkflowExpression.Compile(bodysurveyDefinitionallowNavigateBack);
+            WorkflowExpression.Validate(__workflow_bodysurveyDefinitionallowNavigateBack, nameof(bodysurveyDefinitionallowNavigateBack), required: true);
+            var __workflow_bodysurveyDefinitionrandomizeSections = bodysurveyDefinitionrandomizeSections == null ? null : WorkflowExpression.Compile(bodysurveyDefinitionrandomizeSections);
+            WorkflowExpression.Validate(__workflow_bodysurveyDefinitionrandomizeSections, nameof(bodysurveyDefinitionrandomizeSections), required: true);
+            var __workflow_bodysurveyDefinitiondefaultLanguage = bodysurveyDefinitiondefaultLanguage == null ? null : WorkflowExpression.Compile(bodysurveyDefinitiondefaultLanguage);
+            WorkflowExpression.Validate(__workflow_bodysurveyDefinitiondefaultLanguage, nameof(bodysurveyDefinitiondefaultLanguage), required: true);
+            var __workflow_bodysurveyDefinitionlanguages = bodysurveyDefinitionlanguages == null ? null : WorkflowExpression.Compile(bodysurveyDefinitionlanguages);
+            WorkflowExpression.Validate(__workflow_bodysurveyDefinitionlanguages, nameof(bodysurveyDefinitionlanguages), required: true);
+            var __workflow_bodysurveyDefinitionsections = bodysurveyDefinitionsections == null ? null : WorkflowExpression.Compile(bodysurveyDefinitionsections);
+            WorkflowExpression.Validate(__workflow_bodysurveyDefinitionsections, nameof(bodysurveyDefinitionsections), required: true);
+            var __workflow_bodysurveyDefinitioncustomVariables = bodysurveyDefinitioncustomVariables == null ? null : WorkflowExpression.Compile(bodysurveyDefinitioncustomVariables);
+            WorkflowExpression.Validate(__workflow_bodysurveyDefinitioncustomVariables, nameof(bodysurveyDefinitioncustomVariables), required: true);
+            var __workflow_bodysurveyDefinitionsurveyEndText = bodysurveyDefinitionsurveyEndText == null ? null : WorkflowExpression.Compile(bodysurveyDefinitionsurveyEndText);
+            WorkflowExpression.Validate(__workflow_bodysurveyDefinitionsurveyEndText, nameof(bodysurveyDefinitionsurveyEndText), required: true);
+            var __workflow_bodysurveyConfigurationanonymizingConfigurationlogIp = bodysurveyConfigurationanonymizingConfigurationlogIp == null ? null : WorkflowExpression.Compile(bodysurveyConfigurationanonymizingConfigurationlogIp);
+            WorkflowExpression.Validate(__workflow_bodysurveyConfigurationanonymizingConfigurationlogIp, nameof(bodysurveyConfigurationanonymizingConfigurationlogIp), required: true);
+            var __workflow_bodysurveyConfigurationanonymizingConfigurationlogUserAgent = bodysurveyConfigurationanonymizingConfigurationlogUserAgent == null ? null : WorkflowExpression.Compile(bodysurveyConfigurationanonymizingConfigurationlogUserAgent);
+            WorkflowExpression.Validate(__workflow_bodysurveyConfigurationanonymizingConfigurationlogUserAgent, nameof(bodysurveyConfigurationanonymizingConfigurationlogUserAgent), required: true);
+            var __workflow_bodysurveyConfigurationanonymizingConfigurationlogReferer = bodysurveyConfigurationanonymizingConfigurationlogReferer == null ? null : WorkflowExpression.Compile(bodysurveyConfigurationanonymizingConfigurationlogReferer);
+            WorkflowExpression.Validate(__workflow_bodysurveyConfigurationanonymizingConfigurationlogReferer, nameof(bodysurveyConfigurationanonymizingConfigurationlogReferer), required: true);
+            var __workflow_bodysurveyDefinitionallowSaveProgress = bodysurveyDefinitionallowSaveProgress == null ? null : WorkflowExpression.Compile(bodysurveyDefinitionallowSaveProgress);
+            WorkflowExpression.Validate(__workflow_bodysurveyDefinitionallowSaveProgress, nameof(bodysurveyDefinitionallowSaveProgress), required: false);
+            var __workflow_bodysurveyDefinitionenableAutoScroll = bodysurveyDefinitionenableAutoScroll == null ? null : WorkflowExpression.Compile(bodysurveyDefinitionenableAutoScroll);
+            WorkflowExpression.Validate(__workflow_bodysurveyDefinitionenableAutoScroll, nameof(bodysurveyDefinitionenableAutoScroll), required: false);
+            var __workflow_bodysurveyDefinitionenableCodeAccess = bodysurveyDefinitionenableCodeAccess == null ? null : WorkflowExpression.Compile(bodysurveyDefinitionenableCodeAccess);
+            WorkflowExpression.Validate(__workflow_bodysurveyDefinitionenableCodeAccess, nameof(bodysurveyDefinitionenableCodeAccess), required: false);
+            var __workflow_bodysurveyDefinitiondataAccessControlaccessType = bodysurveyDefinitiondataAccessControlaccessType == null ? null : WorkflowExpression.Compile(bodysurveyDefinitiondataAccessControlaccessType);
+            WorkflowExpression.Validate(__workflow_bodysurveyDefinitiondataAccessControlaccessType, nameof(bodysurveyDefinitiondataAccessControlaccessType), required: false);
+            var __workflow_bodysurveyDefinitiondataAccessControlconditions = bodysurveyDefinitiondataAccessControlconditions == null ? null : WorkflowExpression.Compile(bodysurveyDefinitiondataAccessControlconditions);
+            WorkflowExpression.Validate(__workflow_bodysurveyDefinitiondataAccessControlconditions, nameof(bodysurveyDefinitiondataAccessControlconditions), required: false);
+            var __workflow_bodysurveyDefinitionassociatedPanels = bodysurveyDefinitionassociatedPanels == null ? null : WorkflowExpression.Compile(bodysurveyDefinitionassociatedPanels);
+            WorkflowExpression.Validate(__workflow_bodysurveyDefinitionassociatedPanels, nameof(bodysurveyDefinitionassociatedPanels), required: false);
+            var __workflow_bodysurveyDefinitioncodeAccessMode = bodysurveyDefinitioncodeAccessMode == null ? null : WorkflowExpression.Compile(bodysurveyDefinitioncodeAccessMode);
+            WorkflowExpression.Validate(__workflow_bodysurveyDefinitioncodeAccessMode, nameof(bodysurveyDefinitioncodeAccessMode), required: false);
+            var __workflow_bodysurveyDefinitionenablePanelSync = bodysurveyDefinitionenablePanelSync == null ? null : WorkflowExpression.Compile(bodysurveyDefinitionenablePanelSync);
+            WorkflowExpression.Validate(__workflow_bodysurveyDefinitionenablePanelSync, nameof(bodysurveyDefinitionenablePanelSync), required: false);
+            var __workflow_bodysurveyDefinitionpanelSyncBehaviour = bodysurveyDefinitionpanelSyncBehaviour == null ? null : WorkflowExpression.Compile(bodysurveyDefinitionpanelSyncBehaviour);
+            WorkflowExpression.Validate(__workflow_bodysurveyDefinitionpanelSyncBehaviour, nameof(bodysurveyDefinitionpanelSyncBehaviour), required: false);
+            var __workflow_bodysurveyDefinitionpanelSyncs = bodysurveyDefinitionpanelSyncs == null ? null : WorkflowExpression.Compile(bodysurveyDefinitionpanelSyncs);
+            WorkflowExpression.Validate(__workflow_bodysurveyDefinitionpanelSyncs, nameof(bodysurveyDefinitionpanelSyncs), required: false);
+            var __workflow_bodysurveyDefinitionendDate = bodysurveyDefinitionendDate == null ? null : WorkflowExpression.Compile(bodysurveyDefinitionendDate);
+            WorkflowExpression.Validate(__workflow_bodysurveyDefinitionendDate, nameof(bodysurveyDefinitionendDate), required: false);
+            var __workflow_bodysurveyConfigurationdesignConfigurationsurveyDesignLayout = bodysurveyConfigurationdesignConfigurationsurveyDesignLayout == null ? null : WorkflowExpression.Compile(bodysurveyConfigurationdesignConfigurationsurveyDesignLayout);
+            WorkflowExpression.Validate(__workflow_bodysurveyConfigurationdesignConfigurationsurveyDesignLayout, nameof(bodysurveyConfigurationdesignConfigurationsurveyDesignLayout), required: false);
+            var __workflow_bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize = bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize == null ? null : WorkflowExpression.Compile(bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize);
+            WorkflowExpression.Validate(__workflow_bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize, nameof(bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize), required: false);
+            var __workflow_bodysurveyConfigurationdesignConfigurationtextBlocks = bodysurveyConfigurationdesignConfigurationtextBlocks == null ? null : WorkflowExpression.Compile(bodysurveyConfigurationdesignConfigurationtextBlocks);
+            WorkflowExpression.Validate(__workflow_bodysurveyConfigurationdesignConfigurationtextBlocks, nameof(bodysurveyConfigurationdesignConfigurationtextBlocks), required: false);
+            var __workflow_bodysurveyConfigurationanonymizingConfigurationanonymizingMode = bodysurveyConfigurationanonymizingConfigurationanonymizingMode == null ? null : WorkflowExpression.Compile(bodysurveyConfigurationanonymizingConfigurationanonymizingMode);
+            WorkflowExpression.Validate(__workflow_bodysurveyConfigurationanonymizingConfigurationanonymizingMode, nameof(bodysurveyConfigurationanonymizingConfigurationanonymizingMode), required: false);
             return new DeferredBodyAction<CreateSurveyResponse>(() =>
             {
                 var apiCallPath = "/publicapi/Survey/v3/CreateSurvey";
@@ -283,46 +297,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["workspaceId"] = ExpressionConverter.ConvertO(bodyworkspaceId);
+                body["workspaceId"] = ExpressionConverter.ConvertO(__workflow_bodyworkspaceId);
                 bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
                 var surveyDefinitionObject = new JObject();
                 var surveyDefinitionObjectpropCount = 0;
                 surveyDefinitionObjectpropCount++;
-                surveyDefinitionObject["allowMultipleParticipation"] = ExpressionConverter.ConvertO(bodysurveyDefinitionallowMultipleParticipation);
+                surveyDefinitionObject["allowMultipleParticipation"] = ExpressionConverter.ConvertO(__workflow_bodysurveyDefinitionallowMultipleParticipation);
                 surveyDefinitionObjectpropCount++;
-                surveyDefinitionObject["allowNavigateBack"] = ExpressionConverter.ConvertO(bodysurveyDefinitionallowNavigateBack);
-                if (bodysurveyDefinitionallowSaveProgress != null)
+                surveyDefinitionObject["allowNavigateBack"] = ExpressionConverter.ConvertO(__workflow_bodysurveyDefinitionallowNavigateBack);
+                if (__workflow_bodysurveyDefinitionallowSaveProgress != null)
                 {
-                    surveyDefinitionObject["allowSaveProgress"] = ExpressionConverter.ConvertO(bodysurveyDefinitionallowSaveProgress);
+                    surveyDefinitionObject["allowSaveProgress"] = ExpressionConverter.ConvertO(__workflow_bodysurveyDefinitionallowSaveProgress);
                     surveyDefinitionObjectpropCount++;
                 }
 
                 surveyDefinitionObjectpropCount++;
-                surveyDefinitionObject["randomizeSections"] = ExpressionConverter.ConvertO(bodysurveyDefinitionrandomizeSections);
-                if (bodysurveyDefinitionenableAutoScroll != null)
+                surveyDefinitionObject["randomizeSections"] = ExpressionConverter.ConvertO(__workflow_bodysurveyDefinitionrandomizeSections);
+                if (__workflow_bodysurveyDefinitionenableAutoScroll != null)
                 {
-                    surveyDefinitionObject["enableAutoScroll"] = ExpressionConverter.ConvertO(bodysurveyDefinitionenableAutoScroll);
+                    surveyDefinitionObject["enableAutoScroll"] = ExpressionConverter.ConvertO(__workflow_bodysurveyDefinitionenableAutoScroll);
                     surveyDefinitionObjectpropCount++;
                 }
 
-                if (bodysurveyDefinitionenableCodeAccess != null)
+                if (__workflow_bodysurveyDefinitionenableCodeAccess != null)
                 {
-                    surveyDefinitionObject["enableCodeAccess"] = ExpressionConverter.ConvertO(bodysurveyDefinitionenableCodeAccess);
+                    surveyDefinitionObject["enableCodeAccess"] = ExpressionConverter.ConvertO(__workflow_bodysurveyDefinitionenableCodeAccess);
                     surveyDefinitionObjectpropCount++;
                 }
 
                 var dataAccessControlObject = new JObject();
                 var dataAccessControlObjectpropCount = 0;
-                if (bodysurveyDefinitiondataAccessControlaccessType != null)
+                if (__workflow_bodysurveyDefinitiondataAccessControlaccessType != null)
                 {
-                    dataAccessControlObject["accessType"] = ExpressionConverter.ConvertO(bodysurveyDefinitiondataAccessControlaccessType);
+                    dataAccessControlObject["accessType"] = ExpressionConverter.ConvertO(__workflow_bodysurveyDefinitiondataAccessControlaccessType);
                     dataAccessControlObjectpropCount++;
                 }
 
-                if (bodysurveyDefinitiondataAccessControlconditions != null)
+                if (__workflow_bodysurveyDefinitiondataAccessControlconditions != null)
                 {
-                    dataAccessControlObject["conditions"] = ExpressionConverter.ConvertO(bodysurveyDefinitiondataAccessControlconditions);
+                    dataAccessControlObject["conditions"] = ExpressionConverter.ConvertO(__workflow_bodysurveyDefinitiondataAccessControlconditions);
                     dataAccessControlObjectpropCount++;
                 }
 
@@ -332,52 +346,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                     surveyDefinitionObjectpropCount++;
                 }
 
-                if (bodysurveyDefinitionassociatedPanels != null)
+                if (__workflow_bodysurveyDefinitionassociatedPanels != null)
                 {
-                    surveyDefinitionObject["associatedPanels"] = ExpressionConverter.ConvertO(bodysurveyDefinitionassociatedPanels);
+                    surveyDefinitionObject["associatedPanels"] = ExpressionConverter.ConvertO(__workflow_bodysurveyDefinitionassociatedPanels);
                     surveyDefinitionObjectpropCount++;
                 }
 
-                if (bodysurveyDefinitioncodeAccessMode != null)
+                if (__workflow_bodysurveyDefinitioncodeAccessMode != null)
                 {
-                    surveyDefinitionObject["codeAccessMode"] = ExpressionConverter.ConvertO(bodysurveyDefinitioncodeAccessMode);
+                    surveyDefinitionObject["codeAccessMode"] = ExpressionConverter.ConvertO(__workflow_bodysurveyDefinitioncodeAccessMode);
                     surveyDefinitionObjectpropCount++;
                 }
 
-                if (bodysurveyDefinitionenablePanelSync != null)
+                if (__workflow_bodysurveyDefinitionenablePanelSync != null)
                 {
-                    surveyDefinitionObject["enablePanelSync"] = ExpressionConverter.ConvertO(bodysurveyDefinitionenablePanelSync);
+                    surveyDefinitionObject["enablePanelSync"] = ExpressionConverter.ConvertO(__workflow_bodysurveyDefinitionenablePanelSync);
                     surveyDefinitionObjectpropCount++;
                 }
 
-                if (bodysurveyDefinitionpanelSyncBehaviour != null)
+                if (__workflow_bodysurveyDefinitionpanelSyncBehaviour != null)
                 {
-                    surveyDefinitionObject["panelSyncBehaviour"] = ExpressionConverter.ConvertO(bodysurveyDefinitionpanelSyncBehaviour);
+                    surveyDefinitionObject["panelSyncBehaviour"] = ExpressionConverter.ConvertO(__workflow_bodysurveyDefinitionpanelSyncBehaviour);
                     surveyDefinitionObjectpropCount++;
                 }
 
-                if (bodysurveyDefinitionpanelSyncs != null)
+                if (__workflow_bodysurveyDefinitionpanelSyncs != null)
                 {
-                    surveyDefinitionObject["panelSyncs"] = ExpressionConverter.ConvertO(bodysurveyDefinitionpanelSyncs);
-                    surveyDefinitionObjectpropCount++;
-                }
-
-                surveyDefinitionObjectpropCount++;
-                surveyDefinitionObject["defaultLanguage"] = ExpressionConverter.ConvertO(bodysurveyDefinitiondefaultLanguage);
-                if (bodysurveyDefinitionendDate != null)
-                {
-                    surveyDefinitionObject["endDate"] = ExpressionConverter.ConvertO(bodysurveyDefinitionendDate);
+                    surveyDefinitionObject["panelSyncs"] = ExpressionConverter.ConvertO(__workflow_bodysurveyDefinitionpanelSyncs);
                     surveyDefinitionObjectpropCount++;
                 }
 
                 surveyDefinitionObjectpropCount++;
-                surveyDefinitionObject["languages"] = ExpressionConverter.ConvertO(bodysurveyDefinitionlanguages);
+                surveyDefinitionObject["defaultLanguage"] = ExpressionConverter.ConvertO(__workflow_bodysurveyDefinitiondefaultLanguage);
+                if (__workflow_bodysurveyDefinitionendDate != null)
+                {
+                    surveyDefinitionObject["endDate"] = ExpressionConverter.ConvertO(__workflow_bodysurveyDefinitionendDate);
+                    surveyDefinitionObjectpropCount++;
+                }
+
                 surveyDefinitionObjectpropCount++;
-                surveyDefinitionObject["sections"] = ExpressionConverter.ConvertO(bodysurveyDefinitionsections);
+                surveyDefinitionObject["languages"] = ExpressionConverter.ConvertO(__workflow_bodysurveyDefinitionlanguages);
                 surveyDefinitionObjectpropCount++;
-                surveyDefinitionObject["customVariables"] = ExpressionConverter.ConvertO(bodysurveyDefinitioncustomVariables);
+                surveyDefinitionObject["sections"] = ExpressionConverter.ConvertO(__workflow_bodysurveyDefinitionsections);
                 surveyDefinitionObjectpropCount++;
-                surveyDefinitionObject["surveyEndText"] = ExpressionConverter.ConvertO(bodysurveyDefinitionsurveyEndText);
+                surveyDefinitionObject["customVariables"] = ExpressionConverter.ConvertO(__workflow_bodysurveyDefinitioncustomVariables);
+                surveyDefinitionObjectpropCount++;
+                surveyDefinitionObject["surveyEndText"] = ExpressionConverter.ConvertO(__workflow_bodysurveyDefinitionsurveyEndText);
                 var defaultTextOverridesObject = new JObject();
                 var defaultTextOverridesObjectpropCount = 0;
                 if (defaultTextOverridesObjectpropCount > 0)
@@ -396,21 +410,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 var surveyConfigurationObjectpropCount = 0;
                 var designConfigurationObject = new JObject();
                 var designConfigurationObjectpropCount = 0;
-                if (bodysurveyConfigurationdesignConfigurationsurveyDesignLayout != null)
+                if (__workflow_bodysurveyConfigurationdesignConfigurationsurveyDesignLayout != null)
                 {
-                    designConfigurationObject["surveyDesignLayout"] = ExpressionConverter.ConvertO(bodysurveyConfigurationdesignConfigurationsurveyDesignLayout);
+                    designConfigurationObject["surveyDesignLayout"] = ExpressionConverter.ConvertO(__workflow_bodysurveyConfigurationdesignConfigurationsurveyDesignLayout);
                     designConfigurationObjectpropCount++;
                 }
 
-                if (bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize != null)
+                if (__workflow_bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize != null)
                 {
-                    designConfigurationObject["matrixSubQuestionSize"] = ExpressionConverter.ConvertO(bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize);
+                    designConfigurationObject["matrixSubQuestionSize"] = ExpressionConverter.ConvertO(__workflow_bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize);
                     designConfigurationObjectpropCount++;
                 }
 
-                if (bodysurveyConfigurationdesignConfigurationtextBlocks != null)
+                if (__workflow_bodysurveyConfigurationdesignConfigurationtextBlocks != null)
                 {
-                    designConfigurationObject["textBlocks"] = ExpressionConverter.ConvertO(bodysurveyConfigurationdesignConfigurationtextBlocks);
+                    designConfigurationObject["textBlocks"] = ExpressionConverter.ConvertO(__workflow_bodysurveyConfigurationdesignConfigurationtextBlocks);
                     designConfigurationObjectpropCount++;
                 }
 
@@ -422,18 +436,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
 
                 var anonymizingConfigurationObject = new JObject();
                 var anonymizingConfigurationObjectpropCount = 0;
-                if (bodysurveyConfigurationanonymizingConfigurationanonymizingMode != null)
+                if (__workflow_bodysurveyConfigurationanonymizingConfigurationanonymizingMode != null)
                 {
-                    anonymizingConfigurationObject["anonymizingMode"] = ExpressionConverter.ConvertO(bodysurveyConfigurationanonymizingConfigurationanonymizingMode);
+                    anonymizingConfigurationObject["anonymizingMode"] = ExpressionConverter.ConvertO(__workflow_bodysurveyConfigurationanonymizingConfigurationanonymizingMode);
                     anonymizingConfigurationObjectpropCount++;
                 }
 
                 anonymizingConfigurationObjectpropCount++;
-                anonymizingConfigurationObject["logIp"] = ExpressionConverter.ConvertO(bodysurveyConfigurationanonymizingConfigurationlogIp);
+                anonymizingConfigurationObject["logIp"] = ExpressionConverter.ConvertO(__workflow_bodysurveyConfigurationanonymizingConfigurationlogIp);
                 anonymizingConfigurationObjectpropCount++;
-                anonymizingConfigurationObject["logUserAgent"] = ExpressionConverter.ConvertO(bodysurveyConfigurationanonymizingConfigurationlogUserAgent);
+                anonymizingConfigurationObject["logUserAgent"] = ExpressionConverter.ConvertO(__workflow_bodysurveyConfigurationanonymizingConfigurationlogUserAgent);
                 anonymizingConfigurationObjectpropCount++;
-                anonymizingConfigurationObject["logReferer"] = ExpressionConverter.ConvertO(bodysurveyConfigurationanonymizingConfigurationlogReferer);
+                anonymizingConfigurationObject["logReferer"] = ExpressionConverter.ConvertO(__workflow_bodysurveyConfigurationanonymizingConfigurationlogReferer);
                 if (anonymizingConfigurationObjectpropCount > 0)
                 {
                     surveyConfigurationObject["anonymizingConfiguration"] = anonymizingConfigurationObject;
@@ -456,19 +470,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateWebHook))]
-        public IBodyWorkflowAction<CreateWebHookResponse> CreateWebHook([WorkflowExpression] Func<bodyeventTypeInput> bodyeventType = null, [WorkflowExpression] Func<string> bodyentityIdentifier = null, [WorkflowExpression] Func<string> bodysecurityToken = null, [WorkflowExpression] Func<string> bodywebHookUrl = null)
+        public IBodyWorkflowAction<CreateWebHookResponse> CreateWebHook(Expression<Func<bodyeventTypeInput>> bodyeventType = null, Expression<Func<string>> bodyentityIdentifier = null, Expression<Func<string>> bodysecurityToken = null, Expression<Func<string>> bodywebHookUrl = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateWebHookResponse> __BuildCreateWebHook(WorkflowExpression<bodyeventTypeInput> bodyeventType = null, WorkflowExpression<string> bodyentityIdentifier = null, WorkflowExpression<string> bodysecurityToken = null, WorkflowExpression<string> bodywebHookUrl = null)
-        {
-            WorkflowExpression.Validate(bodyeventType, nameof(bodyeventType), required: false);
-            WorkflowExpression.Validate(bodyentityIdentifier, nameof(bodyentityIdentifier), required: false);
-            WorkflowExpression.Validate(bodysecurityToken, nameof(bodysecurityToken), required: false);
-            WorkflowExpression.Validate(bodywebHookUrl, nameof(bodywebHookUrl), required: false);
+            var __workflow_bodyeventType = bodyeventType == null ? null : WorkflowExpression.Compile(bodyeventType);
+            WorkflowExpression.Validate(__workflow_bodyeventType, nameof(bodyeventType), required: false);
+            var __workflow_bodyentityIdentifier = bodyentityIdentifier == null ? null : WorkflowExpression.Compile(bodyentityIdentifier);
+            WorkflowExpression.Validate(__workflow_bodyentityIdentifier, nameof(bodyentityIdentifier), required: false);
+            var __workflow_bodysecurityToken = bodysecurityToken == null ? null : WorkflowExpression.Compile(bodysecurityToken);
+            WorkflowExpression.Validate(__workflow_bodysecurityToken, nameof(bodysecurityToken), required: false);
+            var __workflow_bodywebHookUrl = bodywebHookUrl == null ? null : WorkflowExpression.Compile(bodywebHookUrl);
+            WorkflowExpression.Validate(__workflow_bodywebHookUrl, nameof(bodywebHookUrl), required: false);
             return new DeferredBodyAction<CreateWebHookResponse>(() =>
             {
                 var apiCallPath = "/publicapi/WebHook/v3/CreateWebHook";
@@ -476,27 +487,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyeventType != null)
+                if (__workflow_bodyeventType != null)
                 {
-                    body["eventType"] = ExpressionConverter.ConvertO(bodyeventType);
+                    body["eventType"] = ExpressionConverter.ConvertO(__workflow_bodyeventType);
                     bodypropCount++;
                 }
 
-                if (bodyentityIdentifier != null)
+                if (__workflow_bodyentityIdentifier != null)
                 {
-                    body["entityIdentifier"] = ExpressionConverter.ConvertO(bodyentityIdentifier);
+                    body["entityIdentifier"] = ExpressionConverter.ConvertO(__workflow_bodyentityIdentifier);
                     bodypropCount++;
                 }
 
-                if (bodysecurityToken != null)
+                if (__workflow_bodysecurityToken != null)
                 {
-                    body["securityToken"] = ExpressionConverter.ConvertO(bodysecurityToken);
+                    body["securityToken"] = ExpressionConverter.ConvertO(__workflow_bodysecurityToken);
                     bodypropCount++;
                 }
 
-                if (bodywebHookUrl != null)
+                if (__workflow_bodywebHookUrl != null)
                 {
-                    body["webHookUrl"] = ExpressionConverter.ConvertO(bodywebHookUrl);
+                    body["webHookUrl"] = ExpressionConverter.ConvertO(__workflow_bodywebHookUrl);
                     bodypropCount++;
                 }
 
@@ -510,18 +521,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteArtifact))]
-        public IBodyWorkflowAction<DeleteArtifactResponse> DeleteArtifact([WorkflowExpression] Func<string> bodypath = null, [WorkflowExpression] Func<string> bodyfilename = null, [WorkflowExpression] Func<int> bodyworkspaceId = null)
+        public IBodyWorkflowAction<DeleteArtifactResponse> DeleteArtifact(Expression<Func<string>> bodypath = null, Expression<Func<string>> bodyfilename = null, Expression<Func<int>> bodyworkspaceId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DeleteArtifactResponse> __BuildDeleteArtifact(WorkflowExpression<string> bodypath = null, WorkflowExpression<string> bodyfilename = null, WorkflowExpression<int> bodyworkspaceId = null)
-        {
-            WorkflowExpression.Validate(bodypath, nameof(bodypath), required: false);
-            WorkflowExpression.Validate(bodyfilename, nameof(bodyfilename), required: false);
-            WorkflowExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: false);
+            var __workflow_bodypath = bodypath == null ? null : WorkflowExpression.Compile(bodypath);
+            WorkflowExpression.Validate(__workflow_bodypath, nameof(bodypath), required: false);
+            var __workflow_bodyfilename = bodyfilename == null ? null : WorkflowExpression.Compile(bodyfilename);
+            WorkflowExpression.Validate(__workflow_bodyfilename, nameof(bodyfilename), required: false);
+            var __workflow_bodyworkspaceId = bodyworkspaceId == null ? null : WorkflowExpression.Compile(bodyworkspaceId);
+            WorkflowExpression.Validate(__workflow_bodyworkspaceId, nameof(bodyworkspaceId), required: false);
             return new DeferredBodyAction<DeleteArtifactResponse>(() =>
             {
                 var apiCallPath = "/publicapi/Common/v3/DeleteArtifact";
@@ -529,21 +536,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodypath != null)
+                if (__workflow_bodypath != null)
                 {
-                    body["path"] = ExpressionConverter.ConvertO(bodypath);
+                    body["path"] = ExpressionConverter.ConvertO(__workflow_bodypath);
                     bodypropCount++;
                 }
 
-                if (bodyfilename != null)
+                if (__workflow_bodyfilename != null)
                 {
-                    body["filename"] = ExpressionConverter.ConvertO(bodyfilename);
+                    body["filename"] = ExpressionConverter.ConvertO(__workflow_bodyfilename);
                     bodypropCount++;
                 }
 
-                if (bodyworkspaceId != null)
+                if (__workflow_bodyworkspaceId != null)
                 {
-                    body["workspaceId"] = ExpressionConverter.ConvertO(bodyworkspaceId);
+                    body["workspaceId"] = ExpressionConverter.ConvertO(__workflow_bodyworkspaceId);
                     bodypropCount++;
                 }
 
@@ -557,17 +564,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteDistributor))]
-        public IBodyWorkflowAction<DeleteDistributorResponse> DeleteDistributor([WorkflowExpression] Func<int> bodydistributorId, [WorkflowExpression] Func<bool> bodykeepInterviews = null)
+        public IBodyWorkflowAction<DeleteDistributorResponse> DeleteDistributor(Expression<Func<int>> bodydistributorId, Expression<Func<bool>> bodykeepInterviews = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DeleteDistributorResponse> __BuildDeleteDistributor(WorkflowExpression<int> bodydistributorId, WorkflowExpression<bool> bodykeepInterviews = null)
-        {
-            WorkflowExpression.Validate(bodydistributorId, nameof(bodydistributorId), required: true);
-            WorkflowExpression.Validate(bodykeepInterviews, nameof(bodykeepInterviews), required: false);
+            var __workflow_bodydistributorId = bodydistributorId == null ? null : WorkflowExpression.Compile(bodydistributorId);
+            WorkflowExpression.Validate(__workflow_bodydistributorId, nameof(bodydistributorId), required: true);
+            var __workflow_bodykeepInterviews = bodykeepInterviews == null ? null : WorkflowExpression.Compile(bodykeepInterviews);
+            WorkflowExpression.Validate(__workflow_bodykeepInterviews, nameof(bodykeepInterviews), required: false);
             return new DeferredBodyAction<DeleteDistributorResponse>(() =>
             {
                 var apiCallPath = "/publicapi/Distribute/v3/DeleteDistributor";
@@ -576,10 +578,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["distributorId"] = ExpressionConverter.ConvertO(bodydistributorId);
-                if (bodykeepInterviews != null)
+                body["distributorId"] = ExpressionConverter.ConvertO(__workflow_bodydistributorId);
+                if (__workflow_bodykeepInterviews != null)
                 {
-                    body["keepInterviews"] = ExpressionConverter.ConvertO(bodykeepInterviews);
+                    body["keepInterviews"] = ExpressionConverter.ConvertO(__workflow_bodykeepInterviews);
                     bodypropCount++;
                 }
 
@@ -593,17 +595,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteInterview))]
-        public IBodyWorkflowAction<DeleteInterviewResponse> DeleteInterview([WorkflowExpression] Func<string> bodyinterviewId = null, [WorkflowExpression] Func<int> bodysurveyId = null)
+        public IBodyWorkflowAction<DeleteInterviewResponse> DeleteInterview(Expression<Func<string>> bodyinterviewId = null, Expression<Func<int>> bodysurveyId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DeleteInterviewResponse> __BuildDeleteInterview(WorkflowExpression<string> bodyinterviewId = null, WorkflowExpression<int> bodysurveyId = null)
-        {
-            WorkflowExpression.Validate(bodyinterviewId, nameof(bodyinterviewId), required: false);
-            WorkflowExpression.Validate(bodysurveyId, nameof(bodysurveyId), required: false);
+            var __workflow_bodyinterviewId = bodyinterviewId == null ? null : WorkflowExpression.Compile(bodyinterviewId);
+            WorkflowExpression.Validate(__workflow_bodyinterviewId, nameof(bodyinterviewId), required: false);
+            var __workflow_bodysurveyId = bodysurveyId == null ? null : WorkflowExpression.Compile(bodysurveyId);
+            WorkflowExpression.Validate(__workflow_bodysurveyId, nameof(bodysurveyId), required: false);
             return new DeferredBodyAction<DeleteInterviewResponse>(() =>
             {
                 var apiCallPath = "/publicapi/Interview/v3/DeleteInterview";
@@ -611,15 +608,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyinterviewId != null)
+                if (__workflow_bodyinterviewId != null)
                 {
-                    body["interviewId"] = ExpressionConverter.ConvertO(bodyinterviewId);
+                    body["interviewId"] = ExpressionConverter.ConvertO(__workflow_bodyinterviewId);
                     bodypropCount++;
                 }
 
-                if (bodysurveyId != null)
+                if (__workflow_bodysurveyId != null)
                 {
-                    body["surveyId"] = ExpressionConverter.ConvertO(bodysurveyId);
+                    body["surveyId"] = ExpressionConverter.ConvertO(__workflow_bodysurveyId);
                     bodypropCount++;
                 }
 
@@ -633,18 +630,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteMembers))]
-        public IBodyWorkflowAction<DeleteMembersResponse> DeleteMembers([WorkflowExpression] Func<int> bodypanelId, [WorkflowExpression] Func<int[]> bodypanelMembersIds, [WorkflowExpression] Func<bool> bodykeepInterviews = null)
+        public IBodyWorkflowAction<DeleteMembersResponse> DeleteMembers(Expression<Func<int>> bodypanelId, Expression<Func<int[]>> bodypanelMembersIds, Expression<Func<bool>> bodykeepInterviews = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DeleteMembersResponse> __BuildDeleteMembers(WorkflowExpression<int> bodypanelId, WorkflowExpression<int[]> bodypanelMembersIds, WorkflowExpression<bool> bodykeepInterviews = null)
-        {
-            WorkflowExpression.Validate(bodypanelId, nameof(bodypanelId), required: true);
-            WorkflowExpression.Validate(bodypanelMembersIds, nameof(bodypanelMembersIds), required: true);
-            WorkflowExpression.Validate(bodykeepInterviews, nameof(bodykeepInterviews), required: false);
+            var __workflow_bodypanelId = bodypanelId == null ? null : WorkflowExpression.Compile(bodypanelId);
+            WorkflowExpression.Validate(__workflow_bodypanelId, nameof(bodypanelId), required: true);
+            var __workflow_bodypanelMembersIds = bodypanelMembersIds == null ? null : WorkflowExpression.Compile(bodypanelMembersIds);
+            WorkflowExpression.Validate(__workflow_bodypanelMembersIds, nameof(bodypanelMembersIds), required: true);
+            var __workflow_bodykeepInterviews = bodykeepInterviews == null ? null : WorkflowExpression.Compile(bodykeepInterviews);
+            WorkflowExpression.Validate(__workflow_bodykeepInterviews, nameof(bodykeepInterviews), required: false);
             return new DeferredBodyAction<DeleteMembersResponse>(() =>
             {
                 var apiCallPath = "/publicapi/Panel/v3/DeleteMembers";
@@ -653,12 +646,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["panelId"] = ExpressionConverter.ConvertO(bodypanelId);
+                body["panelId"] = ExpressionConverter.ConvertO(__workflow_bodypanelId);
                 bodypropCount++;
-                body["panelMembersIds"] = ExpressionConverter.ConvertO(bodypanelMembersIds);
-                if (bodykeepInterviews != null)
+                body["panelMembersIds"] = ExpressionConverter.ConvertO(__workflow_bodypanelMembersIds);
+                if (__workflow_bodykeepInterviews != null)
                 {
-                    body["keepInterviews"] = ExpressionConverter.ConvertO(bodykeepInterviews);
+                    body["keepInterviews"] = ExpressionConverter.ConvertO(__workflow_bodykeepInterviews);
                     bodypropCount++;
                 }
 
@@ -672,17 +665,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        [WorkflowExpressionFactory(nameof(__BuildDeletePanel))]
-        public IBodyWorkflowAction<DeletePanelResponse> DeletePanel([WorkflowExpression] Func<int> bodypanelId, [WorkflowExpression] Func<bool> bodykeepInterviews = null)
+        public IBodyWorkflowAction<DeletePanelResponse> DeletePanel(Expression<Func<int>> bodypanelId, Expression<Func<bool>> bodykeepInterviews = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DeletePanelResponse> __BuildDeletePanel(WorkflowExpression<int> bodypanelId, WorkflowExpression<bool> bodykeepInterviews = null)
-        {
-            WorkflowExpression.Validate(bodypanelId, nameof(bodypanelId), required: true);
-            WorkflowExpression.Validate(bodykeepInterviews, nameof(bodykeepInterviews), required: false);
+            var __workflow_bodypanelId = bodypanelId == null ? null : WorkflowExpression.Compile(bodypanelId);
+            WorkflowExpression.Validate(__workflow_bodypanelId, nameof(bodypanelId), required: true);
+            var __workflow_bodykeepInterviews = bodykeepInterviews == null ? null : WorkflowExpression.Compile(bodykeepInterviews);
+            WorkflowExpression.Validate(__workflow_bodykeepInterviews, nameof(bodykeepInterviews), required: false);
             return new DeferredBodyAction<DeletePanelResponse>(() =>
             {
                 var apiCallPath = "/publicapi/Panel/v3/DeletePanel";
@@ -691,10 +679,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["panelId"] = ExpressionConverter.ConvertO(bodypanelId);
-                if (bodykeepInterviews != null)
+                body["panelId"] = ExpressionConverter.ConvertO(__workflow_bodypanelId);
+                if (__workflow_bodykeepInterviews != null)
                 {
-                    body["keepInterviews"] = ExpressionConverter.ConvertO(bodykeepInterviews);
+                    body["keepInterviews"] = ExpressionConverter.ConvertO(__workflow_bodykeepInterviews);
                     bodypropCount++;
                 }
 
@@ -708,17 +696,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteSamplingProject))]
-        public IBodyWorkflowAction<DeleteSamplingProjectResponse> DeleteSamplingProject([WorkflowExpression] Func<int> bodysamplingProjectId = null, [WorkflowExpression] Func<bool> bodykeepInterviews = null)
+        public IBodyWorkflowAction<DeleteSamplingProjectResponse> DeleteSamplingProject(Expression<Func<int>> bodysamplingProjectId = null, Expression<Func<bool>> bodykeepInterviews = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DeleteSamplingProjectResponse> __BuildDeleteSamplingProject(WorkflowExpression<int> bodysamplingProjectId = null, WorkflowExpression<bool> bodykeepInterviews = null)
-        {
-            WorkflowExpression.Validate(bodysamplingProjectId, nameof(bodysamplingProjectId), required: false);
-            WorkflowExpression.Validate(bodykeepInterviews, nameof(bodykeepInterviews), required: false);
+            var __workflow_bodysamplingProjectId = bodysamplingProjectId == null ? null : WorkflowExpression.Compile(bodysamplingProjectId);
+            WorkflowExpression.Validate(__workflow_bodysamplingProjectId, nameof(bodysamplingProjectId), required: false);
+            var __workflow_bodykeepInterviews = bodykeepInterviews == null ? null : WorkflowExpression.Compile(bodykeepInterviews);
+            WorkflowExpression.Validate(__workflow_bodykeepInterviews, nameof(bodykeepInterviews), required: false);
             return new DeferredBodyAction<DeleteSamplingProjectResponse>(() =>
             {
                 var apiCallPath = "/publicapi/Distribute/v3/DeleteSamplingProject";
@@ -726,15 +709,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodysamplingProjectId != null)
+                if (__workflow_bodysamplingProjectId != null)
                 {
-                    body["samplingProjectId"] = ExpressionConverter.ConvertO(bodysamplingProjectId);
+                    body["samplingProjectId"] = ExpressionConverter.ConvertO(__workflow_bodysamplingProjectId);
                     bodypropCount++;
                 }
 
-                if (bodykeepInterviews != null)
+                if (__workflow_bodykeepInterviews != null)
                 {
-                    body["keepInterviews"] = ExpressionConverter.ConvertO(bodykeepInterviews);
+                    body["keepInterviews"] = ExpressionConverter.ConvertO(__workflow_bodykeepInterviews);
                     bodypropCount++;
                 }
 
@@ -748,16 +731,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteSurvey))]
-        public IBodyWorkflowAction<DeleteSurveyResponse> DeleteSurvey([WorkflowExpression] Func<int> bodysurveyId)
+        public IBodyWorkflowAction<DeleteSurveyResponse> DeleteSurvey(Expression<Func<int>> bodysurveyId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DeleteSurveyResponse> __BuildDeleteSurvey(WorkflowExpression<int> bodysurveyId)
-        {
-            WorkflowExpression.Validate(bodysurveyId, nameof(bodysurveyId), required: true);
+            var __workflow_bodysurveyId = bodysurveyId == null ? null : WorkflowExpression.Compile(bodysurveyId);
+            WorkflowExpression.Validate(__workflow_bodysurveyId, nameof(bodysurveyId), required: true);
             return new DeferredBodyAction<DeleteSurveyResponse>(() =>
             {
                 var apiCallPath = "/publicapi/Survey/v3/DeleteSurvey";
@@ -766,7 +743,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["surveyId"] = ExpressionConverter.ConvertO(bodysurveyId);
+                body["surveyId"] = ExpressionConverter.ConvertO(__workflow_bodysurveyId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -777,16 +754,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteWebHook))]
-        public IBodyWorkflowAction<DeleteWebHookResponse> DeleteWebHook([WorkflowExpression] Func<string> bodywebHookId = null)
+        public IBodyWorkflowAction<DeleteWebHookResponse> DeleteWebHook(Expression<Func<string>> bodywebHookId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DeleteWebHookResponse> __BuildDeleteWebHook(WorkflowExpression<string> bodywebHookId = null)
-        {
-            WorkflowExpression.Validate(bodywebHookId, nameof(bodywebHookId), required: false);
+            var __workflow_bodywebHookId = bodywebHookId == null ? null : WorkflowExpression.Compile(bodywebHookId);
+            WorkflowExpression.Validate(__workflow_bodywebHookId, nameof(bodywebHookId), required: false);
             return new DeferredBodyAction<DeleteWebHookResponse>(() =>
             {
                 var apiCallPath = "/publicapi/WebHook/v3/DeleteWebHook";
@@ -794,9 +765,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodywebHookId != null)
+                if (__workflow_bodywebHookId != null)
                 {
-                    body["webHookId"] = ExpressionConverter.ConvertO(bodywebHookId);
+                    body["webHookId"] = ExpressionConverter.ConvertO(__workflow_bodywebHookId);
                     bodypropCount++;
                 }
 
@@ -810,50 +781,53 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        [WorkflowExpressionFactory(nameof(__BuildDownloadInterviewPdf))]
-        public IBodyWorkflowAction<DownloadAnswersResponse> DownloadInterviewPdf([WorkflowExpression] Func<string> tenant, [WorkflowExpression] Func<int> surveyId, [WorkflowExpression] Func<string> interviewId, [WorkflowExpression] Func<bool> showPartialCompleted = null, [WorkflowExpression] Func<string> locale = null, [WorkflowExpression] Func<string> timeZone = null, [WorkflowExpression] Func<bool> bodyisCancellationRequested = null, [WorkflowExpression] Func<bool> bodycanBeCanceled = null, [WorkflowExpression] Func<bool> bodywaitHandlesafeWaitHandleisInvalid = null, [WorkflowExpression] Func<bool> bodywaitHandlesafeWaitHandleisClosed = null)
+        public IBodyWorkflowAction<DownloadAnswersResponse> DownloadInterviewPdf(Expression<Func<string>> tenant, Expression<Func<int>> surveyId, Expression<Func<string>> interviewId, Expression<Func<bool>> showPartialCompleted = null, Expression<Func<string>> locale = null, Expression<Func<string>> timeZone = null, Expression<Func<bool>> bodyisCancellationRequested = null, Expression<Func<bool>> bodycanBeCanceled = null, Expression<Func<bool>> bodywaitHandlesafeWaitHandleisInvalid = null, Expression<Func<bool>> bodywaitHandlesafeWaitHandleisClosed = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DownloadAnswersResponse> __BuildDownloadInterviewPdf(WorkflowExpression<string> tenant, WorkflowExpression<int> surveyId, WorkflowExpression<string> interviewId, WorkflowExpression<bool> showPartialCompleted = null, WorkflowExpression<string> locale = null, WorkflowExpression<string> timeZone = null, WorkflowExpression<bool> bodyisCancellationRequested = null, WorkflowExpression<bool> bodycanBeCanceled = null, WorkflowExpression<bool> bodywaitHandlesafeWaitHandleisInvalid = null, WorkflowExpression<bool> bodywaitHandlesafeWaitHandleisClosed = null)
-        {
-            WorkflowExpression.Validate(tenant, nameof(tenant), required: true);
-            WorkflowExpression.Validate(surveyId, nameof(surveyId), required: true);
-            WorkflowExpression.Validate(interviewId, nameof(interviewId), required: true);
-            WorkflowExpression.Validate(showPartialCompleted, nameof(showPartialCompleted), required: false);
-            WorkflowExpression.Validate(locale, nameof(locale), required: false);
-            WorkflowExpression.Validate(timeZone, nameof(timeZone), required: false);
-            WorkflowExpression.Validate(bodyisCancellationRequested, nameof(bodyisCancellationRequested), required: false);
-            WorkflowExpression.Validate(bodycanBeCanceled, nameof(bodycanBeCanceled), required: false);
-            WorkflowExpression.Validate(bodywaitHandlesafeWaitHandleisInvalid, nameof(bodywaitHandlesafeWaitHandleisInvalid), required: false);
-            WorkflowExpression.Validate(bodywaitHandlesafeWaitHandleisClosed, nameof(bodywaitHandlesafeWaitHandleisClosed), required: false);
+            var __workflow_tenant = tenant == null ? null : WorkflowExpression.Compile(tenant);
+            WorkflowExpression.Validate(__workflow_tenant, nameof(tenant), required: true);
+            var __workflow_surveyId = surveyId == null ? null : WorkflowExpression.Compile(surveyId);
+            WorkflowExpression.Validate(__workflow_surveyId, nameof(surveyId), required: true);
+            var __workflow_interviewId = interviewId == null ? null : WorkflowExpression.Compile(interviewId);
+            WorkflowExpression.Validate(__workflow_interviewId, nameof(interviewId), required: true);
+            var __workflow_showPartialCompleted = showPartialCompleted == null ? null : WorkflowExpression.Compile(showPartialCompleted);
+            WorkflowExpression.Validate(__workflow_showPartialCompleted, nameof(showPartialCompleted), required: false);
+            var __workflow_locale = locale == null ? null : WorkflowExpression.Compile(locale);
+            WorkflowExpression.Validate(__workflow_locale, nameof(locale), required: false);
+            var __workflow_timeZone = timeZone == null ? null : WorkflowExpression.Compile(timeZone);
+            WorkflowExpression.Validate(__workflow_timeZone, nameof(timeZone), required: false);
+            var __workflow_bodyisCancellationRequested = bodyisCancellationRequested == null ? null : WorkflowExpression.Compile(bodyisCancellationRequested);
+            WorkflowExpression.Validate(__workflow_bodyisCancellationRequested, nameof(bodyisCancellationRequested), required: false);
+            var __workflow_bodycanBeCanceled = bodycanBeCanceled == null ? null : WorkflowExpression.Compile(bodycanBeCanceled);
+            WorkflowExpression.Validate(__workflow_bodycanBeCanceled, nameof(bodycanBeCanceled), required: false);
+            var __workflow_bodywaitHandlesafeWaitHandleisInvalid = bodywaitHandlesafeWaitHandleisInvalid == null ? null : WorkflowExpression.Compile(bodywaitHandlesafeWaitHandleisInvalid);
+            WorkflowExpression.Validate(__workflow_bodywaitHandlesafeWaitHandleisInvalid, nameof(bodywaitHandlesafeWaitHandleisInvalid), required: false);
+            var __workflow_bodywaitHandlesafeWaitHandleisClosed = bodywaitHandlesafeWaitHandleisClosed == null ? null : WorkflowExpression.Compile(bodywaitHandlesafeWaitHandleisClosed);
+            WorkflowExpression.Validate(__workflow_bodywaitHandlesafeWaitHandleisClosed, nameof(bodywaitHandlesafeWaitHandleisClosed), required: false);
             return new DeferredBodyAction<DownloadAnswersResponse>(() =>
             {
                 var apiCallPath = "/publicapi/Interview/v3/DownloadAnswers";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["tenant"] = ExpressionConverter.Convert(tenant);
-                callPayload.Queries["surveyId"] = ExpressionConverter.Convert(surveyId);
-                callPayload.Queries["interviewId"] = ExpressionConverter.Convert(interviewId);
-                if (showPartialCompleted != null)
-                    callPayload.Queries["showPartialCompleted"] = ExpressionConverter.Convert(showPartialCompleted);
-                if (locale != null)
-                    callPayload.Queries["locale"] = ExpressionConverter.Convert(locale);
-                if (timeZone != null)
-                    callPayload.Queries["timeZone"] = ExpressionConverter.Convert(timeZone);
+                callPayload.Queries["tenant"] = ExpressionConverter.Convert(__workflow_tenant);
+                callPayload.Queries["surveyId"] = ExpressionConverter.Convert(__workflow_surveyId);
+                callPayload.Queries["interviewId"] = ExpressionConverter.Convert(__workflow_interviewId);
+                if (__workflow_showPartialCompleted != null)
+                    callPayload.Queries["showPartialCompleted"] = ExpressionConverter.Convert(__workflow_showPartialCompleted);
+                if (__workflow_locale != null)
+                    callPayload.Queries["locale"] = ExpressionConverter.Convert(__workflow_locale);
+                if (__workflow_timeZone != null)
+                    callPayload.Queries["timeZone"] = ExpressionConverter.Convert(__workflow_timeZone);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyisCancellationRequested != null)
+                if (__workflow_bodyisCancellationRequested != null)
                 {
-                    body["isCancellationRequested"] = ExpressionConverter.ConvertO(bodyisCancellationRequested);
+                    body["isCancellationRequested"] = ExpressionConverter.ConvertO(__workflow_bodyisCancellationRequested);
                     bodypropCount++;
                 }
 
-                if (bodycanBeCanceled != null)
+                if (__workflow_bodycanBeCanceled != null)
                 {
-                    body["canBeCanceled"] = ExpressionConverter.ConvertO(bodycanBeCanceled);
+                    body["canBeCanceled"] = ExpressionConverter.ConvertO(__workflow_bodycanBeCanceled);
                     bodypropCount++;
                 }
 
@@ -861,15 +835,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 var waitHandleObjectpropCount = 0;
                 var safeWaitHandleObject = new JObject();
                 var safeWaitHandleObjectpropCount = 0;
-                if (bodywaitHandlesafeWaitHandleisInvalid != null)
+                if (__workflow_bodywaitHandlesafeWaitHandleisInvalid != null)
                 {
-                    safeWaitHandleObject["isInvalid"] = ExpressionConverter.ConvertO(bodywaitHandlesafeWaitHandleisInvalid);
+                    safeWaitHandleObject["isInvalid"] = ExpressionConverter.ConvertO(__workflow_bodywaitHandlesafeWaitHandleisInvalid);
                     safeWaitHandleObjectpropCount++;
                 }
 
-                if (bodywaitHandlesafeWaitHandleisClosed != null)
+                if (__workflow_bodywaitHandlesafeWaitHandleisClosed != null)
                 {
-                    safeWaitHandleObject["isClosed"] = ExpressionConverter.ConvertO(bodywaitHandlesafeWaitHandleisClosed);
+                    safeWaitHandleObject["isClosed"] = ExpressionConverter.ConvertO(__workflow_bodywaitHandlesafeWaitHandleisClosed);
                     safeWaitHandleObjectpropCount++;
                 }
 
@@ -895,26 +869,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        [WorkflowExpressionFactory(nameof(__BuildExecuteSendMail))]
-        public IBodyWorkflowAction<ExecuteSendMailResponse> ExecuteSendMail([WorkflowExpression] Func<string> bodylanguage, [WorkflowExpression] Func<string> bodyfrom, [WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<int> bodymessageTemplateId = null, [WorkflowExpression] Func<TextBlock[]> bodytextBlocks = null, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<string> bodybody = null, [WorkflowExpression] Func<string> bodyfromName = null, [WorkflowExpression] Func<string> bodytoName = null, [WorkflowExpression] Func<string> bodyreplyTo = null, [WorkflowExpression] Func<string> bodyreplyToName = null)
+        public IBodyWorkflowAction<ExecuteSendMailResponse> ExecuteSendMail(Expression<Func<string>> bodylanguage, Expression<Func<string>> bodyfrom, Expression<Func<string>> bodyto, Expression<Func<int>> bodymessageTemplateId = null, Expression<Func<TextBlock[]>> bodytextBlocks = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodybody = null, Expression<Func<string>> bodyfromName = null, Expression<Func<string>> bodytoName = null, Expression<Func<string>> bodyreplyTo = null, Expression<Func<string>> bodyreplyToName = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ExecuteSendMailResponse> __BuildExecuteSendMail(WorkflowExpression<string> bodylanguage, WorkflowExpression<string> bodyfrom, WorkflowExpression<string> bodyto, WorkflowExpression<int> bodymessageTemplateId = null, WorkflowExpression<TextBlock[]> bodytextBlocks = null, WorkflowExpression<string> bodysubject = null, WorkflowExpression<string> bodybody = null, WorkflowExpression<string> bodyfromName = null, WorkflowExpression<string> bodytoName = null, WorkflowExpression<string> bodyreplyTo = null, WorkflowExpression<string> bodyreplyToName = null)
-        {
-            WorkflowExpression.Validate(bodylanguage, nameof(bodylanguage), required: true);
-            WorkflowExpression.Validate(bodyfrom, nameof(bodyfrom), required: true);
-            WorkflowExpression.Validate(bodyto, nameof(bodyto), required: true);
-            WorkflowExpression.Validate(bodymessageTemplateId, nameof(bodymessageTemplateId), required: false);
-            WorkflowExpression.Validate(bodytextBlocks, nameof(bodytextBlocks), required: false);
-            WorkflowExpression.Validate(bodysubject, nameof(bodysubject), required: false);
-            WorkflowExpression.Validate(bodybody, nameof(bodybody), required: false);
-            WorkflowExpression.Validate(bodyfromName, nameof(bodyfromName), required: false);
-            WorkflowExpression.Validate(bodytoName, nameof(bodytoName), required: false);
-            WorkflowExpression.Validate(bodyreplyTo, nameof(bodyreplyTo), required: false);
-            WorkflowExpression.Validate(bodyreplyToName, nameof(bodyreplyToName), required: false);
+            var __workflow_bodylanguage = bodylanguage == null ? null : WorkflowExpression.Compile(bodylanguage);
+            WorkflowExpression.Validate(__workflow_bodylanguage, nameof(bodylanguage), required: true);
+            var __workflow_bodyfrom = bodyfrom == null ? null : WorkflowExpression.Compile(bodyfrom);
+            WorkflowExpression.Validate(__workflow_bodyfrom, nameof(bodyfrom), required: true);
+            var __workflow_bodyto = bodyto == null ? null : WorkflowExpression.Compile(bodyto);
+            WorkflowExpression.Validate(__workflow_bodyto, nameof(bodyto), required: true);
+            var __workflow_bodymessageTemplateId = bodymessageTemplateId == null ? null : WorkflowExpression.Compile(bodymessageTemplateId);
+            WorkflowExpression.Validate(__workflow_bodymessageTemplateId, nameof(bodymessageTemplateId), required: false);
+            var __workflow_bodytextBlocks = bodytextBlocks == null ? null : WorkflowExpression.Compile(bodytextBlocks);
+            WorkflowExpression.Validate(__workflow_bodytextBlocks, nameof(bodytextBlocks), required: false);
+            var __workflow_bodysubject = bodysubject == null ? null : WorkflowExpression.Compile(bodysubject);
+            WorkflowExpression.Validate(__workflow_bodysubject, nameof(bodysubject), required: false);
+            var __workflow_bodybody = bodybody == null ? null : WorkflowExpression.Compile(bodybody);
+            WorkflowExpression.Validate(__workflow_bodybody, nameof(bodybody), required: false);
+            var __workflow_bodyfromName = bodyfromName == null ? null : WorkflowExpression.Compile(bodyfromName);
+            WorkflowExpression.Validate(__workflow_bodyfromName, nameof(bodyfromName), required: false);
+            var __workflow_bodytoName = bodytoName == null ? null : WorkflowExpression.Compile(bodytoName);
+            WorkflowExpression.Validate(__workflow_bodytoName, nameof(bodytoName), required: false);
+            var __workflow_bodyreplyTo = bodyreplyTo == null ? null : WorkflowExpression.Compile(bodyreplyTo);
+            WorkflowExpression.Validate(__workflow_bodyreplyTo, nameof(bodyreplyTo), required: false);
+            var __workflow_bodyreplyToName = bodyreplyToName == null ? null : WorkflowExpression.Compile(bodyreplyToName);
+            WorkflowExpression.Validate(__workflow_bodyreplyToName, nameof(bodyreplyToName), required: false);
             return new DeferredBodyAction<ExecuteSendMailResponse>(() =>
             {
                 var apiCallPath = "/publicapi/Common/v3/ExecuteSendMail";
@@ -922,57 +900,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodymessageTemplateId != null)
+                if (__workflow_bodymessageTemplateId != null)
                 {
-                    body["messageTemplateId"] = ExpressionConverter.ConvertO(bodymessageTemplateId);
+                    body["messageTemplateId"] = ExpressionConverter.ConvertO(__workflow_bodymessageTemplateId);
                     bodypropCount++;
                 }
 
-                if (bodytextBlocks != null)
+                if (__workflow_bodytextBlocks != null)
                 {
-                    body["textBlocks"] = ExpressionConverter.ConvertO(bodytextBlocks);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["language"] = ExpressionConverter.ConvertO(bodylanguage);
-                if (bodysubject != null)
-                {
-                    body["subject"] = ExpressionConverter.ConvertO(bodysubject);
-                    bodypropCount++;
-                }
-
-                if (bodybody != null)
-                {
-                    body["body"] = ExpressionConverter.ConvertO(bodybody);
+                    body["textBlocks"] = ExpressionConverter.ConvertO(__workflow_bodytextBlocks);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["from"] = ExpressionConverter.ConvertO(bodyfrom);
-                if (bodyfromName != null)
+                body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
+                if (__workflow_bodysubject != null)
                 {
-                    body["fromName"] = ExpressionConverter.ConvertO(bodyfromName);
+                    body["subject"] = ExpressionConverter.ConvertO(__workflow_bodysubject);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodybody != null)
+                {
+                    body["body"] = ExpressionConverter.ConvertO(__workflow_bodybody);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["to"] = ExpressionConverter.ConvertO(bodyto);
-                if (bodytoName != null)
+                body["from"] = ExpressionConverter.ConvertO(__workflow_bodyfrom);
+                if (__workflow_bodyfromName != null)
                 {
-                    body["toName"] = ExpressionConverter.ConvertO(bodytoName);
+                    body["fromName"] = ExpressionConverter.ConvertO(__workflow_bodyfromName);
                     bodypropCount++;
                 }
 
-                if (bodyreplyTo != null)
+                bodypropCount++;
+                body["to"] = ExpressionConverter.ConvertO(__workflow_bodyto);
+                if (__workflow_bodytoName != null)
                 {
-                    body["replyTo"] = ExpressionConverter.ConvertO(bodyreplyTo);
+                    body["toName"] = ExpressionConverter.ConvertO(__workflow_bodytoName);
                     bodypropCount++;
                 }
 
-                if (bodyreplyToName != null)
+                if (__workflow_bodyreplyTo != null)
                 {
-                    body["replyToName"] = ExpressionConverter.ConvertO(bodyreplyToName);
+                    body["replyTo"] = ExpressionConverter.ConvertO(__workflow_bodyreplyTo);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyreplyToName != null)
+                {
+                    body["replyToName"] = ExpressionConverter.ConvertO(__workflow_bodyreplyToName);
                     bodypropCount++;
                 }
 
@@ -986,21 +964,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        [WorkflowExpressionFactory(nameof(__BuildExecuteWorkflowTransition))]
-        public IBodyWorkflowAction<ExecuteWorkflowTransitionResponse> ExecuteWorkflowTransition([WorkflowExpression] Func<string> bodytargetState, [WorkflowExpression] Func<bodyworkflowInput> bodyworkflow = null, [WorkflowExpression] Func<int> bodysurveyId = null, [WorkflowExpression] Func<int> bodysamplingProjectId = null, [WorkflowExpression] Func<int> bodydistributorId = null, [WorkflowExpression] Func<int> bodyreminderId = null)
+        public IBodyWorkflowAction<ExecuteWorkflowTransitionResponse> ExecuteWorkflowTransition(Expression<Func<string>> bodytargetState, Expression<Func<bodyworkflowInput>> bodyworkflow = null, Expression<Func<int>> bodysurveyId = null, Expression<Func<int>> bodysamplingProjectId = null, Expression<Func<int>> bodydistributorId = null, Expression<Func<int>> bodyreminderId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ExecuteWorkflowTransitionResponse> __BuildExecuteWorkflowTransition(WorkflowExpression<string> bodytargetState, WorkflowExpression<bodyworkflowInput> bodyworkflow = null, WorkflowExpression<int> bodysurveyId = null, WorkflowExpression<int> bodysamplingProjectId = null, WorkflowExpression<int> bodydistributorId = null, WorkflowExpression<int> bodyreminderId = null)
-        {
-            WorkflowExpression.Validate(bodytargetState, nameof(bodytargetState), required: true);
-            WorkflowExpression.Validate(bodyworkflow, nameof(bodyworkflow), required: false);
-            WorkflowExpression.Validate(bodysurveyId, nameof(bodysurveyId), required: false);
-            WorkflowExpression.Validate(bodysamplingProjectId, nameof(bodysamplingProjectId), required: false);
-            WorkflowExpression.Validate(bodydistributorId, nameof(bodydistributorId), required: false);
-            WorkflowExpression.Validate(bodyreminderId, nameof(bodyreminderId), required: false);
+            var __workflow_bodytargetState = bodytargetState == null ? null : WorkflowExpression.Compile(bodytargetState);
+            WorkflowExpression.Validate(__workflow_bodytargetState, nameof(bodytargetState), required: true);
+            var __workflow_bodyworkflow = bodyworkflow == null ? null : WorkflowExpression.Compile(bodyworkflow);
+            WorkflowExpression.Validate(__workflow_bodyworkflow, nameof(bodyworkflow), required: false);
+            var __workflow_bodysurveyId = bodysurveyId == null ? null : WorkflowExpression.Compile(bodysurveyId);
+            WorkflowExpression.Validate(__workflow_bodysurveyId, nameof(bodysurveyId), required: false);
+            var __workflow_bodysamplingProjectId = bodysamplingProjectId == null ? null : WorkflowExpression.Compile(bodysamplingProjectId);
+            WorkflowExpression.Validate(__workflow_bodysamplingProjectId, nameof(bodysamplingProjectId), required: false);
+            var __workflow_bodydistributorId = bodydistributorId == null ? null : WorkflowExpression.Compile(bodydistributorId);
+            WorkflowExpression.Validate(__workflow_bodydistributorId, nameof(bodydistributorId), required: false);
+            var __workflow_bodyreminderId = bodyreminderId == null ? null : WorkflowExpression.Compile(bodyreminderId);
+            WorkflowExpression.Validate(__workflow_bodyreminderId, nameof(bodyreminderId), required: false);
             return new DeferredBodyAction<ExecuteWorkflowTransitionResponse>(() =>
             {
                 var apiCallPath = "/publicapi/Common/v3/ExecuteWorkflowTransition";
@@ -1008,38 +985,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyworkflow != null)
+                if (__workflow_bodyworkflow != null)
                 {
-                    body["workflow"] = ExpressionConverter.ConvertO(bodyworkflow);
+                    body["workflow"] = ExpressionConverter.ConvertO(__workflow_bodyworkflow);
                     bodypropCount++;
                 }
 
-                if (bodysurveyId != null)
+                if (__workflow_bodysurveyId != null)
                 {
-                    body["surveyId"] = ExpressionConverter.ConvertO(bodysurveyId);
+                    body["surveyId"] = ExpressionConverter.ConvertO(__workflow_bodysurveyId);
                     bodypropCount++;
                 }
 
-                if (bodysamplingProjectId != null)
+                if (__workflow_bodysamplingProjectId != null)
                 {
-                    body["samplingProjectId"] = ExpressionConverter.ConvertO(bodysamplingProjectId);
+                    body["samplingProjectId"] = ExpressionConverter.ConvertO(__workflow_bodysamplingProjectId);
                     bodypropCount++;
                 }
 
-                if (bodydistributorId != null)
+                if (__workflow_bodydistributorId != null)
                 {
-                    body["distributorId"] = ExpressionConverter.ConvertO(bodydistributorId);
+                    body["distributorId"] = ExpressionConverter.ConvertO(__workflow_bodydistributorId);
                     bodypropCount++;
                 }
 
-                if (bodyreminderId != null)
+                if (__workflow_bodyreminderId != null)
                 {
-                    body["reminderId"] = ExpressionConverter.ConvertO(bodyreminderId);
+                    body["reminderId"] = ExpressionConverter.ConvertO(__workflow_bodyreminderId);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["targetState"] = ExpressionConverter.ConvertO(bodytargetState);
+                body["targetState"] = ExpressionConverter.ConvertO(__workflow_bodytargetState);
                 var dynamicParametersObject = new JObject();
                 var dynamicParametersObjectpropCount = 0;
                 if (dynamicParametersObjectpropCount > 0)
@@ -1058,30 +1035,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        [WorkflowExpressionFactory(nameof(__BuildInviteMembers))]
-        public IBodyWorkflowAction<InviteMembersResponse> InviteMembers([WorkflowExpression] Func<int> bodysurveyId, [WorkflowExpression] Func<int> bodypanelId, [WorkflowExpression] Func<int> bodymessageTemplateId, [WorkflowExpression] Func<int> bodysamplingProjectId = null, [WorkflowExpression] Func<int[]> bodymemberIds = null, [WorkflowExpression] Func<TextBlock[]> bodytextBlocks = null, [WorkflowExpression] Func<string> bodyscheduleDateTime = null, [WorkflowExpression] Func<Condition[]> bodyconditions = null, [WorkflowExpression] Func<bodychannelInput> bodychannel = null, [WorkflowExpression] Func<bool> bodyasyncProcess = null, [WorkflowExpression] Func<string> bodyinterviewExpiryDate = null, [WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyfromName = null, [WorkflowExpression] Func<string> bodyreplyTo = null, [WorkflowExpression] Func<string> bodyreplyToName = null)
+        public IBodyWorkflowAction<InviteMembersResponse> InviteMembers(Expression<Func<int>> bodysurveyId, Expression<Func<int>> bodypanelId, Expression<Func<int>> bodymessageTemplateId, Expression<Func<int>> bodysamplingProjectId = null, Expression<Func<int[]>> bodymemberIds = null, Expression<Func<TextBlock[]>> bodytextBlocks = null, Expression<Func<string>> bodyscheduleDateTime = null, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<bodychannelInput>> bodychannel = null, Expression<Func<bool>> bodyasyncProcess = null, Expression<Func<string>> bodyinterviewExpiryDate = null, Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyfromName = null, Expression<Func<string>> bodyreplyTo = null, Expression<Func<string>> bodyreplyToName = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<InviteMembersResponse> __BuildInviteMembers(WorkflowExpression<int> bodysurveyId, WorkflowExpression<int> bodypanelId, WorkflowExpression<int> bodymessageTemplateId, WorkflowExpression<int> bodysamplingProjectId = null, WorkflowExpression<int[]> bodymemberIds = null, WorkflowExpression<TextBlock[]> bodytextBlocks = null, WorkflowExpression<string> bodyscheduleDateTime = null, WorkflowExpression<Condition[]> bodyconditions = null, WorkflowExpression<bodychannelInput> bodychannel = null, WorkflowExpression<bool> bodyasyncProcess = null, WorkflowExpression<string> bodyinterviewExpiryDate = null, WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyfromName = null, WorkflowExpression<string> bodyreplyTo = null, WorkflowExpression<string> bodyreplyToName = null)
-        {
-            WorkflowExpression.Validate(bodysurveyId, nameof(bodysurveyId), required: true);
-            WorkflowExpression.Validate(bodypanelId, nameof(bodypanelId), required: true);
-            WorkflowExpression.Validate(bodymessageTemplateId, nameof(bodymessageTemplateId), required: true);
-            WorkflowExpression.Validate(bodysamplingProjectId, nameof(bodysamplingProjectId), required: false);
-            WorkflowExpression.Validate(bodymemberIds, nameof(bodymemberIds), required: false);
-            WorkflowExpression.Validate(bodytextBlocks, nameof(bodytextBlocks), required: false);
-            WorkflowExpression.Validate(bodyscheduleDateTime, nameof(bodyscheduleDateTime), required: false);
-            WorkflowExpression.Validate(bodyconditions, nameof(bodyconditions), required: false);
-            WorkflowExpression.Validate(bodychannel, nameof(bodychannel), required: false);
-            WorkflowExpression.Validate(bodyasyncProcess, nameof(bodyasyncProcess), required: false);
-            WorkflowExpression.Validate(bodyinterviewExpiryDate, nameof(bodyinterviewExpiryDate), required: false);
-            WorkflowExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
-            WorkflowExpression.Validate(bodyfromName, nameof(bodyfromName), required: false);
-            WorkflowExpression.Validate(bodyreplyTo, nameof(bodyreplyTo), required: false);
-            WorkflowExpression.Validate(bodyreplyToName, nameof(bodyreplyToName), required: false);
+            var __workflow_bodysurveyId = bodysurveyId == null ? null : WorkflowExpression.Compile(bodysurveyId);
+            WorkflowExpression.Validate(__workflow_bodysurveyId, nameof(bodysurveyId), required: true);
+            var __workflow_bodypanelId = bodypanelId == null ? null : WorkflowExpression.Compile(bodypanelId);
+            WorkflowExpression.Validate(__workflow_bodypanelId, nameof(bodypanelId), required: true);
+            var __workflow_bodymessageTemplateId = bodymessageTemplateId == null ? null : WorkflowExpression.Compile(bodymessageTemplateId);
+            WorkflowExpression.Validate(__workflow_bodymessageTemplateId, nameof(bodymessageTemplateId), required: true);
+            var __workflow_bodysamplingProjectId = bodysamplingProjectId == null ? null : WorkflowExpression.Compile(bodysamplingProjectId);
+            WorkflowExpression.Validate(__workflow_bodysamplingProjectId, nameof(bodysamplingProjectId), required: false);
+            var __workflow_bodymemberIds = bodymemberIds == null ? null : WorkflowExpression.Compile(bodymemberIds);
+            WorkflowExpression.Validate(__workflow_bodymemberIds, nameof(bodymemberIds), required: false);
+            var __workflow_bodytextBlocks = bodytextBlocks == null ? null : WorkflowExpression.Compile(bodytextBlocks);
+            WorkflowExpression.Validate(__workflow_bodytextBlocks, nameof(bodytextBlocks), required: false);
+            var __workflow_bodyscheduleDateTime = bodyscheduleDateTime == null ? null : WorkflowExpression.Compile(bodyscheduleDateTime);
+            WorkflowExpression.Validate(__workflow_bodyscheduleDateTime, nameof(bodyscheduleDateTime), required: false);
+            var __workflow_bodyconditions = bodyconditions == null ? null : WorkflowExpression.Compile(bodyconditions);
+            WorkflowExpression.Validate(__workflow_bodyconditions, nameof(bodyconditions), required: false);
+            var __workflow_bodychannel = bodychannel == null ? null : WorkflowExpression.Compile(bodychannel);
+            WorkflowExpression.Validate(__workflow_bodychannel, nameof(bodychannel), required: false);
+            var __workflow_bodyasyncProcess = bodyasyncProcess == null ? null : WorkflowExpression.Compile(bodyasyncProcess);
+            WorkflowExpression.Validate(__workflow_bodyasyncProcess, nameof(bodyasyncProcess), required: false);
+            var __workflow_bodyinterviewExpiryDate = bodyinterviewExpiryDate == null ? null : WorkflowExpression.Compile(bodyinterviewExpiryDate);
+            WorkflowExpression.Validate(__workflow_bodyinterviewExpiryDate, nameof(bodyinterviewExpiryDate), required: false);
+            var __workflow_bodyfrom = bodyfrom == null ? null : WorkflowExpression.Compile(bodyfrom);
+            WorkflowExpression.Validate(__workflow_bodyfrom, nameof(bodyfrom), required: false);
+            var __workflow_bodyfromName = bodyfromName == null ? null : WorkflowExpression.Compile(bodyfromName);
+            WorkflowExpression.Validate(__workflow_bodyfromName, nameof(bodyfromName), required: false);
+            var __workflow_bodyreplyTo = bodyreplyTo == null ? null : WorkflowExpression.Compile(bodyreplyTo);
+            WorkflowExpression.Validate(__workflow_bodyreplyTo, nameof(bodyreplyTo), required: false);
+            var __workflow_bodyreplyToName = bodyreplyToName == null ? null : WorkflowExpression.Compile(bodyreplyToName);
+            WorkflowExpression.Validate(__workflow_bodyreplyToName, nameof(bodyreplyToName), required: false);
             return new DeferredBodyAction<InviteMembersResponse>(() =>
             {
                 var apiCallPath = "/publicapi/Distribute/v3/InviteMembers";
@@ -1090,80 +1075,80 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["surveyId"] = ExpressionConverter.ConvertO(bodysurveyId);
+                body["surveyId"] = ExpressionConverter.ConvertO(__workflow_bodysurveyId);
                 bodypropCount++;
-                body["panelId"] = ExpressionConverter.ConvertO(bodypanelId);
-                if (bodysamplingProjectId != null)
+                body["panelId"] = ExpressionConverter.ConvertO(__workflow_bodypanelId);
+                if (__workflow_bodysamplingProjectId != null)
                 {
-                    body["samplingProjectId"] = ExpressionConverter.ConvertO(bodysamplingProjectId);
+                    body["samplingProjectId"] = ExpressionConverter.ConvertO(__workflow_bodysamplingProjectId);
                     bodypropCount++;
                 }
 
-                if (bodymemberIds != null)
+                if (__workflow_bodymemberIds != null)
                 {
-                    body["memberIds"] = ExpressionConverter.ConvertO(bodymemberIds);
+                    body["memberIds"] = ExpressionConverter.ConvertO(__workflow_bodymemberIds);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["messageTemplateId"] = ExpressionConverter.ConvertO(bodymessageTemplateId);
-                if (bodytextBlocks != null)
+                body["messageTemplateId"] = ExpressionConverter.ConvertO(__workflow_bodymessageTemplateId);
+                if (__workflow_bodytextBlocks != null)
                 {
-                    body["textBlocks"] = ExpressionConverter.ConvertO(bodytextBlocks);
+                    body["textBlocks"] = ExpressionConverter.ConvertO(__workflow_bodytextBlocks);
                     bodypropCount++;
                 }
 
-                if (bodyscheduleDateTime != null)
+                if (__workflow_bodyscheduleDateTime != null)
                 {
-                    body["scheduleDateTime"] = ExpressionConverter.ConvertO(bodyscheduleDateTime);
+                    body["scheduleDateTime"] = ExpressionConverter.ConvertO(__workflow_bodyscheduleDateTime);
                     bodypropCount++;
                 }
 
-                if (bodyconditions != null)
+                if (__workflow_bodyconditions != null)
                 {
-                    body["conditions"] = ExpressionConverter.ConvertO(bodyconditions);
+                    body["conditions"] = ExpressionConverter.ConvertO(__workflow_bodyconditions);
                     bodypropCount++;
                 }
 
-                if (bodychannel != null)
+                if (__workflow_bodychannel != null)
                 {
-                    body["channel"] = ExpressionConverter.ConvertO(bodychannel);
+                    body["channel"] = ExpressionConverter.ConvertO(__workflow_bodychannel);
                     bodypropCount++;
                 }
 
-                if (bodyasyncProcess != null)
+                if (__workflow_bodyasyncProcess != null)
                 {
-                    body["asyncProcess"] = ExpressionConverter.ConvertO(bodyasyncProcess);
+                    body["asyncProcess"] = ExpressionConverter.ConvertO(__workflow_bodyasyncProcess);
                     bodypropCount++;
                 }
 
-                if (bodyinterviewExpiryDate != null)
+                if (__workflow_bodyinterviewExpiryDate != null)
                 {
-                    body["interviewExpiryDate"] = ExpressionConverter.ConvertO(bodyinterviewExpiryDate);
+                    body["interviewExpiryDate"] = ExpressionConverter.ConvertO(__workflow_bodyinterviewExpiryDate);
                     bodypropCount++;
                 }
 
-                if (bodyfrom != null)
+                if (__workflow_bodyfrom != null)
                 {
-                    body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                    body["from"] = ExpressionConverter.ConvertO(__workflow_bodyfrom);
                     bodypropCount++;
                 }
 
-                if (bodyfromName != null)
+                if (__workflow_bodyfromName != null)
                 {
-                    body["fromName"] = ExpressionConverter.ConvertO(bodyfromName);
+                    body["fromName"] = ExpressionConverter.ConvertO(__workflow_bodyfromName);
                     bodypropCount++;
                 }
 
-                if (bodyreplyTo != null)
+                if (__workflow_bodyreplyTo != null)
                 {
-                    body["replyTo"] = ExpressionConverter.ConvertO(bodyreplyTo);
+                    body["replyTo"] = ExpressionConverter.ConvertO(__workflow_bodyreplyTo);
                     bodypropCount++;
                 }
 
-                if (bodyreplyToName != null)
+                if (__workflow_bodyreplyToName != null)
                 {
-                    body["replyToName"] = ExpressionConverter.ConvertO(bodyreplyToName);
+                    body["replyToName"] = ExpressionConverter.ConvertO(__workflow_bodyreplyToName);
                     bodypropCount++;
                 }
 
@@ -1177,17 +1162,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        [WorkflowExpressionFactory(nameof(__BuildReadArtifactList))]
-        public IBodyWorkflowAction<ReadArtifactListRequest> ReadArtifactList([WorkflowExpression] Func<string> bodypath = null, [WorkflowExpression] Func<int> bodyworkspaceId = null)
+        public IBodyWorkflowAction<ReadArtifactListRequest> ReadArtifactList(Expression<Func<string>> bodypath = null, Expression<Func<int>> bodyworkspaceId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ReadArtifactListRequest> __BuildReadArtifactList(WorkflowExpression<string> bodypath = null, WorkflowExpression<int> bodyworkspaceId = null)
-        {
-            WorkflowExpression.Validate(bodypath, nameof(bodypath), required: false);
-            WorkflowExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: false);
+            var __workflow_bodypath = bodypath == null ? null : WorkflowExpression.Compile(bodypath);
+            WorkflowExpression.Validate(__workflow_bodypath, nameof(bodypath), required: false);
+            var __workflow_bodyworkspaceId = bodyworkspaceId == null ? null : WorkflowExpression.Compile(bodyworkspaceId);
+            WorkflowExpression.Validate(__workflow_bodyworkspaceId, nameof(bodyworkspaceId), required: false);
             return new DeferredBodyAction<ReadArtifactListRequest>(() =>
             {
                 var apiCallPath = "/publicapi/Common/v3/ReadArtifactList";
@@ -1195,15 +1175,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodypath != null)
+                if (__workflow_bodypath != null)
                 {
-                    body["path"] = ExpressionConverter.ConvertO(bodypath);
+                    body["path"] = ExpressionConverter.ConvertO(__workflow_bodypath);
                     bodypropCount++;
                 }
 
-                if (bodyworkspaceId != null)
+                if (__workflow_bodyworkspaceId != null)
                 {
-                    body["workspaceId"] = ExpressionConverter.ConvertO(bodyworkspaceId);
+                    body["workspaceId"] = ExpressionConverter.ConvertO(__workflow_bodyworkspaceId);
                     bodypropCount++;
                 }
 
@@ -1217,24 +1197,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        [WorkflowExpressionFactory(nameof(__BuildReadBounceList))]
-        public IBodyWorkflowAction<ReadBounceListResponseV3> ReadBounceList([WorkflowExpression] Func<int> bodysurveyId, [WorkflowExpression] Func<int> bodypagingpageSize, [WorkflowExpression] Func<int> bodypagingpage, [WorkflowExpression] Func<int> bodypanelId = null, [WorkflowExpression] Func<int[]> bodydistributors = null, [WorkflowExpression] Func<bodyinvitationTypeInput> bodyinvitationType = null, [WorkflowExpression] Func<Condition[]> bodyconditions = null, [WorkflowExpression] Func<string> bodypagingorderField = null, [WorkflowExpression] Func<bodypagingorderDirectionInput> bodypagingorderDirection = null)
+        public IBodyWorkflowAction<ReadBounceListResponseV3> ReadBounceList(Expression<Func<int>> bodysurveyId, Expression<Func<int>> bodypagingpageSize, Expression<Func<int>> bodypagingpage, Expression<Func<int>> bodypanelId = null, Expression<Func<int[]>> bodydistributors = null, Expression<Func<bodyinvitationTypeInput>> bodyinvitationType = null, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<string>> bodypagingorderField = null, Expression<Func<bodypagingorderDirectionInput>> bodypagingorderDirection = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ReadBounceListResponseV3> __BuildReadBounceList(WorkflowExpression<int> bodysurveyId, WorkflowExpression<int> bodypagingpageSize, WorkflowExpression<int> bodypagingpage, WorkflowExpression<int> bodypanelId = null, WorkflowExpression<int[]> bodydistributors = null, WorkflowExpression<bodyinvitationTypeInput> bodyinvitationType = null, WorkflowExpression<Condition[]> bodyconditions = null, WorkflowExpression<string> bodypagingorderField = null, WorkflowExpression<bodypagingorderDirectionInput> bodypagingorderDirection = null)
-        {
-            WorkflowExpression.Validate(bodysurveyId, nameof(bodysurveyId), required: true);
-            WorkflowExpression.Validate(bodypagingpageSize, nameof(bodypagingpageSize), required: true);
-            WorkflowExpression.Validate(bodypagingpage, nameof(bodypagingpage), required: true);
-            WorkflowExpression.Validate(bodypanelId, nameof(bodypanelId), required: false);
-            WorkflowExpression.Validate(bodydistributors, nameof(bodydistributors), required: false);
-            WorkflowExpression.Validate(bodyinvitationType, nameof(bodyinvitationType), required: false);
-            WorkflowExpression.Validate(bodyconditions, nameof(bodyconditions), required: false);
-            WorkflowExpression.Validate(bodypagingorderField, nameof(bodypagingorderField), required: false);
-            WorkflowExpression.Validate(bodypagingorderDirection, nameof(bodypagingorderDirection), required: false);
+            var __workflow_bodysurveyId = bodysurveyId == null ? null : WorkflowExpression.Compile(bodysurveyId);
+            WorkflowExpression.Validate(__workflow_bodysurveyId, nameof(bodysurveyId), required: true);
+            var __workflow_bodypagingpageSize = bodypagingpageSize == null ? null : WorkflowExpression.Compile(bodypagingpageSize);
+            WorkflowExpression.Validate(__workflow_bodypagingpageSize, nameof(bodypagingpageSize), required: true);
+            var __workflow_bodypagingpage = bodypagingpage == null ? null : WorkflowExpression.Compile(bodypagingpage);
+            WorkflowExpression.Validate(__workflow_bodypagingpage, nameof(bodypagingpage), required: true);
+            var __workflow_bodypanelId = bodypanelId == null ? null : WorkflowExpression.Compile(bodypanelId);
+            WorkflowExpression.Validate(__workflow_bodypanelId, nameof(bodypanelId), required: false);
+            var __workflow_bodydistributors = bodydistributors == null ? null : WorkflowExpression.Compile(bodydistributors);
+            WorkflowExpression.Validate(__workflow_bodydistributors, nameof(bodydistributors), required: false);
+            var __workflow_bodyinvitationType = bodyinvitationType == null ? null : WorkflowExpression.Compile(bodyinvitationType);
+            WorkflowExpression.Validate(__workflow_bodyinvitationType, nameof(bodyinvitationType), required: false);
+            var __workflow_bodyconditions = bodyconditions == null ? null : WorkflowExpression.Compile(bodyconditions);
+            WorkflowExpression.Validate(__workflow_bodyconditions, nameof(bodyconditions), required: false);
+            var __workflow_bodypagingorderField = bodypagingorderField == null ? null : WorkflowExpression.Compile(bodypagingorderField);
+            WorkflowExpression.Validate(__workflow_bodypagingorderField, nameof(bodypagingorderField), required: false);
+            var __workflow_bodypagingorderDirection = bodypagingorderDirection == null ? null : WorkflowExpression.Compile(bodypagingorderDirection);
+            WorkflowExpression.Validate(__workflow_bodypagingorderDirection, nameof(bodypagingorderDirection), required: false);
             return new DeferredBodyAction<ReadBounceListResponseV3>(() =>
             {
                 var apiCallPath = "/publicapi/Distribute/v3/ReadBounceList";
@@ -1243,46 +1225,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["surveyId"] = ExpressionConverter.ConvertO(bodysurveyId);
-                if (bodypanelId != null)
+                body["surveyId"] = ExpressionConverter.ConvertO(__workflow_bodysurveyId);
+                if (__workflow_bodypanelId != null)
                 {
-                    body["panelId"] = ExpressionConverter.ConvertO(bodypanelId);
+                    body["panelId"] = ExpressionConverter.ConvertO(__workflow_bodypanelId);
                     bodypropCount++;
                 }
 
-                if (bodydistributors != null)
+                if (__workflow_bodydistributors != null)
                 {
-                    body["distributors"] = ExpressionConverter.ConvertO(bodydistributors);
+                    body["distributors"] = ExpressionConverter.ConvertO(__workflow_bodydistributors);
                     bodypropCount++;
                 }
 
-                if (bodyinvitationType != null)
+                if (__workflow_bodyinvitationType != null)
                 {
-                    body["invitationType"] = ExpressionConverter.ConvertO(bodyinvitationType);
+                    body["invitationType"] = ExpressionConverter.ConvertO(__workflow_bodyinvitationType);
                     bodypropCount++;
                 }
 
-                if (bodyconditions != null)
+                if (__workflow_bodyconditions != null)
                 {
-                    body["conditions"] = ExpressionConverter.ConvertO(bodyconditions);
+                    body["conditions"] = ExpressionConverter.ConvertO(__workflow_bodyconditions);
                     bodypropCount++;
                 }
 
                 var pagingObject = new JObject();
                 var pagingObjectpropCount = 0;
                 pagingObjectpropCount++;
-                pagingObject["pageSize"] = ExpressionConverter.ConvertO(bodypagingpageSize);
+                pagingObject["pageSize"] = ExpressionConverter.ConvertO(__workflow_bodypagingpageSize);
                 pagingObjectpropCount++;
-                pagingObject["page"] = ExpressionConverter.ConvertO(bodypagingpage);
-                if (bodypagingorderField != null)
+                pagingObject["page"] = ExpressionConverter.ConvertO(__workflow_bodypagingpage);
+                if (__workflow_bodypagingorderField != null)
                 {
-                    pagingObject["orderField"] = ExpressionConverter.ConvertO(bodypagingorderField);
+                    pagingObject["orderField"] = ExpressionConverter.ConvertO(__workflow_bodypagingorderField);
                     pagingObjectpropCount++;
                 }
 
-                if (bodypagingorderDirection != null)
+                if (__workflow_bodypagingorderDirection != null)
                 {
-                    pagingObject["orderDirection"] = ExpressionConverter.ConvertO(bodypagingorderDirection);
+                    pagingObject["orderDirection"] = ExpressionConverter.ConvertO(__workflow_bodypagingorderDirection);
                     pagingObjectpropCount++;
                 }
 
@@ -1318,22 +1300,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        [WorkflowExpressionFactory(nameof(__BuildReadDistributorList))]
-        public IBodyWorkflowAction<ReadDistributorListResponse> ReadDistributorList([WorkflowExpression] Func<int> bodypagingpageSize, [WorkflowExpression] Func<int> bodypagingpage, [WorkflowExpression] Func<int> bodysurveyId = null, [WorkflowExpression] Func<int> bodypanelId = null, [WorkflowExpression] Func<Condition[]> bodyconditions = null, [WorkflowExpression] Func<string> bodypagingorderField = null, [WorkflowExpression] Func<bodypagingorderDirectionInput> bodypagingorderDirection = null)
+        public IBodyWorkflowAction<ReadDistributorListResponse> ReadDistributorList(Expression<Func<int>> bodypagingpageSize, Expression<Func<int>> bodypagingpage, Expression<Func<int>> bodysurveyId = null, Expression<Func<int>> bodypanelId = null, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<string>> bodypagingorderField = null, Expression<Func<bodypagingorderDirectionInput>> bodypagingorderDirection = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ReadDistributorListResponse> __BuildReadDistributorList(WorkflowExpression<int> bodypagingpageSize, WorkflowExpression<int> bodypagingpage, WorkflowExpression<int> bodysurveyId = null, WorkflowExpression<int> bodypanelId = null, WorkflowExpression<Condition[]> bodyconditions = null, WorkflowExpression<string> bodypagingorderField = null, WorkflowExpression<bodypagingorderDirectionInput> bodypagingorderDirection = null)
-        {
-            WorkflowExpression.Validate(bodypagingpageSize, nameof(bodypagingpageSize), required: true);
-            WorkflowExpression.Validate(bodypagingpage, nameof(bodypagingpage), required: true);
-            WorkflowExpression.Validate(bodysurveyId, nameof(bodysurveyId), required: false);
-            WorkflowExpression.Validate(bodypanelId, nameof(bodypanelId), required: false);
-            WorkflowExpression.Validate(bodyconditions, nameof(bodyconditions), required: false);
-            WorkflowExpression.Validate(bodypagingorderField, nameof(bodypagingorderField), required: false);
-            WorkflowExpression.Validate(bodypagingorderDirection, nameof(bodypagingorderDirection), required: false);
+            var __workflow_bodypagingpageSize = bodypagingpageSize == null ? null : WorkflowExpression.Compile(bodypagingpageSize);
+            WorkflowExpression.Validate(__workflow_bodypagingpageSize, nameof(bodypagingpageSize), required: true);
+            var __workflow_bodypagingpage = bodypagingpage == null ? null : WorkflowExpression.Compile(bodypagingpage);
+            WorkflowExpression.Validate(__workflow_bodypagingpage, nameof(bodypagingpage), required: true);
+            var __workflow_bodysurveyId = bodysurveyId == null ? null : WorkflowExpression.Compile(bodysurveyId);
+            WorkflowExpression.Validate(__workflow_bodysurveyId, nameof(bodysurveyId), required: false);
+            var __workflow_bodypanelId = bodypanelId == null ? null : WorkflowExpression.Compile(bodypanelId);
+            WorkflowExpression.Validate(__workflow_bodypanelId, nameof(bodypanelId), required: false);
+            var __workflow_bodyconditions = bodyconditions == null ? null : WorkflowExpression.Compile(bodyconditions);
+            WorkflowExpression.Validate(__workflow_bodyconditions, nameof(bodyconditions), required: false);
+            var __workflow_bodypagingorderField = bodypagingorderField == null ? null : WorkflowExpression.Compile(bodypagingorderField);
+            WorkflowExpression.Validate(__workflow_bodypagingorderField, nameof(bodypagingorderField), required: false);
+            var __workflow_bodypagingorderDirection = bodypagingorderDirection == null ? null : WorkflowExpression.Compile(bodypagingorderDirection);
+            WorkflowExpression.Validate(__workflow_bodypagingorderDirection, nameof(bodypagingorderDirection), required: false);
             return new DeferredBodyAction<ReadDistributorListResponse>(() =>
             {
                 var apiCallPath = "/publicapi/Distribute/v3/ReadDistributorList";
@@ -1341,39 +1323,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodysurveyId != null)
+                if (__workflow_bodysurveyId != null)
                 {
-                    body["surveyId"] = ExpressionConverter.ConvertO(bodysurveyId);
+                    body["surveyId"] = ExpressionConverter.ConvertO(__workflow_bodysurveyId);
                     bodypropCount++;
                 }
 
-                if (bodypanelId != null)
+                if (__workflow_bodypanelId != null)
                 {
-                    body["panelId"] = ExpressionConverter.ConvertO(bodypanelId);
+                    body["panelId"] = ExpressionConverter.ConvertO(__workflow_bodypanelId);
                     bodypropCount++;
                 }
 
-                if (bodyconditions != null)
+                if (__workflow_bodyconditions != null)
                 {
-                    body["conditions"] = ExpressionConverter.ConvertO(bodyconditions);
+                    body["conditions"] = ExpressionConverter.ConvertO(__workflow_bodyconditions);
                     bodypropCount++;
                 }
 
                 var pagingObject = new JObject();
                 var pagingObjectpropCount = 0;
                 pagingObjectpropCount++;
-                pagingObject["pageSize"] = ExpressionConverter.ConvertO(bodypagingpageSize);
+                pagingObject["pageSize"] = ExpressionConverter.ConvertO(__workflow_bodypagingpageSize);
                 pagingObjectpropCount++;
-                pagingObject["page"] = ExpressionConverter.ConvertO(bodypagingpage);
-                if (bodypagingorderField != null)
+                pagingObject["page"] = ExpressionConverter.ConvertO(__workflow_bodypagingpage);
+                if (__workflow_bodypagingorderField != null)
                 {
-                    pagingObject["orderField"] = ExpressionConverter.ConvertO(bodypagingorderField);
+                    pagingObject["orderField"] = ExpressionConverter.ConvertO(__workflow_bodypagingorderField);
                     pagingObjectpropCount++;
                 }
 
-                if (bodypagingorderDirection != null)
+                if (__workflow_bodypagingorderDirection != null)
                 {
-                    pagingObject["orderDirection"] = ExpressionConverter.ConvertO(bodypagingorderDirection);
+                    pagingObject["orderDirection"] = ExpressionConverter.ConvertO(__workflow_bodypagingorderDirection);
                     pagingObjectpropCount++;
                 }
 
@@ -1393,20 +1375,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        [WorkflowExpressionFactory(nameof(__BuildReadIncentiveList))]
-        public IBodyWorkflowAction<ReadIncentiveListResponse> ReadIncentiveList([WorkflowExpression] Func<int> bodypagingpageSize, [WorkflowExpression] Func<int> bodypagingpage, [WorkflowExpression] Func<Condition[]> bodyconditions = null, [WorkflowExpression] Func<string> bodypagingorderField = null, [WorkflowExpression] Func<bodypagingorderDirectionInput> bodypagingorderDirection = null)
+        public IBodyWorkflowAction<ReadIncentiveListResponse> ReadIncentiveList(Expression<Func<int>> bodypagingpageSize, Expression<Func<int>> bodypagingpage, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<string>> bodypagingorderField = null, Expression<Func<bodypagingorderDirectionInput>> bodypagingorderDirection = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ReadIncentiveListResponse> __BuildReadIncentiveList(WorkflowExpression<int> bodypagingpageSize, WorkflowExpression<int> bodypagingpage, WorkflowExpression<Condition[]> bodyconditions = null, WorkflowExpression<string> bodypagingorderField = null, WorkflowExpression<bodypagingorderDirectionInput> bodypagingorderDirection = null)
-        {
-            WorkflowExpression.Validate(bodypagingpageSize, nameof(bodypagingpageSize), required: true);
-            WorkflowExpression.Validate(bodypagingpage, nameof(bodypagingpage), required: true);
-            WorkflowExpression.Validate(bodyconditions, nameof(bodyconditions), required: false);
-            WorkflowExpression.Validate(bodypagingorderField, nameof(bodypagingorderField), required: false);
-            WorkflowExpression.Validate(bodypagingorderDirection, nameof(bodypagingorderDirection), required: false);
+            var __workflow_bodypagingpageSize = bodypagingpageSize == null ? null : WorkflowExpression.Compile(bodypagingpageSize);
+            WorkflowExpression.Validate(__workflow_bodypagingpageSize, nameof(bodypagingpageSize), required: true);
+            var __workflow_bodypagingpage = bodypagingpage == null ? null : WorkflowExpression.Compile(bodypagingpage);
+            WorkflowExpression.Validate(__workflow_bodypagingpage, nameof(bodypagingpage), required: true);
+            var __workflow_bodyconditions = bodyconditions == null ? null : WorkflowExpression.Compile(bodyconditions);
+            WorkflowExpression.Validate(__workflow_bodyconditions, nameof(bodyconditions), required: false);
+            var __workflow_bodypagingorderField = bodypagingorderField == null ? null : WorkflowExpression.Compile(bodypagingorderField);
+            WorkflowExpression.Validate(__workflow_bodypagingorderField, nameof(bodypagingorderField), required: false);
+            var __workflow_bodypagingorderDirection = bodypagingorderDirection == null ? null : WorkflowExpression.Compile(bodypagingorderDirection);
+            WorkflowExpression.Validate(__workflow_bodypagingorderDirection, nameof(bodypagingorderDirection), required: false);
             return new DeferredBodyAction<ReadIncentiveListResponse>(() =>
             {
                 var apiCallPath = "/publicapi/Incentive/v3/ReadIncentiveList";
@@ -1414,27 +1394,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyconditions != null)
+                if (__workflow_bodyconditions != null)
                 {
-                    body["conditions"] = ExpressionConverter.ConvertO(bodyconditions);
+                    body["conditions"] = ExpressionConverter.ConvertO(__workflow_bodyconditions);
                     bodypropCount++;
                 }
 
                 var pagingObject = new JObject();
                 var pagingObjectpropCount = 0;
                 pagingObjectpropCount++;
-                pagingObject["pageSize"] = ExpressionConverter.ConvertO(bodypagingpageSize);
+                pagingObject["pageSize"] = ExpressionConverter.ConvertO(__workflow_bodypagingpageSize);
                 pagingObjectpropCount++;
-                pagingObject["page"] = ExpressionConverter.ConvertO(bodypagingpage);
-                if (bodypagingorderField != null)
+                pagingObject["page"] = ExpressionConverter.ConvertO(__workflow_bodypagingpage);
+                if (__workflow_bodypagingorderField != null)
                 {
-                    pagingObject["orderField"] = ExpressionConverter.ConvertO(bodypagingorderField);
+                    pagingObject["orderField"] = ExpressionConverter.ConvertO(__workflow_bodypagingorderField);
                     pagingObjectpropCount++;
                 }
 
-                if (bodypagingorderDirection != null)
+                if (__workflow_bodypagingorderDirection != null)
                 {
-                    pagingObject["orderDirection"] = ExpressionConverter.ConvertO(bodypagingorderDirection);
+                    pagingObject["orderDirection"] = ExpressionConverter.ConvertO(__workflow_bodypagingorderDirection);
                     pagingObjectpropCount++;
                 }
 
@@ -1454,20 +1434,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        [WorkflowExpressionFactory(nameof(__BuildReadIncentiveTransactionList))]
-        public IBodyWorkflowAction<ReadIncentiveTransactionListResponse> ReadIncentiveTransactionList([WorkflowExpression] Func<int> bodypagingpageSize, [WorkflowExpression] Func<int> bodypagingpage, [WorkflowExpression] Func<Condition[]> bodyconditions = null, [WorkflowExpression] Func<string> bodypagingorderField = null, [WorkflowExpression] Func<bodypagingorderDirectionInput> bodypagingorderDirection = null)
+        public IBodyWorkflowAction<ReadIncentiveTransactionListResponse> ReadIncentiveTransactionList(Expression<Func<int>> bodypagingpageSize, Expression<Func<int>> bodypagingpage, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<string>> bodypagingorderField = null, Expression<Func<bodypagingorderDirectionInput>> bodypagingorderDirection = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ReadIncentiveTransactionListResponse> __BuildReadIncentiveTransactionList(WorkflowExpression<int> bodypagingpageSize, WorkflowExpression<int> bodypagingpage, WorkflowExpression<Condition[]> bodyconditions = null, WorkflowExpression<string> bodypagingorderField = null, WorkflowExpression<bodypagingorderDirectionInput> bodypagingorderDirection = null)
-        {
-            WorkflowExpression.Validate(bodypagingpageSize, nameof(bodypagingpageSize), required: true);
-            WorkflowExpression.Validate(bodypagingpage, nameof(bodypagingpage), required: true);
-            WorkflowExpression.Validate(bodyconditions, nameof(bodyconditions), required: false);
-            WorkflowExpression.Validate(bodypagingorderField, nameof(bodypagingorderField), required: false);
-            WorkflowExpression.Validate(bodypagingorderDirection, nameof(bodypagingorderDirection), required: false);
+            var __workflow_bodypagingpageSize = bodypagingpageSize == null ? null : WorkflowExpression.Compile(bodypagingpageSize);
+            WorkflowExpression.Validate(__workflow_bodypagingpageSize, nameof(bodypagingpageSize), required: true);
+            var __workflow_bodypagingpage = bodypagingpage == null ? null : WorkflowExpression.Compile(bodypagingpage);
+            WorkflowExpression.Validate(__workflow_bodypagingpage, nameof(bodypagingpage), required: true);
+            var __workflow_bodyconditions = bodyconditions == null ? null : WorkflowExpression.Compile(bodyconditions);
+            WorkflowExpression.Validate(__workflow_bodyconditions, nameof(bodyconditions), required: false);
+            var __workflow_bodypagingorderField = bodypagingorderField == null ? null : WorkflowExpression.Compile(bodypagingorderField);
+            WorkflowExpression.Validate(__workflow_bodypagingorderField, nameof(bodypagingorderField), required: false);
+            var __workflow_bodypagingorderDirection = bodypagingorderDirection == null ? null : WorkflowExpression.Compile(bodypagingorderDirection);
+            WorkflowExpression.Validate(__workflow_bodypagingorderDirection, nameof(bodypagingorderDirection), required: false);
             return new DeferredBodyAction<ReadIncentiveTransactionListResponse>(() =>
             {
                 var apiCallPath = "/publicapi/Incentive/v3/ReadIncentiveTransactionList";
@@ -1475,27 +1453,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyconditions != null)
+                if (__workflow_bodyconditions != null)
                 {
-                    body["conditions"] = ExpressionConverter.ConvertO(bodyconditions);
+                    body["conditions"] = ExpressionConverter.ConvertO(__workflow_bodyconditions);
                     bodypropCount++;
                 }
 
                 var pagingObject = new JObject();
                 var pagingObjectpropCount = 0;
                 pagingObjectpropCount++;
-                pagingObject["pageSize"] = ExpressionConverter.ConvertO(bodypagingpageSize);
+                pagingObject["pageSize"] = ExpressionConverter.ConvertO(__workflow_bodypagingpageSize);
                 pagingObjectpropCount++;
-                pagingObject["page"] = ExpressionConverter.ConvertO(bodypagingpage);
-                if (bodypagingorderField != null)
+                pagingObject["page"] = ExpressionConverter.ConvertO(__workflow_bodypagingpage);
+                if (__workflow_bodypagingorderField != null)
                 {
-                    pagingObject["orderField"] = ExpressionConverter.ConvertO(bodypagingorderField);
+                    pagingObject["orderField"] = ExpressionConverter.ConvertO(__workflow_bodypagingorderField);
                     pagingObjectpropCount++;
                 }
 
-                if (bodypagingorderDirection != null)
+                if (__workflow_bodypagingorderDirection != null)
                 {
-                    pagingObject["orderDirection"] = ExpressionConverter.ConvertO(bodypagingorderDirection);
+                    pagingObject["orderDirection"] = ExpressionConverter.ConvertO(__workflow_bodypagingorderDirection);
                     pagingObjectpropCount++;
                 }
 
@@ -1515,19 +1493,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        [WorkflowExpressionFactory(nameof(__BuildReadInterview))]
-        public IBodyWorkflowAction<ReadInterviewDataResponse> ReadInterview([WorkflowExpression] Func<string> bodytenant, [WorkflowExpression] Func<string> bodyinterviewId, [WorkflowExpression] Func<int> bodysurveyId, [WorkflowExpression] Func<bool> bodyloadSurveyDefinition = null)
+        public IBodyWorkflowAction<ReadInterviewDataResponse> ReadInterview(Expression<Func<string>> bodytenant, Expression<Func<string>> bodyinterviewId, Expression<Func<int>> bodysurveyId, Expression<Func<bool>> bodyloadSurveyDefinition = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ReadInterviewDataResponse> __BuildReadInterview(WorkflowExpression<string> bodytenant, WorkflowExpression<string> bodyinterviewId, WorkflowExpression<int> bodysurveyId, WorkflowExpression<bool> bodyloadSurveyDefinition = null)
-        {
-            WorkflowExpression.Validate(bodytenant, nameof(bodytenant), required: true);
-            WorkflowExpression.Validate(bodyinterviewId, nameof(bodyinterviewId), required: true);
-            WorkflowExpression.Validate(bodysurveyId, nameof(bodysurveyId), required: true);
-            WorkflowExpression.Validate(bodyloadSurveyDefinition, nameof(bodyloadSurveyDefinition), required: false);
+            var __workflow_bodytenant = bodytenant == null ? null : WorkflowExpression.Compile(bodytenant);
+            WorkflowExpression.Validate(__workflow_bodytenant, nameof(bodytenant), required: true);
+            var __workflow_bodyinterviewId = bodyinterviewId == null ? null : WorkflowExpression.Compile(bodyinterviewId);
+            WorkflowExpression.Validate(__workflow_bodyinterviewId, nameof(bodyinterviewId), required: true);
+            var __workflow_bodysurveyId = bodysurveyId == null ? null : WorkflowExpression.Compile(bodysurveyId);
+            WorkflowExpression.Validate(__workflow_bodysurveyId, nameof(bodysurveyId), required: true);
+            var __workflow_bodyloadSurveyDefinition = bodyloadSurveyDefinition == null ? null : WorkflowExpression.Compile(bodyloadSurveyDefinition);
+            WorkflowExpression.Validate(__workflow_bodyloadSurveyDefinition, nameof(bodyloadSurveyDefinition), required: false);
             return new DeferredBodyAction<ReadInterviewDataResponse>(() =>
             {
                 var apiCallPath = "/publicapi/Interview/v3/ReadInterview";
@@ -1536,14 +1511,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["tenant"] = ExpressionConverter.ConvertO(bodytenant);
+                body["tenant"] = ExpressionConverter.ConvertO(__workflow_bodytenant);
                 bodypropCount++;
-                body["interviewId"] = ExpressionConverter.ConvertO(bodyinterviewId);
+                body["interviewId"] = ExpressionConverter.ConvertO(__workflow_bodyinterviewId);
                 bodypropCount++;
-                body["surveyId"] = ExpressionConverter.ConvertO(bodysurveyId);
-                if (bodyloadSurveyDefinition != null)
+                body["surveyId"] = ExpressionConverter.ConvertO(__workflow_bodysurveyId);
+                if (__workflow_bodyloadSurveyDefinition != null)
                 {
-                    body["loadSurveyDefinition"] = ExpressionConverter.ConvertO(bodyloadSurveyDefinition);
+                    body["loadSurveyDefinition"] = ExpressionConverter.ConvertO(__workflow_bodyloadSurveyDefinition);
                     bodypropCount++;
                 }
 
@@ -1557,24 +1532,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        [WorkflowExpressionFactory(nameof(__BuildReadInterviewListCompact))]
-        public IBodyWorkflowAction<ReadInterviewListCompactResponseV3> ReadInterviewListCompact([WorkflowExpression] Func<int> bodypagingpageSize, [WorkflowExpression] Func<int> bodypagingpage, [WorkflowExpression] Func<string> bodytenant = null, [WorkflowExpression] Func<int> bodysurveyId = null, [WorkflowExpression] Func<string[]> bodyfieldsToDownload = null, [WorkflowExpression] Func<bool> bodyloadCodePlan = null, [WorkflowExpression] Func<Condition[]> bodyconditions = null, [WorkflowExpression] Func<string> bodypagingorderField = null, [WorkflowExpression] Func<bodypagingorderDirectionInput> bodypagingorderDirection = null)
+        public IBodyWorkflowAction<ReadInterviewListCompactResponseV3> ReadInterviewListCompact(Expression<Func<int>> bodypagingpageSize, Expression<Func<int>> bodypagingpage, Expression<Func<string>> bodytenant = null, Expression<Func<int>> bodysurveyId = null, Expression<Func<string[]>> bodyfieldsToDownload = null, Expression<Func<bool>> bodyloadCodePlan = null, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<string>> bodypagingorderField = null, Expression<Func<bodypagingorderDirectionInput>> bodypagingorderDirection = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ReadInterviewListCompactResponseV3> __BuildReadInterviewListCompact(WorkflowExpression<int> bodypagingpageSize, WorkflowExpression<int> bodypagingpage, WorkflowExpression<string> bodytenant = null, WorkflowExpression<int> bodysurveyId = null, WorkflowExpression<string[]> bodyfieldsToDownload = null, WorkflowExpression<bool> bodyloadCodePlan = null, WorkflowExpression<Condition[]> bodyconditions = null, WorkflowExpression<string> bodypagingorderField = null, WorkflowExpression<bodypagingorderDirectionInput> bodypagingorderDirection = null)
-        {
-            WorkflowExpression.Validate(bodypagingpageSize, nameof(bodypagingpageSize), required: true);
-            WorkflowExpression.Validate(bodypagingpage, nameof(bodypagingpage), required: true);
-            WorkflowExpression.Validate(bodytenant, nameof(bodytenant), required: false);
-            WorkflowExpression.Validate(bodysurveyId, nameof(bodysurveyId), required: false);
-            WorkflowExpression.Validate(bodyfieldsToDownload, nameof(bodyfieldsToDownload), required: false);
-            WorkflowExpression.Validate(bodyloadCodePlan, nameof(bodyloadCodePlan), required: false);
-            WorkflowExpression.Validate(bodyconditions, nameof(bodyconditions), required: false);
-            WorkflowExpression.Validate(bodypagingorderField, nameof(bodypagingorderField), required: false);
-            WorkflowExpression.Validate(bodypagingorderDirection, nameof(bodypagingorderDirection), required: false);
+            var __workflow_bodypagingpageSize = bodypagingpageSize == null ? null : WorkflowExpression.Compile(bodypagingpageSize);
+            WorkflowExpression.Validate(__workflow_bodypagingpageSize, nameof(bodypagingpageSize), required: true);
+            var __workflow_bodypagingpage = bodypagingpage == null ? null : WorkflowExpression.Compile(bodypagingpage);
+            WorkflowExpression.Validate(__workflow_bodypagingpage, nameof(bodypagingpage), required: true);
+            var __workflow_bodytenant = bodytenant == null ? null : WorkflowExpression.Compile(bodytenant);
+            WorkflowExpression.Validate(__workflow_bodytenant, nameof(bodytenant), required: false);
+            var __workflow_bodysurveyId = bodysurveyId == null ? null : WorkflowExpression.Compile(bodysurveyId);
+            WorkflowExpression.Validate(__workflow_bodysurveyId, nameof(bodysurveyId), required: false);
+            var __workflow_bodyfieldsToDownload = bodyfieldsToDownload == null ? null : WorkflowExpression.Compile(bodyfieldsToDownload);
+            WorkflowExpression.Validate(__workflow_bodyfieldsToDownload, nameof(bodyfieldsToDownload), required: false);
+            var __workflow_bodyloadCodePlan = bodyloadCodePlan == null ? null : WorkflowExpression.Compile(bodyloadCodePlan);
+            WorkflowExpression.Validate(__workflow_bodyloadCodePlan, nameof(bodyloadCodePlan), required: false);
+            var __workflow_bodyconditions = bodyconditions == null ? null : WorkflowExpression.Compile(bodyconditions);
+            WorkflowExpression.Validate(__workflow_bodyconditions, nameof(bodyconditions), required: false);
+            var __workflow_bodypagingorderField = bodypagingorderField == null ? null : WorkflowExpression.Compile(bodypagingorderField);
+            WorkflowExpression.Validate(__workflow_bodypagingorderField, nameof(bodypagingorderField), required: false);
+            var __workflow_bodypagingorderDirection = bodypagingorderDirection == null ? null : WorkflowExpression.Compile(bodypagingorderDirection);
+            WorkflowExpression.Validate(__workflow_bodypagingorderDirection, nameof(bodypagingorderDirection), required: false);
             return new DeferredBodyAction<ReadInterviewListCompactResponseV3>(() =>
             {
                 var apiCallPath = "/publicapi/Interview/v3/ReadInterviewListCompact";
@@ -1582,51 +1559,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodytenant != null)
+                if (__workflow_bodytenant != null)
                 {
-                    body["tenant"] = ExpressionConverter.ConvertO(bodytenant);
+                    body["tenant"] = ExpressionConverter.ConvertO(__workflow_bodytenant);
                     bodypropCount++;
                 }
 
-                if (bodysurveyId != null)
+                if (__workflow_bodysurveyId != null)
                 {
-                    body["surveyId"] = ExpressionConverter.ConvertO(bodysurveyId);
+                    body["surveyId"] = ExpressionConverter.ConvertO(__workflow_bodysurveyId);
                     bodypropCount++;
                 }
 
-                if (bodyfieldsToDownload != null)
+                if (__workflow_bodyfieldsToDownload != null)
                 {
-                    body["fieldsToDownload"] = ExpressionConverter.ConvertO(bodyfieldsToDownload);
+                    body["fieldsToDownload"] = ExpressionConverter.ConvertO(__workflow_bodyfieldsToDownload);
                     bodypropCount++;
                 }
 
-                if (bodyloadCodePlan != null)
+                if (__workflow_bodyloadCodePlan != null)
                 {
-                    body["loadCodePlan"] = ExpressionConverter.ConvertO(bodyloadCodePlan);
+                    body["loadCodePlan"] = ExpressionConverter.ConvertO(__workflow_bodyloadCodePlan);
                     bodypropCount++;
                 }
 
-                if (bodyconditions != null)
+                if (__workflow_bodyconditions != null)
                 {
-                    body["conditions"] = ExpressionConverter.ConvertO(bodyconditions);
+                    body["conditions"] = ExpressionConverter.ConvertO(__workflow_bodyconditions);
                     bodypropCount++;
                 }
 
                 var pagingObject = new JObject();
                 var pagingObjectpropCount = 0;
                 pagingObjectpropCount++;
-                pagingObject["pageSize"] = ExpressionConverter.ConvertO(bodypagingpageSize);
+                pagingObject["pageSize"] = ExpressionConverter.ConvertO(__workflow_bodypagingpageSize);
                 pagingObjectpropCount++;
-                pagingObject["page"] = ExpressionConverter.ConvertO(bodypagingpage);
-                if (bodypagingorderField != null)
+                pagingObject["page"] = ExpressionConverter.ConvertO(__workflow_bodypagingpage);
+                if (__workflow_bodypagingorderField != null)
                 {
-                    pagingObject["orderField"] = ExpressionConverter.ConvertO(bodypagingorderField);
+                    pagingObject["orderField"] = ExpressionConverter.ConvertO(__workflow_bodypagingorderField);
                     pagingObjectpropCount++;
                 }
 
-                if (bodypagingorderDirection != null)
+                if (__workflow_bodypagingorderDirection != null)
                 {
-                    pagingObject["orderDirection"] = ExpressionConverter.ConvertO(bodypagingorderDirection);
+                    pagingObject["orderDirection"] = ExpressionConverter.ConvertO(__workflow_bodypagingorderDirection);
                     pagingObjectpropCount++;
                 }
 
@@ -1646,24 +1623,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        [WorkflowExpressionFactory(nameof(__BuildReadInterviewList))]
-        public IBodyWorkflowAction<ReadInterviewListResponseV3> ReadInterviewList([WorkflowExpression] Func<int> bodypagingpageSize, [WorkflowExpression] Func<int> bodypagingpage, [WorkflowExpression] Func<string> bodytenant = null, [WorkflowExpression] Func<int> bodysurveyId = null, [WorkflowExpression] Func<string[]> bodyfieldsToDownload = null, [WorkflowExpression] Func<bool> bodyloadCodePlan = null, [WorkflowExpression] Func<Condition[]> bodyconditions = null, [WorkflowExpression] Func<string> bodypagingorderField = null, [WorkflowExpression] Func<bodypagingorderDirectionInput> bodypagingorderDirection = null)
+        public IBodyWorkflowAction<ReadInterviewListResponseV3> ReadInterviewList(Expression<Func<int>> bodypagingpageSize, Expression<Func<int>> bodypagingpage, Expression<Func<string>> bodytenant = null, Expression<Func<int>> bodysurveyId = null, Expression<Func<string[]>> bodyfieldsToDownload = null, Expression<Func<bool>> bodyloadCodePlan = null, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<string>> bodypagingorderField = null, Expression<Func<bodypagingorderDirectionInput>> bodypagingorderDirection = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ReadInterviewListResponseV3> __BuildReadInterviewList(WorkflowExpression<int> bodypagingpageSize, WorkflowExpression<int> bodypagingpage, WorkflowExpression<string> bodytenant = null, WorkflowExpression<int> bodysurveyId = null, WorkflowExpression<string[]> bodyfieldsToDownload = null, WorkflowExpression<bool> bodyloadCodePlan = null, WorkflowExpression<Condition[]> bodyconditions = null, WorkflowExpression<string> bodypagingorderField = null, WorkflowExpression<bodypagingorderDirectionInput> bodypagingorderDirection = null)
-        {
-            WorkflowExpression.Validate(bodypagingpageSize, nameof(bodypagingpageSize), required: true);
-            WorkflowExpression.Validate(bodypagingpage, nameof(bodypagingpage), required: true);
-            WorkflowExpression.Validate(bodytenant, nameof(bodytenant), required: false);
-            WorkflowExpression.Validate(bodysurveyId, nameof(bodysurveyId), required: false);
-            WorkflowExpression.Validate(bodyfieldsToDownload, nameof(bodyfieldsToDownload), required: false);
-            WorkflowExpression.Validate(bodyloadCodePlan, nameof(bodyloadCodePlan), required: false);
-            WorkflowExpression.Validate(bodyconditions, nameof(bodyconditions), required: false);
-            WorkflowExpression.Validate(bodypagingorderField, nameof(bodypagingorderField), required: false);
-            WorkflowExpression.Validate(bodypagingorderDirection, nameof(bodypagingorderDirection), required: false);
+            var __workflow_bodypagingpageSize = bodypagingpageSize == null ? null : WorkflowExpression.Compile(bodypagingpageSize);
+            WorkflowExpression.Validate(__workflow_bodypagingpageSize, nameof(bodypagingpageSize), required: true);
+            var __workflow_bodypagingpage = bodypagingpage == null ? null : WorkflowExpression.Compile(bodypagingpage);
+            WorkflowExpression.Validate(__workflow_bodypagingpage, nameof(bodypagingpage), required: true);
+            var __workflow_bodytenant = bodytenant == null ? null : WorkflowExpression.Compile(bodytenant);
+            WorkflowExpression.Validate(__workflow_bodytenant, nameof(bodytenant), required: false);
+            var __workflow_bodysurveyId = bodysurveyId == null ? null : WorkflowExpression.Compile(bodysurveyId);
+            WorkflowExpression.Validate(__workflow_bodysurveyId, nameof(bodysurveyId), required: false);
+            var __workflow_bodyfieldsToDownload = bodyfieldsToDownload == null ? null : WorkflowExpression.Compile(bodyfieldsToDownload);
+            WorkflowExpression.Validate(__workflow_bodyfieldsToDownload, nameof(bodyfieldsToDownload), required: false);
+            var __workflow_bodyloadCodePlan = bodyloadCodePlan == null ? null : WorkflowExpression.Compile(bodyloadCodePlan);
+            WorkflowExpression.Validate(__workflow_bodyloadCodePlan, nameof(bodyloadCodePlan), required: false);
+            var __workflow_bodyconditions = bodyconditions == null ? null : WorkflowExpression.Compile(bodyconditions);
+            WorkflowExpression.Validate(__workflow_bodyconditions, nameof(bodyconditions), required: false);
+            var __workflow_bodypagingorderField = bodypagingorderField == null ? null : WorkflowExpression.Compile(bodypagingorderField);
+            WorkflowExpression.Validate(__workflow_bodypagingorderField, nameof(bodypagingorderField), required: false);
+            var __workflow_bodypagingorderDirection = bodypagingorderDirection == null ? null : WorkflowExpression.Compile(bodypagingorderDirection);
+            WorkflowExpression.Validate(__workflow_bodypagingorderDirection, nameof(bodypagingorderDirection), required: false);
             return new DeferredBodyAction<ReadInterviewListResponseV3>(() =>
             {
                 var apiCallPath = "/publicapi/Interview/v3/ReadInterviewList";
@@ -1671,51 +1650,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodytenant != null)
+                if (__workflow_bodytenant != null)
                 {
-                    body["tenant"] = ExpressionConverter.ConvertO(bodytenant);
+                    body["tenant"] = ExpressionConverter.ConvertO(__workflow_bodytenant);
                     bodypropCount++;
                 }
 
-                if (bodysurveyId != null)
+                if (__workflow_bodysurveyId != null)
                 {
-                    body["surveyId"] = ExpressionConverter.ConvertO(bodysurveyId);
+                    body["surveyId"] = ExpressionConverter.ConvertO(__workflow_bodysurveyId);
                     bodypropCount++;
                 }
 
-                if (bodyfieldsToDownload != null)
+                if (__workflow_bodyfieldsToDownload != null)
                 {
-                    body["fieldsToDownload"] = ExpressionConverter.ConvertO(bodyfieldsToDownload);
+                    body["fieldsToDownload"] = ExpressionConverter.ConvertO(__workflow_bodyfieldsToDownload);
                     bodypropCount++;
                 }
 
-                if (bodyloadCodePlan != null)
+                if (__workflow_bodyloadCodePlan != null)
                 {
-                    body["loadCodePlan"] = ExpressionConverter.ConvertO(bodyloadCodePlan);
+                    body["loadCodePlan"] = ExpressionConverter.ConvertO(__workflow_bodyloadCodePlan);
                     bodypropCount++;
                 }
 
-                if (bodyconditions != null)
+                if (__workflow_bodyconditions != null)
                 {
-                    body["conditions"] = ExpressionConverter.ConvertO(bodyconditions);
+                    body["conditions"] = ExpressionConverter.ConvertO(__workflow_bodyconditions);
                     bodypropCount++;
                 }
 
                 var pagingObject = new JObject();
                 var pagingObjectpropCount = 0;
                 pagingObjectpropCount++;
-                pagingObject["pageSize"] = ExpressionConverter.ConvertO(bodypagingpageSize);
+                pagingObject["pageSize"] = ExpressionConverter.ConvertO(__workflow_bodypagingpageSize);
                 pagingObjectpropCount++;
-                pagingObject["page"] = ExpressionConverter.ConvertO(bodypagingpage);
-                if (bodypagingorderField != null)
+                pagingObject["page"] = ExpressionConverter.ConvertO(__workflow_bodypagingpage);
+                if (__workflow_bodypagingorderField != null)
                 {
-                    pagingObject["orderField"] = ExpressionConverter.ConvertO(bodypagingorderField);
+                    pagingObject["orderField"] = ExpressionConverter.ConvertO(__workflow_bodypagingorderField);
                     pagingObjectpropCount++;
                 }
 
-                if (bodypagingorderDirection != null)
+                if (__workflow_bodypagingorderDirection != null)
                 {
-                    pagingObject["orderDirection"] = ExpressionConverter.ConvertO(bodypagingorderDirection);
+                    pagingObject["orderDirection"] = ExpressionConverter.ConvertO(__workflow_bodypagingorderDirection);
                     pagingObjectpropCount++;
                 }
 
@@ -1735,24 +1714,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        [WorkflowExpressionFactory(nameof(__BuildReadMemberList))]
-        public IBodyWorkflowAction<ReadMemberListResponse> ReadMemberList([WorkflowExpression] Func<int> bodypanelId, [WorkflowExpression] Func<bool> bodyinterviewsRequired, [WorkflowExpression] Func<int> bodypagingpageSize, [WorkflowExpression] Func<int> bodypagingpage, [WorkflowExpression] Func<string> bodytenant = null, [WorkflowExpression] Func<string[]> bodyfieldsToDownload = null, [WorkflowExpression] Func<Condition[]> bodyconditions = null, [WorkflowExpression] Func<string> bodypagingorderField = null, [WorkflowExpression] Func<bodypagingorderDirectionInput> bodypagingorderDirection = null)
+        public IBodyWorkflowAction<ReadMemberListResponse> ReadMemberList(Expression<Func<int>> bodypanelId, Expression<Func<bool>> bodyinterviewsRequired, Expression<Func<int>> bodypagingpageSize, Expression<Func<int>> bodypagingpage, Expression<Func<string>> bodytenant = null, Expression<Func<string[]>> bodyfieldsToDownload = null, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<string>> bodypagingorderField = null, Expression<Func<bodypagingorderDirectionInput>> bodypagingorderDirection = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ReadMemberListResponse> __BuildReadMemberList(WorkflowExpression<int> bodypanelId, WorkflowExpression<bool> bodyinterviewsRequired, WorkflowExpression<int> bodypagingpageSize, WorkflowExpression<int> bodypagingpage, WorkflowExpression<string> bodytenant = null, WorkflowExpression<string[]> bodyfieldsToDownload = null, WorkflowExpression<Condition[]> bodyconditions = null, WorkflowExpression<string> bodypagingorderField = null, WorkflowExpression<bodypagingorderDirectionInput> bodypagingorderDirection = null)
-        {
-            WorkflowExpression.Validate(bodypanelId, nameof(bodypanelId), required: true);
-            WorkflowExpression.Validate(bodyinterviewsRequired, nameof(bodyinterviewsRequired), required: true);
-            WorkflowExpression.Validate(bodypagingpageSize, nameof(bodypagingpageSize), required: true);
-            WorkflowExpression.Validate(bodypagingpage, nameof(bodypagingpage), required: true);
-            WorkflowExpression.Validate(bodytenant, nameof(bodytenant), required: false);
-            WorkflowExpression.Validate(bodyfieldsToDownload, nameof(bodyfieldsToDownload), required: false);
-            WorkflowExpression.Validate(bodyconditions, nameof(bodyconditions), required: false);
-            WorkflowExpression.Validate(bodypagingorderField, nameof(bodypagingorderField), required: false);
-            WorkflowExpression.Validate(bodypagingorderDirection, nameof(bodypagingorderDirection), required: false);
+            var __workflow_bodypanelId = bodypanelId == null ? null : WorkflowExpression.Compile(bodypanelId);
+            WorkflowExpression.Validate(__workflow_bodypanelId, nameof(bodypanelId), required: true);
+            var __workflow_bodyinterviewsRequired = bodyinterviewsRequired == null ? null : WorkflowExpression.Compile(bodyinterviewsRequired);
+            WorkflowExpression.Validate(__workflow_bodyinterviewsRequired, nameof(bodyinterviewsRequired), required: true);
+            var __workflow_bodypagingpageSize = bodypagingpageSize == null ? null : WorkflowExpression.Compile(bodypagingpageSize);
+            WorkflowExpression.Validate(__workflow_bodypagingpageSize, nameof(bodypagingpageSize), required: true);
+            var __workflow_bodypagingpage = bodypagingpage == null ? null : WorkflowExpression.Compile(bodypagingpage);
+            WorkflowExpression.Validate(__workflow_bodypagingpage, nameof(bodypagingpage), required: true);
+            var __workflow_bodytenant = bodytenant == null ? null : WorkflowExpression.Compile(bodytenant);
+            WorkflowExpression.Validate(__workflow_bodytenant, nameof(bodytenant), required: false);
+            var __workflow_bodyfieldsToDownload = bodyfieldsToDownload == null ? null : WorkflowExpression.Compile(bodyfieldsToDownload);
+            WorkflowExpression.Validate(__workflow_bodyfieldsToDownload, nameof(bodyfieldsToDownload), required: false);
+            var __workflow_bodyconditions = bodyconditions == null ? null : WorkflowExpression.Compile(bodyconditions);
+            WorkflowExpression.Validate(__workflow_bodyconditions, nameof(bodyconditions), required: false);
+            var __workflow_bodypagingorderField = bodypagingorderField == null ? null : WorkflowExpression.Compile(bodypagingorderField);
+            WorkflowExpression.Validate(__workflow_bodypagingorderField, nameof(bodypagingorderField), required: false);
+            var __workflow_bodypagingorderDirection = bodypagingorderDirection == null ? null : WorkflowExpression.Compile(bodypagingorderDirection);
+            WorkflowExpression.Validate(__workflow_bodypagingorderDirection, nameof(bodypagingorderDirection), required: false);
             return new DeferredBodyAction<ReadMemberListResponse>(() =>
             {
                 var apiCallPath = "/publicapi/Panel/v3/ReadMemberList";
@@ -1760,43 +1741,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodytenant != null)
+                if (__workflow_bodytenant != null)
                 {
-                    body["tenant"] = ExpressionConverter.ConvertO(bodytenant);
+                    body["tenant"] = ExpressionConverter.ConvertO(__workflow_bodytenant);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["panelId"] = ExpressionConverter.ConvertO(bodypanelId);
+                body["panelId"] = ExpressionConverter.ConvertO(__workflow_bodypanelId);
                 bodypropCount++;
-                body["interviewsRequired"] = ExpressionConverter.ConvertO(bodyinterviewsRequired);
-                if (bodyfieldsToDownload != null)
+                body["interviewsRequired"] = ExpressionConverter.ConvertO(__workflow_bodyinterviewsRequired);
+                if (__workflow_bodyfieldsToDownload != null)
                 {
-                    body["fieldsToDownload"] = ExpressionConverter.ConvertO(bodyfieldsToDownload);
+                    body["fieldsToDownload"] = ExpressionConverter.ConvertO(__workflow_bodyfieldsToDownload);
                     bodypropCount++;
                 }
 
-                if (bodyconditions != null)
+                if (__workflow_bodyconditions != null)
                 {
-                    body["conditions"] = ExpressionConverter.ConvertO(bodyconditions);
+                    body["conditions"] = ExpressionConverter.ConvertO(__workflow_bodyconditions);
                     bodypropCount++;
                 }
 
                 var pagingObject = new JObject();
                 var pagingObjectpropCount = 0;
                 pagingObjectpropCount++;
-                pagingObject["pageSize"] = ExpressionConverter.ConvertO(bodypagingpageSize);
+                pagingObject["pageSize"] = ExpressionConverter.ConvertO(__workflow_bodypagingpageSize);
                 pagingObjectpropCount++;
-                pagingObject["page"] = ExpressionConverter.ConvertO(bodypagingpage);
-                if (bodypagingorderField != null)
+                pagingObject["page"] = ExpressionConverter.ConvertO(__workflow_bodypagingpage);
+                if (__workflow_bodypagingorderField != null)
                 {
-                    pagingObject["orderField"] = ExpressionConverter.ConvertO(bodypagingorderField);
+                    pagingObject["orderField"] = ExpressionConverter.ConvertO(__workflow_bodypagingorderField);
                     pagingObjectpropCount++;
                 }
 
-                if (bodypagingorderDirection != null)
+                if (__workflow_bodypagingorderDirection != null)
                 {
-                    pagingObject["orderDirection"] = ExpressionConverter.ConvertO(bodypagingorderDirection);
+                    pagingObject["orderDirection"] = ExpressionConverter.ConvertO(__workflow_bodypagingorderDirection);
                     pagingObjectpropCount++;
                 }
 
@@ -1816,22 +1797,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        [WorkflowExpressionFactory(nameof(__BuildReadMessageTemplateList))]
-        public IBodyWorkflowAction<ReadMessageTemplateListResponse> ReadMessageTemplateList([WorkflowExpression] Func<string> bodylanguage, [WorkflowExpression] Func<int> bodypagingpageSize, [WorkflowExpression] Func<int> bodypagingpage, [WorkflowExpression] Func<int> bodyworkspaceId = null, [WorkflowExpression] Func<Condition[]> bodyconditions = null, [WorkflowExpression] Func<string> bodypagingorderField = null, [WorkflowExpression] Func<bodypagingorderDirectionInput> bodypagingorderDirection = null)
+        public IBodyWorkflowAction<ReadMessageTemplateListResponse> ReadMessageTemplateList(Expression<Func<string>> bodylanguage, Expression<Func<int>> bodypagingpageSize, Expression<Func<int>> bodypagingpage, Expression<Func<int>> bodyworkspaceId = null, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<string>> bodypagingorderField = null, Expression<Func<bodypagingorderDirectionInput>> bodypagingorderDirection = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ReadMessageTemplateListResponse> __BuildReadMessageTemplateList(WorkflowExpression<string> bodylanguage, WorkflowExpression<int> bodypagingpageSize, WorkflowExpression<int> bodypagingpage, WorkflowExpression<int> bodyworkspaceId = null, WorkflowExpression<Condition[]> bodyconditions = null, WorkflowExpression<string> bodypagingorderField = null, WorkflowExpression<bodypagingorderDirectionInput> bodypagingorderDirection = null)
-        {
-            WorkflowExpression.Validate(bodylanguage, nameof(bodylanguage), required: true);
-            WorkflowExpression.Validate(bodypagingpageSize, nameof(bodypagingpageSize), required: true);
-            WorkflowExpression.Validate(bodypagingpage, nameof(bodypagingpage), required: true);
-            WorkflowExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: false);
-            WorkflowExpression.Validate(bodyconditions, nameof(bodyconditions), required: false);
-            WorkflowExpression.Validate(bodypagingorderField, nameof(bodypagingorderField), required: false);
-            WorkflowExpression.Validate(bodypagingorderDirection, nameof(bodypagingorderDirection), required: false);
+            var __workflow_bodylanguage = bodylanguage == null ? null : WorkflowExpression.Compile(bodylanguage);
+            WorkflowExpression.Validate(__workflow_bodylanguage, nameof(bodylanguage), required: true);
+            var __workflow_bodypagingpageSize = bodypagingpageSize == null ? null : WorkflowExpression.Compile(bodypagingpageSize);
+            WorkflowExpression.Validate(__workflow_bodypagingpageSize, nameof(bodypagingpageSize), required: true);
+            var __workflow_bodypagingpage = bodypagingpage == null ? null : WorkflowExpression.Compile(bodypagingpage);
+            WorkflowExpression.Validate(__workflow_bodypagingpage, nameof(bodypagingpage), required: true);
+            var __workflow_bodyworkspaceId = bodyworkspaceId == null ? null : WorkflowExpression.Compile(bodyworkspaceId);
+            WorkflowExpression.Validate(__workflow_bodyworkspaceId, nameof(bodyworkspaceId), required: false);
+            var __workflow_bodyconditions = bodyconditions == null ? null : WorkflowExpression.Compile(bodyconditions);
+            WorkflowExpression.Validate(__workflow_bodyconditions, nameof(bodyconditions), required: false);
+            var __workflow_bodypagingorderField = bodypagingorderField == null ? null : WorkflowExpression.Compile(bodypagingorderField);
+            WorkflowExpression.Validate(__workflow_bodypagingorderField, nameof(bodypagingorderField), required: false);
+            var __workflow_bodypagingorderDirection = bodypagingorderDirection == null ? null : WorkflowExpression.Compile(bodypagingorderDirection);
+            WorkflowExpression.Validate(__workflow_bodypagingorderDirection, nameof(bodypagingorderDirection), required: false);
             return new DeferredBodyAction<ReadMessageTemplateListResponse>(() =>
             {
                 var apiCallPath = "/publicapi/Distribute/v3/ReadMessageTemplateList";
@@ -1839,35 +1820,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyworkspaceId != null)
+                if (__workflow_bodyworkspaceId != null)
                 {
-                    body["workspaceId"] = ExpressionConverter.ConvertO(bodyworkspaceId);
+                    body["workspaceId"] = ExpressionConverter.ConvertO(__workflow_bodyworkspaceId);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["language"] = ExpressionConverter.ConvertO(bodylanguage);
-                if (bodyconditions != null)
+                body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
+                if (__workflow_bodyconditions != null)
                 {
-                    body["conditions"] = ExpressionConverter.ConvertO(bodyconditions);
+                    body["conditions"] = ExpressionConverter.ConvertO(__workflow_bodyconditions);
                     bodypropCount++;
                 }
 
                 var pagingObject = new JObject();
                 var pagingObjectpropCount = 0;
                 pagingObjectpropCount++;
-                pagingObject["pageSize"] = ExpressionConverter.ConvertO(bodypagingpageSize);
+                pagingObject["pageSize"] = ExpressionConverter.ConvertO(__workflow_bodypagingpageSize);
                 pagingObjectpropCount++;
-                pagingObject["page"] = ExpressionConverter.ConvertO(bodypagingpage);
-                if (bodypagingorderField != null)
+                pagingObject["page"] = ExpressionConverter.ConvertO(__workflow_bodypagingpage);
+                if (__workflow_bodypagingorderField != null)
                 {
-                    pagingObject["orderField"] = ExpressionConverter.ConvertO(bodypagingorderField);
+                    pagingObject["orderField"] = ExpressionConverter.ConvertO(__workflow_bodypagingorderField);
                     pagingObjectpropCount++;
                 }
 
-                if (bodypagingorderDirection != null)
+                if (__workflow_bodypagingorderDirection != null)
                 {
-                    pagingObject["orderDirection"] = ExpressionConverter.ConvertO(bodypagingorderDirection);
+                    pagingObject["orderDirection"] = ExpressionConverter.ConvertO(__workflow_bodypagingorderDirection);
                     pagingObjectpropCount++;
                 }
 
@@ -1887,22 +1868,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        [WorkflowExpressionFactory(nameof(__BuildReadOptOutList))]
-        public IBodyWorkflowAction<ReadOptOutListResponseV3> ReadOptOutList([WorkflowExpression] Func<int> bodypagingpageSize, [WorkflowExpression] Func<int> bodypagingpage, [WorkflowExpression] Func<int> bodypanelId = null, [WorkflowExpression] Func<int> bodyworkspaceId = null, [WorkflowExpression] Func<Condition[]> bodyconditions = null, [WorkflowExpression] Func<string> bodypagingorderField = null, [WorkflowExpression] Func<bodypagingorderDirectionInput> bodypagingorderDirection = null)
+        public IBodyWorkflowAction<ReadOptOutListResponseV3> ReadOptOutList(Expression<Func<int>> bodypagingpageSize, Expression<Func<int>> bodypagingpage, Expression<Func<int>> bodypanelId = null, Expression<Func<int>> bodyworkspaceId = null, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<string>> bodypagingorderField = null, Expression<Func<bodypagingorderDirectionInput>> bodypagingorderDirection = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ReadOptOutListResponseV3> __BuildReadOptOutList(WorkflowExpression<int> bodypagingpageSize, WorkflowExpression<int> bodypagingpage, WorkflowExpression<int> bodypanelId = null, WorkflowExpression<int> bodyworkspaceId = null, WorkflowExpression<Condition[]> bodyconditions = null, WorkflowExpression<string> bodypagingorderField = null, WorkflowExpression<bodypagingorderDirectionInput> bodypagingorderDirection = null)
-        {
-            WorkflowExpression.Validate(bodypagingpageSize, nameof(bodypagingpageSize), required: true);
-            WorkflowExpression.Validate(bodypagingpage, nameof(bodypagingpage), required: true);
-            WorkflowExpression.Validate(bodypanelId, nameof(bodypanelId), required: false);
-            WorkflowExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: false);
-            WorkflowExpression.Validate(bodyconditions, nameof(bodyconditions), required: false);
-            WorkflowExpression.Validate(bodypagingorderField, nameof(bodypagingorderField), required: false);
-            WorkflowExpression.Validate(bodypagingorderDirection, nameof(bodypagingorderDirection), required: false);
+            var __workflow_bodypagingpageSize = bodypagingpageSize == null ? null : WorkflowExpression.Compile(bodypagingpageSize);
+            WorkflowExpression.Validate(__workflow_bodypagingpageSize, nameof(bodypagingpageSize), required: true);
+            var __workflow_bodypagingpage = bodypagingpage == null ? null : WorkflowExpression.Compile(bodypagingpage);
+            WorkflowExpression.Validate(__workflow_bodypagingpage, nameof(bodypagingpage), required: true);
+            var __workflow_bodypanelId = bodypanelId == null ? null : WorkflowExpression.Compile(bodypanelId);
+            WorkflowExpression.Validate(__workflow_bodypanelId, nameof(bodypanelId), required: false);
+            var __workflow_bodyworkspaceId = bodyworkspaceId == null ? null : WorkflowExpression.Compile(bodyworkspaceId);
+            WorkflowExpression.Validate(__workflow_bodyworkspaceId, nameof(bodyworkspaceId), required: false);
+            var __workflow_bodyconditions = bodyconditions == null ? null : WorkflowExpression.Compile(bodyconditions);
+            WorkflowExpression.Validate(__workflow_bodyconditions, nameof(bodyconditions), required: false);
+            var __workflow_bodypagingorderField = bodypagingorderField == null ? null : WorkflowExpression.Compile(bodypagingorderField);
+            WorkflowExpression.Validate(__workflow_bodypagingorderField, nameof(bodypagingorderField), required: false);
+            var __workflow_bodypagingorderDirection = bodypagingorderDirection == null ? null : WorkflowExpression.Compile(bodypagingorderDirection);
+            WorkflowExpression.Validate(__workflow_bodypagingorderDirection, nameof(bodypagingorderDirection), required: false);
             return new DeferredBodyAction<ReadOptOutListResponseV3>(() =>
             {
                 var apiCallPath = "/publicapi/Distribute/v3/ReadOptOutList";
@@ -1910,39 +1891,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodypanelId != null)
+                if (__workflow_bodypanelId != null)
                 {
-                    body["panelId"] = ExpressionConverter.ConvertO(bodypanelId);
+                    body["panelId"] = ExpressionConverter.ConvertO(__workflow_bodypanelId);
                     bodypropCount++;
                 }
 
-                if (bodyworkspaceId != null)
+                if (__workflow_bodyworkspaceId != null)
                 {
-                    body["workspaceId"] = ExpressionConverter.ConvertO(bodyworkspaceId);
+                    body["workspaceId"] = ExpressionConverter.ConvertO(__workflow_bodyworkspaceId);
                     bodypropCount++;
                 }
 
-                if (bodyconditions != null)
+                if (__workflow_bodyconditions != null)
                 {
-                    body["conditions"] = ExpressionConverter.ConvertO(bodyconditions);
+                    body["conditions"] = ExpressionConverter.ConvertO(__workflow_bodyconditions);
                     bodypropCount++;
                 }
 
                 var pagingObject = new JObject();
                 var pagingObjectpropCount = 0;
                 pagingObjectpropCount++;
-                pagingObject["pageSize"] = ExpressionConverter.ConvertO(bodypagingpageSize);
+                pagingObject["pageSize"] = ExpressionConverter.ConvertO(__workflow_bodypagingpageSize);
                 pagingObjectpropCount++;
-                pagingObject["page"] = ExpressionConverter.ConvertO(bodypagingpage);
-                if (bodypagingorderField != null)
+                pagingObject["page"] = ExpressionConverter.ConvertO(__workflow_bodypagingpage);
+                if (__workflow_bodypagingorderField != null)
                 {
-                    pagingObject["orderField"] = ExpressionConverter.ConvertO(bodypagingorderField);
+                    pagingObject["orderField"] = ExpressionConverter.ConvertO(__workflow_bodypagingorderField);
                     pagingObjectpropCount++;
                 }
 
-                if (bodypagingorderDirection != null)
+                if (__workflow_bodypagingorderDirection != null)
                 {
-                    pagingObject["orderDirection"] = ExpressionConverter.ConvertO(bodypagingorderDirection);
+                    pagingObject["orderDirection"] = ExpressionConverter.ConvertO(__workflow_bodypagingorderDirection);
                     pagingObjectpropCount++;
                 }
 
@@ -1962,17 +1943,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        [WorkflowExpressionFactory(nameof(__BuildReadPanel))]
-        public IBodyWorkflowAction<ReadPanelDefinitionResponse> ReadPanel([WorkflowExpression] Func<int> bodypanelId, [WorkflowExpression] Func<string> bodytenant = null)
+        public IBodyWorkflowAction<ReadPanelDefinitionResponse> ReadPanel(Expression<Func<int>> bodypanelId, Expression<Func<string>> bodytenant = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ReadPanelDefinitionResponse> __BuildReadPanel(WorkflowExpression<int> bodypanelId, WorkflowExpression<string> bodytenant = null)
-        {
-            WorkflowExpression.Validate(bodypanelId, nameof(bodypanelId), required: true);
-            WorkflowExpression.Validate(bodytenant, nameof(bodytenant), required: false);
+            var __workflow_bodypanelId = bodypanelId == null ? null : WorkflowExpression.Compile(bodypanelId);
+            WorkflowExpression.Validate(__workflow_bodypanelId, nameof(bodypanelId), required: true);
+            var __workflow_bodytenant = bodytenant == null ? null : WorkflowExpression.Compile(bodytenant);
+            WorkflowExpression.Validate(__workflow_bodytenant, nameof(bodytenant), required: false);
             return new DeferredBodyAction<ReadPanelDefinitionResponse>(() =>
             {
                 var apiCallPath = "/publicapi/Panel/v3/ReadPanel";
@@ -1980,14 +1956,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodytenant != null)
+                if (__workflow_bodytenant != null)
                 {
-                    body["tenant"] = ExpressionConverter.ConvertO(bodytenant);
+                    body["tenant"] = ExpressionConverter.ConvertO(__workflow_bodytenant);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["panelId"] = ExpressionConverter.ConvertO(bodypanelId);
+                body["panelId"] = ExpressionConverter.ConvertO(__workflow_bodypanelId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -1998,16 +1974,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        [WorkflowExpressionFactory(nameof(__BuildReadSamplingProject))]
-        public IBodyWorkflowAction<ReadSamplingProjectResponse> ReadSamplingProject([WorkflowExpression] Func<int> bodysamplingProjectId = null)
+        public IBodyWorkflowAction<ReadSamplingProjectResponse> ReadSamplingProject(Expression<Func<int>> bodysamplingProjectId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ReadSamplingProjectResponse> __BuildReadSamplingProject(WorkflowExpression<int> bodysamplingProjectId = null)
-        {
-            WorkflowExpression.Validate(bodysamplingProjectId, nameof(bodysamplingProjectId), required: false);
+            var __workflow_bodysamplingProjectId = bodysamplingProjectId == null ? null : WorkflowExpression.Compile(bodysamplingProjectId);
+            WorkflowExpression.Validate(__workflow_bodysamplingProjectId, nameof(bodysamplingProjectId), required: false);
             return new DeferredBodyAction<ReadSamplingProjectResponse>(() =>
             {
                 var apiCallPath = "/publicapi/Distribute/v3/ReadSamplingProject";
@@ -2015,9 +1985,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodysamplingProjectId != null)
+                if (__workflow_bodysamplingProjectId != null)
                 {
-                    body["samplingProjectId"] = ExpressionConverter.ConvertO(bodysamplingProjectId);
+                    body["samplingProjectId"] = ExpressionConverter.ConvertO(__workflow_bodysamplingProjectId);
                     bodypropCount++;
                 }
 
@@ -2031,16 +2001,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        [WorkflowExpressionFactory(nameof(__BuildReadSurveyLinks))]
-        public IBodyWorkflowAction<ReadSurveyLinksResponse> ReadSurveyLinks([WorkflowExpression] Func<int> bodysurveyId = null)
+        public IBodyWorkflowAction<ReadSurveyLinksResponse> ReadSurveyLinks(Expression<Func<int>> bodysurveyId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ReadSurveyLinksResponse> __BuildReadSurveyLinks(WorkflowExpression<int> bodysurveyId = null)
-        {
-            WorkflowExpression.Validate(bodysurveyId, nameof(bodysurveyId), required: false);
+            var __workflow_bodysurveyId = bodysurveyId == null ? null : WorkflowExpression.Compile(bodysurveyId);
+            WorkflowExpression.Validate(__workflow_bodysurveyId, nameof(bodysurveyId), required: false);
             return new DeferredBodyAction<ReadSurveyLinksResponse>(() =>
             {
                 var apiCallPath = "/publicapi/Survey/v3/ReadSurveyLinks";
@@ -2048,9 +2012,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodysurveyId != null)
+                if (__workflow_bodysurveyId != null)
                 {
-                    body["surveyId"] = ExpressionConverter.ConvertO(bodysurveyId);
+                    body["surveyId"] = ExpressionConverter.ConvertO(__workflow_bodysurveyId);
                     bodypropCount++;
                 }
 
@@ -2064,21 +2028,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        [WorkflowExpressionFactory(nameof(__BuildReadSurveyList))]
-        public IBodyWorkflowAction<ReadSurveyListResponse> ReadSurveyList([WorkflowExpression] Func<int> bodyworkspaceId, [WorkflowExpression] Func<int> bodypagingpageSize, [WorkflowExpression] Func<int> bodypagingpage, [WorkflowExpression] Func<Condition[]> bodyconditions = null, [WorkflowExpression] Func<string> bodypagingorderField = null, [WorkflowExpression] Func<bodypagingorderDirectionInput> bodypagingorderDirection = null)
+        public IBodyWorkflowAction<ReadSurveyListResponse> ReadSurveyList(Expression<Func<int>> bodyworkspaceId, Expression<Func<int>> bodypagingpageSize, Expression<Func<int>> bodypagingpage, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<string>> bodypagingorderField = null, Expression<Func<bodypagingorderDirectionInput>> bodypagingorderDirection = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ReadSurveyListResponse> __BuildReadSurveyList(WorkflowExpression<int> bodyworkspaceId, WorkflowExpression<int> bodypagingpageSize, WorkflowExpression<int> bodypagingpage, WorkflowExpression<Condition[]> bodyconditions = null, WorkflowExpression<string> bodypagingorderField = null, WorkflowExpression<bodypagingorderDirectionInput> bodypagingorderDirection = null)
-        {
-            WorkflowExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            WorkflowExpression.Validate(bodypagingpageSize, nameof(bodypagingpageSize), required: true);
-            WorkflowExpression.Validate(bodypagingpage, nameof(bodypagingpage), required: true);
-            WorkflowExpression.Validate(bodyconditions, nameof(bodyconditions), required: false);
-            WorkflowExpression.Validate(bodypagingorderField, nameof(bodypagingorderField), required: false);
-            WorkflowExpression.Validate(bodypagingorderDirection, nameof(bodypagingorderDirection), required: false);
+            var __workflow_bodyworkspaceId = bodyworkspaceId == null ? null : WorkflowExpression.Compile(bodyworkspaceId);
+            WorkflowExpression.Validate(__workflow_bodyworkspaceId, nameof(bodyworkspaceId), required: true);
+            var __workflow_bodypagingpageSize = bodypagingpageSize == null ? null : WorkflowExpression.Compile(bodypagingpageSize);
+            WorkflowExpression.Validate(__workflow_bodypagingpageSize, nameof(bodypagingpageSize), required: true);
+            var __workflow_bodypagingpage = bodypagingpage == null ? null : WorkflowExpression.Compile(bodypagingpage);
+            WorkflowExpression.Validate(__workflow_bodypagingpage, nameof(bodypagingpage), required: true);
+            var __workflow_bodyconditions = bodyconditions == null ? null : WorkflowExpression.Compile(bodyconditions);
+            WorkflowExpression.Validate(__workflow_bodyconditions, nameof(bodyconditions), required: false);
+            var __workflow_bodypagingorderField = bodypagingorderField == null ? null : WorkflowExpression.Compile(bodypagingorderField);
+            WorkflowExpression.Validate(__workflow_bodypagingorderField, nameof(bodypagingorderField), required: false);
+            var __workflow_bodypagingorderDirection = bodypagingorderDirection == null ? null : WorkflowExpression.Compile(bodypagingorderDirection);
+            WorkflowExpression.Validate(__workflow_bodypagingorderDirection, nameof(bodypagingorderDirection), required: false);
             return new DeferredBodyAction<ReadSurveyListResponse>(() =>
             {
                 var apiCallPath = "/publicapi/Survey/v3/ReadSurveyList";
@@ -2087,28 +2050,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["workspaceId"] = ExpressionConverter.ConvertO(bodyworkspaceId);
-                if (bodyconditions != null)
+                body["workspaceId"] = ExpressionConverter.ConvertO(__workflow_bodyworkspaceId);
+                if (__workflow_bodyconditions != null)
                 {
-                    body["conditions"] = ExpressionConverter.ConvertO(bodyconditions);
+                    body["conditions"] = ExpressionConverter.ConvertO(__workflow_bodyconditions);
                     bodypropCount++;
                 }
 
                 var pagingObject = new JObject();
                 var pagingObjectpropCount = 0;
                 pagingObjectpropCount++;
-                pagingObject["pageSize"] = ExpressionConverter.ConvertO(bodypagingpageSize);
+                pagingObject["pageSize"] = ExpressionConverter.ConvertO(__workflow_bodypagingpageSize);
                 pagingObjectpropCount++;
-                pagingObject["page"] = ExpressionConverter.ConvertO(bodypagingpage);
-                if (bodypagingorderField != null)
+                pagingObject["page"] = ExpressionConverter.ConvertO(__workflow_bodypagingpage);
+                if (__workflow_bodypagingorderField != null)
                 {
-                    pagingObject["orderField"] = ExpressionConverter.ConvertO(bodypagingorderField);
+                    pagingObject["orderField"] = ExpressionConverter.ConvertO(__workflow_bodypagingorderField);
                     pagingObjectpropCount++;
                 }
 
-                if (bodypagingorderDirection != null)
+                if (__workflow_bodypagingorderDirection != null)
                 {
-                    pagingObject["orderDirection"] = ExpressionConverter.ConvertO(bodypagingorderDirection);
+                    pagingObject["orderDirection"] = ExpressionConverter.ConvertO(__workflow_bodypagingorderDirection);
                     pagingObjectpropCount++;
                 }
 
@@ -2128,17 +2091,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        [WorkflowExpressionFactory(nameof(__BuildReadSurvey))]
-        public IBodyWorkflowAction<ReadSurveyResponse> ReadSurvey([WorkflowExpression] Func<int> bodysurveyId, [WorkflowExpression] Func<string> bodytenant = null)
+        public IBodyWorkflowAction<ReadSurveyResponse> ReadSurvey(Expression<Func<int>> bodysurveyId, Expression<Func<string>> bodytenant = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ReadSurveyResponse> __BuildReadSurvey(WorkflowExpression<int> bodysurveyId, WorkflowExpression<string> bodytenant = null)
-        {
-            WorkflowExpression.Validate(bodysurveyId, nameof(bodysurveyId), required: true);
-            WorkflowExpression.Validate(bodytenant, nameof(bodytenant), required: false);
+            var __workflow_bodysurveyId = bodysurveyId == null ? null : WorkflowExpression.Compile(bodysurveyId);
+            WorkflowExpression.Validate(__workflow_bodysurveyId, nameof(bodysurveyId), required: true);
+            var __workflow_bodytenant = bodytenant == null ? null : WorkflowExpression.Compile(bodytenant);
+            WorkflowExpression.Validate(__workflow_bodytenant, nameof(bodytenant), required: false);
             return new DeferredBodyAction<ReadSurveyResponse>(() =>
             {
                 var apiCallPath = "/publicapi/Survey/v3/ReadSurvey";
@@ -2146,14 +2104,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodytenant != null)
+                if (__workflow_bodytenant != null)
                 {
-                    body["tenant"] = ExpressionConverter.ConvertO(bodytenant);
+                    body["tenant"] = ExpressionConverter.ConvertO(__workflow_bodytenant);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["surveyId"] = ExpressionConverter.ConvertO(bodysurveyId);
+                body["surveyId"] = ExpressionConverter.ConvertO(__workflow_bodysurveyId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -2164,17 +2122,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        [WorkflowExpressionFactory(nameof(__BuildReadWebHookList))]
-        public IBodyWorkflowAction<ReadWebHookListResponse> ReadWebHookList([WorkflowExpression] Func<bodyeventTypeInput> bodyeventType = null, [WorkflowExpression] Func<string> bodyentityIdentifier = null)
+        public IBodyWorkflowAction<ReadWebHookListResponse> ReadWebHookList(Expression<Func<bodyeventTypeInput>> bodyeventType = null, Expression<Func<string>> bodyentityIdentifier = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ReadWebHookListResponse> __BuildReadWebHookList(WorkflowExpression<bodyeventTypeInput> bodyeventType = null, WorkflowExpression<string> bodyentityIdentifier = null)
-        {
-            WorkflowExpression.Validate(bodyeventType, nameof(bodyeventType), required: false);
-            WorkflowExpression.Validate(bodyentityIdentifier, nameof(bodyentityIdentifier), required: false);
+            var __workflow_bodyeventType = bodyeventType == null ? null : WorkflowExpression.Compile(bodyeventType);
+            WorkflowExpression.Validate(__workflow_bodyeventType, nameof(bodyeventType), required: false);
+            var __workflow_bodyentityIdentifier = bodyentityIdentifier == null ? null : WorkflowExpression.Compile(bodyentityIdentifier);
+            WorkflowExpression.Validate(__workflow_bodyentityIdentifier, nameof(bodyentityIdentifier), required: false);
             return new DeferredBodyAction<ReadWebHookListResponse>(() =>
             {
                 var apiCallPath = "/publicapi/WebHook/v3/ReadWebHookList";
@@ -2182,15 +2135,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyeventType != null)
+                if (__workflow_bodyeventType != null)
                 {
-                    body["eventType"] = ExpressionConverter.ConvertO(bodyeventType);
+                    body["eventType"] = ExpressionConverter.ConvertO(__workflow_bodyeventType);
                     bodypropCount++;
                 }
 
-                if (bodyentityIdentifier != null)
+                if (__workflow_bodyentityIdentifier != null)
                 {
-                    body["entityIdentifier"] = ExpressionConverter.ConvertO(bodyentityIdentifier);
+                    body["entityIdentifier"] = ExpressionConverter.ConvertO(__workflow_bodyentityIdentifier);
                     bodypropCount++;
                 }
 
@@ -2204,17 +2157,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        [WorkflowExpressionFactory(nameof(__BuildReadWorkflowTransitions))]
-        public IBodyWorkflowAction<ReadWorkflowTransitionsResponse> ReadWorkflowTransitions([WorkflowExpression] Func<string> bodycurrentState, [WorkflowExpression] Func<bodyworkflowInput> bodyworkflow = null)
+        public IBodyWorkflowAction<ReadWorkflowTransitionsResponse> ReadWorkflowTransitions(Expression<Func<string>> bodycurrentState, Expression<Func<bodyworkflowInput>> bodyworkflow = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ReadWorkflowTransitionsResponse> __BuildReadWorkflowTransitions(WorkflowExpression<string> bodycurrentState, WorkflowExpression<bodyworkflowInput> bodyworkflow = null)
-        {
-            WorkflowExpression.Validate(bodycurrentState, nameof(bodycurrentState), required: true);
-            WorkflowExpression.Validate(bodyworkflow, nameof(bodyworkflow), required: false);
+            var __workflow_bodycurrentState = bodycurrentState == null ? null : WorkflowExpression.Compile(bodycurrentState);
+            WorkflowExpression.Validate(__workflow_bodycurrentState, nameof(bodycurrentState), required: true);
+            var __workflow_bodyworkflow = bodyworkflow == null ? null : WorkflowExpression.Compile(bodyworkflow);
+            WorkflowExpression.Validate(__workflow_bodyworkflow, nameof(bodyworkflow), required: false);
             return new DeferredBodyAction<ReadWorkflowTransitionsResponse>(() =>
             {
                 var apiCallPath = "/publicapi/Common/v3/ReadWorkflowTransitions";
@@ -2222,14 +2170,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyworkflow != null)
+                if (__workflow_bodyworkflow != null)
                 {
-                    body["workflow"] = ExpressionConverter.ConvertO(bodyworkflow);
+                    body["workflow"] = ExpressionConverter.ConvertO(__workflow_bodyworkflow);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["currentState"] = ExpressionConverter.ConvertO(bodycurrentState);
+                body["currentState"] = ExpressionConverter.ConvertO(__workflow_bodycurrentState);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -2240,20 +2188,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        [WorkflowExpressionFactory(nameof(__BuildReadWorkspaceList))]
-        public IBodyWorkflowAction<ReadWorkspaceListResponse> ReadWorkspaceList([WorkflowExpression] Func<int> bodypagingpageSize, [WorkflowExpression] Func<int> bodypagingpage, [WorkflowExpression] Func<Condition[]> bodyconditions = null, [WorkflowExpression] Func<string> bodypagingorderField = null, [WorkflowExpression] Func<bodypagingorderDirectionInput> bodypagingorderDirection = null)
+        public IBodyWorkflowAction<ReadWorkspaceListResponse> ReadWorkspaceList(Expression<Func<int>> bodypagingpageSize, Expression<Func<int>> bodypagingpage, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<string>> bodypagingorderField = null, Expression<Func<bodypagingorderDirectionInput>> bodypagingorderDirection = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ReadWorkspaceListResponse> __BuildReadWorkspaceList(WorkflowExpression<int> bodypagingpageSize, WorkflowExpression<int> bodypagingpage, WorkflowExpression<Condition[]> bodyconditions = null, WorkflowExpression<string> bodypagingorderField = null, WorkflowExpression<bodypagingorderDirectionInput> bodypagingorderDirection = null)
-        {
-            WorkflowExpression.Validate(bodypagingpageSize, nameof(bodypagingpageSize), required: true);
-            WorkflowExpression.Validate(bodypagingpage, nameof(bodypagingpage), required: true);
-            WorkflowExpression.Validate(bodyconditions, nameof(bodyconditions), required: false);
-            WorkflowExpression.Validate(bodypagingorderField, nameof(bodypagingorderField), required: false);
-            WorkflowExpression.Validate(bodypagingorderDirection, nameof(bodypagingorderDirection), required: false);
+            var __workflow_bodypagingpageSize = bodypagingpageSize == null ? null : WorkflowExpression.Compile(bodypagingpageSize);
+            WorkflowExpression.Validate(__workflow_bodypagingpageSize, nameof(bodypagingpageSize), required: true);
+            var __workflow_bodypagingpage = bodypagingpage == null ? null : WorkflowExpression.Compile(bodypagingpage);
+            WorkflowExpression.Validate(__workflow_bodypagingpage, nameof(bodypagingpage), required: true);
+            var __workflow_bodyconditions = bodyconditions == null ? null : WorkflowExpression.Compile(bodyconditions);
+            WorkflowExpression.Validate(__workflow_bodyconditions, nameof(bodyconditions), required: false);
+            var __workflow_bodypagingorderField = bodypagingorderField == null ? null : WorkflowExpression.Compile(bodypagingorderField);
+            WorkflowExpression.Validate(__workflow_bodypagingorderField, nameof(bodypagingorderField), required: false);
+            var __workflow_bodypagingorderDirection = bodypagingorderDirection == null ? null : WorkflowExpression.Compile(bodypagingorderDirection);
+            WorkflowExpression.Validate(__workflow_bodypagingorderDirection, nameof(bodypagingorderDirection), required: false);
             return new DeferredBodyAction<ReadWorkspaceListResponse>(() =>
             {
                 var apiCallPath = "/publicapi/Survey/v3/ReadWorkspaceList";
@@ -2261,27 +2207,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyconditions != null)
+                if (__workflow_bodyconditions != null)
                 {
-                    body["conditions"] = ExpressionConverter.ConvertO(bodyconditions);
+                    body["conditions"] = ExpressionConverter.ConvertO(__workflow_bodyconditions);
                     bodypropCount++;
                 }
 
                 var pagingObject = new JObject();
                 var pagingObjectpropCount = 0;
                 pagingObjectpropCount++;
-                pagingObject["pageSize"] = ExpressionConverter.ConvertO(bodypagingpageSize);
+                pagingObject["pageSize"] = ExpressionConverter.ConvertO(__workflow_bodypagingpageSize);
                 pagingObjectpropCount++;
-                pagingObject["page"] = ExpressionConverter.ConvertO(bodypagingpage);
-                if (bodypagingorderField != null)
+                pagingObject["page"] = ExpressionConverter.ConvertO(__workflow_bodypagingpage);
+                if (__workflow_bodypagingorderField != null)
                 {
-                    pagingObject["orderField"] = ExpressionConverter.ConvertO(bodypagingorderField);
+                    pagingObject["orderField"] = ExpressionConverter.ConvertO(__workflow_bodypagingorderField);
                     pagingObjectpropCount++;
                 }
 
-                if (bodypagingorderDirection != null)
+                if (__workflow_bodypagingorderDirection != null)
                 {
-                    pagingObject["orderDirection"] = ExpressionConverter.ConvertO(bodypagingorderDirection);
+                    pagingObject["orderDirection"] = ExpressionConverter.ConvertO(__workflow_bodypagingorderDirection);
                     pagingObjectpropCount++;
                 }
 
@@ -2301,16 +2247,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        [WorkflowExpressionFactory(nameof(__BuildRedeemIncentiveCode))]
-        public IBodyWorkflowAction<RedeemIncentiveCodeResponse> RedeemIncentiveCode([WorkflowExpression] Func<int> bodyincentiveId)
+        public IBodyWorkflowAction<RedeemIncentiveCodeResponse> RedeemIncentiveCode(Expression<Func<int>> bodyincentiveId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<RedeemIncentiveCodeResponse> __BuildRedeemIncentiveCode(WorkflowExpression<int> bodyincentiveId)
-        {
-            WorkflowExpression.Validate(bodyincentiveId, nameof(bodyincentiveId), required: true);
+            var __workflow_bodyincentiveId = bodyincentiveId == null ? null : WorkflowExpression.Compile(bodyincentiveId);
+            WorkflowExpression.Validate(__workflow_bodyincentiveId, nameof(bodyincentiveId), required: true);
             return new DeferredBodyAction<RedeemIncentiveCodeResponse>(() =>
             {
                 var apiCallPath = "/publicapi/Incentive/v3/RedeemIncentiveCode";
@@ -2319,7 +2259,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["incentiveId"] = ExpressionConverter.ConvertO(bodyincentiveId);
+                body["incentiveId"] = ExpressionConverter.ConvertO(__workflow_bodyincentiveId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -2330,25 +2270,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        [WorkflowExpressionFactory(nameof(__BuildRemindMembers))]
-        public IBodyWorkflowAction<RemindMembersResponse> RemindMembers([WorkflowExpression] Func<int> bodydistributorId, [WorkflowExpression] Func<int> bodymessageTemplateId, [WorkflowExpression] Func<TextBlock[]> bodytextBlocks = null, [WorkflowExpression] Func<string> bodyscheduleDateTime = null, [WorkflowExpression] Func<Condition[]> bodyconditions = null, [WorkflowExpression] Func<bodychannelInput> bodychannel = null, [WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyfromName = null, [WorkflowExpression] Func<string> bodyreplyTo = null, [WorkflowExpression] Func<string> bodyreplyToName = null)
+        public IBodyWorkflowAction<RemindMembersResponse> RemindMembers(Expression<Func<int>> bodydistributorId, Expression<Func<int>> bodymessageTemplateId, Expression<Func<TextBlock[]>> bodytextBlocks = null, Expression<Func<string>> bodyscheduleDateTime = null, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<bodychannelInput>> bodychannel = null, Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyfromName = null, Expression<Func<string>> bodyreplyTo = null, Expression<Func<string>> bodyreplyToName = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<RemindMembersResponse> __BuildRemindMembers(WorkflowExpression<int> bodydistributorId, WorkflowExpression<int> bodymessageTemplateId, WorkflowExpression<TextBlock[]> bodytextBlocks = null, WorkflowExpression<string> bodyscheduleDateTime = null, WorkflowExpression<Condition[]> bodyconditions = null, WorkflowExpression<bodychannelInput> bodychannel = null, WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyfromName = null, WorkflowExpression<string> bodyreplyTo = null, WorkflowExpression<string> bodyreplyToName = null)
-        {
-            WorkflowExpression.Validate(bodydistributorId, nameof(bodydistributorId), required: true);
-            WorkflowExpression.Validate(bodymessageTemplateId, nameof(bodymessageTemplateId), required: true);
-            WorkflowExpression.Validate(bodytextBlocks, nameof(bodytextBlocks), required: false);
-            WorkflowExpression.Validate(bodyscheduleDateTime, nameof(bodyscheduleDateTime), required: false);
-            WorkflowExpression.Validate(bodyconditions, nameof(bodyconditions), required: false);
-            WorkflowExpression.Validate(bodychannel, nameof(bodychannel), required: false);
-            WorkflowExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
-            WorkflowExpression.Validate(bodyfromName, nameof(bodyfromName), required: false);
-            WorkflowExpression.Validate(bodyreplyTo, nameof(bodyreplyTo), required: false);
-            WorkflowExpression.Validate(bodyreplyToName, nameof(bodyreplyToName), required: false);
+            var __workflow_bodydistributorId = bodydistributorId == null ? null : WorkflowExpression.Compile(bodydistributorId);
+            WorkflowExpression.Validate(__workflow_bodydistributorId, nameof(bodydistributorId), required: true);
+            var __workflow_bodymessageTemplateId = bodymessageTemplateId == null ? null : WorkflowExpression.Compile(bodymessageTemplateId);
+            WorkflowExpression.Validate(__workflow_bodymessageTemplateId, nameof(bodymessageTemplateId), required: true);
+            var __workflow_bodytextBlocks = bodytextBlocks == null ? null : WorkflowExpression.Compile(bodytextBlocks);
+            WorkflowExpression.Validate(__workflow_bodytextBlocks, nameof(bodytextBlocks), required: false);
+            var __workflow_bodyscheduleDateTime = bodyscheduleDateTime == null ? null : WorkflowExpression.Compile(bodyscheduleDateTime);
+            WorkflowExpression.Validate(__workflow_bodyscheduleDateTime, nameof(bodyscheduleDateTime), required: false);
+            var __workflow_bodyconditions = bodyconditions == null ? null : WorkflowExpression.Compile(bodyconditions);
+            WorkflowExpression.Validate(__workflow_bodyconditions, nameof(bodyconditions), required: false);
+            var __workflow_bodychannel = bodychannel == null ? null : WorkflowExpression.Compile(bodychannel);
+            WorkflowExpression.Validate(__workflow_bodychannel, nameof(bodychannel), required: false);
+            var __workflow_bodyfrom = bodyfrom == null ? null : WorkflowExpression.Compile(bodyfrom);
+            WorkflowExpression.Validate(__workflow_bodyfrom, nameof(bodyfrom), required: false);
+            var __workflow_bodyfromName = bodyfromName == null ? null : WorkflowExpression.Compile(bodyfromName);
+            WorkflowExpression.Validate(__workflow_bodyfromName, nameof(bodyfromName), required: false);
+            var __workflow_bodyreplyTo = bodyreplyTo == null ? null : WorkflowExpression.Compile(bodyreplyTo);
+            WorkflowExpression.Validate(__workflow_bodyreplyTo, nameof(bodyreplyTo), required: false);
+            var __workflow_bodyreplyToName = bodyreplyToName == null ? null : WorkflowExpression.Compile(bodyreplyToName);
+            WorkflowExpression.Validate(__workflow_bodyreplyToName, nameof(bodyreplyToName), required: false);
             return new DeferredBodyAction<RemindMembersResponse>(() =>
             {
                 var apiCallPath = "/publicapi/Distribute/v3/RemindMembers";
@@ -2357,54 +2300,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["distributorId"] = ExpressionConverter.ConvertO(bodydistributorId);
+                body["distributorId"] = ExpressionConverter.ConvertO(__workflow_bodydistributorId);
                 bodypropCount++;
-                body["messageTemplateId"] = ExpressionConverter.ConvertO(bodymessageTemplateId);
-                if (bodytextBlocks != null)
+                body["messageTemplateId"] = ExpressionConverter.ConvertO(__workflow_bodymessageTemplateId);
+                if (__workflow_bodytextBlocks != null)
                 {
-                    body["textBlocks"] = ExpressionConverter.ConvertO(bodytextBlocks);
+                    body["textBlocks"] = ExpressionConverter.ConvertO(__workflow_bodytextBlocks);
                     bodypropCount++;
                 }
 
-                if (bodyscheduleDateTime != null)
+                if (__workflow_bodyscheduleDateTime != null)
                 {
-                    body["scheduleDateTime"] = ExpressionConverter.ConvertO(bodyscheduleDateTime);
+                    body["scheduleDateTime"] = ExpressionConverter.ConvertO(__workflow_bodyscheduleDateTime);
                     bodypropCount++;
                 }
 
-                if (bodyconditions != null)
+                if (__workflow_bodyconditions != null)
                 {
-                    body["conditions"] = ExpressionConverter.ConvertO(bodyconditions);
+                    body["conditions"] = ExpressionConverter.ConvertO(__workflow_bodyconditions);
                     bodypropCount++;
                 }
 
-                if (bodychannel != null)
+                if (__workflow_bodychannel != null)
                 {
-                    body["channel"] = ExpressionConverter.ConvertO(bodychannel);
+                    body["channel"] = ExpressionConverter.ConvertO(__workflow_bodychannel);
                     bodypropCount++;
                 }
 
-                if (bodyfrom != null)
+                if (__workflow_bodyfrom != null)
                 {
-                    body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                    body["from"] = ExpressionConverter.ConvertO(__workflow_bodyfrom);
                     bodypropCount++;
                 }
 
-                if (bodyfromName != null)
+                if (__workflow_bodyfromName != null)
                 {
-                    body["fromName"] = ExpressionConverter.ConvertO(bodyfromName);
+                    body["fromName"] = ExpressionConverter.ConvertO(__workflow_bodyfromName);
                     bodypropCount++;
                 }
 
-                if (bodyreplyTo != null)
+                if (__workflow_bodyreplyTo != null)
                 {
-                    body["replyTo"] = ExpressionConverter.ConvertO(bodyreplyTo);
+                    body["replyTo"] = ExpressionConverter.ConvertO(__workflow_bodyreplyTo);
                     bodypropCount++;
                 }
 
-                if (bodyreplyToName != null)
+                if (__workflow_bodyreplyToName != null)
                 {
-                    body["replyToName"] = ExpressionConverter.ConvertO(bodyreplyToName);
+                    body["replyToName"] = ExpressionConverter.ConvertO(__workflow_bodyreplyToName);
                     bodypropCount++;
                 }
 
@@ -2418,17 +2361,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        [WorkflowExpressionFactory(nameof(__BuildResetInterview))]
-        public IBodyWorkflowAction<ResetInterviewResponse> ResetInterview([WorkflowExpression] Func<int> bodysurveyId = null, [WorkflowExpression] Func<string> bodyinterviewId = null)
+        public IBodyWorkflowAction<ResetInterviewResponse> ResetInterview(Expression<Func<int>> bodysurveyId = null, Expression<Func<string>> bodyinterviewId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ResetInterviewResponse> __BuildResetInterview(WorkflowExpression<int> bodysurveyId = null, WorkflowExpression<string> bodyinterviewId = null)
-        {
-            WorkflowExpression.Validate(bodysurveyId, nameof(bodysurveyId), required: false);
-            WorkflowExpression.Validate(bodyinterviewId, nameof(bodyinterviewId), required: false);
+            var __workflow_bodysurveyId = bodysurveyId == null ? null : WorkflowExpression.Compile(bodysurveyId);
+            WorkflowExpression.Validate(__workflow_bodysurveyId, nameof(bodysurveyId), required: false);
+            var __workflow_bodyinterviewId = bodyinterviewId == null ? null : WorkflowExpression.Compile(bodyinterviewId);
+            WorkflowExpression.Validate(__workflow_bodyinterviewId, nameof(bodyinterviewId), required: false);
             return new DeferredBodyAction<ResetInterviewResponse>(() =>
             {
                 var apiCallPath = "/publicapi/Panel/v3/ResetInterview";
@@ -2436,15 +2374,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodysurveyId != null)
+                if (__workflow_bodysurveyId != null)
                 {
-                    body["surveyId"] = ExpressionConverter.ConvertO(bodysurveyId);
+                    body["surveyId"] = ExpressionConverter.ConvertO(__workflow_bodysurveyId);
                     bodypropCount++;
                 }
 
-                if (bodyinterviewId != null)
+                if (__workflow_bodyinterviewId != null)
                 {
-                    body["interviewId"] = ExpressionConverter.ConvertO(bodyinterviewId);
+                    body["interviewId"] = ExpressionConverter.ConvertO(__workflow_bodyinterviewId);
                     bodypropCount++;
                 }
 
@@ -2458,18 +2396,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateMembers))]
-        public IBodyWorkflowAction<UpdateMembersResponse> UpdateMembers([WorkflowExpression] Func<int> bodypanelId, [WorkflowExpression] Func<Member[]> bodymembers, [WorkflowExpression] Func<string> bodytenant = null)
+        public IBodyWorkflowAction<UpdateMembersResponse> UpdateMembers(Expression<Func<int>> bodypanelId, Expression<Func<Member[]>> bodymembers, Expression<Func<string>> bodytenant = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UpdateMembersResponse> __BuildUpdateMembers(WorkflowExpression<int> bodypanelId, WorkflowExpression<Member[]> bodymembers, WorkflowExpression<string> bodytenant = null)
-        {
-            WorkflowExpression.Validate(bodypanelId, nameof(bodypanelId), required: true);
-            WorkflowExpression.Validate(bodymembers, nameof(bodymembers), required: true);
-            WorkflowExpression.Validate(bodytenant, nameof(bodytenant), required: false);
+            var __workflow_bodypanelId = bodypanelId == null ? null : WorkflowExpression.Compile(bodypanelId);
+            WorkflowExpression.Validate(__workflow_bodypanelId, nameof(bodypanelId), required: true);
+            var __workflow_bodymembers = bodymembers == null ? null : WorkflowExpression.Compile(bodymembers);
+            WorkflowExpression.Validate(__workflow_bodymembers, nameof(bodymembers), required: true);
+            var __workflow_bodytenant = bodytenant == null ? null : WorkflowExpression.Compile(bodytenant);
+            WorkflowExpression.Validate(__workflow_bodytenant, nameof(bodytenant), required: false);
             return new DeferredBodyAction<UpdateMembersResponse>(() =>
             {
                 var apiCallPath = "/publicapi/Panel/v3/UpdateMembers";
@@ -2477,16 +2411,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodytenant != null)
+                if (__workflow_bodytenant != null)
                 {
-                    body["tenant"] = ExpressionConverter.ConvertO(bodytenant);
+                    body["tenant"] = ExpressionConverter.ConvertO(__workflow_bodytenant);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["panelId"] = ExpressionConverter.ConvertO(bodypanelId);
+                body["panelId"] = ExpressionConverter.ConvertO(__workflow_bodypanelId);
                 bodypropCount++;
-                body["members"] = ExpressionConverter.ConvertO(bodymembers);
+                body["members"] = ExpressionConverter.ConvertO(__workflow_bodymembers);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -2497,20 +2431,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdatePanel))]
-        public IBodyWorkflowAction<WritePanelResponse> UpdatePanel([WorkflowExpression] Func<int> bodypanelId, [WorkflowExpression] Func<string> bodytenant = null, [WorkflowExpression] Func<PanelMemberField[]> bodyaddedFields = null, [WorkflowExpression] Func<int[]> bodyremovedFields = null, [WorkflowExpression] Func<PanelMemberField[]> bodyrenamedFields = null)
+        public IBodyWorkflowAction<WritePanelResponse> UpdatePanel(Expression<Func<int>> bodypanelId, Expression<Func<string>> bodytenant = null, Expression<Func<PanelMemberField[]>> bodyaddedFields = null, Expression<Func<int[]>> bodyremovedFields = null, Expression<Func<PanelMemberField[]>> bodyrenamedFields = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<WritePanelResponse> __BuildUpdatePanel(WorkflowExpression<int> bodypanelId, WorkflowExpression<string> bodytenant = null, WorkflowExpression<PanelMemberField[]> bodyaddedFields = null, WorkflowExpression<int[]> bodyremovedFields = null, WorkflowExpression<PanelMemberField[]> bodyrenamedFields = null)
-        {
-            WorkflowExpression.Validate(bodypanelId, nameof(bodypanelId), required: true);
-            WorkflowExpression.Validate(bodytenant, nameof(bodytenant), required: false);
-            WorkflowExpression.Validate(bodyaddedFields, nameof(bodyaddedFields), required: false);
-            WorkflowExpression.Validate(bodyremovedFields, nameof(bodyremovedFields), required: false);
-            WorkflowExpression.Validate(bodyrenamedFields, nameof(bodyrenamedFields), required: false);
+            var __workflow_bodypanelId = bodypanelId == null ? null : WorkflowExpression.Compile(bodypanelId);
+            WorkflowExpression.Validate(__workflow_bodypanelId, nameof(bodypanelId), required: true);
+            var __workflow_bodytenant = bodytenant == null ? null : WorkflowExpression.Compile(bodytenant);
+            WorkflowExpression.Validate(__workflow_bodytenant, nameof(bodytenant), required: false);
+            var __workflow_bodyaddedFields = bodyaddedFields == null ? null : WorkflowExpression.Compile(bodyaddedFields);
+            WorkflowExpression.Validate(__workflow_bodyaddedFields, nameof(bodyaddedFields), required: false);
+            var __workflow_bodyremovedFields = bodyremovedFields == null ? null : WorkflowExpression.Compile(bodyremovedFields);
+            WorkflowExpression.Validate(__workflow_bodyremovedFields, nameof(bodyremovedFields), required: false);
+            var __workflow_bodyrenamedFields = bodyrenamedFields == null ? null : WorkflowExpression.Compile(bodyrenamedFields);
+            WorkflowExpression.Validate(__workflow_bodyrenamedFields, nameof(bodyrenamedFields), required: false);
             return new DeferredBodyAction<WritePanelResponse>(() =>
             {
                 var apiCallPath = "/publicapi/Panel/v3/UpdatePanel";
@@ -2518,29 +2450,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodytenant != null)
+                if (__workflow_bodytenant != null)
                 {
-                    body["tenant"] = ExpressionConverter.ConvertO(bodytenant);
+                    body["tenant"] = ExpressionConverter.ConvertO(__workflow_bodytenant);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["panelId"] = ExpressionConverter.ConvertO(bodypanelId);
-                if (bodyaddedFields != null)
+                body["panelId"] = ExpressionConverter.ConvertO(__workflow_bodypanelId);
+                if (__workflow_bodyaddedFields != null)
                 {
-                    body["addedFields"] = ExpressionConverter.ConvertO(bodyaddedFields);
+                    body["addedFields"] = ExpressionConverter.ConvertO(__workflow_bodyaddedFields);
                     bodypropCount++;
                 }
 
-                if (bodyremovedFields != null)
+                if (__workflow_bodyremovedFields != null)
                 {
-                    body["removedFields"] = ExpressionConverter.ConvertO(bodyremovedFields);
+                    body["removedFields"] = ExpressionConverter.ConvertO(__workflow_bodyremovedFields);
                     bodypropCount++;
                 }
 
-                if (bodyrenamedFields != null)
+                if (__workflow_bodyrenamedFields != null)
                 {
-                    body["renamedFields"] = ExpressionConverter.ConvertO(bodyrenamedFields);
+                    body["renamedFields"] = ExpressionConverter.ConvertO(__workflow_bodyrenamedFields);
                     bodypropCount++;
                 }
 
@@ -2554,43 +2486,64 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateSurvey))]
-        public IBodyWorkflowAction<UpdateSurveyResponse> UpdateSurvey([WorkflowExpression] Func<int> bodysurveyId, [WorkflowExpression] Func<bool> bodysurveyDefinitionallowMultipleParticipation, [WorkflowExpression] Func<bool> bodysurveyDefinitionallowNavigateBack, [WorkflowExpression] Func<bool> bodysurveyDefinitionrandomizeSections, [WorkflowExpression] Func<string> bodysurveyDefinitiondefaultLanguage, [WorkflowExpression] Func<string[]> bodysurveyDefinitionlanguages, [WorkflowExpression] Func<Section[]> bodysurveyDefinitionsections, [WorkflowExpression] Func<CustomVariable[]> bodysurveyDefinitioncustomVariables, [WorkflowExpression] Func<TranslationElement[]> bodysurveyDefinitionsurveyEndText, [WorkflowExpression] Func<bool> bodysurveyConfigurationanonymizingConfigurationlogIp, [WorkflowExpression] Func<bool> bodysurveyConfigurationanonymizingConfigurationlogUserAgent, [WorkflowExpression] Func<bool> bodysurveyConfigurationanonymizingConfigurationlogReferer, [WorkflowExpression] Func<string> bodysurveyName = null, [WorkflowExpression] Func<bool> bodysurveyDefinitionallowSaveProgress = null, [WorkflowExpression] Func<bool> bodysurveyDefinitionenableAutoScroll = null, [WorkflowExpression] Func<bool> bodysurveyDefinitionenableCodeAccess = null, [WorkflowExpression] Func<bodysurveyDefinitiondataAccessControlaccessTypeInput> bodysurveyDefinitiondataAccessControlaccessType = null, [WorkflowExpression] Func<Condition[]> bodysurveyDefinitiondataAccessControlconditions = null, [WorkflowExpression] Func<int[]> bodysurveyDefinitionassociatedPanels = null, [WorkflowExpression] Func<bodysurveyDefinitioncodeAccessModeInput> bodysurveyDefinitioncodeAccessMode = null, [WorkflowExpression] Func<bool> bodysurveyDefinitionenablePanelSync = null, [WorkflowExpression] Func<bodysurveyDefinitionpanelSyncBehaviourInput> bodysurveyDefinitionpanelSyncBehaviour = null, [WorkflowExpression] Func<PanelSyncElement[]> bodysurveyDefinitionpanelSyncs = null, [WorkflowExpression] Func<string> bodysurveyDefinitionendDate = null, [WorkflowExpression] Func<int> bodysurveyConfigurationdesignConfigurationsurveyDesignLayout = null, [WorkflowExpression] Func<bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSizeInput> bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize = null, [WorkflowExpression] Func<TextBlock[]> bodysurveyConfigurationdesignConfigurationtextBlocks = null, [WorkflowExpression] Func<bodysurveyConfigurationanonymizingConfigurationanonymizingModeInput> bodysurveyConfigurationanonymizingConfigurationanonymizingMode = null)
+        public IBodyWorkflowAction<UpdateSurveyResponse> UpdateSurvey(Expression<Func<int>> bodysurveyId, Expression<Func<bool>> bodysurveyDefinitionallowMultipleParticipation, Expression<Func<bool>> bodysurveyDefinitionallowNavigateBack, Expression<Func<bool>> bodysurveyDefinitionrandomizeSections, Expression<Func<string>> bodysurveyDefinitiondefaultLanguage, Expression<Func<string[]>> bodysurveyDefinitionlanguages, Expression<Func<Section[]>> bodysurveyDefinitionsections, Expression<Func<CustomVariable[]>> bodysurveyDefinitioncustomVariables, Expression<Func<TranslationElement[]>> bodysurveyDefinitionsurveyEndText, Expression<Func<bool>> bodysurveyConfigurationanonymizingConfigurationlogIp, Expression<Func<bool>> bodysurveyConfigurationanonymizingConfigurationlogUserAgent, Expression<Func<bool>> bodysurveyConfigurationanonymizingConfigurationlogReferer, Expression<Func<string>> bodysurveyName = null, Expression<Func<bool>> bodysurveyDefinitionallowSaveProgress = null, Expression<Func<bool>> bodysurveyDefinitionenableAutoScroll = null, Expression<Func<bool>> bodysurveyDefinitionenableCodeAccess = null, Expression<Func<bodysurveyDefinitiondataAccessControlaccessTypeInput>> bodysurveyDefinitiondataAccessControlaccessType = null, Expression<Func<Condition[]>> bodysurveyDefinitiondataAccessControlconditions = null, Expression<Func<int[]>> bodysurveyDefinitionassociatedPanels = null, Expression<Func<bodysurveyDefinitioncodeAccessModeInput>> bodysurveyDefinitioncodeAccessMode = null, Expression<Func<bool>> bodysurveyDefinitionenablePanelSync = null, Expression<Func<bodysurveyDefinitionpanelSyncBehaviourInput>> bodysurveyDefinitionpanelSyncBehaviour = null, Expression<Func<PanelSyncElement[]>> bodysurveyDefinitionpanelSyncs = null, Expression<Func<string>> bodysurveyDefinitionendDate = null, Expression<Func<int>> bodysurveyConfigurationdesignConfigurationsurveyDesignLayout = null, Expression<Func<bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSizeInput>> bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize = null, Expression<Func<TextBlock[]>> bodysurveyConfigurationdesignConfigurationtextBlocks = null, Expression<Func<bodysurveyConfigurationanonymizingConfigurationanonymizingModeInput>> bodysurveyConfigurationanonymizingConfigurationanonymizingMode = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UpdateSurveyResponse> __BuildUpdateSurvey(WorkflowExpression<int> bodysurveyId, WorkflowExpression<bool> bodysurveyDefinitionallowMultipleParticipation, WorkflowExpression<bool> bodysurveyDefinitionallowNavigateBack, WorkflowExpression<bool> bodysurveyDefinitionrandomizeSections, WorkflowExpression<string> bodysurveyDefinitiondefaultLanguage, WorkflowExpression<string[]> bodysurveyDefinitionlanguages, WorkflowExpression<Section[]> bodysurveyDefinitionsections, WorkflowExpression<CustomVariable[]> bodysurveyDefinitioncustomVariables, WorkflowExpression<TranslationElement[]> bodysurveyDefinitionsurveyEndText, WorkflowExpression<bool> bodysurveyConfigurationanonymizingConfigurationlogIp, WorkflowExpression<bool> bodysurveyConfigurationanonymizingConfigurationlogUserAgent, WorkflowExpression<bool> bodysurveyConfigurationanonymizingConfigurationlogReferer, WorkflowExpression<string> bodysurveyName = null, WorkflowExpression<bool> bodysurveyDefinitionallowSaveProgress = null, WorkflowExpression<bool> bodysurveyDefinitionenableAutoScroll = null, WorkflowExpression<bool> bodysurveyDefinitionenableCodeAccess = null, WorkflowExpression<bodysurveyDefinitiondataAccessControlaccessTypeInput> bodysurveyDefinitiondataAccessControlaccessType = null, WorkflowExpression<Condition[]> bodysurveyDefinitiondataAccessControlconditions = null, WorkflowExpression<int[]> bodysurveyDefinitionassociatedPanels = null, WorkflowExpression<bodysurveyDefinitioncodeAccessModeInput> bodysurveyDefinitioncodeAccessMode = null, WorkflowExpression<bool> bodysurveyDefinitionenablePanelSync = null, WorkflowExpression<bodysurveyDefinitionpanelSyncBehaviourInput> bodysurveyDefinitionpanelSyncBehaviour = null, WorkflowExpression<PanelSyncElement[]> bodysurveyDefinitionpanelSyncs = null, WorkflowExpression<string> bodysurveyDefinitionendDate = null, WorkflowExpression<int> bodysurveyConfigurationdesignConfigurationsurveyDesignLayout = null, WorkflowExpression<bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSizeInput> bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize = null, WorkflowExpression<TextBlock[]> bodysurveyConfigurationdesignConfigurationtextBlocks = null, WorkflowExpression<bodysurveyConfigurationanonymizingConfigurationanonymizingModeInput> bodysurveyConfigurationanonymizingConfigurationanonymizingMode = null)
-        {
-            WorkflowExpression.Validate(bodysurveyId, nameof(bodysurveyId), required: true);
-            WorkflowExpression.Validate(bodysurveyDefinitionallowMultipleParticipation, nameof(bodysurveyDefinitionallowMultipleParticipation), required: true);
-            WorkflowExpression.Validate(bodysurveyDefinitionallowNavigateBack, nameof(bodysurveyDefinitionallowNavigateBack), required: true);
-            WorkflowExpression.Validate(bodysurveyDefinitionrandomizeSections, nameof(bodysurveyDefinitionrandomizeSections), required: true);
-            WorkflowExpression.Validate(bodysurveyDefinitiondefaultLanguage, nameof(bodysurveyDefinitiondefaultLanguage), required: true);
-            WorkflowExpression.Validate(bodysurveyDefinitionlanguages, nameof(bodysurveyDefinitionlanguages), required: true);
-            WorkflowExpression.Validate(bodysurveyDefinitionsections, nameof(bodysurveyDefinitionsections), required: true);
-            WorkflowExpression.Validate(bodysurveyDefinitioncustomVariables, nameof(bodysurveyDefinitioncustomVariables), required: true);
-            WorkflowExpression.Validate(bodysurveyDefinitionsurveyEndText, nameof(bodysurveyDefinitionsurveyEndText), required: true);
-            WorkflowExpression.Validate(bodysurveyConfigurationanonymizingConfigurationlogIp, nameof(bodysurveyConfigurationanonymizingConfigurationlogIp), required: true);
-            WorkflowExpression.Validate(bodysurveyConfigurationanonymizingConfigurationlogUserAgent, nameof(bodysurveyConfigurationanonymizingConfigurationlogUserAgent), required: true);
-            WorkflowExpression.Validate(bodysurveyConfigurationanonymizingConfigurationlogReferer, nameof(bodysurveyConfigurationanonymizingConfigurationlogReferer), required: true);
-            WorkflowExpression.Validate(bodysurveyName, nameof(bodysurveyName), required: false);
-            WorkflowExpression.Validate(bodysurveyDefinitionallowSaveProgress, nameof(bodysurveyDefinitionallowSaveProgress), required: false);
-            WorkflowExpression.Validate(bodysurveyDefinitionenableAutoScroll, nameof(bodysurveyDefinitionenableAutoScroll), required: false);
-            WorkflowExpression.Validate(bodysurveyDefinitionenableCodeAccess, nameof(bodysurveyDefinitionenableCodeAccess), required: false);
-            WorkflowExpression.Validate(bodysurveyDefinitiondataAccessControlaccessType, nameof(bodysurveyDefinitiondataAccessControlaccessType), required: false);
-            WorkflowExpression.Validate(bodysurveyDefinitiondataAccessControlconditions, nameof(bodysurveyDefinitiondataAccessControlconditions), required: false);
-            WorkflowExpression.Validate(bodysurveyDefinitionassociatedPanels, nameof(bodysurveyDefinitionassociatedPanels), required: false);
-            WorkflowExpression.Validate(bodysurveyDefinitioncodeAccessMode, nameof(bodysurveyDefinitioncodeAccessMode), required: false);
-            WorkflowExpression.Validate(bodysurveyDefinitionenablePanelSync, nameof(bodysurveyDefinitionenablePanelSync), required: false);
-            WorkflowExpression.Validate(bodysurveyDefinitionpanelSyncBehaviour, nameof(bodysurveyDefinitionpanelSyncBehaviour), required: false);
-            WorkflowExpression.Validate(bodysurveyDefinitionpanelSyncs, nameof(bodysurveyDefinitionpanelSyncs), required: false);
-            WorkflowExpression.Validate(bodysurveyDefinitionendDate, nameof(bodysurveyDefinitionendDate), required: false);
-            WorkflowExpression.Validate(bodysurveyConfigurationdesignConfigurationsurveyDesignLayout, nameof(bodysurveyConfigurationdesignConfigurationsurveyDesignLayout), required: false);
-            WorkflowExpression.Validate(bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize, nameof(bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize), required: false);
-            WorkflowExpression.Validate(bodysurveyConfigurationdesignConfigurationtextBlocks, nameof(bodysurveyConfigurationdesignConfigurationtextBlocks), required: false);
-            WorkflowExpression.Validate(bodysurveyConfigurationanonymizingConfigurationanonymizingMode, nameof(bodysurveyConfigurationanonymizingConfigurationanonymizingMode), required: false);
+            var __workflow_bodysurveyId = bodysurveyId == null ? null : WorkflowExpression.Compile(bodysurveyId);
+            WorkflowExpression.Validate(__workflow_bodysurveyId, nameof(bodysurveyId), required: true);
+            var __workflow_bodysurveyDefinitionallowMultipleParticipation = bodysurveyDefinitionallowMultipleParticipation == null ? null : WorkflowExpression.Compile(bodysurveyDefinitionallowMultipleParticipation);
+            WorkflowExpression.Validate(__workflow_bodysurveyDefinitionallowMultipleParticipation, nameof(bodysurveyDefinitionallowMultipleParticipation), required: true);
+            var __workflow_bodysurveyDefinitionallowNavigateBack = bodysurveyDefinitionallowNavigateBack == null ? null : WorkflowExpression.Compile(bodysurveyDefinitionallowNavigateBack);
+            WorkflowExpression.Validate(__workflow_bodysurveyDefinitionallowNavigateBack, nameof(bodysurveyDefinitionallowNavigateBack), required: true);
+            var __workflow_bodysurveyDefinitionrandomizeSections = bodysurveyDefinitionrandomizeSections == null ? null : WorkflowExpression.Compile(bodysurveyDefinitionrandomizeSections);
+            WorkflowExpression.Validate(__workflow_bodysurveyDefinitionrandomizeSections, nameof(bodysurveyDefinitionrandomizeSections), required: true);
+            var __workflow_bodysurveyDefinitiondefaultLanguage = bodysurveyDefinitiondefaultLanguage == null ? null : WorkflowExpression.Compile(bodysurveyDefinitiondefaultLanguage);
+            WorkflowExpression.Validate(__workflow_bodysurveyDefinitiondefaultLanguage, nameof(bodysurveyDefinitiondefaultLanguage), required: true);
+            var __workflow_bodysurveyDefinitionlanguages = bodysurveyDefinitionlanguages == null ? null : WorkflowExpression.Compile(bodysurveyDefinitionlanguages);
+            WorkflowExpression.Validate(__workflow_bodysurveyDefinitionlanguages, nameof(bodysurveyDefinitionlanguages), required: true);
+            var __workflow_bodysurveyDefinitionsections = bodysurveyDefinitionsections == null ? null : WorkflowExpression.Compile(bodysurveyDefinitionsections);
+            WorkflowExpression.Validate(__workflow_bodysurveyDefinitionsections, nameof(bodysurveyDefinitionsections), required: true);
+            var __workflow_bodysurveyDefinitioncustomVariables = bodysurveyDefinitioncustomVariables == null ? null : WorkflowExpression.Compile(bodysurveyDefinitioncustomVariables);
+            WorkflowExpression.Validate(__workflow_bodysurveyDefinitioncustomVariables, nameof(bodysurveyDefinitioncustomVariables), required: true);
+            var __workflow_bodysurveyDefinitionsurveyEndText = bodysurveyDefinitionsurveyEndText == null ? null : WorkflowExpression.Compile(bodysurveyDefinitionsurveyEndText);
+            WorkflowExpression.Validate(__workflow_bodysurveyDefinitionsurveyEndText, nameof(bodysurveyDefinitionsurveyEndText), required: true);
+            var __workflow_bodysurveyConfigurationanonymizingConfigurationlogIp = bodysurveyConfigurationanonymizingConfigurationlogIp == null ? null : WorkflowExpression.Compile(bodysurveyConfigurationanonymizingConfigurationlogIp);
+            WorkflowExpression.Validate(__workflow_bodysurveyConfigurationanonymizingConfigurationlogIp, nameof(bodysurveyConfigurationanonymizingConfigurationlogIp), required: true);
+            var __workflow_bodysurveyConfigurationanonymizingConfigurationlogUserAgent = bodysurveyConfigurationanonymizingConfigurationlogUserAgent == null ? null : WorkflowExpression.Compile(bodysurveyConfigurationanonymizingConfigurationlogUserAgent);
+            WorkflowExpression.Validate(__workflow_bodysurveyConfigurationanonymizingConfigurationlogUserAgent, nameof(bodysurveyConfigurationanonymizingConfigurationlogUserAgent), required: true);
+            var __workflow_bodysurveyConfigurationanonymizingConfigurationlogReferer = bodysurveyConfigurationanonymizingConfigurationlogReferer == null ? null : WorkflowExpression.Compile(bodysurveyConfigurationanonymizingConfigurationlogReferer);
+            WorkflowExpression.Validate(__workflow_bodysurveyConfigurationanonymizingConfigurationlogReferer, nameof(bodysurveyConfigurationanonymizingConfigurationlogReferer), required: true);
+            var __workflow_bodysurveyName = bodysurveyName == null ? null : WorkflowExpression.Compile(bodysurveyName);
+            WorkflowExpression.Validate(__workflow_bodysurveyName, nameof(bodysurveyName), required: false);
+            var __workflow_bodysurveyDefinitionallowSaveProgress = bodysurveyDefinitionallowSaveProgress == null ? null : WorkflowExpression.Compile(bodysurveyDefinitionallowSaveProgress);
+            WorkflowExpression.Validate(__workflow_bodysurveyDefinitionallowSaveProgress, nameof(bodysurveyDefinitionallowSaveProgress), required: false);
+            var __workflow_bodysurveyDefinitionenableAutoScroll = bodysurveyDefinitionenableAutoScroll == null ? null : WorkflowExpression.Compile(bodysurveyDefinitionenableAutoScroll);
+            WorkflowExpression.Validate(__workflow_bodysurveyDefinitionenableAutoScroll, nameof(bodysurveyDefinitionenableAutoScroll), required: false);
+            var __workflow_bodysurveyDefinitionenableCodeAccess = bodysurveyDefinitionenableCodeAccess == null ? null : WorkflowExpression.Compile(bodysurveyDefinitionenableCodeAccess);
+            WorkflowExpression.Validate(__workflow_bodysurveyDefinitionenableCodeAccess, nameof(bodysurveyDefinitionenableCodeAccess), required: false);
+            var __workflow_bodysurveyDefinitiondataAccessControlaccessType = bodysurveyDefinitiondataAccessControlaccessType == null ? null : WorkflowExpression.Compile(bodysurveyDefinitiondataAccessControlaccessType);
+            WorkflowExpression.Validate(__workflow_bodysurveyDefinitiondataAccessControlaccessType, nameof(bodysurveyDefinitiondataAccessControlaccessType), required: false);
+            var __workflow_bodysurveyDefinitiondataAccessControlconditions = bodysurveyDefinitiondataAccessControlconditions == null ? null : WorkflowExpression.Compile(bodysurveyDefinitiondataAccessControlconditions);
+            WorkflowExpression.Validate(__workflow_bodysurveyDefinitiondataAccessControlconditions, nameof(bodysurveyDefinitiondataAccessControlconditions), required: false);
+            var __workflow_bodysurveyDefinitionassociatedPanels = bodysurveyDefinitionassociatedPanels == null ? null : WorkflowExpression.Compile(bodysurveyDefinitionassociatedPanels);
+            WorkflowExpression.Validate(__workflow_bodysurveyDefinitionassociatedPanels, nameof(bodysurveyDefinitionassociatedPanels), required: false);
+            var __workflow_bodysurveyDefinitioncodeAccessMode = bodysurveyDefinitioncodeAccessMode == null ? null : WorkflowExpression.Compile(bodysurveyDefinitioncodeAccessMode);
+            WorkflowExpression.Validate(__workflow_bodysurveyDefinitioncodeAccessMode, nameof(bodysurveyDefinitioncodeAccessMode), required: false);
+            var __workflow_bodysurveyDefinitionenablePanelSync = bodysurveyDefinitionenablePanelSync == null ? null : WorkflowExpression.Compile(bodysurveyDefinitionenablePanelSync);
+            WorkflowExpression.Validate(__workflow_bodysurveyDefinitionenablePanelSync, nameof(bodysurveyDefinitionenablePanelSync), required: false);
+            var __workflow_bodysurveyDefinitionpanelSyncBehaviour = bodysurveyDefinitionpanelSyncBehaviour == null ? null : WorkflowExpression.Compile(bodysurveyDefinitionpanelSyncBehaviour);
+            WorkflowExpression.Validate(__workflow_bodysurveyDefinitionpanelSyncBehaviour, nameof(bodysurveyDefinitionpanelSyncBehaviour), required: false);
+            var __workflow_bodysurveyDefinitionpanelSyncs = bodysurveyDefinitionpanelSyncs == null ? null : WorkflowExpression.Compile(bodysurveyDefinitionpanelSyncs);
+            WorkflowExpression.Validate(__workflow_bodysurveyDefinitionpanelSyncs, nameof(bodysurveyDefinitionpanelSyncs), required: false);
+            var __workflow_bodysurveyDefinitionendDate = bodysurveyDefinitionendDate == null ? null : WorkflowExpression.Compile(bodysurveyDefinitionendDate);
+            WorkflowExpression.Validate(__workflow_bodysurveyDefinitionendDate, nameof(bodysurveyDefinitionendDate), required: false);
+            var __workflow_bodysurveyConfigurationdesignConfigurationsurveyDesignLayout = bodysurveyConfigurationdesignConfigurationsurveyDesignLayout == null ? null : WorkflowExpression.Compile(bodysurveyConfigurationdesignConfigurationsurveyDesignLayout);
+            WorkflowExpression.Validate(__workflow_bodysurveyConfigurationdesignConfigurationsurveyDesignLayout, nameof(bodysurveyConfigurationdesignConfigurationsurveyDesignLayout), required: false);
+            var __workflow_bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize = bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize == null ? null : WorkflowExpression.Compile(bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize);
+            WorkflowExpression.Validate(__workflow_bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize, nameof(bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize), required: false);
+            var __workflow_bodysurveyConfigurationdesignConfigurationtextBlocks = bodysurveyConfigurationdesignConfigurationtextBlocks == null ? null : WorkflowExpression.Compile(bodysurveyConfigurationdesignConfigurationtextBlocks);
+            WorkflowExpression.Validate(__workflow_bodysurveyConfigurationdesignConfigurationtextBlocks, nameof(bodysurveyConfigurationdesignConfigurationtextBlocks), required: false);
+            var __workflow_bodysurveyConfigurationanonymizingConfigurationanonymizingMode = bodysurveyConfigurationanonymizingConfigurationanonymizingMode == null ? null : WorkflowExpression.Compile(bodysurveyConfigurationanonymizingConfigurationanonymizingMode);
+            WorkflowExpression.Validate(__workflow_bodysurveyConfigurationanonymizingConfigurationanonymizingMode, nameof(bodysurveyConfigurationanonymizingConfigurationanonymizingMode), required: false);
             return new DeferredBodyAction<UpdateSurveyResponse>(() =>
             {
                 var apiCallPath = "/publicapi/Survey/v3/UpdateSurvey";
@@ -2599,50 +2552,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["surveyId"] = ExpressionConverter.ConvertO(bodysurveyId);
-                if (bodysurveyName != null)
+                body["surveyId"] = ExpressionConverter.ConvertO(__workflow_bodysurveyId);
+                if (__workflow_bodysurveyName != null)
                 {
-                    body["surveyName"] = ExpressionConverter.ConvertO(bodysurveyName);
+                    body["surveyName"] = ExpressionConverter.ConvertO(__workflow_bodysurveyName);
                     bodypropCount++;
                 }
 
                 var surveyDefinitionObject = new JObject();
                 var surveyDefinitionObjectpropCount = 0;
                 surveyDefinitionObjectpropCount++;
-                surveyDefinitionObject["allowMultipleParticipation"] = ExpressionConverter.ConvertO(bodysurveyDefinitionallowMultipleParticipation);
+                surveyDefinitionObject["allowMultipleParticipation"] = ExpressionConverter.ConvertO(__workflow_bodysurveyDefinitionallowMultipleParticipation);
                 surveyDefinitionObjectpropCount++;
-                surveyDefinitionObject["allowNavigateBack"] = ExpressionConverter.ConvertO(bodysurveyDefinitionallowNavigateBack);
-                if (bodysurveyDefinitionallowSaveProgress != null)
+                surveyDefinitionObject["allowNavigateBack"] = ExpressionConverter.ConvertO(__workflow_bodysurveyDefinitionallowNavigateBack);
+                if (__workflow_bodysurveyDefinitionallowSaveProgress != null)
                 {
-                    surveyDefinitionObject["allowSaveProgress"] = ExpressionConverter.ConvertO(bodysurveyDefinitionallowSaveProgress);
+                    surveyDefinitionObject["allowSaveProgress"] = ExpressionConverter.ConvertO(__workflow_bodysurveyDefinitionallowSaveProgress);
                     surveyDefinitionObjectpropCount++;
                 }
 
                 surveyDefinitionObjectpropCount++;
-                surveyDefinitionObject["randomizeSections"] = ExpressionConverter.ConvertO(bodysurveyDefinitionrandomizeSections);
-                if (bodysurveyDefinitionenableAutoScroll != null)
+                surveyDefinitionObject["randomizeSections"] = ExpressionConverter.ConvertO(__workflow_bodysurveyDefinitionrandomizeSections);
+                if (__workflow_bodysurveyDefinitionenableAutoScroll != null)
                 {
-                    surveyDefinitionObject["enableAutoScroll"] = ExpressionConverter.ConvertO(bodysurveyDefinitionenableAutoScroll);
+                    surveyDefinitionObject["enableAutoScroll"] = ExpressionConverter.ConvertO(__workflow_bodysurveyDefinitionenableAutoScroll);
                     surveyDefinitionObjectpropCount++;
                 }
 
-                if (bodysurveyDefinitionenableCodeAccess != null)
+                if (__workflow_bodysurveyDefinitionenableCodeAccess != null)
                 {
-                    surveyDefinitionObject["enableCodeAccess"] = ExpressionConverter.ConvertO(bodysurveyDefinitionenableCodeAccess);
+                    surveyDefinitionObject["enableCodeAccess"] = ExpressionConverter.ConvertO(__workflow_bodysurveyDefinitionenableCodeAccess);
                     surveyDefinitionObjectpropCount++;
                 }
 
                 var dataAccessControlObject = new JObject();
                 var dataAccessControlObjectpropCount = 0;
-                if (bodysurveyDefinitiondataAccessControlaccessType != null)
+                if (__workflow_bodysurveyDefinitiondataAccessControlaccessType != null)
                 {
-                    dataAccessControlObject["accessType"] = ExpressionConverter.ConvertO(bodysurveyDefinitiondataAccessControlaccessType);
+                    dataAccessControlObject["accessType"] = ExpressionConverter.ConvertO(__workflow_bodysurveyDefinitiondataAccessControlaccessType);
                     dataAccessControlObjectpropCount++;
                 }
 
-                if (bodysurveyDefinitiondataAccessControlconditions != null)
+                if (__workflow_bodysurveyDefinitiondataAccessControlconditions != null)
                 {
-                    dataAccessControlObject["conditions"] = ExpressionConverter.ConvertO(bodysurveyDefinitiondataAccessControlconditions);
+                    dataAccessControlObject["conditions"] = ExpressionConverter.ConvertO(__workflow_bodysurveyDefinitiondataAccessControlconditions);
                     dataAccessControlObjectpropCount++;
                 }
 
@@ -2652,52 +2605,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                     surveyDefinitionObjectpropCount++;
                 }
 
-                if (bodysurveyDefinitionassociatedPanels != null)
+                if (__workflow_bodysurveyDefinitionassociatedPanels != null)
                 {
-                    surveyDefinitionObject["associatedPanels"] = ExpressionConverter.ConvertO(bodysurveyDefinitionassociatedPanels);
+                    surveyDefinitionObject["associatedPanels"] = ExpressionConverter.ConvertO(__workflow_bodysurveyDefinitionassociatedPanels);
                     surveyDefinitionObjectpropCount++;
                 }
 
-                if (bodysurveyDefinitioncodeAccessMode != null)
+                if (__workflow_bodysurveyDefinitioncodeAccessMode != null)
                 {
-                    surveyDefinitionObject["codeAccessMode"] = ExpressionConverter.ConvertO(bodysurveyDefinitioncodeAccessMode);
+                    surveyDefinitionObject["codeAccessMode"] = ExpressionConverter.ConvertO(__workflow_bodysurveyDefinitioncodeAccessMode);
                     surveyDefinitionObjectpropCount++;
                 }
 
-                if (bodysurveyDefinitionenablePanelSync != null)
+                if (__workflow_bodysurveyDefinitionenablePanelSync != null)
                 {
-                    surveyDefinitionObject["enablePanelSync"] = ExpressionConverter.ConvertO(bodysurveyDefinitionenablePanelSync);
+                    surveyDefinitionObject["enablePanelSync"] = ExpressionConverter.ConvertO(__workflow_bodysurveyDefinitionenablePanelSync);
                     surveyDefinitionObjectpropCount++;
                 }
 
-                if (bodysurveyDefinitionpanelSyncBehaviour != null)
+                if (__workflow_bodysurveyDefinitionpanelSyncBehaviour != null)
                 {
-                    surveyDefinitionObject["panelSyncBehaviour"] = ExpressionConverter.ConvertO(bodysurveyDefinitionpanelSyncBehaviour);
+                    surveyDefinitionObject["panelSyncBehaviour"] = ExpressionConverter.ConvertO(__workflow_bodysurveyDefinitionpanelSyncBehaviour);
                     surveyDefinitionObjectpropCount++;
                 }
 
-                if (bodysurveyDefinitionpanelSyncs != null)
+                if (__workflow_bodysurveyDefinitionpanelSyncs != null)
                 {
-                    surveyDefinitionObject["panelSyncs"] = ExpressionConverter.ConvertO(bodysurveyDefinitionpanelSyncs);
-                    surveyDefinitionObjectpropCount++;
-                }
-
-                surveyDefinitionObjectpropCount++;
-                surveyDefinitionObject["defaultLanguage"] = ExpressionConverter.ConvertO(bodysurveyDefinitiondefaultLanguage);
-                if (bodysurveyDefinitionendDate != null)
-                {
-                    surveyDefinitionObject["endDate"] = ExpressionConverter.ConvertO(bodysurveyDefinitionendDate);
+                    surveyDefinitionObject["panelSyncs"] = ExpressionConverter.ConvertO(__workflow_bodysurveyDefinitionpanelSyncs);
                     surveyDefinitionObjectpropCount++;
                 }
 
                 surveyDefinitionObjectpropCount++;
-                surveyDefinitionObject["languages"] = ExpressionConverter.ConvertO(bodysurveyDefinitionlanguages);
+                surveyDefinitionObject["defaultLanguage"] = ExpressionConverter.ConvertO(__workflow_bodysurveyDefinitiondefaultLanguage);
+                if (__workflow_bodysurveyDefinitionendDate != null)
+                {
+                    surveyDefinitionObject["endDate"] = ExpressionConverter.ConvertO(__workflow_bodysurveyDefinitionendDate);
+                    surveyDefinitionObjectpropCount++;
+                }
+
                 surveyDefinitionObjectpropCount++;
-                surveyDefinitionObject["sections"] = ExpressionConverter.ConvertO(bodysurveyDefinitionsections);
+                surveyDefinitionObject["languages"] = ExpressionConverter.ConvertO(__workflow_bodysurveyDefinitionlanguages);
                 surveyDefinitionObjectpropCount++;
-                surveyDefinitionObject["customVariables"] = ExpressionConverter.ConvertO(bodysurveyDefinitioncustomVariables);
+                surveyDefinitionObject["sections"] = ExpressionConverter.ConvertO(__workflow_bodysurveyDefinitionsections);
                 surveyDefinitionObjectpropCount++;
-                surveyDefinitionObject["surveyEndText"] = ExpressionConverter.ConvertO(bodysurveyDefinitionsurveyEndText);
+                surveyDefinitionObject["customVariables"] = ExpressionConverter.ConvertO(__workflow_bodysurveyDefinitioncustomVariables);
+                surveyDefinitionObjectpropCount++;
+                surveyDefinitionObject["surveyEndText"] = ExpressionConverter.ConvertO(__workflow_bodysurveyDefinitionsurveyEndText);
                 var defaultTextOverridesObject = new JObject();
                 var defaultTextOverridesObjectpropCount = 0;
                 if (defaultTextOverridesObjectpropCount > 0)
@@ -2716,21 +2669,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 var surveyConfigurationObjectpropCount = 0;
                 var designConfigurationObject = new JObject();
                 var designConfigurationObjectpropCount = 0;
-                if (bodysurveyConfigurationdesignConfigurationsurveyDesignLayout != null)
+                if (__workflow_bodysurveyConfigurationdesignConfigurationsurveyDesignLayout != null)
                 {
-                    designConfigurationObject["surveyDesignLayout"] = ExpressionConverter.ConvertO(bodysurveyConfigurationdesignConfigurationsurveyDesignLayout);
+                    designConfigurationObject["surveyDesignLayout"] = ExpressionConverter.ConvertO(__workflow_bodysurveyConfigurationdesignConfigurationsurveyDesignLayout);
                     designConfigurationObjectpropCount++;
                 }
 
-                if (bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize != null)
+                if (__workflow_bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize != null)
                 {
-                    designConfigurationObject["matrixSubQuestionSize"] = ExpressionConverter.ConvertO(bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize);
+                    designConfigurationObject["matrixSubQuestionSize"] = ExpressionConverter.ConvertO(__workflow_bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize);
                     designConfigurationObjectpropCount++;
                 }
 
-                if (bodysurveyConfigurationdesignConfigurationtextBlocks != null)
+                if (__workflow_bodysurveyConfigurationdesignConfigurationtextBlocks != null)
                 {
-                    designConfigurationObject["textBlocks"] = ExpressionConverter.ConvertO(bodysurveyConfigurationdesignConfigurationtextBlocks);
+                    designConfigurationObject["textBlocks"] = ExpressionConverter.ConvertO(__workflow_bodysurveyConfigurationdesignConfigurationtextBlocks);
                     designConfigurationObjectpropCount++;
                 }
 
@@ -2742,18 +2695,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
 
                 var anonymizingConfigurationObject = new JObject();
                 var anonymizingConfigurationObjectpropCount = 0;
-                if (bodysurveyConfigurationanonymizingConfigurationanonymizingMode != null)
+                if (__workflow_bodysurveyConfigurationanonymizingConfigurationanonymizingMode != null)
                 {
-                    anonymizingConfigurationObject["anonymizingMode"] = ExpressionConverter.ConvertO(bodysurveyConfigurationanonymizingConfigurationanonymizingMode);
+                    anonymizingConfigurationObject["anonymizingMode"] = ExpressionConverter.ConvertO(__workflow_bodysurveyConfigurationanonymizingConfigurationanonymizingMode);
                     anonymizingConfigurationObjectpropCount++;
                 }
 
                 anonymizingConfigurationObjectpropCount++;
-                anonymizingConfigurationObject["logIp"] = ExpressionConverter.ConvertO(bodysurveyConfigurationanonymizingConfigurationlogIp);
+                anonymizingConfigurationObject["logIp"] = ExpressionConverter.ConvertO(__workflow_bodysurveyConfigurationanonymizingConfigurationlogIp);
                 anonymizingConfigurationObjectpropCount++;
-                anonymizingConfigurationObject["logUserAgent"] = ExpressionConverter.ConvertO(bodysurveyConfigurationanonymizingConfigurationlogUserAgent);
+                anonymizingConfigurationObject["logUserAgent"] = ExpressionConverter.ConvertO(__workflow_bodysurveyConfigurationanonymizingConfigurationlogUserAgent);
                 anonymizingConfigurationObjectpropCount++;
-                anonymizingConfigurationObject["logReferer"] = ExpressionConverter.ConvertO(bodysurveyConfigurationanonymizingConfigurationlogReferer);
+                anonymizingConfigurationObject["logReferer"] = ExpressionConverter.ConvertO(__workflow_bodysurveyConfigurationanonymizingConfigurationlogReferer);
                 if (anonymizingConfigurationObjectpropCount > 0)
                 {
                     surveyConfigurationObject["anonymizingConfiguration"] = anonymizingConfigurationObject;
@@ -2776,20 +2729,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateWebHook))]
-        public IBodyWorkflowAction<UpdateWebHookResponse> UpdateWebHook([WorkflowExpression] Func<string> bodywebHookId = null, [WorkflowExpression] Func<bodyeventTypeInput> bodyeventType = null, [WorkflowExpression] Func<string> bodyentityIdentifier = null, [WorkflowExpression] Func<string> bodysecurityToken = null, [WorkflowExpression] Func<string> bodywebHookUrl = null)
+        public IBodyWorkflowAction<UpdateWebHookResponse> UpdateWebHook(Expression<Func<string>> bodywebHookId = null, Expression<Func<bodyeventTypeInput>> bodyeventType = null, Expression<Func<string>> bodyentityIdentifier = null, Expression<Func<string>> bodysecurityToken = null, Expression<Func<string>> bodywebHookUrl = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UpdateWebHookResponse> __BuildUpdateWebHook(WorkflowExpression<string> bodywebHookId = null, WorkflowExpression<bodyeventTypeInput> bodyeventType = null, WorkflowExpression<string> bodyentityIdentifier = null, WorkflowExpression<string> bodysecurityToken = null, WorkflowExpression<string> bodywebHookUrl = null)
-        {
-            WorkflowExpression.Validate(bodywebHookId, nameof(bodywebHookId), required: false);
-            WorkflowExpression.Validate(bodyeventType, nameof(bodyeventType), required: false);
-            WorkflowExpression.Validate(bodyentityIdentifier, nameof(bodyentityIdentifier), required: false);
-            WorkflowExpression.Validate(bodysecurityToken, nameof(bodysecurityToken), required: false);
-            WorkflowExpression.Validate(bodywebHookUrl, nameof(bodywebHookUrl), required: false);
+            var __workflow_bodywebHookId = bodywebHookId == null ? null : WorkflowExpression.Compile(bodywebHookId);
+            WorkflowExpression.Validate(__workflow_bodywebHookId, nameof(bodywebHookId), required: false);
+            var __workflow_bodyeventType = bodyeventType == null ? null : WorkflowExpression.Compile(bodyeventType);
+            WorkflowExpression.Validate(__workflow_bodyeventType, nameof(bodyeventType), required: false);
+            var __workflow_bodyentityIdentifier = bodyentityIdentifier == null ? null : WorkflowExpression.Compile(bodyentityIdentifier);
+            WorkflowExpression.Validate(__workflow_bodyentityIdentifier, nameof(bodyentityIdentifier), required: false);
+            var __workflow_bodysecurityToken = bodysecurityToken == null ? null : WorkflowExpression.Compile(bodysecurityToken);
+            WorkflowExpression.Validate(__workflow_bodysecurityToken, nameof(bodysecurityToken), required: false);
+            var __workflow_bodywebHookUrl = bodywebHookUrl == null ? null : WorkflowExpression.Compile(bodywebHookUrl);
+            WorkflowExpression.Validate(__workflow_bodywebHookUrl, nameof(bodywebHookUrl), required: false);
             return new DeferredBodyAction<UpdateWebHookResponse>(() =>
             {
                 var apiCallPath = "/publicapi/WebHook/v3/UpdateWebHook";
@@ -2797,33 +2748,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodywebHookId != null)
+                if (__workflow_bodywebHookId != null)
                 {
-                    body["webHookId"] = ExpressionConverter.ConvertO(bodywebHookId);
+                    body["webHookId"] = ExpressionConverter.ConvertO(__workflow_bodywebHookId);
                     bodypropCount++;
                 }
 
-                if (bodyeventType != null)
+                if (__workflow_bodyeventType != null)
                 {
-                    body["eventType"] = ExpressionConverter.ConvertO(bodyeventType);
+                    body["eventType"] = ExpressionConverter.ConvertO(__workflow_bodyeventType);
                     bodypropCount++;
                 }
 
-                if (bodyentityIdentifier != null)
+                if (__workflow_bodyentityIdentifier != null)
                 {
-                    body["entityIdentifier"] = ExpressionConverter.ConvertO(bodyentityIdentifier);
+                    body["entityIdentifier"] = ExpressionConverter.ConvertO(__workflow_bodyentityIdentifier);
                     bodypropCount++;
                 }
 
-                if (bodysecurityToken != null)
+                if (__workflow_bodysecurityToken != null)
                 {
-                    body["securityToken"] = ExpressionConverter.ConvertO(bodysecurityToken);
+                    body["securityToken"] = ExpressionConverter.ConvertO(__workflow_bodysecurityToken);
                     bodypropCount++;
                 }
 
-                if (bodywebHookUrl != null)
+                if (__workflow_bodywebHookUrl != null)
                 {
-                    body["webHookUrl"] = ExpressionConverter.ConvertO(bodywebHookUrl);
+                    body["webHookUrl"] = ExpressionConverter.ConvertO(__workflow_bodywebHookUrl);
                     bodypropCount++;
                 }
 
@@ -2837,20 +2788,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        [WorkflowExpressionFactory(nameof(__BuildWriteOptOutList))]
-        public IBodyWorkflowAction<WriteOptOutListResponse> WriteOptOutList([WorkflowExpression] Func<int> bodyworkspaceId = null, [WorkflowExpression] Func<int> bodypanelId = null, [WorkflowExpression] Func<int> bodydistributorId = null, [WorkflowExpression] Func<EmailItem[]> bodyemails = null, [WorkflowExpression] Func<CellPhoneItem[]> bodycellPhones = null)
+        public IBodyWorkflowAction<WriteOptOutListResponse> WriteOptOutList(Expression<Func<int>> bodyworkspaceId = null, Expression<Func<int>> bodypanelId = null, Expression<Func<int>> bodydistributorId = null, Expression<Func<EmailItem[]>> bodyemails = null, Expression<Func<CellPhoneItem[]>> bodycellPhones = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<WriteOptOutListResponse> __BuildWriteOptOutList(WorkflowExpression<int> bodyworkspaceId = null, WorkflowExpression<int> bodypanelId = null, WorkflowExpression<int> bodydistributorId = null, WorkflowExpression<EmailItem[]> bodyemails = null, WorkflowExpression<CellPhoneItem[]> bodycellPhones = null)
-        {
-            WorkflowExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: false);
-            WorkflowExpression.Validate(bodypanelId, nameof(bodypanelId), required: false);
-            WorkflowExpression.Validate(bodydistributorId, nameof(bodydistributorId), required: false);
-            WorkflowExpression.Validate(bodyemails, nameof(bodyemails), required: false);
-            WorkflowExpression.Validate(bodycellPhones, nameof(bodycellPhones), required: false);
+            var __workflow_bodyworkspaceId = bodyworkspaceId == null ? null : WorkflowExpression.Compile(bodyworkspaceId);
+            WorkflowExpression.Validate(__workflow_bodyworkspaceId, nameof(bodyworkspaceId), required: false);
+            var __workflow_bodypanelId = bodypanelId == null ? null : WorkflowExpression.Compile(bodypanelId);
+            WorkflowExpression.Validate(__workflow_bodypanelId, nameof(bodypanelId), required: false);
+            var __workflow_bodydistributorId = bodydistributorId == null ? null : WorkflowExpression.Compile(bodydistributorId);
+            WorkflowExpression.Validate(__workflow_bodydistributorId, nameof(bodydistributorId), required: false);
+            var __workflow_bodyemails = bodyemails == null ? null : WorkflowExpression.Compile(bodyemails);
+            WorkflowExpression.Validate(__workflow_bodyemails, nameof(bodyemails), required: false);
+            var __workflow_bodycellPhones = bodycellPhones == null ? null : WorkflowExpression.Compile(bodycellPhones);
+            WorkflowExpression.Validate(__workflow_bodycellPhones, nameof(bodycellPhones), required: false);
             return new DeferredBodyAction<WriteOptOutListResponse>(() =>
             {
                 var apiCallPath = "/publicapi/Distribute/v3/WriteOptOutList";
@@ -2858,33 +2807,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyworkspaceId != null)
+                if (__workflow_bodyworkspaceId != null)
                 {
-                    body["workspaceId"] = ExpressionConverter.ConvertO(bodyworkspaceId);
+                    body["workspaceId"] = ExpressionConverter.ConvertO(__workflow_bodyworkspaceId);
                     bodypropCount++;
                 }
 
-                if (bodypanelId != null)
+                if (__workflow_bodypanelId != null)
                 {
-                    body["panelId"] = ExpressionConverter.ConvertO(bodypanelId);
+                    body["panelId"] = ExpressionConverter.ConvertO(__workflow_bodypanelId);
                     bodypropCount++;
                 }
 
-                if (bodydistributorId != null)
+                if (__workflow_bodydistributorId != null)
                 {
-                    body["distributorId"] = ExpressionConverter.ConvertO(bodydistributorId);
+                    body["distributorId"] = ExpressionConverter.ConvertO(__workflow_bodydistributorId);
                     bodypropCount++;
                 }
 
-                if (bodyemails != null)
+                if (__workflow_bodyemails != null)
                 {
-                    body["emails"] = ExpressionConverter.ConvertO(bodyemails);
+                    body["emails"] = ExpressionConverter.ConvertO(__workflow_bodyemails);
                     bodypropCount++;
                 }
 
-                if (bodycellPhones != null)
+                if (__workflow_bodycellPhones != null)
                 {
-                    body["cellPhones"] = ExpressionConverter.ConvertO(bodycellPhones);
+                    body["cellPhones"] = ExpressionConverter.ConvertO(__workflow_bodycellPhones);
                     bodypropCount++;
                 }
 

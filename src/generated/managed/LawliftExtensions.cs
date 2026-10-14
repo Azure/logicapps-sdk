@@ -1,12 +1,12 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lawlift
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class LawliftActions([ConnectionName] string connectionId)
     {
@@ -14,17 +14,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lawlift
 
     public class LawliftTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildLawliftExportTrigger))]
-        public IBodyWorkflowTrigger<LawliftExportTriggerResponse> LawliftExportTrigger([WorkflowExpression] Func<string> bodyflowName = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<LawliftExportTriggerResponse> LawliftExportTrigger(Expression<Func<string>> bodyflowName = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<LawliftExportTriggerResponse> __BuildLawliftExportTrigger(WorkflowExpression<string> bodyflowName = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodyflowName, nameof(bodyflowName), required: false);
+            var __workflow_bodyflowName = bodyflowName == null ? null : WorkflowExpression.Compile(bodyflowName);
+            WorkflowExpression.Validate(__workflow_bodyflowName, nameof(bodyflowName), required: false);
             return new DeferredBodyTrigger<LawliftExportTriggerResponse>(() =>
             {
                 var apiCallPath = "/webhooks/export";
@@ -34,9 +27,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lawlift
                 var bodypropCount = 0;
                 body["callbackUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-                if (bodyflowName != null)
+                if (__workflow_bodyflowName != null)
                 {
-                    body["flowName"] = ExpressionConverter.ConvertO(bodyflowName);
+                    body["flowName"] = ExpressionConverter.ConvertO(__workflow_bodyflowName);
                     bodypropCount++;
                 }
 
@@ -49,16 +42,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lawlift
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildLawliftNotificationTrigger))]
-        public IBodyWorkflowTrigger<LawliftNotificationTriggerResponse> LawliftNotificationTrigger([WorkflowExpression] Func<string> bodyflowName = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<LawliftNotificationTriggerResponse> LawliftNotificationTrigger(Expression<Func<string>> bodyflowName = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<LawliftNotificationTriggerResponse> __BuildLawliftNotificationTrigger(WorkflowExpression<string> bodyflowName = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodyflowName, nameof(bodyflowName), required: false);
+            var __workflow_bodyflowName = bodyflowName == null ? null : WorkflowExpression.Compile(bodyflowName);
+            WorkflowExpression.Validate(__workflow_bodyflowName, nameof(bodyflowName), required: false);
             return new DeferredBodyTrigger<LawliftNotificationTriggerResponse>(() =>
             {
                 var apiCallPath = "/webhooks/notifications";
@@ -68,9 +55,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lawlift
                 var bodypropCount = 0;
                 body["callbackUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-                if (bodyflowName != null)
+                if (__workflow_bodyflowName != null)
                 {
-                    body["flowName"] = ExpressionConverter.ConvertO(bodyflowName);
+                    body["flowName"] = ExpressionConverter.ConvertO(__workflow_bodyflowName);
                     bodypropCount++;
                 }
 

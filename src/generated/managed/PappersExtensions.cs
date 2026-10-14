@@ -1,90 +1,76 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pappers
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class PappersActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pappers")]
-        [WorkflowExpressionFactory(nameof(__BuildCompanyGet))]
-        public IBodyWorkflowAction<CompanyFormat> CompanyGet([WorkflowExpression] Func<countryCodeInput> countryCode, [WorkflowExpression] Func<string> companyNumber, [WorkflowExpression] Func<fieldsInput> fields = null)
+        public IBodyWorkflowAction<CompanyFormat> CompanyGet(Expression<Func<countryCodeInput>> countryCode, Expression<Func<string>> companyNumber, Expression<Func<fieldsInput>> fields = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CompanyFormat> __BuildCompanyGet(WorkflowExpression<countryCodeInput> countryCode, WorkflowExpression<string> companyNumber, WorkflowExpression<fieldsInput> fields = null)
-        {
-            WorkflowExpression.Validate(countryCode, nameof(countryCode), required: true);
-            WorkflowExpression.Validate(companyNumber, nameof(companyNumber), required: true);
-            WorkflowExpression.Validate(fields, nameof(fields), required: false);
+            var __workflow_countryCode = countryCode == null ? null : WorkflowExpression.Compile(countryCode);
+            WorkflowExpression.Validate(__workflow_countryCode, nameof(countryCode), required: true);
+            var __workflow_companyNumber = companyNumber == null ? null : WorkflowExpression.Compile(companyNumber);
+            WorkflowExpression.Validate(__workflow_companyNumber, nameof(companyNumber), required: true);
+            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
+            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
             return new DeferredBodyAction<CompanyFormat>(() =>
             {
                 var apiCallPath = "/company";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["country_code"] = ExpressionConverter.Convert(countryCode);
-                callPayload.Queries["company_number"] = ExpressionConverter.Convert(companyNumber);
-                if (fields != null)
-                    callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                callPayload.Queries["country_code"] = ExpressionConverter.Convert(__workflow_countryCode);
+                callPayload.Queries["company_number"] = ExpressionConverter.Convert(__workflow_companyNumber);
+                if (__workflow_fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
                 return new ApiConnectionAction<CompanyFormat>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pappers")]
-        [WorkflowExpressionFactory(nameof(__BuildSearchGet))]
-        public IBodyWorkflowAction<SearchResponse> SearchGet([WorkflowExpression] Func<countryCodeInput> countryCode, [WorkflowExpression] Func<string> q, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null)
+        public IBodyWorkflowAction<SearchResponse> SearchGet(Expression<Func<countryCodeInput>> countryCode, Expression<Func<string>> q, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SearchResponse> __BuildSearchGet(WorkflowExpression<countryCodeInput> countryCode, WorkflowExpression<string> q, WorkflowExpression<int> page = null, WorkflowExpression<int> perPage = null)
-        {
-            WorkflowExpression.Validate(countryCode, nameof(countryCode), required: true);
-            WorkflowExpression.Validate(q, nameof(q), required: true);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
-            WorkflowExpression.Validate(perPage, nameof(perPage), required: false);
+            var __workflow_countryCode = countryCode == null ? null : WorkflowExpression.Compile(countryCode);
+            WorkflowExpression.Validate(__workflow_countryCode, nameof(countryCode), required: true);
+            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
+            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
+            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
             return new DeferredBodyAction<SearchResponse>(() =>
             {
                 var apiCallPath = "/search";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["country_code"] = ExpressionConverter.Convert(countryCode);
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                callPayload.Queries["country_code"] = ExpressionConverter.Convert(__workflow_countryCode);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
                 callPayload.Queries["page"] = Convert.ToString(1);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 callPayload.Queries["per_page"] = Convert.ToString(10);
-                if (perPage != null)
-                    callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
+                if (__workflow_perPage != null)
+                    callPayload.Queries["per_page"] = ExpressionConverter.Convert(__workflow_perPage);
                 return new ApiConnectionAction<SearchResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pappers")]
-        [WorkflowExpressionFactory(nameof(__BuildDocumentGet))]
-        public IBodyWorkflowAction<DocumentGetResponse> DocumentGet([WorkflowExpression] Func<string> token)
+        public IBodyWorkflowAction<DocumentGetResponse> DocumentGet(Expression<Func<string>> token)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DocumentGetResponse> __BuildDocumentGet(WorkflowExpression<string> token)
-        {
-            WorkflowExpression.Validate(token, nameof(token), required: true);
+            var __workflow_token = token == null ? null : WorkflowExpression.Compile(token);
+            WorkflowExpression.Validate(__workflow_token, nameof(token), required: true);
             return new DeferredBodyAction<DocumentGetResponse>(() =>
             {
                 var apiCallPath = "/download-file";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["token"] = ExpressionConverter.Convert(token);
+                callPayload.Queries["token"] = ExpressionConverter.Convert(__workflow_token);
                 return new ApiConnectionAction<DocumentGetResponse>(callPayload);
             });
         }

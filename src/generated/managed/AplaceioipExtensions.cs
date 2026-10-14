@@ -1,79 +1,74 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aplaceioip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class AplaceioipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aplaceioip")]
-        [WorkflowExpressionFactory(nameof(__BuildSearchGet))]
-        public IBodyWorkflowAction<SearchGetResponse> SearchGet([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<string> sessionId = null, [WorkflowExpression] Func<typeInput> type = null, [WorkflowExpression] Func<string> countries = null, [WorkflowExpression] Func<double> lat = null, [WorkflowExpression] Func<double> lon = null, [WorkflowExpression] Func<double> radius = null, [WorkflowExpression] Func<string> lang = null)
+        public IBodyWorkflowAction<SearchGetResponse> SearchGet(Expression<Func<string>> q, Expression<Func<string>> sessionId = null, Expression<Func<typeInput>> type = null, Expression<Func<string>> countries = null, Expression<Func<double>> lat = null, Expression<Func<double>> lon = null, Expression<Func<double>> radius = null, Expression<Func<string>> lang = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SearchGetResponse> __BuildSearchGet(WorkflowExpression<string> q, WorkflowExpression<string> sessionId = null, WorkflowExpression<typeInput> type = null, WorkflowExpression<string> countries = null, WorkflowExpression<double> lat = null, WorkflowExpression<double> lon = null, WorkflowExpression<double> radius = null, WorkflowExpression<string> lang = null)
-        {
-            WorkflowExpression.Validate(q, nameof(q), required: true);
-            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: false);
-            WorkflowExpression.Validate(type, nameof(type), required: false);
-            WorkflowExpression.Validate(countries, nameof(countries), required: false);
-            WorkflowExpression.Validate(lat, nameof(lat), required: false);
-            WorkflowExpression.Validate(lon, nameof(lon), required: false);
-            WorkflowExpression.Validate(radius, nameof(radius), required: false);
-            WorkflowExpression.Validate(lang, nameof(lang), required: false);
+            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
+            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
+            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
+            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: false);
+            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
+            WorkflowExpression.Validate(__workflow_type, nameof(type), required: false);
+            var __workflow_countries = countries == null ? null : WorkflowExpression.Compile(countries);
+            WorkflowExpression.Validate(__workflow_countries, nameof(countries), required: false);
+            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
+            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: false);
+            var __workflow_lon = lon == null ? null : WorkflowExpression.Compile(lon);
+            WorkflowExpression.Validate(__workflow_lon, nameof(lon), required: false);
+            var __workflow_radius = radius == null ? null : WorkflowExpression.Compile(radius);
+            WorkflowExpression.Validate(__workflow_radius, nameof(radius), required: false);
+            var __workflow_lang = lang == null ? null : WorkflowExpression.Compile(lang);
+            WorkflowExpression.Validate(__workflow_lang, nameof(lang), required: false);
             return new DeferredBodyAction<SearchGetResponse>(() =>
             {
                 var apiCallPath = "/search";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-                if (sessionId != null)
-                    callPayload.Queries["session_id"] = ExpressionConverter.Convert(sessionId);
-                if (type != null)
-                    callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-                if (countries != null)
-                    callPayload.Queries["countries"] = ExpressionConverter.Convert(countries);
-                if (lat != null)
-                    callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
-                if (lon != null)
-                    callPayload.Queries["lon"] = ExpressionConverter.Convert(lon);
-                if (radius != null)
-                    callPayload.Queries["radius"] = ExpressionConverter.Convert(radius);
-                if (lang != null)
-                    callPayload.Queries["lang"] = ExpressionConverter.Convert(lang);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
+                if (__workflow_sessionId != null)
+                    callPayload.Queries["session_id"] = ExpressionConverter.Convert(__workflow_sessionId);
+                if (__workflow_type != null)
+                    callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
+                if (__workflow_countries != null)
+                    callPayload.Queries["countries"] = ExpressionConverter.Convert(__workflow_countries);
+                if (__workflow_lat != null)
+                    callPayload.Queries["lat"] = ExpressionConverter.Convert(__workflow_lat);
+                if (__workflow_lon != null)
+                    callPayload.Queries["lon"] = ExpressionConverter.Convert(__workflow_lon);
+                if (__workflow_radius != null)
+                    callPayload.Queries["radius"] = ExpressionConverter.Convert(__workflow_radius);
+                if (__workflow_lang != null)
+                    callPayload.Queries["lang"] = ExpressionConverter.Convert(__workflow_lang);
                 return new ApiConnectionAction<SearchGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aplaceioip")]
-        [WorkflowExpressionFactory(nameof(__BuildPIPGet))]
-        public IBodyWorkflowAction<PIPGetResponse> PIPGet([WorkflowExpression] Func<double> lat = null, [WorkflowExpression] Func<double> lon = null)
+        public IBodyWorkflowAction<PIPGetResponse> PIPGet(Expression<Func<double>> lat = null, Expression<Func<double>> lon = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PIPGetResponse> __BuildPIPGet(WorkflowExpression<double> lat = null, WorkflowExpression<double> lon = null)
-        {
-            WorkflowExpression.Validate(lat, nameof(lat), required: false);
-            WorkflowExpression.Validate(lon, nameof(lon), required: false);
+            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
+            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: false);
+            var __workflow_lon = lon == null ? null : WorkflowExpression.Compile(lon);
+            WorkflowExpression.Validate(__workflow_lon, nameof(lon), required: false);
             return new DeferredBodyAction<PIPGetResponse>(() =>
             {
                 var apiCallPath = "/pip";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lat != null)
-                    callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
-                if (lon != null)
-                    callPayload.Queries["lon"] = ExpressionConverter.Convert(lon);
+                if (__workflow_lat != null)
+                    callPayload.Queries["lat"] = ExpressionConverter.Convert(__workflow_lat);
+                if (__workflow_lon != null)
+                    callPayload.Queries["lon"] = ExpressionConverter.Convert(__workflow_lon);
                 return new ApiConnectionAction<PIPGetResponse>(callPayload);
             });
         }

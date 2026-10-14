@@ -1,76 +1,76 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tago
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class TagoActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tago")]
-        [WorkflowExpressionFactory(nameof(__BuildGetData))]
-        public IBodyWorkflowAction<JToken> GetData([WorkflowExpression] Func<string> device, [WorkflowExpression] Func<string> variable, [WorkflowExpression] Func<queryInput> query = null, [WorkflowExpression] Func<int> qty = null, [WorkflowExpression] Func<timezoneInput> timezone = null, [WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<string> serie = null)
+        public IBodyWorkflowAction<JToken> GetData(Expression<Func<string>> device, Expression<Func<string>> variable, Expression<Func<queryInput>> query = null, Expression<Func<int>> qty = null, Expression<Func<timezoneInput>> timezone = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> serie = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildGetData(WorkflowExpression<string> device, WorkflowExpression<string> variable, WorkflowExpression<queryInput> query = null, WorkflowExpression<int> qty = null, WorkflowExpression<timezoneInput> timezone = null, WorkflowExpression<string> startDate = null, WorkflowExpression<string> endDate = null, WorkflowExpression<string> serie = null)
-        {
-            WorkflowExpression.Validate(device, nameof(device), required: true);
-            WorkflowExpression.Validate(variable, nameof(variable), required: true);
-            WorkflowExpression.Validate(query, nameof(query), required: false);
-            WorkflowExpression.Validate(qty, nameof(qty), required: false);
-            WorkflowExpression.Validate(timezone, nameof(timezone), required: false);
-            WorkflowExpression.Validate(startDate, nameof(startDate), required: false);
-            WorkflowExpression.Validate(endDate, nameof(endDate), required: false);
-            WorkflowExpression.Validate(serie, nameof(serie), required: false);
+            var __workflow_device = device == null ? null : WorkflowExpression.Compile(device);
+            WorkflowExpression.Validate(__workflow_device, nameof(device), required: true);
+            var __workflow_variable = variable == null ? null : WorkflowExpression.Compile(variable);
+            WorkflowExpression.Validate(__workflow_variable, nameof(variable), required: true);
+            var __workflow_query = query == null ? null : WorkflowExpression.Compile(query);
+            WorkflowExpression.Validate(__workflow_query, nameof(query), required: false);
+            var __workflow_qty = qty == null ? null : WorkflowExpression.Compile(qty);
+            WorkflowExpression.Validate(__workflow_qty, nameof(qty), required: false);
+            var __workflow_timezone = timezone == null ? null : WorkflowExpression.Compile(timezone);
+            WorkflowExpression.Validate(__workflow_timezone, nameof(timezone), required: false);
+            var __workflow_startDate = startDate == null ? null : WorkflowExpression.Compile(startDate);
+            WorkflowExpression.Validate(__workflow_startDate, nameof(startDate), required: false);
+            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
+            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: false);
+            var __workflow_serie = serie == null ? null : WorkflowExpression.Compile(serie);
+            WorkflowExpression.Validate(__workflow_serie, nameof(serie), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/prod/data";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["device"] = ExpressionConverter.Convert(device);
-                callPayload.Queries["variable"] = ExpressionConverter.Convert(variable);
+                callPayload.Queries["device"] = ExpressionConverter.Convert(__workflow_device);
+                callPayload.Queries["variable"] = ExpressionConverter.Convert(__workflow_variable);
                 callPayload.Queries["query"] = Convert.ToString("last_item");
-                if (query != null)
-                    callPayload.Queries["query"] = ExpressionConverter.Convert(query);
-                if (qty != null)
-                    callPayload.Queries["qty"] = ExpressionConverter.Convert(qty);
+                if (__workflow_query != null)
+                    callPayload.Queries["query"] = ExpressionConverter.Convert(__workflow_query);
+                if (__workflow_qty != null)
+                    callPayload.Queries["qty"] = ExpressionConverter.Convert(__workflow_qty);
                 callPayload.Queries["timezone"] = Convert.ToString("(GMT+00:00) UTC");
-                if (timezone != null)
-                    callPayload.Queries["timezone"] = ExpressionConverter.Convert(timezone);
-                if (startDate != null)
-                    callPayload.Queries["start_date"] = ExpressionConverter.Convert(startDate);
-                if (endDate != null)
-                    callPayload.Queries["end_date"] = ExpressionConverter.Convert(endDate);
-                if (serie != null)
-                    callPayload.Queries["serie"] = ExpressionConverter.Convert(serie);
+                if (__workflow_timezone != null)
+                    callPayload.Queries["timezone"] = ExpressionConverter.Convert(__workflow_timezone);
+                if (__workflow_startDate != null)
+                    callPayload.Queries["start_date"] = ExpressionConverter.Convert(__workflow_startDate);
+                if (__workflow_endDate != null)
+                    callPayload.Queries["end_date"] = ExpressionConverter.Convert(__workflow_endDate);
+                if (__workflow_serie != null)
+                    callPayload.Queries["serie"] = ExpressionConverter.Convert(__workflow_serie);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tago")]
-        [WorkflowExpressionFactory(nameof(__BuildPostData))]
-        public IBodyWorkflowAction<PostDataResponse> PostData([WorkflowExpression] Func<string> bodydeviceId, [WorkflowExpression] Func<string> bodyvariable, [WorkflowExpression] Func<string> bodyvalue, [WorkflowExpression] Func<bodytimezoneInput> bodytimezone = null, [WorkflowExpression] Func<string> bodytimestamp = null, [WorkflowExpression] Func<string> bodyserie = null, [WorkflowExpression] Func<string> bodyunit = null)
+        public IBodyWorkflowAction<PostDataResponse> PostData(Expression<Func<string>> bodydeviceId, Expression<Func<string>> bodyvariable, Expression<Func<string>> bodyvalue, Expression<Func<bodytimezoneInput>> bodytimezone = null, Expression<Func<string>> bodytimestamp = null, Expression<Func<string>> bodyserie = null, Expression<Func<string>> bodyunit = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PostDataResponse> __BuildPostData(WorkflowExpression<string> bodydeviceId, WorkflowExpression<string> bodyvariable, WorkflowExpression<string> bodyvalue, WorkflowExpression<bodytimezoneInput> bodytimezone = null, WorkflowExpression<string> bodytimestamp = null, WorkflowExpression<string> bodyserie = null, WorkflowExpression<string> bodyunit = null)
-        {
-            WorkflowExpression.Validate(bodydeviceId, nameof(bodydeviceId), required: true);
-            WorkflowExpression.Validate(bodyvariable, nameof(bodyvariable), required: true);
-            WorkflowExpression.Validate(bodyvalue, nameof(bodyvalue), required: true);
-            WorkflowExpression.Validate(bodytimezone, nameof(bodytimezone), required: false);
-            WorkflowExpression.Validate(bodytimestamp, nameof(bodytimestamp), required: false);
-            WorkflowExpression.Validate(bodyserie, nameof(bodyserie), required: false);
-            WorkflowExpression.Validate(bodyunit, nameof(bodyunit), required: false);
+            var __workflow_bodydeviceId = bodydeviceId == null ? null : WorkflowExpression.Compile(bodydeviceId);
+            WorkflowExpression.Validate(__workflow_bodydeviceId, nameof(bodydeviceId), required: true);
+            var __workflow_bodyvariable = bodyvariable == null ? null : WorkflowExpression.Compile(bodyvariable);
+            WorkflowExpression.Validate(__workflow_bodyvariable, nameof(bodyvariable), required: true);
+            var __workflow_bodyvalue = bodyvalue == null ? null : WorkflowExpression.Compile(bodyvalue);
+            WorkflowExpression.Validate(__workflow_bodyvalue, nameof(bodyvalue), required: true);
+            var __workflow_bodytimezone = bodytimezone == null ? null : WorkflowExpression.Compile(bodytimezone);
+            WorkflowExpression.Validate(__workflow_bodytimezone, nameof(bodytimezone), required: false);
+            var __workflow_bodytimestamp = bodytimestamp == null ? null : WorkflowExpression.Compile(bodytimestamp);
+            WorkflowExpression.Validate(__workflow_bodytimestamp, nameof(bodytimestamp), required: false);
+            var __workflow_bodyserie = bodyserie == null ? null : WorkflowExpression.Compile(bodyserie);
+            WorkflowExpression.Validate(__workflow_bodyserie, nameof(bodyserie), required: false);
+            var __workflow_bodyunit = bodyunit == null ? null : WorkflowExpression.Compile(bodyunit);
+            WorkflowExpression.Validate(__workflow_bodyunit, nameof(bodyunit), required: false);
             return new DeferredBodyAction<PostDataResponse>(() =>
             {
                 var apiCallPath = "/prod/data";
@@ -79,16 +79,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tago
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["device"] = ExpressionConverter.ConvertO(bodydeviceId);
+                body["device"] = ExpressionConverter.ConvertO(__workflow_bodydeviceId);
                 bodypropCount++;
-                body["variable"] = ExpressionConverter.ConvertO(bodyvariable);
+                body["variable"] = ExpressionConverter.ConvertO(__workflow_bodyvariable);
                 bodypropCount++;
-                body["value"] = ExpressionConverter.ConvertO(bodyvalue);
-                if (bodytimezone != null)
+                body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
+                if (__workflow_bodytimezone != null)
                 {
-                    if (bodytimezone != null)
+                    if (__workflow_bodytimezone != null)
                     {
-                        body["timezone"] = ExpressionConverter.ConvertO(bodytimezone);
+                        body["timezone"] = ExpressionConverter.ConvertO(__workflow_bodytimezone);
                         bodypropCount++;
                     }
 
@@ -100,21 +100,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tago
                     bodypropCount++;
                 }
 
-                if (bodytimestamp != null)
+                if (__workflow_bodytimestamp != null)
                 {
-                    body["time"] = ExpressionConverter.ConvertO(bodytimestamp);
+                    body["time"] = ExpressionConverter.ConvertO(__workflow_bodytimestamp);
                     bodypropCount++;
                 }
 
-                if (bodyserie != null)
+                if (__workflow_bodyserie != null)
                 {
-                    body["serie"] = ExpressionConverter.ConvertO(bodyserie);
+                    body["serie"] = ExpressionConverter.ConvertO(__workflow_bodyserie);
                     bodypropCount++;
                 }
 
-                if (bodyunit != null)
+                if (__workflow_bodyunit != null)
                 {
-                    body["unit"] = ExpressionConverter.ConvertO(bodyunit);
+                    body["unit"] = ExpressionConverter.ConvertO(__workflow_bodyunit);
                     bodypropCount++;
                 }
 
@@ -130,30 +130,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tago
 
     public class TagoTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildDataTrigger))]
-        public IBodyWorkflowTrigger<PostDataResponse> DataTrigger([WorkflowExpression] Func<string> device,[WorkflowExpression] Func<string> variable,[WorkflowExpression] Func<conditionInput> condition,[WorkflowExpression] Func<string> value = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PostDataResponse> DataTrigger(Expression<Func<string>> device, Expression<Func<string>> variable, Expression<Func<conditionInput>> condition, Expression<Func<string>> value = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<PostDataResponse> __BuildDataTrigger(WorkflowExpression<string> device,WorkflowExpression<string> variable,WorkflowExpression<conditionInput> condition,WorkflowExpression<string> value = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(device, nameof(device), required: true);
-            WorkflowExpression.Validate(variable, nameof(variable), required: true);
-            WorkflowExpression.Validate(condition, nameof(condition), required: true);
-            WorkflowExpression.Validate(value, nameof(value), required: false);
+            var __workflow_device = device == null ? null : WorkflowExpression.Compile(device);
+            WorkflowExpression.Validate(__workflow_device, nameof(device), required: true);
+            var __workflow_variable = variable == null ? null : WorkflowExpression.Compile(variable);
+            WorkflowExpression.Validate(__workflow_variable, nameof(variable), required: true);
+            var __workflow_condition = condition == null ? null : WorkflowExpression.Compile(condition);
+            WorkflowExpression.Validate(__workflow_condition, nameof(condition), required: true);
+            var __workflow_value = value == null ? null : WorkflowExpression.Compile(value);
+            WorkflowExpression.Validate(__workflow_value, nameof(value), required: false);
             return new DeferredBodyTrigger<PostDataResponse>(() =>
             {
                 var apiCallPath = "/prod/flow";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["device"] = ExpressionConverter.Convert(device);
-                callPayload.Queries["variable"] = ExpressionConverter.Convert(variable);
-                callPayload.Queries["condition"] = ExpressionConverter.Convert(condition);
-                if (value != null)
-                    callPayload.Queries["value"] = ExpressionConverter.Convert(value);
+                callPayload.Queries["device"] = ExpressionConverter.Convert(__workflow_device);
+                callPayload.Queries["variable"] = ExpressionConverter.Convert(__workflow_variable);
+                callPayload.Queries["condition"] = ExpressionConverter.Convert(__workflow_condition);
+                if (__workflow_value != null)
+                    callPayload.Queries["value"] = ExpressionConverter.Convert(__workflow_value);
                 var body = new JObject();
                 var bodypropCount = 0;
                 var configObject = new JObject();

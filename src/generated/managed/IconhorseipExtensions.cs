@@ -1,30 +1,23 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iconhorseip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class IconhorseipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iconhorseip")]
-        [WorkflowExpressionFactory(nameof(__BuildFaviconGet))]
-        public IBodyWorkflowAction<JToken> FaviconGet([WorkflowExpression] Func<string> domain)
+        public IBodyWorkflowAction<JToken> FaviconGet(Expression<Func<string>> domain)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildFaviconGet(WorkflowExpression<string> domain)
-        {
-            WorkflowExpression.Validate(domain, nameof(domain), required: true);
+            var __workflow_domain = domain == null ? null : WorkflowExpression.Compile(domain);
+            WorkflowExpression.Validate(__workflow_domain, nameof(domain), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/icon/{0}", ExpressionConverter.ConvertWithUrlEncoding(domain, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/icon/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_domain, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<JToken>(callPayload);

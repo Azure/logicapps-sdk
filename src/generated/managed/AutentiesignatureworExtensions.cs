@@ -1,89 +1,84 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class AutentiesignatureworActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autentiesignaturewor")]
-        [WorkflowExpressionFactory(nameof(__BuildListDocuments))]
-        public IBodyWorkflowAction<ListDocumentsResponseItem[]> ListDocuments([WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<sortInput> sort = null, [WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<string> modifiedAfter = null, [WorkflowExpression] Func<string> modifiedBefore = null)
+        public IBodyWorkflowAction<ListDocumentsResponseItem[]> ListDocuments(Expression<Func<statusInput>> status = null, Expression<Func<sortInput>> sort = null, Expression<Func<string>> limit = null, Expression<Func<string>> modifiedAfter = null, Expression<Func<string>> modifiedBefore = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListDocumentsResponseItem[]> __BuildListDocuments(WorkflowExpression<statusInput> status = null, WorkflowExpression<sortInput> sort = null, WorkflowExpression<string> limit = null, WorkflowExpression<string> modifiedAfter = null, WorkflowExpression<string> modifiedBefore = null)
-        {
-            WorkflowExpression.Validate(status, nameof(status), required: false);
-            WorkflowExpression.Validate(sort, nameof(sort), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(modifiedAfter, nameof(modifiedAfter), required: false);
-            WorkflowExpression.Validate(modifiedBefore, nameof(modifiedBefore), required: false);
+            var __workflow_status = status == null ? null : WorkflowExpression.Compile(status);
+            WorkflowExpression.Validate(__workflow_status, nameof(status), required: false);
+            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
+            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_modifiedAfter = modifiedAfter == null ? null : WorkflowExpression.Compile(modifiedAfter);
+            WorkflowExpression.Validate(__workflow_modifiedAfter, nameof(modifiedAfter), required: false);
+            var __workflow_modifiedBefore = modifiedBefore == null ? null : WorkflowExpression.Compile(modifiedBefore);
+            WorkflowExpression.Validate(__workflow_modifiedBefore, nameof(modifiedBefore), required: false);
             return new DeferredBodyAction<ListDocumentsResponseItem[]>(() =>
             {
                 var apiCallPath = "/document-processes";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (status != null)
-                    callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-                if (sort != null)
-                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (modifiedAfter != null)
-                    callPayload.Queries["modifiedAfter"] = ExpressionConverter.Convert(modifiedAfter);
-                if (modifiedBefore != null)
-                    callPayload.Queries["modifiedBefore"] = ExpressionConverter.Convert(modifiedBefore);
+                if (__workflow_status != null)
+                    callPayload.Queries["status"] = ExpressionConverter.Convert(__workflow_status);
+                if (__workflow_sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_modifiedAfter != null)
+                    callPayload.Queries["modifiedAfter"] = ExpressionConverter.Convert(__workflow_modifiedAfter);
+                if (__workflow_modifiedBefore != null)
+                    callPayload.Queries["modifiedBefore"] = ExpressionConverter.Convert(__workflow_modifiedBefore);
                 return new ApiConnectionAction<ListDocumentsResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autentiesignaturewor")]
-        [WorkflowExpressionFactory(nameof(__BuildDocumentProcessParticipants))]
-        public IBodyWorkflowAction<DocumentProcessParticipantsResponse> DocumentProcessParticipants([WorkflowExpression] Func<string> documentProcessId, [WorkflowExpression] Func<bodyparticipantTypeInput> bodyparticipantType, [WorkflowExpression] Func<bodyroleTypeInput> bodyroleType = null, [WorkflowExpression] Func<string> bodysignatureType = null, [WorkflowExpression] Func<object> bodyparticipantData = null)
+        public IBodyWorkflowAction<DocumentProcessParticipantsResponse> DocumentProcessParticipants(Expression<Func<string>> documentProcessId, Expression<Func<bodyparticipantTypeInput>> bodyparticipantType, Expression<Func<bodyroleTypeInput>> bodyroleType = null, Expression<Func<string>> bodysignatureType = null, Expression<Func<object>> bodyparticipantData = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DocumentProcessParticipantsResponse> __BuildDocumentProcessParticipants(WorkflowExpression<string> documentProcessId, WorkflowExpression<bodyparticipantTypeInput> bodyparticipantType, WorkflowExpression<bodyroleTypeInput> bodyroleType = null, WorkflowExpression<string> bodysignatureType = null, WorkflowExpression<object> bodyparticipantData = null)
-        {
-            WorkflowExpression.Validate(documentProcessId, nameof(documentProcessId), required: true);
-            WorkflowExpression.Validate(bodyparticipantType, nameof(bodyparticipantType), required: true);
-            WorkflowExpression.Validate(bodyroleType, nameof(bodyroleType), required: false);
-            WorkflowExpression.Validate(bodysignatureType, nameof(bodysignatureType), required: false);
-            WorkflowExpression.Validate(bodyparticipantData, nameof(bodyparticipantData), required: false);
+            var __workflow_documentProcessId = documentProcessId == null ? null : WorkflowExpression.Compile(documentProcessId);
+            WorkflowExpression.Validate(__workflow_documentProcessId, nameof(documentProcessId), required: true);
+            var __workflow_bodyparticipantType = bodyparticipantType == null ? null : WorkflowExpression.Compile(bodyparticipantType);
+            WorkflowExpression.Validate(__workflow_bodyparticipantType, nameof(bodyparticipantType), required: true);
+            var __workflow_bodyroleType = bodyroleType == null ? null : WorkflowExpression.Compile(bodyroleType);
+            WorkflowExpression.Validate(__workflow_bodyroleType, nameof(bodyroleType), required: false);
+            var __workflow_bodysignatureType = bodysignatureType == null ? null : WorkflowExpression.Compile(bodysignatureType);
+            WorkflowExpression.Validate(__workflow_bodysignatureType, nameof(bodysignatureType), required: false);
+            var __workflow_bodyparticipantData = bodyparticipantData == null ? null : WorkflowExpression.Compile(bodyparticipantData);
+            WorkflowExpression.Validate(__workflow_bodyparticipantData, nameof(bodyparticipantData), required: false);
             return new DeferredBodyAction<DocumentProcessParticipantsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document-processes/{0}/parties", ExpressionConverter.ConvertWithUrlEncoding(documentProcessId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document-processes/{0}/parties", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentProcessId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["participantType"] = ExpressionConverter.ConvertO(bodyparticipantType);
-                if (bodyroleType != null)
+                body["participantType"] = ExpressionConverter.ConvertO(__workflow_bodyparticipantType);
+                if (__workflow_bodyroleType != null)
                 {
-                    body["roleType"] = ExpressionConverter.ConvertO(bodyroleType);
+                    body["roleType"] = ExpressionConverter.ConvertO(__workflow_bodyroleType);
                     bodypropCount++;
                 }
 
-                if (bodysignatureType != null)
+                if (__workflow_bodysignatureType != null)
                 {
-                    body["signatureType"] = ExpressionConverter.ConvertO(bodysignatureType);
+                    body["signatureType"] = ExpressionConverter.ConvertO(__workflow_bodysignatureType);
                     bodypropCount++;
                 }
 
-                if (bodyparticipantData != null)
+                if (__workflow_bodyparticipantData != null)
                 {
-                    body["participantData"] = ExpressionConverter.ConvertO(bodyparticipantData);
+                    body["participantData"] = ExpressionConverter.ConvertO(__workflow_bodyparticipantData);
                     bodypropCount++;
                 }
 
@@ -97,20 +92,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autentiesignaturewor")]
-        [WorkflowExpressionFactory(nameof(__BuildAddFile))]
-        public IBodyWorkflowAction<AddFileResponse> AddFile([WorkflowExpression] Func<string> documentProcessId, [WorkflowExpression] Func<object> file)
+        public IBodyWorkflowAction<AddFileResponse> AddFile(Expression<Func<string>> documentProcessId, Expression<Func<object>> file)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AddFileResponse> __BuildAddFile(WorkflowExpression<string> documentProcessId, WorkflowExpression<object> file)
-        {
-            WorkflowExpression.Validate(documentProcessId, nameof(documentProcessId), required: true);
-            WorkflowExpression.Validate(file, nameof(file), required: true);
+            var __workflow_documentProcessId = documentProcessId == null ? null : WorkflowExpression.Compile(documentProcessId);
+            WorkflowExpression.Validate(__workflow_documentProcessId, nameof(documentProcessId), required: true);
+            var __workflow_file = file == null ? null : WorkflowExpression.Compile(file);
+            WorkflowExpression.Validate(__workflow_file, nameof(file), required: true);
             return new DeferredBodyAction<AddFileResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document-processes/{0}/files", ExpressionConverter.ConvertWithUrlEncoding(documentProcessId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document-processes/{0}/files", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentProcessId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<AddFileResponse>(callPayload);
@@ -118,50 +108,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autentiesignaturewor")]
-        [WorkflowExpressionFactory(nameof(__BuildGetFilesInfo))]
-        public IBodyWorkflowAction<GetFilesInfoResponse> GetFilesInfo([WorkflowExpression] Func<string> documentProcessId, [WorkflowExpression] Func<filePurposeInput> filePurpose = null)
+        public IBodyWorkflowAction<GetFilesInfoResponse> GetFilesInfo(Expression<Func<string>> documentProcessId, Expression<Func<filePurposeInput>> filePurpose = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetFilesInfoResponse> __BuildGetFilesInfo(WorkflowExpression<string> documentProcessId, WorkflowExpression<filePurposeInput> filePurpose = null)
-        {
-            WorkflowExpression.Validate(documentProcessId, nameof(documentProcessId), required: true);
-            WorkflowExpression.Validate(filePurpose, nameof(filePurpose), required: false);
+            var __workflow_documentProcessId = documentProcessId == null ? null : WorkflowExpression.Compile(documentProcessId);
+            WorkflowExpression.Validate(__workflow_documentProcessId, nameof(documentProcessId), required: true);
+            var __workflow_filePurpose = filePurpose == null ? null : WorkflowExpression.Compile(filePurpose);
+            WorkflowExpression.Validate(__workflow_filePurpose, nameof(filePurpose), required: false);
             return new DeferredBodyAction<GetFilesInfoResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document-processes/{0}/files", ExpressionConverter.ConvertWithUrlEncoding(documentProcessId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document-processes/{0}/files", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentProcessId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (filePurpose != null)
-                    callPayload.Queries["filePurpose"] = ExpressionConverter.Convert(filePurpose);
+                if (__workflow_filePurpose != null)
+                    callPayload.Queries["filePurpose"] = ExpressionConverter.Convert(__workflow_filePurpose);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 return new ApiConnectionAction<GetFilesInfoResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autentiesignaturewor")]
-        [WorkflowExpressionFactory(nameof(__BuildActionsAvailability))]
-        public IBodyWorkflowAction<ActionsAvailabilityResponse> ActionsAvailability([WorkflowExpression] Func<string> documentProcessId, [WorkflowExpression] Func<bodyeventTypeInput> bodyeventType)
+        public IBodyWorkflowAction<ActionsAvailabilityResponse> ActionsAvailability(Expression<Func<string>> documentProcessId, Expression<Func<bodyeventTypeInput>> bodyeventType)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ActionsAvailabilityResponse> __BuildActionsAvailability(WorkflowExpression<string> documentProcessId, WorkflowExpression<bodyeventTypeInput> bodyeventType)
-        {
-            WorkflowExpression.Validate(documentProcessId, nameof(documentProcessId), required: true);
-            WorkflowExpression.Validate(bodyeventType, nameof(bodyeventType), required: true);
+            var __workflow_documentProcessId = documentProcessId == null ? null : WorkflowExpression.Compile(documentProcessId);
+            WorkflowExpression.Validate(__workflow_documentProcessId, nameof(documentProcessId), required: true);
+            var __workflow_bodyeventType = bodyeventType == null ? null : WorkflowExpression.Compile(bodyeventType);
+            WorkflowExpression.Validate(__workflow_bodyeventType, nameof(bodyeventType), required: true);
             return new DeferredBodyAction<ActionsAvailabilityResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document-processes/{0}/actions", ExpressionConverter.ConvertWithUrlEncoding(documentProcessId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document-processes/{0}/actions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentProcessId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["event_type"] = ExpressionConverter.ConvertO(bodyeventType);
+                body["event_type"] = ExpressionConverter.ConvertO(__workflow_bodyeventType);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -172,19 +152,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autentiesignaturewor")]
-        [WorkflowExpressionFactory(nameof(__BuildGetById))]
-        public IBodyWorkflowAction<GetByIdResponse> GetById([WorkflowExpression] Func<string> documentProcessId)
+        public IBodyWorkflowAction<GetByIdResponse> GetById(Expression<Func<string>> documentProcessId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetByIdResponse> __BuildGetById(WorkflowExpression<string> documentProcessId)
-        {
-            WorkflowExpression.Validate(documentProcessId, nameof(documentProcessId), required: true);
+            var __workflow_documentProcessId = documentProcessId == null ? null : WorkflowExpression.Compile(documentProcessId);
+            WorkflowExpression.Validate(__workflow_documentProcessId, nameof(documentProcessId), required: true);
             return new DeferredBodyAction<GetByIdResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document-processes/{0}", ExpressionConverter.ConvertWithUrlEncoding(documentProcessId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document-processes/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentProcessId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetByIdResponse>(callPayload);
@@ -192,20 +166,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autentiesignaturewor")]
-        [WorkflowExpressionFactory(nameof(__BuildDownloadFile))]
-        public IWorkflowAction DownloadFile([WorkflowExpression] Func<string> documentProcessId, [WorkflowExpression] Func<string> fileId)
+        public IWorkflowAction DownloadFile(Expression<Func<string>> documentProcessId, Expression<Func<string>> fileId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDownloadFile(WorkflowExpression<string> documentProcessId, WorkflowExpression<string> fileId)
-        {
-            WorkflowExpression.Validate(documentProcessId, nameof(documentProcessId), required: true);
-            WorkflowExpression.Validate(fileId, nameof(fileId), required: true);
+            var __workflow_documentProcessId = documentProcessId == null ? null : WorkflowExpression.Compile(documentProcessId);
+            WorkflowExpression.Validate(__workflow_documentProcessId, nameof(documentProcessId), required: true);
+            var __workflow_fileId = fileId == null ? null : WorkflowExpression.Compile(fileId);
+            WorkflowExpression.Validate(__workflow_fileId, nameof(fileId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document-processes/{0}/files/{1}/content", ExpressionConverter.ConvertWithUrlEncoding(documentProcessId, 1), ExpressionConverter.ConvertWithUrlEncoding(fileId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document-processes/{0}/files/{1}/content", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentProcessId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fileId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -213,27 +182,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autentiesignaturewor")]
-        [WorkflowExpressionFactory(nameof(__BuildAddTag))]
-        public IWorkflowAction AddTag([WorkflowExpression] Func<string> documentProcessId, [WorkflowExpression] Func<string> bodyid = null)
+        public IWorkflowAction AddTag(Expression<Func<string>> documentProcessId, Expression<Func<string>> bodyid = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildAddTag(WorkflowExpression<string> documentProcessId, WorkflowExpression<string> bodyid = null)
-        {
-            WorkflowExpression.Validate(documentProcessId, nameof(documentProcessId), required: true);
-            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: false);
+            var __workflow_documentProcessId = documentProcessId == null ? null : WorkflowExpression.Compile(documentProcessId);
+            WorkflowExpression.Validate(__workflow_documentProcessId, nameof(documentProcessId), required: true);
+            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
+            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document-processes/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(documentProcessId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document-processes/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentProcessId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyid != null)
+                if (__workflow_bodyid != null)
                 {
-                    body["id"] = ExpressionConverter.ConvertO(bodyid);
+                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
                     bodypropCount++;
                 }
 
@@ -249,30 +213,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
 
     public class AutentiesignatureworTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildDocumentChange))]
-        public IWorkflowTrigger DocumentChange([WorkflowExpression] Func<string> bodycallbackAdapterId,[WorkflowExpression] Func<string> responseVariant = null,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger DocumentChange(Expression<Func<string>> bodycallbackAdapterId, Expression<Func<string>> responseVariant = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildDocumentChange(WorkflowExpression<string> bodycallbackAdapterId,WorkflowExpression<string> responseVariant = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodycallbackAdapterId, nameof(bodycallbackAdapterId), required: true);
-            WorkflowExpression.Validate(responseVariant, nameof(responseVariant), required: false);
+            var __workflow_bodycallbackAdapterId = bodycallbackAdapterId == null ? null : WorkflowExpression.Compile(bodycallbackAdapterId);
+            WorkflowExpression.Validate(__workflow_bodycallbackAdapterId, nameof(bodycallbackAdapterId), required: true);
+            var __workflow_responseVariant = responseVariant == null ? null : WorkflowExpression.Compile(responseVariant);
+            WorkflowExpression.Validate(__workflow_responseVariant, nameof(responseVariant), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/applications/callbacks";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["responseVariant"] = Convert.ToString("microsoft_power_automate");
-                if (responseVariant != null)
-                    callPayload.Queries["responseVariant"] = ExpressionConverter.Convert(responseVariant);
+                if (__workflow_responseVariant != null)
+                    callPayload.Queries["responseVariant"] = ExpressionConverter.Convert(__workflow_responseVariant);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["callbackAdapterId"] = ExpressionConverter.ConvertO(bodycallbackAdapterId);
+                body["callbackAdapterId"] = ExpressionConverter.ConvertO(__workflow_bodycallbackAdapterId);
                 var callbackParametersObject = new JObject();
                 var callbackParametersObjectpropCount = 0;
                 callbackParametersObject["callbackUrl"] = "#{listCallbackUrl()}";

@@ -1,100 +1,98 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class SeismicworkspaceActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        [WorkflowExpressionFactory(nameof(__BuildGetWorkspaceItemComments))]
-        public IBodyWorkflowAction<SeismicPagingWorkspaceCommentWorkspaceComment> GetWorkspaceItemComments([WorkflowExpression] Func<string> workspaceContentId, [WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> versionId = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null)
+        public IBodyWorkflowAction<SeismicPagingWorkspaceCommentWorkspaceComment> GetWorkspaceItemComments(Expression<Func<string>> workspaceContentId, Expression<Func<string>> spaceId, Expression<Func<string>> versionId = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicPagingWorkspaceCommentWorkspaceComment> __BuildGetWorkspaceItemComments(WorkflowExpression<string> workspaceContentId, WorkflowExpression<string> spaceId, WorkflowExpression<string> versionId = null, WorkflowExpression<int> offset = null, WorkflowExpression<int> limit = null)
-        {
-            WorkflowExpression.Validate(workspaceContentId, nameof(workspaceContentId), required: true);
-            WorkflowExpression.Validate(spaceId, nameof(spaceId), required: true);
-            WorkflowExpression.Validate(versionId, nameof(versionId), required: false);
-            WorkflowExpression.Validate(offset, nameof(offset), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
+            var __workflow_workspaceContentId = workspaceContentId == null ? null : WorkflowExpression.Compile(workspaceContentId);
+            WorkflowExpression.Validate(__workflow_workspaceContentId, nameof(workspaceContentId), required: true);
+            var __workflow_spaceId = spaceId == null ? null : WorkflowExpression.Compile(spaceId);
+            WorkflowExpression.Validate(__workflow_spaceId, nameof(spaceId), required: true);
+            var __workflow_versionId = versionId == null ? null : WorkflowExpression.Compile(versionId);
+            WorkflowExpression.Validate(__workflow_versionId, nameof(versionId), required: false);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
             return new DeferredBodyAction<SeismicPagingWorkspaceCommentWorkspaceComment>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/spaces/{0}/items/{1}/comments", ExpressionConverter.ConvertWithUrlEncoding(spaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(workspaceContentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/spaces/{0}/items/{1}/comments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_spaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceContentId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (versionId != null)
-                    callPayload.Queries["versionId"] = ExpressionConverter.Convert(versionId);
-                if (offset != null)
-                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (__workflow_versionId != null)
+                    callPayload.Queries["versionId"] = ExpressionConverter.Convert(__workflow_versionId);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction<SeismicPagingWorkspaceCommentWorkspaceComment>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        [WorkflowExpressionFactory(nameof(__BuildAddWorkspaceItemComments))]
-        public IBodyWorkflowAction<SeismicWorkspaceCommentsWorkspaceAddCommentResponse> AddWorkspaceItemComments([WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> workspaceContentId, [WorkflowExpression] Func<string> workspaceVersionId, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<bodyannotationtypeInput> bodyannotationtype = null, [WorkflowExpression] Func<int> bodyannotationpage = null, [WorkflowExpression] Func<string> bodyannotationcolor = null, [WorkflowExpression] Func<SeismicPublicIntegrationApiOriginApiClientModelsContentManagerPointServiceModel[]> bodyannotationpoints = null)
+        public IBodyWorkflowAction<SeismicWorkspaceCommentsWorkspaceAddCommentResponse> AddWorkspaceItemComments(Expression<Func<string>> spaceId, Expression<Func<string>> workspaceContentId, Expression<Func<string>> workspaceVersionId, Expression<Func<string>> bodytext = null, Expression<Func<bodyannotationtypeInput>> bodyannotationtype = null, Expression<Func<int>> bodyannotationpage = null, Expression<Func<string>> bodyannotationcolor = null, Expression<Func<SeismicPublicIntegrationApiOriginApiClientModelsContentManagerPointServiceModel[]>> bodyannotationpoints = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicWorkspaceCommentsWorkspaceAddCommentResponse> __BuildAddWorkspaceItemComments(WorkflowExpression<string> spaceId, WorkflowExpression<string> workspaceContentId, WorkflowExpression<string> workspaceVersionId, WorkflowExpression<string> bodytext = null, WorkflowExpression<bodyannotationtypeInput> bodyannotationtype = null, WorkflowExpression<int> bodyannotationpage = null, WorkflowExpression<string> bodyannotationcolor = null, WorkflowExpression<SeismicPublicIntegrationApiOriginApiClientModelsContentManagerPointServiceModel[]> bodyannotationpoints = null)
-        {
-            WorkflowExpression.Validate(spaceId, nameof(spaceId), required: true);
-            WorkflowExpression.Validate(workspaceContentId, nameof(workspaceContentId), required: true);
-            WorkflowExpression.Validate(workspaceVersionId, nameof(workspaceVersionId), required: true);
-            WorkflowExpression.Validate(bodytext, nameof(bodytext), required: false);
-            WorkflowExpression.Validate(bodyannotationtype, nameof(bodyannotationtype), required: false);
-            WorkflowExpression.Validate(bodyannotationpage, nameof(bodyannotationpage), required: false);
-            WorkflowExpression.Validate(bodyannotationcolor, nameof(bodyannotationcolor), required: false);
-            WorkflowExpression.Validate(bodyannotationpoints, nameof(bodyannotationpoints), required: false);
+            var __workflow_spaceId = spaceId == null ? null : WorkflowExpression.Compile(spaceId);
+            WorkflowExpression.Validate(__workflow_spaceId, nameof(spaceId), required: true);
+            var __workflow_workspaceContentId = workspaceContentId == null ? null : WorkflowExpression.Compile(workspaceContentId);
+            WorkflowExpression.Validate(__workflow_workspaceContentId, nameof(workspaceContentId), required: true);
+            var __workflow_workspaceVersionId = workspaceVersionId == null ? null : WorkflowExpression.Compile(workspaceVersionId);
+            WorkflowExpression.Validate(__workflow_workspaceVersionId, nameof(workspaceVersionId), required: true);
+            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
+            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: false);
+            var __workflow_bodyannotationtype = bodyannotationtype == null ? null : WorkflowExpression.Compile(bodyannotationtype);
+            WorkflowExpression.Validate(__workflow_bodyannotationtype, nameof(bodyannotationtype), required: false);
+            var __workflow_bodyannotationpage = bodyannotationpage == null ? null : WorkflowExpression.Compile(bodyannotationpage);
+            WorkflowExpression.Validate(__workflow_bodyannotationpage, nameof(bodyannotationpage), required: false);
+            var __workflow_bodyannotationcolor = bodyannotationcolor == null ? null : WorkflowExpression.Compile(bodyannotationcolor);
+            WorkflowExpression.Validate(__workflow_bodyannotationcolor, nameof(bodyannotationcolor), required: false);
+            var __workflow_bodyannotationpoints = bodyannotationpoints == null ? null : WorkflowExpression.Compile(bodyannotationpoints);
+            WorkflowExpression.Validate(__workflow_bodyannotationpoints, nameof(bodyannotationpoints), required: false);
             return new DeferredBodyAction<SeismicWorkspaceCommentsWorkspaceAddCommentResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/spaces/{0}/items/{1}/versions/{2}/comments", ExpressionConverter.ConvertWithUrlEncoding(spaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(workspaceContentId, 1), ExpressionConverter.ConvertWithUrlEncoding(workspaceVersionId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/spaces/{0}/items/{1}/versions/{2}/comments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_spaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceContentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceVersionId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodytext != null)
+                if (__workflow_bodytext != null)
                 {
-                    body["text"] = ExpressionConverter.ConvertO(bodytext);
+                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
                     bodypropCount++;
                 }
 
                 var annotationObject = new JObject();
                 var annotationObjectpropCount = 0;
-                if (bodyannotationtype != null)
+                if (__workflow_bodyannotationtype != null)
                 {
-                    annotationObject["type"] = ExpressionConverter.ConvertO(bodyannotationtype);
+                    annotationObject["type"] = ExpressionConverter.ConvertO(__workflow_bodyannotationtype);
                     annotationObjectpropCount++;
                 }
 
-                if (bodyannotationpage != null)
+                if (__workflow_bodyannotationpage != null)
                 {
-                    annotationObject["page"] = ExpressionConverter.ConvertO(bodyannotationpage);
+                    annotationObject["page"] = ExpressionConverter.ConvertO(__workflow_bodyannotationpage);
                     annotationObjectpropCount++;
                 }
 
-                if (bodyannotationcolor != null)
+                if (__workflow_bodyannotationcolor != null)
                 {
-                    annotationObject["color"] = ExpressionConverter.ConvertO(bodyannotationcolor);
+                    annotationObject["color"] = ExpressionConverter.ConvertO(__workflow_bodyannotationcolor);
                     annotationObjectpropCount++;
                 }
 
-                if (bodyannotationpoints != null)
+                if (__workflow_bodyannotationpoints != null)
                 {
-                    annotationObject["points"] = ExpressionConverter.ConvertO(bodyannotationpoints);
+                    annotationObject["points"] = ExpressionConverter.ConvertO(__workflow_bodyannotationpoints);
                     annotationObjectpropCount++;
                 }
 
@@ -114,30 +112,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        [WorkflowExpressionFactory(nameof(__BuildAddReplyToComment))]
-        public IBodyWorkflowAction<SeismicWorkspaceCommentsWorkspaceReplyCommentResponse> AddReplyToComment([WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> workspaceContentId, [WorkflowExpression] Func<string> workspaceVersionId, [WorkflowExpression] Func<string> commentId, [WorkflowExpression] Func<string> bodytext = null)
+        public IBodyWorkflowAction<SeismicWorkspaceCommentsWorkspaceReplyCommentResponse> AddReplyToComment(Expression<Func<string>> spaceId, Expression<Func<string>> workspaceContentId, Expression<Func<string>> workspaceVersionId, Expression<Func<string>> commentId, Expression<Func<string>> bodytext = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicWorkspaceCommentsWorkspaceReplyCommentResponse> __BuildAddReplyToComment(WorkflowExpression<string> spaceId, WorkflowExpression<string> workspaceContentId, WorkflowExpression<string> workspaceVersionId, WorkflowExpression<string> commentId, WorkflowExpression<string> bodytext = null)
-        {
-            WorkflowExpression.Validate(spaceId, nameof(spaceId), required: true);
-            WorkflowExpression.Validate(workspaceContentId, nameof(workspaceContentId), required: true);
-            WorkflowExpression.Validate(workspaceVersionId, nameof(workspaceVersionId), required: true);
-            WorkflowExpression.Validate(commentId, nameof(commentId), required: true);
-            WorkflowExpression.Validate(bodytext, nameof(bodytext), required: false);
+            var __workflow_spaceId = spaceId == null ? null : WorkflowExpression.Compile(spaceId);
+            WorkflowExpression.Validate(__workflow_spaceId, nameof(spaceId), required: true);
+            var __workflow_workspaceContentId = workspaceContentId == null ? null : WorkflowExpression.Compile(workspaceContentId);
+            WorkflowExpression.Validate(__workflow_workspaceContentId, nameof(workspaceContentId), required: true);
+            var __workflow_workspaceVersionId = workspaceVersionId == null ? null : WorkflowExpression.Compile(workspaceVersionId);
+            WorkflowExpression.Validate(__workflow_workspaceVersionId, nameof(workspaceVersionId), required: true);
+            var __workflow_commentId = commentId == null ? null : WorkflowExpression.Compile(commentId);
+            WorkflowExpression.Validate(__workflow_commentId, nameof(commentId), required: true);
+            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
+            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: false);
             return new DeferredBodyAction<SeismicWorkspaceCommentsWorkspaceReplyCommentResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/spaces/{0}/items/{1}/versions/{2}/comments/{3}/reply", ExpressionConverter.ConvertWithUrlEncoding(spaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(workspaceContentId, 1), ExpressionConverter.ConvertWithUrlEncoding(workspaceVersionId, 1), ExpressionConverter.ConvertWithUrlEncoding(commentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/spaces/{0}/items/{1}/versions/{2}/comments/{3}/reply", ExpressionConverter.ConvertWithUrlEncoding(__workflow_spaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceContentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceVersionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_commentId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodytext != null)
+                if (__workflow_bodytext != null)
                 {
-                    body["text"] = ExpressionConverter.ConvertO(bodytext);
+                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
                     bodypropCount++;
                 }
 
@@ -151,22 +147,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteWorkspaceItemComment))]
-        public IWorkflowAction DeleteWorkspaceItemComment([WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> workspaceContentId, [WorkflowExpression] Func<string> workspaceVersionId, [WorkflowExpression] Func<string> commentId)
+        public IWorkflowAction DeleteWorkspaceItemComment(Expression<Func<string>> spaceId, Expression<Func<string>> workspaceContentId, Expression<Func<string>> workspaceVersionId, Expression<Func<string>> commentId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDeleteWorkspaceItemComment(WorkflowExpression<string> spaceId, WorkflowExpression<string> workspaceContentId, WorkflowExpression<string> workspaceVersionId, WorkflowExpression<string> commentId)
-        {
-            WorkflowExpression.Validate(spaceId, nameof(spaceId), required: true);
-            WorkflowExpression.Validate(workspaceContentId, nameof(workspaceContentId), required: true);
-            WorkflowExpression.Validate(workspaceVersionId, nameof(workspaceVersionId), required: true);
-            WorkflowExpression.Validate(commentId, nameof(commentId), required: true);
+            var __workflow_spaceId = spaceId == null ? null : WorkflowExpression.Compile(spaceId);
+            WorkflowExpression.Validate(__workflow_spaceId, nameof(spaceId), required: true);
+            var __workflow_workspaceContentId = workspaceContentId == null ? null : WorkflowExpression.Compile(workspaceContentId);
+            WorkflowExpression.Validate(__workflow_workspaceContentId, nameof(workspaceContentId), required: true);
+            var __workflow_workspaceVersionId = workspaceVersionId == null ? null : WorkflowExpression.Compile(workspaceVersionId);
+            WorkflowExpression.Validate(__workflow_workspaceVersionId, nameof(workspaceVersionId), required: true);
+            var __workflow_commentId = commentId == null ? null : WorkflowExpression.Compile(commentId);
+            WorkflowExpression.Validate(__workflow_commentId, nameof(commentId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/spaces/{0}/items/{1}/versions/{2}/comments/{3}", ExpressionConverter.ConvertWithUrlEncoding(spaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(workspaceContentId, 1), ExpressionConverter.ConvertWithUrlEncoding(workspaceVersionId, 1), ExpressionConverter.ConvertWithUrlEncoding(commentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/spaces/{0}/items/{1}/versions/{2}/comments/{3}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_spaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceContentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceVersionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_commentId, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -174,23 +167,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteWorkspaceItemCommentsReply))]
-        public IWorkflowAction DeleteWorkspaceItemCommentsReply([WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> workspaceContentId, [WorkflowExpression] Func<string> workspaceVersionId, [WorkflowExpression] Func<string> commentId, [WorkflowExpression] Func<string> replyId)
+        public IWorkflowAction DeleteWorkspaceItemCommentsReply(Expression<Func<string>> spaceId, Expression<Func<string>> workspaceContentId, Expression<Func<string>> workspaceVersionId, Expression<Func<string>> commentId, Expression<Func<string>> replyId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDeleteWorkspaceItemCommentsReply(WorkflowExpression<string> spaceId, WorkflowExpression<string> workspaceContentId, WorkflowExpression<string> workspaceVersionId, WorkflowExpression<string> commentId, WorkflowExpression<string> replyId)
-        {
-            WorkflowExpression.Validate(spaceId, nameof(spaceId), required: true);
-            WorkflowExpression.Validate(workspaceContentId, nameof(workspaceContentId), required: true);
-            WorkflowExpression.Validate(workspaceVersionId, nameof(workspaceVersionId), required: true);
-            WorkflowExpression.Validate(commentId, nameof(commentId), required: true);
-            WorkflowExpression.Validate(replyId, nameof(replyId), required: true);
+            var __workflow_spaceId = spaceId == null ? null : WorkflowExpression.Compile(spaceId);
+            WorkflowExpression.Validate(__workflow_spaceId, nameof(spaceId), required: true);
+            var __workflow_workspaceContentId = workspaceContentId == null ? null : WorkflowExpression.Compile(workspaceContentId);
+            WorkflowExpression.Validate(__workflow_workspaceContentId, nameof(workspaceContentId), required: true);
+            var __workflow_workspaceVersionId = workspaceVersionId == null ? null : WorkflowExpression.Compile(workspaceVersionId);
+            WorkflowExpression.Validate(__workflow_workspaceVersionId, nameof(workspaceVersionId), required: true);
+            var __workflow_commentId = commentId == null ? null : WorkflowExpression.Compile(commentId);
+            WorkflowExpression.Validate(__workflow_commentId, nameof(commentId), required: true);
+            var __workflow_replyId = replyId == null ? null : WorkflowExpression.Compile(replyId);
+            WorkflowExpression.Validate(__workflow_replyId, nameof(replyId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/spaces/{0}/items/{1}/versions/{2}/comments/{3}/reply/{4}", ExpressionConverter.ConvertWithUrlEncoding(spaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(workspaceContentId, 1), ExpressionConverter.ConvertWithUrlEncoding(workspaceVersionId, 1), ExpressionConverter.ConvertWithUrlEncoding(commentId, 1), ExpressionConverter.ConvertWithUrlEncoding(replyId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/spaces/{0}/items/{1}/versions/{2}/comments/{3}/reply/{4}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_spaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceContentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceVersionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_commentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_replyId, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -198,22 +189,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        [WorkflowExpressionFactory(nameof(__BuildResolveWorkspaceItemComment))]
-        public IWorkflowAction ResolveWorkspaceItemComment([WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> workspaceContentId, [WorkflowExpression] Func<string> workspaceVersionId, [WorkflowExpression] Func<string> commentId)
+        public IWorkflowAction ResolveWorkspaceItemComment(Expression<Func<string>> spaceId, Expression<Func<string>> workspaceContentId, Expression<Func<string>> workspaceVersionId, Expression<Func<string>> commentId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildResolveWorkspaceItemComment(WorkflowExpression<string> spaceId, WorkflowExpression<string> workspaceContentId, WorkflowExpression<string> workspaceVersionId, WorkflowExpression<string> commentId)
-        {
-            WorkflowExpression.Validate(spaceId, nameof(spaceId), required: true);
-            WorkflowExpression.Validate(workspaceContentId, nameof(workspaceContentId), required: true);
-            WorkflowExpression.Validate(workspaceVersionId, nameof(workspaceVersionId), required: true);
-            WorkflowExpression.Validate(commentId, nameof(commentId), required: true);
+            var __workflow_spaceId = spaceId == null ? null : WorkflowExpression.Compile(spaceId);
+            WorkflowExpression.Validate(__workflow_spaceId, nameof(spaceId), required: true);
+            var __workflow_workspaceContentId = workspaceContentId == null ? null : WorkflowExpression.Compile(workspaceContentId);
+            WorkflowExpression.Validate(__workflow_workspaceContentId, nameof(workspaceContentId), required: true);
+            var __workflow_workspaceVersionId = workspaceVersionId == null ? null : WorkflowExpression.Compile(workspaceVersionId);
+            WorkflowExpression.Validate(__workflow_workspaceVersionId, nameof(workspaceVersionId), required: true);
+            var __workflow_commentId = commentId == null ? null : WorkflowExpression.Compile(commentId);
+            WorkflowExpression.Validate(__workflow_commentId, nameof(commentId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/spaces/{0}/items/{1}/versions/{2}/comments/{3}/resolve", ExpressionConverter.ConvertWithUrlEncoding(spaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(workspaceContentId, 1), ExpressionConverter.ConvertWithUrlEncoding(workspaceVersionId, 1), ExpressionConverter.ConvertWithUrlEncoding(commentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/spaces/{0}/items/{1}/versions/{2}/comments/{3}/resolve", ExpressionConverter.ConvertWithUrlEncoding(__workflow_spaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceContentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceVersionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_commentId, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -221,17 +209,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateWorkspaceFolder))]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI> CreateWorkspaceFolder([WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyparentFolderId = null)
+        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI> CreateWorkspaceFolder(Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyparentFolderId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI> __BuildCreateWorkspaceFolder(WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyparentFolderId = null)
-        {
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
-            WorkflowExpression.Validate(bodyparentFolderId, nameof(bodyparentFolderId), required: false);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
+            var __workflow_bodyparentFolderId = bodyparentFolderId == null ? null : WorkflowExpression.Compile(bodyparentFolderId);
+            WorkflowExpression.Validate(__workflow_bodyparentFolderId, nameof(bodyparentFolderId), required: false);
             return new DeferredBodyAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI>(() =>
             {
                 var apiCallPath = "/integration/v2/workspace/folders";
@@ -239,15 +222,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyname != null)
+                if (__workflow_bodyname != null)
                 {
-                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
                     bodypropCount++;
                 }
 
-                if (bodyparentFolderId != null)
+                if (__workflow_bodyparentFolderId != null)
                 {
-                    body["parentFolderId"] = ExpressionConverter.ConvertO(bodyparentFolderId);
+                    body["parentFolderId"] = ExpressionConverter.ConvertO(__workflow_bodyparentFolderId);
                     bodypropCount++;
                 }
 
@@ -261,19 +244,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        [WorkflowExpressionFactory(nameof(__BuildGetWorkspaceFolderDetails))]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI> GetWorkspaceFolderDetails([WorkflowExpression] Func<string> workspaceFolderId)
+        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI> GetWorkspaceFolderDetails(Expression<Func<string>> workspaceFolderId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI> __BuildGetWorkspaceFolderDetails(WorkflowExpression<string> workspaceFolderId)
-        {
-            WorkflowExpression.Validate(workspaceFolderId, nameof(workspaceFolderId), required: true);
+            var __workflow_workspaceFolderId = workspaceFolderId == null ? null : WorkflowExpression.Compile(workspaceFolderId);
+            WorkflowExpression.Validate(__workflow_workspaceFolderId, nameof(workspaceFolderId), required: true);
             return new DeferredBodyAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/folders/{0}", ExpressionConverter.ConvertWithUrlEncoding(workspaceFolderId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/folders/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceFolderId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI>(callPayload);
@@ -281,19 +258,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteWorkspaceFolder))]
-        public IWorkflowAction DeleteWorkspaceFolder([WorkflowExpression] Func<string> workspaceFolderId)
+        public IWorkflowAction DeleteWorkspaceFolder(Expression<Func<string>> workspaceFolderId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDeleteWorkspaceFolder(WorkflowExpression<string> workspaceFolderId)
-        {
-            WorkflowExpression.Validate(workspaceFolderId, nameof(workspaceFolderId), required: true);
+            var __workflow_workspaceFolderId = workspaceFolderId == null ? null : WorkflowExpression.Compile(workspaceFolderId);
+            WorkflowExpression.Validate(__workflow_workspaceFolderId, nameof(workspaceFolderId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/folders/{0}", ExpressionConverter.ConvertWithUrlEncoding(workspaceFolderId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/folders/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceFolderId, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -301,34 +272,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateWorkspaceFolder))]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI> UpdateWorkspaceFolder([WorkflowExpression] Func<string> workspaceFolderId, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyparentFolderId = null)
+        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI> UpdateWorkspaceFolder(Expression<Func<string>> workspaceFolderId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyparentFolderId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI> __BuildUpdateWorkspaceFolder(WorkflowExpression<string> workspaceFolderId, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyparentFolderId = null)
-        {
-            WorkflowExpression.Validate(workspaceFolderId, nameof(workspaceFolderId), required: true);
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
-            WorkflowExpression.Validate(bodyparentFolderId, nameof(bodyparentFolderId), required: false);
+            var __workflow_workspaceFolderId = workspaceFolderId == null ? null : WorkflowExpression.Compile(workspaceFolderId);
+            WorkflowExpression.Validate(__workflow_workspaceFolderId, nameof(workspaceFolderId), required: true);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
+            var __workflow_bodyparentFolderId = bodyparentFolderId == null ? null : WorkflowExpression.Compile(bodyparentFolderId);
+            WorkflowExpression.Validate(__workflow_bodyparentFolderId, nameof(bodyparentFolderId), required: false);
             return new DeferredBodyAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/folders/{0}", ExpressionConverter.ConvertWithUrlEncoding(workspaceFolderId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/folders/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceFolderId, 1));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyname != null)
+                if (__workflow_bodyname != null)
                 {
-                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
                     bodypropCount++;
                 }
 
-                if (bodyparentFolderId != null)
+                if (__workflow_bodyparentFolderId != null)
                 {
-                    body["parentFolderId"] = ExpressionConverter.ConvertO(bodyparentFolderId);
+                    body["parentFolderId"] = ExpressionConverter.ConvertO(__workflow_bodyparentFolderId);
                     bodypropCount++;
                 }
 
@@ -342,19 +309,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        [WorkflowExpressionFactory(nameof(__BuildGetWorkspaceFolderItems))]
-        public IBodyWorkflowAction<SeismicCommonWorkSpaceContentManagerWsItemResp> GetWorkspaceFolderItems([WorkflowExpression] Func<string> workspaceFolderId)
+        public IBodyWorkflowAction<SeismicCommonWorkSpaceContentManagerWsItemResp> GetWorkspaceFolderItems(Expression<Func<string>> workspaceFolderId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicCommonWorkSpaceContentManagerWsItemResp> __BuildGetWorkspaceFolderItems(WorkflowExpression<string> workspaceFolderId)
-        {
-            WorkflowExpression.Validate(workspaceFolderId, nameof(workspaceFolderId), required: true);
+            var __workflow_workspaceFolderId = workspaceFolderId == null ? null : WorkflowExpression.Compile(workspaceFolderId);
+            WorkflowExpression.Validate(__workflow_workspaceFolderId, nameof(workspaceFolderId), required: true);
             return new DeferredBodyAction<SeismicCommonWorkSpaceContentManagerWsItemResp>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/folders/{0}/items", ExpressionConverter.ConvertWithUrlEncoding(workspaceFolderId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/folders/{0}/items", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceFolderId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SeismicCommonWorkSpaceContentManagerWsItemResp>(callPayload);
@@ -362,27 +323,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        [WorkflowExpressionFactory(nameof(__BuildCopyWorkspaceFolder))]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI> CopyWorkspaceFolder([WorkflowExpression] Func<string> workspaceFolderId, [WorkflowExpression] Func<string> bodyparentFolderId = null)
+        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI> CopyWorkspaceFolder(Expression<Func<string>> workspaceFolderId, Expression<Func<string>> bodyparentFolderId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI> __BuildCopyWorkspaceFolder(WorkflowExpression<string> workspaceFolderId, WorkflowExpression<string> bodyparentFolderId = null)
-        {
-            WorkflowExpression.Validate(workspaceFolderId, nameof(workspaceFolderId), required: true);
-            WorkflowExpression.Validate(bodyparentFolderId, nameof(bodyparentFolderId), required: false);
+            var __workflow_workspaceFolderId = workspaceFolderId == null ? null : WorkflowExpression.Compile(workspaceFolderId);
+            WorkflowExpression.Validate(__workflow_workspaceFolderId, nameof(workspaceFolderId), required: true);
+            var __workflow_bodyparentFolderId = bodyparentFolderId == null ? null : WorkflowExpression.Compile(bodyparentFolderId);
+            WorkflowExpression.Validate(__workflow_bodyparentFolderId, nameof(bodyparentFolderId), required: false);
             return new DeferredBodyAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/folders/{0}/copy", ExpressionConverter.ConvertWithUrlEncoding(workspaceFolderId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/folders/{0}/copy", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceFolderId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyparentFolderId != null)
+                if (__workflow_bodyparentFolderId != null)
                 {
-                    body["parentFolderId"] = ExpressionConverter.ConvertO(bodyparentFolderId);
+                    body["parentFolderId"] = ExpressionConverter.ConvertO(__workflow_bodyparentFolderId);
                     bodypropCount++;
                 }
 
@@ -396,20 +352,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateWorkspaceContextualFolder))]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI> CreateWorkspaceContextualFolder([WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodysystemType = null, [WorkflowExpression] Func<string> bodycontextType = null, [WorkflowExpression] Func<string> bodycontextTypePlural = null, [WorkflowExpression] Func<string> bodycontextId = null)
+        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI> CreateWorkspaceContextualFolder(Expression<Func<string>> bodyname = null, Expression<Func<string>> bodysystemType = null, Expression<Func<string>> bodycontextType = null, Expression<Func<string>> bodycontextTypePlural = null, Expression<Func<string>> bodycontextId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI> __BuildCreateWorkspaceContextualFolder(WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodysystemType = null, WorkflowExpression<string> bodycontextType = null, WorkflowExpression<string> bodycontextTypePlural = null, WorkflowExpression<string> bodycontextId = null)
-        {
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
-            WorkflowExpression.Validate(bodysystemType, nameof(bodysystemType), required: false);
-            WorkflowExpression.Validate(bodycontextType, nameof(bodycontextType), required: false);
-            WorkflowExpression.Validate(bodycontextTypePlural, nameof(bodycontextTypePlural), required: false);
-            WorkflowExpression.Validate(bodycontextId, nameof(bodycontextId), required: false);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
+            var __workflow_bodysystemType = bodysystemType == null ? null : WorkflowExpression.Compile(bodysystemType);
+            WorkflowExpression.Validate(__workflow_bodysystemType, nameof(bodysystemType), required: false);
+            var __workflow_bodycontextType = bodycontextType == null ? null : WorkflowExpression.Compile(bodycontextType);
+            WorkflowExpression.Validate(__workflow_bodycontextType, nameof(bodycontextType), required: false);
+            var __workflow_bodycontextTypePlural = bodycontextTypePlural == null ? null : WorkflowExpression.Compile(bodycontextTypePlural);
+            WorkflowExpression.Validate(__workflow_bodycontextTypePlural, nameof(bodycontextTypePlural), required: false);
+            var __workflow_bodycontextId = bodycontextId == null ? null : WorkflowExpression.Compile(bodycontextId);
+            WorkflowExpression.Validate(__workflow_bodycontextId, nameof(bodycontextId), required: false);
             return new DeferredBodyAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI>(() =>
             {
                 var apiCallPath = "/integration/v2/workspace/folders/createContextualFolder";
@@ -417,33 +371,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyname != null)
+                if (__workflow_bodyname != null)
                 {
-                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
                     bodypropCount++;
                 }
 
-                if (bodysystemType != null)
+                if (__workflow_bodysystemType != null)
                 {
-                    body["systemType"] = ExpressionConverter.ConvertO(bodysystemType);
+                    body["systemType"] = ExpressionConverter.ConvertO(__workflow_bodysystemType);
                     bodypropCount++;
                 }
 
-                if (bodycontextType != null)
+                if (__workflow_bodycontextType != null)
                 {
-                    body["contextType"] = ExpressionConverter.ConvertO(bodycontextType);
+                    body["contextType"] = ExpressionConverter.ConvertO(__workflow_bodycontextType);
                     bodypropCount++;
                 }
 
-                if (bodycontextTypePlural != null)
+                if (__workflow_bodycontextTypePlural != null)
                 {
-                    body["contextTypePlural"] = ExpressionConverter.ConvertO(bodycontextTypePlural);
+                    body["contextTypePlural"] = ExpressionConverter.ConvertO(__workflow_bodycontextTypePlural);
                     bodypropCount++;
                 }
 
-                if (bodycontextId != null)
+                if (__workflow_bodycontextId != null)
                 {
-                    body["contextId"] = ExpressionConverter.ConvertO(bodycontextId);
+                    body["contextId"] = ExpressionConverter.ConvertO(__workflow_bodycontextId);
                     bodypropCount++;
                 }
 
@@ -457,17 +411,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateWorkSpaceFile))]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFileResp> CreateWorkSpaceFile([WorkflowExpression] Func<string> metadata = null, [WorkflowExpression] Func<object> content = null)
+        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFileResp> CreateWorkSpaceFile(Expression<Func<string>> metadata = null, Expression<Func<object>> content = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFileResp> __BuildCreateWorkSpaceFile(WorkflowExpression<string> metadata = null, WorkflowExpression<object> content = null)
-        {
-            WorkflowExpression.Validate(metadata, nameof(metadata), required: false);
-            WorkflowExpression.Validate(content, nameof(content), required: false);
+            var __workflow_metadata = metadata == null ? null : WorkflowExpression.Compile(metadata);
+            WorkflowExpression.Validate(__workflow_metadata, nameof(metadata), required: false);
+            var __workflow_content = content == null ? null : WorkflowExpression.Compile(content);
+            WorkflowExpression.Validate(__workflow_content, nameof(content), required: false);
             return new DeferredBodyAction<SeismicWorkSpaceContentManagerWsFileResp>(() =>
             {
                 var apiCallPath = "/integration/v2/workspace/files";
@@ -478,19 +427,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        [WorkflowExpressionFactory(nameof(__BuildGetWorkspaceFileDetails))]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFileResp> GetWorkspaceFileDetails([WorkflowExpression] Func<string> workspaceContentId)
+        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFileResp> GetWorkspaceFileDetails(Expression<Func<string>> workspaceContentId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFileResp> __BuildGetWorkspaceFileDetails(WorkflowExpression<string> workspaceContentId)
-        {
-            WorkflowExpression.Validate(workspaceContentId, nameof(workspaceContentId), required: true);
+            var __workflow_workspaceContentId = workspaceContentId == null ? null : WorkflowExpression.Compile(workspaceContentId);
+            WorkflowExpression.Validate(__workflow_workspaceContentId, nameof(workspaceContentId), required: true);
             return new DeferredBodyAction<SeismicWorkSpaceContentManagerWsFileResp>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/files/{0}", ExpressionConverter.ConvertWithUrlEncoding(workspaceContentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/files/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceContentId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SeismicWorkSpaceContentManagerWsFileResp>(callPayload);
@@ -498,19 +441,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteWorkspaceFile))]
-        public IWorkflowAction DeleteWorkspaceFile([WorkflowExpression] Func<string> workspaceContentId)
+        public IWorkflowAction DeleteWorkspaceFile(Expression<Func<string>> workspaceContentId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDeleteWorkspaceFile(WorkflowExpression<string> workspaceContentId)
-        {
-            WorkflowExpression.Validate(workspaceContentId, nameof(workspaceContentId), required: true);
+            var __workflow_workspaceContentId = workspaceContentId == null ? null : WorkflowExpression.Compile(workspaceContentId);
+            WorkflowExpression.Validate(__workflow_workspaceContentId, nameof(workspaceContentId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/files/{0}", ExpressionConverter.ConvertWithUrlEncoding(workspaceContentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/files/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceContentId, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -518,34 +455,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateWorkspaceFile))]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFileResp> UpdateWorkspaceFile([WorkflowExpression] Func<string> workspaceContentId, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyparentFolderId = null)
+        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFileResp> UpdateWorkspaceFile(Expression<Func<string>> workspaceContentId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyparentFolderId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFileResp> __BuildUpdateWorkspaceFile(WorkflowExpression<string> workspaceContentId, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyparentFolderId = null)
-        {
-            WorkflowExpression.Validate(workspaceContentId, nameof(workspaceContentId), required: true);
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
-            WorkflowExpression.Validate(bodyparentFolderId, nameof(bodyparentFolderId), required: false);
+            var __workflow_workspaceContentId = workspaceContentId == null ? null : WorkflowExpression.Compile(workspaceContentId);
+            WorkflowExpression.Validate(__workflow_workspaceContentId, nameof(workspaceContentId), required: true);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
+            var __workflow_bodyparentFolderId = bodyparentFolderId == null ? null : WorkflowExpression.Compile(bodyparentFolderId);
+            WorkflowExpression.Validate(__workflow_bodyparentFolderId, nameof(bodyparentFolderId), required: false);
             return new DeferredBodyAction<SeismicWorkSpaceContentManagerWsFileResp>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/files/{0}", ExpressionConverter.ConvertWithUrlEncoding(workspaceContentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/files/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceContentId, 1));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyname != null)
+                if (__workflow_bodyname != null)
                 {
-                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
                     bodypropCount++;
                 }
 
-                if (bodyparentFolderId != null)
+                if (__workflow_bodyparentFolderId != null)
                 {
-                    body["parentFolderId"] = ExpressionConverter.ConvertO(bodyparentFolderId);
+                    body["parentFolderId"] = ExpressionConverter.ConvertO(__workflow_bodyparentFolderId);
                     bodypropCount++;
                 }
 
@@ -559,27 +492,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        [WorkflowExpressionFactory(nameof(__BuildCopyWorkspaceFile))]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFileResp> CopyWorkspaceFile([WorkflowExpression] Func<string> workspaceContentId, [WorkflowExpression] Func<string> bodyparentFolderId = null)
+        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFileResp> CopyWorkspaceFile(Expression<Func<string>> workspaceContentId, Expression<Func<string>> bodyparentFolderId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFileResp> __BuildCopyWorkspaceFile(WorkflowExpression<string> workspaceContentId, WorkflowExpression<string> bodyparentFolderId = null)
-        {
-            WorkflowExpression.Validate(workspaceContentId, nameof(workspaceContentId), required: true);
-            WorkflowExpression.Validate(bodyparentFolderId, nameof(bodyparentFolderId), required: false);
+            var __workflow_workspaceContentId = workspaceContentId == null ? null : WorkflowExpression.Compile(workspaceContentId);
+            WorkflowExpression.Validate(__workflow_workspaceContentId, nameof(workspaceContentId), required: true);
+            var __workflow_bodyparentFolderId = bodyparentFolderId == null ? null : WorkflowExpression.Compile(bodyparentFolderId);
+            WorkflowExpression.Validate(__workflow_bodyparentFolderId, nameof(bodyparentFolderId), required: false);
             return new DeferredBodyAction<SeismicWorkSpaceContentManagerWsFileResp>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/files/{0}/copy", ExpressionConverter.ConvertWithUrlEncoding(workspaceContentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/files/{0}/copy", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceContentId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyparentFolderId != null)
+                if (__workflow_bodyparentFolderId != null)
                 {
-                    body["parentFolderId"] = ExpressionConverter.ConvertO(bodyparentFolderId);
+                    body["parentFolderId"] = ExpressionConverter.ConvertO(__workflow_bodyparentFolderId);
                     bodypropCount++;
                 }
 
@@ -593,44 +521,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        [WorkflowExpressionFactory(nameof(__BuildDownloadWorkspaceFile))]
-        public IBodyWorkflowAction<SeismicCommonDownloadLocationResp> DownloadWorkspaceFile([WorkflowExpression] Func<string> workspaceContentId, [WorkflowExpression] Func<bool> redirect = null)
+        public IBodyWorkflowAction<SeismicCommonDownloadLocationResp> DownloadWorkspaceFile(Expression<Func<string>> workspaceContentId, Expression<Func<bool>> redirect = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicCommonDownloadLocationResp> __BuildDownloadWorkspaceFile(WorkflowExpression<string> workspaceContentId, WorkflowExpression<bool> redirect = null)
-        {
-            WorkflowExpression.Validate(workspaceContentId, nameof(workspaceContentId), required: true);
-            WorkflowExpression.Validate(redirect, nameof(redirect), required: false);
+            var __workflow_workspaceContentId = workspaceContentId == null ? null : WorkflowExpression.Compile(workspaceContentId);
+            WorkflowExpression.Validate(__workflow_workspaceContentId, nameof(workspaceContentId), required: true);
+            var __workflow_redirect = redirect == null ? null : WorkflowExpression.Compile(redirect);
+            WorkflowExpression.Validate(__workflow_redirect, nameof(redirect), required: false);
             return new DeferredBodyAction<SeismicCommonDownloadLocationResp>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/files/{0}/content", ExpressionConverter.ConvertWithUrlEncoding(workspaceContentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/files/{0}/content", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceContentId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["redirect"] = Convert.ToString(true);
-                if (redirect != null)
-                    callPayload.Queries["redirect"] = ExpressionConverter.Convert(redirect);
+                if (__workflow_redirect != null)
+                    callPayload.Queries["redirect"] = ExpressionConverter.Convert(__workflow_redirect);
                 return new ApiConnectionAction<SeismicCommonDownloadLocationResp>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateWorkspaceFileVersion))]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFileResp> CreateWorkspaceFileVersion([WorkflowExpression] Func<string> workspaceContentId, [WorkflowExpression] Func<object> content = null)
+        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFileResp> CreateWorkspaceFileVersion(Expression<Func<string>> workspaceContentId, Expression<Func<object>> content = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFileResp> __BuildCreateWorkspaceFileVersion(WorkflowExpression<string> workspaceContentId, WorkflowExpression<object> content = null)
-        {
-            WorkflowExpression.Validate(workspaceContentId, nameof(workspaceContentId), required: true);
-            WorkflowExpression.Validate(content, nameof(content), required: false);
+            var __workflow_workspaceContentId = workspaceContentId == null ? null : WorkflowExpression.Compile(workspaceContentId);
+            WorkflowExpression.Validate(__workflow_workspaceContentId, nameof(workspaceContentId), required: true);
+            var __workflow_content = content == null ? null : WorkflowExpression.Compile(content);
+            WorkflowExpression.Validate(__workflow_content, nameof(content), required: false);
             return new DeferredBodyAction<SeismicWorkSpaceContentManagerWsFileResp>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/files/{0}/content", ExpressionConverter.ConvertWithUrlEncoding(workspaceContentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/files/{0}/content", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceContentId, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SeismicWorkSpaceContentManagerWsFileResp>(callPayload);
@@ -638,34 +556,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateWorkspaceUrl))]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsUrlResp> CreateWorkspaceUrl([WorkflowExpression] Func<bool> openInNewWindow = null, [WorkflowExpression] Func<string> bodyurlurl = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyparentFolderId = null)
+        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsUrlResp> CreateWorkspaceUrl(Expression<Func<bool>> openInNewWindow = null, Expression<Func<string>> bodyurlurl = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyparentFolderId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsUrlResp> __BuildCreateWorkspaceUrl(WorkflowExpression<bool> openInNewWindow = null, WorkflowExpression<string> bodyurlurl = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyparentFolderId = null)
-        {
-            WorkflowExpression.Validate(openInNewWindow, nameof(openInNewWindow), required: false);
-            WorkflowExpression.Validate(bodyurlurl, nameof(bodyurlurl), required: false);
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
-            WorkflowExpression.Validate(bodyparentFolderId, nameof(bodyparentFolderId), required: false);
+            var __workflow_openInNewWindow = openInNewWindow == null ? null : WorkflowExpression.Compile(openInNewWindow);
+            WorkflowExpression.Validate(__workflow_openInNewWindow, nameof(openInNewWindow), required: false);
+            var __workflow_bodyurlurl = bodyurlurl == null ? null : WorkflowExpression.Compile(bodyurlurl);
+            WorkflowExpression.Validate(__workflow_bodyurlurl, nameof(bodyurlurl), required: false);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
+            var __workflow_bodyparentFolderId = bodyparentFolderId == null ? null : WorkflowExpression.Compile(bodyparentFolderId);
+            WorkflowExpression.Validate(__workflow_bodyparentFolderId, nameof(bodyparentFolderId), required: false);
             return new DeferredBodyAction<SeismicWorkSpaceContentManagerWsUrlResp>(() =>
             {
                 var apiCallPath = "/integration/v2/workspace/urls";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["openInNewWindow"] = Convert.ToString(false);
-                if (openInNewWindow != null)
-                    callPayload.Queries["openInNewWindow"] = ExpressionConverter.Convert(openInNewWindow);
+                if (__workflow_openInNewWindow != null)
+                    callPayload.Queries["openInNewWindow"] = ExpressionConverter.Convert(__workflow_openInNewWindow);
                 var body = new JObject();
                 var bodypropCount = 0;
                 var urlObject = new JObject();
                 var urlObjectpropCount = 0;
-                if (bodyurlurl != null)
+                if (__workflow_bodyurlurl != null)
                 {
-                    urlObject["url"] = ExpressionConverter.ConvertO(bodyurlurl);
+                    urlObject["url"] = ExpressionConverter.ConvertO(__workflow_bodyurlurl);
                     urlObjectpropCount++;
                 }
 
@@ -675,15 +590,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
                     bodypropCount++;
                 }
 
-                if (bodyname != null)
+                if (__workflow_bodyname != null)
                 {
-                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
                     bodypropCount++;
                 }
 
-                if (bodyparentFolderId != null)
+                if (__workflow_bodyparentFolderId != null)
                 {
-                    body["parentFolderId"] = ExpressionConverter.ConvertO(bodyparentFolderId);
+                    body["parentFolderId"] = ExpressionConverter.ConvertO(__workflow_bodyparentFolderId);
                     bodypropCount++;
                 }
 
@@ -697,19 +612,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        [WorkflowExpressionFactory(nameof(__BuildGetWorkspaceUrlDetails))]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsUrlRespForGetAPI> GetWorkspaceUrlDetails([WorkflowExpression] Func<string> workspaceContentId)
+        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsUrlRespForGetAPI> GetWorkspaceUrlDetails(Expression<Func<string>> workspaceContentId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsUrlRespForGetAPI> __BuildGetWorkspaceUrlDetails(WorkflowExpression<string> workspaceContentId)
-        {
-            WorkflowExpression.Validate(workspaceContentId, nameof(workspaceContentId), required: true);
+            var __workflow_workspaceContentId = workspaceContentId == null ? null : WorkflowExpression.Compile(workspaceContentId);
+            WorkflowExpression.Validate(__workflow_workspaceContentId, nameof(workspaceContentId), required: true);
             return new DeferredBodyAction<SeismicWorkSpaceContentManagerWsUrlRespForGetAPI>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/urls/{0}", ExpressionConverter.ConvertWithUrlEncoding(workspaceContentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/urls/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceContentId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SeismicWorkSpaceContentManagerWsUrlRespForGetAPI>(callPayload);
@@ -717,19 +626,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteWorkspaceUrl))]
-        public IWorkflowAction DeleteWorkspaceUrl([WorkflowExpression] Func<string> workspaceContentId)
+        public IWorkflowAction DeleteWorkspaceUrl(Expression<Func<string>> workspaceContentId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDeleteWorkspaceUrl(WorkflowExpression<string> workspaceContentId)
-        {
-            WorkflowExpression.Validate(workspaceContentId, nameof(workspaceContentId), required: true);
+            var __workflow_workspaceContentId = workspaceContentId == null ? null : WorkflowExpression.Compile(workspaceContentId);
+            WorkflowExpression.Validate(__workflow_workspaceContentId, nameof(workspaceContentId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/urls/{0}", ExpressionConverter.ConvertWithUrlEncoding(workspaceContentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/urls/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceContentId, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -737,43 +640,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateWorkspaceUrl))]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsUrlResp> UpdateWorkspaceUrl([WorkflowExpression] Func<string> workspaceContentId, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyparentFolderId = null, [WorkflowExpression] Func<string> bodyurlurl = null)
+        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsUrlResp> UpdateWorkspaceUrl(Expression<Func<string>> workspaceContentId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyparentFolderId = null, Expression<Func<string>> bodyurlurl = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsUrlResp> __BuildUpdateWorkspaceUrl(WorkflowExpression<string> workspaceContentId, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyparentFolderId = null, WorkflowExpression<string> bodyurlurl = null)
-        {
-            WorkflowExpression.Validate(workspaceContentId, nameof(workspaceContentId), required: true);
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
-            WorkflowExpression.Validate(bodyparentFolderId, nameof(bodyparentFolderId), required: false);
-            WorkflowExpression.Validate(bodyurlurl, nameof(bodyurlurl), required: false);
+            var __workflow_workspaceContentId = workspaceContentId == null ? null : WorkflowExpression.Compile(workspaceContentId);
+            WorkflowExpression.Validate(__workflow_workspaceContentId, nameof(workspaceContentId), required: true);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
+            var __workflow_bodyparentFolderId = bodyparentFolderId == null ? null : WorkflowExpression.Compile(bodyparentFolderId);
+            WorkflowExpression.Validate(__workflow_bodyparentFolderId, nameof(bodyparentFolderId), required: false);
+            var __workflow_bodyurlurl = bodyurlurl == null ? null : WorkflowExpression.Compile(bodyurlurl);
+            WorkflowExpression.Validate(__workflow_bodyurlurl, nameof(bodyurlurl), required: false);
             return new DeferredBodyAction<SeismicWorkSpaceContentManagerWsUrlResp>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/urls/{0}", ExpressionConverter.ConvertWithUrlEncoding(workspaceContentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/urls/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceContentId, 1));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyname != null)
+                if (__workflow_bodyname != null)
                 {
-                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
                     bodypropCount++;
                 }
 
-                if (bodyparentFolderId != null)
+                if (__workflow_bodyparentFolderId != null)
                 {
-                    body["parentFolderId"] = ExpressionConverter.ConvertO(bodyparentFolderId);
+                    body["parentFolderId"] = ExpressionConverter.ConvertO(__workflow_bodyparentFolderId);
                     bodypropCount++;
                 }
 
                 var urlObject = new JObject();
                 var urlObjectpropCount = 0;
-                if (bodyurlurl != null)
+                if (__workflow_bodyurlurl != null)
                 {
-                    urlObject["url"] = ExpressionConverter.ConvertO(bodyurlurl);
+                    urlObject["url"] = ExpressionConverter.ConvertO(__workflow_bodyurlurl);
                     urlObjectpropCount++;
                 }
 
@@ -793,27 +693,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        [WorkflowExpressionFactory(nameof(__BuildCopyWorkspaceUrl))]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsUrlResp> CopyWorkspaceUrl([WorkflowExpression] Func<string> workspaceContentId, [WorkflowExpression] Func<string> bodyparentFolderId = null)
+        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsUrlResp> CopyWorkspaceUrl(Expression<Func<string>> workspaceContentId, Expression<Func<string>> bodyparentFolderId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsUrlResp> __BuildCopyWorkspaceUrl(WorkflowExpression<string> workspaceContentId, WorkflowExpression<string> bodyparentFolderId = null)
-        {
-            WorkflowExpression.Validate(workspaceContentId, nameof(workspaceContentId), required: true);
-            WorkflowExpression.Validate(bodyparentFolderId, nameof(bodyparentFolderId), required: false);
+            var __workflow_workspaceContentId = workspaceContentId == null ? null : WorkflowExpression.Compile(workspaceContentId);
+            WorkflowExpression.Validate(__workflow_workspaceContentId, nameof(workspaceContentId), required: true);
+            var __workflow_bodyparentFolderId = bodyparentFolderId == null ? null : WorkflowExpression.Compile(bodyparentFolderId);
+            WorkflowExpression.Validate(__workflow_bodyparentFolderId, nameof(bodyparentFolderId), required: false);
             return new DeferredBodyAction<SeismicWorkSpaceContentManagerWsUrlResp>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/urls/{0}/copy", ExpressionConverter.ConvertWithUrlEncoding(workspaceContentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/urls/{0}/copy", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceContentId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyparentFolderId != null)
+                if (__workflow_bodyparentFolderId != null)
                 {
-                    body["parentFolderId"] = ExpressionConverter.ConvertO(bodyparentFolderId);
+                    body["parentFolderId"] = ExpressionConverter.ConvertO(__workflow_bodyparentFolderId);
                     bodypropCount++;
                 }
 
@@ -827,19 +722,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        [WorkflowExpressionFactory(nameof(__BuildGetWorkspaceItemDetails))]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsItemResp> GetWorkspaceItemDetails([WorkflowExpression] Func<string> workspaceContentId)
+        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsItemResp> GetWorkspaceItemDetails(Expression<Func<string>> workspaceContentId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsItemResp> __BuildGetWorkspaceItemDetails(WorkflowExpression<string> workspaceContentId)
-        {
-            WorkflowExpression.Validate(workspaceContentId, nameof(workspaceContentId), required: true);
+            var __workflow_workspaceContentId = workspaceContentId == null ? null : WorkflowExpression.Compile(workspaceContentId);
+            WorkflowExpression.Validate(__workflow_workspaceContentId, nameof(workspaceContentId), required: true);
             return new DeferredBodyAction<SeismicWorkSpaceContentManagerWsItemResp>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/items/{0}", ExpressionConverter.ConvertWithUrlEncoding(workspaceContentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/items/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceContentId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SeismicWorkSpaceContentManagerWsItemResp>(callPayload);
@@ -847,19 +736,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteWorkspaceItem))]
-        public IWorkflowAction DeleteWorkspaceItem([WorkflowExpression] Func<string> workspaceContentId)
+        public IWorkflowAction DeleteWorkspaceItem(Expression<Func<string>> workspaceContentId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDeleteWorkspaceItem(WorkflowExpression<string> workspaceContentId)
-        {
-            WorkflowExpression.Validate(workspaceContentId, nameof(workspaceContentId), required: true);
+            var __workflow_workspaceContentId = workspaceContentId == null ? null : WorkflowExpression.Compile(workspaceContentId);
+            WorkflowExpression.Validate(__workflow_workspaceContentId, nameof(workspaceContentId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/items/{0}", ExpressionConverter.ConvertWithUrlEncoding(workspaceContentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/items/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceContentId, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -867,34 +750,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateWorkspaceItem))]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsItemResp> UpdateWorkspaceItem([WorkflowExpression] Func<string> workspaceContentId, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyparentFolderId = null)
+        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsItemResp> UpdateWorkspaceItem(Expression<Func<string>> workspaceContentId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyparentFolderId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsItemResp> __BuildUpdateWorkspaceItem(WorkflowExpression<string> workspaceContentId, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyparentFolderId = null)
-        {
-            WorkflowExpression.Validate(workspaceContentId, nameof(workspaceContentId), required: true);
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
-            WorkflowExpression.Validate(bodyparentFolderId, nameof(bodyparentFolderId), required: false);
+            var __workflow_workspaceContentId = workspaceContentId == null ? null : WorkflowExpression.Compile(workspaceContentId);
+            WorkflowExpression.Validate(__workflow_workspaceContentId, nameof(workspaceContentId), required: true);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
+            var __workflow_bodyparentFolderId = bodyparentFolderId == null ? null : WorkflowExpression.Compile(bodyparentFolderId);
+            WorkflowExpression.Validate(__workflow_bodyparentFolderId, nameof(bodyparentFolderId), required: false);
             return new DeferredBodyAction<SeismicWorkSpaceContentManagerWsItemResp>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/items/{0}", ExpressionConverter.ConvertWithUrlEncoding(workspaceContentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/items/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceContentId, 1));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyname != null)
+                if (__workflow_bodyname != null)
                 {
-                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
                     bodypropCount++;
                 }
 
-                if (bodyparentFolderId != null)
+                if (__workflow_bodyparentFolderId != null)
                 {
-                    body["parentFolderId"] = ExpressionConverter.ConvertO(bodyparentFolderId);
+                    body["parentFolderId"] = ExpressionConverter.ConvertO(__workflow_bodyparentFolderId);
                     bodypropCount++;
                 }
 
@@ -908,27 +787,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        [WorkflowExpressionFactory(nameof(__BuildCopyWorkspaceItem))]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsItemResp> CopyWorkspaceItem([WorkflowExpression] Func<string> workspaceContentId, [WorkflowExpression] Func<string> bodyparentFolderId = null)
+        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsItemResp> CopyWorkspaceItem(Expression<Func<string>> workspaceContentId, Expression<Func<string>> bodyparentFolderId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsItemResp> __BuildCopyWorkspaceItem(WorkflowExpression<string> workspaceContentId, WorkflowExpression<string> bodyparentFolderId = null)
-        {
-            WorkflowExpression.Validate(workspaceContentId, nameof(workspaceContentId), required: true);
-            WorkflowExpression.Validate(bodyparentFolderId, nameof(bodyparentFolderId), required: false);
+            var __workflow_workspaceContentId = workspaceContentId == null ? null : WorkflowExpression.Compile(workspaceContentId);
+            WorkflowExpression.Validate(__workflow_workspaceContentId, nameof(workspaceContentId), required: true);
+            var __workflow_bodyparentFolderId = bodyparentFolderId == null ? null : WorkflowExpression.Compile(bodyparentFolderId);
+            WorkflowExpression.Validate(__workflow_bodyparentFolderId, nameof(bodyparentFolderId), required: false);
             return new DeferredBodyAction<SeismicWorkSpaceContentManagerWsItemResp>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/items/{0}/copy", ExpressionConverter.ConvertWithUrlEncoding(workspaceContentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/items/{0}/copy", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceContentId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyparentFolderId != null)
+                if (__workflow_bodyparentFolderId != null)
                 {
-                    body["parentFolderId"] = ExpressionConverter.ConvertO(bodyparentFolderId);
+                    body["parentFolderId"] = ExpressionConverter.ConvertO(__workflow_bodyparentFolderId);
                     bodypropCount++;
                 }
 
@@ -942,19 +816,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        [WorkflowExpressionFactory(nameof(__BuildGetWorkspaceItenMembers))]
-        public IBodyWorkflowAction<SeismicWorkspacePermissionsAndSharingWorkspaceMemberResponse[]> GetWorkspaceItenMembers([WorkflowExpression] Func<string> workspaceContentId)
+        public IBodyWorkflowAction<SeismicWorkspacePermissionsAndSharingWorkspaceMemberResponse[]> GetWorkspaceItenMembers(Expression<Func<string>> workspaceContentId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicWorkspacePermissionsAndSharingWorkspaceMemberResponse[]> __BuildGetWorkspaceItenMembers(WorkflowExpression<string> workspaceContentId)
-        {
-            WorkflowExpression.Validate(workspaceContentId, nameof(workspaceContentId), required: true);
+            var __workflow_workspaceContentId = workspaceContentId == null ? null : WorkflowExpression.Compile(workspaceContentId);
+            WorkflowExpression.Validate(__workflow_workspaceContentId, nameof(workspaceContentId), required: true);
             return new DeferredBodyAction<SeismicWorkspacePermissionsAndSharingWorkspaceMemberResponse[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(workspaceContentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceContentId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SeismicWorkspacePermissionsAndSharingWorkspaceMemberResponse[]>(callPayload);
@@ -962,34 +830,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        [WorkflowExpressionFactory(nameof(__BuildAddCollaboratorAsync))]
-        public IBodyWorkflowAction<CollaboratorResponse> AddCollaboratorAsync([WorkflowExpression] Func<string> workspaceContentId, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodyrole = null)
+        public IBodyWorkflowAction<CollaboratorResponse> AddCollaboratorAsync(Expression<Func<string>> workspaceContentId, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodyrole = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CollaboratorResponse> __BuildAddCollaboratorAsync(WorkflowExpression<string> workspaceContentId, WorkflowExpression<string> bodyid = null, WorkflowExpression<string> bodyrole = null)
-        {
-            WorkflowExpression.Validate(workspaceContentId, nameof(workspaceContentId), required: true);
-            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: false);
-            WorkflowExpression.Validate(bodyrole, nameof(bodyrole), required: false);
+            var __workflow_workspaceContentId = workspaceContentId == null ? null : WorkflowExpression.Compile(workspaceContentId);
+            WorkflowExpression.Validate(__workflow_workspaceContentId, nameof(workspaceContentId), required: true);
+            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
+            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: false);
+            var __workflow_bodyrole = bodyrole == null ? null : WorkflowExpression.Compile(bodyrole);
+            WorkflowExpression.Validate(__workflow_bodyrole, nameof(bodyrole), required: false);
             return new DeferredBodyAction<CollaboratorResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/items/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(workspaceContentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/items/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceContentId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyid != null)
+                if (__workflow_bodyid != null)
                 {
-                    body["id"] = ExpressionConverter.ConvertO(bodyid);
+                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
                     bodypropCount++;
                 }
 
-                if (bodyrole != null)
+                if (__workflow_bodyrole != null)
                 {
-                    body["role"] = ExpressionConverter.ConvertO(bodyrole);
+                    body["role"] = ExpressionConverter.ConvertO(__workflow_bodyrole);
                     bodypropCount++;
                 }
 
@@ -1003,20 +867,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteCollaboratorAsync))]
-        public IWorkflowAction DeleteCollaboratorAsync([WorkflowExpression] Func<string> workspaceContentId, [WorkflowExpression] Func<string> memberId)
+        public IWorkflowAction DeleteCollaboratorAsync(Expression<Func<string>> workspaceContentId, Expression<Func<string>> memberId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDeleteCollaboratorAsync(WorkflowExpression<string> workspaceContentId, WorkflowExpression<string> memberId)
-        {
-            WorkflowExpression.Validate(workspaceContentId, nameof(workspaceContentId), required: true);
-            WorkflowExpression.Validate(memberId, nameof(memberId), required: true);
+            var __workflow_workspaceContentId = workspaceContentId == null ? null : WorkflowExpression.Compile(workspaceContentId);
+            WorkflowExpression.Validate(__workflow_workspaceContentId, nameof(workspaceContentId), required: true);
+            var __workflow_memberId = memberId == null ? null : WorkflowExpression.Compile(memberId);
+            WorkflowExpression.Validate(__workflow_memberId, nameof(memberId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/items/{0}/members/{1}", ExpressionConverter.ConvertWithUrlEncoding(workspaceContentId, 1), ExpressionConverter.ConvertWithUrlEncoding(memberId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/items/{0}/members/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceContentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_memberId, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -1024,27 +883,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        [WorkflowExpressionFactory(nameof(__BuildTransferOwnerAsync))]
-        public IWorkflowAction TransferOwnerAsync([WorkflowExpression] Func<string> workspaceContentId, [WorkflowExpression] Func<string> bodyownerId = null)
+        public IWorkflowAction TransferOwnerAsync(Expression<Func<string>> workspaceContentId, Expression<Func<string>> bodyownerId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildTransferOwnerAsync(WorkflowExpression<string> workspaceContentId, WorkflowExpression<string> bodyownerId = null)
-        {
-            WorkflowExpression.Validate(workspaceContentId, nameof(workspaceContentId), required: true);
-            WorkflowExpression.Validate(bodyownerId, nameof(bodyownerId), required: false);
+            var __workflow_workspaceContentId = workspaceContentId == null ? null : WorkflowExpression.Compile(workspaceContentId);
+            WorkflowExpression.Validate(__workflow_workspaceContentId, nameof(workspaceContentId), required: true);
+            var __workflow_bodyownerId = bodyownerId == null ? null : WorkflowExpression.Compile(bodyownerId);
+            WorkflowExpression.Validate(__workflow_bodyownerId, nameof(bodyownerId), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/items/{0}/owner", ExpressionConverter.ConvertWithUrlEncoding(workspaceContentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/items/{0}/owner", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceContentId, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyownerId != null)
+                if (__workflow_bodyownerId != null)
                 {
-                    body["ownerId"] = ExpressionConverter.ConvertO(bodyownerId);
+                    body["ownerId"] = ExpressionConverter.ConvertO(__workflow_bodyownerId);
                     bodypropCount++;
                 }
 
@@ -1058,25 +912,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        [WorkflowExpressionFactory(nameof(__BuildGetCustomPropertiesByFileId))]
-        public IWorkflowAction GetCustomPropertiesByFileId([WorkflowExpression] Func<string> fileId, [WorkflowExpression] Func<bool> includeInvisibledInDC = null)
+        public IWorkflowAction GetCustomPropertiesByFileId(Expression<Func<string>> fileId, Expression<Func<bool>> includeInvisibledInDC = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetCustomPropertiesByFileId(WorkflowExpression<string> fileId, WorkflowExpression<bool> includeInvisibledInDC = null)
-        {
-            WorkflowExpression.Validate(fileId, nameof(fileId), required: true);
-            WorkflowExpression.Validate(includeInvisibledInDC, nameof(includeInvisibledInDC), required: false);
+            var __workflow_fileId = fileId == null ? null : WorkflowExpression.Compile(fileId);
+            WorkflowExpression.Validate(__workflow_fileId, nameof(fileId), required: true);
+            var __workflow_includeInvisibledInDC = includeInvisibledInDC == null ? null : WorkflowExpression.Compile(includeInvisibledInDC);
+            WorkflowExpression.Validate(__workflow_includeInvisibledInDC, nameof(includeInvisibledInDC), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/files/{0}/customProperties", ExpressionConverter.ConvertWithUrlEncoding(fileId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/files/{0}/customProperties", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fileId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["includeInvisibledInDC"] = Convert.ToString(false);
-                if (includeInvisibledInDC != null)
-                    callPayload.Queries["includeInvisibledInDC"] = ExpressionConverter.Convert(includeInvisibledInDC);
+                if (__workflow_includeInvisibledInDC != null)
+                    callPayload.Queries["includeInvisibledInDC"] = ExpressionConverter.Convert(__workflow_includeInvisibledInDC);
                 return new ApiConnectionAction(callPayload);
             });
         }

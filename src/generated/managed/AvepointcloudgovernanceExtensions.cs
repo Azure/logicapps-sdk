@@ -1,209 +1,184 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class AvepointcloudgovernanceActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "avepointcloudgovernance")]
-        [WorkflowExpressionFactory(nameof(__BuildFlowGetOffice365Setting))]
-        public IBodyWorkflowAction<JToken> FlowGetOffice365Setting([WorkflowExpression] Func<string> actionType, [WorkflowExpression] Func<object> body = null)
+        public IBodyWorkflowAction<JToken> FlowGetOffice365Setting(Expression<Func<string>> actionType, Expression<Func<object>> body = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildFlowGetOffice365Setting(WorkflowExpression<string> actionType, WorkflowExpression<object> body = null)
-        {
-            WorkflowExpression.Validate(actionType, nameof(actionType), required: true);
-            WorkflowExpression.Validate(body, nameof(body), required: false);
+            var __workflow_actionType = actionType == null ? null : WorkflowExpression.Compile(actionType);
+            WorkflowExpression.Validate(__workflow_actionType, nameof(actionType), required: true);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/flow/office365/settings";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["actionType"] = ExpressionConverter.Convert(actionType);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["actionType"] = ExpressionConverter.Convert(__workflow_actionType);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "avepointcloudgovernance")]
-        [WorkflowExpressionFactory(nameof(__BuildFlowUpdateOffice365Setting))]
-        public IWorkflowAction FlowUpdateOffice365Setting([WorkflowExpression] Func<string> actionType, [WorkflowExpression] Func<object> body = null)
+        public IWorkflowAction FlowUpdateOffice365Setting(Expression<Func<string>> actionType, Expression<Func<object>> body = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildFlowUpdateOffice365Setting(WorkflowExpression<string> actionType, WorkflowExpression<object> body = null)
-        {
-            WorkflowExpression.Validate(actionType, nameof(actionType), required: true);
-            WorkflowExpression.Validate(body, nameof(body), required: false);
+            var __workflow_actionType = actionType == null ? null : WorkflowExpression.Compile(actionType);
+            WorkflowExpression.Validate(__workflow_actionType, nameof(actionType), required: true);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/flow/office365/settings";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["actionType"] = ExpressionConverter.Convert(actionType);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["actionType"] = ExpressionConverter.Convert(__workflow_actionType);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "avepointcloudgovernance")]
-        [WorkflowExpressionFactory(nameof(__BuildFlowGetRequestById))]
-        public IBodyWorkflowAction<JToken> FlowGetRequestById([WorkflowExpression] Func<string> serviceType, [WorkflowExpression] Func<string> serviceId, [WorkflowExpression] Func<string> requestId)
+        public IBodyWorkflowAction<JToken> FlowGetRequestById(Expression<Func<string>> serviceType, Expression<Func<string>> serviceId, Expression<Func<string>> requestId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildFlowGetRequestById(WorkflowExpression<string> serviceType, WorkflowExpression<string> serviceId, WorkflowExpression<string> requestId)
-        {
-            WorkflowExpression.Validate(serviceType, nameof(serviceType), required: true);
-            WorkflowExpression.Validate(serviceId, nameof(serviceId), required: true);
-            WorkflowExpression.Validate(requestId, nameof(requestId), required: true);
+            var __workflow_serviceType = serviceType == null ? null : WorkflowExpression.Compile(serviceType);
+            WorkflowExpression.Validate(__workflow_serviceType, nameof(serviceType), required: true);
+            var __workflow_serviceId = serviceId == null ? null : WorkflowExpression.Compile(serviceId);
+            WorkflowExpression.Validate(__workflow_serviceId, nameof(serviceId), required: true);
+            var __workflow_requestId = requestId == null ? null : WorkflowExpression.Compile(requestId);
+            WorkflowExpression.Validate(__workflow_requestId, nameof(requestId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/flow/requests/{0}", ExpressionConverter.ConvertWithUrlEncoding(requestId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/flow/requests/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_requestId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["serviceType"] = ExpressionConverter.Convert(serviceType);
-                callPayload.Queries["serviceId"] = ExpressionConverter.Convert(serviceId);
+                callPayload.Queries["serviceType"] = ExpressionConverter.Convert(__workflow_serviceType);
+                callPayload.Queries["serviceId"] = ExpressionConverter.Convert(__workflow_serviceId);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "avepointcloudgovernance")]
-        [WorkflowExpressionFactory(nameof(__BuildFlowSubmitRequest))]
-        public IBodyWorkflowAction<string> FlowSubmitRequest([WorkflowExpression] Func<string> serviceType, [WorkflowExpression] Func<string> serviceId, [WorkflowExpression] Func<string> delegateUserPrincipalName = null, [WorkflowExpression] Func<object> body = null)
+        public IBodyWorkflowAction<string> FlowSubmitRequest(Expression<Func<string>> serviceType, Expression<Func<string>> serviceId, Expression<Func<string>> delegateUserPrincipalName = null, Expression<Func<object>> body = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildFlowSubmitRequest(WorkflowExpression<string> serviceType, WorkflowExpression<string> serviceId, WorkflowExpression<string> delegateUserPrincipalName = null, WorkflowExpression<object> body = null)
-        {
-            WorkflowExpression.Validate(serviceType, nameof(serviceType), required: true);
-            WorkflowExpression.Validate(serviceId, nameof(serviceId), required: true);
-            WorkflowExpression.Validate(delegateUserPrincipalName, nameof(delegateUserPrincipalName), required: false);
-            WorkflowExpression.Validate(body, nameof(body), required: false);
+            var __workflow_serviceType = serviceType == null ? null : WorkflowExpression.Compile(serviceType);
+            WorkflowExpression.Validate(__workflow_serviceType, nameof(serviceType), required: true);
+            var __workflow_serviceId = serviceId == null ? null : WorkflowExpression.Compile(serviceId);
+            WorkflowExpression.Validate(__workflow_serviceId, nameof(serviceId), required: true);
+            var __workflow_delegateUserPrincipalName = delegateUserPrincipalName == null ? null : WorkflowExpression.Compile(delegateUserPrincipalName);
+            WorkflowExpression.Validate(__workflow_delegateUserPrincipalName, nameof(delegateUserPrincipalName), required: false);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/flow/requests";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["serviceType"] = ExpressionConverter.Convert(serviceType);
-                callPayload.Queries["serviceId"] = ExpressionConverter.Convert(serviceId);
-                if (delegateUserPrincipalName != null)
-                    callPayload.Queries["DelegateUserPrincipalName"] = ExpressionConverter.Convert(delegateUserPrincipalName);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["serviceType"] = ExpressionConverter.Convert(__workflow_serviceType);
+                callPayload.Queries["serviceId"] = ExpressionConverter.Convert(__workflow_serviceId);
+                if (__workflow_delegateUserPrincipalName != null)
+                    callPayload.Queries["DelegateUserPrincipalName"] = ExpressionConverter.Convert(__workflow_delegateUserPrincipalName);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "avepointcloudgovernance")]
-        [WorkflowExpressionFactory(nameof(__BuildFlowEditRequest))]
-        public IWorkflowAction FlowEditRequest([WorkflowExpression] Func<string> serviceType, [WorkflowExpression] Func<string> serviceId, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<object> body = null)
+        public IWorkflowAction FlowEditRequest(Expression<Func<string>> serviceType, Expression<Func<string>> serviceId, Expression<Func<string>> id, Expression<Func<object>> body = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildFlowEditRequest(WorkflowExpression<string> serviceType, WorkflowExpression<string> serviceId, WorkflowExpression<string> id, WorkflowExpression<object> body = null)
-        {
-            WorkflowExpression.Validate(serviceType, nameof(serviceType), required: true);
-            WorkflowExpression.Validate(serviceId, nameof(serviceId), required: true);
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(body, nameof(body), required: false);
+            var __workflow_serviceType = serviceType == null ? null : WorkflowExpression.Compile(serviceType);
+            WorkflowExpression.Validate(__workflow_serviceType, nameof(serviceType), required: true);
+            var __workflow_serviceId = serviceId == null ? null : WorkflowExpression.Compile(serviceId);
+            WorkflowExpression.Validate(__workflow_serviceId, nameof(serviceId), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/flow/requests";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["serviceType"] = ExpressionConverter.Convert(serviceType);
-                callPayload.Queries["serviceId"] = ExpressionConverter.Convert(serviceId);
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["serviceType"] = ExpressionConverter.Convert(__workflow_serviceType);
+                callPayload.Queries["serviceId"] = ExpressionConverter.Convert(__workflow_serviceId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "avepointcloudgovernance")]
-        [WorkflowExpressionFactory(nameof(__BuildFlowListWorkspace))]
-        public IBodyWorkflowAction<JToken> FlowListWorkspace([WorkflowExpression] Func<string> workspaceType = null, [WorkflowExpression] Func<string> primaryContact = null, [WorkflowExpression] Func<string> status = null, [WorkflowExpression] Func<string> urlorIdorEmail = null, [WorkflowExpression] Func<string> secondaryContact = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<string> nextLink = null)
+        public IBodyWorkflowAction<JToken> FlowListWorkspace(Expression<Func<string>> workspaceType = null, Expression<Func<string>> primaryContact = null, Expression<Func<string>> status = null, Expression<Func<string>> urlorIdorEmail = null, Expression<Func<string>> secondaryContact = null, Expression<Func<int>> top = null, Expression<Func<string>> nextLink = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildFlowListWorkspace(WorkflowExpression<string> workspaceType = null, WorkflowExpression<string> primaryContact = null, WorkflowExpression<string> status = null, WorkflowExpression<string> urlorIdorEmail = null, WorkflowExpression<string> secondaryContact = null, WorkflowExpression<int> top = null, WorkflowExpression<string> nextLink = null)
-        {
-            WorkflowExpression.Validate(workspaceType, nameof(workspaceType), required: false);
-            WorkflowExpression.Validate(primaryContact, nameof(primaryContact), required: false);
-            WorkflowExpression.Validate(status, nameof(status), required: false);
-            WorkflowExpression.Validate(urlorIdorEmail, nameof(urlorIdorEmail), required: false);
-            WorkflowExpression.Validate(secondaryContact, nameof(secondaryContact), required: false);
-            WorkflowExpression.Validate(top, nameof(top), required: false);
-            WorkflowExpression.Validate(nextLink, nameof(nextLink), required: false);
+            var __workflow_workspaceType = workspaceType == null ? null : WorkflowExpression.Compile(workspaceType);
+            WorkflowExpression.Validate(__workflow_workspaceType, nameof(workspaceType), required: false);
+            var __workflow_primaryContact = primaryContact == null ? null : WorkflowExpression.Compile(primaryContact);
+            WorkflowExpression.Validate(__workflow_primaryContact, nameof(primaryContact), required: false);
+            var __workflow_status = status == null ? null : WorkflowExpression.Compile(status);
+            WorkflowExpression.Validate(__workflow_status, nameof(status), required: false);
+            var __workflow_urlorIdorEmail = urlorIdorEmail == null ? null : WorkflowExpression.Compile(urlorIdorEmail);
+            WorkflowExpression.Validate(__workflow_urlorIdorEmail, nameof(urlorIdorEmail), required: false);
+            var __workflow_secondaryContact = secondaryContact == null ? null : WorkflowExpression.Compile(secondaryContact);
+            WorkflowExpression.Validate(__workflow_secondaryContact, nameof(secondaryContact), required: false);
+            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
+            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_nextLink = nextLink == null ? null : WorkflowExpression.Compile(nextLink);
+            WorkflowExpression.Validate(__workflow_nextLink, nameof(nextLink), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/flow/workspace";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["workspaceType"] = Convert.ToString("All");
-                if (workspaceType != null)
-                    callPayload.Queries["workspaceType"] = ExpressionConverter.Convert(workspaceType);
+                if (__workflow_workspaceType != null)
+                    callPayload.Queries["workspaceType"] = ExpressionConverter.Convert(__workflow_workspaceType);
                 callPayload.Queries["primaryContact"] = Convert.ToString("");
-                if (primaryContact != null)
-                    callPayload.Queries["primaryContact"] = ExpressionConverter.Convert(primaryContact);
+                if (__workflow_primaryContact != null)
+                    callPayload.Queries["primaryContact"] = ExpressionConverter.Convert(__workflow_primaryContact);
                 callPayload.Queries["status"] = Convert.ToString("All");
-                if (status != null)
-                    callPayload.Queries["status"] = ExpressionConverter.Convert(status);
+                if (__workflow_status != null)
+                    callPayload.Queries["status"] = ExpressionConverter.Convert(__workflow_status);
                 callPayload.Queries["urlorIdorEmail"] = Convert.ToString("");
-                if (urlorIdorEmail != null)
-                    callPayload.Queries["urlorIdorEmail"] = ExpressionConverter.Convert(urlorIdorEmail);
+                if (__workflow_urlorIdorEmail != null)
+                    callPayload.Queries["urlorIdorEmail"] = ExpressionConverter.Convert(__workflow_urlorIdorEmail);
                 callPayload.Queries["secondaryContact"] = Convert.ToString("");
-                if (secondaryContact != null)
-                    callPayload.Queries["secondaryContact"] = ExpressionConverter.Convert(secondaryContact);
+                if (__workflow_secondaryContact != null)
+                    callPayload.Queries["secondaryContact"] = ExpressionConverter.Convert(__workflow_secondaryContact);
                 callPayload.Queries["top"] = Convert.ToString(2000);
-                if (top != null)
-                    callPayload.Queries["top"] = ExpressionConverter.Convert(top);
+                if (__workflow_top != null)
+                    callPayload.Queries["top"] = ExpressionConverter.Convert(__workflow_top);
                 callPayload.Queries["nextLink"] = Convert.ToString("");
-                if (nextLink != null)
-                    callPayload.Queries["nextLink"] = ExpressionConverter.Convert(nextLink);
+                if (__workflow_nextLink != null)
+                    callPayload.Queries["nextLink"] = ExpressionConverter.Convert(__workflow_nextLink);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "avepointcloudgovernance")]
-        [WorkflowExpressionFactory(nameof(__BuildFlowWorkspaceActions))]
-        public IBodyWorkflowAction<string> FlowWorkspaceActions([WorkflowExpression] Func<string> workspaceType, [WorkflowExpression] Func<string> workspaceAction, [WorkflowExpression] Func<object> body = null)
+        public IBodyWorkflowAction<string> FlowWorkspaceActions(Expression<Func<string>> workspaceType, Expression<Func<string>> workspaceAction, Expression<Func<object>> body = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildFlowWorkspaceActions(WorkflowExpression<string> workspaceType, WorkflowExpression<string> workspaceAction, WorkflowExpression<object> body = null)
-        {
-            WorkflowExpression.Validate(workspaceType, nameof(workspaceType), required: true);
-            WorkflowExpression.Validate(workspaceAction, nameof(workspaceAction), required: true);
-            WorkflowExpression.Validate(body, nameof(body), required: false);
+            var __workflow_workspaceType = workspaceType == null ? null : WorkflowExpression.Compile(workspaceType);
+            WorkflowExpression.Validate(__workflow_workspaceType, nameof(workspaceType), required: true);
+            var __workflow_workspaceAction = workspaceAction == null ? null : WorkflowExpression.Compile(workspaceAction);
+            WorkflowExpression.Validate(__workflow_workspaceAction, nameof(workspaceAction), required: true);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/flow/workspace/actions";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["workspaceType"] = ExpressionConverter.Convert(workspaceType);
-                callPayload.Queries["workspaceAction"] = ExpressionConverter.Convert(workspaceAction);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["workspaceType"] = ExpressionConverter.Convert(__workflow_workspaceType);
+                callPayload.Queries["workspaceAction"] = ExpressionConverter.Convert(__workflow_workspaceAction);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -211,23 +186,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
 
     public class AvepointcloudgovernanceTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildFlowCreateHookForCommon))]
-        public IBodyWorkflowTrigger<string> FlowCreateHookForCommon([WorkflowExpression] Func<string> flowTriggerType,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string> FlowCreateHookForCommon(Expression<Func<string>> flowTriggerType, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<string> __BuildFlowCreateHookForCommon(WorkflowExpression<string> flowTriggerType,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(flowTriggerType, nameof(flowTriggerType), required: true);
+            var __workflow_flowTriggerType = flowTriggerType == null ? null : WorkflowExpression.Compile(flowTriggerType);
+            WorkflowExpression.Validate(__workflow_flowTriggerType, nameof(flowTriggerType), required: true);
             return new DeferredBodyTrigger<string>(() =>
             {
                 var apiCallPath = "/flow/hooks/common";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["flowTriggerType"] = ExpressionConverter.Convert(flowTriggerType);
+                callPayload.Queries["flowTriggerType"] = ExpressionConverter.Convert(__workflow_flowTriggerType);
                 var body = new JObject();
                 var bodypropCount = 0;
                 body["url"] = "#{listCallbackUrl()}";

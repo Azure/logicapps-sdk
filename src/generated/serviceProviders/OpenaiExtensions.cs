@@ -1,7 +1,6 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
 {
     using System;
@@ -9,27 +8,22 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class OpenaiActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "openai")]
-        [WorkflowExpressionFactory(nameof(__BuildGetArrayEmbeddings))]
-        public IBodyWorkflowAction<GetArrayEmbeddingsOutput> GetArrayEmbeddings([WorkflowExpression] Func<string> deploymentId, [WorkflowExpression] Func<JToken[]> input)
+        public IBodyWorkflowAction<GetArrayEmbeddingsOutput> GetArrayEmbeddings(Expression<Func<string>> deploymentId, Expression<Func<JToken[]>> input)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetArrayEmbeddingsOutput> __BuildGetArrayEmbeddings(WorkflowExpression<string> deploymentId, WorkflowExpression<JToken[]> input)
-        {
-            WorkflowExpression.Validate(deploymentId, nameof(deploymentId), required: true);
-            WorkflowExpression.Validate(input, nameof(input), required: true);
+            var __workflow_deploymentId = deploymentId == null ? null : WorkflowExpression.Compile(deploymentId);
+            WorkflowExpression.Validate(__workflow_deploymentId, nameof(deploymentId), required: true);
+            var __workflow_input = input == null ? null : WorkflowExpression.Compile(input);
+            WorkflowExpression.Validate(__workflow_input, nameof(input), required: true);
             return new DeferredBodyAction<GetArrayEmbeddingsOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["deploymentId"] = ExpressionConverter.ConvertO(deploymentId);
-                serviceProviderParameters["input"] = ExpressionConverter.ConvertO(input);
+                serviceProviderParameters["deploymentId"] = ExpressionConverter.ConvertO(__workflow_deploymentId);
+                serviceProviderParameters["input"] = ExpressionConverter.ConvertO(__workflow_input);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/openai", operationId: "getArrayEmbeddings", connectionName: connectionId),
@@ -40,22 +34,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "openai")]
-        [WorkflowExpressionFactory(nameof(__BuildGetSingleEmbedding))]
-        public IBodyWorkflowAction<GetSingleEmbeddingOutput> GetSingleEmbedding([WorkflowExpression] Func<string> deploymentId, [WorkflowExpression] Func<string> input)
+        public IBodyWorkflowAction<GetSingleEmbeddingOutput> GetSingleEmbedding(Expression<Func<string>> deploymentId, Expression<Func<string>> input)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetSingleEmbeddingOutput> __BuildGetSingleEmbedding(WorkflowExpression<string> deploymentId, WorkflowExpression<string> input)
-        {
-            WorkflowExpression.Validate(deploymentId, nameof(deploymentId), required: true);
-            WorkflowExpression.Validate(input, nameof(input), required: true);
+            var __workflow_deploymentId = deploymentId == null ? null : WorkflowExpression.Compile(deploymentId);
+            WorkflowExpression.Validate(__workflow_deploymentId, nameof(deploymentId), required: true);
+            var __workflow_input = input == null ? null : WorkflowExpression.Compile(input);
+            WorkflowExpression.Validate(__workflow_input, nameof(input), required: true);
             return new DeferredBodyAction<GetSingleEmbeddingOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["deploymentId"] = ExpressionConverter.ConvertO(deploymentId);
-                serviceProviderParameters["input"] = ExpressionConverter.ConvertO(input);
+                serviceProviderParameters["deploymentId"] = ExpressionConverter.ConvertO(__workflow_deploymentId);
+                serviceProviderParameters["input"] = ExpressionConverter.ConvertO(__workflow_input);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/openai", operationId: "getSingleEmbedding", connectionName: connectionId),
@@ -66,54 +55,54 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "openai")]
-        [WorkflowExpressionFactory(nameof(__BuildGetChatCompletions))]
-        public IBodyWorkflowAction<GetChatCompletionsOutput> GetChatCompletions([WorkflowExpression] Func<string> deploymentId, [WorkflowExpression] Func<GetChatCompletionsInputMessagesTypeItem[]> messages, [WorkflowExpression] Func<double> temperature = null, [WorkflowExpression] Func<double> topP = null, [WorkflowExpression] Func<int> maxTokens = null, [WorkflowExpression] Func<double> presencePenalty = null, [WorkflowExpression] Func<double> frequencyPenalty = null)
+        public IBodyWorkflowAction<GetChatCompletionsOutput> GetChatCompletions(Expression<Func<string>> deploymentId, Expression<Func<GetChatCompletionsInputMessagesTypeItem[]>> messages, Expression<Func<double>> temperature = null, Expression<Func<double>> topP = null, Expression<Func<int>> maxTokens = null, Expression<Func<double>> presencePenalty = null, Expression<Func<double>> frequencyPenalty = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetChatCompletionsOutput> __BuildGetChatCompletions(WorkflowExpression<string> deploymentId, WorkflowExpression<GetChatCompletionsInputMessagesTypeItem[]> messages, WorkflowExpression<double> temperature = null, WorkflowExpression<double> topP = null, WorkflowExpression<int> maxTokens = null, WorkflowExpression<double> presencePenalty = null, WorkflowExpression<double> frequencyPenalty = null)
-        {
-            WorkflowExpression.Validate(deploymentId, nameof(deploymentId), required: true);
-            WorkflowExpression.Validate(messages, nameof(messages), required: true);
-            WorkflowExpression.Validate(temperature, nameof(temperature), required: false);
-            WorkflowExpression.Validate(topP, nameof(topP), required: false);
-            WorkflowExpression.Validate(maxTokens, nameof(maxTokens), required: false);
-            WorkflowExpression.Validate(presencePenalty, nameof(presencePenalty), required: false);
-            WorkflowExpression.Validate(frequencyPenalty, nameof(frequencyPenalty), required: false);
+            var __workflow_deploymentId = deploymentId == null ? null : WorkflowExpression.Compile(deploymentId);
+            WorkflowExpression.Validate(__workflow_deploymentId, nameof(deploymentId), required: true);
+            var __workflow_messages = messages == null ? null : WorkflowExpression.Compile(messages);
+            WorkflowExpression.Validate(__workflow_messages, nameof(messages), required: true);
+            var __workflow_temperature = temperature == null ? null : WorkflowExpression.Compile(temperature);
+            WorkflowExpression.Validate(__workflow_temperature, nameof(temperature), required: false);
+            var __workflow_topP = topP == null ? null : WorkflowExpression.Compile(topP);
+            WorkflowExpression.Validate(__workflow_topP, nameof(topP), required: false);
+            var __workflow_maxTokens = maxTokens == null ? null : WorkflowExpression.Compile(maxTokens);
+            WorkflowExpression.Validate(__workflow_maxTokens, nameof(maxTokens), required: false);
+            var __workflow_presencePenalty = presencePenalty == null ? null : WorkflowExpression.Compile(presencePenalty);
+            WorkflowExpression.Validate(__workflow_presencePenalty, nameof(presencePenalty), required: false);
+            var __workflow_frequencyPenalty = frequencyPenalty == null ? null : WorkflowExpression.Compile(frequencyPenalty);
+            WorkflowExpression.Validate(__workflow_frequencyPenalty, nameof(frequencyPenalty), required: false);
             return new DeferredBodyAction<GetChatCompletionsOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["deploymentId"] = ExpressionConverter.ConvertO(deploymentId);
-                if (temperature != null)
+                serviceProviderParameters["deploymentId"] = ExpressionConverter.ConvertO(__workflow_deploymentId);
+                if (__workflow_temperature != null)
                 {
-                    serviceProviderParameters["temperature"] = ExpressionConverter.ConvertO(temperature);
+                    serviceProviderParameters["temperature"] = ExpressionConverter.ConvertO(__workflow_temperature);
                 }
                 else
                 {
                     serviceProviderParameters["temperature"] = 1;
                 }
 
-                serviceProviderParameters["messages"] = ExpressionConverter.ConvertO(messages);
-                if (topP != null)
+                serviceProviderParameters["messages"] = ExpressionConverter.ConvertO(__workflow_messages);
+                if (__workflow_topP != null)
                 {
-                    serviceProviderParameters["top_p"] = ExpressionConverter.ConvertO(topP);
+                    serviceProviderParameters["top_p"] = ExpressionConverter.ConvertO(__workflow_topP);
                 }
 
-                if (maxTokens != null)
+                if (__workflow_maxTokens != null)
                 {
-                    serviceProviderParameters["max_tokens"] = ExpressionConverter.ConvertO(maxTokens);
+                    serviceProviderParameters["max_tokens"] = ExpressionConverter.ConvertO(__workflow_maxTokens);
                 }
 
-                if (presencePenalty != null)
+                if (__workflow_presencePenalty != null)
                 {
-                    serviceProviderParameters["presence_penalty"] = ExpressionConverter.ConvertO(presencePenalty);
+                    serviceProviderParameters["presence_penalty"] = ExpressionConverter.ConvertO(__workflow_presencePenalty);
                 }
 
-                if (frequencyPenalty != null)
+                if (__workflow_frequencyPenalty != null)
                 {
-                    serviceProviderParameters["frequency_penalty"] = ExpressionConverter.ConvertO(frequencyPenalty);
+                    serviceProviderParameters["frequency_penalty"] = ExpressionConverter.ConvertO(__workflow_frequencyPenalty);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -126,64 +115,65 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "openai")]
-        [WorkflowExpressionFactory(nameof(__BuildGetMultipleChatCompletions))]
-        public IBodyWorkflowAction<GetMultipleChatCompletionsOutput> GetMultipleChatCompletions([WorkflowExpression] Func<string> deploymentId, [WorkflowExpression] Func<GetMultipleChatCompletionsInputMessagesTypeItem[]> messages, [WorkflowExpression] Func<double> temperature = null, [WorkflowExpression] Func<double> topP = null, [WorkflowExpression] Func<int> maxTokens = null, [WorkflowExpression] Func<int> n = null, [WorkflowExpression] Func<double> presencePenalty = null, [WorkflowExpression] Func<double> frequencyPenalty = null)
+        public IBodyWorkflowAction<GetMultipleChatCompletionsOutput> GetMultipleChatCompletions(Expression<Func<string>> deploymentId, Expression<Func<GetMultipleChatCompletionsInputMessagesTypeItem[]>> messages, Expression<Func<double>> temperature = null, Expression<Func<double>> topP = null, Expression<Func<int>> maxTokens = null, Expression<Func<int>> n = null, Expression<Func<double>> presencePenalty = null, Expression<Func<double>> frequencyPenalty = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetMultipleChatCompletionsOutput> __BuildGetMultipleChatCompletions(WorkflowExpression<string> deploymentId, WorkflowExpression<GetMultipleChatCompletionsInputMessagesTypeItem[]> messages, WorkflowExpression<double> temperature = null, WorkflowExpression<double> topP = null, WorkflowExpression<int> maxTokens = null, WorkflowExpression<int> n = null, WorkflowExpression<double> presencePenalty = null, WorkflowExpression<double> frequencyPenalty = null)
-        {
-            WorkflowExpression.Validate(deploymentId, nameof(deploymentId), required: true);
-            WorkflowExpression.Validate(messages, nameof(messages), required: true);
-            WorkflowExpression.Validate(temperature, nameof(temperature), required: false);
-            WorkflowExpression.Validate(topP, nameof(topP), required: false);
-            WorkflowExpression.Validate(maxTokens, nameof(maxTokens), required: false);
-            WorkflowExpression.Validate(n, nameof(n), required: false);
-            WorkflowExpression.Validate(presencePenalty, nameof(presencePenalty), required: false);
-            WorkflowExpression.Validate(frequencyPenalty, nameof(frequencyPenalty), required: false);
+            var __workflow_deploymentId = deploymentId == null ? null : WorkflowExpression.Compile(deploymentId);
+            WorkflowExpression.Validate(__workflow_deploymentId, nameof(deploymentId), required: true);
+            var __workflow_messages = messages == null ? null : WorkflowExpression.Compile(messages);
+            WorkflowExpression.Validate(__workflow_messages, nameof(messages), required: true);
+            var __workflow_temperature = temperature == null ? null : WorkflowExpression.Compile(temperature);
+            WorkflowExpression.Validate(__workflow_temperature, nameof(temperature), required: false);
+            var __workflow_topP = topP == null ? null : WorkflowExpression.Compile(topP);
+            WorkflowExpression.Validate(__workflow_topP, nameof(topP), required: false);
+            var __workflow_maxTokens = maxTokens == null ? null : WorkflowExpression.Compile(maxTokens);
+            WorkflowExpression.Validate(__workflow_maxTokens, nameof(maxTokens), required: false);
+            var __workflow_n = n == null ? null : WorkflowExpression.Compile(n);
+            WorkflowExpression.Validate(__workflow_n, nameof(n), required: false);
+            var __workflow_presencePenalty = presencePenalty == null ? null : WorkflowExpression.Compile(presencePenalty);
+            WorkflowExpression.Validate(__workflow_presencePenalty, nameof(presencePenalty), required: false);
+            var __workflow_frequencyPenalty = frequencyPenalty == null ? null : WorkflowExpression.Compile(frequencyPenalty);
+            WorkflowExpression.Validate(__workflow_frequencyPenalty, nameof(frequencyPenalty), required: false);
             return new DeferredBodyAction<GetMultipleChatCompletionsOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["deploymentId"] = ExpressionConverter.ConvertO(deploymentId);
-                if (temperature != null)
+                serviceProviderParameters["deploymentId"] = ExpressionConverter.ConvertO(__workflow_deploymentId);
+                if (__workflow_temperature != null)
                 {
-                    serviceProviderParameters["temperature"] = ExpressionConverter.ConvertO(temperature);
+                    serviceProviderParameters["temperature"] = ExpressionConverter.ConvertO(__workflow_temperature);
                 }
                 else
                 {
                     serviceProviderParameters["temperature"] = 1;
                 }
 
-                serviceProviderParameters["messages"] = ExpressionConverter.ConvertO(messages);
-                if (topP != null)
+                serviceProviderParameters["messages"] = ExpressionConverter.ConvertO(__workflow_messages);
+                if (__workflow_topP != null)
                 {
-                    serviceProviderParameters["top_p"] = ExpressionConverter.ConvertO(topP);
+                    serviceProviderParameters["top_p"] = ExpressionConverter.ConvertO(__workflow_topP);
                 }
 
-                if (maxTokens != null)
+                if (__workflow_maxTokens != null)
                 {
-                    serviceProviderParameters["max_tokens"] = ExpressionConverter.ConvertO(maxTokens);
+                    serviceProviderParameters["max_tokens"] = ExpressionConverter.ConvertO(__workflow_maxTokens);
                 }
 
-                if (n != null)
+                if (__workflow_n != null)
                 {
-                    serviceProviderParameters["n"] = ExpressionConverter.ConvertO(n);
+                    serviceProviderParameters["n"] = ExpressionConverter.ConvertO(__workflow_n);
                 }
                 else
                 {
                     serviceProviderParameters["n"] = 1;
                 }
 
-                if (presencePenalty != null)
+                if (__workflow_presencePenalty != null)
                 {
-                    serviceProviderParameters["presence_penalty"] = ExpressionConverter.ConvertO(presencePenalty);
+                    serviceProviderParameters["presence_penalty"] = ExpressionConverter.ConvertO(__workflow_presencePenalty);
                 }
 
-                if (frequencyPenalty != null)
+                if (__workflow_frequencyPenalty != null)
                 {
-                    serviceProviderParameters["frequency_penalty"] = ExpressionConverter.ConvertO(frequencyPenalty);
+                    serviceProviderParameters["frequency_penalty"] = ExpressionConverter.ConvertO(__workflow_frequencyPenalty);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -196,54 +186,54 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "openai")]
-        [WorkflowExpressionFactory(nameof(__BuildGetCompletion))]
-        public IBodyWorkflowAction<GetCompletionOutput> GetCompletion([WorkflowExpression] Func<string> deploymentId, [WorkflowExpression] Func<string[]> prompts, [WorkflowExpression] Func<double> temperature = null, [WorkflowExpression] Func<string[]> stopSequences = null, [WorkflowExpression] Func<int> maxTokens = null, [WorkflowExpression] Func<double> presencePenalty = null, [WorkflowExpression] Func<double> frequencyPenalty = null)
+        public IBodyWorkflowAction<GetCompletionOutput> GetCompletion(Expression<Func<string>> deploymentId, Expression<Func<string[]>> prompts, Expression<Func<double>> temperature = null, Expression<Func<string[]>> stopSequences = null, Expression<Func<int>> maxTokens = null, Expression<Func<double>> presencePenalty = null, Expression<Func<double>> frequencyPenalty = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetCompletionOutput> __BuildGetCompletion(WorkflowExpression<string> deploymentId, WorkflowExpression<string[]> prompts, WorkflowExpression<double> temperature = null, WorkflowExpression<string[]> stopSequences = null, WorkflowExpression<int> maxTokens = null, WorkflowExpression<double> presencePenalty = null, WorkflowExpression<double> frequencyPenalty = null)
-        {
-            WorkflowExpression.Validate(deploymentId, nameof(deploymentId), required: true);
-            WorkflowExpression.Validate(prompts, nameof(prompts), required: true);
-            WorkflowExpression.Validate(temperature, nameof(temperature), required: false);
-            WorkflowExpression.Validate(stopSequences, nameof(stopSequences), required: false);
-            WorkflowExpression.Validate(maxTokens, nameof(maxTokens), required: false);
-            WorkflowExpression.Validate(presencePenalty, nameof(presencePenalty), required: false);
-            WorkflowExpression.Validate(frequencyPenalty, nameof(frequencyPenalty), required: false);
+            var __workflow_deploymentId = deploymentId == null ? null : WorkflowExpression.Compile(deploymentId);
+            WorkflowExpression.Validate(__workflow_deploymentId, nameof(deploymentId), required: true);
+            var __workflow_prompts = prompts == null ? null : WorkflowExpression.Compile(prompts);
+            WorkflowExpression.Validate(__workflow_prompts, nameof(prompts), required: true);
+            var __workflow_temperature = temperature == null ? null : WorkflowExpression.Compile(temperature);
+            WorkflowExpression.Validate(__workflow_temperature, nameof(temperature), required: false);
+            var __workflow_stopSequences = stopSequences == null ? null : WorkflowExpression.Compile(stopSequences);
+            WorkflowExpression.Validate(__workflow_stopSequences, nameof(stopSequences), required: false);
+            var __workflow_maxTokens = maxTokens == null ? null : WorkflowExpression.Compile(maxTokens);
+            WorkflowExpression.Validate(__workflow_maxTokens, nameof(maxTokens), required: false);
+            var __workflow_presencePenalty = presencePenalty == null ? null : WorkflowExpression.Compile(presencePenalty);
+            WorkflowExpression.Validate(__workflow_presencePenalty, nameof(presencePenalty), required: false);
+            var __workflow_frequencyPenalty = frequencyPenalty == null ? null : WorkflowExpression.Compile(frequencyPenalty);
+            WorkflowExpression.Validate(__workflow_frequencyPenalty, nameof(frequencyPenalty), required: false);
             return new DeferredBodyAction<GetCompletionOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["deploymentId"] = ExpressionConverter.ConvertO(deploymentId);
-                if (temperature != null)
+                serviceProviderParameters["deploymentId"] = ExpressionConverter.ConvertO(__workflow_deploymentId);
+                if (__workflow_temperature != null)
                 {
-                    serviceProviderParameters["temperature"] = ExpressionConverter.ConvertO(temperature);
+                    serviceProviderParameters["temperature"] = ExpressionConverter.ConvertO(__workflow_temperature);
                 }
                 else
                 {
                     serviceProviderParameters["temperature"] = 1;
                 }
 
-                serviceProviderParameters["prompts"] = ExpressionConverter.ConvertO(prompts);
-                if (stopSequences != null)
+                serviceProviderParameters["prompts"] = ExpressionConverter.ConvertO(__workflow_prompts);
+                if (__workflow_stopSequences != null)
                 {
-                    serviceProviderParameters["stopSequences"] = ExpressionConverter.ConvertO(stopSequences);
+                    serviceProviderParameters["stopSequences"] = ExpressionConverter.ConvertO(__workflow_stopSequences);
                 }
 
-                if (maxTokens != null)
+                if (__workflow_maxTokens != null)
                 {
-                    serviceProviderParameters["max_tokens"] = ExpressionConverter.ConvertO(maxTokens);
+                    serviceProviderParameters["max_tokens"] = ExpressionConverter.ConvertO(__workflow_maxTokens);
                 }
 
-                if (presencePenalty != null)
+                if (__workflow_presencePenalty != null)
                 {
-                    serviceProviderParameters["presence_penalty"] = ExpressionConverter.ConvertO(presencePenalty);
+                    serviceProviderParameters["presence_penalty"] = ExpressionConverter.ConvertO(__workflow_presencePenalty);
                 }
 
-                if (frequencyPenalty != null)
+                if (__workflow_frequencyPenalty != null)
                 {
-                    serviceProviderParameters["frequency_penalty"] = ExpressionConverter.ConvertO(frequencyPenalty);
+                    serviceProviderParameters["frequency_penalty"] = ExpressionConverter.ConvertO(__workflow_frequencyPenalty);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -256,60 +246,61 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "openai")]
-        [WorkflowExpressionFactory(nameof(__BuildGetChatCompletionsUsingPromptTemplate))]
-        public IBodyWorkflowAction<GetChatCompletionsUsingPromptTemplateOutput> GetChatCompletionsUsingPromptTemplate([WorkflowExpression] Func<string> deploymentId, [WorkflowExpression] Func<string> promptTemplateInput, [WorkflowExpression] Func<double> temperature = null, [WorkflowExpression] Func<object> promptTemplateInputVariables = null, [WorkflowExpression] Func<double> topP = null, [WorkflowExpression] Func<int> maxTokens = null, [WorkflowExpression] Func<double> presencePenalty = null, [WorkflowExpression] Func<double> frequencyPenalty = null)
+        public IBodyWorkflowAction<GetChatCompletionsUsingPromptTemplateOutput> GetChatCompletionsUsingPromptTemplate(Expression<Func<string>> deploymentId, Expression<Func<string>> promptTemplateInput, Expression<Func<double>> temperature = null, Expression<Func<object>> promptTemplateInputVariables = null, Expression<Func<double>> topP = null, Expression<Func<int>> maxTokens = null, Expression<Func<double>> presencePenalty = null, Expression<Func<double>> frequencyPenalty = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetChatCompletionsUsingPromptTemplateOutput> __BuildGetChatCompletionsUsingPromptTemplate(WorkflowExpression<string> deploymentId, WorkflowExpression<string> promptTemplateInput, WorkflowExpression<double> temperature = null, WorkflowExpression<object> promptTemplateInputVariables = null, WorkflowExpression<double> topP = null, WorkflowExpression<int> maxTokens = null, WorkflowExpression<double> presencePenalty = null, WorkflowExpression<double> frequencyPenalty = null)
-        {
-            WorkflowExpression.Validate(deploymentId, nameof(deploymentId), required: true);
-            WorkflowExpression.Validate(promptTemplateInput, nameof(promptTemplateInput), required: true);
-            WorkflowExpression.Validate(temperature, nameof(temperature), required: false);
-            WorkflowExpression.Validate(promptTemplateInputVariables, nameof(promptTemplateInputVariables), required: false);
-            WorkflowExpression.Validate(topP, nameof(topP), required: false);
-            WorkflowExpression.Validate(maxTokens, nameof(maxTokens), required: false);
-            WorkflowExpression.Validate(presencePenalty, nameof(presencePenalty), required: false);
-            WorkflowExpression.Validate(frequencyPenalty, nameof(frequencyPenalty), required: false);
+            var __workflow_deploymentId = deploymentId == null ? null : WorkflowExpression.Compile(deploymentId);
+            WorkflowExpression.Validate(__workflow_deploymentId, nameof(deploymentId), required: true);
+            var __workflow_promptTemplateInput = promptTemplateInput == null ? null : WorkflowExpression.Compile(promptTemplateInput);
+            WorkflowExpression.Validate(__workflow_promptTemplateInput, nameof(promptTemplateInput), required: true);
+            var __workflow_temperature = temperature == null ? null : WorkflowExpression.Compile(temperature);
+            WorkflowExpression.Validate(__workflow_temperature, nameof(temperature), required: false);
+            var __workflow_promptTemplateInputVariables = promptTemplateInputVariables == null ? null : WorkflowExpression.Compile(promptTemplateInputVariables);
+            WorkflowExpression.Validate(__workflow_promptTemplateInputVariables, nameof(promptTemplateInputVariables), required: false);
+            var __workflow_topP = topP == null ? null : WorkflowExpression.Compile(topP);
+            WorkflowExpression.Validate(__workflow_topP, nameof(topP), required: false);
+            var __workflow_maxTokens = maxTokens == null ? null : WorkflowExpression.Compile(maxTokens);
+            WorkflowExpression.Validate(__workflow_maxTokens, nameof(maxTokens), required: false);
+            var __workflow_presencePenalty = presencePenalty == null ? null : WorkflowExpression.Compile(presencePenalty);
+            WorkflowExpression.Validate(__workflow_presencePenalty, nameof(presencePenalty), required: false);
+            var __workflow_frequencyPenalty = frequencyPenalty == null ? null : WorkflowExpression.Compile(frequencyPenalty);
+            WorkflowExpression.Validate(__workflow_frequencyPenalty, nameof(frequencyPenalty), required: false);
             return new DeferredBodyAction<GetChatCompletionsUsingPromptTemplateOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["deploymentId"] = ExpressionConverter.ConvertO(deploymentId);
-                if (temperature != null)
+                serviceProviderParameters["deploymentId"] = ExpressionConverter.ConvertO(__workflow_deploymentId);
+                if (__workflow_temperature != null)
                 {
-                    serviceProviderParameters["temperature"] = ExpressionConverter.ConvertO(temperature);
+                    serviceProviderParameters["temperature"] = ExpressionConverter.ConvertO(__workflow_temperature);
                 }
                 else
                 {
                     serviceProviderParameters["temperature"] = 1;
                 }
 
-                serviceProviderParameters["promptTemplateInput"] = ExpressionConverter.ConvertO(promptTemplateInput);
-                if (promptTemplateInputVariables != null)
+                serviceProviderParameters["promptTemplateInput"] = ExpressionConverter.ConvertO(__workflow_promptTemplateInput);
+                if (__workflow_promptTemplateInputVariables != null)
                 {
-                    serviceProviderParameters["promptTemplateInputVariables"] = ExpressionConverter.ConvertO(promptTemplateInputVariables);
+                    serviceProviderParameters["promptTemplateInputVariables"] = ExpressionConverter.ConvertO(__workflow_promptTemplateInputVariables);
                 }
 
-                if (topP != null)
+                if (__workflow_topP != null)
                 {
-                    serviceProviderParameters["top_p"] = ExpressionConverter.ConvertO(topP);
+                    serviceProviderParameters["top_p"] = ExpressionConverter.ConvertO(__workflow_topP);
                 }
 
-                if (maxTokens != null)
+                if (__workflow_maxTokens != null)
                 {
-                    serviceProviderParameters["max_tokens"] = ExpressionConverter.ConvertO(maxTokens);
+                    serviceProviderParameters["max_tokens"] = ExpressionConverter.ConvertO(__workflow_maxTokens);
                 }
 
-                if (presencePenalty != null)
+                if (__workflow_presencePenalty != null)
                 {
-                    serviceProviderParameters["presence_penalty"] = ExpressionConverter.ConvertO(presencePenalty);
+                    serviceProviderParameters["presence_penalty"] = ExpressionConverter.ConvertO(__workflow_presencePenalty);
                 }
 
-                if (frequencyPenalty != null)
+                if (__workflow_frequencyPenalty != null)
                 {
-                    serviceProviderParameters["frequency_penalty"] = ExpressionConverter.ConvertO(frequencyPenalty);
+                    serviceProviderParameters["frequency_penalty"] = ExpressionConverter.ConvertO(__workflow_frequencyPenalty);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput

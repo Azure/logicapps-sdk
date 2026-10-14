@@ -1,254 +1,200 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class TwitterActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
-        [WorkflowExpressionFactory(nameof(__BuildUserTimeline))]
-        public IBodyWorkflowAction<TweetModel[]> UserTimeline([WorkflowExpression] Func<string> userName, [WorkflowExpression] Func<int> maxResults = null)
+        public IBodyWorkflowAction<TweetModel[]> UserTimeline(Expression<Func<string>> userName, Expression<Func<int>> maxResults = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TweetModel[]> __BuildUserTimeline(WorkflowExpression<string> userName, WorkflowExpression<int> maxResults = null)
-        {
-            WorkflowExpression.Validate(userName, nameof(userName), required: true);
-            WorkflowExpression.Validate(maxResults, nameof(maxResults), required: false);
+            var __workflow_userName = userName == null ? null : WorkflowExpression.Compile(userName);
+            WorkflowExpression.Validate(__workflow_userName, nameof(userName), required: true);
+            var __workflow_maxResults = maxResults == null ? null : WorkflowExpression.Compile(maxResults);
+            WorkflowExpression.Validate(__workflow_maxResults, nameof(maxResults), required: false);
             return new DeferredBodyAction<TweetModel[]>(() =>
             {
                 var apiCallPath = "/usertimeline";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["userName"] = ExpressionConverter.Convert(userName);
+                callPayload.Queries["userName"] = ExpressionConverter.Convert(__workflow_userName);
                 callPayload.Queries["maxResults"] = Convert.ToString(20);
-                if (maxResults != null)
-                    callPayload.Queries["maxResults"] = ExpressionConverter.Convert(maxResults);
+                if (__workflow_maxResults != null)
+                    callPayload.Queries["maxResults"] = ExpressionConverter.Convert(__workflow_maxResults);
                 return new ApiConnectionAction<TweetModel[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
-        [WorkflowExpressionFactory(nameof(__BuildHomeTimeline))]
-        public IBodyWorkflowAction<TweetModel[]> HomeTimeline([WorkflowExpression] Func<int> maxResults = null)
+        public IBodyWorkflowAction<TweetModel[]> HomeTimeline(Expression<Func<int>> maxResults = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TweetModel[]> __BuildHomeTimeline(WorkflowExpression<int> maxResults = null)
-        {
-            WorkflowExpression.Validate(maxResults, nameof(maxResults), required: false);
+            var __workflow_maxResults = maxResults == null ? null : WorkflowExpression.Compile(maxResults);
+            WorkflowExpression.Validate(__workflow_maxResults, nameof(maxResults), required: false);
             return new DeferredBodyAction<TweetModel[]>(() =>
             {
                 var apiCallPath = "/hometimeline";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["maxResults"] = Convert.ToString(20);
-                if (maxResults != null)
-                    callPayload.Queries["maxResults"] = ExpressionConverter.Convert(maxResults);
+                if (__workflow_maxResults != null)
+                    callPayload.Queries["maxResults"] = ExpressionConverter.Convert(__workflow_maxResults);
                 return new ApiConnectionAction<TweetModel[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
-        [WorkflowExpressionFactory(nameof(__BuildSearchTweet))]
-        public IBodyWorkflowAction<TweetModel[]> SearchTweet([WorkflowExpression] Func<string> searchQuery, [WorkflowExpression] Func<int> maxResults = null, [WorkflowExpression] Func<string> sinceId = null)
+        public IBodyWorkflowAction<TweetModel[]> SearchTweet(Expression<Func<string>> searchQuery, Expression<Func<int>> maxResults = null, Expression<Func<string>> sinceId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TweetModel[]> __BuildSearchTweet(WorkflowExpression<string> searchQuery, WorkflowExpression<int> maxResults = null, WorkflowExpression<string> sinceId = null)
-        {
-            WorkflowExpression.Validate(searchQuery, nameof(searchQuery), required: true);
-            WorkflowExpression.Validate(maxResults, nameof(maxResults), required: false);
-            WorkflowExpression.Validate(sinceId, nameof(sinceId), required: false);
+            var __workflow_searchQuery = searchQuery == null ? null : WorkflowExpression.Compile(searchQuery);
+            WorkflowExpression.Validate(__workflow_searchQuery, nameof(searchQuery), required: true);
+            var __workflow_maxResults = maxResults == null ? null : WorkflowExpression.Compile(maxResults);
+            WorkflowExpression.Validate(__workflow_maxResults, nameof(maxResults), required: false);
+            var __workflow_sinceId = sinceId == null ? null : WorkflowExpression.Compile(sinceId);
+            WorkflowExpression.Validate(__workflow_sinceId, nameof(sinceId), required: false);
             return new DeferredBodyAction<TweetModel[]>(() =>
             {
                 var apiCallPath = "/searchtweets";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["searchQuery"] = ExpressionConverter.Convert(searchQuery);
+                callPayload.Queries["searchQuery"] = ExpressionConverter.Convert(__workflow_searchQuery);
                 callPayload.Queries["maxResults"] = Convert.ToString(20);
-                if (maxResults != null)
-                    callPayload.Queries["maxResults"] = ExpressionConverter.Convert(maxResults);
-                if (sinceId != null)
-                    callPayload.Queries["sinceId"] = ExpressionConverter.Convert(sinceId);
+                if (__workflow_maxResults != null)
+                    callPayload.Queries["maxResults"] = ExpressionConverter.Convert(__workflow_maxResults);
+                if (__workflow_sinceId != null)
+                    callPayload.Queries["sinceId"] = ExpressionConverter.Convert(__workflow_sinceId);
                 return new ApiConnectionAction<TweetModel[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
-        [WorkflowExpressionFactory(nameof(__BuildFollowers))]
-        public IBodyWorkflowAction<UserDetailsModel[]> Followers([WorkflowExpression] Func<string> userName, [WorkflowExpression] Func<int> maxResults = null)
+        public IBodyWorkflowAction<UserDetailsModel[]> Followers(Expression<Func<string>> userName, Expression<Func<int>> maxResults = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UserDetailsModel[]> __BuildFollowers(WorkflowExpression<string> userName, WorkflowExpression<int> maxResults = null)
-        {
-            WorkflowExpression.Validate(userName, nameof(userName), required: true);
-            WorkflowExpression.Validate(maxResults, nameof(maxResults), required: false);
+            var __workflow_userName = userName == null ? null : WorkflowExpression.Compile(userName);
+            WorkflowExpression.Validate(__workflow_userName, nameof(userName), required: true);
+            var __workflow_maxResults = maxResults == null ? null : WorkflowExpression.Compile(maxResults);
+            WorkflowExpression.Validate(__workflow_maxResults, nameof(maxResults), required: false);
             return new DeferredBodyAction<UserDetailsModel[]>(() =>
             {
                 var apiCallPath = "/followers";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["userName"] = ExpressionConverter.Convert(userName);
+                callPayload.Queries["userName"] = ExpressionConverter.Convert(__workflow_userName);
                 callPayload.Queries["maxResults"] = Convert.ToString(20);
-                if (maxResults != null)
-                    callPayload.Queries["maxResults"] = ExpressionConverter.Convert(maxResults);
+                if (__workflow_maxResults != null)
+                    callPayload.Queries["maxResults"] = ExpressionConverter.Convert(__workflow_maxResults);
                 return new ApiConnectionAction<UserDetailsModel[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
-        [WorkflowExpressionFactory(nameof(__BuildMyFollowers))]
-        public IBodyWorkflowAction<UserDetailsModel[]> MyFollowers([WorkflowExpression] Func<int> maxResults = null)
+        public IBodyWorkflowAction<UserDetailsModel[]> MyFollowers(Expression<Func<int>> maxResults = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UserDetailsModel[]> __BuildMyFollowers(WorkflowExpression<int> maxResults = null)
-        {
-            WorkflowExpression.Validate(maxResults, nameof(maxResults), required: false);
+            var __workflow_maxResults = maxResults == null ? null : WorkflowExpression.Compile(maxResults);
+            WorkflowExpression.Validate(__workflow_maxResults, nameof(maxResults), required: false);
             return new DeferredBodyAction<UserDetailsModel[]>(() =>
             {
                 var apiCallPath = "/myfollowers";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["maxResults"] = Convert.ToString(20);
-                if (maxResults != null)
-                    callPayload.Queries["maxResults"] = ExpressionConverter.Convert(maxResults);
+                if (__workflow_maxResults != null)
+                    callPayload.Queries["maxResults"] = ExpressionConverter.Convert(__workflow_maxResults);
                 return new ApiConnectionAction<UserDetailsModel[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
-        [WorkflowExpressionFactory(nameof(__BuildFollowing))]
-        public IBodyWorkflowAction<UserDetailsModel[]> Following([WorkflowExpression] Func<string> userName, [WorkflowExpression] Func<int> maxResults = null)
+        public IBodyWorkflowAction<UserDetailsModel[]> Following(Expression<Func<string>> userName, Expression<Func<int>> maxResults = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UserDetailsModel[]> __BuildFollowing(WorkflowExpression<string> userName, WorkflowExpression<int> maxResults = null)
-        {
-            WorkflowExpression.Validate(userName, nameof(userName), required: true);
-            WorkflowExpression.Validate(maxResults, nameof(maxResults), required: false);
+            var __workflow_userName = userName == null ? null : WorkflowExpression.Compile(userName);
+            WorkflowExpression.Validate(__workflow_userName, nameof(userName), required: true);
+            var __workflow_maxResults = maxResults == null ? null : WorkflowExpression.Compile(maxResults);
+            WorkflowExpression.Validate(__workflow_maxResults, nameof(maxResults), required: false);
             return new DeferredBodyAction<UserDetailsModel[]>(() =>
             {
                 var apiCallPath = "/friends";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["userName"] = ExpressionConverter.Convert(userName);
+                callPayload.Queries["userName"] = ExpressionConverter.Convert(__workflow_userName);
                 callPayload.Queries["maxResults"] = Convert.ToString(20);
-                if (maxResults != null)
-                    callPayload.Queries["maxResults"] = ExpressionConverter.Convert(maxResults);
+                if (__workflow_maxResults != null)
+                    callPayload.Queries["maxResults"] = ExpressionConverter.Convert(__workflow_maxResults);
                 return new ApiConnectionAction<UserDetailsModel[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
-        [WorkflowExpressionFactory(nameof(__BuildMyFollowing))]
-        public IBodyWorkflowAction<UserDetailsModel[]> MyFollowing([WorkflowExpression] Func<int> maxResults = null)
+        public IBodyWorkflowAction<UserDetailsModel[]> MyFollowing(Expression<Func<int>> maxResults = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UserDetailsModel[]> __BuildMyFollowing(WorkflowExpression<int> maxResults = null)
-        {
-            WorkflowExpression.Validate(maxResults, nameof(maxResults), required: false);
+            var __workflow_maxResults = maxResults == null ? null : WorkflowExpression.Compile(maxResults);
+            WorkflowExpression.Validate(__workflow_maxResults, nameof(maxResults), required: false);
             return new DeferredBodyAction<UserDetailsModel[]>(() =>
             {
                 var apiCallPath = "/myfriends";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["maxResults"] = Convert.ToString(20);
-                if (maxResults != null)
-                    callPayload.Queries["maxResults"] = ExpressionConverter.Convert(maxResults);
+                if (__workflow_maxResults != null)
+                    callPayload.Queries["maxResults"] = ExpressionConverter.Convert(__workflow_maxResults);
                 return new ApiConnectionAction<UserDetailsModel[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
-        [WorkflowExpressionFactory(nameof(__BuildUser))]
-        public IBodyWorkflowAction<UserDetailsModel> User([WorkflowExpression] Func<string> userName)
+        public IBodyWorkflowAction<UserDetailsModel> User(Expression<Func<string>> userName)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UserDetailsModel> __BuildUser(WorkflowExpression<string> userName)
-        {
-            WorkflowExpression.Validate(userName, nameof(userName), required: true);
+            var __workflow_userName = userName == null ? null : WorkflowExpression.Compile(userName);
+            WorkflowExpression.Validate(__workflow_userName, nameof(userName), required: true);
             return new DeferredBodyAction<UserDetailsModel>(() =>
             {
                 var apiCallPath = "/user";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["userName"] = ExpressionConverter.Convert(userName);
+                callPayload.Queries["userName"] = ExpressionConverter.Convert(__workflow_userName);
                 return new ApiConnectionAction<UserDetailsModel>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
-        [WorkflowExpressionFactory(nameof(__BuildTweet))]
-        public IBodyWorkflowAction<TweetResponseModel> Tweet([WorkflowExpression] Func<string> tweetText = null, [WorkflowExpression] Func<string> body = null)
+        public IBodyWorkflowAction<TweetResponseModel> Tweet(Expression<Func<string>> tweetText = null, Expression<Func<string>> body = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TweetResponseModel> __BuildTweet(WorkflowExpression<string> tweetText = null, WorkflowExpression<string> body = null)
-        {
-            WorkflowExpression.Validate(tweetText, nameof(tweetText), required: false);
-            WorkflowExpression.Validate(body, nameof(body), required: false);
+            var __workflow_tweetText = tweetText == null ? null : WorkflowExpression.Compile(tweetText);
+            WorkflowExpression.Validate(__workflow_tweetText, nameof(tweetText), required: false);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
             return new DeferredBodyAction<TweetResponseModel>(() =>
             {
                 var apiCallPath = "/posttweet";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (tweetText != null)
-                    callPayload.Queries["tweetText"] = ExpressionConverter.Convert(tweetText);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                if (__workflow_tweetText != null)
+                    callPayload.Queries["tweetText"] = ExpressionConverter.Convert(__workflow_tweetText);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TweetResponseModel>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
-        [WorkflowExpressionFactory(nameof(__BuildRetweet))]
-        public IBodyWorkflowAction<TweetResponseModel> Retweet([WorkflowExpression] Func<string> tweetId, [WorkflowExpression] Func<bool> trimUser = null)
+        public IBodyWorkflowAction<TweetResponseModel> Retweet(Expression<Func<string>> tweetId, Expression<Func<bool>> trimUser = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TweetResponseModel> __BuildRetweet(WorkflowExpression<string> tweetId, WorkflowExpression<bool> trimUser = null)
-        {
-            WorkflowExpression.Validate(tweetId, nameof(tweetId), required: true);
-            WorkflowExpression.Validate(trimUser, nameof(trimUser), required: false);
+            var __workflow_tweetId = tweetId == null ? null : WorkflowExpression.Compile(tweetId);
+            WorkflowExpression.Validate(__workflow_tweetId, nameof(tweetId), required: true);
+            var __workflow_trimUser = trimUser == null ? null : WorkflowExpression.Compile(trimUser);
+            WorkflowExpression.Validate(__workflow_trimUser, nameof(trimUser), required: false);
             return new DeferredBodyAction<TweetResponseModel>(() =>
             {
                 var apiCallPath = "/retweet";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["tweetId"] = ExpressionConverter.Convert(tweetId);
+                callPayload.Queries["tweetId"] = ExpressionConverter.Convert(__workflow_tweetId);
                 callPayload.Queries["trimUser"] = Convert.ToString(false);
-                if (trimUser != null)
-                    callPayload.Queries["trimUser"] = ExpressionConverter.Convert(trimUser);
+                if (__workflow_trimUser != null)
+                    callPayload.Queries["trimUser"] = ExpressionConverter.Convert(__workflow_trimUser);
                 return new ApiConnectionAction<TweetResponseModel>(callPayload);
             });
         }
@@ -256,23 +202,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
 
     public class TwitterTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildOnNewTweet))]
-        public IBodyWorkflowTrigger<TriggerBatchResponseTweetModel> OnNewTweet([WorkflowExpression] Func<string> searchQuery,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerBatchResponseTweetModel> OnNewTweet(Expression<Func<string>> searchQuery, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<TriggerBatchResponseTweetModel> __BuildOnNewTweet(WorkflowExpression<string> searchQuery,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(searchQuery, nameof(searchQuery), required: true);
+            var __workflow_searchQuery = searchQuery == null ? null : WorkflowExpression.Compile(searchQuery);
+            WorkflowExpression.Validate(__workflow_searchQuery, nameof(searchQuery), required: true);
             return new DeferredBodyTrigger<TriggerBatchResponseTweetModel>(() =>
             {
                 var apiCallPath = "/onnewtweet";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["searchQuery"] = ExpressionConverter.Convert(searchQuery);
+                callPayload.Queries["searchQuery"] = ExpressionConverter.Convert(__workflow_searchQuery);
                 return new ApiConnectionTrigger<TriggerBatchResponseTweetModel>(callPayload, recurrence: recurrence);
             });
         }

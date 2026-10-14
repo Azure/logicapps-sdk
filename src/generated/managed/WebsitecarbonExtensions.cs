@@ -1,56 +1,44 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Websitecarbon
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class WebsitecarbonActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "websitecarbon")]
-        [WorkflowExpressionFactory(nameof(__BuildSiteAnalysis))]
-        public IBodyWorkflowAction<SiteAnalysisResponse> SiteAnalysis([WorkflowExpression] Func<string> url)
+        public IBodyWorkflowAction<SiteAnalysisResponse> SiteAnalysis(Expression<Func<string>> url)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SiteAnalysisResponse> __BuildSiteAnalysis(WorkflowExpression<string> url)
-        {
-            WorkflowExpression.Validate(url, nameof(url), required: true);
+            var __workflow_url = url == null ? null : WorkflowExpression.Compile(url);
+            WorkflowExpression.Validate(__workflow_url, nameof(url), required: true);
             return new DeferredBodyAction<SiteAnalysisResponse>(() =>
             {
                 var apiCallPath = "/site";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["url"] = ExpressionConverter.Convert(url);
+                callPayload.Queries["url"] = ExpressionConverter.Convert(__workflow_url);
                 return new ApiConnectionAction<SiteAnalysisResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "websitecarbon")]
-        [WorkflowExpressionFactory(nameof(__BuildDataAnalysis))]
-        public IBodyWorkflowAction<DataAnalysisResponse> DataAnalysis([WorkflowExpression] Func<int> bytes, [WorkflowExpression] Func<greenInput> green)
+        public IBodyWorkflowAction<DataAnalysisResponse> DataAnalysis(Expression<Func<int>> bytes, Expression<Func<greenInput>> green)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DataAnalysisResponse> __BuildDataAnalysis(WorkflowExpression<int> bytes, WorkflowExpression<greenInput> green)
-        {
-            WorkflowExpression.Validate(bytes, nameof(bytes), required: true);
-            WorkflowExpression.Validate(green, nameof(green), required: true);
+            var __workflow_bytes = bytes == null ? null : WorkflowExpression.Compile(bytes);
+            WorkflowExpression.Validate(__workflow_bytes, nameof(bytes), required: true);
+            var __workflow_green = green == null ? null : WorkflowExpression.Compile(green);
+            WorkflowExpression.Validate(__workflow_green, nameof(green), required: true);
             return new DeferredBodyAction<DataAnalysisResponse>(() =>
             {
                 var apiCallPath = "/data";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["bytes"] = ExpressionConverter.Convert(bytes);
-                callPayload.Queries["green"] = ExpressionConverter.Convert(green);
+                callPayload.Queries["bytes"] = ExpressionConverter.Convert(__workflow_bytes);
+                callPayload.Queries["green"] = ExpressionConverter.Convert(__workflow_green);
                 return new ApiConnectionAction<DataAnalysisResponse>(callPayload);
             });
         }

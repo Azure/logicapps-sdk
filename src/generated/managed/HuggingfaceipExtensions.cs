@@ -1,40 +1,37 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class HuggingfaceipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        [WorkflowExpressionFactory(nameof(__BuildModelID))]
-        public IBodyWorkflowAction<JToken> ModelID([WorkflowExpression] Func<string> modelId, [WorkflowExpression] Func<string> bodyinputs, [WorkflowExpression] Func<string> bodyquery = null, [WorkflowExpression] Func<bool> bodyoptionsuseCache = null, [WorkflowExpression] Func<bool> bodyoptionswaitForModel = null)
+        public IBodyWorkflowAction<JToken> ModelID(Expression<Func<string>> modelId, Expression<Func<string>> bodyinputs, Expression<Func<string>> bodyquery = null, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildModelID(WorkflowExpression<string> modelId, WorkflowExpression<string> bodyinputs, WorkflowExpression<string> bodyquery = null, WorkflowExpression<bool> bodyoptionsuseCache = null, WorkflowExpression<bool> bodyoptionswaitForModel = null)
-        {
-            WorkflowExpression.Validate(modelId, nameof(modelId), required: true);
-            WorkflowExpression.Validate(bodyinputs, nameof(bodyinputs), required: true);
-            WorkflowExpression.Validate(bodyquery, nameof(bodyquery), required: false);
-            WorkflowExpression.Validate(bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
-            WorkflowExpression.Validate(bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
+            var __workflow_modelId = modelId == null ? null : WorkflowExpression.Compile(modelId);
+            WorkflowExpression.Validate(__workflow_modelId, nameof(modelId), required: true);
+            var __workflow_bodyinputs = bodyinputs == null ? null : WorkflowExpression.Compile(bodyinputs);
+            WorkflowExpression.Validate(__workflow_bodyinputs, nameof(bodyinputs), required: true);
+            var __workflow_bodyquery = bodyquery == null ? null : WorkflowExpression.Compile(bodyquery);
+            WorkflowExpression.Validate(__workflow_bodyquery, nameof(bodyquery), required: false);
+            var __workflow_bodyoptionsuseCache = bodyoptionsuseCache == null ? null : WorkflowExpression.Compile(bodyoptionsuseCache);
+            WorkflowExpression.Validate(__workflow_bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
+            var __workflow_bodyoptionswaitForModel = bodyoptionswaitForModel == null ? null : WorkflowExpression.Compile(bodyoptionswaitForModel);
+            WorkflowExpression.Validate(__workflow_bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}", ExpressionConverter.ConvertWithUrlEncoding(modelId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
+                body["inputs"] = ExpressionConverter.ConvertO(__workflow_bodyinputs);
                 var parametersObject = new JObject();
                 var parametersObjectpropCount = 0;
                 if (parametersObjectpropCount > 0)
@@ -43,9 +40,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
                     bodypropCount++;
                 }
 
-                if (bodyquery != null)
+                if (__workflow_bodyquery != null)
                 {
-                    body["query"] = ExpressionConverter.ConvertO(bodyquery);
+                    body["query"] = ExpressionConverter.ConvertO(__workflow_bodyquery);
                     bodypropCount++;
                 }
 
@@ -59,15 +56,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
 
                 var optionsObject = new JObject();
                 var optionsObjectpropCount = 0;
-                if (bodyoptionsuseCache != null)
+                if (__workflow_bodyoptionsuseCache != null)
                 {
-                    optionsObject["use_cache"] = ExpressionConverter.ConvertO(bodyoptionsuseCache);
+                    optionsObject["use_cache"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsuseCache);
                     optionsObjectpropCount++;
                 }
 
-                if (bodyoptionswaitForModel != null)
+                if (__workflow_bodyoptionswaitForModel != null)
                 {
-                    optionsObject["wait_for_model"] = ExpressionConverter.ConvertO(bodyoptionswaitForModel);
+                    optionsObject["wait_for_model"] = ExpressionConverter.ConvertO(__workflow_bodyoptionswaitForModel);
                     optionsObjectpropCount++;
                 }
 
@@ -87,18 +84,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        [WorkflowExpressionFactory(nameof(__BuildFillMask))]
-        public IBodyWorkflowAction<FillMaskPostResponseItem[]> FillMask([WorkflowExpression] Func<string> bodyinputs, [WorkflowExpression] Func<bool> bodyoptionsuseCache = null, [WorkflowExpression] Func<bool> bodyoptionswaitForModel = null)
+        public IBodyWorkflowAction<FillMaskPostResponseItem[]> FillMask(Expression<Func<string>> bodyinputs, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FillMaskPostResponseItem[]> __BuildFillMask(WorkflowExpression<string> bodyinputs, WorkflowExpression<bool> bodyoptionsuseCache = null, WorkflowExpression<bool> bodyoptionswaitForModel = null)
-        {
-            WorkflowExpression.Validate(bodyinputs, nameof(bodyinputs), required: true);
-            WorkflowExpression.Validate(bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
-            WorkflowExpression.Validate(bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
+            var __workflow_bodyinputs = bodyinputs == null ? null : WorkflowExpression.Compile(bodyinputs);
+            WorkflowExpression.Validate(__workflow_bodyinputs, nameof(bodyinputs), required: true);
+            var __workflow_bodyoptionsuseCache = bodyoptionsuseCache == null ? null : WorkflowExpression.Compile(bodyoptionsuseCache);
+            WorkflowExpression.Validate(__workflow_bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
+            var __workflow_bodyoptionswaitForModel = bodyoptionswaitForModel == null ? null : WorkflowExpression.Compile(bodyoptionswaitForModel);
+            WorkflowExpression.Validate(__workflow_bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
             return new DeferredBodyAction<FillMaskPostResponseItem[]>(() =>
             {
                 var apiCallPath = "/bert-base-uncased";
@@ -107,18 +100,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
+                body["inputs"] = ExpressionConverter.ConvertO(__workflow_bodyinputs);
                 var optionsObject = new JObject();
                 var optionsObjectpropCount = 0;
-                if (bodyoptionsuseCache != null)
+                if (__workflow_bodyoptionsuseCache != null)
                 {
-                    optionsObject["use_cache"] = ExpressionConverter.ConvertO(bodyoptionsuseCache);
+                    optionsObject["use_cache"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsuseCache);
                     optionsObjectpropCount++;
                 }
 
-                if (bodyoptionswaitForModel != null)
+                if (__workflow_bodyoptionswaitForModel != null)
                 {
-                    optionsObject["wait_for_model"] = ExpressionConverter.ConvertO(bodyoptionswaitForModel);
+                    optionsObject["wait_for_model"] = ExpressionConverter.ConvertO(__workflow_bodyoptionswaitForModel);
                     optionsObjectpropCount++;
                 }
 
@@ -138,26 +131,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        [WorkflowExpressionFactory(nameof(__BuildSummarization))]
-        public IBodyWorkflowAction<SummarizationPostResponseItem[]> Summarization([WorkflowExpression] Func<string> bodyinputs = null, [WorkflowExpression] Func<bool> bodyparametersdoSample = null, [WorkflowExpression] Func<int> bodyparametersminLength = null, [WorkflowExpression] Func<int> bodyparametersmaxLength = null, [WorkflowExpression] Func<int> bodyparameterstopK = null, [WorkflowExpression] Func<int> bodyparameterstopP = null, [WorkflowExpression] Func<double> bodyparameterstemperature = null, [WorkflowExpression] Func<double> bodyparametersrepetitionPenalty = null, [WorkflowExpression] Func<double> bodyparametersmaxTime = null, [WorkflowExpression] Func<bool> bodyoptionsuseCache = null, [WorkflowExpression] Func<bool> bodyoptionswaitForModel = null)
+        public IBodyWorkflowAction<SummarizationPostResponseItem[]> Summarization(Expression<Func<string>> bodyinputs = null, Expression<Func<bool>> bodyparametersdoSample = null, Expression<Func<int>> bodyparametersminLength = null, Expression<Func<int>> bodyparametersmaxLength = null, Expression<Func<int>> bodyparameterstopK = null, Expression<Func<int>> bodyparameterstopP = null, Expression<Func<double>> bodyparameterstemperature = null, Expression<Func<double>> bodyparametersrepetitionPenalty = null, Expression<Func<double>> bodyparametersmaxTime = null, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SummarizationPostResponseItem[]> __BuildSummarization(WorkflowExpression<string> bodyinputs = null, WorkflowExpression<bool> bodyparametersdoSample = null, WorkflowExpression<int> bodyparametersminLength = null, WorkflowExpression<int> bodyparametersmaxLength = null, WorkflowExpression<int> bodyparameterstopK = null, WorkflowExpression<int> bodyparameterstopP = null, WorkflowExpression<double> bodyparameterstemperature = null, WorkflowExpression<double> bodyparametersrepetitionPenalty = null, WorkflowExpression<double> bodyparametersmaxTime = null, WorkflowExpression<bool> bodyoptionsuseCache = null, WorkflowExpression<bool> bodyoptionswaitForModel = null)
-        {
-            WorkflowExpression.Validate(bodyinputs, nameof(bodyinputs), required: false);
-            WorkflowExpression.Validate(bodyparametersdoSample, nameof(bodyparametersdoSample), required: false);
-            WorkflowExpression.Validate(bodyparametersminLength, nameof(bodyparametersminLength), required: false);
-            WorkflowExpression.Validate(bodyparametersmaxLength, nameof(bodyparametersmaxLength), required: false);
-            WorkflowExpression.Validate(bodyparameterstopK, nameof(bodyparameterstopK), required: false);
-            WorkflowExpression.Validate(bodyparameterstopP, nameof(bodyparameterstopP), required: false);
-            WorkflowExpression.Validate(bodyparameterstemperature, nameof(bodyparameterstemperature), required: false);
-            WorkflowExpression.Validate(bodyparametersrepetitionPenalty, nameof(bodyparametersrepetitionPenalty), required: false);
-            WorkflowExpression.Validate(bodyparametersmaxTime, nameof(bodyparametersmaxTime), required: false);
-            WorkflowExpression.Validate(bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
-            WorkflowExpression.Validate(bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
+            var __workflow_bodyinputs = bodyinputs == null ? null : WorkflowExpression.Compile(bodyinputs);
+            WorkflowExpression.Validate(__workflow_bodyinputs, nameof(bodyinputs), required: false);
+            var __workflow_bodyparametersdoSample = bodyparametersdoSample == null ? null : WorkflowExpression.Compile(bodyparametersdoSample);
+            WorkflowExpression.Validate(__workflow_bodyparametersdoSample, nameof(bodyparametersdoSample), required: false);
+            var __workflow_bodyparametersminLength = bodyparametersminLength == null ? null : WorkflowExpression.Compile(bodyparametersminLength);
+            WorkflowExpression.Validate(__workflow_bodyparametersminLength, nameof(bodyparametersminLength), required: false);
+            var __workflow_bodyparametersmaxLength = bodyparametersmaxLength == null ? null : WorkflowExpression.Compile(bodyparametersmaxLength);
+            WorkflowExpression.Validate(__workflow_bodyparametersmaxLength, nameof(bodyparametersmaxLength), required: false);
+            var __workflow_bodyparameterstopK = bodyparameterstopK == null ? null : WorkflowExpression.Compile(bodyparameterstopK);
+            WorkflowExpression.Validate(__workflow_bodyparameterstopK, nameof(bodyparameterstopK), required: false);
+            var __workflow_bodyparameterstopP = bodyparameterstopP == null ? null : WorkflowExpression.Compile(bodyparameterstopP);
+            WorkflowExpression.Validate(__workflow_bodyparameterstopP, nameof(bodyparameterstopP), required: false);
+            var __workflow_bodyparameterstemperature = bodyparameterstemperature == null ? null : WorkflowExpression.Compile(bodyparameterstemperature);
+            WorkflowExpression.Validate(__workflow_bodyparameterstemperature, nameof(bodyparameterstemperature), required: false);
+            var __workflow_bodyparametersrepetitionPenalty = bodyparametersrepetitionPenalty == null ? null : WorkflowExpression.Compile(bodyparametersrepetitionPenalty);
+            WorkflowExpression.Validate(__workflow_bodyparametersrepetitionPenalty, nameof(bodyparametersrepetitionPenalty), required: false);
+            var __workflow_bodyparametersmaxTime = bodyparametersmaxTime == null ? null : WorkflowExpression.Compile(bodyparametersmaxTime);
+            WorkflowExpression.Validate(__workflow_bodyparametersmaxTime, nameof(bodyparametersmaxTime), required: false);
+            var __workflow_bodyoptionsuseCache = bodyoptionsuseCache == null ? null : WorkflowExpression.Compile(bodyoptionsuseCache);
+            WorkflowExpression.Validate(__workflow_bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
+            var __workflow_bodyoptionswaitForModel = bodyoptionswaitForModel == null ? null : WorkflowExpression.Compile(bodyoptionswaitForModel);
+            WorkflowExpression.Validate(__workflow_bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
             return new DeferredBodyAction<SummarizationPostResponseItem[]>(() =>
             {
                 var apiCallPath = "/facebook/bart-large-cnn";
@@ -165,59 +162,59 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyinputs != null)
+                if (__workflow_bodyinputs != null)
                 {
-                    body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
+                    body["inputs"] = ExpressionConverter.ConvertO(__workflow_bodyinputs);
                     bodypropCount++;
                 }
 
                 var parametersObject = new JObject();
                 var parametersObjectpropCount = 0;
-                if (bodyparametersdoSample != null)
+                if (__workflow_bodyparametersdoSample != null)
                 {
-                    parametersObject["do_sample"] = ExpressionConverter.ConvertO(bodyparametersdoSample);
+                    parametersObject["do_sample"] = ExpressionConverter.ConvertO(__workflow_bodyparametersdoSample);
                     parametersObjectpropCount++;
                 }
 
-                if (bodyparametersminLength != null)
+                if (__workflow_bodyparametersminLength != null)
                 {
-                    parametersObject["min_length"] = ExpressionConverter.ConvertO(bodyparametersminLength);
+                    parametersObject["min_length"] = ExpressionConverter.ConvertO(__workflow_bodyparametersminLength);
                     parametersObjectpropCount++;
                 }
 
-                if (bodyparametersmaxLength != null)
+                if (__workflow_bodyparametersmaxLength != null)
                 {
-                    parametersObject["max_length"] = ExpressionConverter.ConvertO(bodyparametersmaxLength);
+                    parametersObject["max_length"] = ExpressionConverter.ConvertO(__workflow_bodyparametersmaxLength);
                     parametersObjectpropCount++;
                 }
 
-                if (bodyparameterstopK != null)
+                if (__workflow_bodyparameterstopK != null)
                 {
-                    parametersObject["top_k"] = ExpressionConverter.ConvertO(bodyparameterstopK);
+                    parametersObject["top_k"] = ExpressionConverter.ConvertO(__workflow_bodyparameterstopK);
                     parametersObjectpropCount++;
                 }
 
-                if (bodyparameterstopP != null)
+                if (__workflow_bodyparameterstopP != null)
                 {
-                    parametersObject["top_p"] = ExpressionConverter.ConvertO(bodyparameterstopP);
+                    parametersObject["top_p"] = ExpressionConverter.ConvertO(__workflow_bodyparameterstopP);
                     parametersObjectpropCount++;
                 }
 
-                if (bodyparameterstemperature != null)
+                if (__workflow_bodyparameterstemperature != null)
                 {
-                    parametersObject["temperature"] = ExpressionConverter.ConvertO(bodyparameterstemperature);
+                    parametersObject["temperature"] = ExpressionConverter.ConvertO(__workflow_bodyparameterstemperature);
                     parametersObjectpropCount++;
                 }
 
-                if (bodyparametersrepetitionPenalty != null)
+                if (__workflow_bodyparametersrepetitionPenalty != null)
                 {
-                    parametersObject["repetition_penalty"] = ExpressionConverter.ConvertO(bodyparametersrepetitionPenalty);
+                    parametersObject["repetition_penalty"] = ExpressionConverter.ConvertO(__workflow_bodyparametersrepetitionPenalty);
                     parametersObjectpropCount++;
                 }
 
-                if (bodyparametersmaxTime != null)
+                if (__workflow_bodyparametersmaxTime != null)
                 {
-                    parametersObject["max_time"] = ExpressionConverter.ConvertO(bodyparametersmaxTime);
+                    parametersObject["max_time"] = ExpressionConverter.ConvertO(__workflow_bodyparametersmaxTime);
                     parametersObjectpropCount++;
                 }
 
@@ -229,15 +226,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
 
                 var optionsObject = new JObject();
                 var optionsObjectpropCount = 0;
-                if (bodyoptionsuseCache != null)
+                if (__workflow_bodyoptionsuseCache != null)
                 {
-                    optionsObject["use_cache"] = ExpressionConverter.ConvertO(bodyoptionsuseCache);
+                    optionsObject["use_cache"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsuseCache);
                     optionsObjectpropCount++;
                 }
 
-                if (bodyoptionswaitForModel != null)
+                if (__workflow_bodyoptionswaitForModel != null)
                 {
-                    optionsObject["wait_for_model"] = ExpressionConverter.ConvertO(bodyoptionswaitForModel);
+                    optionsObject["wait_for_model"] = ExpressionConverter.ConvertO(__workflow_bodyoptionswaitForModel);
                     optionsObjectpropCount++;
                 }
 
@@ -257,17 +254,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        [WorkflowExpressionFactory(nameof(__BuildAnswer))]
-        public IBodyWorkflowAction<AnswerPostResponse> Answer([WorkflowExpression] Func<string> bodyinputsquestion = null, [WorkflowExpression] Func<string> bodyinputscontext = null)
+        public IBodyWorkflowAction<AnswerPostResponse> Answer(Expression<Func<string>> bodyinputsquestion = null, Expression<Func<string>> bodyinputscontext = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AnswerPostResponse> __BuildAnswer(WorkflowExpression<string> bodyinputsquestion = null, WorkflowExpression<string> bodyinputscontext = null)
-        {
-            WorkflowExpression.Validate(bodyinputsquestion, nameof(bodyinputsquestion), required: false);
-            WorkflowExpression.Validate(bodyinputscontext, nameof(bodyinputscontext), required: false);
+            var __workflow_bodyinputsquestion = bodyinputsquestion == null ? null : WorkflowExpression.Compile(bodyinputsquestion);
+            WorkflowExpression.Validate(__workflow_bodyinputsquestion, nameof(bodyinputsquestion), required: false);
+            var __workflow_bodyinputscontext = bodyinputscontext == null ? null : WorkflowExpression.Compile(bodyinputscontext);
+            WorkflowExpression.Validate(__workflow_bodyinputscontext, nameof(bodyinputscontext), required: false);
             return new DeferredBodyAction<AnswerPostResponse>(() =>
             {
                 var apiCallPath = "/deepset/roberta-base-squad2";
@@ -277,15 +269,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
                 var bodypropCount = 0;
                 var inputsObject = new JObject();
                 var inputsObjectpropCount = 0;
-                if (bodyinputsquestion != null)
+                if (__workflow_bodyinputsquestion != null)
                 {
-                    inputsObject["question"] = ExpressionConverter.ConvertO(bodyinputsquestion);
+                    inputsObject["question"] = ExpressionConverter.ConvertO(__workflow_bodyinputsquestion);
                     inputsObjectpropCount++;
                 }
 
-                if (bodyinputscontext != null)
+                if (__workflow_bodyinputscontext != null)
                 {
-                    inputsObject["context"] = ExpressionConverter.ConvertO(bodyinputscontext);
+                    inputsObject["context"] = ExpressionConverter.ConvertO(__workflow_bodyinputscontext);
                     inputsObjectpropCount++;
                 }
 
@@ -305,19 +297,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        [WorkflowExpressionFactory(nameof(__BuildSentenceSimilarity))]
-        public IBodyWorkflowAction<double[]> SentenceSimilarity([WorkflowExpression] Func<string> bodyinputssourceSentence = null, [WorkflowExpression] Func<string[]> bodyinputssentences = null, [WorkflowExpression] Func<bool> bodyoptionsuseCache = null, [WorkflowExpression] Func<bool> bodyoptionswaitForModel = null)
+        public IBodyWorkflowAction<double[]> SentenceSimilarity(Expression<Func<string>> bodyinputssourceSentence = null, Expression<Func<string[]>> bodyinputssentences = null, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<double[]> __BuildSentenceSimilarity(WorkflowExpression<string> bodyinputssourceSentence = null, WorkflowExpression<string[]> bodyinputssentences = null, WorkflowExpression<bool> bodyoptionsuseCache = null, WorkflowExpression<bool> bodyoptionswaitForModel = null)
-        {
-            WorkflowExpression.Validate(bodyinputssourceSentence, nameof(bodyinputssourceSentence), required: false);
-            WorkflowExpression.Validate(bodyinputssentences, nameof(bodyinputssentences), required: false);
-            WorkflowExpression.Validate(bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
-            WorkflowExpression.Validate(bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
+            var __workflow_bodyinputssourceSentence = bodyinputssourceSentence == null ? null : WorkflowExpression.Compile(bodyinputssourceSentence);
+            WorkflowExpression.Validate(__workflow_bodyinputssourceSentence, nameof(bodyinputssourceSentence), required: false);
+            var __workflow_bodyinputssentences = bodyinputssentences == null ? null : WorkflowExpression.Compile(bodyinputssentences);
+            WorkflowExpression.Validate(__workflow_bodyinputssentences, nameof(bodyinputssentences), required: false);
+            var __workflow_bodyoptionsuseCache = bodyoptionsuseCache == null ? null : WorkflowExpression.Compile(bodyoptionsuseCache);
+            WorkflowExpression.Validate(__workflow_bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
+            var __workflow_bodyoptionswaitForModel = bodyoptionswaitForModel == null ? null : WorkflowExpression.Compile(bodyoptionswaitForModel);
+            WorkflowExpression.Validate(__workflow_bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
             return new DeferredBodyAction<double[]>(() =>
             {
                 var apiCallPath = "/sentence-transformers/all-MiniLM-L6-v2";
@@ -327,15 +316,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
                 var bodypropCount = 0;
                 var inputsObject = new JObject();
                 var inputsObjectpropCount = 0;
-                if (bodyinputssourceSentence != null)
+                if (__workflow_bodyinputssourceSentence != null)
                 {
-                    inputsObject["source_sentence"] = ExpressionConverter.ConvertO(bodyinputssourceSentence);
+                    inputsObject["source_sentence"] = ExpressionConverter.ConvertO(__workflow_bodyinputssourceSentence);
                     inputsObjectpropCount++;
                 }
 
-                if (bodyinputssentences != null)
+                if (__workflow_bodyinputssentences != null)
                 {
-                    inputsObject["sentences"] = ExpressionConverter.ConvertO(bodyinputssentences);
+                    inputsObject["sentences"] = ExpressionConverter.ConvertO(__workflow_bodyinputssentences);
                     inputsObjectpropCount++;
                 }
 
@@ -347,15 +336,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
 
                 var optionsObject = new JObject();
                 var optionsObjectpropCount = 0;
-                if (bodyoptionsuseCache != null)
+                if (__workflow_bodyoptionsuseCache != null)
                 {
-                    optionsObject["use_cache"] = ExpressionConverter.ConvertO(bodyoptionsuseCache);
+                    optionsObject["use_cache"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsuseCache);
                     optionsObjectpropCount++;
                 }
 
-                if (bodyoptionswaitForModel != null)
+                if (__workflow_bodyoptionswaitForModel != null)
                 {
-                    optionsObject["wait_for_model"] = ExpressionConverter.ConvertO(bodyoptionswaitForModel);
+                    optionsObject["wait_for_model"] = ExpressionConverter.ConvertO(__workflow_bodyoptionswaitForModel);
                     optionsObjectpropCount++;
                 }
 
@@ -375,18 +364,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        [WorkflowExpressionFactory(nameof(__BuildTextClassification))]
-        public IBodyWorkflowAction<TextClassificationPostResponseItemItem[][]> TextClassification([WorkflowExpression] Func<string> bodyinputs, [WorkflowExpression] Func<bool> bodyoptionsuseCache = null, [WorkflowExpression] Func<bool> bodyoptionswaitForModel = null)
+        public IBodyWorkflowAction<TextClassificationPostResponseItemItem[][]> TextClassification(Expression<Func<string>> bodyinputs, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TextClassificationPostResponseItemItem[][]> __BuildTextClassification(WorkflowExpression<string> bodyinputs, WorkflowExpression<bool> bodyoptionsuseCache = null, WorkflowExpression<bool> bodyoptionswaitForModel = null)
-        {
-            WorkflowExpression.Validate(bodyinputs, nameof(bodyinputs), required: true);
-            WorkflowExpression.Validate(bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
-            WorkflowExpression.Validate(bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
+            var __workflow_bodyinputs = bodyinputs == null ? null : WorkflowExpression.Compile(bodyinputs);
+            WorkflowExpression.Validate(__workflow_bodyinputs, nameof(bodyinputs), required: true);
+            var __workflow_bodyoptionsuseCache = bodyoptionsuseCache == null ? null : WorkflowExpression.Compile(bodyoptionsuseCache);
+            WorkflowExpression.Validate(__workflow_bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
+            var __workflow_bodyoptionswaitForModel = bodyoptionswaitForModel == null ? null : WorkflowExpression.Compile(bodyoptionswaitForModel);
+            WorkflowExpression.Validate(__workflow_bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
             return new DeferredBodyAction<TextClassificationPostResponseItemItem[][]>(() =>
             {
                 var apiCallPath = "/distilbert-base-uncased-finetuned-sst-2-english";
@@ -395,18 +380,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
+                body["inputs"] = ExpressionConverter.ConvertO(__workflow_bodyinputs);
                 var optionsObject = new JObject();
                 var optionsObjectpropCount = 0;
-                if (bodyoptionsuseCache != null)
+                if (__workflow_bodyoptionsuseCache != null)
                 {
-                    optionsObject["use_cache"] = ExpressionConverter.ConvertO(bodyoptionsuseCache);
+                    optionsObject["use_cache"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsuseCache);
                     optionsObjectpropCount++;
                 }
 
-                if (bodyoptionswaitForModel != null)
+                if (__workflow_bodyoptionswaitForModel != null)
                 {
-                    optionsObject["wait_for_model"] = ExpressionConverter.ConvertO(bodyoptionswaitForModel);
+                    optionsObject["wait_for_model"] = ExpressionConverter.ConvertO(__workflow_bodyoptionswaitForModel);
                     optionsObjectpropCount++;
                 }
 
@@ -426,26 +411,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        [WorkflowExpressionFactory(nameof(__BuildTextGeneration))]
-        public IBodyWorkflowAction<TextGenerationPostResponseItem[]> TextGeneration([WorkflowExpression] Func<string> bodyinputs = null, [WorkflowExpression] Func<bool> bodyparametersdoSample = null, [WorkflowExpression] Func<int> bodyparametersminLength = null, [WorkflowExpression] Func<int> bodyparametersmaxLength = null, [WorkflowExpression] Func<int> bodyparameterstopK = null, [WorkflowExpression] Func<int> bodyparameterstopP = null, [WorkflowExpression] Func<double> bodyparameterstemperature = null, [WorkflowExpression] Func<double> bodyparametersrepetitionPenalty = null, [WorkflowExpression] Func<double> bodyparametersmaxTime = null, [WorkflowExpression] Func<bool> bodyoptionsuseCache = null, [WorkflowExpression] Func<bool> bodyoptionswaitForModel = null)
+        public IBodyWorkflowAction<TextGenerationPostResponseItem[]> TextGeneration(Expression<Func<string>> bodyinputs = null, Expression<Func<bool>> bodyparametersdoSample = null, Expression<Func<int>> bodyparametersminLength = null, Expression<Func<int>> bodyparametersmaxLength = null, Expression<Func<int>> bodyparameterstopK = null, Expression<Func<int>> bodyparameterstopP = null, Expression<Func<double>> bodyparameterstemperature = null, Expression<Func<double>> bodyparametersrepetitionPenalty = null, Expression<Func<double>> bodyparametersmaxTime = null, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TextGenerationPostResponseItem[]> __BuildTextGeneration(WorkflowExpression<string> bodyinputs = null, WorkflowExpression<bool> bodyparametersdoSample = null, WorkflowExpression<int> bodyparametersminLength = null, WorkflowExpression<int> bodyparametersmaxLength = null, WorkflowExpression<int> bodyparameterstopK = null, WorkflowExpression<int> bodyparameterstopP = null, WorkflowExpression<double> bodyparameterstemperature = null, WorkflowExpression<double> bodyparametersrepetitionPenalty = null, WorkflowExpression<double> bodyparametersmaxTime = null, WorkflowExpression<bool> bodyoptionsuseCache = null, WorkflowExpression<bool> bodyoptionswaitForModel = null)
-        {
-            WorkflowExpression.Validate(bodyinputs, nameof(bodyinputs), required: false);
-            WorkflowExpression.Validate(bodyparametersdoSample, nameof(bodyparametersdoSample), required: false);
-            WorkflowExpression.Validate(bodyparametersminLength, nameof(bodyparametersminLength), required: false);
-            WorkflowExpression.Validate(bodyparametersmaxLength, nameof(bodyparametersmaxLength), required: false);
-            WorkflowExpression.Validate(bodyparameterstopK, nameof(bodyparameterstopK), required: false);
-            WorkflowExpression.Validate(bodyparameterstopP, nameof(bodyparameterstopP), required: false);
-            WorkflowExpression.Validate(bodyparameterstemperature, nameof(bodyparameterstemperature), required: false);
-            WorkflowExpression.Validate(bodyparametersrepetitionPenalty, nameof(bodyparametersrepetitionPenalty), required: false);
-            WorkflowExpression.Validate(bodyparametersmaxTime, nameof(bodyparametersmaxTime), required: false);
-            WorkflowExpression.Validate(bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
-            WorkflowExpression.Validate(bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
+            var __workflow_bodyinputs = bodyinputs == null ? null : WorkflowExpression.Compile(bodyinputs);
+            WorkflowExpression.Validate(__workflow_bodyinputs, nameof(bodyinputs), required: false);
+            var __workflow_bodyparametersdoSample = bodyparametersdoSample == null ? null : WorkflowExpression.Compile(bodyparametersdoSample);
+            WorkflowExpression.Validate(__workflow_bodyparametersdoSample, nameof(bodyparametersdoSample), required: false);
+            var __workflow_bodyparametersminLength = bodyparametersminLength == null ? null : WorkflowExpression.Compile(bodyparametersminLength);
+            WorkflowExpression.Validate(__workflow_bodyparametersminLength, nameof(bodyparametersminLength), required: false);
+            var __workflow_bodyparametersmaxLength = bodyparametersmaxLength == null ? null : WorkflowExpression.Compile(bodyparametersmaxLength);
+            WorkflowExpression.Validate(__workflow_bodyparametersmaxLength, nameof(bodyparametersmaxLength), required: false);
+            var __workflow_bodyparameterstopK = bodyparameterstopK == null ? null : WorkflowExpression.Compile(bodyparameterstopK);
+            WorkflowExpression.Validate(__workflow_bodyparameterstopK, nameof(bodyparameterstopK), required: false);
+            var __workflow_bodyparameterstopP = bodyparameterstopP == null ? null : WorkflowExpression.Compile(bodyparameterstopP);
+            WorkflowExpression.Validate(__workflow_bodyparameterstopP, nameof(bodyparameterstopP), required: false);
+            var __workflow_bodyparameterstemperature = bodyparameterstemperature == null ? null : WorkflowExpression.Compile(bodyparameterstemperature);
+            WorkflowExpression.Validate(__workflow_bodyparameterstemperature, nameof(bodyparameterstemperature), required: false);
+            var __workflow_bodyparametersrepetitionPenalty = bodyparametersrepetitionPenalty == null ? null : WorkflowExpression.Compile(bodyparametersrepetitionPenalty);
+            WorkflowExpression.Validate(__workflow_bodyparametersrepetitionPenalty, nameof(bodyparametersrepetitionPenalty), required: false);
+            var __workflow_bodyparametersmaxTime = bodyparametersmaxTime == null ? null : WorkflowExpression.Compile(bodyparametersmaxTime);
+            WorkflowExpression.Validate(__workflow_bodyparametersmaxTime, nameof(bodyparametersmaxTime), required: false);
+            var __workflow_bodyoptionsuseCache = bodyoptionsuseCache == null ? null : WorkflowExpression.Compile(bodyoptionsuseCache);
+            WorkflowExpression.Validate(__workflow_bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
+            var __workflow_bodyoptionswaitForModel = bodyoptionswaitForModel == null ? null : WorkflowExpression.Compile(bodyoptionswaitForModel);
+            WorkflowExpression.Validate(__workflow_bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
             return new DeferredBodyAction<TextGenerationPostResponseItem[]>(() =>
             {
                 var apiCallPath = "/gpt2";
@@ -453,59 +442,59 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyinputs != null)
+                if (__workflow_bodyinputs != null)
                 {
-                    body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
+                    body["inputs"] = ExpressionConverter.ConvertO(__workflow_bodyinputs);
                     bodypropCount++;
                 }
 
                 var parametersObject = new JObject();
                 var parametersObjectpropCount = 0;
-                if (bodyparametersdoSample != null)
+                if (__workflow_bodyparametersdoSample != null)
                 {
-                    parametersObject["do_sample"] = ExpressionConverter.ConvertO(bodyparametersdoSample);
+                    parametersObject["do_sample"] = ExpressionConverter.ConvertO(__workflow_bodyparametersdoSample);
                     parametersObjectpropCount++;
                 }
 
-                if (bodyparametersminLength != null)
+                if (__workflow_bodyparametersminLength != null)
                 {
-                    parametersObject["min_length"] = ExpressionConverter.ConvertO(bodyparametersminLength);
+                    parametersObject["min_length"] = ExpressionConverter.ConvertO(__workflow_bodyparametersminLength);
                     parametersObjectpropCount++;
                 }
 
-                if (bodyparametersmaxLength != null)
+                if (__workflow_bodyparametersmaxLength != null)
                 {
-                    parametersObject["max_length"] = ExpressionConverter.ConvertO(bodyparametersmaxLength);
+                    parametersObject["max_length"] = ExpressionConverter.ConvertO(__workflow_bodyparametersmaxLength);
                     parametersObjectpropCount++;
                 }
 
-                if (bodyparameterstopK != null)
+                if (__workflow_bodyparameterstopK != null)
                 {
-                    parametersObject["top_k"] = ExpressionConverter.ConvertO(bodyparameterstopK);
+                    parametersObject["top_k"] = ExpressionConverter.ConvertO(__workflow_bodyparameterstopK);
                     parametersObjectpropCount++;
                 }
 
-                if (bodyparameterstopP != null)
+                if (__workflow_bodyparameterstopP != null)
                 {
-                    parametersObject["top_p"] = ExpressionConverter.ConvertO(bodyparameterstopP);
+                    parametersObject["top_p"] = ExpressionConverter.ConvertO(__workflow_bodyparameterstopP);
                     parametersObjectpropCount++;
                 }
 
-                if (bodyparameterstemperature != null)
+                if (__workflow_bodyparameterstemperature != null)
                 {
-                    parametersObject["temperature"] = ExpressionConverter.ConvertO(bodyparameterstemperature);
+                    parametersObject["temperature"] = ExpressionConverter.ConvertO(__workflow_bodyparameterstemperature);
                     parametersObjectpropCount++;
                 }
 
-                if (bodyparametersrepetitionPenalty != null)
+                if (__workflow_bodyparametersrepetitionPenalty != null)
                 {
-                    parametersObject["repetition_penalty"] = ExpressionConverter.ConvertO(bodyparametersrepetitionPenalty);
+                    parametersObject["repetition_penalty"] = ExpressionConverter.ConvertO(__workflow_bodyparametersrepetitionPenalty);
                     parametersObjectpropCount++;
                 }
 
-                if (bodyparametersmaxTime != null)
+                if (__workflow_bodyparametersmaxTime != null)
                 {
-                    parametersObject["max_time"] = ExpressionConverter.ConvertO(bodyparametersmaxTime);
+                    parametersObject["max_time"] = ExpressionConverter.ConvertO(__workflow_bodyparametersmaxTime);
                     parametersObjectpropCount++;
                 }
 
@@ -517,15 +506,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
 
                 var optionsObject = new JObject();
                 var optionsObjectpropCount = 0;
-                if (bodyoptionsuseCache != null)
+                if (__workflow_bodyoptionsuseCache != null)
                 {
-                    optionsObject["use_cache"] = ExpressionConverter.ConvertO(bodyoptionsuseCache);
+                    optionsObject["use_cache"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsuseCache);
                     optionsObjectpropCount++;
                 }
 
-                if (bodyoptionswaitForModel != null)
+                if (__workflow_bodyoptionswaitForModel != null)
                 {
-                    optionsObject["wait_for_model"] = ExpressionConverter.ConvertO(bodyoptionswaitForModel);
+                    optionsObject["wait_for_model"] = ExpressionConverter.ConvertO(__workflow_bodyoptionswaitForModel);
                     optionsObjectpropCount++;
                 }
 
@@ -545,19 +534,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        [WorkflowExpressionFactory(nameof(__BuildTokenClassification))]
-        public IBodyWorkflowAction<TokenClassificationPostResponseItem[]> TokenClassification([WorkflowExpression] Func<string> bodyinputs, [WorkflowExpression] Func<string> bodyparametersaggregationStrategy = null, [WorkflowExpression] Func<bool> bodyoptionsuseCache = null, [WorkflowExpression] Func<bool> bodyoptionswaitForModel = null)
+        public IBodyWorkflowAction<TokenClassificationPostResponseItem[]> TokenClassification(Expression<Func<string>> bodyinputs, Expression<Func<string>> bodyparametersaggregationStrategy = null, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TokenClassificationPostResponseItem[]> __BuildTokenClassification(WorkflowExpression<string> bodyinputs, WorkflowExpression<string> bodyparametersaggregationStrategy = null, WorkflowExpression<bool> bodyoptionsuseCache = null, WorkflowExpression<bool> bodyoptionswaitForModel = null)
-        {
-            WorkflowExpression.Validate(bodyinputs, nameof(bodyinputs), required: true);
-            WorkflowExpression.Validate(bodyparametersaggregationStrategy, nameof(bodyparametersaggregationStrategy), required: false);
-            WorkflowExpression.Validate(bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
-            WorkflowExpression.Validate(bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
+            var __workflow_bodyinputs = bodyinputs == null ? null : WorkflowExpression.Compile(bodyinputs);
+            WorkflowExpression.Validate(__workflow_bodyinputs, nameof(bodyinputs), required: true);
+            var __workflow_bodyparametersaggregationStrategy = bodyparametersaggregationStrategy == null ? null : WorkflowExpression.Compile(bodyparametersaggregationStrategy);
+            WorkflowExpression.Validate(__workflow_bodyparametersaggregationStrategy, nameof(bodyparametersaggregationStrategy), required: false);
+            var __workflow_bodyoptionsuseCache = bodyoptionsuseCache == null ? null : WorkflowExpression.Compile(bodyoptionsuseCache);
+            WorkflowExpression.Validate(__workflow_bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
+            var __workflow_bodyoptionswaitForModel = bodyoptionswaitForModel == null ? null : WorkflowExpression.Compile(bodyoptionswaitForModel);
+            WorkflowExpression.Validate(__workflow_bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
             return new DeferredBodyAction<TokenClassificationPostResponseItem[]>(() =>
             {
                 var apiCallPath = "/dbmdz/bert-large-cased-finetuned-conll03-english";
@@ -566,12 +552,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
+                body["inputs"] = ExpressionConverter.ConvertO(__workflow_bodyinputs);
                 var parametersObject = new JObject();
                 var parametersObjectpropCount = 0;
-                if (bodyparametersaggregationStrategy != null)
+                if (__workflow_bodyparametersaggregationStrategy != null)
                 {
-                    parametersObject["aggregation_strategy"] = ExpressionConverter.ConvertO(bodyparametersaggregationStrategy);
+                    parametersObject["aggregation_strategy"] = ExpressionConverter.ConvertO(__workflow_bodyparametersaggregationStrategy);
                     parametersObjectpropCount++;
                 }
 
@@ -583,15 +569,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
 
                 var optionsObject = new JObject();
                 var optionsObjectpropCount = 0;
-                if (bodyoptionsuseCache != null)
+                if (__workflow_bodyoptionsuseCache != null)
                 {
-                    optionsObject["use_cache"] = ExpressionConverter.ConvertO(bodyoptionsuseCache);
+                    optionsObject["use_cache"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsuseCache);
                     optionsObjectpropCount++;
                 }
 
-                if (bodyoptionswaitForModel != null)
+                if (__workflow_bodyoptionswaitForModel != null)
                 {
-                    optionsObject["wait_for_model"] = ExpressionConverter.ConvertO(bodyoptionswaitForModel);
+                    optionsObject["wait_for_model"] = ExpressionConverter.ConvertO(__workflow_bodyoptionswaitForModel);
                     optionsObjectpropCount++;
                 }
 
@@ -611,18 +597,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        [WorkflowExpressionFactory(nameof(__BuildTranslation))]
-        public IBodyWorkflowAction<TranslationPostResponseItem[]> Translation([WorkflowExpression] Func<string> bodyinputs, [WorkflowExpression] Func<bool> bodyoptionsuseCache = null, [WorkflowExpression] Func<bool> bodyoptionswaitForModel = null)
+        public IBodyWorkflowAction<TranslationPostResponseItem[]> Translation(Expression<Func<string>> bodyinputs, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TranslationPostResponseItem[]> __BuildTranslation(WorkflowExpression<string> bodyinputs, WorkflowExpression<bool> bodyoptionsuseCache = null, WorkflowExpression<bool> bodyoptionswaitForModel = null)
-        {
-            WorkflowExpression.Validate(bodyinputs, nameof(bodyinputs), required: true);
-            WorkflowExpression.Validate(bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
-            WorkflowExpression.Validate(bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
+            var __workflow_bodyinputs = bodyinputs == null ? null : WorkflowExpression.Compile(bodyinputs);
+            WorkflowExpression.Validate(__workflow_bodyinputs, nameof(bodyinputs), required: true);
+            var __workflow_bodyoptionsuseCache = bodyoptionsuseCache == null ? null : WorkflowExpression.Compile(bodyoptionsuseCache);
+            WorkflowExpression.Validate(__workflow_bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
+            var __workflow_bodyoptionswaitForModel = bodyoptionswaitForModel == null ? null : WorkflowExpression.Compile(bodyoptionswaitForModel);
+            WorkflowExpression.Validate(__workflow_bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
             return new DeferredBodyAction<TranslationPostResponseItem[]>(() =>
             {
                 var apiCallPath = "/t5-base";
@@ -631,18 +613,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
+                body["inputs"] = ExpressionConverter.ConvertO(__workflow_bodyinputs);
                 var optionsObject = new JObject();
                 var optionsObjectpropCount = 0;
-                if (bodyoptionsuseCache != null)
+                if (__workflow_bodyoptionsuseCache != null)
                 {
-                    optionsObject["use_cache"] = ExpressionConverter.ConvertO(bodyoptionsuseCache);
+                    optionsObject["use_cache"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsuseCache);
                     optionsObjectpropCount++;
                 }
 
-                if (bodyoptionswaitForModel != null)
+                if (__workflow_bodyoptionswaitForModel != null)
                 {
-                    optionsObject["wait_for_model"] = ExpressionConverter.ConvertO(bodyoptionswaitForModel);
+                    optionsObject["wait_for_model"] = ExpressionConverter.ConvertO(__workflow_bodyoptionswaitForModel);
                     optionsObjectpropCount++;
                 }
 
@@ -662,20 +644,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        [WorkflowExpressionFactory(nameof(__BuildZeroShot))]
-        public IBodyWorkflowAction<ZeroShotPostResponse> ZeroShot([WorkflowExpression] Func<string> bodyinputs = null, [WorkflowExpression] Func<string[]> bodyparameterscandidateLabels = null, [WorkflowExpression] Func<bool> bodyparametersmultiLabel = null, [WorkflowExpression] Func<bool> bodyoptionsuseCache = null, [WorkflowExpression] Func<bool> bodyoptionswaitForModel = null)
+        public IBodyWorkflowAction<ZeroShotPostResponse> ZeroShot(Expression<Func<string>> bodyinputs = null, Expression<Func<string[]>> bodyparameterscandidateLabels = null, Expression<Func<bool>> bodyparametersmultiLabel = null, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ZeroShotPostResponse> __BuildZeroShot(WorkflowExpression<string> bodyinputs = null, WorkflowExpression<string[]> bodyparameterscandidateLabels = null, WorkflowExpression<bool> bodyparametersmultiLabel = null, WorkflowExpression<bool> bodyoptionsuseCache = null, WorkflowExpression<bool> bodyoptionswaitForModel = null)
-        {
-            WorkflowExpression.Validate(bodyinputs, nameof(bodyinputs), required: false);
-            WorkflowExpression.Validate(bodyparameterscandidateLabels, nameof(bodyparameterscandidateLabels), required: false);
-            WorkflowExpression.Validate(bodyparametersmultiLabel, nameof(bodyparametersmultiLabel), required: false);
-            WorkflowExpression.Validate(bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
-            WorkflowExpression.Validate(bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
+            var __workflow_bodyinputs = bodyinputs == null ? null : WorkflowExpression.Compile(bodyinputs);
+            WorkflowExpression.Validate(__workflow_bodyinputs, nameof(bodyinputs), required: false);
+            var __workflow_bodyparameterscandidateLabels = bodyparameterscandidateLabels == null ? null : WorkflowExpression.Compile(bodyparameterscandidateLabels);
+            WorkflowExpression.Validate(__workflow_bodyparameterscandidateLabels, nameof(bodyparameterscandidateLabels), required: false);
+            var __workflow_bodyparametersmultiLabel = bodyparametersmultiLabel == null ? null : WorkflowExpression.Compile(bodyparametersmultiLabel);
+            WorkflowExpression.Validate(__workflow_bodyparametersmultiLabel, nameof(bodyparametersmultiLabel), required: false);
+            var __workflow_bodyoptionsuseCache = bodyoptionsuseCache == null ? null : WorkflowExpression.Compile(bodyoptionsuseCache);
+            WorkflowExpression.Validate(__workflow_bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
+            var __workflow_bodyoptionswaitForModel = bodyoptionswaitForModel == null ? null : WorkflowExpression.Compile(bodyoptionswaitForModel);
+            WorkflowExpression.Validate(__workflow_bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
             return new DeferredBodyAction<ZeroShotPostResponse>(() =>
             {
                 var apiCallPath = "/facebook/bart-large-mnli";
@@ -683,23 +663,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyinputs != null)
+                if (__workflow_bodyinputs != null)
                 {
-                    body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
+                    body["inputs"] = ExpressionConverter.ConvertO(__workflow_bodyinputs);
                     bodypropCount++;
                 }
 
                 var parametersObject = new JObject();
                 var parametersObjectpropCount = 0;
-                if (bodyparameterscandidateLabels != null)
+                if (__workflow_bodyparameterscandidateLabels != null)
                 {
-                    parametersObject["candidate_labels"] = ExpressionConverter.ConvertO(bodyparameterscandidateLabels);
+                    parametersObject["candidate_labels"] = ExpressionConverter.ConvertO(__workflow_bodyparameterscandidateLabels);
                     parametersObjectpropCount++;
                 }
 
-                if (bodyparametersmultiLabel != null)
+                if (__workflow_bodyparametersmultiLabel != null)
                 {
-                    parametersObject["multi_label"] = ExpressionConverter.ConvertO(bodyparametersmultiLabel);
+                    parametersObject["multi_label"] = ExpressionConverter.ConvertO(__workflow_bodyparametersmultiLabel);
                     parametersObjectpropCount++;
                 }
 
@@ -711,15 +691,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
 
                 var optionsObject = new JObject();
                 var optionsObjectpropCount = 0;
-                if (bodyoptionsuseCache != null)
+                if (__workflow_bodyoptionsuseCache != null)
                 {
-                    optionsObject["use_cache"] = ExpressionConverter.ConvertO(bodyoptionsuseCache);
+                    optionsObject["use_cache"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsuseCache);
                     optionsObjectpropCount++;
                 }
 
-                if (bodyoptionswaitForModel != null)
+                if (__workflow_bodyoptionswaitForModel != null)
                 {
-                    optionsObject["wait_for_model"] = ExpressionConverter.ConvertO(bodyoptionswaitForModel);
+                    optionsObject["wait_for_model"] = ExpressionConverter.ConvertO(__workflow_bodyoptionswaitForModel);
                     optionsObjectpropCount++;
                 }
 
@@ -739,27 +719,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        [WorkflowExpressionFactory(nameof(__BuildConversational))]
-        public IBodyWorkflowAction<ConversationalPostResponse> Conversational([WorkflowExpression] Func<string[]> bodyinputspastUserInputs = null, [WorkflowExpression] Func<string[]> bodyinputsgeneratedResponses = null, [WorkflowExpression] Func<string> bodyinputstext = null, [WorkflowExpression] Func<int> bodyparametersminLength = null, [WorkflowExpression] Func<int> bodyparametersmaxLength = null, [WorkflowExpression] Func<int> bodyparameterstopK = null, [WorkflowExpression] Func<int> bodyparameterstopP = null, [WorkflowExpression] Func<double> bodyparameterstemperature = null, [WorkflowExpression] Func<double> bodyparametersrepetitionPenalty = null, [WorkflowExpression] Func<double> bodyparametersmaxTime = null, [WorkflowExpression] Func<bool> bodyoptionsuseCache = null, [WorkflowExpression] Func<bool> bodyoptionswaitForModel = null)
+        public IBodyWorkflowAction<ConversationalPostResponse> Conversational(Expression<Func<string[]>> bodyinputspastUserInputs = null, Expression<Func<string[]>> bodyinputsgeneratedResponses = null, Expression<Func<string>> bodyinputstext = null, Expression<Func<int>> bodyparametersminLength = null, Expression<Func<int>> bodyparametersmaxLength = null, Expression<Func<int>> bodyparameterstopK = null, Expression<Func<int>> bodyparameterstopP = null, Expression<Func<double>> bodyparameterstemperature = null, Expression<Func<double>> bodyparametersrepetitionPenalty = null, Expression<Func<double>> bodyparametersmaxTime = null, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ConversationalPostResponse> __BuildConversational(WorkflowExpression<string[]> bodyinputspastUserInputs = null, WorkflowExpression<string[]> bodyinputsgeneratedResponses = null, WorkflowExpression<string> bodyinputstext = null, WorkflowExpression<int> bodyparametersminLength = null, WorkflowExpression<int> bodyparametersmaxLength = null, WorkflowExpression<int> bodyparameterstopK = null, WorkflowExpression<int> bodyparameterstopP = null, WorkflowExpression<double> bodyparameterstemperature = null, WorkflowExpression<double> bodyparametersrepetitionPenalty = null, WorkflowExpression<double> bodyparametersmaxTime = null, WorkflowExpression<bool> bodyoptionsuseCache = null, WorkflowExpression<bool> bodyoptionswaitForModel = null)
-        {
-            WorkflowExpression.Validate(bodyinputspastUserInputs, nameof(bodyinputspastUserInputs), required: false);
-            WorkflowExpression.Validate(bodyinputsgeneratedResponses, nameof(bodyinputsgeneratedResponses), required: false);
-            WorkflowExpression.Validate(bodyinputstext, nameof(bodyinputstext), required: false);
-            WorkflowExpression.Validate(bodyparametersminLength, nameof(bodyparametersminLength), required: false);
-            WorkflowExpression.Validate(bodyparametersmaxLength, nameof(bodyparametersmaxLength), required: false);
-            WorkflowExpression.Validate(bodyparameterstopK, nameof(bodyparameterstopK), required: false);
-            WorkflowExpression.Validate(bodyparameterstopP, nameof(bodyparameterstopP), required: false);
-            WorkflowExpression.Validate(bodyparameterstemperature, nameof(bodyparameterstemperature), required: false);
-            WorkflowExpression.Validate(bodyparametersrepetitionPenalty, nameof(bodyparametersrepetitionPenalty), required: false);
-            WorkflowExpression.Validate(bodyparametersmaxTime, nameof(bodyparametersmaxTime), required: false);
-            WorkflowExpression.Validate(bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
-            WorkflowExpression.Validate(bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
+            var __workflow_bodyinputspastUserInputs = bodyinputspastUserInputs == null ? null : WorkflowExpression.Compile(bodyinputspastUserInputs);
+            WorkflowExpression.Validate(__workflow_bodyinputspastUserInputs, nameof(bodyinputspastUserInputs), required: false);
+            var __workflow_bodyinputsgeneratedResponses = bodyinputsgeneratedResponses == null ? null : WorkflowExpression.Compile(bodyinputsgeneratedResponses);
+            WorkflowExpression.Validate(__workflow_bodyinputsgeneratedResponses, nameof(bodyinputsgeneratedResponses), required: false);
+            var __workflow_bodyinputstext = bodyinputstext == null ? null : WorkflowExpression.Compile(bodyinputstext);
+            WorkflowExpression.Validate(__workflow_bodyinputstext, nameof(bodyinputstext), required: false);
+            var __workflow_bodyparametersminLength = bodyparametersminLength == null ? null : WorkflowExpression.Compile(bodyparametersminLength);
+            WorkflowExpression.Validate(__workflow_bodyparametersminLength, nameof(bodyparametersminLength), required: false);
+            var __workflow_bodyparametersmaxLength = bodyparametersmaxLength == null ? null : WorkflowExpression.Compile(bodyparametersmaxLength);
+            WorkflowExpression.Validate(__workflow_bodyparametersmaxLength, nameof(bodyparametersmaxLength), required: false);
+            var __workflow_bodyparameterstopK = bodyparameterstopK == null ? null : WorkflowExpression.Compile(bodyparameterstopK);
+            WorkflowExpression.Validate(__workflow_bodyparameterstopK, nameof(bodyparameterstopK), required: false);
+            var __workflow_bodyparameterstopP = bodyparameterstopP == null ? null : WorkflowExpression.Compile(bodyparameterstopP);
+            WorkflowExpression.Validate(__workflow_bodyparameterstopP, nameof(bodyparameterstopP), required: false);
+            var __workflow_bodyparameterstemperature = bodyparameterstemperature == null ? null : WorkflowExpression.Compile(bodyparameterstemperature);
+            WorkflowExpression.Validate(__workflow_bodyparameterstemperature, nameof(bodyparameterstemperature), required: false);
+            var __workflow_bodyparametersrepetitionPenalty = bodyparametersrepetitionPenalty == null ? null : WorkflowExpression.Compile(bodyparametersrepetitionPenalty);
+            WorkflowExpression.Validate(__workflow_bodyparametersrepetitionPenalty, nameof(bodyparametersrepetitionPenalty), required: false);
+            var __workflow_bodyparametersmaxTime = bodyparametersmaxTime == null ? null : WorkflowExpression.Compile(bodyparametersmaxTime);
+            WorkflowExpression.Validate(__workflow_bodyparametersmaxTime, nameof(bodyparametersmaxTime), required: false);
+            var __workflow_bodyoptionsuseCache = bodyoptionsuseCache == null ? null : WorkflowExpression.Compile(bodyoptionsuseCache);
+            WorkflowExpression.Validate(__workflow_bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
+            var __workflow_bodyoptionswaitForModel = bodyoptionswaitForModel == null ? null : WorkflowExpression.Compile(bodyoptionswaitForModel);
+            WorkflowExpression.Validate(__workflow_bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
             return new DeferredBodyAction<ConversationalPostResponse>(() =>
             {
                 var apiCallPath = "/microsoft/DialoGPT-large";
@@ -769,21 +754,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
                 var bodypropCount = 0;
                 var inputsObject = new JObject();
                 var inputsObjectpropCount = 0;
-                if (bodyinputspastUserInputs != null)
+                if (__workflow_bodyinputspastUserInputs != null)
                 {
-                    inputsObject["past_user_inputs"] = ExpressionConverter.ConvertO(bodyinputspastUserInputs);
+                    inputsObject["past_user_inputs"] = ExpressionConverter.ConvertO(__workflow_bodyinputspastUserInputs);
                     inputsObjectpropCount++;
                 }
 
-                if (bodyinputsgeneratedResponses != null)
+                if (__workflow_bodyinputsgeneratedResponses != null)
                 {
-                    inputsObject["generated_responses"] = ExpressionConverter.ConvertO(bodyinputsgeneratedResponses);
+                    inputsObject["generated_responses"] = ExpressionConverter.ConvertO(__workflow_bodyinputsgeneratedResponses);
                     inputsObjectpropCount++;
                 }
 
-                if (bodyinputstext != null)
+                if (__workflow_bodyinputstext != null)
                 {
-                    inputsObject["text"] = ExpressionConverter.ConvertO(bodyinputstext);
+                    inputsObject["text"] = ExpressionConverter.ConvertO(__workflow_bodyinputstext);
                     inputsObjectpropCount++;
                 }
 
@@ -795,45 +780,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
 
                 var parametersObject = new JObject();
                 var parametersObjectpropCount = 0;
-                if (bodyparametersminLength != null)
+                if (__workflow_bodyparametersminLength != null)
                 {
-                    parametersObject["min_length"] = ExpressionConverter.ConvertO(bodyparametersminLength);
+                    parametersObject["min_length"] = ExpressionConverter.ConvertO(__workflow_bodyparametersminLength);
                     parametersObjectpropCount++;
                 }
 
-                if (bodyparametersmaxLength != null)
+                if (__workflow_bodyparametersmaxLength != null)
                 {
-                    parametersObject["max_length"] = ExpressionConverter.ConvertO(bodyparametersmaxLength);
+                    parametersObject["max_length"] = ExpressionConverter.ConvertO(__workflow_bodyparametersmaxLength);
                     parametersObjectpropCount++;
                 }
 
-                if (bodyparameterstopK != null)
+                if (__workflow_bodyparameterstopK != null)
                 {
-                    parametersObject["top_k"] = ExpressionConverter.ConvertO(bodyparameterstopK);
+                    parametersObject["top_k"] = ExpressionConverter.ConvertO(__workflow_bodyparameterstopK);
                     parametersObjectpropCount++;
                 }
 
-                if (bodyparameterstopP != null)
+                if (__workflow_bodyparameterstopP != null)
                 {
-                    parametersObject["top_p"] = ExpressionConverter.ConvertO(bodyparameterstopP);
+                    parametersObject["top_p"] = ExpressionConverter.ConvertO(__workflow_bodyparameterstopP);
                     parametersObjectpropCount++;
                 }
 
-                if (bodyparameterstemperature != null)
+                if (__workflow_bodyparameterstemperature != null)
                 {
-                    parametersObject["temperature"] = ExpressionConverter.ConvertO(bodyparameterstemperature);
+                    parametersObject["temperature"] = ExpressionConverter.ConvertO(__workflow_bodyparameterstemperature);
                     parametersObjectpropCount++;
                 }
 
-                if (bodyparametersrepetitionPenalty != null)
+                if (__workflow_bodyparametersrepetitionPenalty != null)
                 {
-                    parametersObject["repetition_penalty"] = ExpressionConverter.ConvertO(bodyparametersrepetitionPenalty);
+                    parametersObject["repetition_penalty"] = ExpressionConverter.ConvertO(__workflow_bodyparametersrepetitionPenalty);
                     parametersObjectpropCount++;
                 }
 
-                if (bodyparametersmaxTime != null)
+                if (__workflow_bodyparametersmaxTime != null)
                 {
-                    parametersObject["max_time"] = ExpressionConverter.ConvertO(bodyparametersmaxTime);
+                    parametersObject["max_time"] = ExpressionConverter.ConvertO(__workflow_bodyparametersmaxTime);
                     parametersObjectpropCount++;
                 }
 
@@ -845,15 +830,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
 
                 var optionsObject = new JObject();
                 var optionsObjectpropCount = 0;
-                if (bodyoptionsuseCache != null)
+                if (__workflow_bodyoptionsuseCache != null)
                 {
-                    optionsObject["use_cache"] = ExpressionConverter.ConvertO(bodyoptionsuseCache);
+                    optionsObject["use_cache"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsuseCache);
                     optionsObjectpropCount++;
                 }
 
-                if (bodyoptionswaitForModel != null)
+                if (__workflow_bodyoptionswaitForModel != null)
                 {
-                    optionsObject["wait_for_model"] = ExpressionConverter.ConvertO(bodyoptionswaitForModel);
+                    optionsObject["wait_for_model"] = ExpressionConverter.ConvertO(__workflow_bodyoptionswaitForModel);
                     optionsObjectpropCount++;
                 }
 

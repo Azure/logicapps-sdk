@@ -1,39 +1,44 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class LetterdropActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
-        [WorkflowExpressionFactory(nameof(__BuildSubscriber))]
-        public IBodyWorkflowAction<SubscriberPostResponse> Subscriber([WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<bool> bodywelcomeEmail = null, [WorkflowExpression] Func<string> bodyadditionalDataname = null, [WorkflowExpression] Func<string> bodyadditionalDatalocation = null, [WorkflowExpression] Func<string> bodyadditionalDatatitle = null, [WorkflowExpression] Func<string> bodyadditionalDatacompany = null, [WorkflowExpression] Func<int> bodyadditionalDatacompanySize = null, [WorkflowExpression] Func<string> bodyadditionalDataindustry = null, [WorkflowExpression] Func<string> bodyadditionalDatatwitter = null, [WorkflowExpression] Func<int> bodyadditionalDatatwitterFollowers = null, [WorkflowExpression] Func<string> bodyadditionalDatalinkedin = null, [WorkflowExpression] Func<string> bodyadditionalDatagithub = null, [WorkflowExpression] Func<string> bodyadditionalDatafacebook = null)
+        public IBodyWorkflowAction<SubscriberPostResponse> Subscriber(Expression<Func<string>> bodyemail, Expression<Func<bool>> bodywelcomeEmail = null, Expression<Func<string>> bodyadditionalDataname = null, Expression<Func<string>> bodyadditionalDatalocation = null, Expression<Func<string>> bodyadditionalDatatitle = null, Expression<Func<string>> bodyadditionalDatacompany = null, Expression<Func<int>> bodyadditionalDatacompanySize = null, Expression<Func<string>> bodyadditionalDataindustry = null, Expression<Func<string>> bodyadditionalDatatwitter = null, Expression<Func<int>> bodyadditionalDatatwitterFollowers = null, Expression<Func<string>> bodyadditionalDatalinkedin = null, Expression<Func<string>> bodyadditionalDatagithub = null, Expression<Func<string>> bodyadditionalDatafacebook = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SubscriberPostResponse> __BuildSubscriber(WorkflowExpression<string> bodyemail, WorkflowExpression<bool> bodywelcomeEmail = null, WorkflowExpression<string> bodyadditionalDataname = null, WorkflowExpression<string> bodyadditionalDatalocation = null, WorkflowExpression<string> bodyadditionalDatatitle = null, WorkflowExpression<string> bodyadditionalDatacompany = null, WorkflowExpression<int> bodyadditionalDatacompanySize = null, WorkflowExpression<string> bodyadditionalDataindustry = null, WorkflowExpression<string> bodyadditionalDatatwitter = null, WorkflowExpression<int> bodyadditionalDatatwitterFollowers = null, WorkflowExpression<string> bodyadditionalDatalinkedin = null, WorkflowExpression<string> bodyadditionalDatagithub = null, WorkflowExpression<string> bodyadditionalDatafacebook = null)
-        {
-            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: true);
-            WorkflowExpression.Validate(bodywelcomeEmail, nameof(bodywelcomeEmail), required: false);
-            WorkflowExpression.Validate(bodyadditionalDataname, nameof(bodyadditionalDataname), required: false);
-            WorkflowExpression.Validate(bodyadditionalDatalocation, nameof(bodyadditionalDatalocation), required: false);
-            WorkflowExpression.Validate(bodyadditionalDatatitle, nameof(bodyadditionalDatatitle), required: false);
-            WorkflowExpression.Validate(bodyadditionalDatacompany, nameof(bodyadditionalDatacompany), required: false);
-            WorkflowExpression.Validate(bodyadditionalDatacompanySize, nameof(bodyadditionalDatacompanySize), required: false);
-            WorkflowExpression.Validate(bodyadditionalDataindustry, nameof(bodyadditionalDataindustry), required: false);
-            WorkflowExpression.Validate(bodyadditionalDatatwitter, nameof(bodyadditionalDatatwitter), required: false);
-            WorkflowExpression.Validate(bodyadditionalDatatwitterFollowers, nameof(bodyadditionalDatatwitterFollowers), required: false);
-            WorkflowExpression.Validate(bodyadditionalDatalinkedin, nameof(bodyadditionalDatalinkedin), required: false);
-            WorkflowExpression.Validate(bodyadditionalDatagithub, nameof(bodyadditionalDatagithub), required: false);
-            WorkflowExpression.Validate(bodyadditionalDatafacebook, nameof(bodyadditionalDatafacebook), required: false);
+            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
+            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
+            var __workflow_bodywelcomeEmail = bodywelcomeEmail == null ? null : WorkflowExpression.Compile(bodywelcomeEmail);
+            WorkflowExpression.Validate(__workflow_bodywelcomeEmail, nameof(bodywelcomeEmail), required: false);
+            var __workflow_bodyadditionalDataname = bodyadditionalDataname == null ? null : WorkflowExpression.Compile(bodyadditionalDataname);
+            WorkflowExpression.Validate(__workflow_bodyadditionalDataname, nameof(bodyadditionalDataname), required: false);
+            var __workflow_bodyadditionalDatalocation = bodyadditionalDatalocation == null ? null : WorkflowExpression.Compile(bodyadditionalDatalocation);
+            WorkflowExpression.Validate(__workflow_bodyadditionalDatalocation, nameof(bodyadditionalDatalocation), required: false);
+            var __workflow_bodyadditionalDatatitle = bodyadditionalDatatitle == null ? null : WorkflowExpression.Compile(bodyadditionalDatatitle);
+            WorkflowExpression.Validate(__workflow_bodyadditionalDatatitle, nameof(bodyadditionalDatatitle), required: false);
+            var __workflow_bodyadditionalDatacompany = bodyadditionalDatacompany == null ? null : WorkflowExpression.Compile(bodyadditionalDatacompany);
+            WorkflowExpression.Validate(__workflow_bodyadditionalDatacompany, nameof(bodyadditionalDatacompany), required: false);
+            var __workflow_bodyadditionalDatacompanySize = bodyadditionalDatacompanySize == null ? null : WorkflowExpression.Compile(bodyadditionalDatacompanySize);
+            WorkflowExpression.Validate(__workflow_bodyadditionalDatacompanySize, nameof(bodyadditionalDatacompanySize), required: false);
+            var __workflow_bodyadditionalDataindustry = bodyadditionalDataindustry == null ? null : WorkflowExpression.Compile(bodyadditionalDataindustry);
+            WorkflowExpression.Validate(__workflow_bodyadditionalDataindustry, nameof(bodyadditionalDataindustry), required: false);
+            var __workflow_bodyadditionalDatatwitter = bodyadditionalDatatwitter == null ? null : WorkflowExpression.Compile(bodyadditionalDatatwitter);
+            WorkflowExpression.Validate(__workflow_bodyadditionalDatatwitter, nameof(bodyadditionalDatatwitter), required: false);
+            var __workflow_bodyadditionalDatatwitterFollowers = bodyadditionalDatatwitterFollowers == null ? null : WorkflowExpression.Compile(bodyadditionalDatatwitterFollowers);
+            WorkflowExpression.Validate(__workflow_bodyadditionalDatatwitterFollowers, nameof(bodyadditionalDatatwitterFollowers), required: false);
+            var __workflow_bodyadditionalDatalinkedin = bodyadditionalDatalinkedin == null ? null : WorkflowExpression.Compile(bodyadditionalDatalinkedin);
+            WorkflowExpression.Validate(__workflow_bodyadditionalDatalinkedin, nameof(bodyadditionalDatalinkedin), required: false);
+            var __workflow_bodyadditionalDatagithub = bodyadditionalDatagithub == null ? null : WorkflowExpression.Compile(bodyadditionalDatagithub);
+            WorkflowExpression.Validate(__workflow_bodyadditionalDatagithub, nameof(bodyadditionalDatagithub), required: false);
+            var __workflow_bodyadditionalDatafacebook = bodyadditionalDatafacebook == null ? null : WorkflowExpression.Compile(bodyadditionalDatafacebook);
+            WorkflowExpression.Validate(__workflow_bodyadditionalDatafacebook, nameof(bodyadditionalDatafacebook), required: false);
             return new DeferredBodyAction<SubscriberPostResponse>(() =>
             {
                 var apiCallPath = "/subscriber/add";
@@ -42,78 +47,78 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
-                if (bodywelcomeEmail != null)
+                body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
+                if (__workflow_bodywelcomeEmail != null)
                 {
-                    body["welcomeEmail"] = ExpressionConverter.ConvertO(bodywelcomeEmail);
+                    body["welcomeEmail"] = ExpressionConverter.ConvertO(__workflow_bodywelcomeEmail);
                     bodypropCount++;
                 }
 
                 var additionalDataObject = new JObject();
                 var additionalDataObjectpropCount = 0;
-                if (bodyadditionalDataname != null)
+                if (__workflow_bodyadditionalDataname != null)
                 {
-                    additionalDataObject["name"] = ExpressionConverter.ConvertO(bodyadditionalDataname);
+                    additionalDataObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyadditionalDataname);
                     additionalDataObjectpropCount++;
                 }
 
-                if (bodyadditionalDatalocation != null)
+                if (__workflow_bodyadditionalDatalocation != null)
                 {
-                    additionalDataObject["location"] = ExpressionConverter.ConvertO(bodyadditionalDatalocation);
+                    additionalDataObject["location"] = ExpressionConverter.ConvertO(__workflow_bodyadditionalDatalocation);
                     additionalDataObjectpropCount++;
                 }
 
-                if (bodyadditionalDatatitle != null)
+                if (__workflow_bodyadditionalDatatitle != null)
                 {
-                    additionalDataObject["title"] = ExpressionConverter.ConvertO(bodyadditionalDatatitle);
+                    additionalDataObject["title"] = ExpressionConverter.ConvertO(__workflow_bodyadditionalDatatitle);
                     additionalDataObjectpropCount++;
                 }
 
-                if (bodyadditionalDatacompany != null)
+                if (__workflow_bodyadditionalDatacompany != null)
                 {
-                    additionalDataObject["company"] = ExpressionConverter.ConvertO(bodyadditionalDatacompany);
+                    additionalDataObject["company"] = ExpressionConverter.ConvertO(__workflow_bodyadditionalDatacompany);
                     additionalDataObjectpropCount++;
                 }
 
-                if (bodyadditionalDatacompanySize != null)
+                if (__workflow_bodyadditionalDatacompanySize != null)
                 {
-                    additionalDataObject["companySize"] = ExpressionConverter.ConvertO(bodyadditionalDatacompanySize);
+                    additionalDataObject["companySize"] = ExpressionConverter.ConvertO(__workflow_bodyadditionalDatacompanySize);
                     additionalDataObjectpropCount++;
                 }
 
-                if (bodyadditionalDataindustry != null)
+                if (__workflow_bodyadditionalDataindustry != null)
                 {
-                    additionalDataObject["industry"] = ExpressionConverter.ConvertO(bodyadditionalDataindustry);
+                    additionalDataObject["industry"] = ExpressionConverter.ConvertO(__workflow_bodyadditionalDataindustry);
                     additionalDataObjectpropCount++;
                 }
 
-                if (bodyadditionalDatatwitter != null)
+                if (__workflow_bodyadditionalDatatwitter != null)
                 {
-                    additionalDataObject["twitter"] = ExpressionConverter.ConvertO(bodyadditionalDatatwitter);
+                    additionalDataObject["twitter"] = ExpressionConverter.ConvertO(__workflow_bodyadditionalDatatwitter);
                     additionalDataObjectpropCount++;
                 }
 
-                if (bodyadditionalDatatwitterFollowers != null)
+                if (__workflow_bodyadditionalDatatwitterFollowers != null)
                 {
-                    additionalDataObject["twitterFollowers"] = ExpressionConverter.ConvertO(bodyadditionalDatatwitterFollowers);
+                    additionalDataObject["twitterFollowers"] = ExpressionConverter.ConvertO(__workflow_bodyadditionalDatatwitterFollowers);
                     additionalDataObjectpropCount++;
                 }
 
-                if (bodyadditionalDatalinkedin != null)
+                if (__workflow_bodyadditionalDatalinkedin != null)
                 {
-                    additionalDataObject["linkedin"] = ExpressionConverter.ConvertO(bodyadditionalDatalinkedin);
+                    additionalDataObject["linkedin"] = ExpressionConverter.ConvertO(__workflow_bodyadditionalDatalinkedin);
                     additionalDataObjectpropCount++;
                 }
 
-                if (bodyadditionalDatagithub != null)
+                if (__workflow_bodyadditionalDatagithub != null)
                 {
-                    additionalDataObject["github"] = ExpressionConverter.ConvertO(bodyadditionalDatagithub);
+                    additionalDataObject["github"] = ExpressionConverter.ConvertO(__workflow_bodyadditionalDatagithub);
                     additionalDataObjectpropCount++;
                 }
 
-                if (bodyadditionalDatafacebook != null)
+                if (__workflow_bodyadditionalDatafacebook != null)
                 {
-                    additionalDataObject["facebook"] = ExpressionConverter.ConvertO(bodyadditionalDatafacebook);
+                    additionalDataObject["facebook"] = ExpressionConverter.ConvertO(__workflow_bodyadditionalDatafacebook);
                     additionalDataObjectpropCount++;
                 }
 
@@ -133,39 +138,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
-        [WorkflowExpressionFactory(nameof(__BuildSubscriberRemove))]
-        public IBodyWorkflowAction<SubscriberRemovePostResponse> SubscriberRemove([WorkflowExpression] Func<string> email)
+        public IBodyWorkflowAction<SubscriberRemovePostResponse> SubscriberRemove(Expression<Func<string>> email)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SubscriberRemovePostResponse> __BuildSubscriberRemove(WorkflowExpression<string> email)
-        {
-            WorkflowExpression.Validate(email, nameof(email), required: true);
+            var __workflow_email = email == null ? null : WorkflowExpression.Compile(email);
+            WorkflowExpression.Validate(__workflow_email, nameof(email), required: true);
             return new DeferredBodyAction<SubscriberRemovePostResponse>(() =>
             {
                 var apiCallPath = "/subscriber/remove";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["email"] = ExpressionConverter.Convert(email);
+                callPayload.Queries["email"] = ExpressionConverter.Convert(__workflow_email);
                 return new ApiConnectionAction<SubscriberRemovePostResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
-        [WorkflowExpressionFactory(nameof(__BuildPostsGet))]
-        public IBodyWorkflowAction<PostsGetPostResponse> PostsGet([WorkflowExpression] Func<string> bodyquery, [WorkflowExpression] Func<int> bodyoffset = null, [WorkflowExpression] Func<int> bodylimit = null)
+        public IBodyWorkflowAction<PostsGetPostResponse> PostsGet(Expression<Func<string>> bodyquery, Expression<Func<int>> bodyoffset = null, Expression<Func<int>> bodylimit = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PostsGetPostResponse> __BuildPostsGet(WorkflowExpression<string> bodyquery, WorkflowExpression<int> bodyoffset = null, WorkflowExpression<int> bodylimit = null)
-        {
-            WorkflowExpression.Validate(bodyquery, nameof(bodyquery), required: true);
-            WorkflowExpression.Validate(bodyoffset, nameof(bodyoffset), required: false);
-            WorkflowExpression.Validate(bodylimit, nameof(bodylimit), required: false);
+            var __workflow_bodyquery = bodyquery == null ? null : WorkflowExpression.Compile(bodyquery);
+            WorkflowExpression.Validate(__workflow_bodyquery, nameof(bodyquery), required: true);
+            var __workflow_bodyoffset = bodyoffset == null ? null : WorkflowExpression.Compile(bodyoffset);
+            WorkflowExpression.Validate(__workflow_bodyoffset, nameof(bodyoffset), required: false);
+            var __workflow_bodylimit = bodylimit == null ? null : WorkflowExpression.Compile(bodylimit);
+            WorkflowExpression.Validate(__workflow_bodylimit, nameof(bodylimit), required: false);
             return new DeferredBodyAction<PostsGetPostResponse>(() =>
             {
                 var apiCallPath = "/posts";
@@ -174,12 +169,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
-                if (bodyoffset != null)
+                body["query"] = ExpressionConverter.ConvertO(__workflow_bodyquery);
+                if (__workflow_bodyoffset != null)
                 {
-                    if (bodyoffset != null)
+                    if (__workflow_bodyoffset != null)
                     {
-                        body["offset"] = ExpressionConverter.ConvertO(bodyoffset);
+                        body["offset"] = ExpressionConverter.ConvertO(__workflow_bodyoffset);
                         bodypropCount++;
                     }
 
@@ -191,9 +186,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
                     bodypropCount++;
                 }
 
-                if (bodylimit != null)
+                if (__workflow_bodylimit != null)
                 {
-                    body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                    body["limit"] = ExpressionConverter.ConvertO(__workflow_bodylimit);
                     bodypropCount++;
                 }
 
@@ -207,19 +202,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
-        [WorkflowExpressionFactory(nameof(__BuildPostGet))]
-        public IBodyWorkflowAction<PostGetPostResponse> PostGet([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<PostGetPostResponse> PostGet(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PostGetPostResponse> __BuildPostGet(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<PostGetPostResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/post/get/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/post/get/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<PostGetPostResponse>(callPayload);
@@ -227,18 +216,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
-        [WorkflowExpressionFactory(nameof(__BuildPostDraft))]
-        public IBodyWorkflowAction<PostDraftPostResponse> PostDraft([WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodyhtml, [WorkflowExpression] Func<string> bodysubtitle = null)
+        public IBodyWorkflowAction<PostDraftPostResponse> PostDraft(Expression<Func<string>> bodytitle, Expression<Func<string>> bodyhtml, Expression<Func<string>> bodysubtitle = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PostDraftPostResponse> __BuildPostDraft(WorkflowExpression<string> bodytitle, WorkflowExpression<string> bodyhtml, WorkflowExpression<string> bodysubtitle = null)
-        {
-            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            WorkflowExpression.Validate(bodyhtml, nameof(bodyhtml), required: true);
-            WorkflowExpression.Validate(bodysubtitle, nameof(bodysubtitle), required: false);
+            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
+            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodyhtml = bodyhtml == null ? null : WorkflowExpression.Compile(bodyhtml);
+            WorkflowExpression.Validate(__workflow_bodyhtml, nameof(bodyhtml), required: true);
+            var __workflow_bodysubtitle = bodysubtitle == null ? null : WorkflowExpression.Compile(bodysubtitle);
+            WorkflowExpression.Validate(__workflow_bodysubtitle, nameof(bodysubtitle), required: false);
             return new DeferredBodyAction<PostDraftPostResponse>(() =>
             {
                 var apiCallPath = "/post/draft";
@@ -247,15 +232,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
-                if (bodysubtitle != null)
+                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
+                if (__workflow_bodysubtitle != null)
                 {
-                    body["subtitle"] = ExpressionConverter.ConvertO(bodysubtitle);
+                    body["subtitle"] = ExpressionConverter.ConvertO(__workflow_bodysubtitle);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["html"] = ExpressionConverter.ConvertO(bodyhtml);
+                body["html"] = ExpressionConverter.ConvertO(__workflow_bodyhtml);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -266,19 +251,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
-        [WorkflowExpressionFactory(nameof(__BuildProjectGet))]
-        public IBodyWorkflowAction<ProjectGetPostResponse> ProjectGet([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<ProjectGetPostResponse> ProjectGet(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ProjectGetPostResponse> __BuildProjectGet(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<ProjectGetPostResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/project/get/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/project/get/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ProjectGetPostResponse>(callPayload);
@@ -286,20 +265,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
-        [WorkflowExpressionFactory(nameof(__BuildIdeaCreate))]
-        public IBodyWorkflowAction<IdeaCreatePostResponse> IdeaCreate([WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodysuggestedBy, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodykeyword = null, [WorkflowExpression] Func<string[]> bodylabels = null)
+        public IBodyWorkflowAction<IdeaCreatePostResponse> IdeaCreate(Expression<Func<string>> bodytitle, Expression<Func<string>> bodysuggestedBy, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodykeyword = null, Expression<Func<string[]>> bodylabels = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<IdeaCreatePostResponse> __BuildIdeaCreate(WorkflowExpression<string> bodytitle, WorkflowExpression<string> bodysuggestedBy, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodykeyword = null, WorkflowExpression<string[]> bodylabels = null)
-        {
-            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            WorkflowExpression.Validate(bodysuggestedBy, nameof(bodysuggestedBy), required: true);
-            WorkflowExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            WorkflowExpression.Validate(bodykeyword, nameof(bodykeyword), required: false);
-            WorkflowExpression.Validate(bodylabels, nameof(bodylabels), required: false);
+            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
+            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodysuggestedBy = bodysuggestedBy == null ? null : WorkflowExpression.Compile(bodysuggestedBy);
+            WorkflowExpression.Validate(__workflow_bodysuggestedBy, nameof(bodysuggestedBy), required: true);
+            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
+            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodykeyword = bodykeyword == null ? null : WorkflowExpression.Compile(bodykeyword);
+            WorkflowExpression.Validate(__workflow_bodykeyword, nameof(bodykeyword), required: false);
+            var __workflow_bodylabels = bodylabels == null ? null : WorkflowExpression.Compile(bodylabels);
+            WorkflowExpression.Validate(__workflow_bodylabels, nameof(bodylabels), required: false);
             return new DeferredBodyAction<IdeaCreatePostResponse>(() =>
             {
                 var apiCallPath = "/idea/new";
@@ -308,24 +285,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
-                if (bodydescription != null)
+                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
+                if (__workflow_bodydescription != null)
                 {
-                    body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["suggestedBy"] = ExpressionConverter.ConvertO(bodysuggestedBy);
-                if (bodykeyword != null)
+                body["suggestedBy"] = ExpressionConverter.ConvertO(__workflow_bodysuggestedBy);
+                if (__workflow_bodykeyword != null)
                 {
-                    body["keyword"] = ExpressionConverter.ConvertO(bodykeyword);
+                    body["keyword"] = ExpressionConverter.ConvertO(__workflow_bodykeyword);
                     bodypropCount++;
                 }
 
-                if (bodylabels != null)
+                if (__workflow_bodylabels != null)
                 {
-                    body["labels"] = ExpressionConverter.ConvertO(bodylabels);
+                    body["labels"] = ExpressionConverter.ConvertO(__workflow_bodylabels);
                     bodypropCount++;
                 }
 
@@ -339,19 +316,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
-        [WorkflowExpressionFactory(nameof(__BuildIdeaAssign))]
-        public IBodyWorkflowAction<IdeaAssignPostResponse> IdeaAssign([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyassignTo, [WorkflowExpression] Func<string> bodypublishOn, [WorkflowExpression] Func<string[]> bodyapprovers = null)
+        public IBodyWorkflowAction<IdeaAssignPostResponse> IdeaAssign(Expression<Func<string>> bodyid, Expression<Func<string>> bodyassignTo, Expression<Func<string>> bodypublishOn, Expression<Func<string[]>> bodyapprovers = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<IdeaAssignPostResponse> __BuildIdeaAssign(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyassignTo, WorkflowExpression<string> bodypublishOn, WorkflowExpression<string[]> bodyapprovers = null)
-        {
-            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: true);
-            WorkflowExpression.Validate(bodyassignTo, nameof(bodyassignTo), required: true);
-            WorkflowExpression.Validate(bodypublishOn, nameof(bodypublishOn), required: true);
-            WorkflowExpression.Validate(bodyapprovers, nameof(bodyapprovers), required: false);
+            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
+            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: true);
+            var __workflow_bodyassignTo = bodyassignTo == null ? null : WorkflowExpression.Compile(bodyassignTo);
+            WorkflowExpression.Validate(__workflow_bodyassignTo, nameof(bodyassignTo), required: true);
+            var __workflow_bodypublishOn = bodypublishOn == null ? null : WorkflowExpression.Compile(bodypublishOn);
+            WorkflowExpression.Validate(__workflow_bodypublishOn, nameof(bodypublishOn), required: true);
+            var __workflow_bodyapprovers = bodyapprovers == null ? null : WorkflowExpression.Compile(bodyapprovers);
+            WorkflowExpression.Validate(__workflow_bodyapprovers, nameof(bodyapprovers), required: false);
             return new DeferredBodyAction<IdeaAssignPostResponse>(() =>
             {
                 var apiCallPath = "/idea/assign";
@@ -360,14 +334,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
                 bodypropCount++;
-                body["assignTo"] = ExpressionConverter.ConvertO(bodyassignTo);
+                body["assignTo"] = ExpressionConverter.ConvertO(__workflow_bodyassignTo);
                 bodypropCount++;
-                body["publishOn"] = ExpressionConverter.ConvertO(bodypublishOn);
-                if (bodyapprovers != null)
+                body["publishOn"] = ExpressionConverter.ConvertO(__workflow_bodypublishOn);
+                if (__workflow_bodyapprovers != null)
                 {
-                    body["approvers"] = ExpressionConverter.ConvertO(bodyapprovers);
+                    body["approvers"] = ExpressionConverter.ConvertO(__workflow_bodyapprovers);
                     bodypropCount++;
                 }
 

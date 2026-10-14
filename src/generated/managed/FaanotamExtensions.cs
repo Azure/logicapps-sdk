@@ -1,35 +1,29 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faanotam
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class FaanotamActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faanotam")]
-        [WorkflowExpressionFactory(nameof(__BuildGetNotam))]
-        public IBodyWorkflowAction<GetNotamResponse> GetNotam([WorkflowExpression] Func<string> clientId, [WorkflowExpression] Func<string> clientSecret)
+        public IBodyWorkflowAction<GetNotamResponse> GetNotam(Expression<Func<string>> clientId, Expression<Func<string>> clientSecret)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetNotamResponse> __BuildGetNotam(WorkflowExpression<string> clientId, WorkflowExpression<string> clientSecret)
-        {
-            WorkflowExpression.Validate(clientId, nameof(clientId), required: true);
-            WorkflowExpression.Validate(clientSecret, nameof(clientSecret), required: true);
+            var __workflow_clientId = clientId == null ? null : WorkflowExpression.Compile(clientId);
+            WorkflowExpression.Validate(__workflow_clientId, nameof(clientId), required: true);
+            var __workflow_clientSecret = clientSecret == null ? null : WorkflowExpression.Compile(clientSecret);
+            WorkflowExpression.Validate(__workflow_clientSecret, nameof(clientSecret), required: true);
             return new DeferredBodyAction<GetNotamResponse>(() =>
             {
                 var apiCallPath = "/notamapi/v1/notams";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["client_id"] = ExpressionConverter.Convert(clientId);
-                callPayload.Headers["client_secret"] = ExpressionConverter.Convert(clientSecret);
+                callPayload.Headers["client_id"] = ExpressionConverter.Convert(__workflow_clientId);
+                callPayload.Headers["client_secret"] = ExpressionConverter.Convert(__workflow_clientSecret);
                 return new ApiConnectionAction<GetNotamResponse>(callPayload);
             });
         }

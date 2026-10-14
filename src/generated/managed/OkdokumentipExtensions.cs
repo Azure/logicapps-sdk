@@ -1,12 +1,12 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Okdokumentip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class OkdokumentipActions([ConnectionName] string connectionId)
     {
@@ -14,20 +14,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Okdokumentip
 
     public class OkdokumentipTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildWaitForSignature))]
-        public IWorkflowTrigger WaitForSignature([WorkflowExpression] Func<string> signatureRequestId,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WaitForSignature(Expression<Func<string>> signatureRequestId, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildWaitForSignature(WorkflowExpression<string> signatureRequestId,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(signatureRequestId, nameof(signatureRequestId), required: true);
+            var __workflow_signatureRequestId = signatureRequestId == null ? null : WorkflowExpression.Compile(signatureRequestId);
+            WorkflowExpression.Validate(__workflow_signatureRequestId, nameof(signatureRequestId), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/signatureRequest/{0}", ExpressionConverter.ConvertWithUrlEncoding(signatureRequestId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/signatureRequest/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_signatureRequestId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");

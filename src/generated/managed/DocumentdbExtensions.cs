@@ -1,61 +1,65 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class DocumentdbActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateDocument))]
-        public IBodyWorkflowAction<PostDocumentsResponse> CreateDocument([WorkflowExpression] Func<string> cosmosDbAccountName, [WorkflowExpression] Func<string> databaseId, [WorkflowExpression] Func<string> collectionId, [WorkflowExpression] Func<double> xMsMaxItemCount = null, [WorkflowExpression] Func<string> xMsContinuation = null, [WorkflowExpression] Func<xMsConsistencyLevelInput> xMsConsistencyLevel = null, [WorkflowExpression] Func<string> xMsSessionToken = null, [WorkflowExpression] Func<string> xMsActivityId = null, [WorkflowExpression] Func<bool> xMsDocumentdbIsUpsert = null, [WorkflowExpression] Func<string> xMsDocumentdbPreTriggerInclude = null, [WorkflowExpression] Func<string> xMsDocumentdbPostTriggerInclude = null, [WorkflowExpression] Func<xMsVersionInput> xMsVersion = null)
+        public IBodyWorkflowAction<PostDocumentsResponse> CreateDocument(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> collectionId, Expression<Func<double>> xMsMaxItemCount = null, Expression<Func<string>> xMsContinuation = null, Expression<Func<xMsConsistencyLevelInput>> xMsConsistencyLevel = null, Expression<Func<string>> xMsSessionToken = null, Expression<Func<string>> xMsActivityId = null, Expression<Func<bool>> xMsDocumentdbIsUpsert = null, Expression<Func<string>> xMsDocumentdbPreTriggerInclude = null, Expression<Func<string>> xMsDocumentdbPostTriggerInclude = null, Expression<Func<xMsVersionInput>> xMsVersion = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PostDocumentsResponse> __BuildCreateDocument(WorkflowExpression<string> cosmosDbAccountName, WorkflowExpression<string> databaseId, WorkflowExpression<string> collectionId, WorkflowExpression<double> xMsMaxItemCount = null, WorkflowExpression<string> xMsContinuation = null, WorkflowExpression<xMsConsistencyLevelInput> xMsConsistencyLevel = null, WorkflowExpression<string> xMsSessionToken = null, WorkflowExpression<string> xMsActivityId = null, WorkflowExpression<bool> xMsDocumentdbIsUpsert = null, WorkflowExpression<string> xMsDocumentdbPreTriggerInclude = null, WorkflowExpression<string> xMsDocumentdbPostTriggerInclude = null, WorkflowExpression<xMsVersionInput> xMsVersion = null)
-        {
-            WorkflowExpression.Validate(cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
-            WorkflowExpression.Validate(databaseId, nameof(databaseId), required: true);
-            WorkflowExpression.Validate(collectionId, nameof(collectionId), required: true);
-            WorkflowExpression.Validate(xMsMaxItemCount, nameof(xMsMaxItemCount), required: false);
-            WorkflowExpression.Validate(xMsContinuation, nameof(xMsContinuation), required: false);
-            WorkflowExpression.Validate(xMsConsistencyLevel, nameof(xMsConsistencyLevel), required: false);
-            WorkflowExpression.Validate(xMsSessionToken, nameof(xMsSessionToken), required: false);
-            WorkflowExpression.Validate(xMsActivityId, nameof(xMsActivityId), required: false);
-            WorkflowExpression.Validate(xMsDocumentdbIsUpsert, nameof(xMsDocumentdbIsUpsert), required: false);
-            WorkflowExpression.Validate(xMsDocumentdbPreTriggerInclude, nameof(xMsDocumentdbPreTriggerInclude), required: false);
-            WorkflowExpression.Validate(xMsDocumentdbPostTriggerInclude, nameof(xMsDocumentdbPostTriggerInclude), required: false);
-            WorkflowExpression.Validate(xMsVersion, nameof(xMsVersion), required: false);
+            var __workflow_cosmosDbAccountName = cosmosDbAccountName == null ? null : WorkflowExpression.Compile(cosmosDbAccountName);
+            WorkflowExpression.Validate(__workflow_cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
+            var __workflow_databaseId = databaseId == null ? null : WorkflowExpression.Compile(databaseId);
+            WorkflowExpression.Validate(__workflow_databaseId, nameof(databaseId), required: true);
+            var __workflow_collectionId = collectionId == null ? null : WorkflowExpression.Compile(collectionId);
+            WorkflowExpression.Validate(__workflow_collectionId, nameof(collectionId), required: true);
+            var __workflow_xMsMaxItemCount = xMsMaxItemCount == null ? null : WorkflowExpression.Compile(xMsMaxItemCount);
+            WorkflowExpression.Validate(__workflow_xMsMaxItemCount, nameof(xMsMaxItemCount), required: false);
+            var __workflow_xMsContinuation = xMsContinuation == null ? null : WorkflowExpression.Compile(xMsContinuation);
+            WorkflowExpression.Validate(__workflow_xMsContinuation, nameof(xMsContinuation), required: false);
+            var __workflow_xMsConsistencyLevel = xMsConsistencyLevel == null ? null : WorkflowExpression.Compile(xMsConsistencyLevel);
+            WorkflowExpression.Validate(__workflow_xMsConsistencyLevel, nameof(xMsConsistencyLevel), required: false);
+            var __workflow_xMsSessionToken = xMsSessionToken == null ? null : WorkflowExpression.Compile(xMsSessionToken);
+            WorkflowExpression.Validate(__workflow_xMsSessionToken, nameof(xMsSessionToken), required: false);
+            var __workflow_xMsActivityId = xMsActivityId == null ? null : WorkflowExpression.Compile(xMsActivityId);
+            WorkflowExpression.Validate(__workflow_xMsActivityId, nameof(xMsActivityId), required: false);
+            var __workflow_xMsDocumentdbIsUpsert = xMsDocumentdbIsUpsert == null ? null : WorkflowExpression.Compile(xMsDocumentdbIsUpsert);
+            WorkflowExpression.Validate(__workflow_xMsDocumentdbIsUpsert, nameof(xMsDocumentdbIsUpsert), required: false);
+            var __workflow_xMsDocumentdbPreTriggerInclude = xMsDocumentdbPreTriggerInclude == null ? null : WorkflowExpression.Compile(xMsDocumentdbPreTriggerInclude);
+            WorkflowExpression.Validate(__workflow_xMsDocumentdbPreTriggerInclude, nameof(xMsDocumentdbPreTriggerInclude), required: false);
+            var __workflow_xMsDocumentdbPostTriggerInclude = xMsDocumentdbPostTriggerInclude == null ? null : WorkflowExpression.Compile(xMsDocumentdbPostTriggerInclude);
+            WorkflowExpression.Validate(__workflow_xMsDocumentdbPostTriggerInclude, nameof(xMsDocumentdbPostTriggerInclude), required: false);
+            var __workflow_xMsVersion = xMsVersion == null ? null : WorkflowExpression.Compile(xMsVersion);
+            WorkflowExpression.Validate(__workflow_xMsVersion, nameof(xMsVersion), required: false);
             return new DeferredBodyAction<PostDocumentsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/docs", ExpressionConverter.ConvertWithUrlEncoding(cosmosDbAccountName, 1), ExpressionConverter.ConvertWithUrlEncoding(databaseId, 1), ExpressionConverter.ConvertWithUrlEncoding(collectionId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/docs", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cosmosDbAccountName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_databaseId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_collectionId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (xMsMaxItemCount != null)
-                    callPayload.Headers["x-ms-max-item-count"] = ExpressionConverter.Convert(xMsMaxItemCount);
-                if (xMsContinuation != null)
-                    callPayload.Headers["x-ms-continuation"] = ExpressionConverter.Convert(xMsContinuation);
-                if (xMsConsistencyLevel != null)
-                    callPayload.Headers["x-ms-consistency-level"] = ExpressionConverter.Convert(xMsConsistencyLevel);
-                if (xMsSessionToken != null)
-                    callPayload.Headers["x-ms-session-token"] = ExpressionConverter.Convert(xMsSessionToken);
-                if (xMsActivityId != null)
-                    callPayload.Headers["x-ms-activity-id"] = ExpressionConverter.Convert(xMsActivityId);
-                if (xMsDocumentdbIsUpsert != null)
-                    callPayload.Headers["x-ms-documentdb-is-upsert"] = ExpressionConverter.Convert(xMsDocumentdbIsUpsert);
-                if (xMsDocumentdbPreTriggerInclude != null)
-                    callPayload.Headers["x-ms-documentdb-pre-trigger-include"] = ExpressionConverter.Convert(xMsDocumentdbPreTriggerInclude);
-                if (xMsDocumentdbPostTriggerInclude != null)
-                    callPayload.Headers["x-ms-documentdb-post-trigger-include"] = ExpressionConverter.Convert(xMsDocumentdbPostTriggerInclude);
-                if (xMsVersion != null)
-                    callPayload.Headers["x-ms-version"] = ExpressionConverter.Convert(xMsVersion);
+                if (__workflow_xMsMaxItemCount != null)
+                    callPayload.Headers["x-ms-max-item-count"] = ExpressionConverter.Convert(__workflow_xMsMaxItemCount);
+                if (__workflow_xMsContinuation != null)
+                    callPayload.Headers["x-ms-continuation"] = ExpressionConverter.Convert(__workflow_xMsContinuation);
+                if (__workflow_xMsConsistencyLevel != null)
+                    callPayload.Headers["x-ms-consistency-level"] = ExpressionConverter.Convert(__workflow_xMsConsistencyLevel);
+                if (__workflow_xMsSessionToken != null)
+                    callPayload.Headers["x-ms-session-token"] = ExpressionConverter.Convert(__workflow_xMsSessionToken);
+                if (__workflow_xMsActivityId != null)
+                    callPayload.Headers["x-ms-activity-id"] = ExpressionConverter.Convert(__workflow_xMsActivityId);
+                if (__workflow_xMsDocumentdbIsUpsert != null)
+                    callPayload.Headers["x-ms-documentdb-is-upsert"] = ExpressionConverter.Convert(__workflow_xMsDocumentdbIsUpsert);
+                if (__workflow_xMsDocumentdbPreTriggerInclude != null)
+                    callPayload.Headers["x-ms-documentdb-pre-trigger-include"] = ExpressionConverter.Convert(__workflow_xMsDocumentdbPreTriggerInclude);
+                if (__workflow_xMsDocumentdbPostTriggerInclude != null)
+                    callPayload.Headers["x-ms-documentdb-post-trigger-include"] = ExpressionConverter.Convert(__workflow_xMsDocumentdbPostTriggerInclude);
+                if (__workflow_xMsVersion != null)
+                    callPayload.Headers["x-ms-version"] = ExpressionConverter.Convert(__workflow_xMsVersion);
                 var body = new JObject();
                 var bodypropCount = 0;
                 if (bodypropCount > 0)
@@ -68,39 +72,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateStoredProcedure))]
-        public IBodyWorkflowAction<CreateStoredProcedureResponse> CreateStoredProcedure([WorkflowExpression] Func<string> cosmosDbAccountName, [WorkflowExpression] Func<string> databaseId, [WorkflowExpression] Func<string> collectionId, [WorkflowExpression] Func<string> bodyfunctionDefinition = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<xMsVersionInput> xMsVersion = null)
+        public IBodyWorkflowAction<CreateStoredProcedureResponse> CreateStoredProcedure(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> collectionId, Expression<Func<string>> bodyfunctionDefinition = null, Expression<Func<string>> bodyid = null, Expression<Func<xMsVersionInput>> xMsVersion = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateStoredProcedureResponse> __BuildCreateStoredProcedure(WorkflowExpression<string> cosmosDbAccountName, WorkflowExpression<string> databaseId, WorkflowExpression<string> collectionId, WorkflowExpression<string> bodyfunctionDefinition = null, WorkflowExpression<string> bodyid = null, WorkflowExpression<xMsVersionInput> xMsVersion = null)
-        {
-            WorkflowExpression.Validate(cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
-            WorkflowExpression.Validate(databaseId, nameof(databaseId), required: true);
-            WorkflowExpression.Validate(collectionId, nameof(collectionId), required: true);
-            WorkflowExpression.Validate(bodyfunctionDefinition, nameof(bodyfunctionDefinition), required: false);
-            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: false);
-            WorkflowExpression.Validate(xMsVersion, nameof(xMsVersion), required: false);
+            var __workflow_cosmosDbAccountName = cosmosDbAccountName == null ? null : WorkflowExpression.Compile(cosmosDbAccountName);
+            WorkflowExpression.Validate(__workflow_cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
+            var __workflow_databaseId = databaseId == null ? null : WorkflowExpression.Compile(databaseId);
+            WorkflowExpression.Validate(__workflow_databaseId, nameof(databaseId), required: true);
+            var __workflow_collectionId = collectionId == null ? null : WorkflowExpression.Compile(collectionId);
+            WorkflowExpression.Validate(__workflow_collectionId, nameof(collectionId), required: true);
+            var __workflow_bodyfunctionDefinition = bodyfunctionDefinition == null ? null : WorkflowExpression.Compile(bodyfunctionDefinition);
+            WorkflowExpression.Validate(__workflow_bodyfunctionDefinition, nameof(bodyfunctionDefinition), required: false);
+            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
+            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: false);
+            var __workflow_xMsVersion = xMsVersion == null ? null : WorkflowExpression.Compile(xMsVersion);
+            WorkflowExpression.Validate(__workflow_xMsVersion, nameof(xMsVersion), required: false);
             return new DeferredBodyAction<CreateStoredProcedureResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/sprocs", ExpressionConverter.ConvertWithUrlEncoding(cosmosDbAccountName, 1), ExpressionConverter.ConvertWithUrlEncoding(databaseId, 1), ExpressionConverter.ConvertWithUrlEncoding(collectionId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/sprocs", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cosmosDbAccountName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_databaseId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_collectionId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (xMsVersion != null)
-                    callPayload.Headers["x-ms-version"] = ExpressionConverter.Convert(xMsVersion);
+                if (__workflow_xMsVersion != null)
+                    callPayload.Headers["x-ms-version"] = ExpressionConverter.Convert(__workflow_xMsVersion);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfunctionDefinition != null)
+                if (__workflow_bodyfunctionDefinition != null)
                 {
-                    body["body"] = ExpressionConverter.ConvertO(bodyfunctionDefinition);
+                    body["body"] = ExpressionConverter.ConvertO(__workflow_bodyfunctionDefinition);
                     bodypropCount++;
                 }
 
-                if (bodyid != null)
+                if (__workflow_bodyid != null)
                 {
-                    body["id"] = ExpressionConverter.ConvertO(bodyid);
+                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
                     bodypropCount++;
                 }
 
@@ -114,328 +117,350 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteDocument))]
-        public IWorkflowAction DeleteDocument([WorkflowExpression] Func<string> cosmosDbAccountName, [WorkflowExpression] Func<string> databaseId, [WorkflowExpression] Func<string> collectionId, [WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> xMsDocumentdbRawPartitionkey = null, [WorkflowExpression] Func<double> xMsMaxItemCount = null, [WorkflowExpression] Func<string> xMsContinuation = null, [WorkflowExpression] Func<xMsConsistencyLevelInput> xMsConsistencyLevel = null, [WorkflowExpression] Func<string> xMsSessionToken = null, [WorkflowExpression] Func<string> xMsActivityId = null, [WorkflowExpression] Func<string> xMsDocumentdbPreTriggerInclude = null, [WorkflowExpression] Func<string> xMsDocumentdbPostTriggerInclude = null, [WorkflowExpression] Func<xMsVersionInput> xMsVersion = null)
+        public IWorkflowAction DeleteDocument(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> collectionId, Expression<Func<string>> documentId, Expression<Func<string>> xMsDocumentdbRawPartitionkey = null, Expression<Func<double>> xMsMaxItemCount = null, Expression<Func<string>> xMsContinuation = null, Expression<Func<xMsConsistencyLevelInput>> xMsConsistencyLevel = null, Expression<Func<string>> xMsSessionToken = null, Expression<Func<string>> xMsActivityId = null, Expression<Func<string>> xMsDocumentdbPreTriggerInclude = null, Expression<Func<string>> xMsDocumentdbPostTriggerInclude = null, Expression<Func<xMsVersionInput>> xMsVersion = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDeleteDocument(WorkflowExpression<string> cosmosDbAccountName, WorkflowExpression<string> databaseId, WorkflowExpression<string> collectionId, WorkflowExpression<string> documentId, WorkflowExpression<string> xMsDocumentdbRawPartitionkey = null, WorkflowExpression<double> xMsMaxItemCount = null, WorkflowExpression<string> xMsContinuation = null, WorkflowExpression<xMsConsistencyLevelInput> xMsConsistencyLevel = null, WorkflowExpression<string> xMsSessionToken = null, WorkflowExpression<string> xMsActivityId = null, WorkflowExpression<string> xMsDocumentdbPreTriggerInclude = null, WorkflowExpression<string> xMsDocumentdbPostTriggerInclude = null, WorkflowExpression<xMsVersionInput> xMsVersion = null)
-        {
-            WorkflowExpression.Validate(cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
-            WorkflowExpression.Validate(databaseId, nameof(databaseId), required: true);
-            WorkflowExpression.Validate(collectionId, nameof(collectionId), required: true);
-            WorkflowExpression.Validate(documentId, nameof(documentId), required: true);
-            WorkflowExpression.Validate(xMsDocumentdbRawPartitionkey, nameof(xMsDocumentdbRawPartitionkey), required: false);
-            WorkflowExpression.Validate(xMsMaxItemCount, nameof(xMsMaxItemCount), required: false);
-            WorkflowExpression.Validate(xMsContinuation, nameof(xMsContinuation), required: false);
-            WorkflowExpression.Validate(xMsConsistencyLevel, nameof(xMsConsistencyLevel), required: false);
-            WorkflowExpression.Validate(xMsSessionToken, nameof(xMsSessionToken), required: false);
-            WorkflowExpression.Validate(xMsActivityId, nameof(xMsActivityId), required: false);
-            WorkflowExpression.Validate(xMsDocumentdbPreTriggerInclude, nameof(xMsDocumentdbPreTriggerInclude), required: false);
-            WorkflowExpression.Validate(xMsDocumentdbPostTriggerInclude, nameof(xMsDocumentdbPostTriggerInclude), required: false);
-            WorkflowExpression.Validate(xMsVersion, nameof(xMsVersion), required: false);
+            var __workflow_cosmosDbAccountName = cosmosDbAccountName == null ? null : WorkflowExpression.Compile(cosmosDbAccountName);
+            WorkflowExpression.Validate(__workflow_cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
+            var __workflow_databaseId = databaseId == null ? null : WorkflowExpression.Compile(databaseId);
+            WorkflowExpression.Validate(__workflow_databaseId, nameof(databaseId), required: true);
+            var __workflow_collectionId = collectionId == null ? null : WorkflowExpression.Compile(collectionId);
+            WorkflowExpression.Validate(__workflow_collectionId, nameof(collectionId), required: true);
+            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
+            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
+            var __workflow_xMsDocumentdbRawPartitionkey = xMsDocumentdbRawPartitionkey == null ? null : WorkflowExpression.Compile(xMsDocumentdbRawPartitionkey);
+            WorkflowExpression.Validate(__workflow_xMsDocumentdbRawPartitionkey, nameof(xMsDocumentdbRawPartitionkey), required: false);
+            var __workflow_xMsMaxItemCount = xMsMaxItemCount == null ? null : WorkflowExpression.Compile(xMsMaxItemCount);
+            WorkflowExpression.Validate(__workflow_xMsMaxItemCount, nameof(xMsMaxItemCount), required: false);
+            var __workflow_xMsContinuation = xMsContinuation == null ? null : WorkflowExpression.Compile(xMsContinuation);
+            WorkflowExpression.Validate(__workflow_xMsContinuation, nameof(xMsContinuation), required: false);
+            var __workflow_xMsConsistencyLevel = xMsConsistencyLevel == null ? null : WorkflowExpression.Compile(xMsConsistencyLevel);
+            WorkflowExpression.Validate(__workflow_xMsConsistencyLevel, nameof(xMsConsistencyLevel), required: false);
+            var __workflow_xMsSessionToken = xMsSessionToken == null ? null : WorkflowExpression.Compile(xMsSessionToken);
+            WorkflowExpression.Validate(__workflow_xMsSessionToken, nameof(xMsSessionToken), required: false);
+            var __workflow_xMsActivityId = xMsActivityId == null ? null : WorkflowExpression.Compile(xMsActivityId);
+            WorkflowExpression.Validate(__workflow_xMsActivityId, nameof(xMsActivityId), required: false);
+            var __workflow_xMsDocumentdbPreTriggerInclude = xMsDocumentdbPreTriggerInclude == null ? null : WorkflowExpression.Compile(xMsDocumentdbPreTriggerInclude);
+            WorkflowExpression.Validate(__workflow_xMsDocumentdbPreTriggerInclude, nameof(xMsDocumentdbPreTriggerInclude), required: false);
+            var __workflow_xMsDocumentdbPostTriggerInclude = xMsDocumentdbPostTriggerInclude == null ? null : WorkflowExpression.Compile(xMsDocumentdbPostTriggerInclude);
+            WorkflowExpression.Validate(__workflow_xMsDocumentdbPostTriggerInclude, nameof(xMsDocumentdbPostTriggerInclude), required: false);
+            var __workflow_xMsVersion = xMsVersion == null ? null : WorkflowExpression.Compile(xMsVersion);
+            WorkflowExpression.Validate(__workflow_xMsVersion, nameof(xMsVersion), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/docs/{3}", ExpressionConverter.ConvertWithUrlEncoding(cosmosDbAccountName, 1), ExpressionConverter.ConvertWithUrlEncoding(databaseId, 1), ExpressionConverter.ConvertWithUrlEncoding(collectionId, 1), ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/docs/{3}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cosmosDbAccountName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_databaseId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_collectionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (xMsDocumentdbRawPartitionkey != null)
-                    callPayload.Headers["x-ms-documentdb-raw-partitionkey"] = ExpressionConverter.Convert(xMsDocumentdbRawPartitionkey);
-                if (xMsMaxItemCount != null)
-                    callPayload.Headers["x-ms-max-item-count"] = ExpressionConverter.Convert(xMsMaxItemCount);
-                if (xMsContinuation != null)
-                    callPayload.Headers["x-ms-continuation"] = ExpressionConverter.Convert(xMsContinuation);
-                if (xMsConsistencyLevel != null)
-                    callPayload.Headers["x-ms-consistency-level"] = ExpressionConverter.Convert(xMsConsistencyLevel);
-                if (xMsSessionToken != null)
-                    callPayload.Headers["x-ms-session-token"] = ExpressionConverter.Convert(xMsSessionToken);
-                if (xMsActivityId != null)
-                    callPayload.Headers["x-ms-activity-id"] = ExpressionConverter.Convert(xMsActivityId);
-                if (xMsDocumentdbPreTriggerInclude != null)
-                    callPayload.Headers["x-ms-documentdb-pre-trigger-include"] = ExpressionConverter.Convert(xMsDocumentdbPreTriggerInclude);
-                if (xMsDocumentdbPostTriggerInclude != null)
-                    callPayload.Headers["x-ms-documentdb-post-trigger-include"] = ExpressionConverter.Convert(xMsDocumentdbPostTriggerInclude);
-                if (xMsVersion != null)
-                    callPayload.Headers["x-ms-version"] = ExpressionConverter.Convert(xMsVersion);
+                if (__workflow_xMsDocumentdbRawPartitionkey != null)
+                    callPayload.Headers["x-ms-documentdb-raw-partitionkey"] = ExpressionConverter.Convert(__workflow_xMsDocumentdbRawPartitionkey);
+                if (__workflow_xMsMaxItemCount != null)
+                    callPayload.Headers["x-ms-max-item-count"] = ExpressionConverter.Convert(__workflow_xMsMaxItemCount);
+                if (__workflow_xMsContinuation != null)
+                    callPayload.Headers["x-ms-continuation"] = ExpressionConverter.Convert(__workflow_xMsContinuation);
+                if (__workflow_xMsConsistencyLevel != null)
+                    callPayload.Headers["x-ms-consistency-level"] = ExpressionConverter.Convert(__workflow_xMsConsistencyLevel);
+                if (__workflow_xMsSessionToken != null)
+                    callPayload.Headers["x-ms-session-token"] = ExpressionConverter.Convert(__workflow_xMsSessionToken);
+                if (__workflow_xMsActivityId != null)
+                    callPayload.Headers["x-ms-activity-id"] = ExpressionConverter.Convert(__workflow_xMsActivityId);
+                if (__workflow_xMsDocumentdbPreTriggerInclude != null)
+                    callPayload.Headers["x-ms-documentdb-pre-trigger-include"] = ExpressionConverter.Convert(__workflow_xMsDocumentdbPreTriggerInclude);
+                if (__workflow_xMsDocumentdbPostTriggerInclude != null)
+                    callPayload.Headers["x-ms-documentdb-post-trigger-include"] = ExpressionConverter.Convert(__workflow_xMsDocumentdbPostTriggerInclude);
+                if (__workflow_xMsVersion != null)
+                    callPayload.Headers["x-ms-version"] = ExpressionConverter.Convert(__workflow_xMsVersion);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteStoredProcedure))]
-        public IBodyWorkflowAction<string> DeleteStoredProcedure([WorkflowExpression] Func<string> cosmosDbAccountName, [WorkflowExpression] Func<string> databaseId, [WorkflowExpression] Func<string> collectionId, [WorkflowExpression] Func<string> sprocId, [WorkflowExpression] Func<xMsVersionInput> xMsVersion = null)
+        public IBodyWorkflowAction<string> DeleteStoredProcedure(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> collectionId, Expression<Func<string>> sprocId, Expression<Func<xMsVersionInput>> xMsVersion = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildDeleteStoredProcedure(WorkflowExpression<string> cosmosDbAccountName, WorkflowExpression<string> databaseId, WorkflowExpression<string> collectionId, WorkflowExpression<string> sprocId, WorkflowExpression<xMsVersionInput> xMsVersion = null)
-        {
-            WorkflowExpression.Validate(cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
-            WorkflowExpression.Validate(databaseId, nameof(databaseId), required: true);
-            WorkflowExpression.Validate(collectionId, nameof(collectionId), required: true);
-            WorkflowExpression.Validate(sprocId, nameof(sprocId), required: true);
-            WorkflowExpression.Validate(xMsVersion, nameof(xMsVersion), required: false);
+            var __workflow_cosmosDbAccountName = cosmosDbAccountName == null ? null : WorkflowExpression.Compile(cosmosDbAccountName);
+            WorkflowExpression.Validate(__workflow_cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
+            var __workflow_databaseId = databaseId == null ? null : WorkflowExpression.Compile(databaseId);
+            WorkflowExpression.Validate(__workflow_databaseId, nameof(databaseId), required: true);
+            var __workflow_collectionId = collectionId == null ? null : WorkflowExpression.Compile(collectionId);
+            WorkflowExpression.Validate(__workflow_collectionId, nameof(collectionId), required: true);
+            var __workflow_sprocId = sprocId == null ? null : WorkflowExpression.Compile(sprocId);
+            WorkflowExpression.Validate(__workflow_sprocId, nameof(sprocId), required: true);
+            var __workflow_xMsVersion = xMsVersion == null ? null : WorkflowExpression.Compile(xMsVersion);
+            WorkflowExpression.Validate(__workflow_xMsVersion, nameof(xMsVersion), required: false);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/sprocs/{3}", ExpressionConverter.ConvertWithUrlEncoding(cosmosDbAccountName, 1), ExpressionConverter.ConvertWithUrlEncoding(databaseId, 1), ExpressionConverter.ConvertWithUrlEncoding(collectionId, 1), ExpressionConverter.ConvertWithUrlEncoding(sprocId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/sprocs/{3}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cosmosDbAccountName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_databaseId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_collectionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_sprocId, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (xMsVersion != null)
-                    callPayload.Headers["x-ms-version"] = ExpressionConverter.Convert(xMsVersion);
+                if (__workflow_xMsVersion != null)
+                    callPayload.Headers["x-ms-version"] = ExpressionConverter.Convert(__workflow_xMsVersion);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
-        [WorkflowExpressionFactory(nameof(__BuildExecuteStoredProcedure))]
-        public IBodyWorkflowAction<JToken> ExecuteStoredProcedure([WorkflowExpression] Func<string> cosmosDbAccountName, [WorkflowExpression] Func<string> databaseId, [WorkflowExpression] Func<string> collectionId, [WorkflowExpression] Func<string> sprocId, [WorkflowExpression] Func<string> xMsDocumentdbRawPartitionkey = null, [WorkflowExpression] Func<string> parameters = null, [WorkflowExpression] Func<xMsVersionInput> xMsVersion = null)
+        public IBodyWorkflowAction<JToken> ExecuteStoredProcedure(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> collectionId, Expression<Func<string>> sprocId, Expression<Func<string>> xMsDocumentdbRawPartitionkey = null, Expression<Func<string>> parameters = null, Expression<Func<xMsVersionInput>> xMsVersion = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildExecuteStoredProcedure(WorkflowExpression<string> cosmosDbAccountName, WorkflowExpression<string> databaseId, WorkflowExpression<string> collectionId, WorkflowExpression<string> sprocId, WorkflowExpression<string> xMsDocumentdbRawPartitionkey = null, WorkflowExpression<string> parameters = null, WorkflowExpression<xMsVersionInput> xMsVersion = null)
-        {
-            WorkflowExpression.Validate(cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
-            WorkflowExpression.Validate(databaseId, nameof(databaseId), required: true);
-            WorkflowExpression.Validate(collectionId, nameof(collectionId), required: true);
-            WorkflowExpression.Validate(sprocId, nameof(sprocId), required: true);
-            WorkflowExpression.Validate(xMsDocumentdbRawPartitionkey, nameof(xMsDocumentdbRawPartitionkey), required: false);
-            WorkflowExpression.Validate(parameters, nameof(parameters), required: false);
-            WorkflowExpression.Validate(xMsVersion, nameof(xMsVersion), required: false);
+            var __workflow_cosmosDbAccountName = cosmosDbAccountName == null ? null : WorkflowExpression.Compile(cosmosDbAccountName);
+            WorkflowExpression.Validate(__workflow_cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
+            var __workflow_databaseId = databaseId == null ? null : WorkflowExpression.Compile(databaseId);
+            WorkflowExpression.Validate(__workflow_databaseId, nameof(databaseId), required: true);
+            var __workflow_collectionId = collectionId == null ? null : WorkflowExpression.Compile(collectionId);
+            WorkflowExpression.Validate(__workflow_collectionId, nameof(collectionId), required: true);
+            var __workflow_sprocId = sprocId == null ? null : WorkflowExpression.Compile(sprocId);
+            WorkflowExpression.Validate(__workflow_sprocId, nameof(sprocId), required: true);
+            var __workflow_xMsDocumentdbRawPartitionkey = xMsDocumentdbRawPartitionkey == null ? null : WorkflowExpression.Compile(xMsDocumentdbRawPartitionkey);
+            WorkflowExpression.Validate(__workflow_xMsDocumentdbRawPartitionkey, nameof(xMsDocumentdbRawPartitionkey), required: false);
+            var __workflow_parameters = parameters == null ? null : WorkflowExpression.Compile(parameters);
+            WorkflowExpression.Validate(__workflow_parameters, nameof(parameters), required: false);
+            var __workflow_xMsVersion = xMsVersion == null ? null : WorkflowExpression.Compile(xMsVersion);
+            WorkflowExpression.Validate(__workflow_xMsVersion, nameof(xMsVersion), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/sprocs/{3}", ExpressionConverter.ConvertWithUrlEncoding(cosmosDbAccountName, 1), ExpressionConverter.ConvertWithUrlEncoding(databaseId, 1), ExpressionConverter.ConvertWithUrlEncoding(collectionId, 1), ExpressionConverter.ConvertWithUrlEncoding(sprocId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/sprocs/{3}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cosmosDbAccountName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_databaseId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_collectionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_sprocId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (xMsDocumentdbRawPartitionkey != null)
-                    callPayload.Headers["x-ms-documentdb-raw-partitionkey"] = ExpressionConverter.Convert(xMsDocumentdbRawPartitionkey);
-                if (xMsVersion != null)
-                    callPayload.Headers["x-ms-version"] = ExpressionConverter.Convert(xMsVersion);
-                callPayload.Body = ExpressionConverter.ConvertO(parameters);
+                if (__workflow_xMsDocumentdbRawPartitionkey != null)
+                    callPayload.Headers["x-ms-documentdb-raw-partitionkey"] = ExpressionConverter.Convert(__workflow_xMsDocumentdbRawPartitionkey);
+                if (__workflow_xMsVersion != null)
+                    callPayload.Headers["x-ms-version"] = ExpressionConverter.Convert(__workflow_xMsVersion);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_parameters);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
-        [WorkflowExpressionFactory(nameof(__BuildGetDocument))]
-        public IBodyWorkflowAction<GetDocumentV2Response> GetDocument([WorkflowExpression] Func<string> cosmosDbAccountName, [WorkflowExpression] Func<string> databaseId, [WorkflowExpression] Func<string> collectionId, [WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> xMsDocumentdbRawPartitionkey = null, [WorkflowExpression] Func<double> xMsMaxItemCount = null, [WorkflowExpression] Func<string> xMsContinuation = null, [WorkflowExpression] Func<xMsConsistencyLevelInput> xMsConsistencyLevel = null, [WorkflowExpression] Func<string> xMsSessionToken = null, [WorkflowExpression] Func<string> xMsActivityId = null, [WorkflowExpression] Func<bool> extractSensitivityLabel = null, [WorkflowExpression] Func<string> purviewAccountName = null, [WorkflowExpression] Func<xMsVersionInput> xMsVersion = null)
+        public IBodyWorkflowAction<GetDocumentV2Response> GetDocument(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> collectionId, Expression<Func<string>> documentId, Expression<Func<string>> xMsDocumentdbRawPartitionkey = null, Expression<Func<double>> xMsMaxItemCount = null, Expression<Func<string>> xMsContinuation = null, Expression<Func<xMsConsistencyLevelInput>> xMsConsistencyLevel = null, Expression<Func<string>> xMsSessionToken = null, Expression<Func<string>> xMsActivityId = null, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<string>> purviewAccountName = null, Expression<Func<xMsVersionInput>> xMsVersion = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetDocumentV2Response> __BuildGetDocument(WorkflowExpression<string> cosmosDbAccountName, WorkflowExpression<string> databaseId, WorkflowExpression<string> collectionId, WorkflowExpression<string> documentId, WorkflowExpression<string> xMsDocumentdbRawPartitionkey = null, WorkflowExpression<double> xMsMaxItemCount = null, WorkflowExpression<string> xMsContinuation = null, WorkflowExpression<xMsConsistencyLevelInput> xMsConsistencyLevel = null, WorkflowExpression<string> xMsSessionToken = null, WorkflowExpression<string> xMsActivityId = null, WorkflowExpression<bool> extractSensitivityLabel = null, WorkflowExpression<string> purviewAccountName = null, WorkflowExpression<xMsVersionInput> xMsVersion = null)
-        {
-            WorkflowExpression.Validate(cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
-            WorkflowExpression.Validate(databaseId, nameof(databaseId), required: true);
-            WorkflowExpression.Validate(collectionId, nameof(collectionId), required: true);
-            WorkflowExpression.Validate(documentId, nameof(documentId), required: true);
-            WorkflowExpression.Validate(xMsDocumentdbRawPartitionkey, nameof(xMsDocumentdbRawPartitionkey), required: false);
-            WorkflowExpression.Validate(xMsMaxItemCount, nameof(xMsMaxItemCount), required: false);
-            WorkflowExpression.Validate(xMsContinuation, nameof(xMsContinuation), required: false);
-            WorkflowExpression.Validate(xMsConsistencyLevel, nameof(xMsConsistencyLevel), required: false);
-            WorkflowExpression.Validate(xMsSessionToken, nameof(xMsSessionToken), required: false);
-            WorkflowExpression.Validate(xMsActivityId, nameof(xMsActivityId), required: false);
-            WorkflowExpression.Validate(extractSensitivityLabel, nameof(extractSensitivityLabel), required: false);
-            WorkflowExpression.Validate(purviewAccountName, nameof(purviewAccountName), required: false);
-            WorkflowExpression.Validate(xMsVersion, nameof(xMsVersion), required: false);
+            var __workflow_cosmosDbAccountName = cosmosDbAccountName == null ? null : WorkflowExpression.Compile(cosmosDbAccountName);
+            WorkflowExpression.Validate(__workflow_cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
+            var __workflow_databaseId = databaseId == null ? null : WorkflowExpression.Compile(databaseId);
+            WorkflowExpression.Validate(__workflow_databaseId, nameof(databaseId), required: true);
+            var __workflow_collectionId = collectionId == null ? null : WorkflowExpression.Compile(collectionId);
+            WorkflowExpression.Validate(__workflow_collectionId, nameof(collectionId), required: true);
+            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
+            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
+            var __workflow_xMsDocumentdbRawPartitionkey = xMsDocumentdbRawPartitionkey == null ? null : WorkflowExpression.Compile(xMsDocumentdbRawPartitionkey);
+            WorkflowExpression.Validate(__workflow_xMsDocumentdbRawPartitionkey, nameof(xMsDocumentdbRawPartitionkey), required: false);
+            var __workflow_xMsMaxItemCount = xMsMaxItemCount == null ? null : WorkflowExpression.Compile(xMsMaxItemCount);
+            WorkflowExpression.Validate(__workflow_xMsMaxItemCount, nameof(xMsMaxItemCount), required: false);
+            var __workflow_xMsContinuation = xMsContinuation == null ? null : WorkflowExpression.Compile(xMsContinuation);
+            WorkflowExpression.Validate(__workflow_xMsContinuation, nameof(xMsContinuation), required: false);
+            var __workflow_xMsConsistencyLevel = xMsConsistencyLevel == null ? null : WorkflowExpression.Compile(xMsConsistencyLevel);
+            WorkflowExpression.Validate(__workflow_xMsConsistencyLevel, nameof(xMsConsistencyLevel), required: false);
+            var __workflow_xMsSessionToken = xMsSessionToken == null ? null : WorkflowExpression.Compile(xMsSessionToken);
+            WorkflowExpression.Validate(__workflow_xMsSessionToken, nameof(xMsSessionToken), required: false);
+            var __workflow_xMsActivityId = xMsActivityId == null ? null : WorkflowExpression.Compile(xMsActivityId);
+            WorkflowExpression.Validate(__workflow_xMsActivityId, nameof(xMsActivityId), required: false);
+            var __workflow_extractSensitivityLabel = extractSensitivityLabel == null ? null : WorkflowExpression.Compile(extractSensitivityLabel);
+            WorkflowExpression.Validate(__workflow_extractSensitivityLabel, nameof(extractSensitivityLabel), required: false);
+            var __workflow_purviewAccountName = purviewAccountName == null ? null : WorkflowExpression.Compile(purviewAccountName);
+            WorkflowExpression.Validate(__workflow_purviewAccountName, nameof(purviewAccountName), required: false);
+            var __workflow_xMsVersion = xMsVersion == null ? null : WorkflowExpression.Compile(xMsVersion);
+            WorkflowExpression.Validate(__workflow_xMsVersion, nameof(xMsVersion), required: false);
             return new DeferredBodyAction<GetDocumentV2Response>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/docs/{3}", ExpressionConverter.ConvertWithUrlEncoding(cosmosDbAccountName, 1), ExpressionConverter.ConvertWithUrlEncoding(databaseId, 1), ExpressionConverter.ConvertWithUrlEncoding(collectionId, 1), ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/docs/{3}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cosmosDbAccountName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_databaseId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_collectionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (extractSensitivityLabel != null)
-                    callPayload.Queries["extractSensitivityLabel"] = ExpressionConverter.Convert(extractSensitivityLabel);
-                if (purviewAccountName != null)
-                    callPayload.Queries["purviewAccountName"] = ExpressionConverter.Convert(purviewAccountName);
-                if (xMsDocumentdbRawPartitionkey != null)
-                    callPayload.Headers["x-ms-documentdb-raw-partitionkey"] = ExpressionConverter.Convert(xMsDocumentdbRawPartitionkey);
-                if (xMsMaxItemCount != null)
-                    callPayload.Headers["x-ms-max-item-count"] = ExpressionConverter.Convert(xMsMaxItemCount);
-                if (xMsContinuation != null)
-                    callPayload.Headers["x-ms-continuation"] = ExpressionConverter.Convert(xMsContinuation);
-                if (xMsConsistencyLevel != null)
-                    callPayload.Headers["x-ms-consistency-level"] = ExpressionConverter.Convert(xMsConsistencyLevel);
-                if (xMsSessionToken != null)
-                    callPayload.Headers["x-ms-session-token"] = ExpressionConverter.Convert(xMsSessionToken);
-                if (xMsActivityId != null)
-                    callPayload.Headers["x-ms-activity-id"] = ExpressionConverter.Convert(xMsActivityId);
-                if (xMsVersion != null)
-                    callPayload.Headers["x-ms-version"] = ExpressionConverter.Convert(xMsVersion);
+                if (__workflow_extractSensitivityLabel != null)
+                    callPayload.Queries["extractSensitivityLabel"] = ExpressionConverter.Convert(__workflow_extractSensitivityLabel);
+                if (__workflow_purviewAccountName != null)
+                    callPayload.Queries["purviewAccountName"] = ExpressionConverter.Convert(__workflow_purviewAccountName);
+                if (__workflow_xMsDocumentdbRawPartitionkey != null)
+                    callPayload.Headers["x-ms-documentdb-raw-partitionkey"] = ExpressionConverter.Convert(__workflow_xMsDocumentdbRawPartitionkey);
+                if (__workflow_xMsMaxItemCount != null)
+                    callPayload.Headers["x-ms-max-item-count"] = ExpressionConverter.Convert(__workflow_xMsMaxItemCount);
+                if (__workflow_xMsContinuation != null)
+                    callPayload.Headers["x-ms-continuation"] = ExpressionConverter.Convert(__workflow_xMsContinuation);
+                if (__workflow_xMsConsistencyLevel != null)
+                    callPayload.Headers["x-ms-consistency-level"] = ExpressionConverter.Convert(__workflow_xMsConsistencyLevel);
+                if (__workflow_xMsSessionToken != null)
+                    callPayload.Headers["x-ms-session-token"] = ExpressionConverter.Convert(__workflow_xMsSessionToken);
+                if (__workflow_xMsActivityId != null)
+                    callPayload.Headers["x-ms-activity-id"] = ExpressionConverter.Convert(__workflow_xMsActivityId);
+                if (__workflow_xMsVersion != null)
+                    callPayload.Headers["x-ms-version"] = ExpressionConverter.Convert(__workflow_xMsVersion);
                 return new ApiConnectionAction<GetDocumentV2Response>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
-        [WorkflowExpressionFactory(nameof(__BuildGetDocuments))]
-        public IBodyWorkflowAction<GetDocumentsV3Response> GetDocuments([WorkflowExpression] Func<string> cosmosDbAccountName, [WorkflowExpression] Func<string> databaseId, [WorkflowExpression] Func<string> collectionId, [WorkflowExpression] Func<string> xMsDocumentdbRawPartitionkey = null, [WorkflowExpression] Func<double> xMsMaxItemCount = null, [WorkflowExpression] Func<string> xMsContinuation = null, [WorkflowExpression] Func<xMsConsistencyLevelInput> xMsConsistencyLevel = null, [WorkflowExpression] Func<string> xMsSessionToken = null, [WorkflowExpression] Func<string> xMsActivityId = null, [WorkflowExpression] Func<xMsVersionInput> xMsVersion = null, [WorkflowExpression] Func<bool> extractSensitivityLabel = null, [WorkflowExpression] Func<string> purviewAccountName = null)
+        public IBodyWorkflowAction<GetDocumentsV3Response> GetDocuments(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> collectionId, Expression<Func<string>> xMsDocumentdbRawPartitionkey = null, Expression<Func<double>> xMsMaxItemCount = null, Expression<Func<string>> xMsContinuation = null, Expression<Func<xMsConsistencyLevelInput>> xMsConsistencyLevel = null, Expression<Func<string>> xMsSessionToken = null, Expression<Func<string>> xMsActivityId = null, Expression<Func<xMsVersionInput>> xMsVersion = null, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<string>> purviewAccountName = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetDocumentsV3Response> __BuildGetDocuments(WorkflowExpression<string> cosmosDbAccountName, WorkflowExpression<string> databaseId, WorkflowExpression<string> collectionId, WorkflowExpression<string> xMsDocumentdbRawPartitionkey = null, WorkflowExpression<double> xMsMaxItemCount = null, WorkflowExpression<string> xMsContinuation = null, WorkflowExpression<xMsConsistencyLevelInput> xMsConsistencyLevel = null, WorkflowExpression<string> xMsSessionToken = null, WorkflowExpression<string> xMsActivityId = null, WorkflowExpression<xMsVersionInput> xMsVersion = null, WorkflowExpression<bool> extractSensitivityLabel = null, WorkflowExpression<string> purviewAccountName = null)
-        {
-            WorkflowExpression.Validate(cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
-            WorkflowExpression.Validate(databaseId, nameof(databaseId), required: true);
-            WorkflowExpression.Validate(collectionId, nameof(collectionId), required: true);
-            WorkflowExpression.Validate(xMsDocumentdbRawPartitionkey, nameof(xMsDocumentdbRawPartitionkey), required: false);
-            WorkflowExpression.Validate(xMsMaxItemCount, nameof(xMsMaxItemCount), required: false);
-            WorkflowExpression.Validate(xMsContinuation, nameof(xMsContinuation), required: false);
-            WorkflowExpression.Validate(xMsConsistencyLevel, nameof(xMsConsistencyLevel), required: false);
-            WorkflowExpression.Validate(xMsSessionToken, nameof(xMsSessionToken), required: false);
-            WorkflowExpression.Validate(xMsActivityId, nameof(xMsActivityId), required: false);
-            WorkflowExpression.Validate(xMsVersion, nameof(xMsVersion), required: false);
-            WorkflowExpression.Validate(extractSensitivityLabel, nameof(extractSensitivityLabel), required: false);
-            WorkflowExpression.Validate(purviewAccountName, nameof(purviewAccountName), required: false);
+            var __workflow_cosmosDbAccountName = cosmosDbAccountName == null ? null : WorkflowExpression.Compile(cosmosDbAccountName);
+            WorkflowExpression.Validate(__workflow_cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
+            var __workflow_databaseId = databaseId == null ? null : WorkflowExpression.Compile(databaseId);
+            WorkflowExpression.Validate(__workflow_databaseId, nameof(databaseId), required: true);
+            var __workflow_collectionId = collectionId == null ? null : WorkflowExpression.Compile(collectionId);
+            WorkflowExpression.Validate(__workflow_collectionId, nameof(collectionId), required: true);
+            var __workflow_xMsDocumentdbRawPartitionkey = xMsDocumentdbRawPartitionkey == null ? null : WorkflowExpression.Compile(xMsDocumentdbRawPartitionkey);
+            WorkflowExpression.Validate(__workflow_xMsDocumentdbRawPartitionkey, nameof(xMsDocumentdbRawPartitionkey), required: false);
+            var __workflow_xMsMaxItemCount = xMsMaxItemCount == null ? null : WorkflowExpression.Compile(xMsMaxItemCount);
+            WorkflowExpression.Validate(__workflow_xMsMaxItemCount, nameof(xMsMaxItemCount), required: false);
+            var __workflow_xMsContinuation = xMsContinuation == null ? null : WorkflowExpression.Compile(xMsContinuation);
+            WorkflowExpression.Validate(__workflow_xMsContinuation, nameof(xMsContinuation), required: false);
+            var __workflow_xMsConsistencyLevel = xMsConsistencyLevel == null ? null : WorkflowExpression.Compile(xMsConsistencyLevel);
+            WorkflowExpression.Validate(__workflow_xMsConsistencyLevel, nameof(xMsConsistencyLevel), required: false);
+            var __workflow_xMsSessionToken = xMsSessionToken == null ? null : WorkflowExpression.Compile(xMsSessionToken);
+            WorkflowExpression.Validate(__workflow_xMsSessionToken, nameof(xMsSessionToken), required: false);
+            var __workflow_xMsActivityId = xMsActivityId == null ? null : WorkflowExpression.Compile(xMsActivityId);
+            WorkflowExpression.Validate(__workflow_xMsActivityId, nameof(xMsActivityId), required: false);
+            var __workflow_xMsVersion = xMsVersion == null ? null : WorkflowExpression.Compile(xMsVersion);
+            WorkflowExpression.Validate(__workflow_xMsVersion, nameof(xMsVersion), required: false);
+            var __workflow_extractSensitivityLabel = extractSensitivityLabel == null ? null : WorkflowExpression.Compile(extractSensitivityLabel);
+            WorkflowExpression.Validate(__workflow_extractSensitivityLabel, nameof(extractSensitivityLabel), required: false);
+            var __workflow_purviewAccountName = purviewAccountName == null ? null : WorkflowExpression.Compile(purviewAccountName);
+            WorkflowExpression.Validate(__workflow_purviewAccountName, nameof(purviewAccountName), required: false);
             return new DeferredBodyAction<GetDocumentsV3Response>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/docs", ExpressionConverter.ConvertWithUrlEncoding(cosmosDbAccountName, 1), ExpressionConverter.ConvertWithUrlEncoding(databaseId, 1), ExpressionConverter.ConvertWithUrlEncoding(collectionId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/docs", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cosmosDbAccountName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_databaseId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_collectionId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (extractSensitivityLabel != null)
-                    callPayload.Queries["extractSensitivityLabel"] = ExpressionConverter.Convert(extractSensitivityLabel);
-                if (purviewAccountName != null)
-                    callPayload.Queries["purviewAccountName"] = ExpressionConverter.Convert(purviewAccountName);
-                if (xMsDocumentdbRawPartitionkey != null)
-                    callPayload.Headers["x-ms-documentdb-raw-partitionkey"] = ExpressionConverter.Convert(xMsDocumentdbRawPartitionkey);
-                if (xMsMaxItemCount != null)
-                    callPayload.Headers["x-ms-max-item-count"] = ExpressionConverter.Convert(xMsMaxItemCount);
-                if (xMsContinuation != null)
-                    callPayload.Headers["x-ms-continuation"] = ExpressionConverter.Convert(xMsContinuation);
-                if (xMsConsistencyLevel != null)
-                    callPayload.Headers["x-ms-consistency-level"] = ExpressionConverter.Convert(xMsConsistencyLevel);
-                if (xMsSessionToken != null)
-                    callPayload.Headers["x-ms-session-token"] = ExpressionConverter.Convert(xMsSessionToken);
-                if (xMsActivityId != null)
-                    callPayload.Headers["x-ms-activity-id"] = ExpressionConverter.Convert(xMsActivityId);
-                if (xMsVersion != null)
-                    callPayload.Headers["x-ms-version"] = ExpressionConverter.Convert(xMsVersion);
+                if (__workflow_extractSensitivityLabel != null)
+                    callPayload.Queries["extractSensitivityLabel"] = ExpressionConverter.Convert(__workflow_extractSensitivityLabel);
+                if (__workflow_purviewAccountName != null)
+                    callPayload.Queries["purviewAccountName"] = ExpressionConverter.Convert(__workflow_purviewAccountName);
+                if (__workflow_xMsDocumentdbRawPartitionkey != null)
+                    callPayload.Headers["x-ms-documentdb-raw-partitionkey"] = ExpressionConverter.Convert(__workflow_xMsDocumentdbRawPartitionkey);
+                if (__workflow_xMsMaxItemCount != null)
+                    callPayload.Headers["x-ms-max-item-count"] = ExpressionConverter.Convert(__workflow_xMsMaxItemCount);
+                if (__workflow_xMsContinuation != null)
+                    callPayload.Headers["x-ms-continuation"] = ExpressionConverter.Convert(__workflow_xMsContinuation);
+                if (__workflow_xMsConsistencyLevel != null)
+                    callPayload.Headers["x-ms-consistency-level"] = ExpressionConverter.Convert(__workflow_xMsConsistencyLevel);
+                if (__workflow_xMsSessionToken != null)
+                    callPayload.Headers["x-ms-session-token"] = ExpressionConverter.Convert(__workflow_xMsSessionToken);
+                if (__workflow_xMsActivityId != null)
+                    callPayload.Headers["x-ms-activity-id"] = ExpressionConverter.Convert(__workflow_xMsActivityId);
+                if (__workflow_xMsVersion != null)
+                    callPayload.Headers["x-ms-version"] = ExpressionConverter.Convert(__workflow_xMsVersion);
                 return new ApiConnectionAction<GetDocumentsV3Response>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
-        [WorkflowExpressionFactory(nameof(__BuildGetStoredProcedures))]
-        public IBodyWorkflowAction<GetStoredProceduresResponse> GetStoredProcedures([WorkflowExpression] Func<string> cosmosDbAccountName, [WorkflowExpression] Func<string> databaseId, [WorkflowExpression] Func<string> collectionId, [WorkflowExpression] Func<xMsVersionInput> xMsVersion = null)
+        public IBodyWorkflowAction<GetStoredProceduresResponse> GetStoredProcedures(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> collectionId, Expression<Func<xMsVersionInput>> xMsVersion = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetStoredProceduresResponse> __BuildGetStoredProcedures(WorkflowExpression<string> cosmosDbAccountName, WorkflowExpression<string> databaseId, WorkflowExpression<string> collectionId, WorkflowExpression<xMsVersionInput> xMsVersion = null)
-        {
-            WorkflowExpression.Validate(cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
-            WorkflowExpression.Validate(databaseId, nameof(databaseId), required: true);
-            WorkflowExpression.Validate(collectionId, nameof(collectionId), required: true);
-            WorkflowExpression.Validate(xMsVersion, nameof(xMsVersion), required: false);
+            var __workflow_cosmosDbAccountName = cosmosDbAccountName == null ? null : WorkflowExpression.Compile(cosmosDbAccountName);
+            WorkflowExpression.Validate(__workflow_cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
+            var __workflow_databaseId = databaseId == null ? null : WorkflowExpression.Compile(databaseId);
+            WorkflowExpression.Validate(__workflow_databaseId, nameof(databaseId), required: true);
+            var __workflow_collectionId = collectionId == null ? null : WorkflowExpression.Compile(collectionId);
+            WorkflowExpression.Validate(__workflow_collectionId, nameof(collectionId), required: true);
+            var __workflow_xMsVersion = xMsVersion == null ? null : WorkflowExpression.Compile(xMsVersion);
+            WorkflowExpression.Validate(__workflow_xMsVersion, nameof(xMsVersion), required: false);
             return new DeferredBodyAction<GetStoredProceduresResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/sprocs", ExpressionConverter.ConvertWithUrlEncoding(cosmosDbAccountName, 1), ExpressionConverter.ConvertWithUrlEncoding(databaseId, 1), ExpressionConverter.ConvertWithUrlEncoding(collectionId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/sprocs", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cosmosDbAccountName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_databaseId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_collectionId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (xMsVersion != null)
-                    callPayload.Headers["x-ms-version"] = ExpressionConverter.Convert(xMsVersion);
+                if (__workflow_xMsVersion != null)
+                    callPayload.Headers["x-ms-version"] = ExpressionConverter.Convert(__workflow_xMsVersion);
                 return new ApiConnectionAction<GetStoredProceduresResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
-        [WorkflowExpressionFactory(nameof(__BuildQueryDocuments))]
-        public IBodyWorkflowAction<QueryDocumentsV5Response> QueryDocuments([WorkflowExpression] Func<string> cosmosDbAccountName, [WorkflowExpression] Func<string> databaseId, [WorkflowExpression] Func<string> containerId, [WorkflowExpression] Func<string> queryText = null, [WorkflowExpression] Func<string> partitionKey = null, [WorkflowExpression] Func<int> maxItemCount = null, [WorkflowExpression] Func<string> continuationToken = null, [WorkflowExpression] Func<consistencyLevelInput> consistencyLevel = null, [WorkflowExpression] Func<string> sessionToken = null, [WorkflowExpression] Func<bool> extractSensitivityLabel = null, [WorkflowExpression] Func<string> purviewAccountName = null)
+        public IBodyWorkflowAction<QueryDocumentsV5Response> QueryDocuments(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> containerId, Expression<Func<string>> queryText = null, Expression<Func<string>> partitionKey = null, Expression<Func<int>> maxItemCount = null, Expression<Func<string>> continuationToken = null, Expression<Func<consistencyLevelInput>> consistencyLevel = null, Expression<Func<string>> sessionToken = null, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<string>> purviewAccountName = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<QueryDocumentsV5Response> __BuildQueryDocuments(WorkflowExpression<string> cosmosDbAccountName, WorkflowExpression<string> databaseId, WorkflowExpression<string> containerId, WorkflowExpression<string> queryText = null, WorkflowExpression<string> partitionKey = null, WorkflowExpression<int> maxItemCount = null, WorkflowExpression<string> continuationToken = null, WorkflowExpression<consistencyLevelInput> consistencyLevel = null, WorkflowExpression<string> sessionToken = null, WorkflowExpression<bool> extractSensitivityLabel = null, WorkflowExpression<string> purviewAccountName = null)
-        {
-            WorkflowExpression.Validate(cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
-            WorkflowExpression.Validate(databaseId, nameof(databaseId), required: true);
-            WorkflowExpression.Validate(containerId, nameof(containerId), required: true);
-            WorkflowExpression.Validate(queryText, nameof(queryText), required: false);
-            WorkflowExpression.Validate(partitionKey, nameof(partitionKey), required: false);
-            WorkflowExpression.Validate(maxItemCount, nameof(maxItemCount), required: false);
-            WorkflowExpression.Validate(continuationToken, nameof(continuationToken), required: false);
-            WorkflowExpression.Validate(consistencyLevel, nameof(consistencyLevel), required: false);
-            WorkflowExpression.Validate(sessionToken, nameof(sessionToken), required: false);
-            WorkflowExpression.Validate(extractSensitivityLabel, nameof(extractSensitivityLabel), required: false);
-            WorkflowExpression.Validate(purviewAccountName, nameof(purviewAccountName), required: false);
+            var __workflow_cosmosDbAccountName = cosmosDbAccountName == null ? null : WorkflowExpression.Compile(cosmosDbAccountName);
+            WorkflowExpression.Validate(__workflow_cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
+            var __workflow_databaseId = databaseId == null ? null : WorkflowExpression.Compile(databaseId);
+            WorkflowExpression.Validate(__workflow_databaseId, nameof(databaseId), required: true);
+            var __workflow_containerId = containerId == null ? null : WorkflowExpression.Compile(containerId);
+            WorkflowExpression.Validate(__workflow_containerId, nameof(containerId), required: true);
+            var __workflow_queryText = queryText == null ? null : WorkflowExpression.Compile(queryText);
+            WorkflowExpression.Validate(__workflow_queryText, nameof(queryText), required: false);
+            var __workflow_partitionKey = partitionKey == null ? null : WorkflowExpression.Compile(partitionKey);
+            WorkflowExpression.Validate(__workflow_partitionKey, nameof(partitionKey), required: false);
+            var __workflow_maxItemCount = maxItemCount == null ? null : WorkflowExpression.Compile(maxItemCount);
+            WorkflowExpression.Validate(__workflow_maxItemCount, nameof(maxItemCount), required: false);
+            var __workflow_continuationToken = continuationToken == null ? null : WorkflowExpression.Compile(continuationToken);
+            WorkflowExpression.Validate(__workflow_continuationToken, nameof(continuationToken), required: false);
+            var __workflow_consistencyLevel = consistencyLevel == null ? null : WorkflowExpression.Compile(consistencyLevel);
+            WorkflowExpression.Validate(__workflow_consistencyLevel, nameof(consistencyLevel), required: false);
+            var __workflow_sessionToken = sessionToken == null ? null : WorkflowExpression.Compile(sessionToken);
+            WorkflowExpression.Validate(__workflow_sessionToken, nameof(sessionToken), required: false);
+            var __workflow_extractSensitivityLabel = extractSensitivityLabel == null ? null : WorkflowExpression.Compile(extractSensitivityLabel);
+            WorkflowExpression.Validate(__workflow_extractSensitivityLabel, nameof(extractSensitivityLabel), required: false);
+            var __workflow_purviewAccountName = purviewAccountName == null ? null : WorkflowExpression.Compile(purviewAccountName);
+            WorkflowExpression.Validate(__workflow_purviewAccountName, nameof(purviewAccountName), required: false);
             return new DeferredBodyAction<QueryDocumentsV5Response>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v5/cosmosdb/{0}/dbs/{1}/colls/{2}/query", ExpressionConverter.ConvertWithUrlEncoding(cosmosDbAccountName, 1), ExpressionConverter.ConvertWithUrlEncoding(databaseId, 1), ExpressionConverter.ConvertWithUrlEncoding(containerId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v5/cosmosdb/{0}/dbs/{1}/colls/{2}/query", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cosmosDbAccountName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_databaseId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_containerId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (queryText != null)
-                    callPayload.Queries["queryText"] = ExpressionConverter.Convert(queryText);
-                if (partitionKey != null)
-                    callPayload.Queries["partitionKey"] = ExpressionConverter.Convert(partitionKey);
-                if (maxItemCount != null)
-                    callPayload.Queries["maxItemCount"] = ExpressionConverter.Convert(maxItemCount);
-                if (continuationToken != null)
-                    callPayload.Queries["continuationToken"] = ExpressionConverter.Convert(continuationToken);
-                if (consistencyLevel != null)
-                    callPayload.Queries["consistencyLevel"] = ExpressionConverter.Convert(consistencyLevel);
-                if (sessionToken != null)
-                    callPayload.Queries["sessionToken"] = ExpressionConverter.Convert(sessionToken);
-                if (extractSensitivityLabel != null)
-                    callPayload.Queries["extractSensitivityLabel"] = ExpressionConverter.Convert(extractSensitivityLabel);
-                if (purviewAccountName != null)
-                    callPayload.Queries["purviewAccountName"] = ExpressionConverter.Convert(purviewAccountName);
+                if (__workflow_queryText != null)
+                    callPayload.Queries["queryText"] = ExpressionConverter.Convert(__workflow_queryText);
+                if (__workflow_partitionKey != null)
+                    callPayload.Queries["partitionKey"] = ExpressionConverter.Convert(__workflow_partitionKey);
+                if (__workflow_maxItemCount != null)
+                    callPayload.Queries["maxItemCount"] = ExpressionConverter.Convert(__workflow_maxItemCount);
+                if (__workflow_continuationToken != null)
+                    callPayload.Queries["continuationToken"] = ExpressionConverter.Convert(__workflow_continuationToken);
+                if (__workflow_consistencyLevel != null)
+                    callPayload.Queries["consistencyLevel"] = ExpressionConverter.Convert(__workflow_consistencyLevel);
+                if (__workflow_sessionToken != null)
+                    callPayload.Queries["sessionToken"] = ExpressionConverter.Convert(__workflow_sessionToken);
+                if (__workflow_extractSensitivityLabel != null)
+                    callPayload.Queries["extractSensitivityLabel"] = ExpressionConverter.Convert(__workflow_extractSensitivityLabel);
+                if (__workflow_purviewAccountName != null)
+                    callPayload.Queries["purviewAccountName"] = ExpressionConverter.Convert(__workflow_purviewAccountName);
                 return new ApiConnectionAction<QueryDocumentsV5Response>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
-        [WorkflowExpressionFactory(nameof(__BuildReplaceDocument))]
-        public IBodyWorkflowAction<PutDocumentResponse> ReplaceDocument([WorkflowExpression] Func<string> cosmosDbAccountName, [WorkflowExpression] Func<string> databaseId, [WorkflowExpression] Func<string> collectionId, [WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> xMsDocumentdbRawPartitionkey = null, [WorkflowExpression] Func<double> xMsMaxItemCount = null, [WorkflowExpression] Func<string> xMsContinuation = null, [WorkflowExpression] Func<xMsConsistencyLevelInput> xMsConsistencyLevel = null, [WorkflowExpression] Func<string> xMsSessionToken = null, [WorkflowExpression] Func<string> xMsActivityId = null, [WorkflowExpression] Func<string> xMsDocumentdbPreTriggerInclude = null, [WorkflowExpression] Func<string> xMsDocumentdbPostTriggerInclude = null, [WorkflowExpression] Func<xMsVersionInput> xMsVersion = null)
+        public IBodyWorkflowAction<PutDocumentResponse> ReplaceDocument(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> collectionId, Expression<Func<string>> documentId, Expression<Func<string>> xMsDocumentdbRawPartitionkey = null, Expression<Func<double>> xMsMaxItemCount = null, Expression<Func<string>> xMsContinuation = null, Expression<Func<xMsConsistencyLevelInput>> xMsConsistencyLevel = null, Expression<Func<string>> xMsSessionToken = null, Expression<Func<string>> xMsActivityId = null, Expression<Func<string>> xMsDocumentdbPreTriggerInclude = null, Expression<Func<string>> xMsDocumentdbPostTriggerInclude = null, Expression<Func<xMsVersionInput>> xMsVersion = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PutDocumentResponse> __BuildReplaceDocument(WorkflowExpression<string> cosmosDbAccountName, WorkflowExpression<string> databaseId, WorkflowExpression<string> collectionId, WorkflowExpression<string> documentId, WorkflowExpression<string> xMsDocumentdbRawPartitionkey = null, WorkflowExpression<double> xMsMaxItemCount = null, WorkflowExpression<string> xMsContinuation = null, WorkflowExpression<xMsConsistencyLevelInput> xMsConsistencyLevel = null, WorkflowExpression<string> xMsSessionToken = null, WorkflowExpression<string> xMsActivityId = null, WorkflowExpression<string> xMsDocumentdbPreTriggerInclude = null, WorkflowExpression<string> xMsDocumentdbPostTriggerInclude = null, WorkflowExpression<xMsVersionInput> xMsVersion = null)
-        {
-            WorkflowExpression.Validate(cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
-            WorkflowExpression.Validate(databaseId, nameof(databaseId), required: true);
-            WorkflowExpression.Validate(collectionId, nameof(collectionId), required: true);
-            WorkflowExpression.Validate(documentId, nameof(documentId), required: true);
-            WorkflowExpression.Validate(xMsDocumentdbRawPartitionkey, nameof(xMsDocumentdbRawPartitionkey), required: false);
-            WorkflowExpression.Validate(xMsMaxItemCount, nameof(xMsMaxItemCount), required: false);
-            WorkflowExpression.Validate(xMsContinuation, nameof(xMsContinuation), required: false);
-            WorkflowExpression.Validate(xMsConsistencyLevel, nameof(xMsConsistencyLevel), required: false);
-            WorkflowExpression.Validate(xMsSessionToken, nameof(xMsSessionToken), required: false);
-            WorkflowExpression.Validate(xMsActivityId, nameof(xMsActivityId), required: false);
-            WorkflowExpression.Validate(xMsDocumentdbPreTriggerInclude, nameof(xMsDocumentdbPreTriggerInclude), required: false);
-            WorkflowExpression.Validate(xMsDocumentdbPostTriggerInclude, nameof(xMsDocumentdbPostTriggerInclude), required: false);
-            WorkflowExpression.Validate(xMsVersion, nameof(xMsVersion), required: false);
+            var __workflow_cosmosDbAccountName = cosmosDbAccountName == null ? null : WorkflowExpression.Compile(cosmosDbAccountName);
+            WorkflowExpression.Validate(__workflow_cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
+            var __workflow_databaseId = databaseId == null ? null : WorkflowExpression.Compile(databaseId);
+            WorkflowExpression.Validate(__workflow_databaseId, nameof(databaseId), required: true);
+            var __workflow_collectionId = collectionId == null ? null : WorkflowExpression.Compile(collectionId);
+            WorkflowExpression.Validate(__workflow_collectionId, nameof(collectionId), required: true);
+            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
+            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
+            var __workflow_xMsDocumentdbRawPartitionkey = xMsDocumentdbRawPartitionkey == null ? null : WorkflowExpression.Compile(xMsDocumentdbRawPartitionkey);
+            WorkflowExpression.Validate(__workflow_xMsDocumentdbRawPartitionkey, nameof(xMsDocumentdbRawPartitionkey), required: false);
+            var __workflow_xMsMaxItemCount = xMsMaxItemCount == null ? null : WorkflowExpression.Compile(xMsMaxItemCount);
+            WorkflowExpression.Validate(__workflow_xMsMaxItemCount, nameof(xMsMaxItemCount), required: false);
+            var __workflow_xMsContinuation = xMsContinuation == null ? null : WorkflowExpression.Compile(xMsContinuation);
+            WorkflowExpression.Validate(__workflow_xMsContinuation, nameof(xMsContinuation), required: false);
+            var __workflow_xMsConsistencyLevel = xMsConsistencyLevel == null ? null : WorkflowExpression.Compile(xMsConsistencyLevel);
+            WorkflowExpression.Validate(__workflow_xMsConsistencyLevel, nameof(xMsConsistencyLevel), required: false);
+            var __workflow_xMsSessionToken = xMsSessionToken == null ? null : WorkflowExpression.Compile(xMsSessionToken);
+            WorkflowExpression.Validate(__workflow_xMsSessionToken, nameof(xMsSessionToken), required: false);
+            var __workflow_xMsActivityId = xMsActivityId == null ? null : WorkflowExpression.Compile(xMsActivityId);
+            WorkflowExpression.Validate(__workflow_xMsActivityId, nameof(xMsActivityId), required: false);
+            var __workflow_xMsDocumentdbPreTriggerInclude = xMsDocumentdbPreTriggerInclude == null ? null : WorkflowExpression.Compile(xMsDocumentdbPreTriggerInclude);
+            WorkflowExpression.Validate(__workflow_xMsDocumentdbPreTriggerInclude, nameof(xMsDocumentdbPreTriggerInclude), required: false);
+            var __workflow_xMsDocumentdbPostTriggerInclude = xMsDocumentdbPostTriggerInclude == null ? null : WorkflowExpression.Compile(xMsDocumentdbPostTriggerInclude);
+            WorkflowExpression.Validate(__workflow_xMsDocumentdbPostTriggerInclude, nameof(xMsDocumentdbPostTriggerInclude), required: false);
+            var __workflow_xMsVersion = xMsVersion == null ? null : WorkflowExpression.Compile(xMsVersion);
+            WorkflowExpression.Validate(__workflow_xMsVersion, nameof(xMsVersion), required: false);
             return new DeferredBodyAction<PutDocumentResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/docs/{3}", ExpressionConverter.ConvertWithUrlEncoding(cosmosDbAccountName, 1), ExpressionConverter.ConvertWithUrlEncoding(databaseId, 1), ExpressionConverter.ConvertWithUrlEncoding(collectionId, 1), ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/docs/{3}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cosmosDbAccountName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_databaseId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_collectionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (xMsDocumentdbRawPartitionkey != null)
-                    callPayload.Headers["x-ms-documentdb-raw-partitionkey"] = ExpressionConverter.Convert(xMsDocumentdbRawPartitionkey);
-                if (xMsMaxItemCount != null)
-                    callPayload.Headers["x-ms-max-item-count"] = ExpressionConverter.Convert(xMsMaxItemCount);
-                if (xMsContinuation != null)
-                    callPayload.Headers["x-ms-continuation"] = ExpressionConverter.Convert(xMsContinuation);
-                if (xMsConsistencyLevel != null)
-                    callPayload.Headers["x-ms-consistency-level"] = ExpressionConverter.Convert(xMsConsistencyLevel);
-                if (xMsSessionToken != null)
-                    callPayload.Headers["x-ms-session-token"] = ExpressionConverter.Convert(xMsSessionToken);
-                if (xMsActivityId != null)
-                    callPayload.Headers["x-ms-activity-id"] = ExpressionConverter.Convert(xMsActivityId);
-                if (xMsDocumentdbPreTriggerInclude != null)
-                    callPayload.Headers["x-ms-documentdb-pre-trigger-include"] = ExpressionConverter.Convert(xMsDocumentdbPreTriggerInclude);
-                if (xMsDocumentdbPostTriggerInclude != null)
-                    callPayload.Headers["x-ms-documentdb-post-trigger-include"] = ExpressionConverter.Convert(xMsDocumentdbPostTriggerInclude);
-                if (xMsVersion != null)
-                    callPayload.Headers["x-ms-version"] = ExpressionConverter.Convert(xMsVersion);
+                if (__workflow_xMsDocumentdbRawPartitionkey != null)
+                    callPayload.Headers["x-ms-documentdb-raw-partitionkey"] = ExpressionConverter.Convert(__workflow_xMsDocumentdbRawPartitionkey);
+                if (__workflow_xMsMaxItemCount != null)
+                    callPayload.Headers["x-ms-max-item-count"] = ExpressionConverter.Convert(__workflow_xMsMaxItemCount);
+                if (__workflow_xMsContinuation != null)
+                    callPayload.Headers["x-ms-continuation"] = ExpressionConverter.Convert(__workflow_xMsContinuation);
+                if (__workflow_xMsConsistencyLevel != null)
+                    callPayload.Headers["x-ms-consistency-level"] = ExpressionConverter.Convert(__workflow_xMsConsistencyLevel);
+                if (__workflow_xMsSessionToken != null)
+                    callPayload.Headers["x-ms-session-token"] = ExpressionConverter.Convert(__workflow_xMsSessionToken);
+                if (__workflow_xMsActivityId != null)
+                    callPayload.Headers["x-ms-activity-id"] = ExpressionConverter.Convert(__workflow_xMsActivityId);
+                if (__workflow_xMsDocumentdbPreTriggerInclude != null)
+                    callPayload.Headers["x-ms-documentdb-pre-trigger-include"] = ExpressionConverter.Convert(__workflow_xMsDocumentdbPreTriggerInclude);
+                if (__workflow_xMsDocumentdbPostTriggerInclude != null)
+                    callPayload.Headers["x-ms-documentdb-post-trigger-include"] = ExpressionConverter.Convert(__workflow_xMsDocumentdbPostTriggerInclude);
+                if (__workflow_xMsVersion != null)
+                    callPayload.Headers["x-ms-version"] = ExpressionConverter.Convert(__workflow_xMsVersion);
                 var body = new JObject();
                 var bodypropCount = 0;
                 if (bodypropCount > 0)
@@ -448,40 +473,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
-        [WorkflowExpressionFactory(nameof(__BuildReplaceStoredProcedure))]
-        public IBodyWorkflowAction<CreateStoredProcedureResponse> ReplaceStoredProcedure([WorkflowExpression] Func<string> cosmosDbAccountName, [WorkflowExpression] Func<string> databaseId, [WorkflowExpression] Func<string> collectionId, [WorkflowExpression] Func<string> sprocId, [WorkflowExpression] Func<string> bodyfunctionDefinition = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<xMsVersionInput> xMsVersion = null)
+        public IBodyWorkflowAction<CreateStoredProcedureResponse> ReplaceStoredProcedure(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> collectionId, Expression<Func<string>> sprocId, Expression<Func<string>> bodyfunctionDefinition = null, Expression<Func<string>> bodyid = null, Expression<Func<xMsVersionInput>> xMsVersion = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateStoredProcedureResponse> __BuildReplaceStoredProcedure(WorkflowExpression<string> cosmosDbAccountName, WorkflowExpression<string> databaseId, WorkflowExpression<string> collectionId, WorkflowExpression<string> sprocId, WorkflowExpression<string> bodyfunctionDefinition = null, WorkflowExpression<string> bodyid = null, WorkflowExpression<xMsVersionInput> xMsVersion = null)
-        {
-            WorkflowExpression.Validate(cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
-            WorkflowExpression.Validate(databaseId, nameof(databaseId), required: true);
-            WorkflowExpression.Validate(collectionId, nameof(collectionId), required: true);
-            WorkflowExpression.Validate(sprocId, nameof(sprocId), required: true);
-            WorkflowExpression.Validate(bodyfunctionDefinition, nameof(bodyfunctionDefinition), required: false);
-            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: false);
-            WorkflowExpression.Validate(xMsVersion, nameof(xMsVersion), required: false);
+            var __workflow_cosmosDbAccountName = cosmosDbAccountName == null ? null : WorkflowExpression.Compile(cosmosDbAccountName);
+            WorkflowExpression.Validate(__workflow_cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
+            var __workflow_databaseId = databaseId == null ? null : WorkflowExpression.Compile(databaseId);
+            WorkflowExpression.Validate(__workflow_databaseId, nameof(databaseId), required: true);
+            var __workflow_collectionId = collectionId == null ? null : WorkflowExpression.Compile(collectionId);
+            WorkflowExpression.Validate(__workflow_collectionId, nameof(collectionId), required: true);
+            var __workflow_sprocId = sprocId == null ? null : WorkflowExpression.Compile(sprocId);
+            WorkflowExpression.Validate(__workflow_sprocId, nameof(sprocId), required: true);
+            var __workflow_bodyfunctionDefinition = bodyfunctionDefinition == null ? null : WorkflowExpression.Compile(bodyfunctionDefinition);
+            WorkflowExpression.Validate(__workflow_bodyfunctionDefinition, nameof(bodyfunctionDefinition), required: false);
+            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
+            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: false);
+            var __workflow_xMsVersion = xMsVersion == null ? null : WorkflowExpression.Compile(xMsVersion);
+            WorkflowExpression.Validate(__workflow_xMsVersion, nameof(xMsVersion), required: false);
             return new DeferredBodyAction<CreateStoredProcedureResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/sprocs/{3}", ExpressionConverter.ConvertWithUrlEncoding(cosmosDbAccountName, 1), ExpressionConverter.ConvertWithUrlEncoding(databaseId, 1), ExpressionConverter.ConvertWithUrlEncoding(collectionId, 1), ExpressionConverter.ConvertWithUrlEncoding(sprocId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/sprocs/{3}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cosmosDbAccountName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_databaseId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_collectionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_sprocId, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (xMsVersion != null)
-                    callPayload.Headers["x-ms-version"] = ExpressionConverter.Convert(xMsVersion);
+                if (__workflow_xMsVersion != null)
+                    callPayload.Headers["x-ms-version"] = ExpressionConverter.Convert(__workflow_xMsVersion);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfunctionDefinition != null)
+                if (__workflow_bodyfunctionDefinition != null)
                 {
-                    body["body"] = ExpressionConverter.ConvertO(bodyfunctionDefinition);
+                    body["body"] = ExpressionConverter.ConvertO(__workflow_bodyfunctionDefinition);
                     bodypropCount++;
                 }
 
-                if (bodyid != null)
+                if (__workflow_bodyid != null)
                 {
-                    body["id"] = ExpressionConverter.ConvertO(bodyid);
+                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
                     bodypropCount++;
                 }
 

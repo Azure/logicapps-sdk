@@ -1,291 +1,297 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class EdifactActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edifact")]
-        [WorkflowExpressionFactory(nameof(__BuildAddOrUpdateControlNumbers))]
-        public IBodyWorkflowAction<UpdateControlNumberResult[]> AddOrUpdateControlNumbers([WorkflowExpression] Func<ReplicableControlNumberContent[]> controlNumberContents = null)
+        public IBodyWorkflowAction<UpdateControlNumberResult[]> AddOrUpdateControlNumbers(Expression<Func<ReplicableControlNumberContent[]>> controlNumberContents = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UpdateControlNumberResult[]> __BuildAddOrUpdateControlNumbers(WorkflowExpression<ReplicableControlNumberContent[]> controlNumberContents = null)
-        {
-            WorkflowExpression.Validate(controlNumberContents, nameof(controlNumberContents), required: false);
+            var __workflow_controlNumberContents = controlNumberContents == null ? null : WorkflowExpression.Compile(controlNumberContents);
+            WorkflowExpression.Validate(__workflow_controlNumberContents, nameof(controlNumberContents), required: false);
             return new DeferredBodyAction<UpdateControlNumberResult[]>(() =>
             {
                 var apiCallPath = "/controlnumbers";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(controlNumberContents);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_controlNumberContents);
                 return new ApiConnectionAction<UpdateControlNumberResult[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edifact")]
-        [WorkflowExpressionFactory(nameof(__BuildDecode))]
-        public IBodyWorkflowAction<EdiDecodeResponseEdifactDecodeResponseEdifactAcknowledgement> Decode([WorkflowExpression] Func<int> componentSeparator = null, [WorkflowExpression] Func<int> dataElementSeparator = null, [WorkflowExpression] Func<int> releaseIndicator = null, [WorkflowExpression] Func<int> repetitionSeparator = null, [WorkflowExpression] Func<int> segmentTerminator = null, [WorkflowExpression] Func<segmentTerminatorSuffixInput> segmentTerminatorSuffix = null, [WorkflowExpression] Func<decimalIndicatorInput> decimalIndicator = null, [WorkflowExpression] Func<payloadCharacterSetInput> payloadCharacterSet = null, [WorkflowExpression] Func<bool> preserveInterchange = null, [WorkflowExpression] Func<bool> suspendInterchangeOnError = null, [WorkflowExpression] Func<string> body = null)
+        public IBodyWorkflowAction<EdiDecodeResponseEdifactDecodeResponseEdifactAcknowledgement> Decode(Expression<Func<int>> componentSeparator = null, Expression<Func<int>> dataElementSeparator = null, Expression<Func<int>> releaseIndicator = null, Expression<Func<int>> repetitionSeparator = null, Expression<Func<int>> segmentTerminator = null, Expression<Func<segmentTerminatorSuffixInput>> segmentTerminatorSuffix = null, Expression<Func<decimalIndicatorInput>> decimalIndicator = null, Expression<Func<payloadCharacterSetInput>> payloadCharacterSet = null, Expression<Func<bool>> preserveInterchange = null, Expression<Func<bool>> suspendInterchangeOnError = null, Expression<Func<string>> body = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EdiDecodeResponseEdifactDecodeResponseEdifactAcknowledgement> __BuildDecode(WorkflowExpression<int> componentSeparator = null, WorkflowExpression<int> dataElementSeparator = null, WorkflowExpression<int> releaseIndicator = null, WorkflowExpression<int> repetitionSeparator = null, WorkflowExpression<int> segmentTerminator = null, WorkflowExpression<segmentTerminatorSuffixInput> segmentTerminatorSuffix = null, WorkflowExpression<decimalIndicatorInput> decimalIndicator = null, WorkflowExpression<payloadCharacterSetInput> payloadCharacterSet = null, WorkflowExpression<bool> preserveInterchange = null, WorkflowExpression<bool> suspendInterchangeOnError = null, WorkflowExpression<string> body = null)
-        {
-            WorkflowExpression.Validate(componentSeparator, nameof(componentSeparator), required: false);
-            WorkflowExpression.Validate(dataElementSeparator, nameof(dataElementSeparator), required: false);
-            WorkflowExpression.Validate(releaseIndicator, nameof(releaseIndicator), required: false);
-            WorkflowExpression.Validate(repetitionSeparator, nameof(repetitionSeparator), required: false);
-            WorkflowExpression.Validate(segmentTerminator, nameof(segmentTerminator), required: false);
-            WorkflowExpression.Validate(segmentTerminatorSuffix, nameof(segmentTerminatorSuffix), required: false);
-            WorkflowExpression.Validate(decimalIndicator, nameof(decimalIndicator), required: false);
-            WorkflowExpression.Validate(payloadCharacterSet, nameof(payloadCharacterSet), required: false);
-            WorkflowExpression.Validate(preserveInterchange, nameof(preserveInterchange), required: false);
-            WorkflowExpression.Validate(suspendInterchangeOnError, nameof(suspendInterchangeOnError), required: false);
-            WorkflowExpression.Validate(body, nameof(body), required: false);
+            var __workflow_componentSeparator = componentSeparator == null ? null : WorkflowExpression.Compile(componentSeparator);
+            WorkflowExpression.Validate(__workflow_componentSeparator, nameof(componentSeparator), required: false);
+            var __workflow_dataElementSeparator = dataElementSeparator == null ? null : WorkflowExpression.Compile(dataElementSeparator);
+            WorkflowExpression.Validate(__workflow_dataElementSeparator, nameof(dataElementSeparator), required: false);
+            var __workflow_releaseIndicator = releaseIndicator == null ? null : WorkflowExpression.Compile(releaseIndicator);
+            WorkflowExpression.Validate(__workflow_releaseIndicator, nameof(releaseIndicator), required: false);
+            var __workflow_repetitionSeparator = repetitionSeparator == null ? null : WorkflowExpression.Compile(repetitionSeparator);
+            WorkflowExpression.Validate(__workflow_repetitionSeparator, nameof(repetitionSeparator), required: false);
+            var __workflow_segmentTerminator = segmentTerminator == null ? null : WorkflowExpression.Compile(segmentTerminator);
+            WorkflowExpression.Validate(__workflow_segmentTerminator, nameof(segmentTerminator), required: false);
+            var __workflow_segmentTerminatorSuffix = segmentTerminatorSuffix == null ? null : WorkflowExpression.Compile(segmentTerminatorSuffix);
+            WorkflowExpression.Validate(__workflow_segmentTerminatorSuffix, nameof(segmentTerminatorSuffix), required: false);
+            var __workflow_decimalIndicator = decimalIndicator == null ? null : WorkflowExpression.Compile(decimalIndicator);
+            WorkflowExpression.Validate(__workflow_decimalIndicator, nameof(decimalIndicator), required: false);
+            var __workflow_payloadCharacterSet = payloadCharacterSet == null ? null : WorkflowExpression.Compile(payloadCharacterSet);
+            WorkflowExpression.Validate(__workflow_payloadCharacterSet, nameof(payloadCharacterSet), required: false);
+            var __workflow_preserveInterchange = preserveInterchange == null ? null : WorkflowExpression.Compile(preserveInterchange);
+            WorkflowExpression.Validate(__workflow_preserveInterchange, nameof(preserveInterchange), required: false);
+            var __workflow_suspendInterchangeOnError = suspendInterchangeOnError == null ? null : WorkflowExpression.Compile(suspendInterchangeOnError);
+            WorkflowExpression.Validate(__workflow_suspendInterchangeOnError, nameof(suspendInterchangeOnError), required: false);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
             return new DeferredBodyAction<EdiDecodeResponseEdifactDecodeResponseEdifactAcknowledgement>(() =>
             {
                 var apiCallPath = "/decode";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["componentSeparator"] = Convert.ToString(58);
-                if (componentSeparator != null)
-                    callPayload.Queries["componentSeparator"] = ExpressionConverter.Convert(componentSeparator);
+                if (__workflow_componentSeparator != null)
+                    callPayload.Queries["componentSeparator"] = ExpressionConverter.Convert(__workflow_componentSeparator);
                 callPayload.Queries["dataElementSeparator"] = Convert.ToString(43);
-                if (dataElementSeparator != null)
-                    callPayload.Queries["dataElementSeparator"] = ExpressionConverter.Convert(dataElementSeparator);
+                if (__workflow_dataElementSeparator != null)
+                    callPayload.Queries["dataElementSeparator"] = ExpressionConverter.Convert(__workflow_dataElementSeparator);
                 callPayload.Queries["releaseIndicator"] = Convert.ToString(63);
-                if (releaseIndicator != null)
-                    callPayload.Queries["releaseIndicator"] = ExpressionConverter.Convert(releaseIndicator);
+                if (__workflow_releaseIndicator != null)
+                    callPayload.Queries["releaseIndicator"] = ExpressionConverter.Convert(__workflow_releaseIndicator);
                 callPayload.Queries["repetitionSeparator"] = Convert.ToString(42);
-                if (repetitionSeparator != null)
-                    callPayload.Queries["repetitionSeparator"] = ExpressionConverter.Convert(repetitionSeparator);
+                if (__workflow_repetitionSeparator != null)
+                    callPayload.Queries["repetitionSeparator"] = ExpressionConverter.Convert(__workflow_repetitionSeparator);
                 callPayload.Queries["segmentTerminator"] = Convert.ToString(39);
-                if (segmentTerminator != null)
-                    callPayload.Queries["segmentTerminator"] = ExpressionConverter.Convert(segmentTerminator);
+                if (__workflow_segmentTerminator != null)
+                    callPayload.Queries["segmentTerminator"] = ExpressionConverter.Convert(__workflow_segmentTerminator);
                 callPayload.Queries["segmentTerminatorSuffix"] = Convert.ToString("None");
-                if (segmentTerminatorSuffix != null)
-                    callPayload.Queries["segmentTerminatorSuffix"] = ExpressionConverter.Convert(segmentTerminatorSuffix);
+                if (__workflow_segmentTerminatorSuffix != null)
+                    callPayload.Queries["segmentTerminatorSuffix"] = ExpressionConverter.Convert(__workflow_segmentTerminatorSuffix);
                 callPayload.Queries["decimalIndicator"] = Convert.ToString("Comma");
-                if (decimalIndicator != null)
-                    callPayload.Queries["decimalIndicator"] = ExpressionConverter.Convert(decimalIndicator);
+                if (__workflow_decimalIndicator != null)
+                    callPayload.Queries["decimalIndicator"] = ExpressionConverter.Convert(__workflow_decimalIndicator);
                 callPayload.Queries["payloadCharacterSet"] = Convert.ToString("Legacy");
-                if (payloadCharacterSet != null)
-                    callPayload.Queries["payloadCharacterSet"] = ExpressionConverter.Convert(payloadCharacterSet);
-                if (preserveInterchange != null)
-                    callPayload.Queries["preserveInterchange"] = ExpressionConverter.Convert(preserveInterchange);
-                if (suspendInterchangeOnError != null)
-                    callPayload.Queries["suspendInterchangeOnError"] = ExpressionConverter.Convert(suspendInterchangeOnError);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                if (__workflow_payloadCharacterSet != null)
+                    callPayload.Queries["payloadCharacterSet"] = ExpressionConverter.Convert(__workflow_payloadCharacterSet);
+                if (__workflow_preserveInterchange != null)
+                    callPayload.Queries["preserveInterchange"] = ExpressionConverter.Convert(__workflow_preserveInterchange);
+                if (__workflow_suspendInterchangeOnError != null)
+                    callPayload.Queries["suspendInterchangeOnError"] = ExpressionConverter.Convert(__workflow_suspendInterchangeOnError);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<EdiDecodeResponseEdifactDecodeResponseEdifactAcknowledgement>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edifact")]
-        [WorkflowExpressionFactory(nameof(__BuildResolveAgreement))]
-        public IBodyWorkflowAction<EdiAgreementProperties> ResolveAgreement([WorkflowExpression] Func<int> componentSeparator = null, [WorkflowExpression] Func<int> dataElementSeparator = null, [WorkflowExpression] Func<int> releaseIndicator = null, [WorkflowExpression] Func<int> repetitionSeparator = null, [WorkflowExpression] Func<int> segmentTerminator = null, [WorkflowExpression] Func<segmentTerminatorSuffixInput> segmentTerminatorSuffix = null, [WorkflowExpression] Func<decimalIndicatorInput> decimalIndicator = null, [WorkflowExpression] Func<string> body = null)
+        public IBodyWorkflowAction<EdiAgreementProperties> ResolveAgreement(Expression<Func<int>> componentSeparator = null, Expression<Func<int>> dataElementSeparator = null, Expression<Func<int>> releaseIndicator = null, Expression<Func<int>> repetitionSeparator = null, Expression<Func<int>> segmentTerminator = null, Expression<Func<segmentTerminatorSuffixInput>> segmentTerminatorSuffix = null, Expression<Func<decimalIndicatorInput>> decimalIndicator = null, Expression<Func<string>> body = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EdiAgreementProperties> __BuildResolveAgreement(WorkflowExpression<int> componentSeparator = null, WorkflowExpression<int> dataElementSeparator = null, WorkflowExpression<int> releaseIndicator = null, WorkflowExpression<int> repetitionSeparator = null, WorkflowExpression<int> segmentTerminator = null, WorkflowExpression<segmentTerminatorSuffixInput> segmentTerminatorSuffix = null, WorkflowExpression<decimalIndicatorInput> decimalIndicator = null, WorkflowExpression<string> body = null)
-        {
-            WorkflowExpression.Validate(componentSeparator, nameof(componentSeparator), required: false);
-            WorkflowExpression.Validate(dataElementSeparator, nameof(dataElementSeparator), required: false);
-            WorkflowExpression.Validate(releaseIndicator, nameof(releaseIndicator), required: false);
-            WorkflowExpression.Validate(repetitionSeparator, nameof(repetitionSeparator), required: false);
-            WorkflowExpression.Validate(segmentTerminator, nameof(segmentTerminator), required: false);
-            WorkflowExpression.Validate(segmentTerminatorSuffix, nameof(segmentTerminatorSuffix), required: false);
-            WorkflowExpression.Validate(decimalIndicator, nameof(decimalIndicator), required: false);
-            WorkflowExpression.Validate(body, nameof(body), required: false);
+            var __workflow_componentSeparator = componentSeparator == null ? null : WorkflowExpression.Compile(componentSeparator);
+            WorkflowExpression.Validate(__workflow_componentSeparator, nameof(componentSeparator), required: false);
+            var __workflow_dataElementSeparator = dataElementSeparator == null ? null : WorkflowExpression.Compile(dataElementSeparator);
+            WorkflowExpression.Validate(__workflow_dataElementSeparator, nameof(dataElementSeparator), required: false);
+            var __workflow_releaseIndicator = releaseIndicator == null ? null : WorkflowExpression.Compile(releaseIndicator);
+            WorkflowExpression.Validate(__workflow_releaseIndicator, nameof(releaseIndicator), required: false);
+            var __workflow_repetitionSeparator = repetitionSeparator == null ? null : WorkflowExpression.Compile(repetitionSeparator);
+            WorkflowExpression.Validate(__workflow_repetitionSeparator, nameof(repetitionSeparator), required: false);
+            var __workflow_segmentTerminator = segmentTerminator == null ? null : WorkflowExpression.Compile(segmentTerminator);
+            WorkflowExpression.Validate(__workflow_segmentTerminator, nameof(segmentTerminator), required: false);
+            var __workflow_segmentTerminatorSuffix = segmentTerminatorSuffix == null ? null : WorkflowExpression.Compile(segmentTerminatorSuffix);
+            WorkflowExpression.Validate(__workflow_segmentTerminatorSuffix, nameof(segmentTerminatorSuffix), required: false);
+            var __workflow_decimalIndicator = decimalIndicator == null ? null : WorkflowExpression.Compile(decimalIndicator);
+            WorkflowExpression.Validate(__workflow_decimalIndicator, nameof(decimalIndicator), required: false);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
             return new DeferredBodyAction<EdiAgreementProperties>(() =>
             {
                 var apiCallPath = "/resolveAgreement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["componentSeparator"] = Convert.ToString(58);
-                if (componentSeparator != null)
-                    callPayload.Queries["componentSeparator"] = ExpressionConverter.Convert(componentSeparator);
+                if (__workflow_componentSeparator != null)
+                    callPayload.Queries["componentSeparator"] = ExpressionConverter.Convert(__workflow_componentSeparator);
                 callPayload.Queries["dataElementSeparator"] = Convert.ToString(43);
-                if (dataElementSeparator != null)
-                    callPayload.Queries["dataElementSeparator"] = ExpressionConverter.Convert(dataElementSeparator);
+                if (__workflow_dataElementSeparator != null)
+                    callPayload.Queries["dataElementSeparator"] = ExpressionConverter.Convert(__workflow_dataElementSeparator);
                 callPayload.Queries["releaseIndicator"] = Convert.ToString(63);
-                if (releaseIndicator != null)
-                    callPayload.Queries["releaseIndicator"] = ExpressionConverter.Convert(releaseIndicator);
+                if (__workflow_releaseIndicator != null)
+                    callPayload.Queries["releaseIndicator"] = ExpressionConverter.Convert(__workflow_releaseIndicator);
                 callPayload.Queries["repetitionSeparator"] = Convert.ToString(42);
-                if (repetitionSeparator != null)
-                    callPayload.Queries["repetitionSeparator"] = ExpressionConverter.Convert(repetitionSeparator);
+                if (__workflow_repetitionSeparator != null)
+                    callPayload.Queries["repetitionSeparator"] = ExpressionConverter.Convert(__workflow_repetitionSeparator);
                 callPayload.Queries["segmentTerminator"] = Convert.ToString(39);
-                if (segmentTerminator != null)
-                    callPayload.Queries["segmentTerminator"] = ExpressionConverter.Convert(segmentTerminator);
+                if (__workflow_segmentTerminator != null)
+                    callPayload.Queries["segmentTerminator"] = ExpressionConverter.Convert(__workflow_segmentTerminator);
                 callPayload.Queries["segmentTerminatorSuffix"] = Convert.ToString("None");
-                if (segmentTerminatorSuffix != null)
-                    callPayload.Queries["segmentTerminatorSuffix"] = ExpressionConverter.Convert(segmentTerminatorSuffix);
+                if (__workflow_segmentTerminatorSuffix != null)
+                    callPayload.Queries["segmentTerminatorSuffix"] = ExpressionConverter.Convert(__workflow_segmentTerminatorSuffix);
                 callPayload.Queries["decimalIndicator"] = Convert.ToString("Comma");
-                if (decimalIndicator != null)
-                    callPayload.Queries["decimalIndicator"] = ExpressionConverter.Convert(decimalIndicator);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                if (__workflow_decimalIndicator != null)
+                    callPayload.Queries["decimalIndicator"] = ExpressionConverter.Convert(__workflow_decimalIndicator);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<EdiAgreementProperties>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edifact")]
-        [WorkflowExpressionFactory(nameof(__BuildEncodeResolveByAgreementName))]
-        public IBodyWorkflowAction<EdifactEncodeResponse> EncodeResolveByAgreementName([WorkflowExpression] Func<string> agreementName, [WorkflowExpression] Func<int> dataElementSeparator = null, [WorkflowExpression] Func<int> releaseIndicator = null, [WorkflowExpression] Func<int> componentSeparator = null, [WorkflowExpression] Func<int> repetitionSeparator = null, [WorkflowExpression] Func<int> segmentTerminator = null, [WorkflowExpression] Func<segmentTerminatorSuffixInput> segmentTerminatorSuffix = null, [WorkflowExpression] Func<decimalIndicatorInput> decimalIndicator = null, [WorkflowExpression] Func<string> body = null)
+        public IBodyWorkflowAction<EdifactEncodeResponse> EncodeResolveByAgreementName(Expression<Func<string>> agreementName, Expression<Func<int>> dataElementSeparator = null, Expression<Func<int>> releaseIndicator = null, Expression<Func<int>> componentSeparator = null, Expression<Func<int>> repetitionSeparator = null, Expression<Func<int>> segmentTerminator = null, Expression<Func<segmentTerminatorSuffixInput>> segmentTerminatorSuffix = null, Expression<Func<decimalIndicatorInput>> decimalIndicator = null, Expression<Func<string>> body = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EdifactEncodeResponse> __BuildEncodeResolveByAgreementName(WorkflowExpression<string> agreementName, WorkflowExpression<int> dataElementSeparator = null, WorkflowExpression<int> releaseIndicator = null, WorkflowExpression<int> componentSeparator = null, WorkflowExpression<int> repetitionSeparator = null, WorkflowExpression<int> segmentTerminator = null, WorkflowExpression<segmentTerminatorSuffixInput> segmentTerminatorSuffix = null, WorkflowExpression<decimalIndicatorInput> decimalIndicator = null, WorkflowExpression<string> body = null)
-        {
-            WorkflowExpression.Validate(agreementName, nameof(agreementName), required: true);
-            WorkflowExpression.Validate(dataElementSeparator, nameof(dataElementSeparator), required: false);
-            WorkflowExpression.Validate(releaseIndicator, nameof(releaseIndicator), required: false);
-            WorkflowExpression.Validate(componentSeparator, nameof(componentSeparator), required: false);
-            WorkflowExpression.Validate(repetitionSeparator, nameof(repetitionSeparator), required: false);
-            WorkflowExpression.Validate(segmentTerminator, nameof(segmentTerminator), required: false);
-            WorkflowExpression.Validate(segmentTerminatorSuffix, nameof(segmentTerminatorSuffix), required: false);
-            WorkflowExpression.Validate(decimalIndicator, nameof(decimalIndicator), required: false);
-            WorkflowExpression.Validate(body, nameof(body), required: false);
+            var __workflow_agreementName = agreementName == null ? null : WorkflowExpression.Compile(agreementName);
+            WorkflowExpression.Validate(__workflow_agreementName, nameof(agreementName), required: true);
+            var __workflow_dataElementSeparator = dataElementSeparator == null ? null : WorkflowExpression.Compile(dataElementSeparator);
+            WorkflowExpression.Validate(__workflow_dataElementSeparator, nameof(dataElementSeparator), required: false);
+            var __workflow_releaseIndicator = releaseIndicator == null ? null : WorkflowExpression.Compile(releaseIndicator);
+            WorkflowExpression.Validate(__workflow_releaseIndicator, nameof(releaseIndicator), required: false);
+            var __workflow_componentSeparator = componentSeparator == null ? null : WorkflowExpression.Compile(componentSeparator);
+            WorkflowExpression.Validate(__workflow_componentSeparator, nameof(componentSeparator), required: false);
+            var __workflow_repetitionSeparator = repetitionSeparator == null ? null : WorkflowExpression.Compile(repetitionSeparator);
+            WorkflowExpression.Validate(__workflow_repetitionSeparator, nameof(repetitionSeparator), required: false);
+            var __workflow_segmentTerminator = segmentTerminator == null ? null : WorkflowExpression.Compile(segmentTerminator);
+            WorkflowExpression.Validate(__workflow_segmentTerminator, nameof(segmentTerminator), required: false);
+            var __workflow_segmentTerminatorSuffix = segmentTerminatorSuffix == null ? null : WorkflowExpression.Compile(segmentTerminatorSuffix);
+            WorkflowExpression.Validate(__workflow_segmentTerminatorSuffix, nameof(segmentTerminatorSuffix), required: false);
+            var __workflow_decimalIndicator = decimalIndicator == null ? null : WorkflowExpression.Compile(decimalIndicator);
+            WorkflowExpression.Validate(__workflow_decimalIndicator, nameof(decimalIndicator), required: false);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
             return new DeferredBodyAction<EdifactEncodeResponse>(() =>
             {
                 var apiCallPath = "/encode/resolvebyname";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["agreementName"] = ExpressionConverter.Convert(agreementName);
-                if (dataElementSeparator != null)
-                    callPayload.Queries["dataElementSeparator"] = ExpressionConverter.Convert(dataElementSeparator);
-                if (releaseIndicator != null)
-                    callPayload.Queries["releaseIndicator"] = ExpressionConverter.Convert(releaseIndicator);
-                if (componentSeparator != null)
-                    callPayload.Queries["componentSeparator"] = ExpressionConverter.Convert(componentSeparator);
-                if (repetitionSeparator != null)
-                    callPayload.Queries["repetitionSeparator"] = ExpressionConverter.Convert(repetitionSeparator);
-                if (segmentTerminator != null)
-                    callPayload.Queries["segmentTerminator"] = ExpressionConverter.Convert(segmentTerminator);
-                if (segmentTerminatorSuffix != null)
-                    callPayload.Queries["segmentTerminatorSuffix"] = ExpressionConverter.Convert(segmentTerminatorSuffix);
-                if (decimalIndicator != null)
-                    callPayload.Queries["decimalIndicator"] = ExpressionConverter.Convert(decimalIndicator);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["agreementName"] = ExpressionConverter.Convert(__workflow_agreementName);
+                if (__workflow_dataElementSeparator != null)
+                    callPayload.Queries["dataElementSeparator"] = ExpressionConverter.Convert(__workflow_dataElementSeparator);
+                if (__workflow_releaseIndicator != null)
+                    callPayload.Queries["releaseIndicator"] = ExpressionConverter.Convert(__workflow_releaseIndicator);
+                if (__workflow_componentSeparator != null)
+                    callPayload.Queries["componentSeparator"] = ExpressionConverter.Convert(__workflow_componentSeparator);
+                if (__workflow_repetitionSeparator != null)
+                    callPayload.Queries["repetitionSeparator"] = ExpressionConverter.Convert(__workflow_repetitionSeparator);
+                if (__workflow_segmentTerminator != null)
+                    callPayload.Queries["segmentTerminator"] = ExpressionConverter.Convert(__workflow_segmentTerminator);
+                if (__workflow_segmentTerminatorSuffix != null)
+                    callPayload.Queries["segmentTerminatorSuffix"] = ExpressionConverter.Convert(__workflow_segmentTerminatorSuffix);
+                if (__workflow_decimalIndicator != null)
+                    callPayload.Queries["decimalIndicator"] = ExpressionConverter.Convert(__workflow_decimalIndicator);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<EdifactEncodeResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edifact")]
-        [WorkflowExpressionFactory(nameof(__BuildEncodeV2ResolveByAgreementName))]
-        public IBodyWorkflowAction<EdifactEncodeV2Response> EncodeV2ResolveByAgreementName([WorkflowExpression] Func<string> agreementName, [WorkflowExpression] Func<int> dataElementSeparator = null, [WorkflowExpression] Func<int> releaseIndicator = null, [WorkflowExpression] Func<int> componentSeparator = null, [WorkflowExpression] Func<int> repetitionSeparator = null, [WorkflowExpression] Func<int> segmentTerminator = null, [WorkflowExpression] Func<segmentTerminatorSuffixInput> segmentTerminatorSuffix = null, [WorkflowExpression] Func<decimalIndicatorInput> decimalIndicator = null, [WorkflowExpression] Func<string> body = null)
+        public IBodyWorkflowAction<EdifactEncodeV2Response> EncodeV2ResolveByAgreementName(Expression<Func<string>> agreementName, Expression<Func<int>> dataElementSeparator = null, Expression<Func<int>> releaseIndicator = null, Expression<Func<int>> componentSeparator = null, Expression<Func<int>> repetitionSeparator = null, Expression<Func<int>> segmentTerminator = null, Expression<Func<segmentTerminatorSuffixInput>> segmentTerminatorSuffix = null, Expression<Func<decimalIndicatorInput>> decimalIndicator = null, Expression<Func<string>> body = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EdifactEncodeV2Response> __BuildEncodeV2ResolveByAgreementName(WorkflowExpression<string> agreementName, WorkflowExpression<int> dataElementSeparator = null, WorkflowExpression<int> releaseIndicator = null, WorkflowExpression<int> componentSeparator = null, WorkflowExpression<int> repetitionSeparator = null, WorkflowExpression<int> segmentTerminator = null, WorkflowExpression<segmentTerminatorSuffixInput> segmentTerminatorSuffix = null, WorkflowExpression<decimalIndicatorInput> decimalIndicator = null, WorkflowExpression<string> body = null)
-        {
-            WorkflowExpression.Validate(agreementName, nameof(agreementName), required: true);
-            WorkflowExpression.Validate(dataElementSeparator, nameof(dataElementSeparator), required: false);
-            WorkflowExpression.Validate(releaseIndicator, nameof(releaseIndicator), required: false);
-            WorkflowExpression.Validate(componentSeparator, nameof(componentSeparator), required: false);
-            WorkflowExpression.Validate(repetitionSeparator, nameof(repetitionSeparator), required: false);
-            WorkflowExpression.Validate(segmentTerminator, nameof(segmentTerminator), required: false);
-            WorkflowExpression.Validate(segmentTerminatorSuffix, nameof(segmentTerminatorSuffix), required: false);
-            WorkflowExpression.Validate(decimalIndicator, nameof(decimalIndicator), required: false);
-            WorkflowExpression.Validate(body, nameof(body), required: false);
+            var __workflow_agreementName = agreementName == null ? null : WorkflowExpression.Compile(agreementName);
+            WorkflowExpression.Validate(__workflow_agreementName, nameof(agreementName), required: true);
+            var __workflow_dataElementSeparator = dataElementSeparator == null ? null : WorkflowExpression.Compile(dataElementSeparator);
+            WorkflowExpression.Validate(__workflow_dataElementSeparator, nameof(dataElementSeparator), required: false);
+            var __workflow_releaseIndicator = releaseIndicator == null ? null : WorkflowExpression.Compile(releaseIndicator);
+            WorkflowExpression.Validate(__workflow_releaseIndicator, nameof(releaseIndicator), required: false);
+            var __workflow_componentSeparator = componentSeparator == null ? null : WorkflowExpression.Compile(componentSeparator);
+            WorkflowExpression.Validate(__workflow_componentSeparator, nameof(componentSeparator), required: false);
+            var __workflow_repetitionSeparator = repetitionSeparator == null ? null : WorkflowExpression.Compile(repetitionSeparator);
+            WorkflowExpression.Validate(__workflow_repetitionSeparator, nameof(repetitionSeparator), required: false);
+            var __workflow_segmentTerminator = segmentTerminator == null ? null : WorkflowExpression.Compile(segmentTerminator);
+            WorkflowExpression.Validate(__workflow_segmentTerminator, nameof(segmentTerminator), required: false);
+            var __workflow_segmentTerminatorSuffix = segmentTerminatorSuffix == null ? null : WorkflowExpression.Compile(segmentTerminatorSuffix);
+            WorkflowExpression.Validate(__workflow_segmentTerminatorSuffix, nameof(segmentTerminatorSuffix), required: false);
+            var __workflow_decimalIndicator = decimalIndicator == null ? null : WorkflowExpression.Compile(decimalIndicator);
+            WorkflowExpression.Validate(__workflow_decimalIndicator, nameof(decimalIndicator), required: false);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
             return new DeferredBodyAction<EdifactEncodeV2Response>(() =>
             {
                 var apiCallPath = "/EncodeV2/ResolveByName";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["agreementName"] = ExpressionConverter.Convert(agreementName);
-                if (dataElementSeparator != null)
-                    callPayload.Queries["dataElementSeparator"] = ExpressionConverter.Convert(dataElementSeparator);
-                if (releaseIndicator != null)
-                    callPayload.Queries["releaseIndicator"] = ExpressionConverter.Convert(releaseIndicator);
-                if (componentSeparator != null)
-                    callPayload.Queries["componentSeparator"] = ExpressionConverter.Convert(componentSeparator);
-                if (repetitionSeparator != null)
-                    callPayload.Queries["repetitionSeparator"] = ExpressionConverter.Convert(repetitionSeparator);
-                if (segmentTerminator != null)
-                    callPayload.Queries["segmentTerminator"] = ExpressionConverter.Convert(segmentTerminator);
-                if (segmentTerminatorSuffix != null)
-                    callPayload.Queries["segmentTerminatorSuffix"] = ExpressionConverter.Convert(segmentTerminatorSuffix);
-                if (decimalIndicator != null)
-                    callPayload.Queries["decimalIndicator"] = ExpressionConverter.Convert(decimalIndicator);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["agreementName"] = ExpressionConverter.Convert(__workflow_agreementName);
+                if (__workflow_dataElementSeparator != null)
+                    callPayload.Queries["dataElementSeparator"] = ExpressionConverter.Convert(__workflow_dataElementSeparator);
+                if (__workflow_releaseIndicator != null)
+                    callPayload.Queries["releaseIndicator"] = ExpressionConverter.Convert(__workflow_releaseIndicator);
+                if (__workflow_componentSeparator != null)
+                    callPayload.Queries["componentSeparator"] = ExpressionConverter.Convert(__workflow_componentSeparator);
+                if (__workflow_repetitionSeparator != null)
+                    callPayload.Queries["repetitionSeparator"] = ExpressionConverter.Convert(__workflow_repetitionSeparator);
+                if (__workflow_segmentTerminator != null)
+                    callPayload.Queries["segmentTerminator"] = ExpressionConverter.Convert(__workflow_segmentTerminator);
+                if (__workflow_segmentTerminatorSuffix != null)
+                    callPayload.Queries["segmentTerminatorSuffix"] = ExpressionConverter.Convert(__workflow_segmentTerminatorSuffix);
+                if (__workflow_decimalIndicator != null)
+                    callPayload.Queries["decimalIndicator"] = ExpressionConverter.Convert(__workflow_decimalIndicator);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<EdifactEncodeV2Response>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edifact")]
-        [WorkflowExpressionFactory(nameof(__BuildBatchEncodeResolveByAgreementName))]
-        public IBodyWorkflowAction<EdifactBatchEncodeResponse> BatchEncodeResolveByAgreementName([WorkflowExpression] Func<string> agreementName, [WorkflowExpression] Func<string> messagesToBatchbatchName = null, [WorkflowExpression] Func<string> messagesToBatchpartitionName = null, [WorkflowExpression] Func<BatchItem[]> messagesToBatchitems = null, [WorkflowExpression] Func<int> dataElementSeparator = null, [WorkflowExpression] Func<int> releaseIndicator = null, [WorkflowExpression] Func<int> componentSeparator = null, [WorkflowExpression] Func<int> repetitionSeparator = null, [WorkflowExpression] Func<int> segmentTerminator = null, [WorkflowExpression] Func<segmentTerminatorSuffixInput> segmentTerminatorSuffix = null, [WorkflowExpression] Func<decimalIndicatorInput> decimalIndicator = null)
+        public IBodyWorkflowAction<EdifactBatchEncodeResponse> BatchEncodeResolveByAgreementName(Expression<Func<string>> agreementName, Expression<Func<string>> messagesToBatchbatchName = null, Expression<Func<string>> messagesToBatchpartitionName = null, Expression<Func<BatchItem[]>> messagesToBatchitems = null, Expression<Func<int>> dataElementSeparator = null, Expression<Func<int>> releaseIndicator = null, Expression<Func<int>> componentSeparator = null, Expression<Func<int>> repetitionSeparator = null, Expression<Func<int>> segmentTerminator = null, Expression<Func<segmentTerminatorSuffixInput>> segmentTerminatorSuffix = null, Expression<Func<decimalIndicatorInput>> decimalIndicator = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EdifactBatchEncodeResponse> __BuildBatchEncodeResolveByAgreementName(WorkflowExpression<string> agreementName, WorkflowExpression<string> messagesToBatchbatchName = null, WorkflowExpression<string> messagesToBatchpartitionName = null, WorkflowExpression<BatchItem[]> messagesToBatchitems = null, WorkflowExpression<int> dataElementSeparator = null, WorkflowExpression<int> releaseIndicator = null, WorkflowExpression<int> componentSeparator = null, WorkflowExpression<int> repetitionSeparator = null, WorkflowExpression<int> segmentTerminator = null, WorkflowExpression<segmentTerminatorSuffixInput> segmentTerminatorSuffix = null, WorkflowExpression<decimalIndicatorInput> decimalIndicator = null)
-        {
-            WorkflowExpression.Validate(agreementName, nameof(agreementName), required: true);
-            WorkflowExpression.Validate(messagesToBatchbatchName, nameof(messagesToBatchbatchName), required: false);
-            WorkflowExpression.Validate(messagesToBatchpartitionName, nameof(messagesToBatchpartitionName), required: false);
-            WorkflowExpression.Validate(messagesToBatchitems, nameof(messagesToBatchitems), required: false);
-            WorkflowExpression.Validate(dataElementSeparator, nameof(dataElementSeparator), required: false);
-            WorkflowExpression.Validate(releaseIndicator, nameof(releaseIndicator), required: false);
-            WorkflowExpression.Validate(componentSeparator, nameof(componentSeparator), required: false);
-            WorkflowExpression.Validate(repetitionSeparator, nameof(repetitionSeparator), required: false);
-            WorkflowExpression.Validate(segmentTerminator, nameof(segmentTerminator), required: false);
-            WorkflowExpression.Validate(segmentTerminatorSuffix, nameof(segmentTerminatorSuffix), required: false);
-            WorkflowExpression.Validate(decimalIndicator, nameof(decimalIndicator), required: false);
+            var __workflow_agreementName = agreementName == null ? null : WorkflowExpression.Compile(agreementName);
+            WorkflowExpression.Validate(__workflow_agreementName, nameof(agreementName), required: true);
+            var __workflow_messagesToBatchbatchName = messagesToBatchbatchName == null ? null : WorkflowExpression.Compile(messagesToBatchbatchName);
+            WorkflowExpression.Validate(__workflow_messagesToBatchbatchName, nameof(messagesToBatchbatchName), required: false);
+            var __workflow_messagesToBatchpartitionName = messagesToBatchpartitionName == null ? null : WorkflowExpression.Compile(messagesToBatchpartitionName);
+            WorkflowExpression.Validate(__workflow_messagesToBatchpartitionName, nameof(messagesToBatchpartitionName), required: false);
+            var __workflow_messagesToBatchitems = messagesToBatchitems == null ? null : WorkflowExpression.Compile(messagesToBatchitems);
+            WorkflowExpression.Validate(__workflow_messagesToBatchitems, nameof(messagesToBatchitems), required: false);
+            var __workflow_dataElementSeparator = dataElementSeparator == null ? null : WorkflowExpression.Compile(dataElementSeparator);
+            WorkflowExpression.Validate(__workflow_dataElementSeparator, nameof(dataElementSeparator), required: false);
+            var __workflow_releaseIndicator = releaseIndicator == null ? null : WorkflowExpression.Compile(releaseIndicator);
+            WorkflowExpression.Validate(__workflow_releaseIndicator, nameof(releaseIndicator), required: false);
+            var __workflow_componentSeparator = componentSeparator == null ? null : WorkflowExpression.Compile(componentSeparator);
+            WorkflowExpression.Validate(__workflow_componentSeparator, nameof(componentSeparator), required: false);
+            var __workflow_repetitionSeparator = repetitionSeparator == null ? null : WorkflowExpression.Compile(repetitionSeparator);
+            WorkflowExpression.Validate(__workflow_repetitionSeparator, nameof(repetitionSeparator), required: false);
+            var __workflow_segmentTerminator = segmentTerminator == null ? null : WorkflowExpression.Compile(segmentTerminator);
+            WorkflowExpression.Validate(__workflow_segmentTerminator, nameof(segmentTerminator), required: false);
+            var __workflow_segmentTerminatorSuffix = segmentTerminatorSuffix == null ? null : WorkflowExpression.Compile(segmentTerminatorSuffix);
+            WorkflowExpression.Validate(__workflow_segmentTerminatorSuffix, nameof(segmentTerminatorSuffix), required: false);
+            var __workflow_decimalIndicator = decimalIndicator == null ? null : WorkflowExpression.Compile(decimalIndicator);
+            WorkflowExpression.Validate(__workflow_decimalIndicator, nameof(decimalIndicator), required: false);
             return new DeferredBodyAction<EdifactBatchEncodeResponse>(() =>
             {
                 var apiCallPath = "/Encode/Batch/ResolveByName";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["agreementName"] = ExpressionConverter.Convert(agreementName);
-                if (dataElementSeparator != null)
-                    callPayload.Queries["dataElementSeparator"] = ExpressionConverter.Convert(dataElementSeparator);
-                if (releaseIndicator != null)
-                    callPayload.Queries["releaseIndicator"] = ExpressionConverter.Convert(releaseIndicator);
-                if (componentSeparator != null)
-                    callPayload.Queries["componentSeparator"] = ExpressionConverter.Convert(componentSeparator);
-                if (repetitionSeparator != null)
-                    callPayload.Queries["repetitionSeparator"] = ExpressionConverter.Convert(repetitionSeparator);
-                if (segmentTerminator != null)
-                    callPayload.Queries["segmentTerminator"] = ExpressionConverter.Convert(segmentTerminator);
-                if (segmentTerminatorSuffix != null)
-                    callPayload.Queries["segmentTerminatorSuffix"] = ExpressionConverter.Convert(segmentTerminatorSuffix);
-                if (decimalIndicator != null)
-                    callPayload.Queries["decimalIndicator"] = ExpressionConverter.Convert(decimalIndicator);
+                callPayload.Queries["agreementName"] = ExpressionConverter.Convert(__workflow_agreementName);
+                if (__workflow_dataElementSeparator != null)
+                    callPayload.Queries["dataElementSeparator"] = ExpressionConverter.Convert(__workflow_dataElementSeparator);
+                if (__workflow_releaseIndicator != null)
+                    callPayload.Queries["releaseIndicator"] = ExpressionConverter.Convert(__workflow_releaseIndicator);
+                if (__workflow_componentSeparator != null)
+                    callPayload.Queries["componentSeparator"] = ExpressionConverter.Convert(__workflow_componentSeparator);
+                if (__workflow_repetitionSeparator != null)
+                    callPayload.Queries["repetitionSeparator"] = ExpressionConverter.Convert(__workflow_repetitionSeparator);
+                if (__workflow_segmentTerminator != null)
+                    callPayload.Queries["segmentTerminator"] = ExpressionConverter.Convert(__workflow_segmentTerminator);
+                if (__workflow_segmentTerminatorSuffix != null)
+                    callPayload.Queries["segmentTerminatorSuffix"] = ExpressionConverter.Convert(__workflow_segmentTerminatorSuffix);
+                if (__workflow_decimalIndicator != null)
+                    callPayload.Queries["decimalIndicator"] = ExpressionConverter.Convert(__workflow_decimalIndicator);
                 var messagesToBatch = new JObject();
                 var messagesToBatchpropCount = 0;
-                if (messagesToBatchbatchName != null)
+                if (__workflow_messagesToBatchbatchName != null)
                 {
-                    messagesToBatch["BatchName"] = ExpressionConverter.ConvertO(messagesToBatchbatchName);
+                    messagesToBatch["BatchName"] = ExpressionConverter.ConvertO(__workflow_messagesToBatchbatchName);
                     messagesToBatchpropCount++;
                 }
 
-                if (messagesToBatchpartitionName != null)
+                if (__workflow_messagesToBatchpartitionName != null)
                 {
-                    messagesToBatch["PartitionName"] = ExpressionConverter.ConvertO(messagesToBatchpartitionName);
+                    messagesToBatch["PartitionName"] = ExpressionConverter.ConvertO(__workflow_messagesToBatchpartitionName);
                     messagesToBatchpropCount++;
                 }
 
-                if (messagesToBatchitems != null)
+                if (__workflow_messagesToBatchitems != null)
                 {
-                    messagesToBatch["Items"] = ExpressionConverter.ConvertO(messagesToBatchitems);
+                    messagesToBatch["Items"] = ExpressionConverter.ConvertO(__workflow_messagesToBatchitems);
                     messagesToBatchpropCount++;
                 }
 
@@ -299,69 +305,76 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edifact")]
-        [WorkflowExpressionFactory(nameof(__BuildBatchEncodeResolveByPartnerIdentities))]
-        public IBodyWorkflowAction<EdifactBatchEncodeResponse> BatchEncodeResolveByPartnerIdentities([WorkflowExpression] Func<string> senderIdentifier, [WorkflowExpression] Func<string> senderQualifier, [WorkflowExpression] Func<string> receiverIdentifier, [WorkflowExpression] Func<string> receiverQualifier, [WorkflowExpression] Func<string> messagesToBatchbatchName = null, [WorkflowExpression] Func<string> messagesToBatchpartitionName = null, [WorkflowExpression] Func<BatchItem[]> messagesToBatchitems = null, [WorkflowExpression] Func<int> dataElementSeparator = null, [WorkflowExpression] Func<int> releaseIndicator = null, [WorkflowExpression] Func<int> componentSeparator = null, [WorkflowExpression] Func<int> repetitionSeparator = null, [WorkflowExpression] Func<int> segmentTerminator = null, [WorkflowExpression] Func<segmentTerminatorSuffixInput> segmentTerminatorSuffix = null, [WorkflowExpression] Func<decimalIndicatorInput> decimalIndicator = null)
+        public IBodyWorkflowAction<EdifactBatchEncodeResponse> BatchEncodeResolveByPartnerIdentities(Expression<Func<string>> senderIdentifier, Expression<Func<string>> senderQualifier, Expression<Func<string>> receiverIdentifier, Expression<Func<string>> receiverQualifier, Expression<Func<string>> messagesToBatchbatchName = null, Expression<Func<string>> messagesToBatchpartitionName = null, Expression<Func<BatchItem[]>> messagesToBatchitems = null, Expression<Func<int>> dataElementSeparator = null, Expression<Func<int>> releaseIndicator = null, Expression<Func<int>> componentSeparator = null, Expression<Func<int>> repetitionSeparator = null, Expression<Func<int>> segmentTerminator = null, Expression<Func<segmentTerminatorSuffixInput>> segmentTerminatorSuffix = null, Expression<Func<decimalIndicatorInput>> decimalIndicator = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EdifactBatchEncodeResponse> __BuildBatchEncodeResolveByPartnerIdentities(WorkflowExpression<string> senderIdentifier, WorkflowExpression<string> senderQualifier, WorkflowExpression<string> receiverIdentifier, WorkflowExpression<string> receiverQualifier, WorkflowExpression<string> messagesToBatchbatchName = null, WorkflowExpression<string> messagesToBatchpartitionName = null, WorkflowExpression<BatchItem[]> messagesToBatchitems = null, WorkflowExpression<int> dataElementSeparator = null, WorkflowExpression<int> releaseIndicator = null, WorkflowExpression<int> componentSeparator = null, WorkflowExpression<int> repetitionSeparator = null, WorkflowExpression<int> segmentTerminator = null, WorkflowExpression<segmentTerminatorSuffixInput> segmentTerminatorSuffix = null, WorkflowExpression<decimalIndicatorInput> decimalIndicator = null)
-        {
-            WorkflowExpression.Validate(senderIdentifier, nameof(senderIdentifier), required: true);
-            WorkflowExpression.Validate(senderQualifier, nameof(senderQualifier), required: true);
-            WorkflowExpression.Validate(receiverIdentifier, nameof(receiverIdentifier), required: true);
-            WorkflowExpression.Validate(receiverQualifier, nameof(receiverQualifier), required: true);
-            WorkflowExpression.Validate(messagesToBatchbatchName, nameof(messagesToBatchbatchName), required: false);
-            WorkflowExpression.Validate(messagesToBatchpartitionName, nameof(messagesToBatchpartitionName), required: false);
-            WorkflowExpression.Validate(messagesToBatchitems, nameof(messagesToBatchitems), required: false);
-            WorkflowExpression.Validate(dataElementSeparator, nameof(dataElementSeparator), required: false);
-            WorkflowExpression.Validate(releaseIndicator, nameof(releaseIndicator), required: false);
-            WorkflowExpression.Validate(componentSeparator, nameof(componentSeparator), required: false);
-            WorkflowExpression.Validate(repetitionSeparator, nameof(repetitionSeparator), required: false);
-            WorkflowExpression.Validate(segmentTerminator, nameof(segmentTerminator), required: false);
-            WorkflowExpression.Validate(segmentTerminatorSuffix, nameof(segmentTerminatorSuffix), required: false);
-            WorkflowExpression.Validate(decimalIndicator, nameof(decimalIndicator), required: false);
+            var __workflow_senderIdentifier = senderIdentifier == null ? null : WorkflowExpression.Compile(senderIdentifier);
+            WorkflowExpression.Validate(__workflow_senderIdentifier, nameof(senderIdentifier), required: true);
+            var __workflow_senderQualifier = senderQualifier == null ? null : WorkflowExpression.Compile(senderQualifier);
+            WorkflowExpression.Validate(__workflow_senderQualifier, nameof(senderQualifier), required: true);
+            var __workflow_receiverIdentifier = receiverIdentifier == null ? null : WorkflowExpression.Compile(receiverIdentifier);
+            WorkflowExpression.Validate(__workflow_receiverIdentifier, nameof(receiverIdentifier), required: true);
+            var __workflow_receiverQualifier = receiverQualifier == null ? null : WorkflowExpression.Compile(receiverQualifier);
+            WorkflowExpression.Validate(__workflow_receiverQualifier, nameof(receiverQualifier), required: true);
+            var __workflow_messagesToBatchbatchName = messagesToBatchbatchName == null ? null : WorkflowExpression.Compile(messagesToBatchbatchName);
+            WorkflowExpression.Validate(__workflow_messagesToBatchbatchName, nameof(messagesToBatchbatchName), required: false);
+            var __workflow_messagesToBatchpartitionName = messagesToBatchpartitionName == null ? null : WorkflowExpression.Compile(messagesToBatchpartitionName);
+            WorkflowExpression.Validate(__workflow_messagesToBatchpartitionName, nameof(messagesToBatchpartitionName), required: false);
+            var __workflow_messagesToBatchitems = messagesToBatchitems == null ? null : WorkflowExpression.Compile(messagesToBatchitems);
+            WorkflowExpression.Validate(__workflow_messagesToBatchitems, nameof(messagesToBatchitems), required: false);
+            var __workflow_dataElementSeparator = dataElementSeparator == null ? null : WorkflowExpression.Compile(dataElementSeparator);
+            WorkflowExpression.Validate(__workflow_dataElementSeparator, nameof(dataElementSeparator), required: false);
+            var __workflow_releaseIndicator = releaseIndicator == null ? null : WorkflowExpression.Compile(releaseIndicator);
+            WorkflowExpression.Validate(__workflow_releaseIndicator, nameof(releaseIndicator), required: false);
+            var __workflow_componentSeparator = componentSeparator == null ? null : WorkflowExpression.Compile(componentSeparator);
+            WorkflowExpression.Validate(__workflow_componentSeparator, nameof(componentSeparator), required: false);
+            var __workflow_repetitionSeparator = repetitionSeparator == null ? null : WorkflowExpression.Compile(repetitionSeparator);
+            WorkflowExpression.Validate(__workflow_repetitionSeparator, nameof(repetitionSeparator), required: false);
+            var __workflow_segmentTerminator = segmentTerminator == null ? null : WorkflowExpression.Compile(segmentTerminator);
+            WorkflowExpression.Validate(__workflow_segmentTerminator, nameof(segmentTerminator), required: false);
+            var __workflow_segmentTerminatorSuffix = segmentTerminatorSuffix == null ? null : WorkflowExpression.Compile(segmentTerminatorSuffix);
+            WorkflowExpression.Validate(__workflow_segmentTerminatorSuffix, nameof(segmentTerminatorSuffix), required: false);
+            var __workflow_decimalIndicator = decimalIndicator == null ? null : WorkflowExpression.Compile(decimalIndicator);
+            WorkflowExpression.Validate(__workflow_decimalIndicator, nameof(decimalIndicator), required: false);
             return new DeferredBodyAction<EdifactBatchEncodeResponse>(() =>
             {
                 var apiCallPath = "/Encode/Batch/ResolveByIdentities";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["senderIdentifier"] = ExpressionConverter.Convert(senderIdentifier);
-                callPayload.Queries["senderQualifier"] = ExpressionConverter.Convert(senderQualifier);
-                callPayload.Queries["receiverIdentifier"] = ExpressionConverter.Convert(receiverIdentifier);
-                callPayload.Queries["receiverQualifier"] = ExpressionConverter.Convert(receiverQualifier);
-                if (dataElementSeparator != null)
-                    callPayload.Queries["dataElementSeparator"] = ExpressionConverter.Convert(dataElementSeparator);
-                if (releaseIndicator != null)
-                    callPayload.Queries["releaseIndicator"] = ExpressionConverter.Convert(releaseIndicator);
-                if (componentSeparator != null)
-                    callPayload.Queries["componentSeparator"] = ExpressionConverter.Convert(componentSeparator);
-                if (repetitionSeparator != null)
-                    callPayload.Queries["repetitionSeparator"] = ExpressionConverter.Convert(repetitionSeparator);
-                if (segmentTerminator != null)
-                    callPayload.Queries["segmentTerminator"] = ExpressionConverter.Convert(segmentTerminator);
-                if (segmentTerminatorSuffix != null)
-                    callPayload.Queries["segmentTerminatorSuffix"] = ExpressionConverter.Convert(segmentTerminatorSuffix);
-                if (decimalIndicator != null)
-                    callPayload.Queries["decimalIndicator"] = ExpressionConverter.Convert(decimalIndicator);
+                callPayload.Queries["senderIdentifier"] = ExpressionConverter.Convert(__workflow_senderIdentifier);
+                callPayload.Queries["senderQualifier"] = ExpressionConverter.Convert(__workflow_senderQualifier);
+                callPayload.Queries["receiverIdentifier"] = ExpressionConverter.Convert(__workflow_receiverIdentifier);
+                callPayload.Queries["receiverQualifier"] = ExpressionConverter.Convert(__workflow_receiverQualifier);
+                if (__workflow_dataElementSeparator != null)
+                    callPayload.Queries["dataElementSeparator"] = ExpressionConverter.Convert(__workflow_dataElementSeparator);
+                if (__workflow_releaseIndicator != null)
+                    callPayload.Queries["releaseIndicator"] = ExpressionConverter.Convert(__workflow_releaseIndicator);
+                if (__workflow_componentSeparator != null)
+                    callPayload.Queries["componentSeparator"] = ExpressionConverter.Convert(__workflow_componentSeparator);
+                if (__workflow_repetitionSeparator != null)
+                    callPayload.Queries["repetitionSeparator"] = ExpressionConverter.Convert(__workflow_repetitionSeparator);
+                if (__workflow_segmentTerminator != null)
+                    callPayload.Queries["segmentTerminator"] = ExpressionConverter.Convert(__workflow_segmentTerminator);
+                if (__workflow_segmentTerminatorSuffix != null)
+                    callPayload.Queries["segmentTerminatorSuffix"] = ExpressionConverter.Convert(__workflow_segmentTerminatorSuffix);
+                if (__workflow_decimalIndicator != null)
+                    callPayload.Queries["decimalIndicator"] = ExpressionConverter.Convert(__workflow_decimalIndicator);
                 var messagesToBatch = new JObject();
                 var messagesToBatchpropCount = 0;
-                if (messagesToBatchbatchName != null)
+                if (__workflow_messagesToBatchbatchName != null)
                 {
-                    messagesToBatch["BatchName"] = ExpressionConverter.ConvertO(messagesToBatchbatchName);
+                    messagesToBatch["BatchName"] = ExpressionConverter.ConvertO(__workflow_messagesToBatchbatchName);
                     messagesToBatchpropCount++;
                 }
 
-                if (messagesToBatchpartitionName != null)
+                if (__workflow_messagesToBatchpartitionName != null)
                 {
-                    messagesToBatch["PartitionName"] = ExpressionConverter.ConvertO(messagesToBatchpartitionName);
+                    messagesToBatch["PartitionName"] = ExpressionConverter.ConvertO(__workflow_messagesToBatchpartitionName);
                     messagesToBatchpropCount++;
                 }
 
-                if (messagesToBatchitems != null)
+                if (__workflow_messagesToBatchitems != null)
                 {
-                    messagesToBatch["Items"] = ExpressionConverter.ConvertO(messagesToBatchitems);
+                    messagesToBatch["Items"] = ExpressionConverter.ConvertO(__workflow_messagesToBatchitems);
                     messagesToBatchpropCount++;
                 }
 
@@ -375,105 +388,115 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edifact")]
-        [WorkflowExpressionFactory(nameof(__BuildEncodeResolveByPartnerIdentities))]
-        public IBodyWorkflowAction<EdifactEncodeResponse> EncodeResolveByPartnerIdentities([WorkflowExpression] Func<string> senderIdentifier, [WorkflowExpression] Func<string> receiverIdentifier, [WorkflowExpression] Func<string> senderQualifier = null, [WorkflowExpression] Func<string> receiverQualifier = null, [WorkflowExpression] Func<int> dataElementSeparator = null, [WorkflowExpression] Func<int> releaseIndicator = null, [WorkflowExpression] Func<int> componentSeparator = null, [WorkflowExpression] Func<int> repetitionSeparator = null, [WorkflowExpression] Func<int> segmentTerminator = null, [WorkflowExpression] Func<segmentTerminatorSuffixInput> segmentTerminatorSuffix = null, [WorkflowExpression] Func<decimalIndicatorInput> decimalIndicator = null, [WorkflowExpression] Func<string> body = null)
+        public IBodyWorkflowAction<EdifactEncodeResponse> EncodeResolveByPartnerIdentities(Expression<Func<string>> senderIdentifier, Expression<Func<string>> receiverIdentifier, Expression<Func<string>> senderQualifier = null, Expression<Func<string>> receiverQualifier = null, Expression<Func<int>> dataElementSeparator = null, Expression<Func<int>> releaseIndicator = null, Expression<Func<int>> componentSeparator = null, Expression<Func<int>> repetitionSeparator = null, Expression<Func<int>> segmentTerminator = null, Expression<Func<segmentTerminatorSuffixInput>> segmentTerminatorSuffix = null, Expression<Func<decimalIndicatorInput>> decimalIndicator = null, Expression<Func<string>> body = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EdifactEncodeResponse> __BuildEncodeResolveByPartnerIdentities(WorkflowExpression<string> senderIdentifier, WorkflowExpression<string> receiverIdentifier, WorkflowExpression<string> senderQualifier = null, WorkflowExpression<string> receiverQualifier = null, WorkflowExpression<int> dataElementSeparator = null, WorkflowExpression<int> releaseIndicator = null, WorkflowExpression<int> componentSeparator = null, WorkflowExpression<int> repetitionSeparator = null, WorkflowExpression<int> segmentTerminator = null, WorkflowExpression<segmentTerminatorSuffixInput> segmentTerminatorSuffix = null, WorkflowExpression<decimalIndicatorInput> decimalIndicator = null, WorkflowExpression<string> body = null)
-        {
-            WorkflowExpression.Validate(senderIdentifier, nameof(senderIdentifier), required: true);
-            WorkflowExpression.Validate(receiverIdentifier, nameof(receiverIdentifier), required: true);
-            WorkflowExpression.Validate(senderQualifier, nameof(senderQualifier), required: false);
-            WorkflowExpression.Validate(receiverQualifier, nameof(receiverQualifier), required: false);
-            WorkflowExpression.Validate(dataElementSeparator, nameof(dataElementSeparator), required: false);
-            WorkflowExpression.Validate(releaseIndicator, nameof(releaseIndicator), required: false);
-            WorkflowExpression.Validate(componentSeparator, nameof(componentSeparator), required: false);
-            WorkflowExpression.Validate(repetitionSeparator, nameof(repetitionSeparator), required: false);
-            WorkflowExpression.Validate(segmentTerminator, nameof(segmentTerminator), required: false);
-            WorkflowExpression.Validate(segmentTerminatorSuffix, nameof(segmentTerminatorSuffix), required: false);
-            WorkflowExpression.Validate(decimalIndicator, nameof(decimalIndicator), required: false);
-            WorkflowExpression.Validate(body, nameof(body), required: false);
+            var __workflow_senderIdentifier = senderIdentifier == null ? null : WorkflowExpression.Compile(senderIdentifier);
+            WorkflowExpression.Validate(__workflow_senderIdentifier, nameof(senderIdentifier), required: true);
+            var __workflow_receiverIdentifier = receiverIdentifier == null ? null : WorkflowExpression.Compile(receiverIdentifier);
+            WorkflowExpression.Validate(__workflow_receiverIdentifier, nameof(receiverIdentifier), required: true);
+            var __workflow_senderQualifier = senderQualifier == null ? null : WorkflowExpression.Compile(senderQualifier);
+            WorkflowExpression.Validate(__workflow_senderQualifier, nameof(senderQualifier), required: false);
+            var __workflow_receiverQualifier = receiverQualifier == null ? null : WorkflowExpression.Compile(receiverQualifier);
+            WorkflowExpression.Validate(__workflow_receiverQualifier, nameof(receiverQualifier), required: false);
+            var __workflow_dataElementSeparator = dataElementSeparator == null ? null : WorkflowExpression.Compile(dataElementSeparator);
+            WorkflowExpression.Validate(__workflow_dataElementSeparator, nameof(dataElementSeparator), required: false);
+            var __workflow_releaseIndicator = releaseIndicator == null ? null : WorkflowExpression.Compile(releaseIndicator);
+            WorkflowExpression.Validate(__workflow_releaseIndicator, nameof(releaseIndicator), required: false);
+            var __workflow_componentSeparator = componentSeparator == null ? null : WorkflowExpression.Compile(componentSeparator);
+            WorkflowExpression.Validate(__workflow_componentSeparator, nameof(componentSeparator), required: false);
+            var __workflow_repetitionSeparator = repetitionSeparator == null ? null : WorkflowExpression.Compile(repetitionSeparator);
+            WorkflowExpression.Validate(__workflow_repetitionSeparator, nameof(repetitionSeparator), required: false);
+            var __workflow_segmentTerminator = segmentTerminator == null ? null : WorkflowExpression.Compile(segmentTerminator);
+            WorkflowExpression.Validate(__workflow_segmentTerminator, nameof(segmentTerminator), required: false);
+            var __workflow_segmentTerminatorSuffix = segmentTerminatorSuffix == null ? null : WorkflowExpression.Compile(segmentTerminatorSuffix);
+            WorkflowExpression.Validate(__workflow_segmentTerminatorSuffix, nameof(segmentTerminatorSuffix), required: false);
+            var __workflow_decimalIndicator = decimalIndicator == null ? null : WorkflowExpression.Compile(decimalIndicator);
+            WorkflowExpression.Validate(__workflow_decimalIndicator, nameof(decimalIndicator), required: false);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
             return new DeferredBodyAction<EdifactEncodeResponse>(() =>
             {
                 var apiCallPath = "/encode/resolvebyidentities";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["senderIdentifier"] = ExpressionConverter.Convert(senderIdentifier);
-                callPayload.Queries["receiverIdentifier"] = ExpressionConverter.Convert(receiverIdentifier);
-                if (senderQualifier != null)
-                    callPayload.Queries["senderQualifier"] = ExpressionConverter.Convert(senderQualifier);
-                if (receiverQualifier != null)
-                    callPayload.Queries["receiverQualifier"] = ExpressionConverter.Convert(receiverQualifier);
-                if (dataElementSeparator != null)
-                    callPayload.Queries["dataElementSeparator"] = ExpressionConverter.Convert(dataElementSeparator);
-                if (releaseIndicator != null)
-                    callPayload.Queries["releaseIndicator"] = ExpressionConverter.Convert(releaseIndicator);
-                if (componentSeparator != null)
-                    callPayload.Queries["componentSeparator"] = ExpressionConverter.Convert(componentSeparator);
-                if (repetitionSeparator != null)
-                    callPayload.Queries["repetitionSeparator"] = ExpressionConverter.Convert(repetitionSeparator);
-                if (segmentTerminator != null)
-                    callPayload.Queries["segmentTerminator"] = ExpressionConverter.Convert(segmentTerminator);
-                if (segmentTerminatorSuffix != null)
-                    callPayload.Queries["segmentTerminatorSuffix"] = ExpressionConverter.Convert(segmentTerminatorSuffix);
-                if (decimalIndicator != null)
-                    callPayload.Queries["decimalIndicator"] = ExpressionConverter.Convert(decimalIndicator);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["senderIdentifier"] = ExpressionConverter.Convert(__workflow_senderIdentifier);
+                callPayload.Queries["receiverIdentifier"] = ExpressionConverter.Convert(__workflow_receiverIdentifier);
+                if (__workflow_senderQualifier != null)
+                    callPayload.Queries["senderQualifier"] = ExpressionConverter.Convert(__workflow_senderQualifier);
+                if (__workflow_receiverQualifier != null)
+                    callPayload.Queries["receiverQualifier"] = ExpressionConverter.Convert(__workflow_receiverQualifier);
+                if (__workflow_dataElementSeparator != null)
+                    callPayload.Queries["dataElementSeparator"] = ExpressionConverter.Convert(__workflow_dataElementSeparator);
+                if (__workflow_releaseIndicator != null)
+                    callPayload.Queries["releaseIndicator"] = ExpressionConverter.Convert(__workflow_releaseIndicator);
+                if (__workflow_componentSeparator != null)
+                    callPayload.Queries["componentSeparator"] = ExpressionConverter.Convert(__workflow_componentSeparator);
+                if (__workflow_repetitionSeparator != null)
+                    callPayload.Queries["repetitionSeparator"] = ExpressionConverter.Convert(__workflow_repetitionSeparator);
+                if (__workflow_segmentTerminator != null)
+                    callPayload.Queries["segmentTerminator"] = ExpressionConverter.Convert(__workflow_segmentTerminator);
+                if (__workflow_segmentTerminatorSuffix != null)
+                    callPayload.Queries["segmentTerminatorSuffix"] = ExpressionConverter.Convert(__workflow_segmentTerminatorSuffix);
+                if (__workflow_decimalIndicator != null)
+                    callPayload.Queries["decimalIndicator"] = ExpressionConverter.Convert(__workflow_decimalIndicator);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<EdifactEncodeResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edifact")]
-        [WorkflowExpressionFactory(nameof(__BuildEncodeV2ResolveByPartnerIdentities))]
-        public IBodyWorkflowAction<EdifactEncodeV2Response> EncodeV2ResolveByPartnerIdentities([WorkflowExpression] Func<string> senderIdentifier, [WorkflowExpression] Func<string> receiverIdentifier, [WorkflowExpression] Func<string> senderQualifier = null, [WorkflowExpression] Func<string> receiverQualifier = null, [WorkflowExpression] Func<int> dataElementSeparator = null, [WorkflowExpression] Func<int> releaseIndicator = null, [WorkflowExpression] Func<int> componentSeparator = null, [WorkflowExpression] Func<int> repetitionSeparator = null, [WorkflowExpression] Func<int> segmentTerminator = null, [WorkflowExpression] Func<segmentTerminatorSuffixInput> segmentTerminatorSuffix = null, [WorkflowExpression] Func<decimalIndicatorInput> decimalIndicator = null, [WorkflowExpression] Func<string> body = null)
+        public IBodyWorkflowAction<EdifactEncodeV2Response> EncodeV2ResolveByPartnerIdentities(Expression<Func<string>> senderIdentifier, Expression<Func<string>> receiverIdentifier, Expression<Func<string>> senderQualifier = null, Expression<Func<string>> receiverQualifier = null, Expression<Func<int>> dataElementSeparator = null, Expression<Func<int>> releaseIndicator = null, Expression<Func<int>> componentSeparator = null, Expression<Func<int>> repetitionSeparator = null, Expression<Func<int>> segmentTerminator = null, Expression<Func<segmentTerminatorSuffixInput>> segmentTerminatorSuffix = null, Expression<Func<decimalIndicatorInput>> decimalIndicator = null, Expression<Func<string>> body = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EdifactEncodeV2Response> __BuildEncodeV2ResolveByPartnerIdentities(WorkflowExpression<string> senderIdentifier, WorkflowExpression<string> receiverIdentifier, WorkflowExpression<string> senderQualifier = null, WorkflowExpression<string> receiverQualifier = null, WorkflowExpression<int> dataElementSeparator = null, WorkflowExpression<int> releaseIndicator = null, WorkflowExpression<int> componentSeparator = null, WorkflowExpression<int> repetitionSeparator = null, WorkflowExpression<int> segmentTerminator = null, WorkflowExpression<segmentTerminatorSuffixInput> segmentTerminatorSuffix = null, WorkflowExpression<decimalIndicatorInput> decimalIndicator = null, WorkflowExpression<string> body = null)
-        {
-            WorkflowExpression.Validate(senderIdentifier, nameof(senderIdentifier), required: true);
-            WorkflowExpression.Validate(receiverIdentifier, nameof(receiverIdentifier), required: true);
-            WorkflowExpression.Validate(senderQualifier, nameof(senderQualifier), required: false);
-            WorkflowExpression.Validate(receiverQualifier, nameof(receiverQualifier), required: false);
-            WorkflowExpression.Validate(dataElementSeparator, nameof(dataElementSeparator), required: false);
-            WorkflowExpression.Validate(releaseIndicator, nameof(releaseIndicator), required: false);
-            WorkflowExpression.Validate(componentSeparator, nameof(componentSeparator), required: false);
-            WorkflowExpression.Validate(repetitionSeparator, nameof(repetitionSeparator), required: false);
-            WorkflowExpression.Validate(segmentTerminator, nameof(segmentTerminator), required: false);
-            WorkflowExpression.Validate(segmentTerminatorSuffix, nameof(segmentTerminatorSuffix), required: false);
-            WorkflowExpression.Validate(decimalIndicator, nameof(decimalIndicator), required: false);
-            WorkflowExpression.Validate(body, nameof(body), required: false);
+            var __workflow_senderIdentifier = senderIdentifier == null ? null : WorkflowExpression.Compile(senderIdentifier);
+            WorkflowExpression.Validate(__workflow_senderIdentifier, nameof(senderIdentifier), required: true);
+            var __workflow_receiverIdentifier = receiverIdentifier == null ? null : WorkflowExpression.Compile(receiverIdentifier);
+            WorkflowExpression.Validate(__workflow_receiverIdentifier, nameof(receiverIdentifier), required: true);
+            var __workflow_senderQualifier = senderQualifier == null ? null : WorkflowExpression.Compile(senderQualifier);
+            WorkflowExpression.Validate(__workflow_senderQualifier, nameof(senderQualifier), required: false);
+            var __workflow_receiverQualifier = receiverQualifier == null ? null : WorkflowExpression.Compile(receiverQualifier);
+            WorkflowExpression.Validate(__workflow_receiverQualifier, nameof(receiverQualifier), required: false);
+            var __workflow_dataElementSeparator = dataElementSeparator == null ? null : WorkflowExpression.Compile(dataElementSeparator);
+            WorkflowExpression.Validate(__workflow_dataElementSeparator, nameof(dataElementSeparator), required: false);
+            var __workflow_releaseIndicator = releaseIndicator == null ? null : WorkflowExpression.Compile(releaseIndicator);
+            WorkflowExpression.Validate(__workflow_releaseIndicator, nameof(releaseIndicator), required: false);
+            var __workflow_componentSeparator = componentSeparator == null ? null : WorkflowExpression.Compile(componentSeparator);
+            WorkflowExpression.Validate(__workflow_componentSeparator, nameof(componentSeparator), required: false);
+            var __workflow_repetitionSeparator = repetitionSeparator == null ? null : WorkflowExpression.Compile(repetitionSeparator);
+            WorkflowExpression.Validate(__workflow_repetitionSeparator, nameof(repetitionSeparator), required: false);
+            var __workflow_segmentTerminator = segmentTerminator == null ? null : WorkflowExpression.Compile(segmentTerminator);
+            WorkflowExpression.Validate(__workflow_segmentTerminator, nameof(segmentTerminator), required: false);
+            var __workflow_segmentTerminatorSuffix = segmentTerminatorSuffix == null ? null : WorkflowExpression.Compile(segmentTerminatorSuffix);
+            WorkflowExpression.Validate(__workflow_segmentTerminatorSuffix, nameof(segmentTerminatorSuffix), required: false);
+            var __workflow_decimalIndicator = decimalIndicator == null ? null : WorkflowExpression.Compile(decimalIndicator);
+            WorkflowExpression.Validate(__workflow_decimalIndicator, nameof(decimalIndicator), required: false);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
             return new DeferredBodyAction<EdifactEncodeV2Response>(() =>
             {
                 var apiCallPath = "/EncodeV2/ResolveByIdentities";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["senderIdentifier"] = ExpressionConverter.Convert(senderIdentifier);
-                callPayload.Queries["receiverIdentifier"] = ExpressionConverter.Convert(receiverIdentifier);
-                if (senderQualifier != null)
-                    callPayload.Queries["senderQualifier"] = ExpressionConverter.Convert(senderQualifier);
-                if (receiverQualifier != null)
-                    callPayload.Queries["receiverQualifier"] = ExpressionConverter.Convert(receiverQualifier);
-                if (dataElementSeparator != null)
-                    callPayload.Queries["dataElementSeparator"] = ExpressionConverter.Convert(dataElementSeparator);
-                if (releaseIndicator != null)
-                    callPayload.Queries["releaseIndicator"] = ExpressionConverter.Convert(releaseIndicator);
-                if (componentSeparator != null)
-                    callPayload.Queries["componentSeparator"] = ExpressionConverter.Convert(componentSeparator);
-                if (repetitionSeparator != null)
-                    callPayload.Queries["repetitionSeparator"] = ExpressionConverter.Convert(repetitionSeparator);
-                if (segmentTerminator != null)
-                    callPayload.Queries["segmentTerminator"] = ExpressionConverter.Convert(segmentTerminator);
-                if (segmentTerminatorSuffix != null)
-                    callPayload.Queries["segmentTerminatorSuffix"] = ExpressionConverter.Convert(segmentTerminatorSuffix);
-                if (decimalIndicator != null)
-                    callPayload.Queries["decimalIndicator"] = ExpressionConverter.Convert(decimalIndicator);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["senderIdentifier"] = ExpressionConverter.Convert(__workflow_senderIdentifier);
+                callPayload.Queries["receiverIdentifier"] = ExpressionConverter.Convert(__workflow_receiverIdentifier);
+                if (__workflow_senderQualifier != null)
+                    callPayload.Queries["senderQualifier"] = ExpressionConverter.Convert(__workflow_senderQualifier);
+                if (__workflow_receiverQualifier != null)
+                    callPayload.Queries["receiverQualifier"] = ExpressionConverter.Convert(__workflow_receiverQualifier);
+                if (__workflow_dataElementSeparator != null)
+                    callPayload.Queries["dataElementSeparator"] = ExpressionConverter.Convert(__workflow_dataElementSeparator);
+                if (__workflow_releaseIndicator != null)
+                    callPayload.Queries["releaseIndicator"] = ExpressionConverter.Convert(__workflow_releaseIndicator);
+                if (__workflow_componentSeparator != null)
+                    callPayload.Queries["componentSeparator"] = ExpressionConverter.Convert(__workflow_componentSeparator);
+                if (__workflow_repetitionSeparator != null)
+                    callPayload.Queries["repetitionSeparator"] = ExpressionConverter.Convert(__workflow_repetitionSeparator);
+                if (__workflow_segmentTerminator != null)
+                    callPayload.Queries["segmentTerminator"] = ExpressionConverter.Convert(__workflow_segmentTerminator);
+                if (__workflow_segmentTerminatorSuffix != null)
+                    callPayload.Queries["segmentTerminatorSuffix"] = ExpressionConverter.Convert(__workflow_segmentTerminatorSuffix);
+                if (__workflow_decimalIndicator != null)
+                    callPayload.Queries["decimalIndicator"] = ExpressionConverter.Convert(__workflow_decimalIndicator);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<EdifactEncodeV2Response>(callPayload);
             });
         }
@@ -481,24 +504,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
 
     public class EdifactTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildOnModifiedControlNumber))]
-        public IBodyWorkflowTrigger<ReplicableControlNumberContent[]> OnModifiedControlNumber([WorkflowExpression] Func<string> startSyncTime = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ReplicableControlNumberContent[]> OnModifiedControlNumber(Expression<Func<string>> startSyncTime = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ReplicableControlNumberContent[]> __BuildOnModifiedControlNumber(WorkflowExpression<string> startSyncTime = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(startSyncTime, nameof(startSyncTime), required: false);
+            var __workflow_startSyncTime = startSyncTime == null ? null : WorkflowExpression.Compile(startSyncTime);
+            WorkflowExpression.Validate(__workflow_startSyncTime, nameof(startSyncTime), required: false);
             return new DeferredBodyTrigger<ReplicableControlNumberContent[]>(() =>
             {
                 var apiCallPath = "/triggers/onmodifiedcontrolnumber";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (startSyncTime != null)
-                    callPayload.Queries["startSyncTime"] = ExpressionConverter.Convert(startSyncTime);
+                if (__workflow_startSyncTime != null)
+                    callPayload.Queries["startSyncTime"] = ExpressionConverter.Convert(__workflow_startSyncTime);
                 return new ApiConnectionTrigger<ReplicableControlNumberContent[]>(callPayload, recurrence: recurrence);
             });
         }

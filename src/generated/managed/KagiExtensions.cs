@@ -1,32 +1,30 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class KagiActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kagi")]
-        [WorkflowExpressionFactory(nameof(__BuildSummarize))]
-        public IBodyWorkflowAction<SummarizePostResponse> Summarize([WorkflowExpression] Func<string> bodyurl = null, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<bodyengineInput> bodyengine = null, [WorkflowExpression] Func<bodysummaryTypeInput> bodysummaryType = null, [WorkflowExpression] Func<bodytargetLanguageInput> bodytargetLanguage = null, [WorkflowExpression] Func<bool> bodycache = null)
+        public IBodyWorkflowAction<SummarizePostResponse> Summarize(Expression<Func<string>> bodyurl = null, Expression<Func<string>> bodytext = null, Expression<Func<bodyengineInput>> bodyengine = null, Expression<Func<bodysummaryTypeInput>> bodysummaryType = null, Expression<Func<bodytargetLanguageInput>> bodytargetLanguage = null, Expression<Func<bool>> bodycache = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SummarizePostResponse> __BuildSummarize(WorkflowExpression<string> bodyurl = null, WorkflowExpression<string> bodytext = null, WorkflowExpression<bodyengineInput> bodyengine = null, WorkflowExpression<bodysummaryTypeInput> bodysummaryType = null, WorkflowExpression<bodytargetLanguageInput> bodytargetLanguage = null, WorkflowExpression<bool> bodycache = null)
-        {
-            WorkflowExpression.Validate(bodyurl, nameof(bodyurl), required: false);
-            WorkflowExpression.Validate(bodytext, nameof(bodytext), required: false);
-            WorkflowExpression.Validate(bodyengine, nameof(bodyengine), required: false);
-            WorkflowExpression.Validate(bodysummaryType, nameof(bodysummaryType), required: false);
-            WorkflowExpression.Validate(bodytargetLanguage, nameof(bodytargetLanguage), required: false);
-            WorkflowExpression.Validate(bodycache, nameof(bodycache), required: false);
+            var __workflow_bodyurl = bodyurl == null ? null : WorkflowExpression.Compile(bodyurl);
+            WorkflowExpression.Validate(__workflow_bodyurl, nameof(bodyurl), required: false);
+            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
+            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: false);
+            var __workflow_bodyengine = bodyengine == null ? null : WorkflowExpression.Compile(bodyengine);
+            WorkflowExpression.Validate(__workflow_bodyengine, nameof(bodyengine), required: false);
+            var __workflow_bodysummaryType = bodysummaryType == null ? null : WorkflowExpression.Compile(bodysummaryType);
+            WorkflowExpression.Validate(__workflow_bodysummaryType, nameof(bodysummaryType), required: false);
+            var __workflow_bodytargetLanguage = bodytargetLanguage == null ? null : WorkflowExpression.Compile(bodytargetLanguage);
+            WorkflowExpression.Validate(__workflow_bodytargetLanguage, nameof(bodytargetLanguage), required: false);
+            var __workflow_bodycache = bodycache == null ? null : WorkflowExpression.Compile(bodycache);
+            WorkflowExpression.Validate(__workflow_bodycache, nameof(bodycache), required: false);
             return new DeferredBodyAction<SummarizePostResponse>(() =>
             {
                 var apiCallPath = "/v0/summarize";
@@ -34,23 +32,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyurl != null)
+                if (__workflow_bodyurl != null)
                 {
-                    body["url"] = ExpressionConverter.ConvertO(bodyurl);
+                    body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
                     bodypropCount++;
                 }
 
-                if (bodytext != null)
+                if (__workflow_bodytext != null)
                 {
-                    body["text"] = ExpressionConverter.ConvertO(bodytext);
+                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
                     bodypropCount++;
                 }
 
-                if (bodyengine != null)
+                if (__workflow_bodyengine != null)
                 {
-                    if (bodyengine != null)
+                    if (__workflow_bodyengine != null)
                     {
-                        body["engine"] = ExpressionConverter.ConvertO(bodyengine);
+                        body["engine"] = ExpressionConverter.ConvertO(__workflow_bodyengine);
                         bodypropCount++;
                     }
 
@@ -62,11 +60,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
                     bodypropCount++;
                 }
 
-                if (bodysummaryType != null)
+                if (__workflow_bodysummaryType != null)
                 {
-                    if (bodysummaryType != null)
+                    if (__workflow_bodysummaryType != null)
                     {
-                        body["summary_type"] = ExpressionConverter.ConvertO(bodysummaryType);
+                        body["summary_type"] = ExpressionConverter.ConvertO(__workflow_bodysummaryType);
                         bodypropCount++;
                     }
 
@@ -78,15 +76,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
                     bodypropCount++;
                 }
 
-                if (bodytargetLanguage != null)
+                if (__workflow_bodytargetLanguage != null)
                 {
-                    body["target_language"] = ExpressionConverter.ConvertO(bodytargetLanguage);
+                    body["target_language"] = ExpressionConverter.ConvertO(__workflow_bodytargetLanguage);
                     bodypropCount++;
                 }
 
-                if (bodycache != null)
+                if (__workflow_bodycache != null)
                 {
-                    body["cache"] = ExpressionConverter.ConvertO(bodycache);
+                    body["cache"] = ExpressionConverter.ConvertO(__workflow_bodycache);
                     bodypropCount++;
                 }
 
@@ -100,16 +98,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kagi")]
-        [WorkflowExpressionFactory(nameof(__BuildFastGPT))]
-        public IBodyWorkflowAction<FastGPTPostResponse> FastGPT([WorkflowExpression] Func<string> bodyquery)
+        public IBodyWorkflowAction<FastGPTPostResponse> FastGPT(Expression<Func<string>> bodyquery)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FastGPTPostResponse> __BuildFastGPT(WorkflowExpression<string> bodyquery)
-        {
-            WorkflowExpression.Validate(bodyquery, nameof(bodyquery), required: true);
+            var __workflow_bodyquery = bodyquery == null ? null : WorkflowExpression.Compile(bodyquery);
+            WorkflowExpression.Validate(__workflow_bodyquery, nameof(bodyquery), required: true);
             return new DeferredBodyAction<FastGPTPostResponse>(() =>
             {
                 var apiCallPath = "/v0/fastgpt";
@@ -118,7 +110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
+                body["query"] = ExpressionConverter.ConvertO(__workflow_bodyquery);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -129,89 +121,66 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kagi")]
-        [WorkflowExpressionFactory(nameof(__BuildSearchGet))]
-        public IBodyWorkflowAction<SearchGetResponse> SearchGet([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<int> limit = null)
+        public IBodyWorkflowAction<SearchGetResponse> SearchGet(Expression<Func<string>> q, Expression<Func<int>> limit = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SearchGetResponse> __BuildSearchGet(WorkflowExpression<string> q, WorkflowExpression<int> limit = null)
-        {
-            WorkflowExpression.Validate(q, nameof(q), required: true);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
+            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
+            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
             return new DeferredBodyAction<SearchGetResponse>(() =>
             {
                 var apiCallPath = "/v0/search/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction<SearchGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kagi")]
-        [WorkflowExpressionFactory(nameof(__BuildEnrichmentWebGet))]
-        public IBodyWorkflowAction<EnrichmentWebGetResponse> EnrichmentWebGet([WorkflowExpression] Func<string> q)
+        public IBodyWorkflowAction<EnrichmentWebGetResponse> EnrichmentWebGet(Expression<Func<string>> q)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EnrichmentWebGetResponse> __BuildEnrichmentWebGet(WorkflowExpression<string> q)
-        {
-            WorkflowExpression.Validate(q, nameof(q), required: true);
+            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
+            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
             return new DeferredBodyAction<EnrichmentWebGetResponse>(() =>
             {
                 var apiCallPath = "/v0/enrich/web";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
                 return new ApiConnectionAction<EnrichmentWebGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kagi")]
-        [WorkflowExpressionFactory(nameof(__BuildEnrichmentNewsGet))]
-        public IBodyWorkflowAction<EnrichmentNewsGetResponse> EnrichmentNewsGet([WorkflowExpression] Func<string> q)
+        public IBodyWorkflowAction<EnrichmentNewsGetResponse> EnrichmentNewsGet(Expression<Func<string>> q)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EnrichmentNewsGetResponse> __BuildEnrichmentNewsGet(WorkflowExpression<string> q)
-        {
-            WorkflowExpression.Validate(q, nameof(q), required: true);
+            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
+            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
             return new DeferredBodyAction<EnrichmentNewsGetResponse>(() =>
             {
                 var apiCallPath = "/v0/enrich/news";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
                 return new ApiConnectionAction<EnrichmentNewsGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kagi")]
-        [WorkflowExpressionFactory(nameof(__BuildSmallWebGet))]
-        public IBodyWorkflowAction<SmallWebGetResponse> SmallWebGet([WorkflowExpression] Func<int> limit = null)
+        public IBodyWorkflowAction<SmallWebGetResponse> SmallWebGet(Expression<Func<int>> limit = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SmallWebGetResponse> __BuildSmallWebGet(WorkflowExpression<int> limit = null)
-        {
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
             return new DeferredBodyAction<SmallWebGetResponse>(() =>
             {
                 var apiCallPath = "/v1/smallweb/feed/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction<SmallWebGetResponse>(callPayload);
             });
         }

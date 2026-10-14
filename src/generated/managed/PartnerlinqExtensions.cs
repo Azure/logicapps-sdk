@@ -1,80 +1,78 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnerlinq
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class PartnerlinqActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnerlinq")]
-        [WorkflowExpressionFactory(nameof(__BuildPartnerLinqGet))]
-        public IBodyWorkflowAction<PartnerLinqGetResponse> PartnerLinqGet([WorkflowExpression] Func<string> code, [WorkflowExpression] Func<string> environment, [WorkflowExpression] Func<string> tennatId, [WorkflowExpression] Func<string> companyId, [WorkflowExpression] Func<string> process, [WorkflowExpression] Func<string> partnerId)
+        public IBodyWorkflowAction<PartnerLinqGetResponse> PartnerLinqGet(Expression<Func<string>> code, Expression<Func<string>> environment, Expression<Func<string>> tennatId, Expression<Func<string>> companyId, Expression<Func<string>> process, Expression<Func<string>> partnerId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PartnerLinqGetResponse> __BuildPartnerLinqGet(WorkflowExpression<string> code, WorkflowExpression<string> environment, WorkflowExpression<string> tennatId, WorkflowExpression<string> companyId, WorkflowExpression<string> process, WorkflowExpression<string> partnerId)
-        {
-            WorkflowExpression.Validate(code, nameof(code), required: true);
-            WorkflowExpression.Validate(environment, nameof(environment), required: true);
-            WorkflowExpression.Validate(tennatId, nameof(tennatId), required: true);
-            WorkflowExpression.Validate(companyId, nameof(companyId), required: true);
-            WorkflowExpression.Validate(process, nameof(process), required: true);
-            WorkflowExpression.Validate(partnerId, nameof(partnerId), required: true);
+            var __workflow_code = code == null ? null : WorkflowExpression.Compile(code);
+            WorkflowExpression.Validate(__workflow_code, nameof(code), required: true);
+            var __workflow_environment = environment == null ? null : WorkflowExpression.Compile(environment);
+            WorkflowExpression.Validate(__workflow_environment, nameof(environment), required: true);
+            var __workflow_tennatId = tennatId == null ? null : WorkflowExpression.Compile(tennatId);
+            WorkflowExpression.Validate(__workflow_tennatId, nameof(tennatId), required: true);
+            var __workflow_companyId = companyId == null ? null : WorkflowExpression.Compile(companyId);
+            WorkflowExpression.Validate(__workflow_companyId, nameof(companyId), required: true);
+            var __workflow_process = process == null ? null : WorkflowExpression.Compile(process);
+            WorkflowExpression.Validate(__workflow_process, nameof(process), required: true);
+            var __workflow_partnerId = partnerId == null ? null : WorkflowExpression.Compile(partnerId);
+            WorkflowExpression.Validate(__workflow_partnerId, nameof(partnerId), required: true);
             return new DeferredBodyAction<PartnerLinqGetResponse>(() =>
             {
                 var apiCallPath = "/api/FUNC_HTTP_DATA_SEND";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["code"] = ExpressionConverter.Convert(code);
-                callPayload.Headers["Environment"] = ExpressionConverter.Convert(environment);
-                callPayload.Headers["TennatId"] = ExpressionConverter.Convert(tennatId);
-                callPayload.Headers["CompanyId"] = ExpressionConverter.Convert(companyId);
-                callPayload.Headers["Process"] = ExpressionConverter.Convert(process);
-                callPayload.Headers["PartnerId"] = ExpressionConverter.Convert(partnerId);
+                callPayload.Queries["code"] = ExpressionConverter.Convert(__workflow_code);
+                callPayload.Headers["Environment"] = ExpressionConverter.Convert(__workflow_environment);
+                callPayload.Headers["TennatId"] = ExpressionConverter.Convert(__workflow_tennatId);
+                callPayload.Headers["CompanyId"] = ExpressionConverter.Convert(__workflow_companyId);
+                callPayload.Headers["Process"] = ExpressionConverter.Convert(__workflow_process);
+                callPayload.Headers["PartnerId"] = ExpressionConverter.Convert(__workflow_partnerId);
                 return new ApiConnectionAction<PartnerLinqGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnerlinq")]
-        [WorkflowExpressionFactory(nameof(__BuildPartnerLinq))]
-        public IBodyWorkflowAction<PartnerLinqPostResponse> PartnerLinq([WorkflowExpression] Func<string> code, [WorkflowExpression] Func<string> environment, [WorkflowExpression] Func<string> tenantId, [WorkflowExpression] Func<string> companyId, [WorkflowExpression] Func<string> process, [WorkflowExpression] Func<string> partnerId, [WorkflowExpression] Func<string> bodydata = null)
+        public IBodyWorkflowAction<PartnerLinqPostResponse> PartnerLinq(Expression<Func<string>> code, Expression<Func<string>> environment, Expression<Func<string>> tenantId, Expression<Func<string>> companyId, Expression<Func<string>> process, Expression<Func<string>> partnerId, Expression<Func<string>> bodydata = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PartnerLinqPostResponse> __BuildPartnerLinq(WorkflowExpression<string> code, WorkflowExpression<string> environment, WorkflowExpression<string> tenantId, WorkflowExpression<string> companyId, WorkflowExpression<string> process, WorkflowExpression<string> partnerId, WorkflowExpression<string> bodydata = null)
-        {
-            WorkflowExpression.Validate(code, nameof(code), required: true);
-            WorkflowExpression.Validate(environment, nameof(environment), required: true);
-            WorkflowExpression.Validate(tenantId, nameof(tenantId), required: true);
-            WorkflowExpression.Validate(companyId, nameof(companyId), required: true);
-            WorkflowExpression.Validate(process, nameof(process), required: true);
-            WorkflowExpression.Validate(partnerId, nameof(partnerId), required: true);
-            WorkflowExpression.Validate(bodydata, nameof(bodydata), required: false);
+            var __workflow_code = code == null ? null : WorkflowExpression.Compile(code);
+            WorkflowExpression.Validate(__workflow_code, nameof(code), required: true);
+            var __workflow_environment = environment == null ? null : WorkflowExpression.Compile(environment);
+            WorkflowExpression.Validate(__workflow_environment, nameof(environment), required: true);
+            var __workflow_tenantId = tenantId == null ? null : WorkflowExpression.Compile(tenantId);
+            WorkflowExpression.Validate(__workflow_tenantId, nameof(tenantId), required: true);
+            var __workflow_companyId = companyId == null ? null : WorkflowExpression.Compile(companyId);
+            WorkflowExpression.Validate(__workflow_companyId, nameof(companyId), required: true);
+            var __workflow_process = process == null ? null : WorkflowExpression.Compile(process);
+            WorkflowExpression.Validate(__workflow_process, nameof(process), required: true);
+            var __workflow_partnerId = partnerId == null ? null : WorkflowExpression.Compile(partnerId);
+            WorkflowExpression.Validate(__workflow_partnerId, nameof(partnerId), required: true);
+            var __workflow_bodydata = bodydata == null ? null : WorkflowExpression.Compile(bodydata);
+            WorkflowExpression.Validate(__workflow_bodydata, nameof(bodydata), required: false);
             return new DeferredBodyAction<PartnerLinqPostResponse>(() =>
             {
                 var apiCallPath = "/api/FUNC_HTTP_DATA_RECEIVE";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["code"] = ExpressionConverter.Convert(code);
-                callPayload.Headers["Environment"] = ExpressionConverter.Convert(environment);
-                callPayload.Headers["TenantId"] = ExpressionConverter.Convert(tenantId);
-                callPayload.Headers["CompanyId"] = ExpressionConverter.Convert(companyId);
-                callPayload.Headers["Process"] = ExpressionConverter.Convert(process);
-                callPayload.Headers["PartnerId"] = ExpressionConverter.Convert(partnerId);
+                callPayload.Queries["code"] = ExpressionConverter.Convert(__workflow_code);
+                callPayload.Headers["Environment"] = ExpressionConverter.Convert(__workflow_environment);
+                callPayload.Headers["TenantId"] = ExpressionConverter.Convert(__workflow_tenantId);
+                callPayload.Headers["CompanyId"] = ExpressionConverter.Convert(__workflow_companyId);
+                callPayload.Headers["Process"] = ExpressionConverter.Convert(__workflow_process);
+                callPayload.Headers["PartnerId"] = ExpressionConverter.Convert(__workflow_partnerId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodydata != null)
+                if (__workflow_bodydata != null)
                 {
-                    body["data"] = ExpressionConverter.ConvertO(bodydata);
+                    body["data"] = ExpressionConverter.ConvertO(__workflow_bodydata);
                     bodypropCount++;
                 }
 

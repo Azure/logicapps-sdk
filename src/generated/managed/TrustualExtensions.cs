@@ -1,31 +1,28 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trustual
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class TrustualActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trustual")]
-        [WorkflowExpressionFactory(nameof(__BuildCertifyFile))]
-        public IBodyWorkflowAction<CertificationOutput> CertifyFile([WorkflowExpression] Func<string> bodyfileContent = null, [WorkflowExpression] Func<bodycertificateLanguageInput> bodycertificateLanguage = null, [WorkflowExpression] Func<double> bodytimeZoneOffset = null, [WorkflowExpression] Func<string> bodyreference = null, [WorkflowExpression] Func<bool> bodysandboxMode = null)
+        public IBodyWorkflowAction<CertificationOutput> CertifyFile(Expression<Func<string>> bodyfileContent = null, Expression<Func<bodycertificateLanguageInput>> bodycertificateLanguage = null, Expression<Func<double>> bodytimeZoneOffset = null, Expression<Func<string>> bodyreference = null, Expression<Func<bool>> bodysandboxMode = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CertificationOutput> __BuildCertifyFile(WorkflowExpression<string> bodyfileContent = null, WorkflowExpression<bodycertificateLanguageInput> bodycertificateLanguage = null, WorkflowExpression<double> bodytimeZoneOffset = null, WorkflowExpression<string> bodyreference = null, WorkflowExpression<bool> bodysandboxMode = null)
-        {
-            WorkflowExpression.Validate(bodyfileContent, nameof(bodyfileContent), required: false);
-            WorkflowExpression.Validate(bodycertificateLanguage, nameof(bodycertificateLanguage), required: false);
-            WorkflowExpression.Validate(bodytimeZoneOffset, nameof(bodytimeZoneOffset), required: false);
-            WorkflowExpression.Validate(bodyreference, nameof(bodyreference), required: false);
-            WorkflowExpression.Validate(bodysandboxMode, nameof(bodysandboxMode), required: false);
+            var __workflow_bodyfileContent = bodyfileContent == null ? null : WorkflowExpression.Compile(bodyfileContent);
+            WorkflowExpression.Validate(__workflow_bodyfileContent, nameof(bodyfileContent), required: false);
+            var __workflow_bodycertificateLanguage = bodycertificateLanguage == null ? null : WorkflowExpression.Compile(bodycertificateLanguage);
+            WorkflowExpression.Validate(__workflow_bodycertificateLanguage, nameof(bodycertificateLanguage), required: false);
+            var __workflow_bodytimeZoneOffset = bodytimeZoneOffset == null ? null : WorkflowExpression.Compile(bodytimeZoneOffset);
+            WorkflowExpression.Validate(__workflow_bodytimeZoneOffset, nameof(bodytimeZoneOffset), required: false);
+            var __workflow_bodyreference = bodyreference == null ? null : WorkflowExpression.Compile(bodyreference);
+            WorkflowExpression.Validate(__workflow_bodyreference, nameof(bodyreference), required: false);
+            var __workflow_bodysandboxMode = bodysandboxMode == null ? null : WorkflowExpression.Compile(bodysandboxMode);
+            WorkflowExpression.Validate(__workflow_bodysandboxMode, nameof(bodysandboxMode), required: false);
             return new DeferredBodyAction<CertificationOutput>(() =>
             {
                 var apiCallPath = "/certify_file";
@@ -33,17 +30,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trustual
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfileContent != null)
+                if (__workflow_bodyfileContent != null)
                 {
-                    body["file_base_64"] = ExpressionConverter.ConvertO(bodyfileContent);
+                    body["file_base_64"] = ExpressionConverter.ConvertO(__workflow_bodyfileContent);
                     bodypropCount++;
                 }
 
-                if (bodycertificateLanguage != null)
+                if (__workflow_bodycertificateLanguage != null)
                 {
-                    if (bodycertificateLanguage != null)
+                    if (__workflow_bodycertificateLanguage != null)
                     {
-                        body["language"] = ExpressionConverter.ConvertO(bodycertificateLanguage);
+                        body["language"] = ExpressionConverter.ConvertO(__workflow_bodycertificateLanguage);
                         bodypropCount++;
                     }
 
@@ -55,21 +52,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trustual
                     bodypropCount++;
                 }
 
-                if (bodytimeZoneOffset != null)
+                if (__workflow_bodytimeZoneOffset != null)
                 {
-                    body["offset"] = ExpressionConverter.ConvertO(bodytimeZoneOffset);
+                    body["offset"] = ExpressionConverter.ConvertO(__workflow_bodytimeZoneOffset);
                     bodypropCount++;
                 }
 
-                if (bodyreference != null)
+                if (__workflow_bodyreference != null)
                 {
-                    body["reference"] = ExpressionConverter.ConvertO(bodyreference);
+                    body["reference"] = ExpressionConverter.ConvertO(__workflow_bodyreference);
                     bodypropCount++;
                 }
 
-                if (bodysandboxMode != null)
+                if (__workflow_bodysandboxMode != null)
                 {
-                    body["sandbox"] = ExpressionConverter.ConvertO(bodysandboxMode);
+                    body["sandbox"] = ExpressionConverter.ConvertO(__workflow_bodysandboxMode);
                     bodypropCount++;
                 }
 
@@ -83,20 +80,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trustual
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trustual")]
-        [WorkflowExpressionFactory(nameof(__BuildCertifyHash))]
-        public IBodyWorkflowAction<CertificationOutput> CertifyHash([WorkflowExpression] Func<string> bodyhash = null, [WorkflowExpression] Func<bodycertificateLanguageInput> bodycertificateLanguage = null, [WorkflowExpression] Func<double> bodytimeZoneOffset = null, [WorkflowExpression] Func<string> bodyreference = null, [WorkflowExpression] Func<bool> bodysandboxMode = null)
+        public IBodyWorkflowAction<CertificationOutput> CertifyHash(Expression<Func<string>> bodyhash = null, Expression<Func<bodycertificateLanguageInput>> bodycertificateLanguage = null, Expression<Func<double>> bodytimeZoneOffset = null, Expression<Func<string>> bodyreference = null, Expression<Func<bool>> bodysandboxMode = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CertificationOutput> __BuildCertifyHash(WorkflowExpression<string> bodyhash = null, WorkflowExpression<bodycertificateLanguageInput> bodycertificateLanguage = null, WorkflowExpression<double> bodytimeZoneOffset = null, WorkflowExpression<string> bodyreference = null, WorkflowExpression<bool> bodysandboxMode = null)
-        {
-            WorkflowExpression.Validate(bodyhash, nameof(bodyhash), required: false);
-            WorkflowExpression.Validate(bodycertificateLanguage, nameof(bodycertificateLanguage), required: false);
-            WorkflowExpression.Validate(bodytimeZoneOffset, nameof(bodytimeZoneOffset), required: false);
-            WorkflowExpression.Validate(bodyreference, nameof(bodyreference), required: false);
-            WorkflowExpression.Validate(bodysandboxMode, nameof(bodysandboxMode), required: false);
+            var __workflow_bodyhash = bodyhash == null ? null : WorkflowExpression.Compile(bodyhash);
+            WorkflowExpression.Validate(__workflow_bodyhash, nameof(bodyhash), required: false);
+            var __workflow_bodycertificateLanguage = bodycertificateLanguage == null ? null : WorkflowExpression.Compile(bodycertificateLanguage);
+            WorkflowExpression.Validate(__workflow_bodycertificateLanguage, nameof(bodycertificateLanguage), required: false);
+            var __workflow_bodytimeZoneOffset = bodytimeZoneOffset == null ? null : WorkflowExpression.Compile(bodytimeZoneOffset);
+            WorkflowExpression.Validate(__workflow_bodytimeZoneOffset, nameof(bodytimeZoneOffset), required: false);
+            var __workflow_bodyreference = bodyreference == null ? null : WorkflowExpression.Compile(bodyreference);
+            WorkflowExpression.Validate(__workflow_bodyreference, nameof(bodyreference), required: false);
+            var __workflow_bodysandboxMode = bodysandboxMode == null ? null : WorkflowExpression.Compile(bodysandboxMode);
+            WorkflowExpression.Validate(__workflow_bodysandboxMode, nameof(bodysandboxMode), required: false);
             return new DeferredBodyAction<CertificationOutput>(() =>
             {
                 var apiCallPath = "/certify_hash";
@@ -104,17 +99,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trustual
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyhash != null)
+                if (__workflow_bodyhash != null)
                 {
-                    body["hash"] = ExpressionConverter.ConvertO(bodyhash);
+                    body["hash"] = ExpressionConverter.ConvertO(__workflow_bodyhash);
                     bodypropCount++;
                 }
 
-                if (bodycertificateLanguage != null)
+                if (__workflow_bodycertificateLanguage != null)
                 {
-                    if (bodycertificateLanguage != null)
+                    if (__workflow_bodycertificateLanguage != null)
                     {
-                        body["language"] = ExpressionConverter.ConvertO(bodycertificateLanguage);
+                        body["language"] = ExpressionConverter.ConvertO(__workflow_bodycertificateLanguage);
                         bodypropCount++;
                     }
 
@@ -126,21 +121,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trustual
                     bodypropCount++;
                 }
 
-                if (bodytimeZoneOffset != null)
+                if (__workflow_bodytimeZoneOffset != null)
                 {
-                    body["offset"] = ExpressionConverter.ConvertO(bodytimeZoneOffset);
+                    body["offset"] = ExpressionConverter.ConvertO(__workflow_bodytimeZoneOffset);
                     bodypropCount++;
                 }
 
-                if (bodyreference != null)
+                if (__workflow_bodyreference != null)
                 {
-                    body["reference"] = ExpressionConverter.ConvertO(bodyreference);
+                    body["reference"] = ExpressionConverter.ConvertO(__workflow_bodyreference);
                     bodypropCount++;
                 }
 
-                if (bodysandboxMode != null)
+                if (__workflow_bodysandboxMode != null)
                 {
-                    body["sandbox"] = ExpressionConverter.ConvertO(bodysandboxMode);
+                    body["sandbox"] = ExpressionConverter.ConvertO(__workflow_bodysandboxMode);
                     bodypropCount++;
                 }
 

@@ -1,59 +1,51 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class WorkdaysoapActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdaysoap")]
-        [WorkflowExpressionFactory(nameof(__BuildSOAPOperation))]
-        public IBodyWorkflowAction<string> SOAPOperation([WorkflowExpression] Func<serviceInput> service, [WorkflowExpression] Func<string> version, [WorkflowExpression] Func<string> requestBody = null)
+        public IBodyWorkflowAction<string> SOAPOperation(Expression<Func<serviceInput>> service, Expression<Func<string>> version, Expression<Func<string>> requestBody = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildSOAPOperation(WorkflowExpression<serviceInput> service, WorkflowExpression<string> version, WorkflowExpression<string> requestBody = null)
-        {
-            WorkflowExpression.Validate(service, nameof(service), required: true);
-            WorkflowExpression.Validate(version, nameof(version), required: true);
-            WorkflowExpression.Validate(requestBody, nameof(requestBody), required: false);
+            var __workflow_service = service == null ? null : WorkflowExpression.Compile(service);
+            WorkflowExpression.Validate(__workflow_service, nameof(service), required: true);
+            var __workflow_version = version == null ? null : WorkflowExpression.Compile(version);
+            WorkflowExpression.Validate(__workflow_version, nameof(version), required: true);
+            var __workflow_requestBody = requestBody == null ? null : WorkflowExpression.Compile(requestBody);
+            WorkflowExpression.Validate(__workflow_requestBody, nameof(requestBody), required: false);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/SOAPOperation/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(service, 1), ExpressionConverter.ConvertWithUrlEncoding(version, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/SOAPOperation/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_service, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_version, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(requestBody);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdaysoap")]
-        [WorkflowExpressionFactory(nameof(__BuildRaaSOperation))]
-        public IBodyWorkflowAction<string> RaaSOperation([WorkflowExpression] Func<string> accountName, [WorkflowExpression] Func<string> reportName, [WorkflowExpression] Func<string> reportInstanceName, [WorkflowExpression] Func<string> requestBody = null)
+        public IBodyWorkflowAction<string> RaaSOperation(Expression<Func<string>> accountName, Expression<Func<string>> reportName, Expression<Func<string>> reportInstanceName, Expression<Func<string>> requestBody = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildRaaSOperation(WorkflowExpression<string> accountName, WorkflowExpression<string> reportName, WorkflowExpression<string> reportInstanceName, WorkflowExpression<string> requestBody = null)
-        {
-            WorkflowExpression.Validate(accountName, nameof(accountName), required: true);
-            WorkflowExpression.Validate(reportName, nameof(reportName), required: true);
-            WorkflowExpression.Validate(reportInstanceName, nameof(reportInstanceName), required: true);
-            WorkflowExpression.Validate(requestBody, nameof(requestBody), required: false);
+            var __workflow_accountName = accountName == null ? null : WorkflowExpression.Compile(accountName);
+            WorkflowExpression.Validate(__workflow_accountName, nameof(accountName), required: true);
+            var __workflow_reportName = reportName == null ? null : WorkflowExpression.Compile(reportName);
+            WorkflowExpression.Validate(__workflow_reportName, nameof(reportName), required: true);
+            var __workflow_reportInstanceName = reportInstanceName == null ? null : WorkflowExpression.Compile(reportInstanceName);
+            WorkflowExpression.Validate(__workflow_reportInstanceName, nameof(reportInstanceName), required: true);
+            var __workflow_requestBody = requestBody == null ? null : WorkflowExpression.Compile(requestBody);
+            WorkflowExpression.Validate(__workflow_requestBody, nameof(requestBody), required: false);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/RaaSOperation/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(reportInstanceName, 1), ExpressionConverter.ConvertWithUrlEncoding(accountName, 1), ExpressionConverter.ConvertWithUrlEncoding(reportName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/RaaSOperation/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_reportInstanceName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_reportName, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(requestBody);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }

@@ -1,37 +1,40 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anthropicip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class AnthropicipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "anthropicip")]
-        [WorkflowExpressionFactory(nameof(__BuildMessage))]
-        public IBodyWorkflowAction<MessagePostResponse> Message([WorkflowExpression] Func<bodymodelInput> bodymodel, [WorkflowExpression] Func<bodymessagesInputItem[]> bodymessages, [WorkflowExpression] Func<int> bodymaxTokens, [WorkflowExpression] Func<bool> bodythinkingtype = null, [WorkflowExpression] Func<int> bodythinkingbudgetTokens = null, [WorkflowExpression] Func<string[]> bodystopSequences = null, [WorkflowExpression] Func<string> bodysystem = null, [WorkflowExpression] Func<double> bodytemperature = null, [WorkflowExpression] Func<bodytoolsInputItem[]> bodytools = null, [WorkflowExpression] Func<int> bodytopK = null, [WorkflowExpression] Func<double> bodytopP = null)
+        public IBodyWorkflowAction<MessagePostResponse> Message(Expression<Func<bodymodelInput>> bodymodel, Expression<Func<bodymessagesInputItem[]>> bodymessages, Expression<Func<int>> bodymaxTokens, Expression<Func<bool>> bodythinkingtype = null, Expression<Func<int>> bodythinkingbudgetTokens = null, Expression<Func<string[]>> bodystopSequences = null, Expression<Func<string>> bodysystem = null, Expression<Func<double>> bodytemperature = null, Expression<Func<bodytoolsInputItem[]>> bodytools = null, Expression<Func<int>> bodytopK = null, Expression<Func<double>> bodytopP = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MessagePostResponse> __BuildMessage(WorkflowExpression<bodymodelInput> bodymodel, WorkflowExpression<bodymessagesInputItem[]> bodymessages, WorkflowExpression<int> bodymaxTokens, WorkflowExpression<bool> bodythinkingtype = null, WorkflowExpression<int> bodythinkingbudgetTokens = null, WorkflowExpression<string[]> bodystopSequences = null, WorkflowExpression<string> bodysystem = null, WorkflowExpression<double> bodytemperature = null, WorkflowExpression<bodytoolsInputItem[]> bodytools = null, WorkflowExpression<int> bodytopK = null, WorkflowExpression<double> bodytopP = null)
-        {
-            WorkflowExpression.Validate(bodymodel, nameof(bodymodel), required: true);
-            WorkflowExpression.Validate(bodymessages, nameof(bodymessages), required: true);
-            WorkflowExpression.Validate(bodymaxTokens, nameof(bodymaxTokens), required: true);
-            WorkflowExpression.Validate(bodythinkingtype, nameof(bodythinkingtype), required: false);
-            WorkflowExpression.Validate(bodythinkingbudgetTokens, nameof(bodythinkingbudgetTokens), required: false);
-            WorkflowExpression.Validate(bodystopSequences, nameof(bodystopSequences), required: false);
-            WorkflowExpression.Validate(bodysystem, nameof(bodysystem), required: false);
-            WorkflowExpression.Validate(bodytemperature, nameof(bodytemperature), required: false);
-            WorkflowExpression.Validate(bodytools, nameof(bodytools), required: false);
-            WorkflowExpression.Validate(bodytopK, nameof(bodytopK), required: false);
-            WorkflowExpression.Validate(bodytopP, nameof(bodytopP), required: false);
+            var __workflow_bodymodel = bodymodel == null ? null : WorkflowExpression.Compile(bodymodel);
+            WorkflowExpression.Validate(__workflow_bodymodel, nameof(bodymodel), required: true);
+            var __workflow_bodymessages = bodymessages == null ? null : WorkflowExpression.Compile(bodymessages);
+            WorkflowExpression.Validate(__workflow_bodymessages, nameof(bodymessages), required: true);
+            var __workflow_bodymaxTokens = bodymaxTokens == null ? null : WorkflowExpression.Compile(bodymaxTokens);
+            WorkflowExpression.Validate(__workflow_bodymaxTokens, nameof(bodymaxTokens), required: true);
+            var __workflow_bodythinkingtype = bodythinkingtype == null ? null : WorkflowExpression.Compile(bodythinkingtype);
+            WorkflowExpression.Validate(__workflow_bodythinkingtype, nameof(bodythinkingtype), required: false);
+            var __workflow_bodythinkingbudgetTokens = bodythinkingbudgetTokens == null ? null : WorkflowExpression.Compile(bodythinkingbudgetTokens);
+            WorkflowExpression.Validate(__workflow_bodythinkingbudgetTokens, nameof(bodythinkingbudgetTokens), required: false);
+            var __workflow_bodystopSequences = bodystopSequences == null ? null : WorkflowExpression.Compile(bodystopSequences);
+            WorkflowExpression.Validate(__workflow_bodystopSequences, nameof(bodystopSequences), required: false);
+            var __workflow_bodysystem = bodysystem == null ? null : WorkflowExpression.Compile(bodysystem);
+            WorkflowExpression.Validate(__workflow_bodysystem, nameof(bodysystem), required: false);
+            var __workflow_bodytemperature = bodytemperature == null ? null : WorkflowExpression.Compile(bodytemperature);
+            WorkflowExpression.Validate(__workflow_bodytemperature, nameof(bodytemperature), required: false);
+            var __workflow_bodytools = bodytools == null ? null : WorkflowExpression.Compile(bodytools);
+            WorkflowExpression.Validate(__workflow_bodytools, nameof(bodytools), required: false);
+            var __workflow_bodytopK = bodytopK == null ? null : WorkflowExpression.Compile(bodytopK);
+            WorkflowExpression.Validate(__workflow_bodytopK, nameof(bodytopK), required: false);
+            var __workflow_bodytopP = bodytopP == null ? null : WorkflowExpression.Compile(bodytopP);
+            WorkflowExpression.Validate(__workflow_bodytopP, nameof(bodytopP), required: false);
             return new DeferredBodyAction<MessagePostResponse>(() =>
             {
                 var apiCallPath = "/v1/messages";
@@ -41,22 +44,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anthropicip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["model"] = ExpressionConverter.ConvertO(bodymodel);
+                body["model"] = ExpressionConverter.ConvertO(__workflow_bodymodel);
                 bodypropCount++;
-                body["messages"] = ExpressionConverter.ConvertO(bodymessages);
+                body["messages"] = ExpressionConverter.ConvertO(__workflow_bodymessages);
                 bodypropCount++;
-                body["max_tokens"] = ExpressionConverter.ConvertO(bodymaxTokens);
+                body["max_tokens"] = ExpressionConverter.ConvertO(__workflow_bodymaxTokens);
                 var thinkingObject = new JObject();
                 var thinkingObjectpropCount = 0;
-                if (bodythinkingtype != null)
+                if (__workflow_bodythinkingtype != null)
                 {
-                    thinkingObject["type"] = ExpressionConverter.ConvertO(bodythinkingtype);
+                    thinkingObject["type"] = ExpressionConverter.ConvertO(__workflow_bodythinkingtype);
                     thinkingObjectpropCount++;
                 }
 
-                if (bodythinkingbudgetTokens != null)
+                if (__workflow_bodythinkingbudgetTokens != null)
                 {
-                    thinkingObject["budget_tokens"] = ExpressionConverter.ConvertO(bodythinkingbudgetTokens);
+                    thinkingObject["budget_tokens"] = ExpressionConverter.ConvertO(__workflow_bodythinkingbudgetTokens);
                     thinkingObjectpropCount++;
                 }
 
@@ -74,39 +77,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anthropicip
                     bodypropCount++;
                 }
 
-                if (bodystopSequences != null)
+                if (__workflow_bodystopSequences != null)
                 {
-                    body["stop_sequences"] = ExpressionConverter.ConvertO(bodystopSequences);
+                    body["stop_sequences"] = ExpressionConverter.ConvertO(__workflow_bodystopSequences);
                     bodypropCount++;
                 }
 
-                if (bodysystem != null)
+                if (__workflow_bodysystem != null)
                 {
-                    body["system"] = ExpressionConverter.ConvertO(bodysystem);
+                    body["system"] = ExpressionConverter.ConvertO(__workflow_bodysystem);
                     bodypropCount++;
                 }
 
-                if (bodytemperature != null)
+                if (__workflow_bodytemperature != null)
                 {
-                    body["temperature"] = ExpressionConverter.ConvertO(bodytemperature);
+                    body["temperature"] = ExpressionConverter.ConvertO(__workflow_bodytemperature);
                     bodypropCount++;
                 }
 
-                if (bodytools != null)
+                if (__workflow_bodytools != null)
                 {
-                    body["tools"] = ExpressionConverter.ConvertO(bodytools);
+                    body["tools"] = ExpressionConverter.ConvertO(__workflow_bodytools);
                     bodypropCount++;
                 }
 
-                if (bodytopK != null)
+                if (__workflow_bodytopK != null)
                 {
-                    body["top_k"] = ExpressionConverter.ConvertO(bodytopK);
+                    body["top_k"] = ExpressionConverter.ConvertO(__workflow_bodytopK);
                     bodypropCount++;
                 }
 
-                if (bodytopP != null)
+                if (__workflow_bodytopP != null)
                 {
-                    body["top_p"] = ExpressionConverter.ConvertO(bodytopP);
+                    body["top_p"] = ExpressionConverter.ConvertO(__workflow_bodytopP);
                     bodypropCount++;
                 }
 

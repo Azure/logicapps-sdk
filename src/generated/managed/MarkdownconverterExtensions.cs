@@ -1,27 +1,20 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class MarkdownconverterActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        [WorkflowExpressionFactory(nameof(__BuildMarkdownToHtml))]
-        public IBodyWorkflowAction<MarkdownToHtmlResponse> MarkdownToHtml([WorkflowExpression] Func<string> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToHtmlResponse> MarkdownToHtml(Expression<Func<string>> bodymarkdownContent)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MarkdownToHtmlResponse> __BuildMarkdownToHtml(WorkflowExpression<string> bodymarkdownContent)
-        {
-            WorkflowExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
+            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToHtmlResponse>(() =>
             {
                 var apiCallPath = "/convert/toHtml";
@@ -30,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -41,16 +34,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        [WorkflowExpressionFactory(nameof(__BuildMarkdownToJson))]
-        public IBodyWorkflowAction<MarkdownToJsonResponse> MarkdownToJson([WorkflowExpression] Func<string> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToJsonResponse> MarkdownToJson(Expression<Func<string>> bodymarkdownContent)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MarkdownToJsonResponse> __BuildMarkdownToJson(WorkflowExpression<string> bodymarkdownContent)
-        {
-            WorkflowExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
+            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToJsonResponse>(() =>
             {
                 var apiCallPath = "/convert/toJson";
@@ -59,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -70,16 +57,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        [WorkflowExpressionFactory(nameof(__BuildMarkdownToXml))]
-        public IBodyWorkflowAction<MarkdownToXmlResponse> MarkdownToXml([WorkflowExpression] Func<string> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToXmlResponse> MarkdownToXml(Expression<Func<string>> bodymarkdownContent)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MarkdownToXmlResponse> __BuildMarkdownToXml(WorkflowExpression<string> bodymarkdownContent)
-        {
-            WorkflowExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
+            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToXmlResponse>(() =>
             {
                 var apiCallPath = "/convert/toXml";
@@ -88,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -99,16 +80,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        [WorkflowExpressionFactory(nameof(__BuildMarkdownToPlainText))]
-        public IBodyWorkflowAction<MarkdownToPlainTextResponse> MarkdownToPlainText([WorkflowExpression] Func<string> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToPlainTextResponse> MarkdownToPlainText(Expression<Func<string>> bodymarkdownContent)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MarkdownToPlainTextResponse> __BuildMarkdownToPlainText(WorkflowExpression<string> bodymarkdownContent)
-        {
-            WorkflowExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
+            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToPlainTextResponse>(() =>
             {
                 var apiCallPath = "/convert/toPlainText";
@@ -117,7 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -128,16 +103,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        [WorkflowExpressionFactory(nameof(__BuildMarkdownToCsv))]
-        public IBodyWorkflowAction<MarkdownToCsvResponse> MarkdownToCsv([WorkflowExpression] Func<string> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToCsvResponse> MarkdownToCsv(Expression<Func<string>> bodymarkdownContent)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MarkdownToCsvResponse> __BuildMarkdownToCsv(WorkflowExpression<string> bodymarkdownContent)
-        {
-            WorkflowExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
+            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToCsvResponse>(() =>
             {
                 var apiCallPath = "/convert/toCsv";
@@ -146,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -157,16 +126,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        [WorkflowExpressionFactory(nameof(__BuildMarkdownToLaTeX))]
-        public IBodyWorkflowAction<MarkdownToLaTeXResponse> MarkdownToLaTeX([WorkflowExpression] Func<string> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToLaTeXResponse> MarkdownToLaTeX(Expression<Func<string>> bodymarkdownContent)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MarkdownToLaTeXResponse> __BuildMarkdownToLaTeX(WorkflowExpression<string> bodymarkdownContent)
-        {
-            WorkflowExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
+            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToLaTeXResponse>(() =>
             {
                 var apiCallPath = "/convert/toLaTeX";
@@ -175,7 +138,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -186,16 +149,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        [WorkflowExpressionFactory(nameof(__BuildMarkdownToAdaptiveCard))]
-        public IBodyWorkflowAction<MarkdownToAdaptiveCardResponse> MarkdownToAdaptiveCard([WorkflowExpression] Func<string> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToAdaptiveCardResponse> MarkdownToAdaptiveCard(Expression<Func<string>> bodymarkdownContent)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MarkdownToAdaptiveCardResponse> __BuildMarkdownToAdaptiveCard(WorkflowExpression<string> bodymarkdownContent)
-        {
-            WorkflowExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
+            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToAdaptiveCardResponse>(() =>
             {
                 var apiCallPath = "/convert/toAdaptiveCard";
@@ -204,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -215,16 +172,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        [WorkflowExpressionFactory(nameof(__BuildMarkdownToYaml))]
-        public IBodyWorkflowAction<MarkdownToYamlResponse> MarkdownToYaml([WorkflowExpression] Func<string> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToYamlResponse> MarkdownToYaml(Expression<Func<string>> bodymarkdownContent)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MarkdownToYamlResponse> __BuildMarkdownToYaml(WorkflowExpression<string> bodymarkdownContent)
-        {
-            WorkflowExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
+            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToYamlResponse>(() =>
             {
                 var apiCallPath = "/convert/toYaml";
@@ -233,7 +184,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -244,16 +195,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        [WorkflowExpressionFactory(nameof(__BuildMarkdownToEmail))]
-        public IBodyWorkflowAction<MarkdownToEmailResponse> MarkdownToEmail([WorkflowExpression] Func<string> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToEmailResponse> MarkdownToEmail(Expression<Func<string>> bodymarkdownContent)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MarkdownToEmailResponse> __BuildMarkdownToEmail(WorkflowExpression<string> bodymarkdownContent)
-        {
-            WorkflowExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
+            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToEmailResponse>(() =>
             {
                 var apiCallPath = "/convert/toEmail";
@@ -262,7 +207,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -273,16 +218,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        [WorkflowExpressionFactory(nameof(__BuildMarkdownToSvg))]
-        public IBodyWorkflowAction<MarkdownToSvgResponse> MarkdownToSvg([WorkflowExpression] Func<string> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToSvgResponse> MarkdownToSvg(Expression<Func<string>> bodymarkdownContent)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MarkdownToSvgResponse> __BuildMarkdownToSvg(WorkflowExpression<string> bodymarkdownContent)
-        {
-            WorkflowExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
+            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToSvgResponse>(() =>
             {
                 var apiCallPath = "/convert/toSvg";
@@ -291,7 +230,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -302,16 +241,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        [WorkflowExpressionFactory(nameof(__BuildMarkdownToRss))]
-        public IBodyWorkflowAction<MarkdownToRssResponse> MarkdownToRss([WorkflowExpression] Func<string> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToRssResponse> MarkdownToRss(Expression<Func<string>> bodymarkdownContent)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MarkdownToRssResponse> __BuildMarkdownToRss(WorkflowExpression<string> bodymarkdownContent)
-        {
-            WorkflowExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
+            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToRssResponse>(() =>
             {
                 var apiCallPath = "/convert/toRss";
@@ -320,7 +253,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -331,16 +264,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        [WorkflowExpressionFactory(nameof(__BuildMarkdownToWiki))]
-        public IBodyWorkflowAction<MarkdownToWikiResponse> MarkdownToWiki([WorkflowExpression] Func<string> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToWikiResponse> MarkdownToWiki(Expression<Func<string>> bodymarkdownContent)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MarkdownToWikiResponse> __BuildMarkdownToWiki(WorkflowExpression<string> bodymarkdownContent)
-        {
-            WorkflowExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
+            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToWikiResponse>(() =>
             {
                 var apiCallPath = "/convert/toWiki";
@@ -349,7 +276,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -360,16 +287,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        [WorkflowExpressionFactory(nameof(__BuildMarkdownToPng))]
-        public IBodyWorkflowAction<MarkdownToPngResponse> MarkdownToPng([WorkflowExpression] Func<string> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToPngResponse> MarkdownToPng(Expression<Func<string>> bodymarkdownContent)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MarkdownToPngResponse> __BuildMarkdownToPng(WorkflowExpression<string> bodymarkdownContent)
-        {
-            WorkflowExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
+            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToPngResponse>(() =>
             {
                 var apiCallPath = "/convert/toPng";
@@ -378,7 +299,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -389,16 +310,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        [WorkflowExpressionFactory(nameof(__BuildMarkdownToChart))]
-        public IBodyWorkflowAction<MarkdownToChartResponse> MarkdownToChart([WorkflowExpression] Func<string> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToChartResponse> MarkdownToChart(Expression<Func<string>> bodymarkdownContent)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MarkdownToChartResponse> __BuildMarkdownToChart(WorkflowExpression<string> bodymarkdownContent)
-        {
-            WorkflowExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
+            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToChartResponse>(() =>
             {
                 var apiCallPath = "/convert/toChart";
@@ -407,7 +322,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -418,16 +333,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        [WorkflowExpressionFactory(nameof(__BuildMarkdownToDiagram))]
-        public IBodyWorkflowAction<MarkdownToDiagramResponse> MarkdownToDiagram([WorkflowExpression] Func<string> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToDiagramResponse> MarkdownToDiagram(Expression<Func<string>> bodymarkdownContent)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MarkdownToDiagramResponse> __BuildMarkdownToDiagram(WorkflowExpression<string> bodymarkdownContent)
-        {
-            WorkflowExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
+            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToDiagramResponse>(() =>
             {
                 var apiCallPath = "/convert/toDiagram";
@@ -436,7 +345,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -447,16 +356,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        [WorkflowExpressionFactory(nameof(__BuildMarkdownStats))]
-        public IBodyWorkflowAction<MarkdownStatsResponse> MarkdownStats([WorkflowExpression] Func<string> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownStatsResponse> MarkdownStats(Expression<Func<string>> bodymarkdownContent)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MarkdownStatsResponse> __BuildMarkdownStats(WorkflowExpression<string> bodymarkdownContent)
-        {
-            WorkflowExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
+            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownStatsResponse>(() =>
             {
                 var apiCallPath = "/statistics";
@@ -465,7 +368,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -476,16 +379,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        [WorkflowExpressionFactory(nameof(__BuildMarkdownToQr))]
-        public IBodyWorkflowAction<MarkdownToQrResponse> MarkdownToQr([WorkflowExpression] Func<string> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToQrResponse> MarkdownToQr(Expression<Func<string>> bodymarkdownContent)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MarkdownToQrResponse> __BuildMarkdownToQr(WorkflowExpression<string> bodymarkdownContent)
-        {
-            WorkflowExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
+            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToQrResponse>(() =>
             {
                 var apiCallPath = "/convert/toQr";
@@ -494,7 +391,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -505,16 +402,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        [WorkflowExpressionFactory(nameof(__BuildMarkdownToJpeg))]
-        public IBodyWorkflowAction<MarkdownToJpegResponse> MarkdownToJpeg([WorkflowExpression] Func<string> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToJpegResponse> MarkdownToJpeg(Expression<Func<string>> bodymarkdownContent)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MarkdownToJpegResponse> __BuildMarkdownToJpeg(WorkflowExpression<string> bodymarkdownContent)
-        {
-            WorkflowExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
+            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToJpegResponse>(() =>
             {
                 var apiCallPath = "/convert/toJpeg";
@@ -523,7 +414,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -534,16 +425,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        [WorkflowExpressionFactory(nameof(__BuildMarkdownToBadge))]
-        public IBodyWorkflowAction<MarkdownToBadgeResponse> MarkdownToBadge([WorkflowExpression] Func<string> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToBadgeResponse> MarkdownToBadge(Expression<Func<string>> bodymarkdownContent)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MarkdownToBadgeResponse> __BuildMarkdownToBadge(WorkflowExpression<string> bodymarkdownContent)
-        {
-            WorkflowExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
+            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToBadgeResponse>(() =>
             {
                 var apiCallPath = "/convert/toBadge";
@@ -552,7 +437,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -563,16 +448,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        [WorkflowExpressionFactory(nameof(__BuildMarkdownToInfographic))]
-        public IBodyWorkflowAction<MarkdownToInfographicResponse> MarkdownToInfographic([WorkflowExpression] Func<string> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToInfographicResponse> MarkdownToInfographic(Expression<Func<string>> bodymarkdownContent)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MarkdownToInfographicResponse> __BuildMarkdownToInfographic(WorkflowExpression<string> bodymarkdownContent)
-        {
-            WorkflowExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
+            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToInfographicResponse>(() =>
             {
                 var apiCallPath = "/convert/toInfographic";
@@ -581,7 +460,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -592,16 +471,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        [WorkflowExpressionFactory(nameof(__BuildMarkdownToLog))]
-        public IBodyWorkflowAction<MarkdownToLogResponse> MarkdownToLog([WorkflowExpression] Func<string> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToLogResponse> MarkdownToLog(Expression<Func<string>> bodymarkdownContent)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MarkdownToLogResponse> __BuildMarkdownToLog(WorkflowExpression<string> bodymarkdownContent)
-        {
-            WorkflowExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
+            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToLogResponse>(() =>
             {
                 var apiCallPath = "/convert/toLog";
@@ -610,7 +483,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -621,16 +494,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        [WorkflowExpressionFactory(nameof(__BuildMarkdownToMetrics))]
-        public IBodyWorkflowAction<MarkdownToMetricsResponse> MarkdownToMetrics([WorkflowExpression] Func<string> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToMetricsResponse> MarkdownToMetrics(Expression<Func<string>> bodymarkdownContent)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MarkdownToMetricsResponse> __BuildMarkdownToMetrics(WorkflowExpression<string> bodymarkdownContent)
-        {
-            WorkflowExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
+            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToMetricsResponse>(() =>
             {
                 var apiCallPath = "/convert/toMetrics";
@@ -639,7 +506,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -650,16 +517,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        [WorkflowExpressionFactory(nameof(__BuildMarkdownToSyslog))]
-        public IBodyWorkflowAction<MarkdownToSyslogResponse> MarkdownToSyslog([WorkflowExpression] Func<string> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToSyslogResponse> MarkdownToSyslog(Expression<Func<string>> bodymarkdownContent)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MarkdownToSyslogResponse> __BuildMarkdownToSyslog(WorkflowExpression<string> bodymarkdownContent)
-        {
-            WorkflowExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
+            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToSyslogResponse>(() =>
             {
                 var apiCallPath = "/convert/toSyslog";
@@ -668,7 +529,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -679,16 +540,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        [WorkflowExpressionFactory(nameof(__BuildMarkdownToJsDoc))]
-        public IBodyWorkflowAction<MarkdownToJsDocResponse> MarkdownToJsDoc([WorkflowExpression] Func<string> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToJsDocResponse> MarkdownToJsDoc(Expression<Func<string>> bodymarkdownContent)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MarkdownToJsDocResponse> __BuildMarkdownToJsDoc(WorkflowExpression<string> bodymarkdownContent)
-        {
-            WorkflowExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
+            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToJsDocResponse>(() =>
             {
                 var apiCallPath = "/convert/toJsDoc";
@@ -697,7 +552,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -708,16 +563,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        [WorkflowExpressionFactory(nameof(__BuildMarkdownToXmlDoc))]
-        public IBodyWorkflowAction<MarkdownToXmlDocResponse> MarkdownToXmlDoc([WorkflowExpression] Func<string> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToXmlDocResponse> MarkdownToXmlDoc(Expression<Func<string>> bodymarkdownContent)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MarkdownToXmlDocResponse> __BuildMarkdownToXmlDoc(WorkflowExpression<string> bodymarkdownContent)
-        {
-            WorkflowExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
+            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToXmlDocResponse>(() =>
             {
                 var apiCallPath = "/convert/toXmlDoc";
@@ -726,7 +575,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -737,16 +586,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        [WorkflowExpressionFactory(nameof(__BuildMarkdownToReadme))]
-        public IBodyWorkflowAction<MarkdownToReadmeResponse> MarkdownToReadme([WorkflowExpression] Func<string> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToReadmeResponse> MarkdownToReadme(Expression<Func<string>> bodymarkdownContent)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MarkdownToReadmeResponse> __BuildMarkdownToReadme(WorkflowExpression<string> bodymarkdownContent)
-        {
-            WorkflowExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
+            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToReadmeResponse>(() =>
             {
                 var apiCallPath = "/convert/toReadme";
@@ -755,7 +598,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -766,16 +609,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        [WorkflowExpressionFactory(nameof(__BuildMarkdownToChangelog))]
-        public IBodyWorkflowAction<MarkdownToChangelogResponse> MarkdownToChangelog([WorkflowExpression] Func<string> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToChangelogResponse> MarkdownToChangelog(Expression<Func<string>> bodymarkdownContent)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MarkdownToChangelogResponse> __BuildMarkdownToChangelog(WorkflowExpression<string> bodymarkdownContent)
-        {
-            WorkflowExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
+            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToChangelogResponse>(() =>
             {
                 var apiCallPath = "/convert/toChangelog";
@@ -784,7 +621,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -795,16 +632,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        [WorkflowExpressionFactory(nameof(__BuildMarkdownToTableOfContents))]
-        public IBodyWorkflowAction<MarkdownToTableOfContentsResponse> MarkdownToTableOfContents([WorkflowExpression] Func<string> bodymarkdownContent)
+        public IBodyWorkflowAction<MarkdownToTableOfContentsResponse> MarkdownToTableOfContents(Expression<Func<string>> bodymarkdownContent)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MarkdownToTableOfContentsResponse> __BuildMarkdownToTableOfContents(WorkflowExpression<string> bodymarkdownContent)
-        {
-            WorkflowExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
+            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToTableOfContentsResponse>(() =>
             {
                 var apiCallPath = "/convert/toTableOfContents";
@@ -813,7 +644,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
+                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -824,17 +655,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        [WorkflowExpressionFactory(nameof(__BuildMarkdownToStyledHtml))]
-        public IBodyWorkflowAction<MarkdownToStyledHtmlResponse> MarkdownToStyledHtml([WorkflowExpression] Func<string> bodymarkdownContent, [WorkflowExpression] Func<string> bodytheme = null)
+        public IBodyWorkflowAction<MarkdownToStyledHtmlResponse> MarkdownToStyledHtml(Expression<Func<string>> bodymarkdownContent, Expression<Func<string>> bodytheme = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MarkdownToStyledHtmlResponse> __BuildMarkdownToStyledHtml(WorkflowExpression<string> bodymarkdownContent, WorkflowExpression<string> bodytheme = null)
-        {
-            WorkflowExpression.Validate(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
-            WorkflowExpression.Validate(bodytheme, nameof(bodytheme), required: false);
+            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
+            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodytheme = bodytheme == null ? null : WorkflowExpression.Compile(bodytheme);
+            WorkflowExpression.Validate(__workflow_bodytheme, nameof(bodytheme), required: false);
             return new DeferredBodyAction<MarkdownToStyledHtmlResponse>(() =>
             {
                 var apiCallPath = "/convert/toStyledHtml";
@@ -843,10 +669,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["markdown"] = ExpressionConverter.ConvertO(bodymarkdownContent);
-                if (bodytheme != null)
+                body["markdown"] = ExpressionConverter.ConvertO(__workflow_bodymarkdownContent);
+                if (__workflow_bodytheme != null)
                 {
-                    body["theme"] = ExpressionConverter.ConvertO(bodytheme);
+                    body["theme"] = ExpressionConverter.ConvertO(__workflow_bodytheme);
                     bodypropCount++;
                 }
 

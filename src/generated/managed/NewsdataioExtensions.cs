@@ -1,61 +1,63 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Newsdataio
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class NewsdataioActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "newsdataio")]
-        [WorkflowExpressionFactory(nameof(__BuildLatestGet))]
-        public IBodyWorkflowAction<LatestGetResponse> LatestGet([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<string> qInTitle = null, [WorkflowExpression] Func<string> country = null, [WorkflowExpression] Func<string> category = null, [WorkflowExpression] Func<string> language = null, [WorkflowExpression] Func<string> domain = null, [WorkflowExpression] Func<fullContentInput> fullContent = null, [WorkflowExpression] Func<imageInput> image = null, [WorkflowExpression] Func<videoInput> video = null, [WorkflowExpression] Func<string> page = null)
+        public IBodyWorkflowAction<LatestGetResponse> LatestGet(Expression<Func<string>> q = null, Expression<Func<string>> qInTitle = null, Expression<Func<string>> country = null, Expression<Func<string>> category = null, Expression<Func<string>> language = null, Expression<Func<string>> domain = null, Expression<Func<fullContentInput>> fullContent = null, Expression<Func<imageInput>> image = null, Expression<Func<videoInput>> video = null, Expression<Func<string>> page = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<LatestGetResponse> __BuildLatestGet(WorkflowExpression<string> q = null, WorkflowExpression<string> qInTitle = null, WorkflowExpression<string> country = null, WorkflowExpression<string> category = null, WorkflowExpression<string> language = null, WorkflowExpression<string> domain = null, WorkflowExpression<fullContentInput> fullContent = null, WorkflowExpression<imageInput> image = null, WorkflowExpression<videoInput> video = null, WorkflowExpression<string> page = null)
-        {
-            WorkflowExpression.Validate(q, nameof(q), required: false);
-            WorkflowExpression.Validate(qInTitle, nameof(qInTitle), required: false);
-            WorkflowExpression.Validate(country, nameof(country), required: false);
-            WorkflowExpression.Validate(category, nameof(category), required: false);
-            WorkflowExpression.Validate(language, nameof(language), required: false);
-            WorkflowExpression.Validate(domain, nameof(domain), required: false);
-            WorkflowExpression.Validate(fullContent, nameof(fullContent), required: false);
-            WorkflowExpression.Validate(image, nameof(image), required: false);
-            WorkflowExpression.Validate(video, nameof(video), required: false);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
+            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
+            WorkflowExpression.Validate(__workflow_q, nameof(q), required: false);
+            var __workflow_qInTitle = qInTitle == null ? null : WorkflowExpression.Compile(qInTitle);
+            WorkflowExpression.Validate(__workflow_qInTitle, nameof(qInTitle), required: false);
+            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
+            WorkflowExpression.Validate(__workflow_country, nameof(country), required: false);
+            var __workflow_category = category == null ? null : WorkflowExpression.Compile(category);
+            WorkflowExpression.Validate(__workflow_category, nameof(category), required: false);
+            var __workflow_language = language == null ? null : WorkflowExpression.Compile(language);
+            WorkflowExpression.Validate(__workflow_language, nameof(language), required: false);
+            var __workflow_domain = domain == null ? null : WorkflowExpression.Compile(domain);
+            WorkflowExpression.Validate(__workflow_domain, nameof(domain), required: false);
+            var __workflow_fullContent = fullContent == null ? null : WorkflowExpression.Compile(fullContent);
+            WorkflowExpression.Validate(__workflow_fullContent, nameof(fullContent), required: false);
+            var __workflow_image = image == null ? null : WorkflowExpression.Compile(image);
+            WorkflowExpression.Validate(__workflow_image, nameof(image), required: false);
+            var __workflow_video = video == null ? null : WorkflowExpression.Compile(video);
+            WorkflowExpression.Validate(__workflow_video, nameof(video), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
             return new DeferredBodyAction<LatestGetResponse>(() =>
             {
                 var apiCallPath = "/news";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (q != null)
-                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-                if (qInTitle != null)
-                    callPayload.Queries["qInTitle"] = ExpressionConverter.Convert(qInTitle);
-                if (country != null)
-                    callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-                if (category != null)
-                    callPayload.Queries["category"] = ExpressionConverter.Convert(category);
-                if (language != null)
-                    callPayload.Queries["language"] = ExpressionConverter.Convert(language);
-                if (domain != null)
-                    callPayload.Queries["domain"] = ExpressionConverter.Convert(domain);
-                if (fullContent != null)
-                    callPayload.Queries["full_content"] = ExpressionConverter.Convert(fullContent);
-                if (image != null)
-                    callPayload.Queries["image"] = ExpressionConverter.Convert(image);
-                if (video != null)
-                    callPayload.Queries["video"] = ExpressionConverter.Convert(video);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (__workflow_q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
+                if (__workflow_qInTitle != null)
+                    callPayload.Queries["qInTitle"] = ExpressionConverter.Convert(__workflow_qInTitle);
+                if (__workflow_country != null)
+                    callPayload.Queries["country"] = ExpressionConverter.Convert(__workflow_country);
+                if (__workflow_category != null)
+                    callPayload.Queries["category"] = ExpressionConverter.Convert(__workflow_category);
+                if (__workflow_language != null)
+                    callPayload.Queries["language"] = ExpressionConverter.Convert(__workflow_language);
+                if (__workflow_domain != null)
+                    callPayload.Queries["domain"] = ExpressionConverter.Convert(__workflow_domain);
+                if (__workflow_fullContent != null)
+                    callPayload.Queries["full_content"] = ExpressionConverter.Convert(__workflow_fullContent);
+                if (__workflow_image != null)
+                    callPayload.Queries["image"] = ExpressionConverter.Convert(__workflow_image);
+                if (__workflow_video != null)
+                    callPayload.Queries["video"] = ExpressionConverter.Convert(__workflow_video);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 return new ApiConnectionAction<LatestGetResponse>(callPayload);
             });
         }

@@ -1,78 +1,82 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class ZenleripActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        [WorkflowExpressionFactory(nameof(__BuildUserList))]
-        public IBodyWorkflowAction<UserListResponse> UserList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<orderInput> order = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<int> role = null)
+        public IBodyWorkflowAction<UserListResponse> UserList(Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> orderby = null, Expression<Func<orderInput>> order = null, Expression<Func<string>> search = null, Expression<Func<int>> role = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UserListResponse> __BuildUserList(WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<string> orderby = null, WorkflowExpression<orderInput> order = null, WorkflowExpression<string> search = null, WorkflowExpression<int> role = null)
-        {
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
-            WorkflowExpression.Validate(orderby, nameof(orderby), required: false);
-            WorkflowExpression.Validate(order, nameof(order), required: false);
-            WorkflowExpression.Validate(search, nameof(search), required: false);
-            WorkflowExpression.Validate(role, nameof(role), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_orderby = orderby == null ? null : WorkflowExpression.Compile(orderby);
+            WorkflowExpression.Validate(__workflow_orderby, nameof(orderby), required: false);
+            var __workflow_order = order == null ? null : WorkflowExpression.Compile(order);
+            WorkflowExpression.Validate(__workflow_order, nameof(order), required: false);
+            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
+            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
+            var __workflow_role = role == null ? null : WorkflowExpression.Compile(role);
+            WorkflowExpression.Validate(__workflow_role, nameof(role), required: false);
             return new DeferredBodyAction<UserListResponse>(() =>
             {
                 var apiCallPath = "/users";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["limit"] = Convert.ToString(15);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-                if (orderby != null)
-                    callPayload.Queries["orderby"] = ExpressionConverter.Convert(orderby);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_orderby != null)
+                    callPayload.Queries["orderby"] = ExpressionConverter.Convert(__workflow_orderby);
                 callPayload.Queries["order"] = Convert.ToString("desc");
-                if (order != null)
-                    callPayload.Queries["order"] = ExpressionConverter.Convert(order);
-                if (search != null)
-                    callPayload.Queries["search"] = ExpressionConverter.Convert(search);
-                if (role != null)
-                    callPayload.Queries["role"] = ExpressionConverter.Convert(role);
+                if (__workflow_order != null)
+                    callPayload.Queries["order"] = ExpressionConverter.Convert(__workflow_order);
+                if (__workflow_search != null)
+                    callPayload.Queries["search"] = ExpressionConverter.Convert(__workflow_search);
+                if (__workflow_role != null)
+                    callPayload.Queries["role"] = ExpressionConverter.Convert(__workflow_role);
                 return new ApiConnectionAction<UserListResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        [WorkflowExpressionFactory(nameof(__BuildUser))]
-        public IBodyWorkflowAction<UserPostResponse> User([WorkflowExpression] Func<string> bodyfirstName, [WorkflowExpression] Func<string> bodylastName, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodypassword, [WorkflowExpression] Func<int> bodycommission, [WorkflowExpression] Func<string> bodyroles, [WorkflowExpression] Func<string> bodyaddress = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodystate = null, [WorkflowExpression] Func<string> bodyphone = null, [WorkflowExpression] Func<int> bodyzipCode = null, [WorkflowExpression] Func<string> bodycountry = null, [WorkflowExpression] Func<int> bodygdprConsentStatus = null)
+        public IBodyWorkflowAction<UserPostResponse> User(Expression<Func<string>> bodyfirstName, Expression<Func<string>> bodylastName, Expression<Func<string>> bodyemail, Expression<Func<string>> bodypassword, Expression<Func<int>> bodycommission, Expression<Func<string>> bodyroles, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodyphone = null, Expression<Func<int>> bodyzipCode = null, Expression<Func<string>> bodycountry = null, Expression<Func<int>> bodygdprConsentStatus = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UserPostResponse> __BuildUser(WorkflowExpression<string> bodyfirstName, WorkflowExpression<string> bodylastName, WorkflowExpression<string> bodyemail, WorkflowExpression<string> bodypassword, WorkflowExpression<int> bodycommission, WorkflowExpression<string> bodyroles, WorkflowExpression<string> bodyaddress = null, WorkflowExpression<string> bodycity = null, WorkflowExpression<string> bodystate = null, WorkflowExpression<string> bodyphone = null, WorkflowExpression<int> bodyzipCode = null, WorkflowExpression<string> bodycountry = null, WorkflowExpression<int> bodygdprConsentStatus = null)
-        {
-            WorkflowExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: true);
-            WorkflowExpression.Validate(bodylastName, nameof(bodylastName), required: true);
-            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: true);
-            WorkflowExpression.Validate(bodypassword, nameof(bodypassword), required: true);
-            WorkflowExpression.Validate(bodycommission, nameof(bodycommission), required: true);
-            WorkflowExpression.Validate(bodyroles, nameof(bodyroles), required: true);
-            WorkflowExpression.Validate(bodyaddress, nameof(bodyaddress), required: false);
-            WorkflowExpression.Validate(bodycity, nameof(bodycity), required: false);
-            WorkflowExpression.Validate(bodystate, nameof(bodystate), required: false);
-            WorkflowExpression.Validate(bodyphone, nameof(bodyphone), required: false);
-            WorkflowExpression.Validate(bodyzipCode, nameof(bodyzipCode), required: false);
-            WorkflowExpression.Validate(bodycountry, nameof(bodycountry), required: false);
-            WorkflowExpression.Validate(bodygdprConsentStatus, nameof(bodygdprConsentStatus), required: false);
+            var __workflow_bodyfirstName = bodyfirstName == null ? null : WorkflowExpression.Compile(bodyfirstName);
+            WorkflowExpression.Validate(__workflow_bodyfirstName, nameof(bodyfirstName), required: true);
+            var __workflow_bodylastName = bodylastName == null ? null : WorkflowExpression.Compile(bodylastName);
+            WorkflowExpression.Validate(__workflow_bodylastName, nameof(bodylastName), required: true);
+            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
+            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
+            var __workflow_bodypassword = bodypassword == null ? null : WorkflowExpression.Compile(bodypassword);
+            WorkflowExpression.Validate(__workflow_bodypassword, nameof(bodypassword), required: true);
+            var __workflow_bodycommission = bodycommission == null ? null : WorkflowExpression.Compile(bodycommission);
+            WorkflowExpression.Validate(__workflow_bodycommission, nameof(bodycommission), required: true);
+            var __workflow_bodyroles = bodyroles == null ? null : WorkflowExpression.Compile(bodyroles);
+            WorkflowExpression.Validate(__workflow_bodyroles, nameof(bodyroles), required: true);
+            var __workflow_bodyaddress = bodyaddress == null ? null : WorkflowExpression.Compile(bodyaddress);
+            WorkflowExpression.Validate(__workflow_bodyaddress, nameof(bodyaddress), required: false);
+            var __workflow_bodycity = bodycity == null ? null : WorkflowExpression.Compile(bodycity);
+            WorkflowExpression.Validate(__workflow_bodycity, nameof(bodycity), required: false);
+            var __workflow_bodystate = bodystate == null ? null : WorkflowExpression.Compile(bodystate);
+            WorkflowExpression.Validate(__workflow_bodystate, nameof(bodystate), required: false);
+            var __workflow_bodyphone = bodyphone == null ? null : WorkflowExpression.Compile(bodyphone);
+            WorkflowExpression.Validate(__workflow_bodyphone, nameof(bodyphone), required: false);
+            var __workflow_bodyzipCode = bodyzipCode == null ? null : WorkflowExpression.Compile(bodyzipCode);
+            WorkflowExpression.Validate(__workflow_bodyzipCode, nameof(bodyzipCode), required: false);
+            var __workflow_bodycountry = bodycountry == null ? null : WorkflowExpression.Compile(bodycountry);
+            WorkflowExpression.Validate(__workflow_bodycountry, nameof(bodycountry), required: false);
+            var __workflow_bodygdprConsentStatus = bodygdprConsentStatus == null ? null : WorkflowExpression.Compile(bodygdprConsentStatus);
+            WorkflowExpression.Validate(__workflow_bodygdprConsentStatus, nameof(bodygdprConsentStatus), required: false);
             return new DeferredBodyAction<UserPostResponse>(() =>
             {
                 var apiCallPath = "/users";
@@ -81,56 +85,56 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["first_name"] = ExpressionConverter.ConvertO(bodyfirstName);
+                body["first_name"] = ExpressionConverter.ConvertO(__workflow_bodyfirstName);
                 bodypropCount++;
-                body["last_name"] = ExpressionConverter.ConvertO(bodylastName);
+                body["last_name"] = ExpressionConverter.ConvertO(__workflow_bodylastName);
                 bodypropCount++;
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
                 bodypropCount++;
-                body["password"] = ExpressionConverter.ConvertO(bodypassword);
+                body["password"] = ExpressionConverter.ConvertO(__workflow_bodypassword);
                 bodypropCount++;
-                body["commission"] = ExpressionConverter.ConvertO(bodycommission);
+                body["commission"] = ExpressionConverter.ConvertO(__workflow_bodycommission);
                 bodypropCount++;
-                body["roles"] = ExpressionConverter.ConvertO(bodyroles);
-                if (bodyaddress != null)
+                body["roles"] = ExpressionConverter.ConvertO(__workflow_bodyroles);
+                if (__workflow_bodyaddress != null)
                 {
-                    body["address"] = ExpressionConverter.ConvertO(bodyaddress);
+                    body["address"] = ExpressionConverter.ConvertO(__workflow_bodyaddress);
                     bodypropCount++;
                 }
 
-                if (bodycity != null)
+                if (__workflow_bodycity != null)
                 {
-                    body["city"] = ExpressionConverter.ConvertO(bodycity);
+                    body["city"] = ExpressionConverter.ConvertO(__workflow_bodycity);
                     bodypropCount++;
                 }
 
-                if (bodystate != null)
+                if (__workflow_bodystate != null)
                 {
-                    body["state"] = ExpressionConverter.ConvertO(bodystate);
+                    body["state"] = ExpressionConverter.ConvertO(__workflow_bodystate);
                     bodypropCount++;
                 }
 
-                if (bodyphone != null)
+                if (__workflow_bodyphone != null)
                 {
-                    body["phone"] = ExpressionConverter.ConvertO(bodyphone);
+                    body["phone"] = ExpressionConverter.ConvertO(__workflow_bodyphone);
                     bodypropCount++;
                 }
 
-                if (bodyzipCode != null)
+                if (__workflow_bodyzipCode != null)
                 {
-                    body["zip_code"] = ExpressionConverter.ConvertO(bodyzipCode);
+                    body["zip_code"] = ExpressionConverter.ConvertO(__workflow_bodyzipCode);
                     bodypropCount++;
                 }
 
-                if (bodycountry != null)
+                if (__workflow_bodycountry != null)
                 {
-                    body["country"] = ExpressionConverter.ConvertO(bodycountry);
+                    body["country"] = ExpressionConverter.ConvertO(__workflow_bodycountry);
                     bodypropCount++;
                 }
 
-                if (bodygdprConsentStatus != null)
+                if (__workflow_bodygdprConsentStatus != null)
                 {
-                    body["gdpr_consent_status"] = ExpressionConverter.ConvertO(bodygdprConsentStatus);
+                    body["gdpr_consent_status"] = ExpressionConverter.ConvertO(__workflow_bodygdprConsentStatus);
                     bodypropCount++;
                 }
 
@@ -144,19 +148,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        [WorkflowExpressionFactory(nameof(__BuildUserGet))]
-        public IBodyWorkflowAction<UserGetResponse> UserGet([WorkflowExpression] Func<string> userId)
+        public IBodyWorkflowAction<UserGetResponse> UserGet(Expression<Func<string>> userId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UserGetResponse> __BuildUserGet(WorkflowExpression<string> userId)
-        {
-            WorkflowExpression.Validate(userId, nameof(userId), required: true);
+            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
+            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
             return new DeferredBodyAction<UserGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<UserGetResponse>(callPayload);
@@ -164,19 +162,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        [WorkflowExpressionFactory(nameof(__BuildUserDelete))]
-        public IBodyWorkflowAction<UserDeleteResponse> UserDelete([WorkflowExpression] Func<string> userId)
+        public IBodyWorkflowAction<UserDeleteResponse> UserDelete(Expression<Func<string>> userId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UserDeleteResponse> __BuildUserDelete(WorkflowExpression<string> userId)
-        {
-            WorkflowExpression.Validate(userId, nameof(userId), required: true);
+            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
+            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
             return new DeferredBodyAction<UserDeleteResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<UserDeleteResponse>(callPayload);
@@ -184,87 +176,94 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        [WorkflowExpressionFactory(nameof(__BuildUserPut))]
-        public IBodyWorkflowAction<UserPutResponse> UserPut([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> bodyfirstName, [WorkflowExpression] Func<string> bodylastName, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodypassword, [WorkflowExpression] Func<int> bodycommission, [WorkflowExpression] Func<string> bodyroles, [WorkflowExpression] Func<string> bodyaddress = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodystate = null, [WorkflowExpression] Func<string> bodyphone = null, [WorkflowExpression] Func<int> bodyzipCode = null, [WorkflowExpression] Func<string> bodycountry = null, [WorkflowExpression] Func<int> bodygdprConsentStatus = null)
+        public IBodyWorkflowAction<UserPutResponse> UserPut(Expression<Func<string>> userId, Expression<Func<string>> bodyfirstName, Expression<Func<string>> bodylastName, Expression<Func<string>> bodyemail, Expression<Func<string>> bodypassword, Expression<Func<int>> bodycommission, Expression<Func<string>> bodyroles, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodyphone = null, Expression<Func<int>> bodyzipCode = null, Expression<Func<string>> bodycountry = null, Expression<Func<int>> bodygdprConsentStatus = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UserPutResponse> __BuildUserPut(WorkflowExpression<string> userId, WorkflowExpression<string> bodyfirstName, WorkflowExpression<string> bodylastName, WorkflowExpression<string> bodyemail, WorkflowExpression<string> bodypassword, WorkflowExpression<int> bodycommission, WorkflowExpression<string> bodyroles, WorkflowExpression<string> bodyaddress = null, WorkflowExpression<string> bodycity = null, WorkflowExpression<string> bodystate = null, WorkflowExpression<string> bodyphone = null, WorkflowExpression<int> bodyzipCode = null, WorkflowExpression<string> bodycountry = null, WorkflowExpression<int> bodygdprConsentStatus = null)
-        {
-            WorkflowExpression.Validate(userId, nameof(userId), required: true);
-            WorkflowExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: true);
-            WorkflowExpression.Validate(bodylastName, nameof(bodylastName), required: true);
-            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: true);
-            WorkflowExpression.Validate(bodypassword, nameof(bodypassword), required: true);
-            WorkflowExpression.Validate(bodycommission, nameof(bodycommission), required: true);
-            WorkflowExpression.Validate(bodyroles, nameof(bodyroles), required: true);
-            WorkflowExpression.Validate(bodyaddress, nameof(bodyaddress), required: false);
-            WorkflowExpression.Validate(bodycity, nameof(bodycity), required: false);
-            WorkflowExpression.Validate(bodystate, nameof(bodystate), required: false);
-            WorkflowExpression.Validate(bodyphone, nameof(bodyphone), required: false);
-            WorkflowExpression.Validate(bodyzipCode, nameof(bodyzipCode), required: false);
-            WorkflowExpression.Validate(bodycountry, nameof(bodycountry), required: false);
-            WorkflowExpression.Validate(bodygdprConsentStatus, nameof(bodygdprConsentStatus), required: false);
+            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
+            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
+            var __workflow_bodyfirstName = bodyfirstName == null ? null : WorkflowExpression.Compile(bodyfirstName);
+            WorkflowExpression.Validate(__workflow_bodyfirstName, nameof(bodyfirstName), required: true);
+            var __workflow_bodylastName = bodylastName == null ? null : WorkflowExpression.Compile(bodylastName);
+            WorkflowExpression.Validate(__workflow_bodylastName, nameof(bodylastName), required: true);
+            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
+            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
+            var __workflow_bodypassword = bodypassword == null ? null : WorkflowExpression.Compile(bodypassword);
+            WorkflowExpression.Validate(__workflow_bodypassword, nameof(bodypassword), required: true);
+            var __workflow_bodycommission = bodycommission == null ? null : WorkflowExpression.Compile(bodycommission);
+            WorkflowExpression.Validate(__workflow_bodycommission, nameof(bodycommission), required: true);
+            var __workflow_bodyroles = bodyroles == null ? null : WorkflowExpression.Compile(bodyroles);
+            WorkflowExpression.Validate(__workflow_bodyroles, nameof(bodyroles), required: true);
+            var __workflow_bodyaddress = bodyaddress == null ? null : WorkflowExpression.Compile(bodyaddress);
+            WorkflowExpression.Validate(__workflow_bodyaddress, nameof(bodyaddress), required: false);
+            var __workflow_bodycity = bodycity == null ? null : WorkflowExpression.Compile(bodycity);
+            WorkflowExpression.Validate(__workflow_bodycity, nameof(bodycity), required: false);
+            var __workflow_bodystate = bodystate == null ? null : WorkflowExpression.Compile(bodystate);
+            WorkflowExpression.Validate(__workflow_bodystate, nameof(bodystate), required: false);
+            var __workflow_bodyphone = bodyphone == null ? null : WorkflowExpression.Compile(bodyphone);
+            WorkflowExpression.Validate(__workflow_bodyphone, nameof(bodyphone), required: false);
+            var __workflow_bodyzipCode = bodyzipCode == null ? null : WorkflowExpression.Compile(bodyzipCode);
+            WorkflowExpression.Validate(__workflow_bodyzipCode, nameof(bodyzipCode), required: false);
+            var __workflow_bodycountry = bodycountry == null ? null : WorkflowExpression.Compile(bodycountry);
+            WorkflowExpression.Validate(__workflow_bodycountry, nameof(bodycountry), required: false);
+            var __workflow_bodygdprConsentStatus = bodygdprConsentStatus == null ? null : WorkflowExpression.Compile(bodygdprConsentStatus);
+            WorkflowExpression.Validate(__workflow_bodygdprConsentStatus, nameof(bodygdprConsentStatus), required: false);
             return new DeferredBodyAction<UserPutResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["first_name"] = ExpressionConverter.ConvertO(bodyfirstName);
+                body["first_name"] = ExpressionConverter.ConvertO(__workflow_bodyfirstName);
                 bodypropCount++;
-                body["last_name"] = ExpressionConverter.ConvertO(bodylastName);
+                body["last_name"] = ExpressionConverter.ConvertO(__workflow_bodylastName);
                 bodypropCount++;
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
                 bodypropCount++;
-                body["password"] = ExpressionConverter.ConvertO(bodypassword);
+                body["password"] = ExpressionConverter.ConvertO(__workflow_bodypassword);
                 bodypropCount++;
-                body["commission"] = ExpressionConverter.ConvertO(bodycommission);
+                body["commission"] = ExpressionConverter.ConvertO(__workflow_bodycommission);
                 bodypropCount++;
-                body["roles"] = ExpressionConverter.ConvertO(bodyroles);
-                if (bodyaddress != null)
+                body["roles"] = ExpressionConverter.ConvertO(__workflow_bodyroles);
+                if (__workflow_bodyaddress != null)
                 {
-                    body["address"] = ExpressionConverter.ConvertO(bodyaddress);
+                    body["address"] = ExpressionConverter.ConvertO(__workflow_bodyaddress);
                     bodypropCount++;
                 }
 
-                if (bodycity != null)
+                if (__workflow_bodycity != null)
                 {
-                    body["city"] = ExpressionConverter.ConvertO(bodycity);
+                    body["city"] = ExpressionConverter.ConvertO(__workflow_bodycity);
                     bodypropCount++;
                 }
 
-                if (bodystate != null)
+                if (__workflow_bodystate != null)
                 {
-                    body["state"] = ExpressionConverter.ConvertO(bodystate);
+                    body["state"] = ExpressionConverter.ConvertO(__workflow_bodystate);
                     bodypropCount++;
                 }
 
-                if (bodyphone != null)
+                if (__workflow_bodyphone != null)
                 {
-                    body["phone"] = ExpressionConverter.ConvertO(bodyphone);
+                    body["phone"] = ExpressionConverter.ConvertO(__workflow_bodyphone);
                     bodypropCount++;
                 }
 
-                if (bodyzipCode != null)
+                if (__workflow_bodyzipCode != null)
                 {
-                    body["zip_code"] = ExpressionConverter.ConvertO(bodyzipCode);
+                    body["zip_code"] = ExpressionConverter.ConvertO(__workflow_bodyzipCode);
                     bodypropCount++;
                 }
 
-                if (bodycountry != null)
+                if (__workflow_bodycountry != null)
                 {
-                    body["country"] = ExpressionConverter.ConvertO(bodycountry);
+                    body["country"] = ExpressionConverter.ConvertO(__workflow_bodycountry);
                     bodypropCount++;
                 }
 
-                if (bodygdprConsentStatus != null)
+                if (__workflow_bodygdprConsentStatus != null)
                 {
-                    body["gdpr_consent_status"] = ExpressionConverter.ConvertO(bodygdprConsentStatus);
+                    body["gdpr_consent_status"] = ExpressionConverter.ConvertO(__workflow_bodygdprConsentStatus);
                     bodypropCount++;
                 }
 
@@ -278,30 +277,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        [WorkflowExpressionFactory(nameof(__BuildUserEnroll))]
-        public IBodyWorkflowAction<UserEnrollResponse> UserEnroll([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> bodycourseId, [WorkflowExpression] Func<string> bodyplanId = null)
+        public IBodyWorkflowAction<UserEnrollResponse> UserEnroll(Expression<Func<string>> userId, Expression<Func<string>> bodycourseId, Expression<Func<string>> bodyplanId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UserEnrollResponse> __BuildUserEnroll(WorkflowExpression<string> userId, WorkflowExpression<string> bodycourseId, WorkflowExpression<string> bodyplanId = null)
-        {
-            WorkflowExpression.Validate(userId, nameof(userId), required: true);
-            WorkflowExpression.Validate(bodycourseId, nameof(bodycourseId), required: true);
-            WorkflowExpression.Validate(bodyplanId, nameof(bodyplanId), required: false);
+            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
+            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
+            var __workflow_bodycourseId = bodycourseId == null ? null : WorkflowExpression.Compile(bodycourseId);
+            WorkflowExpression.Validate(__workflow_bodycourseId, nameof(bodycourseId), required: true);
+            var __workflow_bodyplanId = bodyplanId == null ? null : WorkflowExpression.Compile(bodyplanId);
+            WorkflowExpression.Validate(__workflow_bodyplanId, nameof(bodyplanId), required: false);
             return new DeferredBodyAction<UserEnrollResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}/enroll", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}/enroll", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["course_id"] = ExpressionConverter.ConvertO(bodycourseId);
-                if (bodyplanId != null)
+                body["course_id"] = ExpressionConverter.ConvertO(__workflow_bodycourseId);
+                if (__workflow_bodyplanId != null)
                 {
-                    body["plan_id"] = ExpressionConverter.ConvertO(bodyplanId);
+                    body["plan_id"] = ExpressionConverter.ConvertO(__workflow_bodyplanId);
                     bodypropCount++;
                 }
 
@@ -315,26 +310,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        [WorkflowExpressionFactory(nameof(__BuildUserUnenroll))]
-        public IBodyWorkflowAction<UserUnenrollResponse> UserUnenroll([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> bodycourseId)
+        public IBodyWorkflowAction<UserUnenrollResponse> UserUnenroll(Expression<Func<string>> userId, Expression<Func<string>> bodycourseId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UserUnenrollResponse> __BuildUserUnenroll(WorkflowExpression<string> userId, WorkflowExpression<string> bodycourseId)
-        {
-            WorkflowExpression.Validate(userId, nameof(userId), required: true);
-            WorkflowExpression.Validate(bodycourseId, nameof(bodycourseId), required: true);
+            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
+            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
+            var __workflow_bodycourseId = bodycourseId == null ? null : WorkflowExpression.Compile(bodycourseId);
+            WorkflowExpression.Validate(__workflow_bodycourseId, nameof(bodycourseId), required: true);
             return new DeferredBodyAction<UserUnenrollResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}/unenroll", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}/unenroll", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["course_id"] = ExpressionConverter.ConvertO(bodycourseId);
+                body["course_id"] = ExpressionConverter.ConvertO(__workflow_bodycourseId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -345,59 +335,53 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        [WorkflowExpressionFactory(nameof(__BuildCourseList))]
-        public IBodyWorkflowAction<CourseListResponse> CourseList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<string> order = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<int> type = null, [WorkflowExpression] Func<int> status = null)
+        public IBodyWorkflowAction<CourseListResponse> CourseList(Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> orderby = null, Expression<Func<string>> order = null, Expression<Func<string>> search = null, Expression<Func<int>> type = null, Expression<Func<int>> status = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CourseListResponse> __BuildCourseList(WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<string> orderby = null, WorkflowExpression<string> order = null, WorkflowExpression<string> search = null, WorkflowExpression<int> type = null, WorkflowExpression<int> status = null)
-        {
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
-            WorkflowExpression.Validate(orderby, nameof(orderby), required: false);
-            WorkflowExpression.Validate(order, nameof(order), required: false);
-            WorkflowExpression.Validate(search, nameof(search), required: false);
-            WorkflowExpression.Validate(type, nameof(type), required: false);
-            WorkflowExpression.Validate(status, nameof(status), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_orderby = orderby == null ? null : WorkflowExpression.Compile(orderby);
+            WorkflowExpression.Validate(__workflow_orderby, nameof(orderby), required: false);
+            var __workflow_order = order == null ? null : WorkflowExpression.Compile(order);
+            WorkflowExpression.Validate(__workflow_order, nameof(order), required: false);
+            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
+            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
+            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
+            WorkflowExpression.Validate(__workflow_type, nameof(type), required: false);
+            var __workflow_status = status == null ? null : WorkflowExpression.Compile(status);
+            WorkflowExpression.Validate(__workflow_status, nameof(status), required: false);
             return new DeferredBodyAction<CourseListResponse>(() =>
             {
                 var apiCallPath = "/courses";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-                if (orderby != null)
-                    callPayload.Queries["orderby"] = ExpressionConverter.Convert(orderby);
-                if (order != null)
-                    callPayload.Queries["order"] = ExpressionConverter.Convert(order);
-                if (search != null)
-                    callPayload.Queries["search"] = ExpressionConverter.Convert(search);
-                if (type != null)
-                    callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-                if (status != null)
-                    callPayload.Queries["status"] = ExpressionConverter.Convert(status);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_orderby != null)
+                    callPayload.Queries["orderby"] = ExpressionConverter.Convert(__workflow_orderby);
+                if (__workflow_order != null)
+                    callPayload.Queries["order"] = ExpressionConverter.Convert(__workflow_order);
+                if (__workflow_search != null)
+                    callPayload.Queries["search"] = ExpressionConverter.Convert(__workflow_search);
+                if (__workflow_type != null)
+                    callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
+                if (__workflow_status != null)
+                    callPayload.Queries["status"] = ExpressionConverter.Convert(__workflow_status);
                 return new ApiConnectionAction<CourseListResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        [WorkflowExpressionFactory(nameof(__BuildCourseGet))]
-        public IBodyWorkflowAction<CourseGetResponse> CourseGet([WorkflowExpression] Func<string> courseId)
+        public IBodyWorkflowAction<CourseGetResponse> CourseGet(Expression<Func<string>> courseId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CourseGetResponse> __BuildCourseGet(WorkflowExpression<string> courseId)
-        {
-            WorkflowExpression.Validate(courseId, nameof(courseId), required: true);
+            var __workflow_courseId = courseId == null ? null : WorkflowExpression.Compile(courseId);
+            WorkflowExpression.Validate(__workflow_courseId, nameof(courseId), required: true);
             return new DeferredBodyAction<CourseGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/courses/{0}", ExpressionConverter.ConvertWithUrlEncoding(courseId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/courses/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_courseId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CourseGetResponse>(callPayload);
@@ -405,56 +389,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        [WorkflowExpressionFactory(nameof(__BuildFunnelList))]
-        public IBodyWorkflowAction<FunnelListResponse> FunnelList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<string> order = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<int> status = null)
+        public IBodyWorkflowAction<FunnelListResponse> FunnelList(Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> orderby = null, Expression<Func<string>> order = null, Expression<Func<string>> search = null, Expression<Func<int>> status = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FunnelListResponse> __BuildFunnelList(WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<string> orderby = null, WorkflowExpression<string> order = null, WorkflowExpression<string> search = null, WorkflowExpression<int> status = null)
-        {
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
-            WorkflowExpression.Validate(orderby, nameof(orderby), required: false);
-            WorkflowExpression.Validate(order, nameof(order), required: false);
-            WorkflowExpression.Validate(search, nameof(search), required: false);
-            WorkflowExpression.Validate(status, nameof(status), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_orderby = orderby == null ? null : WorkflowExpression.Compile(orderby);
+            WorkflowExpression.Validate(__workflow_orderby, nameof(orderby), required: false);
+            var __workflow_order = order == null ? null : WorkflowExpression.Compile(order);
+            WorkflowExpression.Validate(__workflow_order, nameof(order), required: false);
+            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
+            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
+            var __workflow_status = status == null ? null : WorkflowExpression.Compile(status);
+            WorkflowExpression.Validate(__workflow_status, nameof(status), required: false);
             return new DeferredBodyAction<FunnelListResponse>(() =>
             {
                 var apiCallPath = "/funnels";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-                if (orderby != null)
-                    callPayload.Queries["orderby"] = ExpressionConverter.Convert(orderby);
-                if (order != null)
-                    callPayload.Queries["order"] = ExpressionConverter.Convert(order);
-                if (search != null)
-                    callPayload.Queries["search"] = ExpressionConverter.Convert(search);
-                if (status != null)
-                    callPayload.Queries["status"] = ExpressionConverter.Convert(status);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_orderby != null)
+                    callPayload.Queries["orderby"] = ExpressionConverter.Convert(__workflow_orderby);
+                if (__workflow_order != null)
+                    callPayload.Queries["order"] = ExpressionConverter.Convert(__workflow_order);
+                if (__workflow_search != null)
+                    callPayload.Queries["search"] = ExpressionConverter.Convert(__workflow_search);
+                if (__workflow_status != null)
+                    callPayload.Queries["status"] = ExpressionConverter.Convert(__workflow_status);
                 return new ApiConnectionAction<FunnelListResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        [WorkflowExpressionFactory(nameof(__BuildFunnelEnrollment))]
-        public IBodyWorkflowAction<FunnelEnrollmentResponse> FunnelEnrollment([WorkflowExpression] Func<string> funnelId)
+        public IBodyWorkflowAction<FunnelEnrollmentResponse> FunnelEnrollment(Expression<Func<string>> funnelId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FunnelEnrollmentResponse> __BuildFunnelEnrollment(WorkflowExpression<string> funnelId)
-        {
-            WorkflowExpression.Validate(funnelId, nameof(funnelId), required: true);
+            var __workflow_funnelId = funnelId == null ? null : WorkflowExpression.Compile(funnelId);
+            WorkflowExpression.Validate(__workflow_funnelId, nameof(funnelId), required: true);
             return new DeferredBodyAction<FunnelEnrollmentResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/funnels/enrollments/{0}", ExpressionConverter.ConvertWithUrlEncoding(funnelId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/funnels/enrollments/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_funnelId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FunnelEnrollmentResponse>(callPayload);
@@ -462,82 +439,86 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        [WorkflowExpressionFactory(nameof(__BuildFunnelSubscribe))]
-        public IBodyWorkflowAction<FunnelSubscribeResponse> FunnelSubscribe([WorkflowExpression] Func<string> funnelId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string> bodyaddress = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodystate = null, [WorkflowExpression] Func<string> bodyphone = null, [WorkflowExpression] Func<int> bodyzipCode = null, [WorkflowExpression] Func<string> bodycountry = null, [WorkflowExpression] Func<int> bodygdprConsentStatus = null)
+        public IBodyWorkflowAction<FunnelSubscribeResponse> FunnelSubscribe(Expression<Func<string>> funnelId, Expression<Func<string>> bodyname, Expression<Func<string>> bodyemail, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodyphone = null, Expression<Func<int>> bodyzipCode = null, Expression<Func<string>> bodycountry = null, Expression<Func<int>> bodygdprConsentStatus = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FunnelSubscribeResponse> __BuildFunnelSubscribe(WorkflowExpression<string> funnelId, WorkflowExpression<string> bodyname, WorkflowExpression<string> bodyemail, WorkflowExpression<string> bodylastName = null, WorkflowExpression<string> bodyaddress = null, WorkflowExpression<string> bodycity = null, WorkflowExpression<string> bodystate = null, WorkflowExpression<string> bodyphone = null, WorkflowExpression<int> bodyzipCode = null, WorkflowExpression<string> bodycountry = null, WorkflowExpression<int> bodygdprConsentStatus = null)
-        {
-            WorkflowExpression.Validate(funnelId, nameof(funnelId), required: true);
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
-            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: true);
-            WorkflowExpression.Validate(bodylastName, nameof(bodylastName), required: false);
-            WorkflowExpression.Validate(bodyaddress, nameof(bodyaddress), required: false);
-            WorkflowExpression.Validate(bodycity, nameof(bodycity), required: false);
-            WorkflowExpression.Validate(bodystate, nameof(bodystate), required: false);
-            WorkflowExpression.Validate(bodyphone, nameof(bodyphone), required: false);
-            WorkflowExpression.Validate(bodyzipCode, nameof(bodyzipCode), required: false);
-            WorkflowExpression.Validate(bodycountry, nameof(bodycountry), required: false);
-            WorkflowExpression.Validate(bodygdprConsentStatus, nameof(bodygdprConsentStatus), required: false);
+            var __workflow_funnelId = funnelId == null ? null : WorkflowExpression.Compile(funnelId);
+            WorkflowExpression.Validate(__workflow_funnelId, nameof(funnelId), required: true);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
+            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
+            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
+            var __workflow_bodylastName = bodylastName == null ? null : WorkflowExpression.Compile(bodylastName);
+            WorkflowExpression.Validate(__workflow_bodylastName, nameof(bodylastName), required: false);
+            var __workflow_bodyaddress = bodyaddress == null ? null : WorkflowExpression.Compile(bodyaddress);
+            WorkflowExpression.Validate(__workflow_bodyaddress, nameof(bodyaddress), required: false);
+            var __workflow_bodycity = bodycity == null ? null : WorkflowExpression.Compile(bodycity);
+            WorkflowExpression.Validate(__workflow_bodycity, nameof(bodycity), required: false);
+            var __workflow_bodystate = bodystate == null ? null : WorkflowExpression.Compile(bodystate);
+            WorkflowExpression.Validate(__workflow_bodystate, nameof(bodystate), required: false);
+            var __workflow_bodyphone = bodyphone == null ? null : WorkflowExpression.Compile(bodyphone);
+            WorkflowExpression.Validate(__workflow_bodyphone, nameof(bodyphone), required: false);
+            var __workflow_bodyzipCode = bodyzipCode == null ? null : WorkflowExpression.Compile(bodyzipCode);
+            WorkflowExpression.Validate(__workflow_bodyzipCode, nameof(bodyzipCode), required: false);
+            var __workflow_bodycountry = bodycountry == null ? null : WorkflowExpression.Compile(bodycountry);
+            WorkflowExpression.Validate(__workflow_bodycountry, nameof(bodycountry), required: false);
+            var __workflow_bodygdprConsentStatus = bodygdprConsentStatus == null ? null : WorkflowExpression.Compile(bodygdprConsentStatus);
+            WorkflowExpression.Validate(__workflow_bodygdprConsentStatus, nameof(bodygdprConsentStatus), required: false);
             return new DeferredBodyAction<FunnelSubscribeResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/funnels/{0}/subscribe", ExpressionConverter.ConvertWithUrlEncoding(funnelId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/funnels/{0}/subscribe", ExpressionConverter.ConvertWithUrlEncoding(__workflow_funnelId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
                 bodypropCount++;
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
-                if (bodylastName != null)
+                body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
+                if (__workflow_bodylastName != null)
                 {
-                    body["last_name"] = ExpressionConverter.ConvertO(bodylastName);
+                    body["last_name"] = ExpressionConverter.ConvertO(__workflow_bodylastName);
                     bodypropCount++;
                 }
 
-                if (bodyaddress != null)
+                if (__workflow_bodyaddress != null)
                 {
-                    body["address"] = ExpressionConverter.ConvertO(bodyaddress);
+                    body["address"] = ExpressionConverter.ConvertO(__workflow_bodyaddress);
                     bodypropCount++;
                 }
 
-                if (bodycity != null)
+                if (__workflow_bodycity != null)
                 {
-                    body["city"] = ExpressionConverter.ConvertO(bodycity);
+                    body["city"] = ExpressionConverter.ConvertO(__workflow_bodycity);
                     bodypropCount++;
                 }
 
-                if (bodystate != null)
+                if (__workflow_bodystate != null)
                 {
-                    body["state"] = ExpressionConverter.ConvertO(bodystate);
+                    body["state"] = ExpressionConverter.ConvertO(__workflow_bodystate);
                     bodypropCount++;
                 }
 
-                if (bodyphone != null)
+                if (__workflow_bodyphone != null)
                 {
-                    body["phone"] = ExpressionConverter.ConvertO(bodyphone);
+                    body["phone"] = ExpressionConverter.ConvertO(__workflow_bodyphone);
                     bodypropCount++;
                 }
 
-                if (bodyzipCode != null)
+                if (__workflow_bodyzipCode != null)
                 {
-                    body["zip_code"] = ExpressionConverter.ConvertO(bodyzipCode);
+                    body["zip_code"] = ExpressionConverter.ConvertO(__workflow_bodyzipCode);
                     bodypropCount++;
                 }
 
-                if (bodycountry != null)
+                if (__workflow_bodycountry != null)
                 {
-                    body["country"] = ExpressionConverter.ConvertO(bodycountry);
+                    body["country"] = ExpressionConverter.ConvertO(__workflow_bodycountry);
                     bodypropCount++;
                 }
 
-                if (bodygdprConsentStatus != null)
+                if (__workflow_bodygdprConsentStatus != null)
                 {
-                    body["gdpr_consent_status"] = ExpressionConverter.ConvertO(bodygdprConsentStatus);
+                    body["gdpr_consent_status"] = ExpressionConverter.ConvertO(__workflow_bodygdprConsentStatus);
                     bodypropCount++;
                 }
 
@@ -551,27 +532,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        [WorkflowExpressionFactory(nameof(__BuildFunnelUnsubscribe))]
-        public IBodyWorkflowAction<FunnelUnsubscribeResponse> FunnelUnsubscribe([WorkflowExpression] Func<string> funnelId, [WorkflowExpression] Func<string> bodyemail = null)
+        public IBodyWorkflowAction<FunnelUnsubscribeResponse> FunnelUnsubscribe(Expression<Func<string>> funnelId, Expression<Func<string>> bodyemail = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FunnelUnsubscribeResponse> __BuildFunnelUnsubscribe(WorkflowExpression<string> funnelId, WorkflowExpression<string> bodyemail = null)
-        {
-            WorkflowExpression.Validate(funnelId, nameof(funnelId), required: true);
-            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: false);
+            var __workflow_funnelId = funnelId == null ? null : WorkflowExpression.Compile(funnelId);
+            WorkflowExpression.Validate(__workflow_funnelId, nameof(funnelId), required: true);
+            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
+            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: false);
             return new DeferredBodyAction<FunnelUnsubscribeResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/funnels/{0}/unsubscribe", ExpressionConverter.ConvertWithUrlEncoding(funnelId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/funnels/{0}/unsubscribe", ExpressionConverter.ConvertWithUrlEncoding(__workflow_funnelId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyemail != null)
+                if (__workflow_bodyemail != null)
                 {
-                    body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                    body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
                     bodypropCount++;
                 }
 
@@ -585,68 +561,63 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        [WorkflowExpressionFactory(nameof(__BuildClassList))]
-        public IBodyWorkflowAction<ClassListResponse> ClassList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<orderInput> order = null, [WorkflowExpression] Func<string> search = null)
+        public IBodyWorkflowAction<ClassListResponse> ClassList(Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> orderby = null, Expression<Func<orderInput>> order = null, Expression<Func<string>> search = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ClassListResponse> __BuildClassList(WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<string> orderby = null, WorkflowExpression<orderInput> order = null, WorkflowExpression<string> search = null)
-        {
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
-            WorkflowExpression.Validate(orderby, nameof(orderby), required: false);
-            WorkflowExpression.Validate(order, nameof(order), required: false);
-            WorkflowExpression.Validate(search, nameof(search), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_orderby = orderby == null ? null : WorkflowExpression.Compile(orderby);
+            WorkflowExpression.Validate(__workflow_orderby, nameof(orderby), required: false);
+            var __workflow_order = order == null ? null : WorkflowExpression.Compile(order);
+            WorkflowExpression.Validate(__workflow_order, nameof(order), required: false);
+            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
+            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
             return new DeferredBodyAction<ClassListResponse>(() =>
             {
                 var apiCallPath = "/live-class/get-live-classes-list";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-                if (orderby != null)
-                    callPayload.Queries["orderby"] = ExpressionConverter.Convert(orderby);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_orderby != null)
+                    callPayload.Queries["orderby"] = ExpressionConverter.Convert(__workflow_orderby);
                 callPayload.Queries["order"] = Convert.ToString("desc");
-                if (order != null)
-                    callPayload.Queries["order"] = ExpressionConverter.Convert(order);
-                if (search != null)
-                    callPayload.Queries["search"] = ExpressionConverter.Convert(search);
+                if (__workflow_order != null)
+                    callPayload.Queries["order"] = ExpressionConverter.Convert(__workflow_order);
+                if (__workflow_search != null)
+                    callPayload.Queries["search"] = ExpressionConverter.Convert(__workflow_search);
                 return new ApiConnectionAction<ClassListResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        [WorkflowExpressionFactory(nameof(__BuildClassRegister))]
-        public IBodyWorkflowAction<ClassRegisterResponse> ClassRegister([WorkflowExpression] Func<string> liveclassId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodylastName = null)
+        public IBodyWorkflowAction<ClassRegisterResponse> ClassRegister(Expression<Func<string>> liveclassId, Expression<Func<string>> bodyname, Expression<Func<string>> bodyemail, Expression<Func<string>> bodylastName = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ClassRegisterResponse> __BuildClassRegister(WorkflowExpression<string> liveclassId, WorkflowExpression<string> bodyname, WorkflowExpression<string> bodyemail, WorkflowExpression<string> bodylastName = null)
-        {
-            WorkflowExpression.Validate(liveclassId, nameof(liveclassId), required: true);
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
-            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: true);
-            WorkflowExpression.Validate(bodylastName, nameof(bodylastName), required: false);
+            var __workflow_liveclassId = liveclassId == null ? null : WorkflowExpression.Compile(liveclassId);
+            WorkflowExpression.Validate(__workflow_liveclassId, nameof(liveclassId), required: true);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
+            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
+            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
+            var __workflow_bodylastName = bodylastName == null ? null : WorkflowExpression.Compile(bodylastName);
+            WorkflowExpression.Validate(__workflow_bodylastName, nameof(bodylastName), required: false);
             return new DeferredBodyAction<ClassRegisterResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/live-class/{0}/register", ExpressionConverter.ConvertWithUrlEncoding(liveclassId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/live-class/{0}/register", ExpressionConverter.ConvertWithUrlEncoding(__workflow_liveclassId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
                 bodypropCount++;
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
-                if (bodylastName != null)
+                body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
+                if (__workflow_bodylastName != null)
                 {
-                    body["last_name"] = ExpressionConverter.ConvertO(bodylastName);
+                    body["last_name"] = ExpressionConverter.ConvertO(__workflow_bodylastName);
                     bodypropCount++;
                 }
 
@@ -660,27 +631,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        [WorkflowExpressionFactory(nameof(__BuildClassUnregister))]
-        public IBodyWorkflowAction<ClassUnregisterResponse> ClassUnregister([WorkflowExpression] Func<string> liveclassId, [WorkflowExpression] Func<string> bodyemail = null)
+        public IBodyWorkflowAction<ClassUnregisterResponse> ClassUnregister(Expression<Func<string>> liveclassId, Expression<Func<string>> bodyemail = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ClassUnregisterResponse> __BuildClassUnregister(WorkflowExpression<string> liveclassId, WorkflowExpression<string> bodyemail = null)
-        {
-            WorkflowExpression.Validate(liveclassId, nameof(liveclassId), required: true);
-            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: false);
+            var __workflow_liveclassId = liveclassId == null ? null : WorkflowExpression.Compile(liveclassId);
+            WorkflowExpression.Validate(__workflow_liveclassId, nameof(liveclassId), required: true);
+            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
+            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: false);
             return new DeferredBodyAction<ClassUnregisterResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/live-class/{0}/unregister", ExpressionConverter.ConvertWithUrlEncoding(liveclassId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/live-class/{0}/unregister", ExpressionConverter.ConvertWithUrlEncoding(__workflow_liveclassId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyemail != null)
+                if (__workflow_bodyemail != null)
                 {
-                    body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                    body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
                     bodypropCount++;
                 }
 
@@ -694,103 +660,103 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        [WorkflowExpressionFactory(nameof(__BuildWebinarList))]
-        public IBodyWorkflowAction<WebinarListResponse> WebinarList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<orderInput> order = null, [WorkflowExpression] Func<string> search = null)
+        public IBodyWorkflowAction<WebinarListResponse> WebinarList(Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> orderby = null, Expression<Func<orderInput>> order = null, Expression<Func<string>> search = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<WebinarListResponse> __BuildWebinarList(WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<string> orderby = null, WorkflowExpression<orderInput> order = null, WorkflowExpression<string> search = null)
-        {
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
-            WorkflowExpression.Validate(orderby, nameof(orderby), required: false);
-            WorkflowExpression.Validate(order, nameof(order), required: false);
-            WorkflowExpression.Validate(search, nameof(search), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_orderby = orderby == null ? null : WorkflowExpression.Compile(orderby);
+            WorkflowExpression.Validate(__workflow_orderby, nameof(orderby), required: false);
+            var __workflow_order = order == null ? null : WorkflowExpression.Compile(order);
+            WorkflowExpression.Validate(__workflow_order, nameof(order), required: false);
+            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
+            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
             return new DeferredBodyAction<WebinarListResponse>(() =>
             {
                 var apiCallPath = "/live-webinar/get-live-webinars-list";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-                if (orderby != null)
-                    callPayload.Queries["orderby"] = ExpressionConverter.Convert(orderby);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_orderby != null)
+                    callPayload.Queries["orderby"] = ExpressionConverter.Convert(__workflow_orderby);
                 callPayload.Queries["order"] = Convert.ToString("desc");
-                if (order != null)
-                    callPayload.Queries["order"] = ExpressionConverter.Convert(order);
-                if (search != null)
-                    callPayload.Queries["search"] = ExpressionConverter.Convert(search);
+                if (__workflow_order != null)
+                    callPayload.Queries["order"] = ExpressionConverter.Convert(__workflow_order);
+                if (__workflow_search != null)
+                    callPayload.Queries["search"] = ExpressionConverter.Convert(__workflow_search);
                 return new ApiConnectionAction<WebinarListResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        [WorkflowExpressionFactory(nameof(__BuildWebinarRegister))]
-        public IBodyWorkflowAction<WebinarRegisterResponse> WebinarRegister([WorkflowExpression] Func<string> webinarId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string> bodyaddress = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodystate = null, [WorkflowExpression] Func<string> bodyphone = null, [WorkflowExpression] Func<int> bodyzipCode = null)
+        public IBodyWorkflowAction<WebinarRegisterResponse> WebinarRegister(Expression<Func<string>> webinarId, Expression<Func<string>> bodyname, Expression<Func<string>> bodyemail, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodyphone = null, Expression<Func<int>> bodyzipCode = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<WebinarRegisterResponse> __BuildWebinarRegister(WorkflowExpression<string> webinarId, WorkflowExpression<string> bodyname, WorkflowExpression<string> bodyemail, WorkflowExpression<string> bodylastName = null, WorkflowExpression<string> bodyaddress = null, WorkflowExpression<string> bodycity = null, WorkflowExpression<string> bodystate = null, WorkflowExpression<string> bodyphone = null, WorkflowExpression<int> bodyzipCode = null)
-        {
-            WorkflowExpression.Validate(webinarId, nameof(webinarId), required: true);
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
-            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: true);
-            WorkflowExpression.Validate(bodylastName, nameof(bodylastName), required: false);
-            WorkflowExpression.Validate(bodyaddress, nameof(bodyaddress), required: false);
-            WorkflowExpression.Validate(bodycity, nameof(bodycity), required: false);
-            WorkflowExpression.Validate(bodystate, nameof(bodystate), required: false);
-            WorkflowExpression.Validate(bodyphone, nameof(bodyphone), required: false);
-            WorkflowExpression.Validate(bodyzipCode, nameof(bodyzipCode), required: false);
+            var __workflow_webinarId = webinarId == null ? null : WorkflowExpression.Compile(webinarId);
+            WorkflowExpression.Validate(__workflow_webinarId, nameof(webinarId), required: true);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
+            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
+            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
+            var __workflow_bodylastName = bodylastName == null ? null : WorkflowExpression.Compile(bodylastName);
+            WorkflowExpression.Validate(__workflow_bodylastName, nameof(bodylastName), required: false);
+            var __workflow_bodyaddress = bodyaddress == null ? null : WorkflowExpression.Compile(bodyaddress);
+            WorkflowExpression.Validate(__workflow_bodyaddress, nameof(bodyaddress), required: false);
+            var __workflow_bodycity = bodycity == null ? null : WorkflowExpression.Compile(bodycity);
+            WorkflowExpression.Validate(__workflow_bodycity, nameof(bodycity), required: false);
+            var __workflow_bodystate = bodystate == null ? null : WorkflowExpression.Compile(bodystate);
+            WorkflowExpression.Validate(__workflow_bodystate, nameof(bodystate), required: false);
+            var __workflow_bodyphone = bodyphone == null ? null : WorkflowExpression.Compile(bodyphone);
+            WorkflowExpression.Validate(__workflow_bodyphone, nameof(bodyphone), required: false);
+            var __workflow_bodyzipCode = bodyzipCode == null ? null : WorkflowExpression.Compile(bodyzipCode);
+            WorkflowExpression.Validate(__workflow_bodyzipCode, nameof(bodyzipCode), required: false);
             return new DeferredBodyAction<WebinarRegisterResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/live-webinar/{0}/register", ExpressionConverter.ConvertWithUrlEncoding(webinarId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/live-webinar/{0}/register", ExpressionConverter.ConvertWithUrlEncoding(__workflow_webinarId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
                 bodypropCount++;
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
-                if (bodylastName != null)
+                body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
+                if (__workflow_bodylastName != null)
                 {
-                    body["last_name"] = ExpressionConverter.ConvertO(bodylastName);
+                    body["last_name"] = ExpressionConverter.ConvertO(__workflow_bodylastName);
                     bodypropCount++;
                 }
 
-                if (bodyaddress != null)
+                if (__workflow_bodyaddress != null)
                 {
-                    body["address"] = ExpressionConverter.ConvertO(bodyaddress);
+                    body["address"] = ExpressionConverter.ConvertO(__workflow_bodyaddress);
                     bodypropCount++;
                 }
 
-                if (bodycity != null)
+                if (__workflow_bodycity != null)
                 {
-                    body["city"] = ExpressionConverter.ConvertO(bodycity);
+                    body["city"] = ExpressionConverter.ConvertO(__workflow_bodycity);
                     bodypropCount++;
                 }
 
-                if (bodystate != null)
+                if (__workflow_bodystate != null)
                 {
-                    body["state"] = ExpressionConverter.ConvertO(bodystate);
+                    body["state"] = ExpressionConverter.ConvertO(__workflow_bodystate);
                     bodypropCount++;
                 }
 
-                if (bodyphone != null)
+                if (__workflow_bodyphone != null)
                 {
-                    body["phone"] = ExpressionConverter.ConvertO(bodyphone);
+                    body["phone"] = ExpressionConverter.ConvertO(__workflow_bodyphone);
                     bodypropCount++;
                 }
 
-                if (bodyzipCode != null)
+                if (__workflow_bodyzipCode != null)
                 {
-                    body["zip_code"] = ExpressionConverter.ConvertO(bodyzipCode);
+                    body["zip_code"] = ExpressionConverter.ConvertO(__workflow_bodyzipCode);
                     bodypropCount++;
                 }
 
@@ -804,26 +770,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        [WorkflowExpressionFactory(nameof(__BuildWebinarUnregister))]
-        public IBodyWorkflowAction<WebinarUnregisterResponse> WebinarUnregister([WorkflowExpression] Func<string> webinarId, [WorkflowExpression] Func<string> bodyemail)
+        public IBodyWorkflowAction<WebinarUnregisterResponse> WebinarUnregister(Expression<Func<string>> webinarId, Expression<Func<string>> bodyemail)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<WebinarUnregisterResponse> __BuildWebinarUnregister(WorkflowExpression<string> webinarId, WorkflowExpression<string> bodyemail)
-        {
-            WorkflowExpression.Validate(webinarId, nameof(webinarId), required: true);
-            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: true);
+            var __workflow_webinarId = webinarId == null ? null : WorkflowExpression.Compile(webinarId);
+            WorkflowExpression.Validate(__workflow_webinarId, nameof(webinarId), required: true);
+            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
+            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
             return new DeferredBodyAction<WebinarUnregisterResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/live-webinar/{0}/unregister", ExpressionConverter.ConvertWithUrlEncoding(webinarId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/live-webinar/{0}/unregister", ExpressionConverter.ConvertWithUrlEncoding(__workflow_webinarId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -834,327 +795,329 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        [WorkflowExpressionFactory(nameof(__BuildReportEnrollBrief))]
-        public IBodyWorkflowAction<ReportEnrollBriefResponse> ReportEnrollBrief([WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<string> courseId = null)
+        public IBodyWorkflowAction<ReportEnrollBriefResponse> ReportEnrollBrief(Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> courseId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ReportEnrollBriefResponse> __BuildReportEnrollBrief(WorkflowExpression<string> startDate = null, WorkflowExpression<string> endDate = null, WorkflowExpression<string> courseId = null)
-        {
-            WorkflowExpression.Validate(startDate, nameof(startDate), required: false);
-            WorkflowExpression.Validate(endDate, nameof(endDate), required: false);
-            WorkflowExpression.Validate(courseId, nameof(courseId), required: false);
+            var __workflow_startDate = startDate == null ? null : WorkflowExpression.Compile(startDate);
+            WorkflowExpression.Validate(__workflow_startDate, nameof(startDate), required: false);
+            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
+            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: false);
+            var __workflow_courseId = courseId == null ? null : WorkflowExpression.Compile(courseId);
+            WorkflowExpression.Validate(__workflow_courseId, nameof(courseId), required: false);
             return new DeferredBodyAction<ReportEnrollBriefResponse>(() =>
             {
                 var apiCallPath = "/reports/enrollments/brief";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (startDate != null)
-                    callPayload.Queries["start_date"] = ExpressionConverter.Convert(startDate);
-                if (endDate != null)
-                    callPayload.Queries["end_date"] = ExpressionConverter.Convert(endDate);
-                if (courseId != null)
-                    callPayload.Queries["course_id"] = ExpressionConverter.Convert(courseId);
+                if (__workflow_startDate != null)
+                    callPayload.Queries["start_date"] = ExpressionConverter.Convert(__workflow_startDate);
+                if (__workflow_endDate != null)
+                    callPayload.Queries["end_date"] = ExpressionConverter.Convert(__workflow_endDate);
+                if (__workflow_courseId != null)
+                    callPayload.Queries["course_id"] = ExpressionConverter.Convert(__workflow_courseId);
                 return new ApiConnectionAction<ReportEnrollBriefResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        [WorkflowExpressionFactory(nameof(__BuildReportEnrollDetail))]
-        public IBodyWorkflowAction<ReportEnrollDetailResponse> ReportEnrollDetail([WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<string> courseId = null)
+        public IBodyWorkflowAction<ReportEnrollDetailResponse> ReportEnrollDetail(Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> courseId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ReportEnrollDetailResponse> __BuildReportEnrollDetail(WorkflowExpression<string> startDate = null, WorkflowExpression<string> endDate = null, WorkflowExpression<string> courseId = null)
-        {
-            WorkflowExpression.Validate(startDate, nameof(startDate), required: false);
-            WorkflowExpression.Validate(endDate, nameof(endDate), required: false);
-            WorkflowExpression.Validate(courseId, nameof(courseId), required: false);
+            var __workflow_startDate = startDate == null ? null : WorkflowExpression.Compile(startDate);
+            WorkflowExpression.Validate(__workflow_startDate, nameof(startDate), required: false);
+            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
+            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: false);
+            var __workflow_courseId = courseId == null ? null : WorkflowExpression.Compile(courseId);
+            WorkflowExpression.Validate(__workflow_courseId, nameof(courseId), required: false);
             return new DeferredBodyAction<ReportEnrollDetailResponse>(() =>
             {
                 var apiCallPath = "/reports/enrollments/detailed";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (startDate != null)
-                    callPayload.Queries["start_date"] = ExpressionConverter.Convert(startDate);
-                if (endDate != null)
-                    callPayload.Queries["end_date"] = ExpressionConverter.Convert(endDate);
-                if (courseId != null)
-                    callPayload.Queries["course_id"] = ExpressionConverter.Convert(courseId);
+                if (__workflow_startDate != null)
+                    callPayload.Queries["start_date"] = ExpressionConverter.Convert(__workflow_startDate);
+                if (__workflow_endDate != null)
+                    callPayload.Queries["end_date"] = ExpressionConverter.Convert(__workflow_endDate);
+                if (__workflow_courseId != null)
+                    callPayload.Queries["course_id"] = ExpressionConverter.Convert(__workflow_courseId);
                 return new ApiConnectionAction<ReportEnrollDetailResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        [WorkflowExpressionFactory(nameof(__BuildReportSalesBrief))]
-        public IBodyWorkflowAction<ReportSalesBriefResponse> ReportSalesBrief([WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> groupby = null, [WorkflowExpression] Func<string> courseIds = null)
+        public IBodyWorkflowAction<ReportSalesBriefResponse> ReportSalesBrief(Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> groupby = null, Expression<Func<string>> courseIds = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ReportSalesBriefResponse> __BuildReportSalesBrief(WorkflowExpression<string> startDate = null, WorkflowExpression<string> endDate = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<string> groupby = null, WorkflowExpression<string> courseIds = null)
-        {
-            WorkflowExpression.Validate(startDate, nameof(startDate), required: false);
-            WorkflowExpression.Validate(endDate, nameof(endDate), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
-            WorkflowExpression.Validate(groupby, nameof(groupby), required: false);
-            WorkflowExpression.Validate(courseIds, nameof(courseIds), required: false);
+            var __workflow_startDate = startDate == null ? null : WorkflowExpression.Compile(startDate);
+            WorkflowExpression.Validate(__workflow_startDate, nameof(startDate), required: false);
+            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
+            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_groupby = groupby == null ? null : WorkflowExpression.Compile(groupby);
+            WorkflowExpression.Validate(__workflow_groupby, nameof(groupby), required: false);
+            var __workflow_courseIds = courseIds == null ? null : WorkflowExpression.Compile(courseIds);
+            WorkflowExpression.Validate(__workflow_courseIds, nameof(courseIds), required: false);
             return new DeferredBodyAction<ReportSalesBriefResponse>(() =>
             {
                 var apiCallPath = "/reports/sales/brief";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (startDate != null)
-                    callPayload.Queries["start_date"] = ExpressionConverter.Convert(startDate);
-                if (endDate != null)
-                    callPayload.Queries["end_date"] = ExpressionConverter.Convert(endDate);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-                if (groupby != null)
-                    callPayload.Queries["groupby"] = ExpressionConverter.Convert(groupby);
-                if (courseIds != null)
-                    callPayload.Queries["course_ids"] = ExpressionConverter.Convert(courseIds);
+                if (__workflow_startDate != null)
+                    callPayload.Queries["start_date"] = ExpressionConverter.Convert(__workflow_startDate);
+                if (__workflow_endDate != null)
+                    callPayload.Queries["end_date"] = ExpressionConverter.Convert(__workflow_endDate);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_groupby != null)
+                    callPayload.Queries["groupby"] = ExpressionConverter.Convert(__workflow_groupby);
+                if (__workflow_courseIds != null)
+                    callPayload.Queries["course_ids"] = ExpressionConverter.Convert(__workflow_courseIds);
                 return new ApiConnectionAction<ReportSalesBriefResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        [WorkflowExpressionFactory(nameof(__BuildReportSalesDetailed))]
-        public IBodyWorkflowAction<ReportSalesDetailedResponse> ReportSalesDetailed([WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> courseIds = null, [WorkflowExpression] Func<int> paymentType = null)
+        public IBodyWorkflowAction<ReportSalesDetailedResponse> ReportSalesDetailed(Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> courseIds = null, Expression<Func<int>> paymentType = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ReportSalesDetailedResponse> __BuildReportSalesDetailed(WorkflowExpression<string> startDate = null, WorkflowExpression<string> endDate = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<string> courseIds = null, WorkflowExpression<int> paymentType = null)
-        {
-            WorkflowExpression.Validate(startDate, nameof(startDate), required: false);
-            WorkflowExpression.Validate(endDate, nameof(endDate), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
-            WorkflowExpression.Validate(courseIds, nameof(courseIds), required: false);
-            WorkflowExpression.Validate(paymentType, nameof(paymentType), required: false);
+            var __workflow_startDate = startDate == null ? null : WorkflowExpression.Compile(startDate);
+            WorkflowExpression.Validate(__workflow_startDate, nameof(startDate), required: false);
+            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
+            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_courseIds = courseIds == null ? null : WorkflowExpression.Compile(courseIds);
+            WorkflowExpression.Validate(__workflow_courseIds, nameof(courseIds), required: false);
+            var __workflow_paymentType = paymentType == null ? null : WorkflowExpression.Compile(paymentType);
+            WorkflowExpression.Validate(__workflow_paymentType, nameof(paymentType), required: false);
             return new DeferredBodyAction<ReportSalesDetailedResponse>(() =>
             {
                 var apiCallPath = "/reports/sales/detailed";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (startDate != null)
-                    callPayload.Queries["start_date"] = ExpressionConverter.Convert(startDate);
-                if (endDate != null)
-                    callPayload.Queries["end_date"] = ExpressionConverter.Convert(endDate);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-                if (courseIds != null)
-                    callPayload.Queries["course_ids"] = ExpressionConverter.Convert(courseIds);
-                if (paymentType != null)
-                    callPayload.Queries["payment_type"] = ExpressionConverter.Convert(paymentType);
+                if (__workflow_startDate != null)
+                    callPayload.Queries["start_date"] = ExpressionConverter.Convert(__workflow_startDate);
+                if (__workflow_endDate != null)
+                    callPayload.Queries["end_date"] = ExpressionConverter.Convert(__workflow_endDate);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_courseIds != null)
+                    callPayload.Queries["course_ids"] = ExpressionConverter.Convert(__workflow_courseIds);
+                if (__workflow_paymentType != null)
+                    callPayload.Queries["payment_type"] = ExpressionConverter.Convert(__workflow_paymentType);
                 return new ApiConnectionAction<ReportSalesDetailedResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        [WorkflowExpressionFactory(nameof(__BuildReportProgressBrief))]
-        public IBodyWorkflowAction<ReportProgressBriefResponse> ReportProgressBrief([WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> courseIds = null)
+        public IBodyWorkflowAction<ReportProgressBriefResponse> ReportProgressBrief(Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> courseIds = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ReportProgressBriefResponse> __BuildReportProgressBrief(WorkflowExpression<string> startDate = null, WorkflowExpression<string> endDate = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<string> courseIds = null)
-        {
-            WorkflowExpression.Validate(startDate, nameof(startDate), required: false);
-            WorkflowExpression.Validate(endDate, nameof(endDate), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
-            WorkflowExpression.Validate(courseIds, nameof(courseIds), required: false);
+            var __workflow_startDate = startDate == null ? null : WorkflowExpression.Compile(startDate);
+            WorkflowExpression.Validate(__workflow_startDate, nameof(startDate), required: false);
+            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
+            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_courseIds = courseIds == null ? null : WorkflowExpression.Compile(courseIds);
+            WorkflowExpression.Validate(__workflow_courseIds, nameof(courseIds), required: false);
             return new DeferredBodyAction<ReportProgressBriefResponse>(() =>
             {
                 var apiCallPath = "/reports/course-progress/brief";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (startDate != null)
-                    callPayload.Queries["start_date"] = ExpressionConverter.Convert(startDate);
-                if (endDate != null)
-                    callPayload.Queries["end_date"] = ExpressionConverter.Convert(endDate);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-                if (courseIds != null)
-                    callPayload.Queries["course_ids[]"] = ExpressionConverter.Convert(courseIds);
+                if (__workflow_startDate != null)
+                    callPayload.Queries["start_date"] = ExpressionConverter.Convert(__workflow_startDate);
+                if (__workflow_endDate != null)
+                    callPayload.Queries["end_date"] = ExpressionConverter.Convert(__workflow_endDate);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_courseIds != null)
+                    callPayload.Queries["course_ids[]"] = ExpressionConverter.Convert(__workflow_courseIds);
                 return new ApiConnectionAction<ReportProgressBriefResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        [WorkflowExpressionFactory(nameof(__BuildReportProgressDetailed))]
-        public IBodyWorkflowAction<ReportProgressDetailedResponse> ReportProgressDetailed([WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> courseIds = null, [WorkflowExpression] Func<string> afV = null, [WorkflowExpression] Func<string> couponIs = null, [WorkflowExpression] Func<string> couponLike = null, [WorkflowExpression] Func<string> nameIs = null, [WorkflowExpression] Func<string> nameLike = null, [WorkflowExpression] Func<string> emailIs = null, [WorkflowExpression] Func<string> emailLike = null, [WorkflowExpression] Func<string> affiliateIs = null, [WorkflowExpression] Func<int> paymentType = null)
+        public IBodyWorkflowAction<ReportProgressDetailedResponse> ReportProgressDetailed(Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> courseIds = null, Expression<Func<string>> afV = null, Expression<Func<string>> couponIs = null, Expression<Func<string>> couponLike = null, Expression<Func<string>> nameIs = null, Expression<Func<string>> nameLike = null, Expression<Func<string>> emailIs = null, Expression<Func<string>> emailLike = null, Expression<Func<string>> affiliateIs = null, Expression<Func<int>> paymentType = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ReportProgressDetailedResponse> __BuildReportProgressDetailed(WorkflowExpression<string> startDate = null, WorkflowExpression<string> endDate = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<string> courseIds = null, WorkflowExpression<string> afV = null, WorkflowExpression<string> couponIs = null, WorkflowExpression<string> couponLike = null, WorkflowExpression<string> nameIs = null, WorkflowExpression<string> nameLike = null, WorkflowExpression<string> emailIs = null, WorkflowExpression<string> emailLike = null, WorkflowExpression<string> affiliateIs = null, WorkflowExpression<int> paymentType = null)
-        {
-            WorkflowExpression.Validate(startDate, nameof(startDate), required: false);
-            WorkflowExpression.Validate(endDate, nameof(endDate), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
-            WorkflowExpression.Validate(courseIds, nameof(courseIds), required: false);
-            WorkflowExpression.Validate(afV, nameof(afV), required: false);
-            WorkflowExpression.Validate(couponIs, nameof(couponIs), required: false);
-            WorkflowExpression.Validate(couponLike, nameof(couponLike), required: false);
-            WorkflowExpression.Validate(nameIs, nameof(nameIs), required: false);
-            WorkflowExpression.Validate(nameLike, nameof(nameLike), required: false);
-            WorkflowExpression.Validate(emailIs, nameof(emailIs), required: false);
-            WorkflowExpression.Validate(emailLike, nameof(emailLike), required: false);
-            WorkflowExpression.Validate(affiliateIs, nameof(affiliateIs), required: false);
-            WorkflowExpression.Validate(paymentType, nameof(paymentType), required: false);
+            var __workflow_startDate = startDate == null ? null : WorkflowExpression.Compile(startDate);
+            WorkflowExpression.Validate(__workflow_startDate, nameof(startDate), required: false);
+            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
+            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_courseIds = courseIds == null ? null : WorkflowExpression.Compile(courseIds);
+            WorkflowExpression.Validate(__workflow_courseIds, nameof(courseIds), required: false);
+            var __workflow_afV = afV == null ? null : WorkflowExpression.Compile(afV);
+            WorkflowExpression.Validate(__workflow_afV, nameof(afV), required: false);
+            var __workflow_couponIs = couponIs == null ? null : WorkflowExpression.Compile(couponIs);
+            WorkflowExpression.Validate(__workflow_couponIs, nameof(couponIs), required: false);
+            var __workflow_couponLike = couponLike == null ? null : WorkflowExpression.Compile(couponLike);
+            WorkflowExpression.Validate(__workflow_couponLike, nameof(couponLike), required: false);
+            var __workflow_nameIs = nameIs == null ? null : WorkflowExpression.Compile(nameIs);
+            WorkflowExpression.Validate(__workflow_nameIs, nameof(nameIs), required: false);
+            var __workflow_nameLike = nameLike == null ? null : WorkflowExpression.Compile(nameLike);
+            WorkflowExpression.Validate(__workflow_nameLike, nameof(nameLike), required: false);
+            var __workflow_emailIs = emailIs == null ? null : WorkflowExpression.Compile(emailIs);
+            WorkflowExpression.Validate(__workflow_emailIs, nameof(emailIs), required: false);
+            var __workflow_emailLike = emailLike == null ? null : WorkflowExpression.Compile(emailLike);
+            WorkflowExpression.Validate(__workflow_emailLike, nameof(emailLike), required: false);
+            var __workflow_affiliateIs = affiliateIs == null ? null : WorkflowExpression.Compile(affiliateIs);
+            WorkflowExpression.Validate(__workflow_affiliateIs, nameof(affiliateIs), required: false);
+            var __workflow_paymentType = paymentType == null ? null : WorkflowExpression.Compile(paymentType);
+            WorkflowExpression.Validate(__workflow_paymentType, nameof(paymentType), required: false);
             return new DeferredBodyAction<ReportProgressDetailedResponse>(() =>
             {
                 var apiCallPath = "/reports/course-progress/detailed";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (startDate != null)
-                    callPayload.Queries["start_date"] = ExpressionConverter.Convert(startDate);
-                if (endDate != null)
-                    callPayload.Queries["end_date"] = ExpressionConverter.Convert(endDate);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-                if (courseIds != null)
-                    callPayload.Queries["course_ids[]"] = ExpressionConverter.Convert(courseIds);
-                if (afV != null)
-                    callPayload.Queries["af_v"] = ExpressionConverter.Convert(afV);
-                if (couponIs != null)
-                    callPayload.Queries["coupon_is[]"] = ExpressionConverter.Convert(couponIs);
-                if (couponLike != null)
-                    callPayload.Queries["coupon_like[]"] = ExpressionConverter.Convert(couponLike);
-                if (nameIs != null)
-                    callPayload.Queries["name_is[]"] = ExpressionConverter.Convert(nameIs);
-                if (nameLike != null)
-                    callPayload.Queries["name_like[]"] = ExpressionConverter.Convert(nameLike);
-                if (emailIs != null)
-                    callPayload.Queries["email_is[]"] = ExpressionConverter.Convert(emailIs);
-                if (emailLike != null)
-                    callPayload.Queries["email_like[]"] = ExpressionConverter.Convert(emailLike);
-                if (affiliateIs != null)
-                    callPayload.Queries["affiliate_is[]"] = ExpressionConverter.Convert(affiliateIs);
-                if (paymentType != null)
-                    callPayload.Queries["payment_type"] = ExpressionConverter.Convert(paymentType);
+                if (__workflow_startDate != null)
+                    callPayload.Queries["start_date"] = ExpressionConverter.Convert(__workflow_startDate);
+                if (__workflow_endDate != null)
+                    callPayload.Queries["end_date"] = ExpressionConverter.Convert(__workflow_endDate);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_courseIds != null)
+                    callPayload.Queries["course_ids[]"] = ExpressionConverter.Convert(__workflow_courseIds);
+                if (__workflow_afV != null)
+                    callPayload.Queries["af_v"] = ExpressionConverter.Convert(__workflow_afV);
+                if (__workflow_couponIs != null)
+                    callPayload.Queries["coupon_is[]"] = ExpressionConverter.Convert(__workflow_couponIs);
+                if (__workflow_couponLike != null)
+                    callPayload.Queries["coupon_like[]"] = ExpressionConverter.Convert(__workflow_couponLike);
+                if (__workflow_nameIs != null)
+                    callPayload.Queries["name_is[]"] = ExpressionConverter.Convert(__workflow_nameIs);
+                if (__workflow_nameLike != null)
+                    callPayload.Queries["name_like[]"] = ExpressionConverter.Convert(__workflow_nameLike);
+                if (__workflow_emailIs != null)
+                    callPayload.Queries["email_is[]"] = ExpressionConverter.Convert(__workflow_emailIs);
+                if (__workflow_emailLike != null)
+                    callPayload.Queries["email_like[]"] = ExpressionConverter.Convert(__workflow_emailLike);
+                if (__workflow_affiliateIs != null)
+                    callPayload.Queries["affiliate_is[]"] = ExpressionConverter.Convert(__workflow_affiliateIs);
+                if (__workflow_paymentType != null)
+                    callPayload.Queries["payment_type"] = ExpressionConverter.Convert(__workflow_paymentType);
                 return new ApiConnectionAction<ReportProgressDetailedResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        [WorkflowExpressionFactory(nameof(__BuildReportAffiliateBrief))]
-        public IBodyWorkflowAction<ReportAffiliateBriefResponse> ReportAffiliateBrief([WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> courseIds = null, [WorkflowExpression] Func<string> affiliateIds = null)
+        public IBodyWorkflowAction<ReportAffiliateBriefResponse> ReportAffiliateBrief(Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> courseIds = null, Expression<Func<string>> affiliateIds = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ReportAffiliateBriefResponse> __BuildReportAffiliateBrief(WorkflowExpression<string> startDate = null, WorkflowExpression<string> endDate = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<string> courseIds = null, WorkflowExpression<string> affiliateIds = null)
-        {
-            WorkflowExpression.Validate(startDate, nameof(startDate), required: false);
-            WorkflowExpression.Validate(endDate, nameof(endDate), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
-            WorkflowExpression.Validate(courseIds, nameof(courseIds), required: false);
-            WorkflowExpression.Validate(affiliateIds, nameof(affiliateIds), required: false);
+            var __workflow_startDate = startDate == null ? null : WorkflowExpression.Compile(startDate);
+            WorkflowExpression.Validate(__workflow_startDate, nameof(startDate), required: false);
+            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
+            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_courseIds = courseIds == null ? null : WorkflowExpression.Compile(courseIds);
+            WorkflowExpression.Validate(__workflow_courseIds, nameof(courseIds), required: false);
+            var __workflow_affiliateIds = affiliateIds == null ? null : WorkflowExpression.Compile(affiliateIds);
+            WorkflowExpression.Validate(__workflow_affiliateIds, nameof(affiliateIds), required: false);
             return new DeferredBodyAction<ReportAffiliateBriefResponse>(() =>
             {
                 var apiCallPath = "/reports/affiliates/brief";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (startDate != null)
-                    callPayload.Queries["start_date"] = ExpressionConverter.Convert(startDate);
-                if (endDate != null)
-                    callPayload.Queries["end_date"] = ExpressionConverter.Convert(endDate);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-                if (courseIds != null)
-                    callPayload.Queries["course_ids[]"] = ExpressionConverter.Convert(courseIds);
-                if (affiliateIds != null)
-                    callPayload.Queries["affiliate_ids[]"] = ExpressionConverter.Convert(affiliateIds);
+                if (__workflow_startDate != null)
+                    callPayload.Queries["start_date"] = ExpressionConverter.Convert(__workflow_startDate);
+                if (__workflow_endDate != null)
+                    callPayload.Queries["end_date"] = ExpressionConverter.Convert(__workflow_endDate);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_courseIds != null)
+                    callPayload.Queries["course_ids[]"] = ExpressionConverter.Convert(__workflow_courseIds);
+                if (__workflow_affiliateIds != null)
+                    callPayload.Queries["affiliate_ids[]"] = ExpressionConverter.Convert(__workflow_affiliateIds);
                 return new ApiConnectionAction<ReportAffiliateBriefResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        [WorkflowExpressionFactory(nameof(__BuildReportAffiliateDetailed))]
-        public IBodyWorkflowAction<ReportAffiliateDetailedResponse> ReportAffiliateDetailed([WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> courseIds = null, [WorkflowExpression] Func<string> affiliateIds = null, [WorkflowExpression] Func<string> afV = null, [WorkflowExpression] Func<string> couponIs = null, [WorkflowExpression] Func<string> couponLike = null, [WorkflowExpression] Func<string> nameIs = null, [WorkflowExpression] Func<string> nameLike = null, [WorkflowExpression] Func<string> emailIs = null, [WorkflowExpression] Func<string> emailLike = null, [WorkflowExpression] Func<string> affiliateIs = null, [WorkflowExpression] Func<string> paymentType = null)
+        public IBodyWorkflowAction<ReportAffiliateDetailedResponse> ReportAffiliateDetailed(Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> courseIds = null, Expression<Func<string>> affiliateIds = null, Expression<Func<string>> afV = null, Expression<Func<string>> couponIs = null, Expression<Func<string>> couponLike = null, Expression<Func<string>> nameIs = null, Expression<Func<string>> nameLike = null, Expression<Func<string>> emailIs = null, Expression<Func<string>> emailLike = null, Expression<Func<string>> affiliateIs = null, Expression<Func<string>> paymentType = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ReportAffiliateDetailedResponse> __BuildReportAffiliateDetailed(WorkflowExpression<string> startDate = null, WorkflowExpression<string> endDate = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null, WorkflowExpression<string> courseIds = null, WorkflowExpression<string> affiliateIds = null, WorkflowExpression<string> afV = null, WorkflowExpression<string> couponIs = null, WorkflowExpression<string> couponLike = null, WorkflowExpression<string> nameIs = null, WorkflowExpression<string> nameLike = null, WorkflowExpression<string> emailIs = null, WorkflowExpression<string> emailLike = null, WorkflowExpression<string> affiliateIs = null, WorkflowExpression<string> paymentType = null)
-        {
-            WorkflowExpression.Validate(startDate, nameof(startDate), required: false);
-            WorkflowExpression.Validate(endDate, nameof(endDate), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
-            WorkflowExpression.Validate(courseIds, nameof(courseIds), required: false);
-            WorkflowExpression.Validate(affiliateIds, nameof(affiliateIds), required: false);
-            WorkflowExpression.Validate(afV, nameof(afV), required: false);
-            WorkflowExpression.Validate(couponIs, nameof(couponIs), required: false);
-            WorkflowExpression.Validate(couponLike, nameof(couponLike), required: false);
-            WorkflowExpression.Validate(nameIs, nameof(nameIs), required: false);
-            WorkflowExpression.Validate(nameLike, nameof(nameLike), required: false);
-            WorkflowExpression.Validate(emailIs, nameof(emailIs), required: false);
-            WorkflowExpression.Validate(emailLike, nameof(emailLike), required: false);
-            WorkflowExpression.Validate(affiliateIs, nameof(affiliateIs), required: false);
-            WorkflowExpression.Validate(paymentType, nameof(paymentType), required: false);
+            var __workflow_startDate = startDate == null ? null : WorkflowExpression.Compile(startDate);
+            WorkflowExpression.Validate(__workflow_startDate, nameof(startDate), required: false);
+            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
+            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_courseIds = courseIds == null ? null : WorkflowExpression.Compile(courseIds);
+            WorkflowExpression.Validate(__workflow_courseIds, nameof(courseIds), required: false);
+            var __workflow_affiliateIds = affiliateIds == null ? null : WorkflowExpression.Compile(affiliateIds);
+            WorkflowExpression.Validate(__workflow_affiliateIds, nameof(affiliateIds), required: false);
+            var __workflow_afV = afV == null ? null : WorkflowExpression.Compile(afV);
+            WorkflowExpression.Validate(__workflow_afV, nameof(afV), required: false);
+            var __workflow_couponIs = couponIs == null ? null : WorkflowExpression.Compile(couponIs);
+            WorkflowExpression.Validate(__workflow_couponIs, nameof(couponIs), required: false);
+            var __workflow_couponLike = couponLike == null ? null : WorkflowExpression.Compile(couponLike);
+            WorkflowExpression.Validate(__workflow_couponLike, nameof(couponLike), required: false);
+            var __workflow_nameIs = nameIs == null ? null : WorkflowExpression.Compile(nameIs);
+            WorkflowExpression.Validate(__workflow_nameIs, nameof(nameIs), required: false);
+            var __workflow_nameLike = nameLike == null ? null : WorkflowExpression.Compile(nameLike);
+            WorkflowExpression.Validate(__workflow_nameLike, nameof(nameLike), required: false);
+            var __workflow_emailIs = emailIs == null ? null : WorkflowExpression.Compile(emailIs);
+            WorkflowExpression.Validate(__workflow_emailIs, nameof(emailIs), required: false);
+            var __workflow_emailLike = emailLike == null ? null : WorkflowExpression.Compile(emailLike);
+            WorkflowExpression.Validate(__workflow_emailLike, nameof(emailLike), required: false);
+            var __workflow_affiliateIs = affiliateIs == null ? null : WorkflowExpression.Compile(affiliateIs);
+            WorkflowExpression.Validate(__workflow_affiliateIs, nameof(affiliateIs), required: false);
+            var __workflow_paymentType = paymentType == null ? null : WorkflowExpression.Compile(paymentType);
+            WorkflowExpression.Validate(__workflow_paymentType, nameof(paymentType), required: false);
             return new DeferredBodyAction<ReportAffiliateDetailedResponse>(() =>
             {
                 var apiCallPath = "/reports/affiliates/detailed";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (startDate != null)
-                    callPayload.Queries["start_date"] = ExpressionConverter.Convert(startDate);
-                if (endDate != null)
-                    callPayload.Queries["end_date"] = ExpressionConverter.Convert(endDate);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-                if (courseIds != null)
-                    callPayload.Queries["course_ids[]"] = ExpressionConverter.Convert(courseIds);
-                if (affiliateIds != null)
-                    callPayload.Queries["affiliate_ids[]"] = ExpressionConverter.Convert(affiliateIds);
-                if (afV != null)
-                    callPayload.Queries["af_v"] = ExpressionConverter.Convert(afV);
-                if (couponIs != null)
-                    callPayload.Queries["coupon_is[]"] = ExpressionConverter.Convert(couponIs);
-                if (couponLike != null)
-                    callPayload.Queries["coupon_like[]"] = ExpressionConverter.Convert(couponLike);
-                if (nameIs != null)
-                    callPayload.Queries["name_is[]"] = ExpressionConverter.Convert(nameIs);
-                if (nameLike != null)
-                    callPayload.Queries["name_like[]"] = ExpressionConverter.Convert(nameLike);
-                if (emailIs != null)
-                    callPayload.Queries["email_is[]"] = ExpressionConverter.Convert(emailIs);
-                if (emailLike != null)
-                    callPayload.Queries["email_like[]"] = ExpressionConverter.Convert(emailLike);
-                if (affiliateIs != null)
-                    callPayload.Queries["affiliate_is[]"] = ExpressionConverter.Convert(affiliateIs);
-                if (paymentType != null)
-                    callPayload.Queries["payment_type"] = ExpressionConverter.Convert(paymentType);
+                if (__workflow_startDate != null)
+                    callPayload.Queries["start_date"] = ExpressionConverter.Convert(__workflow_startDate);
+                if (__workflow_endDate != null)
+                    callPayload.Queries["end_date"] = ExpressionConverter.Convert(__workflow_endDate);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_courseIds != null)
+                    callPayload.Queries["course_ids[]"] = ExpressionConverter.Convert(__workflow_courseIds);
+                if (__workflow_affiliateIds != null)
+                    callPayload.Queries["affiliate_ids[]"] = ExpressionConverter.Convert(__workflow_affiliateIds);
+                if (__workflow_afV != null)
+                    callPayload.Queries["af_v"] = ExpressionConverter.Convert(__workflow_afV);
+                if (__workflow_couponIs != null)
+                    callPayload.Queries["coupon_is[]"] = ExpressionConverter.Convert(__workflow_couponIs);
+                if (__workflow_couponLike != null)
+                    callPayload.Queries["coupon_like[]"] = ExpressionConverter.Convert(__workflow_couponLike);
+                if (__workflow_nameIs != null)
+                    callPayload.Queries["name_is[]"] = ExpressionConverter.Convert(__workflow_nameIs);
+                if (__workflow_nameLike != null)
+                    callPayload.Queries["name_like[]"] = ExpressionConverter.Convert(__workflow_nameLike);
+                if (__workflow_emailIs != null)
+                    callPayload.Queries["email_is[]"] = ExpressionConverter.Convert(__workflow_emailIs);
+                if (__workflow_emailLike != null)
+                    callPayload.Queries["email_like[]"] = ExpressionConverter.Convert(__workflow_emailLike);
+                if (__workflow_affiliateIs != null)
+                    callPayload.Queries["affiliate_is[]"] = ExpressionConverter.Convert(__workflow_affiliateIs);
+                if (__workflow_paymentType != null)
+                    callPayload.Queries["payment_type"] = ExpressionConverter.Convert(__workflow_paymentType);
                 return new ApiConnectionAction<ReportAffiliateDetailedResponse>(callPayload);
             });
         }

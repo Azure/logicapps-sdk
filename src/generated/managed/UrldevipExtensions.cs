@@ -1,28 +1,22 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urldevip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class UrldevipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urldevip")]
-        [WorkflowExpressionFactory(nameof(__BuildLink))]
-        public IBodyWorkflowAction<LinkPostResponse> Link([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<int> bodyttl = null)
+        public IBodyWorkflowAction<LinkPostResponse> Link(Expression<Func<string>> bodyurl, Expression<Func<int>> bodyttl = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<LinkPostResponse> __BuildLink(WorkflowExpression<string> bodyurl, WorkflowExpression<int> bodyttl = null)
-        {
-            WorkflowExpression.Validate(bodyurl, nameof(bodyurl), required: true);
-            WorkflowExpression.Validate(bodyttl, nameof(bodyttl), required: false);
+            var __workflow_bodyurl = bodyurl == null ? null : WorkflowExpression.Compile(bodyurl);
+            WorkflowExpression.Validate(__workflow_bodyurl, nameof(bodyurl), required: true);
+            var __workflow_bodyttl = bodyttl == null ? null : WorkflowExpression.Compile(bodyttl);
+            WorkflowExpression.Validate(__workflow_bodyttl, nameof(bodyttl), required: false);
             return new DeferredBodyAction<LinkPostResponse>(() =>
             {
                 var apiCallPath = "/create/";
@@ -31,10 +25,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urldevip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["url"] = ExpressionConverter.ConvertO(bodyurl);
-                if (bodyttl != null)
+                body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
+                if (__workflow_bodyttl != null)
                 {
-                    body["ttl"] = ExpressionConverter.ConvertO(bodyttl);
+                    body["ttl"] = ExpressionConverter.ConvertO(__workflow_bodyttl);
                     bodypropCount++;
                 }
 
@@ -48,16 +42,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urldevip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urldevip")]
-        [WorkflowExpressionFactory(nameof(__BuildLinkDelete))]
-        public IBodyWorkflowAction<bool> LinkDelete([WorkflowExpression] Func<string> bodykey = null)
+        public IBodyWorkflowAction<bool> LinkDelete(Expression<Func<string>> bodykey = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<bool> __BuildLinkDelete(WorkflowExpression<string> bodykey = null)
-        {
-            WorkflowExpression.Validate(bodykey, nameof(bodykey), required: false);
+            var __workflow_bodykey = bodykey == null ? null : WorkflowExpression.Compile(bodykey);
+            WorkflowExpression.Validate(__workflow_bodykey, nameof(bodykey), required: false);
             return new DeferredBodyAction<bool>(() =>
             {
                 var apiCallPath = "/destroy/";
@@ -65,9 +53,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urldevip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodykey != null)
+                if (__workflow_bodykey != null)
                 {
-                    body["key"] = ExpressionConverter.ConvertO(bodykey);
+                    body["key"] = ExpressionConverter.ConvertO(__workflow_bodykey);
                     bodypropCount++;
                 }
 
@@ -81,17 +69,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urldevip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urldevip")]
-        [WorkflowExpressionFactory(nameof(__BuildMessage))]
-        public IBodyWorkflowAction<MessagePostResponse> Message([WorkflowExpression] Func<string> bodymessage, [WorkflowExpression] Func<int> bodyttl = null)
+        public IBodyWorkflowAction<MessagePostResponse> Message(Expression<Func<string>> bodymessage, Expression<Func<int>> bodyttl = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MessagePostResponse> __BuildMessage(WorkflowExpression<string> bodymessage, WorkflowExpression<int> bodyttl = null)
-        {
-            WorkflowExpression.Validate(bodymessage, nameof(bodymessage), required: true);
-            WorkflowExpression.Validate(bodyttl, nameof(bodyttl), required: false);
+            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
+            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: true);
+            var __workflow_bodyttl = bodyttl == null ? null : WorkflowExpression.Compile(bodyttl);
+            WorkflowExpression.Validate(__workflow_bodyttl, nameof(bodyttl), required: false);
             return new DeferredBodyAction<MessagePostResponse>(() =>
             {
                 var apiCallPath = "/messages/create/";
@@ -100,10 +83,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urldevip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["message"] = ExpressionConverter.ConvertO(bodymessage);
-                if (bodyttl != null)
+                body["message"] = ExpressionConverter.ConvertO(__workflow_bodymessage);
+                if (__workflow_bodyttl != null)
                 {
-                    body["ttl"] = ExpressionConverter.ConvertO(bodyttl);
+                    body["ttl"] = ExpressionConverter.ConvertO(__workflow_bodyttl);
                     bodypropCount++;
                 }
 

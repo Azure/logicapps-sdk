@@ -1,58 +1,55 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendansms
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class SendansmsActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendansms")]
-        [WorkflowExpressionFactory(nameof(__BuildSendSms))]
-        public IWorkflowAction SendSms([WorkflowExpression] Func<string> xTopMessageKey, [WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<string> bodydatafrom = null, [WorkflowExpression] Func<string[]> bodydatato = null, [WorkflowExpression] Func<string> bodydatatext = null)
+        public IWorkflowAction SendSms(Expression<Func<string>> xTopMessageKey, Expression<Func<string>> contentType = null, Expression<Func<string>> bodydatafrom = null, Expression<Func<string[]>> bodydatato = null, Expression<Func<string>> bodydatatext = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildSendSms(WorkflowExpression<string> xTopMessageKey, WorkflowExpression<string> contentType = null, WorkflowExpression<string> bodydatafrom = null, WorkflowExpression<string[]> bodydatato = null, WorkflowExpression<string> bodydatatext = null)
-        {
-            WorkflowExpression.Validate(xTopMessageKey, nameof(xTopMessageKey), required: true);
-            WorkflowExpression.Validate(contentType, nameof(contentType), required: false);
-            WorkflowExpression.Validate(bodydatafrom, nameof(bodydatafrom), required: false);
-            WorkflowExpression.Validate(bodydatato, nameof(bodydatato), required: false);
-            WorkflowExpression.Validate(bodydatatext, nameof(bodydatatext), required: false);
+            var __workflow_xTopMessageKey = xTopMessageKey == null ? null : WorkflowExpression.Compile(xTopMessageKey);
+            WorkflowExpression.Validate(__workflow_xTopMessageKey, nameof(xTopMessageKey), required: true);
+            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
+            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
+            var __workflow_bodydatafrom = bodydatafrom == null ? null : WorkflowExpression.Compile(bodydatafrom);
+            WorkflowExpression.Validate(__workflow_bodydatafrom, nameof(bodydatafrom), required: false);
+            var __workflow_bodydatato = bodydatato == null ? null : WorkflowExpression.Compile(bodydatato);
+            WorkflowExpression.Validate(__workflow_bodydatato, nameof(bodydatato), required: false);
+            var __workflow_bodydatatext = bodydatatext == null ? null : WorkflowExpression.Compile(bodydatatext);
+            WorkflowExpression.Validate(__workflow_bodydatatext, nameof(bodydatatext), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/messages";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-TopMessage-Key"] = ExpressionConverter.Convert(xTopMessageKey);
-                if (contentType != null)
-                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                callPayload.Headers["X-TopMessage-Key"] = ExpressionConverter.Convert(__workflow_xTopMessageKey);
+                if (__workflow_contentType != null)
+                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 var body = new JObject();
                 var bodypropCount = 0;
                 var dataObject = new JObject();
                 var dataObjectpropCount = 0;
-                if (bodydatafrom != null)
+                if (__workflow_bodydatafrom != null)
                 {
-                    dataObject["from"] = ExpressionConverter.ConvertO(bodydatafrom);
+                    dataObject["from"] = ExpressionConverter.ConvertO(__workflow_bodydatafrom);
                     dataObjectpropCount++;
                 }
 
-                if (bodydatato != null)
+                if (__workflow_bodydatato != null)
                 {
-                    dataObject["to"] = ExpressionConverter.ConvertO(bodydatato);
+                    dataObject["to"] = ExpressionConverter.ConvertO(__workflow_bodydatato);
                     dataObjectpropCount++;
                 }
 
-                if (bodydatatext != null)
+                if (__workflow_bodydatatext != null)
                 {
-                    dataObject["text"] = ExpressionConverter.ConvertO(bodydatatext);
+                    dataObject["text"] = ExpressionConverter.ConvertO(__workflow_bodydatatext);
                     dataObjectpropCount++;
                 }
 

@@ -1,168 +1,139 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class AmbeeipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        [WorkflowExpressionFactory(nameof(__BuildAirQualityGeo))]
-        public IBodyWorkflowAction<AirQualityGeoResponse> AirQualityGeo([WorkflowExpression] Func<int> lat = null, [WorkflowExpression] Func<int> lng = null)
+        public IBodyWorkflowAction<AirQualityGeoResponse> AirQualityGeo(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AirQualityGeoResponse> __BuildAirQualityGeo(WorkflowExpression<int> lat = null, WorkflowExpression<int> lng = null)
-        {
-            WorkflowExpression.Validate(lat, nameof(lat), required: false);
-            WorkflowExpression.Validate(lng, nameof(lng), required: false);
+            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
+            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: false);
+            var __workflow_lng = lng == null ? null : WorkflowExpression.Compile(lng);
+            WorkflowExpression.Validate(__workflow_lng, nameof(lng), required: false);
             return new DeferredBodyAction<AirQualityGeoResponse>(() =>
             {
                 var apiCallPath = "/latest/by-lat-lng";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lat != null)
-                    callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
-                if (lng != null)
-                    callPayload.Queries["lng"] = ExpressionConverter.Convert(lng);
+                if (__workflow_lat != null)
+                    callPayload.Queries["lat"] = ExpressionConverter.Convert(__workflow_lat);
+                if (__workflow_lng != null)
+                    callPayload.Queries["lng"] = ExpressionConverter.Convert(__workflow_lng);
                 return new ApiConnectionAction<AirQualityGeoResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        [WorkflowExpressionFactory(nameof(__BuildAirQualityPostal))]
-        public IBodyWorkflowAction<AirQualityPostalResponse> AirQualityPostal([WorkflowExpression] Func<int> postalCode = null, [WorkflowExpression] Func<string> countryCode = null)
+        public IBodyWorkflowAction<AirQualityPostalResponse> AirQualityPostal(Expression<Func<int>> postalCode = null, Expression<Func<string>> countryCode = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AirQualityPostalResponse> __BuildAirQualityPostal(WorkflowExpression<int> postalCode = null, WorkflowExpression<string> countryCode = null)
-        {
-            WorkflowExpression.Validate(postalCode, nameof(postalCode), required: false);
-            WorkflowExpression.Validate(countryCode, nameof(countryCode), required: false);
+            var __workflow_postalCode = postalCode == null ? null : WorkflowExpression.Compile(postalCode);
+            WorkflowExpression.Validate(__workflow_postalCode, nameof(postalCode), required: false);
+            var __workflow_countryCode = countryCode == null ? null : WorkflowExpression.Compile(countryCode);
+            WorkflowExpression.Validate(__workflow_countryCode, nameof(countryCode), required: false);
             return new DeferredBodyAction<AirQualityPostalResponse>(() =>
             {
                 var apiCallPath = "/latest/by-postal-code";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (postalCode != null)
-                    callPayload.Queries["postalCode"] = ExpressionConverter.Convert(postalCode);
-                if (countryCode != null)
-                    callPayload.Queries["countryCode"] = ExpressionConverter.Convert(countryCode);
+                if (__workflow_postalCode != null)
+                    callPayload.Queries["postalCode"] = ExpressionConverter.Convert(__workflow_postalCode);
+                if (__workflow_countryCode != null)
+                    callPayload.Queries["countryCode"] = ExpressionConverter.Convert(__workflow_countryCode);
                 return new ApiConnectionAction<AirQualityPostalResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        [WorkflowExpressionFactory(nameof(__BuildAirQualityCity))]
-        public IBodyWorkflowAction<AirQualityCityResponse> AirQualityCity([WorkflowExpression] Func<string> city = null)
+        public IBodyWorkflowAction<AirQualityCityResponse> AirQualityCity(Expression<Func<string>> city = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AirQualityCityResponse> __BuildAirQualityCity(WorkflowExpression<string> city = null)
-        {
-            WorkflowExpression.Validate(city, nameof(city), required: false);
+            var __workflow_city = city == null ? null : WorkflowExpression.Compile(city);
+            WorkflowExpression.Validate(__workflow_city, nameof(city), required: false);
             return new DeferredBodyAction<AirQualityCityResponse>(() =>
             {
                 var apiCallPath = "/latest/by-city";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (city != null)
-                    callPayload.Queries["city"] = ExpressionConverter.Convert(city);
+                if (__workflow_city != null)
+                    callPayload.Queries["city"] = ExpressionConverter.Convert(__workflow_city);
                 return new ApiConnectionAction<AirQualityCityResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        [WorkflowExpressionFactory(nameof(__BuildAirQualityCountry))]
-        public IBodyWorkflowAction<AirQualityCountryResponse> AirQualityCountry([WorkflowExpression] Func<string> countryCode = null)
+        public IBodyWorkflowAction<AirQualityCountryResponse> AirQualityCountry(Expression<Func<string>> countryCode = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AirQualityCountryResponse> __BuildAirQualityCountry(WorkflowExpression<string> countryCode = null)
-        {
-            WorkflowExpression.Validate(countryCode, nameof(countryCode), required: false);
+            var __workflow_countryCode = countryCode == null ? null : WorkflowExpression.Compile(countryCode);
+            WorkflowExpression.Validate(__workflow_countryCode, nameof(countryCode), required: false);
             return new DeferredBodyAction<AirQualityCountryResponse>(() =>
             {
                 var apiCallPath = "/latest/by-country-code";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (countryCode != null)
-                    callPayload.Queries["countryCode"] = ExpressionConverter.Convert(countryCode);
+                if (__workflow_countryCode != null)
+                    callPayload.Queries["countryCode"] = ExpressionConverter.Convert(__workflow_countryCode);
                 return new ApiConnectionAction<AirQualityCountryResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        [WorkflowExpressionFactory(nameof(__BuildAirQualityGeoHistory))]
-        public IBodyWorkflowAction<AirQualityGeoHistoryResponse> AirQualityGeoHistory([WorkflowExpression] Func<int> lat = null, [WorkflowExpression] Func<int> lng = null, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> to = null)
+        public IBodyWorkflowAction<AirQualityGeoHistoryResponse> AirQualityGeoHistory(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AirQualityGeoHistoryResponse> __BuildAirQualityGeoHistory(WorkflowExpression<int> lat = null, WorkflowExpression<int> lng = null, WorkflowExpression<string> from = null, WorkflowExpression<string> to = null)
-        {
-            WorkflowExpression.Validate(lat, nameof(lat), required: false);
-            WorkflowExpression.Validate(lng, nameof(lng), required: false);
-            WorkflowExpression.Validate(from, nameof(from), required: false);
-            WorkflowExpression.Validate(to, nameof(to), required: false);
+            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
+            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: false);
+            var __workflow_lng = lng == null ? null : WorkflowExpression.Compile(lng);
+            WorkflowExpression.Validate(__workflow_lng, nameof(lng), required: false);
+            var __workflow_from = from == null ? null : WorkflowExpression.Compile(from);
+            WorkflowExpression.Validate(__workflow_from, nameof(from), required: false);
+            var __workflow_to = to == null ? null : WorkflowExpression.Compile(to);
+            WorkflowExpression.Validate(__workflow_to, nameof(to), required: false);
             return new DeferredBodyAction<AirQualityGeoHistoryResponse>(() =>
             {
                 var apiCallPath = "/history/by-lat-lng";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lat != null)
-                    callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
-                if (lng != null)
-                    callPayload.Queries["lng"] = ExpressionConverter.Convert(lng);
-                if (from != null)
-                    callPayload.Queries["from"] = ExpressionConverter.Convert(from);
-                if (to != null)
-                    callPayload.Queries["to"] = ExpressionConverter.Convert(to);
+                if (__workflow_lat != null)
+                    callPayload.Queries["lat"] = ExpressionConverter.Convert(__workflow_lat);
+                if (__workflow_lng != null)
+                    callPayload.Queries["lng"] = ExpressionConverter.Convert(__workflow_lng);
+                if (__workflow_from != null)
+                    callPayload.Queries["from"] = ExpressionConverter.Convert(__workflow_from);
+                if (__workflow_to != null)
+                    callPayload.Queries["to"] = ExpressionConverter.Convert(__workflow_to);
                 return new ApiConnectionAction<AirQualityGeoHistoryResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        [WorkflowExpressionFactory(nameof(__BuildAirQualityPostalHistory))]
-        public IBodyWorkflowAction<AirQualityPostalHistoryResponse> AirQualityPostalHistory([WorkflowExpression] Func<int> postalCode = null, [WorkflowExpression] Func<string> countryCode = null, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> to = null)
+        public IBodyWorkflowAction<AirQualityPostalHistoryResponse> AirQualityPostalHistory(Expression<Func<int>> postalCode = null, Expression<Func<string>> countryCode = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AirQualityPostalHistoryResponse> __BuildAirQualityPostalHistory(WorkflowExpression<int> postalCode = null, WorkflowExpression<string> countryCode = null, WorkflowExpression<string> from = null, WorkflowExpression<string> to = null)
-        {
-            WorkflowExpression.Validate(postalCode, nameof(postalCode), required: false);
-            WorkflowExpression.Validate(countryCode, nameof(countryCode), required: false);
-            WorkflowExpression.Validate(from, nameof(from), required: false);
-            WorkflowExpression.Validate(to, nameof(to), required: false);
+            var __workflow_postalCode = postalCode == null ? null : WorkflowExpression.Compile(postalCode);
+            WorkflowExpression.Validate(__workflow_postalCode, nameof(postalCode), required: false);
+            var __workflow_countryCode = countryCode == null ? null : WorkflowExpression.Compile(countryCode);
+            WorkflowExpression.Validate(__workflow_countryCode, nameof(countryCode), required: false);
+            var __workflow_from = from == null ? null : WorkflowExpression.Compile(from);
+            WorkflowExpression.Validate(__workflow_from, nameof(from), required: false);
+            var __workflow_to = to == null ? null : WorkflowExpression.Compile(to);
+            WorkflowExpression.Validate(__workflow_to, nameof(to), required: false);
             return new DeferredBodyAction<AirQualityPostalHistoryResponse>(() =>
             {
                 var apiCallPath = "/history/by-postal-code";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (postalCode != null)
-                    callPayload.Queries["postalCode"] = ExpressionConverter.Convert(postalCode);
-                if (countryCode != null)
-                    callPayload.Queries["countryCode"] = ExpressionConverter.Convert(countryCode);
-                if (from != null)
-                    callPayload.Queries["from"] = ExpressionConverter.Convert(from);
-                if (to != null)
-                    callPayload.Queries["to"] = ExpressionConverter.Convert(to);
+                if (__workflow_postalCode != null)
+                    callPayload.Queries["postalCode"] = ExpressionConverter.Convert(__workflow_postalCode);
+                if (__workflow_countryCode != null)
+                    callPayload.Queries["countryCode"] = ExpressionConverter.Convert(__workflow_countryCode);
+                if (__workflow_from != null)
+                    callPayload.Queries["from"] = ExpressionConverter.Convert(__workflow_from);
+                if (__workflow_to != null)
+                    callPayload.Queries["to"] = ExpressionConverter.Convert(__workflow_to);
                 return new ApiConnectionAction<AirQualityPostalHistoryResponse>(callPayload);
             });
         }
@@ -186,353 +157,297 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        [WorkflowExpressionFactory(nameof(__BuildWeatherCurrent))]
-        public IBodyWorkflowAction<WeatherCurrentResponse> WeatherCurrent([WorkflowExpression] Func<int> lat = null, [WorkflowExpression] Func<int> lng = null)
+        public IBodyWorkflowAction<WeatherCurrentResponse> WeatherCurrent(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<WeatherCurrentResponse> __BuildWeatherCurrent(WorkflowExpression<int> lat = null, WorkflowExpression<int> lng = null)
-        {
-            WorkflowExpression.Validate(lat, nameof(lat), required: false);
-            WorkflowExpression.Validate(lng, nameof(lng), required: false);
+            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
+            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: false);
+            var __workflow_lng = lng == null ? null : WorkflowExpression.Compile(lng);
+            WorkflowExpression.Validate(__workflow_lng, nameof(lng), required: false);
             return new DeferredBodyAction<WeatherCurrentResponse>(() =>
             {
                 var apiCallPath = "/weather/latest/by-lat-lng";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lat != null)
-                    callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
-                if (lng != null)
-                    callPayload.Queries["lng"] = ExpressionConverter.Convert(lng);
+                if (__workflow_lat != null)
+                    callPayload.Queries["lat"] = ExpressionConverter.Convert(__workflow_lat);
+                if (__workflow_lng != null)
+                    callPayload.Queries["lng"] = ExpressionConverter.Convert(__workflow_lng);
                 return new ApiConnectionAction<WeatherCurrentResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        [WorkflowExpressionFactory(nameof(__BuildWeatherHistory))]
-        public IBodyWorkflowAction<WeatherHistoryResponse> WeatherHistory([WorkflowExpression] Func<int> lat = null, [WorkflowExpression] Func<int> lng = null, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> to = null)
+        public IBodyWorkflowAction<WeatherHistoryResponse> WeatherHistory(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<WeatherHistoryResponse> __BuildWeatherHistory(WorkflowExpression<int> lat = null, WorkflowExpression<int> lng = null, WorkflowExpression<string> from = null, WorkflowExpression<string> to = null)
-        {
-            WorkflowExpression.Validate(lat, nameof(lat), required: false);
-            WorkflowExpression.Validate(lng, nameof(lng), required: false);
-            WorkflowExpression.Validate(from, nameof(from), required: false);
-            WorkflowExpression.Validate(to, nameof(to), required: false);
+            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
+            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: false);
+            var __workflow_lng = lng == null ? null : WorkflowExpression.Compile(lng);
+            WorkflowExpression.Validate(__workflow_lng, nameof(lng), required: false);
+            var __workflow_from = from == null ? null : WorkflowExpression.Compile(from);
+            WorkflowExpression.Validate(__workflow_from, nameof(from), required: false);
+            var __workflow_to = to == null ? null : WorkflowExpression.Compile(to);
+            WorkflowExpression.Validate(__workflow_to, nameof(to), required: false);
             return new DeferredBodyAction<WeatherHistoryResponse>(() =>
             {
                 var apiCallPath = "/weather/history/by-lat-lng";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lat != null)
-                    callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
-                if (lng != null)
-                    callPayload.Queries["lng"] = ExpressionConverter.Convert(lng);
-                if (from != null)
-                    callPayload.Queries["from"] = ExpressionConverter.Convert(from);
-                if (to != null)
-                    callPayload.Queries["to"] = ExpressionConverter.Convert(to);
+                if (__workflow_lat != null)
+                    callPayload.Queries["lat"] = ExpressionConverter.Convert(__workflow_lat);
+                if (__workflow_lng != null)
+                    callPayload.Queries["lng"] = ExpressionConverter.Convert(__workflow_lng);
+                if (__workflow_from != null)
+                    callPayload.Queries["from"] = ExpressionConverter.Convert(__workflow_from);
+                if (__workflow_to != null)
+                    callPayload.Queries["to"] = ExpressionConverter.Convert(__workflow_to);
                 return new ApiConnectionAction<WeatherHistoryResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        [WorkflowExpressionFactory(nameof(__BuildWeatherForecast))]
-        public IBodyWorkflowAction<WeatherForecastResponse> WeatherForecast([WorkflowExpression] Func<int> lat = null, [WorkflowExpression] Func<int> lng = null, [WorkflowExpression] Func<string> filter = null)
+        public IBodyWorkflowAction<WeatherForecastResponse> WeatherForecast(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null, Expression<Func<string>> filter = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<WeatherForecastResponse> __BuildWeatherForecast(WorkflowExpression<int> lat = null, WorkflowExpression<int> lng = null, WorkflowExpression<string> filter = null)
-        {
-            WorkflowExpression.Validate(lat, nameof(lat), required: false);
-            WorkflowExpression.Validate(lng, nameof(lng), required: false);
-            WorkflowExpression.Validate(filter, nameof(filter), required: false);
+            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
+            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: false);
+            var __workflow_lng = lng == null ? null : WorkflowExpression.Compile(lng);
+            WorkflowExpression.Validate(__workflow_lng, nameof(lng), required: false);
+            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
+            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
             return new DeferredBodyAction<WeatherForecastResponse>(() =>
             {
                 var apiCallPath = "/weather/forecast/by-lat-lng";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lat != null)
-                    callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
-                if (lng != null)
-                    callPayload.Queries["lng"] = ExpressionConverter.Convert(lng);
-                if (filter != null)
-                    callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
+                if (__workflow_lat != null)
+                    callPayload.Queries["lat"] = ExpressionConverter.Convert(__workflow_lat);
+                if (__workflow_lng != null)
+                    callPayload.Queries["lng"] = ExpressionConverter.Convert(__workflow_lng);
+                if (__workflow_filter != null)
+                    callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
                 return new ApiConnectionAction<WeatherForecastResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        [WorkflowExpressionFactory(nameof(__BuildPollenLatestGeo))]
-        public IBodyWorkflowAction<PollenLatestGeoResponse> PollenLatestGeo([WorkflowExpression] Func<int> lat = null, [WorkflowExpression] Func<int> lng = null)
+        public IBodyWorkflowAction<PollenLatestGeoResponse> PollenLatestGeo(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PollenLatestGeoResponse> __BuildPollenLatestGeo(WorkflowExpression<int> lat = null, WorkflowExpression<int> lng = null)
-        {
-            WorkflowExpression.Validate(lat, nameof(lat), required: false);
-            WorkflowExpression.Validate(lng, nameof(lng), required: false);
+            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
+            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: false);
+            var __workflow_lng = lng == null ? null : WorkflowExpression.Compile(lng);
+            WorkflowExpression.Validate(__workflow_lng, nameof(lng), required: false);
             return new DeferredBodyAction<PollenLatestGeoResponse>(() =>
             {
                 var apiCallPath = "/latest/pollen/by-lat-lng";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lat != null)
-                    callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
-                if (lng != null)
-                    callPayload.Queries["lng"] = ExpressionConverter.Convert(lng);
+                if (__workflow_lat != null)
+                    callPayload.Queries["lat"] = ExpressionConverter.Convert(__workflow_lat);
+                if (__workflow_lng != null)
+                    callPayload.Queries["lng"] = ExpressionConverter.Convert(__workflow_lng);
                 return new ApiConnectionAction<PollenLatestGeoResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        [WorkflowExpressionFactory(nameof(__BuildPollenLatestPlace))]
-        public IBodyWorkflowAction<PollenLatestPlaceResponse> PollenLatestPlace([WorkflowExpression] Func<string> place = null)
+        public IBodyWorkflowAction<PollenLatestPlaceResponse> PollenLatestPlace(Expression<Func<string>> place = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PollenLatestPlaceResponse> __BuildPollenLatestPlace(WorkflowExpression<string> place = null)
-        {
-            WorkflowExpression.Validate(place, nameof(place), required: false);
+            var __workflow_place = place == null ? null : WorkflowExpression.Compile(place);
+            WorkflowExpression.Validate(__workflow_place, nameof(place), required: false);
             return new DeferredBodyAction<PollenLatestPlaceResponse>(() =>
             {
                 var apiCallPath = "/latest/pollen/by-place";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (place != null)
-                    callPayload.Queries["place"] = ExpressionConverter.Convert(place);
+                if (__workflow_place != null)
+                    callPayload.Queries["place"] = ExpressionConverter.Convert(__workflow_place);
                 return new ApiConnectionAction<PollenLatestPlaceResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        [WorkflowExpressionFactory(nameof(__BuildPollenHistoryGeo))]
-        public IBodyWorkflowAction<PollenHistoryGeoResponse> PollenHistoryGeo([WorkflowExpression] Func<int> lat = null, [WorkflowExpression] Func<int> lng = null, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> to = null)
+        public IBodyWorkflowAction<PollenHistoryGeoResponse> PollenHistoryGeo(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PollenHistoryGeoResponse> __BuildPollenHistoryGeo(WorkflowExpression<int> lat = null, WorkflowExpression<int> lng = null, WorkflowExpression<string> from = null, WorkflowExpression<string> to = null)
-        {
-            WorkflowExpression.Validate(lat, nameof(lat), required: false);
-            WorkflowExpression.Validate(lng, nameof(lng), required: false);
-            WorkflowExpression.Validate(from, nameof(from), required: false);
-            WorkflowExpression.Validate(to, nameof(to), required: false);
+            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
+            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: false);
+            var __workflow_lng = lng == null ? null : WorkflowExpression.Compile(lng);
+            WorkflowExpression.Validate(__workflow_lng, nameof(lng), required: false);
+            var __workflow_from = from == null ? null : WorkflowExpression.Compile(from);
+            WorkflowExpression.Validate(__workflow_from, nameof(from), required: false);
+            var __workflow_to = to == null ? null : WorkflowExpression.Compile(to);
+            WorkflowExpression.Validate(__workflow_to, nameof(to), required: false);
             return new DeferredBodyAction<PollenHistoryGeoResponse>(() =>
             {
                 var apiCallPath = "/history/pollen/by-lat-lng";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lat != null)
-                    callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
-                if (lng != null)
-                    callPayload.Queries["lng"] = ExpressionConverter.Convert(lng);
-                if (from != null)
-                    callPayload.Queries["from"] = ExpressionConverter.Convert(from);
-                if (to != null)
-                    callPayload.Queries["to"] = ExpressionConverter.Convert(to);
+                if (__workflow_lat != null)
+                    callPayload.Queries["lat"] = ExpressionConverter.Convert(__workflow_lat);
+                if (__workflow_lng != null)
+                    callPayload.Queries["lng"] = ExpressionConverter.Convert(__workflow_lng);
+                if (__workflow_from != null)
+                    callPayload.Queries["from"] = ExpressionConverter.Convert(__workflow_from);
+                if (__workflow_to != null)
+                    callPayload.Queries["to"] = ExpressionConverter.Convert(__workflow_to);
                 return new ApiConnectionAction<PollenHistoryGeoResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        [WorkflowExpressionFactory(nameof(__BuildPollenHistoryPlace))]
-        public IBodyWorkflowAction<PollenHistoryPlaceResponse> PollenHistoryPlace([WorkflowExpression] Func<string> place = null, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> to = null)
+        public IBodyWorkflowAction<PollenHistoryPlaceResponse> PollenHistoryPlace(Expression<Func<string>> place = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PollenHistoryPlaceResponse> __BuildPollenHistoryPlace(WorkflowExpression<string> place = null, WorkflowExpression<string> from = null, WorkflowExpression<string> to = null)
-        {
-            WorkflowExpression.Validate(place, nameof(place), required: false);
-            WorkflowExpression.Validate(from, nameof(from), required: false);
-            WorkflowExpression.Validate(to, nameof(to), required: false);
+            var __workflow_place = place == null ? null : WorkflowExpression.Compile(place);
+            WorkflowExpression.Validate(__workflow_place, nameof(place), required: false);
+            var __workflow_from = from == null ? null : WorkflowExpression.Compile(from);
+            WorkflowExpression.Validate(__workflow_from, nameof(from), required: false);
+            var __workflow_to = to == null ? null : WorkflowExpression.Compile(to);
+            WorkflowExpression.Validate(__workflow_to, nameof(to), required: false);
             return new DeferredBodyAction<PollenHistoryPlaceResponse>(() =>
             {
                 var apiCallPath = "/history/pollen/by-place";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (place != null)
-                    callPayload.Queries["place"] = ExpressionConverter.Convert(place);
-                if (from != null)
-                    callPayload.Queries["from"] = ExpressionConverter.Convert(from);
-                if (to != null)
-                    callPayload.Queries["to"] = ExpressionConverter.Convert(to);
+                if (__workflow_place != null)
+                    callPayload.Queries["place"] = ExpressionConverter.Convert(__workflow_place);
+                if (__workflow_from != null)
+                    callPayload.Queries["from"] = ExpressionConverter.Convert(__workflow_from);
+                if (__workflow_to != null)
+                    callPayload.Queries["to"] = ExpressionConverter.Convert(__workflow_to);
                 return new ApiConnectionAction<PollenHistoryPlaceResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        [WorkflowExpressionFactory(nameof(__BuildPollForecastGeo))]
-        public IBodyWorkflowAction<PollForecastGeoResponse> PollForecastGeo([WorkflowExpression] Func<int> lat = null, [WorkflowExpression] Func<int> lng = null)
+        public IBodyWorkflowAction<PollForecastGeoResponse> PollForecastGeo(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PollForecastGeoResponse> __BuildPollForecastGeo(WorkflowExpression<int> lat = null, WorkflowExpression<int> lng = null)
-        {
-            WorkflowExpression.Validate(lat, nameof(lat), required: false);
-            WorkflowExpression.Validate(lng, nameof(lng), required: false);
+            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
+            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: false);
+            var __workflow_lng = lng == null ? null : WorkflowExpression.Compile(lng);
+            WorkflowExpression.Validate(__workflow_lng, nameof(lng), required: false);
             return new DeferredBodyAction<PollForecastGeoResponse>(() =>
             {
                 var apiCallPath = "/forecast/pollen/by-lat-lng";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lat != null)
-                    callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
-                if (lng != null)
-                    callPayload.Queries["lng"] = ExpressionConverter.Convert(lng);
+                if (__workflow_lat != null)
+                    callPayload.Queries["lat"] = ExpressionConverter.Convert(__workflow_lat);
+                if (__workflow_lng != null)
+                    callPayload.Queries["lng"] = ExpressionConverter.Convert(__workflow_lng);
                 return new ApiConnectionAction<PollForecastGeoResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        [WorkflowExpressionFactory(nameof(__BuildFireCurrent))]
-        public IBodyWorkflowAction<FireCurrentResponse> FireCurrent([WorkflowExpression] Func<int> lat = null, [WorkflowExpression] Func<int> lng = null)
+        public IBodyWorkflowAction<FireCurrentResponse> FireCurrent(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FireCurrentResponse> __BuildFireCurrent(WorkflowExpression<int> lat = null, WorkflowExpression<int> lng = null)
-        {
-            WorkflowExpression.Validate(lat, nameof(lat), required: false);
-            WorkflowExpression.Validate(lng, nameof(lng), required: false);
+            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
+            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: false);
+            var __workflow_lng = lng == null ? null : WorkflowExpression.Compile(lng);
+            WorkflowExpression.Validate(__workflow_lng, nameof(lng), required: false);
             return new DeferredBodyAction<FireCurrentResponse>(() =>
             {
                 var apiCallPath = "/latest/fire";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lat != null)
-                    callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
-                if (lng != null)
-                    callPayload.Queries["lng"] = ExpressionConverter.Convert(lng);
+                if (__workflow_lat != null)
+                    callPayload.Queries["lat"] = ExpressionConverter.Convert(__workflow_lat);
+                if (__workflow_lng != null)
+                    callPayload.Queries["lng"] = ExpressionConverter.Convert(__workflow_lng);
                 return new ApiConnectionAction<FireCurrentResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        [WorkflowExpressionFactory(nameof(__BuildSoilCurrent))]
-        public IBodyWorkflowAction<SoilCurrentResponse> SoilCurrent([WorkflowExpression] Func<int> lat = null, [WorkflowExpression] Func<int> lng = null)
+        public IBodyWorkflowAction<SoilCurrentResponse> SoilCurrent(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SoilCurrentResponse> __BuildSoilCurrent(WorkflowExpression<int> lat = null, WorkflowExpression<int> lng = null)
-        {
-            WorkflowExpression.Validate(lat, nameof(lat), required: false);
-            WorkflowExpression.Validate(lng, nameof(lng), required: false);
+            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
+            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: false);
+            var __workflow_lng = lng == null ? null : WorkflowExpression.Compile(lng);
+            WorkflowExpression.Validate(__workflow_lng, nameof(lng), required: false);
             return new DeferredBodyAction<SoilCurrentResponse>(() =>
             {
                 var apiCallPath = "/soil/latest/by-lat-lng";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lat != null)
-                    callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
-                if (lng != null)
-                    callPayload.Queries["lng"] = ExpressionConverter.Convert(lng);
+                if (__workflow_lat != null)
+                    callPayload.Queries["lat"] = ExpressionConverter.Convert(__workflow_lat);
+                if (__workflow_lng != null)
+                    callPayload.Queries["lng"] = ExpressionConverter.Convert(__workflow_lng);
                 return new ApiConnectionAction<SoilCurrentResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        [WorkflowExpressionFactory(nameof(__BuildSoilHistory))]
-        public IBodyWorkflowAction<SoilHistoryResponse> SoilHistory([WorkflowExpression] Func<int> lat = null, [WorkflowExpression] Func<int> lng = null, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> to = null)
+        public IBodyWorkflowAction<SoilHistoryResponse> SoilHistory(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SoilHistoryResponse> __BuildSoilHistory(WorkflowExpression<int> lat = null, WorkflowExpression<int> lng = null, WorkflowExpression<string> from = null, WorkflowExpression<string> to = null)
-        {
-            WorkflowExpression.Validate(lat, nameof(lat), required: false);
-            WorkflowExpression.Validate(lng, nameof(lng), required: false);
-            WorkflowExpression.Validate(from, nameof(from), required: false);
-            WorkflowExpression.Validate(to, nameof(to), required: false);
+            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
+            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: false);
+            var __workflow_lng = lng == null ? null : WorkflowExpression.Compile(lng);
+            WorkflowExpression.Validate(__workflow_lng, nameof(lng), required: false);
+            var __workflow_from = from == null ? null : WorkflowExpression.Compile(from);
+            WorkflowExpression.Validate(__workflow_from, nameof(from), required: false);
+            var __workflow_to = to == null ? null : WorkflowExpression.Compile(to);
+            WorkflowExpression.Validate(__workflow_to, nameof(to), required: false);
             return new DeferredBodyAction<SoilHistoryResponse>(() =>
             {
                 var apiCallPath = "/soil/history/by-lat-lng";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lat != null)
-                    callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
-                if (lng != null)
-                    callPayload.Queries["lng"] = ExpressionConverter.Convert(lng);
-                if (from != null)
-                    callPayload.Queries["from"] = ExpressionConverter.Convert(from);
-                if (to != null)
-                    callPayload.Queries["to"] = ExpressionConverter.Convert(to);
+                if (__workflow_lat != null)
+                    callPayload.Queries["lat"] = ExpressionConverter.Convert(__workflow_lat);
+                if (__workflow_lng != null)
+                    callPayload.Queries["lng"] = ExpressionConverter.Convert(__workflow_lng);
+                if (__workflow_from != null)
+                    callPayload.Queries["from"] = ExpressionConverter.Convert(__workflow_from);
+                if (__workflow_to != null)
+                    callPayload.Queries["to"] = ExpressionConverter.Convert(__workflow_to);
                 return new ApiConnectionAction<SoilHistoryResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        [WorkflowExpressionFactory(nameof(__BuildWaterVaporCurrent))]
-        public IBodyWorkflowAction<WaterVaporCurrentResponse> WaterVaporCurrent([WorkflowExpression] Func<int> lat = null, [WorkflowExpression] Func<int> lng = null)
+        public IBodyWorkflowAction<WaterVaporCurrentResponse> WaterVaporCurrent(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<WaterVaporCurrentResponse> __BuildWaterVaporCurrent(WorkflowExpression<int> lat = null, WorkflowExpression<int> lng = null)
-        {
-            WorkflowExpression.Validate(lat, nameof(lat), required: false);
-            WorkflowExpression.Validate(lng, nameof(lng), required: false);
+            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
+            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: false);
+            var __workflow_lng = lng == null ? null : WorkflowExpression.Compile(lng);
+            WorkflowExpression.Validate(__workflow_lng, nameof(lng), required: false);
             return new DeferredBodyAction<WaterVaporCurrentResponse>(() =>
             {
                 var apiCallPath = "/waterVapor/latest/by-lat-lng";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lat != null)
-                    callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
-                if (lng != null)
-                    callPayload.Queries["lng"] = ExpressionConverter.Convert(lng);
+                if (__workflow_lat != null)
+                    callPayload.Queries["lat"] = ExpressionConverter.Convert(__workflow_lat);
+                if (__workflow_lng != null)
+                    callPayload.Queries["lng"] = ExpressionConverter.Convert(__workflow_lng);
                 return new ApiConnectionAction<WaterVaporCurrentResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        [WorkflowExpressionFactory(nameof(__BuildWaterVaporGeo))]
-        public IBodyWorkflowAction<WaterVaporGeoResponse> WaterVaporGeo([WorkflowExpression] Func<int> lat = null, [WorkflowExpression] Func<int> lng = null, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> to = null)
+        public IBodyWorkflowAction<WaterVaporGeoResponse> WaterVaporGeo(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<WaterVaporGeoResponse> __BuildWaterVaporGeo(WorkflowExpression<int> lat = null, WorkflowExpression<int> lng = null, WorkflowExpression<string> from = null, WorkflowExpression<string> to = null)
-        {
-            WorkflowExpression.Validate(lat, nameof(lat), required: false);
-            WorkflowExpression.Validate(lng, nameof(lng), required: false);
-            WorkflowExpression.Validate(from, nameof(from), required: false);
-            WorkflowExpression.Validate(to, nameof(to), required: false);
+            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
+            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: false);
+            var __workflow_lng = lng == null ? null : WorkflowExpression.Compile(lng);
+            WorkflowExpression.Validate(__workflow_lng, nameof(lng), required: false);
+            var __workflow_from = from == null ? null : WorkflowExpression.Compile(from);
+            WorkflowExpression.Validate(__workflow_from, nameof(from), required: false);
+            var __workflow_to = to == null ? null : WorkflowExpression.Compile(to);
+            WorkflowExpression.Validate(__workflow_to, nameof(to), required: false);
             return new DeferredBodyAction<WaterVaporGeoResponse>(() =>
             {
                 var apiCallPath = "/waterVapor/history/by-lat-lng";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lat != null)
-                    callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
-                if (lng != null)
-                    callPayload.Queries["lng"] = ExpressionConverter.Convert(lng);
-                if (from != null)
-                    callPayload.Queries["from"] = ExpressionConverter.Convert(from);
-                if (to != null)
-                    callPayload.Queries["to"] = ExpressionConverter.Convert(to);
+                if (__workflow_lat != null)
+                    callPayload.Queries["lat"] = ExpressionConverter.Convert(__workflow_lat);
+                if (__workflow_lng != null)
+                    callPayload.Queries["lng"] = ExpressionConverter.Convert(__workflow_lng);
+                if (__workflow_from != null)
+                    callPayload.Queries["from"] = ExpressionConverter.Convert(__workflow_from);
+                if (__workflow_to != null)
+                    callPayload.Queries["to"] = ExpressionConverter.Convert(__workflow_to);
                 return new ApiConnectionAction<WaterVaporGeoResponse>(callPayload);
             });
         }

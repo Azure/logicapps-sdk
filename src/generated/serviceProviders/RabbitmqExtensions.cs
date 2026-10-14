@@ -1,7 +1,6 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
 {
     using System;
@@ -9,37 +8,34 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class RabbitmqActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "rabbitmq")]
-        [WorkflowExpressionFactory(nameof(__BuildSendRabbitMQMessage))]
-        public IBodyWorkflowAction<SendRabbitMQMessageOutput> SendRabbitMQMessage([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<object> message, [WorkflowExpression] Func<string> exchangeName = null, [WorkflowExpression] Func<string> routingKey = null)
+        public IBodyWorkflowAction<SendRabbitMQMessageOutput> SendRabbitMQMessage(Expression<Func<string>> queueName, Expression<Func<object>> message, Expression<Func<string>> exchangeName = null, Expression<Func<string>> routingKey = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SendRabbitMQMessageOutput> __BuildSendRabbitMQMessage(WorkflowExpression<string> queueName, WorkflowExpression<object> message, WorkflowExpression<string> exchangeName = null, WorkflowExpression<string> routingKey = null)
-        {
-            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
-            WorkflowExpression.Validate(message, nameof(message), required: true);
-            WorkflowExpression.Validate(exchangeName, nameof(exchangeName), required: false);
-            WorkflowExpression.Validate(routingKey, nameof(routingKey), required: false);
+            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
+            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
+            var __workflow_message = message == null ? null : WorkflowExpression.Compile(message);
+            WorkflowExpression.Validate(__workflow_message, nameof(message), required: true);
+            var __workflow_exchangeName = exchangeName == null ? null : WorkflowExpression.Compile(exchangeName);
+            WorkflowExpression.Validate(__workflow_exchangeName, nameof(exchangeName), required: false);
+            var __workflow_routingKey = routingKey == null ? null : WorkflowExpression.Compile(routingKey);
+            WorkflowExpression.Validate(__workflow_routingKey, nameof(routingKey), required: false);
             return new DeferredBodyAction<SendRabbitMQMessageOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-                serviceProviderParameters["message"] = ExpressionConverter.ConvertO(message);
-                if (exchangeName != null)
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
+                serviceProviderParameters["message"] = ExpressionConverter.ConvertO(__workflow_message);
+                if (__workflow_exchangeName != null)
                 {
-                    serviceProviderParameters["exchangeName"] = ExpressionConverter.ConvertO(exchangeName);
+                    serviceProviderParameters["exchangeName"] = ExpressionConverter.ConvertO(__workflow_exchangeName);
                 }
 
-                if (routingKey != null)
+                if (__workflow_routingKey != null)
                 {
-                    serviceProviderParameters["routingKey"] = ExpressionConverter.ConvertO(routingKey);
+                    serviceProviderParameters["routingKey"] = ExpressionConverter.ConvertO(__workflow_routingKey);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -52,28 +48,26 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "rabbitmq")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateQueue))]
-        public IBodyWorkflowAction<CreateQueueOutput> CreateQueue([WorkflowExpression] Func<object> queueName, [WorkflowExpression] Func<bool> durable, [WorkflowExpression] Func<string> exchangeName, [WorkflowExpression] Func<CreateQueueInputExchangeTypeType> exchangeType, [WorkflowExpression] Func<string> bindingKey)
+        public IBodyWorkflowAction<CreateQueueOutput> CreateQueue(Expression<Func<object>> queueName, Expression<Func<bool>> durable, Expression<Func<string>> exchangeName, Expression<Func<CreateQueueInputExchangeTypeType>> exchangeType, Expression<Func<string>> bindingKey)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateQueueOutput> __BuildCreateQueue(WorkflowExpression<object> queueName, WorkflowExpression<bool> durable, WorkflowExpression<string> exchangeName, WorkflowExpression<CreateQueueInputExchangeTypeType> exchangeType, WorkflowExpression<string> bindingKey)
-        {
-            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
-            WorkflowExpression.Validate(durable, nameof(durable), required: true);
-            WorkflowExpression.Validate(exchangeName, nameof(exchangeName), required: true);
-            WorkflowExpression.Validate(exchangeType, nameof(exchangeType), required: true);
-            WorkflowExpression.Validate(bindingKey, nameof(bindingKey), required: true);
+            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
+            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
+            var __workflow_durable = durable == null ? null : WorkflowExpression.Compile(durable);
+            WorkflowExpression.Validate(__workflow_durable, nameof(durable), required: true);
+            var __workflow_exchangeName = exchangeName == null ? null : WorkflowExpression.Compile(exchangeName);
+            WorkflowExpression.Validate(__workflow_exchangeName, nameof(exchangeName), required: true);
+            var __workflow_exchangeType = exchangeType == null ? null : WorkflowExpression.Compile(exchangeType);
+            WorkflowExpression.Validate(__workflow_exchangeType, nameof(exchangeType), required: true);
+            var __workflow_bindingKey = bindingKey == null ? null : WorkflowExpression.Compile(bindingKey);
+            WorkflowExpression.Validate(__workflow_bindingKey, nameof(bindingKey), required: true);
             return new DeferredBodyAction<CreateQueueOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-                serviceProviderParameters["durable"] = ExpressionConverter.ConvertO(durable);
-                serviceProviderParameters["exchangeName"] = ExpressionConverter.ConvertO(exchangeName);
-                serviceProviderParameters["exchangeType"] = ExpressionConverter.ConvertO(exchangeType);
-                serviceProviderParameters["bindingKey"] = ExpressionConverter.ConvertO(bindingKey);
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
+                serviceProviderParameters["durable"] = ExpressionConverter.ConvertO(__workflow_durable);
+                serviceProviderParameters["exchangeName"] = ExpressionConverter.ConvertO(__workflow_exchangeName);
+                serviceProviderParameters["exchangeType"] = ExpressionConverter.ConvertO(__workflow_exchangeType);
+                serviceProviderParameters["bindingKey"] = ExpressionConverter.ConvertO(__workflow_bindingKey);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/rabbitmq", operationId: "createQueue", connectionName: connectionId),
@@ -84,28 +78,25 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "rabbitmq")]
-        [WorkflowExpressionFactory(nameof(__BuildCompleteMessage))]
-        public IOutputWorkflowAction<JToken> CompleteMessage([WorkflowExpression] Func<int> deliveryTag, [WorkflowExpression] Func<string> consumerTag, [WorkflowExpression] Func<CompleteMessageInputAcknowledgementType> acknowledgement, [WorkflowExpression] Func<bool> requeueOnReject = null)
+        public IOutputWorkflowAction<JToken> CompleteMessage(Expression<Func<int>> deliveryTag, Expression<Func<string>> consumerTag, Expression<Func<CompleteMessageInputAcknowledgementType>> acknowledgement, Expression<Func<bool>> requeueOnReject = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IOutputWorkflowAction<JToken> __BuildCompleteMessage(WorkflowExpression<int> deliveryTag, WorkflowExpression<string> consumerTag, WorkflowExpression<CompleteMessageInputAcknowledgementType> acknowledgement, WorkflowExpression<bool> requeueOnReject = null)
-        {
-            WorkflowExpression.Validate(deliveryTag, nameof(deliveryTag), required: true);
-            WorkflowExpression.Validate(consumerTag, nameof(consumerTag), required: true);
-            WorkflowExpression.Validate(acknowledgement, nameof(acknowledgement), required: true);
-            WorkflowExpression.Validate(requeueOnReject, nameof(requeueOnReject), required: false);
+            var __workflow_deliveryTag = deliveryTag == null ? null : WorkflowExpression.Compile(deliveryTag);
+            WorkflowExpression.Validate(__workflow_deliveryTag, nameof(deliveryTag), required: true);
+            var __workflow_consumerTag = consumerTag == null ? null : WorkflowExpression.Compile(consumerTag);
+            WorkflowExpression.Validate(__workflow_consumerTag, nameof(consumerTag), required: true);
+            var __workflow_acknowledgement = acknowledgement == null ? null : WorkflowExpression.Compile(acknowledgement);
+            WorkflowExpression.Validate(__workflow_acknowledgement, nameof(acknowledgement), required: true);
+            var __workflow_requeueOnReject = requeueOnReject == null ? null : WorkflowExpression.Compile(requeueOnReject);
+            WorkflowExpression.Validate(__workflow_requeueOnReject, nameof(requeueOnReject), required: false);
             return new DeferredOutputAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["deliveryTag"] = ExpressionConverter.ConvertO(deliveryTag);
-                serviceProviderParameters["consumerTag"] = ExpressionConverter.ConvertO(consumerTag);
-                serviceProviderParameters["acknowledgement"] = ExpressionConverter.ConvertO(acknowledgement);
-                if (requeueOnReject != null)
+                serviceProviderParameters["deliveryTag"] = ExpressionConverter.ConvertO(__workflow_deliveryTag);
+                serviceProviderParameters["consumerTag"] = ExpressionConverter.ConvertO(__workflow_consumerTag);
+                serviceProviderParameters["acknowledgement"] = ExpressionConverter.ConvertO(__workflow_acknowledgement);
+                if (__workflow_requeueOnReject != null)
                 {
-                    serviceProviderParameters["requeueOnReject"] = ExpressionConverter.ConvertO(requeueOnReject);
+                    serviceProviderParameters["requeueOnReject"] = ExpressionConverter.ConvertO(__workflow_requeueOnReject);
                 }
                 else
                 {
@@ -124,21 +115,14 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
 
     public class RabbitmqTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildReceiveRabbitMQMessages))]
-        public IBodyWorkflowTrigger<ReceiveRabbitMQMessagesOutput> ReceiveRabbitMQMessages([WorkflowExpression] Func<object> queueName)
+        public IBodyWorkflowTrigger<ReceiveRabbitMQMessagesOutput> ReceiveRabbitMQMessages(Expression<Func<object>> queueName)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ReceiveRabbitMQMessagesOutput> __BuildReceiveRabbitMQMessages(WorkflowExpression<object> queueName)
-        {
-            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
+            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
+            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
             return new DeferredBodyTrigger<ReceiveRabbitMQMessagesOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/rabbitmq", operationId: "receiveRabbitMQMessages", connectionName: connectionId),
@@ -148,20 +132,14 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildPeeklockRabbitMQMessages))]
-        public IBodyWorkflowTrigger<PeeklockRabbitMQMessagesOutput> PeeklockRabbitMQMessages([WorkflowExpression] Func<object> queueName)
+        public IBodyWorkflowTrigger<PeeklockRabbitMQMessagesOutput> PeeklockRabbitMQMessages(Expression<Func<object>> queueName)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<PeeklockRabbitMQMessagesOutput> __BuildPeeklockRabbitMQMessages(WorkflowExpression<object> queueName)
-        {
-            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
+            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
+            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
             return new DeferredBodyTrigger<PeeklockRabbitMQMessagesOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/rabbitmq", operationId: "peeklockRabbitMQMessages", connectionName: connectionId),

@@ -1,33 +1,26 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractibanvalidato
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class AbstractibanvalidatoActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractibanvalidato")]
-        [WorkflowExpressionFactory(nameof(__BuildValidate))]
-        public IBodyWorkflowAction<ValidateResponse> Validate([WorkflowExpression] Func<string> iban)
+        public IBodyWorkflowAction<ValidateResponse> Validate(Expression<Func<string>> iban)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ValidateResponse> __BuildValidate(WorkflowExpression<string> iban)
-        {
-            WorkflowExpression.Validate(iban, nameof(iban), required: true);
+            var __workflow_iban = iban == null ? null : WorkflowExpression.Compile(iban);
+            WorkflowExpression.Validate(__workflow_iban, nameof(iban), required: true);
             return new DeferredBodyAction<ValidateResponse>(() =>
             {
                 var apiCallPath = "/v1/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["iban"] = ExpressionConverter.Convert(iban);
+                callPayload.Queries["iban"] = ExpressionConverter.Convert(__workflow_iban);
                 return new ApiConnectionAction<ValidateResponse>(callPayload);
             });
         }

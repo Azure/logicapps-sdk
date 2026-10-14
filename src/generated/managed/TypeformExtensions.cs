@@ -1,12 +1,12 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Typeform
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class TypeformActions([ConnectionName] string connectionId)
     {
@@ -14,31 +14,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Typeform
 
     public class TypeformTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildNewResponseWebhook))]
-        public IBodyWorkflowTrigger<WebhookCreationResponse> NewResponseWebhook([WorkflowExpression] Func<string> formId,[WorkflowExpression] Func<string> tag,[WorkflowExpression] Func<bool> bodyenabled = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreationResponse> NewResponseWebhook(Expression<Func<string>> formId, Expression<Func<string>> tag, Expression<Func<bool>> bodyenabled = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<WebhookCreationResponse> __BuildNewResponseWebhook(WorkflowExpression<string> formId,WorkflowExpression<string> tag,WorkflowExpression<bool> bodyenabled = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(formId, nameof(formId), required: true);
-            WorkflowExpression.Validate(tag, nameof(tag), required: true);
-            WorkflowExpression.Validate(bodyenabled, nameof(bodyenabled), required: false);
+            var __workflow_formId = formId == null ? null : WorkflowExpression.Compile(formId);
+            WorkflowExpression.Validate(__workflow_formId, nameof(formId), required: true);
+            var __workflow_tag = tag == null ? null : WorkflowExpression.Compile(tag);
+            WorkflowExpression.Validate(__workflow_tag, nameof(tag), required: true);
+            var __workflow_bodyenabled = bodyenabled == null ? null : WorkflowExpression.Compile(bodyenabled);
+            WorkflowExpression.Validate(__workflow_bodyenabled, nameof(bodyenabled), required: false);
             return new DeferredBodyTrigger<WebhookCreationResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/forms/{0}/webhooks/{1}", ExpressionConverter.ConvertWithUrlEncoding(formId, 1), ExpressionConverter.ConvertWithUrlEncoding(tag, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/forms/{0}/webhooks/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_formId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_tag, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 body["url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-                if (bodyenabled != null)
+                if (__workflow_bodyenabled != null)
                 {
-                    body["enabled"] = ExpressionConverter.ConvertO(bodyenabled);
+                    body["enabled"] = ExpressionConverter.ConvertO(__workflow_bodyenabled);
                     bodypropCount++;
                 }
 

@@ -1,12 +1,12 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterevents
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class PartnercentereventsActions([ConnectionName] string connectionId)
     {
@@ -21,18 +21,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterevents
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnercenterevents")]
-        [WorkflowExpressionFactory(nameof(__BuildEventRegistration))]
-        public IWorkflowAction EventRegistration([WorkflowExpression] Func<string> bodysignatureTokenToMsSignatureHeader = null, [WorkflowExpression] Func<string[]> bodywebhookEvents = null, [WorkflowExpression] Func<string> bodywebhookUrl = null)
+        public IWorkflowAction EventRegistration(Expression<Func<string>> bodysignatureTokenToMsSignatureHeader = null, Expression<Func<string[]>> bodywebhookEvents = null, Expression<Func<string>> bodywebhookUrl = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildEventRegistration(WorkflowExpression<string> bodysignatureTokenToMsSignatureHeader = null, WorkflowExpression<string[]> bodywebhookEvents = null, WorkflowExpression<string> bodywebhookUrl = null)
-        {
-            WorkflowExpression.Validate(bodysignatureTokenToMsSignatureHeader, nameof(bodysignatureTokenToMsSignatureHeader), required: false);
-            WorkflowExpression.Validate(bodywebhookEvents, nameof(bodywebhookEvents), required: false);
-            WorkflowExpression.Validate(bodywebhookUrl, nameof(bodywebhookUrl), required: false);
+            var __workflow_bodysignatureTokenToMsSignatureHeader = bodysignatureTokenToMsSignatureHeader == null ? null : WorkflowExpression.Compile(bodysignatureTokenToMsSignatureHeader);
+            WorkflowExpression.Validate(__workflow_bodysignatureTokenToMsSignatureHeader, nameof(bodysignatureTokenToMsSignatureHeader), required: false);
+            var __workflow_bodywebhookEvents = bodywebhookEvents == null ? null : WorkflowExpression.Compile(bodywebhookEvents);
+            WorkflowExpression.Validate(__workflow_bodywebhookEvents, nameof(bodywebhookEvents), required: false);
+            var __workflow_bodywebhookUrl = bodywebhookUrl == null ? null : WorkflowExpression.Compile(bodywebhookUrl);
+            WorkflowExpression.Validate(__workflow_bodywebhookUrl, nameof(bodywebhookUrl), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/webhooks/v1/registration";
@@ -41,21 +37,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterevents
                 callPayload.Headers["Content-Type:"] = Convert.ToString("application/json");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodysignatureTokenToMsSignatureHeader != null)
+                if (__workflow_bodysignatureTokenToMsSignatureHeader != null)
                 {
-                    body["SignatureTokenToMsSignatureHeader"] = ExpressionConverter.ConvertO(bodysignatureTokenToMsSignatureHeader);
+                    body["SignatureTokenToMsSignatureHeader"] = ExpressionConverter.ConvertO(__workflow_bodysignatureTokenToMsSignatureHeader);
                     bodypropCount++;
                 }
 
-                if (bodywebhookEvents != null)
+                if (__workflow_bodywebhookEvents != null)
                 {
-                    body["WebhookEvents"] = ExpressionConverter.ConvertO(bodywebhookEvents);
+                    body["WebhookEvents"] = ExpressionConverter.ConvertO(__workflow_bodywebhookEvents);
                     bodypropCount++;
                 }
 
-                if (bodywebhookUrl != null)
+                if (__workflow_bodywebhookUrl != null)
                 {
-                    body["WebhookUrl"] = ExpressionConverter.ConvertO(bodywebhookUrl);
+                    body["WebhookUrl"] = ExpressionConverter.ConvertO(__workflow_bodywebhookUrl);
                     bodypropCount++;
                 }
 
@@ -69,18 +65,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterevents
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnercenterevents")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateRegistration))]
-        public IBodyWorkflowAction<UpdateRegistrationResponse> UpdateRegistration([WorkflowExpression] Func<string> bodysignatureTokenToMsSignatureHeader = null, [WorkflowExpression] Func<string[]> bodywebhookEvents = null, [WorkflowExpression] Func<string> bodywebhookUrl = null)
+        public IBodyWorkflowAction<UpdateRegistrationResponse> UpdateRegistration(Expression<Func<string>> bodysignatureTokenToMsSignatureHeader = null, Expression<Func<string[]>> bodywebhookEvents = null, Expression<Func<string>> bodywebhookUrl = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UpdateRegistrationResponse> __BuildUpdateRegistration(WorkflowExpression<string> bodysignatureTokenToMsSignatureHeader = null, WorkflowExpression<string[]> bodywebhookEvents = null, WorkflowExpression<string> bodywebhookUrl = null)
-        {
-            WorkflowExpression.Validate(bodysignatureTokenToMsSignatureHeader, nameof(bodysignatureTokenToMsSignatureHeader), required: false);
-            WorkflowExpression.Validate(bodywebhookEvents, nameof(bodywebhookEvents), required: false);
-            WorkflowExpression.Validate(bodywebhookUrl, nameof(bodywebhookUrl), required: false);
+            var __workflow_bodysignatureTokenToMsSignatureHeader = bodysignatureTokenToMsSignatureHeader == null ? null : WorkflowExpression.Compile(bodysignatureTokenToMsSignatureHeader);
+            WorkflowExpression.Validate(__workflow_bodysignatureTokenToMsSignatureHeader, nameof(bodysignatureTokenToMsSignatureHeader), required: false);
+            var __workflow_bodywebhookEvents = bodywebhookEvents == null ? null : WorkflowExpression.Compile(bodywebhookEvents);
+            WorkflowExpression.Validate(__workflow_bodywebhookEvents, nameof(bodywebhookEvents), required: false);
+            var __workflow_bodywebhookUrl = bodywebhookUrl == null ? null : WorkflowExpression.Compile(bodywebhookUrl);
+            WorkflowExpression.Validate(__workflow_bodywebhookUrl, nameof(bodywebhookUrl), required: false);
             return new DeferredBodyAction<UpdateRegistrationResponse>(() =>
             {
                 var apiCallPath = "/webhooks/v1/registration";
@@ -89,21 +81,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterevents
                 callPayload.Headers["Content-Type:"] = Convert.ToString("application/json");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodysignatureTokenToMsSignatureHeader != null)
+                if (__workflow_bodysignatureTokenToMsSignatureHeader != null)
                 {
-                    body["SignatureTokenToMsSignatureHeader"] = ExpressionConverter.ConvertO(bodysignatureTokenToMsSignatureHeader);
+                    body["SignatureTokenToMsSignatureHeader"] = ExpressionConverter.ConvertO(__workflow_bodysignatureTokenToMsSignatureHeader);
                     bodypropCount++;
                 }
 
-                if (bodywebhookEvents != null)
+                if (__workflow_bodywebhookEvents != null)
                 {
-                    body["WebhookEvents"] = ExpressionConverter.ConvertO(bodywebhookEvents);
+                    body["WebhookEvents"] = ExpressionConverter.ConvertO(__workflow_bodywebhookEvents);
                     bodypropCount++;
                 }
 
-                if (bodywebhookUrl != null)
+                if (__workflow_bodywebhookUrl != null)
                 {
-                    body["WebhookUrl"] = ExpressionConverter.ConvertO(bodywebhookUrl);
+                    body["WebhookUrl"] = ExpressionConverter.ConvertO(__workflow_bodywebhookUrl);
                     bodypropCount++;
                 }
 

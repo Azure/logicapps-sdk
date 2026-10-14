@@ -1,266 +1,243 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aviationstackip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class AviationstackipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aviationstackip")]
-        [WorkflowExpressionFactory(nameof(__BuildFlightGet))]
-        public IBodyWorkflowAction<FlightGetResponse> FlightGet([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<flightStatusInput> flightStatus = null, [WorkflowExpression] Func<string> flightDate = null, [WorkflowExpression] Func<string> depIata = null, [WorkflowExpression] Func<string> arrIata = null, [WorkflowExpression] Func<string> depIcao = null, [WorkflowExpression] Func<string> arrIcao = null, [WorkflowExpression] Func<string> airlineName = null, [WorkflowExpression] Func<string> airlineIata = null, [WorkflowExpression] Func<string> airlineIcao = null, [WorkflowExpression] Func<int> flightNumber = null, [WorkflowExpression] Func<string> flightIata = null, [WorkflowExpression] Func<string> flightIcao = null, [WorkflowExpression] Func<int> minDelayDep = null, [WorkflowExpression] Func<int> minDelayArr = null, [WorkflowExpression] Func<int> maxDelayDep = null, [WorkflowExpression] Func<int> maxDelayArr = null, [WorkflowExpression] Func<string> arrScheduledTimeArr = null, [WorkflowExpression] Func<string> arrScheduledTimeDep = null)
+        public IBodyWorkflowAction<FlightGetResponse> FlightGet(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<flightStatusInput>> flightStatus = null, Expression<Func<string>> flightDate = null, Expression<Func<string>> depIata = null, Expression<Func<string>> arrIata = null, Expression<Func<string>> depIcao = null, Expression<Func<string>> arrIcao = null, Expression<Func<string>> airlineName = null, Expression<Func<string>> airlineIata = null, Expression<Func<string>> airlineIcao = null, Expression<Func<int>> flightNumber = null, Expression<Func<string>> flightIata = null, Expression<Func<string>> flightIcao = null, Expression<Func<int>> minDelayDep = null, Expression<Func<int>> minDelayArr = null, Expression<Func<int>> maxDelayDep = null, Expression<Func<int>> maxDelayArr = null, Expression<Func<string>> arrScheduledTimeArr = null, Expression<Func<string>> arrScheduledTimeDep = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FlightGetResponse> __BuildFlightGet(WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null, WorkflowExpression<flightStatusInput> flightStatus = null, WorkflowExpression<string> flightDate = null, WorkflowExpression<string> depIata = null, WorkflowExpression<string> arrIata = null, WorkflowExpression<string> depIcao = null, WorkflowExpression<string> arrIcao = null, WorkflowExpression<string> airlineName = null, WorkflowExpression<string> airlineIata = null, WorkflowExpression<string> airlineIcao = null, WorkflowExpression<int> flightNumber = null, WorkflowExpression<string> flightIata = null, WorkflowExpression<string> flightIcao = null, WorkflowExpression<int> minDelayDep = null, WorkflowExpression<int> minDelayArr = null, WorkflowExpression<int> maxDelayDep = null, WorkflowExpression<int> maxDelayArr = null, WorkflowExpression<string> arrScheduledTimeArr = null, WorkflowExpression<string> arrScheduledTimeDep = null)
-        {
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(offset, nameof(offset), required: false);
-            WorkflowExpression.Validate(flightStatus, nameof(flightStatus), required: false);
-            WorkflowExpression.Validate(flightDate, nameof(flightDate), required: false);
-            WorkflowExpression.Validate(depIata, nameof(depIata), required: false);
-            WorkflowExpression.Validate(arrIata, nameof(arrIata), required: false);
-            WorkflowExpression.Validate(depIcao, nameof(depIcao), required: false);
-            WorkflowExpression.Validate(arrIcao, nameof(arrIcao), required: false);
-            WorkflowExpression.Validate(airlineName, nameof(airlineName), required: false);
-            WorkflowExpression.Validate(airlineIata, nameof(airlineIata), required: false);
-            WorkflowExpression.Validate(airlineIcao, nameof(airlineIcao), required: false);
-            WorkflowExpression.Validate(flightNumber, nameof(flightNumber), required: false);
-            WorkflowExpression.Validate(flightIata, nameof(flightIata), required: false);
-            WorkflowExpression.Validate(flightIcao, nameof(flightIcao), required: false);
-            WorkflowExpression.Validate(minDelayDep, nameof(minDelayDep), required: false);
-            WorkflowExpression.Validate(minDelayArr, nameof(minDelayArr), required: false);
-            WorkflowExpression.Validate(maxDelayDep, nameof(maxDelayDep), required: false);
-            WorkflowExpression.Validate(maxDelayArr, nameof(maxDelayArr), required: false);
-            WorkflowExpression.Validate(arrScheduledTimeArr, nameof(arrScheduledTimeArr), required: false);
-            WorkflowExpression.Validate(arrScheduledTimeDep, nameof(arrScheduledTimeDep), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_flightStatus = flightStatus == null ? null : WorkflowExpression.Compile(flightStatus);
+            WorkflowExpression.Validate(__workflow_flightStatus, nameof(flightStatus), required: false);
+            var __workflow_flightDate = flightDate == null ? null : WorkflowExpression.Compile(flightDate);
+            WorkflowExpression.Validate(__workflow_flightDate, nameof(flightDate), required: false);
+            var __workflow_depIata = depIata == null ? null : WorkflowExpression.Compile(depIata);
+            WorkflowExpression.Validate(__workflow_depIata, nameof(depIata), required: false);
+            var __workflow_arrIata = arrIata == null ? null : WorkflowExpression.Compile(arrIata);
+            WorkflowExpression.Validate(__workflow_arrIata, nameof(arrIata), required: false);
+            var __workflow_depIcao = depIcao == null ? null : WorkflowExpression.Compile(depIcao);
+            WorkflowExpression.Validate(__workflow_depIcao, nameof(depIcao), required: false);
+            var __workflow_arrIcao = arrIcao == null ? null : WorkflowExpression.Compile(arrIcao);
+            WorkflowExpression.Validate(__workflow_arrIcao, nameof(arrIcao), required: false);
+            var __workflow_airlineName = airlineName == null ? null : WorkflowExpression.Compile(airlineName);
+            WorkflowExpression.Validate(__workflow_airlineName, nameof(airlineName), required: false);
+            var __workflow_airlineIata = airlineIata == null ? null : WorkflowExpression.Compile(airlineIata);
+            WorkflowExpression.Validate(__workflow_airlineIata, nameof(airlineIata), required: false);
+            var __workflow_airlineIcao = airlineIcao == null ? null : WorkflowExpression.Compile(airlineIcao);
+            WorkflowExpression.Validate(__workflow_airlineIcao, nameof(airlineIcao), required: false);
+            var __workflow_flightNumber = flightNumber == null ? null : WorkflowExpression.Compile(flightNumber);
+            WorkflowExpression.Validate(__workflow_flightNumber, nameof(flightNumber), required: false);
+            var __workflow_flightIata = flightIata == null ? null : WorkflowExpression.Compile(flightIata);
+            WorkflowExpression.Validate(__workflow_flightIata, nameof(flightIata), required: false);
+            var __workflow_flightIcao = flightIcao == null ? null : WorkflowExpression.Compile(flightIcao);
+            WorkflowExpression.Validate(__workflow_flightIcao, nameof(flightIcao), required: false);
+            var __workflow_minDelayDep = minDelayDep == null ? null : WorkflowExpression.Compile(minDelayDep);
+            WorkflowExpression.Validate(__workflow_minDelayDep, nameof(minDelayDep), required: false);
+            var __workflow_minDelayArr = minDelayArr == null ? null : WorkflowExpression.Compile(minDelayArr);
+            WorkflowExpression.Validate(__workflow_minDelayArr, nameof(minDelayArr), required: false);
+            var __workflow_maxDelayDep = maxDelayDep == null ? null : WorkflowExpression.Compile(maxDelayDep);
+            WorkflowExpression.Validate(__workflow_maxDelayDep, nameof(maxDelayDep), required: false);
+            var __workflow_maxDelayArr = maxDelayArr == null ? null : WorkflowExpression.Compile(maxDelayArr);
+            WorkflowExpression.Validate(__workflow_maxDelayArr, nameof(maxDelayArr), required: false);
+            var __workflow_arrScheduledTimeArr = arrScheduledTimeArr == null ? null : WorkflowExpression.Compile(arrScheduledTimeArr);
+            WorkflowExpression.Validate(__workflow_arrScheduledTimeArr, nameof(arrScheduledTimeArr), required: false);
+            var __workflow_arrScheduledTimeDep = arrScheduledTimeDep == null ? null : WorkflowExpression.Compile(arrScheduledTimeDep);
+            WorkflowExpression.Validate(__workflow_arrScheduledTimeDep, nameof(arrScheduledTimeDep), required: false);
             return new DeferredBodyAction<FlightGetResponse>(() =>
             {
                 var apiCallPath = "/flights";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (offset != null)
-                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-                if (flightStatus != null)
-                    callPayload.Queries["flight_status"] = ExpressionConverter.Convert(flightStatus);
-                if (flightDate != null)
-                    callPayload.Queries["flight_date"] = ExpressionConverter.Convert(flightDate);
-                if (depIata != null)
-                    callPayload.Queries["dep_iata"] = ExpressionConverter.Convert(depIata);
-                if (arrIata != null)
-                    callPayload.Queries["arr_iata"] = ExpressionConverter.Convert(arrIata);
-                if (depIcao != null)
-                    callPayload.Queries["dep_icao"] = ExpressionConverter.Convert(depIcao);
-                if (arrIcao != null)
-                    callPayload.Queries["arr_icao"] = ExpressionConverter.Convert(arrIcao);
-                if (airlineName != null)
-                    callPayload.Queries["airline_name"] = ExpressionConverter.Convert(airlineName);
-                if (airlineIata != null)
-                    callPayload.Queries["airline_iata"] = ExpressionConverter.Convert(airlineIata);
-                if (airlineIcao != null)
-                    callPayload.Queries["airline_icao"] = ExpressionConverter.Convert(airlineIcao);
-                if (flightNumber != null)
-                    callPayload.Queries["flight_number"] = ExpressionConverter.Convert(flightNumber);
-                if (flightIata != null)
-                    callPayload.Queries["flight_iata"] = ExpressionConverter.Convert(flightIata);
-                if (flightIcao != null)
-                    callPayload.Queries["flight_icao"] = ExpressionConverter.Convert(flightIcao);
-                if (minDelayDep != null)
-                    callPayload.Queries["min_delay_dep"] = ExpressionConverter.Convert(minDelayDep);
-                if (minDelayArr != null)
-                    callPayload.Queries["min_delay_arr"] = ExpressionConverter.Convert(minDelayArr);
-                if (maxDelayDep != null)
-                    callPayload.Queries["max_delay_dep"] = ExpressionConverter.Convert(maxDelayDep);
-                if (maxDelayArr != null)
-                    callPayload.Queries["max_delay_arr"] = ExpressionConverter.Convert(maxDelayArr);
-                if (arrScheduledTimeArr != null)
-                    callPayload.Queries["arr_scheduled_time_arr"] = ExpressionConverter.Convert(arrScheduledTimeArr);
-                if (arrScheduledTimeDep != null)
-                    callPayload.Queries["arr_scheduled_time_dep"] = ExpressionConverter.Convert(arrScheduledTimeDep);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                if (__workflow_flightStatus != null)
+                    callPayload.Queries["flight_status"] = ExpressionConverter.Convert(__workflow_flightStatus);
+                if (__workflow_flightDate != null)
+                    callPayload.Queries["flight_date"] = ExpressionConverter.Convert(__workflow_flightDate);
+                if (__workflow_depIata != null)
+                    callPayload.Queries["dep_iata"] = ExpressionConverter.Convert(__workflow_depIata);
+                if (__workflow_arrIata != null)
+                    callPayload.Queries["arr_iata"] = ExpressionConverter.Convert(__workflow_arrIata);
+                if (__workflow_depIcao != null)
+                    callPayload.Queries["dep_icao"] = ExpressionConverter.Convert(__workflow_depIcao);
+                if (__workflow_arrIcao != null)
+                    callPayload.Queries["arr_icao"] = ExpressionConverter.Convert(__workflow_arrIcao);
+                if (__workflow_airlineName != null)
+                    callPayload.Queries["airline_name"] = ExpressionConverter.Convert(__workflow_airlineName);
+                if (__workflow_airlineIata != null)
+                    callPayload.Queries["airline_iata"] = ExpressionConverter.Convert(__workflow_airlineIata);
+                if (__workflow_airlineIcao != null)
+                    callPayload.Queries["airline_icao"] = ExpressionConverter.Convert(__workflow_airlineIcao);
+                if (__workflow_flightNumber != null)
+                    callPayload.Queries["flight_number"] = ExpressionConverter.Convert(__workflow_flightNumber);
+                if (__workflow_flightIata != null)
+                    callPayload.Queries["flight_iata"] = ExpressionConverter.Convert(__workflow_flightIata);
+                if (__workflow_flightIcao != null)
+                    callPayload.Queries["flight_icao"] = ExpressionConverter.Convert(__workflow_flightIcao);
+                if (__workflow_minDelayDep != null)
+                    callPayload.Queries["min_delay_dep"] = ExpressionConverter.Convert(__workflow_minDelayDep);
+                if (__workflow_minDelayArr != null)
+                    callPayload.Queries["min_delay_arr"] = ExpressionConverter.Convert(__workflow_minDelayArr);
+                if (__workflow_maxDelayDep != null)
+                    callPayload.Queries["max_delay_dep"] = ExpressionConverter.Convert(__workflow_maxDelayDep);
+                if (__workflow_maxDelayArr != null)
+                    callPayload.Queries["max_delay_arr"] = ExpressionConverter.Convert(__workflow_maxDelayArr);
+                if (__workflow_arrScheduledTimeArr != null)
+                    callPayload.Queries["arr_scheduled_time_arr"] = ExpressionConverter.Convert(__workflow_arrScheduledTimeArr);
+                if (__workflow_arrScheduledTimeDep != null)
+                    callPayload.Queries["arr_scheduled_time_dep"] = ExpressionConverter.Convert(__workflow_arrScheduledTimeDep);
                 return new ApiConnectionAction<FlightGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aviationstackip")]
-        [WorkflowExpressionFactory(nameof(__BuildAirportGet))]
-        public IBodyWorkflowAction<AirportGetResponse> AirportGet([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
+        public IBodyWorkflowAction<AirportGetResponse> AirportGet(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AirportGetResponse> __BuildAirportGet(WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
-        {
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
             return new DeferredBodyAction<AirportGetResponse>(() =>
             {
                 var apiCallPath = "/airports";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (offset != null)
-                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<AirportGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aviationstackip")]
-        [WorkflowExpressionFactory(nameof(__BuildAirlineGet))]
-        public IBodyWorkflowAction<AirlineGetResponse> AirlineGet([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
+        public IBodyWorkflowAction<AirlineGetResponse> AirlineGet(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AirlineGetResponse> __BuildAirlineGet(WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
-        {
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
             return new DeferredBodyAction<AirlineGetResponse>(() =>
             {
                 var apiCallPath = "/airlines";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (offset != null)
-                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<AirlineGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aviationstackip")]
-        [WorkflowExpressionFactory(nameof(__BuildAirplaneGet))]
-        public IBodyWorkflowAction<AirplaneGetResponse> AirplaneGet([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
+        public IBodyWorkflowAction<AirplaneGetResponse> AirplaneGet(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AirplaneGetResponse> __BuildAirplaneGet(WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
-        {
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
             return new DeferredBodyAction<AirplaneGetResponse>(() =>
             {
                 var apiCallPath = "/airplanes";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (offset != null)
-                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<AirplaneGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aviationstackip")]
-        [WorkflowExpressionFactory(nameof(__BuildAircraftGet))]
-        public IBodyWorkflowAction<AircraftGetResponse> AircraftGet([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
+        public IBodyWorkflowAction<AircraftGetResponse> AircraftGet(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AircraftGetResponse> __BuildAircraftGet(WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
-        {
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
             return new DeferredBodyAction<AircraftGetResponse>(() =>
             {
                 var apiCallPath = "/aircraft_types";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (offset != null)
-                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<AircraftGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aviationstackip")]
-        [WorkflowExpressionFactory(nameof(__BuildTaxesGet))]
-        public IBodyWorkflowAction<TaxesGetResponse> TaxesGet([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
+        public IBodyWorkflowAction<TaxesGetResponse> TaxesGet(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TaxesGetResponse> __BuildTaxesGet(WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
-        {
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
             return new DeferredBodyAction<TaxesGetResponse>(() =>
             {
                 var apiCallPath = "/taxes";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (offset != null)
-                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<TaxesGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aviationstackip")]
-        [WorkflowExpressionFactory(nameof(__BuildCityGet))]
-        public IBodyWorkflowAction<CityGetResponse> CityGet([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
+        public IBodyWorkflowAction<CityGetResponse> CityGet(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CityGetResponse> __BuildCityGet(WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
-        {
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
             return new DeferredBodyAction<CityGetResponse>(() =>
             {
                 var apiCallPath = "/cities";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (offset != null)
-                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<CityGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aviationstackip")]
-        [WorkflowExpressionFactory(nameof(__BuildCountryGet))]
-        public IBodyWorkflowAction<CountryGetResponse> CountryGet([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
+        public IBodyWorkflowAction<CountryGetResponse> CountryGet(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CountryGetResponse> __BuildCountryGet(WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null)
-        {
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
             return new DeferredBodyAction<CountryGetResponse>(() =>
             {
                 var apiCallPath = "/countries";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (offset != null)
-                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<CountryGetResponse>(callPayload);
             });
         }

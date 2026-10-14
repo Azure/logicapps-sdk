@@ -1,27 +1,20 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Copilotforservice
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class CopilotforserviceActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "copilotforservice")]
-        [WorkflowExpressionFactory(nameof(__BuildNaturalQueryTextSearch))]
-        public IBodyWorkflowAction<OrchestratorConnectorResponse> NaturalQueryTextSearch([WorkflowExpression] Func<string> bodyprompt = null)
+        public IBodyWorkflowAction<OrchestratorConnectorResponse> NaturalQueryTextSearch(Expression<Func<string>> bodyprompt = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<OrchestratorConnectorResponse> __BuildNaturalQueryTextSearch(WorkflowExpression<string> bodyprompt = null)
-        {
-            WorkflowExpression.Validate(bodyprompt, nameof(bodyprompt), required: false);
+            var __workflow_bodyprompt = bodyprompt == null ? null : WorkflowExpression.Compile(bodyprompt);
+            WorkflowExpression.Validate(__workflow_bodyprompt, nameof(bodyprompt), required: false);
             return new DeferredBodyAction<OrchestratorConnectorResponse>(() =>
             {
                 var apiCallPath = "/api/orchestrator/connector";
@@ -29,9 +22,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Copilotforservice
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyprompt != null)
+                if (__workflow_bodyprompt != null)
                 {
-                    body["prompt"] = ExpressionConverter.ConvertO(bodyprompt);
+                    body["prompt"] = ExpressionConverter.ConvertO(__workflow_bodyprompt);
                     bodypropCount++;
                 }
 
@@ -45,16 +38,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Copilotforservice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "copilotforservice")]
-        [WorkflowExpressionFactory(nameof(__BuildExecuteSkill))]
-        public IBodyWorkflowAction<OrchestratorConnectorResponse> ExecuteSkill([WorkflowExpression] Func<string> bodyskillId = null)
+        public IBodyWorkflowAction<OrchestratorConnectorResponse> ExecuteSkill(Expression<Func<string>> bodyskillId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<OrchestratorConnectorResponse> __BuildExecuteSkill(WorkflowExpression<string> bodyskillId = null)
-        {
-            WorkflowExpression.Validate(bodyskillId, nameof(bodyskillId), required: false);
+            var __workflow_bodyskillId = bodyskillId == null ? null : WorkflowExpression.Compile(bodyskillId);
+            WorkflowExpression.Validate(__workflow_bodyskillId, nameof(bodyskillId), required: false);
             return new DeferredBodyAction<OrchestratorConnectorResponse>(() =>
             {
                 var apiCallPath = "/api/orchestrator/executeSkill";
@@ -62,9 +49,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Copilotforservice
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyskillId != null)
+                if (__workflow_bodyskillId != null)
                 {
-                    body["SkillId"] = ExpressionConverter.ConvertO(bodyskillId);
+                    body["SkillId"] = ExpressionConverter.ConvertO(__workflow_bodyskillId);
                     bodypropCount++;
                 }
 

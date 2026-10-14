@@ -1,51 +1,38 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class ZuvadocaiActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        [WorkflowExpressionFactory(nameof(__BuildSubmitFile))]
-        public IBodyWorkflowAction<SubmitFileResponse> SubmitFile([WorkflowExpression] Func<string> file = null)
+        public IBodyWorkflowAction<SubmitFileResponse> SubmitFile(Expression<Func<string>> file = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SubmitFileResponse> __BuildSubmitFile(WorkflowExpression<string> file = null)
-        {
-            WorkflowExpression.Validate(file, nameof(file), required: false);
+            var __workflow_file = file == null ? null : WorkflowExpression.Compile(file);
+            WorkflowExpression.Validate(__workflow_file, nameof(file), required: false);
             return new DeferredBodyAction<SubmitFileResponse>(() =>
             {
                 var apiCallPath = "/files";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(file);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_file);
                 return new ApiConnectionAction<SubmitFileResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteFile))]
-        public IBodyWorkflowAction<string> DeleteFile([WorkflowExpression] Func<string> fileId)
+        public IBodyWorkflowAction<string> DeleteFile(Expression<Func<string>> fileId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildDeleteFile(WorkflowExpression<string> fileId)
-        {
-            WorkflowExpression.Validate(fileId, nameof(fileId), required: true);
+            var __workflow_fileId = fileId == null ? null : WorkflowExpression.Compile(fileId);
+            WorkflowExpression.Validate(__workflow_fileId, nameof(fileId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/files/{0}", ExpressionConverter.ConvertWithUrlEncoding(fileId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/files/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fileId, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -53,16 +40,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateOcrRequest))]
-        public IBodyWorkflowAction<CreateOcrRequestResponse> CreateOcrRequest([WorkflowExpression] Func<string> fileIdBodyfileID = null)
+        public IBodyWorkflowAction<CreateOcrRequestResponse> CreateOcrRequest(Expression<Func<string>> fileIdBodyfileID = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateOcrRequestResponse> __BuildCreateOcrRequest(WorkflowExpression<string> fileIdBodyfileID = null)
-        {
-            WorkflowExpression.Validate(fileIdBodyfileID, nameof(fileIdBodyfileID), required: false);
+            var __workflow_fileIdBodyfileID = fileIdBodyfileID == null ? null : WorkflowExpression.Compile(fileIdBodyfileID);
+            WorkflowExpression.Validate(__workflow_fileIdBodyfileID, nameof(fileIdBodyfileID), required: false);
             return new DeferredBodyAction<CreateOcrRequestResponse>(() =>
             {
                 var apiCallPath = "/ocr";
@@ -70,9 +51,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var fileIdBody = new JObject();
                 var fileIdBodypropCount = 0;
-                if (fileIdBodyfileID != null)
+                if (__workflow_fileIdBodyfileID != null)
                 {
-                    fileIdBody["file_id"] = ExpressionConverter.ConvertO(fileIdBodyfileID);
+                    fileIdBody["file_id"] = ExpressionConverter.ConvertO(__workflow_fileIdBodyfileID);
                     fileIdBodypropCount++;
                 }
 
@@ -86,19 +67,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        [WorkflowExpressionFactory(nameof(__BuildGetOcrRequestStatus))]
-        public IBodyWorkflowAction<GetOcrRequestStatusResponse> GetOcrRequestStatus([WorkflowExpression] Func<string> requestId)
+        public IBodyWorkflowAction<GetOcrRequestStatusResponse> GetOcrRequestStatus(Expression<Func<string>> requestId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetOcrRequestStatusResponse> __BuildGetOcrRequestStatus(WorkflowExpression<string> requestId)
-        {
-            WorkflowExpression.Validate(requestId, nameof(requestId), required: true);
+            var __workflow_requestId = requestId == null ? null : WorkflowExpression.Compile(requestId);
+            WorkflowExpression.Validate(__workflow_requestId, nameof(requestId), required: true);
             return new DeferredBodyAction<GetOcrRequestStatusResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/ocr/{0}", ExpressionConverter.ConvertWithUrlEncoding(requestId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/ocr/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_requestId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetOcrRequestStatusResponse>(callPayload);
@@ -106,19 +81,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        [WorkflowExpressionFactory(nameof(__BuildGetOcrRequestText))]
-        public IBodyWorkflowAction<GetOcrRequestTextResponse> GetOcrRequestText([WorkflowExpression] Func<string> requestId)
+        public IBodyWorkflowAction<GetOcrRequestTextResponse> GetOcrRequestText(Expression<Func<string>> requestId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetOcrRequestTextResponse> __BuildGetOcrRequestText(WorkflowExpression<string> requestId)
-        {
-            WorkflowExpression.Validate(requestId, nameof(requestId), required: true);
+            var __workflow_requestId = requestId == null ? null : WorkflowExpression.Compile(requestId);
+            WorkflowExpression.Validate(__workflow_requestId, nameof(requestId), required: true);
             return new DeferredBodyAction<GetOcrRequestTextResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/ocr/{0}/text", ExpressionConverter.ConvertWithUrlEncoding(requestId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/ocr/{0}/text", ExpressionConverter.ConvertWithUrlEncoding(__workflow_requestId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetOcrRequestTextResponse>(callPayload);
@@ -126,19 +95,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        [WorkflowExpressionFactory(nameof(__BuildGetOcrRequestImages))]
-        public IBodyWorkflowAction<string> GetOcrRequestImages([WorkflowExpression] Func<string> requestId)
+        public IBodyWorkflowAction<string> GetOcrRequestImages(Expression<Func<string>> requestId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildGetOcrRequestImages(WorkflowExpression<string> requestId)
-        {
-            WorkflowExpression.Validate(requestId, nameof(requestId), required: true);
+            var __workflow_requestId = requestId == null ? null : WorkflowExpression.Compile(requestId);
+            WorkflowExpression.Validate(__workflow_requestId, nameof(requestId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/ocr/{0}/images", ExpressionConverter.ConvertWithUrlEncoding(requestId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/ocr/{0}/images", ExpressionConverter.ConvertWithUrlEncoding(__workflow_requestId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -155,17 +118,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateFieldExtractionRequest))]
-        public IBodyWorkflowAction<CreateFieldExtractionRequestResponse> CreateFieldExtractionRequest([WorkflowExpression] Func<string> bodyfileID = null, [WorkflowExpression] Func<string[]> bodyfieldIDs = null)
+        public IBodyWorkflowAction<CreateFieldExtractionRequestResponse> CreateFieldExtractionRequest(Expression<Func<string>> bodyfileID = null, Expression<Func<string[]>> bodyfieldIDs = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateFieldExtractionRequestResponse> __BuildCreateFieldExtractionRequest(WorkflowExpression<string> bodyfileID = null, WorkflowExpression<string[]> bodyfieldIDs = null)
-        {
-            WorkflowExpression.Validate(bodyfileID, nameof(bodyfileID), required: false);
-            WorkflowExpression.Validate(bodyfieldIDs, nameof(bodyfieldIDs), required: false);
+            var __workflow_bodyfileID = bodyfileID == null ? null : WorkflowExpression.Compile(bodyfileID);
+            WorkflowExpression.Validate(__workflow_bodyfileID, nameof(bodyfileID), required: false);
+            var __workflow_bodyfieldIDs = bodyfieldIDs == null ? null : WorkflowExpression.Compile(bodyfieldIDs);
+            WorkflowExpression.Validate(__workflow_bodyfieldIDs, nameof(bodyfieldIDs), required: false);
             return new DeferredBodyAction<CreateFieldExtractionRequestResponse>(() =>
             {
                 var apiCallPath = "/extraction";
@@ -173,15 +131,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfileID != null)
+                if (__workflow_bodyfileID != null)
                 {
-                    body["file_id"] = ExpressionConverter.ConvertO(bodyfileID);
+                    body["file_id"] = ExpressionConverter.ConvertO(__workflow_bodyfileID);
                     bodypropCount++;
                 }
 
-                if (bodyfieldIDs != null)
+                if (__workflow_bodyfieldIDs != null)
                 {
-                    body["field_ids"] = ExpressionConverter.ConvertO(bodyfieldIDs);
+                    body["field_ids"] = ExpressionConverter.ConvertO(__workflow_bodyfieldIDs);
                     bodypropCount++;
                 }
 
@@ -195,19 +153,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        [WorkflowExpressionFactory(nameof(__BuildGetFieldExtractionRequestStatus))]
-        public IBodyWorkflowAction<GetFieldExtractionRequestStatusResponse> GetFieldExtractionRequestStatus([WorkflowExpression] Func<string> requestId)
+        public IBodyWorkflowAction<GetFieldExtractionRequestStatusResponse> GetFieldExtractionRequestStatus(Expression<Func<string>> requestId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetFieldExtractionRequestStatusResponse> __BuildGetFieldExtractionRequestStatus(WorkflowExpression<string> requestId)
-        {
-            WorkflowExpression.Validate(requestId, nameof(requestId), required: true);
+            var __workflow_requestId = requestId == null ? null : WorkflowExpression.Compile(requestId);
+            WorkflowExpression.Validate(__workflow_requestId, nameof(requestId), required: true);
             return new DeferredBodyAction<GetFieldExtractionRequestStatusResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/extraction/{0}", ExpressionConverter.ConvertWithUrlEncoding(requestId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/extraction/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_requestId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetFieldExtractionRequestStatusResponse>(callPayload);
@@ -215,19 +167,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        [WorkflowExpressionFactory(nameof(__BuildGetFieldExtractionRequestResults))]
-        public IBodyWorkflowAction<GetFieldExtractionRequestResultsResponse> GetFieldExtractionRequestResults([WorkflowExpression] Func<string> requestId)
+        public IBodyWorkflowAction<GetFieldExtractionRequestResultsResponse> GetFieldExtractionRequestResults(Expression<Func<string>> requestId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetFieldExtractionRequestResultsResponse> __BuildGetFieldExtractionRequestResults(WorkflowExpression<string> requestId)
-        {
-            WorkflowExpression.Validate(requestId, nameof(requestId), required: true);
+            var __workflow_requestId = requestId == null ? null : WorkflowExpression.Compile(requestId);
+            WorkflowExpression.Validate(__workflow_requestId, nameof(requestId), required: true);
             return new DeferredBodyAction<GetFieldExtractionRequestResultsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/extraction/{0}/results/text", ExpressionConverter.ConvertWithUrlEncoding(requestId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/extraction/{0}/results/text", ExpressionConverter.ConvertWithUrlEncoding(__workflow_requestId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetFieldExtractionRequestResultsResponse>(callPayload);
@@ -235,16 +181,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateDocumentClassificationRequest))]
-        public IBodyWorkflowAction<CreateDocumentClassificationRequestResponse> CreateDocumentClassificationRequest([WorkflowExpression] Func<string> fileIdBodyfileID = null)
+        public IBodyWorkflowAction<CreateDocumentClassificationRequestResponse> CreateDocumentClassificationRequest(Expression<Func<string>> fileIdBodyfileID = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateDocumentClassificationRequestResponse> __BuildCreateDocumentClassificationRequest(WorkflowExpression<string> fileIdBodyfileID = null)
-        {
-            WorkflowExpression.Validate(fileIdBodyfileID, nameof(fileIdBodyfileID), required: false);
+            var __workflow_fileIdBodyfileID = fileIdBodyfileID == null ? null : WorkflowExpression.Compile(fileIdBodyfileID);
+            WorkflowExpression.Validate(__workflow_fileIdBodyfileID, nameof(fileIdBodyfileID), required: false);
             return new DeferredBodyAction<CreateDocumentClassificationRequestResponse>(() =>
             {
                 var apiCallPath = "/classification";
@@ -252,9 +192,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var fileIdBody = new JObject();
                 var fileIdBodypropCount = 0;
-                if (fileIdBodyfileID != null)
+                if (__workflow_fileIdBodyfileID != null)
                 {
-                    fileIdBody["file_id"] = ExpressionConverter.ConvertO(fileIdBodyfileID);
+                    fileIdBody["file_id"] = ExpressionConverter.ConvertO(__workflow_fileIdBodyfileID);
                     fileIdBodypropCount++;
                 }
 
@@ -268,19 +208,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        [WorkflowExpressionFactory(nameof(__BuildGetDocumentClassificationRequestStatus))]
-        public IBodyWorkflowAction<GetDocumentClassificationRequestStatusResponse> GetDocumentClassificationRequestStatus([WorkflowExpression] Func<string> requestId)
+        public IBodyWorkflowAction<GetDocumentClassificationRequestStatusResponse> GetDocumentClassificationRequestStatus(Expression<Func<string>> requestId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetDocumentClassificationRequestStatusResponse> __BuildGetDocumentClassificationRequestStatus(WorkflowExpression<string> requestId)
-        {
-            WorkflowExpression.Validate(requestId, nameof(requestId), required: true);
+            var __workflow_requestId = requestId == null ? null : WorkflowExpression.Compile(requestId);
+            WorkflowExpression.Validate(__workflow_requestId, nameof(requestId), required: true);
             return new DeferredBodyAction<GetDocumentClassificationRequestStatusResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/classification/{0}", ExpressionConverter.ConvertWithUrlEncoding(requestId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/classification/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_requestId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetDocumentClassificationRequestStatusResponse>(callPayload);
@@ -288,16 +222,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateLanguageClassificationRequest))]
-        public IBodyWorkflowAction<CreateLanguageClassificationRequestResponse> CreateLanguageClassificationRequest([WorkflowExpression] Func<string> fileIdBodyfileID = null)
+        public IBodyWorkflowAction<CreateLanguageClassificationRequestResponse> CreateLanguageClassificationRequest(Expression<Func<string>> fileIdBodyfileID = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateLanguageClassificationRequestResponse> __BuildCreateLanguageClassificationRequest(WorkflowExpression<string> fileIdBodyfileID = null)
-        {
-            WorkflowExpression.Validate(fileIdBodyfileID, nameof(fileIdBodyfileID), required: false);
+            var __workflow_fileIdBodyfileID = fileIdBodyfileID == null ? null : WorkflowExpression.Compile(fileIdBodyfileID);
+            WorkflowExpression.Validate(__workflow_fileIdBodyfileID, nameof(fileIdBodyfileID), required: false);
             return new DeferredBodyAction<CreateLanguageClassificationRequestResponse>(() =>
             {
                 var apiCallPath = "/language";
@@ -305,9 +233,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var fileIdBody = new JObject();
                 var fileIdBodypropCount = 0;
-                if (fileIdBodyfileID != null)
+                if (__workflow_fileIdBodyfileID != null)
                 {
-                    fileIdBody["file_id"] = ExpressionConverter.ConvertO(fileIdBodyfileID);
+                    fileIdBody["file_id"] = ExpressionConverter.ConvertO(__workflow_fileIdBodyfileID);
                     fileIdBodypropCount++;
                 }
 
@@ -321,19 +249,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        [WorkflowExpressionFactory(nameof(__BuildGetLanguageClassificationRequestStatus))]
-        public IBodyWorkflowAction<GetLanguageClassificationRequestStatusResponse> GetLanguageClassificationRequestStatus([WorkflowExpression] Func<string> requestId)
+        public IBodyWorkflowAction<GetLanguageClassificationRequestStatusResponse> GetLanguageClassificationRequestStatus(Expression<Func<string>> requestId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetLanguageClassificationRequestStatusResponse> __BuildGetLanguageClassificationRequestStatus(WorkflowExpression<string> requestId)
-        {
-            WorkflowExpression.Validate(requestId, nameof(requestId), required: true);
+            var __workflow_requestId = requestId == null ? null : WorkflowExpression.Compile(requestId);
+            WorkflowExpression.Validate(__workflow_requestId, nameof(requestId), required: true);
             return new DeferredBodyAction<GetLanguageClassificationRequestStatusResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/language/{0}", ExpressionConverter.ConvertWithUrlEncoding(requestId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/language/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_requestId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetLanguageClassificationRequestStatusResponse>(callPayload);
@@ -341,16 +263,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateMlcRequest))]
-        public IBodyWorkflowAction<CreateMlcRequestResponse> CreateMlcRequest([WorkflowExpression] Func<string> fileIdBodyfileID = null)
+        public IBodyWorkflowAction<CreateMlcRequestResponse> CreateMlcRequest(Expression<Func<string>> fileIdBodyfileID = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateMlcRequestResponse> __BuildCreateMlcRequest(WorkflowExpression<string> fileIdBodyfileID = null)
-        {
-            WorkflowExpression.Validate(fileIdBodyfileID, nameof(fileIdBodyfileID), required: false);
+            var __workflow_fileIdBodyfileID = fileIdBodyfileID == null ? null : WorkflowExpression.Compile(fileIdBodyfileID);
+            WorkflowExpression.Validate(__workflow_fileIdBodyfileID, nameof(fileIdBodyfileID), required: false);
             return new DeferredBodyAction<CreateMlcRequestResponse>(() =>
             {
                 var apiCallPath = "/mlc";
@@ -358,9 +274,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var fileIdBody = new JObject();
                 var fileIdBodypropCount = 0;
-                if (fileIdBodyfileID != null)
+                if (__workflow_fileIdBodyfileID != null)
                 {
-                    fileIdBody["file_id"] = ExpressionConverter.ConvertO(fileIdBodyfileID);
+                    fileIdBody["file_id"] = ExpressionConverter.ConvertO(__workflow_fileIdBodyfileID);
                     fileIdBodypropCount++;
                 }
 
@@ -374,19 +290,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        [WorkflowExpressionFactory(nameof(__BuildGetMlcRequestStatus))]
-        public IBodyWorkflowAction<GetMlcRequestStatusResponse> GetMlcRequestStatus([WorkflowExpression] Func<string> requestId)
+        public IBodyWorkflowAction<GetMlcRequestStatusResponse> GetMlcRequestStatus(Expression<Func<string>> requestId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetMlcRequestStatusResponse> __BuildGetMlcRequestStatus(WorkflowExpression<string> requestId)
-        {
-            WorkflowExpression.Validate(requestId, nameof(requestId), required: true);
+            var __workflow_requestId = requestId == null ? null : WorkflowExpression.Compile(requestId);
+            WorkflowExpression.Validate(__workflow_requestId, nameof(requestId), required: true);
             return new DeferredBodyAction<GetMlcRequestStatusResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/mlc/{0}", ExpressionConverter.ConvertWithUrlEncoding(requestId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/mlc/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_requestId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetMlcRequestStatusResponse>(callPayload);
@@ -394,16 +304,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        [WorkflowExpressionFactory(nameof(__BuildNormalizeDates))]
-        public IBodyWorkflowAction<NormalizeDatesResponse> NormalizeDates([WorkflowExpression] Func<string> textBodytext = null)
+        public IBodyWorkflowAction<NormalizeDatesResponse> NormalizeDates(Expression<Func<string>> textBodytext = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<NormalizeDatesResponse> __BuildNormalizeDates(WorkflowExpression<string> textBodytext = null)
-        {
-            WorkflowExpression.Validate(textBodytext, nameof(textBodytext), required: false);
+            var __workflow_textBodytext = textBodytext == null ? null : WorkflowExpression.Compile(textBodytext);
+            WorkflowExpression.Validate(__workflow_textBodytext, nameof(textBodytext), required: false);
             return new DeferredBodyAction<NormalizeDatesResponse>(() =>
             {
                 var apiCallPath = "/normalize/date";
@@ -411,9 +315,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var textBody = new JObject();
                 var textBodypropCount = 0;
-                if (textBodytext != null)
+                if (__workflow_textBodytext != null)
                 {
-                    textBody["text"] = ExpressionConverter.ConvertO(textBodytext);
+                    textBody["text"] = ExpressionConverter.ConvertO(__workflow_textBodytext);
                     textBodypropCount++;
                 }
 

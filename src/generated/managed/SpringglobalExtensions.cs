@@ -1,58 +1,48 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Springglobal
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class SpringglobalActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "springglobal")]
-        [WorkflowExpressionFactory(nameof(__BuildGetExecutionById))]
-        public IBodyWorkflowAction<JToken> GetExecutionById([WorkflowExpression] Func<string> executionId, [WorkflowExpression] Func<string> surveyId, [WorkflowExpression] Func<string> publicationId, [WorkflowExpression] Func<bool> advancedInfo = null)
+        public IBodyWorkflowAction<JToken> GetExecutionById(Expression<Func<string>> executionId, Expression<Func<string>> surveyId, Expression<Func<string>> publicationId, Expression<Func<bool>> advancedInfo = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildGetExecutionById(WorkflowExpression<string> executionId, WorkflowExpression<string> surveyId, WorkflowExpression<string> publicationId, WorkflowExpression<bool> advancedInfo = null)
-        {
-            WorkflowExpression.Validate(executionId, nameof(executionId), required: true);
-            WorkflowExpression.Validate(surveyId, nameof(surveyId), required: true);
-            WorkflowExpression.Validate(publicationId, nameof(publicationId), required: true);
-            WorkflowExpression.Validate(advancedInfo, nameof(advancedInfo), required: false);
+            var __workflow_executionId = executionId == null ? null : WorkflowExpression.Compile(executionId);
+            WorkflowExpression.Validate(__workflow_executionId, nameof(executionId), required: true);
+            var __workflow_surveyId = surveyId == null ? null : WorkflowExpression.Compile(surveyId);
+            WorkflowExpression.Validate(__workflow_surveyId, nameof(surveyId), required: true);
+            var __workflow_publicationId = publicationId == null ? null : WorkflowExpression.Compile(publicationId);
+            WorkflowExpression.Validate(__workflow_publicationId, nameof(publicationId), required: true);
+            var __workflow_advancedInfo = advancedInfo == null ? null : WorkflowExpression.Compile(advancedInfo);
+            WorkflowExpression.Validate(__workflow_advancedInfo, nameof(advancedInfo), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/survey-service/execution/{0}", ExpressionConverter.ConvertWithUrlEncoding(executionId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/survey-service/execution/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_executionId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["advancedInfo"] = Convert.ToString(false);
-                if (advancedInfo != null)
-                    callPayload.Headers["advancedInfo"] = ExpressionConverter.Convert(advancedInfo);
-                callPayload.Headers["surveyId"] = ExpressionConverter.Convert(surveyId);
-                callPayload.Headers["publicationId"] = ExpressionConverter.Convert(publicationId);
+                if (__workflow_advancedInfo != null)
+                    callPayload.Headers["advancedInfo"] = ExpressionConverter.Convert(__workflow_advancedInfo);
+                callPayload.Headers["surveyId"] = ExpressionConverter.Convert(__workflow_surveyId);
+                callPayload.Headers["publicationId"] = ExpressionConverter.Convert(__workflow_publicationId);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "springglobal")]
-        [WorkflowExpressionFactory(nameof(__BuildGetUserById))]
-        public IBodyWorkflowAction<GetUserByIdResponse> GetUserById([WorkflowExpression] Func<string> userId)
+        public IBodyWorkflowAction<GetUserByIdResponse> GetUserById(Expression<Func<string>> userId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetUserByIdResponse> __BuildGetUserById(WorkflowExpression<string> userId)
-        {
-            WorkflowExpression.Validate(userId, nameof(userId), required: true);
+            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
+            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
             return new DeferredBodyAction<GetUserByIdResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/identity-service/user/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/identity-service/user/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetUserByIdResponse>(callPayload);
@@ -62,18 +52,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Springglobal
 
     public class SpringglobalTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildOnSurveyExecution))]
-        public IWorkflowTrigger OnSurveyExecution([WorkflowExpression] Func<string> bodyparameterssurveyId = null,[WorkflowExpression] Func<string> bodyparameterspublicationId = null,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger OnSurveyExecution(Expression<Func<string>> bodyparameterssurveyId = null, Expression<Func<string>> bodyparameterspublicationId = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildOnSurveyExecution(WorkflowExpression<string> bodyparameterssurveyId = null,WorkflowExpression<string> bodyparameterspublicationId = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodyparameterssurveyId, nameof(bodyparameterssurveyId), required: false);
-            WorkflowExpression.Validate(bodyparameterspublicationId, nameof(bodyparameterspublicationId), required: false);
+            var __workflow_bodyparameterssurveyId = bodyparameterssurveyId == null ? null : WorkflowExpression.Compile(bodyparameterssurveyId);
+            WorkflowExpression.Validate(__workflow_bodyparameterssurveyId, nameof(bodyparameterssurveyId), required: false);
+            var __workflow_bodyparameterspublicationId = bodyparameterspublicationId == null ? null : WorkflowExpression.Compile(bodyparameterspublicationId);
+            WorkflowExpression.Validate(__workflow_bodyparameterspublicationId, nameof(bodyparameterspublicationId), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/webhook-service/subscribe/surveyexecution";
@@ -85,15 +69,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Springglobal
                 bodypropCount++;
                 var parametersObject = new JObject();
                 var parametersObjectpropCount = 0;
-                if (bodyparameterssurveyId != null)
+                if (__workflow_bodyparameterssurveyId != null)
                 {
-                    parametersObject["surveyId"] = ExpressionConverter.ConvertO(bodyparameterssurveyId);
+                    parametersObject["surveyId"] = ExpressionConverter.ConvertO(__workflow_bodyparameterssurveyId);
                     parametersObjectpropCount++;
                 }
 
-                if (bodyparameterspublicationId != null)
+                if (__workflow_bodyparameterspublicationId != null)
                 {
-                    parametersObject["publicationId"] = ExpressionConverter.ConvertO(bodyparameterspublicationId);
+                    parametersObject["publicationId"] = ExpressionConverter.ConvertO(__workflow_bodyparameterspublicationId);
                     parametersObjectpropCount++;
                 }
 

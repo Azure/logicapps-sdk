@@ -1,33 +1,26 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractphonevalidat
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class AbstractphonevalidatActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractphonevalidat")]
-        [WorkflowExpressionFactory(nameof(__BuildValidate))]
-        public IBodyWorkflowAction<ValidateResponse> Validate([WorkflowExpression] Func<string> phone)
+        public IBodyWorkflowAction<ValidateResponse> Validate(Expression<Func<string>> phone)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ValidateResponse> __BuildValidate(WorkflowExpression<string> phone)
-        {
-            WorkflowExpression.Validate(phone, nameof(phone), required: true);
+            var __workflow_phone = phone == null ? null : WorkflowExpression.Compile(phone);
+            WorkflowExpression.Validate(__workflow_phone, nameof(phone), required: true);
             return new DeferredBodyAction<ValidateResponse>(() =>
             {
                 var apiCallPath = "/v1/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["phone"] = ExpressionConverter.Convert(phone);
+                callPayload.Queries["phone"] = ExpressionConverter.Convert(__workflow_phone);
                 return new ApiConnectionAction<ValidateResponse>(callPayload);
             });
         }

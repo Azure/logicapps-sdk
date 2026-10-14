@@ -1,12 +1,12 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ramquestevents
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class RamquesteventsActions([ConnectionName] string connectionId)
     {
@@ -14,17 +14,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ramquestevents
 
     public class RamquesteventsTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildCCEEventTrigger))]
-        public IWorkflowTrigger CCEEventTrigger([WorkflowExpression] Func<bodyactionInput> bodyaction = null,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CCEEventTrigger(Expression<Func<bodyactionInput>> bodyaction = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildCCEEventTrigger(WorkflowExpression<bodyactionInput> bodyaction = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodyaction, nameof(bodyaction), required: false);
+            var __workflow_bodyaction = bodyaction == null ? null : WorkflowExpression.Compile(bodyaction);
+            WorkflowExpression.Validate(__workflow_bodyaction, nameof(bodyaction), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/register/cce";
@@ -34,9 +27,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ramquestevents
                 var bodypropCount = 0;
                 body["webHook"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-                if (bodyaction != null)
+                if (__workflow_bodyaction != null)
                 {
-                    body["action"] = ExpressionConverter.ConvertO(bodyaction);
+                    body["action"] = ExpressionConverter.ConvertO(__workflow_bodyaction);
                     bodypropCount++;
                 }
 
@@ -49,16 +42,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ramquestevents
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildHorizonEventTrigger))]
-        public IWorkflowTrigger HorizonEventTrigger([WorkflowExpression] Func<string> bodyaction = null,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger HorizonEventTrigger(Expression<Func<string>> bodyaction = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildHorizonEventTrigger(WorkflowExpression<string> bodyaction = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodyaction, nameof(bodyaction), required: false);
+            var __workflow_bodyaction = bodyaction == null ? null : WorkflowExpression.Compile(bodyaction);
+            WorkflowExpression.Validate(__workflow_bodyaction, nameof(bodyaction), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/register/horizon";
@@ -68,9 +55,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ramquestevents
                 var bodypropCount = 0;
                 body["webHook"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-                if (bodyaction != null)
+                if (__workflow_bodyaction != null)
                 {
-                    body["action"] = ExpressionConverter.ConvertO(bodyaction);
+                    body["action"] = ExpressionConverter.ConvertO(__workflow_bodyaction);
                     bodypropCount++;
                 }
 

@@ -1,44 +1,40 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfless
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class PdflessActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfless")]
-        [WorkflowExpressionFactory(nameof(__BuildCreatePDF))]
-        public IBodyWorkflowAction<PDFDtoApiResult> CreatePDF([WorkflowExpression] Func<string> version, [WorkflowExpression] Func<string> commandtemplateId, [WorkflowExpression] Func<string> commandpayload, [WorkflowExpression] Func<string> commandreferenceId = null)
+        public IBodyWorkflowAction<PDFDtoApiResult> CreatePDF(Expression<Func<string>> version, Expression<Func<string>> commandtemplateId, Expression<Func<string>> commandpayload, Expression<Func<string>> commandreferenceId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PDFDtoApiResult> __BuildCreatePDF(WorkflowExpression<string> version, WorkflowExpression<string> commandtemplateId, WorkflowExpression<string> commandpayload, WorkflowExpression<string> commandreferenceId = null)
-        {
-            WorkflowExpression.Validate(version, nameof(version), required: true);
-            WorkflowExpression.Validate(commandtemplateId, nameof(commandtemplateId), required: true);
-            WorkflowExpression.Validate(commandpayload, nameof(commandpayload), required: true);
-            WorkflowExpression.Validate(commandreferenceId, nameof(commandreferenceId), required: false);
+            var __workflow_version = version == null ? null : WorkflowExpression.Compile(version);
+            WorkflowExpression.Validate(__workflow_version, nameof(version), required: true);
+            var __workflow_commandtemplateId = commandtemplateId == null ? null : WorkflowExpression.Compile(commandtemplateId);
+            WorkflowExpression.Validate(__workflow_commandtemplateId, nameof(commandtemplateId), required: true);
+            var __workflow_commandpayload = commandpayload == null ? null : WorkflowExpression.Compile(commandpayload);
+            WorkflowExpression.Validate(__workflow_commandpayload, nameof(commandpayload), required: true);
+            var __workflow_commandreferenceId = commandreferenceId == null ? null : WorkflowExpression.Compile(commandreferenceId);
+            WorkflowExpression.Validate(__workflow_commandreferenceId, nameof(commandreferenceId), required: false);
             return new DeferredBodyAction<PDFDtoApiResult>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v{0}/pdfs", ExpressionConverter.ConvertWithUrlEncoding(version, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v{0}/pdfs", ExpressionConverter.ConvertWithUrlEncoding(__workflow_version, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var command = new JObject();
                 var commandpropCount = 0;
                 commandpropCount++;
-                command["template_id"] = ExpressionConverter.ConvertO(commandtemplateId);
+                command["template_id"] = ExpressionConverter.ConvertO(__workflow_commandtemplateId);
                 commandpropCount++;
-                command["payload"] = ExpressionConverter.ConvertO(commandpayload);
-                if (commandreferenceId != null)
+                command["payload"] = ExpressionConverter.ConvertO(__workflow_commandpayload);
+                if (__workflow_commandreferenceId != null)
                 {
-                    command["reference_id"] = ExpressionConverter.ConvertO(commandreferenceId);
+                    command["reference_id"] = ExpressionConverter.ConvertO(__workflow_commandreferenceId);
                     commandpropCount++;
                 }
 

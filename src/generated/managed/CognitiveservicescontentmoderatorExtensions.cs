@@ -1,69 +1,62 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoderator
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class CognitiveservicescontentmoderatorActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
-        [WorkflowExpressionFactory(nameof(__BuildEvaluateImage))]
-        public IBodyWorkflowAction<EvaluateImageResponse> EvaluateImage([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<object> image = null)
+        public IBodyWorkflowAction<EvaluateImageResponse> EvaluateImage(Expression<Func<formatInput>> format, Expression<Func<object>> image = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EvaluateImageResponse> __BuildEvaluateImage(WorkflowExpression<formatInput> format, WorkflowExpression<object> image = null)
-        {
-            WorkflowExpression.Validate(format, nameof(format), required: true);
-            WorkflowExpression.Validate(image, nameof(image), required: false);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: true);
+            var __workflow_image = image == null ? null : WorkflowExpression.Compile(image);
+            WorkflowExpression.Validate(__workflow_image, nameof(image), required: false);
             return new DeferredBodyAction<EvaluateImageResponse>(() =>
             {
                 var apiCallPath = "/contentmoderator/moderate/v1.0/ProcessImage/Evaluate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-                callPayload.Body = ExpressionConverter.ConvertO(image);
+                callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_image);
                 return new ApiConnectionAction<EvaluateImageResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateJob))]
-        public IBodyWorkflowAction<CreateJobResponse> CreateJob([WorkflowExpression] Func<string> teamName, [WorkflowExpression] Func<contentTypeInput> contentType, [WorkflowExpression] Func<string> contentId, [WorkflowExpression] Func<string> workflowName, [WorkflowExpression] Func<string> contentcontentValue, [WorkflowExpression] Func<string> callBackEndpoint = null)
+        public IBodyWorkflowAction<CreateJobResponse> CreateJob(Expression<Func<string>> teamName, Expression<Func<contentTypeInput>> contentType, Expression<Func<string>> contentId, Expression<Func<string>> workflowName, Expression<Func<string>> contentcontentValue, Expression<Func<string>> callBackEndpoint = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateJobResponse> __BuildCreateJob(WorkflowExpression<string> teamName, WorkflowExpression<contentTypeInput> contentType, WorkflowExpression<string> contentId, WorkflowExpression<string> workflowName, WorkflowExpression<string> contentcontentValue, WorkflowExpression<string> callBackEndpoint = null)
-        {
-            WorkflowExpression.Validate(teamName, nameof(teamName), required: true);
-            WorkflowExpression.Validate(contentType, nameof(contentType), required: true);
-            WorkflowExpression.Validate(contentId, nameof(contentId), required: true);
-            WorkflowExpression.Validate(workflowName, nameof(workflowName), required: true);
-            WorkflowExpression.Validate(contentcontentValue, nameof(contentcontentValue), required: true);
-            WorkflowExpression.Validate(callBackEndpoint, nameof(callBackEndpoint), required: false);
+            var __workflow_teamName = teamName == null ? null : WorkflowExpression.Compile(teamName);
+            WorkflowExpression.Validate(__workflow_teamName, nameof(teamName), required: true);
+            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
+            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: true);
+            var __workflow_contentId = contentId == null ? null : WorkflowExpression.Compile(contentId);
+            WorkflowExpression.Validate(__workflow_contentId, nameof(contentId), required: true);
+            var __workflow_workflowName = workflowName == null ? null : WorkflowExpression.Compile(workflowName);
+            WorkflowExpression.Validate(__workflow_workflowName, nameof(workflowName), required: true);
+            var __workflow_contentcontentValue = contentcontentValue == null ? null : WorkflowExpression.Compile(contentcontentValue);
+            WorkflowExpression.Validate(__workflow_contentcontentValue, nameof(contentcontentValue), required: true);
+            var __workflow_callBackEndpoint = callBackEndpoint == null ? null : WorkflowExpression.Compile(callBackEndpoint);
+            WorkflowExpression.Validate(__workflow_callBackEndpoint, nameof(callBackEndpoint), required: false);
             return new DeferredBodyAction<CreateJobResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/contentmoderator/review/v1.0/teams/{0}/jobs", ExpressionConverter.ConvertWithUrlEncoding(teamName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/contentmoderator/review/v1.0/teams/{0}/jobs", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamName, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["ContentType"] = ExpressionConverter.Convert(contentType);
-                callPayload.Queries["ContentId"] = ExpressionConverter.Convert(contentId);
-                callPayload.Queries["WorkflowName"] = ExpressionConverter.Convert(workflowName);
-                if (callBackEndpoint != null)
-                    callPayload.Queries["CallBackEndpoint"] = ExpressionConverter.Convert(callBackEndpoint);
+                callPayload.Queries["ContentType"] = ExpressionConverter.Convert(__workflow_contentType);
+                callPayload.Queries["ContentId"] = ExpressionConverter.Convert(__workflow_contentId);
+                callPayload.Queries["WorkflowName"] = ExpressionConverter.Convert(__workflow_workflowName);
+                if (__workflow_callBackEndpoint != null)
+                    callPayload.Queries["CallBackEndpoint"] = ExpressionConverter.Convert(__workflow_callBackEndpoint);
                 var content = new JObject();
                 var contentpropCount = 0;
                 contentpropCount++;
-                content["ContentValue"] = ExpressionConverter.ConvertO(contentcontentValue);
+                content["ContentValue"] = ExpressionConverter.ConvertO(__workflow_contentcontentValue);
                 if (contentpropCount > 0)
                 {
                     callPayload.Body = content;
@@ -74,161 +67,139 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
-        [WorkflowExpressionFactory(nameof(__BuildOCR))]
-        public IBodyWorkflowAction<OCRResponse> OCR([WorkflowExpression] Func<string> language, [WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<object> image = null)
+        public IBodyWorkflowAction<OCRResponse> OCR(Expression<Func<string>> language, Expression<Func<formatInput>> format, Expression<Func<object>> image = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<OCRResponse> __BuildOCR(WorkflowExpression<string> language, WorkflowExpression<formatInput> format, WorkflowExpression<object> image = null)
-        {
-            WorkflowExpression.Validate(language, nameof(language), required: true);
-            WorkflowExpression.Validate(format, nameof(format), required: true);
-            WorkflowExpression.Validate(image, nameof(image), required: false);
+            var __workflow_language = language == null ? null : WorkflowExpression.Compile(language);
+            WorkflowExpression.Validate(__workflow_language, nameof(language), required: true);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: true);
+            var __workflow_image = image == null ? null : WorkflowExpression.Compile(image);
+            WorkflowExpression.Validate(__workflow_image, nameof(image), required: false);
             return new DeferredBodyAction<OCRResponse>(() =>
             {
                 var apiCallPath = "/contentmoderator/moderate/v1.0/ProcessImage/OCR";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["language"] = ExpressionConverter.Convert(language);
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-                callPayload.Body = ExpressionConverter.ConvertO(image);
+                callPayload.Queries["language"] = ExpressionConverter.Convert(__workflow_language);
+                callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_image);
                 return new ApiConnectionAction<OCRResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
-        [WorkflowExpressionFactory(nameof(__BuildScreenText))]
-        public IBodyWorkflowAction<ScreenTextResponse> ScreenText([WorkflowExpression] Func<contentTypeInput> contentType, [WorkflowExpression] Func<string> language = null, [WorkflowExpression] Func<bool> autocorrect = null, [WorkflowExpression] Func<bool> pII = null, [WorkflowExpression] Func<string> listId = null, [WorkflowExpression] Func<bool> classify = null, [WorkflowExpression] Func<string> textContent = null)
+        public IBodyWorkflowAction<ScreenTextResponse> ScreenText(Expression<Func<contentTypeInput>> contentType, Expression<Func<string>> language = null, Expression<Func<bool>> autocorrect = null, Expression<Func<bool>> pII = null, Expression<Func<string>> listId = null, Expression<Func<bool>> classify = null, Expression<Func<string>> textContent = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ScreenTextResponse> __BuildScreenText(WorkflowExpression<contentTypeInput> contentType, WorkflowExpression<string> language = null, WorkflowExpression<bool> autocorrect = null, WorkflowExpression<bool> pII = null, WorkflowExpression<string> listId = null, WorkflowExpression<bool> classify = null, WorkflowExpression<string> textContent = null)
-        {
-            WorkflowExpression.Validate(contentType, nameof(contentType), required: true);
-            WorkflowExpression.Validate(language, nameof(language), required: false);
-            WorkflowExpression.Validate(autocorrect, nameof(autocorrect), required: false);
-            WorkflowExpression.Validate(pII, nameof(pII), required: false);
-            WorkflowExpression.Validate(listId, nameof(listId), required: false);
-            WorkflowExpression.Validate(classify, nameof(classify), required: false);
-            WorkflowExpression.Validate(textContent, nameof(textContent), required: false);
+            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
+            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: true);
+            var __workflow_language = language == null ? null : WorkflowExpression.Compile(language);
+            WorkflowExpression.Validate(__workflow_language, nameof(language), required: false);
+            var __workflow_autocorrect = autocorrect == null ? null : WorkflowExpression.Compile(autocorrect);
+            WorkflowExpression.Validate(__workflow_autocorrect, nameof(autocorrect), required: false);
+            var __workflow_pII = pII == null ? null : WorkflowExpression.Compile(pII);
+            WorkflowExpression.Validate(__workflow_pII, nameof(pII), required: false);
+            var __workflow_listId = listId == null ? null : WorkflowExpression.Compile(listId);
+            WorkflowExpression.Validate(__workflow_listId, nameof(listId), required: false);
+            var __workflow_classify = classify == null ? null : WorkflowExpression.Compile(classify);
+            WorkflowExpression.Validate(__workflow_classify, nameof(classify), required: false);
+            var __workflow_textContent = textContent == null ? null : WorkflowExpression.Compile(textContent);
+            WorkflowExpression.Validate(__workflow_textContent, nameof(textContent), required: false);
             return new DeferredBodyAction<ScreenTextResponse>(() =>
             {
                 var apiCallPath = "/contentmoderator/moderate/v1.0/ProcessText/Screen/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (language != null)
-                    callPayload.Queries["language"] = ExpressionConverter.Convert(language);
-                if (autocorrect != null)
-                    callPayload.Queries["autocorrect"] = ExpressionConverter.Convert(autocorrect);
-                if (pII != null)
-                    callPayload.Queries["PII"] = ExpressionConverter.Convert(pII);
-                if (listId != null)
-                    callPayload.Queries["listId"] = ExpressionConverter.Convert(listId);
-                if (classify != null)
-                    callPayload.Queries["classify"] = ExpressionConverter.Convert(classify);
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-                callPayload.Body = ExpressionConverter.ConvertO(textContent);
+                if (__workflow_language != null)
+                    callPayload.Queries["language"] = ExpressionConverter.Convert(__workflow_language);
+                if (__workflow_autocorrect != null)
+                    callPayload.Queries["autocorrect"] = ExpressionConverter.Convert(__workflow_autocorrect);
+                if (__workflow_pII != null)
+                    callPayload.Queries["PII"] = ExpressionConverter.Convert(__workflow_pII);
+                if (__workflow_listId != null)
+                    callPayload.Queries["listId"] = ExpressionConverter.Convert(__workflow_listId);
+                if (__workflow_classify != null)
+                    callPayload.Queries["classify"] = ExpressionConverter.Convert(__workflow_classify);
+                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_textContent);
                 return new ApiConnectionAction<ScreenTextResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
-        [WorkflowExpressionFactory(nameof(__BuildFindFaces))]
-        public IBodyWorkflowAction<FindFacesResponse> FindFaces([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<object> image = null)
+        public IBodyWorkflowAction<FindFacesResponse> FindFaces(Expression<Func<formatInput>> format, Expression<Func<object>> image = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FindFacesResponse> __BuildFindFaces(WorkflowExpression<formatInput> format, WorkflowExpression<object> image = null)
-        {
-            WorkflowExpression.Validate(format, nameof(format), required: true);
-            WorkflowExpression.Validate(image, nameof(image), required: false);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: true);
+            var __workflow_image = image == null ? null : WorkflowExpression.Compile(image);
+            WorkflowExpression.Validate(__workflow_image, nameof(image), required: false);
             return new DeferredBodyAction<FindFacesResponse>(() =>
             {
                 var apiCallPath = "/contentmoderator/moderate/v1.0/ProcessImage/FindFaces";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-                callPayload.Body = ExpressionConverter.ConvertO(image);
+                callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_image);
                 return new ApiConnectionAction<FindFacesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
-        [WorkflowExpressionFactory(nameof(__BuildDetectLanguage))]
-        public IBodyWorkflowAction<DetectLanguageResponse> DetectLanguage([WorkflowExpression] Func<contentTypeInput> contentType, [WorkflowExpression] Func<string> textContent = null)
+        public IBodyWorkflowAction<DetectLanguageResponse> DetectLanguage(Expression<Func<contentTypeInput>> contentType, Expression<Func<string>> textContent = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DetectLanguageResponse> __BuildDetectLanguage(WorkflowExpression<contentTypeInput> contentType, WorkflowExpression<string> textContent = null)
-        {
-            WorkflowExpression.Validate(contentType, nameof(contentType), required: true);
-            WorkflowExpression.Validate(textContent, nameof(textContent), required: false);
+            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
+            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: true);
+            var __workflow_textContent = textContent == null ? null : WorkflowExpression.Compile(textContent);
+            WorkflowExpression.Validate(__workflow_textContent, nameof(textContent), required: false);
             return new DeferredBodyAction<DetectLanguageResponse>(() =>
             {
                 var apiCallPath = "/contentmoderator/moderate/v1.0/ProcessText/DetectLanguage";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-                callPayload.Body = ExpressionConverter.ConvertO(textContent);
+                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_textContent);
                 return new ApiConnectionAction<DetectLanguageResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
-        [WorkflowExpressionFactory(nameof(__BuildMatchImage))]
-        public IBodyWorkflowAction<MatchImageResponse> MatchImage([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string> listId = null, [WorkflowExpression] Func<object> image = null)
+        public IBodyWorkflowAction<MatchImageResponse> MatchImage(Expression<Func<formatInput>> format, Expression<Func<string>> listId = null, Expression<Func<object>> image = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MatchImageResponse> __BuildMatchImage(WorkflowExpression<formatInput> format, WorkflowExpression<string> listId = null, WorkflowExpression<object> image = null)
-        {
-            WorkflowExpression.Validate(format, nameof(format), required: true);
-            WorkflowExpression.Validate(listId, nameof(listId), required: false);
-            WorkflowExpression.Validate(image, nameof(image), required: false);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: true);
+            var __workflow_listId = listId == null ? null : WorkflowExpression.Compile(listId);
+            WorkflowExpression.Validate(__workflow_listId, nameof(listId), required: false);
+            var __workflow_image = image == null ? null : WorkflowExpression.Compile(image);
+            WorkflowExpression.Validate(__workflow_image, nameof(image), required: false);
             return new DeferredBodyAction<MatchImageResponse>(() =>
             {
                 var apiCallPath = "/contentmoderator/moderate/v1.0/ProcessImage/Match";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (listId != null)
-                    callPayload.Queries["listId"] = ExpressionConverter.Convert(listId);
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-                callPayload.Body = ExpressionConverter.ConvertO(image);
+                if (__workflow_listId != null)
+                    callPayload.Queries["listId"] = ExpressionConverter.Convert(__workflow_listId);
+                callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_image);
                 return new ApiConnectionAction<MatchImageResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateReviews))]
-        public IBodyWorkflowAction<string[]> CreateReviews([WorkflowExpression] Func<string> teamName, [WorkflowExpression] Func<string> subTeam = null, [WorkflowExpression] Func<bodyInputItem[]> body = null)
+        public IBodyWorkflowAction<string[]> CreateReviews(Expression<Func<string>> teamName, Expression<Func<string>> subTeam = null, Expression<Func<bodyInputItem[]>> body = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string[]> __BuildCreateReviews(WorkflowExpression<string> teamName, WorkflowExpression<string> subTeam = null, WorkflowExpression<bodyInputItem[]> body = null)
-        {
-            WorkflowExpression.Validate(teamName, nameof(teamName), required: true);
-            WorkflowExpression.Validate(subTeam, nameof(subTeam), required: false);
-            WorkflowExpression.Validate(body, nameof(body), required: false);
+            var __workflow_teamName = teamName == null ? null : WorkflowExpression.Compile(teamName);
+            WorkflowExpression.Validate(__workflow_teamName, nameof(teamName), required: true);
+            var __workflow_subTeam = subTeam == null ? null : WorkflowExpression.Compile(subTeam);
+            WorkflowExpression.Validate(__workflow_subTeam, nameof(subTeam), required: false);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
             return new DeferredBodyAction<string[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/contentmoderator/review/v1.0/teams/{0}/reviews", ExpressionConverter.ConvertWithUrlEncoding(teamName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/contentmoderator/review/v1.0/teams/{0}/reviews", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamName, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (subTeam != null)
-                    callPayload.Queries["subTeam"] = ExpressionConverter.Convert(subTeam);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                if (__workflow_subTeam != null)
+                    callPayload.Queries["subTeam"] = ExpressionConverter.Convert(__workflow_subTeam);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string[]>(callPayload);
             });
         }

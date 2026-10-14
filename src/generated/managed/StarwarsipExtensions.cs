@@ -1,105 +1,83 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starwarsip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class StarwarsipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starwarsip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetSpecies))]
-        public IBodyWorkflowAction<GetSpeciesResponse> GetSpecies([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<int> page = null)
+        public IBodyWorkflowAction<GetSpeciesResponse> GetSpecies(Expression<Func<string>> search = null, Expression<Func<int>> page = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetSpeciesResponse> __BuildGetSpecies(WorkflowExpression<string> search = null, WorkflowExpression<int> page = null)
-        {
-            WorkflowExpression.Validate(search, nameof(search), required: false);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
+            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
+            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
             return new DeferredBodyAction<GetSpeciesResponse>(() =>
             {
                 var apiCallPath = "/species";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (search != null)
-                    callPayload.Queries["search"] = ExpressionConverter.Convert(search);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (__workflow_search != null)
+                    callPayload.Queries["search"] = ExpressionConverter.Convert(__workflow_search);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 return new ApiConnectionAction<GetSpeciesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starwarsip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetStarships))]
-        public IBodyWorkflowAction<Starship[]> GetStarships([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<int> page = null)
+        public IBodyWorkflowAction<Starship[]> GetStarships(Expression<Func<string>> search = null, Expression<Func<int>> page = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Starship[]> __BuildGetStarships(WorkflowExpression<string> search = null, WorkflowExpression<int> page = null)
-        {
-            WorkflowExpression.Validate(search, nameof(search), required: false);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
+            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
+            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
             return new DeferredBodyAction<Starship[]>(() =>
             {
                 var apiCallPath = "/starships";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (search != null)
-                    callPayload.Queries["search"] = ExpressionConverter.Convert(search);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (__workflow_search != null)
+                    callPayload.Queries["search"] = ExpressionConverter.Convert(__workflow_search);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 return new ApiConnectionAction<Starship[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starwarsip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetFilms))]
-        public IBodyWorkflowAction<GetFilmsResponse> GetFilms([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<int> page = null)
+        public IBodyWorkflowAction<GetFilmsResponse> GetFilms(Expression<Func<string>> search = null, Expression<Func<int>> page = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetFilmsResponse> __BuildGetFilms(WorkflowExpression<string> search = null, WorkflowExpression<int> page = null)
-        {
-            WorkflowExpression.Validate(search, nameof(search), required: false);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
+            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
+            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
             return new DeferredBodyAction<GetFilmsResponse>(() =>
             {
                 var apiCallPath = "/films";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (search != null)
-                    callPayload.Queries["search"] = ExpressionConverter.Convert(search);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (__workflow_search != null)
+                    callPayload.Queries["search"] = ExpressionConverter.Convert(__workflow_search);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 return new ApiConnectionAction<GetFilmsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starwarsip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetFilmById))]
-        public IBodyWorkflowAction<Film> GetFilmById([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<Film> GetFilmById(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Film> __BuildGetFilmById(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<Film>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/films/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/films/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Film>(callPayload);
@@ -107,69 +85,53 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starwarsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starwarsip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetPlanets))]
-        public IBodyWorkflowAction<GetPlanetsResponse> GetPlanets([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<int> page = null)
+        public IBodyWorkflowAction<GetPlanetsResponse> GetPlanets(Expression<Func<string>> search = null, Expression<Func<int>> page = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetPlanetsResponse> __BuildGetPlanets(WorkflowExpression<string> search = null, WorkflowExpression<int> page = null)
-        {
-            WorkflowExpression.Validate(search, nameof(search), required: false);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
+            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
+            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
             return new DeferredBodyAction<GetPlanetsResponse>(() =>
             {
                 var apiCallPath = "/planets";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (search != null)
-                    callPayload.Queries["search"] = ExpressionConverter.Convert(search);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (__workflow_search != null)
+                    callPayload.Queries["search"] = ExpressionConverter.Convert(__workflow_search);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 return new ApiConnectionAction<GetPlanetsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starwarsip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetPeople))]
-        public IBodyWorkflowAction<Person> GetPeople([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<int> page = null)
+        public IBodyWorkflowAction<Person> GetPeople(Expression<Func<string>> search = null, Expression<Func<int>> page = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Person> __BuildGetPeople(WorkflowExpression<string> search = null, WorkflowExpression<int> page = null)
-        {
-            WorkflowExpression.Validate(search, nameof(search), required: false);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
+            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
+            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
             return new DeferredBodyAction<Person>(() =>
             {
                 var apiCallPath = "/people";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (search != null)
-                    callPayload.Queries["search"] = ExpressionConverter.Convert(search);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (__workflow_search != null)
+                    callPayload.Queries["search"] = ExpressionConverter.Convert(__workflow_search);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 return new ApiConnectionAction<Person>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starwarsip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetPersonById))]
-        public IBodyWorkflowAction<Person> GetPersonById([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<Person> GetPersonById(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Person> __BuildGetPersonById(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<Person>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/people/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/people/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Person>(callPayload);
@@ -177,19 +139,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starwarsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starwarsip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetPlanetById))]
-        public IBodyWorkflowAction<Planet> GetPlanetById([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<Planet> GetPlanetById(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Planet> __BuildGetPlanetById(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<Planet>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/planets/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/planets/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Planet>(callPayload);
@@ -197,19 +153,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starwarsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starwarsip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetSpeciesById))]
-        public IBodyWorkflowAction<Species> GetSpeciesById([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<Species> GetSpeciesById(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Species> __BuildGetSpeciesById(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<Species>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/species/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/species/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Species>(callPayload);
@@ -217,19 +167,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starwarsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starwarsip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetStarShipById))]
-        public IBodyWorkflowAction<Starship> GetStarShipById([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<Starship> GetStarShipById(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Starship> __BuildGetStarShipById(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<Starship>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/starships/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/starships/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Starship>(callPayload);

@@ -1,68 +1,59 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflowssms
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class DataflowssmsActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dataflowssms")]
-        [WorkflowExpressionFactory(nameof(__BuildSendSMSGet))]
-        public IBodyWorkflowAction<SMSResponse> SendSMSGet([WorkflowExpression] Func<string> recipient, [WorkflowExpression] Func<string> senderId, [WorkflowExpression] Func<string> message, [WorkflowExpression] Func<string> type = null)
+        public IBodyWorkflowAction<SMSResponse> SendSMSGet(Expression<Func<string>> recipient, Expression<Func<string>> senderId, Expression<Func<string>> message, Expression<Func<string>> type = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SMSResponse> __BuildSendSMSGet(WorkflowExpression<string> recipient, WorkflowExpression<string> senderId, WorkflowExpression<string> message, WorkflowExpression<string> type = null)
-        {
-            WorkflowExpression.Validate(recipient, nameof(recipient), required: true);
-            WorkflowExpression.Validate(senderId, nameof(senderId), required: true);
-            WorkflowExpression.Validate(message, nameof(message), required: true);
-            WorkflowExpression.Validate(type, nameof(type), required: false);
+            var __workflow_recipient = recipient == null ? null : WorkflowExpression.Compile(recipient);
+            WorkflowExpression.Validate(__workflow_recipient, nameof(recipient), required: true);
+            var __workflow_senderId = senderId == null ? null : WorkflowExpression.Compile(senderId);
+            WorkflowExpression.Validate(__workflow_senderId, nameof(senderId), required: true);
+            var __workflow_message = message == null ? null : WorkflowExpression.Compile(message);
+            WorkflowExpression.Validate(__workflow_message, nameof(message), required: true);
+            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
+            WorkflowExpression.Validate(__workflow_type, nameof(type), required: false);
             return new DeferredBodyAction<SMSResponse>(() =>
             {
                 var apiCallPath = "/sms/send";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["recipient"] = ExpressionConverter.Convert(recipient);
-                callPayload.Queries["sender_id"] = ExpressionConverter.Convert(senderId);
-                callPayload.Queries["message"] = ExpressionConverter.Convert(message);
+                callPayload.Queries["recipient"] = ExpressionConverter.Convert(__workflow_recipient);
+                callPayload.Queries["sender_id"] = ExpressionConverter.Convert(__workflow_senderId);
+                callPayload.Queries["message"] = ExpressionConverter.Convert(__workflow_message);
                 callPayload.Queries["type"] = Convert.ToString("plain");
-                if (type != null)
-                    callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                if (__workflow_type != null)
+                    callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
                 return new ApiConnectionAction<SMSResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dataflowssms")]
-        [WorkflowExpressionFactory(nameof(__BuildListSMS))]
-        public IBodyWorkflowAction<SMSList> ListSMS([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> limit = null)
+        public IBodyWorkflowAction<SMSList> ListSMS(Expression<Func<int>> page = null, Expression<Func<int>> limit = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SMSList> __BuildListSMS(WorkflowExpression<int> page = null, WorkflowExpression<int> limit = null)
-        {
-            WorkflowExpression.Validate(page, nameof(page), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
             return new DeferredBodyAction<SMSList>(() =>
             {
                 var apiCallPath = "/sms";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["page"] = Convert.ToString(1);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 callPayload.Queries["limit"] = Convert.ToString(20);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction<SMSList>(callPayload);
             });
         }

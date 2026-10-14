@@ -1,27 +1,20 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class LettriaActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lettria")]
-        [WorkflowExpressionFactory(nameof(__BuildComprehend))]
-        public IBodyWorkflowAction<ComprehendPostResponseItem[]> Comprehend([WorkflowExpression] Func<string[]> bodydocuments = null)
+        public IBodyWorkflowAction<ComprehendPostResponseItem[]> Comprehend(Expression<Func<string[]>> bodydocuments = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ComprehendPostResponseItem[]> __BuildComprehend(WorkflowExpression<string[]> bodydocuments = null)
-        {
-            WorkflowExpression.Validate(bodydocuments, nameof(bodydocuments), required: false);
+            var __workflow_bodydocuments = bodydocuments == null ? null : WorkflowExpression.Compile(bodydocuments);
+            WorkflowExpression.Validate(__workflow_bodydocuments, nameof(bodydocuments), required: false);
             return new DeferredBodyAction<ComprehendPostResponseItem[]>(() =>
             {
                 var apiCallPath = "/";
@@ -29,9 +22,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodydocuments != null)
+                if (__workflow_bodydocuments != null)
                 {
-                    body["documents"] = ExpressionConverter.ConvertO(bodydocuments);
+                    body["documents"] = ExpressionConverter.ConvertO(__workflow_bodydocuments);
                     bodypropCount++;
                 }
 
@@ -45,16 +38,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lettria")]
-        [WorkflowExpressionFactory(nameof(__BuildClassify))]
-        public IBodyWorkflowAction<ClassifyPostResponseItem[]> Classify([WorkflowExpression] Func<string[]> bodydocuments = null)
+        public IBodyWorkflowAction<ClassifyPostResponseItem[]> Classify(Expression<Func<string[]>> bodydocuments = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ClassifyPostResponseItem[]> __BuildClassify(WorkflowExpression<string[]> bodydocuments = null)
-        {
-            WorkflowExpression.Validate(bodydocuments, nameof(bodydocuments), required: false);
+            var __workflow_bodydocuments = bodydocuments == null ? null : WorkflowExpression.Compile(bodydocuments);
+            WorkflowExpression.Validate(__workflow_bodydocuments, nameof(bodydocuments), required: false);
             return new DeferredBodyAction<ClassifyPostResponseItem[]>(() =>
             {
                 var apiCallPath = "/nls/classification";
@@ -62,9 +49,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodydocuments != null)
+                if (__workflow_bodydocuments != null)
                 {
-                    body["documents"] = ExpressionConverter.ConvertO(bodydocuments);
+                    body["documents"] = ExpressionConverter.ConvertO(__workflow_bodydocuments);
                     bodypropCount++;
                 }
 

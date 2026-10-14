@@ -1,7 +1,6 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Hostfile
 {
     using System;
@@ -9,29 +8,25 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Hostfile
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class HostfileActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "hostfile")]
-        [WorkflowExpressionFactory(nameof(__BuildGenerateFileContents))]
-        public IBodyWorkflowAction<GenerateFileContentsOutput> GenerateFileContents([WorkflowExpression] Func<string> hidx, [WorkflowExpression] Func<string> schema, [WorkflowExpression] Func<JToken[]> rows)
+        public IBodyWorkflowAction<GenerateFileContentsOutput> GenerateFileContents(Expression<Func<string>> hidx, Expression<Func<string>> schema, Expression<Func<JToken[]>> rows)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GenerateFileContentsOutput> __BuildGenerateFileContents(WorkflowExpression<string> hidx, WorkflowExpression<string> schema, WorkflowExpression<JToken[]> rows)
-        {
-            WorkflowExpression.Validate(hidx, nameof(hidx), required: true);
-            WorkflowExpression.Validate(schema, nameof(schema), required: true);
-            WorkflowExpression.Validate(rows, nameof(rows), required: true);
+            var __workflow_hidx = hidx == null ? null : WorkflowExpression.Compile(hidx);
+            WorkflowExpression.Validate(__workflow_hidx, nameof(hidx), required: true);
+            var __workflow_schema = schema == null ? null : WorkflowExpression.Compile(schema);
+            WorkflowExpression.Validate(__workflow_schema, nameof(schema), required: true);
+            var __workflow_rows = rows == null ? null : WorkflowExpression.Compile(rows);
+            WorkflowExpression.Validate(__workflow_rows, nameof(rows), required: true);
             return new DeferredBodyAction<GenerateFileContentsOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["hidx"] = ExpressionConverter.ConvertO(hidx);
-                serviceProviderParameters["schema"] = ExpressionConverter.ConvertO(schema);
-                serviceProviderParameters["rows"] = ExpressionConverter.ConvertO(rows);
+                serviceProviderParameters["hidx"] = ExpressionConverter.ConvertO(__workflow_hidx);
+                serviceProviderParameters["schema"] = ExpressionConverter.ConvertO(__workflow_schema);
+                serviceProviderParameters["rows"] = ExpressionConverter.ConvertO(__workflow_rows);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/hostfile", operationId: "generateFileContents", connectionName: connectionId),
@@ -42,24 +37,20 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Hostfile
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "hostfile")]
-        [WorkflowExpressionFactory(nameof(__BuildParseFileContents))]
-        public IBodyWorkflowAction<ParseFileContentsOutput> ParseFileContents([WorkflowExpression] Func<string> hidx, [WorkflowExpression] Func<string> schema, [WorkflowExpression] Func<string> contents)
+        public IBodyWorkflowAction<ParseFileContentsOutput> ParseFileContents(Expression<Func<string>> hidx, Expression<Func<string>> schema, Expression<Func<string>> contents)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ParseFileContentsOutput> __BuildParseFileContents(WorkflowExpression<string> hidx, WorkflowExpression<string> schema, WorkflowExpression<string> contents)
-        {
-            WorkflowExpression.Validate(hidx, nameof(hidx), required: true);
-            WorkflowExpression.Validate(schema, nameof(schema), required: true);
-            WorkflowExpression.Validate(contents, nameof(contents), required: true);
+            var __workflow_hidx = hidx == null ? null : WorkflowExpression.Compile(hidx);
+            WorkflowExpression.Validate(__workflow_hidx, nameof(hidx), required: true);
+            var __workflow_schema = schema == null ? null : WorkflowExpression.Compile(schema);
+            WorkflowExpression.Validate(__workflow_schema, nameof(schema), required: true);
+            var __workflow_contents = contents == null ? null : WorkflowExpression.Compile(contents);
+            WorkflowExpression.Validate(__workflow_contents, nameof(contents), required: true);
             return new DeferredBodyAction<ParseFileContentsOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["hidx"] = ExpressionConverter.ConvertO(hidx);
-                serviceProviderParameters["schema"] = ExpressionConverter.ConvertO(schema);
-                serviceProviderParameters["contents"] = ExpressionConverter.ConvertO(contents);
+                serviceProviderParameters["hidx"] = ExpressionConverter.ConvertO(__workflow_hidx);
+                serviceProviderParameters["schema"] = ExpressionConverter.ConvertO(__workflow_schema);
+                serviceProviderParameters["contents"] = ExpressionConverter.ConvertO(__workflow_contents);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/hostfile", operationId: "parseFileContents", connectionName: connectionId),

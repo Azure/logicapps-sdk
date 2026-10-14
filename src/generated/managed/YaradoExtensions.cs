@@ -1,12 +1,12 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yarado
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class YaradoActions([ConnectionName] string connectionId)
     {
@@ -29,17 +29,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yarado
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yarado")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateScheduleTaskRun))]
-        public IWorkflowAction CreateScheduleTaskRun([WorkflowExpression] Func<string> bodyrobotId, [WorkflowExpression] Func<string> bodytaskFileId)
+        public IWorkflowAction CreateScheduleTaskRun(Expression<Func<string>> bodyrobotId, Expression<Func<string>> bodytaskFileId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildCreateScheduleTaskRun(WorkflowExpression<string> bodyrobotId, WorkflowExpression<string> bodytaskFileId)
-        {
-            WorkflowExpression.Validate(bodyrobotId, nameof(bodyrobotId), required: true);
-            WorkflowExpression.Validate(bodytaskFileId, nameof(bodytaskFileId), required: true);
+            var __workflow_bodyrobotId = bodyrobotId == null ? null : WorkflowExpression.Compile(bodyrobotId);
+            WorkflowExpression.Validate(__workflow_bodyrobotId, nameof(bodyrobotId), required: true);
+            var __workflow_bodytaskFileId = bodytaskFileId == null ? null : WorkflowExpression.Compile(bodytaskFileId);
+            WorkflowExpression.Validate(__workflow_bodytaskFileId, nameof(bodytaskFileId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v1/task-schedules";
@@ -48,9 +43,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yarado
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["robot_id"] = ExpressionConverter.ConvertO(bodyrobotId);
+                body["robot_id"] = ExpressionConverter.ConvertO(__workflow_bodyrobotId);
                 bodypropCount++;
-                body["task_file_id"] = ExpressionConverter.ConvertO(bodytaskFileId);
+                body["task_file_id"] = ExpressionConverter.ConvertO(__workflow_bodytaskFileId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

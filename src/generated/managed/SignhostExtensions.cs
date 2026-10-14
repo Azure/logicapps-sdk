@@ -1,30 +1,23 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class SignhostActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
-        [WorkflowExpressionFactory(nameof(__BuildGetdetails))]
-        public IBodyWorkflowAction<Transaction> Getdetails([WorkflowExpression] Func<string> transactionId)
+        public IBodyWorkflowAction<Transaction> Getdetails(Expression<Func<string>> transactionId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Transaction> __BuildGetdetails(WorkflowExpression<string> transactionId)
-        {
-            WorkflowExpression.Validate(transactionId, nameof(transactionId), required: true);
+            var __workflow_transactionId = transactionId == null ? null : WorkflowExpression.Compile(transactionId);
+            WorkflowExpression.Validate(__workflow_transactionId, nameof(transactionId), required: true);
             return new DeferredBodyAction<Transaction>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/transaction/{0}", ExpressionConverter.ConvertWithUrlEncoding(transactionId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/transaction/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_transactionId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Transaction>(callPayload);
@@ -32,30 +25,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
-        [WorkflowExpressionFactory(nameof(__BuildDelete))]
-        public IBodyWorkflowAction<ErrorModel> Delete([WorkflowExpression] Func<string> transactionId, [WorkflowExpression] Func<bool> bodysendNotifications = null, [WorkflowExpression] Func<string> bodyreason = null)
+        public IBodyWorkflowAction<ErrorModel> Delete(Expression<Func<string>> transactionId, Expression<Func<bool>> bodysendNotifications = null, Expression<Func<string>> bodyreason = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ErrorModel> __BuildDelete(WorkflowExpression<string> transactionId, WorkflowExpression<bool> bodysendNotifications = null, WorkflowExpression<string> bodyreason = null)
-        {
-            WorkflowExpression.Validate(transactionId, nameof(transactionId), required: true);
-            WorkflowExpression.Validate(bodysendNotifications, nameof(bodysendNotifications), required: false);
-            WorkflowExpression.Validate(bodyreason, nameof(bodyreason), required: false);
+            var __workflow_transactionId = transactionId == null ? null : WorkflowExpression.Compile(transactionId);
+            WorkflowExpression.Validate(__workflow_transactionId, nameof(transactionId), required: true);
+            var __workflow_bodysendNotifications = bodysendNotifications == null ? null : WorkflowExpression.Compile(bodysendNotifications);
+            WorkflowExpression.Validate(__workflow_bodysendNotifications, nameof(bodysendNotifications), required: false);
+            var __workflow_bodyreason = bodyreason == null ? null : WorkflowExpression.Compile(bodyreason);
+            WorkflowExpression.Validate(__workflow_bodyreason, nameof(bodyreason), required: false);
             return new DeferredBodyAction<ErrorModel>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/transaction/{0}", ExpressionConverter.ConvertWithUrlEncoding(transactionId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/transaction/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_transactionId, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodysendNotifications != null)
+                if (__workflow_bodysendNotifications != null)
                 {
-                    if (bodysendNotifications != null)
+                    if (__workflow_bodysendNotifications != null)
                     {
-                        body["SendNotifications"] = ExpressionConverter.ConvertO(bodysendNotifications);
+                        body["SendNotifications"] = ExpressionConverter.ConvertO(__workflow_bodysendNotifications);
                         bodypropCount++;
                     }
 
@@ -67,9 +56,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
                     bodypropCount++;
                 }
 
-                if (bodyreason != null)
+                if (__workflow_bodyreason != null)
                 {
-                    body["Reason"] = ExpressionConverter.ConvertO(bodyreason);
+                    body["Reason"] = ExpressionConverter.ConvertO(__workflow_bodyreason);
                     bodypropCount++;
                 }
 
@@ -83,20 +72,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
-        [WorkflowExpressionFactory(nameof(__BuildDownloadpdf))]
-        public IBodyWorkflowAction<string> Downloadpdf([WorkflowExpression] Func<string> transactionId, [WorkflowExpression] Func<string> fileId)
+        public IBodyWorkflowAction<string> Downloadpdf(Expression<Func<string>> transactionId, Expression<Func<string>> fileId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildDownloadpdf(WorkflowExpression<string> transactionId, WorkflowExpression<string> fileId)
-        {
-            WorkflowExpression.Validate(transactionId, nameof(transactionId), required: true);
-            WorkflowExpression.Validate(fileId, nameof(fileId), required: true);
+            var __workflow_transactionId = transactionId == null ? null : WorkflowExpression.Compile(transactionId);
+            WorkflowExpression.Validate(__workflow_transactionId, nameof(transactionId), required: true);
+            var __workflow_fileId = fileId == null ? null : WorkflowExpression.Compile(fileId);
+            WorkflowExpression.Validate(__workflow_fileId, nameof(fileId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/transaction/{0}/file/{1}/", ExpressionConverter.ConvertWithUrlEncoding(transactionId, 1), ExpressionConverter.ConvertWithUrlEncoding(fileId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/transaction/{0}/file/{1}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_transactionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fileId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -104,19 +88,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
-        [WorkflowExpressionFactory(nameof(__BuildDownloadreceipt))]
-        public IBodyWorkflowAction<string> Downloadreceipt([WorkflowExpression] Func<string> transactionId)
+        public IBodyWorkflowAction<string> Downloadreceipt(Expression<Func<string>> transactionId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildDownloadreceipt(WorkflowExpression<string> transactionId)
-        {
-            WorkflowExpression.Validate(transactionId, nameof(transactionId), required: true);
+            var __workflow_transactionId = transactionId == null ? null : WorkflowExpression.Compile(transactionId);
+            WorkflowExpression.Validate(__workflow_transactionId, nameof(transactionId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/file/receipt/{0}", ExpressionConverter.ConvertWithUrlEncoding(transactionId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/file/receipt/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_transactionId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -124,23 +102,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
-        [WorkflowExpressionFactory(nameof(__BuildCreate))]
-        public IBodyWorkflowAction<Transaction> Create([WorkflowExpression] Func<transactionlanguageInput> transactionlanguage = null, [WorkflowExpression] Func<bool> transactionseal = null, [WorkflowExpression] Func<transactionsignersInputItem[]> transactionsigners = null, [WorkflowExpression] Func<transactionreceiversInputItem[]> transactionreceivers = null, [WorkflowExpression] Func<string> transactionreference = null, [WorkflowExpression] Func<string> transactionpostbackUrl = null, [WorkflowExpression] Func<int> transactionsignRequestMode = null, [WorkflowExpression] Func<int> transactiondaysToExpire = null)
+        public IBodyWorkflowAction<Transaction> Create(Expression<Func<transactionlanguageInput>> transactionlanguage = null, Expression<Func<bool>> transactionseal = null, Expression<Func<transactionsignersInputItem[]>> transactionsigners = null, Expression<Func<transactionreceiversInputItem[]>> transactionreceivers = null, Expression<Func<string>> transactionreference = null, Expression<Func<string>> transactionpostbackUrl = null, Expression<Func<int>> transactionsignRequestMode = null, Expression<Func<int>> transactiondaysToExpire = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Transaction> __BuildCreate(WorkflowExpression<transactionlanguageInput> transactionlanguage = null, WorkflowExpression<bool> transactionseal = null, WorkflowExpression<transactionsignersInputItem[]> transactionsigners = null, WorkflowExpression<transactionreceiversInputItem[]> transactionreceivers = null, WorkflowExpression<string> transactionreference = null, WorkflowExpression<string> transactionpostbackUrl = null, WorkflowExpression<int> transactionsignRequestMode = null, WorkflowExpression<int> transactiondaysToExpire = null)
-        {
-            WorkflowExpression.Validate(transactionlanguage, nameof(transactionlanguage), required: false);
-            WorkflowExpression.Validate(transactionseal, nameof(transactionseal), required: false);
-            WorkflowExpression.Validate(transactionsigners, nameof(transactionsigners), required: false);
-            WorkflowExpression.Validate(transactionreceivers, nameof(transactionreceivers), required: false);
-            WorkflowExpression.Validate(transactionreference, nameof(transactionreference), required: false);
-            WorkflowExpression.Validate(transactionpostbackUrl, nameof(transactionpostbackUrl), required: false);
-            WorkflowExpression.Validate(transactionsignRequestMode, nameof(transactionsignRequestMode), required: false);
-            WorkflowExpression.Validate(transactiondaysToExpire, nameof(transactiondaysToExpire), required: false);
+            var __workflow_transactionlanguage = transactionlanguage == null ? null : WorkflowExpression.Compile(transactionlanguage);
+            WorkflowExpression.Validate(__workflow_transactionlanguage, nameof(transactionlanguage), required: false);
+            var __workflow_transactionseal = transactionseal == null ? null : WorkflowExpression.Compile(transactionseal);
+            WorkflowExpression.Validate(__workflow_transactionseal, nameof(transactionseal), required: false);
+            var __workflow_transactionsigners = transactionsigners == null ? null : WorkflowExpression.Compile(transactionsigners);
+            WorkflowExpression.Validate(__workflow_transactionsigners, nameof(transactionsigners), required: false);
+            var __workflow_transactionreceivers = transactionreceivers == null ? null : WorkflowExpression.Compile(transactionreceivers);
+            WorkflowExpression.Validate(__workflow_transactionreceivers, nameof(transactionreceivers), required: false);
+            var __workflow_transactionreference = transactionreference == null ? null : WorkflowExpression.Compile(transactionreference);
+            WorkflowExpression.Validate(__workflow_transactionreference, nameof(transactionreference), required: false);
+            var __workflow_transactionpostbackUrl = transactionpostbackUrl == null ? null : WorkflowExpression.Compile(transactionpostbackUrl);
+            WorkflowExpression.Validate(__workflow_transactionpostbackUrl, nameof(transactionpostbackUrl), required: false);
+            var __workflow_transactionsignRequestMode = transactionsignRequestMode == null ? null : WorkflowExpression.Compile(transactionsignRequestMode);
+            WorkflowExpression.Validate(__workflow_transactionsignRequestMode, nameof(transactionsignRequestMode), required: false);
+            var __workflow_transactiondaysToExpire = transactiondaysToExpire == null ? null : WorkflowExpression.Compile(transactiondaysToExpire);
+            WorkflowExpression.Validate(__workflow_transactiondaysToExpire, nameof(transactiondaysToExpire), required: false);
             return new DeferredBodyAction<Transaction>(() =>
             {
                 var apiCallPath = "/api/transaction";
@@ -156,17 +135,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
                     transactionpropCount++;
                 }
 
-                if (transactionlanguage != null)
+                if (__workflow_transactionlanguage != null)
                 {
-                    transaction["Language"] = ExpressionConverter.ConvertO(transactionlanguage);
+                    transaction["Language"] = ExpressionConverter.ConvertO(__workflow_transactionlanguage);
                     transactionpropCount++;
                 }
 
-                if (transactionseal != null)
+                if (__workflow_transactionseal != null)
                 {
-                    if (transactionseal != null)
+                    if (__workflow_transactionseal != null)
                     {
-                        transaction["Seal"] = ExpressionConverter.ConvertO(transactionseal);
+                        transaction["Seal"] = ExpressionConverter.ConvertO(__workflow_transactionseal);
                         transactionpropCount++;
                     }
 
@@ -178,35 +157,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
                     transactionpropCount++;
                 }
 
-                if (transactionsigners != null)
+                if (__workflow_transactionsigners != null)
                 {
-                    transaction["Signers"] = ExpressionConverter.ConvertO(transactionsigners);
+                    transaction["Signers"] = ExpressionConverter.ConvertO(__workflow_transactionsigners);
                     transactionpropCount++;
                 }
 
-                if (transactionreceivers != null)
+                if (__workflow_transactionreceivers != null)
                 {
-                    transaction["Receivers"] = ExpressionConverter.ConvertO(transactionreceivers);
+                    transaction["Receivers"] = ExpressionConverter.ConvertO(__workflow_transactionreceivers);
                     transactionpropCount++;
                 }
 
-                if (transactionreference != null)
+                if (__workflow_transactionreference != null)
                 {
-                    transaction["Reference"] = ExpressionConverter.ConvertO(transactionreference);
+                    transaction["Reference"] = ExpressionConverter.ConvertO(__workflow_transactionreference);
                     transactionpropCount++;
                 }
 
-                if (transactionpostbackUrl != null)
+                if (__workflow_transactionpostbackUrl != null)
                 {
-                    transaction["PostbackUrl"] = ExpressionConverter.ConvertO(transactionpostbackUrl);
+                    transaction["PostbackUrl"] = ExpressionConverter.ConvertO(__workflow_transactionpostbackUrl);
                     transactionpropCount++;
                 }
 
-                if (transactionsignRequestMode != null)
+                if (__workflow_transactionsignRequestMode != null)
                 {
-                    if (transactionsignRequestMode != null)
+                    if (__workflow_transactionsignRequestMode != null)
                     {
-                        transaction["SignRequestMode"] = ExpressionConverter.ConvertO(transactionsignRequestMode);
+                        transaction["SignRequestMode"] = ExpressionConverter.ConvertO(__workflow_transactionsignRequestMode);
                         transactionpropCount++;
                     }
 
@@ -218,11 +197,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
                     transactionpropCount++;
                 }
 
-                if (transactiondaysToExpire != null)
+                if (__workflow_transactiondaysToExpire != null)
                 {
-                    if (transactiondaysToExpire != null)
+                    if (__workflow_transactiondaysToExpire != null)
                     {
-                        transaction["DaysToExpire"] = ExpressionConverter.ConvertO(transactiondaysToExpire);
+                        transaction["DaysToExpire"] = ExpressionConverter.ConvertO(__workflow_transactiondaysToExpire);
                         transactionpropCount++;
                     }
 
@@ -244,42 +223,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
-        [WorkflowExpressionFactory(nameof(__BuildAddfile))]
-        public IWorkflowAction Addfile([WorkflowExpression] Func<string> transactionId, [WorkflowExpression] Func<string> fileId, [WorkflowExpression] Func<string> body = null)
+        public IWorkflowAction Addfile(Expression<Func<string>> transactionId, Expression<Func<string>> fileId, Expression<Func<string>> body = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildAddfile(WorkflowExpression<string> transactionId, WorkflowExpression<string> fileId, WorkflowExpression<string> body = null)
-        {
-            WorkflowExpression.Validate(transactionId, nameof(transactionId), required: true);
-            WorkflowExpression.Validate(fileId, nameof(fileId), required: true);
-            WorkflowExpression.Validate(body, nameof(body), required: false);
+            var __workflow_transactionId = transactionId == null ? null : WorkflowExpression.Compile(transactionId);
+            WorkflowExpression.Validate(__workflow_transactionId, nameof(transactionId), required: true);
+            var __workflow_fileId = fileId == null ? null : WorkflowExpression.Compile(fileId);
+            WorkflowExpression.Validate(__workflow_fileId, nameof(fileId), required: true);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/transaction/{0}/file/{1}", ExpressionConverter.ConvertWithUrlEncoding(transactionId, 1), ExpressionConverter.ConvertWithUrlEncoding(fileId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/transaction/{0}/file/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_transactionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fileId, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
-        [WorkflowExpressionFactory(nameof(__BuildStart))]
-        public IBodyWorkflowAction<ErrorModel> Start([WorkflowExpression] Func<string> transactionId)
+        public IBodyWorkflowAction<ErrorModel> Start(Expression<Func<string>> transactionId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ErrorModel> __BuildStart(WorkflowExpression<string> transactionId)
-        {
-            WorkflowExpression.Validate(transactionId, nameof(transactionId), required: true);
+            var __workflow_transactionId = transactionId == null ? null : WorkflowExpression.Compile(transactionId);
+            WorkflowExpression.Validate(__workflow_transactionId, nameof(transactionId), required: true);
             return new DeferredBodyAction<ErrorModel>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/transaction/{0}/start", ExpressionConverter.ConvertWithUrlEncoding(transactionId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/transaction/{0}/start", ExpressionConverter.ConvertWithUrlEncoding(__workflow_transactionId, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ErrorModel>(callPayload);

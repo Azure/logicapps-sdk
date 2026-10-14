@@ -1,12 +1,12 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todayinhistoryip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class TodayinhistoryipActions([ConnectionName] string connectionId)
     {
@@ -20,20 +20,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todayinhistoryip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todayinhistoryip")]
-        [WorkflowExpressionFactory(nameof(__BuildDayGet))]
-        public IBodyWorkflowAction<DayGetResponse> DayGet([WorkflowExpression] Func<string> month, [WorkflowExpression] Func<string> day)
+        public IBodyWorkflowAction<DayGetResponse> DayGet(Expression<Func<string>> month, Expression<Func<string>> day)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DayGetResponse> __BuildDayGet(WorkflowExpression<string> month, WorkflowExpression<string> day)
-        {
-            WorkflowExpression.Validate(month, nameof(month), required: true);
-            WorkflowExpression.Validate(day, nameof(day), required: true);
+            var __workflow_month = month == null ? null : WorkflowExpression.Compile(month);
+            WorkflowExpression.Validate(__workflow_month, nameof(month), required: true);
+            var __workflow_day = day == null ? null : WorkflowExpression.Compile(day);
+            WorkflowExpression.Validate(__workflow_day, nameof(day), required: true);
             return new DeferredBodyAction<DayGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/date/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(month, 1), ExpressionConverter.ConvertWithUrlEncoding(day, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/date/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_month, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_day, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DayGetResponse>(callPayload);

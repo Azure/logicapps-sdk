@@ -1,12 +1,12 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dvelop
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class DvelopActions([ConnectionName] string connectionId)
     {
@@ -14,30 +14,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dvelop
 
     public class DvelopTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildDynamicWebhookTrigger))]
-        public IWorkflowTrigger DynamicWebhookTrigger([WorkflowExpression] Func<string> triggerId,[WorkflowExpression] Func<bodyconditionInputItem[]> bodycondition = null,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger DynamicWebhookTrigger(Expression<Func<string>> triggerId, Expression<Func<bodyconditionInputItem[]>> bodycondition = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildDynamicWebhookTrigger(WorkflowExpression<string> triggerId,WorkflowExpression<bodyconditionInputItem[]> bodycondition = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(triggerId, nameof(triggerId), required: true);
-            WorkflowExpression.Validate(bodycondition, nameof(bodycondition), required: false);
+            var __workflow_triggerId = triggerId == null ? null : WorkflowExpression.Compile(triggerId);
+            WorkflowExpression.Validate(__workflow_triggerId, nameof(triggerId), required: true);
+            var __workflow_bodycondition = bodycondition == null ? null : WorkflowExpression.Compile(bodycondition);
+            WorkflowExpression.Validate(__workflow_bodycondition, nameof(bodycondition), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/triggers/{0}/subscribe", ExpressionConverter.ConvertWithUrlEncoding(triggerId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/triggers/{0}/subscribe", ExpressionConverter.ConvertWithUrlEncoding(__workflow_triggerId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 body["callback_url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-                if (bodycondition != null)
+                if (__workflow_bodycondition != null)
                 {
-                    body["conditions"] = ExpressionConverter.ConvertO(bodycondition);
+                    body["conditions"] = ExpressionConverter.ConvertO(__workflow_bodycondition);
                     bodypropCount++;
                 }
 

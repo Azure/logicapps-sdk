@@ -1,105 +1,82 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instagrambasicdispip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class InstagrambasicdispipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instagrambasicdispip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetMyMedia))]
-        public IBodyWorkflowAction<GetMyMediaResponse> GetMyMedia([WorkflowExpression] Func<string> fields = null)
+        public IBodyWorkflowAction<GetMyMediaResponse> GetMyMedia(Expression<Func<string>> fields = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetMyMediaResponse> __BuildGetMyMedia(WorkflowExpression<string> fields = null)
-        {
-            WorkflowExpression.Validate(fields, nameof(fields), required: false);
+            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
+            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
             return new DeferredBodyAction<GetMyMediaResponse>(() =>
             {
                 var apiCallPath = "/me/media";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["fields"] = Convert.ToString("caption,media_type,media_url,permalink,timestamp,username,thumbnail_url");
-                if (fields != null)
-                    callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                if (__workflow_fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
                 return new ApiConnectionAction<GetMyMediaResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instagrambasicdispip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetMyDetails))]
-        public IBodyWorkflowAction<GetMyDetailsResponse> GetMyDetails([WorkflowExpression] Func<string> fields = null)
+        public IBodyWorkflowAction<GetMyDetailsResponse> GetMyDetails(Expression<Func<string>> fields = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetMyDetailsResponse> __BuildGetMyDetails(WorkflowExpression<string> fields = null)
-        {
-            WorkflowExpression.Validate(fields, nameof(fields), required: false);
+            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
+            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
             return new DeferredBodyAction<GetMyDetailsResponse>(() =>
             {
                 var apiCallPath = "/me";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["fields"] = Convert.ToString("id,media_count,username,account_type");
-                if (fields != null)
-                    callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                if (__workflow_fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
                 return new ApiConnectionAction<GetMyDetailsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instagrambasicdispip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetMediaDetails))]
-        public IBodyWorkflowAction<GetMediaDetailsResponse> GetMediaDetails([WorkflowExpression] Func<string> mediaId, [WorkflowExpression] Func<string> fields = null)
+        public IBodyWorkflowAction<GetMediaDetailsResponse> GetMediaDetails(Expression<Func<string>> mediaId, Expression<Func<string>> fields = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetMediaDetailsResponse> __BuildGetMediaDetails(WorkflowExpression<string> mediaId, WorkflowExpression<string> fields = null)
-        {
-            WorkflowExpression.Validate(mediaId, nameof(mediaId), required: true);
-            WorkflowExpression.Validate(fields, nameof(fields), required: false);
+            var __workflow_mediaId = mediaId == null ? null : WorkflowExpression.Compile(mediaId);
+            WorkflowExpression.Validate(__workflow_mediaId, nameof(mediaId), required: true);
+            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
+            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
             return new DeferredBodyAction<GetMediaDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}", ExpressionConverter.ConvertWithUrlEncoding(mediaId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_mediaId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["fields"] = Convert.ToString("caption,media_type,media_url,permalink,timestamp,username,thumbnail_url");
-                if (fields != null)
-                    callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                if (__workflow_fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
                 return new ApiConnectionAction<GetMediaDetailsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instagrambasicdispip")]
-        [WorkflowExpressionFactory(nameof(__BuildRefreshToken))]
-        public IBodyWorkflowAction<RefreshTokenResponse> RefreshToken([WorkflowExpression] Func<string> grantType, [WorkflowExpression] Func<string> accessToken)
+        public IBodyWorkflowAction<RefreshTokenResponse> RefreshToken(Expression<Func<string>> grantType, Expression<Func<string>> accessToken)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<RefreshTokenResponse> __BuildRefreshToken(WorkflowExpression<string> grantType, WorkflowExpression<string> accessToken)
-        {
-            WorkflowExpression.Validate(grantType, nameof(grantType), required: true);
-            WorkflowExpression.Validate(accessToken, nameof(accessToken), required: true);
+            var __workflow_grantType = grantType == null ? null : WorkflowExpression.Compile(grantType);
+            WorkflowExpression.Validate(__workflow_grantType, nameof(grantType), required: true);
+            var __workflow_accessToken = accessToken == null ? null : WorkflowExpression.Compile(accessToken);
+            WorkflowExpression.Validate(__workflow_accessToken, nameof(accessToken), required: true);
             return new DeferredBodyAction<RefreshTokenResponse>(() =>
             {
                 var apiCallPath = "/refresh_access_token";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["grant_type"] = ExpressionConverter.Convert(grantType);
-                callPayload.Queries["access_token"] = ExpressionConverter.Convert(accessToken);
+                callPayload.Queries["grant_type"] = ExpressionConverter.Convert(__workflow_grantType);
+                callPayload.Queries["access_token"] = ExpressionConverter.Convert(__workflow_accessToken);
                 return new ApiConnectionAction<RefreshTokenResponse>(callPayload);
             });
         }

@@ -1,29 +1,24 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cluedin
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class CluedinActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cluedin")]
-        [WorkflowExpressionFactory(nameof(__BuildApprovalResponse))]
-        public IBodyWorkflowAction<ApprovalResponseResponse> ApprovalResponse([WorkflowExpression] Func<string> bodyresultapproval = null, [WorkflowExpression] Func<string> bodyresultreason = null, [WorkflowExpression] Func<string> bodyresultreviewedBy = null)
+        public IBodyWorkflowAction<ApprovalResponseResponse> ApprovalResponse(Expression<Func<string>> bodyresultapproval = null, Expression<Func<string>> bodyresultreason = null, Expression<Func<string>> bodyresultreviewedBy = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ApprovalResponseResponse> __BuildApprovalResponse(WorkflowExpression<string> bodyresultapproval = null, WorkflowExpression<string> bodyresultreason = null, WorkflowExpression<string> bodyresultreviewedBy = null)
-        {
-            WorkflowExpression.Validate(bodyresultapproval, nameof(bodyresultapproval), required: false);
-            WorkflowExpression.Validate(bodyresultreason, nameof(bodyresultreason), required: false);
-            WorkflowExpression.Validate(bodyresultreviewedBy, nameof(bodyresultreviewedBy), required: false);
+            var __workflow_bodyresultapproval = bodyresultapproval == null ? null : WorkflowExpression.Compile(bodyresultapproval);
+            WorkflowExpression.Validate(__workflow_bodyresultapproval, nameof(bodyresultapproval), required: false);
+            var __workflow_bodyresultreason = bodyresultreason == null ? null : WorkflowExpression.Compile(bodyresultreason);
+            WorkflowExpression.Validate(__workflow_bodyresultreason, nameof(bodyresultreason), required: false);
+            var __workflow_bodyresultreviewedBy = bodyresultreviewedBy == null ? null : WorkflowExpression.Compile(bodyresultreviewedBy);
+            WorkflowExpression.Validate(__workflow_bodyresultreviewedBy, nameof(bodyresultreviewedBy), required: false);
             return new DeferredBodyAction<ApprovalResponseResponse>(() =>
             {
                 var apiCallPath = "/callback";
@@ -49,21 +44,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cluedin
 
                 var resultObject = new JObject();
                 var resultObjectpropCount = 0;
-                if (bodyresultapproval != null)
+                if (__workflow_bodyresultapproval != null)
                 {
-                    resultObject["approval"] = ExpressionConverter.ConvertO(bodyresultapproval);
+                    resultObject["approval"] = ExpressionConverter.ConvertO(__workflow_bodyresultapproval);
                     resultObjectpropCount++;
                 }
 
-                if (bodyresultreason != null)
+                if (__workflow_bodyresultreason != null)
                 {
-                    resultObject["reason"] = ExpressionConverter.ConvertO(bodyresultreason);
+                    resultObject["reason"] = ExpressionConverter.ConvertO(__workflow_bodyresultreason);
                     resultObjectpropCount++;
                 }
 
-                if (bodyresultreviewedBy != null)
+                if (__workflow_bodyresultreviewedBy != null)
                 {
-                    resultObject["reviewedBy"] = ExpressionConverter.ConvertO(bodyresultreviewedBy);
+                    resultObject["reviewedBy"] = ExpressionConverter.ConvertO(__workflow_bodyresultreviewedBy);
                     resultObjectpropCount++;
                 }
 

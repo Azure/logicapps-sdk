@@ -1,27 +1,20 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendpostcards
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class ClicksendpostcardsActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendpostcards")]
-        [WorkflowExpressionFactory(nameof(__BuildUploadMedia))]
-        public IBodyWorkflowAction<UploadMediaResponse> UploadMedia([WorkflowExpression] Func<string> bodycontent)
+        public IBodyWorkflowAction<UploadMediaResponse> UploadMedia(Expression<Func<string>> bodycontent)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UploadMediaResponse> __BuildUploadMedia(WorkflowExpression<string> bodycontent)
-        {
-            WorkflowExpression.Validate(bodycontent, nameof(bodycontent), required: true);
+            var __workflow_bodycontent = bodycontent == null ? null : WorkflowExpression.Compile(bodycontent);
+            WorkflowExpression.Validate(__workflow_bodycontent, nameof(bodycontent), required: true);
             return new DeferredBodyAction<UploadMediaResponse>(() =>
             {
                 var apiCallPath = "/uploads";
@@ -31,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendpostcards
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["content"] = ExpressionConverter.ConvertO(bodycontent);
+                body["content"] = ExpressionConverter.ConvertO(__workflow_bodycontent);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -42,17 +35,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendpostcards
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendpostcards")]
-        [WorkflowExpressionFactory(nameof(__BuildSendPostcard))]
-        public IBodyWorkflowAction<SendPostcardResponse> SendPostcard([WorkflowExpression] Func<bodyrecipientsInputItem[]> bodyrecipients, [WorkflowExpression] Func<string[]> bodyfileUrls)
+        public IBodyWorkflowAction<SendPostcardResponse> SendPostcard(Expression<Func<bodyrecipientsInputItem[]>> bodyrecipients, Expression<Func<string[]>> bodyfileUrls)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SendPostcardResponse> __BuildSendPostcard(WorkflowExpression<bodyrecipientsInputItem[]> bodyrecipients, WorkflowExpression<string[]> bodyfileUrls)
-        {
-            WorkflowExpression.Validate(bodyrecipients, nameof(bodyrecipients), required: true);
-            WorkflowExpression.Validate(bodyfileUrls, nameof(bodyfileUrls), required: true);
+            var __workflow_bodyrecipients = bodyrecipients == null ? null : WorkflowExpression.Compile(bodyrecipients);
+            WorkflowExpression.Validate(__workflow_bodyrecipients, nameof(bodyrecipients), required: true);
+            var __workflow_bodyfileUrls = bodyfileUrls == null ? null : WorkflowExpression.Compile(bodyfileUrls);
+            WorkflowExpression.Validate(__workflow_bodyfileUrls, nameof(bodyfileUrls), required: true);
             return new DeferredBodyAction<SendPostcardResponse>(() =>
             {
                 var apiCallPath = "/post/postcards/send";
@@ -61,11 +49,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendpostcards
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["recipients"] = ExpressionConverter.ConvertO(bodyrecipients);
+                body["recipients"] = ExpressionConverter.ConvertO(__workflow_bodyrecipients);
                 body["source"] = "MSPowerAutomate-pc";
                 bodypropCount++;
                 bodypropCount++;
-                body["file_urls"] = ExpressionConverter.ConvertO(bodyfileUrls);
+                body["file_urls"] = ExpressionConverter.ConvertO(__workflow_bodyfileUrls);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

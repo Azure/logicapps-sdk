@@ -1,284 +1,305 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Farsightdnsdb
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class FarsightdnsdbActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "farsightdnsdb")]
-        [WorkflowExpressionFactory(nameof(__BuildRRSET))]
-        public IBodyWorkflowAction<RRSetResults[]> RRSET([WorkflowExpression] Func<typeInput> type, [WorkflowExpression] Func<string> value, [WorkflowExpression] Func<double> timeFirstBefore = null, [WorkflowExpression] Func<double> timeFirstAfter = null, [WorkflowExpression] Func<double> timeLastBefore = null, [WorkflowExpression] Func<double> timeLastAfter = null, [WorkflowExpression] Func<double> limit = null, [WorkflowExpression] Func<bool> aggr = null, [WorkflowExpression] Func<bool> humantime = null, [WorkflowExpression] Func<double> offset = null)
+        public IBodyWorkflowAction<RRSetResults[]> RRSET(Expression<Func<typeInput>> type, Expression<Func<string>> value, Expression<Func<double>> timeFirstBefore = null, Expression<Func<double>> timeFirstAfter = null, Expression<Func<double>> timeLastBefore = null, Expression<Func<double>> timeLastAfter = null, Expression<Func<double>> limit = null, Expression<Func<bool>> aggr = null, Expression<Func<bool>> humantime = null, Expression<Func<double>> offset = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<RRSetResults[]> __BuildRRSET(WorkflowExpression<typeInput> type, WorkflowExpression<string> value, WorkflowExpression<double> timeFirstBefore = null, WorkflowExpression<double> timeFirstAfter = null, WorkflowExpression<double> timeLastBefore = null, WorkflowExpression<double> timeLastAfter = null, WorkflowExpression<double> limit = null, WorkflowExpression<bool> aggr = null, WorkflowExpression<bool> humantime = null, WorkflowExpression<double> offset = null)
-        {
-            WorkflowExpression.Validate(type, nameof(type), required: true);
-            WorkflowExpression.Validate(value, nameof(value), required: true);
-            WorkflowExpression.Validate(timeFirstBefore, nameof(timeFirstBefore), required: false);
-            WorkflowExpression.Validate(timeFirstAfter, nameof(timeFirstAfter), required: false);
-            WorkflowExpression.Validate(timeLastBefore, nameof(timeLastBefore), required: false);
-            WorkflowExpression.Validate(timeLastAfter, nameof(timeLastAfter), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(aggr, nameof(aggr), required: false);
-            WorkflowExpression.Validate(humantime, nameof(humantime), required: false);
-            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
+            WorkflowExpression.Validate(__workflow_type, nameof(type), required: true);
+            var __workflow_value = value == null ? null : WorkflowExpression.Compile(value);
+            WorkflowExpression.Validate(__workflow_value, nameof(value), required: true);
+            var __workflow_timeFirstBefore = timeFirstBefore == null ? null : WorkflowExpression.Compile(timeFirstBefore);
+            WorkflowExpression.Validate(__workflow_timeFirstBefore, nameof(timeFirstBefore), required: false);
+            var __workflow_timeFirstAfter = timeFirstAfter == null ? null : WorkflowExpression.Compile(timeFirstAfter);
+            WorkflowExpression.Validate(__workflow_timeFirstAfter, nameof(timeFirstAfter), required: false);
+            var __workflow_timeLastBefore = timeLastBefore == null ? null : WorkflowExpression.Compile(timeLastBefore);
+            WorkflowExpression.Validate(__workflow_timeLastBefore, nameof(timeLastBefore), required: false);
+            var __workflow_timeLastAfter = timeLastAfter == null ? null : WorkflowExpression.Compile(timeLastAfter);
+            WorkflowExpression.Validate(__workflow_timeLastAfter, nameof(timeLastAfter), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_aggr = aggr == null ? null : WorkflowExpression.Compile(aggr);
+            WorkflowExpression.Validate(__workflow_aggr, nameof(aggr), required: false);
+            var __workflow_humantime = humantime == null ? null : WorkflowExpression.Compile(humantime);
+            WorkflowExpression.Validate(__workflow_humantime, nameof(humantime), required: false);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
             return new DeferredBodyAction<RRSetResults[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lookup/rrset/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(type, 1), ExpressionConverter.ConvertWithUrlEncoding(value, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lookup/rrset/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_type, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_value, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (timeFirstBefore != null)
-                    callPayload.Queries["time_first_before"] = ExpressionConverter.Convert(timeFirstBefore);
-                if (timeFirstAfter != null)
-                    callPayload.Queries["time_first_after"] = ExpressionConverter.Convert(timeFirstAfter);
-                if (timeLastBefore != null)
-                    callPayload.Queries["time_last_before"] = ExpressionConverter.Convert(timeLastBefore);
-                if (timeLastAfter != null)
-                    callPayload.Queries["time_last_after"] = ExpressionConverter.Convert(timeLastAfter);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (aggr != null)
-                    callPayload.Queries["aggr"] = ExpressionConverter.Convert(aggr);
-                if (humantime != null)
-                    callPayload.Queries["humantime"] = ExpressionConverter.Convert(humantime);
-                if (offset != null)
-                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (__workflow_timeFirstBefore != null)
+                    callPayload.Queries["time_first_before"] = ExpressionConverter.Convert(__workflow_timeFirstBefore);
+                if (__workflow_timeFirstAfter != null)
+                    callPayload.Queries["time_first_after"] = ExpressionConverter.Convert(__workflow_timeFirstAfter);
+                if (__workflow_timeLastBefore != null)
+                    callPayload.Queries["time_last_before"] = ExpressionConverter.Convert(__workflow_timeLastBefore);
+                if (__workflow_timeLastAfter != null)
+                    callPayload.Queries["time_last_after"] = ExpressionConverter.Convert(__workflow_timeLastAfter);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_aggr != null)
+                    callPayload.Queries["aggr"] = ExpressionConverter.Convert(__workflow_aggr);
+                if (__workflow_humantime != null)
+                    callPayload.Queries["humantime"] = ExpressionConverter.Convert(__workflow_humantime);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<RRSetResults[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "farsightdnsdb")]
-        [WorkflowExpressionFactory(nameof(__BuildRRSETRRTYPE))]
-        public IBodyWorkflowAction<RRSetResults[]> RRSETRRTYPE([WorkflowExpression] Func<typeInput> type, [WorkflowExpression] Func<string> value, [WorkflowExpression] Func<string> rrtype, [WorkflowExpression] Func<double> timeFirstBefore = null, [WorkflowExpression] Func<double> timeFirstAfter = null, [WorkflowExpression] Func<double> timeLastBefore = null, [WorkflowExpression] Func<double> timeLastAfter = null, [WorkflowExpression] Func<double> limit = null, [WorkflowExpression] Func<bool> aggr = null, [WorkflowExpression] Func<bool> humantime = null, [WorkflowExpression] Func<double> offset = null)
+        public IBodyWorkflowAction<RRSetResults[]> RRSETRRTYPE(Expression<Func<typeInput>> type, Expression<Func<string>> value, Expression<Func<string>> rrtype, Expression<Func<double>> timeFirstBefore = null, Expression<Func<double>> timeFirstAfter = null, Expression<Func<double>> timeLastBefore = null, Expression<Func<double>> timeLastAfter = null, Expression<Func<double>> limit = null, Expression<Func<bool>> aggr = null, Expression<Func<bool>> humantime = null, Expression<Func<double>> offset = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<RRSetResults[]> __BuildRRSETRRTYPE(WorkflowExpression<typeInput> type, WorkflowExpression<string> value, WorkflowExpression<string> rrtype, WorkflowExpression<double> timeFirstBefore = null, WorkflowExpression<double> timeFirstAfter = null, WorkflowExpression<double> timeLastBefore = null, WorkflowExpression<double> timeLastAfter = null, WorkflowExpression<double> limit = null, WorkflowExpression<bool> aggr = null, WorkflowExpression<bool> humantime = null, WorkflowExpression<double> offset = null)
-        {
-            WorkflowExpression.Validate(type, nameof(type), required: true);
-            WorkflowExpression.Validate(value, nameof(value), required: true);
-            WorkflowExpression.Validate(rrtype, nameof(rrtype), required: true);
-            WorkflowExpression.Validate(timeFirstBefore, nameof(timeFirstBefore), required: false);
-            WorkflowExpression.Validate(timeFirstAfter, nameof(timeFirstAfter), required: false);
-            WorkflowExpression.Validate(timeLastBefore, nameof(timeLastBefore), required: false);
-            WorkflowExpression.Validate(timeLastAfter, nameof(timeLastAfter), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(aggr, nameof(aggr), required: false);
-            WorkflowExpression.Validate(humantime, nameof(humantime), required: false);
-            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
+            WorkflowExpression.Validate(__workflow_type, nameof(type), required: true);
+            var __workflow_value = value == null ? null : WorkflowExpression.Compile(value);
+            WorkflowExpression.Validate(__workflow_value, nameof(value), required: true);
+            var __workflow_rrtype = rrtype == null ? null : WorkflowExpression.Compile(rrtype);
+            WorkflowExpression.Validate(__workflow_rrtype, nameof(rrtype), required: true);
+            var __workflow_timeFirstBefore = timeFirstBefore == null ? null : WorkflowExpression.Compile(timeFirstBefore);
+            WorkflowExpression.Validate(__workflow_timeFirstBefore, nameof(timeFirstBefore), required: false);
+            var __workflow_timeFirstAfter = timeFirstAfter == null ? null : WorkflowExpression.Compile(timeFirstAfter);
+            WorkflowExpression.Validate(__workflow_timeFirstAfter, nameof(timeFirstAfter), required: false);
+            var __workflow_timeLastBefore = timeLastBefore == null ? null : WorkflowExpression.Compile(timeLastBefore);
+            WorkflowExpression.Validate(__workflow_timeLastBefore, nameof(timeLastBefore), required: false);
+            var __workflow_timeLastAfter = timeLastAfter == null ? null : WorkflowExpression.Compile(timeLastAfter);
+            WorkflowExpression.Validate(__workflow_timeLastAfter, nameof(timeLastAfter), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_aggr = aggr == null ? null : WorkflowExpression.Compile(aggr);
+            WorkflowExpression.Validate(__workflow_aggr, nameof(aggr), required: false);
+            var __workflow_humantime = humantime == null ? null : WorkflowExpression.Compile(humantime);
+            WorkflowExpression.Validate(__workflow_humantime, nameof(humantime), required: false);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
             return new DeferredBodyAction<RRSetResults[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lookup/rrset/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(type, 1), ExpressionConverter.ConvertWithUrlEncoding(value, 1), ExpressionConverter.ConvertWithUrlEncoding(rrtype, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lookup/rrset/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_type, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_value, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_rrtype, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (timeFirstBefore != null)
-                    callPayload.Queries["time_first_before"] = ExpressionConverter.Convert(timeFirstBefore);
-                if (timeFirstAfter != null)
-                    callPayload.Queries["time_first_after"] = ExpressionConverter.Convert(timeFirstAfter);
-                if (timeLastBefore != null)
-                    callPayload.Queries["time_last_before"] = ExpressionConverter.Convert(timeLastBefore);
-                if (timeLastAfter != null)
-                    callPayload.Queries["time_last_after"] = ExpressionConverter.Convert(timeLastAfter);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (aggr != null)
-                    callPayload.Queries["aggr"] = ExpressionConverter.Convert(aggr);
-                if (humantime != null)
-                    callPayload.Queries["humantime"] = ExpressionConverter.Convert(humantime);
-                if (offset != null)
-                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (__workflow_timeFirstBefore != null)
+                    callPayload.Queries["time_first_before"] = ExpressionConverter.Convert(__workflow_timeFirstBefore);
+                if (__workflow_timeFirstAfter != null)
+                    callPayload.Queries["time_first_after"] = ExpressionConverter.Convert(__workflow_timeFirstAfter);
+                if (__workflow_timeLastBefore != null)
+                    callPayload.Queries["time_last_before"] = ExpressionConverter.Convert(__workflow_timeLastBefore);
+                if (__workflow_timeLastAfter != null)
+                    callPayload.Queries["time_last_after"] = ExpressionConverter.Convert(__workflow_timeLastAfter);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_aggr != null)
+                    callPayload.Queries["aggr"] = ExpressionConverter.Convert(__workflow_aggr);
+                if (__workflow_humantime != null)
+                    callPayload.Queries["humantime"] = ExpressionConverter.Convert(__workflow_humantime);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<RRSetResults[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "farsightdnsdb")]
-        [WorkflowExpressionFactory(nameof(__BuildRRSETRRTYPEBAILIWICK))]
-        public IBodyWorkflowAction<RRSetResults[]> RRSETRRTYPEBAILIWICK([WorkflowExpression] Func<typeInput> type, [WorkflowExpression] Func<string> value, [WorkflowExpression] Func<string> rrtype, [WorkflowExpression] Func<string> bailiwick, [WorkflowExpression] Func<double> timeFirstBefore = null, [WorkflowExpression] Func<double> timeFirstAfter = null, [WorkflowExpression] Func<double> timeLastBefore = null, [WorkflowExpression] Func<double> timeLastAfter = null, [WorkflowExpression] Func<double> limit = null, [WorkflowExpression] Func<bool> aggr = null, [WorkflowExpression] Func<bool> humantime = null, [WorkflowExpression] Func<double> offset = null)
+        public IBodyWorkflowAction<RRSetResults[]> RRSETRRTYPEBAILIWICK(Expression<Func<typeInput>> type, Expression<Func<string>> value, Expression<Func<string>> rrtype, Expression<Func<string>> bailiwick, Expression<Func<double>> timeFirstBefore = null, Expression<Func<double>> timeFirstAfter = null, Expression<Func<double>> timeLastBefore = null, Expression<Func<double>> timeLastAfter = null, Expression<Func<double>> limit = null, Expression<Func<bool>> aggr = null, Expression<Func<bool>> humantime = null, Expression<Func<double>> offset = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<RRSetResults[]> __BuildRRSETRRTYPEBAILIWICK(WorkflowExpression<typeInput> type, WorkflowExpression<string> value, WorkflowExpression<string> rrtype, WorkflowExpression<string> bailiwick, WorkflowExpression<double> timeFirstBefore = null, WorkflowExpression<double> timeFirstAfter = null, WorkflowExpression<double> timeLastBefore = null, WorkflowExpression<double> timeLastAfter = null, WorkflowExpression<double> limit = null, WorkflowExpression<bool> aggr = null, WorkflowExpression<bool> humantime = null, WorkflowExpression<double> offset = null)
-        {
-            WorkflowExpression.Validate(type, nameof(type), required: true);
-            WorkflowExpression.Validate(value, nameof(value), required: true);
-            WorkflowExpression.Validate(rrtype, nameof(rrtype), required: true);
-            WorkflowExpression.Validate(bailiwick, nameof(bailiwick), required: true);
-            WorkflowExpression.Validate(timeFirstBefore, nameof(timeFirstBefore), required: false);
-            WorkflowExpression.Validate(timeFirstAfter, nameof(timeFirstAfter), required: false);
-            WorkflowExpression.Validate(timeLastBefore, nameof(timeLastBefore), required: false);
-            WorkflowExpression.Validate(timeLastAfter, nameof(timeLastAfter), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(aggr, nameof(aggr), required: false);
-            WorkflowExpression.Validate(humantime, nameof(humantime), required: false);
-            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
+            WorkflowExpression.Validate(__workflow_type, nameof(type), required: true);
+            var __workflow_value = value == null ? null : WorkflowExpression.Compile(value);
+            WorkflowExpression.Validate(__workflow_value, nameof(value), required: true);
+            var __workflow_rrtype = rrtype == null ? null : WorkflowExpression.Compile(rrtype);
+            WorkflowExpression.Validate(__workflow_rrtype, nameof(rrtype), required: true);
+            var __workflow_bailiwick = bailiwick == null ? null : WorkflowExpression.Compile(bailiwick);
+            WorkflowExpression.Validate(__workflow_bailiwick, nameof(bailiwick), required: true);
+            var __workflow_timeFirstBefore = timeFirstBefore == null ? null : WorkflowExpression.Compile(timeFirstBefore);
+            WorkflowExpression.Validate(__workflow_timeFirstBefore, nameof(timeFirstBefore), required: false);
+            var __workflow_timeFirstAfter = timeFirstAfter == null ? null : WorkflowExpression.Compile(timeFirstAfter);
+            WorkflowExpression.Validate(__workflow_timeFirstAfter, nameof(timeFirstAfter), required: false);
+            var __workflow_timeLastBefore = timeLastBefore == null ? null : WorkflowExpression.Compile(timeLastBefore);
+            WorkflowExpression.Validate(__workflow_timeLastBefore, nameof(timeLastBefore), required: false);
+            var __workflow_timeLastAfter = timeLastAfter == null ? null : WorkflowExpression.Compile(timeLastAfter);
+            WorkflowExpression.Validate(__workflow_timeLastAfter, nameof(timeLastAfter), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_aggr = aggr == null ? null : WorkflowExpression.Compile(aggr);
+            WorkflowExpression.Validate(__workflow_aggr, nameof(aggr), required: false);
+            var __workflow_humantime = humantime == null ? null : WorkflowExpression.Compile(humantime);
+            WorkflowExpression.Validate(__workflow_humantime, nameof(humantime), required: false);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
             return new DeferredBodyAction<RRSetResults[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lookup/rrset/{0}/{1}/{2}/{3}", ExpressionConverter.ConvertWithUrlEncoding(type, 1), ExpressionConverter.ConvertWithUrlEncoding(value, 1), ExpressionConverter.ConvertWithUrlEncoding(rrtype, 1), ExpressionConverter.ConvertWithUrlEncoding(bailiwick, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lookup/rrset/{0}/{1}/{2}/{3}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_type, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_value, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_rrtype, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_bailiwick, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (timeFirstBefore != null)
-                    callPayload.Queries["time_first_before"] = ExpressionConverter.Convert(timeFirstBefore);
-                if (timeFirstAfter != null)
-                    callPayload.Queries["time_first_after"] = ExpressionConverter.Convert(timeFirstAfter);
-                if (timeLastBefore != null)
-                    callPayload.Queries["time_last_before"] = ExpressionConverter.Convert(timeLastBefore);
-                if (timeLastAfter != null)
-                    callPayload.Queries["time_last_after"] = ExpressionConverter.Convert(timeLastAfter);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (aggr != null)
-                    callPayload.Queries["aggr"] = ExpressionConverter.Convert(aggr);
-                if (humantime != null)
-                    callPayload.Queries["humantime"] = ExpressionConverter.Convert(humantime);
-                if (offset != null)
-                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (__workflow_timeFirstBefore != null)
+                    callPayload.Queries["time_first_before"] = ExpressionConverter.Convert(__workflow_timeFirstBefore);
+                if (__workflow_timeFirstAfter != null)
+                    callPayload.Queries["time_first_after"] = ExpressionConverter.Convert(__workflow_timeFirstAfter);
+                if (__workflow_timeLastBefore != null)
+                    callPayload.Queries["time_last_before"] = ExpressionConverter.Convert(__workflow_timeLastBefore);
+                if (__workflow_timeLastAfter != null)
+                    callPayload.Queries["time_last_after"] = ExpressionConverter.Convert(__workflow_timeLastAfter);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_aggr != null)
+                    callPayload.Queries["aggr"] = ExpressionConverter.Convert(__workflow_aggr);
+                if (__workflow_humantime != null)
+                    callPayload.Queries["humantime"] = ExpressionConverter.Convert(__workflow_humantime);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<RRSetResults[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "farsightdnsdb")]
-        [WorkflowExpressionFactory(nameof(__BuildRDATA))]
-        public IBodyWorkflowAction<RDataResults[]> RDATA([WorkflowExpression] Func<typeInput> type, [WorkflowExpression] Func<string> value, [WorkflowExpression] Func<double> timeFirstBefore = null, [WorkflowExpression] Func<double> timeFirstAfter = null, [WorkflowExpression] Func<double> timeLastBefore = null, [WorkflowExpression] Func<double> timeLastAfter = null, [WorkflowExpression] Func<double> limit = null, [WorkflowExpression] Func<bool> aggr = null, [WorkflowExpression] Func<bool> humantime = null, [WorkflowExpression] Func<double> offset = null)
+        public IBodyWorkflowAction<RDataResults[]> RDATA(Expression<Func<typeInput>> type, Expression<Func<string>> value, Expression<Func<double>> timeFirstBefore = null, Expression<Func<double>> timeFirstAfter = null, Expression<Func<double>> timeLastBefore = null, Expression<Func<double>> timeLastAfter = null, Expression<Func<double>> limit = null, Expression<Func<bool>> aggr = null, Expression<Func<bool>> humantime = null, Expression<Func<double>> offset = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<RDataResults[]> __BuildRDATA(WorkflowExpression<typeInput> type, WorkflowExpression<string> value, WorkflowExpression<double> timeFirstBefore = null, WorkflowExpression<double> timeFirstAfter = null, WorkflowExpression<double> timeLastBefore = null, WorkflowExpression<double> timeLastAfter = null, WorkflowExpression<double> limit = null, WorkflowExpression<bool> aggr = null, WorkflowExpression<bool> humantime = null, WorkflowExpression<double> offset = null)
-        {
-            WorkflowExpression.Validate(type, nameof(type), required: true);
-            WorkflowExpression.Validate(value, nameof(value), required: true);
-            WorkflowExpression.Validate(timeFirstBefore, nameof(timeFirstBefore), required: false);
-            WorkflowExpression.Validate(timeFirstAfter, nameof(timeFirstAfter), required: false);
-            WorkflowExpression.Validate(timeLastBefore, nameof(timeLastBefore), required: false);
-            WorkflowExpression.Validate(timeLastAfter, nameof(timeLastAfter), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(aggr, nameof(aggr), required: false);
-            WorkflowExpression.Validate(humantime, nameof(humantime), required: false);
-            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
+            WorkflowExpression.Validate(__workflow_type, nameof(type), required: true);
+            var __workflow_value = value == null ? null : WorkflowExpression.Compile(value);
+            WorkflowExpression.Validate(__workflow_value, nameof(value), required: true);
+            var __workflow_timeFirstBefore = timeFirstBefore == null ? null : WorkflowExpression.Compile(timeFirstBefore);
+            WorkflowExpression.Validate(__workflow_timeFirstBefore, nameof(timeFirstBefore), required: false);
+            var __workflow_timeFirstAfter = timeFirstAfter == null ? null : WorkflowExpression.Compile(timeFirstAfter);
+            WorkflowExpression.Validate(__workflow_timeFirstAfter, nameof(timeFirstAfter), required: false);
+            var __workflow_timeLastBefore = timeLastBefore == null ? null : WorkflowExpression.Compile(timeLastBefore);
+            WorkflowExpression.Validate(__workflow_timeLastBefore, nameof(timeLastBefore), required: false);
+            var __workflow_timeLastAfter = timeLastAfter == null ? null : WorkflowExpression.Compile(timeLastAfter);
+            WorkflowExpression.Validate(__workflow_timeLastAfter, nameof(timeLastAfter), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_aggr = aggr == null ? null : WorkflowExpression.Compile(aggr);
+            WorkflowExpression.Validate(__workflow_aggr, nameof(aggr), required: false);
+            var __workflow_humantime = humantime == null ? null : WorkflowExpression.Compile(humantime);
+            WorkflowExpression.Validate(__workflow_humantime, nameof(humantime), required: false);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
             return new DeferredBodyAction<RDataResults[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lookup/rdata/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(type, 1), ExpressionConverter.ConvertWithUrlEncoding(value, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lookup/rdata/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_type, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_value, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (timeFirstBefore != null)
-                    callPayload.Queries["time_first_before"] = ExpressionConverter.Convert(timeFirstBefore);
-                if (timeFirstAfter != null)
-                    callPayload.Queries["time_first_after"] = ExpressionConverter.Convert(timeFirstAfter);
-                if (timeLastBefore != null)
-                    callPayload.Queries["time_last_before"] = ExpressionConverter.Convert(timeLastBefore);
-                if (timeLastAfter != null)
-                    callPayload.Queries["time_last_after"] = ExpressionConverter.Convert(timeLastAfter);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (aggr != null)
-                    callPayload.Queries["aggr"] = ExpressionConverter.Convert(aggr);
-                if (humantime != null)
-                    callPayload.Queries["humantime"] = ExpressionConverter.Convert(humantime);
-                if (offset != null)
-                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (__workflow_timeFirstBefore != null)
+                    callPayload.Queries["time_first_before"] = ExpressionConverter.Convert(__workflow_timeFirstBefore);
+                if (__workflow_timeFirstAfter != null)
+                    callPayload.Queries["time_first_after"] = ExpressionConverter.Convert(__workflow_timeFirstAfter);
+                if (__workflow_timeLastBefore != null)
+                    callPayload.Queries["time_last_before"] = ExpressionConverter.Convert(__workflow_timeLastBefore);
+                if (__workflow_timeLastAfter != null)
+                    callPayload.Queries["time_last_after"] = ExpressionConverter.Convert(__workflow_timeLastAfter);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_aggr != null)
+                    callPayload.Queries["aggr"] = ExpressionConverter.Convert(__workflow_aggr);
+                if (__workflow_humantime != null)
+                    callPayload.Queries["humantime"] = ExpressionConverter.Convert(__workflow_humantime);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<RDataResults[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "farsightdnsdb")]
-        [WorkflowExpressionFactory(nameof(__BuildRDATARRTYPE))]
-        public IBodyWorkflowAction<RDataResults[]> RDATARRTYPE([WorkflowExpression] Func<typeInput> type, [WorkflowExpression] Func<string> value, [WorkflowExpression] Func<string> rrtype, [WorkflowExpression] Func<double> timeFirstBefore = null, [WorkflowExpression] Func<double> timeFirstAfter = null, [WorkflowExpression] Func<double> timeLastBefore = null, [WorkflowExpression] Func<double> timeLastAfter = null, [WorkflowExpression] Func<double> limit = null, [WorkflowExpression] Func<bool> aggr = null, [WorkflowExpression] Func<bool> humantime = null, [WorkflowExpression] Func<double> offset = null)
+        public IBodyWorkflowAction<RDataResults[]> RDATARRTYPE(Expression<Func<typeInput>> type, Expression<Func<string>> value, Expression<Func<string>> rrtype, Expression<Func<double>> timeFirstBefore = null, Expression<Func<double>> timeFirstAfter = null, Expression<Func<double>> timeLastBefore = null, Expression<Func<double>> timeLastAfter = null, Expression<Func<double>> limit = null, Expression<Func<bool>> aggr = null, Expression<Func<bool>> humantime = null, Expression<Func<double>> offset = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<RDataResults[]> __BuildRDATARRTYPE(WorkflowExpression<typeInput> type, WorkflowExpression<string> value, WorkflowExpression<string> rrtype, WorkflowExpression<double> timeFirstBefore = null, WorkflowExpression<double> timeFirstAfter = null, WorkflowExpression<double> timeLastBefore = null, WorkflowExpression<double> timeLastAfter = null, WorkflowExpression<double> limit = null, WorkflowExpression<bool> aggr = null, WorkflowExpression<bool> humantime = null, WorkflowExpression<double> offset = null)
-        {
-            WorkflowExpression.Validate(type, nameof(type), required: true);
-            WorkflowExpression.Validate(value, nameof(value), required: true);
-            WorkflowExpression.Validate(rrtype, nameof(rrtype), required: true);
-            WorkflowExpression.Validate(timeFirstBefore, nameof(timeFirstBefore), required: false);
-            WorkflowExpression.Validate(timeFirstAfter, nameof(timeFirstAfter), required: false);
-            WorkflowExpression.Validate(timeLastBefore, nameof(timeLastBefore), required: false);
-            WorkflowExpression.Validate(timeLastAfter, nameof(timeLastAfter), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(aggr, nameof(aggr), required: false);
-            WorkflowExpression.Validate(humantime, nameof(humantime), required: false);
-            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
+            WorkflowExpression.Validate(__workflow_type, nameof(type), required: true);
+            var __workflow_value = value == null ? null : WorkflowExpression.Compile(value);
+            WorkflowExpression.Validate(__workflow_value, nameof(value), required: true);
+            var __workflow_rrtype = rrtype == null ? null : WorkflowExpression.Compile(rrtype);
+            WorkflowExpression.Validate(__workflow_rrtype, nameof(rrtype), required: true);
+            var __workflow_timeFirstBefore = timeFirstBefore == null ? null : WorkflowExpression.Compile(timeFirstBefore);
+            WorkflowExpression.Validate(__workflow_timeFirstBefore, nameof(timeFirstBefore), required: false);
+            var __workflow_timeFirstAfter = timeFirstAfter == null ? null : WorkflowExpression.Compile(timeFirstAfter);
+            WorkflowExpression.Validate(__workflow_timeFirstAfter, nameof(timeFirstAfter), required: false);
+            var __workflow_timeLastBefore = timeLastBefore == null ? null : WorkflowExpression.Compile(timeLastBefore);
+            WorkflowExpression.Validate(__workflow_timeLastBefore, nameof(timeLastBefore), required: false);
+            var __workflow_timeLastAfter = timeLastAfter == null ? null : WorkflowExpression.Compile(timeLastAfter);
+            WorkflowExpression.Validate(__workflow_timeLastAfter, nameof(timeLastAfter), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_aggr = aggr == null ? null : WorkflowExpression.Compile(aggr);
+            WorkflowExpression.Validate(__workflow_aggr, nameof(aggr), required: false);
+            var __workflow_humantime = humantime == null ? null : WorkflowExpression.Compile(humantime);
+            WorkflowExpression.Validate(__workflow_humantime, nameof(humantime), required: false);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
             return new DeferredBodyAction<RDataResults[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lookup/rdata/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(type, 1), ExpressionConverter.ConvertWithUrlEncoding(value, 1), ExpressionConverter.ConvertWithUrlEncoding(rrtype, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lookup/rdata/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_type, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_value, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_rrtype, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (timeFirstBefore != null)
-                    callPayload.Queries["time_first_before"] = ExpressionConverter.Convert(timeFirstBefore);
-                if (timeFirstAfter != null)
-                    callPayload.Queries["time_first_after"] = ExpressionConverter.Convert(timeFirstAfter);
-                if (timeLastBefore != null)
-                    callPayload.Queries["time_last_before"] = ExpressionConverter.Convert(timeLastBefore);
-                if (timeLastAfter != null)
-                    callPayload.Queries["time_last_after"] = ExpressionConverter.Convert(timeLastAfter);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (aggr != null)
-                    callPayload.Queries["aggr"] = ExpressionConverter.Convert(aggr);
-                if (humantime != null)
-                    callPayload.Queries["humantime"] = ExpressionConverter.Convert(humantime);
-                if (offset != null)
-                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (__workflow_timeFirstBefore != null)
+                    callPayload.Queries["time_first_before"] = ExpressionConverter.Convert(__workflow_timeFirstBefore);
+                if (__workflow_timeFirstAfter != null)
+                    callPayload.Queries["time_first_after"] = ExpressionConverter.Convert(__workflow_timeFirstAfter);
+                if (__workflow_timeLastBefore != null)
+                    callPayload.Queries["time_last_before"] = ExpressionConverter.Convert(__workflow_timeLastBefore);
+                if (__workflow_timeLastAfter != null)
+                    callPayload.Queries["time_last_after"] = ExpressionConverter.Convert(__workflow_timeLastAfter);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_aggr != null)
+                    callPayload.Queries["aggr"] = ExpressionConverter.Convert(__workflow_aggr);
+                if (__workflow_humantime != null)
+                    callPayload.Queries["humantime"] = ExpressionConverter.Convert(__workflow_humantime);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<RDataResults[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "farsightdnsdb")]
-        [WorkflowExpressionFactory(nameof(__BuildFLEX))]
-        public IBodyWorkflowAction<FlexResults[]> FLEX([WorkflowExpression] Func<methodInput> method, [WorkflowExpression] Func<keyInput> key, [WorkflowExpression] Func<string> value, [WorkflowExpression] Func<double> timeFirstBefore = null, [WorkflowExpression] Func<double> timeFirstAfter = null, [WorkflowExpression] Func<double> timeLastBefore = null, [WorkflowExpression] Func<double> timeLastAfter = null, [WorkflowExpression] Func<double> limit = null, [WorkflowExpression] Func<string> exclude = null, [WorkflowExpression] Func<double> offset = null)
+        public IBodyWorkflowAction<FlexResults[]> FLEX(Expression<Func<methodInput>> method, Expression<Func<keyInput>> key, Expression<Func<string>> value, Expression<Func<double>> timeFirstBefore = null, Expression<Func<double>> timeFirstAfter = null, Expression<Func<double>> timeLastBefore = null, Expression<Func<double>> timeLastAfter = null, Expression<Func<double>> limit = null, Expression<Func<string>> exclude = null, Expression<Func<double>> offset = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FlexResults[]> __BuildFLEX(WorkflowExpression<methodInput> method, WorkflowExpression<keyInput> key, WorkflowExpression<string> value, WorkflowExpression<double> timeFirstBefore = null, WorkflowExpression<double> timeFirstAfter = null, WorkflowExpression<double> timeLastBefore = null, WorkflowExpression<double> timeLastAfter = null, WorkflowExpression<double> limit = null, WorkflowExpression<string> exclude = null, WorkflowExpression<double> offset = null)
-        {
-            WorkflowExpression.Validate(method, nameof(method), required: true);
-            WorkflowExpression.Validate(key, nameof(key), required: true);
-            WorkflowExpression.Validate(value, nameof(value), required: true);
-            WorkflowExpression.Validate(timeFirstBefore, nameof(timeFirstBefore), required: false);
-            WorkflowExpression.Validate(timeFirstAfter, nameof(timeFirstAfter), required: false);
-            WorkflowExpression.Validate(timeLastBefore, nameof(timeLastBefore), required: false);
-            WorkflowExpression.Validate(timeLastAfter, nameof(timeLastAfter), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(exclude, nameof(exclude), required: false);
-            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            var __workflow_method = method == null ? null : WorkflowExpression.Compile(method);
+            WorkflowExpression.Validate(__workflow_method, nameof(method), required: true);
+            var __workflow_key = key == null ? null : WorkflowExpression.Compile(key);
+            WorkflowExpression.Validate(__workflow_key, nameof(key), required: true);
+            var __workflow_value = value == null ? null : WorkflowExpression.Compile(value);
+            WorkflowExpression.Validate(__workflow_value, nameof(value), required: true);
+            var __workflow_timeFirstBefore = timeFirstBefore == null ? null : WorkflowExpression.Compile(timeFirstBefore);
+            WorkflowExpression.Validate(__workflow_timeFirstBefore, nameof(timeFirstBefore), required: false);
+            var __workflow_timeFirstAfter = timeFirstAfter == null ? null : WorkflowExpression.Compile(timeFirstAfter);
+            WorkflowExpression.Validate(__workflow_timeFirstAfter, nameof(timeFirstAfter), required: false);
+            var __workflow_timeLastBefore = timeLastBefore == null ? null : WorkflowExpression.Compile(timeLastBefore);
+            WorkflowExpression.Validate(__workflow_timeLastBefore, nameof(timeLastBefore), required: false);
+            var __workflow_timeLastAfter = timeLastAfter == null ? null : WorkflowExpression.Compile(timeLastAfter);
+            WorkflowExpression.Validate(__workflow_timeLastAfter, nameof(timeLastAfter), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_exclude = exclude == null ? null : WorkflowExpression.Compile(exclude);
+            WorkflowExpression.Validate(__workflow_exclude, nameof(exclude), required: false);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
             return new DeferredBodyAction<FlexResults[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(method, 1), ExpressionConverter.ConvertWithUrlEncoding(key, 1), ExpressionConverter.ConvertWithUrlEncoding(value, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_method, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_key, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_value, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (timeFirstBefore != null)
-                    callPayload.Queries["time_first_before"] = ExpressionConverter.Convert(timeFirstBefore);
-                if (timeFirstAfter != null)
-                    callPayload.Queries["time_first_after"] = ExpressionConverter.Convert(timeFirstAfter);
-                if (timeLastBefore != null)
-                    callPayload.Queries["time_last_before"] = ExpressionConverter.Convert(timeLastBefore);
-                if (timeLastAfter != null)
-                    callPayload.Queries["time_last_after"] = ExpressionConverter.Convert(timeLastAfter);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (exclude != null)
-                    callPayload.Queries["exclude"] = ExpressionConverter.Convert(exclude);
-                if (offset != null)
-                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (__workflow_timeFirstBefore != null)
+                    callPayload.Queries["time_first_before"] = ExpressionConverter.Convert(__workflow_timeFirstBefore);
+                if (__workflow_timeFirstAfter != null)
+                    callPayload.Queries["time_first_after"] = ExpressionConverter.Convert(__workflow_timeFirstAfter);
+                if (__workflow_timeLastBefore != null)
+                    callPayload.Queries["time_last_before"] = ExpressionConverter.Convert(__workflow_timeLastBefore);
+                if (__workflow_timeLastAfter != null)
+                    callPayload.Queries["time_last_after"] = ExpressionConverter.Convert(__workflow_timeLastAfter);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_exclude != null)
+                    callPayload.Queries["exclude"] = ExpressionConverter.Convert(__workflow_exclude);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 return new ApiConnectionAction<FlexResults[]>(callPayload);
             });
         }

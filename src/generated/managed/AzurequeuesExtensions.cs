@@ -1,81 +1,68 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurequeues
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class AzurequeuesActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurequeues")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteMessage))]
-        public IWorkflowAction DeleteMessage([WorkflowExpression] Func<string> storageAccountName, [WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> messageId, [WorkflowExpression] Func<string> popreceipt)
+        public IWorkflowAction DeleteMessage(Expression<Func<string>> storageAccountName, Expression<Func<string>> queueName, Expression<Func<string>> messageId, Expression<Func<string>> popreceipt)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDeleteMessage(WorkflowExpression<string> storageAccountName, WorkflowExpression<string> queueName, WorkflowExpression<string> messageId, WorkflowExpression<string> popreceipt)
-        {
-            WorkflowExpression.Validate(storageAccountName, nameof(storageAccountName), required: true);
-            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
-            WorkflowExpression.Validate(messageId, nameof(messageId), required: true);
-            WorkflowExpression.Validate(popreceipt, nameof(popreceipt), required: true);
+            var __workflow_storageAccountName = storageAccountName == null ? null : WorkflowExpression.Compile(storageAccountName);
+            WorkflowExpression.Validate(__workflow_storageAccountName, nameof(storageAccountName), required: true);
+            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
+            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
+            var __workflow_messageId = messageId == null ? null : WorkflowExpression.Compile(messageId);
+            WorkflowExpression.Validate(__workflow_messageId, nameof(messageId), required: true);
+            var __workflow_popreceipt = popreceipt == null ? null : WorkflowExpression.Compile(popreceipt);
+            WorkflowExpression.Validate(__workflow_popreceipt, nameof(popreceipt), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/queues/{1}/messages/{2}", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(queueName, 1), ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/queues/{1}/messages/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_queueName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_messageId, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["popreceipt"] = ExpressionConverter.Convert(popreceipt);
+                callPayload.Queries["popreceipt"] = ExpressionConverter.Convert(__workflow_popreceipt);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurequeues")]
-        [WorkflowExpressionFactory(nameof(__BuildGetMessages))]
-        public IBodyWorkflowAction<Messages> GetMessages([WorkflowExpression] Func<string> storageAccountName, [WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> numofmessages = null, [WorkflowExpression] Func<string> visibilitytimeout = null)
+        public IBodyWorkflowAction<Messages> GetMessages(Expression<Func<string>> storageAccountName, Expression<Func<string>> queueName, Expression<Func<string>> numofmessages = null, Expression<Func<string>> visibilitytimeout = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Messages> __BuildGetMessages(WorkflowExpression<string> storageAccountName, WorkflowExpression<string> queueName, WorkflowExpression<string> numofmessages = null, WorkflowExpression<string> visibilitytimeout = null)
-        {
-            WorkflowExpression.Validate(storageAccountName, nameof(storageAccountName), required: true);
-            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
-            WorkflowExpression.Validate(numofmessages, nameof(numofmessages), required: false);
-            WorkflowExpression.Validate(visibilitytimeout, nameof(visibilitytimeout), required: false);
+            var __workflow_storageAccountName = storageAccountName == null ? null : WorkflowExpression.Compile(storageAccountName);
+            WorkflowExpression.Validate(__workflow_storageAccountName, nameof(storageAccountName), required: true);
+            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
+            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
+            var __workflow_numofmessages = numofmessages == null ? null : WorkflowExpression.Compile(numofmessages);
+            WorkflowExpression.Validate(__workflow_numofmessages, nameof(numofmessages), required: false);
+            var __workflow_visibilitytimeout = visibilitytimeout == null ? null : WorkflowExpression.Compile(visibilitytimeout);
+            WorkflowExpression.Validate(__workflow_visibilitytimeout, nameof(visibilitytimeout), required: false);
             return new DeferredBodyAction<Messages>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/queues/{1}/messages", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(queueName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/queues/{1}/messages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_queueName, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (numofmessages != null)
-                    callPayload.Queries["numofmessages"] = ExpressionConverter.Convert(numofmessages);
-                if (visibilitytimeout != null)
-                    callPayload.Queries["visibilitytimeout"] = ExpressionConverter.Convert(visibilitytimeout);
+                if (__workflow_numofmessages != null)
+                    callPayload.Queries["numofmessages"] = ExpressionConverter.Convert(__workflow_numofmessages);
+                if (__workflow_visibilitytimeout != null)
+                    callPayload.Queries["visibilitytimeout"] = ExpressionConverter.Convert(__workflow_visibilitytimeout);
                 return new ApiConnectionAction<Messages>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurequeues")]
-        [WorkflowExpressionFactory(nameof(__BuildListQueues))]
-        public IBodyWorkflowAction<Queue[]> ListQueues([WorkflowExpression] Func<string> storageAccountName)
+        public IBodyWorkflowAction<Queue[]> ListQueues(Expression<Func<string>> storageAccountName)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Queue[]> __BuildListQueues(WorkflowExpression<string> storageAccountName)
-        {
-            WorkflowExpression.Validate(storageAccountName, nameof(storageAccountName), required: true);
+            var __workflow_storageAccountName = storageAccountName == null ? null : WorkflowExpression.Compile(storageAccountName);
+            WorkflowExpression.Validate(__workflow_storageAccountName, nameof(storageAccountName), required: true);
             return new DeferredBodyAction<Queue[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/queues/list", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 2));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/queues/list", ExpressionConverter.ConvertWithUrlEncoding(__workflow_storageAccountName, 2));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Queue[]>(callPayload);
@@ -83,24 +70,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurequeues
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurequeues")]
-        [WorkflowExpressionFactory(nameof(__BuildPutMessage))]
-        public IWorkflowAction PutMessage([WorkflowExpression] Func<string> storageAccountName, [WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> message = null)
+        public IWorkflowAction PutMessage(Expression<Func<string>> storageAccountName, Expression<Func<string>> queueName, Expression<Func<string>> message = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildPutMessage(WorkflowExpression<string> storageAccountName, WorkflowExpression<string> queueName, WorkflowExpression<string> message = null)
-        {
-            WorkflowExpression.Validate(storageAccountName, nameof(storageAccountName), required: true);
-            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
-            WorkflowExpression.Validate(message, nameof(message), required: false);
+            var __workflow_storageAccountName = storageAccountName == null ? null : WorkflowExpression.Compile(storageAccountName);
+            WorkflowExpression.Validate(__workflow_storageAccountName, nameof(storageAccountName), required: true);
+            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
+            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
+            var __workflow_message = message == null ? null : WorkflowExpression.Compile(message);
+            WorkflowExpression.Validate(__workflow_message, nameof(message), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/queues/{1}/messages", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(queueName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/queues/{1}/messages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_queueName, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(message);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_message);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -108,48 +91,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurequeues
 
     public class AzurequeuesTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildOnMessages))]
-        public IBodyWorkflowTrigger<Messages> OnMessages([WorkflowExpression] Func<string> storageAccountName,[WorkflowExpression] Func<string> queueName,[WorkflowExpression] Func<string> visibilitytimeout = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Messages> OnMessages(Expression<Func<string>> storageAccountName, Expression<Func<string>> queueName, Expression<Func<string>> visibilitytimeout = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<Messages> __BuildOnMessages(WorkflowExpression<string> storageAccountName,WorkflowExpression<string> queueName,WorkflowExpression<string> visibilitytimeout = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(storageAccountName, nameof(storageAccountName), required: true);
-            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
-            WorkflowExpression.Validate(visibilitytimeout, nameof(visibilitytimeout), required: false);
+            var __workflow_storageAccountName = storageAccountName == null ? null : WorkflowExpression.Compile(storageAccountName);
+            WorkflowExpression.Validate(__workflow_storageAccountName, nameof(storageAccountName), required: true);
+            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
+            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
+            var __workflow_visibilitytimeout = visibilitytimeout == null ? null : WorkflowExpression.Compile(visibilitytimeout);
+            WorkflowExpression.Validate(__workflow_visibilitytimeout, nameof(visibilitytimeout), required: false);
             return new DeferredBodyTrigger<Messages>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/queues/{1}/message_trigger", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(queueName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/queues/{1}/message_trigger", ExpressionConverter.ConvertWithUrlEncoding(__workflow_storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_queueName, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (visibilitytimeout != null)
-                    callPayload.Queries["visibilitytimeout"] = ExpressionConverter.Convert(visibilitytimeout);
+                if (__workflow_visibilitytimeout != null)
+                    callPayload.Queries["visibilitytimeout"] = ExpressionConverter.Convert(__workflow_visibilitytimeout);
                 return new ApiConnectionTrigger<Messages>(callPayload, recurrence: recurrence);
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildOnMessageThresholdReached))]
-        public IBodyWorkflowTrigger<string> OnMessageThresholdReached([WorkflowExpression] Func<string> storageAccountName,[WorkflowExpression] Func<string> queueName,[WorkflowExpression] Func<int> threshold,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string> OnMessageThresholdReached(Expression<Func<string>> storageAccountName, Expression<Func<string>> queueName, Expression<Func<int>> threshold, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<string> __BuildOnMessageThresholdReached(WorkflowExpression<string> storageAccountName,WorkflowExpression<string> queueName,WorkflowExpression<int> threshold,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(storageAccountName, nameof(storageAccountName), required: true);
-            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
-            WorkflowExpression.Validate(threshold, nameof(threshold), required: true);
+            var __workflow_storageAccountName = storageAccountName == null ? null : WorkflowExpression.Compile(storageAccountName);
+            WorkflowExpression.Validate(__workflow_storageAccountName, nameof(storageAccountName), required: true);
+            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
+            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
+            var __workflow_threshold = threshold == null ? null : WorkflowExpression.Compile(threshold);
+            WorkflowExpression.Validate(__workflow_threshold, nameof(threshold), required: true);
             return new DeferredBodyTrigger<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/queues/{1}/count_trigger", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(queueName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/queues/{1}/count_trigger", ExpressionConverter.ConvertWithUrlEncoding(__workflow_storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_queueName, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["threshold"] = ExpressionConverter.Convert(threshold);
+                callPayload.Queries["threshold"] = ExpressionConverter.Convert(__workflow_threshold);
                 return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
             });
         }

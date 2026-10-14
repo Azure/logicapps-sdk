@@ -1,43 +1,39 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascadestrategynew
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class CascadestrategynewActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascadestrategynew")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateMeasure2))]
-        public IBodyWorkflowAction<UpdateMeasure2Response> UpdateMeasure2([WorkflowExpression] Func<string> bodyworkspaceId, [WorkflowExpression] Func<string> bodyplanId, [WorkflowExpression] Func<double> bodymeasureValue, [WorkflowExpression] Func<string> measureId)
+        public IBodyWorkflowAction<UpdateMeasure2Response> UpdateMeasure2(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyplanId, Expression<Func<double>> bodymeasureValue, Expression<Func<string>> measureId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UpdateMeasure2Response> __BuildUpdateMeasure2(WorkflowExpression<string> bodyworkspaceId, WorkflowExpression<string> bodyplanId, WorkflowExpression<double> bodymeasureValue, WorkflowExpression<string> measureId)
-        {
-            WorkflowExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            WorkflowExpression.Validate(bodyplanId, nameof(bodyplanId), required: true);
-            WorkflowExpression.Validate(bodymeasureValue, nameof(bodymeasureValue), required: true);
-            WorkflowExpression.Validate(measureId, nameof(measureId), required: true);
+            var __workflow_bodyworkspaceId = bodyworkspaceId == null ? null : WorkflowExpression.Compile(bodyworkspaceId);
+            WorkflowExpression.Validate(__workflow_bodyworkspaceId, nameof(bodyworkspaceId), required: true);
+            var __workflow_bodyplanId = bodyplanId == null ? null : WorkflowExpression.Compile(bodyplanId);
+            WorkflowExpression.Validate(__workflow_bodyplanId, nameof(bodyplanId), required: true);
+            var __workflow_bodymeasureValue = bodymeasureValue == null ? null : WorkflowExpression.Compile(bodymeasureValue);
+            WorkflowExpression.Validate(__workflow_bodymeasureValue, nameof(bodymeasureValue), required: true);
+            var __workflow_measureId = measureId == null ? null : WorkflowExpression.Compile(measureId);
+            WorkflowExpression.Validate(__workflow_measureId, nameof(measureId), required: true);
             return new DeferredBodyAction<UpdateMeasure2Response>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/measures/{0}", ExpressionConverter.ConvertWithUrlEncoding(measureId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/measures/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_measureId, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["workspace_id"] = ExpressionConverter.ConvertO(bodyworkspaceId);
+                body["workspace_id"] = ExpressionConverter.ConvertO(__workflow_bodyworkspaceId);
                 bodypropCount++;
-                body["plan_id"] = ExpressionConverter.ConvertO(bodyplanId);
+                body["plan_id"] = ExpressionConverter.ConvertO(__workflow_bodyplanId);
                 bodypropCount++;
-                body["measure_value"] = ExpressionConverter.ConvertO(bodymeasureValue);
+                body["measure_value"] = ExpressionConverter.ConvertO(__workflow_bodymeasureValue);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -48,33 +44,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascadestrategynew
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascadestrategynew")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateMeasureHistoricalValue2))]
-        public IBodyWorkflowAction<UpdateMeasureHistoricalValue2Response> UpdateMeasureHistoricalValue2([WorkflowExpression] Func<string> bodyworkspaceId, [WorkflowExpression] Func<string> bodyplanId, [WorkflowExpression] Func<string> measureId, [WorkflowExpression] Func<bodyhistoricalDataInputItem[]> bodyhistoricalData = null)
+        public IBodyWorkflowAction<UpdateMeasureHistoricalValue2Response> UpdateMeasureHistoricalValue2(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyplanId, Expression<Func<string>> measureId, Expression<Func<bodyhistoricalDataInputItem[]>> bodyhistoricalData = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UpdateMeasureHistoricalValue2Response> __BuildUpdateMeasureHistoricalValue2(WorkflowExpression<string> bodyworkspaceId, WorkflowExpression<string> bodyplanId, WorkflowExpression<string> measureId, WorkflowExpression<bodyhistoricalDataInputItem[]> bodyhistoricalData = null)
-        {
-            WorkflowExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            WorkflowExpression.Validate(bodyplanId, nameof(bodyplanId), required: true);
-            WorkflowExpression.Validate(measureId, nameof(measureId), required: true);
-            WorkflowExpression.Validate(bodyhistoricalData, nameof(bodyhistoricalData), required: false);
+            var __workflow_bodyworkspaceId = bodyworkspaceId == null ? null : WorkflowExpression.Compile(bodyworkspaceId);
+            WorkflowExpression.Validate(__workflow_bodyworkspaceId, nameof(bodyworkspaceId), required: true);
+            var __workflow_bodyplanId = bodyplanId == null ? null : WorkflowExpression.Compile(bodyplanId);
+            WorkflowExpression.Validate(__workflow_bodyplanId, nameof(bodyplanId), required: true);
+            var __workflow_measureId = measureId == null ? null : WorkflowExpression.Compile(measureId);
+            WorkflowExpression.Validate(__workflow_measureId, nameof(measureId), required: true);
+            var __workflow_bodyhistoricalData = bodyhistoricalData == null ? null : WorkflowExpression.Compile(bodyhistoricalData);
+            WorkflowExpression.Validate(__workflow_bodyhistoricalData, nameof(bodyhistoricalData), required: false);
             return new DeferredBodyAction<UpdateMeasureHistoricalValue2Response>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/measures/historical/{0}", ExpressionConverter.ConvertWithUrlEncoding(measureId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/measures/historical/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_measureId, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["workspace_id"] = ExpressionConverter.ConvertO(bodyworkspaceId);
+                body["workspace_id"] = ExpressionConverter.ConvertO(__workflow_bodyworkspaceId);
                 bodypropCount++;
-                body["plan_id"] = ExpressionConverter.ConvertO(bodyplanId);
-                if (bodyhistoricalData != null)
+                body["plan_id"] = ExpressionConverter.ConvertO(__workflow_bodyplanId);
+                if (__workflow_bodyhistoricalData != null)
                 {
-                    body["historical_data"] = ExpressionConverter.ConvertO(bodyhistoricalData);
+                    body["historical_data"] = ExpressionConverter.ConvertO(__workflow_bodyhistoricalData);
                     bodypropCount++;
                 }
 
@@ -88,32 +81,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascadestrategynew
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascadestrategynew")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateAction2))]
-        public IBodyWorkflowAction<UpdateAction2Response> UpdateAction2([WorkflowExpression] Func<string> bodyworkspaceId, [WorkflowExpression] Func<string> bodyplanId, [WorkflowExpression] Func<double> bodyactionValue, [WorkflowExpression] Func<string> actionId)
+        public IBodyWorkflowAction<UpdateAction2Response> UpdateAction2(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyplanId, Expression<Func<double>> bodyactionValue, Expression<Func<string>> actionId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UpdateAction2Response> __BuildUpdateAction2(WorkflowExpression<string> bodyworkspaceId, WorkflowExpression<string> bodyplanId, WorkflowExpression<double> bodyactionValue, WorkflowExpression<string> actionId)
-        {
-            WorkflowExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            WorkflowExpression.Validate(bodyplanId, nameof(bodyplanId), required: true);
-            WorkflowExpression.Validate(bodyactionValue, nameof(bodyactionValue), required: true);
-            WorkflowExpression.Validate(actionId, nameof(actionId), required: true);
+            var __workflow_bodyworkspaceId = bodyworkspaceId == null ? null : WorkflowExpression.Compile(bodyworkspaceId);
+            WorkflowExpression.Validate(__workflow_bodyworkspaceId, nameof(bodyworkspaceId), required: true);
+            var __workflow_bodyplanId = bodyplanId == null ? null : WorkflowExpression.Compile(bodyplanId);
+            WorkflowExpression.Validate(__workflow_bodyplanId, nameof(bodyplanId), required: true);
+            var __workflow_bodyactionValue = bodyactionValue == null ? null : WorkflowExpression.Compile(bodyactionValue);
+            WorkflowExpression.Validate(__workflow_bodyactionValue, nameof(bodyactionValue), required: true);
+            var __workflow_actionId = actionId == null ? null : WorkflowExpression.Compile(actionId);
+            WorkflowExpression.Validate(__workflow_actionId, nameof(actionId), required: true);
             return new DeferredBodyAction<UpdateAction2Response>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/actions/{0}", ExpressionConverter.ConvertWithUrlEncoding(actionId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/actions/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_actionId, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["workspace_id"] = ExpressionConverter.ConvertO(bodyworkspaceId);
+                body["workspace_id"] = ExpressionConverter.ConvertO(__workflow_bodyworkspaceId);
                 bodypropCount++;
-                body["plan_id"] = ExpressionConverter.ConvertO(bodyplanId);
+                body["plan_id"] = ExpressionConverter.ConvertO(__workflow_bodyplanId);
                 bodypropCount++;
-                body["action_value"] = ExpressionConverter.ConvertO(bodyactionValue);
+                body["action_value"] = ExpressionConverter.ConvertO(__workflow_bodyactionValue);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

@@ -1,33 +1,26 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Conversionservice
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class ConversionserviceActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "conversionservice")]
-        [WorkflowExpressionFactory(nameof(__BuildHtmlToText))]
-        public IBodyWorkflowAction<string> HtmlToText([WorkflowExpression] Func<string> content = null)
+        public IBodyWorkflowAction<string> HtmlToText(Expression<Func<string>> content = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildHtmlToText(WorkflowExpression<string> content = null)
-        {
-            WorkflowExpression.Validate(content, nameof(content), required: false);
+            var __workflow_content = content == null ? null : WorkflowExpression.Compile(content);
+            WorkflowExpression.Validate(__workflow_content, nameof(content), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/html2text";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(content);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_content);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }

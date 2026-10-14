@@ -1,12 +1,12 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7sms
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class D7smsActions([ConnectionName] string connectionId)
     {
@@ -20,18 +20,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7sms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "d7sms")]
-        [WorkflowExpressionFactory(nameof(__BuildSendSMS))]
-        public IBodyWorkflowAction<SendSMSResponse> SendSMS([WorkflowExpression] Func<string> bodycontent = null, [WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyto = null)
+        public IBodyWorkflowAction<SendSMSResponse> SendSMS(Expression<Func<string>> bodycontent = null, Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyto = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SendSMSResponse> __BuildSendSMS(WorkflowExpression<string> bodycontent = null, WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null)
-        {
-            WorkflowExpression.Validate(bodycontent, nameof(bodycontent), required: false);
-            WorkflowExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
-            WorkflowExpression.Validate(bodyto, nameof(bodyto), required: false);
+            var __workflow_bodycontent = bodycontent == null ? null : WorkflowExpression.Compile(bodycontent);
+            WorkflowExpression.Validate(__workflow_bodycontent, nameof(bodycontent), required: false);
+            var __workflow_bodyfrom = bodyfrom == null ? null : WorkflowExpression.Compile(bodyfrom);
+            WorkflowExpression.Validate(__workflow_bodyfrom, nameof(bodyfrom), required: false);
+            var __workflow_bodyto = bodyto == null ? null : WorkflowExpression.Compile(bodyto);
+            WorkflowExpression.Validate(__workflow_bodyto, nameof(bodyto), required: false);
             return new DeferredBodyAction<SendSMSResponse>(() =>
             {
                 var apiCallPath = "/send";
@@ -39,21 +35,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7sms
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodycontent != null)
+                if (__workflow_bodycontent != null)
                 {
-                    body["content"] = ExpressionConverter.ConvertO(bodycontent);
+                    body["content"] = ExpressionConverter.ConvertO(__workflow_bodycontent);
                     bodypropCount++;
                 }
 
-                if (bodyfrom != null)
+                if (__workflow_bodyfrom != null)
                 {
-                    body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                    body["from"] = ExpressionConverter.ConvertO(__workflow_bodyfrom);
                     bodypropCount++;
                 }
 
-                if (bodyto != null)
+                if (__workflow_bodyto != null)
                 {
-                    body["to"] = ExpressionConverter.ConvertO(bodyto);
+                    body["to"] = ExpressionConverter.ConvertO(__workflow_bodyto);
                     bodypropCount++;
                 }
 

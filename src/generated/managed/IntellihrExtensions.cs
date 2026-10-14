@@ -1,44 +1,40 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intellihr
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class IntellihrActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intellihr")]
-        [WorkflowExpressionFactory(nameof(__BuildEndJob))]
-        public IBodyWorkflowAction<SingleJob> EndJob([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyendDate, [WorkflowExpression] Func<string> bodyturnoverType, [WorkflowExpression] Func<string> bodyturnoverReason = null)
+        public IBodyWorkflowAction<SingleJob> EndJob(Expression<Func<string>> id, Expression<Func<string>> bodyendDate, Expression<Func<string>> bodyturnoverType, Expression<Func<string>> bodyturnoverReason = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SingleJob> __BuildEndJob(WorkflowExpression<string> id, WorkflowExpression<string> bodyendDate, WorkflowExpression<string> bodyturnoverType, WorkflowExpression<string> bodyturnoverReason = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(bodyendDate, nameof(bodyendDate), required: true);
-            WorkflowExpression.Validate(bodyturnoverType, nameof(bodyturnoverType), required: true);
-            WorkflowExpression.Validate(bodyturnoverReason, nameof(bodyturnoverReason), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_bodyendDate = bodyendDate == null ? null : WorkflowExpression.Compile(bodyendDate);
+            WorkflowExpression.Validate(__workflow_bodyendDate, nameof(bodyendDate), required: true);
+            var __workflow_bodyturnoverType = bodyturnoverType == null ? null : WorkflowExpression.Compile(bodyturnoverType);
+            WorkflowExpression.Validate(__workflow_bodyturnoverType, nameof(bodyturnoverType), required: true);
+            var __workflow_bodyturnoverReason = bodyturnoverReason == null ? null : WorkflowExpression.Compile(bodyturnoverReason);
+            WorkflowExpression.Validate(__workflow_bodyturnoverReason, nameof(bodyturnoverReason), required: false);
             return new DeferredBodyAction<SingleJob>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/job-end/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/job-end/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["endDate"] = ExpressionConverter.ConvertO(bodyendDate);
+                body["endDate"] = ExpressionConverter.ConvertO(__workflow_bodyendDate);
                 bodypropCount++;
-                body["turnoverType"] = ExpressionConverter.ConvertO(bodyturnoverType);
-                if (bodyturnoverReason != null)
+                body["turnoverType"] = ExpressionConverter.ConvertO(__workflow_bodyturnoverType);
+                if (__workflow_bodyturnoverReason != null)
                 {
-                    body["turnoverReason"] = ExpressionConverter.ConvertO(bodyturnoverReason);
+                    body["turnoverReason"] = ExpressionConverter.ConvertO(__workflow_bodyturnoverReason);
                     bodypropCount++;
                 }
 

@@ -1,33 +1,26 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Regexflowexecutepyth
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class RegexflowexecutepythActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "regexflowexecutepyth")]
-        [WorkflowExpressionFactory(nameof(__BuildExecutePython))]
-        public IBodyWorkflowAction<ExecutePythonResponse> ExecutePython([WorkflowExpression] Func<string> pythonCode = null)
+        public IBodyWorkflowAction<ExecutePythonResponse> ExecutePython(Expression<Func<string>> pythonCode = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ExecutePythonResponse> __BuildExecutePython(WorkflowExpression<string> pythonCode = null)
-        {
-            WorkflowExpression.Validate(pythonCode, nameof(pythonCode), required: false);
+            var __workflow_pythonCode = pythonCode == null ? null : WorkflowExpression.Compile(pythonCode);
+            WorkflowExpression.Validate(__workflow_pythonCode, nameof(pythonCode), required: false);
             return new DeferredBodyAction<ExecutePythonResponse>(() =>
             {
                 var apiCallPath = "/ExecutePython";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(pythonCode);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_pythonCode);
                 return new ApiConnectionAction<ExecutePythonResponse>(callPayload);
             });
         }

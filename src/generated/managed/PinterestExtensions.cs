@@ -1,30 +1,23 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pinterest
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class PinterestActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pinterest")]
-        [WorkflowExpressionFactory(nameof(__BuildListPinsFromBoard))]
-        public IBodyWorkflowAction<PinResponse> ListPinsFromBoard([WorkflowExpression] Func<string> board)
+        public IBodyWorkflowAction<PinResponse> ListPinsFromBoard(Expression<Func<string>> board)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PinResponse> __BuildListPinsFromBoard(WorkflowExpression<string> board)
-        {
-            WorkflowExpression.Validate(board, nameof(board), required: true);
+            var __workflow_board = board == null ? null : WorkflowExpression.Compile(board);
+            WorkflowExpression.Validate(__workflow_board, nameof(board), required: true);
             return new DeferredBodyAction<PinResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/boards/{0}/pins", ExpressionConverter.ConvertWithUrlEncoding(board, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/boards/{0}/pins", ExpressionConverter.ConvertWithUrlEncoding(__workflow_board, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<PinResponse>(callPayload);
@@ -32,83 +25,73 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pinterest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pinterest")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateBoard))]
-        public IBodyWorkflowAction<BoardResponseData> CreateBoard([WorkflowExpression] Func<string> name, [WorkflowExpression] Func<string> description = null)
+        public IBodyWorkflowAction<BoardResponseData> CreateBoard(Expression<Func<string>> name, Expression<Func<string>> description = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<BoardResponseData> __BuildCreateBoard(WorkflowExpression<string> name, WorkflowExpression<string> description = null)
-        {
-            WorkflowExpression.Validate(name, nameof(name), required: true);
-            WorkflowExpression.Validate(description, nameof(description), required: false);
+            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
+            WorkflowExpression.Validate(__workflow_name, nameof(name), required: true);
+            var __workflow_description = description == null ? null : WorkflowExpression.Compile(description);
+            WorkflowExpression.Validate(__workflow_description, nameof(description), required: false);
             return new DeferredBodyAction<BoardResponseData>(() =>
             {
                 var apiCallPath = "/boards";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-                if (description != null)
-                    callPayload.Queries["description"] = ExpressionConverter.Convert(description);
+                callPayload.Queries["name"] = ExpressionConverter.Convert(__workflow_name);
+                if (__workflow_description != null)
+                    callPayload.Queries["description"] = ExpressionConverter.Convert(__workflow_description);
                 return new ApiConnectionAction<BoardResponseData>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pinterest")]
-        [WorkflowExpressionFactory(nameof(__BuildCreatePin))]
-        public IBodyWorkflowAction<PinResponseData> CreatePin([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> description, [WorkflowExpression] Func<string> imageUrl, [WorkflowExpression] Func<string> sourceUrl = null)
+        public IBodyWorkflowAction<PinResponseData> CreatePin(Expression<Func<string>> boardId, Expression<Func<string>> description, Expression<Func<string>> imageUrl, Expression<Func<string>> sourceUrl = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PinResponseData> __BuildCreatePin(WorkflowExpression<string> boardId, WorkflowExpression<string> description, WorkflowExpression<string> imageUrl, WorkflowExpression<string> sourceUrl = null)
-        {
-            WorkflowExpression.Validate(boardId, nameof(boardId), required: true);
-            WorkflowExpression.Validate(description, nameof(description), required: true);
-            WorkflowExpression.Validate(imageUrl, nameof(imageUrl), required: true);
-            WorkflowExpression.Validate(sourceUrl, nameof(sourceUrl), required: false);
+            var __workflow_boardId = boardId == null ? null : WorkflowExpression.Compile(boardId);
+            WorkflowExpression.Validate(__workflow_boardId, nameof(boardId), required: true);
+            var __workflow_description = description == null ? null : WorkflowExpression.Compile(description);
+            WorkflowExpression.Validate(__workflow_description, nameof(description), required: true);
+            var __workflow_imageUrl = imageUrl == null ? null : WorkflowExpression.Compile(imageUrl);
+            WorkflowExpression.Validate(__workflow_imageUrl, nameof(imageUrl), required: true);
+            var __workflow_sourceUrl = sourceUrl == null ? null : WorkflowExpression.Compile(sourceUrl);
+            WorkflowExpression.Validate(__workflow_sourceUrl, nameof(sourceUrl), required: false);
             return new DeferredBodyAction<PinResponseData>(() =>
             {
                 var apiCallPath = "/pins";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["board_id"] = ExpressionConverter.Convert(boardId);
-                callPayload.Queries["description"] = ExpressionConverter.Convert(description);
-                callPayload.Queries["image_url"] = ExpressionConverter.Convert(imageUrl);
-                if (sourceUrl != null)
-                    callPayload.Queries["source_url"] = ExpressionConverter.Convert(sourceUrl);
+                callPayload.Queries["board_id"] = ExpressionConverter.Convert(__workflow_boardId);
+                callPayload.Queries["description"] = ExpressionConverter.Convert(__workflow_description);
+                callPayload.Queries["image_url"] = ExpressionConverter.Convert(__workflow_imageUrl);
+                if (__workflow_sourceUrl != null)
+                    callPayload.Queries["source_url"] = ExpressionConverter.Convert(__workflow_sourceUrl);
                 return new ApiConnectionAction<PinResponseData>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pinterest")]
-        [WorkflowExpressionFactory(nameof(__BuildEditPin))]
-        public IBodyWorkflowAction<PinResponseData> EditPin([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> pin, [WorkflowExpression] Func<string> description, [WorkflowExpression] Func<string> link = null, [WorkflowExpression] Func<string> secondBoard = null)
+        public IBodyWorkflowAction<PinResponseData> EditPin(Expression<Func<string>> boardId, Expression<Func<string>> pin, Expression<Func<string>> description, Expression<Func<string>> link = null, Expression<Func<string>> secondBoard = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PinResponseData> __BuildEditPin(WorkflowExpression<string> boardId, WorkflowExpression<string> pin, WorkflowExpression<string> description, WorkflowExpression<string> link = null, WorkflowExpression<string> secondBoard = null)
-        {
-            WorkflowExpression.Validate(boardId, nameof(boardId), required: true);
-            WorkflowExpression.Validate(pin, nameof(pin), required: true);
-            WorkflowExpression.Validate(description, nameof(description), required: true);
-            WorkflowExpression.Validate(link, nameof(link), required: false);
-            WorkflowExpression.Validate(secondBoard, nameof(secondBoard), required: false);
+            var __workflow_boardId = boardId == null ? null : WorkflowExpression.Compile(boardId);
+            WorkflowExpression.Validate(__workflow_boardId, nameof(boardId), required: true);
+            var __workflow_pin = pin == null ? null : WorkflowExpression.Compile(pin);
+            WorkflowExpression.Validate(__workflow_pin, nameof(pin), required: true);
+            var __workflow_description = description == null ? null : WorkflowExpression.Compile(description);
+            WorkflowExpression.Validate(__workflow_description, nameof(description), required: true);
+            var __workflow_link = link == null ? null : WorkflowExpression.Compile(link);
+            WorkflowExpression.Validate(__workflow_link, nameof(link), required: false);
+            var __workflow_secondBoard = secondBoard == null ? null : WorkflowExpression.Compile(secondBoard);
+            WorkflowExpression.Validate(__workflow_secondBoard, nameof(secondBoard), required: false);
             return new DeferredBodyAction<PinResponseData>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/pins/{0}/save", ExpressionConverter.ConvertWithUrlEncoding(pin, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/pins/{0}/save", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pin, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["board_id"] = ExpressionConverter.Convert(boardId);
-                callPayload.Queries["description"] = ExpressionConverter.Convert(description);
-                if (link != null)
-                    callPayload.Queries["link"] = ExpressionConverter.Convert(link);
-                if (secondBoard != null)
-                    callPayload.Queries["secondBoard"] = ExpressionConverter.Convert(secondBoard);
+                callPayload.Queries["board_id"] = ExpressionConverter.Convert(__workflow_boardId);
+                callPayload.Queries["description"] = ExpressionConverter.Convert(__workflow_description);
+                if (__workflow_link != null)
+                    callPayload.Queries["link"] = ExpressionConverter.Convert(__workflow_link);
+                if (__workflow_secondBoard != null)
+                    callPayload.Queries["secondBoard"] = ExpressionConverter.Convert(__workflow_secondBoard);
                 return new ApiConnectionAction<PinResponseData>(callPayload);
             });
         }
@@ -170,39 +153,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pinterest
 
     public class PinterestTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildOnPinAddedToFollowedBoard))]
-        public IBodyWorkflowTrigger<PinResponse> OnPinAddedToFollowedBoard([WorkflowExpression] Func<string> board,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PinResponse> OnPinAddedToFollowedBoard(Expression<Func<string>> board, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<PinResponse> __BuildOnPinAddedToFollowedBoard(WorkflowExpression<string> board,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(board, nameof(board), required: true);
+            var __workflow_board = board == null ? null : WorkflowExpression.Compile(board);
+            WorkflowExpression.Validate(__workflow_board, nameof(board), required: true);
             return new DeferredBodyTrigger<PinResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger1/boards/{0}/pins", ExpressionConverter.ConvertWithUrlEncoding(board, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger1/boards/{0}/pins", ExpressionConverter.ConvertWithUrlEncoding(__workflow_board, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionTrigger<PinResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildOnPinAddedToMyBoard))]
-        public IBodyWorkflowTrigger<PinResponse> OnPinAddedToMyBoard([WorkflowExpression] Func<string> board,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PinResponse> OnPinAddedToMyBoard(Expression<Func<string>> board, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<PinResponse> __BuildOnPinAddedToMyBoard(WorkflowExpression<string> board,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(board, nameof(board), required: true);
+            var __workflow_board = board == null ? null : WorkflowExpression.Compile(board);
+            WorkflowExpression.Validate(__workflow_board, nameof(board), required: true);
             return new DeferredBodyTrigger<PinResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger2/boards/{0}/pins", ExpressionConverter.ConvertWithUrlEncoding(board, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger2/boards/{0}/pins", ExpressionConverter.ConvertWithUrlEncoding(__workflow_board, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionTrigger<PinResponse>(callPayload, recurrence: recurrence);

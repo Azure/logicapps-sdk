@@ -1,199 +1,173 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class OdataActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "odata")]
-        [WorkflowExpressionFactory(nameof(__BuildGetEntityData))]
-        public IBodyWorkflowAction<JToken[]> GetEntityData([WorkflowExpression] Func<string> odataUri, [WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<double> top = null, [WorkflowExpression] Func<double> skip = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> expand = null)
+        public IBodyWorkflowAction<JToken[]> GetEntityData(Expression<Func<string>> odataUri, Expression<Func<string>> entity, Expression<Func<double>> top = null, Expression<Func<double>> skip = null, Expression<Func<string>> select = null, Expression<Func<string>> filter = null, Expression<Func<string>> expand = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken[]> __BuildGetEntityData(WorkflowExpression<string> odataUri, WorkflowExpression<string> entity, WorkflowExpression<double> top = null, WorkflowExpression<double> skip = null, WorkflowExpression<string> select = null, WorkflowExpression<string> filter = null, WorkflowExpression<string> expand = null)
-        {
-            WorkflowExpression.Validate(odataUri, nameof(odataUri), required: true);
-            WorkflowExpression.Validate(entity, nameof(entity), required: true);
-            WorkflowExpression.Validate(top, nameof(top), required: false);
-            WorkflowExpression.Validate(skip, nameof(skip), required: false);
-            WorkflowExpression.Validate(select, nameof(select), required: false);
-            WorkflowExpression.Validate(filter, nameof(filter), required: false);
-            WorkflowExpression.Validate(expand, nameof(expand), required: false);
+            var __workflow_odataUri = odataUri == null ? null : WorkflowExpression.Compile(odataUri);
+            WorkflowExpression.Validate(__workflow_odataUri, nameof(odataUri), required: true);
+            var __workflow_entity = entity == null ? null : WorkflowExpression.Compile(entity);
+            WorkflowExpression.Validate(__workflow_entity, nameof(entity), required: true);
+            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
+            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_skip = skip == null ? null : WorkflowExpression.Compile(skip);
+            WorkflowExpression.Validate(__workflow_skip, nameof(skip), required: false);
+            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
+            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
+            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
+            var __workflow_expand = expand == null ? null : WorkflowExpression.Compile(expand);
+            WorkflowExpression.Validate(__workflow_expand, nameof(expand), required: false);
             return new DeferredBodyAction<JToken[]>(() =>
             {
                 var apiCallPath = "/getentitydata";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["odataUri"] = ExpressionConverter.Convert(odataUri);
-                callPayload.Queries["entity"] = ExpressionConverter.Convert(entity);
-                if (top != null)
-                    callPayload.Queries["top"] = ExpressionConverter.Convert(top);
-                if (skip != null)
-                    callPayload.Queries["skip"] = ExpressionConverter.Convert(skip);
-                if (select != null)
-                    callPayload.Queries["select"] = ExpressionConverter.Convert(select);
-                if (filter != null)
-                    callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-                if (expand != null)
-                    callPayload.Queries["expand"] = ExpressionConverter.Convert(expand);
+                callPayload.Queries["odataUri"] = ExpressionConverter.Convert(__workflow_odataUri);
+                callPayload.Queries["entity"] = ExpressionConverter.Convert(__workflow_entity);
+                if (__workflow_top != null)
+                    callPayload.Queries["top"] = ExpressionConverter.Convert(__workflow_top);
+                if (__workflow_skip != null)
+                    callPayload.Queries["skip"] = ExpressionConverter.Convert(__workflow_skip);
+                if (__workflow_select != null)
+                    callPayload.Queries["select"] = ExpressionConverter.Convert(__workflow_select);
+                if (__workflow_filter != null)
+                    callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
+                if (__workflow_expand != null)
+                    callPayload.Queries["expand"] = ExpressionConverter.Convert(__workflow_expand);
                 return new ApiConnectionAction<JToken[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "odata")]
-        [WorkflowExpressionFactory(nameof(__BuildGetSchema))]
-        public IBodyWorkflowAction<JToken> GetSchema([WorkflowExpression] Func<string> odataUri, [WorkflowExpression] Func<string> entity)
+        public IBodyWorkflowAction<JToken> GetSchema(Expression<Func<string>> odataUri, Expression<Func<string>> entity)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildGetSchema(WorkflowExpression<string> odataUri, WorkflowExpression<string> entity)
-        {
-            WorkflowExpression.Validate(odataUri, nameof(odataUri), required: true);
-            WorkflowExpression.Validate(entity, nameof(entity), required: true);
+            var __workflow_odataUri = odataUri == null ? null : WorkflowExpression.Compile(odataUri);
+            WorkflowExpression.Validate(__workflow_odataUri, nameof(odataUri), required: true);
+            var __workflow_entity = entity == null ? null : WorkflowExpression.Compile(entity);
+            WorkflowExpression.Validate(__workflow_entity, nameof(entity), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/getschema";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["odataUri"] = ExpressionConverter.Convert(odataUri);
-                callPayload.Queries["entity"] = ExpressionConverter.Convert(entity);
+                callPayload.Queries["odataUri"] = ExpressionConverter.Convert(__workflow_odataUri);
+                callPayload.Queries["entity"] = ExpressionConverter.Convert(__workflow_entity);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "odata")]
-        [WorkflowExpressionFactory(nameof(__BuildGetSingleSchema))]
-        public IBodyWorkflowAction<JToken> GetSingleSchema([WorkflowExpression] Func<string> odataUri, [WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<int> option = null)
+        public IBodyWorkflowAction<JToken> GetSingleSchema(Expression<Func<string>> odataUri, Expression<Func<string>> entity, Expression<Func<int>> option = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildGetSingleSchema(WorkflowExpression<string> odataUri, WorkflowExpression<string> entity, WorkflowExpression<int> option = null)
-        {
-            WorkflowExpression.Validate(odataUri, nameof(odataUri), required: true);
-            WorkflowExpression.Validate(entity, nameof(entity), required: true);
-            WorkflowExpression.Validate(option, nameof(option), required: false);
+            var __workflow_odataUri = odataUri == null ? null : WorkflowExpression.Compile(odataUri);
+            WorkflowExpression.Validate(__workflow_odataUri, nameof(odataUri), required: true);
+            var __workflow_entity = entity == null ? null : WorkflowExpression.Compile(entity);
+            WorkflowExpression.Validate(__workflow_entity, nameof(entity), required: true);
+            var __workflow_option = option == null ? null : WorkflowExpression.Compile(option);
+            WorkflowExpression.Validate(__workflow_option, nameof(option), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/getsingleschema";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["odataUri"] = ExpressionConverter.Convert(odataUri);
-                callPayload.Queries["entity"] = ExpressionConverter.Convert(entity);
-                if (option != null)
-                    callPayload.Queries["option"] = ExpressionConverter.Convert(option);
+                callPayload.Queries["odataUri"] = ExpressionConverter.Convert(__workflow_odataUri);
+                callPayload.Queries["entity"] = ExpressionConverter.Convert(__workflow_entity);
+                if (__workflow_option != null)
+                    callPayload.Queries["option"] = ExpressionConverter.Convert(__workflow_option);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "odata")]
-        [WorkflowExpressionFactory(nameof(__BuildGetEntry))]
-        public IBodyWorkflowAction<JToken> GetEntry([WorkflowExpression] Func<string> odataUri, [WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<object> entryInput = null)
+        public IBodyWorkflowAction<JToken> GetEntry(Expression<Func<string>> odataUri, Expression<Func<string>> entity, Expression<Func<object>> entryInput = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildGetEntry(WorkflowExpression<string> odataUri, WorkflowExpression<string> entity, WorkflowExpression<object> entryInput = null)
-        {
-            WorkflowExpression.Validate(odataUri, nameof(odataUri), required: true);
-            WorkflowExpression.Validate(entity, nameof(entity), required: true);
-            WorkflowExpression.Validate(entryInput, nameof(entryInput), required: false);
+            var __workflow_odataUri = odataUri == null ? null : WorkflowExpression.Compile(odataUri);
+            WorkflowExpression.Validate(__workflow_odataUri, nameof(odataUri), required: true);
+            var __workflow_entity = entity == null ? null : WorkflowExpression.Compile(entity);
+            WorkflowExpression.Validate(__workflow_entity, nameof(entity), required: true);
+            var __workflow_entryInput = entryInput == null ? null : WorkflowExpression.Compile(entryInput);
+            WorkflowExpression.Validate(__workflow_entryInput, nameof(entryInput), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/getentry";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["odataUri"] = ExpressionConverter.Convert(odataUri);
-                callPayload.Queries["entity"] = ExpressionConverter.Convert(entity);
-                callPayload.Body = ExpressionConverter.ConvertO(entryInput);
+                callPayload.Queries["odataUri"] = ExpressionConverter.Convert(__workflow_odataUri);
+                callPayload.Queries["entity"] = ExpressionConverter.Convert(__workflow_entity);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_entryInput);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "odata")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateEntry))]
-        public IBodyWorkflowAction<JToken> CreateEntry([WorkflowExpression] Func<string> odataUri, [WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<object> entryInput = null)
+        public IBodyWorkflowAction<JToken> CreateEntry(Expression<Func<string>> odataUri, Expression<Func<string>> entity, Expression<Func<object>> entryInput = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildCreateEntry(WorkflowExpression<string> odataUri, WorkflowExpression<string> entity, WorkflowExpression<object> entryInput = null)
-        {
-            WorkflowExpression.Validate(odataUri, nameof(odataUri), required: true);
-            WorkflowExpression.Validate(entity, nameof(entity), required: true);
-            WorkflowExpression.Validate(entryInput, nameof(entryInput), required: false);
+            var __workflow_odataUri = odataUri == null ? null : WorkflowExpression.Compile(odataUri);
+            WorkflowExpression.Validate(__workflow_odataUri, nameof(odataUri), required: true);
+            var __workflow_entity = entity == null ? null : WorkflowExpression.Compile(entity);
+            WorkflowExpression.Validate(__workflow_entity, nameof(entity), required: true);
+            var __workflow_entryInput = entryInput == null ? null : WorkflowExpression.Compile(entryInput);
+            WorkflowExpression.Validate(__workflow_entryInput, nameof(entryInput), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/createentry";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["odataUri"] = ExpressionConverter.Convert(odataUri);
-                callPayload.Queries["entity"] = ExpressionConverter.Convert(entity);
-                callPayload.Body = ExpressionConverter.ConvertO(entryInput);
+                callPayload.Queries["odataUri"] = ExpressionConverter.Convert(__workflow_odataUri);
+                callPayload.Queries["entity"] = ExpressionConverter.Convert(__workflow_entity);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_entryInput);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "odata")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateEntry))]
-        public IBodyWorkflowAction<JToken> UpdateEntry([WorkflowExpression] Func<string> odataUri, [WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<object> entryInput = null)
+        public IBodyWorkflowAction<JToken> UpdateEntry(Expression<Func<string>> odataUri, Expression<Func<string>> entity, Expression<Func<object>> entryInput = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildUpdateEntry(WorkflowExpression<string> odataUri, WorkflowExpression<string> entity, WorkflowExpression<object> entryInput = null)
-        {
-            WorkflowExpression.Validate(odataUri, nameof(odataUri), required: true);
-            WorkflowExpression.Validate(entity, nameof(entity), required: true);
-            WorkflowExpression.Validate(entryInput, nameof(entryInput), required: false);
+            var __workflow_odataUri = odataUri == null ? null : WorkflowExpression.Compile(odataUri);
+            WorkflowExpression.Validate(__workflow_odataUri, nameof(odataUri), required: true);
+            var __workflow_entity = entity == null ? null : WorkflowExpression.Compile(entity);
+            WorkflowExpression.Validate(__workflow_entity, nameof(entity), required: true);
+            var __workflow_entryInput = entryInput == null ? null : WorkflowExpression.Compile(entryInput);
+            WorkflowExpression.Validate(__workflow_entryInput, nameof(entryInput), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/updateentry";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["odataUri"] = ExpressionConverter.Convert(odataUri);
-                callPayload.Queries["entity"] = ExpressionConverter.Convert(entity);
-                callPayload.Body = ExpressionConverter.ConvertO(entryInput);
+                callPayload.Queries["odataUri"] = ExpressionConverter.Convert(__workflow_odataUri);
+                callPayload.Queries["entity"] = ExpressionConverter.Convert(__workflow_entity);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_entryInput);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "odata")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteEntry))]
-        public IBodyWorkflowAction<JToken> DeleteEntry([WorkflowExpression] Func<string> odataUri, [WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<object> entryInput = null)
+        public IBodyWorkflowAction<JToken> DeleteEntry(Expression<Func<string>> odataUri, Expression<Func<string>> entity, Expression<Func<object>> entryInput = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildDeleteEntry(WorkflowExpression<string> odataUri, WorkflowExpression<string> entity, WorkflowExpression<object> entryInput = null)
-        {
-            WorkflowExpression.Validate(odataUri, nameof(odataUri), required: true);
-            WorkflowExpression.Validate(entity, nameof(entity), required: true);
-            WorkflowExpression.Validate(entryInput, nameof(entryInput), required: false);
+            var __workflow_odataUri = odataUri == null ? null : WorkflowExpression.Compile(odataUri);
+            WorkflowExpression.Validate(__workflow_odataUri, nameof(odataUri), required: true);
+            var __workflow_entity = entity == null ? null : WorkflowExpression.Compile(entity);
+            WorkflowExpression.Validate(__workflow_entity, nameof(entity), required: true);
+            var __workflow_entryInput = entryInput == null ? null : WorkflowExpression.Compile(entryInput);
+            WorkflowExpression.Validate(__workflow_entryInput, nameof(entryInput), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/deleteentry";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["odataUri"] = ExpressionConverter.Convert(odataUri);
-                callPayload.Queries["entity"] = ExpressionConverter.Convert(entity);
-                callPayload.Body = ExpressionConverter.ConvertO(entryInput);
+                callPayload.Queries["odataUri"] = ExpressionConverter.Convert(__workflow_odataUri);
+                callPayload.Queries["entity"] = ExpressionConverter.Convert(__workflow_entity);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_entryInput);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }

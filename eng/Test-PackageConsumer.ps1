@@ -20,20 +20,17 @@ $packagePath = Join-Path $PackageDirectory "Microsoft.Azure.Workflows.Sdk.$Versi
 if (-not (Test-Path -LiteralPath $packagePath)) {
     throw "The SDK package '$packagePath' does not exist."
 }
-$requiredEntries = @(
+$removedEntries = @(
     'buildTransitive/Microsoft.Azure.Workflows.Sdk.targets',
     'tools/workflow-build/Microsoft.Azure.Workflows.Sdk.Build.dll',
-    'tools/workflow-build/Microsoft.Azure.Workflows.Sdk.Build.deps.json',
-    'tools/workflow-build/Microsoft.Azure.Workflows.Sdk.Build.runtimeconfig.json',
-    'tools/workflow-build/Microsoft.CodeAnalysis.dll',
-    'tools/workflow-build/Microsoft.CodeAnalysis.CSharp.dll'
+    'tools/workflow-build/Microsoft.Azure.Workflows.Sdk.Build.deps.json'
 )
 $archive = [System.IO.Compression.ZipFile]::OpenRead((Resolve-Path -LiteralPath $packagePath).Path)
 try {
     $entries = @($archive.Entries | ForEach-Object { $_.FullName.Replace('\', '/') })
-    $missingEntries = @($requiredEntries | Where-Object { $entries -notcontains $_ })
-    if ($missingEntries.Count -ne 0) {
-        throw "The SDK package is missing required build assets: $($missingEntries -join ', ')."
+    $unexpectedEntries = @($removedEntries | Where-Object { $entries -contains $_ })
+    if ($unexpectedEntries.Count -ne 0) {
+        throw "The SDK package still contains removed build assets: $($unexpectedEntries -join ', ')."
     }
 }
 finally {

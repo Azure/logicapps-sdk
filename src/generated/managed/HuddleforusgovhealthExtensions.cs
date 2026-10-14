@@ -1,54 +1,51 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class HuddleforusgovhealthActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddleforusgovhealth")]
-        [WorkflowExpressionFactory(nameof(__BuildUploadFormSubmissionAsNewFile))]
-        public IBodyWorkflowAction<UploadFormSubmissionAsNewFileResponse> UploadFormSubmissionAsNewFile([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<string> requestBodytextContent = null, [WorkflowExpression] Func<string> requestBodydescription = null, [WorkflowExpression] Func<string> requestBodytitle = null)
+        public IBodyWorkflowAction<UploadFormSubmissionAsNewFileResponse> UploadFormSubmissionAsNewFile(Expression<Func<string>> workspaceId, Expression<Func<string>> folderId, Expression<Func<string>> requestBodytextContent = null, Expression<Func<string>> requestBodydescription = null, Expression<Func<string>> requestBodytitle = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UploadFormSubmissionAsNewFileResponse> __BuildUploadFormSubmissionAsNewFile(WorkflowExpression<string> workspaceId, WorkflowExpression<string> folderId, WorkflowExpression<string> requestBodytextContent = null, WorkflowExpression<string> requestBodydescription = null, WorkflowExpression<string> requestBodytitle = null)
-        {
-            WorkflowExpression.Validate(workspaceId, nameof(workspaceId), required: true);
-            WorkflowExpression.Validate(folderId, nameof(folderId), required: true);
-            WorkflowExpression.Validate(requestBodytextContent, nameof(requestBodytextContent), required: false);
-            WorkflowExpression.Validate(requestBodydescription, nameof(requestBodydescription), required: false);
-            WorkflowExpression.Validate(requestBodytitle, nameof(requestBodytitle), required: false);
+            var __workflow_workspaceId = workspaceId == null ? null : WorkflowExpression.Compile(workspaceId);
+            WorkflowExpression.Validate(__workflow_workspaceId, nameof(workspaceId), required: true);
+            var __workflow_folderId = folderId == null ? null : WorkflowExpression.Compile(folderId);
+            WorkflowExpression.Validate(__workflow_folderId, nameof(folderId), required: true);
+            var __workflow_requestBodytextContent = requestBodytextContent == null ? null : WorkflowExpression.Compile(requestBodytextContent);
+            WorkflowExpression.Validate(__workflow_requestBodytextContent, nameof(requestBodytextContent), required: false);
+            var __workflow_requestBodydescription = requestBodydescription == null ? null : WorkflowExpression.Compile(requestBodydescription);
+            WorkflowExpression.Validate(__workflow_requestBodydescription, nameof(requestBodydescription), required: false);
+            var __workflow_requestBodytitle = requestBodytitle == null ? null : WorkflowExpression.Compile(requestBodytitle);
+            WorkflowExpression.Validate(__workflow_requestBodytitle, nameof(requestBodytitle), required: false);
             return new DeferredBodyAction<UploadFormSubmissionAsNewFileResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/file/upload/folder/{0}", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/file/upload/folder/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_folderId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(workspaceId);
+                callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(__workflow_workspaceId);
                 var requestBody = new JObject();
                 var requestBodypropCount = 0;
-                if (requestBodytextContent != null)
+                if (__workflow_requestBodytextContent != null)
                 {
-                    requestBody["content"] = ExpressionConverter.ConvertO(requestBodytextContent);
+                    requestBody["content"] = ExpressionConverter.ConvertO(__workflow_requestBodytextContent);
                     requestBodypropCount++;
                 }
 
-                if (requestBodydescription != null)
+                if (__workflow_requestBodydescription != null)
                 {
-                    requestBody["description"] = ExpressionConverter.ConvertO(requestBodydescription);
+                    requestBody["description"] = ExpressionConverter.ConvertO(__workflow_requestBodydescription);
                     requestBodypropCount++;
                 }
 
-                if (requestBodytitle != null)
+                if (__workflow_requestBodytitle != null)
                 {
-                    requestBody["title"] = ExpressionConverter.ConvertO(requestBodytitle);
+                    requestBody["title"] = ExpressionConverter.ConvertO(__workflow_requestBodytitle);
                     requestBodypropCount++;
                 }
 
@@ -62,19 +59,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddleforusgovhealth")]
-        [WorkflowExpressionFactory(nameof(__BuildGetFile))]
-        public IBodyWorkflowAction<string> GetFile([WorkflowExpression] Func<string> fileId)
+        public IBodyWorkflowAction<string> GetFile(Expression<Func<string>> fileId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildGetFile(WorkflowExpression<string> fileId)
-        {
-            WorkflowExpression.Validate(fileId, nameof(fileId), required: true);
+            var __workflow_fileId = fileId == null ? null : WorkflowExpression.Compile(fileId);
+            WorkflowExpression.Validate(__workflow_fileId, nameof(fileId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/file/{0}", ExpressionConverter.ConvertWithUrlEncoding(fileId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/file/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fileId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -82,19 +73,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddleforusgovhealth")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteFolder))]
-        public IBodyWorkflowAction<DeleteFolderResponse> DeleteFolder([WorkflowExpression] Func<string> folderId)
+        public IBodyWorkflowAction<DeleteFolderResponse> DeleteFolder(Expression<Func<string>> folderId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DeleteFolderResponse> __BuildDeleteFolder(WorkflowExpression<string> folderId)
-        {
-            WorkflowExpression.Validate(folderId, nameof(folderId), required: true);
+            var __workflow_folderId = folderId == null ? null : WorkflowExpression.Compile(folderId);
+            WorkflowExpression.Validate(__workflow_folderId, nameof(folderId), required: true);
             return new DeferredBodyAction<DeleteFolderResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/folder/{0}", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/folder/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_folderId, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DeleteFolderResponse>(callPayload);
@@ -102,30 +87,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddleforusgovhealth")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateFolder))]
-        public IBodyWorkflowAction<Folder> CreateFolder([WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<string> requestBodytitle, [WorkflowExpression] Func<string> requestBodydescription = null)
+        public IBodyWorkflowAction<Folder> CreateFolder(Expression<Func<string>> folderId, Expression<Func<string>> requestBodytitle, Expression<Func<string>> requestBodydescription = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Folder> __BuildCreateFolder(WorkflowExpression<string> folderId, WorkflowExpression<string> requestBodytitle, WorkflowExpression<string> requestBodydescription = null)
-        {
-            WorkflowExpression.Validate(folderId, nameof(folderId), required: true);
-            WorkflowExpression.Validate(requestBodytitle, nameof(requestBodytitle), required: true);
-            WorkflowExpression.Validate(requestBodydescription, nameof(requestBodydescription), required: false);
+            var __workflow_folderId = folderId == null ? null : WorkflowExpression.Compile(folderId);
+            WorkflowExpression.Validate(__workflow_folderId, nameof(folderId), required: true);
+            var __workflow_requestBodytitle = requestBodytitle == null ? null : WorkflowExpression.Compile(requestBodytitle);
+            WorkflowExpression.Validate(__workflow_requestBodytitle, nameof(requestBodytitle), required: true);
+            var __workflow_requestBodydescription = requestBodydescription == null ? null : WorkflowExpression.Compile(requestBodydescription);
+            WorkflowExpression.Validate(__workflow_requestBodydescription, nameof(requestBodydescription), required: false);
             return new DeferredBodyAction<Folder>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/folder/{0}", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/folder/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_folderId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var requestBody = new JObject();
                 var requestBodypropCount = 0;
                 requestBodypropCount++;
-                requestBody["title"] = ExpressionConverter.ConvertO(requestBodytitle);
-                if (requestBodydescription != null)
+                requestBody["title"] = ExpressionConverter.ConvertO(__workflow_requestBodytitle);
+                if (__workflow_requestBodydescription != null)
                 {
-                    requestBody["description"] = ExpressionConverter.ConvertO(requestBodydescription);
+                    requestBody["description"] = ExpressionConverter.ConvertO(__workflow_requestBodydescription);
                     requestBodypropCount++;
                 }
 
@@ -139,43 +120,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddleforusgovhealth")]
-        [WorkflowExpressionFactory(nameof(__BuildUploadFile))]
-        public IBodyWorkflowAction<UploadFileResponse> UploadFile([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<string> requestBodyfileContent = null, [WorkflowExpression] Func<string> requestBodydescription = null, [WorkflowExpression] Func<string> requestBodytitle = null)
+        public IBodyWorkflowAction<UploadFileResponse> UploadFile(Expression<Func<string>> workspaceId, Expression<Func<string>> folderId, Expression<Func<string>> requestBodyfileContent = null, Expression<Func<string>> requestBodydescription = null, Expression<Func<string>> requestBodytitle = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UploadFileResponse> __BuildUploadFile(WorkflowExpression<string> workspaceId, WorkflowExpression<string> folderId, WorkflowExpression<string> requestBodyfileContent = null, WorkflowExpression<string> requestBodydescription = null, WorkflowExpression<string> requestBodytitle = null)
-        {
-            WorkflowExpression.Validate(workspaceId, nameof(workspaceId), required: true);
-            WorkflowExpression.Validate(folderId, nameof(folderId), required: true);
-            WorkflowExpression.Validate(requestBodyfileContent, nameof(requestBodyfileContent), required: false);
-            WorkflowExpression.Validate(requestBodydescription, nameof(requestBodydescription), required: false);
-            WorkflowExpression.Validate(requestBodytitle, nameof(requestBodytitle), required: false);
+            var __workflow_workspaceId = workspaceId == null ? null : WorkflowExpression.Compile(workspaceId);
+            WorkflowExpression.Validate(__workflow_workspaceId, nameof(workspaceId), required: true);
+            var __workflow_folderId = folderId == null ? null : WorkflowExpression.Compile(folderId);
+            WorkflowExpression.Validate(__workflow_folderId, nameof(folderId), required: true);
+            var __workflow_requestBodyfileContent = requestBodyfileContent == null ? null : WorkflowExpression.Compile(requestBodyfileContent);
+            WorkflowExpression.Validate(__workflow_requestBodyfileContent, nameof(requestBodyfileContent), required: false);
+            var __workflow_requestBodydescription = requestBodydescription == null ? null : WorkflowExpression.Compile(requestBodydescription);
+            WorkflowExpression.Validate(__workflow_requestBodydescription, nameof(requestBodydescription), required: false);
+            var __workflow_requestBodytitle = requestBodytitle == null ? null : WorkflowExpression.Compile(requestBodytitle);
+            WorkflowExpression.Validate(__workflow_requestBodytitle, nameof(requestBodytitle), required: false);
             return new DeferredBodyAction<UploadFileResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/folder/{0}/upload", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/folder/{0}/upload", ExpressionConverter.ConvertWithUrlEncoding(__workflow_folderId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(workspaceId);
+                callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(__workflow_workspaceId);
                 var requestBody = new JObject();
                 var requestBodypropCount = 0;
-                if (requestBodyfileContent != null)
+                if (__workflow_requestBodyfileContent != null)
                 {
-                    requestBody["content"] = ExpressionConverter.ConvertO(requestBodyfileContent);
+                    requestBody["content"] = ExpressionConverter.ConvertO(__workflow_requestBodyfileContent);
                     requestBodypropCount++;
                 }
 
-                if (requestBodydescription != null)
+                if (__workflow_requestBodydescription != null)
                 {
-                    requestBody["description"] = ExpressionConverter.ConvertO(requestBodydescription);
+                    requestBody["description"] = ExpressionConverter.ConvertO(__workflow_requestBodydescription);
                     requestBodypropCount++;
                 }
 
-                if (requestBodytitle != null)
+                if (__workflow_requestBodytitle != null)
                 {
-                    requestBody["title"] = ExpressionConverter.ConvertO(requestBodytitle);
+                    requestBody["title"] = ExpressionConverter.ConvertO(__workflow_requestBodytitle);
                     requestBodypropCount++;
                 }
 
@@ -189,19 +168,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddleforusgovhealth")]
-        [WorkflowExpressionFactory(nameof(__BuildMarkTaskComplete))]
-        public IBodyWorkflowAction<TaskObject> MarkTaskComplete([WorkflowExpression] Func<string> taskId)
+        public IBodyWorkflowAction<TaskObject> MarkTaskComplete(Expression<Func<string>> taskId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TaskObject> __BuildMarkTaskComplete(WorkflowExpression<string> taskId)
-        {
-            WorkflowExpression.Validate(taskId, nameof(taskId), required: true);
+            var __workflow_taskId = taskId == null ? null : WorkflowExpression.Compile(taskId);
+            WorkflowExpression.Validate(__workflow_taskId, nameof(taskId), required: true);
             return new DeferredBodyAction<TaskObject>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/task/{0}/markComplete", ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/task/{0}/markComplete", ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TaskObject>(callPayload);
@@ -209,68 +182,69 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddleforusgovhealth")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateWorkspaceTask))]
-        public IBodyWorkflowAction<CreateWorkspaceTaskResponse> CreateWorkspaceTask([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<string> requestBodytitle, [WorkflowExpression] Func<string> requestBodyassignee = null, [WorkflowExpression] Func<string> requestBodydescription = null, [WorkflowExpression] Func<string> requestBodydueDate = null, [WorkflowExpression] Func<string> requestBodyfileID = null, [WorkflowExpression] Func<string> requestBodytaskID = null, [WorkflowExpression] Func<string> requestBodystatus = null)
+        public IBodyWorkflowAction<CreateWorkspaceTaskResponse> CreateWorkspaceTask(Expression<Func<string>> workspaceId, Expression<Func<string>> requestBodytitle, Expression<Func<string>> requestBodyassignee = null, Expression<Func<string>> requestBodydescription = null, Expression<Func<string>> requestBodydueDate = null, Expression<Func<string>> requestBodyfileID = null, Expression<Func<string>> requestBodytaskID = null, Expression<Func<string>> requestBodystatus = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateWorkspaceTaskResponse> __BuildCreateWorkspaceTask(WorkflowExpression<string> workspaceId, WorkflowExpression<string> requestBodytitle, WorkflowExpression<string> requestBodyassignee = null, WorkflowExpression<string> requestBodydescription = null, WorkflowExpression<string> requestBodydueDate = null, WorkflowExpression<string> requestBodyfileID = null, WorkflowExpression<string> requestBodytaskID = null, WorkflowExpression<string> requestBodystatus = null)
-        {
-            WorkflowExpression.Validate(workspaceId, nameof(workspaceId), required: true);
-            WorkflowExpression.Validate(requestBodytitle, nameof(requestBodytitle), required: true);
-            WorkflowExpression.Validate(requestBodyassignee, nameof(requestBodyassignee), required: false);
-            WorkflowExpression.Validate(requestBodydescription, nameof(requestBodydescription), required: false);
-            WorkflowExpression.Validate(requestBodydueDate, nameof(requestBodydueDate), required: false);
-            WorkflowExpression.Validate(requestBodyfileID, nameof(requestBodyfileID), required: false);
-            WorkflowExpression.Validate(requestBodytaskID, nameof(requestBodytaskID), required: false);
-            WorkflowExpression.Validate(requestBodystatus, nameof(requestBodystatus), required: false);
+            var __workflow_workspaceId = workspaceId == null ? null : WorkflowExpression.Compile(workspaceId);
+            WorkflowExpression.Validate(__workflow_workspaceId, nameof(workspaceId), required: true);
+            var __workflow_requestBodytitle = requestBodytitle == null ? null : WorkflowExpression.Compile(requestBodytitle);
+            WorkflowExpression.Validate(__workflow_requestBodytitle, nameof(requestBodytitle), required: true);
+            var __workflow_requestBodyassignee = requestBodyassignee == null ? null : WorkflowExpression.Compile(requestBodyassignee);
+            WorkflowExpression.Validate(__workflow_requestBodyassignee, nameof(requestBodyassignee), required: false);
+            var __workflow_requestBodydescription = requestBodydescription == null ? null : WorkflowExpression.Compile(requestBodydescription);
+            WorkflowExpression.Validate(__workflow_requestBodydescription, nameof(requestBodydescription), required: false);
+            var __workflow_requestBodydueDate = requestBodydueDate == null ? null : WorkflowExpression.Compile(requestBodydueDate);
+            WorkflowExpression.Validate(__workflow_requestBodydueDate, nameof(requestBodydueDate), required: false);
+            var __workflow_requestBodyfileID = requestBodyfileID == null ? null : WorkflowExpression.Compile(requestBodyfileID);
+            WorkflowExpression.Validate(__workflow_requestBodyfileID, nameof(requestBodyfileID), required: false);
+            var __workflow_requestBodytaskID = requestBodytaskID == null ? null : WorkflowExpression.Compile(requestBodytaskID);
+            WorkflowExpression.Validate(__workflow_requestBodytaskID, nameof(requestBodytaskID), required: false);
+            var __workflow_requestBodystatus = requestBodystatus == null ? null : WorkflowExpression.Compile(requestBodystatus);
+            WorkflowExpression.Validate(__workflow_requestBodystatus, nameof(requestBodystatus), required: false);
             return new DeferredBodyAction<CreateWorkspaceTaskResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/workspace/{0}/task", ExpressionConverter.ConvertWithUrlEncoding(workspaceId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/workspace/{0}/task", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var requestBody = new JObject();
                 var requestBodypropCount = 0;
-                if (requestBodyassignee != null)
+                if (__workflow_requestBodyassignee != null)
                 {
-                    requestBody["assignee"] = ExpressionConverter.ConvertO(requestBodyassignee);
+                    requestBody["assignee"] = ExpressionConverter.ConvertO(__workflow_requestBodyassignee);
                     requestBodypropCount++;
                 }
 
-                if (requestBodydescription != null)
+                if (__workflow_requestBodydescription != null)
                 {
-                    requestBody["description"] = ExpressionConverter.ConvertO(requestBodydescription);
+                    requestBody["description"] = ExpressionConverter.ConvertO(__workflow_requestBodydescription);
                     requestBodypropCount++;
                 }
 
-                if (requestBodydueDate != null)
+                if (__workflow_requestBodydueDate != null)
                 {
-                    requestBody["dueDate"] = ExpressionConverter.ConvertO(requestBodydueDate);
+                    requestBody["dueDate"] = ExpressionConverter.ConvertO(__workflow_requestBodydueDate);
                     requestBodypropCount++;
                 }
 
-                if (requestBodyfileID != null)
+                if (__workflow_requestBodyfileID != null)
                 {
-                    requestBody["fileId"] = ExpressionConverter.ConvertO(requestBodyfileID);
+                    requestBody["fileId"] = ExpressionConverter.ConvertO(__workflow_requestBodyfileID);
                     requestBodypropCount++;
                 }
 
-                if (requestBodytaskID != null)
+                if (__workflow_requestBodytaskID != null)
                 {
-                    requestBody["id"] = ExpressionConverter.ConvertO(requestBodytaskID);
+                    requestBody["id"] = ExpressionConverter.ConvertO(__workflow_requestBodytaskID);
                     requestBodypropCount++;
                 }
 
-                if (requestBodystatus != null)
+                if (__workflow_requestBodystatus != null)
                 {
-                    requestBody["status"] = ExpressionConverter.ConvertO(requestBodystatus);
+                    requestBody["status"] = ExpressionConverter.ConvertO(__workflow_requestBodystatus);
                     requestBodypropCount++;
                 }
 
                 requestBodypropCount++;
-                requestBody["title"] = ExpressionConverter.ConvertO(requestBodytitle);
+                requestBody["title"] = ExpressionConverter.ConvertO(__workflow_requestBodytitle);
                 if (requestBodypropCount > 0)
                 {
                     callPayload.Body = requestBody;
@@ -283,41 +257,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
 
     public class HuddleforusgovhealthTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildPollFolderForFileUpload))]
-        public IBodyWorkflowTrigger<PollFolderForFileUploadResponse> PollFolderForFileUpload([WorkflowExpression] Func<string> workspaceId,[WorkflowExpression] Func<string> folderId,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollFolderForFileUploadResponse> PollFolderForFileUpload(Expression<Func<string>> workspaceId, Expression<Func<string>> folderId, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<PollFolderForFileUploadResponse> __BuildPollFolderForFileUpload(WorkflowExpression<string> workspaceId,WorkflowExpression<string> folderId,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(workspaceId, nameof(workspaceId), required: true);
-            WorkflowExpression.Validate(folderId, nameof(folderId), required: true);
+            var __workflow_workspaceId = workspaceId == null ? null : WorkflowExpression.Compile(workspaceId);
+            WorkflowExpression.Validate(__workflow_workspaceId, nameof(workspaceId), required: true);
+            var __workflow_folderId = folderId == null ? null : WorkflowExpression.Compile(folderId);
+            WorkflowExpression.Validate(__workflow_folderId, nameof(folderId), required: true);
             return new DeferredBodyTrigger<PollFolderForFileUploadResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/v2/poll/folder/{0}/upload", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/v2/poll/folder/{0}/upload", ExpressionConverter.ConvertWithUrlEncoding(__workflow_folderId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(workspaceId);
+                callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(__workflow_workspaceId);
                 return new ApiConnectionTrigger<PollFolderForFileUploadResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildPollWorkspaceForNewApproval))]
-        public IBodyWorkflowTrigger<PollWorkspaceForNewApprovalResponse> PollWorkspaceForNewApproval([WorkflowExpression] Func<string> workspaceId,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollWorkspaceForNewApprovalResponse> PollWorkspaceForNewApproval(Expression<Func<string>> workspaceId, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<PollWorkspaceForNewApprovalResponse> __BuildPollWorkspaceForNewApproval(WorkflowExpression<string> workspaceId,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(workspaceId, nameof(workspaceId), required: true);
+            var __workflow_workspaceId = workspaceId == null ? null : WorkflowExpression.Compile(workspaceId);
+            WorkflowExpression.Validate(__workflow_workspaceId, nameof(workspaceId), required: true);
             return new DeferredBodyTrigger<PollWorkspaceForNewApprovalResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/v2/poll/workspace/{0}/approvals", ExpressionConverter.ConvertWithUrlEncoding(workspaceId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/v2/poll/workspace/{0}/approvals", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionTrigger<PollWorkspaceForNewApprovalResponse>(callPayload, recurrence: recurrence);

@@ -1,53 +1,50 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bulksms
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class BulksmsActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bulksms")]
-        [WorkflowExpressionFactory(nameof(__BuildSendSmsMessage))]
-        public IWorkflowAction SendSmsMessage([WorkflowExpression] Func<bool> autoUnicode, [WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<int> bodylongMessageMaxParts, [WorkflowExpression] Func<string> bodyfrom = null)
+        public IWorkflowAction SendSmsMessage(Expression<Func<bool>> autoUnicode, Expression<Func<string>> bodyto, Expression<Func<string>> bodybody, Expression<Func<int>> bodylongMessageMaxParts, Expression<Func<string>> bodyfrom = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildSendSmsMessage(WorkflowExpression<bool> autoUnicode, WorkflowExpression<string> bodyto, WorkflowExpression<string> bodybody, WorkflowExpression<int> bodylongMessageMaxParts, WorkflowExpression<string> bodyfrom = null)
-        {
-            WorkflowExpression.Validate(autoUnicode, nameof(autoUnicode), required: true);
-            WorkflowExpression.Validate(bodyto, nameof(bodyto), required: true);
-            WorkflowExpression.Validate(bodybody, nameof(bodybody), required: true);
-            WorkflowExpression.Validate(bodylongMessageMaxParts, nameof(bodylongMessageMaxParts), required: true);
-            WorkflowExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
+            var __workflow_autoUnicode = autoUnicode == null ? null : WorkflowExpression.Compile(autoUnicode);
+            WorkflowExpression.Validate(__workflow_autoUnicode, nameof(autoUnicode), required: true);
+            var __workflow_bodyto = bodyto == null ? null : WorkflowExpression.Compile(bodyto);
+            WorkflowExpression.Validate(__workflow_bodyto, nameof(bodyto), required: true);
+            var __workflow_bodybody = bodybody == null ? null : WorkflowExpression.Compile(bodybody);
+            WorkflowExpression.Validate(__workflow_bodybody, nameof(bodybody), required: true);
+            var __workflow_bodylongMessageMaxParts = bodylongMessageMaxParts == null ? null : WorkflowExpression.Compile(bodylongMessageMaxParts);
+            WorkflowExpression.Validate(__workflow_bodylongMessageMaxParts, nameof(bodylongMessageMaxParts), required: true);
+            var __workflow_bodyfrom = bodyfrom == null ? null : WorkflowExpression.Compile(bodyfrom);
+            WorkflowExpression.Validate(__workflow_bodyfrom, nameof(bodyfrom), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v1/messages";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["auto-unicode"] = ExpressionConverter.Convert(autoUnicode);
+                callPayload.Queries["auto-unicode"] = ExpressionConverter.Convert(__workflow_autoUnicode);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfrom != null)
+                if (__workflow_bodyfrom != null)
                 {
-                    body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                    body["from"] = ExpressionConverter.ConvertO(__workflow_bodyfrom);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["to"] = ExpressionConverter.ConvertO(bodyto);
+                body["to"] = ExpressionConverter.ConvertO(__workflow_bodyto);
                 bodypropCount++;
-                body["body"] = ExpressionConverter.ConvertO(bodybody);
+                body["body"] = ExpressionConverter.ConvertO(__workflow_bodybody);
                 body["userSuppliedId"] = "BLKTM.GWPF.01.00.00";
                 bodypropCount++;
                 bodypropCount++;
-                body["longMessageMaxParts"] = ExpressionConverter.ConvertO(bodylongMessageMaxParts);
+                body["longMessageMaxParts"] = ExpressionConverter.ConvertO(__workflow_bodylongMessageMaxParts);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

@@ -1,98 +1,87 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nederlandsespoorweip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class NederlandsespoorweipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nederlandsespoorweip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetArrivals))]
-        public IBodyWorkflowAction<GetArrivalsResponse> GetArrivals([WorkflowExpression] Func<string> lang = null, [WorkflowExpression] Func<string> station = null, [WorkflowExpression] Func<string> uicCode = null, [WorkflowExpression] Func<string> dateTime = null, [WorkflowExpression] Func<int> maxJourneys = null)
+        public IBodyWorkflowAction<GetArrivalsResponse> GetArrivals(Expression<Func<string>> lang = null, Expression<Func<string>> station = null, Expression<Func<string>> uicCode = null, Expression<Func<string>> dateTime = null, Expression<Func<int>> maxJourneys = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetArrivalsResponse> __BuildGetArrivals(WorkflowExpression<string> lang = null, WorkflowExpression<string> station = null, WorkflowExpression<string> uicCode = null, WorkflowExpression<string> dateTime = null, WorkflowExpression<int> maxJourneys = null)
-        {
-            WorkflowExpression.Validate(lang, nameof(lang), required: false);
-            WorkflowExpression.Validate(station, nameof(station), required: false);
-            WorkflowExpression.Validate(uicCode, nameof(uicCode), required: false);
-            WorkflowExpression.Validate(dateTime, nameof(dateTime), required: false);
-            WorkflowExpression.Validate(maxJourneys, nameof(maxJourneys), required: false);
+            var __workflow_lang = lang == null ? null : WorkflowExpression.Compile(lang);
+            WorkflowExpression.Validate(__workflow_lang, nameof(lang), required: false);
+            var __workflow_station = station == null ? null : WorkflowExpression.Compile(station);
+            WorkflowExpression.Validate(__workflow_station, nameof(station), required: false);
+            var __workflow_uicCode = uicCode == null ? null : WorkflowExpression.Compile(uicCode);
+            WorkflowExpression.Validate(__workflow_uicCode, nameof(uicCode), required: false);
+            var __workflow_dateTime = dateTime == null ? null : WorkflowExpression.Compile(dateTime);
+            WorkflowExpression.Validate(__workflow_dateTime, nameof(dateTime), required: false);
+            var __workflow_maxJourneys = maxJourneys == null ? null : WorkflowExpression.Compile(maxJourneys);
+            WorkflowExpression.Validate(__workflow_maxJourneys, nameof(maxJourneys), required: false);
             return new DeferredBodyAction<GetArrivalsResponse>(() =>
             {
                 var apiCallPath = "/api/v2/arrivals";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lang != null)
-                    callPayload.Queries["lang"] = ExpressionConverter.Convert(lang);
-                if (station != null)
-                    callPayload.Queries["station"] = ExpressionConverter.Convert(station);
-                if (uicCode != null)
-                    callPayload.Queries["uicCode"] = ExpressionConverter.Convert(uicCode);
-                if (dateTime != null)
-                    callPayload.Queries["dateTime"] = ExpressionConverter.Convert(dateTime);
-                if (maxJourneys != null)
-                    callPayload.Queries["maxJourneys"] = ExpressionConverter.Convert(maxJourneys);
+                if (__workflow_lang != null)
+                    callPayload.Queries["lang"] = ExpressionConverter.Convert(__workflow_lang);
+                if (__workflow_station != null)
+                    callPayload.Queries["station"] = ExpressionConverter.Convert(__workflow_station);
+                if (__workflow_uicCode != null)
+                    callPayload.Queries["uicCode"] = ExpressionConverter.Convert(__workflow_uicCode);
+                if (__workflow_dateTime != null)
+                    callPayload.Queries["dateTime"] = ExpressionConverter.Convert(__workflow_dateTime);
+                if (__workflow_maxJourneys != null)
+                    callPayload.Queries["maxJourneys"] = ExpressionConverter.Convert(__workflow_maxJourneys);
                 return new ApiConnectionAction<GetArrivalsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nederlandsespoorweip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetDepartures))]
-        public IBodyWorkflowAction<GetDeparturesResponse> GetDepartures([WorkflowExpression] Func<string> lang = null, [WorkflowExpression] Func<string> station = null, [WorkflowExpression] Func<string> uicCode = null, [WorkflowExpression] Func<string> dateTime = null, [WorkflowExpression] Func<string> maxJourneys = null)
+        public IBodyWorkflowAction<GetDeparturesResponse> GetDepartures(Expression<Func<string>> lang = null, Expression<Func<string>> station = null, Expression<Func<string>> uicCode = null, Expression<Func<string>> dateTime = null, Expression<Func<string>> maxJourneys = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetDeparturesResponse> __BuildGetDepartures(WorkflowExpression<string> lang = null, WorkflowExpression<string> station = null, WorkflowExpression<string> uicCode = null, WorkflowExpression<string> dateTime = null, WorkflowExpression<string> maxJourneys = null)
-        {
-            WorkflowExpression.Validate(lang, nameof(lang), required: false);
-            WorkflowExpression.Validate(station, nameof(station), required: false);
-            WorkflowExpression.Validate(uicCode, nameof(uicCode), required: false);
-            WorkflowExpression.Validate(dateTime, nameof(dateTime), required: false);
-            WorkflowExpression.Validate(maxJourneys, nameof(maxJourneys), required: false);
+            var __workflow_lang = lang == null ? null : WorkflowExpression.Compile(lang);
+            WorkflowExpression.Validate(__workflow_lang, nameof(lang), required: false);
+            var __workflow_station = station == null ? null : WorkflowExpression.Compile(station);
+            WorkflowExpression.Validate(__workflow_station, nameof(station), required: false);
+            var __workflow_uicCode = uicCode == null ? null : WorkflowExpression.Compile(uicCode);
+            WorkflowExpression.Validate(__workflow_uicCode, nameof(uicCode), required: false);
+            var __workflow_dateTime = dateTime == null ? null : WorkflowExpression.Compile(dateTime);
+            WorkflowExpression.Validate(__workflow_dateTime, nameof(dateTime), required: false);
+            var __workflow_maxJourneys = maxJourneys == null ? null : WorkflowExpression.Compile(maxJourneys);
+            WorkflowExpression.Validate(__workflow_maxJourneys, nameof(maxJourneys), required: false);
             return new DeferredBodyAction<GetDeparturesResponse>(() =>
             {
                 var apiCallPath = "/api/v2/departures";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lang != null)
-                    callPayload.Queries["lang"] = ExpressionConverter.Convert(lang);
-                if (station != null)
-                    callPayload.Queries["station"] = ExpressionConverter.Convert(station);
-                if (uicCode != null)
-                    callPayload.Queries["uicCode"] = ExpressionConverter.Convert(uicCode);
-                if (dateTime != null)
-                    callPayload.Queries["dateTime"] = ExpressionConverter.Convert(dateTime);
-                if (maxJourneys != null)
-                    callPayload.Queries["maxJourneys"] = ExpressionConverter.Convert(maxJourneys);
+                if (__workflow_lang != null)
+                    callPayload.Queries["lang"] = ExpressionConverter.Convert(__workflow_lang);
+                if (__workflow_station != null)
+                    callPayload.Queries["station"] = ExpressionConverter.Convert(__workflow_station);
+                if (__workflow_uicCode != null)
+                    callPayload.Queries["uicCode"] = ExpressionConverter.Convert(__workflow_uicCode);
+                if (__workflow_dateTime != null)
+                    callPayload.Queries["dateTime"] = ExpressionConverter.Convert(__workflow_dateTime);
+                if (__workflow_maxJourneys != null)
+                    callPayload.Queries["maxJourneys"] = ExpressionConverter.Convert(__workflow_maxJourneys);
                 return new ApiConnectionAction<GetDeparturesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nederlandsespoorweip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetStationDisruptions))]
-        public IBodyWorkflowAction<GetStationDisruptionsResponseItem[]> GetStationDisruptions([WorkflowExpression] Func<string> stationCode)
+        public IBodyWorkflowAction<GetStationDisruptionsResponseItem[]> GetStationDisruptions(Expression<Func<string>> stationCode)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetStationDisruptionsResponseItem[]> __BuildGetStationDisruptions(WorkflowExpression<string> stationCode)
-        {
-            WorkflowExpression.Validate(stationCode, nameof(stationCode), required: true);
+            var __workflow_stationCode = stationCode == null ? null : WorkflowExpression.Compile(stationCode);
+            WorkflowExpression.Validate(__workflow_stationCode, nameof(stationCode), required: true);
             return new DeferredBodyAction<GetStationDisruptionsResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v3/disruptions/station/{0}", ExpressionConverter.ConvertWithUrlEncoding(stationCode, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v3/disruptions/station/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_stationCode, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetStationDisruptionsResponseItem[]>(callPayload);

@@ -1,12 +1,12 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Focusmateip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class FocusmateipActions([ConnectionName] string connectionId)
     {
@@ -20,19 +20,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Focusmateip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "focusmateip")]
-        [WorkflowExpressionFactory(nameof(__BuildPartnerProfile))]
-        public IBodyWorkflowAction<PartnerProfileResponse> PartnerProfile([WorkflowExpression] Func<string> userId)
+        public IBodyWorkflowAction<PartnerProfileResponse> PartnerProfile(Expression<Func<string>> userId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PartnerProfileResponse> __BuildPartnerProfile(WorkflowExpression<string> userId)
-        {
-            WorkflowExpression.Validate(userId, nameof(userId), required: true);
+            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
+            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
             return new DeferredBodyAction<PartnerProfileResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<PartnerProfileResponse>(callPayload);
@@ -40,24 +34,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Focusmateip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "focusmateip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetSessions))]
-        public IBodyWorkflowAction<GetSessionsResponse> GetSessions([WorkflowExpression] Func<string> start, [WorkflowExpression] Func<string> end)
+        public IBodyWorkflowAction<GetSessionsResponse> GetSessions(Expression<Func<string>> start, Expression<Func<string>> end)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetSessionsResponse> __BuildGetSessions(WorkflowExpression<string> start, WorkflowExpression<string> end)
-        {
-            WorkflowExpression.Validate(start, nameof(start), required: true);
-            WorkflowExpression.Validate(end, nameof(end), required: true);
+            var __workflow_start = start == null ? null : WorkflowExpression.Compile(start);
+            WorkflowExpression.Validate(__workflow_start, nameof(start), required: true);
+            var __workflow_end = end == null ? null : WorkflowExpression.Compile(end);
+            WorkflowExpression.Validate(__workflow_end, nameof(end), required: true);
             return new DeferredBodyAction<GetSessionsResponse>(() =>
             {
                 var apiCallPath = "/v1/sessions";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["start"] = ExpressionConverter.Convert(start);
-                callPayload.Queries["end"] = ExpressionConverter.Convert(end);
+                callPayload.Queries["start"] = ExpressionConverter.Convert(__workflow_start);
+                callPayload.Queries["end"] = ExpressionConverter.Convert(__workflow_end);
                 return new ApiConnectionAction<GetSessionsResponse>(callPayload);
             });
         }

@@ -1,44 +1,39 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Htmltopdfconverter
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class HtmltopdfconverterActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "htmltopdfconverter")]
-        [WorkflowExpressionFactory(nameof(__BuildConvertHTMLToPDF))]
-        public IWorkflowAction ConvertHTMLToPDF([WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<string> bodyhtmlBody = null, [WorkflowExpression] Func<string> bodycipher = null)
+        public IWorkflowAction ConvertHTMLToPDF(Expression<Func<string>> contentType = null, Expression<Func<string>> bodyhtmlBody = null, Expression<Func<string>> bodycipher = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildConvertHTMLToPDF(WorkflowExpression<string> contentType = null, WorkflowExpression<string> bodyhtmlBody = null, WorkflowExpression<string> bodycipher = null)
-        {
-            WorkflowExpression.Validate(contentType, nameof(contentType), required: false);
-            WorkflowExpression.Validate(bodyhtmlBody, nameof(bodyhtmlBody), required: false);
-            WorkflowExpression.Validate(bodycipher, nameof(bodycipher), required: false);
+            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
+            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
+            var __workflow_bodyhtmlBody = bodyhtmlBody == null ? null : WorkflowExpression.Compile(bodyhtmlBody);
+            WorkflowExpression.Validate(__workflow_bodyhtmlBody, nameof(bodyhtmlBody), required: false);
+            var __workflow_bodycipher = bodycipher == null ? null : WorkflowExpression.Compile(bodycipher);
+            WorkflowExpression.Validate(__workflow_bodycipher, nameof(bodycipher), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                if (contentType != null)
-                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                if (__workflow_contentType != null)
+                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyhtmlBody != null)
+                if (__workflow_bodyhtmlBody != null)
                 {
-                    if (bodyhtmlBody != null)
+                    if (__workflow_bodyhtmlBody != null)
                     {
-                        body["HtmlBody"] = ExpressionConverter.ConvertO(bodyhtmlBody);
+                        body["HtmlBody"] = ExpressionConverter.ConvertO(__workflow_bodyhtmlBody);
                         bodypropCount++;
                     }
 
@@ -50,9 +45,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Htmltopdfconverter
                     bodypropCount++;
                 }
 
-                if (bodycipher != null)
+                if (__workflow_bodycipher != null)
                 {
-                    body["Cipher"] = ExpressionConverter.ConvertO(bodycipher);
+                    body["Cipher"] = ExpressionConverter.ConvertO(__workflow_bodycipher);
                     bodypropCount++;
                 }
 

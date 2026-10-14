@@ -1,28 +1,22 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudskyaddins
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class BlackbaudskyaddinsActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudskyaddins")]
-        [WorkflowExpressionFactory(nameof(__BuildValidateUserIdentityToken))]
-        public IBodyWorkflowAction<PowerAutomateUIApiValidateUserIdentityTokenResponse> ValidateUserIdentityToken([WorkflowExpression] Func<string> bodyuserIdentityToken, [WorkflowExpression] Func<string> bodyapplicationID)
+        public IBodyWorkflowAction<PowerAutomateUIApiValidateUserIdentityTokenResponse> ValidateUserIdentityToken(Expression<Func<string>> bodyuserIdentityToken, Expression<Func<string>> bodyapplicationID)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PowerAutomateUIApiValidateUserIdentityTokenResponse> __BuildValidateUserIdentityToken(WorkflowExpression<string> bodyuserIdentityToken, WorkflowExpression<string> bodyapplicationID)
-        {
-            WorkflowExpression.Validate(bodyuserIdentityToken, nameof(bodyuserIdentityToken), required: true);
-            WorkflowExpression.Validate(bodyapplicationID, nameof(bodyapplicationID), required: true);
+            var __workflow_bodyuserIdentityToken = bodyuserIdentityToken == null ? null : WorkflowExpression.Compile(bodyuserIdentityToken);
+            WorkflowExpression.Validate(__workflow_bodyuserIdentityToken, nameof(bodyuserIdentityToken), required: true);
+            var __workflow_bodyapplicationID = bodyapplicationID == null ? null : WorkflowExpression.Compile(bodyapplicationID);
+            WorkflowExpression.Validate(__workflow_bodyapplicationID, nameof(bodyapplicationID), required: true);
             return new DeferredBodyAction<PowerAutomateUIApiValidateUserIdentityTokenResponse>(() =>
             {
                 var apiCallPath = "/powerautomateui/v1/useridentitytoken/validate";
@@ -31,9 +25,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudskyaddins
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["uit"] = ExpressionConverter.ConvertO(bodyuserIdentityToken);
+                body["uit"] = ExpressionConverter.ConvertO(__workflow_bodyuserIdentityToken);
                 bodypropCount++;
-                body["application_id"] = ExpressionConverter.ConvertO(bodyapplicationID);
+                body["application_id"] = ExpressionConverter.ConvertO(__workflow_bodyapplicationID);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -44,18 +38,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudskyaddins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudskyaddins")]
-        [WorkflowExpressionFactory(nameof(__BuildSendHttpRequest))]
-        public IWorkflowAction SendHttpRequest([WorkflowExpression] Func<bodymethodInput> bodymethod, [WorkflowExpression] Func<string> bodyrelativePath, [WorkflowExpression] Func<string> bodybody = null)
+        public IWorkflowAction SendHttpRequest(Expression<Func<bodymethodInput>> bodymethod, Expression<Func<string>> bodyrelativePath, Expression<Func<string>> bodybody = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildSendHttpRequest(WorkflowExpression<bodymethodInput> bodymethod, WorkflowExpression<string> bodyrelativePath, WorkflowExpression<string> bodybody = null)
-        {
-            WorkflowExpression.Validate(bodymethod, nameof(bodymethod), required: true);
-            WorkflowExpression.Validate(bodyrelativePath, nameof(bodyrelativePath), required: true);
-            WorkflowExpression.Validate(bodybody, nameof(bodybody), required: false);
+            var __workflow_bodymethod = bodymethod == null ? null : WorkflowExpression.Compile(bodymethod);
+            WorkflowExpression.Validate(__workflow_bodymethod, nameof(bodymethod), required: true);
+            var __workflow_bodyrelativePath = bodyrelativePath == null ? null : WorkflowExpression.Compile(bodyrelativePath);
+            WorkflowExpression.Validate(__workflow_bodyrelativePath, nameof(bodyrelativePath), required: true);
+            var __workflow_bodybody = bodybody == null ? null : WorkflowExpression.Compile(bodybody);
+            WorkflowExpression.Validate(__workflow_bodybody, nameof(bodybody), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/virtual/httprequest";
@@ -64,9 +54,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudskyaddins
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["method"] = ExpressionConverter.ConvertO(bodymethod);
+                body["method"] = ExpressionConverter.ConvertO(__workflow_bodymethod);
                 bodypropCount++;
-                body["path"] = ExpressionConverter.ConvertO(bodyrelativePath);
+                body["path"] = ExpressionConverter.ConvertO(__workflow_bodyrelativePath);
                 var queryObject = new JObject();
                 var queryObjectpropCount = 0;
                 if (queryObjectpropCount > 0)
@@ -83,9 +73,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudskyaddins
                     bodypropCount++;
                 }
 
-                if (bodybody != null)
+                if (__workflow_bodybody != null)
                 {
-                    body["body"] = ExpressionConverter.ConvertO(bodybody);
+                    body["body"] = ExpressionConverter.ConvertO(__workflow_bodybody);
                     bodypropCount++;
                 }
 

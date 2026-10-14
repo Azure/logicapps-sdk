@@ -1,12 +1,12 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlephotosip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class GooglephotosipActions([ConnectionName] string connectionId)
     {
@@ -20,22 +20,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlephotosip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlephotosip")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateAlbum))]
-        public IWorkflowAction CreateAlbum([WorkflowExpression] Func<string> body = null)
+        public IWorkflowAction CreateAlbum(Expression<Func<string>> body = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildCreateAlbum(WorkflowExpression<string> body = null)
-        {
-            WorkflowExpression.Validate(body, nameof(body), required: false);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v1/albums";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -50,22 +44,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlephotosip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlephotosip")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateItems))]
-        public IWorkflowAction CreateItems([WorkflowExpression] Func<string> mediaItemIds)
+        public IWorkflowAction CreateItems(Expression<Func<string>> mediaItemIds)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildCreateItems(WorkflowExpression<string> mediaItemIds)
-        {
-            WorkflowExpression.Validate(mediaItemIds, nameof(mediaItemIds), required: true);
+            var __workflow_mediaItemIds = mediaItemIds == null ? null : WorkflowExpression.Compile(mediaItemIds);
+            WorkflowExpression.Validate(__workflow_mediaItemIds, nameof(mediaItemIds), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v1/mediaItems:batchGet";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["mediaItemIds"] = ExpressionConverter.Convert(mediaItemIds);
+                callPayload.Queries["mediaItemIds"] = ExpressionConverter.Convert(__workflow_mediaItemIds);
                 return new ApiConnectionAction(callPayload);
             });
         }

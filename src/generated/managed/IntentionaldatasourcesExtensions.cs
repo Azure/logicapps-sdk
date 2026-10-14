@@ -1,124 +1,115 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intentionaldatasources
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class IntentionaldatasourcesActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intentionaldatasources")]
-        [WorkflowExpressionFactory(nameof(__BuildSingleEntity))]
-        public IBodyWorkflowAction<SingleEntity> SingleEntity([WorkflowExpression] Func<string> token, [WorkflowExpression] Func<string> service, [WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> oDataQuery = null)
+        public IBodyWorkflowAction<SingleEntity> SingleEntity(Expression<Func<string>> token, Expression<Func<string>> service, Expression<Func<string>> entity, Expression<Func<string>> id = null, Expression<Func<string>> oDataQuery = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SingleEntity> __BuildSingleEntity(WorkflowExpression<string> token, WorkflowExpression<string> service, WorkflowExpression<string> entity, WorkflowExpression<string> id = null, WorkflowExpression<string> oDataQuery = null)
-        {
-            WorkflowExpression.Validate(token, nameof(token), required: true);
-            WorkflowExpression.Validate(service, nameof(service), required: true);
-            WorkflowExpression.Validate(entity, nameof(entity), required: true);
-            WorkflowExpression.Validate(id, nameof(id), required: false);
-            WorkflowExpression.Validate(oDataQuery, nameof(oDataQuery), required: false);
+            var __workflow_token = token == null ? null : WorkflowExpression.Compile(token);
+            WorkflowExpression.Validate(__workflow_token, nameof(token), required: true);
+            var __workflow_service = service == null ? null : WorkflowExpression.Compile(service);
+            WorkflowExpression.Validate(__workflow_service, nameof(service), required: true);
+            var __workflow_entity = entity == null ? null : WorkflowExpression.Compile(entity);
+            WorkflowExpression.Validate(__workflow_entity, nameof(entity), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: false);
+            var __workflow_oDataQuery = oDataQuery == null ? null : WorkflowExpression.Compile(oDataQuery);
+            WorkflowExpression.Validate(__workflow_oDataQuery, nameof(oDataQuery), required: false);
             return new DeferredBodyAction<SingleEntity>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(service, 1), ExpressionConverter.ConvertWithUrlEncoding(entity, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_service, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_entity, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["token"] = ExpressionConverter.Convert(token);
-                if (id != null)
-                    callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-                if (oDataQuery != null)
-                    callPayload.Queries["oDataQuery"] = ExpressionConverter.Convert(oDataQuery);
+                callPayload.Queries["token"] = ExpressionConverter.Convert(__workflow_token);
+                if (__workflow_id != null)
+                    callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
+                if (__workflow_oDataQuery != null)
+                    callPayload.Queries["oDataQuery"] = ExpressionConverter.Convert(__workflow_oDataQuery);
                 return new ApiConnectionAction<SingleEntity>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intentionaldatasources")]
-        [WorkflowExpressionFactory(nameof(__BuildSingleEntityById))]
-        public IBodyWorkflowAction<SingleEntity> SingleEntityById([WorkflowExpression] Func<string> token, [WorkflowExpression] Func<string> service, [WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> oDataQuery = null)
+        public IBodyWorkflowAction<SingleEntity> SingleEntityById(Expression<Func<string>> token, Expression<Func<string>> service, Expression<Func<string>> entity, Expression<Func<string>> id, Expression<Func<string>> oDataQuery = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SingleEntity> __BuildSingleEntityById(WorkflowExpression<string> token, WorkflowExpression<string> service, WorkflowExpression<string> entity, WorkflowExpression<string> id, WorkflowExpression<string> oDataQuery = null)
-        {
-            WorkflowExpression.Validate(token, nameof(token), required: true);
-            WorkflowExpression.Validate(service, nameof(service), required: true);
-            WorkflowExpression.Validate(entity, nameof(entity), required: true);
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(oDataQuery, nameof(oDataQuery), required: false);
+            var __workflow_token = token == null ? null : WorkflowExpression.Compile(token);
+            WorkflowExpression.Validate(__workflow_token, nameof(token), required: true);
+            var __workflow_service = service == null ? null : WorkflowExpression.Compile(service);
+            WorkflowExpression.Validate(__workflow_service, nameof(service), required: true);
+            var __workflow_entity = entity == null ? null : WorkflowExpression.Compile(entity);
+            WorkflowExpression.Validate(__workflow_entity, nameof(entity), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_oDataQuery = oDataQuery == null ? null : WorkflowExpression.Compile(oDataQuery);
+            WorkflowExpression.Validate(__workflow_oDataQuery, nameof(oDataQuery), required: false);
             return new DeferredBodyAction<SingleEntity>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(service, 1), ExpressionConverter.ConvertWithUrlEncoding(entity, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_service, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_entity, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["token"] = ExpressionConverter.Convert(token);
-                if (oDataQuery != null)
-                    callPayload.Queries["oDataQuery"] = ExpressionConverter.Convert(oDataQuery);
+                callPayload.Queries["token"] = ExpressionConverter.Convert(__workflow_token);
+                if (__workflow_oDataQuery != null)
+                    callPayload.Queries["oDataQuery"] = ExpressionConverter.Convert(__workflow_oDataQuery);
                 return new ApiConnectionAction<SingleEntity>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intentionaldatasources")]
-        [WorkflowExpressionFactory(nameof(__BuildListEntity))]
-        public IBodyWorkflowAction<ListEntity> ListEntity([WorkflowExpression] Func<string> token, [WorkflowExpression] Func<string> service, [WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> oDataQuery = null)
+        public IBodyWorkflowAction<ListEntity> ListEntity(Expression<Func<string>> token, Expression<Func<string>> service, Expression<Func<string>> entity, Expression<Func<string>> id = null, Expression<Func<string>> oDataQuery = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListEntity> __BuildListEntity(WorkflowExpression<string> token, WorkflowExpression<string> service, WorkflowExpression<string> entity, WorkflowExpression<string> id = null, WorkflowExpression<string> oDataQuery = null)
-        {
-            WorkflowExpression.Validate(token, nameof(token), required: true);
-            WorkflowExpression.Validate(service, nameof(service), required: true);
-            WorkflowExpression.Validate(entity, nameof(entity), required: true);
-            WorkflowExpression.Validate(id, nameof(id), required: false);
-            WorkflowExpression.Validate(oDataQuery, nameof(oDataQuery), required: false);
+            var __workflow_token = token == null ? null : WorkflowExpression.Compile(token);
+            WorkflowExpression.Validate(__workflow_token, nameof(token), required: true);
+            var __workflow_service = service == null ? null : WorkflowExpression.Compile(service);
+            WorkflowExpression.Validate(__workflow_service, nameof(service), required: true);
+            var __workflow_entity = entity == null ? null : WorkflowExpression.Compile(entity);
+            WorkflowExpression.Validate(__workflow_entity, nameof(entity), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: false);
+            var __workflow_oDataQuery = oDataQuery == null ? null : WorkflowExpression.Compile(oDataQuery);
+            WorkflowExpression.Validate(__workflow_oDataQuery, nameof(oDataQuery), required: false);
             return new DeferredBodyAction<ListEntity>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}/list", ExpressionConverter.ConvertWithUrlEncoding(service, 1), ExpressionConverter.ConvertWithUrlEncoding(entity, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}/list", ExpressionConverter.ConvertWithUrlEncoding(__workflow_service, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_entity, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["token"] = ExpressionConverter.Convert(token);
-                if (id != null)
-                    callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-                if (oDataQuery != null)
-                    callPayload.Queries["oDataQuery"] = ExpressionConverter.Convert(oDataQuery);
+                callPayload.Queries["token"] = ExpressionConverter.Convert(__workflow_token);
+                if (__workflow_id != null)
+                    callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
+                if (__workflow_oDataQuery != null)
+                    callPayload.Queries["oDataQuery"] = ExpressionConverter.Convert(__workflow_oDataQuery);
                 return new ApiConnectionAction<ListEntity>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intentionaldatasources")]
-        [WorkflowExpressionFactory(nameof(__BuildListEntityById))]
-        public IBodyWorkflowAction<ListEntity> ListEntityById([WorkflowExpression] Func<string> token, [WorkflowExpression] Func<string> service, [WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> oDataQuery = null)
+        public IBodyWorkflowAction<ListEntity> ListEntityById(Expression<Func<string>> token, Expression<Func<string>> service, Expression<Func<string>> entity, Expression<Func<string>> id, Expression<Func<string>> oDataQuery = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListEntity> __BuildListEntityById(WorkflowExpression<string> token, WorkflowExpression<string> service, WorkflowExpression<string> entity, WorkflowExpression<string> id, WorkflowExpression<string> oDataQuery = null)
-        {
-            WorkflowExpression.Validate(token, nameof(token), required: true);
-            WorkflowExpression.Validate(service, nameof(service), required: true);
-            WorkflowExpression.Validate(entity, nameof(entity), required: true);
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(oDataQuery, nameof(oDataQuery), required: false);
+            var __workflow_token = token == null ? null : WorkflowExpression.Compile(token);
+            WorkflowExpression.Validate(__workflow_token, nameof(token), required: true);
+            var __workflow_service = service == null ? null : WorkflowExpression.Compile(service);
+            WorkflowExpression.Validate(__workflow_service, nameof(service), required: true);
+            var __workflow_entity = entity == null ? null : WorkflowExpression.Compile(entity);
+            WorkflowExpression.Validate(__workflow_entity, nameof(entity), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_oDataQuery = oDataQuery == null ? null : WorkflowExpression.Compile(oDataQuery);
+            WorkflowExpression.Validate(__workflow_oDataQuery, nameof(oDataQuery), required: false);
             return new DeferredBodyAction<ListEntity>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}/list", ExpressionConverter.ConvertWithUrlEncoding(service, 1), ExpressionConverter.ConvertWithUrlEncoding(entity, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}/list", ExpressionConverter.ConvertWithUrlEncoding(__workflow_service, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_entity, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["token"] = ExpressionConverter.Convert(token);
-                if (oDataQuery != null)
-                    callPayload.Queries["oDataQuery"] = ExpressionConverter.Convert(oDataQuery);
+                callPayload.Queries["token"] = ExpressionConverter.Convert(__workflow_token);
+                if (__workflow_oDataQuery != null)
+                    callPayload.Queries["oDataQuery"] = ExpressionConverter.Convert(__workflow_oDataQuery);
                 return new ApiConnectionAction<ListEntity>(callPayload);
             });
         }

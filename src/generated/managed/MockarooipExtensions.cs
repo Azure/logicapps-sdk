@@ -1,29 +1,24 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockarooip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class MockarooipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockarooip")]
-        [WorkflowExpressionFactory(nameof(__BuildGenerateDataFromExistingSchema))]
-        public IBodyWorkflowAction<JToken[]> GenerateDataFromExistingSchema([WorkflowExpression] Func<string> bodyschemaName = null, [WorkflowExpression] Func<string> bodyschemaJSON = null, [WorkflowExpression] Func<int> bodyrecordCount = null)
+        public IBodyWorkflowAction<JToken[]> GenerateDataFromExistingSchema(Expression<Func<string>> bodyschemaName = null, Expression<Func<string>> bodyschemaJSON = null, Expression<Func<int>> bodyrecordCount = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken[]> __BuildGenerateDataFromExistingSchema(WorkflowExpression<string> bodyschemaName = null, WorkflowExpression<string> bodyschemaJSON = null, WorkflowExpression<int> bodyrecordCount = null)
-        {
-            WorkflowExpression.Validate(bodyschemaName, nameof(bodyschemaName), required: false);
-            WorkflowExpression.Validate(bodyschemaJSON, nameof(bodyschemaJSON), required: false);
-            WorkflowExpression.Validate(bodyrecordCount, nameof(bodyrecordCount), required: false);
+            var __workflow_bodyschemaName = bodyschemaName == null ? null : WorkflowExpression.Compile(bodyschemaName);
+            WorkflowExpression.Validate(__workflow_bodyschemaName, nameof(bodyschemaName), required: false);
+            var __workflow_bodyschemaJSON = bodyschemaJSON == null ? null : WorkflowExpression.Compile(bodyschemaJSON);
+            WorkflowExpression.Validate(__workflow_bodyschemaJSON, nameof(bodyschemaJSON), required: false);
+            var __workflow_bodyrecordCount = bodyrecordCount == null ? null : WorkflowExpression.Compile(bodyrecordCount);
+            WorkflowExpression.Validate(__workflow_bodyrecordCount, nameof(bodyrecordCount), required: false);
             return new DeferredBodyAction<JToken[]>(() =>
             {
                 var apiCallPath = "/api/generate.json";
@@ -32,21 +27,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockarooip
                 callPayload.Queries["array"] = Convert.ToString(true);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyschemaName != null)
+                if (__workflow_bodyschemaName != null)
                 {
-                    body["schema"] = ExpressionConverter.ConvertO(bodyschemaName);
+                    body["schema"] = ExpressionConverter.ConvertO(__workflow_bodyschemaName);
                     bodypropCount++;
                 }
 
-                if (bodyschemaJSON != null)
+                if (__workflow_bodyschemaJSON != null)
                 {
-                    body["fields"] = ExpressionConverter.ConvertO(bodyschemaJSON);
+                    body["fields"] = ExpressionConverter.ConvertO(__workflow_bodyschemaJSON);
                     bodypropCount++;
                 }
 
-                if (bodyrecordCount != null)
+                if (__workflow_bodyrecordCount != null)
                 {
-                    body["count"] = ExpressionConverter.ConvertO(bodyrecordCount);
+                    body["count"] = ExpressionConverter.ConvertO(__workflow_bodyrecordCount);
                     bodypropCount++;
                 }
 

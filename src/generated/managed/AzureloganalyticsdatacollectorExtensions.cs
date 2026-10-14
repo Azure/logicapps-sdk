@@ -1,38 +1,33 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureloganalyticsdatacollector
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class AzureloganalyticsdatacollectorActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureloganalyticsdatacollector")]
-        [WorkflowExpressionFactory(nameof(__BuildSendData))]
-        public IWorkflowAction SendData([WorkflowExpression] Func<string> logType, [WorkflowExpression] Func<string> body = null, [WorkflowExpression] Func<string> timeGeneratedField = null)
+        public IWorkflowAction SendData(Expression<Func<string>> logType, Expression<Func<string>> body = null, Expression<Func<string>> timeGeneratedField = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildSendData(WorkflowExpression<string> logType, WorkflowExpression<string> body = null, WorkflowExpression<string> timeGeneratedField = null)
-        {
-            WorkflowExpression.Validate(logType, nameof(logType), required: true);
-            WorkflowExpression.Validate(body, nameof(body), required: false);
-            WorkflowExpression.Validate(timeGeneratedField, nameof(timeGeneratedField), required: false);
+            var __workflow_logType = logType == null ? null : WorkflowExpression.Compile(logType);
+            WorkflowExpression.Validate(__workflow_logType, nameof(logType), required: true);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_timeGeneratedField = timeGeneratedField == null ? null : WorkflowExpression.Compile(timeGeneratedField);
+            WorkflowExpression.Validate(__workflow_timeGeneratedField, nameof(timeGeneratedField), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/logs";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["Log-Type"] = ExpressionConverter.Convert(logType);
-                if (timeGeneratedField != null)
-                    callPayload.Headers["time-generated-field"] = ExpressionConverter.Convert(timeGeneratedField);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Headers["Log-Type"] = ExpressionConverter.Convert(__workflow_logType);
+                if (__workflow_timeGeneratedField != null)
+                    callPayload.Headers["time-generated-field"] = ExpressionConverter.Convert(__workflow_timeGeneratedField);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }

@@ -1,88 +1,110 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class HubspotmarketingActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
-        [WorkflowExpressionFactory(nameof(__BuildFormsList))]
-        public IWorkflowAction FormsList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<bool> archived = null)
+        public IWorkflowAction FormsList(Expression<Func<int>> limit = null, Expression<Func<bool>> archived = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildFormsList(WorkflowExpression<int> limit = null, WorkflowExpression<bool> archived = null)
-        {
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(archived, nameof(archived), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_archived = archived == null ? null : WorkflowExpression.Compile(archived);
+            WorkflowExpression.Validate(__workflow_archived, nameof(archived), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/marketing/v3/forms/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["limit"] = Convert.ToString(20);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 callPayload.Queries["archived"] = Convert.ToString(false);
-                if (archived != null)
-                    callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                if (__workflow_archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
-        [WorkflowExpressionFactory(nameof(__BuildFormsCreate))]
-        public IWorkflowAction FormsCreate([WorkflowExpression] Func<string> dataformType = null, [WorkflowExpression] Func<string> dataname = null, [WorkflowExpression] Func<string> datacreatedAt = null, [WorkflowExpression] Func<string> dataupdatedAt = null, [WorkflowExpression] Func<bool> dataarchived = null, [WorkflowExpression] Func<string> dataarchivedAt = null, [WorkflowExpression] Func<datafieldGroupsInputItem[]> datafieldGroups = null, [WorkflowExpression] Func<string> dataconfigurationlanguage = null, [WorkflowExpression] Func<bool> dataconfigurationcloneable = null, [WorkflowExpression] Func<string> dataconfigurationpostSubmitActiontype = null, [WorkflowExpression] Func<string> dataconfigurationpostSubmitActionvalue = null, [WorkflowExpression] Func<bool> dataconfigurationeditable = null, [WorkflowExpression] Func<bool> dataconfigurationarchivable = null, [WorkflowExpression] Func<bool> dataconfigurationrecaptchaEnabled = null, [WorkflowExpression] Func<bool> dataconfigurationnotifyContactOwner = null, [WorkflowExpression] Func<string[]> dataconfigurationnotifyRecipients = null, [WorkflowExpression] Func<bool> dataconfigurationcreateNewContactForNewEmail = null, [WorkflowExpression] Func<bool> dataconfigurationprePopulateKnownValues = null, [WorkflowExpression] Func<bool> dataconfigurationallowLinkToResetKnownValues = null, [WorkflowExpression] Func<bool> datadisplayOptionsrenderRawHtml = null, [WorkflowExpression] Func<string> datadisplayOptionstheme = null, [WorkflowExpression] Func<string> datadisplayOptionssubmitButtonText = null, [WorkflowExpression] Func<string> datadisplayOptionsstylefontFamily = null, [WorkflowExpression] Func<string> datadisplayOptionsstylebackgroundWidth = null, [WorkflowExpression] Func<string> datadisplayOptionsstylelabelTextColor = null, [WorkflowExpression] Func<string> datadisplayOptionsstylelabelTextSize = null, [WorkflowExpression] Func<string> datadisplayOptionsstylehelpTextColor = null, [WorkflowExpression] Func<string> datadisplayOptionsstylehelpTextSize = null, [WorkflowExpression] Func<string> datadisplayOptionsstylelegalConsentTextColor = null, [WorkflowExpression] Func<string> datadisplayOptionsstylelegalConsentTextSize = null, [WorkflowExpression] Func<string> datadisplayOptionsstylesubmitColor = null, [WorkflowExpression] Func<string> datadisplayOptionsstylesubmitAlignment = null, [WorkflowExpression] Func<string> datadisplayOptionsstylesubmitFontColor = null, [WorkflowExpression] Func<string> datadisplayOptionsstylesubmitSize = null, [WorkflowExpression] Func<string> datadisplayOptionscssClass = null)
+        public IWorkflowAction FormsCreate(Expression<Func<string>> dataformType = null, Expression<Func<string>> dataname = null, Expression<Func<string>> datacreatedAt = null, Expression<Func<string>> dataupdatedAt = null, Expression<Func<bool>> dataarchived = null, Expression<Func<string>> dataarchivedAt = null, Expression<Func<datafieldGroupsInputItem[]>> datafieldGroups = null, Expression<Func<string>> dataconfigurationlanguage = null, Expression<Func<bool>> dataconfigurationcloneable = null, Expression<Func<string>> dataconfigurationpostSubmitActiontype = null, Expression<Func<string>> dataconfigurationpostSubmitActionvalue = null, Expression<Func<bool>> dataconfigurationeditable = null, Expression<Func<bool>> dataconfigurationarchivable = null, Expression<Func<bool>> dataconfigurationrecaptchaEnabled = null, Expression<Func<bool>> dataconfigurationnotifyContactOwner = null, Expression<Func<string[]>> dataconfigurationnotifyRecipients = null, Expression<Func<bool>> dataconfigurationcreateNewContactForNewEmail = null, Expression<Func<bool>> dataconfigurationprePopulateKnownValues = null, Expression<Func<bool>> dataconfigurationallowLinkToResetKnownValues = null, Expression<Func<bool>> datadisplayOptionsrenderRawHtml = null, Expression<Func<string>> datadisplayOptionstheme = null, Expression<Func<string>> datadisplayOptionssubmitButtonText = null, Expression<Func<string>> datadisplayOptionsstylefontFamily = null, Expression<Func<string>> datadisplayOptionsstylebackgroundWidth = null, Expression<Func<string>> datadisplayOptionsstylelabelTextColor = null, Expression<Func<string>> datadisplayOptionsstylelabelTextSize = null, Expression<Func<string>> datadisplayOptionsstylehelpTextColor = null, Expression<Func<string>> datadisplayOptionsstylehelpTextSize = null, Expression<Func<string>> datadisplayOptionsstylelegalConsentTextColor = null, Expression<Func<string>> datadisplayOptionsstylelegalConsentTextSize = null, Expression<Func<string>> datadisplayOptionsstylesubmitColor = null, Expression<Func<string>> datadisplayOptionsstylesubmitAlignment = null, Expression<Func<string>> datadisplayOptionsstylesubmitFontColor = null, Expression<Func<string>> datadisplayOptionsstylesubmitSize = null, Expression<Func<string>> datadisplayOptionscssClass = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildFormsCreate(WorkflowExpression<string> dataformType = null, WorkflowExpression<string> dataname = null, WorkflowExpression<string> datacreatedAt = null, WorkflowExpression<string> dataupdatedAt = null, WorkflowExpression<bool> dataarchived = null, WorkflowExpression<string> dataarchivedAt = null, WorkflowExpression<datafieldGroupsInputItem[]> datafieldGroups = null, WorkflowExpression<string> dataconfigurationlanguage = null, WorkflowExpression<bool> dataconfigurationcloneable = null, WorkflowExpression<string> dataconfigurationpostSubmitActiontype = null, WorkflowExpression<string> dataconfigurationpostSubmitActionvalue = null, WorkflowExpression<bool> dataconfigurationeditable = null, WorkflowExpression<bool> dataconfigurationarchivable = null, WorkflowExpression<bool> dataconfigurationrecaptchaEnabled = null, WorkflowExpression<bool> dataconfigurationnotifyContactOwner = null, WorkflowExpression<string[]> dataconfigurationnotifyRecipients = null, WorkflowExpression<bool> dataconfigurationcreateNewContactForNewEmail = null, WorkflowExpression<bool> dataconfigurationprePopulateKnownValues = null, WorkflowExpression<bool> dataconfigurationallowLinkToResetKnownValues = null, WorkflowExpression<bool> datadisplayOptionsrenderRawHtml = null, WorkflowExpression<string> datadisplayOptionstheme = null, WorkflowExpression<string> datadisplayOptionssubmitButtonText = null, WorkflowExpression<string> datadisplayOptionsstylefontFamily = null, WorkflowExpression<string> datadisplayOptionsstylebackgroundWidth = null, WorkflowExpression<string> datadisplayOptionsstylelabelTextColor = null, WorkflowExpression<string> datadisplayOptionsstylelabelTextSize = null, WorkflowExpression<string> datadisplayOptionsstylehelpTextColor = null, WorkflowExpression<string> datadisplayOptionsstylehelpTextSize = null, WorkflowExpression<string> datadisplayOptionsstylelegalConsentTextColor = null, WorkflowExpression<string> datadisplayOptionsstylelegalConsentTextSize = null, WorkflowExpression<string> datadisplayOptionsstylesubmitColor = null, WorkflowExpression<string> datadisplayOptionsstylesubmitAlignment = null, WorkflowExpression<string> datadisplayOptionsstylesubmitFontColor = null, WorkflowExpression<string> datadisplayOptionsstylesubmitSize = null, WorkflowExpression<string> datadisplayOptionscssClass = null)
-        {
-            WorkflowExpression.Validate(dataformType, nameof(dataformType), required: false);
-            WorkflowExpression.Validate(dataname, nameof(dataname), required: false);
-            WorkflowExpression.Validate(datacreatedAt, nameof(datacreatedAt), required: false);
-            WorkflowExpression.Validate(dataupdatedAt, nameof(dataupdatedAt), required: false);
-            WorkflowExpression.Validate(dataarchived, nameof(dataarchived), required: false);
-            WorkflowExpression.Validate(dataarchivedAt, nameof(dataarchivedAt), required: false);
-            WorkflowExpression.Validate(datafieldGroups, nameof(datafieldGroups), required: false);
-            WorkflowExpression.Validate(dataconfigurationlanguage, nameof(dataconfigurationlanguage), required: false);
-            WorkflowExpression.Validate(dataconfigurationcloneable, nameof(dataconfigurationcloneable), required: false);
-            WorkflowExpression.Validate(dataconfigurationpostSubmitActiontype, nameof(dataconfigurationpostSubmitActiontype), required: false);
-            WorkflowExpression.Validate(dataconfigurationpostSubmitActionvalue, nameof(dataconfigurationpostSubmitActionvalue), required: false);
-            WorkflowExpression.Validate(dataconfigurationeditable, nameof(dataconfigurationeditable), required: false);
-            WorkflowExpression.Validate(dataconfigurationarchivable, nameof(dataconfigurationarchivable), required: false);
-            WorkflowExpression.Validate(dataconfigurationrecaptchaEnabled, nameof(dataconfigurationrecaptchaEnabled), required: false);
-            WorkflowExpression.Validate(dataconfigurationnotifyContactOwner, nameof(dataconfigurationnotifyContactOwner), required: false);
-            WorkflowExpression.Validate(dataconfigurationnotifyRecipients, nameof(dataconfigurationnotifyRecipients), required: false);
-            WorkflowExpression.Validate(dataconfigurationcreateNewContactForNewEmail, nameof(dataconfigurationcreateNewContactForNewEmail), required: false);
-            WorkflowExpression.Validate(dataconfigurationprePopulateKnownValues, nameof(dataconfigurationprePopulateKnownValues), required: false);
-            WorkflowExpression.Validate(dataconfigurationallowLinkToResetKnownValues, nameof(dataconfigurationallowLinkToResetKnownValues), required: false);
-            WorkflowExpression.Validate(datadisplayOptionsrenderRawHtml, nameof(datadisplayOptionsrenderRawHtml), required: false);
-            WorkflowExpression.Validate(datadisplayOptionstheme, nameof(datadisplayOptionstheme), required: false);
-            WorkflowExpression.Validate(datadisplayOptionssubmitButtonText, nameof(datadisplayOptionssubmitButtonText), required: false);
-            WorkflowExpression.Validate(datadisplayOptionsstylefontFamily, nameof(datadisplayOptionsstylefontFamily), required: false);
-            WorkflowExpression.Validate(datadisplayOptionsstylebackgroundWidth, nameof(datadisplayOptionsstylebackgroundWidth), required: false);
-            WorkflowExpression.Validate(datadisplayOptionsstylelabelTextColor, nameof(datadisplayOptionsstylelabelTextColor), required: false);
-            WorkflowExpression.Validate(datadisplayOptionsstylelabelTextSize, nameof(datadisplayOptionsstylelabelTextSize), required: false);
-            WorkflowExpression.Validate(datadisplayOptionsstylehelpTextColor, nameof(datadisplayOptionsstylehelpTextColor), required: false);
-            WorkflowExpression.Validate(datadisplayOptionsstylehelpTextSize, nameof(datadisplayOptionsstylehelpTextSize), required: false);
-            WorkflowExpression.Validate(datadisplayOptionsstylelegalConsentTextColor, nameof(datadisplayOptionsstylelegalConsentTextColor), required: false);
-            WorkflowExpression.Validate(datadisplayOptionsstylelegalConsentTextSize, nameof(datadisplayOptionsstylelegalConsentTextSize), required: false);
-            WorkflowExpression.Validate(datadisplayOptionsstylesubmitColor, nameof(datadisplayOptionsstylesubmitColor), required: false);
-            WorkflowExpression.Validate(datadisplayOptionsstylesubmitAlignment, nameof(datadisplayOptionsstylesubmitAlignment), required: false);
-            WorkflowExpression.Validate(datadisplayOptionsstylesubmitFontColor, nameof(datadisplayOptionsstylesubmitFontColor), required: false);
-            WorkflowExpression.Validate(datadisplayOptionsstylesubmitSize, nameof(datadisplayOptionsstylesubmitSize), required: false);
-            WorkflowExpression.Validate(datadisplayOptionscssClass, nameof(datadisplayOptionscssClass), required: false);
+            var __workflow_dataformType = dataformType == null ? null : WorkflowExpression.Compile(dataformType);
+            WorkflowExpression.Validate(__workflow_dataformType, nameof(dataformType), required: false);
+            var __workflow_dataname = dataname == null ? null : WorkflowExpression.Compile(dataname);
+            WorkflowExpression.Validate(__workflow_dataname, nameof(dataname), required: false);
+            var __workflow_datacreatedAt = datacreatedAt == null ? null : WorkflowExpression.Compile(datacreatedAt);
+            WorkflowExpression.Validate(__workflow_datacreatedAt, nameof(datacreatedAt), required: false);
+            var __workflow_dataupdatedAt = dataupdatedAt == null ? null : WorkflowExpression.Compile(dataupdatedAt);
+            WorkflowExpression.Validate(__workflow_dataupdatedAt, nameof(dataupdatedAt), required: false);
+            var __workflow_dataarchived = dataarchived == null ? null : WorkflowExpression.Compile(dataarchived);
+            WorkflowExpression.Validate(__workflow_dataarchived, nameof(dataarchived), required: false);
+            var __workflow_dataarchivedAt = dataarchivedAt == null ? null : WorkflowExpression.Compile(dataarchivedAt);
+            WorkflowExpression.Validate(__workflow_dataarchivedAt, nameof(dataarchivedAt), required: false);
+            var __workflow_datafieldGroups = datafieldGroups == null ? null : WorkflowExpression.Compile(datafieldGroups);
+            WorkflowExpression.Validate(__workflow_datafieldGroups, nameof(datafieldGroups), required: false);
+            var __workflow_dataconfigurationlanguage = dataconfigurationlanguage == null ? null : WorkflowExpression.Compile(dataconfigurationlanguage);
+            WorkflowExpression.Validate(__workflow_dataconfigurationlanguage, nameof(dataconfigurationlanguage), required: false);
+            var __workflow_dataconfigurationcloneable = dataconfigurationcloneable == null ? null : WorkflowExpression.Compile(dataconfigurationcloneable);
+            WorkflowExpression.Validate(__workflow_dataconfigurationcloneable, nameof(dataconfigurationcloneable), required: false);
+            var __workflow_dataconfigurationpostSubmitActiontype = dataconfigurationpostSubmitActiontype == null ? null : WorkflowExpression.Compile(dataconfigurationpostSubmitActiontype);
+            WorkflowExpression.Validate(__workflow_dataconfigurationpostSubmitActiontype, nameof(dataconfigurationpostSubmitActiontype), required: false);
+            var __workflow_dataconfigurationpostSubmitActionvalue = dataconfigurationpostSubmitActionvalue == null ? null : WorkflowExpression.Compile(dataconfigurationpostSubmitActionvalue);
+            WorkflowExpression.Validate(__workflow_dataconfigurationpostSubmitActionvalue, nameof(dataconfigurationpostSubmitActionvalue), required: false);
+            var __workflow_dataconfigurationeditable = dataconfigurationeditable == null ? null : WorkflowExpression.Compile(dataconfigurationeditable);
+            WorkflowExpression.Validate(__workflow_dataconfigurationeditable, nameof(dataconfigurationeditable), required: false);
+            var __workflow_dataconfigurationarchivable = dataconfigurationarchivable == null ? null : WorkflowExpression.Compile(dataconfigurationarchivable);
+            WorkflowExpression.Validate(__workflow_dataconfigurationarchivable, nameof(dataconfigurationarchivable), required: false);
+            var __workflow_dataconfigurationrecaptchaEnabled = dataconfigurationrecaptchaEnabled == null ? null : WorkflowExpression.Compile(dataconfigurationrecaptchaEnabled);
+            WorkflowExpression.Validate(__workflow_dataconfigurationrecaptchaEnabled, nameof(dataconfigurationrecaptchaEnabled), required: false);
+            var __workflow_dataconfigurationnotifyContactOwner = dataconfigurationnotifyContactOwner == null ? null : WorkflowExpression.Compile(dataconfigurationnotifyContactOwner);
+            WorkflowExpression.Validate(__workflow_dataconfigurationnotifyContactOwner, nameof(dataconfigurationnotifyContactOwner), required: false);
+            var __workflow_dataconfigurationnotifyRecipients = dataconfigurationnotifyRecipients == null ? null : WorkflowExpression.Compile(dataconfigurationnotifyRecipients);
+            WorkflowExpression.Validate(__workflow_dataconfigurationnotifyRecipients, nameof(dataconfigurationnotifyRecipients), required: false);
+            var __workflow_dataconfigurationcreateNewContactForNewEmail = dataconfigurationcreateNewContactForNewEmail == null ? null : WorkflowExpression.Compile(dataconfigurationcreateNewContactForNewEmail);
+            WorkflowExpression.Validate(__workflow_dataconfigurationcreateNewContactForNewEmail, nameof(dataconfigurationcreateNewContactForNewEmail), required: false);
+            var __workflow_dataconfigurationprePopulateKnownValues = dataconfigurationprePopulateKnownValues == null ? null : WorkflowExpression.Compile(dataconfigurationprePopulateKnownValues);
+            WorkflowExpression.Validate(__workflow_dataconfigurationprePopulateKnownValues, nameof(dataconfigurationprePopulateKnownValues), required: false);
+            var __workflow_dataconfigurationallowLinkToResetKnownValues = dataconfigurationallowLinkToResetKnownValues == null ? null : WorkflowExpression.Compile(dataconfigurationallowLinkToResetKnownValues);
+            WorkflowExpression.Validate(__workflow_dataconfigurationallowLinkToResetKnownValues, nameof(dataconfigurationallowLinkToResetKnownValues), required: false);
+            var __workflow_datadisplayOptionsrenderRawHtml = datadisplayOptionsrenderRawHtml == null ? null : WorkflowExpression.Compile(datadisplayOptionsrenderRawHtml);
+            WorkflowExpression.Validate(__workflow_datadisplayOptionsrenderRawHtml, nameof(datadisplayOptionsrenderRawHtml), required: false);
+            var __workflow_datadisplayOptionstheme = datadisplayOptionstheme == null ? null : WorkflowExpression.Compile(datadisplayOptionstheme);
+            WorkflowExpression.Validate(__workflow_datadisplayOptionstheme, nameof(datadisplayOptionstheme), required: false);
+            var __workflow_datadisplayOptionssubmitButtonText = datadisplayOptionssubmitButtonText == null ? null : WorkflowExpression.Compile(datadisplayOptionssubmitButtonText);
+            WorkflowExpression.Validate(__workflow_datadisplayOptionssubmitButtonText, nameof(datadisplayOptionssubmitButtonText), required: false);
+            var __workflow_datadisplayOptionsstylefontFamily = datadisplayOptionsstylefontFamily == null ? null : WorkflowExpression.Compile(datadisplayOptionsstylefontFamily);
+            WorkflowExpression.Validate(__workflow_datadisplayOptionsstylefontFamily, nameof(datadisplayOptionsstylefontFamily), required: false);
+            var __workflow_datadisplayOptionsstylebackgroundWidth = datadisplayOptionsstylebackgroundWidth == null ? null : WorkflowExpression.Compile(datadisplayOptionsstylebackgroundWidth);
+            WorkflowExpression.Validate(__workflow_datadisplayOptionsstylebackgroundWidth, nameof(datadisplayOptionsstylebackgroundWidth), required: false);
+            var __workflow_datadisplayOptionsstylelabelTextColor = datadisplayOptionsstylelabelTextColor == null ? null : WorkflowExpression.Compile(datadisplayOptionsstylelabelTextColor);
+            WorkflowExpression.Validate(__workflow_datadisplayOptionsstylelabelTextColor, nameof(datadisplayOptionsstylelabelTextColor), required: false);
+            var __workflow_datadisplayOptionsstylelabelTextSize = datadisplayOptionsstylelabelTextSize == null ? null : WorkflowExpression.Compile(datadisplayOptionsstylelabelTextSize);
+            WorkflowExpression.Validate(__workflow_datadisplayOptionsstylelabelTextSize, nameof(datadisplayOptionsstylelabelTextSize), required: false);
+            var __workflow_datadisplayOptionsstylehelpTextColor = datadisplayOptionsstylehelpTextColor == null ? null : WorkflowExpression.Compile(datadisplayOptionsstylehelpTextColor);
+            WorkflowExpression.Validate(__workflow_datadisplayOptionsstylehelpTextColor, nameof(datadisplayOptionsstylehelpTextColor), required: false);
+            var __workflow_datadisplayOptionsstylehelpTextSize = datadisplayOptionsstylehelpTextSize == null ? null : WorkflowExpression.Compile(datadisplayOptionsstylehelpTextSize);
+            WorkflowExpression.Validate(__workflow_datadisplayOptionsstylehelpTextSize, nameof(datadisplayOptionsstylehelpTextSize), required: false);
+            var __workflow_datadisplayOptionsstylelegalConsentTextColor = datadisplayOptionsstylelegalConsentTextColor == null ? null : WorkflowExpression.Compile(datadisplayOptionsstylelegalConsentTextColor);
+            WorkflowExpression.Validate(__workflow_datadisplayOptionsstylelegalConsentTextColor, nameof(datadisplayOptionsstylelegalConsentTextColor), required: false);
+            var __workflow_datadisplayOptionsstylelegalConsentTextSize = datadisplayOptionsstylelegalConsentTextSize == null ? null : WorkflowExpression.Compile(datadisplayOptionsstylelegalConsentTextSize);
+            WorkflowExpression.Validate(__workflow_datadisplayOptionsstylelegalConsentTextSize, nameof(datadisplayOptionsstylelegalConsentTextSize), required: false);
+            var __workflow_datadisplayOptionsstylesubmitColor = datadisplayOptionsstylesubmitColor == null ? null : WorkflowExpression.Compile(datadisplayOptionsstylesubmitColor);
+            WorkflowExpression.Validate(__workflow_datadisplayOptionsstylesubmitColor, nameof(datadisplayOptionsstylesubmitColor), required: false);
+            var __workflow_datadisplayOptionsstylesubmitAlignment = datadisplayOptionsstylesubmitAlignment == null ? null : WorkflowExpression.Compile(datadisplayOptionsstylesubmitAlignment);
+            WorkflowExpression.Validate(__workflow_datadisplayOptionsstylesubmitAlignment, nameof(datadisplayOptionsstylesubmitAlignment), required: false);
+            var __workflow_datadisplayOptionsstylesubmitFontColor = datadisplayOptionsstylesubmitFontColor == null ? null : WorkflowExpression.Compile(datadisplayOptionsstylesubmitFontColor);
+            WorkflowExpression.Validate(__workflow_datadisplayOptionsstylesubmitFontColor, nameof(datadisplayOptionsstylesubmitFontColor), required: false);
+            var __workflow_datadisplayOptionsstylesubmitSize = datadisplayOptionsstylesubmitSize == null ? null : WorkflowExpression.Compile(datadisplayOptionsstylesubmitSize);
+            WorkflowExpression.Validate(__workflow_datadisplayOptionsstylesubmitSize, nameof(datadisplayOptionsstylesubmitSize), required: false);
+            var __workflow_datadisplayOptionscssClass = datadisplayOptionscssClass == null ? null : WorkflowExpression.Compile(datadisplayOptionscssClass);
+            WorkflowExpression.Validate(__workflow_datadisplayOptionscssClass, nameof(datadisplayOptionscssClass), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/marketing/v3/forms/";
@@ -90,11 +112,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var data = new JObject();
                 var datapropCount = 0;
-                if (dataformType != null)
+                if (__workflow_dataformType != null)
                 {
-                    if (dataformType != null)
+                    if (__workflow_dataformType != null)
                     {
-                        data["formType"] = ExpressionConverter.ConvertO(dataformType);
+                        data["formType"] = ExpressionConverter.ConvertO(__workflow_dataformType);
                         datapropCount++;
                     }
 
@@ -106,29 +128,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
                     datapropCount++;
                 }
 
-                if (dataname != null)
+                if (__workflow_dataname != null)
                 {
-                    data["name"] = ExpressionConverter.ConvertO(dataname);
+                    data["name"] = ExpressionConverter.ConvertO(__workflow_dataname);
                     datapropCount++;
                 }
 
-                if (datacreatedAt != null)
+                if (__workflow_datacreatedAt != null)
                 {
-                    data["createdAt"] = ExpressionConverter.ConvertO(datacreatedAt);
+                    data["createdAt"] = ExpressionConverter.ConvertO(__workflow_datacreatedAt);
                     datapropCount++;
                 }
 
-                if (dataupdatedAt != null)
+                if (__workflow_dataupdatedAt != null)
                 {
-                    data["updatedAt"] = ExpressionConverter.ConvertO(dataupdatedAt);
+                    data["updatedAt"] = ExpressionConverter.ConvertO(__workflow_dataupdatedAt);
                     datapropCount++;
                 }
 
-                if (dataarchived != null)
+                if (__workflow_dataarchived != null)
                 {
-                    if (dataarchived != null)
+                    if (__workflow_dataarchived != null)
                     {
-                        data["archived"] = ExpressionConverter.ConvertO(dataarchived);
+                        data["archived"] = ExpressionConverter.ConvertO(__workflow_dataarchived);
                         datapropCount++;
                     }
 
@@ -140,43 +162,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
                     datapropCount++;
                 }
 
-                if (dataarchivedAt != null)
+                if (__workflow_dataarchivedAt != null)
                 {
-                    data["archivedAt"] = ExpressionConverter.ConvertO(dataarchivedAt);
+                    data["archivedAt"] = ExpressionConverter.ConvertO(__workflow_dataarchivedAt);
                     datapropCount++;
                 }
 
-                if (datafieldGroups != null)
+                if (__workflow_datafieldGroups != null)
                 {
-                    data["fieldGroups"] = ExpressionConverter.ConvertO(datafieldGroups);
+                    data["fieldGroups"] = ExpressionConverter.ConvertO(__workflow_datafieldGroups);
                     datapropCount++;
                 }
 
                 var configurationObject = new JObject();
                 var configurationObjectpropCount = 0;
-                if (dataconfigurationlanguage != null)
+                if (__workflow_dataconfigurationlanguage != null)
                 {
-                    configurationObject["language"] = ExpressionConverter.ConvertO(dataconfigurationlanguage);
+                    configurationObject["language"] = ExpressionConverter.ConvertO(__workflow_dataconfigurationlanguage);
                     configurationObjectpropCount++;
                 }
 
-                if (dataconfigurationcloneable != null)
+                if (__workflow_dataconfigurationcloneable != null)
                 {
-                    configurationObject["cloneable"] = ExpressionConverter.ConvertO(dataconfigurationcloneable);
+                    configurationObject["cloneable"] = ExpressionConverter.ConvertO(__workflow_dataconfigurationcloneable);
                     configurationObjectpropCount++;
                 }
 
                 var postSubmitActionObject = new JObject();
                 var postSubmitActionObjectpropCount = 0;
-                if (dataconfigurationpostSubmitActiontype != null)
+                if (__workflow_dataconfigurationpostSubmitActiontype != null)
                 {
-                    postSubmitActionObject["type"] = ExpressionConverter.ConvertO(dataconfigurationpostSubmitActiontype);
+                    postSubmitActionObject["type"] = ExpressionConverter.ConvertO(__workflow_dataconfigurationpostSubmitActiontype);
                     postSubmitActionObjectpropCount++;
                 }
 
-                if (dataconfigurationpostSubmitActionvalue != null)
+                if (__workflow_dataconfigurationpostSubmitActionvalue != null)
                 {
-                    postSubmitActionObject["value"] = ExpressionConverter.ConvertO(dataconfigurationpostSubmitActionvalue);
+                    postSubmitActionObject["value"] = ExpressionConverter.ConvertO(__workflow_dataconfigurationpostSubmitActionvalue);
                     postSubmitActionObjectpropCount++;
                 }
 
@@ -186,51 +208,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
                     configurationObjectpropCount++;
                 }
 
-                if (dataconfigurationeditable != null)
+                if (__workflow_dataconfigurationeditable != null)
                 {
-                    configurationObject["editable"] = ExpressionConverter.ConvertO(dataconfigurationeditable);
+                    configurationObject["editable"] = ExpressionConverter.ConvertO(__workflow_dataconfigurationeditable);
                     configurationObjectpropCount++;
                 }
 
-                if (dataconfigurationarchivable != null)
+                if (__workflow_dataconfigurationarchivable != null)
                 {
-                    configurationObject["archivable"] = ExpressionConverter.ConvertO(dataconfigurationarchivable);
+                    configurationObject["archivable"] = ExpressionConverter.ConvertO(__workflow_dataconfigurationarchivable);
                     configurationObjectpropCount++;
                 }
 
-                if (dataconfigurationrecaptchaEnabled != null)
+                if (__workflow_dataconfigurationrecaptchaEnabled != null)
                 {
-                    configurationObject["recaptchaEnabled"] = ExpressionConverter.ConvertO(dataconfigurationrecaptchaEnabled);
+                    configurationObject["recaptchaEnabled"] = ExpressionConverter.ConvertO(__workflow_dataconfigurationrecaptchaEnabled);
                     configurationObjectpropCount++;
                 }
 
-                if (dataconfigurationnotifyContactOwner != null)
+                if (__workflow_dataconfigurationnotifyContactOwner != null)
                 {
-                    configurationObject["notifyContactOwner"] = ExpressionConverter.ConvertO(dataconfigurationnotifyContactOwner);
+                    configurationObject["notifyContactOwner"] = ExpressionConverter.ConvertO(__workflow_dataconfigurationnotifyContactOwner);
                     configurationObjectpropCount++;
                 }
 
-                if (dataconfigurationnotifyRecipients != null)
+                if (__workflow_dataconfigurationnotifyRecipients != null)
                 {
-                    configurationObject["notifyRecipients"] = ExpressionConverter.ConvertO(dataconfigurationnotifyRecipients);
+                    configurationObject["notifyRecipients"] = ExpressionConverter.ConvertO(__workflow_dataconfigurationnotifyRecipients);
                     configurationObjectpropCount++;
                 }
 
-                if (dataconfigurationcreateNewContactForNewEmail != null)
+                if (__workflow_dataconfigurationcreateNewContactForNewEmail != null)
                 {
-                    configurationObject["createNewContactForNewEmail"] = ExpressionConverter.ConvertO(dataconfigurationcreateNewContactForNewEmail);
+                    configurationObject["createNewContactForNewEmail"] = ExpressionConverter.ConvertO(__workflow_dataconfigurationcreateNewContactForNewEmail);
                     configurationObjectpropCount++;
                 }
 
-                if (dataconfigurationprePopulateKnownValues != null)
+                if (__workflow_dataconfigurationprePopulateKnownValues != null)
                 {
-                    configurationObject["prePopulateKnownValues"] = ExpressionConverter.ConvertO(dataconfigurationprePopulateKnownValues);
+                    configurationObject["prePopulateKnownValues"] = ExpressionConverter.ConvertO(__workflow_dataconfigurationprePopulateKnownValues);
                     configurationObjectpropCount++;
                 }
 
-                if (dataconfigurationallowLinkToResetKnownValues != null)
+                if (__workflow_dataconfigurationallowLinkToResetKnownValues != null)
                 {
-                    configurationObject["allowLinkToResetKnownValues"] = ExpressionConverter.ConvertO(dataconfigurationallowLinkToResetKnownValues);
+                    configurationObject["allowLinkToResetKnownValues"] = ExpressionConverter.ConvertO(__workflow_dataconfigurationallowLinkToResetKnownValues);
                     configurationObjectpropCount++;
                 }
 
@@ -242,95 +264,95 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
 
                 var displayOptionsObject = new JObject();
                 var displayOptionsObjectpropCount = 0;
-                if (datadisplayOptionsrenderRawHtml != null)
+                if (__workflow_datadisplayOptionsrenderRawHtml != null)
                 {
-                    displayOptionsObject["renderRawHtml"] = ExpressionConverter.ConvertO(datadisplayOptionsrenderRawHtml);
+                    displayOptionsObject["renderRawHtml"] = ExpressionConverter.ConvertO(__workflow_datadisplayOptionsrenderRawHtml);
                     displayOptionsObjectpropCount++;
                 }
 
-                if (datadisplayOptionstheme != null)
+                if (__workflow_datadisplayOptionstheme != null)
                 {
-                    displayOptionsObject["theme"] = ExpressionConverter.ConvertO(datadisplayOptionstheme);
+                    displayOptionsObject["theme"] = ExpressionConverter.ConvertO(__workflow_datadisplayOptionstheme);
                     displayOptionsObjectpropCount++;
                 }
 
-                if (datadisplayOptionssubmitButtonText != null)
+                if (__workflow_datadisplayOptionssubmitButtonText != null)
                 {
-                    displayOptionsObject["submitButtonText"] = ExpressionConverter.ConvertO(datadisplayOptionssubmitButtonText);
+                    displayOptionsObject["submitButtonText"] = ExpressionConverter.ConvertO(__workflow_datadisplayOptionssubmitButtonText);
                     displayOptionsObjectpropCount++;
                 }
 
                 var styleObject = new JObject();
                 var styleObjectpropCount = 0;
-                if (datadisplayOptionsstylefontFamily != null)
+                if (__workflow_datadisplayOptionsstylefontFamily != null)
                 {
-                    styleObject["fontFamily"] = ExpressionConverter.ConvertO(datadisplayOptionsstylefontFamily);
+                    styleObject["fontFamily"] = ExpressionConverter.ConvertO(__workflow_datadisplayOptionsstylefontFamily);
                     styleObjectpropCount++;
                 }
 
-                if (datadisplayOptionsstylebackgroundWidth != null)
+                if (__workflow_datadisplayOptionsstylebackgroundWidth != null)
                 {
-                    styleObject["backgroundWidth"] = ExpressionConverter.ConvertO(datadisplayOptionsstylebackgroundWidth);
+                    styleObject["backgroundWidth"] = ExpressionConverter.ConvertO(__workflow_datadisplayOptionsstylebackgroundWidth);
                     styleObjectpropCount++;
                 }
 
-                if (datadisplayOptionsstylelabelTextColor != null)
+                if (__workflow_datadisplayOptionsstylelabelTextColor != null)
                 {
-                    styleObject["labelTextColor"] = ExpressionConverter.ConvertO(datadisplayOptionsstylelabelTextColor);
+                    styleObject["labelTextColor"] = ExpressionConverter.ConvertO(__workflow_datadisplayOptionsstylelabelTextColor);
                     styleObjectpropCount++;
                 }
 
-                if (datadisplayOptionsstylelabelTextSize != null)
+                if (__workflow_datadisplayOptionsstylelabelTextSize != null)
                 {
-                    styleObject["labelTextSize"] = ExpressionConverter.ConvertO(datadisplayOptionsstylelabelTextSize);
+                    styleObject["labelTextSize"] = ExpressionConverter.ConvertO(__workflow_datadisplayOptionsstylelabelTextSize);
                     styleObjectpropCount++;
                 }
 
-                if (datadisplayOptionsstylehelpTextColor != null)
+                if (__workflow_datadisplayOptionsstylehelpTextColor != null)
                 {
-                    styleObject["helpTextColor"] = ExpressionConverter.ConvertO(datadisplayOptionsstylehelpTextColor);
+                    styleObject["helpTextColor"] = ExpressionConverter.ConvertO(__workflow_datadisplayOptionsstylehelpTextColor);
                     styleObjectpropCount++;
                 }
 
-                if (datadisplayOptionsstylehelpTextSize != null)
+                if (__workflow_datadisplayOptionsstylehelpTextSize != null)
                 {
-                    styleObject["helpTextSize"] = ExpressionConverter.ConvertO(datadisplayOptionsstylehelpTextSize);
+                    styleObject["helpTextSize"] = ExpressionConverter.ConvertO(__workflow_datadisplayOptionsstylehelpTextSize);
                     styleObjectpropCount++;
                 }
 
-                if (datadisplayOptionsstylelegalConsentTextColor != null)
+                if (__workflow_datadisplayOptionsstylelegalConsentTextColor != null)
                 {
-                    styleObject["legalConsentTextColor"] = ExpressionConverter.ConvertO(datadisplayOptionsstylelegalConsentTextColor);
+                    styleObject["legalConsentTextColor"] = ExpressionConverter.ConvertO(__workflow_datadisplayOptionsstylelegalConsentTextColor);
                     styleObjectpropCount++;
                 }
 
-                if (datadisplayOptionsstylelegalConsentTextSize != null)
+                if (__workflow_datadisplayOptionsstylelegalConsentTextSize != null)
                 {
-                    styleObject["legalConsentTextSize"] = ExpressionConverter.ConvertO(datadisplayOptionsstylelegalConsentTextSize);
+                    styleObject["legalConsentTextSize"] = ExpressionConverter.ConvertO(__workflow_datadisplayOptionsstylelegalConsentTextSize);
                     styleObjectpropCount++;
                 }
 
-                if (datadisplayOptionsstylesubmitColor != null)
+                if (__workflow_datadisplayOptionsstylesubmitColor != null)
                 {
-                    styleObject["submitColor"] = ExpressionConverter.ConvertO(datadisplayOptionsstylesubmitColor);
+                    styleObject["submitColor"] = ExpressionConverter.ConvertO(__workflow_datadisplayOptionsstylesubmitColor);
                     styleObjectpropCount++;
                 }
 
-                if (datadisplayOptionsstylesubmitAlignment != null)
+                if (__workflow_datadisplayOptionsstylesubmitAlignment != null)
                 {
-                    styleObject["submitAlignment"] = ExpressionConverter.ConvertO(datadisplayOptionsstylesubmitAlignment);
+                    styleObject["submitAlignment"] = ExpressionConverter.ConvertO(__workflow_datadisplayOptionsstylesubmitAlignment);
                     styleObjectpropCount++;
                 }
 
-                if (datadisplayOptionsstylesubmitFontColor != null)
+                if (__workflow_datadisplayOptionsstylesubmitFontColor != null)
                 {
-                    styleObject["submitFontColor"] = ExpressionConverter.ConvertO(datadisplayOptionsstylesubmitFontColor);
+                    styleObject["submitFontColor"] = ExpressionConverter.ConvertO(__workflow_datadisplayOptionsstylesubmitFontColor);
                     styleObjectpropCount++;
                 }
 
-                if (datadisplayOptionsstylesubmitSize != null)
+                if (__workflow_datadisplayOptionsstylesubmitSize != null)
                 {
-                    styleObject["submitSize"] = ExpressionConverter.ConvertO(datadisplayOptionsstylesubmitSize);
+                    styleObject["submitSize"] = ExpressionConverter.ConvertO(__workflow_datadisplayOptionsstylesubmitSize);
                     styleObjectpropCount++;
                 }
 
@@ -340,9 +362,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
                     displayOptionsObjectpropCount++;
                 }
 
-                if (datadisplayOptionscssClass != null)
+                if (__workflow_datadisplayOptionscssClass != null)
                 {
-                    displayOptionsObject["cssClass"] = ExpressionConverter.ConvertO(datadisplayOptionscssClass);
+                    displayOptionsObject["cssClass"] = ExpressionConverter.ConvertO(__workflow_datadisplayOptionscssClass);
                     displayOptionsObjectpropCount++;
                 }
 
@@ -362,43 +384,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
-        [WorkflowExpressionFactory(nameof(__BuildFormsRead))]
-        public IWorkflowAction FormsRead([WorkflowExpression] Func<string> formId, [WorkflowExpression] Func<bool> archived = null)
+        public IWorkflowAction FormsRead(Expression<Func<string>> formId, Expression<Func<bool>> archived = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildFormsRead(WorkflowExpression<string> formId, WorkflowExpression<bool> archived = null)
-        {
-            WorkflowExpression.Validate(formId, nameof(formId), required: true);
-            WorkflowExpression.Validate(archived, nameof(archived), required: false);
+            var __workflow_formId = formId == null ? null : WorkflowExpression.Compile(formId);
+            WorkflowExpression.Validate(__workflow_formId, nameof(formId), required: true);
+            var __workflow_archived = archived == null ? null : WorkflowExpression.Compile(archived);
+            WorkflowExpression.Validate(__workflow_archived, nameof(archived), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/marketing/v3/forms/{0}", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/marketing/v3/forms/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_formId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["archived"] = Convert.ToString(false);
-                if (archived != null)
-                    callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                if (__workflow_archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
-        [WorkflowExpressionFactory(nameof(__BuildFormsArchive))]
-        public IWorkflowAction FormsArchive([WorkflowExpression] Func<string> formId)
+        public IWorkflowAction FormsArchive(Expression<Func<string>> formId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildFormsArchive(WorkflowExpression<string> formId)
-        {
-            WorkflowExpression.Validate(formId, nameof(formId), required: true);
+            var __workflow_formId = formId == null ? null : WorkflowExpression.Compile(formId);
+            WorkflowExpression.Validate(__workflow_formId, nameof(formId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/marketing/v3/forms/{0}", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/marketing/v3/forms/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_formId, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -406,112 +417,142 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
-        [WorkflowExpressionFactory(nameof(__BuildFormsUpdate))]
-        public IWorkflowAction FormsUpdate([WorkflowExpression] Func<string> formId, [WorkflowExpression] Func<string> dataformType, [WorkflowExpression] Func<string> dataid, [WorkflowExpression] Func<string> datacreatedAt, [WorkflowExpression] Func<string> dataupdatedAt, [WorkflowExpression] Func<bool> dataarchived, [WorkflowExpression] Func<string> dataname = null, [WorkflowExpression] Func<string> dataarchivedAt = null, [WorkflowExpression] Func<datafieldGroupsInputItem[]> datafieldGroups = null, [WorkflowExpression] Func<string> dataconfigurationlanguage = null, [WorkflowExpression] Func<bool> dataconfigurationcloneable = null, [WorkflowExpression] Func<string> dataconfigurationpostSubmitActiontype = null, [WorkflowExpression] Func<string> dataconfigurationpostSubmitActionvalue = null, [WorkflowExpression] Func<bool> dataconfigurationeditable = null, [WorkflowExpression] Func<bool> dataconfigurationarchivable = null, [WorkflowExpression] Func<bool> dataconfigurationrecaptchaEnabled = null, [WorkflowExpression] Func<bool> dataconfigurationnotifyContactOwner = null, [WorkflowExpression] Func<string[]> dataconfigurationnotifyRecipients = null, [WorkflowExpression] Func<bool> dataconfigurationcreateNewContactForNewEmail = null, [WorkflowExpression] Func<bool> dataconfigurationprePopulateKnownValues = null, [WorkflowExpression] Func<bool> dataconfigurationallowLinkToResetKnownValues = null, [WorkflowExpression] Func<bool> datadisplayOptionsrenderRawHtml = null, [WorkflowExpression] Func<string> datadisplayOptionstheme = null, [WorkflowExpression] Func<string> datadisplayOptionssubmitButtonText = null, [WorkflowExpression] Func<string> datadisplayOptionsstylefontFamily = null, [WorkflowExpression] Func<string> datadisplayOptionsstylebackgroundWidth = null, [WorkflowExpression] Func<string> datadisplayOptionsstylelabelTextColor = null, [WorkflowExpression] Func<string> datadisplayOptionsstylelabelTextSize = null, [WorkflowExpression] Func<string> datadisplayOptionsstylehelpTextColor = null, [WorkflowExpression] Func<string> datadisplayOptionsstylehelpTextSize = null, [WorkflowExpression] Func<string> datadisplayOptionsstylelegalConsentTextColor = null, [WorkflowExpression] Func<string> datadisplayOptionsstylelegalConsentTextSize = null, [WorkflowExpression] Func<string> datadisplayOptionsstylesubmitColor = null, [WorkflowExpression] Func<string> datadisplayOptionsstylesubmitAlignment = null, [WorkflowExpression] Func<string> datadisplayOptionsstylesubmitFontColor = null, [WorkflowExpression] Func<string> datadisplayOptionsstylesubmitSize = null, [WorkflowExpression] Func<string> datadisplayOptionscssClass = null)
+        public IWorkflowAction FormsUpdate(Expression<Func<string>> formId, Expression<Func<string>> dataformType, Expression<Func<string>> dataid, Expression<Func<string>> datacreatedAt, Expression<Func<string>> dataupdatedAt, Expression<Func<bool>> dataarchived, Expression<Func<string>> dataname = null, Expression<Func<string>> dataarchivedAt = null, Expression<Func<datafieldGroupsInputItem[]>> datafieldGroups = null, Expression<Func<string>> dataconfigurationlanguage = null, Expression<Func<bool>> dataconfigurationcloneable = null, Expression<Func<string>> dataconfigurationpostSubmitActiontype = null, Expression<Func<string>> dataconfigurationpostSubmitActionvalue = null, Expression<Func<bool>> dataconfigurationeditable = null, Expression<Func<bool>> dataconfigurationarchivable = null, Expression<Func<bool>> dataconfigurationrecaptchaEnabled = null, Expression<Func<bool>> dataconfigurationnotifyContactOwner = null, Expression<Func<string[]>> dataconfigurationnotifyRecipients = null, Expression<Func<bool>> dataconfigurationcreateNewContactForNewEmail = null, Expression<Func<bool>> dataconfigurationprePopulateKnownValues = null, Expression<Func<bool>> dataconfigurationallowLinkToResetKnownValues = null, Expression<Func<bool>> datadisplayOptionsrenderRawHtml = null, Expression<Func<string>> datadisplayOptionstheme = null, Expression<Func<string>> datadisplayOptionssubmitButtonText = null, Expression<Func<string>> datadisplayOptionsstylefontFamily = null, Expression<Func<string>> datadisplayOptionsstylebackgroundWidth = null, Expression<Func<string>> datadisplayOptionsstylelabelTextColor = null, Expression<Func<string>> datadisplayOptionsstylelabelTextSize = null, Expression<Func<string>> datadisplayOptionsstylehelpTextColor = null, Expression<Func<string>> datadisplayOptionsstylehelpTextSize = null, Expression<Func<string>> datadisplayOptionsstylelegalConsentTextColor = null, Expression<Func<string>> datadisplayOptionsstylelegalConsentTextSize = null, Expression<Func<string>> datadisplayOptionsstylesubmitColor = null, Expression<Func<string>> datadisplayOptionsstylesubmitAlignment = null, Expression<Func<string>> datadisplayOptionsstylesubmitFontColor = null, Expression<Func<string>> datadisplayOptionsstylesubmitSize = null, Expression<Func<string>> datadisplayOptionscssClass = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildFormsUpdate(WorkflowExpression<string> formId, WorkflowExpression<string> dataformType, WorkflowExpression<string> dataid, WorkflowExpression<string> datacreatedAt, WorkflowExpression<string> dataupdatedAt, WorkflowExpression<bool> dataarchived, WorkflowExpression<string> dataname = null, WorkflowExpression<string> dataarchivedAt = null, WorkflowExpression<datafieldGroupsInputItem[]> datafieldGroups = null, WorkflowExpression<string> dataconfigurationlanguage = null, WorkflowExpression<bool> dataconfigurationcloneable = null, WorkflowExpression<string> dataconfigurationpostSubmitActiontype = null, WorkflowExpression<string> dataconfigurationpostSubmitActionvalue = null, WorkflowExpression<bool> dataconfigurationeditable = null, WorkflowExpression<bool> dataconfigurationarchivable = null, WorkflowExpression<bool> dataconfigurationrecaptchaEnabled = null, WorkflowExpression<bool> dataconfigurationnotifyContactOwner = null, WorkflowExpression<string[]> dataconfigurationnotifyRecipients = null, WorkflowExpression<bool> dataconfigurationcreateNewContactForNewEmail = null, WorkflowExpression<bool> dataconfigurationprePopulateKnownValues = null, WorkflowExpression<bool> dataconfigurationallowLinkToResetKnownValues = null, WorkflowExpression<bool> datadisplayOptionsrenderRawHtml = null, WorkflowExpression<string> datadisplayOptionstheme = null, WorkflowExpression<string> datadisplayOptionssubmitButtonText = null, WorkflowExpression<string> datadisplayOptionsstylefontFamily = null, WorkflowExpression<string> datadisplayOptionsstylebackgroundWidth = null, WorkflowExpression<string> datadisplayOptionsstylelabelTextColor = null, WorkflowExpression<string> datadisplayOptionsstylelabelTextSize = null, WorkflowExpression<string> datadisplayOptionsstylehelpTextColor = null, WorkflowExpression<string> datadisplayOptionsstylehelpTextSize = null, WorkflowExpression<string> datadisplayOptionsstylelegalConsentTextColor = null, WorkflowExpression<string> datadisplayOptionsstylelegalConsentTextSize = null, WorkflowExpression<string> datadisplayOptionsstylesubmitColor = null, WorkflowExpression<string> datadisplayOptionsstylesubmitAlignment = null, WorkflowExpression<string> datadisplayOptionsstylesubmitFontColor = null, WorkflowExpression<string> datadisplayOptionsstylesubmitSize = null, WorkflowExpression<string> datadisplayOptionscssClass = null)
-        {
-            WorkflowExpression.Validate(formId, nameof(formId), required: true);
-            WorkflowExpression.Validate(dataformType, nameof(dataformType), required: true);
-            WorkflowExpression.Validate(dataid, nameof(dataid), required: true);
-            WorkflowExpression.Validate(datacreatedAt, nameof(datacreatedAt), required: true);
-            WorkflowExpression.Validate(dataupdatedAt, nameof(dataupdatedAt), required: true);
-            WorkflowExpression.Validate(dataarchived, nameof(dataarchived), required: true);
-            WorkflowExpression.Validate(dataname, nameof(dataname), required: false);
-            WorkflowExpression.Validate(dataarchivedAt, nameof(dataarchivedAt), required: false);
-            WorkflowExpression.Validate(datafieldGroups, nameof(datafieldGroups), required: false);
-            WorkflowExpression.Validate(dataconfigurationlanguage, nameof(dataconfigurationlanguage), required: false);
-            WorkflowExpression.Validate(dataconfigurationcloneable, nameof(dataconfigurationcloneable), required: false);
-            WorkflowExpression.Validate(dataconfigurationpostSubmitActiontype, nameof(dataconfigurationpostSubmitActiontype), required: false);
-            WorkflowExpression.Validate(dataconfigurationpostSubmitActionvalue, nameof(dataconfigurationpostSubmitActionvalue), required: false);
-            WorkflowExpression.Validate(dataconfigurationeditable, nameof(dataconfigurationeditable), required: false);
-            WorkflowExpression.Validate(dataconfigurationarchivable, nameof(dataconfigurationarchivable), required: false);
-            WorkflowExpression.Validate(dataconfigurationrecaptchaEnabled, nameof(dataconfigurationrecaptchaEnabled), required: false);
-            WorkflowExpression.Validate(dataconfigurationnotifyContactOwner, nameof(dataconfigurationnotifyContactOwner), required: false);
-            WorkflowExpression.Validate(dataconfigurationnotifyRecipients, nameof(dataconfigurationnotifyRecipients), required: false);
-            WorkflowExpression.Validate(dataconfigurationcreateNewContactForNewEmail, nameof(dataconfigurationcreateNewContactForNewEmail), required: false);
-            WorkflowExpression.Validate(dataconfigurationprePopulateKnownValues, nameof(dataconfigurationprePopulateKnownValues), required: false);
-            WorkflowExpression.Validate(dataconfigurationallowLinkToResetKnownValues, nameof(dataconfigurationallowLinkToResetKnownValues), required: false);
-            WorkflowExpression.Validate(datadisplayOptionsrenderRawHtml, nameof(datadisplayOptionsrenderRawHtml), required: false);
-            WorkflowExpression.Validate(datadisplayOptionstheme, nameof(datadisplayOptionstheme), required: false);
-            WorkflowExpression.Validate(datadisplayOptionssubmitButtonText, nameof(datadisplayOptionssubmitButtonText), required: false);
-            WorkflowExpression.Validate(datadisplayOptionsstylefontFamily, nameof(datadisplayOptionsstylefontFamily), required: false);
-            WorkflowExpression.Validate(datadisplayOptionsstylebackgroundWidth, nameof(datadisplayOptionsstylebackgroundWidth), required: false);
-            WorkflowExpression.Validate(datadisplayOptionsstylelabelTextColor, nameof(datadisplayOptionsstylelabelTextColor), required: false);
-            WorkflowExpression.Validate(datadisplayOptionsstylelabelTextSize, nameof(datadisplayOptionsstylelabelTextSize), required: false);
-            WorkflowExpression.Validate(datadisplayOptionsstylehelpTextColor, nameof(datadisplayOptionsstylehelpTextColor), required: false);
-            WorkflowExpression.Validate(datadisplayOptionsstylehelpTextSize, nameof(datadisplayOptionsstylehelpTextSize), required: false);
-            WorkflowExpression.Validate(datadisplayOptionsstylelegalConsentTextColor, nameof(datadisplayOptionsstylelegalConsentTextColor), required: false);
-            WorkflowExpression.Validate(datadisplayOptionsstylelegalConsentTextSize, nameof(datadisplayOptionsstylelegalConsentTextSize), required: false);
-            WorkflowExpression.Validate(datadisplayOptionsstylesubmitColor, nameof(datadisplayOptionsstylesubmitColor), required: false);
-            WorkflowExpression.Validate(datadisplayOptionsstylesubmitAlignment, nameof(datadisplayOptionsstylesubmitAlignment), required: false);
-            WorkflowExpression.Validate(datadisplayOptionsstylesubmitFontColor, nameof(datadisplayOptionsstylesubmitFontColor), required: false);
-            WorkflowExpression.Validate(datadisplayOptionsstylesubmitSize, nameof(datadisplayOptionsstylesubmitSize), required: false);
-            WorkflowExpression.Validate(datadisplayOptionscssClass, nameof(datadisplayOptionscssClass), required: false);
+            var __workflow_formId = formId == null ? null : WorkflowExpression.Compile(formId);
+            WorkflowExpression.Validate(__workflow_formId, nameof(formId), required: true);
+            var __workflow_dataformType = dataformType == null ? null : WorkflowExpression.Compile(dataformType);
+            WorkflowExpression.Validate(__workflow_dataformType, nameof(dataformType), required: true);
+            var __workflow_dataid = dataid == null ? null : WorkflowExpression.Compile(dataid);
+            WorkflowExpression.Validate(__workflow_dataid, nameof(dataid), required: true);
+            var __workflow_datacreatedAt = datacreatedAt == null ? null : WorkflowExpression.Compile(datacreatedAt);
+            WorkflowExpression.Validate(__workflow_datacreatedAt, nameof(datacreatedAt), required: true);
+            var __workflow_dataupdatedAt = dataupdatedAt == null ? null : WorkflowExpression.Compile(dataupdatedAt);
+            WorkflowExpression.Validate(__workflow_dataupdatedAt, nameof(dataupdatedAt), required: true);
+            var __workflow_dataarchived = dataarchived == null ? null : WorkflowExpression.Compile(dataarchived);
+            WorkflowExpression.Validate(__workflow_dataarchived, nameof(dataarchived), required: true);
+            var __workflow_dataname = dataname == null ? null : WorkflowExpression.Compile(dataname);
+            WorkflowExpression.Validate(__workflow_dataname, nameof(dataname), required: false);
+            var __workflow_dataarchivedAt = dataarchivedAt == null ? null : WorkflowExpression.Compile(dataarchivedAt);
+            WorkflowExpression.Validate(__workflow_dataarchivedAt, nameof(dataarchivedAt), required: false);
+            var __workflow_datafieldGroups = datafieldGroups == null ? null : WorkflowExpression.Compile(datafieldGroups);
+            WorkflowExpression.Validate(__workflow_datafieldGroups, nameof(datafieldGroups), required: false);
+            var __workflow_dataconfigurationlanguage = dataconfigurationlanguage == null ? null : WorkflowExpression.Compile(dataconfigurationlanguage);
+            WorkflowExpression.Validate(__workflow_dataconfigurationlanguage, nameof(dataconfigurationlanguage), required: false);
+            var __workflow_dataconfigurationcloneable = dataconfigurationcloneable == null ? null : WorkflowExpression.Compile(dataconfigurationcloneable);
+            WorkflowExpression.Validate(__workflow_dataconfigurationcloneable, nameof(dataconfigurationcloneable), required: false);
+            var __workflow_dataconfigurationpostSubmitActiontype = dataconfigurationpostSubmitActiontype == null ? null : WorkflowExpression.Compile(dataconfigurationpostSubmitActiontype);
+            WorkflowExpression.Validate(__workflow_dataconfigurationpostSubmitActiontype, nameof(dataconfigurationpostSubmitActiontype), required: false);
+            var __workflow_dataconfigurationpostSubmitActionvalue = dataconfigurationpostSubmitActionvalue == null ? null : WorkflowExpression.Compile(dataconfigurationpostSubmitActionvalue);
+            WorkflowExpression.Validate(__workflow_dataconfigurationpostSubmitActionvalue, nameof(dataconfigurationpostSubmitActionvalue), required: false);
+            var __workflow_dataconfigurationeditable = dataconfigurationeditable == null ? null : WorkflowExpression.Compile(dataconfigurationeditable);
+            WorkflowExpression.Validate(__workflow_dataconfigurationeditable, nameof(dataconfigurationeditable), required: false);
+            var __workflow_dataconfigurationarchivable = dataconfigurationarchivable == null ? null : WorkflowExpression.Compile(dataconfigurationarchivable);
+            WorkflowExpression.Validate(__workflow_dataconfigurationarchivable, nameof(dataconfigurationarchivable), required: false);
+            var __workflow_dataconfigurationrecaptchaEnabled = dataconfigurationrecaptchaEnabled == null ? null : WorkflowExpression.Compile(dataconfigurationrecaptchaEnabled);
+            WorkflowExpression.Validate(__workflow_dataconfigurationrecaptchaEnabled, nameof(dataconfigurationrecaptchaEnabled), required: false);
+            var __workflow_dataconfigurationnotifyContactOwner = dataconfigurationnotifyContactOwner == null ? null : WorkflowExpression.Compile(dataconfigurationnotifyContactOwner);
+            WorkflowExpression.Validate(__workflow_dataconfigurationnotifyContactOwner, nameof(dataconfigurationnotifyContactOwner), required: false);
+            var __workflow_dataconfigurationnotifyRecipients = dataconfigurationnotifyRecipients == null ? null : WorkflowExpression.Compile(dataconfigurationnotifyRecipients);
+            WorkflowExpression.Validate(__workflow_dataconfigurationnotifyRecipients, nameof(dataconfigurationnotifyRecipients), required: false);
+            var __workflow_dataconfigurationcreateNewContactForNewEmail = dataconfigurationcreateNewContactForNewEmail == null ? null : WorkflowExpression.Compile(dataconfigurationcreateNewContactForNewEmail);
+            WorkflowExpression.Validate(__workflow_dataconfigurationcreateNewContactForNewEmail, nameof(dataconfigurationcreateNewContactForNewEmail), required: false);
+            var __workflow_dataconfigurationprePopulateKnownValues = dataconfigurationprePopulateKnownValues == null ? null : WorkflowExpression.Compile(dataconfigurationprePopulateKnownValues);
+            WorkflowExpression.Validate(__workflow_dataconfigurationprePopulateKnownValues, nameof(dataconfigurationprePopulateKnownValues), required: false);
+            var __workflow_dataconfigurationallowLinkToResetKnownValues = dataconfigurationallowLinkToResetKnownValues == null ? null : WorkflowExpression.Compile(dataconfigurationallowLinkToResetKnownValues);
+            WorkflowExpression.Validate(__workflow_dataconfigurationallowLinkToResetKnownValues, nameof(dataconfigurationallowLinkToResetKnownValues), required: false);
+            var __workflow_datadisplayOptionsrenderRawHtml = datadisplayOptionsrenderRawHtml == null ? null : WorkflowExpression.Compile(datadisplayOptionsrenderRawHtml);
+            WorkflowExpression.Validate(__workflow_datadisplayOptionsrenderRawHtml, nameof(datadisplayOptionsrenderRawHtml), required: false);
+            var __workflow_datadisplayOptionstheme = datadisplayOptionstheme == null ? null : WorkflowExpression.Compile(datadisplayOptionstheme);
+            WorkflowExpression.Validate(__workflow_datadisplayOptionstheme, nameof(datadisplayOptionstheme), required: false);
+            var __workflow_datadisplayOptionssubmitButtonText = datadisplayOptionssubmitButtonText == null ? null : WorkflowExpression.Compile(datadisplayOptionssubmitButtonText);
+            WorkflowExpression.Validate(__workflow_datadisplayOptionssubmitButtonText, nameof(datadisplayOptionssubmitButtonText), required: false);
+            var __workflow_datadisplayOptionsstylefontFamily = datadisplayOptionsstylefontFamily == null ? null : WorkflowExpression.Compile(datadisplayOptionsstylefontFamily);
+            WorkflowExpression.Validate(__workflow_datadisplayOptionsstylefontFamily, nameof(datadisplayOptionsstylefontFamily), required: false);
+            var __workflow_datadisplayOptionsstylebackgroundWidth = datadisplayOptionsstylebackgroundWidth == null ? null : WorkflowExpression.Compile(datadisplayOptionsstylebackgroundWidth);
+            WorkflowExpression.Validate(__workflow_datadisplayOptionsstylebackgroundWidth, nameof(datadisplayOptionsstylebackgroundWidth), required: false);
+            var __workflow_datadisplayOptionsstylelabelTextColor = datadisplayOptionsstylelabelTextColor == null ? null : WorkflowExpression.Compile(datadisplayOptionsstylelabelTextColor);
+            WorkflowExpression.Validate(__workflow_datadisplayOptionsstylelabelTextColor, nameof(datadisplayOptionsstylelabelTextColor), required: false);
+            var __workflow_datadisplayOptionsstylelabelTextSize = datadisplayOptionsstylelabelTextSize == null ? null : WorkflowExpression.Compile(datadisplayOptionsstylelabelTextSize);
+            WorkflowExpression.Validate(__workflow_datadisplayOptionsstylelabelTextSize, nameof(datadisplayOptionsstylelabelTextSize), required: false);
+            var __workflow_datadisplayOptionsstylehelpTextColor = datadisplayOptionsstylehelpTextColor == null ? null : WorkflowExpression.Compile(datadisplayOptionsstylehelpTextColor);
+            WorkflowExpression.Validate(__workflow_datadisplayOptionsstylehelpTextColor, nameof(datadisplayOptionsstylehelpTextColor), required: false);
+            var __workflow_datadisplayOptionsstylehelpTextSize = datadisplayOptionsstylehelpTextSize == null ? null : WorkflowExpression.Compile(datadisplayOptionsstylehelpTextSize);
+            WorkflowExpression.Validate(__workflow_datadisplayOptionsstylehelpTextSize, nameof(datadisplayOptionsstylehelpTextSize), required: false);
+            var __workflow_datadisplayOptionsstylelegalConsentTextColor = datadisplayOptionsstylelegalConsentTextColor == null ? null : WorkflowExpression.Compile(datadisplayOptionsstylelegalConsentTextColor);
+            WorkflowExpression.Validate(__workflow_datadisplayOptionsstylelegalConsentTextColor, nameof(datadisplayOptionsstylelegalConsentTextColor), required: false);
+            var __workflow_datadisplayOptionsstylelegalConsentTextSize = datadisplayOptionsstylelegalConsentTextSize == null ? null : WorkflowExpression.Compile(datadisplayOptionsstylelegalConsentTextSize);
+            WorkflowExpression.Validate(__workflow_datadisplayOptionsstylelegalConsentTextSize, nameof(datadisplayOptionsstylelegalConsentTextSize), required: false);
+            var __workflow_datadisplayOptionsstylesubmitColor = datadisplayOptionsstylesubmitColor == null ? null : WorkflowExpression.Compile(datadisplayOptionsstylesubmitColor);
+            WorkflowExpression.Validate(__workflow_datadisplayOptionsstylesubmitColor, nameof(datadisplayOptionsstylesubmitColor), required: false);
+            var __workflow_datadisplayOptionsstylesubmitAlignment = datadisplayOptionsstylesubmitAlignment == null ? null : WorkflowExpression.Compile(datadisplayOptionsstylesubmitAlignment);
+            WorkflowExpression.Validate(__workflow_datadisplayOptionsstylesubmitAlignment, nameof(datadisplayOptionsstylesubmitAlignment), required: false);
+            var __workflow_datadisplayOptionsstylesubmitFontColor = datadisplayOptionsstylesubmitFontColor == null ? null : WorkflowExpression.Compile(datadisplayOptionsstylesubmitFontColor);
+            WorkflowExpression.Validate(__workflow_datadisplayOptionsstylesubmitFontColor, nameof(datadisplayOptionsstylesubmitFontColor), required: false);
+            var __workflow_datadisplayOptionsstylesubmitSize = datadisplayOptionsstylesubmitSize == null ? null : WorkflowExpression.Compile(datadisplayOptionsstylesubmitSize);
+            WorkflowExpression.Validate(__workflow_datadisplayOptionsstylesubmitSize, nameof(datadisplayOptionsstylesubmitSize), required: false);
+            var __workflow_datadisplayOptionscssClass = datadisplayOptionscssClass == null ? null : WorkflowExpression.Compile(datadisplayOptionscssClass);
+            WorkflowExpression.Validate(__workflow_datadisplayOptionscssClass, nameof(datadisplayOptionscssClass), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/marketing/v3/forms/{0}", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/marketing/v3/forms/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_formId, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var data = new JObject();
                 var datapropCount = 0;
                 datapropCount++;
-                data["formType"] = ExpressionConverter.ConvertO(dataformType);
+                data["formType"] = ExpressionConverter.ConvertO(__workflow_dataformType);
                 datapropCount++;
-                data["id"] = ExpressionConverter.ConvertO(dataid);
-                if (dataname != null)
+                data["id"] = ExpressionConverter.ConvertO(__workflow_dataid);
+                if (__workflow_dataname != null)
                 {
-                    data["name"] = ExpressionConverter.ConvertO(dataname);
+                    data["name"] = ExpressionConverter.ConvertO(__workflow_dataname);
                     datapropCount++;
                 }
 
                 datapropCount++;
-                data["createdAt"] = ExpressionConverter.ConvertO(datacreatedAt);
+                data["createdAt"] = ExpressionConverter.ConvertO(__workflow_datacreatedAt);
                 datapropCount++;
-                data["updatedAt"] = ExpressionConverter.ConvertO(dataupdatedAt);
+                data["updatedAt"] = ExpressionConverter.ConvertO(__workflow_dataupdatedAt);
                 datapropCount++;
-                data["archived"] = ExpressionConverter.ConvertO(dataarchived);
-                if (dataarchivedAt != null)
+                data["archived"] = ExpressionConverter.ConvertO(__workflow_dataarchived);
+                if (__workflow_dataarchivedAt != null)
                 {
-                    data["archivedAt"] = ExpressionConverter.ConvertO(dataarchivedAt);
+                    data["archivedAt"] = ExpressionConverter.ConvertO(__workflow_dataarchivedAt);
                     datapropCount++;
                 }
 
-                if (datafieldGroups != null)
+                if (__workflow_datafieldGroups != null)
                 {
-                    data["fieldGroups"] = ExpressionConverter.ConvertO(datafieldGroups);
+                    data["fieldGroups"] = ExpressionConverter.ConvertO(__workflow_datafieldGroups);
                     datapropCount++;
                 }
 
                 var configurationObject = new JObject();
                 var configurationObjectpropCount = 0;
-                if (dataconfigurationlanguage != null)
+                if (__workflow_dataconfigurationlanguage != null)
                 {
-                    configurationObject["language"] = ExpressionConverter.ConvertO(dataconfigurationlanguage);
+                    configurationObject["language"] = ExpressionConverter.ConvertO(__workflow_dataconfigurationlanguage);
                     configurationObjectpropCount++;
                 }
 
-                if (dataconfigurationcloneable != null)
+                if (__workflow_dataconfigurationcloneable != null)
                 {
-                    configurationObject["cloneable"] = ExpressionConverter.ConvertO(dataconfigurationcloneable);
+                    configurationObject["cloneable"] = ExpressionConverter.ConvertO(__workflow_dataconfigurationcloneable);
                     configurationObjectpropCount++;
                 }
 
                 var postSubmitActionObject = new JObject();
                 var postSubmitActionObjectpropCount = 0;
-                if (dataconfigurationpostSubmitActiontype != null)
+                if (__workflow_dataconfigurationpostSubmitActiontype != null)
                 {
-                    postSubmitActionObject["type"] = ExpressionConverter.ConvertO(dataconfigurationpostSubmitActiontype);
+                    postSubmitActionObject["type"] = ExpressionConverter.ConvertO(__workflow_dataconfigurationpostSubmitActiontype);
                     postSubmitActionObjectpropCount++;
                 }
 
-                if (dataconfigurationpostSubmitActionvalue != null)
+                if (__workflow_dataconfigurationpostSubmitActionvalue != null)
                 {
-                    postSubmitActionObject["value"] = ExpressionConverter.ConvertO(dataconfigurationpostSubmitActionvalue);
+                    postSubmitActionObject["value"] = ExpressionConverter.ConvertO(__workflow_dataconfigurationpostSubmitActionvalue);
                     postSubmitActionObjectpropCount++;
                 }
 
@@ -521,51 +562,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
                     configurationObjectpropCount++;
                 }
 
-                if (dataconfigurationeditable != null)
+                if (__workflow_dataconfigurationeditable != null)
                 {
-                    configurationObject["editable"] = ExpressionConverter.ConvertO(dataconfigurationeditable);
+                    configurationObject["editable"] = ExpressionConverter.ConvertO(__workflow_dataconfigurationeditable);
                     configurationObjectpropCount++;
                 }
 
-                if (dataconfigurationarchivable != null)
+                if (__workflow_dataconfigurationarchivable != null)
                 {
-                    configurationObject["archivable"] = ExpressionConverter.ConvertO(dataconfigurationarchivable);
+                    configurationObject["archivable"] = ExpressionConverter.ConvertO(__workflow_dataconfigurationarchivable);
                     configurationObjectpropCount++;
                 }
 
-                if (dataconfigurationrecaptchaEnabled != null)
+                if (__workflow_dataconfigurationrecaptchaEnabled != null)
                 {
-                    configurationObject["recaptchaEnabled"] = ExpressionConverter.ConvertO(dataconfigurationrecaptchaEnabled);
+                    configurationObject["recaptchaEnabled"] = ExpressionConverter.ConvertO(__workflow_dataconfigurationrecaptchaEnabled);
                     configurationObjectpropCount++;
                 }
 
-                if (dataconfigurationnotifyContactOwner != null)
+                if (__workflow_dataconfigurationnotifyContactOwner != null)
                 {
-                    configurationObject["notifyContactOwner"] = ExpressionConverter.ConvertO(dataconfigurationnotifyContactOwner);
+                    configurationObject["notifyContactOwner"] = ExpressionConverter.ConvertO(__workflow_dataconfigurationnotifyContactOwner);
                     configurationObjectpropCount++;
                 }
 
-                if (dataconfigurationnotifyRecipients != null)
+                if (__workflow_dataconfigurationnotifyRecipients != null)
                 {
-                    configurationObject["notifyRecipients"] = ExpressionConverter.ConvertO(dataconfigurationnotifyRecipients);
+                    configurationObject["notifyRecipients"] = ExpressionConverter.ConvertO(__workflow_dataconfigurationnotifyRecipients);
                     configurationObjectpropCount++;
                 }
 
-                if (dataconfigurationcreateNewContactForNewEmail != null)
+                if (__workflow_dataconfigurationcreateNewContactForNewEmail != null)
                 {
-                    configurationObject["createNewContactForNewEmail"] = ExpressionConverter.ConvertO(dataconfigurationcreateNewContactForNewEmail);
+                    configurationObject["createNewContactForNewEmail"] = ExpressionConverter.ConvertO(__workflow_dataconfigurationcreateNewContactForNewEmail);
                     configurationObjectpropCount++;
                 }
 
-                if (dataconfigurationprePopulateKnownValues != null)
+                if (__workflow_dataconfigurationprePopulateKnownValues != null)
                 {
-                    configurationObject["prePopulateKnownValues"] = ExpressionConverter.ConvertO(dataconfigurationprePopulateKnownValues);
+                    configurationObject["prePopulateKnownValues"] = ExpressionConverter.ConvertO(__workflow_dataconfigurationprePopulateKnownValues);
                     configurationObjectpropCount++;
                 }
 
-                if (dataconfigurationallowLinkToResetKnownValues != null)
+                if (__workflow_dataconfigurationallowLinkToResetKnownValues != null)
                 {
-                    configurationObject["allowLinkToResetKnownValues"] = ExpressionConverter.ConvertO(dataconfigurationallowLinkToResetKnownValues);
+                    configurationObject["allowLinkToResetKnownValues"] = ExpressionConverter.ConvertO(__workflow_dataconfigurationallowLinkToResetKnownValues);
                     configurationObjectpropCount++;
                 }
 
@@ -577,95 +618,95 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
 
                 var displayOptionsObject = new JObject();
                 var displayOptionsObjectpropCount = 0;
-                if (datadisplayOptionsrenderRawHtml != null)
+                if (__workflow_datadisplayOptionsrenderRawHtml != null)
                 {
-                    displayOptionsObject["renderRawHtml"] = ExpressionConverter.ConvertO(datadisplayOptionsrenderRawHtml);
+                    displayOptionsObject["renderRawHtml"] = ExpressionConverter.ConvertO(__workflow_datadisplayOptionsrenderRawHtml);
                     displayOptionsObjectpropCount++;
                 }
 
-                if (datadisplayOptionstheme != null)
+                if (__workflow_datadisplayOptionstheme != null)
                 {
-                    displayOptionsObject["theme"] = ExpressionConverter.ConvertO(datadisplayOptionstheme);
+                    displayOptionsObject["theme"] = ExpressionConverter.ConvertO(__workflow_datadisplayOptionstheme);
                     displayOptionsObjectpropCount++;
                 }
 
-                if (datadisplayOptionssubmitButtonText != null)
+                if (__workflow_datadisplayOptionssubmitButtonText != null)
                 {
-                    displayOptionsObject["submitButtonText"] = ExpressionConverter.ConvertO(datadisplayOptionssubmitButtonText);
+                    displayOptionsObject["submitButtonText"] = ExpressionConverter.ConvertO(__workflow_datadisplayOptionssubmitButtonText);
                     displayOptionsObjectpropCount++;
                 }
 
                 var styleObject = new JObject();
                 var styleObjectpropCount = 0;
-                if (datadisplayOptionsstylefontFamily != null)
+                if (__workflow_datadisplayOptionsstylefontFamily != null)
                 {
-                    styleObject["fontFamily"] = ExpressionConverter.ConvertO(datadisplayOptionsstylefontFamily);
+                    styleObject["fontFamily"] = ExpressionConverter.ConvertO(__workflow_datadisplayOptionsstylefontFamily);
                     styleObjectpropCount++;
                 }
 
-                if (datadisplayOptionsstylebackgroundWidth != null)
+                if (__workflow_datadisplayOptionsstylebackgroundWidth != null)
                 {
-                    styleObject["backgroundWidth"] = ExpressionConverter.ConvertO(datadisplayOptionsstylebackgroundWidth);
+                    styleObject["backgroundWidth"] = ExpressionConverter.ConvertO(__workflow_datadisplayOptionsstylebackgroundWidth);
                     styleObjectpropCount++;
                 }
 
-                if (datadisplayOptionsstylelabelTextColor != null)
+                if (__workflow_datadisplayOptionsstylelabelTextColor != null)
                 {
-                    styleObject["labelTextColor"] = ExpressionConverter.ConvertO(datadisplayOptionsstylelabelTextColor);
+                    styleObject["labelTextColor"] = ExpressionConverter.ConvertO(__workflow_datadisplayOptionsstylelabelTextColor);
                     styleObjectpropCount++;
                 }
 
-                if (datadisplayOptionsstylelabelTextSize != null)
+                if (__workflow_datadisplayOptionsstylelabelTextSize != null)
                 {
-                    styleObject["labelTextSize"] = ExpressionConverter.ConvertO(datadisplayOptionsstylelabelTextSize);
+                    styleObject["labelTextSize"] = ExpressionConverter.ConvertO(__workflow_datadisplayOptionsstylelabelTextSize);
                     styleObjectpropCount++;
                 }
 
-                if (datadisplayOptionsstylehelpTextColor != null)
+                if (__workflow_datadisplayOptionsstylehelpTextColor != null)
                 {
-                    styleObject["helpTextColor"] = ExpressionConverter.ConvertO(datadisplayOptionsstylehelpTextColor);
+                    styleObject["helpTextColor"] = ExpressionConverter.ConvertO(__workflow_datadisplayOptionsstylehelpTextColor);
                     styleObjectpropCount++;
                 }
 
-                if (datadisplayOptionsstylehelpTextSize != null)
+                if (__workflow_datadisplayOptionsstylehelpTextSize != null)
                 {
-                    styleObject["helpTextSize"] = ExpressionConverter.ConvertO(datadisplayOptionsstylehelpTextSize);
+                    styleObject["helpTextSize"] = ExpressionConverter.ConvertO(__workflow_datadisplayOptionsstylehelpTextSize);
                     styleObjectpropCount++;
                 }
 
-                if (datadisplayOptionsstylelegalConsentTextColor != null)
+                if (__workflow_datadisplayOptionsstylelegalConsentTextColor != null)
                 {
-                    styleObject["legalConsentTextColor"] = ExpressionConverter.ConvertO(datadisplayOptionsstylelegalConsentTextColor);
+                    styleObject["legalConsentTextColor"] = ExpressionConverter.ConvertO(__workflow_datadisplayOptionsstylelegalConsentTextColor);
                     styleObjectpropCount++;
                 }
 
-                if (datadisplayOptionsstylelegalConsentTextSize != null)
+                if (__workflow_datadisplayOptionsstylelegalConsentTextSize != null)
                 {
-                    styleObject["legalConsentTextSize"] = ExpressionConverter.ConvertO(datadisplayOptionsstylelegalConsentTextSize);
+                    styleObject["legalConsentTextSize"] = ExpressionConverter.ConvertO(__workflow_datadisplayOptionsstylelegalConsentTextSize);
                     styleObjectpropCount++;
                 }
 
-                if (datadisplayOptionsstylesubmitColor != null)
+                if (__workflow_datadisplayOptionsstylesubmitColor != null)
                 {
-                    styleObject["submitColor"] = ExpressionConverter.ConvertO(datadisplayOptionsstylesubmitColor);
+                    styleObject["submitColor"] = ExpressionConverter.ConvertO(__workflow_datadisplayOptionsstylesubmitColor);
                     styleObjectpropCount++;
                 }
 
-                if (datadisplayOptionsstylesubmitAlignment != null)
+                if (__workflow_datadisplayOptionsstylesubmitAlignment != null)
                 {
-                    styleObject["submitAlignment"] = ExpressionConverter.ConvertO(datadisplayOptionsstylesubmitAlignment);
+                    styleObject["submitAlignment"] = ExpressionConverter.ConvertO(__workflow_datadisplayOptionsstylesubmitAlignment);
                     styleObjectpropCount++;
                 }
 
-                if (datadisplayOptionsstylesubmitFontColor != null)
+                if (__workflow_datadisplayOptionsstylesubmitFontColor != null)
                 {
-                    styleObject["submitFontColor"] = ExpressionConverter.ConvertO(datadisplayOptionsstylesubmitFontColor);
+                    styleObject["submitFontColor"] = ExpressionConverter.ConvertO(__workflow_datadisplayOptionsstylesubmitFontColor);
                     styleObjectpropCount++;
                 }
 
-                if (datadisplayOptionsstylesubmitSize != null)
+                if (__workflow_datadisplayOptionsstylesubmitSize != null)
                 {
-                    styleObject["submitSize"] = ExpressionConverter.ConvertO(datadisplayOptionsstylesubmitSize);
+                    styleObject["submitSize"] = ExpressionConverter.ConvertO(__workflow_datadisplayOptionsstylesubmitSize);
                     styleObjectpropCount++;
                 }
 
@@ -675,9 +716,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
                     displayOptionsObjectpropCount++;
                 }
 
-                if (datadisplayOptionscssClass != null)
+                if (__workflow_datadisplayOptionscssClass != null)
                 {
-                    displayOptionsObject["cssClass"] = ExpressionConverter.ConvertO(datadisplayOptionscssClass);
+                    displayOptionsObject["cssClass"] = ExpressionConverter.ConvertO(__workflow_datadisplayOptionscssClass);
                     displayOptionsObjectpropCount++;
                 }
 
@@ -697,128 +738,123 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
-        [WorkflowExpressionFactory(nameof(__BuildMarketingEventRead))]
-        public IWorkflowAction MarketingEventRead([WorkflowExpression] Func<string> externalEventId, [WorkflowExpression] Func<string> externalAccountId)
+        public IWorkflowAction MarketingEventRead(Expression<Func<string>> externalEventId, Expression<Func<string>> externalAccountId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildMarketingEventRead(WorkflowExpression<string> externalEventId, WorkflowExpression<string> externalAccountId)
-        {
-            WorkflowExpression.Validate(externalEventId, nameof(externalEventId), required: true);
-            WorkflowExpression.Validate(externalAccountId, nameof(externalAccountId), required: true);
+            var __workflow_externalEventId = externalEventId == null ? null : WorkflowExpression.Compile(externalEventId);
+            WorkflowExpression.Validate(__workflow_externalEventId, nameof(externalEventId), required: true);
+            var __workflow_externalAccountId = externalAccountId == null ? null : WorkflowExpression.Compile(externalAccountId);
+            WorkflowExpression.Validate(__workflow_externalAccountId, nameof(externalAccountId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/marketing/v3/marketing-events-beta/events/{0}", ExpressionConverter.ConvertWithUrlEncoding(externalEventId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/marketing/v3/marketing-events-beta/events/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_externalEventId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["externalAccountId"] = ExpressionConverter.Convert(externalAccountId);
+                callPayload.Queries["externalAccountId"] = ExpressionConverter.Convert(__workflow_externalAccountId);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
-        [WorkflowExpressionFactory(nameof(__BuildMarketingEventsArchive))]
-        public IWorkflowAction MarketingEventsArchive([WorkflowExpression] Func<string> externalEventId, [WorkflowExpression] Func<string> externalAccountId)
+        public IWorkflowAction MarketingEventsArchive(Expression<Func<string>> externalEventId, Expression<Func<string>> externalAccountId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildMarketingEventsArchive(WorkflowExpression<string> externalEventId, WorkflowExpression<string> externalAccountId)
-        {
-            WorkflowExpression.Validate(externalEventId, nameof(externalEventId), required: true);
-            WorkflowExpression.Validate(externalAccountId, nameof(externalAccountId), required: true);
+            var __workflow_externalEventId = externalEventId == null ? null : WorkflowExpression.Compile(externalEventId);
+            WorkflowExpression.Validate(__workflow_externalEventId, nameof(externalEventId), required: true);
+            var __workflow_externalAccountId = externalAccountId == null ? null : WorkflowExpression.Compile(externalAccountId);
+            WorkflowExpression.Validate(__workflow_externalAccountId, nameof(externalAccountId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/marketing/v3/marketing-events-beta/events/{0}", ExpressionConverter.ConvertWithUrlEncoding(externalEventId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/marketing/v3/marketing-events-beta/events/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_externalEventId, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["externalAccountId"] = ExpressionConverter.Convert(externalAccountId);
+                callPayload.Queries["externalAccountId"] = ExpressionConverter.Convert(__workflow_externalAccountId);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
-        [WorkflowExpressionFactory(nameof(__BuildMarketingEventsUpdateCreateOrUpdate))]
-        public IWorkflowAction MarketingEventsUpdateCreateOrUpdate([WorkflowExpression] Func<string> externalEventId, [WorkflowExpression] Func<string> dataeventName, [WorkflowExpression] Func<string> dataeventOrganizer, [WorkflowExpression] Func<string> dataexternalAccountId, [WorkflowExpression] Func<string> dataexternalEventId, [WorkflowExpression] Func<dataeventTypeInput> dataeventType = null, [WorkflowExpression] Func<string> datastartDateTime = null, [WorkflowExpression] Func<string> dataendDateTime = null, [WorkflowExpression] Func<string> dataeventDescription = null, [WorkflowExpression] Func<string> dataeventUrl = null, [WorkflowExpression] Func<bool> dataeventCancelled = null, [WorkflowExpression] Func<datacustomPropertiesInputItem[]> datacustomProperties = null)
+        public IWorkflowAction MarketingEventsUpdateCreateOrUpdate(Expression<Func<string>> externalEventId, Expression<Func<string>> dataeventName, Expression<Func<string>> dataeventOrganizer, Expression<Func<string>> dataexternalAccountId, Expression<Func<string>> dataexternalEventId, Expression<Func<dataeventTypeInput>> dataeventType = null, Expression<Func<string>> datastartDateTime = null, Expression<Func<string>> dataendDateTime = null, Expression<Func<string>> dataeventDescription = null, Expression<Func<string>> dataeventUrl = null, Expression<Func<bool>> dataeventCancelled = null, Expression<Func<datacustomPropertiesInputItem[]>> datacustomProperties = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildMarketingEventsUpdateCreateOrUpdate(WorkflowExpression<string> externalEventId, WorkflowExpression<string> dataeventName, WorkflowExpression<string> dataeventOrganizer, WorkflowExpression<string> dataexternalAccountId, WorkflowExpression<string> dataexternalEventId, WorkflowExpression<dataeventTypeInput> dataeventType = null, WorkflowExpression<string> datastartDateTime = null, WorkflowExpression<string> dataendDateTime = null, WorkflowExpression<string> dataeventDescription = null, WorkflowExpression<string> dataeventUrl = null, WorkflowExpression<bool> dataeventCancelled = null, WorkflowExpression<datacustomPropertiesInputItem[]> datacustomProperties = null)
-        {
-            WorkflowExpression.Validate(externalEventId, nameof(externalEventId), required: true);
-            WorkflowExpression.Validate(dataeventName, nameof(dataeventName), required: true);
-            WorkflowExpression.Validate(dataeventOrganizer, nameof(dataeventOrganizer), required: true);
-            WorkflowExpression.Validate(dataexternalAccountId, nameof(dataexternalAccountId), required: true);
-            WorkflowExpression.Validate(dataexternalEventId, nameof(dataexternalEventId), required: true);
-            WorkflowExpression.Validate(dataeventType, nameof(dataeventType), required: false);
-            WorkflowExpression.Validate(datastartDateTime, nameof(datastartDateTime), required: false);
-            WorkflowExpression.Validate(dataendDateTime, nameof(dataendDateTime), required: false);
-            WorkflowExpression.Validate(dataeventDescription, nameof(dataeventDescription), required: false);
-            WorkflowExpression.Validate(dataeventUrl, nameof(dataeventUrl), required: false);
-            WorkflowExpression.Validate(dataeventCancelled, nameof(dataeventCancelled), required: false);
-            WorkflowExpression.Validate(datacustomProperties, nameof(datacustomProperties), required: false);
+            var __workflow_externalEventId = externalEventId == null ? null : WorkflowExpression.Compile(externalEventId);
+            WorkflowExpression.Validate(__workflow_externalEventId, nameof(externalEventId), required: true);
+            var __workflow_dataeventName = dataeventName == null ? null : WorkflowExpression.Compile(dataeventName);
+            WorkflowExpression.Validate(__workflow_dataeventName, nameof(dataeventName), required: true);
+            var __workflow_dataeventOrganizer = dataeventOrganizer == null ? null : WorkflowExpression.Compile(dataeventOrganizer);
+            WorkflowExpression.Validate(__workflow_dataeventOrganizer, nameof(dataeventOrganizer), required: true);
+            var __workflow_dataexternalAccountId = dataexternalAccountId == null ? null : WorkflowExpression.Compile(dataexternalAccountId);
+            WorkflowExpression.Validate(__workflow_dataexternalAccountId, nameof(dataexternalAccountId), required: true);
+            var __workflow_dataexternalEventId = dataexternalEventId == null ? null : WorkflowExpression.Compile(dataexternalEventId);
+            WorkflowExpression.Validate(__workflow_dataexternalEventId, nameof(dataexternalEventId), required: true);
+            var __workflow_dataeventType = dataeventType == null ? null : WorkflowExpression.Compile(dataeventType);
+            WorkflowExpression.Validate(__workflow_dataeventType, nameof(dataeventType), required: false);
+            var __workflow_datastartDateTime = datastartDateTime == null ? null : WorkflowExpression.Compile(datastartDateTime);
+            WorkflowExpression.Validate(__workflow_datastartDateTime, nameof(datastartDateTime), required: false);
+            var __workflow_dataendDateTime = dataendDateTime == null ? null : WorkflowExpression.Compile(dataendDateTime);
+            WorkflowExpression.Validate(__workflow_dataendDateTime, nameof(dataendDateTime), required: false);
+            var __workflow_dataeventDescription = dataeventDescription == null ? null : WorkflowExpression.Compile(dataeventDescription);
+            WorkflowExpression.Validate(__workflow_dataeventDescription, nameof(dataeventDescription), required: false);
+            var __workflow_dataeventUrl = dataeventUrl == null ? null : WorkflowExpression.Compile(dataeventUrl);
+            WorkflowExpression.Validate(__workflow_dataeventUrl, nameof(dataeventUrl), required: false);
+            var __workflow_dataeventCancelled = dataeventCancelled == null ? null : WorkflowExpression.Compile(dataeventCancelled);
+            WorkflowExpression.Validate(__workflow_dataeventCancelled, nameof(dataeventCancelled), required: false);
+            var __workflow_datacustomProperties = datacustomProperties == null ? null : WorkflowExpression.Compile(datacustomProperties);
+            WorkflowExpression.Validate(__workflow_datacustomProperties, nameof(datacustomProperties), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/marketing/v3/marketing-events-beta/events/{0}", ExpressionConverter.ConvertWithUrlEncoding(externalEventId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/marketing/v3/marketing-events-beta/events/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_externalEventId, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var data = new JObject();
                 var datapropCount = 0;
                 datapropCount++;
-                data["eventName"] = ExpressionConverter.ConvertO(dataeventName);
-                if (dataeventType != null)
+                data["eventName"] = ExpressionConverter.ConvertO(__workflow_dataeventName);
+                if (__workflow_dataeventType != null)
                 {
-                    data["eventType"] = ExpressionConverter.ConvertO(dataeventType);
+                    data["eventType"] = ExpressionConverter.ConvertO(__workflow_dataeventType);
                     datapropCount++;
                 }
 
-                if (datastartDateTime != null)
+                if (__workflow_datastartDateTime != null)
                 {
-                    data["startDateTime"] = ExpressionConverter.ConvertO(datastartDateTime);
+                    data["startDateTime"] = ExpressionConverter.ConvertO(__workflow_datastartDateTime);
                     datapropCount++;
                 }
 
-                if (dataendDateTime != null)
+                if (__workflow_dataendDateTime != null)
                 {
-                    data["endDateTime"] = ExpressionConverter.ConvertO(dataendDateTime);
-                    datapropCount++;
-                }
-
-                datapropCount++;
-                data["eventOrganizer"] = ExpressionConverter.ConvertO(dataeventOrganizer);
-                if (dataeventDescription != null)
-                {
-                    data["eventDescription"] = ExpressionConverter.ConvertO(dataeventDescription);
-                    datapropCount++;
-                }
-
-                if (dataeventUrl != null)
-                {
-                    data["eventUrl"] = ExpressionConverter.ConvertO(dataeventUrl);
-                    datapropCount++;
-                }
-
-                if (dataeventCancelled != null)
-                {
-                    data["eventCancelled"] = ExpressionConverter.ConvertO(dataeventCancelled);
-                    datapropCount++;
-                }
-
-                if (datacustomProperties != null)
-                {
-                    data["customProperties"] = ExpressionConverter.ConvertO(datacustomProperties);
+                    data["endDateTime"] = ExpressionConverter.ConvertO(__workflow_dataendDateTime);
                     datapropCount++;
                 }
 
                 datapropCount++;
-                data["externalAccountId"] = ExpressionConverter.ConvertO(dataexternalAccountId);
+                data["eventOrganizer"] = ExpressionConverter.ConvertO(__workflow_dataeventOrganizer);
+                if (__workflow_dataeventDescription != null)
+                {
+                    data["eventDescription"] = ExpressionConverter.ConvertO(__workflow_dataeventDescription);
+                    datapropCount++;
+                }
+
+                if (__workflow_dataeventUrl != null)
+                {
+                    data["eventUrl"] = ExpressionConverter.ConvertO(__workflow_dataeventUrl);
+                    datapropCount++;
+                }
+
+                if (__workflow_dataeventCancelled != null)
+                {
+                    data["eventCancelled"] = ExpressionConverter.ConvertO(__workflow_dataeventCancelled);
+                    datapropCount++;
+                }
+
+                if (__workflow_datacustomProperties != null)
+                {
+                    data["customProperties"] = ExpressionConverter.ConvertO(__workflow_datacustomProperties);
+                    datapropCount++;
+                }
+
                 datapropCount++;
-                data["externalEventId"] = ExpressionConverter.ConvertO(dataexternalEventId);
+                data["externalAccountId"] = ExpressionConverter.ConvertO(__workflow_dataexternalAccountId);
+                datapropCount++;
+                data["externalEventId"] = ExpressionConverter.ConvertO(__workflow_dataexternalEventId);
                 if (datapropCount > 0)
                 {
                     callPayload.Body = data;
@@ -829,46 +865,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
-        [WorkflowExpressionFactory(nameof(__BuildMarketingEmailsList))]
-        public IWorkflowAction MarketingEmailsList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> orderBy = null)
+        public IWorkflowAction MarketingEmailsList(Expression<Func<int>> limit = null, Expression<Func<string>> orderBy = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildMarketingEmailsList(WorkflowExpression<int> limit = null, WorkflowExpression<string> orderBy = null)
-        {
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(orderBy, nameof(orderBy), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_orderBy = orderBy == null ? null : WorkflowExpression.Compile(orderBy);
+            WorkflowExpression.Validate(__workflow_orderBy, nameof(orderBy), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/marketing-emails/v1/emails";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["limit"] = Convert.ToString(10);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 callPayload.Queries["orderBy"] = Convert.ToString("created");
-                if (orderBy != null)
-                    callPayload.Queries["orderBy"] = ExpressionConverter.Convert(orderBy);
+                if (__workflow_orderBy != null)
+                    callPayload.Queries["orderBy"] = ExpressionConverter.Convert(__workflow_orderBy);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
-        [WorkflowExpressionFactory(nameof(__BuildMarketingEmailsRead))]
-        public IWorkflowAction MarketingEmailsRead([WorkflowExpression] Func<string> id)
+        public IWorkflowAction MarketingEmailsRead(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildMarketingEmailsRead(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/marketing-emails/v1/emails/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/marketing-emails/v1/emails/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -876,19 +901,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
-        [WorkflowExpressionFactory(nameof(__BuildMarketingEmailsArchive))]
-        public IWorkflowAction MarketingEmailsArchive([WorkflowExpression] Func<string> id)
+        public IWorkflowAction MarketingEmailsArchive(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildMarketingEmailsArchive(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/marketing-emails/v1/emails/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/marketing-emails/v1/emails/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -896,41 +915,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
-        [WorkflowExpressionFactory(nameof(__BuildMarketingEmailsUpdate))]
-        public IWorkflowAction MarketingEmailsUpdate([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyfromName = null, [WorkflowExpression] Func<string> bodyreplyTo = null, [WorkflowExpression] Func<string> bodysubject = null)
+        public IWorkflowAction MarketingEmailsUpdate(Expression<Func<string>> id, Expression<Func<string>> bodyfromName = null, Expression<Func<string>> bodyreplyTo = null, Expression<Func<string>> bodysubject = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildMarketingEmailsUpdate(WorkflowExpression<string> id, WorkflowExpression<string> bodyfromName = null, WorkflowExpression<string> bodyreplyTo = null, WorkflowExpression<string> bodysubject = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(bodyfromName, nameof(bodyfromName), required: false);
-            WorkflowExpression.Validate(bodyreplyTo, nameof(bodyreplyTo), required: false);
-            WorkflowExpression.Validate(bodysubject, nameof(bodysubject), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_bodyfromName = bodyfromName == null ? null : WorkflowExpression.Compile(bodyfromName);
+            WorkflowExpression.Validate(__workflow_bodyfromName, nameof(bodyfromName), required: false);
+            var __workflow_bodyreplyTo = bodyreplyTo == null ? null : WorkflowExpression.Compile(bodyreplyTo);
+            WorkflowExpression.Validate(__workflow_bodyreplyTo, nameof(bodyreplyTo), required: false);
+            var __workflow_bodysubject = bodysubject == null ? null : WorkflowExpression.Compile(bodysubject);
+            WorkflowExpression.Validate(__workflow_bodysubject, nameof(bodysubject), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/marketing-emails/v1/emails/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/marketing-emails/v1/emails/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfromName != null)
+                if (__workflow_bodyfromName != null)
                 {
-                    body["fromName"] = ExpressionConverter.ConvertO(bodyfromName);
+                    body["fromName"] = ExpressionConverter.ConvertO(__workflow_bodyfromName);
                     bodypropCount++;
                 }
 
-                if (bodyreplyTo != null)
+                if (__workflow_bodyreplyTo != null)
                 {
-                    body["replyTo"] = ExpressionConverter.ConvertO(bodyreplyTo);
+                    body["replyTo"] = ExpressionConverter.ConvertO(__workflow_bodyreplyTo);
                     bodypropCount++;
                 }
 
-                if (bodysubject != null)
+                if (__workflow_bodysubject != null)
                 {
-                    body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+                    body["subject"] = ExpressionConverter.ConvertO(__workflow_bodysubject);
                     bodypropCount++;
                 }
 
@@ -944,19 +960,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
-        [WorkflowExpressionFactory(nameof(__BuildMarketingEmailsCampaignRead))]
-        public IWorkflowAction MarketingEmailsCampaignRead([WorkflowExpression] Func<string> campaignId)
+        public IWorkflowAction MarketingEmailsCampaignRead(Expression<Func<string>> campaignId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildMarketingEmailsCampaignRead(WorkflowExpression<string> campaignId)
-        {
-            WorkflowExpression.Validate(campaignId, nameof(campaignId), required: true);
+            var __workflow_campaignId = campaignId == null ? null : WorkflowExpression.Compile(campaignId);
+            WorkflowExpression.Validate(__workflow_campaignId, nameof(campaignId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/email/public/v1/campaigns/{0}", ExpressionConverter.ConvertWithUrlEncoding(campaignId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/email/public/v1/campaigns/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_campaignId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -964,17 +974,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
-        [WorkflowExpressionFactory(nameof(__BuildMarketingEmailsCreate))]
-        public IWorkflowAction MarketingEmailsCreate([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodysubject = null)
+        public IWorkflowAction MarketingEmailsCreate(Expression<Func<string>> bodyname, Expression<Func<string>> bodysubject = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildMarketingEmailsCreate(WorkflowExpression<string> bodyname, WorkflowExpression<string> bodysubject = null)
-        {
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
-            WorkflowExpression.Validate(bodysubject, nameof(bodysubject), required: false);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
+            var __workflow_bodysubject = bodysubject == null ? null : WorkflowExpression.Compile(bodysubject);
+            WorkflowExpression.Validate(__workflow_bodysubject, nameof(bodysubject), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/marketing-emails/v1/emails/";
@@ -983,10 +988,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                if (bodysubject != null)
+                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
+                if (__workflow_bodysubject != null)
                 {
-                    body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+                    body["subject"] = ExpressionConverter.ConvertO(__workflow_bodysubject);
                     bodypropCount++;
                 }
 

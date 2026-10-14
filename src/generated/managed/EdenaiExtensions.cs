@@ -1,35 +1,36 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class EdenaiActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        [WorkflowExpressionFactory(nameof(__BuildTextToSpeech))]
-        public IBodyWorkflowAction<TextToSpeechResponse> TextToSpeech([WorkflowExpression] Func<string> bodyproviders = null, [WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<string> bodyoption = null, [WorkflowExpression] Func<double> bodyrate = null, [WorkflowExpression] Func<double> bodypitch = null, [WorkflowExpression] Func<double> bodyvolume = null, [WorkflowExpression] Func<string> bodyaudioFormat = null, [WorkflowExpression] Func<double> bodysamplingRate = null)
+        public IBodyWorkflowAction<TextToSpeechResponse> TextToSpeech(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodyoption = null, Expression<Func<double>> bodyrate = null, Expression<Func<double>> bodypitch = null, Expression<Func<double>> bodyvolume = null, Expression<Func<string>> bodyaudioFormat = null, Expression<Func<double>> bodysamplingRate = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TextToSpeechResponse> __BuildTextToSpeech(WorkflowExpression<string> bodyproviders = null, WorkflowExpression<string> bodylanguage = null, WorkflowExpression<string> bodytext = null, WorkflowExpression<string> bodyoption = null, WorkflowExpression<double> bodyrate = null, WorkflowExpression<double> bodypitch = null, WorkflowExpression<double> bodyvolume = null, WorkflowExpression<string> bodyaudioFormat = null, WorkflowExpression<double> bodysamplingRate = null)
-        {
-            WorkflowExpression.Validate(bodyproviders, nameof(bodyproviders), required: false);
-            WorkflowExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
-            WorkflowExpression.Validate(bodytext, nameof(bodytext), required: false);
-            WorkflowExpression.Validate(bodyoption, nameof(bodyoption), required: false);
-            WorkflowExpression.Validate(bodyrate, nameof(bodyrate), required: false);
-            WorkflowExpression.Validate(bodypitch, nameof(bodypitch), required: false);
-            WorkflowExpression.Validate(bodyvolume, nameof(bodyvolume), required: false);
-            WorkflowExpression.Validate(bodyaudioFormat, nameof(bodyaudioFormat), required: false);
-            WorkflowExpression.Validate(bodysamplingRate, nameof(bodysamplingRate), required: false);
+            var __workflow_bodyproviders = bodyproviders == null ? null : WorkflowExpression.Compile(bodyproviders);
+            WorkflowExpression.Validate(__workflow_bodyproviders, nameof(bodyproviders), required: false);
+            var __workflow_bodylanguage = bodylanguage == null ? null : WorkflowExpression.Compile(bodylanguage);
+            WorkflowExpression.Validate(__workflow_bodylanguage, nameof(bodylanguage), required: false);
+            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
+            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: false);
+            var __workflow_bodyoption = bodyoption == null ? null : WorkflowExpression.Compile(bodyoption);
+            WorkflowExpression.Validate(__workflow_bodyoption, nameof(bodyoption), required: false);
+            var __workflow_bodyrate = bodyrate == null ? null : WorkflowExpression.Compile(bodyrate);
+            WorkflowExpression.Validate(__workflow_bodyrate, nameof(bodyrate), required: false);
+            var __workflow_bodypitch = bodypitch == null ? null : WorkflowExpression.Compile(bodypitch);
+            WorkflowExpression.Validate(__workflow_bodypitch, nameof(bodypitch), required: false);
+            var __workflow_bodyvolume = bodyvolume == null ? null : WorkflowExpression.Compile(bodyvolume);
+            WorkflowExpression.Validate(__workflow_bodyvolume, nameof(bodyvolume), required: false);
+            var __workflow_bodyaudioFormat = bodyaudioFormat == null ? null : WorkflowExpression.Compile(bodyaudioFormat);
+            WorkflowExpression.Validate(__workflow_bodyaudioFormat, nameof(bodyaudioFormat), required: false);
+            var __workflow_bodysamplingRate = bodysamplingRate == null ? null : WorkflowExpression.Compile(bodysamplingRate);
+            WorkflowExpression.Validate(__workflow_bodysamplingRate, nameof(bodysamplingRate), required: false);
             return new DeferredBodyAction<TextToSpeechResponse>(() =>
             {
                 var apiCallPath = "/v2/audio/text_to_speech";
@@ -39,11 +40,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyproviders != null)
+                if (__workflow_bodyproviders != null)
                 {
-                    if (bodyproviders != null)
+                    if (__workflow_bodyproviders != null)
                     {
-                        body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                        body["providers"] = ExpressionConverter.ConvertO(__workflow_bodyproviders);
                         bodypropCount++;
                     }
 
@@ -55,11 +56,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                     bodypropCount++;
                 }
 
-                if (bodylanguage != null)
+                if (__workflow_bodylanguage != null)
                 {
-                    if (bodylanguage != null)
+                    if (__workflow_bodylanguage != null)
                     {
-                        body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                        body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
                         bodypropCount++;
                     }
 
@@ -71,11 +72,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                     bodypropCount++;
                 }
 
-                if (bodytext != null)
+                if (__workflow_bodytext != null)
                 {
-                    if (bodytext != null)
+                    if (__workflow_bodytext != null)
                     {
-                        body["text"] = ExpressionConverter.ConvertO(bodytext);
+                        body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
                         bodypropCount++;
                     }
 
@@ -87,11 +88,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                     bodypropCount++;
                 }
 
-                if (bodyoption != null)
+                if (__workflow_bodyoption != null)
                 {
-                    if (bodyoption != null)
+                    if (__workflow_bodyoption != null)
                     {
-                        body["option"] = ExpressionConverter.ConvertO(bodyoption);
+                        body["option"] = ExpressionConverter.ConvertO(__workflow_bodyoption);
                         bodypropCount++;
                     }
 
@@ -111,11 +112,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                     bodypropCount++;
                 }
 
-                if (bodyrate != null)
+                if (__workflow_bodyrate != null)
                 {
-                    if (bodyrate != null)
+                    if (__workflow_bodyrate != null)
                     {
-                        body["rate"] = ExpressionConverter.ConvertO(bodyrate);
+                        body["rate"] = ExpressionConverter.ConvertO(__workflow_bodyrate);
                         bodypropCount++;
                     }
 
@@ -127,11 +128,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                     bodypropCount++;
                 }
 
-                if (bodypitch != null)
+                if (__workflow_bodypitch != null)
                 {
-                    if (bodypitch != null)
+                    if (__workflow_bodypitch != null)
                     {
-                        body["pitch"] = ExpressionConverter.ConvertO(bodypitch);
+                        body["pitch"] = ExpressionConverter.ConvertO(__workflow_bodypitch);
                         bodypropCount++;
                     }
 
@@ -143,11 +144,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                     bodypropCount++;
                 }
 
-                if (bodyvolume != null)
+                if (__workflow_bodyvolume != null)
                 {
-                    if (bodyvolume != null)
+                    if (__workflow_bodyvolume != null)
                     {
-                        body["volume"] = ExpressionConverter.ConvertO(bodyvolume);
+                        body["volume"] = ExpressionConverter.ConvertO(__workflow_bodyvolume);
                         bodypropCount++;
                     }
 
@@ -159,11 +160,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                     bodypropCount++;
                 }
 
-                if (bodyaudioFormat != null)
+                if (__workflow_bodyaudioFormat != null)
                 {
-                    if (bodyaudioFormat != null)
+                    if (__workflow_bodyaudioFormat != null)
                     {
-                        body["audio_format"] = ExpressionConverter.ConvertO(bodyaudioFormat);
+                        body["audio_format"] = ExpressionConverter.ConvertO(__workflow_bodyaudioFormat);
                         bodypropCount++;
                     }
 
@@ -175,11 +176,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                     bodypropCount++;
                 }
 
-                if (bodysamplingRate != null)
+                if (__workflow_bodysamplingRate != null)
                 {
-                    if (bodysamplingRate != null)
+                    if (__workflow_bodysamplingRate != null)
                     {
-                        body["sampling_rate"] = ExpressionConverter.ConvertO(bodysamplingRate);
+                        body["sampling_rate"] = ExpressionConverter.ConvertO(__workflow_bodysamplingRate);
                         bodypropCount++;
                     }
 
@@ -201,17 +202,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        [WorkflowExpressionFactory(nameof(__BuildExplicitContentDetection))]
-        public IBodyWorkflowAction<ExplicitContentDetectionResponse> ExplicitContentDetection([WorkflowExpression] Func<string> providers, [WorkflowExpression] Func<object> file)
+        public IBodyWorkflowAction<ExplicitContentDetectionResponse> ExplicitContentDetection(Expression<Func<string>> providers, Expression<Func<object>> file)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ExplicitContentDetectionResponse> __BuildExplicitContentDetection(WorkflowExpression<string> providers, WorkflowExpression<object> file)
-        {
-            WorkflowExpression.Validate(providers, nameof(providers), required: true);
-            WorkflowExpression.Validate(file, nameof(file), required: true);
+            var __workflow_providers = providers == null ? null : WorkflowExpression.Compile(providers);
+            WorkflowExpression.Validate(__workflow_providers, nameof(providers), required: true);
+            var __workflow_file = file == null ? null : WorkflowExpression.Compile(file);
+            WorkflowExpression.Validate(__workflow_file, nameof(file), required: true);
             return new DeferredBodyAction<ExplicitContentDetectionResponse>(() =>
             {
                 var apiCallPath = "/v2/image/explicit_content";
@@ -222,19 +218,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        [WorkflowExpressionFactory(nameof(__BuildTextGeneration))]
-        public IBodyWorkflowAction<TextGenerationResponse> TextGeneration([WorkflowExpression] Func<string> bodyproviders = null, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<double> bodytemperature = null, [WorkflowExpression] Func<double> bodymaxTokens = null)
+        public IBodyWorkflowAction<TextGenerationResponse> TextGeneration(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodytext = null, Expression<Func<double>> bodytemperature = null, Expression<Func<double>> bodymaxTokens = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TextGenerationResponse> __BuildTextGeneration(WorkflowExpression<string> bodyproviders = null, WorkflowExpression<string> bodytext = null, WorkflowExpression<double> bodytemperature = null, WorkflowExpression<double> bodymaxTokens = null)
-        {
-            WorkflowExpression.Validate(bodyproviders, nameof(bodyproviders), required: false);
-            WorkflowExpression.Validate(bodytext, nameof(bodytext), required: false);
-            WorkflowExpression.Validate(bodytemperature, nameof(bodytemperature), required: false);
-            WorkflowExpression.Validate(bodymaxTokens, nameof(bodymaxTokens), required: false);
+            var __workflow_bodyproviders = bodyproviders == null ? null : WorkflowExpression.Compile(bodyproviders);
+            WorkflowExpression.Validate(__workflow_bodyproviders, nameof(bodyproviders), required: false);
+            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
+            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: false);
+            var __workflow_bodytemperature = bodytemperature == null ? null : WorkflowExpression.Compile(bodytemperature);
+            WorkflowExpression.Validate(__workflow_bodytemperature, nameof(bodytemperature), required: false);
+            var __workflow_bodymaxTokens = bodymaxTokens == null ? null : WorkflowExpression.Compile(bodymaxTokens);
+            WorkflowExpression.Validate(__workflow_bodymaxTokens, nameof(bodymaxTokens), required: false);
             return new DeferredBodyAction<TextGenerationResponse>(() =>
             {
                 var apiCallPath = "/v2/text/generation";
@@ -244,11 +237,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyproviders != null)
+                if (__workflow_bodyproviders != null)
                 {
-                    if (bodyproviders != null)
+                    if (__workflow_bodyproviders != null)
                     {
-                        body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                        body["providers"] = ExpressionConverter.ConvertO(__workflow_bodyproviders);
                         bodypropCount++;
                     }
 
@@ -260,17 +253,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                     bodypropCount++;
                 }
 
-                if (bodytext != null)
+                if (__workflow_bodytext != null)
                 {
-                    body["text"] = ExpressionConverter.ConvertO(bodytext);
+                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
                     bodypropCount++;
                 }
 
-                if (bodytemperature != null)
+                if (__workflow_bodytemperature != null)
                 {
-                    if (bodytemperature != null)
+                    if (__workflow_bodytemperature != null)
                     {
-                        body["temperature"] = ExpressionConverter.ConvertO(bodytemperature);
+                        body["temperature"] = ExpressionConverter.ConvertO(__workflow_bodytemperature);
                         bodypropCount++;
                     }
 
@@ -282,11 +275,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                     bodypropCount++;
                 }
 
-                if (bodymaxTokens != null)
+                if (__workflow_bodymaxTokens != null)
                 {
-                    if (bodymaxTokens != null)
+                    if (__workflow_bodymaxTokens != null)
                     {
-                        body["max_tokens"] = ExpressionConverter.ConvertO(bodymaxTokens);
+                        body["max_tokens"] = ExpressionConverter.ConvertO(__workflow_bodymaxTokens);
                         bodypropCount++;
                     }
 
@@ -316,20 +309,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        [WorkflowExpressionFactory(nameof(__BuildChat))]
-        public IBodyWorkflowAction<ChatResponse> Chat([WorkflowExpression] Func<string> bodyproviders = null, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<string> bodychatGlobalAction = null, [WorkflowExpression] Func<double> bodytemperature = null, [WorkflowExpression] Func<double> bodymaxTokens = null)
+        public IBodyWorkflowAction<ChatResponse> Chat(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodychatGlobalAction = null, Expression<Func<double>> bodytemperature = null, Expression<Func<double>> bodymaxTokens = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ChatResponse> __BuildChat(WorkflowExpression<string> bodyproviders = null, WorkflowExpression<string> bodytext = null, WorkflowExpression<string> bodychatGlobalAction = null, WorkflowExpression<double> bodytemperature = null, WorkflowExpression<double> bodymaxTokens = null)
-        {
-            WorkflowExpression.Validate(bodyproviders, nameof(bodyproviders), required: false);
-            WorkflowExpression.Validate(bodytext, nameof(bodytext), required: false);
-            WorkflowExpression.Validate(bodychatGlobalAction, nameof(bodychatGlobalAction), required: false);
-            WorkflowExpression.Validate(bodytemperature, nameof(bodytemperature), required: false);
-            WorkflowExpression.Validate(bodymaxTokens, nameof(bodymaxTokens), required: false);
+            var __workflow_bodyproviders = bodyproviders == null ? null : WorkflowExpression.Compile(bodyproviders);
+            WorkflowExpression.Validate(__workflow_bodyproviders, nameof(bodyproviders), required: false);
+            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
+            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: false);
+            var __workflow_bodychatGlobalAction = bodychatGlobalAction == null ? null : WorkflowExpression.Compile(bodychatGlobalAction);
+            WorkflowExpression.Validate(__workflow_bodychatGlobalAction, nameof(bodychatGlobalAction), required: false);
+            var __workflow_bodytemperature = bodytemperature == null ? null : WorkflowExpression.Compile(bodytemperature);
+            WorkflowExpression.Validate(__workflow_bodytemperature, nameof(bodytemperature), required: false);
+            var __workflow_bodymaxTokens = bodymaxTokens == null ? null : WorkflowExpression.Compile(bodymaxTokens);
+            WorkflowExpression.Validate(__workflow_bodymaxTokens, nameof(bodymaxTokens), required: false);
             return new DeferredBodyAction<ChatResponse>(() =>
             {
                 var apiCallPath = "/v2/text/chat";
@@ -339,11 +330,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyproviders != null)
+                if (__workflow_bodyproviders != null)
                 {
-                    if (bodyproviders != null)
+                    if (__workflow_bodyproviders != null)
                     {
-                        body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                        body["providers"] = ExpressionConverter.ConvertO(__workflow_bodyproviders);
                         bodypropCount++;
                     }
 
@@ -355,23 +346,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                     bodypropCount++;
                 }
 
-                if (bodytext != null)
+                if (__workflow_bodytext != null)
                 {
-                    body["text"] = ExpressionConverter.ConvertO(bodytext);
+                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
                     bodypropCount++;
                 }
 
-                if (bodychatGlobalAction != null)
+                if (__workflow_bodychatGlobalAction != null)
                 {
-                    body["chat_global_action"] = ExpressionConverter.ConvertO(bodychatGlobalAction);
+                    body["chat_global_action"] = ExpressionConverter.ConvertO(__workflow_bodychatGlobalAction);
                     bodypropCount++;
                 }
 
-                if (bodytemperature != null)
+                if (__workflow_bodytemperature != null)
                 {
-                    if (bodytemperature != null)
+                    if (__workflow_bodytemperature != null)
                     {
-                        body["temperature"] = ExpressionConverter.ConvertO(bodytemperature);
+                        body["temperature"] = ExpressionConverter.ConvertO(__workflow_bodytemperature);
                         bodypropCount++;
                     }
 
@@ -383,11 +374,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                     bodypropCount++;
                 }
 
-                if (bodymaxTokens != null)
+                if (__workflow_bodymaxTokens != null)
                 {
-                    if (bodymaxTokens != null)
+                    if (__workflow_bodymaxTokens != null)
                     {
-                        body["max_tokens"] = ExpressionConverter.ConvertO(bodymaxTokens);
+                        body["max_tokens"] = ExpressionConverter.ConvertO(__workflow_bodymaxTokens);
                         bodypropCount++;
                     }
 
@@ -417,18 +408,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        [WorkflowExpressionFactory(nameof(__BuildTopicExtraction))]
-        public IBodyWorkflowAction<TopicExtractionResponse> TopicExtraction([WorkflowExpression] Func<string> bodyproviders = null, [WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<string> bodytext = null)
+        public IBodyWorkflowAction<TopicExtractionResponse> TopicExtraction(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodytext = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TopicExtractionResponse> __BuildTopicExtraction(WorkflowExpression<string> bodyproviders = null, WorkflowExpression<string> bodylanguage = null, WorkflowExpression<string> bodytext = null)
-        {
-            WorkflowExpression.Validate(bodyproviders, nameof(bodyproviders), required: false);
-            WorkflowExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
-            WorkflowExpression.Validate(bodytext, nameof(bodytext), required: false);
+            var __workflow_bodyproviders = bodyproviders == null ? null : WorkflowExpression.Compile(bodyproviders);
+            WorkflowExpression.Validate(__workflow_bodyproviders, nameof(bodyproviders), required: false);
+            var __workflow_bodylanguage = bodylanguage == null ? null : WorkflowExpression.Compile(bodylanguage);
+            WorkflowExpression.Validate(__workflow_bodylanguage, nameof(bodylanguage), required: false);
+            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
+            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: false);
             return new DeferredBodyAction<TopicExtractionResponse>(() =>
             {
                 var apiCallPath = "/v2/text/topic_extraction";
@@ -438,11 +425,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyproviders != null)
+                if (__workflow_bodyproviders != null)
                 {
-                    if (bodyproviders != null)
+                    if (__workflow_bodyproviders != null)
                     {
-                        body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                        body["providers"] = ExpressionConverter.ConvertO(__workflow_bodyproviders);
                         bodypropCount++;
                     }
 
@@ -454,11 +441,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                     bodypropCount++;
                 }
 
-                if (bodylanguage != null)
+                if (__workflow_bodylanguage != null)
                 {
-                    if (bodylanguage != null)
+                    if (__workflow_bodylanguage != null)
                     {
-                        body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                        body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
                         bodypropCount++;
                     }
 
@@ -470,9 +457,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                     bodypropCount++;
                 }
 
-                if (bodytext != null)
+                if (__workflow_bodytext != null)
                 {
-                    body["text"] = ExpressionConverter.ConvertO(bodytext);
+                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
                     bodypropCount++;
                 }
 
@@ -486,18 +473,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        [WorkflowExpressionFactory(nameof(__BuildKeywordExtraction))]
-        public IBodyWorkflowAction<KeywordExtractionResponse> KeywordExtraction([WorkflowExpression] Func<string> bodyproviders = null, [WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<string> bodytext = null)
+        public IBodyWorkflowAction<KeywordExtractionResponse> KeywordExtraction(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodytext = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<KeywordExtractionResponse> __BuildKeywordExtraction(WorkflowExpression<string> bodyproviders = null, WorkflowExpression<string> bodylanguage = null, WorkflowExpression<string> bodytext = null)
-        {
-            WorkflowExpression.Validate(bodyproviders, nameof(bodyproviders), required: false);
-            WorkflowExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
-            WorkflowExpression.Validate(bodytext, nameof(bodytext), required: false);
+            var __workflow_bodyproviders = bodyproviders == null ? null : WorkflowExpression.Compile(bodyproviders);
+            WorkflowExpression.Validate(__workflow_bodyproviders, nameof(bodyproviders), required: false);
+            var __workflow_bodylanguage = bodylanguage == null ? null : WorkflowExpression.Compile(bodylanguage);
+            WorkflowExpression.Validate(__workflow_bodylanguage, nameof(bodylanguage), required: false);
+            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
+            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: false);
             return new DeferredBodyAction<KeywordExtractionResponse>(() =>
             {
                 var apiCallPath = "/v2/text/keyword_extraction";
@@ -507,11 +490,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyproviders != null)
+                if (__workflow_bodyproviders != null)
                 {
-                    if (bodyproviders != null)
+                    if (__workflow_bodyproviders != null)
                     {
-                        body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                        body["providers"] = ExpressionConverter.ConvertO(__workflow_bodyproviders);
                         bodypropCount++;
                     }
 
@@ -523,11 +506,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                     bodypropCount++;
                 }
 
-                if (bodylanguage != null)
+                if (__workflow_bodylanguage != null)
                 {
-                    if (bodylanguage != null)
+                    if (__workflow_bodylanguage != null)
                     {
-                        body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                        body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
                         bodypropCount++;
                     }
 
@@ -539,9 +522,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                     bodypropCount++;
                 }
 
-                if (bodytext != null)
+                if (__workflow_bodytext != null)
                 {
-                    body["text"] = ExpressionConverter.ConvertO(bodytext);
+                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
                     bodypropCount++;
                 }
 
@@ -555,18 +538,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        [WorkflowExpressionFactory(nameof(__BuildNamedEntityRecognition))]
-        public IBodyWorkflowAction<NamedEntityRecognitionResponse> NamedEntityRecognition([WorkflowExpression] Func<string> bodyproviders = null, [WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<string> bodytext = null)
+        public IBodyWorkflowAction<NamedEntityRecognitionResponse> NamedEntityRecognition(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodytext = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<NamedEntityRecognitionResponse> __BuildNamedEntityRecognition(WorkflowExpression<string> bodyproviders = null, WorkflowExpression<string> bodylanguage = null, WorkflowExpression<string> bodytext = null)
-        {
-            WorkflowExpression.Validate(bodyproviders, nameof(bodyproviders), required: false);
-            WorkflowExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
-            WorkflowExpression.Validate(bodytext, nameof(bodytext), required: false);
+            var __workflow_bodyproviders = bodyproviders == null ? null : WorkflowExpression.Compile(bodyproviders);
+            WorkflowExpression.Validate(__workflow_bodyproviders, nameof(bodyproviders), required: false);
+            var __workflow_bodylanguage = bodylanguage == null ? null : WorkflowExpression.Compile(bodylanguage);
+            WorkflowExpression.Validate(__workflow_bodylanguage, nameof(bodylanguage), required: false);
+            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
+            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: false);
             return new DeferredBodyAction<NamedEntityRecognitionResponse>(() =>
             {
                 var apiCallPath = "/v2/text/named_entity_recognition";
@@ -576,11 +555,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyproviders != null)
+                if (__workflow_bodyproviders != null)
                 {
-                    if (bodyproviders != null)
+                    if (__workflow_bodyproviders != null)
                     {
-                        body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                        body["providers"] = ExpressionConverter.ConvertO(__workflow_bodyproviders);
                         bodypropCount++;
                     }
 
@@ -592,11 +571,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                     bodypropCount++;
                 }
 
-                if (bodylanguage != null)
+                if (__workflow_bodylanguage != null)
                 {
-                    if (bodylanguage != null)
+                    if (__workflow_bodylanguage != null)
                     {
-                        body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                        body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
                         bodypropCount++;
                     }
 
@@ -608,9 +587,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                     bodypropCount++;
                 }
 
-                if (bodytext != null)
+                if (__workflow_bodytext != null)
                 {
-                    body["text"] = ExpressionConverter.ConvertO(bodytext);
+                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
                     bodypropCount++;
                 }
 
@@ -624,17 +603,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        [WorkflowExpressionFactory(nameof(__BuildAnonymization))]
-        public IBodyWorkflowAction<AnonymizationResponse> Anonymization([WorkflowExpression] Func<string> providers, [WorkflowExpression] Func<object> file)
+        public IBodyWorkflowAction<AnonymizationResponse> Anonymization(Expression<Func<string>> providers, Expression<Func<object>> file)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AnonymizationResponse> __BuildAnonymization(WorkflowExpression<string> providers, WorkflowExpression<object> file)
-        {
-            WorkflowExpression.Validate(providers, nameof(providers), required: true);
-            WorkflowExpression.Validate(file, nameof(file), required: true);
+            var __workflow_providers = providers == null ? null : WorkflowExpression.Compile(providers);
+            WorkflowExpression.Validate(__workflow_providers, nameof(providers), required: true);
+            var __workflow_file = file == null ? null : WorkflowExpression.Compile(file);
+            WorkflowExpression.Validate(__workflow_file, nameof(file), required: true);
             return new DeferredBodyAction<AnonymizationResponse>(() =>
             {
                 var apiCallPath = "/v2/image/anonymization";
@@ -645,17 +619,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        [WorkflowExpressionFactory(nameof(__BuildFaceDetection))]
-        public IBodyWorkflowAction<FaceDetectionResponse> FaceDetection([WorkflowExpression] Func<string> providers, [WorkflowExpression] Func<object> file)
+        public IBodyWorkflowAction<FaceDetectionResponse> FaceDetection(Expression<Func<string>> providers, Expression<Func<object>> file)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FaceDetectionResponse> __BuildFaceDetection(WorkflowExpression<string> providers, WorkflowExpression<object> file)
-        {
-            WorkflowExpression.Validate(providers, nameof(providers), required: true);
-            WorkflowExpression.Validate(file, nameof(file), required: true);
+            var __workflow_providers = providers == null ? null : WorkflowExpression.Compile(providers);
+            WorkflowExpression.Validate(__workflow_providers, nameof(providers), required: true);
+            var __workflow_file = file == null ? null : WorkflowExpression.Compile(file);
+            WorkflowExpression.Validate(__workflow_file, nameof(file), required: true);
             return new DeferredBodyAction<FaceDetectionResponse>(() =>
             {
                 var apiCallPath = "/v2/image/face_detection";
@@ -666,19 +635,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        [WorkflowExpressionFactory(nameof(__BuildImageGeneration))]
-        public IBodyWorkflowAction<ImageGenerationResponse> ImageGeneration([WorkflowExpression] Func<string> bodyproviders = null, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<string> bodyresolution = null, [WorkflowExpression] Func<double> bodynumImages = null)
+        public IBodyWorkflowAction<ImageGenerationResponse> ImageGeneration(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodyresolution = null, Expression<Func<double>> bodynumImages = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ImageGenerationResponse> __BuildImageGeneration(WorkflowExpression<string> bodyproviders = null, WorkflowExpression<string> bodytext = null, WorkflowExpression<string> bodyresolution = null, WorkflowExpression<double> bodynumImages = null)
-        {
-            WorkflowExpression.Validate(bodyproviders, nameof(bodyproviders), required: false);
-            WorkflowExpression.Validate(bodytext, nameof(bodytext), required: false);
-            WorkflowExpression.Validate(bodyresolution, nameof(bodyresolution), required: false);
-            WorkflowExpression.Validate(bodynumImages, nameof(bodynumImages), required: false);
+            var __workflow_bodyproviders = bodyproviders == null ? null : WorkflowExpression.Compile(bodyproviders);
+            WorkflowExpression.Validate(__workflow_bodyproviders, nameof(bodyproviders), required: false);
+            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
+            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: false);
+            var __workflow_bodyresolution = bodyresolution == null ? null : WorkflowExpression.Compile(bodyresolution);
+            WorkflowExpression.Validate(__workflow_bodyresolution, nameof(bodyresolution), required: false);
+            var __workflow_bodynumImages = bodynumImages == null ? null : WorkflowExpression.Compile(bodynumImages);
+            WorkflowExpression.Validate(__workflow_bodynumImages, nameof(bodynumImages), required: false);
             return new DeferredBodyAction<ImageGenerationResponse>(() =>
             {
                 var apiCallPath = "/v2/image/generation";
@@ -688,11 +654,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyproviders != null)
+                if (__workflow_bodyproviders != null)
                 {
-                    if (bodyproviders != null)
+                    if (__workflow_bodyproviders != null)
                     {
-                        body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                        body["providers"] = ExpressionConverter.ConvertO(__workflow_bodyproviders);
                         bodypropCount++;
                     }
 
@@ -704,17 +670,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                     bodypropCount++;
                 }
 
-                if (bodytext != null)
+                if (__workflow_bodytext != null)
                 {
-                    body["text"] = ExpressionConverter.ConvertO(bodytext);
+                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
                     bodypropCount++;
                 }
 
-                if (bodyresolution != null)
+                if (__workflow_bodyresolution != null)
                 {
-                    if (bodyresolution != null)
+                    if (__workflow_bodyresolution != null)
                     {
-                        body["resolution"] = ExpressionConverter.ConvertO(bodyresolution);
+                        body["resolution"] = ExpressionConverter.ConvertO(__workflow_bodyresolution);
                         bodypropCount++;
                     }
 
@@ -726,11 +692,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                     bodypropCount++;
                 }
 
-                if (bodynumImages != null)
+                if (__workflow_bodynumImages != null)
                 {
-                    if (bodynumImages != null)
+                    if (__workflow_bodynumImages != null)
                     {
-                        body["num_images"] = ExpressionConverter.ConvertO(bodynumImages);
+                        body["num_images"] = ExpressionConverter.ConvertO(__workflow_bodynumImages);
                         bodypropCount++;
                     }
 
@@ -752,19 +718,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        [WorkflowExpressionFactory(nameof(__BuildTranslation))]
-        public IBodyWorkflowAction<TranslationResponse> Translation([WorkflowExpression] Func<string> bodyproviders = null, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<string> bodysourceLanguage = null, [WorkflowExpression] Func<string> bodytargetLanguage = null)
+        public IBodyWorkflowAction<TranslationResponse> Translation(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodysourceLanguage = null, Expression<Func<string>> bodytargetLanguage = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TranslationResponse> __BuildTranslation(WorkflowExpression<string> bodyproviders = null, WorkflowExpression<string> bodytext = null, WorkflowExpression<string> bodysourceLanguage = null, WorkflowExpression<string> bodytargetLanguage = null)
-        {
-            WorkflowExpression.Validate(bodyproviders, nameof(bodyproviders), required: false);
-            WorkflowExpression.Validate(bodytext, nameof(bodytext), required: false);
-            WorkflowExpression.Validate(bodysourceLanguage, nameof(bodysourceLanguage), required: false);
-            WorkflowExpression.Validate(bodytargetLanguage, nameof(bodytargetLanguage), required: false);
+            var __workflow_bodyproviders = bodyproviders == null ? null : WorkflowExpression.Compile(bodyproviders);
+            WorkflowExpression.Validate(__workflow_bodyproviders, nameof(bodyproviders), required: false);
+            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
+            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: false);
+            var __workflow_bodysourceLanguage = bodysourceLanguage == null ? null : WorkflowExpression.Compile(bodysourceLanguage);
+            WorkflowExpression.Validate(__workflow_bodysourceLanguage, nameof(bodysourceLanguage), required: false);
+            var __workflow_bodytargetLanguage = bodytargetLanguage == null ? null : WorkflowExpression.Compile(bodytargetLanguage);
+            WorkflowExpression.Validate(__workflow_bodytargetLanguage, nameof(bodytargetLanguage), required: false);
             return new DeferredBodyAction<TranslationResponse>(() =>
             {
                 var apiCallPath = "/v2/translation/automatic_translation";
@@ -774,11 +737,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyproviders != null)
+                if (__workflow_bodyproviders != null)
                 {
-                    if (bodyproviders != null)
+                    if (__workflow_bodyproviders != null)
                     {
-                        body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                        body["providers"] = ExpressionConverter.ConvertO(__workflow_bodyproviders);
                         bodypropCount++;
                     }
 
@@ -790,17 +753,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                     bodypropCount++;
                 }
 
-                if (bodytext != null)
+                if (__workflow_bodytext != null)
                 {
-                    body["text"] = ExpressionConverter.ConvertO(bodytext);
+                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
                     bodypropCount++;
                 }
 
-                if (bodysourceLanguage != null)
+                if (__workflow_bodysourceLanguage != null)
                 {
-                    if (bodysourceLanguage != null)
+                    if (__workflow_bodysourceLanguage != null)
                     {
-                        body["source_language"] = ExpressionConverter.ConvertO(bodysourceLanguage);
+                        body["source_language"] = ExpressionConverter.ConvertO(__workflow_bodysourceLanguage);
                         bodypropCount++;
                     }
 
@@ -812,11 +775,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                     bodypropCount++;
                 }
 
-                if (bodytargetLanguage != null)
+                if (__workflow_bodytargetLanguage != null)
                 {
-                    if (bodytargetLanguage != null)
+                    if (__workflow_bodytargetLanguage != null)
                     {
-                        body["target_language"] = ExpressionConverter.ConvertO(bodytargetLanguage);
+                        body["target_language"] = ExpressionConverter.ConvertO(__workflow_bodytargetLanguage);
                         bodypropCount++;
                     }
 
@@ -838,18 +801,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        [WorkflowExpressionFactory(nameof(__BuildTextModeration))]
-        public IBodyWorkflowAction<TextModerationResponse> TextModeration([WorkflowExpression] Func<string> bodyproviders = null, [WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<string> bodytext = null)
+        public IBodyWorkflowAction<TextModerationResponse> TextModeration(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodytext = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TextModerationResponse> __BuildTextModeration(WorkflowExpression<string> bodyproviders = null, WorkflowExpression<string> bodylanguage = null, WorkflowExpression<string> bodytext = null)
-        {
-            WorkflowExpression.Validate(bodyproviders, nameof(bodyproviders), required: false);
-            WorkflowExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
-            WorkflowExpression.Validate(bodytext, nameof(bodytext), required: false);
+            var __workflow_bodyproviders = bodyproviders == null ? null : WorkflowExpression.Compile(bodyproviders);
+            WorkflowExpression.Validate(__workflow_bodyproviders, nameof(bodyproviders), required: false);
+            var __workflow_bodylanguage = bodylanguage == null ? null : WorkflowExpression.Compile(bodylanguage);
+            WorkflowExpression.Validate(__workflow_bodylanguage, nameof(bodylanguage), required: false);
+            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
+            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: false);
             return new DeferredBodyAction<TextModerationResponse>(() =>
             {
                 var apiCallPath = "/v2/text/moderation";
@@ -859,11 +818,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyproviders != null)
+                if (__workflow_bodyproviders != null)
                 {
-                    if (bodyproviders != null)
+                    if (__workflow_bodyproviders != null)
                     {
-                        body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                        body["providers"] = ExpressionConverter.ConvertO(__workflow_bodyproviders);
                         bodypropCount++;
                     }
 
@@ -875,11 +834,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                     bodypropCount++;
                 }
 
-                if (bodylanguage != null)
+                if (__workflow_bodylanguage != null)
                 {
-                    if (bodylanguage != null)
+                    if (__workflow_bodylanguage != null)
                     {
-                        body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                        body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
                         bodypropCount++;
                     }
 
@@ -891,9 +850,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                     bodypropCount++;
                 }
 
-                if (bodytext != null)
+                if (__workflow_bodytext != null)
                 {
-                    body["text"] = ExpressionConverter.ConvertO(bodytext);
+                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
                     bodypropCount++;
                 }
 
@@ -907,19 +866,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        [WorkflowExpressionFactory(nameof(__BuildSummarization))]
-        public IBodyWorkflowAction<SummarizationResponse> Summarization([WorkflowExpression] Func<string> bodyproviders = null, [WorkflowExpression] Func<double> bodyoutputSentences = null, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<string> bodylanguage = null)
+        public IBodyWorkflowAction<SummarizationResponse> Summarization(Expression<Func<string>> bodyproviders = null, Expression<Func<double>> bodyoutputSentences = null, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodylanguage = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SummarizationResponse> __BuildSummarization(WorkflowExpression<string> bodyproviders = null, WorkflowExpression<double> bodyoutputSentences = null, WorkflowExpression<string> bodytext = null, WorkflowExpression<string> bodylanguage = null)
-        {
-            WorkflowExpression.Validate(bodyproviders, nameof(bodyproviders), required: false);
-            WorkflowExpression.Validate(bodyoutputSentences, nameof(bodyoutputSentences), required: false);
-            WorkflowExpression.Validate(bodytext, nameof(bodytext), required: false);
-            WorkflowExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
+            var __workflow_bodyproviders = bodyproviders == null ? null : WorkflowExpression.Compile(bodyproviders);
+            WorkflowExpression.Validate(__workflow_bodyproviders, nameof(bodyproviders), required: false);
+            var __workflow_bodyoutputSentences = bodyoutputSentences == null ? null : WorkflowExpression.Compile(bodyoutputSentences);
+            WorkflowExpression.Validate(__workflow_bodyoutputSentences, nameof(bodyoutputSentences), required: false);
+            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
+            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: false);
+            var __workflow_bodylanguage = bodylanguage == null ? null : WorkflowExpression.Compile(bodylanguage);
+            WorkflowExpression.Validate(__workflow_bodylanguage, nameof(bodylanguage), required: false);
             return new DeferredBodyAction<SummarizationResponse>(() =>
             {
                 var apiCallPath = "/v2/text/summarize";
@@ -929,11 +885,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyproviders != null)
+                if (__workflow_bodyproviders != null)
                 {
-                    if (bodyproviders != null)
+                    if (__workflow_bodyproviders != null)
                     {
-                        body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                        body["providers"] = ExpressionConverter.ConvertO(__workflow_bodyproviders);
                         bodypropCount++;
                     }
 
@@ -945,11 +901,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                     bodypropCount++;
                 }
 
-                if (bodyoutputSentences != null)
+                if (__workflow_bodyoutputSentences != null)
                 {
-                    if (bodyoutputSentences != null)
+                    if (__workflow_bodyoutputSentences != null)
                     {
-                        body["output_sentences"] = ExpressionConverter.ConvertO(bodyoutputSentences);
+                        body["output_sentences"] = ExpressionConverter.ConvertO(__workflow_bodyoutputSentences);
                         bodypropCount++;
                     }
 
@@ -961,17 +917,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                     bodypropCount++;
                 }
 
-                if (bodytext != null)
+                if (__workflow_bodytext != null)
                 {
-                    body["text"] = ExpressionConverter.ConvertO(bodytext);
+                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
                     bodypropCount++;
                 }
 
-                if (bodylanguage != null)
+                if (__workflow_bodylanguage != null)
                 {
-                    if (bodylanguage != null)
+                    if (__workflow_bodylanguage != null)
                     {
-                        body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                        body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
                         bodypropCount++;
                     }
 
@@ -1001,17 +957,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        [WorkflowExpressionFactory(nameof(__BuildLanguageDetection))]
-        public IBodyWorkflowAction<LanguageDetectionResponse> LanguageDetection([WorkflowExpression] Func<string> bodyproviders = null, [WorkflowExpression] Func<string> bodytext = null)
+        public IBodyWorkflowAction<LanguageDetectionResponse> LanguageDetection(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodytext = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<LanguageDetectionResponse> __BuildLanguageDetection(WorkflowExpression<string> bodyproviders = null, WorkflowExpression<string> bodytext = null)
-        {
-            WorkflowExpression.Validate(bodyproviders, nameof(bodyproviders), required: false);
-            WorkflowExpression.Validate(bodytext, nameof(bodytext), required: false);
+            var __workflow_bodyproviders = bodyproviders == null ? null : WorkflowExpression.Compile(bodyproviders);
+            WorkflowExpression.Validate(__workflow_bodyproviders, nameof(bodyproviders), required: false);
+            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
+            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: false);
             return new DeferredBodyAction<LanguageDetectionResponse>(() =>
             {
                 var apiCallPath = "/v2/translation/language_detection";
@@ -1021,11 +972,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyproviders != null)
+                if (__workflow_bodyproviders != null)
                 {
-                    if (bodyproviders != null)
+                    if (__workflow_bodyproviders != null)
                     {
-                        body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                        body["providers"] = ExpressionConverter.ConvertO(__workflow_bodyproviders);
                         bodypropCount++;
                     }
 
@@ -1037,9 +988,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                     bodypropCount++;
                 }
 
-                if (bodytext != null)
+                if (__workflow_bodytext != null)
                 {
-                    body["text"] = ExpressionConverter.ConvertO(bodytext);
+                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
                     bodypropCount++;
                 }
 
@@ -1053,18 +1004,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        [WorkflowExpressionFactory(nameof(__BuildSentimentAnalysis))]
-        public IBodyWorkflowAction<SentimentAnalysisResponse> SentimentAnalysis([WorkflowExpression] Func<string> bodyproviders = null, [WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<string> bodytext = null)
+        public IBodyWorkflowAction<SentimentAnalysisResponse> SentimentAnalysis(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodytext = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SentimentAnalysisResponse> __BuildSentimentAnalysis(WorkflowExpression<string> bodyproviders = null, WorkflowExpression<string> bodylanguage = null, WorkflowExpression<string> bodytext = null)
-        {
-            WorkflowExpression.Validate(bodyproviders, nameof(bodyproviders), required: false);
-            WorkflowExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
-            WorkflowExpression.Validate(bodytext, nameof(bodytext), required: false);
+            var __workflow_bodyproviders = bodyproviders == null ? null : WorkflowExpression.Compile(bodyproviders);
+            WorkflowExpression.Validate(__workflow_bodyproviders, nameof(bodyproviders), required: false);
+            var __workflow_bodylanguage = bodylanguage == null ? null : WorkflowExpression.Compile(bodylanguage);
+            WorkflowExpression.Validate(__workflow_bodylanguage, nameof(bodylanguage), required: false);
+            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
+            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: false);
             return new DeferredBodyAction<SentimentAnalysisResponse>(() =>
             {
                 var apiCallPath = "/v2/text/sentiment_analysis";
@@ -1074,11 +1021,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyproviders != null)
+                if (__workflow_bodyproviders != null)
                 {
-                    if (bodyproviders != null)
+                    if (__workflow_bodyproviders != null)
                     {
-                        body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                        body["providers"] = ExpressionConverter.ConvertO(__workflow_bodyproviders);
                         bodypropCount++;
                     }
 
@@ -1090,11 +1037,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                     bodypropCount++;
                 }
 
-                if (bodylanguage != null)
+                if (__workflow_bodylanguage != null)
                 {
-                    if (bodylanguage != null)
+                    if (__workflow_bodylanguage != null)
                     {
-                        body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                        body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
                         bodypropCount++;
                     }
 
@@ -1106,9 +1053,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                     bodypropCount++;
                 }
 
-                if (bodytext != null)
+                if (__workflow_bodytext != null)
                 {
-                    body["text"] = ExpressionConverter.ConvertO(bodytext);
+                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
                     bodypropCount++;
                 }
 
@@ -1122,18 +1069,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        [WorkflowExpressionFactory(nameof(__BuildInvoiceParser))]
-        public IBodyWorkflowAction<InvoiceParserResponse> InvoiceParser([WorkflowExpression] Func<string> providers, [WorkflowExpression] Func<string> language, [WorkflowExpression] Func<object> file)
+        public IBodyWorkflowAction<InvoiceParserResponse> InvoiceParser(Expression<Func<string>> providers, Expression<Func<string>> language, Expression<Func<object>> file)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<InvoiceParserResponse> __BuildInvoiceParser(WorkflowExpression<string> providers, WorkflowExpression<string> language, WorkflowExpression<object> file)
-        {
-            WorkflowExpression.Validate(providers, nameof(providers), required: true);
-            WorkflowExpression.Validate(language, nameof(language), required: true);
-            WorkflowExpression.Validate(file, nameof(file), required: true);
+            var __workflow_providers = providers == null ? null : WorkflowExpression.Compile(providers);
+            WorkflowExpression.Validate(__workflow_providers, nameof(providers), required: true);
+            var __workflow_language = language == null ? null : WorkflowExpression.Compile(language);
+            WorkflowExpression.Validate(__workflow_language, nameof(language), required: true);
+            var __workflow_file = file == null ? null : WorkflowExpression.Compile(file);
+            WorkflowExpression.Validate(__workflow_file, nameof(file), required: true);
             return new DeferredBodyAction<InvoiceParserResponse>(() =>
             {
                 var apiCallPath = "/v2/ocr/invoice_parser";
@@ -1144,17 +1087,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        [WorkflowExpressionFactory(nameof(__BuildResumeParser))]
-        public IBodyWorkflowAction<ResumeParserResponse> ResumeParser([WorkflowExpression] Func<string> providers, [WorkflowExpression] Func<object> file)
+        public IBodyWorkflowAction<ResumeParserResponse> ResumeParser(Expression<Func<string>> providers, Expression<Func<object>> file)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ResumeParserResponse> __BuildResumeParser(WorkflowExpression<string> providers, WorkflowExpression<object> file)
-        {
-            WorkflowExpression.Validate(providers, nameof(providers), required: true);
-            WorkflowExpression.Validate(file, nameof(file), required: true);
+            var __workflow_providers = providers == null ? null : WorkflowExpression.Compile(providers);
+            WorkflowExpression.Validate(__workflow_providers, nameof(providers), required: true);
+            var __workflow_file = file == null ? null : WorkflowExpression.Compile(file);
+            WorkflowExpression.Validate(__workflow_file, nameof(file), required: true);
             return new DeferredBodyAction<ResumeParserResponse>(() =>
             {
                 var apiCallPath = "/v2/ocr/resume_parser";
@@ -1165,17 +1103,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        [WorkflowExpressionFactory(nameof(__BuildIdentityParser))]
-        public IBodyWorkflowAction<IdentityParserResponse> IdentityParser([WorkflowExpression] Func<string> providers, [WorkflowExpression] Func<object> file)
+        public IBodyWorkflowAction<IdentityParserResponse> IdentityParser(Expression<Func<string>> providers, Expression<Func<object>> file)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<IdentityParserResponse> __BuildIdentityParser(WorkflowExpression<string> providers, WorkflowExpression<object> file)
-        {
-            WorkflowExpression.Validate(providers, nameof(providers), required: true);
-            WorkflowExpression.Validate(file, nameof(file), required: true);
+            var __workflow_providers = providers == null ? null : WorkflowExpression.Compile(providers);
+            WorkflowExpression.Validate(__workflow_providers, nameof(providers), required: true);
+            var __workflow_file = file == null ? null : WorkflowExpression.Compile(file);
+            WorkflowExpression.Validate(__workflow_file, nameof(file), required: true);
             return new DeferredBodyAction<IdentityParserResponse>(() =>
             {
                 var apiCallPath = "/v2/ocr/identity_parser";
@@ -1186,18 +1119,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        [WorkflowExpressionFactory(nameof(__BuildReceiptParser))]
-        public IBodyWorkflowAction<ReceiptParserResponse> ReceiptParser([WorkflowExpression] Func<string> providers, [WorkflowExpression] Func<string> language, [WorkflowExpression] Func<object> file)
+        public IBodyWorkflowAction<ReceiptParserResponse> ReceiptParser(Expression<Func<string>> providers, Expression<Func<string>> language, Expression<Func<object>> file)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ReceiptParserResponse> __BuildReceiptParser(WorkflowExpression<string> providers, WorkflowExpression<string> language, WorkflowExpression<object> file)
-        {
-            WorkflowExpression.Validate(providers, nameof(providers), required: true);
-            WorkflowExpression.Validate(language, nameof(language), required: true);
-            WorkflowExpression.Validate(file, nameof(file), required: true);
+            var __workflow_providers = providers == null ? null : WorkflowExpression.Compile(providers);
+            WorkflowExpression.Validate(__workflow_providers, nameof(providers), required: true);
+            var __workflow_language = language == null ? null : WorkflowExpression.Compile(language);
+            WorkflowExpression.Validate(__workflow_language, nameof(language), required: true);
+            var __workflow_file = file == null ? null : WorkflowExpression.Compile(file);
+            WorkflowExpression.Validate(__workflow_file, nameof(file), required: true);
             return new DeferredBodyAction<ReceiptParserResponse>(() =>
             {
                 var apiCallPath = "/v2/ocr/receipt_parser";

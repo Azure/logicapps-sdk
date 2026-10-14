@@ -1,30 +1,23 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signinghubwebhooks
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class SigninghubwebhooksActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signinghubwebhooks")]
-        [WorkflowExpressionFactory(nameof(__BuildUnsubscribeWebhook))]
-        public IWorkflowAction UnsubscribeWebhook([WorkflowExpression] Func<string> subscriptionId)
+        public IWorkflowAction UnsubscribeWebhook(Expression<Func<string>> subscriptionId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildUnsubscribeWebhook(WorkflowExpression<string> subscriptionId)
-        {
-            WorkflowExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_subscriptionId = subscriptionId == null ? null : WorkflowExpression.Compile(subscriptionId);
+            WorkflowExpression.Validate(__workflow_subscriptionId, nameof(subscriptionId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/powerautomate/webhook/unsubscribe/{0}", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/powerautomate/webhook/unsubscribe/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -34,17 +27,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signinghubwebhooks
 
     public class SigninghubwebhooksTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildWebhookSubscribeTrigger))]
-        public IWorkflowTrigger WebhookSubscribeTrigger([WorkflowExpression] Func<bodyeventTypeInput> bodyeventType,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WebhookSubscribeTrigger(Expression<Func<bodyeventTypeInput>> bodyeventType, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildWebhookSubscribeTrigger(WorkflowExpression<bodyeventTypeInput> bodyeventType,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodyeventType, nameof(bodyeventType), required: true);
+            var __workflow_bodyeventType = bodyeventType == null ? null : WorkflowExpression.Compile(bodyeventType);
+            WorkflowExpression.Validate(__workflow_bodyeventType, nameof(bodyeventType), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/powerautomate/webhook/subscribe";
@@ -55,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signinghubwebhooks
                 body["callbackUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 bodypropCount++;
-                body["eventType"] = ExpressionConverter.ConvertO(bodyeventType);
+                body["eventType"] = ExpressionConverter.ConvertO(__workflow_bodyeventType);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

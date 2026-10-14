@@ -1,34 +1,34 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Perplexityai
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class PerplexityaiActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "perplexityai")]
-        [WorkflowExpressionFactory(nameof(__BuildCompletion))]
-        public IBodyWorkflowAction<CompletionPostResponse> Completion([WorkflowExpression] Func<bodymodelInput> bodymodel, [WorkflowExpression] Func<bodymessagesInputItem[]> bodymessages, [WorkflowExpression] Func<int> bodymaxTokens = null, [WorkflowExpression] Func<double> bodytemperature = null, [WorkflowExpression] Func<double> bodytopP = null, [WorkflowExpression] Func<double> bodytopK = null, [WorkflowExpression] Func<double> bodypresencePenalty = null, [WorkflowExpression] Func<double> bodyfrequencyPenalty = null)
+        public IBodyWorkflowAction<CompletionPostResponse> Completion(Expression<Func<bodymodelInput>> bodymodel, Expression<Func<bodymessagesInputItem[]>> bodymessages, Expression<Func<int>> bodymaxTokens = null, Expression<Func<double>> bodytemperature = null, Expression<Func<double>> bodytopP = null, Expression<Func<double>> bodytopK = null, Expression<Func<double>> bodypresencePenalty = null, Expression<Func<double>> bodyfrequencyPenalty = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CompletionPostResponse> __BuildCompletion(WorkflowExpression<bodymodelInput> bodymodel, WorkflowExpression<bodymessagesInputItem[]> bodymessages, WorkflowExpression<int> bodymaxTokens = null, WorkflowExpression<double> bodytemperature = null, WorkflowExpression<double> bodytopP = null, WorkflowExpression<double> bodytopK = null, WorkflowExpression<double> bodypresencePenalty = null, WorkflowExpression<double> bodyfrequencyPenalty = null)
-        {
-            WorkflowExpression.Validate(bodymodel, nameof(bodymodel), required: true);
-            WorkflowExpression.Validate(bodymessages, nameof(bodymessages), required: true);
-            WorkflowExpression.Validate(bodymaxTokens, nameof(bodymaxTokens), required: false);
-            WorkflowExpression.Validate(bodytemperature, nameof(bodytemperature), required: false);
-            WorkflowExpression.Validate(bodytopP, nameof(bodytopP), required: false);
-            WorkflowExpression.Validate(bodytopK, nameof(bodytopK), required: false);
-            WorkflowExpression.Validate(bodypresencePenalty, nameof(bodypresencePenalty), required: false);
-            WorkflowExpression.Validate(bodyfrequencyPenalty, nameof(bodyfrequencyPenalty), required: false);
+            var __workflow_bodymodel = bodymodel == null ? null : WorkflowExpression.Compile(bodymodel);
+            WorkflowExpression.Validate(__workflow_bodymodel, nameof(bodymodel), required: true);
+            var __workflow_bodymessages = bodymessages == null ? null : WorkflowExpression.Compile(bodymessages);
+            WorkflowExpression.Validate(__workflow_bodymessages, nameof(bodymessages), required: true);
+            var __workflow_bodymaxTokens = bodymaxTokens == null ? null : WorkflowExpression.Compile(bodymaxTokens);
+            WorkflowExpression.Validate(__workflow_bodymaxTokens, nameof(bodymaxTokens), required: false);
+            var __workflow_bodytemperature = bodytemperature == null ? null : WorkflowExpression.Compile(bodytemperature);
+            WorkflowExpression.Validate(__workflow_bodytemperature, nameof(bodytemperature), required: false);
+            var __workflow_bodytopP = bodytopP == null ? null : WorkflowExpression.Compile(bodytopP);
+            WorkflowExpression.Validate(__workflow_bodytopP, nameof(bodytopP), required: false);
+            var __workflow_bodytopK = bodytopK == null ? null : WorkflowExpression.Compile(bodytopK);
+            WorkflowExpression.Validate(__workflow_bodytopK, nameof(bodytopK), required: false);
+            var __workflow_bodypresencePenalty = bodypresencePenalty == null ? null : WorkflowExpression.Compile(bodypresencePenalty);
+            WorkflowExpression.Validate(__workflow_bodypresencePenalty, nameof(bodypresencePenalty), required: false);
+            var __workflow_bodyfrequencyPenalty = bodyfrequencyPenalty == null ? null : WorkflowExpression.Compile(bodyfrequencyPenalty);
+            WorkflowExpression.Validate(__workflow_bodyfrequencyPenalty, nameof(bodyfrequencyPenalty), required: false);
             return new DeferredBodyAction<CompletionPostResponse>(() =>
             {
                 var apiCallPath = "/chat/completions";
@@ -37,42 +37,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Perplexityai
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["model"] = ExpressionConverter.ConvertO(bodymodel);
+                body["model"] = ExpressionConverter.ConvertO(__workflow_bodymodel);
                 bodypropCount++;
-                body["messages"] = ExpressionConverter.ConvertO(bodymessages);
-                if (bodymaxTokens != null)
+                body["messages"] = ExpressionConverter.ConvertO(__workflow_bodymessages);
+                if (__workflow_bodymaxTokens != null)
                 {
-                    body["max_tokens"] = ExpressionConverter.ConvertO(bodymaxTokens);
+                    body["max_tokens"] = ExpressionConverter.ConvertO(__workflow_bodymaxTokens);
                     bodypropCount++;
                 }
 
-                if (bodytemperature != null)
+                if (__workflow_bodytemperature != null)
                 {
-                    body["temperature"] = ExpressionConverter.ConvertO(bodytemperature);
+                    body["temperature"] = ExpressionConverter.ConvertO(__workflow_bodytemperature);
                     bodypropCount++;
                 }
 
-                if (bodytopP != null)
+                if (__workflow_bodytopP != null)
                 {
-                    body["top_p"] = ExpressionConverter.ConvertO(bodytopP);
+                    body["top_p"] = ExpressionConverter.ConvertO(__workflow_bodytopP);
                     bodypropCount++;
                 }
 
-                if (bodytopK != null)
+                if (__workflow_bodytopK != null)
                 {
-                    body["top_k"] = ExpressionConverter.ConvertO(bodytopK);
+                    body["top_k"] = ExpressionConverter.ConvertO(__workflow_bodytopK);
                     bodypropCount++;
                 }
 
-                if (bodypresencePenalty != null)
+                if (__workflow_bodypresencePenalty != null)
                 {
-                    body["presence_penalty"] = ExpressionConverter.ConvertO(bodypresencePenalty);
+                    body["presence_penalty"] = ExpressionConverter.ConvertO(__workflow_bodypresencePenalty);
                     bodypropCount++;
                 }
 
-                if (bodyfrequencyPenalty != null)
+                if (__workflow_bodyfrequencyPenalty != null)
                 {
-                    body["frequency_penalty"] = ExpressionConverter.ConvertO(bodyfrequencyPenalty);
+                    body["frequency_penalty"] = ExpressionConverter.ConvertO(__workflow_bodyfrequencyPenalty);
                     bodypropCount++;
                 }
 

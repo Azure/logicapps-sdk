@@ -1,48 +1,46 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class Office365groupsmailActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateConversation))]
-        public IBodyWorkflowAction<CreateConversationResponse> CreateConversation([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> bodynewTopic, [WorkflowExpression] Func<string> bodypostbodycontent, [WorkflowExpression] Func<string[]> bodypostpostCategories = null, [WorkflowExpression] Func<GetUsersGraphAction[]> bodypostnewParticipants = null, [WorkflowExpression] Func<ClientSendAttachment[]> bodypostfileAttachments = null)
+        public IBodyWorkflowAction<CreateConversationResponse> CreateConversation(Expression<Func<string>> groupId, Expression<Func<string>> bodynewTopic, Expression<Func<string>> bodypostbodycontent, Expression<Func<string[]>> bodypostpostCategories = null, Expression<Func<GetUsersGraphAction[]>> bodypostnewParticipants = null, Expression<Func<ClientSendAttachment[]>> bodypostfileAttachments = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateConversationResponse> __BuildCreateConversation(WorkflowExpression<string> groupId, WorkflowExpression<string> bodynewTopic, WorkflowExpression<string> bodypostbodycontent, WorkflowExpression<string[]> bodypostpostCategories = null, WorkflowExpression<GetUsersGraphAction[]> bodypostnewParticipants = null, WorkflowExpression<ClientSendAttachment[]> bodypostfileAttachments = null)
-        {
-            WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
-            WorkflowExpression.Validate(bodynewTopic, nameof(bodynewTopic), required: true);
-            WorkflowExpression.Validate(bodypostbodycontent, nameof(bodypostbodycontent), required: true);
-            WorkflowExpression.Validate(bodypostpostCategories, nameof(bodypostpostCategories), required: false);
-            WorkflowExpression.Validate(bodypostnewParticipants, nameof(bodypostnewParticipants), required: false);
-            WorkflowExpression.Validate(bodypostfileAttachments, nameof(bodypostfileAttachments), required: false);
+            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
+            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
+            var __workflow_bodynewTopic = bodynewTopic == null ? null : WorkflowExpression.Compile(bodynewTopic);
+            WorkflowExpression.Validate(__workflow_bodynewTopic, nameof(bodynewTopic), required: true);
+            var __workflow_bodypostbodycontent = bodypostbodycontent == null ? null : WorkflowExpression.Compile(bodypostbodycontent);
+            WorkflowExpression.Validate(__workflow_bodypostbodycontent, nameof(bodypostbodycontent), required: true);
+            var __workflow_bodypostpostCategories = bodypostpostCategories == null ? null : WorkflowExpression.Compile(bodypostpostCategories);
+            WorkflowExpression.Validate(__workflow_bodypostpostCategories, nameof(bodypostpostCategories), required: false);
+            var __workflow_bodypostnewParticipants = bodypostnewParticipants == null ? null : WorkflowExpression.Compile(bodypostnewParticipants);
+            WorkflowExpression.Validate(__workflow_bodypostnewParticipants, nameof(bodypostnewParticipants), required: false);
+            var __workflow_bodypostfileAttachments = bodypostfileAttachments == null ? null : WorkflowExpression.Compile(bodypostfileAttachments);
+            WorkflowExpression.Validate(__workflow_bodypostfileAttachments, nameof(bodypostfileAttachments), required: false);
             return new DeferredBodyAction<CreateConversationResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/conversations", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/conversations", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["content-type"] = Convert.ToString("application/json");
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["topic"] = ExpressionConverter.ConvertO(bodynewTopic);
+                body["topic"] = ExpressionConverter.ConvertO(__workflow_bodynewTopic);
                 var postObject = new JObject();
                 var postObjectpropCount = 0;
                 var bodyObject = new JObject();
                 var bodyObjectpropCount = 0;
                 bodyObjectpropCount++;
-                bodyObject["content"] = ExpressionConverter.ConvertO(bodypostbodycontent);
+                bodyObject["content"] = ExpressionConverter.ConvertO(__workflow_bodypostbodycontent);
                 bodyObject["contentType"] = "html";
                 bodyObjectpropCount++;
                 if (bodyObjectpropCount > 0)
@@ -51,21 +49,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
                     postObjectpropCount++;
                 }
 
-                if (bodypostpostCategories != null)
+                if (__workflow_bodypostpostCategories != null)
                 {
-                    postObject["categories"] = ExpressionConverter.ConvertO(bodypostpostCategories);
+                    postObject["categories"] = ExpressionConverter.ConvertO(__workflow_bodypostpostCategories);
                     postObjectpropCount++;
                 }
 
-                if (bodypostnewParticipants != null)
+                if (__workflow_bodypostnewParticipants != null)
                 {
-                    postObject["newParticipants"] = ExpressionConverter.ConvertO(bodypostnewParticipants);
+                    postObject["newParticipants"] = ExpressionConverter.ConvertO(__workflow_bodypostnewParticipants);
                     postObjectpropCount++;
                 }
 
-                if (bodypostfileAttachments != null)
+                if (__workflow_bodypostfileAttachments != null)
                 {
-                    postObject["attachments"] = ExpressionConverter.ConvertO(bodypostfileAttachments);
+                    postObject["attachments"] = ExpressionConverter.ConvertO(__workflow_bodypostfileAttachments);
                     postObjectpropCount++;
                 }
 
@@ -85,20 +83,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
-        [WorkflowExpressionFactory(nameof(__BuildGetGroupConversation))]
-        public IBodyWorkflowAction<Conversation> GetGroupConversation([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> conversationId)
+        public IBodyWorkflowAction<Conversation> GetGroupConversation(Expression<Func<string>> groupId, Expression<Func<string>> conversationId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Conversation> __BuildGetGroupConversation(WorkflowExpression<string> groupId, WorkflowExpression<string> conversationId)
-        {
-            WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
-            WorkflowExpression.Validate(conversationId, nameof(conversationId), required: true);
+            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
+            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
+            var __workflow_conversationId = conversationId == null ? null : WorkflowExpression.Compile(conversationId);
+            WorkflowExpression.Validate(__workflow_conversationId, nameof(conversationId), required: true);
             return new DeferredBodyAction<Conversation>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/conversations/{1}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(conversationId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/conversations/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_conversationId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Conversation>(callPayload);
@@ -106,20 +99,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
-        [WorkflowExpressionFactory(nameof(__BuildListConversationThreads))]
-        public IBodyWorkflowAction<ListConversationThreadsResponse> ListConversationThreads([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> conversationId)
+        public IBodyWorkflowAction<ListConversationThreadsResponse> ListConversationThreads(Expression<Func<string>> groupId, Expression<Func<string>> conversationId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListConversationThreadsResponse> __BuildListConversationThreads(WorkflowExpression<string> groupId, WorkflowExpression<string> conversationId)
-        {
-            WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
-            WorkflowExpression.Validate(conversationId, nameof(conversationId), required: true);
+            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
+            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
+            var __workflow_conversationId = conversationId == null ? null : WorkflowExpression.Compile(conversationId);
+            WorkflowExpression.Validate(__workflow_conversationId, nameof(conversationId), required: true);
             return new DeferredBodyAction<ListConversationThreadsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/conversations/{1}/threads", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(conversationId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/conversations/{1}/threads", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_conversationId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ListConversationThreadsResponse>(callPayload);
@@ -127,38 +115,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateConversationThread))]
-        public IBodyWorkflowAction<NewConversationThreadResponse> CreateConversationThread([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> conversationId, [WorkflowExpression] Func<string> bodynewTopic, [WorkflowExpression] Func<string> bodypostbodycontent, [WorkflowExpression] Func<string[]> bodypostpostCategories = null, [WorkflowExpression] Func<GetUsersGraphAction[]> bodypostnewParticipants = null, [WorkflowExpression] Func<ClientSendAttachment[]> bodypostfileAttachments = null)
+        public IBodyWorkflowAction<NewConversationThreadResponse> CreateConversationThread(Expression<Func<string>> groupId, Expression<Func<string>> conversationId, Expression<Func<string>> bodynewTopic, Expression<Func<string>> bodypostbodycontent, Expression<Func<string[]>> bodypostpostCategories = null, Expression<Func<GetUsersGraphAction[]>> bodypostnewParticipants = null, Expression<Func<ClientSendAttachment[]>> bodypostfileAttachments = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<NewConversationThreadResponse> __BuildCreateConversationThread(WorkflowExpression<string> groupId, WorkflowExpression<string> conversationId, WorkflowExpression<string> bodynewTopic, WorkflowExpression<string> bodypostbodycontent, WorkflowExpression<string[]> bodypostpostCategories = null, WorkflowExpression<GetUsersGraphAction[]> bodypostnewParticipants = null, WorkflowExpression<ClientSendAttachment[]> bodypostfileAttachments = null)
-        {
-            WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
-            WorkflowExpression.Validate(conversationId, nameof(conversationId), required: true);
-            WorkflowExpression.Validate(bodynewTopic, nameof(bodynewTopic), required: true);
-            WorkflowExpression.Validate(bodypostbodycontent, nameof(bodypostbodycontent), required: true);
-            WorkflowExpression.Validate(bodypostpostCategories, nameof(bodypostpostCategories), required: false);
-            WorkflowExpression.Validate(bodypostnewParticipants, nameof(bodypostnewParticipants), required: false);
-            WorkflowExpression.Validate(bodypostfileAttachments, nameof(bodypostfileAttachments), required: false);
+            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
+            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
+            var __workflow_conversationId = conversationId == null ? null : WorkflowExpression.Compile(conversationId);
+            WorkflowExpression.Validate(__workflow_conversationId, nameof(conversationId), required: true);
+            var __workflow_bodynewTopic = bodynewTopic == null ? null : WorkflowExpression.Compile(bodynewTopic);
+            WorkflowExpression.Validate(__workflow_bodynewTopic, nameof(bodynewTopic), required: true);
+            var __workflow_bodypostbodycontent = bodypostbodycontent == null ? null : WorkflowExpression.Compile(bodypostbodycontent);
+            WorkflowExpression.Validate(__workflow_bodypostbodycontent, nameof(bodypostbodycontent), required: true);
+            var __workflow_bodypostpostCategories = bodypostpostCategories == null ? null : WorkflowExpression.Compile(bodypostpostCategories);
+            WorkflowExpression.Validate(__workflow_bodypostpostCategories, nameof(bodypostpostCategories), required: false);
+            var __workflow_bodypostnewParticipants = bodypostnewParticipants == null ? null : WorkflowExpression.Compile(bodypostnewParticipants);
+            WorkflowExpression.Validate(__workflow_bodypostnewParticipants, nameof(bodypostnewParticipants), required: false);
+            var __workflow_bodypostfileAttachments = bodypostfileAttachments == null ? null : WorkflowExpression.Compile(bodypostfileAttachments);
+            WorkflowExpression.Validate(__workflow_bodypostfileAttachments, nameof(bodypostfileAttachments), required: false);
             return new DeferredBodyAction<NewConversationThreadResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/conversations/{1}/threads", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(conversationId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/conversations/{1}/threads", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_conversationId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["content-type"] = Convert.ToString("application/json");
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["topic"] = ExpressionConverter.ConvertO(bodynewTopic);
+                body["topic"] = ExpressionConverter.ConvertO(__workflow_bodynewTopic);
                 var postObject = new JObject();
                 var postObjectpropCount = 0;
                 var bodyObject = new JObject();
                 var bodyObjectpropCount = 0;
                 bodyObjectpropCount++;
-                bodyObject["content"] = ExpressionConverter.ConvertO(bodypostbodycontent);
+                bodyObject["content"] = ExpressionConverter.ConvertO(__workflow_bodypostbodycontent);
                 bodyObject["contentType"] = "html";
                 bodyObjectpropCount++;
                 if (bodyObjectpropCount > 0)
@@ -167,21 +155,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
                     postObjectpropCount++;
                 }
 
-                if (bodypostpostCategories != null)
+                if (__workflow_bodypostpostCategories != null)
                 {
-                    postObject["categories"] = ExpressionConverter.ConvertO(bodypostpostCategories);
+                    postObject["categories"] = ExpressionConverter.ConvertO(__workflow_bodypostpostCategories);
                     postObjectpropCount++;
                 }
 
-                if (bodypostnewParticipants != null)
+                if (__workflow_bodypostnewParticipants != null)
                 {
-                    postObject["newParticipants"] = ExpressionConverter.ConvertO(bodypostnewParticipants);
+                    postObject["newParticipants"] = ExpressionConverter.ConvertO(__workflow_bodypostnewParticipants);
                     postObjectpropCount++;
                 }
 
-                if (bodypostfileAttachments != null)
+                if (__workflow_bodypostfileAttachments != null)
                 {
-                    postObject["attachments"] = ExpressionConverter.ConvertO(bodypostfileAttachments);
+                    postObject["attachments"] = ExpressionConverter.ConvertO(__workflow_bodypostfileAttachments);
                     postObjectpropCount++;
                 }
 
@@ -201,19 +189,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
-        [WorkflowExpressionFactory(nameof(__BuildListGroupThreads))]
-        public IBodyWorkflowAction<ListGroupThreadsResponse> ListGroupThreads([WorkflowExpression] Func<string> groupId)
+        public IBodyWorkflowAction<ListGroupThreadsResponse> ListGroupThreads(Expression<Func<string>> groupId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListGroupThreadsResponse> __BuildListGroupThreads(WorkflowExpression<string> groupId)
-        {
-            WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
+            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
+            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
             return new DeferredBodyAction<ListGroupThreadsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/threads", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/threads", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ListGroupThreadsResponse>(callPayload);
@@ -221,37 +203,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateGroupThread))]
-        public IBodyWorkflowAction<NewConversationThreadResponse> CreateGroupThread([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> bodynewTopic, [WorkflowExpression] Func<string> bodypostbodycontent, [WorkflowExpression] Func<string[]> bodypostpostCategories = null, [WorkflowExpression] Func<GetUsersGraphAction[]> bodypostnewParticipants = null, [WorkflowExpression] Func<ClientSendAttachment[]> bodypostfileAttachments = null)
+        public IBodyWorkflowAction<NewConversationThreadResponse> CreateGroupThread(Expression<Func<string>> groupId, Expression<Func<string>> bodynewTopic, Expression<Func<string>> bodypostbodycontent, Expression<Func<string[]>> bodypostpostCategories = null, Expression<Func<GetUsersGraphAction[]>> bodypostnewParticipants = null, Expression<Func<ClientSendAttachment[]>> bodypostfileAttachments = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<NewConversationThreadResponse> __BuildCreateGroupThread(WorkflowExpression<string> groupId, WorkflowExpression<string> bodynewTopic, WorkflowExpression<string> bodypostbodycontent, WorkflowExpression<string[]> bodypostpostCategories = null, WorkflowExpression<GetUsersGraphAction[]> bodypostnewParticipants = null, WorkflowExpression<ClientSendAttachment[]> bodypostfileAttachments = null)
-        {
-            WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
-            WorkflowExpression.Validate(bodynewTopic, nameof(bodynewTopic), required: true);
-            WorkflowExpression.Validate(bodypostbodycontent, nameof(bodypostbodycontent), required: true);
-            WorkflowExpression.Validate(bodypostpostCategories, nameof(bodypostpostCategories), required: false);
-            WorkflowExpression.Validate(bodypostnewParticipants, nameof(bodypostnewParticipants), required: false);
-            WorkflowExpression.Validate(bodypostfileAttachments, nameof(bodypostfileAttachments), required: false);
+            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
+            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
+            var __workflow_bodynewTopic = bodynewTopic == null ? null : WorkflowExpression.Compile(bodynewTopic);
+            WorkflowExpression.Validate(__workflow_bodynewTopic, nameof(bodynewTopic), required: true);
+            var __workflow_bodypostbodycontent = bodypostbodycontent == null ? null : WorkflowExpression.Compile(bodypostbodycontent);
+            WorkflowExpression.Validate(__workflow_bodypostbodycontent, nameof(bodypostbodycontent), required: true);
+            var __workflow_bodypostpostCategories = bodypostpostCategories == null ? null : WorkflowExpression.Compile(bodypostpostCategories);
+            WorkflowExpression.Validate(__workflow_bodypostpostCategories, nameof(bodypostpostCategories), required: false);
+            var __workflow_bodypostnewParticipants = bodypostnewParticipants == null ? null : WorkflowExpression.Compile(bodypostnewParticipants);
+            WorkflowExpression.Validate(__workflow_bodypostnewParticipants, nameof(bodypostnewParticipants), required: false);
+            var __workflow_bodypostfileAttachments = bodypostfileAttachments == null ? null : WorkflowExpression.Compile(bodypostfileAttachments);
+            WorkflowExpression.Validate(__workflow_bodypostfileAttachments, nameof(bodypostfileAttachments), required: false);
             return new DeferredBodyAction<NewConversationThreadResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/threads", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/threads", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["content-type"] = Convert.ToString("application/json");
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["topic"] = ExpressionConverter.ConvertO(bodynewTopic);
+                body["topic"] = ExpressionConverter.ConvertO(__workflow_bodynewTopic);
                 var postObject = new JObject();
                 var postObjectpropCount = 0;
                 var bodyObject = new JObject();
                 var bodyObjectpropCount = 0;
                 bodyObjectpropCount++;
-                bodyObject["content"] = ExpressionConverter.ConvertO(bodypostbodycontent);
+                bodyObject["content"] = ExpressionConverter.ConvertO(__workflow_bodypostbodycontent);
                 bodyObject["contentType"] = "html";
                 bodyObjectpropCount++;
                 if (bodyObjectpropCount > 0)
@@ -260,21 +241,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
                     postObjectpropCount++;
                 }
 
-                if (bodypostpostCategories != null)
+                if (__workflow_bodypostpostCategories != null)
                 {
-                    postObject["categories"] = ExpressionConverter.ConvertO(bodypostpostCategories);
+                    postObject["categories"] = ExpressionConverter.ConvertO(__workflow_bodypostpostCategories);
                     postObjectpropCount++;
                 }
 
-                if (bodypostnewParticipants != null)
+                if (__workflow_bodypostnewParticipants != null)
                 {
-                    postObject["newParticipants"] = ExpressionConverter.ConvertO(bodypostnewParticipants);
+                    postObject["newParticipants"] = ExpressionConverter.ConvertO(__workflow_bodypostnewParticipants);
                     postObjectpropCount++;
                 }
 
-                if (bodypostfileAttachments != null)
+                if (__workflow_bodypostfileAttachments != null)
                 {
-                    postObject["attachments"] = ExpressionConverter.ConvertO(bodypostfileAttachments);
+                    postObject["attachments"] = ExpressionConverter.ConvertO(__workflow_bodypostfileAttachments);
                     postObjectpropCount++;
                 }
 
@@ -294,20 +275,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
-        [WorkflowExpressionFactory(nameof(__BuildGetConversationThread))]
-        public IBodyWorkflowAction<ConversationThread> GetConversationThread([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> threadId)
+        public IBodyWorkflowAction<ConversationThread> GetConversationThread(Expression<Func<string>> groupId, Expression<Func<string>> threadId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ConversationThread> __BuildGetConversationThread(WorkflowExpression<string> groupId, WorkflowExpression<string> threadId)
-        {
-            WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
-            WorkflowExpression.Validate(threadId, nameof(threadId), required: true);
+            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
+            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
+            var __workflow_threadId = threadId == null ? null : WorkflowExpression.Compile(threadId);
+            WorkflowExpression.Validate(__workflow_threadId, nameof(threadId), required: true);
             return new DeferredBodyAction<ConversationThread>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/threads/{1}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(threadId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/threads/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ConversationThread>(callPayload);
@@ -315,20 +291,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteConversationThread))]
-        public IWorkflowAction DeleteConversationThread([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> threadId)
+        public IWorkflowAction DeleteConversationThread(Expression<Func<string>> groupId, Expression<Func<string>> threadId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDeleteConversationThread(WorkflowExpression<string> groupId, WorkflowExpression<string> threadId)
-        {
-            WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
-            WorkflowExpression.Validate(threadId, nameof(threadId), required: true);
+            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
+            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
+            var __workflow_threadId = threadId == null ? null : WorkflowExpression.Compile(threadId);
+            WorkflowExpression.Validate(__workflow_threadId, nameof(threadId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/threads/{1}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(threadId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/threads/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -336,20 +307,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
-        [WorkflowExpressionFactory(nameof(__BuildListThreadPosts))]
-        public IBodyWorkflowAction<ListThreadPostsResponse> ListThreadPosts([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> threadId)
+        public IBodyWorkflowAction<ListThreadPostsResponse> ListThreadPosts(Expression<Func<string>> groupId, Expression<Func<string>> threadId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListThreadPostsResponse> __BuildListThreadPosts(WorkflowExpression<string> groupId, WorkflowExpression<string> threadId)
-        {
-            WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
-            WorkflowExpression.Validate(threadId, nameof(threadId), required: true);
+            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
+            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
+            var __workflow_threadId = threadId == null ? null : WorkflowExpression.Compile(threadId);
+            WorkflowExpression.Validate(__workflow_threadId, nameof(threadId), required: true);
             return new DeferredBodyAction<ListThreadPostsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/threads/{1}/posts", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(threadId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/threads/{1}/posts", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ListThreadPostsResponse>(callPayload);
@@ -357,21 +323,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
-        [WorkflowExpressionFactory(nameof(__BuildGetThread))]
-        public IBodyWorkflowAction<Post> GetThread([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> threadId, [WorkflowExpression] Func<string> postId)
+        public IBodyWorkflowAction<Post> GetThread(Expression<Func<string>> groupId, Expression<Func<string>> threadId, Expression<Func<string>> postId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Post> __BuildGetThread(WorkflowExpression<string> groupId, WorkflowExpression<string> threadId, WorkflowExpression<string> postId)
-        {
-            WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
-            WorkflowExpression.Validate(threadId, nameof(threadId), required: true);
-            WorkflowExpression.Validate(postId, nameof(postId), required: true);
+            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
+            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
+            var __workflow_threadId = threadId == null ? null : WorkflowExpression.Compile(threadId);
+            WorkflowExpression.Validate(__workflow_threadId, nameof(threadId), required: true);
+            var __workflow_postId = postId == null ? null : WorkflowExpression.Compile(postId);
+            WorkflowExpression.Validate(__workflow_postId, nameof(postId), required: true);
             return new DeferredBodyAction<Post>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/threads/{1}/posts/{2}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(postId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/threads/{1}/posts/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_postId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["$expand"] = Convert.ToString("attachments");
@@ -380,21 +342,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
-        [WorkflowExpressionFactory(nameof(__BuildGetAttachments))]
-        public IBodyWorkflowAction<GetAttachmentsResponse> GetAttachments([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> threadId, [WorkflowExpression] Func<string> postId)
+        public IBodyWorkflowAction<GetAttachmentsResponse> GetAttachments(Expression<Func<string>> groupId, Expression<Func<string>> threadId, Expression<Func<string>> postId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetAttachmentsResponse> __BuildGetAttachments(WorkflowExpression<string> groupId, WorkflowExpression<string> threadId, WorkflowExpression<string> postId)
-        {
-            WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
-            WorkflowExpression.Validate(threadId, nameof(threadId), required: true);
-            WorkflowExpression.Validate(postId, nameof(postId), required: true);
+            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
+            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
+            var __workflow_threadId = threadId == null ? null : WorkflowExpression.Compile(threadId);
+            WorkflowExpression.Validate(__workflow_threadId, nameof(threadId), required: true);
+            var __workflow_postId = postId == null ? null : WorkflowExpression.Compile(postId);
+            WorkflowExpression.Validate(__workflow_postId, nameof(postId), required: true);
             return new DeferredBodyAction<GetAttachmentsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/threads/{1}/posts/{2}/attachments", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(postId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/threads/{1}/posts/{2}/attachments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_postId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetAttachmentsResponse>(callPayload);
@@ -402,24 +360,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
-        [WorkflowExpressionFactory(nameof(__BuildReplyToAThread))]
-        public IWorkflowAction ReplyToAThread([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> threadId, [WorkflowExpression] Func<string> bodypostbodycontent, [WorkflowExpression] Func<string[]> bodypostpostCategories = null, [WorkflowExpression] Func<GetUsersGraphAction[]> bodypostnewParticipants = null, [WorkflowExpression] Func<ClientSendAttachment[]> bodypostfileAttachments = null)
+        public IWorkflowAction ReplyToAThread(Expression<Func<string>> groupId, Expression<Func<string>> threadId, Expression<Func<string>> bodypostbodycontent, Expression<Func<string[]>> bodypostpostCategories = null, Expression<Func<GetUsersGraphAction[]>> bodypostnewParticipants = null, Expression<Func<ClientSendAttachment[]>> bodypostfileAttachments = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildReplyToAThread(WorkflowExpression<string> groupId, WorkflowExpression<string> threadId, WorkflowExpression<string> bodypostbodycontent, WorkflowExpression<string[]> bodypostpostCategories = null, WorkflowExpression<GetUsersGraphAction[]> bodypostnewParticipants = null, WorkflowExpression<ClientSendAttachment[]> bodypostfileAttachments = null)
-        {
-            WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
-            WorkflowExpression.Validate(threadId, nameof(threadId), required: true);
-            WorkflowExpression.Validate(bodypostbodycontent, nameof(bodypostbodycontent), required: true);
-            WorkflowExpression.Validate(bodypostpostCategories, nameof(bodypostpostCategories), required: false);
-            WorkflowExpression.Validate(bodypostnewParticipants, nameof(bodypostnewParticipants), required: false);
-            WorkflowExpression.Validate(bodypostfileAttachments, nameof(bodypostfileAttachments), required: false);
+            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
+            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
+            var __workflow_threadId = threadId == null ? null : WorkflowExpression.Compile(threadId);
+            WorkflowExpression.Validate(__workflow_threadId, nameof(threadId), required: true);
+            var __workflow_bodypostbodycontent = bodypostbodycontent == null ? null : WorkflowExpression.Compile(bodypostbodycontent);
+            WorkflowExpression.Validate(__workflow_bodypostbodycontent, nameof(bodypostbodycontent), required: true);
+            var __workflow_bodypostpostCategories = bodypostpostCategories == null ? null : WorkflowExpression.Compile(bodypostpostCategories);
+            WorkflowExpression.Validate(__workflow_bodypostpostCategories, nameof(bodypostpostCategories), required: false);
+            var __workflow_bodypostnewParticipants = bodypostnewParticipants == null ? null : WorkflowExpression.Compile(bodypostnewParticipants);
+            WorkflowExpression.Validate(__workflow_bodypostnewParticipants, nameof(bodypostnewParticipants), required: false);
+            var __workflow_bodypostfileAttachments = bodypostfileAttachments == null ? null : WorkflowExpression.Compile(bodypostfileAttachments);
+            WorkflowExpression.Validate(__workflow_bodypostfileAttachments, nameof(bodypostfileAttachments), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/threads/{1}/reply", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(threadId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/threads/{1}/reply", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["content-type"] = Convert.ToString("application/json");
@@ -430,7 +387,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
                 var bodyObject = new JObject();
                 var bodyObjectpropCount = 0;
                 bodyObjectpropCount++;
-                bodyObject["content"] = ExpressionConverter.ConvertO(bodypostbodycontent);
+                bodyObject["content"] = ExpressionConverter.ConvertO(__workflow_bodypostbodycontent);
                 bodyObject["contentType"] = "html";
                 bodyObjectpropCount++;
                 if (bodyObjectpropCount > 0)
@@ -439,21 +396,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
                     postObjectpropCount++;
                 }
 
-                if (bodypostpostCategories != null)
+                if (__workflow_bodypostpostCategories != null)
                 {
-                    postObject["categories"] = ExpressionConverter.ConvertO(bodypostpostCategories);
+                    postObject["categories"] = ExpressionConverter.ConvertO(__workflow_bodypostpostCategories);
                     postObjectpropCount++;
                 }
 
-                if (bodypostnewParticipants != null)
+                if (__workflow_bodypostnewParticipants != null)
                 {
-                    postObject["newParticipants"] = ExpressionConverter.ConvertO(bodypostnewParticipants);
+                    postObject["newParticipants"] = ExpressionConverter.ConvertO(__workflow_bodypostnewParticipants);
                     postObjectpropCount++;
                 }
 
-                if (bodypostfileAttachments != null)
+                if (__workflow_bodypostfileAttachments != null)
                 {
-                    postObject["attachments"] = ExpressionConverter.ConvertO(bodypostfileAttachments);
+                    postObject["attachments"] = ExpressionConverter.ConvertO(__workflow_bodypostfileAttachments);
                     postObjectpropCount++;
                 }
 
@@ -473,25 +430,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
-        [WorkflowExpressionFactory(nameof(__BuildReply))]
-        public IWorkflowAction Reply([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> threadId, [WorkflowExpression] Func<string> postId, [WorkflowExpression] Func<string> bodypostbodycontent, [WorkflowExpression] Func<string[]> bodypostpostCategories = null, [WorkflowExpression] Func<GetUsersGraphAction[]> bodypostnewParticipants = null, [WorkflowExpression] Func<ClientSendAttachment[]> bodypostfileAttachments = null)
+        public IWorkflowAction Reply(Expression<Func<string>> groupId, Expression<Func<string>> threadId, Expression<Func<string>> postId, Expression<Func<string>> bodypostbodycontent, Expression<Func<string[]>> bodypostpostCategories = null, Expression<Func<GetUsersGraphAction[]>> bodypostnewParticipants = null, Expression<Func<ClientSendAttachment[]>> bodypostfileAttachments = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildReply(WorkflowExpression<string> groupId, WorkflowExpression<string> threadId, WorkflowExpression<string> postId, WorkflowExpression<string> bodypostbodycontent, WorkflowExpression<string[]> bodypostpostCategories = null, WorkflowExpression<GetUsersGraphAction[]> bodypostnewParticipants = null, WorkflowExpression<ClientSendAttachment[]> bodypostfileAttachments = null)
-        {
-            WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
-            WorkflowExpression.Validate(threadId, nameof(threadId), required: true);
-            WorkflowExpression.Validate(postId, nameof(postId), required: true);
-            WorkflowExpression.Validate(bodypostbodycontent, nameof(bodypostbodycontent), required: true);
-            WorkflowExpression.Validate(bodypostpostCategories, nameof(bodypostpostCategories), required: false);
-            WorkflowExpression.Validate(bodypostnewParticipants, nameof(bodypostnewParticipants), required: false);
-            WorkflowExpression.Validate(bodypostfileAttachments, nameof(bodypostfileAttachments), required: false);
+            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
+            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
+            var __workflow_threadId = threadId == null ? null : WorkflowExpression.Compile(threadId);
+            WorkflowExpression.Validate(__workflow_threadId, nameof(threadId), required: true);
+            var __workflow_postId = postId == null ? null : WorkflowExpression.Compile(postId);
+            WorkflowExpression.Validate(__workflow_postId, nameof(postId), required: true);
+            var __workflow_bodypostbodycontent = bodypostbodycontent == null ? null : WorkflowExpression.Compile(bodypostbodycontent);
+            WorkflowExpression.Validate(__workflow_bodypostbodycontent, nameof(bodypostbodycontent), required: true);
+            var __workflow_bodypostpostCategories = bodypostpostCategories == null ? null : WorkflowExpression.Compile(bodypostpostCategories);
+            WorkflowExpression.Validate(__workflow_bodypostpostCategories, nameof(bodypostpostCategories), required: false);
+            var __workflow_bodypostnewParticipants = bodypostnewParticipants == null ? null : WorkflowExpression.Compile(bodypostnewParticipants);
+            WorkflowExpression.Validate(__workflow_bodypostnewParticipants, nameof(bodypostnewParticipants), required: false);
+            var __workflow_bodypostfileAttachments = bodypostfileAttachments == null ? null : WorkflowExpression.Compile(bodypostfileAttachments);
+            WorkflowExpression.Validate(__workflow_bodypostfileAttachments, nameof(bodypostfileAttachments), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/threads/{1}/posts/{2}/reply", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(postId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/threads/{1}/posts/{2}/reply", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_postId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["content-type"] = Convert.ToString("application/json");
@@ -502,7 +459,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
                 var bodyObject = new JObject();
                 var bodyObjectpropCount = 0;
                 bodyObjectpropCount++;
-                bodyObject["content"] = ExpressionConverter.ConvertO(bodypostbodycontent);
+                bodyObject["content"] = ExpressionConverter.ConvertO(__workflow_bodypostbodycontent);
                 bodyObject["contentType"] = "html";
                 bodyObjectpropCount++;
                 if (bodyObjectpropCount > 0)
@@ -511,21 +468,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
                     postObjectpropCount++;
                 }
 
-                if (bodypostpostCategories != null)
+                if (__workflow_bodypostpostCategories != null)
                 {
-                    postObject["categories"] = ExpressionConverter.ConvertO(bodypostpostCategories);
+                    postObject["categories"] = ExpressionConverter.ConvertO(__workflow_bodypostpostCategories);
                     postObjectpropCount++;
                 }
 
-                if (bodypostnewParticipants != null)
+                if (__workflow_bodypostnewParticipants != null)
                 {
-                    postObject["newParticipants"] = ExpressionConverter.ConvertO(bodypostnewParticipants);
+                    postObject["newParticipants"] = ExpressionConverter.ConvertO(__workflow_bodypostnewParticipants);
                     postObjectpropCount++;
                 }
 
-                if (bodypostfileAttachments != null)
+                if (__workflow_bodypostfileAttachments != null)
                 {
-                    postObject["attachments"] = ExpressionConverter.ConvertO(bodypostfileAttachments);
+                    postObject["attachments"] = ExpressionConverter.ConvertO(__workflow_bodypostfileAttachments);
                     postObjectpropCount++;
                 }
 
@@ -545,82 +502,83 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
-        [WorkflowExpressionFactory(nameof(__BuildHttpRequest))]
-        public IBodyWorkflowAction<JToken> HttpRequest([WorkflowExpression] Func<string> uri, [WorkflowExpression] Func<methodInput> method, [WorkflowExpression] Func<string> body = null, [WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<string> customHeader1 = null, [WorkflowExpression] Func<string> customHeader2 = null, [WorkflowExpression] Func<string> customHeader3 = null, [WorkflowExpression] Func<string> customHeader4 = null, [WorkflowExpression] Func<string> customHeader5 = null)
+        public IBodyWorkflowAction<JToken> HttpRequest(Expression<Func<string>> uri, Expression<Func<methodInput>> method, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null, Expression<Func<string>> customHeader1 = null, Expression<Func<string>> customHeader2 = null, Expression<Func<string>> customHeader3 = null, Expression<Func<string>> customHeader4 = null, Expression<Func<string>> customHeader5 = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildHttpRequest(WorkflowExpression<string> uri, WorkflowExpression<methodInput> method, WorkflowExpression<string> body = null, WorkflowExpression<string> contentType = null, WorkflowExpression<string> customHeader1 = null, WorkflowExpression<string> customHeader2 = null, WorkflowExpression<string> customHeader3 = null, WorkflowExpression<string> customHeader4 = null, WorkflowExpression<string> customHeader5 = null)
-        {
-            WorkflowExpression.Validate(uri, nameof(uri), required: true);
-            WorkflowExpression.Validate(method, nameof(method), required: true);
-            WorkflowExpression.Validate(body, nameof(body), required: false);
-            WorkflowExpression.Validate(contentType, nameof(contentType), required: false);
-            WorkflowExpression.Validate(customHeader1, nameof(customHeader1), required: false);
-            WorkflowExpression.Validate(customHeader2, nameof(customHeader2), required: false);
-            WorkflowExpression.Validate(customHeader3, nameof(customHeader3), required: false);
-            WorkflowExpression.Validate(customHeader4, nameof(customHeader4), required: false);
-            WorkflowExpression.Validate(customHeader5, nameof(customHeader5), required: false);
+            var __workflow_uri = uri == null ? null : WorkflowExpression.Compile(uri);
+            WorkflowExpression.Validate(__workflow_uri, nameof(uri), required: true);
+            var __workflow_method = method == null ? null : WorkflowExpression.Compile(method);
+            WorkflowExpression.Validate(__workflow_method, nameof(method), required: true);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
+            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
+            var __workflow_customHeader1 = customHeader1 == null ? null : WorkflowExpression.Compile(customHeader1);
+            WorkflowExpression.Validate(__workflow_customHeader1, nameof(customHeader1), required: false);
+            var __workflow_customHeader2 = customHeader2 == null ? null : WorkflowExpression.Compile(customHeader2);
+            WorkflowExpression.Validate(__workflow_customHeader2, nameof(customHeader2), required: false);
+            var __workflow_customHeader3 = customHeader3 == null ? null : WorkflowExpression.Compile(customHeader3);
+            WorkflowExpression.Validate(__workflow_customHeader3, nameof(customHeader3), required: false);
+            var __workflow_customHeader4 = customHeader4 == null ? null : WorkflowExpression.Compile(customHeader4);
+            WorkflowExpression.Validate(__workflow_customHeader4, nameof(customHeader4), required: false);
+            var __workflow_customHeader5 = customHeader5 == null ? null : WorkflowExpression.Compile(customHeader5);
+            WorkflowExpression.Validate(__workflow_customHeader5, nameof(customHeader5), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/httprequest";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["Uri"] = ExpressionConverter.Convert(uri);
-                callPayload.Headers["Method"] = ExpressionConverter.Convert(method);
+                callPayload.Headers["Uri"] = ExpressionConverter.Convert(__workflow_uri);
+                callPayload.Headers["Method"] = ExpressionConverter.Convert(__workflow_method);
                 callPayload.Headers["ContentType"] = Convert.ToString("application/json");
-                if (contentType != null)
-                    callPayload.Headers["ContentType"] = ExpressionConverter.Convert(contentType);
-                if (customHeader1 != null)
-                    callPayload.Headers["CustomHeader1"] = ExpressionConverter.Convert(customHeader1);
-                if (customHeader2 != null)
-                    callPayload.Headers["CustomHeader2"] = ExpressionConverter.Convert(customHeader2);
-                if (customHeader3 != null)
-                    callPayload.Headers["CustomHeader3"] = ExpressionConverter.Convert(customHeader3);
-                if (customHeader4 != null)
-                    callPayload.Headers["CustomHeader4"] = ExpressionConverter.Convert(customHeader4);
-                if (customHeader5 != null)
-                    callPayload.Headers["CustomHeader5"] = ExpressionConverter.Convert(customHeader5);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                if (__workflow_contentType != null)
+                    callPayload.Headers["ContentType"] = ExpressionConverter.Convert(__workflow_contentType);
+                if (__workflow_customHeader1 != null)
+                    callPayload.Headers["CustomHeader1"] = ExpressionConverter.Convert(__workflow_customHeader1);
+                if (__workflow_customHeader2 != null)
+                    callPayload.Headers["CustomHeader2"] = ExpressionConverter.Convert(__workflow_customHeader2);
+                if (__workflow_customHeader3 != null)
+                    callPayload.Headers["CustomHeader3"] = ExpressionConverter.Convert(__workflow_customHeader3);
+                if (__workflow_customHeader4 != null)
+                    callPayload.Headers["CustomHeader4"] = ExpressionConverter.Convert(__workflow_customHeader4);
+                if (__workflow_customHeader5 != null)
+                    callPayload.Headers["CustomHeader5"] = ExpressionConverter.Convert(__workflow_customHeader5);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
-        [WorkflowExpressionFactory(nameof(__BuildForward))]
-        public IWorkflowAction Forward([WorkflowExpression] Func<string> groupMail, [WorkflowExpression] Func<string> conversationId, [WorkflowExpression] Func<string> threadId, [WorkflowExpression] Func<string> postId, [WorkflowExpression] Func<GetUsersGraphAction[]> bodyrecipients, [WorkflowExpression] Func<string> bodycomment = null)
+        public IWorkflowAction Forward(Expression<Func<string>> groupMail, Expression<Func<string>> conversationId, Expression<Func<string>> threadId, Expression<Func<string>> postId, Expression<Func<GetUsersGraphAction[]>> bodyrecipients, Expression<Func<string>> bodycomment = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildForward(WorkflowExpression<string> groupMail, WorkflowExpression<string> conversationId, WorkflowExpression<string> threadId, WorkflowExpression<string> postId, WorkflowExpression<GetUsersGraphAction[]> bodyrecipients, WorkflowExpression<string> bodycomment = null)
-        {
-            WorkflowExpression.Validate(groupMail, nameof(groupMail), required: true);
-            WorkflowExpression.Validate(conversationId, nameof(conversationId), required: true);
-            WorkflowExpression.Validate(threadId, nameof(threadId), required: true);
-            WorkflowExpression.Validate(postId, nameof(postId), required: true);
-            WorkflowExpression.Validate(bodyrecipients, nameof(bodyrecipients), required: true);
-            WorkflowExpression.Validate(bodycomment, nameof(bodycomment), required: false);
+            var __workflow_groupMail = groupMail == null ? null : WorkflowExpression.Compile(groupMail);
+            WorkflowExpression.Validate(__workflow_groupMail, nameof(groupMail), required: true);
+            var __workflow_conversationId = conversationId == null ? null : WorkflowExpression.Compile(conversationId);
+            WorkflowExpression.Validate(__workflow_conversationId, nameof(conversationId), required: true);
+            var __workflow_threadId = threadId == null ? null : WorkflowExpression.Compile(threadId);
+            WorkflowExpression.Validate(__workflow_threadId, nameof(threadId), required: true);
+            var __workflow_postId = postId == null ? null : WorkflowExpression.Compile(postId);
+            WorkflowExpression.Validate(__workflow_postId, nameof(postId), required: true);
+            var __workflow_bodyrecipients = bodyrecipients == null ? null : WorkflowExpression.Compile(bodyrecipients);
+            WorkflowExpression.Validate(__workflow_bodyrecipients, nameof(bodyrecipients), required: true);
+            var __workflow_bodycomment = bodycomment == null ? null : WorkflowExpression.Compile(bodycomment);
+            WorkflowExpression.Validate(__workflow_bodycomment, nameof(bodycomment), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/groups/{0}/conversations/{1}/threads/{2}/posts/{3}/forward", ExpressionConverter.ConvertWithUrlEncoding(groupMail, 1), ExpressionConverter.ConvertWithUrlEncoding(conversationId, 1), ExpressionConverter.ConvertWithUrlEncoding(threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(postId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/groups/{0}/conversations/{1}/threads/{2}/posts/{3}/forward", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupMail, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_conversationId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_postId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Prefer"] = Convert.ToString("exchange.behavior=\"ForwardPostWithMessage\"");
                 callPayload.Headers["content-type"] = Convert.ToString("application/json");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodycomment != null)
+                if (__workflow_bodycomment != null)
                 {
-                    body["Comment"] = ExpressionConverter.ConvertO(bodycomment);
+                    body["Comment"] = ExpressionConverter.ConvertO(__workflow_bodycomment);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["ToRecipients"] = ExpressionConverter.ConvertO(bodyrecipients);
+                body["ToRecipients"] = ExpressionConverter.ConvertO(__workflow_bodyrecipients);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -633,20 +591,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
 
     public class Office365groupsmailTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildOnNewEmailInGroup))]
-        public IBodyWorkflowTrigger<OnNewEmailInGroupResponse> OnNewEmailInGroup([WorkflowExpression] Func<string> groupId,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnNewEmailInGroupResponse> OnNewEmailInGroup(Expression<Func<string>> groupId, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<OnNewEmailInGroupResponse> __BuildOnNewEmailInGroup(WorkflowExpression<string> groupId,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
+            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
+            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
             return new DeferredBodyTrigger<OnNewEmailInGroupResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/v1.0/groups/{0}/conversations", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/v1.0/groups/{0}/conversations", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["$select"] = Convert.ToString("id,lastDeliveredDateTime");

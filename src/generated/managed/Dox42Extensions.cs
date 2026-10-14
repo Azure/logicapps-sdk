@@ -1,41 +1,37 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dox42
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class Dox42Actions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dox42")]
-        [WorkflowExpressionFactory(nameof(__BuildDox42Call))]
-        public IWorkflowAction Dox42Call([WorkflowExpression] Func<string> domainname, [WorkflowExpression] Func<string> querystring, [WorkflowExpression] Func<string> token, [WorkflowExpression] Func<string> accept = null)
+        public IWorkflowAction Dox42Call(Expression<Func<string>> domainname, Expression<Func<string>> querystring, Expression<Func<string>> token, Expression<Func<string>> accept = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDox42Call(WorkflowExpression<string> domainname, WorkflowExpression<string> querystring, WorkflowExpression<string> token, WorkflowExpression<string> accept = null)
-        {
-            WorkflowExpression.Validate(domainname, nameof(domainname), required: true);
-            WorkflowExpression.Validate(querystring, nameof(querystring), required: true);
-            WorkflowExpression.Validate(token, nameof(token), required: true);
-            WorkflowExpression.Validate(accept, nameof(accept), required: false);
+            var __workflow_domainname = domainname == null ? null : WorkflowExpression.Compile(domainname);
+            WorkflowExpression.Validate(__workflow_domainname, nameof(domainname), required: true);
+            var __workflow_querystring = querystring == null ? null : WorkflowExpression.Compile(querystring);
+            WorkflowExpression.Validate(__workflow_querystring, nameof(querystring), required: true);
+            var __workflow_token = token == null ? null : WorkflowExpression.Compile(token);
+            WorkflowExpression.Validate(__workflow_token, nameof(token), required: true);
+            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
+            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/dox42RestService.ashx";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["querystring"] = ExpressionConverter.Convert(querystring);
-                callPayload.Headers["domainname"] = ExpressionConverter.Convert(domainname);
-                callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+                callPayload.Queries["querystring"] = ExpressionConverter.Convert(__workflow_querystring);
+                callPayload.Headers["domainname"] = ExpressionConverter.Convert(__workflow_domainname);
+                callPayload.Headers["token"] = ExpressionConverter.Convert(__workflow_token);
                 callPayload.Headers["accept"] = Convert.ToString("application/json");
-                if (accept != null)
-                    callPayload.Headers["accept"] = ExpressionConverter.Convert(accept);
+                if (__workflow_accept != null)
+                    callPayload.Headers["accept"] = ExpressionConverter.Convert(__workflow_accept);
                 return new ApiConnectionAction(callPayload);
             });
         }

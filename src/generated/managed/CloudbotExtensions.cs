@@ -1,164 +1,164 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudbot
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class CloudbotActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudbot")]
-        [WorkflowExpressionFactory(nameof(__BuildUploadFile))]
-        public IBodyWorkflowAction<UploadFileResponse> UploadFile([WorkflowExpression] Func<xCbotContentLanguageInput> xCbotContentLanguage, [WorkflowExpression] Func<string> publicId, [WorkflowExpression] Func<string> xCbotFilename, [WorkflowExpression] Func<string> fileContents = null)
+        public IBodyWorkflowAction<UploadFileResponse> UploadFile(Expression<Func<xCbotContentLanguageInput>> xCbotContentLanguage, Expression<Func<string>> publicId, Expression<Func<string>> xCbotFilename, Expression<Func<string>> fileContents = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UploadFileResponse> __BuildUploadFile(WorkflowExpression<xCbotContentLanguageInput> xCbotContentLanguage, WorkflowExpression<string> publicId, WorkflowExpression<string> xCbotFilename, WorkflowExpression<string> fileContents = null)
-        {
-            WorkflowExpression.Validate(xCbotContentLanguage, nameof(xCbotContentLanguage), required: true);
-            WorkflowExpression.Validate(publicId, nameof(publicId), required: true);
-            WorkflowExpression.Validate(xCbotFilename, nameof(xCbotFilename), required: true);
-            WorkflowExpression.Validate(fileContents, nameof(fileContents), required: false);
+            var __workflow_xCbotContentLanguage = xCbotContentLanguage == null ? null : WorkflowExpression.Compile(xCbotContentLanguage);
+            WorkflowExpression.Validate(__workflow_xCbotContentLanguage, nameof(xCbotContentLanguage), required: true);
+            var __workflow_publicId = publicId == null ? null : WorkflowExpression.Compile(publicId);
+            WorkflowExpression.Validate(__workflow_publicId, nameof(publicId), required: true);
+            var __workflow_xCbotFilename = xCbotFilename == null ? null : WorkflowExpression.Compile(xCbotFilename);
+            WorkflowExpression.Validate(__workflow_xCbotFilename, nameof(xCbotFilename), required: true);
+            var __workflow_fileContents = fileContents == null ? null : WorkflowExpression.Compile(fileContents);
+            WorkflowExpression.Validate(__workflow_fileContents, nameof(fileContents), required: false);
             return new DeferredBodyAction<UploadFileResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/services/files/temp", ExpressionConverter.ConvertWithUrlEncoding(publicId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/services/files/temp", ExpressionConverter.ConvertWithUrlEncoding(__workflow_publicId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["x-cbot-content-language"] = ExpressionConverter.Convert(xCbotContentLanguage);
-                callPayload.Headers["x-cbot-filename"] = ExpressionConverter.Convert(xCbotFilename);
-                callPayload.Body = ExpressionConverter.ConvertO(fileContents);
+                callPayload.Headers["x-cbot-content-language"] = ExpressionConverter.Convert(__workflow_xCbotContentLanguage);
+                callPayload.Headers["x-cbot-filename"] = ExpressionConverter.Convert(__workflow_xCbotFilename);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_fileContents);
                 return new ApiConnectionAction<UploadFileResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudbot")]
-        [WorkflowExpressionFactory(nameof(__BuildDownloadFile))]
-        public IBodyWorkflowAction<string> DownloadFile([WorkflowExpression] Func<xCbotContentLanguageInput> xCbotContentLanguage, [WorkflowExpression] Func<string> publicId, [WorkflowExpression] Func<string> @ref)
+        public IBodyWorkflowAction<string> DownloadFile(Expression<Func<xCbotContentLanguageInput>> xCbotContentLanguage, Expression<Func<string>> publicId, Expression<Func<string>> @ref)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildDownloadFile(WorkflowExpression<xCbotContentLanguageInput> xCbotContentLanguage, WorkflowExpression<string> publicId, WorkflowExpression<string> @ref)
-        {
-            WorkflowExpression.Validate(xCbotContentLanguage, nameof(xCbotContentLanguage), required: true);
-            WorkflowExpression.Validate(publicId, nameof(publicId), required: true);
-            WorkflowExpression.Validate(@ref, nameof(@ref), required: true);
+            var __workflow_xCbotContentLanguage = xCbotContentLanguage == null ? null : WorkflowExpression.Compile(xCbotContentLanguage);
+            WorkflowExpression.Validate(__workflow_xCbotContentLanguage, nameof(xCbotContentLanguage), required: true);
+            var __workflow_publicId = publicId == null ? null : WorkflowExpression.Compile(publicId);
+            WorkflowExpression.Validate(__workflow_publicId, nameof(publicId), required: true);
+            var __workflow_ref = @ref == null ? null : WorkflowExpression.Compile(@ref);
+            WorkflowExpression.Validate(__workflow_ref, nameof(@ref), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/services/files/{1}", ExpressionConverter.ConvertWithUrlEncoding(publicId, 1), ExpressionConverter.ConvertWithUrlEncoding(@ref, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/services/files/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_publicId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_ref, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["x-cbot-content-language"] = ExpressionConverter.Convert(xCbotContentLanguage);
+                callPayload.Headers["x-cbot-content-language"] = ExpressionConverter.Convert(__workflow_xCbotContentLanguage);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudbot")]
-        [WorkflowExpressionFactory(nameof(__BuildExecuteBot))]
-        public IBodyWorkflowAction<ExecuteBotResponse> ExecuteBot([WorkflowExpression] Func<xCbotContentLanguageInput> xCbotContentLanguage, [WorkflowExpression] Func<string> publicId, [WorkflowExpression] Func<string> botId, [WorkflowExpression] Func<bool> bodyasync, [WorkflowExpression] Func<string> bodydata1 = null, [WorkflowExpression] Func<string> bodydata2 = null, [WorkflowExpression] Func<string> bodydata3 = null, [WorkflowExpression] Func<string> bodydata4 = null, [WorkflowExpression] Func<string> bodydata5 = null, [WorkflowExpression] Func<string> bodydata6 = null, [WorkflowExpression] Func<string> bodydata7 = null, [WorkflowExpression] Func<string> bodydata8 = null, [WorkflowExpression] Func<string> bodydata9 = null, [WorkflowExpression] Func<string> bodydata10 = null, [WorkflowExpression] Func<string> bodyaPIParameters = null)
+        public IBodyWorkflowAction<ExecuteBotResponse> ExecuteBot(Expression<Func<xCbotContentLanguageInput>> xCbotContentLanguage, Expression<Func<string>> publicId, Expression<Func<string>> botId, Expression<Func<bool>> bodyasync, Expression<Func<string>> bodydata1 = null, Expression<Func<string>> bodydata2 = null, Expression<Func<string>> bodydata3 = null, Expression<Func<string>> bodydata4 = null, Expression<Func<string>> bodydata5 = null, Expression<Func<string>> bodydata6 = null, Expression<Func<string>> bodydata7 = null, Expression<Func<string>> bodydata8 = null, Expression<Func<string>> bodydata9 = null, Expression<Func<string>> bodydata10 = null, Expression<Func<string>> bodyaPIParameters = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ExecuteBotResponse> __BuildExecuteBot(WorkflowExpression<xCbotContentLanguageInput> xCbotContentLanguage, WorkflowExpression<string> publicId, WorkflowExpression<string> botId, WorkflowExpression<bool> bodyasync, WorkflowExpression<string> bodydata1 = null, WorkflowExpression<string> bodydata2 = null, WorkflowExpression<string> bodydata3 = null, WorkflowExpression<string> bodydata4 = null, WorkflowExpression<string> bodydata5 = null, WorkflowExpression<string> bodydata6 = null, WorkflowExpression<string> bodydata7 = null, WorkflowExpression<string> bodydata8 = null, WorkflowExpression<string> bodydata9 = null, WorkflowExpression<string> bodydata10 = null, WorkflowExpression<string> bodyaPIParameters = null)
-        {
-            WorkflowExpression.Validate(xCbotContentLanguage, nameof(xCbotContentLanguage), required: true);
-            WorkflowExpression.Validate(publicId, nameof(publicId), required: true);
-            WorkflowExpression.Validate(botId, nameof(botId), required: true);
-            WorkflowExpression.Validate(bodyasync, nameof(bodyasync), required: true);
-            WorkflowExpression.Validate(bodydata1, nameof(bodydata1), required: false);
-            WorkflowExpression.Validate(bodydata2, nameof(bodydata2), required: false);
-            WorkflowExpression.Validate(bodydata3, nameof(bodydata3), required: false);
-            WorkflowExpression.Validate(bodydata4, nameof(bodydata4), required: false);
-            WorkflowExpression.Validate(bodydata5, nameof(bodydata5), required: false);
-            WorkflowExpression.Validate(bodydata6, nameof(bodydata6), required: false);
-            WorkflowExpression.Validate(bodydata7, nameof(bodydata7), required: false);
-            WorkflowExpression.Validate(bodydata8, nameof(bodydata8), required: false);
-            WorkflowExpression.Validate(bodydata9, nameof(bodydata9), required: false);
-            WorkflowExpression.Validate(bodydata10, nameof(bodydata10), required: false);
-            WorkflowExpression.Validate(bodyaPIParameters, nameof(bodyaPIParameters), required: false);
+            var __workflow_xCbotContentLanguage = xCbotContentLanguage == null ? null : WorkflowExpression.Compile(xCbotContentLanguage);
+            WorkflowExpression.Validate(__workflow_xCbotContentLanguage, nameof(xCbotContentLanguage), required: true);
+            var __workflow_publicId = publicId == null ? null : WorkflowExpression.Compile(publicId);
+            WorkflowExpression.Validate(__workflow_publicId, nameof(publicId), required: true);
+            var __workflow_botId = botId == null ? null : WorkflowExpression.Compile(botId);
+            WorkflowExpression.Validate(__workflow_botId, nameof(botId), required: true);
+            var __workflow_bodyasync = bodyasync == null ? null : WorkflowExpression.Compile(bodyasync);
+            WorkflowExpression.Validate(__workflow_bodyasync, nameof(bodyasync), required: true);
+            var __workflow_bodydata1 = bodydata1 == null ? null : WorkflowExpression.Compile(bodydata1);
+            WorkflowExpression.Validate(__workflow_bodydata1, nameof(bodydata1), required: false);
+            var __workflow_bodydata2 = bodydata2 == null ? null : WorkflowExpression.Compile(bodydata2);
+            WorkflowExpression.Validate(__workflow_bodydata2, nameof(bodydata2), required: false);
+            var __workflow_bodydata3 = bodydata3 == null ? null : WorkflowExpression.Compile(bodydata3);
+            WorkflowExpression.Validate(__workflow_bodydata3, nameof(bodydata3), required: false);
+            var __workflow_bodydata4 = bodydata4 == null ? null : WorkflowExpression.Compile(bodydata4);
+            WorkflowExpression.Validate(__workflow_bodydata4, nameof(bodydata4), required: false);
+            var __workflow_bodydata5 = bodydata5 == null ? null : WorkflowExpression.Compile(bodydata5);
+            WorkflowExpression.Validate(__workflow_bodydata5, nameof(bodydata5), required: false);
+            var __workflow_bodydata6 = bodydata6 == null ? null : WorkflowExpression.Compile(bodydata6);
+            WorkflowExpression.Validate(__workflow_bodydata6, nameof(bodydata6), required: false);
+            var __workflow_bodydata7 = bodydata7 == null ? null : WorkflowExpression.Compile(bodydata7);
+            WorkflowExpression.Validate(__workflow_bodydata7, nameof(bodydata7), required: false);
+            var __workflow_bodydata8 = bodydata8 == null ? null : WorkflowExpression.Compile(bodydata8);
+            WorkflowExpression.Validate(__workflow_bodydata8, nameof(bodydata8), required: false);
+            var __workflow_bodydata9 = bodydata9 == null ? null : WorkflowExpression.Compile(bodydata9);
+            WorkflowExpression.Validate(__workflow_bodydata9, nameof(bodydata9), required: false);
+            var __workflow_bodydata10 = bodydata10 == null ? null : WorkflowExpression.Compile(bodydata10);
+            WorkflowExpression.Validate(__workflow_bodydata10, nameof(bodydata10), required: false);
+            var __workflow_bodyaPIParameters = bodyaPIParameters == null ? null : WorkflowExpression.Compile(bodyaPIParameters);
+            WorkflowExpression.Validate(__workflow_bodyaPIParameters, nameof(bodyaPIParameters), required: false);
             return new DeferredBodyAction<ExecuteBotResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/bots/{1}/jobs", ExpressionConverter.ConvertWithUrlEncoding(publicId, 1), ExpressionConverter.ConvertWithUrlEncoding(botId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/bots/{1}/jobs", ExpressionConverter.ConvertWithUrlEncoding(__workflow_publicId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_botId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["x-cbot-content-language"] = ExpressionConverter.Convert(xCbotContentLanguage);
+                callPayload.Headers["x-cbot-content-language"] = ExpressionConverter.Convert(__workflow_xCbotContentLanguage);
                 callPayload.Headers["x-cbot-content-type"] = Convert.ToString("application/json");
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["async"] = ExpressionConverter.ConvertO(bodyasync);
-                if (bodydata1 != null)
+                body["async"] = ExpressionConverter.ConvertO(__workflow_bodyasync);
+                if (__workflow_bodydata1 != null)
                 {
-                    body["data1"] = ExpressionConverter.ConvertO(bodydata1);
+                    body["data1"] = ExpressionConverter.ConvertO(__workflow_bodydata1);
                     bodypropCount++;
                 }
 
-                if (bodydata2 != null)
+                if (__workflow_bodydata2 != null)
                 {
-                    body["data2"] = ExpressionConverter.ConvertO(bodydata2);
+                    body["data2"] = ExpressionConverter.ConvertO(__workflow_bodydata2);
                     bodypropCount++;
                 }
 
-                if (bodydata3 != null)
+                if (__workflow_bodydata3 != null)
                 {
-                    body["data3"] = ExpressionConverter.ConvertO(bodydata3);
+                    body["data3"] = ExpressionConverter.ConvertO(__workflow_bodydata3);
                     bodypropCount++;
                 }
 
-                if (bodydata4 != null)
+                if (__workflow_bodydata4 != null)
                 {
-                    body["data4"] = ExpressionConverter.ConvertO(bodydata4);
+                    body["data4"] = ExpressionConverter.ConvertO(__workflow_bodydata4);
                     bodypropCount++;
                 }
 
-                if (bodydata5 != null)
+                if (__workflow_bodydata5 != null)
                 {
-                    body["data5"] = ExpressionConverter.ConvertO(bodydata5);
+                    body["data5"] = ExpressionConverter.ConvertO(__workflow_bodydata5);
                     bodypropCount++;
                 }
 
-                if (bodydata6 != null)
+                if (__workflow_bodydata6 != null)
                 {
-                    body["data6"] = ExpressionConverter.ConvertO(bodydata6);
+                    body["data6"] = ExpressionConverter.ConvertO(__workflow_bodydata6);
                     bodypropCount++;
                 }
 
-                if (bodydata7 != null)
+                if (__workflow_bodydata7 != null)
                 {
-                    body["data7"] = ExpressionConverter.ConvertO(bodydata7);
+                    body["data7"] = ExpressionConverter.ConvertO(__workflow_bodydata7);
                     bodypropCount++;
                 }
 
-                if (bodydata8 != null)
+                if (__workflow_bodydata8 != null)
                 {
-                    body["data8"] = ExpressionConverter.ConvertO(bodydata8);
+                    body["data8"] = ExpressionConverter.ConvertO(__workflow_bodydata8);
                     bodypropCount++;
                 }
 
-                if (bodydata9 != null)
+                if (__workflow_bodydata9 != null)
                 {
-                    body["data9"] = ExpressionConverter.ConvertO(bodydata9);
+                    body["data9"] = ExpressionConverter.ConvertO(__workflow_bodydata9);
                     bodypropCount++;
                 }
 
-                if (bodydata10 != null)
+                if (__workflow_bodydata10 != null)
                 {
-                    body["data10"] = ExpressionConverter.ConvertO(bodydata10);
+                    body["data10"] = ExpressionConverter.ConvertO(__workflow_bodydata10);
                     bodypropCount++;
                 }
 
-                if (bodyaPIParameters != null)
+                if (__workflow_bodyaPIParameters != null)
                 {
-                    body["api_parameters"] = ExpressionConverter.ConvertO(bodyaPIParameters);
+                    body["api_parameters"] = ExpressionConverter.ConvertO(__workflow_bodyaPIParameters);
                     bodypropCount++;
                 }
 
@@ -174,25 +174,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudbot
 
     public class CloudbotTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildBotDone))]
-        public IBodyWorkflowTrigger<BotDoneResponse> BotDone([WorkflowExpression] Func<xCbotContentLanguageInput> xCbotContentLanguage,[WorkflowExpression] Func<string> publicId,[WorkflowExpression] Func<string> botId,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BotDoneResponse> BotDone(Expression<Func<xCbotContentLanguageInput>> xCbotContentLanguage, Expression<Func<string>> publicId, Expression<Func<string>> botId, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<BotDoneResponse> __BuildBotDone(WorkflowExpression<xCbotContentLanguageInput> xCbotContentLanguage,WorkflowExpression<string> publicId,WorkflowExpression<string> botId,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(xCbotContentLanguage, nameof(xCbotContentLanguage), required: true);
-            WorkflowExpression.Validate(publicId, nameof(publicId), required: true);
-            WorkflowExpression.Validate(botId, nameof(botId), required: true);
+            var __workflow_xCbotContentLanguage = xCbotContentLanguage == null ? null : WorkflowExpression.Compile(xCbotContentLanguage);
+            WorkflowExpression.Validate(__workflow_xCbotContentLanguage, nameof(xCbotContentLanguage), required: true);
+            var __workflow_publicId = publicId == null ? null : WorkflowExpression.Compile(publicId);
+            WorkflowExpression.Validate(__workflow_publicId, nameof(publicId), required: true);
+            var __workflow_botId = botId == null ? null : WorkflowExpression.Compile(botId);
+            WorkflowExpression.Validate(__workflow_botId, nameof(botId), required: true);
             return new DeferredBodyTrigger<BotDoneResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/bots/{1}/subscriptions", ExpressionConverter.ConvertWithUrlEncoding(publicId, 1), ExpressionConverter.ConvertWithUrlEncoding(botId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/bots/{1}/subscriptions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_publicId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_botId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["x-cbot-content-language"] = ExpressionConverter.Convert(xCbotContentLanguage);
+                callPayload.Headers["x-cbot-content-language"] = ExpressionConverter.Convert(__workflow_xCbotContentLanguage);
                 callPayload.Headers["x-cbot-content-type"] = Convert.ToString("application/json");
                 var body = new JObject();
                 var bodypropCount = 0;

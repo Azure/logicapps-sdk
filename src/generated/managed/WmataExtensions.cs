@@ -1,88 +1,73 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class WmataActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
-        [WorkflowExpressionFactory(nameof(__BuildGetNextBuses))]
-        public IBodyWorkflowAction<GetNextBusesResponse> GetNextBuses([WorkflowExpression] Func<string> stopID)
+        public IBodyWorkflowAction<GetNextBusesResponse> GetNextBuses(Expression<Func<string>> stopID)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetNextBusesResponse> __BuildGetNextBuses(WorkflowExpression<string> stopID)
-        {
-            WorkflowExpression.Validate(stopID, nameof(stopID), required: true);
+            var __workflow_stopID = stopID == null ? null : WorkflowExpression.Compile(stopID);
+            WorkflowExpression.Validate(__workflow_stopID, nameof(stopID), required: true);
             return new DeferredBodyAction<GetNextBusesResponse>(() =>
             {
                 var apiCallPath = "/NextBusService.svc/json/jPredictions";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["StopID"] = ExpressionConverter.Convert(stopID);
+                callPayload.Queries["StopID"] = ExpressionConverter.Convert(__workflow_stopID);
                 return new ApiConnectionAction<GetNextBusesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
-        [WorkflowExpressionFactory(nameof(__BuildGetBusPositions))]
-        public IBodyWorkflowAction<GetBusPositionsResponse> GetBusPositions([WorkflowExpression] Func<string> routeID = null, [WorkflowExpression] Func<double> lat = null, [WorkflowExpression] Func<double> lon = null, [WorkflowExpression] Func<double> radius = null)
+        public IBodyWorkflowAction<GetBusPositionsResponse> GetBusPositions(Expression<Func<string>> routeID = null, Expression<Func<double>> lat = null, Expression<Func<double>> lon = null, Expression<Func<double>> radius = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetBusPositionsResponse> __BuildGetBusPositions(WorkflowExpression<string> routeID = null, WorkflowExpression<double> lat = null, WorkflowExpression<double> lon = null, WorkflowExpression<double> radius = null)
-        {
-            WorkflowExpression.Validate(routeID, nameof(routeID), required: false);
-            WorkflowExpression.Validate(lat, nameof(lat), required: false);
-            WorkflowExpression.Validate(lon, nameof(lon), required: false);
-            WorkflowExpression.Validate(radius, nameof(radius), required: false);
+            var __workflow_routeID = routeID == null ? null : WorkflowExpression.Compile(routeID);
+            WorkflowExpression.Validate(__workflow_routeID, nameof(routeID), required: false);
+            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
+            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: false);
+            var __workflow_lon = lon == null ? null : WorkflowExpression.Compile(lon);
+            WorkflowExpression.Validate(__workflow_lon, nameof(lon), required: false);
+            var __workflow_radius = radius == null ? null : WorkflowExpression.Compile(radius);
+            WorkflowExpression.Validate(__workflow_radius, nameof(radius), required: false);
             return new DeferredBodyAction<GetBusPositionsResponse>(() =>
             {
                 var apiCallPath = "/Bus.svc/json/jBusPositions";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (routeID != null)
-                    callPayload.Queries["RouteID"] = ExpressionConverter.Convert(routeID);
-                if (lat != null)
-                    callPayload.Queries["Lat"] = ExpressionConverter.Convert(lat);
-                if (lon != null)
-                    callPayload.Queries["Lon"] = ExpressionConverter.Convert(lon);
-                if (radius != null)
-                    callPayload.Queries["Radius"] = ExpressionConverter.Convert(radius);
+                if (__workflow_routeID != null)
+                    callPayload.Queries["RouteID"] = ExpressionConverter.Convert(__workflow_routeID);
+                if (__workflow_lat != null)
+                    callPayload.Queries["Lat"] = ExpressionConverter.Convert(__workflow_lat);
+                if (__workflow_lon != null)
+                    callPayload.Queries["Lon"] = ExpressionConverter.Convert(__workflow_lon);
+                if (__workflow_radius != null)
+                    callPayload.Queries["Radius"] = ExpressionConverter.Convert(__workflow_radius);
                 return new ApiConnectionAction<GetBusPositionsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
-        [WorkflowExpressionFactory(nameof(__BuildGetRouteDetails))]
-        public IBodyWorkflowAction<GetRouteDetailsResponse> GetRouteDetails([WorkflowExpression] Func<string> routeID, [WorkflowExpression] Func<string> date = null)
+        public IBodyWorkflowAction<GetRouteDetailsResponse> GetRouteDetails(Expression<Func<string>> routeID, Expression<Func<string>> date = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetRouteDetailsResponse> __BuildGetRouteDetails(WorkflowExpression<string> routeID, WorkflowExpression<string> date = null)
-        {
-            WorkflowExpression.Validate(routeID, nameof(routeID), required: true);
-            WorkflowExpression.Validate(date, nameof(date), required: false);
+            var __workflow_routeID = routeID == null ? null : WorkflowExpression.Compile(routeID);
+            WorkflowExpression.Validate(__workflow_routeID, nameof(routeID), required: true);
+            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
+            WorkflowExpression.Validate(__workflow_date, nameof(date), required: false);
             return new DeferredBodyAction<GetRouteDetailsResponse>(() =>
             {
                 var apiCallPath = "/Bus.svc/json/jRouteDetails";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["RouteID"] = ExpressionConverter.Convert(routeID);
-                if (date != null)
-                    callPayload.Queries["Date"] = ExpressionConverter.Convert(date);
+                callPayload.Queries["RouteID"] = ExpressionConverter.Convert(__workflow_routeID);
+                if (__workflow_date != null)
+                    callPayload.Queries["Date"] = ExpressionConverter.Convert(__workflow_date);
                 return new ApiConnectionAction<GetRouteDetailsResponse>(callPayload);
             });
         }
@@ -97,95 +82,75 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
-        [WorkflowExpressionFactory(nameof(__BuildGetBusRouteSchedule))]
-        public IBodyWorkflowAction<GetBusRouteScheduleResponse> GetBusRouteSchedule([WorkflowExpression] Func<string> routeID, [WorkflowExpression] Func<string> date = null)
+        public IBodyWorkflowAction<GetBusRouteScheduleResponse> GetBusRouteSchedule(Expression<Func<string>> routeID, Expression<Func<string>> date = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetBusRouteScheduleResponse> __BuildGetBusRouteSchedule(WorkflowExpression<string> routeID, WorkflowExpression<string> date = null)
-        {
-            WorkflowExpression.Validate(routeID, nameof(routeID), required: true);
-            WorkflowExpression.Validate(date, nameof(date), required: false);
+            var __workflow_routeID = routeID == null ? null : WorkflowExpression.Compile(routeID);
+            WorkflowExpression.Validate(__workflow_routeID, nameof(routeID), required: true);
+            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
+            WorkflowExpression.Validate(__workflow_date, nameof(date), required: false);
             return new DeferredBodyAction<GetBusRouteScheduleResponse>(() =>
             {
                 var apiCallPath = "/Bus.svc/json/jRouteSchedule";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["RouteID"] = ExpressionConverter.Convert(routeID);
-                if (date != null)
-                    callPayload.Queries["Date"] = ExpressionConverter.Convert(date);
+                callPayload.Queries["RouteID"] = ExpressionConverter.Convert(__workflow_routeID);
+                if (__workflow_date != null)
+                    callPayload.Queries["Date"] = ExpressionConverter.Convert(__workflow_date);
                 return new ApiConnectionAction<GetBusRouteScheduleResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
-        [WorkflowExpressionFactory(nameof(__BuildGetBusStopSchedule))]
-        public IBodyWorkflowAction<GetBusStopScheduleResponse> GetBusStopSchedule([WorkflowExpression] Func<string> stopID, [WorkflowExpression] Func<string> date = null)
+        public IBodyWorkflowAction<GetBusStopScheduleResponse> GetBusStopSchedule(Expression<Func<string>> stopID, Expression<Func<string>> date = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetBusStopScheduleResponse> __BuildGetBusStopSchedule(WorkflowExpression<string> stopID, WorkflowExpression<string> date = null)
-        {
-            WorkflowExpression.Validate(stopID, nameof(stopID), required: true);
-            WorkflowExpression.Validate(date, nameof(date), required: false);
+            var __workflow_stopID = stopID == null ? null : WorkflowExpression.Compile(stopID);
+            WorkflowExpression.Validate(__workflow_stopID, nameof(stopID), required: true);
+            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
+            WorkflowExpression.Validate(__workflow_date, nameof(date), required: false);
             return new DeferredBodyAction<GetBusStopScheduleResponse>(() =>
             {
                 var apiCallPath = "/Bus.svc/json/jStopSchedule";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["StopID"] = ExpressionConverter.Convert(stopID);
-                if (date != null)
-                    callPayload.Queries["Date"] = ExpressionConverter.Convert(date);
+                callPayload.Queries["StopID"] = ExpressionConverter.Convert(__workflow_stopID);
+                if (__workflow_date != null)
+                    callPayload.Queries["Date"] = ExpressionConverter.Convert(__workflow_date);
                 return new ApiConnectionAction<GetBusStopScheduleResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
-        [WorkflowExpressionFactory(nameof(__BuildGetBusStops))]
-        public IBodyWorkflowAction<GetBusStopsResponse> GetBusStops([WorkflowExpression] Func<double> lat = null, [WorkflowExpression] Func<double> lon = null, [WorkflowExpression] Func<double> radius = null)
+        public IBodyWorkflowAction<GetBusStopsResponse> GetBusStops(Expression<Func<double>> lat = null, Expression<Func<double>> lon = null, Expression<Func<double>> radius = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetBusStopsResponse> __BuildGetBusStops(WorkflowExpression<double> lat = null, WorkflowExpression<double> lon = null, WorkflowExpression<double> radius = null)
-        {
-            WorkflowExpression.Validate(lat, nameof(lat), required: false);
-            WorkflowExpression.Validate(lon, nameof(lon), required: false);
-            WorkflowExpression.Validate(radius, nameof(radius), required: false);
+            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
+            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: false);
+            var __workflow_lon = lon == null ? null : WorkflowExpression.Compile(lon);
+            WorkflowExpression.Validate(__workflow_lon, nameof(lon), required: false);
+            var __workflow_radius = radius == null ? null : WorkflowExpression.Compile(radius);
+            WorkflowExpression.Validate(__workflow_radius, nameof(radius), required: false);
             return new DeferredBodyAction<GetBusStopsResponse>(() =>
             {
                 var apiCallPath = "/Bus.svc/json/jStops";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lat != null)
-                    callPayload.Queries["Lat"] = ExpressionConverter.Convert(lat);
-                if (lon != null)
-                    callPayload.Queries["Lon"] = ExpressionConverter.Convert(lon);
-                if (radius != null)
-                    callPayload.Queries["Radius"] = ExpressionConverter.Convert(radius);
+                if (__workflow_lat != null)
+                    callPayload.Queries["Lat"] = ExpressionConverter.Convert(__workflow_lat);
+                if (__workflow_lon != null)
+                    callPayload.Queries["Lon"] = ExpressionConverter.Convert(__workflow_lon);
+                if (__workflow_radius != null)
+                    callPayload.Queries["Radius"] = ExpressionConverter.Convert(__workflow_radius);
                 return new ApiConnectionAction<GetBusStopsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
-        [WorkflowExpressionFactory(nameof(__BuildGetNextTrains))]
-        public IBodyWorkflowAction<GetNextTrainsResponse> GetNextTrains([WorkflowExpression] Func<string> stationCodes)
+        public IBodyWorkflowAction<GetNextTrainsResponse> GetNextTrains(Expression<Func<string>> stationCodes)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetNextTrainsResponse> __BuildGetNextTrains(WorkflowExpression<string> stationCodes)
-        {
-            WorkflowExpression.Validate(stationCodes, nameof(stationCodes), required: true);
+            var __workflow_stationCodes = stationCodes == null ? null : WorkflowExpression.Compile(stationCodes);
+            WorkflowExpression.Validate(__workflow_stationCodes, nameof(stationCodes), required: true);
             return new DeferredBodyAction<GetNextTrainsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/StationPrediction.svc/json/GetPrediction/{0}", ExpressionConverter.ConvertWithUrlEncoding(stationCodes, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/StationPrediction.svc/json/GetPrediction/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_stationCodes, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetNextTrainsResponse>(callPayload);
@@ -202,161 +167,123 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
-        [WorkflowExpressionFactory(nameof(__BuildGetStationParking))]
-        public IBodyWorkflowAction<GetStationParkingResponse> GetStationParking([WorkflowExpression] Func<string> stationCode = null)
+        public IBodyWorkflowAction<GetStationParkingResponse> GetStationParking(Expression<Func<string>> stationCode = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetStationParkingResponse> __BuildGetStationParking(WorkflowExpression<string> stationCode = null)
-        {
-            WorkflowExpression.Validate(stationCode, nameof(stationCode), required: false);
+            var __workflow_stationCode = stationCode == null ? null : WorkflowExpression.Compile(stationCode);
+            WorkflowExpression.Validate(__workflow_stationCode, nameof(stationCode), required: false);
             return new DeferredBodyAction<GetStationParkingResponse>(() =>
             {
                 var apiCallPath = "/Rail.svc/json/jStationParking";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (stationCode != null)
-                    callPayload.Queries["StationCode"] = ExpressionConverter.Convert(stationCode);
+                if (__workflow_stationCode != null)
+                    callPayload.Queries["StationCode"] = ExpressionConverter.Convert(__workflow_stationCode);
                 return new ApiConnectionAction<GetStationParkingResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
-        [WorkflowExpressionFactory(nameof(__BuildGetPathBetweenStations))]
-        public IBodyWorkflowAction<GetPathBetweenStationsResponse> GetPathBetweenStations([WorkflowExpression] Func<string> fromStationCode, [WorkflowExpression] Func<string> toStationCode)
+        public IBodyWorkflowAction<GetPathBetweenStationsResponse> GetPathBetweenStations(Expression<Func<string>> fromStationCode, Expression<Func<string>> toStationCode)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetPathBetweenStationsResponse> __BuildGetPathBetweenStations(WorkflowExpression<string> fromStationCode, WorkflowExpression<string> toStationCode)
-        {
-            WorkflowExpression.Validate(fromStationCode, nameof(fromStationCode), required: true);
-            WorkflowExpression.Validate(toStationCode, nameof(toStationCode), required: true);
+            var __workflow_fromStationCode = fromStationCode == null ? null : WorkflowExpression.Compile(fromStationCode);
+            WorkflowExpression.Validate(__workflow_fromStationCode, nameof(fromStationCode), required: true);
+            var __workflow_toStationCode = toStationCode == null ? null : WorkflowExpression.Compile(toStationCode);
+            WorkflowExpression.Validate(__workflow_toStationCode, nameof(toStationCode), required: true);
             return new DeferredBodyAction<GetPathBetweenStationsResponse>(() =>
             {
                 var apiCallPath = "/Rail.svc/json/jPath";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["FromStationCode"] = ExpressionConverter.Convert(fromStationCode);
-                callPayload.Queries["ToStationCode"] = ExpressionConverter.Convert(toStationCode);
+                callPayload.Queries["FromStationCode"] = ExpressionConverter.Convert(__workflow_fromStationCode);
+                callPayload.Queries["ToStationCode"] = ExpressionConverter.Convert(__workflow_toStationCode);
                 return new ApiConnectionAction<GetPathBetweenStationsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
-        [WorkflowExpressionFactory(nameof(__BuildGetJsonStations))]
-        public IBodyWorkflowAction<GetJsonStationsResponse> GetJsonStations([WorkflowExpression] Func<string> lineCode = null)
+        public IBodyWorkflowAction<GetJsonStationsResponse> GetJsonStations(Expression<Func<string>> lineCode = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetJsonStationsResponse> __BuildGetJsonStations(WorkflowExpression<string> lineCode = null)
-        {
-            WorkflowExpression.Validate(lineCode, nameof(lineCode), required: false);
+            var __workflow_lineCode = lineCode == null ? null : WorkflowExpression.Compile(lineCode);
+            WorkflowExpression.Validate(__workflow_lineCode, nameof(lineCode), required: false);
             return new DeferredBodyAction<GetJsonStationsResponse>(() =>
             {
                 var apiCallPath = "/Rail.svc/json/jStations";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lineCode != null)
-                    callPayload.Queries["LineCode"] = ExpressionConverter.Convert(lineCode);
+                if (__workflow_lineCode != null)
+                    callPayload.Queries["LineCode"] = ExpressionConverter.Convert(__workflow_lineCode);
                 return new ApiConnectionAction<GetJsonStationsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
-        [WorkflowExpressionFactory(nameof(__BuildGetStationEntrances))]
-        public IBodyWorkflowAction<GetStationEntrancesResponse> GetStationEntrances([WorkflowExpression] Func<double> lat = null, [WorkflowExpression] Func<double> lon = null, [WorkflowExpression] Func<double> radius = null)
+        public IBodyWorkflowAction<GetStationEntrancesResponse> GetStationEntrances(Expression<Func<double>> lat = null, Expression<Func<double>> lon = null, Expression<Func<double>> radius = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetStationEntrancesResponse> __BuildGetStationEntrances(WorkflowExpression<double> lat = null, WorkflowExpression<double> lon = null, WorkflowExpression<double> radius = null)
-        {
-            WorkflowExpression.Validate(lat, nameof(lat), required: false);
-            WorkflowExpression.Validate(lon, nameof(lon), required: false);
-            WorkflowExpression.Validate(radius, nameof(radius), required: false);
+            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
+            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: false);
+            var __workflow_lon = lon == null ? null : WorkflowExpression.Compile(lon);
+            WorkflowExpression.Validate(__workflow_lon, nameof(lon), required: false);
+            var __workflow_radius = radius == null ? null : WorkflowExpression.Compile(radius);
+            WorkflowExpression.Validate(__workflow_radius, nameof(radius), required: false);
             return new DeferredBodyAction<GetStationEntrancesResponse>(() =>
             {
                 var apiCallPath = "/Rail.svc/json/jStationEntrances";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (lat != null)
-                    callPayload.Queries["Lat"] = ExpressionConverter.Convert(lat);
-                if (lon != null)
-                    callPayload.Queries["Lon"] = ExpressionConverter.Convert(lon);
-                if (radius != null)
-                    callPayload.Queries["Radius"] = ExpressionConverter.Convert(radius);
+                if (__workflow_lat != null)
+                    callPayload.Queries["Lat"] = ExpressionConverter.Convert(__workflow_lat);
+                if (__workflow_lon != null)
+                    callPayload.Queries["Lon"] = ExpressionConverter.Convert(__workflow_lon);
+                if (__workflow_radius != null)
+                    callPayload.Queries["Radius"] = ExpressionConverter.Convert(__workflow_radius);
                 return new ApiConnectionAction<GetStationEntrancesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
-        [WorkflowExpressionFactory(nameof(__BuildGetStationInfo))]
-        public IBodyWorkflowAction<GetStationInfoResponse> GetStationInfo([WorkflowExpression] Func<string> stationCode)
+        public IBodyWorkflowAction<GetStationInfoResponse> GetStationInfo(Expression<Func<string>> stationCode)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetStationInfoResponse> __BuildGetStationInfo(WorkflowExpression<string> stationCode)
-        {
-            WorkflowExpression.Validate(stationCode, nameof(stationCode), required: true);
+            var __workflow_stationCode = stationCode == null ? null : WorkflowExpression.Compile(stationCode);
+            WorkflowExpression.Validate(__workflow_stationCode, nameof(stationCode), required: true);
             return new DeferredBodyAction<GetStationInfoResponse>(() =>
             {
                 var apiCallPath = "/Rail.svc/json/jStationInfo";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["StationCode"] = ExpressionConverter.Convert(stationCode);
+                callPayload.Queries["StationCode"] = ExpressionConverter.Convert(__workflow_stationCode);
                 return new ApiConnectionAction<GetStationInfoResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
-        [WorkflowExpressionFactory(nameof(__BuildGetStationTimes))]
-        public IBodyWorkflowAction<GetStationTimesResponse> GetStationTimes([WorkflowExpression] Func<string> stationCode)
+        public IBodyWorkflowAction<GetStationTimesResponse> GetStationTimes(Expression<Func<string>> stationCode)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetStationTimesResponse> __BuildGetStationTimes(WorkflowExpression<string> stationCode)
-        {
-            WorkflowExpression.Validate(stationCode, nameof(stationCode), required: true);
+            var __workflow_stationCode = stationCode == null ? null : WorkflowExpression.Compile(stationCode);
+            WorkflowExpression.Validate(__workflow_stationCode, nameof(stationCode), required: true);
             return new DeferredBodyAction<GetStationTimesResponse>(() =>
             {
                 var apiCallPath = "/Rail.svc/json/jStationTimes";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["StationCode"] = ExpressionConverter.Convert(stationCode);
+                callPayload.Queries["StationCode"] = ExpressionConverter.Convert(__workflow_stationCode);
                 return new ApiConnectionAction<GetStationTimesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
-        [WorkflowExpressionFactory(nameof(__BuildGetStationToStationInfo))]
-        public IBodyWorkflowAction<GetStationToStationInfoResponse> GetStationToStationInfo([WorkflowExpression] Func<string> fromStationCode, [WorkflowExpression] Func<string> toStationCode)
+        public IBodyWorkflowAction<GetStationToStationInfoResponse> GetStationToStationInfo(Expression<Func<string>> fromStationCode, Expression<Func<string>> toStationCode)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetStationToStationInfoResponse> __BuildGetStationToStationInfo(WorkflowExpression<string> fromStationCode, WorkflowExpression<string> toStationCode)
-        {
-            WorkflowExpression.Validate(fromStationCode, nameof(fromStationCode), required: true);
-            WorkflowExpression.Validate(toStationCode, nameof(toStationCode), required: true);
+            var __workflow_fromStationCode = fromStationCode == null ? null : WorkflowExpression.Compile(fromStationCode);
+            WorkflowExpression.Validate(__workflow_fromStationCode, nameof(fromStationCode), required: true);
+            var __workflow_toStationCode = toStationCode == null ? null : WorkflowExpression.Compile(toStationCode);
+            WorkflowExpression.Validate(__workflow_toStationCode, nameof(toStationCode), required: true);
             return new DeferredBodyAction<GetStationToStationInfoResponse>(() =>
             {
                 var apiCallPath = "/Rail.svc/json/jSrcStationToDstStationInfo";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["FromStationCode"] = ExpressionConverter.Convert(fromStationCode);
-                callPayload.Queries["ToStationCode"] = ExpressionConverter.Convert(toStationCode);
+                callPayload.Queries["FromStationCode"] = ExpressionConverter.Convert(__workflow_fromStationCode);
+                callPayload.Queries["ToStationCode"] = ExpressionConverter.Convert(__workflow_toStationCode);
                 return new ApiConnectionAction<GetStationToStationInfoResponse>(callPayload);
             });
         }
@@ -392,45 +319,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
-        [WorkflowExpressionFactory(nameof(__BuildGetBusIncidents))]
-        public IBodyWorkflowAction<GetBusIncidentsResponse> GetBusIncidents([WorkflowExpression] Func<string> route = null)
+        public IBodyWorkflowAction<GetBusIncidentsResponse> GetBusIncidents(Expression<Func<string>> route = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetBusIncidentsResponse> __BuildGetBusIncidents(WorkflowExpression<string> route = null)
-        {
-            WorkflowExpression.Validate(route, nameof(route), required: false);
+            var __workflow_route = route == null ? null : WorkflowExpression.Compile(route);
+            WorkflowExpression.Validate(__workflow_route, nameof(route), required: false);
             return new DeferredBodyAction<GetBusIncidentsResponse>(() =>
             {
                 var apiCallPath = "/Incidents.svc/json/BusIncidents";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (route != null)
-                    callPayload.Queries["Route"] = ExpressionConverter.Convert(route);
+                if (__workflow_route != null)
+                    callPayload.Queries["Route"] = ExpressionConverter.Convert(__workflow_route);
                 return new ApiConnectionAction<GetBusIncidentsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
-        [WorkflowExpressionFactory(nameof(__BuildGetElevatorIncidents))]
-        public IBodyWorkflowAction<GetElevatorIncidentsResponse> GetElevatorIncidents([WorkflowExpression] Func<string> stationCode = null)
+        public IBodyWorkflowAction<GetElevatorIncidentsResponse> GetElevatorIncidents(Expression<Func<string>> stationCode = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetElevatorIncidentsResponse> __BuildGetElevatorIncidents(WorkflowExpression<string> stationCode = null)
-        {
-            WorkflowExpression.Validate(stationCode, nameof(stationCode), required: false);
+            var __workflow_stationCode = stationCode == null ? null : WorkflowExpression.Compile(stationCode);
+            WorkflowExpression.Validate(__workflow_stationCode, nameof(stationCode), required: false);
             return new DeferredBodyAction<GetElevatorIncidentsResponse>(() =>
             {
                 var apiCallPath = "/Incidents.svc/json/ElevatorIncidents";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (stationCode != null)
-                    callPayload.Queries["StationCode"] = ExpressionConverter.Convert(stationCode);
+                if (__workflow_stationCode != null)
+                    callPayload.Queries["StationCode"] = ExpressionConverter.Convert(__workflow_stationCode);
                 return new ApiConnectionAction<GetElevatorIncidentsResponse>(callPayload);
             });
         }

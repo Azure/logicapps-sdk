@@ -1,29 +1,24 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class CornerstonelearningvActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cornerstonelearningv")]
-        [WorkflowExpressionFactory(nameof(__BuildAddInstructorResponse))]
-        public IWorkflowAction AddInstructorResponse([WorkflowExpression] Func<string> bodycorrelationId, [WorkflowExpression] Func<bool> bodyisSuccessful = null, [WorkflowExpression] Func<string> bodymessage = null)
+        public IWorkflowAction AddInstructorResponse(Expression<Func<string>> bodycorrelationId, Expression<Func<bool>> bodyisSuccessful = null, Expression<Func<string>> bodymessage = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildAddInstructorResponse(WorkflowExpression<string> bodycorrelationId, WorkflowExpression<bool> bodyisSuccessful = null, WorkflowExpression<string> bodymessage = null)
-        {
-            WorkflowExpression.Validate(bodycorrelationId, nameof(bodycorrelationId), required: true);
-            WorkflowExpression.Validate(bodyisSuccessful, nameof(bodyisSuccessful), required: false);
-            WorkflowExpression.Validate(bodymessage, nameof(bodymessage), required: false);
+            var __workflow_bodycorrelationId = bodycorrelationId == null ? null : WorkflowExpression.Compile(bodycorrelationId);
+            WorkflowExpression.Validate(__workflow_bodycorrelationId, nameof(bodycorrelationId), required: true);
+            var __workflow_bodyisSuccessful = bodyisSuccessful == null ? null : WorkflowExpression.Compile(bodyisSuccessful);
+            WorkflowExpression.Validate(__workflow_bodyisSuccessful, nameof(bodyisSuccessful), required: false);
+            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
+            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/response/addInstuctor";
@@ -31,20 +26,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyisSuccessful != null)
+                if (__workflow_bodyisSuccessful != null)
                 {
-                    body["isSuccessful"] = ExpressionConverter.ConvertO(bodyisSuccessful);
+                    body["isSuccessful"] = ExpressionConverter.ConvertO(__workflow_bodyisSuccessful);
                     bodypropCount++;
                 }
 
-                if (bodymessage != null)
+                if (__workflow_bodymessage != null)
                 {
-                    body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                    body["message"] = ExpressionConverter.ConvertO(__workflow_bodymessage);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["correlationId"] = ExpressionConverter.ConvertO(bodycorrelationId);
+                body["correlationId"] = ExpressionConverter.ConvertO(__workflow_bodycorrelationId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -55,19 +50,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cornerstonelearningv")]
-        [WorkflowExpressionFactory(nameof(__BuildGetAttendanceResponse))]
-        public IWorkflowAction GetAttendanceResponse([WorkflowExpression] Func<string> bodycorrelationId, [WorkflowExpression] Func<bool> bodyisSuccessful = null, [WorkflowExpression] Func<string> bodymessage = null, [WorkflowExpression] Func<Attendees[]> bodyattendees = null)
+        public IWorkflowAction GetAttendanceResponse(Expression<Func<string>> bodycorrelationId, Expression<Func<bool>> bodyisSuccessful = null, Expression<Func<string>> bodymessage = null, Expression<Func<Attendees[]>> bodyattendees = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetAttendanceResponse(WorkflowExpression<string> bodycorrelationId, WorkflowExpression<bool> bodyisSuccessful = null, WorkflowExpression<string> bodymessage = null, WorkflowExpression<Attendees[]> bodyattendees = null)
-        {
-            WorkflowExpression.Validate(bodycorrelationId, nameof(bodycorrelationId), required: true);
-            WorkflowExpression.Validate(bodyisSuccessful, nameof(bodyisSuccessful), required: false);
-            WorkflowExpression.Validate(bodymessage, nameof(bodymessage), required: false);
-            WorkflowExpression.Validate(bodyattendees, nameof(bodyattendees), required: false);
+            var __workflow_bodycorrelationId = bodycorrelationId == null ? null : WorkflowExpression.Compile(bodycorrelationId);
+            WorkflowExpression.Validate(__workflow_bodycorrelationId, nameof(bodycorrelationId), required: true);
+            var __workflow_bodyisSuccessful = bodyisSuccessful == null ? null : WorkflowExpression.Compile(bodyisSuccessful);
+            WorkflowExpression.Validate(__workflow_bodyisSuccessful, nameof(bodyisSuccessful), required: false);
+            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
+            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: false);
+            var __workflow_bodyattendees = bodyattendees == null ? null : WorkflowExpression.Compile(bodyattendees);
+            WorkflowExpression.Validate(__workflow_bodyattendees, nameof(bodyattendees), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/response/getAttendance";
@@ -75,23 +67,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyisSuccessful != null)
+                if (__workflow_bodyisSuccessful != null)
                 {
-                    body["isSuccessful"] = ExpressionConverter.ConvertO(bodyisSuccessful);
+                    body["isSuccessful"] = ExpressionConverter.ConvertO(__workflow_bodyisSuccessful);
                     bodypropCount++;
                 }
 
-                if (bodymessage != null)
+                if (__workflow_bodymessage != null)
                 {
-                    body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                    body["message"] = ExpressionConverter.ConvertO(__workflow_bodymessage);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["correlationId"] = ExpressionConverter.ConvertO(bodycorrelationId);
-                if (bodyattendees != null)
+                body["correlationId"] = ExpressionConverter.ConvertO(__workflow_bodycorrelationId);
+                if (__workflow_bodyattendees != null)
                 {
-                    body["attendees"] = ExpressionConverter.ConvertO(bodyattendees);
+                    body["attendees"] = ExpressionConverter.ConvertO(__workflow_bodyattendees);
                     bodypropCount++;
                 }
 
@@ -105,19 +97,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cornerstonelearningv")]
-        [WorkflowExpressionFactory(nameof(__BuildLaunchSessionResponse))]
-        public IWorkflowAction LaunchSessionResponse([WorkflowExpression] Func<string> bodycorrelationId, [WorkflowExpression] Func<bool> bodyisSuccessful = null, [WorkflowExpression] Func<string> bodymessage = null, [WorkflowExpression] Func<string> bodyjoinUrl = null)
+        public IWorkflowAction LaunchSessionResponse(Expression<Func<string>> bodycorrelationId, Expression<Func<bool>> bodyisSuccessful = null, Expression<Func<string>> bodymessage = null, Expression<Func<string>> bodyjoinUrl = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildLaunchSessionResponse(WorkflowExpression<string> bodycorrelationId, WorkflowExpression<bool> bodyisSuccessful = null, WorkflowExpression<string> bodymessage = null, WorkflowExpression<string> bodyjoinUrl = null)
-        {
-            WorkflowExpression.Validate(bodycorrelationId, nameof(bodycorrelationId), required: true);
-            WorkflowExpression.Validate(bodyisSuccessful, nameof(bodyisSuccessful), required: false);
-            WorkflowExpression.Validate(bodymessage, nameof(bodymessage), required: false);
-            WorkflowExpression.Validate(bodyjoinUrl, nameof(bodyjoinUrl), required: false);
+            var __workflow_bodycorrelationId = bodycorrelationId == null ? null : WorkflowExpression.Compile(bodycorrelationId);
+            WorkflowExpression.Validate(__workflow_bodycorrelationId, nameof(bodycorrelationId), required: true);
+            var __workflow_bodyisSuccessful = bodyisSuccessful == null ? null : WorkflowExpression.Compile(bodyisSuccessful);
+            WorkflowExpression.Validate(__workflow_bodyisSuccessful, nameof(bodyisSuccessful), required: false);
+            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
+            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: false);
+            var __workflow_bodyjoinUrl = bodyjoinUrl == null ? null : WorkflowExpression.Compile(bodyjoinUrl);
+            WorkflowExpression.Validate(__workflow_bodyjoinUrl, nameof(bodyjoinUrl), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/response/launchSession";
@@ -125,23 +114,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyisSuccessful != null)
+                if (__workflow_bodyisSuccessful != null)
                 {
-                    body["isSuccessful"] = ExpressionConverter.ConvertO(bodyisSuccessful);
+                    body["isSuccessful"] = ExpressionConverter.ConvertO(__workflow_bodyisSuccessful);
                     bodypropCount++;
                 }
 
-                if (bodymessage != null)
+                if (__workflow_bodymessage != null)
                 {
-                    body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                    body["message"] = ExpressionConverter.ConvertO(__workflow_bodymessage);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["correlationId"] = ExpressionConverter.ConvertO(bodycorrelationId);
-                if (bodyjoinUrl != null)
+                body["correlationId"] = ExpressionConverter.ConvertO(__workflow_bodycorrelationId);
+                if (__workflow_bodyjoinUrl != null)
                 {
-                    body["joinUrl"] = ExpressionConverter.ConvertO(bodyjoinUrl);
+                    body["joinUrl"] = ExpressionConverter.ConvertO(__workflow_bodyjoinUrl);
                     bodypropCount++;
                 }
 
@@ -155,24 +144,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cornerstonelearningv")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateSessionResponse))]
-        public IWorkflowAction CreateSessionResponse([WorkflowExpression] Func<string> bodycorrelationId, [WorkflowExpression] Func<bool> bodyisSuccessful = null, [WorkflowExpression] Func<string> bodymessage = null, [WorkflowExpression] Func<string> bodycorpId = null, [WorkflowExpression] Func<string> bodymeetingId = null, [WorkflowExpression] Func<string> bodystart = null, [WorkflowExpression] Func<string> bodyend = null, [WorkflowExpression] Func<string> bodyhostEmail = null, [WorkflowExpression] Func<string> bodyjoinURL = null)
+        public IWorkflowAction CreateSessionResponse(Expression<Func<string>> bodycorrelationId, Expression<Func<bool>> bodyisSuccessful = null, Expression<Func<string>> bodymessage = null, Expression<Func<string>> bodycorpId = null, Expression<Func<string>> bodymeetingId = null, Expression<Func<string>> bodystart = null, Expression<Func<string>> bodyend = null, Expression<Func<string>> bodyhostEmail = null, Expression<Func<string>> bodyjoinURL = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildCreateSessionResponse(WorkflowExpression<string> bodycorrelationId, WorkflowExpression<bool> bodyisSuccessful = null, WorkflowExpression<string> bodymessage = null, WorkflowExpression<string> bodycorpId = null, WorkflowExpression<string> bodymeetingId = null, WorkflowExpression<string> bodystart = null, WorkflowExpression<string> bodyend = null, WorkflowExpression<string> bodyhostEmail = null, WorkflowExpression<string> bodyjoinURL = null)
-        {
-            WorkflowExpression.Validate(bodycorrelationId, nameof(bodycorrelationId), required: true);
-            WorkflowExpression.Validate(bodyisSuccessful, nameof(bodyisSuccessful), required: false);
-            WorkflowExpression.Validate(bodymessage, nameof(bodymessage), required: false);
-            WorkflowExpression.Validate(bodycorpId, nameof(bodycorpId), required: false);
-            WorkflowExpression.Validate(bodymeetingId, nameof(bodymeetingId), required: false);
-            WorkflowExpression.Validate(bodystart, nameof(bodystart), required: false);
-            WorkflowExpression.Validate(bodyend, nameof(bodyend), required: false);
-            WorkflowExpression.Validate(bodyhostEmail, nameof(bodyhostEmail), required: false);
-            WorkflowExpression.Validate(bodyjoinURL, nameof(bodyjoinURL), required: false);
+            var __workflow_bodycorrelationId = bodycorrelationId == null ? null : WorkflowExpression.Compile(bodycorrelationId);
+            WorkflowExpression.Validate(__workflow_bodycorrelationId, nameof(bodycorrelationId), required: true);
+            var __workflow_bodyisSuccessful = bodyisSuccessful == null ? null : WorkflowExpression.Compile(bodyisSuccessful);
+            WorkflowExpression.Validate(__workflow_bodyisSuccessful, nameof(bodyisSuccessful), required: false);
+            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
+            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: false);
+            var __workflow_bodycorpId = bodycorpId == null ? null : WorkflowExpression.Compile(bodycorpId);
+            WorkflowExpression.Validate(__workflow_bodycorpId, nameof(bodycorpId), required: false);
+            var __workflow_bodymeetingId = bodymeetingId == null ? null : WorkflowExpression.Compile(bodymeetingId);
+            WorkflowExpression.Validate(__workflow_bodymeetingId, nameof(bodymeetingId), required: false);
+            var __workflow_bodystart = bodystart == null ? null : WorkflowExpression.Compile(bodystart);
+            WorkflowExpression.Validate(__workflow_bodystart, nameof(bodystart), required: false);
+            var __workflow_bodyend = bodyend == null ? null : WorkflowExpression.Compile(bodyend);
+            WorkflowExpression.Validate(__workflow_bodyend, nameof(bodyend), required: false);
+            var __workflow_bodyhostEmail = bodyhostEmail == null ? null : WorkflowExpression.Compile(bodyhostEmail);
+            WorkflowExpression.Validate(__workflow_bodyhostEmail, nameof(bodyhostEmail), required: false);
+            var __workflow_bodyjoinURL = bodyjoinURL == null ? null : WorkflowExpression.Compile(bodyjoinURL);
+            WorkflowExpression.Validate(__workflow_bodyjoinURL, nameof(bodyjoinURL), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/response/createSession";
@@ -180,53 +171,53 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyisSuccessful != null)
+                if (__workflow_bodyisSuccessful != null)
                 {
-                    body["isSuccessful"] = ExpressionConverter.ConvertO(bodyisSuccessful);
+                    body["isSuccessful"] = ExpressionConverter.ConvertO(__workflow_bodyisSuccessful);
                     bodypropCount++;
                 }
 
-                if (bodymessage != null)
+                if (__workflow_bodymessage != null)
                 {
-                    body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                    body["message"] = ExpressionConverter.ConvertO(__workflow_bodymessage);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["correlationId"] = ExpressionConverter.ConvertO(bodycorrelationId);
-                if (bodycorpId != null)
+                body["correlationId"] = ExpressionConverter.ConvertO(__workflow_bodycorrelationId);
+                if (__workflow_bodycorpId != null)
                 {
-                    body["corpId"] = ExpressionConverter.ConvertO(bodycorpId);
+                    body["corpId"] = ExpressionConverter.ConvertO(__workflow_bodycorpId);
                     bodypropCount++;
                 }
 
-                if (bodymeetingId != null)
+                if (__workflow_bodymeetingId != null)
                 {
-                    body["meetingId"] = ExpressionConverter.ConvertO(bodymeetingId);
+                    body["meetingId"] = ExpressionConverter.ConvertO(__workflow_bodymeetingId);
                     bodypropCount++;
                 }
 
-                if (bodystart != null)
+                if (__workflow_bodystart != null)
                 {
-                    body["start"] = ExpressionConverter.ConvertO(bodystart);
+                    body["start"] = ExpressionConverter.ConvertO(__workflow_bodystart);
                     bodypropCount++;
                 }
 
-                if (bodyend != null)
+                if (__workflow_bodyend != null)
                 {
-                    body["end"] = ExpressionConverter.ConvertO(bodyend);
+                    body["end"] = ExpressionConverter.ConvertO(__workflow_bodyend);
                     bodypropCount++;
                 }
 
-                if (bodyhostEmail != null)
+                if (__workflow_bodyhostEmail != null)
                 {
-                    body["hostEmail"] = ExpressionConverter.ConvertO(bodyhostEmail);
+                    body["hostEmail"] = ExpressionConverter.ConvertO(__workflow_bodyhostEmail);
                     bodypropCount++;
                 }
 
-                if (bodyjoinURL != null)
+                if (__workflow_bodyjoinURL != null)
                 {
-                    body["joinURL"] = ExpressionConverter.ConvertO(bodyjoinURL);
+                    body["joinURL"] = ExpressionConverter.ConvertO(__workflow_bodyjoinURL);
                     bodypropCount++;
                 }
 
@@ -240,24 +231,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cornerstonelearningv")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateSessionResponse))]
-        public IWorkflowAction UpdateSessionResponse([WorkflowExpression] Func<string> bodycorrelationId, [WorkflowExpression] Func<bool> bodyisSuccessful = null, [WorkflowExpression] Func<string> bodymessage = null, [WorkflowExpression] Func<string> bodycorpId = null, [WorkflowExpression] Func<string> bodymeetingId = null, [WorkflowExpression] Func<string> bodystart = null, [WorkflowExpression] Func<string> bodyend = null, [WorkflowExpression] Func<string> bodyhostEmail = null, [WorkflowExpression] Func<string> bodyjoinURL = null)
+        public IWorkflowAction UpdateSessionResponse(Expression<Func<string>> bodycorrelationId, Expression<Func<bool>> bodyisSuccessful = null, Expression<Func<string>> bodymessage = null, Expression<Func<string>> bodycorpId = null, Expression<Func<string>> bodymeetingId = null, Expression<Func<string>> bodystart = null, Expression<Func<string>> bodyend = null, Expression<Func<string>> bodyhostEmail = null, Expression<Func<string>> bodyjoinURL = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildUpdateSessionResponse(WorkflowExpression<string> bodycorrelationId, WorkflowExpression<bool> bodyisSuccessful = null, WorkflowExpression<string> bodymessage = null, WorkflowExpression<string> bodycorpId = null, WorkflowExpression<string> bodymeetingId = null, WorkflowExpression<string> bodystart = null, WorkflowExpression<string> bodyend = null, WorkflowExpression<string> bodyhostEmail = null, WorkflowExpression<string> bodyjoinURL = null)
-        {
-            WorkflowExpression.Validate(bodycorrelationId, nameof(bodycorrelationId), required: true);
-            WorkflowExpression.Validate(bodyisSuccessful, nameof(bodyisSuccessful), required: false);
-            WorkflowExpression.Validate(bodymessage, nameof(bodymessage), required: false);
-            WorkflowExpression.Validate(bodycorpId, nameof(bodycorpId), required: false);
-            WorkflowExpression.Validate(bodymeetingId, nameof(bodymeetingId), required: false);
-            WorkflowExpression.Validate(bodystart, nameof(bodystart), required: false);
-            WorkflowExpression.Validate(bodyend, nameof(bodyend), required: false);
-            WorkflowExpression.Validate(bodyhostEmail, nameof(bodyhostEmail), required: false);
-            WorkflowExpression.Validate(bodyjoinURL, nameof(bodyjoinURL), required: false);
+            var __workflow_bodycorrelationId = bodycorrelationId == null ? null : WorkflowExpression.Compile(bodycorrelationId);
+            WorkflowExpression.Validate(__workflow_bodycorrelationId, nameof(bodycorrelationId), required: true);
+            var __workflow_bodyisSuccessful = bodyisSuccessful == null ? null : WorkflowExpression.Compile(bodyisSuccessful);
+            WorkflowExpression.Validate(__workflow_bodyisSuccessful, nameof(bodyisSuccessful), required: false);
+            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
+            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: false);
+            var __workflow_bodycorpId = bodycorpId == null ? null : WorkflowExpression.Compile(bodycorpId);
+            WorkflowExpression.Validate(__workflow_bodycorpId, nameof(bodycorpId), required: false);
+            var __workflow_bodymeetingId = bodymeetingId == null ? null : WorkflowExpression.Compile(bodymeetingId);
+            WorkflowExpression.Validate(__workflow_bodymeetingId, nameof(bodymeetingId), required: false);
+            var __workflow_bodystart = bodystart == null ? null : WorkflowExpression.Compile(bodystart);
+            WorkflowExpression.Validate(__workflow_bodystart, nameof(bodystart), required: false);
+            var __workflow_bodyend = bodyend == null ? null : WorkflowExpression.Compile(bodyend);
+            WorkflowExpression.Validate(__workflow_bodyend, nameof(bodyend), required: false);
+            var __workflow_bodyhostEmail = bodyhostEmail == null ? null : WorkflowExpression.Compile(bodyhostEmail);
+            WorkflowExpression.Validate(__workflow_bodyhostEmail, nameof(bodyhostEmail), required: false);
+            var __workflow_bodyjoinURL = bodyjoinURL == null ? null : WorkflowExpression.Compile(bodyjoinURL);
+            WorkflowExpression.Validate(__workflow_bodyjoinURL, nameof(bodyjoinURL), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/response/updateSession";
@@ -265,53 +258,53 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyisSuccessful != null)
+                if (__workflow_bodyisSuccessful != null)
                 {
-                    body["isSuccessful"] = ExpressionConverter.ConvertO(bodyisSuccessful);
+                    body["isSuccessful"] = ExpressionConverter.ConvertO(__workflow_bodyisSuccessful);
                     bodypropCount++;
                 }
 
-                if (bodymessage != null)
+                if (__workflow_bodymessage != null)
                 {
-                    body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                    body["message"] = ExpressionConverter.ConvertO(__workflow_bodymessage);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["correlationId"] = ExpressionConverter.ConvertO(bodycorrelationId);
-                if (bodycorpId != null)
+                body["correlationId"] = ExpressionConverter.ConvertO(__workflow_bodycorrelationId);
+                if (__workflow_bodycorpId != null)
                 {
-                    body["corpId"] = ExpressionConverter.ConvertO(bodycorpId);
+                    body["corpId"] = ExpressionConverter.ConvertO(__workflow_bodycorpId);
                     bodypropCount++;
                 }
 
-                if (bodymeetingId != null)
+                if (__workflow_bodymeetingId != null)
                 {
-                    body["meetingId"] = ExpressionConverter.ConvertO(bodymeetingId);
+                    body["meetingId"] = ExpressionConverter.ConvertO(__workflow_bodymeetingId);
                     bodypropCount++;
                 }
 
-                if (bodystart != null)
+                if (__workflow_bodystart != null)
                 {
-                    body["start"] = ExpressionConverter.ConvertO(bodystart);
+                    body["start"] = ExpressionConverter.ConvertO(__workflow_bodystart);
                     bodypropCount++;
                 }
 
-                if (bodyend != null)
+                if (__workflow_bodyend != null)
                 {
-                    body["end"] = ExpressionConverter.ConvertO(bodyend);
+                    body["end"] = ExpressionConverter.ConvertO(__workflow_bodyend);
                     bodypropCount++;
                 }
 
-                if (bodyhostEmail != null)
+                if (__workflow_bodyhostEmail != null)
                 {
-                    body["hostEmail"] = ExpressionConverter.ConvertO(bodyhostEmail);
+                    body["hostEmail"] = ExpressionConverter.ConvertO(__workflow_bodyhostEmail);
                     bodypropCount++;
                 }
 
-                if (bodyjoinURL != null)
+                if (__workflow_bodyjoinURL != null)
                 {
-                    body["joinURL"] = ExpressionConverter.ConvertO(bodyjoinURL);
+                    body["joinURL"] = ExpressionConverter.ConvertO(__workflow_bodyjoinURL);
                     bodypropCount++;
                 }
 
@@ -325,18 +318,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cornerstonelearningv")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteSessionResponse))]
-        public IWorkflowAction DeleteSessionResponse([WorkflowExpression] Func<string> bodycorrelationId, [WorkflowExpression] Func<bool> bodyisSuccessful = null, [WorkflowExpression] Func<string> bodymessage = null)
+        public IWorkflowAction DeleteSessionResponse(Expression<Func<string>> bodycorrelationId, Expression<Func<bool>> bodyisSuccessful = null, Expression<Func<string>> bodymessage = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDeleteSessionResponse(WorkflowExpression<string> bodycorrelationId, WorkflowExpression<bool> bodyisSuccessful = null, WorkflowExpression<string> bodymessage = null)
-        {
-            WorkflowExpression.Validate(bodycorrelationId, nameof(bodycorrelationId), required: true);
-            WorkflowExpression.Validate(bodyisSuccessful, nameof(bodyisSuccessful), required: false);
-            WorkflowExpression.Validate(bodymessage, nameof(bodymessage), required: false);
+            var __workflow_bodycorrelationId = bodycorrelationId == null ? null : WorkflowExpression.Compile(bodycorrelationId);
+            WorkflowExpression.Validate(__workflow_bodycorrelationId, nameof(bodycorrelationId), required: true);
+            var __workflow_bodyisSuccessful = bodyisSuccessful == null ? null : WorkflowExpression.Compile(bodyisSuccessful);
+            WorkflowExpression.Validate(__workflow_bodyisSuccessful, nameof(bodyisSuccessful), required: false);
+            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
+            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/response/deleteSession";
@@ -344,20 +333,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyisSuccessful != null)
+                if (__workflow_bodyisSuccessful != null)
                 {
-                    body["isSuccessful"] = ExpressionConverter.ConvertO(bodyisSuccessful);
+                    body["isSuccessful"] = ExpressionConverter.ConvertO(__workflow_bodyisSuccessful);
                     bodypropCount++;
                 }
 
-                if (bodymessage != null)
+                if (__workflow_bodymessage != null)
                 {
-                    body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                    body["message"] = ExpressionConverter.ConvertO(__workflow_bodymessage);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["correlationId"] = ExpressionConverter.ConvertO(bodycorrelationId);
+                body["correlationId"] = ExpressionConverter.ConvertO(__workflow_bodycorrelationId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -368,18 +357,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cornerstonelearningv")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateInstructorResponse))]
-        public IWorkflowAction UpdateInstructorResponse([WorkflowExpression] Func<string> bodycorrelationId, [WorkflowExpression] Func<bool> bodyisSuccessful = null, [WorkflowExpression] Func<string> bodymessage = null)
+        public IWorkflowAction UpdateInstructorResponse(Expression<Func<string>> bodycorrelationId, Expression<Func<bool>> bodyisSuccessful = null, Expression<Func<string>> bodymessage = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildUpdateInstructorResponse(WorkflowExpression<string> bodycorrelationId, WorkflowExpression<bool> bodyisSuccessful = null, WorkflowExpression<string> bodymessage = null)
-        {
-            WorkflowExpression.Validate(bodycorrelationId, nameof(bodycorrelationId), required: true);
-            WorkflowExpression.Validate(bodyisSuccessful, nameof(bodyisSuccessful), required: false);
-            WorkflowExpression.Validate(bodymessage, nameof(bodymessage), required: false);
+            var __workflow_bodycorrelationId = bodycorrelationId == null ? null : WorkflowExpression.Compile(bodycorrelationId);
+            WorkflowExpression.Validate(__workflow_bodycorrelationId, nameof(bodycorrelationId), required: true);
+            var __workflow_bodyisSuccessful = bodyisSuccessful == null ? null : WorkflowExpression.Compile(bodyisSuccessful);
+            WorkflowExpression.Validate(__workflow_bodyisSuccessful, nameof(bodyisSuccessful), required: false);
+            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
+            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/response/updateInstructor";
@@ -387,20 +372,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyisSuccessful != null)
+                if (__workflow_bodyisSuccessful != null)
                 {
-                    body["isSuccessful"] = ExpressionConverter.ConvertO(bodyisSuccessful);
+                    body["isSuccessful"] = ExpressionConverter.ConvertO(__workflow_bodyisSuccessful);
                     bodypropCount++;
                 }
 
-                if (bodymessage != null)
+                if (__workflow_bodymessage != null)
                 {
-                    body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                    body["message"] = ExpressionConverter.ConvertO(__workflow_bodymessage);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["correlationId"] = ExpressionConverter.ConvertO(bodycorrelationId);
+                body["correlationId"] = ExpressionConverter.ConvertO(__workflow_bodycorrelationId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

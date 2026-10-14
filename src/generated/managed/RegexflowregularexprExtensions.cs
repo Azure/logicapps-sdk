@@ -1,35 +1,29 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Regexflowregularexpr
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class RegexflowregularexprActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "regexflowregularexpr")]
-        [WorkflowExpressionFactory(nameof(__BuildRegexMultiGroup))]
-        public IBodyWorkflowAction<RegexMultiGroupResponse> RegexMultiGroup([WorkflowExpression] Func<string> pattern, [WorkflowExpression] Func<string> body = null)
+        public IBodyWorkflowAction<RegexMultiGroupResponse> RegexMultiGroup(Expression<Func<string>> pattern, Expression<Func<string>> body = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<RegexMultiGroupResponse> __BuildRegexMultiGroup(WorkflowExpression<string> pattern, WorkflowExpression<string> body = null)
-        {
-            WorkflowExpression.Validate(pattern, nameof(pattern), required: true);
-            WorkflowExpression.Validate(body, nameof(body), required: false);
+            var __workflow_pattern = pattern == null ? null : WorkflowExpression.Compile(pattern);
+            WorkflowExpression.Validate(__workflow_pattern, nameof(pattern), required: true);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
             return new DeferredBodyAction<RegexMultiGroupResponse>(() =>
             {
                 var apiCallPath = "/RegexMultiGroup";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["pattern"] = ExpressionConverter.Convert(pattern);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["pattern"] = ExpressionConverter.Convert(__workflow_pattern);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<RegexMultiGroupResponse>(callPayload);
             });
         }

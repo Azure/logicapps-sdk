@@ -1,68 +1,66 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaifoundryinference
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class AzureaifoundryinferenceActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureaifoundryinference")]
-        [WorkflowExpressionFactory(nameof(__BuildChatCompletion))]
-        public IBodyWorkflowAction<ChatCompletionResponse> ChatCompletion([WorkflowExpression] Func<string> apiVersion = null, [WorkflowExpression] Func<bodymessagesInputItem[]> bodymessages = null, [WorkflowExpression] Func<double> bodytemperature = null, [WorkflowExpression] Func<double> bodytopP = null, [WorkflowExpression] Func<int> bodymaxTokens = null, [WorkflowExpression] Func<string> bodymodel = null)
+        public IBodyWorkflowAction<ChatCompletionResponse> ChatCompletion(Expression<Func<string>> apiVersion = null, Expression<Func<bodymessagesInputItem[]>> bodymessages = null, Expression<Func<double>> bodytemperature = null, Expression<Func<double>> bodytopP = null, Expression<Func<int>> bodymaxTokens = null, Expression<Func<string>> bodymodel = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ChatCompletionResponse> __BuildChatCompletion(WorkflowExpression<string> apiVersion = null, WorkflowExpression<bodymessagesInputItem[]> bodymessages = null, WorkflowExpression<double> bodytemperature = null, WorkflowExpression<double> bodytopP = null, WorkflowExpression<int> bodymaxTokens = null, WorkflowExpression<string> bodymodel = null)
-        {
-            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: false);
-            WorkflowExpression.Validate(bodymessages, nameof(bodymessages), required: false);
-            WorkflowExpression.Validate(bodytemperature, nameof(bodytemperature), required: false);
-            WorkflowExpression.Validate(bodytopP, nameof(bodytopP), required: false);
-            WorkflowExpression.Validate(bodymaxTokens, nameof(bodymaxTokens), required: false);
-            WorkflowExpression.Validate(bodymodel, nameof(bodymodel), required: false);
+            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
+            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: false);
+            var __workflow_bodymessages = bodymessages == null ? null : WorkflowExpression.Compile(bodymessages);
+            WorkflowExpression.Validate(__workflow_bodymessages, nameof(bodymessages), required: false);
+            var __workflow_bodytemperature = bodytemperature == null ? null : WorkflowExpression.Compile(bodytemperature);
+            WorkflowExpression.Validate(__workflow_bodytemperature, nameof(bodytemperature), required: false);
+            var __workflow_bodytopP = bodytopP == null ? null : WorkflowExpression.Compile(bodytopP);
+            WorkflowExpression.Validate(__workflow_bodytopP, nameof(bodytopP), required: false);
+            var __workflow_bodymaxTokens = bodymaxTokens == null ? null : WorkflowExpression.Compile(bodymaxTokens);
+            WorkflowExpression.Validate(__workflow_bodymaxTokens, nameof(bodymaxTokens), required: false);
+            var __workflow_bodymodel = bodymodel == null ? null : WorkflowExpression.Compile(bodymodel);
+            WorkflowExpression.Validate(__workflow_bodymodel, nameof(bodymodel), required: false);
             return new DeferredBodyAction<ChatCompletionResponse>(() =>
             {
                 var apiCallPath = "/chat/completions";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (apiVersion != null)
-                    callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                if (__workflow_apiVersion != null)
+                    callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodymessages != null)
+                if (__workflow_bodymessages != null)
                 {
-                    body["messages"] = ExpressionConverter.ConvertO(bodymessages);
+                    body["messages"] = ExpressionConverter.ConvertO(__workflow_bodymessages);
                     bodypropCount++;
                 }
 
-                if (bodytemperature != null)
+                if (__workflow_bodytemperature != null)
                 {
-                    body["temperature"] = ExpressionConverter.ConvertO(bodytemperature);
+                    body["temperature"] = ExpressionConverter.ConvertO(__workflow_bodytemperature);
                     bodypropCount++;
                 }
 
-                if (bodytopP != null)
+                if (__workflow_bodytopP != null)
                 {
-                    body["top_p"] = ExpressionConverter.ConvertO(bodytopP);
+                    body["top_p"] = ExpressionConverter.ConvertO(__workflow_bodytopP);
                     bodypropCount++;
                 }
 
-                if (bodymaxTokens != null)
+                if (__workflow_bodymaxTokens != null)
                 {
-                    body["max_tokens"] = ExpressionConverter.ConvertO(bodymaxTokens);
+                    body["max_tokens"] = ExpressionConverter.ConvertO(__workflow_bodymaxTokens);
                     bodypropCount++;
                 }
 
-                if (bodymodel != null)
+                if (__workflow_bodymodel != null)
                 {
-                    body["model"] = ExpressionConverter.ConvertO(bodymodel);
+                    body["model"] = ExpressionConverter.ConvertO(__workflow_bodymodel);
                     bodypropCount++;
                 }
 

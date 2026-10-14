@@ -1,144 +1,149 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class SchooldiggeripActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
-        [WorkflowExpressionFactory(nameof(__BuildAutocompleteGetSchools))]
-        public IBodyWorkflowAction<APIAutocompleteSchoolResult> AutocompleteGetSchools([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<bool> qSearchCityStateName = null, [WorkflowExpression] Func<string> st = null, [WorkflowExpression] Func<levelInput> level = null, [WorkflowExpression] Func<double> boxLatitudeNW = null, [WorkflowExpression] Func<double> boxLongitudeNW = null, [WorkflowExpression] Func<double> boxLatitudeSE = null, [WorkflowExpression] Func<double> boxLongitudeSE = null, [WorkflowExpression] Func<int> returnCount = null)
+        public IBodyWorkflowAction<APIAutocompleteSchoolResult> AutocompleteGetSchools(Expression<Func<string>> q, Expression<Func<bool>> qSearchCityStateName = null, Expression<Func<string>> st = null, Expression<Func<levelInput>> level = null, Expression<Func<double>> boxLatitudeNW = null, Expression<Func<double>> boxLongitudeNW = null, Expression<Func<double>> boxLatitudeSE = null, Expression<Func<double>> boxLongitudeSE = null, Expression<Func<int>> returnCount = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<APIAutocompleteSchoolResult> __BuildAutocompleteGetSchools(WorkflowExpression<string> q, WorkflowExpression<bool> qSearchCityStateName = null, WorkflowExpression<string> st = null, WorkflowExpression<levelInput> level = null, WorkflowExpression<double> boxLatitudeNW = null, WorkflowExpression<double> boxLongitudeNW = null, WorkflowExpression<double> boxLatitudeSE = null, WorkflowExpression<double> boxLongitudeSE = null, WorkflowExpression<int> returnCount = null)
-        {
-            WorkflowExpression.Validate(q, nameof(q), required: true);
-            WorkflowExpression.Validate(qSearchCityStateName, nameof(qSearchCityStateName), required: false);
-            WorkflowExpression.Validate(st, nameof(st), required: false);
-            WorkflowExpression.Validate(level, nameof(level), required: false);
-            WorkflowExpression.Validate(boxLatitudeNW, nameof(boxLatitudeNW), required: false);
-            WorkflowExpression.Validate(boxLongitudeNW, nameof(boxLongitudeNW), required: false);
-            WorkflowExpression.Validate(boxLatitudeSE, nameof(boxLatitudeSE), required: false);
-            WorkflowExpression.Validate(boxLongitudeSE, nameof(boxLongitudeSE), required: false);
-            WorkflowExpression.Validate(returnCount, nameof(returnCount), required: false);
+            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
+            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
+            var __workflow_qSearchCityStateName = qSearchCityStateName == null ? null : WorkflowExpression.Compile(qSearchCityStateName);
+            WorkflowExpression.Validate(__workflow_qSearchCityStateName, nameof(qSearchCityStateName), required: false);
+            var __workflow_st = st == null ? null : WorkflowExpression.Compile(st);
+            WorkflowExpression.Validate(__workflow_st, nameof(st), required: false);
+            var __workflow_level = level == null ? null : WorkflowExpression.Compile(level);
+            WorkflowExpression.Validate(__workflow_level, nameof(level), required: false);
+            var __workflow_boxLatitudeNW = boxLatitudeNW == null ? null : WorkflowExpression.Compile(boxLatitudeNW);
+            WorkflowExpression.Validate(__workflow_boxLatitudeNW, nameof(boxLatitudeNW), required: false);
+            var __workflow_boxLongitudeNW = boxLongitudeNW == null ? null : WorkflowExpression.Compile(boxLongitudeNW);
+            WorkflowExpression.Validate(__workflow_boxLongitudeNW, nameof(boxLongitudeNW), required: false);
+            var __workflow_boxLatitudeSE = boxLatitudeSE == null ? null : WorkflowExpression.Compile(boxLatitudeSE);
+            WorkflowExpression.Validate(__workflow_boxLatitudeSE, nameof(boxLatitudeSE), required: false);
+            var __workflow_boxLongitudeSE = boxLongitudeSE == null ? null : WorkflowExpression.Compile(boxLongitudeSE);
+            WorkflowExpression.Validate(__workflow_boxLongitudeSE, nameof(boxLongitudeSE), required: false);
+            var __workflow_returnCount = returnCount == null ? null : WorkflowExpression.Compile(returnCount);
+            WorkflowExpression.Validate(__workflow_returnCount, nameof(returnCount), required: false);
             return new DeferredBodyAction<APIAutocompleteSchoolResult>(() =>
             {
                 var apiCallPath = "/v2.0/autocomplete/schools";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-                if (qSearchCityStateName != null)
-                    callPayload.Queries["qSearchCityStateName"] = ExpressionConverter.Convert(qSearchCityStateName);
-                if (st != null)
-                    callPayload.Queries["st"] = ExpressionConverter.Convert(st);
-                if (level != null)
-                    callPayload.Queries["level"] = ExpressionConverter.Convert(level);
-                if (boxLatitudeNW != null)
-                    callPayload.Queries["boxLatitudeNW"] = ExpressionConverter.Convert(boxLatitudeNW);
-                if (boxLongitudeNW != null)
-                    callPayload.Queries["boxLongitudeNW"] = ExpressionConverter.Convert(boxLongitudeNW);
-                if (boxLatitudeSE != null)
-                    callPayload.Queries["boxLatitudeSE"] = ExpressionConverter.Convert(boxLatitudeSE);
-                if (boxLongitudeSE != null)
-                    callPayload.Queries["boxLongitudeSE"] = ExpressionConverter.Convert(boxLongitudeSE);
-                if (returnCount != null)
-                    callPayload.Queries["returnCount"] = ExpressionConverter.Convert(returnCount);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
+                if (__workflow_qSearchCityStateName != null)
+                    callPayload.Queries["qSearchCityStateName"] = ExpressionConverter.Convert(__workflow_qSearchCityStateName);
+                if (__workflow_st != null)
+                    callPayload.Queries["st"] = ExpressionConverter.Convert(__workflow_st);
+                if (__workflow_level != null)
+                    callPayload.Queries["level"] = ExpressionConverter.Convert(__workflow_level);
+                if (__workflow_boxLatitudeNW != null)
+                    callPayload.Queries["boxLatitudeNW"] = ExpressionConverter.Convert(__workflow_boxLatitudeNW);
+                if (__workflow_boxLongitudeNW != null)
+                    callPayload.Queries["boxLongitudeNW"] = ExpressionConverter.Convert(__workflow_boxLongitudeNW);
+                if (__workflow_boxLatitudeSE != null)
+                    callPayload.Queries["boxLatitudeSE"] = ExpressionConverter.Convert(__workflow_boxLatitudeSE);
+                if (__workflow_boxLongitudeSE != null)
+                    callPayload.Queries["boxLongitudeSE"] = ExpressionConverter.Convert(__workflow_boxLongitudeSE);
+                if (__workflow_returnCount != null)
+                    callPayload.Queries["returnCount"] = ExpressionConverter.Convert(__workflow_returnCount);
                 return new ApiConnectionAction<APIAutocompleteSchoolResult>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
-        [WorkflowExpressionFactory(nameof(__BuildDistrictsGetAllDistricts2))]
-        public IBodyWorkflowAction<APIDistrictList2> DistrictsGetAllDistricts2([WorkflowExpression] Func<string> st, [WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<string> city = null, [WorkflowExpression] Func<string> zip = null, [WorkflowExpression] Func<double> nearLatitude = null, [WorkflowExpression] Func<double> nearLongitude = null, [WorkflowExpression] Func<string> boundaryAddress = null, [WorkflowExpression] Func<int> distanceMiles = null, [WorkflowExpression] Func<bool> isInBoundaryOnly = null, [WorkflowExpression] Func<double> boxLatitudeNW = null, [WorkflowExpression] Func<double> boxLongitudeNW = null, [WorkflowExpression] Func<double> boxLatitudeSE = null, [WorkflowExpression] Func<double> boxLongitudeSE = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<sortByInput> sortBy = null, [WorkflowExpression] Func<bool> includeUnrankedDistrictsInRankSort = null)
+        public IBodyWorkflowAction<APIDistrictList2> DistrictsGetAllDistricts2(Expression<Func<string>> st, Expression<Func<string>> q = null, Expression<Func<string>> city = null, Expression<Func<string>> zip = null, Expression<Func<double>> nearLatitude = null, Expression<Func<double>> nearLongitude = null, Expression<Func<string>> boundaryAddress = null, Expression<Func<int>> distanceMiles = null, Expression<Func<bool>> isInBoundaryOnly = null, Expression<Func<double>> boxLatitudeNW = null, Expression<Func<double>> boxLongitudeNW = null, Expression<Func<double>> boxLatitudeSE = null, Expression<Func<double>> boxLongitudeSE = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<sortByInput>> sortBy = null, Expression<Func<bool>> includeUnrankedDistrictsInRankSort = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<APIDistrictList2> __BuildDistrictsGetAllDistricts2(WorkflowExpression<string> st, WorkflowExpression<string> q = null, WorkflowExpression<string> city = null, WorkflowExpression<string> zip = null, WorkflowExpression<double> nearLatitude = null, WorkflowExpression<double> nearLongitude = null, WorkflowExpression<string> boundaryAddress = null, WorkflowExpression<int> distanceMiles = null, WorkflowExpression<bool> isInBoundaryOnly = null, WorkflowExpression<double> boxLatitudeNW = null, WorkflowExpression<double> boxLongitudeNW = null, WorkflowExpression<double> boxLatitudeSE = null, WorkflowExpression<double> boxLongitudeSE = null, WorkflowExpression<int> page = null, WorkflowExpression<int> perPage = null, WorkflowExpression<sortByInput> sortBy = null, WorkflowExpression<bool> includeUnrankedDistrictsInRankSort = null)
-        {
-            WorkflowExpression.Validate(st, nameof(st), required: true);
-            WorkflowExpression.Validate(q, nameof(q), required: false);
-            WorkflowExpression.Validate(city, nameof(city), required: false);
-            WorkflowExpression.Validate(zip, nameof(zip), required: false);
-            WorkflowExpression.Validate(nearLatitude, nameof(nearLatitude), required: false);
-            WorkflowExpression.Validate(nearLongitude, nameof(nearLongitude), required: false);
-            WorkflowExpression.Validate(boundaryAddress, nameof(boundaryAddress), required: false);
-            WorkflowExpression.Validate(distanceMiles, nameof(distanceMiles), required: false);
-            WorkflowExpression.Validate(isInBoundaryOnly, nameof(isInBoundaryOnly), required: false);
-            WorkflowExpression.Validate(boxLatitudeNW, nameof(boxLatitudeNW), required: false);
-            WorkflowExpression.Validate(boxLongitudeNW, nameof(boxLongitudeNW), required: false);
-            WorkflowExpression.Validate(boxLatitudeSE, nameof(boxLatitudeSE), required: false);
-            WorkflowExpression.Validate(boxLongitudeSE, nameof(boxLongitudeSE), required: false);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
-            WorkflowExpression.Validate(perPage, nameof(perPage), required: false);
-            WorkflowExpression.Validate(sortBy, nameof(sortBy), required: false);
-            WorkflowExpression.Validate(includeUnrankedDistrictsInRankSort, nameof(includeUnrankedDistrictsInRankSort), required: false);
+            var __workflow_st = st == null ? null : WorkflowExpression.Compile(st);
+            WorkflowExpression.Validate(__workflow_st, nameof(st), required: true);
+            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
+            WorkflowExpression.Validate(__workflow_q, nameof(q), required: false);
+            var __workflow_city = city == null ? null : WorkflowExpression.Compile(city);
+            WorkflowExpression.Validate(__workflow_city, nameof(city), required: false);
+            var __workflow_zip = zip == null ? null : WorkflowExpression.Compile(zip);
+            WorkflowExpression.Validate(__workflow_zip, nameof(zip), required: false);
+            var __workflow_nearLatitude = nearLatitude == null ? null : WorkflowExpression.Compile(nearLatitude);
+            WorkflowExpression.Validate(__workflow_nearLatitude, nameof(nearLatitude), required: false);
+            var __workflow_nearLongitude = nearLongitude == null ? null : WorkflowExpression.Compile(nearLongitude);
+            WorkflowExpression.Validate(__workflow_nearLongitude, nameof(nearLongitude), required: false);
+            var __workflow_boundaryAddress = boundaryAddress == null ? null : WorkflowExpression.Compile(boundaryAddress);
+            WorkflowExpression.Validate(__workflow_boundaryAddress, nameof(boundaryAddress), required: false);
+            var __workflow_distanceMiles = distanceMiles == null ? null : WorkflowExpression.Compile(distanceMiles);
+            WorkflowExpression.Validate(__workflow_distanceMiles, nameof(distanceMiles), required: false);
+            var __workflow_isInBoundaryOnly = isInBoundaryOnly == null ? null : WorkflowExpression.Compile(isInBoundaryOnly);
+            WorkflowExpression.Validate(__workflow_isInBoundaryOnly, nameof(isInBoundaryOnly), required: false);
+            var __workflow_boxLatitudeNW = boxLatitudeNW == null ? null : WorkflowExpression.Compile(boxLatitudeNW);
+            WorkflowExpression.Validate(__workflow_boxLatitudeNW, nameof(boxLatitudeNW), required: false);
+            var __workflow_boxLongitudeNW = boxLongitudeNW == null ? null : WorkflowExpression.Compile(boxLongitudeNW);
+            WorkflowExpression.Validate(__workflow_boxLongitudeNW, nameof(boxLongitudeNW), required: false);
+            var __workflow_boxLatitudeSE = boxLatitudeSE == null ? null : WorkflowExpression.Compile(boxLatitudeSE);
+            WorkflowExpression.Validate(__workflow_boxLatitudeSE, nameof(boxLatitudeSE), required: false);
+            var __workflow_boxLongitudeSE = boxLongitudeSE == null ? null : WorkflowExpression.Compile(boxLongitudeSE);
+            WorkflowExpression.Validate(__workflow_boxLongitudeSE, nameof(boxLongitudeSE), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
+            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
+            var __workflow_sortBy = sortBy == null ? null : WorkflowExpression.Compile(sortBy);
+            WorkflowExpression.Validate(__workflow_sortBy, nameof(sortBy), required: false);
+            var __workflow_includeUnrankedDistrictsInRankSort = includeUnrankedDistrictsInRankSort == null ? null : WorkflowExpression.Compile(includeUnrankedDistrictsInRankSort);
+            WorkflowExpression.Validate(__workflow_includeUnrankedDistrictsInRankSort, nameof(includeUnrankedDistrictsInRankSort), required: false);
             return new DeferredBodyAction<APIDistrictList2>(() =>
             {
                 var apiCallPath = "/v2.0/districts";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["st"] = ExpressionConverter.Convert(st);
-                if (q != null)
-                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-                if (city != null)
-                    callPayload.Queries["city"] = ExpressionConverter.Convert(city);
-                if (zip != null)
-                    callPayload.Queries["zip"] = ExpressionConverter.Convert(zip);
-                if (nearLatitude != null)
-                    callPayload.Queries["nearLatitude"] = ExpressionConverter.Convert(nearLatitude);
-                if (nearLongitude != null)
-                    callPayload.Queries["nearLongitude"] = ExpressionConverter.Convert(nearLongitude);
-                if (boundaryAddress != null)
-                    callPayload.Queries["boundaryAddress"] = ExpressionConverter.Convert(boundaryAddress);
-                if (distanceMiles != null)
-                    callPayload.Queries["distanceMiles"] = ExpressionConverter.Convert(distanceMiles);
-                if (isInBoundaryOnly != null)
-                    callPayload.Queries["isInBoundaryOnly"] = ExpressionConverter.Convert(isInBoundaryOnly);
-                if (boxLatitudeNW != null)
-                    callPayload.Queries["boxLatitudeNW"] = ExpressionConverter.Convert(boxLatitudeNW);
-                if (boxLongitudeNW != null)
-                    callPayload.Queries["boxLongitudeNW"] = ExpressionConverter.Convert(boxLongitudeNW);
-                if (boxLatitudeSE != null)
-                    callPayload.Queries["boxLatitudeSE"] = ExpressionConverter.Convert(boxLatitudeSE);
-                if (boxLongitudeSE != null)
-                    callPayload.Queries["boxLongitudeSE"] = ExpressionConverter.Convert(boxLongitudeSE);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-                if (perPage != null)
-                    callPayload.Queries["perPage"] = ExpressionConverter.Convert(perPage);
-                if (sortBy != null)
-                    callPayload.Queries["sortBy"] = ExpressionConverter.Convert(sortBy);
-                if (includeUnrankedDistrictsInRankSort != null)
-                    callPayload.Queries["includeUnrankedDistrictsInRankSort"] = ExpressionConverter.Convert(includeUnrankedDistrictsInRankSort);
+                callPayload.Queries["st"] = ExpressionConverter.Convert(__workflow_st);
+                if (__workflow_q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
+                if (__workflow_city != null)
+                    callPayload.Queries["city"] = ExpressionConverter.Convert(__workflow_city);
+                if (__workflow_zip != null)
+                    callPayload.Queries["zip"] = ExpressionConverter.Convert(__workflow_zip);
+                if (__workflow_nearLatitude != null)
+                    callPayload.Queries["nearLatitude"] = ExpressionConverter.Convert(__workflow_nearLatitude);
+                if (__workflow_nearLongitude != null)
+                    callPayload.Queries["nearLongitude"] = ExpressionConverter.Convert(__workflow_nearLongitude);
+                if (__workflow_boundaryAddress != null)
+                    callPayload.Queries["boundaryAddress"] = ExpressionConverter.Convert(__workflow_boundaryAddress);
+                if (__workflow_distanceMiles != null)
+                    callPayload.Queries["distanceMiles"] = ExpressionConverter.Convert(__workflow_distanceMiles);
+                if (__workflow_isInBoundaryOnly != null)
+                    callPayload.Queries["isInBoundaryOnly"] = ExpressionConverter.Convert(__workflow_isInBoundaryOnly);
+                if (__workflow_boxLatitudeNW != null)
+                    callPayload.Queries["boxLatitudeNW"] = ExpressionConverter.Convert(__workflow_boxLatitudeNW);
+                if (__workflow_boxLongitudeNW != null)
+                    callPayload.Queries["boxLongitudeNW"] = ExpressionConverter.Convert(__workflow_boxLongitudeNW);
+                if (__workflow_boxLatitudeSE != null)
+                    callPayload.Queries["boxLatitudeSE"] = ExpressionConverter.Convert(__workflow_boxLatitudeSE);
+                if (__workflow_boxLongitudeSE != null)
+                    callPayload.Queries["boxLongitudeSE"] = ExpressionConverter.Convert(__workflow_boxLongitudeSE);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_perPage != null)
+                    callPayload.Queries["perPage"] = ExpressionConverter.Convert(__workflow_perPage);
+                if (__workflow_sortBy != null)
+                    callPayload.Queries["sortBy"] = ExpressionConverter.Convert(__workflow_sortBy);
+                if (__workflow_includeUnrankedDistrictsInRankSort != null)
+                    callPayload.Queries["includeUnrankedDistrictsInRankSort"] = ExpressionConverter.Convert(__workflow_includeUnrankedDistrictsInRankSort);
                 return new ApiConnectionAction<APIDistrictList2>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
-        [WorkflowExpressionFactory(nameof(__BuildDistrictsGetDistrict2))]
-        public IBodyWorkflowAction<APIDistrict12> DistrictsGetDistrict2([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<APIDistrict12> DistrictsGetDistrict2(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<APIDistrict12> __BuildDistrictsGetDistrict2(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<APIDistrict12>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2.0/districts/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2.0/districts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<APIDistrict12>(callPayload);
@@ -146,182 +151,192 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
-        [WorkflowExpressionFactory(nameof(__BuildRankingGet))]
-        public IBodyWorkflowAction<APISchoolListRank2> RankingGet([WorkflowExpression] Func<string> st, [WorkflowExpression] Func<int> year = null, [WorkflowExpression] Func<levelInput> level = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null)
+        public IBodyWorkflowAction<APISchoolListRank2> RankingGet(Expression<Func<string>> st, Expression<Func<int>> year = null, Expression<Func<levelInput>> level = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<APISchoolListRank2> __BuildRankingGet(WorkflowExpression<string> st, WorkflowExpression<int> year = null, WorkflowExpression<levelInput> level = null, WorkflowExpression<int> page = null, WorkflowExpression<int> perPage = null)
-        {
-            WorkflowExpression.Validate(st, nameof(st), required: true);
-            WorkflowExpression.Validate(year, nameof(year), required: false);
-            WorkflowExpression.Validate(level, nameof(level), required: false);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
-            WorkflowExpression.Validate(perPage, nameof(perPage), required: false);
+            var __workflow_st = st == null ? null : WorkflowExpression.Compile(st);
+            WorkflowExpression.Validate(__workflow_st, nameof(st), required: true);
+            var __workflow_year = year == null ? null : WorkflowExpression.Compile(year);
+            WorkflowExpression.Validate(__workflow_year, nameof(year), required: false);
+            var __workflow_level = level == null ? null : WorkflowExpression.Compile(level);
+            WorkflowExpression.Validate(__workflow_level, nameof(level), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
+            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
             return new DeferredBodyAction<APISchoolListRank2>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2.0/rankings/schools/{0}", ExpressionConverter.ConvertWithUrlEncoding(st, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2.0/rankings/schools/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_st, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (year != null)
-                    callPayload.Queries["year"] = ExpressionConverter.Convert(year);
-                if (level != null)
-                    callPayload.Queries["level"] = ExpressionConverter.Convert(level);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-                if (perPage != null)
-                    callPayload.Queries["perPage"] = ExpressionConverter.Convert(perPage);
+                if (__workflow_year != null)
+                    callPayload.Queries["year"] = ExpressionConverter.Convert(__workflow_year);
+                if (__workflow_level != null)
+                    callPayload.Queries["level"] = ExpressionConverter.Convert(__workflow_level);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_perPage != null)
+                    callPayload.Queries["perPage"] = ExpressionConverter.Convert(__workflow_perPage);
                 return new ApiConnectionAction<APISchoolListRank2>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
-        [WorkflowExpressionFactory(nameof(__BuildDistrictRanking))]
-        public IBodyWorkflowAction<APIDistrictListRank2> DistrictRanking([WorkflowExpression] Func<string> st, [WorkflowExpression] Func<int> year = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null)
+        public IBodyWorkflowAction<APIDistrictListRank2> DistrictRanking(Expression<Func<string>> st, Expression<Func<int>> year = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<APIDistrictListRank2> __BuildDistrictRanking(WorkflowExpression<string> st, WorkflowExpression<int> year = null, WorkflowExpression<int> page = null, WorkflowExpression<int> perPage = null)
-        {
-            WorkflowExpression.Validate(st, nameof(st), required: true);
-            WorkflowExpression.Validate(year, nameof(year), required: false);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
-            WorkflowExpression.Validate(perPage, nameof(perPage), required: false);
+            var __workflow_st = st == null ? null : WorkflowExpression.Compile(st);
+            WorkflowExpression.Validate(__workflow_st, nameof(st), required: true);
+            var __workflow_year = year == null ? null : WorkflowExpression.Compile(year);
+            WorkflowExpression.Validate(__workflow_year, nameof(year), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
+            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
             return new DeferredBodyAction<APIDistrictListRank2>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2.0/rankings/districts/{0}", ExpressionConverter.ConvertWithUrlEncoding(st, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2.0/rankings/districts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_st, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (year != null)
-                    callPayload.Queries["year"] = ExpressionConverter.Convert(year);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-                if (perPage != null)
-                    callPayload.Queries["perPage"] = ExpressionConverter.Convert(perPage);
+                if (__workflow_year != null)
+                    callPayload.Queries["year"] = ExpressionConverter.Convert(__workflow_year);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_perPage != null)
+                    callPayload.Queries["perPage"] = ExpressionConverter.Convert(__workflow_perPage);
                 return new ApiConnectionAction<APIDistrictListRank2>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
-        [WorkflowExpressionFactory(nameof(__BuildSchoolsGetAllSchools20))]
-        public IBodyWorkflowAction<APISchoolList2> SchoolsGetAllSchools20([WorkflowExpression] Func<string> st, [WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<bool> qSearchSchoolNameOnly = null, [WorkflowExpression] Func<string> districtID = null, [WorkflowExpression] Func<levelInput> level = null, [WorkflowExpression] Func<string> city = null, [WorkflowExpression] Func<string> zip = null, [WorkflowExpression] Func<bool> isMagnet = null, [WorkflowExpression] Func<bool> isCharter = null, [WorkflowExpression] Func<bool> isVirtual = null, [WorkflowExpression] Func<bool> isTitleI = null, [WorkflowExpression] Func<bool> isTitleISchoolwide = null, [WorkflowExpression] Func<double> nearLatitude = null, [WorkflowExpression] Func<double> nearLongitude = null, [WorkflowExpression] Func<string> nearAddress = null, [WorkflowExpression] Func<int> distanceMiles = null, [WorkflowExpression] Func<double> boundaryLatitude = null, [WorkflowExpression] Func<double> boundaryLongitude = null, [WorkflowExpression] Func<string> boundaryAddress = null, [WorkflowExpression] Func<bool> isInBoundaryOnly = null, [WorkflowExpression] Func<double> boxLatitudeNW = null, [WorkflowExpression] Func<double> boxLongitudeNW = null, [WorkflowExpression] Func<double> boxLatitudeSE = null, [WorkflowExpression] Func<double> boxLongitudeSE = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<sortByInput> sortBy = null, [WorkflowExpression] Func<bool> includeUnrankedSchoolsInRankSort = null)
+        public IBodyWorkflowAction<APISchoolList2> SchoolsGetAllSchools20(Expression<Func<string>> st, Expression<Func<string>> q = null, Expression<Func<bool>> qSearchSchoolNameOnly = null, Expression<Func<string>> districtID = null, Expression<Func<levelInput>> level = null, Expression<Func<string>> city = null, Expression<Func<string>> zip = null, Expression<Func<bool>> isMagnet = null, Expression<Func<bool>> isCharter = null, Expression<Func<bool>> isVirtual = null, Expression<Func<bool>> isTitleI = null, Expression<Func<bool>> isTitleISchoolwide = null, Expression<Func<double>> nearLatitude = null, Expression<Func<double>> nearLongitude = null, Expression<Func<string>> nearAddress = null, Expression<Func<int>> distanceMiles = null, Expression<Func<double>> boundaryLatitude = null, Expression<Func<double>> boundaryLongitude = null, Expression<Func<string>> boundaryAddress = null, Expression<Func<bool>> isInBoundaryOnly = null, Expression<Func<double>> boxLatitudeNW = null, Expression<Func<double>> boxLongitudeNW = null, Expression<Func<double>> boxLatitudeSE = null, Expression<Func<double>> boxLongitudeSE = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<sortByInput>> sortBy = null, Expression<Func<bool>> includeUnrankedSchoolsInRankSort = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<APISchoolList2> __BuildSchoolsGetAllSchools20(WorkflowExpression<string> st, WorkflowExpression<string> q = null, WorkflowExpression<bool> qSearchSchoolNameOnly = null, WorkflowExpression<string> districtID = null, WorkflowExpression<levelInput> level = null, WorkflowExpression<string> city = null, WorkflowExpression<string> zip = null, WorkflowExpression<bool> isMagnet = null, WorkflowExpression<bool> isCharter = null, WorkflowExpression<bool> isVirtual = null, WorkflowExpression<bool> isTitleI = null, WorkflowExpression<bool> isTitleISchoolwide = null, WorkflowExpression<double> nearLatitude = null, WorkflowExpression<double> nearLongitude = null, WorkflowExpression<string> nearAddress = null, WorkflowExpression<int> distanceMiles = null, WorkflowExpression<double> boundaryLatitude = null, WorkflowExpression<double> boundaryLongitude = null, WorkflowExpression<string> boundaryAddress = null, WorkflowExpression<bool> isInBoundaryOnly = null, WorkflowExpression<double> boxLatitudeNW = null, WorkflowExpression<double> boxLongitudeNW = null, WorkflowExpression<double> boxLatitudeSE = null, WorkflowExpression<double> boxLongitudeSE = null, WorkflowExpression<int> page = null, WorkflowExpression<int> perPage = null, WorkflowExpression<sortByInput> sortBy = null, WorkflowExpression<bool> includeUnrankedSchoolsInRankSort = null)
-        {
-            WorkflowExpression.Validate(st, nameof(st), required: true);
-            WorkflowExpression.Validate(q, nameof(q), required: false);
-            WorkflowExpression.Validate(qSearchSchoolNameOnly, nameof(qSearchSchoolNameOnly), required: false);
-            WorkflowExpression.Validate(districtID, nameof(districtID), required: false);
-            WorkflowExpression.Validate(level, nameof(level), required: false);
-            WorkflowExpression.Validate(city, nameof(city), required: false);
-            WorkflowExpression.Validate(zip, nameof(zip), required: false);
-            WorkflowExpression.Validate(isMagnet, nameof(isMagnet), required: false);
-            WorkflowExpression.Validate(isCharter, nameof(isCharter), required: false);
-            WorkflowExpression.Validate(isVirtual, nameof(isVirtual), required: false);
-            WorkflowExpression.Validate(isTitleI, nameof(isTitleI), required: false);
-            WorkflowExpression.Validate(isTitleISchoolwide, nameof(isTitleISchoolwide), required: false);
-            WorkflowExpression.Validate(nearLatitude, nameof(nearLatitude), required: false);
-            WorkflowExpression.Validate(nearLongitude, nameof(nearLongitude), required: false);
-            WorkflowExpression.Validate(nearAddress, nameof(nearAddress), required: false);
-            WorkflowExpression.Validate(distanceMiles, nameof(distanceMiles), required: false);
-            WorkflowExpression.Validate(boundaryLatitude, nameof(boundaryLatitude), required: false);
-            WorkflowExpression.Validate(boundaryLongitude, nameof(boundaryLongitude), required: false);
-            WorkflowExpression.Validate(boundaryAddress, nameof(boundaryAddress), required: false);
-            WorkflowExpression.Validate(isInBoundaryOnly, nameof(isInBoundaryOnly), required: false);
-            WorkflowExpression.Validate(boxLatitudeNW, nameof(boxLatitudeNW), required: false);
-            WorkflowExpression.Validate(boxLongitudeNW, nameof(boxLongitudeNW), required: false);
-            WorkflowExpression.Validate(boxLatitudeSE, nameof(boxLatitudeSE), required: false);
-            WorkflowExpression.Validate(boxLongitudeSE, nameof(boxLongitudeSE), required: false);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
-            WorkflowExpression.Validate(perPage, nameof(perPage), required: false);
-            WorkflowExpression.Validate(sortBy, nameof(sortBy), required: false);
-            WorkflowExpression.Validate(includeUnrankedSchoolsInRankSort, nameof(includeUnrankedSchoolsInRankSort), required: false);
+            var __workflow_st = st == null ? null : WorkflowExpression.Compile(st);
+            WorkflowExpression.Validate(__workflow_st, nameof(st), required: true);
+            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
+            WorkflowExpression.Validate(__workflow_q, nameof(q), required: false);
+            var __workflow_qSearchSchoolNameOnly = qSearchSchoolNameOnly == null ? null : WorkflowExpression.Compile(qSearchSchoolNameOnly);
+            WorkflowExpression.Validate(__workflow_qSearchSchoolNameOnly, nameof(qSearchSchoolNameOnly), required: false);
+            var __workflow_districtID = districtID == null ? null : WorkflowExpression.Compile(districtID);
+            WorkflowExpression.Validate(__workflow_districtID, nameof(districtID), required: false);
+            var __workflow_level = level == null ? null : WorkflowExpression.Compile(level);
+            WorkflowExpression.Validate(__workflow_level, nameof(level), required: false);
+            var __workflow_city = city == null ? null : WorkflowExpression.Compile(city);
+            WorkflowExpression.Validate(__workflow_city, nameof(city), required: false);
+            var __workflow_zip = zip == null ? null : WorkflowExpression.Compile(zip);
+            WorkflowExpression.Validate(__workflow_zip, nameof(zip), required: false);
+            var __workflow_isMagnet = isMagnet == null ? null : WorkflowExpression.Compile(isMagnet);
+            WorkflowExpression.Validate(__workflow_isMagnet, nameof(isMagnet), required: false);
+            var __workflow_isCharter = isCharter == null ? null : WorkflowExpression.Compile(isCharter);
+            WorkflowExpression.Validate(__workflow_isCharter, nameof(isCharter), required: false);
+            var __workflow_isVirtual = isVirtual == null ? null : WorkflowExpression.Compile(isVirtual);
+            WorkflowExpression.Validate(__workflow_isVirtual, nameof(isVirtual), required: false);
+            var __workflow_isTitleI = isTitleI == null ? null : WorkflowExpression.Compile(isTitleI);
+            WorkflowExpression.Validate(__workflow_isTitleI, nameof(isTitleI), required: false);
+            var __workflow_isTitleISchoolwide = isTitleISchoolwide == null ? null : WorkflowExpression.Compile(isTitleISchoolwide);
+            WorkflowExpression.Validate(__workflow_isTitleISchoolwide, nameof(isTitleISchoolwide), required: false);
+            var __workflow_nearLatitude = nearLatitude == null ? null : WorkflowExpression.Compile(nearLatitude);
+            WorkflowExpression.Validate(__workflow_nearLatitude, nameof(nearLatitude), required: false);
+            var __workflow_nearLongitude = nearLongitude == null ? null : WorkflowExpression.Compile(nearLongitude);
+            WorkflowExpression.Validate(__workflow_nearLongitude, nameof(nearLongitude), required: false);
+            var __workflow_nearAddress = nearAddress == null ? null : WorkflowExpression.Compile(nearAddress);
+            WorkflowExpression.Validate(__workflow_nearAddress, nameof(nearAddress), required: false);
+            var __workflow_distanceMiles = distanceMiles == null ? null : WorkflowExpression.Compile(distanceMiles);
+            WorkflowExpression.Validate(__workflow_distanceMiles, nameof(distanceMiles), required: false);
+            var __workflow_boundaryLatitude = boundaryLatitude == null ? null : WorkflowExpression.Compile(boundaryLatitude);
+            WorkflowExpression.Validate(__workflow_boundaryLatitude, nameof(boundaryLatitude), required: false);
+            var __workflow_boundaryLongitude = boundaryLongitude == null ? null : WorkflowExpression.Compile(boundaryLongitude);
+            WorkflowExpression.Validate(__workflow_boundaryLongitude, nameof(boundaryLongitude), required: false);
+            var __workflow_boundaryAddress = boundaryAddress == null ? null : WorkflowExpression.Compile(boundaryAddress);
+            WorkflowExpression.Validate(__workflow_boundaryAddress, nameof(boundaryAddress), required: false);
+            var __workflow_isInBoundaryOnly = isInBoundaryOnly == null ? null : WorkflowExpression.Compile(isInBoundaryOnly);
+            WorkflowExpression.Validate(__workflow_isInBoundaryOnly, nameof(isInBoundaryOnly), required: false);
+            var __workflow_boxLatitudeNW = boxLatitudeNW == null ? null : WorkflowExpression.Compile(boxLatitudeNW);
+            WorkflowExpression.Validate(__workflow_boxLatitudeNW, nameof(boxLatitudeNW), required: false);
+            var __workflow_boxLongitudeNW = boxLongitudeNW == null ? null : WorkflowExpression.Compile(boxLongitudeNW);
+            WorkflowExpression.Validate(__workflow_boxLongitudeNW, nameof(boxLongitudeNW), required: false);
+            var __workflow_boxLatitudeSE = boxLatitudeSE == null ? null : WorkflowExpression.Compile(boxLatitudeSE);
+            WorkflowExpression.Validate(__workflow_boxLatitudeSE, nameof(boxLatitudeSE), required: false);
+            var __workflow_boxLongitudeSE = boxLongitudeSE == null ? null : WorkflowExpression.Compile(boxLongitudeSE);
+            WorkflowExpression.Validate(__workflow_boxLongitudeSE, nameof(boxLongitudeSE), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
+            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
+            var __workflow_sortBy = sortBy == null ? null : WorkflowExpression.Compile(sortBy);
+            WorkflowExpression.Validate(__workflow_sortBy, nameof(sortBy), required: false);
+            var __workflow_includeUnrankedSchoolsInRankSort = includeUnrankedSchoolsInRankSort == null ? null : WorkflowExpression.Compile(includeUnrankedSchoolsInRankSort);
+            WorkflowExpression.Validate(__workflow_includeUnrankedSchoolsInRankSort, nameof(includeUnrankedSchoolsInRankSort), required: false);
             return new DeferredBodyAction<APISchoolList2>(() =>
             {
                 var apiCallPath = "/v2.0/schools";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["st"] = ExpressionConverter.Convert(st);
-                if (q != null)
-                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-                if (qSearchSchoolNameOnly != null)
-                    callPayload.Queries["qSearchSchoolNameOnly"] = ExpressionConverter.Convert(qSearchSchoolNameOnly);
-                if (districtID != null)
-                    callPayload.Queries["districtID"] = ExpressionConverter.Convert(districtID);
-                if (level != null)
-                    callPayload.Queries["level"] = ExpressionConverter.Convert(level);
-                if (city != null)
-                    callPayload.Queries["city"] = ExpressionConverter.Convert(city);
-                if (zip != null)
-                    callPayload.Queries["zip"] = ExpressionConverter.Convert(zip);
-                if (isMagnet != null)
-                    callPayload.Queries["isMagnet"] = ExpressionConverter.Convert(isMagnet);
-                if (isCharter != null)
-                    callPayload.Queries["isCharter"] = ExpressionConverter.Convert(isCharter);
-                if (isVirtual != null)
-                    callPayload.Queries["isVirtual"] = ExpressionConverter.Convert(isVirtual);
-                if (isTitleI != null)
-                    callPayload.Queries["isTitleI"] = ExpressionConverter.Convert(isTitleI);
-                if (isTitleISchoolwide != null)
-                    callPayload.Queries["isTitleISchoolwide"] = ExpressionConverter.Convert(isTitleISchoolwide);
-                if (nearLatitude != null)
-                    callPayload.Queries["nearLatitude"] = ExpressionConverter.Convert(nearLatitude);
-                if (nearLongitude != null)
-                    callPayload.Queries["nearLongitude"] = ExpressionConverter.Convert(nearLongitude);
-                if (nearAddress != null)
-                    callPayload.Queries["nearAddress"] = ExpressionConverter.Convert(nearAddress);
-                if (distanceMiles != null)
-                    callPayload.Queries["distanceMiles"] = ExpressionConverter.Convert(distanceMiles);
-                if (boundaryLatitude != null)
-                    callPayload.Queries["boundaryLatitude"] = ExpressionConverter.Convert(boundaryLatitude);
-                if (boundaryLongitude != null)
-                    callPayload.Queries["boundaryLongitude"] = ExpressionConverter.Convert(boundaryLongitude);
-                if (boundaryAddress != null)
-                    callPayload.Queries["boundaryAddress"] = ExpressionConverter.Convert(boundaryAddress);
-                if (isInBoundaryOnly != null)
-                    callPayload.Queries["isInBoundaryOnly"] = ExpressionConverter.Convert(isInBoundaryOnly);
-                if (boxLatitudeNW != null)
-                    callPayload.Queries["boxLatitudeNW"] = ExpressionConverter.Convert(boxLatitudeNW);
-                if (boxLongitudeNW != null)
-                    callPayload.Queries["boxLongitudeNW"] = ExpressionConverter.Convert(boxLongitudeNW);
-                if (boxLatitudeSE != null)
-                    callPayload.Queries["boxLatitudeSE"] = ExpressionConverter.Convert(boxLatitudeSE);
-                if (boxLongitudeSE != null)
-                    callPayload.Queries["boxLongitudeSE"] = ExpressionConverter.Convert(boxLongitudeSE);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-                if (perPage != null)
-                    callPayload.Queries["perPage"] = ExpressionConverter.Convert(perPage);
-                if (sortBy != null)
-                    callPayload.Queries["sortBy"] = ExpressionConverter.Convert(sortBy);
-                if (includeUnrankedSchoolsInRankSort != null)
-                    callPayload.Queries["includeUnrankedSchoolsInRankSort"] = ExpressionConverter.Convert(includeUnrankedSchoolsInRankSort);
+                callPayload.Queries["st"] = ExpressionConverter.Convert(__workflow_st);
+                if (__workflow_q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
+                if (__workflow_qSearchSchoolNameOnly != null)
+                    callPayload.Queries["qSearchSchoolNameOnly"] = ExpressionConverter.Convert(__workflow_qSearchSchoolNameOnly);
+                if (__workflow_districtID != null)
+                    callPayload.Queries["districtID"] = ExpressionConverter.Convert(__workflow_districtID);
+                if (__workflow_level != null)
+                    callPayload.Queries["level"] = ExpressionConverter.Convert(__workflow_level);
+                if (__workflow_city != null)
+                    callPayload.Queries["city"] = ExpressionConverter.Convert(__workflow_city);
+                if (__workflow_zip != null)
+                    callPayload.Queries["zip"] = ExpressionConverter.Convert(__workflow_zip);
+                if (__workflow_isMagnet != null)
+                    callPayload.Queries["isMagnet"] = ExpressionConverter.Convert(__workflow_isMagnet);
+                if (__workflow_isCharter != null)
+                    callPayload.Queries["isCharter"] = ExpressionConverter.Convert(__workflow_isCharter);
+                if (__workflow_isVirtual != null)
+                    callPayload.Queries["isVirtual"] = ExpressionConverter.Convert(__workflow_isVirtual);
+                if (__workflow_isTitleI != null)
+                    callPayload.Queries["isTitleI"] = ExpressionConverter.Convert(__workflow_isTitleI);
+                if (__workflow_isTitleISchoolwide != null)
+                    callPayload.Queries["isTitleISchoolwide"] = ExpressionConverter.Convert(__workflow_isTitleISchoolwide);
+                if (__workflow_nearLatitude != null)
+                    callPayload.Queries["nearLatitude"] = ExpressionConverter.Convert(__workflow_nearLatitude);
+                if (__workflow_nearLongitude != null)
+                    callPayload.Queries["nearLongitude"] = ExpressionConverter.Convert(__workflow_nearLongitude);
+                if (__workflow_nearAddress != null)
+                    callPayload.Queries["nearAddress"] = ExpressionConverter.Convert(__workflow_nearAddress);
+                if (__workflow_distanceMiles != null)
+                    callPayload.Queries["distanceMiles"] = ExpressionConverter.Convert(__workflow_distanceMiles);
+                if (__workflow_boundaryLatitude != null)
+                    callPayload.Queries["boundaryLatitude"] = ExpressionConverter.Convert(__workflow_boundaryLatitude);
+                if (__workflow_boundaryLongitude != null)
+                    callPayload.Queries["boundaryLongitude"] = ExpressionConverter.Convert(__workflow_boundaryLongitude);
+                if (__workflow_boundaryAddress != null)
+                    callPayload.Queries["boundaryAddress"] = ExpressionConverter.Convert(__workflow_boundaryAddress);
+                if (__workflow_isInBoundaryOnly != null)
+                    callPayload.Queries["isInBoundaryOnly"] = ExpressionConverter.Convert(__workflow_isInBoundaryOnly);
+                if (__workflow_boxLatitudeNW != null)
+                    callPayload.Queries["boxLatitudeNW"] = ExpressionConverter.Convert(__workflow_boxLatitudeNW);
+                if (__workflow_boxLongitudeNW != null)
+                    callPayload.Queries["boxLongitudeNW"] = ExpressionConverter.Convert(__workflow_boxLongitudeNW);
+                if (__workflow_boxLatitudeSE != null)
+                    callPayload.Queries["boxLatitudeSE"] = ExpressionConverter.Convert(__workflow_boxLatitudeSE);
+                if (__workflow_boxLongitudeSE != null)
+                    callPayload.Queries["boxLongitudeSE"] = ExpressionConverter.Convert(__workflow_boxLongitudeSE);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_perPage != null)
+                    callPayload.Queries["perPage"] = ExpressionConverter.Convert(__workflow_perPage);
+                if (__workflow_sortBy != null)
+                    callPayload.Queries["sortBy"] = ExpressionConverter.Convert(__workflow_sortBy);
+                if (__workflow_includeUnrankedSchoolsInRankSort != null)
+                    callPayload.Queries["includeUnrankedSchoolsInRankSort"] = ExpressionConverter.Convert(__workflow_includeUnrankedSchoolsInRankSort);
                 return new ApiConnectionAction<APISchoolList2>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
-        [WorkflowExpressionFactory(nameof(__BuildSchoolsGetSchool20))]
-        public IBodyWorkflowAction<APISchool20Full> SchoolsGetSchool20([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<APISchool20Full> SchoolsGetSchool20(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<APISchool20Full> __BuildSchoolsGetSchool20(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<APISchool20Full>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2.0/schools/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2.0/schools/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<APISchool20Full>(callPayload);

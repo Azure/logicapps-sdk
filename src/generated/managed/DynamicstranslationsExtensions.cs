@@ -1,32 +1,30 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicstranslations
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class DynamicstranslationsActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicstranslations")]
-        [WorkflowExpressionFactory(nameof(__BuildAlign))]
-        public IBodyWorkflowAction<AlignResponse> Align([WorkflowExpression] Func<string> productType, [WorkflowExpression] Func<string> productVersion, [WorkflowExpression] Func<string> sourceLanguage, [WorkflowExpression] Func<string> targetLanguage, [WorkflowExpression] Func<object> sourceFile, [WorkflowExpression] Func<object> targetFile)
+        public IBodyWorkflowAction<AlignResponse> Align(Expression<Func<string>> productType, Expression<Func<string>> productVersion, Expression<Func<string>> sourceLanguage, Expression<Func<string>> targetLanguage, Expression<Func<object>> sourceFile, Expression<Func<object>> targetFile)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AlignResponse> __BuildAlign(WorkflowExpression<string> productType, WorkflowExpression<string> productVersion, WorkflowExpression<string> sourceLanguage, WorkflowExpression<string> targetLanguage, WorkflowExpression<object> sourceFile, WorkflowExpression<object> targetFile)
-        {
-            WorkflowExpression.Validate(productType, nameof(productType), required: true);
-            WorkflowExpression.Validate(productVersion, nameof(productVersion), required: true);
-            WorkflowExpression.Validate(sourceLanguage, nameof(sourceLanguage), required: true);
-            WorkflowExpression.Validate(targetLanguage, nameof(targetLanguage), required: true);
-            WorkflowExpression.Validate(sourceFile, nameof(sourceFile), required: true);
-            WorkflowExpression.Validate(targetFile, nameof(targetFile), required: true);
+            var __workflow_productType = productType == null ? null : WorkflowExpression.Compile(productType);
+            WorkflowExpression.Validate(__workflow_productType, nameof(productType), required: true);
+            var __workflow_productVersion = productVersion == null ? null : WorkflowExpression.Compile(productVersion);
+            WorkflowExpression.Validate(__workflow_productVersion, nameof(productVersion), required: true);
+            var __workflow_sourceLanguage = sourceLanguage == null ? null : WorkflowExpression.Compile(sourceLanguage);
+            WorkflowExpression.Validate(__workflow_sourceLanguage, nameof(sourceLanguage), required: true);
+            var __workflow_targetLanguage = targetLanguage == null ? null : WorkflowExpression.Compile(targetLanguage);
+            WorkflowExpression.Validate(__workflow_targetLanguage, nameof(targetLanguage), required: true);
+            var __workflow_sourceFile = sourceFile == null ? null : WorkflowExpression.Compile(sourceFile);
+            WorkflowExpression.Validate(__workflow_sourceFile, nameof(sourceFile), required: true);
+            var __workflow_targetFile = targetFile == null ? null : WorkflowExpression.Compile(targetFile);
+            WorkflowExpression.Validate(__workflow_targetFile, nameof(targetFile), required: true);
             return new DeferredBodyAction<AlignResponse>(() =>
             {
                 var apiCallPath = "/dts/align/submit";
@@ -37,90 +35,76 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicstranslations
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicstranslations")]
-        [WorkflowExpressionFactory(nameof(__BuildDownload))]
-        public IBodyWorkflowAction<object> Download([WorkflowExpression] Func<downloadTypeInput> downloadType, [WorkflowExpression] Func<int> translationId)
+        public IBodyWorkflowAction<object> Download(Expression<Func<downloadTypeInput>> downloadType, Expression<Func<int>> translationId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<object> __BuildDownload(WorkflowExpression<downloadTypeInput> downloadType, WorkflowExpression<int> translationId)
-        {
-            WorkflowExpression.Validate(downloadType, nameof(downloadType), required: true);
-            WorkflowExpression.Validate(translationId, nameof(translationId), required: true);
+            var __workflow_downloadType = downloadType == null ? null : WorkflowExpression.Compile(downloadType);
+            WorkflowExpression.Validate(__workflow_downloadType, nameof(downloadType), required: true);
+            var __workflow_translationId = translationId == null ? null : WorkflowExpression.Compile(translationId);
+            WorkflowExpression.Validate(__workflow_translationId, nameof(translationId), required: true);
             return new DeferredBodyAction<object>(() =>
             {
                 var apiCallPath = "/dts/translate/download";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["downloadType"] = ExpressionConverter.Convert(downloadType);
-                callPayload.Queries["translationId"] = ExpressionConverter.Convert(translationId);
+                callPayload.Queries["downloadType"] = ExpressionConverter.Convert(__workflow_downloadType);
+                callPayload.Queries["translationId"] = ExpressionConverter.Convert(__workflow_translationId);
                 return new ApiConnectionAction<object>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicstranslations")]
-        [WorkflowExpressionFactory(nameof(__BuildRegenerate))]
-        public IBodyWorkflowAction<RegenerateResponse> Regenerate([WorkflowExpression] Func<int> translationId, [WorkflowExpression] Func<object> regenerateFile)
+        public IBodyWorkflowAction<RegenerateResponse> Regenerate(Expression<Func<int>> translationId, Expression<Func<object>> regenerateFile)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<RegenerateResponse> __BuildRegenerate(WorkflowExpression<int> translationId, WorkflowExpression<object> regenerateFile)
-        {
-            WorkflowExpression.Validate(translationId, nameof(translationId), required: true);
-            WorkflowExpression.Validate(regenerateFile, nameof(regenerateFile), required: true);
+            var __workflow_translationId = translationId == null ? null : WorkflowExpression.Compile(translationId);
+            WorkflowExpression.Validate(__workflow_translationId, nameof(translationId), required: true);
+            var __workflow_regenerateFile = regenerateFile == null ? null : WorkflowExpression.Compile(regenerateFile);
+            WorkflowExpression.Validate(__workflow_regenerateFile, nameof(regenerateFile), required: true);
             return new DeferredBodyAction<RegenerateResponse>(() =>
             {
                 var apiCallPath = "/dts/translate/regenerate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["translationId"] = ExpressionConverter.Convert(translationId);
+                callPayload.Queries["translationId"] = ExpressionConverter.Convert(__workflow_translationId);
                 return new ApiConnectionAction<RegenerateResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicstranslations")]
-        [WorkflowExpressionFactory(nameof(__BuildRetrieve))]
-        public IBodyWorkflowAction<RetrieveResponse> Retrieve([WorkflowExpression] Func<int> translationId)
+        public IBodyWorkflowAction<RetrieveResponse> Retrieve(Expression<Func<int>> translationId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<RetrieveResponse> __BuildRetrieve(WorkflowExpression<int> translationId)
-        {
-            WorkflowExpression.Validate(translationId, nameof(translationId), required: true);
+            var __workflow_translationId = translationId == null ? null : WorkflowExpression.Compile(translationId);
+            WorkflowExpression.Validate(__workflow_translationId, nameof(translationId), required: true);
             return new DeferredBodyAction<RetrieveResponse>(() =>
             {
                 var apiCallPath = "/dts/translate/retrieve";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["translationId"] = ExpressionConverter.Convert(translationId);
+                callPayload.Queries["translationId"] = ExpressionConverter.Convert(__workflow_translationId);
                 return new ApiConnectionAction<RetrieveResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicstranslations")]
-        [WorkflowExpressionFactory(nameof(__BuildTranslate))]
-        public IBodyWorkflowAction<TranslateResponse> Translate([WorkflowExpression] Func<string> productType, [WorkflowExpression] Func<string> productVersion, [WorkflowExpression] Func<string> sourceLanguage, [WorkflowExpression] Func<string> targetLanguage, [WorkflowExpression] Func<string> requestName, [WorkflowExpression] Func<translationTypeInput> translationType, [WorkflowExpression] Func<object> sourceFile, [WorkflowExpression] Func<bool> trainMTWithTM = null, [WorkflowExpression] Func<object> tmFile = null)
+        public IBodyWorkflowAction<TranslateResponse> Translate(Expression<Func<string>> productType, Expression<Func<string>> productVersion, Expression<Func<string>> sourceLanguage, Expression<Func<string>> targetLanguage, Expression<Func<string>> requestName, Expression<Func<translationTypeInput>> translationType, Expression<Func<object>> sourceFile, Expression<Func<bool>> trainMTWithTM = null, Expression<Func<object>> tmFile = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TranslateResponse> __BuildTranslate(WorkflowExpression<string> productType, WorkflowExpression<string> productVersion, WorkflowExpression<string> sourceLanguage, WorkflowExpression<string> targetLanguage, WorkflowExpression<string> requestName, WorkflowExpression<translationTypeInput> translationType, WorkflowExpression<object> sourceFile, WorkflowExpression<bool> trainMTWithTM = null, WorkflowExpression<object> tmFile = null)
-        {
-            WorkflowExpression.Validate(productType, nameof(productType), required: true);
-            WorkflowExpression.Validate(productVersion, nameof(productVersion), required: true);
-            WorkflowExpression.Validate(sourceLanguage, nameof(sourceLanguage), required: true);
-            WorkflowExpression.Validate(targetLanguage, nameof(targetLanguage), required: true);
-            WorkflowExpression.Validate(requestName, nameof(requestName), required: true);
-            WorkflowExpression.Validate(translationType, nameof(translationType), required: true);
-            WorkflowExpression.Validate(sourceFile, nameof(sourceFile), required: true);
-            WorkflowExpression.Validate(trainMTWithTM, nameof(trainMTWithTM), required: false);
-            WorkflowExpression.Validate(tmFile, nameof(tmFile), required: false);
+            var __workflow_productType = productType == null ? null : WorkflowExpression.Compile(productType);
+            WorkflowExpression.Validate(__workflow_productType, nameof(productType), required: true);
+            var __workflow_productVersion = productVersion == null ? null : WorkflowExpression.Compile(productVersion);
+            WorkflowExpression.Validate(__workflow_productVersion, nameof(productVersion), required: true);
+            var __workflow_sourceLanguage = sourceLanguage == null ? null : WorkflowExpression.Compile(sourceLanguage);
+            WorkflowExpression.Validate(__workflow_sourceLanguage, nameof(sourceLanguage), required: true);
+            var __workflow_targetLanguage = targetLanguage == null ? null : WorkflowExpression.Compile(targetLanguage);
+            WorkflowExpression.Validate(__workflow_targetLanguage, nameof(targetLanguage), required: true);
+            var __workflow_requestName = requestName == null ? null : WorkflowExpression.Compile(requestName);
+            WorkflowExpression.Validate(__workflow_requestName, nameof(requestName), required: true);
+            var __workflow_translationType = translationType == null ? null : WorkflowExpression.Compile(translationType);
+            WorkflowExpression.Validate(__workflow_translationType, nameof(translationType), required: true);
+            var __workflow_sourceFile = sourceFile == null ? null : WorkflowExpression.Compile(sourceFile);
+            WorkflowExpression.Validate(__workflow_sourceFile, nameof(sourceFile), required: true);
+            var __workflow_trainMTWithTM = trainMTWithTM == null ? null : WorkflowExpression.Compile(trainMTWithTM);
+            WorkflowExpression.Validate(__workflow_trainMTWithTM, nameof(trainMTWithTM), required: false);
+            var __workflow_tmFile = tmFile == null ? null : WorkflowExpression.Compile(tmFile);
+            WorkflowExpression.Validate(__workflow_tmFile, nameof(tmFile), required: false);
             return new DeferredBodyAction<TranslateResponse>(() =>
             {
                 var apiCallPath = "/dts/translate/submit";
@@ -131,22 +115,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicstranslations
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicstranslations")]
-        [WorkflowExpressionFactory(nameof(__BuildAlignDownload))]
-        public IBodyWorkflowAction<object> AlignDownload([WorkflowExpression] Func<string> filename)
+        public IBodyWorkflowAction<object> AlignDownload(Expression<Func<string>> filename)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<object> __BuildAlignDownload(WorkflowExpression<string> filename)
-        {
-            WorkflowExpression.Validate(filename, nameof(filename), required: true);
+            var __workflow_filename = filename == null ? null : WorkflowExpression.Compile(filename);
+            WorkflowExpression.Validate(__workflow_filename, nameof(filename), required: true);
             return new DeferredBodyAction<object>(() =>
             {
                 var apiCallPath = "/dts/align/download";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["filename"] = ExpressionConverter.Convert(filename);
+                callPayload.Queries["filename"] = ExpressionConverter.Convert(__workflow_filename);
                 return new ApiConnectionAction<object>(callPayload);
             });
         }

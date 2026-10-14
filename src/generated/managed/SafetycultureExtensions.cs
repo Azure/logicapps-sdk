@@ -1,78 +1,72 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class SafetycultureActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        [WorkflowExpressionFactory(nameof(__BuildSearchAudits))]
-        public IBodyWorkflowAction<AuditSearchResponse> SearchAudits([WorkflowExpression] Func<orderInput> order = null, [WorkflowExpression] Func<string> modifiedAfter = null, [WorkflowExpression] Func<string> modifiedBefore = null, [WorkflowExpression] Func<string> template = null, [WorkflowExpression] Func<archivedInput> archived = null, [WorkflowExpression] Func<completedInput> completed = null, [WorkflowExpression] Func<ownerInput> owner = null, [WorkflowExpression] Func<int> limit = null)
+        public IBodyWorkflowAction<AuditSearchResponse> SearchAudits(Expression<Func<orderInput>> order = null, Expression<Func<string>> modifiedAfter = null, Expression<Func<string>> modifiedBefore = null, Expression<Func<string>> template = null, Expression<Func<archivedInput>> archived = null, Expression<Func<completedInput>> completed = null, Expression<Func<ownerInput>> owner = null, Expression<Func<int>> limit = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AuditSearchResponse> __BuildSearchAudits(WorkflowExpression<orderInput> order = null, WorkflowExpression<string> modifiedAfter = null, WorkflowExpression<string> modifiedBefore = null, WorkflowExpression<string> template = null, WorkflowExpression<archivedInput> archived = null, WorkflowExpression<completedInput> completed = null, WorkflowExpression<ownerInput> owner = null, WorkflowExpression<int> limit = null)
-        {
-            WorkflowExpression.Validate(order, nameof(order), required: false);
-            WorkflowExpression.Validate(modifiedAfter, nameof(modifiedAfter), required: false);
-            WorkflowExpression.Validate(modifiedBefore, nameof(modifiedBefore), required: false);
-            WorkflowExpression.Validate(template, nameof(template), required: false);
-            WorkflowExpression.Validate(archived, nameof(archived), required: false);
-            WorkflowExpression.Validate(completed, nameof(completed), required: false);
-            WorkflowExpression.Validate(owner, nameof(owner), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
+            var __workflow_order = order == null ? null : WorkflowExpression.Compile(order);
+            WorkflowExpression.Validate(__workflow_order, nameof(order), required: false);
+            var __workflow_modifiedAfter = modifiedAfter == null ? null : WorkflowExpression.Compile(modifiedAfter);
+            WorkflowExpression.Validate(__workflow_modifiedAfter, nameof(modifiedAfter), required: false);
+            var __workflow_modifiedBefore = modifiedBefore == null ? null : WorkflowExpression.Compile(modifiedBefore);
+            WorkflowExpression.Validate(__workflow_modifiedBefore, nameof(modifiedBefore), required: false);
+            var __workflow_template = template == null ? null : WorkflowExpression.Compile(template);
+            WorkflowExpression.Validate(__workflow_template, nameof(template), required: false);
+            var __workflow_archived = archived == null ? null : WorkflowExpression.Compile(archived);
+            WorkflowExpression.Validate(__workflow_archived, nameof(archived), required: false);
+            var __workflow_completed = completed == null ? null : WorkflowExpression.Compile(completed);
+            WorkflowExpression.Validate(__workflow_completed, nameof(completed), required: false);
+            var __workflow_owner = owner == null ? null : WorkflowExpression.Compile(owner);
+            WorkflowExpression.Validate(__workflow_owner, nameof(owner), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
             return new DeferredBodyAction<AuditSearchResponse>(() =>
             {
                 var apiCallPath = "/audits/search";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["order"] = Convert.ToString("desc");
-                if (order != null)
-                    callPayload.Queries["order"] = ExpressionConverter.Convert(order);
-                if (modifiedAfter != null)
-                    callPayload.Queries["modified_after"] = ExpressionConverter.Convert(modifiedAfter);
-                if (modifiedBefore != null)
-                    callPayload.Queries["modified_before"] = ExpressionConverter.Convert(modifiedBefore);
-                if (template != null)
-                    callPayload.Queries["template"] = ExpressionConverter.Convert(template);
+                if (__workflow_order != null)
+                    callPayload.Queries["order"] = ExpressionConverter.Convert(__workflow_order);
+                if (__workflow_modifiedAfter != null)
+                    callPayload.Queries["modified_after"] = ExpressionConverter.Convert(__workflow_modifiedAfter);
+                if (__workflow_modifiedBefore != null)
+                    callPayload.Queries["modified_before"] = ExpressionConverter.Convert(__workflow_modifiedBefore);
+                if (__workflow_template != null)
+                    callPayload.Queries["template"] = ExpressionConverter.Convert(__workflow_template);
                 callPayload.Queries["archived"] = Convert.ToString("false");
-                if (archived != null)
-                    callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                if (__workflow_archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
                 callPayload.Queries["completed"] = Convert.ToString("true");
-                if (completed != null)
-                    callPayload.Queries["completed"] = ExpressionConverter.Convert(completed);
+                if (__workflow_completed != null)
+                    callPayload.Queries["completed"] = ExpressionConverter.Convert(__workflow_completed);
                 callPayload.Queries["owner"] = Convert.ToString("all");
-                if (owner != null)
-                    callPayload.Queries["owner"] = ExpressionConverter.Convert(owner);
+                if (__workflow_owner != null)
+                    callPayload.Queries["owner"] = ExpressionConverter.Convert(__workflow_owner);
                 callPayload.Queries["limit"] = Convert.ToString(1000);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction<AuditSearchResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        [WorkflowExpressionFactory(nameof(__BuildGetAuditById))]
-        public IBodyWorkflowAction<GetAuditByIdResponse> GetAuditById([WorkflowExpression] Func<string> auditId)
+        public IBodyWorkflowAction<GetAuditByIdResponse> GetAuditById(Expression<Func<string>> auditId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetAuditByIdResponse> __BuildGetAuditById(WorkflowExpression<string> auditId)
-        {
-            WorkflowExpression.Validate(auditId, nameof(auditId), required: true);
+            var __workflow_auditId = auditId == null ? null : WorkflowExpression.Compile(auditId);
+            WorkflowExpression.Validate(__workflow_auditId, nameof(auditId), required: true);
             return new DeferredBodyAction<GetAuditByIdResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/audits/{0}", ExpressionConverter.ConvertWithUrlEncoding(auditId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/audits/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_auditId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetAuditByIdResponse>(callPayload);
@@ -80,27 +74,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        [WorkflowExpressionFactory(nameof(__BuildArchiveRestoreAudit))]
-        public IBodyWorkflowAction<GetAuditByIdResponse> ArchiveRestoreAudit([WorkflowExpression] Func<string> auditId, [WorkflowExpression] Func<bool> bodyarchived = null)
+        public IBodyWorkflowAction<GetAuditByIdResponse> ArchiveRestoreAudit(Expression<Func<string>> auditId, Expression<Func<bool>> bodyarchived = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetAuditByIdResponse> __BuildArchiveRestoreAudit(WorkflowExpression<string> auditId, WorkflowExpression<bool> bodyarchived = null)
-        {
-            WorkflowExpression.Validate(auditId, nameof(auditId), required: true);
-            WorkflowExpression.Validate(bodyarchived, nameof(bodyarchived), required: false);
+            var __workflow_auditId = auditId == null ? null : WorkflowExpression.Compile(auditId);
+            WorkflowExpression.Validate(__workflow_auditId, nameof(auditId), required: true);
+            var __workflow_bodyarchived = bodyarchived == null ? null : WorkflowExpression.Compile(bodyarchived);
+            WorkflowExpression.Validate(__workflow_bodyarchived, nameof(bodyarchived), required: false);
             return new DeferredBodyAction<GetAuditByIdResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/audits/{0}", ExpressionConverter.ConvertWithUrlEncoding(auditId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/audits/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_auditId, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyarchived != null)
+                if (__workflow_bodyarchived != null)
                 {
-                    body["archived"] = ExpressionConverter.ConvertO(bodyarchived);
+                    body["archived"] = ExpressionConverter.ConvertO(__workflow_bodyarchived);
                     bodypropCount++;
                 }
 
@@ -114,49 +103,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        [WorkflowExpressionFactory(nameof(__BuildInitiateAuditExport))]
-        public IBodyWorkflowAction<InitExportResponse> InitiateAuditExport([WorkflowExpression] Func<string> auditId, [WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<timezoneInput> timezone = null, [WorkflowExpression] Func<string> exportProfile = null)
+        public IBodyWorkflowAction<InitExportResponse> InitiateAuditExport(Expression<Func<string>> auditId, Expression<Func<formatInput>> format, Expression<Func<timezoneInput>> timezone = null, Expression<Func<string>> exportProfile = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<InitExportResponse> __BuildInitiateAuditExport(WorkflowExpression<string> auditId, WorkflowExpression<formatInput> format, WorkflowExpression<timezoneInput> timezone = null, WorkflowExpression<string> exportProfile = null)
-        {
-            WorkflowExpression.Validate(auditId, nameof(auditId), required: true);
-            WorkflowExpression.Validate(format, nameof(format), required: true);
-            WorkflowExpression.Validate(timezone, nameof(timezone), required: false);
-            WorkflowExpression.Validate(exportProfile, nameof(exportProfile), required: false);
+            var __workflow_auditId = auditId == null ? null : WorkflowExpression.Compile(auditId);
+            WorkflowExpression.Validate(__workflow_auditId, nameof(auditId), required: true);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: true);
+            var __workflow_timezone = timezone == null ? null : WorkflowExpression.Compile(timezone);
+            WorkflowExpression.Validate(__workflow_timezone, nameof(timezone), required: false);
+            var __workflow_exportProfile = exportProfile == null ? null : WorkflowExpression.Compile(exportProfile);
+            WorkflowExpression.Validate(__workflow_exportProfile, nameof(exportProfile), required: false);
             return new DeferredBodyAction<InitExportResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/audits/{0}/export", ExpressionConverter.ConvertWithUrlEncoding(auditId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/audits/{0}/export", ExpressionConverter.ConvertWithUrlEncoding(__workflow_auditId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 callPayload.Queries["timezone"] = Convert.ToString("Etc/UTC");
-                if (timezone != null)
-                    callPayload.Queries["timezone"] = ExpressionConverter.Convert(timezone);
-                if (exportProfile != null)
-                    callPayload.Queries["export_profile"] = ExpressionConverter.Convert(exportProfile);
+                if (__workflow_timezone != null)
+                    callPayload.Queries["timezone"] = ExpressionConverter.Convert(__workflow_timezone);
+                if (__workflow_exportProfile != null)
+                    callPayload.Queries["export_profile"] = ExpressionConverter.Convert(__workflow_exportProfile);
                 return new ApiConnectionAction<InitExportResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        [WorkflowExpressionFactory(nameof(__BuildPollExportStatus))]
-        public IBodyWorkflowAction<ExportStatusResponse> PollExportStatus([WorkflowExpression] Func<string> auditId, [WorkflowExpression] Func<string> exportId)
+        public IBodyWorkflowAction<ExportStatusResponse> PollExportStatus(Expression<Func<string>> auditId, Expression<Func<string>> exportId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ExportStatusResponse> __BuildPollExportStatus(WorkflowExpression<string> auditId, WorkflowExpression<string> exportId)
-        {
-            WorkflowExpression.Validate(auditId, nameof(auditId), required: true);
-            WorkflowExpression.Validate(exportId, nameof(exportId), required: true);
+            var __workflow_auditId = auditId == null ? null : WorkflowExpression.Compile(auditId);
+            WorkflowExpression.Validate(__workflow_auditId, nameof(auditId), required: true);
+            var __workflow_exportId = exportId == null ? null : WorkflowExpression.Compile(exportId);
+            WorkflowExpression.Validate(__workflow_exportId, nameof(exportId), required: true);
             return new DeferredBodyAction<ExportStatusResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/audits/{0}/exports/{1}", ExpressionConverter.ConvertWithUrlEncoding(auditId, 1), ExpressionConverter.ConvertWithUrlEncoding(exportId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/audits/{0}/exports/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_auditId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_exportId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ExportStatusResponse>(callPayload);
@@ -164,21 +145,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        [WorkflowExpressionFactory(nameof(__BuildGetAuditExport))]
-        public IBodyWorkflowAction<string> GetAuditExport([WorkflowExpression] Func<string> auditId, [WorkflowExpression] Func<string> exportId, [WorkflowExpression] Func<string> filename)
+        public IBodyWorkflowAction<string> GetAuditExport(Expression<Func<string>> auditId, Expression<Func<string>> exportId, Expression<Func<string>> filename)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildGetAuditExport(WorkflowExpression<string> auditId, WorkflowExpression<string> exportId, WorkflowExpression<string> filename)
-        {
-            WorkflowExpression.Validate(auditId, nameof(auditId), required: true);
-            WorkflowExpression.Validate(exportId, nameof(exportId), required: true);
-            WorkflowExpression.Validate(filename, nameof(filename), required: true);
+            var __workflow_auditId = auditId == null ? null : WorkflowExpression.Compile(auditId);
+            WorkflowExpression.Validate(__workflow_auditId, nameof(auditId), required: true);
+            var __workflow_exportId = exportId == null ? null : WorkflowExpression.Compile(exportId);
+            WorkflowExpression.Validate(__workflow_exportId, nameof(exportId), required: true);
+            var __workflow_filename = filename == null ? null : WorkflowExpression.Compile(filename);
+            WorkflowExpression.Validate(__workflow_filename, nameof(filename), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/audits/{0}/exports/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(auditId, 1), ExpressionConverter.ConvertWithUrlEncoding(exportId, 1), ExpressionConverter.ConvertWithUrlEncoding(filename, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/audits/{0}/exports/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_auditId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_exportId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_filename, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -186,19 +163,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        [WorkflowExpressionFactory(nameof(__BuildGetWebReportLink))]
-        public IBodyWorkflowAction<GetAuditLinkResponse> GetWebReportLink([WorkflowExpression] Func<string> auditId)
+        public IBodyWorkflowAction<GetAuditLinkResponse> GetWebReportLink(Expression<Func<string>> auditId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetAuditLinkResponse> __BuildGetWebReportLink(WorkflowExpression<string> auditId)
-        {
-            WorkflowExpression.Validate(auditId, nameof(auditId), required: true);
+            var __workflow_auditId = auditId == null ? null : WorkflowExpression.Compile(auditId);
+            WorkflowExpression.Validate(__workflow_auditId, nameof(auditId), required: true);
             return new DeferredBodyAction<GetAuditLinkResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/audits/{0}/web_report_link", ExpressionConverter.ConvertWithUrlEncoding(auditId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/audits/{0}/web_report_link", ExpressionConverter.ConvertWithUrlEncoding(__workflow_auditId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetAuditLinkResponse>(callPayload);
@@ -206,19 +177,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteWebReportLink))]
-        public IWorkflowAction DeleteWebReportLink([WorkflowExpression] Func<string> auditId)
+        public IWorkflowAction DeleteWebReportLink(Expression<Func<string>> auditId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDeleteWebReportLink(WorkflowExpression<string> auditId)
-        {
-            WorkflowExpression.Validate(auditId, nameof(auditId), required: true);
+            var __workflow_auditId = auditId == null ? null : WorkflowExpression.Compile(auditId);
+            WorkflowExpression.Validate(__workflow_auditId, nameof(auditId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/audits/{0}/web_report_link", ExpressionConverter.ConvertWithUrlEncoding(auditId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/audits/{0}/web_report_link", ExpressionConverter.ConvertWithUrlEncoding(__workflow_auditId, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -226,23 +191,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        [WorkflowExpressionFactory(nameof(__BuildSearchActions))]
-        public IBodyWorkflowAction<ActionsSearchResponse> SearchActions([WorkflowExpression] Func<string[]> searchActionsBodyauditIDS = null, [WorkflowExpression] Func<searchActionsBodyassigneesInputItem[]> searchActionsBodyassignees = null, [WorkflowExpression] Func<string> searchActionsBodycreatedafterDate = null, [WorkflowExpression] Func<string> searchActionsBodycreatedbeforeDate = null, [WorkflowExpression] Func<string> searchActionsBodymodifiedafterDate = null, [WorkflowExpression] Func<string> searchActionsBodymodifiedbeforeDate = null, [WorkflowExpression] Func<string> searchActionsBodydueafterDate = null, [WorkflowExpression] Func<string> searchActionsBodyduebeforeDate = null)
+        public IBodyWorkflowAction<ActionsSearchResponse> SearchActions(Expression<Func<string[]>> searchActionsBodyauditIDS = null, Expression<Func<searchActionsBodyassigneesInputItem[]>> searchActionsBodyassignees = null, Expression<Func<string>> searchActionsBodycreatedafterDate = null, Expression<Func<string>> searchActionsBodycreatedbeforeDate = null, Expression<Func<string>> searchActionsBodymodifiedafterDate = null, Expression<Func<string>> searchActionsBodymodifiedbeforeDate = null, Expression<Func<string>> searchActionsBodydueafterDate = null, Expression<Func<string>> searchActionsBodyduebeforeDate = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ActionsSearchResponse> __BuildSearchActions(WorkflowExpression<string[]> searchActionsBodyauditIDS = null, WorkflowExpression<searchActionsBodyassigneesInputItem[]> searchActionsBodyassignees = null, WorkflowExpression<string> searchActionsBodycreatedafterDate = null, WorkflowExpression<string> searchActionsBodycreatedbeforeDate = null, WorkflowExpression<string> searchActionsBodymodifiedafterDate = null, WorkflowExpression<string> searchActionsBodymodifiedbeforeDate = null, WorkflowExpression<string> searchActionsBodydueafterDate = null, WorkflowExpression<string> searchActionsBodyduebeforeDate = null)
-        {
-            WorkflowExpression.Validate(searchActionsBodyauditIDS, nameof(searchActionsBodyauditIDS), required: false);
-            WorkflowExpression.Validate(searchActionsBodyassignees, nameof(searchActionsBodyassignees), required: false);
-            WorkflowExpression.Validate(searchActionsBodycreatedafterDate, nameof(searchActionsBodycreatedafterDate), required: false);
-            WorkflowExpression.Validate(searchActionsBodycreatedbeforeDate, nameof(searchActionsBodycreatedbeforeDate), required: false);
-            WorkflowExpression.Validate(searchActionsBodymodifiedafterDate, nameof(searchActionsBodymodifiedafterDate), required: false);
-            WorkflowExpression.Validate(searchActionsBodymodifiedbeforeDate, nameof(searchActionsBodymodifiedbeforeDate), required: false);
-            WorkflowExpression.Validate(searchActionsBodydueafterDate, nameof(searchActionsBodydueafterDate), required: false);
-            WorkflowExpression.Validate(searchActionsBodyduebeforeDate, nameof(searchActionsBodyduebeforeDate), required: false);
+            var __workflow_searchActionsBodyauditIDS = searchActionsBodyauditIDS == null ? null : WorkflowExpression.Compile(searchActionsBodyauditIDS);
+            WorkflowExpression.Validate(__workflow_searchActionsBodyauditIDS, nameof(searchActionsBodyauditIDS), required: false);
+            var __workflow_searchActionsBodyassignees = searchActionsBodyassignees == null ? null : WorkflowExpression.Compile(searchActionsBodyassignees);
+            WorkflowExpression.Validate(__workflow_searchActionsBodyassignees, nameof(searchActionsBodyassignees), required: false);
+            var __workflow_searchActionsBodycreatedafterDate = searchActionsBodycreatedafterDate == null ? null : WorkflowExpression.Compile(searchActionsBodycreatedafterDate);
+            WorkflowExpression.Validate(__workflow_searchActionsBodycreatedafterDate, nameof(searchActionsBodycreatedafterDate), required: false);
+            var __workflow_searchActionsBodycreatedbeforeDate = searchActionsBodycreatedbeforeDate == null ? null : WorkflowExpression.Compile(searchActionsBodycreatedbeforeDate);
+            WorkflowExpression.Validate(__workflow_searchActionsBodycreatedbeforeDate, nameof(searchActionsBodycreatedbeforeDate), required: false);
+            var __workflow_searchActionsBodymodifiedafterDate = searchActionsBodymodifiedafterDate == null ? null : WorkflowExpression.Compile(searchActionsBodymodifiedafterDate);
+            WorkflowExpression.Validate(__workflow_searchActionsBodymodifiedafterDate, nameof(searchActionsBodymodifiedafterDate), required: false);
+            var __workflow_searchActionsBodymodifiedbeforeDate = searchActionsBodymodifiedbeforeDate == null ? null : WorkflowExpression.Compile(searchActionsBodymodifiedbeforeDate);
+            WorkflowExpression.Validate(__workflow_searchActionsBodymodifiedbeforeDate, nameof(searchActionsBodymodifiedbeforeDate), required: false);
+            var __workflow_searchActionsBodydueafterDate = searchActionsBodydueafterDate == null ? null : WorkflowExpression.Compile(searchActionsBodydueafterDate);
+            WorkflowExpression.Validate(__workflow_searchActionsBodydueafterDate, nameof(searchActionsBodydueafterDate), required: false);
+            var __workflow_searchActionsBodyduebeforeDate = searchActionsBodyduebeforeDate == null ? null : WorkflowExpression.Compile(searchActionsBodyduebeforeDate);
+            WorkflowExpression.Validate(__workflow_searchActionsBodyduebeforeDate, nameof(searchActionsBodyduebeforeDate), required: false);
             return new DeferredBodyAction<ActionsSearchResponse>(() =>
             {
                 var apiCallPath = "/actions/search";
@@ -250,29 +216,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var searchActionsBody = new JObject();
                 var searchActionsBodypropCount = 0;
-                if (searchActionsBodyauditIDS != null)
+                if (__workflow_searchActionsBodyauditIDS != null)
                 {
-                    searchActionsBody["audit_id"] = ExpressionConverter.ConvertO(searchActionsBodyauditIDS);
+                    searchActionsBody["audit_id"] = ExpressionConverter.ConvertO(__workflow_searchActionsBodyauditIDS);
                     searchActionsBodypropCount++;
                 }
 
-                if (searchActionsBodyassignees != null)
+                if (__workflow_searchActionsBodyassignees != null)
                 {
-                    searchActionsBody["assignees"] = ExpressionConverter.ConvertO(searchActionsBodyassignees);
+                    searchActionsBody["assignees"] = ExpressionConverter.ConvertO(__workflow_searchActionsBodyassignees);
                     searchActionsBodypropCount++;
                 }
 
                 var createdAtObject = new JObject();
                 var createdAtObjectpropCount = 0;
-                if (searchActionsBodycreatedafterDate != null)
+                if (__workflow_searchActionsBodycreatedafterDate != null)
                 {
-                    createdAtObject["from"] = ExpressionConverter.ConvertO(searchActionsBodycreatedafterDate);
+                    createdAtObject["from"] = ExpressionConverter.ConvertO(__workflow_searchActionsBodycreatedafterDate);
                     createdAtObjectpropCount++;
                 }
 
-                if (searchActionsBodycreatedbeforeDate != null)
+                if (__workflow_searchActionsBodycreatedbeforeDate != null)
                 {
-                    createdAtObject["to"] = ExpressionConverter.ConvertO(searchActionsBodycreatedbeforeDate);
+                    createdAtObject["to"] = ExpressionConverter.ConvertO(__workflow_searchActionsBodycreatedbeforeDate);
                     createdAtObjectpropCount++;
                 }
 
@@ -284,15 +250,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
 
                 var modifiedAtObject = new JObject();
                 var modifiedAtObjectpropCount = 0;
-                if (searchActionsBodymodifiedafterDate != null)
+                if (__workflow_searchActionsBodymodifiedafterDate != null)
                 {
-                    modifiedAtObject["from"] = ExpressionConverter.ConvertO(searchActionsBodymodifiedafterDate);
+                    modifiedAtObject["from"] = ExpressionConverter.ConvertO(__workflow_searchActionsBodymodifiedafterDate);
                     modifiedAtObjectpropCount++;
                 }
 
-                if (searchActionsBodymodifiedbeforeDate != null)
+                if (__workflow_searchActionsBodymodifiedbeforeDate != null)
                 {
-                    modifiedAtObject["to"] = ExpressionConverter.ConvertO(searchActionsBodymodifiedbeforeDate);
+                    modifiedAtObject["to"] = ExpressionConverter.ConvertO(__workflow_searchActionsBodymodifiedbeforeDate);
                     modifiedAtObjectpropCount++;
                 }
 
@@ -304,15 +270,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
 
                 var dueAtObject = new JObject();
                 var dueAtObjectpropCount = 0;
-                if (searchActionsBodydueafterDate != null)
+                if (__workflow_searchActionsBodydueafterDate != null)
                 {
-                    dueAtObject["from"] = ExpressionConverter.ConvertO(searchActionsBodydueafterDate);
+                    dueAtObject["from"] = ExpressionConverter.ConvertO(__workflow_searchActionsBodydueafterDate);
                     dueAtObjectpropCount++;
                 }
 
-                if (searchActionsBodyduebeforeDate != null)
+                if (__workflow_searchActionsBodyduebeforeDate != null)
                 {
-                    dueAtObject["to"] = ExpressionConverter.ConvertO(searchActionsBodyduebeforeDate);
+                    dueAtObject["to"] = ExpressionConverter.ConvertO(__workflow_searchActionsBodyduebeforeDate);
                     dueAtObjectpropCount++;
                 }
 
@@ -332,23 +298,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateAction))]
-        public IBodyWorkflowAction<Action> CreateAction([WorkflowExpression] Func<string> createActionBodyauditID = null, [WorkflowExpression] Func<string> createActionBodyitemID = null, [WorkflowExpression] Func<string> createActionBodytitle = null, [WorkflowExpression] Func<string> createActionBodydescription = null, [WorkflowExpression] Func<createActionBodypriorityInput> createActionBodypriority = null, [WorkflowExpression] Func<createActionBodystatusInput> createActionBodystatus = null, [WorkflowExpression] Func<string> createActionBodydueAt = null, [WorkflowExpression] Func<createActionBodyassigneesInputItem[]> createActionBodyassignees = null)
+        public IBodyWorkflowAction<Action> CreateAction(Expression<Func<string>> createActionBodyauditID = null, Expression<Func<string>> createActionBodyitemID = null, Expression<Func<string>> createActionBodytitle = null, Expression<Func<string>> createActionBodydescription = null, Expression<Func<createActionBodypriorityInput>> createActionBodypriority = null, Expression<Func<createActionBodystatusInput>> createActionBodystatus = null, Expression<Func<string>> createActionBodydueAt = null, Expression<Func<createActionBodyassigneesInputItem[]>> createActionBodyassignees = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Action> __BuildCreateAction(WorkflowExpression<string> createActionBodyauditID = null, WorkflowExpression<string> createActionBodyitemID = null, WorkflowExpression<string> createActionBodytitle = null, WorkflowExpression<string> createActionBodydescription = null, WorkflowExpression<createActionBodypriorityInput> createActionBodypriority = null, WorkflowExpression<createActionBodystatusInput> createActionBodystatus = null, WorkflowExpression<string> createActionBodydueAt = null, WorkflowExpression<createActionBodyassigneesInputItem[]> createActionBodyassignees = null)
-        {
-            WorkflowExpression.Validate(createActionBodyauditID, nameof(createActionBodyauditID), required: false);
-            WorkflowExpression.Validate(createActionBodyitemID, nameof(createActionBodyitemID), required: false);
-            WorkflowExpression.Validate(createActionBodytitle, nameof(createActionBodytitle), required: false);
-            WorkflowExpression.Validate(createActionBodydescription, nameof(createActionBodydescription), required: false);
-            WorkflowExpression.Validate(createActionBodypriority, nameof(createActionBodypriority), required: false);
-            WorkflowExpression.Validate(createActionBodystatus, nameof(createActionBodystatus), required: false);
-            WorkflowExpression.Validate(createActionBodydueAt, nameof(createActionBodydueAt), required: false);
-            WorkflowExpression.Validate(createActionBodyassignees, nameof(createActionBodyassignees), required: false);
+            var __workflow_createActionBodyauditID = createActionBodyauditID == null ? null : WorkflowExpression.Compile(createActionBodyauditID);
+            WorkflowExpression.Validate(__workflow_createActionBodyauditID, nameof(createActionBodyauditID), required: false);
+            var __workflow_createActionBodyitemID = createActionBodyitemID == null ? null : WorkflowExpression.Compile(createActionBodyitemID);
+            WorkflowExpression.Validate(__workflow_createActionBodyitemID, nameof(createActionBodyitemID), required: false);
+            var __workflow_createActionBodytitle = createActionBodytitle == null ? null : WorkflowExpression.Compile(createActionBodytitle);
+            WorkflowExpression.Validate(__workflow_createActionBodytitle, nameof(createActionBodytitle), required: false);
+            var __workflow_createActionBodydescription = createActionBodydescription == null ? null : WorkflowExpression.Compile(createActionBodydescription);
+            WorkflowExpression.Validate(__workflow_createActionBodydescription, nameof(createActionBodydescription), required: false);
+            var __workflow_createActionBodypriority = createActionBodypriority == null ? null : WorkflowExpression.Compile(createActionBodypriority);
+            WorkflowExpression.Validate(__workflow_createActionBodypriority, nameof(createActionBodypriority), required: false);
+            var __workflow_createActionBodystatus = createActionBodystatus == null ? null : WorkflowExpression.Compile(createActionBodystatus);
+            WorkflowExpression.Validate(__workflow_createActionBodystatus, nameof(createActionBodystatus), required: false);
+            var __workflow_createActionBodydueAt = createActionBodydueAt == null ? null : WorkflowExpression.Compile(createActionBodydueAt);
+            WorkflowExpression.Validate(__workflow_createActionBodydueAt, nameof(createActionBodydueAt), required: false);
+            var __workflow_createActionBodyassignees = createActionBodyassignees == null ? null : WorkflowExpression.Compile(createActionBodyassignees);
+            WorkflowExpression.Validate(__workflow_createActionBodyassignees, nameof(createActionBodyassignees), required: false);
             return new DeferredBodyAction<Action>(() =>
             {
                 var apiCallPath = "/actions";
@@ -356,51 +323,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var createActionBody = new JObject();
                 var createActionBodypropCount = 0;
-                if (createActionBodyauditID != null)
+                if (__workflow_createActionBodyauditID != null)
                 {
-                    createActionBody["audit_id"] = ExpressionConverter.ConvertO(createActionBodyauditID);
+                    createActionBody["audit_id"] = ExpressionConverter.ConvertO(__workflow_createActionBodyauditID);
                     createActionBodypropCount++;
                 }
 
-                if (createActionBodyitemID != null)
+                if (__workflow_createActionBodyitemID != null)
                 {
-                    createActionBody["item_id"] = ExpressionConverter.ConvertO(createActionBodyitemID);
+                    createActionBody["item_id"] = ExpressionConverter.ConvertO(__workflow_createActionBodyitemID);
                     createActionBodypropCount++;
                 }
 
-                if (createActionBodytitle != null)
+                if (__workflow_createActionBodytitle != null)
                 {
-                    createActionBody["title"] = ExpressionConverter.ConvertO(createActionBodytitle);
+                    createActionBody["title"] = ExpressionConverter.ConvertO(__workflow_createActionBodytitle);
                     createActionBodypropCount++;
                 }
 
-                if (createActionBodydescription != null)
+                if (__workflow_createActionBodydescription != null)
                 {
-                    createActionBody["description"] = ExpressionConverter.ConvertO(createActionBodydescription);
+                    createActionBody["description"] = ExpressionConverter.ConvertO(__workflow_createActionBodydescription);
                     createActionBodypropCount++;
                 }
 
-                if (createActionBodypriority != null)
+                if (__workflow_createActionBodypriority != null)
                 {
-                    createActionBody["priority"] = ExpressionConverter.ConvertO(createActionBodypriority);
+                    createActionBody["priority"] = ExpressionConverter.ConvertO(__workflow_createActionBodypriority);
                     createActionBodypropCount++;
                 }
 
-                if (createActionBodystatus != null)
+                if (__workflow_createActionBodystatus != null)
                 {
-                    createActionBody["status"] = ExpressionConverter.ConvertO(createActionBodystatus);
+                    createActionBody["status"] = ExpressionConverter.ConvertO(__workflow_createActionBodystatus);
                     createActionBodypropCount++;
                 }
 
-                if (createActionBodydueAt != null)
+                if (__workflow_createActionBodydueAt != null)
                 {
-                    createActionBody["due_at"] = ExpressionConverter.ConvertO(createActionBodydueAt);
+                    createActionBody["due_at"] = ExpressionConverter.ConvertO(__workflow_createActionBodydueAt);
                     createActionBodypropCount++;
                 }
 
-                if (createActionBodyassignees != null)
+                if (__workflow_createActionBodyassignees != null)
                 {
-                    createActionBody["assignees"] = ExpressionConverter.ConvertO(createActionBodyassignees);
+                    createActionBody["assignees"] = ExpressionConverter.ConvertO(__workflow_createActionBodyassignees);
                     createActionBodypropCount++;
                 }
 
@@ -414,19 +381,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteAction))]
-        public IBodyWorkflowAction<DeleteActionResponse> DeleteAction([WorkflowExpression] Func<string> actionId)
+        public IBodyWorkflowAction<DeleteActionResponse> DeleteAction(Expression<Func<string>> actionId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DeleteActionResponse> __BuildDeleteAction(WorkflowExpression<string> actionId)
-        {
-            WorkflowExpression.Validate(actionId, nameof(actionId), required: true);
+            var __workflow_actionId = actionId == null ? null : WorkflowExpression.Compile(actionId);
+            WorkflowExpression.Validate(__workflow_actionId, nameof(actionId), required: true);
             return new DeferredBodyAction<DeleteActionResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/actions/{0}", ExpressionConverter.ConvertWithUrlEncoding(actionId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/actions/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_actionId, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DeleteActionResponse>(callPayload);
@@ -434,62 +395,62 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateAction))]
-        public IBodyWorkflowAction<Action> UpdateAction([WorkflowExpression] Func<string> actionId, [WorkflowExpression] Func<string> updateActionBodytitle = null, [WorkflowExpression] Func<string> updateActionBodydescription = null, [WorkflowExpression] Func<updateActionBodypriorityInput> updateActionBodypriority = null, [WorkflowExpression] Func<updateActionBodystatusInput> updateActionBodystatus = null, [WorkflowExpression] Func<string> updateActionBodydueAt = null, [WorkflowExpression] Func<updateActionBodyassigneesInputItem[]> updateActionBodyassignees = null)
+        public IBodyWorkflowAction<Action> UpdateAction(Expression<Func<string>> actionId, Expression<Func<string>> updateActionBodytitle = null, Expression<Func<string>> updateActionBodydescription = null, Expression<Func<updateActionBodypriorityInput>> updateActionBodypriority = null, Expression<Func<updateActionBodystatusInput>> updateActionBodystatus = null, Expression<Func<string>> updateActionBodydueAt = null, Expression<Func<updateActionBodyassigneesInputItem[]>> updateActionBodyassignees = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Action> __BuildUpdateAction(WorkflowExpression<string> actionId, WorkflowExpression<string> updateActionBodytitle = null, WorkflowExpression<string> updateActionBodydescription = null, WorkflowExpression<updateActionBodypriorityInput> updateActionBodypriority = null, WorkflowExpression<updateActionBodystatusInput> updateActionBodystatus = null, WorkflowExpression<string> updateActionBodydueAt = null, WorkflowExpression<updateActionBodyassigneesInputItem[]> updateActionBodyassignees = null)
-        {
-            WorkflowExpression.Validate(actionId, nameof(actionId), required: true);
-            WorkflowExpression.Validate(updateActionBodytitle, nameof(updateActionBodytitle), required: false);
-            WorkflowExpression.Validate(updateActionBodydescription, nameof(updateActionBodydescription), required: false);
-            WorkflowExpression.Validate(updateActionBodypriority, nameof(updateActionBodypriority), required: false);
-            WorkflowExpression.Validate(updateActionBodystatus, nameof(updateActionBodystatus), required: false);
-            WorkflowExpression.Validate(updateActionBodydueAt, nameof(updateActionBodydueAt), required: false);
-            WorkflowExpression.Validate(updateActionBodyassignees, nameof(updateActionBodyassignees), required: false);
+            var __workflow_actionId = actionId == null ? null : WorkflowExpression.Compile(actionId);
+            WorkflowExpression.Validate(__workflow_actionId, nameof(actionId), required: true);
+            var __workflow_updateActionBodytitle = updateActionBodytitle == null ? null : WorkflowExpression.Compile(updateActionBodytitle);
+            WorkflowExpression.Validate(__workflow_updateActionBodytitle, nameof(updateActionBodytitle), required: false);
+            var __workflow_updateActionBodydescription = updateActionBodydescription == null ? null : WorkflowExpression.Compile(updateActionBodydescription);
+            WorkflowExpression.Validate(__workflow_updateActionBodydescription, nameof(updateActionBodydescription), required: false);
+            var __workflow_updateActionBodypriority = updateActionBodypriority == null ? null : WorkflowExpression.Compile(updateActionBodypriority);
+            WorkflowExpression.Validate(__workflow_updateActionBodypriority, nameof(updateActionBodypriority), required: false);
+            var __workflow_updateActionBodystatus = updateActionBodystatus == null ? null : WorkflowExpression.Compile(updateActionBodystatus);
+            WorkflowExpression.Validate(__workflow_updateActionBodystatus, nameof(updateActionBodystatus), required: false);
+            var __workflow_updateActionBodydueAt = updateActionBodydueAt == null ? null : WorkflowExpression.Compile(updateActionBodydueAt);
+            WorkflowExpression.Validate(__workflow_updateActionBodydueAt, nameof(updateActionBodydueAt), required: false);
+            var __workflow_updateActionBodyassignees = updateActionBodyassignees == null ? null : WorkflowExpression.Compile(updateActionBodyassignees);
+            WorkflowExpression.Validate(__workflow_updateActionBodyassignees, nameof(updateActionBodyassignees), required: false);
             return new DeferredBodyAction<Action>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/actions/{0}", ExpressionConverter.ConvertWithUrlEncoding(actionId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/actions/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_actionId, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var updateActionBody = new JObject();
                 var updateActionBodypropCount = 0;
-                if (updateActionBodytitle != null)
+                if (__workflow_updateActionBodytitle != null)
                 {
-                    updateActionBody["title"] = ExpressionConverter.ConvertO(updateActionBodytitle);
+                    updateActionBody["title"] = ExpressionConverter.ConvertO(__workflow_updateActionBodytitle);
                     updateActionBodypropCount++;
                 }
 
-                if (updateActionBodydescription != null)
+                if (__workflow_updateActionBodydescription != null)
                 {
-                    updateActionBody["description"] = ExpressionConverter.ConvertO(updateActionBodydescription);
+                    updateActionBody["description"] = ExpressionConverter.ConvertO(__workflow_updateActionBodydescription);
                     updateActionBodypropCount++;
                 }
 
-                if (updateActionBodypriority != null)
+                if (__workflow_updateActionBodypriority != null)
                 {
-                    updateActionBody["priority"] = ExpressionConverter.ConvertO(updateActionBodypriority);
+                    updateActionBody["priority"] = ExpressionConverter.ConvertO(__workflow_updateActionBodypriority);
                     updateActionBodypropCount++;
                 }
 
-                if (updateActionBodystatus != null)
+                if (__workflow_updateActionBodystatus != null)
                 {
-                    updateActionBody["status"] = ExpressionConverter.ConvertO(updateActionBodystatus);
+                    updateActionBody["status"] = ExpressionConverter.ConvertO(__workflow_updateActionBodystatus);
                     updateActionBodypropCount++;
                 }
 
-                if (updateActionBodydueAt != null)
+                if (__workflow_updateActionBodydueAt != null)
                 {
-                    updateActionBody["due_at"] = ExpressionConverter.ConvertO(updateActionBodydueAt);
+                    updateActionBody["due_at"] = ExpressionConverter.ConvertO(__workflow_updateActionBodydueAt);
                     updateActionBodypropCount++;
                 }
 
-                if (updateActionBodyassignees != null)
+                if (__workflow_updateActionBodyassignees != null)
                 {
-                    updateActionBody["assignees"] = ExpressionConverter.ConvertO(updateActionBodyassignees);
+                    updateActionBody["assignees"] = ExpressionConverter.ConvertO(__workflow_updateActionBodyassignees);
                     updateActionBodypropCount++;
                 }
 
@@ -503,20 +464,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        [WorkflowExpressionFactory(nameof(__BuildGetMedia))]
-        public IBodyWorkflowAction<string> GetMedia([WorkflowExpression] Func<string> auditId, [WorkflowExpression] Func<string> mediaId)
+        public IBodyWorkflowAction<string> GetMedia(Expression<Func<string>> auditId, Expression<Func<string>> mediaId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildGetMedia(WorkflowExpression<string> auditId, WorkflowExpression<string> mediaId)
-        {
-            WorkflowExpression.Validate(auditId, nameof(auditId), required: true);
-            WorkflowExpression.Validate(mediaId, nameof(mediaId), required: true);
+            var __workflow_auditId = auditId == null ? null : WorkflowExpression.Compile(auditId);
+            WorkflowExpression.Validate(__workflow_auditId, nameof(auditId), required: true);
+            var __workflow_mediaId = mediaId == null ? null : WorkflowExpression.Compile(mediaId);
+            WorkflowExpression.Validate(__workflow_mediaId, nameof(mediaId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/audits/{0}/media/{1}", ExpressionConverter.ConvertWithUrlEncoding(auditId, 1), ExpressionConverter.ConvertWithUrlEncoding(mediaId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/audits/{0}/media/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_auditId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_mediaId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -524,30 +480,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        [WorkflowExpressionFactory(nameof(__BuildInitiateInspectionExport))]
-        public IBodyWorkflowAction<InitInspectionExportResponse> InitiateInspectionExport([WorkflowExpression] Func<string> auditId, [WorkflowExpression] Func<formatexportFormatInput> formatexportFormat = null, [WorkflowExpression] Func<string> formatpreferenceID = null)
+        public IBodyWorkflowAction<InitInspectionExportResponse> InitiateInspectionExport(Expression<Func<string>> auditId, Expression<Func<formatexportFormatInput>> formatexportFormat = null, Expression<Func<string>> formatpreferenceID = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<InitInspectionExportResponse> __BuildInitiateInspectionExport(WorkflowExpression<string> auditId, WorkflowExpression<formatexportFormatInput> formatexportFormat = null, WorkflowExpression<string> formatpreferenceID = null)
-        {
-            WorkflowExpression.Validate(auditId, nameof(auditId), required: true);
-            WorkflowExpression.Validate(formatexportFormat, nameof(formatexportFormat), required: false);
-            WorkflowExpression.Validate(formatpreferenceID, nameof(formatpreferenceID), required: false);
+            var __workflow_auditId = auditId == null ? null : WorkflowExpression.Compile(auditId);
+            WorkflowExpression.Validate(__workflow_auditId, nameof(auditId), required: true);
+            var __workflow_formatexportFormat = formatexportFormat == null ? null : WorkflowExpression.Compile(formatexportFormat);
+            WorkflowExpression.Validate(__workflow_formatexportFormat, nameof(formatexportFormat), required: false);
+            var __workflow_formatpreferenceID = formatpreferenceID == null ? null : WorkflowExpression.Compile(formatpreferenceID);
+            WorkflowExpression.Validate(__workflow_formatpreferenceID, nameof(formatpreferenceID), required: false);
             return new DeferredBodyAction<InitInspectionExportResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/audits/{0}/report", ExpressionConverter.ConvertWithUrlEncoding(auditId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/audits/{0}/report", ExpressionConverter.ConvertWithUrlEncoding(__workflow_auditId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var format = new JObject();
                 var formatpropCount = 0;
-                if (formatexportFormat != null)
+                if (__workflow_formatexportFormat != null)
                 {
-                    if (formatexportFormat != null)
+                    if (__workflow_formatexportFormat != null)
                     {
-                        format["format"] = ExpressionConverter.ConvertO(formatexportFormat);
+                        format["format"] = ExpressionConverter.ConvertO(__workflow_formatexportFormat);
                         formatpropCount++;
                     }
 
@@ -559,9 +511,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
                     formatpropCount++;
                 }
 
-                if (formatpreferenceID != null)
+                if (__workflow_formatpreferenceID != null)
                 {
-                    format["preference_id"] = ExpressionConverter.ConvertO(formatpreferenceID);
+                    format["preference_id"] = ExpressionConverter.ConvertO(__workflow_formatpreferenceID);
                     formatpropCount++;
                 }
 
@@ -575,20 +527,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        [WorkflowExpressionFactory(nameof(__BuildPollInspectionExportStatus))]
-        public IBodyWorkflowAction<InspectionExportStatusResponse> PollInspectionExportStatus([WorkflowExpression] Func<string> auditId, [WorkflowExpression] Func<string> exportId)
+        public IBodyWorkflowAction<InspectionExportStatusResponse> PollInspectionExportStatus(Expression<Func<string>> auditId, Expression<Func<string>> exportId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<InspectionExportStatusResponse> __BuildPollInspectionExportStatus(WorkflowExpression<string> auditId, WorkflowExpression<string> exportId)
-        {
-            WorkflowExpression.Validate(auditId, nameof(auditId), required: true);
-            WorkflowExpression.Validate(exportId, nameof(exportId), required: true);
+            var __workflow_auditId = auditId == null ? null : WorkflowExpression.Compile(auditId);
+            WorkflowExpression.Validate(__workflow_auditId, nameof(auditId), required: true);
+            var __workflow_exportId = exportId == null ? null : WorkflowExpression.Compile(exportId);
+            WorkflowExpression.Validate(__workflow_exportId, nameof(exportId), required: true);
             return new DeferredBodyAction<InspectionExportStatusResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/audits/{0}/report/{1}", ExpressionConverter.ConvertWithUrlEncoding(auditId, 1), ExpressionConverter.ConvertWithUrlEncoding(exportId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/audits/{0}/report/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_auditId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_exportId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<InspectionExportStatusResponse>(callPayload);

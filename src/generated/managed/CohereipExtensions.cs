@@ -1,29 +1,24 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class CohereipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohereip")]
-        [WorkflowExpressionFactory(nameof(__BuildEmbed))]
-        public IBodyWorkflowAction<EmbedPostResponse> Embed([WorkflowExpression] Func<string[]> bodytexts = null, [WorkflowExpression] Func<bodymodelInput> bodymodel = null, [WorkflowExpression] Func<bodytruncateInput> bodytruncate = null)
+        public IBodyWorkflowAction<EmbedPostResponse> Embed(Expression<Func<string[]>> bodytexts = null, Expression<Func<bodymodelInput>> bodymodel = null, Expression<Func<bodytruncateInput>> bodytruncate = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EmbedPostResponse> __BuildEmbed(WorkflowExpression<string[]> bodytexts = null, WorkflowExpression<bodymodelInput> bodymodel = null, WorkflowExpression<bodytruncateInput> bodytruncate = null)
-        {
-            WorkflowExpression.Validate(bodytexts, nameof(bodytexts), required: false);
-            WorkflowExpression.Validate(bodymodel, nameof(bodymodel), required: false);
-            WorkflowExpression.Validate(bodytruncate, nameof(bodytruncate), required: false);
+            var __workflow_bodytexts = bodytexts == null ? null : WorkflowExpression.Compile(bodytexts);
+            WorkflowExpression.Validate(__workflow_bodytexts, nameof(bodytexts), required: false);
+            var __workflow_bodymodel = bodymodel == null ? null : WorkflowExpression.Compile(bodymodel);
+            WorkflowExpression.Validate(__workflow_bodymodel, nameof(bodymodel), required: false);
+            var __workflow_bodytruncate = bodytruncate == null ? null : WorkflowExpression.Compile(bodytruncate);
+            WorkflowExpression.Validate(__workflow_bodytruncate, nameof(bodytruncate), required: false);
             return new DeferredBodyAction<EmbedPostResponse>(() =>
             {
                 var apiCallPath = "/embed";
@@ -31,17 +26,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodytexts != null)
+                if (__workflow_bodytexts != null)
                 {
-                    body["texts"] = ExpressionConverter.ConvertO(bodytexts);
+                    body["texts"] = ExpressionConverter.ConvertO(__workflow_bodytexts);
                     bodypropCount++;
                 }
 
-                if (bodymodel != null)
+                if (__workflow_bodymodel != null)
                 {
-                    if (bodymodel != null)
+                    if (__workflow_bodymodel != null)
                     {
-                        body["model"] = ExpressionConverter.ConvertO(bodymodel);
+                        body["model"] = ExpressionConverter.ConvertO(__workflow_bodymodel);
                         bodypropCount++;
                     }
 
@@ -53,9 +48,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
                     bodypropCount++;
                 }
 
-                if (bodytruncate != null)
+                if (__workflow_bodytruncate != null)
                 {
-                    body["truncate"] = ExpressionConverter.ConvertO(bodytruncate);
+                    body["truncate"] = ExpressionConverter.ConvertO(__workflow_bodytruncate);
                     bodypropCount++;
                 }
 
@@ -69,20 +64,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohereip")]
-        [WorkflowExpressionFactory(nameof(__BuildClassify))]
-        public IBodyWorkflowAction<ClassifyPostResponse> Classify([WorkflowExpression] Func<string[]> bodyinputs = null, [WorkflowExpression] Func<bodymodelInput> bodymodel = null, [WorkflowExpression] Func<bodyexamplesInputItem[]> bodyexamples = null, [WorkflowExpression] Func<string> bodypreset = null, [WorkflowExpression] Func<bodytruncateInput> bodytruncate = null)
+        public IBodyWorkflowAction<ClassifyPostResponse> Classify(Expression<Func<string[]>> bodyinputs = null, Expression<Func<bodymodelInput>> bodymodel = null, Expression<Func<bodyexamplesInputItem[]>> bodyexamples = null, Expression<Func<string>> bodypreset = null, Expression<Func<bodytruncateInput>> bodytruncate = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ClassifyPostResponse> __BuildClassify(WorkflowExpression<string[]> bodyinputs = null, WorkflowExpression<bodymodelInput> bodymodel = null, WorkflowExpression<bodyexamplesInputItem[]> bodyexamples = null, WorkflowExpression<string> bodypreset = null, WorkflowExpression<bodytruncateInput> bodytruncate = null)
-        {
-            WorkflowExpression.Validate(bodyinputs, nameof(bodyinputs), required: false);
-            WorkflowExpression.Validate(bodymodel, nameof(bodymodel), required: false);
-            WorkflowExpression.Validate(bodyexamples, nameof(bodyexamples), required: false);
-            WorkflowExpression.Validate(bodypreset, nameof(bodypreset), required: false);
-            WorkflowExpression.Validate(bodytruncate, nameof(bodytruncate), required: false);
+            var __workflow_bodyinputs = bodyinputs == null ? null : WorkflowExpression.Compile(bodyinputs);
+            WorkflowExpression.Validate(__workflow_bodyinputs, nameof(bodyinputs), required: false);
+            var __workflow_bodymodel = bodymodel == null ? null : WorkflowExpression.Compile(bodymodel);
+            WorkflowExpression.Validate(__workflow_bodymodel, nameof(bodymodel), required: false);
+            var __workflow_bodyexamples = bodyexamples == null ? null : WorkflowExpression.Compile(bodyexamples);
+            WorkflowExpression.Validate(__workflow_bodyexamples, nameof(bodyexamples), required: false);
+            var __workflow_bodypreset = bodypreset == null ? null : WorkflowExpression.Compile(bodypreset);
+            WorkflowExpression.Validate(__workflow_bodypreset, nameof(bodypreset), required: false);
+            var __workflow_bodytruncate = bodytruncate == null ? null : WorkflowExpression.Compile(bodytruncate);
+            WorkflowExpression.Validate(__workflow_bodytruncate, nameof(bodytruncate), required: false);
             return new DeferredBodyAction<ClassifyPostResponse>(() =>
             {
                 var apiCallPath = "/classify";
@@ -90,17 +83,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyinputs != null)
+                if (__workflow_bodyinputs != null)
                 {
-                    body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
+                    body["inputs"] = ExpressionConverter.ConvertO(__workflow_bodyinputs);
                     bodypropCount++;
                 }
 
-                if (bodymodel != null)
+                if (__workflow_bodymodel != null)
                 {
-                    if (bodymodel != null)
+                    if (__workflow_bodymodel != null)
                     {
-                        body["model"] = ExpressionConverter.ConvertO(bodymodel);
+                        body["model"] = ExpressionConverter.ConvertO(__workflow_bodymodel);
                         bodypropCount++;
                     }
 
@@ -112,21 +105,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
                     bodypropCount++;
                 }
 
-                if (bodyexamples != null)
+                if (__workflow_bodyexamples != null)
                 {
-                    body["examples"] = ExpressionConverter.ConvertO(bodyexamples);
+                    body["examples"] = ExpressionConverter.ConvertO(__workflow_bodyexamples);
                     bodypropCount++;
                 }
 
-                if (bodypreset != null)
+                if (__workflow_bodypreset != null)
                 {
-                    body["preset"] = ExpressionConverter.ConvertO(bodypreset);
+                    body["preset"] = ExpressionConverter.ConvertO(__workflow_bodypreset);
                     bodypropCount++;
                 }
 
-                if (bodytruncate != null)
+                if (__workflow_bodytruncate != null)
                 {
-                    body["truncate"] = ExpressionConverter.ConvertO(bodytruncate);
+                    body["truncate"] = ExpressionConverter.ConvertO(__workflow_bodytruncate);
                     bodypropCount++;
                 }
 
@@ -140,16 +133,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohereip")]
-        [WorkflowExpressionFactory(nameof(__BuildToken))]
-        public IBodyWorkflowAction<TokenPostResponse> Token([WorkflowExpression] Func<string> bodytext = null)
+        public IBodyWorkflowAction<TokenPostResponse> Token(Expression<Func<string>> bodytext = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TokenPostResponse> __BuildToken(WorkflowExpression<string> bodytext = null)
-        {
-            WorkflowExpression.Validate(bodytext, nameof(bodytext), required: false);
+            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
+            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: false);
             return new DeferredBodyAction<TokenPostResponse>(() =>
             {
                 var apiCallPath = "/tokenize";
@@ -157,9 +144,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodytext != null)
+                if (__workflow_bodytext != null)
                 {
-                    body["text"] = ExpressionConverter.ConvertO(bodytext);
+                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
                     bodypropCount++;
                 }
 
@@ -173,16 +160,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohereip")]
-        [WorkflowExpressionFactory(nameof(__BuildDetoken))]
-        public IBodyWorkflowAction<DetokenPostResponse> Detoken([WorkflowExpression] Func<int[]> bodytokens = null)
+        public IBodyWorkflowAction<DetokenPostResponse> Detoken(Expression<Func<int[]>> bodytokens = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DetokenPostResponse> __BuildDetoken(WorkflowExpression<int[]> bodytokens = null)
-        {
-            WorkflowExpression.Validate(bodytokens, nameof(bodytokens), required: false);
+            var __workflow_bodytokens = bodytokens == null ? null : WorkflowExpression.Compile(bodytokens);
+            WorkflowExpression.Validate(__workflow_bodytokens, nameof(bodytokens), required: false);
             return new DeferredBodyAction<DetokenPostResponse>(() =>
             {
                 var apiCallPath = "/detokenize";
@@ -190,9 +171,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodytokens != null)
+                if (__workflow_bodytokens != null)
                 {
-                    body["tokens"] = ExpressionConverter.ConvertO(bodytokens);
+                    body["tokens"] = ExpressionConverter.ConvertO(__workflow_bodytokens);
                     bodypropCount++;
                 }
 
@@ -206,16 +187,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohereip")]
-        [WorkflowExpressionFactory(nameof(__BuildLanguage))]
-        public IBodyWorkflowAction<LanguagePostResponse> Language([WorkflowExpression] Func<string[]> bodytexts = null)
+        public IBodyWorkflowAction<LanguagePostResponse> Language(Expression<Func<string[]>> bodytexts = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<LanguagePostResponse> __BuildLanguage(WorkflowExpression<string[]> bodytexts = null)
-        {
-            WorkflowExpression.Validate(bodytexts, nameof(bodytexts), required: false);
+            var __workflow_bodytexts = bodytexts == null ? null : WorkflowExpression.Compile(bodytexts);
+            WorkflowExpression.Validate(__workflow_bodytexts, nameof(bodytexts), required: false);
             return new DeferredBodyAction<LanguagePostResponse>(() =>
             {
                 var apiCallPath = "/detect-language";
@@ -223,9 +198,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodytexts != null)
+                if (__workflow_bodytexts != null)
                 {
-                    body["texts"] = ExpressionConverter.ConvertO(bodytexts);
+                    body["texts"] = ExpressionConverter.ConvertO(__workflow_bodytexts);
                     bodypropCount++;
                 }
 
@@ -239,35 +214,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohereip")]
-        [WorkflowExpressionFactory(nameof(__BuildChat))]
-        public IBodyWorkflowAction<ChatPostResponse> Chat([WorkflowExpression] Func<string> bodymessage, [WorkflowExpression] Func<string> bodymodel = null, [WorkflowExpression] Func<string> bodypreamble = null, [WorkflowExpression] Func<bodychatHistoryInputItem[]> bodychatHistory = null, [WorkflowExpression] Func<string> bodyconversationId = null, [WorkflowExpression] Func<bodypromptTruncationInput> bodypromptTruncation = null, [WorkflowExpression] Func<bodyconnectorsInputItem[]> bodyconnectors = null, [WorkflowExpression] Func<bool> bodysearchQueriesOnly = null, [WorkflowExpression] Func<bodydocumentsInputItem[]> bodydocuments = null, [WorkflowExpression] Func<bodycitationQualityInput> bodycitationQuality = null, [WorkflowExpression] Func<double> bodytemperature = null, [WorkflowExpression] Func<int> bodymaxTokens = null, [WorkflowExpression] Func<int> bodymaxInputTokens = null, [WorkflowExpression] Func<int> bodyk = null, [WorkflowExpression] Func<double> bodyp = null, [WorkflowExpression] Func<double> bodyseed = null, [WorkflowExpression] Func<string[]> bodystopSequences = null, [WorkflowExpression] Func<double> bodyfrequencyPenalty = null, [WorkflowExpression] Func<double> bodypresencePenalty = null, [WorkflowExpression] Func<bodytoolsInputItem[]> bodytools = null)
+        public IBodyWorkflowAction<ChatPostResponse> Chat(Expression<Func<string>> bodymessage, Expression<Func<string>> bodymodel = null, Expression<Func<string>> bodypreamble = null, Expression<Func<bodychatHistoryInputItem[]>> bodychatHistory = null, Expression<Func<string>> bodyconversationId = null, Expression<Func<bodypromptTruncationInput>> bodypromptTruncation = null, Expression<Func<bodyconnectorsInputItem[]>> bodyconnectors = null, Expression<Func<bool>> bodysearchQueriesOnly = null, Expression<Func<bodydocumentsInputItem[]>> bodydocuments = null, Expression<Func<bodycitationQualityInput>> bodycitationQuality = null, Expression<Func<double>> bodytemperature = null, Expression<Func<int>> bodymaxTokens = null, Expression<Func<int>> bodymaxInputTokens = null, Expression<Func<int>> bodyk = null, Expression<Func<double>> bodyp = null, Expression<Func<double>> bodyseed = null, Expression<Func<string[]>> bodystopSequences = null, Expression<Func<double>> bodyfrequencyPenalty = null, Expression<Func<double>> bodypresencePenalty = null, Expression<Func<bodytoolsInputItem[]>> bodytools = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ChatPostResponse> __BuildChat(WorkflowExpression<string> bodymessage, WorkflowExpression<string> bodymodel = null, WorkflowExpression<string> bodypreamble = null, WorkflowExpression<bodychatHistoryInputItem[]> bodychatHistory = null, WorkflowExpression<string> bodyconversationId = null, WorkflowExpression<bodypromptTruncationInput> bodypromptTruncation = null, WorkflowExpression<bodyconnectorsInputItem[]> bodyconnectors = null, WorkflowExpression<bool> bodysearchQueriesOnly = null, WorkflowExpression<bodydocumentsInputItem[]> bodydocuments = null, WorkflowExpression<bodycitationQualityInput> bodycitationQuality = null, WorkflowExpression<double> bodytemperature = null, WorkflowExpression<int> bodymaxTokens = null, WorkflowExpression<int> bodymaxInputTokens = null, WorkflowExpression<int> bodyk = null, WorkflowExpression<double> bodyp = null, WorkflowExpression<double> bodyseed = null, WorkflowExpression<string[]> bodystopSequences = null, WorkflowExpression<double> bodyfrequencyPenalty = null, WorkflowExpression<double> bodypresencePenalty = null, WorkflowExpression<bodytoolsInputItem[]> bodytools = null)
-        {
-            WorkflowExpression.Validate(bodymessage, nameof(bodymessage), required: true);
-            WorkflowExpression.Validate(bodymodel, nameof(bodymodel), required: false);
-            WorkflowExpression.Validate(bodypreamble, nameof(bodypreamble), required: false);
-            WorkflowExpression.Validate(bodychatHistory, nameof(bodychatHistory), required: false);
-            WorkflowExpression.Validate(bodyconversationId, nameof(bodyconversationId), required: false);
-            WorkflowExpression.Validate(bodypromptTruncation, nameof(bodypromptTruncation), required: false);
-            WorkflowExpression.Validate(bodyconnectors, nameof(bodyconnectors), required: false);
-            WorkflowExpression.Validate(bodysearchQueriesOnly, nameof(bodysearchQueriesOnly), required: false);
-            WorkflowExpression.Validate(bodydocuments, nameof(bodydocuments), required: false);
-            WorkflowExpression.Validate(bodycitationQuality, nameof(bodycitationQuality), required: false);
-            WorkflowExpression.Validate(bodytemperature, nameof(bodytemperature), required: false);
-            WorkflowExpression.Validate(bodymaxTokens, nameof(bodymaxTokens), required: false);
-            WorkflowExpression.Validate(bodymaxInputTokens, nameof(bodymaxInputTokens), required: false);
-            WorkflowExpression.Validate(bodyk, nameof(bodyk), required: false);
-            WorkflowExpression.Validate(bodyp, nameof(bodyp), required: false);
-            WorkflowExpression.Validate(bodyseed, nameof(bodyseed), required: false);
-            WorkflowExpression.Validate(bodystopSequences, nameof(bodystopSequences), required: false);
-            WorkflowExpression.Validate(bodyfrequencyPenalty, nameof(bodyfrequencyPenalty), required: false);
-            WorkflowExpression.Validate(bodypresencePenalty, nameof(bodypresencePenalty), required: false);
-            WorkflowExpression.Validate(bodytools, nameof(bodytools), required: false);
+            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
+            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: true);
+            var __workflow_bodymodel = bodymodel == null ? null : WorkflowExpression.Compile(bodymodel);
+            WorkflowExpression.Validate(__workflow_bodymodel, nameof(bodymodel), required: false);
+            var __workflow_bodypreamble = bodypreamble == null ? null : WorkflowExpression.Compile(bodypreamble);
+            WorkflowExpression.Validate(__workflow_bodypreamble, nameof(bodypreamble), required: false);
+            var __workflow_bodychatHistory = bodychatHistory == null ? null : WorkflowExpression.Compile(bodychatHistory);
+            WorkflowExpression.Validate(__workflow_bodychatHistory, nameof(bodychatHistory), required: false);
+            var __workflow_bodyconversationId = bodyconversationId == null ? null : WorkflowExpression.Compile(bodyconversationId);
+            WorkflowExpression.Validate(__workflow_bodyconversationId, nameof(bodyconversationId), required: false);
+            var __workflow_bodypromptTruncation = bodypromptTruncation == null ? null : WorkflowExpression.Compile(bodypromptTruncation);
+            WorkflowExpression.Validate(__workflow_bodypromptTruncation, nameof(bodypromptTruncation), required: false);
+            var __workflow_bodyconnectors = bodyconnectors == null ? null : WorkflowExpression.Compile(bodyconnectors);
+            WorkflowExpression.Validate(__workflow_bodyconnectors, nameof(bodyconnectors), required: false);
+            var __workflow_bodysearchQueriesOnly = bodysearchQueriesOnly == null ? null : WorkflowExpression.Compile(bodysearchQueriesOnly);
+            WorkflowExpression.Validate(__workflow_bodysearchQueriesOnly, nameof(bodysearchQueriesOnly), required: false);
+            var __workflow_bodydocuments = bodydocuments == null ? null : WorkflowExpression.Compile(bodydocuments);
+            WorkflowExpression.Validate(__workflow_bodydocuments, nameof(bodydocuments), required: false);
+            var __workflow_bodycitationQuality = bodycitationQuality == null ? null : WorkflowExpression.Compile(bodycitationQuality);
+            WorkflowExpression.Validate(__workflow_bodycitationQuality, nameof(bodycitationQuality), required: false);
+            var __workflow_bodytemperature = bodytemperature == null ? null : WorkflowExpression.Compile(bodytemperature);
+            WorkflowExpression.Validate(__workflow_bodytemperature, nameof(bodytemperature), required: false);
+            var __workflow_bodymaxTokens = bodymaxTokens == null ? null : WorkflowExpression.Compile(bodymaxTokens);
+            WorkflowExpression.Validate(__workflow_bodymaxTokens, nameof(bodymaxTokens), required: false);
+            var __workflow_bodymaxInputTokens = bodymaxInputTokens == null ? null : WorkflowExpression.Compile(bodymaxInputTokens);
+            WorkflowExpression.Validate(__workflow_bodymaxInputTokens, nameof(bodymaxInputTokens), required: false);
+            var __workflow_bodyk = bodyk == null ? null : WorkflowExpression.Compile(bodyk);
+            WorkflowExpression.Validate(__workflow_bodyk, nameof(bodyk), required: false);
+            var __workflow_bodyp = bodyp == null ? null : WorkflowExpression.Compile(bodyp);
+            WorkflowExpression.Validate(__workflow_bodyp, nameof(bodyp), required: false);
+            var __workflow_bodyseed = bodyseed == null ? null : WorkflowExpression.Compile(bodyseed);
+            WorkflowExpression.Validate(__workflow_bodyseed, nameof(bodyseed), required: false);
+            var __workflow_bodystopSequences = bodystopSequences == null ? null : WorkflowExpression.Compile(bodystopSequences);
+            WorkflowExpression.Validate(__workflow_bodystopSequences, nameof(bodystopSequences), required: false);
+            var __workflow_bodyfrequencyPenalty = bodyfrequencyPenalty == null ? null : WorkflowExpression.Compile(bodyfrequencyPenalty);
+            WorkflowExpression.Validate(__workflow_bodyfrequencyPenalty, nameof(bodyfrequencyPenalty), required: false);
+            var __workflow_bodypresencePenalty = bodypresencePenalty == null ? null : WorkflowExpression.Compile(bodypresencePenalty);
+            WorkflowExpression.Validate(__workflow_bodypresencePenalty, nameof(bodypresencePenalty), required: false);
+            var __workflow_bodytools = bodytools == null ? null : WorkflowExpression.Compile(bodytools);
+            WorkflowExpression.Validate(__workflow_bodytools, nameof(bodytools), required: false);
             return new DeferredBodyAction<ChatPostResponse>(() =>
             {
                 var apiCallPath = "/v1/chat";
@@ -276,12 +264,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["message"] = ExpressionConverter.ConvertO(bodymessage);
-                if (bodymodel != null)
+                body["message"] = ExpressionConverter.ConvertO(__workflow_bodymessage);
+                if (__workflow_bodymodel != null)
                 {
-                    if (bodymodel != null)
+                    if (__workflow_bodymodel != null)
                     {
-                        body["model"] = ExpressionConverter.ConvertO(bodymodel);
+                        body["model"] = ExpressionConverter.ConvertO(__workflow_bodymodel);
                         bodypropCount++;
                     }
 
@@ -293,111 +281,111 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
                     bodypropCount++;
                 }
 
-                if (bodypreamble != null)
+                if (__workflow_bodypreamble != null)
                 {
-                    body["preamble"] = ExpressionConverter.ConvertO(bodypreamble);
+                    body["preamble"] = ExpressionConverter.ConvertO(__workflow_bodypreamble);
                     bodypropCount++;
                 }
 
-                if (bodychatHistory != null)
+                if (__workflow_bodychatHistory != null)
                 {
-                    body["chat_history"] = ExpressionConverter.ConvertO(bodychatHistory);
+                    body["chat_history"] = ExpressionConverter.ConvertO(__workflow_bodychatHistory);
                     bodypropCount++;
                 }
 
-                if (bodyconversationId != null)
+                if (__workflow_bodyconversationId != null)
                 {
-                    body["conversation_id"] = ExpressionConverter.ConvertO(bodyconversationId);
+                    body["conversation_id"] = ExpressionConverter.ConvertO(__workflow_bodyconversationId);
                     bodypropCount++;
                 }
 
-                if (bodypromptTruncation != null)
+                if (__workflow_bodypromptTruncation != null)
                 {
-                    body["prompt_truncation"] = ExpressionConverter.ConvertO(bodypromptTruncation);
+                    body["prompt_truncation"] = ExpressionConverter.ConvertO(__workflow_bodypromptTruncation);
                     bodypropCount++;
                 }
 
-                if (bodyconnectors != null)
+                if (__workflow_bodyconnectors != null)
                 {
-                    body["connectors"] = ExpressionConverter.ConvertO(bodyconnectors);
+                    body["connectors"] = ExpressionConverter.ConvertO(__workflow_bodyconnectors);
                     bodypropCount++;
                 }
 
-                if (bodysearchQueriesOnly != null)
+                if (__workflow_bodysearchQueriesOnly != null)
                 {
-                    body["search_queries_only"] = ExpressionConverter.ConvertO(bodysearchQueriesOnly);
+                    body["search_queries_only"] = ExpressionConverter.ConvertO(__workflow_bodysearchQueriesOnly);
                     bodypropCount++;
                 }
 
-                if (bodydocuments != null)
+                if (__workflow_bodydocuments != null)
                 {
-                    body["documents"] = ExpressionConverter.ConvertO(bodydocuments);
+                    body["documents"] = ExpressionConverter.ConvertO(__workflow_bodydocuments);
                     bodypropCount++;
                 }
 
-                if (bodycitationQuality != null)
+                if (__workflow_bodycitationQuality != null)
                 {
-                    body["citation_quality"] = ExpressionConverter.ConvertO(bodycitationQuality);
+                    body["citation_quality"] = ExpressionConverter.ConvertO(__workflow_bodycitationQuality);
                     bodypropCount++;
                 }
 
-                if (bodytemperature != null)
+                if (__workflow_bodytemperature != null)
                 {
-                    body["temperature"] = ExpressionConverter.ConvertO(bodytemperature);
+                    body["temperature"] = ExpressionConverter.ConvertO(__workflow_bodytemperature);
                     bodypropCount++;
                 }
 
-                if (bodymaxTokens != null)
+                if (__workflow_bodymaxTokens != null)
                 {
-                    body["max_tokens"] = ExpressionConverter.ConvertO(bodymaxTokens);
+                    body["max_tokens"] = ExpressionConverter.ConvertO(__workflow_bodymaxTokens);
                     bodypropCount++;
                 }
 
-                if (bodymaxInputTokens != null)
+                if (__workflow_bodymaxInputTokens != null)
                 {
-                    body["max_input_tokens"] = ExpressionConverter.ConvertO(bodymaxInputTokens);
+                    body["max_input_tokens"] = ExpressionConverter.ConvertO(__workflow_bodymaxInputTokens);
                     bodypropCount++;
                 }
 
-                if (bodyk != null)
+                if (__workflow_bodyk != null)
                 {
-                    body["k"] = ExpressionConverter.ConvertO(bodyk);
+                    body["k"] = ExpressionConverter.ConvertO(__workflow_bodyk);
                     bodypropCount++;
                 }
 
-                if (bodyp != null)
+                if (__workflow_bodyp != null)
                 {
-                    body["p"] = ExpressionConverter.ConvertO(bodyp);
+                    body["p"] = ExpressionConverter.ConvertO(__workflow_bodyp);
                     bodypropCount++;
                 }
 
-                if (bodyseed != null)
+                if (__workflow_bodyseed != null)
                 {
-                    body["seed"] = ExpressionConverter.ConvertO(bodyseed);
+                    body["seed"] = ExpressionConverter.ConvertO(__workflow_bodyseed);
                     bodypropCount++;
                 }
 
-                if (bodystopSequences != null)
+                if (__workflow_bodystopSequences != null)
                 {
-                    body["stop_sequences"] = ExpressionConverter.ConvertO(bodystopSequences);
+                    body["stop_sequences"] = ExpressionConverter.ConvertO(__workflow_bodystopSequences);
                     bodypropCount++;
                 }
 
-                if (bodyfrequencyPenalty != null)
+                if (__workflow_bodyfrequencyPenalty != null)
                 {
-                    body["frequency_penalty"] = ExpressionConverter.ConvertO(bodyfrequencyPenalty);
+                    body["frequency_penalty"] = ExpressionConverter.ConvertO(__workflow_bodyfrequencyPenalty);
                     bodypropCount++;
                 }
 
-                if (bodypresencePenalty != null)
+                if (__workflow_bodypresencePenalty != null)
                 {
-                    body["presence_penalty"] = ExpressionConverter.ConvertO(bodypresencePenalty);
+                    body["presence_penalty"] = ExpressionConverter.ConvertO(__workflow_bodypresencePenalty);
                     bodypropCount++;
                 }
 
-                if (bodytools != null)
+                if (__workflow_bodytools != null)
                 {
-                    body["tools"] = ExpressionConverter.ConvertO(bodytools);
+                    body["tools"] = ExpressionConverter.ConvertO(__workflow_bodytools);
                     bodypropCount++;
                 }
 

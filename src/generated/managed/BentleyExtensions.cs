@@ -1,64 +1,57 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bentley
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class BentleyActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bentley")]
-        [WorkflowExpressionFactory(nameof(__BuildUploadFile))]
-        public IBodyWorkflowAction<BadRequestObjectResult> UploadFile([WorkflowExpression] Func<string> connectedProjectId, [WorkflowExpression] Func<string> federatedRepositoryId, [WorkflowExpression] Func<string> documentIdentifier, [WorkflowExpression] Func<string> xBsFileName, [WorkflowExpression] Func<string> fileContent = null)
+        public IBodyWorkflowAction<BadRequestObjectResult> UploadFile(Expression<Func<string>> connectedProjectId, Expression<Func<string>> federatedRepositoryId, Expression<Func<string>> documentIdentifier, Expression<Func<string>> xBsFileName, Expression<Func<string>> fileContent = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<BadRequestObjectResult> __BuildUploadFile(WorkflowExpression<string> connectedProjectId, WorkflowExpression<string> federatedRepositoryId, WorkflowExpression<string> documentIdentifier, WorkflowExpression<string> xBsFileName, WorkflowExpression<string> fileContent = null)
-        {
-            WorkflowExpression.Validate(connectedProjectId, nameof(connectedProjectId), required: true);
-            WorkflowExpression.Validate(federatedRepositoryId, nameof(federatedRepositoryId), required: true);
-            WorkflowExpression.Validate(documentIdentifier, nameof(documentIdentifier), required: true);
-            WorkflowExpression.Validate(xBsFileName, nameof(xBsFileName), required: true);
-            WorkflowExpression.Validate(fileContent, nameof(fileContent), required: false);
+            var __workflow_connectedProjectId = connectedProjectId == null ? null : WorkflowExpression.Compile(connectedProjectId);
+            WorkflowExpression.Validate(__workflow_connectedProjectId, nameof(connectedProjectId), required: true);
+            var __workflow_federatedRepositoryId = federatedRepositoryId == null ? null : WorkflowExpression.Compile(federatedRepositoryId);
+            WorkflowExpression.Validate(__workflow_federatedRepositoryId, nameof(federatedRepositoryId), required: true);
+            var __workflow_documentIdentifier = documentIdentifier == null ? null : WorkflowExpression.Compile(documentIdentifier);
+            WorkflowExpression.Validate(__workflow_documentIdentifier, nameof(documentIdentifier), required: true);
+            var __workflow_xBsFileName = xBsFileName == null ? null : WorkflowExpression.Compile(xBsFileName);
+            WorkflowExpression.Validate(__workflow_xBsFileName, nameof(xBsFileName), required: true);
+            var __workflow_fileContent = fileContent == null ? null : WorkflowExpression.Compile(fileContent);
+            WorkflowExpression.Validate(__workflow_fileContent, nameof(fileContent), required: false);
             return new DeferredBodyAction<BadRequestObjectResult>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/connectedProjects/{0}/federatedRepositories/{1}/documents/{2}/file", ExpressionConverter.ConvertWithUrlEncoding(connectedProjectId, 1), ExpressionConverter.ConvertWithUrlEncoding(federatedRepositoryId, 1), ExpressionConverter.ConvertWithUrlEncoding(documentIdentifier, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/connectedProjects/{0}/federatedRepositories/{1}/documents/{2}/file", ExpressionConverter.ConvertWithUrlEncoding(__workflow_connectedProjectId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_federatedRepositoryId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentIdentifier, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["x-bs-file-name"] = ExpressionConverter.Convert(xBsFileName);
-                callPayload.Body = ExpressionConverter.ConvertO(fileContent);
+                callPayload.Headers["x-bs-file-name"] = ExpressionConverter.Convert(__workflow_xBsFileName);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_fileContent);
                 return new ApiConnectionAction<BadRequestObjectResult>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bentley")]
-        [WorkflowExpressionFactory(nameof(__BuildSynchronizeDocumentAttributes))]
-        public IBodyWorkflowAction<BadRequestObjectResult> SynchronizeDocumentAttributes([WorkflowExpression] Func<string> connection, [WorkflowExpression] Func<string> documentIdentifier, [WorkflowExpression] Func<attributeSynchronizationModeldirectionInput> attributeSynchronizationModeldirection)
+        public IBodyWorkflowAction<BadRequestObjectResult> SynchronizeDocumentAttributes(Expression<Func<string>> connection, Expression<Func<string>> documentIdentifier, Expression<Func<attributeSynchronizationModeldirectionInput>> attributeSynchronizationModeldirection)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<BadRequestObjectResult> __BuildSynchronizeDocumentAttributes(WorkflowExpression<string> connection, WorkflowExpression<string> documentIdentifier, WorkflowExpression<attributeSynchronizationModeldirectionInput> attributeSynchronizationModeldirection)
-        {
-            WorkflowExpression.Validate(connection, nameof(connection), required: true);
-            WorkflowExpression.Validate(documentIdentifier, nameof(documentIdentifier), required: true);
-            WorkflowExpression.Validate(attributeSynchronizationModeldirection, nameof(attributeSynchronizationModeldirection), required: true);
+            var __workflow_connection = connection == null ? null : WorkflowExpression.Compile(connection);
+            WorkflowExpression.Validate(__workflow_connection, nameof(connection), required: true);
+            var __workflow_documentIdentifier = documentIdentifier == null ? null : WorkflowExpression.Compile(documentIdentifier);
+            WorkflowExpression.Validate(__workflow_documentIdentifier, nameof(documentIdentifier), required: true);
+            var __workflow_attributeSynchronizationModeldirection = attributeSynchronizationModeldirection == null ? null : WorkflowExpression.Compile(attributeSynchronizationModeldirection);
+            WorkflowExpression.Validate(__workflow_attributeSynchronizationModeldirection, nameof(attributeSynchronizationModeldirection), required: true);
             return new DeferredBodyAction<BadRequestObjectResult>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/{0}/documents/{1}/attributeSynchronization", ExpressionConverter.ConvertWithUrlEncoding(connection, 1), ExpressionConverter.ConvertWithUrlEncoding(documentIdentifier, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/{0}/documents/{1}/attributeSynchronization", ExpressionConverter.ConvertWithUrlEncoding(__workflow_connection, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentIdentifier, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var attributeSynchronizationModel = new JObject();
                 var attributeSynchronizationModelpropCount = 0;
                 attributeSynchronizationModelpropCount++;
-                attributeSynchronizationModel["direction"] = ExpressionConverter.ConvertO(attributeSynchronizationModeldirection);
+                attributeSynchronizationModel["direction"] = ExpressionConverter.ConvertO(__workflow_attributeSynchronizationModeldirection);
                 if (attributeSynchronizationModelpropCount > 0)
                 {
                     callPayload.Body = attributeSynchronizationModel;

@@ -1,35 +1,30 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Si3270
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class Si3270Actions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "si3270")]
-        [WorkflowExpressionFactory(nameof(__BuildExecuteMethod))]
-        public IBodyWorkflowAction<JToken> ExecuteMethod([WorkflowExpression] Func<string> hidxName, [WorkflowExpression] Func<string> methodName, [WorkflowExpression] Func<object> parameters = null)
+        public IBodyWorkflowAction<JToken> ExecuteMethod(Expression<Func<string>> hidxName, Expression<Func<string>> methodName, Expression<Func<object>> parameters = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildExecuteMethod(WorkflowExpression<string> hidxName, WorkflowExpression<string> methodName, WorkflowExpression<object> parameters = null)
-        {
-            WorkflowExpression.Validate(hidxName, nameof(hidxName), required: true);
-            WorkflowExpression.Validate(methodName, nameof(methodName), required: true);
-            WorkflowExpression.Validate(parameters, nameof(parameters), required: false);
+            var __workflow_hidxName = hidxName == null ? null : WorkflowExpression.Compile(hidxName);
+            WorkflowExpression.Validate(__workflow_hidxName, nameof(hidxName), required: true);
+            var __workflow_methodName = methodName == null ? null : WorkflowExpression.Compile(methodName);
+            WorkflowExpression.Validate(__workflow_methodName, nameof(methodName), required: true);
+            var __workflow_parameters = parameters == null ? null : WorkflowExpression.Compile(parameters);
+            WorkflowExpression.Validate(__workflow_parameters, nameof(parameters), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/hidx/{0}/methods/{1}/call", ExpressionConverter.ConvertWithUrlEncoding(hidxName, 1), ExpressionConverter.ConvertWithUrlEncoding(methodName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/hidx/{0}/methods/{1}/call", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hidxName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_methodName, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(parameters);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_parameters);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }

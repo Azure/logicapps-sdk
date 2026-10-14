@@ -1,27 +1,20 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class AikidocsActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
-        [WorkflowExpressionFactory(nameof(__BuildValidateConnectGoodService))]
-        public IBodyWorkflowAction<ValidateConnectionResponse> ValidateConnectGoodService([WorkflowExpression] Func<string> bodymessage = null)
+        public IBodyWorkflowAction<ValidateConnectionResponse> ValidateConnectGoodService(Expression<Func<string>> bodymessage = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ValidateConnectionResponse> __BuildValidateConnectGoodService(WorkflowExpression<string> bodymessage = null)
-        {
-            WorkflowExpression.Validate(bodymessage, nameof(bodymessage), required: false);
+            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
+            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: false);
             return new DeferredBodyAction<ValidateConnectionResponse>(() =>
             {
                 var apiCallPath = "/good";
@@ -29,9 +22,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodymessage != null)
+                if (__workflow_bodymessage != null)
                 {
-                    body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                    body["message"] = ExpressionConverter.ConvertO(__workflow_bodymessage);
                     bodypropCount++;
                 }
 
@@ -45,16 +38,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
-        [WorkflowExpressionFactory(nameof(__BuildValidateConnectBadService))]
-        public IBodyWorkflowAction<ValidateConnectionResponse> ValidateConnectBadService([WorkflowExpression] Func<string> bodymessage = null)
+        public IBodyWorkflowAction<ValidateConnectionResponse> ValidateConnectBadService(Expression<Func<string>> bodymessage = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ValidateConnectionResponse> __BuildValidateConnectBadService(WorkflowExpression<string> bodymessage = null)
-        {
-            WorkflowExpression.Validate(bodymessage, nameof(bodymessage), required: false);
+            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
+            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: false);
             return new DeferredBodyAction<ValidateConnectionResponse>(() =>
             {
                 var apiCallPath = "/bad";
@@ -62,9 +49,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodymessage != null)
+                if (__workflow_bodymessage != null)
                 {
-                    body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                    body["message"] = ExpressionConverter.ConvertO(__workflow_bodymessage);
                     bodypropCount++;
                 }
 
@@ -78,16 +65,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
-        [WorkflowExpressionFactory(nameof(__BuildWordAppendDocuments))]
-        public IBodyWorkflowAction<AppendDocumentResponse> WordAppendDocuments([WorkflowExpression] Func<string[]> bodyappendDocumentList = null)
+        public IBodyWorkflowAction<AppendDocumentResponse> WordAppendDocuments(Expression<Func<string[]>> bodyappendDocumentList = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AppendDocumentResponse> __BuildWordAppendDocuments(WorkflowExpression<string[]> bodyappendDocumentList = null)
-        {
-            WorkflowExpression.Validate(bodyappendDocumentList, nameof(bodyappendDocumentList), required: false);
+            var __workflow_bodyappendDocumentList = bodyappendDocumentList == null ? null : WorkflowExpression.Compile(bodyappendDocumentList);
+            WorkflowExpression.Validate(__workflow_bodyappendDocumentList, nameof(bodyappendDocumentList), required: false);
             return new DeferredBodyAction<AppendDocumentResponse>(() =>
             {
                 var apiCallPath = "/api/WordAppendDocuments";
@@ -95,9 +76,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyappendDocumentList != null)
+                if (__workflow_bodyappendDocumentList != null)
                 {
-                    body["appendDocumentList"] = ExpressionConverter.ConvertO(bodyappendDocumentList);
+                    body["appendDocumentList"] = ExpressionConverter.ConvertO(__workflow_bodyappendDocumentList);
                     bodypropCount++;
                 }
 
@@ -111,18 +92,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
-        [WorkflowExpressionFactory(nameof(__BuildWordExtractContentByHeading))]
-        public IBodyWorkflowAction<ExtractContentByHeadingResponse> WordExtractContentByHeading([WorkflowExpression] Func<string> bodysourceDocumentdocumentContent = null, [WorkflowExpression] Func<string> bodysourceDocumentdocumentName = null, [WorkflowExpression] Func<string> bodyheadingStyleName = null)
+        public IBodyWorkflowAction<ExtractContentByHeadingResponse> WordExtractContentByHeading(Expression<Func<string>> bodysourceDocumentdocumentContent = null, Expression<Func<string>> bodysourceDocumentdocumentName = null, Expression<Func<string>> bodyheadingStyleName = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ExtractContentByHeadingResponse> __BuildWordExtractContentByHeading(WorkflowExpression<string> bodysourceDocumentdocumentContent = null, WorkflowExpression<string> bodysourceDocumentdocumentName = null, WorkflowExpression<string> bodyheadingStyleName = null)
-        {
-            WorkflowExpression.Validate(bodysourceDocumentdocumentContent, nameof(bodysourceDocumentdocumentContent), required: false);
-            WorkflowExpression.Validate(bodysourceDocumentdocumentName, nameof(bodysourceDocumentdocumentName), required: false);
-            WorkflowExpression.Validate(bodyheadingStyleName, nameof(bodyheadingStyleName), required: false);
+            var __workflow_bodysourceDocumentdocumentContent = bodysourceDocumentdocumentContent == null ? null : WorkflowExpression.Compile(bodysourceDocumentdocumentContent);
+            WorkflowExpression.Validate(__workflow_bodysourceDocumentdocumentContent, nameof(bodysourceDocumentdocumentContent), required: false);
+            var __workflow_bodysourceDocumentdocumentName = bodysourceDocumentdocumentName == null ? null : WorkflowExpression.Compile(bodysourceDocumentdocumentName);
+            WorkflowExpression.Validate(__workflow_bodysourceDocumentdocumentName, nameof(bodysourceDocumentdocumentName), required: false);
+            var __workflow_bodyheadingStyleName = bodyheadingStyleName == null ? null : WorkflowExpression.Compile(bodyheadingStyleName);
+            WorkflowExpression.Validate(__workflow_bodyheadingStyleName, nameof(bodyheadingStyleName), required: false);
             return new DeferredBodyAction<ExtractContentByHeadingResponse>(() =>
             {
                 var apiCallPath = "/api/WordExtractContent/ByHeading";
@@ -132,15 +109,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
                 var bodypropCount = 0;
                 var sourceDocumentObject = new JObject();
                 var sourceDocumentObjectpropCount = 0;
-                if (bodysourceDocumentdocumentContent != null)
+                if (__workflow_bodysourceDocumentdocumentContent != null)
                 {
-                    sourceDocumentObject["documentContent"] = ExpressionConverter.ConvertO(bodysourceDocumentdocumentContent);
+                    sourceDocumentObject["documentContent"] = ExpressionConverter.ConvertO(__workflow_bodysourceDocumentdocumentContent);
                     sourceDocumentObjectpropCount++;
                 }
 
-                if (bodysourceDocumentdocumentName != null)
+                if (__workflow_bodysourceDocumentdocumentName != null)
                 {
-                    sourceDocumentObject["documentName"] = ExpressionConverter.ConvertO(bodysourceDocumentdocumentName);
+                    sourceDocumentObject["documentName"] = ExpressionConverter.ConvertO(__workflow_bodysourceDocumentdocumentName);
                     sourceDocumentObjectpropCount++;
                 }
 
@@ -150,9 +127,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
                     bodypropCount++;
                 }
 
-                if (bodyheadingStyleName != null)
+                if (__workflow_bodyheadingStyleName != null)
                 {
-                    body["headingStyleName"] = ExpressionConverter.ConvertO(bodyheadingStyleName);
+                    body["headingStyleName"] = ExpressionConverter.ConvertO(__workflow_bodyheadingStyleName);
                     bodypropCount++;
                 }
 
@@ -166,20 +143,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
-        [WorkflowExpressionFactory(nameof(__BuildWordExtractContentByTitle))]
-        public IBodyWorkflowAction<ExtractSectionByTitleResponse> WordExtractContentByTitle([WorkflowExpression] Func<string> bodysourceDocumentdocumentContent = null, [WorkflowExpression] Func<string> bodysourceDocumentdocumentName = null, [WorkflowExpression] Func<string> bodyheadingText = null, [WorkflowExpression] Func<string> bodyheadingStyleName = null, [WorkflowExpression] Func<string[]> bodyheadingEscapeStyleNames = null)
+        public IBodyWorkflowAction<ExtractSectionByTitleResponse> WordExtractContentByTitle(Expression<Func<string>> bodysourceDocumentdocumentContent = null, Expression<Func<string>> bodysourceDocumentdocumentName = null, Expression<Func<string>> bodyheadingText = null, Expression<Func<string>> bodyheadingStyleName = null, Expression<Func<string[]>> bodyheadingEscapeStyleNames = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ExtractSectionByTitleResponse> __BuildWordExtractContentByTitle(WorkflowExpression<string> bodysourceDocumentdocumentContent = null, WorkflowExpression<string> bodysourceDocumentdocumentName = null, WorkflowExpression<string> bodyheadingText = null, WorkflowExpression<string> bodyheadingStyleName = null, WorkflowExpression<string[]> bodyheadingEscapeStyleNames = null)
-        {
-            WorkflowExpression.Validate(bodysourceDocumentdocumentContent, nameof(bodysourceDocumentdocumentContent), required: false);
-            WorkflowExpression.Validate(bodysourceDocumentdocumentName, nameof(bodysourceDocumentdocumentName), required: false);
-            WorkflowExpression.Validate(bodyheadingText, nameof(bodyheadingText), required: false);
-            WorkflowExpression.Validate(bodyheadingStyleName, nameof(bodyheadingStyleName), required: false);
-            WorkflowExpression.Validate(bodyheadingEscapeStyleNames, nameof(bodyheadingEscapeStyleNames), required: false);
+            var __workflow_bodysourceDocumentdocumentContent = bodysourceDocumentdocumentContent == null ? null : WorkflowExpression.Compile(bodysourceDocumentdocumentContent);
+            WorkflowExpression.Validate(__workflow_bodysourceDocumentdocumentContent, nameof(bodysourceDocumentdocumentContent), required: false);
+            var __workflow_bodysourceDocumentdocumentName = bodysourceDocumentdocumentName == null ? null : WorkflowExpression.Compile(bodysourceDocumentdocumentName);
+            WorkflowExpression.Validate(__workflow_bodysourceDocumentdocumentName, nameof(bodysourceDocumentdocumentName), required: false);
+            var __workflow_bodyheadingText = bodyheadingText == null ? null : WorkflowExpression.Compile(bodyheadingText);
+            WorkflowExpression.Validate(__workflow_bodyheadingText, nameof(bodyheadingText), required: false);
+            var __workflow_bodyheadingStyleName = bodyheadingStyleName == null ? null : WorkflowExpression.Compile(bodyheadingStyleName);
+            WorkflowExpression.Validate(__workflow_bodyheadingStyleName, nameof(bodyheadingStyleName), required: false);
+            var __workflow_bodyheadingEscapeStyleNames = bodyheadingEscapeStyleNames == null ? null : WorkflowExpression.Compile(bodyheadingEscapeStyleNames);
+            WorkflowExpression.Validate(__workflow_bodyheadingEscapeStyleNames, nameof(bodyheadingEscapeStyleNames), required: false);
             return new DeferredBodyAction<ExtractSectionByTitleResponse>(() =>
             {
                 var apiCallPath = "/api/WordExtractContent/ByTitle";
@@ -189,15 +164,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
                 var bodypropCount = 0;
                 var sourceDocumentObject = new JObject();
                 var sourceDocumentObjectpropCount = 0;
-                if (bodysourceDocumentdocumentContent != null)
+                if (__workflow_bodysourceDocumentdocumentContent != null)
                 {
-                    sourceDocumentObject["documentContent"] = ExpressionConverter.ConvertO(bodysourceDocumentdocumentContent);
+                    sourceDocumentObject["documentContent"] = ExpressionConverter.ConvertO(__workflow_bodysourceDocumentdocumentContent);
                     sourceDocumentObjectpropCount++;
                 }
 
-                if (bodysourceDocumentdocumentName != null)
+                if (__workflow_bodysourceDocumentdocumentName != null)
                 {
-                    sourceDocumentObject["documentName"] = ExpressionConverter.ConvertO(bodysourceDocumentdocumentName);
+                    sourceDocumentObject["documentName"] = ExpressionConverter.ConvertO(__workflow_bodysourceDocumentdocumentName);
                     sourceDocumentObjectpropCount++;
                 }
 
@@ -207,21 +182,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
                     bodypropCount++;
                 }
 
-                if (bodyheadingText != null)
+                if (__workflow_bodyheadingText != null)
                 {
-                    body["headingText"] = ExpressionConverter.ConvertO(bodyheadingText);
+                    body["headingText"] = ExpressionConverter.ConvertO(__workflow_bodyheadingText);
                     bodypropCount++;
                 }
 
-                if (bodyheadingStyleName != null)
+                if (__workflow_bodyheadingStyleName != null)
                 {
-                    body["headingStyleName"] = ExpressionConverter.ConvertO(bodyheadingStyleName);
+                    body["headingStyleName"] = ExpressionConverter.ConvertO(__workflow_bodyheadingStyleName);
                     bodypropCount++;
                 }
 
-                if (bodyheadingEscapeStyleNames != null)
+                if (__workflow_bodyheadingEscapeStyleNames != null)
                 {
-                    body["headingEscapeStyleNames"] = ExpressionConverter.ConvertO(bodyheadingEscapeStyleNames);
+                    body["headingEscapeStyleNames"] = ExpressionConverter.ConvertO(__workflow_bodyheadingEscapeStyleNames);
                     bodypropCount++;
                 }
 
@@ -235,19 +210,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
-        [WorkflowExpressionFactory(nameof(__BuildWordExtractContentByBookmarks))]
-        public IBodyWorkflowAction<ExtractContentByBookMarksResponse> WordExtractContentByBookmarks([WorkflowExpression] Func<string> bodystartBookMark = null, [WorkflowExpression] Func<string> bodyendBookMark = null, [WorkflowExpression] Func<string> bodysourceDocumentdocumentContent = null, [WorkflowExpression] Func<string> bodysourceDocumentdocumentName = null)
+        public IBodyWorkflowAction<ExtractContentByBookMarksResponse> WordExtractContentByBookmarks(Expression<Func<string>> bodystartBookMark = null, Expression<Func<string>> bodyendBookMark = null, Expression<Func<string>> bodysourceDocumentdocumentContent = null, Expression<Func<string>> bodysourceDocumentdocumentName = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ExtractContentByBookMarksResponse> __BuildWordExtractContentByBookmarks(WorkflowExpression<string> bodystartBookMark = null, WorkflowExpression<string> bodyendBookMark = null, WorkflowExpression<string> bodysourceDocumentdocumentContent = null, WorkflowExpression<string> bodysourceDocumentdocumentName = null)
-        {
-            WorkflowExpression.Validate(bodystartBookMark, nameof(bodystartBookMark), required: false);
-            WorkflowExpression.Validate(bodyendBookMark, nameof(bodyendBookMark), required: false);
-            WorkflowExpression.Validate(bodysourceDocumentdocumentContent, nameof(bodysourceDocumentdocumentContent), required: false);
-            WorkflowExpression.Validate(bodysourceDocumentdocumentName, nameof(bodysourceDocumentdocumentName), required: false);
+            var __workflow_bodystartBookMark = bodystartBookMark == null ? null : WorkflowExpression.Compile(bodystartBookMark);
+            WorkflowExpression.Validate(__workflow_bodystartBookMark, nameof(bodystartBookMark), required: false);
+            var __workflow_bodyendBookMark = bodyendBookMark == null ? null : WorkflowExpression.Compile(bodyendBookMark);
+            WorkflowExpression.Validate(__workflow_bodyendBookMark, nameof(bodyendBookMark), required: false);
+            var __workflow_bodysourceDocumentdocumentContent = bodysourceDocumentdocumentContent == null ? null : WorkflowExpression.Compile(bodysourceDocumentdocumentContent);
+            WorkflowExpression.Validate(__workflow_bodysourceDocumentdocumentContent, nameof(bodysourceDocumentdocumentContent), required: false);
+            var __workflow_bodysourceDocumentdocumentName = bodysourceDocumentdocumentName == null ? null : WorkflowExpression.Compile(bodysourceDocumentdocumentName);
+            WorkflowExpression.Validate(__workflow_bodysourceDocumentdocumentName, nameof(bodysourceDocumentdocumentName), required: false);
             return new DeferredBodyAction<ExtractContentByBookMarksResponse>(() =>
             {
                 var apiCallPath = "/api/WordExtractContent/ByBookMarks";
@@ -255,29 +227,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodystartBookMark != null)
+                if (__workflow_bodystartBookMark != null)
                 {
-                    body["startBookMark"] = ExpressionConverter.ConvertO(bodystartBookMark);
+                    body["startBookMark"] = ExpressionConverter.ConvertO(__workflow_bodystartBookMark);
                     bodypropCount++;
                 }
 
-                if (bodyendBookMark != null)
+                if (__workflow_bodyendBookMark != null)
                 {
-                    body["endBookMark"] = ExpressionConverter.ConvertO(bodyendBookMark);
+                    body["endBookMark"] = ExpressionConverter.ConvertO(__workflow_bodyendBookMark);
                     bodypropCount++;
                 }
 
                 var sourceDocumentObject = new JObject();
                 var sourceDocumentObjectpropCount = 0;
-                if (bodysourceDocumentdocumentContent != null)
+                if (__workflow_bodysourceDocumentdocumentContent != null)
                 {
-                    sourceDocumentObject["documentContent"] = ExpressionConverter.ConvertO(bodysourceDocumentdocumentContent);
+                    sourceDocumentObject["documentContent"] = ExpressionConverter.ConvertO(__workflow_bodysourceDocumentdocumentContent);
                     sourceDocumentObjectpropCount++;
                 }
 
-                if (bodysourceDocumentdocumentName != null)
+                if (__workflow_bodysourceDocumentdocumentName != null)
                 {
-                    sourceDocumentObject["documentName"] = ExpressionConverter.ConvertO(bodysourceDocumentdocumentName);
+                    sourceDocumentObject["documentName"] = ExpressionConverter.ConvertO(__workflow_bodysourceDocumentdocumentName);
                     sourceDocumentObjectpropCount++;
                 }
 
@@ -297,20 +269,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
-        [WorkflowExpressionFactory(nameof(__BuildWordInsertDocuments))]
-        public IBodyWorkflowAction<InsertDocumentResponse> WordInsertDocuments([WorkflowExpression] Func<string> bodysourceDocumentdocumentContent = null, [WorkflowExpression] Func<string> bodysourceDocumentdocumentName = null, [WorkflowExpression] Func<string[]> bodyinsertDocumentList = null, [WorkflowExpression] Func<string> bodybookmarkName = null, [WorkflowExpression] Func<bool> bodydeleteBookmark = null)
+        public IBodyWorkflowAction<InsertDocumentResponse> WordInsertDocuments(Expression<Func<string>> bodysourceDocumentdocumentContent = null, Expression<Func<string>> bodysourceDocumentdocumentName = null, Expression<Func<string[]>> bodyinsertDocumentList = null, Expression<Func<string>> bodybookmarkName = null, Expression<Func<bool>> bodydeleteBookmark = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<InsertDocumentResponse> __BuildWordInsertDocuments(WorkflowExpression<string> bodysourceDocumentdocumentContent = null, WorkflowExpression<string> bodysourceDocumentdocumentName = null, WorkflowExpression<string[]> bodyinsertDocumentList = null, WorkflowExpression<string> bodybookmarkName = null, WorkflowExpression<bool> bodydeleteBookmark = null)
-        {
-            WorkflowExpression.Validate(bodysourceDocumentdocumentContent, nameof(bodysourceDocumentdocumentContent), required: false);
-            WorkflowExpression.Validate(bodysourceDocumentdocumentName, nameof(bodysourceDocumentdocumentName), required: false);
-            WorkflowExpression.Validate(bodyinsertDocumentList, nameof(bodyinsertDocumentList), required: false);
-            WorkflowExpression.Validate(bodybookmarkName, nameof(bodybookmarkName), required: false);
-            WorkflowExpression.Validate(bodydeleteBookmark, nameof(bodydeleteBookmark), required: false);
+            var __workflow_bodysourceDocumentdocumentContent = bodysourceDocumentdocumentContent == null ? null : WorkflowExpression.Compile(bodysourceDocumentdocumentContent);
+            WorkflowExpression.Validate(__workflow_bodysourceDocumentdocumentContent, nameof(bodysourceDocumentdocumentContent), required: false);
+            var __workflow_bodysourceDocumentdocumentName = bodysourceDocumentdocumentName == null ? null : WorkflowExpression.Compile(bodysourceDocumentdocumentName);
+            WorkflowExpression.Validate(__workflow_bodysourceDocumentdocumentName, nameof(bodysourceDocumentdocumentName), required: false);
+            var __workflow_bodyinsertDocumentList = bodyinsertDocumentList == null ? null : WorkflowExpression.Compile(bodyinsertDocumentList);
+            WorkflowExpression.Validate(__workflow_bodyinsertDocumentList, nameof(bodyinsertDocumentList), required: false);
+            var __workflow_bodybookmarkName = bodybookmarkName == null ? null : WorkflowExpression.Compile(bodybookmarkName);
+            WorkflowExpression.Validate(__workflow_bodybookmarkName, nameof(bodybookmarkName), required: false);
+            var __workflow_bodydeleteBookmark = bodydeleteBookmark == null ? null : WorkflowExpression.Compile(bodydeleteBookmark);
+            WorkflowExpression.Validate(__workflow_bodydeleteBookmark, nameof(bodydeleteBookmark), required: false);
             return new DeferredBodyAction<InsertDocumentResponse>(() =>
             {
                 var apiCallPath = "/api/WordInsertDocuments";
@@ -320,15 +290,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
                 var bodypropCount = 0;
                 var sourceDocumentObject = new JObject();
                 var sourceDocumentObjectpropCount = 0;
-                if (bodysourceDocumentdocumentContent != null)
+                if (__workflow_bodysourceDocumentdocumentContent != null)
                 {
-                    sourceDocumentObject["documentContent"] = ExpressionConverter.ConvertO(bodysourceDocumentdocumentContent);
+                    sourceDocumentObject["documentContent"] = ExpressionConverter.ConvertO(__workflow_bodysourceDocumentdocumentContent);
                     sourceDocumentObjectpropCount++;
                 }
 
-                if (bodysourceDocumentdocumentName != null)
+                if (__workflow_bodysourceDocumentdocumentName != null)
                 {
-                    sourceDocumentObject["documentName"] = ExpressionConverter.ConvertO(bodysourceDocumentdocumentName);
+                    sourceDocumentObject["documentName"] = ExpressionConverter.ConvertO(__workflow_bodysourceDocumentdocumentName);
                     sourceDocumentObjectpropCount++;
                 }
 
@@ -338,21 +308,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
                     bodypropCount++;
                 }
 
-                if (bodyinsertDocumentList != null)
+                if (__workflow_bodyinsertDocumentList != null)
                 {
-                    body["insertDocumentList"] = ExpressionConverter.ConvertO(bodyinsertDocumentList);
+                    body["insertDocumentList"] = ExpressionConverter.ConvertO(__workflow_bodyinsertDocumentList);
                     bodypropCount++;
                 }
 
-                if (bodybookmarkName != null)
+                if (__workflow_bodybookmarkName != null)
                 {
-                    body["bookmarkName"] = ExpressionConverter.ConvertO(bodybookmarkName);
+                    body["bookmarkName"] = ExpressionConverter.ConvertO(__workflow_bodybookmarkName);
                     bodypropCount++;
                 }
 
-                if (bodydeleteBookmark != null)
+                if (__workflow_bodydeleteBookmark != null)
                 {
-                    body["deleteBookmark"] = ExpressionConverter.ConvertO(bodydeleteBookmark);
+                    body["deleteBookmark"] = ExpressionConverter.ConvertO(__workflow_bodydeleteBookmark);
                     bodypropCount++;
                 }
 
@@ -366,19 +336,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
-        [WorkflowExpressionFactory(nameof(__BuildWordApplyStyleToDocument))]
-        public IBodyWorkflowAction<ApplyStylesResponse> WordApplyStyleToDocument([WorkflowExpression] Func<string> bodysourceDocumentdocumentContent = null, [WorkflowExpression] Func<string> bodysourceDocumentdocumentName = null, [WorkflowExpression] Func<string> bodydestinationDocumentdocumentContent = null, [WorkflowExpression] Func<string> bodydestinationDocumentdocumentName = null)
+        public IBodyWorkflowAction<ApplyStylesResponse> WordApplyStyleToDocument(Expression<Func<string>> bodysourceDocumentdocumentContent = null, Expression<Func<string>> bodysourceDocumentdocumentName = null, Expression<Func<string>> bodydestinationDocumentdocumentContent = null, Expression<Func<string>> bodydestinationDocumentdocumentName = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ApplyStylesResponse> __BuildWordApplyStyleToDocument(WorkflowExpression<string> bodysourceDocumentdocumentContent = null, WorkflowExpression<string> bodysourceDocumentdocumentName = null, WorkflowExpression<string> bodydestinationDocumentdocumentContent = null, WorkflowExpression<string> bodydestinationDocumentdocumentName = null)
-        {
-            WorkflowExpression.Validate(bodysourceDocumentdocumentContent, nameof(bodysourceDocumentdocumentContent), required: false);
-            WorkflowExpression.Validate(bodysourceDocumentdocumentName, nameof(bodysourceDocumentdocumentName), required: false);
-            WorkflowExpression.Validate(bodydestinationDocumentdocumentContent, nameof(bodydestinationDocumentdocumentContent), required: false);
-            WorkflowExpression.Validate(bodydestinationDocumentdocumentName, nameof(bodydestinationDocumentdocumentName), required: false);
+            var __workflow_bodysourceDocumentdocumentContent = bodysourceDocumentdocumentContent == null ? null : WorkflowExpression.Compile(bodysourceDocumentdocumentContent);
+            WorkflowExpression.Validate(__workflow_bodysourceDocumentdocumentContent, nameof(bodysourceDocumentdocumentContent), required: false);
+            var __workflow_bodysourceDocumentdocumentName = bodysourceDocumentdocumentName == null ? null : WorkflowExpression.Compile(bodysourceDocumentdocumentName);
+            WorkflowExpression.Validate(__workflow_bodysourceDocumentdocumentName, nameof(bodysourceDocumentdocumentName), required: false);
+            var __workflow_bodydestinationDocumentdocumentContent = bodydestinationDocumentdocumentContent == null ? null : WorkflowExpression.Compile(bodydestinationDocumentdocumentContent);
+            WorkflowExpression.Validate(__workflow_bodydestinationDocumentdocumentContent, nameof(bodydestinationDocumentdocumentContent), required: false);
+            var __workflow_bodydestinationDocumentdocumentName = bodydestinationDocumentdocumentName == null ? null : WorkflowExpression.Compile(bodydestinationDocumentdocumentName);
+            WorkflowExpression.Validate(__workflow_bodydestinationDocumentdocumentName, nameof(bodydestinationDocumentdocumentName), required: false);
             return new DeferredBodyAction<ApplyStylesResponse>(() =>
             {
                 var apiCallPath = "/api/WordStyles/ApplyStyleToDocument";
@@ -388,15 +355,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
                 var bodypropCount = 0;
                 var sourceDocumentObject = new JObject();
                 var sourceDocumentObjectpropCount = 0;
-                if (bodysourceDocumentdocumentContent != null)
+                if (__workflow_bodysourceDocumentdocumentContent != null)
                 {
-                    sourceDocumentObject["documentContent"] = ExpressionConverter.ConvertO(bodysourceDocumentdocumentContent);
+                    sourceDocumentObject["documentContent"] = ExpressionConverter.ConvertO(__workflow_bodysourceDocumentdocumentContent);
                     sourceDocumentObjectpropCount++;
                 }
 
-                if (bodysourceDocumentdocumentName != null)
+                if (__workflow_bodysourceDocumentdocumentName != null)
                 {
-                    sourceDocumentObject["documentName"] = ExpressionConverter.ConvertO(bodysourceDocumentdocumentName);
+                    sourceDocumentObject["documentName"] = ExpressionConverter.ConvertO(__workflow_bodysourceDocumentdocumentName);
                     sourceDocumentObjectpropCount++;
                 }
 
@@ -408,15 +375,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
 
                 var destinationDocumentObject = new JObject();
                 var destinationDocumentObjectpropCount = 0;
-                if (bodysourceDocumentdocumentContent != null)
+                if (__workflow_bodysourceDocumentdocumentContent != null)
                 {
-                    destinationDocumentObject["documentContent"] = ExpressionConverter.ConvertO(bodysourceDocumentdocumentContent);
+                    destinationDocumentObject["documentContent"] = ExpressionConverter.ConvertO(__workflow_bodysourceDocumentdocumentContent);
                     destinationDocumentObjectpropCount++;
                 }
 
-                if (bodysourceDocumentdocumentName != null)
+                if (__workflow_bodysourceDocumentdocumentName != null)
                 {
-                    destinationDocumentObject["documentName"] = ExpressionConverter.ConvertO(bodysourceDocumentdocumentName);
+                    destinationDocumentObject["documentName"] = ExpressionConverter.ConvertO(__workflow_bodysourceDocumentdocumentName);
                     destinationDocumentObjectpropCount++;
                 }
 

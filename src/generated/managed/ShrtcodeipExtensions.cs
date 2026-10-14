@@ -1,54 +1,41 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shrtcodeip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class ShrtcodeipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shrtcodeip")]
-        [WorkflowExpressionFactory(nameof(__BuildShortenLink))]
-        public IBodyWorkflowAction<ShortenLinkResponse> ShortenLink([WorkflowExpression] Func<string> url)
+        public IBodyWorkflowAction<ShortenLinkResponse> ShortenLink(Expression<Func<string>> url)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ShortenLinkResponse> __BuildShortenLink(WorkflowExpression<string> url)
-        {
-            WorkflowExpression.Validate(url, nameof(url), required: true);
+            var __workflow_url = url == null ? null : WorkflowExpression.Compile(url);
+            WorkflowExpression.Validate(__workflow_url, nameof(url), required: true);
             return new DeferredBodyAction<ShortenLinkResponse>(() =>
             {
                 var apiCallPath = "/shorten";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["url"] = ExpressionConverter.Convert(url);
+                callPayload.Queries["url"] = ExpressionConverter.Convert(__workflow_url);
                 return new ApiConnectionAction<ShortenLinkResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shrtcodeip")]
-        [WorkflowExpressionFactory(nameof(__BuildGettingInformationLink))]
-        public IBodyWorkflowAction<GettingInformationLinkResponse> GettingInformationLink([WorkflowExpression] Func<string> code)
+        public IBodyWorkflowAction<GettingInformationLinkResponse> GettingInformationLink(Expression<Func<string>> code)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GettingInformationLinkResponse> __BuildGettingInformationLink(WorkflowExpression<string> code)
-        {
-            WorkflowExpression.Validate(code, nameof(code), required: true);
+            var __workflow_code = code == null ? null : WorkflowExpression.Compile(code);
+            WorkflowExpression.Validate(__workflow_code, nameof(code), required: true);
             return new DeferredBodyAction<GettingInformationLinkResponse>(() =>
             {
                 var apiCallPath = "/info";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["code"] = ExpressionConverter.Convert(code);
+                callPayload.Queries["code"] = ExpressionConverter.Convert(__workflow_code);
                 return new ApiConnectionAction<GettingInformationLinkResponse>(callPayload);
             });
         }

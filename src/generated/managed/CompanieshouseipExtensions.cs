@@ -1,30 +1,23 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class CompanieshouseipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        [WorkflowExpressionFactory(nameof(__BuildCompanyByNumber))]
-        public IBodyWorkflowAction<CompanyByNumberResponse> CompanyByNumber([WorkflowExpression] Func<string> companyNumber)
+        public IBodyWorkflowAction<CompanyByNumberResponse> CompanyByNumber(Expression<Func<string>> companyNumber)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CompanyByNumberResponse> __BuildCompanyByNumber(WorkflowExpression<string> companyNumber)
-        {
-            WorkflowExpression.Validate(companyNumber, nameof(companyNumber), required: true);
+            var __workflow_companyNumber = companyNumber == null ? null : WorkflowExpression.Compile(companyNumber);
+            WorkflowExpression.Validate(__workflow_companyNumber, nameof(companyNumber), required: true);
             return new DeferredBodyAction<CompanyByNumberResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyNumber, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CompanyByNumberResponse>(callPayload);
@@ -32,19 +25,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        [WorkflowExpressionFactory(nameof(__BuildListPsc))]
-        public IBodyWorkflowAction<ListPscResponse> ListPsc([WorkflowExpression] Func<string> companyNumber)
+        public IBodyWorkflowAction<ListPscResponse> ListPsc(Expression<Func<string>> companyNumber)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListPscResponse> __BuildListPsc(WorkflowExpression<string> companyNumber)
-        {
-            WorkflowExpression.Validate(companyNumber, nameof(companyNumber), required: true);
+            var __workflow_companyNumber = companyNumber == null ? null : WorkflowExpression.Compile(companyNumber);
+            WorkflowExpression.Validate(__workflow_companyNumber, nameof(companyNumber), required: true);
             return new DeferredBodyAction<ListPscResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/persons-with-significant-control-statements", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/persons-with-significant-control-statements", ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyNumber, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ListPscResponse>(callPayload);
@@ -52,19 +39,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        [WorkflowExpressionFactory(nameof(__BuildListStatementsPsc))]
-        public IBodyWorkflowAction<ListStatementsPscResponse> ListStatementsPsc([WorkflowExpression] Func<string> companyNumber)
+        public IBodyWorkflowAction<ListStatementsPscResponse> ListStatementsPsc(Expression<Func<string>> companyNumber)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListStatementsPscResponse> __BuildListStatementsPsc(WorkflowExpression<string> companyNumber)
-        {
-            WorkflowExpression.Validate(companyNumber, nameof(companyNumber), required: true);
+            var __workflow_companyNumber = companyNumber == null ? null : WorkflowExpression.Compile(companyNumber);
+            WorkflowExpression.Validate(__workflow_companyNumber, nameof(companyNumber), required: true);
             return new DeferredBodyAction<ListStatementsPscResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/persons-with-significant-control", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/persons-with-significant-control", ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyNumber, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ListStatementsPscResponse>(callPayload);
@@ -72,20 +53,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        [WorkflowExpressionFactory(nameof(__BuildIndividualPsc))]
-        public IBodyWorkflowAction<IndividualPscResponse> IndividualPsc([WorkflowExpression] Func<string> companyNumber, [WorkflowExpression] Func<string> pCSId)
+        public IBodyWorkflowAction<IndividualPscResponse> IndividualPsc(Expression<Func<string>> companyNumber, Expression<Func<string>> pCSId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<IndividualPscResponse> __BuildIndividualPsc(WorkflowExpression<string> companyNumber, WorkflowExpression<string> pCSId)
-        {
-            WorkflowExpression.Validate(companyNumber, nameof(companyNumber), required: true);
-            WorkflowExpression.Validate(pCSId, nameof(pCSId), required: true);
+            var __workflow_companyNumber = companyNumber == null ? null : WorkflowExpression.Compile(companyNumber);
+            WorkflowExpression.Validate(__workflow_companyNumber, nameof(companyNumber), required: true);
+            var __workflow_pCSId = pCSId == null ? null : WorkflowExpression.Compile(pCSId);
+            WorkflowExpression.Validate(__workflow_pCSId, nameof(pCSId), required: true);
             return new DeferredBodyAction<IndividualPscResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/persons-with-significant-control/individual/{1}", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1), ExpressionConverter.ConvertWithUrlEncoding(pCSId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/persons-with-significant-control/individual/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyNumber, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_pCSId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<IndividualPscResponse>(callPayload);
@@ -93,19 +69,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        [WorkflowExpressionFactory(nameof(__BuildUKEstablishments))]
-        public IBodyWorkflowAction<UKEstablishmentsResponse> UKEstablishments([WorkflowExpression] Func<string> companyNumber)
+        public IBodyWorkflowAction<UKEstablishmentsResponse> UKEstablishments(Expression<Func<string>> companyNumber)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UKEstablishmentsResponse> __BuildUKEstablishments(WorkflowExpression<string> companyNumber)
-        {
-            WorkflowExpression.Validate(companyNumber, nameof(companyNumber), required: true);
+            var __workflow_companyNumber = companyNumber == null ? null : WorkflowExpression.Compile(companyNumber);
+            WorkflowExpression.Validate(__workflow_companyNumber, nameof(companyNumber), required: true);
             return new DeferredBodyAction<UKEstablishmentsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/uk-establishments", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/uk-establishments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyNumber, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<UKEstablishmentsResponse>(callPayload);
@@ -113,19 +83,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        [WorkflowExpressionFactory(nameof(__BuildOfficerAppointmentByOfficerId))]
-        public IBodyWorkflowAction<OfficerAppointmentByOfficerIdResponse> OfficerAppointmentByOfficerId([WorkflowExpression] Func<string> officerId)
+        public IBodyWorkflowAction<OfficerAppointmentByOfficerIdResponse> OfficerAppointmentByOfficerId(Expression<Func<string>> officerId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<OfficerAppointmentByOfficerIdResponse> __BuildOfficerAppointmentByOfficerId(WorkflowExpression<string> officerId)
-        {
-            WorkflowExpression.Validate(officerId, nameof(officerId), required: true);
+            var __workflow_officerId = officerId == null ? null : WorkflowExpression.Compile(officerId);
+            WorkflowExpression.Validate(__workflow_officerId, nameof(officerId), required: true);
             return new DeferredBodyAction<OfficerAppointmentByOfficerIdResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/officers/{0}/appointments", ExpressionConverter.ConvertWithUrlEncoding(officerId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/officers/{0}/appointments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_officerId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<OfficerAppointmentByOfficerIdResponse>(callPayload);
@@ -133,20 +97,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        [WorkflowExpressionFactory(nameof(__BuildFilingHistoryByNumberAndId))]
-        public IBodyWorkflowAction<FilingHistoryByNumberAndIdResponse> FilingHistoryByNumberAndId([WorkflowExpression] Func<string> companyNumber, [WorkflowExpression] Func<string> transactionId)
+        public IBodyWorkflowAction<FilingHistoryByNumberAndIdResponse> FilingHistoryByNumberAndId(Expression<Func<string>> companyNumber, Expression<Func<string>> transactionId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FilingHistoryByNumberAndIdResponse> __BuildFilingHistoryByNumberAndId(WorkflowExpression<string> companyNumber, WorkflowExpression<string> transactionId)
-        {
-            WorkflowExpression.Validate(companyNumber, nameof(companyNumber), required: true);
-            WorkflowExpression.Validate(transactionId, nameof(transactionId), required: true);
+            var __workflow_companyNumber = companyNumber == null ? null : WorkflowExpression.Compile(companyNumber);
+            WorkflowExpression.Validate(__workflow_companyNumber, nameof(companyNumber), required: true);
+            var __workflow_transactionId = transactionId == null ? null : WorkflowExpression.Compile(transactionId);
+            WorkflowExpression.Validate(__workflow_transactionId, nameof(transactionId), required: true);
             return new DeferredBodyAction<FilingHistoryByNumberAndIdResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/filing-history/{1}", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1), ExpressionConverter.ConvertWithUrlEncoding(transactionId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/filing-history/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyNumber, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_transactionId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FilingHistoryByNumberAndIdResponse>(callPayload);
@@ -154,19 +113,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        [WorkflowExpressionFactory(nameof(__BuildChargesByNumber))]
-        public IBodyWorkflowAction<ChargesByNumberResponse> ChargesByNumber([WorkflowExpression] Func<string> companyNumber)
+        public IBodyWorkflowAction<ChargesByNumberResponse> ChargesByNumber(Expression<Func<string>> companyNumber)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ChargesByNumberResponse> __BuildChargesByNumber(WorkflowExpression<string> companyNumber)
-        {
-            WorkflowExpression.Validate(companyNumber, nameof(companyNumber), required: true);
+            var __workflow_companyNumber = companyNumber == null ? null : WorkflowExpression.Compile(companyNumber);
+            WorkflowExpression.Validate(__workflow_companyNumber, nameof(companyNumber), required: true);
             return new DeferredBodyAction<ChargesByNumberResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/charges", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/charges", ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyNumber, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ChargesByNumberResponse>(callPayload);
@@ -174,20 +127,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        [WorkflowExpressionFactory(nameof(__BuildChargesByNumberAndChargeId))]
-        public IBodyWorkflowAction<ChargesByNumberAndChargeIdResponse> ChargesByNumberAndChargeId([WorkflowExpression] Func<string> companyNumber, [WorkflowExpression] Func<string> chargeId)
+        public IBodyWorkflowAction<ChargesByNumberAndChargeIdResponse> ChargesByNumberAndChargeId(Expression<Func<string>> companyNumber, Expression<Func<string>> chargeId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ChargesByNumberAndChargeIdResponse> __BuildChargesByNumberAndChargeId(WorkflowExpression<string> companyNumber, WorkflowExpression<string> chargeId)
-        {
-            WorkflowExpression.Validate(companyNumber, nameof(companyNumber), required: true);
-            WorkflowExpression.Validate(chargeId, nameof(chargeId), required: true);
+            var __workflow_companyNumber = companyNumber == null ? null : WorkflowExpression.Compile(companyNumber);
+            WorkflowExpression.Validate(__workflow_companyNumber, nameof(companyNumber), required: true);
+            var __workflow_chargeId = chargeId == null ? null : WorkflowExpression.Compile(chargeId);
+            WorkflowExpression.Validate(__workflow_chargeId, nameof(chargeId), required: true);
             return new DeferredBodyAction<ChargesByNumberAndChargeIdResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/charges/{1}", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1), ExpressionConverter.ConvertWithUrlEncoding(chargeId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/charges/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyNumber, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_chargeId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ChargesByNumberAndChargeIdResponse>(callPayload);
@@ -195,19 +143,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        [WorkflowExpressionFactory(nameof(__BuildAddressByNumber))]
-        public IBodyWorkflowAction<AddressByNumberResponse> AddressByNumber([WorkflowExpression] Func<string> companyNumber)
+        public IBodyWorkflowAction<AddressByNumberResponse> AddressByNumber(Expression<Func<string>> companyNumber)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AddressByNumberResponse> __BuildAddressByNumber(WorkflowExpression<string> companyNumber)
-        {
-            WorkflowExpression.Validate(companyNumber, nameof(companyNumber), required: true);
+            var __workflow_companyNumber = companyNumber == null ? null : WorkflowExpression.Compile(companyNumber);
+            WorkflowExpression.Validate(__workflow_companyNumber, nameof(companyNumber), required: true);
             return new DeferredBodyAction<AddressByNumberResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/registered-office-address", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/registered-office-address", ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyNumber, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<AddressByNumberResponse>(callPayload);
@@ -215,19 +157,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        [WorkflowExpressionFactory(nameof(__BuildCompanyOfficersByNumber))]
-        public IBodyWorkflowAction<CompanyOfficersByNumberResponse> CompanyOfficersByNumber([WorkflowExpression] Func<string> companyNumber)
+        public IBodyWorkflowAction<CompanyOfficersByNumberResponse> CompanyOfficersByNumber(Expression<Func<string>> companyNumber)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CompanyOfficersByNumberResponse> __BuildCompanyOfficersByNumber(WorkflowExpression<string> companyNumber)
-        {
-            WorkflowExpression.Validate(companyNumber, nameof(companyNumber), required: true);
+            var __workflow_companyNumber = companyNumber == null ? null : WorkflowExpression.Compile(companyNumber);
+            WorkflowExpression.Validate(__workflow_companyNumber, nameof(companyNumber), required: true);
             return new DeferredBodyAction<CompanyOfficersByNumberResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/officers", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/officers", ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyNumber, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CompanyOfficersByNumberResponse>(callPayload);
@@ -235,20 +171,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        [WorkflowExpressionFactory(nameof(__BuildCompanyOfficersByNumberAndAppointmentId))]
-        public IBodyWorkflowAction<CompanyOfficersByNumberAndAppointmentIdResponse> CompanyOfficersByNumberAndAppointmentId([WorkflowExpression] Func<string> companyNumber, [WorkflowExpression] Func<string> appointmentId)
+        public IBodyWorkflowAction<CompanyOfficersByNumberAndAppointmentIdResponse> CompanyOfficersByNumberAndAppointmentId(Expression<Func<string>> companyNumber, Expression<Func<string>> appointmentId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CompanyOfficersByNumberAndAppointmentIdResponse> __BuildCompanyOfficersByNumberAndAppointmentId(WorkflowExpression<string> companyNumber, WorkflowExpression<string> appointmentId)
-        {
-            WorkflowExpression.Validate(companyNumber, nameof(companyNumber), required: true);
-            WorkflowExpression.Validate(appointmentId, nameof(appointmentId), required: true);
+            var __workflow_companyNumber = companyNumber == null ? null : WorkflowExpression.Compile(companyNumber);
+            WorkflowExpression.Validate(__workflow_companyNumber, nameof(companyNumber), required: true);
+            var __workflow_appointmentId = appointmentId == null ? null : WorkflowExpression.Compile(appointmentId);
+            WorkflowExpression.Validate(__workflow_appointmentId, nameof(appointmentId), required: true);
             return new DeferredBodyAction<CompanyOfficersByNumberAndAppointmentIdResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/appointments/{1}", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1), ExpressionConverter.ConvertWithUrlEncoding(appointmentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/appointments/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyNumber, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_appointmentId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CompanyOfficersByNumberAndAppointmentIdResponse>(callPayload);
@@ -256,19 +187,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        [WorkflowExpressionFactory(nameof(__BuildFilingHistoryByCompNumber))]
-        public IBodyWorkflowAction<FilingHistoryByCompNumberResponse> FilingHistoryByCompNumber([WorkflowExpression] Func<string> companyNumber)
+        public IBodyWorkflowAction<FilingHistoryByCompNumberResponse> FilingHistoryByCompNumber(Expression<Func<string>> companyNumber)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FilingHistoryByCompNumberResponse> __BuildFilingHistoryByCompNumber(WorkflowExpression<string> companyNumber)
-        {
-            WorkflowExpression.Validate(companyNumber, nameof(companyNumber), required: true);
+            var __workflow_companyNumber = companyNumber == null ? null : WorkflowExpression.Compile(companyNumber);
+            WorkflowExpression.Validate(__workflow_companyNumber, nameof(companyNumber), required: true);
             return new DeferredBodyAction<FilingHistoryByCompNumberResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/filing-history", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/filing-history", ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyNumber, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FilingHistoryByCompNumberResponse>(callPayload);

@@ -1,7 +1,6 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
 {
     using System;
@@ -9,27 +8,22 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class ServiceBusActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        [WorkflowExpressionFactory(nameof(__BuildSendMessage))]
-        public IOutputWorkflowAction<JToken> SendMessage([WorkflowExpression] Func<string> entityName, [WorkflowExpression] Func<SendMessageInputMessageType> message)
+        public IOutputWorkflowAction<JToken> SendMessage(Expression<Func<string>> entityName, Expression<Func<SendMessageInputMessageType>> message)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IOutputWorkflowAction<JToken> __BuildSendMessage(WorkflowExpression<string> entityName, WorkflowExpression<SendMessageInputMessageType> message)
-        {
-            WorkflowExpression.Validate(entityName, nameof(entityName), required: true);
-            WorkflowExpression.Validate(message, nameof(message), required: true);
+            var __workflow_entityName = entityName == null ? null : WorkflowExpression.Compile(entityName);
+            WorkflowExpression.Validate(__workflow_entityName, nameof(entityName), required: true);
+            var __workflow_message = message == null ? null : WorkflowExpression.Compile(message);
+            WorkflowExpression.Validate(__workflow_message, nameof(message), required: true);
             return new DeferredOutputAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["entityName"] = ExpressionConverter.ConvertO(entityName);
-                serviceProviderParameters["message"] = ExpressionConverter.ConvertO(message);
+                serviceProviderParameters["entityName"] = ExpressionConverter.ConvertO(__workflow_entityName);
+                serviceProviderParameters["message"] = ExpressionConverter.ConvertO(__workflow_message);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "sendMessage", connectionName: connectionId),
@@ -40,22 +34,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        [WorkflowExpressionFactory(nameof(__BuildSendMessages))]
-        public IOutputWorkflowAction<JToken> SendMessages([WorkflowExpression] Func<string> entityName, [WorkflowExpression] Func<SendMessagesInputMessagesTypeItem[]> messages)
+        public IOutputWorkflowAction<JToken> SendMessages(Expression<Func<string>> entityName, Expression<Func<SendMessagesInputMessagesTypeItem[]>> messages)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IOutputWorkflowAction<JToken> __BuildSendMessages(WorkflowExpression<string> entityName, WorkflowExpression<SendMessagesInputMessagesTypeItem[]> messages)
-        {
-            WorkflowExpression.Validate(entityName, nameof(entityName), required: true);
-            WorkflowExpression.Validate(messages, nameof(messages), required: true);
+            var __workflow_entityName = entityName == null ? null : WorkflowExpression.Compile(entityName);
+            WorkflowExpression.Validate(__workflow_entityName, nameof(entityName), required: true);
+            var __workflow_messages = messages == null ? null : WorkflowExpression.Compile(messages);
+            WorkflowExpression.Validate(__workflow_messages, nameof(messages), required: true);
             return new DeferredOutputAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["entityName"] = ExpressionConverter.ConvertO(entityName);
-                serviceProviderParameters["messages"] = ExpressionConverter.ConvertO(messages);
+                serviceProviderParameters["entityName"] = ExpressionConverter.ConvertO(__workflow_entityName);
+                serviceProviderParameters["messages"] = ExpressionConverter.ConvertO(__workflow_messages);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "sendMessages", connectionName: connectionId),
@@ -66,22 +55,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        [WorkflowExpressionFactory(nameof(__BuildReplicateMessages))]
-        public IOutputWorkflowAction<JToken> ReplicateMessages([WorkflowExpression] Func<string> entityName, [WorkflowExpression] Func<bool> skipAlreadyReplicated)
+        public IOutputWorkflowAction<JToken> ReplicateMessages(Expression<Func<string>> entityName, Expression<Func<bool>> skipAlreadyReplicated)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IOutputWorkflowAction<JToken> __BuildReplicateMessages(WorkflowExpression<string> entityName, WorkflowExpression<bool> skipAlreadyReplicated)
-        {
-            WorkflowExpression.Validate(entityName, nameof(entityName), required: true);
-            WorkflowExpression.Validate(skipAlreadyReplicated, nameof(skipAlreadyReplicated), required: true);
+            var __workflow_entityName = entityName == null ? null : WorkflowExpression.Compile(entityName);
+            WorkflowExpression.Validate(__workflow_entityName, nameof(entityName), required: true);
+            var __workflow_skipAlreadyReplicated = skipAlreadyReplicated == null ? null : WorkflowExpression.Compile(skipAlreadyReplicated);
+            WorkflowExpression.Validate(__workflow_skipAlreadyReplicated, nameof(skipAlreadyReplicated), required: true);
             return new DeferredOutputAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["entityName"] = ExpressionConverter.ConvertO(entityName);
-                serviceProviderParameters["skipAlreadyReplicated"] = ExpressionConverter.ConvertO(skipAlreadyReplicated);
+                serviceProviderParameters["entityName"] = ExpressionConverter.ConvertO(__workflow_entityName);
+                serviceProviderParameters["skipAlreadyReplicated"] = ExpressionConverter.ConvertO(__workflow_skipAlreadyReplicated);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "replicateMessages", connectionName: connectionId),
@@ -92,22 +76,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        [WorkflowExpressionFactory(nameof(__BuildCompleteQueueMessageV2))]
-        public IOutputWorkflowAction<JToken> CompleteQueueMessageV2([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> lockToken)
+        public IOutputWorkflowAction<JToken> CompleteQueueMessageV2(Expression<Func<string>> queueName, Expression<Func<string>> lockToken)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IOutputWorkflowAction<JToken> __BuildCompleteQueueMessageV2(WorkflowExpression<string> queueName, WorkflowExpression<string> lockToken)
-        {
-            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
-            WorkflowExpression.Validate(lockToken, nameof(lockToken), required: true);
+            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
+            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
+            var __workflow_lockToken = lockToken == null ? null : WorkflowExpression.Compile(lockToken);
+            WorkflowExpression.Validate(__workflow_lockToken, nameof(lockToken), required: true);
             return new DeferredOutputAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-                serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
+                serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(__workflow_lockToken);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "completeQueueMessageV2", connectionName: connectionId),
@@ -118,22 +97,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        [WorkflowExpressionFactory(nameof(__BuildAbandonQueueMessageV2))]
-        public IOutputWorkflowAction<JToken> AbandonQueueMessageV2([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> lockToken)
+        public IOutputWorkflowAction<JToken> AbandonQueueMessageV2(Expression<Func<string>> queueName, Expression<Func<string>> lockToken)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IOutputWorkflowAction<JToken> __BuildAbandonQueueMessageV2(WorkflowExpression<string> queueName, WorkflowExpression<string> lockToken)
-        {
-            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
-            WorkflowExpression.Validate(lockToken, nameof(lockToken), required: true);
+            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
+            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
+            var __workflow_lockToken = lockToken == null ? null : WorkflowExpression.Compile(lockToken);
+            WorkflowExpression.Validate(__workflow_lockToken, nameof(lockToken), required: true);
             return new DeferredOutputAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-                serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
+                serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(__workflow_lockToken);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "abandonQueueMessageV2", connectionName: connectionId),
@@ -144,32 +118,29 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        [WorkflowExpressionFactory(nameof(__BuildDeadLetterQueueMessageV2))]
-        public IOutputWorkflowAction<JToken> DeadLetterQueueMessageV2([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> lockToken, [WorkflowExpression] Func<string> deadLetterReason = null, [WorkflowExpression] Func<string> deadLetterErrorDescription = null)
+        public IOutputWorkflowAction<JToken> DeadLetterQueueMessageV2(Expression<Func<string>> queueName, Expression<Func<string>> lockToken, Expression<Func<string>> deadLetterReason = null, Expression<Func<string>> deadLetterErrorDescription = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IOutputWorkflowAction<JToken> __BuildDeadLetterQueueMessageV2(WorkflowExpression<string> queueName, WorkflowExpression<string> lockToken, WorkflowExpression<string> deadLetterReason = null, WorkflowExpression<string> deadLetterErrorDescription = null)
-        {
-            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
-            WorkflowExpression.Validate(lockToken, nameof(lockToken), required: true);
-            WorkflowExpression.Validate(deadLetterReason, nameof(deadLetterReason), required: false);
-            WorkflowExpression.Validate(deadLetterErrorDescription, nameof(deadLetterErrorDescription), required: false);
+            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
+            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
+            var __workflow_lockToken = lockToken == null ? null : WorkflowExpression.Compile(lockToken);
+            WorkflowExpression.Validate(__workflow_lockToken, nameof(lockToken), required: true);
+            var __workflow_deadLetterReason = deadLetterReason == null ? null : WorkflowExpression.Compile(deadLetterReason);
+            WorkflowExpression.Validate(__workflow_deadLetterReason, nameof(deadLetterReason), required: false);
+            var __workflow_deadLetterErrorDescription = deadLetterErrorDescription == null ? null : WorkflowExpression.Compile(deadLetterErrorDescription);
+            WorkflowExpression.Validate(__workflow_deadLetterErrorDescription, nameof(deadLetterErrorDescription), required: false);
             return new DeferredOutputAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-                serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
-                if (deadLetterReason != null)
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
+                serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(__workflow_lockToken);
+                if (__workflow_deadLetterReason != null)
                 {
-                    serviceProviderParameters["deadLetterReason"] = ExpressionConverter.ConvertO(deadLetterReason);
+                    serviceProviderParameters["deadLetterReason"] = ExpressionConverter.ConvertO(__workflow_deadLetterReason);
                 }
 
-                if (deadLetterErrorDescription != null)
+                if (__workflow_deadLetterErrorDescription != null)
                 {
-                    serviceProviderParameters["deadLetterErrorDescription"] = ExpressionConverter.ConvertO(deadLetterErrorDescription);
+                    serviceProviderParameters["deadLetterErrorDescription"] = ExpressionConverter.ConvertO(__workflow_deadLetterErrorDescription);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -182,22 +153,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        [WorkflowExpressionFactory(nameof(__BuildRenewLockQueueMessageV2))]
-        public IOutputWorkflowAction<JToken> RenewLockQueueMessageV2([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> lockToken)
+        public IOutputWorkflowAction<JToken> RenewLockQueueMessageV2(Expression<Func<string>> queueName, Expression<Func<string>> lockToken)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IOutputWorkflowAction<JToken> __BuildRenewLockQueueMessageV2(WorkflowExpression<string> queueName, WorkflowExpression<string> lockToken)
-        {
-            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
-            WorkflowExpression.Validate(lockToken, nameof(lockToken), required: true);
+            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
+            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
+            var __workflow_lockToken = lockToken == null ? null : WorkflowExpression.Compile(lockToken);
+            WorkflowExpression.Validate(__workflow_lockToken, nameof(lockToken), required: true);
             return new DeferredOutputAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-                serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
+                serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(__workflow_lockToken);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "renewLockQueueMessageV2", connectionName: connectionId),
@@ -208,22 +174,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        [WorkflowExpressionFactory(nameof(__BuildDeferQueueMessageV2))]
-        public IOutputWorkflowAction<JToken> DeferQueueMessageV2([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> lockToken)
+        public IOutputWorkflowAction<JToken> DeferQueueMessageV2(Expression<Func<string>> queueName, Expression<Func<string>> lockToken)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IOutputWorkflowAction<JToken> __BuildDeferQueueMessageV2(WorkflowExpression<string> queueName, WorkflowExpression<string> lockToken)
-        {
-            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
-            WorkflowExpression.Validate(lockToken, nameof(lockToken), required: true);
+            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
+            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
+            var __workflow_lockToken = lockToken == null ? null : WorkflowExpression.Compile(lockToken);
+            WorkflowExpression.Validate(__workflow_lockToken, nameof(lockToken), required: true);
             return new DeferredOutputAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-                serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
+                serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(__workflow_lockToken);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "deferQueueMessageV2", connectionName: connectionId),
@@ -234,22 +195,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        [WorkflowExpressionFactory(nameof(__BuildGetDeferredMessageFromQueueV2))]
-        public IBodyWorkflowAction<GetDeferredMessageFromQueueV2Output> GetDeferredMessageFromQueueV2([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> sequenceNumber)
+        public IBodyWorkflowAction<GetDeferredMessageFromQueueV2Output> GetDeferredMessageFromQueueV2(Expression<Func<string>> queueName, Expression<Func<string>> sequenceNumber)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetDeferredMessageFromQueueV2Output> __BuildGetDeferredMessageFromQueueV2(WorkflowExpression<string> queueName, WorkflowExpression<string> sequenceNumber)
-        {
-            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
-            WorkflowExpression.Validate(sequenceNumber, nameof(sequenceNumber), required: true);
+            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
+            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
+            var __workflow_sequenceNumber = sequenceNumber == null ? null : WorkflowExpression.Compile(sequenceNumber);
+            WorkflowExpression.Validate(__workflow_sequenceNumber, nameof(sequenceNumber), required: true);
             return new DeferredBodyAction<GetDeferredMessageFromQueueV2Output>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-                serviceProviderParameters["sequenceNumber"] = ExpressionConverter.ConvertO(sequenceNumber);
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
+                serviceProviderParameters["sequenceNumber"] = ExpressionConverter.ConvertO(__workflow_sequenceNumber);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getDeferredMessageFromQueueV2", connectionName: connectionId),
@@ -260,24 +216,19 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        [WorkflowExpressionFactory(nameof(__BuildGetMessagesFromQueueV2))]
-        public IBodyWorkflowAction<GetMessagesFromQueueV2OutputItem[]> GetMessagesFromQueueV2([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<int> maxMessages = null)
+        public IBodyWorkflowAction<GetMessagesFromQueueV2OutputItem[]> GetMessagesFromQueueV2(Expression<Func<string>> queueName, Expression<Func<int>> maxMessages = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetMessagesFromQueueV2OutputItem[]> __BuildGetMessagesFromQueueV2(WorkflowExpression<string> queueName, WorkflowExpression<int> maxMessages = null)
-        {
-            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
-            WorkflowExpression.Validate(maxMessages, nameof(maxMessages), required: false);
+            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
+            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
+            var __workflow_maxMessages = maxMessages == null ? null : WorkflowExpression.Compile(maxMessages);
+            WorkflowExpression.Validate(__workflow_maxMessages, nameof(maxMessages), required: false);
             return new DeferredBodyAction<GetMessagesFromQueueV2OutputItem[]>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-                if (maxMessages != null)
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
+                if (__workflow_maxMessages != null)
                 {
-                    serviceProviderParameters["maxMessages"] = ExpressionConverter.ConvertO(maxMessages);
+                    serviceProviderParameters["maxMessages"] = ExpressionConverter.ConvertO(__workflow_maxMessages);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -290,24 +241,20 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        [WorkflowExpressionFactory(nameof(__BuildCompleteTopicMessageV2))]
-        public IOutputWorkflowAction<JToken> CompleteTopicMessageV2([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> lockToken)
+        public IOutputWorkflowAction<JToken> CompleteTopicMessageV2(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> lockToken)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IOutputWorkflowAction<JToken> __BuildCompleteTopicMessageV2(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<string> lockToken)
-        {
-            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
-            WorkflowExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            WorkflowExpression.Validate(lockToken, nameof(lockToken), required: true);
+            var __workflow_topicName = topicName == null ? null : WorkflowExpression.Compile(topicName);
+            WorkflowExpression.Validate(__workflow_topicName, nameof(topicName), required: true);
+            var __workflow_subscriptionName = subscriptionName == null ? null : WorkflowExpression.Compile(subscriptionName);
+            WorkflowExpression.Validate(__workflow_subscriptionName, nameof(subscriptionName), required: true);
+            var __workflow_lockToken = lockToken == null ? null : WorkflowExpression.Compile(lockToken);
+            WorkflowExpression.Validate(__workflow_lockToken, nameof(lockToken), required: true);
             return new DeferredOutputAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-                serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-                serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
+                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(__workflow_topicName);
+                serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(__workflow_subscriptionName);
+                serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(__workflow_lockToken);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "completeTopicMessageV2", connectionName: connectionId),
@@ -318,24 +265,20 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        [WorkflowExpressionFactory(nameof(__BuildAbandonTopicMessageV2))]
-        public IOutputWorkflowAction<JToken> AbandonTopicMessageV2([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> lockToken)
+        public IOutputWorkflowAction<JToken> AbandonTopicMessageV2(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> lockToken)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IOutputWorkflowAction<JToken> __BuildAbandonTopicMessageV2(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<string> lockToken)
-        {
-            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
-            WorkflowExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            WorkflowExpression.Validate(lockToken, nameof(lockToken), required: true);
+            var __workflow_topicName = topicName == null ? null : WorkflowExpression.Compile(topicName);
+            WorkflowExpression.Validate(__workflow_topicName, nameof(topicName), required: true);
+            var __workflow_subscriptionName = subscriptionName == null ? null : WorkflowExpression.Compile(subscriptionName);
+            WorkflowExpression.Validate(__workflow_subscriptionName, nameof(subscriptionName), required: true);
+            var __workflow_lockToken = lockToken == null ? null : WorkflowExpression.Compile(lockToken);
+            WorkflowExpression.Validate(__workflow_lockToken, nameof(lockToken), required: true);
             return new DeferredOutputAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-                serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-                serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
+                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(__workflow_topicName);
+                serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(__workflow_subscriptionName);
+                serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(__workflow_lockToken);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "abandonTopicMessageV2", connectionName: connectionId),
@@ -346,34 +289,32 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        [WorkflowExpressionFactory(nameof(__BuildDeadLetterTopicMessageV2))]
-        public IOutputWorkflowAction<JToken> DeadLetterTopicMessageV2([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> lockToken, [WorkflowExpression] Func<string> deadLetterReason = null, [WorkflowExpression] Func<string> deadLetterErrorDescription = null)
+        public IOutputWorkflowAction<JToken> DeadLetterTopicMessageV2(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> lockToken, Expression<Func<string>> deadLetterReason = null, Expression<Func<string>> deadLetterErrorDescription = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IOutputWorkflowAction<JToken> __BuildDeadLetterTopicMessageV2(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<string> lockToken, WorkflowExpression<string> deadLetterReason = null, WorkflowExpression<string> deadLetterErrorDescription = null)
-        {
-            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
-            WorkflowExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            WorkflowExpression.Validate(lockToken, nameof(lockToken), required: true);
-            WorkflowExpression.Validate(deadLetterReason, nameof(deadLetterReason), required: false);
-            WorkflowExpression.Validate(deadLetterErrorDescription, nameof(deadLetterErrorDescription), required: false);
+            var __workflow_topicName = topicName == null ? null : WorkflowExpression.Compile(topicName);
+            WorkflowExpression.Validate(__workflow_topicName, nameof(topicName), required: true);
+            var __workflow_subscriptionName = subscriptionName == null ? null : WorkflowExpression.Compile(subscriptionName);
+            WorkflowExpression.Validate(__workflow_subscriptionName, nameof(subscriptionName), required: true);
+            var __workflow_lockToken = lockToken == null ? null : WorkflowExpression.Compile(lockToken);
+            WorkflowExpression.Validate(__workflow_lockToken, nameof(lockToken), required: true);
+            var __workflow_deadLetterReason = deadLetterReason == null ? null : WorkflowExpression.Compile(deadLetterReason);
+            WorkflowExpression.Validate(__workflow_deadLetterReason, nameof(deadLetterReason), required: false);
+            var __workflow_deadLetterErrorDescription = deadLetterErrorDescription == null ? null : WorkflowExpression.Compile(deadLetterErrorDescription);
+            WorkflowExpression.Validate(__workflow_deadLetterErrorDescription, nameof(deadLetterErrorDescription), required: false);
             return new DeferredOutputAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-                serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-                serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
-                if (deadLetterReason != null)
+                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(__workflow_topicName);
+                serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(__workflow_subscriptionName);
+                serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(__workflow_lockToken);
+                if (__workflow_deadLetterReason != null)
                 {
-                    serviceProviderParameters["deadLetterReason"] = ExpressionConverter.ConvertO(deadLetterReason);
+                    serviceProviderParameters["deadLetterReason"] = ExpressionConverter.ConvertO(__workflow_deadLetterReason);
                 }
 
-                if (deadLetterErrorDescription != null)
+                if (__workflow_deadLetterErrorDescription != null)
                 {
-                    serviceProviderParameters["deadLetterErrorDescription"] = ExpressionConverter.ConvertO(deadLetterErrorDescription);
+                    serviceProviderParameters["deadLetterErrorDescription"] = ExpressionConverter.ConvertO(__workflow_deadLetterErrorDescription);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -386,24 +327,20 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        [WorkflowExpressionFactory(nameof(__BuildRenewLockTopicMessageV2))]
-        public IOutputWorkflowAction<JToken> RenewLockTopicMessageV2([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> lockToken)
+        public IOutputWorkflowAction<JToken> RenewLockTopicMessageV2(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> lockToken)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IOutputWorkflowAction<JToken> __BuildRenewLockTopicMessageV2(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<string> lockToken)
-        {
-            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
-            WorkflowExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            WorkflowExpression.Validate(lockToken, nameof(lockToken), required: true);
+            var __workflow_topicName = topicName == null ? null : WorkflowExpression.Compile(topicName);
+            WorkflowExpression.Validate(__workflow_topicName, nameof(topicName), required: true);
+            var __workflow_subscriptionName = subscriptionName == null ? null : WorkflowExpression.Compile(subscriptionName);
+            WorkflowExpression.Validate(__workflow_subscriptionName, nameof(subscriptionName), required: true);
+            var __workflow_lockToken = lockToken == null ? null : WorkflowExpression.Compile(lockToken);
+            WorkflowExpression.Validate(__workflow_lockToken, nameof(lockToken), required: true);
             return new DeferredOutputAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-                serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-                serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
+                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(__workflow_topicName);
+                serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(__workflow_subscriptionName);
+                serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(__workflow_lockToken);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "renewLockTopicMessageV2", connectionName: connectionId),
@@ -414,24 +351,20 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        [WorkflowExpressionFactory(nameof(__BuildDeferTopicMessageV2))]
-        public IOutputWorkflowAction<JToken> DeferTopicMessageV2([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> lockToken)
+        public IOutputWorkflowAction<JToken> DeferTopicMessageV2(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> lockToken)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IOutputWorkflowAction<JToken> __BuildDeferTopicMessageV2(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<string> lockToken)
-        {
-            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
-            WorkflowExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            WorkflowExpression.Validate(lockToken, nameof(lockToken), required: true);
+            var __workflow_topicName = topicName == null ? null : WorkflowExpression.Compile(topicName);
+            WorkflowExpression.Validate(__workflow_topicName, nameof(topicName), required: true);
+            var __workflow_subscriptionName = subscriptionName == null ? null : WorkflowExpression.Compile(subscriptionName);
+            WorkflowExpression.Validate(__workflow_subscriptionName, nameof(subscriptionName), required: true);
+            var __workflow_lockToken = lockToken == null ? null : WorkflowExpression.Compile(lockToken);
+            WorkflowExpression.Validate(__workflow_lockToken, nameof(lockToken), required: true);
             return new DeferredOutputAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-                serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-                serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
+                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(__workflow_topicName);
+                serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(__workflow_subscriptionName);
+                serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(__workflow_lockToken);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "deferTopicMessageV2", connectionName: connectionId),
@@ -442,24 +375,20 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        [WorkflowExpressionFactory(nameof(__BuildGetDeferredMessageFromTopicV2))]
-        public IBodyWorkflowAction<GetDeferredMessageFromTopicV2Output> GetDeferredMessageFromTopicV2([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> sequenceNumber)
+        public IBodyWorkflowAction<GetDeferredMessageFromTopicV2Output> GetDeferredMessageFromTopicV2(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> sequenceNumber)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetDeferredMessageFromTopicV2Output> __BuildGetDeferredMessageFromTopicV2(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<string> sequenceNumber)
-        {
-            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
-            WorkflowExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            WorkflowExpression.Validate(sequenceNumber, nameof(sequenceNumber), required: true);
+            var __workflow_topicName = topicName == null ? null : WorkflowExpression.Compile(topicName);
+            WorkflowExpression.Validate(__workflow_topicName, nameof(topicName), required: true);
+            var __workflow_subscriptionName = subscriptionName == null ? null : WorkflowExpression.Compile(subscriptionName);
+            WorkflowExpression.Validate(__workflow_subscriptionName, nameof(subscriptionName), required: true);
+            var __workflow_sequenceNumber = sequenceNumber == null ? null : WorkflowExpression.Compile(sequenceNumber);
+            WorkflowExpression.Validate(__workflow_sequenceNumber, nameof(sequenceNumber), required: true);
             return new DeferredBodyAction<GetDeferredMessageFromTopicV2Output>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-                serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-                serviceProviderParameters["sequenceNumber"] = ExpressionConverter.ConvertO(sequenceNumber);
+                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(__workflow_topicName);
+                serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(__workflow_subscriptionName);
+                serviceProviderParameters["sequenceNumber"] = ExpressionConverter.ConvertO(__workflow_sequenceNumber);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getDeferredMessageFromTopicV2", connectionName: connectionId),
@@ -470,26 +399,22 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        [WorkflowExpressionFactory(nameof(__BuildGetMessagesFromTopicV2))]
-        public IBodyWorkflowAction<GetMessagesFromTopicV2OutputItem[]> GetMessagesFromTopicV2([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<int> maxMessages = null)
+        public IBodyWorkflowAction<GetMessagesFromTopicV2OutputItem[]> GetMessagesFromTopicV2(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<int>> maxMessages = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetMessagesFromTopicV2OutputItem[]> __BuildGetMessagesFromTopicV2(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<int> maxMessages = null)
-        {
-            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
-            WorkflowExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            WorkflowExpression.Validate(maxMessages, nameof(maxMessages), required: false);
+            var __workflow_topicName = topicName == null ? null : WorkflowExpression.Compile(topicName);
+            WorkflowExpression.Validate(__workflow_topicName, nameof(topicName), required: true);
+            var __workflow_subscriptionName = subscriptionName == null ? null : WorkflowExpression.Compile(subscriptionName);
+            WorkflowExpression.Validate(__workflow_subscriptionName, nameof(subscriptionName), required: true);
+            var __workflow_maxMessages = maxMessages == null ? null : WorkflowExpression.Compile(maxMessages);
+            WorkflowExpression.Validate(__workflow_maxMessages, nameof(maxMessages), required: false);
             return new DeferredBodyAction<GetMessagesFromTopicV2OutputItem[]>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-                serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-                if (maxMessages != null)
+                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(__workflow_topicName);
+                serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(__workflow_subscriptionName);
+                if (__workflow_maxMessages != null)
                 {
-                    serviceProviderParameters["maxMessages"] = ExpressionConverter.ConvertO(maxMessages);
+                    serviceProviderParameters["maxMessages"] = ExpressionConverter.ConvertO(__workflow_maxMessages);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -502,28 +427,25 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateTopicSubscription))]
-        public IOutputWorkflowAction<JToken> CreateTopicSubscription([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> topicSubscriptionName, [WorkflowExpression] Func<CreateTopicSubscriptionInputTopicSubscriptionFilterTypeType> topicSubscriptionFilterType, [WorkflowExpression] Func<object> topicSubscriptionCorrelationFilter = null)
+        public IOutputWorkflowAction<JToken> CreateTopicSubscription(Expression<Func<string>> topicName, Expression<Func<string>> topicSubscriptionName, Expression<Func<CreateTopicSubscriptionInputTopicSubscriptionFilterTypeType>> topicSubscriptionFilterType, Expression<Func<object>> topicSubscriptionCorrelationFilter = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IOutputWorkflowAction<JToken> __BuildCreateTopicSubscription(WorkflowExpression<string> topicName, WorkflowExpression<string> topicSubscriptionName, WorkflowExpression<CreateTopicSubscriptionInputTopicSubscriptionFilterTypeType> topicSubscriptionFilterType, WorkflowExpression<object> topicSubscriptionCorrelationFilter = null)
-        {
-            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
-            WorkflowExpression.Validate(topicSubscriptionName, nameof(topicSubscriptionName), required: true);
-            WorkflowExpression.Validate(topicSubscriptionFilterType, nameof(topicSubscriptionFilterType), required: true);
-            WorkflowExpression.Validate(topicSubscriptionCorrelationFilter, nameof(topicSubscriptionCorrelationFilter), required: false);
+            var __workflow_topicName = topicName == null ? null : WorkflowExpression.Compile(topicName);
+            WorkflowExpression.Validate(__workflow_topicName, nameof(topicName), required: true);
+            var __workflow_topicSubscriptionName = topicSubscriptionName == null ? null : WorkflowExpression.Compile(topicSubscriptionName);
+            WorkflowExpression.Validate(__workflow_topicSubscriptionName, nameof(topicSubscriptionName), required: true);
+            var __workflow_topicSubscriptionFilterType = topicSubscriptionFilterType == null ? null : WorkflowExpression.Compile(topicSubscriptionFilterType);
+            WorkflowExpression.Validate(__workflow_topicSubscriptionFilterType, nameof(topicSubscriptionFilterType), required: true);
+            var __workflow_topicSubscriptionCorrelationFilter = topicSubscriptionCorrelationFilter == null ? null : WorkflowExpression.Compile(topicSubscriptionCorrelationFilter);
+            WorkflowExpression.Validate(__workflow_topicSubscriptionCorrelationFilter, nameof(topicSubscriptionCorrelationFilter), required: false);
             return new DeferredOutputAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-                serviceProviderParameters["topicSubscriptionName"] = ExpressionConverter.ConvertO(topicSubscriptionName);
-                serviceProviderParameters["topicSubscriptionFilterType"] = ExpressionConverter.ConvertO(topicSubscriptionFilterType);
-                if (topicSubscriptionCorrelationFilter != null)
+                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(__workflow_topicName);
+                serviceProviderParameters["topicSubscriptionName"] = ExpressionConverter.ConvertO(__workflow_topicSubscriptionName);
+                serviceProviderParameters["topicSubscriptionFilterType"] = ExpressionConverter.ConvertO(__workflow_topicSubscriptionFilterType);
+                if (__workflow_topicSubscriptionCorrelationFilter != null)
                 {
-                    serviceProviderParameters["topicSubscriptionCorrelationFilter"] = ExpressionConverter.ConvertO(topicSubscriptionCorrelationFilter);
+                    serviceProviderParameters["topicSubscriptionCorrelationFilter"] = ExpressionConverter.ConvertO(__workflow_topicSubscriptionCorrelationFilter);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -536,22 +458,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteTopicSubscription))]
-        public IOutputWorkflowAction<JToken> DeleteTopicSubscription([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> topicSubscriptionName)
+        public IOutputWorkflowAction<JToken> DeleteTopicSubscription(Expression<Func<string>> topicName, Expression<Func<string>> topicSubscriptionName)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IOutputWorkflowAction<JToken> __BuildDeleteTopicSubscription(WorkflowExpression<string> topicName, WorkflowExpression<string> topicSubscriptionName)
-        {
-            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
-            WorkflowExpression.Validate(topicSubscriptionName, nameof(topicSubscriptionName), required: true);
+            var __workflow_topicName = topicName == null ? null : WorkflowExpression.Compile(topicName);
+            WorkflowExpression.Validate(__workflow_topicName, nameof(topicName), required: true);
+            var __workflow_topicSubscriptionName = topicSubscriptionName == null ? null : WorkflowExpression.Compile(topicSubscriptionName);
+            WorkflowExpression.Validate(__workflow_topicSubscriptionName, nameof(topicSubscriptionName), required: true);
             return new DeferredOutputAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-                serviceProviderParameters["topicSubscriptionName"] = ExpressionConverter.ConvertO(topicSubscriptionName);
+                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(__workflow_topicName);
+                serviceProviderParameters["topicSubscriptionName"] = ExpressionConverter.ConvertO(__workflow_topicSubscriptionName);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "deleteTopicSubscription", connectionName: connectionId),
@@ -562,24 +479,19 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        [WorkflowExpressionFactory(nameof(__BuildCompleteMessageInSession))]
-        public IOutputWorkflowAction<JToken> CompleteMessageInSession([WorkflowExpression] Func<string> messageId, [WorkflowExpression] Func<string> lockToken = null)
+        public IOutputWorkflowAction<JToken> CompleteMessageInSession(Expression<Func<string>> messageId, Expression<Func<string>> lockToken = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IOutputWorkflowAction<JToken> __BuildCompleteMessageInSession(WorkflowExpression<string> messageId, WorkflowExpression<string> lockToken = null)
-        {
-            WorkflowExpression.Validate(messageId, nameof(messageId), required: true);
-            WorkflowExpression.Validate(lockToken, nameof(lockToken), required: false);
+            var __workflow_messageId = messageId == null ? null : WorkflowExpression.Compile(messageId);
+            WorkflowExpression.Validate(__workflow_messageId, nameof(messageId), required: true);
+            var __workflow_lockToken = lockToken == null ? null : WorkflowExpression.Compile(lockToken);
+            WorkflowExpression.Validate(__workflow_lockToken, nameof(lockToken), required: false);
             return new DeferredOutputAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["messageId"] = ExpressionConverter.ConvertO(messageId);
-                if (lockToken != null)
+                serviceProviderParameters["messageId"] = ExpressionConverter.ConvertO(__workflow_messageId);
+                if (__workflow_lockToken != null)
                 {
-                    serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
+                    serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(__workflow_lockToken);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -592,24 +504,19 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        [WorkflowExpressionFactory(nameof(__BuildAbandonMessageInSession))]
-        public IOutputWorkflowAction<JToken> AbandonMessageInSession([WorkflowExpression] Func<string> messageId, [WorkflowExpression] Func<string> lockToken = null)
+        public IOutputWorkflowAction<JToken> AbandonMessageInSession(Expression<Func<string>> messageId, Expression<Func<string>> lockToken = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IOutputWorkflowAction<JToken> __BuildAbandonMessageInSession(WorkflowExpression<string> messageId, WorkflowExpression<string> lockToken = null)
-        {
-            WorkflowExpression.Validate(messageId, nameof(messageId), required: true);
-            WorkflowExpression.Validate(lockToken, nameof(lockToken), required: false);
+            var __workflow_messageId = messageId == null ? null : WorkflowExpression.Compile(messageId);
+            WorkflowExpression.Validate(__workflow_messageId, nameof(messageId), required: true);
+            var __workflow_lockToken = lockToken == null ? null : WorkflowExpression.Compile(lockToken);
+            WorkflowExpression.Validate(__workflow_lockToken, nameof(lockToken), required: false);
             return new DeferredOutputAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["messageId"] = ExpressionConverter.ConvertO(messageId);
-                if (lockToken != null)
+                serviceProviderParameters["messageId"] = ExpressionConverter.ConvertO(__workflow_messageId);
+                if (__workflow_lockToken != null)
                 {
-                    serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
+                    serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(__workflow_lockToken);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -622,36 +529,33 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        [WorkflowExpressionFactory(nameof(__BuildDeadLetterMessageInSession))]
-        public IOutputWorkflowAction<JToken> DeadLetterMessageInSession([WorkflowExpression] Func<string> messageId, [WorkflowExpression] Func<string> lockToken = null, [WorkflowExpression] Func<string> deadLetterReason = null, [WorkflowExpression] Func<string> deadLetterErrorDescription = null)
+        public IOutputWorkflowAction<JToken> DeadLetterMessageInSession(Expression<Func<string>> messageId, Expression<Func<string>> lockToken = null, Expression<Func<string>> deadLetterReason = null, Expression<Func<string>> deadLetterErrorDescription = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IOutputWorkflowAction<JToken> __BuildDeadLetterMessageInSession(WorkflowExpression<string> messageId, WorkflowExpression<string> lockToken = null, WorkflowExpression<string> deadLetterReason = null, WorkflowExpression<string> deadLetterErrorDescription = null)
-        {
-            WorkflowExpression.Validate(messageId, nameof(messageId), required: true);
-            WorkflowExpression.Validate(lockToken, nameof(lockToken), required: false);
-            WorkflowExpression.Validate(deadLetterReason, nameof(deadLetterReason), required: false);
-            WorkflowExpression.Validate(deadLetterErrorDescription, nameof(deadLetterErrorDescription), required: false);
+            var __workflow_messageId = messageId == null ? null : WorkflowExpression.Compile(messageId);
+            WorkflowExpression.Validate(__workflow_messageId, nameof(messageId), required: true);
+            var __workflow_lockToken = lockToken == null ? null : WorkflowExpression.Compile(lockToken);
+            WorkflowExpression.Validate(__workflow_lockToken, nameof(lockToken), required: false);
+            var __workflow_deadLetterReason = deadLetterReason == null ? null : WorkflowExpression.Compile(deadLetterReason);
+            WorkflowExpression.Validate(__workflow_deadLetterReason, nameof(deadLetterReason), required: false);
+            var __workflow_deadLetterErrorDescription = deadLetterErrorDescription == null ? null : WorkflowExpression.Compile(deadLetterErrorDescription);
+            WorkflowExpression.Validate(__workflow_deadLetterErrorDescription, nameof(deadLetterErrorDescription), required: false);
             return new DeferredOutputAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["messageId"] = ExpressionConverter.ConvertO(messageId);
-                if (lockToken != null)
+                serviceProviderParameters["messageId"] = ExpressionConverter.ConvertO(__workflow_messageId);
+                if (__workflow_lockToken != null)
                 {
-                    serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
+                    serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(__workflow_lockToken);
                 }
 
-                if (deadLetterReason != null)
+                if (__workflow_deadLetterReason != null)
                 {
-                    serviceProviderParameters["deadLetterReason"] = ExpressionConverter.ConvertO(deadLetterReason);
+                    serviceProviderParameters["deadLetterReason"] = ExpressionConverter.ConvertO(__workflow_deadLetterReason);
                 }
 
-                if (deadLetterErrorDescription != null)
+                if (__workflow_deadLetterErrorDescription != null)
                 {
-                    serviceProviderParameters["deadLetterErrorDescription"] = ExpressionConverter.ConvertO(deadLetterErrorDescription);
+                    serviceProviderParameters["deadLetterErrorDescription"] = ExpressionConverter.ConvertO(__workflow_deadLetterErrorDescription);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -664,24 +568,19 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        [WorkflowExpressionFactory(nameof(__BuildDeferMessageInSession))]
-        public IOutputWorkflowAction<JToken> DeferMessageInSession([WorkflowExpression] Func<string> messageId, [WorkflowExpression] Func<string> lockToken = null)
+        public IOutputWorkflowAction<JToken> DeferMessageInSession(Expression<Func<string>> messageId, Expression<Func<string>> lockToken = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IOutputWorkflowAction<JToken> __BuildDeferMessageInSession(WorkflowExpression<string> messageId, WorkflowExpression<string> lockToken = null)
-        {
-            WorkflowExpression.Validate(messageId, nameof(messageId), required: true);
-            WorkflowExpression.Validate(lockToken, nameof(lockToken), required: false);
+            var __workflow_messageId = messageId == null ? null : WorkflowExpression.Compile(messageId);
+            WorkflowExpression.Validate(__workflow_messageId, nameof(messageId), required: true);
+            var __workflow_lockToken = lockToken == null ? null : WorkflowExpression.Compile(lockToken);
+            WorkflowExpression.Validate(__workflow_lockToken, nameof(lockToken), required: false);
             return new DeferredOutputAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["messageId"] = ExpressionConverter.ConvertO(messageId);
-                if (lockToken != null)
+                serviceProviderParameters["messageId"] = ExpressionConverter.ConvertO(__workflow_messageId);
+                if (__workflow_lockToken != null)
                 {
-                    serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(lockToken);
+                    serviceProviderParameters["lockToken"] = ExpressionConverter.ConvertO(__workflow_lockToken);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -694,32 +593,29 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        [WorkflowExpressionFactory(nameof(__BuildGetDeferredMessageFromQueueSession))]
-        public IBodyWorkflowAction<GetDeferredMessageFromQueueSessionOutput> GetDeferredMessageFromQueueSession([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> sequenceNumber, [WorkflowExpression] Func<string> sessionId = null, [WorkflowExpression] Func<bool> acquireNewSession = null)
+        public IBodyWorkflowAction<GetDeferredMessageFromQueueSessionOutput> GetDeferredMessageFromQueueSession(Expression<Func<string>> queueName, Expression<Func<string>> sequenceNumber, Expression<Func<string>> sessionId = null, Expression<Func<bool>> acquireNewSession = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetDeferredMessageFromQueueSessionOutput> __BuildGetDeferredMessageFromQueueSession(WorkflowExpression<string> queueName, WorkflowExpression<string> sequenceNumber, WorkflowExpression<string> sessionId = null, WorkflowExpression<bool> acquireNewSession = null)
-        {
-            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
-            WorkflowExpression.Validate(sequenceNumber, nameof(sequenceNumber), required: true);
-            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: false);
-            WorkflowExpression.Validate(acquireNewSession, nameof(acquireNewSession), required: false);
+            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
+            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
+            var __workflow_sequenceNumber = sequenceNumber == null ? null : WorkflowExpression.Compile(sequenceNumber);
+            WorkflowExpression.Validate(__workflow_sequenceNumber, nameof(sequenceNumber), required: true);
+            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
+            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: false);
+            var __workflow_acquireNewSession = acquireNewSession == null ? null : WorkflowExpression.Compile(acquireNewSession);
+            WorkflowExpression.Validate(__workflow_acquireNewSession, nameof(acquireNewSession), required: false);
             return new DeferredBodyAction<GetDeferredMessageFromQueueSessionOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-                serviceProviderParameters["sequenceNumber"] = ExpressionConverter.ConvertO(sequenceNumber);
-                if (sessionId != null)
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
+                serviceProviderParameters["sequenceNumber"] = ExpressionConverter.ConvertO(__workflow_sequenceNumber);
+                if (__workflow_sessionId != null)
                 {
-                    serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+                    serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(__workflow_sessionId);
                 }
 
-                if (acquireNewSession != null)
+                if (__workflow_acquireNewSession != null)
                 {
-                    serviceProviderParameters["acquireNewSession"] = ExpressionConverter.ConvertO(acquireNewSession);
+                    serviceProviderParameters["acquireNewSession"] = ExpressionConverter.ConvertO(__workflow_acquireNewSession);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -732,34 +628,32 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        [WorkflowExpressionFactory(nameof(__BuildGetDeferredMessageFromTopicSession))]
-        public IBodyWorkflowAction<GetDeferredMessageFromTopicSessionOutput> GetDeferredMessageFromTopicSession([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> sequenceNumber, [WorkflowExpression] Func<string> sessionId = null, [WorkflowExpression] Func<bool> acquireNewSession = null)
+        public IBodyWorkflowAction<GetDeferredMessageFromTopicSessionOutput> GetDeferredMessageFromTopicSession(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> sequenceNumber, Expression<Func<string>> sessionId = null, Expression<Func<bool>> acquireNewSession = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetDeferredMessageFromTopicSessionOutput> __BuildGetDeferredMessageFromTopicSession(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<string> sequenceNumber, WorkflowExpression<string> sessionId = null, WorkflowExpression<bool> acquireNewSession = null)
-        {
-            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
-            WorkflowExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            WorkflowExpression.Validate(sequenceNumber, nameof(sequenceNumber), required: true);
-            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: false);
-            WorkflowExpression.Validate(acquireNewSession, nameof(acquireNewSession), required: false);
+            var __workflow_topicName = topicName == null ? null : WorkflowExpression.Compile(topicName);
+            WorkflowExpression.Validate(__workflow_topicName, nameof(topicName), required: true);
+            var __workflow_subscriptionName = subscriptionName == null ? null : WorkflowExpression.Compile(subscriptionName);
+            WorkflowExpression.Validate(__workflow_subscriptionName, nameof(subscriptionName), required: true);
+            var __workflow_sequenceNumber = sequenceNumber == null ? null : WorkflowExpression.Compile(sequenceNumber);
+            WorkflowExpression.Validate(__workflow_sequenceNumber, nameof(sequenceNumber), required: true);
+            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
+            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: false);
+            var __workflow_acquireNewSession = acquireNewSession == null ? null : WorkflowExpression.Compile(acquireNewSession);
+            WorkflowExpression.Validate(__workflow_acquireNewSession, nameof(acquireNewSession), required: false);
             return new DeferredBodyAction<GetDeferredMessageFromTopicSessionOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-                serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-                serviceProviderParameters["sequenceNumber"] = ExpressionConverter.ConvertO(sequenceNumber);
-                if (sessionId != null)
+                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(__workflow_topicName);
+                serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(__workflow_subscriptionName);
+                serviceProviderParameters["sequenceNumber"] = ExpressionConverter.ConvertO(__workflow_sequenceNumber);
+                if (__workflow_sessionId != null)
                 {
-                    serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+                    serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(__workflow_sessionId);
                 }
 
-                if (acquireNewSession != null)
+                if (__workflow_acquireNewSession != null)
                 {
-                    serviceProviderParameters["acquireNewSession"] = ExpressionConverter.ConvertO(acquireNewSession);
+                    serviceProviderParameters["acquireNewSession"] = ExpressionConverter.ConvertO(__workflow_acquireNewSession);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -772,32 +666,29 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        [WorkflowExpressionFactory(nameof(__BuildGetMessagesFromQueueSession))]
-        public IBodyWorkflowAction<GetMessagesFromQueueSessionOutputItem[]> GetMessagesFromQueueSession([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> sessionId, [WorkflowExpression] Func<int> maxMessages = null, [WorkflowExpression] Func<bool> acquireNewSession = null)
+        public IBodyWorkflowAction<GetMessagesFromQueueSessionOutputItem[]> GetMessagesFromQueueSession(Expression<Func<string>> queueName, Expression<Func<string>> sessionId, Expression<Func<int>> maxMessages = null, Expression<Func<bool>> acquireNewSession = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetMessagesFromQueueSessionOutputItem[]> __BuildGetMessagesFromQueueSession(WorkflowExpression<string> queueName, WorkflowExpression<string> sessionId, WorkflowExpression<int> maxMessages = null, WorkflowExpression<bool> acquireNewSession = null)
-        {
-            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
-            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: true);
-            WorkflowExpression.Validate(maxMessages, nameof(maxMessages), required: false);
-            WorkflowExpression.Validate(acquireNewSession, nameof(acquireNewSession), required: false);
+            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
+            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
+            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
+            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: true);
+            var __workflow_maxMessages = maxMessages == null ? null : WorkflowExpression.Compile(maxMessages);
+            WorkflowExpression.Validate(__workflow_maxMessages, nameof(maxMessages), required: false);
+            var __workflow_acquireNewSession = acquireNewSession == null ? null : WorkflowExpression.Compile(acquireNewSession);
+            WorkflowExpression.Validate(__workflow_acquireNewSession, nameof(acquireNewSession), required: false);
             return new DeferredBodyAction<GetMessagesFromQueueSessionOutputItem[]>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
-                if (maxMessages != null)
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
+                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(__workflow_sessionId);
+                if (__workflow_maxMessages != null)
                 {
-                    serviceProviderParameters["maxMessages"] = ExpressionConverter.ConvertO(maxMessages);
+                    serviceProviderParameters["maxMessages"] = ExpressionConverter.ConvertO(__workflow_maxMessages);
                 }
 
-                if (acquireNewSession != null)
+                if (__workflow_acquireNewSession != null)
                 {
-                    serviceProviderParameters["acquireNewSession"] = ExpressionConverter.ConvertO(acquireNewSession);
+                    serviceProviderParameters["acquireNewSession"] = ExpressionConverter.ConvertO(__workflow_acquireNewSession);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -810,34 +701,32 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        [WorkflowExpressionFactory(nameof(__BuildGetMessagesFromTopicSession))]
-        public IBodyWorkflowAction<GetMessagesFromTopicSessionOutputItem[]> GetMessagesFromTopicSession([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> sessionId, [WorkflowExpression] Func<int> maxMessages = null, [WorkflowExpression] Func<bool> acquireNewSession = null)
+        public IBodyWorkflowAction<GetMessagesFromTopicSessionOutputItem[]> GetMessagesFromTopicSession(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> sessionId, Expression<Func<int>> maxMessages = null, Expression<Func<bool>> acquireNewSession = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetMessagesFromTopicSessionOutputItem[]> __BuildGetMessagesFromTopicSession(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<string> sessionId, WorkflowExpression<int> maxMessages = null, WorkflowExpression<bool> acquireNewSession = null)
-        {
-            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
-            WorkflowExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: true);
-            WorkflowExpression.Validate(maxMessages, nameof(maxMessages), required: false);
-            WorkflowExpression.Validate(acquireNewSession, nameof(acquireNewSession), required: false);
+            var __workflow_topicName = topicName == null ? null : WorkflowExpression.Compile(topicName);
+            WorkflowExpression.Validate(__workflow_topicName, nameof(topicName), required: true);
+            var __workflow_subscriptionName = subscriptionName == null ? null : WorkflowExpression.Compile(subscriptionName);
+            WorkflowExpression.Validate(__workflow_subscriptionName, nameof(subscriptionName), required: true);
+            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
+            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: true);
+            var __workflow_maxMessages = maxMessages == null ? null : WorkflowExpression.Compile(maxMessages);
+            WorkflowExpression.Validate(__workflow_maxMessages, nameof(maxMessages), required: false);
+            var __workflow_acquireNewSession = acquireNewSession == null ? null : WorkflowExpression.Compile(acquireNewSession);
+            WorkflowExpression.Validate(__workflow_acquireNewSession, nameof(acquireNewSession), required: false);
             return new DeferredBodyAction<GetMessagesFromTopicSessionOutputItem[]>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-                serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
-                if (maxMessages != null)
+                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(__workflow_topicName);
+                serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(__workflow_subscriptionName);
+                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(__workflow_sessionId);
+                if (__workflow_maxMessages != null)
                 {
-                    serviceProviderParameters["maxMessages"] = ExpressionConverter.ConvertO(maxMessages);
+                    serviceProviderParameters["maxMessages"] = ExpressionConverter.ConvertO(__workflow_maxMessages);
                 }
 
-                if (acquireNewSession != null)
+                if (__workflow_acquireNewSession != null)
                 {
-                    serviceProviderParameters["acquireNewSession"] = ExpressionConverter.ConvertO(acquireNewSession);
+                    serviceProviderParameters["acquireNewSession"] = ExpressionConverter.ConvertO(__workflow_acquireNewSession);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -850,22 +739,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        [WorkflowExpressionFactory(nameof(__BuildRenewQueueSession))]
-        public IOutputWorkflowAction<JToken> RenewQueueSession([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> sessionId)
+        public IOutputWorkflowAction<JToken> RenewQueueSession(Expression<Func<string>> queueName, Expression<Func<string>> sessionId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IOutputWorkflowAction<JToken> __BuildRenewQueueSession(WorkflowExpression<string> queueName, WorkflowExpression<string> sessionId)
-        {
-            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
-            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: true);
+            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
+            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
+            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
+            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: true);
             return new DeferredOutputAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
+                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(__workflow_sessionId);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "renewQueueSession", connectionName: connectionId),
@@ -876,24 +760,20 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        [WorkflowExpressionFactory(nameof(__BuildRenewTopicSession))]
-        public IOutputWorkflowAction<JToken> RenewTopicSession([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> sessionId)
+        public IOutputWorkflowAction<JToken> RenewTopicSession(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> sessionId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IOutputWorkflowAction<JToken> __BuildRenewTopicSession(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<string> sessionId)
-        {
-            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
-            WorkflowExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: true);
+            var __workflow_topicName = topicName == null ? null : WorkflowExpression.Compile(topicName);
+            WorkflowExpression.Validate(__workflow_topicName, nameof(topicName), required: true);
+            var __workflow_subscriptionName = subscriptionName == null ? null : WorkflowExpression.Compile(subscriptionName);
+            WorkflowExpression.Validate(__workflow_subscriptionName, nameof(subscriptionName), required: true);
+            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
+            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: true);
             return new DeferredOutputAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-                serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(__workflow_topicName);
+                serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(__workflow_subscriptionName);
+                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(__workflow_sessionId);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "renewTopicSession", connectionName: connectionId),
@@ -904,22 +784,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        [WorkflowExpressionFactory(nameof(__BuildCloseQueueSession))]
-        public IOutputWorkflowAction<JToken> CloseQueueSession([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> sessionId)
+        public IOutputWorkflowAction<JToken> CloseQueueSession(Expression<Func<string>> queueName, Expression<Func<string>> sessionId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IOutputWorkflowAction<JToken> __BuildCloseQueueSession(WorkflowExpression<string> queueName, WorkflowExpression<string> sessionId)
-        {
-            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
-            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: true);
+            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
+            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
+            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
+            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: true);
             return new DeferredOutputAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
+                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(__workflow_sessionId);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "closeQueueSession", connectionName: connectionId),
@@ -930,24 +805,20 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        [WorkflowExpressionFactory(nameof(__BuildCloseTopicSession))]
-        public IOutputWorkflowAction<JToken> CloseTopicSession([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> sessionId)
+        public IOutputWorkflowAction<JToken> CloseTopicSession(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> sessionId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IOutputWorkflowAction<JToken> __BuildCloseTopicSession(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<string> sessionId)
-        {
-            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
-            WorkflowExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: true);
+            var __workflow_topicName = topicName == null ? null : WorkflowExpression.Compile(topicName);
+            WorkflowExpression.Validate(__workflow_topicName, nameof(topicName), required: true);
+            var __workflow_subscriptionName = subscriptionName == null ? null : WorkflowExpression.Compile(subscriptionName);
+            WorkflowExpression.Validate(__workflow_subscriptionName, nameof(subscriptionName), required: true);
+            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
+            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: true);
             return new DeferredOutputAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-                serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(__workflow_topicName);
+                serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(__workflow_subscriptionName);
+                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(__workflow_sessionId);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "closeTopicSession", connectionName: connectionId),
@@ -960,35 +831,30 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
 
     public class ServiceBusTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildReceiveQueueMessages))]
-        public IBodyWorkflowTrigger<ReceiveQueueMessagesOutputItem[]> ReceiveQueueMessages([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<bool> isSessionsEnabled = null, [WorkflowExpression] Func<double> maxMessageBatchSize = null)
+        public IBodyWorkflowTrigger<ReceiveQueueMessagesOutputItem[]> ReceiveQueueMessages(Expression<Func<string>> queueName, Expression<Func<bool>> isSessionsEnabled = null, Expression<Func<double>> maxMessageBatchSize = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ReceiveQueueMessagesOutputItem[]> __BuildReceiveQueueMessages(WorkflowExpression<string> queueName, WorkflowExpression<bool> isSessionsEnabled = null, WorkflowExpression<double> maxMessageBatchSize = null)
-        {
-            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
-            WorkflowExpression.Validate(isSessionsEnabled, nameof(isSessionsEnabled), required: false);
-            WorkflowExpression.Validate(maxMessageBatchSize, nameof(maxMessageBatchSize), required: false);
+            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
+            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
+            var __workflow_isSessionsEnabled = isSessionsEnabled == null ? null : WorkflowExpression.Compile(isSessionsEnabled);
+            WorkflowExpression.Validate(__workflow_isSessionsEnabled, nameof(isSessionsEnabled), required: false);
+            var __workflow_maxMessageBatchSize = maxMessageBatchSize == null ? null : WorkflowExpression.Compile(maxMessageBatchSize);
+            WorkflowExpression.Validate(__workflow_maxMessageBatchSize, nameof(maxMessageBatchSize), required: false);
             return new DeferredBodyTrigger<ReceiveQueueMessagesOutputItem[]>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-                if (isSessionsEnabled != null)
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
+                if (__workflow_isSessionsEnabled != null)
                 {
-                    serviceProviderParameters["isSessionsEnabled"] = ExpressionConverter.ConvertO(isSessionsEnabled);
+                    serviceProviderParameters["isSessionsEnabled"] = ExpressionConverter.ConvertO(__workflow_isSessionsEnabled);
                 }
                 else
                 {
                     serviceProviderParameters["isSessionsEnabled"] = false;
                 }
 
-                if (maxMessageBatchSize != null)
+                if (__workflow_maxMessageBatchSize != null)
                 {
-                    serviceProviderParameters["maxMessageBatchSize"] = ExpressionConverter.ConvertO(maxMessageBatchSize);
+                    serviceProviderParameters["maxMessageBatchSize"] = ExpressionConverter.ConvertO(__workflow_maxMessageBatchSize);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -1000,36 +866,33 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildReceiveTopicMessages))]
-        public IBodyWorkflowTrigger<ReceiveTopicMessagesOutputItem[]> ReceiveTopicMessages([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<bool> isSessionsEnabled = null, [WorkflowExpression] Func<double> maxMessageBatchSize = null)
+        public IBodyWorkflowTrigger<ReceiveTopicMessagesOutputItem[]> ReceiveTopicMessages(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<bool>> isSessionsEnabled = null, Expression<Func<double>> maxMessageBatchSize = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ReceiveTopicMessagesOutputItem[]> __BuildReceiveTopicMessages(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<bool> isSessionsEnabled = null, WorkflowExpression<double> maxMessageBatchSize = null)
-        {
-            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
-            WorkflowExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            WorkflowExpression.Validate(isSessionsEnabled, nameof(isSessionsEnabled), required: false);
-            WorkflowExpression.Validate(maxMessageBatchSize, nameof(maxMessageBatchSize), required: false);
+            var __workflow_topicName = topicName == null ? null : WorkflowExpression.Compile(topicName);
+            WorkflowExpression.Validate(__workflow_topicName, nameof(topicName), required: true);
+            var __workflow_subscriptionName = subscriptionName == null ? null : WorkflowExpression.Compile(subscriptionName);
+            WorkflowExpression.Validate(__workflow_subscriptionName, nameof(subscriptionName), required: true);
+            var __workflow_isSessionsEnabled = isSessionsEnabled == null ? null : WorkflowExpression.Compile(isSessionsEnabled);
+            WorkflowExpression.Validate(__workflow_isSessionsEnabled, nameof(isSessionsEnabled), required: false);
+            var __workflow_maxMessageBatchSize = maxMessageBatchSize == null ? null : WorkflowExpression.Compile(maxMessageBatchSize);
+            WorkflowExpression.Validate(__workflow_maxMessageBatchSize, nameof(maxMessageBatchSize), required: false);
             return new DeferredBodyTrigger<ReceiveTopicMessagesOutputItem[]>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-                serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-                if (isSessionsEnabled != null)
+                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(__workflow_topicName);
+                serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(__workflow_subscriptionName);
+                if (__workflow_isSessionsEnabled != null)
                 {
-                    serviceProviderParameters["isSessionsEnabled"] = ExpressionConverter.ConvertO(isSessionsEnabled);
+                    serviceProviderParameters["isSessionsEnabled"] = ExpressionConverter.ConvertO(__workflow_isSessionsEnabled);
                 }
                 else
                 {
                     serviceProviderParameters["isSessionsEnabled"] = false;
                 }
 
-                if (maxMessageBatchSize != null)
+                if (__workflow_maxMessageBatchSize != null)
                 {
-                    serviceProviderParameters["maxMessageBatchSize"] = ExpressionConverter.ConvertO(maxMessageBatchSize);
+                    serviceProviderParameters["maxMessageBatchSize"] = ExpressionConverter.ConvertO(__workflow_maxMessageBatchSize);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -1041,34 +904,30 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildReceiveQueueMessagesForReplication))]
-        public IOutputWorkflowTrigger<JToken> ReceiveQueueMessagesForReplication([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<bool> isSessionsEnabled = null, [WorkflowExpression] Func<double> maxMessageBatchSize = null)
+        public IOutputWorkflowTrigger<JToken> ReceiveQueueMessagesForReplication(Expression<Func<string>> queueName, Expression<Func<bool>> isSessionsEnabled = null, Expression<Func<double>> maxMessageBatchSize = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IOutputWorkflowTrigger<JToken> __BuildReceiveQueueMessagesForReplication(WorkflowExpression<string> queueName, WorkflowExpression<bool> isSessionsEnabled = null, WorkflowExpression<double> maxMessageBatchSize = null)
-        {
-            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
-            WorkflowExpression.Validate(isSessionsEnabled, nameof(isSessionsEnabled), required: false);
-            WorkflowExpression.Validate(maxMessageBatchSize, nameof(maxMessageBatchSize), required: false);
+            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
+            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
+            var __workflow_isSessionsEnabled = isSessionsEnabled == null ? null : WorkflowExpression.Compile(isSessionsEnabled);
+            WorkflowExpression.Validate(__workflow_isSessionsEnabled, nameof(isSessionsEnabled), required: false);
+            var __workflow_maxMessageBatchSize = maxMessageBatchSize == null ? null : WorkflowExpression.Compile(maxMessageBatchSize);
+            WorkflowExpression.Validate(__workflow_maxMessageBatchSize, nameof(maxMessageBatchSize), required: false);
             return new DeferredOutputTrigger<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-                if (isSessionsEnabled != null)
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
+                if (__workflow_isSessionsEnabled != null)
                 {
-                    serviceProviderParameters["isSessionsEnabled"] = ExpressionConverter.ConvertO(isSessionsEnabled);
+                    serviceProviderParameters["isSessionsEnabled"] = ExpressionConverter.ConvertO(__workflow_isSessionsEnabled);
                 }
                 else
                 {
                     serviceProviderParameters["isSessionsEnabled"] = false;
                 }
 
-                if (maxMessageBatchSize != null)
+                if (__workflow_maxMessageBatchSize != null)
                 {
-                    serviceProviderParameters["maxMessageBatchSize"] = ExpressionConverter.ConvertO(maxMessageBatchSize);
+                    serviceProviderParameters["maxMessageBatchSize"] = ExpressionConverter.ConvertO(__workflow_maxMessageBatchSize);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -1080,36 +939,33 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildReceiveTopicMessagesForReplication))]
-        public IOutputWorkflowTrigger<JToken> ReceiveTopicMessagesForReplication([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<bool> isSessionsEnabled = null, [WorkflowExpression] Func<double> maxMessageBatchSize = null)
+        public IOutputWorkflowTrigger<JToken> ReceiveTopicMessagesForReplication(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<bool>> isSessionsEnabled = null, Expression<Func<double>> maxMessageBatchSize = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IOutputWorkflowTrigger<JToken> __BuildReceiveTopicMessagesForReplication(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<bool> isSessionsEnabled = null, WorkflowExpression<double> maxMessageBatchSize = null)
-        {
-            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
-            WorkflowExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            WorkflowExpression.Validate(isSessionsEnabled, nameof(isSessionsEnabled), required: false);
-            WorkflowExpression.Validate(maxMessageBatchSize, nameof(maxMessageBatchSize), required: false);
+            var __workflow_topicName = topicName == null ? null : WorkflowExpression.Compile(topicName);
+            WorkflowExpression.Validate(__workflow_topicName, nameof(topicName), required: true);
+            var __workflow_subscriptionName = subscriptionName == null ? null : WorkflowExpression.Compile(subscriptionName);
+            WorkflowExpression.Validate(__workflow_subscriptionName, nameof(subscriptionName), required: true);
+            var __workflow_isSessionsEnabled = isSessionsEnabled == null ? null : WorkflowExpression.Compile(isSessionsEnabled);
+            WorkflowExpression.Validate(__workflow_isSessionsEnabled, nameof(isSessionsEnabled), required: false);
+            var __workflow_maxMessageBatchSize = maxMessageBatchSize == null ? null : WorkflowExpression.Compile(maxMessageBatchSize);
+            WorkflowExpression.Validate(__workflow_maxMessageBatchSize, nameof(maxMessageBatchSize), required: false);
             return new DeferredOutputTrigger<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-                serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-                if (isSessionsEnabled != null)
+                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(__workflow_topicName);
+                serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(__workflow_subscriptionName);
+                if (__workflow_isSessionsEnabled != null)
                 {
-                    serviceProviderParameters["isSessionsEnabled"] = ExpressionConverter.ConvertO(isSessionsEnabled);
+                    serviceProviderParameters["isSessionsEnabled"] = ExpressionConverter.ConvertO(__workflow_isSessionsEnabled);
                 }
                 else
                 {
                     serviceProviderParameters["isSessionsEnabled"] = false;
                 }
 
-                if (maxMessageBatchSize != null)
+                if (__workflow_maxMessageBatchSize != null)
                 {
-                    serviceProviderParameters["maxMessageBatchSize"] = ExpressionConverter.ConvertO(maxMessageBatchSize);
+                    serviceProviderParameters["maxMessageBatchSize"] = ExpressionConverter.ConvertO(__workflow_maxMessageBatchSize);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -1121,24 +977,19 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildPeekLockQueueMessagesV2))]
-        public IBodyWorkflowTrigger<PeekLockQueueMessagesV2OutputItem[]> PeekLockQueueMessagesV2([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<double> maxMessageBatchSize = null)
+        public IBodyWorkflowTrigger<PeekLockQueueMessagesV2OutputItem[]> PeekLockQueueMessagesV2(Expression<Func<string>> queueName, Expression<Func<double>> maxMessageBatchSize = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<PeekLockQueueMessagesV2OutputItem[]> __BuildPeekLockQueueMessagesV2(WorkflowExpression<string> queueName, WorkflowExpression<double> maxMessageBatchSize = null)
-        {
-            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
-            WorkflowExpression.Validate(maxMessageBatchSize, nameof(maxMessageBatchSize), required: false);
+            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
+            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
+            var __workflow_maxMessageBatchSize = maxMessageBatchSize == null ? null : WorkflowExpression.Compile(maxMessageBatchSize);
+            WorkflowExpression.Validate(__workflow_maxMessageBatchSize, nameof(maxMessageBatchSize), required: false);
             return new DeferredBodyTrigger<PeekLockQueueMessagesV2OutputItem[]>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-                if (maxMessageBatchSize != null)
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
+                if (__workflow_maxMessageBatchSize != null)
                 {
-                    serviceProviderParameters["maxMessageBatchSize"] = ExpressionConverter.ConvertO(maxMessageBatchSize);
+                    serviceProviderParameters["maxMessageBatchSize"] = ExpressionConverter.ConvertO(__workflow_maxMessageBatchSize);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -1150,26 +1001,22 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildPeekLockTopicMessagesV2))]
-        public IBodyWorkflowTrigger<PeekLockTopicMessagesV2OutputItem[]> PeekLockTopicMessagesV2([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<double> maxMessageBatchSize = null)
+        public IBodyWorkflowTrigger<PeekLockTopicMessagesV2OutputItem[]> PeekLockTopicMessagesV2(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<double>> maxMessageBatchSize = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<PeekLockTopicMessagesV2OutputItem[]> __BuildPeekLockTopicMessagesV2(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<double> maxMessageBatchSize = null)
-        {
-            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
-            WorkflowExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            WorkflowExpression.Validate(maxMessageBatchSize, nameof(maxMessageBatchSize), required: false);
+            var __workflow_topicName = topicName == null ? null : WorkflowExpression.Compile(topicName);
+            WorkflowExpression.Validate(__workflow_topicName, nameof(topicName), required: true);
+            var __workflow_subscriptionName = subscriptionName == null ? null : WorkflowExpression.Compile(subscriptionName);
+            WorkflowExpression.Validate(__workflow_subscriptionName, nameof(subscriptionName), required: true);
+            var __workflow_maxMessageBatchSize = maxMessageBatchSize == null ? null : WorkflowExpression.Compile(maxMessageBatchSize);
+            WorkflowExpression.Validate(__workflow_maxMessageBatchSize, nameof(maxMessageBatchSize), required: false);
             return new DeferredBodyTrigger<PeekLockTopicMessagesV2OutputItem[]>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-                serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-                if (maxMessageBatchSize != null)
+                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(__workflow_topicName);
+                serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(__workflow_subscriptionName);
+                if (__workflow_maxMessageBatchSize != null)
                 {
-                    serviceProviderParameters["maxMessageBatchSize"] = ExpressionConverter.ConvertO(maxMessageBatchSize);
+                    serviceProviderParameters["maxMessageBatchSize"] = ExpressionConverter.ConvertO(__workflow_maxMessageBatchSize);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -1181,30 +1028,26 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildOnNewMessagesFromQueueSession))]
-        public IBodyWorkflowTrigger<OnNewMessagesFromQueueSessionOutputItem[]> OnNewMessagesFromQueueSession([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> sessionId = null, [WorkflowExpression] Func<int> maxMessages = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnNewMessagesFromQueueSessionOutputItem[]> OnNewMessagesFromQueueSession(Expression<Func<string>> queueName, Expression<Func<string>> sessionId = null, Expression<Func<int>> maxMessages = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<OnNewMessagesFromQueueSessionOutputItem[]> __BuildOnNewMessagesFromQueueSession(WorkflowExpression<string> queueName, WorkflowExpression<string> sessionId = null, WorkflowExpression<int> maxMessages = null, FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
-            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: false);
-            WorkflowExpression.Validate(maxMessages, nameof(maxMessages), required: false);
+            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
+            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
+            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
+            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: false);
+            var __workflow_maxMessages = maxMessages == null ? null : WorkflowExpression.Compile(maxMessages);
+            WorkflowExpression.Validate(__workflow_maxMessages, nameof(maxMessages), required: false);
             return new DeferredBodyTrigger<OnNewMessagesFromQueueSessionOutputItem[]>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-                if (sessionId != null)
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
+                if (__workflow_sessionId != null)
                 {
-                    serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+                    serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(__workflow_sessionId);
                 }
 
-                if (maxMessages != null)
+                if (__workflow_maxMessages != null)
                 {
-                    serviceProviderParameters["maxMessages"] = ExpressionConverter.ConvertO(maxMessages);
+                    serviceProviderParameters["maxMessages"] = ExpressionConverter.ConvertO(__workflow_maxMessages);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -1216,32 +1059,29 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildOnNewMessagesFromTopicSession))]
-        public IBodyWorkflowTrigger<OnNewMessagesFromTopicSessionOutputItem[]> OnNewMessagesFromTopicSession([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> sessionId = null, [WorkflowExpression] Func<int> maxMessages = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnNewMessagesFromTopicSessionOutputItem[]> OnNewMessagesFromTopicSession(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> sessionId = null, Expression<Func<int>> maxMessages = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<OnNewMessagesFromTopicSessionOutputItem[]> __BuildOnNewMessagesFromTopicSession(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<string> sessionId = null, WorkflowExpression<int> maxMessages = null, FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
-            WorkflowExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: false);
-            WorkflowExpression.Validate(maxMessages, nameof(maxMessages), required: false);
+            var __workflow_topicName = topicName == null ? null : WorkflowExpression.Compile(topicName);
+            WorkflowExpression.Validate(__workflow_topicName, nameof(topicName), required: true);
+            var __workflow_subscriptionName = subscriptionName == null ? null : WorkflowExpression.Compile(subscriptionName);
+            WorkflowExpression.Validate(__workflow_subscriptionName, nameof(subscriptionName), required: true);
+            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
+            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: false);
+            var __workflow_maxMessages = maxMessages == null ? null : WorkflowExpression.Compile(maxMessages);
+            WorkflowExpression.Validate(__workflow_maxMessages, nameof(maxMessages), required: false);
             return new DeferredBodyTrigger<OnNewMessagesFromTopicSessionOutputItem[]>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-                serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-                if (sessionId != null)
+                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(__workflow_topicName);
+                serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(__workflow_subscriptionName);
+                if (__workflow_sessionId != null)
                 {
-                    serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+                    serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(__workflow_sessionId);
                 }
 
-                if (maxMessages != null)
+                if (__workflow_maxMessages != null)
                 {
-                    serviceProviderParameters["maxMessages"] = ExpressionConverter.ConvertO(maxMessages);
+                    serviceProviderParameters["maxMessages"] = ExpressionConverter.ConvertO(__workflow_maxMessages);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -1253,24 +1093,19 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildOnSingleNewMessageFromQueueSession))]
-        public IBodyWorkflowTrigger<OnSingleNewMessageFromQueueSessionOutput> OnSingleNewMessageFromQueueSession([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> sessionId = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnSingleNewMessageFromQueueSessionOutput> OnSingleNewMessageFromQueueSession(Expression<Func<string>> queueName, Expression<Func<string>> sessionId = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<OnSingleNewMessageFromQueueSessionOutput> __BuildOnSingleNewMessageFromQueueSession(WorkflowExpression<string> queueName, WorkflowExpression<string> sessionId = null, FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
-            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: false);
+            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
+            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
+            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
+            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: false);
             return new DeferredBodyTrigger<OnSingleNewMessageFromQueueSessionOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-                if (sessionId != null)
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
+                if (__workflow_sessionId != null)
                 {
-                    serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+                    serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(__workflow_sessionId);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -1282,26 +1117,22 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildOnSingleNewMessageFromTopicSession))]
-        public IBodyWorkflowTrigger<OnSingleNewMessageFromTopicSessionOutput> OnSingleNewMessageFromTopicSession([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> sessionId = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnSingleNewMessageFromTopicSessionOutput> OnSingleNewMessageFromTopicSession(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> sessionId = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<OnSingleNewMessageFromTopicSessionOutput> __BuildOnSingleNewMessageFromTopicSession(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<string> sessionId = null, FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
-            WorkflowExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: false);
+            var __workflow_topicName = topicName == null ? null : WorkflowExpression.Compile(topicName);
+            WorkflowExpression.Validate(__workflow_topicName, nameof(topicName), required: true);
+            var __workflow_subscriptionName = subscriptionName == null ? null : WorkflowExpression.Compile(subscriptionName);
+            WorkflowExpression.Validate(__workflow_subscriptionName, nameof(subscriptionName), required: true);
+            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
+            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: false);
             return new DeferredBodyTrigger<OnSingleNewMessageFromTopicSessionOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(topicName);
-                serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(subscriptionName);
-                if (sessionId != null)
+                serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(__workflow_topicName);
+                serviceProviderParameters["subscriptionName"] = ExpressionConverter.ConvertO(__workflow_subscriptionName);
+                if (__workflow_sessionId != null)
                 {
-                    serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+                    serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(__workflow_sessionId);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput

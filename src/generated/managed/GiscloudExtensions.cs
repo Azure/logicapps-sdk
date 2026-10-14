@@ -1,61 +1,53 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Giscloud
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class GiscloudActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "giscloud")]
-        [WorkflowExpressionFactory(nameof(__BuildUploadFileToPath))]
-        public IBodyWorkflowAction<UploadFileToPathResponse> UploadFileToPath([WorkflowExpression] Func<string> aPIKey, [WorkflowExpression] Func<object> filedata, [WorkflowExpression] Func<string> pathToAFile, [WorkflowExpression] Func<int> destinationMap = null)
+        public IBodyWorkflowAction<UploadFileToPathResponse> UploadFileToPath(Expression<Func<string>> aPIKey, Expression<Func<object>> filedata, Expression<Func<string>> pathToAFile, Expression<Func<int>> destinationMap = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UploadFileToPathResponse> __BuildUploadFileToPath(WorkflowExpression<string> aPIKey, WorkflowExpression<object> filedata, WorkflowExpression<string> pathToAFile, WorkflowExpression<int> destinationMap = null)
-        {
-            WorkflowExpression.Validate(aPIKey, nameof(aPIKey), required: true);
-            WorkflowExpression.Validate(filedata, nameof(filedata), required: true);
-            WorkflowExpression.Validate(pathToAFile, nameof(pathToAFile), required: true);
-            WorkflowExpression.Validate(destinationMap, nameof(destinationMap), required: false);
+            var __workflow_aPIKey = aPIKey == null ? null : WorkflowExpression.Compile(aPIKey);
+            WorkflowExpression.Validate(__workflow_aPIKey, nameof(aPIKey), required: true);
+            var __workflow_filedata = filedata == null ? null : WorkflowExpression.Compile(filedata);
+            WorkflowExpression.Validate(__workflow_filedata, nameof(filedata), required: true);
+            var __workflow_pathToAFile = pathToAFile == null ? null : WorkflowExpression.Compile(pathToAFile);
+            WorkflowExpression.Validate(__workflow_pathToAFile, nameof(pathToAFile), required: true);
+            var __workflow_destinationMap = destinationMap == null ? null : WorkflowExpression.Compile(destinationMap);
+            WorkflowExpression.Validate(__workflow_destinationMap, nameof(destinationMap), required: false);
             return new DeferredBodyAction<UploadFileToPathResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/storage/fs/{0}", ExpressionConverter.ConvertWithUrlEncoding(pathToAFile, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/storage/fs/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pathToAFile, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (destinationMap != null)
-                    callPayload.Queries["destination_map"] = ExpressionConverter.Convert(destinationMap);
-                callPayload.Headers["API-Key"] = ExpressionConverter.Convert(aPIKey);
+                if (__workflow_destinationMap != null)
+                    callPayload.Queries["destination_map"] = ExpressionConverter.Convert(__workflow_destinationMap);
+                callPayload.Headers["API-Key"] = ExpressionConverter.Convert(__workflow_aPIKey);
                 return new ApiConnectionAction<UploadFileToPathResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "giscloud")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteFileAtPath))]
-        public IBodyWorkflowAction<Error> DeleteFileAtPath([WorkflowExpression] Func<string> aPIKey, [WorkflowExpression] Func<string> fileName, [WorkflowExpression] Func<string> pathToAFile)
+        public IBodyWorkflowAction<Error> DeleteFileAtPath(Expression<Func<string>> aPIKey, Expression<Func<string>> fileName, Expression<Func<string>> pathToAFile)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Error> __BuildDeleteFileAtPath(WorkflowExpression<string> aPIKey, WorkflowExpression<string> fileName, WorkflowExpression<string> pathToAFile)
-        {
-            WorkflowExpression.Validate(aPIKey, nameof(aPIKey), required: true);
-            WorkflowExpression.Validate(fileName, nameof(fileName), required: true);
-            WorkflowExpression.Validate(pathToAFile, nameof(pathToAFile), required: true);
+            var __workflow_aPIKey = aPIKey == null ? null : WorkflowExpression.Compile(aPIKey);
+            WorkflowExpression.Validate(__workflow_aPIKey, nameof(aPIKey), required: true);
+            var __workflow_fileName = fileName == null ? null : WorkflowExpression.Compile(fileName);
+            WorkflowExpression.Validate(__workflow_fileName, nameof(fileName), required: true);
+            var __workflow_pathToAFile = pathToAFile == null ? null : WorkflowExpression.Compile(pathToAFile);
+            WorkflowExpression.Validate(__workflow_pathToAFile, nameof(pathToAFile), required: true);
             return new DeferredBodyAction<Error>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/storage/fs/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(pathToAFile, 1), ExpressionConverter.ConvertWithUrlEncoding(fileName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/storage/fs/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pathToAFile, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fileName, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["API-Key"] = ExpressionConverter.Convert(aPIKey);
+                callPayload.Headers["API-Key"] = ExpressionConverter.Convert(__workflow_aPIKey);
                 return new ApiConnectionAction<Error>(callPayload);
             });
         }

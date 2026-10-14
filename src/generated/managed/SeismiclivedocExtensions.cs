@@ -1,31 +1,25 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclivedoc
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class SeismiclivedocActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclivedoc")]
-        [WorkflowExpressionFactory(nameof(__BuildGetLiveDocInputs))]
-        public IBodyWorkflowAction<SeismicLiveDocsLiveDocVersionResp> GetLiveDocInputs([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentVersionId)
+        public IBodyWorkflowAction<SeismicLiveDocsLiveDocVersionResp> GetLiveDocInputs(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentVersionId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicLiveDocsLiveDocVersionResp> __BuildGetLiveDocInputs(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentVersionId)
-        {
-            WorkflowExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            WorkflowExpression.Validate(libraryContentVersionId, nameof(libraryContentVersionId), required: true);
+            var __workflow_teamsiteId = teamsiteId == null ? null : WorkflowExpression.Compile(teamsiteId);
+            WorkflowExpression.Validate(__workflow_teamsiteId, nameof(teamsiteId), required: true);
+            var __workflow_libraryContentVersionId = libraryContentVersionId == null ? null : WorkflowExpression.Compile(libraryContentVersionId);
+            WorkflowExpression.Validate(__workflow_libraryContentVersionId, nameof(libraryContentVersionId), required: true);
             return new DeferredBodyAction<SeismicLiveDocsLiveDocVersionResp>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/livedocVersions/{1}", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentVersionId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/livedocVersions/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentVersionId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SeismicLiveDocsLiveDocVersionResp>(callPayload);
@@ -33,34 +27,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclivedoc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclivedoc")]
-        [WorkflowExpressionFactory(nameof(__BuildSubmitLiveDocGeneration))]
-        public IBodyWorkflowAction<SeismicLiveDocsLiveDocGenSuccinctResultResp> SubmitLiveDocGeneration([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentVersionId, [WorkflowExpression] Func<bodyoutputsInputItem[]> bodyoutputs, [WorkflowExpression] Func<JToken[]> bodyadHocInputs = null)
+        public IBodyWorkflowAction<SeismicLiveDocsLiveDocGenSuccinctResultResp> SubmitLiveDocGeneration(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentVersionId, Expression<Func<bodyoutputsInputItem[]>> bodyoutputs, Expression<Func<JToken[]>> bodyadHocInputs = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicLiveDocsLiveDocGenSuccinctResultResp> __BuildSubmitLiveDocGeneration(WorkflowExpression<string> teamsiteId, WorkflowExpression<string> libraryContentVersionId, WorkflowExpression<bodyoutputsInputItem[]> bodyoutputs, WorkflowExpression<JToken[]> bodyadHocInputs = null)
-        {
-            WorkflowExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            WorkflowExpression.Validate(libraryContentVersionId, nameof(libraryContentVersionId), required: true);
-            WorkflowExpression.Validate(bodyoutputs, nameof(bodyoutputs), required: true);
-            WorkflowExpression.Validate(bodyadHocInputs, nameof(bodyadHocInputs), required: false);
+            var __workflow_teamsiteId = teamsiteId == null ? null : WorkflowExpression.Compile(teamsiteId);
+            WorkflowExpression.Validate(__workflow_teamsiteId, nameof(teamsiteId), required: true);
+            var __workflow_libraryContentVersionId = libraryContentVersionId == null ? null : WorkflowExpression.Compile(libraryContentVersionId);
+            WorkflowExpression.Validate(__workflow_libraryContentVersionId, nameof(libraryContentVersionId), required: true);
+            var __workflow_bodyoutputs = bodyoutputs == null ? null : WorkflowExpression.Compile(bodyoutputs);
+            WorkflowExpression.Validate(__workflow_bodyoutputs, nameof(bodyoutputs), required: true);
+            var __workflow_bodyadHocInputs = bodyadHocInputs == null ? null : WorkflowExpression.Compile(bodyadHocInputs);
+            WorkflowExpression.Validate(__workflow_bodyadHocInputs, nameof(bodyadHocInputs), required: false);
             return new DeferredBodyAction<SeismicLiveDocsLiveDocGenSuccinctResultResp>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/livedocVersions/{1}", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentVersionId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/livedocVersions/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentVersionId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyadHocInputs != null)
+                if (__workflow_bodyadHocInputs != null)
                 {
-                    body["adHocInputs"] = ExpressionConverter.ConvertO(bodyadHocInputs);
+                    body["adHocInputs"] = ExpressionConverter.ConvertO(__workflow_bodyadHocInputs);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["outputs"] = ExpressionConverter.ConvertO(bodyoutputs);
+                body["outputs"] = ExpressionConverter.ConvertO(__workflow_bodyoutputs);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -71,19 +62,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclivedoc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclivedoc")]
-        [WorkflowExpressionFactory(nameof(__BuildGetLiveDocGenerationStatus))]
-        public IBodyWorkflowAction<SeismicLiveDocsLiveDocGenResultResp> GetLiveDocGenerationStatus([WorkflowExpression] Func<string> generatedLivedocId)
+        public IBodyWorkflowAction<SeismicLiveDocsLiveDocGenResultResp> GetLiveDocGenerationStatus(Expression<Func<string>> generatedLivedocId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicLiveDocsLiveDocGenResultResp> __BuildGetLiveDocGenerationStatus(WorkflowExpression<string> generatedLivedocId)
-        {
-            WorkflowExpression.Validate(generatedLivedocId, nameof(generatedLivedocId), required: true);
+            var __workflow_generatedLivedocId = generatedLivedocId == null ? null : WorkflowExpression.Compile(generatedLivedocId);
+            WorkflowExpression.Validate(__workflow_generatedLivedocId, nameof(generatedLivedocId), required: true);
             return new DeferredBodyAction<SeismicLiveDocsLiveDocGenResultResp>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/generatedLivedocs/{0}", ExpressionConverter.ConvertWithUrlEncoding(generatedLivedocId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/generatedLivedocs/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_generatedLivedocId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SeismicLiveDocsLiveDocGenResultResp>(callPayload);
@@ -91,26 +76,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclivedoc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclivedoc")]
-        [WorkflowExpressionFactory(nameof(__BuildDownloadGeneratedLiveDoc))]
-        public IBodyWorkflowAction<SeismicLiveDocsDownloadLocationResp> DownloadGeneratedLiveDoc([WorkflowExpression] Func<string> generatedLivedocId, [WorkflowExpression] Func<string> outputId, [WorkflowExpression] Func<bool> redirect = null)
+        public IBodyWorkflowAction<SeismicLiveDocsDownloadLocationResp> DownloadGeneratedLiveDoc(Expression<Func<string>> generatedLivedocId, Expression<Func<string>> outputId, Expression<Func<bool>> redirect = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SeismicLiveDocsDownloadLocationResp> __BuildDownloadGeneratedLiveDoc(WorkflowExpression<string> generatedLivedocId, WorkflowExpression<string> outputId, WorkflowExpression<bool> redirect = null)
-        {
-            WorkflowExpression.Validate(generatedLivedocId, nameof(generatedLivedocId), required: true);
-            WorkflowExpression.Validate(outputId, nameof(outputId), required: true);
-            WorkflowExpression.Validate(redirect, nameof(redirect), required: false);
+            var __workflow_generatedLivedocId = generatedLivedocId == null ? null : WorkflowExpression.Compile(generatedLivedocId);
+            WorkflowExpression.Validate(__workflow_generatedLivedocId, nameof(generatedLivedocId), required: true);
+            var __workflow_outputId = outputId == null ? null : WorkflowExpression.Compile(outputId);
+            WorkflowExpression.Validate(__workflow_outputId, nameof(outputId), required: true);
+            var __workflow_redirect = redirect == null ? null : WorkflowExpression.Compile(redirect);
+            WorkflowExpression.Validate(__workflow_redirect, nameof(redirect), required: false);
             return new DeferredBodyAction<SeismicLiveDocsDownloadLocationResp>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/generatedLivedocs/{0}/outputs/{1}/content", ExpressionConverter.ConvertWithUrlEncoding(generatedLivedocId, 1), ExpressionConverter.ConvertWithUrlEncoding(outputId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/generatedLivedocs/{0}/outputs/{1}/content", ExpressionConverter.ConvertWithUrlEncoding(__workflow_generatedLivedocId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_outputId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["redirect"] = Convert.ToString(false);
-                if (redirect != null)
-                    callPayload.Queries["redirect"] = ExpressionConverter.Convert(redirect);
+                if (__workflow_redirect != null)
+                    callPayload.Queries["redirect"] = ExpressionConverter.Convert(__workflow_redirect);
                 return new ApiConnectionAction<SeismicLiveDocsDownloadLocationResp>(callPayload);
             });
         }

@@ -1,52 +1,39 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dadjokesioip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class DadjokesioipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dadjokesioip")]
-        [WorkflowExpressionFactory(nameof(__BuildRandom))]
-        public IBodyWorkflowAction<RandomResponse> Random([WorkflowExpression] Func<int> count = null)
+        public IBodyWorkflowAction<RandomResponse> Random(Expression<Func<int>> count = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<RandomResponse> __BuildRandom(WorkflowExpression<int> count = null)
-        {
-            WorkflowExpression.Validate(count, nameof(count), required: false);
+            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
+            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
             return new DeferredBodyAction<RandomResponse>(() =>
             {
                 var apiCallPath = "/random/joke";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (count != null)
-                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
                 return new ApiConnectionAction<RandomResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dadjokesioip")]
-        [WorkflowExpressionFactory(nameof(__BuildJokeID))]
-        public IBodyWorkflowAction<JokeIDResponse> JokeID([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<JokeIDResponse> JokeID(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JokeIDResponse> __BuildJokeID(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<JokeIDResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/joke/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/joke/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<JokeIDResponse>(callPayload);
@@ -54,46 +41,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dadjokesioip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dadjokesioip")]
-        [WorkflowExpressionFactory(nameof(__BuildJokeType))]
-        public IBodyWorkflowAction<JokeTypeResponse> JokeType([WorkflowExpression] Func<string> type, [WorkflowExpression] Func<int> limit = null)
+        public IBodyWorkflowAction<JokeTypeResponse> JokeType(Expression<Func<string>> type, Expression<Func<int>> limit = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JokeTypeResponse> __BuildJokeType(WorkflowExpression<string> type, WorkflowExpression<int> limit = null)
-        {
-            WorkflowExpression.Validate(type, nameof(type), required: true);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
+            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
+            WorkflowExpression.Validate(__workflow_type, nameof(type), required: true);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
             return new DeferredBodyAction<JokeTypeResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/joke/type/{0}", ExpressionConverter.ConvertWithUrlEncoding(type, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/joke/type/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_type, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction<JokeTypeResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dadjokesioip")]
-        [WorkflowExpressionFactory(nameof(__BuildJokeSearch))]
-        public IBodyWorkflowAction<JokeSearchResponse> JokeSearch([WorkflowExpression] Func<string> term = null)
+        public IBodyWorkflowAction<JokeSearchResponse> JokeSearch(Expression<Func<string>> term = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JokeSearchResponse> __BuildJokeSearch(WorkflowExpression<string> term = null)
-        {
-            WorkflowExpression.Validate(term, nameof(term), required: false);
+            var __workflow_term = term == null ? null : WorkflowExpression.Compile(term);
+            WorkflowExpression.Validate(__workflow_term, nameof(term), required: false);
             return new DeferredBodyAction<JokeSearchResponse>(() =>
             {
                 var apiCallPath = "/joke/search";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (term != null)
-                    callPayload.Queries["term"] = ExpressionConverter.Convert(term);
+                if (__workflow_term != null)
+                    callPayload.Queries["term"] = ExpressionConverter.Convert(__workflow_term);
                 return new ApiConnectionAction<JokeSearchResponse>(callPayload);
             });
         }

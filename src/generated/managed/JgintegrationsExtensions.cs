@@ -1,29 +1,24 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class JgintegrationsActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jgintegrations")]
-        [WorkflowExpressionFactory(nameof(__BuildHASHHMAC))]
-        public IBodyWorkflowAction<HASHHMACResponse> HASHHMAC([WorkflowExpression] Func<bodyalgoInput> bodyalgo, [WorkflowExpression] Func<string> bodycontent, [WorkflowExpression] Func<string> bodykey)
+        public IBodyWorkflowAction<HASHHMACResponse> HASHHMAC(Expression<Func<bodyalgoInput>> bodyalgo, Expression<Func<string>> bodycontent, Expression<Func<string>> bodykey)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<HASHHMACResponse> __BuildHASHHMAC(WorkflowExpression<bodyalgoInput> bodyalgo, WorkflowExpression<string> bodycontent, WorkflowExpression<string> bodykey)
-        {
-            WorkflowExpression.Validate(bodyalgo, nameof(bodyalgo), required: true);
-            WorkflowExpression.Validate(bodycontent, nameof(bodycontent), required: true);
-            WorkflowExpression.Validate(bodykey, nameof(bodykey), required: true);
+            var __workflow_bodyalgo = bodyalgo == null ? null : WorkflowExpression.Compile(bodyalgo);
+            WorkflowExpression.Validate(__workflow_bodyalgo, nameof(bodyalgo), required: true);
+            var __workflow_bodycontent = bodycontent == null ? null : WorkflowExpression.Compile(bodycontent);
+            WorkflowExpression.Validate(__workflow_bodycontent, nameof(bodycontent), required: true);
+            var __workflow_bodykey = bodykey == null ? null : WorkflowExpression.Compile(bodykey);
+            WorkflowExpression.Validate(__workflow_bodykey, nameof(bodykey), required: true);
             return new DeferredBodyAction<HASHHMACResponse>(() =>
             {
                 var apiCallPath = "/crypto/hash_hmac";
@@ -34,11 +29,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["algo"] = ExpressionConverter.ConvertO(bodyalgo);
+                body["algo"] = ExpressionConverter.ConvertO(__workflow_bodyalgo);
                 bodypropCount++;
-                body["content"] = ExpressionConverter.ConvertO(bodycontent);
+                body["content"] = ExpressionConverter.ConvertO(__workflow_bodycontent);
                 bodypropCount++;
-                body["key"] = ExpressionConverter.ConvertO(bodykey);
+                body["key"] = ExpressionConverter.ConvertO(__workflow_bodykey);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -49,18 +44,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jgintegrations")]
-        [WorkflowExpressionFactory(nameof(__BuildPREGREPLACE))]
-        public IBodyWorkflowAction<PREGREPLACEResponse> PREGREPLACE([WorkflowExpression] Func<string> bodypattern, [WorkflowExpression] Func<string> bodysubject, [WorkflowExpression] Func<string> bodyreplacement = null)
+        public IBodyWorkflowAction<PREGREPLACEResponse> PREGREPLACE(Expression<Func<string>> bodypattern, Expression<Func<string>> bodysubject, Expression<Func<string>> bodyreplacement = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PREGREPLACEResponse> __BuildPREGREPLACE(WorkflowExpression<string> bodypattern, WorkflowExpression<string> bodysubject, WorkflowExpression<string> bodyreplacement = null)
-        {
-            WorkflowExpression.Validate(bodypattern, nameof(bodypattern), required: true);
-            WorkflowExpression.Validate(bodysubject, nameof(bodysubject), required: true);
-            WorkflowExpression.Validate(bodyreplacement, nameof(bodyreplacement), required: false);
+            var __workflow_bodypattern = bodypattern == null ? null : WorkflowExpression.Compile(bodypattern);
+            WorkflowExpression.Validate(__workflow_bodypattern, nameof(bodypattern), required: true);
+            var __workflow_bodysubject = bodysubject == null ? null : WorkflowExpression.Compile(bodysubject);
+            WorkflowExpression.Validate(__workflow_bodysubject, nameof(bodysubject), required: true);
+            var __workflow_bodyreplacement = bodyreplacement == null ? null : WorkflowExpression.Compile(bodyreplacement);
+            WorkflowExpression.Validate(__workflow_bodyreplacement, nameof(bodyreplacement), required: false);
             return new DeferredBodyAction<PREGREPLACEResponse>(() =>
             {
                 var apiCallPath = "/text/preg_replace";
@@ -71,12 +62,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["pattern"] = ExpressionConverter.ConvertO(bodypattern);
-                if (bodyreplacement != null)
+                body["pattern"] = ExpressionConverter.ConvertO(__workflow_bodypattern);
+                if (__workflow_bodyreplacement != null)
                 {
-                    if (bodyreplacement != null)
+                    if (__workflow_bodyreplacement != null)
                     {
-                        body["replacement"] = ExpressionConverter.ConvertO(bodyreplacement);
+                        body["replacement"] = ExpressionConverter.ConvertO(__workflow_bodyreplacement);
                         bodypropCount++;
                     }
 
@@ -89,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
                 }
 
                 bodypropCount++;
-                body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+                body["subject"] = ExpressionConverter.ConvertO(__workflow_bodysubject);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -100,17 +91,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jgintegrations")]
-        [WorkflowExpressionFactory(nameof(__BuildMANUAL))]
-        public IBodyWorkflowAction<MANUALResponse> MANUAL([WorkflowExpression] Func<string> bodyfunction, [WorkflowExpression] Func<string> bodydata)
+        public IBodyWorkflowAction<MANUALResponse> MANUAL(Expression<Func<string>> bodyfunction, Expression<Func<string>> bodydata)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MANUALResponse> __BuildMANUAL(WorkflowExpression<string> bodyfunction, WorkflowExpression<string> bodydata)
-        {
-            WorkflowExpression.Validate(bodyfunction, nameof(bodyfunction), required: true);
-            WorkflowExpression.Validate(bodydata, nameof(bodydata), required: true);
+            var __workflow_bodyfunction = bodyfunction == null ? null : WorkflowExpression.Compile(bodyfunction);
+            WorkflowExpression.Validate(__workflow_bodyfunction, nameof(bodyfunction), required: true);
+            var __workflow_bodydata = bodydata == null ? null : WorkflowExpression.Compile(bodydata);
+            WorkflowExpression.Validate(__workflow_bodydata, nameof(bodydata), required: true);
             return new DeferredBodyAction<MANUALResponse>(() =>
             {
                 var apiCallPath = "/manual_func";
@@ -121,9 +107,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["function"] = ExpressionConverter.ConvertO(bodyfunction);
+                body["function"] = ExpressionConverter.ConvertO(__workflow_bodyfunction);
                 bodypropCount++;
-                body["data"] = ExpressionConverter.ConvertO(bodydata);
+                body["data"] = ExpressionConverter.ConvertO(__workflow_bodydata);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -134,19 +120,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jgintegrations")]
-        [WorkflowExpressionFactory(nameof(__BuildHTMLTOPDF))]
-        public IBodyWorkflowAction<JToken> HTMLTOPDF([WorkflowExpression] Func<string> bodyhtml, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<bool> bodylandscape, [WorkflowExpression] Func<bodypagesizeInput> bodypagesize)
+        public IBodyWorkflowAction<JToken> HTMLTOPDF(Expression<Func<string>> bodyhtml, Expression<Func<string>> bodyname, Expression<Func<bool>> bodylandscape, Expression<Func<bodypagesizeInput>> bodypagesize)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildHTMLTOPDF(WorkflowExpression<string> bodyhtml, WorkflowExpression<string> bodyname, WorkflowExpression<bool> bodylandscape, WorkflowExpression<bodypagesizeInput> bodypagesize)
-        {
-            WorkflowExpression.Validate(bodyhtml, nameof(bodyhtml), required: true);
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
-            WorkflowExpression.Validate(bodylandscape, nameof(bodylandscape), required: true);
-            WorkflowExpression.Validate(bodypagesize, nameof(bodypagesize), required: true);
+            var __workflow_bodyhtml = bodyhtml == null ? null : WorkflowExpression.Compile(bodyhtml);
+            WorkflowExpression.Validate(__workflow_bodyhtml, nameof(bodyhtml), required: true);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
+            var __workflow_bodylandscape = bodylandscape == null ? null : WorkflowExpression.Compile(bodylandscape);
+            WorkflowExpression.Validate(__workflow_bodylandscape, nameof(bodylandscape), required: true);
+            var __workflow_bodypagesize = bodypagesize == null ? null : WorkflowExpression.Compile(bodypagesize);
+            WorkflowExpression.Validate(__workflow_bodypagesize, nameof(bodypagesize), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/text/html_to_pdf";
@@ -157,13 +140,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["html"] = ExpressionConverter.ConvertO(bodyhtml);
+                body["html"] = ExpressionConverter.ConvertO(__workflow_bodyhtml);
                 bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
                 bodypropCount++;
-                body["landscape"] = ExpressionConverter.ConvertO(bodylandscape);
+                body["landscape"] = ExpressionConverter.ConvertO(__workflow_bodylandscape);
                 bodypropCount++;
-                body["pagesize"] = ExpressionConverter.ConvertO(bodypagesize);
+                body["pagesize"] = ExpressionConverter.ConvertO(__workflow_bodypagesize);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -174,16 +157,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jgintegrations")]
-        [WorkflowExpressionFactory(nameof(__BuildFILESTRING))]
-        public IBodyWorkflowAction<FILESTRINGResponse> FILESTRING([WorkflowExpression] Func<string> bodysubject)
+        public IBodyWorkflowAction<FILESTRINGResponse> FILESTRING(Expression<Func<string>> bodysubject)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FILESTRINGResponse> __BuildFILESTRING(WorkflowExpression<string> bodysubject)
-        {
-            WorkflowExpression.Validate(bodysubject, nameof(bodysubject), required: true);
+            var __workflow_bodysubject = bodysubject == null ? null : WorkflowExpression.Compile(bodysubject);
+            WorkflowExpression.Validate(__workflow_bodysubject, nameof(bodysubject), required: true);
             return new DeferredBodyAction<FILESTRINGResponse>(() =>
             {
                 var apiCallPath = "/text/file_string";
@@ -196,7 +173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
                 body["pattern"] = "/[^a-zA-Z0-9 \\-\\(\\)\\_]+/";
                 bodypropCount++;
                 bodypropCount++;
-                body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+                body["subject"] = ExpressionConverter.ConvertO(__workflow_bodysubject);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

@@ -1,31 +1,28 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ahead
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class AheadActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ahead")]
-        [WorkflowExpressionFactory(nameof(__BuildAheadReceiveExternalActivity))]
-        public IWorkflowAction AheadReceiveExternalActivity([WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<string> bodyurl = null, [WorkflowExpression] Func<string> bodymediaUrl = null, [WorkflowExpression] Func<bodysourceInput> bodysource = null)
+        public IWorkflowAction AheadReceiveExternalActivity(Expression<Func<string>> bodytitle, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodyurl = null, Expression<Func<string>> bodymediaUrl = null, Expression<Func<bodysourceInput>> bodysource = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildAheadReceiveExternalActivity(WorkflowExpression<string> bodytitle, WorkflowExpression<string> bodytext = null, WorkflowExpression<string> bodyurl = null, WorkflowExpression<string> bodymediaUrl = null, WorkflowExpression<bodysourceInput> bodysource = null)
-        {
-            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            WorkflowExpression.Validate(bodytext, nameof(bodytext), required: false);
-            WorkflowExpression.Validate(bodyurl, nameof(bodyurl), required: false);
-            WorkflowExpression.Validate(bodymediaUrl, nameof(bodymediaUrl), required: false);
-            WorkflowExpression.Validate(bodysource, nameof(bodysource), required: false);
+            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
+            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
+            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: false);
+            var __workflow_bodyurl = bodyurl == null ? null : WorkflowExpression.Compile(bodyurl);
+            WorkflowExpression.Validate(__workflow_bodyurl, nameof(bodyurl), required: false);
+            var __workflow_bodymediaUrl = bodymediaUrl == null ? null : WorkflowExpression.Compile(bodymediaUrl);
+            WorkflowExpression.Validate(__workflow_bodymediaUrl, nameof(bodymediaUrl), required: false);
+            var __workflow_bodysource = bodysource == null ? null : WorkflowExpression.Compile(bodysource);
+            WorkflowExpression.Validate(__workflow_bodysource, nameof(bodysource), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/ReceiveExternalActivity";
@@ -34,28 +31,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ahead
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-                if (bodytext != null)
+                body["Title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
+                if (__workflow_bodytext != null)
                 {
-                    body["Text"] = ExpressionConverter.ConvertO(bodytext);
+                    body["Text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
                     bodypropCount++;
                 }
 
-                if (bodyurl != null)
+                if (__workflow_bodyurl != null)
                 {
-                    body["Url"] = ExpressionConverter.ConvertO(bodyurl);
+                    body["Url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
                     bodypropCount++;
                 }
 
-                if (bodymediaUrl != null)
+                if (__workflow_bodymediaUrl != null)
                 {
-                    body["MediaUrl"] = ExpressionConverter.ConvertO(bodymediaUrl);
+                    body["MediaUrl"] = ExpressionConverter.ConvertO(__workflow_bodymediaUrl);
                     bodypropCount++;
                 }
 
-                if (bodysource != null)
+                if (__workflow_bodysource != null)
                 {
-                    body["Source"] = ExpressionConverter.ConvertO(bodysource);
+                    body["Source"] = ExpressionConverter.ConvertO(__workflow_bodysource);
                     bodypropCount++;
                 }
 

@@ -1,29 +1,24 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cardplatform
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class CardplatformActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cardplatform")]
-        [WorkflowExpressionFactory(nameof(__BuildSendMessage))]
-        public IBodyWorkflowAction<string> SendMessage([WorkflowExpression] Func<string[]> cardbodyrecipients, [WorkflowExpression] Func<string> cardbodyheading, [WorkflowExpression] Func<string> cardbodyadaptiveCard)
+        public IBodyWorkflowAction<string> SendMessage(Expression<Func<string[]>> cardbodyrecipients, Expression<Func<string>> cardbodyheading, Expression<Func<string>> cardbodyadaptiveCard)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildSendMessage(WorkflowExpression<string[]> cardbodyrecipients, WorkflowExpression<string> cardbodyheading, WorkflowExpression<string> cardbodyadaptiveCard)
-        {
-            WorkflowExpression.Validate(cardbodyrecipients, nameof(cardbodyrecipients), required: true);
-            WorkflowExpression.Validate(cardbodyheading, nameof(cardbodyheading), required: true);
-            WorkflowExpression.Validate(cardbodyadaptiveCard, nameof(cardbodyadaptiveCard), required: true);
+            var __workflow_cardbodyrecipients = cardbodyrecipients == null ? null : WorkflowExpression.Compile(cardbodyrecipients);
+            WorkflowExpression.Validate(__workflow_cardbodyrecipients, nameof(cardbodyrecipients), required: true);
+            var __workflow_cardbodyheading = cardbodyheading == null ? null : WorkflowExpression.Compile(cardbodyheading);
+            WorkflowExpression.Validate(__workflow_cardbodyheading, nameof(cardbodyheading), required: true);
+            var __workflow_cardbodyadaptiveCard = cardbodyadaptiveCard == null ? null : WorkflowExpression.Compile(cardbodyadaptiveCard);
+            WorkflowExpression.Validate(__workflow_cardbodyadaptiveCard, nameof(cardbodyadaptiveCard), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/sendmessage";
@@ -32,11 +27,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cardplatform
                 var cardbody = new JObject();
                 var cardbodypropCount = 0;
                 cardbodypropCount++;
-                cardbody["recipients"] = ExpressionConverter.ConvertO(cardbodyrecipients);
+                cardbody["recipients"] = ExpressionConverter.ConvertO(__workflow_cardbodyrecipients);
                 cardbodypropCount++;
-                cardbody["heading"] = ExpressionConverter.ConvertO(cardbodyheading);
+                cardbody["heading"] = ExpressionConverter.ConvertO(__workflow_cardbodyheading);
                 cardbodypropCount++;
-                cardbody["card"] = ExpressionConverter.ConvertO(cardbodyadaptiveCard);
+                cardbody["card"] = ExpressionConverter.ConvertO(__workflow_cardbodyadaptiveCard);
                 if (cardbodypropCount > 0)
                 {
                     callPayload.Body = cardbody;
@@ -47,43 +42,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cardplatform
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cardplatform")]
-        [WorkflowExpressionFactory(nameof(__BuildPrivateTemplatesDelete))]
-        public IWorkflowAction PrivateTemplatesDelete([WorkflowExpression] Func<string> name)
+        public IWorkflowAction PrivateTemplatesDelete(Expression<Func<string>> name)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildPrivateTemplatesDelete(WorkflowExpression<string> name)
-        {
-            WorkflowExpression.Validate(name, nameof(name), required: true);
+            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
+            WorkflowExpression.Validate(__workflow_name, nameof(name), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/PrivateTemplates";
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
+                callPayload.Queries["name"] = ExpressionConverter.Convert(__workflow_name);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cardplatform")]
-        [WorkflowExpressionFactory(nameof(__BuildPrivateTemplatesUpdate))]
-        public IWorkflowAction PrivateTemplatesUpdate([WorkflowExpression] Func<string> name)
+        public IWorkflowAction PrivateTemplatesUpdate(Expression<Func<string>> name)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildPrivateTemplatesUpdate(WorkflowExpression<string> name)
-        {
-            WorkflowExpression.Validate(name, nameof(name), required: true);
+            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
+            WorkflowExpression.Validate(__workflow_name, nameof(name), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/PrivateTemplates";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
+                callPayload.Queries["name"] = ExpressionConverter.Convert(__workflow_name);
                 var body = new JObject();
                 var bodypropCount = 0;
                 if (bodypropCount > 0)

@@ -1,33 +1,26 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Peltarion
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class PeltarionActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "peltarion")]
-        [WorkflowExpressionFactory(nameof(__BuildCallapi))]
-        public IBodyWorkflowAction<CallapiResponse> Callapi([WorkflowExpression] Func<string> peltarionbody)
+        public IBodyWorkflowAction<CallapiResponse> Callapi(Expression<Func<string>> peltarionbody)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CallapiResponse> __BuildCallapi(WorkflowExpression<string> peltarionbody)
-        {
-            WorkflowExpression.Validate(peltarionbody, nameof(peltarionbody), required: true);
+            var __workflow_peltarionbody = peltarionbody == null ? null : WorkflowExpression.Compile(peltarionbody);
+            WorkflowExpression.Validate(__workflow_peltarionbody, nameof(peltarionbody), required: true);
             return new DeferredBodyAction<CallapiResponse>(() =>
             {
                 var apiCallPath = "/api/forwardcall";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["peltarionbody"] = ExpressionConverter.Convert(peltarionbody);
+                callPayload.Headers["peltarionbody"] = ExpressionConverter.Convert(__workflow_peltarionbody);
                 return new ApiConnectionAction<CallapiResponse>(callPayload);
             });
         }

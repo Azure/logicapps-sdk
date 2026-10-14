@@ -1,29 +1,24 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class YakchatActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yakchat")]
-        [WorkflowExpressionFactory(nameof(__BuildSendMessage))]
-        public IBodyWorkflowAction<SendMessageResponse> SendMessage([WorkflowExpression] Func<string> bodyinboxEmail, [WorkflowExpression] Func<string> bodymessageText, [WorkflowExpression] Func<string> bodymessageTo)
+        public IBodyWorkflowAction<SendMessageResponse> SendMessage(Expression<Func<string>> bodyinboxEmail, Expression<Func<string>> bodymessageText, Expression<Func<string>> bodymessageTo)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SendMessageResponse> __BuildSendMessage(WorkflowExpression<string> bodyinboxEmail, WorkflowExpression<string> bodymessageText, WorkflowExpression<string> bodymessageTo)
-        {
-            WorkflowExpression.Validate(bodyinboxEmail, nameof(bodyinboxEmail), required: true);
-            WorkflowExpression.Validate(bodymessageText, nameof(bodymessageText), required: true);
-            WorkflowExpression.Validate(bodymessageTo, nameof(bodymessageTo), required: true);
+            var __workflow_bodyinboxEmail = bodyinboxEmail == null ? null : WorkflowExpression.Compile(bodyinboxEmail);
+            WorkflowExpression.Validate(__workflow_bodyinboxEmail, nameof(bodyinboxEmail), required: true);
+            var __workflow_bodymessageText = bodymessageText == null ? null : WorkflowExpression.Compile(bodymessageText);
+            WorkflowExpression.Validate(__workflow_bodymessageText, nameof(bodymessageText), required: true);
+            var __workflow_bodymessageTo = bodymessageTo == null ? null : WorkflowExpression.Compile(bodymessageTo);
+            WorkflowExpression.Validate(__workflow_bodymessageTo, nameof(bodymessageTo), required: true);
             return new DeferredBodyAction<SendMessageResponse>(() =>
             {
                 var apiCallPath = "/Automation/SendMessage";
@@ -32,11 +27,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["InboxEmail"] = ExpressionConverter.ConvertO(bodyinboxEmail);
+                body["InboxEmail"] = ExpressionConverter.ConvertO(__workflow_bodyinboxEmail);
                 bodypropCount++;
-                body["MessageText"] = ExpressionConverter.ConvertO(bodymessageText);
+                body["MessageText"] = ExpressionConverter.ConvertO(__workflow_bodymessageText);
                 bodypropCount++;
-                body["MessageTo"] = ExpressionConverter.ConvertO(bodymessageTo);
+                body["MessageTo"] = ExpressionConverter.ConvertO(__workflow_bodymessageTo);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -49,17 +44,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
 
     public class YakchatTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildInboundMessage))]
-        public IWorkflowTrigger InboundMessage([WorkflowExpression] Func<string> bodyinboxEmail,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger InboundMessage(Expression<Func<string>> bodyinboxEmail, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildInboundMessage(WorkflowExpression<string> bodyinboxEmail,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodyinboxEmail, nameof(bodyinboxEmail), required: true);
+            var __workflow_bodyinboxEmail = bodyinboxEmail == null ? null : WorkflowExpression.Compile(bodyinboxEmail);
+            WorkflowExpression.Validate(__workflow_bodyinboxEmail, nameof(bodyinboxEmail), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/Automation/InboundMessageNotification";
@@ -68,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["InboxEmail"] = ExpressionConverter.ConvertO(bodyinboxEmail);
+                body["InboxEmail"] = ExpressionConverter.ConvertO(__workflow_bodyinboxEmail);
                 body["TargetUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
@@ -80,16 +68,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildOutboundMessage))]
-        public IWorkflowTrigger OutboundMessage([WorkflowExpression] Func<string> bodyinboxEmail,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger OutboundMessage(Expression<Func<string>> bodyinboxEmail, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildOutboundMessage(WorkflowExpression<string> bodyinboxEmail,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodyinboxEmail, nameof(bodyinboxEmail), required: true);
+            var __workflow_bodyinboxEmail = bodyinboxEmail == null ? null : WorkflowExpression.Compile(bodyinboxEmail);
+            WorkflowExpression.Validate(__workflow_bodyinboxEmail, nameof(bodyinboxEmail), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/Automation/OutboundMessageNotification";
@@ -98,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["InboxEmail"] = ExpressionConverter.ConvertO(bodyinboxEmail);
+                body["InboxEmail"] = ExpressionConverter.ConvertO(__workflow_bodyinboxEmail);
                 body["TargetUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
@@ -110,16 +92,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildBidirectionalMessage))]
-        public IWorkflowTrigger BidirectionalMessage([WorkflowExpression] Func<string> bodyinboxEmail,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger BidirectionalMessage(Expression<Func<string>> bodyinboxEmail, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildBidirectionalMessage(WorkflowExpression<string> bodyinboxEmail,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodyinboxEmail, nameof(bodyinboxEmail), required: true);
+            var __workflow_bodyinboxEmail = bodyinboxEmail == null ? null : WorkflowExpression.Compile(bodyinboxEmail);
+            WorkflowExpression.Validate(__workflow_bodyinboxEmail, nameof(bodyinboxEmail), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/v2/Automation/BidirectionalMessageNotification";
@@ -128,7 +104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["InboxEmail"] = ExpressionConverter.ConvertO(bodyinboxEmail);
+                body["InboxEmail"] = ExpressionConverter.ConvertO(__workflow_bodyinboxEmail);
                 body["TargetUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)

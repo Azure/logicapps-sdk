@@ -1,7 +1,6 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Acasession
 {
     using System;
@@ -9,29 +8,24 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Acasession
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class AcasessionActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "acasession")]
-        [WorkflowExpressionFactory(nameof(__BuildExecuteCode))]
-        public IBodyWorkflowAction<ExecuteCodeOutput> ExecuteCode([WorkflowExpression] Func<object> pythonCode, [WorkflowExpression] Func<object> sessionId = null)
+        public IBodyWorkflowAction<ExecuteCodeOutput> ExecuteCode(Expression<Func<object>> pythonCode, Expression<Func<object>> sessionId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ExecuteCodeOutput> __BuildExecuteCode(WorkflowExpression<object> pythonCode, WorkflowExpression<object> sessionId = null)
-        {
-            WorkflowExpression.Validate(pythonCode, nameof(pythonCode), required: true);
-            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: false);
+            var __workflow_pythonCode = pythonCode == null ? null : WorkflowExpression.Compile(pythonCode);
+            WorkflowExpression.Validate(__workflow_pythonCode, nameof(pythonCode), required: true);
+            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
+            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: false);
             return new DeferredBodyAction<ExecuteCodeOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["pythonCode"] = ExpressionConverter.ConvertO(pythonCode);
-                if (sessionId != null)
+                serviceProviderParameters["pythonCode"] = ExpressionConverter.ConvertO(__workflow_pythonCode);
+                if (__workflow_sessionId != null)
                 {
-                    serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+                    serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(__workflow_sessionId);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -44,24 +38,19 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Acasession
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "acasession")]
-        [WorkflowExpressionFactory(nameof(__BuildFileUpload))]
-        public IBodyWorkflowAction<FileUploadOutput> FileUpload([WorkflowExpression] Func<FileUploadInputFilesTypeItem[]> files, [WorkflowExpression] Func<object> sessionId = null)
+        public IBodyWorkflowAction<FileUploadOutput> FileUpload(Expression<Func<FileUploadInputFilesTypeItem[]>> files, Expression<Func<object>> sessionId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FileUploadOutput> __BuildFileUpload(WorkflowExpression<FileUploadInputFilesTypeItem[]> files, WorkflowExpression<object> sessionId = null)
-        {
-            WorkflowExpression.Validate(files, nameof(files), required: true);
-            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: false);
+            var __workflow_files = files == null ? null : WorkflowExpression.Compile(files);
+            WorkflowExpression.Validate(__workflow_files, nameof(files), required: true);
+            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
+            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: false);
             return new DeferredBodyAction<FileUploadOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["files"] = ExpressionConverter.ConvertO(files);
-                if (sessionId != null)
+                serviceProviderParameters["files"] = ExpressionConverter.ConvertO(__workflow_files);
+                if (__workflow_sessionId != null)
                 {
-                    serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+                    serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(__workflow_sessionId);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -74,22 +63,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Acasession
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "acasession")]
-        [WorkflowExpressionFactory(nameof(__BuildFileDownload))]
-        public IBodyWorkflowAction<JToken> FileDownload([WorkflowExpression] Func<string> fileName, [WorkflowExpression] Func<object> sessionId)
+        public IBodyWorkflowAction<JToken> FileDownload(Expression<Func<string>> fileName, Expression<Func<object>> sessionId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildFileDownload(WorkflowExpression<string> fileName, WorkflowExpression<object> sessionId)
-        {
-            WorkflowExpression.Validate(fileName, nameof(fileName), required: true);
-            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: true);
+            var __workflow_fileName = fileName == null ? null : WorkflowExpression.Compile(fileName);
+            WorkflowExpression.Validate(__workflow_fileName, nameof(fileName), required: true);
+            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
+            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["fileName"] = ExpressionConverter.ConvertO(fileName);
-                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+                serviceProviderParameters["fileName"] = ExpressionConverter.ConvertO(__workflow_fileName);
+                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(__workflow_sessionId);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/acasession", operationId: "fileDownload", connectionName: connectionId),
@@ -100,22 +84,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Acasession
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "acasession")]
-        [WorkflowExpressionFactory(nameof(__BuildFileDelete))]
-        public IBodyWorkflowAction<JToken> FileDelete([WorkflowExpression] Func<string> fileName, [WorkflowExpression] Func<object> sessionId)
+        public IBodyWorkflowAction<JToken> FileDelete(Expression<Func<string>> fileName, Expression<Func<object>> sessionId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildFileDelete(WorkflowExpression<string> fileName, WorkflowExpression<object> sessionId)
-        {
-            WorkflowExpression.Validate(fileName, nameof(fileName), required: true);
-            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: true);
+            var __workflow_fileName = fileName == null ? null : WorkflowExpression.Compile(fileName);
+            WorkflowExpression.Validate(__workflow_fileName, nameof(fileName), required: true);
+            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
+            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["fileName"] = ExpressionConverter.ConvertO(fileName);
-                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
+                serviceProviderParameters["fileName"] = ExpressionConverter.ConvertO(__workflow_fileName);
+                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(__workflow_sessionId);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/acasession", operationId: "fileDelete", connectionName: connectionId),

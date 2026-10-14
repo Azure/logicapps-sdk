@@ -1,12 +1,12 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivecurrency
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class CloudmersivecurrencyActions([ConnectionName] string connectionId)
     {
@@ -20,43 +20,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivecurrency
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivecurrency")]
-        [WorkflowExpressionFactory(nameof(__BuildCurrencyExchangeConvertCurrency))]
-        public IBodyWorkflowAction<ConvertedCurrencyResult> CurrencyExchangeConvertCurrency([WorkflowExpression] Func<string> source, [WorkflowExpression] Func<string> destination, [WorkflowExpression] Func<double> sourcePrice = null)
+        public IBodyWorkflowAction<ConvertedCurrencyResult> CurrencyExchangeConvertCurrency(Expression<Func<string>> source, Expression<Func<string>> destination, Expression<Func<double>> sourcePrice = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ConvertedCurrencyResult> __BuildCurrencyExchangeConvertCurrency(WorkflowExpression<string> source, WorkflowExpression<string> destination, WorkflowExpression<double> sourcePrice = null)
-        {
-            WorkflowExpression.Validate(source, nameof(source), required: true);
-            WorkflowExpression.Validate(destination, nameof(destination), required: true);
-            WorkflowExpression.Validate(sourcePrice, nameof(sourcePrice), required: false);
+            var __workflow_source = source == null ? null : WorkflowExpression.Compile(source);
+            WorkflowExpression.Validate(__workflow_source, nameof(source), required: true);
+            var __workflow_destination = destination == null ? null : WorkflowExpression.Compile(destination);
+            WorkflowExpression.Validate(__workflow_destination, nameof(destination), required: true);
+            var __workflow_sourcePrice = sourcePrice == null ? null : WorkflowExpression.Compile(sourcePrice);
+            WorkflowExpression.Validate(__workflow_sourcePrice, nameof(sourcePrice), required: false);
             return new DeferredBodyAction<ConvertedCurrencyResult>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/currency/exchange-rates/convert/{0}/to/{1}", ExpressionConverter.ConvertWithUrlEncoding(source, 1), ExpressionConverter.ConvertWithUrlEncoding(destination, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/currency/exchange-rates/convert/{0}/to/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_source, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_destination, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(sourcePrice);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sourcePrice);
                 return new ApiConnectionAction<ConvertedCurrencyResult>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivecurrency")]
-        [WorkflowExpressionFactory(nameof(__BuildCurrencyExchangeGetExchangeRate))]
-        public IBodyWorkflowAction<ExchangeRateResult> CurrencyExchangeGetExchangeRate([WorkflowExpression] Func<string> source, [WorkflowExpression] Func<string> destination)
+        public IBodyWorkflowAction<ExchangeRateResult> CurrencyExchangeGetExchangeRate(Expression<Func<string>> source, Expression<Func<string>> destination)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ExchangeRateResult> __BuildCurrencyExchangeGetExchangeRate(WorkflowExpression<string> source, WorkflowExpression<string> destination)
-        {
-            WorkflowExpression.Validate(source, nameof(source), required: true);
-            WorkflowExpression.Validate(destination, nameof(destination), required: true);
+            var __workflow_source = source == null ? null : WorkflowExpression.Compile(source);
+            WorkflowExpression.Validate(__workflow_source, nameof(source), required: true);
+            var __workflow_destination = destination == null ? null : WorkflowExpression.Compile(destination);
+            WorkflowExpression.Validate(__workflow_destination, nameof(destination), required: true);
             return new DeferredBodyAction<ExchangeRateResult>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/currency/exchange-rates/get/{0}/to/{1}", ExpressionConverter.ConvertWithUrlEncoding(source, 1), ExpressionConverter.ConvertWithUrlEncoding(destination, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/currency/exchange-rates/get/{0}/to/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_source, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_destination, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ExchangeRateResult>(callPayload);

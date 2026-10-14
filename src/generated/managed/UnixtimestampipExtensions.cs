@@ -1,50 +1,38 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unixtimestampip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class UnixtimestampipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unixtimestampip")]
-        [WorkflowExpressionFactory(nameof(__BuildUnix2UTCDateTime))]
-        public IBodyWorkflowAction<Unix2UTCDateTimeResponse> Unix2UTCDateTime([WorkflowExpression] Func<int> unixtimestamp = null)
+        public IBodyWorkflowAction<Unix2UTCDateTimeResponse> Unix2UTCDateTime(Expression<Func<int>> unixtimestamp = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Unix2UTCDateTimeResponse> __BuildUnix2UTCDateTime(WorkflowExpression<int> unixtimestamp = null)
-        {
-            WorkflowExpression.Validate(unixtimestamp, nameof(unixtimestamp), required: false);
+            var __workflow_unixtimestamp = unixtimestamp == null ? null : WorkflowExpression.Compile(unixtimestamp);
+            WorkflowExpression.Validate(__workflow_unixtimestamp, nameof(unixtimestamp), required: false);
             return new DeferredBodyAction<Unix2UTCDateTimeResponse>(() =>
             {
                 var apiCallPath = "/fromunixtimestamp";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (unixtimestamp != null)
-                    callPayload.Queries["unixtimestamp"] = ExpressionConverter.Convert(unixtimestamp);
+                if (__workflow_unixtimestamp != null)
+                    callPayload.Queries["unixtimestamp"] = ExpressionConverter.Convert(__workflow_unixtimestamp);
                 return new ApiConnectionAction<Unix2UTCDateTimeResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unixtimestampip")]
-        [WorkflowExpressionFactory(nameof(__BuildUnix2DateTimeTimezone))]
-        public IBodyWorkflowAction<Unix2DateTimeTimezoneResponse> Unix2DateTimeTimezone([WorkflowExpression] Func<string> bodyunixTimeStamp = null, [WorkflowExpression] Func<string> bodytimezone = null)
+        public IBodyWorkflowAction<Unix2DateTimeTimezoneResponse> Unix2DateTimeTimezone(Expression<Func<string>> bodyunixTimeStamp = null, Expression<Func<string>> bodytimezone = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Unix2DateTimeTimezoneResponse> __BuildUnix2DateTimeTimezone(WorkflowExpression<string> bodyunixTimeStamp = null, WorkflowExpression<string> bodytimezone = null)
-        {
-            WorkflowExpression.Validate(bodyunixTimeStamp, nameof(bodyunixTimeStamp), required: false);
-            WorkflowExpression.Validate(bodytimezone, nameof(bodytimezone), required: false);
+            var __workflow_bodyunixTimeStamp = bodyunixTimeStamp == null ? null : WorkflowExpression.Compile(bodyunixTimeStamp);
+            WorkflowExpression.Validate(__workflow_bodyunixTimeStamp, nameof(bodyunixTimeStamp), required: false);
+            var __workflow_bodytimezone = bodytimezone == null ? null : WorkflowExpression.Compile(bodytimezone);
+            WorkflowExpression.Validate(__workflow_bodytimezone, nameof(bodytimezone), required: false);
             return new DeferredBodyAction<Unix2DateTimeTimezoneResponse>(() =>
             {
                 var apiCallPath = "/fromunixtimestamp";
@@ -52,15 +40,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unixtimestampip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyunixTimeStamp != null)
+                if (__workflow_bodyunixTimeStamp != null)
                 {
-                    body["UnixTimeStamp"] = ExpressionConverter.ConvertO(bodyunixTimeStamp);
+                    body["UnixTimeStamp"] = ExpressionConverter.ConvertO(__workflow_bodyunixTimeStamp);
                     bodypropCount++;
                 }
 
-                if (bodytimezone != null)
+                if (__workflow_bodytimezone != null)
                 {
-                    body["Timezone"] = ExpressionConverter.ConvertO(bodytimezone);
+                    body["Timezone"] = ExpressionConverter.ConvertO(__workflow_bodytimezone);
                     bodypropCount++;
                 }
 
@@ -74,24 +62,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unixtimestampip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unixtimestampip")]
-        [WorkflowExpressionFactory(nameof(__BuildDateTime2UnixTimestamp))]
-        public IBodyWorkflowAction<DateTime2UnixTimestampResponse> DateTime2UnixTimestamp([WorkflowExpression] Func<string> datetime = null)
+        public IBodyWorkflowAction<DateTime2UnixTimestampResponse> DateTime2UnixTimestamp(Expression<Func<string>> datetime = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DateTime2UnixTimestampResponse> __BuildDateTime2UnixTimestamp(WorkflowExpression<string> datetime = null)
-        {
-            WorkflowExpression.Validate(datetime, nameof(datetime), required: false);
+            var __workflow_datetime = datetime == null ? null : WorkflowExpression.Compile(datetime);
+            WorkflowExpression.Validate(__workflow_datetime, nameof(datetime), required: false);
             return new DeferredBodyAction<DateTime2UnixTimestampResponse>(() =>
             {
                 var apiCallPath = "/tounixtimestamp";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["datetime"] = Convert.ToString("now");
-                if (datetime != null)
-                    callPayload.Queries["datetime"] = ExpressionConverter.Convert(datetime);
+                if (__workflow_datetime != null)
+                    callPayload.Queries["datetime"] = ExpressionConverter.Convert(__workflow_datetime);
                 return new ApiConnectionAction<DateTime2UnixTimestampResponse>(callPayload);
             });
         }

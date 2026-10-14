@@ -1,31 +1,28 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mintlifyip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class MintlifyipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mintlifyip")]
-        [WorkflowExpressionFactory(nameof(__BuildDocGen))]
-        public IBodyWorkflowAction<DocGenResponse> DocGen([WorkflowExpression] Func<bodylanguageInput> bodylanguage, [WorkflowExpression] Func<string> bodycode, [WorkflowExpression] Func<bool> bodycommented = null, [WorkflowExpression] Func<bodyformatInput> bodyformat = null, [WorkflowExpression] Func<string> bodycontext = null)
+        public IBodyWorkflowAction<DocGenResponse> DocGen(Expression<Func<bodylanguageInput>> bodylanguage, Expression<Func<string>> bodycode, Expression<Func<bool>> bodycommented = null, Expression<Func<bodyformatInput>> bodyformat = null, Expression<Func<string>> bodycontext = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DocGenResponse> __BuildDocGen(WorkflowExpression<bodylanguageInput> bodylanguage, WorkflowExpression<string> bodycode, WorkflowExpression<bool> bodycommented = null, WorkflowExpression<bodyformatInput> bodyformat = null, WorkflowExpression<string> bodycontext = null)
-        {
-            WorkflowExpression.Validate(bodylanguage, nameof(bodylanguage), required: true);
-            WorkflowExpression.Validate(bodycode, nameof(bodycode), required: true);
-            WorkflowExpression.Validate(bodycommented, nameof(bodycommented), required: false);
-            WorkflowExpression.Validate(bodyformat, nameof(bodyformat), required: false);
-            WorkflowExpression.Validate(bodycontext, nameof(bodycontext), required: false);
+            var __workflow_bodylanguage = bodylanguage == null ? null : WorkflowExpression.Compile(bodylanguage);
+            WorkflowExpression.Validate(__workflow_bodylanguage, nameof(bodylanguage), required: true);
+            var __workflow_bodycode = bodycode == null ? null : WorkflowExpression.Compile(bodycode);
+            WorkflowExpression.Validate(__workflow_bodycode, nameof(bodycode), required: true);
+            var __workflow_bodycommented = bodycommented == null ? null : WorkflowExpression.Compile(bodycommented);
+            WorkflowExpression.Validate(__workflow_bodycommented, nameof(bodycommented), required: false);
+            var __workflow_bodyformat = bodyformat == null ? null : WorkflowExpression.Compile(bodyformat);
+            WorkflowExpression.Validate(__workflow_bodyformat, nameof(bodyformat), required: false);
+            var __workflow_bodycontext = bodycontext == null ? null : WorkflowExpression.Compile(bodycontext);
+            WorkflowExpression.Validate(__workflow_bodycontext, nameof(bodycontext), required: false);
             return new DeferredBodyAction<DocGenResponse>(() =>
             {
                 var apiCallPath = "/v1/document";
@@ -33,11 +30,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mintlifyip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodycommented != null)
+                if (__workflow_bodycommented != null)
                 {
-                    if (bodycommented != null)
+                    if (__workflow_bodycommented != null)
                     {
-                        body["commented"] = ExpressionConverter.ConvertO(bodycommented);
+                        body["commented"] = ExpressionConverter.ConvertO(__workflow_bodycommented);
                         bodypropCount++;
                     }
 
@@ -50,18 +47,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mintlifyip
                 }
 
                 bodypropCount++;
-                body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
                 bodypropCount++;
-                body["code"] = ExpressionConverter.ConvertO(bodycode);
-                if (bodyformat != null)
+                body["code"] = ExpressionConverter.ConvertO(__workflow_bodycode);
+                if (__workflow_bodyformat != null)
                 {
-                    body["format"] = ExpressionConverter.ConvertO(bodyformat);
+                    body["format"] = ExpressionConverter.ConvertO(__workflow_bodyformat);
                     bodypropCount++;
                 }
 
-                if (bodycontext != null)
+                if (__workflow_bodycontext != null)
                 {
-                    body["context"] = ExpressionConverter.ConvertO(bodycontext);
+                    body["context"] = ExpressionConverter.ConvertO(__workflow_bodycontext);
                     bodypropCount++;
                 }
 

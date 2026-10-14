@@ -1,31 +1,25 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mappro
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class MapproActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mappro")]
-        [WorkflowExpressionFactory(nameof(__BuildGetPlaceById))]
-        public IBodyWorkflowAction<Place> GetPlaceById([WorkflowExpression] Func<string> mapId, [WorkflowExpression] Func<string> placeId)
+        public IBodyWorkflowAction<Place> GetPlaceById(Expression<Func<string>> mapId, Expression<Func<string>> placeId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Place> __BuildGetPlaceById(WorkflowExpression<string> mapId, WorkflowExpression<string> placeId)
-        {
-            WorkflowExpression.Validate(mapId, nameof(mapId), required: true);
-            WorkflowExpression.Validate(placeId, nameof(placeId), required: true);
+            var __workflow_mapId = mapId == null ? null : WorkflowExpression.Compile(mapId);
+            WorkflowExpression.Validate(__workflow_mapId, nameof(mapId), required: true);
+            var __workflow_placeId = placeId == null ? null : WorkflowExpression.Compile(placeId);
+            WorkflowExpression.Validate(__workflow_placeId, nameof(placeId), required: true);
             return new DeferredBodyAction<Place>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/places/{1}", ExpressionConverter.ConvertWithUrlEncoding(mapId, 1), ExpressionConverter.ConvertWithUrlEncoding(placeId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/places/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_mapId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_placeId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Place>(callPayload);
@@ -33,20 +27,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mappro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mappro")]
-        [WorkflowExpressionFactory(nameof(__BuildDeletePlace))]
-        public IWorkflowAction DeletePlace([WorkflowExpression] Func<string> mapId, [WorkflowExpression] Func<string> placeId)
+        public IWorkflowAction DeletePlace(Expression<Func<string>> mapId, Expression<Func<string>> placeId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDeletePlace(WorkflowExpression<string> mapId, WorkflowExpression<string> placeId)
-        {
-            WorkflowExpression.Validate(mapId, nameof(mapId), required: true);
-            WorkflowExpression.Validate(placeId, nameof(placeId), required: true);
+            var __workflow_mapId = mapId == null ? null : WorkflowExpression.Compile(mapId);
+            WorkflowExpression.Validate(__workflow_mapId, nameof(mapId), required: true);
+            var __workflow_placeId = placeId == null ? null : WorkflowExpression.Compile(placeId);
+            WorkflowExpression.Validate(__workflow_placeId, nameof(placeId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/places/{1}", ExpressionConverter.ConvertWithUrlEncoding(mapId, 1), ExpressionConverter.ConvertWithUrlEncoding(placeId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/places/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_mapId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_placeId, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -54,43 +43,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mappro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mappro")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdatePlace))]
-        public IBodyWorkflowAction<Place> UpdatePlace([WorkflowExpression] Func<string> mapId, [WorkflowExpression] Func<string> placeId, [WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodyaddress, [WorkflowExpression] Func<double> bodylatitude, [WorkflowExpression] Func<double> bodylongitude, [WorkflowExpression] Func<string> bodydescription = null)
+        public IBodyWorkflowAction<Place> UpdatePlace(Expression<Func<string>> mapId, Expression<Func<string>> placeId, Expression<Func<string>> bodytitle, Expression<Func<string>> bodyaddress, Expression<Func<double>> bodylatitude, Expression<Func<double>> bodylongitude, Expression<Func<string>> bodydescription = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Place> __BuildUpdatePlace(WorkflowExpression<string> mapId, WorkflowExpression<string> placeId, WorkflowExpression<string> bodytitle, WorkflowExpression<string> bodyaddress, WorkflowExpression<double> bodylatitude, WorkflowExpression<double> bodylongitude, WorkflowExpression<string> bodydescription = null)
-        {
-            WorkflowExpression.Validate(mapId, nameof(mapId), required: true);
-            WorkflowExpression.Validate(placeId, nameof(placeId), required: true);
-            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            WorkflowExpression.Validate(bodyaddress, nameof(bodyaddress), required: true);
-            WorkflowExpression.Validate(bodylatitude, nameof(bodylatitude), required: true);
-            WorkflowExpression.Validate(bodylongitude, nameof(bodylongitude), required: true);
-            WorkflowExpression.Validate(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_mapId = mapId == null ? null : WorkflowExpression.Compile(mapId);
+            WorkflowExpression.Validate(__workflow_mapId, nameof(mapId), required: true);
+            var __workflow_placeId = placeId == null ? null : WorkflowExpression.Compile(placeId);
+            WorkflowExpression.Validate(__workflow_placeId, nameof(placeId), required: true);
+            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
+            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodyaddress = bodyaddress == null ? null : WorkflowExpression.Compile(bodyaddress);
+            WorkflowExpression.Validate(__workflow_bodyaddress, nameof(bodyaddress), required: true);
+            var __workflow_bodylatitude = bodylatitude == null ? null : WorkflowExpression.Compile(bodylatitude);
+            WorkflowExpression.Validate(__workflow_bodylatitude, nameof(bodylatitude), required: true);
+            var __workflow_bodylongitude = bodylongitude == null ? null : WorkflowExpression.Compile(bodylongitude);
+            WorkflowExpression.Validate(__workflow_bodylongitude, nameof(bodylongitude), required: true);
+            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
+            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
             return new DeferredBodyAction<Place>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/places/{1}", ExpressionConverter.ConvertWithUrlEncoding(mapId, 1), ExpressionConverter.ConvertWithUrlEncoding(placeId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/places/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_mapId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_placeId, 1));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
-                if (bodydescription != null)
+                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
+                if (__workflow_bodydescription != null)
                 {
-                    body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["address"] = ExpressionConverter.ConvertO(bodyaddress);
+                body["address"] = ExpressionConverter.ConvertO(__workflow_bodyaddress);
                 bodypropCount++;
-                body["lat"] = ExpressionConverter.ConvertO(bodylatitude);
+                body["lat"] = ExpressionConverter.ConvertO(__workflow_bodylatitude);
                 bodypropCount++;
-                body["lng"] = ExpressionConverter.ConvertO(bodylongitude);
+                body["lng"] = ExpressionConverter.ConvertO(__workflow_bodylongitude);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -101,19 +90,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mappro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mappro")]
-        [WorkflowExpressionFactory(nameof(__BuildGetMapPlacesById))]
-        public IBodyWorkflowAction<Place[]> GetMapPlacesById([WorkflowExpression] Func<string> mapId)
+        public IBodyWorkflowAction<Place[]> GetMapPlacesById(Expression<Func<string>> mapId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Place[]> __BuildGetMapPlacesById(WorkflowExpression<string> mapId)
-        {
-            WorkflowExpression.Validate(mapId, nameof(mapId), required: true);
+            var __workflow_mapId = mapId == null ? null : WorkflowExpression.Compile(mapId);
+            WorkflowExpression.Validate(__workflow_mapId, nameof(mapId), required: true);
             return new DeferredBodyAction<Place[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/places", ExpressionConverter.ConvertWithUrlEncoding(mapId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/places", ExpressionConverter.ConvertWithUrlEncoding(__workflow_mapId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Place[]>(callPayload);
@@ -121,42 +104,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mappro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mappro")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateNewPlace))]
-        public IBodyWorkflowAction<Place> CreateNewPlace([WorkflowExpression] Func<string> mapId, [WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodyaddress, [WorkflowExpression] Func<double> bodylatitude, [WorkflowExpression] Func<double> bodylongitude, [WorkflowExpression] Func<string> bodydescription = null)
+        public IBodyWorkflowAction<Place> CreateNewPlace(Expression<Func<string>> mapId, Expression<Func<string>> bodytitle, Expression<Func<string>> bodyaddress, Expression<Func<double>> bodylatitude, Expression<Func<double>> bodylongitude, Expression<Func<string>> bodydescription = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Place> __BuildCreateNewPlace(WorkflowExpression<string> mapId, WorkflowExpression<string> bodytitle, WorkflowExpression<string> bodyaddress, WorkflowExpression<double> bodylatitude, WorkflowExpression<double> bodylongitude, WorkflowExpression<string> bodydescription = null)
-        {
-            WorkflowExpression.Validate(mapId, nameof(mapId), required: true);
-            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            WorkflowExpression.Validate(bodyaddress, nameof(bodyaddress), required: true);
-            WorkflowExpression.Validate(bodylatitude, nameof(bodylatitude), required: true);
-            WorkflowExpression.Validate(bodylongitude, nameof(bodylongitude), required: true);
-            WorkflowExpression.Validate(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_mapId = mapId == null ? null : WorkflowExpression.Compile(mapId);
+            WorkflowExpression.Validate(__workflow_mapId, nameof(mapId), required: true);
+            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
+            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodyaddress = bodyaddress == null ? null : WorkflowExpression.Compile(bodyaddress);
+            WorkflowExpression.Validate(__workflow_bodyaddress, nameof(bodyaddress), required: true);
+            var __workflow_bodylatitude = bodylatitude == null ? null : WorkflowExpression.Compile(bodylatitude);
+            WorkflowExpression.Validate(__workflow_bodylatitude, nameof(bodylatitude), required: true);
+            var __workflow_bodylongitude = bodylongitude == null ? null : WorkflowExpression.Compile(bodylongitude);
+            WorkflowExpression.Validate(__workflow_bodylongitude, nameof(bodylongitude), required: true);
+            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
+            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
             return new DeferredBodyAction<Place>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/places", ExpressionConverter.ConvertWithUrlEncoding(mapId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/places", ExpressionConverter.ConvertWithUrlEncoding(__workflow_mapId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
-                if (bodydescription != null)
+                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
+                if (__workflow_bodydescription != null)
                 {
-                    body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["address"] = ExpressionConverter.ConvertO(bodyaddress);
+                body["address"] = ExpressionConverter.ConvertO(__workflow_bodyaddress);
                 bodypropCount++;
-                body["lat"] = ExpressionConverter.ConvertO(bodylatitude);
+                body["lat"] = ExpressionConverter.ConvertO(__workflow_bodylatitude);
                 bodypropCount++;
-                body["lng"] = ExpressionConverter.ConvertO(bodylongitude);
+                body["lng"] = ExpressionConverter.ConvertO(__workflow_bodylongitude);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

@@ -1,50 +1,48 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Centrical
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class CentricalActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "centrical")]
-        [WorkflowExpressionFactory(nameof(__BuildPostLearning))]
-        public IWorkflowAction PostLearning([WorkflowExpression] Func<string> learningType, [WorkflowExpression] Func<string> bodydateTime, [WorkflowExpression] Func<string> bodyuserId, [WorkflowExpression] Func<string> bodycourseName, [WorkflowExpression] Func<double> bodyscore, [WorkflowExpression] Func<string> bodycontentCategory = null)
+        public IWorkflowAction PostLearning(Expression<Func<string>> learningType, Expression<Func<string>> bodydateTime, Expression<Func<string>> bodyuserId, Expression<Func<string>> bodycourseName, Expression<Func<double>> bodyscore, Expression<Func<string>> bodycontentCategory = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildPostLearning(WorkflowExpression<string> learningType, WorkflowExpression<string> bodydateTime, WorkflowExpression<string> bodyuserId, WorkflowExpression<string> bodycourseName, WorkflowExpression<double> bodyscore, WorkflowExpression<string> bodycontentCategory = null)
-        {
-            WorkflowExpression.Validate(learningType, nameof(learningType), required: true);
-            WorkflowExpression.Validate(bodydateTime, nameof(bodydateTime), required: true);
-            WorkflowExpression.Validate(bodyuserId, nameof(bodyuserId), required: true);
-            WorkflowExpression.Validate(bodycourseName, nameof(bodycourseName), required: true);
-            WorkflowExpression.Validate(bodyscore, nameof(bodyscore), required: true);
-            WorkflowExpression.Validate(bodycontentCategory, nameof(bodycontentCategory), required: false);
+            var __workflow_learningType = learningType == null ? null : WorkflowExpression.Compile(learningType);
+            WorkflowExpression.Validate(__workflow_learningType, nameof(learningType), required: true);
+            var __workflow_bodydateTime = bodydateTime == null ? null : WorkflowExpression.Compile(bodydateTime);
+            WorkflowExpression.Validate(__workflow_bodydateTime, nameof(bodydateTime), required: true);
+            var __workflow_bodyuserId = bodyuserId == null ? null : WorkflowExpression.Compile(bodyuserId);
+            WorkflowExpression.Validate(__workflow_bodyuserId, nameof(bodyuserId), required: true);
+            var __workflow_bodycourseName = bodycourseName == null ? null : WorkflowExpression.Compile(bodycourseName);
+            WorkflowExpression.Validate(__workflow_bodycourseName, nameof(bodycourseName), required: true);
+            var __workflow_bodyscore = bodyscore == null ? null : WorkflowExpression.Compile(bodyscore);
+            WorkflowExpression.Validate(__workflow_bodyscore, nameof(bodyscore), required: true);
+            var __workflow_bodycontentCategory = bodycontentCategory == null ? null : WorkflowExpression.Compile(bodycontentCategory);
+            WorkflowExpression.Validate(__workflow_bodycontentCategory, nameof(bodycontentCategory), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/import/push/lms_{0}", ExpressionConverter.ConvertWithUrlEncoding(learningType, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/import/push/lms_{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_learningType, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["event_time"] = ExpressionConverter.ConvertO(bodydateTime);
+                body["event_time"] = ExpressionConverter.ConvertO(__workflow_bodydateTime);
                 bodypropCount++;
-                body["user_id"] = ExpressionConverter.ConvertO(bodyuserId);
+                body["user_id"] = ExpressionConverter.ConvertO(__workflow_bodyuserId);
                 bodypropCount++;
-                body["course_name"] = ExpressionConverter.ConvertO(bodycourseName);
+                body["course_name"] = ExpressionConverter.ConvertO(__workflow_bodycourseName);
                 bodypropCount++;
-                body["score"] = ExpressionConverter.ConvertO(bodyscore);
-                if (bodycontentCategory != null)
+                body["score"] = ExpressionConverter.ConvertO(__workflow_bodyscore);
+                if (__workflow_bodycontentCategory != null)
                 {
-                    body["course_category"] = ExpressionConverter.ConvertO(bodycontentCategory);
+                    body["course_category"] = ExpressionConverter.ConvertO(__workflow_bodycontentCategory);
                     bodypropCount++;
                 }
 
@@ -58,39 +56,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Centrical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "centrical")]
-        [WorkflowExpressionFactory(nameof(__BuildPostPerformance))]
-        public IWorkflowAction PostPerformance([WorkflowExpression] Func<string> performanceType, [WorkflowExpression] Func<string> bodydateTime, [WorkflowExpression] Func<string> bodyuserId, [WorkflowExpression] Func<string> bodykpiName, [WorkflowExpression] Func<double> bodykpiValue, [WorkflowExpression] Func<string> bodyadditionalData = null)
+        public IWorkflowAction PostPerformance(Expression<Func<string>> performanceType, Expression<Func<string>> bodydateTime, Expression<Func<string>> bodyuserId, Expression<Func<string>> bodykpiName, Expression<Func<double>> bodykpiValue, Expression<Func<string>> bodyadditionalData = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildPostPerformance(WorkflowExpression<string> performanceType, WorkflowExpression<string> bodydateTime, WorkflowExpression<string> bodyuserId, WorkflowExpression<string> bodykpiName, WorkflowExpression<double> bodykpiValue, WorkflowExpression<string> bodyadditionalData = null)
-        {
-            WorkflowExpression.Validate(performanceType, nameof(performanceType), required: true);
-            WorkflowExpression.Validate(bodydateTime, nameof(bodydateTime), required: true);
-            WorkflowExpression.Validate(bodyuserId, nameof(bodyuserId), required: true);
-            WorkflowExpression.Validate(bodykpiName, nameof(bodykpiName), required: true);
-            WorkflowExpression.Validate(bodykpiValue, nameof(bodykpiValue), required: true);
-            WorkflowExpression.Validate(bodyadditionalData, nameof(bodyadditionalData), required: false);
+            var __workflow_performanceType = performanceType == null ? null : WorkflowExpression.Compile(performanceType);
+            WorkflowExpression.Validate(__workflow_performanceType, nameof(performanceType), required: true);
+            var __workflow_bodydateTime = bodydateTime == null ? null : WorkflowExpression.Compile(bodydateTime);
+            WorkflowExpression.Validate(__workflow_bodydateTime, nameof(bodydateTime), required: true);
+            var __workflow_bodyuserId = bodyuserId == null ? null : WorkflowExpression.Compile(bodyuserId);
+            WorkflowExpression.Validate(__workflow_bodyuserId, nameof(bodyuserId), required: true);
+            var __workflow_bodykpiName = bodykpiName == null ? null : WorkflowExpression.Compile(bodykpiName);
+            WorkflowExpression.Validate(__workflow_bodykpiName, nameof(bodykpiName), required: true);
+            var __workflow_bodykpiValue = bodykpiValue == null ? null : WorkflowExpression.Compile(bodykpiValue);
+            WorkflowExpression.Validate(__workflow_bodykpiValue, nameof(bodykpiValue), required: true);
+            var __workflow_bodyadditionalData = bodyadditionalData == null ? null : WorkflowExpression.Compile(bodyadditionalData);
+            WorkflowExpression.Validate(__workflow_bodyadditionalData, nameof(bodyadditionalData), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/import/push/kpi_{0}", ExpressionConverter.ConvertWithUrlEncoding(performanceType, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/import/push/kpi_{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_performanceType, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["event_time"] = ExpressionConverter.ConvertO(bodydateTime);
+                body["event_time"] = ExpressionConverter.ConvertO(__workflow_bodydateTime);
                 bodypropCount++;
-                body["user_id"] = ExpressionConverter.ConvertO(bodyuserId);
+                body["user_id"] = ExpressionConverter.ConvertO(__workflow_bodyuserId);
                 bodypropCount++;
-                body["kpi_name"] = ExpressionConverter.ConvertO(bodykpiName);
+                body["kpi_name"] = ExpressionConverter.ConvertO(__workflow_bodykpiName);
                 bodypropCount++;
-                body["kpi_value"] = ExpressionConverter.ConvertO(bodykpiValue);
-                if (bodyadditionalData != null)
+                body["kpi_value"] = ExpressionConverter.ConvertO(__workflow_bodykpiValue);
+                if (__workflow_bodyadditionalData != null)
                 {
-                    body["additional_data"] = ExpressionConverter.ConvertO(bodyadditionalData);
+                    body["additional_data"] = ExpressionConverter.ConvertO(__workflow_bodyadditionalData);
                     bodypropCount++;
                 }
 

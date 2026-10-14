@@ -1,30 +1,23 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotowebinar
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class GotowebinarActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gotowebinar")]
-        [WorkflowExpressionFactory(nameof(__BuildGetWebinar))]
-        public IBodyWorkflowAction<Webinar> GetWebinar([WorkflowExpression] Func<string> webinarKey)
+        public IBodyWorkflowAction<Webinar> GetWebinar(Expression<Func<string>> webinarKey)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Webinar> __BuildGetWebinar(WorkflowExpression<string> webinarKey)
-        {
-            WorkflowExpression.Validate(webinarKey, nameof(webinarKey), required: true);
+            var __workflow_webinarKey = webinarKey == null ? null : WorkflowExpression.Compile(webinarKey);
+            WorkflowExpression.Validate(__workflow_webinarKey, nameof(webinarKey), required: true);
             return new DeferredBodyAction<Webinar>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/organizers/organizerKey/webinars/{0}", ExpressionConverter.ConvertWithUrlEncoding(webinarKey, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/organizers/organizerKey/webinars/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_webinarKey, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Webinar>(callPayload);
@@ -32,19 +25,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotowebinar
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gotowebinar")]
-        [WorkflowExpressionFactory(nameof(__BuildListRegistrations))]
-        public IBodyWorkflowAction<RegistrantSummary[]> ListRegistrations([WorkflowExpression] Func<string> webinarKey)
+        public IBodyWorkflowAction<RegistrantSummary[]> ListRegistrations(Expression<Func<string>> webinarKey)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<RegistrantSummary[]> __BuildListRegistrations(WorkflowExpression<string> webinarKey)
-        {
-            WorkflowExpression.Validate(webinarKey, nameof(webinarKey), required: true);
+            var __workflow_webinarKey = webinarKey == null ? null : WorkflowExpression.Compile(webinarKey);
+            WorkflowExpression.Validate(__workflow_webinarKey, nameof(webinarKey), required: true);
             return new DeferredBodyAction<RegistrantSummary[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/organizers/organizerKey/webinars/{0}/registrants", ExpressionConverter.ConvertWithUrlEncoding(webinarKey, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/organizers/organizerKey/webinars/{0}/registrants", ExpressionConverter.ConvertWithUrlEncoding(__workflow_webinarKey, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<RegistrantSummary[]>(callPayload);
@@ -52,41 +39,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotowebinar
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gotowebinar")]
-        [WorkflowExpressionFactory(nameof(__BuildAddRegistrant))]
-        public IBodyWorkflowAction<RegistrationResult> AddRegistrant([WorkflowExpression] Func<string> webinarKey, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null)
+        public IBodyWorkflowAction<RegistrationResult> AddRegistrant(Expression<Func<string>> webinarKey, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<RegistrationResult> __BuildAddRegistrant(WorkflowExpression<string> webinarKey, WorkflowExpression<string> bodyemail = null, WorkflowExpression<string> bodyfirstName = null, WorkflowExpression<string> bodylastName = null)
-        {
-            WorkflowExpression.Validate(webinarKey, nameof(webinarKey), required: true);
-            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            WorkflowExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
-            WorkflowExpression.Validate(bodylastName, nameof(bodylastName), required: false);
+            var __workflow_webinarKey = webinarKey == null ? null : WorkflowExpression.Compile(webinarKey);
+            WorkflowExpression.Validate(__workflow_webinarKey, nameof(webinarKey), required: true);
+            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
+            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: false);
+            var __workflow_bodyfirstName = bodyfirstName == null ? null : WorkflowExpression.Compile(bodyfirstName);
+            WorkflowExpression.Validate(__workflow_bodyfirstName, nameof(bodyfirstName), required: false);
+            var __workflow_bodylastName = bodylastName == null ? null : WorkflowExpression.Compile(bodylastName);
+            WorkflowExpression.Validate(__workflow_bodylastName, nameof(bodylastName), required: false);
             return new DeferredBodyAction<RegistrationResult>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/organizers/organizerKey/webinars/{0}/registrants", ExpressionConverter.ConvertWithUrlEncoding(webinarKey, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/organizers/organizerKey/webinars/{0}/registrants", ExpressionConverter.ConvertWithUrlEncoding(__workflow_webinarKey, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyemail != null)
+                if (__workflow_bodyemail != null)
                 {
-                    body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                    body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
                     bodypropCount++;
                 }
 
-                if (bodyfirstName != null)
+                if (__workflow_bodyfirstName != null)
                 {
-                    body["firstName"] = ExpressionConverter.ConvertO(bodyfirstName);
+                    body["firstName"] = ExpressionConverter.ConvertO(__workflow_bodyfirstName);
                     bodypropCount++;
                 }
 
-                if (bodylastName != null)
+                if (__workflow_bodylastName != null)
                 {
-                    body["lastName"] = ExpressionConverter.ConvertO(bodylastName);
+                    body["lastName"] = ExpressionConverter.ConvertO(__workflow_bodylastName);
                     bodypropCount++;
                 }
 
@@ -100,20 +84,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotowebinar
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gotowebinar")]
-        [WorkflowExpressionFactory(nameof(__BuildGetRegistrant))]
-        public IBodyWorkflowAction<Registrant> GetRegistrant([WorkflowExpression] Func<string> webinarKey, [WorkflowExpression] Func<string> registrantKey)
+        public IBodyWorkflowAction<Registrant> GetRegistrant(Expression<Func<string>> webinarKey, Expression<Func<string>> registrantKey)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Registrant> __BuildGetRegistrant(WorkflowExpression<string> webinarKey, WorkflowExpression<string> registrantKey)
-        {
-            WorkflowExpression.Validate(webinarKey, nameof(webinarKey), required: true);
-            WorkflowExpression.Validate(registrantKey, nameof(registrantKey), required: true);
+            var __workflow_webinarKey = webinarKey == null ? null : WorkflowExpression.Compile(webinarKey);
+            WorkflowExpression.Validate(__workflow_webinarKey, nameof(webinarKey), required: true);
+            var __workflow_registrantKey = registrantKey == null ? null : WorkflowExpression.Compile(registrantKey);
+            WorkflowExpression.Validate(__workflow_registrantKey, nameof(registrantKey), required: true);
             return new DeferredBodyAction<Registrant>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/organizers/organizerKey/webinars/{0}/registrants/{1}", ExpressionConverter.ConvertWithUrlEncoding(webinarKey, 1), ExpressionConverter.ConvertWithUrlEncoding(registrantKey, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/organizers/organizerKey/webinars/{0}/registrants/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_webinarKey, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_registrantKey, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Registrant>(callPayload);
@@ -140,19 +119,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotowebinar
             return new ApiConnectionTrigger<WebinarSummary[]>(callPayload, recurrence: recurrence);
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildOnNewRegistration))]
-        public IBodyWorkflowTrigger<RegistrantSummary[]> OnNewRegistration([WorkflowExpression] Func<string> webinarKey,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RegistrantSummary[]> OnNewRegistration(Expression<Func<string>> webinarKey, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<RegistrantSummary[]> __BuildOnNewRegistration(WorkflowExpression<string> webinarKey,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(webinarKey, nameof(webinarKey), required: true);
+            var __workflow_webinarKey = webinarKey == null ? null : WorkflowExpression.Compile(webinarKey);
+            WorkflowExpression.Validate(__workflow_webinarKey, nameof(webinarKey), required: true);
             return new DeferredBodyTrigger<RegistrantSummary[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/organizers/organizerKey/webinars/{0}/registrants", ExpressionConverter.ConvertWithUrlEncoding(webinarKey, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/organizers/organizerKey/webinars/{0}/registrants", ExpressionConverter.ConvertWithUrlEncoding(__workflow_webinarKey, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionTrigger<RegistrantSummary[]>(callPayload, recurrence: recurrence);

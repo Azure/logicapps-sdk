@@ -1,38 +1,32 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nintexworkflow
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class NintexworkflowActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nintexworkflow")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateWorkflowInstance))]
-        public IWorkflowAction CreateWorkflowInstance([WorkflowExpression] Func<string> workflowId, [WorkflowExpression] Func<object> bodystartData = null)
+        public IWorkflowAction CreateWorkflowInstance(Expression<Func<string>> workflowId, Expression<Func<object>> bodystartData = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildCreateWorkflowInstance(WorkflowExpression<string> workflowId, WorkflowExpression<object> bodystartData = null)
-        {
-            WorkflowExpression.Validate(workflowId, nameof(workflowId), required: true);
-            WorkflowExpression.Validate(bodystartData, nameof(bodystartData), required: false);
+            var __workflow_workflowId = workflowId == null ? null : WorkflowExpression.Compile(workflowId);
+            WorkflowExpression.Validate(__workflow_workflowId, nameof(workflowId), required: true);
+            var __workflow_bodystartData = bodystartData == null ? null : WorkflowExpression.Compile(bodystartData);
+            WorkflowExpression.Validate(__workflow_bodystartData, nameof(bodystartData), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/workflows/v1/designs/{0}/instances", ExpressionConverter.ConvertWithUrlEncoding(workflowId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/workflows/v1/designs/{0}/instances", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workflowId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodystartData != null)
+                if (__workflow_bodystartData != null)
                 {
-                    body["startData"] = ExpressionConverter.ConvertO(bodystartData);
+                    body["startData"] = ExpressionConverter.ConvertO(__workflow_bodystartData);
                     bodypropCount++;
                 }
 

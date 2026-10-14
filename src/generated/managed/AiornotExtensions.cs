@@ -1,12 +1,12 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiornot
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class AiornotActions([ConnectionName] string connectionId)
     {
@@ -20,16 +20,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiornot
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiornot")]
-        [WorkflowExpressionFactory(nameof(__BuildImageReport))]
-        public IBodyWorkflowAction<ImageReportResponse> ImageReport([WorkflowExpression] Func<string> bodyObject)
+        public IBodyWorkflowAction<ImageReportResponse> ImageReport(Expression<Func<string>> bodyObject)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ImageReportResponse> __BuildImageReport(WorkflowExpression<string> bodyObject)
-        {
-            WorkflowExpression.Validate(bodyObject, nameof(bodyObject), required: true);
+            var __workflow_bodyObject = bodyObject == null ? null : WorkflowExpression.Compile(bodyObject);
+            WorkflowExpression.Validate(__workflow_bodyObject, nameof(bodyObject), required: true);
             return new DeferredBodyAction<ImageReportResponse>(() =>
             {
                 var apiCallPath = "/v1/reports/image";
@@ -38,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiornot
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["object"] = ExpressionConverter.ConvertO(bodyObject);
+                body["object"] = ExpressionConverter.ConvertO(__workflow_bodyObject);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

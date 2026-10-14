@@ -1,30 +1,26 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zanranscaffolder
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class ZanranscaffolderActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zanranscaffolder")]
-        [WorkflowExpressionFactory(nameof(__BuildUploadDocument))]
-        public IBodyWorkflowAction<string> UploadDocument([WorkflowExpression] Func<object> file, [WorkflowExpression] Func<int> startPage = null, [WorkflowExpression] Func<int> endPage = null, [WorkflowExpression] Func<string> coords = null)
+        public IBodyWorkflowAction<string> UploadDocument(Expression<Func<object>> file, Expression<Func<int>> startPage = null, Expression<Func<int>> endPage = null, Expression<Func<string>> coords = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildUploadDocument(WorkflowExpression<object> file, WorkflowExpression<int> startPage = null, WorkflowExpression<int> endPage = null, WorkflowExpression<string> coords = null)
-        {
-            WorkflowExpression.Validate(file, nameof(file), required: true);
-            WorkflowExpression.Validate(startPage, nameof(startPage), required: false);
-            WorkflowExpression.Validate(endPage, nameof(endPage), required: false);
-            WorkflowExpression.Validate(coords, nameof(coords), required: false);
+            var __workflow_file = file == null ? null : WorkflowExpression.Compile(file);
+            WorkflowExpression.Validate(__workflow_file, nameof(file), required: true);
+            var __workflow_startPage = startPage == null ? null : WorkflowExpression.Compile(startPage);
+            WorkflowExpression.Validate(__workflow_startPage, nameof(startPage), required: false);
+            var __workflow_endPage = endPage == null ? null : WorkflowExpression.Compile(endPage);
+            WorkflowExpression.Validate(__workflow_endPage, nameof(endPage), required: false);
+            var __workflow_coords = coords == null ? null : WorkflowExpression.Compile(coords);
+            WorkflowExpression.Validate(__workflow_coords, nameof(coords), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/api/Upload/UploadFile";
@@ -35,16 +31,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zanranscaffolder
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zanranscaffolder")]
-        [WorkflowExpressionFactory(nameof(__BuildGetStatus))]
-        public IBodyWorkflowAction<string> GetStatus([WorkflowExpression] Func<string> docname)
+        public IBodyWorkflowAction<string> GetStatus(Expression<Func<string>> docname)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildGetStatus(WorkflowExpression<string> docname)
-        {
-            WorkflowExpression.Validate(docname, nameof(docname), required: true);
+            var __workflow_docname = docname == null ? null : WorkflowExpression.Compile(docname);
+            WorkflowExpression.Validate(__workflow_docname, nameof(docname), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/api/DocSearch/GetStatus";
@@ -55,19 +45,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zanranscaffolder
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zanranscaffolder")]
-        [WorkflowExpressionFactory(nameof(__BuildDownloadFileXlsx))]
-        public IBodyWorkflowAction<object> DownloadFileXlsx([WorkflowExpression] Func<string> docname)
+        public IBodyWorkflowAction<object> DownloadFileXlsx(Expression<Func<string>> docname)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<object> __BuildDownloadFileXlsx(WorkflowExpression<string> docname)
-        {
-            WorkflowExpression.Validate(docname, nameof(docname), required: true);
+            var __workflow_docname = docname == null ? null : WorkflowExpression.Compile(docname);
+            WorkflowExpression.Validate(__workflow_docname, nameof(docname), required: true);
             return new DeferredBodyAction<object>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/files/{0}.xlsx", ExpressionConverter.ConvertWithUrlEncoding(docname, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/files/{0}.xlsx", ExpressionConverter.ConvertWithUrlEncoding(__workflow_docname, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<object>(callPayload);
@@ -75,19 +59,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zanranscaffolder
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zanranscaffolder")]
-        [WorkflowExpressionFactory(nameof(__BuildDownloadFileAllXml))]
-        public IBodyWorkflowAction<object> DownloadFileAllXml([WorkflowExpression] Func<string> docname)
+        public IBodyWorkflowAction<object> DownloadFileAllXml(Expression<Func<string>> docname)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<object> __BuildDownloadFileAllXml(WorkflowExpression<string> docname)
-        {
-            WorkflowExpression.Validate(docname, nameof(docname), required: true);
+            var __workflow_docname = docname == null ? null : WorkflowExpression.Compile(docname);
+            WorkflowExpression.Validate(__workflow_docname, nameof(docname), required: true);
             return new DeferredBodyAction<object>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/files/allxml/{0}", ExpressionConverter.ConvertWithUrlEncoding(docname, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/files/allxml/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_docname, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<object>(callPayload);
@@ -95,19 +73,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zanranscaffolder
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zanranscaffolder")]
-        [WorkflowExpressionFactory(nameof(__BuildDownloadFileZnr))]
-        public IBodyWorkflowAction<object> DownloadFileZnr([WorkflowExpression] Func<string> docname)
+        public IBodyWorkflowAction<object> DownloadFileZnr(Expression<Func<string>> docname)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<object> __BuildDownloadFileZnr(WorkflowExpression<string> docname)
-        {
-            WorkflowExpression.Validate(docname, nameof(docname), required: true);
+            var __workflow_docname = docname == null ? null : WorkflowExpression.Compile(docname);
+            WorkflowExpression.Validate(__workflow_docname, nameof(docname), required: true);
             return new DeferredBodyAction<object>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/files/znr/{0}", ExpressionConverter.ConvertWithUrlEncoding(docname, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/files/znr/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_docname, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<object>(callPayload);

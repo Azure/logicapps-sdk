@@ -1,12 +1,12 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ifactoproofofdeliver
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class IfactoproofofdeliverActions([ConnectionName] string connectionId)
     {
@@ -20,19 +20,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ifactoproofofdeliver
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ifactoproofofdeliver")]
-        [WorkflowExpressionFactory(nameof(__BuildListCompany))]
-        public IBodyWorkflowAction<ListCompanyResponse> ListCompany([WorkflowExpression] Func<string> bcenvironment)
+        public IBodyWorkflowAction<ListCompanyResponse> ListCompany(Expression<Func<string>> bcenvironment)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListCompanyResponse> __BuildListCompany(WorkflowExpression<string> bcenvironment)
-        {
-            WorkflowExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
+            var __workflow_bcenvironment = bcenvironment == null ? null : WorkflowExpression.Compile(bcenvironment);
+            WorkflowExpression.Validate(__workflow_bcenvironment, nameof(bcenvironment), required: true);
             return new DeferredBodyAction<ListCompanyResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2.0/{0}/api/v2.0/companies", ExpressionConverter.ConvertWithUrlEncoding(bcenvironment, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2.0/{0}/api/v2.0/companies", ExpressionConverter.ConvertWithUrlEncoding(__workflow_bcenvironment, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ListCompanyResponse>(callPayload);
@@ -40,20 +34,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ifactoproofofdeliver
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ifactoproofofdeliver")]
-        [WorkflowExpressionFactory(nameof(__BuildGetCompany))]
-        public IBodyWorkflowAction<GetCompanyResponse> GetCompany([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company)
+        public IBodyWorkflowAction<GetCompanyResponse> GetCompany(Expression<Func<string>> bcenvironment, Expression<Func<string>> company)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetCompanyResponse> __BuildGetCompany(WorkflowExpression<string> bcenvironment, WorkflowExpression<string> company)
-        {
-            WorkflowExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
-            WorkflowExpression.Validate(company, nameof(company), required: true);
+            var __workflow_bcenvironment = bcenvironment == null ? null : WorkflowExpression.Compile(bcenvironment);
+            WorkflowExpression.Validate(__workflow_bcenvironment, nameof(bcenvironment), required: true);
+            var __workflow_company = company == null ? null : WorkflowExpression.Compile(company);
+            WorkflowExpression.Validate(__workflow_company, nameof(company), required: true);
             return new DeferredBodyAction<GetCompanyResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2.0/{0}/api/v2.0/companies({1})", ExpressionConverter.ConvertWithUrlEncoding(bcenvironment, 1), ExpressionConverter.ConvertWithUrlEncoding(company, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2.0/{0}/api/v2.0/companies({1})", ExpressionConverter.ConvertWithUrlEncoding(__workflow_bcenvironment, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_company, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetCompanyResponse>(callPayload);

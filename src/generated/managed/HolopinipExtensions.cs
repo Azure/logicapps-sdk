@@ -1,38 +1,32 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Holopinip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class HolopinipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "holopinip")]
-        [WorkflowExpressionFactory(nameof(__BuildIssue))]
-        public IBodyWorkflowAction<IssuePostResponse> Issue([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyemail)
+        public IBodyWorkflowAction<IssuePostResponse> Issue(Expression<Func<string>> id, Expression<Func<string>> bodyemail)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<IssuePostResponse> __BuildIssue(WorkflowExpression<string> id, WorkflowExpression<string> bodyemail)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
+            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
             return new DeferredBodyAction<IssuePostResponse>(() =>
             {
                 var apiCallPath = "/sticker/share";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -43,43 +37,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Holopinip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "holopinip")]
-        [WorkflowExpressionFactory(nameof(__BuildUserStickerGet))]
-        public IBodyWorkflowAction<UserStickerGetResponse> UserStickerGet([WorkflowExpression] Func<string> username)
+        public IBodyWorkflowAction<UserStickerGetResponse> UserStickerGet(Expression<Func<string>> username)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UserStickerGetResponse> __BuildUserStickerGet(WorkflowExpression<string> username)
-        {
-            WorkflowExpression.Validate(username, nameof(username), required: true);
+            var __workflow_username = username == null ? null : WorkflowExpression.Compile(username);
+            WorkflowExpression.Validate(__workflow_username, nameof(username), required: true);
             return new DeferredBodyAction<UserStickerGetResponse>(() =>
             {
                 var apiCallPath = "/stickers";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["username"] = ExpressionConverter.Convert(username);
+                callPayload.Queries["username"] = ExpressionConverter.Convert(__workflow_username);
                 return new ApiConnectionAction<UserStickerGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "holopinip")]
-        [WorkflowExpressionFactory(nameof(__BuildUserBoardGet))]
-        public IBodyWorkflowAction<UserBoardGetResponse> UserBoardGet([WorkflowExpression] Func<string> user)
+        public IBodyWorkflowAction<UserBoardGetResponse> UserBoardGet(Expression<Func<string>> user)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UserBoardGetResponse> __BuildUserBoardGet(WorkflowExpression<string> user)
-        {
-            WorkflowExpression.Validate(user, nameof(user), required: true);
+            var __workflow_user = user == null ? null : WorkflowExpression.Compile(user);
+            WorkflowExpression.Validate(__workflow_user, nameof(user), required: true);
             return new DeferredBodyAction<UserBoardGetResponse>(() =>
             {
                 var apiCallPath = "/user/board";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["user"] = ExpressionConverter.Convert(user);
+                callPayload.Queries["user"] = ExpressionConverter.Convert(__workflow_user);
                 return new ApiConnectionAction<UserBoardGetResponse>(callPayload);
             });
         }

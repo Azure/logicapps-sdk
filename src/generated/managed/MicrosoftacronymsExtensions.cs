@@ -1,27 +1,20 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class MicrosoftacronymsActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftacronyms")]
-        [WorkflowExpressionFactory(nameof(__BuildAcronymSearch))]
-        public IBodyWorkflowAction<AcronymSearchPostResponse> AcronymSearch([WorkflowExpression] Func<bodyrequestsInputItem[]> bodyrequests = null)
+        public IBodyWorkflowAction<AcronymSearchPostResponse> AcronymSearch(Expression<Func<bodyrequestsInputItem[]>> bodyrequests = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AcronymSearchPostResponse> __BuildAcronymSearch(WorkflowExpression<bodyrequestsInputItem[]> bodyrequests = null)
-        {
-            WorkflowExpression.Validate(bodyrequests, nameof(bodyrequests), required: false);
+            var __workflow_bodyrequests = bodyrequests == null ? null : WorkflowExpression.Compile(bodyrequests);
+            WorkflowExpression.Validate(__workflow_bodyrequests, nameof(bodyrequests), required: false);
             return new DeferredBodyAction<AcronymSearchPostResponse>(() =>
             {
                 var apiCallPath = "/query";
@@ -29,9 +22,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyrequests != null)
+                if (__workflow_bodyrequests != null)
                 {
-                    body["requests"] = ExpressionConverter.ConvertO(bodyrequests);
+                    body["requests"] = ExpressionConverter.ConvertO(__workflow_bodyrequests);
                     bodypropCount++;
                 }
 
@@ -54,20 +47,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftacronyms")]
-        [WorkflowExpressionFactory(nameof(__BuildAcronym))]
-        public IBodyWorkflowAction<AcronymPostResponse> Acronym([WorkflowExpression] Func<string> bodydisplayName, [WorkflowExpression] Func<string> bodystandsFor, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodywebUrl = null, [WorkflowExpression] Func<bodystateInput> bodystate = null)
+        public IBodyWorkflowAction<AcronymPostResponse> Acronym(Expression<Func<string>> bodydisplayName, Expression<Func<string>> bodystandsFor, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodywebUrl = null, Expression<Func<bodystateInput>> bodystate = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AcronymPostResponse> __BuildAcronym(WorkflowExpression<string> bodydisplayName, WorkflowExpression<string> bodystandsFor, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodywebUrl = null, WorkflowExpression<bodystateInput> bodystate = null)
-        {
-            WorkflowExpression.Validate(bodydisplayName, nameof(bodydisplayName), required: true);
-            WorkflowExpression.Validate(bodystandsFor, nameof(bodystandsFor), required: true);
-            WorkflowExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            WorkflowExpression.Validate(bodywebUrl, nameof(bodywebUrl), required: false);
-            WorkflowExpression.Validate(bodystate, nameof(bodystate), required: false);
+            var __workflow_bodydisplayName = bodydisplayName == null ? null : WorkflowExpression.Compile(bodydisplayName);
+            WorkflowExpression.Validate(__workflow_bodydisplayName, nameof(bodydisplayName), required: true);
+            var __workflow_bodystandsFor = bodystandsFor == null ? null : WorkflowExpression.Compile(bodystandsFor);
+            WorkflowExpression.Validate(__workflow_bodystandsFor, nameof(bodystandsFor), required: true);
+            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
+            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodywebUrl = bodywebUrl == null ? null : WorkflowExpression.Compile(bodywebUrl);
+            WorkflowExpression.Validate(__workflow_bodywebUrl, nameof(bodywebUrl), required: false);
+            var __workflow_bodystate = bodystate == null ? null : WorkflowExpression.Compile(bodystate);
+            WorkflowExpression.Validate(__workflow_bodystate, nameof(bodystate), required: false);
             return new DeferredBodyAction<AcronymPostResponse>(() =>
             {
                 var apiCallPath = "/acronyms";
@@ -76,26 +67,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
+                body["displayName"] = ExpressionConverter.ConvertO(__workflow_bodydisplayName);
                 bodypropCount++;
-                body["standsFor"] = ExpressionConverter.ConvertO(bodystandsFor);
-                if (bodydescription != null)
+                body["standsFor"] = ExpressionConverter.ConvertO(__workflow_bodystandsFor);
+                if (__workflow_bodydescription != null)
                 {
-                    body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
                     bodypropCount++;
                 }
 
-                if (bodywebUrl != null)
+                if (__workflow_bodywebUrl != null)
                 {
-                    body["webUrl"] = ExpressionConverter.ConvertO(bodywebUrl);
+                    body["webUrl"] = ExpressionConverter.ConvertO(__workflow_bodywebUrl);
                     bodypropCount++;
                 }
 
-                if (bodystate != null)
+                if (__workflow_bodystate != null)
                 {
-                    if (bodystate != null)
+                    if (__workflow_bodystate != null)
                     {
-                        body["state"] = ExpressionConverter.ConvertO(bodystate);
+                        body["state"] = ExpressionConverter.ConvertO(__workflow_bodystate);
                         bodypropCount++;
                     }
 
@@ -117,19 +108,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftacronyms")]
-        [WorkflowExpressionFactory(nameof(__BuildAcronymGet))]
-        public IBodyWorkflowAction<AcronymGetResponse> AcronymGet([WorkflowExpression] Func<string> acronymsId)
+        public IBodyWorkflowAction<AcronymGetResponse> AcronymGet(Expression<Func<string>> acronymsId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AcronymGetResponse> __BuildAcronymGet(WorkflowExpression<string> acronymsId)
-        {
-            WorkflowExpression.Validate(acronymsId, nameof(acronymsId), required: true);
+            var __workflow_acronymsId = acronymsId == null ? null : WorkflowExpression.Compile(acronymsId);
+            WorkflowExpression.Validate(__workflow_acronymsId, nameof(acronymsId), required: true);
             return new DeferredBodyAction<AcronymGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/acronyms/{0}", ExpressionConverter.ConvertWithUrlEncoding(acronymsId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/acronyms/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_acronymsId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<AcronymGetResponse>(callPayload);
@@ -137,19 +122,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftacronyms")]
-        [WorkflowExpressionFactory(nameof(__BuildAcronymDelete))]
-        public IBodyWorkflowAction<string> AcronymDelete([WorkflowExpression] Func<string> acronymsId)
+        public IBodyWorkflowAction<string> AcronymDelete(Expression<Func<string>> acronymsId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildAcronymDelete(WorkflowExpression<string> acronymsId)
-        {
-            WorkflowExpression.Validate(acronymsId, nameof(acronymsId), required: true);
+            var __workflow_acronymsId = acronymsId == null ? null : WorkflowExpression.Compile(acronymsId);
+            WorkflowExpression.Validate(__workflow_acronymsId, nameof(acronymsId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/acronyms/{0}", ExpressionConverter.ConvertWithUrlEncoding(acronymsId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/acronyms/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_acronymsId, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -157,57 +136,56 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftacronyms")]
-        [WorkflowExpressionFactory(nameof(__BuildAcronymPatch))]
-        public IBodyWorkflowAction<string> AcronymPatch([WorkflowExpression] Func<string> acronymsId, [WorkflowExpression] Func<string> bodydisplayName = null, [WorkflowExpression] Func<string> bodystandsFor = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodywebUrl = null, [WorkflowExpression] Func<bodystateInput> bodystate = null)
+        public IBodyWorkflowAction<string> AcronymPatch(Expression<Func<string>> acronymsId, Expression<Func<string>> bodydisplayName = null, Expression<Func<string>> bodystandsFor = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodywebUrl = null, Expression<Func<bodystateInput>> bodystate = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildAcronymPatch(WorkflowExpression<string> acronymsId, WorkflowExpression<string> bodydisplayName = null, WorkflowExpression<string> bodystandsFor = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodywebUrl = null, WorkflowExpression<bodystateInput> bodystate = null)
-        {
-            WorkflowExpression.Validate(acronymsId, nameof(acronymsId), required: true);
-            WorkflowExpression.Validate(bodydisplayName, nameof(bodydisplayName), required: false);
-            WorkflowExpression.Validate(bodystandsFor, nameof(bodystandsFor), required: false);
-            WorkflowExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            WorkflowExpression.Validate(bodywebUrl, nameof(bodywebUrl), required: false);
-            WorkflowExpression.Validate(bodystate, nameof(bodystate), required: false);
+            var __workflow_acronymsId = acronymsId == null ? null : WorkflowExpression.Compile(acronymsId);
+            WorkflowExpression.Validate(__workflow_acronymsId, nameof(acronymsId), required: true);
+            var __workflow_bodydisplayName = bodydisplayName == null ? null : WorkflowExpression.Compile(bodydisplayName);
+            WorkflowExpression.Validate(__workflow_bodydisplayName, nameof(bodydisplayName), required: false);
+            var __workflow_bodystandsFor = bodystandsFor == null ? null : WorkflowExpression.Compile(bodystandsFor);
+            WorkflowExpression.Validate(__workflow_bodystandsFor, nameof(bodystandsFor), required: false);
+            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
+            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodywebUrl = bodywebUrl == null ? null : WorkflowExpression.Compile(bodywebUrl);
+            WorkflowExpression.Validate(__workflow_bodywebUrl, nameof(bodywebUrl), required: false);
+            var __workflow_bodystate = bodystate == null ? null : WorkflowExpression.Compile(bodystate);
+            WorkflowExpression.Validate(__workflow_bodystate, nameof(bodystate), required: false);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/acronyms/{0}", ExpressionConverter.ConvertWithUrlEncoding(acronymsId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/acronyms/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_acronymsId, 1));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodydisplayName != null)
+                if (__workflow_bodydisplayName != null)
                 {
-                    body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
+                    body["displayName"] = ExpressionConverter.ConvertO(__workflow_bodydisplayName);
                     bodypropCount++;
                 }
 
-                if (bodystandsFor != null)
+                if (__workflow_bodystandsFor != null)
                 {
-                    body["standsFor"] = ExpressionConverter.ConvertO(bodystandsFor);
+                    body["standsFor"] = ExpressionConverter.ConvertO(__workflow_bodystandsFor);
                     bodypropCount++;
                 }
 
-                if (bodydescription != null)
+                if (__workflow_bodydescription != null)
                 {
-                    body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
                     bodypropCount++;
                 }
 
-                if (bodywebUrl != null)
+                if (__workflow_bodywebUrl != null)
                 {
-                    body["webUrl"] = ExpressionConverter.ConvertO(bodywebUrl);
+                    body["webUrl"] = ExpressionConverter.ConvertO(__workflow_bodywebUrl);
                     bodypropCount++;
                 }
 
-                if (bodystate != null)
+                if (__workflow_bodystate != null)
                 {
-                    if (bodystate != null)
+                    if (__workflow_bodystate != null)
                     {
-                        body["state"] = ExpressionConverter.ConvertO(bodystate);
+                        body["state"] = ExpressionConverter.ConvertO(__workflow_bodystate);
                         bodypropCount++;
                     }
 

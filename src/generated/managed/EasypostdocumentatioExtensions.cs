@@ -1,77 +1,60 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easypostdocumentatio
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class EasypostdocumentatioActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easypostdocumentatio")]
-        [WorkflowExpressionFactory(nameof(__BuildGetSessionId))]
-        public IBodyWorkflowAction<GetSessionIdResponse> GetSessionId([WorkflowExpression] Func<string> account)
+        public IBodyWorkflowAction<GetSessionIdResponse> GetSessionId(Expression<Func<string>> account)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetSessionIdResponse> __BuildGetSessionId(WorkflowExpression<string> account)
-        {
-            WorkflowExpression.Validate(account, nameof(account), required: true);
+            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
+            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
             return new DeferredBodyAction<GetSessionIdResponse>(() =>
             {
                 var apiCallPath = "/publicinterface/get_session_id.json";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+                callPayload.Queries["account"] = ExpressionConverter.Convert(__workflow_account);
                 return new ApiConnectionAction<GetSessionIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easypostdocumentatio")]
-        [WorkflowExpressionFactory(nameof(__BuildPutSessionUpload))]
-        public IWorkflowAction PutSessionUpload([WorkflowExpression] Func<string> sessionId, [WorkflowExpression] Func<string> fileName, [WorkflowExpression] Func<string> fileContent = null)
+        public IWorkflowAction PutSessionUpload(Expression<Func<string>> sessionId, Expression<Func<string>> fileName, Expression<Func<string>> fileContent = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildPutSessionUpload(WorkflowExpression<string> sessionId, WorkflowExpression<string> fileName, WorkflowExpression<string> fileContent = null)
-        {
-            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: true);
-            WorkflowExpression.Validate(fileName, nameof(fileName), required: true);
-            WorkflowExpression.Validate(fileContent, nameof(fileContent), required: false);
+            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
+            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: true);
+            var __workflow_fileName = fileName == null ? null : WorkflowExpression.Compile(fileName);
+            WorkflowExpression.Validate(__workflow_fileName, nameof(fileName), required: true);
+            var __workflow_fileContent = fileContent == null ? null : WorkflowExpression.Compile(fileContent);
+            WorkflowExpression.Validate(__workflow_fileContent, nameof(fileContent), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/direct_upload/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(sessionId, 1), ExpressionConverter.ConvertWithUrlEncoding(fileName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/direct_upload/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sessionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fileName, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(fileContent);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_fileContent);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easypostdocumentatio")]
-        [WorkflowExpressionFactory(nameof(__BuildEndSession))]
-        public IBodyWorkflowAction<EndSessionResponse> EndSession([WorkflowExpression] Func<string> sessionId)
+        public IBodyWorkflowAction<EndSessionResponse> EndSession(Expression<Func<string>> sessionId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EndSessionResponse> __BuildEndSession(WorkflowExpression<string> sessionId)
-        {
-            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: true);
+            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
+            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: true);
             return new DeferredBodyAction<EndSessionResponse>(() =>
             {
                 var apiCallPath = "/publicinterface/end_session.json";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["session_id"] = ExpressionConverter.Convert(sessionId);
+                callPayload.Queries["session_id"] = ExpressionConverter.Convert(__workflow_sessionId);
                 return new ApiConnectionAction<EndSessionResponse>(callPayload);
             });
         }

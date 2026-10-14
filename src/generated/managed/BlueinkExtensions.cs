@@ -1,71 +1,63 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class BlueinkActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blueink")]
-        [WorkflowExpressionFactory(nameof(__BuildListBundles))]
-        public IBodyWorkflowAction<JToken[]> ListBundles([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<statusInInput> statusIn = null, [WorkflowExpression] Func<string> tag = null, [WorkflowExpression] Func<string> tagIn = null, [WorkflowExpression] Func<orderingInput> ordering = null)
+        public IBodyWorkflowAction<JToken[]> ListBundles(Expression<Func<string>> search = null, Expression<Func<statusInput>> status = null, Expression<Func<statusInInput>> statusIn = null, Expression<Func<string>> tag = null, Expression<Func<string>> tagIn = null, Expression<Func<orderingInput>> ordering = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken[]> __BuildListBundles(WorkflowExpression<string> search = null, WorkflowExpression<statusInput> status = null, WorkflowExpression<statusInInput> statusIn = null, WorkflowExpression<string> tag = null, WorkflowExpression<string> tagIn = null, WorkflowExpression<orderingInput> ordering = null)
-        {
-            WorkflowExpression.Validate(search, nameof(search), required: false);
-            WorkflowExpression.Validate(status, nameof(status), required: false);
-            WorkflowExpression.Validate(statusIn, nameof(statusIn), required: false);
-            WorkflowExpression.Validate(tag, nameof(tag), required: false);
-            WorkflowExpression.Validate(tagIn, nameof(tagIn), required: false);
-            WorkflowExpression.Validate(ordering, nameof(ordering), required: false);
+            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
+            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
+            var __workflow_status = status == null ? null : WorkflowExpression.Compile(status);
+            WorkflowExpression.Validate(__workflow_status, nameof(status), required: false);
+            var __workflow_statusIn = statusIn == null ? null : WorkflowExpression.Compile(statusIn);
+            WorkflowExpression.Validate(__workflow_statusIn, nameof(statusIn), required: false);
+            var __workflow_tag = tag == null ? null : WorkflowExpression.Compile(tag);
+            WorkflowExpression.Validate(__workflow_tag, nameof(tag), required: false);
+            var __workflow_tagIn = tagIn == null ? null : WorkflowExpression.Compile(tagIn);
+            WorkflowExpression.Validate(__workflow_tagIn, nameof(tagIn), required: false);
+            var __workflow_ordering = ordering == null ? null : WorkflowExpression.Compile(ordering);
+            WorkflowExpression.Validate(__workflow_ordering, nameof(ordering), required: false);
             return new DeferredBodyAction<JToken[]>(() =>
             {
                 var apiCallPath = "/bundles/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (search != null)
-                    callPayload.Queries["search"] = ExpressionConverter.Convert(search);
-                if (status != null)
-                    callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-                if (statusIn != null)
-                    callPayload.Queries["status__in"] = ExpressionConverter.Convert(statusIn);
-                if (tag != null)
-                    callPayload.Queries["tag"] = ExpressionConverter.Convert(tag);
-                if (tagIn != null)
-                    callPayload.Queries["tag__in"] = ExpressionConverter.Convert(tagIn);
-                if (ordering != null)
-                    callPayload.Queries["ordering"] = ExpressionConverter.Convert(ordering);
+                if (__workflow_search != null)
+                    callPayload.Queries["search"] = ExpressionConverter.Convert(__workflow_search);
+                if (__workflow_status != null)
+                    callPayload.Queries["status"] = ExpressionConverter.Convert(__workflow_status);
+                if (__workflow_statusIn != null)
+                    callPayload.Queries["status__in"] = ExpressionConverter.Convert(__workflow_statusIn);
+                if (__workflow_tag != null)
+                    callPayload.Queries["tag"] = ExpressionConverter.Convert(__workflow_tag);
+                if (__workflow_tagIn != null)
+                    callPayload.Queries["tag__in"] = ExpressionConverter.Convert(__workflow_tagIn);
+                if (__workflow_ordering != null)
+                    callPayload.Queries["ordering"] = ExpressionConverter.Convert(__workflow_ordering);
                 return new ApiConnectionAction<JToken[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blueink")]
-        [WorkflowExpressionFactory(nameof(__BuildListPersons))]
-        public IBodyWorkflowAction<ListPersonsResponseItem[]> ListPersons([WorkflowExpression] Func<string> search = null)
+        public IBodyWorkflowAction<ListPersonsResponseItem[]> ListPersons(Expression<Func<string>> search = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListPersonsResponseItem[]> __BuildListPersons(WorkflowExpression<string> search = null)
-        {
-            WorkflowExpression.Validate(search, nameof(search), required: false);
+            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
+            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
             return new DeferredBodyAction<ListPersonsResponseItem[]>(() =>
             {
                 var apiCallPath = "/persons/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (search != null)
-                    callPayload.Queries["search"] = ExpressionConverter.Convert(search);
+                if (__workflow_search != null)
+                    callPayload.Queries["search"] = ExpressionConverter.Convert(__workflow_search);
                 return new ApiConnectionAction<ListPersonsResponseItem[]>(callPayload);
             });
         }
@@ -80,119 +72,105 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blueink")]
-        [WorkflowExpressionFactory(nameof(__BuildListWebhooks))]
-        public IBodyWorkflowAction<ListWebhooksResponseItem[]> ListWebhooks([WorkflowExpression] Func<bool> enabled = null, [WorkflowExpression] Func<eventTypeInput> eventType = null)
+        public IBodyWorkflowAction<ListWebhooksResponseItem[]> ListWebhooks(Expression<Func<bool>> enabled = null, Expression<Func<eventTypeInput>> eventType = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListWebhooksResponseItem[]> __BuildListWebhooks(WorkflowExpression<bool> enabled = null, WorkflowExpression<eventTypeInput> eventType = null)
-        {
-            WorkflowExpression.Validate(enabled, nameof(enabled), required: false);
-            WorkflowExpression.Validate(eventType, nameof(eventType), required: false);
+            var __workflow_enabled = enabled == null ? null : WorkflowExpression.Compile(enabled);
+            WorkflowExpression.Validate(__workflow_enabled, nameof(enabled), required: false);
+            var __workflow_eventType = eventType == null ? null : WorkflowExpression.Compile(eventType);
+            WorkflowExpression.Validate(__workflow_eventType, nameof(eventType), required: false);
             return new DeferredBodyAction<ListWebhooksResponseItem[]>(() =>
             {
                 var apiCallPath = "/webhooks/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (enabled != null)
-                    callPayload.Queries["enabled"] = ExpressionConverter.Convert(enabled);
-                if (eventType != null)
-                    callPayload.Queries["event_type"] = ExpressionConverter.Convert(eventType);
+                if (__workflow_enabled != null)
+                    callPayload.Queries["enabled"] = ExpressionConverter.Convert(__workflow_enabled);
+                if (__workflow_eventType != null)
+                    callPayload.Queries["event_type"] = ExpressionConverter.Convert(__workflow_eventType);
                 return new ApiConnectionAction<ListWebhooksResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blueink")]
-        [WorkflowExpressionFactory(nameof(__BuildListWebhookDeliveries))]
-        public IBodyWorkflowAction<ListWebhookDeliveriesResponseItem[]> ListWebhookDeliveries([WorkflowExpression] Func<string> webhook = null, [WorkflowExpression] Func<string> webhookEvent = null, [WorkflowExpression] Func<eventTypeInput> eventType = null, [WorkflowExpression] Func<int> status = null, [WorkflowExpression] Func<string> date = null)
+        public IBodyWorkflowAction<ListWebhookDeliveriesResponseItem[]> ListWebhookDeliveries(Expression<Func<string>> webhook = null, Expression<Func<string>> webhookEvent = null, Expression<Func<eventTypeInput>> eventType = null, Expression<Func<int>> status = null, Expression<Func<string>> date = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListWebhookDeliveriesResponseItem[]> __BuildListWebhookDeliveries(WorkflowExpression<string> webhook = null, WorkflowExpression<string> webhookEvent = null, WorkflowExpression<eventTypeInput> eventType = null, WorkflowExpression<int> status = null, WorkflowExpression<string> date = null)
-        {
-            WorkflowExpression.Validate(webhook, nameof(webhook), required: false);
-            WorkflowExpression.Validate(webhookEvent, nameof(webhookEvent), required: false);
-            WorkflowExpression.Validate(eventType, nameof(eventType), required: false);
-            WorkflowExpression.Validate(status, nameof(status), required: false);
-            WorkflowExpression.Validate(date, nameof(date), required: false);
+            var __workflow_webhook = webhook == null ? null : WorkflowExpression.Compile(webhook);
+            WorkflowExpression.Validate(__workflow_webhook, nameof(webhook), required: false);
+            var __workflow_webhookEvent = webhookEvent == null ? null : WorkflowExpression.Compile(webhookEvent);
+            WorkflowExpression.Validate(__workflow_webhookEvent, nameof(webhookEvent), required: false);
+            var __workflow_eventType = eventType == null ? null : WorkflowExpression.Compile(eventType);
+            WorkflowExpression.Validate(__workflow_eventType, nameof(eventType), required: false);
+            var __workflow_status = status == null ? null : WorkflowExpression.Compile(status);
+            WorkflowExpression.Validate(__workflow_status, nameof(status), required: false);
+            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
+            WorkflowExpression.Validate(__workflow_date, nameof(date), required: false);
             return new DeferredBodyAction<ListWebhookDeliveriesResponseItem[]>(() =>
             {
                 var apiCallPath = "/webhooks/deliveries/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (webhook != null)
-                    callPayload.Queries["webhook"] = ExpressionConverter.Convert(webhook);
-                if (webhookEvent != null)
-                    callPayload.Queries["webhook_event"] = ExpressionConverter.Convert(webhookEvent);
-                if (eventType != null)
-                    callPayload.Queries["event_type"] = ExpressionConverter.Convert(eventType);
-                if (status != null)
-                    callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-                if (date != null)
-                    callPayload.Queries["date"] = ExpressionConverter.Convert(date);
+                if (__workflow_webhook != null)
+                    callPayload.Queries["webhook"] = ExpressionConverter.Convert(__workflow_webhook);
+                if (__workflow_webhookEvent != null)
+                    callPayload.Queries["webhook_event"] = ExpressionConverter.Convert(__workflow_webhookEvent);
+                if (__workflow_eventType != null)
+                    callPayload.Queries["event_type"] = ExpressionConverter.Convert(__workflow_eventType);
+                if (__workflow_status != null)
+                    callPayload.Queries["status"] = ExpressionConverter.Convert(__workflow_status);
+                if (__workflow_date != null)
+                    callPayload.Queries["date"] = ExpressionConverter.Convert(__workflow_date);
                 return new ApiConnectionAction<ListWebhookDeliveriesResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blueink")]
-        [WorkflowExpressionFactory(nameof(__BuildListWebhookEvents))]
-        public IBodyWorkflowAction<ListWebhookEventsResponseItem[]> ListWebhookEvents([WorkflowExpression] Func<string> webhook = null, [WorkflowExpression] Func<eventTypeInput> eventType = null, [WorkflowExpression] Func<int> status = null, [WorkflowExpression] Func<bool> success = null, [WorkflowExpression] Func<string> date = null)
+        public IBodyWorkflowAction<ListWebhookEventsResponseItem[]> ListWebhookEvents(Expression<Func<string>> webhook = null, Expression<Func<eventTypeInput>> eventType = null, Expression<Func<int>> status = null, Expression<Func<bool>> success = null, Expression<Func<string>> date = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListWebhookEventsResponseItem[]> __BuildListWebhookEvents(WorkflowExpression<string> webhook = null, WorkflowExpression<eventTypeInput> eventType = null, WorkflowExpression<int> status = null, WorkflowExpression<bool> success = null, WorkflowExpression<string> date = null)
-        {
-            WorkflowExpression.Validate(webhook, nameof(webhook), required: false);
-            WorkflowExpression.Validate(eventType, nameof(eventType), required: false);
-            WorkflowExpression.Validate(status, nameof(status), required: false);
-            WorkflowExpression.Validate(success, nameof(success), required: false);
-            WorkflowExpression.Validate(date, nameof(date), required: false);
+            var __workflow_webhook = webhook == null ? null : WorkflowExpression.Compile(webhook);
+            WorkflowExpression.Validate(__workflow_webhook, nameof(webhook), required: false);
+            var __workflow_eventType = eventType == null ? null : WorkflowExpression.Compile(eventType);
+            WorkflowExpression.Validate(__workflow_eventType, nameof(eventType), required: false);
+            var __workflow_status = status == null ? null : WorkflowExpression.Compile(status);
+            WorkflowExpression.Validate(__workflow_status, nameof(status), required: false);
+            var __workflow_success = success == null ? null : WorkflowExpression.Compile(success);
+            WorkflowExpression.Validate(__workflow_success, nameof(success), required: false);
+            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
+            WorkflowExpression.Validate(__workflow_date, nameof(date), required: false);
             return new DeferredBodyAction<ListWebhookEventsResponseItem[]>(() =>
             {
                 var apiCallPath = "/webhooks/events/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (webhook != null)
-                    callPayload.Queries["webhook"] = ExpressionConverter.Convert(webhook);
-                if (eventType != null)
-                    callPayload.Queries["event_type"] = ExpressionConverter.Convert(eventType);
-                if (status != null)
-                    callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-                if (success != null)
-                    callPayload.Queries["success"] = ExpressionConverter.Convert(success);
-                if (date != null)
-                    callPayload.Queries["date"] = ExpressionConverter.Convert(date);
+                if (__workflow_webhook != null)
+                    callPayload.Queries["webhook"] = ExpressionConverter.Convert(__workflow_webhook);
+                if (__workflow_eventType != null)
+                    callPayload.Queries["event_type"] = ExpressionConverter.Convert(__workflow_eventType);
+                if (__workflow_status != null)
+                    callPayload.Queries["status"] = ExpressionConverter.Convert(__workflow_status);
+                if (__workflow_success != null)
+                    callPayload.Queries["success"] = ExpressionConverter.Convert(__workflow_success);
+                if (__workflow_date != null)
+                    callPayload.Queries["date"] = ExpressionConverter.Convert(__workflow_date);
                 return new ApiConnectionAction<ListWebhookEventsResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blueink")]
-        [WorkflowExpressionFactory(nameof(__BuildListWebhookExtraHeaders))]
-        public IBodyWorkflowAction<ListWebhookExtraHeadersResponseItem[]> ListWebhookExtraHeaders([WorkflowExpression] Func<string> webhook = null, [WorkflowExpression] Func<eventTypeInput> eventType = null)
+        public IBodyWorkflowAction<ListWebhookExtraHeadersResponseItem[]> ListWebhookExtraHeaders(Expression<Func<string>> webhook = null, Expression<Func<eventTypeInput>> eventType = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListWebhookExtraHeadersResponseItem[]> __BuildListWebhookExtraHeaders(WorkflowExpression<string> webhook = null, WorkflowExpression<eventTypeInput> eventType = null)
-        {
-            WorkflowExpression.Validate(webhook, nameof(webhook), required: false);
-            WorkflowExpression.Validate(eventType, nameof(eventType), required: false);
+            var __workflow_webhook = webhook == null ? null : WorkflowExpression.Compile(webhook);
+            WorkflowExpression.Validate(__workflow_webhook, nameof(webhook), required: false);
+            var __workflow_eventType = eventType == null ? null : WorkflowExpression.Compile(eventType);
+            WorkflowExpression.Validate(__workflow_eventType, nameof(eventType), required: false);
             return new DeferredBodyAction<ListWebhookExtraHeadersResponseItem[]>(() =>
             {
                 var apiCallPath = "/webhooks/headers/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (webhook != null)
-                    callPayload.Queries["webhook"] = ExpressionConverter.Convert(webhook);
-                if (eventType != null)
-                    callPayload.Queries["event_type"] = ExpressionConverter.Convert(eventType);
+                if (__workflow_webhook != null)
+                    callPayload.Queries["webhook"] = ExpressionConverter.Convert(__workflow_webhook);
+                if (__workflow_eventType != null)
+                    callPayload.Queries["event_type"] = ExpressionConverter.Convert(__workflow_eventType);
                 return new ApiConnectionAction<ListWebhookExtraHeadersResponseItem[]>(callPayload);
             });
         }

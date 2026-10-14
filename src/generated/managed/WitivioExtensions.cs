@@ -1,30 +1,23 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class WitivioActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "witivio")]
-        [WorkflowExpressionFactory(nameof(__BuildSendFeedback))]
-        public IWorkflowAction SendFeedback([WorkflowExpression] Func<string> botId)
+        public IWorkflowAction SendFeedback(Expression<Func<string>> botId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildSendFeedback(WorkflowExpression<string> botId)
-        {
-            WorkflowExpression.Validate(botId, nameof(botId), required: true);
+            var __workflow_botId = botId == null ? null : WorkflowExpression.Compile(botId);
+            WorkflowExpression.Validate(__workflow_botId, nameof(botId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/botproxy/{0}/feedback", ExpressionConverter.ConvertWithUrlEncoding(botId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/botproxy/{0}/feedback", ExpressionConverter.ConvertWithUrlEncoding(__workflow_botId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -55,20 +48,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "witivio")]
-        [WorkflowExpressionFactory(nameof(__BuildSendMessage))]
-        public IBodyWorkflowAction<SendMessageResponse> SendMessage([WorkflowExpression] Func<string> botId, [WorkflowExpression] Func<string> bodymessage)
+        public IBodyWorkflowAction<SendMessageResponse> SendMessage(Expression<Func<string>> botId, Expression<Func<string>> bodymessage)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SendMessageResponse> __BuildSendMessage(WorkflowExpression<string> botId, WorkflowExpression<string> bodymessage)
-        {
-            WorkflowExpression.Validate(botId, nameof(botId), required: true);
-            WorkflowExpression.Validate(bodymessage, nameof(bodymessage), required: true);
+            var __workflow_botId = botId == null ? null : WorkflowExpression.Compile(botId);
+            WorkflowExpression.Validate(__workflow_botId, nameof(botId), required: true);
+            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
+            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: true);
             return new DeferredBodyAction<SendMessageResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/botproxy/{0}/message", ExpressionConverter.ConvertWithUrlEncoding(botId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/botproxy/{0}/message", ExpressionConverter.ConvertWithUrlEncoding(__workflow_botId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -82,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
                 }
 
                 bodypropCount++;
-                body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                body["message"] = ExpressionConverter.ConvertO(__workflow_bodymessage);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -93,20 +81,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "witivio")]
-        [WorkflowExpressionFactory(nameof(__BuildStartEscalation))]
-        public IBodyWorkflowAction<JToken> StartEscalation([WorkflowExpression] Func<string> botId, [WorkflowExpression] Func<string> bodyinitialQuestion)
+        public IBodyWorkflowAction<JToken> StartEscalation(Expression<Func<string>> botId, Expression<Func<string>> bodyinitialQuestion)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildStartEscalation(WorkflowExpression<string> botId, WorkflowExpression<string> bodyinitialQuestion)
-        {
-            WorkflowExpression.Validate(botId, nameof(botId), required: true);
-            WorkflowExpression.Validate(bodyinitialQuestion, nameof(bodyinitialQuestion), required: true);
+            var __workflow_botId = botId == null ? null : WorkflowExpression.Compile(botId);
+            WorkflowExpression.Validate(__workflow_botId, nameof(botId), required: true);
+            var __workflow_bodyinitialQuestion = bodyinitialQuestion == null ? null : WorkflowExpression.Compile(bodyinitialQuestion);
+            WorkflowExpression.Validate(__workflow_bodyinitialQuestion, nameof(bodyinitialQuestion), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/botproxy/{0}/startescalation", ExpressionConverter.ConvertWithUrlEncoding(botId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/botproxy/{0}/startescalation", ExpressionConverter.ConvertWithUrlEncoding(__workflow_botId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -120,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
                 }
 
                 bodypropCount++;
-                body["initialQuestion"] = ExpressionConverter.ConvertO(bodyinitialQuestion);
+                body["initialQuestion"] = ExpressionConverter.ConvertO(__workflow_bodyinitialQuestion);
                 var userProfileObject = new JObject();
                 var userProfileObjectpropCount = 0;
                 if (userProfileObjectpropCount > 0)
@@ -147,20 +130,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "witivio")]
-        [WorkflowExpressionFactory(nameof(__BuildSendAdaptive))]
-        public IBodyWorkflowAction<SendAdaptiveResponse> SendAdaptive([WorkflowExpression] Func<string> botId, [WorkflowExpression] Func<string> bodyadaptiveCardJson)
+        public IBodyWorkflowAction<SendAdaptiveResponse> SendAdaptive(Expression<Func<string>> botId, Expression<Func<string>> bodyadaptiveCardJson)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SendAdaptiveResponse> __BuildSendAdaptive(WorkflowExpression<string> botId, WorkflowExpression<string> bodyadaptiveCardJson)
-        {
-            WorkflowExpression.Validate(botId, nameof(botId), required: true);
-            WorkflowExpression.Validate(bodyadaptiveCardJson, nameof(bodyadaptiveCardJson), required: true);
+            var __workflow_botId = botId == null ? null : WorkflowExpression.Compile(botId);
+            WorkflowExpression.Validate(__workflow_botId, nameof(botId), required: true);
+            var __workflow_bodyadaptiveCardJson = bodyadaptiveCardJson == null ? null : WorkflowExpression.Compile(bodyadaptiveCardJson);
+            WorkflowExpression.Validate(__workflow_bodyadaptiveCardJson, nameof(bodyadaptiveCardJson), required: true);
             return new DeferredBodyAction<SendAdaptiveResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/botproxy/{0}/adaptive", ExpressionConverter.ConvertWithUrlEncoding(botId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/botproxy/{0}/adaptive", ExpressionConverter.ConvertWithUrlEncoding(__workflow_botId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -174,7 +152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
                 }
 
                 bodypropCount++;
-                body["message"] = ExpressionConverter.ConvertO(bodyadaptiveCardJson);
+                body["message"] = ExpressionConverter.ConvertO(__workflow_bodyadaptiveCardJson);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -185,21 +163,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "witivio")]
-        [WorkflowExpressionFactory(nameof(__BuildSendMessageInput))]
-        public IBodyWorkflowAction<SendMessageInputResponse> SendMessageInput([WorkflowExpression] Func<string> botId, [WorkflowExpression] Func<string> bodyquestion, [WorkflowExpression] Func<bool> bodyfileWaiting)
+        public IBodyWorkflowAction<SendMessageInputResponse> SendMessageInput(Expression<Func<string>> botId, Expression<Func<string>> bodyquestion, Expression<Func<bool>> bodyfileWaiting)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SendMessageInputResponse> __BuildSendMessageInput(WorkflowExpression<string> botId, WorkflowExpression<string> bodyquestion, WorkflowExpression<bool> bodyfileWaiting)
-        {
-            WorkflowExpression.Validate(botId, nameof(botId), required: true);
-            WorkflowExpression.Validate(bodyquestion, nameof(bodyquestion), required: true);
-            WorkflowExpression.Validate(bodyfileWaiting, nameof(bodyfileWaiting), required: true);
+            var __workflow_botId = botId == null ? null : WorkflowExpression.Compile(botId);
+            WorkflowExpression.Validate(__workflow_botId, nameof(botId), required: true);
+            var __workflow_bodyquestion = bodyquestion == null ? null : WorkflowExpression.Compile(bodyquestion);
+            WorkflowExpression.Validate(__workflow_bodyquestion, nameof(bodyquestion), required: true);
+            var __workflow_bodyfileWaiting = bodyfileWaiting == null ? null : WorkflowExpression.Compile(bodyfileWaiting);
+            WorkflowExpression.Validate(__workflow_bodyfileWaiting, nameof(bodyfileWaiting), required: true);
             return new DeferredBodyAction<SendMessageInputResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/botproxy/{0}/message/input", ExpressionConverter.ConvertWithUrlEncoding(botId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/botproxy/{0}/message/input", ExpressionConverter.ConvertWithUrlEncoding(__workflow_botId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -213,9 +187,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
                 }
 
                 bodypropCount++;
-                body["question"] = ExpressionConverter.ConvertO(bodyquestion);
+                body["question"] = ExpressionConverter.ConvertO(__workflow_bodyquestion);
                 bodypropCount++;
-                body["isFileWaiting"] = ExpressionConverter.ConvertO(bodyfileWaiting);
+                body["isFileWaiting"] = ExpressionConverter.ConvertO(__workflow_bodyfileWaiting);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -226,30 +200,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "witivio")]
-        [WorkflowExpressionFactory(nameof(__BuildSendMessageInputList))]
-        public IBodyWorkflowAction<SendMessageInputListResponse> SendMessageInputList([WorkflowExpression] Func<string> botId, [WorkflowExpression] Func<string> bodyquestion, [WorkflowExpression] Func<string> bodyfirstChoice, [WorkflowExpression] Func<string> bodysecondChoice, [WorkflowExpression] Func<string> bodythirdChoice = null, [WorkflowExpression] Func<string> bodyfourthChoice = null, [WorkflowExpression] Func<string> bodyfifthChoice = null, [WorkflowExpression] Func<string> bodysixthChoice = null, [WorkflowExpression] Func<string> bodyseventhChoice = null, [WorkflowExpression] Func<string> bodyeigthChoice = null, [WorkflowExpression] Func<string> bodyninethChoice = null, [WorkflowExpression] Func<string> bodytenthChoice = null)
+        public IBodyWorkflowAction<SendMessageInputListResponse> SendMessageInputList(Expression<Func<string>> botId, Expression<Func<string>> bodyquestion, Expression<Func<string>> bodyfirstChoice, Expression<Func<string>> bodysecondChoice, Expression<Func<string>> bodythirdChoice = null, Expression<Func<string>> bodyfourthChoice = null, Expression<Func<string>> bodyfifthChoice = null, Expression<Func<string>> bodysixthChoice = null, Expression<Func<string>> bodyseventhChoice = null, Expression<Func<string>> bodyeigthChoice = null, Expression<Func<string>> bodyninethChoice = null, Expression<Func<string>> bodytenthChoice = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SendMessageInputListResponse> __BuildSendMessageInputList(WorkflowExpression<string> botId, WorkflowExpression<string> bodyquestion, WorkflowExpression<string> bodyfirstChoice, WorkflowExpression<string> bodysecondChoice, WorkflowExpression<string> bodythirdChoice = null, WorkflowExpression<string> bodyfourthChoice = null, WorkflowExpression<string> bodyfifthChoice = null, WorkflowExpression<string> bodysixthChoice = null, WorkflowExpression<string> bodyseventhChoice = null, WorkflowExpression<string> bodyeigthChoice = null, WorkflowExpression<string> bodyninethChoice = null, WorkflowExpression<string> bodytenthChoice = null)
-        {
-            WorkflowExpression.Validate(botId, nameof(botId), required: true);
-            WorkflowExpression.Validate(bodyquestion, nameof(bodyquestion), required: true);
-            WorkflowExpression.Validate(bodyfirstChoice, nameof(bodyfirstChoice), required: true);
-            WorkflowExpression.Validate(bodysecondChoice, nameof(bodysecondChoice), required: true);
-            WorkflowExpression.Validate(bodythirdChoice, nameof(bodythirdChoice), required: false);
-            WorkflowExpression.Validate(bodyfourthChoice, nameof(bodyfourthChoice), required: false);
-            WorkflowExpression.Validate(bodyfifthChoice, nameof(bodyfifthChoice), required: false);
-            WorkflowExpression.Validate(bodysixthChoice, nameof(bodysixthChoice), required: false);
-            WorkflowExpression.Validate(bodyseventhChoice, nameof(bodyseventhChoice), required: false);
-            WorkflowExpression.Validate(bodyeigthChoice, nameof(bodyeigthChoice), required: false);
-            WorkflowExpression.Validate(bodyninethChoice, nameof(bodyninethChoice), required: false);
-            WorkflowExpression.Validate(bodytenthChoice, nameof(bodytenthChoice), required: false);
+            var __workflow_botId = botId == null ? null : WorkflowExpression.Compile(botId);
+            WorkflowExpression.Validate(__workflow_botId, nameof(botId), required: true);
+            var __workflow_bodyquestion = bodyquestion == null ? null : WorkflowExpression.Compile(bodyquestion);
+            WorkflowExpression.Validate(__workflow_bodyquestion, nameof(bodyquestion), required: true);
+            var __workflow_bodyfirstChoice = bodyfirstChoice == null ? null : WorkflowExpression.Compile(bodyfirstChoice);
+            WorkflowExpression.Validate(__workflow_bodyfirstChoice, nameof(bodyfirstChoice), required: true);
+            var __workflow_bodysecondChoice = bodysecondChoice == null ? null : WorkflowExpression.Compile(bodysecondChoice);
+            WorkflowExpression.Validate(__workflow_bodysecondChoice, nameof(bodysecondChoice), required: true);
+            var __workflow_bodythirdChoice = bodythirdChoice == null ? null : WorkflowExpression.Compile(bodythirdChoice);
+            WorkflowExpression.Validate(__workflow_bodythirdChoice, nameof(bodythirdChoice), required: false);
+            var __workflow_bodyfourthChoice = bodyfourthChoice == null ? null : WorkflowExpression.Compile(bodyfourthChoice);
+            WorkflowExpression.Validate(__workflow_bodyfourthChoice, nameof(bodyfourthChoice), required: false);
+            var __workflow_bodyfifthChoice = bodyfifthChoice == null ? null : WorkflowExpression.Compile(bodyfifthChoice);
+            WorkflowExpression.Validate(__workflow_bodyfifthChoice, nameof(bodyfifthChoice), required: false);
+            var __workflow_bodysixthChoice = bodysixthChoice == null ? null : WorkflowExpression.Compile(bodysixthChoice);
+            WorkflowExpression.Validate(__workflow_bodysixthChoice, nameof(bodysixthChoice), required: false);
+            var __workflow_bodyseventhChoice = bodyseventhChoice == null ? null : WorkflowExpression.Compile(bodyseventhChoice);
+            WorkflowExpression.Validate(__workflow_bodyseventhChoice, nameof(bodyseventhChoice), required: false);
+            var __workflow_bodyeigthChoice = bodyeigthChoice == null ? null : WorkflowExpression.Compile(bodyeigthChoice);
+            WorkflowExpression.Validate(__workflow_bodyeigthChoice, nameof(bodyeigthChoice), required: false);
+            var __workflow_bodyninethChoice = bodyninethChoice == null ? null : WorkflowExpression.Compile(bodyninethChoice);
+            WorkflowExpression.Validate(__workflow_bodyninethChoice, nameof(bodyninethChoice), required: false);
+            var __workflow_bodytenthChoice = bodytenthChoice == null ? null : WorkflowExpression.Compile(bodytenthChoice);
+            WorkflowExpression.Validate(__workflow_bodytenthChoice, nameof(bodytenthChoice), required: false);
             return new DeferredBodyAction<SendMessageInputListResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/botproxy/{0}/message/input/list", ExpressionConverter.ConvertWithUrlEncoding(botId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/botproxy/{0}/message/input/list", ExpressionConverter.ConvertWithUrlEncoding(__workflow_botId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -263,56 +242,56 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
                 }
 
                 bodypropCount++;
-                body["question"] = ExpressionConverter.ConvertO(bodyquestion);
+                body["question"] = ExpressionConverter.ConvertO(__workflow_bodyquestion);
                 bodypropCount++;
-                body["choice1"] = ExpressionConverter.ConvertO(bodyfirstChoice);
+                body["choice1"] = ExpressionConverter.ConvertO(__workflow_bodyfirstChoice);
                 bodypropCount++;
-                body["choice2"] = ExpressionConverter.ConvertO(bodysecondChoice);
-                if (bodythirdChoice != null)
+                body["choice2"] = ExpressionConverter.ConvertO(__workflow_bodysecondChoice);
+                if (__workflow_bodythirdChoice != null)
                 {
-                    body["choice3"] = ExpressionConverter.ConvertO(bodythirdChoice);
+                    body["choice3"] = ExpressionConverter.ConvertO(__workflow_bodythirdChoice);
                     bodypropCount++;
                 }
 
-                if (bodyfourthChoice != null)
+                if (__workflow_bodyfourthChoice != null)
                 {
-                    body["choice4"] = ExpressionConverter.ConvertO(bodyfourthChoice);
+                    body["choice4"] = ExpressionConverter.ConvertO(__workflow_bodyfourthChoice);
                     bodypropCount++;
                 }
 
-                if (bodyfifthChoice != null)
+                if (__workflow_bodyfifthChoice != null)
                 {
-                    body["choice5"] = ExpressionConverter.ConvertO(bodyfifthChoice);
+                    body["choice5"] = ExpressionConverter.ConvertO(__workflow_bodyfifthChoice);
                     bodypropCount++;
                 }
 
-                if (bodysixthChoice != null)
+                if (__workflow_bodysixthChoice != null)
                 {
-                    body["choice6"] = ExpressionConverter.ConvertO(bodysixthChoice);
+                    body["choice6"] = ExpressionConverter.ConvertO(__workflow_bodysixthChoice);
                     bodypropCount++;
                 }
 
-                if (bodyseventhChoice != null)
+                if (__workflow_bodyseventhChoice != null)
                 {
-                    body["choice7"] = ExpressionConverter.ConvertO(bodyseventhChoice);
+                    body["choice7"] = ExpressionConverter.ConvertO(__workflow_bodyseventhChoice);
                     bodypropCount++;
                 }
 
-                if (bodyeigthChoice != null)
+                if (__workflow_bodyeigthChoice != null)
                 {
-                    body["choice8"] = ExpressionConverter.ConvertO(bodyeigthChoice);
+                    body["choice8"] = ExpressionConverter.ConvertO(__workflow_bodyeigthChoice);
                     bodypropCount++;
                 }
 
-                if (bodyninethChoice != null)
+                if (__workflow_bodyninethChoice != null)
                 {
-                    body["choice9"] = ExpressionConverter.ConvertO(bodyninethChoice);
+                    body["choice9"] = ExpressionConverter.ConvertO(__workflow_bodyninethChoice);
                     bodypropCount++;
                 }
 
-                if (bodytenthChoice != null)
+                if (__workflow_bodytenthChoice != null)
                 {
-                    body["choice10"] = ExpressionConverter.ConvertO(bodytenthChoice);
+                    body["choice10"] = ExpressionConverter.ConvertO(__workflow_bodytenthChoice);
                     bodypropCount++;
                 }
 
@@ -326,22 +305,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "witivio")]
-        [WorkflowExpressionFactory(nameof(__BuildSendMessageInputArray))]
-        public IBodyWorkflowAction<SendMessageInputArrayResponse> SendMessageInputArray([WorkflowExpression] Func<string> botId, [WorkflowExpression] Func<string> bodyquestion, [WorkflowExpression] Func<JToken[]> bodylistOfChoices, [WorkflowExpression] Func<string> bodyvalueToSelectInList)
+        public IBodyWorkflowAction<SendMessageInputArrayResponse> SendMessageInputArray(Expression<Func<string>> botId, Expression<Func<string>> bodyquestion, Expression<Func<JToken[]>> bodylistOfChoices, Expression<Func<string>> bodyvalueToSelectInList)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SendMessageInputArrayResponse> __BuildSendMessageInputArray(WorkflowExpression<string> botId, WorkflowExpression<string> bodyquestion, WorkflowExpression<JToken[]> bodylistOfChoices, WorkflowExpression<string> bodyvalueToSelectInList)
-        {
-            WorkflowExpression.Validate(botId, nameof(botId), required: true);
-            WorkflowExpression.Validate(bodyquestion, nameof(bodyquestion), required: true);
-            WorkflowExpression.Validate(bodylistOfChoices, nameof(bodylistOfChoices), required: true);
-            WorkflowExpression.Validate(bodyvalueToSelectInList, nameof(bodyvalueToSelectInList), required: true);
+            var __workflow_botId = botId == null ? null : WorkflowExpression.Compile(botId);
+            WorkflowExpression.Validate(__workflow_botId, nameof(botId), required: true);
+            var __workflow_bodyquestion = bodyquestion == null ? null : WorkflowExpression.Compile(bodyquestion);
+            WorkflowExpression.Validate(__workflow_bodyquestion, nameof(bodyquestion), required: true);
+            var __workflow_bodylistOfChoices = bodylistOfChoices == null ? null : WorkflowExpression.Compile(bodylistOfChoices);
+            WorkflowExpression.Validate(__workflow_bodylistOfChoices, nameof(bodylistOfChoices), required: true);
+            var __workflow_bodyvalueToSelectInList = bodyvalueToSelectInList == null ? null : WorkflowExpression.Compile(bodyvalueToSelectInList);
+            WorkflowExpression.Validate(__workflow_bodyvalueToSelectInList, nameof(bodyvalueToSelectInList), required: true);
             return new DeferredBodyAction<SendMessageInputArrayResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/botproxy/{0}/message/input/array", ExpressionConverter.ConvertWithUrlEncoding(botId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/botproxy/{0}/message/input/array", ExpressionConverter.ConvertWithUrlEncoding(__workflow_botId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -355,11 +331,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
                 }
 
                 bodypropCount++;
-                body["question"] = ExpressionConverter.ConvertO(bodyquestion);
+                body["question"] = ExpressionConverter.ConvertO(__workflow_bodyquestion);
                 bodypropCount++;
-                body["listChoice"] = ExpressionConverter.ConvertO(bodylistOfChoices);
+                body["listChoice"] = ExpressionConverter.ConvertO(__workflow_bodylistOfChoices);
                 bodypropCount++;
-                body["jsonPath"] = ExpressionConverter.ConvertO(bodyvalueToSelectInList);
+                body["jsonPath"] = ExpressionConverter.ConvertO(__workflow_bodyvalueToSelectInList);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -372,28 +348,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
 
     public class WitivioTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildWebhookTrigger))]
-        public IWorkflowTrigger WebhookTrigger([WorkflowExpression] Func<string> licenceId,[WorkflowExpression] Func<string> botId,[WorkflowExpression] Func<string> language,[WorkflowExpression] Func<string> profileId,[WorkflowExpression] Func<string> questionId,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WebhookTrigger(Expression<Func<string>> licenceId, Expression<Func<string>> botId, Expression<Func<string>> language, Expression<Func<string>> profileId, Expression<Func<string>> questionId, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildWebhookTrigger(WorkflowExpression<string> licenceId,WorkflowExpression<string> botId,WorkflowExpression<string> language,WorkflowExpression<string> profileId,WorkflowExpression<string> questionId,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(licenceId, nameof(licenceId), required: true);
-            WorkflowExpression.Validate(botId, nameof(botId), required: true);
-            WorkflowExpression.Validate(language, nameof(language), required: true);
-            WorkflowExpression.Validate(profileId, nameof(profileId), required: true);
-            WorkflowExpression.Validate(questionId, nameof(questionId), required: true);
+            var __workflow_licenceId = licenceId == null ? null : WorkflowExpression.Compile(licenceId);
+            WorkflowExpression.Validate(__workflow_licenceId, nameof(licenceId), required: true);
+            var __workflow_botId = botId == null ? null : WorkflowExpression.Compile(botId);
+            WorkflowExpression.Validate(__workflow_botId, nameof(botId), required: true);
+            var __workflow_language = language == null ? null : WorkflowExpression.Compile(language);
+            WorkflowExpression.Validate(__workflow_language, nameof(language), required: true);
+            var __workflow_profileId = profileId == null ? null : WorkflowExpression.Compile(profileId);
+            WorkflowExpression.Validate(__workflow_profileId, nameof(profileId), required: true);
+            var __workflow_questionId = questionId == null ? null : WorkflowExpression.Compile(questionId);
+            WorkflowExpression.Validate(__workflow_questionId, nameof(questionId), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/conversations/{0}/{1}/questions/{2}/triggers/register", ExpressionConverter.ConvertWithUrlEncoding(botId, 1), ExpressionConverter.ConvertWithUrlEncoding(language, 1), ExpressionConverter.ConvertWithUrlEncoding(questionId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/conversations/{0}/{1}/questions/{2}/triggers/register", ExpressionConverter.ConvertWithUrlEncoding(__workflow_botId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_language, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_questionId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["licenceId"] = ExpressionConverter.Convert(licenceId);
-                callPayload.Queries["profileId"] = ExpressionConverter.Convert(profileId);
+                callPayload.Queries["licenceId"] = ExpressionConverter.Convert(__workflow_licenceId);
+                callPayload.Queries["profileId"] = ExpressionConverter.Convert(__workflow_profileId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 body["callbackUrl"] = "#{listCallbackUrl()}";
@@ -407,27 +380,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildWebhookEscalationTrigger))]
-        public IWorkflowTrigger WebhookEscalationTrigger([WorkflowExpression] Func<string> licenceId,[WorkflowExpression] Func<string> botId,[WorkflowExpression] Func<string> language,[WorkflowExpression] Func<string> profileId,[WorkflowExpression] Func<string> escalationId,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WebhookEscalationTrigger(Expression<Func<string>> licenceId, Expression<Func<string>> botId, Expression<Func<string>> language, Expression<Func<string>> profileId, Expression<Func<string>> escalationId, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildWebhookEscalationTrigger(WorkflowExpression<string> licenceId,WorkflowExpression<string> botId,WorkflowExpression<string> language,WorkflowExpression<string> profileId,WorkflowExpression<string> escalationId,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(licenceId, nameof(licenceId), required: true);
-            WorkflowExpression.Validate(botId, nameof(botId), required: true);
-            WorkflowExpression.Validate(language, nameof(language), required: true);
-            WorkflowExpression.Validate(profileId, nameof(profileId), required: true);
-            WorkflowExpression.Validate(escalationId, nameof(escalationId), required: true);
+            var __workflow_licenceId = licenceId == null ? null : WorkflowExpression.Compile(licenceId);
+            WorkflowExpression.Validate(__workflow_licenceId, nameof(licenceId), required: true);
+            var __workflow_botId = botId == null ? null : WorkflowExpression.Compile(botId);
+            WorkflowExpression.Validate(__workflow_botId, nameof(botId), required: true);
+            var __workflow_language = language == null ? null : WorkflowExpression.Compile(language);
+            WorkflowExpression.Validate(__workflow_language, nameof(language), required: true);
+            var __workflow_profileId = profileId == null ? null : WorkflowExpression.Compile(profileId);
+            WorkflowExpression.Validate(__workflow_profileId, nameof(profileId), required: true);
+            var __workflow_escalationId = escalationId == null ? null : WorkflowExpression.Compile(escalationId);
+            WorkflowExpression.Validate(__workflow_escalationId, nameof(escalationId), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/escalation/{0}/{1}/triggers/{2}/register", ExpressionConverter.ConvertWithUrlEncoding(botId, 1), ExpressionConverter.ConvertWithUrlEncoding(language, 1), ExpressionConverter.ConvertWithUrlEncoding(escalationId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/escalation/{0}/{1}/triggers/{2}/register", ExpressionConverter.ConvertWithUrlEncoding(__workflow_botId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_language, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_escalationId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["licenceId"] = ExpressionConverter.Convert(licenceId);
-                callPayload.Queries["profileId"] = ExpressionConverter.Convert(profileId);
+                callPayload.Queries["licenceId"] = ExpressionConverter.Convert(__workflow_licenceId);
+                callPayload.Queries["profileId"] = ExpressionConverter.Convert(__workflow_profileId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 body["callbackUrl"] = "#{listCallbackUrl()}";

@@ -1,66 +1,56 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Applicationinsights
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class ApplicationinsightsActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "applicationinsights")]
-        [WorkflowExpressionFactory(nameof(__BuildRunQuery))]
-        public IBodyWorkflowAction<Table> RunQuery([WorkflowExpression] Func<string> query = null, [WorkflowExpression] Func<timerangeInput> timerange = null)
+        public IBodyWorkflowAction<Table> RunQuery(Expression<Func<string>> query = null, Expression<Func<timerangeInput>> timerange = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Table> __BuildRunQuery(WorkflowExpression<string> query = null, WorkflowExpression<timerangeInput> timerange = null)
-        {
-            WorkflowExpression.Validate(query, nameof(query), required: false);
-            WorkflowExpression.Validate(timerange, nameof(timerange), required: false);
+            var __workflow_query = query == null ? null : WorkflowExpression.Compile(query);
+            WorkflowExpression.Validate(__workflow_query, nameof(query), required: false);
+            var __workflow_timerange = timerange == null ? null : WorkflowExpression.Compile(timerange);
+            WorkflowExpression.Validate(__workflow_timerange, nameof(timerange), required: false);
             return new DeferredBodyAction<Table>(() =>
             {
                 var apiCallPath = "/api/QueryDraft";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["timerange"] = Convert.ToString("Last hour");
-                if (timerange != null)
-                    callPayload.Queries["timerange"] = ExpressionConverter.Convert(timerange);
+                if (__workflow_timerange != null)
+                    callPayload.Queries["timerange"] = ExpressionConverter.Convert(__workflow_timerange);
                 callPayload.Queries["version"] = Convert.ToString("2");
-                callPayload.Body = ExpressionConverter.ConvertO(query);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_query);
                 return new ApiConnectionAction<Table>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "applicationinsights")]
-        [WorkflowExpressionFactory(nameof(__BuildVisualizeQuery))]
-        public IBodyWorkflowAction<VisualizeResults> VisualizeQuery([WorkflowExpression] Func<chartTypeInput> chartType, [WorkflowExpression] Func<string> query = null, [WorkflowExpression] Func<timerangeInput> timerange = null)
+        public IBodyWorkflowAction<VisualizeResults> VisualizeQuery(Expression<Func<chartTypeInput>> chartType, Expression<Func<string>> query = null, Expression<Func<timerangeInput>> timerange = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<VisualizeResults> __BuildVisualizeQuery(WorkflowExpression<chartTypeInput> chartType, WorkflowExpression<string> query = null, WorkflowExpression<timerangeInput> timerange = null)
-        {
-            WorkflowExpression.Validate(chartType, nameof(chartType), required: true);
-            WorkflowExpression.Validate(query, nameof(query), required: false);
-            WorkflowExpression.Validate(timerange, nameof(timerange), required: false);
+            var __workflow_chartType = chartType == null ? null : WorkflowExpression.Compile(chartType);
+            WorkflowExpression.Validate(__workflow_chartType, nameof(chartType), required: true);
+            var __workflow_query = query == null ? null : WorkflowExpression.Compile(query);
+            WorkflowExpression.Validate(__workflow_query, nameof(query), required: false);
+            var __workflow_timerange = timerange == null ? null : WorkflowExpression.Compile(timerange);
+            WorkflowExpression.Validate(__workflow_timerange, nameof(timerange), required: false);
             return new DeferredBodyAction<VisualizeResults>(() =>
             {
                 var apiCallPath = "/api/VisualizeQueryDraft";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["timerange"] = Convert.ToString("Last hour");
-                if (timerange != null)
-                    callPayload.Queries["timerange"] = ExpressionConverter.Convert(timerange);
+                if (__workflow_timerange != null)
+                    callPayload.Queries["timerange"] = ExpressionConverter.Convert(__workflow_timerange);
                 callPayload.Queries["version"] = Convert.ToString("2");
-                callPayload.Queries["chartType"] = ExpressionConverter.Convert(chartType);
-                callPayload.Body = ExpressionConverter.ConvertO(query);
+                callPayload.Queries["chartType"] = ExpressionConverter.Convert(__workflow_chartType);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_query);
                 return new ApiConnectionAction<VisualizeResults>(callPayload);
             });
         }

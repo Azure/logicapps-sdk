@@ -1,12 +1,12 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appfigures
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class AppfiguresActions([ConnectionName] string connectionId)
     {
@@ -30,44 +30,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appfigures
             return new ApiConnectionTrigger<Event[]>(callPayload, recurrence: recurrence);
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildOnNewReview))]
-        public IBodyWorkflowTrigger<ReviewInfo[]> OnNewReview([WorkflowExpression] Func<string> products = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ReviewInfo[]> OnNewReview(Expression<Func<string>> products = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ReviewInfo[]> __BuildOnNewReview(WorkflowExpression<string> products = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(products, nameof(products), required: false);
+            var __workflow_products = products == null ? null : WorkflowExpression.Compile(products);
+            WorkflowExpression.Validate(__workflow_products, nameof(products), required: false);
             return new DeferredBodyTrigger<ReviewInfo[]>(() =>
             {
                 var apiCallPath = "/reviews_trigger/reviews";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (products != null)
-                    callPayload.Queries["products"] = ExpressionConverter.Convert(products);
+                if (__workflow_products != null)
+                    callPayload.Queries["products"] = ExpressionConverter.Convert(__workflow_products);
                 return new ApiConnectionTrigger<ReviewInfo[]>(callPayload, recurrence: recurrence);
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildOnNewRating))]
-        public IBodyWorkflowTrigger<Rating[]> OnNewRating([WorkflowExpression] Func<string> products = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Rating[]> OnNewRating(Expression<Func<string>> products = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<Rating[]> __BuildOnNewRating(WorkflowExpression<string> products = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(products, nameof(products), required: false);
+            var __workflow_products = products == null ? null : WorkflowExpression.Compile(products);
+            WorkflowExpression.Validate(__workflow_products, nameof(products), required: false);
             return new DeferredBodyTrigger<Rating[]>(() =>
             {
                 var apiCallPath = "/ratings_trigger/ratings";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (products != null)
-                    callPayload.Queries["products"] = ExpressionConverter.Convert(products);
+                if (__workflow_products != null)
+                    callPayload.Queries["products"] = ExpressionConverter.Convert(__workflow_products);
                 return new ApiConnectionTrigger<Rating[]>(callPayload, recurrence: recurrence);
             });
         }

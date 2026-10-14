@@ -1,30 +1,26 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class StormboardActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormboard")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateIdea))]
-        public IBodyWorkflowAction<CreateIdeaResponse> CreateIdea([WorkflowExpression] Func<int> bodystormid, [WorkflowExpression] Func<bodytypeInput> bodytype, [WorkflowExpression] Func<string> bodydata, [WorkflowExpression] Func<bodycolorInput> bodycolor)
+        public IBodyWorkflowAction<CreateIdeaResponse> CreateIdea(Expression<Func<int>> bodystormid, Expression<Func<bodytypeInput>> bodytype, Expression<Func<string>> bodydata, Expression<Func<bodycolorInput>> bodycolor)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateIdeaResponse> __BuildCreateIdea(WorkflowExpression<int> bodystormid, WorkflowExpression<bodytypeInput> bodytype, WorkflowExpression<string> bodydata, WorkflowExpression<bodycolorInput> bodycolor)
-        {
-            WorkflowExpression.Validate(bodystormid, nameof(bodystormid), required: true);
-            WorkflowExpression.Validate(bodytype, nameof(bodytype), required: true);
-            WorkflowExpression.Validate(bodydata, nameof(bodydata), required: true);
-            WorkflowExpression.Validate(bodycolor, nameof(bodycolor), required: true);
+            var __workflow_bodystormid = bodystormid == null ? null : WorkflowExpression.Compile(bodystormid);
+            WorkflowExpression.Validate(__workflow_bodystormid, nameof(bodystormid), required: true);
+            var __workflow_bodytype = bodytype == null ? null : WorkflowExpression.Compile(bodytype);
+            WorkflowExpression.Validate(__workflow_bodytype, nameof(bodytype), required: true);
+            var __workflow_bodydata = bodydata == null ? null : WorkflowExpression.Compile(bodydata);
+            WorkflowExpression.Validate(__workflow_bodydata, nameof(bodydata), required: true);
+            var __workflow_bodycolor = bodycolor == null ? null : WorkflowExpression.Compile(bodycolor);
+            WorkflowExpression.Validate(__workflow_bodycolor, nameof(bodycolor), required: true);
             return new DeferredBodyAction<CreateIdeaResponse>(() =>
             {
                 var apiCallPath = "/ideas";
@@ -34,13 +30,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["stormid"] = ExpressionConverter.ConvertO(bodystormid);
+                body["stormid"] = ExpressionConverter.ConvertO(__workflow_bodystormid);
                 bodypropCount++;
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
+                body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
                 bodypropCount++;
-                body["data"] = ExpressionConverter.ConvertO(bodydata);
+                body["data"] = ExpressionConverter.ConvertO(__workflow_bodydata);
                 bodypropCount++;
-                body["color"] = ExpressionConverter.ConvertO(bodycolor);
+                body["color"] = ExpressionConverter.ConvertO(__workflow_bodycolor);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -51,19 +47,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormboard")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateStorm))]
-        public IBodyWorkflowAction<CreateStormResponse> CreateStorm([WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodyplan, [WorkflowExpression] Func<string> bodygoals = null, [WorkflowExpression] Func<bool> bodyideacreator = null)
+        public IBodyWorkflowAction<CreateStormResponse> CreateStorm(Expression<Func<string>> bodytitle, Expression<Func<string>> bodyplan, Expression<Func<string>> bodygoals = null, Expression<Func<bool>> bodyideacreator = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateStormResponse> __BuildCreateStorm(WorkflowExpression<string> bodytitle, WorkflowExpression<string> bodyplan, WorkflowExpression<string> bodygoals = null, WorkflowExpression<bool> bodyideacreator = null)
-        {
-            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            WorkflowExpression.Validate(bodyplan, nameof(bodyplan), required: true);
-            WorkflowExpression.Validate(bodygoals, nameof(bodygoals), required: false);
-            WorkflowExpression.Validate(bodyideacreator, nameof(bodyideacreator), required: false);
+            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
+            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodyplan = bodyplan == null ? null : WorkflowExpression.Compile(bodyplan);
+            WorkflowExpression.Validate(__workflow_bodyplan, nameof(bodyplan), required: true);
+            var __workflow_bodygoals = bodygoals == null ? null : WorkflowExpression.Compile(bodygoals);
+            WorkflowExpression.Validate(__workflow_bodygoals, nameof(bodygoals), required: false);
+            var __workflow_bodyideacreator = bodyideacreator == null ? null : WorkflowExpression.Compile(bodyideacreator);
+            WorkflowExpression.Validate(__workflow_bodyideacreator, nameof(bodyideacreator), required: false);
             return new DeferredBodyAction<CreateStormResponse>(() =>
             {
                 var apiCallPath = "/storms";
@@ -73,20 +66,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
                 bodypropCount++;
-                body["plan"] = ExpressionConverter.ConvertO(bodyplan);
-                if (bodygoals != null)
+                body["plan"] = ExpressionConverter.ConvertO(__workflow_bodyplan);
+                if (__workflow_bodygoals != null)
                 {
-                    body["goals"] = ExpressionConverter.ConvertO(bodygoals);
+                    body["goals"] = ExpressionConverter.ConvertO(__workflow_bodygoals);
                     bodypropCount++;
                 }
 
-                if (bodyideacreator != null)
+                if (__workflow_bodyideacreator != null)
                 {
-                    if (bodyideacreator != null)
+                    if (__workflow_bodyideacreator != null)
                     {
-                        body["ideacreator"] = ExpressionConverter.ConvertO(bodyideacreator);
+                        body["ideacreator"] = ExpressionConverter.ConvertO(__workflow_bodyideacreator);
                         bodypropCount++;
                     }
 

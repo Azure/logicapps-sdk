@@ -1,232 +1,202 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class Recordedfuturev2Actions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
-        [WorkflowExpressionFactory(nameof(__BuildIPE))]
-        public IBodyWorkflowAction<IPEResponse> IPE([WorkflowExpression] Func<string> ip, [WorkflowExpression] Func<string> fields, [WorkflowExpression] Func<bool> intelligenceCloud = null, [WorkflowExpression] Func<bool> htmlresponse = null)
+        public IBodyWorkflowAction<IPEResponse> IPE(Expression<Func<string>> ip, Expression<Func<string>> fields, Expression<Func<bool>> intelligenceCloud = null, Expression<Func<bool>> htmlresponse = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<IPEResponse> __BuildIPE(WorkflowExpression<string> ip, WorkflowExpression<string> fields, WorkflowExpression<bool> intelligenceCloud = null, WorkflowExpression<bool> htmlresponse = null)
-        {
-            WorkflowExpression.Validate(ip, nameof(ip), required: true);
-            WorkflowExpression.Validate(fields, nameof(fields), required: true);
-            WorkflowExpression.Validate(intelligenceCloud, nameof(intelligenceCloud), required: false);
-            WorkflowExpression.Validate(htmlresponse, nameof(htmlresponse), required: false);
+            var __workflow_ip = ip == null ? null : WorkflowExpression.Compile(ip);
+            WorkflowExpression.Validate(__workflow_ip, nameof(ip), required: true);
+            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
+            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: true);
+            var __workflow_intelligenceCloud = intelligenceCloud == null ? null : WorkflowExpression.Compile(intelligenceCloud);
+            WorkflowExpression.Validate(__workflow_intelligenceCloud, nameof(intelligenceCloud), required: false);
+            var __workflow_htmlresponse = htmlresponse == null ? null : WorkflowExpression.Compile(htmlresponse);
+            WorkflowExpression.Validate(__workflow_htmlresponse, nameof(htmlresponse), required: false);
             return new DeferredBodyAction<IPEResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lookup/ip/{0}", ExpressionConverter.ConvertWithUrlEncoding(ip, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lookup/ip/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_ip, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
-                if (intelligenceCloud != null)
-                    callPayload.Queries["IntelligenceCloud"] = ExpressionConverter.Convert(intelligenceCloud);
+                callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
+                if (__workflow_intelligenceCloud != null)
+                    callPayload.Queries["IntelligenceCloud"] = ExpressionConverter.Convert(__workflow_intelligenceCloud);
                 callPayload.Queries["htmlresponse"] = Convert.ToString(false);
-                if (htmlresponse != null)
-                    callPayload.Queries["htmlresponse"] = ExpressionConverter.Convert(htmlresponse);
+                if (__workflow_htmlresponse != null)
+                    callPayload.Queries["htmlresponse"] = ExpressionConverter.Convert(__workflow_htmlresponse);
                 return new ApiConnectionAction<IPEResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
-        [WorkflowExpressionFactory(nameof(__BuildDE))]
-        public IBodyWorkflowAction<DEResponse> DE([WorkflowExpression] Func<string> domain, [WorkflowExpression] Func<string> fields, [WorkflowExpression] Func<bool> intelligenceCloud = null, [WorkflowExpression] Func<bool> htmlresponse = null)
+        public IBodyWorkflowAction<DEResponse> DE(Expression<Func<string>> domain, Expression<Func<string>> fields, Expression<Func<bool>> intelligenceCloud = null, Expression<Func<bool>> htmlresponse = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DEResponse> __BuildDE(WorkflowExpression<string> domain, WorkflowExpression<string> fields, WorkflowExpression<bool> intelligenceCloud = null, WorkflowExpression<bool> htmlresponse = null)
-        {
-            WorkflowExpression.Validate(domain, nameof(domain), required: true);
-            WorkflowExpression.Validate(fields, nameof(fields), required: true);
-            WorkflowExpression.Validate(intelligenceCloud, nameof(intelligenceCloud), required: false);
-            WorkflowExpression.Validate(htmlresponse, nameof(htmlresponse), required: false);
+            var __workflow_domain = domain == null ? null : WorkflowExpression.Compile(domain);
+            WorkflowExpression.Validate(__workflow_domain, nameof(domain), required: true);
+            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
+            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: true);
+            var __workflow_intelligenceCloud = intelligenceCloud == null ? null : WorkflowExpression.Compile(intelligenceCloud);
+            WorkflowExpression.Validate(__workflow_intelligenceCloud, nameof(intelligenceCloud), required: false);
+            var __workflow_htmlresponse = htmlresponse == null ? null : WorkflowExpression.Compile(htmlresponse);
+            WorkflowExpression.Validate(__workflow_htmlresponse, nameof(htmlresponse), required: false);
             return new DeferredBodyAction<DEResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lookup/domain/{0}", ExpressionConverter.ConvertWithUrlEncoding(domain, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lookup/domain/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_domain, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
-                if (intelligenceCloud != null)
-                    callPayload.Queries["IntelligenceCloud"] = ExpressionConverter.Convert(intelligenceCloud);
+                callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
+                if (__workflow_intelligenceCloud != null)
+                    callPayload.Queries["IntelligenceCloud"] = ExpressionConverter.Convert(__workflow_intelligenceCloud);
                 callPayload.Queries["htmlresponse"] = Convert.ToString(false);
-                if (htmlresponse != null)
-                    callPayload.Queries["htmlresponse"] = ExpressionConverter.Convert(htmlresponse);
+                if (__workflow_htmlresponse != null)
+                    callPayload.Queries["htmlresponse"] = ExpressionConverter.Convert(__workflow_htmlresponse);
                 return new ApiConnectionAction<DEResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
-        [WorkflowExpressionFactory(nameof(__BuildUE))]
-        public IBodyWorkflowAction<UEResponse> UE([WorkflowExpression] Func<string> url, [WorkflowExpression] Func<string> fields, [WorkflowExpression] Func<bool> intelligenceCloud = null, [WorkflowExpression] Func<bool> htmlresponse = null)
+        public IBodyWorkflowAction<UEResponse> UE(Expression<Func<string>> url, Expression<Func<string>> fields, Expression<Func<bool>> intelligenceCloud = null, Expression<Func<bool>> htmlresponse = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UEResponse> __BuildUE(WorkflowExpression<string> url, WorkflowExpression<string> fields, WorkflowExpression<bool> intelligenceCloud = null, WorkflowExpression<bool> htmlresponse = null)
-        {
-            WorkflowExpression.Validate(url, nameof(url), required: true);
-            WorkflowExpression.Validate(fields, nameof(fields), required: true);
-            WorkflowExpression.Validate(intelligenceCloud, nameof(intelligenceCloud), required: false);
-            WorkflowExpression.Validate(htmlresponse, nameof(htmlresponse), required: false);
+            var __workflow_url = url == null ? null : WorkflowExpression.Compile(url);
+            WorkflowExpression.Validate(__workflow_url, nameof(url), required: true);
+            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
+            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: true);
+            var __workflow_intelligenceCloud = intelligenceCloud == null ? null : WorkflowExpression.Compile(intelligenceCloud);
+            WorkflowExpression.Validate(__workflow_intelligenceCloud, nameof(intelligenceCloud), required: false);
+            var __workflow_htmlresponse = htmlresponse == null ? null : WorkflowExpression.Compile(htmlresponse);
+            WorkflowExpression.Validate(__workflow_htmlresponse, nameof(htmlresponse), required: false);
             return new DeferredBodyAction<UEResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lookup/url/{0}", ExpressionConverter.ConvertWithUrlEncoding(url, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lookup/url/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_url, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
-                if (intelligenceCloud != null)
-                    callPayload.Queries["IntelligenceCloud"] = ExpressionConverter.Convert(intelligenceCloud);
+                callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
+                if (__workflow_intelligenceCloud != null)
+                    callPayload.Queries["IntelligenceCloud"] = ExpressionConverter.Convert(__workflow_intelligenceCloud);
                 callPayload.Queries["htmlresponse"] = Convert.ToString(false);
-                if (htmlresponse != null)
-                    callPayload.Queries["htmlresponse"] = ExpressionConverter.Convert(htmlresponse);
+                if (__workflow_htmlresponse != null)
+                    callPayload.Queries["htmlresponse"] = ExpressionConverter.Convert(__workflow_htmlresponse);
                 return new ApiConnectionAction<UEResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
-        [WorkflowExpressionFactory(nameof(__BuildHE))]
-        public IBodyWorkflowAction<HEResponse> HE([WorkflowExpression] Func<string> hash, [WorkflowExpression] Func<string> fields, [WorkflowExpression] Func<bool> intelligenceCloud = null, [WorkflowExpression] Func<bool> htmlresponse = null)
+        public IBodyWorkflowAction<HEResponse> HE(Expression<Func<string>> hash, Expression<Func<string>> fields, Expression<Func<bool>> intelligenceCloud = null, Expression<Func<bool>> htmlresponse = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<HEResponse> __BuildHE(WorkflowExpression<string> hash, WorkflowExpression<string> fields, WorkflowExpression<bool> intelligenceCloud = null, WorkflowExpression<bool> htmlresponse = null)
-        {
-            WorkflowExpression.Validate(hash, nameof(hash), required: true);
-            WorkflowExpression.Validate(fields, nameof(fields), required: true);
-            WorkflowExpression.Validate(intelligenceCloud, nameof(intelligenceCloud), required: false);
-            WorkflowExpression.Validate(htmlresponse, nameof(htmlresponse), required: false);
+            var __workflow_hash = hash == null ? null : WorkflowExpression.Compile(hash);
+            WorkflowExpression.Validate(__workflow_hash, nameof(hash), required: true);
+            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
+            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: true);
+            var __workflow_intelligenceCloud = intelligenceCloud == null ? null : WorkflowExpression.Compile(intelligenceCloud);
+            WorkflowExpression.Validate(__workflow_intelligenceCloud, nameof(intelligenceCloud), required: false);
+            var __workflow_htmlresponse = htmlresponse == null ? null : WorkflowExpression.Compile(htmlresponse);
+            WorkflowExpression.Validate(__workflow_htmlresponse, nameof(htmlresponse), required: false);
             return new DeferredBodyAction<HEResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lookup/hash/{0}", ExpressionConverter.ConvertWithUrlEncoding(hash, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lookup/hash/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hash, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
-                if (intelligenceCloud != null)
-                    callPayload.Queries["IntelligenceCloud"] = ExpressionConverter.Convert(intelligenceCloud);
+                callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
+                if (__workflow_intelligenceCloud != null)
+                    callPayload.Queries["IntelligenceCloud"] = ExpressionConverter.Convert(__workflow_intelligenceCloud);
                 callPayload.Queries["htmlresponse"] = Convert.ToString(false);
-                if (htmlresponse != null)
-                    callPayload.Queries["htmlresponse"] = ExpressionConverter.Convert(htmlresponse);
+                if (__workflow_htmlresponse != null)
+                    callPayload.Queries["htmlresponse"] = ExpressionConverter.Convert(__workflow_htmlresponse);
                 return new ApiConnectionAction<HEResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
-        [WorkflowExpressionFactory(nameof(__BuildVulnE))]
-        public IBodyWorkflowAction<VulnEResponse> VulnE([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> fields, [WorkflowExpression] Func<bool> intelligenceCloud = null, [WorkflowExpression] Func<bool> htmlresponse = null)
+        public IBodyWorkflowAction<VulnEResponse> VulnE(Expression<Func<string>> id, Expression<Func<string>> fields, Expression<Func<bool>> intelligenceCloud = null, Expression<Func<bool>> htmlresponse = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<VulnEResponse> __BuildVulnE(WorkflowExpression<string> id, WorkflowExpression<string> fields, WorkflowExpression<bool> intelligenceCloud = null, WorkflowExpression<bool> htmlresponse = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(fields, nameof(fields), required: true);
-            WorkflowExpression.Validate(intelligenceCloud, nameof(intelligenceCloud), required: false);
-            WorkflowExpression.Validate(htmlresponse, nameof(htmlresponse), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
+            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: true);
+            var __workflow_intelligenceCloud = intelligenceCloud == null ? null : WorkflowExpression.Compile(intelligenceCloud);
+            WorkflowExpression.Validate(__workflow_intelligenceCloud, nameof(intelligenceCloud), required: false);
+            var __workflow_htmlresponse = htmlresponse == null ? null : WorkflowExpression.Compile(htmlresponse);
+            WorkflowExpression.Validate(__workflow_htmlresponse, nameof(htmlresponse), required: false);
             return new DeferredBodyAction<VulnEResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lookup/vulnerability/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lookup/vulnerability/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
-                if (intelligenceCloud != null)
-                    callPayload.Queries["IntelligenceCloud"] = ExpressionConverter.Convert(intelligenceCloud);
+                callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
+                if (__workflow_intelligenceCloud != null)
+                    callPayload.Queries["IntelligenceCloud"] = ExpressionConverter.Convert(__workflow_intelligenceCloud);
                 callPayload.Queries["htmlresponse"] = Convert.ToString(false);
-                if (htmlresponse != null)
-                    callPayload.Queries["htmlresponse"] = ExpressionConverter.Convert(htmlresponse);
+                if (__workflow_htmlresponse != null)
+                    callPayload.Queries["htmlresponse"] = ExpressionConverter.Convert(__workflow_htmlresponse);
                 return new ApiConnectionAction<VulnEResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
-        [WorkflowExpressionFactory(nameof(__BuildAlertRulesSearch))]
-        public IBodyWorkflowAction<AlertRulesSearchResponse> AlertRulesSearch([WorkflowExpression] Func<string> freetext = null, [WorkflowExpression] Func<int> limit = null)
+        public IBodyWorkflowAction<AlertRulesSearchResponse> AlertRulesSearch(Expression<Func<string>> freetext = null, Expression<Func<int>> limit = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AlertRulesSearchResponse> __BuildAlertRulesSearch(WorkflowExpression<string> freetext = null, WorkflowExpression<int> limit = null)
-        {
-            WorkflowExpression.Validate(freetext, nameof(freetext), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
+            var __workflow_freetext = freetext == null ? null : WorkflowExpression.Compile(freetext);
+            WorkflowExpression.Validate(__workflow_freetext, nameof(freetext), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
             return new DeferredBodyAction<AlertRulesSearchResponse>(() =>
             {
                 var apiCallPath = "/alert/rules";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (freetext != null)
-                    callPayload.Queries["freetext"] = ExpressionConverter.Convert(freetext);
+                if (__workflow_freetext != null)
+                    callPayload.Queries["freetext"] = ExpressionConverter.Convert(__workflow_freetext);
                 callPayload.Queries["limit"] = Convert.ToString(10);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction<AlertRulesSearchResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
-        [WorkflowExpressionFactory(nameof(__BuildAlertNotSearch))]
-        public IBodyWorkflowAction<AlertSearch> AlertNotSearch([WorkflowExpression] Func<string> alertRule, [WorkflowExpression] Func<string> triggered = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> from = null)
+        public IBodyWorkflowAction<AlertSearch> AlertNotSearch(Expression<Func<string>> alertRule, Expression<Func<string>> triggered = null, Expression<Func<int>> limit = null, Expression<Func<int>> from = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AlertSearch> __BuildAlertNotSearch(WorkflowExpression<string> alertRule, WorkflowExpression<string> triggered = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> from = null)
-        {
-            WorkflowExpression.Validate(alertRule, nameof(alertRule), required: true);
-            WorkflowExpression.Validate(triggered, nameof(triggered), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(from, nameof(from), required: false);
+            var __workflow_alertRule = alertRule == null ? null : WorkflowExpression.Compile(alertRule);
+            WorkflowExpression.Validate(__workflow_alertRule, nameof(alertRule), required: true);
+            var __workflow_triggered = triggered == null ? null : WorkflowExpression.Compile(triggered);
+            WorkflowExpression.Validate(__workflow_triggered, nameof(triggered), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_from = from == null ? null : WorkflowExpression.Compile(from);
+            WorkflowExpression.Validate(__workflow_from, nameof(from), required: false);
             return new DeferredBodyAction<AlertSearch>(() =>
             {
                 var apiCallPath = "/alert/search";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (triggered != null)
-                    callPayload.Queries["triggered"] = ExpressionConverter.Convert(triggered);
-                callPayload.Queries["alertRule"] = ExpressionConverter.Convert(alertRule);
+                if (__workflow_triggered != null)
+                    callPayload.Queries["triggered"] = ExpressionConverter.Convert(__workflow_triggered);
+                callPayload.Queries["alertRule"] = ExpressionConverter.Convert(__workflow_alertRule);
                 callPayload.Queries["limit"] = Convert.ToString(10);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (from != null)
-                    callPayload.Queries["from"] = ExpressionConverter.Convert(from);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_from != null)
+                    callPayload.Queries["from"] = ExpressionConverter.Convert(__workflow_from);
                 return new ApiConnectionAction<AlertSearch>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
-        [WorkflowExpressionFactory(nameof(__BuildAlertNotLookup))]
-        public IBodyWorkflowAction<AlertLookup> AlertNotLookup([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<AlertLookup> AlertNotLookup(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AlertLookup> __BuildAlertNotLookup(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<AlertLookup>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/alert/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/alert/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<AlertLookup>(callPayload);
@@ -234,24 +204,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
-        [WorkflowExpressionFactory(nameof(__BuildPlaybookAlertSearch))]
-        public IBodyWorkflowAction<PlaybookAlertSearchItem[]> PlaybookAlertSearch([WorkflowExpression] Func<string> bodylimit = null, [WorkflowExpression] Func<bodyentitiesInputItem[]> bodyentities = null, [WorkflowExpression] Func<bodystatusesInputItem[]> bodystatuses = null, [WorkflowExpression] Func<bodyprioritiesInputItem[]> bodypriorities = null, [WorkflowExpression] Func<bodycategoriesInputItem[]> bodycategories = null, [WorkflowExpression] Func<bodycreatedFromRelativeInput> bodycreatedFromRelative = null, [WorkflowExpression] Func<bodycreatedUntilRelativeInput> bodycreatedUntilRelative = null, [WorkflowExpression] Func<bodyupdatedFromRelativeInput> bodyupdatedFromRelative = null, [WorkflowExpression] Func<bodyupdatedUntilRelativeInput> bodyupdatedUntilRelative = null)
+        public IBodyWorkflowAction<PlaybookAlertSearchItem[]> PlaybookAlertSearch(Expression<Func<string>> bodylimit = null, Expression<Func<bodyentitiesInputItem[]>> bodyentities = null, Expression<Func<bodystatusesInputItem[]>> bodystatuses = null, Expression<Func<bodyprioritiesInputItem[]>> bodypriorities = null, Expression<Func<bodycategoriesInputItem[]>> bodycategories = null, Expression<Func<bodycreatedFromRelativeInput>> bodycreatedFromRelative = null, Expression<Func<bodycreatedUntilRelativeInput>> bodycreatedUntilRelative = null, Expression<Func<bodyupdatedFromRelativeInput>> bodyupdatedFromRelative = null, Expression<Func<bodyupdatedUntilRelativeInput>> bodyupdatedUntilRelative = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PlaybookAlertSearchItem[]> __BuildPlaybookAlertSearch(WorkflowExpression<string> bodylimit = null, WorkflowExpression<bodyentitiesInputItem[]> bodyentities = null, WorkflowExpression<bodystatusesInputItem[]> bodystatuses = null, WorkflowExpression<bodyprioritiesInputItem[]> bodypriorities = null, WorkflowExpression<bodycategoriesInputItem[]> bodycategories = null, WorkflowExpression<bodycreatedFromRelativeInput> bodycreatedFromRelative = null, WorkflowExpression<bodycreatedUntilRelativeInput> bodycreatedUntilRelative = null, WorkflowExpression<bodyupdatedFromRelativeInput> bodyupdatedFromRelative = null, WorkflowExpression<bodyupdatedUntilRelativeInput> bodyupdatedUntilRelative = null)
-        {
-            WorkflowExpression.Validate(bodylimit, nameof(bodylimit), required: false);
-            WorkflowExpression.Validate(bodyentities, nameof(bodyentities), required: false);
-            WorkflowExpression.Validate(bodystatuses, nameof(bodystatuses), required: false);
-            WorkflowExpression.Validate(bodypriorities, nameof(bodypriorities), required: false);
-            WorkflowExpression.Validate(bodycategories, nameof(bodycategories), required: false);
-            WorkflowExpression.Validate(bodycreatedFromRelative, nameof(bodycreatedFromRelative), required: false);
-            WorkflowExpression.Validate(bodycreatedUntilRelative, nameof(bodycreatedUntilRelative), required: false);
-            WorkflowExpression.Validate(bodyupdatedFromRelative, nameof(bodyupdatedFromRelative), required: false);
-            WorkflowExpression.Validate(bodyupdatedUntilRelative, nameof(bodyupdatedUntilRelative), required: false);
+            var __workflow_bodylimit = bodylimit == null ? null : WorkflowExpression.Compile(bodylimit);
+            WorkflowExpression.Validate(__workflow_bodylimit, nameof(bodylimit), required: false);
+            var __workflow_bodyentities = bodyentities == null ? null : WorkflowExpression.Compile(bodyentities);
+            WorkflowExpression.Validate(__workflow_bodyentities, nameof(bodyentities), required: false);
+            var __workflow_bodystatuses = bodystatuses == null ? null : WorkflowExpression.Compile(bodystatuses);
+            WorkflowExpression.Validate(__workflow_bodystatuses, nameof(bodystatuses), required: false);
+            var __workflow_bodypriorities = bodypriorities == null ? null : WorkflowExpression.Compile(bodypriorities);
+            WorkflowExpression.Validate(__workflow_bodypriorities, nameof(bodypriorities), required: false);
+            var __workflow_bodycategories = bodycategories == null ? null : WorkflowExpression.Compile(bodycategories);
+            WorkflowExpression.Validate(__workflow_bodycategories, nameof(bodycategories), required: false);
+            var __workflow_bodycreatedFromRelative = bodycreatedFromRelative == null ? null : WorkflowExpression.Compile(bodycreatedFromRelative);
+            WorkflowExpression.Validate(__workflow_bodycreatedFromRelative, nameof(bodycreatedFromRelative), required: false);
+            var __workflow_bodycreatedUntilRelative = bodycreatedUntilRelative == null ? null : WorkflowExpression.Compile(bodycreatedUntilRelative);
+            WorkflowExpression.Validate(__workflow_bodycreatedUntilRelative, nameof(bodycreatedUntilRelative), required: false);
+            var __workflow_bodyupdatedFromRelative = bodyupdatedFromRelative == null ? null : WorkflowExpression.Compile(bodyupdatedFromRelative);
+            WorkflowExpression.Validate(__workflow_bodyupdatedFromRelative, nameof(bodyupdatedFromRelative), required: false);
+            var __workflow_bodyupdatedUntilRelative = bodyupdatedUntilRelative == null ? null : WorkflowExpression.Compile(bodyupdatedUntilRelative);
+            WorkflowExpression.Validate(__workflow_bodyupdatedUntilRelative, nameof(bodyupdatedUntilRelative), required: false);
             return new DeferredBodyAction<PlaybookAlertSearchItem[]>(() =>
             {
                 var apiCallPath = "/playbook-alert/search";
@@ -259,57 +231,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodylimit != null)
+                if (__workflow_bodylimit != null)
                 {
-                    body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                    body["limit"] = ExpressionConverter.ConvertO(__workflow_bodylimit);
                     bodypropCount++;
                 }
 
-                if (bodyentities != null)
+                if (__workflow_bodyentities != null)
                 {
-                    body["entities"] = ExpressionConverter.ConvertO(bodyentities);
+                    body["entities"] = ExpressionConverter.ConvertO(__workflow_bodyentities);
                     bodypropCount++;
                 }
 
-                if (bodystatuses != null)
+                if (__workflow_bodystatuses != null)
                 {
-                    body["statuses"] = ExpressionConverter.ConvertO(bodystatuses);
+                    body["statuses"] = ExpressionConverter.ConvertO(__workflow_bodystatuses);
                     bodypropCount++;
                 }
 
-                if (bodypriorities != null)
+                if (__workflow_bodypriorities != null)
                 {
-                    body["priorities"] = ExpressionConverter.ConvertO(bodypriorities);
+                    body["priorities"] = ExpressionConverter.ConvertO(__workflow_bodypriorities);
                     bodypropCount++;
                 }
 
-                if (bodycategories != null)
+                if (__workflow_bodycategories != null)
                 {
-                    body["categories"] = ExpressionConverter.ConvertO(bodycategories);
+                    body["categories"] = ExpressionConverter.ConvertO(__workflow_bodycategories);
                     bodypropCount++;
                 }
 
-                if (bodycreatedFromRelative != null)
+                if (__workflow_bodycreatedFromRelative != null)
                 {
-                    body["created_from_relative"] = ExpressionConverter.ConvertO(bodycreatedFromRelative);
+                    body["created_from_relative"] = ExpressionConverter.ConvertO(__workflow_bodycreatedFromRelative);
                     bodypropCount++;
                 }
 
-                if (bodycreatedUntilRelative != null)
+                if (__workflow_bodycreatedUntilRelative != null)
                 {
-                    body["created_until_relative"] = ExpressionConverter.ConvertO(bodycreatedUntilRelative);
+                    body["created_until_relative"] = ExpressionConverter.ConvertO(__workflow_bodycreatedUntilRelative);
                     bodypropCount++;
                 }
 
-                if (bodyupdatedFromRelative != null)
+                if (__workflow_bodyupdatedFromRelative != null)
                 {
-                    body["updated_from_relative"] = ExpressionConverter.ConvertO(bodyupdatedFromRelative);
+                    body["updated_from_relative"] = ExpressionConverter.ConvertO(__workflow_bodyupdatedFromRelative);
                     bodypropCount++;
                 }
 
-                if (bodyupdatedUntilRelative != null)
+                if (__workflow_bodyupdatedUntilRelative != null)
                 {
-                    body["updated_until_relative"] = ExpressionConverter.ConvertO(bodyupdatedUntilRelative);
+                    body["updated_until_relative"] = ExpressionConverter.ConvertO(__workflow_bodyupdatedUntilRelative);
                     bodypropCount++;
                 }
 
@@ -323,19 +295,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
-        [WorkflowExpressionFactory(nameof(__BuildPlaybookAlertLookup))]
-        public IBodyWorkflowAction<PlaybookAlertLookup> PlaybookAlertLookup([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<PlaybookAlertLookup> PlaybookAlertLookup(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PlaybookAlertLookup> __BuildPlaybookAlertLookup(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<PlaybookAlertLookup>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/playbook-alert/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/playbook-alert/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<PlaybookAlertLookup>(callPayload);
@@ -343,20 +309,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
-        [WorkflowExpressionFactory(nameof(__BuildDetectionRuleSearch))]
-        public IBodyWorkflowAction<DetectionRuleSearchResponse> DetectionRuleSearch([WorkflowExpression] Func<bodytypesInputItem[]> bodytypes = null, [WorkflowExpression] Func<bodyentitiesInputItem[]> bodyentities = null, [WorkflowExpression] Func<string> bodycreatedbefore = null, [WorkflowExpression] Func<string> bodycreatedafter = null, [WorkflowExpression] Func<bodylimitInput> bodylimit = null)
+        public IBodyWorkflowAction<DetectionRuleSearchResponse> DetectionRuleSearch(Expression<Func<bodytypesInputItem[]>> bodytypes = null, Expression<Func<bodyentitiesInputItem[]>> bodyentities = null, Expression<Func<string>> bodycreatedbefore = null, Expression<Func<string>> bodycreatedafter = null, Expression<Func<bodylimitInput>> bodylimit = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DetectionRuleSearchResponse> __BuildDetectionRuleSearch(WorkflowExpression<bodytypesInputItem[]> bodytypes = null, WorkflowExpression<bodyentitiesInputItem[]> bodyentities = null, WorkflowExpression<string> bodycreatedbefore = null, WorkflowExpression<string> bodycreatedafter = null, WorkflowExpression<bodylimitInput> bodylimit = null)
-        {
-            WorkflowExpression.Validate(bodytypes, nameof(bodytypes), required: false);
-            WorkflowExpression.Validate(bodyentities, nameof(bodyentities), required: false);
-            WorkflowExpression.Validate(bodycreatedbefore, nameof(bodycreatedbefore), required: false);
-            WorkflowExpression.Validate(bodycreatedafter, nameof(bodycreatedafter), required: false);
-            WorkflowExpression.Validate(bodylimit, nameof(bodylimit), required: false);
+            var __workflow_bodytypes = bodytypes == null ? null : WorkflowExpression.Compile(bodytypes);
+            WorkflowExpression.Validate(__workflow_bodytypes, nameof(bodytypes), required: false);
+            var __workflow_bodyentities = bodyentities == null ? null : WorkflowExpression.Compile(bodyentities);
+            WorkflowExpression.Validate(__workflow_bodyentities, nameof(bodyentities), required: false);
+            var __workflow_bodycreatedbefore = bodycreatedbefore == null ? null : WorkflowExpression.Compile(bodycreatedbefore);
+            WorkflowExpression.Validate(__workflow_bodycreatedbefore, nameof(bodycreatedbefore), required: false);
+            var __workflow_bodycreatedafter = bodycreatedafter == null ? null : WorkflowExpression.Compile(bodycreatedafter);
+            WorkflowExpression.Validate(__workflow_bodycreatedafter, nameof(bodycreatedafter), required: false);
+            var __workflow_bodylimit = bodylimit == null ? null : WorkflowExpression.Compile(bodylimit);
+            WorkflowExpression.Validate(__workflow_bodylimit, nameof(bodylimit), required: false);
             return new DeferredBodyAction<DetectionRuleSearchResponse>(() =>
             {
                 var apiCallPath = "/detection-rules/search";
@@ -364,29 +328,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodytypes != null)
+                if (__workflow_bodytypes != null)
                 {
-                    body["types"] = ExpressionConverter.ConvertO(bodytypes);
+                    body["types"] = ExpressionConverter.ConvertO(__workflow_bodytypes);
                     bodypropCount++;
                 }
 
-                if (bodyentities != null)
+                if (__workflow_bodyentities != null)
                 {
-                    body["entities"] = ExpressionConverter.ConvertO(bodyentities);
+                    body["entities"] = ExpressionConverter.ConvertO(__workflow_bodyentities);
                     bodypropCount++;
                 }
 
                 var createdObject = new JObject();
                 var createdObjectpropCount = 0;
-                if (bodycreatedbefore != null)
+                if (__workflow_bodycreatedbefore != null)
                 {
-                    createdObject["before"] = ExpressionConverter.ConvertO(bodycreatedbefore);
+                    createdObject["before"] = ExpressionConverter.ConvertO(__workflow_bodycreatedbefore);
                     createdObjectpropCount++;
                 }
 
-                if (bodycreatedafter != null)
+                if (__workflow_bodycreatedafter != null)
                 {
-                    createdObject["after"] = ExpressionConverter.ConvertO(bodycreatedafter);
+                    createdObject["after"] = ExpressionConverter.ConvertO(__workflow_bodycreatedafter);
                     createdObjectpropCount++;
                 }
 
@@ -396,9 +360,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
                     bodypropCount++;
                 }
 
-                if (bodylimit != null)
+                if (__workflow_bodylimit != null)
                 {
-                    body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                    body["limit"] = ExpressionConverter.ConvertO(__workflow_bodylimit);
                     bodypropCount++;
                 }
 
@@ -412,41 +376,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
-        [WorkflowExpressionFactory(nameof(__BuildRListD))]
-        public IBodyWorkflowAction<RListDResponseItem[]> RListD([WorkflowExpression] Func<pathInput> path)
+        public IBodyWorkflowAction<RListDResponseItem[]> RListD(Expression<Func<pathInput>> path)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<RListDResponseItem[]> __BuildRListD(WorkflowExpression<pathInput> path)
-        {
-            WorkflowExpression.Validate(path, nameof(path), required: true);
+            var __workflow_path = path == null ? null : WorkflowExpression.Compile(path);
+            WorkflowExpression.Validate(__workflow_path, nameof(path), required: true);
             return new DeferredBodyAction<RListDResponseItem[]>(() =>
             {
                 var apiCallPath = "/fusion/files";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["path"] = ExpressionConverter.Convert(path);
+                callPayload.Queries["path"] = ExpressionConverter.Convert(__workflow_path);
                 return new ApiConnectionAction<RListDResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
-        [WorkflowExpressionFactory(nameof(__BuildSoarBulkLookup))]
-        public IBodyWorkflowAction<SoarBulkLookupResponse> SoarBulkLookup([WorkflowExpression] Func<string[]> bodyip = null, [WorkflowExpression] Func<string[]> bodyurl = null, [WorkflowExpression] Func<string[]> bodydomain = null, [WorkflowExpression] Func<string[]> bodyhash = null, [WorkflowExpression] Func<string[]> bodyvulnerability = null)
+        public IBodyWorkflowAction<SoarBulkLookupResponse> SoarBulkLookup(Expression<Func<string[]>> bodyip = null, Expression<Func<string[]>> bodyurl = null, Expression<Func<string[]>> bodydomain = null, Expression<Func<string[]>> bodyhash = null, Expression<Func<string[]>> bodyvulnerability = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SoarBulkLookupResponse> __BuildSoarBulkLookup(WorkflowExpression<string[]> bodyip = null, WorkflowExpression<string[]> bodyurl = null, WorkflowExpression<string[]> bodydomain = null, WorkflowExpression<string[]> bodyhash = null, WorkflowExpression<string[]> bodyvulnerability = null)
-        {
-            WorkflowExpression.Validate(bodyip, nameof(bodyip), required: false);
-            WorkflowExpression.Validate(bodyurl, nameof(bodyurl), required: false);
-            WorkflowExpression.Validate(bodydomain, nameof(bodydomain), required: false);
-            WorkflowExpression.Validate(bodyhash, nameof(bodyhash), required: false);
-            WorkflowExpression.Validate(bodyvulnerability, nameof(bodyvulnerability), required: false);
+            var __workflow_bodyip = bodyip == null ? null : WorkflowExpression.Compile(bodyip);
+            WorkflowExpression.Validate(__workflow_bodyip, nameof(bodyip), required: false);
+            var __workflow_bodyurl = bodyurl == null ? null : WorkflowExpression.Compile(bodyurl);
+            WorkflowExpression.Validate(__workflow_bodyurl, nameof(bodyurl), required: false);
+            var __workflow_bodydomain = bodydomain == null ? null : WorkflowExpression.Compile(bodydomain);
+            WorkflowExpression.Validate(__workflow_bodydomain, nameof(bodydomain), required: false);
+            var __workflow_bodyhash = bodyhash == null ? null : WorkflowExpression.Compile(bodyhash);
+            WorkflowExpression.Validate(__workflow_bodyhash, nameof(bodyhash), required: false);
+            var __workflow_bodyvulnerability = bodyvulnerability == null ? null : WorkflowExpression.Compile(bodyvulnerability);
+            WorkflowExpression.Validate(__workflow_bodyvulnerability, nameof(bodyvulnerability), required: false);
             return new DeferredBodyAction<SoarBulkLookupResponse>(() =>
             {
                 var apiCallPath = "/soar/lookup";
@@ -454,33 +410,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyip != null)
+                if (__workflow_bodyip != null)
                 {
-                    body["ip"] = ExpressionConverter.ConvertO(bodyip);
+                    body["ip"] = ExpressionConverter.ConvertO(__workflow_bodyip);
                     bodypropCount++;
                 }
 
-                if (bodyurl != null)
+                if (__workflow_bodyurl != null)
                 {
-                    body["url"] = ExpressionConverter.ConvertO(bodyurl);
+                    body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
                     bodypropCount++;
                 }
 
-                if (bodydomain != null)
+                if (__workflow_bodydomain != null)
                 {
-                    body["domain"] = ExpressionConverter.ConvertO(bodydomain);
+                    body["domain"] = ExpressionConverter.ConvertO(__workflow_bodydomain);
                     bodypropCount++;
                 }
 
-                if (bodyhash != null)
+                if (__workflow_bodyhash != null)
                 {
-                    body["hash"] = ExpressionConverter.ConvertO(bodyhash);
+                    body["hash"] = ExpressionConverter.ConvertO(__workflow_bodyhash);
                     bodypropCount++;
                 }
 
-                if (bodyvulnerability != null)
+                if (__workflow_bodyvulnerability != null)
                 {
-                    body["vulnerability"] = ExpressionConverter.ConvertO(bodyvulnerability);
+                    body["vulnerability"] = ExpressionConverter.ConvertO(__workflow_bodyvulnerability);
                     bodypropCount++;
                 }
 
@@ -494,18 +450,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
-        [WorkflowExpressionFactory(nameof(__BuildThreatMapActors))]
-        public IBodyWorkflowAction<ThreatMapActorsResponse> ThreatMapActors([WorkflowExpression] Func<string[]> bodyactors, [WorkflowExpression] Func<string[]> bodycategories, [WorkflowExpression] Func<string[]> bodywatchlists)
+        public IBodyWorkflowAction<ThreatMapActorsResponse> ThreatMapActors(Expression<Func<string[]>> bodyactors, Expression<Func<string[]>> bodycategories, Expression<Func<string[]>> bodywatchlists)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ThreatMapActorsResponse> __BuildThreatMapActors(WorkflowExpression<string[]> bodyactors, WorkflowExpression<string[]> bodycategories, WorkflowExpression<string[]> bodywatchlists)
-        {
-            WorkflowExpression.Validate(bodyactors, nameof(bodyactors), required: true);
-            WorkflowExpression.Validate(bodycategories, nameof(bodycategories), required: true);
-            WorkflowExpression.Validate(bodywatchlists, nameof(bodywatchlists), required: true);
+            var __workflow_bodyactors = bodyactors == null ? null : WorkflowExpression.Compile(bodyactors);
+            WorkflowExpression.Validate(__workflow_bodyactors, nameof(bodyactors), required: true);
+            var __workflow_bodycategories = bodycategories == null ? null : WorkflowExpression.Compile(bodycategories);
+            WorkflowExpression.Validate(__workflow_bodycategories, nameof(bodycategories), required: true);
+            var __workflow_bodywatchlists = bodywatchlists == null ? null : WorkflowExpression.Compile(bodywatchlists);
+            WorkflowExpression.Validate(__workflow_bodywatchlists, nameof(bodywatchlists), required: true);
             return new DeferredBodyAction<ThreatMapActorsResponse>(() =>
             {
                 var apiCallPath = "/threat/map/actors";
@@ -514,11 +466,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["actors"] = ExpressionConverter.ConvertO(bodyactors);
+                body["actors"] = ExpressionConverter.ConvertO(__workflow_bodyactors);
                 bodypropCount++;
-                body["categories"] = ExpressionConverter.ConvertO(bodycategories);
+                body["categories"] = ExpressionConverter.ConvertO(__workflow_bodycategories);
                 bodypropCount++;
-                body["watchlists"] = ExpressionConverter.ConvertO(bodywatchlists);
+                body["watchlists"] = ExpressionConverter.ConvertO(__workflow_bodywatchlists);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -529,18 +481,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
-        [WorkflowExpressionFactory(nameof(__BuildThreatMapMalware))]
-        public IBodyWorkflowAction<ThreatMapMalwareResponse> ThreatMapMalware([WorkflowExpression] Func<string[]> bodymalware, [WorkflowExpression] Func<string[]> bodycategories, [WorkflowExpression] Func<string[]> bodywatchlists)
+        public IBodyWorkflowAction<ThreatMapMalwareResponse> ThreatMapMalware(Expression<Func<string[]>> bodymalware, Expression<Func<string[]>> bodycategories, Expression<Func<string[]>> bodywatchlists)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ThreatMapMalwareResponse> __BuildThreatMapMalware(WorkflowExpression<string[]> bodymalware, WorkflowExpression<string[]> bodycategories, WorkflowExpression<string[]> bodywatchlists)
-        {
-            WorkflowExpression.Validate(bodymalware, nameof(bodymalware), required: true);
-            WorkflowExpression.Validate(bodycategories, nameof(bodycategories), required: true);
-            WorkflowExpression.Validate(bodywatchlists, nameof(bodywatchlists), required: true);
+            var __workflow_bodymalware = bodymalware == null ? null : WorkflowExpression.Compile(bodymalware);
+            WorkflowExpression.Validate(__workflow_bodymalware, nameof(bodymalware), required: true);
+            var __workflow_bodycategories = bodycategories == null ? null : WorkflowExpression.Compile(bodycategories);
+            WorkflowExpression.Validate(__workflow_bodycategories, nameof(bodycategories), required: true);
+            var __workflow_bodywatchlists = bodywatchlists == null ? null : WorkflowExpression.Compile(bodywatchlists);
+            WorkflowExpression.Validate(__workflow_bodywatchlists, nameof(bodywatchlists), required: true);
             return new DeferredBodyAction<ThreatMapMalwareResponse>(() =>
             {
                 var apiCallPath = "/threat/map/malware";
@@ -549,11 +497,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["malware"] = ExpressionConverter.ConvertO(bodymalware);
+                body["malware"] = ExpressionConverter.ConvertO(__workflow_bodymalware);
                 bodypropCount++;
-                body["categories"] = ExpressionConverter.ConvertO(bodycategories);
+                body["categories"] = ExpressionConverter.ConvertO(__workflow_bodycategories);
                 bodypropCount++;
-                body["watchlists"] = ExpressionConverter.ConvertO(bodywatchlists);
+                body["watchlists"] = ExpressionConverter.ConvertO(__workflow_bodywatchlists);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -564,24 +512,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
-        [WorkflowExpressionFactory(nameof(__BuildSTIXIndicators))]
-        public IBodyWorkflowAction<STIXIndicatorsResponse> STIXIndicators([WorkflowExpression] Func<string[]> bodyactors = null, [WorkflowExpression] Func<string[]> bodycategories = null, [WorkflowExpression] Func<string[]> bodywatchlists = null, [WorkflowExpression] Func<int> bodytriggerScoreIp = null, [WorkflowExpression] Func<int> bodytriggerScoreUrl = null, [WorkflowExpression] Func<int> bodytriggerScoreDomain = null, [WorkflowExpression] Func<int> bodytriggerScoreHash = null, [WorkflowExpression] Func<int> bodyvalidUntilDeltaHours = null, [WorkflowExpression] Func<string> bodythreatHuntDescription = null)
+        public IBodyWorkflowAction<STIXIndicatorsResponse> STIXIndicators(Expression<Func<string[]>> bodyactors = null, Expression<Func<string[]>> bodycategories = null, Expression<Func<string[]>> bodywatchlists = null, Expression<Func<int>> bodytriggerScoreIp = null, Expression<Func<int>> bodytriggerScoreUrl = null, Expression<Func<int>> bodytriggerScoreDomain = null, Expression<Func<int>> bodytriggerScoreHash = null, Expression<Func<int>> bodyvalidUntilDeltaHours = null, Expression<Func<string>> bodythreatHuntDescription = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<STIXIndicatorsResponse> __BuildSTIXIndicators(WorkflowExpression<string[]> bodyactors = null, WorkflowExpression<string[]> bodycategories = null, WorkflowExpression<string[]> bodywatchlists = null, WorkflowExpression<int> bodytriggerScoreIp = null, WorkflowExpression<int> bodytriggerScoreUrl = null, WorkflowExpression<int> bodytriggerScoreDomain = null, WorkflowExpression<int> bodytriggerScoreHash = null, WorkflowExpression<int> bodyvalidUntilDeltaHours = null, WorkflowExpression<string> bodythreatHuntDescription = null)
-        {
-            WorkflowExpression.Validate(bodyactors, nameof(bodyactors), required: false);
-            WorkflowExpression.Validate(bodycategories, nameof(bodycategories), required: false);
-            WorkflowExpression.Validate(bodywatchlists, nameof(bodywatchlists), required: false);
-            WorkflowExpression.Validate(bodytriggerScoreIp, nameof(bodytriggerScoreIp), required: false);
-            WorkflowExpression.Validate(bodytriggerScoreUrl, nameof(bodytriggerScoreUrl), required: false);
-            WorkflowExpression.Validate(bodytriggerScoreDomain, nameof(bodytriggerScoreDomain), required: false);
-            WorkflowExpression.Validate(bodytriggerScoreHash, nameof(bodytriggerScoreHash), required: false);
-            WorkflowExpression.Validate(bodyvalidUntilDeltaHours, nameof(bodyvalidUntilDeltaHours), required: false);
-            WorkflowExpression.Validate(bodythreatHuntDescription, nameof(bodythreatHuntDescription), required: false);
+            var __workflow_bodyactors = bodyactors == null ? null : WorkflowExpression.Compile(bodyactors);
+            WorkflowExpression.Validate(__workflow_bodyactors, nameof(bodyactors), required: false);
+            var __workflow_bodycategories = bodycategories == null ? null : WorkflowExpression.Compile(bodycategories);
+            WorkflowExpression.Validate(__workflow_bodycategories, nameof(bodycategories), required: false);
+            var __workflow_bodywatchlists = bodywatchlists == null ? null : WorkflowExpression.Compile(bodywatchlists);
+            WorkflowExpression.Validate(__workflow_bodywatchlists, nameof(bodywatchlists), required: false);
+            var __workflow_bodytriggerScoreIp = bodytriggerScoreIp == null ? null : WorkflowExpression.Compile(bodytriggerScoreIp);
+            WorkflowExpression.Validate(__workflow_bodytriggerScoreIp, nameof(bodytriggerScoreIp), required: false);
+            var __workflow_bodytriggerScoreUrl = bodytriggerScoreUrl == null ? null : WorkflowExpression.Compile(bodytriggerScoreUrl);
+            WorkflowExpression.Validate(__workflow_bodytriggerScoreUrl, nameof(bodytriggerScoreUrl), required: false);
+            var __workflow_bodytriggerScoreDomain = bodytriggerScoreDomain == null ? null : WorkflowExpression.Compile(bodytriggerScoreDomain);
+            WorkflowExpression.Validate(__workflow_bodytriggerScoreDomain, nameof(bodytriggerScoreDomain), required: false);
+            var __workflow_bodytriggerScoreHash = bodytriggerScoreHash == null ? null : WorkflowExpression.Compile(bodytriggerScoreHash);
+            WorkflowExpression.Validate(__workflow_bodytriggerScoreHash, nameof(bodytriggerScoreHash), required: false);
+            var __workflow_bodyvalidUntilDeltaHours = bodyvalidUntilDeltaHours == null ? null : WorkflowExpression.Compile(bodyvalidUntilDeltaHours);
+            WorkflowExpression.Validate(__workflow_bodyvalidUntilDeltaHours, nameof(bodyvalidUntilDeltaHours), required: false);
+            var __workflow_bodythreatHuntDescription = bodythreatHuntDescription == null ? null : WorkflowExpression.Compile(bodythreatHuntDescription);
+            WorkflowExpression.Validate(__workflow_bodythreatHuntDescription, nameof(bodythreatHuntDescription), required: false);
             return new DeferredBodyAction<STIXIndicatorsResponse>(() =>
             {
                 var apiCallPath = "/threat/indicators/actors";
@@ -589,57 +539,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyactors != null)
+                if (__workflow_bodyactors != null)
                 {
-                    body["actors"] = ExpressionConverter.ConvertO(bodyactors);
+                    body["actors"] = ExpressionConverter.ConvertO(__workflow_bodyactors);
                     bodypropCount++;
                 }
 
-                if (bodycategories != null)
+                if (__workflow_bodycategories != null)
                 {
-                    body["categories"] = ExpressionConverter.ConvertO(bodycategories);
+                    body["categories"] = ExpressionConverter.ConvertO(__workflow_bodycategories);
                     bodypropCount++;
                 }
 
-                if (bodywatchlists != null)
+                if (__workflow_bodywatchlists != null)
                 {
-                    body["watchlists"] = ExpressionConverter.ConvertO(bodywatchlists);
+                    body["watchlists"] = ExpressionConverter.ConvertO(__workflow_bodywatchlists);
                     bodypropCount++;
                 }
 
-                if (bodytriggerScoreIp != null)
+                if (__workflow_bodytriggerScoreIp != null)
                 {
-                    body["trigger_score_ip"] = ExpressionConverter.ConvertO(bodytriggerScoreIp);
+                    body["trigger_score_ip"] = ExpressionConverter.ConvertO(__workflow_bodytriggerScoreIp);
                     bodypropCount++;
                 }
 
-                if (bodytriggerScoreUrl != null)
+                if (__workflow_bodytriggerScoreUrl != null)
                 {
-                    body["trigger_score_url"] = ExpressionConverter.ConvertO(bodytriggerScoreUrl);
+                    body["trigger_score_url"] = ExpressionConverter.ConvertO(__workflow_bodytriggerScoreUrl);
                     bodypropCount++;
                 }
 
-                if (bodytriggerScoreDomain != null)
+                if (__workflow_bodytriggerScoreDomain != null)
                 {
-                    body["trigger_score_domain"] = ExpressionConverter.ConvertO(bodytriggerScoreDomain);
+                    body["trigger_score_domain"] = ExpressionConverter.ConvertO(__workflow_bodytriggerScoreDomain);
                     bodypropCount++;
                 }
 
-                if (bodytriggerScoreHash != null)
+                if (__workflow_bodytriggerScoreHash != null)
                 {
-                    body["trigger_score_hash"] = ExpressionConverter.ConvertO(bodytriggerScoreHash);
+                    body["trigger_score_hash"] = ExpressionConverter.ConvertO(__workflow_bodytriggerScoreHash);
                     bodypropCount++;
                 }
 
-                if (bodyvalidUntilDeltaHours != null)
+                if (__workflow_bodyvalidUntilDeltaHours != null)
                 {
-                    body["valid_until_delta_hours"] = ExpressionConverter.ConvertO(bodyvalidUntilDeltaHours);
+                    body["valid_until_delta_hours"] = ExpressionConverter.ConvertO(__workflow_bodyvalidUntilDeltaHours);
                     bodypropCount++;
                 }
 
-                if (bodythreatHuntDescription != null)
+                if (__workflow_bodythreatHuntDescription != null)
                 {
-                    body["threat_hunt_description"] = ExpressionConverter.ConvertO(bodythreatHuntDescription);
+                    body["threat_hunt_description"] = ExpressionConverter.ConvertO(__workflow_bodythreatHuntDescription);
                     bodypropCount++;
                 }
 
@@ -653,24 +603,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
-        [WorkflowExpressionFactory(nameof(__BuildSTIXMalwareIndicators))]
-        public IBodyWorkflowAction<STIXMalwareIndicatorsResponse> STIXMalwareIndicators([WorkflowExpression] Func<string[]> bodymalware = null, [WorkflowExpression] Func<string[]> bodycategories = null, [WorkflowExpression] Func<string[]> bodywatchlists = null, [WorkflowExpression] Func<int> bodytriggerScoreIp = null, [WorkflowExpression] Func<int> bodytriggerScoreUrl = null, [WorkflowExpression] Func<int> bodytriggerScoreDomain = null, [WorkflowExpression] Func<int> bodytriggerScoreHash = null, [WorkflowExpression] Func<int> bodyvalidUntilDeltaHours = null, [WorkflowExpression] Func<string> bodythreatHuntDescription = null)
+        public IBodyWorkflowAction<STIXMalwareIndicatorsResponse> STIXMalwareIndicators(Expression<Func<string[]>> bodymalware = null, Expression<Func<string[]>> bodycategories = null, Expression<Func<string[]>> bodywatchlists = null, Expression<Func<int>> bodytriggerScoreIp = null, Expression<Func<int>> bodytriggerScoreUrl = null, Expression<Func<int>> bodytriggerScoreDomain = null, Expression<Func<int>> bodytriggerScoreHash = null, Expression<Func<int>> bodyvalidUntilDeltaHours = null, Expression<Func<string>> bodythreatHuntDescription = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<STIXMalwareIndicatorsResponse> __BuildSTIXMalwareIndicators(WorkflowExpression<string[]> bodymalware = null, WorkflowExpression<string[]> bodycategories = null, WorkflowExpression<string[]> bodywatchlists = null, WorkflowExpression<int> bodytriggerScoreIp = null, WorkflowExpression<int> bodytriggerScoreUrl = null, WorkflowExpression<int> bodytriggerScoreDomain = null, WorkflowExpression<int> bodytriggerScoreHash = null, WorkflowExpression<int> bodyvalidUntilDeltaHours = null, WorkflowExpression<string> bodythreatHuntDescription = null)
-        {
-            WorkflowExpression.Validate(bodymalware, nameof(bodymalware), required: false);
-            WorkflowExpression.Validate(bodycategories, nameof(bodycategories), required: false);
-            WorkflowExpression.Validate(bodywatchlists, nameof(bodywatchlists), required: false);
-            WorkflowExpression.Validate(bodytriggerScoreIp, nameof(bodytriggerScoreIp), required: false);
-            WorkflowExpression.Validate(bodytriggerScoreUrl, nameof(bodytriggerScoreUrl), required: false);
-            WorkflowExpression.Validate(bodytriggerScoreDomain, nameof(bodytriggerScoreDomain), required: false);
-            WorkflowExpression.Validate(bodytriggerScoreHash, nameof(bodytriggerScoreHash), required: false);
-            WorkflowExpression.Validate(bodyvalidUntilDeltaHours, nameof(bodyvalidUntilDeltaHours), required: false);
-            WorkflowExpression.Validate(bodythreatHuntDescription, nameof(bodythreatHuntDescription), required: false);
+            var __workflow_bodymalware = bodymalware == null ? null : WorkflowExpression.Compile(bodymalware);
+            WorkflowExpression.Validate(__workflow_bodymalware, nameof(bodymalware), required: false);
+            var __workflow_bodycategories = bodycategories == null ? null : WorkflowExpression.Compile(bodycategories);
+            WorkflowExpression.Validate(__workflow_bodycategories, nameof(bodycategories), required: false);
+            var __workflow_bodywatchlists = bodywatchlists == null ? null : WorkflowExpression.Compile(bodywatchlists);
+            WorkflowExpression.Validate(__workflow_bodywatchlists, nameof(bodywatchlists), required: false);
+            var __workflow_bodytriggerScoreIp = bodytriggerScoreIp == null ? null : WorkflowExpression.Compile(bodytriggerScoreIp);
+            WorkflowExpression.Validate(__workflow_bodytriggerScoreIp, nameof(bodytriggerScoreIp), required: false);
+            var __workflow_bodytriggerScoreUrl = bodytriggerScoreUrl == null ? null : WorkflowExpression.Compile(bodytriggerScoreUrl);
+            WorkflowExpression.Validate(__workflow_bodytriggerScoreUrl, nameof(bodytriggerScoreUrl), required: false);
+            var __workflow_bodytriggerScoreDomain = bodytriggerScoreDomain == null ? null : WorkflowExpression.Compile(bodytriggerScoreDomain);
+            WorkflowExpression.Validate(__workflow_bodytriggerScoreDomain, nameof(bodytriggerScoreDomain), required: false);
+            var __workflow_bodytriggerScoreHash = bodytriggerScoreHash == null ? null : WorkflowExpression.Compile(bodytriggerScoreHash);
+            WorkflowExpression.Validate(__workflow_bodytriggerScoreHash, nameof(bodytriggerScoreHash), required: false);
+            var __workflow_bodyvalidUntilDeltaHours = bodyvalidUntilDeltaHours == null ? null : WorkflowExpression.Compile(bodyvalidUntilDeltaHours);
+            WorkflowExpression.Validate(__workflow_bodyvalidUntilDeltaHours, nameof(bodyvalidUntilDeltaHours), required: false);
+            var __workflow_bodythreatHuntDescription = bodythreatHuntDescription == null ? null : WorkflowExpression.Compile(bodythreatHuntDescription);
+            WorkflowExpression.Validate(__workflow_bodythreatHuntDescription, nameof(bodythreatHuntDescription), required: false);
             return new DeferredBodyAction<STIXMalwareIndicatorsResponse>(() =>
             {
                 var apiCallPath = "/threat/indicators/malware";
@@ -678,57 +630,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodymalware != null)
+                if (__workflow_bodymalware != null)
                 {
-                    body["malware"] = ExpressionConverter.ConvertO(bodymalware);
+                    body["malware"] = ExpressionConverter.ConvertO(__workflow_bodymalware);
                     bodypropCount++;
                 }
 
-                if (bodycategories != null)
+                if (__workflow_bodycategories != null)
                 {
-                    body["categories"] = ExpressionConverter.ConvertO(bodycategories);
+                    body["categories"] = ExpressionConverter.ConvertO(__workflow_bodycategories);
                     bodypropCount++;
                 }
 
-                if (bodywatchlists != null)
+                if (__workflow_bodywatchlists != null)
                 {
-                    body["watchlists"] = ExpressionConverter.ConvertO(bodywatchlists);
+                    body["watchlists"] = ExpressionConverter.ConvertO(__workflow_bodywatchlists);
                     bodypropCount++;
                 }
 
-                if (bodytriggerScoreIp != null)
+                if (__workflow_bodytriggerScoreIp != null)
                 {
-                    body["trigger_score_ip"] = ExpressionConverter.ConvertO(bodytriggerScoreIp);
+                    body["trigger_score_ip"] = ExpressionConverter.ConvertO(__workflow_bodytriggerScoreIp);
                     bodypropCount++;
                 }
 
-                if (bodytriggerScoreUrl != null)
+                if (__workflow_bodytriggerScoreUrl != null)
                 {
-                    body["trigger_score_url"] = ExpressionConverter.ConvertO(bodytriggerScoreUrl);
+                    body["trigger_score_url"] = ExpressionConverter.ConvertO(__workflow_bodytriggerScoreUrl);
                     bodypropCount++;
                 }
 
-                if (bodytriggerScoreDomain != null)
+                if (__workflow_bodytriggerScoreDomain != null)
                 {
-                    body["trigger_score_domain"] = ExpressionConverter.ConvertO(bodytriggerScoreDomain);
+                    body["trigger_score_domain"] = ExpressionConverter.ConvertO(__workflow_bodytriggerScoreDomain);
                     bodypropCount++;
                 }
 
-                if (bodytriggerScoreHash != null)
+                if (__workflow_bodytriggerScoreHash != null)
                 {
-                    body["trigger_score_hash"] = ExpressionConverter.ConvertO(bodytriggerScoreHash);
+                    body["trigger_score_hash"] = ExpressionConverter.ConvertO(__workflow_bodytriggerScoreHash);
                     bodypropCount++;
                 }
 
-                if (bodyvalidUntilDeltaHours != null)
+                if (__workflow_bodyvalidUntilDeltaHours != null)
                 {
-                    body["valid_until_delta_hours"] = ExpressionConverter.ConvertO(bodyvalidUntilDeltaHours);
+                    body["valid_until_delta_hours"] = ExpressionConverter.ConvertO(__workflow_bodyvalidUntilDeltaHours);
                     bodypropCount++;
                 }
 
-                if (bodythreatHuntDescription != null)
+                if (__workflow_bodythreatHuntDescription != null)
                 {
-                    body["threat_hunt_description"] = ExpressionConverter.ConvertO(bodythreatHuntDescription);
+                    body["threat_hunt_description"] = ExpressionConverter.ConvertO(__workflow_bodythreatHuntDescription);
                     bodypropCount++;
                 }
 
@@ -742,58 +694,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
-        [WorkflowExpressionFactory(nameof(__BuildAlertSearch))]
-        public IBodyWorkflowAction<AlertSearchV2Response> AlertSearch([WorkflowExpression] Func<string> triggered = null, [WorkflowExpression] Func<string> alertRule = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> from = null, [WorkflowExpression] Func<fieldsInput> fields = null)
+        public IBodyWorkflowAction<AlertSearchV2Response> AlertSearch(Expression<Func<string>> triggered = null, Expression<Func<string>> alertRule = null, Expression<Func<int>> limit = null, Expression<Func<int>> from = null, Expression<Func<fieldsInput>> fields = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AlertSearchV2Response> __BuildAlertSearch(WorkflowExpression<string> triggered = null, WorkflowExpression<string> alertRule = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> from = null, WorkflowExpression<fieldsInput> fields = null)
-        {
-            WorkflowExpression.Validate(triggered, nameof(triggered), required: false);
-            WorkflowExpression.Validate(alertRule, nameof(alertRule), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(from, nameof(from), required: false);
-            WorkflowExpression.Validate(fields, nameof(fields), required: false);
+            var __workflow_triggered = triggered == null ? null : WorkflowExpression.Compile(triggered);
+            WorkflowExpression.Validate(__workflow_triggered, nameof(triggered), required: false);
+            var __workflow_alertRule = alertRule == null ? null : WorkflowExpression.Compile(alertRule);
+            WorkflowExpression.Validate(__workflow_alertRule, nameof(alertRule), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_from = from == null ? null : WorkflowExpression.Compile(from);
+            WorkflowExpression.Validate(__workflow_from, nameof(from), required: false);
+            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
+            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
             return new DeferredBodyAction<AlertSearchV2Response>(() =>
             {
                 var apiCallPath = "/v2/alerts";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (triggered != null)
-                    callPayload.Queries["triggered"] = ExpressionConverter.Convert(triggered);
-                if (alertRule != null)
-                    callPayload.Queries["alertRule"] = ExpressionConverter.Convert(alertRule);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (from != null)
-                    callPayload.Queries["from"] = ExpressionConverter.Convert(from);
-                if (fields != null)
-                    callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                if (__workflow_triggered != null)
+                    callPayload.Queries["triggered"] = ExpressionConverter.Convert(__workflow_triggered);
+                if (__workflow_alertRule != null)
+                    callPayload.Queries["alertRule"] = ExpressionConverter.Convert(__workflow_alertRule);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_from != null)
+                    callPayload.Queries["from"] = ExpressionConverter.Convert(__workflow_from);
+                if (__workflow_fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
                 return new ApiConnectionAction<AlertSearchV2Response>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
-        [WorkflowExpressionFactory(nameof(__BuildAlertSearchId))]
-        public IBodyWorkflowAction<AlertSearchIdV2Response> AlertSearchId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<fieldsInput> fields = null)
+        public IBodyWorkflowAction<AlertSearchIdV2Response> AlertSearchId(Expression<Func<string>> id, Expression<Func<fieldsInput>> fields = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AlertSearchIdV2Response> __BuildAlertSearchId(WorkflowExpression<string> id, WorkflowExpression<fieldsInput> fields = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(fields, nameof(fields), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
+            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
             return new DeferredBodyAction<AlertSearchIdV2Response>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/alerts/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/alerts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (fields != null)
-                    callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                if (__workflow_fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
                 return new ApiConnectionAction<AlertSearchIdV2Response>(callPayload);
             });
         }

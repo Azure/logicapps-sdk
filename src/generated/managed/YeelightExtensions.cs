@@ -1,12 +1,12 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class YeelightActions([ConnectionName] string connectionId)
     {
@@ -20,19 +20,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeelight")]
-        [WorkflowExpressionFactory(nameof(__BuildSwitch))]
-        public IBodyWorkflowAction<SwitchResponseItem[]> Switch([WorkflowExpression] Func<string> bodydid = null, [WorkflowExpression] Func<bool> bodyon = null, [WorkflowExpression] Func<string> bodyregion = null, [WorkflowExpression] Func<string> bodytype = null)
+        public IBodyWorkflowAction<SwitchResponseItem[]> Switch(Expression<Func<string>> bodydid = null, Expression<Func<bool>> bodyon = null, Expression<Func<string>> bodyregion = null, Expression<Func<string>> bodytype = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SwitchResponseItem[]> __BuildSwitch(WorkflowExpression<string> bodydid = null, WorkflowExpression<bool> bodyon = null, WorkflowExpression<string> bodyregion = null, WorkflowExpression<string> bodytype = null)
-        {
-            WorkflowExpression.Validate(bodydid, nameof(bodydid), required: false);
-            WorkflowExpression.Validate(bodyon, nameof(bodyon), required: false);
-            WorkflowExpression.Validate(bodyregion, nameof(bodyregion), required: false);
-            WorkflowExpression.Validate(bodytype, nameof(bodytype), required: false);
+            var __workflow_bodydid = bodydid == null ? null : WorkflowExpression.Compile(bodydid);
+            WorkflowExpression.Validate(__workflow_bodydid, nameof(bodydid), required: false);
+            var __workflow_bodyon = bodyon == null ? null : WorkflowExpression.Compile(bodyon);
+            WorkflowExpression.Validate(__workflow_bodyon, nameof(bodyon), required: false);
+            var __workflow_bodyregion = bodyregion == null ? null : WorkflowExpression.Compile(bodyregion);
+            WorkflowExpression.Validate(__workflow_bodyregion, nameof(bodyregion), required: false);
+            var __workflow_bodytype = bodytype == null ? null : WorkflowExpression.Compile(bodytype);
+            WorkflowExpression.Validate(__workflow_bodytype, nameof(bodytype), required: false);
             return new DeferredBodyAction<SwitchResponseItem[]>(() =>
             {
                 var apiCallPath = "/api/ms-flow/switch";
@@ -40,27 +37,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodydid != null)
+                if (__workflow_bodydid != null)
                 {
-                    body["did"] = ExpressionConverter.ConvertO(bodydid);
+                    body["did"] = ExpressionConverter.ConvertO(__workflow_bodydid);
                     bodypropCount++;
                 }
 
-                if (bodyon != null)
+                if (__workflow_bodyon != null)
                 {
-                    body["on"] = ExpressionConverter.ConvertO(bodyon);
+                    body["on"] = ExpressionConverter.ConvertO(__workflow_bodyon);
                     bodypropCount++;
                 }
 
-                if (bodyregion != null)
+                if (__workflow_bodyregion != null)
                 {
-                    body["region"] = ExpressionConverter.ConvertO(bodyregion);
+                    body["region"] = ExpressionConverter.ConvertO(__workflow_bodyregion);
                     bodypropCount++;
                 }
 
-                if (bodytype != null)
+                if (__workflow_bodytype != null)
                 {
-                    body["type"] = ExpressionConverter.ConvertO(bodytype);
+                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
                     bodypropCount++;
                 }
 
@@ -74,19 +71,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeelight")]
-        [WorkflowExpressionFactory(nameof(__BuildColor))]
-        public IBodyWorkflowAction<ColorResponseItem[]> Color([WorkflowExpression] Func<string> bodydid = null, [WorkflowExpression] Func<int> bodyspectrumRGB = null, [WorkflowExpression] Func<string> bodyregion = null, [WorkflowExpression] Func<string> bodytype = null)
+        public IBodyWorkflowAction<ColorResponseItem[]> Color(Expression<Func<string>> bodydid = null, Expression<Func<int>> bodyspectrumRGB = null, Expression<Func<string>> bodyregion = null, Expression<Func<string>> bodytype = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ColorResponseItem[]> __BuildColor(WorkflowExpression<string> bodydid = null, WorkflowExpression<int> bodyspectrumRGB = null, WorkflowExpression<string> bodyregion = null, WorkflowExpression<string> bodytype = null)
-        {
-            WorkflowExpression.Validate(bodydid, nameof(bodydid), required: false);
-            WorkflowExpression.Validate(bodyspectrumRGB, nameof(bodyspectrumRGB), required: false);
-            WorkflowExpression.Validate(bodyregion, nameof(bodyregion), required: false);
-            WorkflowExpression.Validate(bodytype, nameof(bodytype), required: false);
+            var __workflow_bodydid = bodydid == null ? null : WorkflowExpression.Compile(bodydid);
+            WorkflowExpression.Validate(__workflow_bodydid, nameof(bodydid), required: false);
+            var __workflow_bodyspectrumRGB = bodyspectrumRGB == null ? null : WorkflowExpression.Compile(bodyspectrumRGB);
+            WorkflowExpression.Validate(__workflow_bodyspectrumRGB, nameof(bodyspectrumRGB), required: false);
+            var __workflow_bodyregion = bodyregion == null ? null : WorkflowExpression.Compile(bodyregion);
+            WorkflowExpression.Validate(__workflow_bodyregion, nameof(bodyregion), required: false);
+            var __workflow_bodytype = bodytype == null ? null : WorkflowExpression.Compile(bodytype);
+            WorkflowExpression.Validate(__workflow_bodytype, nameof(bodytype), required: false);
             return new DeferredBodyAction<ColorResponseItem[]>(() =>
             {
                 var apiCallPath = "/api/ms-flow/color";
@@ -94,27 +88,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodydid != null)
+                if (__workflow_bodydid != null)
                 {
-                    body["did"] = ExpressionConverter.ConvertO(bodydid);
+                    body["did"] = ExpressionConverter.ConvertO(__workflow_bodydid);
                     bodypropCount++;
                 }
 
-                if (bodyspectrumRGB != null)
+                if (__workflow_bodyspectrumRGB != null)
                 {
-                    body["spectrumRGB"] = ExpressionConverter.ConvertO(bodyspectrumRGB);
+                    body["spectrumRGB"] = ExpressionConverter.ConvertO(__workflow_bodyspectrumRGB);
                     bodypropCount++;
                 }
 
-                if (bodyregion != null)
+                if (__workflow_bodyregion != null)
                 {
-                    body["region"] = ExpressionConverter.ConvertO(bodyregion);
+                    body["region"] = ExpressionConverter.ConvertO(__workflow_bodyregion);
                     bodypropCount++;
                 }
 
-                if (bodytype != null)
+                if (__workflow_bodytype != null)
                 {
-                    body["type"] = ExpressionConverter.ConvertO(bodytype);
+                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
                     bodypropCount++;
                 }
 
@@ -128,19 +122,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeelight")]
-        [WorkflowExpressionFactory(nameof(__BuildBrightness))]
-        public IBodyWorkflowAction<BrightnessResponseItem[]> Brightness([WorkflowExpression] Func<string> bodydid = null, [WorkflowExpression] Func<int> bodybrightness = null, [WorkflowExpression] Func<string> bodyregion = null, [WorkflowExpression] Func<string> bodytype = null)
+        public IBodyWorkflowAction<BrightnessResponseItem[]> Brightness(Expression<Func<string>> bodydid = null, Expression<Func<int>> bodybrightness = null, Expression<Func<string>> bodyregion = null, Expression<Func<string>> bodytype = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<BrightnessResponseItem[]> __BuildBrightness(WorkflowExpression<string> bodydid = null, WorkflowExpression<int> bodybrightness = null, WorkflowExpression<string> bodyregion = null, WorkflowExpression<string> bodytype = null)
-        {
-            WorkflowExpression.Validate(bodydid, nameof(bodydid), required: false);
-            WorkflowExpression.Validate(bodybrightness, nameof(bodybrightness), required: false);
-            WorkflowExpression.Validate(bodyregion, nameof(bodyregion), required: false);
-            WorkflowExpression.Validate(bodytype, nameof(bodytype), required: false);
+            var __workflow_bodydid = bodydid == null ? null : WorkflowExpression.Compile(bodydid);
+            WorkflowExpression.Validate(__workflow_bodydid, nameof(bodydid), required: false);
+            var __workflow_bodybrightness = bodybrightness == null ? null : WorkflowExpression.Compile(bodybrightness);
+            WorkflowExpression.Validate(__workflow_bodybrightness, nameof(bodybrightness), required: false);
+            var __workflow_bodyregion = bodyregion == null ? null : WorkflowExpression.Compile(bodyregion);
+            WorkflowExpression.Validate(__workflow_bodyregion, nameof(bodyregion), required: false);
+            var __workflow_bodytype = bodytype == null ? null : WorkflowExpression.Compile(bodytype);
+            WorkflowExpression.Validate(__workflow_bodytype, nameof(bodytype), required: false);
             return new DeferredBodyAction<BrightnessResponseItem[]>(() =>
             {
                 var apiCallPath = "/api/ms-flow/brightness";
@@ -148,27 +139,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodydid != null)
+                if (__workflow_bodydid != null)
                 {
-                    body["did"] = ExpressionConverter.ConvertO(bodydid);
+                    body["did"] = ExpressionConverter.ConvertO(__workflow_bodydid);
                     bodypropCount++;
                 }
 
-                if (bodybrightness != null)
+                if (__workflow_bodybrightness != null)
                 {
-                    body["brightness"] = ExpressionConverter.ConvertO(bodybrightness);
+                    body["brightness"] = ExpressionConverter.ConvertO(__workflow_bodybrightness);
                     bodypropCount++;
                 }
 
-                if (bodyregion != null)
+                if (__workflow_bodyregion != null)
                 {
-                    body["region"] = ExpressionConverter.ConvertO(bodyregion);
+                    body["region"] = ExpressionConverter.ConvertO(__workflow_bodyregion);
                     bodypropCount++;
                 }
 
-                if (bodytype != null)
+                if (__workflow_bodytype != null)
                 {
-                    body["type"] = ExpressionConverter.ConvertO(bodytype);
+                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
                     bodypropCount++;
                 }
 
@@ -182,19 +173,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeelight")]
-        [WorkflowExpressionFactory(nameof(__BuildTemperature))]
-        public IBodyWorkflowAction<TemperatureResponseItem[]> Temperature([WorkflowExpression] Func<string> bodydid = null, [WorkflowExpression] Func<int> bodytemperature = null, [WorkflowExpression] Func<string> bodyregion = null, [WorkflowExpression] Func<string> bodytype = null)
+        public IBodyWorkflowAction<TemperatureResponseItem[]> Temperature(Expression<Func<string>> bodydid = null, Expression<Func<int>> bodytemperature = null, Expression<Func<string>> bodyregion = null, Expression<Func<string>> bodytype = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TemperatureResponseItem[]> __BuildTemperature(WorkflowExpression<string> bodydid = null, WorkflowExpression<int> bodytemperature = null, WorkflowExpression<string> bodyregion = null, WorkflowExpression<string> bodytype = null)
-        {
-            WorkflowExpression.Validate(bodydid, nameof(bodydid), required: false);
-            WorkflowExpression.Validate(bodytemperature, nameof(bodytemperature), required: false);
-            WorkflowExpression.Validate(bodyregion, nameof(bodyregion), required: false);
-            WorkflowExpression.Validate(bodytype, nameof(bodytype), required: false);
+            var __workflow_bodydid = bodydid == null ? null : WorkflowExpression.Compile(bodydid);
+            WorkflowExpression.Validate(__workflow_bodydid, nameof(bodydid), required: false);
+            var __workflow_bodytemperature = bodytemperature == null ? null : WorkflowExpression.Compile(bodytemperature);
+            WorkflowExpression.Validate(__workflow_bodytemperature, nameof(bodytemperature), required: false);
+            var __workflow_bodyregion = bodyregion == null ? null : WorkflowExpression.Compile(bodyregion);
+            WorkflowExpression.Validate(__workflow_bodyregion, nameof(bodyregion), required: false);
+            var __workflow_bodytype = bodytype == null ? null : WorkflowExpression.Compile(bodytype);
+            WorkflowExpression.Validate(__workflow_bodytype, nameof(bodytype), required: false);
             return new DeferredBodyAction<TemperatureResponseItem[]>(() =>
             {
                 var apiCallPath = "/api/ms-flow/temperature";
@@ -202,27 +190,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodydid != null)
+                if (__workflow_bodydid != null)
                 {
-                    body["did"] = ExpressionConverter.ConvertO(bodydid);
+                    body["did"] = ExpressionConverter.ConvertO(__workflow_bodydid);
                     bodypropCount++;
                 }
 
-                if (bodytemperature != null)
+                if (__workflow_bodytemperature != null)
                 {
-                    body["temperature"] = ExpressionConverter.ConvertO(bodytemperature);
+                    body["temperature"] = ExpressionConverter.ConvertO(__workflow_bodytemperature);
                     bodypropCount++;
                 }
 
-                if (bodyregion != null)
+                if (__workflow_bodyregion != null)
                 {
-                    body["region"] = ExpressionConverter.ConvertO(bodyregion);
+                    body["region"] = ExpressionConverter.ConvertO(__workflow_bodyregion);
                     bodypropCount++;
                 }
 
-                if (bodytype != null)
+                if (__workflow_bodytype != null)
                 {
-                    body["type"] = ExpressionConverter.ConvertO(bodytype);
+                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
                     bodypropCount++;
                 }
 
@@ -236,18 +224,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeelight")]
-        [WorkflowExpressionFactory(nameof(__BuildQuery))]
-        public IBodyWorkflowAction<QueryResponse> Query([WorkflowExpression] Func<string> bodydid = null, [WorkflowExpression] Func<string> bodyregion = null, [WorkflowExpression] Func<string> bodytype = null)
+        public IBodyWorkflowAction<QueryResponse> Query(Expression<Func<string>> bodydid = null, Expression<Func<string>> bodyregion = null, Expression<Func<string>> bodytype = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<QueryResponse> __BuildQuery(WorkflowExpression<string> bodydid = null, WorkflowExpression<string> bodyregion = null, WorkflowExpression<string> bodytype = null)
-        {
-            WorkflowExpression.Validate(bodydid, nameof(bodydid), required: false);
-            WorkflowExpression.Validate(bodyregion, nameof(bodyregion), required: false);
-            WorkflowExpression.Validate(bodytype, nameof(bodytype), required: false);
+            var __workflow_bodydid = bodydid == null ? null : WorkflowExpression.Compile(bodydid);
+            WorkflowExpression.Validate(__workflow_bodydid, nameof(bodydid), required: false);
+            var __workflow_bodyregion = bodyregion == null ? null : WorkflowExpression.Compile(bodyregion);
+            WorkflowExpression.Validate(__workflow_bodyregion, nameof(bodyregion), required: false);
+            var __workflow_bodytype = bodytype == null ? null : WorkflowExpression.Compile(bodytype);
+            WorkflowExpression.Validate(__workflow_bodytype, nameof(bodytype), required: false);
             return new DeferredBodyAction<QueryResponse>(() =>
             {
                 var apiCallPath = "/api/ms-flow/query";
@@ -255,21 +239,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodydid != null)
+                if (__workflow_bodydid != null)
                 {
-                    body["did"] = ExpressionConverter.ConvertO(bodydid);
+                    body["did"] = ExpressionConverter.ConvertO(__workflow_bodydid);
                     bodypropCount++;
                 }
 
-                if (bodyregion != null)
+                if (__workflow_bodyregion != null)
                 {
-                    body["region"] = ExpressionConverter.ConvertO(bodyregion);
+                    body["region"] = ExpressionConverter.ConvertO(__workflow_bodyregion);
                     bodypropCount++;
                 }
 
-                if (bodytype != null)
+                if (__workflow_bodytype != null)
                 {
-                    body["type"] = ExpressionConverter.ConvertO(bodytype);
+                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
                     bodypropCount++;
                 }
 

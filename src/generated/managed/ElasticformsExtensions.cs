@@ -1,29 +1,24 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elasticforms
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class ElasticformsActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "elasticforms")]
-        [WorkflowExpressionFactory(nameof(__BuildAssignForm))]
-        public IBodyWorkflowAction<AssignFormResponse> AssignForm([WorkflowExpression] Func<string> formAssignBodyuser, [WorkflowExpression] Func<string> formAssignBodyform, [WorkflowExpression] Func<object> formAssignBodyfields = null)
+        public IBodyWorkflowAction<AssignFormResponse> AssignForm(Expression<Func<string>> formAssignBodyuser, Expression<Func<string>> formAssignBodyform, Expression<Func<object>> formAssignBodyfields = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AssignFormResponse> __BuildAssignForm(WorkflowExpression<string> formAssignBodyuser, WorkflowExpression<string> formAssignBodyform, WorkflowExpression<object> formAssignBodyfields = null)
-        {
-            WorkflowExpression.Validate(formAssignBodyuser, nameof(formAssignBodyuser), required: true);
-            WorkflowExpression.Validate(formAssignBodyform, nameof(formAssignBodyform), required: true);
-            WorkflowExpression.Validate(formAssignBodyfields, nameof(formAssignBodyfields), required: false);
+            var __workflow_formAssignBodyuser = formAssignBodyuser == null ? null : WorkflowExpression.Compile(formAssignBodyuser);
+            WorkflowExpression.Validate(__workflow_formAssignBodyuser, nameof(formAssignBodyuser), required: true);
+            var __workflow_formAssignBodyform = formAssignBodyform == null ? null : WorkflowExpression.Compile(formAssignBodyform);
+            WorkflowExpression.Validate(__workflow_formAssignBodyform, nameof(formAssignBodyform), required: true);
+            var __workflow_formAssignBodyfields = formAssignBodyfields == null ? null : WorkflowExpression.Compile(formAssignBodyfields);
+            WorkflowExpression.Validate(__workflow_formAssignBodyfields, nameof(formAssignBodyfields), required: false);
             return new DeferredBodyAction<AssignFormResponse>(() =>
             {
                 var apiCallPath = "/api/external/Form";
@@ -32,12 +27,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elasticforms
                 var formAssignBody = new JObject();
                 var formAssignBodypropCount = 0;
                 formAssignBodypropCount++;
-                formAssignBody["UserName"] = ExpressionConverter.ConvertO(formAssignBodyuser);
+                formAssignBody["UserName"] = ExpressionConverter.ConvertO(__workflow_formAssignBodyuser);
                 formAssignBodypropCount++;
-                formAssignBody["FormUid"] = ExpressionConverter.ConvertO(formAssignBodyform);
-                if (formAssignBodyfields != null)
+                formAssignBody["FormUid"] = ExpressionConverter.ConvertO(__workflow_formAssignBodyform);
+                if (__workflow_formAssignBodyfields != null)
                 {
-                    formAssignBody["FormData"] = ExpressionConverter.ConvertO(formAssignBodyfields);
+                    formAssignBody["FormData"] = ExpressionConverter.ConvertO(__workflow_formAssignBodyfields);
                     formAssignBodypropCount++;
                 }
 
@@ -51,17 +46,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elasticforms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "elasticforms")]
-        [WorkflowExpressionFactory(nameof(__BuildAddData))]
-        public IBodyWorkflowAction<string> AddData([WorkflowExpression] Func<string> formDataBodyform, [WorkflowExpression] Func<object> formDataBodyfields = null)
+        public IBodyWorkflowAction<string> AddData(Expression<Func<string>> formDataBodyform, Expression<Func<object>> formDataBodyfields = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildAddData(WorkflowExpression<string> formDataBodyform, WorkflowExpression<object> formDataBodyfields = null)
-        {
-            WorkflowExpression.Validate(formDataBodyform, nameof(formDataBodyform), required: true);
-            WorkflowExpression.Validate(formDataBodyfields, nameof(formDataBodyfields), required: false);
+            var __workflow_formDataBodyform = formDataBodyform == null ? null : WorkflowExpression.Compile(formDataBodyform);
+            WorkflowExpression.Validate(__workflow_formDataBodyform, nameof(formDataBodyform), required: true);
+            var __workflow_formDataBodyfields = formDataBodyfields == null ? null : WorkflowExpression.Compile(formDataBodyfields);
+            WorkflowExpression.Validate(__workflow_formDataBodyfields, nameof(formDataBodyfields), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/api/external/FormData";
@@ -70,10 +60,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elasticforms
                 var formDataBody = new JObject();
                 var formDataBodypropCount = 0;
                 formDataBodypropCount++;
-                formDataBody["FormUid"] = ExpressionConverter.ConvertO(formDataBodyform);
-                if (formDataBodyfields != null)
+                formDataBody["FormUid"] = ExpressionConverter.ConvertO(__workflow_formDataBodyform);
+                if (__workflow_formDataBodyfields != null)
                 {
-                    formDataBody["FormDataObject"] = ExpressionConverter.ConvertO(formDataBodyfields);
+                    formDataBody["FormDataObject"] = ExpressionConverter.ConvertO(__workflow_formDataBodyfields);
                     formDataBodypropCount++;
                 }
 
@@ -89,17 +79,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elasticforms
 
     public class ElasticformsTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildTrigNewResponse))]
-        public IWorkflowTrigger TrigNewResponse([WorkflowExpression] Func<string> requestBodyOfWebhookform,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TrigNewResponse(Expression<Func<string>> requestBodyOfWebhookform, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildTrigNewResponse(WorkflowExpression<string> requestBodyOfWebhookform,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(requestBodyOfWebhookform, nameof(requestBodyOfWebhookform), required: true);
+            var __workflow_requestBodyOfWebhookform = requestBodyOfWebhookform == null ? null : WorkflowExpression.Compile(requestBodyOfWebhookform);
+            WorkflowExpression.Validate(__workflow_requestBodyOfWebhookform, nameof(requestBodyOfWebhookform), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/external/WebHook";
@@ -110,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elasticforms
                 requestBodyOfWebhook["TriggerUrl"] = "#{listCallbackUrl()}";
                 requestBodyOfWebhookpropCount++;
                 requestBodyOfWebhookpropCount++;
-                requestBodyOfWebhook["FormUid"] = ExpressionConverter.ConvertO(requestBodyOfWebhookform);
+                requestBodyOfWebhook["FormUid"] = ExpressionConverter.ConvertO(__workflow_requestBodyOfWebhookform);
                 if (requestBodyOfWebhookpropCount > 0)
                 {
                     callPayload.Body = requestBodyOfWebhook;

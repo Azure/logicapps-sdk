@@ -1,28 +1,22 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dbftoxmlconverter
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class DbftoxmlconverterActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dbftoxmlconverter")]
-        [WorkflowExpressionFactory(nameof(__BuildDbf2XmlConvert))]
-        public IWorkflowAction Dbf2XmlConvert([WorkflowExpression] Func<string> bodycontenType, [WorkflowExpression] Func<bodyencodingInput> bodyencoding)
+        public IWorkflowAction Dbf2XmlConvert(Expression<Func<string>> bodycontenType, Expression<Func<bodyencodingInput>> bodyencoding)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDbf2XmlConvert(WorkflowExpression<string> bodycontenType, WorkflowExpression<bodyencodingInput> bodyencoding)
-        {
-            WorkflowExpression.Validate(bodycontenType, nameof(bodycontenType), required: true);
-            WorkflowExpression.Validate(bodyencoding, nameof(bodyencoding), required: true);
+            var __workflow_bodycontenType = bodycontenType == null ? null : WorkflowExpression.Compile(bodycontenType);
+            WorkflowExpression.Validate(__workflow_bodycontenType, nameof(bodycontenType), required: true);
+            var __workflow_bodyencoding = bodyencoding == null ? null : WorkflowExpression.Compile(bodyencoding);
+            WorkflowExpression.Validate(__workflow_bodyencoding, nameof(bodyencoding), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/DBF2XML";
@@ -33,9 +27,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dbftoxmlconverter
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["conten_type"] = ExpressionConverter.ConvertO(bodycontenType);
+                body["conten_type"] = ExpressionConverter.ConvertO(__workflow_bodycontenType);
                 bodypropCount++;
-                body["encoding"] = ExpressionConverter.ConvertO(bodyencoding);
+                body["encoding"] = ExpressionConverter.ConvertO(__workflow_bodyencoding);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

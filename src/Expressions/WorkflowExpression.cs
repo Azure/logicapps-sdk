@@ -4,19 +4,10 @@ namespace Microsoft.Azure.Workflows.Sdk
 {
     using System.ComponentModel;
     using System.Globalization;
+    using System.Linq.Expressions;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
     using Newtonsoft.Json.Linq;
-
-    [AttributeUsage(AttributeTargets.Parameter)]
-    public sealed class WorkflowExpressionAttribute : Attribute { }
-
-    [AttributeUsage(AttributeTargets.Method)]
-    public sealed class WorkflowExpressionFactoryAttribute : Attribute
-    {
-        public WorkflowExpressionFactoryAttribute(string entryPoint) => this.EntryPoint = entryPoint;
-        public string EntryPoint { get; }
-    }
 
     /// <summary>Authoring-time source and bindings; never an executable placeholder delegate.</summary>
     [EditorBrowsable(EditorBrowsableState.Never)]
@@ -28,16 +19,16 @@ namespace Microsoft.Azure.Workflows.Sdk
         public static WorkflowExpression<T> Literal<T>(T value) =>
             new WorkflowExpression<T>(Serialize(value), null, null);
 
-        public static WorkflowExpression<T> Program<T>(string[] segments, WorkflowExpressionBinding[] bindings)
+        internal static WorkflowExpression<T> Compile<T>(Expression<Func<T>> expression) =>
+            ExpressionTreeWorkflowExpressionCompiler.Compile(expression);
+
+        public static WorkflowExpression<T> Create<T>(string[] segments, WorkflowExpressionBinding[] bindings)
         {
             if (segments == null || bindings == null || segments.Length != bindings.Length + 1 ||
                 segments.Any(segment => segment == null) || bindings.Any(binding => binding == null))
                 throw new ArgumentException("A source program needs one more non-null segment than bindings.");
             return new WorkflowExpression<T>(null, (string[])segments.Clone(), (WorkflowExpressionBinding[])bindings.Clone());
         }
-
-        public static WorkflowExpression<T> Program<T>(string[] segments, WorkflowExpressionBinding[] bindings, Func<T> typeWitness) =>
-            Program<T>(segments, bindings);
 
         public static void Validate(WorkflowExpression value, string name, bool required)
         {
@@ -85,20 +76,18 @@ namespace Microsoft.Azure.Workflows.Sdk
         }
     }
 
-    /// <summary>Late-bound operation names or immutable scalar source snapshots.</summary>
+    /// <summary>Late-bound workflow context references.</summary>
     [EditorBrowsable(EditorBrowsableState.Never)]
     public sealed class WorkflowExpressionBinding
     {
         private readonly IWorkflowOperation operation;
         private readonly string function;
         private readonly string argument;
-        private readonly string capture;
-        private WorkflowExpressionBinding(IWorkflowOperation operation, string function, string argument = null, string capture = null)
+        private WorkflowExpressionBinding(IWorkflowOperation operation, string function, string argument = null)
         {
             this.operation = operation;
             this.function = function;
             this.argument = argument;
-            this.capture = capture;
         }
         public static WorkflowExpressionBinding Output(IWorkflowAction action) =>
             new WorkflowExpressionBinding(action ?? throw new ArgumentNullException(nameof(action)), "outputs");
@@ -114,12 +103,9 @@ namespace Microsoft.Azure.Workflows.Sdk
         public static WorkflowExpressionBinding AgentParameter(object context, string name) =>
             context != null ? new WorkflowExpressionBinding(null, "agentparameters", name) :
                 throw new ArgumentNullException(nameof(context));
-        public static WorkflowExpressionBinding Capture<T>(T value) =>
-            new WorkflowExpressionBinding(null, null, capture: CaptureSource(value, typeof(T)));
 
         internal string Render()
         {
-            if (this.capture != null) return this.capture;
             var name = this.argument;
             if (this.operation is IVariableWorkflowAction variable) name = variable.VariableName;
             else if (this.function == "outputs" || this.function == "body") name = this.operation.Name;
@@ -127,33 +113,5 @@ namespace Microsoft.Azure.Workflows.Sdk
                 throw new InvalidOperationException("The referenced operation must have a name before definition rendering.");
             return this.function + "(" + (name == null ? "" : JsonConvert.ToString(name)) + ")";
         }
-
-        private static string CaptureSource(object value, Type type)
-        {
-            var nullable = Nullable.GetUnderlyingType(type);
-            if (value == null) return "null";
-            if (nullable != null) return CaptureSource(value, nullable);
-            if (value is string text) return JsonConvert.ToString(text);
-            if (value is char character) return "(char)" + ((int)character).ToString(CultureInfo.InvariantCulture);
-            if (value is bool flag) return flag ? "true" : "false";
-            if (value is double number && (double.IsNaN(number) || double.IsInfinity(number)) ||
-                value is float single && (float.IsNaN(single) || float.IsInfinity(single)))
-                throw new NotSupportedException("Non-finite captures are unsupported.");
-            if (type.IsEnum)
-                return "(" + TypeName(type) + ")(" + CaptureSource(Convert.ChangeType(value, Enum.GetUnderlyingType(type), CultureInfo.InvariantCulture), Enum.GetUnderlyingType(type)) + ")";
-            if (value is Guid guid) return "new global::System.Guid(" + JsonConvert.ToString(guid.ToString("D")) + ")";
-            if (value is DateTime date) return $"new global::System.DateTime({date.Ticks}L, global::System.DateTimeKind.{date.Kind})";
-            if (value is DateTimeOffset offset) return $"new global::System.DateTimeOffset({offset.Ticks}L, new global::System.TimeSpan({offset.Offset.Ticks}L))";
-            if (value is TimeSpan span) return $"new global::System.TimeSpan({span.Ticks}L)";
-            if (value is Uri uri) return "new global::System.Uri(" + JsonConvert.ToString(uri.OriginalString) + ", global::System.UriKind.RelativeOrAbsolute)";
-            if (value is HttpMethod method) return "new global::System.Net.Http.HttpMethod(" + JsonConvert.ToString(method.Method) + ")";
-            var suffix = value is decimal ? "m" : value is float ? "f" : value is double ? "d" :
-                value is ulong ? "UL" : value is long ? "L" : value is uint ? "U" : "";
-            if (type.IsPrimitive || value is decimal)
-                return "(" + TypeName(type) + ")(" + ((IFormattable)value).ToString(value is float || value is double ? "R" : null, CultureInfo.InvariantCulture) + suffix + ")";
-            throw new NotSupportedException($"Capture '{type}' is unsupported. Capture immutable scalars rather than reference objects.");
-        }
-
-        private static string TypeName(Type type) => "global::" + type.FullName.Replace('+', '.');
     }
 }

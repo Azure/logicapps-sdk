@@ -1,54 +1,41 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class DynatraceActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
-        [WorkflowExpressionFactory(nameof(__BuildGetProblems))]
-        public IBodyWorkflowAction<GetProblemsResponse> GetProblems([WorkflowExpression] Func<string> from = null)
+        public IBodyWorkflowAction<GetProblemsResponse> GetProblems(Expression<Func<string>> from = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetProblemsResponse> __BuildGetProblems(WorkflowExpression<string> from = null)
-        {
-            WorkflowExpression.Validate(from, nameof(from), required: false);
+            var __workflow_from = from == null ? null : WorkflowExpression.Compile(from);
+            WorkflowExpression.Validate(__workflow_from, nameof(from), required: false);
             return new DeferredBodyAction<GetProblemsResponse>(() =>
             {
                 var apiCallPath = "/api/v2/problems";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["from"] = Convert.ToString("now-2h");
-                if (from != null)
-                    callPayload.Queries["from"] = ExpressionConverter.Convert(from);
+                if (__workflow_from != null)
+                    callPayload.Queries["from"] = ExpressionConverter.Convert(__workflow_from);
                 callPayload.Headers["accept"] = Convert.ToString("application/json; charset=utf-8");
                 return new ApiConnectionAction<GetProblemsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
-        [WorkflowExpressionFactory(nameof(__BuildGetProblemById))]
-        public IBodyWorkflowAction<GetProblemByIdResponse> GetProblemById([WorkflowExpression] Func<string> problemId)
+        public IBodyWorkflowAction<GetProblemByIdResponse> GetProblemById(Expression<Func<string>> problemId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetProblemByIdResponse> __BuildGetProblemById(WorkflowExpression<string> problemId)
-        {
-            WorkflowExpression.Validate(problemId, nameof(problemId), required: true);
+            var __workflow_problemId = problemId == null ? null : WorkflowExpression.Compile(problemId);
+            WorkflowExpression.Validate(__workflow_problemId, nameof(problemId), required: true);
             return new DeferredBodyAction<GetProblemByIdResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/problems/{0}", ExpressionConverter.ConvertWithUrlEncoding(problemId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/problems/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_problemId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["accept"] = Convert.ToString("application/json; charset=utf-8");
@@ -57,19 +44,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
-        [WorkflowExpressionFactory(nameof(__BuildGetProblemComments))]
-        public IWorkflowAction GetProblemComments([WorkflowExpression] Func<string> problemId)
+        public IWorkflowAction GetProblemComments(Expression<Func<string>> problemId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetProblemComments(WorkflowExpression<string> problemId)
-        {
-            WorkflowExpression.Validate(problemId, nameof(problemId), required: true);
+            var __workflow_problemId = problemId == null ? null : WorkflowExpression.Compile(problemId);
+            WorkflowExpression.Validate(__workflow_problemId, nameof(problemId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/problems/{0}/comments", ExpressionConverter.ConvertWithUrlEncoding(problemId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/problems/{0}/comments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_problemId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -77,35 +58,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
-        [WorkflowExpressionFactory(nameof(__BuildPostProblemComment))]
-        public IWorkflowAction PostProblemComment([WorkflowExpression] Func<string> problemId, [WorkflowExpression] Func<string> bodymessage = null, [WorkflowExpression] Func<string> bodycontext = null)
+        public IWorkflowAction PostProblemComment(Expression<Func<string>> problemId, Expression<Func<string>> bodymessage = null, Expression<Func<string>> bodycontext = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildPostProblemComment(WorkflowExpression<string> problemId, WorkflowExpression<string> bodymessage = null, WorkflowExpression<string> bodycontext = null)
-        {
-            WorkflowExpression.Validate(problemId, nameof(problemId), required: true);
-            WorkflowExpression.Validate(bodymessage, nameof(bodymessage), required: false);
-            WorkflowExpression.Validate(bodycontext, nameof(bodycontext), required: false);
+            var __workflow_problemId = problemId == null ? null : WorkflowExpression.Compile(problemId);
+            WorkflowExpression.Validate(__workflow_problemId, nameof(problemId), required: true);
+            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
+            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: false);
+            var __workflow_bodycontext = bodycontext == null ? null : WorkflowExpression.Compile(bodycontext);
+            WorkflowExpression.Validate(__workflow_bodycontext, nameof(bodycontext), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/problems/{0}/comments", ExpressionConverter.ConvertWithUrlEncoding(problemId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/problems/{0}/comments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_problemId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json;charset=utf-8");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodymessage != null)
+                if (__workflow_bodymessage != null)
                 {
-                    body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                    body["message"] = ExpressionConverter.ConvertO(__workflow_bodymessage);
                     bodypropCount++;
                 }
 
-                if (bodycontext != null)
+                if (__workflow_bodycontext != null)
                 {
-                    body["context"] = ExpressionConverter.ConvertO(bodycontext);
+                    body["context"] = ExpressionConverter.ConvertO(__workflow_bodycontext);
                     bodypropCount++;
                 }
 
@@ -119,20 +96,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
-        [WorkflowExpressionFactory(nameof(__BuildGetProblemCommentByProblemIdAndCommentId))]
-        public IBodyWorkflowAction<GetProblemCommentByProblemIdAndCommentIdResponse> GetProblemCommentByProblemIdAndCommentId([WorkflowExpression] Func<string> problemId, [WorkflowExpression] Func<string> commentId)
+        public IBodyWorkflowAction<GetProblemCommentByProblemIdAndCommentIdResponse> GetProblemCommentByProblemIdAndCommentId(Expression<Func<string>> problemId, Expression<Func<string>> commentId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetProblemCommentByProblemIdAndCommentIdResponse> __BuildGetProblemCommentByProblemIdAndCommentId(WorkflowExpression<string> problemId, WorkflowExpression<string> commentId)
-        {
-            WorkflowExpression.Validate(problemId, nameof(problemId), required: true);
-            WorkflowExpression.Validate(commentId, nameof(commentId), required: true);
+            var __workflow_problemId = problemId == null ? null : WorkflowExpression.Compile(problemId);
+            WorkflowExpression.Validate(__workflow_problemId, nameof(problemId), required: true);
+            var __workflow_commentId = commentId == null ? null : WorkflowExpression.Compile(commentId);
+            WorkflowExpression.Validate(__workflow_commentId, nameof(commentId), required: true);
             return new DeferredBodyAction<GetProblemCommentByProblemIdAndCommentIdResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/problems/{0}/comments/{1}", ExpressionConverter.ConvertWithUrlEncoding(problemId, 1), ExpressionConverter.ConvertWithUrlEncoding(commentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/problems/{0}/comments/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_problemId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_commentId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["accept"] = Convert.ToString("application/json; charset=utf-8");
@@ -141,67 +113,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
-        [WorkflowExpressionFactory(nameof(__BuildGetEvents))]
-        public IBodyWorkflowAction<GetEventsResponse> GetEvents([WorkflowExpression] Func<string> from = null)
+        public IBodyWorkflowAction<GetEventsResponse> GetEvents(Expression<Func<string>> from = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetEventsResponse> __BuildGetEvents(WorkflowExpression<string> from = null)
-        {
-            WorkflowExpression.Validate(from, nameof(from), required: false);
+            var __workflow_from = from == null ? null : WorkflowExpression.Compile(from);
+            WorkflowExpression.Validate(__workflow_from, nameof(from), required: false);
             return new DeferredBodyAction<GetEventsResponse>(() =>
             {
                 var apiCallPath = "/api/v2/events";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["from"] = Convert.ToString("now-2h");
-                if (from != null)
-                    callPayload.Queries["from"] = ExpressionConverter.Convert(from);
+                if (__workflow_from != null)
+                    callPayload.Queries["from"] = ExpressionConverter.Convert(__workflow_from);
                 return new ApiConnectionAction<GetEventsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
-        [WorkflowExpressionFactory(nameof(__BuildGetEntities))]
-        public IBodyWorkflowAction<GetEntitiesResponse> GetEntities([WorkflowExpression] Func<string> entitySelector, [WorkflowExpression] Func<string> from = null)
+        public IBodyWorkflowAction<GetEntitiesResponse> GetEntities(Expression<Func<string>> entitySelector, Expression<Func<string>> from = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetEntitiesResponse> __BuildGetEntities(WorkflowExpression<string> entitySelector, WorkflowExpression<string> from = null)
-        {
-            WorkflowExpression.Validate(entitySelector, nameof(entitySelector), required: true);
-            WorkflowExpression.Validate(from, nameof(from), required: false);
+            var __workflow_entitySelector = entitySelector == null ? null : WorkflowExpression.Compile(entitySelector);
+            WorkflowExpression.Validate(__workflow_entitySelector, nameof(entitySelector), required: true);
+            var __workflow_from = from == null ? null : WorkflowExpression.Compile(from);
+            WorkflowExpression.Validate(__workflow_from, nameof(from), required: false);
             return new DeferredBodyAction<GetEntitiesResponse>(() =>
             {
                 var apiCallPath = "/api/v2/entities";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["entitySelector"] = ExpressionConverter.Convert(entitySelector);
+                callPayload.Queries["entitySelector"] = ExpressionConverter.Convert(__workflow_entitySelector);
                 callPayload.Queries["from"] = Convert.ToString("now-3d");
-                if (from != null)
-                    callPayload.Queries["from"] = ExpressionConverter.Convert(from);
+                if (__workflow_from != null)
+                    callPayload.Queries["from"] = ExpressionConverter.Convert(__workflow_from);
                 return new ApiConnectionAction<GetEntitiesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
-        [WorkflowExpressionFactory(nameof(__BuildGetEntityById))]
-        public IBodyWorkflowAction<GetEntityByIdResponse> GetEntityById([WorkflowExpression] Func<string> entityId)
+        public IBodyWorkflowAction<GetEntityByIdResponse> GetEntityById(Expression<Func<string>> entityId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetEntityByIdResponse> __BuildGetEntityById(WorkflowExpression<string> entityId)
-        {
-            WorkflowExpression.Validate(entityId, nameof(entityId), required: true);
+            var __workflow_entityId = entityId == null ? null : WorkflowExpression.Compile(entityId);
+            WorkflowExpression.Validate(__workflow_entityId, nameof(entityId), required: true);
             return new DeferredBodyAction<GetEntityByIdResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/entities/{0}", ExpressionConverter.ConvertWithUrlEncoding(entityId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/entities/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_entityId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetEntityByIdResponse>(callPayload);
@@ -209,21 +164,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
-        [WorkflowExpressionFactory(nameof(__BuildPostEventIngest))]
-        public IWorkflowAction PostEventIngest([WorkflowExpression] Func<string> bodyeventType, [WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodystartTime = null, [WorkflowExpression] Func<string> bodyendTime = null, [WorkflowExpression] Func<int> bodytimeout = null, [WorkflowExpression] Func<string> bodyentitySelector = null)
+        public IWorkflowAction PostEventIngest(Expression<Func<string>> bodyeventType, Expression<Func<string>> bodytitle, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendTime = null, Expression<Func<int>> bodytimeout = null, Expression<Func<string>> bodyentitySelector = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildPostEventIngest(WorkflowExpression<string> bodyeventType, WorkflowExpression<string> bodytitle, WorkflowExpression<string> bodystartTime = null, WorkflowExpression<string> bodyendTime = null, WorkflowExpression<int> bodytimeout = null, WorkflowExpression<string> bodyentitySelector = null)
-        {
-            WorkflowExpression.Validate(bodyeventType, nameof(bodyeventType), required: true);
-            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            WorkflowExpression.Validate(bodystartTime, nameof(bodystartTime), required: false);
-            WorkflowExpression.Validate(bodyendTime, nameof(bodyendTime), required: false);
-            WorkflowExpression.Validate(bodytimeout, nameof(bodytimeout), required: false);
-            WorkflowExpression.Validate(bodyentitySelector, nameof(bodyentitySelector), required: false);
+            var __workflow_bodyeventType = bodyeventType == null ? null : WorkflowExpression.Compile(bodyeventType);
+            WorkflowExpression.Validate(__workflow_bodyeventType, nameof(bodyeventType), required: true);
+            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
+            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodystartTime = bodystartTime == null ? null : WorkflowExpression.Compile(bodystartTime);
+            WorkflowExpression.Validate(__workflow_bodystartTime, nameof(bodystartTime), required: false);
+            var __workflow_bodyendTime = bodyendTime == null ? null : WorkflowExpression.Compile(bodyendTime);
+            WorkflowExpression.Validate(__workflow_bodyendTime, nameof(bodyendTime), required: false);
+            var __workflow_bodytimeout = bodytimeout == null ? null : WorkflowExpression.Compile(bodytimeout);
+            WorkflowExpression.Validate(__workflow_bodytimeout, nameof(bodytimeout), required: false);
+            var __workflow_bodyentitySelector = bodyentitySelector == null ? null : WorkflowExpression.Compile(bodyentitySelector);
+            WorkflowExpression.Validate(__workflow_bodyentitySelector, nameof(bodyentitySelector), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/v2/events/ingest";
@@ -233,30 +187,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["eventType"] = ExpressionConverter.ConvertO(bodyeventType);
+                body["eventType"] = ExpressionConverter.ConvertO(__workflow_bodyeventType);
                 bodypropCount++;
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
-                if (bodystartTime != null)
+                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
+                if (__workflow_bodystartTime != null)
                 {
-                    body["startTime"] = ExpressionConverter.ConvertO(bodystartTime);
+                    body["startTime"] = ExpressionConverter.ConvertO(__workflow_bodystartTime);
                     bodypropCount++;
                 }
 
-                if (bodyendTime != null)
+                if (__workflow_bodyendTime != null)
                 {
-                    body["endTime"] = ExpressionConverter.ConvertO(bodyendTime);
+                    body["endTime"] = ExpressionConverter.ConvertO(__workflow_bodyendTime);
                     bodypropCount++;
                 }
 
-                if (bodytimeout != null)
+                if (__workflow_bodytimeout != null)
                 {
-                    body["timeout"] = ExpressionConverter.ConvertO(bodytimeout);
+                    body["timeout"] = ExpressionConverter.ConvertO(__workflow_bodytimeout);
                     bodypropCount++;
                 }
 
-                if (bodyentitySelector != null)
+                if (__workflow_bodyentitySelector != null)
                 {
-                    body["entitySelector"] = ExpressionConverter.ConvertO(bodyentitySelector);
+                    body["entitySelector"] = ExpressionConverter.ConvertO(__workflow_bodyentitySelector);
                     bodypropCount++;
                 }
 
@@ -278,51 +232,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
-        [WorkflowExpressionFactory(nameof(__BuildGetSecurityProblems))]
-        public IBodyWorkflowAction<GetSecurityProblemsResponse> GetSecurityProblems([WorkflowExpression] Func<string> securityProblemSelector = null, [WorkflowExpression] Func<string> from = null)
+        public IBodyWorkflowAction<GetSecurityProblemsResponse> GetSecurityProblems(Expression<Func<string>> securityProblemSelector = null, Expression<Func<string>> from = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetSecurityProblemsResponse> __BuildGetSecurityProblems(WorkflowExpression<string> securityProblemSelector = null, WorkflowExpression<string> from = null)
-        {
-            WorkflowExpression.Validate(securityProblemSelector, nameof(securityProblemSelector), required: false);
-            WorkflowExpression.Validate(from, nameof(from), required: false);
+            var __workflow_securityProblemSelector = securityProblemSelector == null ? null : WorkflowExpression.Compile(securityProblemSelector);
+            WorkflowExpression.Validate(__workflow_securityProblemSelector, nameof(securityProblemSelector), required: false);
+            var __workflow_from = from == null ? null : WorkflowExpression.Compile(from);
+            WorkflowExpression.Validate(__workflow_from, nameof(from), required: false);
             return new DeferredBodyAction<GetSecurityProblemsResponse>(() =>
             {
                 var apiCallPath = "/api/v2/securityProblems";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["securityProblemSelector"] = Convert.ToString("status(\"open\")");
-                if (securityProblemSelector != null)
-                    callPayload.Queries["securityProblemSelector"] = ExpressionConverter.Convert(securityProblemSelector);
+                if (__workflow_securityProblemSelector != null)
+                    callPayload.Queries["securityProblemSelector"] = ExpressionConverter.Convert(__workflow_securityProblemSelector);
                 callPayload.Queries["from"] = Convert.ToString("now-30d");
-                if (from != null)
-                    callPayload.Queries["from"] = ExpressionConverter.Convert(from);
+                if (__workflow_from != null)
+                    callPayload.Queries["from"] = ExpressionConverter.Convert(__workflow_from);
                 return new ApiConnectionAction<GetSecurityProblemsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
-        [WorkflowExpressionFactory(nameof(__BuildGetSecurityProblemsById))]
-        public IBodyWorkflowAction<GetSecurityProblemsByIdResponse> GetSecurityProblemsById([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> fields = null)
+        public IBodyWorkflowAction<GetSecurityProblemsByIdResponse> GetSecurityProblemsById(Expression<Func<string>> id, Expression<Func<string>> fields = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetSecurityProblemsByIdResponse> __BuildGetSecurityProblemsById(WorkflowExpression<string> id, WorkflowExpression<string> fields = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(fields, nameof(fields), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
+            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
             return new DeferredBodyAction<GetSecurityProblemsByIdResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/securityProblems/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/securityProblems/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (fields != null)
-                    callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                if (__workflow_fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
                 return new ApiConnectionAction<GetSecurityProblemsByIdResponse>(callPayload);
             });
         }

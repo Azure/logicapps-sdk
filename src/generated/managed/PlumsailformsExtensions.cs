@@ -1,73 +1,55 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailforms
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class PlumsailformsActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailforms")]
-        [WorkflowExpressionFactory(nameof(__BuildDownloadAttachment))]
-        public IBodyWorkflowAction<string> DownloadAttachment([WorkflowExpression] Func<string> fileUrl)
+        public IBodyWorkflowAction<string> DownloadAttachment(Expression<Func<string>> fileUrl)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildDownloadAttachment(WorkflowExpression<string> fileUrl)
-        {
-            WorkflowExpression.Validate(fileUrl, nameof(fileUrl), required: true);
+            var __workflow_fileUrl = fileUrl == null ? null : WorkflowExpression.Compile(fileUrl);
+            WorkflowExpression.Validate(__workflow_fileUrl, nameof(fileUrl), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/api/attachments";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["fileUrl"] = ExpressionConverter.Convert(fileUrl);
+                callPayload.Queries["fileUrl"] = ExpressionConverter.Convert(__workflow_fileUrl);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailforms")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteAttachment))]
-        public IWorkflowAction DeleteAttachment([WorkflowExpression] Func<string> fileUrl = null)
+        public IWorkflowAction DeleteAttachment(Expression<Func<string>> fileUrl = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDeleteAttachment(WorkflowExpression<string> fileUrl = null)
-        {
-            WorkflowExpression.Validate(fileUrl, nameof(fileUrl), required: false);
+            var __workflow_fileUrl = fileUrl == null ? null : WorkflowExpression.Compile(fileUrl);
+            WorkflowExpression.Validate(__workflow_fileUrl, nameof(fileUrl), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/attachments";
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(fileUrl);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_fileUrl);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailforms")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteSubmission))]
-        public IWorkflowAction DeleteSubmission([WorkflowExpression] Func<string> formId, [WorkflowExpression] Func<string> submissionId)
+        public IWorkflowAction DeleteSubmission(Expression<Func<string>> formId, Expression<Func<string>> submissionId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDeleteSubmission(WorkflowExpression<string> formId, WorkflowExpression<string> submissionId)
-        {
-            WorkflowExpression.Validate(formId, nameof(formId), required: true);
-            WorkflowExpression.Validate(submissionId, nameof(submissionId), required: true);
+            var __workflow_formId = formId == null ? null : WorkflowExpression.Compile(formId);
+            WorkflowExpression.Validate(__workflow_formId, nameof(formId), required: true);
+            var __workflow_submissionId = submissionId == null ? null : WorkflowExpression.Compile(submissionId);
+            WorkflowExpression.Validate(__workflow_submissionId, nameof(submissionId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/forms/{0}/submissions/{1}", ExpressionConverter.ConvertWithUrlEncoding(formId, 1), ExpressionConverter.ConvertWithUrlEncoding(submissionId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/forms/{0}/submissions/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_formId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_submissionId, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -77,17 +59,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailforms
 
     public class PlumsailformsTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildFormIsSubmitted))]
-        public IWorkflowTrigger FormIsSubmitted([WorkflowExpression] Func<string> subscriberform,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger FormIsSubmitted(Expression<Func<string>> subscriberform, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildFormIsSubmitted(WorkflowExpression<string> subscriberform,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(subscriberform, nameof(subscriberform), required: true);
+            var __workflow_subscriberform = subscriberform == null ? null : WorkflowExpression.Compile(subscriberform);
+            WorkflowExpression.Validate(__workflow_subscriberform, nameof(subscriberform), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/submissions";
@@ -98,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailforms
                 subscriber["callbackUrl"] = "#{listCallbackUrl()}";
                 subscriberpropCount++;
                 subscriberpropCount++;
-                subscriber["formId"] = ExpressionConverter.ConvertO(subscriberform);
+                subscriber["formId"] = ExpressionConverter.ConvertO(__workflow_subscriberform);
                 if (subscriberpropCount > 0)
                 {
                     callPayload.Body = subscriber;

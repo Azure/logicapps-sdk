@@ -1,12 +1,12 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workmobile
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class WorkmobileActions([ConnectionName] string connectionId)
     {
@@ -31,18 +31,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workmobile
 
     public class WorkmobileTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildFormDataHook))]
-        public IWorkflowTrigger FormDataHook([WorkflowExpression] Func<int> bodyuserFormId,[WorkflowExpression] Func<bool> bodyincludeSubFormData,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger FormDataHook(Expression<Func<int>> bodyuserFormId, Expression<Func<bool>> bodyincludeSubFormData, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildFormDataHook(WorkflowExpression<int> bodyuserFormId,WorkflowExpression<bool> bodyincludeSubFormData,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodyuserFormId, nameof(bodyuserFormId), required: true);
-            WorkflowExpression.Validate(bodyincludeSubFormData, nameof(bodyincludeSubFormData), required: true);
+            var __workflow_bodyuserFormId = bodyuserFormId == null ? null : WorkflowExpression.Compile(bodyuserFormId);
+            WorkflowExpression.Validate(__workflow_bodyuserFormId, nameof(bodyuserFormId), required: true);
+            var __workflow_bodyincludeSubFormData = bodyincludeSubFormData == null ? null : WorkflowExpression.Compile(bodyincludeSubFormData);
+            WorkflowExpression.Validate(__workflow_bodyincludeSubFormData, nameof(bodyincludeSubFormData), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/notifications/external";
@@ -51,11 +45,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workmobile
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["userFormId"] = ExpressionConverter.ConvertO(bodyuserFormId);
+                body["userFormId"] = ExpressionConverter.ConvertO(__workflow_bodyuserFormId);
                 body["url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 bodypropCount++;
-                body["includeSubFormData"] = ExpressionConverter.ConvertO(bodyincludeSubFormData);
+                body["includeSubFormData"] = ExpressionConverter.ConvertO(__workflow_bodyincludeSubFormData);
                 body["description"] = "Power Automate";
                 bodypropCount++;
                 if (bodypropCount > 0)

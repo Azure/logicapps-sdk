@@ -1,34 +1,27 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dadjokes
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class DadjokesActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dadjokes")]
-        [WorkflowExpressionFactory(nameof(__BuildJokeGet))]
-        public IBodyWorkflowAction<JokeGetResponseItem[]> JokeGet([WorkflowExpression] Func<int> limit = null)
+        public IBodyWorkflowAction<JokeGetResponseItem[]> JokeGet(Expression<Func<int>> limit = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JokeGetResponseItem[]> __BuildJokeGet(WorkflowExpression<int> limit = null)
-        {
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
             return new DeferredBodyAction<JokeGetResponseItem[]>(() =>
             {
                 var apiCallPath = "/v1/dadjokes";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 callPayload.Headers["X-RapidAPI-Host"] = Convert.ToString("dad-jokes-by-api-ninjas.p.rapidapi.com");
                 return new ApiConnectionAction<JokeGetResponseItem[]>(callPayload);
             });

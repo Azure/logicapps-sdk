@@ -1,57 +1,46 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpformsbyreenhancedl
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class WpformsbyreenhancedlActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wpformsbyreenhancedl")]
-        [WorkflowExpressionFactory(nameof(__BuildGetEntries))]
-        public IBodyWorkflowAction<GetEntriesResponseItem[]> GetEntries([WorkflowExpression] Func<string> formId, [WorkflowExpression] Func<object> body = null)
+        public IBodyWorkflowAction<GetEntriesResponseItem[]> GetEntries(Expression<Func<string>> formId, Expression<Func<object>> body = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetEntriesResponseItem[]> __BuildGetEntries(WorkflowExpression<string> formId, WorkflowExpression<object> body = null)
-        {
-            WorkflowExpression.Validate(formId, nameof(formId), required: true);
-            WorkflowExpression.Validate(body, nameof(body), required: false);
+            var __workflow_formId = formId == null ? null : WorkflowExpression.Compile(formId);
+            WorkflowExpression.Validate(__workflow_formId, nameof(formId), required: true);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
             return new DeferredBodyAction<GetEntriesResponseItem[]>(() =>
             {
                 var apiCallPath = "/resources/entries/query";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["form_id"] = ExpressionConverter.Convert(formId);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["form_id"] = ExpressionConverter.Convert(__workflow_formId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GetEntriesResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wpformsbyreenhancedl")]
-        [WorkflowExpressionFactory(nameof(__BuildGetEntry))]
-        public IBodyWorkflowAction<JToken> GetEntry([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> formId)
+        public IBodyWorkflowAction<JToken> GetEntry(Expression<Func<string>> id, Expression<Func<string>> formId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildGetEntry(WorkflowExpression<string> id, WorkflowExpression<string> formId)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(formId, nameof(formId), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_formId = formId == null ? null : WorkflowExpression.Compile(formId);
+            WorkflowExpression.Validate(__workflow_formId, nameof(formId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/resources/entries/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/resources/entries/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["form_id"] = ExpressionConverter.Convert(formId);
+                callPayload.Queries["form_id"] = ExpressionConverter.Convert(__workflow_formId);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
@@ -59,17 +48,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpformsbyreenhancedl
 
     public class WpformsbyreenhancedlTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildCreateFlow))]
-        public IWorkflowTrigger CreateFlow([WorkflowExpression] Func<string> bodyformID,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CreateFlow(Expression<Func<string>> bodyformID, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildCreateFlow(WorkflowExpression<string> bodyformID,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodyformID, nameof(bodyformID), required: true);
+            var __workflow_bodyformID = bodyformID == null ? null : WorkflowExpression.Compile(bodyformID);
+            WorkflowExpression.Validate(__workflow_bodyformID, nameof(bodyformID), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/resources/flows";
@@ -78,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpformsbyreenhancedl
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["form_id"] = ExpressionConverter.ConvertO(bodyformID);
+                body["form_id"] = ExpressionConverter.ConvertO(__workflow_bodyformID);
                 var metaObject = new JObject();
                 var metaObjectpropCount = 0;
                 metaObject["powerAutomateUrl"] = "#{listCallbackUrl()}";

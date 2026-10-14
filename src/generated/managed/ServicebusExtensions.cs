@@ -1,60 +1,67 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class ServicebusActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
-        [WorkflowExpressionFactory(nameof(__BuildSendMessage))]
-        public IWorkflowAction SendMessage([WorkflowExpression] Func<string> entityName, [WorkflowExpression] Func<JToken> messagecontent = null, [WorkflowExpression] Func<string> messagecontentType = null, [WorkflowExpression] Func<string> messagemessageId = null, [WorkflowExpression] Func<string> messageto = null, [WorkflowExpression] Func<string> messagereplyTo = null, [WorkflowExpression] Func<string> messagereplyToSessionId = null, [WorkflowExpression] Func<string> messagelabel = null, [WorkflowExpression] Func<string> messagescheduledEnqueueTimeUtc = null, [WorkflowExpression] Func<string> messagesessionId = null, [WorkflowExpression] Func<string> messagecorrelationId = null, [WorkflowExpression] Func<int> messagesequenceNumber = null, [WorkflowExpression] Func<string> messagelockToken = null, [WorkflowExpression] Func<string> messagetimeToLive = null, [WorkflowExpression] Func<string> systemProperties = null)
+        public IWorkflowAction SendMessage(Expression<Func<string>> entityName, Expression<Func<JToken>> messagecontent = null, Expression<Func<string>> messagecontentType = null, Expression<Func<string>> messagemessageId = null, Expression<Func<string>> messageto = null, Expression<Func<string>> messagereplyTo = null, Expression<Func<string>> messagereplyToSessionId = null, Expression<Func<string>> messagelabel = null, Expression<Func<string>> messagescheduledEnqueueTimeUtc = null, Expression<Func<string>> messagesessionId = null, Expression<Func<string>> messagecorrelationId = null, Expression<Func<int>> messagesequenceNumber = null, Expression<Func<string>> messagelockToken = null, Expression<Func<string>> messagetimeToLive = null, Expression<Func<string>> systemProperties = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildSendMessage(WorkflowExpression<string> entityName, WorkflowExpression<JToken> messagecontent = null, WorkflowExpression<string> messagecontentType = null, WorkflowExpression<string> messagemessageId = null, WorkflowExpression<string> messageto = null, WorkflowExpression<string> messagereplyTo = null, WorkflowExpression<string> messagereplyToSessionId = null, WorkflowExpression<string> messagelabel = null, WorkflowExpression<string> messagescheduledEnqueueTimeUtc = null, WorkflowExpression<string> messagesessionId = null, WorkflowExpression<string> messagecorrelationId = null, WorkflowExpression<int> messagesequenceNumber = null, WorkflowExpression<string> messagelockToken = null, WorkflowExpression<string> messagetimeToLive = null, WorkflowExpression<string> systemProperties = null)
-        {
-            WorkflowExpression.Validate(entityName, nameof(entityName), required: true);
-            WorkflowExpression.Validate(messagecontent, nameof(messagecontent), required: false);
-            WorkflowExpression.Validate(messagecontentType, nameof(messagecontentType), required: false);
-            WorkflowExpression.Validate(messagemessageId, nameof(messagemessageId), required: false);
-            WorkflowExpression.Validate(messageto, nameof(messageto), required: false);
-            WorkflowExpression.Validate(messagereplyTo, nameof(messagereplyTo), required: false);
-            WorkflowExpression.Validate(messagereplyToSessionId, nameof(messagereplyToSessionId), required: false);
-            WorkflowExpression.Validate(messagelabel, nameof(messagelabel), required: false);
-            WorkflowExpression.Validate(messagescheduledEnqueueTimeUtc, nameof(messagescheduledEnqueueTimeUtc), required: false);
-            WorkflowExpression.Validate(messagesessionId, nameof(messagesessionId), required: false);
-            WorkflowExpression.Validate(messagecorrelationId, nameof(messagecorrelationId), required: false);
-            WorkflowExpression.Validate(messagesequenceNumber, nameof(messagesequenceNumber), required: false);
-            WorkflowExpression.Validate(messagelockToken, nameof(messagelockToken), required: false);
-            WorkflowExpression.Validate(messagetimeToLive, nameof(messagetimeToLive), required: false);
-            WorkflowExpression.Validate(systemProperties, nameof(systemProperties), required: false);
+            var __workflow_entityName = entityName == null ? null : WorkflowExpression.Compile(entityName);
+            WorkflowExpression.Validate(__workflow_entityName, nameof(entityName), required: true);
+            var __workflow_messagecontent = messagecontent == null ? null : WorkflowExpression.Compile(messagecontent);
+            WorkflowExpression.Validate(__workflow_messagecontent, nameof(messagecontent), required: false);
+            var __workflow_messagecontentType = messagecontentType == null ? null : WorkflowExpression.Compile(messagecontentType);
+            WorkflowExpression.Validate(__workflow_messagecontentType, nameof(messagecontentType), required: false);
+            var __workflow_messagemessageId = messagemessageId == null ? null : WorkflowExpression.Compile(messagemessageId);
+            WorkflowExpression.Validate(__workflow_messagemessageId, nameof(messagemessageId), required: false);
+            var __workflow_messageto = messageto == null ? null : WorkflowExpression.Compile(messageto);
+            WorkflowExpression.Validate(__workflow_messageto, nameof(messageto), required: false);
+            var __workflow_messagereplyTo = messagereplyTo == null ? null : WorkflowExpression.Compile(messagereplyTo);
+            WorkflowExpression.Validate(__workflow_messagereplyTo, nameof(messagereplyTo), required: false);
+            var __workflow_messagereplyToSessionId = messagereplyToSessionId == null ? null : WorkflowExpression.Compile(messagereplyToSessionId);
+            WorkflowExpression.Validate(__workflow_messagereplyToSessionId, nameof(messagereplyToSessionId), required: false);
+            var __workflow_messagelabel = messagelabel == null ? null : WorkflowExpression.Compile(messagelabel);
+            WorkflowExpression.Validate(__workflow_messagelabel, nameof(messagelabel), required: false);
+            var __workflow_messagescheduledEnqueueTimeUtc = messagescheduledEnqueueTimeUtc == null ? null : WorkflowExpression.Compile(messagescheduledEnqueueTimeUtc);
+            WorkflowExpression.Validate(__workflow_messagescheduledEnqueueTimeUtc, nameof(messagescheduledEnqueueTimeUtc), required: false);
+            var __workflow_messagesessionId = messagesessionId == null ? null : WorkflowExpression.Compile(messagesessionId);
+            WorkflowExpression.Validate(__workflow_messagesessionId, nameof(messagesessionId), required: false);
+            var __workflow_messagecorrelationId = messagecorrelationId == null ? null : WorkflowExpression.Compile(messagecorrelationId);
+            WorkflowExpression.Validate(__workflow_messagecorrelationId, nameof(messagecorrelationId), required: false);
+            var __workflow_messagesequenceNumber = messagesequenceNumber == null ? null : WorkflowExpression.Compile(messagesequenceNumber);
+            WorkflowExpression.Validate(__workflow_messagesequenceNumber, nameof(messagesequenceNumber), required: false);
+            var __workflow_messagelockToken = messagelockToken == null ? null : WorkflowExpression.Compile(messagelockToken);
+            WorkflowExpression.Validate(__workflow_messagelockToken, nameof(messagelockToken), required: false);
+            var __workflow_messagetimeToLive = messagetimeToLive == null ? null : WorkflowExpression.Compile(messagetimeToLive);
+            WorkflowExpression.Validate(__workflow_messagetimeToLive, nameof(messagetimeToLive), required: false);
+            var __workflow_systemProperties = systemProperties == null ? null : WorkflowExpression.Compile(systemProperties);
+            WorkflowExpression.Validate(__workflow_systemProperties, nameof(systemProperties), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(entityName, 2));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_entityName, 2));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["systemProperties"] = Convert.ToString("None");
-                if (systemProperties != null)
-                    callPayload.Queries["systemProperties"] = ExpressionConverter.Convert(systemProperties);
+                if (__workflow_systemProperties != null)
+                    callPayload.Queries["systemProperties"] = ExpressionConverter.Convert(__workflow_systemProperties);
                 var message = new JObject();
                 var messagepropCount = 0;
-                if (messagecontent != null)
+                if (__workflow_messagecontent != null)
                 {
-                    message["ContentData"] = ExpressionConverter.ConvertOWithBase64(messagecontent);
+                    message["ContentData"] = ExpressionConverter.ConvertOWithBase64(__workflow_messagecontent);
                     messagepropCount++;
                 }
 
-                if (messagecontentType != null)
+                if (__workflow_messagecontentType != null)
                 {
-                    message["ContentType"] = ExpressionConverter.ConvertO(messagecontentType);
+                    message["ContentType"] = ExpressionConverter.ConvertO(__workflow_messagecontentType);
                     messagepropCount++;
                 }
 
@@ -66,69 +73,69 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
                     messagepropCount++;
                 }
 
-                if (messagemessageId != null)
+                if (__workflow_messagemessageId != null)
                 {
-                    message["MessageId"] = ExpressionConverter.ConvertO(messagemessageId);
+                    message["MessageId"] = ExpressionConverter.ConvertO(__workflow_messagemessageId);
                     messagepropCount++;
                 }
 
-                if (messageto != null)
+                if (__workflow_messageto != null)
                 {
-                    message["To"] = ExpressionConverter.ConvertO(messageto);
+                    message["To"] = ExpressionConverter.ConvertO(__workflow_messageto);
                     messagepropCount++;
                 }
 
-                if (messagereplyTo != null)
+                if (__workflow_messagereplyTo != null)
                 {
-                    message["ReplyTo"] = ExpressionConverter.ConvertO(messagereplyTo);
+                    message["ReplyTo"] = ExpressionConverter.ConvertO(__workflow_messagereplyTo);
                     messagepropCount++;
                 }
 
-                if (messagereplyToSessionId != null)
+                if (__workflow_messagereplyToSessionId != null)
                 {
-                    message["ReplyToSessionId"] = ExpressionConverter.ConvertO(messagereplyToSessionId);
+                    message["ReplyToSessionId"] = ExpressionConverter.ConvertO(__workflow_messagereplyToSessionId);
                     messagepropCount++;
                 }
 
-                if (messagelabel != null)
+                if (__workflow_messagelabel != null)
                 {
-                    message["Label"] = ExpressionConverter.ConvertO(messagelabel);
+                    message["Label"] = ExpressionConverter.ConvertO(__workflow_messagelabel);
                     messagepropCount++;
                 }
 
-                if (messagescheduledEnqueueTimeUtc != null)
+                if (__workflow_messagescheduledEnqueueTimeUtc != null)
                 {
-                    message["ScheduledEnqueueTimeUtc"] = ExpressionConverter.ConvertO(messagescheduledEnqueueTimeUtc);
+                    message["ScheduledEnqueueTimeUtc"] = ExpressionConverter.ConvertO(__workflow_messagescheduledEnqueueTimeUtc);
                     messagepropCount++;
                 }
 
-                if (messagesessionId != null)
+                if (__workflow_messagesessionId != null)
                 {
-                    message["SessionId"] = ExpressionConverter.ConvertO(messagesessionId);
+                    message["SessionId"] = ExpressionConverter.ConvertO(__workflow_messagesessionId);
                     messagepropCount++;
                 }
 
-                if (messagecorrelationId != null)
+                if (__workflow_messagecorrelationId != null)
                 {
-                    message["CorrelationId"] = ExpressionConverter.ConvertO(messagecorrelationId);
+                    message["CorrelationId"] = ExpressionConverter.ConvertO(__workflow_messagecorrelationId);
                     messagepropCount++;
                 }
 
-                if (messagesequenceNumber != null)
+                if (__workflow_messagesequenceNumber != null)
                 {
-                    message["SequenceNumber"] = ExpressionConverter.ConvertO(messagesequenceNumber);
+                    message["SequenceNumber"] = ExpressionConverter.ConvertO(__workflow_messagesequenceNumber);
                     messagepropCount++;
                 }
 
-                if (messagelockToken != null)
+                if (__workflow_messagelockToken != null)
                 {
-                    message["LockToken"] = ExpressionConverter.ConvertO(messagelockToken);
+                    message["LockToken"] = ExpressionConverter.ConvertO(__workflow_messagelockToken);
                     messagepropCount++;
                 }
 
-                if (messagetimeToLive != null)
+                if (__workflow_messagetimeToLive != null)
                 {
-                    message["TimeToLive"] = ExpressionConverter.ConvertO(messagetimeToLive);
+                    message["TimeToLive"] = ExpressionConverter.ConvertO(__workflow_messagetimeToLive);
                     messagepropCount++;
                 }
 
@@ -142,258 +149,228 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
-        [WorkflowExpressionFactory(nameof(__BuildSendMessages))]
-        public IWorkflowAction SendMessages([WorkflowExpression] Func<string> entityName, [WorkflowExpression] Func<ServiceBusMessage[]> messages = null, [WorkflowExpression] Func<string> systemProperties = null)
+        public IWorkflowAction SendMessages(Expression<Func<string>> entityName, Expression<Func<ServiceBusMessage[]>> messages = null, Expression<Func<string>> systemProperties = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildSendMessages(WorkflowExpression<string> entityName, WorkflowExpression<ServiceBusMessage[]> messages = null, WorkflowExpression<string> systemProperties = null)
-        {
-            WorkflowExpression.Validate(entityName, nameof(entityName), required: true);
-            WorkflowExpression.Validate(messages, nameof(messages), required: false);
-            WorkflowExpression.Validate(systemProperties, nameof(systemProperties), required: false);
+            var __workflow_entityName = entityName == null ? null : WorkflowExpression.Compile(entityName);
+            WorkflowExpression.Validate(__workflow_entityName, nameof(entityName), required: true);
+            var __workflow_messages = messages == null ? null : WorkflowExpression.Compile(messages);
+            WorkflowExpression.Validate(__workflow_messages, nameof(messages), required: false);
+            var __workflow_systemProperties = systemProperties == null ? null : WorkflowExpression.Compile(systemProperties);
+            WorkflowExpression.Validate(__workflow_systemProperties, nameof(systemProperties), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/messages/batch", ExpressionConverter.ConvertWithUrlEncoding(entityName, 2));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/messages/batch", ExpressionConverter.ConvertWithUrlEncoding(__workflow_entityName, 2));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["systemProperties"] = Convert.ToString("None");
-                if (systemProperties != null)
-                    callPayload.Queries["systemProperties"] = ExpressionConverter.Convert(systemProperties);
-                callPayload.Body = ExpressionConverter.ConvertO(messages);
+                if (__workflow_systemProperties != null)
+                    callPayload.Queries["systemProperties"] = ExpressionConverter.Convert(__workflow_systemProperties);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_messages);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
-        [WorkflowExpressionFactory(nameof(__BuildCompleteMessageInQueue))]
-        public IWorkflowAction CompleteMessageInQueue([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> lockToken, [WorkflowExpression] Func<queueTypeInput> queueType = null, [WorkflowExpression] Func<string> sessionId = null)
+        public IWorkflowAction CompleteMessageInQueue(Expression<Func<string>> queueName, Expression<Func<string>> lockToken, Expression<Func<queueTypeInput>> queueType = null, Expression<Func<string>> sessionId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildCompleteMessageInQueue(WorkflowExpression<string> queueName, WorkflowExpression<string> lockToken, WorkflowExpression<queueTypeInput> queueType = null, WorkflowExpression<string> sessionId = null)
-        {
-            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
-            WorkflowExpression.Validate(lockToken, nameof(lockToken), required: true);
-            WorkflowExpression.Validate(queueType, nameof(queueType), required: false);
-            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: false);
+            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
+            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
+            var __workflow_lockToken = lockToken == null ? null : WorkflowExpression.Compile(lockToken);
+            WorkflowExpression.Validate(__workflow_lockToken, nameof(lockToken), required: true);
+            var __workflow_queueType = queueType == null ? null : WorkflowExpression.Compile(queueType);
+            WorkflowExpression.Validate(__workflow_queueType, nameof(queueType), required: false);
+            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
+            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/messages/complete", ExpressionConverter.ConvertWithUrlEncoding(queueName, 2));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/messages/complete", ExpressionConverter.ConvertWithUrlEncoding(__workflow_queueName, 2));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["lockToken"] = ExpressionConverter.Convert(lockToken);
+                callPayload.Queries["lockToken"] = ExpressionConverter.Convert(__workflow_lockToken);
                 callPayload.Queries["queueType"] = Convert.ToString("Main");
-                if (queueType != null)
-                    callPayload.Queries["queueType"] = ExpressionConverter.Convert(queueType);
+                if (__workflow_queueType != null)
+                    callPayload.Queries["queueType"] = ExpressionConverter.Convert(__workflow_queueType);
                 callPayload.Queries["sessionId"] = Convert.ToString("");
-                if (sessionId != null)
-                    callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
+                if (__workflow_sessionId != null)
+                    callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
-        [WorkflowExpressionFactory(nameof(__BuildAbandonMessageInQueue))]
-        public IWorkflowAction AbandonMessageInQueue([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> lockToken, [WorkflowExpression] Func<queueTypeInput> queueType = null, [WorkflowExpression] Func<string> sessionId = null)
+        public IWorkflowAction AbandonMessageInQueue(Expression<Func<string>> queueName, Expression<Func<string>> lockToken, Expression<Func<queueTypeInput>> queueType = null, Expression<Func<string>> sessionId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildAbandonMessageInQueue(WorkflowExpression<string> queueName, WorkflowExpression<string> lockToken, WorkflowExpression<queueTypeInput> queueType = null, WorkflowExpression<string> sessionId = null)
-        {
-            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
-            WorkflowExpression.Validate(lockToken, nameof(lockToken), required: true);
-            WorkflowExpression.Validate(queueType, nameof(queueType), required: false);
-            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: false);
+            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
+            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
+            var __workflow_lockToken = lockToken == null ? null : WorkflowExpression.Compile(lockToken);
+            WorkflowExpression.Validate(__workflow_lockToken, nameof(lockToken), required: true);
+            var __workflow_queueType = queueType == null ? null : WorkflowExpression.Compile(queueType);
+            WorkflowExpression.Validate(__workflow_queueType, nameof(queueType), required: false);
+            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
+            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/messages/abandon", ExpressionConverter.ConvertWithUrlEncoding(queueName, 2));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/messages/abandon", ExpressionConverter.ConvertWithUrlEncoding(__workflow_queueName, 2));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["lockToken"] = ExpressionConverter.Convert(lockToken);
+                callPayload.Queries["lockToken"] = ExpressionConverter.Convert(__workflow_lockToken);
                 callPayload.Queries["queueType"] = Convert.ToString("Main");
-                if (queueType != null)
-                    callPayload.Queries["queueType"] = ExpressionConverter.Convert(queueType);
+                if (__workflow_queueType != null)
+                    callPayload.Queries["queueType"] = ExpressionConverter.Convert(__workflow_queueType);
                 callPayload.Queries["sessionId"] = Convert.ToString("");
-                if (sessionId != null)
-                    callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
+                if (__workflow_sessionId != null)
+                    callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
-        [WorkflowExpressionFactory(nameof(__BuildGetDeferredMessageFromQueue))]
-        public IBodyWorkflowAction<ServiceBusMessage> GetDeferredMessageFromQueue([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<int> sequenceNumber, [WorkflowExpression] Func<queueTypeInput> queueType = null, [WorkflowExpression] Func<string> sessionId = null)
+        public IBodyWorkflowAction<ServiceBusMessage> GetDeferredMessageFromQueue(Expression<Func<string>> queueName, Expression<Func<int>> sequenceNumber, Expression<Func<queueTypeInput>> queueType = null, Expression<Func<string>> sessionId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ServiceBusMessage> __BuildGetDeferredMessageFromQueue(WorkflowExpression<string> queueName, WorkflowExpression<int> sequenceNumber, WorkflowExpression<queueTypeInput> queueType = null, WorkflowExpression<string> sessionId = null)
-        {
-            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
-            WorkflowExpression.Validate(sequenceNumber, nameof(sequenceNumber), required: true);
-            WorkflowExpression.Validate(queueType, nameof(queueType), required: false);
-            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: false);
+            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
+            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
+            var __workflow_sequenceNumber = sequenceNumber == null ? null : WorkflowExpression.Compile(sequenceNumber);
+            WorkflowExpression.Validate(__workflow_sequenceNumber, nameof(sequenceNumber), required: true);
+            var __workflow_queueType = queueType == null ? null : WorkflowExpression.Compile(queueType);
+            WorkflowExpression.Validate(__workflow_queueType, nameof(queueType), required: false);
+            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
+            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: false);
             return new DeferredBodyAction<ServiceBusMessage>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/messages/defer", ExpressionConverter.ConvertWithUrlEncoding(queueName, 2));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/messages/defer", ExpressionConverter.ConvertWithUrlEncoding(__workflow_queueName, 2));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["sequenceNumber"] = ExpressionConverter.Convert(sequenceNumber);
+                callPayload.Queries["sequenceNumber"] = ExpressionConverter.Convert(__workflow_sequenceNumber);
                 callPayload.Queries["queueType"] = Convert.ToString("Main");
-                if (queueType != null)
-                    callPayload.Queries["queueType"] = ExpressionConverter.Convert(queueType);
+                if (__workflow_queueType != null)
+                    callPayload.Queries["queueType"] = ExpressionConverter.Convert(__workflow_queueType);
                 callPayload.Queries["sessionId"] = Convert.ToString("");
-                if (sessionId != null)
-                    callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
+                if (__workflow_sessionId != null)
+                    callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
                 return new ApiConnectionAction<ServiceBusMessage>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
-        [WorkflowExpressionFactory(nameof(__BuildDeferMessageInQueue))]
-        public IWorkflowAction DeferMessageInQueue([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> lockToken, [WorkflowExpression] Func<queueTypeInput> queueType = null, [WorkflowExpression] Func<string> sessionId = null)
+        public IWorkflowAction DeferMessageInQueue(Expression<Func<string>> queueName, Expression<Func<string>> lockToken, Expression<Func<queueTypeInput>> queueType = null, Expression<Func<string>> sessionId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDeferMessageInQueue(WorkflowExpression<string> queueName, WorkflowExpression<string> lockToken, WorkflowExpression<queueTypeInput> queueType = null, WorkflowExpression<string> sessionId = null)
-        {
-            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
-            WorkflowExpression.Validate(lockToken, nameof(lockToken), required: true);
-            WorkflowExpression.Validate(queueType, nameof(queueType), required: false);
-            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: false);
+            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
+            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
+            var __workflow_lockToken = lockToken == null ? null : WorkflowExpression.Compile(lockToken);
+            WorkflowExpression.Validate(__workflow_lockToken, nameof(lockToken), required: true);
+            var __workflow_queueType = queueType == null ? null : WorkflowExpression.Compile(queueType);
+            WorkflowExpression.Validate(__workflow_queueType, nameof(queueType), required: false);
+            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
+            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/messages/defer", ExpressionConverter.ConvertWithUrlEncoding(queueName, 2));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/messages/defer", ExpressionConverter.ConvertWithUrlEncoding(__workflow_queueName, 2));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["lockToken"] = ExpressionConverter.Convert(lockToken);
+                callPayload.Queries["lockToken"] = ExpressionConverter.Convert(__workflow_lockToken);
                 callPayload.Queries["queueType"] = Convert.ToString("Main");
-                if (queueType != null)
-                    callPayload.Queries["queueType"] = ExpressionConverter.Convert(queueType);
+                if (__workflow_queueType != null)
+                    callPayload.Queries["queueType"] = ExpressionConverter.Convert(__workflow_queueType);
                 callPayload.Queries["sessionId"] = Convert.ToString("");
-                if (sessionId != null)
-                    callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
+                if (__workflow_sessionId != null)
+                    callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
-        [WorkflowExpressionFactory(nameof(__BuildDeadLetterMessageInQueue))]
-        public IWorkflowAction DeadLetterMessageInQueue([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> lockToken, [WorkflowExpression] Func<string> sessionId = null, [WorkflowExpression] Func<string> deadLetterReason = null, [WorkflowExpression] Func<string> deadLetterErrorDescription = null)
+        public IWorkflowAction DeadLetterMessageInQueue(Expression<Func<string>> queueName, Expression<Func<string>> lockToken, Expression<Func<string>> sessionId = null, Expression<Func<string>> deadLetterReason = null, Expression<Func<string>> deadLetterErrorDescription = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDeadLetterMessageInQueue(WorkflowExpression<string> queueName, WorkflowExpression<string> lockToken, WorkflowExpression<string> sessionId = null, WorkflowExpression<string> deadLetterReason = null, WorkflowExpression<string> deadLetterErrorDescription = null)
-        {
-            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
-            WorkflowExpression.Validate(lockToken, nameof(lockToken), required: true);
-            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: false);
-            WorkflowExpression.Validate(deadLetterReason, nameof(deadLetterReason), required: false);
-            WorkflowExpression.Validate(deadLetterErrorDescription, nameof(deadLetterErrorDescription), required: false);
+            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
+            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
+            var __workflow_lockToken = lockToken == null ? null : WorkflowExpression.Compile(lockToken);
+            WorkflowExpression.Validate(__workflow_lockToken, nameof(lockToken), required: true);
+            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
+            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: false);
+            var __workflow_deadLetterReason = deadLetterReason == null ? null : WorkflowExpression.Compile(deadLetterReason);
+            WorkflowExpression.Validate(__workflow_deadLetterReason, nameof(deadLetterReason), required: false);
+            var __workflow_deadLetterErrorDescription = deadLetterErrorDescription == null ? null : WorkflowExpression.Compile(deadLetterErrorDescription);
+            WorkflowExpression.Validate(__workflow_deadLetterErrorDescription, nameof(deadLetterErrorDescription), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/messages/deadletter", ExpressionConverter.ConvertWithUrlEncoding(queueName, 2));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/messages/deadletter", ExpressionConverter.ConvertWithUrlEncoding(__workflow_queueName, 2));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["lockToken"] = ExpressionConverter.Convert(lockToken);
+                callPayload.Queries["lockToken"] = ExpressionConverter.Convert(__workflow_lockToken);
                 callPayload.Queries["sessionId"] = Convert.ToString("");
-                if (sessionId != null)
-                    callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
+                if (__workflow_sessionId != null)
+                    callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
                 callPayload.Queries["deadLetterReason"] = Convert.ToString("");
-                if (deadLetterReason != null)
-                    callPayload.Queries["deadLetterReason"] = ExpressionConverter.Convert(deadLetterReason);
+                if (__workflow_deadLetterReason != null)
+                    callPayload.Queries["deadLetterReason"] = ExpressionConverter.Convert(__workflow_deadLetterReason);
                 callPayload.Queries["deadLetterErrorDescription"] = Convert.ToString("");
-                if (deadLetterErrorDescription != null)
-                    callPayload.Queries["deadLetterErrorDescription"] = ExpressionConverter.Convert(deadLetterErrorDescription);
+                if (__workflow_deadLetterErrorDescription != null)
+                    callPayload.Queries["deadLetterErrorDescription"] = ExpressionConverter.Convert(__workflow_deadLetterErrorDescription);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
-        [WorkflowExpressionFactory(nameof(__BuildRenewLockOnMessageInQueue))]
-        public IWorkflowAction RenewLockOnMessageInQueue([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> lockToken, [WorkflowExpression] Func<queueTypeInput> queueType = null)
+        public IWorkflowAction RenewLockOnMessageInQueue(Expression<Func<string>> queueName, Expression<Func<string>> lockToken, Expression<Func<queueTypeInput>> queueType = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildRenewLockOnMessageInQueue(WorkflowExpression<string> queueName, WorkflowExpression<string> lockToken, WorkflowExpression<queueTypeInput> queueType = null)
-        {
-            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
-            WorkflowExpression.Validate(lockToken, nameof(lockToken), required: true);
-            WorkflowExpression.Validate(queueType, nameof(queueType), required: false);
+            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
+            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
+            var __workflow_lockToken = lockToken == null ? null : WorkflowExpression.Compile(lockToken);
+            WorkflowExpression.Validate(__workflow_lockToken, nameof(lockToken), required: true);
+            var __workflow_queueType = queueType == null ? null : WorkflowExpression.Compile(queueType);
+            WorkflowExpression.Validate(__workflow_queueType, nameof(queueType), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/messages/renewlock", ExpressionConverter.ConvertWithUrlEncoding(queueName, 2));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/messages/renewlock", ExpressionConverter.ConvertWithUrlEncoding(__workflow_queueName, 2));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["lockToken"] = ExpressionConverter.Convert(lockToken);
+                callPayload.Queries["lockToken"] = ExpressionConverter.Convert(__workflow_lockToken);
                 callPayload.Queries["queueType"] = Convert.ToString("Main");
-                if (queueType != null)
-                    callPayload.Queries["queueType"] = ExpressionConverter.Convert(queueType);
+                if (__workflow_queueType != null)
+                    callPayload.Queries["queueType"] = ExpressionConverter.Convert(__workflow_queueType);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
-        [WorkflowExpressionFactory(nameof(__BuildGetMessagesFromQueueWithPeekLock))]
-        public IBodyWorkflowAction<ServiceBusMessage[]> GetMessagesFromQueueWithPeekLock([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<int> maxMessageCount = null, [WorkflowExpression] Func<queueTypeInput> queueType = null, [WorkflowExpression] Func<string> sessionId = null)
+        public IBodyWorkflowAction<ServiceBusMessage[]> GetMessagesFromQueueWithPeekLock(Expression<Func<string>> queueName, Expression<Func<int>> maxMessageCount = null, Expression<Func<queueTypeInput>> queueType = null, Expression<Func<string>> sessionId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ServiceBusMessage[]> __BuildGetMessagesFromQueueWithPeekLock(WorkflowExpression<string> queueName, WorkflowExpression<int> maxMessageCount = null, WorkflowExpression<queueTypeInput> queueType = null, WorkflowExpression<string> sessionId = null)
-        {
-            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
-            WorkflowExpression.Validate(maxMessageCount, nameof(maxMessageCount), required: false);
-            WorkflowExpression.Validate(queueType, nameof(queueType), required: false);
-            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: false);
+            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
+            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
+            var __workflow_maxMessageCount = maxMessageCount == null ? null : WorkflowExpression.Compile(maxMessageCount);
+            WorkflowExpression.Validate(__workflow_maxMessageCount, nameof(maxMessageCount), required: false);
+            var __workflow_queueType = queueType == null ? null : WorkflowExpression.Compile(queueType);
+            WorkflowExpression.Validate(__workflow_queueType, nameof(queueType), required: false);
+            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
+            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: false);
             return new DeferredBodyAction<ServiceBusMessage[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/messages/batch/peek", ExpressionConverter.ConvertWithUrlEncoding(queueName, 2));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/messages/batch/peek", ExpressionConverter.ConvertWithUrlEncoding(__workflow_queueName, 2));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["maxMessageCount"] = Convert.ToString(20);
-                if (maxMessageCount != null)
-                    callPayload.Queries["maxMessageCount"] = ExpressionConverter.Convert(maxMessageCount);
+                if (__workflow_maxMessageCount != null)
+                    callPayload.Queries["maxMessageCount"] = ExpressionConverter.Convert(__workflow_maxMessageCount);
                 callPayload.Queries["queueType"] = Convert.ToString("Main");
-                if (queueType != null)
-                    callPayload.Queries["queueType"] = ExpressionConverter.Convert(queueType);
+                if (__workflow_queueType != null)
+                    callPayload.Queries["queueType"] = ExpressionConverter.Convert(__workflow_queueType);
                 callPayload.Queries["sessionId"] = Convert.ToString("");
-                if (sessionId != null)
-                    callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
+                if (__workflow_sessionId != null)
+                    callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
                 return new ApiConnectionAction<ServiceBusMessage[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
-        [WorkflowExpressionFactory(nameof(__BuildCloseSessionInQueue))]
-        public IWorkflowAction CloseSessionInQueue([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> sessionId)
+        public IWorkflowAction CloseSessionInQueue(Expression<Func<string>> queueName, Expression<Func<string>> sessionId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildCloseSessionInQueue(WorkflowExpression<string> queueName, WorkflowExpression<string> sessionId)
-        {
-            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
-            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: true);
+            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
+            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
+            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
+            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/sessions/{1}/close", ExpressionConverter.ConvertWithUrlEncoding(queueName, 2), ExpressionConverter.ConvertWithUrlEncoding(sessionId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/sessions/{1}/close", ExpressionConverter.ConvertWithUrlEncoding(__workflow_queueName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_sessionId, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -401,20 +378,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
-        [WorkflowExpressionFactory(nameof(__BuildRenewLockOnSessionInQueue))]
-        public IWorkflowAction RenewLockOnSessionInQueue([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> sessionId)
+        public IWorkflowAction RenewLockOnSessionInQueue(Expression<Func<string>> queueName, Expression<Func<string>> sessionId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildRenewLockOnSessionInQueue(WorkflowExpression<string> queueName, WorkflowExpression<string> sessionId)
-        {
-            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
-            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: true);
+            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
+            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
+            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
+            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/sessions/{1}/renewlock", ExpressionConverter.ConvertWithUrlEncoding(queueName, 2), ExpressionConverter.ConvertWithUrlEncoding(sessionId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/sessions/{1}/renewlock", ExpressionConverter.ConvertWithUrlEncoding(__workflow_queueName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_sessionId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -422,233 +394,213 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
-        [WorkflowExpressionFactory(nameof(__BuildCompleteMessageInTopic))]
-        public IWorkflowAction CompleteMessageInTopic([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> lockToken, [WorkflowExpression] Func<subscriptionTypeInput> subscriptionType = null, [WorkflowExpression] Func<string> sessionId = null)
+        public IWorkflowAction CompleteMessageInTopic(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> lockToken, Expression<Func<subscriptionTypeInput>> subscriptionType = null, Expression<Func<string>> sessionId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildCompleteMessageInTopic(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<string> lockToken, WorkflowExpression<subscriptionTypeInput> subscriptionType = null, WorkflowExpression<string> sessionId = null)
-        {
-            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
-            WorkflowExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            WorkflowExpression.Validate(lockToken, nameof(lockToken), required: true);
-            WorkflowExpression.Validate(subscriptionType, nameof(subscriptionType), required: false);
-            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: false);
+            var __workflow_topicName = topicName == null ? null : WorkflowExpression.Compile(topicName);
+            WorkflowExpression.Validate(__workflow_topicName, nameof(topicName), required: true);
+            var __workflow_subscriptionName = subscriptionName == null ? null : WorkflowExpression.Compile(subscriptionName);
+            WorkflowExpression.Validate(__workflow_subscriptionName, nameof(subscriptionName), required: true);
+            var __workflow_lockToken = lockToken == null ? null : WorkflowExpression.Compile(lockToken);
+            WorkflowExpression.Validate(__workflow_lockToken, nameof(lockToken), required: true);
+            var __workflow_subscriptionType = subscriptionType == null ? null : WorkflowExpression.Compile(subscriptionType);
+            WorkflowExpression.Validate(__workflow_subscriptionType, nameof(subscriptionType), required: false);
+            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
+            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/messages/complete", ExpressionConverter.ConvertWithUrlEncoding(topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(subscriptionName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/messages/complete", ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionName, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["lockToken"] = ExpressionConverter.Convert(lockToken);
+                callPayload.Queries["lockToken"] = ExpressionConverter.Convert(__workflow_lockToken);
                 callPayload.Queries["subscriptionType"] = Convert.ToString("Main");
-                if (subscriptionType != null)
-                    callPayload.Queries["subscriptionType"] = ExpressionConverter.Convert(subscriptionType);
+                if (__workflow_subscriptionType != null)
+                    callPayload.Queries["subscriptionType"] = ExpressionConverter.Convert(__workflow_subscriptionType);
                 callPayload.Queries["sessionId"] = Convert.ToString("");
-                if (sessionId != null)
-                    callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
+                if (__workflow_sessionId != null)
+                    callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
-        [WorkflowExpressionFactory(nameof(__BuildAbandonMessageInTopic))]
-        public IWorkflowAction AbandonMessageInTopic([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> lockToken, [WorkflowExpression] Func<subscriptionTypeInput> subscriptionType = null, [WorkflowExpression] Func<string> sessionId = null)
+        public IWorkflowAction AbandonMessageInTopic(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> lockToken, Expression<Func<subscriptionTypeInput>> subscriptionType = null, Expression<Func<string>> sessionId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildAbandonMessageInTopic(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<string> lockToken, WorkflowExpression<subscriptionTypeInput> subscriptionType = null, WorkflowExpression<string> sessionId = null)
-        {
-            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
-            WorkflowExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            WorkflowExpression.Validate(lockToken, nameof(lockToken), required: true);
-            WorkflowExpression.Validate(subscriptionType, nameof(subscriptionType), required: false);
-            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: false);
+            var __workflow_topicName = topicName == null ? null : WorkflowExpression.Compile(topicName);
+            WorkflowExpression.Validate(__workflow_topicName, nameof(topicName), required: true);
+            var __workflow_subscriptionName = subscriptionName == null ? null : WorkflowExpression.Compile(subscriptionName);
+            WorkflowExpression.Validate(__workflow_subscriptionName, nameof(subscriptionName), required: true);
+            var __workflow_lockToken = lockToken == null ? null : WorkflowExpression.Compile(lockToken);
+            WorkflowExpression.Validate(__workflow_lockToken, nameof(lockToken), required: true);
+            var __workflow_subscriptionType = subscriptionType == null ? null : WorkflowExpression.Compile(subscriptionType);
+            WorkflowExpression.Validate(__workflow_subscriptionType, nameof(subscriptionType), required: false);
+            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
+            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/messages/abandon", ExpressionConverter.ConvertWithUrlEncoding(topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(subscriptionName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/messages/abandon", ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionName, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["lockToken"] = ExpressionConverter.Convert(lockToken);
+                callPayload.Queries["lockToken"] = ExpressionConverter.Convert(__workflow_lockToken);
                 callPayload.Queries["subscriptionType"] = Convert.ToString("Main");
-                if (subscriptionType != null)
-                    callPayload.Queries["subscriptionType"] = ExpressionConverter.Convert(subscriptionType);
+                if (__workflow_subscriptionType != null)
+                    callPayload.Queries["subscriptionType"] = ExpressionConverter.Convert(__workflow_subscriptionType);
                 callPayload.Queries["sessionId"] = Convert.ToString("");
-                if (sessionId != null)
-                    callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
+                if (__workflow_sessionId != null)
+                    callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
-        [WorkflowExpressionFactory(nameof(__BuildGetDeferredMessageFromTopic))]
-        public IBodyWorkflowAction<ServiceBusMessage> GetDeferredMessageFromTopic([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<int> sequenceNumber, [WorkflowExpression] Func<subscriptionTypeInput> subscriptionType = null, [WorkflowExpression] Func<string> sessionId = null)
+        public IBodyWorkflowAction<ServiceBusMessage> GetDeferredMessageFromTopic(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<int>> sequenceNumber, Expression<Func<subscriptionTypeInput>> subscriptionType = null, Expression<Func<string>> sessionId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ServiceBusMessage> __BuildGetDeferredMessageFromTopic(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<int> sequenceNumber, WorkflowExpression<subscriptionTypeInput> subscriptionType = null, WorkflowExpression<string> sessionId = null)
-        {
-            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
-            WorkflowExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            WorkflowExpression.Validate(sequenceNumber, nameof(sequenceNumber), required: true);
-            WorkflowExpression.Validate(subscriptionType, nameof(subscriptionType), required: false);
-            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: false);
+            var __workflow_topicName = topicName == null ? null : WorkflowExpression.Compile(topicName);
+            WorkflowExpression.Validate(__workflow_topicName, nameof(topicName), required: true);
+            var __workflow_subscriptionName = subscriptionName == null ? null : WorkflowExpression.Compile(subscriptionName);
+            WorkflowExpression.Validate(__workflow_subscriptionName, nameof(subscriptionName), required: true);
+            var __workflow_sequenceNumber = sequenceNumber == null ? null : WorkflowExpression.Compile(sequenceNumber);
+            WorkflowExpression.Validate(__workflow_sequenceNumber, nameof(sequenceNumber), required: true);
+            var __workflow_subscriptionType = subscriptionType == null ? null : WorkflowExpression.Compile(subscriptionType);
+            WorkflowExpression.Validate(__workflow_subscriptionType, nameof(subscriptionType), required: false);
+            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
+            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: false);
             return new DeferredBodyAction<ServiceBusMessage>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/messages/defer", ExpressionConverter.ConvertWithUrlEncoding(topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(subscriptionName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/messages/defer", ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionName, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["sequenceNumber"] = ExpressionConverter.Convert(sequenceNumber);
+                callPayload.Queries["sequenceNumber"] = ExpressionConverter.Convert(__workflow_sequenceNumber);
                 callPayload.Queries["subscriptionType"] = Convert.ToString("Main");
-                if (subscriptionType != null)
-                    callPayload.Queries["subscriptionType"] = ExpressionConverter.Convert(subscriptionType);
+                if (__workflow_subscriptionType != null)
+                    callPayload.Queries["subscriptionType"] = ExpressionConverter.Convert(__workflow_subscriptionType);
                 callPayload.Queries["sessionId"] = Convert.ToString("");
-                if (sessionId != null)
-                    callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
+                if (__workflow_sessionId != null)
+                    callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
                 return new ApiConnectionAction<ServiceBusMessage>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
-        [WorkflowExpressionFactory(nameof(__BuildDeferMessageInTopic))]
-        public IWorkflowAction DeferMessageInTopic([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> lockToken, [WorkflowExpression] Func<subscriptionTypeInput> subscriptionType = null, [WorkflowExpression] Func<string> sessionId = null)
+        public IWorkflowAction DeferMessageInTopic(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> lockToken, Expression<Func<subscriptionTypeInput>> subscriptionType = null, Expression<Func<string>> sessionId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDeferMessageInTopic(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<string> lockToken, WorkflowExpression<subscriptionTypeInput> subscriptionType = null, WorkflowExpression<string> sessionId = null)
-        {
-            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
-            WorkflowExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            WorkflowExpression.Validate(lockToken, nameof(lockToken), required: true);
-            WorkflowExpression.Validate(subscriptionType, nameof(subscriptionType), required: false);
-            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: false);
+            var __workflow_topicName = topicName == null ? null : WorkflowExpression.Compile(topicName);
+            WorkflowExpression.Validate(__workflow_topicName, nameof(topicName), required: true);
+            var __workflow_subscriptionName = subscriptionName == null ? null : WorkflowExpression.Compile(subscriptionName);
+            WorkflowExpression.Validate(__workflow_subscriptionName, nameof(subscriptionName), required: true);
+            var __workflow_lockToken = lockToken == null ? null : WorkflowExpression.Compile(lockToken);
+            WorkflowExpression.Validate(__workflow_lockToken, nameof(lockToken), required: true);
+            var __workflow_subscriptionType = subscriptionType == null ? null : WorkflowExpression.Compile(subscriptionType);
+            WorkflowExpression.Validate(__workflow_subscriptionType, nameof(subscriptionType), required: false);
+            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
+            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/messages/defer", ExpressionConverter.ConvertWithUrlEncoding(topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(subscriptionName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/messages/defer", ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionName, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["lockToken"] = ExpressionConverter.Convert(lockToken);
+                callPayload.Queries["lockToken"] = ExpressionConverter.Convert(__workflow_lockToken);
                 callPayload.Queries["subscriptionType"] = Convert.ToString("Main");
-                if (subscriptionType != null)
-                    callPayload.Queries["subscriptionType"] = ExpressionConverter.Convert(subscriptionType);
+                if (__workflow_subscriptionType != null)
+                    callPayload.Queries["subscriptionType"] = ExpressionConverter.Convert(__workflow_subscriptionType);
                 callPayload.Queries["sessionId"] = Convert.ToString("");
-                if (sessionId != null)
-                    callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
+                if (__workflow_sessionId != null)
+                    callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
-        [WorkflowExpressionFactory(nameof(__BuildDeadLetterMessageInTopic))]
-        public IWorkflowAction DeadLetterMessageInTopic([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> lockToken, [WorkflowExpression] Func<string> sessionId = null, [WorkflowExpression] Func<string> deadLetterReason = null, [WorkflowExpression] Func<string> deadLetterErrorDescription = null)
+        public IWorkflowAction DeadLetterMessageInTopic(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> lockToken, Expression<Func<string>> sessionId = null, Expression<Func<string>> deadLetterReason = null, Expression<Func<string>> deadLetterErrorDescription = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDeadLetterMessageInTopic(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<string> lockToken, WorkflowExpression<string> sessionId = null, WorkflowExpression<string> deadLetterReason = null, WorkflowExpression<string> deadLetterErrorDescription = null)
-        {
-            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
-            WorkflowExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            WorkflowExpression.Validate(lockToken, nameof(lockToken), required: true);
-            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: false);
-            WorkflowExpression.Validate(deadLetterReason, nameof(deadLetterReason), required: false);
-            WorkflowExpression.Validate(deadLetterErrorDescription, nameof(deadLetterErrorDescription), required: false);
+            var __workflow_topicName = topicName == null ? null : WorkflowExpression.Compile(topicName);
+            WorkflowExpression.Validate(__workflow_topicName, nameof(topicName), required: true);
+            var __workflow_subscriptionName = subscriptionName == null ? null : WorkflowExpression.Compile(subscriptionName);
+            WorkflowExpression.Validate(__workflow_subscriptionName, nameof(subscriptionName), required: true);
+            var __workflow_lockToken = lockToken == null ? null : WorkflowExpression.Compile(lockToken);
+            WorkflowExpression.Validate(__workflow_lockToken, nameof(lockToken), required: true);
+            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
+            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: false);
+            var __workflow_deadLetterReason = deadLetterReason == null ? null : WorkflowExpression.Compile(deadLetterReason);
+            WorkflowExpression.Validate(__workflow_deadLetterReason, nameof(deadLetterReason), required: false);
+            var __workflow_deadLetterErrorDescription = deadLetterErrorDescription == null ? null : WorkflowExpression.Compile(deadLetterErrorDescription);
+            WorkflowExpression.Validate(__workflow_deadLetterErrorDescription, nameof(deadLetterErrorDescription), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/messages/deadletter", ExpressionConverter.ConvertWithUrlEncoding(topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(subscriptionName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/messages/deadletter", ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionName, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["lockToken"] = ExpressionConverter.Convert(lockToken);
+                callPayload.Queries["lockToken"] = ExpressionConverter.Convert(__workflow_lockToken);
                 callPayload.Queries["sessionId"] = Convert.ToString("");
-                if (sessionId != null)
-                    callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
+                if (__workflow_sessionId != null)
+                    callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
                 callPayload.Queries["deadLetterReason"] = Convert.ToString("");
-                if (deadLetterReason != null)
-                    callPayload.Queries["deadLetterReason"] = ExpressionConverter.Convert(deadLetterReason);
+                if (__workflow_deadLetterReason != null)
+                    callPayload.Queries["deadLetterReason"] = ExpressionConverter.Convert(__workflow_deadLetterReason);
                 callPayload.Queries["deadLetterErrorDescription"] = Convert.ToString("");
-                if (deadLetterErrorDescription != null)
-                    callPayload.Queries["deadLetterErrorDescription"] = ExpressionConverter.Convert(deadLetterErrorDescription);
+                if (__workflow_deadLetterErrorDescription != null)
+                    callPayload.Queries["deadLetterErrorDescription"] = ExpressionConverter.Convert(__workflow_deadLetterErrorDescription);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
-        [WorkflowExpressionFactory(nameof(__BuildRenewLockOnMessageInTopic))]
-        public IWorkflowAction RenewLockOnMessageInTopic([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> lockToken, [WorkflowExpression] Func<subscriptionTypeInput> subscriptionType = null)
+        public IWorkflowAction RenewLockOnMessageInTopic(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> lockToken, Expression<Func<subscriptionTypeInput>> subscriptionType = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildRenewLockOnMessageInTopic(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<string> lockToken, WorkflowExpression<subscriptionTypeInput> subscriptionType = null)
-        {
-            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
-            WorkflowExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            WorkflowExpression.Validate(lockToken, nameof(lockToken), required: true);
-            WorkflowExpression.Validate(subscriptionType, nameof(subscriptionType), required: false);
+            var __workflow_topicName = topicName == null ? null : WorkflowExpression.Compile(topicName);
+            WorkflowExpression.Validate(__workflow_topicName, nameof(topicName), required: true);
+            var __workflow_subscriptionName = subscriptionName == null ? null : WorkflowExpression.Compile(subscriptionName);
+            WorkflowExpression.Validate(__workflow_subscriptionName, nameof(subscriptionName), required: true);
+            var __workflow_lockToken = lockToken == null ? null : WorkflowExpression.Compile(lockToken);
+            WorkflowExpression.Validate(__workflow_lockToken, nameof(lockToken), required: true);
+            var __workflow_subscriptionType = subscriptionType == null ? null : WorkflowExpression.Compile(subscriptionType);
+            WorkflowExpression.Validate(__workflow_subscriptionType, nameof(subscriptionType), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/messages/renewlock", ExpressionConverter.ConvertWithUrlEncoding(topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(subscriptionName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/messages/renewlock", ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionName, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["lockToken"] = ExpressionConverter.Convert(lockToken);
+                callPayload.Queries["lockToken"] = ExpressionConverter.Convert(__workflow_lockToken);
                 callPayload.Queries["subscriptionType"] = Convert.ToString("Main");
-                if (subscriptionType != null)
-                    callPayload.Queries["subscriptionType"] = ExpressionConverter.Convert(subscriptionType);
+                if (__workflow_subscriptionType != null)
+                    callPayload.Queries["subscriptionType"] = ExpressionConverter.Convert(__workflow_subscriptionType);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateTopicSubscription))]
-        public IBodyWorkflowAction<Subscription> CreateTopicSubscription([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<object> subscriptionFilter = null, [WorkflowExpression] Func<subscriptionFilterTypeInput> subscriptionFilterType = null)
+        public IBodyWorkflowAction<Subscription> CreateTopicSubscription(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<object>> subscriptionFilter = null, Expression<Func<subscriptionFilterTypeInput>> subscriptionFilterType = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Subscription> __BuildCreateTopicSubscription(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<object> subscriptionFilter = null, WorkflowExpression<subscriptionFilterTypeInput> subscriptionFilterType = null)
-        {
-            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
-            WorkflowExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            WorkflowExpression.Validate(subscriptionFilter, nameof(subscriptionFilter), required: false);
-            WorkflowExpression.Validate(subscriptionFilterType, nameof(subscriptionFilterType), required: false);
+            var __workflow_topicName = topicName == null ? null : WorkflowExpression.Compile(topicName);
+            WorkflowExpression.Validate(__workflow_topicName, nameof(topicName), required: true);
+            var __workflow_subscriptionName = subscriptionName == null ? null : WorkflowExpression.Compile(subscriptionName);
+            WorkflowExpression.Validate(__workflow_subscriptionName, nameof(subscriptionName), required: true);
+            var __workflow_subscriptionFilter = subscriptionFilter == null ? null : WorkflowExpression.Compile(subscriptionFilter);
+            WorkflowExpression.Validate(__workflow_subscriptionFilter, nameof(subscriptionFilter), required: false);
+            var __workflow_subscriptionFilterType = subscriptionFilterType == null ? null : WorkflowExpression.Compile(subscriptionFilterType);
+            WorkflowExpression.Validate(__workflow_subscriptionFilterType, nameof(subscriptionFilterType), required: false);
             return new DeferredBodyAction<Subscription>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}", ExpressionConverter.ConvertWithUrlEncoding(topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(subscriptionName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionName, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["subscriptionFilterType"] = Convert.ToString("None");
-                if (subscriptionFilterType != null)
-                    callPayload.Queries["subscriptionFilterType"] = ExpressionConverter.Convert(subscriptionFilterType);
-                callPayload.Body = ExpressionConverter.ConvertO(subscriptionFilter);
+                if (__workflow_subscriptionFilterType != null)
+                    callPayload.Queries["subscriptionFilterType"] = ExpressionConverter.Convert(__workflow_subscriptionFilterType);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_subscriptionFilter);
                 return new ApiConnectionAction<Subscription>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteTopicSubscription))]
-        public IWorkflowAction DeleteTopicSubscription([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName)
+        public IWorkflowAction DeleteTopicSubscription(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDeleteTopicSubscription(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName)
-        {
-            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
-            WorkflowExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
+            var __workflow_topicName = topicName == null ? null : WorkflowExpression.Compile(topicName);
+            WorkflowExpression.Validate(__workflow_topicName, nameof(topicName), required: true);
+            var __workflow_subscriptionName = subscriptionName == null ? null : WorkflowExpression.Compile(subscriptionName);
+            WorkflowExpression.Validate(__workflow_subscriptionName, nameof(subscriptionName), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}", ExpressionConverter.ConvertWithUrlEncoding(topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(subscriptionName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionName, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -656,54 +608,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
-        [WorkflowExpressionFactory(nameof(__BuildGetMessagesFromTopicWithPeekLock))]
-        public IBodyWorkflowAction<ServiceBusMessage[]> GetMessagesFromTopicWithPeekLock([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<int> maxMessageCount = null, [WorkflowExpression] Func<subscriptionTypeInput> subscriptionType = null, [WorkflowExpression] Func<string> sessionId = null)
+        public IBodyWorkflowAction<ServiceBusMessage[]> GetMessagesFromTopicWithPeekLock(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<int>> maxMessageCount = null, Expression<Func<subscriptionTypeInput>> subscriptionType = null, Expression<Func<string>> sessionId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ServiceBusMessage[]> __BuildGetMessagesFromTopicWithPeekLock(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<int> maxMessageCount = null, WorkflowExpression<subscriptionTypeInput> subscriptionType = null, WorkflowExpression<string> sessionId = null)
-        {
-            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
-            WorkflowExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            WorkflowExpression.Validate(maxMessageCount, nameof(maxMessageCount), required: false);
-            WorkflowExpression.Validate(subscriptionType, nameof(subscriptionType), required: false);
-            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: false);
+            var __workflow_topicName = topicName == null ? null : WorkflowExpression.Compile(topicName);
+            WorkflowExpression.Validate(__workflow_topicName, nameof(topicName), required: true);
+            var __workflow_subscriptionName = subscriptionName == null ? null : WorkflowExpression.Compile(subscriptionName);
+            WorkflowExpression.Validate(__workflow_subscriptionName, nameof(subscriptionName), required: true);
+            var __workflow_maxMessageCount = maxMessageCount == null ? null : WorkflowExpression.Compile(maxMessageCount);
+            WorkflowExpression.Validate(__workflow_maxMessageCount, nameof(maxMessageCount), required: false);
+            var __workflow_subscriptionType = subscriptionType == null ? null : WorkflowExpression.Compile(subscriptionType);
+            WorkflowExpression.Validate(__workflow_subscriptionType, nameof(subscriptionType), required: false);
+            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
+            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: false);
             return new DeferredBodyAction<ServiceBusMessage[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/messages/batch/peek", ExpressionConverter.ConvertWithUrlEncoding(topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(subscriptionName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/messages/batch/peek", ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionName, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["maxMessageCount"] = Convert.ToString(20);
-                if (maxMessageCount != null)
-                    callPayload.Queries["maxMessageCount"] = ExpressionConverter.Convert(maxMessageCount);
+                if (__workflow_maxMessageCount != null)
+                    callPayload.Queries["maxMessageCount"] = ExpressionConverter.Convert(__workflow_maxMessageCount);
                 callPayload.Queries["subscriptionType"] = Convert.ToString("Main");
-                if (subscriptionType != null)
-                    callPayload.Queries["subscriptionType"] = ExpressionConverter.Convert(subscriptionType);
+                if (__workflow_subscriptionType != null)
+                    callPayload.Queries["subscriptionType"] = ExpressionConverter.Convert(__workflow_subscriptionType);
                 callPayload.Queries["sessionId"] = Convert.ToString("");
-                if (sessionId != null)
-                    callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
+                if (__workflow_sessionId != null)
+                    callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
                 return new ApiConnectionAction<ServiceBusMessage[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
-        [WorkflowExpressionFactory(nameof(__BuildCloseSessionInTopic))]
-        public IWorkflowAction CloseSessionInTopic([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> sessionId)
+        public IWorkflowAction CloseSessionInTopic(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> sessionId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildCloseSessionInTopic(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<string> sessionId)
-        {
-            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
-            WorkflowExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: true);
+            var __workflow_topicName = topicName == null ? null : WorkflowExpression.Compile(topicName);
+            WorkflowExpression.Validate(__workflow_topicName, nameof(topicName), required: true);
+            var __workflow_subscriptionName = subscriptionName == null ? null : WorkflowExpression.Compile(subscriptionName);
+            WorkflowExpression.Validate(__workflow_subscriptionName, nameof(subscriptionName), required: true);
+            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
+            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/sessions/{2}/close", ExpressionConverter.ConvertWithUrlEncoding(topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(subscriptionName, 1), ExpressionConverter.ConvertWithUrlEncoding(sessionId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/sessions/{2}/close", ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_sessionId, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -711,21 +657,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
-        [WorkflowExpressionFactory(nameof(__BuildRenewLockOnSessionInTopic))]
-        public IWorkflowAction RenewLockOnSessionInTopic([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> sessionId)
+        public IWorkflowAction RenewLockOnSessionInTopic(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> sessionId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildRenewLockOnSessionInTopic(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<string> sessionId)
-        {
-            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
-            WorkflowExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: true);
+            var __workflow_topicName = topicName == null ? null : WorkflowExpression.Compile(topicName);
+            WorkflowExpression.Validate(__workflow_topicName, nameof(topicName), required: true);
+            var __workflow_subscriptionName = subscriptionName == null ? null : WorkflowExpression.Compile(subscriptionName);
+            WorkflowExpression.Validate(__workflow_subscriptionName, nameof(subscriptionName), required: true);
+            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
+            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/sessions/{2}/renewlock", ExpressionConverter.ConvertWithUrlEncoding(topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(subscriptionName, 1), ExpressionConverter.ConvertWithUrlEncoding(sessionId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/sessions/{2}/renewlock", ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_sessionId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -735,223 +677,194 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
 
     public class ServicebusTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildGetMessageFromQueue))]
-        public IBodyWorkflowTrigger<ServiceBusMessage> GetMessageFromQueue([WorkflowExpression] Func<string> queueName,[WorkflowExpression] Func<queueTypeInput> queueType = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceBusMessage> GetMessageFromQueue(Expression<Func<string>> queueName, Expression<Func<queueTypeInput>> queueType = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ServiceBusMessage> __BuildGetMessageFromQueue(WorkflowExpression<string> queueName,WorkflowExpression<queueTypeInput> queueType = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
-            WorkflowExpression.Validate(queueType, nameof(queueType), required: false);
+            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
+            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
+            var __workflow_queueType = queueType == null ? null : WorkflowExpression.Compile(queueType);
+            WorkflowExpression.Validate(__workflow_queueType, nameof(queueType), required: false);
             return new DeferredBodyTrigger<ServiceBusMessage>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/messages/head", ExpressionConverter.ConvertWithUrlEncoding(queueName, 2));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/messages/head", ExpressionConverter.ConvertWithUrlEncoding(__workflow_queueName, 2));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["queueType"] = Convert.ToString("Main");
-                if (queueType != null)
-                    callPayload.Queries["queueType"] = ExpressionConverter.Convert(queueType);
+                if (__workflow_queueType != null)
+                    callPayload.Queries["queueType"] = ExpressionConverter.Convert(__workflow_queueType);
                 return new ApiConnectionTrigger<ServiceBusMessage>(callPayload, recurrence: recurrence);
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildGetNewMessageFromQueueWithPeekLock))]
-        public IBodyWorkflowTrigger<ServiceBusMessage> GetNewMessageFromQueueWithPeekLock([WorkflowExpression] Func<string> queueName,[WorkflowExpression] Func<queueTypeInput> queueType = null,[WorkflowExpression] Func<string> sessionId = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceBusMessage> GetNewMessageFromQueueWithPeekLock(Expression<Func<string>> queueName, Expression<Func<queueTypeInput>> queueType = null, Expression<Func<string>> sessionId = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ServiceBusMessage> __BuildGetNewMessageFromQueueWithPeekLock(WorkflowExpression<string> queueName,WorkflowExpression<queueTypeInput> queueType = null,WorkflowExpression<string> sessionId = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
-            WorkflowExpression.Validate(queueType, nameof(queueType), required: false);
-            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: false);
+            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
+            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
+            var __workflow_queueType = queueType == null ? null : WorkflowExpression.Compile(queueType);
+            WorkflowExpression.Validate(__workflow_queueType, nameof(queueType), required: false);
+            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
+            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: false);
             return new DeferredBodyTrigger<ServiceBusMessage>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/messages/head/peek", ExpressionConverter.ConvertWithUrlEncoding(queueName, 2));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/messages/head/peek", ExpressionConverter.ConvertWithUrlEncoding(__workflow_queueName, 2));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["queueType"] = Convert.ToString("Main");
-                if (queueType != null)
-                    callPayload.Queries["queueType"] = ExpressionConverter.Convert(queueType);
+                if (__workflow_queueType != null)
+                    callPayload.Queries["queueType"] = ExpressionConverter.Convert(__workflow_queueType);
                 callPayload.Queries["sessionId"] = Convert.ToString("None");
-                if (sessionId != null)
-                    callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
+                if (__workflow_sessionId != null)
+                    callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
                 return new ApiConnectionTrigger<ServiceBusMessage>(callPayload, recurrence: recurrence);
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildGetMessagesFromQueue))]
-        public IBodyWorkflowTrigger<ServiceBusMessage[]> GetMessagesFromQueue([WorkflowExpression] Func<string> queueName,[WorkflowExpression] Func<int> maxMessageCount = null,[WorkflowExpression] Func<queueTypeInput> queueType = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceBusMessage[]> GetMessagesFromQueue(Expression<Func<string>> queueName, Expression<Func<int>> maxMessageCount = null, Expression<Func<queueTypeInput>> queueType = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ServiceBusMessage[]> __BuildGetMessagesFromQueue(WorkflowExpression<string> queueName,WorkflowExpression<int> maxMessageCount = null,WorkflowExpression<queueTypeInput> queueType = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
-            WorkflowExpression.Validate(maxMessageCount, nameof(maxMessageCount), required: false);
-            WorkflowExpression.Validate(queueType, nameof(queueType), required: false);
+            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
+            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
+            var __workflow_maxMessageCount = maxMessageCount == null ? null : WorkflowExpression.Compile(maxMessageCount);
+            WorkflowExpression.Validate(__workflow_maxMessageCount, nameof(maxMessageCount), required: false);
+            var __workflow_queueType = queueType == null ? null : WorkflowExpression.Compile(queueType);
+            WorkflowExpression.Validate(__workflow_queueType, nameof(queueType), required: false);
             return new DeferredBodyTrigger<ServiceBusMessage[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/messages/batch/head", ExpressionConverter.ConvertWithUrlEncoding(queueName, 2));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/messages/batch/head", ExpressionConverter.ConvertWithUrlEncoding(__workflow_queueName, 2));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["maxMessageCount"] = Convert.ToString(20);
-                if (maxMessageCount != null)
-                    callPayload.Queries["maxMessageCount"] = ExpressionConverter.Convert(maxMessageCount);
+                if (__workflow_maxMessageCount != null)
+                    callPayload.Queries["maxMessageCount"] = ExpressionConverter.Convert(__workflow_maxMessageCount);
                 callPayload.Queries["queueType"] = Convert.ToString("Main");
-                if (queueType != null)
-                    callPayload.Queries["queueType"] = ExpressionConverter.Convert(queueType);
+                if (__workflow_queueType != null)
+                    callPayload.Queries["queueType"] = ExpressionConverter.Convert(__workflow_queueType);
                 return new ApiConnectionTrigger<ServiceBusMessage[]>(callPayload, recurrence: recurrence);
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildGetNewMessagesFromQueueWithPeekLock))]
-        public IBodyWorkflowTrigger<ServiceBusMessage[]> GetNewMessagesFromQueueWithPeekLock([WorkflowExpression] Func<string> queueName,[WorkflowExpression] Func<int> maxMessageCount = null,[WorkflowExpression] Func<queueTypeInput> queueType = null,[WorkflowExpression] Func<string> sessionId = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceBusMessage[]> GetNewMessagesFromQueueWithPeekLock(Expression<Func<string>> queueName, Expression<Func<int>> maxMessageCount = null, Expression<Func<queueTypeInput>> queueType = null, Expression<Func<string>> sessionId = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ServiceBusMessage[]> __BuildGetNewMessagesFromQueueWithPeekLock(WorkflowExpression<string> queueName,WorkflowExpression<int> maxMessageCount = null,WorkflowExpression<queueTypeInput> queueType = null,WorkflowExpression<string> sessionId = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
-            WorkflowExpression.Validate(maxMessageCount, nameof(maxMessageCount), required: false);
-            WorkflowExpression.Validate(queueType, nameof(queueType), required: false);
-            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: false);
+            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
+            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
+            var __workflow_maxMessageCount = maxMessageCount == null ? null : WorkflowExpression.Compile(maxMessageCount);
+            WorkflowExpression.Validate(__workflow_maxMessageCount, nameof(maxMessageCount), required: false);
+            var __workflow_queueType = queueType == null ? null : WorkflowExpression.Compile(queueType);
+            WorkflowExpression.Validate(__workflow_queueType, nameof(queueType), required: false);
+            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
+            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: false);
             return new DeferredBodyTrigger<ServiceBusMessage[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/messages/batch/head/peek", ExpressionConverter.ConvertWithUrlEncoding(queueName, 2));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/messages/batch/head/peek", ExpressionConverter.ConvertWithUrlEncoding(__workflow_queueName, 2));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["maxMessageCount"] = Convert.ToString(20);
-                if (maxMessageCount != null)
-                    callPayload.Queries["maxMessageCount"] = ExpressionConverter.Convert(maxMessageCount);
+                if (__workflow_maxMessageCount != null)
+                    callPayload.Queries["maxMessageCount"] = ExpressionConverter.Convert(__workflow_maxMessageCount);
                 callPayload.Queries["queueType"] = Convert.ToString("Main");
-                if (queueType != null)
-                    callPayload.Queries["queueType"] = ExpressionConverter.Convert(queueType);
+                if (__workflow_queueType != null)
+                    callPayload.Queries["queueType"] = ExpressionConverter.Convert(__workflow_queueType);
                 callPayload.Queries["sessionId"] = Convert.ToString("None");
-                if (sessionId != null)
-                    callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
+                if (__workflow_sessionId != null)
+                    callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
                 return new ApiConnectionTrigger<ServiceBusMessage[]>(callPayload, recurrence: recurrence);
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildGetMessageFromTopic))]
-        public IBodyWorkflowTrigger<ServiceBusMessage> GetMessageFromTopic([WorkflowExpression] Func<string> topicName,[WorkflowExpression] Func<string> subscriptionName,[WorkflowExpression] Func<subscriptionTypeInput> subscriptionType = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceBusMessage> GetMessageFromTopic(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<subscriptionTypeInput>> subscriptionType = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ServiceBusMessage> __BuildGetMessageFromTopic(WorkflowExpression<string> topicName,WorkflowExpression<string> subscriptionName,WorkflowExpression<subscriptionTypeInput> subscriptionType = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
-            WorkflowExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            WorkflowExpression.Validate(subscriptionType, nameof(subscriptionType), required: false);
+            var __workflow_topicName = topicName == null ? null : WorkflowExpression.Compile(topicName);
+            WorkflowExpression.Validate(__workflow_topicName, nameof(topicName), required: true);
+            var __workflow_subscriptionName = subscriptionName == null ? null : WorkflowExpression.Compile(subscriptionName);
+            WorkflowExpression.Validate(__workflow_subscriptionName, nameof(subscriptionName), required: true);
+            var __workflow_subscriptionType = subscriptionType == null ? null : WorkflowExpression.Compile(subscriptionType);
+            WorkflowExpression.Validate(__workflow_subscriptionType, nameof(subscriptionType), required: false);
             return new DeferredBodyTrigger<ServiceBusMessage>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/messages/head", ExpressionConverter.ConvertWithUrlEncoding(topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(subscriptionName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/messages/head", ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionName, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["subscriptionType"] = Convert.ToString("Main");
-                if (subscriptionType != null)
-                    callPayload.Queries["subscriptionType"] = ExpressionConverter.Convert(subscriptionType);
+                if (__workflow_subscriptionType != null)
+                    callPayload.Queries["subscriptionType"] = ExpressionConverter.Convert(__workflow_subscriptionType);
                 return new ApiConnectionTrigger<ServiceBusMessage>(callPayload, recurrence: recurrence);
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildGetNewMessageFromTopicWithPeekLock))]
-        public IBodyWorkflowTrigger<ServiceBusMessage> GetNewMessageFromTopicWithPeekLock([WorkflowExpression] Func<string> topicName,[WorkflowExpression] Func<string> subscriptionName,[WorkflowExpression] Func<subscriptionTypeInput> subscriptionType = null,[WorkflowExpression] Func<string> sessionId = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceBusMessage> GetNewMessageFromTopicWithPeekLock(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<subscriptionTypeInput>> subscriptionType = null, Expression<Func<string>> sessionId = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ServiceBusMessage> __BuildGetNewMessageFromTopicWithPeekLock(WorkflowExpression<string> topicName,WorkflowExpression<string> subscriptionName,WorkflowExpression<subscriptionTypeInput> subscriptionType = null,WorkflowExpression<string> sessionId = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
-            WorkflowExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            WorkflowExpression.Validate(subscriptionType, nameof(subscriptionType), required: false);
-            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: false);
+            var __workflow_topicName = topicName == null ? null : WorkflowExpression.Compile(topicName);
+            WorkflowExpression.Validate(__workflow_topicName, nameof(topicName), required: true);
+            var __workflow_subscriptionName = subscriptionName == null ? null : WorkflowExpression.Compile(subscriptionName);
+            WorkflowExpression.Validate(__workflow_subscriptionName, nameof(subscriptionName), required: true);
+            var __workflow_subscriptionType = subscriptionType == null ? null : WorkflowExpression.Compile(subscriptionType);
+            WorkflowExpression.Validate(__workflow_subscriptionType, nameof(subscriptionType), required: false);
+            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
+            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: false);
             return new DeferredBodyTrigger<ServiceBusMessage>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/messages/head/peek", ExpressionConverter.ConvertWithUrlEncoding(topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(subscriptionName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/messages/head/peek", ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionName, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["subscriptionType"] = Convert.ToString("Main");
-                if (subscriptionType != null)
-                    callPayload.Queries["subscriptionType"] = ExpressionConverter.Convert(subscriptionType);
+                if (__workflow_subscriptionType != null)
+                    callPayload.Queries["subscriptionType"] = ExpressionConverter.Convert(__workflow_subscriptionType);
                 callPayload.Queries["sessionId"] = Convert.ToString("None");
-                if (sessionId != null)
-                    callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
+                if (__workflow_sessionId != null)
+                    callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
                 return new ApiConnectionTrigger<ServiceBusMessage>(callPayload, recurrence: recurrence);
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildGetMessagesFromTopic))]
-        public IBodyWorkflowTrigger<ServiceBusMessage[]> GetMessagesFromTopic([WorkflowExpression] Func<string> topicName,[WorkflowExpression] Func<string> subscriptionName,[WorkflowExpression] Func<int> maxMessageCount = null,[WorkflowExpression] Func<subscriptionTypeInput> subscriptionType = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceBusMessage[]> GetMessagesFromTopic(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<int>> maxMessageCount = null, Expression<Func<subscriptionTypeInput>> subscriptionType = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ServiceBusMessage[]> __BuildGetMessagesFromTopic(WorkflowExpression<string> topicName,WorkflowExpression<string> subscriptionName,WorkflowExpression<int> maxMessageCount = null,WorkflowExpression<subscriptionTypeInput> subscriptionType = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
-            WorkflowExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            WorkflowExpression.Validate(maxMessageCount, nameof(maxMessageCount), required: false);
-            WorkflowExpression.Validate(subscriptionType, nameof(subscriptionType), required: false);
+            var __workflow_topicName = topicName == null ? null : WorkflowExpression.Compile(topicName);
+            WorkflowExpression.Validate(__workflow_topicName, nameof(topicName), required: true);
+            var __workflow_subscriptionName = subscriptionName == null ? null : WorkflowExpression.Compile(subscriptionName);
+            WorkflowExpression.Validate(__workflow_subscriptionName, nameof(subscriptionName), required: true);
+            var __workflow_maxMessageCount = maxMessageCount == null ? null : WorkflowExpression.Compile(maxMessageCount);
+            WorkflowExpression.Validate(__workflow_maxMessageCount, nameof(maxMessageCount), required: false);
+            var __workflow_subscriptionType = subscriptionType == null ? null : WorkflowExpression.Compile(subscriptionType);
+            WorkflowExpression.Validate(__workflow_subscriptionType, nameof(subscriptionType), required: false);
             return new DeferredBodyTrigger<ServiceBusMessage[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/messages/batch/head", ExpressionConverter.ConvertWithUrlEncoding(topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(subscriptionName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/messages/batch/head", ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionName, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["maxMessageCount"] = Convert.ToString(20);
-                if (maxMessageCount != null)
-                    callPayload.Queries["maxMessageCount"] = ExpressionConverter.Convert(maxMessageCount);
+                if (__workflow_maxMessageCount != null)
+                    callPayload.Queries["maxMessageCount"] = ExpressionConverter.Convert(__workflow_maxMessageCount);
                 callPayload.Queries["subscriptionType"] = Convert.ToString("Main");
-                if (subscriptionType != null)
-                    callPayload.Queries["subscriptionType"] = ExpressionConverter.Convert(subscriptionType);
+                if (__workflow_subscriptionType != null)
+                    callPayload.Queries["subscriptionType"] = ExpressionConverter.Convert(__workflow_subscriptionType);
                 return new ApiConnectionTrigger<ServiceBusMessage[]>(callPayload, recurrence: recurrence);
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildGetNewMessagesFromTopicWithPeekLock))]
-        public IBodyWorkflowTrigger<ServiceBusMessage[]> GetNewMessagesFromTopicWithPeekLock([WorkflowExpression] Func<string> topicName,[WorkflowExpression] Func<string> subscriptionName,[WorkflowExpression] Func<int> maxMessageCount = null,[WorkflowExpression] Func<subscriptionTypeInput> subscriptionType = null,[WorkflowExpression] Func<string> sessionId = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceBusMessage[]> GetNewMessagesFromTopicWithPeekLock(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<int>> maxMessageCount = null, Expression<Func<subscriptionTypeInput>> subscriptionType = null, Expression<Func<string>> sessionId = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ServiceBusMessage[]> __BuildGetNewMessagesFromTopicWithPeekLock(WorkflowExpression<string> topicName,WorkflowExpression<string> subscriptionName,WorkflowExpression<int> maxMessageCount = null,WorkflowExpression<subscriptionTypeInput> subscriptionType = null,WorkflowExpression<string> sessionId = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
-            WorkflowExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            WorkflowExpression.Validate(maxMessageCount, nameof(maxMessageCount), required: false);
-            WorkflowExpression.Validate(subscriptionType, nameof(subscriptionType), required: false);
-            WorkflowExpression.Validate(sessionId, nameof(sessionId), required: false);
+            var __workflow_topicName = topicName == null ? null : WorkflowExpression.Compile(topicName);
+            WorkflowExpression.Validate(__workflow_topicName, nameof(topicName), required: true);
+            var __workflow_subscriptionName = subscriptionName == null ? null : WorkflowExpression.Compile(subscriptionName);
+            WorkflowExpression.Validate(__workflow_subscriptionName, nameof(subscriptionName), required: true);
+            var __workflow_maxMessageCount = maxMessageCount == null ? null : WorkflowExpression.Compile(maxMessageCount);
+            WorkflowExpression.Validate(__workflow_maxMessageCount, nameof(maxMessageCount), required: false);
+            var __workflow_subscriptionType = subscriptionType == null ? null : WorkflowExpression.Compile(subscriptionType);
+            WorkflowExpression.Validate(__workflow_subscriptionType, nameof(subscriptionType), required: false);
+            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
+            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: false);
             return new DeferredBodyTrigger<ServiceBusMessage[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/messages/batch/head/peek", ExpressionConverter.ConvertWithUrlEncoding(topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(subscriptionName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/subscriptions/{1}/messages/batch/head/peek", ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionName, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["maxMessageCount"] = Convert.ToString(20);
-                if (maxMessageCount != null)
-                    callPayload.Queries["maxMessageCount"] = ExpressionConverter.Convert(maxMessageCount);
+                if (__workflow_maxMessageCount != null)
+                    callPayload.Queries["maxMessageCount"] = ExpressionConverter.Convert(__workflow_maxMessageCount);
                 callPayload.Queries["subscriptionType"] = Convert.ToString("Main");
-                if (subscriptionType != null)
-                    callPayload.Queries["subscriptionType"] = ExpressionConverter.Convert(subscriptionType);
+                if (__workflow_subscriptionType != null)
+                    callPayload.Queries["subscriptionType"] = ExpressionConverter.Convert(__workflow_subscriptionType);
                 callPayload.Queries["sessionId"] = Convert.ToString("None");
-                if (sessionId != null)
-                    callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
+                if (__workflow_sessionId != null)
+                    callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
                 return new ApiConnectionTrigger<ServiceBusMessage[]>(callPayload, recurrence: recurrence);
             });
         }

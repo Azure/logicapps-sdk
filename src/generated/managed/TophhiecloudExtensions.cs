@@ -1,55 +1,43 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tophhiecloud
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class TophhiecloudActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tophhiecloud")]
-        [WorkflowExpressionFactory(nameof(__BuildTophhieCloudTenantInfo))]
-        public IBodyWorkflowAction<TophhieCloudTenantInfoResponse> TophhieCloudTenantInfo([WorkflowExpression] Func<string> tenantID = null, [WorkflowExpression] Func<string> domainName = null)
+        public IBodyWorkflowAction<TophhieCloudTenantInfoResponse> TophhieCloudTenantInfo(Expression<Func<string>> tenantID = null, Expression<Func<string>> domainName = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TophhieCloudTenantInfoResponse> __BuildTophhieCloudTenantInfo(WorkflowExpression<string> tenantID = null, WorkflowExpression<string> domainName = null)
-        {
-            WorkflowExpression.Validate(tenantID, nameof(tenantID), required: false);
-            WorkflowExpression.Validate(domainName, nameof(domainName), required: false);
+            var __workflow_tenantID = tenantID == null ? null : WorkflowExpression.Compile(tenantID);
+            WorkflowExpression.Validate(__workflow_tenantID, nameof(tenantID), required: false);
+            var __workflow_domainName = domainName == null ? null : WorkflowExpression.Compile(domainName);
+            WorkflowExpression.Validate(__workflow_domainName, nameof(domainName), required: false);
             return new DeferredBodyAction<TophhieCloudTenantInfoResponse>(() =>
             {
                 var apiCallPath = "/tenantinfo";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (tenantID != null)
-                    callPayload.Queries["tenantID"] = ExpressionConverter.Convert(tenantID);
-                if (domainName != null)
-                    callPayload.Queries["domainName"] = ExpressionConverter.Convert(domainName);
+                if (__workflow_tenantID != null)
+                    callPayload.Queries["tenantID"] = ExpressionConverter.Convert(__workflow_tenantID);
+                if (__workflow_domainName != null)
+                    callPayload.Queries["domainName"] = ExpressionConverter.Convert(__workflow_domainName);
                 return new ApiConnectionAction<TophhieCloudTenantInfoResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tophhiecloud")]
-        [WorkflowExpressionFactory(nameof(__BuildTophhieCloudEntraIDIDConverter))]
-        public IBodyWorkflowAction<TophhieCloudEntraIDIDConverterResponse> TophhieCloudEntraIDIDConverter([WorkflowExpression] Func<string> identifier)
+        public IBodyWorkflowAction<TophhieCloudEntraIDIDConverterResponse> TophhieCloudEntraIDIDConverter(Expression<Func<string>> identifier)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TophhieCloudEntraIDIDConverterResponse> __BuildTophhieCloudEntraIDIDConverter(WorkflowExpression<string> identifier)
-        {
-            WorkflowExpression.Validate(identifier, nameof(identifier), required: true);
+            var __workflow_identifier = identifier == null ? null : WorkflowExpression.Compile(identifier);
+            WorkflowExpression.Validate(__workflow_identifier, nameof(identifier), required: true);
             return new DeferredBodyAction<TophhieCloudEntraIDIDConverterResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/entra/convertid/{0}", ExpressionConverter.ConvertWithUrlEncoding(identifier, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/entra/convertid/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_identifier, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TophhieCloudEntraIDIDConverterResponse>(callPayload);

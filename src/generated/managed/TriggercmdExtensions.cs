@@ -1,29 +1,24 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Triggercmd
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class TriggercmdActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "triggercmd")]
-        [WorkflowExpressionFactory(nameof(__BuildRunCommand))]
-        public IBodyWorkflowAction<string> RunCommand([WorkflowExpression] Func<string> bodycomputer, [WorkflowExpression] Func<string> bodytrigger, [WorkflowExpression] Func<string> bodyParams = null)
+        public IBodyWorkflowAction<string> RunCommand(Expression<Func<string>> bodycomputer, Expression<Func<string>> bodytrigger, Expression<Func<string>> bodyParams = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildRunCommand(WorkflowExpression<string> bodycomputer, WorkflowExpression<string> bodytrigger, WorkflowExpression<string> bodyParams = null)
-        {
-            WorkflowExpression.Validate(bodycomputer, nameof(bodycomputer), required: true);
-            WorkflowExpression.Validate(bodytrigger, nameof(bodytrigger), required: true);
-            WorkflowExpression.Validate(bodyParams, nameof(bodyParams), required: false);
+            var __workflow_bodycomputer = bodycomputer == null ? null : WorkflowExpression.Compile(bodycomputer);
+            WorkflowExpression.Validate(__workflow_bodycomputer, nameof(bodycomputer), required: true);
+            var __workflow_bodytrigger = bodytrigger == null ? null : WorkflowExpression.Compile(bodytrigger);
+            WorkflowExpression.Validate(__workflow_bodytrigger, nameof(bodytrigger), required: true);
+            var __workflow_bodyParams = bodyParams == null ? null : WorkflowExpression.Compile(bodyParams);
+            WorkflowExpression.Validate(__workflow_bodyParams, nameof(bodyParams), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/oauth/flow/trigger";
@@ -32,12 +27,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Triggercmd
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["computer"] = ExpressionConverter.ConvertO(bodycomputer);
+                body["computer"] = ExpressionConverter.ConvertO(__workflow_bodycomputer);
                 bodypropCount++;
-                body["trigger"] = ExpressionConverter.ConvertO(bodytrigger);
-                if (bodyParams != null)
+                body["trigger"] = ExpressionConverter.ConvertO(__workflow_bodytrigger);
+                if (__workflow_bodyParams != null)
                 {
-                    body["params"] = ExpressionConverter.ConvertO(bodyParams);
+                    body["params"] = ExpressionConverter.ConvertO(__workflow_bodyParams);
                     bodypropCount++;
                 }
 

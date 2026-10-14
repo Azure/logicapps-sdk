@@ -1,7 +1,6 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Smtp
 {
     using System;
@@ -9,83 +8,87 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Smtp
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class SmtpActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Smtp")]
-        [WorkflowExpressionFactory(nameof(__BuildSendEmail))]
-        public IOutputWorkflowAction<SendEmailOutput> SendEmail([WorkflowExpression] Func<string> from, [WorkflowExpression] Func<string> to, [WorkflowExpression] Func<string> cc = null, [WorkflowExpression] Func<string> subject = null, [WorkflowExpression] Func<string> body = null, [WorkflowExpression] Func<bool> isHTML = null, [WorkflowExpression] Func<string> bcc = null, [WorkflowExpression] Func<string> importance = null, [WorkflowExpression] Func<string> readReceipt = null, [WorkflowExpression] Func<string> deliveryReceipt = null, [WorkflowExpression] Func<SendEmailInputAttachmentTypeItem[]> attachment = null)
+        public IOutputWorkflowAction<SendEmailOutput> SendEmail(Expression<Func<string>> from, Expression<Func<string>> to, Expression<Func<string>> cc = null, Expression<Func<string>> subject = null, Expression<Func<string>> body = null, Expression<Func<bool>> isHTML = null, Expression<Func<string>> bcc = null, Expression<Func<string>> importance = null, Expression<Func<string>> readReceipt = null, Expression<Func<string>> deliveryReceipt = null, Expression<Func<SendEmailInputAttachmentTypeItem[]>> attachment = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IOutputWorkflowAction<SendEmailOutput> __BuildSendEmail(WorkflowExpression<string> from, WorkflowExpression<string> to, WorkflowExpression<string> cc = null, WorkflowExpression<string> subject = null, WorkflowExpression<string> body = null, WorkflowExpression<bool> isHTML = null, WorkflowExpression<string> bcc = null, WorkflowExpression<string> importance = null, WorkflowExpression<string> readReceipt = null, WorkflowExpression<string> deliveryReceipt = null, WorkflowExpression<SendEmailInputAttachmentTypeItem[]> attachment = null)
-        {
-            WorkflowExpression.Validate(from, nameof(from), required: true);
-            WorkflowExpression.Validate(to, nameof(to), required: true);
-            WorkflowExpression.Validate(cc, nameof(cc), required: false);
-            WorkflowExpression.Validate(subject, nameof(subject), required: false);
-            WorkflowExpression.Validate(body, nameof(body), required: false);
-            WorkflowExpression.Validate(isHTML, nameof(isHTML), required: false);
-            WorkflowExpression.Validate(bcc, nameof(bcc), required: false);
-            WorkflowExpression.Validate(importance, nameof(importance), required: false);
-            WorkflowExpression.Validate(readReceipt, nameof(readReceipt), required: false);
-            WorkflowExpression.Validate(deliveryReceipt, nameof(deliveryReceipt), required: false);
-            WorkflowExpression.Validate(attachment, nameof(attachment), required: false);
+            var __workflow_from = from == null ? null : WorkflowExpression.Compile(from);
+            WorkflowExpression.Validate(__workflow_from, nameof(from), required: true);
+            var __workflow_to = to == null ? null : WorkflowExpression.Compile(to);
+            WorkflowExpression.Validate(__workflow_to, nameof(to), required: true);
+            var __workflow_cc = cc == null ? null : WorkflowExpression.Compile(cc);
+            WorkflowExpression.Validate(__workflow_cc, nameof(cc), required: false);
+            var __workflow_subject = subject == null ? null : WorkflowExpression.Compile(subject);
+            WorkflowExpression.Validate(__workflow_subject, nameof(subject), required: false);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_isHTML = isHTML == null ? null : WorkflowExpression.Compile(isHTML);
+            WorkflowExpression.Validate(__workflow_isHTML, nameof(isHTML), required: false);
+            var __workflow_bcc = bcc == null ? null : WorkflowExpression.Compile(bcc);
+            WorkflowExpression.Validate(__workflow_bcc, nameof(bcc), required: false);
+            var __workflow_importance = importance == null ? null : WorkflowExpression.Compile(importance);
+            WorkflowExpression.Validate(__workflow_importance, nameof(importance), required: false);
+            var __workflow_readReceipt = readReceipt == null ? null : WorkflowExpression.Compile(readReceipt);
+            WorkflowExpression.Validate(__workflow_readReceipt, nameof(readReceipt), required: false);
+            var __workflow_deliveryReceipt = deliveryReceipt == null ? null : WorkflowExpression.Compile(deliveryReceipt);
+            WorkflowExpression.Validate(__workflow_deliveryReceipt, nameof(deliveryReceipt), required: false);
+            var __workflow_attachment = attachment == null ? null : WorkflowExpression.Compile(attachment);
+            WorkflowExpression.Validate(__workflow_attachment, nameof(attachment), required: false);
             return new DeferredOutputAction<SendEmailOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["from"] = ExpressionConverter.ConvertO(from);
-                serviceProviderParameters["to"] = ExpressionConverter.ConvertO(to);
-                if (cc != null)
+                serviceProviderParameters["from"] = ExpressionConverter.ConvertO(__workflow_from);
+                serviceProviderParameters["to"] = ExpressionConverter.ConvertO(__workflow_to);
+                if (__workflow_cc != null)
                 {
-                    serviceProviderParameters["cc"] = ExpressionConverter.ConvertO(cc);
+                    serviceProviderParameters["cc"] = ExpressionConverter.ConvertO(__workflow_cc);
                 }
 
-                if (subject != null)
+                if (__workflow_subject != null)
                 {
-                    serviceProviderParameters["subject"] = ExpressionConverter.ConvertO(subject);
+                    serviceProviderParameters["subject"] = ExpressionConverter.ConvertO(__workflow_subject);
                 }
 
-                if (body != null)
+                if (__workflow_body != null)
                 {
-                    serviceProviderParameters["body"] = ExpressionConverter.ConvertO(body);
+                    serviceProviderParameters["body"] = ExpressionConverter.ConvertO(__workflow_body);
                 }
 
-                if (isHTML != null)
+                if (__workflow_isHTML != null)
                 {
-                    serviceProviderParameters["isHTML"] = ExpressionConverter.ConvertO(isHTML);
+                    serviceProviderParameters["isHTML"] = ExpressionConverter.ConvertO(__workflow_isHTML);
                 }
 
-                if (bcc != null)
+                if (__workflow_bcc != null)
                 {
-                    serviceProviderParameters["bcc"] = ExpressionConverter.ConvertO(bcc);
+                    serviceProviderParameters["bcc"] = ExpressionConverter.ConvertO(__workflow_bcc);
                 }
 
-                if (importance != null)
+                if (__workflow_importance != null)
                 {
-                    serviceProviderParameters["importance"] = ExpressionConverter.ConvertO(importance);
+                    serviceProviderParameters["importance"] = ExpressionConverter.ConvertO(__workflow_importance);
                 }
                 else
                 {
                     serviceProviderParameters["importance"] = "Normal";
                 }
 
-                if (readReceipt != null)
+                if (__workflow_readReceipt != null)
                 {
-                    serviceProviderParameters["readReceipt"] = ExpressionConverter.ConvertO(readReceipt);
+                    serviceProviderParameters["readReceipt"] = ExpressionConverter.ConvertO(__workflow_readReceipt);
                 }
 
-                if (deliveryReceipt != null)
+                if (__workflow_deliveryReceipt != null)
                 {
-                    serviceProviderParameters["deliveryReceipt"] = ExpressionConverter.ConvertO(deliveryReceipt);
+                    serviceProviderParameters["deliveryReceipt"] = ExpressionConverter.ConvertO(__workflow_deliveryReceipt);
                 }
 
-                if (attachment != null)
+                if (__workflow_attachment != null)
                 {
-                    serviceProviderParameters["attachment"] = ExpressionConverter.ConvertO(attachment);
+                    serviceProviderParameters["attachment"] = ExpressionConverter.ConvertO(__workflow_attachment);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput

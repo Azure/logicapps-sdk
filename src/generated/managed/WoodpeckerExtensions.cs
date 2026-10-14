@@ -1,98 +1,89 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class WoodpeckerActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "woodpecker")]
-        [WorkflowExpressionFactory(nameof(__BuildProspectsGet))]
-        public IBodyWorkflowAction<ProspectsGetResponseItem[]> ProspectsGet([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> activity = null, [WorkflowExpression] Func<string> campaignId = null, [WorkflowExpression] Func<bool> campaignsDetail = null, [WorkflowExpression] Func<sortInput> sort = null, [WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<int> page = null)
+        public IBodyWorkflowAction<ProspectsGetResponseItem[]> ProspectsGet(Expression<Func<string>> search = null, Expression<Func<string>> activity = null, Expression<Func<string>> campaignId = null, Expression<Func<bool>> campaignsDetail = null, Expression<Func<sortInput>> sort = null, Expression<Func<statusInput>> status = null, Expression<Func<int>> perPage = null, Expression<Func<int>> page = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ProspectsGetResponseItem[]> __BuildProspectsGet(WorkflowExpression<string> search = null, WorkflowExpression<string> activity = null, WorkflowExpression<string> campaignId = null, WorkflowExpression<bool> campaignsDetail = null, WorkflowExpression<sortInput> sort = null, WorkflowExpression<statusInput> status = null, WorkflowExpression<int> perPage = null, WorkflowExpression<int> page = null)
-        {
-            WorkflowExpression.Validate(search, nameof(search), required: false);
-            WorkflowExpression.Validate(activity, nameof(activity), required: false);
-            WorkflowExpression.Validate(campaignId, nameof(campaignId), required: false);
-            WorkflowExpression.Validate(campaignsDetail, nameof(campaignsDetail), required: false);
-            WorkflowExpression.Validate(sort, nameof(sort), required: false);
-            WorkflowExpression.Validate(status, nameof(status), required: false);
-            WorkflowExpression.Validate(perPage, nameof(perPage), required: false);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
+            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
+            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
+            var __workflow_activity = activity == null ? null : WorkflowExpression.Compile(activity);
+            WorkflowExpression.Validate(__workflow_activity, nameof(activity), required: false);
+            var __workflow_campaignId = campaignId == null ? null : WorkflowExpression.Compile(campaignId);
+            WorkflowExpression.Validate(__workflow_campaignId, nameof(campaignId), required: false);
+            var __workflow_campaignsDetail = campaignsDetail == null ? null : WorkflowExpression.Compile(campaignsDetail);
+            WorkflowExpression.Validate(__workflow_campaignsDetail, nameof(campaignsDetail), required: false);
+            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
+            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_status = status == null ? null : WorkflowExpression.Compile(status);
+            WorkflowExpression.Validate(__workflow_status, nameof(status), required: false);
+            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
+            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
             return new DeferredBodyAction<ProspectsGetResponseItem[]>(() =>
             {
                 var apiCallPath = "/prospects";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (search != null)
-                    callPayload.Queries["search"] = ExpressionConverter.Convert(search);
-                if (activity != null)
-                    callPayload.Queries["activity"] = ExpressionConverter.Convert(activity);
-                if (campaignId != null)
-                    callPayload.Queries["campaign_id"] = ExpressionConverter.Convert(campaignId);
-                if (campaignsDetail != null)
-                    callPayload.Queries["campaigns_detail"] = ExpressionConverter.Convert(campaignsDetail);
-                if (sort != null)
-                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-                if (status != null)
-                    callPayload.Queries["status"] = ExpressionConverter.Convert(status);
+                if (__workflow_search != null)
+                    callPayload.Queries["search"] = ExpressionConverter.Convert(__workflow_search);
+                if (__workflow_activity != null)
+                    callPayload.Queries["activity"] = ExpressionConverter.Convert(__workflow_activity);
+                if (__workflow_campaignId != null)
+                    callPayload.Queries["campaign_id"] = ExpressionConverter.Convert(__workflow_campaignId);
+                if (__workflow_campaignsDetail != null)
+                    callPayload.Queries["campaigns_detail"] = ExpressionConverter.Convert(__workflow_campaignsDetail);
+                if (__workflow_sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
+                if (__workflow_status != null)
+                    callPayload.Queries["status"] = ExpressionConverter.Convert(__workflow_status);
                 callPayload.Queries["per_page"] = Convert.ToString(100);
-                if (perPage != null)
-                    callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (__workflow_perPage != null)
+                    callPayload.Queries["per_page"] = ExpressionConverter.Convert(__workflow_perPage);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 return new ApiConnectionAction<ProspectsGetResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "woodpecker")]
-        [WorkflowExpressionFactory(nameof(__BuildProspectsDelete))]
-        public IBodyWorkflowAction<string> ProspectsDelete([WorkflowExpression] Func<int> id = null, [WorkflowExpression] Func<int> campaignsId = null)
+        public IBodyWorkflowAction<string> ProspectsDelete(Expression<Func<int>> id = null, Expression<Func<int>> campaignsId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildProspectsDelete(WorkflowExpression<int> id = null, WorkflowExpression<int> campaignsId = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: false);
-            WorkflowExpression.Validate(campaignsId, nameof(campaignsId), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: false);
+            var __workflow_campaignsId = campaignsId == null ? null : WorkflowExpression.Compile(campaignsId);
+            WorkflowExpression.Validate(__workflow_campaignsId, nameof(campaignsId), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/prospects";
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (id != null)
-                    callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-                if (campaignsId != null)
-                    callPayload.Queries["campaigns_id"] = ExpressionConverter.Convert(campaignsId);
+                if (__workflow_id != null)
+                    callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
+                if (__workflow_campaignsId != null)
+                    callPayload.Queries["campaigns_id"] = ExpressionConverter.Convert(__workflow_campaignsId);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "woodpecker")]
-        [WorkflowExpressionFactory(nameof(__BuildProspects))]
-        public IBodyWorkflowAction<ProspectsPostResponse> Prospects([WorkflowExpression] Func<bodyupdateInput> bodyupdate = null, [WorkflowExpression] Func<bodyforceInput> bodyforce = null, [WorkflowExpression] Func<bodyprospectsInputItem[]> bodyprospects = null)
+        public IBodyWorkflowAction<ProspectsPostResponse> Prospects(Expression<Func<bodyupdateInput>> bodyupdate = null, Expression<Func<bodyforceInput>> bodyforce = null, Expression<Func<bodyprospectsInputItem[]>> bodyprospects = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ProspectsPostResponse> __BuildProspects(WorkflowExpression<bodyupdateInput> bodyupdate = null, WorkflowExpression<bodyforceInput> bodyforce = null, WorkflowExpression<bodyprospectsInputItem[]> bodyprospects = null)
-        {
-            WorkflowExpression.Validate(bodyupdate, nameof(bodyupdate), required: false);
-            WorkflowExpression.Validate(bodyforce, nameof(bodyforce), required: false);
-            WorkflowExpression.Validate(bodyprospects, nameof(bodyprospects), required: false);
+            var __workflow_bodyupdate = bodyupdate == null ? null : WorkflowExpression.Compile(bodyupdate);
+            WorkflowExpression.Validate(__workflow_bodyupdate, nameof(bodyupdate), required: false);
+            var __workflow_bodyforce = bodyforce == null ? null : WorkflowExpression.Compile(bodyforce);
+            WorkflowExpression.Validate(__workflow_bodyforce, nameof(bodyforce), required: false);
+            var __workflow_bodyprospects = bodyprospects == null ? null : WorkflowExpression.Compile(bodyprospects);
+            WorkflowExpression.Validate(__workflow_bodyprospects, nameof(bodyprospects), required: false);
             return new DeferredBodyAction<ProspectsPostResponse>(() =>
             {
                 var apiCallPath = "/add_prospects_list";
@@ -100,21 +91,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyupdate != null)
+                if (__workflow_bodyupdate != null)
                 {
-                    body["update"] = ExpressionConverter.ConvertO(bodyupdate);
+                    body["update"] = ExpressionConverter.ConvertO(__workflow_bodyupdate);
                     bodypropCount++;
                 }
 
-                if (bodyforce != null)
+                if (__workflow_bodyforce != null)
                 {
-                    body["force"] = ExpressionConverter.ConvertO(bodyforce);
+                    body["force"] = ExpressionConverter.ConvertO(__workflow_bodyforce);
                     bodypropCount++;
                 }
 
-                if (bodyprospects != null)
+                if (__workflow_bodyprospects != null)
                 {
-                    body["prospects"] = ExpressionConverter.ConvertO(bodyprospects);
+                    body["prospects"] = ExpressionConverter.ConvertO(__workflow_bodyprospects);
                     bodypropCount++;
                 }
 
@@ -128,19 +119,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "woodpecker")]
-        [WorkflowExpressionFactory(nameof(__BuildProspectsCampaign))]
-        public IBodyWorkflowAction<ProspectsCampaignPostResponse> ProspectsCampaign([WorkflowExpression] Func<int> bodycampaigncampaignId = null, [WorkflowExpression] Func<bodyupdateInput> bodyupdate = null, [WorkflowExpression] Func<bodyforceInput> bodyforce = null, [WorkflowExpression] Func<bodyprospectsInputItem2[]> bodyprospects = null)
+        public IBodyWorkflowAction<ProspectsCampaignPostResponse> ProspectsCampaign(Expression<Func<int>> bodycampaigncampaignId = null, Expression<Func<bodyupdateInput>> bodyupdate = null, Expression<Func<bodyforceInput>> bodyforce = null, Expression<Func<bodyprospectsInputItem2[]>> bodyprospects = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ProspectsCampaignPostResponse> __BuildProspectsCampaign(WorkflowExpression<int> bodycampaigncampaignId = null, WorkflowExpression<bodyupdateInput> bodyupdate = null, WorkflowExpression<bodyforceInput> bodyforce = null, WorkflowExpression<bodyprospectsInputItem2[]> bodyprospects = null)
-        {
-            WorkflowExpression.Validate(bodycampaigncampaignId, nameof(bodycampaigncampaignId), required: false);
-            WorkflowExpression.Validate(bodyupdate, nameof(bodyupdate), required: false);
-            WorkflowExpression.Validate(bodyforce, nameof(bodyforce), required: false);
-            WorkflowExpression.Validate(bodyprospects, nameof(bodyprospects), required: false);
+            var __workflow_bodycampaigncampaignId = bodycampaigncampaignId == null ? null : WorkflowExpression.Compile(bodycampaigncampaignId);
+            WorkflowExpression.Validate(__workflow_bodycampaigncampaignId, nameof(bodycampaigncampaignId), required: false);
+            var __workflow_bodyupdate = bodyupdate == null ? null : WorkflowExpression.Compile(bodyupdate);
+            WorkflowExpression.Validate(__workflow_bodyupdate, nameof(bodyupdate), required: false);
+            var __workflow_bodyforce = bodyforce == null ? null : WorkflowExpression.Compile(bodyforce);
+            WorkflowExpression.Validate(__workflow_bodyforce, nameof(bodyforce), required: false);
+            var __workflow_bodyprospects = bodyprospects == null ? null : WorkflowExpression.Compile(bodyprospects);
+            WorkflowExpression.Validate(__workflow_bodyprospects, nameof(bodyprospects), required: false);
             return new DeferredBodyAction<ProspectsCampaignPostResponse>(() =>
             {
                 var apiCallPath = "/add_prospects_campaign";
@@ -150,9 +138,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
                 var bodypropCount = 0;
                 var campaignObject = new JObject();
                 var campaignObjectpropCount = 0;
-                if (bodycampaigncampaignId != null)
+                if (__workflow_bodycampaigncampaignId != null)
                 {
-                    campaignObject["campaign_id"] = ExpressionConverter.ConvertO(bodycampaigncampaignId);
+                    campaignObject["campaign_id"] = ExpressionConverter.ConvertO(__workflow_bodycampaigncampaignId);
                     campaignObjectpropCount++;
                 }
 
@@ -162,21 +150,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
                     bodypropCount++;
                 }
 
-                if (bodyupdate != null)
+                if (__workflow_bodyupdate != null)
                 {
-                    body["update"] = ExpressionConverter.ConvertO(bodyupdate);
+                    body["update"] = ExpressionConverter.ConvertO(__workflow_bodyupdate);
                     bodypropCount++;
                 }
 
-                if (bodyforce != null)
+                if (__workflow_bodyforce != null)
                 {
-                    body["force"] = ExpressionConverter.ConvertO(bodyforce);
+                    body["force"] = ExpressionConverter.ConvertO(__workflow_bodyforce);
                     bodypropCount++;
                 }
 
-                if (bodyprospects != null)
+                if (__workflow_bodyprospects != null)
                 {
-                    body["prospects"] = ExpressionConverter.ConvertO(bodyprospects);
+                    body["prospects"] = ExpressionConverter.ConvertO(__workflow_bodyprospects);
                     bodypropCount++;
                 }
 
@@ -190,26 +178,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "woodpecker")]
-        [WorkflowExpressionFactory(nameof(__BuildCampaignsGet))]
-        public IBodyWorkflowAction<CampaignsGetResponseItem[]> CampaignsGet([WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<int> id = null)
+        public IBodyWorkflowAction<CampaignsGetResponseItem[]> CampaignsGet(Expression<Func<statusInput>> status = null, Expression<Func<int>> id = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CampaignsGetResponseItem[]> __BuildCampaignsGet(WorkflowExpression<statusInput> status = null, WorkflowExpression<int> id = null)
-        {
-            WorkflowExpression.Validate(status, nameof(status), required: false);
-            WorkflowExpression.Validate(id, nameof(id), required: false);
+            var __workflow_status = status == null ? null : WorkflowExpression.Compile(status);
+            WorkflowExpression.Validate(__workflow_status, nameof(status), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: false);
             return new DeferredBodyAction<CampaignsGetResponseItem[]>(() =>
             {
                 var apiCallPath = "/campaign_list";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (status != null)
-                    callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-                if (id != null)
-                    callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                if (__workflow_status != null)
+                    callPayload.Queries["status"] = ExpressionConverter.Convert(__workflow_status);
+                if (__workflow_id != null)
+                    callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction<CampaignsGetResponseItem[]>(callPayload);
             });
         }

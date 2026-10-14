@@ -1,93 +1,95 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oqsha
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class OqshaActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "oqsha")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateIncident))]
-        public IBodyWorkflowAction<CreateIncidentResponse> CreateIncident([WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<string> accessToken = null, [WorkflowExpression] Func<string> bodylocation = null, [WorkflowExpression] Func<string> bodylocationId = null, [WorkflowExpression] Func<double> bodylatitude = null, [WorkflowExpression] Func<double> bodylongitude = null, [WorkflowExpression] Func<string> bodydivisionId = null, [WorkflowExpression] Func<string> bodyuserId = null, [WorkflowExpression] Func<bool> bodyanonymouslyReported = null, [WorkflowExpression] Func<bodycheckListDataInputItem[]> bodycheckListData = null)
+        public IBodyWorkflowAction<CreateIncidentResponse> CreateIncident(Expression<Func<string>> contentType = null, Expression<Func<string>> accessToken = null, Expression<Func<string>> bodylocation = null, Expression<Func<string>> bodylocationId = null, Expression<Func<double>> bodylatitude = null, Expression<Func<double>> bodylongitude = null, Expression<Func<string>> bodydivisionId = null, Expression<Func<string>> bodyuserId = null, Expression<Func<bool>> bodyanonymouslyReported = null, Expression<Func<bodycheckListDataInputItem[]>> bodycheckListData = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateIncidentResponse> __BuildCreateIncident(WorkflowExpression<string> contentType = null, WorkflowExpression<string> accessToken = null, WorkflowExpression<string> bodylocation = null, WorkflowExpression<string> bodylocationId = null, WorkflowExpression<double> bodylatitude = null, WorkflowExpression<double> bodylongitude = null, WorkflowExpression<string> bodydivisionId = null, WorkflowExpression<string> bodyuserId = null, WorkflowExpression<bool> bodyanonymouslyReported = null, WorkflowExpression<bodycheckListDataInputItem[]> bodycheckListData = null)
-        {
-            WorkflowExpression.Validate(contentType, nameof(contentType), required: false);
-            WorkflowExpression.Validate(accessToken, nameof(accessToken), required: false);
-            WorkflowExpression.Validate(bodylocation, nameof(bodylocation), required: false);
-            WorkflowExpression.Validate(bodylocationId, nameof(bodylocationId), required: false);
-            WorkflowExpression.Validate(bodylatitude, nameof(bodylatitude), required: false);
-            WorkflowExpression.Validate(bodylongitude, nameof(bodylongitude), required: false);
-            WorkflowExpression.Validate(bodydivisionId, nameof(bodydivisionId), required: false);
-            WorkflowExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
-            WorkflowExpression.Validate(bodyanonymouslyReported, nameof(bodyanonymouslyReported), required: false);
-            WorkflowExpression.Validate(bodycheckListData, nameof(bodycheckListData), required: false);
+            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
+            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
+            var __workflow_accessToken = accessToken == null ? null : WorkflowExpression.Compile(accessToken);
+            WorkflowExpression.Validate(__workflow_accessToken, nameof(accessToken), required: false);
+            var __workflow_bodylocation = bodylocation == null ? null : WorkflowExpression.Compile(bodylocation);
+            WorkflowExpression.Validate(__workflow_bodylocation, nameof(bodylocation), required: false);
+            var __workflow_bodylocationId = bodylocationId == null ? null : WorkflowExpression.Compile(bodylocationId);
+            WorkflowExpression.Validate(__workflow_bodylocationId, nameof(bodylocationId), required: false);
+            var __workflow_bodylatitude = bodylatitude == null ? null : WorkflowExpression.Compile(bodylatitude);
+            WorkflowExpression.Validate(__workflow_bodylatitude, nameof(bodylatitude), required: false);
+            var __workflow_bodylongitude = bodylongitude == null ? null : WorkflowExpression.Compile(bodylongitude);
+            WorkflowExpression.Validate(__workflow_bodylongitude, nameof(bodylongitude), required: false);
+            var __workflow_bodydivisionId = bodydivisionId == null ? null : WorkflowExpression.Compile(bodydivisionId);
+            WorkflowExpression.Validate(__workflow_bodydivisionId, nameof(bodydivisionId), required: false);
+            var __workflow_bodyuserId = bodyuserId == null ? null : WorkflowExpression.Compile(bodyuserId);
+            WorkflowExpression.Validate(__workflow_bodyuserId, nameof(bodyuserId), required: false);
+            var __workflow_bodyanonymouslyReported = bodyanonymouslyReported == null ? null : WorkflowExpression.Compile(bodyanonymouslyReported);
+            WorkflowExpression.Validate(__workflow_bodyanonymouslyReported, nameof(bodyanonymouslyReported), required: false);
+            var __workflow_bodycheckListData = bodycheckListData == null ? null : WorkflowExpression.Compile(bodycheckListData);
+            WorkflowExpression.Validate(__workflow_bodycheckListData, nameof(bodycheckListData), required: false);
             return new DeferredBodyAction<CreateIncidentResponse>(() =>
             {
                 var apiCallPath = "/Organisations/3/Incidents";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                if (contentType != null)
-                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-                if (accessToken != null)
-                    callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(accessToken);
+                if (__workflow_contentType != null)
+                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
+                if (__workflow_accessToken != null)
+                    callPayload.Headers["Access-Token"] = ExpressionConverter.Convert(__workflow_accessToken);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodylocation != null)
+                if (__workflow_bodylocation != null)
                 {
-                    body["Location"] = ExpressionConverter.ConvertO(bodylocation);
+                    body["Location"] = ExpressionConverter.ConvertO(__workflow_bodylocation);
                     bodypropCount++;
                 }
 
-                if (bodylocationId != null)
+                if (__workflow_bodylocationId != null)
                 {
-                    body["LocationId"] = ExpressionConverter.ConvertO(bodylocationId);
+                    body["LocationId"] = ExpressionConverter.ConvertO(__workflow_bodylocationId);
                     bodypropCount++;
                 }
 
-                if (bodylatitude != null)
+                if (__workflow_bodylatitude != null)
                 {
-                    body["Latitude"] = ExpressionConverter.ConvertO(bodylatitude);
+                    body["Latitude"] = ExpressionConverter.ConvertO(__workflow_bodylatitude);
                     bodypropCount++;
                 }
 
-                if (bodylongitude != null)
+                if (__workflow_bodylongitude != null)
                 {
-                    body["Longitude"] = ExpressionConverter.ConvertO(bodylongitude);
+                    body["Longitude"] = ExpressionConverter.ConvertO(__workflow_bodylongitude);
                     bodypropCount++;
                 }
 
-                if (bodydivisionId != null)
+                if (__workflow_bodydivisionId != null)
                 {
-                    body["DivisionId"] = ExpressionConverter.ConvertO(bodydivisionId);
+                    body["DivisionId"] = ExpressionConverter.ConvertO(__workflow_bodydivisionId);
                     bodypropCount++;
                 }
 
-                if (bodyuserId != null)
+                if (__workflow_bodyuserId != null)
                 {
-                    body["UserId"] = ExpressionConverter.ConvertO(bodyuserId);
+                    body["UserId"] = ExpressionConverter.ConvertO(__workflow_bodyuserId);
                     bodypropCount++;
                 }
 
-                if (bodyanonymouslyReported != null)
+                if (__workflow_bodyanonymouslyReported != null)
                 {
-                    body["AnonymouslyReported"] = ExpressionConverter.ConvertO(bodyanonymouslyReported);
+                    body["AnonymouslyReported"] = ExpressionConverter.ConvertO(__workflow_bodyanonymouslyReported);
                     bodypropCount++;
                 }
 
-                if (bodycheckListData != null)
+                if (__workflow_bodycheckListData != null)
                 {
-                    body["CheckListData"] = ExpressionConverter.ConvertO(bodycheckListData);
+                    body["CheckListData"] = ExpressionConverter.ConvertO(__workflow_bodycheckListData);
                     bodypropCount++;
                 }
 
@@ -101,51 +103,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oqsha
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "oqsha")]
-        [WorkflowExpressionFactory(nameof(__BuildLogin))]
-        public IBodyWorkflowAction<LoginResponse> Login([WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<string> bodyuserUid = null, [WorkflowExpression] Func<string> bodyappPassword = null, [WorkflowExpression] Func<bool> bodyacceptConditions = null, [WorkflowExpression] Func<bool> bodyisOqsha = null)
+        public IBodyWorkflowAction<LoginResponse> Login(Expression<Func<string>> contentType = null, Expression<Func<string>> bodyuserUid = null, Expression<Func<string>> bodyappPassword = null, Expression<Func<bool>> bodyacceptConditions = null, Expression<Func<bool>> bodyisOqsha = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<LoginResponse> __BuildLogin(WorkflowExpression<string> contentType = null, WorkflowExpression<string> bodyuserUid = null, WorkflowExpression<string> bodyappPassword = null, WorkflowExpression<bool> bodyacceptConditions = null, WorkflowExpression<bool> bodyisOqsha = null)
-        {
-            WorkflowExpression.Validate(contentType, nameof(contentType), required: false);
-            WorkflowExpression.Validate(bodyuserUid, nameof(bodyuserUid), required: false);
-            WorkflowExpression.Validate(bodyappPassword, nameof(bodyappPassword), required: false);
-            WorkflowExpression.Validate(bodyacceptConditions, nameof(bodyacceptConditions), required: false);
-            WorkflowExpression.Validate(bodyisOqsha, nameof(bodyisOqsha), required: false);
+            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
+            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
+            var __workflow_bodyuserUid = bodyuserUid == null ? null : WorkflowExpression.Compile(bodyuserUid);
+            WorkflowExpression.Validate(__workflow_bodyuserUid, nameof(bodyuserUid), required: false);
+            var __workflow_bodyappPassword = bodyappPassword == null ? null : WorkflowExpression.Compile(bodyappPassword);
+            WorkflowExpression.Validate(__workflow_bodyappPassword, nameof(bodyappPassword), required: false);
+            var __workflow_bodyacceptConditions = bodyacceptConditions == null ? null : WorkflowExpression.Compile(bodyacceptConditions);
+            WorkflowExpression.Validate(__workflow_bodyacceptConditions, nameof(bodyacceptConditions), required: false);
+            var __workflow_bodyisOqsha = bodyisOqsha == null ? null : WorkflowExpression.Compile(bodyisOqsha);
+            WorkflowExpression.Validate(__workflow_bodyisOqsha, nameof(bodyisOqsha), required: false);
             return new DeferredBodyAction<LoginResponse>(() =>
             {
                 var apiCallPath = "/App/Login";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                if (contentType != null)
-                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                if (__workflow_contentType != null)
+                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyuserUid != null)
+                if (__workflow_bodyuserUid != null)
                 {
-                    body["UserUid"] = ExpressionConverter.ConvertO(bodyuserUid);
+                    body["UserUid"] = ExpressionConverter.ConvertO(__workflow_bodyuserUid);
                     bodypropCount++;
                 }
 
-                if (bodyappPassword != null)
+                if (__workflow_bodyappPassword != null)
                 {
-                    body["AppPassword"] = ExpressionConverter.ConvertO(bodyappPassword);
+                    body["AppPassword"] = ExpressionConverter.ConvertO(__workflow_bodyappPassword);
                     bodypropCount++;
                 }
 
-                if (bodyacceptConditions != null)
+                if (__workflow_bodyacceptConditions != null)
                 {
-                    body["acceptConditions"] = ExpressionConverter.ConvertO(bodyacceptConditions);
+                    body["acceptConditions"] = ExpressionConverter.ConvertO(__workflow_bodyacceptConditions);
                     bodypropCount++;
                 }
 
-                if (bodyisOqsha != null)
+                if (__workflow_bodyisOqsha != null)
                 {
-                    body["IsOqsha"] = ExpressionConverter.ConvertO(bodyisOqsha);
+                    body["IsOqsha"] = ExpressionConverter.ConvertO(__workflow_bodyisOqsha);
                     bodypropCount++;
                 }
 

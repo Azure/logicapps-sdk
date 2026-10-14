@@ -1,34 +1,27 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Biztalk
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class BiztalkActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "biztalk")]
-        [WorkflowExpressionFactory(nameof(__BuildEncodeJson))]
-        public IBodyWorkflowAction<string> EncodeJson([WorkflowExpression] Func<string> documentSpec = null)
+        public IBodyWorkflowAction<string> EncodeJson(Expression<Func<string>> documentSpec = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildEncodeJson(WorkflowExpression<string> documentSpec = null)
-        {
-            WorkflowExpression.Validate(documentSpec, nameof(documentSpec), required: false);
+            var __workflow_documentSpec = documentSpec == null ? null : WorkflowExpression.Compile(documentSpec);
+            WorkflowExpression.Validate(__workflow_documentSpec, nameof(documentSpec), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/EncodeJson";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (documentSpec != null)
-                    callPayload.Queries["documentSpec"] = ExpressionConverter.Convert(documentSpec);
+                if (__workflow_documentSpec != null)
+                    callPayload.Queries["documentSpec"] = ExpressionConverter.Convert(__workflow_documentSpec);
                 var requestContent = new JObject();
                 var requestContentpropCount = 0;
                 if (requestContentpropCount > 0)
@@ -41,48 +34,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Biztalk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "biztalk")]
-        [WorkflowExpressionFactory(nameof(__BuildEncodeXml))]
-        public IBodyWorkflowAction<string> EncodeXml([WorkflowExpression] Func<string> documentSpec = null, [WorkflowExpression] Func<string> body = null)
+        public IBodyWorkflowAction<string> EncodeXml(Expression<Func<string>> documentSpec = null, Expression<Func<string>> body = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildEncodeXml(WorkflowExpression<string> documentSpec = null, WorkflowExpression<string> body = null)
-        {
-            WorkflowExpression.Validate(documentSpec, nameof(documentSpec), required: false);
-            WorkflowExpression.Validate(body, nameof(body), required: false);
+            var __workflow_documentSpec = documentSpec == null ? null : WorkflowExpression.Compile(documentSpec);
+            WorkflowExpression.Validate(__workflow_documentSpec, nameof(documentSpec), required: false);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/EncodeXml";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (documentSpec != null)
-                    callPayload.Queries["documentSpec"] = ExpressionConverter.Convert(documentSpec);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                if (__workflow_documentSpec != null)
+                    callPayload.Queries["documentSpec"] = ExpressionConverter.Convert(__workflow_documentSpec);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "biztalk")]
-        [WorkflowExpressionFactory(nameof(__BuildSend))]
-        public IBodyWorkflowAction<string> Send([WorkflowExpression] Func<string> receiveLocationAddress, [WorkflowExpression] Func<string> body = null)
+        public IBodyWorkflowAction<string> Send(Expression<Func<string>> receiveLocationAddress, Expression<Func<string>> body = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildSend(WorkflowExpression<string> receiveLocationAddress, WorkflowExpression<string> body = null)
-        {
-            WorkflowExpression.Validate(receiveLocationAddress, nameof(receiveLocationAddress), required: true);
-            WorkflowExpression.Validate(body, nameof(body), required: false);
+            var __workflow_receiveLocationAddress = receiveLocationAddress == null ? null : WorkflowExpression.Compile(receiveLocationAddress);
+            WorkflowExpression.Validate(__workflow_receiveLocationAddress, nameof(receiveLocationAddress), required: true);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/Send";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["receiveLocationAddress"] = ExpressionConverter.Convert(receiveLocationAddress);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["receiveLocationAddress"] = ExpressionConverter.Convert(__workflow_receiveLocationAddress);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }

@@ -1,39 +1,44 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfsign
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class IlovepdfsignActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfsign")]
-        [WorkflowExpressionFactory(nameof(__BuildSign))]
-        public IBodyWorkflowAction<SignResponse> Sign([WorkflowExpression] Func<bodyfileSourceInput> bodyfileSource, [WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<string> bodyfile = null, [WorkflowExpression] Func<string> bodyfileUrl = null, [WorkflowExpression] Func<string> bodysigners = null, [WorkflowExpression] Func<string> bodysignersEmails = null, [WorkflowExpression] Func<string> bodysignsPositions = null, [WorkflowExpression] Func<bodysignTypeInput> bodysignType = null, [WorkflowExpression] Func<string> bodyexpirationDays = null, [WorkflowExpression] Func<bodysignerRemindersInput> bodysignerReminders = null, [WorkflowExpression] Func<string> bodysignerReminderDaysCycle = null, [WorkflowExpression] Func<string> bodypages = null, [WorkflowExpression] Func<string> bodysize = null)
+        public IBodyWorkflowAction<SignResponse> Sign(Expression<Func<bodyfileSourceInput>> bodyfileSource, Expression<Func<string>> bodyfileName, Expression<Func<string>> bodyfile = null, Expression<Func<string>> bodyfileUrl = null, Expression<Func<string>> bodysigners = null, Expression<Func<string>> bodysignersEmails = null, Expression<Func<string>> bodysignsPositions = null, Expression<Func<bodysignTypeInput>> bodysignType = null, Expression<Func<string>> bodyexpirationDays = null, Expression<Func<bodysignerRemindersInput>> bodysignerReminders = null, Expression<Func<string>> bodysignerReminderDaysCycle = null, Expression<Func<string>> bodypages = null, Expression<Func<string>> bodysize = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SignResponse> __BuildSign(WorkflowExpression<bodyfileSourceInput> bodyfileSource, WorkflowExpression<string> bodyfileName, WorkflowExpression<string> bodyfile = null, WorkflowExpression<string> bodyfileUrl = null, WorkflowExpression<string> bodysigners = null, WorkflowExpression<string> bodysignersEmails = null, WorkflowExpression<string> bodysignsPositions = null, WorkflowExpression<bodysignTypeInput> bodysignType = null, WorkflowExpression<string> bodyexpirationDays = null, WorkflowExpression<bodysignerRemindersInput> bodysignerReminders = null, WorkflowExpression<string> bodysignerReminderDaysCycle = null, WorkflowExpression<string> bodypages = null, WorkflowExpression<string> bodysize = null)
-        {
-            WorkflowExpression.Validate(bodyfileSource, nameof(bodyfileSource), required: true);
-            WorkflowExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
-            WorkflowExpression.Validate(bodyfile, nameof(bodyfile), required: false);
-            WorkflowExpression.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
-            WorkflowExpression.Validate(bodysigners, nameof(bodysigners), required: false);
-            WorkflowExpression.Validate(bodysignersEmails, nameof(bodysignersEmails), required: false);
-            WorkflowExpression.Validate(bodysignsPositions, nameof(bodysignsPositions), required: false);
-            WorkflowExpression.Validate(bodysignType, nameof(bodysignType), required: false);
-            WorkflowExpression.Validate(bodyexpirationDays, nameof(bodyexpirationDays), required: false);
-            WorkflowExpression.Validate(bodysignerReminders, nameof(bodysignerReminders), required: false);
-            WorkflowExpression.Validate(bodysignerReminderDaysCycle, nameof(bodysignerReminderDaysCycle), required: false);
-            WorkflowExpression.Validate(bodypages, nameof(bodypages), required: false);
-            WorkflowExpression.Validate(bodysize, nameof(bodysize), required: false);
+            var __workflow_bodyfileSource = bodyfileSource == null ? null : WorkflowExpression.Compile(bodyfileSource);
+            WorkflowExpression.Validate(__workflow_bodyfileSource, nameof(bodyfileSource), required: true);
+            var __workflow_bodyfileName = bodyfileName == null ? null : WorkflowExpression.Compile(bodyfileName);
+            WorkflowExpression.Validate(__workflow_bodyfileName, nameof(bodyfileName), required: true);
+            var __workflow_bodyfile = bodyfile == null ? null : WorkflowExpression.Compile(bodyfile);
+            WorkflowExpression.Validate(__workflow_bodyfile, nameof(bodyfile), required: false);
+            var __workflow_bodyfileUrl = bodyfileUrl == null ? null : WorkflowExpression.Compile(bodyfileUrl);
+            WorkflowExpression.Validate(__workflow_bodyfileUrl, nameof(bodyfileUrl), required: false);
+            var __workflow_bodysigners = bodysigners == null ? null : WorkflowExpression.Compile(bodysigners);
+            WorkflowExpression.Validate(__workflow_bodysigners, nameof(bodysigners), required: false);
+            var __workflow_bodysignersEmails = bodysignersEmails == null ? null : WorkflowExpression.Compile(bodysignersEmails);
+            WorkflowExpression.Validate(__workflow_bodysignersEmails, nameof(bodysignersEmails), required: false);
+            var __workflow_bodysignsPositions = bodysignsPositions == null ? null : WorkflowExpression.Compile(bodysignsPositions);
+            WorkflowExpression.Validate(__workflow_bodysignsPositions, nameof(bodysignsPositions), required: false);
+            var __workflow_bodysignType = bodysignType == null ? null : WorkflowExpression.Compile(bodysignType);
+            WorkflowExpression.Validate(__workflow_bodysignType, nameof(bodysignType), required: false);
+            var __workflow_bodyexpirationDays = bodyexpirationDays == null ? null : WorkflowExpression.Compile(bodyexpirationDays);
+            WorkflowExpression.Validate(__workflow_bodyexpirationDays, nameof(bodyexpirationDays), required: false);
+            var __workflow_bodysignerReminders = bodysignerReminders == null ? null : WorkflowExpression.Compile(bodysignerReminders);
+            WorkflowExpression.Validate(__workflow_bodysignerReminders, nameof(bodysignerReminders), required: false);
+            var __workflow_bodysignerReminderDaysCycle = bodysignerReminderDaysCycle == null ? null : WorkflowExpression.Compile(bodysignerReminderDaysCycle);
+            WorkflowExpression.Validate(__workflow_bodysignerReminderDaysCycle, nameof(bodysignerReminderDaysCycle), required: false);
+            var __workflow_bodypages = bodypages == null ? null : WorkflowExpression.Compile(bodypages);
+            WorkflowExpression.Validate(__workflow_bodypages, nameof(bodypages), required: false);
+            var __workflow_bodysize = bodysize == null ? null : WorkflowExpression.Compile(bodysize);
+            WorkflowExpression.Validate(__workflow_bodysize, nameof(bodysize), required: false);
             return new DeferredBodyAction<SignResponse>(() =>
             {
                 var apiCallPath = "/sign";
@@ -42,72 +47,72 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfsign
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["file_source"] = ExpressionConverter.ConvertO(bodyfileSource);
+                body["file_source"] = ExpressionConverter.ConvertO(__workflow_bodyfileSource);
                 bodypropCount++;
-                body["file_name"] = ExpressionConverter.ConvertO(bodyfileName);
-                if (bodyfile != null)
+                body["file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
+                if (__workflow_bodyfile != null)
                 {
-                    body["file"] = ExpressionConverter.ConvertO(bodyfile);
+                    body["file"] = ExpressionConverter.ConvertO(__workflow_bodyfile);
                     bodypropCount++;
                 }
 
-                if (bodyfileUrl != null)
+                if (__workflow_bodyfileUrl != null)
                 {
-                    body["file_url"] = ExpressionConverter.ConvertO(bodyfileUrl);
+                    body["file_url"] = ExpressionConverter.ConvertO(__workflow_bodyfileUrl);
                     bodypropCount++;
                 }
 
-                if (bodysigners != null)
+                if (__workflow_bodysigners != null)
                 {
-                    body["signers"] = ExpressionConverter.ConvertO(bodysigners);
+                    body["signers"] = ExpressionConverter.ConvertO(__workflow_bodysigners);
                     bodypropCount++;
                 }
 
-                if (bodysignersEmails != null)
+                if (__workflow_bodysignersEmails != null)
                 {
-                    body["signers_emails"] = ExpressionConverter.ConvertO(bodysignersEmails);
+                    body["signers_emails"] = ExpressionConverter.ConvertO(__workflow_bodysignersEmails);
                     bodypropCount++;
                 }
 
-                if (bodysignsPositions != null)
+                if (__workflow_bodysignsPositions != null)
                 {
-                    body["signs_positions"] = ExpressionConverter.ConvertO(bodysignsPositions);
+                    body["signs_positions"] = ExpressionConverter.ConvertO(__workflow_bodysignsPositions);
                     bodypropCount++;
                 }
 
-                if (bodysignType != null)
+                if (__workflow_bodysignType != null)
                 {
-                    body["sign_type"] = ExpressionConverter.ConvertO(bodysignType);
+                    body["sign_type"] = ExpressionConverter.ConvertO(__workflow_bodysignType);
                     bodypropCount++;
                 }
 
-                if (bodyexpirationDays != null)
+                if (__workflow_bodyexpirationDays != null)
                 {
-                    body["expiration_days"] = ExpressionConverter.ConvertO(bodyexpirationDays);
+                    body["expiration_days"] = ExpressionConverter.ConvertO(__workflow_bodyexpirationDays);
                     bodypropCount++;
                 }
 
-                if (bodysignerReminders != null)
+                if (__workflow_bodysignerReminders != null)
                 {
-                    body["signer_reminders"] = ExpressionConverter.ConvertO(bodysignerReminders);
+                    body["signer_reminders"] = ExpressionConverter.ConvertO(__workflow_bodysignerReminders);
                     bodypropCount++;
                 }
 
-                if (bodysignerReminderDaysCycle != null)
+                if (__workflow_bodysignerReminderDaysCycle != null)
                 {
-                    body["signer_reminder_days_cycle"] = ExpressionConverter.ConvertO(bodysignerReminderDaysCycle);
+                    body["signer_reminder_days_cycle"] = ExpressionConverter.ConvertO(__workflow_bodysignerReminderDaysCycle);
                     bodypropCount++;
                 }
 
-                if (bodypages != null)
+                if (__workflow_bodypages != null)
                 {
-                    body["pages"] = ExpressionConverter.ConvertO(bodypages);
+                    body["pages"] = ExpressionConverter.ConvertO(__workflow_bodypages);
                     bodypropCount++;
                 }
 
-                if (bodysize != null)
+                if (__workflow_bodysize != null)
                 {
-                    body["size"] = ExpressionConverter.ConvertO(bodysize);
+                    body["size"] = ExpressionConverter.ConvertO(__workflow_bodysize);
                     bodypropCount++;
                 }
 

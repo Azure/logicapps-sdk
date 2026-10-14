@@ -1,210 +1,209 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dandelionip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class DandelionipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dandelionip")]
-        [WorkflowExpressionFactory(nameof(__BuildEntityGet))]
-        public IBodyWorkflowAction<EntityGetResponse> EntityGet([WorkflowExpression] Func<string> text = null, [WorkflowExpression] Func<string> html = null, [WorkflowExpression] Func<string> htmlFragment = null, [WorkflowExpression] Func<string> lang = null, [WorkflowExpression] Func<int> topEntities = null, [WorkflowExpression] Func<int> minConfidence = null, [WorkflowExpression] Func<int> minLength = null, [WorkflowExpression] Func<bool> socialHashtag = null, [WorkflowExpression] Func<bool> socialMention = null, [WorkflowExpression] Func<string> include = null, [WorkflowExpression] Func<string> extraTypes = null, [WorkflowExpression] Func<string> country = null, [WorkflowExpression] Func<double> epsilon = null)
+        public IBodyWorkflowAction<EntityGetResponse> EntityGet(Expression<Func<string>> text = null, Expression<Func<string>> html = null, Expression<Func<string>> htmlFragment = null, Expression<Func<string>> lang = null, Expression<Func<int>> topEntities = null, Expression<Func<int>> minConfidence = null, Expression<Func<int>> minLength = null, Expression<Func<bool>> socialHashtag = null, Expression<Func<bool>> socialMention = null, Expression<Func<string>> include = null, Expression<Func<string>> extraTypes = null, Expression<Func<string>> country = null, Expression<Func<double>> epsilon = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EntityGetResponse> __BuildEntityGet(WorkflowExpression<string> text = null, WorkflowExpression<string> html = null, WorkflowExpression<string> htmlFragment = null, WorkflowExpression<string> lang = null, WorkflowExpression<int> topEntities = null, WorkflowExpression<int> minConfidence = null, WorkflowExpression<int> minLength = null, WorkflowExpression<bool> socialHashtag = null, WorkflowExpression<bool> socialMention = null, WorkflowExpression<string> include = null, WorkflowExpression<string> extraTypes = null, WorkflowExpression<string> country = null, WorkflowExpression<double> epsilon = null)
-        {
-            WorkflowExpression.Validate(text, nameof(text), required: false);
-            WorkflowExpression.Validate(html, nameof(html), required: false);
-            WorkflowExpression.Validate(htmlFragment, nameof(htmlFragment), required: false);
-            WorkflowExpression.Validate(lang, nameof(lang), required: false);
-            WorkflowExpression.Validate(topEntities, nameof(topEntities), required: false);
-            WorkflowExpression.Validate(minConfidence, nameof(minConfidence), required: false);
-            WorkflowExpression.Validate(minLength, nameof(minLength), required: false);
-            WorkflowExpression.Validate(socialHashtag, nameof(socialHashtag), required: false);
-            WorkflowExpression.Validate(socialMention, nameof(socialMention), required: false);
-            WorkflowExpression.Validate(include, nameof(include), required: false);
-            WorkflowExpression.Validate(extraTypes, nameof(extraTypes), required: false);
-            WorkflowExpression.Validate(country, nameof(country), required: false);
-            WorkflowExpression.Validate(epsilon, nameof(epsilon), required: false);
+            var __workflow_text = text == null ? null : WorkflowExpression.Compile(text);
+            WorkflowExpression.Validate(__workflow_text, nameof(text), required: false);
+            var __workflow_html = html == null ? null : WorkflowExpression.Compile(html);
+            WorkflowExpression.Validate(__workflow_html, nameof(html), required: false);
+            var __workflow_htmlFragment = htmlFragment == null ? null : WorkflowExpression.Compile(htmlFragment);
+            WorkflowExpression.Validate(__workflow_htmlFragment, nameof(htmlFragment), required: false);
+            var __workflow_lang = lang == null ? null : WorkflowExpression.Compile(lang);
+            WorkflowExpression.Validate(__workflow_lang, nameof(lang), required: false);
+            var __workflow_topEntities = topEntities == null ? null : WorkflowExpression.Compile(topEntities);
+            WorkflowExpression.Validate(__workflow_topEntities, nameof(topEntities), required: false);
+            var __workflow_minConfidence = minConfidence == null ? null : WorkflowExpression.Compile(minConfidence);
+            WorkflowExpression.Validate(__workflow_minConfidence, nameof(minConfidence), required: false);
+            var __workflow_minLength = minLength == null ? null : WorkflowExpression.Compile(minLength);
+            WorkflowExpression.Validate(__workflow_minLength, nameof(minLength), required: false);
+            var __workflow_socialHashtag = socialHashtag == null ? null : WorkflowExpression.Compile(socialHashtag);
+            WorkflowExpression.Validate(__workflow_socialHashtag, nameof(socialHashtag), required: false);
+            var __workflow_socialMention = socialMention == null ? null : WorkflowExpression.Compile(socialMention);
+            WorkflowExpression.Validate(__workflow_socialMention, nameof(socialMention), required: false);
+            var __workflow_include = include == null ? null : WorkflowExpression.Compile(include);
+            WorkflowExpression.Validate(__workflow_include, nameof(include), required: false);
+            var __workflow_extraTypes = extraTypes == null ? null : WorkflowExpression.Compile(extraTypes);
+            WorkflowExpression.Validate(__workflow_extraTypes, nameof(extraTypes), required: false);
+            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
+            WorkflowExpression.Validate(__workflow_country, nameof(country), required: false);
+            var __workflow_epsilon = epsilon == null ? null : WorkflowExpression.Compile(epsilon);
+            WorkflowExpression.Validate(__workflow_epsilon, nameof(epsilon), required: false);
             return new DeferredBodyAction<EntityGetResponse>(() =>
             {
                 var apiCallPath = "/datatxt/nex/v1";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (text != null)
-                    callPayload.Queries["text"] = ExpressionConverter.Convert(text);
-                if (html != null)
-                    callPayload.Queries["html"] = ExpressionConverter.Convert(html);
-                if (htmlFragment != null)
-                    callPayload.Queries["html_fragment"] = ExpressionConverter.Convert(htmlFragment);
-                if (lang != null)
-                    callPayload.Queries["lang"] = ExpressionConverter.Convert(lang);
-                if (topEntities != null)
-                    callPayload.Queries["top_entities"] = ExpressionConverter.Convert(topEntities);
-                if (minConfidence != null)
-                    callPayload.Queries["min_confidence"] = ExpressionConverter.Convert(minConfidence);
-                if (minLength != null)
-                    callPayload.Queries["min_length"] = ExpressionConverter.Convert(minLength);
-                if (socialHashtag != null)
-                    callPayload.Queries["social.hashtag"] = ExpressionConverter.Convert(socialHashtag);
-                if (socialMention != null)
-                    callPayload.Queries["social.mention"] = ExpressionConverter.Convert(socialMention);
-                if (include != null)
-                    callPayload.Queries["include"] = ExpressionConverter.Convert(include);
-                if (extraTypes != null)
-                    callPayload.Queries["extra_types"] = ExpressionConverter.Convert(extraTypes);
-                if (country != null)
-                    callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-                if (epsilon != null)
-                    callPayload.Queries["epsilon"] = ExpressionConverter.Convert(epsilon);
+                if (__workflow_text != null)
+                    callPayload.Queries["text"] = ExpressionConverter.Convert(__workflow_text);
+                if (__workflow_html != null)
+                    callPayload.Queries["html"] = ExpressionConverter.Convert(__workflow_html);
+                if (__workflow_htmlFragment != null)
+                    callPayload.Queries["html_fragment"] = ExpressionConverter.Convert(__workflow_htmlFragment);
+                if (__workflow_lang != null)
+                    callPayload.Queries["lang"] = ExpressionConverter.Convert(__workflow_lang);
+                if (__workflow_topEntities != null)
+                    callPayload.Queries["top_entities"] = ExpressionConverter.Convert(__workflow_topEntities);
+                if (__workflow_minConfidence != null)
+                    callPayload.Queries["min_confidence"] = ExpressionConverter.Convert(__workflow_minConfidence);
+                if (__workflow_minLength != null)
+                    callPayload.Queries["min_length"] = ExpressionConverter.Convert(__workflow_minLength);
+                if (__workflow_socialHashtag != null)
+                    callPayload.Queries["social.hashtag"] = ExpressionConverter.Convert(__workflow_socialHashtag);
+                if (__workflow_socialMention != null)
+                    callPayload.Queries["social.mention"] = ExpressionConverter.Convert(__workflow_socialMention);
+                if (__workflow_include != null)
+                    callPayload.Queries["include"] = ExpressionConverter.Convert(__workflow_include);
+                if (__workflow_extraTypes != null)
+                    callPayload.Queries["extra_types"] = ExpressionConverter.Convert(__workflow_extraTypes);
+                if (__workflow_country != null)
+                    callPayload.Queries["country"] = ExpressionConverter.Convert(__workflow_country);
+                if (__workflow_epsilon != null)
+                    callPayload.Queries["epsilon"] = ExpressionConverter.Convert(__workflow_epsilon);
                 return new ApiConnectionAction<EntityGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dandelionip")]
-        [WorkflowExpressionFactory(nameof(__BuildSimilarityGet))]
-        public IBodyWorkflowAction<SimilarityGetResponse> SimilarityGet([WorkflowExpression] Func<string> text1 = null, [WorkflowExpression] Func<string> html1 = null, [WorkflowExpression] Func<string> htmlFragment1 = null, [WorkflowExpression] Func<string> text2 = null, [WorkflowExpression] Func<string> html2 = null, [WorkflowExpression] Func<string> htmlFragment2 = null, [WorkflowExpression] Func<string> lang = null, [WorkflowExpression] Func<bowInput> bow = null)
+        public IBodyWorkflowAction<SimilarityGetResponse> SimilarityGet(Expression<Func<string>> text1 = null, Expression<Func<string>> html1 = null, Expression<Func<string>> htmlFragment1 = null, Expression<Func<string>> text2 = null, Expression<Func<string>> html2 = null, Expression<Func<string>> htmlFragment2 = null, Expression<Func<string>> lang = null, Expression<Func<bowInput>> bow = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SimilarityGetResponse> __BuildSimilarityGet(WorkflowExpression<string> text1 = null, WorkflowExpression<string> html1 = null, WorkflowExpression<string> htmlFragment1 = null, WorkflowExpression<string> text2 = null, WorkflowExpression<string> html2 = null, WorkflowExpression<string> htmlFragment2 = null, WorkflowExpression<string> lang = null, WorkflowExpression<bowInput> bow = null)
-        {
-            WorkflowExpression.Validate(text1, nameof(text1), required: false);
-            WorkflowExpression.Validate(html1, nameof(html1), required: false);
-            WorkflowExpression.Validate(htmlFragment1, nameof(htmlFragment1), required: false);
-            WorkflowExpression.Validate(text2, nameof(text2), required: false);
-            WorkflowExpression.Validate(html2, nameof(html2), required: false);
-            WorkflowExpression.Validate(htmlFragment2, nameof(htmlFragment2), required: false);
-            WorkflowExpression.Validate(lang, nameof(lang), required: false);
-            WorkflowExpression.Validate(bow, nameof(bow), required: false);
+            var __workflow_text1 = text1 == null ? null : WorkflowExpression.Compile(text1);
+            WorkflowExpression.Validate(__workflow_text1, nameof(text1), required: false);
+            var __workflow_html1 = html1 == null ? null : WorkflowExpression.Compile(html1);
+            WorkflowExpression.Validate(__workflow_html1, nameof(html1), required: false);
+            var __workflow_htmlFragment1 = htmlFragment1 == null ? null : WorkflowExpression.Compile(htmlFragment1);
+            WorkflowExpression.Validate(__workflow_htmlFragment1, nameof(htmlFragment1), required: false);
+            var __workflow_text2 = text2 == null ? null : WorkflowExpression.Compile(text2);
+            WorkflowExpression.Validate(__workflow_text2, nameof(text2), required: false);
+            var __workflow_html2 = html2 == null ? null : WorkflowExpression.Compile(html2);
+            WorkflowExpression.Validate(__workflow_html2, nameof(html2), required: false);
+            var __workflow_htmlFragment2 = htmlFragment2 == null ? null : WorkflowExpression.Compile(htmlFragment2);
+            WorkflowExpression.Validate(__workflow_htmlFragment2, nameof(htmlFragment2), required: false);
+            var __workflow_lang = lang == null ? null : WorkflowExpression.Compile(lang);
+            WorkflowExpression.Validate(__workflow_lang, nameof(lang), required: false);
+            var __workflow_bow = bow == null ? null : WorkflowExpression.Compile(bow);
+            WorkflowExpression.Validate(__workflow_bow, nameof(bow), required: false);
             return new DeferredBodyAction<SimilarityGetResponse>(() =>
             {
                 var apiCallPath = "/datatxt/sim/v1";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (text1 != null)
-                    callPayload.Queries["text1"] = ExpressionConverter.Convert(text1);
-                if (html1 != null)
-                    callPayload.Queries["html1"] = ExpressionConverter.Convert(html1);
-                if (htmlFragment1 != null)
-                    callPayload.Queries["html_fragment1"] = ExpressionConverter.Convert(htmlFragment1);
-                if (text2 != null)
-                    callPayload.Queries["text2"] = ExpressionConverter.Convert(text2);
-                if (html2 != null)
-                    callPayload.Queries["html2"] = ExpressionConverter.Convert(html2);
-                if (htmlFragment2 != null)
-                    callPayload.Queries["html_fragment2"] = ExpressionConverter.Convert(htmlFragment2);
-                if (lang != null)
-                    callPayload.Queries["lang"] = ExpressionConverter.Convert(lang);
-                if (bow != null)
-                    callPayload.Queries["bow"] = ExpressionConverter.Convert(bow);
+                if (__workflow_text1 != null)
+                    callPayload.Queries["text1"] = ExpressionConverter.Convert(__workflow_text1);
+                if (__workflow_html1 != null)
+                    callPayload.Queries["html1"] = ExpressionConverter.Convert(__workflow_html1);
+                if (__workflow_htmlFragment1 != null)
+                    callPayload.Queries["html_fragment1"] = ExpressionConverter.Convert(__workflow_htmlFragment1);
+                if (__workflow_text2 != null)
+                    callPayload.Queries["text2"] = ExpressionConverter.Convert(__workflow_text2);
+                if (__workflow_html2 != null)
+                    callPayload.Queries["html2"] = ExpressionConverter.Convert(__workflow_html2);
+                if (__workflow_htmlFragment2 != null)
+                    callPayload.Queries["html_fragment2"] = ExpressionConverter.Convert(__workflow_htmlFragment2);
+                if (__workflow_lang != null)
+                    callPayload.Queries["lang"] = ExpressionConverter.Convert(__workflow_lang);
+                if (__workflow_bow != null)
+                    callPayload.Queries["bow"] = ExpressionConverter.Convert(__workflow_bow);
                 return new ApiConnectionAction<SimilarityGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dandelionip")]
-        [WorkflowExpressionFactory(nameof(__BuildLanguageGet))]
-        public IBodyWorkflowAction<LanguageGetResponse> LanguageGet([WorkflowExpression] Func<string> text = null, [WorkflowExpression] Func<string> html = null, [WorkflowExpression] Func<string> htmlFragment = null, [WorkflowExpression] Func<bool> clean = null)
+        public IBodyWorkflowAction<LanguageGetResponse> LanguageGet(Expression<Func<string>> text = null, Expression<Func<string>> html = null, Expression<Func<string>> htmlFragment = null, Expression<Func<bool>> clean = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<LanguageGetResponse> __BuildLanguageGet(WorkflowExpression<string> text = null, WorkflowExpression<string> html = null, WorkflowExpression<string> htmlFragment = null, WorkflowExpression<bool> clean = null)
-        {
-            WorkflowExpression.Validate(text, nameof(text), required: false);
-            WorkflowExpression.Validate(html, nameof(html), required: false);
-            WorkflowExpression.Validate(htmlFragment, nameof(htmlFragment), required: false);
-            WorkflowExpression.Validate(clean, nameof(clean), required: false);
+            var __workflow_text = text == null ? null : WorkflowExpression.Compile(text);
+            WorkflowExpression.Validate(__workflow_text, nameof(text), required: false);
+            var __workflow_html = html == null ? null : WorkflowExpression.Compile(html);
+            WorkflowExpression.Validate(__workflow_html, nameof(html), required: false);
+            var __workflow_htmlFragment = htmlFragment == null ? null : WorkflowExpression.Compile(htmlFragment);
+            WorkflowExpression.Validate(__workflow_htmlFragment, nameof(htmlFragment), required: false);
+            var __workflow_clean = clean == null ? null : WorkflowExpression.Compile(clean);
+            WorkflowExpression.Validate(__workflow_clean, nameof(clean), required: false);
             return new DeferredBodyAction<LanguageGetResponse>(() =>
             {
                 var apiCallPath = "/datatxt/li/v1";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (text != null)
-                    callPayload.Queries["text"] = ExpressionConverter.Convert(text);
-                if (html != null)
-                    callPayload.Queries["html"] = ExpressionConverter.Convert(html);
-                if (htmlFragment != null)
-                    callPayload.Queries["html_fragment"] = ExpressionConverter.Convert(htmlFragment);
-                if (clean != null)
-                    callPayload.Queries["clean"] = ExpressionConverter.Convert(clean);
+                if (__workflow_text != null)
+                    callPayload.Queries["text"] = ExpressionConverter.Convert(__workflow_text);
+                if (__workflow_html != null)
+                    callPayload.Queries["html"] = ExpressionConverter.Convert(__workflow_html);
+                if (__workflow_htmlFragment != null)
+                    callPayload.Queries["html_fragment"] = ExpressionConverter.Convert(__workflow_htmlFragment);
+                if (__workflow_clean != null)
+                    callPayload.Queries["clean"] = ExpressionConverter.Convert(__workflow_clean);
                 return new ApiConnectionAction<LanguageGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dandelionip")]
-        [WorkflowExpressionFactory(nameof(__BuildSentimentGet))]
-        public IBodyWorkflowAction<SentimentGetResponse> SentimentGet([WorkflowExpression] Func<string> text = null, [WorkflowExpression] Func<string> html = null, [WorkflowExpression] Func<string> htmlFragment = null, [WorkflowExpression] Func<string> lang = null)
+        public IBodyWorkflowAction<SentimentGetResponse> SentimentGet(Expression<Func<string>> text = null, Expression<Func<string>> html = null, Expression<Func<string>> htmlFragment = null, Expression<Func<string>> lang = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SentimentGetResponse> __BuildSentimentGet(WorkflowExpression<string> text = null, WorkflowExpression<string> html = null, WorkflowExpression<string> htmlFragment = null, WorkflowExpression<string> lang = null)
-        {
-            WorkflowExpression.Validate(text, nameof(text), required: false);
-            WorkflowExpression.Validate(html, nameof(html), required: false);
-            WorkflowExpression.Validate(htmlFragment, nameof(htmlFragment), required: false);
-            WorkflowExpression.Validate(lang, nameof(lang), required: false);
+            var __workflow_text = text == null ? null : WorkflowExpression.Compile(text);
+            WorkflowExpression.Validate(__workflow_text, nameof(text), required: false);
+            var __workflow_html = html == null ? null : WorkflowExpression.Compile(html);
+            WorkflowExpression.Validate(__workflow_html, nameof(html), required: false);
+            var __workflow_htmlFragment = htmlFragment == null ? null : WorkflowExpression.Compile(htmlFragment);
+            WorkflowExpression.Validate(__workflow_htmlFragment, nameof(htmlFragment), required: false);
+            var __workflow_lang = lang == null ? null : WorkflowExpression.Compile(lang);
+            WorkflowExpression.Validate(__workflow_lang, nameof(lang), required: false);
             return new DeferredBodyAction<SentimentGetResponse>(() =>
             {
                 var apiCallPath = "/datatxt/sent/v1";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (text != null)
-                    callPayload.Queries["text"] = ExpressionConverter.Convert(text);
-                if (html != null)
-                    callPayload.Queries["html"] = ExpressionConverter.Convert(html);
-                if (htmlFragment != null)
-                    callPayload.Queries["html_fragment"] = ExpressionConverter.Convert(htmlFragment);
-                if (lang != null)
-                    callPayload.Queries["lang"] = ExpressionConverter.Convert(lang);
+                if (__workflow_text != null)
+                    callPayload.Queries["text"] = ExpressionConverter.Convert(__workflow_text);
+                if (__workflow_html != null)
+                    callPayload.Queries["html"] = ExpressionConverter.Convert(__workflow_html);
+                if (__workflow_htmlFragment != null)
+                    callPayload.Queries["html_fragment"] = ExpressionConverter.Convert(__workflow_htmlFragment);
+                if (__workflow_lang != null)
+                    callPayload.Queries["lang"] = ExpressionConverter.Convert(__workflow_lang);
                 return new ApiConnectionAction<SentimentGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dandelionip")]
-        [WorkflowExpressionFactory(nameof(__BuildWikipediaGet))]
-        public IBodyWorkflowAction<WikipediaGetResponse> WikipediaGet([WorkflowExpression] Func<string> text, [WorkflowExpression] Func<langInput> lang, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<queryInput> query = null, [WorkflowExpression] Func<string> include = null)
+        public IBodyWorkflowAction<WikipediaGetResponse> WikipediaGet(Expression<Func<string>> text, Expression<Func<langInput>> lang, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<queryInput>> query = null, Expression<Func<string>> include = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<WikipediaGetResponse> __BuildWikipediaGet(WorkflowExpression<string> text, WorkflowExpression<langInput> lang, WorkflowExpression<int> limit = null, WorkflowExpression<int> offset = null, WorkflowExpression<queryInput> query = null, WorkflowExpression<string> include = null)
-        {
-            WorkflowExpression.Validate(text, nameof(text), required: true);
-            WorkflowExpression.Validate(lang, nameof(lang), required: true);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(offset, nameof(offset), required: false);
-            WorkflowExpression.Validate(query, nameof(query), required: false);
-            WorkflowExpression.Validate(include, nameof(include), required: false);
+            var __workflow_text = text == null ? null : WorkflowExpression.Compile(text);
+            WorkflowExpression.Validate(__workflow_text, nameof(text), required: true);
+            var __workflow_lang = lang == null ? null : WorkflowExpression.Compile(lang);
+            WorkflowExpression.Validate(__workflow_lang, nameof(lang), required: true);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_query = query == null ? null : WorkflowExpression.Compile(query);
+            WorkflowExpression.Validate(__workflow_query, nameof(query), required: false);
+            var __workflow_include = include == null ? null : WorkflowExpression.Compile(include);
+            WorkflowExpression.Validate(__workflow_include, nameof(include), required: false);
             return new DeferredBodyAction<WikipediaGetResponse>(() =>
             {
                 var apiCallPath = "/datagraph/wikisearch/v1";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["text"] = ExpressionConverter.Convert(text);
-                callPayload.Queries["lang"] = ExpressionConverter.Convert(lang);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (offset != null)
-                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-                if (query != null)
-                    callPayload.Queries["query"] = ExpressionConverter.Convert(query);
-                if (include != null)
-                    callPayload.Queries["include"] = ExpressionConverter.Convert(include);
+                callPayload.Queries["text"] = ExpressionConverter.Convert(__workflow_text);
+                callPayload.Queries["lang"] = ExpressionConverter.Convert(__workflow_lang);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                if (__workflow_query != null)
+                    callPayload.Queries["query"] = ExpressionConverter.Convert(__workflow_query);
+                if (__workflow_include != null)
+                    callPayload.Queries["include"] = ExpressionConverter.Convert(__workflow_include);
                 return new ApiConnectionAction<WikipediaGetResponse>(callPayload);
             });
         }

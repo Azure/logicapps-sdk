@@ -1,29 +1,24 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class LeaddeskActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leaddesk")]
-        [WorkflowExpressionFactory(nameof(__BuildAgentCampaignAccess))]
-        public IBodyWorkflowAction<AgentCampaignAccessResponse> AgentCampaignAccess([WorkflowExpression] Func<int> agentId, [WorkflowExpression] Func<int> campaignId, [WorkflowExpression] Func<typeInput> type)
+        public IBodyWorkflowAction<AgentCampaignAccessResponse> AgentCampaignAccess(Expression<Func<int>> agentId, Expression<Func<int>> campaignId, Expression<Func<typeInput>> type)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AgentCampaignAccessResponse> __BuildAgentCampaignAccess(WorkflowExpression<int> agentId, WorkflowExpression<int> campaignId, WorkflowExpression<typeInput> type)
-        {
-            WorkflowExpression.Validate(agentId, nameof(agentId), required: true);
-            WorkflowExpression.Validate(campaignId, nameof(campaignId), required: true);
-            WorkflowExpression.Validate(type, nameof(type), required: true);
+            var __workflow_agentId = agentId == null ? null : WorkflowExpression.Compile(agentId);
+            WorkflowExpression.Validate(__workflow_agentId, nameof(agentId), required: true);
+            var __workflow_campaignId = campaignId == null ? null : WorkflowExpression.Compile(campaignId);
+            WorkflowExpression.Validate(__workflow_campaignId, nameof(campaignId), required: true);
+            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
+            WorkflowExpression.Validate(__workflow_type, nameof(type), required: true);
             return new DeferredBodyAction<AgentCampaignAccessResponse>(() =>
             {
                 var apiCallPath = "/agent_campaign_access";
@@ -31,47 +26,64 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["mod"] = Convert.ToString("agent");
                 callPayload.Queries["cmd"] = Convert.ToString("modify_campaign_access");
-                callPayload.Queries["agent_id"] = ExpressionConverter.Convert(agentId);
-                callPayload.Queries["campaign_id"] = ExpressionConverter.Convert(campaignId);
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                callPayload.Queries["agent_id"] = ExpressionConverter.Convert(__workflow_agentId);
+                callPayload.Queries["campaign_id"] = ExpressionConverter.Convert(__workflow_campaignId);
+                callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
                 return new ApiConnectionAction<AgentCampaignAccessResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leaddesk")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateAgent))]
-        public IBodyWorkflowAction<CreateAgentResponse> CreateAgent([WorkflowExpression] Func<string> bodyaccountexternalId = null, [WorkflowExpression] Func<string> bodyaccountinboundNumber = null, [WorkflowExpression] Func<string> bodyaccountlang = null, [WorkflowExpression] Func<string> bodyaccountpassword = null, [WorkflowExpression] Func<string> bodyaccounttimeZone = null, [WorkflowExpression] Func<string> bodyaccountusername = null, [WorkflowExpression] Func<string> bodyaccountvoipUsername = null, [WorkflowExpression] Func<string> bodycontactInformationaddress = null, [WorkflowExpression] Func<string> bodycontactInformationcity = null, [WorkflowExpression] Func<string> bodycontactInformationcountry = null, [WorkflowExpression] Func<string> bodycontactInformationeContacts = null, [WorkflowExpression] Func<string> bodycontactInformationemail = null, [WorkflowExpression] Func<string> bodycontactInformationname = null, [WorkflowExpression] Func<string> bodycontactInformationphone = null, [WorkflowExpression] Func<string> bodycontactInformationpostal = null, [WorkflowExpression] Func<string> bodycontactInformationworkphone = null, [WorkflowExpression] Func<int> bodyemploymentagentGroupId = null, [WorkflowExpression] Func<string> bodyemploymentbankAcc = null, [WorkflowExpression] Func<string> bodyemploymentdescription = null, [WorkflowExpression] Func<bodyemploymentemploymentInput> bodyemploymentemployment = null, [WorkflowExpression] Func<string> bodyemploymentemploymentStart = null, [WorkflowExpression] Func<string> bodyemploymentoffice = null, [WorkflowExpression] Func<string> bodyemploymentssn = null, [WorkflowExpression] Func<string> bodyemploymentworkshift = null)
+        public IBodyWorkflowAction<CreateAgentResponse> CreateAgent(Expression<Func<string>> bodyaccountexternalId = null, Expression<Func<string>> bodyaccountinboundNumber = null, Expression<Func<string>> bodyaccountlang = null, Expression<Func<string>> bodyaccountpassword = null, Expression<Func<string>> bodyaccounttimeZone = null, Expression<Func<string>> bodyaccountusername = null, Expression<Func<string>> bodyaccountvoipUsername = null, Expression<Func<string>> bodycontactInformationaddress = null, Expression<Func<string>> bodycontactInformationcity = null, Expression<Func<string>> bodycontactInformationcountry = null, Expression<Func<string>> bodycontactInformationeContacts = null, Expression<Func<string>> bodycontactInformationemail = null, Expression<Func<string>> bodycontactInformationname = null, Expression<Func<string>> bodycontactInformationphone = null, Expression<Func<string>> bodycontactInformationpostal = null, Expression<Func<string>> bodycontactInformationworkphone = null, Expression<Func<int>> bodyemploymentagentGroupId = null, Expression<Func<string>> bodyemploymentbankAcc = null, Expression<Func<string>> bodyemploymentdescription = null, Expression<Func<bodyemploymentemploymentInput>> bodyemploymentemployment = null, Expression<Func<string>> bodyemploymentemploymentStart = null, Expression<Func<string>> bodyemploymentoffice = null, Expression<Func<string>> bodyemploymentssn = null, Expression<Func<string>> bodyemploymentworkshift = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateAgentResponse> __BuildCreateAgent(WorkflowExpression<string> bodyaccountexternalId = null, WorkflowExpression<string> bodyaccountinboundNumber = null, WorkflowExpression<string> bodyaccountlang = null, WorkflowExpression<string> bodyaccountpassword = null, WorkflowExpression<string> bodyaccounttimeZone = null, WorkflowExpression<string> bodyaccountusername = null, WorkflowExpression<string> bodyaccountvoipUsername = null, WorkflowExpression<string> bodycontactInformationaddress = null, WorkflowExpression<string> bodycontactInformationcity = null, WorkflowExpression<string> bodycontactInformationcountry = null, WorkflowExpression<string> bodycontactInformationeContacts = null, WorkflowExpression<string> bodycontactInformationemail = null, WorkflowExpression<string> bodycontactInformationname = null, WorkflowExpression<string> bodycontactInformationphone = null, WorkflowExpression<string> bodycontactInformationpostal = null, WorkflowExpression<string> bodycontactInformationworkphone = null, WorkflowExpression<int> bodyemploymentagentGroupId = null, WorkflowExpression<string> bodyemploymentbankAcc = null, WorkflowExpression<string> bodyemploymentdescription = null, WorkflowExpression<bodyemploymentemploymentInput> bodyemploymentemployment = null, WorkflowExpression<string> bodyemploymentemploymentStart = null, WorkflowExpression<string> bodyemploymentoffice = null, WorkflowExpression<string> bodyemploymentssn = null, WorkflowExpression<string> bodyemploymentworkshift = null)
-        {
-            WorkflowExpression.Validate(bodyaccountexternalId, nameof(bodyaccountexternalId), required: false);
-            WorkflowExpression.Validate(bodyaccountinboundNumber, nameof(bodyaccountinboundNumber), required: false);
-            WorkflowExpression.Validate(bodyaccountlang, nameof(bodyaccountlang), required: false);
-            WorkflowExpression.Validate(bodyaccountpassword, nameof(bodyaccountpassword), required: false);
-            WorkflowExpression.Validate(bodyaccounttimeZone, nameof(bodyaccounttimeZone), required: false);
-            WorkflowExpression.Validate(bodyaccountusername, nameof(bodyaccountusername), required: false);
-            WorkflowExpression.Validate(bodyaccountvoipUsername, nameof(bodyaccountvoipUsername), required: false);
-            WorkflowExpression.Validate(bodycontactInformationaddress, nameof(bodycontactInformationaddress), required: false);
-            WorkflowExpression.Validate(bodycontactInformationcity, nameof(bodycontactInformationcity), required: false);
-            WorkflowExpression.Validate(bodycontactInformationcountry, nameof(bodycontactInformationcountry), required: false);
-            WorkflowExpression.Validate(bodycontactInformationeContacts, nameof(bodycontactInformationeContacts), required: false);
-            WorkflowExpression.Validate(bodycontactInformationemail, nameof(bodycontactInformationemail), required: false);
-            WorkflowExpression.Validate(bodycontactInformationname, nameof(bodycontactInformationname), required: false);
-            WorkflowExpression.Validate(bodycontactInformationphone, nameof(bodycontactInformationphone), required: false);
-            WorkflowExpression.Validate(bodycontactInformationpostal, nameof(bodycontactInformationpostal), required: false);
-            WorkflowExpression.Validate(bodycontactInformationworkphone, nameof(bodycontactInformationworkphone), required: false);
-            WorkflowExpression.Validate(bodyemploymentagentGroupId, nameof(bodyemploymentagentGroupId), required: false);
-            WorkflowExpression.Validate(bodyemploymentbankAcc, nameof(bodyemploymentbankAcc), required: false);
-            WorkflowExpression.Validate(bodyemploymentdescription, nameof(bodyemploymentdescription), required: false);
-            WorkflowExpression.Validate(bodyemploymentemployment, nameof(bodyemploymentemployment), required: false);
-            WorkflowExpression.Validate(bodyemploymentemploymentStart, nameof(bodyemploymentemploymentStart), required: false);
-            WorkflowExpression.Validate(bodyemploymentoffice, nameof(bodyemploymentoffice), required: false);
-            WorkflowExpression.Validate(bodyemploymentssn, nameof(bodyemploymentssn), required: false);
-            WorkflowExpression.Validate(bodyemploymentworkshift, nameof(bodyemploymentworkshift), required: false);
+            var __workflow_bodyaccountexternalId = bodyaccountexternalId == null ? null : WorkflowExpression.Compile(bodyaccountexternalId);
+            WorkflowExpression.Validate(__workflow_bodyaccountexternalId, nameof(bodyaccountexternalId), required: false);
+            var __workflow_bodyaccountinboundNumber = bodyaccountinboundNumber == null ? null : WorkflowExpression.Compile(bodyaccountinboundNumber);
+            WorkflowExpression.Validate(__workflow_bodyaccountinboundNumber, nameof(bodyaccountinboundNumber), required: false);
+            var __workflow_bodyaccountlang = bodyaccountlang == null ? null : WorkflowExpression.Compile(bodyaccountlang);
+            WorkflowExpression.Validate(__workflow_bodyaccountlang, nameof(bodyaccountlang), required: false);
+            var __workflow_bodyaccountpassword = bodyaccountpassword == null ? null : WorkflowExpression.Compile(bodyaccountpassword);
+            WorkflowExpression.Validate(__workflow_bodyaccountpassword, nameof(bodyaccountpassword), required: false);
+            var __workflow_bodyaccounttimeZone = bodyaccounttimeZone == null ? null : WorkflowExpression.Compile(bodyaccounttimeZone);
+            WorkflowExpression.Validate(__workflow_bodyaccounttimeZone, nameof(bodyaccounttimeZone), required: false);
+            var __workflow_bodyaccountusername = bodyaccountusername == null ? null : WorkflowExpression.Compile(bodyaccountusername);
+            WorkflowExpression.Validate(__workflow_bodyaccountusername, nameof(bodyaccountusername), required: false);
+            var __workflow_bodyaccountvoipUsername = bodyaccountvoipUsername == null ? null : WorkflowExpression.Compile(bodyaccountvoipUsername);
+            WorkflowExpression.Validate(__workflow_bodyaccountvoipUsername, nameof(bodyaccountvoipUsername), required: false);
+            var __workflow_bodycontactInformationaddress = bodycontactInformationaddress == null ? null : WorkflowExpression.Compile(bodycontactInformationaddress);
+            WorkflowExpression.Validate(__workflow_bodycontactInformationaddress, nameof(bodycontactInformationaddress), required: false);
+            var __workflow_bodycontactInformationcity = bodycontactInformationcity == null ? null : WorkflowExpression.Compile(bodycontactInformationcity);
+            WorkflowExpression.Validate(__workflow_bodycontactInformationcity, nameof(bodycontactInformationcity), required: false);
+            var __workflow_bodycontactInformationcountry = bodycontactInformationcountry == null ? null : WorkflowExpression.Compile(bodycontactInformationcountry);
+            WorkflowExpression.Validate(__workflow_bodycontactInformationcountry, nameof(bodycontactInformationcountry), required: false);
+            var __workflow_bodycontactInformationeContacts = bodycontactInformationeContacts == null ? null : WorkflowExpression.Compile(bodycontactInformationeContacts);
+            WorkflowExpression.Validate(__workflow_bodycontactInformationeContacts, nameof(bodycontactInformationeContacts), required: false);
+            var __workflow_bodycontactInformationemail = bodycontactInformationemail == null ? null : WorkflowExpression.Compile(bodycontactInformationemail);
+            WorkflowExpression.Validate(__workflow_bodycontactInformationemail, nameof(bodycontactInformationemail), required: false);
+            var __workflow_bodycontactInformationname = bodycontactInformationname == null ? null : WorkflowExpression.Compile(bodycontactInformationname);
+            WorkflowExpression.Validate(__workflow_bodycontactInformationname, nameof(bodycontactInformationname), required: false);
+            var __workflow_bodycontactInformationphone = bodycontactInformationphone == null ? null : WorkflowExpression.Compile(bodycontactInformationphone);
+            WorkflowExpression.Validate(__workflow_bodycontactInformationphone, nameof(bodycontactInformationphone), required: false);
+            var __workflow_bodycontactInformationpostal = bodycontactInformationpostal == null ? null : WorkflowExpression.Compile(bodycontactInformationpostal);
+            WorkflowExpression.Validate(__workflow_bodycontactInformationpostal, nameof(bodycontactInformationpostal), required: false);
+            var __workflow_bodycontactInformationworkphone = bodycontactInformationworkphone == null ? null : WorkflowExpression.Compile(bodycontactInformationworkphone);
+            WorkflowExpression.Validate(__workflow_bodycontactInformationworkphone, nameof(bodycontactInformationworkphone), required: false);
+            var __workflow_bodyemploymentagentGroupId = bodyemploymentagentGroupId == null ? null : WorkflowExpression.Compile(bodyemploymentagentGroupId);
+            WorkflowExpression.Validate(__workflow_bodyemploymentagentGroupId, nameof(bodyemploymentagentGroupId), required: false);
+            var __workflow_bodyemploymentbankAcc = bodyemploymentbankAcc == null ? null : WorkflowExpression.Compile(bodyemploymentbankAcc);
+            WorkflowExpression.Validate(__workflow_bodyemploymentbankAcc, nameof(bodyemploymentbankAcc), required: false);
+            var __workflow_bodyemploymentdescription = bodyemploymentdescription == null ? null : WorkflowExpression.Compile(bodyemploymentdescription);
+            WorkflowExpression.Validate(__workflow_bodyemploymentdescription, nameof(bodyemploymentdescription), required: false);
+            var __workflow_bodyemploymentemployment = bodyemploymentemployment == null ? null : WorkflowExpression.Compile(bodyemploymentemployment);
+            WorkflowExpression.Validate(__workflow_bodyemploymentemployment, nameof(bodyemploymentemployment), required: false);
+            var __workflow_bodyemploymentemploymentStart = bodyemploymentemploymentStart == null ? null : WorkflowExpression.Compile(bodyemploymentemploymentStart);
+            WorkflowExpression.Validate(__workflow_bodyemploymentemploymentStart, nameof(bodyemploymentemploymentStart), required: false);
+            var __workflow_bodyemploymentoffice = bodyemploymentoffice == null ? null : WorkflowExpression.Compile(bodyemploymentoffice);
+            WorkflowExpression.Validate(__workflow_bodyemploymentoffice, nameof(bodyemploymentoffice), required: false);
+            var __workflow_bodyemploymentssn = bodyemploymentssn == null ? null : WorkflowExpression.Compile(bodyemploymentssn);
+            WorkflowExpression.Validate(__workflow_bodyemploymentssn, nameof(bodyemploymentssn), required: false);
+            var __workflow_bodyemploymentworkshift = bodyemploymentworkshift == null ? null : WorkflowExpression.Compile(bodyemploymentworkshift);
+            WorkflowExpression.Validate(__workflow_bodyemploymentworkshift, nameof(bodyemploymentworkshift), required: false);
             return new DeferredBodyAction<CreateAgentResponse>(() =>
             {
                 var apiCallPath = "/create_agent";
@@ -83,37 +95,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
                 var bodypropCount = 0;
                 var accountObject = new JObject();
                 var accountObjectpropCount = 0;
-                if (bodyaccountexternalId != null)
+                if (__workflow_bodyaccountexternalId != null)
                 {
-                    accountObject["external_id"] = ExpressionConverter.ConvertO(bodyaccountexternalId);
+                    accountObject["external_id"] = ExpressionConverter.ConvertO(__workflow_bodyaccountexternalId);
                     accountObjectpropCount++;
                 }
 
-                if (bodyaccountinboundNumber != null)
+                if (__workflow_bodyaccountinboundNumber != null)
                 {
-                    accountObject["inbound_number"] = ExpressionConverter.ConvertO(bodyaccountinboundNumber);
+                    accountObject["inbound_number"] = ExpressionConverter.ConvertO(__workflow_bodyaccountinboundNumber);
                     accountObjectpropCount++;
                 }
 
-                if (bodyaccountlang != null)
+                if (__workflow_bodyaccountlang != null)
                 {
-                    accountObject["lang"] = ExpressionConverter.ConvertO(bodyaccountlang);
+                    accountObject["lang"] = ExpressionConverter.ConvertO(__workflow_bodyaccountlang);
                     accountObjectpropCount++;
                 }
 
                 accountObject["level"] = "agent";
                 accountObjectpropCount++;
-                if (bodyaccountpassword != null)
+                if (__workflow_bodyaccountpassword != null)
                 {
-                    accountObject["password"] = ExpressionConverter.ConvertO(bodyaccountpassword);
+                    accountObject["password"] = ExpressionConverter.ConvertO(__workflow_bodyaccountpassword);
                     accountObjectpropCount++;
                 }
 
-                if (bodyaccounttimeZone != null)
+                if (__workflow_bodyaccounttimeZone != null)
                 {
-                    if (bodyaccounttimeZone != null)
+                    if (__workflow_bodyaccounttimeZone != null)
                     {
-                        accountObject["time_zone"] = ExpressionConverter.ConvertO(bodyaccounttimeZone);
+                        accountObject["time_zone"] = ExpressionConverter.ConvertO(__workflow_bodyaccounttimeZone);
                         accountObjectpropCount++;
                     }
 
@@ -125,15 +137,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
                     accountObjectpropCount++;
                 }
 
-                if (bodyaccountusername != null)
+                if (__workflow_bodyaccountusername != null)
                 {
-                    accountObject["username"] = ExpressionConverter.ConvertO(bodyaccountusername);
+                    accountObject["username"] = ExpressionConverter.ConvertO(__workflow_bodyaccountusername);
                     accountObjectpropCount++;
                 }
 
-                if (bodyaccountvoipUsername != null)
+                if (__workflow_bodyaccountvoipUsername != null)
                 {
-                    accountObject["voip_username"] = ExpressionConverter.ConvertO(bodyaccountvoipUsername);
+                    accountObject["voip_username"] = ExpressionConverter.ConvertO(__workflow_bodyaccountvoipUsername);
                     accountObjectpropCount++;
                 }
 
@@ -145,57 +157,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
 
                 var contactInformationObject = new JObject();
                 var contactInformationObjectpropCount = 0;
-                if (bodycontactInformationaddress != null)
+                if (__workflow_bodycontactInformationaddress != null)
                 {
-                    contactInformationObject["address"] = ExpressionConverter.ConvertO(bodycontactInformationaddress);
+                    contactInformationObject["address"] = ExpressionConverter.ConvertO(__workflow_bodycontactInformationaddress);
                     contactInformationObjectpropCount++;
                 }
 
-                if (bodycontactInformationcity != null)
+                if (__workflow_bodycontactInformationcity != null)
                 {
-                    contactInformationObject["city"] = ExpressionConverter.ConvertO(bodycontactInformationcity);
+                    contactInformationObject["city"] = ExpressionConverter.ConvertO(__workflow_bodycontactInformationcity);
                     contactInformationObjectpropCount++;
                 }
 
-                if (bodycontactInformationcountry != null)
+                if (__workflow_bodycontactInformationcountry != null)
                 {
-                    contactInformationObject["country"] = ExpressionConverter.ConvertO(bodycontactInformationcountry);
+                    contactInformationObject["country"] = ExpressionConverter.ConvertO(__workflow_bodycontactInformationcountry);
                     contactInformationObjectpropCount++;
                 }
 
-                if (bodycontactInformationeContacts != null)
+                if (__workflow_bodycontactInformationeContacts != null)
                 {
-                    contactInformationObject["e_contacts"] = ExpressionConverter.ConvertO(bodycontactInformationeContacts);
+                    contactInformationObject["e_contacts"] = ExpressionConverter.ConvertO(__workflow_bodycontactInformationeContacts);
                     contactInformationObjectpropCount++;
                 }
 
-                if (bodycontactInformationemail != null)
+                if (__workflow_bodycontactInformationemail != null)
                 {
-                    contactInformationObject["email"] = ExpressionConverter.ConvertO(bodycontactInformationemail);
+                    contactInformationObject["email"] = ExpressionConverter.ConvertO(__workflow_bodycontactInformationemail);
                     contactInformationObjectpropCount++;
                 }
 
-                if (bodycontactInformationname != null)
+                if (__workflow_bodycontactInformationname != null)
                 {
-                    contactInformationObject["name"] = ExpressionConverter.ConvertO(bodycontactInformationname);
+                    contactInformationObject["name"] = ExpressionConverter.ConvertO(__workflow_bodycontactInformationname);
                     contactInformationObjectpropCount++;
                 }
 
-                if (bodycontactInformationphone != null)
+                if (__workflow_bodycontactInformationphone != null)
                 {
-                    contactInformationObject["phone"] = ExpressionConverter.ConvertO(bodycontactInformationphone);
+                    contactInformationObject["phone"] = ExpressionConverter.ConvertO(__workflow_bodycontactInformationphone);
                     contactInformationObjectpropCount++;
                 }
 
-                if (bodycontactInformationpostal != null)
+                if (__workflow_bodycontactInformationpostal != null)
                 {
-                    contactInformationObject["postal"] = ExpressionConverter.ConvertO(bodycontactInformationpostal);
+                    contactInformationObject["postal"] = ExpressionConverter.ConvertO(__workflow_bodycontactInformationpostal);
                     contactInformationObjectpropCount++;
                 }
 
-                if (bodycontactInformationworkphone != null)
+                if (__workflow_bodycontactInformationworkphone != null)
                 {
-                    contactInformationObject["workphone"] = ExpressionConverter.ConvertO(bodycontactInformationworkphone);
+                    contactInformationObject["workphone"] = ExpressionConverter.ConvertO(__workflow_bodycontactInformationworkphone);
                     contactInformationObjectpropCount++;
                 }
 
@@ -207,29 +219,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
 
                 var employmentObject = new JObject();
                 var employmentObjectpropCount = 0;
-                if (bodyemploymentagentGroupId != null)
+                if (__workflow_bodyemploymentagentGroupId != null)
                 {
-                    employmentObject["agent_group_id"] = ExpressionConverter.ConvertO(bodyemploymentagentGroupId);
+                    employmentObject["agent_group_id"] = ExpressionConverter.ConvertO(__workflow_bodyemploymentagentGroupId);
                     employmentObjectpropCount++;
                 }
 
-                if (bodyemploymentbankAcc != null)
+                if (__workflow_bodyemploymentbankAcc != null)
                 {
-                    employmentObject["bank_acc"] = ExpressionConverter.ConvertO(bodyemploymentbankAcc);
+                    employmentObject["bank_acc"] = ExpressionConverter.ConvertO(__workflow_bodyemploymentbankAcc);
                     employmentObjectpropCount++;
                 }
 
-                if (bodyemploymentdescription != null)
+                if (__workflow_bodyemploymentdescription != null)
                 {
-                    employmentObject["description"] = ExpressionConverter.ConvertO(bodyemploymentdescription);
+                    employmentObject["description"] = ExpressionConverter.ConvertO(__workflow_bodyemploymentdescription);
                     employmentObjectpropCount++;
                 }
 
-                if (bodyemploymentemployment != null)
+                if (__workflow_bodyemploymentemployment != null)
                 {
-                    if (bodyemploymentemployment != null)
+                    if (__workflow_bodyemploymentemployment != null)
                     {
-                        employmentObject["employment"] = ExpressionConverter.ConvertO(bodyemploymentemployment);
+                        employmentObject["employment"] = ExpressionConverter.ConvertO(__workflow_bodyemploymentemployment);
                         employmentObjectpropCount++;
                     }
 
@@ -241,27 +253,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
                     employmentObjectpropCount++;
                 }
 
-                if (bodyemploymentemploymentStart != null)
+                if (__workflow_bodyemploymentemploymentStart != null)
                 {
-                    employmentObject["employment_start"] = ExpressionConverter.ConvertO(bodyemploymentemploymentStart);
+                    employmentObject["employment_start"] = ExpressionConverter.ConvertO(__workflow_bodyemploymentemploymentStart);
                     employmentObjectpropCount++;
                 }
 
-                if (bodyemploymentoffice != null)
+                if (__workflow_bodyemploymentoffice != null)
                 {
-                    employmentObject["office"] = ExpressionConverter.ConvertO(bodyemploymentoffice);
+                    employmentObject["office"] = ExpressionConverter.ConvertO(__workflow_bodyemploymentoffice);
                     employmentObjectpropCount++;
                 }
 
-                if (bodyemploymentssn != null)
+                if (__workflow_bodyemploymentssn != null)
                 {
-                    employmentObject["ssn"] = ExpressionConverter.ConvertO(bodyemploymentssn);
+                    employmentObject["ssn"] = ExpressionConverter.ConvertO(__workflow_bodyemploymentssn);
                     employmentObjectpropCount++;
                 }
 
-                if (bodyemploymentworkshift != null)
+                if (__workflow_bodyemploymentworkshift != null)
                 {
-                    employmentObject["workshift"] = ExpressionConverter.ConvertO(bodyemploymentworkshift);
+                    employmentObject["workshift"] = ExpressionConverter.ConvertO(__workflow_bodyemploymentworkshift);
                     employmentObjectpropCount++;
                 }
 
@@ -281,66 +293,110 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leaddesk")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateCallback))]
-        public IBodyWorkflowAction<CreateCallbackResponse> CreateCallback([WorkflowExpression] Func<string> bodycontactaddress = null, [WorkflowExpression] Func<string> bodycontactcity = null, [WorkflowExpression] Func<int> bodycontactcompanyid = null, [WorkflowExpression] Func<string> bodycontactcontactList = null, [WorkflowExpression] Func<string> bodycontactcontactid = null, [WorkflowExpression] Func<string> bodycontactcountry = null, [WorkflowExpression] Func<string> bodycontactfname = null, [WorkflowExpression] Func<string> bodycontactlname = null, [WorkflowExpression] Func<string> bodycontactother1 = null, [WorkflowExpression] Func<string> bodycontactother2 = null, [WorkflowExpression] Func<string> bodycontactother3 = null, [WorkflowExpression] Func<string> bodycontactother4 = null, [WorkflowExpression] Func<string> bodycontactother5 = null, [WorkflowExpression] Func<string> bodycontactother6 = null, [WorkflowExpression] Func<string> bodycontactother7 = null, [WorkflowExpression] Func<string> bodycontactother8 = null, [WorkflowExpression] Func<string> bodycontactother9 = null, [WorkflowExpression] Func<string> bodycontactother10 = null, [WorkflowExpression] Func<string> bodycontactother11 = null, [WorkflowExpression] Func<string> bodycontactother12 = null, [WorkflowExpression] Func<string> bodycontactother13 = null, [WorkflowExpression] Func<string> bodycontactother14 = null, [WorkflowExpression] Func<string> bodycontactother15 = null, [WorkflowExpression] Func<string> bodycontactother16 = null, [WorkflowExpression] Func<string> bodycontactother17 = null, [WorkflowExpression] Func<string> bodycontactother18 = null, [WorkflowExpression] Func<string> bodycontactother19 = null, [WorkflowExpression] Func<string> bodycontactother20 = null, [WorkflowExpression] Func<string> bodycontactother21 = null, [WorkflowExpression] Func<string> bodycontactother22 = null, [WorkflowExpression] Func<string> bodycontactother23 = null, [WorkflowExpression] Func<string> bodycontactother24 = null, [WorkflowExpression] Func<string> bodycontactother25 = null, [WorkflowExpression] Func<string> bodycontactother26 = null, [WorkflowExpression] Func<string> bodycontactother27 = null, [WorkflowExpression] Func<string> bodycontactother28 = null, [WorkflowExpression] Func<string> bodycontactother29 = null, [WorkflowExpression] Func<string> bodycontactother30 = null, [WorkflowExpression] Func<string> bodycontactother31 = null, [WorkflowExpression] Func<string> bodycontactother32 = null, [WorkflowExpression] Func<string> bodycontactother33 = null, [WorkflowExpression] Func<string> bodycontactother34 = null, [WorkflowExpression] Func<string> bodycontactother35 = null, [WorkflowExpression] Func<string> bodycontactpostcode = null, [WorkflowExpression] Func<string> bodypropertiesagent = null, [WorkflowExpression] Func<string> bodypropertiesagentGroup = null, [WorkflowExpression] Func<string> bodypropertiescampaign = null, [WorkflowExpression] Func<string> bodypropertiescomment = null, [WorkflowExpression] Func<string> bodypropertiesphone = null, [WorkflowExpression] Func<string> bodypropertiestimestamp = null, [WorkflowExpression] Func<bodypropertiestypeInput> bodypropertiestype = null)
+        public IBodyWorkflowAction<CreateCallbackResponse> CreateCallback(Expression<Func<string>> bodycontactaddress = null, Expression<Func<string>> bodycontactcity = null, Expression<Func<int>> bodycontactcompanyid = null, Expression<Func<string>> bodycontactcontactList = null, Expression<Func<string>> bodycontactcontactid = null, Expression<Func<string>> bodycontactcountry = null, Expression<Func<string>> bodycontactfname = null, Expression<Func<string>> bodycontactlname = null, Expression<Func<string>> bodycontactother1 = null, Expression<Func<string>> bodycontactother2 = null, Expression<Func<string>> bodycontactother3 = null, Expression<Func<string>> bodycontactother4 = null, Expression<Func<string>> bodycontactother5 = null, Expression<Func<string>> bodycontactother6 = null, Expression<Func<string>> bodycontactother7 = null, Expression<Func<string>> bodycontactother8 = null, Expression<Func<string>> bodycontactother9 = null, Expression<Func<string>> bodycontactother10 = null, Expression<Func<string>> bodycontactother11 = null, Expression<Func<string>> bodycontactother12 = null, Expression<Func<string>> bodycontactother13 = null, Expression<Func<string>> bodycontactother14 = null, Expression<Func<string>> bodycontactother15 = null, Expression<Func<string>> bodycontactother16 = null, Expression<Func<string>> bodycontactother17 = null, Expression<Func<string>> bodycontactother18 = null, Expression<Func<string>> bodycontactother19 = null, Expression<Func<string>> bodycontactother20 = null, Expression<Func<string>> bodycontactother21 = null, Expression<Func<string>> bodycontactother22 = null, Expression<Func<string>> bodycontactother23 = null, Expression<Func<string>> bodycontactother24 = null, Expression<Func<string>> bodycontactother25 = null, Expression<Func<string>> bodycontactother26 = null, Expression<Func<string>> bodycontactother27 = null, Expression<Func<string>> bodycontactother28 = null, Expression<Func<string>> bodycontactother29 = null, Expression<Func<string>> bodycontactother30 = null, Expression<Func<string>> bodycontactother31 = null, Expression<Func<string>> bodycontactother32 = null, Expression<Func<string>> bodycontactother33 = null, Expression<Func<string>> bodycontactother34 = null, Expression<Func<string>> bodycontactother35 = null, Expression<Func<string>> bodycontactpostcode = null, Expression<Func<string>> bodypropertiesagent = null, Expression<Func<string>> bodypropertiesagentGroup = null, Expression<Func<string>> bodypropertiescampaign = null, Expression<Func<string>> bodypropertiescomment = null, Expression<Func<string>> bodypropertiesphone = null, Expression<Func<string>> bodypropertiestimestamp = null, Expression<Func<bodypropertiestypeInput>> bodypropertiestype = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateCallbackResponse> __BuildCreateCallback(WorkflowExpression<string> bodycontactaddress = null, WorkflowExpression<string> bodycontactcity = null, WorkflowExpression<int> bodycontactcompanyid = null, WorkflowExpression<string> bodycontactcontactList = null, WorkflowExpression<string> bodycontactcontactid = null, WorkflowExpression<string> bodycontactcountry = null, WorkflowExpression<string> bodycontactfname = null, WorkflowExpression<string> bodycontactlname = null, WorkflowExpression<string> bodycontactother1 = null, WorkflowExpression<string> bodycontactother2 = null, WorkflowExpression<string> bodycontactother3 = null, WorkflowExpression<string> bodycontactother4 = null, WorkflowExpression<string> bodycontactother5 = null, WorkflowExpression<string> bodycontactother6 = null, WorkflowExpression<string> bodycontactother7 = null, WorkflowExpression<string> bodycontactother8 = null, WorkflowExpression<string> bodycontactother9 = null, WorkflowExpression<string> bodycontactother10 = null, WorkflowExpression<string> bodycontactother11 = null, WorkflowExpression<string> bodycontactother12 = null, WorkflowExpression<string> bodycontactother13 = null, WorkflowExpression<string> bodycontactother14 = null, WorkflowExpression<string> bodycontactother15 = null, WorkflowExpression<string> bodycontactother16 = null, WorkflowExpression<string> bodycontactother17 = null, WorkflowExpression<string> bodycontactother18 = null, WorkflowExpression<string> bodycontactother19 = null, WorkflowExpression<string> bodycontactother20 = null, WorkflowExpression<string> bodycontactother21 = null, WorkflowExpression<string> bodycontactother22 = null, WorkflowExpression<string> bodycontactother23 = null, WorkflowExpression<string> bodycontactother24 = null, WorkflowExpression<string> bodycontactother25 = null, WorkflowExpression<string> bodycontactother26 = null, WorkflowExpression<string> bodycontactother27 = null, WorkflowExpression<string> bodycontactother28 = null, WorkflowExpression<string> bodycontactother29 = null, WorkflowExpression<string> bodycontactother30 = null, WorkflowExpression<string> bodycontactother31 = null, WorkflowExpression<string> bodycontactother32 = null, WorkflowExpression<string> bodycontactother33 = null, WorkflowExpression<string> bodycontactother34 = null, WorkflowExpression<string> bodycontactother35 = null, WorkflowExpression<string> bodycontactpostcode = null, WorkflowExpression<string> bodypropertiesagent = null, WorkflowExpression<string> bodypropertiesagentGroup = null, WorkflowExpression<string> bodypropertiescampaign = null, WorkflowExpression<string> bodypropertiescomment = null, WorkflowExpression<string> bodypropertiesphone = null, WorkflowExpression<string> bodypropertiestimestamp = null, WorkflowExpression<bodypropertiestypeInput> bodypropertiestype = null)
-        {
-            WorkflowExpression.Validate(bodycontactaddress, nameof(bodycontactaddress), required: false);
-            WorkflowExpression.Validate(bodycontactcity, nameof(bodycontactcity), required: false);
-            WorkflowExpression.Validate(bodycontactcompanyid, nameof(bodycontactcompanyid), required: false);
-            WorkflowExpression.Validate(bodycontactcontactList, nameof(bodycontactcontactList), required: false);
-            WorkflowExpression.Validate(bodycontactcontactid, nameof(bodycontactcontactid), required: false);
-            WorkflowExpression.Validate(bodycontactcountry, nameof(bodycontactcountry), required: false);
-            WorkflowExpression.Validate(bodycontactfname, nameof(bodycontactfname), required: false);
-            WorkflowExpression.Validate(bodycontactlname, nameof(bodycontactlname), required: false);
-            WorkflowExpression.Validate(bodycontactother1, nameof(bodycontactother1), required: false);
-            WorkflowExpression.Validate(bodycontactother2, nameof(bodycontactother2), required: false);
-            WorkflowExpression.Validate(bodycontactother3, nameof(bodycontactother3), required: false);
-            WorkflowExpression.Validate(bodycontactother4, nameof(bodycontactother4), required: false);
-            WorkflowExpression.Validate(bodycontactother5, nameof(bodycontactother5), required: false);
-            WorkflowExpression.Validate(bodycontactother6, nameof(bodycontactother6), required: false);
-            WorkflowExpression.Validate(bodycontactother7, nameof(bodycontactother7), required: false);
-            WorkflowExpression.Validate(bodycontactother8, nameof(bodycontactother8), required: false);
-            WorkflowExpression.Validate(bodycontactother9, nameof(bodycontactother9), required: false);
-            WorkflowExpression.Validate(bodycontactother10, nameof(bodycontactother10), required: false);
-            WorkflowExpression.Validate(bodycontactother11, nameof(bodycontactother11), required: false);
-            WorkflowExpression.Validate(bodycontactother12, nameof(bodycontactother12), required: false);
-            WorkflowExpression.Validate(bodycontactother13, nameof(bodycontactother13), required: false);
-            WorkflowExpression.Validate(bodycontactother14, nameof(bodycontactother14), required: false);
-            WorkflowExpression.Validate(bodycontactother15, nameof(bodycontactother15), required: false);
-            WorkflowExpression.Validate(bodycontactother16, nameof(bodycontactother16), required: false);
-            WorkflowExpression.Validate(bodycontactother17, nameof(bodycontactother17), required: false);
-            WorkflowExpression.Validate(bodycontactother18, nameof(bodycontactother18), required: false);
-            WorkflowExpression.Validate(bodycontactother19, nameof(bodycontactother19), required: false);
-            WorkflowExpression.Validate(bodycontactother20, nameof(bodycontactother20), required: false);
-            WorkflowExpression.Validate(bodycontactother21, nameof(bodycontactother21), required: false);
-            WorkflowExpression.Validate(bodycontactother22, nameof(bodycontactother22), required: false);
-            WorkflowExpression.Validate(bodycontactother23, nameof(bodycontactother23), required: false);
-            WorkflowExpression.Validate(bodycontactother24, nameof(bodycontactother24), required: false);
-            WorkflowExpression.Validate(bodycontactother25, nameof(bodycontactother25), required: false);
-            WorkflowExpression.Validate(bodycontactother26, nameof(bodycontactother26), required: false);
-            WorkflowExpression.Validate(bodycontactother27, nameof(bodycontactother27), required: false);
-            WorkflowExpression.Validate(bodycontactother28, nameof(bodycontactother28), required: false);
-            WorkflowExpression.Validate(bodycontactother29, nameof(bodycontactother29), required: false);
-            WorkflowExpression.Validate(bodycontactother30, nameof(bodycontactother30), required: false);
-            WorkflowExpression.Validate(bodycontactother31, nameof(bodycontactother31), required: false);
-            WorkflowExpression.Validate(bodycontactother32, nameof(bodycontactother32), required: false);
-            WorkflowExpression.Validate(bodycontactother33, nameof(bodycontactother33), required: false);
-            WorkflowExpression.Validate(bodycontactother34, nameof(bodycontactother34), required: false);
-            WorkflowExpression.Validate(bodycontactother35, nameof(bodycontactother35), required: false);
-            WorkflowExpression.Validate(bodycontactpostcode, nameof(bodycontactpostcode), required: false);
-            WorkflowExpression.Validate(bodypropertiesagent, nameof(bodypropertiesagent), required: false);
-            WorkflowExpression.Validate(bodypropertiesagentGroup, nameof(bodypropertiesagentGroup), required: false);
-            WorkflowExpression.Validate(bodypropertiescampaign, nameof(bodypropertiescampaign), required: false);
-            WorkflowExpression.Validate(bodypropertiescomment, nameof(bodypropertiescomment), required: false);
-            WorkflowExpression.Validate(bodypropertiesphone, nameof(bodypropertiesphone), required: false);
-            WorkflowExpression.Validate(bodypropertiestimestamp, nameof(bodypropertiestimestamp), required: false);
-            WorkflowExpression.Validate(bodypropertiestype, nameof(bodypropertiestype), required: false);
+            var __workflow_bodycontactaddress = bodycontactaddress == null ? null : WorkflowExpression.Compile(bodycontactaddress);
+            WorkflowExpression.Validate(__workflow_bodycontactaddress, nameof(bodycontactaddress), required: false);
+            var __workflow_bodycontactcity = bodycontactcity == null ? null : WorkflowExpression.Compile(bodycontactcity);
+            WorkflowExpression.Validate(__workflow_bodycontactcity, nameof(bodycontactcity), required: false);
+            var __workflow_bodycontactcompanyid = bodycontactcompanyid == null ? null : WorkflowExpression.Compile(bodycontactcompanyid);
+            WorkflowExpression.Validate(__workflow_bodycontactcompanyid, nameof(bodycontactcompanyid), required: false);
+            var __workflow_bodycontactcontactList = bodycontactcontactList == null ? null : WorkflowExpression.Compile(bodycontactcontactList);
+            WorkflowExpression.Validate(__workflow_bodycontactcontactList, nameof(bodycontactcontactList), required: false);
+            var __workflow_bodycontactcontactid = bodycontactcontactid == null ? null : WorkflowExpression.Compile(bodycontactcontactid);
+            WorkflowExpression.Validate(__workflow_bodycontactcontactid, nameof(bodycontactcontactid), required: false);
+            var __workflow_bodycontactcountry = bodycontactcountry == null ? null : WorkflowExpression.Compile(bodycontactcountry);
+            WorkflowExpression.Validate(__workflow_bodycontactcountry, nameof(bodycontactcountry), required: false);
+            var __workflow_bodycontactfname = bodycontactfname == null ? null : WorkflowExpression.Compile(bodycontactfname);
+            WorkflowExpression.Validate(__workflow_bodycontactfname, nameof(bodycontactfname), required: false);
+            var __workflow_bodycontactlname = bodycontactlname == null ? null : WorkflowExpression.Compile(bodycontactlname);
+            WorkflowExpression.Validate(__workflow_bodycontactlname, nameof(bodycontactlname), required: false);
+            var __workflow_bodycontactother1 = bodycontactother1 == null ? null : WorkflowExpression.Compile(bodycontactother1);
+            WorkflowExpression.Validate(__workflow_bodycontactother1, nameof(bodycontactother1), required: false);
+            var __workflow_bodycontactother2 = bodycontactother2 == null ? null : WorkflowExpression.Compile(bodycontactother2);
+            WorkflowExpression.Validate(__workflow_bodycontactother2, nameof(bodycontactother2), required: false);
+            var __workflow_bodycontactother3 = bodycontactother3 == null ? null : WorkflowExpression.Compile(bodycontactother3);
+            WorkflowExpression.Validate(__workflow_bodycontactother3, nameof(bodycontactother3), required: false);
+            var __workflow_bodycontactother4 = bodycontactother4 == null ? null : WorkflowExpression.Compile(bodycontactother4);
+            WorkflowExpression.Validate(__workflow_bodycontactother4, nameof(bodycontactother4), required: false);
+            var __workflow_bodycontactother5 = bodycontactother5 == null ? null : WorkflowExpression.Compile(bodycontactother5);
+            WorkflowExpression.Validate(__workflow_bodycontactother5, nameof(bodycontactother5), required: false);
+            var __workflow_bodycontactother6 = bodycontactother6 == null ? null : WorkflowExpression.Compile(bodycontactother6);
+            WorkflowExpression.Validate(__workflow_bodycontactother6, nameof(bodycontactother6), required: false);
+            var __workflow_bodycontactother7 = bodycontactother7 == null ? null : WorkflowExpression.Compile(bodycontactother7);
+            WorkflowExpression.Validate(__workflow_bodycontactother7, nameof(bodycontactother7), required: false);
+            var __workflow_bodycontactother8 = bodycontactother8 == null ? null : WorkflowExpression.Compile(bodycontactother8);
+            WorkflowExpression.Validate(__workflow_bodycontactother8, nameof(bodycontactother8), required: false);
+            var __workflow_bodycontactother9 = bodycontactother9 == null ? null : WorkflowExpression.Compile(bodycontactother9);
+            WorkflowExpression.Validate(__workflow_bodycontactother9, nameof(bodycontactother9), required: false);
+            var __workflow_bodycontactother10 = bodycontactother10 == null ? null : WorkflowExpression.Compile(bodycontactother10);
+            WorkflowExpression.Validate(__workflow_bodycontactother10, nameof(bodycontactother10), required: false);
+            var __workflow_bodycontactother11 = bodycontactother11 == null ? null : WorkflowExpression.Compile(bodycontactother11);
+            WorkflowExpression.Validate(__workflow_bodycontactother11, nameof(bodycontactother11), required: false);
+            var __workflow_bodycontactother12 = bodycontactother12 == null ? null : WorkflowExpression.Compile(bodycontactother12);
+            WorkflowExpression.Validate(__workflow_bodycontactother12, nameof(bodycontactother12), required: false);
+            var __workflow_bodycontactother13 = bodycontactother13 == null ? null : WorkflowExpression.Compile(bodycontactother13);
+            WorkflowExpression.Validate(__workflow_bodycontactother13, nameof(bodycontactother13), required: false);
+            var __workflow_bodycontactother14 = bodycontactother14 == null ? null : WorkflowExpression.Compile(bodycontactother14);
+            WorkflowExpression.Validate(__workflow_bodycontactother14, nameof(bodycontactother14), required: false);
+            var __workflow_bodycontactother15 = bodycontactother15 == null ? null : WorkflowExpression.Compile(bodycontactother15);
+            WorkflowExpression.Validate(__workflow_bodycontactother15, nameof(bodycontactother15), required: false);
+            var __workflow_bodycontactother16 = bodycontactother16 == null ? null : WorkflowExpression.Compile(bodycontactother16);
+            WorkflowExpression.Validate(__workflow_bodycontactother16, nameof(bodycontactother16), required: false);
+            var __workflow_bodycontactother17 = bodycontactother17 == null ? null : WorkflowExpression.Compile(bodycontactother17);
+            WorkflowExpression.Validate(__workflow_bodycontactother17, nameof(bodycontactother17), required: false);
+            var __workflow_bodycontactother18 = bodycontactother18 == null ? null : WorkflowExpression.Compile(bodycontactother18);
+            WorkflowExpression.Validate(__workflow_bodycontactother18, nameof(bodycontactother18), required: false);
+            var __workflow_bodycontactother19 = bodycontactother19 == null ? null : WorkflowExpression.Compile(bodycontactother19);
+            WorkflowExpression.Validate(__workflow_bodycontactother19, nameof(bodycontactother19), required: false);
+            var __workflow_bodycontactother20 = bodycontactother20 == null ? null : WorkflowExpression.Compile(bodycontactother20);
+            WorkflowExpression.Validate(__workflow_bodycontactother20, nameof(bodycontactother20), required: false);
+            var __workflow_bodycontactother21 = bodycontactother21 == null ? null : WorkflowExpression.Compile(bodycontactother21);
+            WorkflowExpression.Validate(__workflow_bodycontactother21, nameof(bodycontactother21), required: false);
+            var __workflow_bodycontactother22 = bodycontactother22 == null ? null : WorkflowExpression.Compile(bodycontactother22);
+            WorkflowExpression.Validate(__workflow_bodycontactother22, nameof(bodycontactother22), required: false);
+            var __workflow_bodycontactother23 = bodycontactother23 == null ? null : WorkflowExpression.Compile(bodycontactother23);
+            WorkflowExpression.Validate(__workflow_bodycontactother23, nameof(bodycontactother23), required: false);
+            var __workflow_bodycontactother24 = bodycontactother24 == null ? null : WorkflowExpression.Compile(bodycontactother24);
+            WorkflowExpression.Validate(__workflow_bodycontactother24, nameof(bodycontactother24), required: false);
+            var __workflow_bodycontactother25 = bodycontactother25 == null ? null : WorkflowExpression.Compile(bodycontactother25);
+            WorkflowExpression.Validate(__workflow_bodycontactother25, nameof(bodycontactother25), required: false);
+            var __workflow_bodycontactother26 = bodycontactother26 == null ? null : WorkflowExpression.Compile(bodycontactother26);
+            WorkflowExpression.Validate(__workflow_bodycontactother26, nameof(bodycontactother26), required: false);
+            var __workflow_bodycontactother27 = bodycontactother27 == null ? null : WorkflowExpression.Compile(bodycontactother27);
+            WorkflowExpression.Validate(__workflow_bodycontactother27, nameof(bodycontactother27), required: false);
+            var __workflow_bodycontactother28 = bodycontactother28 == null ? null : WorkflowExpression.Compile(bodycontactother28);
+            WorkflowExpression.Validate(__workflow_bodycontactother28, nameof(bodycontactother28), required: false);
+            var __workflow_bodycontactother29 = bodycontactother29 == null ? null : WorkflowExpression.Compile(bodycontactother29);
+            WorkflowExpression.Validate(__workflow_bodycontactother29, nameof(bodycontactother29), required: false);
+            var __workflow_bodycontactother30 = bodycontactother30 == null ? null : WorkflowExpression.Compile(bodycontactother30);
+            WorkflowExpression.Validate(__workflow_bodycontactother30, nameof(bodycontactother30), required: false);
+            var __workflow_bodycontactother31 = bodycontactother31 == null ? null : WorkflowExpression.Compile(bodycontactother31);
+            WorkflowExpression.Validate(__workflow_bodycontactother31, nameof(bodycontactother31), required: false);
+            var __workflow_bodycontactother32 = bodycontactother32 == null ? null : WorkflowExpression.Compile(bodycontactother32);
+            WorkflowExpression.Validate(__workflow_bodycontactother32, nameof(bodycontactother32), required: false);
+            var __workflow_bodycontactother33 = bodycontactother33 == null ? null : WorkflowExpression.Compile(bodycontactother33);
+            WorkflowExpression.Validate(__workflow_bodycontactother33, nameof(bodycontactother33), required: false);
+            var __workflow_bodycontactother34 = bodycontactother34 == null ? null : WorkflowExpression.Compile(bodycontactother34);
+            WorkflowExpression.Validate(__workflow_bodycontactother34, nameof(bodycontactother34), required: false);
+            var __workflow_bodycontactother35 = bodycontactother35 == null ? null : WorkflowExpression.Compile(bodycontactother35);
+            WorkflowExpression.Validate(__workflow_bodycontactother35, nameof(bodycontactother35), required: false);
+            var __workflow_bodycontactpostcode = bodycontactpostcode == null ? null : WorkflowExpression.Compile(bodycontactpostcode);
+            WorkflowExpression.Validate(__workflow_bodycontactpostcode, nameof(bodycontactpostcode), required: false);
+            var __workflow_bodypropertiesagent = bodypropertiesagent == null ? null : WorkflowExpression.Compile(bodypropertiesagent);
+            WorkflowExpression.Validate(__workflow_bodypropertiesagent, nameof(bodypropertiesagent), required: false);
+            var __workflow_bodypropertiesagentGroup = bodypropertiesagentGroup == null ? null : WorkflowExpression.Compile(bodypropertiesagentGroup);
+            WorkflowExpression.Validate(__workflow_bodypropertiesagentGroup, nameof(bodypropertiesagentGroup), required: false);
+            var __workflow_bodypropertiescampaign = bodypropertiescampaign == null ? null : WorkflowExpression.Compile(bodypropertiescampaign);
+            WorkflowExpression.Validate(__workflow_bodypropertiescampaign, nameof(bodypropertiescampaign), required: false);
+            var __workflow_bodypropertiescomment = bodypropertiescomment == null ? null : WorkflowExpression.Compile(bodypropertiescomment);
+            WorkflowExpression.Validate(__workflow_bodypropertiescomment, nameof(bodypropertiescomment), required: false);
+            var __workflow_bodypropertiesphone = bodypropertiesphone == null ? null : WorkflowExpression.Compile(bodypropertiesphone);
+            WorkflowExpression.Validate(__workflow_bodypropertiesphone, nameof(bodypropertiesphone), required: false);
+            var __workflow_bodypropertiestimestamp = bodypropertiestimestamp == null ? null : WorkflowExpression.Compile(bodypropertiestimestamp);
+            WorkflowExpression.Validate(__workflow_bodypropertiestimestamp, nameof(bodypropertiestimestamp), required: false);
+            var __workflow_bodypropertiestype = bodypropertiestype == null ? null : WorkflowExpression.Compile(bodypropertiestype);
+            WorkflowExpression.Validate(__workflow_bodypropertiestype, nameof(bodypropertiestype), required: false);
             return new DeferredBodyAction<CreateCallbackResponse>(() =>
             {
                 var apiCallPath = "/create_callback";
@@ -352,267 +408,267 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
                 var bodypropCount = 0;
                 var contactObject = new JObject();
                 var contactObjectpropCount = 0;
-                if (bodycontactaddress != null)
+                if (__workflow_bodycontactaddress != null)
                 {
-                    contactObject["address"] = ExpressionConverter.ConvertO(bodycontactaddress);
+                    contactObject["address"] = ExpressionConverter.ConvertO(__workflow_bodycontactaddress);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactcity != null)
+                if (__workflow_bodycontactcity != null)
                 {
-                    contactObject["city"] = ExpressionConverter.ConvertO(bodycontactcity);
+                    contactObject["city"] = ExpressionConverter.ConvertO(__workflow_bodycontactcity);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactcompanyid != null)
+                if (__workflow_bodycontactcompanyid != null)
                 {
-                    contactObject["companyid"] = ExpressionConverter.ConvertO(bodycontactcompanyid);
+                    contactObject["companyid"] = ExpressionConverter.ConvertO(__workflow_bodycontactcompanyid);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactcontactList != null)
+                if (__workflow_bodycontactcontactList != null)
                 {
-                    contactObject["contact_list"] = ExpressionConverter.ConvertO(bodycontactcontactList);
+                    contactObject["contact_list"] = ExpressionConverter.ConvertO(__workflow_bodycontactcontactList);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactcontactid != null)
+                if (__workflow_bodycontactcontactid != null)
                 {
-                    contactObject["contactid"] = ExpressionConverter.ConvertO(bodycontactcontactid);
+                    contactObject["contactid"] = ExpressionConverter.ConvertO(__workflow_bodycontactcontactid);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactcountry != null)
+                if (__workflow_bodycontactcountry != null)
                 {
-                    contactObject["country"] = ExpressionConverter.ConvertO(bodycontactcountry);
+                    contactObject["country"] = ExpressionConverter.ConvertO(__workflow_bodycontactcountry);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactfname != null)
+                if (__workflow_bodycontactfname != null)
                 {
-                    contactObject["fname"] = ExpressionConverter.ConvertO(bodycontactfname);
+                    contactObject["fname"] = ExpressionConverter.ConvertO(__workflow_bodycontactfname);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactlname != null)
+                if (__workflow_bodycontactlname != null)
                 {
-                    contactObject["lname"] = ExpressionConverter.ConvertO(bodycontactlname);
+                    contactObject["lname"] = ExpressionConverter.ConvertO(__workflow_bodycontactlname);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactother1 != null)
+                if (__workflow_bodycontactother1 != null)
                 {
-                    contactObject["other1"] = ExpressionConverter.ConvertO(bodycontactother1);
+                    contactObject["other1"] = ExpressionConverter.ConvertO(__workflow_bodycontactother1);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactother2 != null)
+                if (__workflow_bodycontactother2 != null)
                 {
-                    contactObject["other2"] = ExpressionConverter.ConvertO(bodycontactother2);
+                    contactObject["other2"] = ExpressionConverter.ConvertO(__workflow_bodycontactother2);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactother3 != null)
+                if (__workflow_bodycontactother3 != null)
                 {
-                    contactObject["other3"] = ExpressionConverter.ConvertO(bodycontactother3);
+                    contactObject["other3"] = ExpressionConverter.ConvertO(__workflow_bodycontactother3);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactother4 != null)
+                if (__workflow_bodycontactother4 != null)
                 {
-                    contactObject["other4"] = ExpressionConverter.ConvertO(bodycontactother4);
+                    contactObject["other4"] = ExpressionConverter.ConvertO(__workflow_bodycontactother4);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactother5 != null)
+                if (__workflow_bodycontactother5 != null)
                 {
-                    contactObject["other5"] = ExpressionConverter.ConvertO(bodycontactother5);
+                    contactObject["other5"] = ExpressionConverter.ConvertO(__workflow_bodycontactother5);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactother6 != null)
+                if (__workflow_bodycontactother6 != null)
                 {
-                    contactObject["other6"] = ExpressionConverter.ConvertO(bodycontactother6);
+                    contactObject["other6"] = ExpressionConverter.ConvertO(__workflow_bodycontactother6);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactother7 != null)
+                if (__workflow_bodycontactother7 != null)
                 {
-                    contactObject["other7"] = ExpressionConverter.ConvertO(bodycontactother7);
+                    contactObject["other7"] = ExpressionConverter.ConvertO(__workflow_bodycontactother7);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactother8 != null)
+                if (__workflow_bodycontactother8 != null)
                 {
-                    contactObject["other8"] = ExpressionConverter.ConvertO(bodycontactother8);
+                    contactObject["other8"] = ExpressionConverter.ConvertO(__workflow_bodycontactother8);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactother9 != null)
+                if (__workflow_bodycontactother9 != null)
                 {
-                    contactObject["other9"] = ExpressionConverter.ConvertO(bodycontactother9);
+                    contactObject["other9"] = ExpressionConverter.ConvertO(__workflow_bodycontactother9);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactother10 != null)
+                if (__workflow_bodycontactother10 != null)
                 {
-                    contactObject["other10"] = ExpressionConverter.ConvertO(bodycontactother10);
+                    contactObject["other10"] = ExpressionConverter.ConvertO(__workflow_bodycontactother10);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactother11 != null)
+                if (__workflow_bodycontactother11 != null)
                 {
-                    contactObject["other11"] = ExpressionConverter.ConvertO(bodycontactother11);
+                    contactObject["other11"] = ExpressionConverter.ConvertO(__workflow_bodycontactother11);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactother12 != null)
+                if (__workflow_bodycontactother12 != null)
                 {
-                    contactObject["other12"] = ExpressionConverter.ConvertO(bodycontactother12);
+                    contactObject["other12"] = ExpressionConverter.ConvertO(__workflow_bodycontactother12);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactother13 != null)
+                if (__workflow_bodycontactother13 != null)
                 {
-                    contactObject["other13"] = ExpressionConverter.ConvertO(bodycontactother13);
+                    contactObject["other13"] = ExpressionConverter.ConvertO(__workflow_bodycontactother13);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactother14 != null)
+                if (__workflow_bodycontactother14 != null)
                 {
-                    contactObject["other14"] = ExpressionConverter.ConvertO(bodycontactother14);
+                    contactObject["other14"] = ExpressionConverter.ConvertO(__workflow_bodycontactother14);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactother15 != null)
+                if (__workflow_bodycontactother15 != null)
                 {
-                    contactObject["other15"] = ExpressionConverter.ConvertO(bodycontactother15);
+                    contactObject["other15"] = ExpressionConverter.ConvertO(__workflow_bodycontactother15);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactother16 != null)
+                if (__workflow_bodycontactother16 != null)
                 {
-                    contactObject["other16"] = ExpressionConverter.ConvertO(bodycontactother16);
+                    contactObject["other16"] = ExpressionConverter.ConvertO(__workflow_bodycontactother16);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactother17 != null)
+                if (__workflow_bodycontactother17 != null)
                 {
-                    contactObject["other17"] = ExpressionConverter.ConvertO(bodycontactother17);
+                    contactObject["other17"] = ExpressionConverter.ConvertO(__workflow_bodycontactother17);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactother18 != null)
+                if (__workflow_bodycontactother18 != null)
                 {
-                    contactObject["other18"] = ExpressionConverter.ConvertO(bodycontactother18);
+                    contactObject["other18"] = ExpressionConverter.ConvertO(__workflow_bodycontactother18);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactother19 != null)
+                if (__workflow_bodycontactother19 != null)
                 {
-                    contactObject["other19"] = ExpressionConverter.ConvertO(bodycontactother19);
+                    contactObject["other19"] = ExpressionConverter.ConvertO(__workflow_bodycontactother19);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactother20 != null)
+                if (__workflow_bodycontactother20 != null)
                 {
-                    contactObject["other20"] = ExpressionConverter.ConvertO(bodycontactother20);
+                    contactObject["other20"] = ExpressionConverter.ConvertO(__workflow_bodycontactother20);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactother21 != null)
+                if (__workflow_bodycontactother21 != null)
                 {
-                    contactObject["other21"] = ExpressionConverter.ConvertO(bodycontactother21);
+                    contactObject["other21"] = ExpressionConverter.ConvertO(__workflow_bodycontactother21);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactother22 != null)
+                if (__workflow_bodycontactother22 != null)
                 {
-                    contactObject["other22"] = ExpressionConverter.ConvertO(bodycontactother22);
+                    contactObject["other22"] = ExpressionConverter.ConvertO(__workflow_bodycontactother22);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactother23 != null)
+                if (__workflow_bodycontactother23 != null)
                 {
-                    contactObject["other23"] = ExpressionConverter.ConvertO(bodycontactother23);
+                    contactObject["other23"] = ExpressionConverter.ConvertO(__workflow_bodycontactother23);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactother24 != null)
+                if (__workflow_bodycontactother24 != null)
                 {
-                    contactObject["other24"] = ExpressionConverter.ConvertO(bodycontactother24);
+                    contactObject["other24"] = ExpressionConverter.ConvertO(__workflow_bodycontactother24);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactother25 != null)
+                if (__workflow_bodycontactother25 != null)
                 {
-                    contactObject["other25"] = ExpressionConverter.ConvertO(bodycontactother25);
+                    contactObject["other25"] = ExpressionConverter.ConvertO(__workflow_bodycontactother25);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactother26 != null)
+                if (__workflow_bodycontactother26 != null)
                 {
-                    contactObject["other26"] = ExpressionConverter.ConvertO(bodycontactother26);
+                    contactObject["other26"] = ExpressionConverter.ConvertO(__workflow_bodycontactother26);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactother27 != null)
+                if (__workflow_bodycontactother27 != null)
                 {
-                    contactObject["other27"] = ExpressionConverter.ConvertO(bodycontactother27);
+                    contactObject["other27"] = ExpressionConverter.ConvertO(__workflow_bodycontactother27);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactother28 != null)
+                if (__workflow_bodycontactother28 != null)
                 {
-                    contactObject["other28"] = ExpressionConverter.ConvertO(bodycontactother28);
+                    contactObject["other28"] = ExpressionConverter.ConvertO(__workflow_bodycontactother28);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactother29 != null)
+                if (__workflow_bodycontactother29 != null)
                 {
-                    contactObject["other29"] = ExpressionConverter.ConvertO(bodycontactother29);
+                    contactObject["other29"] = ExpressionConverter.ConvertO(__workflow_bodycontactother29);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactother30 != null)
+                if (__workflow_bodycontactother30 != null)
                 {
-                    contactObject["other30"] = ExpressionConverter.ConvertO(bodycontactother30);
+                    contactObject["other30"] = ExpressionConverter.ConvertO(__workflow_bodycontactother30);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactother31 != null)
+                if (__workflow_bodycontactother31 != null)
                 {
-                    contactObject["other31"] = ExpressionConverter.ConvertO(bodycontactother31);
+                    contactObject["other31"] = ExpressionConverter.ConvertO(__workflow_bodycontactother31);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactother32 != null)
+                if (__workflow_bodycontactother32 != null)
                 {
-                    contactObject["other32"] = ExpressionConverter.ConvertO(bodycontactother32);
+                    contactObject["other32"] = ExpressionConverter.ConvertO(__workflow_bodycontactother32);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactother33 != null)
+                if (__workflow_bodycontactother33 != null)
                 {
-                    contactObject["other33"] = ExpressionConverter.ConvertO(bodycontactother33);
+                    contactObject["other33"] = ExpressionConverter.ConvertO(__workflow_bodycontactother33);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactother34 != null)
+                if (__workflow_bodycontactother34 != null)
                 {
-                    contactObject["other34"] = ExpressionConverter.ConvertO(bodycontactother34);
+                    contactObject["other34"] = ExpressionConverter.ConvertO(__workflow_bodycontactother34);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactother35 != null)
+                if (__workflow_bodycontactother35 != null)
                 {
-                    contactObject["other35"] = ExpressionConverter.ConvertO(bodycontactother35);
+                    contactObject["other35"] = ExpressionConverter.ConvertO(__workflow_bodycontactother35);
                     contactObjectpropCount++;
                 }
 
-                if (bodycontactpostcode != null)
+                if (__workflow_bodycontactpostcode != null)
                 {
-                    contactObject["postcode"] = ExpressionConverter.ConvertO(bodycontactpostcode);
+                    contactObject["postcode"] = ExpressionConverter.ConvertO(__workflow_bodycontactpostcode);
                     contactObjectpropCount++;
                 }
 
@@ -624,47 +680,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
 
                 var propertiesObject = new JObject();
                 var propertiesObjectpropCount = 0;
-                if (bodypropertiesagent != null)
+                if (__workflow_bodypropertiesagent != null)
                 {
-                    propertiesObject["agent"] = ExpressionConverter.ConvertO(bodypropertiesagent);
+                    propertiesObject["agent"] = ExpressionConverter.ConvertO(__workflow_bodypropertiesagent);
                     propertiesObjectpropCount++;
                 }
 
-                if (bodypropertiesagentGroup != null)
+                if (__workflow_bodypropertiesagentGroup != null)
                 {
-                    propertiesObject["agent_group"] = ExpressionConverter.ConvertO(bodypropertiesagentGroup);
+                    propertiesObject["agent_group"] = ExpressionConverter.ConvertO(__workflow_bodypropertiesagentGroup);
                     propertiesObjectpropCount++;
                 }
 
-                if (bodypropertiescampaign != null)
+                if (__workflow_bodypropertiescampaign != null)
                 {
-                    propertiesObject["campaign"] = ExpressionConverter.ConvertO(bodypropertiescampaign);
+                    propertiesObject["campaign"] = ExpressionConverter.ConvertO(__workflow_bodypropertiescampaign);
                     propertiesObjectpropCount++;
                 }
 
-                if (bodypropertiescomment != null)
+                if (__workflow_bodypropertiescomment != null)
                 {
-                    propertiesObject["comment"] = ExpressionConverter.ConvertO(bodypropertiescomment);
+                    propertiesObject["comment"] = ExpressionConverter.ConvertO(__workflow_bodypropertiescomment);
                     propertiesObjectpropCount++;
                 }
 
-                if (bodypropertiesphone != null)
+                if (__workflow_bodypropertiesphone != null)
                 {
-                    propertiesObject["phone"] = ExpressionConverter.ConvertO(bodypropertiesphone);
+                    propertiesObject["phone"] = ExpressionConverter.ConvertO(__workflow_bodypropertiesphone);
                     propertiesObjectpropCount++;
                 }
 
-                if (bodypropertiestimestamp != null)
+                if (__workflow_bodypropertiestimestamp != null)
                 {
-                    propertiesObject["timestamp"] = ExpressionConverter.ConvertO(bodypropertiestimestamp);
+                    propertiesObject["timestamp"] = ExpressionConverter.ConvertO(__workflow_bodypropertiestimestamp);
                     propertiesObjectpropCount++;
                 }
 
-                if (bodypropertiestype != null)
+                if (__workflow_bodypropertiestype != null)
                 {
-                    if (bodypropertiestype != null)
+                    if (__workflow_bodypropertiestype != null)
                     {
-                        propertiesObject["type"] = ExpressionConverter.ConvertO(bodypropertiestype);
+                        propertiesObject["type"] = ExpressionConverter.ConvertO(__workflow_bodypropertiestype);
                         propertiesObjectpropCount++;
                     }
 
@@ -694,69 +750,116 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leaddesk")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateContact))]
-        public IBodyWorkflowAction<CreateContactResponse> CreateContact([WorkflowExpression] Func<string> phone, [WorkflowExpression] Func<string> list, [WorkflowExpression] Func<string> fname = null, [WorkflowExpression] Func<string> lname = null, [WorkflowExpression] Func<string> email = null, [WorkflowExpression] Func<string> www = null, [WorkflowExpression] Func<string> address = null, [WorkflowExpression] Func<string> postcode = null, [WorkflowExpression] Func<string> city = null, [WorkflowExpression] Func<string> country = null, [WorkflowExpression] Func<string> ssc = null, [WorkflowExpression] Func<string> birthyear = null, [WorkflowExpression] Func<string> gender = null, [WorkflowExpression] Func<string> companyid = null, [WorkflowExpression] Func<string> company = null, [WorkflowExpression] Func<string> vatin = null, [WorkflowExpression] Func<string> title = null, [WorkflowExpression] Func<string> comment = null, [WorkflowExpression] Func<string> other1 = null, [WorkflowExpression] Func<string> other2 = null, [WorkflowExpression] Func<string> other3 = null, [WorkflowExpression] Func<string> other4 = null, [WorkflowExpression] Func<string> other5 = null, [WorkflowExpression] Func<string> other6 = null, [WorkflowExpression] Func<string> other7 = null, [WorkflowExpression] Func<string> other8 = null, [WorkflowExpression] Func<string> other9 = null, [WorkflowExpression] Func<string> other10 = null, [WorkflowExpression] Func<string> other11 = null, [WorkflowExpression] Func<string> other12 = null, [WorkflowExpression] Func<string> other13 = null, [WorkflowExpression] Func<string> other14 = null, [WorkflowExpression] Func<string> other15 = null, [WorkflowExpression] Func<string> other16 = null, [WorkflowExpression] Func<string> other17 = null, [WorkflowExpression] Func<string> other18 = null, [WorkflowExpression] Func<string> other19 = null, [WorkflowExpression] Func<string> other20 = null, [WorkflowExpression] Func<string> other21 = null, [WorkflowExpression] Func<string> other22 = null, [WorkflowExpression] Func<string> other23 = null, [WorkflowExpression] Func<string> other24 = null, [WorkflowExpression] Func<string> other25 = null, [WorkflowExpression] Func<string> other26 = null, [WorkflowExpression] Func<string> other27 = null, [WorkflowExpression] Func<string> other28 = null, [WorkflowExpression] Func<string> other29 = null, [WorkflowExpression] Func<string> other30 = null, [WorkflowExpression] Func<string> other31 = null, [WorkflowExpression] Func<string> other32 = null, [WorkflowExpression] Func<string> other33 = null, [WorkflowExpression] Func<string> other34 = null, [WorkflowExpression] Func<string> other35 = null, [WorkflowExpression] Func<string> assignToAgent = null)
+        public IBodyWorkflowAction<CreateContactResponse> CreateContact(Expression<Func<string>> phone, Expression<Func<string>> list, Expression<Func<string>> fname = null, Expression<Func<string>> lname = null, Expression<Func<string>> email = null, Expression<Func<string>> www = null, Expression<Func<string>> address = null, Expression<Func<string>> postcode = null, Expression<Func<string>> city = null, Expression<Func<string>> country = null, Expression<Func<string>> ssc = null, Expression<Func<string>> birthyear = null, Expression<Func<string>> gender = null, Expression<Func<string>> companyid = null, Expression<Func<string>> company = null, Expression<Func<string>> vatin = null, Expression<Func<string>> title = null, Expression<Func<string>> comment = null, Expression<Func<string>> other1 = null, Expression<Func<string>> other2 = null, Expression<Func<string>> other3 = null, Expression<Func<string>> other4 = null, Expression<Func<string>> other5 = null, Expression<Func<string>> other6 = null, Expression<Func<string>> other7 = null, Expression<Func<string>> other8 = null, Expression<Func<string>> other9 = null, Expression<Func<string>> other10 = null, Expression<Func<string>> other11 = null, Expression<Func<string>> other12 = null, Expression<Func<string>> other13 = null, Expression<Func<string>> other14 = null, Expression<Func<string>> other15 = null, Expression<Func<string>> other16 = null, Expression<Func<string>> other17 = null, Expression<Func<string>> other18 = null, Expression<Func<string>> other19 = null, Expression<Func<string>> other20 = null, Expression<Func<string>> other21 = null, Expression<Func<string>> other22 = null, Expression<Func<string>> other23 = null, Expression<Func<string>> other24 = null, Expression<Func<string>> other25 = null, Expression<Func<string>> other26 = null, Expression<Func<string>> other27 = null, Expression<Func<string>> other28 = null, Expression<Func<string>> other29 = null, Expression<Func<string>> other30 = null, Expression<Func<string>> other31 = null, Expression<Func<string>> other32 = null, Expression<Func<string>> other33 = null, Expression<Func<string>> other34 = null, Expression<Func<string>> other35 = null, Expression<Func<string>> assignToAgent = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateContactResponse> __BuildCreateContact(WorkflowExpression<string> phone, WorkflowExpression<string> list, WorkflowExpression<string> fname = null, WorkflowExpression<string> lname = null, WorkflowExpression<string> email = null, WorkflowExpression<string> www = null, WorkflowExpression<string> address = null, WorkflowExpression<string> postcode = null, WorkflowExpression<string> city = null, WorkflowExpression<string> country = null, WorkflowExpression<string> ssc = null, WorkflowExpression<string> birthyear = null, WorkflowExpression<string> gender = null, WorkflowExpression<string> companyid = null, WorkflowExpression<string> company = null, WorkflowExpression<string> vatin = null, WorkflowExpression<string> title = null, WorkflowExpression<string> comment = null, WorkflowExpression<string> other1 = null, WorkflowExpression<string> other2 = null, WorkflowExpression<string> other3 = null, WorkflowExpression<string> other4 = null, WorkflowExpression<string> other5 = null, WorkflowExpression<string> other6 = null, WorkflowExpression<string> other7 = null, WorkflowExpression<string> other8 = null, WorkflowExpression<string> other9 = null, WorkflowExpression<string> other10 = null, WorkflowExpression<string> other11 = null, WorkflowExpression<string> other12 = null, WorkflowExpression<string> other13 = null, WorkflowExpression<string> other14 = null, WorkflowExpression<string> other15 = null, WorkflowExpression<string> other16 = null, WorkflowExpression<string> other17 = null, WorkflowExpression<string> other18 = null, WorkflowExpression<string> other19 = null, WorkflowExpression<string> other20 = null, WorkflowExpression<string> other21 = null, WorkflowExpression<string> other22 = null, WorkflowExpression<string> other23 = null, WorkflowExpression<string> other24 = null, WorkflowExpression<string> other25 = null, WorkflowExpression<string> other26 = null, WorkflowExpression<string> other27 = null, WorkflowExpression<string> other28 = null, WorkflowExpression<string> other29 = null, WorkflowExpression<string> other30 = null, WorkflowExpression<string> other31 = null, WorkflowExpression<string> other32 = null, WorkflowExpression<string> other33 = null, WorkflowExpression<string> other34 = null, WorkflowExpression<string> other35 = null, WorkflowExpression<string> assignToAgent = null)
-        {
-            WorkflowExpression.Validate(phone, nameof(phone), required: true);
-            WorkflowExpression.Validate(list, nameof(list), required: true);
-            WorkflowExpression.Validate(fname, nameof(fname), required: false);
-            WorkflowExpression.Validate(lname, nameof(lname), required: false);
-            WorkflowExpression.Validate(email, nameof(email), required: false);
-            WorkflowExpression.Validate(www, nameof(www), required: false);
-            WorkflowExpression.Validate(address, nameof(address), required: false);
-            WorkflowExpression.Validate(postcode, nameof(postcode), required: false);
-            WorkflowExpression.Validate(city, nameof(city), required: false);
-            WorkflowExpression.Validate(country, nameof(country), required: false);
-            WorkflowExpression.Validate(ssc, nameof(ssc), required: false);
-            WorkflowExpression.Validate(birthyear, nameof(birthyear), required: false);
-            WorkflowExpression.Validate(gender, nameof(gender), required: false);
-            WorkflowExpression.Validate(companyid, nameof(companyid), required: false);
-            WorkflowExpression.Validate(company, nameof(company), required: false);
-            WorkflowExpression.Validate(vatin, nameof(vatin), required: false);
-            WorkflowExpression.Validate(title, nameof(title), required: false);
-            WorkflowExpression.Validate(comment, nameof(comment), required: false);
-            WorkflowExpression.Validate(other1, nameof(other1), required: false);
-            WorkflowExpression.Validate(other2, nameof(other2), required: false);
-            WorkflowExpression.Validate(other3, nameof(other3), required: false);
-            WorkflowExpression.Validate(other4, nameof(other4), required: false);
-            WorkflowExpression.Validate(other5, nameof(other5), required: false);
-            WorkflowExpression.Validate(other6, nameof(other6), required: false);
-            WorkflowExpression.Validate(other7, nameof(other7), required: false);
-            WorkflowExpression.Validate(other8, nameof(other8), required: false);
-            WorkflowExpression.Validate(other9, nameof(other9), required: false);
-            WorkflowExpression.Validate(other10, nameof(other10), required: false);
-            WorkflowExpression.Validate(other11, nameof(other11), required: false);
-            WorkflowExpression.Validate(other12, nameof(other12), required: false);
-            WorkflowExpression.Validate(other13, nameof(other13), required: false);
-            WorkflowExpression.Validate(other14, nameof(other14), required: false);
-            WorkflowExpression.Validate(other15, nameof(other15), required: false);
-            WorkflowExpression.Validate(other16, nameof(other16), required: false);
-            WorkflowExpression.Validate(other17, nameof(other17), required: false);
-            WorkflowExpression.Validate(other18, nameof(other18), required: false);
-            WorkflowExpression.Validate(other19, nameof(other19), required: false);
-            WorkflowExpression.Validate(other20, nameof(other20), required: false);
-            WorkflowExpression.Validate(other21, nameof(other21), required: false);
-            WorkflowExpression.Validate(other22, nameof(other22), required: false);
-            WorkflowExpression.Validate(other23, nameof(other23), required: false);
-            WorkflowExpression.Validate(other24, nameof(other24), required: false);
-            WorkflowExpression.Validate(other25, nameof(other25), required: false);
-            WorkflowExpression.Validate(other26, nameof(other26), required: false);
-            WorkflowExpression.Validate(other27, nameof(other27), required: false);
-            WorkflowExpression.Validate(other28, nameof(other28), required: false);
-            WorkflowExpression.Validate(other29, nameof(other29), required: false);
-            WorkflowExpression.Validate(other30, nameof(other30), required: false);
-            WorkflowExpression.Validate(other31, nameof(other31), required: false);
-            WorkflowExpression.Validate(other32, nameof(other32), required: false);
-            WorkflowExpression.Validate(other33, nameof(other33), required: false);
-            WorkflowExpression.Validate(other34, nameof(other34), required: false);
-            WorkflowExpression.Validate(other35, nameof(other35), required: false);
-            WorkflowExpression.Validate(assignToAgent, nameof(assignToAgent), required: false);
+            var __workflow_phone = phone == null ? null : WorkflowExpression.Compile(phone);
+            WorkflowExpression.Validate(__workflow_phone, nameof(phone), required: true);
+            var __workflow_list = list == null ? null : WorkflowExpression.Compile(list);
+            WorkflowExpression.Validate(__workflow_list, nameof(list), required: true);
+            var __workflow_fname = fname == null ? null : WorkflowExpression.Compile(fname);
+            WorkflowExpression.Validate(__workflow_fname, nameof(fname), required: false);
+            var __workflow_lname = lname == null ? null : WorkflowExpression.Compile(lname);
+            WorkflowExpression.Validate(__workflow_lname, nameof(lname), required: false);
+            var __workflow_email = email == null ? null : WorkflowExpression.Compile(email);
+            WorkflowExpression.Validate(__workflow_email, nameof(email), required: false);
+            var __workflow_www = www == null ? null : WorkflowExpression.Compile(www);
+            WorkflowExpression.Validate(__workflow_www, nameof(www), required: false);
+            var __workflow_address = address == null ? null : WorkflowExpression.Compile(address);
+            WorkflowExpression.Validate(__workflow_address, nameof(address), required: false);
+            var __workflow_postcode = postcode == null ? null : WorkflowExpression.Compile(postcode);
+            WorkflowExpression.Validate(__workflow_postcode, nameof(postcode), required: false);
+            var __workflow_city = city == null ? null : WorkflowExpression.Compile(city);
+            WorkflowExpression.Validate(__workflow_city, nameof(city), required: false);
+            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
+            WorkflowExpression.Validate(__workflow_country, nameof(country), required: false);
+            var __workflow_ssc = ssc == null ? null : WorkflowExpression.Compile(ssc);
+            WorkflowExpression.Validate(__workflow_ssc, nameof(ssc), required: false);
+            var __workflow_birthyear = birthyear == null ? null : WorkflowExpression.Compile(birthyear);
+            WorkflowExpression.Validate(__workflow_birthyear, nameof(birthyear), required: false);
+            var __workflow_gender = gender == null ? null : WorkflowExpression.Compile(gender);
+            WorkflowExpression.Validate(__workflow_gender, nameof(gender), required: false);
+            var __workflow_companyid = companyid == null ? null : WorkflowExpression.Compile(companyid);
+            WorkflowExpression.Validate(__workflow_companyid, nameof(companyid), required: false);
+            var __workflow_company = company == null ? null : WorkflowExpression.Compile(company);
+            WorkflowExpression.Validate(__workflow_company, nameof(company), required: false);
+            var __workflow_vatin = vatin == null ? null : WorkflowExpression.Compile(vatin);
+            WorkflowExpression.Validate(__workflow_vatin, nameof(vatin), required: false);
+            var __workflow_title = title == null ? null : WorkflowExpression.Compile(title);
+            WorkflowExpression.Validate(__workflow_title, nameof(title), required: false);
+            var __workflow_comment = comment == null ? null : WorkflowExpression.Compile(comment);
+            WorkflowExpression.Validate(__workflow_comment, nameof(comment), required: false);
+            var __workflow_other1 = other1 == null ? null : WorkflowExpression.Compile(other1);
+            WorkflowExpression.Validate(__workflow_other1, nameof(other1), required: false);
+            var __workflow_other2 = other2 == null ? null : WorkflowExpression.Compile(other2);
+            WorkflowExpression.Validate(__workflow_other2, nameof(other2), required: false);
+            var __workflow_other3 = other3 == null ? null : WorkflowExpression.Compile(other3);
+            WorkflowExpression.Validate(__workflow_other3, nameof(other3), required: false);
+            var __workflow_other4 = other4 == null ? null : WorkflowExpression.Compile(other4);
+            WorkflowExpression.Validate(__workflow_other4, nameof(other4), required: false);
+            var __workflow_other5 = other5 == null ? null : WorkflowExpression.Compile(other5);
+            WorkflowExpression.Validate(__workflow_other5, nameof(other5), required: false);
+            var __workflow_other6 = other6 == null ? null : WorkflowExpression.Compile(other6);
+            WorkflowExpression.Validate(__workflow_other6, nameof(other6), required: false);
+            var __workflow_other7 = other7 == null ? null : WorkflowExpression.Compile(other7);
+            WorkflowExpression.Validate(__workflow_other7, nameof(other7), required: false);
+            var __workflow_other8 = other8 == null ? null : WorkflowExpression.Compile(other8);
+            WorkflowExpression.Validate(__workflow_other8, nameof(other8), required: false);
+            var __workflow_other9 = other9 == null ? null : WorkflowExpression.Compile(other9);
+            WorkflowExpression.Validate(__workflow_other9, nameof(other9), required: false);
+            var __workflow_other10 = other10 == null ? null : WorkflowExpression.Compile(other10);
+            WorkflowExpression.Validate(__workflow_other10, nameof(other10), required: false);
+            var __workflow_other11 = other11 == null ? null : WorkflowExpression.Compile(other11);
+            WorkflowExpression.Validate(__workflow_other11, nameof(other11), required: false);
+            var __workflow_other12 = other12 == null ? null : WorkflowExpression.Compile(other12);
+            WorkflowExpression.Validate(__workflow_other12, nameof(other12), required: false);
+            var __workflow_other13 = other13 == null ? null : WorkflowExpression.Compile(other13);
+            WorkflowExpression.Validate(__workflow_other13, nameof(other13), required: false);
+            var __workflow_other14 = other14 == null ? null : WorkflowExpression.Compile(other14);
+            WorkflowExpression.Validate(__workflow_other14, nameof(other14), required: false);
+            var __workflow_other15 = other15 == null ? null : WorkflowExpression.Compile(other15);
+            WorkflowExpression.Validate(__workflow_other15, nameof(other15), required: false);
+            var __workflow_other16 = other16 == null ? null : WorkflowExpression.Compile(other16);
+            WorkflowExpression.Validate(__workflow_other16, nameof(other16), required: false);
+            var __workflow_other17 = other17 == null ? null : WorkflowExpression.Compile(other17);
+            WorkflowExpression.Validate(__workflow_other17, nameof(other17), required: false);
+            var __workflow_other18 = other18 == null ? null : WorkflowExpression.Compile(other18);
+            WorkflowExpression.Validate(__workflow_other18, nameof(other18), required: false);
+            var __workflow_other19 = other19 == null ? null : WorkflowExpression.Compile(other19);
+            WorkflowExpression.Validate(__workflow_other19, nameof(other19), required: false);
+            var __workflow_other20 = other20 == null ? null : WorkflowExpression.Compile(other20);
+            WorkflowExpression.Validate(__workflow_other20, nameof(other20), required: false);
+            var __workflow_other21 = other21 == null ? null : WorkflowExpression.Compile(other21);
+            WorkflowExpression.Validate(__workflow_other21, nameof(other21), required: false);
+            var __workflow_other22 = other22 == null ? null : WorkflowExpression.Compile(other22);
+            WorkflowExpression.Validate(__workflow_other22, nameof(other22), required: false);
+            var __workflow_other23 = other23 == null ? null : WorkflowExpression.Compile(other23);
+            WorkflowExpression.Validate(__workflow_other23, nameof(other23), required: false);
+            var __workflow_other24 = other24 == null ? null : WorkflowExpression.Compile(other24);
+            WorkflowExpression.Validate(__workflow_other24, nameof(other24), required: false);
+            var __workflow_other25 = other25 == null ? null : WorkflowExpression.Compile(other25);
+            WorkflowExpression.Validate(__workflow_other25, nameof(other25), required: false);
+            var __workflow_other26 = other26 == null ? null : WorkflowExpression.Compile(other26);
+            WorkflowExpression.Validate(__workflow_other26, nameof(other26), required: false);
+            var __workflow_other27 = other27 == null ? null : WorkflowExpression.Compile(other27);
+            WorkflowExpression.Validate(__workflow_other27, nameof(other27), required: false);
+            var __workflow_other28 = other28 == null ? null : WorkflowExpression.Compile(other28);
+            WorkflowExpression.Validate(__workflow_other28, nameof(other28), required: false);
+            var __workflow_other29 = other29 == null ? null : WorkflowExpression.Compile(other29);
+            WorkflowExpression.Validate(__workflow_other29, nameof(other29), required: false);
+            var __workflow_other30 = other30 == null ? null : WorkflowExpression.Compile(other30);
+            WorkflowExpression.Validate(__workflow_other30, nameof(other30), required: false);
+            var __workflow_other31 = other31 == null ? null : WorkflowExpression.Compile(other31);
+            WorkflowExpression.Validate(__workflow_other31, nameof(other31), required: false);
+            var __workflow_other32 = other32 == null ? null : WorkflowExpression.Compile(other32);
+            WorkflowExpression.Validate(__workflow_other32, nameof(other32), required: false);
+            var __workflow_other33 = other33 == null ? null : WorkflowExpression.Compile(other33);
+            WorkflowExpression.Validate(__workflow_other33, nameof(other33), required: false);
+            var __workflow_other34 = other34 == null ? null : WorkflowExpression.Compile(other34);
+            WorkflowExpression.Validate(__workflow_other34, nameof(other34), required: false);
+            var __workflow_other35 = other35 == null ? null : WorkflowExpression.Compile(other35);
+            WorkflowExpression.Validate(__workflow_other35, nameof(other35), required: false);
+            var __workflow_assignToAgent = assignToAgent == null ? null : WorkflowExpression.Compile(assignToAgent);
+            WorkflowExpression.Validate(__workflow_assignToAgent, nameof(assignToAgent), required: false);
             return new DeferredBodyAction<CreateContactResponse>(() =>
             {
                 var apiCallPath = "/create_contact";
@@ -764,128 +867,122 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["mod"] = Convert.ToString("contact");
                 callPayload.Queries["cmd"] = Convert.ToString("add");
-                if (fname != null)
-                    callPayload.Queries["fname"] = ExpressionConverter.Convert(fname);
-                if (lname != null)
-                    callPayload.Queries["lname"] = ExpressionConverter.Convert(lname);
-                callPayload.Queries["phone"] = ExpressionConverter.Convert(phone);
-                callPayload.Queries["list"] = ExpressionConverter.Convert(list);
+                if (__workflow_fname != null)
+                    callPayload.Queries["fname"] = ExpressionConverter.Convert(__workflow_fname);
+                if (__workflow_lname != null)
+                    callPayload.Queries["lname"] = ExpressionConverter.Convert(__workflow_lname);
+                callPayload.Queries["phone"] = ExpressionConverter.Convert(__workflow_phone);
+                callPayload.Queries["list"] = ExpressionConverter.Convert(__workflow_list);
                 callPayload.Queries["return_value"] = Convert.ToString("1");
-                if (email != null)
-                    callPayload.Queries["email"] = ExpressionConverter.Convert(email);
-                if (www != null)
-                    callPayload.Queries["www"] = ExpressionConverter.Convert(www);
-                if (address != null)
-                    callPayload.Queries["address"] = ExpressionConverter.Convert(address);
-                if (postcode != null)
-                    callPayload.Queries["postcode"] = ExpressionConverter.Convert(postcode);
-                if (city != null)
-                    callPayload.Queries["city"] = ExpressionConverter.Convert(city);
-                if (country != null)
-                    callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-                if (ssc != null)
-                    callPayload.Queries["ssc"] = ExpressionConverter.Convert(ssc);
-                if (birthyear != null)
-                    callPayload.Queries["birthyear"] = ExpressionConverter.Convert(birthyear);
-                if (gender != null)
-                    callPayload.Queries["gender"] = ExpressionConverter.Convert(gender);
-                if (companyid != null)
-                    callPayload.Queries["companyid"] = ExpressionConverter.Convert(companyid);
-                if (company != null)
-                    callPayload.Queries["company"] = ExpressionConverter.Convert(company);
-                if (vatin != null)
-                    callPayload.Queries["vatin"] = ExpressionConverter.Convert(vatin);
-                if (title != null)
-                    callPayload.Queries["title"] = ExpressionConverter.Convert(title);
-                if (comment != null)
-                    callPayload.Queries["comment"] = ExpressionConverter.Convert(comment);
-                if (other1 != null)
-                    callPayload.Queries["other1"] = ExpressionConverter.Convert(other1);
-                if (other2 != null)
-                    callPayload.Queries["other2"] = ExpressionConverter.Convert(other2);
-                if (other3 != null)
-                    callPayload.Queries["other3"] = ExpressionConverter.Convert(other3);
-                if (other4 != null)
-                    callPayload.Queries["other4"] = ExpressionConverter.Convert(other4);
-                if (other5 != null)
-                    callPayload.Queries["other5"] = ExpressionConverter.Convert(other5);
-                if (other6 != null)
-                    callPayload.Queries["other6"] = ExpressionConverter.Convert(other6);
-                if (other7 != null)
-                    callPayload.Queries["other7"] = ExpressionConverter.Convert(other7);
-                if (other8 != null)
-                    callPayload.Queries["other8"] = ExpressionConverter.Convert(other8);
-                if (other9 != null)
-                    callPayload.Queries["other9"] = ExpressionConverter.Convert(other9);
-                if (other10 != null)
-                    callPayload.Queries["other10"] = ExpressionConverter.Convert(other10);
-                if (other11 != null)
-                    callPayload.Queries["other11"] = ExpressionConverter.Convert(other11);
-                if (other12 != null)
-                    callPayload.Queries["other12"] = ExpressionConverter.Convert(other12);
-                if (other13 != null)
-                    callPayload.Queries["other13"] = ExpressionConverter.Convert(other13);
-                if (other14 != null)
-                    callPayload.Queries["other14"] = ExpressionConverter.Convert(other14);
-                if (other15 != null)
-                    callPayload.Queries["other15"] = ExpressionConverter.Convert(other15);
-                if (other16 != null)
-                    callPayload.Queries["other16"] = ExpressionConverter.Convert(other16);
-                if (other17 != null)
-                    callPayload.Queries["other17"] = ExpressionConverter.Convert(other17);
-                if (other18 != null)
-                    callPayload.Queries["other18"] = ExpressionConverter.Convert(other18);
-                if (other19 != null)
-                    callPayload.Queries["other19"] = ExpressionConverter.Convert(other19);
-                if (other20 != null)
-                    callPayload.Queries["other20"] = ExpressionConverter.Convert(other20);
-                if (other21 != null)
-                    callPayload.Queries["other21"] = ExpressionConverter.Convert(other21);
-                if (other22 != null)
-                    callPayload.Queries["other22"] = ExpressionConverter.Convert(other22);
-                if (other23 != null)
-                    callPayload.Queries["other23"] = ExpressionConverter.Convert(other23);
-                if (other24 != null)
-                    callPayload.Queries["other24"] = ExpressionConverter.Convert(other24);
-                if (other25 != null)
-                    callPayload.Queries["other25"] = ExpressionConverter.Convert(other25);
-                if (other26 != null)
-                    callPayload.Queries["other26"] = ExpressionConverter.Convert(other26);
-                if (other27 != null)
-                    callPayload.Queries["other27"] = ExpressionConverter.Convert(other27);
-                if (other28 != null)
-                    callPayload.Queries["other28"] = ExpressionConverter.Convert(other28);
-                if (other29 != null)
-                    callPayload.Queries["other29"] = ExpressionConverter.Convert(other29);
-                if (other30 != null)
-                    callPayload.Queries["other30"] = ExpressionConverter.Convert(other30);
-                if (other31 != null)
-                    callPayload.Queries["other31"] = ExpressionConverter.Convert(other31);
-                if (other32 != null)
-                    callPayload.Queries["other32"] = ExpressionConverter.Convert(other32);
-                if (other33 != null)
-                    callPayload.Queries["other33"] = ExpressionConverter.Convert(other33);
-                if (other34 != null)
-                    callPayload.Queries["other34"] = ExpressionConverter.Convert(other34);
-                if (other35 != null)
-                    callPayload.Queries["other35"] = ExpressionConverter.Convert(other35);
-                if (assignToAgent != null)
-                    callPayload.Queries["assign_to_agent"] = ExpressionConverter.Convert(assignToAgent);
+                if (__workflow_email != null)
+                    callPayload.Queries["email"] = ExpressionConverter.Convert(__workflow_email);
+                if (__workflow_www != null)
+                    callPayload.Queries["www"] = ExpressionConverter.Convert(__workflow_www);
+                if (__workflow_address != null)
+                    callPayload.Queries["address"] = ExpressionConverter.Convert(__workflow_address);
+                if (__workflow_postcode != null)
+                    callPayload.Queries["postcode"] = ExpressionConverter.Convert(__workflow_postcode);
+                if (__workflow_city != null)
+                    callPayload.Queries["city"] = ExpressionConverter.Convert(__workflow_city);
+                if (__workflow_country != null)
+                    callPayload.Queries["country"] = ExpressionConverter.Convert(__workflow_country);
+                if (__workflow_ssc != null)
+                    callPayload.Queries["ssc"] = ExpressionConverter.Convert(__workflow_ssc);
+                if (__workflow_birthyear != null)
+                    callPayload.Queries["birthyear"] = ExpressionConverter.Convert(__workflow_birthyear);
+                if (__workflow_gender != null)
+                    callPayload.Queries["gender"] = ExpressionConverter.Convert(__workflow_gender);
+                if (__workflow_companyid != null)
+                    callPayload.Queries["companyid"] = ExpressionConverter.Convert(__workflow_companyid);
+                if (__workflow_company != null)
+                    callPayload.Queries["company"] = ExpressionConverter.Convert(__workflow_company);
+                if (__workflow_vatin != null)
+                    callPayload.Queries["vatin"] = ExpressionConverter.Convert(__workflow_vatin);
+                if (__workflow_title != null)
+                    callPayload.Queries["title"] = ExpressionConverter.Convert(__workflow_title);
+                if (__workflow_comment != null)
+                    callPayload.Queries["comment"] = ExpressionConverter.Convert(__workflow_comment);
+                if (__workflow_other1 != null)
+                    callPayload.Queries["other1"] = ExpressionConverter.Convert(__workflow_other1);
+                if (__workflow_other2 != null)
+                    callPayload.Queries["other2"] = ExpressionConverter.Convert(__workflow_other2);
+                if (__workflow_other3 != null)
+                    callPayload.Queries["other3"] = ExpressionConverter.Convert(__workflow_other3);
+                if (__workflow_other4 != null)
+                    callPayload.Queries["other4"] = ExpressionConverter.Convert(__workflow_other4);
+                if (__workflow_other5 != null)
+                    callPayload.Queries["other5"] = ExpressionConverter.Convert(__workflow_other5);
+                if (__workflow_other6 != null)
+                    callPayload.Queries["other6"] = ExpressionConverter.Convert(__workflow_other6);
+                if (__workflow_other7 != null)
+                    callPayload.Queries["other7"] = ExpressionConverter.Convert(__workflow_other7);
+                if (__workflow_other8 != null)
+                    callPayload.Queries["other8"] = ExpressionConverter.Convert(__workflow_other8);
+                if (__workflow_other9 != null)
+                    callPayload.Queries["other9"] = ExpressionConverter.Convert(__workflow_other9);
+                if (__workflow_other10 != null)
+                    callPayload.Queries["other10"] = ExpressionConverter.Convert(__workflow_other10);
+                if (__workflow_other11 != null)
+                    callPayload.Queries["other11"] = ExpressionConverter.Convert(__workflow_other11);
+                if (__workflow_other12 != null)
+                    callPayload.Queries["other12"] = ExpressionConverter.Convert(__workflow_other12);
+                if (__workflow_other13 != null)
+                    callPayload.Queries["other13"] = ExpressionConverter.Convert(__workflow_other13);
+                if (__workflow_other14 != null)
+                    callPayload.Queries["other14"] = ExpressionConverter.Convert(__workflow_other14);
+                if (__workflow_other15 != null)
+                    callPayload.Queries["other15"] = ExpressionConverter.Convert(__workflow_other15);
+                if (__workflow_other16 != null)
+                    callPayload.Queries["other16"] = ExpressionConverter.Convert(__workflow_other16);
+                if (__workflow_other17 != null)
+                    callPayload.Queries["other17"] = ExpressionConverter.Convert(__workflow_other17);
+                if (__workflow_other18 != null)
+                    callPayload.Queries["other18"] = ExpressionConverter.Convert(__workflow_other18);
+                if (__workflow_other19 != null)
+                    callPayload.Queries["other19"] = ExpressionConverter.Convert(__workflow_other19);
+                if (__workflow_other20 != null)
+                    callPayload.Queries["other20"] = ExpressionConverter.Convert(__workflow_other20);
+                if (__workflow_other21 != null)
+                    callPayload.Queries["other21"] = ExpressionConverter.Convert(__workflow_other21);
+                if (__workflow_other22 != null)
+                    callPayload.Queries["other22"] = ExpressionConverter.Convert(__workflow_other22);
+                if (__workflow_other23 != null)
+                    callPayload.Queries["other23"] = ExpressionConverter.Convert(__workflow_other23);
+                if (__workflow_other24 != null)
+                    callPayload.Queries["other24"] = ExpressionConverter.Convert(__workflow_other24);
+                if (__workflow_other25 != null)
+                    callPayload.Queries["other25"] = ExpressionConverter.Convert(__workflow_other25);
+                if (__workflow_other26 != null)
+                    callPayload.Queries["other26"] = ExpressionConverter.Convert(__workflow_other26);
+                if (__workflow_other27 != null)
+                    callPayload.Queries["other27"] = ExpressionConverter.Convert(__workflow_other27);
+                if (__workflow_other28 != null)
+                    callPayload.Queries["other28"] = ExpressionConverter.Convert(__workflow_other28);
+                if (__workflow_other29 != null)
+                    callPayload.Queries["other29"] = ExpressionConverter.Convert(__workflow_other29);
+                if (__workflow_other30 != null)
+                    callPayload.Queries["other30"] = ExpressionConverter.Convert(__workflow_other30);
+                if (__workflow_other31 != null)
+                    callPayload.Queries["other31"] = ExpressionConverter.Convert(__workflow_other31);
+                if (__workflow_other32 != null)
+                    callPayload.Queries["other32"] = ExpressionConverter.Convert(__workflow_other32);
+                if (__workflow_other33 != null)
+                    callPayload.Queries["other33"] = ExpressionConverter.Convert(__workflow_other33);
+                if (__workflow_other34 != null)
+                    callPayload.Queries["other34"] = ExpressionConverter.Convert(__workflow_other34);
+                if (__workflow_other35 != null)
+                    callPayload.Queries["other35"] = ExpressionConverter.Convert(__workflow_other35);
+                if (__workflow_assignToAgent != null)
+                    callPayload.Queries["assign_to_agent"] = ExpressionConverter.Convert(__workflow_assignToAgent);
                 return new ApiConnectionAction<CreateContactResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leaddesk")]
-        [WorkflowExpressionFactory(nameof(__BuildFindAgent))]
-        public IBodyWorkflowAction<FindAgentResponse> FindAgent([WorkflowExpression] Func<string> username)
+        public IBodyWorkflowAction<FindAgentResponse> FindAgent(Expression<Func<string>> username)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FindAgentResponse> __BuildFindAgent(WorkflowExpression<string> username)
-        {
-            WorkflowExpression.Validate(username, nameof(username), required: true);
+            var __workflow_username = username == null ? null : WorkflowExpression.Compile(username);
+            WorkflowExpression.Validate(__workflow_username, nameof(username), required: true);
             return new DeferredBodyAction<FindAgentResponse>(() =>
             {
                 var apiCallPath = "/find_agent";
@@ -893,25 +990,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["mod"] = Convert.ToString("agent");
                 callPayload.Queries["cmd"] = Convert.ToString("find");
-                callPayload.Queries["username"] = ExpressionConverter.Convert(username);
+                callPayload.Queries["username"] = ExpressionConverter.Convert(__workflow_username);
                 return new ApiConnectionAction<FindAgentResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leaddesk")]
-        [WorkflowExpressionFactory(nameof(__BuildFindContact))]
-        public IBodyWorkflowAction<FindContactResponse> FindContact([WorkflowExpression] Func<string> fname = null, [WorkflowExpression] Func<string> lname = null, [WorkflowExpression] Func<int> phone = null, [WorkflowExpression] Func<int> contactListId = null)
+        public IBodyWorkflowAction<FindContactResponse> FindContact(Expression<Func<string>> fname = null, Expression<Func<string>> lname = null, Expression<Func<int>> phone = null, Expression<Func<int>> contactListId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FindContactResponse> __BuildFindContact(WorkflowExpression<string> fname = null, WorkflowExpression<string> lname = null, WorkflowExpression<int> phone = null, WorkflowExpression<int> contactListId = null)
-        {
-            WorkflowExpression.Validate(fname, nameof(fname), required: false);
-            WorkflowExpression.Validate(lname, nameof(lname), required: false);
-            WorkflowExpression.Validate(phone, nameof(phone), required: false);
-            WorkflowExpression.Validate(contactListId, nameof(contactListId), required: false);
+            var __workflow_fname = fname == null ? null : WorkflowExpression.Compile(fname);
+            WorkflowExpression.Validate(__workflow_fname, nameof(fname), required: false);
+            var __workflow_lname = lname == null ? null : WorkflowExpression.Compile(lname);
+            WorkflowExpression.Validate(__workflow_lname, nameof(lname), required: false);
+            var __workflow_phone = phone == null ? null : WorkflowExpression.Compile(phone);
+            WorkflowExpression.Validate(__workflow_phone, nameof(phone), required: false);
+            var __workflow_contactListId = contactListId == null ? null : WorkflowExpression.Compile(contactListId);
+            WorkflowExpression.Validate(__workflow_contactListId, nameof(contactListId), required: false);
             return new DeferredBodyAction<FindContactResponse>(() =>
             {
                 var apiCallPath = "/find_contact";
@@ -919,54 +1013,73 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["mod"] = Convert.ToString("contact");
                 callPayload.Queries["cmd"] = Convert.ToString("find");
-                if (fname != null)
-                    callPayload.Queries["fname"] = ExpressionConverter.Convert(fname);
-                if (lname != null)
-                    callPayload.Queries["lname"] = ExpressionConverter.Convert(lname);
-                if (phone != null)
-                    callPayload.Queries["phone"] = ExpressionConverter.Convert(phone);
-                if (contactListId != null)
-                    callPayload.Queries["contact_list_id"] = ExpressionConverter.Convert(contactListId);
+                if (__workflow_fname != null)
+                    callPayload.Queries["fname"] = ExpressionConverter.Convert(__workflow_fname);
+                if (__workflow_lname != null)
+                    callPayload.Queries["lname"] = ExpressionConverter.Convert(__workflow_lname);
+                if (__workflow_phone != null)
+                    callPayload.Queries["phone"] = ExpressionConverter.Convert(__workflow_phone);
+                if (__workflow_contactListId != null)
+                    callPayload.Queries["contact_list_id"] = ExpressionConverter.Convert(__workflow_contactListId);
                 return new ApiConnectionAction<FindContactResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leaddesk")]
-        [WorkflowExpressionFactory(nameof(__BuildModifyAgent))]
-        public IBodyWorkflowAction<ModifyAgentResponse> ModifyAgent([WorkflowExpression] Func<int> bodyid, [WorkflowExpression] Func<string> bodyaccountexternalId = null, [WorkflowExpression] Func<string> bodyaccountinboundNumber = null, [WorkflowExpression] Func<int> bodyaccountlang = null, [WorkflowExpression] Func<string> bodyaccountpassword = null, [WorkflowExpression] Func<string> bodyaccounttimeZone = null, [WorkflowExpression] Func<string> bodyaccountusername = null, [WorkflowExpression] Func<string> bodyaccountvoipUsername = null, [WorkflowExpression] Func<string> bodycontactInformationaddress = null, [WorkflowExpression] Func<string> bodycontactInformationcity = null, [WorkflowExpression] Func<string> bodycontactInformationcountry = null, [WorkflowExpression] Func<string> bodycontactInformationeContacts = null, [WorkflowExpression] Func<string> bodycontactInformationemail = null, [WorkflowExpression] Func<string> bodycontactInformationname = null, [WorkflowExpression] Func<string> bodycontactInformationphone = null, [WorkflowExpression] Func<string> bodycontactInformationpostal = null, [WorkflowExpression] Func<string> bodycontactInformationworkphone = null, [WorkflowExpression] Func<bool> bodydisable = null, [WorkflowExpression] Func<int> bodyemploymentagentGroupId = null, [WorkflowExpression] Func<string> bodyemploymentbankAcc = null, [WorkflowExpression] Func<string> bodyemploymentdescription = null, [WorkflowExpression] Func<bodyemploymentemploymentInput> bodyemploymentemployment = null, [WorkflowExpression] Func<string> bodyemploymentemploymentStart = null, [WorkflowExpression] Func<string> bodyemploymentoffice = null, [WorkflowExpression] Func<string> bodyemploymentssn = null, [WorkflowExpression] Func<string> bodyemploymentworkshift = null)
+        public IBodyWorkflowAction<ModifyAgentResponse> ModifyAgent(Expression<Func<int>> bodyid, Expression<Func<string>> bodyaccountexternalId = null, Expression<Func<string>> bodyaccountinboundNumber = null, Expression<Func<int>> bodyaccountlang = null, Expression<Func<string>> bodyaccountpassword = null, Expression<Func<string>> bodyaccounttimeZone = null, Expression<Func<string>> bodyaccountusername = null, Expression<Func<string>> bodyaccountvoipUsername = null, Expression<Func<string>> bodycontactInformationaddress = null, Expression<Func<string>> bodycontactInformationcity = null, Expression<Func<string>> bodycontactInformationcountry = null, Expression<Func<string>> bodycontactInformationeContacts = null, Expression<Func<string>> bodycontactInformationemail = null, Expression<Func<string>> bodycontactInformationname = null, Expression<Func<string>> bodycontactInformationphone = null, Expression<Func<string>> bodycontactInformationpostal = null, Expression<Func<string>> bodycontactInformationworkphone = null, Expression<Func<bool>> bodydisable = null, Expression<Func<int>> bodyemploymentagentGroupId = null, Expression<Func<string>> bodyemploymentbankAcc = null, Expression<Func<string>> bodyemploymentdescription = null, Expression<Func<bodyemploymentemploymentInput>> bodyemploymentemployment = null, Expression<Func<string>> bodyemploymentemploymentStart = null, Expression<Func<string>> bodyemploymentoffice = null, Expression<Func<string>> bodyemploymentssn = null, Expression<Func<string>> bodyemploymentworkshift = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ModifyAgentResponse> __BuildModifyAgent(WorkflowExpression<int> bodyid, WorkflowExpression<string> bodyaccountexternalId = null, WorkflowExpression<string> bodyaccountinboundNumber = null, WorkflowExpression<int> bodyaccountlang = null, WorkflowExpression<string> bodyaccountpassword = null, WorkflowExpression<string> bodyaccounttimeZone = null, WorkflowExpression<string> bodyaccountusername = null, WorkflowExpression<string> bodyaccountvoipUsername = null, WorkflowExpression<string> bodycontactInformationaddress = null, WorkflowExpression<string> bodycontactInformationcity = null, WorkflowExpression<string> bodycontactInformationcountry = null, WorkflowExpression<string> bodycontactInformationeContacts = null, WorkflowExpression<string> bodycontactInformationemail = null, WorkflowExpression<string> bodycontactInformationname = null, WorkflowExpression<string> bodycontactInformationphone = null, WorkflowExpression<string> bodycontactInformationpostal = null, WorkflowExpression<string> bodycontactInformationworkphone = null, WorkflowExpression<bool> bodydisable = null, WorkflowExpression<int> bodyemploymentagentGroupId = null, WorkflowExpression<string> bodyemploymentbankAcc = null, WorkflowExpression<string> bodyemploymentdescription = null, WorkflowExpression<bodyemploymentemploymentInput> bodyemploymentemployment = null, WorkflowExpression<string> bodyemploymentemploymentStart = null, WorkflowExpression<string> bodyemploymentoffice = null, WorkflowExpression<string> bodyemploymentssn = null, WorkflowExpression<string> bodyemploymentworkshift = null)
-        {
-            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: true);
-            WorkflowExpression.Validate(bodyaccountexternalId, nameof(bodyaccountexternalId), required: false);
-            WorkflowExpression.Validate(bodyaccountinboundNumber, nameof(bodyaccountinboundNumber), required: false);
-            WorkflowExpression.Validate(bodyaccountlang, nameof(bodyaccountlang), required: false);
-            WorkflowExpression.Validate(bodyaccountpassword, nameof(bodyaccountpassword), required: false);
-            WorkflowExpression.Validate(bodyaccounttimeZone, nameof(bodyaccounttimeZone), required: false);
-            WorkflowExpression.Validate(bodyaccountusername, nameof(bodyaccountusername), required: false);
-            WorkflowExpression.Validate(bodyaccountvoipUsername, nameof(bodyaccountvoipUsername), required: false);
-            WorkflowExpression.Validate(bodycontactInformationaddress, nameof(bodycontactInformationaddress), required: false);
-            WorkflowExpression.Validate(bodycontactInformationcity, nameof(bodycontactInformationcity), required: false);
-            WorkflowExpression.Validate(bodycontactInformationcountry, nameof(bodycontactInformationcountry), required: false);
-            WorkflowExpression.Validate(bodycontactInformationeContacts, nameof(bodycontactInformationeContacts), required: false);
-            WorkflowExpression.Validate(bodycontactInformationemail, nameof(bodycontactInformationemail), required: false);
-            WorkflowExpression.Validate(bodycontactInformationname, nameof(bodycontactInformationname), required: false);
-            WorkflowExpression.Validate(bodycontactInformationphone, nameof(bodycontactInformationphone), required: false);
-            WorkflowExpression.Validate(bodycontactInformationpostal, nameof(bodycontactInformationpostal), required: false);
-            WorkflowExpression.Validate(bodycontactInformationworkphone, nameof(bodycontactInformationworkphone), required: false);
-            WorkflowExpression.Validate(bodydisable, nameof(bodydisable), required: false);
-            WorkflowExpression.Validate(bodyemploymentagentGroupId, nameof(bodyemploymentagentGroupId), required: false);
-            WorkflowExpression.Validate(bodyemploymentbankAcc, nameof(bodyemploymentbankAcc), required: false);
-            WorkflowExpression.Validate(bodyemploymentdescription, nameof(bodyemploymentdescription), required: false);
-            WorkflowExpression.Validate(bodyemploymentemployment, nameof(bodyemploymentemployment), required: false);
-            WorkflowExpression.Validate(bodyemploymentemploymentStart, nameof(bodyemploymentemploymentStart), required: false);
-            WorkflowExpression.Validate(bodyemploymentoffice, nameof(bodyemploymentoffice), required: false);
-            WorkflowExpression.Validate(bodyemploymentssn, nameof(bodyemploymentssn), required: false);
-            WorkflowExpression.Validate(bodyemploymentworkshift, nameof(bodyemploymentworkshift), required: false);
+            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
+            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: true);
+            var __workflow_bodyaccountexternalId = bodyaccountexternalId == null ? null : WorkflowExpression.Compile(bodyaccountexternalId);
+            WorkflowExpression.Validate(__workflow_bodyaccountexternalId, nameof(bodyaccountexternalId), required: false);
+            var __workflow_bodyaccountinboundNumber = bodyaccountinboundNumber == null ? null : WorkflowExpression.Compile(bodyaccountinboundNumber);
+            WorkflowExpression.Validate(__workflow_bodyaccountinboundNumber, nameof(bodyaccountinboundNumber), required: false);
+            var __workflow_bodyaccountlang = bodyaccountlang == null ? null : WorkflowExpression.Compile(bodyaccountlang);
+            WorkflowExpression.Validate(__workflow_bodyaccountlang, nameof(bodyaccountlang), required: false);
+            var __workflow_bodyaccountpassword = bodyaccountpassword == null ? null : WorkflowExpression.Compile(bodyaccountpassword);
+            WorkflowExpression.Validate(__workflow_bodyaccountpassword, nameof(bodyaccountpassword), required: false);
+            var __workflow_bodyaccounttimeZone = bodyaccounttimeZone == null ? null : WorkflowExpression.Compile(bodyaccounttimeZone);
+            WorkflowExpression.Validate(__workflow_bodyaccounttimeZone, nameof(bodyaccounttimeZone), required: false);
+            var __workflow_bodyaccountusername = bodyaccountusername == null ? null : WorkflowExpression.Compile(bodyaccountusername);
+            WorkflowExpression.Validate(__workflow_bodyaccountusername, nameof(bodyaccountusername), required: false);
+            var __workflow_bodyaccountvoipUsername = bodyaccountvoipUsername == null ? null : WorkflowExpression.Compile(bodyaccountvoipUsername);
+            WorkflowExpression.Validate(__workflow_bodyaccountvoipUsername, nameof(bodyaccountvoipUsername), required: false);
+            var __workflow_bodycontactInformationaddress = bodycontactInformationaddress == null ? null : WorkflowExpression.Compile(bodycontactInformationaddress);
+            WorkflowExpression.Validate(__workflow_bodycontactInformationaddress, nameof(bodycontactInformationaddress), required: false);
+            var __workflow_bodycontactInformationcity = bodycontactInformationcity == null ? null : WorkflowExpression.Compile(bodycontactInformationcity);
+            WorkflowExpression.Validate(__workflow_bodycontactInformationcity, nameof(bodycontactInformationcity), required: false);
+            var __workflow_bodycontactInformationcountry = bodycontactInformationcountry == null ? null : WorkflowExpression.Compile(bodycontactInformationcountry);
+            WorkflowExpression.Validate(__workflow_bodycontactInformationcountry, nameof(bodycontactInformationcountry), required: false);
+            var __workflow_bodycontactInformationeContacts = bodycontactInformationeContacts == null ? null : WorkflowExpression.Compile(bodycontactInformationeContacts);
+            WorkflowExpression.Validate(__workflow_bodycontactInformationeContacts, nameof(bodycontactInformationeContacts), required: false);
+            var __workflow_bodycontactInformationemail = bodycontactInformationemail == null ? null : WorkflowExpression.Compile(bodycontactInformationemail);
+            WorkflowExpression.Validate(__workflow_bodycontactInformationemail, nameof(bodycontactInformationemail), required: false);
+            var __workflow_bodycontactInformationname = bodycontactInformationname == null ? null : WorkflowExpression.Compile(bodycontactInformationname);
+            WorkflowExpression.Validate(__workflow_bodycontactInformationname, nameof(bodycontactInformationname), required: false);
+            var __workflow_bodycontactInformationphone = bodycontactInformationphone == null ? null : WorkflowExpression.Compile(bodycontactInformationphone);
+            WorkflowExpression.Validate(__workflow_bodycontactInformationphone, nameof(bodycontactInformationphone), required: false);
+            var __workflow_bodycontactInformationpostal = bodycontactInformationpostal == null ? null : WorkflowExpression.Compile(bodycontactInformationpostal);
+            WorkflowExpression.Validate(__workflow_bodycontactInformationpostal, nameof(bodycontactInformationpostal), required: false);
+            var __workflow_bodycontactInformationworkphone = bodycontactInformationworkphone == null ? null : WorkflowExpression.Compile(bodycontactInformationworkphone);
+            WorkflowExpression.Validate(__workflow_bodycontactInformationworkphone, nameof(bodycontactInformationworkphone), required: false);
+            var __workflow_bodydisable = bodydisable == null ? null : WorkflowExpression.Compile(bodydisable);
+            WorkflowExpression.Validate(__workflow_bodydisable, nameof(bodydisable), required: false);
+            var __workflow_bodyemploymentagentGroupId = bodyemploymentagentGroupId == null ? null : WorkflowExpression.Compile(bodyemploymentagentGroupId);
+            WorkflowExpression.Validate(__workflow_bodyemploymentagentGroupId, nameof(bodyemploymentagentGroupId), required: false);
+            var __workflow_bodyemploymentbankAcc = bodyemploymentbankAcc == null ? null : WorkflowExpression.Compile(bodyemploymentbankAcc);
+            WorkflowExpression.Validate(__workflow_bodyemploymentbankAcc, nameof(bodyemploymentbankAcc), required: false);
+            var __workflow_bodyemploymentdescription = bodyemploymentdescription == null ? null : WorkflowExpression.Compile(bodyemploymentdescription);
+            WorkflowExpression.Validate(__workflow_bodyemploymentdescription, nameof(bodyemploymentdescription), required: false);
+            var __workflow_bodyemploymentemployment = bodyemploymentemployment == null ? null : WorkflowExpression.Compile(bodyemploymentemployment);
+            WorkflowExpression.Validate(__workflow_bodyemploymentemployment, nameof(bodyemploymentemployment), required: false);
+            var __workflow_bodyemploymentemploymentStart = bodyemploymentemploymentStart == null ? null : WorkflowExpression.Compile(bodyemploymentemploymentStart);
+            WorkflowExpression.Validate(__workflow_bodyemploymentemploymentStart, nameof(bodyemploymentemploymentStart), required: false);
+            var __workflow_bodyemploymentoffice = bodyemploymentoffice == null ? null : WorkflowExpression.Compile(bodyemploymentoffice);
+            WorkflowExpression.Validate(__workflow_bodyemploymentoffice, nameof(bodyemploymentoffice), required: false);
+            var __workflow_bodyemploymentssn = bodyemploymentssn == null ? null : WorkflowExpression.Compile(bodyemploymentssn);
+            WorkflowExpression.Validate(__workflow_bodyemploymentssn, nameof(bodyemploymentssn), required: false);
+            var __workflow_bodyemploymentworkshift = bodyemploymentworkshift == null ? null : WorkflowExpression.Compile(bodyemploymentworkshift);
+            WorkflowExpression.Validate(__workflow_bodyemploymentworkshift, nameof(bodyemploymentworkshift), required: false);
             return new DeferredBodyAction<ModifyAgentResponse>(() =>
             {
                 var apiCallPath = "/modify_agent";
@@ -978,45 +1091,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
                 var bodypropCount = 0;
                 var accountObject = new JObject();
                 var accountObjectpropCount = 0;
-                if (bodyaccountexternalId != null)
+                if (__workflow_bodyaccountexternalId != null)
                 {
-                    accountObject["external_id"] = ExpressionConverter.ConvertO(bodyaccountexternalId);
+                    accountObject["external_id"] = ExpressionConverter.ConvertO(__workflow_bodyaccountexternalId);
                     accountObjectpropCount++;
                 }
 
-                if (bodyaccountinboundNumber != null)
+                if (__workflow_bodyaccountinboundNumber != null)
                 {
-                    accountObject["inbound_number"] = ExpressionConverter.ConvertO(bodyaccountinboundNumber);
+                    accountObject["inbound_number"] = ExpressionConverter.ConvertO(__workflow_bodyaccountinboundNumber);
                     accountObjectpropCount++;
                 }
 
-                if (bodyaccountlang != null)
+                if (__workflow_bodyaccountlang != null)
                 {
-                    accountObject["lang"] = ExpressionConverter.ConvertO(bodyaccountlang);
+                    accountObject["lang"] = ExpressionConverter.ConvertO(__workflow_bodyaccountlang);
                     accountObjectpropCount++;
                 }
 
-                if (bodyaccountpassword != null)
+                if (__workflow_bodyaccountpassword != null)
                 {
-                    accountObject["password"] = ExpressionConverter.ConvertO(bodyaccountpassword);
+                    accountObject["password"] = ExpressionConverter.ConvertO(__workflow_bodyaccountpassword);
                     accountObjectpropCount++;
                 }
 
-                if (bodyaccounttimeZone != null)
+                if (__workflow_bodyaccounttimeZone != null)
                 {
-                    accountObject["time_zone"] = ExpressionConverter.ConvertO(bodyaccounttimeZone);
+                    accountObject["time_zone"] = ExpressionConverter.ConvertO(__workflow_bodyaccounttimeZone);
                     accountObjectpropCount++;
                 }
 
-                if (bodyaccountusername != null)
+                if (__workflow_bodyaccountusername != null)
                 {
-                    accountObject["username"] = ExpressionConverter.ConvertO(bodyaccountusername);
+                    accountObject["username"] = ExpressionConverter.ConvertO(__workflow_bodyaccountusername);
                     accountObjectpropCount++;
                 }
 
-                if (bodyaccountvoipUsername != null)
+                if (__workflow_bodyaccountvoipUsername != null)
                 {
-                    accountObject["voip_username"] = ExpressionConverter.ConvertO(bodyaccountvoipUsername);
+                    accountObject["voip_username"] = ExpressionConverter.ConvertO(__workflow_bodyaccountvoipUsername);
                     accountObjectpropCount++;
                 }
 
@@ -1028,57 +1141,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
 
                 var contactInformationObject = new JObject();
                 var contactInformationObjectpropCount = 0;
-                if (bodycontactInformationaddress != null)
+                if (__workflow_bodycontactInformationaddress != null)
                 {
-                    contactInformationObject["address"] = ExpressionConverter.ConvertO(bodycontactInformationaddress);
+                    contactInformationObject["address"] = ExpressionConverter.ConvertO(__workflow_bodycontactInformationaddress);
                     contactInformationObjectpropCount++;
                 }
 
-                if (bodycontactInformationcity != null)
+                if (__workflow_bodycontactInformationcity != null)
                 {
-                    contactInformationObject["city"] = ExpressionConverter.ConvertO(bodycontactInformationcity);
+                    contactInformationObject["city"] = ExpressionConverter.ConvertO(__workflow_bodycontactInformationcity);
                     contactInformationObjectpropCount++;
                 }
 
-                if (bodycontactInformationcountry != null)
+                if (__workflow_bodycontactInformationcountry != null)
                 {
-                    contactInformationObject["country"] = ExpressionConverter.ConvertO(bodycontactInformationcountry);
+                    contactInformationObject["country"] = ExpressionConverter.ConvertO(__workflow_bodycontactInformationcountry);
                     contactInformationObjectpropCount++;
                 }
 
-                if (bodycontactInformationeContacts != null)
+                if (__workflow_bodycontactInformationeContacts != null)
                 {
-                    contactInformationObject["e_contacts"] = ExpressionConverter.ConvertO(bodycontactInformationeContacts);
+                    contactInformationObject["e_contacts"] = ExpressionConverter.ConvertO(__workflow_bodycontactInformationeContacts);
                     contactInformationObjectpropCount++;
                 }
 
-                if (bodycontactInformationemail != null)
+                if (__workflow_bodycontactInformationemail != null)
                 {
-                    contactInformationObject["email"] = ExpressionConverter.ConvertO(bodycontactInformationemail);
+                    contactInformationObject["email"] = ExpressionConverter.ConvertO(__workflow_bodycontactInformationemail);
                     contactInformationObjectpropCount++;
                 }
 
-                if (bodycontactInformationname != null)
+                if (__workflow_bodycontactInformationname != null)
                 {
-                    contactInformationObject["name"] = ExpressionConverter.ConvertO(bodycontactInformationname);
+                    contactInformationObject["name"] = ExpressionConverter.ConvertO(__workflow_bodycontactInformationname);
                     contactInformationObjectpropCount++;
                 }
 
-                if (bodycontactInformationphone != null)
+                if (__workflow_bodycontactInformationphone != null)
                 {
-                    contactInformationObject["phone"] = ExpressionConverter.ConvertO(bodycontactInformationphone);
+                    contactInformationObject["phone"] = ExpressionConverter.ConvertO(__workflow_bodycontactInformationphone);
                     contactInformationObjectpropCount++;
                 }
 
-                if (bodycontactInformationpostal != null)
+                if (__workflow_bodycontactInformationpostal != null)
                 {
-                    contactInformationObject["postal"] = ExpressionConverter.ConvertO(bodycontactInformationpostal);
+                    contactInformationObject["postal"] = ExpressionConverter.ConvertO(__workflow_bodycontactInformationpostal);
                     contactInformationObjectpropCount++;
                 }
 
-                if (bodycontactInformationworkphone != null)
+                if (__workflow_bodycontactInformationworkphone != null)
                 {
-                    contactInformationObject["workphone"] = ExpressionConverter.ConvertO(bodycontactInformationworkphone);
+                    contactInformationObject["workphone"] = ExpressionConverter.ConvertO(__workflow_bodycontactInformationworkphone);
                     contactInformationObjectpropCount++;
                 }
 
@@ -1088,11 +1201,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
                     bodypropCount++;
                 }
 
-                if (bodydisable != null)
+                if (__workflow_bodydisable != null)
                 {
-                    if (bodydisable != null)
+                    if (__workflow_bodydisable != null)
                     {
-                        body["disable"] = ExpressionConverter.ConvertO(bodydisable);
+                        body["disable"] = ExpressionConverter.ConvertO(__workflow_bodydisable);
                         bodypropCount++;
                     }
 
@@ -1106,51 +1219,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
 
                 var employmentObject = new JObject();
                 var employmentObjectpropCount = 0;
-                if (bodyemploymentagentGroupId != null)
+                if (__workflow_bodyemploymentagentGroupId != null)
                 {
-                    employmentObject["agent_group_id"] = ExpressionConverter.ConvertO(bodyemploymentagentGroupId);
+                    employmentObject["agent_group_id"] = ExpressionConverter.ConvertO(__workflow_bodyemploymentagentGroupId);
                     employmentObjectpropCount++;
                 }
 
-                if (bodyemploymentbankAcc != null)
+                if (__workflow_bodyemploymentbankAcc != null)
                 {
-                    employmentObject["bank_acc"] = ExpressionConverter.ConvertO(bodyemploymentbankAcc);
+                    employmentObject["bank_acc"] = ExpressionConverter.ConvertO(__workflow_bodyemploymentbankAcc);
                     employmentObjectpropCount++;
                 }
 
-                if (bodyemploymentdescription != null)
+                if (__workflow_bodyemploymentdescription != null)
                 {
-                    employmentObject["description"] = ExpressionConverter.ConvertO(bodyemploymentdescription);
+                    employmentObject["description"] = ExpressionConverter.ConvertO(__workflow_bodyemploymentdescription);
                     employmentObjectpropCount++;
                 }
 
-                if (bodyemploymentemployment != null)
+                if (__workflow_bodyemploymentemployment != null)
                 {
-                    employmentObject["employment"] = ExpressionConverter.ConvertO(bodyemploymentemployment);
+                    employmentObject["employment"] = ExpressionConverter.ConvertO(__workflow_bodyemploymentemployment);
                     employmentObjectpropCount++;
                 }
 
-                if (bodyemploymentemploymentStart != null)
+                if (__workflow_bodyemploymentemploymentStart != null)
                 {
-                    employmentObject["employment_start"] = ExpressionConverter.ConvertO(bodyemploymentemploymentStart);
+                    employmentObject["employment_start"] = ExpressionConverter.ConvertO(__workflow_bodyemploymentemploymentStart);
                     employmentObjectpropCount++;
                 }
 
-                if (bodyemploymentoffice != null)
+                if (__workflow_bodyemploymentoffice != null)
                 {
-                    employmentObject["office"] = ExpressionConverter.ConvertO(bodyemploymentoffice);
+                    employmentObject["office"] = ExpressionConverter.ConvertO(__workflow_bodyemploymentoffice);
                     employmentObjectpropCount++;
                 }
 
-                if (bodyemploymentssn != null)
+                if (__workflow_bodyemploymentssn != null)
                 {
-                    employmentObject["ssn"] = ExpressionConverter.ConvertO(bodyemploymentssn);
+                    employmentObject["ssn"] = ExpressionConverter.ConvertO(__workflow_bodyemploymentssn);
                     employmentObjectpropCount++;
                 }
 
-                if (bodyemploymentworkshift != null)
+                if (__workflow_bodyemploymentworkshift != null)
                 {
-                    employmentObject["workshift"] = ExpressionConverter.ConvertO(bodyemploymentworkshift);
+                    employmentObject["workshift"] = ExpressionConverter.ConvertO(__workflow_bodyemploymentworkshift);
                     employmentObjectpropCount++;
                 }
 
@@ -1161,7 +1274,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
                 }
 
                 bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -1172,71 +1285,120 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leaddesk")]
-        [WorkflowExpressionFactory(nameof(__BuildModifyContact))]
-        public IBodyWorkflowAction<ModifyContactResponse> ModifyContact([WorkflowExpression] Func<int> contactId, [WorkflowExpression] Func<string> fname = null, [WorkflowExpression] Func<string> lname = null, [WorkflowExpression] Func<string> phone = null, [WorkflowExpression] Func<string> birthyear = null, [WorkflowExpression] Func<string> gender = null, [WorkflowExpression] Func<string> email = null, [WorkflowExpression] Func<string> www = null, [WorkflowExpression] Func<string> address = null, [WorkflowExpression] Func<string> postcode = null, [WorkflowExpression] Func<string> city = null, [WorkflowExpression] Func<string> country = null, [WorkflowExpression] Func<string> ssc = null, [WorkflowExpression] Func<int> companyid = null, [WorkflowExpression] Func<string> company = null, [WorkflowExpression] Func<string> vatin = null, [WorkflowExpression] Func<string> title = null, [WorkflowExpression] Func<string> comment = null, [WorkflowExpression] Func<string> other1 = null, [WorkflowExpression] Func<string> other2 = null, [WorkflowExpression] Func<string> other3 = null, [WorkflowExpression] Func<string> other4 = null, [WorkflowExpression] Func<string> other5 = null, [WorkflowExpression] Func<string> other6 = null, [WorkflowExpression] Func<string> other7 = null, [WorkflowExpression] Func<string> other8 = null, [WorkflowExpression] Func<string> other9 = null, [WorkflowExpression] Func<string> other10 = null, [WorkflowExpression] Func<string> other11 = null, [WorkflowExpression] Func<string> other12 = null, [WorkflowExpression] Func<string> other13 = null, [WorkflowExpression] Func<string> other14 = null, [WorkflowExpression] Func<string> other15 = null, [WorkflowExpression] Func<string> other16 = null, [WorkflowExpression] Func<string> other17 = null, [WorkflowExpression] Func<string> other18 = null, [WorkflowExpression] Func<string> other19 = null, [WorkflowExpression] Func<string> other20 = null, [WorkflowExpression] Func<string> other21 = null, [WorkflowExpression] Func<string> other22 = null, [WorkflowExpression] Func<string> other23 = null, [WorkflowExpression] Func<string> other24 = null, [WorkflowExpression] Func<string> other25 = null, [WorkflowExpression] Func<string> other26 = null, [WorkflowExpression] Func<string> other27 = null, [WorkflowExpression] Func<string> other28 = null, [WorkflowExpression] Func<string> other29 = null, [WorkflowExpression] Func<string> other30 = null, [WorkflowExpression] Func<string> other31 = null, [WorkflowExpression] Func<string> other32 = null, [WorkflowExpression] Func<string> other33 = null, [WorkflowExpression] Func<string> other34 = null, [WorkflowExpression] Func<string> other35 = null, [WorkflowExpression] Func<string> list = null, [WorkflowExpression] Func<orderInput> order = null, [WorkflowExpression] Func<string> assignToAgent = null)
+        public IBodyWorkflowAction<ModifyContactResponse> ModifyContact(Expression<Func<int>> contactId, Expression<Func<string>> fname = null, Expression<Func<string>> lname = null, Expression<Func<string>> phone = null, Expression<Func<string>> birthyear = null, Expression<Func<string>> gender = null, Expression<Func<string>> email = null, Expression<Func<string>> www = null, Expression<Func<string>> address = null, Expression<Func<string>> postcode = null, Expression<Func<string>> city = null, Expression<Func<string>> country = null, Expression<Func<string>> ssc = null, Expression<Func<int>> companyid = null, Expression<Func<string>> company = null, Expression<Func<string>> vatin = null, Expression<Func<string>> title = null, Expression<Func<string>> comment = null, Expression<Func<string>> other1 = null, Expression<Func<string>> other2 = null, Expression<Func<string>> other3 = null, Expression<Func<string>> other4 = null, Expression<Func<string>> other5 = null, Expression<Func<string>> other6 = null, Expression<Func<string>> other7 = null, Expression<Func<string>> other8 = null, Expression<Func<string>> other9 = null, Expression<Func<string>> other10 = null, Expression<Func<string>> other11 = null, Expression<Func<string>> other12 = null, Expression<Func<string>> other13 = null, Expression<Func<string>> other14 = null, Expression<Func<string>> other15 = null, Expression<Func<string>> other16 = null, Expression<Func<string>> other17 = null, Expression<Func<string>> other18 = null, Expression<Func<string>> other19 = null, Expression<Func<string>> other20 = null, Expression<Func<string>> other21 = null, Expression<Func<string>> other22 = null, Expression<Func<string>> other23 = null, Expression<Func<string>> other24 = null, Expression<Func<string>> other25 = null, Expression<Func<string>> other26 = null, Expression<Func<string>> other27 = null, Expression<Func<string>> other28 = null, Expression<Func<string>> other29 = null, Expression<Func<string>> other30 = null, Expression<Func<string>> other31 = null, Expression<Func<string>> other32 = null, Expression<Func<string>> other33 = null, Expression<Func<string>> other34 = null, Expression<Func<string>> other35 = null, Expression<Func<string>> list = null, Expression<Func<orderInput>> order = null, Expression<Func<string>> assignToAgent = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ModifyContactResponse> __BuildModifyContact(WorkflowExpression<int> contactId, WorkflowExpression<string> fname = null, WorkflowExpression<string> lname = null, WorkflowExpression<string> phone = null, WorkflowExpression<string> birthyear = null, WorkflowExpression<string> gender = null, WorkflowExpression<string> email = null, WorkflowExpression<string> www = null, WorkflowExpression<string> address = null, WorkflowExpression<string> postcode = null, WorkflowExpression<string> city = null, WorkflowExpression<string> country = null, WorkflowExpression<string> ssc = null, WorkflowExpression<int> companyid = null, WorkflowExpression<string> company = null, WorkflowExpression<string> vatin = null, WorkflowExpression<string> title = null, WorkflowExpression<string> comment = null, WorkflowExpression<string> other1 = null, WorkflowExpression<string> other2 = null, WorkflowExpression<string> other3 = null, WorkflowExpression<string> other4 = null, WorkflowExpression<string> other5 = null, WorkflowExpression<string> other6 = null, WorkflowExpression<string> other7 = null, WorkflowExpression<string> other8 = null, WorkflowExpression<string> other9 = null, WorkflowExpression<string> other10 = null, WorkflowExpression<string> other11 = null, WorkflowExpression<string> other12 = null, WorkflowExpression<string> other13 = null, WorkflowExpression<string> other14 = null, WorkflowExpression<string> other15 = null, WorkflowExpression<string> other16 = null, WorkflowExpression<string> other17 = null, WorkflowExpression<string> other18 = null, WorkflowExpression<string> other19 = null, WorkflowExpression<string> other20 = null, WorkflowExpression<string> other21 = null, WorkflowExpression<string> other22 = null, WorkflowExpression<string> other23 = null, WorkflowExpression<string> other24 = null, WorkflowExpression<string> other25 = null, WorkflowExpression<string> other26 = null, WorkflowExpression<string> other27 = null, WorkflowExpression<string> other28 = null, WorkflowExpression<string> other29 = null, WorkflowExpression<string> other30 = null, WorkflowExpression<string> other31 = null, WorkflowExpression<string> other32 = null, WorkflowExpression<string> other33 = null, WorkflowExpression<string> other34 = null, WorkflowExpression<string> other35 = null, WorkflowExpression<string> list = null, WorkflowExpression<orderInput> order = null, WorkflowExpression<string> assignToAgent = null)
-        {
-            WorkflowExpression.Validate(contactId, nameof(contactId), required: true);
-            WorkflowExpression.Validate(fname, nameof(fname), required: false);
-            WorkflowExpression.Validate(lname, nameof(lname), required: false);
-            WorkflowExpression.Validate(phone, nameof(phone), required: false);
-            WorkflowExpression.Validate(birthyear, nameof(birthyear), required: false);
-            WorkflowExpression.Validate(gender, nameof(gender), required: false);
-            WorkflowExpression.Validate(email, nameof(email), required: false);
-            WorkflowExpression.Validate(www, nameof(www), required: false);
-            WorkflowExpression.Validate(address, nameof(address), required: false);
-            WorkflowExpression.Validate(postcode, nameof(postcode), required: false);
-            WorkflowExpression.Validate(city, nameof(city), required: false);
-            WorkflowExpression.Validate(country, nameof(country), required: false);
-            WorkflowExpression.Validate(ssc, nameof(ssc), required: false);
-            WorkflowExpression.Validate(companyid, nameof(companyid), required: false);
-            WorkflowExpression.Validate(company, nameof(company), required: false);
-            WorkflowExpression.Validate(vatin, nameof(vatin), required: false);
-            WorkflowExpression.Validate(title, nameof(title), required: false);
-            WorkflowExpression.Validate(comment, nameof(comment), required: false);
-            WorkflowExpression.Validate(other1, nameof(other1), required: false);
-            WorkflowExpression.Validate(other2, nameof(other2), required: false);
-            WorkflowExpression.Validate(other3, nameof(other3), required: false);
-            WorkflowExpression.Validate(other4, nameof(other4), required: false);
-            WorkflowExpression.Validate(other5, nameof(other5), required: false);
-            WorkflowExpression.Validate(other6, nameof(other6), required: false);
-            WorkflowExpression.Validate(other7, nameof(other7), required: false);
-            WorkflowExpression.Validate(other8, nameof(other8), required: false);
-            WorkflowExpression.Validate(other9, nameof(other9), required: false);
-            WorkflowExpression.Validate(other10, nameof(other10), required: false);
-            WorkflowExpression.Validate(other11, nameof(other11), required: false);
-            WorkflowExpression.Validate(other12, nameof(other12), required: false);
-            WorkflowExpression.Validate(other13, nameof(other13), required: false);
-            WorkflowExpression.Validate(other14, nameof(other14), required: false);
-            WorkflowExpression.Validate(other15, nameof(other15), required: false);
-            WorkflowExpression.Validate(other16, nameof(other16), required: false);
-            WorkflowExpression.Validate(other17, nameof(other17), required: false);
-            WorkflowExpression.Validate(other18, nameof(other18), required: false);
-            WorkflowExpression.Validate(other19, nameof(other19), required: false);
-            WorkflowExpression.Validate(other20, nameof(other20), required: false);
-            WorkflowExpression.Validate(other21, nameof(other21), required: false);
-            WorkflowExpression.Validate(other22, nameof(other22), required: false);
-            WorkflowExpression.Validate(other23, nameof(other23), required: false);
-            WorkflowExpression.Validate(other24, nameof(other24), required: false);
-            WorkflowExpression.Validate(other25, nameof(other25), required: false);
-            WorkflowExpression.Validate(other26, nameof(other26), required: false);
-            WorkflowExpression.Validate(other27, nameof(other27), required: false);
-            WorkflowExpression.Validate(other28, nameof(other28), required: false);
-            WorkflowExpression.Validate(other29, nameof(other29), required: false);
-            WorkflowExpression.Validate(other30, nameof(other30), required: false);
-            WorkflowExpression.Validate(other31, nameof(other31), required: false);
-            WorkflowExpression.Validate(other32, nameof(other32), required: false);
-            WorkflowExpression.Validate(other33, nameof(other33), required: false);
-            WorkflowExpression.Validate(other34, nameof(other34), required: false);
-            WorkflowExpression.Validate(other35, nameof(other35), required: false);
-            WorkflowExpression.Validate(list, nameof(list), required: false);
-            WorkflowExpression.Validate(order, nameof(order), required: false);
-            WorkflowExpression.Validate(assignToAgent, nameof(assignToAgent), required: false);
+            var __workflow_contactId = contactId == null ? null : WorkflowExpression.Compile(contactId);
+            WorkflowExpression.Validate(__workflow_contactId, nameof(contactId), required: true);
+            var __workflow_fname = fname == null ? null : WorkflowExpression.Compile(fname);
+            WorkflowExpression.Validate(__workflow_fname, nameof(fname), required: false);
+            var __workflow_lname = lname == null ? null : WorkflowExpression.Compile(lname);
+            WorkflowExpression.Validate(__workflow_lname, nameof(lname), required: false);
+            var __workflow_phone = phone == null ? null : WorkflowExpression.Compile(phone);
+            WorkflowExpression.Validate(__workflow_phone, nameof(phone), required: false);
+            var __workflow_birthyear = birthyear == null ? null : WorkflowExpression.Compile(birthyear);
+            WorkflowExpression.Validate(__workflow_birthyear, nameof(birthyear), required: false);
+            var __workflow_gender = gender == null ? null : WorkflowExpression.Compile(gender);
+            WorkflowExpression.Validate(__workflow_gender, nameof(gender), required: false);
+            var __workflow_email = email == null ? null : WorkflowExpression.Compile(email);
+            WorkflowExpression.Validate(__workflow_email, nameof(email), required: false);
+            var __workflow_www = www == null ? null : WorkflowExpression.Compile(www);
+            WorkflowExpression.Validate(__workflow_www, nameof(www), required: false);
+            var __workflow_address = address == null ? null : WorkflowExpression.Compile(address);
+            WorkflowExpression.Validate(__workflow_address, nameof(address), required: false);
+            var __workflow_postcode = postcode == null ? null : WorkflowExpression.Compile(postcode);
+            WorkflowExpression.Validate(__workflow_postcode, nameof(postcode), required: false);
+            var __workflow_city = city == null ? null : WorkflowExpression.Compile(city);
+            WorkflowExpression.Validate(__workflow_city, nameof(city), required: false);
+            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
+            WorkflowExpression.Validate(__workflow_country, nameof(country), required: false);
+            var __workflow_ssc = ssc == null ? null : WorkflowExpression.Compile(ssc);
+            WorkflowExpression.Validate(__workflow_ssc, nameof(ssc), required: false);
+            var __workflow_companyid = companyid == null ? null : WorkflowExpression.Compile(companyid);
+            WorkflowExpression.Validate(__workflow_companyid, nameof(companyid), required: false);
+            var __workflow_company = company == null ? null : WorkflowExpression.Compile(company);
+            WorkflowExpression.Validate(__workflow_company, nameof(company), required: false);
+            var __workflow_vatin = vatin == null ? null : WorkflowExpression.Compile(vatin);
+            WorkflowExpression.Validate(__workflow_vatin, nameof(vatin), required: false);
+            var __workflow_title = title == null ? null : WorkflowExpression.Compile(title);
+            WorkflowExpression.Validate(__workflow_title, nameof(title), required: false);
+            var __workflow_comment = comment == null ? null : WorkflowExpression.Compile(comment);
+            WorkflowExpression.Validate(__workflow_comment, nameof(comment), required: false);
+            var __workflow_other1 = other1 == null ? null : WorkflowExpression.Compile(other1);
+            WorkflowExpression.Validate(__workflow_other1, nameof(other1), required: false);
+            var __workflow_other2 = other2 == null ? null : WorkflowExpression.Compile(other2);
+            WorkflowExpression.Validate(__workflow_other2, nameof(other2), required: false);
+            var __workflow_other3 = other3 == null ? null : WorkflowExpression.Compile(other3);
+            WorkflowExpression.Validate(__workflow_other3, nameof(other3), required: false);
+            var __workflow_other4 = other4 == null ? null : WorkflowExpression.Compile(other4);
+            WorkflowExpression.Validate(__workflow_other4, nameof(other4), required: false);
+            var __workflow_other5 = other5 == null ? null : WorkflowExpression.Compile(other5);
+            WorkflowExpression.Validate(__workflow_other5, nameof(other5), required: false);
+            var __workflow_other6 = other6 == null ? null : WorkflowExpression.Compile(other6);
+            WorkflowExpression.Validate(__workflow_other6, nameof(other6), required: false);
+            var __workflow_other7 = other7 == null ? null : WorkflowExpression.Compile(other7);
+            WorkflowExpression.Validate(__workflow_other7, nameof(other7), required: false);
+            var __workflow_other8 = other8 == null ? null : WorkflowExpression.Compile(other8);
+            WorkflowExpression.Validate(__workflow_other8, nameof(other8), required: false);
+            var __workflow_other9 = other9 == null ? null : WorkflowExpression.Compile(other9);
+            WorkflowExpression.Validate(__workflow_other9, nameof(other9), required: false);
+            var __workflow_other10 = other10 == null ? null : WorkflowExpression.Compile(other10);
+            WorkflowExpression.Validate(__workflow_other10, nameof(other10), required: false);
+            var __workflow_other11 = other11 == null ? null : WorkflowExpression.Compile(other11);
+            WorkflowExpression.Validate(__workflow_other11, nameof(other11), required: false);
+            var __workflow_other12 = other12 == null ? null : WorkflowExpression.Compile(other12);
+            WorkflowExpression.Validate(__workflow_other12, nameof(other12), required: false);
+            var __workflow_other13 = other13 == null ? null : WorkflowExpression.Compile(other13);
+            WorkflowExpression.Validate(__workflow_other13, nameof(other13), required: false);
+            var __workflow_other14 = other14 == null ? null : WorkflowExpression.Compile(other14);
+            WorkflowExpression.Validate(__workflow_other14, nameof(other14), required: false);
+            var __workflow_other15 = other15 == null ? null : WorkflowExpression.Compile(other15);
+            WorkflowExpression.Validate(__workflow_other15, nameof(other15), required: false);
+            var __workflow_other16 = other16 == null ? null : WorkflowExpression.Compile(other16);
+            WorkflowExpression.Validate(__workflow_other16, nameof(other16), required: false);
+            var __workflow_other17 = other17 == null ? null : WorkflowExpression.Compile(other17);
+            WorkflowExpression.Validate(__workflow_other17, nameof(other17), required: false);
+            var __workflow_other18 = other18 == null ? null : WorkflowExpression.Compile(other18);
+            WorkflowExpression.Validate(__workflow_other18, nameof(other18), required: false);
+            var __workflow_other19 = other19 == null ? null : WorkflowExpression.Compile(other19);
+            WorkflowExpression.Validate(__workflow_other19, nameof(other19), required: false);
+            var __workflow_other20 = other20 == null ? null : WorkflowExpression.Compile(other20);
+            WorkflowExpression.Validate(__workflow_other20, nameof(other20), required: false);
+            var __workflow_other21 = other21 == null ? null : WorkflowExpression.Compile(other21);
+            WorkflowExpression.Validate(__workflow_other21, nameof(other21), required: false);
+            var __workflow_other22 = other22 == null ? null : WorkflowExpression.Compile(other22);
+            WorkflowExpression.Validate(__workflow_other22, nameof(other22), required: false);
+            var __workflow_other23 = other23 == null ? null : WorkflowExpression.Compile(other23);
+            WorkflowExpression.Validate(__workflow_other23, nameof(other23), required: false);
+            var __workflow_other24 = other24 == null ? null : WorkflowExpression.Compile(other24);
+            WorkflowExpression.Validate(__workflow_other24, nameof(other24), required: false);
+            var __workflow_other25 = other25 == null ? null : WorkflowExpression.Compile(other25);
+            WorkflowExpression.Validate(__workflow_other25, nameof(other25), required: false);
+            var __workflow_other26 = other26 == null ? null : WorkflowExpression.Compile(other26);
+            WorkflowExpression.Validate(__workflow_other26, nameof(other26), required: false);
+            var __workflow_other27 = other27 == null ? null : WorkflowExpression.Compile(other27);
+            WorkflowExpression.Validate(__workflow_other27, nameof(other27), required: false);
+            var __workflow_other28 = other28 == null ? null : WorkflowExpression.Compile(other28);
+            WorkflowExpression.Validate(__workflow_other28, nameof(other28), required: false);
+            var __workflow_other29 = other29 == null ? null : WorkflowExpression.Compile(other29);
+            WorkflowExpression.Validate(__workflow_other29, nameof(other29), required: false);
+            var __workflow_other30 = other30 == null ? null : WorkflowExpression.Compile(other30);
+            WorkflowExpression.Validate(__workflow_other30, nameof(other30), required: false);
+            var __workflow_other31 = other31 == null ? null : WorkflowExpression.Compile(other31);
+            WorkflowExpression.Validate(__workflow_other31, nameof(other31), required: false);
+            var __workflow_other32 = other32 == null ? null : WorkflowExpression.Compile(other32);
+            WorkflowExpression.Validate(__workflow_other32, nameof(other32), required: false);
+            var __workflow_other33 = other33 == null ? null : WorkflowExpression.Compile(other33);
+            WorkflowExpression.Validate(__workflow_other33, nameof(other33), required: false);
+            var __workflow_other34 = other34 == null ? null : WorkflowExpression.Compile(other34);
+            WorkflowExpression.Validate(__workflow_other34, nameof(other34), required: false);
+            var __workflow_other35 = other35 == null ? null : WorkflowExpression.Compile(other35);
+            WorkflowExpression.Validate(__workflow_other35, nameof(other35), required: false);
+            var __workflow_list = list == null ? null : WorkflowExpression.Compile(list);
+            WorkflowExpression.Validate(__workflow_list, nameof(list), required: false);
+            var __workflow_order = order == null ? null : WorkflowExpression.Compile(order);
+            WorkflowExpression.Validate(__workflow_order, nameof(order), required: false);
+            var __workflow_assignToAgent = assignToAgent == null ? null : WorkflowExpression.Compile(assignToAgent);
+            WorkflowExpression.Validate(__workflow_assignToAgent, nameof(assignToAgent), required: false);
             return new DeferredBodyAction<ModifyContactResponse>(() =>
             {
                 var apiCallPath = "/modify_contact";
@@ -1244,118 +1406,118 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["mod"] = Convert.ToString("contact");
                 callPayload.Queries["cmd"] = Convert.ToString("modify");
-                callPayload.Queries["contact_id"] = ExpressionConverter.Convert(contactId);
-                if (fname != null)
-                    callPayload.Queries["fname"] = ExpressionConverter.Convert(fname);
-                if (lname != null)
-                    callPayload.Queries["lname"] = ExpressionConverter.Convert(lname);
-                if (phone != null)
-                    callPayload.Queries["phone"] = ExpressionConverter.Convert(phone);
-                if (birthyear != null)
-                    callPayload.Queries["birthyear"] = ExpressionConverter.Convert(birthyear);
-                if (gender != null)
-                    callPayload.Queries["gender"] = ExpressionConverter.Convert(gender);
-                if (email != null)
-                    callPayload.Queries["email"] = ExpressionConverter.Convert(email);
-                if (www != null)
-                    callPayload.Queries["www"] = ExpressionConverter.Convert(www);
-                if (address != null)
-                    callPayload.Queries["address"] = ExpressionConverter.Convert(address);
-                if (postcode != null)
-                    callPayload.Queries["postcode"] = ExpressionConverter.Convert(postcode);
-                if (city != null)
-                    callPayload.Queries["city"] = ExpressionConverter.Convert(city);
-                if (country != null)
-                    callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-                if (ssc != null)
-                    callPayload.Queries["ssc"] = ExpressionConverter.Convert(ssc);
-                if (companyid != null)
-                    callPayload.Queries["companyid"] = ExpressionConverter.Convert(companyid);
-                if (company != null)
-                    callPayload.Queries["company"] = ExpressionConverter.Convert(company);
-                if (vatin != null)
-                    callPayload.Queries["vatin"] = ExpressionConverter.Convert(vatin);
-                if (title != null)
-                    callPayload.Queries["title"] = ExpressionConverter.Convert(title);
-                if (comment != null)
-                    callPayload.Queries["comment"] = ExpressionConverter.Convert(comment);
-                if (other1 != null)
-                    callPayload.Queries["other1"] = ExpressionConverter.Convert(other1);
-                if (other2 != null)
-                    callPayload.Queries["other2"] = ExpressionConverter.Convert(other2);
-                if (other3 != null)
-                    callPayload.Queries["other3"] = ExpressionConverter.Convert(other3);
-                if (other4 != null)
-                    callPayload.Queries["other4"] = ExpressionConverter.Convert(other4);
-                if (other5 != null)
-                    callPayload.Queries["other5"] = ExpressionConverter.Convert(other5);
-                if (other6 != null)
-                    callPayload.Queries["other6"] = ExpressionConverter.Convert(other6);
-                if (other7 != null)
-                    callPayload.Queries["other7"] = ExpressionConverter.Convert(other7);
-                if (other8 != null)
-                    callPayload.Queries["other8"] = ExpressionConverter.Convert(other8);
-                if (other9 != null)
-                    callPayload.Queries["other9"] = ExpressionConverter.Convert(other9);
-                if (other10 != null)
-                    callPayload.Queries["other10"] = ExpressionConverter.Convert(other10);
-                if (other11 != null)
-                    callPayload.Queries["other11"] = ExpressionConverter.Convert(other11);
-                if (other12 != null)
-                    callPayload.Queries["other12"] = ExpressionConverter.Convert(other12);
-                if (other13 != null)
-                    callPayload.Queries["other13"] = ExpressionConverter.Convert(other13);
-                if (other14 != null)
-                    callPayload.Queries["other14"] = ExpressionConverter.Convert(other14);
-                if (other15 != null)
-                    callPayload.Queries["other15"] = ExpressionConverter.Convert(other15);
-                if (other16 != null)
-                    callPayload.Queries["other16"] = ExpressionConverter.Convert(other16);
-                if (other17 != null)
-                    callPayload.Queries["other17"] = ExpressionConverter.Convert(other17);
-                if (other18 != null)
-                    callPayload.Queries["other18"] = ExpressionConverter.Convert(other18);
-                if (other19 != null)
-                    callPayload.Queries["other19"] = ExpressionConverter.Convert(other19);
-                if (other20 != null)
-                    callPayload.Queries["other20"] = ExpressionConverter.Convert(other20);
-                if (other21 != null)
-                    callPayload.Queries["other21"] = ExpressionConverter.Convert(other21);
-                if (other22 != null)
-                    callPayload.Queries["other22"] = ExpressionConverter.Convert(other22);
-                if (other23 != null)
-                    callPayload.Queries["other23"] = ExpressionConverter.Convert(other23);
-                if (other24 != null)
-                    callPayload.Queries["other24"] = ExpressionConverter.Convert(other24);
-                if (other25 != null)
-                    callPayload.Queries["other25"] = ExpressionConverter.Convert(other25);
-                if (other26 != null)
-                    callPayload.Queries["other26"] = ExpressionConverter.Convert(other26);
-                if (other27 != null)
-                    callPayload.Queries["other27"] = ExpressionConverter.Convert(other27);
-                if (other28 != null)
-                    callPayload.Queries["other28"] = ExpressionConverter.Convert(other28);
-                if (other29 != null)
-                    callPayload.Queries["other29"] = ExpressionConverter.Convert(other29);
-                if (other30 != null)
-                    callPayload.Queries["other30"] = ExpressionConverter.Convert(other30);
-                if (other31 != null)
-                    callPayload.Queries["other31"] = ExpressionConverter.Convert(other31);
-                if (other32 != null)
-                    callPayload.Queries["other32"] = ExpressionConverter.Convert(other32);
-                if (other33 != null)
-                    callPayload.Queries["other33"] = ExpressionConverter.Convert(other33);
-                if (other34 != null)
-                    callPayload.Queries["other34"] = ExpressionConverter.Convert(other34);
-                if (other35 != null)
-                    callPayload.Queries["other35"] = ExpressionConverter.Convert(other35);
-                if (list != null)
-                    callPayload.Queries["list"] = ExpressionConverter.Convert(list);
+                callPayload.Queries["contact_id"] = ExpressionConverter.Convert(__workflow_contactId);
+                if (__workflow_fname != null)
+                    callPayload.Queries["fname"] = ExpressionConverter.Convert(__workflow_fname);
+                if (__workflow_lname != null)
+                    callPayload.Queries["lname"] = ExpressionConverter.Convert(__workflow_lname);
+                if (__workflow_phone != null)
+                    callPayload.Queries["phone"] = ExpressionConverter.Convert(__workflow_phone);
+                if (__workflow_birthyear != null)
+                    callPayload.Queries["birthyear"] = ExpressionConverter.Convert(__workflow_birthyear);
+                if (__workflow_gender != null)
+                    callPayload.Queries["gender"] = ExpressionConverter.Convert(__workflow_gender);
+                if (__workflow_email != null)
+                    callPayload.Queries["email"] = ExpressionConverter.Convert(__workflow_email);
+                if (__workflow_www != null)
+                    callPayload.Queries["www"] = ExpressionConverter.Convert(__workflow_www);
+                if (__workflow_address != null)
+                    callPayload.Queries["address"] = ExpressionConverter.Convert(__workflow_address);
+                if (__workflow_postcode != null)
+                    callPayload.Queries["postcode"] = ExpressionConverter.Convert(__workflow_postcode);
+                if (__workflow_city != null)
+                    callPayload.Queries["city"] = ExpressionConverter.Convert(__workflow_city);
+                if (__workflow_country != null)
+                    callPayload.Queries["country"] = ExpressionConverter.Convert(__workflow_country);
+                if (__workflow_ssc != null)
+                    callPayload.Queries["ssc"] = ExpressionConverter.Convert(__workflow_ssc);
+                if (__workflow_companyid != null)
+                    callPayload.Queries["companyid"] = ExpressionConverter.Convert(__workflow_companyid);
+                if (__workflow_company != null)
+                    callPayload.Queries["company"] = ExpressionConverter.Convert(__workflow_company);
+                if (__workflow_vatin != null)
+                    callPayload.Queries["vatin"] = ExpressionConverter.Convert(__workflow_vatin);
+                if (__workflow_title != null)
+                    callPayload.Queries["title"] = ExpressionConverter.Convert(__workflow_title);
+                if (__workflow_comment != null)
+                    callPayload.Queries["comment"] = ExpressionConverter.Convert(__workflow_comment);
+                if (__workflow_other1 != null)
+                    callPayload.Queries["other1"] = ExpressionConverter.Convert(__workflow_other1);
+                if (__workflow_other2 != null)
+                    callPayload.Queries["other2"] = ExpressionConverter.Convert(__workflow_other2);
+                if (__workflow_other3 != null)
+                    callPayload.Queries["other3"] = ExpressionConverter.Convert(__workflow_other3);
+                if (__workflow_other4 != null)
+                    callPayload.Queries["other4"] = ExpressionConverter.Convert(__workflow_other4);
+                if (__workflow_other5 != null)
+                    callPayload.Queries["other5"] = ExpressionConverter.Convert(__workflow_other5);
+                if (__workflow_other6 != null)
+                    callPayload.Queries["other6"] = ExpressionConverter.Convert(__workflow_other6);
+                if (__workflow_other7 != null)
+                    callPayload.Queries["other7"] = ExpressionConverter.Convert(__workflow_other7);
+                if (__workflow_other8 != null)
+                    callPayload.Queries["other8"] = ExpressionConverter.Convert(__workflow_other8);
+                if (__workflow_other9 != null)
+                    callPayload.Queries["other9"] = ExpressionConverter.Convert(__workflow_other9);
+                if (__workflow_other10 != null)
+                    callPayload.Queries["other10"] = ExpressionConverter.Convert(__workflow_other10);
+                if (__workflow_other11 != null)
+                    callPayload.Queries["other11"] = ExpressionConverter.Convert(__workflow_other11);
+                if (__workflow_other12 != null)
+                    callPayload.Queries["other12"] = ExpressionConverter.Convert(__workflow_other12);
+                if (__workflow_other13 != null)
+                    callPayload.Queries["other13"] = ExpressionConverter.Convert(__workflow_other13);
+                if (__workflow_other14 != null)
+                    callPayload.Queries["other14"] = ExpressionConverter.Convert(__workflow_other14);
+                if (__workflow_other15 != null)
+                    callPayload.Queries["other15"] = ExpressionConverter.Convert(__workflow_other15);
+                if (__workflow_other16 != null)
+                    callPayload.Queries["other16"] = ExpressionConverter.Convert(__workflow_other16);
+                if (__workflow_other17 != null)
+                    callPayload.Queries["other17"] = ExpressionConverter.Convert(__workflow_other17);
+                if (__workflow_other18 != null)
+                    callPayload.Queries["other18"] = ExpressionConverter.Convert(__workflow_other18);
+                if (__workflow_other19 != null)
+                    callPayload.Queries["other19"] = ExpressionConverter.Convert(__workflow_other19);
+                if (__workflow_other20 != null)
+                    callPayload.Queries["other20"] = ExpressionConverter.Convert(__workflow_other20);
+                if (__workflow_other21 != null)
+                    callPayload.Queries["other21"] = ExpressionConverter.Convert(__workflow_other21);
+                if (__workflow_other22 != null)
+                    callPayload.Queries["other22"] = ExpressionConverter.Convert(__workflow_other22);
+                if (__workflow_other23 != null)
+                    callPayload.Queries["other23"] = ExpressionConverter.Convert(__workflow_other23);
+                if (__workflow_other24 != null)
+                    callPayload.Queries["other24"] = ExpressionConverter.Convert(__workflow_other24);
+                if (__workflow_other25 != null)
+                    callPayload.Queries["other25"] = ExpressionConverter.Convert(__workflow_other25);
+                if (__workflow_other26 != null)
+                    callPayload.Queries["other26"] = ExpressionConverter.Convert(__workflow_other26);
+                if (__workflow_other27 != null)
+                    callPayload.Queries["other27"] = ExpressionConverter.Convert(__workflow_other27);
+                if (__workflow_other28 != null)
+                    callPayload.Queries["other28"] = ExpressionConverter.Convert(__workflow_other28);
+                if (__workflow_other29 != null)
+                    callPayload.Queries["other29"] = ExpressionConverter.Convert(__workflow_other29);
+                if (__workflow_other30 != null)
+                    callPayload.Queries["other30"] = ExpressionConverter.Convert(__workflow_other30);
+                if (__workflow_other31 != null)
+                    callPayload.Queries["other31"] = ExpressionConverter.Convert(__workflow_other31);
+                if (__workflow_other32 != null)
+                    callPayload.Queries["other32"] = ExpressionConverter.Convert(__workflow_other32);
+                if (__workflow_other33 != null)
+                    callPayload.Queries["other33"] = ExpressionConverter.Convert(__workflow_other33);
+                if (__workflow_other34 != null)
+                    callPayload.Queries["other34"] = ExpressionConverter.Convert(__workflow_other34);
+                if (__workflow_other35 != null)
+                    callPayload.Queries["other35"] = ExpressionConverter.Convert(__workflow_other35);
+                if (__workflow_list != null)
+                    callPayload.Queries["list"] = ExpressionConverter.Convert(__workflow_list);
                 callPayload.Queries["order"] = Convert.ToString("last");
-                if (order != null)
-                    callPayload.Queries["order"] = ExpressionConverter.Convert(order);
-                if (assignToAgent != null)
-                    callPayload.Queries["assign_to_agent"] = ExpressionConverter.Convert(assignToAgent);
+                if (__workflow_order != null)
+                    callPayload.Queries["order"] = ExpressionConverter.Convert(__workflow_order);
+                if (__workflow_assignToAgent != null)
+                    callPayload.Queries["assign_to_agent"] = ExpressionConverter.Convert(__workflow_assignToAgent);
                 return new ApiConnectionAction<ModifyContactResponse>(callPayload);
             });
         }

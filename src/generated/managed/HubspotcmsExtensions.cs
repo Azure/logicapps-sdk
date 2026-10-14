@@ -1,74 +1,78 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcms
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class HubspotcmsActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcms")]
-        [WorkflowExpressionFactory(nameof(__BuildPagesList))]
-        public IWorkflowAction PagesList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<bool> archived = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> name = null)
+        public IWorkflowAction PagesList(Expression<Func<int>> limit = null, Expression<Func<bool>> archived = null, Expression<Func<string>> id = null, Expression<Func<string>> name = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildPagesList(WorkflowExpression<int> limit = null, WorkflowExpression<bool> archived = null, WorkflowExpression<string> id = null, WorkflowExpression<string> name = null)
-        {
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(archived, nameof(archived), required: false);
-            WorkflowExpression.Validate(id, nameof(id), required: false);
-            WorkflowExpression.Validate(name, nameof(name), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_archived = archived == null ? null : WorkflowExpression.Compile(archived);
+            WorkflowExpression.Validate(__workflow_archived, nameof(archived), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: false);
+            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
+            WorkflowExpression.Validate(__workflow_name, nameof(name), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/content/api/v2/pages";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["limit"] = Convert.ToString(20);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 callPayload.Queries["archived"] = Convert.ToString(false);
-                if (archived != null)
-                    callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-                if (id != null)
-                    callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-                if (name != null)
-                    callPayload.Queries["name"] = ExpressionConverter.Convert(name);
+                if (__workflow_archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
+                if (__workflow_id != null)
+                    callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
+                if (__workflow_name != null)
+                    callPayload.Queries["name"] = ExpressionConverter.Convert(__workflow_name);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcms")]
-        [WorkflowExpressionFactory(nameof(__BuildPagesCreate))]
-        public IWorkflowAction PagesCreate([WorkflowExpression] Func<string> bodycampaign = null, [WorkflowExpression] Func<string> bodycampaignName = null, [WorkflowExpression] Func<string> bodyfooterHtml = null, [WorkflowExpression] Func<string> bodyheadHtml = null, [WorkflowExpression] Func<string> bodyisDraft = null, [WorkflowExpression] Func<string> bodymetaDescription = null, [WorkflowExpression] Func<string> bodymetaKeywords = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodypassword = null, [WorkflowExpression] Func<string> bodypublishDate = null, [WorkflowExpression] Func<string> bodypublishImmediately = null, [WorkflowExpression] Func<string> bodyslug = null, [WorkflowExpression] Func<string> bodysubcategory = null, [WorkflowExpression] Func<string> bodywidgetContainers = null, [WorkflowExpression] Func<string> bodywidgets = null)
+        public IWorkflowAction PagesCreate(Expression<Func<string>> bodycampaign = null, Expression<Func<string>> bodycampaignName = null, Expression<Func<string>> bodyfooterHtml = null, Expression<Func<string>> bodyheadHtml = null, Expression<Func<string>> bodyisDraft = null, Expression<Func<string>> bodymetaDescription = null, Expression<Func<string>> bodymetaKeywords = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodypassword = null, Expression<Func<string>> bodypublishDate = null, Expression<Func<string>> bodypublishImmediately = null, Expression<Func<string>> bodyslug = null, Expression<Func<string>> bodysubcategory = null, Expression<Func<string>> bodywidgetContainers = null, Expression<Func<string>> bodywidgets = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildPagesCreate(WorkflowExpression<string> bodycampaign = null, WorkflowExpression<string> bodycampaignName = null, WorkflowExpression<string> bodyfooterHtml = null, WorkflowExpression<string> bodyheadHtml = null, WorkflowExpression<string> bodyisDraft = null, WorkflowExpression<string> bodymetaDescription = null, WorkflowExpression<string> bodymetaKeywords = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodypassword = null, WorkflowExpression<string> bodypublishDate = null, WorkflowExpression<string> bodypublishImmediately = null, WorkflowExpression<string> bodyslug = null, WorkflowExpression<string> bodysubcategory = null, WorkflowExpression<string> bodywidgetContainers = null, WorkflowExpression<string> bodywidgets = null)
-        {
-            WorkflowExpression.Validate(bodycampaign, nameof(bodycampaign), required: false);
-            WorkflowExpression.Validate(bodycampaignName, nameof(bodycampaignName), required: false);
-            WorkflowExpression.Validate(bodyfooterHtml, nameof(bodyfooterHtml), required: false);
-            WorkflowExpression.Validate(bodyheadHtml, nameof(bodyheadHtml), required: false);
-            WorkflowExpression.Validate(bodyisDraft, nameof(bodyisDraft), required: false);
-            WorkflowExpression.Validate(bodymetaDescription, nameof(bodymetaDescription), required: false);
-            WorkflowExpression.Validate(bodymetaKeywords, nameof(bodymetaKeywords), required: false);
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
-            WorkflowExpression.Validate(bodypassword, nameof(bodypassword), required: false);
-            WorkflowExpression.Validate(bodypublishDate, nameof(bodypublishDate), required: false);
-            WorkflowExpression.Validate(bodypublishImmediately, nameof(bodypublishImmediately), required: false);
-            WorkflowExpression.Validate(bodyslug, nameof(bodyslug), required: false);
-            WorkflowExpression.Validate(bodysubcategory, nameof(bodysubcategory), required: false);
-            WorkflowExpression.Validate(bodywidgetContainers, nameof(bodywidgetContainers), required: false);
-            WorkflowExpression.Validate(bodywidgets, nameof(bodywidgets), required: false);
+            var __workflow_bodycampaign = bodycampaign == null ? null : WorkflowExpression.Compile(bodycampaign);
+            WorkflowExpression.Validate(__workflow_bodycampaign, nameof(bodycampaign), required: false);
+            var __workflow_bodycampaignName = bodycampaignName == null ? null : WorkflowExpression.Compile(bodycampaignName);
+            WorkflowExpression.Validate(__workflow_bodycampaignName, nameof(bodycampaignName), required: false);
+            var __workflow_bodyfooterHtml = bodyfooterHtml == null ? null : WorkflowExpression.Compile(bodyfooterHtml);
+            WorkflowExpression.Validate(__workflow_bodyfooterHtml, nameof(bodyfooterHtml), required: false);
+            var __workflow_bodyheadHtml = bodyheadHtml == null ? null : WorkflowExpression.Compile(bodyheadHtml);
+            WorkflowExpression.Validate(__workflow_bodyheadHtml, nameof(bodyheadHtml), required: false);
+            var __workflow_bodyisDraft = bodyisDraft == null ? null : WorkflowExpression.Compile(bodyisDraft);
+            WorkflowExpression.Validate(__workflow_bodyisDraft, nameof(bodyisDraft), required: false);
+            var __workflow_bodymetaDescription = bodymetaDescription == null ? null : WorkflowExpression.Compile(bodymetaDescription);
+            WorkflowExpression.Validate(__workflow_bodymetaDescription, nameof(bodymetaDescription), required: false);
+            var __workflow_bodymetaKeywords = bodymetaKeywords == null ? null : WorkflowExpression.Compile(bodymetaKeywords);
+            WorkflowExpression.Validate(__workflow_bodymetaKeywords, nameof(bodymetaKeywords), required: false);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
+            var __workflow_bodypassword = bodypassword == null ? null : WorkflowExpression.Compile(bodypassword);
+            WorkflowExpression.Validate(__workflow_bodypassword, nameof(bodypassword), required: false);
+            var __workflow_bodypublishDate = bodypublishDate == null ? null : WorkflowExpression.Compile(bodypublishDate);
+            WorkflowExpression.Validate(__workflow_bodypublishDate, nameof(bodypublishDate), required: false);
+            var __workflow_bodypublishImmediately = bodypublishImmediately == null ? null : WorkflowExpression.Compile(bodypublishImmediately);
+            WorkflowExpression.Validate(__workflow_bodypublishImmediately, nameof(bodypublishImmediately), required: false);
+            var __workflow_bodyslug = bodyslug == null ? null : WorkflowExpression.Compile(bodyslug);
+            WorkflowExpression.Validate(__workflow_bodyslug, nameof(bodyslug), required: false);
+            var __workflow_bodysubcategory = bodysubcategory == null ? null : WorkflowExpression.Compile(bodysubcategory);
+            WorkflowExpression.Validate(__workflow_bodysubcategory, nameof(bodysubcategory), required: false);
+            var __workflow_bodywidgetContainers = bodywidgetContainers == null ? null : WorkflowExpression.Compile(bodywidgetContainers);
+            WorkflowExpression.Validate(__workflow_bodywidgetContainers, nameof(bodywidgetContainers), required: false);
+            var __workflow_bodywidgets = bodywidgets == null ? null : WorkflowExpression.Compile(bodywidgets);
+            WorkflowExpression.Validate(__workflow_bodywidgets, nameof(bodywidgets), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/content/api/v2/pages";
@@ -76,93 +80,93 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcms
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodycampaign != null)
+                if (__workflow_bodycampaign != null)
                 {
-                    body["campaign"] = ExpressionConverter.ConvertO(bodycampaign);
+                    body["campaign"] = ExpressionConverter.ConvertO(__workflow_bodycampaign);
                     bodypropCount++;
                 }
 
-                if (bodycampaignName != null)
+                if (__workflow_bodycampaignName != null)
                 {
-                    body["campaign_name"] = ExpressionConverter.ConvertO(bodycampaignName);
+                    body["campaign_name"] = ExpressionConverter.ConvertO(__workflow_bodycampaignName);
                     bodypropCount++;
                 }
 
-                if (bodyfooterHtml != null)
+                if (__workflow_bodyfooterHtml != null)
                 {
-                    body["footer_html"] = ExpressionConverter.ConvertO(bodyfooterHtml);
+                    body["footer_html"] = ExpressionConverter.ConvertO(__workflow_bodyfooterHtml);
                     bodypropCount++;
                 }
 
-                if (bodyheadHtml != null)
+                if (__workflow_bodyheadHtml != null)
                 {
-                    body["head_html"] = ExpressionConverter.ConvertO(bodyheadHtml);
+                    body["head_html"] = ExpressionConverter.ConvertO(__workflow_bodyheadHtml);
                     bodypropCount++;
                 }
 
-                if (bodyisDraft != null)
+                if (__workflow_bodyisDraft != null)
                 {
-                    body["is_draft"] = ExpressionConverter.ConvertO(bodyisDraft);
+                    body["is_draft"] = ExpressionConverter.ConvertO(__workflow_bodyisDraft);
                     bodypropCount++;
                 }
 
-                if (bodymetaDescription != null)
+                if (__workflow_bodymetaDescription != null)
                 {
-                    body["meta_description"] = ExpressionConverter.ConvertO(bodymetaDescription);
+                    body["meta_description"] = ExpressionConverter.ConvertO(__workflow_bodymetaDescription);
                     bodypropCount++;
                 }
 
-                if (bodymetaKeywords != null)
+                if (__workflow_bodymetaKeywords != null)
                 {
-                    body["meta_keywords"] = ExpressionConverter.ConvertO(bodymetaKeywords);
+                    body["meta_keywords"] = ExpressionConverter.ConvertO(__workflow_bodymetaKeywords);
                     bodypropCount++;
                 }
 
-                if (bodyname != null)
+                if (__workflow_bodyname != null)
                 {
-                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
                     bodypropCount++;
                 }
 
-                if (bodypassword != null)
+                if (__workflow_bodypassword != null)
                 {
-                    body["password"] = ExpressionConverter.ConvertO(bodypassword);
+                    body["password"] = ExpressionConverter.ConvertO(__workflow_bodypassword);
                     bodypropCount++;
                 }
 
-                if (bodypublishDate != null)
+                if (__workflow_bodypublishDate != null)
                 {
-                    body["publish_date"] = ExpressionConverter.ConvertO(bodypublishDate);
+                    body["publish_date"] = ExpressionConverter.ConvertO(__workflow_bodypublishDate);
                     bodypropCount++;
                 }
 
-                if (bodypublishImmediately != null)
+                if (__workflow_bodypublishImmediately != null)
                 {
-                    body["publish_immediately"] = ExpressionConverter.ConvertO(bodypublishImmediately);
+                    body["publish_immediately"] = ExpressionConverter.ConvertO(__workflow_bodypublishImmediately);
                     bodypropCount++;
                 }
 
-                if (bodyslug != null)
+                if (__workflow_bodyslug != null)
                 {
-                    body["slug"] = ExpressionConverter.ConvertO(bodyslug);
+                    body["slug"] = ExpressionConverter.ConvertO(__workflow_bodyslug);
                     bodypropCount++;
                 }
 
-                if (bodysubcategory != null)
+                if (__workflow_bodysubcategory != null)
                 {
-                    body["subcategory"] = ExpressionConverter.ConvertO(bodysubcategory);
+                    body["subcategory"] = ExpressionConverter.ConvertO(__workflow_bodysubcategory);
                     bodypropCount++;
                 }
 
-                if (bodywidgetContainers != null)
+                if (__workflow_bodywidgetContainers != null)
                 {
-                    body["widget_containers"] = ExpressionConverter.ConvertO(bodywidgetContainers);
+                    body["widget_containers"] = ExpressionConverter.ConvertO(__workflow_bodywidgetContainers);
                     bodypropCount++;
                 }
 
-                if (bodywidgets != null)
+                if (__workflow_bodywidgets != null)
                 {
-                    body["widgets"] = ExpressionConverter.ConvertO(bodywidgets);
+                    body["widgets"] = ExpressionConverter.ConvertO(__workflow_bodywidgets);
                     bodypropCount++;
                 }
 
@@ -176,19 +180,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcms")]
-        [WorkflowExpressionFactory(nameof(__BuildPagesArchive))]
-        public IWorkflowAction PagesArchive([WorkflowExpression] Func<string> pageId)
+        public IWorkflowAction PagesArchive(Expression<Func<string>> pageId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildPagesArchive(WorkflowExpression<string> pageId)
-        {
-            WorkflowExpression.Validate(pageId, nameof(pageId), required: true);
+            var __workflow_pageId = pageId == null ? null : WorkflowExpression.Compile(pageId);
+            WorkflowExpression.Validate(__workflow_pageId, nameof(pageId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/content/api/v2/pages/{0}", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/content/api/v2/pages/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -196,125 +194,134 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcms")]
-        [WorkflowExpressionFactory(nameof(__BuildPagesUpdate))]
-        public IWorkflowAction PagesUpdate([WorkflowExpression] Func<string> pageId, [WorkflowExpression] Func<string> bodycampaign = null, [WorkflowExpression] Func<string> bodycampaignName = null, [WorkflowExpression] Func<string> bodyfooterHtml = null, [WorkflowExpression] Func<string> bodyheadHtml = null, [WorkflowExpression] Func<string> bodyisDraft = null, [WorkflowExpression] Func<string> bodymetaDescription = null, [WorkflowExpression] Func<string> bodymetaKeywords = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodypassword = null, [WorkflowExpression] Func<string> bodypublishDate = null, [WorkflowExpression] Func<string> bodypublishImmediately = null, [WorkflowExpression] Func<string> bodyslug = null, [WorkflowExpression] Func<string> bodysubcategory = null, [WorkflowExpression] Func<string> bodywidgetContainers = null, [WorkflowExpression] Func<string> bodywidgets = null)
+        public IWorkflowAction PagesUpdate(Expression<Func<string>> pageId, Expression<Func<string>> bodycampaign = null, Expression<Func<string>> bodycampaignName = null, Expression<Func<string>> bodyfooterHtml = null, Expression<Func<string>> bodyheadHtml = null, Expression<Func<string>> bodyisDraft = null, Expression<Func<string>> bodymetaDescription = null, Expression<Func<string>> bodymetaKeywords = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodypassword = null, Expression<Func<string>> bodypublishDate = null, Expression<Func<string>> bodypublishImmediately = null, Expression<Func<string>> bodyslug = null, Expression<Func<string>> bodysubcategory = null, Expression<Func<string>> bodywidgetContainers = null, Expression<Func<string>> bodywidgets = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildPagesUpdate(WorkflowExpression<string> pageId, WorkflowExpression<string> bodycampaign = null, WorkflowExpression<string> bodycampaignName = null, WorkflowExpression<string> bodyfooterHtml = null, WorkflowExpression<string> bodyheadHtml = null, WorkflowExpression<string> bodyisDraft = null, WorkflowExpression<string> bodymetaDescription = null, WorkflowExpression<string> bodymetaKeywords = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodypassword = null, WorkflowExpression<string> bodypublishDate = null, WorkflowExpression<string> bodypublishImmediately = null, WorkflowExpression<string> bodyslug = null, WorkflowExpression<string> bodysubcategory = null, WorkflowExpression<string> bodywidgetContainers = null, WorkflowExpression<string> bodywidgets = null)
-        {
-            WorkflowExpression.Validate(pageId, nameof(pageId), required: true);
-            WorkflowExpression.Validate(bodycampaign, nameof(bodycampaign), required: false);
-            WorkflowExpression.Validate(bodycampaignName, nameof(bodycampaignName), required: false);
-            WorkflowExpression.Validate(bodyfooterHtml, nameof(bodyfooterHtml), required: false);
-            WorkflowExpression.Validate(bodyheadHtml, nameof(bodyheadHtml), required: false);
-            WorkflowExpression.Validate(bodyisDraft, nameof(bodyisDraft), required: false);
-            WorkflowExpression.Validate(bodymetaDescription, nameof(bodymetaDescription), required: false);
-            WorkflowExpression.Validate(bodymetaKeywords, nameof(bodymetaKeywords), required: false);
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
-            WorkflowExpression.Validate(bodypassword, nameof(bodypassword), required: false);
-            WorkflowExpression.Validate(bodypublishDate, nameof(bodypublishDate), required: false);
-            WorkflowExpression.Validate(bodypublishImmediately, nameof(bodypublishImmediately), required: false);
-            WorkflowExpression.Validate(bodyslug, nameof(bodyslug), required: false);
-            WorkflowExpression.Validate(bodysubcategory, nameof(bodysubcategory), required: false);
-            WorkflowExpression.Validate(bodywidgetContainers, nameof(bodywidgetContainers), required: false);
-            WorkflowExpression.Validate(bodywidgets, nameof(bodywidgets), required: false);
+            var __workflow_pageId = pageId == null ? null : WorkflowExpression.Compile(pageId);
+            WorkflowExpression.Validate(__workflow_pageId, nameof(pageId), required: true);
+            var __workflow_bodycampaign = bodycampaign == null ? null : WorkflowExpression.Compile(bodycampaign);
+            WorkflowExpression.Validate(__workflow_bodycampaign, nameof(bodycampaign), required: false);
+            var __workflow_bodycampaignName = bodycampaignName == null ? null : WorkflowExpression.Compile(bodycampaignName);
+            WorkflowExpression.Validate(__workflow_bodycampaignName, nameof(bodycampaignName), required: false);
+            var __workflow_bodyfooterHtml = bodyfooterHtml == null ? null : WorkflowExpression.Compile(bodyfooterHtml);
+            WorkflowExpression.Validate(__workflow_bodyfooterHtml, nameof(bodyfooterHtml), required: false);
+            var __workflow_bodyheadHtml = bodyheadHtml == null ? null : WorkflowExpression.Compile(bodyheadHtml);
+            WorkflowExpression.Validate(__workflow_bodyheadHtml, nameof(bodyheadHtml), required: false);
+            var __workflow_bodyisDraft = bodyisDraft == null ? null : WorkflowExpression.Compile(bodyisDraft);
+            WorkflowExpression.Validate(__workflow_bodyisDraft, nameof(bodyisDraft), required: false);
+            var __workflow_bodymetaDescription = bodymetaDescription == null ? null : WorkflowExpression.Compile(bodymetaDescription);
+            WorkflowExpression.Validate(__workflow_bodymetaDescription, nameof(bodymetaDescription), required: false);
+            var __workflow_bodymetaKeywords = bodymetaKeywords == null ? null : WorkflowExpression.Compile(bodymetaKeywords);
+            WorkflowExpression.Validate(__workflow_bodymetaKeywords, nameof(bodymetaKeywords), required: false);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
+            var __workflow_bodypassword = bodypassword == null ? null : WorkflowExpression.Compile(bodypassword);
+            WorkflowExpression.Validate(__workflow_bodypassword, nameof(bodypassword), required: false);
+            var __workflow_bodypublishDate = bodypublishDate == null ? null : WorkflowExpression.Compile(bodypublishDate);
+            WorkflowExpression.Validate(__workflow_bodypublishDate, nameof(bodypublishDate), required: false);
+            var __workflow_bodypublishImmediately = bodypublishImmediately == null ? null : WorkflowExpression.Compile(bodypublishImmediately);
+            WorkflowExpression.Validate(__workflow_bodypublishImmediately, nameof(bodypublishImmediately), required: false);
+            var __workflow_bodyslug = bodyslug == null ? null : WorkflowExpression.Compile(bodyslug);
+            WorkflowExpression.Validate(__workflow_bodyslug, nameof(bodyslug), required: false);
+            var __workflow_bodysubcategory = bodysubcategory == null ? null : WorkflowExpression.Compile(bodysubcategory);
+            WorkflowExpression.Validate(__workflow_bodysubcategory, nameof(bodysubcategory), required: false);
+            var __workflow_bodywidgetContainers = bodywidgetContainers == null ? null : WorkflowExpression.Compile(bodywidgetContainers);
+            WorkflowExpression.Validate(__workflow_bodywidgetContainers, nameof(bodywidgetContainers), required: false);
+            var __workflow_bodywidgets = bodywidgets == null ? null : WorkflowExpression.Compile(bodywidgets);
+            WorkflowExpression.Validate(__workflow_bodywidgets, nameof(bodywidgets), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/content/api/v2/pages/{0}", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/content/api/v2/pages/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodycampaign != null)
+                if (__workflow_bodycampaign != null)
                 {
-                    body["campaign"] = ExpressionConverter.ConvertO(bodycampaign);
+                    body["campaign"] = ExpressionConverter.ConvertO(__workflow_bodycampaign);
                     bodypropCount++;
                 }
 
-                if (bodycampaignName != null)
+                if (__workflow_bodycampaignName != null)
                 {
-                    body["campaign_name"] = ExpressionConverter.ConvertO(bodycampaignName);
+                    body["campaign_name"] = ExpressionConverter.ConvertO(__workflow_bodycampaignName);
                     bodypropCount++;
                 }
 
-                if (bodyfooterHtml != null)
+                if (__workflow_bodyfooterHtml != null)
                 {
-                    body["footer_html"] = ExpressionConverter.ConvertO(bodyfooterHtml);
+                    body["footer_html"] = ExpressionConverter.ConvertO(__workflow_bodyfooterHtml);
                     bodypropCount++;
                 }
 
-                if (bodyheadHtml != null)
+                if (__workflow_bodyheadHtml != null)
                 {
-                    body["head_html"] = ExpressionConverter.ConvertO(bodyheadHtml);
+                    body["head_html"] = ExpressionConverter.ConvertO(__workflow_bodyheadHtml);
                     bodypropCount++;
                 }
 
-                if (bodyisDraft != null)
+                if (__workflow_bodyisDraft != null)
                 {
-                    body["is_draft"] = ExpressionConverter.ConvertO(bodyisDraft);
+                    body["is_draft"] = ExpressionConverter.ConvertO(__workflow_bodyisDraft);
                     bodypropCount++;
                 }
 
-                if (bodymetaDescription != null)
+                if (__workflow_bodymetaDescription != null)
                 {
-                    body["meta_description"] = ExpressionConverter.ConvertO(bodymetaDescription);
+                    body["meta_description"] = ExpressionConverter.ConvertO(__workflow_bodymetaDescription);
                     bodypropCount++;
                 }
 
-                if (bodymetaKeywords != null)
+                if (__workflow_bodymetaKeywords != null)
                 {
-                    body["meta_keywords"] = ExpressionConverter.ConvertO(bodymetaKeywords);
+                    body["meta_keywords"] = ExpressionConverter.ConvertO(__workflow_bodymetaKeywords);
                     bodypropCount++;
                 }
 
-                if (bodyname != null)
+                if (__workflow_bodyname != null)
                 {
-                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
                     bodypropCount++;
                 }
 
-                if (bodypassword != null)
+                if (__workflow_bodypassword != null)
                 {
-                    body["password"] = ExpressionConverter.ConvertO(bodypassword);
+                    body["password"] = ExpressionConverter.ConvertO(__workflow_bodypassword);
                     bodypropCount++;
                 }
 
-                if (bodypublishDate != null)
+                if (__workflow_bodypublishDate != null)
                 {
-                    body["publish_date"] = ExpressionConverter.ConvertO(bodypublishDate);
+                    body["publish_date"] = ExpressionConverter.ConvertO(__workflow_bodypublishDate);
                     bodypropCount++;
                 }
 
-                if (bodypublishImmediately != null)
+                if (__workflow_bodypublishImmediately != null)
                 {
-                    body["publish_immediately"] = ExpressionConverter.ConvertO(bodypublishImmediately);
+                    body["publish_immediately"] = ExpressionConverter.ConvertO(__workflow_bodypublishImmediately);
                     bodypropCount++;
                 }
 
-                if (bodyslug != null)
+                if (__workflow_bodyslug != null)
                 {
-                    body["slug"] = ExpressionConverter.ConvertO(bodyslug);
+                    body["slug"] = ExpressionConverter.ConvertO(__workflow_bodyslug);
                     bodypropCount++;
                 }
 
-                if (bodysubcategory != null)
+                if (__workflow_bodysubcategory != null)
                 {
-                    body["subcategory"] = ExpressionConverter.ConvertO(bodysubcategory);
+                    body["subcategory"] = ExpressionConverter.ConvertO(__workflow_bodysubcategory);
                     bodypropCount++;
                 }
 
-                if (bodywidgetContainers != null)
+                if (__workflow_bodywidgetContainers != null)
                 {
-                    body["widget_containers"] = ExpressionConverter.ConvertO(bodywidgetContainers);
+                    body["widget_containers"] = ExpressionConverter.ConvertO(__workflow_bodywidgetContainers);
                     bodypropCount++;
                 }
 
-                if (bodywidgets != null)
+                if (__workflow_bodywidgets != null)
                 {
-                    body["widgets"] = ExpressionConverter.ConvertO(bodywidgets);
+                    body["widgets"] = ExpressionConverter.ConvertO(__workflow_bodywidgets);
                     bodypropCount++;
                 }
 
@@ -328,26 +335,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcms")]
-        [WorkflowExpressionFactory(nameof(__BuildPagesPublish))]
-        public IWorkflowAction PagesPublish([WorkflowExpression] Func<string> pageId, [WorkflowExpression] Func<bodyactionInput> bodyaction)
+        public IWorkflowAction PagesPublish(Expression<Func<string>> pageId, Expression<Func<bodyactionInput>> bodyaction)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildPagesPublish(WorkflowExpression<string> pageId, WorkflowExpression<bodyactionInput> bodyaction)
-        {
-            WorkflowExpression.Validate(pageId, nameof(pageId), required: true);
-            WorkflowExpression.Validate(bodyaction, nameof(bodyaction), required: true);
+            var __workflow_pageId = pageId == null ? null : WorkflowExpression.Compile(pageId);
+            WorkflowExpression.Validate(__workflow_pageId, nameof(pageId), required: true);
+            var __workflow_bodyaction = bodyaction == null ? null : WorkflowExpression.Compile(bodyaction);
+            WorkflowExpression.Validate(__workflow_bodyaction, nameof(bodyaction), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/content/api/v2/pages/{0}/publish-action", ExpressionConverter.ConvertWithUrlEncoding(pageId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/content/api/v2/pages/{0}/publish-action", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["action"] = ExpressionConverter.ConvertO(bodyaction);
+                body["action"] = ExpressionConverter.ConvertO(__workflow_bodyaction);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -358,47 +360,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcms")]
-        [WorkflowExpressionFactory(nameof(__BuildTemplatesList))]
-        public IWorkflowAction TemplatesList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> id = null)
+        public IWorkflowAction TemplatesList(Expression<Func<int>> limit = null, Expression<Func<string>> id = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildTemplatesList(WorkflowExpression<int> limit = null, WorkflowExpression<string> id = null)
-        {
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(id, nameof(id), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/content/api/v2/templates";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["limit"] = Convert.ToString(20);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (id != null)
-                    callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_id != null)
+                    callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcms")]
-        [WorkflowExpressionFactory(nameof(__BuildTemplatesCreate))]
-        public IWorkflowAction TemplatesCreate([WorkflowExpression] Func<bodycategoryIdInput> bodycategoryId = null, [WorkflowExpression] Func<string> bodyfolder = null, [WorkflowExpression] Func<bool> bodyisAvailableForNewContent = null, [WorkflowExpression] Func<bodytemplateTypeInput> bodytemplateType = null, [WorkflowExpression] Func<string> bodypath = null, [WorkflowExpression] Func<string> bodysource = null)
+        public IWorkflowAction TemplatesCreate(Expression<Func<bodycategoryIdInput>> bodycategoryId = null, Expression<Func<string>> bodyfolder = null, Expression<Func<bool>> bodyisAvailableForNewContent = null, Expression<Func<bodytemplateTypeInput>> bodytemplateType = null, Expression<Func<string>> bodypath = null, Expression<Func<string>> bodysource = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildTemplatesCreate(WorkflowExpression<bodycategoryIdInput> bodycategoryId = null, WorkflowExpression<string> bodyfolder = null, WorkflowExpression<bool> bodyisAvailableForNewContent = null, WorkflowExpression<bodytemplateTypeInput> bodytemplateType = null, WorkflowExpression<string> bodypath = null, WorkflowExpression<string> bodysource = null)
-        {
-            WorkflowExpression.Validate(bodycategoryId, nameof(bodycategoryId), required: false);
-            WorkflowExpression.Validate(bodyfolder, nameof(bodyfolder), required: false);
-            WorkflowExpression.Validate(bodyisAvailableForNewContent, nameof(bodyisAvailableForNewContent), required: false);
-            WorkflowExpression.Validate(bodytemplateType, nameof(bodytemplateType), required: false);
-            WorkflowExpression.Validate(bodypath, nameof(bodypath), required: false);
-            WorkflowExpression.Validate(bodysource, nameof(bodysource), required: false);
+            var __workflow_bodycategoryId = bodycategoryId == null ? null : WorkflowExpression.Compile(bodycategoryId);
+            WorkflowExpression.Validate(__workflow_bodycategoryId, nameof(bodycategoryId), required: false);
+            var __workflow_bodyfolder = bodyfolder == null ? null : WorkflowExpression.Compile(bodyfolder);
+            WorkflowExpression.Validate(__workflow_bodyfolder, nameof(bodyfolder), required: false);
+            var __workflow_bodyisAvailableForNewContent = bodyisAvailableForNewContent == null ? null : WorkflowExpression.Compile(bodyisAvailableForNewContent);
+            WorkflowExpression.Validate(__workflow_bodyisAvailableForNewContent, nameof(bodyisAvailableForNewContent), required: false);
+            var __workflow_bodytemplateType = bodytemplateType == null ? null : WorkflowExpression.Compile(bodytemplateType);
+            WorkflowExpression.Validate(__workflow_bodytemplateType, nameof(bodytemplateType), required: false);
+            var __workflow_bodypath = bodypath == null ? null : WorkflowExpression.Compile(bodypath);
+            WorkflowExpression.Validate(__workflow_bodypath, nameof(bodypath), required: false);
+            var __workflow_bodysource = bodysource == null ? null : WorkflowExpression.Compile(bodysource);
+            WorkflowExpression.Validate(__workflow_bodysource, nameof(bodysource), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/content/api/v2/templates";
@@ -406,23 +402,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcms
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodycategoryId != null)
+                if (__workflow_bodycategoryId != null)
                 {
-                    body["category_id"] = ExpressionConverter.ConvertO(bodycategoryId);
+                    body["category_id"] = ExpressionConverter.ConvertO(__workflow_bodycategoryId);
                     bodypropCount++;
                 }
 
-                if (bodyfolder != null)
+                if (__workflow_bodyfolder != null)
                 {
-                    body["folder"] = ExpressionConverter.ConvertO(bodyfolder);
+                    body["folder"] = ExpressionConverter.ConvertO(__workflow_bodyfolder);
                     bodypropCount++;
                 }
 
-                if (bodyisAvailableForNewContent != null)
+                if (__workflow_bodyisAvailableForNewContent != null)
                 {
-                    if (bodyisAvailableForNewContent != null)
+                    if (__workflow_bodyisAvailableForNewContent != null)
                     {
-                        body["is_available_for_new_content"] = ExpressionConverter.ConvertO(bodyisAvailableForNewContent);
+                        body["is_available_for_new_content"] = ExpressionConverter.ConvertO(__workflow_bodyisAvailableForNewContent);
                         bodypropCount++;
                     }
 
@@ -434,21 +430,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcms
                     bodypropCount++;
                 }
 
-                if (bodytemplateType != null)
+                if (__workflow_bodytemplateType != null)
                 {
-                    body["template_type"] = ExpressionConverter.ConvertO(bodytemplateType);
+                    body["template_type"] = ExpressionConverter.ConvertO(__workflow_bodytemplateType);
                     bodypropCount++;
                 }
 
-                if (bodypath != null)
+                if (__workflow_bodypath != null)
                 {
-                    body["path"] = ExpressionConverter.ConvertO(bodypath);
+                    body["path"] = ExpressionConverter.ConvertO(__workflow_bodypath);
                     bodypropCount++;
                 }
 
-                if (bodysource != null)
+                if (__workflow_bodysource != null)
                 {
-                    body["source"] = ExpressionConverter.ConvertO(bodysource);
+                    body["source"] = ExpressionConverter.ConvertO(__workflow_bodysource);
                     bodypropCount++;
                 }
 
@@ -462,19 +458,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcms")]
-        [WorkflowExpressionFactory(nameof(__BuildTemplatesArchive))]
-        public IWorkflowAction TemplatesArchive([WorkflowExpression] Func<string> templateId)
+        public IWorkflowAction TemplatesArchive(Expression<Func<string>> templateId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildTemplatesArchive(WorkflowExpression<string> templateId)
-        {
-            WorkflowExpression.Validate(templateId, nameof(templateId), required: true);
+            var __workflow_templateId = templateId == null ? null : WorkflowExpression.Compile(templateId);
+            WorkflowExpression.Validate(__workflow_templateId, nameof(templateId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/content/api/v2/templates/{0}", ExpressionConverter.ConvertWithUrlEncoding(templateId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/content/api/v2/templates/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateId, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -482,26 +472,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcms")]
-        [WorkflowExpressionFactory(nameof(__BuildTemplatesUpdate))]
-        public IWorkflowAction TemplatesUpdate([WorkflowExpression] Func<string> templateId, [WorkflowExpression] Func<string> bodysource)
+        public IWorkflowAction TemplatesUpdate(Expression<Func<string>> templateId, Expression<Func<string>> bodysource)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildTemplatesUpdate(WorkflowExpression<string> templateId, WorkflowExpression<string> bodysource)
-        {
-            WorkflowExpression.Validate(templateId, nameof(templateId), required: true);
-            WorkflowExpression.Validate(bodysource, nameof(bodysource), required: true);
+            var __workflow_templateId = templateId == null ? null : WorkflowExpression.Compile(templateId);
+            WorkflowExpression.Validate(__workflow_templateId, nameof(templateId), required: true);
+            var __workflow_bodysource = bodysource == null ? null : WorkflowExpression.Compile(bodysource);
+            WorkflowExpression.Validate(__workflow_bodysource, nameof(bodysource), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/content/api/v2/templates/{0}", ExpressionConverter.ConvertWithUrlEncoding(templateId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/content/api/v2/templates/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateId, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["source"] = ExpressionConverter.ConvertO(bodysource);
+                body["source"] = ExpressionConverter.ConvertO(__workflow_bodysource);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

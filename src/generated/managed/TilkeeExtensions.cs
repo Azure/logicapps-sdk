@@ -1,38 +1,42 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class TilkeeActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
-        [WorkflowExpressionFactory(nameof(__BuildProjectCreate))]
-        public IBodyWorkflowAction<ProjectCreateResponse> ProjectCreate([WorkflowExpression] Func<string> bodyprojectid = null, [WorkflowExpression] Func<string> bodyprojectname = null, [WorkflowExpression] Func<bool> bodyprojectcanBeDownloaded = null, [WorkflowExpression] Func<bool> bodyprojectconsultable = null, [WorkflowExpression] Func<string> bodyprojectconsultableUntil = null, [WorkflowExpression] Func<string[]> bodyprojecttags = null, [WorkflowExpression] Func<JToken[]> bodyprojectcollaborators = null, [WorkflowExpression] Func<bool> bodyprojectisTemplate = null, [WorkflowExpression] Func<string> bodyprojectexternalId = null, [WorkflowExpression] Func<int> bodyprojectthemeid = null, [WorkflowExpression] Func<bodydocumentsInputItem[]> bodydocuments = null, [WorkflowExpression] Func<bodypersonInputItem[]> bodyperson = null)
+        public IBodyWorkflowAction<ProjectCreateResponse> ProjectCreate(Expression<Func<string>> bodyprojectid = null, Expression<Func<string>> bodyprojectname = null, Expression<Func<bool>> bodyprojectcanBeDownloaded = null, Expression<Func<bool>> bodyprojectconsultable = null, Expression<Func<string>> bodyprojectconsultableUntil = null, Expression<Func<string[]>> bodyprojecttags = null, Expression<Func<JToken[]>> bodyprojectcollaborators = null, Expression<Func<bool>> bodyprojectisTemplate = null, Expression<Func<string>> bodyprojectexternalId = null, Expression<Func<int>> bodyprojectthemeid = null, Expression<Func<bodydocumentsInputItem[]>> bodydocuments = null, Expression<Func<bodypersonInputItem[]>> bodyperson = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ProjectCreateResponse> __BuildProjectCreate(WorkflowExpression<string> bodyprojectid = null, WorkflowExpression<string> bodyprojectname = null, WorkflowExpression<bool> bodyprojectcanBeDownloaded = null, WorkflowExpression<bool> bodyprojectconsultable = null, WorkflowExpression<string> bodyprojectconsultableUntil = null, WorkflowExpression<string[]> bodyprojecttags = null, WorkflowExpression<JToken[]> bodyprojectcollaborators = null, WorkflowExpression<bool> bodyprojectisTemplate = null, WorkflowExpression<string> bodyprojectexternalId = null, WorkflowExpression<int> bodyprojectthemeid = null, WorkflowExpression<bodydocumentsInputItem[]> bodydocuments = null, WorkflowExpression<bodypersonInputItem[]> bodyperson = null)
-        {
-            WorkflowExpression.Validate(bodyprojectid, nameof(bodyprojectid), required: false);
-            WorkflowExpression.Validate(bodyprojectname, nameof(bodyprojectname), required: false);
-            WorkflowExpression.Validate(bodyprojectcanBeDownloaded, nameof(bodyprojectcanBeDownloaded), required: false);
-            WorkflowExpression.Validate(bodyprojectconsultable, nameof(bodyprojectconsultable), required: false);
-            WorkflowExpression.Validate(bodyprojectconsultableUntil, nameof(bodyprojectconsultableUntil), required: false);
-            WorkflowExpression.Validate(bodyprojecttags, nameof(bodyprojecttags), required: false);
-            WorkflowExpression.Validate(bodyprojectcollaborators, nameof(bodyprojectcollaborators), required: false);
-            WorkflowExpression.Validate(bodyprojectisTemplate, nameof(bodyprojectisTemplate), required: false);
-            WorkflowExpression.Validate(bodyprojectexternalId, nameof(bodyprojectexternalId), required: false);
-            WorkflowExpression.Validate(bodyprojectthemeid, nameof(bodyprojectthemeid), required: false);
-            WorkflowExpression.Validate(bodydocuments, nameof(bodydocuments), required: false);
-            WorkflowExpression.Validate(bodyperson, nameof(bodyperson), required: false);
+            var __workflow_bodyprojectid = bodyprojectid == null ? null : WorkflowExpression.Compile(bodyprojectid);
+            WorkflowExpression.Validate(__workflow_bodyprojectid, nameof(bodyprojectid), required: false);
+            var __workflow_bodyprojectname = bodyprojectname == null ? null : WorkflowExpression.Compile(bodyprojectname);
+            WorkflowExpression.Validate(__workflow_bodyprojectname, nameof(bodyprojectname), required: false);
+            var __workflow_bodyprojectcanBeDownloaded = bodyprojectcanBeDownloaded == null ? null : WorkflowExpression.Compile(bodyprojectcanBeDownloaded);
+            WorkflowExpression.Validate(__workflow_bodyprojectcanBeDownloaded, nameof(bodyprojectcanBeDownloaded), required: false);
+            var __workflow_bodyprojectconsultable = bodyprojectconsultable == null ? null : WorkflowExpression.Compile(bodyprojectconsultable);
+            WorkflowExpression.Validate(__workflow_bodyprojectconsultable, nameof(bodyprojectconsultable), required: false);
+            var __workflow_bodyprojectconsultableUntil = bodyprojectconsultableUntil == null ? null : WorkflowExpression.Compile(bodyprojectconsultableUntil);
+            WorkflowExpression.Validate(__workflow_bodyprojectconsultableUntil, nameof(bodyprojectconsultableUntil), required: false);
+            var __workflow_bodyprojecttags = bodyprojecttags == null ? null : WorkflowExpression.Compile(bodyprojecttags);
+            WorkflowExpression.Validate(__workflow_bodyprojecttags, nameof(bodyprojecttags), required: false);
+            var __workflow_bodyprojectcollaborators = bodyprojectcollaborators == null ? null : WorkflowExpression.Compile(bodyprojectcollaborators);
+            WorkflowExpression.Validate(__workflow_bodyprojectcollaborators, nameof(bodyprojectcollaborators), required: false);
+            var __workflow_bodyprojectisTemplate = bodyprojectisTemplate == null ? null : WorkflowExpression.Compile(bodyprojectisTemplate);
+            WorkflowExpression.Validate(__workflow_bodyprojectisTemplate, nameof(bodyprojectisTemplate), required: false);
+            var __workflow_bodyprojectexternalId = bodyprojectexternalId == null ? null : WorkflowExpression.Compile(bodyprojectexternalId);
+            WorkflowExpression.Validate(__workflow_bodyprojectexternalId, nameof(bodyprojectexternalId), required: false);
+            var __workflow_bodyprojectthemeid = bodyprojectthemeid == null ? null : WorkflowExpression.Compile(bodyprojectthemeid);
+            WorkflowExpression.Validate(__workflow_bodyprojectthemeid, nameof(bodyprojectthemeid), required: false);
+            var __workflow_bodydocuments = bodydocuments == null ? null : WorkflowExpression.Compile(bodydocuments);
+            WorkflowExpression.Validate(__workflow_bodydocuments, nameof(bodydocuments), required: false);
+            var __workflow_bodyperson = bodyperson == null ? null : WorkflowExpression.Compile(bodyperson);
+            WorkflowExpression.Validate(__workflow_bodyperson, nameof(bodyperson), required: false);
             return new DeferredBodyAction<ProjectCreateResponse>(() =>
             {
                 var apiCallPath = "/wrapper/token_from_files";
@@ -45,29 +49,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
                 var bodypropCount = 0;
                 var projectObject = new JObject();
                 var projectObjectpropCount = 0;
-                if (bodyprojectid != null)
+                if (__workflow_bodyprojectid != null)
                 {
-                    projectObject["id"] = ExpressionConverter.ConvertO(bodyprojectid);
+                    projectObject["id"] = ExpressionConverter.ConvertO(__workflow_bodyprojectid);
                     projectObjectpropCount++;
                 }
 
-                if (bodyprojectname != null)
+                if (__workflow_bodyprojectname != null)
                 {
-                    projectObject["name"] = ExpressionConverter.ConvertO(bodyprojectname);
+                    projectObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyprojectname);
                     projectObjectpropCount++;
                 }
 
-                if (bodyprojectcanBeDownloaded != null)
+                if (__workflow_bodyprojectcanBeDownloaded != null)
                 {
-                    projectObject["can_be_downloaded"] = ExpressionConverter.ConvertO(bodyprojectcanBeDownloaded);
+                    projectObject["can_be_downloaded"] = ExpressionConverter.ConvertO(__workflow_bodyprojectcanBeDownloaded);
                     projectObjectpropCount++;
                 }
 
-                if (bodyprojectconsultable != null)
+                if (__workflow_bodyprojectconsultable != null)
                 {
-                    if (bodyprojectconsultable != null)
+                    if (__workflow_bodyprojectconsultable != null)
                     {
-                        projectObject["consultable"] = ExpressionConverter.ConvertO(bodyprojectconsultable);
+                        projectObject["consultable"] = ExpressionConverter.ConvertO(__workflow_bodyprojectconsultable);
                         projectObjectpropCount++;
                     }
 
@@ -79,29 +83,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
                     projectObjectpropCount++;
                 }
 
-                if (bodyprojectconsultableUntil != null)
+                if (__workflow_bodyprojectconsultableUntil != null)
                 {
-                    projectObject["consultable_until"] = ExpressionConverter.ConvertO(bodyprojectconsultableUntil);
+                    projectObject["consultable_until"] = ExpressionConverter.ConvertO(__workflow_bodyprojectconsultableUntil);
                     projectObjectpropCount++;
                 }
 
-                if (bodyprojecttags != null)
+                if (__workflow_bodyprojecttags != null)
                 {
-                    projectObject["tags"] = ExpressionConverter.ConvertO(bodyprojecttags);
+                    projectObject["tags"] = ExpressionConverter.ConvertO(__workflow_bodyprojecttags);
                     projectObjectpropCount++;
                 }
 
-                if (bodyprojectcollaborators != null)
+                if (__workflow_bodyprojectcollaborators != null)
                 {
-                    projectObject["collaborators"] = ExpressionConverter.ConvertO(bodyprojectcollaborators);
+                    projectObject["collaborators"] = ExpressionConverter.ConvertO(__workflow_bodyprojectcollaborators);
                     projectObjectpropCount++;
                 }
 
-                if (bodyprojectisTemplate != null)
+                if (__workflow_bodyprojectisTemplate != null)
                 {
-                    if (bodyprojectisTemplate != null)
+                    if (__workflow_bodyprojectisTemplate != null)
                     {
-                        projectObject["is_template"] = ExpressionConverter.ConvertO(bodyprojectisTemplate);
+                        projectObject["is_template"] = ExpressionConverter.ConvertO(__workflow_bodyprojectisTemplate);
                         projectObjectpropCount++;
                     }
 
@@ -113,17 +117,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
                     projectObjectpropCount++;
                 }
 
-                if (bodyprojectexternalId != null)
+                if (__workflow_bodyprojectexternalId != null)
                 {
-                    projectObject["external_id"] = ExpressionConverter.ConvertO(bodyprojectexternalId);
+                    projectObject["external_id"] = ExpressionConverter.ConvertO(__workflow_bodyprojectexternalId);
                     projectObjectpropCount++;
                 }
 
                 var themeObject = new JObject();
                 var themeObjectpropCount = 0;
-                if (bodyprojectthemeid != null)
+                if (__workflow_bodyprojectthemeid != null)
                 {
-                    themeObject["id"] = ExpressionConverter.ConvertO(bodyprojectthemeid);
+                    themeObject["id"] = ExpressionConverter.ConvertO(__workflow_bodyprojectthemeid);
                     themeObjectpropCount++;
                 }
 
@@ -139,15 +143,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
                     bodypropCount++;
                 }
 
-                if (bodydocuments != null)
+                if (__workflow_bodydocuments != null)
                 {
-                    body["documents"] = ExpressionConverter.ConvertO(bodydocuments);
+                    body["documents"] = ExpressionConverter.ConvertO(__workflow_bodydocuments);
                     bodypropCount++;
                 }
 
-                if (bodyperson != null)
+                if (__workflow_bodyperson != null)
                 {
-                    body["person"] = ExpressionConverter.ConvertO(bodyperson);
+                    body["person"] = ExpressionConverter.ConvertO(__workflow_bodyperson);
                     bodypropCount++;
                 }
 
@@ -161,39 +165,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
-        [WorkflowExpressionFactory(nameof(__BuildProjectList))]
-        public IBodyWorkflowAction<ProjectListResponse> ProjectList([WorkflowExpression] Func<int> limit, [WorkflowExpression] Func<int> offset, [WorkflowExpression] Func<string> order, [WorkflowExpression] Func<bool> isTemplate, [WorkflowExpression] Func<bool> isOwner, [WorkflowExpression] Func<string> tags = null, [WorkflowExpression] Func<string> tagOperator = null, [WorkflowExpression] Func<string> search = null)
+        public IBodyWorkflowAction<ProjectListResponse> ProjectList(Expression<Func<int>> limit, Expression<Func<int>> offset, Expression<Func<string>> order, Expression<Func<bool>> isTemplate, Expression<Func<bool>> isOwner, Expression<Func<string>> tags = null, Expression<Func<string>> tagOperator = null, Expression<Func<string>> search = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ProjectListResponse> __BuildProjectList(WorkflowExpression<int> limit, WorkflowExpression<int> offset, WorkflowExpression<string> order, WorkflowExpression<bool> isTemplate, WorkflowExpression<bool> isOwner, WorkflowExpression<string> tags = null, WorkflowExpression<string> tagOperator = null, WorkflowExpression<string> search = null)
-        {
-            WorkflowExpression.Validate(limit, nameof(limit), required: true);
-            WorkflowExpression.Validate(offset, nameof(offset), required: true);
-            WorkflowExpression.Validate(order, nameof(order), required: true);
-            WorkflowExpression.Validate(isTemplate, nameof(isTemplate), required: true);
-            WorkflowExpression.Validate(isOwner, nameof(isOwner), required: true);
-            WorkflowExpression.Validate(tags, nameof(tags), required: false);
-            WorkflowExpression.Validate(tagOperator, nameof(tagOperator), required: false);
-            WorkflowExpression.Validate(search, nameof(search), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: true);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: true);
+            var __workflow_order = order == null ? null : WorkflowExpression.Compile(order);
+            WorkflowExpression.Validate(__workflow_order, nameof(order), required: true);
+            var __workflow_isTemplate = isTemplate == null ? null : WorkflowExpression.Compile(isTemplate);
+            WorkflowExpression.Validate(__workflow_isTemplate, nameof(isTemplate), required: true);
+            var __workflow_isOwner = isOwner == null ? null : WorkflowExpression.Compile(isOwner);
+            WorkflowExpression.Validate(__workflow_isOwner, nameof(isOwner), required: true);
+            var __workflow_tags = tags == null ? null : WorkflowExpression.Compile(tags);
+            WorkflowExpression.Validate(__workflow_tags, nameof(tags), required: false);
+            var __workflow_tagOperator = tagOperator == null ? null : WorkflowExpression.Compile(tagOperator);
+            WorkflowExpression.Validate(__workflow_tagOperator, nameof(tagOperator), required: false);
+            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
+            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
             return new DeferredBodyAction<ProjectListResponse>(() =>
             {
                 var apiCallPath = "/projects";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-                callPayload.Queries["order"] = ExpressionConverter.Convert(order);
-                callPayload.Queries["is_template"] = ExpressionConverter.Convert(isTemplate);
-                if (tags != null)
-                    callPayload.Queries["tags"] = ExpressionConverter.Convert(tags);
-                if (tagOperator != null)
-                    callPayload.Queries["tagOperator"] = ExpressionConverter.Convert(tagOperator);
-                callPayload.Queries["is_owner"] = ExpressionConverter.Convert(isOwner);
-                if (search != null)
-                    callPayload.Queries["search"] = ExpressionConverter.Convert(search);
+                callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                callPayload.Queries["order"] = ExpressionConverter.Convert(__workflow_order);
+                callPayload.Queries["is_template"] = ExpressionConverter.Convert(__workflow_isTemplate);
+                if (__workflow_tags != null)
+                    callPayload.Queries["tags"] = ExpressionConverter.Convert(__workflow_tags);
+                if (__workflow_tagOperator != null)
+                    callPayload.Queries["tagOperator"] = ExpressionConverter.Convert(__workflow_tagOperator);
+                callPayload.Queries["is_owner"] = ExpressionConverter.Convert(__workflow_isOwner);
+                if (__workflow_search != null)
+                    callPayload.Queries["search"] = ExpressionConverter.Convert(__workflow_search);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["x_tilk_ref"] = Convert.ToString("PowerAutomate");
@@ -202,19 +207,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
-        [WorkflowExpressionFactory(nameof(__BuildProjectGet))]
-        public IBodyWorkflowAction<ProjectGetResponse> ProjectGet([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<ProjectGetResponse> ProjectGet(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ProjectGetResponse> __BuildProjectGet(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<ProjectGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/projects/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/projects/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["iframe_url"] = Convert.ToString(true);
@@ -226,34 +225,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
-        [WorkflowExpressionFactory(nameof(__BuildProjectUpdate))]
-        public IBodyWorkflowAction<ProjectUpdateResponse> ProjectUpdate([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<bool> bodycanBeDownloaded = null, [WorkflowExpression] Func<bool> bodyconsultable = null, [WorkflowExpression] Func<string> bodyconsultableUntil = null, [WorkflowExpression] Func<string> bodyduration = null, [WorkflowExpression] Func<string> bodyexternalId = null, [WorkflowExpression] Func<bool> bodystarred = null, [WorkflowExpression] Func<string[]> bodytags = null, [WorkflowExpression] Func<bodyverdictInput> bodyverdict = null, [WorkflowExpression] Func<JToken[]> bodycollaborators = null, [WorkflowExpression] Func<bool> bodyisTemplate = null, [WorkflowExpression] Func<int> bodyvcardId = null, [WorkflowExpression] Func<bool> bodyalertOn = null, [WorkflowExpression] Func<string[]> bodyemailCible = null, [WorkflowExpression] Func<int> bodythemeid = null)
+        public IBodyWorkflowAction<ProjectUpdateResponse> ProjectUpdate(Expression<Func<string>> id, Expression<Func<string>> bodyname = null, Expression<Func<bool>> bodycanBeDownloaded = null, Expression<Func<bool>> bodyconsultable = null, Expression<Func<string>> bodyconsultableUntil = null, Expression<Func<string>> bodyduration = null, Expression<Func<string>> bodyexternalId = null, Expression<Func<bool>> bodystarred = null, Expression<Func<string[]>> bodytags = null, Expression<Func<bodyverdictInput>> bodyverdict = null, Expression<Func<JToken[]>> bodycollaborators = null, Expression<Func<bool>> bodyisTemplate = null, Expression<Func<int>> bodyvcardId = null, Expression<Func<bool>> bodyalertOn = null, Expression<Func<string[]>> bodyemailCible = null, Expression<Func<int>> bodythemeid = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ProjectUpdateResponse> __BuildProjectUpdate(WorkflowExpression<string> id, WorkflowExpression<string> bodyname = null, WorkflowExpression<bool> bodycanBeDownloaded = null, WorkflowExpression<bool> bodyconsultable = null, WorkflowExpression<string> bodyconsultableUntil = null, WorkflowExpression<string> bodyduration = null, WorkflowExpression<string> bodyexternalId = null, WorkflowExpression<bool> bodystarred = null, WorkflowExpression<string[]> bodytags = null, WorkflowExpression<bodyverdictInput> bodyverdict = null, WorkflowExpression<JToken[]> bodycollaborators = null, WorkflowExpression<bool> bodyisTemplate = null, WorkflowExpression<int> bodyvcardId = null, WorkflowExpression<bool> bodyalertOn = null, WorkflowExpression<string[]> bodyemailCible = null, WorkflowExpression<int> bodythemeid = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
-            WorkflowExpression.Validate(bodycanBeDownloaded, nameof(bodycanBeDownloaded), required: false);
-            WorkflowExpression.Validate(bodyconsultable, nameof(bodyconsultable), required: false);
-            WorkflowExpression.Validate(bodyconsultableUntil, nameof(bodyconsultableUntil), required: false);
-            WorkflowExpression.Validate(bodyduration, nameof(bodyduration), required: false);
-            WorkflowExpression.Validate(bodyexternalId, nameof(bodyexternalId), required: false);
-            WorkflowExpression.Validate(bodystarred, nameof(bodystarred), required: false);
-            WorkflowExpression.Validate(bodytags, nameof(bodytags), required: false);
-            WorkflowExpression.Validate(bodyverdict, nameof(bodyverdict), required: false);
-            WorkflowExpression.Validate(bodycollaborators, nameof(bodycollaborators), required: false);
-            WorkflowExpression.Validate(bodyisTemplate, nameof(bodyisTemplate), required: false);
-            WorkflowExpression.Validate(bodyvcardId, nameof(bodyvcardId), required: false);
-            WorkflowExpression.Validate(bodyalertOn, nameof(bodyalertOn), required: false);
-            WorkflowExpression.Validate(bodyemailCible, nameof(bodyemailCible), required: false);
-            WorkflowExpression.Validate(bodythemeid, nameof(bodythemeid), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
+            var __workflow_bodycanBeDownloaded = bodycanBeDownloaded == null ? null : WorkflowExpression.Compile(bodycanBeDownloaded);
+            WorkflowExpression.Validate(__workflow_bodycanBeDownloaded, nameof(bodycanBeDownloaded), required: false);
+            var __workflow_bodyconsultable = bodyconsultable == null ? null : WorkflowExpression.Compile(bodyconsultable);
+            WorkflowExpression.Validate(__workflow_bodyconsultable, nameof(bodyconsultable), required: false);
+            var __workflow_bodyconsultableUntil = bodyconsultableUntil == null ? null : WorkflowExpression.Compile(bodyconsultableUntil);
+            WorkflowExpression.Validate(__workflow_bodyconsultableUntil, nameof(bodyconsultableUntil), required: false);
+            var __workflow_bodyduration = bodyduration == null ? null : WorkflowExpression.Compile(bodyduration);
+            WorkflowExpression.Validate(__workflow_bodyduration, nameof(bodyduration), required: false);
+            var __workflow_bodyexternalId = bodyexternalId == null ? null : WorkflowExpression.Compile(bodyexternalId);
+            WorkflowExpression.Validate(__workflow_bodyexternalId, nameof(bodyexternalId), required: false);
+            var __workflow_bodystarred = bodystarred == null ? null : WorkflowExpression.Compile(bodystarred);
+            WorkflowExpression.Validate(__workflow_bodystarred, nameof(bodystarred), required: false);
+            var __workflow_bodytags = bodytags == null ? null : WorkflowExpression.Compile(bodytags);
+            WorkflowExpression.Validate(__workflow_bodytags, nameof(bodytags), required: false);
+            var __workflow_bodyverdict = bodyverdict == null ? null : WorkflowExpression.Compile(bodyverdict);
+            WorkflowExpression.Validate(__workflow_bodyverdict, nameof(bodyverdict), required: false);
+            var __workflow_bodycollaborators = bodycollaborators == null ? null : WorkflowExpression.Compile(bodycollaborators);
+            WorkflowExpression.Validate(__workflow_bodycollaborators, nameof(bodycollaborators), required: false);
+            var __workflow_bodyisTemplate = bodyisTemplate == null ? null : WorkflowExpression.Compile(bodyisTemplate);
+            WorkflowExpression.Validate(__workflow_bodyisTemplate, nameof(bodyisTemplate), required: false);
+            var __workflow_bodyvcardId = bodyvcardId == null ? null : WorkflowExpression.Compile(bodyvcardId);
+            WorkflowExpression.Validate(__workflow_bodyvcardId, nameof(bodyvcardId), required: false);
+            var __workflow_bodyalertOn = bodyalertOn == null ? null : WorkflowExpression.Compile(bodyalertOn);
+            WorkflowExpression.Validate(__workflow_bodyalertOn, nameof(bodyalertOn), required: false);
+            var __workflow_bodyemailCible = bodyemailCible == null ? null : WorkflowExpression.Compile(bodyemailCible);
+            WorkflowExpression.Validate(__workflow_bodyemailCible, nameof(bodyemailCible), required: false);
+            var __workflow_bodythemeid = bodythemeid == null ? null : WorkflowExpression.Compile(bodythemeid);
+            WorkflowExpression.Validate(__workflow_bodythemeid, nameof(bodythemeid), required: false);
             return new DeferredBodyAction<ProjectUpdateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/projects/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/projects/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -261,95 +269,95 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
                 callPayload.Headers["x_tilk_ref"] = Convert.ToString("PowerAutomate");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyname != null)
+                if (__workflow_bodyname != null)
                 {
-                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
                     bodypropCount++;
                 }
 
-                if (bodycanBeDownloaded != null)
+                if (__workflow_bodycanBeDownloaded != null)
                 {
-                    body["can_be_downloaded"] = ExpressionConverter.ConvertO(bodycanBeDownloaded);
+                    body["can_be_downloaded"] = ExpressionConverter.ConvertO(__workflow_bodycanBeDownloaded);
                     bodypropCount++;
                 }
 
-                if (bodyconsultable != null)
+                if (__workflow_bodyconsultable != null)
                 {
-                    body["consultable"] = ExpressionConverter.ConvertO(bodyconsultable);
+                    body["consultable"] = ExpressionConverter.ConvertO(__workflow_bodyconsultable);
                     bodypropCount++;
                 }
 
-                if (bodyconsultableUntil != null)
+                if (__workflow_bodyconsultableUntil != null)
                 {
-                    body["consultable_until"] = ExpressionConverter.ConvertO(bodyconsultableUntil);
+                    body["consultable_until"] = ExpressionConverter.ConvertO(__workflow_bodyconsultableUntil);
                     bodypropCount++;
                 }
 
-                if (bodyduration != null)
+                if (__workflow_bodyduration != null)
                 {
-                    body["duration"] = ExpressionConverter.ConvertO(bodyduration);
+                    body["duration"] = ExpressionConverter.ConvertO(__workflow_bodyduration);
                     bodypropCount++;
                 }
 
-                if (bodyexternalId != null)
+                if (__workflow_bodyexternalId != null)
                 {
-                    body["external_id"] = ExpressionConverter.ConvertO(bodyexternalId);
+                    body["external_id"] = ExpressionConverter.ConvertO(__workflow_bodyexternalId);
                     bodypropCount++;
                 }
 
-                if (bodystarred != null)
+                if (__workflow_bodystarred != null)
                 {
-                    body["starred"] = ExpressionConverter.ConvertO(bodystarred);
+                    body["starred"] = ExpressionConverter.ConvertO(__workflow_bodystarred);
                     bodypropCount++;
                 }
 
-                if (bodytags != null)
+                if (__workflow_bodytags != null)
                 {
-                    body["tags"] = ExpressionConverter.ConvertO(bodytags);
+                    body["tags"] = ExpressionConverter.ConvertO(__workflow_bodytags);
                     bodypropCount++;
                 }
 
-                if (bodyverdict != null)
+                if (__workflow_bodyverdict != null)
                 {
-                    body["verdict"] = ExpressionConverter.ConvertO(bodyverdict);
+                    body["verdict"] = ExpressionConverter.ConvertO(__workflow_bodyverdict);
                     bodypropCount++;
                 }
 
-                if (bodycollaborators != null)
+                if (__workflow_bodycollaborators != null)
                 {
-                    body["collaborators"] = ExpressionConverter.ConvertO(bodycollaborators);
+                    body["collaborators"] = ExpressionConverter.ConvertO(__workflow_bodycollaborators);
                     bodypropCount++;
                 }
 
-                if (bodyisTemplate != null)
+                if (__workflow_bodyisTemplate != null)
                 {
-                    body["is_template"] = ExpressionConverter.ConvertO(bodyisTemplate);
+                    body["is_template"] = ExpressionConverter.ConvertO(__workflow_bodyisTemplate);
                     bodypropCount++;
                 }
 
-                if (bodyvcardId != null)
+                if (__workflow_bodyvcardId != null)
                 {
-                    body["vcard_id"] = ExpressionConverter.ConvertO(bodyvcardId);
+                    body["vcard_id"] = ExpressionConverter.ConvertO(__workflow_bodyvcardId);
                     bodypropCount++;
                 }
 
-                if (bodyalertOn != null)
+                if (__workflow_bodyalertOn != null)
                 {
-                    body["alert_on"] = ExpressionConverter.ConvertO(bodyalertOn);
+                    body["alert_on"] = ExpressionConverter.ConvertO(__workflow_bodyalertOn);
                     bodypropCount++;
                 }
 
-                if (bodyemailCible != null)
+                if (__workflow_bodyemailCible != null)
                 {
-                    body["email_cible"] = ExpressionConverter.ConvertO(bodyemailCible);
+                    body["email_cible"] = ExpressionConverter.ConvertO(__workflow_bodyemailCible);
                     bodypropCount++;
                 }
 
                 var themeObject = new JObject();
                 var themeObjectpropCount = 0;
-                if (bodythemeid != null)
+                if (__workflow_bodythemeid != null)
                 {
-                    themeObject["id"] = ExpressionConverter.ConvertO(bodythemeid);
+                    themeObject["id"] = ExpressionConverter.ConvertO(__workflow_bodythemeid);
                     themeObjectpropCount++;
                 }
 
@@ -369,20 +377,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
-        [WorkflowExpressionFactory(nameof(__BuildAccessLinkCreate))]
-        public IBodyWorkflowAction<AccessLinkCreateResponse> AccessLinkCreate([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<bodyaccessLinkInputItem[]> bodyaccessLink = null)
+        public IBodyWorkflowAction<AccessLinkCreateResponse> AccessLinkCreate(Expression<Func<string>> projectId, Expression<Func<bodyaccessLinkInputItem[]>> bodyaccessLink = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AccessLinkCreateResponse> __BuildAccessLinkCreate(WorkflowExpression<string> projectId, WorkflowExpression<bodyaccessLinkInputItem[]> bodyaccessLink = null)
-        {
-            WorkflowExpression.Validate(projectId, nameof(projectId), required: true);
-            WorkflowExpression.Validate(bodyaccessLink, nameof(bodyaccessLink), required: false);
+            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
+            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
+            var __workflow_bodyaccessLink = bodyaccessLink == null ? null : WorkflowExpression.Compile(bodyaccessLink);
+            WorkflowExpression.Validate(__workflow_bodyaccessLink, nameof(bodyaccessLink), required: false);
             return new DeferredBodyAction<AccessLinkCreateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/projects/{0}/tokens", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/projects/{0}/tokens", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -390,9 +393,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
                 callPayload.Headers["x_tilk_ref"] = Convert.ToString("PowerAutomate");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyaccessLink != null)
+                if (__workflow_bodyaccessLink != null)
                 {
-                    body["persons"] = ExpressionConverter.ConvertO(bodyaccessLink);
+                    body["persons"] = ExpressionConverter.ConvertO(__workflow_bodyaccessLink);
                     bodypropCount++;
                 }
 
@@ -406,20 +409,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
-        [WorkflowExpressionFactory(nameof(__BuildAddItemToProject))]
-        public IBodyWorkflowAction<AddItemToProjectResponseItem[]> AddItemToProject([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<bodyitemsInputItem[]> bodyitems = null)
+        public IBodyWorkflowAction<AddItemToProjectResponseItem[]> AddItemToProject(Expression<Func<string>> projectId, Expression<Func<bodyitemsInputItem[]>> bodyitems = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AddItemToProjectResponseItem[]> __BuildAddItemToProject(WorkflowExpression<string> projectId, WorkflowExpression<bodyitemsInputItem[]> bodyitems = null)
-        {
-            WorkflowExpression.Validate(projectId, nameof(projectId), required: true);
-            WorkflowExpression.Validate(bodyitems, nameof(bodyitems), required: false);
+            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
+            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
+            var __workflow_bodyitems = bodyitems == null ? null : WorkflowExpression.Compile(bodyitems);
+            WorkflowExpression.Validate(__workflow_bodyitems, nameof(bodyitems), required: false);
             return new DeferredBodyAction<AddItemToProjectResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/projects/{0}/add_items", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/projects/{0}/add_items", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -427,9 +425,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
                 callPayload.Headers["x_tilk_ref"] = Convert.ToString("PowerAutomate");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyitems != null)
+                if (__workflow_bodyitems != null)
                 {
-                    body["items"] = ExpressionConverter.ConvertO(bodyitems);
+                    body["items"] = ExpressionConverter.ConvertO(__workflow_bodyitems);
                     bodypropCount++;
                 }
 
@@ -445,33 +443,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
-        [WorkflowExpressionFactory(nameof(__BuildItemList))]
-        public IBodyWorkflowAction<ItemListResponse> ItemList([WorkflowExpression] Func<int> limit, [WorkflowExpression] Func<int> offset, [WorkflowExpression] Func<string> tags = null, [WorkflowExpression] Func<string> tagOperator = null, [WorkflowExpression] Func<string> search = null)
+        public IBodyWorkflowAction<ItemListResponse> ItemList(Expression<Func<int>> limit, Expression<Func<int>> offset, Expression<Func<string>> tags = null, Expression<Func<string>> tagOperator = null, Expression<Func<string>> search = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ItemListResponse> __BuildItemList(WorkflowExpression<int> limit, WorkflowExpression<int> offset, WorkflowExpression<string> tags = null, WorkflowExpression<string> tagOperator = null, WorkflowExpression<string> search = null)
-        {
-            WorkflowExpression.Validate(limit, nameof(limit), required: true);
-            WorkflowExpression.Validate(offset, nameof(offset), required: true);
-            WorkflowExpression.Validate(tags, nameof(tags), required: false);
-            WorkflowExpression.Validate(tagOperator, nameof(tagOperator), required: false);
-            WorkflowExpression.Validate(search, nameof(search), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: true);
+            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
+            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: true);
+            var __workflow_tags = tags == null ? null : WorkflowExpression.Compile(tags);
+            WorkflowExpression.Validate(__workflow_tags, nameof(tags), required: false);
+            var __workflow_tagOperator = tagOperator == null ? null : WorkflowExpression.Compile(tagOperator);
+            WorkflowExpression.Validate(__workflow_tagOperator, nameof(tagOperator), required: false);
+            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
+            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
             return new DeferredBodyAction<ItemListResponse>(() =>
             {
                 var apiCallPath = "/items";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-                if (tags != null)
-                    callPayload.Queries["tags"] = ExpressionConverter.Convert(tags);
-                if (tagOperator != null)
-                    callPayload.Queries["tagOperator"] = ExpressionConverter.Convert(tagOperator);
-                if (search != null)
-                    callPayload.Queries["search"] = ExpressionConverter.Convert(search);
+                callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                if (__workflow_tags != null)
+                    callPayload.Queries["tags"] = ExpressionConverter.Convert(__workflow_tags);
+                if (__workflow_tagOperator != null)
+                    callPayload.Queries["tagOperator"] = ExpressionConverter.Convert(__workflow_tagOperator);
+                if (__workflow_search != null)
+                    callPayload.Queries["search"] = ExpressionConverter.Convert(__workflow_search);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["x_tilk_ref"] = Convert.ToString("PowerAutomate");
@@ -480,16 +476,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
-        [WorkflowExpressionFactory(nameof(__BuildItemCreate))]
-        public IBodyWorkflowAction<ItemCreateResponseItem[]> ItemCreate([WorkflowExpression] Func<bodyInputItem[]> body = null)
+        public IBodyWorkflowAction<ItemCreateResponseItem[]> ItemCreate(Expression<Func<bodyInputItem[]>> body = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ItemCreateResponseItem[]> __BuildItemCreate(WorkflowExpression<bodyInputItem[]> body = null)
-        {
-            WorkflowExpression.Validate(body, nameof(body), required: false);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
             return new DeferredBodyAction<ItemCreateResponseItem[]>(() =>
             {
                 var apiCallPath = "/items";
@@ -498,33 +488,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["x_tilk_ref"] = Convert.ToString("PowerAutomate");
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ItemCreateResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
-        [WorkflowExpressionFactory(nameof(__BuildDirectUploadInformation))]
-        public IBodyWorkflowAction<DirectUploadInformationResponse> DirectUploadInformation([WorkflowExpression] Func<string> filename, [WorkflowExpression] Func<string> originalFilename, [WorkflowExpression] Func<bool> checkExisting = null)
+        public IBodyWorkflowAction<DirectUploadInformationResponse> DirectUploadInformation(Expression<Func<string>> filename, Expression<Func<string>> originalFilename, Expression<Func<bool>> checkExisting = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DirectUploadInformationResponse> __BuildDirectUploadInformation(WorkflowExpression<string> filename, WorkflowExpression<string> originalFilename, WorkflowExpression<bool> checkExisting = null)
-        {
-            WorkflowExpression.Validate(filename, nameof(filename), required: true);
-            WorkflowExpression.Validate(originalFilename, nameof(originalFilename), required: true);
-            WorkflowExpression.Validate(checkExisting, nameof(checkExisting), required: false);
+            var __workflow_filename = filename == null ? null : WorkflowExpression.Compile(filename);
+            WorkflowExpression.Validate(__workflow_filename, nameof(filename), required: true);
+            var __workflow_originalFilename = originalFilename == null ? null : WorkflowExpression.Compile(originalFilename);
+            WorkflowExpression.Validate(__workflow_originalFilename, nameof(originalFilename), required: true);
+            var __workflow_checkExisting = checkExisting == null ? null : WorkflowExpression.Compile(checkExisting);
+            WorkflowExpression.Validate(__workflow_checkExisting, nameof(checkExisting), required: false);
             return new DeferredBodyAction<DirectUploadInformationResponse>(() =>
             {
                 var apiCallPath = "/direct_upload_data";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["filename"] = ExpressionConverter.Convert(filename);
-                callPayload.Queries["original_filename"] = ExpressionConverter.Convert(originalFilename);
-                if (checkExisting != null)
-                    callPayload.Queries["check_existing"] = ExpressionConverter.Convert(checkExisting);
+                callPayload.Queries["filename"] = ExpressionConverter.Convert(__workflow_filename);
+                callPayload.Queries["original_filename"] = ExpressionConverter.Convert(__workflow_originalFilename);
+                if (__workflow_checkExisting != null)
+                    callPayload.Queries["check_existing"] = ExpressionConverter.Convert(__workflow_checkExisting);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["x_tilk_ref"] = Convert.ToString("PowerAutomate");
@@ -535,19 +521,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
 
     public class TilkeeTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildOnTilkeeEvent))]
-        public IBodyWorkflowTrigger<JToken> OnTilkeeEvent([WorkflowExpression] Func<bodyruleInput> bodyrule,[WorkflowExpression] Func<string> bodyuserId = null,[WorkflowExpression] Func<string> bodyprojectId = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> OnTilkeeEvent(Expression<Func<bodyruleInput>> bodyrule, Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodyprojectId = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildOnTilkeeEvent(WorkflowExpression<bodyruleInput> bodyrule,WorkflowExpression<string> bodyuserId = null,WorkflowExpression<string> bodyprojectId = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodyrule, nameof(bodyrule), required: true);
-            WorkflowExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
-            WorkflowExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: false);
+            var __workflow_bodyrule = bodyrule == null ? null : WorkflowExpression.Compile(bodyrule);
+            WorkflowExpression.Validate(__workflow_bodyrule, nameof(bodyrule), required: true);
+            var __workflow_bodyuserId = bodyuserId == null ? null : WorkflowExpression.Compile(bodyuserId);
+            WorkflowExpression.Validate(__workflow_bodyuserId, nameof(bodyuserId), required: false);
+            var __workflow_bodyprojectId = bodyprojectId == null ? null : WorkflowExpression.Compile(bodyprojectId);
+            WorkflowExpression.Validate(__workflow_bodyprojectId, nameof(bodyprojectId), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = "/notifications";
@@ -559,16 +540,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["rule"] = ExpressionConverter.ConvertO(bodyrule);
-                if (bodyuserId != null)
+                body["rule"] = ExpressionConverter.ConvertO(__workflow_bodyrule);
+                if (__workflow_bodyuserId != null)
                 {
-                    body["user_id"] = ExpressionConverter.ConvertO(bodyuserId);
+                    body["user_id"] = ExpressionConverter.ConvertO(__workflow_bodyuserId);
                     bodypropCount++;
                 }
 
-                if (bodyprojectId != null)
+                if (__workflow_bodyprojectId != null)
                 {
-                    body["project_id"] = ExpressionConverter.ConvertO(bodyprojectId);
+                    body["project_id"] = ExpressionConverter.ConvertO(__workflow_bodyprojectId);
                     bodypropCount++;
                 }
 
@@ -585,17 +566,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildOnTilkeeEventEnded))]
-        public IBodyWorkflowTrigger<JToken> OnTilkeeEventEnded([WorkflowExpression] Func<string> bodyuserId = null,[WorkflowExpression] Func<string> bodyprojectId = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> OnTilkeeEventEnded(Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodyprojectId = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildOnTilkeeEventEnded(WorkflowExpression<string> bodyuserId = null,WorkflowExpression<string> bodyprojectId = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
-            WorkflowExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: false);
+            var __workflow_bodyuserId = bodyuserId == null ? null : WorkflowExpression.Compile(bodyuserId);
+            WorkflowExpression.Validate(__workflow_bodyuserId, nameof(bodyuserId), required: false);
+            var __workflow_bodyprojectId = bodyprojectId == null ? null : WorkflowExpression.Compile(bodyprojectId);
+            WorkflowExpression.Validate(__workflow_bodyprojectId, nameof(bodyprojectId), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = "/notifications/connexion_ended";
@@ -608,15 +584,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
                 var bodypropCount = 0;
                 body["rule"] = "connexion_ended";
                 bodypropCount++;
-                if (bodyuserId != null)
+                if (__workflow_bodyuserId != null)
                 {
-                    body["user_id"] = ExpressionConverter.ConvertO(bodyuserId);
+                    body["user_id"] = ExpressionConverter.ConvertO(__workflow_bodyuserId);
                     bodypropCount++;
                 }
 
-                if (bodyprojectId != null)
+                if (__workflow_bodyprojectId != null)
                 {
-                    body["project_id"] = ExpressionConverter.ConvertO(bodyprojectId);
+                    body["project_id"] = ExpressionConverter.ConvertO(__workflow_bodyprojectId);
                     bodypropCount++;
                 }
 
@@ -633,17 +609,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildOnTilkeeEventSigned))]
-        public IBodyWorkflowTrigger<JToken> OnTilkeeEventSigned([WorkflowExpression] Func<string> bodyuserId = null,[WorkflowExpression] Func<string> bodyprojectId = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> OnTilkeeEventSigned(Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodyprojectId = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildOnTilkeeEventSigned(WorkflowExpression<string> bodyuserId = null,WorkflowExpression<string> bodyprojectId = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
-            WorkflowExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: false);
+            var __workflow_bodyuserId = bodyuserId == null ? null : WorkflowExpression.Compile(bodyuserId);
+            WorkflowExpression.Validate(__workflow_bodyuserId, nameof(bodyuserId), required: false);
+            var __workflow_bodyprojectId = bodyprojectId == null ? null : WorkflowExpression.Compile(bodyprojectId);
+            WorkflowExpression.Validate(__workflow_bodyprojectId, nameof(bodyprojectId), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = "/notifications/token_signed";
@@ -656,15 +627,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
                 var bodypropCount = 0;
                 body["rule"] = "token_signed";
                 bodypropCount++;
-                if (bodyuserId != null)
+                if (__workflow_bodyuserId != null)
                 {
-                    body["user_id"] = ExpressionConverter.ConvertO(bodyuserId);
+                    body["user_id"] = ExpressionConverter.ConvertO(__workflow_bodyuserId);
                     bodypropCount++;
                 }
 
-                if (bodyprojectId != null)
+                if (__workflow_bodyprojectId != null)
                 {
-                    body["project_id"] = ExpressionConverter.ConvertO(bodyprojectId);
+                    body["project_id"] = ExpressionConverter.ConvertO(__workflow_bodyprojectId);
                     bodypropCount++;
                 }
 

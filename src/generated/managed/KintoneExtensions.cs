@@ -1,28 +1,22 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class KintoneActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kintone")]
-        [WorkflowExpressionFactory(nameof(__BuildAddRecord))]
-        public IWorkflowAction AddRecord([WorkflowExpression] Func<string> requestBodyOfRecordappID, [WorkflowExpression] Func<object> requestBodyOfRecordrecord = null)
+        public IWorkflowAction AddRecord(Expression<Func<string>> requestBodyOfRecordappID, Expression<Func<object>> requestBodyOfRecordrecord = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildAddRecord(WorkflowExpression<string> requestBodyOfRecordappID, WorkflowExpression<object> requestBodyOfRecordrecord = null)
-        {
-            WorkflowExpression.Validate(requestBodyOfRecordappID, nameof(requestBodyOfRecordappID), required: true);
-            WorkflowExpression.Validate(requestBodyOfRecordrecord, nameof(requestBodyOfRecordrecord), required: false);
+            var __workflow_requestBodyOfRecordappID = requestBodyOfRecordappID == null ? null : WorkflowExpression.Compile(requestBodyOfRecordappID);
+            WorkflowExpression.Validate(__workflow_requestBodyOfRecordappID, nameof(requestBodyOfRecordappID), required: true);
+            var __workflow_requestBodyOfRecordrecord = requestBodyOfRecordrecord == null ? null : WorkflowExpression.Compile(requestBodyOfRecordrecord);
+            WorkflowExpression.Validate(__workflow_requestBodyOfRecordrecord, nameof(requestBodyOfRecordrecord), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/k/v1/record.json";
@@ -31,12 +25,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
                 var requestBodyOfRecord = new JObject();
                 var requestBodyOfRecordpropCount = 0;
                 requestBodyOfRecordpropCount++;
-                requestBodyOfRecord["app"] = ExpressionConverter.ConvertO(requestBodyOfRecordappID);
+                requestBodyOfRecord["app"] = ExpressionConverter.ConvertO(__workflow_requestBodyOfRecordappID);
                 requestBodyOfRecord["schemaType"] = "ACTION_POST_RECORD";
                 requestBodyOfRecordpropCount++;
-                if (requestBodyOfRecordrecord != null)
+                if (__workflow_requestBodyOfRecordrecord != null)
                 {
-                    requestBodyOfRecord["record"] = ExpressionConverter.ConvertO(requestBodyOfRecordrecord);
+                    requestBodyOfRecord["record"] = ExpressionConverter.ConvertO(__workflow_requestBodyOfRecordrecord);
                     requestBodyOfRecordpropCount++;
                 }
 
@@ -50,18 +44,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kintone")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateRecord))]
-        public IWorkflowAction UpdateRecord([WorkflowExpression] Func<string> requestBodyOfRecordappID, [WorkflowExpression] Func<string> requestBodyOfRecordrecordNumber, [WorkflowExpression] Func<object> requestBodyOfRecordrecord = null)
+        public IWorkflowAction UpdateRecord(Expression<Func<string>> requestBodyOfRecordappID, Expression<Func<string>> requestBodyOfRecordrecordNumber, Expression<Func<object>> requestBodyOfRecordrecord = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildUpdateRecord(WorkflowExpression<string> requestBodyOfRecordappID, WorkflowExpression<string> requestBodyOfRecordrecordNumber, WorkflowExpression<object> requestBodyOfRecordrecord = null)
-        {
-            WorkflowExpression.Validate(requestBodyOfRecordappID, nameof(requestBodyOfRecordappID), required: true);
-            WorkflowExpression.Validate(requestBodyOfRecordrecordNumber, nameof(requestBodyOfRecordrecordNumber), required: true);
-            WorkflowExpression.Validate(requestBodyOfRecordrecord, nameof(requestBodyOfRecordrecord), required: false);
+            var __workflow_requestBodyOfRecordappID = requestBodyOfRecordappID == null ? null : WorkflowExpression.Compile(requestBodyOfRecordappID);
+            WorkflowExpression.Validate(__workflow_requestBodyOfRecordappID, nameof(requestBodyOfRecordappID), required: true);
+            var __workflow_requestBodyOfRecordrecordNumber = requestBodyOfRecordrecordNumber == null ? null : WorkflowExpression.Compile(requestBodyOfRecordrecordNumber);
+            WorkflowExpression.Validate(__workflow_requestBodyOfRecordrecordNumber, nameof(requestBodyOfRecordrecordNumber), required: true);
+            var __workflow_requestBodyOfRecordrecord = requestBodyOfRecordrecord == null ? null : WorkflowExpression.Compile(requestBodyOfRecordrecord);
+            WorkflowExpression.Validate(__workflow_requestBodyOfRecordrecord, nameof(requestBodyOfRecordrecord), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/k/v1/record.json";
@@ -70,14 +60,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
                 var requestBodyOfRecord = new JObject();
                 var requestBodyOfRecordpropCount = 0;
                 requestBodyOfRecordpropCount++;
-                requestBodyOfRecord["app"] = ExpressionConverter.ConvertO(requestBodyOfRecordappID);
+                requestBodyOfRecord["app"] = ExpressionConverter.ConvertO(__workflow_requestBodyOfRecordappID);
                 requestBodyOfRecordpropCount++;
-                requestBodyOfRecord["id"] = ExpressionConverter.ConvertO(requestBodyOfRecordrecordNumber);
+                requestBodyOfRecord["id"] = ExpressionConverter.ConvertO(__workflow_requestBodyOfRecordrecordNumber);
                 requestBodyOfRecord["schemaType"] = "ACTION_PUT_RECORD";
                 requestBodyOfRecordpropCount++;
-                if (requestBodyOfRecordrecord != null)
+                if (__workflow_requestBodyOfRecordrecord != null)
                 {
-                    requestBodyOfRecord["record"] = ExpressionConverter.ConvertO(requestBodyOfRecordrecord);
+                    requestBodyOfRecord["record"] = ExpressionConverter.ConvertO(__workflow_requestBodyOfRecordrecord);
                     requestBodyOfRecordpropCount++;
                 }
 
@@ -93,17 +83,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
 
     public class KintoneTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildWebhookTrigger))]
-        public IWorkflowTrigger WebhookTrigger([WorkflowExpression] Func<string> requestBodyOfWebhookappID,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WebhookTrigger(Expression<Func<string>> requestBodyOfWebhookappID, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildWebhookTrigger(WorkflowExpression<string> requestBodyOfWebhookappID,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(requestBodyOfWebhookappID, nameof(requestBodyOfWebhookappID), required: true);
+            var __workflow_requestBodyOfWebhookappID = requestBodyOfWebhookappID == null ? null : WorkflowExpression.Compile(requestBodyOfWebhookappID);
+            WorkflowExpression.Validate(__workflow_requestBodyOfWebhookappID, nameof(requestBodyOfWebhookappID), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/k/integration/v1/preview/app/webhook.json";
@@ -112,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
                 var requestBodyOfWebhook = new JObject();
                 var requestBodyOfWebhookpropCount = 0;
                 requestBodyOfWebhookpropCount++;
-                requestBodyOfWebhook["app"] = ExpressionConverter.ConvertO(requestBodyOfWebhookappID);
+                requestBodyOfWebhook["app"] = ExpressionConverter.ConvertO(__workflow_requestBodyOfWebhookappID);
                 requestBodyOfWebhook["url"] = "#{listCallbackUrl()}";
                 requestBodyOfWebhookpropCount++;
                 requestBodyOfWebhook["type"] = "ADD_RECORD";
@@ -130,16 +113,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildAddWebhookForUpdatingRecord))]
-        public IWorkflowTrigger AddWebhookForUpdatingRecord([WorkflowExpression] Func<string> requestBodyOfWebhookappID,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger AddWebhookForUpdatingRecord(Expression<Func<string>> requestBodyOfWebhookappID, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildAddWebhookForUpdatingRecord(WorkflowExpression<string> requestBodyOfWebhookappID,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(requestBodyOfWebhookappID, nameof(requestBodyOfWebhookappID), required: true);
+            var __workflow_requestBodyOfWebhookappID = requestBodyOfWebhookappID == null ? null : WorkflowExpression.Compile(requestBodyOfWebhookappID);
+            WorkflowExpression.Validate(__workflow_requestBodyOfWebhookappID, nameof(requestBodyOfWebhookappID), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/k/integration/v1/preview/app/webhook/update_record.json";
@@ -148,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
                 var requestBodyOfWebhook = new JObject();
                 var requestBodyOfWebhookpropCount = 0;
                 requestBodyOfWebhookpropCount++;
-                requestBodyOfWebhook["app"] = ExpressionConverter.ConvertO(requestBodyOfWebhookappID);
+                requestBodyOfWebhook["app"] = ExpressionConverter.ConvertO(__workflow_requestBodyOfWebhookappID);
                 requestBodyOfWebhook["url"] = "#{listCallbackUrl()}";
                 requestBodyOfWebhookpropCount++;
                 requestBodyOfWebhook["description"] = "Added by Microsoft Flow. Settings should not be changed.";
@@ -164,16 +141,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildAddWebhookForDeletingRecord))]
-        public IWorkflowTrigger AddWebhookForDeletingRecord([WorkflowExpression] Func<string> requestBodyOfWebhookappID,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger AddWebhookForDeletingRecord(Expression<Func<string>> requestBodyOfWebhookappID, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildAddWebhookForDeletingRecord(WorkflowExpression<string> requestBodyOfWebhookappID,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(requestBodyOfWebhookappID, nameof(requestBodyOfWebhookappID), required: true);
+            var __workflow_requestBodyOfWebhookappID = requestBodyOfWebhookappID == null ? null : WorkflowExpression.Compile(requestBodyOfWebhookappID);
+            WorkflowExpression.Validate(__workflow_requestBodyOfWebhookappID, nameof(requestBodyOfWebhookappID), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/k/integration/v1/preview/app/webhook/delete_record.json";
@@ -182,7 +153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
                 var requestBodyOfWebhook = new JObject();
                 var requestBodyOfWebhookpropCount = 0;
                 requestBodyOfWebhookpropCount++;
-                requestBodyOfWebhook["app"] = ExpressionConverter.ConvertO(requestBodyOfWebhookappID);
+                requestBodyOfWebhook["app"] = ExpressionConverter.ConvertO(__workflow_requestBodyOfWebhookappID);
                 requestBodyOfWebhook["url"] = "#{listCallbackUrl()}";
                 requestBodyOfWebhookpropCount++;
                 requestBodyOfWebhook["description"] = "Added by Microsoft Flow. Settings should not be changed.";
@@ -198,16 +169,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildAddWebhookForAddingRecordComment))]
-        public IWorkflowTrigger AddWebhookForAddingRecordComment([WorkflowExpression] Func<string> requestBodyOfWebhookappID,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger AddWebhookForAddingRecordComment(Expression<Func<string>> requestBodyOfWebhookappID, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildAddWebhookForAddingRecordComment(WorkflowExpression<string> requestBodyOfWebhookappID,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(requestBodyOfWebhookappID, nameof(requestBodyOfWebhookappID), required: true);
+            var __workflow_requestBodyOfWebhookappID = requestBodyOfWebhookappID == null ? null : WorkflowExpression.Compile(requestBodyOfWebhookappID);
+            WorkflowExpression.Validate(__workflow_requestBodyOfWebhookappID, nameof(requestBodyOfWebhookappID), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/k/integration/v1/preview/app/webhook/add_record_comment.json";
@@ -216,7 +181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
                 var requestBodyOfWebhook = new JObject();
                 var requestBodyOfWebhookpropCount = 0;
                 requestBodyOfWebhookpropCount++;
-                requestBodyOfWebhook["app"] = ExpressionConverter.ConvertO(requestBodyOfWebhookappID);
+                requestBodyOfWebhook["app"] = ExpressionConverter.ConvertO(__workflow_requestBodyOfWebhookappID);
                 requestBodyOfWebhook["url"] = "#{listCallbackUrl()}";
                 requestBodyOfWebhookpropCount++;
                 requestBodyOfWebhook["description"] = "Added by Microsoft Flow. Settings should not be changed.";
@@ -232,16 +197,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildAddWebhookForUpdatingStatus))]
-        public IWorkflowTrigger AddWebhookForUpdatingStatus([WorkflowExpression] Func<string> requestBodyOfWebhookappID,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger AddWebhookForUpdatingStatus(Expression<Func<string>> requestBodyOfWebhookappID, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildAddWebhookForUpdatingStatus(WorkflowExpression<string> requestBodyOfWebhookappID,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(requestBodyOfWebhookappID, nameof(requestBodyOfWebhookappID), required: true);
+            var __workflow_requestBodyOfWebhookappID = requestBodyOfWebhookappID == null ? null : WorkflowExpression.Compile(requestBodyOfWebhookappID);
+            WorkflowExpression.Validate(__workflow_requestBodyOfWebhookappID, nameof(requestBodyOfWebhookappID), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/k/integration/v1/preview/app/webhook/update_status.json";
@@ -250,7 +209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
                 var requestBodyOfWebhook = new JObject();
                 var requestBodyOfWebhookpropCount = 0;
                 requestBodyOfWebhookpropCount++;
-                requestBodyOfWebhook["app"] = ExpressionConverter.ConvertO(requestBodyOfWebhookappID);
+                requestBodyOfWebhook["app"] = ExpressionConverter.ConvertO(__workflow_requestBodyOfWebhookappID);
                 requestBodyOfWebhook["url"] = "#{listCallbackUrl()}";
                 requestBodyOfWebhookpropCount++;
                 requestBodyOfWebhook["description"] = "Added by Microsoft Flow. Settings should not be changed.";

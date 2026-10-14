@@ -1,36 +1,30 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usb4sap
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class Usb4sapActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usb4sap")]
-        [WorkflowExpressionFactory(nameof(__BuildGetCallExtractMetadata))]
-        public IWorkflowAction GetCallExtractMetadata([WorkflowExpression] Func<string> filter, [WorkflowExpression] Func<string> format = null)
+        public IWorkflowAction GetCallExtractMetadata(Expression<Func<string>> filter, Expression<Func<string>> format = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetCallExtractMetadata(WorkflowExpression<string> filter, WorkflowExpression<string> format = null)
-        {
-            WorkflowExpression.Validate(filter, nameof(filter), required: true);
-            WorkflowExpression.Validate(format, nameof(format), required: false);
+            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
+            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: true);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/sap/opu/odata/ECOS/OBJ2CLOUD_V2_SRV/ET_DatasetSet";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-                if (format != null)
-                    callPayload.Queries["$format"] = ExpressionConverter.Convert(format);
+                callPayload.Queries["$filter"] = ExpressionConverter.Convert(__workflow_filter);
+                if (__workflow_format != null)
+                    callPayload.Queries["$format"] = ExpressionConverter.Convert(__workflow_format);
                 return new ApiConnectionAction(callPayload);
             });
         }

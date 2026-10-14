@@ -1,12 +1,12 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Discordip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class DiscordipActions([ConnectionName] string connectionId)
     {
@@ -38,46 +38,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Discordip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "discordip")]
-        [WorkflowExpressionFactory(nameof(__BuildExecuteWebhook))]
-        public IBodyWorkflowAction<Webhook> ExecuteWebhook([WorkflowExpression] Func<string> webhookId, [WorkflowExpression] Func<string> webhookToken, [WorkflowExpression] Func<contentTypeInput> contentType = null, [WorkflowExpression] Func<string> bodycontent = null, [WorkflowExpression] Func<string> bodyusername = null, [WorkflowExpression] Func<string> bodyavatarURL = null)
+        public IBodyWorkflowAction<Webhook> ExecuteWebhook(Expression<Func<string>> webhookId, Expression<Func<string>> webhookToken, Expression<Func<contentTypeInput>> contentType = null, Expression<Func<string>> bodycontent = null, Expression<Func<string>> bodyusername = null, Expression<Func<string>> bodyavatarURL = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Webhook> __BuildExecuteWebhook(WorkflowExpression<string> webhookId, WorkflowExpression<string> webhookToken, WorkflowExpression<contentTypeInput> contentType = null, WorkflowExpression<string> bodycontent = null, WorkflowExpression<string> bodyusername = null, WorkflowExpression<string> bodyavatarURL = null)
-        {
-            WorkflowExpression.Validate(webhookId, nameof(webhookId), required: true);
-            WorkflowExpression.Validate(webhookToken, nameof(webhookToken), required: true);
-            WorkflowExpression.Validate(contentType, nameof(contentType), required: false);
-            WorkflowExpression.Validate(bodycontent, nameof(bodycontent), required: false);
-            WorkflowExpression.Validate(bodyusername, nameof(bodyusername), required: false);
-            WorkflowExpression.Validate(bodyavatarURL, nameof(bodyavatarURL), required: false);
+            var __workflow_webhookId = webhookId == null ? null : WorkflowExpression.Compile(webhookId);
+            WorkflowExpression.Validate(__workflow_webhookId, nameof(webhookId), required: true);
+            var __workflow_webhookToken = webhookToken == null ? null : WorkflowExpression.Compile(webhookToken);
+            WorkflowExpression.Validate(__workflow_webhookToken, nameof(webhookToken), required: true);
+            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
+            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
+            var __workflow_bodycontent = bodycontent == null ? null : WorkflowExpression.Compile(bodycontent);
+            WorkflowExpression.Validate(__workflow_bodycontent, nameof(bodycontent), required: false);
+            var __workflow_bodyusername = bodyusername == null ? null : WorkflowExpression.Compile(bodyusername);
+            WorkflowExpression.Validate(__workflow_bodyusername, nameof(bodyusername), required: false);
+            var __workflow_bodyavatarURL = bodyavatarURL == null ? null : WorkflowExpression.Compile(bodyavatarURL);
+            WorkflowExpression.Validate(__workflow_bodyavatarURL, nameof(bodyavatarURL), required: false);
             return new DeferredBodyAction<Webhook>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v9/webhooks/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(webhookId, 1), ExpressionConverter.ConvertWithUrlEncoding(webhookToken, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v9/webhooks/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_webhookId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_webhookToken, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["content-type"] = Convert.ToString("application/json");
-                if (contentType != null)
-                    callPayload.Headers["content-type"] = ExpressionConverter.Convert(contentType);
+                if (__workflow_contentType != null)
+                    callPayload.Headers["content-type"] = ExpressionConverter.Convert(__workflow_contentType);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodycontent != null)
+                if (__workflow_bodycontent != null)
                 {
-                    body["content"] = ExpressionConverter.ConvertO(bodycontent);
+                    body["content"] = ExpressionConverter.ConvertO(__workflow_bodycontent);
                     bodypropCount++;
                 }
 
-                if (bodyusername != null)
+                if (__workflow_bodyusername != null)
                 {
-                    body["username"] = ExpressionConverter.ConvertO(bodyusername);
+                    body["username"] = ExpressionConverter.ConvertO(__workflow_bodyusername);
                     bodypropCount++;
                 }
 
-                if (bodyavatarURL != null)
+                if (__workflow_bodyavatarURL != null)
                 {
-                    body["avatar-url"] = ExpressionConverter.ConvertO(bodyavatarURL);
+                    body["avatar-url"] = ExpressionConverter.ConvertO(__workflow_bodyavatarURL);
                     bodypropCount++;
                 }
 

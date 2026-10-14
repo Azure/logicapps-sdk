@@ -1,60 +1,59 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kyndrylmainframe
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class KyndrylmainframeActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kyndrylmainframe")]
-        [WorkflowExpressionFactory(nameof(__BuildGetPolicy))]
-        public IBodyWorkflowAction<GetPolicyResponse200> GetPolicy([WorkflowExpression] Func<string> cUSTOMERNUMBER)
+        public IBodyWorkflowAction<GetPolicyResponse200> GetPolicy(Expression<Func<string>> cUSTOMERNUMBER)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetPolicyResponse200> __BuildGetPolicy(WorkflowExpression<string> cUSTOMERNUMBER)
-        {
-            WorkflowExpression.Validate(cUSTOMERNUMBER, nameof(cUSTOMERNUMBER), required: true);
+            var __workflow_cUSTOMERNUMBER = cUSTOMERNUMBER == null ? null : WorkflowExpression.Compile(cUSTOMERNUMBER);
+            WorkflowExpression.Validate(__workflow_cUSTOMERNUMBER, nameof(cUSTOMERNUMBER), required: true);
             return new DeferredBodyAction<GetPolicyResponse200>(() =>
             {
                 var apiCallPath = "/cb12-policy/getpolicy";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["CUSTOMERNUMBER"] = ExpressionConverter.Convert(cUSTOMERNUMBER);
+                callPayload.Queries["CUSTOMERNUMBER"] = ExpressionConverter.Convert(__workflow_cUSTOMERNUMBER);
                 return new ApiConnectionAction<GetPolicyResponse200>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kyndrylmainframe")]
-        [WorkflowExpressionFactory(nameof(__BuildPostCustomerDetailsupd))]
-        public IBodyWorkflowAction<PostCustomerdetailsupdResponse200> PostCustomerDetailsupd([WorkflowExpression] Func<int> postCustomerdetailsupdRequestlGCMAREAcARETURNCODE = null, [WorkflowExpression] Func<int> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERNUM = null, [WorkflowExpression] Func<string> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAFIRSTNAME = null, [WorkflowExpression] Func<string> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcALASTNAME = null, [WorkflowExpression] Func<string> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcADOB = null, [WorkflowExpression] Func<string> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAHOUSENAME = null, [WorkflowExpression] Func<string> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAHOUSENUM = null, [WorkflowExpression] Func<string> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPOSTCODE = null, [WorkflowExpression] Func<int> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcANUMPOLICIES = null, [WorkflowExpression] Func<string> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPHONEMOBILE = null, [WorkflowExpression] Func<string> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPHONEHOME = null, [WorkflowExpression] Func<string> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAEMAILADDRESS = null, [WorkflowExpression] Func<string> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPOLICYDATA = null)
+        public IBodyWorkflowAction<PostCustomerdetailsupdResponse200> PostCustomerDetailsupd(Expression<Func<int>> postCustomerdetailsupdRequestlGCMAREAcARETURNCODE = null, Expression<Func<int>> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERNUM = null, Expression<Func<string>> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAFIRSTNAME = null, Expression<Func<string>> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcALASTNAME = null, Expression<Func<string>> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcADOB = null, Expression<Func<string>> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAHOUSENAME = null, Expression<Func<string>> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAHOUSENUM = null, Expression<Func<string>> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPOSTCODE = null, Expression<Func<int>> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcANUMPOLICIES = null, Expression<Func<string>> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPHONEMOBILE = null, Expression<Func<string>> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPHONEHOME = null, Expression<Func<string>> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAEMAILADDRESS = null, Expression<Func<string>> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPOLICYDATA = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PostCustomerdetailsupdResponse200> __BuildPostCustomerDetailsupd(WorkflowExpression<int> postCustomerdetailsupdRequestlGCMAREAcARETURNCODE = null, WorkflowExpression<int> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERNUM = null, WorkflowExpression<string> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAFIRSTNAME = null, WorkflowExpression<string> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcALASTNAME = null, WorkflowExpression<string> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcADOB = null, WorkflowExpression<string> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAHOUSENAME = null, WorkflowExpression<string> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAHOUSENUM = null, WorkflowExpression<string> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPOSTCODE = null, WorkflowExpression<int> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcANUMPOLICIES = null, WorkflowExpression<string> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPHONEMOBILE = null, WorkflowExpression<string> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPHONEHOME = null, WorkflowExpression<string> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAEMAILADDRESS = null, WorkflowExpression<string> postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPOLICYDATA = null)
-        {
-            WorkflowExpression.Validate(postCustomerdetailsupdRequestlGCMAREAcARETURNCODE, nameof(postCustomerdetailsupdRequestlGCMAREAcARETURNCODE), required: false);
-            WorkflowExpression.Validate(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERNUM, nameof(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERNUM), required: false);
-            WorkflowExpression.Validate(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAFIRSTNAME, nameof(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAFIRSTNAME), required: false);
-            WorkflowExpression.Validate(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcALASTNAME, nameof(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcALASTNAME), required: false);
-            WorkflowExpression.Validate(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcADOB, nameof(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcADOB), required: false);
-            WorkflowExpression.Validate(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAHOUSENAME, nameof(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAHOUSENAME), required: false);
-            WorkflowExpression.Validate(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAHOUSENUM, nameof(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAHOUSENUM), required: false);
-            WorkflowExpression.Validate(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPOSTCODE, nameof(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPOSTCODE), required: false);
-            WorkflowExpression.Validate(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcANUMPOLICIES, nameof(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcANUMPOLICIES), required: false);
-            WorkflowExpression.Validate(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPHONEMOBILE, nameof(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPHONEMOBILE), required: false);
-            WorkflowExpression.Validate(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPHONEHOME, nameof(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPHONEHOME), required: false);
-            WorkflowExpression.Validate(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAEMAILADDRESS, nameof(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAEMAILADDRESS), required: false);
-            WorkflowExpression.Validate(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPOLICYDATA, nameof(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPOLICYDATA), required: false);
+            var __workflow_postCustomerdetailsupdRequestlGCMAREAcARETURNCODE = postCustomerdetailsupdRequestlGCMAREAcARETURNCODE == null ? null : WorkflowExpression.Compile(postCustomerdetailsupdRequestlGCMAREAcARETURNCODE);
+            WorkflowExpression.Validate(__workflow_postCustomerdetailsupdRequestlGCMAREAcARETURNCODE, nameof(postCustomerdetailsupdRequestlGCMAREAcARETURNCODE), required: false);
+            var __workflow_postCustomerdetailsupdRequestlGCMAREAcACUSTOMERNUM = postCustomerdetailsupdRequestlGCMAREAcACUSTOMERNUM == null ? null : WorkflowExpression.Compile(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERNUM);
+            WorkflowExpression.Validate(__workflow_postCustomerdetailsupdRequestlGCMAREAcACUSTOMERNUM, nameof(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERNUM), required: false);
+            var __workflow_postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAFIRSTNAME = postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAFIRSTNAME == null ? null : WorkflowExpression.Compile(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAFIRSTNAME);
+            WorkflowExpression.Validate(__workflow_postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAFIRSTNAME, nameof(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAFIRSTNAME), required: false);
+            var __workflow_postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcALASTNAME = postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcALASTNAME == null ? null : WorkflowExpression.Compile(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcALASTNAME);
+            WorkflowExpression.Validate(__workflow_postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcALASTNAME, nameof(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcALASTNAME), required: false);
+            var __workflow_postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcADOB = postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcADOB == null ? null : WorkflowExpression.Compile(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcADOB);
+            WorkflowExpression.Validate(__workflow_postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcADOB, nameof(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcADOB), required: false);
+            var __workflow_postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAHOUSENAME = postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAHOUSENAME == null ? null : WorkflowExpression.Compile(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAHOUSENAME);
+            WorkflowExpression.Validate(__workflow_postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAHOUSENAME, nameof(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAHOUSENAME), required: false);
+            var __workflow_postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAHOUSENUM = postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAHOUSENUM == null ? null : WorkflowExpression.Compile(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAHOUSENUM);
+            WorkflowExpression.Validate(__workflow_postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAHOUSENUM, nameof(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAHOUSENUM), required: false);
+            var __workflow_postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPOSTCODE = postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPOSTCODE == null ? null : WorkflowExpression.Compile(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPOSTCODE);
+            WorkflowExpression.Validate(__workflow_postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPOSTCODE, nameof(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPOSTCODE), required: false);
+            var __workflow_postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcANUMPOLICIES = postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcANUMPOLICIES == null ? null : WorkflowExpression.Compile(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcANUMPOLICIES);
+            WorkflowExpression.Validate(__workflow_postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcANUMPOLICIES, nameof(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcANUMPOLICIES), required: false);
+            var __workflow_postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPHONEMOBILE = postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPHONEMOBILE == null ? null : WorkflowExpression.Compile(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPHONEMOBILE);
+            WorkflowExpression.Validate(__workflow_postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPHONEMOBILE, nameof(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPHONEMOBILE), required: false);
+            var __workflow_postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPHONEHOME = postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPHONEHOME == null ? null : WorkflowExpression.Compile(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPHONEHOME);
+            WorkflowExpression.Validate(__workflow_postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPHONEHOME, nameof(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPHONEHOME), required: false);
+            var __workflow_postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAEMAILADDRESS = postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAEMAILADDRESS == null ? null : WorkflowExpression.Compile(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAEMAILADDRESS);
+            WorkflowExpression.Validate(__workflow_postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAEMAILADDRESS, nameof(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAEMAILADDRESS), required: false);
+            var __workflow_postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPOLICYDATA = postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPOLICYDATA == null ? null : WorkflowExpression.Compile(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPOLICYDATA);
+            WorkflowExpression.Validate(__workflow_postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPOLICYDATA, nameof(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPOLICYDATA), required: false);
             return new DeferredBodyAction<PostCustomerdetailsupdResponse200>(() =>
             {
                 var apiCallPath = "/customernumber/Custdetailadd";
@@ -64,83 +63,83 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kyndrylmainframe
                 var postCustomerdetailsupdRequestpropCount = 0;
                 var lGCMAREAObject = new JObject();
                 var lGCMAREAObjectpropCount = 0;
-                if (postCustomerdetailsupdRequestlGCMAREAcARETURNCODE != null)
+                if (__workflow_postCustomerdetailsupdRequestlGCMAREAcARETURNCODE != null)
                 {
-                    lGCMAREAObject["CA_RETURN_CODE"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestlGCMAREAcARETURNCODE);
+                    lGCMAREAObject["CA_RETURN_CODE"] = ExpressionConverter.ConvertO(__workflow_postCustomerdetailsupdRequestlGCMAREAcARETURNCODE);
                     lGCMAREAObjectpropCount++;
                 }
 
-                if (postCustomerdetailsupdRequestlGCMAREAcACUSTOMERNUM != null)
+                if (__workflow_postCustomerdetailsupdRequestlGCMAREAcACUSTOMERNUM != null)
                 {
-                    lGCMAREAObject["CA_CUSTOMER_NUM"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERNUM);
+                    lGCMAREAObject["CA_CUSTOMER_NUM"] = ExpressionConverter.ConvertO(__workflow_postCustomerdetailsupdRequestlGCMAREAcACUSTOMERNUM);
                     lGCMAREAObjectpropCount++;
                 }
 
                 var cACUSTOMERREQUESTObject = new JObject();
                 var cACUSTOMERREQUESTObjectpropCount = 0;
-                if (postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAFIRSTNAME != null)
+                if (__workflow_postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAFIRSTNAME != null)
                 {
-                    cACUSTOMERREQUESTObject["CA_FIRST_NAME"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAFIRSTNAME);
+                    cACUSTOMERREQUESTObject["CA_FIRST_NAME"] = ExpressionConverter.ConvertO(__workflow_postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAFIRSTNAME);
                     cACUSTOMERREQUESTObjectpropCount++;
                 }
 
-                if (postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcALASTNAME != null)
+                if (__workflow_postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcALASTNAME != null)
                 {
-                    cACUSTOMERREQUESTObject["CA_LAST_NAME"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcALASTNAME);
+                    cACUSTOMERREQUESTObject["CA_LAST_NAME"] = ExpressionConverter.ConvertO(__workflow_postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcALASTNAME);
                     cACUSTOMERREQUESTObjectpropCount++;
                 }
 
-                if (postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcADOB != null)
+                if (__workflow_postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcADOB != null)
                 {
-                    cACUSTOMERREQUESTObject["CA_DOB"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcADOB);
+                    cACUSTOMERREQUESTObject["CA_DOB"] = ExpressionConverter.ConvertO(__workflow_postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcADOB);
                     cACUSTOMERREQUESTObjectpropCount++;
                 }
 
-                if (postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAHOUSENAME != null)
+                if (__workflow_postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAHOUSENAME != null)
                 {
-                    cACUSTOMERREQUESTObject["CA_HOUSE_NAME"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAHOUSENAME);
+                    cACUSTOMERREQUESTObject["CA_HOUSE_NAME"] = ExpressionConverter.ConvertO(__workflow_postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAHOUSENAME);
                     cACUSTOMERREQUESTObjectpropCount++;
                 }
 
-                if (postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAHOUSENUM != null)
+                if (__workflow_postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAHOUSENUM != null)
                 {
-                    cACUSTOMERREQUESTObject["CA_HOUSE_NUM"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAHOUSENUM);
+                    cACUSTOMERREQUESTObject["CA_HOUSE_NUM"] = ExpressionConverter.ConvertO(__workflow_postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAHOUSENUM);
                     cACUSTOMERREQUESTObjectpropCount++;
                 }
 
-                if (postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPOSTCODE != null)
+                if (__workflow_postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPOSTCODE != null)
                 {
-                    cACUSTOMERREQUESTObject["CA_POSTCODE"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPOSTCODE);
+                    cACUSTOMERREQUESTObject["CA_POSTCODE"] = ExpressionConverter.ConvertO(__workflow_postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPOSTCODE);
                     cACUSTOMERREQUESTObjectpropCount++;
                 }
 
-                if (postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcANUMPOLICIES != null)
+                if (__workflow_postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcANUMPOLICIES != null)
                 {
-                    cACUSTOMERREQUESTObject["CA_NUM_POLICIES"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcANUMPOLICIES);
+                    cACUSTOMERREQUESTObject["CA_NUM_POLICIES"] = ExpressionConverter.ConvertO(__workflow_postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcANUMPOLICIES);
                     cACUSTOMERREQUESTObjectpropCount++;
                 }
 
-                if (postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPHONEMOBILE != null)
+                if (__workflow_postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPHONEMOBILE != null)
                 {
-                    cACUSTOMERREQUESTObject["CA_PHONE_MOBILE"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPHONEMOBILE);
+                    cACUSTOMERREQUESTObject["CA_PHONE_MOBILE"] = ExpressionConverter.ConvertO(__workflow_postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPHONEMOBILE);
                     cACUSTOMERREQUESTObjectpropCount++;
                 }
 
-                if (postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPHONEHOME != null)
+                if (__workflow_postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPHONEHOME != null)
                 {
-                    cACUSTOMERREQUESTObject["CA_PHONE_HOME"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPHONEHOME);
+                    cACUSTOMERREQUESTObject["CA_PHONE_HOME"] = ExpressionConverter.ConvertO(__workflow_postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPHONEHOME);
                     cACUSTOMERREQUESTObjectpropCount++;
                 }
 
-                if (postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAEMAILADDRESS != null)
+                if (__workflow_postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAEMAILADDRESS != null)
                 {
-                    cACUSTOMERREQUESTObject["CA_EMAIL_ADDRESS"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAEMAILADDRESS);
+                    cACUSTOMERREQUESTObject["CA_EMAIL_ADDRESS"] = ExpressionConverter.ConvertO(__workflow_postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAEMAILADDRESS);
                     cACUSTOMERREQUESTObjectpropCount++;
                 }
 
-                if (postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPOLICYDATA != null)
+                if (__workflow_postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPOLICYDATA != null)
                 {
-                    cACUSTOMERREQUESTObject["CA_POLICY_DATA"] = ExpressionConverter.ConvertO(postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPOLICYDATA);
+                    cACUSTOMERREQUESTObject["CA_POLICY_DATA"] = ExpressionConverter.ConvertO(__workflow_postCustomerdetailsupdRequestlGCMAREAcACUSTOMERREQUESTcAPOLICYDATA);
                     cACUSTOMERREQUESTObjectpropCount++;
                 }
 
@@ -166,102 +165,108 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kyndrylmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kyndrylmainframe")]
-        [WorkflowExpressionFactory(nameof(__BuildPutCustomerDetail))]
-        public IBodyWorkflowAction<PutCustomerdetailResponse200> PutCustomerDetail([WorkflowExpression] Func<string> num, [WorkflowExpression] Func<string> firstname, [WorkflowExpression] Func<int> bodylGCMAREAcARETURNCODE = null, [WorkflowExpression] Func<string> bodylGCMAREAcACUSTOMERREQUESTcALASTNAME = null, [WorkflowExpression] Func<string> bodylGCMAREAcACUSTOMERREQUESTcADOB = null, [WorkflowExpression] Func<string> bodylGCMAREAcACUSTOMERREQUESTcAHOUSENAME = null, [WorkflowExpression] Func<string> bodylGCMAREAcACUSTOMERREQUESTcAHOUSENUM = null, [WorkflowExpression] Func<string> bodylGCMAREAcACUSTOMERREQUESTcAPOSTCODE = null, [WorkflowExpression] Func<int> bodylGCMAREAcACUSTOMERREQUESTcANUMPOLICIES = null, [WorkflowExpression] Func<string> bodylGCMAREAcACUSTOMERREQUESTcAPHONEMOBILE = null, [WorkflowExpression] Func<string> bodylGCMAREAcACUSTOMERREQUESTcAPHONEHOME = null, [WorkflowExpression] Func<string> bodylGCMAREAcACUSTOMERREQUESTcAEMAILADDRESS = null, [WorkflowExpression] Func<string> bodylGCMAREAcACUSTOMERREQUESTcAPOLICYDATA = null)
+        public IBodyWorkflowAction<PutCustomerdetailResponse200> PutCustomerDetail(Expression<Func<string>> num, Expression<Func<string>> firstname, Expression<Func<int>> bodylGCMAREAcARETURNCODE = null, Expression<Func<string>> bodylGCMAREAcACUSTOMERREQUESTcALASTNAME = null, Expression<Func<string>> bodylGCMAREAcACUSTOMERREQUESTcADOB = null, Expression<Func<string>> bodylGCMAREAcACUSTOMERREQUESTcAHOUSENAME = null, Expression<Func<string>> bodylGCMAREAcACUSTOMERREQUESTcAHOUSENUM = null, Expression<Func<string>> bodylGCMAREAcACUSTOMERREQUESTcAPOSTCODE = null, Expression<Func<int>> bodylGCMAREAcACUSTOMERREQUESTcANUMPOLICIES = null, Expression<Func<string>> bodylGCMAREAcACUSTOMERREQUESTcAPHONEMOBILE = null, Expression<Func<string>> bodylGCMAREAcACUSTOMERREQUESTcAPHONEHOME = null, Expression<Func<string>> bodylGCMAREAcACUSTOMERREQUESTcAEMAILADDRESS = null, Expression<Func<string>> bodylGCMAREAcACUSTOMERREQUESTcAPOLICYDATA = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PutCustomerdetailResponse200> __BuildPutCustomerDetail(WorkflowExpression<string> num, WorkflowExpression<string> firstname, WorkflowExpression<int> bodylGCMAREAcARETURNCODE = null, WorkflowExpression<string> bodylGCMAREAcACUSTOMERREQUESTcALASTNAME = null, WorkflowExpression<string> bodylGCMAREAcACUSTOMERREQUESTcADOB = null, WorkflowExpression<string> bodylGCMAREAcACUSTOMERREQUESTcAHOUSENAME = null, WorkflowExpression<string> bodylGCMAREAcACUSTOMERREQUESTcAHOUSENUM = null, WorkflowExpression<string> bodylGCMAREAcACUSTOMERREQUESTcAPOSTCODE = null, WorkflowExpression<int> bodylGCMAREAcACUSTOMERREQUESTcANUMPOLICIES = null, WorkflowExpression<string> bodylGCMAREAcACUSTOMERREQUESTcAPHONEMOBILE = null, WorkflowExpression<string> bodylGCMAREAcACUSTOMERREQUESTcAPHONEHOME = null, WorkflowExpression<string> bodylGCMAREAcACUSTOMERREQUESTcAEMAILADDRESS = null, WorkflowExpression<string> bodylGCMAREAcACUSTOMERREQUESTcAPOLICYDATA = null)
-        {
-            WorkflowExpression.Validate(num, nameof(num), required: true);
-            WorkflowExpression.Validate(firstname, nameof(firstname), required: true);
-            WorkflowExpression.Validate(bodylGCMAREAcARETURNCODE, nameof(bodylGCMAREAcARETURNCODE), required: false);
-            WorkflowExpression.Validate(bodylGCMAREAcACUSTOMERREQUESTcALASTNAME, nameof(bodylGCMAREAcACUSTOMERREQUESTcALASTNAME), required: false);
-            WorkflowExpression.Validate(bodylGCMAREAcACUSTOMERREQUESTcADOB, nameof(bodylGCMAREAcACUSTOMERREQUESTcADOB), required: false);
-            WorkflowExpression.Validate(bodylGCMAREAcACUSTOMERREQUESTcAHOUSENAME, nameof(bodylGCMAREAcACUSTOMERREQUESTcAHOUSENAME), required: false);
-            WorkflowExpression.Validate(bodylGCMAREAcACUSTOMERREQUESTcAHOUSENUM, nameof(bodylGCMAREAcACUSTOMERREQUESTcAHOUSENUM), required: false);
-            WorkflowExpression.Validate(bodylGCMAREAcACUSTOMERREQUESTcAPOSTCODE, nameof(bodylGCMAREAcACUSTOMERREQUESTcAPOSTCODE), required: false);
-            WorkflowExpression.Validate(bodylGCMAREAcACUSTOMERREQUESTcANUMPOLICIES, nameof(bodylGCMAREAcACUSTOMERREQUESTcANUMPOLICIES), required: false);
-            WorkflowExpression.Validate(bodylGCMAREAcACUSTOMERREQUESTcAPHONEMOBILE, nameof(bodylGCMAREAcACUSTOMERREQUESTcAPHONEMOBILE), required: false);
-            WorkflowExpression.Validate(bodylGCMAREAcACUSTOMERREQUESTcAPHONEHOME, nameof(bodylGCMAREAcACUSTOMERREQUESTcAPHONEHOME), required: false);
-            WorkflowExpression.Validate(bodylGCMAREAcACUSTOMERREQUESTcAEMAILADDRESS, nameof(bodylGCMAREAcACUSTOMERREQUESTcAEMAILADDRESS), required: false);
-            WorkflowExpression.Validate(bodylGCMAREAcACUSTOMERREQUESTcAPOLICYDATA, nameof(bodylGCMAREAcACUSTOMERREQUESTcAPOLICYDATA), required: false);
+            var __workflow_num = num == null ? null : WorkflowExpression.Compile(num);
+            WorkflowExpression.Validate(__workflow_num, nameof(num), required: true);
+            var __workflow_firstname = firstname == null ? null : WorkflowExpression.Compile(firstname);
+            WorkflowExpression.Validate(__workflow_firstname, nameof(firstname), required: true);
+            var __workflow_bodylGCMAREAcARETURNCODE = bodylGCMAREAcARETURNCODE == null ? null : WorkflowExpression.Compile(bodylGCMAREAcARETURNCODE);
+            WorkflowExpression.Validate(__workflow_bodylGCMAREAcARETURNCODE, nameof(bodylGCMAREAcARETURNCODE), required: false);
+            var __workflow_bodylGCMAREAcACUSTOMERREQUESTcALASTNAME = bodylGCMAREAcACUSTOMERREQUESTcALASTNAME == null ? null : WorkflowExpression.Compile(bodylGCMAREAcACUSTOMERREQUESTcALASTNAME);
+            WorkflowExpression.Validate(__workflow_bodylGCMAREAcACUSTOMERREQUESTcALASTNAME, nameof(bodylGCMAREAcACUSTOMERREQUESTcALASTNAME), required: false);
+            var __workflow_bodylGCMAREAcACUSTOMERREQUESTcADOB = bodylGCMAREAcACUSTOMERREQUESTcADOB == null ? null : WorkflowExpression.Compile(bodylGCMAREAcACUSTOMERREQUESTcADOB);
+            WorkflowExpression.Validate(__workflow_bodylGCMAREAcACUSTOMERREQUESTcADOB, nameof(bodylGCMAREAcACUSTOMERREQUESTcADOB), required: false);
+            var __workflow_bodylGCMAREAcACUSTOMERREQUESTcAHOUSENAME = bodylGCMAREAcACUSTOMERREQUESTcAHOUSENAME == null ? null : WorkflowExpression.Compile(bodylGCMAREAcACUSTOMERREQUESTcAHOUSENAME);
+            WorkflowExpression.Validate(__workflow_bodylGCMAREAcACUSTOMERREQUESTcAHOUSENAME, nameof(bodylGCMAREAcACUSTOMERREQUESTcAHOUSENAME), required: false);
+            var __workflow_bodylGCMAREAcACUSTOMERREQUESTcAHOUSENUM = bodylGCMAREAcACUSTOMERREQUESTcAHOUSENUM == null ? null : WorkflowExpression.Compile(bodylGCMAREAcACUSTOMERREQUESTcAHOUSENUM);
+            WorkflowExpression.Validate(__workflow_bodylGCMAREAcACUSTOMERREQUESTcAHOUSENUM, nameof(bodylGCMAREAcACUSTOMERREQUESTcAHOUSENUM), required: false);
+            var __workflow_bodylGCMAREAcACUSTOMERREQUESTcAPOSTCODE = bodylGCMAREAcACUSTOMERREQUESTcAPOSTCODE == null ? null : WorkflowExpression.Compile(bodylGCMAREAcACUSTOMERREQUESTcAPOSTCODE);
+            WorkflowExpression.Validate(__workflow_bodylGCMAREAcACUSTOMERREQUESTcAPOSTCODE, nameof(bodylGCMAREAcACUSTOMERREQUESTcAPOSTCODE), required: false);
+            var __workflow_bodylGCMAREAcACUSTOMERREQUESTcANUMPOLICIES = bodylGCMAREAcACUSTOMERREQUESTcANUMPOLICIES == null ? null : WorkflowExpression.Compile(bodylGCMAREAcACUSTOMERREQUESTcANUMPOLICIES);
+            WorkflowExpression.Validate(__workflow_bodylGCMAREAcACUSTOMERREQUESTcANUMPOLICIES, nameof(bodylGCMAREAcACUSTOMERREQUESTcANUMPOLICIES), required: false);
+            var __workflow_bodylGCMAREAcACUSTOMERREQUESTcAPHONEMOBILE = bodylGCMAREAcACUSTOMERREQUESTcAPHONEMOBILE == null ? null : WorkflowExpression.Compile(bodylGCMAREAcACUSTOMERREQUESTcAPHONEMOBILE);
+            WorkflowExpression.Validate(__workflow_bodylGCMAREAcACUSTOMERREQUESTcAPHONEMOBILE, nameof(bodylGCMAREAcACUSTOMERREQUESTcAPHONEMOBILE), required: false);
+            var __workflow_bodylGCMAREAcACUSTOMERREQUESTcAPHONEHOME = bodylGCMAREAcACUSTOMERREQUESTcAPHONEHOME == null ? null : WorkflowExpression.Compile(bodylGCMAREAcACUSTOMERREQUESTcAPHONEHOME);
+            WorkflowExpression.Validate(__workflow_bodylGCMAREAcACUSTOMERREQUESTcAPHONEHOME, nameof(bodylGCMAREAcACUSTOMERREQUESTcAPHONEHOME), required: false);
+            var __workflow_bodylGCMAREAcACUSTOMERREQUESTcAEMAILADDRESS = bodylGCMAREAcACUSTOMERREQUESTcAEMAILADDRESS == null ? null : WorkflowExpression.Compile(bodylGCMAREAcACUSTOMERREQUESTcAEMAILADDRESS);
+            WorkflowExpression.Validate(__workflow_bodylGCMAREAcACUSTOMERREQUESTcAEMAILADDRESS, nameof(bodylGCMAREAcACUSTOMERREQUESTcAEMAILADDRESS), required: false);
+            var __workflow_bodylGCMAREAcACUSTOMERREQUESTcAPOLICYDATA = bodylGCMAREAcACUSTOMERREQUESTcAPOLICYDATA == null ? null : WorkflowExpression.Compile(bodylGCMAREAcACUSTOMERREQUESTcAPOLICYDATA);
+            WorkflowExpression.Validate(__workflow_bodylGCMAREAcACUSTOMERREQUESTcAPOLICYDATA, nameof(bodylGCMAREAcACUSTOMERREQUESTcAPOLICYDATA), required: false);
             return new DeferredBodyAction<PutCustomerdetailResponse200>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/customernumber/Custdetailupd/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(num, 1), ExpressionConverter.ConvertWithUrlEncoding(firstname, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/customernumber/Custdetailupd/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_num, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_firstname, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 var lGCMAREAObject = new JObject();
                 var lGCMAREAObjectpropCount = 0;
-                if (bodylGCMAREAcARETURNCODE != null)
+                if (__workflow_bodylGCMAREAcARETURNCODE != null)
                 {
-                    lGCMAREAObject["CA_RETURN_CODE"] = ExpressionConverter.ConvertO(bodylGCMAREAcARETURNCODE);
+                    lGCMAREAObject["CA_RETURN_CODE"] = ExpressionConverter.ConvertO(__workflow_bodylGCMAREAcARETURNCODE);
                     lGCMAREAObjectpropCount++;
                 }
 
                 var cACUSTOMERREQUESTObject = new JObject();
                 var cACUSTOMERREQUESTObjectpropCount = 0;
-                if (bodylGCMAREAcACUSTOMERREQUESTcALASTNAME != null)
+                if (__workflow_bodylGCMAREAcACUSTOMERREQUESTcALASTNAME != null)
                 {
-                    cACUSTOMERREQUESTObject["CA_LAST_NAME"] = ExpressionConverter.ConvertO(bodylGCMAREAcACUSTOMERREQUESTcALASTNAME);
+                    cACUSTOMERREQUESTObject["CA_LAST_NAME"] = ExpressionConverter.ConvertO(__workflow_bodylGCMAREAcACUSTOMERREQUESTcALASTNAME);
                     cACUSTOMERREQUESTObjectpropCount++;
                 }
 
-                if (bodylGCMAREAcACUSTOMERREQUESTcADOB != null)
+                if (__workflow_bodylGCMAREAcACUSTOMERREQUESTcADOB != null)
                 {
-                    cACUSTOMERREQUESTObject["CA_DOB"] = ExpressionConverter.ConvertO(bodylGCMAREAcACUSTOMERREQUESTcADOB);
+                    cACUSTOMERREQUESTObject["CA_DOB"] = ExpressionConverter.ConvertO(__workflow_bodylGCMAREAcACUSTOMERREQUESTcADOB);
                     cACUSTOMERREQUESTObjectpropCount++;
                 }
 
-                if (bodylGCMAREAcACUSTOMERREQUESTcAHOUSENAME != null)
+                if (__workflow_bodylGCMAREAcACUSTOMERREQUESTcAHOUSENAME != null)
                 {
-                    cACUSTOMERREQUESTObject["CA_HOUSE_NAME"] = ExpressionConverter.ConvertO(bodylGCMAREAcACUSTOMERREQUESTcAHOUSENAME);
+                    cACUSTOMERREQUESTObject["CA_HOUSE_NAME"] = ExpressionConverter.ConvertO(__workflow_bodylGCMAREAcACUSTOMERREQUESTcAHOUSENAME);
                     cACUSTOMERREQUESTObjectpropCount++;
                 }
 
-                if (bodylGCMAREAcACUSTOMERREQUESTcAHOUSENUM != null)
+                if (__workflow_bodylGCMAREAcACUSTOMERREQUESTcAHOUSENUM != null)
                 {
-                    cACUSTOMERREQUESTObject["CA_HOUSE_NUM"] = ExpressionConverter.ConvertO(bodylGCMAREAcACUSTOMERREQUESTcAHOUSENUM);
+                    cACUSTOMERREQUESTObject["CA_HOUSE_NUM"] = ExpressionConverter.ConvertO(__workflow_bodylGCMAREAcACUSTOMERREQUESTcAHOUSENUM);
                     cACUSTOMERREQUESTObjectpropCount++;
                 }
 
-                if (bodylGCMAREAcACUSTOMERREQUESTcAPOSTCODE != null)
+                if (__workflow_bodylGCMAREAcACUSTOMERREQUESTcAPOSTCODE != null)
                 {
-                    cACUSTOMERREQUESTObject["CA_POSTCODE"] = ExpressionConverter.ConvertO(bodylGCMAREAcACUSTOMERREQUESTcAPOSTCODE);
+                    cACUSTOMERREQUESTObject["CA_POSTCODE"] = ExpressionConverter.ConvertO(__workflow_bodylGCMAREAcACUSTOMERREQUESTcAPOSTCODE);
                     cACUSTOMERREQUESTObjectpropCount++;
                 }
 
-                if (bodylGCMAREAcACUSTOMERREQUESTcANUMPOLICIES != null)
+                if (__workflow_bodylGCMAREAcACUSTOMERREQUESTcANUMPOLICIES != null)
                 {
-                    cACUSTOMERREQUESTObject["CA_NUM_POLICIES"] = ExpressionConverter.ConvertO(bodylGCMAREAcACUSTOMERREQUESTcANUMPOLICIES);
+                    cACUSTOMERREQUESTObject["CA_NUM_POLICIES"] = ExpressionConverter.ConvertO(__workflow_bodylGCMAREAcACUSTOMERREQUESTcANUMPOLICIES);
                     cACUSTOMERREQUESTObjectpropCount++;
                 }
 
-                if (bodylGCMAREAcACUSTOMERREQUESTcAPHONEMOBILE != null)
+                if (__workflow_bodylGCMAREAcACUSTOMERREQUESTcAPHONEMOBILE != null)
                 {
-                    cACUSTOMERREQUESTObject["CA_PHONE_MOBILE"] = ExpressionConverter.ConvertO(bodylGCMAREAcACUSTOMERREQUESTcAPHONEMOBILE);
+                    cACUSTOMERREQUESTObject["CA_PHONE_MOBILE"] = ExpressionConverter.ConvertO(__workflow_bodylGCMAREAcACUSTOMERREQUESTcAPHONEMOBILE);
                     cACUSTOMERREQUESTObjectpropCount++;
                 }
 
-                if (bodylGCMAREAcACUSTOMERREQUESTcAPHONEHOME != null)
+                if (__workflow_bodylGCMAREAcACUSTOMERREQUESTcAPHONEHOME != null)
                 {
-                    cACUSTOMERREQUESTObject["CA_PHONE_HOME"] = ExpressionConverter.ConvertO(bodylGCMAREAcACUSTOMERREQUESTcAPHONEHOME);
+                    cACUSTOMERREQUESTObject["CA_PHONE_HOME"] = ExpressionConverter.ConvertO(__workflow_bodylGCMAREAcACUSTOMERREQUESTcAPHONEHOME);
                     cACUSTOMERREQUESTObjectpropCount++;
                 }
 
-                if (bodylGCMAREAcACUSTOMERREQUESTcAEMAILADDRESS != null)
+                if (__workflow_bodylGCMAREAcACUSTOMERREQUESTcAEMAILADDRESS != null)
                 {
-                    cACUSTOMERREQUESTObject["CA_EMAIL_ADDRESS"] = ExpressionConverter.ConvertO(bodylGCMAREAcACUSTOMERREQUESTcAEMAILADDRESS);
+                    cACUSTOMERREQUESTObject["CA_EMAIL_ADDRESS"] = ExpressionConverter.ConvertO(__workflow_bodylGCMAREAcACUSTOMERREQUESTcAEMAILADDRESS);
                     cACUSTOMERREQUESTObjectpropCount++;
                 }
 
-                if (bodylGCMAREAcACUSTOMERREQUESTcAPOLICYDATA != null)
+                if (__workflow_bodylGCMAREAcACUSTOMERREQUESTcAPOLICYDATA != null)
                 {
-                    cACUSTOMERREQUESTObject["CA_POLICY_DATA"] = ExpressionConverter.ConvertO(bodylGCMAREAcACUSTOMERREQUESTcAPOLICYDATA);
+                    cACUSTOMERREQUESTObject["CA_POLICY_DATA"] = ExpressionConverter.ConvertO(__workflow_bodylGCMAREAcACUSTOMERREQUESTcAPOLICYDATA);
                     cACUSTOMERREQUESTObjectpropCount++;
                 }
 
@@ -287,19 +292,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kyndrylmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kyndrylmainframe")]
-        [WorkflowExpressionFactory(nameof(__BuildGetCustomerDetail))]
-        public IBodyWorkflowAction<GetCustomerDetailResponse> GetCustomerDetail([WorkflowExpression] Func<string> num)
+        public IBodyWorkflowAction<GetCustomerDetailResponse> GetCustomerDetail(Expression<Func<string>> num)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetCustomerDetailResponse> __BuildGetCustomerDetail(WorkflowExpression<string> num)
-        {
-            WorkflowExpression.Validate(num, nameof(num), required: true);
+            var __workflow_num = num == null ? null : WorkflowExpression.Compile(num);
+            WorkflowExpression.Validate(__workflow_num, nameof(num), required: true);
             return new DeferredBodyAction<GetCustomerDetailResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/customernumber/custnum/{0}", ExpressionConverter.ConvertWithUrlEncoding(num, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/customernumber/custnum/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_num, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetCustomerDetailResponse>(callPayload);

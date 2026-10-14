@@ -1,84 +1,79 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thecolorip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class ThecoloripActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thecolorip")]
-        [WorkflowExpressionFactory(nameof(__BuildColorGet))]
-        public IBodyWorkflowAction<ColorGetResponse> ColorGet([WorkflowExpression] Func<string> hex = null, [WorkflowExpression] Func<string> rgb = null, [WorkflowExpression] Func<string> hsl = null, [WorkflowExpression] Func<string> cmyk = null)
+        public IBodyWorkflowAction<ColorGetResponse> ColorGet(Expression<Func<string>> hex = null, Expression<Func<string>> rgb = null, Expression<Func<string>> hsl = null, Expression<Func<string>> cmyk = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ColorGetResponse> __BuildColorGet(WorkflowExpression<string> hex = null, WorkflowExpression<string> rgb = null, WorkflowExpression<string> hsl = null, WorkflowExpression<string> cmyk = null)
-        {
-            WorkflowExpression.Validate(hex, nameof(hex), required: false);
-            WorkflowExpression.Validate(rgb, nameof(rgb), required: false);
-            WorkflowExpression.Validate(hsl, nameof(hsl), required: false);
-            WorkflowExpression.Validate(cmyk, nameof(cmyk), required: false);
+            var __workflow_hex = hex == null ? null : WorkflowExpression.Compile(hex);
+            WorkflowExpression.Validate(__workflow_hex, nameof(hex), required: false);
+            var __workflow_rgb = rgb == null ? null : WorkflowExpression.Compile(rgb);
+            WorkflowExpression.Validate(__workflow_rgb, nameof(rgb), required: false);
+            var __workflow_hsl = hsl == null ? null : WorkflowExpression.Compile(hsl);
+            WorkflowExpression.Validate(__workflow_hsl, nameof(hsl), required: false);
+            var __workflow_cmyk = cmyk == null ? null : WorkflowExpression.Compile(cmyk);
+            WorkflowExpression.Validate(__workflow_cmyk, nameof(cmyk), required: false);
             return new DeferredBodyAction<ColorGetResponse>(() =>
             {
                 var apiCallPath = "/id";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (hex != null)
-                    callPayload.Queries["hex"] = ExpressionConverter.Convert(hex);
-                if (rgb != null)
-                    callPayload.Queries["rgb"] = ExpressionConverter.Convert(rgb);
-                if (hsl != null)
-                    callPayload.Queries["hsl"] = ExpressionConverter.Convert(hsl);
-                if (cmyk != null)
-                    callPayload.Queries["cmyk"] = ExpressionConverter.Convert(cmyk);
+                if (__workflow_hex != null)
+                    callPayload.Queries["hex"] = ExpressionConverter.Convert(__workflow_hex);
+                if (__workflow_rgb != null)
+                    callPayload.Queries["rgb"] = ExpressionConverter.Convert(__workflow_rgb);
+                if (__workflow_hsl != null)
+                    callPayload.Queries["hsl"] = ExpressionConverter.Convert(__workflow_hsl);
+                if (__workflow_cmyk != null)
+                    callPayload.Queries["cmyk"] = ExpressionConverter.Convert(__workflow_cmyk);
                 callPayload.Queries["format"] = Convert.ToString("json");
                 return new ApiConnectionAction<ColorGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thecolorip")]
-        [WorkflowExpressionFactory(nameof(__BuildSchemeGet))]
-        public IBodyWorkflowAction<SchemeGetResponse> SchemeGet([WorkflowExpression] Func<string> hex = null, [WorkflowExpression] Func<string> rgb = null, [WorkflowExpression] Func<string> hsl = null, [WorkflowExpression] Func<string> cmyk = null, [WorkflowExpression] Func<modeInput> mode = null, [WorkflowExpression] Func<int> count = null)
+        public IBodyWorkflowAction<SchemeGetResponse> SchemeGet(Expression<Func<string>> hex = null, Expression<Func<string>> rgb = null, Expression<Func<string>> hsl = null, Expression<Func<string>> cmyk = null, Expression<Func<modeInput>> mode = null, Expression<Func<int>> count = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SchemeGetResponse> __BuildSchemeGet(WorkflowExpression<string> hex = null, WorkflowExpression<string> rgb = null, WorkflowExpression<string> hsl = null, WorkflowExpression<string> cmyk = null, WorkflowExpression<modeInput> mode = null, WorkflowExpression<int> count = null)
-        {
-            WorkflowExpression.Validate(hex, nameof(hex), required: false);
-            WorkflowExpression.Validate(rgb, nameof(rgb), required: false);
-            WorkflowExpression.Validate(hsl, nameof(hsl), required: false);
-            WorkflowExpression.Validate(cmyk, nameof(cmyk), required: false);
-            WorkflowExpression.Validate(mode, nameof(mode), required: false);
-            WorkflowExpression.Validate(count, nameof(count), required: false);
+            var __workflow_hex = hex == null ? null : WorkflowExpression.Compile(hex);
+            WorkflowExpression.Validate(__workflow_hex, nameof(hex), required: false);
+            var __workflow_rgb = rgb == null ? null : WorkflowExpression.Compile(rgb);
+            WorkflowExpression.Validate(__workflow_rgb, nameof(rgb), required: false);
+            var __workflow_hsl = hsl == null ? null : WorkflowExpression.Compile(hsl);
+            WorkflowExpression.Validate(__workflow_hsl, nameof(hsl), required: false);
+            var __workflow_cmyk = cmyk == null ? null : WorkflowExpression.Compile(cmyk);
+            WorkflowExpression.Validate(__workflow_cmyk, nameof(cmyk), required: false);
+            var __workflow_mode = mode == null ? null : WorkflowExpression.Compile(mode);
+            WorkflowExpression.Validate(__workflow_mode, nameof(mode), required: false);
+            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
+            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
             return new DeferredBodyAction<SchemeGetResponse>(() =>
             {
                 var apiCallPath = "/scheme";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (hex != null)
-                    callPayload.Queries["hex"] = ExpressionConverter.Convert(hex);
-                if (rgb != null)
-                    callPayload.Queries["rgb"] = ExpressionConverter.Convert(rgb);
-                if (hsl != null)
-                    callPayload.Queries["hsl"] = ExpressionConverter.Convert(hsl);
-                if (cmyk != null)
-                    callPayload.Queries["cmyk"] = ExpressionConverter.Convert(cmyk);
+                if (__workflow_hex != null)
+                    callPayload.Queries["hex"] = ExpressionConverter.Convert(__workflow_hex);
+                if (__workflow_rgb != null)
+                    callPayload.Queries["rgb"] = ExpressionConverter.Convert(__workflow_rgb);
+                if (__workflow_hsl != null)
+                    callPayload.Queries["hsl"] = ExpressionConverter.Convert(__workflow_hsl);
+                if (__workflow_cmyk != null)
+                    callPayload.Queries["cmyk"] = ExpressionConverter.Convert(__workflow_cmyk);
                 callPayload.Queries["format"] = Convert.ToString("json");
                 callPayload.Queries["mode"] = Convert.ToString("monochrome");
-                if (mode != null)
-                    callPayload.Queries["mode"] = ExpressionConverter.Convert(mode);
+                if (__workflow_mode != null)
+                    callPayload.Queries["mode"] = ExpressionConverter.Convert(__workflow_mode);
                 callPayload.Queries["count"] = Convert.ToString(5);
-                if (count != null)
-                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
                 return new ApiConnectionAction<SchemeGetResponse>(callPayload);
             });
         }

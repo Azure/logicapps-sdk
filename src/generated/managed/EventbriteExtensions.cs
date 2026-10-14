@@ -1,158 +1,184 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventbrite
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class EventbriteActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eventbrite")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateEvent))]
-        public IBodyWorkflowAction<CreateEventResponse> CreateEvent([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<string> eventNameHtml, [WorkflowExpression] Func<string> eventDescriptionHtml, [WorkflowExpression] Func<string> eventStartUtc, [WorkflowExpression] Func<string> eventEndUtc, [WorkflowExpression] Func<eventStartTimezoneInput> eventStartTimezone, [WorkflowExpression] Func<eventEndTimezoneInput> eventEndTimezone, [WorkflowExpression] Func<eventCurrencyInput> eventCurrency, [WorkflowExpression] Func<string> eventOrganizerId = null, [WorkflowExpression] Func<string> eventVenueId = null, [WorkflowExpression] Func<string> eventCategoryId = null, [WorkflowExpression] Func<string> eventPassword = null, [WorkflowExpression] Func<string> eventCapacity = null, [WorkflowExpression] Func<bool> eventShareable = null, [WorkflowExpression] Func<bool> eventInviteOnly = null, [WorkflowExpression] Func<bool> eventOnlineEvent = null, [WorkflowExpression] Func<bool> eventListed = null, [WorkflowExpression] Func<bool> eventHideStartDate = null, [WorkflowExpression] Func<bool> eventHideEndDate = null, [WorkflowExpression] Func<bool> eventShowRemaining = null)
+        public IBodyWorkflowAction<CreateEventResponse> CreateEvent(Expression<Func<string>> organizationId, Expression<Func<string>> eventNameHtml, Expression<Func<string>> eventDescriptionHtml, Expression<Func<string>> eventStartUtc, Expression<Func<string>> eventEndUtc, Expression<Func<eventStartTimezoneInput>> eventStartTimezone, Expression<Func<eventEndTimezoneInput>> eventEndTimezone, Expression<Func<eventCurrencyInput>> eventCurrency, Expression<Func<string>> eventOrganizerId = null, Expression<Func<string>> eventVenueId = null, Expression<Func<string>> eventCategoryId = null, Expression<Func<string>> eventPassword = null, Expression<Func<string>> eventCapacity = null, Expression<Func<bool>> eventShareable = null, Expression<Func<bool>> eventInviteOnly = null, Expression<Func<bool>> eventOnlineEvent = null, Expression<Func<bool>> eventListed = null, Expression<Func<bool>> eventHideStartDate = null, Expression<Func<bool>> eventHideEndDate = null, Expression<Func<bool>> eventShowRemaining = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateEventResponse> __BuildCreateEvent(WorkflowExpression<string> organizationId, WorkflowExpression<string> eventNameHtml, WorkflowExpression<string> eventDescriptionHtml, WorkflowExpression<string> eventStartUtc, WorkflowExpression<string> eventEndUtc, WorkflowExpression<eventStartTimezoneInput> eventStartTimezone, WorkflowExpression<eventEndTimezoneInput> eventEndTimezone, WorkflowExpression<eventCurrencyInput> eventCurrency, WorkflowExpression<string> eventOrganizerId = null, WorkflowExpression<string> eventVenueId = null, WorkflowExpression<string> eventCategoryId = null, WorkflowExpression<string> eventPassword = null, WorkflowExpression<string> eventCapacity = null, WorkflowExpression<bool> eventShareable = null, WorkflowExpression<bool> eventInviteOnly = null, WorkflowExpression<bool> eventOnlineEvent = null, WorkflowExpression<bool> eventListed = null, WorkflowExpression<bool> eventHideStartDate = null, WorkflowExpression<bool> eventHideEndDate = null, WorkflowExpression<bool> eventShowRemaining = null)
-        {
-            WorkflowExpression.Validate(organizationId, nameof(organizationId), required: true);
-            WorkflowExpression.Validate(eventNameHtml, nameof(eventNameHtml), required: true);
-            WorkflowExpression.Validate(eventDescriptionHtml, nameof(eventDescriptionHtml), required: true);
-            WorkflowExpression.Validate(eventStartUtc, nameof(eventStartUtc), required: true);
-            WorkflowExpression.Validate(eventEndUtc, nameof(eventEndUtc), required: true);
-            WorkflowExpression.Validate(eventStartTimezone, nameof(eventStartTimezone), required: true);
-            WorkflowExpression.Validate(eventEndTimezone, nameof(eventEndTimezone), required: true);
-            WorkflowExpression.Validate(eventCurrency, nameof(eventCurrency), required: true);
-            WorkflowExpression.Validate(eventOrganizerId, nameof(eventOrganizerId), required: false);
-            WorkflowExpression.Validate(eventVenueId, nameof(eventVenueId), required: false);
-            WorkflowExpression.Validate(eventCategoryId, nameof(eventCategoryId), required: false);
-            WorkflowExpression.Validate(eventPassword, nameof(eventPassword), required: false);
-            WorkflowExpression.Validate(eventCapacity, nameof(eventCapacity), required: false);
-            WorkflowExpression.Validate(eventShareable, nameof(eventShareable), required: false);
-            WorkflowExpression.Validate(eventInviteOnly, nameof(eventInviteOnly), required: false);
-            WorkflowExpression.Validate(eventOnlineEvent, nameof(eventOnlineEvent), required: false);
-            WorkflowExpression.Validate(eventListed, nameof(eventListed), required: false);
-            WorkflowExpression.Validate(eventHideStartDate, nameof(eventHideStartDate), required: false);
-            WorkflowExpression.Validate(eventHideEndDate, nameof(eventHideEndDate), required: false);
-            WorkflowExpression.Validate(eventShowRemaining, nameof(eventShowRemaining), required: false);
+            var __workflow_organizationId = organizationId == null ? null : WorkflowExpression.Compile(organizationId);
+            WorkflowExpression.Validate(__workflow_organizationId, nameof(organizationId), required: true);
+            var __workflow_eventNameHtml = eventNameHtml == null ? null : WorkflowExpression.Compile(eventNameHtml);
+            WorkflowExpression.Validate(__workflow_eventNameHtml, nameof(eventNameHtml), required: true);
+            var __workflow_eventDescriptionHtml = eventDescriptionHtml == null ? null : WorkflowExpression.Compile(eventDescriptionHtml);
+            WorkflowExpression.Validate(__workflow_eventDescriptionHtml, nameof(eventDescriptionHtml), required: true);
+            var __workflow_eventStartUtc = eventStartUtc == null ? null : WorkflowExpression.Compile(eventStartUtc);
+            WorkflowExpression.Validate(__workflow_eventStartUtc, nameof(eventStartUtc), required: true);
+            var __workflow_eventEndUtc = eventEndUtc == null ? null : WorkflowExpression.Compile(eventEndUtc);
+            WorkflowExpression.Validate(__workflow_eventEndUtc, nameof(eventEndUtc), required: true);
+            var __workflow_eventStartTimezone = eventStartTimezone == null ? null : WorkflowExpression.Compile(eventStartTimezone);
+            WorkflowExpression.Validate(__workflow_eventStartTimezone, nameof(eventStartTimezone), required: true);
+            var __workflow_eventEndTimezone = eventEndTimezone == null ? null : WorkflowExpression.Compile(eventEndTimezone);
+            WorkflowExpression.Validate(__workflow_eventEndTimezone, nameof(eventEndTimezone), required: true);
+            var __workflow_eventCurrency = eventCurrency == null ? null : WorkflowExpression.Compile(eventCurrency);
+            WorkflowExpression.Validate(__workflow_eventCurrency, nameof(eventCurrency), required: true);
+            var __workflow_eventOrganizerId = eventOrganizerId == null ? null : WorkflowExpression.Compile(eventOrganizerId);
+            WorkflowExpression.Validate(__workflow_eventOrganizerId, nameof(eventOrganizerId), required: false);
+            var __workflow_eventVenueId = eventVenueId == null ? null : WorkflowExpression.Compile(eventVenueId);
+            WorkflowExpression.Validate(__workflow_eventVenueId, nameof(eventVenueId), required: false);
+            var __workflow_eventCategoryId = eventCategoryId == null ? null : WorkflowExpression.Compile(eventCategoryId);
+            WorkflowExpression.Validate(__workflow_eventCategoryId, nameof(eventCategoryId), required: false);
+            var __workflow_eventPassword = eventPassword == null ? null : WorkflowExpression.Compile(eventPassword);
+            WorkflowExpression.Validate(__workflow_eventPassword, nameof(eventPassword), required: false);
+            var __workflow_eventCapacity = eventCapacity == null ? null : WorkflowExpression.Compile(eventCapacity);
+            WorkflowExpression.Validate(__workflow_eventCapacity, nameof(eventCapacity), required: false);
+            var __workflow_eventShareable = eventShareable == null ? null : WorkflowExpression.Compile(eventShareable);
+            WorkflowExpression.Validate(__workflow_eventShareable, nameof(eventShareable), required: false);
+            var __workflow_eventInviteOnly = eventInviteOnly == null ? null : WorkflowExpression.Compile(eventInviteOnly);
+            WorkflowExpression.Validate(__workflow_eventInviteOnly, nameof(eventInviteOnly), required: false);
+            var __workflow_eventOnlineEvent = eventOnlineEvent == null ? null : WorkflowExpression.Compile(eventOnlineEvent);
+            WorkflowExpression.Validate(__workflow_eventOnlineEvent, nameof(eventOnlineEvent), required: false);
+            var __workflow_eventListed = eventListed == null ? null : WorkflowExpression.Compile(eventListed);
+            WorkflowExpression.Validate(__workflow_eventListed, nameof(eventListed), required: false);
+            var __workflow_eventHideStartDate = eventHideStartDate == null ? null : WorkflowExpression.Compile(eventHideStartDate);
+            WorkflowExpression.Validate(__workflow_eventHideStartDate, nameof(eventHideStartDate), required: false);
+            var __workflow_eventHideEndDate = eventHideEndDate == null ? null : WorkflowExpression.Compile(eventHideEndDate);
+            WorkflowExpression.Validate(__workflow_eventHideEndDate, nameof(eventHideEndDate), required: false);
+            var __workflow_eventShowRemaining = eventShowRemaining == null ? null : WorkflowExpression.Compile(eventShowRemaining);
+            WorkflowExpression.Validate(__workflow_eventShowRemaining, nameof(eventShowRemaining), required: false);
             return new DeferredBodyAction<CreateEventResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/organizations/{0}/events/", ExpressionConverter.ConvertWithUrlEncoding(organizationId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/organizations/{0}/events/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organizationId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["event.name.html"] = ExpressionConverter.Convert(eventNameHtml);
-                callPayload.Queries["event.description.html"] = ExpressionConverter.Convert(eventDescriptionHtml);
-                callPayload.Queries["event.start.utc"] = ExpressionConverter.Convert(eventStartUtc);
-                callPayload.Queries["event.end.utc"] = ExpressionConverter.Convert(eventEndUtc);
-                callPayload.Queries["event.start.timezone"] = ExpressionConverter.Convert(eventStartTimezone);
-                callPayload.Queries["event.end.timezone"] = ExpressionConverter.Convert(eventEndTimezone);
-                callPayload.Queries["event.currency"] = ExpressionConverter.Convert(eventCurrency);
-                if (eventOrganizerId != null)
-                    callPayload.Queries["event.organizer_id"] = ExpressionConverter.Convert(eventOrganizerId);
-                if (eventVenueId != null)
-                    callPayload.Queries["event.venue_id"] = ExpressionConverter.Convert(eventVenueId);
-                if (eventCategoryId != null)
-                    callPayload.Queries["event.category_id"] = ExpressionConverter.Convert(eventCategoryId);
-                if (eventPassword != null)
-                    callPayload.Queries["event.password"] = ExpressionConverter.Convert(eventPassword);
-                if (eventCapacity != null)
-                    callPayload.Queries["event.capacity"] = ExpressionConverter.Convert(eventCapacity);
-                if (eventShareable != null)
-                    callPayload.Queries["event.shareable"] = ExpressionConverter.Convert(eventShareable);
-                if (eventInviteOnly != null)
-                    callPayload.Queries["event.invite_only"] = ExpressionConverter.Convert(eventInviteOnly);
-                if (eventOnlineEvent != null)
-                    callPayload.Queries["event.online_event"] = ExpressionConverter.Convert(eventOnlineEvent);
-                if (eventListed != null)
-                    callPayload.Queries["event.listed"] = ExpressionConverter.Convert(eventListed);
-                if (eventHideStartDate != null)
-                    callPayload.Queries["event.hide_start_date"] = ExpressionConverter.Convert(eventHideStartDate);
-                if (eventHideEndDate != null)
-                    callPayload.Queries["event.hide_end_date"] = ExpressionConverter.Convert(eventHideEndDate);
-                if (eventShowRemaining != null)
-                    callPayload.Queries["event.show_remaining"] = ExpressionConverter.Convert(eventShowRemaining);
+                callPayload.Queries["event.name.html"] = ExpressionConverter.Convert(__workflow_eventNameHtml);
+                callPayload.Queries["event.description.html"] = ExpressionConverter.Convert(__workflow_eventDescriptionHtml);
+                callPayload.Queries["event.start.utc"] = ExpressionConverter.Convert(__workflow_eventStartUtc);
+                callPayload.Queries["event.end.utc"] = ExpressionConverter.Convert(__workflow_eventEndUtc);
+                callPayload.Queries["event.start.timezone"] = ExpressionConverter.Convert(__workflow_eventStartTimezone);
+                callPayload.Queries["event.end.timezone"] = ExpressionConverter.Convert(__workflow_eventEndTimezone);
+                callPayload.Queries["event.currency"] = ExpressionConverter.Convert(__workflow_eventCurrency);
+                if (__workflow_eventOrganizerId != null)
+                    callPayload.Queries["event.organizer_id"] = ExpressionConverter.Convert(__workflow_eventOrganizerId);
+                if (__workflow_eventVenueId != null)
+                    callPayload.Queries["event.venue_id"] = ExpressionConverter.Convert(__workflow_eventVenueId);
+                if (__workflow_eventCategoryId != null)
+                    callPayload.Queries["event.category_id"] = ExpressionConverter.Convert(__workflow_eventCategoryId);
+                if (__workflow_eventPassword != null)
+                    callPayload.Queries["event.password"] = ExpressionConverter.Convert(__workflow_eventPassword);
+                if (__workflow_eventCapacity != null)
+                    callPayload.Queries["event.capacity"] = ExpressionConverter.Convert(__workflow_eventCapacity);
+                if (__workflow_eventShareable != null)
+                    callPayload.Queries["event.shareable"] = ExpressionConverter.Convert(__workflow_eventShareable);
+                if (__workflow_eventInviteOnly != null)
+                    callPayload.Queries["event.invite_only"] = ExpressionConverter.Convert(__workflow_eventInviteOnly);
+                if (__workflow_eventOnlineEvent != null)
+                    callPayload.Queries["event.online_event"] = ExpressionConverter.Convert(__workflow_eventOnlineEvent);
+                if (__workflow_eventListed != null)
+                    callPayload.Queries["event.listed"] = ExpressionConverter.Convert(__workflow_eventListed);
+                if (__workflow_eventHideStartDate != null)
+                    callPayload.Queries["event.hide_start_date"] = ExpressionConverter.Convert(__workflow_eventHideStartDate);
+                if (__workflow_eventHideEndDate != null)
+                    callPayload.Queries["event.hide_end_date"] = ExpressionConverter.Convert(__workflow_eventHideEndDate);
+                if (__workflow_eventShowRemaining != null)
+                    callPayload.Queries["event.show_remaining"] = ExpressionConverter.Convert(__workflow_eventShowRemaining);
                 return new ApiConnectionAction<CreateEventResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eventbrite")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateEvent))]
-        public IBodyWorkflowAction<CreateEventResponse> UpdateEvent([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<eventStartTimezoneInput> eventStartTimezone, [WorkflowExpression] Func<eventEndTimezoneInput> eventEndTimezone, [WorkflowExpression] Func<eventCurrencyInput> eventCurrency, [WorkflowExpression] Func<string> eventNameHtml = null, [WorkflowExpression] Func<string> eventDescriptionHtml = null, [WorkflowExpression] Func<string> eventStartUtc = null, [WorkflowExpression] Func<string> eventEndUtc = null, [WorkflowExpression] Func<string> eventOrganizerId = null, [WorkflowExpression] Func<string> eventVenueId = null, [WorkflowExpression] Func<string> eventCategoryId = null, [WorkflowExpression] Func<string> eventPassword = null, [WorkflowExpression] Func<string> eventCapacity = null, [WorkflowExpression] Func<bool> eventShareable = null, [WorkflowExpression] Func<bool> eventInviteOnly = null, [WorkflowExpression] Func<bool> eventOnlineEvent = null, [WorkflowExpression] Func<bool> eventListed = null, [WorkflowExpression] Func<bool> eventHideStartDate = null, [WorkflowExpression] Func<bool> eventHideEndDate = null, [WorkflowExpression] Func<bool> eventShowRemaining = null)
+        public IBodyWorkflowAction<CreateEventResponse> UpdateEvent(Expression<Func<string>> organizationId, Expression<Func<string>> id, Expression<Func<eventStartTimezoneInput>> eventStartTimezone, Expression<Func<eventEndTimezoneInput>> eventEndTimezone, Expression<Func<eventCurrencyInput>> eventCurrency, Expression<Func<string>> eventNameHtml = null, Expression<Func<string>> eventDescriptionHtml = null, Expression<Func<string>> eventStartUtc = null, Expression<Func<string>> eventEndUtc = null, Expression<Func<string>> eventOrganizerId = null, Expression<Func<string>> eventVenueId = null, Expression<Func<string>> eventCategoryId = null, Expression<Func<string>> eventPassword = null, Expression<Func<string>> eventCapacity = null, Expression<Func<bool>> eventShareable = null, Expression<Func<bool>> eventInviteOnly = null, Expression<Func<bool>> eventOnlineEvent = null, Expression<Func<bool>> eventListed = null, Expression<Func<bool>> eventHideStartDate = null, Expression<Func<bool>> eventHideEndDate = null, Expression<Func<bool>> eventShowRemaining = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateEventResponse> __BuildUpdateEvent(WorkflowExpression<string> organizationId, WorkflowExpression<string> id, WorkflowExpression<eventStartTimezoneInput> eventStartTimezone, WorkflowExpression<eventEndTimezoneInput> eventEndTimezone, WorkflowExpression<eventCurrencyInput> eventCurrency, WorkflowExpression<string> eventNameHtml = null, WorkflowExpression<string> eventDescriptionHtml = null, WorkflowExpression<string> eventStartUtc = null, WorkflowExpression<string> eventEndUtc = null, WorkflowExpression<string> eventOrganizerId = null, WorkflowExpression<string> eventVenueId = null, WorkflowExpression<string> eventCategoryId = null, WorkflowExpression<string> eventPassword = null, WorkflowExpression<string> eventCapacity = null, WorkflowExpression<bool> eventShareable = null, WorkflowExpression<bool> eventInviteOnly = null, WorkflowExpression<bool> eventOnlineEvent = null, WorkflowExpression<bool> eventListed = null, WorkflowExpression<bool> eventHideStartDate = null, WorkflowExpression<bool> eventHideEndDate = null, WorkflowExpression<bool> eventShowRemaining = null)
-        {
-            WorkflowExpression.Validate(organizationId, nameof(organizationId), required: true);
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(eventStartTimezone, nameof(eventStartTimezone), required: true);
-            WorkflowExpression.Validate(eventEndTimezone, nameof(eventEndTimezone), required: true);
-            WorkflowExpression.Validate(eventCurrency, nameof(eventCurrency), required: true);
-            WorkflowExpression.Validate(eventNameHtml, nameof(eventNameHtml), required: false);
-            WorkflowExpression.Validate(eventDescriptionHtml, nameof(eventDescriptionHtml), required: false);
-            WorkflowExpression.Validate(eventStartUtc, nameof(eventStartUtc), required: false);
-            WorkflowExpression.Validate(eventEndUtc, nameof(eventEndUtc), required: false);
-            WorkflowExpression.Validate(eventOrganizerId, nameof(eventOrganizerId), required: false);
-            WorkflowExpression.Validate(eventVenueId, nameof(eventVenueId), required: false);
-            WorkflowExpression.Validate(eventCategoryId, nameof(eventCategoryId), required: false);
-            WorkflowExpression.Validate(eventPassword, nameof(eventPassword), required: false);
-            WorkflowExpression.Validate(eventCapacity, nameof(eventCapacity), required: false);
-            WorkflowExpression.Validate(eventShareable, nameof(eventShareable), required: false);
-            WorkflowExpression.Validate(eventInviteOnly, nameof(eventInviteOnly), required: false);
-            WorkflowExpression.Validate(eventOnlineEvent, nameof(eventOnlineEvent), required: false);
-            WorkflowExpression.Validate(eventListed, nameof(eventListed), required: false);
-            WorkflowExpression.Validate(eventHideStartDate, nameof(eventHideStartDate), required: false);
-            WorkflowExpression.Validate(eventHideEndDate, nameof(eventHideEndDate), required: false);
-            WorkflowExpression.Validate(eventShowRemaining, nameof(eventShowRemaining), required: false);
+            var __workflow_organizationId = organizationId == null ? null : WorkflowExpression.Compile(organizationId);
+            WorkflowExpression.Validate(__workflow_organizationId, nameof(organizationId), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_eventStartTimezone = eventStartTimezone == null ? null : WorkflowExpression.Compile(eventStartTimezone);
+            WorkflowExpression.Validate(__workflow_eventStartTimezone, nameof(eventStartTimezone), required: true);
+            var __workflow_eventEndTimezone = eventEndTimezone == null ? null : WorkflowExpression.Compile(eventEndTimezone);
+            WorkflowExpression.Validate(__workflow_eventEndTimezone, nameof(eventEndTimezone), required: true);
+            var __workflow_eventCurrency = eventCurrency == null ? null : WorkflowExpression.Compile(eventCurrency);
+            WorkflowExpression.Validate(__workflow_eventCurrency, nameof(eventCurrency), required: true);
+            var __workflow_eventNameHtml = eventNameHtml == null ? null : WorkflowExpression.Compile(eventNameHtml);
+            WorkflowExpression.Validate(__workflow_eventNameHtml, nameof(eventNameHtml), required: false);
+            var __workflow_eventDescriptionHtml = eventDescriptionHtml == null ? null : WorkflowExpression.Compile(eventDescriptionHtml);
+            WorkflowExpression.Validate(__workflow_eventDescriptionHtml, nameof(eventDescriptionHtml), required: false);
+            var __workflow_eventStartUtc = eventStartUtc == null ? null : WorkflowExpression.Compile(eventStartUtc);
+            WorkflowExpression.Validate(__workflow_eventStartUtc, nameof(eventStartUtc), required: false);
+            var __workflow_eventEndUtc = eventEndUtc == null ? null : WorkflowExpression.Compile(eventEndUtc);
+            WorkflowExpression.Validate(__workflow_eventEndUtc, nameof(eventEndUtc), required: false);
+            var __workflow_eventOrganizerId = eventOrganizerId == null ? null : WorkflowExpression.Compile(eventOrganizerId);
+            WorkflowExpression.Validate(__workflow_eventOrganizerId, nameof(eventOrganizerId), required: false);
+            var __workflow_eventVenueId = eventVenueId == null ? null : WorkflowExpression.Compile(eventVenueId);
+            WorkflowExpression.Validate(__workflow_eventVenueId, nameof(eventVenueId), required: false);
+            var __workflow_eventCategoryId = eventCategoryId == null ? null : WorkflowExpression.Compile(eventCategoryId);
+            WorkflowExpression.Validate(__workflow_eventCategoryId, nameof(eventCategoryId), required: false);
+            var __workflow_eventPassword = eventPassword == null ? null : WorkflowExpression.Compile(eventPassword);
+            WorkflowExpression.Validate(__workflow_eventPassword, nameof(eventPassword), required: false);
+            var __workflow_eventCapacity = eventCapacity == null ? null : WorkflowExpression.Compile(eventCapacity);
+            WorkflowExpression.Validate(__workflow_eventCapacity, nameof(eventCapacity), required: false);
+            var __workflow_eventShareable = eventShareable == null ? null : WorkflowExpression.Compile(eventShareable);
+            WorkflowExpression.Validate(__workflow_eventShareable, nameof(eventShareable), required: false);
+            var __workflow_eventInviteOnly = eventInviteOnly == null ? null : WorkflowExpression.Compile(eventInviteOnly);
+            WorkflowExpression.Validate(__workflow_eventInviteOnly, nameof(eventInviteOnly), required: false);
+            var __workflow_eventOnlineEvent = eventOnlineEvent == null ? null : WorkflowExpression.Compile(eventOnlineEvent);
+            WorkflowExpression.Validate(__workflow_eventOnlineEvent, nameof(eventOnlineEvent), required: false);
+            var __workflow_eventListed = eventListed == null ? null : WorkflowExpression.Compile(eventListed);
+            WorkflowExpression.Validate(__workflow_eventListed, nameof(eventListed), required: false);
+            var __workflow_eventHideStartDate = eventHideStartDate == null ? null : WorkflowExpression.Compile(eventHideStartDate);
+            WorkflowExpression.Validate(__workflow_eventHideStartDate, nameof(eventHideStartDate), required: false);
+            var __workflow_eventHideEndDate = eventHideEndDate == null ? null : WorkflowExpression.Compile(eventHideEndDate);
+            WorkflowExpression.Validate(__workflow_eventHideEndDate, nameof(eventHideEndDate), required: false);
+            var __workflow_eventShowRemaining = eventShowRemaining == null ? null : WorkflowExpression.Compile(eventShowRemaining);
+            WorkflowExpression.Validate(__workflow_eventShowRemaining, nameof(eventShowRemaining), required: false);
             return new DeferredBodyAction<CreateEventResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/v3/events/{0}/", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/v3/events/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["organization_id"] = ExpressionConverter.Convert(organizationId);
-                if (eventNameHtml != null)
-                    callPayload.Queries["event.name.html"] = ExpressionConverter.Convert(eventNameHtml);
-                if (eventDescriptionHtml != null)
-                    callPayload.Queries["event.description.html"] = ExpressionConverter.Convert(eventDescriptionHtml);
-                if (eventStartUtc != null)
-                    callPayload.Queries["event.start.utc"] = ExpressionConverter.Convert(eventStartUtc);
-                if (eventEndUtc != null)
-                    callPayload.Queries["event.end.utc"] = ExpressionConverter.Convert(eventEndUtc);
-                callPayload.Queries["event.start.timezone"] = ExpressionConverter.Convert(eventStartTimezone);
-                callPayload.Queries["event.end.timezone"] = ExpressionConverter.Convert(eventEndTimezone);
-                callPayload.Queries["event.currency"] = ExpressionConverter.Convert(eventCurrency);
-                if (eventOrganizerId != null)
-                    callPayload.Queries["event.organizer_id"] = ExpressionConverter.Convert(eventOrganizerId);
-                if (eventVenueId != null)
-                    callPayload.Queries["event.venue_id"] = ExpressionConverter.Convert(eventVenueId);
-                if (eventCategoryId != null)
-                    callPayload.Queries["event.category_id"] = ExpressionConverter.Convert(eventCategoryId);
-                if (eventPassword != null)
-                    callPayload.Queries["event.password"] = ExpressionConverter.Convert(eventPassword);
-                if (eventCapacity != null)
-                    callPayload.Queries["event.capacity"] = ExpressionConverter.Convert(eventCapacity);
-                if (eventShareable != null)
-                    callPayload.Queries["event.shareable"] = ExpressionConverter.Convert(eventShareable);
-                if (eventInviteOnly != null)
-                    callPayload.Queries["event.invite_only"] = ExpressionConverter.Convert(eventInviteOnly);
-                if (eventOnlineEvent != null)
-                    callPayload.Queries["event.online_event"] = ExpressionConverter.Convert(eventOnlineEvent);
-                if (eventListed != null)
-                    callPayload.Queries["event.listed"] = ExpressionConverter.Convert(eventListed);
-                if (eventHideStartDate != null)
-                    callPayload.Queries["event.hide_start_date"] = ExpressionConverter.Convert(eventHideStartDate);
-                if (eventHideEndDate != null)
-                    callPayload.Queries["event.hide_end_date"] = ExpressionConverter.Convert(eventHideEndDate);
-                if (eventShowRemaining != null)
-                    callPayload.Queries["event.show_remaining"] = ExpressionConverter.Convert(eventShowRemaining);
+                callPayload.Queries["organization_id"] = ExpressionConverter.Convert(__workflow_organizationId);
+                if (__workflow_eventNameHtml != null)
+                    callPayload.Queries["event.name.html"] = ExpressionConverter.Convert(__workflow_eventNameHtml);
+                if (__workflow_eventDescriptionHtml != null)
+                    callPayload.Queries["event.description.html"] = ExpressionConverter.Convert(__workflow_eventDescriptionHtml);
+                if (__workflow_eventStartUtc != null)
+                    callPayload.Queries["event.start.utc"] = ExpressionConverter.Convert(__workflow_eventStartUtc);
+                if (__workflow_eventEndUtc != null)
+                    callPayload.Queries["event.end.utc"] = ExpressionConverter.Convert(__workflow_eventEndUtc);
+                callPayload.Queries["event.start.timezone"] = ExpressionConverter.Convert(__workflow_eventStartTimezone);
+                callPayload.Queries["event.end.timezone"] = ExpressionConverter.Convert(__workflow_eventEndTimezone);
+                callPayload.Queries["event.currency"] = ExpressionConverter.Convert(__workflow_eventCurrency);
+                if (__workflow_eventOrganizerId != null)
+                    callPayload.Queries["event.organizer_id"] = ExpressionConverter.Convert(__workflow_eventOrganizerId);
+                if (__workflow_eventVenueId != null)
+                    callPayload.Queries["event.venue_id"] = ExpressionConverter.Convert(__workflow_eventVenueId);
+                if (__workflow_eventCategoryId != null)
+                    callPayload.Queries["event.category_id"] = ExpressionConverter.Convert(__workflow_eventCategoryId);
+                if (__workflow_eventPassword != null)
+                    callPayload.Queries["event.password"] = ExpressionConverter.Convert(__workflow_eventPassword);
+                if (__workflow_eventCapacity != null)
+                    callPayload.Queries["event.capacity"] = ExpressionConverter.Convert(__workflow_eventCapacity);
+                if (__workflow_eventShareable != null)
+                    callPayload.Queries["event.shareable"] = ExpressionConverter.Convert(__workflow_eventShareable);
+                if (__workflow_eventInviteOnly != null)
+                    callPayload.Queries["event.invite_only"] = ExpressionConverter.Convert(__workflow_eventInviteOnly);
+                if (__workflow_eventOnlineEvent != null)
+                    callPayload.Queries["event.online_event"] = ExpressionConverter.Convert(__workflow_eventOnlineEvent);
+                if (__workflow_eventListed != null)
+                    callPayload.Queries["event.listed"] = ExpressionConverter.Convert(__workflow_eventListed);
+                if (__workflow_eventHideStartDate != null)
+                    callPayload.Queries["event.hide_start_date"] = ExpressionConverter.Convert(__workflow_eventHideStartDate);
+                if (__workflow_eventHideEndDate != null)
+                    callPayload.Queries["event.hide_end_date"] = ExpressionConverter.Convert(__workflow_eventHideEndDate);
+                if (__workflow_eventShowRemaining != null)
+                    callPayload.Queries["event.show_remaining"] = ExpressionConverter.Convert(__workflow_eventShowRemaining);
                 return new ApiConnectionAction<CreateEventResponse>(callPayload);
             });
         }
@@ -160,46 +186,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventbrite
 
     public class EventbriteTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildOnNewEvent))]
-        public IBodyWorkflowTrigger<GetEventsForOrganizationResponseItem[]> OnNewEvent([WorkflowExpression] Func<string> organizationId,[WorkflowExpression] Func<string> organizerFilter,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GetEventsForOrganizationResponseItem[]> OnNewEvent(Expression<Func<string>> organizationId, Expression<Func<string>> organizerFilter, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<GetEventsForOrganizationResponseItem[]> __BuildOnNewEvent(WorkflowExpression<string> organizationId,WorkflowExpression<string> organizerFilter,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(organizationId, nameof(organizationId), required: true);
-            WorkflowExpression.Validate(organizerFilter, nameof(organizerFilter), required: true);
+            var __workflow_organizationId = organizationId == null ? null : WorkflowExpression.Compile(organizationId);
+            WorkflowExpression.Validate(__workflow_organizationId, nameof(organizationId), required: true);
+            var __workflow_organizerFilter = organizerFilter == null ? null : WorkflowExpression.Compile(organizerFilter);
+            WorkflowExpression.Validate(__workflow_organizerFilter, nameof(organizerFilter), required: true);
             return new DeferredBodyTrigger<GetEventsForOrganizationResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/trigger/v3/organizations/{0}/events/", ExpressionConverter.ConvertWithUrlEncoding(organizationId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/trigger/v3/organizations/{0}/events/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organizationId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["organizer_filter"] = ExpressionConverter.Convert(organizerFilter);
+                callPayload.Queries["organizer_filter"] = ExpressionConverter.Convert(__workflow_organizerFilter);
                 callPayload.Queries["order_by"] = Convert.ToString("created_desc");
                 return new ApiConnectionTrigger<GetEventsForOrganizationResponseItem[]>(callPayload, recurrence: recurrence);
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildOnOrderChanged))]
-        public IBodyWorkflowTrigger<GetOrdersResponseItem[]> OnOrderChanged([WorkflowExpression] Func<string> organizationId,[WorkflowExpression] Func<string> id,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GetOrdersResponseItem[]> OnOrderChanged(Expression<Func<string>> organizationId, Expression<Func<string>> id, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<GetOrdersResponseItem[]> __BuildOnOrderChanged(WorkflowExpression<string> organizationId,WorkflowExpression<string> id,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(organizationId, nameof(organizationId), required: true);
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_organizationId = organizationId == null ? null : WorkflowExpression.Compile(organizationId);
+            WorkflowExpression.Validate(__workflow_organizationId, nameof(organizationId), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyTrigger<GetOrdersResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/trigger/v3/events/{0}/orders/", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/trigger/v3/events/{0}/orders/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["organization_id"] = ExpressionConverter.Convert(organizationId);
+                callPayload.Queries["organization_id"] = ExpressionConverter.Convert(__workflow_organizationId);
                 return new ApiConnectionTrigger<GetOrdersResponseItem[]>(callPayload, recurrence: recurrence);
             });
         }

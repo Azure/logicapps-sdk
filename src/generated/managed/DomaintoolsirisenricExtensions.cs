@@ -1,33 +1,26 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisenric
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class DomaintoolsirisenricActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisenric")]
-        [WorkflowExpressionFactory(nameof(__BuildEnrichDomain))]
-        public IBodyWorkflowAction<EnrichResponse> EnrichDomain([WorkflowExpression] Func<string> domain)
+        public IBodyWorkflowAction<EnrichResponse> EnrichDomain(Expression<Func<string>> domain)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EnrichResponse> __BuildEnrichDomain(WorkflowExpression<string> domain)
-        {
-            WorkflowExpression.Validate(domain, nameof(domain), required: true);
+            var __workflow_domain = domain == null ? null : WorkflowExpression.Compile(domain);
+            WorkflowExpression.Validate(__workflow_domain, nameof(domain), required: true);
             return new DeferredBodyAction<EnrichResponse>(() =>
             {
                 var apiCallPath = "/iris-enrich/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["domain"] = ExpressionConverter.Convert(domain);
+                callPayload.Queries["domain"] = ExpressionConverter.Convert(__workflow_domain);
                 return new ApiConnectionAction<EnrichResponse>(callPayload);
             });
         }

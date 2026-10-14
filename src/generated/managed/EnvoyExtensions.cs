@@ -1,12 +1,12 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Envoy
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class EnvoyActions([ConnectionName] string connectionId)
     {
@@ -14,17 +14,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Envoy
 
     public class EnvoyTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildInviteCreated))]
-        public IWorkflowTrigger InviteCreated([WorkflowExpression] Func<string> bodytoken = null,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger InviteCreated(Expression<Func<string>> bodytoken = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildInviteCreated(WorkflowExpression<string> bodytoken = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodytoken, nameof(bodytoken), required: false);
+            var __workflow_bodytoken = bodytoken == null ? null : WorkflowExpression.Compile(bodytoken);
+            WorkflowExpression.Validate(__workflow_bodytoken, nameof(bodytoken), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/register-invite-created";
@@ -32,9 +25,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Envoy
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodytoken != null)
+                if (__workflow_bodytoken != null)
                 {
-                    body["token"] = ExpressionConverter.ConvertO(bodytoken);
+                    body["token"] = ExpressionConverter.ConvertO(__workflow_bodytoken);
                     bodypropCount++;
                 }
 

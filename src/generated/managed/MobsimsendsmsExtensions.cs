@@ -1,29 +1,24 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobsimsendsms
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class MobsimsendsmsActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mobsimsendsms")]
-        [WorkflowExpressionFactory(nameof(__BuildSMS))]
-        public IBodyWorkflowAction<string> SMS([WorkflowExpression] Func<string> bodygroupId = null, [WorkflowExpression] Func<string> bodygroupMsg = null, [WorkflowExpression] Func<bodymessagesInputItem[]> bodymessages = null)
+        public IBodyWorkflowAction<string> SMS(Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodygroupMsg = null, Expression<Func<bodymessagesInputItem[]>> bodymessages = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildSMS(WorkflowExpression<string> bodygroupId = null, WorkflowExpression<string> bodygroupMsg = null, WorkflowExpression<bodymessagesInputItem[]> bodymessages = null)
-        {
-            WorkflowExpression.Validate(bodygroupId, nameof(bodygroupId), required: false);
-            WorkflowExpression.Validate(bodygroupMsg, nameof(bodygroupMsg), required: false);
-            WorkflowExpression.Validate(bodymessages, nameof(bodymessages), required: false);
+            var __workflow_bodygroupId = bodygroupId == null ? null : WorkflowExpression.Compile(bodygroupId);
+            WorkflowExpression.Validate(__workflow_bodygroupId, nameof(bodygroupId), required: false);
+            var __workflow_bodygroupMsg = bodygroupMsg == null ? null : WorkflowExpression.Compile(bodygroupMsg);
+            WorkflowExpression.Validate(__workflow_bodygroupMsg, nameof(bodygroupMsg), required: false);
+            var __workflow_bodymessages = bodymessages == null ? null : WorkflowExpression.Compile(bodymessages);
+            WorkflowExpression.Validate(__workflow_bodymessages, nameof(bodymessages), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/sms";
@@ -33,21 +28,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobsimsendsms
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodygroupId != null)
+                if (__workflow_bodygroupId != null)
                 {
-                    body["groupId"] = ExpressionConverter.ConvertO(bodygroupId);
+                    body["groupId"] = ExpressionConverter.ConvertO(__workflow_bodygroupId);
                     bodypropCount++;
                 }
 
-                if (bodygroupMsg != null)
+                if (__workflow_bodygroupMsg != null)
                 {
-                    body["groupMsg"] = ExpressionConverter.ConvertO(bodygroupMsg);
+                    body["groupMsg"] = ExpressionConverter.ConvertO(__workflow_bodygroupMsg);
                     bodypropCount++;
                 }
 
-                if (bodymessages != null)
+                if (__workflow_bodymessages != null)
                 {
-                    body["messages"] = ExpressionConverter.ConvertO(bodymessages);
+                    body["messages"] = ExpressionConverter.ConvertO(__workflow_bodymessages);
                     bodypropCount++;
                 }
 

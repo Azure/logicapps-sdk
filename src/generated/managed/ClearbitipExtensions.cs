@@ -1,44 +1,40 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clearbitip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class ClearbitipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clearbitip")]
-        [WorkflowExpressionFactory(nameof(__BuildLogoGet))]
-        public IBodyWorkflowAction<JToken> LogoGet([WorkflowExpression] Func<string> domain, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<bool> greyscale = null)
+        public IBodyWorkflowAction<JToken> LogoGet(Expression<Func<string>> domain, Expression<Func<int>> size = null, Expression<Func<formatInput>> format = null, Expression<Func<bool>> greyscale = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildLogoGet(WorkflowExpression<string> domain, WorkflowExpression<int> size = null, WorkflowExpression<formatInput> format = null, WorkflowExpression<bool> greyscale = null)
-        {
-            WorkflowExpression.Validate(domain, nameof(domain), required: true);
-            WorkflowExpression.Validate(size, nameof(size), required: false);
-            WorkflowExpression.Validate(format, nameof(format), required: false);
-            WorkflowExpression.Validate(greyscale, nameof(greyscale), required: false);
+            var __workflow_domain = domain == null ? null : WorkflowExpression.Compile(domain);
+            WorkflowExpression.Validate(__workflow_domain, nameof(domain), required: true);
+            var __workflow_size = size == null ? null : WorkflowExpression.Compile(size);
+            WorkflowExpression.Validate(__workflow_size, nameof(size), required: false);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
+            var __workflow_greyscale = greyscale == null ? null : WorkflowExpression.Compile(greyscale);
+            WorkflowExpression.Validate(__workflow_greyscale, nameof(greyscale), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}", ExpressionConverter.ConvertWithUrlEncoding(domain, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_domain, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["size"] = Convert.ToString(128);
-                if (size != null)
-                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                if (__workflow_size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(__workflow_size);
                 callPayload.Queries["format"] = Convert.ToString("png");
-                if (format != null)
-                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 callPayload.Queries["greyscale"] = Convert.ToString(false);
-                if (greyscale != null)
-                    callPayload.Queries["greyscale"] = ExpressionConverter.Convert(greyscale);
+                if (__workflow_greyscale != null)
+                    callPayload.Queries["greyscale"] = ExpressionConverter.Convert(__workflow_greyscale);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }

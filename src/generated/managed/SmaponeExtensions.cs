@@ -1,12 +1,12 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class SmaponeActions([ConnectionName] string connectionId)
     {
@@ -38,19 +38,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        [WorkflowExpressionFactory(nameof(__BuildGETDataSource))]
-        public IBodyWorkflowAction<DataSourceModel> GETDataSource([WorkflowExpression] Func<string> dataSourceId)
+        public IBodyWorkflowAction<DataSourceModel> GETDataSource(Expression<Func<string>> dataSourceId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DataSourceModel> __BuildGETDataSource(WorkflowExpression<string> dataSourceId)
-        {
-            WorkflowExpression.Validate(dataSourceId, nameof(dataSourceId), required: true);
+            var __workflow_dataSourceId = dataSourceId == null ? null : WorkflowExpression.Compile(dataSourceId);
+            WorkflowExpression.Validate(__workflow_dataSourceId, nameof(dataSourceId), required: true);
             return new DeferredBodyAction<DataSourceModel>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/intern/DataSource/{0}", ExpressionConverter.ConvertWithUrlEncoding(dataSourceId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/intern/DataSource/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataSourceId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DataSourceModel>(callPayload);
@@ -58,20 +52,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        [WorkflowExpressionFactory(nameof(__BuildGETDataSourceDefinitionValues))]
-        public IBodyWorkflowAction<JToken[]> GETDataSourceDefinitionValues([WorkflowExpression] Func<string> dataSourceId, [WorkflowExpression] Func<string> dataSourceVersion)
+        public IBodyWorkflowAction<JToken[]> GETDataSourceDefinitionValues(Expression<Func<string>> dataSourceId, Expression<Func<string>> dataSourceVersion)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken[]> __BuildGETDataSourceDefinitionValues(WorkflowExpression<string> dataSourceId, WorkflowExpression<string> dataSourceVersion)
-        {
-            WorkflowExpression.Validate(dataSourceId, nameof(dataSourceId), required: true);
-            WorkflowExpression.Validate(dataSourceVersion, nameof(dataSourceVersion), required: true);
+            var __workflow_dataSourceId = dataSourceId == null ? null : WorkflowExpression.Compile(dataSourceId);
+            WorkflowExpression.Validate(__workflow_dataSourceId, nameof(dataSourceId), required: true);
+            var __workflow_dataSourceVersion = dataSourceVersion == null ? null : WorkflowExpression.Compile(dataSourceVersion);
+            WorkflowExpression.Validate(__workflow_dataSourceVersion, nameof(dataSourceVersion), required: true);
             return new DeferredBodyAction<JToken[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/intern/DataSource/{0}/Versions/{1}/Definition/Values", ExpressionConverter.ConvertWithUrlEncoding(dataSourceId, 1), ExpressionConverter.ConvertWithUrlEncoding(dataSourceVersion, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/intern/DataSource/{0}/Versions/{1}/Definition/Values", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataSourceId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataSourceVersion, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<JToken[]>(callPayload);
@@ -79,24 +68,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        [WorkflowExpressionFactory(nameof(__BuildPUTDataSourceDefinitionValues))]
-        public IBodyWorkflowAction<DataSourceVersionModel> PUTDataSourceDefinitionValues([WorkflowExpression] Func<string> dataSourceId, [WorkflowExpression] Func<string> dataSourceVersion, [WorkflowExpression] Func<JToken[]> values = null)
+        public IBodyWorkflowAction<DataSourceVersionModel> PUTDataSourceDefinitionValues(Expression<Func<string>> dataSourceId, Expression<Func<string>> dataSourceVersion, Expression<Func<JToken[]>> values = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DataSourceVersionModel> __BuildPUTDataSourceDefinitionValues(WorkflowExpression<string> dataSourceId, WorkflowExpression<string> dataSourceVersion, WorkflowExpression<JToken[]> values = null)
-        {
-            WorkflowExpression.Validate(dataSourceId, nameof(dataSourceId), required: true);
-            WorkflowExpression.Validate(dataSourceVersion, nameof(dataSourceVersion), required: true);
-            WorkflowExpression.Validate(values, nameof(values), required: false);
+            var __workflow_dataSourceId = dataSourceId == null ? null : WorkflowExpression.Compile(dataSourceId);
+            WorkflowExpression.Validate(__workflow_dataSourceId, nameof(dataSourceId), required: true);
+            var __workflow_dataSourceVersion = dataSourceVersion == null ? null : WorkflowExpression.Compile(dataSourceVersion);
+            WorkflowExpression.Validate(__workflow_dataSourceVersion, nameof(dataSourceVersion), required: true);
+            var __workflow_values = values == null ? null : WorkflowExpression.Compile(values);
+            WorkflowExpression.Validate(__workflow_values, nameof(values), required: false);
             return new DeferredBodyAction<DataSourceVersionModel>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/intern/DataSource/{0}/Versions/{1}/Definition/Values", ExpressionConverter.ConvertWithUrlEncoding(dataSourceId, 1), ExpressionConverter.ConvertWithUrlEncoding(dataSourceVersion, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/intern/DataSource/{0}/Versions/{1}/Definition/Values", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataSourceId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataSourceVersion, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(values);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_values);
                 return new ApiConnectionAction<DataSourceVersionModel>(callPayload);
             });
         }
@@ -111,19 +96,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        [WorkflowExpressionFactory(nameof(__BuildGETSmap))]
-        public IBodyWorkflowAction<SmapModel> GETSmap([WorkflowExpression] Func<string> smapId)
+        public IBodyWorkflowAction<SmapModel> GETSmap(Expression<Func<string>> smapId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SmapModel> __BuildGETSmap(WorkflowExpression<string> smapId)
-        {
-            WorkflowExpression.Validate(smapId, nameof(smapId), required: true);
+            var __workflow_smapId = smapId == null ? null : WorkflowExpression.Compile(smapId);
+            WorkflowExpression.Validate(__workflow_smapId, nameof(smapId), required: true);
             return new DeferredBodyAction<SmapModel>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Smaps/{0}", ExpressionConverter.ConvertWithUrlEncoding(smapId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Smaps/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_smapId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SmapModel>(callPayload);
@@ -131,156 +110,142 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        [WorkflowExpressionFactory(nameof(__BuildGETSmapDataFormat))]
-        public IBodyWorkflowAction<DataRecordApi[]> GETSmapDataFormat([WorkflowExpression] Func<string> smapId, [WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<bool> markAsExported = null, [WorkflowExpression] Func<stateInput> state = null)
+        public IBodyWorkflowAction<DataRecordApi[]> GETSmapDataFormat(Expression<Func<string>> smapId, Expression<Func<formatInput>> format, Expression<Func<bool>> markAsExported = null, Expression<Func<stateInput>> state = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DataRecordApi[]> __BuildGETSmapDataFormat(WorkflowExpression<string> smapId, WorkflowExpression<formatInput> format, WorkflowExpression<bool> markAsExported = null, WorkflowExpression<stateInput> state = null)
-        {
-            WorkflowExpression.Validate(smapId, nameof(smapId), required: true);
-            WorkflowExpression.Validate(format, nameof(format), required: true);
-            WorkflowExpression.Validate(markAsExported, nameof(markAsExported), required: false);
-            WorkflowExpression.Validate(state, nameof(state), required: false);
+            var __workflow_smapId = smapId == null ? null : WorkflowExpression.Compile(smapId);
+            WorkflowExpression.Validate(__workflow_smapId, nameof(smapId), required: true);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: true);
+            var __workflow_markAsExported = markAsExported == null ? null : WorkflowExpression.Compile(markAsExported);
+            WorkflowExpression.Validate(__workflow_markAsExported, nameof(markAsExported), required: false);
+            var __workflow_state = state == null ? null : WorkflowExpression.Compile(state);
+            WorkflowExpression.Validate(__workflow_state, nameof(state), required: false);
             return new DeferredBodyAction<DataRecordApi[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Smaps/{0}/Data.{1}", ExpressionConverter.ConvertWithUrlEncoding(smapId, 1), ExpressionConverter.ConvertWithUrlEncoding(format, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Smaps/{0}/Data.{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_smapId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["markAsExported"] = Convert.ToString(false);
-                if (markAsExported != null)
-                    callPayload.Queries["markAsExported"] = ExpressionConverter.Convert(markAsExported);
-                if (state != null)
-                    callPayload.Queries["state"] = ExpressionConverter.Convert(state);
+                if (__workflow_markAsExported != null)
+                    callPayload.Queries["markAsExported"] = ExpressionConverter.Convert(__workflow_markAsExported);
+                if (__workflow_state != null)
+                    callPayload.Queries["state"] = ExpressionConverter.Convert(__workflow_state);
                 return new ApiConnectionAction<DataRecordApi[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        [WorkflowExpressionFactory(nameof(__BuildGETSmapDataReport))]
-        public IBodyWorkflowAction<string> GETSmapDataReport([WorkflowExpression] Func<string> smapId, [WorkflowExpression] Func<bool> markAsExported = null, [WorkflowExpression] Func<stateInput> state = null)
+        public IBodyWorkflowAction<string> GETSmapDataReport(Expression<Func<string>> smapId, Expression<Func<bool>> markAsExported = null, Expression<Func<stateInput>> state = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildGETSmapDataReport(WorkflowExpression<string> smapId, WorkflowExpression<bool> markAsExported = null, WorkflowExpression<stateInput> state = null)
-        {
-            WorkflowExpression.Validate(smapId, nameof(smapId), required: true);
-            WorkflowExpression.Validate(markAsExported, nameof(markAsExported), required: false);
-            WorkflowExpression.Validate(state, nameof(state), required: false);
+            var __workflow_smapId = smapId == null ? null : WorkflowExpression.Compile(smapId);
+            WorkflowExpression.Validate(__workflow_smapId, nameof(smapId), required: true);
+            var __workflow_markAsExported = markAsExported == null ? null : WorkflowExpression.Compile(markAsExported);
+            WorkflowExpression.Validate(__workflow_markAsExported, nameof(markAsExported), required: false);
+            var __workflow_state = state == null ? null : WorkflowExpression.Compile(state);
+            WorkflowExpression.Validate(__workflow_state, nameof(state), required: false);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Smaps/{0}/Data.pdf", ExpressionConverter.ConvertWithUrlEncoding(smapId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Smaps/{0}/Data.pdf", ExpressionConverter.ConvertWithUrlEncoding(__workflow_smapId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["markAsExported"] = Convert.ToString(false);
-                if (markAsExported != null)
-                    callPayload.Queries["markAsExported"] = ExpressionConverter.Convert(markAsExported);
-                if (state != null)
-                    callPayload.Queries["state"] = ExpressionConverter.Convert(state);
+                if (__workflow_markAsExported != null)
+                    callPayload.Queries["markAsExported"] = ExpressionConverter.Convert(__workflow_markAsExported);
+                if (__workflow_state != null)
+                    callPayload.Queries["state"] = ExpressionConverter.Convert(__workflow_state);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        [WorkflowExpressionFactory(nameof(__BuildGETSmapVersionData))]
-        public IBodyWorkflowAction<DataRecordApi[]> GETSmapVersionData([WorkflowExpression] Func<string> smapId, [WorkflowExpression] Func<string> version, [WorkflowExpression] Func<bool> markAsExported = null, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<stateInput> state = null)
+        public IBodyWorkflowAction<DataRecordApi[]> GETSmapVersionData(Expression<Func<string>> smapId, Expression<Func<string>> version, Expression<Func<bool>> markAsExported = null, Expression<Func<formatInput>> format = null, Expression<Func<stateInput>> state = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DataRecordApi[]> __BuildGETSmapVersionData(WorkflowExpression<string> smapId, WorkflowExpression<string> version, WorkflowExpression<bool> markAsExported = null, WorkflowExpression<formatInput> format = null, WorkflowExpression<stateInput> state = null)
-        {
-            WorkflowExpression.Validate(smapId, nameof(smapId), required: true);
-            WorkflowExpression.Validate(version, nameof(version), required: true);
-            WorkflowExpression.Validate(markAsExported, nameof(markAsExported), required: false);
-            WorkflowExpression.Validate(format, nameof(format), required: false);
-            WorkflowExpression.Validate(state, nameof(state), required: false);
+            var __workflow_smapId = smapId == null ? null : WorkflowExpression.Compile(smapId);
+            WorkflowExpression.Validate(__workflow_smapId, nameof(smapId), required: true);
+            var __workflow_version = version == null ? null : WorkflowExpression.Compile(version);
+            WorkflowExpression.Validate(__workflow_version, nameof(version), required: true);
+            var __workflow_markAsExported = markAsExported == null ? null : WorkflowExpression.Compile(markAsExported);
+            WorkflowExpression.Validate(__workflow_markAsExported, nameof(markAsExported), required: false);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
+            var __workflow_state = state == null ? null : WorkflowExpression.Compile(state);
+            WorkflowExpression.Validate(__workflow_state, nameof(state), required: false);
             return new DeferredBodyAction<DataRecordApi[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Smaps/{0}/Versions/{1}/Data", ExpressionConverter.ConvertWithUrlEncoding(smapId, 1), ExpressionConverter.ConvertWithUrlEncoding(version, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Smaps/{0}/Versions/{1}/Data", ExpressionConverter.ConvertWithUrlEncoding(__workflow_smapId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_version, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["markAsExported"] = Convert.ToString(false);
-                if (markAsExported != null)
-                    callPayload.Queries["markAsExported"] = ExpressionConverter.Convert(markAsExported);
+                if (__workflow_markAsExported != null)
+                    callPayload.Queries["markAsExported"] = ExpressionConverter.Convert(__workflow_markAsExported);
                 callPayload.Queries["format"] = Convert.ToString("Json");
-                if (format != null)
-                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-                if (state != null)
-                    callPayload.Queries["state"] = ExpressionConverter.Convert(state);
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                if (__workflow_state != null)
+                    callPayload.Queries["state"] = ExpressionConverter.Convert(__workflow_state);
                 return new ApiConnectionAction<DataRecordApi[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        [WorkflowExpressionFactory(nameof(__BuildDELETESmapVersionData))]
-        public IWorkflowAction DELETESmapVersionData([WorkflowExpression] Func<string> smapId, [WorkflowExpression] Func<string> version, [WorkflowExpression] Func<stateInput> state = null)
+        public IWorkflowAction DELETESmapVersionData(Expression<Func<string>> smapId, Expression<Func<string>> version, Expression<Func<stateInput>> state = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDELETESmapVersionData(WorkflowExpression<string> smapId, WorkflowExpression<string> version, WorkflowExpression<stateInput> state = null)
-        {
-            WorkflowExpression.Validate(smapId, nameof(smapId), required: true);
-            WorkflowExpression.Validate(version, nameof(version), required: true);
-            WorkflowExpression.Validate(state, nameof(state), required: false);
+            var __workflow_smapId = smapId == null ? null : WorkflowExpression.Compile(smapId);
+            WorkflowExpression.Validate(__workflow_smapId, nameof(smapId), required: true);
+            var __workflow_version = version == null ? null : WorkflowExpression.Compile(version);
+            WorkflowExpression.Validate(__workflow_version, nameof(version), required: true);
+            var __workflow_state = state == null ? null : WorkflowExpression.Compile(state);
+            WorkflowExpression.Validate(__workflow_state, nameof(state), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Smaps/{0}/Versions/{1}/Data", ExpressionConverter.ConvertWithUrlEncoding(smapId, 1), ExpressionConverter.ConvertWithUrlEncoding(version, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Smaps/{0}/Versions/{1}/Data", ExpressionConverter.ConvertWithUrlEncoding(__workflow_smapId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_version, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (state != null)
-                    callPayload.Queries["state"] = ExpressionConverter.Convert(state);
+                if (__workflow_state != null)
+                    callPayload.Queries["state"] = ExpressionConverter.Convert(__workflow_state);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        [WorkflowExpressionFactory(nameof(__BuildPOSTSmapsDataVersion))]
-        public IBodyWorkflowAction<DataRecordApi> POSTSmapsDataVersion([WorkflowExpression] Func<string> smapId, [WorkflowExpression] Func<string> version, [WorkflowExpression] Func<string> tasktitle, [WorkflowExpression] Func<string> taskuserEmail = null, [WorkflowExpression] Func<string> taskcomment = null, [WorkflowExpression] Func<bool> taskhasPriority = null)
+        public IBodyWorkflowAction<DataRecordApi> POSTSmapsDataVersion(Expression<Func<string>> smapId, Expression<Func<string>> version, Expression<Func<string>> tasktitle, Expression<Func<string>> taskuserEmail = null, Expression<Func<string>> taskcomment = null, Expression<Func<bool>> taskhasPriority = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DataRecordApi> __BuildPOSTSmapsDataVersion(WorkflowExpression<string> smapId, WorkflowExpression<string> version, WorkflowExpression<string> tasktitle, WorkflowExpression<string> taskuserEmail = null, WorkflowExpression<string> taskcomment = null, WorkflowExpression<bool> taskhasPriority = null)
-        {
-            WorkflowExpression.Validate(smapId, nameof(smapId), required: true);
-            WorkflowExpression.Validate(version, nameof(version), required: true);
-            WorkflowExpression.Validate(tasktitle, nameof(tasktitle), required: true);
-            WorkflowExpression.Validate(taskuserEmail, nameof(taskuserEmail), required: false);
-            WorkflowExpression.Validate(taskcomment, nameof(taskcomment), required: false);
-            WorkflowExpression.Validate(taskhasPriority, nameof(taskhasPriority), required: false);
+            var __workflow_smapId = smapId == null ? null : WorkflowExpression.Compile(smapId);
+            WorkflowExpression.Validate(__workflow_smapId, nameof(smapId), required: true);
+            var __workflow_version = version == null ? null : WorkflowExpression.Compile(version);
+            WorkflowExpression.Validate(__workflow_version, nameof(version), required: true);
+            var __workflow_tasktitle = tasktitle == null ? null : WorkflowExpression.Compile(tasktitle);
+            WorkflowExpression.Validate(__workflow_tasktitle, nameof(tasktitle), required: true);
+            var __workflow_taskuserEmail = taskuserEmail == null ? null : WorkflowExpression.Compile(taskuserEmail);
+            WorkflowExpression.Validate(__workflow_taskuserEmail, nameof(taskuserEmail), required: false);
+            var __workflow_taskcomment = taskcomment == null ? null : WorkflowExpression.Compile(taskcomment);
+            WorkflowExpression.Validate(__workflow_taskcomment, nameof(taskcomment), required: false);
+            var __workflow_taskhasPriority = taskhasPriority == null ? null : WorkflowExpression.Compile(taskhasPriority);
+            WorkflowExpression.Validate(__workflow_taskhasPriority, nameof(taskhasPriority), required: false);
             return new DeferredBodyAction<DataRecordApi>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/intern/Smaps/{0}/Versions/{1}/Data", ExpressionConverter.ConvertWithUrlEncoding(smapId, 1), ExpressionConverter.ConvertWithUrlEncoding(version, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/intern/Smaps/{0}/Versions/{1}/Data", ExpressionConverter.ConvertWithUrlEncoding(__workflow_smapId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_version, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var task = new JObject();
                 var taskpropCount = 0;
-                if (taskuserEmail != null)
+                if (__workflow_taskuserEmail != null)
                 {
-                    task["userEmail"] = ExpressionConverter.ConvertO(taskuserEmail);
+                    task["userEmail"] = ExpressionConverter.ConvertO(__workflow_taskuserEmail);
                     taskpropCount++;
                 }
 
                 taskpropCount++;
-                task["title"] = ExpressionConverter.ConvertO(tasktitle);
-                if (taskcomment != null)
+                task["title"] = ExpressionConverter.ConvertO(__workflow_tasktitle);
+                if (__workflow_taskcomment != null)
                 {
-                    task["comment"] = ExpressionConverter.ConvertO(taskcomment);
+                    task["comment"] = ExpressionConverter.ConvertO(__workflow_taskcomment);
                     taskpropCount++;
                 }
 
-                if (taskhasPriority != null)
+                if (__workflow_taskhasPriority != null)
                 {
-                    task["hasPriority"] = ExpressionConverter.ConvertO(taskhasPriority);
+                    task["hasPriority"] = ExpressionConverter.ConvertO(__workflow_taskhasPriority);
                     taskpropCount++;
                 }
 
@@ -302,110 +267,100 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        [WorkflowExpressionFactory(nameof(__BuildGETSmapVersionDataReport))]
-        public IBodyWorkflowAction<string> GETSmapVersionDataReport([WorkflowExpression] Func<string> smapId, [WorkflowExpression] Func<string> version, [WorkflowExpression] Func<bool> markAsExported = null, [WorkflowExpression] Func<stateInput> state = null)
+        public IBodyWorkflowAction<string> GETSmapVersionDataReport(Expression<Func<string>> smapId, Expression<Func<string>> version, Expression<Func<bool>> markAsExported = null, Expression<Func<stateInput>> state = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildGETSmapVersionDataReport(WorkflowExpression<string> smapId, WorkflowExpression<string> version, WorkflowExpression<bool> markAsExported = null, WorkflowExpression<stateInput> state = null)
-        {
-            WorkflowExpression.Validate(smapId, nameof(smapId), required: true);
-            WorkflowExpression.Validate(version, nameof(version), required: true);
-            WorkflowExpression.Validate(markAsExported, nameof(markAsExported), required: false);
-            WorkflowExpression.Validate(state, nameof(state), required: false);
+            var __workflow_smapId = smapId == null ? null : WorkflowExpression.Compile(smapId);
+            WorkflowExpression.Validate(__workflow_smapId, nameof(smapId), required: true);
+            var __workflow_version = version == null ? null : WorkflowExpression.Compile(version);
+            WorkflowExpression.Validate(__workflow_version, nameof(version), required: true);
+            var __workflow_markAsExported = markAsExported == null ? null : WorkflowExpression.Compile(markAsExported);
+            WorkflowExpression.Validate(__workflow_markAsExported, nameof(markAsExported), required: false);
+            var __workflow_state = state == null ? null : WorkflowExpression.Compile(state);
+            WorkflowExpression.Validate(__workflow_state, nameof(state), required: false);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Smaps/{0}/Versions/{1}/Data.pdf", ExpressionConverter.ConvertWithUrlEncoding(smapId, 1), ExpressionConverter.ConvertWithUrlEncoding(version, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Smaps/{0}/Versions/{1}/Data.pdf", ExpressionConverter.ConvertWithUrlEncoding(__workflow_smapId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_version, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["markAsExported"] = Convert.ToString(false);
-                if (markAsExported != null)
-                    callPayload.Queries["markAsExported"] = ExpressionConverter.Convert(markAsExported);
-                if (state != null)
-                    callPayload.Queries["state"] = ExpressionConverter.Convert(state);
+                if (__workflow_markAsExported != null)
+                    callPayload.Queries["markAsExported"] = ExpressionConverter.Convert(__workflow_markAsExported);
+                if (__workflow_state != null)
+                    callPayload.Queries["state"] = ExpressionConverter.Convert(__workflow_state);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        [WorkflowExpressionFactory(nameof(__BuildGETSmapVersionRecordReport))]
-        public IBodyWorkflowAction<string> GETSmapVersionRecordReport([WorkflowExpression] Func<string> smapId, [WorkflowExpression] Func<string> version, [WorkflowExpression] Func<string> recordId, [WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<bool> markAsExported = null, [WorkflowExpression] Func<bool> useDefault = null)
+        public IBodyWorkflowAction<string> GETSmapVersionRecordReport(Expression<Func<string>> smapId, Expression<Func<string>> version, Expression<Func<string>> recordId, Expression<Func<formatInput>> format, Expression<Func<bool>> markAsExported = null, Expression<Func<bool>> useDefault = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildGETSmapVersionRecordReport(WorkflowExpression<string> smapId, WorkflowExpression<string> version, WorkflowExpression<string> recordId, WorkflowExpression<formatInput> format, WorkflowExpression<bool> markAsExported = null, WorkflowExpression<bool> useDefault = null)
-        {
-            WorkflowExpression.Validate(smapId, nameof(smapId), required: true);
-            WorkflowExpression.Validate(version, nameof(version), required: true);
-            WorkflowExpression.Validate(recordId, nameof(recordId), required: true);
-            WorkflowExpression.Validate(format, nameof(format), required: true);
-            WorkflowExpression.Validate(markAsExported, nameof(markAsExported), required: false);
-            WorkflowExpression.Validate(useDefault, nameof(useDefault), required: false);
+            var __workflow_smapId = smapId == null ? null : WorkflowExpression.Compile(smapId);
+            WorkflowExpression.Validate(__workflow_smapId, nameof(smapId), required: true);
+            var __workflow_version = version == null ? null : WorkflowExpression.Compile(version);
+            WorkflowExpression.Validate(__workflow_version, nameof(version), required: true);
+            var __workflow_recordId = recordId == null ? null : WorkflowExpression.Compile(recordId);
+            WorkflowExpression.Validate(__workflow_recordId, nameof(recordId), required: true);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: true);
+            var __workflow_markAsExported = markAsExported == null ? null : WorkflowExpression.Compile(markAsExported);
+            WorkflowExpression.Validate(__workflow_markAsExported, nameof(markAsExported), required: false);
+            var __workflow_useDefault = useDefault == null ? null : WorkflowExpression.Compile(useDefault);
+            WorkflowExpression.Validate(__workflow_useDefault, nameof(useDefault), required: false);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Smaps/{0}/Versions/{1}/Data/{2}.{3}", ExpressionConverter.ConvertWithUrlEncoding(smapId, 1), ExpressionConverter.ConvertWithUrlEncoding(version, 1), ExpressionConverter.ConvertWithUrlEncoding(recordId, 1), ExpressionConverter.ConvertWithUrlEncoding(format, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Smaps/{0}/Versions/{1}/Data/{2}.{3}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_smapId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_version, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_recordId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["markAsExported"] = Convert.ToString(false);
-                if (markAsExported != null)
-                    callPayload.Queries["markAsExported"] = ExpressionConverter.Convert(markAsExported);
+                if (__workflow_markAsExported != null)
+                    callPayload.Queries["markAsExported"] = ExpressionConverter.Convert(__workflow_markAsExported);
                 callPayload.Queries["useDefault"] = Convert.ToString(false);
-                if (useDefault != null)
-                    callPayload.Queries["useDefault"] = ExpressionConverter.Convert(useDefault);
+                if (__workflow_useDefault != null)
+                    callPayload.Queries["useDefault"] = ExpressionConverter.Convert(__workflow_useDefault);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        [WorkflowExpressionFactory(nameof(__BuildGETSmapVersionRecordFormat))]
-        public IBodyWorkflowAction<DataRecordApi> GETSmapVersionRecordFormat([WorkflowExpression] Func<string> smapId, [WorkflowExpression] Func<string> version, [WorkflowExpression] Func<string> recordId, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<bool> markAsExported = null)
+        public IBodyWorkflowAction<DataRecordApi> GETSmapVersionRecordFormat(Expression<Func<string>> smapId, Expression<Func<string>> version, Expression<Func<string>> recordId, Expression<Func<formatInput>> format = null, Expression<Func<bool>> markAsExported = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DataRecordApi> __BuildGETSmapVersionRecordFormat(WorkflowExpression<string> smapId, WorkflowExpression<string> version, WorkflowExpression<string> recordId, WorkflowExpression<formatInput> format = null, WorkflowExpression<bool> markAsExported = null)
-        {
-            WorkflowExpression.Validate(smapId, nameof(smapId), required: true);
-            WorkflowExpression.Validate(version, nameof(version), required: true);
-            WorkflowExpression.Validate(recordId, nameof(recordId), required: true);
-            WorkflowExpression.Validate(format, nameof(format), required: false);
-            WorkflowExpression.Validate(markAsExported, nameof(markAsExported), required: false);
+            var __workflow_smapId = smapId == null ? null : WorkflowExpression.Compile(smapId);
+            WorkflowExpression.Validate(__workflow_smapId, nameof(smapId), required: true);
+            var __workflow_version = version == null ? null : WorkflowExpression.Compile(version);
+            WorkflowExpression.Validate(__workflow_version, nameof(version), required: true);
+            var __workflow_recordId = recordId == null ? null : WorkflowExpression.Compile(recordId);
+            WorkflowExpression.Validate(__workflow_recordId, nameof(recordId), required: true);
+            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
+            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
+            var __workflow_markAsExported = markAsExported == null ? null : WorkflowExpression.Compile(markAsExported);
+            WorkflowExpression.Validate(__workflow_markAsExported, nameof(markAsExported), required: false);
             return new DeferredBodyAction<DataRecordApi>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Smaps/{0}/Versions/{1}/Data/{2}", ExpressionConverter.ConvertWithUrlEncoding(smapId, 1), ExpressionConverter.ConvertWithUrlEncoding(version, 1), ExpressionConverter.ConvertWithUrlEncoding(recordId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Smaps/{0}/Versions/{1}/Data/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_smapId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_version, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_recordId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = Convert.ToString("Json");
-                if (format != null)
-                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 callPayload.Queries["markAsExported"] = Convert.ToString(false);
-                if (markAsExported != null)
-                    callPayload.Queries["markAsExported"] = ExpressionConverter.Convert(markAsExported);
+                if (__workflow_markAsExported != null)
+                    callPayload.Queries["markAsExported"] = ExpressionConverter.Convert(__workflow_markAsExported);
                 return new ApiConnectionAction<DataRecordApi>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        [WorkflowExpressionFactory(nameof(__BuildDELETESmapVersionDataRecord))]
-        public IWorkflowAction DELETESmapVersionDataRecord([WorkflowExpression] Func<string> smapId, [WorkflowExpression] Func<string> version, [WorkflowExpression] Func<string> recordId)
+        public IWorkflowAction DELETESmapVersionDataRecord(Expression<Func<string>> smapId, Expression<Func<string>> version, Expression<Func<string>> recordId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDELETESmapVersionDataRecord(WorkflowExpression<string> smapId, WorkflowExpression<string> version, WorkflowExpression<string> recordId)
-        {
-            WorkflowExpression.Validate(smapId, nameof(smapId), required: true);
-            WorkflowExpression.Validate(version, nameof(version), required: true);
-            WorkflowExpression.Validate(recordId, nameof(recordId), required: true);
+            var __workflow_smapId = smapId == null ? null : WorkflowExpression.Compile(smapId);
+            WorkflowExpression.Validate(__workflow_smapId, nameof(smapId), required: true);
+            var __workflow_version = version == null ? null : WorkflowExpression.Compile(version);
+            WorkflowExpression.Validate(__workflow_version, nameof(version), required: true);
+            var __workflow_recordId = recordId == null ? null : WorkflowExpression.Compile(recordId);
+            WorkflowExpression.Validate(__workflow_recordId, nameof(recordId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Smaps/{0}/Versions/{1}/Data/{2}", ExpressionConverter.ConvertWithUrlEncoding(smapId, 1), ExpressionConverter.ConvertWithUrlEncoding(version, 1), ExpressionConverter.ConvertWithUrlEncoding(recordId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Smaps/{0}/Versions/{1}/Data/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_smapId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_version, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_recordId, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -413,21 +368,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        [WorkflowExpressionFactory(nameof(__BuildGETSmapVersionRecordFiles))]
-        public IBodyWorkflowAction<SingleFileValue[]> GETSmapVersionRecordFiles([WorkflowExpression] Func<string> smapId, [WorkflowExpression] Func<string> version, [WorkflowExpression] Func<string> recordId)
+        public IBodyWorkflowAction<SingleFileValue[]> GETSmapVersionRecordFiles(Expression<Func<string>> smapId, Expression<Func<string>> version, Expression<Func<string>> recordId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SingleFileValue[]> __BuildGETSmapVersionRecordFiles(WorkflowExpression<string> smapId, WorkflowExpression<string> version, WorkflowExpression<string> recordId)
-        {
-            WorkflowExpression.Validate(smapId, nameof(smapId), required: true);
-            WorkflowExpression.Validate(version, nameof(version), required: true);
-            WorkflowExpression.Validate(recordId, nameof(recordId), required: true);
+            var __workflow_smapId = smapId == null ? null : WorkflowExpression.Compile(smapId);
+            WorkflowExpression.Validate(__workflow_smapId, nameof(smapId), required: true);
+            var __workflow_version = version == null ? null : WorkflowExpression.Compile(version);
+            WorkflowExpression.Validate(__workflow_version, nameof(version), required: true);
+            var __workflow_recordId = recordId == null ? null : WorkflowExpression.Compile(recordId);
+            WorkflowExpression.Validate(__workflow_recordId, nameof(recordId), required: true);
             return new DeferredBodyAction<SingleFileValue[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Smaps/{0}/Versions/{1}/Data/{2}/Files", ExpressionConverter.ConvertWithUrlEncoding(smapId, 1), ExpressionConverter.ConvertWithUrlEncoding(version, 1), ExpressionConverter.ConvertWithUrlEncoding(recordId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Smaps/{0}/Versions/{1}/Data/{2}/Files", ExpressionConverter.ConvertWithUrlEncoding(__workflow_smapId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_version, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_recordId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SingleFileValue[]>(callPayload);
@@ -435,22 +386,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        [WorkflowExpressionFactory(nameof(__BuildGETSmapVersionRecordFile))]
-        public IWorkflowAction GETSmapVersionRecordFile([WorkflowExpression] Func<string> smapId, [WorkflowExpression] Func<string> version, [WorkflowExpression] Func<string> recordId, [WorkflowExpression] Func<string> fileId)
+        public IWorkflowAction GETSmapVersionRecordFile(Expression<Func<string>> smapId, Expression<Func<string>> version, Expression<Func<string>> recordId, Expression<Func<string>> fileId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGETSmapVersionRecordFile(WorkflowExpression<string> smapId, WorkflowExpression<string> version, WorkflowExpression<string> recordId, WorkflowExpression<string> fileId)
-        {
-            WorkflowExpression.Validate(smapId, nameof(smapId), required: true);
-            WorkflowExpression.Validate(version, nameof(version), required: true);
-            WorkflowExpression.Validate(recordId, nameof(recordId), required: true);
-            WorkflowExpression.Validate(fileId, nameof(fileId), required: true);
+            var __workflow_smapId = smapId == null ? null : WorkflowExpression.Compile(smapId);
+            WorkflowExpression.Validate(__workflow_smapId, nameof(smapId), required: true);
+            var __workflow_version = version == null ? null : WorkflowExpression.Compile(version);
+            WorkflowExpression.Validate(__workflow_version, nameof(version), required: true);
+            var __workflow_recordId = recordId == null ? null : WorkflowExpression.Compile(recordId);
+            WorkflowExpression.Validate(__workflow_recordId, nameof(recordId), required: true);
+            var __workflow_fileId = fileId == null ? null : WorkflowExpression.Compile(fileId);
+            WorkflowExpression.Validate(__workflow_fileId, nameof(fileId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Smaps/{0}/Versions/{1}/Data/{2}/Files/{3}", ExpressionConverter.ConvertWithUrlEncoding(smapId, 1), ExpressionConverter.ConvertWithUrlEncoding(version, 1), ExpressionConverter.ConvertWithUrlEncoding(recordId, 1), ExpressionConverter.ConvertWithUrlEncoding(fileId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Smaps/{0}/Versions/{1}/Data/{2}/Files/{3}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_smapId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_version, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_recordId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fileId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -458,36 +406,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        [WorkflowExpressionFactory(nameof(__BuildPUTSmapVersionTaskState))]
-        public IBodyWorkflowAction<DataRecordApi> PUTSmapVersionTaskState([WorkflowExpression] Func<string> smapId, [WorkflowExpression] Func<string> version, [WorkflowExpression] Func<string> taskId, [WorkflowExpression] Func<stateactionInput> stateaction = null, [WorkflowExpression] Func<string> stateuserEmail = null)
+        public IBodyWorkflowAction<DataRecordApi> PUTSmapVersionTaskState(Expression<Func<string>> smapId, Expression<Func<string>> version, Expression<Func<string>> taskId, Expression<Func<stateactionInput>> stateaction = null, Expression<Func<string>> stateuserEmail = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DataRecordApi> __BuildPUTSmapVersionTaskState(WorkflowExpression<string> smapId, WorkflowExpression<string> version, WorkflowExpression<string> taskId, WorkflowExpression<stateactionInput> stateaction = null, WorkflowExpression<string> stateuserEmail = null)
-        {
-            WorkflowExpression.Validate(smapId, nameof(smapId), required: true);
-            WorkflowExpression.Validate(version, nameof(version), required: true);
-            WorkflowExpression.Validate(taskId, nameof(taskId), required: true);
-            WorkflowExpression.Validate(stateaction, nameof(stateaction), required: false);
-            WorkflowExpression.Validate(stateuserEmail, nameof(stateuserEmail), required: false);
+            var __workflow_smapId = smapId == null ? null : WorkflowExpression.Compile(smapId);
+            WorkflowExpression.Validate(__workflow_smapId, nameof(smapId), required: true);
+            var __workflow_version = version == null ? null : WorkflowExpression.Compile(version);
+            WorkflowExpression.Validate(__workflow_version, nameof(version), required: true);
+            var __workflow_taskId = taskId == null ? null : WorkflowExpression.Compile(taskId);
+            WorkflowExpression.Validate(__workflow_taskId, nameof(taskId), required: true);
+            var __workflow_stateaction = stateaction == null ? null : WorkflowExpression.Compile(stateaction);
+            WorkflowExpression.Validate(__workflow_stateaction, nameof(stateaction), required: false);
+            var __workflow_stateuserEmail = stateuserEmail == null ? null : WorkflowExpression.Compile(stateuserEmail);
+            WorkflowExpression.Validate(__workflow_stateuserEmail, nameof(stateuserEmail), required: false);
             return new DeferredBodyAction<DataRecordApi>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/intern/Smaps/{0}/Versions/{1}/Tasks/{2}/State", ExpressionConverter.ConvertWithUrlEncoding(smapId, 1), ExpressionConverter.ConvertWithUrlEncoding(version, 1), ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/intern/Smaps/{0}/Versions/{1}/Tasks/{2}/State", ExpressionConverter.ConvertWithUrlEncoding(__workflow_smapId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_version, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskId, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var state = new JObject();
                 var statepropCount = 0;
-                if (stateaction != null)
+                if (__workflow_stateaction != null)
                 {
-                    state["action"] = ExpressionConverter.ConvertO(stateaction);
+                    state["action"] = ExpressionConverter.ConvertO(__workflow_stateaction);
                     statepropCount++;
                 }
 
-                if (stateuserEmail != null)
+                if (__workflow_stateuserEmail != null)
                 {
-                    state["userEmail"] = ExpressionConverter.ConvertO(stateuserEmail);
+                    state["userEmail"] = ExpressionConverter.ConvertO(__workflow_stateuserEmail);
                     statepropCount++;
                 }
 
@@ -501,43 +447,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        [WorkflowExpressionFactory(nameof(__BuildPUTSmapVersionsCurrentDataSourcesUpdate))]
-        public IBodyWorkflowAction<SmapVersionModel> PUTSmapVersionsCurrentDataSourcesUpdate([WorkflowExpression] Func<string> smapId, [WorkflowExpression] Func<bool> updateEditVersion = null)
+        public IBodyWorkflowAction<SmapVersionModel> PUTSmapVersionsCurrentDataSourcesUpdate(Expression<Func<string>> smapId, Expression<Func<bool>> updateEditVersion = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SmapVersionModel> __BuildPUTSmapVersionsCurrentDataSourcesUpdate(WorkflowExpression<string> smapId, WorkflowExpression<bool> updateEditVersion = null)
-        {
-            WorkflowExpression.Validate(smapId, nameof(smapId), required: true);
-            WorkflowExpression.Validate(updateEditVersion, nameof(updateEditVersion), required: false);
+            var __workflow_smapId = smapId == null ? null : WorkflowExpression.Compile(smapId);
+            WorkflowExpression.Validate(__workflow_smapId, nameof(smapId), required: true);
+            var __workflow_updateEditVersion = updateEditVersion == null ? null : WorkflowExpression.Compile(updateEditVersion);
+            WorkflowExpression.Validate(__workflow_updateEditVersion, nameof(updateEditVersion), required: false);
             return new DeferredBodyAction<SmapVersionModel>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/intern/Smaps/{0}/Versions/Current/DataSources/Update", ExpressionConverter.ConvertWithUrlEncoding(smapId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/intern/Smaps/{0}/Versions/Current/DataSources/Update", ExpressionConverter.ConvertWithUrlEncoding(__workflow_smapId, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["updateEditVersion"] = Convert.ToString(false);
-                if (updateEditVersion != null)
-                    callPayload.Queries["updateEditVersion"] = ExpressionConverter.Convert(updateEditVersion);
+                if (__workflow_updateEditVersion != null)
+                    callPayload.Queries["updateEditVersion"] = ExpressionConverter.Convert(__workflow_updateEditVersion);
                 return new ApiConnectionAction<SmapVersionModel>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        [WorkflowExpressionFactory(nameof(__BuildGETSmapVersions))]
-        public IBodyWorkflowAction<SmapVersionModel[]> GETSmapVersions([WorkflowExpression] Func<string> smapId)
+        public IBodyWorkflowAction<SmapVersionModel[]> GETSmapVersions(Expression<Func<string>> smapId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SmapVersionModel[]> __BuildGETSmapVersions(WorkflowExpression<string> smapId)
-        {
-            WorkflowExpression.Validate(smapId, nameof(smapId), required: true);
+            var __workflow_smapId = smapId == null ? null : WorkflowExpression.Compile(smapId);
+            WorkflowExpression.Validate(__workflow_smapId, nameof(smapId), required: true);
             return new DeferredBodyAction<SmapVersionModel[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Smaps/{0}/Versions", ExpressionConverter.ConvertWithUrlEncoding(smapId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Smaps/{0}/Versions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_smapId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SmapVersionModel[]>(callPayload);
@@ -545,20 +480,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        [WorkflowExpressionFactory(nameof(__BuildGETSmapVersion))]
-        public IBodyWorkflowAction<SmapVersionModel> GETSmapVersion([WorkflowExpression] Func<string> smapId, [WorkflowExpression] Func<string> version)
+        public IBodyWorkflowAction<SmapVersionModel> GETSmapVersion(Expression<Func<string>> smapId, Expression<Func<string>> version)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SmapVersionModel> __BuildGETSmapVersion(WorkflowExpression<string> smapId, WorkflowExpression<string> version)
-        {
-            WorkflowExpression.Validate(smapId, nameof(smapId), required: true);
-            WorkflowExpression.Validate(version, nameof(version), required: true);
+            var __workflow_smapId = smapId == null ? null : WorkflowExpression.Compile(smapId);
+            WorkflowExpression.Validate(__workflow_smapId, nameof(smapId), required: true);
+            var __workflow_version = version == null ? null : WorkflowExpression.Compile(version);
+            WorkflowExpression.Validate(__workflow_version, nameof(version), required: true);
             return new DeferredBodyAction<SmapVersionModel>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/intern/Smaps/{0}/Versions/{1}", ExpressionConverter.ConvertWithUrlEncoding(smapId, 1), ExpressionConverter.ConvertWithUrlEncoding(version, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/intern/Smaps/{0}/Versions/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_smapId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_version, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SmapVersionModel>(callPayload);
@@ -566,20 +496,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        [WorkflowExpressionFactory(nameof(__BuildGETSmapVersionSchema))]
-        public IBodyWorkflowAction<JToken> GETSmapVersionSchema([WorkflowExpression] Func<string> smapId, [WorkflowExpression] Func<string> version)
+        public IBodyWorkflowAction<JToken> GETSmapVersionSchema(Expression<Func<string>> smapId, Expression<Func<string>> version)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildGETSmapVersionSchema(WorkflowExpression<string> smapId, WorkflowExpression<string> version)
-        {
-            WorkflowExpression.Validate(smapId, nameof(smapId), required: true);
-            WorkflowExpression.Validate(version, nameof(version), required: true);
+            var __workflow_smapId = smapId == null ? null : WorkflowExpression.Compile(smapId);
+            WorkflowExpression.Validate(__workflow_smapId, nameof(smapId), required: true);
+            var __workflow_version = version == null ? null : WorkflowExpression.Compile(version);
+            WorkflowExpression.Validate(__workflow_version, nameof(version), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/intern/Smaps/{0}/Versions/{1}/Schema", ExpressionConverter.ConvertWithUrlEncoding(smapId, 1), ExpressionConverter.ConvertWithUrlEncoding(version, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/intern/Smaps/{0}/Versions/{1}/Schema", ExpressionConverter.ConvertWithUrlEncoding(__workflow_smapId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_version, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<JToken>(callPayload);

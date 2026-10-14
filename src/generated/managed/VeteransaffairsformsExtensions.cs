@@ -1,52 +1,39 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsforms
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class VeteransaffairsformsActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsforms")]
-        [WorkflowExpressionFactory(nameof(__BuildListForms))]
-        public IBodyWorkflowAction<ListFormsResponse> ListForms([WorkflowExpression] Func<string> query = null)
+        public IBodyWorkflowAction<ListFormsResponse> ListForms(Expression<Func<string>> query = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListFormsResponse> __BuildListForms(WorkflowExpression<string> query = null)
-        {
-            WorkflowExpression.Validate(query, nameof(query), required: false);
+            var __workflow_query = query == null ? null : WorkflowExpression.Compile(query);
+            WorkflowExpression.Validate(__workflow_query, nameof(query), required: false);
             return new DeferredBodyAction<ListFormsResponse>(() =>
             {
                 var apiCallPath = "/forms";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (query != null)
-                    callPayload.Queries["query"] = ExpressionConverter.Convert(query);
+                if (__workflow_query != null)
+                    callPayload.Queries["query"] = ExpressionConverter.Convert(__workflow_query);
                 return new ApiConnectionAction<ListFormsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsforms")]
-        [WorkflowExpressionFactory(nameof(__BuildGetFormByName))]
-        public IBodyWorkflowAction<FormShow> GetFormByName([WorkflowExpression] Func<string> formName)
+        public IBodyWorkflowAction<FormShow> GetFormByName(Expression<Func<string>> formName)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FormShow> __BuildGetFormByName(WorkflowExpression<string> formName)
-        {
-            WorkflowExpression.Validate(formName, nameof(formName), required: true);
+            var __workflow_formName = formName == null ? null : WorkflowExpression.Compile(formName);
+            WorkflowExpression.Validate(__workflow_formName, nameof(formName), required: true);
             return new DeferredBodyAction<FormShow>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/forms/{0}", ExpressionConverter.ConvertWithUrlEncoding(formName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/forms/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_formName, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FormShow>(callPayload);

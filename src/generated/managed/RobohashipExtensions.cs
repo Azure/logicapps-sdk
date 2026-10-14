@@ -1,44 +1,41 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robohaship
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class RobohashipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "robohaship")]
-        [WorkflowExpressionFactory(nameof(__BuildImageGet))]
-        public IBodyWorkflowAction<ImageGetResponse> ImageGet([WorkflowExpression] Func<string> text, [WorkflowExpression] Func<setInput> set, [WorkflowExpression] Func<string> size = null, [WorkflowExpression] Func<string> bgset = null, [WorkflowExpression] Func<gravatarInput> gravatar = null)
+        public IBodyWorkflowAction<ImageGetResponse> ImageGet(Expression<Func<string>> text, Expression<Func<setInput>> set, Expression<Func<string>> size = null, Expression<Func<string>> bgset = null, Expression<Func<gravatarInput>> gravatar = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ImageGetResponse> __BuildImageGet(WorkflowExpression<string> text, WorkflowExpression<setInput> set, WorkflowExpression<string> size = null, WorkflowExpression<string> bgset = null, WorkflowExpression<gravatarInput> gravatar = null)
-        {
-            WorkflowExpression.Validate(text, nameof(text), required: true);
-            WorkflowExpression.Validate(set, nameof(set), required: true);
-            WorkflowExpression.Validate(size, nameof(size), required: false);
-            WorkflowExpression.Validate(bgset, nameof(bgset), required: false);
-            WorkflowExpression.Validate(gravatar, nameof(gravatar), required: false);
+            var __workflow_text = text == null ? null : WorkflowExpression.Compile(text);
+            WorkflowExpression.Validate(__workflow_text, nameof(text), required: true);
+            var __workflow_set = set == null ? null : WorkflowExpression.Compile(set);
+            WorkflowExpression.Validate(__workflow_set, nameof(set), required: true);
+            var __workflow_size = size == null ? null : WorkflowExpression.Compile(size);
+            WorkflowExpression.Validate(__workflow_size, nameof(size), required: false);
+            var __workflow_bgset = bgset == null ? null : WorkflowExpression.Compile(bgset);
+            WorkflowExpression.Validate(__workflow_bgset, nameof(bgset), required: false);
+            var __workflow_gravatar = gravatar == null ? null : WorkflowExpression.Compile(gravatar);
+            WorkflowExpression.Validate(__workflow_gravatar, nameof(gravatar), required: false);
             return new DeferredBodyAction<ImageGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}", ExpressionConverter.ConvertWithUrlEncoding(text, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_text, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["set"] = ExpressionConverter.Convert(set);
-                if (size != null)
-                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-                if (bgset != null)
-                    callPayload.Queries["bgset"] = ExpressionConverter.Convert(bgset);
+                callPayload.Queries["set"] = ExpressionConverter.Convert(__workflow_set);
+                if (__workflow_size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(__workflow_size);
+                if (__workflow_bgset != null)
+                    callPayload.Queries["bgset"] = ExpressionConverter.Convert(__workflow_bgset);
                 callPayload.Queries["gravatar"] = Convert.ToString("no");
-                if (gravatar != null)
-                    callPayload.Queries["gravatar"] = ExpressionConverter.Convert(gravatar);
+                if (__workflow_gravatar != null)
+                    callPayload.Queries["gravatar"] = ExpressionConverter.Convert(__workflow_gravatar);
                 return new ApiConnectionAction<ImageGetResponse>(callPayload);
             });
         }

@@ -1,12 +1,12 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors._1mecorporate
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class _1mecorporateActions([ConnectionName] string connectionId)
     {
@@ -20,20 +20,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1mecorporate
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1mecorporate")]
-        [WorkflowExpressionFactory(nameof(__BuildSendInvitation))]
-        public IBodyWorkflowAction<ApiResponse> SendInvitation([WorkflowExpression] Func<string> bodycardTemplateId, [WorkflowExpression] Func<string> bodyjobtitle, [WorkflowExpression] Func<string> bodyworkEmail, [WorkflowExpression] Func<string> bodynameOnCard = null, [WorkflowExpression] Func<string> bodyextension = null)
+        public IBodyWorkflowAction<ApiResponse> SendInvitation(Expression<Func<string>> bodycardTemplateId, Expression<Func<string>> bodyjobtitle, Expression<Func<string>> bodyworkEmail, Expression<Func<string>> bodynameOnCard = null, Expression<Func<string>> bodyextension = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ApiResponse> __BuildSendInvitation(WorkflowExpression<string> bodycardTemplateId, WorkflowExpression<string> bodyjobtitle, WorkflowExpression<string> bodyworkEmail, WorkflowExpression<string> bodynameOnCard = null, WorkflowExpression<string> bodyextension = null)
-        {
-            WorkflowExpression.Validate(bodycardTemplateId, nameof(bodycardTemplateId), required: true);
-            WorkflowExpression.Validate(bodyjobtitle, nameof(bodyjobtitle), required: true);
-            WorkflowExpression.Validate(bodyworkEmail, nameof(bodyworkEmail), required: true);
-            WorkflowExpression.Validate(bodynameOnCard, nameof(bodynameOnCard), required: false);
-            WorkflowExpression.Validate(bodyextension, nameof(bodyextension), required: false);
+            var __workflow_bodycardTemplateId = bodycardTemplateId == null ? null : WorkflowExpression.Compile(bodycardTemplateId);
+            WorkflowExpression.Validate(__workflow_bodycardTemplateId, nameof(bodycardTemplateId), required: true);
+            var __workflow_bodyjobtitle = bodyjobtitle == null ? null : WorkflowExpression.Compile(bodyjobtitle);
+            WorkflowExpression.Validate(__workflow_bodyjobtitle, nameof(bodyjobtitle), required: true);
+            var __workflow_bodyworkEmail = bodyworkEmail == null ? null : WorkflowExpression.Compile(bodyworkEmail);
+            WorkflowExpression.Validate(__workflow_bodyworkEmail, nameof(bodyworkEmail), required: true);
+            var __workflow_bodynameOnCard = bodynameOnCard == null ? null : WorkflowExpression.Compile(bodynameOnCard);
+            WorkflowExpression.Validate(__workflow_bodynameOnCard, nameof(bodynameOnCard), required: false);
+            var __workflow_bodyextension = bodyextension == null ? null : WorkflowExpression.Compile(bodyextension);
+            WorkflowExpression.Validate(__workflow_bodyextension, nameof(bodyextension), required: false);
             return new DeferredBodyAction<ApiResponse>(() =>
             {
                 var apiCallPath = "/api/Invitation/";
@@ -42,20 +40,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1mecorporate
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["CardTemplateId"] = ExpressionConverter.ConvertO(bodycardTemplateId);
-                if (bodynameOnCard != null)
+                body["CardTemplateId"] = ExpressionConverter.ConvertO(__workflow_bodycardTemplateId);
+                if (__workflow_bodynameOnCard != null)
                 {
-                    body["NameOnCard"] = ExpressionConverter.ConvertO(bodynameOnCard);
+                    body["NameOnCard"] = ExpressionConverter.ConvertO(__workflow_bodynameOnCard);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["Jobtitle"] = ExpressionConverter.ConvertO(bodyjobtitle);
+                body["Jobtitle"] = ExpressionConverter.ConvertO(__workflow_bodyjobtitle);
                 bodypropCount++;
-                body["WorkEmail"] = ExpressionConverter.ConvertO(bodyworkEmail);
-                if (bodyextension != null)
+                body["WorkEmail"] = ExpressionConverter.ConvertO(__workflow_bodyworkEmail);
+                if (__workflow_bodyextension != null)
                 {
-                    body["Extension"] = ExpressionConverter.ConvertO(bodyextension);
+                    body["Extension"] = ExpressionConverter.ConvertO(__workflow_bodyextension);
                     bodypropCount++;
                 }
 
@@ -69,27 +67,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1mecorporate
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1mecorporate")]
-        [WorkflowExpressionFactory(nameof(__BuildDisassociateMember))]
-        public IBodyWorkflowAction<ApiResponse> DisassociateMember([WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> bodyemail)
+        public IBodyWorkflowAction<ApiResponse> DisassociateMember(Expression<Func<string>> contentType, Expression<Func<string>> bodyemail)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ApiResponse> __BuildDisassociateMember(WorkflowExpression<string> contentType, WorkflowExpression<string> bodyemail)
-        {
-            WorkflowExpression.Validate(contentType, nameof(contentType), required: true);
-            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: true);
+            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
+            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: true);
+            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
+            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
             return new DeferredBodyAction<ApiResponse>(() =>
             {
                 var apiCallPath = "/api/Invitation/Disassociate";
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["Email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["Email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

@@ -1,180 +1,243 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class PartnercenterrefActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnercenterref")]
-        [WorkflowExpressionFactory(nameof(__BuildGetAllReferrals))]
-        public IBodyWorkflowAction<GetAllReferralsResponse> GetAllReferrals([WorkflowExpression] Func<string> expand = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<bool> count = null, [WorkflowExpression] Func<string> mSCorrelationId = null)
+        public IBodyWorkflowAction<GetAllReferralsResponse> GetAllReferrals(Expression<Func<string>> expand = null, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> mSCorrelationId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetAllReferralsResponse> __BuildGetAllReferrals(WorkflowExpression<string> expand = null, WorkflowExpression<string> filter = null, WorkflowExpression<string> select = null, WorkflowExpression<string> orderby = null, WorkflowExpression<int> top = null, WorkflowExpression<int> skip = null, WorkflowExpression<bool> count = null, WorkflowExpression<string> mSCorrelationId = null)
-        {
-            WorkflowExpression.Validate(expand, nameof(expand), required: false);
-            WorkflowExpression.Validate(filter, nameof(filter), required: false);
-            WorkflowExpression.Validate(select, nameof(select), required: false);
-            WorkflowExpression.Validate(orderby, nameof(orderby), required: false);
-            WorkflowExpression.Validate(top, nameof(top), required: false);
-            WorkflowExpression.Validate(skip, nameof(skip), required: false);
-            WorkflowExpression.Validate(count, nameof(count), required: false);
-            WorkflowExpression.Validate(mSCorrelationId, nameof(mSCorrelationId), required: false);
+            var __workflow_expand = expand == null ? null : WorkflowExpression.Compile(expand);
+            WorkflowExpression.Validate(__workflow_expand, nameof(expand), required: false);
+            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
+            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
+            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
+            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_orderby = orderby == null ? null : WorkflowExpression.Compile(orderby);
+            WorkflowExpression.Validate(__workflow_orderby, nameof(orderby), required: false);
+            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
+            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_skip = skip == null ? null : WorkflowExpression.Compile(skip);
+            WorkflowExpression.Validate(__workflow_skip, nameof(skip), required: false);
+            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
+            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
+            var __workflow_mSCorrelationId = mSCorrelationId == null ? null : WorkflowExpression.Compile(mSCorrelationId);
+            WorkflowExpression.Validate(__workflow_mSCorrelationId, nameof(mSCorrelationId), required: false);
             return new DeferredBodyAction<GetAllReferralsResponse>(() =>
             {
                 var apiCallPath = "/referrals";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (expand != null)
-                    callPayload.Queries["$expand"] = ExpressionConverter.Convert(expand);
-                if (filter != null)
-                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-                if (select != null)
-                    callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-                if (orderby != null)
-                    callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
-                if (top != null)
-                    callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-                if (skip != null)
-                    callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-                if (count != null)
-                    callPayload.Queries["$count"] = ExpressionConverter.Convert(count);
+                if (__workflow_expand != null)
+                    callPayload.Queries["$expand"] = ExpressionConverter.Convert(__workflow_expand);
+                if (__workflow_filter != null)
+                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(__workflow_filter);
+                if (__workflow_select != null)
+                    callPayload.Queries["$select"] = ExpressionConverter.Convert(__workflow_select);
+                if (__workflow_orderby != null)
+                    callPayload.Queries["$orderby"] = ExpressionConverter.Convert(__workflow_orderby);
+                if (__workflow_top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
+                if (__workflow_skip != null)
+                    callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
+                if (__workflow_count != null)
+                    callPayload.Queries["$count"] = ExpressionConverter.Convert(__workflow_count);
                 callPayload.Headers["content-type"] = Convert.ToString("application/json");
-                if (mSCorrelationId != null)
-                    callPayload.Headers["MS-CorrelationId"] = ExpressionConverter.Convert(mSCorrelationId);
+                if (__workflow_mSCorrelationId != null)
+                    callPayload.Headers["MS-CorrelationId"] = ExpressionConverter.Convert(__workflow_mSCorrelationId);
                 callPayload.Headers["X-Caller-Id"] = Convert.ToString("60858c1b-2062-40ad-b42c-996b6b5b047d");
                 return new ApiConnectionAction<GetAllReferralsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnercenterref")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateReferral))]
-        public IBodyWorkflowAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral> CreateReferral([WorkflowExpression] Func<string> referralcontext = null, [WorkflowExpression] Func<string> referralcampaignId = null, [WorkflowExpression] Func<bool> referralconsentconsentToContact = null, [WorkflowExpression] Func<bool> referralconsentconsentToToShareInfoWithOthers = null, [WorkflowExpression] Func<bool> referralconsentconsentToShareReferralWithMicrosoftSellers = null, [WorkflowExpression] Func<string> referralcreatedDateTime = null, [WorkflowExpression] Func<string> referralcustomerProfileaddressaddressLine1 = null, [WorkflowExpression] Func<string> referralcustomerProfileaddressaddressLine2 = null, [WorkflowExpression] Func<string> referralcustomerProfileaddresscity = null, [WorkflowExpression] Func<string> referralcustomerProfileaddresscountry = null, [WorkflowExpression] Func<string> referralcustomerProfileaddresspostalCode = null, [WorkflowExpression] Func<string> referralcustomerProfileaddressregion = null, [WorkflowExpression] Func<string> referralcustomerProfileaddressstate = null, [WorkflowExpression] Func<JToken[]> referralcustomerProfileids = null, [WorkflowExpression] Func<string> referralcustomerProfilename = null, [WorkflowExpression] Func<string> referralcustomerProfilesize = null, [WorkflowExpression] Func<referralcustomerProfileteamInputItem[]> referralcustomerProfileteam = null, [WorkflowExpression] Func<string> referraldetailsclosingDateTime = null, [WorkflowExpression] Func<string> referraldetailscurrency = null, [WorkflowExpression] Func<string> referraldetailscustomerAction = null, [WorkflowExpression] Func<bool> referraldetailscustomerRequestedContact = null, [WorkflowExpression] Func<double> referraldetailsdealValue = null, [WorkflowExpression] Func<string> referraldetailsnotes = null, [WorkflowExpression] Func<referraldetailsrequirementsindustriesInputItem[]> referraldetailsrequirementsindustries = null, [WorkflowExpression] Func<referraldetailsrequirementsproductsInputItem[]> referraldetailsrequirementsproducts = null, [WorkflowExpression] Func<referraldetailsrequirementsservicesInputItem[]> referraldetailsrequirementsservices = null, [WorkflowExpression] Func<JToken[]> referraldetailsrequirementssolutions = null, [WorkflowExpression] Func<JToken[]> referraldetailsrequirementsoffers = null, [WorkflowExpression] Func<string> referraleTag = null, [WorkflowExpression] Func<string> referralengagementId = null, [WorkflowExpression] Func<string> referralexpirationDateTime = null, [WorkflowExpression] Func<string> referralexternalReferenceId = null, [WorkflowExpression] Func<bool> referralfavorite = null, [WorkflowExpression] Func<string> referralid = null, [WorkflowExpression] Func<referralinviteContextassistanceRequestCodeInput> referralinviteContextassistanceRequestCode = null, [WorkflowExpression] Func<string> referralinviteContextinvitedByorganizationId = null, [WorkflowExpression] Func<string> referralinviteContextinvitedByorganizationName = null, [WorkflowExpression] Func<string> referralinviteContextnotes = null, [WorkflowExpression] Func<string> referrallastModifiedVia = null, [WorkflowExpression] Func<string> referrallastRunId = null, [WorkflowExpression] Func<string> referrallinksrelatedReferralsmethod = null, [WorkflowExpression] Func<string> referrallinksrelatedReferralsuri = null, [WorkflowExpression] Func<string> referrallinksselfmethod = null, [WorkflowExpression] Func<string> referrallinksselfuri = null, [WorkflowExpression] Func<string> referralname = null, [WorkflowExpression] Func<string> referralorganizationId = null, [WorkflowExpression] Func<string> referralorganizationName = null, [WorkflowExpression] Func<string> referralqualification = null, [WorkflowExpression] Func<string> referralreferralProgram = null, [WorkflowExpression] Func<referralsalesStageInput> referralsalesStage = null, [WorkflowExpression] Func<string> referralstatus = null, [WorkflowExpression] Func<string> referralstatusReason = null, [WorkflowExpression] Func<string> referralsubstatus = null, [WorkflowExpression] Func<referraltargetInputItem[]> referraltarget = null, [WorkflowExpression] Func<referralteamInputItem[]> referralteam = null, [WorkflowExpression] Func<string> referraltrackingInfomicrosoftMsxId = null, [WorkflowExpression] Func<string> referraltype = null, [WorkflowExpression] Func<string> referralupdatedDateTime = null, [WorkflowExpression] Func<string> referralmpnId = null, [WorkflowExpression] Func<referralregistrationsInputItem[]> referralregistrations = null, [WorkflowExpression] Func<string> referralregistrationStatus = null, [WorkflowExpression] Func<string> referralcallToAction = null, [WorkflowExpression] Func<string> referralreferralSource = null, [WorkflowExpression] Func<string> referralquality = null, [WorkflowExpression] Func<bool> referralisSpam = null, [WorkflowExpression] Func<string> referraldirection = null, [WorkflowExpression] Func<string[]> referraltags = null, [WorkflowExpression] Func<string> referralacceptedDateTime = null, [WorkflowExpression] Func<string> referralclosedDateTime = null, [WorkflowExpression] Func<string> mSCorrelationId = null)
+        public IBodyWorkflowAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral> CreateReferral(Expression<Func<string>> referralcontext = null, Expression<Func<string>> referralcampaignId = null, Expression<Func<bool>> referralconsentconsentToContact = null, Expression<Func<bool>> referralconsentconsentToToShareInfoWithOthers = null, Expression<Func<bool>> referralconsentconsentToShareReferralWithMicrosoftSellers = null, Expression<Func<string>> referralcreatedDateTime = null, Expression<Func<string>> referralcustomerProfileaddressaddressLine1 = null, Expression<Func<string>> referralcustomerProfileaddressaddressLine2 = null, Expression<Func<string>> referralcustomerProfileaddresscity = null, Expression<Func<string>> referralcustomerProfileaddresscountry = null, Expression<Func<string>> referralcustomerProfileaddresspostalCode = null, Expression<Func<string>> referralcustomerProfileaddressregion = null, Expression<Func<string>> referralcustomerProfileaddressstate = null, Expression<Func<JToken[]>> referralcustomerProfileids = null, Expression<Func<string>> referralcustomerProfilename = null, Expression<Func<string>> referralcustomerProfilesize = null, Expression<Func<referralcustomerProfileteamInputItem[]>> referralcustomerProfileteam = null, Expression<Func<string>> referraldetailsclosingDateTime = null, Expression<Func<string>> referraldetailscurrency = null, Expression<Func<string>> referraldetailscustomerAction = null, Expression<Func<bool>> referraldetailscustomerRequestedContact = null, Expression<Func<double>> referraldetailsdealValue = null, Expression<Func<string>> referraldetailsnotes = null, Expression<Func<referraldetailsrequirementsindustriesInputItem[]>> referraldetailsrequirementsindustries = null, Expression<Func<referraldetailsrequirementsproductsInputItem[]>> referraldetailsrequirementsproducts = null, Expression<Func<referraldetailsrequirementsservicesInputItem[]>> referraldetailsrequirementsservices = null, Expression<Func<JToken[]>> referraldetailsrequirementssolutions = null, Expression<Func<JToken[]>> referraldetailsrequirementsoffers = null, Expression<Func<string>> referraleTag = null, Expression<Func<string>> referralengagementId = null, Expression<Func<string>> referralexpirationDateTime = null, Expression<Func<string>> referralexternalReferenceId = null, Expression<Func<bool>> referralfavorite = null, Expression<Func<string>> referralid = null, Expression<Func<referralinviteContextassistanceRequestCodeInput>> referralinviteContextassistanceRequestCode = null, Expression<Func<string>> referralinviteContextinvitedByorganizationId = null, Expression<Func<string>> referralinviteContextinvitedByorganizationName = null, Expression<Func<string>> referralinviteContextnotes = null, Expression<Func<string>> referrallastModifiedVia = null, Expression<Func<string>> referrallastRunId = null, Expression<Func<string>> referrallinksrelatedReferralsmethod = null, Expression<Func<string>> referrallinksrelatedReferralsuri = null, Expression<Func<string>> referrallinksselfmethod = null, Expression<Func<string>> referrallinksselfuri = null, Expression<Func<string>> referralname = null, Expression<Func<string>> referralorganizationId = null, Expression<Func<string>> referralorganizationName = null, Expression<Func<string>> referralqualification = null, Expression<Func<string>> referralreferralProgram = null, Expression<Func<referralsalesStageInput>> referralsalesStage = null, Expression<Func<string>> referralstatus = null, Expression<Func<string>> referralstatusReason = null, Expression<Func<string>> referralsubstatus = null, Expression<Func<referraltargetInputItem[]>> referraltarget = null, Expression<Func<referralteamInputItem[]>> referralteam = null, Expression<Func<string>> referraltrackingInfomicrosoftMsxId = null, Expression<Func<string>> referraltype = null, Expression<Func<string>> referralupdatedDateTime = null, Expression<Func<string>> referralmpnId = null, Expression<Func<referralregistrationsInputItem[]>> referralregistrations = null, Expression<Func<string>> referralregistrationStatus = null, Expression<Func<string>> referralcallToAction = null, Expression<Func<string>> referralreferralSource = null, Expression<Func<string>> referralquality = null, Expression<Func<bool>> referralisSpam = null, Expression<Func<string>> referraldirection = null, Expression<Func<string[]>> referraltags = null, Expression<Func<string>> referralacceptedDateTime = null, Expression<Func<string>> referralclosedDateTime = null, Expression<Func<string>> mSCorrelationId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral> __BuildCreateReferral(WorkflowExpression<string> referralcontext = null, WorkflowExpression<string> referralcampaignId = null, WorkflowExpression<bool> referralconsentconsentToContact = null, WorkflowExpression<bool> referralconsentconsentToToShareInfoWithOthers = null, WorkflowExpression<bool> referralconsentconsentToShareReferralWithMicrosoftSellers = null, WorkflowExpression<string> referralcreatedDateTime = null, WorkflowExpression<string> referralcustomerProfileaddressaddressLine1 = null, WorkflowExpression<string> referralcustomerProfileaddressaddressLine2 = null, WorkflowExpression<string> referralcustomerProfileaddresscity = null, WorkflowExpression<string> referralcustomerProfileaddresscountry = null, WorkflowExpression<string> referralcustomerProfileaddresspostalCode = null, WorkflowExpression<string> referralcustomerProfileaddressregion = null, WorkflowExpression<string> referralcustomerProfileaddressstate = null, WorkflowExpression<JToken[]> referralcustomerProfileids = null, WorkflowExpression<string> referralcustomerProfilename = null, WorkflowExpression<string> referralcustomerProfilesize = null, WorkflowExpression<referralcustomerProfileteamInputItem[]> referralcustomerProfileteam = null, WorkflowExpression<string> referraldetailsclosingDateTime = null, WorkflowExpression<string> referraldetailscurrency = null, WorkflowExpression<string> referraldetailscustomerAction = null, WorkflowExpression<bool> referraldetailscustomerRequestedContact = null, WorkflowExpression<double> referraldetailsdealValue = null, WorkflowExpression<string> referraldetailsnotes = null, WorkflowExpression<referraldetailsrequirementsindustriesInputItem[]> referraldetailsrequirementsindustries = null, WorkflowExpression<referraldetailsrequirementsproductsInputItem[]> referraldetailsrequirementsproducts = null, WorkflowExpression<referraldetailsrequirementsservicesInputItem[]> referraldetailsrequirementsservices = null, WorkflowExpression<JToken[]> referraldetailsrequirementssolutions = null, WorkflowExpression<JToken[]> referraldetailsrequirementsoffers = null, WorkflowExpression<string> referraleTag = null, WorkflowExpression<string> referralengagementId = null, WorkflowExpression<string> referralexpirationDateTime = null, WorkflowExpression<string> referralexternalReferenceId = null, WorkflowExpression<bool> referralfavorite = null, WorkflowExpression<string> referralid = null, WorkflowExpression<referralinviteContextassistanceRequestCodeInput> referralinviteContextassistanceRequestCode = null, WorkflowExpression<string> referralinviteContextinvitedByorganizationId = null, WorkflowExpression<string> referralinviteContextinvitedByorganizationName = null, WorkflowExpression<string> referralinviteContextnotes = null, WorkflowExpression<string> referrallastModifiedVia = null, WorkflowExpression<string> referrallastRunId = null, WorkflowExpression<string> referrallinksrelatedReferralsmethod = null, WorkflowExpression<string> referrallinksrelatedReferralsuri = null, WorkflowExpression<string> referrallinksselfmethod = null, WorkflowExpression<string> referrallinksselfuri = null, WorkflowExpression<string> referralname = null, WorkflowExpression<string> referralorganizationId = null, WorkflowExpression<string> referralorganizationName = null, WorkflowExpression<string> referralqualification = null, WorkflowExpression<string> referralreferralProgram = null, WorkflowExpression<referralsalesStageInput> referralsalesStage = null, WorkflowExpression<string> referralstatus = null, WorkflowExpression<string> referralstatusReason = null, WorkflowExpression<string> referralsubstatus = null, WorkflowExpression<referraltargetInputItem[]> referraltarget = null, WorkflowExpression<referralteamInputItem[]> referralteam = null, WorkflowExpression<string> referraltrackingInfomicrosoftMsxId = null, WorkflowExpression<string> referraltype = null, WorkflowExpression<string> referralupdatedDateTime = null, WorkflowExpression<string> referralmpnId = null, WorkflowExpression<referralregistrationsInputItem[]> referralregistrations = null, WorkflowExpression<string> referralregistrationStatus = null, WorkflowExpression<string> referralcallToAction = null, WorkflowExpression<string> referralreferralSource = null, WorkflowExpression<string> referralquality = null, WorkflowExpression<bool> referralisSpam = null, WorkflowExpression<string> referraldirection = null, WorkflowExpression<string[]> referraltags = null, WorkflowExpression<string> referralacceptedDateTime = null, WorkflowExpression<string> referralclosedDateTime = null, WorkflowExpression<string> mSCorrelationId = null)
-        {
-            WorkflowExpression.Validate(referralcontext, nameof(referralcontext), required: false);
-            WorkflowExpression.Validate(referralcampaignId, nameof(referralcampaignId), required: false);
-            WorkflowExpression.Validate(referralconsentconsentToContact, nameof(referralconsentconsentToContact), required: false);
-            WorkflowExpression.Validate(referralconsentconsentToToShareInfoWithOthers, nameof(referralconsentconsentToToShareInfoWithOthers), required: false);
-            WorkflowExpression.Validate(referralconsentconsentToShareReferralWithMicrosoftSellers, nameof(referralconsentconsentToShareReferralWithMicrosoftSellers), required: false);
-            WorkflowExpression.Validate(referralcreatedDateTime, nameof(referralcreatedDateTime), required: false);
-            WorkflowExpression.Validate(referralcustomerProfileaddressaddressLine1, nameof(referralcustomerProfileaddressaddressLine1), required: false);
-            WorkflowExpression.Validate(referralcustomerProfileaddressaddressLine2, nameof(referralcustomerProfileaddressaddressLine2), required: false);
-            WorkflowExpression.Validate(referralcustomerProfileaddresscity, nameof(referralcustomerProfileaddresscity), required: false);
-            WorkflowExpression.Validate(referralcustomerProfileaddresscountry, nameof(referralcustomerProfileaddresscountry), required: false);
-            WorkflowExpression.Validate(referralcustomerProfileaddresspostalCode, nameof(referralcustomerProfileaddresspostalCode), required: false);
-            WorkflowExpression.Validate(referralcustomerProfileaddressregion, nameof(referralcustomerProfileaddressregion), required: false);
-            WorkflowExpression.Validate(referralcustomerProfileaddressstate, nameof(referralcustomerProfileaddressstate), required: false);
-            WorkflowExpression.Validate(referralcustomerProfileids, nameof(referralcustomerProfileids), required: false);
-            WorkflowExpression.Validate(referralcustomerProfilename, nameof(referralcustomerProfilename), required: false);
-            WorkflowExpression.Validate(referralcustomerProfilesize, nameof(referralcustomerProfilesize), required: false);
-            WorkflowExpression.Validate(referralcustomerProfileteam, nameof(referralcustomerProfileteam), required: false);
-            WorkflowExpression.Validate(referraldetailsclosingDateTime, nameof(referraldetailsclosingDateTime), required: false);
-            WorkflowExpression.Validate(referraldetailscurrency, nameof(referraldetailscurrency), required: false);
-            WorkflowExpression.Validate(referraldetailscustomerAction, nameof(referraldetailscustomerAction), required: false);
-            WorkflowExpression.Validate(referraldetailscustomerRequestedContact, nameof(referraldetailscustomerRequestedContact), required: false);
-            WorkflowExpression.Validate(referraldetailsdealValue, nameof(referraldetailsdealValue), required: false);
-            WorkflowExpression.Validate(referraldetailsnotes, nameof(referraldetailsnotes), required: false);
-            WorkflowExpression.Validate(referraldetailsrequirementsindustries, nameof(referraldetailsrequirementsindustries), required: false);
-            WorkflowExpression.Validate(referraldetailsrequirementsproducts, nameof(referraldetailsrequirementsproducts), required: false);
-            WorkflowExpression.Validate(referraldetailsrequirementsservices, nameof(referraldetailsrequirementsservices), required: false);
-            WorkflowExpression.Validate(referraldetailsrequirementssolutions, nameof(referraldetailsrequirementssolutions), required: false);
-            WorkflowExpression.Validate(referraldetailsrequirementsoffers, nameof(referraldetailsrequirementsoffers), required: false);
-            WorkflowExpression.Validate(referraleTag, nameof(referraleTag), required: false);
-            WorkflowExpression.Validate(referralengagementId, nameof(referralengagementId), required: false);
-            WorkflowExpression.Validate(referralexpirationDateTime, nameof(referralexpirationDateTime), required: false);
-            WorkflowExpression.Validate(referralexternalReferenceId, nameof(referralexternalReferenceId), required: false);
-            WorkflowExpression.Validate(referralfavorite, nameof(referralfavorite), required: false);
-            WorkflowExpression.Validate(referralid, nameof(referralid), required: false);
-            WorkflowExpression.Validate(referralinviteContextassistanceRequestCode, nameof(referralinviteContextassistanceRequestCode), required: false);
-            WorkflowExpression.Validate(referralinviteContextinvitedByorganizationId, nameof(referralinviteContextinvitedByorganizationId), required: false);
-            WorkflowExpression.Validate(referralinviteContextinvitedByorganizationName, nameof(referralinviteContextinvitedByorganizationName), required: false);
-            WorkflowExpression.Validate(referralinviteContextnotes, nameof(referralinviteContextnotes), required: false);
-            WorkflowExpression.Validate(referrallastModifiedVia, nameof(referrallastModifiedVia), required: false);
-            WorkflowExpression.Validate(referrallastRunId, nameof(referrallastRunId), required: false);
-            WorkflowExpression.Validate(referrallinksrelatedReferralsmethod, nameof(referrallinksrelatedReferralsmethod), required: false);
-            WorkflowExpression.Validate(referrallinksrelatedReferralsuri, nameof(referrallinksrelatedReferralsuri), required: false);
-            WorkflowExpression.Validate(referrallinksselfmethod, nameof(referrallinksselfmethod), required: false);
-            WorkflowExpression.Validate(referrallinksselfuri, nameof(referrallinksselfuri), required: false);
-            WorkflowExpression.Validate(referralname, nameof(referralname), required: false);
-            WorkflowExpression.Validate(referralorganizationId, nameof(referralorganizationId), required: false);
-            WorkflowExpression.Validate(referralorganizationName, nameof(referralorganizationName), required: false);
-            WorkflowExpression.Validate(referralqualification, nameof(referralqualification), required: false);
-            WorkflowExpression.Validate(referralreferralProgram, nameof(referralreferralProgram), required: false);
-            WorkflowExpression.Validate(referralsalesStage, nameof(referralsalesStage), required: false);
-            WorkflowExpression.Validate(referralstatus, nameof(referralstatus), required: false);
-            WorkflowExpression.Validate(referralstatusReason, nameof(referralstatusReason), required: false);
-            WorkflowExpression.Validate(referralsubstatus, nameof(referralsubstatus), required: false);
-            WorkflowExpression.Validate(referraltarget, nameof(referraltarget), required: false);
-            WorkflowExpression.Validate(referralteam, nameof(referralteam), required: false);
-            WorkflowExpression.Validate(referraltrackingInfomicrosoftMsxId, nameof(referraltrackingInfomicrosoftMsxId), required: false);
-            WorkflowExpression.Validate(referraltype, nameof(referraltype), required: false);
-            WorkflowExpression.Validate(referralupdatedDateTime, nameof(referralupdatedDateTime), required: false);
-            WorkflowExpression.Validate(referralmpnId, nameof(referralmpnId), required: false);
-            WorkflowExpression.Validate(referralregistrations, nameof(referralregistrations), required: false);
-            WorkflowExpression.Validate(referralregistrationStatus, nameof(referralregistrationStatus), required: false);
-            WorkflowExpression.Validate(referralcallToAction, nameof(referralcallToAction), required: false);
-            WorkflowExpression.Validate(referralreferralSource, nameof(referralreferralSource), required: false);
-            WorkflowExpression.Validate(referralquality, nameof(referralquality), required: false);
-            WorkflowExpression.Validate(referralisSpam, nameof(referralisSpam), required: false);
-            WorkflowExpression.Validate(referraldirection, nameof(referraldirection), required: false);
-            WorkflowExpression.Validate(referraltags, nameof(referraltags), required: false);
-            WorkflowExpression.Validate(referralacceptedDateTime, nameof(referralacceptedDateTime), required: false);
-            WorkflowExpression.Validate(referralclosedDateTime, nameof(referralclosedDateTime), required: false);
-            WorkflowExpression.Validate(mSCorrelationId, nameof(mSCorrelationId), required: false);
+            var __workflow_referralcontext = referralcontext == null ? null : WorkflowExpression.Compile(referralcontext);
+            WorkflowExpression.Validate(__workflow_referralcontext, nameof(referralcontext), required: false);
+            var __workflow_referralcampaignId = referralcampaignId == null ? null : WorkflowExpression.Compile(referralcampaignId);
+            WorkflowExpression.Validate(__workflow_referralcampaignId, nameof(referralcampaignId), required: false);
+            var __workflow_referralconsentconsentToContact = referralconsentconsentToContact == null ? null : WorkflowExpression.Compile(referralconsentconsentToContact);
+            WorkflowExpression.Validate(__workflow_referralconsentconsentToContact, nameof(referralconsentconsentToContact), required: false);
+            var __workflow_referralconsentconsentToToShareInfoWithOthers = referralconsentconsentToToShareInfoWithOthers == null ? null : WorkflowExpression.Compile(referralconsentconsentToToShareInfoWithOthers);
+            WorkflowExpression.Validate(__workflow_referralconsentconsentToToShareInfoWithOthers, nameof(referralconsentconsentToToShareInfoWithOthers), required: false);
+            var __workflow_referralconsentconsentToShareReferralWithMicrosoftSellers = referralconsentconsentToShareReferralWithMicrosoftSellers == null ? null : WorkflowExpression.Compile(referralconsentconsentToShareReferralWithMicrosoftSellers);
+            WorkflowExpression.Validate(__workflow_referralconsentconsentToShareReferralWithMicrosoftSellers, nameof(referralconsentconsentToShareReferralWithMicrosoftSellers), required: false);
+            var __workflow_referralcreatedDateTime = referralcreatedDateTime == null ? null : WorkflowExpression.Compile(referralcreatedDateTime);
+            WorkflowExpression.Validate(__workflow_referralcreatedDateTime, nameof(referralcreatedDateTime), required: false);
+            var __workflow_referralcustomerProfileaddressaddressLine1 = referralcustomerProfileaddressaddressLine1 == null ? null : WorkflowExpression.Compile(referralcustomerProfileaddressaddressLine1);
+            WorkflowExpression.Validate(__workflow_referralcustomerProfileaddressaddressLine1, nameof(referralcustomerProfileaddressaddressLine1), required: false);
+            var __workflow_referralcustomerProfileaddressaddressLine2 = referralcustomerProfileaddressaddressLine2 == null ? null : WorkflowExpression.Compile(referralcustomerProfileaddressaddressLine2);
+            WorkflowExpression.Validate(__workflow_referralcustomerProfileaddressaddressLine2, nameof(referralcustomerProfileaddressaddressLine2), required: false);
+            var __workflow_referralcustomerProfileaddresscity = referralcustomerProfileaddresscity == null ? null : WorkflowExpression.Compile(referralcustomerProfileaddresscity);
+            WorkflowExpression.Validate(__workflow_referralcustomerProfileaddresscity, nameof(referralcustomerProfileaddresscity), required: false);
+            var __workflow_referralcustomerProfileaddresscountry = referralcustomerProfileaddresscountry == null ? null : WorkflowExpression.Compile(referralcustomerProfileaddresscountry);
+            WorkflowExpression.Validate(__workflow_referralcustomerProfileaddresscountry, nameof(referralcustomerProfileaddresscountry), required: false);
+            var __workflow_referralcustomerProfileaddresspostalCode = referralcustomerProfileaddresspostalCode == null ? null : WorkflowExpression.Compile(referralcustomerProfileaddresspostalCode);
+            WorkflowExpression.Validate(__workflow_referralcustomerProfileaddresspostalCode, nameof(referralcustomerProfileaddresspostalCode), required: false);
+            var __workflow_referralcustomerProfileaddressregion = referralcustomerProfileaddressregion == null ? null : WorkflowExpression.Compile(referralcustomerProfileaddressregion);
+            WorkflowExpression.Validate(__workflow_referralcustomerProfileaddressregion, nameof(referralcustomerProfileaddressregion), required: false);
+            var __workflow_referralcustomerProfileaddressstate = referralcustomerProfileaddressstate == null ? null : WorkflowExpression.Compile(referralcustomerProfileaddressstate);
+            WorkflowExpression.Validate(__workflow_referralcustomerProfileaddressstate, nameof(referralcustomerProfileaddressstate), required: false);
+            var __workflow_referralcustomerProfileids = referralcustomerProfileids == null ? null : WorkflowExpression.Compile(referralcustomerProfileids);
+            WorkflowExpression.Validate(__workflow_referralcustomerProfileids, nameof(referralcustomerProfileids), required: false);
+            var __workflow_referralcustomerProfilename = referralcustomerProfilename == null ? null : WorkflowExpression.Compile(referralcustomerProfilename);
+            WorkflowExpression.Validate(__workflow_referralcustomerProfilename, nameof(referralcustomerProfilename), required: false);
+            var __workflow_referralcustomerProfilesize = referralcustomerProfilesize == null ? null : WorkflowExpression.Compile(referralcustomerProfilesize);
+            WorkflowExpression.Validate(__workflow_referralcustomerProfilesize, nameof(referralcustomerProfilesize), required: false);
+            var __workflow_referralcustomerProfileteam = referralcustomerProfileteam == null ? null : WorkflowExpression.Compile(referralcustomerProfileteam);
+            WorkflowExpression.Validate(__workflow_referralcustomerProfileteam, nameof(referralcustomerProfileteam), required: false);
+            var __workflow_referraldetailsclosingDateTime = referraldetailsclosingDateTime == null ? null : WorkflowExpression.Compile(referraldetailsclosingDateTime);
+            WorkflowExpression.Validate(__workflow_referraldetailsclosingDateTime, nameof(referraldetailsclosingDateTime), required: false);
+            var __workflow_referraldetailscurrency = referraldetailscurrency == null ? null : WorkflowExpression.Compile(referraldetailscurrency);
+            WorkflowExpression.Validate(__workflow_referraldetailscurrency, nameof(referraldetailscurrency), required: false);
+            var __workflow_referraldetailscustomerAction = referraldetailscustomerAction == null ? null : WorkflowExpression.Compile(referraldetailscustomerAction);
+            WorkflowExpression.Validate(__workflow_referraldetailscustomerAction, nameof(referraldetailscustomerAction), required: false);
+            var __workflow_referraldetailscustomerRequestedContact = referraldetailscustomerRequestedContact == null ? null : WorkflowExpression.Compile(referraldetailscustomerRequestedContact);
+            WorkflowExpression.Validate(__workflow_referraldetailscustomerRequestedContact, nameof(referraldetailscustomerRequestedContact), required: false);
+            var __workflow_referraldetailsdealValue = referraldetailsdealValue == null ? null : WorkflowExpression.Compile(referraldetailsdealValue);
+            WorkflowExpression.Validate(__workflow_referraldetailsdealValue, nameof(referraldetailsdealValue), required: false);
+            var __workflow_referraldetailsnotes = referraldetailsnotes == null ? null : WorkflowExpression.Compile(referraldetailsnotes);
+            WorkflowExpression.Validate(__workflow_referraldetailsnotes, nameof(referraldetailsnotes), required: false);
+            var __workflow_referraldetailsrequirementsindustries = referraldetailsrequirementsindustries == null ? null : WorkflowExpression.Compile(referraldetailsrequirementsindustries);
+            WorkflowExpression.Validate(__workflow_referraldetailsrequirementsindustries, nameof(referraldetailsrequirementsindustries), required: false);
+            var __workflow_referraldetailsrequirementsproducts = referraldetailsrequirementsproducts == null ? null : WorkflowExpression.Compile(referraldetailsrequirementsproducts);
+            WorkflowExpression.Validate(__workflow_referraldetailsrequirementsproducts, nameof(referraldetailsrequirementsproducts), required: false);
+            var __workflow_referraldetailsrequirementsservices = referraldetailsrequirementsservices == null ? null : WorkflowExpression.Compile(referraldetailsrequirementsservices);
+            WorkflowExpression.Validate(__workflow_referraldetailsrequirementsservices, nameof(referraldetailsrequirementsservices), required: false);
+            var __workflow_referraldetailsrequirementssolutions = referraldetailsrequirementssolutions == null ? null : WorkflowExpression.Compile(referraldetailsrequirementssolutions);
+            WorkflowExpression.Validate(__workflow_referraldetailsrequirementssolutions, nameof(referraldetailsrequirementssolutions), required: false);
+            var __workflow_referraldetailsrequirementsoffers = referraldetailsrequirementsoffers == null ? null : WorkflowExpression.Compile(referraldetailsrequirementsoffers);
+            WorkflowExpression.Validate(__workflow_referraldetailsrequirementsoffers, nameof(referraldetailsrequirementsoffers), required: false);
+            var __workflow_referraleTag = referraleTag == null ? null : WorkflowExpression.Compile(referraleTag);
+            WorkflowExpression.Validate(__workflow_referraleTag, nameof(referraleTag), required: false);
+            var __workflow_referralengagementId = referralengagementId == null ? null : WorkflowExpression.Compile(referralengagementId);
+            WorkflowExpression.Validate(__workflow_referralengagementId, nameof(referralengagementId), required: false);
+            var __workflow_referralexpirationDateTime = referralexpirationDateTime == null ? null : WorkflowExpression.Compile(referralexpirationDateTime);
+            WorkflowExpression.Validate(__workflow_referralexpirationDateTime, nameof(referralexpirationDateTime), required: false);
+            var __workflow_referralexternalReferenceId = referralexternalReferenceId == null ? null : WorkflowExpression.Compile(referralexternalReferenceId);
+            WorkflowExpression.Validate(__workflow_referralexternalReferenceId, nameof(referralexternalReferenceId), required: false);
+            var __workflow_referralfavorite = referralfavorite == null ? null : WorkflowExpression.Compile(referralfavorite);
+            WorkflowExpression.Validate(__workflow_referralfavorite, nameof(referralfavorite), required: false);
+            var __workflow_referralid = referralid == null ? null : WorkflowExpression.Compile(referralid);
+            WorkflowExpression.Validate(__workflow_referralid, nameof(referralid), required: false);
+            var __workflow_referralinviteContextassistanceRequestCode = referralinviteContextassistanceRequestCode == null ? null : WorkflowExpression.Compile(referralinviteContextassistanceRequestCode);
+            WorkflowExpression.Validate(__workflow_referralinviteContextassistanceRequestCode, nameof(referralinviteContextassistanceRequestCode), required: false);
+            var __workflow_referralinviteContextinvitedByorganizationId = referralinviteContextinvitedByorganizationId == null ? null : WorkflowExpression.Compile(referralinviteContextinvitedByorganizationId);
+            WorkflowExpression.Validate(__workflow_referralinviteContextinvitedByorganizationId, nameof(referralinviteContextinvitedByorganizationId), required: false);
+            var __workflow_referralinviteContextinvitedByorganizationName = referralinviteContextinvitedByorganizationName == null ? null : WorkflowExpression.Compile(referralinviteContextinvitedByorganizationName);
+            WorkflowExpression.Validate(__workflow_referralinviteContextinvitedByorganizationName, nameof(referralinviteContextinvitedByorganizationName), required: false);
+            var __workflow_referralinviteContextnotes = referralinviteContextnotes == null ? null : WorkflowExpression.Compile(referralinviteContextnotes);
+            WorkflowExpression.Validate(__workflow_referralinviteContextnotes, nameof(referralinviteContextnotes), required: false);
+            var __workflow_referrallastModifiedVia = referrallastModifiedVia == null ? null : WorkflowExpression.Compile(referrallastModifiedVia);
+            WorkflowExpression.Validate(__workflow_referrallastModifiedVia, nameof(referrallastModifiedVia), required: false);
+            var __workflow_referrallastRunId = referrallastRunId == null ? null : WorkflowExpression.Compile(referrallastRunId);
+            WorkflowExpression.Validate(__workflow_referrallastRunId, nameof(referrallastRunId), required: false);
+            var __workflow_referrallinksrelatedReferralsmethod = referrallinksrelatedReferralsmethod == null ? null : WorkflowExpression.Compile(referrallinksrelatedReferralsmethod);
+            WorkflowExpression.Validate(__workflow_referrallinksrelatedReferralsmethod, nameof(referrallinksrelatedReferralsmethod), required: false);
+            var __workflow_referrallinksrelatedReferralsuri = referrallinksrelatedReferralsuri == null ? null : WorkflowExpression.Compile(referrallinksrelatedReferralsuri);
+            WorkflowExpression.Validate(__workflow_referrallinksrelatedReferralsuri, nameof(referrallinksrelatedReferralsuri), required: false);
+            var __workflow_referrallinksselfmethod = referrallinksselfmethod == null ? null : WorkflowExpression.Compile(referrallinksselfmethod);
+            WorkflowExpression.Validate(__workflow_referrallinksselfmethod, nameof(referrallinksselfmethod), required: false);
+            var __workflow_referrallinksselfuri = referrallinksselfuri == null ? null : WorkflowExpression.Compile(referrallinksselfuri);
+            WorkflowExpression.Validate(__workflow_referrallinksselfuri, nameof(referrallinksselfuri), required: false);
+            var __workflow_referralname = referralname == null ? null : WorkflowExpression.Compile(referralname);
+            WorkflowExpression.Validate(__workflow_referralname, nameof(referralname), required: false);
+            var __workflow_referralorganizationId = referralorganizationId == null ? null : WorkflowExpression.Compile(referralorganizationId);
+            WorkflowExpression.Validate(__workflow_referralorganizationId, nameof(referralorganizationId), required: false);
+            var __workflow_referralorganizationName = referralorganizationName == null ? null : WorkflowExpression.Compile(referralorganizationName);
+            WorkflowExpression.Validate(__workflow_referralorganizationName, nameof(referralorganizationName), required: false);
+            var __workflow_referralqualification = referralqualification == null ? null : WorkflowExpression.Compile(referralqualification);
+            WorkflowExpression.Validate(__workflow_referralqualification, nameof(referralqualification), required: false);
+            var __workflow_referralreferralProgram = referralreferralProgram == null ? null : WorkflowExpression.Compile(referralreferralProgram);
+            WorkflowExpression.Validate(__workflow_referralreferralProgram, nameof(referralreferralProgram), required: false);
+            var __workflow_referralsalesStage = referralsalesStage == null ? null : WorkflowExpression.Compile(referralsalesStage);
+            WorkflowExpression.Validate(__workflow_referralsalesStage, nameof(referralsalesStage), required: false);
+            var __workflow_referralstatus = referralstatus == null ? null : WorkflowExpression.Compile(referralstatus);
+            WorkflowExpression.Validate(__workflow_referralstatus, nameof(referralstatus), required: false);
+            var __workflow_referralstatusReason = referralstatusReason == null ? null : WorkflowExpression.Compile(referralstatusReason);
+            WorkflowExpression.Validate(__workflow_referralstatusReason, nameof(referralstatusReason), required: false);
+            var __workflow_referralsubstatus = referralsubstatus == null ? null : WorkflowExpression.Compile(referralsubstatus);
+            WorkflowExpression.Validate(__workflow_referralsubstatus, nameof(referralsubstatus), required: false);
+            var __workflow_referraltarget = referraltarget == null ? null : WorkflowExpression.Compile(referraltarget);
+            WorkflowExpression.Validate(__workflow_referraltarget, nameof(referraltarget), required: false);
+            var __workflow_referralteam = referralteam == null ? null : WorkflowExpression.Compile(referralteam);
+            WorkflowExpression.Validate(__workflow_referralteam, nameof(referralteam), required: false);
+            var __workflow_referraltrackingInfomicrosoftMsxId = referraltrackingInfomicrosoftMsxId == null ? null : WorkflowExpression.Compile(referraltrackingInfomicrosoftMsxId);
+            WorkflowExpression.Validate(__workflow_referraltrackingInfomicrosoftMsxId, nameof(referraltrackingInfomicrosoftMsxId), required: false);
+            var __workflow_referraltype = referraltype == null ? null : WorkflowExpression.Compile(referraltype);
+            WorkflowExpression.Validate(__workflow_referraltype, nameof(referraltype), required: false);
+            var __workflow_referralupdatedDateTime = referralupdatedDateTime == null ? null : WorkflowExpression.Compile(referralupdatedDateTime);
+            WorkflowExpression.Validate(__workflow_referralupdatedDateTime, nameof(referralupdatedDateTime), required: false);
+            var __workflow_referralmpnId = referralmpnId == null ? null : WorkflowExpression.Compile(referralmpnId);
+            WorkflowExpression.Validate(__workflow_referralmpnId, nameof(referralmpnId), required: false);
+            var __workflow_referralregistrations = referralregistrations == null ? null : WorkflowExpression.Compile(referralregistrations);
+            WorkflowExpression.Validate(__workflow_referralregistrations, nameof(referralregistrations), required: false);
+            var __workflow_referralregistrationStatus = referralregistrationStatus == null ? null : WorkflowExpression.Compile(referralregistrationStatus);
+            WorkflowExpression.Validate(__workflow_referralregistrationStatus, nameof(referralregistrationStatus), required: false);
+            var __workflow_referralcallToAction = referralcallToAction == null ? null : WorkflowExpression.Compile(referralcallToAction);
+            WorkflowExpression.Validate(__workflow_referralcallToAction, nameof(referralcallToAction), required: false);
+            var __workflow_referralreferralSource = referralreferralSource == null ? null : WorkflowExpression.Compile(referralreferralSource);
+            WorkflowExpression.Validate(__workflow_referralreferralSource, nameof(referralreferralSource), required: false);
+            var __workflow_referralquality = referralquality == null ? null : WorkflowExpression.Compile(referralquality);
+            WorkflowExpression.Validate(__workflow_referralquality, nameof(referralquality), required: false);
+            var __workflow_referralisSpam = referralisSpam == null ? null : WorkflowExpression.Compile(referralisSpam);
+            WorkflowExpression.Validate(__workflow_referralisSpam, nameof(referralisSpam), required: false);
+            var __workflow_referraldirection = referraldirection == null ? null : WorkflowExpression.Compile(referraldirection);
+            WorkflowExpression.Validate(__workflow_referraldirection, nameof(referraldirection), required: false);
+            var __workflow_referraltags = referraltags == null ? null : WorkflowExpression.Compile(referraltags);
+            WorkflowExpression.Validate(__workflow_referraltags, nameof(referraltags), required: false);
+            var __workflow_referralacceptedDateTime = referralacceptedDateTime == null ? null : WorkflowExpression.Compile(referralacceptedDateTime);
+            WorkflowExpression.Validate(__workflow_referralacceptedDateTime, nameof(referralacceptedDateTime), required: false);
+            var __workflow_referralclosedDateTime = referralclosedDateTime == null ? null : WorkflowExpression.Compile(referralclosedDateTime);
+            WorkflowExpression.Validate(__workflow_referralclosedDateTime, nameof(referralclosedDateTime), required: false);
+            var __workflow_mSCorrelationId = mSCorrelationId == null ? null : WorkflowExpression.Compile(mSCorrelationId);
+            WorkflowExpression.Validate(__workflow_mSCorrelationId, nameof(mSCorrelationId), required: false);
             return new DeferredBodyAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral>(() =>
             {
                 var apiCallPath = "/referrals";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (mSCorrelationId != null)
-                    callPayload.Headers["MS-CorrelationId"] = ExpressionConverter.Convert(mSCorrelationId);
+                if (__workflow_mSCorrelationId != null)
+                    callPayload.Headers["MS-CorrelationId"] = ExpressionConverter.Convert(__workflow_mSCorrelationId);
                 callPayload.Headers["X-Caller-Id"] = Convert.ToString("60858c1b-2062-40ad-b42c-996b6b5b047d");
                 var referral = new JObject();
                 var referralpropCount = 0;
-                if (referralcontext != null)
+                if (__workflow_referralcontext != null)
                 {
-                    referral["@odata.context"] = ExpressionConverter.ConvertO(referralcontext);
+                    referral["@odata.context"] = ExpressionConverter.ConvertO(__workflow_referralcontext);
                     referralpropCount++;
                 }
 
-                if (referralcampaignId != null)
+                if (__workflow_referralcampaignId != null)
                 {
-                    referral["campaignId"] = ExpressionConverter.ConvertO(referralcampaignId);
+                    referral["campaignId"] = ExpressionConverter.ConvertO(__workflow_referralcampaignId);
                     referralpropCount++;
                 }
 
                 var consentObject = new JObject();
                 var consentObjectpropCount = 0;
-                if (referralconsentconsentToContact != null)
+                if (__workflow_referralconsentconsentToContact != null)
                 {
-                    consentObject["consentToContact"] = ExpressionConverter.ConvertO(referralconsentconsentToContact);
+                    consentObject["consentToContact"] = ExpressionConverter.ConvertO(__workflow_referralconsentconsentToContact);
                     consentObjectpropCount++;
                 }
 
-                if (referralconsentconsentToToShareInfoWithOthers != null)
+                if (__workflow_referralconsentconsentToToShareInfoWithOthers != null)
                 {
-                    consentObject["consentToToShareInfoWithOthers"] = ExpressionConverter.ConvertO(referralconsentconsentToToShareInfoWithOthers);
+                    consentObject["consentToToShareInfoWithOthers"] = ExpressionConverter.ConvertO(__workflow_referralconsentconsentToToShareInfoWithOthers);
                     consentObjectpropCount++;
                 }
 
-                if (referralconsentconsentToShareReferralWithMicrosoftSellers != null)
+                if (__workflow_referralconsentconsentToShareReferralWithMicrosoftSellers != null)
                 {
-                    consentObject["consentToShareReferralWithMicrosoftSellers"] = ExpressionConverter.ConvertO(referralconsentconsentToShareReferralWithMicrosoftSellers);
+                    consentObject["consentToShareReferralWithMicrosoftSellers"] = ExpressionConverter.ConvertO(__workflow_referralconsentconsentToShareReferralWithMicrosoftSellers);
                     consentObjectpropCount++;
                 }
 
@@ -184,9 +247,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
                     referralpropCount++;
                 }
 
-                if (referralcreatedDateTime != null)
+                if (__workflow_referralcreatedDateTime != null)
                 {
-                    referral["createdDateTime"] = ExpressionConverter.ConvertO(referralcreatedDateTime);
+                    referral["createdDateTime"] = ExpressionConverter.ConvertO(__workflow_referralcreatedDateTime);
                     referralpropCount++;
                 }
 
@@ -194,45 +257,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
                 var customerProfileObjectpropCount = 0;
                 var addressObject = new JObject();
                 var addressObjectpropCount = 0;
-                if (referralcustomerProfileaddressaddressLine1 != null)
+                if (__workflow_referralcustomerProfileaddressaddressLine1 != null)
                 {
-                    addressObject["addressLine1"] = ExpressionConverter.ConvertO(referralcustomerProfileaddressaddressLine1);
+                    addressObject["addressLine1"] = ExpressionConverter.ConvertO(__workflow_referralcustomerProfileaddressaddressLine1);
                     addressObjectpropCount++;
                 }
 
-                if (referralcustomerProfileaddressaddressLine2 != null)
+                if (__workflow_referralcustomerProfileaddressaddressLine2 != null)
                 {
-                    addressObject["addressLine2"] = ExpressionConverter.ConvertO(referralcustomerProfileaddressaddressLine2);
+                    addressObject["addressLine2"] = ExpressionConverter.ConvertO(__workflow_referralcustomerProfileaddressaddressLine2);
                     addressObjectpropCount++;
                 }
 
-                if (referralcustomerProfileaddresscity != null)
+                if (__workflow_referralcustomerProfileaddresscity != null)
                 {
-                    addressObject["city"] = ExpressionConverter.ConvertO(referralcustomerProfileaddresscity);
+                    addressObject["city"] = ExpressionConverter.ConvertO(__workflow_referralcustomerProfileaddresscity);
                     addressObjectpropCount++;
                 }
 
-                if (referralcustomerProfileaddresscountry != null)
+                if (__workflow_referralcustomerProfileaddresscountry != null)
                 {
-                    addressObject["country"] = ExpressionConverter.ConvertO(referralcustomerProfileaddresscountry);
+                    addressObject["country"] = ExpressionConverter.ConvertO(__workflow_referralcustomerProfileaddresscountry);
                     addressObjectpropCount++;
                 }
 
-                if (referralcustomerProfileaddresspostalCode != null)
+                if (__workflow_referralcustomerProfileaddresspostalCode != null)
                 {
-                    addressObject["postalCode"] = ExpressionConverter.ConvertO(referralcustomerProfileaddresspostalCode);
+                    addressObject["postalCode"] = ExpressionConverter.ConvertO(__workflow_referralcustomerProfileaddresspostalCode);
                     addressObjectpropCount++;
                 }
 
-                if (referralcustomerProfileaddressregion != null)
+                if (__workflow_referralcustomerProfileaddressregion != null)
                 {
-                    addressObject["region"] = ExpressionConverter.ConvertO(referralcustomerProfileaddressregion);
+                    addressObject["region"] = ExpressionConverter.ConvertO(__workflow_referralcustomerProfileaddressregion);
                     addressObjectpropCount++;
                 }
 
-                if (referralcustomerProfileaddressstate != null)
+                if (__workflow_referralcustomerProfileaddressstate != null)
                 {
-                    addressObject["state"] = ExpressionConverter.ConvertO(referralcustomerProfileaddressstate);
+                    addressObject["state"] = ExpressionConverter.ConvertO(__workflow_referralcustomerProfileaddressstate);
                     addressObjectpropCount++;
                 }
 
@@ -242,27 +305,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
                     customerProfileObjectpropCount++;
                 }
 
-                if (referralcustomerProfileids != null)
+                if (__workflow_referralcustomerProfileids != null)
                 {
-                    customerProfileObject["ids"] = ExpressionConverter.ConvertO(referralcustomerProfileids);
+                    customerProfileObject["ids"] = ExpressionConverter.ConvertO(__workflow_referralcustomerProfileids);
                     customerProfileObjectpropCount++;
                 }
 
-                if (referralcustomerProfilename != null)
+                if (__workflow_referralcustomerProfilename != null)
                 {
-                    customerProfileObject["name"] = ExpressionConverter.ConvertO(referralcustomerProfilename);
+                    customerProfileObject["name"] = ExpressionConverter.ConvertO(__workflow_referralcustomerProfilename);
                     customerProfileObjectpropCount++;
                 }
 
-                if (referralcustomerProfilesize != null)
+                if (__workflow_referralcustomerProfilesize != null)
                 {
-                    customerProfileObject["size"] = ExpressionConverter.ConvertO(referralcustomerProfilesize);
+                    customerProfileObject["size"] = ExpressionConverter.ConvertO(__workflow_referralcustomerProfilesize);
                     customerProfileObjectpropCount++;
                 }
 
-                if (referralcustomerProfileteam != null)
+                if (__workflow_referralcustomerProfileteam != null)
                 {
-                    customerProfileObject["team"] = ExpressionConverter.ConvertO(referralcustomerProfileteam);
+                    customerProfileObject["team"] = ExpressionConverter.ConvertO(__workflow_referralcustomerProfileteam);
                     customerProfileObjectpropCount++;
                 }
 
@@ -274,71 +337,71 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
 
                 var detailsObject = new JObject();
                 var detailsObjectpropCount = 0;
-                if (referraldetailsclosingDateTime != null)
+                if (__workflow_referraldetailsclosingDateTime != null)
                 {
-                    detailsObject["closingDateTime"] = ExpressionConverter.ConvertO(referraldetailsclosingDateTime);
+                    detailsObject["closingDateTime"] = ExpressionConverter.ConvertO(__workflow_referraldetailsclosingDateTime);
                     detailsObjectpropCount++;
                 }
 
-                if (referraldetailscurrency != null)
+                if (__workflow_referraldetailscurrency != null)
                 {
-                    detailsObject["currency"] = ExpressionConverter.ConvertO(referraldetailscurrency);
+                    detailsObject["currency"] = ExpressionConverter.ConvertO(__workflow_referraldetailscurrency);
                     detailsObjectpropCount++;
                 }
 
-                if (referraldetailscustomerAction != null)
+                if (__workflow_referraldetailscustomerAction != null)
                 {
-                    detailsObject["customerAction"] = ExpressionConverter.ConvertO(referraldetailscustomerAction);
+                    detailsObject["customerAction"] = ExpressionConverter.ConvertO(__workflow_referraldetailscustomerAction);
                     detailsObjectpropCount++;
                 }
 
-                if (referraldetailscustomerRequestedContact != null)
+                if (__workflow_referraldetailscustomerRequestedContact != null)
                 {
-                    detailsObject["customerRequestedContact"] = ExpressionConverter.ConvertO(referraldetailscustomerRequestedContact);
+                    detailsObject["customerRequestedContact"] = ExpressionConverter.ConvertO(__workflow_referraldetailscustomerRequestedContact);
                     detailsObjectpropCount++;
                 }
 
-                if (referraldetailsdealValue != null)
+                if (__workflow_referraldetailsdealValue != null)
                 {
-                    detailsObject["dealValue"] = ExpressionConverter.ConvertO(referraldetailsdealValue);
+                    detailsObject["dealValue"] = ExpressionConverter.ConvertO(__workflow_referraldetailsdealValue);
                     detailsObjectpropCount++;
                 }
 
-                if (referraldetailsnotes != null)
+                if (__workflow_referraldetailsnotes != null)
                 {
-                    detailsObject["notes"] = ExpressionConverter.ConvertO(referraldetailsnotes);
+                    detailsObject["notes"] = ExpressionConverter.ConvertO(__workflow_referraldetailsnotes);
                     detailsObjectpropCount++;
                 }
 
                 var requirementsObject = new JObject();
                 var requirementsObjectpropCount = 0;
-                if (referraldetailsrequirementsindustries != null)
+                if (__workflow_referraldetailsrequirementsindustries != null)
                 {
-                    requirementsObject["industries"] = ExpressionConverter.ConvertO(referraldetailsrequirementsindustries);
+                    requirementsObject["industries"] = ExpressionConverter.ConvertO(__workflow_referraldetailsrequirementsindustries);
                     requirementsObjectpropCount++;
                 }
 
-                if (referraldetailsrequirementsproducts != null)
+                if (__workflow_referraldetailsrequirementsproducts != null)
                 {
-                    requirementsObject["products"] = ExpressionConverter.ConvertO(referraldetailsrequirementsproducts);
+                    requirementsObject["products"] = ExpressionConverter.ConvertO(__workflow_referraldetailsrequirementsproducts);
                     requirementsObjectpropCount++;
                 }
 
-                if (referraldetailsrequirementsservices != null)
+                if (__workflow_referraldetailsrequirementsservices != null)
                 {
-                    requirementsObject["services"] = ExpressionConverter.ConvertO(referraldetailsrequirementsservices);
+                    requirementsObject["services"] = ExpressionConverter.ConvertO(__workflow_referraldetailsrequirementsservices);
                     requirementsObjectpropCount++;
                 }
 
-                if (referraldetailsrequirementssolutions != null)
+                if (__workflow_referraldetailsrequirementssolutions != null)
                 {
-                    requirementsObject["solutions"] = ExpressionConverter.ConvertO(referraldetailsrequirementssolutions);
+                    requirementsObject["solutions"] = ExpressionConverter.ConvertO(__workflow_referraldetailsrequirementssolutions);
                     requirementsObjectpropCount++;
                 }
 
-                if (referraldetailsrequirementsoffers != null)
+                if (__workflow_referraldetailsrequirementsoffers != null)
                 {
-                    requirementsObject["offers"] = ExpressionConverter.ConvertO(referraldetailsrequirementsoffers);
+                    requirementsObject["offers"] = ExpressionConverter.ConvertO(__workflow_referraldetailsrequirementsoffers);
                     requirementsObjectpropCount++;
                 }
 
@@ -362,61 +425,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
                     referralpropCount++;
                 }
 
-                if (referraleTag != null)
+                if (__workflow_referraleTag != null)
                 {
-                    referral["eTag"] = ExpressionConverter.ConvertO(referraleTag);
+                    referral["eTag"] = ExpressionConverter.ConvertO(__workflow_referraleTag);
                     referralpropCount++;
                 }
 
-                if (referralengagementId != null)
+                if (__workflow_referralengagementId != null)
                 {
-                    referral["engagementId"] = ExpressionConverter.ConvertO(referralengagementId);
+                    referral["engagementId"] = ExpressionConverter.ConvertO(__workflow_referralengagementId);
                     referralpropCount++;
                 }
 
-                if (referralexpirationDateTime != null)
+                if (__workflow_referralexpirationDateTime != null)
                 {
-                    referral["expirationDateTime"] = ExpressionConverter.ConvertO(referralexpirationDateTime);
+                    referral["expirationDateTime"] = ExpressionConverter.ConvertO(__workflow_referralexpirationDateTime);
                     referralpropCount++;
                 }
 
-                if (referralexternalReferenceId != null)
+                if (__workflow_referralexternalReferenceId != null)
                 {
-                    referral["externalReferenceId"] = ExpressionConverter.ConvertO(referralexternalReferenceId);
+                    referral["externalReferenceId"] = ExpressionConverter.ConvertO(__workflow_referralexternalReferenceId);
                     referralpropCount++;
                 }
 
-                if (referralfavorite != null)
+                if (__workflow_referralfavorite != null)
                 {
-                    referral["favorite"] = ExpressionConverter.ConvertO(referralfavorite);
+                    referral["favorite"] = ExpressionConverter.ConvertO(__workflow_referralfavorite);
                     referralpropCount++;
                 }
 
-                if (referralid != null)
+                if (__workflow_referralid != null)
                 {
-                    referral["id"] = ExpressionConverter.ConvertO(referralid);
+                    referral["id"] = ExpressionConverter.ConvertO(__workflow_referralid);
                     referralpropCount++;
                 }
 
                 var inviteContextObject = new JObject();
                 var inviteContextObjectpropCount = 0;
-                if (referralinviteContextassistanceRequestCode != null)
+                if (__workflow_referralinviteContextassistanceRequestCode != null)
                 {
-                    inviteContextObject["assistanceRequestCode"] = ExpressionConverter.ConvertO(referralinviteContextassistanceRequestCode);
+                    inviteContextObject["assistanceRequestCode"] = ExpressionConverter.ConvertO(__workflow_referralinviteContextassistanceRequestCode);
                     inviteContextObjectpropCount++;
                 }
 
                 var invitedByObject = new JObject();
                 var invitedByObjectpropCount = 0;
-                if (referralinviteContextinvitedByorganizationId != null)
+                if (__workflow_referralinviteContextinvitedByorganizationId != null)
                 {
-                    invitedByObject["organizationId"] = ExpressionConverter.ConvertO(referralinviteContextinvitedByorganizationId);
+                    invitedByObject["organizationId"] = ExpressionConverter.ConvertO(__workflow_referralinviteContextinvitedByorganizationId);
                     invitedByObjectpropCount++;
                 }
 
-                if (referralinviteContextinvitedByorganizationName != null)
+                if (__workflow_referralinviteContextinvitedByorganizationName != null)
                 {
-                    invitedByObject["organizationName"] = ExpressionConverter.ConvertO(referralinviteContextinvitedByorganizationName);
+                    invitedByObject["organizationName"] = ExpressionConverter.ConvertO(__workflow_referralinviteContextinvitedByorganizationName);
                     invitedByObjectpropCount++;
                 }
 
@@ -426,9 +489,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
                     inviteContextObjectpropCount++;
                 }
 
-                if (referralinviteContextnotes != null)
+                if (__workflow_referralinviteContextnotes != null)
                 {
-                    inviteContextObject["notes"] = ExpressionConverter.ConvertO(referralinviteContextnotes);
+                    inviteContextObject["notes"] = ExpressionConverter.ConvertO(__workflow_referralinviteContextnotes);
                     inviteContextObjectpropCount++;
                 }
 
@@ -438,15 +501,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
                     referralpropCount++;
                 }
 
-                if (referrallastModifiedVia != null)
+                if (__workflow_referrallastModifiedVia != null)
                 {
-                    referral["lastModifiedVia"] = ExpressionConverter.ConvertO(referrallastModifiedVia);
+                    referral["lastModifiedVia"] = ExpressionConverter.ConvertO(__workflow_referrallastModifiedVia);
                     referralpropCount++;
                 }
 
-                if (referrallastRunId != null)
+                if (__workflow_referrallastRunId != null)
                 {
-                    referral["lastRunId"] = ExpressionConverter.ConvertO(referrallastRunId);
+                    referral["lastRunId"] = ExpressionConverter.ConvertO(__workflow_referrallastRunId);
                     referralpropCount++;
                 }
 
@@ -454,15 +517,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
                 var linksObjectpropCount = 0;
                 var relatedReferralsObject = new JObject();
                 var relatedReferralsObjectpropCount = 0;
-                if (referrallinksrelatedReferralsmethod != null)
+                if (__workflow_referrallinksrelatedReferralsmethod != null)
                 {
-                    relatedReferralsObject["method"] = ExpressionConverter.ConvertO(referrallinksrelatedReferralsmethod);
+                    relatedReferralsObject["method"] = ExpressionConverter.ConvertO(__workflow_referrallinksrelatedReferralsmethod);
                     relatedReferralsObjectpropCount++;
                 }
 
-                if (referrallinksrelatedReferralsuri != null)
+                if (__workflow_referrallinksrelatedReferralsuri != null)
                 {
-                    relatedReferralsObject["uri"] = ExpressionConverter.ConvertO(referrallinksrelatedReferralsuri);
+                    relatedReferralsObject["uri"] = ExpressionConverter.ConvertO(__workflow_referrallinksrelatedReferralsuri);
                     relatedReferralsObjectpropCount++;
                 }
 
@@ -474,15 +537,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
 
                 var selfObject = new JObject();
                 var selfObjectpropCount = 0;
-                if (referrallinksselfmethod != null)
+                if (__workflow_referrallinksselfmethod != null)
                 {
-                    selfObject["method"] = ExpressionConverter.ConvertO(referrallinksselfmethod);
+                    selfObject["method"] = ExpressionConverter.ConvertO(__workflow_referrallinksselfmethod);
                     selfObjectpropCount++;
                 }
 
-                if (referrallinksselfuri != null)
+                if (__workflow_referrallinksselfuri != null)
                 {
-                    selfObject["uri"] = ExpressionConverter.ConvertO(referrallinksselfuri);
+                    selfObject["uri"] = ExpressionConverter.ConvertO(__workflow_referrallinksselfuri);
                     selfObjectpropCount++;
                 }
 
@@ -498,77 +561,77 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
                     referralpropCount++;
                 }
 
-                if (referralname != null)
+                if (__workflow_referralname != null)
                 {
-                    referral["name"] = ExpressionConverter.ConvertO(referralname);
+                    referral["name"] = ExpressionConverter.ConvertO(__workflow_referralname);
                     referralpropCount++;
                 }
 
-                if (referralorganizationId != null)
+                if (__workflow_referralorganizationId != null)
                 {
-                    referral["organizationId"] = ExpressionConverter.ConvertO(referralorganizationId);
+                    referral["organizationId"] = ExpressionConverter.ConvertO(__workflow_referralorganizationId);
                     referralpropCount++;
                 }
 
-                if (referralorganizationName != null)
+                if (__workflow_referralorganizationName != null)
                 {
-                    referral["organizationName"] = ExpressionConverter.ConvertO(referralorganizationName);
+                    referral["organizationName"] = ExpressionConverter.ConvertO(__workflow_referralorganizationName);
                     referralpropCount++;
                 }
 
-                if (referralqualification != null)
+                if (__workflow_referralqualification != null)
                 {
-                    referral["qualification"] = ExpressionConverter.ConvertO(referralqualification);
+                    referral["qualification"] = ExpressionConverter.ConvertO(__workflow_referralqualification);
                     referralpropCount++;
                 }
 
-                if (referralreferralProgram != null)
+                if (__workflow_referralreferralProgram != null)
                 {
-                    referral["referralProgram"] = ExpressionConverter.ConvertO(referralreferralProgram);
+                    referral["referralProgram"] = ExpressionConverter.ConvertO(__workflow_referralreferralProgram);
                     referralpropCount++;
                 }
 
-                if (referralsalesStage != null)
+                if (__workflow_referralsalesStage != null)
                 {
-                    referral["salesStage"] = ExpressionConverter.ConvertO(referralsalesStage);
+                    referral["salesStage"] = ExpressionConverter.ConvertO(__workflow_referralsalesStage);
                     referralpropCount++;
                 }
 
-                if (referralstatus != null)
+                if (__workflow_referralstatus != null)
                 {
-                    referral["status"] = ExpressionConverter.ConvertO(referralstatus);
+                    referral["status"] = ExpressionConverter.ConvertO(__workflow_referralstatus);
                     referralpropCount++;
                 }
 
-                if (referralstatusReason != null)
+                if (__workflow_referralstatusReason != null)
                 {
-                    referral["statusReason"] = ExpressionConverter.ConvertO(referralstatusReason);
+                    referral["statusReason"] = ExpressionConverter.ConvertO(__workflow_referralstatusReason);
                     referralpropCount++;
                 }
 
-                if (referralsubstatus != null)
+                if (__workflow_referralsubstatus != null)
                 {
-                    referral["substatus"] = ExpressionConverter.ConvertO(referralsubstatus);
+                    referral["substatus"] = ExpressionConverter.ConvertO(__workflow_referralsubstatus);
                     referralpropCount++;
                 }
 
-                if (referraltarget != null)
+                if (__workflow_referraltarget != null)
                 {
-                    referral["target"] = ExpressionConverter.ConvertO(referraltarget);
+                    referral["target"] = ExpressionConverter.ConvertO(__workflow_referraltarget);
                     referralpropCount++;
                 }
 
-                if (referralteam != null)
+                if (__workflow_referralteam != null)
                 {
-                    referral["team"] = ExpressionConverter.ConvertO(referralteam);
+                    referral["team"] = ExpressionConverter.ConvertO(__workflow_referralteam);
                     referralpropCount++;
                 }
 
                 var trackingInfoObject = new JObject();
                 var trackingInfoObjectpropCount = 0;
-                if (referraltrackingInfomicrosoftMsxId != null)
+                if (__workflow_referraltrackingInfomicrosoftMsxId != null)
                 {
-                    trackingInfoObject["microsoftMsxId"] = ExpressionConverter.ConvertO(referraltrackingInfomicrosoftMsxId);
+                    trackingInfoObject["microsoftMsxId"] = ExpressionConverter.ConvertO(__workflow_referraltrackingInfomicrosoftMsxId);
                     trackingInfoObjectpropCount++;
                 }
 
@@ -578,81 +641,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
                     referralpropCount++;
                 }
 
-                if (referraltype != null)
+                if (__workflow_referraltype != null)
                 {
-                    referral["type"] = ExpressionConverter.ConvertO(referraltype);
+                    referral["type"] = ExpressionConverter.ConvertO(__workflow_referraltype);
                     referralpropCount++;
                 }
 
-                if (referralupdatedDateTime != null)
+                if (__workflow_referralupdatedDateTime != null)
                 {
-                    referral["updatedDateTime"] = ExpressionConverter.ConvertO(referralupdatedDateTime);
+                    referral["updatedDateTime"] = ExpressionConverter.ConvertO(__workflow_referralupdatedDateTime);
                     referralpropCount++;
                 }
 
-                if (referralmpnId != null)
+                if (__workflow_referralmpnId != null)
                 {
-                    referral["mpnId"] = ExpressionConverter.ConvertO(referralmpnId);
+                    referral["mpnId"] = ExpressionConverter.ConvertO(__workflow_referralmpnId);
                     referralpropCount++;
                 }
 
-                if (referralregistrations != null)
+                if (__workflow_referralregistrations != null)
                 {
-                    referral["registrations"] = ExpressionConverter.ConvertO(referralregistrations);
+                    referral["registrations"] = ExpressionConverter.ConvertO(__workflow_referralregistrations);
                     referralpropCount++;
                 }
 
-                if (referralregistrationStatus != null)
+                if (__workflow_referralregistrationStatus != null)
                 {
-                    referral["registrationStatus"] = ExpressionConverter.ConvertO(referralregistrationStatus);
+                    referral["registrationStatus"] = ExpressionConverter.ConvertO(__workflow_referralregistrationStatus);
                     referralpropCount++;
                 }
 
-                if (referralcallToAction != null)
+                if (__workflow_referralcallToAction != null)
                 {
-                    referral["callToAction"] = ExpressionConverter.ConvertO(referralcallToAction);
+                    referral["callToAction"] = ExpressionConverter.ConvertO(__workflow_referralcallToAction);
                     referralpropCount++;
                 }
 
-                if (referralreferralSource != null)
+                if (__workflow_referralreferralSource != null)
                 {
-                    referral["referralSource"] = ExpressionConverter.ConvertO(referralreferralSource);
+                    referral["referralSource"] = ExpressionConverter.ConvertO(__workflow_referralreferralSource);
                     referralpropCount++;
                 }
 
-                if (referralquality != null)
+                if (__workflow_referralquality != null)
                 {
-                    referral["quality"] = ExpressionConverter.ConvertO(referralquality);
+                    referral["quality"] = ExpressionConverter.ConvertO(__workflow_referralquality);
                     referralpropCount++;
                 }
 
-                if (referralisSpam != null)
+                if (__workflow_referralisSpam != null)
                 {
-                    referral["isSpam"] = ExpressionConverter.ConvertO(referralisSpam);
+                    referral["isSpam"] = ExpressionConverter.ConvertO(__workflow_referralisSpam);
                     referralpropCount++;
                 }
 
-                if (referraldirection != null)
+                if (__workflow_referraldirection != null)
                 {
-                    referral["direction"] = ExpressionConverter.ConvertO(referraldirection);
+                    referral["direction"] = ExpressionConverter.ConvertO(__workflow_referraldirection);
                     referralpropCount++;
                 }
 
-                if (referraltags != null)
+                if (__workflow_referraltags != null)
                 {
-                    referral["tags"] = ExpressionConverter.ConvertO(referraltags);
+                    referral["tags"] = ExpressionConverter.ConvertO(__workflow_referraltags);
                     referralpropCount++;
                 }
 
-                if (referralacceptedDateTime != null)
+                if (__workflow_referralacceptedDateTime != null)
                 {
-                    referral["acceptedDateTime"] = ExpressionConverter.ConvertO(referralacceptedDateTime);
+                    referral["acceptedDateTime"] = ExpressionConverter.ConvertO(__workflow_referralacceptedDateTime);
                     referralpropCount++;
                 }
 
-                if (referralclosedDateTime != null)
+                if (__workflow_referralclosedDateTime != null)
                 {
-                    referral["closedDateTime"] = ExpressionConverter.ConvertO(referralclosedDateTime);
+                    referral["closedDateTime"] = ExpressionConverter.ConvertO(__workflow_referralclosedDateTime);
                     referralpropCount++;
                 }
 
@@ -666,153 +729,213 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnercenterref")]
-        [WorkflowExpressionFactory(nameof(__BuildGetReferralById))]
-        public IBodyWorkflowAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral> GetReferralById([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> mSCorrelationId = null)
+        public IBodyWorkflowAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral> GetReferralById(Expression<Func<string>> id, Expression<Func<string>> mSCorrelationId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral> __BuildGetReferralById(WorkflowExpression<string> id, WorkflowExpression<string> mSCorrelationId = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(mSCorrelationId, nameof(mSCorrelationId), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_mSCorrelationId = mSCorrelationId == null ? null : WorkflowExpression.Compile(mSCorrelationId);
+            WorkflowExpression.Validate(__workflow_mSCorrelationId, nameof(mSCorrelationId), required: false);
             return new DeferredBodyAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/referrals/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/referrals/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["content-type"] = Convert.ToString("application/json");
-                if (mSCorrelationId != null)
-                    callPayload.Headers["MS-CorrelationId"] = ExpressionConverter.Convert(mSCorrelationId);
+                if (__workflow_mSCorrelationId != null)
+                    callPayload.Headers["MS-CorrelationId"] = ExpressionConverter.Convert(__workflow_mSCorrelationId);
                 callPayload.Headers["X-Caller-Id"] = Convert.ToString("60858c1b-2062-40ad-b42c-996b6b5b047d");
                 return new ApiConnectionAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnercenterref")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateReferralById))]
-        public IBodyWorkflowAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral> UpdateReferralById([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> ifMatch, [WorkflowExpression] Func<string> odataReferralcontext = null, [WorkflowExpression] Func<string> odataReferralcampaignId = null, [WorkflowExpression] Func<bool> odataReferralconsentconsentToContact = null, [WorkflowExpression] Func<bool> odataReferralconsentconsentToToShareInfoWithOthers = null, [WorkflowExpression] Func<bool> odataReferralconsentconsentToShareReferralWithMicrosoftSellers = null, [WorkflowExpression] Func<string> odataReferralcreatedDateTime = null, [WorkflowExpression] Func<string> odataReferralcustomerProfileaddressaddressLine1 = null, [WorkflowExpression] Func<string> odataReferralcustomerProfileaddressaddressLine2 = null, [WorkflowExpression] Func<string> odataReferralcustomerProfileaddresscity = null, [WorkflowExpression] Func<string> odataReferralcustomerProfileaddresscountry = null, [WorkflowExpression] Func<string> odataReferralcustomerProfileaddresspostalCode = null, [WorkflowExpression] Func<string> odataReferralcustomerProfileaddressregion = null, [WorkflowExpression] Func<string> odataReferralcustomerProfileaddressstate = null, [WorkflowExpression] Func<JToken[]> odataReferralcustomerProfileids = null, [WorkflowExpression] Func<string> odataReferralcustomerProfilename = null, [WorkflowExpression] Func<string> odataReferralcustomerProfilesize = null, [WorkflowExpression] Func<odataReferralcustomerProfileteamInputItem[]> odataReferralcustomerProfileteam = null, [WorkflowExpression] Func<string> odataReferraldetailsclosingDateTime = null, [WorkflowExpression] Func<string> odataReferraldetailscurrency = null, [WorkflowExpression] Func<string> odataReferraldetailscustomerAction = null, [WorkflowExpression] Func<bool> odataReferraldetailscustomerRequestedContact = null, [WorkflowExpression] Func<double> odataReferraldetailsdealValue = null, [WorkflowExpression] Func<string> odataReferraldetailsnotes = null, [WorkflowExpression] Func<odataReferraldetailsrequirementsindustriesInputItem[]> odataReferraldetailsrequirementsindustries = null, [WorkflowExpression] Func<odataReferraldetailsrequirementsproductsInputItem[]> odataReferraldetailsrequirementsproducts = null, [WorkflowExpression] Func<odataReferraldetailsrequirementsservicesInputItem[]> odataReferraldetailsrequirementsservices = null, [WorkflowExpression] Func<JToken[]> odataReferraldetailsrequirementssolutions = null, [WorkflowExpression] Func<JToken[]> odataReferraldetailsrequirementsoffers = null, [WorkflowExpression] Func<string> odataReferraleTag = null, [WorkflowExpression] Func<string> odataReferralengagementId = null, [WorkflowExpression] Func<string> odataReferralexpirationDateTime = null, [WorkflowExpression] Func<string> odataReferralexternalReferenceId = null, [WorkflowExpression] Func<bool> odataReferralfavorite = null, [WorkflowExpression] Func<string> odataReferralid = null, [WorkflowExpression] Func<odataReferralinviteContextassistanceRequestCodeInput> odataReferralinviteContextassistanceRequestCode = null, [WorkflowExpression] Func<string> odataReferralinviteContextinvitedByorganizationId = null, [WorkflowExpression] Func<string> odataReferralinviteContextinvitedByorganizationName = null, [WorkflowExpression] Func<string> odataReferralinviteContextnotes = null, [WorkflowExpression] Func<string> odataReferrallastModifiedVia = null, [WorkflowExpression] Func<string> odataReferrallastRunId = null, [WorkflowExpression] Func<string> odataReferrallinksrelatedReferralsmethod = null, [WorkflowExpression] Func<string> odataReferrallinksrelatedReferralsuri = null, [WorkflowExpression] Func<string> odataReferrallinksselfmethod = null, [WorkflowExpression] Func<string> odataReferrallinksselfuri = null, [WorkflowExpression] Func<string> odataReferralname = null, [WorkflowExpression] Func<string> odataReferralorganizationId = null, [WorkflowExpression] Func<string> odataReferralorganizationName = null, [WorkflowExpression] Func<string> odataReferralqualification = null, [WorkflowExpression] Func<string> odataReferralreferralProgram = null, [WorkflowExpression] Func<odataReferralsalesStageInput> odataReferralsalesStage = null, [WorkflowExpression] Func<string> odataReferralstatus = null, [WorkflowExpression] Func<string> odataReferralstatusReason = null, [WorkflowExpression] Func<string> odataReferralsubstatus = null, [WorkflowExpression] Func<odataReferraltargetInputItem[]> odataReferraltarget = null, [WorkflowExpression] Func<odataReferralteamInputItem[]> odataReferralteam = null, [WorkflowExpression] Func<string> odataReferraltrackingInfomicrosoftMsxId = null, [WorkflowExpression] Func<string> odataReferraltype = null, [WorkflowExpression] Func<string> odataReferralupdatedDateTime = null, [WorkflowExpression] Func<string> odataReferralmpnId = null, [WorkflowExpression] Func<odataReferralregistrationsInputItem[]> odataReferralregistrations = null, [WorkflowExpression] Func<string> odataReferralregistrationStatus = null, [WorkflowExpression] Func<string> odataReferralcallToAction = null, [WorkflowExpression] Func<string> odataReferralreferralSource = null, [WorkflowExpression] Func<string> odataReferralquality = null, [WorkflowExpression] Func<bool> odataReferralisSpam = null, [WorkflowExpression] Func<string> odataReferraldirection = null, [WorkflowExpression] Func<string[]> odataReferraltags = null, [WorkflowExpression] Func<string> odataReferralacceptedDateTime = null, [WorkflowExpression] Func<string> odataReferralclosedDateTime = null, [WorkflowExpression] Func<string> mSCorrelationId = null)
+        public IBodyWorkflowAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral> UpdateReferralById(Expression<Func<string>> id, Expression<Func<string>> ifMatch, Expression<Func<string>> odataReferralcontext = null, Expression<Func<string>> odataReferralcampaignId = null, Expression<Func<bool>> odataReferralconsentconsentToContact = null, Expression<Func<bool>> odataReferralconsentconsentToToShareInfoWithOthers = null, Expression<Func<bool>> odataReferralconsentconsentToShareReferralWithMicrosoftSellers = null, Expression<Func<string>> odataReferralcreatedDateTime = null, Expression<Func<string>> odataReferralcustomerProfileaddressaddressLine1 = null, Expression<Func<string>> odataReferralcustomerProfileaddressaddressLine2 = null, Expression<Func<string>> odataReferralcustomerProfileaddresscity = null, Expression<Func<string>> odataReferralcustomerProfileaddresscountry = null, Expression<Func<string>> odataReferralcustomerProfileaddresspostalCode = null, Expression<Func<string>> odataReferralcustomerProfileaddressregion = null, Expression<Func<string>> odataReferralcustomerProfileaddressstate = null, Expression<Func<JToken[]>> odataReferralcustomerProfileids = null, Expression<Func<string>> odataReferralcustomerProfilename = null, Expression<Func<string>> odataReferralcustomerProfilesize = null, Expression<Func<odataReferralcustomerProfileteamInputItem[]>> odataReferralcustomerProfileteam = null, Expression<Func<string>> odataReferraldetailsclosingDateTime = null, Expression<Func<string>> odataReferraldetailscurrency = null, Expression<Func<string>> odataReferraldetailscustomerAction = null, Expression<Func<bool>> odataReferraldetailscustomerRequestedContact = null, Expression<Func<double>> odataReferraldetailsdealValue = null, Expression<Func<string>> odataReferraldetailsnotes = null, Expression<Func<odataReferraldetailsrequirementsindustriesInputItem[]>> odataReferraldetailsrequirementsindustries = null, Expression<Func<odataReferraldetailsrequirementsproductsInputItem[]>> odataReferraldetailsrequirementsproducts = null, Expression<Func<odataReferraldetailsrequirementsservicesInputItem[]>> odataReferraldetailsrequirementsservices = null, Expression<Func<JToken[]>> odataReferraldetailsrequirementssolutions = null, Expression<Func<JToken[]>> odataReferraldetailsrequirementsoffers = null, Expression<Func<string>> odataReferraleTag = null, Expression<Func<string>> odataReferralengagementId = null, Expression<Func<string>> odataReferralexpirationDateTime = null, Expression<Func<string>> odataReferralexternalReferenceId = null, Expression<Func<bool>> odataReferralfavorite = null, Expression<Func<string>> odataReferralid = null, Expression<Func<odataReferralinviteContextassistanceRequestCodeInput>> odataReferralinviteContextassistanceRequestCode = null, Expression<Func<string>> odataReferralinviteContextinvitedByorganizationId = null, Expression<Func<string>> odataReferralinviteContextinvitedByorganizationName = null, Expression<Func<string>> odataReferralinviteContextnotes = null, Expression<Func<string>> odataReferrallastModifiedVia = null, Expression<Func<string>> odataReferrallastRunId = null, Expression<Func<string>> odataReferrallinksrelatedReferralsmethod = null, Expression<Func<string>> odataReferrallinksrelatedReferralsuri = null, Expression<Func<string>> odataReferrallinksselfmethod = null, Expression<Func<string>> odataReferrallinksselfuri = null, Expression<Func<string>> odataReferralname = null, Expression<Func<string>> odataReferralorganizationId = null, Expression<Func<string>> odataReferralorganizationName = null, Expression<Func<string>> odataReferralqualification = null, Expression<Func<string>> odataReferralreferralProgram = null, Expression<Func<odataReferralsalesStageInput>> odataReferralsalesStage = null, Expression<Func<string>> odataReferralstatus = null, Expression<Func<string>> odataReferralstatusReason = null, Expression<Func<string>> odataReferralsubstatus = null, Expression<Func<odataReferraltargetInputItem[]>> odataReferraltarget = null, Expression<Func<odataReferralteamInputItem[]>> odataReferralteam = null, Expression<Func<string>> odataReferraltrackingInfomicrosoftMsxId = null, Expression<Func<string>> odataReferraltype = null, Expression<Func<string>> odataReferralupdatedDateTime = null, Expression<Func<string>> odataReferralmpnId = null, Expression<Func<odataReferralregistrationsInputItem[]>> odataReferralregistrations = null, Expression<Func<string>> odataReferralregistrationStatus = null, Expression<Func<string>> odataReferralcallToAction = null, Expression<Func<string>> odataReferralreferralSource = null, Expression<Func<string>> odataReferralquality = null, Expression<Func<bool>> odataReferralisSpam = null, Expression<Func<string>> odataReferraldirection = null, Expression<Func<string[]>> odataReferraltags = null, Expression<Func<string>> odataReferralacceptedDateTime = null, Expression<Func<string>> odataReferralclosedDateTime = null, Expression<Func<string>> mSCorrelationId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral> __BuildUpdateReferralById(WorkflowExpression<string> id, WorkflowExpression<string> ifMatch, WorkflowExpression<string> odataReferralcontext = null, WorkflowExpression<string> odataReferralcampaignId = null, WorkflowExpression<bool> odataReferralconsentconsentToContact = null, WorkflowExpression<bool> odataReferralconsentconsentToToShareInfoWithOthers = null, WorkflowExpression<bool> odataReferralconsentconsentToShareReferralWithMicrosoftSellers = null, WorkflowExpression<string> odataReferralcreatedDateTime = null, WorkflowExpression<string> odataReferralcustomerProfileaddressaddressLine1 = null, WorkflowExpression<string> odataReferralcustomerProfileaddressaddressLine2 = null, WorkflowExpression<string> odataReferralcustomerProfileaddresscity = null, WorkflowExpression<string> odataReferralcustomerProfileaddresscountry = null, WorkflowExpression<string> odataReferralcustomerProfileaddresspostalCode = null, WorkflowExpression<string> odataReferralcustomerProfileaddressregion = null, WorkflowExpression<string> odataReferralcustomerProfileaddressstate = null, WorkflowExpression<JToken[]> odataReferralcustomerProfileids = null, WorkflowExpression<string> odataReferralcustomerProfilename = null, WorkflowExpression<string> odataReferralcustomerProfilesize = null, WorkflowExpression<odataReferralcustomerProfileteamInputItem[]> odataReferralcustomerProfileteam = null, WorkflowExpression<string> odataReferraldetailsclosingDateTime = null, WorkflowExpression<string> odataReferraldetailscurrency = null, WorkflowExpression<string> odataReferraldetailscustomerAction = null, WorkflowExpression<bool> odataReferraldetailscustomerRequestedContact = null, WorkflowExpression<double> odataReferraldetailsdealValue = null, WorkflowExpression<string> odataReferraldetailsnotes = null, WorkflowExpression<odataReferraldetailsrequirementsindustriesInputItem[]> odataReferraldetailsrequirementsindustries = null, WorkflowExpression<odataReferraldetailsrequirementsproductsInputItem[]> odataReferraldetailsrequirementsproducts = null, WorkflowExpression<odataReferraldetailsrequirementsservicesInputItem[]> odataReferraldetailsrequirementsservices = null, WorkflowExpression<JToken[]> odataReferraldetailsrequirementssolutions = null, WorkflowExpression<JToken[]> odataReferraldetailsrequirementsoffers = null, WorkflowExpression<string> odataReferraleTag = null, WorkflowExpression<string> odataReferralengagementId = null, WorkflowExpression<string> odataReferralexpirationDateTime = null, WorkflowExpression<string> odataReferralexternalReferenceId = null, WorkflowExpression<bool> odataReferralfavorite = null, WorkflowExpression<string> odataReferralid = null, WorkflowExpression<odataReferralinviteContextassistanceRequestCodeInput> odataReferralinviteContextassistanceRequestCode = null, WorkflowExpression<string> odataReferralinviteContextinvitedByorganizationId = null, WorkflowExpression<string> odataReferralinviteContextinvitedByorganizationName = null, WorkflowExpression<string> odataReferralinviteContextnotes = null, WorkflowExpression<string> odataReferrallastModifiedVia = null, WorkflowExpression<string> odataReferrallastRunId = null, WorkflowExpression<string> odataReferrallinksrelatedReferralsmethod = null, WorkflowExpression<string> odataReferrallinksrelatedReferralsuri = null, WorkflowExpression<string> odataReferrallinksselfmethod = null, WorkflowExpression<string> odataReferrallinksselfuri = null, WorkflowExpression<string> odataReferralname = null, WorkflowExpression<string> odataReferralorganizationId = null, WorkflowExpression<string> odataReferralorganizationName = null, WorkflowExpression<string> odataReferralqualification = null, WorkflowExpression<string> odataReferralreferralProgram = null, WorkflowExpression<odataReferralsalesStageInput> odataReferralsalesStage = null, WorkflowExpression<string> odataReferralstatus = null, WorkflowExpression<string> odataReferralstatusReason = null, WorkflowExpression<string> odataReferralsubstatus = null, WorkflowExpression<odataReferraltargetInputItem[]> odataReferraltarget = null, WorkflowExpression<odataReferralteamInputItem[]> odataReferralteam = null, WorkflowExpression<string> odataReferraltrackingInfomicrosoftMsxId = null, WorkflowExpression<string> odataReferraltype = null, WorkflowExpression<string> odataReferralupdatedDateTime = null, WorkflowExpression<string> odataReferralmpnId = null, WorkflowExpression<odataReferralregistrationsInputItem[]> odataReferralregistrations = null, WorkflowExpression<string> odataReferralregistrationStatus = null, WorkflowExpression<string> odataReferralcallToAction = null, WorkflowExpression<string> odataReferralreferralSource = null, WorkflowExpression<string> odataReferralquality = null, WorkflowExpression<bool> odataReferralisSpam = null, WorkflowExpression<string> odataReferraldirection = null, WorkflowExpression<string[]> odataReferraltags = null, WorkflowExpression<string> odataReferralacceptedDateTime = null, WorkflowExpression<string> odataReferralclosedDateTime = null, WorkflowExpression<string> mSCorrelationId = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(ifMatch, nameof(ifMatch), required: true);
-            WorkflowExpression.Validate(odataReferralcontext, nameof(odataReferralcontext), required: false);
-            WorkflowExpression.Validate(odataReferralcampaignId, nameof(odataReferralcampaignId), required: false);
-            WorkflowExpression.Validate(odataReferralconsentconsentToContact, nameof(odataReferralconsentconsentToContact), required: false);
-            WorkflowExpression.Validate(odataReferralconsentconsentToToShareInfoWithOthers, nameof(odataReferralconsentconsentToToShareInfoWithOthers), required: false);
-            WorkflowExpression.Validate(odataReferralconsentconsentToShareReferralWithMicrosoftSellers, nameof(odataReferralconsentconsentToShareReferralWithMicrosoftSellers), required: false);
-            WorkflowExpression.Validate(odataReferralcreatedDateTime, nameof(odataReferralcreatedDateTime), required: false);
-            WorkflowExpression.Validate(odataReferralcustomerProfileaddressaddressLine1, nameof(odataReferralcustomerProfileaddressaddressLine1), required: false);
-            WorkflowExpression.Validate(odataReferralcustomerProfileaddressaddressLine2, nameof(odataReferralcustomerProfileaddressaddressLine2), required: false);
-            WorkflowExpression.Validate(odataReferralcustomerProfileaddresscity, nameof(odataReferralcustomerProfileaddresscity), required: false);
-            WorkflowExpression.Validate(odataReferralcustomerProfileaddresscountry, nameof(odataReferralcustomerProfileaddresscountry), required: false);
-            WorkflowExpression.Validate(odataReferralcustomerProfileaddresspostalCode, nameof(odataReferralcustomerProfileaddresspostalCode), required: false);
-            WorkflowExpression.Validate(odataReferralcustomerProfileaddressregion, nameof(odataReferralcustomerProfileaddressregion), required: false);
-            WorkflowExpression.Validate(odataReferralcustomerProfileaddressstate, nameof(odataReferralcustomerProfileaddressstate), required: false);
-            WorkflowExpression.Validate(odataReferralcustomerProfileids, nameof(odataReferralcustomerProfileids), required: false);
-            WorkflowExpression.Validate(odataReferralcustomerProfilename, nameof(odataReferralcustomerProfilename), required: false);
-            WorkflowExpression.Validate(odataReferralcustomerProfilesize, nameof(odataReferralcustomerProfilesize), required: false);
-            WorkflowExpression.Validate(odataReferralcustomerProfileteam, nameof(odataReferralcustomerProfileteam), required: false);
-            WorkflowExpression.Validate(odataReferraldetailsclosingDateTime, nameof(odataReferraldetailsclosingDateTime), required: false);
-            WorkflowExpression.Validate(odataReferraldetailscurrency, nameof(odataReferraldetailscurrency), required: false);
-            WorkflowExpression.Validate(odataReferraldetailscustomerAction, nameof(odataReferraldetailscustomerAction), required: false);
-            WorkflowExpression.Validate(odataReferraldetailscustomerRequestedContact, nameof(odataReferraldetailscustomerRequestedContact), required: false);
-            WorkflowExpression.Validate(odataReferraldetailsdealValue, nameof(odataReferraldetailsdealValue), required: false);
-            WorkflowExpression.Validate(odataReferraldetailsnotes, nameof(odataReferraldetailsnotes), required: false);
-            WorkflowExpression.Validate(odataReferraldetailsrequirementsindustries, nameof(odataReferraldetailsrequirementsindustries), required: false);
-            WorkflowExpression.Validate(odataReferraldetailsrequirementsproducts, nameof(odataReferraldetailsrequirementsproducts), required: false);
-            WorkflowExpression.Validate(odataReferraldetailsrequirementsservices, nameof(odataReferraldetailsrequirementsservices), required: false);
-            WorkflowExpression.Validate(odataReferraldetailsrequirementssolutions, nameof(odataReferraldetailsrequirementssolutions), required: false);
-            WorkflowExpression.Validate(odataReferraldetailsrequirementsoffers, nameof(odataReferraldetailsrequirementsoffers), required: false);
-            WorkflowExpression.Validate(odataReferraleTag, nameof(odataReferraleTag), required: false);
-            WorkflowExpression.Validate(odataReferralengagementId, nameof(odataReferralengagementId), required: false);
-            WorkflowExpression.Validate(odataReferralexpirationDateTime, nameof(odataReferralexpirationDateTime), required: false);
-            WorkflowExpression.Validate(odataReferralexternalReferenceId, nameof(odataReferralexternalReferenceId), required: false);
-            WorkflowExpression.Validate(odataReferralfavorite, nameof(odataReferralfavorite), required: false);
-            WorkflowExpression.Validate(odataReferralid, nameof(odataReferralid), required: false);
-            WorkflowExpression.Validate(odataReferralinviteContextassistanceRequestCode, nameof(odataReferralinviteContextassistanceRequestCode), required: false);
-            WorkflowExpression.Validate(odataReferralinviteContextinvitedByorganizationId, nameof(odataReferralinviteContextinvitedByorganizationId), required: false);
-            WorkflowExpression.Validate(odataReferralinviteContextinvitedByorganizationName, nameof(odataReferralinviteContextinvitedByorganizationName), required: false);
-            WorkflowExpression.Validate(odataReferralinviteContextnotes, nameof(odataReferralinviteContextnotes), required: false);
-            WorkflowExpression.Validate(odataReferrallastModifiedVia, nameof(odataReferrallastModifiedVia), required: false);
-            WorkflowExpression.Validate(odataReferrallastRunId, nameof(odataReferrallastRunId), required: false);
-            WorkflowExpression.Validate(odataReferrallinksrelatedReferralsmethod, nameof(odataReferrallinksrelatedReferralsmethod), required: false);
-            WorkflowExpression.Validate(odataReferrallinksrelatedReferralsuri, nameof(odataReferrallinksrelatedReferralsuri), required: false);
-            WorkflowExpression.Validate(odataReferrallinksselfmethod, nameof(odataReferrallinksselfmethod), required: false);
-            WorkflowExpression.Validate(odataReferrallinksselfuri, nameof(odataReferrallinksselfuri), required: false);
-            WorkflowExpression.Validate(odataReferralname, nameof(odataReferralname), required: false);
-            WorkflowExpression.Validate(odataReferralorganizationId, nameof(odataReferralorganizationId), required: false);
-            WorkflowExpression.Validate(odataReferralorganizationName, nameof(odataReferralorganizationName), required: false);
-            WorkflowExpression.Validate(odataReferralqualification, nameof(odataReferralqualification), required: false);
-            WorkflowExpression.Validate(odataReferralreferralProgram, nameof(odataReferralreferralProgram), required: false);
-            WorkflowExpression.Validate(odataReferralsalesStage, nameof(odataReferralsalesStage), required: false);
-            WorkflowExpression.Validate(odataReferralstatus, nameof(odataReferralstatus), required: false);
-            WorkflowExpression.Validate(odataReferralstatusReason, nameof(odataReferralstatusReason), required: false);
-            WorkflowExpression.Validate(odataReferralsubstatus, nameof(odataReferralsubstatus), required: false);
-            WorkflowExpression.Validate(odataReferraltarget, nameof(odataReferraltarget), required: false);
-            WorkflowExpression.Validate(odataReferralteam, nameof(odataReferralteam), required: false);
-            WorkflowExpression.Validate(odataReferraltrackingInfomicrosoftMsxId, nameof(odataReferraltrackingInfomicrosoftMsxId), required: false);
-            WorkflowExpression.Validate(odataReferraltype, nameof(odataReferraltype), required: false);
-            WorkflowExpression.Validate(odataReferralupdatedDateTime, nameof(odataReferralupdatedDateTime), required: false);
-            WorkflowExpression.Validate(odataReferralmpnId, nameof(odataReferralmpnId), required: false);
-            WorkflowExpression.Validate(odataReferralregistrations, nameof(odataReferralregistrations), required: false);
-            WorkflowExpression.Validate(odataReferralregistrationStatus, nameof(odataReferralregistrationStatus), required: false);
-            WorkflowExpression.Validate(odataReferralcallToAction, nameof(odataReferralcallToAction), required: false);
-            WorkflowExpression.Validate(odataReferralreferralSource, nameof(odataReferralreferralSource), required: false);
-            WorkflowExpression.Validate(odataReferralquality, nameof(odataReferralquality), required: false);
-            WorkflowExpression.Validate(odataReferralisSpam, nameof(odataReferralisSpam), required: false);
-            WorkflowExpression.Validate(odataReferraldirection, nameof(odataReferraldirection), required: false);
-            WorkflowExpression.Validate(odataReferraltags, nameof(odataReferraltags), required: false);
-            WorkflowExpression.Validate(odataReferralacceptedDateTime, nameof(odataReferralacceptedDateTime), required: false);
-            WorkflowExpression.Validate(odataReferralclosedDateTime, nameof(odataReferralclosedDateTime), required: false);
-            WorkflowExpression.Validate(mSCorrelationId, nameof(mSCorrelationId), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_ifMatch = ifMatch == null ? null : WorkflowExpression.Compile(ifMatch);
+            WorkflowExpression.Validate(__workflow_ifMatch, nameof(ifMatch), required: true);
+            var __workflow_odataReferralcontext = odataReferralcontext == null ? null : WorkflowExpression.Compile(odataReferralcontext);
+            WorkflowExpression.Validate(__workflow_odataReferralcontext, nameof(odataReferralcontext), required: false);
+            var __workflow_odataReferralcampaignId = odataReferralcampaignId == null ? null : WorkflowExpression.Compile(odataReferralcampaignId);
+            WorkflowExpression.Validate(__workflow_odataReferralcampaignId, nameof(odataReferralcampaignId), required: false);
+            var __workflow_odataReferralconsentconsentToContact = odataReferralconsentconsentToContact == null ? null : WorkflowExpression.Compile(odataReferralconsentconsentToContact);
+            WorkflowExpression.Validate(__workflow_odataReferralconsentconsentToContact, nameof(odataReferralconsentconsentToContact), required: false);
+            var __workflow_odataReferralconsentconsentToToShareInfoWithOthers = odataReferralconsentconsentToToShareInfoWithOthers == null ? null : WorkflowExpression.Compile(odataReferralconsentconsentToToShareInfoWithOthers);
+            WorkflowExpression.Validate(__workflow_odataReferralconsentconsentToToShareInfoWithOthers, nameof(odataReferralconsentconsentToToShareInfoWithOthers), required: false);
+            var __workflow_odataReferralconsentconsentToShareReferralWithMicrosoftSellers = odataReferralconsentconsentToShareReferralWithMicrosoftSellers == null ? null : WorkflowExpression.Compile(odataReferralconsentconsentToShareReferralWithMicrosoftSellers);
+            WorkflowExpression.Validate(__workflow_odataReferralconsentconsentToShareReferralWithMicrosoftSellers, nameof(odataReferralconsentconsentToShareReferralWithMicrosoftSellers), required: false);
+            var __workflow_odataReferralcreatedDateTime = odataReferralcreatedDateTime == null ? null : WorkflowExpression.Compile(odataReferralcreatedDateTime);
+            WorkflowExpression.Validate(__workflow_odataReferralcreatedDateTime, nameof(odataReferralcreatedDateTime), required: false);
+            var __workflow_odataReferralcustomerProfileaddressaddressLine1 = odataReferralcustomerProfileaddressaddressLine1 == null ? null : WorkflowExpression.Compile(odataReferralcustomerProfileaddressaddressLine1);
+            WorkflowExpression.Validate(__workflow_odataReferralcustomerProfileaddressaddressLine1, nameof(odataReferralcustomerProfileaddressaddressLine1), required: false);
+            var __workflow_odataReferralcustomerProfileaddressaddressLine2 = odataReferralcustomerProfileaddressaddressLine2 == null ? null : WorkflowExpression.Compile(odataReferralcustomerProfileaddressaddressLine2);
+            WorkflowExpression.Validate(__workflow_odataReferralcustomerProfileaddressaddressLine2, nameof(odataReferralcustomerProfileaddressaddressLine2), required: false);
+            var __workflow_odataReferralcustomerProfileaddresscity = odataReferralcustomerProfileaddresscity == null ? null : WorkflowExpression.Compile(odataReferralcustomerProfileaddresscity);
+            WorkflowExpression.Validate(__workflow_odataReferralcustomerProfileaddresscity, nameof(odataReferralcustomerProfileaddresscity), required: false);
+            var __workflow_odataReferralcustomerProfileaddresscountry = odataReferralcustomerProfileaddresscountry == null ? null : WorkflowExpression.Compile(odataReferralcustomerProfileaddresscountry);
+            WorkflowExpression.Validate(__workflow_odataReferralcustomerProfileaddresscountry, nameof(odataReferralcustomerProfileaddresscountry), required: false);
+            var __workflow_odataReferralcustomerProfileaddresspostalCode = odataReferralcustomerProfileaddresspostalCode == null ? null : WorkflowExpression.Compile(odataReferralcustomerProfileaddresspostalCode);
+            WorkflowExpression.Validate(__workflow_odataReferralcustomerProfileaddresspostalCode, nameof(odataReferralcustomerProfileaddresspostalCode), required: false);
+            var __workflow_odataReferralcustomerProfileaddressregion = odataReferralcustomerProfileaddressregion == null ? null : WorkflowExpression.Compile(odataReferralcustomerProfileaddressregion);
+            WorkflowExpression.Validate(__workflow_odataReferralcustomerProfileaddressregion, nameof(odataReferralcustomerProfileaddressregion), required: false);
+            var __workflow_odataReferralcustomerProfileaddressstate = odataReferralcustomerProfileaddressstate == null ? null : WorkflowExpression.Compile(odataReferralcustomerProfileaddressstate);
+            WorkflowExpression.Validate(__workflow_odataReferralcustomerProfileaddressstate, nameof(odataReferralcustomerProfileaddressstate), required: false);
+            var __workflow_odataReferralcustomerProfileids = odataReferralcustomerProfileids == null ? null : WorkflowExpression.Compile(odataReferralcustomerProfileids);
+            WorkflowExpression.Validate(__workflow_odataReferralcustomerProfileids, nameof(odataReferralcustomerProfileids), required: false);
+            var __workflow_odataReferralcustomerProfilename = odataReferralcustomerProfilename == null ? null : WorkflowExpression.Compile(odataReferralcustomerProfilename);
+            WorkflowExpression.Validate(__workflow_odataReferralcustomerProfilename, nameof(odataReferralcustomerProfilename), required: false);
+            var __workflow_odataReferralcustomerProfilesize = odataReferralcustomerProfilesize == null ? null : WorkflowExpression.Compile(odataReferralcustomerProfilesize);
+            WorkflowExpression.Validate(__workflow_odataReferralcustomerProfilesize, nameof(odataReferralcustomerProfilesize), required: false);
+            var __workflow_odataReferralcustomerProfileteam = odataReferralcustomerProfileteam == null ? null : WorkflowExpression.Compile(odataReferralcustomerProfileteam);
+            WorkflowExpression.Validate(__workflow_odataReferralcustomerProfileteam, nameof(odataReferralcustomerProfileteam), required: false);
+            var __workflow_odataReferraldetailsclosingDateTime = odataReferraldetailsclosingDateTime == null ? null : WorkflowExpression.Compile(odataReferraldetailsclosingDateTime);
+            WorkflowExpression.Validate(__workflow_odataReferraldetailsclosingDateTime, nameof(odataReferraldetailsclosingDateTime), required: false);
+            var __workflow_odataReferraldetailscurrency = odataReferraldetailscurrency == null ? null : WorkflowExpression.Compile(odataReferraldetailscurrency);
+            WorkflowExpression.Validate(__workflow_odataReferraldetailscurrency, nameof(odataReferraldetailscurrency), required: false);
+            var __workflow_odataReferraldetailscustomerAction = odataReferraldetailscustomerAction == null ? null : WorkflowExpression.Compile(odataReferraldetailscustomerAction);
+            WorkflowExpression.Validate(__workflow_odataReferraldetailscustomerAction, nameof(odataReferraldetailscustomerAction), required: false);
+            var __workflow_odataReferraldetailscustomerRequestedContact = odataReferraldetailscustomerRequestedContact == null ? null : WorkflowExpression.Compile(odataReferraldetailscustomerRequestedContact);
+            WorkflowExpression.Validate(__workflow_odataReferraldetailscustomerRequestedContact, nameof(odataReferraldetailscustomerRequestedContact), required: false);
+            var __workflow_odataReferraldetailsdealValue = odataReferraldetailsdealValue == null ? null : WorkflowExpression.Compile(odataReferraldetailsdealValue);
+            WorkflowExpression.Validate(__workflow_odataReferraldetailsdealValue, nameof(odataReferraldetailsdealValue), required: false);
+            var __workflow_odataReferraldetailsnotes = odataReferraldetailsnotes == null ? null : WorkflowExpression.Compile(odataReferraldetailsnotes);
+            WorkflowExpression.Validate(__workflow_odataReferraldetailsnotes, nameof(odataReferraldetailsnotes), required: false);
+            var __workflow_odataReferraldetailsrequirementsindustries = odataReferraldetailsrequirementsindustries == null ? null : WorkflowExpression.Compile(odataReferraldetailsrequirementsindustries);
+            WorkflowExpression.Validate(__workflow_odataReferraldetailsrequirementsindustries, nameof(odataReferraldetailsrequirementsindustries), required: false);
+            var __workflow_odataReferraldetailsrequirementsproducts = odataReferraldetailsrequirementsproducts == null ? null : WorkflowExpression.Compile(odataReferraldetailsrequirementsproducts);
+            WorkflowExpression.Validate(__workflow_odataReferraldetailsrequirementsproducts, nameof(odataReferraldetailsrequirementsproducts), required: false);
+            var __workflow_odataReferraldetailsrequirementsservices = odataReferraldetailsrequirementsservices == null ? null : WorkflowExpression.Compile(odataReferraldetailsrequirementsservices);
+            WorkflowExpression.Validate(__workflow_odataReferraldetailsrequirementsservices, nameof(odataReferraldetailsrequirementsservices), required: false);
+            var __workflow_odataReferraldetailsrequirementssolutions = odataReferraldetailsrequirementssolutions == null ? null : WorkflowExpression.Compile(odataReferraldetailsrequirementssolutions);
+            WorkflowExpression.Validate(__workflow_odataReferraldetailsrequirementssolutions, nameof(odataReferraldetailsrequirementssolutions), required: false);
+            var __workflow_odataReferraldetailsrequirementsoffers = odataReferraldetailsrequirementsoffers == null ? null : WorkflowExpression.Compile(odataReferraldetailsrequirementsoffers);
+            WorkflowExpression.Validate(__workflow_odataReferraldetailsrequirementsoffers, nameof(odataReferraldetailsrequirementsoffers), required: false);
+            var __workflow_odataReferraleTag = odataReferraleTag == null ? null : WorkflowExpression.Compile(odataReferraleTag);
+            WorkflowExpression.Validate(__workflow_odataReferraleTag, nameof(odataReferraleTag), required: false);
+            var __workflow_odataReferralengagementId = odataReferralengagementId == null ? null : WorkflowExpression.Compile(odataReferralengagementId);
+            WorkflowExpression.Validate(__workflow_odataReferralengagementId, nameof(odataReferralengagementId), required: false);
+            var __workflow_odataReferralexpirationDateTime = odataReferralexpirationDateTime == null ? null : WorkflowExpression.Compile(odataReferralexpirationDateTime);
+            WorkflowExpression.Validate(__workflow_odataReferralexpirationDateTime, nameof(odataReferralexpirationDateTime), required: false);
+            var __workflow_odataReferralexternalReferenceId = odataReferralexternalReferenceId == null ? null : WorkflowExpression.Compile(odataReferralexternalReferenceId);
+            WorkflowExpression.Validate(__workflow_odataReferralexternalReferenceId, nameof(odataReferralexternalReferenceId), required: false);
+            var __workflow_odataReferralfavorite = odataReferralfavorite == null ? null : WorkflowExpression.Compile(odataReferralfavorite);
+            WorkflowExpression.Validate(__workflow_odataReferralfavorite, nameof(odataReferralfavorite), required: false);
+            var __workflow_odataReferralid = odataReferralid == null ? null : WorkflowExpression.Compile(odataReferralid);
+            WorkflowExpression.Validate(__workflow_odataReferralid, nameof(odataReferralid), required: false);
+            var __workflow_odataReferralinviteContextassistanceRequestCode = odataReferralinviteContextassistanceRequestCode == null ? null : WorkflowExpression.Compile(odataReferralinviteContextassistanceRequestCode);
+            WorkflowExpression.Validate(__workflow_odataReferralinviteContextassistanceRequestCode, nameof(odataReferralinviteContextassistanceRequestCode), required: false);
+            var __workflow_odataReferralinviteContextinvitedByorganizationId = odataReferralinviteContextinvitedByorganizationId == null ? null : WorkflowExpression.Compile(odataReferralinviteContextinvitedByorganizationId);
+            WorkflowExpression.Validate(__workflow_odataReferralinviteContextinvitedByorganizationId, nameof(odataReferralinviteContextinvitedByorganizationId), required: false);
+            var __workflow_odataReferralinviteContextinvitedByorganizationName = odataReferralinviteContextinvitedByorganizationName == null ? null : WorkflowExpression.Compile(odataReferralinviteContextinvitedByorganizationName);
+            WorkflowExpression.Validate(__workflow_odataReferralinviteContextinvitedByorganizationName, nameof(odataReferralinviteContextinvitedByorganizationName), required: false);
+            var __workflow_odataReferralinviteContextnotes = odataReferralinviteContextnotes == null ? null : WorkflowExpression.Compile(odataReferralinviteContextnotes);
+            WorkflowExpression.Validate(__workflow_odataReferralinviteContextnotes, nameof(odataReferralinviteContextnotes), required: false);
+            var __workflow_odataReferrallastModifiedVia = odataReferrallastModifiedVia == null ? null : WorkflowExpression.Compile(odataReferrallastModifiedVia);
+            WorkflowExpression.Validate(__workflow_odataReferrallastModifiedVia, nameof(odataReferrallastModifiedVia), required: false);
+            var __workflow_odataReferrallastRunId = odataReferrallastRunId == null ? null : WorkflowExpression.Compile(odataReferrallastRunId);
+            WorkflowExpression.Validate(__workflow_odataReferrallastRunId, nameof(odataReferrallastRunId), required: false);
+            var __workflow_odataReferrallinksrelatedReferralsmethod = odataReferrallinksrelatedReferralsmethod == null ? null : WorkflowExpression.Compile(odataReferrallinksrelatedReferralsmethod);
+            WorkflowExpression.Validate(__workflow_odataReferrallinksrelatedReferralsmethod, nameof(odataReferrallinksrelatedReferralsmethod), required: false);
+            var __workflow_odataReferrallinksrelatedReferralsuri = odataReferrallinksrelatedReferralsuri == null ? null : WorkflowExpression.Compile(odataReferrallinksrelatedReferralsuri);
+            WorkflowExpression.Validate(__workflow_odataReferrallinksrelatedReferralsuri, nameof(odataReferrallinksrelatedReferralsuri), required: false);
+            var __workflow_odataReferrallinksselfmethod = odataReferrallinksselfmethod == null ? null : WorkflowExpression.Compile(odataReferrallinksselfmethod);
+            WorkflowExpression.Validate(__workflow_odataReferrallinksselfmethod, nameof(odataReferrallinksselfmethod), required: false);
+            var __workflow_odataReferrallinksselfuri = odataReferrallinksselfuri == null ? null : WorkflowExpression.Compile(odataReferrallinksselfuri);
+            WorkflowExpression.Validate(__workflow_odataReferrallinksselfuri, nameof(odataReferrallinksselfuri), required: false);
+            var __workflow_odataReferralname = odataReferralname == null ? null : WorkflowExpression.Compile(odataReferralname);
+            WorkflowExpression.Validate(__workflow_odataReferralname, nameof(odataReferralname), required: false);
+            var __workflow_odataReferralorganizationId = odataReferralorganizationId == null ? null : WorkflowExpression.Compile(odataReferralorganizationId);
+            WorkflowExpression.Validate(__workflow_odataReferralorganizationId, nameof(odataReferralorganizationId), required: false);
+            var __workflow_odataReferralorganizationName = odataReferralorganizationName == null ? null : WorkflowExpression.Compile(odataReferralorganizationName);
+            WorkflowExpression.Validate(__workflow_odataReferralorganizationName, nameof(odataReferralorganizationName), required: false);
+            var __workflow_odataReferralqualification = odataReferralqualification == null ? null : WorkflowExpression.Compile(odataReferralqualification);
+            WorkflowExpression.Validate(__workflow_odataReferralqualification, nameof(odataReferralqualification), required: false);
+            var __workflow_odataReferralreferralProgram = odataReferralreferralProgram == null ? null : WorkflowExpression.Compile(odataReferralreferralProgram);
+            WorkflowExpression.Validate(__workflow_odataReferralreferralProgram, nameof(odataReferralreferralProgram), required: false);
+            var __workflow_odataReferralsalesStage = odataReferralsalesStage == null ? null : WorkflowExpression.Compile(odataReferralsalesStage);
+            WorkflowExpression.Validate(__workflow_odataReferralsalesStage, nameof(odataReferralsalesStage), required: false);
+            var __workflow_odataReferralstatus = odataReferralstatus == null ? null : WorkflowExpression.Compile(odataReferralstatus);
+            WorkflowExpression.Validate(__workflow_odataReferralstatus, nameof(odataReferralstatus), required: false);
+            var __workflow_odataReferralstatusReason = odataReferralstatusReason == null ? null : WorkflowExpression.Compile(odataReferralstatusReason);
+            WorkflowExpression.Validate(__workflow_odataReferralstatusReason, nameof(odataReferralstatusReason), required: false);
+            var __workflow_odataReferralsubstatus = odataReferralsubstatus == null ? null : WorkflowExpression.Compile(odataReferralsubstatus);
+            WorkflowExpression.Validate(__workflow_odataReferralsubstatus, nameof(odataReferralsubstatus), required: false);
+            var __workflow_odataReferraltarget = odataReferraltarget == null ? null : WorkflowExpression.Compile(odataReferraltarget);
+            WorkflowExpression.Validate(__workflow_odataReferraltarget, nameof(odataReferraltarget), required: false);
+            var __workflow_odataReferralteam = odataReferralteam == null ? null : WorkflowExpression.Compile(odataReferralteam);
+            WorkflowExpression.Validate(__workflow_odataReferralteam, nameof(odataReferralteam), required: false);
+            var __workflow_odataReferraltrackingInfomicrosoftMsxId = odataReferraltrackingInfomicrosoftMsxId == null ? null : WorkflowExpression.Compile(odataReferraltrackingInfomicrosoftMsxId);
+            WorkflowExpression.Validate(__workflow_odataReferraltrackingInfomicrosoftMsxId, nameof(odataReferraltrackingInfomicrosoftMsxId), required: false);
+            var __workflow_odataReferraltype = odataReferraltype == null ? null : WorkflowExpression.Compile(odataReferraltype);
+            WorkflowExpression.Validate(__workflow_odataReferraltype, nameof(odataReferraltype), required: false);
+            var __workflow_odataReferralupdatedDateTime = odataReferralupdatedDateTime == null ? null : WorkflowExpression.Compile(odataReferralupdatedDateTime);
+            WorkflowExpression.Validate(__workflow_odataReferralupdatedDateTime, nameof(odataReferralupdatedDateTime), required: false);
+            var __workflow_odataReferralmpnId = odataReferralmpnId == null ? null : WorkflowExpression.Compile(odataReferralmpnId);
+            WorkflowExpression.Validate(__workflow_odataReferralmpnId, nameof(odataReferralmpnId), required: false);
+            var __workflow_odataReferralregistrations = odataReferralregistrations == null ? null : WorkflowExpression.Compile(odataReferralregistrations);
+            WorkflowExpression.Validate(__workflow_odataReferralregistrations, nameof(odataReferralregistrations), required: false);
+            var __workflow_odataReferralregistrationStatus = odataReferralregistrationStatus == null ? null : WorkflowExpression.Compile(odataReferralregistrationStatus);
+            WorkflowExpression.Validate(__workflow_odataReferralregistrationStatus, nameof(odataReferralregistrationStatus), required: false);
+            var __workflow_odataReferralcallToAction = odataReferralcallToAction == null ? null : WorkflowExpression.Compile(odataReferralcallToAction);
+            WorkflowExpression.Validate(__workflow_odataReferralcallToAction, nameof(odataReferralcallToAction), required: false);
+            var __workflow_odataReferralreferralSource = odataReferralreferralSource == null ? null : WorkflowExpression.Compile(odataReferralreferralSource);
+            WorkflowExpression.Validate(__workflow_odataReferralreferralSource, nameof(odataReferralreferralSource), required: false);
+            var __workflow_odataReferralquality = odataReferralquality == null ? null : WorkflowExpression.Compile(odataReferralquality);
+            WorkflowExpression.Validate(__workflow_odataReferralquality, nameof(odataReferralquality), required: false);
+            var __workflow_odataReferralisSpam = odataReferralisSpam == null ? null : WorkflowExpression.Compile(odataReferralisSpam);
+            WorkflowExpression.Validate(__workflow_odataReferralisSpam, nameof(odataReferralisSpam), required: false);
+            var __workflow_odataReferraldirection = odataReferraldirection == null ? null : WorkflowExpression.Compile(odataReferraldirection);
+            WorkflowExpression.Validate(__workflow_odataReferraldirection, nameof(odataReferraldirection), required: false);
+            var __workflow_odataReferraltags = odataReferraltags == null ? null : WorkflowExpression.Compile(odataReferraltags);
+            WorkflowExpression.Validate(__workflow_odataReferraltags, nameof(odataReferraltags), required: false);
+            var __workflow_odataReferralacceptedDateTime = odataReferralacceptedDateTime == null ? null : WorkflowExpression.Compile(odataReferralacceptedDateTime);
+            WorkflowExpression.Validate(__workflow_odataReferralacceptedDateTime, nameof(odataReferralacceptedDateTime), required: false);
+            var __workflow_odataReferralclosedDateTime = odataReferralclosedDateTime == null ? null : WorkflowExpression.Compile(odataReferralclosedDateTime);
+            WorkflowExpression.Validate(__workflow_odataReferralclosedDateTime, nameof(odataReferralclosedDateTime), required: false);
+            var __workflow_mSCorrelationId = mSCorrelationId == null ? null : WorkflowExpression.Compile(mSCorrelationId);
+            WorkflowExpression.Validate(__workflow_mSCorrelationId, nameof(mSCorrelationId), required: false);
             return new DeferredBodyAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/referrals/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/referrals/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["if-match"] = ExpressionConverter.Convert(ifMatch);
+                callPayload.Headers["if-match"] = ExpressionConverter.Convert(__workflow_ifMatch);
                 callPayload.Headers["content-type"] = Convert.ToString("application/json");
-                if (mSCorrelationId != null)
-                    callPayload.Headers["MS-CorrelationId"] = ExpressionConverter.Convert(mSCorrelationId);
+                if (__workflow_mSCorrelationId != null)
+                    callPayload.Headers["MS-CorrelationId"] = ExpressionConverter.Convert(__workflow_mSCorrelationId);
                 callPayload.Headers["X-Caller-Id"] = Convert.ToString("60858c1b-2062-40ad-b42c-996b6b5b047d");
                 var odataReferral = new JObject();
                 var odataReferralpropCount = 0;
-                if (odataReferralcontext != null)
+                if (__workflow_odataReferralcontext != null)
                 {
-                    odataReferral["@odata.context"] = ExpressionConverter.ConvertO(odataReferralcontext);
+                    odataReferral["@odata.context"] = ExpressionConverter.ConvertO(__workflow_odataReferralcontext);
                     odataReferralpropCount++;
                 }
 
-                if (odataReferralcampaignId != null)
+                if (__workflow_odataReferralcampaignId != null)
                 {
-                    odataReferral["campaignId"] = ExpressionConverter.ConvertO(odataReferralcampaignId);
+                    odataReferral["campaignId"] = ExpressionConverter.ConvertO(__workflow_odataReferralcampaignId);
                     odataReferralpropCount++;
                 }
 
                 var consentObject = new JObject();
                 var consentObjectpropCount = 0;
-                if (odataReferralconsentconsentToContact != null)
+                if (__workflow_odataReferralconsentconsentToContact != null)
                 {
-                    consentObject["consentToContact"] = ExpressionConverter.ConvertO(odataReferralconsentconsentToContact);
+                    consentObject["consentToContact"] = ExpressionConverter.ConvertO(__workflow_odataReferralconsentconsentToContact);
                     consentObjectpropCount++;
                 }
 
-                if (odataReferralconsentconsentToToShareInfoWithOthers != null)
+                if (__workflow_odataReferralconsentconsentToToShareInfoWithOthers != null)
                 {
-                    consentObject["consentToToShareInfoWithOthers"] = ExpressionConverter.ConvertO(odataReferralconsentconsentToToShareInfoWithOthers);
+                    consentObject["consentToToShareInfoWithOthers"] = ExpressionConverter.ConvertO(__workflow_odataReferralconsentconsentToToShareInfoWithOthers);
                     consentObjectpropCount++;
                 }
 
-                if (odataReferralconsentconsentToShareReferralWithMicrosoftSellers != null)
+                if (__workflow_odataReferralconsentconsentToShareReferralWithMicrosoftSellers != null)
                 {
-                    consentObject["consentToShareReferralWithMicrosoftSellers"] = ExpressionConverter.ConvertO(odataReferralconsentconsentToShareReferralWithMicrosoftSellers);
+                    consentObject["consentToShareReferralWithMicrosoftSellers"] = ExpressionConverter.ConvertO(__workflow_odataReferralconsentconsentToShareReferralWithMicrosoftSellers);
                     consentObjectpropCount++;
                 }
 
@@ -822,9 +945,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
                     odataReferralpropCount++;
                 }
 
-                if (odataReferralcreatedDateTime != null)
+                if (__workflow_odataReferralcreatedDateTime != null)
                 {
-                    odataReferral["createdDateTime"] = ExpressionConverter.ConvertO(odataReferralcreatedDateTime);
+                    odataReferral["createdDateTime"] = ExpressionConverter.ConvertO(__workflow_odataReferralcreatedDateTime);
                     odataReferralpropCount++;
                 }
 
@@ -832,45 +955,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
                 var customerProfileObjectpropCount = 0;
                 var addressObject = new JObject();
                 var addressObjectpropCount = 0;
-                if (odataReferralcustomerProfileaddressaddressLine1 != null)
+                if (__workflow_odataReferralcustomerProfileaddressaddressLine1 != null)
                 {
-                    addressObject["addressLine1"] = ExpressionConverter.ConvertO(odataReferralcustomerProfileaddressaddressLine1);
+                    addressObject["addressLine1"] = ExpressionConverter.ConvertO(__workflow_odataReferralcustomerProfileaddressaddressLine1);
                     addressObjectpropCount++;
                 }
 
-                if (odataReferralcustomerProfileaddressaddressLine2 != null)
+                if (__workflow_odataReferralcustomerProfileaddressaddressLine2 != null)
                 {
-                    addressObject["addressLine2"] = ExpressionConverter.ConvertO(odataReferralcustomerProfileaddressaddressLine2);
+                    addressObject["addressLine2"] = ExpressionConverter.ConvertO(__workflow_odataReferralcustomerProfileaddressaddressLine2);
                     addressObjectpropCount++;
                 }
 
-                if (odataReferralcustomerProfileaddresscity != null)
+                if (__workflow_odataReferralcustomerProfileaddresscity != null)
                 {
-                    addressObject["city"] = ExpressionConverter.ConvertO(odataReferralcustomerProfileaddresscity);
+                    addressObject["city"] = ExpressionConverter.ConvertO(__workflow_odataReferralcustomerProfileaddresscity);
                     addressObjectpropCount++;
                 }
 
-                if (odataReferralcustomerProfileaddresscountry != null)
+                if (__workflow_odataReferralcustomerProfileaddresscountry != null)
                 {
-                    addressObject["country"] = ExpressionConverter.ConvertO(odataReferralcustomerProfileaddresscountry);
+                    addressObject["country"] = ExpressionConverter.ConvertO(__workflow_odataReferralcustomerProfileaddresscountry);
                     addressObjectpropCount++;
                 }
 
-                if (odataReferralcustomerProfileaddresspostalCode != null)
+                if (__workflow_odataReferralcustomerProfileaddresspostalCode != null)
                 {
-                    addressObject["postalCode"] = ExpressionConverter.ConvertO(odataReferralcustomerProfileaddresspostalCode);
+                    addressObject["postalCode"] = ExpressionConverter.ConvertO(__workflow_odataReferralcustomerProfileaddresspostalCode);
                     addressObjectpropCount++;
                 }
 
-                if (odataReferralcustomerProfileaddressregion != null)
+                if (__workflow_odataReferralcustomerProfileaddressregion != null)
                 {
-                    addressObject["region"] = ExpressionConverter.ConvertO(odataReferralcustomerProfileaddressregion);
+                    addressObject["region"] = ExpressionConverter.ConvertO(__workflow_odataReferralcustomerProfileaddressregion);
                     addressObjectpropCount++;
                 }
 
-                if (odataReferralcustomerProfileaddressstate != null)
+                if (__workflow_odataReferralcustomerProfileaddressstate != null)
                 {
-                    addressObject["state"] = ExpressionConverter.ConvertO(odataReferralcustomerProfileaddressstate);
+                    addressObject["state"] = ExpressionConverter.ConvertO(__workflow_odataReferralcustomerProfileaddressstate);
                     addressObjectpropCount++;
                 }
 
@@ -880,27 +1003,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
                     customerProfileObjectpropCount++;
                 }
 
-                if (odataReferralcustomerProfileids != null)
+                if (__workflow_odataReferralcustomerProfileids != null)
                 {
-                    customerProfileObject["ids"] = ExpressionConverter.ConvertO(odataReferralcustomerProfileids);
+                    customerProfileObject["ids"] = ExpressionConverter.ConvertO(__workflow_odataReferralcustomerProfileids);
                     customerProfileObjectpropCount++;
                 }
 
-                if (odataReferralcustomerProfilename != null)
+                if (__workflow_odataReferralcustomerProfilename != null)
                 {
-                    customerProfileObject["name"] = ExpressionConverter.ConvertO(odataReferralcustomerProfilename);
+                    customerProfileObject["name"] = ExpressionConverter.ConvertO(__workflow_odataReferralcustomerProfilename);
                     customerProfileObjectpropCount++;
                 }
 
-                if (odataReferralcustomerProfilesize != null)
+                if (__workflow_odataReferralcustomerProfilesize != null)
                 {
-                    customerProfileObject["size"] = ExpressionConverter.ConvertO(odataReferralcustomerProfilesize);
+                    customerProfileObject["size"] = ExpressionConverter.ConvertO(__workflow_odataReferralcustomerProfilesize);
                     customerProfileObjectpropCount++;
                 }
 
-                if (odataReferralcustomerProfileteam != null)
+                if (__workflow_odataReferralcustomerProfileteam != null)
                 {
-                    customerProfileObject["team"] = ExpressionConverter.ConvertO(odataReferralcustomerProfileteam);
+                    customerProfileObject["team"] = ExpressionConverter.ConvertO(__workflow_odataReferralcustomerProfileteam);
                     customerProfileObjectpropCount++;
                 }
 
@@ -912,71 +1035,71 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
 
                 var detailsObject = new JObject();
                 var detailsObjectpropCount = 0;
-                if (odataReferraldetailsclosingDateTime != null)
+                if (__workflow_odataReferraldetailsclosingDateTime != null)
                 {
-                    detailsObject["closingDateTime"] = ExpressionConverter.ConvertO(odataReferraldetailsclosingDateTime);
+                    detailsObject["closingDateTime"] = ExpressionConverter.ConvertO(__workflow_odataReferraldetailsclosingDateTime);
                     detailsObjectpropCount++;
                 }
 
-                if (odataReferraldetailscurrency != null)
+                if (__workflow_odataReferraldetailscurrency != null)
                 {
-                    detailsObject["currency"] = ExpressionConverter.ConvertO(odataReferraldetailscurrency);
+                    detailsObject["currency"] = ExpressionConverter.ConvertO(__workflow_odataReferraldetailscurrency);
                     detailsObjectpropCount++;
                 }
 
-                if (odataReferraldetailscustomerAction != null)
+                if (__workflow_odataReferraldetailscustomerAction != null)
                 {
-                    detailsObject["customerAction"] = ExpressionConverter.ConvertO(odataReferraldetailscustomerAction);
+                    detailsObject["customerAction"] = ExpressionConverter.ConvertO(__workflow_odataReferraldetailscustomerAction);
                     detailsObjectpropCount++;
                 }
 
-                if (odataReferraldetailscustomerRequestedContact != null)
+                if (__workflow_odataReferraldetailscustomerRequestedContact != null)
                 {
-                    detailsObject["customerRequestedContact"] = ExpressionConverter.ConvertO(odataReferraldetailscustomerRequestedContact);
+                    detailsObject["customerRequestedContact"] = ExpressionConverter.ConvertO(__workflow_odataReferraldetailscustomerRequestedContact);
                     detailsObjectpropCount++;
                 }
 
-                if (odataReferraldetailsdealValue != null)
+                if (__workflow_odataReferraldetailsdealValue != null)
                 {
-                    detailsObject["dealValue"] = ExpressionConverter.ConvertO(odataReferraldetailsdealValue);
+                    detailsObject["dealValue"] = ExpressionConverter.ConvertO(__workflow_odataReferraldetailsdealValue);
                     detailsObjectpropCount++;
                 }
 
-                if (odataReferraldetailsnotes != null)
+                if (__workflow_odataReferraldetailsnotes != null)
                 {
-                    detailsObject["notes"] = ExpressionConverter.ConvertO(odataReferraldetailsnotes);
+                    detailsObject["notes"] = ExpressionConverter.ConvertO(__workflow_odataReferraldetailsnotes);
                     detailsObjectpropCount++;
                 }
 
                 var requirementsObject = new JObject();
                 var requirementsObjectpropCount = 0;
-                if (odataReferraldetailsrequirementsindustries != null)
+                if (__workflow_odataReferraldetailsrequirementsindustries != null)
                 {
-                    requirementsObject["industries"] = ExpressionConverter.ConvertO(odataReferraldetailsrequirementsindustries);
+                    requirementsObject["industries"] = ExpressionConverter.ConvertO(__workflow_odataReferraldetailsrequirementsindustries);
                     requirementsObjectpropCount++;
                 }
 
-                if (odataReferraldetailsrequirementsproducts != null)
+                if (__workflow_odataReferraldetailsrequirementsproducts != null)
                 {
-                    requirementsObject["products"] = ExpressionConverter.ConvertO(odataReferraldetailsrequirementsproducts);
+                    requirementsObject["products"] = ExpressionConverter.ConvertO(__workflow_odataReferraldetailsrequirementsproducts);
                     requirementsObjectpropCount++;
                 }
 
-                if (odataReferraldetailsrequirementsservices != null)
+                if (__workflow_odataReferraldetailsrequirementsservices != null)
                 {
-                    requirementsObject["services"] = ExpressionConverter.ConvertO(odataReferraldetailsrequirementsservices);
+                    requirementsObject["services"] = ExpressionConverter.ConvertO(__workflow_odataReferraldetailsrequirementsservices);
                     requirementsObjectpropCount++;
                 }
 
-                if (odataReferraldetailsrequirementssolutions != null)
+                if (__workflow_odataReferraldetailsrequirementssolutions != null)
                 {
-                    requirementsObject["solutions"] = ExpressionConverter.ConvertO(odataReferraldetailsrequirementssolutions);
+                    requirementsObject["solutions"] = ExpressionConverter.ConvertO(__workflow_odataReferraldetailsrequirementssolutions);
                     requirementsObjectpropCount++;
                 }
 
-                if (odataReferraldetailsrequirementsoffers != null)
+                if (__workflow_odataReferraldetailsrequirementsoffers != null)
                 {
-                    requirementsObject["offers"] = ExpressionConverter.ConvertO(odataReferraldetailsrequirementsoffers);
+                    requirementsObject["offers"] = ExpressionConverter.ConvertO(__workflow_odataReferraldetailsrequirementsoffers);
                     requirementsObjectpropCount++;
                 }
 
@@ -1000,61 +1123,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
                     odataReferralpropCount++;
                 }
 
-                if (odataReferraleTag != null)
+                if (__workflow_odataReferraleTag != null)
                 {
-                    odataReferral["eTag"] = ExpressionConverter.ConvertO(odataReferraleTag);
+                    odataReferral["eTag"] = ExpressionConverter.ConvertO(__workflow_odataReferraleTag);
                     odataReferralpropCount++;
                 }
 
-                if (odataReferralengagementId != null)
+                if (__workflow_odataReferralengagementId != null)
                 {
-                    odataReferral["engagementId"] = ExpressionConverter.ConvertO(odataReferralengagementId);
+                    odataReferral["engagementId"] = ExpressionConverter.ConvertO(__workflow_odataReferralengagementId);
                     odataReferralpropCount++;
                 }
 
-                if (odataReferralexpirationDateTime != null)
+                if (__workflow_odataReferralexpirationDateTime != null)
                 {
-                    odataReferral["expirationDateTime"] = ExpressionConverter.ConvertO(odataReferralexpirationDateTime);
+                    odataReferral["expirationDateTime"] = ExpressionConverter.ConvertO(__workflow_odataReferralexpirationDateTime);
                     odataReferralpropCount++;
                 }
 
-                if (odataReferralexternalReferenceId != null)
+                if (__workflow_odataReferralexternalReferenceId != null)
                 {
-                    odataReferral["externalReferenceId"] = ExpressionConverter.ConvertO(odataReferralexternalReferenceId);
+                    odataReferral["externalReferenceId"] = ExpressionConverter.ConvertO(__workflow_odataReferralexternalReferenceId);
                     odataReferralpropCount++;
                 }
 
-                if (odataReferralfavorite != null)
+                if (__workflow_odataReferralfavorite != null)
                 {
-                    odataReferral["favorite"] = ExpressionConverter.ConvertO(odataReferralfavorite);
+                    odataReferral["favorite"] = ExpressionConverter.ConvertO(__workflow_odataReferralfavorite);
                     odataReferralpropCount++;
                 }
 
-                if (odataReferralid != null)
+                if (__workflow_odataReferralid != null)
                 {
-                    odataReferral["id"] = ExpressionConverter.ConvertO(odataReferralid);
+                    odataReferral["id"] = ExpressionConverter.ConvertO(__workflow_odataReferralid);
                     odataReferralpropCount++;
                 }
 
                 var inviteContextObject = new JObject();
                 var inviteContextObjectpropCount = 0;
-                if (odataReferralinviteContextassistanceRequestCode != null)
+                if (__workflow_odataReferralinviteContextassistanceRequestCode != null)
                 {
-                    inviteContextObject["assistanceRequestCode"] = ExpressionConverter.ConvertO(odataReferralinviteContextassistanceRequestCode);
+                    inviteContextObject["assistanceRequestCode"] = ExpressionConverter.ConvertO(__workflow_odataReferralinviteContextassistanceRequestCode);
                     inviteContextObjectpropCount++;
                 }
 
                 var invitedByObject = new JObject();
                 var invitedByObjectpropCount = 0;
-                if (odataReferralinviteContextinvitedByorganizationId != null)
+                if (__workflow_odataReferralinviteContextinvitedByorganizationId != null)
                 {
-                    invitedByObject["organizationId"] = ExpressionConverter.ConvertO(odataReferralinviteContextinvitedByorganizationId);
+                    invitedByObject["organizationId"] = ExpressionConverter.ConvertO(__workflow_odataReferralinviteContextinvitedByorganizationId);
                     invitedByObjectpropCount++;
                 }
 
-                if (odataReferralinviteContextinvitedByorganizationName != null)
+                if (__workflow_odataReferralinviteContextinvitedByorganizationName != null)
                 {
-                    invitedByObject["organizationName"] = ExpressionConverter.ConvertO(odataReferralinviteContextinvitedByorganizationName);
+                    invitedByObject["organizationName"] = ExpressionConverter.ConvertO(__workflow_odataReferralinviteContextinvitedByorganizationName);
                     invitedByObjectpropCount++;
                 }
 
@@ -1064,9 +1187,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
                     inviteContextObjectpropCount++;
                 }
 
-                if (odataReferralinviteContextnotes != null)
+                if (__workflow_odataReferralinviteContextnotes != null)
                 {
-                    inviteContextObject["notes"] = ExpressionConverter.ConvertO(odataReferralinviteContextnotes);
+                    inviteContextObject["notes"] = ExpressionConverter.ConvertO(__workflow_odataReferralinviteContextnotes);
                     inviteContextObjectpropCount++;
                 }
 
@@ -1076,15 +1199,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
                     odataReferralpropCount++;
                 }
 
-                if (odataReferrallastModifiedVia != null)
+                if (__workflow_odataReferrallastModifiedVia != null)
                 {
-                    odataReferral["lastModifiedVia"] = ExpressionConverter.ConvertO(odataReferrallastModifiedVia);
+                    odataReferral["lastModifiedVia"] = ExpressionConverter.ConvertO(__workflow_odataReferrallastModifiedVia);
                     odataReferralpropCount++;
                 }
 
-                if (odataReferrallastRunId != null)
+                if (__workflow_odataReferrallastRunId != null)
                 {
-                    odataReferral["lastRunId"] = ExpressionConverter.ConvertO(odataReferrallastRunId);
+                    odataReferral["lastRunId"] = ExpressionConverter.ConvertO(__workflow_odataReferrallastRunId);
                     odataReferralpropCount++;
                 }
 
@@ -1092,15 +1215,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
                 var linksObjectpropCount = 0;
                 var relatedReferralsObject = new JObject();
                 var relatedReferralsObjectpropCount = 0;
-                if (odataReferrallinksrelatedReferralsmethod != null)
+                if (__workflow_odataReferrallinksrelatedReferralsmethod != null)
                 {
-                    relatedReferralsObject["method"] = ExpressionConverter.ConvertO(odataReferrallinksrelatedReferralsmethod);
+                    relatedReferralsObject["method"] = ExpressionConverter.ConvertO(__workflow_odataReferrallinksrelatedReferralsmethod);
                     relatedReferralsObjectpropCount++;
                 }
 
-                if (odataReferrallinksrelatedReferralsuri != null)
+                if (__workflow_odataReferrallinksrelatedReferralsuri != null)
                 {
-                    relatedReferralsObject["uri"] = ExpressionConverter.ConvertO(odataReferrallinksrelatedReferralsuri);
+                    relatedReferralsObject["uri"] = ExpressionConverter.ConvertO(__workflow_odataReferrallinksrelatedReferralsuri);
                     relatedReferralsObjectpropCount++;
                 }
 
@@ -1112,15 +1235,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
 
                 var selfObject = new JObject();
                 var selfObjectpropCount = 0;
-                if (odataReferrallinksselfmethod != null)
+                if (__workflow_odataReferrallinksselfmethod != null)
                 {
-                    selfObject["method"] = ExpressionConverter.ConvertO(odataReferrallinksselfmethod);
+                    selfObject["method"] = ExpressionConverter.ConvertO(__workflow_odataReferrallinksselfmethod);
                     selfObjectpropCount++;
                 }
 
-                if (odataReferrallinksselfuri != null)
+                if (__workflow_odataReferrallinksselfuri != null)
                 {
-                    selfObject["uri"] = ExpressionConverter.ConvertO(odataReferrallinksselfuri);
+                    selfObject["uri"] = ExpressionConverter.ConvertO(__workflow_odataReferrallinksselfuri);
                     selfObjectpropCount++;
                 }
 
@@ -1136,77 +1259,77 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
                     odataReferralpropCount++;
                 }
 
-                if (odataReferralname != null)
+                if (__workflow_odataReferralname != null)
                 {
-                    odataReferral["name"] = ExpressionConverter.ConvertO(odataReferralname);
+                    odataReferral["name"] = ExpressionConverter.ConvertO(__workflow_odataReferralname);
                     odataReferralpropCount++;
                 }
 
-                if (odataReferralorganizationId != null)
+                if (__workflow_odataReferralorganizationId != null)
                 {
-                    odataReferral["organizationId"] = ExpressionConverter.ConvertO(odataReferralorganizationId);
+                    odataReferral["organizationId"] = ExpressionConverter.ConvertO(__workflow_odataReferralorganizationId);
                     odataReferralpropCount++;
                 }
 
-                if (odataReferralorganizationName != null)
+                if (__workflow_odataReferralorganizationName != null)
                 {
-                    odataReferral["organizationName"] = ExpressionConverter.ConvertO(odataReferralorganizationName);
+                    odataReferral["organizationName"] = ExpressionConverter.ConvertO(__workflow_odataReferralorganizationName);
                     odataReferralpropCount++;
                 }
 
-                if (odataReferralqualification != null)
+                if (__workflow_odataReferralqualification != null)
                 {
-                    odataReferral["qualification"] = ExpressionConverter.ConvertO(odataReferralqualification);
+                    odataReferral["qualification"] = ExpressionConverter.ConvertO(__workflow_odataReferralqualification);
                     odataReferralpropCount++;
                 }
 
-                if (odataReferralreferralProgram != null)
+                if (__workflow_odataReferralreferralProgram != null)
                 {
-                    odataReferral["referralProgram"] = ExpressionConverter.ConvertO(odataReferralreferralProgram);
+                    odataReferral["referralProgram"] = ExpressionConverter.ConvertO(__workflow_odataReferralreferralProgram);
                     odataReferralpropCount++;
                 }
 
-                if (odataReferralsalesStage != null)
+                if (__workflow_odataReferralsalesStage != null)
                 {
-                    odataReferral["salesStage"] = ExpressionConverter.ConvertO(odataReferralsalesStage);
+                    odataReferral["salesStage"] = ExpressionConverter.ConvertO(__workflow_odataReferralsalesStage);
                     odataReferralpropCount++;
                 }
 
-                if (odataReferralstatus != null)
+                if (__workflow_odataReferralstatus != null)
                 {
-                    odataReferral["status"] = ExpressionConverter.ConvertO(odataReferralstatus);
+                    odataReferral["status"] = ExpressionConverter.ConvertO(__workflow_odataReferralstatus);
                     odataReferralpropCount++;
                 }
 
-                if (odataReferralstatusReason != null)
+                if (__workflow_odataReferralstatusReason != null)
                 {
-                    odataReferral["statusReason"] = ExpressionConverter.ConvertO(odataReferralstatusReason);
+                    odataReferral["statusReason"] = ExpressionConverter.ConvertO(__workflow_odataReferralstatusReason);
                     odataReferralpropCount++;
                 }
 
-                if (odataReferralsubstatus != null)
+                if (__workflow_odataReferralsubstatus != null)
                 {
-                    odataReferral["substatus"] = ExpressionConverter.ConvertO(odataReferralsubstatus);
+                    odataReferral["substatus"] = ExpressionConverter.ConvertO(__workflow_odataReferralsubstatus);
                     odataReferralpropCount++;
                 }
 
-                if (odataReferraltarget != null)
+                if (__workflow_odataReferraltarget != null)
                 {
-                    odataReferral["target"] = ExpressionConverter.ConvertO(odataReferraltarget);
+                    odataReferral["target"] = ExpressionConverter.ConvertO(__workflow_odataReferraltarget);
                     odataReferralpropCount++;
                 }
 
-                if (odataReferralteam != null)
+                if (__workflow_odataReferralteam != null)
                 {
-                    odataReferral["team"] = ExpressionConverter.ConvertO(odataReferralteam);
+                    odataReferral["team"] = ExpressionConverter.ConvertO(__workflow_odataReferralteam);
                     odataReferralpropCount++;
                 }
 
                 var trackingInfoObject = new JObject();
                 var trackingInfoObjectpropCount = 0;
-                if (odataReferraltrackingInfomicrosoftMsxId != null)
+                if (__workflow_odataReferraltrackingInfomicrosoftMsxId != null)
                 {
-                    trackingInfoObject["microsoftMsxId"] = ExpressionConverter.ConvertO(odataReferraltrackingInfomicrosoftMsxId);
+                    trackingInfoObject["microsoftMsxId"] = ExpressionConverter.ConvertO(__workflow_odataReferraltrackingInfomicrosoftMsxId);
                     trackingInfoObjectpropCount++;
                 }
 
@@ -1216,81 +1339,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
                     odataReferralpropCount++;
                 }
 
-                if (odataReferraltype != null)
+                if (__workflow_odataReferraltype != null)
                 {
-                    odataReferral["type"] = ExpressionConverter.ConvertO(odataReferraltype);
+                    odataReferral["type"] = ExpressionConverter.ConvertO(__workflow_odataReferraltype);
                     odataReferralpropCount++;
                 }
 
-                if (odataReferralupdatedDateTime != null)
+                if (__workflow_odataReferralupdatedDateTime != null)
                 {
-                    odataReferral["updatedDateTime"] = ExpressionConverter.ConvertO(odataReferralupdatedDateTime);
+                    odataReferral["updatedDateTime"] = ExpressionConverter.ConvertO(__workflow_odataReferralupdatedDateTime);
                     odataReferralpropCount++;
                 }
 
-                if (odataReferralmpnId != null)
+                if (__workflow_odataReferralmpnId != null)
                 {
-                    odataReferral["mpnId"] = ExpressionConverter.ConvertO(odataReferralmpnId);
+                    odataReferral["mpnId"] = ExpressionConverter.ConvertO(__workflow_odataReferralmpnId);
                     odataReferralpropCount++;
                 }
 
-                if (odataReferralregistrations != null)
+                if (__workflow_odataReferralregistrations != null)
                 {
-                    odataReferral["registrations"] = ExpressionConverter.ConvertO(odataReferralregistrations);
+                    odataReferral["registrations"] = ExpressionConverter.ConvertO(__workflow_odataReferralregistrations);
                     odataReferralpropCount++;
                 }
 
-                if (odataReferralregistrationStatus != null)
+                if (__workflow_odataReferralregistrationStatus != null)
                 {
-                    odataReferral["registrationStatus"] = ExpressionConverter.ConvertO(odataReferralregistrationStatus);
+                    odataReferral["registrationStatus"] = ExpressionConverter.ConvertO(__workflow_odataReferralregistrationStatus);
                     odataReferralpropCount++;
                 }
 
-                if (odataReferralcallToAction != null)
+                if (__workflow_odataReferralcallToAction != null)
                 {
-                    odataReferral["callToAction"] = ExpressionConverter.ConvertO(odataReferralcallToAction);
+                    odataReferral["callToAction"] = ExpressionConverter.ConvertO(__workflow_odataReferralcallToAction);
                     odataReferralpropCount++;
                 }
 
-                if (odataReferralreferralSource != null)
+                if (__workflow_odataReferralreferralSource != null)
                 {
-                    odataReferral["referralSource"] = ExpressionConverter.ConvertO(odataReferralreferralSource);
+                    odataReferral["referralSource"] = ExpressionConverter.ConvertO(__workflow_odataReferralreferralSource);
                     odataReferralpropCount++;
                 }
 
-                if (odataReferralquality != null)
+                if (__workflow_odataReferralquality != null)
                 {
-                    odataReferral["quality"] = ExpressionConverter.ConvertO(odataReferralquality);
+                    odataReferral["quality"] = ExpressionConverter.ConvertO(__workflow_odataReferralquality);
                     odataReferralpropCount++;
                 }
 
-                if (odataReferralisSpam != null)
+                if (__workflow_odataReferralisSpam != null)
                 {
-                    odataReferral["isSpam"] = ExpressionConverter.ConvertO(odataReferralisSpam);
+                    odataReferral["isSpam"] = ExpressionConverter.ConvertO(__workflow_odataReferralisSpam);
                     odataReferralpropCount++;
                 }
 
-                if (odataReferraldirection != null)
+                if (__workflow_odataReferraldirection != null)
                 {
-                    odataReferral["direction"] = ExpressionConverter.ConvertO(odataReferraldirection);
+                    odataReferral["direction"] = ExpressionConverter.ConvertO(__workflow_odataReferraldirection);
                     odataReferralpropCount++;
                 }
 
-                if (odataReferraltags != null)
+                if (__workflow_odataReferraltags != null)
                 {
-                    odataReferral["tags"] = ExpressionConverter.ConvertO(odataReferraltags);
+                    odataReferral["tags"] = ExpressionConverter.ConvertO(__workflow_odataReferraltags);
                     odataReferralpropCount++;
                 }
 
-                if (odataReferralacceptedDateTime != null)
+                if (__workflow_odataReferralacceptedDateTime != null)
                 {
-                    odataReferral["acceptedDateTime"] = ExpressionConverter.ConvertO(odataReferralacceptedDateTime);
+                    odataReferral["acceptedDateTime"] = ExpressionConverter.ConvertO(__workflow_odataReferralacceptedDateTime);
                     odataReferralpropCount++;
                 }
 
-                if (odataReferralclosedDateTime != null)
+                if (__workflow_odataReferralclosedDateTime != null)
                 {
-                    odataReferral["closedDateTime"] = ExpressionConverter.ConvertO(odataReferralclosedDateTime);
+                    odataReferral["closedDateTime"] = ExpressionConverter.ConvertO(__workflow_odataReferralclosedDateTime);
                     odataReferralpropCount++;
                 }
 
@@ -1304,82 +1427,70 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnercenterref")]
-        [WorkflowExpressionFactory(nameof(__BuildPatchReferralById))]
-        public IBodyWorkflowAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral> PatchReferralById([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> mSCorrelationId = null, [WorkflowExpression] Func<referralInputItem[]> referral = null)
+        public IBodyWorkflowAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral> PatchReferralById(Expression<Func<string>> id, Expression<Func<string>> mSCorrelationId = null, Expression<Func<referralInputItem[]>> referral = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral> __BuildPatchReferralById(WorkflowExpression<string> id, WorkflowExpression<string> mSCorrelationId = null, WorkflowExpression<referralInputItem[]> referral = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(mSCorrelationId, nameof(mSCorrelationId), required: false);
-            WorkflowExpression.Validate(referral, nameof(referral), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_mSCorrelationId = mSCorrelationId == null ? null : WorkflowExpression.Compile(mSCorrelationId);
+            WorkflowExpression.Validate(__workflow_mSCorrelationId, nameof(mSCorrelationId), required: false);
+            var __workflow_referral = referral == null ? null : WorkflowExpression.Compile(referral);
+            WorkflowExpression.Validate(__workflow_referral, nameof(referral), required: false);
             return new DeferredBodyAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/referrals/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/referrals/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["content-type"] = Convert.ToString("application/json");
-                if (mSCorrelationId != null)
-                    callPayload.Headers["MS-CorrelationId"] = ExpressionConverter.Convert(mSCorrelationId);
+                if (__workflow_mSCorrelationId != null)
+                    callPayload.Headers["MS-CorrelationId"] = ExpressionConverter.Convert(__workflow_mSCorrelationId);
                 callPayload.Headers["X-Caller-Id"] = Convert.ToString("60858c1b-2062-40ad-b42c-996b6b5b047d");
-                callPayload.Body = ExpressionConverter.ConvertO(referral);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_referral);
                 return new ApiConnectionAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnercenterref")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateDealRegistrationByReferralId))]
-        public IBodyWorkflowAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral> CreateDealRegistrationByReferralId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> mSCorrelationId = null, [WorkflowExpression] Func<referralInputItem2[]> referral = null)
+        public IBodyWorkflowAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral> CreateDealRegistrationByReferralId(Expression<Func<string>> id, Expression<Func<string>> mSCorrelationId = null, Expression<Func<referralInputItem2[]>> referral = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral> __BuildCreateDealRegistrationByReferralId(WorkflowExpression<string> id, WorkflowExpression<string> mSCorrelationId = null, WorkflowExpression<referralInputItem2[]> referral = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(mSCorrelationId, nameof(mSCorrelationId), required: false);
-            WorkflowExpression.Validate(referral, nameof(referral), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_mSCorrelationId = mSCorrelationId == null ? null : WorkflowExpression.Compile(mSCorrelationId);
+            WorkflowExpression.Validate(__workflow_mSCorrelationId, nameof(mSCorrelationId), required: false);
+            var __workflow_referral = referral == null ? null : WorkflowExpression.Compile(referral);
+            WorkflowExpression.Validate(__workflow_referral, nameof(referral), required: false);
             return new DeferredBodyAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/referrals/{0}/", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/referrals/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["content-type"] = Convert.ToString("application/json");
-                if (mSCorrelationId != null)
-                    callPayload.Headers["MS-CorrelationId"] = ExpressionConverter.Convert(mSCorrelationId);
+                if (__workflow_mSCorrelationId != null)
+                    callPayload.Headers["MS-CorrelationId"] = ExpressionConverter.Convert(__workflow_mSCorrelationId);
                 callPayload.Headers["X-Caller-Id"] = Convert.ToString("60858c1b-2062-40ad-b42c-996b6b5b047d");
-                callPayload.Body = ExpressionConverter.ConvertO(referral);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_referral);
                 return new ApiConnectionAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnercenterref")]
-        [WorkflowExpressionFactory(nameof(__BuildPatchDealRegistrationByReferralId))]
-        public IBodyWorkflowAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral> PatchDealRegistrationByReferralId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> mSCorrelationId = null, [WorkflowExpression] Func<referralInputItem22[]> referral = null)
+        public IBodyWorkflowAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral> PatchDealRegistrationByReferralId(Expression<Func<string>> id, Expression<Func<string>> mSCorrelationId = null, Expression<Func<referralInputItem22[]>> referral = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral> __BuildPatchDealRegistrationByReferralId(WorkflowExpression<string> id, WorkflowExpression<string> mSCorrelationId = null, WorkflowExpression<referralInputItem22[]> referral = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(mSCorrelationId, nameof(mSCorrelationId), required: false);
-            WorkflowExpression.Validate(referral, nameof(referral), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_mSCorrelationId = mSCorrelationId == null ? null : WorkflowExpression.Compile(mSCorrelationId);
+            WorkflowExpression.Validate(__workflow_mSCorrelationId, nameof(mSCorrelationId), required: false);
+            var __workflow_referral = referral == null ? null : WorkflowExpression.Compile(referral);
+            WorkflowExpression.Validate(__workflow_referral, nameof(referral), required: false);
             return new DeferredBodyAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/referrals/{0}//", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/referrals/{0}//", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["content-type"] = Convert.ToString("application/json");
-                if (mSCorrelationId != null)
-                    callPayload.Headers["MS-CorrelationId"] = ExpressionConverter.Convert(mSCorrelationId);
+                if (__workflow_mSCorrelationId != null)
+                    callPayload.Headers["MS-CorrelationId"] = ExpressionConverter.Convert(__workflow_mSCorrelationId);
                 callPayload.Headers["X-Caller-Id"] = Convert.ToString("60858c1b-2062-40ad-b42c-996b6b5b047d");
-                callPayload.Body = ExpressionConverter.ConvertO(referral);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_referral);
                 return new ApiConnectionAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral>(callPayload);
             });
         }

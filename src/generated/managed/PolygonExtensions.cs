@@ -1,293 +1,282 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class PolygonActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polygon")]
-        [WorkflowExpressionFactory(nameof(__BuildGetDailyOpenClose))]
-        public IBodyWorkflowAction<GetDailyOpenCloseResponse> GetDailyOpenClose([WorkflowExpression] Func<string> stocksTicker, [WorkflowExpression] Func<string> date, [WorkflowExpression] Func<bool> adjusted = null)
+        public IBodyWorkflowAction<GetDailyOpenCloseResponse> GetDailyOpenClose(Expression<Func<string>> stocksTicker, Expression<Func<string>> date, Expression<Func<bool>> adjusted = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetDailyOpenCloseResponse> __BuildGetDailyOpenClose(WorkflowExpression<string> stocksTicker, WorkflowExpression<string> date, WorkflowExpression<bool> adjusted = null)
-        {
-            WorkflowExpression.Validate(stocksTicker, nameof(stocksTicker), required: true);
-            WorkflowExpression.Validate(date, nameof(date), required: true);
-            WorkflowExpression.Validate(adjusted, nameof(adjusted), required: false);
+            var __workflow_stocksTicker = stocksTicker == null ? null : WorkflowExpression.Compile(stocksTicker);
+            WorkflowExpression.Validate(__workflow_stocksTicker, nameof(stocksTicker), required: true);
+            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
+            WorkflowExpression.Validate(__workflow_date, nameof(date), required: true);
+            var __workflow_adjusted = adjusted == null ? null : WorkflowExpression.Compile(adjusted);
+            WorkflowExpression.Validate(__workflow_adjusted, nameof(adjusted), required: false);
             return new DeferredBodyAction<GetDailyOpenCloseResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/open-close/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(stocksTicker, 1), ExpressionConverter.ConvertWithUrlEncoding(date, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/open-close/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_stocksTicker, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_date, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (adjusted != null)
-                    callPayload.Queries["adjusted"] = ExpressionConverter.Convert(adjusted);
+                if (__workflow_adjusted != null)
+                    callPayload.Queries["adjusted"] = ExpressionConverter.Convert(__workflow_adjusted);
                 return new ApiConnectionAction<GetDailyOpenCloseResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polygon")]
-        [WorkflowExpressionFactory(nameof(__BuildGetTickers))]
-        public IBodyWorkflowAction<GetTickersResponse> GetTickers([WorkflowExpression] Func<string> ticker = null, [WorkflowExpression] Func<typeInput> type = null, [WorkflowExpression] Func<marketInput> market = null, [WorkflowExpression] Func<string> exchange = null, [WorkflowExpression] Func<string> cusip = null, [WorkflowExpression] Func<string> cik = null, [WorkflowExpression] Func<string> date = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<orderInput> order = null, [WorkflowExpression] Func<sortInput> sort = null, [WorkflowExpression] Func<int> limit = null)
+        public IBodyWorkflowAction<GetTickersResponse> GetTickers(Expression<Func<string>> ticker = null, Expression<Func<typeInput>> type = null, Expression<Func<marketInput>> market = null, Expression<Func<string>> exchange = null, Expression<Func<string>> cusip = null, Expression<Func<string>> cik = null, Expression<Func<string>> date = null, Expression<Func<string>> search = null, Expression<Func<bool>> active = null, Expression<Func<orderInput>> order = null, Expression<Func<sortInput>> sort = null, Expression<Func<int>> limit = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetTickersResponse> __BuildGetTickers(WorkflowExpression<string> ticker = null, WorkflowExpression<typeInput> type = null, WorkflowExpression<marketInput> market = null, WorkflowExpression<string> exchange = null, WorkflowExpression<string> cusip = null, WorkflowExpression<string> cik = null, WorkflowExpression<string> date = null, WorkflowExpression<string> search = null, WorkflowExpression<bool> active = null, WorkflowExpression<orderInput> order = null, WorkflowExpression<sortInput> sort = null, WorkflowExpression<int> limit = null)
-        {
-            WorkflowExpression.Validate(ticker, nameof(ticker), required: false);
-            WorkflowExpression.Validate(type, nameof(type), required: false);
-            WorkflowExpression.Validate(market, nameof(market), required: false);
-            WorkflowExpression.Validate(exchange, nameof(exchange), required: false);
-            WorkflowExpression.Validate(cusip, nameof(cusip), required: false);
-            WorkflowExpression.Validate(cik, nameof(cik), required: false);
-            WorkflowExpression.Validate(date, nameof(date), required: false);
-            WorkflowExpression.Validate(search, nameof(search), required: false);
-            WorkflowExpression.Validate(active, nameof(active), required: false);
-            WorkflowExpression.Validate(order, nameof(order), required: false);
-            WorkflowExpression.Validate(sort, nameof(sort), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
+            var __workflow_ticker = ticker == null ? null : WorkflowExpression.Compile(ticker);
+            WorkflowExpression.Validate(__workflow_ticker, nameof(ticker), required: false);
+            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
+            WorkflowExpression.Validate(__workflow_type, nameof(type), required: false);
+            var __workflow_market = market == null ? null : WorkflowExpression.Compile(market);
+            WorkflowExpression.Validate(__workflow_market, nameof(market), required: false);
+            var __workflow_exchange = exchange == null ? null : WorkflowExpression.Compile(exchange);
+            WorkflowExpression.Validate(__workflow_exchange, nameof(exchange), required: false);
+            var __workflow_cusip = cusip == null ? null : WorkflowExpression.Compile(cusip);
+            WorkflowExpression.Validate(__workflow_cusip, nameof(cusip), required: false);
+            var __workflow_cik = cik == null ? null : WorkflowExpression.Compile(cik);
+            WorkflowExpression.Validate(__workflow_cik, nameof(cik), required: false);
+            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
+            WorkflowExpression.Validate(__workflow_date, nameof(date), required: false);
+            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
+            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
+            var __workflow_active = active == null ? null : WorkflowExpression.Compile(active);
+            WorkflowExpression.Validate(__workflow_active, nameof(active), required: false);
+            var __workflow_order = order == null ? null : WorkflowExpression.Compile(order);
+            WorkflowExpression.Validate(__workflow_order, nameof(order), required: false);
+            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
+            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
             return new DeferredBodyAction<GetTickersResponse>(() =>
             {
                 var apiCallPath = "/v3/reference/tickers";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (ticker != null)
-                    callPayload.Queries["ticker"] = ExpressionConverter.Convert(ticker);
-                if (type != null)
-                    callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-                if (market != null)
-                    callPayload.Queries["market"] = ExpressionConverter.Convert(market);
-                if (exchange != null)
-                    callPayload.Queries["exchange"] = ExpressionConverter.Convert(exchange);
-                if (cusip != null)
-                    callPayload.Queries["cusip"] = ExpressionConverter.Convert(cusip);
-                if (cik != null)
-                    callPayload.Queries["cik"] = ExpressionConverter.Convert(cik);
-                if (date != null)
-                    callPayload.Queries["date"] = ExpressionConverter.Convert(date);
-                if (search != null)
-                    callPayload.Queries["search"] = ExpressionConverter.Convert(search);
-                if (active != null)
-                    callPayload.Queries["active"] = ExpressionConverter.Convert(active);
-                if (order != null)
-                    callPayload.Queries["order"] = ExpressionConverter.Convert(order);
-                if (sort != null)
-                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (__workflow_ticker != null)
+                    callPayload.Queries["ticker"] = ExpressionConverter.Convert(__workflow_ticker);
+                if (__workflow_type != null)
+                    callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
+                if (__workflow_market != null)
+                    callPayload.Queries["market"] = ExpressionConverter.Convert(__workflow_market);
+                if (__workflow_exchange != null)
+                    callPayload.Queries["exchange"] = ExpressionConverter.Convert(__workflow_exchange);
+                if (__workflow_cusip != null)
+                    callPayload.Queries["cusip"] = ExpressionConverter.Convert(__workflow_cusip);
+                if (__workflow_cik != null)
+                    callPayload.Queries["cik"] = ExpressionConverter.Convert(__workflow_cik);
+                if (__workflow_date != null)
+                    callPayload.Queries["date"] = ExpressionConverter.Convert(__workflow_date);
+                if (__workflow_search != null)
+                    callPayload.Queries["search"] = ExpressionConverter.Convert(__workflow_search);
+                if (__workflow_active != null)
+                    callPayload.Queries["active"] = ExpressionConverter.Convert(__workflow_active);
+                if (__workflow_order != null)
+                    callPayload.Queries["order"] = ExpressionConverter.Convert(__workflow_order);
+                if (__workflow_sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction<GetTickersResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polygon")]
-        [WorkflowExpressionFactory(nameof(__BuildGetTickerDetails))]
-        public IBodyWorkflowAction<GetTickerDetailsResponse> GetTickerDetails([WorkflowExpression] Func<string> ticker, [WorkflowExpression] Func<string> date = null)
+        public IBodyWorkflowAction<GetTickerDetailsResponse> GetTickerDetails(Expression<Func<string>> ticker, Expression<Func<string>> date = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetTickerDetailsResponse> __BuildGetTickerDetails(WorkflowExpression<string> ticker, WorkflowExpression<string> date = null)
-        {
-            WorkflowExpression.Validate(ticker, nameof(ticker), required: true);
-            WorkflowExpression.Validate(date, nameof(date), required: false);
+            var __workflow_ticker = ticker == null ? null : WorkflowExpression.Compile(ticker);
+            WorkflowExpression.Validate(__workflow_ticker, nameof(ticker), required: true);
+            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
+            WorkflowExpression.Validate(__workflow_date, nameof(date), required: false);
             return new DeferredBodyAction<GetTickerDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/reference/tickers/{0}", ExpressionConverter.ConvertWithUrlEncoding(ticker, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/reference/tickers/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_ticker, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (date != null)
-                    callPayload.Queries["date"] = ExpressionConverter.Convert(date);
+                if (__workflow_date != null)
+                    callPayload.Queries["date"] = ExpressionConverter.Convert(__workflow_date);
                 return new ApiConnectionAction<GetTickerDetailsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polygon")]
-        [WorkflowExpressionFactory(nameof(__BuildGetTickerEvents))]
-        public IBodyWorkflowAction<GetTickerEventsResponse> GetTickerEvents([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> types = null)
+        public IBodyWorkflowAction<GetTickerEventsResponse> GetTickerEvents(Expression<Func<string>> id, Expression<Func<string>> types = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetTickerEventsResponse> __BuildGetTickerEvents(WorkflowExpression<string> id, WorkflowExpression<string> types = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(types, nameof(types), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_types = types == null ? null : WorkflowExpression.Compile(types);
+            WorkflowExpression.Validate(__workflow_types, nameof(types), required: false);
             return new DeferredBodyAction<GetTickerEventsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/vX/reference/tickers/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/vX/reference/tickers/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (types != null)
-                    callPayload.Queries["types"] = ExpressionConverter.Convert(types);
+                if (__workflow_types != null)
+                    callPayload.Queries["types"] = ExpressionConverter.Convert(__workflow_types);
                 return new ApiConnectionAction<GetTickerEventsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polygon")]
-        [WorkflowExpressionFactory(nameof(__BuildGetStockSplits))]
-        public IBodyWorkflowAction<GetStockSplitsResponse> GetStockSplits([WorkflowExpression] Func<string> ticker, [WorkflowExpression] Func<string> executionDate = null, [WorkflowExpression] Func<bool> reverseSplit = null, [WorkflowExpression] Func<orderInput> order = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<sortInput> sort = null)
+        public IBodyWorkflowAction<GetStockSplitsResponse> GetStockSplits(Expression<Func<string>> ticker, Expression<Func<string>> executionDate = null, Expression<Func<bool>> reverseSplit = null, Expression<Func<orderInput>> order = null, Expression<Func<int>> limit = null, Expression<Func<sortInput>> sort = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetStockSplitsResponse> __BuildGetStockSplits(WorkflowExpression<string> ticker, WorkflowExpression<string> executionDate = null, WorkflowExpression<bool> reverseSplit = null, WorkflowExpression<orderInput> order = null, WorkflowExpression<int> limit = null, WorkflowExpression<sortInput> sort = null)
-        {
-            WorkflowExpression.Validate(ticker, nameof(ticker), required: true);
-            WorkflowExpression.Validate(executionDate, nameof(executionDate), required: false);
-            WorkflowExpression.Validate(reverseSplit, nameof(reverseSplit), required: false);
-            WorkflowExpression.Validate(order, nameof(order), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(sort, nameof(sort), required: false);
+            var __workflow_ticker = ticker == null ? null : WorkflowExpression.Compile(ticker);
+            WorkflowExpression.Validate(__workflow_ticker, nameof(ticker), required: true);
+            var __workflow_executionDate = executionDate == null ? null : WorkflowExpression.Compile(executionDate);
+            WorkflowExpression.Validate(__workflow_executionDate, nameof(executionDate), required: false);
+            var __workflow_reverseSplit = reverseSplit == null ? null : WorkflowExpression.Compile(reverseSplit);
+            WorkflowExpression.Validate(__workflow_reverseSplit, nameof(reverseSplit), required: false);
+            var __workflow_order = order == null ? null : WorkflowExpression.Compile(order);
+            WorkflowExpression.Validate(__workflow_order, nameof(order), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
+            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
             return new DeferredBodyAction<GetStockSplitsResponse>(() =>
             {
                 var apiCallPath = "/v3/reference/splits";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["ticker"] = ExpressionConverter.Convert(ticker);
-                if (executionDate != null)
-                    callPayload.Queries["execution_date"] = ExpressionConverter.Convert(executionDate);
-                if (reverseSplit != null)
-                    callPayload.Queries["reverse_split"] = ExpressionConverter.Convert(reverseSplit);
-                if (order != null)
-                    callPayload.Queries["order"] = ExpressionConverter.Convert(order);
+                callPayload.Queries["ticker"] = ExpressionConverter.Convert(__workflow_ticker);
+                if (__workflow_executionDate != null)
+                    callPayload.Queries["execution_date"] = ExpressionConverter.Convert(__workflow_executionDate);
+                if (__workflow_reverseSplit != null)
+                    callPayload.Queries["reverse_split"] = ExpressionConverter.Convert(__workflow_reverseSplit);
+                if (__workflow_order != null)
+                    callPayload.Queries["order"] = ExpressionConverter.Convert(__workflow_order);
                 callPayload.Queries["limit"] = Convert.ToString(10);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (sort != null)
-                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
                 return new ApiConnectionAction<GetStockSplitsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polygon")]
-        [WorkflowExpressionFactory(nameof(__BuildGetStockDividends))]
-        public IBodyWorkflowAction<GetStockDividendsResponse> GetStockDividends([WorkflowExpression] Func<string> ticker, [WorkflowExpression] Func<string> exDividendDate = null, [WorkflowExpression] Func<string> recordDate = null, [WorkflowExpression] Func<string> declarationDate = null, [WorkflowExpression] Func<string> payDate = null, [WorkflowExpression] Func<frequencyInput> frequency = null, [WorkflowExpression] Func<double> cashAmount = null, [WorkflowExpression] Func<dividendTypeInput> dividendType = null)
+        public IBodyWorkflowAction<GetStockDividendsResponse> GetStockDividends(Expression<Func<string>> ticker, Expression<Func<string>> exDividendDate = null, Expression<Func<string>> recordDate = null, Expression<Func<string>> declarationDate = null, Expression<Func<string>> payDate = null, Expression<Func<frequencyInput>> frequency = null, Expression<Func<double>> cashAmount = null, Expression<Func<dividendTypeInput>> dividendType = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetStockDividendsResponse> __BuildGetStockDividends(WorkflowExpression<string> ticker, WorkflowExpression<string> exDividendDate = null, WorkflowExpression<string> recordDate = null, WorkflowExpression<string> declarationDate = null, WorkflowExpression<string> payDate = null, WorkflowExpression<frequencyInput> frequency = null, WorkflowExpression<double> cashAmount = null, WorkflowExpression<dividendTypeInput> dividendType = null)
-        {
-            WorkflowExpression.Validate(ticker, nameof(ticker), required: true);
-            WorkflowExpression.Validate(exDividendDate, nameof(exDividendDate), required: false);
-            WorkflowExpression.Validate(recordDate, nameof(recordDate), required: false);
-            WorkflowExpression.Validate(declarationDate, nameof(declarationDate), required: false);
-            WorkflowExpression.Validate(payDate, nameof(payDate), required: false);
-            WorkflowExpression.Validate(frequency, nameof(frequency), required: false);
-            WorkflowExpression.Validate(cashAmount, nameof(cashAmount), required: false);
-            WorkflowExpression.Validate(dividendType, nameof(dividendType), required: false);
+            var __workflow_ticker = ticker == null ? null : WorkflowExpression.Compile(ticker);
+            WorkflowExpression.Validate(__workflow_ticker, nameof(ticker), required: true);
+            var __workflow_exDividendDate = exDividendDate == null ? null : WorkflowExpression.Compile(exDividendDate);
+            WorkflowExpression.Validate(__workflow_exDividendDate, nameof(exDividendDate), required: false);
+            var __workflow_recordDate = recordDate == null ? null : WorkflowExpression.Compile(recordDate);
+            WorkflowExpression.Validate(__workflow_recordDate, nameof(recordDate), required: false);
+            var __workflow_declarationDate = declarationDate == null ? null : WorkflowExpression.Compile(declarationDate);
+            WorkflowExpression.Validate(__workflow_declarationDate, nameof(declarationDate), required: false);
+            var __workflow_payDate = payDate == null ? null : WorkflowExpression.Compile(payDate);
+            WorkflowExpression.Validate(__workflow_payDate, nameof(payDate), required: false);
+            var __workflow_frequency = frequency == null ? null : WorkflowExpression.Compile(frequency);
+            WorkflowExpression.Validate(__workflow_frequency, nameof(frequency), required: false);
+            var __workflow_cashAmount = cashAmount == null ? null : WorkflowExpression.Compile(cashAmount);
+            WorkflowExpression.Validate(__workflow_cashAmount, nameof(cashAmount), required: false);
+            var __workflow_dividendType = dividendType == null ? null : WorkflowExpression.Compile(dividendType);
+            WorkflowExpression.Validate(__workflow_dividendType, nameof(dividendType), required: false);
             return new DeferredBodyAction<GetStockDividendsResponse>(() =>
             {
                 var apiCallPath = "/v3/reference/dividends";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["ticker"] = ExpressionConverter.Convert(ticker);
-                if (exDividendDate != null)
-                    callPayload.Queries["ex_dividend_date"] = ExpressionConverter.Convert(exDividendDate);
-                if (recordDate != null)
-                    callPayload.Queries["record_date"] = ExpressionConverter.Convert(recordDate);
-                if (declarationDate != null)
-                    callPayload.Queries["declaration_date"] = ExpressionConverter.Convert(declarationDate);
-                if (payDate != null)
-                    callPayload.Queries["pay_date"] = ExpressionConverter.Convert(payDate);
-                if (frequency != null)
-                    callPayload.Queries["frequency"] = ExpressionConverter.Convert(frequency);
-                if (cashAmount != null)
-                    callPayload.Queries["cash_amount"] = ExpressionConverter.Convert(cashAmount);
-                if (dividendType != null)
-                    callPayload.Queries["dividend_type"] = ExpressionConverter.Convert(dividendType);
+                callPayload.Queries["ticker"] = ExpressionConverter.Convert(__workflow_ticker);
+                if (__workflow_exDividendDate != null)
+                    callPayload.Queries["ex_dividend_date"] = ExpressionConverter.Convert(__workflow_exDividendDate);
+                if (__workflow_recordDate != null)
+                    callPayload.Queries["record_date"] = ExpressionConverter.Convert(__workflow_recordDate);
+                if (__workflow_declarationDate != null)
+                    callPayload.Queries["declaration_date"] = ExpressionConverter.Convert(__workflow_declarationDate);
+                if (__workflow_payDate != null)
+                    callPayload.Queries["pay_date"] = ExpressionConverter.Convert(__workflow_payDate);
+                if (__workflow_frequency != null)
+                    callPayload.Queries["frequency"] = ExpressionConverter.Convert(__workflow_frequency);
+                if (__workflow_cashAmount != null)
+                    callPayload.Queries["cash_amount"] = ExpressionConverter.Convert(__workflow_cashAmount);
+                if (__workflow_dividendType != null)
+                    callPayload.Queries["dividend_type"] = ExpressionConverter.Convert(__workflow_dividendType);
                 return new ApiConnectionAction<GetStockDividendsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polygon")]
-        [WorkflowExpressionFactory(nameof(__BuildGetStockFinancialDetails))]
-        public IBodyWorkflowAction<GetStockFinancialDetailsResponse> GetStockFinancialDetails([WorkflowExpression] Func<string> ticker = null, [WorkflowExpression] Func<string> cik = null, [WorkflowExpression] Func<string> companyName = null, [WorkflowExpression] Func<string> sic = null, [WorkflowExpression] Func<string> filingDate = null, [WorkflowExpression] Func<string> periodOfReportDate = null, [WorkflowExpression] Func<timeframeInput> timeframe = null, [WorkflowExpression] Func<bool> includeSources = null, [WorkflowExpression] Func<orderInput> order = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<sortInput> sort = null)
+        public IBodyWorkflowAction<GetStockFinancialDetailsResponse> GetStockFinancialDetails(Expression<Func<string>> ticker = null, Expression<Func<string>> cik = null, Expression<Func<string>> companyName = null, Expression<Func<string>> sic = null, Expression<Func<string>> filingDate = null, Expression<Func<string>> periodOfReportDate = null, Expression<Func<timeframeInput>> timeframe = null, Expression<Func<bool>> includeSources = null, Expression<Func<orderInput>> order = null, Expression<Func<int>> limit = null, Expression<Func<sortInput>> sort = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetStockFinancialDetailsResponse> __BuildGetStockFinancialDetails(WorkflowExpression<string> ticker = null, WorkflowExpression<string> cik = null, WorkflowExpression<string> companyName = null, WorkflowExpression<string> sic = null, WorkflowExpression<string> filingDate = null, WorkflowExpression<string> periodOfReportDate = null, WorkflowExpression<timeframeInput> timeframe = null, WorkflowExpression<bool> includeSources = null, WorkflowExpression<orderInput> order = null, WorkflowExpression<int> limit = null, WorkflowExpression<sortInput> sort = null)
-        {
-            WorkflowExpression.Validate(ticker, nameof(ticker), required: false);
-            WorkflowExpression.Validate(cik, nameof(cik), required: false);
-            WorkflowExpression.Validate(companyName, nameof(companyName), required: false);
-            WorkflowExpression.Validate(sic, nameof(sic), required: false);
-            WorkflowExpression.Validate(filingDate, nameof(filingDate), required: false);
-            WorkflowExpression.Validate(periodOfReportDate, nameof(periodOfReportDate), required: false);
-            WorkflowExpression.Validate(timeframe, nameof(timeframe), required: false);
-            WorkflowExpression.Validate(includeSources, nameof(includeSources), required: false);
-            WorkflowExpression.Validate(order, nameof(order), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(sort, nameof(sort), required: false);
+            var __workflow_ticker = ticker == null ? null : WorkflowExpression.Compile(ticker);
+            WorkflowExpression.Validate(__workflow_ticker, nameof(ticker), required: false);
+            var __workflow_cik = cik == null ? null : WorkflowExpression.Compile(cik);
+            WorkflowExpression.Validate(__workflow_cik, nameof(cik), required: false);
+            var __workflow_companyName = companyName == null ? null : WorkflowExpression.Compile(companyName);
+            WorkflowExpression.Validate(__workflow_companyName, nameof(companyName), required: false);
+            var __workflow_sic = sic == null ? null : WorkflowExpression.Compile(sic);
+            WorkflowExpression.Validate(__workflow_sic, nameof(sic), required: false);
+            var __workflow_filingDate = filingDate == null ? null : WorkflowExpression.Compile(filingDate);
+            WorkflowExpression.Validate(__workflow_filingDate, nameof(filingDate), required: false);
+            var __workflow_periodOfReportDate = periodOfReportDate == null ? null : WorkflowExpression.Compile(periodOfReportDate);
+            WorkflowExpression.Validate(__workflow_periodOfReportDate, nameof(periodOfReportDate), required: false);
+            var __workflow_timeframe = timeframe == null ? null : WorkflowExpression.Compile(timeframe);
+            WorkflowExpression.Validate(__workflow_timeframe, nameof(timeframe), required: false);
+            var __workflow_includeSources = includeSources == null ? null : WorkflowExpression.Compile(includeSources);
+            WorkflowExpression.Validate(__workflow_includeSources, nameof(includeSources), required: false);
+            var __workflow_order = order == null ? null : WorkflowExpression.Compile(order);
+            WorkflowExpression.Validate(__workflow_order, nameof(order), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
+            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
             return new DeferredBodyAction<GetStockFinancialDetailsResponse>(() =>
             {
                 var apiCallPath = "/vX/reference/financials";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (ticker != null)
-                    callPayload.Queries["ticker"] = ExpressionConverter.Convert(ticker);
-                if (cik != null)
-                    callPayload.Queries["cik"] = ExpressionConverter.Convert(cik);
-                if (companyName != null)
-                    callPayload.Queries["company_name"] = ExpressionConverter.Convert(companyName);
-                if (sic != null)
-                    callPayload.Queries["sic"] = ExpressionConverter.Convert(sic);
-                if (filingDate != null)
-                    callPayload.Queries["filing_date"] = ExpressionConverter.Convert(filingDate);
-                if (periodOfReportDate != null)
-                    callPayload.Queries["period_of_report_date"] = ExpressionConverter.Convert(periodOfReportDate);
-                if (timeframe != null)
-                    callPayload.Queries["timeframe"] = ExpressionConverter.Convert(timeframe);
-                if (includeSources != null)
-                    callPayload.Queries["include_sources"] = ExpressionConverter.Convert(includeSources);
-                if (order != null)
-                    callPayload.Queries["order"] = ExpressionConverter.Convert(order);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (sort != null)
-                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                if (__workflow_ticker != null)
+                    callPayload.Queries["ticker"] = ExpressionConverter.Convert(__workflow_ticker);
+                if (__workflow_cik != null)
+                    callPayload.Queries["cik"] = ExpressionConverter.Convert(__workflow_cik);
+                if (__workflow_companyName != null)
+                    callPayload.Queries["company_name"] = ExpressionConverter.Convert(__workflow_companyName);
+                if (__workflow_sic != null)
+                    callPayload.Queries["sic"] = ExpressionConverter.Convert(__workflow_sic);
+                if (__workflow_filingDate != null)
+                    callPayload.Queries["filing_date"] = ExpressionConverter.Convert(__workflow_filingDate);
+                if (__workflow_periodOfReportDate != null)
+                    callPayload.Queries["period_of_report_date"] = ExpressionConverter.Convert(__workflow_periodOfReportDate);
+                if (__workflow_timeframe != null)
+                    callPayload.Queries["timeframe"] = ExpressionConverter.Convert(__workflow_timeframe);
+                if (__workflow_includeSources != null)
+                    callPayload.Queries["include_sources"] = ExpressionConverter.Convert(__workflow_includeSources);
+                if (__workflow_order != null)
+                    callPayload.Queries["order"] = ExpressionConverter.Convert(__workflow_order);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
                 return new ApiConnectionAction<GetStockFinancialDetailsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polygon")]
-        [WorkflowExpressionFactory(nameof(__BuildGetExchanges))]
-        public IBodyWorkflowAction<GetExchangesResponse> GetExchanges([WorkflowExpression] Func<assetClassInput> assetClass = null, [WorkflowExpression] Func<localeInput> locale = null)
+        public IBodyWorkflowAction<GetExchangesResponse> GetExchanges(Expression<Func<assetClassInput>> assetClass = null, Expression<Func<localeInput>> locale = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetExchangesResponse> __BuildGetExchanges(WorkflowExpression<assetClassInput> assetClass = null, WorkflowExpression<localeInput> locale = null)
-        {
-            WorkflowExpression.Validate(assetClass, nameof(assetClass), required: false);
-            WorkflowExpression.Validate(locale, nameof(locale), required: false);
+            var __workflow_assetClass = assetClass == null ? null : WorkflowExpression.Compile(assetClass);
+            WorkflowExpression.Validate(__workflow_assetClass, nameof(assetClass), required: false);
+            var __workflow_locale = locale == null ? null : WorkflowExpression.Compile(locale);
+            WorkflowExpression.Validate(__workflow_locale, nameof(locale), required: false);
             return new DeferredBodyAction<GetExchangesResponse>(() =>
             {
                 var apiCallPath = "/v3/reference/exchanges";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (assetClass != null)
-                    callPayload.Queries["asset_class"] = ExpressionConverter.Convert(assetClass);
-                if (locale != null)
-                    callPayload.Queries["locale"] = ExpressionConverter.Convert(locale);
+                if (__workflow_assetClass != null)
+                    callPayload.Queries["asset_class"] = ExpressionConverter.Convert(__workflow_assetClass);
+                if (__workflow_locale != null)
+                    callPayload.Queries["locale"] = ExpressionConverter.Convert(__workflow_locale);
                 return new ApiConnectionAction<GetExchangesResponse>(callPayload);
             });
         }

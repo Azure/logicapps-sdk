@@ -1,28 +1,22 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class SupportivekoalaipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "supportivekoalaip")]
-        [WorkflowExpressionFactory(nameof(__BuildImages))]
-        public IBodyWorkflowAction<ImagesPostResponse> Images([WorkflowExpression] Func<string> bodytemplate, [WorkflowExpression] Func<bodyformatInput> bodyformat = null)
+        public IBodyWorkflowAction<ImagesPostResponse> Images(Expression<Func<string>> bodytemplate, Expression<Func<bodyformatInput>> bodyformat = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ImagesPostResponse> __BuildImages(WorkflowExpression<string> bodytemplate, WorkflowExpression<bodyformatInput> bodyformat = null)
-        {
-            WorkflowExpression.Validate(bodytemplate, nameof(bodytemplate), required: true);
-            WorkflowExpression.Validate(bodyformat, nameof(bodyformat), required: false);
+            var __workflow_bodytemplate = bodytemplate == null ? null : WorkflowExpression.Compile(bodytemplate);
+            WorkflowExpression.Validate(__workflow_bodytemplate, nameof(bodytemplate), required: true);
+            var __workflow_bodyformat = bodyformat == null ? null : WorkflowExpression.Compile(bodyformat);
+            WorkflowExpression.Validate(__workflow_bodyformat, nameof(bodyformat), required: false);
             return new DeferredBodyAction<ImagesPostResponse>(() =>
             {
                 var apiCallPath = "/images/";
@@ -31,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["template"] = ExpressionConverter.ConvertO(bodytemplate);
+                body["template"] = ExpressionConverter.ConvertO(__workflow_bodytemplate);
                 var @paramsObject = new JObject();
                 var @paramsObjectpropCount = 0;
                 if (@paramsObjectpropCount > 0)
@@ -40,11 +34,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
                     bodypropCount++;
                 }
 
-                if (bodyformat != null)
+                if (__workflow_bodyformat != null)
                 {
-                    if (bodyformat != null)
+                    if (__workflow_bodyformat != null)
                     {
-                        body["format"] = ExpressionConverter.ConvertO(bodyformat);
+                        body["format"] = ExpressionConverter.ConvertO(__workflow_bodyformat);
                         bodypropCount++;
                     }
 
@@ -66,19 +60,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "supportivekoalaip")]
-        [WorkflowExpressionFactory(nameof(__BuildImageGet))]
-        public IBodyWorkflowAction<ImageGetResponse> ImageGet([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<ImageGetResponse> ImageGet(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ImageGetResponse> __BuildImageGet(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<ImageGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/images/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/images/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ImageGetResponse>(callPayload);
@@ -95,19 +83,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "supportivekoalaip")]
-        [WorkflowExpressionFactory(nameof(__BuildTemplate))]
-        public IBodyWorkflowAction<TemplatePostResponse> Template([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyParams = null, [WorkflowExpression] Func<int> bodywidth = null, [WorkflowExpression] Func<int> bodyheight = null)
+        public IBodyWorkflowAction<TemplatePostResponse> Template(Expression<Func<string>> bodyname, Expression<Func<string>> bodyParams = null, Expression<Func<int>> bodywidth = null, Expression<Func<int>> bodyheight = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TemplatePostResponse> __BuildTemplate(WorkflowExpression<string> bodyname, WorkflowExpression<string> bodyParams = null, WorkflowExpression<int> bodywidth = null, WorkflowExpression<int> bodyheight = null)
-        {
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
-            WorkflowExpression.Validate(bodyParams, nameof(bodyParams), required: false);
-            WorkflowExpression.Validate(bodywidth, nameof(bodywidth), required: false);
-            WorkflowExpression.Validate(bodyheight, nameof(bodyheight), required: false);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
+            var __workflow_bodyParams = bodyParams == null ? null : WorkflowExpression.Compile(bodyParams);
+            WorkflowExpression.Validate(__workflow_bodyParams, nameof(bodyParams), required: false);
+            var __workflow_bodywidth = bodywidth == null ? null : WorkflowExpression.Compile(bodywidth);
+            WorkflowExpression.Validate(__workflow_bodywidth, nameof(bodywidth), required: false);
+            var __workflow_bodyheight = bodyheight == null ? null : WorkflowExpression.Compile(bodyheight);
+            WorkflowExpression.Validate(__workflow_bodyheight, nameof(bodyheight), required: false);
             return new DeferredBodyAction<TemplatePostResponse>(() =>
             {
                 var apiCallPath = "/templates/";
@@ -116,22 +101,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                if (bodyParams != null)
+                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
+                if (__workflow_bodyParams != null)
                 {
-                    body["params"] = ExpressionConverter.ConvertO(bodyParams);
+                    body["params"] = ExpressionConverter.ConvertO(__workflow_bodyParams);
                     bodypropCount++;
                 }
 
-                if (bodywidth != null)
+                if (__workflow_bodywidth != null)
                 {
-                    body["width"] = ExpressionConverter.ConvertO(bodywidth);
+                    body["width"] = ExpressionConverter.ConvertO(__workflow_bodywidth);
                     bodypropCount++;
                 }
 
-                if (bodyheight != null)
+                if (__workflow_bodyheight != null)
                 {
-                    body["height"] = ExpressionConverter.ConvertO(bodyheight);
+                    body["height"] = ExpressionConverter.ConvertO(__workflow_bodyheight);
                     bodypropCount++;
                 }
 
@@ -145,19 +130,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "supportivekoalaip")]
-        [WorkflowExpressionFactory(nameof(__BuildTemplateGet))]
-        public IBodyWorkflowAction<TemplateGetResponse> TemplateGet([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<TemplateGetResponse> TemplateGet(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TemplateGetResponse> __BuildTemplateGet(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<TemplateGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/templates/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/templates/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TemplateGetResponse>(callPayload);

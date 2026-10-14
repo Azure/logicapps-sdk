@@ -1,12 +1,12 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zreports
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class ZreportsActions([ConnectionName] string connectionId)
     {
@@ -20,21 +20,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zreports
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zreports")]
-        [WorkflowExpressionFactory(nameof(__BuildUploadDocument))]
-        public IWorkflowAction UploadDocument([WorkflowExpression] Func<string> brandId, [WorkflowExpression] Func<string> storeId, [WorkflowExpression] Func<object> document)
+        public IWorkflowAction UploadDocument(Expression<Func<string>> brandId, Expression<Func<string>> storeId, Expression<Func<object>> document)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildUploadDocument(WorkflowExpression<string> brandId, WorkflowExpression<string> storeId, WorkflowExpression<object> document)
-        {
-            WorkflowExpression.Validate(brandId, nameof(brandId), required: true);
-            WorkflowExpression.Validate(storeId, nameof(storeId), required: true);
-            WorkflowExpression.Validate(document, nameof(document), required: true);
+            var __workflow_brandId = brandId == null ? null : WorkflowExpression.Compile(brandId);
+            WorkflowExpression.Validate(__workflow_brandId, nameof(brandId), required: true);
+            var __workflow_storeId = storeId == null ? null : WorkflowExpression.Compile(storeId);
+            WorkflowExpression.Validate(__workflow_storeId, nameof(storeId), required: true);
+            var __workflow_document = document == null ? null : WorkflowExpression.Compile(document);
+            WorkflowExpression.Validate(__workflow_document, nameof(document), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}/documents", ExpressionConverter.ConvertWithUrlEncoding(brandId, 1), ExpressionConverter.ConvertWithUrlEncoding(storeId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}/documents", ExpressionConverter.ConvertWithUrlEncoding(__workflow_brandId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_storeId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -44,28 +40,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zreports
 
     public class ZreportsTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildNewDispatchAdvice))]
-        public IBodyWorkflowTrigger<CreateWebhookResponseBody> NewDispatchAdvice([WorkflowExpression] Func<string> brandId,[WorkflowExpression] Func<string> bodystoreIds = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CreateWebhookResponseBody> NewDispatchAdvice(Expression<Func<string>> brandId, Expression<Func<string>> bodystoreIds = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<CreateWebhookResponseBody> __BuildNewDispatchAdvice(WorkflowExpression<string> brandId,WorkflowExpression<string> bodystoreIds = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(brandId, nameof(brandId), required: true);
-            WorkflowExpression.Validate(bodystoreIds, nameof(bodystoreIds), required: false);
+            var __workflow_brandId = brandId == null ? null : WorkflowExpression.Compile(brandId);
+            WorkflowExpression.Validate(__workflow_brandId, nameof(brandId), required: true);
+            var __workflow_bodystoreIds = bodystoreIds == null ? null : WorkflowExpression.Compile(bodystoreIds);
+            WorkflowExpression.Validate(__workflow_bodystoreIds, nameof(bodystoreIds), required: false);
             return new DeferredBodyTrigger<CreateWebhookResponseBody>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/despatch-advice-hooks", ExpressionConverter.ConvertWithUrlEncoding(brandId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/despatch-advice-hooks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_brandId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodystoreIds != null)
+                if (__workflow_bodystoreIds != null)
                 {
-                    body["storeIds"] = ExpressionConverter.ConvertO(bodystoreIds);
+                    body["storeIds"] = ExpressionConverter.ConvertO(__workflow_bodystoreIds);
                     bodypropCount++;
                 }
 
@@ -80,27 +70,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zreports
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildNewInvoice))]
-        public IBodyWorkflowTrigger<CreateWebhookResponseBody> NewInvoice([WorkflowExpression] Func<string> brandId,[WorkflowExpression] Func<string> bodystoreIds = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CreateWebhookResponseBody> NewInvoice(Expression<Func<string>> brandId, Expression<Func<string>> bodystoreIds = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<CreateWebhookResponseBody> __BuildNewInvoice(WorkflowExpression<string> brandId,WorkflowExpression<string> bodystoreIds = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(brandId, nameof(brandId), required: true);
-            WorkflowExpression.Validate(bodystoreIds, nameof(bodystoreIds), required: false);
+            var __workflow_brandId = brandId == null ? null : WorkflowExpression.Compile(brandId);
+            WorkflowExpression.Validate(__workflow_brandId, nameof(brandId), required: true);
+            var __workflow_bodystoreIds = bodystoreIds == null ? null : WorkflowExpression.Compile(bodystoreIds);
+            WorkflowExpression.Validate(__workflow_bodystoreIds, nameof(bodystoreIds), required: false);
             return new DeferredBodyTrigger<CreateWebhookResponseBody>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/invoice-hooks", ExpressionConverter.ConvertWithUrlEncoding(brandId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/invoice-hooks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_brandId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodystoreIds != null)
+                if (__workflow_bodystoreIds != null)
                 {
-                    body["storeIds"] = ExpressionConverter.ConvertO(bodystoreIds);
+                    body["storeIds"] = ExpressionConverter.ConvertO(__workflow_bodystoreIds);
                     bodypropCount++;
                 }
 

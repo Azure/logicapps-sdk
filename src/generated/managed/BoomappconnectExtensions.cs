@@ -1,33 +1,32 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class BoomappconnectActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boomappconnect")]
-        [WorkflowExpressionFactory(nameof(__BuildSMS1))]
-        public IBodyWorkflowAction<SMS1Response> SMS1([WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodymessageContent = null, [WorkflowExpression] Func<bodyrecipientAddressInputItem[]> bodyrecipientAddress = null, [WorkflowExpression] Func<bool> bodypriority = null, [WorkflowExpression] Func<string> bodyuniqueIdentifier = null, [WorkflowExpression] Func<string> bodycampaignName = null, [WorkflowExpression] Func<string> bodycustomParameter = null)
+        public IBodyWorkflowAction<SMS1Response> SMS1(Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodymessageContent = null, Expression<Func<bodyrecipientAddressInputItem[]>> bodyrecipientAddress = null, Expression<Func<bool>> bodypriority = null, Expression<Func<string>> bodyuniqueIdentifier = null, Expression<Func<string>> bodycampaignName = null, Expression<Func<string>> bodycustomParameter = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SMS1Response> __BuildSMS1(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodymessageContent = null, WorkflowExpression<bodyrecipientAddressInputItem[]> bodyrecipientAddress = null, WorkflowExpression<bool> bodypriority = null, WorkflowExpression<string> bodyuniqueIdentifier = null, WorkflowExpression<string> bodycampaignName = null, WorkflowExpression<string> bodycustomParameter = null)
-        {
-            WorkflowExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
-            WorkflowExpression.Validate(bodymessageContent, nameof(bodymessageContent), required: false);
-            WorkflowExpression.Validate(bodyrecipientAddress, nameof(bodyrecipientAddress), required: false);
-            WorkflowExpression.Validate(bodypriority, nameof(bodypriority), required: false);
-            WorkflowExpression.Validate(bodyuniqueIdentifier, nameof(bodyuniqueIdentifier), required: false);
-            WorkflowExpression.Validate(bodycampaignName, nameof(bodycampaignName), required: false);
-            WorkflowExpression.Validate(bodycustomParameter, nameof(bodycustomParameter), required: false);
+            var __workflow_bodyfrom = bodyfrom == null ? null : WorkflowExpression.Compile(bodyfrom);
+            WorkflowExpression.Validate(__workflow_bodyfrom, nameof(bodyfrom), required: false);
+            var __workflow_bodymessageContent = bodymessageContent == null ? null : WorkflowExpression.Compile(bodymessageContent);
+            WorkflowExpression.Validate(__workflow_bodymessageContent, nameof(bodymessageContent), required: false);
+            var __workflow_bodyrecipientAddress = bodyrecipientAddress == null ? null : WorkflowExpression.Compile(bodyrecipientAddress);
+            WorkflowExpression.Validate(__workflow_bodyrecipientAddress, nameof(bodyrecipientAddress), required: false);
+            var __workflow_bodypriority = bodypriority == null ? null : WorkflowExpression.Compile(bodypriority);
+            WorkflowExpression.Validate(__workflow_bodypriority, nameof(bodypriority), required: false);
+            var __workflow_bodyuniqueIdentifier = bodyuniqueIdentifier == null ? null : WorkflowExpression.Compile(bodyuniqueIdentifier);
+            WorkflowExpression.Validate(__workflow_bodyuniqueIdentifier, nameof(bodyuniqueIdentifier), required: false);
+            var __workflow_bodycampaignName = bodycampaignName == null ? null : WorkflowExpression.Compile(bodycampaignName);
+            WorkflowExpression.Validate(__workflow_bodycampaignName, nameof(bodycampaignName), required: false);
+            var __workflow_bodycustomParameter = bodycustomParameter == null ? null : WorkflowExpression.Compile(bodycustomParameter);
+            WorkflowExpression.Validate(__workflow_bodycustomParameter, nameof(bodycustomParameter), required: false);
             return new DeferredBodyAction<SMS1Response>(() =>
             {
                 var apiCallPath = "/sms1";
@@ -35,45 +34,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfrom != null)
+                if (__workflow_bodyfrom != null)
                 {
-                    body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                    body["from"] = ExpressionConverter.ConvertO(__workflow_bodyfrom);
                     bodypropCount++;
                 }
 
-                if (bodymessageContent != null)
+                if (__workflow_bodymessageContent != null)
                 {
-                    body["message_content"] = ExpressionConverter.ConvertO(bodymessageContent);
+                    body["message_content"] = ExpressionConverter.ConvertO(__workflow_bodymessageContent);
                     bodypropCount++;
                 }
 
-                if (bodyrecipientAddress != null)
+                if (__workflow_bodyrecipientAddress != null)
                 {
-                    body["recipient_address"] = ExpressionConverter.ConvertO(bodyrecipientAddress);
+                    body["recipient_address"] = ExpressionConverter.ConvertO(__workflow_bodyrecipientAddress);
                     bodypropCount++;
                 }
 
-                if (bodypriority != null)
+                if (__workflow_bodypriority != null)
                 {
-                    body["priority"] = ExpressionConverter.ConvertO(bodypriority);
+                    body["priority"] = ExpressionConverter.ConvertO(__workflow_bodypriority);
                     bodypropCount++;
                 }
 
-                if (bodyuniqueIdentifier != null)
+                if (__workflow_bodyuniqueIdentifier != null)
                 {
-                    body["unique_identifier"] = ExpressionConverter.ConvertO(bodyuniqueIdentifier);
+                    body["unique_identifier"] = ExpressionConverter.ConvertO(__workflow_bodyuniqueIdentifier);
                     bodypropCount++;
                 }
 
-                if (bodycampaignName != null)
+                if (__workflow_bodycampaignName != null)
                 {
-                    body["campaign_name"] = ExpressionConverter.ConvertO(bodycampaignName);
+                    body["campaign_name"] = ExpressionConverter.ConvertO(__workflow_bodycampaignName);
                     bodypropCount++;
                 }
 
-                if (bodycustomParameter != null)
+                if (__workflow_bodycustomParameter != null)
                 {
-                    body["custom_parameter"] = ExpressionConverter.ConvertO(bodycustomParameter);
+                    body["custom_parameter"] = ExpressionConverter.ConvertO(__workflow_bodycustomParameter);
                     bodypropCount++;
                 }
 
@@ -87,26 +86,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boomappconnect")]
-        [WorkflowExpressionFactory(nameof(__BuildSMS2))]
-        public IBodyWorkflowAction<SMS2Response> SMS2([WorkflowExpression] Func<string> bodyconversationId = null, [WorkflowExpression] Func<string> bodymessageContent = null, [WorkflowExpression] Func<bodyrecipientAddressInputItem[]> bodyrecipientAddress = null, [WorkflowExpression] Func<int> bodyvalidityPeriod = null, [WorkflowExpression] Func<bool> bodyopenTicket = null, [WorkflowExpression] Func<string> bodyemailResponses = null, [WorkflowExpression] Func<string> bodypushResponses = null, [WorkflowExpression] Func<bool> bodypriority = null, [WorkflowExpression] Func<string> bodyuniqueIdentifier = null, [WorkflowExpression] Func<string> bodycampaignName = null, [WorkflowExpression] Func<string> bodycustomParameter = null)
+        public IBodyWorkflowAction<SMS2Response> SMS2(Expression<Func<string>> bodyconversationId = null, Expression<Func<string>> bodymessageContent = null, Expression<Func<bodyrecipientAddressInputItem[]>> bodyrecipientAddress = null, Expression<Func<int>> bodyvalidityPeriod = null, Expression<Func<bool>> bodyopenTicket = null, Expression<Func<string>> bodyemailResponses = null, Expression<Func<string>> bodypushResponses = null, Expression<Func<bool>> bodypriority = null, Expression<Func<string>> bodyuniqueIdentifier = null, Expression<Func<string>> bodycampaignName = null, Expression<Func<string>> bodycustomParameter = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SMS2Response> __BuildSMS2(WorkflowExpression<string> bodyconversationId = null, WorkflowExpression<string> bodymessageContent = null, WorkflowExpression<bodyrecipientAddressInputItem[]> bodyrecipientAddress = null, WorkflowExpression<int> bodyvalidityPeriod = null, WorkflowExpression<bool> bodyopenTicket = null, WorkflowExpression<string> bodyemailResponses = null, WorkflowExpression<string> bodypushResponses = null, WorkflowExpression<bool> bodypriority = null, WorkflowExpression<string> bodyuniqueIdentifier = null, WorkflowExpression<string> bodycampaignName = null, WorkflowExpression<string> bodycustomParameter = null)
-        {
-            WorkflowExpression.Validate(bodyconversationId, nameof(bodyconversationId), required: false);
-            WorkflowExpression.Validate(bodymessageContent, nameof(bodymessageContent), required: false);
-            WorkflowExpression.Validate(bodyrecipientAddress, nameof(bodyrecipientAddress), required: false);
-            WorkflowExpression.Validate(bodyvalidityPeriod, nameof(bodyvalidityPeriod), required: false);
-            WorkflowExpression.Validate(bodyopenTicket, nameof(bodyopenTicket), required: false);
-            WorkflowExpression.Validate(bodyemailResponses, nameof(bodyemailResponses), required: false);
-            WorkflowExpression.Validate(bodypushResponses, nameof(bodypushResponses), required: false);
-            WorkflowExpression.Validate(bodypriority, nameof(bodypriority), required: false);
-            WorkflowExpression.Validate(bodyuniqueIdentifier, nameof(bodyuniqueIdentifier), required: false);
-            WorkflowExpression.Validate(bodycampaignName, nameof(bodycampaignName), required: false);
-            WorkflowExpression.Validate(bodycustomParameter, nameof(bodycustomParameter), required: false);
+            var __workflow_bodyconversationId = bodyconversationId == null ? null : WorkflowExpression.Compile(bodyconversationId);
+            WorkflowExpression.Validate(__workflow_bodyconversationId, nameof(bodyconversationId), required: false);
+            var __workflow_bodymessageContent = bodymessageContent == null ? null : WorkflowExpression.Compile(bodymessageContent);
+            WorkflowExpression.Validate(__workflow_bodymessageContent, nameof(bodymessageContent), required: false);
+            var __workflow_bodyrecipientAddress = bodyrecipientAddress == null ? null : WorkflowExpression.Compile(bodyrecipientAddress);
+            WorkflowExpression.Validate(__workflow_bodyrecipientAddress, nameof(bodyrecipientAddress), required: false);
+            var __workflow_bodyvalidityPeriod = bodyvalidityPeriod == null ? null : WorkflowExpression.Compile(bodyvalidityPeriod);
+            WorkflowExpression.Validate(__workflow_bodyvalidityPeriod, nameof(bodyvalidityPeriod), required: false);
+            var __workflow_bodyopenTicket = bodyopenTicket == null ? null : WorkflowExpression.Compile(bodyopenTicket);
+            WorkflowExpression.Validate(__workflow_bodyopenTicket, nameof(bodyopenTicket), required: false);
+            var __workflow_bodyemailResponses = bodyemailResponses == null ? null : WorkflowExpression.Compile(bodyemailResponses);
+            WorkflowExpression.Validate(__workflow_bodyemailResponses, nameof(bodyemailResponses), required: false);
+            var __workflow_bodypushResponses = bodypushResponses == null ? null : WorkflowExpression.Compile(bodypushResponses);
+            WorkflowExpression.Validate(__workflow_bodypushResponses, nameof(bodypushResponses), required: false);
+            var __workflow_bodypriority = bodypriority == null ? null : WorkflowExpression.Compile(bodypriority);
+            WorkflowExpression.Validate(__workflow_bodypriority, nameof(bodypriority), required: false);
+            var __workflow_bodyuniqueIdentifier = bodyuniqueIdentifier == null ? null : WorkflowExpression.Compile(bodyuniqueIdentifier);
+            WorkflowExpression.Validate(__workflow_bodyuniqueIdentifier, nameof(bodyuniqueIdentifier), required: false);
+            var __workflow_bodycampaignName = bodycampaignName == null ? null : WorkflowExpression.Compile(bodycampaignName);
+            WorkflowExpression.Validate(__workflow_bodycampaignName, nameof(bodycampaignName), required: false);
+            var __workflow_bodycustomParameter = bodycustomParameter == null ? null : WorkflowExpression.Compile(bodycustomParameter);
+            WorkflowExpression.Validate(__workflow_bodycustomParameter, nameof(bodycustomParameter), required: false);
             return new DeferredBodyAction<SMS2Response>(() =>
             {
                 var apiCallPath = "/sms2";
@@ -114,69 +117,69 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyconversationId != null)
+                if (__workflow_bodyconversationId != null)
                 {
-                    body["conversation_id"] = ExpressionConverter.ConvertO(bodyconversationId);
+                    body["conversation_id"] = ExpressionConverter.ConvertO(__workflow_bodyconversationId);
                     bodypropCount++;
                 }
 
-                if (bodymessageContent != null)
+                if (__workflow_bodymessageContent != null)
                 {
-                    body["message_content"] = ExpressionConverter.ConvertO(bodymessageContent);
+                    body["message_content"] = ExpressionConverter.ConvertO(__workflow_bodymessageContent);
                     bodypropCount++;
                 }
 
-                if (bodyrecipientAddress != null)
+                if (__workflow_bodyrecipientAddress != null)
                 {
-                    body["recipient_address"] = ExpressionConverter.ConvertO(bodyrecipientAddress);
+                    body["recipient_address"] = ExpressionConverter.ConvertO(__workflow_bodyrecipientAddress);
                     bodypropCount++;
                 }
 
-                if (bodyvalidityPeriod != null)
+                if (__workflow_bodyvalidityPeriod != null)
                 {
-                    body["validity_period"] = ExpressionConverter.ConvertO(bodyvalidityPeriod);
+                    body["validity_period"] = ExpressionConverter.ConvertO(__workflow_bodyvalidityPeriod);
                     bodypropCount++;
                 }
 
-                if (bodyopenTicket != null)
+                if (__workflow_bodyopenTicket != null)
                 {
-                    body["open_ticket"] = ExpressionConverter.ConvertO(bodyopenTicket);
+                    body["open_ticket"] = ExpressionConverter.ConvertO(__workflow_bodyopenTicket);
                     bodypropCount++;
                 }
 
-                if (bodyemailResponses != null)
+                if (__workflow_bodyemailResponses != null)
                 {
-                    body["email_responses"] = ExpressionConverter.ConvertO(bodyemailResponses);
+                    body["email_responses"] = ExpressionConverter.ConvertO(__workflow_bodyemailResponses);
                     bodypropCount++;
                 }
 
-                if (bodypushResponses != null)
+                if (__workflow_bodypushResponses != null)
                 {
-                    body["push_responses"] = ExpressionConverter.ConvertO(bodypushResponses);
+                    body["push_responses"] = ExpressionConverter.ConvertO(__workflow_bodypushResponses);
                     bodypropCount++;
                 }
 
-                if (bodypriority != null)
+                if (__workflow_bodypriority != null)
                 {
-                    body["priority"] = ExpressionConverter.ConvertO(bodypriority);
+                    body["priority"] = ExpressionConverter.ConvertO(__workflow_bodypriority);
                     bodypropCount++;
                 }
 
-                if (bodyuniqueIdentifier != null)
+                if (__workflow_bodyuniqueIdentifier != null)
                 {
-                    body["unique_identifier"] = ExpressionConverter.ConvertO(bodyuniqueIdentifier);
+                    body["unique_identifier"] = ExpressionConverter.ConvertO(__workflow_bodyuniqueIdentifier);
                     bodypropCount++;
                 }
 
-                if (bodycampaignName != null)
+                if (__workflow_bodycampaignName != null)
                 {
-                    body["campaign_name"] = ExpressionConverter.ConvertO(bodycampaignName);
+                    body["campaign_name"] = ExpressionConverter.ConvertO(__workflow_bodycampaignName);
                     bodypropCount++;
                 }
 
-                if (bodycustomParameter != null)
+                if (__workflow_bodycustomParameter != null)
                 {
-                    body["custom_parameter"] = ExpressionConverter.ConvertO(bodycustomParameter);
+                    body["custom_parameter"] = ExpressionConverter.ConvertO(__workflow_bodycustomParameter);
                     bodypropCount++;
                 }
 
@@ -190,22 +193,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boomappconnect")]
-        [WorkflowExpressionFactory(nameof(__BuildSMS3))]
-        public IBodyWorkflowAction<SMS3Response> SMS3([WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodymessageContent = null, [WorkflowExpression] Func<bodyrecipientAddressInputItem[]> bodyrecipientAddress = null, [WorkflowExpression] Func<bool> bodypriority = null, [WorkflowExpression] Func<string> bodyuniqueIdentifier = null, [WorkflowExpression] Func<string> bodycampaignName = null, [WorkflowExpression] Func<string> bodycustomParameter = null)
+        public IBodyWorkflowAction<SMS3Response> SMS3(Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodymessageContent = null, Expression<Func<bodyrecipientAddressInputItem[]>> bodyrecipientAddress = null, Expression<Func<bool>> bodypriority = null, Expression<Func<string>> bodyuniqueIdentifier = null, Expression<Func<string>> bodycampaignName = null, Expression<Func<string>> bodycustomParameter = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SMS3Response> __BuildSMS3(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodymessageContent = null, WorkflowExpression<bodyrecipientAddressInputItem[]> bodyrecipientAddress = null, WorkflowExpression<bool> bodypriority = null, WorkflowExpression<string> bodyuniqueIdentifier = null, WorkflowExpression<string> bodycampaignName = null, WorkflowExpression<string> bodycustomParameter = null)
-        {
-            WorkflowExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
-            WorkflowExpression.Validate(bodymessageContent, nameof(bodymessageContent), required: false);
-            WorkflowExpression.Validate(bodyrecipientAddress, nameof(bodyrecipientAddress), required: false);
-            WorkflowExpression.Validate(bodypriority, nameof(bodypriority), required: false);
-            WorkflowExpression.Validate(bodyuniqueIdentifier, nameof(bodyuniqueIdentifier), required: false);
-            WorkflowExpression.Validate(bodycampaignName, nameof(bodycampaignName), required: false);
-            WorkflowExpression.Validate(bodycustomParameter, nameof(bodycustomParameter), required: false);
+            var __workflow_bodyfrom = bodyfrom == null ? null : WorkflowExpression.Compile(bodyfrom);
+            WorkflowExpression.Validate(__workflow_bodyfrom, nameof(bodyfrom), required: false);
+            var __workflow_bodymessageContent = bodymessageContent == null ? null : WorkflowExpression.Compile(bodymessageContent);
+            WorkflowExpression.Validate(__workflow_bodymessageContent, nameof(bodymessageContent), required: false);
+            var __workflow_bodyrecipientAddress = bodyrecipientAddress == null ? null : WorkflowExpression.Compile(bodyrecipientAddress);
+            WorkflowExpression.Validate(__workflow_bodyrecipientAddress, nameof(bodyrecipientAddress), required: false);
+            var __workflow_bodypriority = bodypriority == null ? null : WorkflowExpression.Compile(bodypriority);
+            WorkflowExpression.Validate(__workflow_bodypriority, nameof(bodypriority), required: false);
+            var __workflow_bodyuniqueIdentifier = bodyuniqueIdentifier == null ? null : WorkflowExpression.Compile(bodyuniqueIdentifier);
+            WorkflowExpression.Validate(__workflow_bodyuniqueIdentifier, nameof(bodyuniqueIdentifier), required: false);
+            var __workflow_bodycampaignName = bodycampaignName == null ? null : WorkflowExpression.Compile(bodycampaignName);
+            WorkflowExpression.Validate(__workflow_bodycampaignName, nameof(bodycampaignName), required: false);
+            var __workflow_bodycustomParameter = bodycustomParameter == null ? null : WorkflowExpression.Compile(bodycustomParameter);
+            WorkflowExpression.Validate(__workflow_bodycustomParameter, nameof(bodycustomParameter), required: false);
             return new DeferredBodyAction<SMS3Response>(() =>
             {
                 var apiCallPath = "/sms3";
@@ -213,45 +216,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfrom != null)
+                if (__workflow_bodyfrom != null)
                 {
-                    body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                    body["from"] = ExpressionConverter.ConvertO(__workflow_bodyfrom);
                     bodypropCount++;
                 }
 
-                if (bodymessageContent != null)
+                if (__workflow_bodymessageContent != null)
                 {
-                    body["message_content"] = ExpressionConverter.ConvertO(bodymessageContent);
+                    body["message_content"] = ExpressionConverter.ConvertO(__workflow_bodymessageContent);
                     bodypropCount++;
                 }
 
-                if (bodyrecipientAddress != null)
+                if (__workflow_bodyrecipientAddress != null)
                 {
-                    body["recipient_address"] = ExpressionConverter.ConvertO(bodyrecipientAddress);
+                    body["recipient_address"] = ExpressionConverter.ConvertO(__workflow_bodyrecipientAddress);
                     bodypropCount++;
                 }
 
-                if (bodypriority != null)
+                if (__workflow_bodypriority != null)
                 {
-                    body["priority"] = ExpressionConverter.ConvertO(bodypriority);
+                    body["priority"] = ExpressionConverter.ConvertO(__workflow_bodypriority);
                     bodypropCount++;
                 }
 
-                if (bodyuniqueIdentifier != null)
+                if (__workflow_bodyuniqueIdentifier != null)
                 {
-                    body["unique_identifier"] = ExpressionConverter.ConvertO(bodyuniqueIdentifier);
+                    body["unique_identifier"] = ExpressionConverter.ConvertO(__workflow_bodyuniqueIdentifier);
                     bodypropCount++;
                 }
 
-                if (bodycampaignName != null)
+                if (__workflow_bodycampaignName != null)
                 {
-                    body["campaign_name"] = ExpressionConverter.ConvertO(bodycampaignName);
+                    body["campaign_name"] = ExpressionConverter.ConvertO(__workflow_bodycampaignName);
                     bodypropCount++;
                 }
 
-                if (bodycustomParameter != null)
+                if (__workflow_bodycustomParameter != null)
                 {
-                    body["custom_parameter"] = ExpressionConverter.ConvertO(bodycustomParameter);
+                    body["custom_parameter"] = ExpressionConverter.ConvertO(__workflow_bodycustomParameter);
                     bodypropCount++;
                 }
 
@@ -265,27 +268,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boomappconnect")]
-        [WorkflowExpressionFactory(nameof(__BuildVOICE))]
-        public IBodyWorkflowAction<VOICEResponse> VOICE([WorkflowExpression] Func<string> bodyvoiceIntro = null, [WorkflowExpression] Func<string> bodyvoiceThankYou = null, [WorkflowExpression] Func<string> bodyvoiceRedirectMessage = null, [WorkflowExpression] Func<string> bodyvoiceRedirectNonumber = null, [WorkflowExpression] Func<int> bodyvoiceRetries = null, [WorkflowExpression] Func<int> bodyvoiceDelay = null, [WorkflowExpression] Func<string> bodymessageContent = null, [WorkflowExpression] Func<bodyrecipientAddressInputItem[]> bodyrecipientAddress = null, [WorkflowExpression] Func<bool> bodypriority = null, [WorkflowExpression] Func<string> bodyuniqueIdentifier = null, [WorkflowExpression] Func<string> bodycampaignName = null, [WorkflowExpression] Func<string> bodycustomParameter = null)
+        public IBodyWorkflowAction<VOICEResponse> VOICE(Expression<Func<string>> bodyvoiceIntro = null, Expression<Func<string>> bodyvoiceThankYou = null, Expression<Func<string>> bodyvoiceRedirectMessage = null, Expression<Func<string>> bodyvoiceRedirectNonumber = null, Expression<Func<int>> bodyvoiceRetries = null, Expression<Func<int>> bodyvoiceDelay = null, Expression<Func<string>> bodymessageContent = null, Expression<Func<bodyrecipientAddressInputItem[]>> bodyrecipientAddress = null, Expression<Func<bool>> bodypriority = null, Expression<Func<string>> bodyuniqueIdentifier = null, Expression<Func<string>> bodycampaignName = null, Expression<Func<string>> bodycustomParameter = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<VOICEResponse> __BuildVOICE(WorkflowExpression<string> bodyvoiceIntro = null, WorkflowExpression<string> bodyvoiceThankYou = null, WorkflowExpression<string> bodyvoiceRedirectMessage = null, WorkflowExpression<string> bodyvoiceRedirectNonumber = null, WorkflowExpression<int> bodyvoiceRetries = null, WorkflowExpression<int> bodyvoiceDelay = null, WorkflowExpression<string> bodymessageContent = null, WorkflowExpression<bodyrecipientAddressInputItem[]> bodyrecipientAddress = null, WorkflowExpression<bool> bodypriority = null, WorkflowExpression<string> bodyuniqueIdentifier = null, WorkflowExpression<string> bodycampaignName = null, WorkflowExpression<string> bodycustomParameter = null)
-        {
-            WorkflowExpression.Validate(bodyvoiceIntro, nameof(bodyvoiceIntro), required: false);
-            WorkflowExpression.Validate(bodyvoiceThankYou, nameof(bodyvoiceThankYou), required: false);
-            WorkflowExpression.Validate(bodyvoiceRedirectMessage, nameof(bodyvoiceRedirectMessage), required: false);
-            WorkflowExpression.Validate(bodyvoiceRedirectNonumber, nameof(bodyvoiceRedirectNonumber), required: false);
-            WorkflowExpression.Validate(bodyvoiceRetries, nameof(bodyvoiceRetries), required: false);
-            WorkflowExpression.Validate(bodyvoiceDelay, nameof(bodyvoiceDelay), required: false);
-            WorkflowExpression.Validate(bodymessageContent, nameof(bodymessageContent), required: false);
-            WorkflowExpression.Validate(bodyrecipientAddress, nameof(bodyrecipientAddress), required: false);
-            WorkflowExpression.Validate(bodypriority, nameof(bodypriority), required: false);
-            WorkflowExpression.Validate(bodyuniqueIdentifier, nameof(bodyuniqueIdentifier), required: false);
-            WorkflowExpression.Validate(bodycampaignName, nameof(bodycampaignName), required: false);
-            WorkflowExpression.Validate(bodycustomParameter, nameof(bodycustomParameter), required: false);
+            var __workflow_bodyvoiceIntro = bodyvoiceIntro == null ? null : WorkflowExpression.Compile(bodyvoiceIntro);
+            WorkflowExpression.Validate(__workflow_bodyvoiceIntro, nameof(bodyvoiceIntro), required: false);
+            var __workflow_bodyvoiceThankYou = bodyvoiceThankYou == null ? null : WorkflowExpression.Compile(bodyvoiceThankYou);
+            WorkflowExpression.Validate(__workflow_bodyvoiceThankYou, nameof(bodyvoiceThankYou), required: false);
+            var __workflow_bodyvoiceRedirectMessage = bodyvoiceRedirectMessage == null ? null : WorkflowExpression.Compile(bodyvoiceRedirectMessage);
+            WorkflowExpression.Validate(__workflow_bodyvoiceRedirectMessage, nameof(bodyvoiceRedirectMessage), required: false);
+            var __workflow_bodyvoiceRedirectNonumber = bodyvoiceRedirectNonumber == null ? null : WorkflowExpression.Compile(bodyvoiceRedirectNonumber);
+            WorkflowExpression.Validate(__workflow_bodyvoiceRedirectNonumber, nameof(bodyvoiceRedirectNonumber), required: false);
+            var __workflow_bodyvoiceRetries = bodyvoiceRetries == null ? null : WorkflowExpression.Compile(bodyvoiceRetries);
+            WorkflowExpression.Validate(__workflow_bodyvoiceRetries, nameof(bodyvoiceRetries), required: false);
+            var __workflow_bodyvoiceDelay = bodyvoiceDelay == null ? null : WorkflowExpression.Compile(bodyvoiceDelay);
+            WorkflowExpression.Validate(__workflow_bodyvoiceDelay, nameof(bodyvoiceDelay), required: false);
+            var __workflow_bodymessageContent = bodymessageContent == null ? null : WorkflowExpression.Compile(bodymessageContent);
+            WorkflowExpression.Validate(__workflow_bodymessageContent, nameof(bodymessageContent), required: false);
+            var __workflow_bodyrecipientAddress = bodyrecipientAddress == null ? null : WorkflowExpression.Compile(bodyrecipientAddress);
+            WorkflowExpression.Validate(__workflow_bodyrecipientAddress, nameof(bodyrecipientAddress), required: false);
+            var __workflow_bodypriority = bodypriority == null ? null : WorkflowExpression.Compile(bodypriority);
+            WorkflowExpression.Validate(__workflow_bodypriority, nameof(bodypriority), required: false);
+            var __workflow_bodyuniqueIdentifier = bodyuniqueIdentifier == null ? null : WorkflowExpression.Compile(bodyuniqueIdentifier);
+            WorkflowExpression.Validate(__workflow_bodyuniqueIdentifier, nameof(bodyuniqueIdentifier), required: false);
+            var __workflow_bodycampaignName = bodycampaignName == null ? null : WorkflowExpression.Compile(bodycampaignName);
+            WorkflowExpression.Validate(__workflow_bodycampaignName, nameof(bodycampaignName), required: false);
+            var __workflow_bodycustomParameter = bodycustomParameter == null ? null : WorkflowExpression.Compile(bodycustomParameter);
+            WorkflowExpression.Validate(__workflow_bodycustomParameter, nameof(bodycustomParameter), required: false);
             return new DeferredBodyAction<VOICEResponse>(() =>
             {
                 var apiCallPath = "/voice";
@@ -293,29 +301,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyvoiceIntro != null)
+                if (__workflow_bodyvoiceIntro != null)
                 {
-                    body["voice_intro"] = ExpressionConverter.ConvertO(bodyvoiceIntro);
+                    body["voice_intro"] = ExpressionConverter.ConvertO(__workflow_bodyvoiceIntro);
                     bodypropCount++;
                 }
 
-                if (bodyvoiceThankYou != null)
+                if (__workflow_bodyvoiceThankYou != null)
                 {
-                    body["voice_thank_you"] = ExpressionConverter.ConvertO(bodyvoiceThankYou);
+                    body["voice_thank_you"] = ExpressionConverter.ConvertO(__workflow_bodyvoiceThankYou);
                     bodypropCount++;
                 }
 
-                if (bodyvoiceRedirectMessage != null)
+                if (__workflow_bodyvoiceRedirectMessage != null)
                 {
-                    body["voice_redirect_message"] = ExpressionConverter.ConvertO(bodyvoiceRedirectMessage);
+                    body["voice_redirect_message"] = ExpressionConverter.ConvertO(__workflow_bodyvoiceRedirectMessage);
                     bodypropCount++;
                 }
 
                 var voiceRedirectNoObject = new JObject();
                 var voiceRedirectNoObjectpropCount = 0;
-                if (bodyvoiceRedirectNonumber != null)
+                if (__workflow_bodyvoiceRedirectNonumber != null)
                 {
-                    voiceRedirectNoObject["number"] = ExpressionConverter.ConvertO(bodyvoiceRedirectNonumber);
+                    voiceRedirectNoObject["number"] = ExpressionConverter.ConvertO(__workflow_bodyvoiceRedirectNonumber);
                     voiceRedirectNoObjectpropCount++;
                 }
 
@@ -325,51 +333,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
                     bodypropCount++;
                 }
 
-                if (bodyvoiceRetries != null)
+                if (__workflow_bodyvoiceRetries != null)
                 {
-                    body["voice_retries"] = ExpressionConverter.ConvertO(bodyvoiceRetries);
+                    body["voice_retries"] = ExpressionConverter.ConvertO(__workflow_bodyvoiceRetries);
                     bodypropCount++;
                 }
 
-                if (bodyvoiceDelay != null)
+                if (__workflow_bodyvoiceDelay != null)
                 {
-                    body["voice_delay"] = ExpressionConverter.ConvertO(bodyvoiceDelay);
+                    body["voice_delay"] = ExpressionConverter.ConvertO(__workflow_bodyvoiceDelay);
                     bodypropCount++;
                 }
 
-                if (bodymessageContent != null)
+                if (__workflow_bodymessageContent != null)
                 {
-                    body["message_content"] = ExpressionConverter.ConvertO(bodymessageContent);
+                    body["message_content"] = ExpressionConverter.ConvertO(__workflow_bodymessageContent);
                     bodypropCount++;
                 }
 
-                if (bodyrecipientAddress != null)
+                if (__workflow_bodyrecipientAddress != null)
                 {
-                    body["recipient_address"] = ExpressionConverter.ConvertO(bodyrecipientAddress);
+                    body["recipient_address"] = ExpressionConverter.ConvertO(__workflow_bodyrecipientAddress);
                     bodypropCount++;
                 }
 
-                if (bodypriority != null)
+                if (__workflow_bodypriority != null)
                 {
-                    body["priority"] = ExpressionConverter.ConvertO(bodypriority);
+                    body["priority"] = ExpressionConverter.ConvertO(__workflow_bodypriority);
                     bodypropCount++;
                 }
 
-                if (bodyuniqueIdentifier != null)
+                if (__workflow_bodyuniqueIdentifier != null)
                 {
-                    body["unique_identifier"] = ExpressionConverter.ConvertO(bodyuniqueIdentifier);
+                    body["unique_identifier"] = ExpressionConverter.ConvertO(__workflow_bodyuniqueIdentifier);
                     bodypropCount++;
                 }
 
-                if (bodycampaignName != null)
+                if (__workflow_bodycampaignName != null)
                 {
-                    body["campaign_name"] = ExpressionConverter.ConvertO(bodycampaignName);
+                    body["campaign_name"] = ExpressionConverter.ConvertO(__workflow_bodycampaignName);
                     bodypropCount++;
                 }
 
-                if (bodycustomParameter != null)
+                if (__workflow_bodycustomParameter != null)
                 {
-                    body["custom_parameter"] = ExpressionConverter.ConvertO(bodycustomParameter);
+                    body["custom_parameter"] = ExpressionConverter.ConvertO(__workflow_bodycustomParameter);
                     bodypropCount++;
                 }
 
@@ -383,26 +391,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boomappconnect")]
-        [WorkflowExpressionFactory(nameof(__BuildEMAIL))]
-        public IBodyWorkflowAction<EMAILResponse> EMAIL([WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyemailSubject = null, [WorkflowExpression] Func<string> bodymessageContent = null, [WorkflowExpression] Func<string[]> bodyemailAddress = null, [WorkflowExpression] Func<int> bodyvalidityPeriod = null, [WorkflowExpression] Func<bool> bodyopenTicket = null, [WorkflowExpression] Func<string> bodyemailResponses = null, [WorkflowExpression] Func<string> bodypushResponses = null, [WorkflowExpression] Func<string> bodyuniqueIdentifier = null, [WorkflowExpression] Func<string> bodycampaignName = null, [WorkflowExpression] Func<string> bodycustomParameter = null)
+        public IBodyWorkflowAction<EMAILResponse> EMAIL(Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyemailSubject = null, Expression<Func<string>> bodymessageContent = null, Expression<Func<string[]>> bodyemailAddress = null, Expression<Func<int>> bodyvalidityPeriod = null, Expression<Func<bool>> bodyopenTicket = null, Expression<Func<string>> bodyemailResponses = null, Expression<Func<string>> bodypushResponses = null, Expression<Func<string>> bodyuniqueIdentifier = null, Expression<Func<string>> bodycampaignName = null, Expression<Func<string>> bodycustomParameter = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EMAILResponse> __BuildEMAIL(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyemailSubject = null, WorkflowExpression<string> bodymessageContent = null, WorkflowExpression<string[]> bodyemailAddress = null, WorkflowExpression<int> bodyvalidityPeriod = null, WorkflowExpression<bool> bodyopenTicket = null, WorkflowExpression<string> bodyemailResponses = null, WorkflowExpression<string> bodypushResponses = null, WorkflowExpression<string> bodyuniqueIdentifier = null, WorkflowExpression<string> bodycampaignName = null, WorkflowExpression<string> bodycustomParameter = null)
-        {
-            WorkflowExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
-            WorkflowExpression.Validate(bodyemailSubject, nameof(bodyemailSubject), required: false);
-            WorkflowExpression.Validate(bodymessageContent, nameof(bodymessageContent), required: false);
-            WorkflowExpression.Validate(bodyemailAddress, nameof(bodyemailAddress), required: false);
-            WorkflowExpression.Validate(bodyvalidityPeriod, nameof(bodyvalidityPeriod), required: false);
-            WorkflowExpression.Validate(bodyopenTicket, nameof(bodyopenTicket), required: false);
-            WorkflowExpression.Validate(bodyemailResponses, nameof(bodyemailResponses), required: false);
-            WorkflowExpression.Validate(bodypushResponses, nameof(bodypushResponses), required: false);
-            WorkflowExpression.Validate(bodyuniqueIdentifier, nameof(bodyuniqueIdentifier), required: false);
-            WorkflowExpression.Validate(bodycampaignName, nameof(bodycampaignName), required: false);
-            WorkflowExpression.Validate(bodycustomParameter, nameof(bodycustomParameter), required: false);
+            var __workflow_bodyfrom = bodyfrom == null ? null : WorkflowExpression.Compile(bodyfrom);
+            WorkflowExpression.Validate(__workflow_bodyfrom, nameof(bodyfrom), required: false);
+            var __workflow_bodyemailSubject = bodyemailSubject == null ? null : WorkflowExpression.Compile(bodyemailSubject);
+            WorkflowExpression.Validate(__workflow_bodyemailSubject, nameof(bodyemailSubject), required: false);
+            var __workflow_bodymessageContent = bodymessageContent == null ? null : WorkflowExpression.Compile(bodymessageContent);
+            WorkflowExpression.Validate(__workflow_bodymessageContent, nameof(bodymessageContent), required: false);
+            var __workflow_bodyemailAddress = bodyemailAddress == null ? null : WorkflowExpression.Compile(bodyemailAddress);
+            WorkflowExpression.Validate(__workflow_bodyemailAddress, nameof(bodyemailAddress), required: false);
+            var __workflow_bodyvalidityPeriod = bodyvalidityPeriod == null ? null : WorkflowExpression.Compile(bodyvalidityPeriod);
+            WorkflowExpression.Validate(__workflow_bodyvalidityPeriod, nameof(bodyvalidityPeriod), required: false);
+            var __workflow_bodyopenTicket = bodyopenTicket == null ? null : WorkflowExpression.Compile(bodyopenTicket);
+            WorkflowExpression.Validate(__workflow_bodyopenTicket, nameof(bodyopenTicket), required: false);
+            var __workflow_bodyemailResponses = bodyemailResponses == null ? null : WorkflowExpression.Compile(bodyemailResponses);
+            WorkflowExpression.Validate(__workflow_bodyemailResponses, nameof(bodyemailResponses), required: false);
+            var __workflow_bodypushResponses = bodypushResponses == null ? null : WorkflowExpression.Compile(bodypushResponses);
+            WorkflowExpression.Validate(__workflow_bodypushResponses, nameof(bodypushResponses), required: false);
+            var __workflow_bodyuniqueIdentifier = bodyuniqueIdentifier == null ? null : WorkflowExpression.Compile(bodyuniqueIdentifier);
+            WorkflowExpression.Validate(__workflow_bodyuniqueIdentifier, nameof(bodyuniqueIdentifier), required: false);
+            var __workflow_bodycampaignName = bodycampaignName == null ? null : WorkflowExpression.Compile(bodycampaignName);
+            WorkflowExpression.Validate(__workflow_bodycampaignName, nameof(bodycampaignName), required: false);
+            var __workflow_bodycustomParameter = bodycustomParameter == null ? null : WorkflowExpression.Compile(bodycustomParameter);
+            WorkflowExpression.Validate(__workflow_bodycustomParameter, nameof(bodycustomParameter), required: false);
             return new DeferredBodyAction<EMAILResponse>(() =>
             {
                 var apiCallPath = "/email";
@@ -410,69 +422,69 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfrom != null)
+                if (__workflow_bodyfrom != null)
                 {
-                    body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                    body["from"] = ExpressionConverter.ConvertO(__workflow_bodyfrom);
                     bodypropCount++;
                 }
 
-                if (bodyemailSubject != null)
+                if (__workflow_bodyemailSubject != null)
                 {
-                    body["email_subject"] = ExpressionConverter.ConvertO(bodyemailSubject);
+                    body["email_subject"] = ExpressionConverter.ConvertO(__workflow_bodyemailSubject);
                     bodypropCount++;
                 }
 
-                if (bodymessageContent != null)
+                if (__workflow_bodymessageContent != null)
                 {
-                    body["message_content"] = ExpressionConverter.ConvertO(bodymessageContent);
+                    body["message_content"] = ExpressionConverter.ConvertO(__workflow_bodymessageContent);
                     bodypropCount++;
                 }
 
-                if (bodyemailAddress != null)
+                if (__workflow_bodyemailAddress != null)
                 {
-                    body["email_address"] = ExpressionConverter.ConvertO(bodyemailAddress);
+                    body["email_address"] = ExpressionConverter.ConvertO(__workflow_bodyemailAddress);
                     bodypropCount++;
                 }
 
-                if (bodyvalidityPeriod != null)
+                if (__workflow_bodyvalidityPeriod != null)
                 {
-                    body["validity_period"] = ExpressionConverter.ConvertO(bodyvalidityPeriod);
+                    body["validity_period"] = ExpressionConverter.ConvertO(__workflow_bodyvalidityPeriod);
                     bodypropCount++;
                 }
 
-                if (bodyopenTicket != null)
+                if (__workflow_bodyopenTicket != null)
                 {
-                    body["open_ticket"] = ExpressionConverter.ConvertO(bodyopenTicket);
+                    body["open_ticket"] = ExpressionConverter.ConvertO(__workflow_bodyopenTicket);
                     bodypropCount++;
                 }
 
-                if (bodyemailResponses != null)
+                if (__workflow_bodyemailResponses != null)
                 {
-                    body["email_responses"] = ExpressionConverter.ConvertO(bodyemailResponses);
+                    body["email_responses"] = ExpressionConverter.ConvertO(__workflow_bodyemailResponses);
                     bodypropCount++;
                 }
 
-                if (bodypushResponses != null)
+                if (__workflow_bodypushResponses != null)
                 {
-                    body["push_responses"] = ExpressionConverter.ConvertO(bodypushResponses);
+                    body["push_responses"] = ExpressionConverter.ConvertO(__workflow_bodypushResponses);
                     bodypropCount++;
                 }
 
-                if (bodyuniqueIdentifier != null)
+                if (__workflow_bodyuniqueIdentifier != null)
                 {
-                    body["unique_identifier"] = ExpressionConverter.ConvertO(bodyuniqueIdentifier);
+                    body["unique_identifier"] = ExpressionConverter.ConvertO(__workflow_bodyuniqueIdentifier);
                     bodypropCount++;
                 }
 
-                if (bodycampaignName != null)
+                if (__workflow_bodycampaignName != null)
                 {
-                    body["campaign_name"] = ExpressionConverter.ConvertO(bodycampaignName);
+                    body["campaign_name"] = ExpressionConverter.ConvertO(__workflow_bodycampaignName);
                     bodypropCount++;
                 }
 
-                if (bodycustomParameter != null)
+                if (__workflow_bodycustomParameter != null)
                 {
-                    body["custom_parameter"] = ExpressionConverter.ConvertO(bodycustomParameter);
+                    body["custom_parameter"] = ExpressionConverter.ConvertO(__workflow_bodycustomParameter);
                     bodypropCount++;
                 }
 

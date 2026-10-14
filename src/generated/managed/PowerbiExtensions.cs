@@ -1,30 +1,23 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class PowerbiActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
-        [WorkflowExpressionFactory(nameof(__BuildGetScorecards))]
-        public IBodyWorkflowAction<ListedScorecards> GetScorecards([WorkflowExpression] Func<string> groupid)
+        public IBodyWorkflowAction<ListedScorecards> GetScorecards(Expression<Func<string>> groupid)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListedScorecards> __BuildGetScorecards(WorkflowExpression<string> groupid)
-        {
-            WorkflowExpression.Validate(groupid, nameof(groupid), required: true);
+            var __workflow_groupid = groupid == null ? null : WorkflowExpression.Compile(groupid);
+            WorkflowExpression.Validate(__workflow_groupid, nameof(groupid), required: true);
             return new DeferredBodyAction<ListedScorecards>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/myOrg/groups/{0}/internalScorecards", ExpressionConverter.ConvertWithUrlEncoding(groupid, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/myOrg/groups/{0}/internalScorecards", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupid, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["pbi_source"] = Convert.ToString("powerAutomate");
@@ -33,31 +26,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateScorecard))]
-        public IBodyWorkflowAction<CreatedScorecard> CreateScorecard([WorkflowExpression] Func<string> groupid, [WorkflowExpression] Func<string> scorecardname, [WorkflowExpression] Func<string> scorecarddescription = null)
+        public IBodyWorkflowAction<CreatedScorecard> CreateScorecard(Expression<Func<string>> groupid, Expression<Func<string>> scorecardname, Expression<Func<string>> scorecarddescription = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreatedScorecard> __BuildCreateScorecard(WorkflowExpression<string> groupid, WorkflowExpression<string> scorecardname, WorkflowExpression<string> scorecarddescription = null)
-        {
-            WorkflowExpression.Validate(groupid, nameof(groupid), required: true);
-            WorkflowExpression.Validate(scorecardname, nameof(scorecardname), required: true);
-            WorkflowExpression.Validate(scorecarddescription, nameof(scorecarddescription), required: false);
+            var __workflow_groupid = groupid == null ? null : WorkflowExpression.Compile(groupid);
+            WorkflowExpression.Validate(__workflow_groupid, nameof(groupid), required: true);
+            var __workflow_scorecardname = scorecardname == null ? null : WorkflowExpression.Compile(scorecardname);
+            WorkflowExpression.Validate(__workflow_scorecardname, nameof(scorecardname), required: true);
+            var __workflow_scorecarddescription = scorecarddescription == null ? null : WorkflowExpression.Compile(scorecarddescription);
+            WorkflowExpression.Validate(__workflow_scorecarddescription, nameof(scorecarddescription), required: false);
             return new DeferredBodyAction<CreatedScorecard>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/myOrg/groups/{0}/internalScorecards", ExpressionConverter.ConvertWithUrlEncoding(groupid, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/myOrg/groups/{0}/internalScorecards", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupid, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["pbi_source"] = Convert.ToString("powerAutomate");
                 var scorecard = new JObject();
                 var scorecardpropCount = 0;
                 scorecardpropCount++;
-                scorecard["name"] = ExpressionConverter.ConvertO(scorecardname);
-                if (scorecarddescription != null)
+                scorecard["name"] = ExpressionConverter.ConvertO(__workflow_scorecardname);
+                if (__workflow_scorecarddescription != null)
                 {
-                    scorecard["description"] = ExpressionConverter.ConvertO(scorecarddescription);
+                    scorecard["description"] = ExpressionConverter.ConvertO(__workflow_scorecarddescription);
                     scorecardpropCount++;
                 }
 
@@ -71,20 +60,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
-        [WorkflowExpressionFactory(nameof(__BuildGetMultipleGoals))]
-        public IBodyWorkflowAction<FetchedGoals> GetMultipleGoals([WorkflowExpression] Func<string> groupid, [WorkflowExpression] Func<string> scorecardId)
+        public IBodyWorkflowAction<FetchedGoals> GetMultipleGoals(Expression<Func<string>> groupid, Expression<Func<string>> scorecardId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FetchedGoals> __BuildGetMultipleGoals(WorkflowExpression<string> groupid, WorkflowExpression<string> scorecardId)
-        {
-            WorkflowExpression.Validate(groupid, nameof(groupid), required: true);
-            WorkflowExpression.Validate(scorecardId, nameof(scorecardId), required: true);
+            var __workflow_groupid = groupid == null ? null : WorkflowExpression.Compile(groupid);
+            WorkflowExpression.Validate(__workflow_groupid, nameof(groupid), required: true);
+            var __workflow_scorecardId = scorecardId == null ? null : WorkflowExpression.Compile(scorecardId);
+            WorkflowExpression.Validate(__workflow_scorecardId, nameof(scorecardId), required: true);
             return new DeferredBodyAction<FetchedGoals>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/myOrg/groups/{0}/internalScorecards({1})/goals", ExpressionConverter.ConvertWithUrlEncoding(groupid, 1), ExpressionConverter.ConvertWithUrlEncoding(scorecardId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/myOrg/groups/{0}/internalScorecards({1})/goals", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupid, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_scorecardId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["$expand"] = Convert.ToString("aggregations");
@@ -94,59 +78,63 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateGoal))]
-        public IBodyWorkflowAction<CreateGoalResponse> CreateGoal([WorkflowExpression] Func<string> groupid, [WorkflowExpression] Func<string> scorecardId, [WorkflowExpression] Func<string> goalname, [WorkflowExpression] Func<string> goalowner = null, [WorkflowExpression] Func<string> goalcurrentValue = null, [WorkflowExpression] Func<string> goaltargetValue = null, [WorkflowExpression] Func<goalstatusInput> goalstatus = null, [WorkflowExpression] Func<string> goalstartDate = null, [WorkflowExpression] Func<string> goalcompletionDate = null, [WorkflowExpression] Func<string> goalnote = null, [WorkflowExpression] Func<string> goalparentGoalId = null)
+        public IBodyWorkflowAction<CreateGoalResponse> CreateGoal(Expression<Func<string>> groupid, Expression<Func<string>> scorecardId, Expression<Func<string>> goalname, Expression<Func<string>> goalowner = null, Expression<Func<string>> goalcurrentValue = null, Expression<Func<string>> goaltargetValue = null, Expression<Func<goalstatusInput>> goalstatus = null, Expression<Func<string>> goalstartDate = null, Expression<Func<string>> goalcompletionDate = null, Expression<Func<string>> goalnote = null, Expression<Func<string>> goalparentGoalId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateGoalResponse> __BuildCreateGoal(WorkflowExpression<string> groupid, WorkflowExpression<string> scorecardId, WorkflowExpression<string> goalname, WorkflowExpression<string> goalowner = null, WorkflowExpression<string> goalcurrentValue = null, WorkflowExpression<string> goaltargetValue = null, WorkflowExpression<goalstatusInput> goalstatus = null, WorkflowExpression<string> goalstartDate = null, WorkflowExpression<string> goalcompletionDate = null, WorkflowExpression<string> goalnote = null, WorkflowExpression<string> goalparentGoalId = null)
-        {
-            WorkflowExpression.Validate(groupid, nameof(groupid), required: true);
-            WorkflowExpression.Validate(scorecardId, nameof(scorecardId), required: true);
-            WorkflowExpression.Validate(goalname, nameof(goalname), required: true);
-            WorkflowExpression.Validate(goalowner, nameof(goalowner), required: false);
-            WorkflowExpression.Validate(goalcurrentValue, nameof(goalcurrentValue), required: false);
-            WorkflowExpression.Validate(goaltargetValue, nameof(goaltargetValue), required: false);
-            WorkflowExpression.Validate(goalstatus, nameof(goalstatus), required: false);
-            WorkflowExpression.Validate(goalstartDate, nameof(goalstartDate), required: false);
-            WorkflowExpression.Validate(goalcompletionDate, nameof(goalcompletionDate), required: false);
-            WorkflowExpression.Validate(goalnote, nameof(goalnote), required: false);
-            WorkflowExpression.Validate(goalparentGoalId, nameof(goalparentGoalId), required: false);
+            var __workflow_groupid = groupid == null ? null : WorkflowExpression.Compile(groupid);
+            WorkflowExpression.Validate(__workflow_groupid, nameof(groupid), required: true);
+            var __workflow_scorecardId = scorecardId == null ? null : WorkflowExpression.Compile(scorecardId);
+            WorkflowExpression.Validate(__workflow_scorecardId, nameof(scorecardId), required: true);
+            var __workflow_goalname = goalname == null ? null : WorkflowExpression.Compile(goalname);
+            WorkflowExpression.Validate(__workflow_goalname, nameof(goalname), required: true);
+            var __workflow_goalowner = goalowner == null ? null : WorkflowExpression.Compile(goalowner);
+            WorkflowExpression.Validate(__workflow_goalowner, nameof(goalowner), required: false);
+            var __workflow_goalcurrentValue = goalcurrentValue == null ? null : WorkflowExpression.Compile(goalcurrentValue);
+            WorkflowExpression.Validate(__workflow_goalcurrentValue, nameof(goalcurrentValue), required: false);
+            var __workflow_goaltargetValue = goaltargetValue == null ? null : WorkflowExpression.Compile(goaltargetValue);
+            WorkflowExpression.Validate(__workflow_goaltargetValue, nameof(goaltargetValue), required: false);
+            var __workflow_goalstatus = goalstatus == null ? null : WorkflowExpression.Compile(goalstatus);
+            WorkflowExpression.Validate(__workflow_goalstatus, nameof(goalstatus), required: false);
+            var __workflow_goalstartDate = goalstartDate == null ? null : WorkflowExpression.Compile(goalstartDate);
+            WorkflowExpression.Validate(__workflow_goalstartDate, nameof(goalstartDate), required: false);
+            var __workflow_goalcompletionDate = goalcompletionDate == null ? null : WorkflowExpression.Compile(goalcompletionDate);
+            WorkflowExpression.Validate(__workflow_goalcompletionDate, nameof(goalcompletionDate), required: false);
+            var __workflow_goalnote = goalnote == null ? null : WorkflowExpression.Compile(goalnote);
+            WorkflowExpression.Validate(__workflow_goalnote, nameof(goalnote), required: false);
+            var __workflow_goalparentGoalId = goalparentGoalId == null ? null : WorkflowExpression.Compile(goalparentGoalId);
+            WorkflowExpression.Validate(__workflow_goalparentGoalId, nameof(goalparentGoalId), required: false);
             return new DeferredBodyAction<CreateGoalResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/myOrg/groups/{0}/internalScorecards({1})/goals", ExpressionConverter.ConvertWithUrlEncoding(groupid, 1), ExpressionConverter.ConvertWithUrlEncoding(scorecardId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/myOrg/groups/{0}/internalScorecards({1})/goals", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupid, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_scorecardId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["pbi_source"] = Convert.ToString("powerAutomate");
                 var goal = new JObject();
                 var goalpropCount = 0;
                 goalpropCount++;
-                goal["name"] = ExpressionConverter.ConvertO(goalname);
-                if (goalowner != null)
+                goal["name"] = ExpressionConverter.ConvertO(__workflow_goalname);
+                if (__workflow_goalowner != null)
                 {
-                    goal["owner"] = ExpressionConverter.ConvertO(goalowner);
+                    goal["owner"] = ExpressionConverter.ConvertO(__workflow_goalowner);
                     goalpropCount++;
                 }
 
-                if (goalcurrentValue != null)
+                if (__workflow_goalcurrentValue != null)
                 {
-                    goal["value"] = ExpressionConverter.ConvertO(goalcurrentValue);
+                    goal["value"] = ExpressionConverter.ConvertO(__workflow_goalcurrentValue);
                     goalpropCount++;
                 }
 
-                if (goaltargetValue != null)
+                if (__workflow_goaltargetValue != null)
                 {
-                    goal["target"] = ExpressionConverter.ConvertO(goaltargetValue);
+                    goal["target"] = ExpressionConverter.ConvertO(__workflow_goaltargetValue);
                     goalpropCount++;
                 }
 
-                if (goalstatus != null)
+                if (__workflow_goalstatus != null)
                 {
-                    if (goalstatus != null)
+                    if (__workflow_goalstatus != null)
                     {
-                        goal["status"] = ExpressionConverter.ConvertO(goalstatus);
+                        goal["status"] = ExpressionConverter.ConvertO(__workflow_goalstatus);
                         goalpropCount++;
                     }
 
@@ -158,27 +146,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
                     goalpropCount++;
                 }
 
-                if (goalstartDate != null)
+                if (__workflow_goalstartDate != null)
                 {
-                    goal["startDate"] = ExpressionConverter.ConvertO(goalstartDate);
+                    goal["startDate"] = ExpressionConverter.ConvertO(__workflow_goalstartDate);
                     goalpropCount++;
                 }
 
-                if (goalcompletionDate != null)
+                if (__workflow_goalcompletionDate != null)
                 {
-                    goal["completionDate"] = ExpressionConverter.ConvertO(goalcompletionDate);
+                    goal["completionDate"] = ExpressionConverter.ConvertO(__workflow_goalcompletionDate);
                     goalpropCount++;
                 }
 
-                if (goalnote != null)
+                if (__workflow_goalnote != null)
                 {
-                    goal["note"] = ExpressionConverter.ConvertO(goalnote);
+                    goal["note"] = ExpressionConverter.ConvertO(__workflow_goalnote);
                     goalpropCount++;
                 }
 
-                if (goalparentGoalId != null)
+                if (__workflow_goalparentGoalId != null)
                 {
-                    goal["parentId"] = ExpressionConverter.ConvertO(goalparentGoalId);
+                    goal["parentId"] = ExpressionConverter.ConvertO(__workflow_goalparentGoalId);
                     goalpropCount++;
                 }
 
@@ -192,21 +180,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
-        [WorkflowExpressionFactory(nameof(__BuildGetGoal))]
-        public IBodyWorkflowAction<FetchedGoal> GetGoal([WorkflowExpression] Func<string> groupid, [WorkflowExpression] Func<string> scorecardId, [WorkflowExpression] Func<string> goalId)
+        public IBodyWorkflowAction<FetchedGoal> GetGoal(Expression<Func<string>> groupid, Expression<Func<string>> scorecardId, Expression<Func<string>> goalId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FetchedGoal> __BuildGetGoal(WorkflowExpression<string> groupid, WorkflowExpression<string> scorecardId, WorkflowExpression<string> goalId)
-        {
-            WorkflowExpression.Validate(groupid, nameof(groupid), required: true);
-            WorkflowExpression.Validate(scorecardId, nameof(scorecardId), required: true);
-            WorkflowExpression.Validate(goalId, nameof(goalId), required: true);
+            var __workflow_groupid = groupid == null ? null : WorkflowExpression.Compile(groupid);
+            WorkflowExpression.Validate(__workflow_groupid, nameof(groupid), required: true);
+            var __workflow_scorecardId = scorecardId == null ? null : WorkflowExpression.Compile(scorecardId);
+            WorkflowExpression.Validate(__workflow_scorecardId, nameof(scorecardId), required: true);
+            var __workflow_goalId = goalId == null ? null : WorkflowExpression.Compile(goalId);
+            WorkflowExpression.Validate(__workflow_goalId, nameof(goalId), required: true);
             return new DeferredBodyAction<FetchedGoal>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/myOrg/groups/{0}/internalScorecards({1})/goals({2})", ExpressionConverter.ConvertWithUrlEncoding(groupid, 1), ExpressionConverter.ConvertWithUrlEncoding(scorecardId, 1), ExpressionConverter.ConvertWithUrlEncoding(goalId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/myOrg/groups/{0}/internalScorecards({1})/goals({2})", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupid, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_scorecardId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_goalId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["pbi_source"] = Convert.ToString("powerAutomate");
@@ -216,62 +200,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateGoal))]
-        public IWorkflowAction UpdateGoal([WorkflowExpression] Func<string> groupid, [WorkflowExpression] Func<string> scorecardId, [WorkflowExpression] Func<string> goalId, [WorkflowExpression] Func<string> goalname = null, [WorkflowExpression] Func<string> goalowner = null, [WorkflowExpression] Func<double> goalcurrentValue = null, [WorkflowExpression] Func<double> goaltargetValue = null, [WorkflowExpression] Func<goalstatusInput> goalstatus = null, [WorkflowExpression] Func<string> goalstartDate = null, [WorkflowExpression] Func<string> goalcompletionDate = null)
+        public IWorkflowAction UpdateGoal(Expression<Func<string>> groupid, Expression<Func<string>> scorecardId, Expression<Func<string>> goalId, Expression<Func<string>> goalname = null, Expression<Func<string>> goalowner = null, Expression<Func<double>> goalcurrentValue = null, Expression<Func<double>> goaltargetValue = null, Expression<Func<goalstatusInput>> goalstatus = null, Expression<Func<string>> goalstartDate = null, Expression<Func<string>> goalcompletionDate = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildUpdateGoal(WorkflowExpression<string> groupid, WorkflowExpression<string> scorecardId, WorkflowExpression<string> goalId, WorkflowExpression<string> goalname = null, WorkflowExpression<string> goalowner = null, WorkflowExpression<double> goalcurrentValue = null, WorkflowExpression<double> goaltargetValue = null, WorkflowExpression<goalstatusInput> goalstatus = null, WorkflowExpression<string> goalstartDate = null, WorkflowExpression<string> goalcompletionDate = null)
-        {
-            WorkflowExpression.Validate(groupid, nameof(groupid), required: true);
-            WorkflowExpression.Validate(scorecardId, nameof(scorecardId), required: true);
-            WorkflowExpression.Validate(goalId, nameof(goalId), required: true);
-            WorkflowExpression.Validate(goalname, nameof(goalname), required: false);
-            WorkflowExpression.Validate(goalowner, nameof(goalowner), required: false);
-            WorkflowExpression.Validate(goalcurrentValue, nameof(goalcurrentValue), required: false);
-            WorkflowExpression.Validate(goaltargetValue, nameof(goaltargetValue), required: false);
-            WorkflowExpression.Validate(goalstatus, nameof(goalstatus), required: false);
-            WorkflowExpression.Validate(goalstartDate, nameof(goalstartDate), required: false);
-            WorkflowExpression.Validate(goalcompletionDate, nameof(goalcompletionDate), required: false);
+            var __workflow_groupid = groupid == null ? null : WorkflowExpression.Compile(groupid);
+            WorkflowExpression.Validate(__workflow_groupid, nameof(groupid), required: true);
+            var __workflow_scorecardId = scorecardId == null ? null : WorkflowExpression.Compile(scorecardId);
+            WorkflowExpression.Validate(__workflow_scorecardId, nameof(scorecardId), required: true);
+            var __workflow_goalId = goalId == null ? null : WorkflowExpression.Compile(goalId);
+            WorkflowExpression.Validate(__workflow_goalId, nameof(goalId), required: true);
+            var __workflow_goalname = goalname == null ? null : WorkflowExpression.Compile(goalname);
+            WorkflowExpression.Validate(__workflow_goalname, nameof(goalname), required: false);
+            var __workflow_goalowner = goalowner == null ? null : WorkflowExpression.Compile(goalowner);
+            WorkflowExpression.Validate(__workflow_goalowner, nameof(goalowner), required: false);
+            var __workflow_goalcurrentValue = goalcurrentValue == null ? null : WorkflowExpression.Compile(goalcurrentValue);
+            WorkflowExpression.Validate(__workflow_goalcurrentValue, nameof(goalcurrentValue), required: false);
+            var __workflow_goaltargetValue = goaltargetValue == null ? null : WorkflowExpression.Compile(goaltargetValue);
+            WorkflowExpression.Validate(__workflow_goaltargetValue, nameof(goaltargetValue), required: false);
+            var __workflow_goalstatus = goalstatus == null ? null : WorkflowExpression.Compile(goalstatus);
+            WorkflowExpression.Validate(__workflow_goalstatus, nameof(goalstatus), required: false);
+            var __workflow_goalstartDate = goalstartDate == null ? null : WorkflowExpression.Compile(goalstartDate);
+            WorkflowExpression.Validate(__workflow_goalstartDate, nameof(goalstartDate), required: false);
+            var __workflow_goalcompletionDate = goalcompletionDate == null ? null : WorkflowExpression.Compile(goalcompletionDate);
+            WorkflowExpression.Validate(__workflow_goalcompletionDate, nameof(goalcompletionDate), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/myOrg/groups/{0}/internalScorecards({1})/goals({2})", ExpressionConverter.ConvertWithUrlEncoding(groupid, 1), ExpressionConverter.ConvertWithUrlEncoding(scorecardId, 1), ExpressionConverter.ConvertWithUrlEncoding(goalId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/myOrg/groups/{0}/internalScorecards({1})/goals({2})", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupid, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_scorecardId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_goalId, 1));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["pbi_source"] = Convert.ToString("powerAutomate");
                 var goal = new JObject();
                 var goalpropCount = 0;
-                if (goalname != null)
+                if (__workflow_goalname != null)
                 {
-                    goal["name"] = ExpressionConverter.ConvertO(goalname);
+                    goal["name"] = ExpressionConverter.ConvertO(__workflow_goalname);
                     goalpropCount++;
                 }
 
-                if (goalowner != null)
+                if (__workflow_goalowner != null)
                 {
-                    goal["owner"] = ExpressionConverter.ConvertO(goalowner);
+                    goal["owner"] = ExpressionConverter.ConvertO(__workflow_goalowner);
                     goalpropCount++;
                 }
 
-                if (goalcurrentValue != null)
+                if (__workflow_goalcurrentValue != null)
                 {
-                    goal["value"] = ExpressionConverter.ConvertO(goalcurrentValue);
+                    goal["value"] = ExpressionConverter.ConvertO(__workflow_goalcurrentValue);
                     goalpropCount++;
                 }
 
-                if (goaltargetValue != null)
+                if (__workflow_goaltargetValue != null)
                 {
-                    goal["target"] = ExpressionConverter.ConvertO(goaltargetValue);
+                    goal["target"] = ExpressionConverter.ConvertO(__workflow_goaltargetValue);
                     goalpropCount++;
                 }
 
-                if (goalstatus != null)
+                if (__workflow_goalstatus != null)
                 {
-                    if (goalstatus != null)
+                    if (__workflow_goalstatus != null)
                     {
-                        goal["status"] = ExpressionConverter.ConvertO(goalstatus);
+                        goal["status"] = ExpressionConverter.ConvertO(__workflow_goalstatus);
                         goalpropCount++;
                     }
 
@@ -283,15 +270,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
                     goalpropCount++;
                 }
 
-                if (goalstartDate != null)
+                if (__workflow_goalstartDate != null)
                 {
-                    goal["startDate"] = ExpressionConverter.ConvertO(goalstartDate);
+                    goal["startDate"] = ExpressionConverter.ConvertO(__workflow_goalstartDate);
                     goalpropCount++;
                 }
 
-                if (goalcompletionDate != null)
+                if (__workflow_goalcompletionDate != null)
                 {
-                    goal["completionDate"] = ExpressionConverter.ConvertO(goalcompletionDate);
+                    goal["completionDate"] = ExpressionConverter.ConvertO(__workflow_goalcompletionDate);
                     goalpropCount++;
                 }
 
@@ -305,37 +292,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
-        [WorkflowExpressionFactory(nameof(__BuildExecuteDatasetQuery))]
-        public IBodyWorkflowAction<QueryExecutionResults> ExecuteDatasetQuery([WorkflowExpression] Func<string> groupid, [WorkflowExpression] Func<string> datasetid, [WorkflowExpression] Func<string> specificationqueryText, [WorkflowExpression] Func<bool> specificationserializerSettingsnullsIncluded = null, [WorkflowExpression] Func<string> specificationimpersonateUser = null)
+        public IBodyWorkflowAction<QueryExecutionResults> ExecuteDatasetQuery(Expression<Func<string>> groupid, Expression<Func<string>> datasetid, Expression<Func<string>> specificationqueryText, Expression<Func<bool>> specificationserializerSettingsnullsIncluded = null, Expression<Func<string>> specificationimpersonateUser = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<QueryExecutionResults> __BuildExecuteDatasetQuery(WorkflowExpression<string> groupid, WorkflowExpression<string> datasetid, WorkflowExpression<string> specificationqueryText, WorkflowExpression<bool> specificationserializerSettingsnullsIncluded = null, WorkflowExpression<string> specificationimpersonateUser = null)
-        {
-            WorkflowExpression.Validate(groupid, nameof(groupid), required: true);
-            WorkflowExpression.Validate(datasetid, nameof(datasetid), required: true);
-            WorkflowExpression.Validate(specificationqueryText, nameof(specificationqueryText), required: true);
-            WorkflowExpression.Validate(specificationserializerSettingsnullsIncluded, nameof(specificationserializerSettingsnullsIncluded), required: false);
-            WorkflowExpression.Validate(specificationimpersonateUser, nameof(specificationimpersonateUser), required: false);
+            var __workflow_groupid = groupid == null ? null : WorkflowExpression.Compile(groupid);
+            WorkflowExpression.Validate(__workflow_groupid, nameof(groupid), required: true);
+            var __workflow_datasetid = datasetid == null ? null : WorkflowExpression.Compile(datasetid);
+            WorkflowExpression.Validate(__workflow_datasetid, nameof(datasetid), required: true);
+            var __workflow_specificationqueryText = specificationqueryText == null ? null : WorkflowExpression.Compile(specificationqueryText);
+            WorkflowExpression.Validate(__workflow_specificationqueryText, nameof(specificationqueryText), required: true);
+            var __workflow_specificationserializerSettingsnullsIncluded = specificationserializerSettingsnullsIncluded == null ? null : WorkflowExpression.Compile(specificationserializerSettingsnullsIncluded);
+            WorkflowExpression.Validate(__workflow_specificationserializerSettingsnullsIncluded, nameof(specificationserializerSettingsnullsIncluded), required: false);
+            var __workflow_specificationimpersonateUser = specificationimpersonateUser == null ? null : WorkflowExpression.Compile(specificationimpersonateUser);
+            WorkflowExpression.Validate(__workflow_specificationimpersonateUser, nameof(specificationimpersonateUser), required: false);
             return new DeferredBodyAction<QueryExecutionResults>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/myorg/groups/{0}/datasets/{1}/executeQueries", ExpressionConverter.ConvertWithUrlEncoding(groupid, 1), ExpressionConverter.ConvertWithUrlEncoding(datasetid, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/myorg/groups/{0}/datasets/{1}/executeQueries", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupid, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_datasetid, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["pbi_source"] = Convert.ToString("powerAutomate");
                 var specification = new JObject();
                 var specificationpropCount = 0;
                 specificationpropCount++;
-                specification["query"] = ExpressionConverter.ConvertO(specificationqueryText);
+                specification["query"] = ExpressionConverter.ConvertO(__workflow_specificationqueryText);
                 var serializerSettingsObject = new JObject();
                 var serializerSettingsObjectpropCount = 0;
-                if (specificationserializerSettingsnullsIncluded != null)
+                if (__workflow_specificationserializerSettingsnullsIncluded != null)
                 {
-                    if (specificationserializerSettingsnullsIncluded != null)
+                    if (__workflow_specificationserializerSettingsnullsIncluded != null)
                     {
-                        serializerSettingsObject["includeNulls"] = ExpressionConverter.ConvertO(specificationserializerSettingsnullsIncluded);
+                        serializerSettingsObject["includeNulls"] = ExpressionConverter.ConvertO(__workflow_specificationserializerSettingsnullsIncluded);
                         serializerSettingsObjectpropCount++;
                     }
 
@@ -353,9 +338,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
                     specificationpropCount++;
                 }
 
-                if (specificationimpersonateUser != null)
+                if (__workflow_specificationimpersonateUser != null)
                 {
-                    specification["impersonatedUserName"] = ExpressionConverter.ConvertO(specificationimpersonateUser);
+                    specification["impersonatedUserName"] = ExpressionConverter.ConvertO(__workflow_specificationimpersonateUser);
                     specificationpropCount++;
                 }
 
@@ -369,20 +354,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
-        [WorkflowExpressionFactory(nameof(__BuildExecuteDatasetQueriesJson))]
-        public IBodyWorkflowAction<JToken> ExecuteDatasetQueriesJson([WorkflowExpression] Func<string> groupid, [WorkflowExpression] Func<string> datasetid)
+        public IBodyWorkflowAction<JToken> ExecuteDatasetQueriesJson(Expression<Func<string>> groupid, Expression<Func<string>> datasetid)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildExecuteDatasetQueriesJson(WorkflowExpression<string> groupid, WorkflowExpression<string> datasetid)
-        {
-            WorkflowExpression.Validate(groupid, nameof(groupid), required: true);
-            WorkflowExpression.Validate(datasetid, nameof(datasetid), required: true);
+            var __workflow_groupid = groupid == null ? null : WorkflowExpression.Compile(groupid);
+            WorkflowExpression.Validate(__workflow_groupid, nameof(groupid), required: true);
+            var __workflow_datasetid = datasetid == null ? null : WorkflowExpression.Compile(datasetid);
+            WorkflowExpression.Validate(__workflow_datasetid, nameof(datasetid), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/internalFlowActionOverloadAsJson/v1.0/myorg/groups/{0}/datasets/{1}/executeQueries", ExpressionConverter.ConvertWithUrlEncoding(groupid, 1), ExpressionConverter.ConvertWithUrlEncoding(datasetid, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/internalFlowActionOverloadAsJson/v1.0/myorg/groups/{0}/datasets/{1}/executeQueries", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupid, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_datasetid, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["pbi_source"] = Convert.ToString("powerAutomate");
@@ -398,94 +378,89 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
-        [WorkflowExpressionFactory(nameof(__BuildAddRows))]
-        public IWorkflowAction AddRows([WorkflowExpression] Func<string> groupid, [WorkflowExpression] Func<string> datasetid, [WorkflowExpression] Func<string> tablename, [WorkflowExpression] Func<object> payload = null)
+        public IWorkflowAction AddRows(Expression<Func<string>> groupid, Expression<Func<string>> datasetid, Expression<Func<string>> tablename, Expression<Func<object>> payload = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildAddRows(WorkflowExpression<string> groupid, WorkflowExpression<string> datasetid, WorkflowExpression<string> tablename, WorkflowExpression<object> payload = null)
-        {
-            WorkflowExpression.Validate(groupid, nameof(groupid), required: true);
-            WorkflowExpression.Validate(datasetid, nameof(datasetid), required: true);
-            WorkflowExpression.Validate(tablename, nameof(tablename), required: true);
-            WorkflowExpression.Validate(payload, nameof(payload), required: false);
+            var __workflow_groupid = groupid == null ? null : WorkflowExpression.Compile(groupid);
+            WorkflowExpression.Validate(__workflow_groupid, nameof(groupid), required: true);
+            var __workflow_datasetid = datasetid == null ? null : WorkflowExpression.Compile(datasetid);
+            WorkflowExpression.Validate(__workflow_datasetid, nameof(datasetid), required: true);
+            var __workflow_tablename = tablename == null ? null : WorkflowExpression.Compile(tablename);
+            WorkflowExpression.Validate(__workflow_tablename, nameof(tablename), required: true);
+            var __workflow_payload = payload == null ? null : WorkflowExpression.Compile(payload);
+            WorkflowExpression.Validate(__workflow_payload, nameof(payload), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/myorg/groups/{0}/datasets/{1}/tables/{2}/rows", ExpressionConverter.ConvertWithUrlEncoding(groupid, 1), ExpressionConverter.ConvertWithUrlEncoding(datasetid, 1), ExpressionConverter.ConvertWithUrlEncoding(tablename, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/myorg/groups/{0}/datasets/{1}/tables/{2}/rows", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupid, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_datasetid, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_tablename, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["pbi_source"] = Convert.ToString("powerAutomate");
-                callPayload.Body = ExpressionConverter.ConvertO(payload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_payload);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
-        [WorkflowExpressionFactory(nameof(__BuildGoalValueCheckinNote))]
-        public IWorkflowAction GoalValueCheckinNote([WorkflowExpression] Func<string> groupid, [WorkflowExpression] Func<string> scorecardId, [WorkflowExpression] Func<string> goalId, [WorkflowExpression] Func<string> goalCheckin, [WorkflowExpression] Func<string> note = null)
+        public IWorkflowAction GoalValueCheckinNote(Expression<Func<string>> groupid, Expression<Func<string>> scorecardId, Expression<Func<string>> goalId, Expression<Func<string>> goalCheckin, Expression<Func<string>> note = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGoalValueCheckinNote(WorkflowExpression<string> groupid, WorkflowExpression<string> scorecardId, WorkflowExpression<string> goalId, WorkflowExpression<string> goalCheckin, WorkflowExpression<string> note = null)
-        {
-            WorkflowExpression.Validate(groupid, nameof(groupid), required: true);
-            WorkflowExpression.Validate(scorecardId, nameof(scorecardId), required: true);
-            WorkflowExpression.Validate(goalId, nameof(goalId), required: true);
-            WorkflowExpression.Validate(goalCheckin, nameof(goalCheckin), required: true);
-            WorkflowExpression.Validate(note, nameof(note), required: false);
+            var __workflow_groupid = groupid == null ? null : WorkflowExpression.Compile(groupid);
+            WorkflowExpression.Validate(__workflow_groupid, nameof(groupid), required: true);
+            var __workflow_scorecardId = scorecardId == null ? null : WorkflowExpression.Compile(scorecardId);
+            WorkflowExpression.Validate(__workflow_scorecardId, nameof(scorecardId), required: true);
+            var __workflow_goalId = goalId == null ? null : WorkflowExpression.Compile(goalId);
+            WorkflowExpression.Validate(__workflow_goalId, nameof(goalId), required: true);
+            var __workflow_goalCheckin = goalCheckin == null ? null : WorkflowExpression.Compile(goalCheckin);
+            WorkflowExpression.Validate(__workflow_goalCheckin, nameof(goalCheckin), required: true);
+            var __workflow_note = note == null ? null : WorkflowExpression.Compile(note);
+            WorkflowExpression.Validate(__workflow_note, nameof(note), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/myorg/groups/{0}/internalScorecards({1})/goals({2})/goalValues({3})/notes", ExpressionConverter.ConvertWithUrlEncoding(groupid, 1), ExpressionConverter.ConvertWithUrlEncoding(scorecardId, 1), ExpressionConverter.ConvertWithUrlEncoding(goalId, 1), ExpressionConverter.ConvertWithUrlEncoding(goalCheckin, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/myorg/groups/{0}/internalScorecards({1})/goals({2})/goalValues({3})/notes", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupid, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_scorecardId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_goalId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_goalCheckin, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["pbi_source"] = Convert.ToString("powerAutomate");
-                callPayload.Body = ExpressionConverter.ConvertO(note);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_note);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
-        [WorkflowExpressionFactory(nameof(__BuildGoalValueCheckin))]
-        public IWorkflowAction GoalValueCheckin([WorkflowExpression] Func<string> groupid, [WorkflowExpression] Func<string> scorecardId, [WorkflowExpression] Func<string> goalId, [WorkflowExpression] Func<string> checkindate, [WorkflowExpression] Func<double> checkinvalue = null, [WorkflowExpression] Func<checkinstatusInput> checkinstatus = null, [WorkflowExpression] Func<string> checkinnote = null)
+        public IWorkflowAction GoalValueCheckin(Expression<Func<string>> groupid, Expression<Func<string>> scorecardId, Expression<Func<string>> goalId, Expression<Func<string>> checkindate, Expression<Func<double>> checkinvalue = null, Expression<Func<checkinstatusInput>> checkinstatus = null, Expression<Func<string>> checkinnote = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGoalValueCheckin(WorkflowExpression<string> groupid, WorkflowExpression<string> scorecardId, WorkflowExpression<string> goalId, WorkflowExpression<string> checkindate, WorkflowExpression<double> checkinvalue = null, WorkflowExpression<checkinstatusInput> checkinstatus = null, WorkflowExpression<string> checkinnote = null)
-        {
-            WorkflowExpression.Validate(groupid, nameof(groupid), required: true);
-            WorkflowExpression.Validate(scorecardId, nameof(scorecardId), required: true);
-            WorkflowExpression.Validate(goalId, nameof(goalId), required: true);
-            WorkflowExpression.Validate(checkindate, nameof(checkindate), required: true);
-            WorkflowExpression.Validate(checkinvalue, nameof(checkinvalue), required: false);
-            WorkflowExpression.Validate(checkinstatus, nameof(checkinstatus), required: false);
-            WorkflowExpression.Validate(checkinnote, nameof(checkinnote), required: false);
+            var __workflow_groupid = groupid == null ? null : WorkflowExpression.Compile(groupid);
+            WorkflowExpression.Validate(__workflow_groupid, nameof(groupid), required: true);
+            var __workflow_scorecardId = scorecardId == null ? null : WorkflowExpression.Compile(scorecardId);
+            WorkflowExpression.Validate(__workflow_scorecardId, nameof(scorecardId), required: true);
+            var __workflow_goalId = goalId == null ? null : WorkflowExpression.Compile(goalId);
+            WorkflowExpression.Validate(__workflow_goalId, nameof(goalId), required: true);
+            var __workflow_checkindate = checkindate == null ? null : WorkflowExpression.Compile(checkindate);
+            WorkflowExpression.Validate(__workflow_checkindate, nameof(checkindate), required: true);
+            var __workflow_checkinvalue = checkinvalue == null ? null : WorkflowExpression.Compile(checkinvalue);
+            WorkflowExpression.Validate(__workflow_checkinvalue, nameof(checkinvalue), required: false);
+            var __workflow_checkinstatus = checkinstatus == null ? null : WorkflowExpression.Compile(checkinstatus);
+            WorkflowExpression.Validate(__workflow_checkinstatus, nameof(checkinstatus), required: false);
+            var __workflow_checkinnote = checkinnote == null ? null : WorkflowExpression.Compile(checkinnote);
+            WorkflowExpression.Validate(__workflow_checkinnote, nameof(checkinnote), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/myorg/groups/{0}/internalScorecards({1})/goals({2})/goalValues", ExpressionConverter.ConvertWithUrlEncoding(groupid, 1), ExpressionConverter.ConvertWithUrlEncoding(scorecardId, 1), ExpressionConverter.ConvertWithUrlEncoding(goalId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/myorg/groups/{0}/internalScorecards({1})/goals({2})/goalValues", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupid, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_scorecardId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_goalId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["pbi_source"] = Convert.ToString("powerAutomate");
                 var checkin = new JObject();
                 var checkinpropCount = 0;
                 checkinpropCount++;
-                checkin["timestamp"] = ExpressionConverter.ConvertO(checkindate);
-                if (checkinvalue != null)
+                checkin["timestamp"] = ExpressionConverter.ConvertO(__workflow_checkindate);
+                if (__workflow_checkinvalue != null)
                 {
-                    checkin["value"] = ExpressionConverter.ConvertO(checkinvalue);
+                    checkin["value"] = ExpressionConverter.ConvertO(__workflow_checkinvalue);
                     checkinpropCount++;
                 }
 
-                if (checkinstatus != null)
+                if (__workflow_checkinstatus != null)
                 {
-                    if (checkinstatus != null)
+                    if (__workflow_checkinstatus != null)
                     {
-                        checkin["status"] = ExpressionConverter.ConvertO(checkinstatus);
+                        checkin["status"] = ExpressionConverter.ConvertO(__workflow_checkinstatus);
                         checkinpropCount++;
                     }
 
@@ -497,9 +472,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
                     checkinpropCount++;
                 }
 
-                if (checkinnote != null)
+                if (__workflow_checkinnote != null)
                 {
-                    checkin["note"] = ExpressionConverter.ConvertO(checkinnote);
+                    checkin["note"] = ExpressionConverter.ConvertO(__workflow_checkinnote);
                     checkinpropCount++;
                 }
 
@@ -513,21 +488,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
-        [WorkflowExpressionFactory(nameof(__BuildGetGoalCheckins))]
-        public IBodyWorkflowAction<GetGoalCheckinsResponse> GetGoalCheckins([WorkflowExpression] Func<string> groupid, [WorkflowExpression] Func<string> scorecardId, [WorkflowExpression] Func<string> goalId)
+        public IBodyWorkflowAction<GetGoalCheckinsResponse> GetGoalCheckins(Expression<Func<string>> groupid, Expression<Func<string>> scorecardId, Expression<Func<string>> goalId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetGoalCheckinsResponse> __BuildGetGoalCheckins(WorkflowExpression<string> groupid, WorkflowExpression<string> scorecardId, WorkflowExpression<string> goalId)
-        {
-            WorkflowExpression.Validate(groupid, nameof(groupid), required: true);
-            WorkflowExpression.Validate(scorecardId, nameof(scorecardId), required: true);
-            WorkflowExpression.Validate(goalId, nameof(goalId), required: true);
+            var __workflow_groupid = groupid == null ? null : WorkflowExpression.Compile(groupid);
+            WorkflowExpression.Validate(__workflow_groupid, nameof(groupid), required: true);
+            var __workflow_scorecardId = scorecardId == null ? null : WorkflowExpression.Compile(scorecardId);
+            WorkflowExpression.Validate(__workflow_scorecardId, nameof(scorecardId), required: true);
+            var __workflow_goalId = goalId == null ? null : WorkflowExpression.Compile(goalId);
+            WorkflowExpression.Validate(__workflow_goalId, nameof(goalId), required: true);
             return new DeferredBodyAction<GetGoalCheckinsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/myorg/groups/{0}/internalScorecards({1})/goals({2})/goalValues", ExpressionConverter.ConvertWithUrlEncoding(groupid, 1), ExpressionConverter.ConvertWithUrlEncoding(scorecardId, 1), ExpressionConverter.ConvertWithUrlEncoding(goalId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/myorg/groups/{0}/internalScorecards({1})/goals({2})/goalValues", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupid, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_scorecardId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_goalId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["pbi_source"] = Convert.ToString("powerAutomate");
@@ -537,40 +508,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateGoalCheckin))]
-        public IWorkflowAction UpdateGoalCheckin([WorkflowExpression] Func<string> groupid, [WorkflowExpression] Func<string> scorecardId, [WorkflowExpression] Func<string> goalId, [WorkflowExpression] Func<string> goalCheckin, [WorkflowExpression] Func<double> checkinvalue = null, [WorkflowExpression] Func<checkinstatusInput> checkinstatus = null)
+        public IWorkflowAction UpdateGoalCheckin(Expression<Func<string>> groupid, Expression<Func<string>> scorecardId, Expression<Func<string>> goalId, Expression<Func<string>> goalCheckin, Expression<Func<double>> checkinvalue = null, Expression<Func<checkinstatusInput>> checkinstatus = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildUpdateGoalCheckin(WorkflowExpression<string> groupid, WorkflowExpression<string> scorecardId, WorkflowExpression<string> goalId, WorkflowExpression<string> goalCheckin, WorkflowExpression<double> checkinvalue = null, WorkflowExpression<checkinstatusInput> checkinstatus = null)
-        {
-            WorkflowExpression.Validate(groupid, nameof(groupid), required: true);
-            WorkflowExpression.Validate(scorecardId, nameof(scorecardId), required: true);
-            WorkflowExpression.Validate(goalId, nameof(goalId), required: true);
-            WorkflowExpression.Validate(goalCheckin, nameof(goalCheckin), required: true);
-            WorkflowExpression.Validate(checkinvalue, nameof(checkinvalue), required: false);
-            WorkflowExpression.Validate(checkinstatus, nameof(checkinstatus), required: false);
+            var __workflow_groupid = groupid == null ? null : WorkflowExpression.Compile(groupid);
+            WorkflowExpression.Validate(__workflow_groupid, nameof(groupid), required: true);
+            var __workflow_scorecardId = scorecardId == null ? null : WorkflowExpression.Compile(scorecardId);
+            WorkflowExpression.Validate(__workflow_scorecardId, nameof(scorecardId), required: true);
+            var __workflow_goalId = goalId == null ? null : WorkflowExpression.Compile(goalId);
+            WorkflowExpression.Validate(__workflow_goalId, nameof(goalId), required: true);
+            var __workflow_goalCheckin = goalCheckin == null ? null : WorkflowExpression.Compile(goalCheckin);
+            WorkflowExpression.Validate(__workflow_goalCheckin, nameof(goalCheckin), required: true);
+            var __workflow_checkinvalue = checkinvalue == null ? null : WorkflowExpression.Compile(checkinvalue);
+            WorkflowExpression.Validate(__workflow_checkinvalue, nameof(checkinvalue), required: false);
+            var __workflow_checkinstatus = checkinstatus == null ? null : WorkflowExpression.Compile(checkinstatus);
+            WorkflowExpression.Validate(__workflow_checkinstatus, nameof(checkinstatus), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/myorg/groups/{0}/internalScorecards({1})/goals({2})/goalValues({3})", ExpressionConverter.ConvertWithUrlEncoding(groupid, 1), ExpressionConverter.ConvertWithUrlEncoding(scorecardId, 1), ExpressionConverter.ConvertWithUrlEncoding(goalId, 1), ExpressionConverter.ConvertWithUrlEncoding(goalCheckin, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/myorg/groups/{0}/internalScorecards({1})/goals({2})/goalValues({3})", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupid, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_scorecardId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_goalId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_goalCheckin, 1));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["pbi_source"] = Convert.ToString("powerAutomate");
                 var checkin = new JObject();
                 var checkinpropCount = 0;
-                if (checkinvalue != null)
+                if (__workflow_checkinvalue != null)
                 {
-                    checkin["value"] = ExpressionConverter.ConvertO(checkinvalue);
+                    checkin["value"] = ExpressionConverter.ConvertO(__workflow_checkinvalue);
                     checkinpropCount++;
                 }
 
-                if (checkinstatus != null)
+                if (__workflow_checkinstatus != null)
                 {
-                    if (checkinstatus != null)
+                    if (__workflow_checkinstatus != null)
                     {
-                        checkin["status"] = ExpressionConverter.ConvertO(checkinstatus);
+                        checkin["status"] = ExpressionConverter.ConvertO(__workflow_checkinstatus);
                         checkinpropCount++;
                     }
 
@@ -592,22 +562,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
-        [WorkflowExpressionFactory(nameof(__BuildGetGoalCheckin))]
-        public IBodyWorkflowAction<GetGoalCheckinResponse> GetGoalCheckin([WorkflowExpression] Func<string> groupid, [WorkflowExpression] Func<string> scorecardId, [WorkflowExpression] Func<string> goalId, [WorkflowExpression] Func<string> goalCheckin)
+        public IBodyWorkflowAction<GetGoalCheckinResponse> GetGoalCheckin(Expression<Func<string>> groupid, Expression<Func<string>> scorecardId, Expression<Func<string>> goalId, Expression<Func<string>> goalCheckin)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetGoalCheckinResponse> __BuildGetGoalCheckin(WorkflowExpression<string> groupid, WorkflowExpression<string> scorecardId, WorkflowExpression<string> goalId, WorkflowExpression<string> goalCheckin)
-        {
-            WorkflowExpression.Validate(groupid, nameof(groupid), required: true);
-            WorkflowExpression.Validate(scorecardId, nameof(scorecardId), required: true);
-            WorkflowExpression.Validate(goalId, nameof(goalId), required: true);
-            WorkflowExpression.Validate(goalCheckin, nameof(goalCheckin), required: true);
+            var __workflow_groupid = groupid == null ? null : WorkflowExpression.Compile(groupid);
+            WorkflowExpression.Validate(__workflow_groupid, nameof(groupid), required: true);
+            var __workflow_scorecardId = scorecardId == null ? null : WorkflowExpression.Compile(scorecardId);
+            WorkflowExpression.Validate(__workflow_scorecardId, nameof(scorecardId), required: true);
+            var __workflow_goalId = goalId == null ? null : WorkflowExpression.Compile(goalId);
+            WorkflowExpression.Validate(__workflow_goalId, nameof(goalId), required: true);
+            var __workflow_goalCheckin = goalCheckin == null ? null : WorkflowExpression.Compile(goalCheckin);
+            WorkflowExpression.Validate(__workflow_goalCheckin, nameof(goalCheckin), required: true);
             return new DeferredBodyAction<GetGoalCheckinResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/myorg/groups/{0}/internalScorecards({1})/goals({2})/goalValues({3})", ExpressionConverter.ConvertWithUrlEncoding(groupid, 1), ExpressionConverter.ConvertWithUrlEncoding(scorecardId, 1), ExpressionConverter.ConvertWithUrlEncoding(goalId, 1), ExpressionConverter.ConvertWithUrlEncoding(goalCheckin, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/myorg/groups/{0}/internalScorecards({1})/goals({2})/goalValues({3})", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupid, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_scorecardId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_goalId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_goalCheckin, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["pbi_source"] = Convert.ToString("powerAutomate");
@@ -617,20 +584,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
-        [WorkflowExpressionFactory(nameof(__BuildRefreshDataset))]
-        public IWorkflowAction RefreshDataset([WorkflowExpression] Func<string> groupid, [WorkflowExpression] Func<string> datasetid)
+        public IWorkflowAction RefreshDataset(Expression<Func<string>> groupid, Expression<Func<string>> datasetid)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildRefreshDataset(WorkflowExpression<string> groupid, WorkflowExpression<string> datasetid)
-        {
-            WorkflowExpression.Validate(groupid, nameof(groupid), required: true);
-            WorkflowExpression.Validate(datasetid, nameof(datasetid), required: true);
+            var __workflow_groupid = groupid == null ? null : WorkflowExpression.Compile(groupid);
+            WorkflowExpression.Validate(__workflow_groupid, nameof(groupid), required: true);
+            var __workflow_datasetid = datasetid == null ? null : WorkflowExpression.Compile(datasetid);
+            WorkflowExpression.Validate(__workflow_datasetid, nameof(datasetid), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/myorg/groups/{0}/datasets/{1}/refreshes", ExpressionConverter.ConvertWithUrlEncoding(groupid, 1), ExpressionConverter.ConvertWithUrlEncoding(datasetid, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/myorg/groups/{0}/datasets/{1}/refreshes", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupid, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_datasetid, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["pbi_source"] = Convert.ToString("powerAutomate");
@@ -639,47 +601,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
-        [WorkflowExpressionFactory(nameof(__BuildInitiateExportToFileForPbiReports))]
-        public IBodyWorkflowAction<string> InitiateExportToFileForPbiReports([WorkflowExpression] Func<string> groupid, [WorkflowExpression] Func<string> reportid, [WorkflowExpression] Func<exportPayloadPowerBIReportformatInput> exportPayloadPowerBIReportformat, [WorkflowExpression] Func<string> exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingslocale = null, [WorkflowExpression] Func<bool> exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingsincludeHiddenPages = null, [WorkflowExpression] Func<string> exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkname = null, [WorkflowExpression] Func<string> exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkstate = null, [WorkflowExpression] Func<ExportFilter[]> exportPayloadPowerBIReportpowerBIReportExportConfigurationreportLevelFilters = null, [WorkflowExpression] Func<ExportReportPage[]> exportPayloadPowerBIReportpowerBIReportExportConfigurationpages = null, [WorkflowExpression] Func<EffectiveIdentity[]> exportPayloadPowerBIReportpowerBIReportExportConfigurationidentities = null)
+        public IBodyWorkflowAction<string> InitiateExportToFileForPbiReports(Expression<Func<string>> groupid, Expression<Func<string>> reportid, Expression<Func<exportPayloadPowerBIReportformatInput>> exportPayloadPowerBIReportformat, Expression<Func<string>> exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingslocale = null, Expression<Func<bool>> exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingsincludeHiddenPages = null, Expression<Func<string>> exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkname = null, Expression<Func<string>> exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkstate = null, Expression<Func<ExportFilter[]>> exportPayloadPowerBIReportpowerBIReportExportConfigurationreportLevelFilters = null, Expression<Func<ExportReportPage[]>> exportPayloadPowerBIReportpowerBIReportExportConfigurationpages = null, Expression<Func<EffectiveIdentity[]>> exportPayloadPowerBIReportpowerBIReportExportConfigurationidentities = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildInitiateExportToFileForPbiReports(WorkflowExpression<string> groupid, WorkflowExpression<string> reportid, WorkflowExpression<exportPayloadPowerBIReportformatInput> exportPayloadPowerBIReportformat, WorkflowExpression<string> exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingslocale = null, WorkflowExpression<bool> exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingsincludeHiddenPages = null, WorkflowExpression<string> exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkname = null, WorkflowExpression<string> exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkstate = null, WorkflowExpression<ExportFilter[]> exportPayloadPowerBIReportpowerBIReportExportConfigurationreportLevelFilters = null, WorkflowExpression<ExportReportPage[]> exportPayloadPowerBIReportpowerBIReportExportConfigurationpages = null, WorkflowExpression<EffectiveIdentity[]> exportPayloadPowerBIReportpowerBIReportExportConfigurationidentities = null)
-        {
-            WorkflowExpression.Validate(groupid, nameof(groupid), required: true);
-            WorkflowExpression.Validate(reportid, nameof(reportid), required: true);
-            WorkflowExpression.Validate(exportPayloadPowerBIReportformat, nameof(exportPayloadPowerBIReportformat), required: true);
-            WorkflowExpression.Validate(exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingslocale, nameof(exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingslocale), required: false);
-            WorkflowExpression.Validate(exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingsincludeHiddenPages, nameof(exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingsincludeHiddenPages), required: false);
-            WorkflowExpression.Validate(exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkname, nameof(exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkname), required: false);
-            WorkflowExpression.Validate(exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkstate, nameof(exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkstate), required: false);
-            WorkflowExpression.Validate(exportPayloadPowerBIReportpowerBIReportExportConfigurationreportLevelFilters, nameof(exportPayloadPowerBIReportpowerBIReportExportConfigurationreportLevelFilters), required: false);
-            WorkflowExpression.Validate(exportPayloadPowerBIReportpowerBIReportExportConfigurationpages, nameof(exportPayloadPowerBIReportpowerBIReportExportConfigurationpages), required: false);
-            WorkflowExpression.Validate(exportPayloadPowerBIReportpowerBIReportExportConfigurationidentities, nameof(exportPayloadPowerBIReportpowerBIReportExportConfigurationidentities), required: false);
+            var __workflow_groupid = groupid == null ? null : WorkflowExpression.Compile(groupid);
+            WorkflowExpression.Validate(__workflow_groupid, nameof(groupid), required: true);
+            var __workflow_reportid = reportid == null ? null : WorkflowExpression.Compile(reportid);
+            WorkflowExpression.Validate(__workflow_reportid, nameof(reportid), required: true);
+            var __workflow_exportPayloadPowerBIReportformat = exportPayloadPowerBIReportformat == null ? null : WorkflowExpression.Compile(exportPayloadPowerBIReportformat);
+            WorkflowExpression.Validate(__workflow_exportPayloadPowerBIReportformat, nameof(exportPayloadPowerBIReportformat), required: true);
+            var __workflow_exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingslocale = exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingslocale == null ? null : WorkflowExpression.Compile(exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingslocale);
+            WorkflowExpression.Validate(__workflow_exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingslocale, nameof(exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingslocale), required: false);
+            var __workflow_exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingsincludeHiddenPages = exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingsincludeHiddenPages == null ? null : WorkflowExpression.Compile(exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingsincludeHiddenPages);
+            WorkflowExpression.Validate(__workflow_exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingsincludeHiddenPages, nameof(exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingsincludeHiddenPages), required: false);
+            var __workflow_exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkname = exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkname == null ? null : WorkflowExpression.Compile(exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkname);
+            WorkflowExpression.Validate(__workflow_exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkname, nameof(exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkname), required: false);
+            var __workflow_exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkstate = exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkstate == null ? null : WorkflowExpression.Compile(exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkstate);
+            WorkflowExpression.Validate(__workflow_exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkstate, nameof(exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkstate), required: false);
+            var __workflow_exportPayloadPowerBIReportpowerBIReportExportConfigurationreportLevelFilters = exportPayloadPowerBIReportpowerBIReportExportConfigurationreportLevelFilters == null ? null : WorkflowExpression.Compile(exportPayloadPowerBIReportpowerBIReportExportConfigurationreportLevelFilters);
+            WorkflowExpression.Validate(__workflow_exportPayloadPowerBIReportpowerBIReportExportConfigurationreportLevelFilters, nameof(exportPayloadPowerBIReportpowerBIReportExportConfigurationreportLevelFilters), required: false);
+            var __workflow_exportPayloadPowerBIReportpowerBIReportExportConfigurationpages = exportPayloadPowerBIReportpowerBIReportExportConfigurationpages == null ? null : WorkflowExpression.Compile(exportPayloadPowerBIReportpowerBIReportExportConfigurationpages);
+            WorkflowExpression.Validate(__workflow_exportPayloadPowerBIReportpowerBIReportExportConfigurationpages, nameof(exportPayloadPowerBIReportpowerBIReportExportConfigurationpages), required: false);
+            var __workflow_exportPayloadPowerBIReportpowerBIReportExportConfigurationidentities = exportPayloadPowerBIReportpowerBIReportExportConfigurationidentities == null ? null : WorkflowExpression.Compile(exportPayloadPowerBIReportpowerBIReportExportConfigurationidentities);
+            WorkflowExpression.Validate(__workflow_exportPayloadPowerBIReportpowerBIReportExportConfigurationidentities, nameof(exportPayloadPowerBIReportpowerBIReportExportConfigurationidentities), required: false);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/myorg/groups/{0}/reports/{1}/ExportTo", ExpressionConverter.ConvertWithUrlEncoding(groupid, 1), ExpressionConverter.ConvertWithUrlEncoding(reportid, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/myorg/groups/{0}/reports/{1}/ExportTo", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupid, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_reportid, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var exportPayloadPowerBIReport = new JObject();
                 var exportPayloadPowerBIReportpropCount = 0;
                 exportPayloadPowerBIReportpropCount++;
-                exportPayloadPowerBIReport["format"] = ExpressionConverter.ConvertO(exportPayloadPowerBIReportformat);
+                exportPayloadPowerBIReport["format"] = ExpressionConverter.ConvertO(__workflow_exportPayloadPowerBIReportformat);
                 var powerBIReportExportConfigurationObject = new JObject();
                 var powerBIReportExportConfigurationObjectpropCount = 0;
                 var settingsObject = new JObject();
                 var settingsObjectpropCount = 0;
-                if (exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingslocale != null)
+                if (__workflow_exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingslocale != null)
                 {
-                    settingsObject["locale"] = ExpressionConverter.ConvertO(exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingslocale);
+                    settingsObject["locale"] = ExpressionConverter.ConvertO(__workflow_exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingslocale);
                     settingsObjectpropCount++;
                 }
 
-                if (exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingsincludeHiddenPages != null)
+                if (__workflow_exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingsincludeHiddenPages != null)
                 {
-                    settingsObject["includeHiddenPages"] = ExpressionConverter.ConvertO(exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingsincludeHiddenPages);
+                    settingsObject["includeHiddenPages"] = ExpressionConverter.ConvertO(__workflow_exportPayloadPowerBIReportpowerBIReportExportConfigurationsettingsincludeHiddenPages);
                     settingsObjectpropCount++;
                 }
 
@@ -691,15 +656,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
 
                 var defaultBookmarkObject = new JObject();
                 var defaultBookmarkObjectpropCount = 0;
-                if (exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkname != null)
+                if (__workflow_exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkname != null)
                 {
-                    defaultBookmarkObject["name"] = ExpressionConverter.ConvertO(exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkname);
+                    defaultBookmarkObject["name"] = ExpressionConverter.ConvertO(__workflow_exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkname);
                     defaultBookmarkObjectpropCount++;
                 }
 
-                if (exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkstate != null)
+                if (__workflow_exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkstate != null)
                 {
-                    defaultBookmarkObject["state"] = ExpressionConverter.ConvertO(exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkstate);
+                    defaultBookmarkObject["state"] = ExpressionConverter.ConvertO(__workflow_exportPayloadPowerBIReportpowerBIReportExportConfigurationdefaultBookmarkstate);
                     defaultBookmarkObjectpropCount++;
                 }
 
@@ -709,21 +674,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
                     powerBIReportExportConfigurationObjectpropCount++;
                 }
 
-                if (exportPayloadPowerBIReportpowerBIReportExportConfigurationreportLevelFilters != null)
+                if (__workflow_exportPayloadPowerBIReportpowerBIReportExportConfigurationreportLevelFilters != null)
                 {
-                    powerBIReportExportConfigurationObject["reportLevelFilters"] = ExpressionConverter.ConvertO(exportPayloadPowerBIReportpowerBIReportExportConfigurationreportLevelFilters);
+                    powerBIReportExportConfigurationObject["reportLevelFilters"] = ExpressionConverter.ConvertO(__workflow_exportPayloadPowerBIReportpowerBIReportExportConfigurationreportLevelFilters);
                     powerBIReportExportConfigurationObjectpropCount++;
                 }
 
-                if (exportPayloadPowerBIReportpowerBIReportExportConfigurationpages != null)
+                if (__workflow_exportPayloadPowerBIReportpowerBIReportExportConfigurationpages != null)
                 {
-                    powerBIReportExportConfigurationObject["pages"] = ExpressionConverter.ConvertO(exportPayloadPowerBIReportpowerBIReportExportConfigurationpages);
+                    powerBIReportExportConfigurationObject["pages"] = ExpressionConverter.ConvertO(__workflow_exportPayloadPowerBIReportpowerBIReportExportConfigurationpages);
                     powerBIReportExportConfigurationObjectpropCount++;
                 }
 
-                if (exportPayloadPowerBIReportpowerBIReportExportConfigurationidentities != null)
+                if (__workflow_exportPayloadPowerBIReportpowerBIReportExportConfigurationidentities != null)
                 {
-                    powerBIReportExportConfigurationObject["identities"] = ExpressionConverter.ConvertO(exportPayloadPowerBIReportpowerBIReportExportConfigurationidentities);
+                    powerBIReportExportConfigurationObject["identities"] = ExpressionConverter.ConvertO(__workflow_exportPayloadPowerBIReportpowerBIReportExportConfigurationidentities);
                     powerBIReportExportConfigurationObjectpropCount++;
                 }
 
@@ -743,34 +708,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
-        [WorkflowExpressionFactory(nameof(__BuildInitiateExportToFileForPaginatedReports))]
-        public IBodyWorkflowAction<string> InitiateExportToFileForPaginatedReports([WorkflowExpression] Func<string> groupid, [WorkflowExpression] Func<string> reportid, [WorkflowExpression] Func<exportPayloadPaginatedReportformatInput> exportPayloadPaginatedReportformat, [WorkflowExpression] Func<EffectiveIdentity[]> exportPayloadPaginatedReportpaginatedReportConfigurationidentities = null, [WorkflowExpression] Func<exportPayloadPaginatedReportpaginatedReportConfigurationparameterValuesInputItem[]> exportPayloadPaginatedReportpaginatedReportConfigurationparameterValues = null)
+        public IBodyWorkflowAction<string> InitiateExportToFileForPaginatedReports(Expression<Func<string>> groupid, Expression<Func<string>> reportid, Expression<Func<exportPayloadPaginatedReportformatInput>> exportPayloadPaginatedReportformat, Expression<Func<EffectiveIdentity[]>> exportPayloadPaginatedReportpaginatedReportConfigurationidentities = null, Expression<Func<exportPayloadPaginatedReportpaginatedReportConfigurationparameterValuesInputItem[]>> exportPayloadPaginatedReportpaginatedReportConfigurationparameterValues = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildInitiateExportToFileForPaginatedReports(WorkflowExpression<string> groupid, WorkflowExpression<string> reportid, WorkflowExpression<exportPayloadPaginatedReportformatInput> exportPayloadPaginatedReportformat, WorkflowExpression<EffectiveIdentity[]> exportPayloadPaginatedReportpaginatedReportConfigurationidentities = null, WorkflowExpression<exportPayloadPaginatedReportpaginatedReportConfigurationparameterValuesInputItem[]> exportPayloadPaginatedReportpaginatedReportConfigurationparameterValues = null)
-        {
-            WorkflowExpression.Validate(groupid, nameof(groupid), required: true);
-            WorkflowExpression.Validate(reportid, nameof(reportid), required: true);
-            WorkflowExpression.Validate(exportPayloadPaginatedReportformat, nameof(exportPayloadPaginatedReportformat), required: true);
-            WorkflowExpression.Validate(exportPayloadPaginatedReportpaginatedReportConfigurationidentities, nameof(exportPayloadPaginatedReportpaginatedReportConfigurationidentities), required: false);
-            WorkflowExpression.Validate(exportPayloadPaginatedReportpaginatedReportConfigurationparameterValues, nameof(exportPayloadPaginatedReportpaginatedReportConfigurationparameterValues), required: false);
+            var __workflow_groupid = groupid == null ? null : WorkflowExpression.Compile(groupid);
+            WorkflowExpression.Validate(__workflow_groupid, nameof(groupid), required: true);
+            var __workflow_reportid = reportid == null ? null : WorkflowExpression.Compile(reportid);
+            WorkflowExpression.Validate(__workflow_reportid, nameof(reportid), required: true);
+            var __workflow_exportPayloadPaginatedReportformat = exportPayloadPaginatedReportformat == null ? null : WorkflowExpression.Compile(exportPayloadPaginatedReportformat);
+            WorkflowExpression.Validate(__workflow_exportPayloadPaginatedReportformat, nameof(exportPayloadPaginatedReportformat), required: true);
+            var __workflow_exportPayloadPaginatedReportpaginatedReportConfigurationidentities = exportPayloadPaginatedReportpaginatedReportConfigurationidentities == null ? null : WorkflowExpression.Compile(exportPayloadPaginatedReportpaginatedReportConfigurationidentities);
+            WorkflowExpression.Validate(__workflow_exportPayloadPaginatedReportpaginatedReportConfigurationidentities, nameof(exportPayloadPaginatedReportpaginatedReportConfigurationidentities), required: false);
+            var __workflow_exportPayloadPaginatedReportpaginatedReportConfigurationparameterValues = exportPayloadPaginatedReportpaginatedReportConfigurationparameterValues == null ? null : WorkflowExpression.Compile(exportPayloadPaginatedReportpaginatedReportConfigurationparameterValues);
+            WorkflowExpression.Validate(__workflow_exportPayloadPaginatedReportpaginatedReportConfigurationparameterValues, nameof(exportPayloadPaginatedReportpaginatedReportConfigurationparameterValues), required: false);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/myorg/groups/{0}/reports/{1}/ExportToPaginatedReports", ExpressionConverter.ConvertWithUrlEncoding(groupid, 1), ExpressionConverter.ConvertWithUrlEncoding(reportid, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/myorg/groups/{0}/reports/{1}/ExportToPaginatedReports", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupid, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_reportid, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var exportPayloadPaginatedReport = new JObject();
                 var exportPayloadPaginatedReportpropCount = 0;
                 exportPayloadPaginatedReportpropCount++;
-                exportPayloadPaginatedReport["format"] = ExpressionConverter.ConvertO(exportPayloadPaginatedReportformat);
+                exportPayloadPaginatedReport["format"] = ExpressionConverter.ConvertO(__workflow_exportPayloadPaginatedReportformat);
                 var paginatedReportConfigurationObject = new JObject();
                 var paginatedReportConfigurationObjectpropCount = 0;
-                if (exportPayloadPaginatedReportpaginatedReportConfigurationidentities != null)
+                if (__workflow_exportPayloadPaginatedReportpaginatedReportConfigurationidentities != null)
                 {
-                    paginatedReportConfigurationObject["identities"] = ExpressionConverter.ConvertO(exportPayloadPaginatedReportpaginatedReportConfigurationidentities);
+                    paginatedReportConfigurationObject["identities"] = ExpressionConverter.ConvertO(__workflow_exportPayloadPaginatedReportpaginatedReportConfigurationidentities);
                     paginatedReportConfigurationObjectpropCount++;
                 }
 
@@ -782,9 +745,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
                     paginatedReportConfigurationObjectpropCount++;
                 }
 
-                if (exportPayloadPaginatedReportpaginatedReportConfigurationparameterValues != null)
+                if (__workflow_exportPayloadPaginatedReportpaginatedReportConfigurationparameterValues != null)
                 {
-                    paginatedReportConfigurationObject["parameterValues"] = ExpressionConverter.ConvertO(exportPayloadPaginatedReportpaginatedReportConfigurationparameterValues);
+                    paginatedReportConfigurationObject["parameterValues"] = ExpressionConverter.ConvertO(__workflow_exportPayloadPaginatedReportpaginatedReportConfigurationparameterValues);
                     paginatedReportConfigurationObjectpropCount++;
                 }
 

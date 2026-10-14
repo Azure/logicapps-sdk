@@ -1,40 +1,34 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsontexttospeip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class IbmwatsontexttospeipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsontexttospeip")]
-        [WorkflowExpressionFactory(nameof(__BuildSynthesize))]
-        public IBodyWorkflowAction<SynthesizeResponse> Synthesize([WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<voiceInput> voice = null)
+        public IBodyWorkflowAction<SynthesizeResponse> Synthesize(Expression<Func<string>> bodytext, Expression<Func<voiceInput>> voice = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SynthesizeResponse> __BuildSynthesize(WorkflowExpression<string> bodytext, WorkflowExpression<voiceInput> voice = null)
-        {
-            WorkflowExpression.Validate(bodytext, nameof(bodytext), required: true);
-            WorkflowExpression.Validate(voice, nameof(voice), required: false);
+            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
+            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: true);
+            var __workflow_voice = voice == null ? null : WorkflowExpression.Compile(voice);
+            WorkflowExpression.Validate(__workflow_voice, nameof(voice), required: false);
             return new DeferredBodyAction<SynthesizeResponse>(() =>
             {
                 var apiCallPath = "/v1/synthesize";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["voice"] = Convert.ToString("en-US_MichaelV3Voice");
-                if (voice != null)
-                    callPayload.Queries["voice"] = ExpressionConverter.Convert(voice);
+                if (__workflow_voice != null)
+                    callPayload.Queries["voice"] = ExpressionConverter.Convert(__workflow_voice);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
+                body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -54,45 +48,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsontexttospeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsontexttospeip")]
-        [WorkflowExpressionFactory(nameof(__BuildPronunciation))]
-        public IBodyWorkflowAction<PronunciationResponse> Pronunciation([WorkflowExpression] Func<voiceInput> voice = null, [WorkflowExpression] Func<string> text = null)
+        public IBodyWorkflowAction<PronunciationResponse> Pronunciation(Expression<Func<voiceInput>> voice = null, Expression<Func<string>> text = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PronunciationResponse> __BuildPronunciation(WorkflowExpression<voiceInput> voice = null, WorkflowExpression<string> text = null)
-        {
-            WorkflowExpression.Validate(voice, nameof(voice), required: false);
-            WorkflowExpression.Validate(text, nameof(text), required: false);
+            var __workflow_voice = voice == null ? null : WorkflowExpression.Compile(voice);
+            WorkflowExpression.Validate(__workflow_voice, nameof(voice), required: false);
+            var __workflow_text = text == null ? null : WorkflowExpression.Compile(text);
+            WorkflowExpression.Validate(__workflow_text, nameof(text), required: false);
             return new DeferredBodyAction<PronunciationResponse>(() =>
             {
                 var apiCallPath = "/v1/pronunciation";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["voice"] = Convert.ToString("en-US_MichaelV3Voice");
-                if (voice != null)
-                    callPayload.Queries["voice"] = ExpressionConverter.Convert(voice);
-                if (text != null)
-                    callPayload.Queries["text"] = ExpressionConverter.Convert(text);
+                if (__workflow_voice != null)
+                    callPayload.Queries["voice"] = ExpressionConverter.Convert(__workflow_voice);
+                if (__workflow_text != null)
+                    callPayload.Queries["text"] = ExpressionConverter.Convert(__workflow_text);
                 return new ApiConnectionAction<PronunciationResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsontexttospeip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetVoice))]
-        public IBodyWorkflowAction<GetVoiceResponse> GetVoice([WorkflowExpression] Func<string> voice)
+        public IBodyWorkflowAction<GetVoiceResponse> GetVoice(Expression<Func<string>> voice)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetVoiceResponse> __BuildGetVoice(WorkflowExpression<string> voice)
-        {
-            WorkflowExpression.Validate(voice, nameof(voice), required: true);
+            var __workflow_voice = voice == null ? null : WorkflowExpression.Compile(voice);
+            WorkflowExpression.Validate(__workflow_voice, nameof(voice), required: true);
             return new DeferredBodyAction<GetVoiceResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/voices/{0}", ExpressionConverter.ConvertWithUrlEncoding(voice, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/voices/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_voice, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetVoiceResponse>(callPayload);

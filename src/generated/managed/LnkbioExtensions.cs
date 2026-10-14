@@ -1,29 +1,24 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lnkbio
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class LnkbioActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lnkbio")]
-        [WorkflowExpressionFactory(nameof(__BuildLnkadd))]
-        public IBodyWorkflowAction<InlineResponse200> Lnkadd([WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodylink, [WorkflowExpression] Func<string> bodyimage = null)
+        public IBodyWorkflowAction<InlineResponse200> Lnkadd(Expression<Func<string>> bodytitle, Expression<Func<string>> bodylink, Expression<Func<string>> bodyimage = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<InlineResponse200> __BuildLnkadd(WorkflowExpression<string> bodytitle, WorkflowExpression<string> bodylink, WorkflowExpression<string> bodyimage = null)
-        {
-            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            WorkflowExpression.Validate(bodylink, nameof(bodylink), required: true);
-            WorkflowExpression.Validate(bodyimage, nameof(bodyimage), required: false);
+            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
+            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodylink = bodylink == null ? null : WorkflowExpression.Compile(bodylink);
+            WorkflowExpression.Validate(__workflow_bodylink, nameof(bodylink), required: true);
+            var __workflow_bodyimage = bodyimage == null ? null : WorkflowExpression.Compile(bodyimage);
+            WorkflowExpression.Validate(__workflow_bodyimage, nameof(bodyimage), required: false);
             return new DeferredBodyAction<InlineResponse200>(() =>
             {
                 var apiCallPath = "/lnk/add";
@@ -32,12 +27,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lnkbio
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
                 bodypropCount++;
-                body["link"] = ExpressionConverter.ConvertO(bodylink);
-                if (bodyimage != null)
+                body["link"] = ExpressionConverter.ConvertO(__workflow_bodylink);
+                if (__workflow_bodyimage != null)
                 {
-                    body["image"] = ExpressionConverter.ConvertO(bodyimage);
+                    body["image"] = ExpressionConverter.ConvertO(__workflow_bodyimage);
                     bodypropCount++;
                 }
 

@@ -1,48 +1,59 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class ServicedeskpluscloudActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicedeskpluscloud")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateRequest))]
-        public IBodyWorkflowAction<CreateRequestResponse> CreateRequest([WorkflowExpression] Func<string> serviceDeskInstance, [WorkflowExpression] Func<string> bodyinputDatarequestsubject, [WorkflowExpression] Func<string> bodyinputDatarequesttemplatename = null, [WorkflowExpression] Func<string> bodyinputDatarequestrequestTypename = null, [WorkflowExpression] Func<string> bodyinputDatarequestrequestername = null, [WorkflowExpression] Func<string> bodyinputDatarequeststatusname = null, [WorkflowExpression] Func<string> bodyinputDatarequesttechnicianemailId = null, [WorkflowExpression] Func<string> bodyinputDatarequestsitename = null, [WorkflowExpression] Func<string> bodyinputDatarequestgroupname = null, [WorkflowExpression] Func<string> bodyinputDatarequestdescription = null, [WorkflowExpression] Func<string> bodyinputDatarequestpriorityname = null, [WorkflowExpression] Func<string> bodyinputDatarequesturgencyname = null, [WorkflowExpression] Func<string> bodyinputDatarequestimpactname = null, [WorkflowExpression] Func<string> bodyinputDatarequestmodename = null, [WorkflowExpression] Func<string> bodyinputDatarequestcategoryname = null, [WorkflowExpression] Func<string> bodyinputDatarequestsubcategoryname = null, [WorkflowExpression] Func<string> bodyinputDatarequestitemname = null, [WorkflowExpression] Func<bodyinputDatarequestassetsInputItem[]> bodyinputDatarequestassets = null, [WorkflowExpression] Func<string> bodyinputDatarequestudfFields = null)
+        public IBodyWorkflowAction<CreateRequestResponse> CreateRequest(Expression<Func<string>> serviceDeskInstance, Expression<Func<string>> bodyinputDatarequestsubject, Expression<Func<string>> bodyinputDatarequesttemplatename = null, Expression<Func<string>> bodyinputDatarequestrequestTypename = null, Expression<Func<string>> bodyinputDatarequestrequestername = null, Expression<Func<string>> bodyinputDatarequeststatusname = null, Expression<Func<string>> bodyinputDatarequesttechnicianemailId = null, Expression<Func<string>> bodyinputDatarequestsitename = null, Expression<Func<string>> bodyinputDatarequestgroupname = null, Expression<Func<string>> bodyinputDatarequestdescription = null, Expression<Func<string>> bodyinputDatarequestpriorityname = null, Expression<Func<string>> bodyinputDatarequesturgencyname = null, Expression<Func<string>> bodyinputDatarequestimpactname = null, Expression<Func<string>> bodyinputDatarequestmodename = null, Expression<Func<string>> bodyinputDatarequestcategoryname = null, Expression<Func<string>> bodyinputDatarequestsubcategoryname = null, Expression<Func<string>> bodyinputDatarequestitemname = null, Expression<Func<bodyinputDatarequestassetsInputItem[]>> bodyinputDatarequestassets = null, Expression<Func<string>> bodyinputDatarequestudfFields = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateRequestResponse> __BuildCreateRequest(WorkflowExpression<string> serviceDeskInstance, WorkflowExpression<string> bodyinputDatarequestsubject, WorkflowExpression<string> bodyinputDatarequesttemplatename = null, WorkflowExpression<string> bodyinputDatarequestrequestTypename = null, WorkflowExpression<string> bodyinputDatarequestrequestername = null, WorkflowExpression<string> bodyinputDatarequeststatusname = null, WorkflowExpression<string> bodyinputDatarequesttechnicianemailId = null, WorkflowExpression<string> bodyinputDatarequestsitename = null, WorkflowExpression<string> bodyinputDatarequestgroupname = null, WorkflowExpression<string> bodyinputDatarequestdescription = null, WorkflowExpression<string> bodyinputDatarequestpriorityname = null, WorkflowExpression<string> bodyinputDatarequesturgencyname = null, WorkflowExpression<string> bodyinputDatarequestimpactname = null, WorkflowExpression<string> bodyinputDatarequestmodename = null, WorkflowExpression<string> bodyinputDatarequestcategoryname = null, WorkflowExpression<string> bodyinputDatarequestsubcategoryname = null, WorkflowExpression<string> bodyinputDatarequestitemname = null, WorkflowExpression<bodyinputDatarequestassetsInputItem[]> bodyinputDatarequestassets = null, WorkflowExpression<string> bodyinputDatarequestudfFields = null)
-        {
-            WorkflowExpression.Validate(serviceDeskInstance, nameof(serviceDeskInstance), required: true);
-            WorkflowExpression.Validate(bodyinputDatarequestsubject, nameof(bodyinputDatarequestsubject), required: true);
-            WorkflowExpression.Validate(bodyinputDatarequesttemplatename, nameof(bodyinputDatarequesttemplatename), required: false);
-            WorkflowExpression.Validate(bodyinputDatarequestrequestTypename, nameof(bodyinputDatarequestrequestTypename), required: false);
-            WorkflowExpression.Validate(bodyinputDatarequestrequestername, nameof(bodyinputDatarequestrequestername), required: false);
-            WorkflowExpression.Validate(bodyinputDatarequeststatusname, nameof(bodyinputDatarequeststatusname), required: false);
-            WorkflowExpression.Validate(bodyinputDatarequesttechnicianemailId, nameof(bodyinputDatarequesttechnicianemailId), required: false);
-            WorkflowExpression.Validate(bodyinputDatarequestsitename, nameof(bodyinputDatarequestsitename), required: false);
-            WorkflowExpression.Validate(bodyinputDatarequestgroupname, nameof(bodyinputDatarequestgroupname), required: false);
-            WorkflowExpression.Validate(bodyinputDatarequestdescription, nameof(bodyinputDatarequestdescription), required: false);
-            WorkflowExpression.Validate(bodyinputDatarequestpriorityname, nameof(bodyinputDatarequestpriorityname), required: false);
-            WorkflowExpression.Validate(bodyinputDatarequesturgencyname, nameof(bodyinputDatarequesturgencyname), required: false);
-            WorkflowExpression.Validate(bodyinputDatarequestimpactname, nameof(bodyinputDatarequestimpactname), required: false);
-            WorkflowExpression.Validate(bodyinputDatarequestmodename, nameof(bodyinputDatarequestmodename), required: false);
-            WorkflowExpression.Validate(bodyinputDatarequestcategoryname, nameof(bodyinputDatarequestcategoryname), required: false);
-            WorkflowExpression.Validate(bodyinputDatarequestsubcategoryname, nameof(bodyinputDatarequestsubcategoryname), required: false);
-            WorkflowExpression.Validate(bodyinputDatarequestitemname, nameof(bodyinputDatarequestitemname), required: false);
-            WorkflowExpression.Validate(bodyinputDatarequestassets, nameof(bodyinputDatarequestassets), required: false);
-            WorkflowExpression.Validate(bodyinputDatarequestudfFields, nameof(bodyinputDatarequestudfFields), required: false);
+            var __workflow_serviceDeskInstance = serviceDeskInstance == null ? null : WorkflowExpression.Compile(serviceDeskInstance);
+            WorkflowExpression.Validate(__workflow_serviceDeskInstance, nameof(serviceDeskInstance), required: true);
+            var __workflow_bodyinputDatarequestsubject = bodyinputDatarequestsubject == null ? null : WorkflowExpression.Compile(bodyinputDatarequestsubject);
+            WorkflowExpression.Validate(__workflow_bodyinputDatarequestsubject, nameof(bodyinputDatarequestsubject), required: true);
+            var __workflow_bodyinputDatarequesttemplatename = bodyinputDatarequesttemplatename == null ? null : WorkflowExpression.Compile(bodyinputDatarequesttemplatename);
+            WorkflowExpression.Validate(__workflow_bodyinputDatarequesttemplatename, nameof(bodyinputDatarequesttemplatename), required: false);
+            var __workflow_bodyinputDatarequestrequestTypename = bodyinputDatarequestrequestTypename == null ? null : WorkflowExpression.Compile(bodyinputDatarequestrequestTypename);
+            WorkflowExpression.Validate(__workflow_bodyinputDatarequestrequestTypename, nameof(bodyinputDatarequestrequestTypename), required: false);
+            var __workflow_bodyinputDatarequestrequestername = bodyinputDatarequestrequestername == null ? null : WorkflowExpression.Compile(bodyinputDatarequestrequestername);
+            WorkflowExpression.Validate(__workflow_bodyinputDatarequestrequestername, nameof(bodyinputDatarequestrequestername), required: false);
+            var __workflow_bodyinputDatarequeststatusname = bodyinputDatarequeststatusname == null ? null : WorkflowExpression.Compile(bodyinputDatarequeststatusname);
+            WorkflowExpression.Validate(__workflow_bodyinputDatarequeststatusname, nameof(bodyinputDatarequeststatusname), required: false);
+            var __workflow_bodyinputDatarequesttechnicianemailId = bodyinputDatarequesttechnicianemailId == null ? null : WorkflowExpression.Compile(bodyinputDatarequesttechnicianemailId);
+            WorkflowExpression.Validate(__workflow_bodyinputDatarequesttechnicianemailId, nameof(bodyinputDatarequesttechnicianemailId), required: false);
+            var __workflow_bodyinputDatarequestsitename = bodyinputDatarequestsitename == null ? null : WorkflowExpression.Compile(bodyinputDatarequestsitename);
+            WorkflowExpression.Validate(__workflow_bodyinputDatarequestsitename, nameof(bodyinputDatarequestsitename), required: false);
+            var __workflow_bodyinputDatarequestgroupname = bodyinputDatarequestgroupname == null ? null : WorkflowExpression.Compile(bodyinputDatarequestgroupname);
+            WorkflowExpression.Validate(__workflow_bodyinputDatarequestgroupname, nameof(bodyinputDatarequestgroupname), required: false);
+            var __workflow_bodyinputDatarequestdescription = bodyinputDatarequestdescription == null ? null : WorkflowExpression.Compile(bodyinputDatarequestdescription);
+            WorkflowExpression.Validate(__workflow_bodyinputDatarequestdescription, nameof(bodyinputDatarequestdescription), required: false);
+            var __workflow_bodyinputDatarequestpriorityname = bodyinputDatarequestpriorityname == null ? null : WorkflowExpression.Compile(bodyinputDatarequestpriorityname);
+            WorkflowExpression.Validate(__workflow_bodyinputDatarequestpriorityname, nameof(bodyinputDatarequestpriorityname), required: false);
+            var __workflow_bodyinputDatarequesturgencyname = bodyinputDatarequesturgencyname == null ? null : WorkflowExpression.Compile(bodyinputDatarequesturgencyname);
+            WorkflowExpression.Validate(__workflow_bodyinputDatarequesturgencyname, nameof(bodyinputDatarequesturgencyname), required: false);
+            var __workflow_bodyinputDatarequestimpactname = bodyinputDatarequestimpactname == null ? null : WorkflowExpression.Compile(bodyinputDatarequestimpactname);
+            WorkflowExpression.Validate(__workflow_bodyinputDatarequestimpactname, nameof(bodyinputDatarequestimpactname), required: false);
+            var __workflow_bodyinputDatarequestmodename = bodyinputDatarequestmodename == null ? null : WorkflowExpression.Compile(bodyinputDatarequestmodename);
+            WorkflowExpression.Validate(__workflow_bodyinputDatarequestmodename, nameof(bodyinputDatarequestmodename), required: false);
+            var __workflow_bodyinputDatarequestcategoryname = bodyinputDatarequestcategoryname == null ? null : WorkflowExpression.Compile(bodyinputDatarequestcategoryname);
+            WorkflowExpression.Validate(__workflow_bodyinputDatarequestcategoryname, nameof(bodyinputDatarequestcategoryname), required: false);
+            var __workflow_bodyinputDatarequestsubcategoryname = bodyinputDatarequestsubcategoryname == null ? null : WorkflowExpression.Compile(bodyinputDatarequestsubcategoryname);
+            WorkflowExpression.Validate(__workflow_bodyinputDatarequestsubcategoryname, nameof(bodyinputDatarequestsubcategoryname), required: false);
+            var __workflow_bodyinputDatarequestitemname = bodyinputDatarequestitemname == null ? null : WorkflowExpression.Compile(bodyinputDatarequestitemname);
+            WorkflowExpression.Validate(__workflow_bodyinputDatarequestitemname, nameof(bodyinputDatarequestitemname), required: false);
+            var __workflow_bodyinputDatarequestassets = bodyinputDatarequestassets == null ? null : WorkflowExpression.Compile(bodyinputDatarequestassets);
+            WorkflowExpression.Validate(__workflow_bodyinputDatarequestassets, nameof(bodyinputDatarequestassets), required: false);
+            var __workflow_bodyinputDatarequestudfFields = bodyinputDatarequestudfFields == null ? null : WorkflowExpression.Compile(bodyinputDatarequestudfFields);
+            WorkflowExpression.Validate(__workflow_bodyinputDatarequestudfFields, nameof(bodyinputDatarequestudfFields), required: false);
             return new DeferredBodyAction<CreateRequestResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/app/{0}/api/v3/requests", ExpressionConverter.ConvertWithUrlEncoding(serviceDeskInstance, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/app/{0}/api/v3/requests", ExpressionConverter.ConvertWithUrlEncoding(__workflow_serviceDeskInstance, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -52,12 +63,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
                 var requestObject = new JObject();
                 var requestObjectpropCount = 0;
                 requestObjectpropCount++;
-                requestObject["subject"] = ExpressionConverter.ConvertO(bodyinputDatarequestsubject);
+                requestObject["subject"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestsubject);
                 var templateObject = new JObject();
                 var templateObjectpropCount = 0;
-                if (bodyinputDatarequesttemplatename != null)
+                if (__workflow_bodyinputDatarequesttemplatename != null)
                 {
-                    templateObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequesttemplatename);
+                    templateObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequesttemplatename);
                     templateObjectpropCount++;
                 }
 
@@ -69,9 +80,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
                 var requestTypeObject = new JObject();
                 var requestTypeObjectpropCount = 0;
-                if (bodyinputDatarequestrequestTypename != null)
+                if (__workflow_bodyinputDatarequestrequestTypename != null)
                 {
-                    requestTypeObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestrequestTypename);
+                    requestTypeObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestrequestTypename);
                     requestTypeObjectpropCount++;
                 }
 
@@ -83,9 +94,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
                 var requesterObject = new JObject();
                 var requesterObjectpropCount = 0;
-                if (bodyinputDatarequestrequestername != null)
+                if (__workflow_bodyinputDatarequestrequestername != null)
                 {
-                    requesterObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestrequestername);
+                    requesterObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestrequestername);
                     requesterObjectpropCount++;
                 }
 
@@ -97,9 +108,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
                 var statusObject = new JObject();
                 var statusObjectpropCount = 0;
-                if (bodyinputDatarequeststatusname != null)
+                if (__workflow_bodyinputDatarequeststatusname != null)
                 {
-                    statusObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequeststatusname);
+                    statusObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequeststatusname);
                     statusObjectpropCount++;
                 }
 
@@ -111,9 +122,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
                 var technicianObject = new JObject();
                 var technicianObjectpropCount = 0;
-                if (bodyinputDatarequesttechnicianemailId != null)
+                if (__workflow_bodyinputDatarequesttechnicianemailId != null)
                 {
-                    technicianObject["email_id"] = ExpressionConverter.ConvertO(bodyinputDatarequesttechnicianemailId);
+                    technicianObject["email_id"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequesttechnicianemailId);
                     technicianObjectpropCount++;
                 }
 
@@ -125,9 +136,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
                 var siteObject = new JObject();
                 var siteObjectpropCount = 0;
-                if (bodyinputDatarequestsitename != null)
+                if (__workflow_bodyinputDatarequestsitename != null)
                 {
-                    siteObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestsitename);
+                    siteObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestsitename);
                     siteObjectpropCount++;
                 }
 
@@ -139,9 +150,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
                 var groupObject = new JObject();
                 var groupObjectpropCount = 0;
-                if (bodyinputDatarequestgroupname != null)
+                if (__workflow_bodyinputDatarequestgroupname != null)
                 {
-                    groupObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestgroupname);
+                    groupObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestgroupname);
                     groupObjectpropCount++;
                 }
 
@@ -151,17 +162,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
                     requestObjectpropCount++;
                 }
 
-                if (bodyinputDatarequestdescription != null)
+                if (__workflow_bodyinputDatarequestdescription != null)
                 {
-                    requestObject["description"] = ExpressionConverter.ConvertO(bodyinputDatarequestdescription);
+                    requestObject["description"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestdescription);
                     requestObjectpropCount++;
                 }
 
                 var priorityObject = new JObject();
                 var priorityObjectpropCount = 0;
-                if (bodyinputDatarequestpriorityname != null)
+                if (__workflow_bodyinputDatarequestpriorityname != null)
                 {
-                    priorityObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestpriorityname);
+                    priorityObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestpriorityname);
                     priorityObjectpropCount++;
                 }
 
@@ -173,9 +184,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
                 var urgencyObject = new JObject();
                 var urgencyObjectpropCount = 0;
-                if (bodyinputDatarequesturgencyname != null)
+                if (__workflow_bodyinputDatarequesturgencyname != null)
                 {
-                    urgencyObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequesturgencyname);
+                    urgencyObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequesturgencyname);
                     urgencyObjectpropCount++;
                 }
 
@@ -187,9 +198,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
                 var impactObject = new JObject();
                 var impactObjectpropCount = 0;
-                if (bodyinputDatarequestimpactname != null)
+                if (__workflow_bodyinputDatarequestimpactname != null)
                 {
-                    impactObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestimpactname);
+                    impactObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestimpactname);
                     impactObjectpropCount++;
                 }
 
@@ -201,9 +212,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
                 var modeObject = new JObject();
                 var modeObjectpropCount = 0;
-                if (bodyinputDatarequestmodename != null)
+                if (__workflow_bodyinputDatarequestmodename != null)
                 {
-                    modeObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestmodename);
+                    modeObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestmodename);
                     modeObjectpropCount++;
                 }
 
@@ -215,9 +226,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
                 var categoryObject = new JObject();
                 var categoryObjectpropCount = 0;
-                if (bodyinputDatarequestcategoryname != null)
+                if (__workflow_bodyinputDatarequestcategoryname != null)
                 {
-                    categoryObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestcategoryname);
+                    categoryObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestcategoryname);
                     categoryObjectpropCount++;
                 }
 
@@ -229,9 +240,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
                 var subcategoryObject = new JObject();
                 var subcategoryObjectpropCount = 0;
-                if (bodyinputDatarequestsubcategoryname != null)
+                if (__workflow_bodyinputDatarequestsubcategoryname != null)
                 {
-                    subcategoryObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestsubcategoryname);
+                    subcategoryObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestsubcategoryname);
                     subcategoryObjectpropCount++;
                 }
 
@@ -243,9 +254,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
                 var itemObject = new JObject();
                 var itemObjectpropCount = 0;
-                if (bodyinputDatarequestitemname != null)
+                if (__workflow_bodyinputDatarequestitemname != null)
                 {
-                    itemObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestitemname);
+                    itemObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestitemname);
                     itemObjectpropCount++;
                 }
 
@@ -255,15 +266,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
                     requestObjectpropCount++;
                 }
 
-                if (bodyinputDatarequestassets != null)
+                if (__workflow_bodyinputDatarequestassets != null)
                 {
-                    requestObject["assets"] = ExpressionConverter.ConvertO(bodyinputDatarequestassets);
+                    requestObject["assets"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestassets);
                     requestObjectpropCount++;
                 }
 
-                if (bodyinputDatarequestudfFields != null)
+                if (__workflow_bodyinputDatarequestudfFields != null)
                 {
-                    requestObject["udf_fields"] = ExpressionConverter.ConvertO(bodyinputDatarequestudfFields);
+                    requestObject["udf_fields"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestudfFields);
                     requestObjectpropCount++;
                 }
 
@@ -289,38 +300,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicedeskpluscloud")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateRequest))]
-        public IBodyWorkflowAction<UpdateRequestResponse> UpdateRequest([WorkflowExpression] Func<string> serviceDeskInstance, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyinputDatarequestsubject = null, [WorkflowExpression] Func<string> bodyinputDatarequesttemplatename = null, [WorkflowExpression] Func<string> bodyinputDatarequestrequestTypename = null, [WorkflowExpression] Func<string> bodyinputDatarequestrequestername = null, [WorkflowExpression] Func<string> bodyinputDatarequeststatusname = null, [WorkflowExpression] Func<string> bodyinputDatarequesttechnicianemailId = null, [WorkflowExpression] Func<string> bodyinputDatarequestsitename = null, [WorkflowExpression] Func<string> bodyinputDatarequestgroupname = null, [WorkflowExpression] Func<string> bodyinputDatarequestdescription = null, [WorkflowExpression] Func<string> bodyinputDatarequestpriorityname = null, [WorkflowExpression] Func<string> bodyinputDatarequesturgencyname = null, [WorkflowExpression] Func<string> bodyinputDatarequestimpactname = null, [WorkflowExpression] Func<string> bodyinputDatarequestmodename = null, [WorkflowExpression] Func<string> bodyinputDatarequestcategoryname = null, [WorkflowExpression] Func<string> bodyinputDatarequestsubcategoryname = null, [WorkflowExpression] Func<string> bodyinputDatarequestitemname = null, [WorkflowExpression] Func<bodyinputDatarequestassetsInputItem[]> bodyinputDatarequestassets = null, [WorkflowExpression] Func<string> bodyinputDatarequestudfFields = null)
+        public IBodyWorkflowAction<UpdateRequestResponse> UpdateRequest(Expression<Func<string>> serviceDeskInstance, Expression<Func<string>> id, Expression<Func<string>> bodyinputDatarequestsubject = null, Expression<Func<string>> bodyinputDatarequesttemplatename = null, Expression<Func<string>> bodyinputDatarequestrequestTypename = null, Expression<Func<string>> bodyinputDatarequestrequestername = null, Expression<Func<string>> bodyinputDatarequeststatusname = null, Expression<Func<string>> bodyinputDatarequesttechnicianemailId = null, Expression<Func<string>> bodyinputDatarequestsitename = null, Expression<Func<string>> bodyinputDatarequestgroupname = null, Expression<Func<string>> bodyinputDatarequestdescription = null, Expression<Func<string>> bodyinputDatarequestpriorityname = null, Expression<Func<string>> bodyinputDatarequesturgencyname = null, Expression<Func<string>> bodyinputDatarequestimpactname = null, Expression<Func<string>> bodyinputDatarequestmodename = null, Expression<Func<string>> bodyinputDatarequestcategoryname = null, Expression<Func<string>> bodyinputDatarequestsubcategoryname = null, Expression<Func<string>> bodyinputDatarequestitemname = null, Expression<Func<bodyinputDatarequestassetsInputItem[]>> bodyinputDatarequestassets = null, Expression<Func<string>> bodyinputDatarequestudfFields = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UpdateRequestResponse> __BuildUpdateRequest(WorkflowExpression<string> serviceDeskInstance, WorkflowExpression<string> id, WorkflowExpression<string> bodyinputDatarequestsubject = null, WorkflowExpression<string> bodyinputDatarequesttemplatename = null, WorkflowExpression<string> bodyinputDatarequestrequestTypename = null, WorkflowExpression<string> bodyinputDatarequestrequestername = null, WorkflowExpression<string> bodyinputDatarequeststatusname = null, WorkflowExpression<string> bodyinputDatarequesttechnicianemailId = null, WorkflowExpression<string> bodyinputDatarequestsitename = null, WorkflowExpression<string> bodyinputDatarequestgroupname = null, WorkflowExpression<string> bodyinputDatarequestdescription = null, WorkflowExpression<string> bodyinputDatarequestpriorityname = null, WorkflowExpression<string> bodyinputDatarequesturgencyname = null, WorkflowExpression<string> bodyinputDatarequestimpactname = null, WorkflowExpression<string> bodyinputDatarequestmodename = null, WorkflowExpression<string> bodyinputDatarequestcategoryname = null, WorkflowExpression<string> bodyinputDatarequestsubcategoryname = null, WorkflowExpression<string> bodyinputDatarequestitemname = null, WorkflowExpression<bodyinputDatarequestassetsInputItem[]> bodyinputDatarequestassets = null, WorkflowExpression<string> bodyinputDatarequestudfFields = null)
-        {
-            WorkflowExpression.Validate(serviceDeskInstance, nameof(serviceDeskInstance), required: true);
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(bodyinputDatarequestsubject, nameof(bodyinputDatarequestsubject), required: false);
-            WorkflowExpression.Validate(bodyinputDatarequesttemplatename, nameof(bodyinputDatarequesttemplatename), required: false);
-            WorkflowExpression.Validate(bodyinputDatarequestrequestTypename, nameof(bodyinputDatarequestrequestTypename), required: false);
-            WorkflowExpression.Validate(bodyinputDatarequestrequestername, nameof(bodyinputDatarequestrequestername), required: false);
-            WorkflowExpression.Validate(bodyinputDatarequeststatusname, nameof(bodyinputDatarequeststatusname), required: false);
-            WorkflowExpression.Validate(bodyinputDatarequesttechnicianemailId, nameof(bodyinputDatarequesttechnicianemailId), required: false);
-            WorkflowExpression.Validate(bodyinputDatarequestsitename, nameof(bodyinputDatarequestsitename), required: false);
-            WorkflowExpression.Validate(bodyinputDatarequestgroupname, nameof(bodyinputDatarequestgroupname), required: false);
-            WorkflowExpression.Validate(bodyinputDatarequestdescription, nameof(bodyinputDatarequestdescription), required: false);
-            WorkflowExpression.Validate(bodyinputDatarequestpriorityname, nameof(bodyinputDatarequestpriorityname), required: false);
-            WorkflowExpression.Validate(bodyinputDatarequesturgencyname, nameof(bodyinputDatarequesturgencyname), required: false);
-            WorkflowExpression.Validate(bodyinputDatarequestimpactname, nameof(bodyinputDatarequestimpactname), required: false);
-            WorkflowExpression.Validate(bodyinputDatarequestmodename, nameof(bodyinputDatarequestmodename), required: false);
-            WorkflowExpression.Validate(bodyinputDatarequestcategoryname, nameof(bodyinputDatarequestcategoryname), required: false);
-            WorkflowExpression.Validate(bodyinputDatarequestsubcategoryname, nameof(bodyinputDatarequestsubcategoryname), required: false);
-            WorkflowExpression.Validate(bodyinputDatarequestitemname, nameof(bodyinputDatarequestitemname), required: false);
-            WorkflowExpression.Validate(bodyinputDatarequestassets, nameof(bodyinputDatarequestassets), required: false);
-            WorkflowExpression.Validate(bodyinputDatarequestudfFields, nameof(bodyinputDatarequestudfFields), required: false);
+            var __workflow_serviceDeskInstance = serviceDeskInstance == null ? null : WorkflowExpression.Compile(serviceDeskInstance);
+            WorkflowExpression.Validate(__workflow_serviceDeskInstance, nameof(serviceDeskInstance), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_bodyinputDatarequestsubject = bodyinputDatarequestsubject == null ? null : WorkflowExpression.Compile(bodyinputDatarequestsubject);
+            WorkflowExpression.Validate(__workflow_bodyinputDatarequestsubject, nameof(bodyinputDatarequestsubject), required: false);
+            var __workflow_bodyinputDatarequesttemplatename = bodyinputDatarequesttemplatename == null ? null : WorkflowExpression.Compile(bodyinputDatarequesttemplatename);
+            WorkflowExpression.Validate(__workflow_bodyinputDatarequesttemplatename, nameof(bodyinputDatarequesttemplatename), required: false);
+            var __workflow_bodyinputDatarequestrequestTypename = bodyinputDatarequestrequestTypename == null ? null : WorkflowExpression.Compile(bodyinputDatarequestrequestTypename);
+            WorkflowExpression.Validate(__workflow_bodyinputDatarequestrequestTypename, nameof(bodyinputDatarequestrequestTypename), required: false);
+            var __workflow_bodyinputDatarequestrequestername = bodyinputDatarequestrequestername == null ? null : WorkflowExpression.Compile(bodyinputDatarequestrequestername);
+            WorkflowExpression.Validate(__workflow_bodyinputDatarequestrequestername, nameof(bodyinputDatarequestrequestername), required: false);
+            var __workflow_bodyinputDatarequeststatusname = bodyinputDatarequeststatusname == null ? null : WorkflowExpression.Compile(bodyinputDatarequeststatusname);
+            WorkflowExpression.Validate(__workflow_bodyinputDatarequeststatusname, nameof(bodyinputDatarequeststatusname), required: false);
+            var __workflow_bodyinputDatarequesttechnicianemailId = bodyinputDatarequesttechnicianemailId == null ? null : WorkflowExpression.Compile(bodyinputDatarequesttechnicianemailId);
+            WorkflowExpression.Validate(__workflow_bodyinputDatarequesttechnicianemailId, nameof(bodyinputDatarequesttechnicianemailId), required: false);
+            var __workflow_bodyinputDatarequestsitename = bodyinputDatarequestsitename == null ? null : WorkflowExpression.Compile(bodyinputDatarequestsitename);
+            WorkflowExpression.Validate(__workflow_bodyinputDatarequestsitename, nameof(bodyinputDatarequestsitename), required: false);
+            var __workflow_bodyinputDatarequestgroupname = bodyinputDatarequestgroupname == null ? null : WorkflowExpression.Compile(bodyinputDatarequestgroupname);
+            WorkflowExpression.Validate(__workflow_bodyinputDatarequestgroupname, nameof(bodyinputDatarequestgroupname), required: false);
+            var __workflow_bodyinputDatarequestdescription = bodyinputDatarequestdescription == null ? null : WorkflowExpression.Compile(bodyinputDatarequestdescription);
+            WorkflowExpression.Validate(__workflow_bodyinputDatarequestdescription, nameof(bodyinputDatarequestdescription), required: false);
+            var __workflow_bodyinputDatarequestpriorityname = bodyinputDatarequestpriorityname == null ? null : WorkflowExpression.Compile(bodyinputDatarequestpriorityname);
+            WorkflowExpression.Validate(__workflow_bodyinputDatarequestpriorityname, nameof(bodyinputDatarequestpriorityname), required: false);
+            var __workflow_bodyinputDatarequesturgencyname = bodyinputDatarequesturgencyname == null ? null : WorkflowExpression.Compile(bodyinputDatarequesturgencyname);
+            WorkflowExpression.Validate(__workflow_bodyinputDatarequesturgencyname, nameof(bodyinputDatarequesturgencyname), required: false);
+            var __workflow_bodyinputDatarequestimpactname = bodyinputDatarequestimpactname == null ? null : WorkflowExpression.Compile(bodyinputDatarequestimpactname);
+            WorkflowExpression.Validate(__workflow_bodyinputDatarequestimpactname, nameof(bodyinputDatarequestimpactname), required: false);
+            var __workflow_bodyinputDatarequestmodename = bodyinputDatarequestmodename == null ? null : WorkflowExpression.Compile(bodyinputDatarequestmodename);
+            WorkflowExpression.Validate(__workflow_bodyinputDatarequestmodename, nameof(bodyinputDatarequestmodename), required: false);
+            var __workflow_bodyinputDatarequestcategoryname = bodyinputDatarequestcategoryname == null ? null : WorkflowExpression.Compile(bodyinputDatarequestcategoryname);
+            WorkflowExpression.Validate(__workflow_bodyinputDatarequestcategoryname, nameof(bodyinputDatarequestcategoryname), required: false);
+            var __workflow_bodyinputDatarequestsubcategoryname = bodyinputDatarequestsubcategoryname == null ? null : WorkflowExpression.Compile(bodyinputDatarequestsubcategoryname);
+            WorkflowExpression.Validate(__workflow_bodyinputDatarequestsubcategoryname, nameof(bodyinputDatarequestsubcategoryname), required: false);
+            var __workflow_bodyinputDatarequestitemname = bodyinputDatarequestitemname == null ? null : WorkflowExpression.Compile(bodyinputDatarequestitemname);
+            WorkflowExpression.Validate(__workflow_bodyinputDatarequestitemname, nameof(bodyinputDatarequestitemname), required: false);
+            var __workflow_bodyinputDatarequestassets = bodyinputDatarequestassets == null ? null : WorkflowExpression.Compile(bodyinputDatarequestassets);
+            WorkflowExpression.Validate(__workflow_bodyinputDatarequestassets, nameof(bodyinputDatarequestassets), required: false);
+            var __workflow_bodyinputDatarequestudfFields = bodyinputDatarequestudfFields == null ? null : WorkflowExpression.Compile(bodyinputDatarequestudfFields);
+            WorkflowExpression.Validate(__workflow_bodyinputDatarequestudfFields, nameof(bodyinputDatarequestudfFields), required: false);
             return new DeferredBodyAction<UpdateRequestResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/app/{0}/api/v3/requests/{1}", ExpressionConverter.ConvertWithUrlEncoding(serviceDeskInstance, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/app/{0}/api/v3/requests/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_serviceDeskInstance, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -329,17 +353,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
                 var inputDataObjectpropCount = 0;
                 var requestObject = new JObject();
                 var requestObjectpropCount = 0;
-                if (bodyinputDatarequestsubject != null)
+                if (__workflow_bodyinputDatarequestsubject != null)
                 {
-                    requestObject["subject"] = ExpressionConverter.ConvertO(bodyinputDatarequestsubject);
+                    requestObject["subject"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestsubject);
                     requestObjectpropCount++;
                 }
 
                 var templateObject = new JObject();
                 var templateObjectpropCount = 0;
-                if (bodyinputDatarequesttemplatename != null)
+                if (__workflow_bodyinputDatarequesttemplatename != null)
                 {
-                    templateObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequesttemplatename);
+                    templateObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequesttemplatename);
                     templateObjectpropCount++;
                 }
 
@@ -351,9 +375,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
                 var requestTypeObject = new JObject();
                 var requestTypeObjectpropCount = 0;
-                if (bodyinputDatarequestrequestTypename != null)
+                if (__workflow_bodyinputDatarequestrequestTypename != null)
                 {
-                    requestTypeObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestrequestTypename);
+                    requestTypeObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestrequestTypename);
                     requestTypeObjectpropCount++;
                 }
 
@@ -365,9 +389,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
                 var requesterObject = new JObject();
                 var requesterObjectpropCount = 0;
-                if (bodyinputDatarequestrequestername != null)
+                if (__workflow_bodyinputDatarequestrequestername != null)
                 {
-                    requesterObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestrequestername);
+                    requesterObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestrequestername);
                     requesterObjectpropCount++;
                 }
 
@@ -379,9 +403,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
                 var statusObject = new JObject();
                 var statusObjectpropCount = 0;
-                if (bodyinputDatarequeststatusname != null)
+                if (__workflow_bodyinputDatarequeststatusname != null)
                 {
-                    statusObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequeststatusname);
+                    statusObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequeststatusname);
                     statusObjectpropCount++;
                 }
 
@@ -393,9 +417,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
                 var technicianObject = new JObject();
                 var technicianObjectpropCount = 0;
-                if (bodyinputDatarequesttechnicianemailId != null)
+                if (__workflow_bodyinputDatarequesttechnicianemailId != null)
                 {
-                    technicianObject["email_id"] = ExpressionConverter.ConvertO(bodyinputDatarequesttechnicianemailId);
+                    technicianObject["email_id"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequesttechnicianemailId);
                     technicianObjectpropCount++;
                 }
 
@@ -407,9 +431,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
                 var siteObject = new JObject();
                 var siteObjectpropCount = 0;
-                if (bodyinputDatarequestsitename != null)
+                if (__workflow_bodyinputDatarequestsitename != null)
                 {
-                    siteObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestsitename);
+                    siteObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestsitename);
                     siteObjectpropCount++;
                 }
 
@@ -421,9 +445,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
                 var groupObject = new JObject();
                 var groupObjectpropCount = 0;
-                if (bodyinputDatarequestgroupname != null)
+                if (__workflow_bodyinputDatarequestgroupname != null)
                 {
-                    groupObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestgroupname);
+                    groupObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestgroupname);
                     groupObjectpropCount++;
                 }
 
@@ -433,17 +457,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
                     requestObjectpropCount++;
                 }
 
-                if (bodyinputDatarequestdescription != null)
+                if (__workflow_bodyinputDatarequestdescription != null)
                 {
-                    requestObject["description"] = ExpressionConverter.ConvertO(bodyinputDatarequestdescription);
+                    requestObject["description"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestdescription);
                     requestObjectpropCount++;
                 }
 
                 var priorityObject = new JObject();
                 var priorityObjectpropCount = 0;
-                if (bodyinputDatarequestpriorityname != null)
+                if (__workflow_bodyinputDatarequestpriorityname != null)
                 {
-                    priorityObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestpriorityname);
+                    priorityObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestpriorityname);
                     priorityObjectpropCount++;
                 }
 
@@ -455,9 +479,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
                 var urgencyObject = new JObject();
                 var urgencyObjectpropCount = 0;
-                if (bodyinputDatarequesturgencyname != null)
+                if (__workflow_bodyinputDatarequesturgencyname != null)
                 {
-                    urgencyObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequesturgencyname);
+                    urgencyObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequesturgencyname);
                     urgencyObjectpropCount++;
                 }
 
@@ -469,9 +493,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
                 var impactObject = new JObject();
                 var impactObjectpropCount = 0;
-                if (bodyinputDatarequestimpactname != null)
+                if (__workflow_bodyinputDatarequestimpactname != null)
                 {
-                    impactObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestimpactname);
+                    impactObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestimpactname);
                     impactObjectpropCount++;
                 }
 
@@ -483,9 +507,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
                 var modeObject = new JObject();
                 var modeObjectpropCount = 0;
-                if (bodyinputDatarequestmodename != null)
+                if (__workflow_bodyinputDatarequestmodename != null)
                 {
-                    modeObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestmodename);
+                    modeObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestmodename);
                     modeObjectpropCount++;
                 }
 
@@ -497,9 +521,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
                 var categoryObject = new JObject();
                 var categoryObjectpropCount = 0;
-                if (bodyinputDatarequestcategoryname != null)
+                if (__workflow_bodyinputDatarequestcategoryname != null)
                 {
-                    categoryObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestcategoryname);
+                    categoryObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestcategoryname);
                     categoryObjectpropCount++;
                 }
 
@@ -511,9 +535,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
                 var subcategoryObject = new JObject();
                 var subcategoryObjectpropCount = 0;
-                if (bodyinputDatarequestsubcategoryname != null)
+                if (__workflow_bodyinputDatarequestsubcategoryname != null)
                 {
-                    subcategoryObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestsubcategoryname);
+                    subcategoryObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestsubcategoryname);
                     subcategoryObjectpropCount++;
                 }
 
@@ -525,9 +549,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
                 var itemObject = new JObject();
                 var itemObjectpropCount = 0;
-                if (bodyinputDatarequestitemname != null)
+                if (__workflow_bodyinputDatarequestitemname != null)
                 {
-                    itemObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestitemname);
+                    itemObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestitemname);
                     itemObjectpropCount++;
                 }
 
@@ -537,15 +561,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
                     requestObjectpropCount++;
                 }
 
-                if (bodyinputDatarequestassets != null)
+                if (__workflow_bodyinputDatarequestassets != null)
                 {
-                    requestObject["assets"] = ExpressionConverter.ConvertO(bodyinputDatarequestassets);
+                    requestObject["assets"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestassets);
                     requestObjectpropCount++;
                 }
 
-                if (bodyinputDatarequestudfFields != null)
+                if (__workflow_bodyinputDatarequestudfFields != null)
                 {
-                    requestObject["udf_fields"] = ExpressionConverter.ConvertO(bodyinputDatarequestudfFields);
+                    requestObject["udf_fields"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatarequestudfFields);
                     requestObjectpropCount++;
                 }
 
@@ -571,38 +595,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicedeskpluscloud")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateChange))]
-        public IBodyWorkflowAction<CreateChangeResponse> CreateChange([WorkflowExpression] Func<string> serviceDeskInstance, [WorkflowExpression] Func<string> bodyinputDatachangetitle, [WorkflowExpression] Func<string> bodyinputDatachangecomment = null, [WorkflowExpression] Func<string> bodyinputDatachangetemplatename = null, [WorkflowExpression] Func<string> bodyinputDatachangechangeRequestername = null, [WorkflowExpression] Func<string> bodyinputDatachangesitename = null, [WorkflowExpression] Func<string> bodyinputDatachangegroupname = null, [WorkflowExpression] Func<string> bodyinputDatachangedescription = null, [WorkflowExpression] Func<string> bodyinputDatachangechangeOwneremailId = null, [WorkflowExpression] Func<string> bodyinputDatachangechangeTypename = null, [WorkflowExpression] Func<string> bodyinputDatachangepriorityname = null, [WorkflowExpression] Func<string> bodyinputDatachangeurgencyname = null, [WorkflowExpression] Func<string> bodyinputDatachangeimpactname = null, [WorkflowExpression] Func<string> bodyinputDatachangeriskname = null, [WorkflowExpression] Func<string> bodyinputDatachangereasonForChangename = null, [WorkflowExpression] Func<string> bodyinputDatachangecategoryname = null, [WorkflowExpression] Func<string> bodyinputDatachangesubcategoryname = null, [WorkflowExpression] Func<string> bodyinputDatachangeitemname = null, [WorkflowExpression] Func<bodyinputDatachangeassetsInputItem[]> bodyinputDatachangeassets = null, [WorkflowExpression] Func<string> bodyinputDatachangeudfFields = null)
+        public IBodyWorkflowAction<CreateChangeResponse> CreateChange(Expression<Func<string>> serviceDeskInstance, Expression<Func<string>> bodyinputDatachangetitle, Expression<Func<string>> bodyinputDatachangecomment = null, Expression<Func<string>> bodyinputDatachangetemplatename = null, Expression<Func<string>> bodyinputDatachangechangeRequestername = null, Expression<Func<string>> bodyinputDatachangesitename = null, Expression<Func<string>> bodyinputDatachangegroupname = null, Expression<Func<string>> bodyinputDatachangedescription = null, Expression<Func<string>> bodyinputDatachangechangeOwneremailId = null, Expression<Func<string>> bodyinputDatachangechangeTypename = null, Expression<Func<string>> bodyinputDatachangepriorityname = null, Expression<Func<string>> bodyinputDatachangeurgencyname = null, Expression<Func<string>> bodyinputDatachangeimpactname = null, Expression<Func<string>> bodyinputDatachangeriskname = null, Expression<Func<string>> bodyinputDatachangereasonForChangename = null, Expression<Func<string>> bodyinputDatachangecategoryname = null, Expression<Func<string>> bodyinputDatachangesubcategoryname = null, Expression<Func<string>> bodyinputDatachangeitemname = null, Expression<Func<bodyinputDatachangeassetsInputItem[]>> bodyinputDatachangeassets = null, Expression<Func<string>> bodyinputDatachangeudfFields = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateChangeResponse> __BuildCreateChange(WorkflowExpression<string> serviceDeskInstance, WorkflowExpression<string> bodyinputDatachangetitle, WorkflowExpression<string> bodyinputDatachangecomment = null, WorkflowExpression<string> bodyinputDatachangetemplatename = null, WorkflowExpression<string> bodyinputDatachangechangeRequestername = null, WorkflowExpression<string> bodyinputDatachangesitename = null, WorkflowExpression<string> bodyinputDatachangegroupname = null, WorkflowExpression<string> bodyinputDatachangedescription = null, WorkflowExpression<string> bodyinputDatachangechangeOwneremailId = null, WorkflowExpression<string> bodyinputDatachangechangeTypename = null, WorkflowExpression<string> bodyinputDatachangepriorityname = null, WorkflowExpression<string> bodyinputDatachangeurgencyname = null, WorkflowExpression<string> bodyinputDatachangeimpactname = null, WorkflowExpression<string> bodyinputDatachangeriskname = null, WorkflowExpression<string> bodyinputDatachangereasonForChangename = null, WorkflowExpression<string> bodyinputDatachangecategoryname = null, WorkflowExpression<string> bodyinputDatachangesubcategoryname = null, WorkflowExpression<string> bodyinputDatachangeitemname = null, WorkflowExpression<bodyinputDatachangeassetsInputItem[]> bodyinputDatachangeassets = null, WorkflowExpression<string> bodyinputDatachangeudfFields = null)
-        {
-            WorkflowExpression.Validate(serviceDeskInstance, nameof(serviceDeskInstance), required: true);
-            WorkflowExpression.Validate(bodyinputDatachangetitle, nameof(bodyinputDatachangetitle), required: true);
-            WorkflowExpression.Validate(bodyinputDatachangecomment, nameof(bodyinputDatachangecomment), required: false);
-            WorkflowExpression.Validate(bodyinputDatachangetemplatename, nameof(bodyinputDatachangetemplatename), required: false);
-            WorkflowExpression.Validate(bodyinputDatachangechangeRequestername, nameof(bodyinputDatachangechangeRequestername), required: false);
-            WorkflowExpression.Validate(bodyinputDatachangesitename, nameof(bodyinputDatachangesitename), required: false);
-            WorkflowExpression.Validate(bodyinputDatachangegroupname, nameof(bodyinputDatachangegroupname), required: false);
-            WorkflowExpression.Validate(bodyinputDatachangedescription, nameof(bodyinputDatachangedescription), required: false);
-            WorkflowExpression.Validate(bodyinputDatachangechangeOwneremailId, nameof(bodyinputDatachangechangeOwneremailId), required: false);
-            WorkflowExpression.Validate(bodyinputDatachangechangeTypename, nameof(bodyinputDatachangechangeTypename), required: false);
-            WorkflowExpression.Validate(bodyinputDatachangepriorityname, nameof(bodyinputDatachangepriorityname), required: false);
-            WorkflowExpression.Validate(bodyinputDatachangeurgencyname, nameof(bodyinputDatachangeurgencyname), required: false);
-            WorkflowExpression.Validate(bodyinputDatachangeimpactname, nameof(bodyinputDatachangeimpactname), required: false);
-            WorkflowExpression.Validate(bodyinputDatachangeriskname, nameof(bodyinputDatachangeriskname), required: false);
-            WorkflowExpression.Validate(bodyinputDatachangereasonForChangename, nameof(bodyinputDatachangereasonForChangename), required: false);
-            WorkflowExpression.Validate(bodyinputDatachangecategoryname, nameof(bodyinputDatachangecategoryname), required: false);
-            WorkflowExpression.Validate(bodyinputDatachangesubcategoryname, nameof(bodyinputDatachangesubcategoryname), required: false);
-            WorkflowExpression.Validate(bodyinputDatachangeitemname, nameof(bodyinputDatachangeitemname), required: false);
-            WorkflowExpression.Validate(bodyinputDatachangeassets, nameof(bodyinputDatachangeassets), required: false);
-            WorkflowExpression.Validate(bodyinputDatachangeudfFields, nameof(bodyinputDatachangeudfFields), required: false);
+            var __workflow_serviceDeskInstance = serviceDeskInstance == null ? null : WorkflowExpression.Compile(serviceDeskInstance);
+            WorkflowExpression.Validate(__workflow_serviceDeskInstance, nameof(serviceDeskInstance), required: true);
+            var __workflow_bodyinputDatachangetitle = bodyinputDatachangetitle == null ? null : WorkflowExpression.Compile(bodyinputDatachangetitle);
+            WorkflowExpression.Validate(__workflow_bodyinputDatachangetitle, nameof(bodyinputDatachangetitle), required: true);
+            var __workflow_bodyinputDatachangecomment = bodyinputDatachangecomment == null ? null : WorkflowExpression.Compile(bodyinputDatachangecomment);
+            WorkflowExpression.Validate(__workflow_bodyinputDatachangecomment, nameof(bodyinputDatachangecomment), required: false);
+            var __workflow_bodyinputDatachangetemplatename = bodyinputDatachangetemplatename == null ? null : WorkflowExpression.Compile(bodyinputDatachangetemplatename);
+            WorkflowExpression.Validate(__workflow_bodyinputDatachangetemplatename, nameof(bodyinputDatachangetemplatename), required: false);
+            var __workflow_bodyinputDatachangechangeRequestername = bodyinputDatachangechangeRequestername == null ? null : WorkflowExpression.Compile(bodyinputDatachangechangeRequestername);
+            WorkflowExpression.Validate(__workflow_bodyinputDatachangechangeRequestername, nameof(bodyinputDatachangechangeRequestername), required: false);
+            var __workflow_bodyinputDatachangesitename = bodyinputDatachangesitename == null ? null : WorkflowExpression.Compile(bodyinputDatachangesitename);
+            WorkflowExpression.Validate(__workflow_bodyinputDatachangesitename, nameof(bodyinputDatachangesitename), required: false);
+            var __workflow_bodyinputDatachangegroupname = bodyinputDatachangegroupname == null ? null : WorkflowExpression.Compile(bodyinputDatachangegroupname);
+            WorkflowExpression.Validate(__workflow_bodyinputDatachangegroupname, nameof(bodyinputDatachangegroupname), required: false);
+            var __workflow_bodyinputDatachangedescription = bodyinputDatachangedescription == null ? null : WorkflowExpression.Compile(bodyinputDatachangedescription);
+            WorkflowExpression.Validate(__workflow_bodyinputDatachangedescription, nameof(bodyinputDatachangedescription), required: false);
+            var __workflow_bodyinputDatachangechangeOwneremailId = bodyinputDatachangechangeOwneremailId == null ? null : WorkflowExpression.Compile(bodyinputDatachangechangeOwneremailId);
+            WorkflowExpression.Validate(__workflow_bodyinputDatachangechangeOwneremailId, nameof(bodyinputDatachangechangeOwneremailId), required: false);
+            var __workflow_bodyinputDatachangechangeTypename = bodyinputDatachangechangeTypename == null ? null : WorkflowExpression.Compile(bodyinputDatachangechangeTypename);
+            WorkflowExpression.Validate(__workflow_bodyinputDatachangechangeTypename, nameof(bodyinputDatachangechangeTypename), required: false);
+            var __workflow_bodyinputDatachangepriorityname = bodyinputDatachangepriorityname == null ? null : WorkflowExpression.Compile(bodyinputDatachangepriorityname);
+            WorkflowExpression.Validate(__workflow_bodyinputDatachangepriorityname, nameof(bodyinputDatachangepriorityname), required: false);
+            var __workflow_bodyinputDatachangeurgencyname = bodyinputDatachangeurgencyname == null ? null : WorkflowExpression.Compile(bodyinputDatachangeurgencyname);
+            WorkflowExpression.Validate(__workflow_bodyinputDatachangeurgencyname, nameof(bodyinputDatachangeurgencyname), required: false);
+            var __workflow_bodyinputDatachangeimpactname = bodyinputDatachangeimpactname == null ? null : WorkflowExpression.Compile(bodyinputDatachangeimpactname);
+            WorkflowExpression.Validate(__workflow_bodyinputDatachangeimpactname, nameof(bodyinputDatachangeimpactname), required: false);
+            var __workflow_bodyinputDatachangeriskname = bodyinputDatachangeriskname == null ? null : WorkflowExpression.Compile(bodyinputDatachangeriskname);
+            WorkflowExpression.Validate(__workflow_bodyinputDatachangeriskname, nameof(bodyinputDatachangeriskname), required: false);
+            var __workflow_bodyinputDatachangereasonForChangename = bodyinputDatachangereasonForChangename == null ? null : WorkflowExpression.Compile(bodyinputDatachangereasonForChangename);
+            WorkflowExpression.Validate(__workflow_bodyinputDatachangereasonForChangename, nameof(bodyinputDatachangereasonForChangename), required: false);
+            var __workflow_bodyinputDatachangecategoryname = bodyinputDatachangecategoryname == null ? null : WorkflowExpression.Compile(bodyinputDatachangecategoryname);
+            WorkflowExpression.Validate(__workflow_bodyinputDatachangecategoryname, nameof(bodyinputDatachangecategoryname), required: false);
+            var __workflow_bodyinputDatachangesubcategoryname = bodyinputDatachangesubcategoryname == null ? null : WorkflowExpression.Compile(bodyinputDatachangesubcategoryname);
+            WorkflowExpression.Validate(__workflow_bodyinputDatachangesubcategoryname, nameof(bodyinputDatachangesubcategoryname), required: false);
+            var __workflow_bodyinputDatachangeitemname = bodyinputDatachangeitemname == null ? null : WorkflowExpression.Compile(bodyinputDatachangeitemname);
+            WorkflowExpression.Validate(__workflow_bodyinputDatachangeitemname, nameof(bodyinputDatachangeitemname), required: false);
+            var __workflow_bodyinputDatachangeassets = bodyinputDatachangeassets == null ? null : WorkflowExpression.Compile(bodyinputDatachangeassets);
+            WorkflowExpression.Validate(__workflow_bodyinputDatachangeassets, nameof(bodyinputDatachangeassets), required: false);
+            var __workflow_bodyinputDatachangeudfFields = bodyinputDatachangeudfFields == null ? null : WorkflowExpression.Compile(bodyinputDatachangeudfFields);
+            WorkflowExpression.Validate(__workflow_bodyinputDatachangeudfFields, nameof(bodyinputDatachangeudfFields), required: false);
             return new DeferredBodyAction<CreateChangeResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/app/{0}/api/v3/changes", ExpressionConverter.ConvertWithUrlEncoding(serviceDeskInstance, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/app/{0}/api/v3/changes", ExpressionConverter.ConvertWithUrlEncoding(__workflow_serviceDeskInstance, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -612,18 +649,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
                 var changeObject = new JObject();
                 var changeObjectpropCount = 0;
                 changeObjectpropCount++;
-                changeObject["title"] = ExpressionConverter.ConvertO(bodyinputDatachangetitle);
-                if (bodyinputDatachangecomment != null)
+                changeObject["title"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangetitle);
+                if (__workflow_bodyinputDatachangecomment != null)
                 {
-                    changeObject["comment"] = ExpressionConverter.ConvertO(bodyinputDatachangecomment);
+                    changeObject["comment"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangecomment);
                     changeObjectpropCount++;
                 }
 
                 var templateObject = new JObject();
                 var templateObjectpropCount = 0;
-                if (bodyinputDatachangetemplatename != null)
+                if (__workflow_bodyinputDatachangetemplatename != null)
                 {
-                    templateObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangetemplatename);
+                    templateObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangetemplatename);
                     templateObjectpropCount++;
                 }
 
@@ -635,9 +672,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
                 var changeRequesterObject = new JObject();
                 var changeRequesterObjectpropCount = 0;
-                if (bodyinputDatachangechangeRequestername != null)
+                if (__workflow_bodyinputDatachangechangeRequestername != null)
                 {
-                    changeRequesterObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangechangeRequestername);
+                    changeRequesterObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangechangeRequestername);
                     changeRequesterObjectpropCount++;
                 }
 
@@ -649,9 +686,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
                 var siteObject = new JObject();
                 var siteObjectpropCount = 0;
-                if (bodyinputDatachangesitename != null)
+                if (__workflow_bodyinputDatachangesitename != null)
                 {
-                    siteObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangesitename);
+                    siteObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangesitename);
                     siteObjectpropCount++;
                 }
 
@@ -663,9 +700,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
                 var groupObject = new JObject();
                 var groupObjectpropCount = 0;
-                if (bodyinputDatachangegroupname != null)
+                if (__workflow_bodyinputDatachangegroupname != null)
                 {
-                    groupObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangegroupname);
+                    groupObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangegroupname);
                     groupObjectpropCount++;
                 }
 
@@ -675,17 +712,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
                     changeObjectpropCount++;
                 }
 
-                if (bodyinputDatachangedescription != null)
+                if (__workflow_bodyinputDatachangedescription != null)
                 {
-                    changeObject["description"] = ExpressionConverter.ConvertO(bodyinputDatachangedescription);
+                    changeObject["description"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangedescription);
                     changeObjectpropCount++;
                 }
 
                 var changeOwnerObject = new JObject();
                 var changeOwnerObjectpropCount = 0;
-                if (bodyinputDatachangechangeOwneremailId != null)
+                if (__workflow_bodyinputDatachangechangeOwneremailId != null)
                 {
-                    changeOwnerObject["email_id"] = ExpressionConverter.ConvertO(bodyinputDatachangechangeOwneremailId);
+                    changeOwnerObject["email_id"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangechangeOwneremailId);
                     changeOwnerObjectpropCount++;
                 }
 
@@ -697,9 +734,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
                 var changeTypeObject = new JObject();
                 var changeTypeObjectpropCount = 0;
-                if (bodyinputDatachangechangeTypename != null)
+                if (__workflow_bodyinputDatachangechangeTypename != null)
                 {
-                    changeTypeObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangechangeTypename);
+                    changeTypeObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangechangeTypename);
                     changeTypeObjectpropCount++;
                 }
 
@@ -711,9 +748,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
                 var priorityObject = new JObject();
                 var priorityObjectpropCount = 0;
-                if (bodyinputDatachangepriorityname != null)
+                if (__workflow_bodyinputDatachangepriorityname != null)
                 {
-                    priorityObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangepriorityname);
+                    priorityObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangepriorityname);
                     priorityObjectpropCount++;
                 }
 
@@ -725,9 +762,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
                 var urgencyObject = new JObject();
                 var urgencyObjectpropCount = 0;
-                if (bodyinputDatachangeurgencyname != null)
+                if (__workflow_bodyinputDatachangeurgencyname != null)
                 {
-                    urgencyObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangeurgencyname);
+                    urgencyObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangeurgencyname);
                     urgencyObjectpropCount++;
                 }
 
@@ -739,9 +776,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
                 var impactObject = new JObject();
                 var impactObjectpropCount = 0;
-                if (bodyinputDatachangeimpactname != null)
+                if (__workflow_bodyinputDatachangeimpactname != null)
                 {
-                    impactObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangeimpactname);
+                    impactObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangeimpactname);
                     impactObjectpropCount++;
                 }
 
@@ -753,9 +790,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
                 var riskObject = new JObject();
                 var riskObjectpropCount = 0;
-                if (bodyinputDatachangeriskname != null)
+                if (__workflow_bodyinputDatachangeriskname != null)
                 {
-                    riskObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangeriskname);
+                    riskObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangeriskname);
                     riskObjectpropCount++;
                 }
 
@@ -767,9 +804,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
                 var reasonForChangeObject = new JObject();
                 var reasonForChangeObjectpropCount = 0;
-                if (bodyinputDatachangereasonForChangename != null)
+                if (__workflow_bodyinputDatachangereasonForChangename != null)
                 {
-                    reasonForChangeObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangereasonForChangename);
+                    reasonForChangeObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangereasonForChangename);
                     reasonForChangeObjectpropCount++;
                 }
 
@@ -781,9 +818,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
                 var categoryObject = new JObject();
                 var categoryObjectpropCount = 0;
-                if (bodyinputDatachangecategoryname != null)
+                if (__workflow_bodyinputDatachangecategoryname != null)
                 {
-                    categoryObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangecategoryname);
+                    categoryObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangecategoryname);
                     categoryObjectpropCount++;
                 }
 
@@ -795,9 +832,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
                 var subcategoryObject = new JObject();
                 var subcategoryObjectpropCount = 0;
-                if (bodyinputDatachangesubcategoryname != null)
+                if (__workflow_bodyinputDatachangesubcategoryname != null)
                 {
-                    subcategoryObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangesubcategoryname);
+                    subcategoryObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangesubcategoryname);
                     subcategoryObjectpropCount++;
                 }
 
@@ -809,9 +846,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
                 var itemObject = new JObject();
                 var itemObjectpropCount = 0;
-                if (bodyinputDatachangeitemname != null)
+                if (__workflow_bodyinputDatachangeitemname != null)
                 {
-                    itemObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangeitemname);
+                    itemObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangeitemname);
                     itemObjectpropCount++;
                 }
 
@@ -821,15 +858,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
                     changeObjectpropCount++;
                 }
 
-                if (bodyinputDatachangeassets != null)
+                if (__workflow_bodyinputDatachangeassets != null)
                 {
-                    changeObject["assets"] = ExpressionConverter.ConvertO(bodyinputDatachangeassets);
+                    changeObject["assets"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangeassets);
                     changeObjectpropCount++;
                 }
 
-                if (bodyinputDatachangeudfFields != null)
+                if (__workflow_bodyinputDatachangeudfFields != null)
                 {
-                    changeObject["udf_fields"] = ExpressionConverter.ConvertO(bodyinputDatachangeudfFields);
+                    changeObject["udf_fields"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangeudfFields);
                     changeObjectpropCount++;
                 }
 
@@ -855,39 +892,53 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicedeskpluscloud")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateChange))]
-        public IBodyWorkflowAction<UpdateChangeResponse> UpdateChange([WorkflowExpression] Func<string> serviceDeskInstance, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyinputDatachangetitle = null, [WorkflowExpression] Func<string> bodyinputDatachangecomment = null, [WorkflowExpression] Func<string> bodyinputDatachangetemplatename = null, [WorkflowExpression] Func<string> bodyinputDatachangechangeRequestername = null, [WorkflowExpression] Func<string> bodyinputDatachangesitename = null, [WorkflowExpression] Func<string> bodyinputDatachangegroupname = null, [WorkflowExpression] Func<string> bodyinputDatachangedescription = null, [WorkflowExpression] Func<string> bodyinputDatachangechangeOwneremailId = null, [WorkflowExpression] Func<string> bodyinputDatachangechangeTypename = null, [WorkflowExpression] Func<string> bodyinputDatachangepriorityname = null, [WorkflowExpression] Func<string> bodyinputDatachangeurgencyname = null, [WorkflowExpression] Func<string> bodyinputDatachangeimpactname = null, [WorkflowExpression] Func<string> bodyinputDatachangeriskname = null, [WorkflowExpression] Func<string> bodyinputDatachangereasonForChangename = null, [WorkflowExpression] Func<string> bodyinputDatachangecategoryname = null, [WorkflowExpression] Func<string> bodyinputDatachangesubcategoryname = null, [WorkflowExpression] Func<string> bodyinputDatachangeitemname = null, [WorkflowExpression] Func<bodyinputDatachangeassetsInputItem[]> bodyinputDatachangeassets = null, [WorkflowExpression] Func<string> bodyinputDatachangeudfFields = null)
+        public IBodyWorkflowAction<UpdateChangeResponse> UpdateChange(Expression<Func<string>> serviceDeskInstance, Expression<Func<string>> id, Expression<Func<string>> bodyinputDatachangetitle = null, Expression<Func<string>> bodyinputDatachangecomment = null, Expression<Func<string>> bodyinputDatachangetemplatename = null, Expression<Func<string>> bodyinputDatachangechangeRequestername = null, Expression<Func<string>> bodyinputDatachangesitename = null, Expression<Func<string>> bodyinputDatachangegroupname = null, Expression<Func<string>> bodyinputDatachangedescription = null, Expression<Func<string>> bodyinputDatachangechangeOwneremailId = null, Expression<Func<string>> bodyinputDatachangechangeTypename = null, Expression<Func<string>> bodyinputDatachangepriorityname = null, Expression<Func<string>> bodyinputDatachangeurgencyname = null, Expression<Func<string>> bodyinputDatachangeimpactname = null, Expression<Func<string>> bodyinputDatachangeriskname = null, Expression<Func<string>> bodyinputDatachangereasonForChangename = null, Expression<Func<string>> bodyinputDatachangecategoryname = null, Expression<Func<string>> bodyinputDatachangesubcategoryname = null, Expression<Func<string>> bodyinputDatachangeitemname = null, Expression<Func<bodyinputDatachangeassetsInputItem[]>> bodyinputDatachangeassets = null, Expression<Func<string>> bodyinputDatachangeudfFields = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UpdateChangeResponse> __BuildUpdateChange(WorkflowExpression<string> serviceDeskInstance, WorkflowExpression<string> id, WorkflowExpression<string> bodyinputDatachangetitle = null, WorkflowExpression<string> bodyinputDatachangecomment = null, WorkflowExpression<string> bodyinputDatachangetemplatename = null, WorkflowExpression<string> bodyinputDatachangechangeRequestername = null, WorkflowExpression<string> bodyinputDatachangesitename = null, WorkflowExpression<string> bodyinputDatachangegroupname = null, WorkflowExpression<string> bodyinputDatachangedescription = null, WorkflowExpression<string> bodyinputDatachangechangeOwneremailId = null, WorkflowExpression<string> bodyinputDatachangechangeTypename = null, WorkflowExpression<string> bodyinputDatachangepriorityname = null, WorkflowExpression<string> bodyinputDatachangeurgencyname = null, WorkflowExpression<string> bodyinputDatachangeimpactname = null, WorkflowExpression<string> bodyinputDatachangeriskname = null, WorkflowExpression<string> bodyinputDatachangereasonForChangename = null, WorkflowExpression<string> bodyinputDatachangecategoryname = null, WorkflowExpression<string> bodyinputDatachangesubcategoryname = null, WorkflowExpression<string> bodyinputDatachangeitemname = null, WorkflowExpression<bodyinputDatachangeassetsInputItem[]> bodyinputDatachangeassets = null, WorkflowExpression<string> bodyinputDatachangeudfFields = null)
-        {
-            WorkflowExpression.Validate(serviceDeskInstance, nameof(serviceDeskInstance), required: true);
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(bodyinputDatachangetitle, nameof(bodyinputDatachangetitle), required: false);
-            WorkflowExpression.Validate(bodyinputDatachangecomment, nameof(bodyinputDatachangecomment), required: false);
-            WorkflowExpression.Validate(bodyinputDatachangetemplatename, nameof(bodyinputDatachangetemplatename), required: false);
-            WorkflowExpression.Validate(bodyinputDatachangechangeRequestername, nameof(bodyinputDatachangechangeRequestername), required: false);
-            WorkflowExpression.Validate(bodyinputDatachangesitename, nameof(bodyinputDatachangesitename), required: false);
-            WorkflowExpression.Validate(bodyinputDatachangegroupname, nameof(bodyinputDatachangegroupname), required: false);
-            WorkflowExpression.Validate(bodyinputDatachangedescription, nameof(bodyinputDatachangedescription), required: false);
-            WorkflowExpression.Validate(bodyinputDatachangechangeOwneremailId, nameof(bodyinputDatachangechangeOwneremailId), required: false);
-            WorkflowExpression.Validate(bodyinputDatachangechangeTypename, nameof(bodyinputDatachangechangeTypename), required: false);
-            WorkflowExpression.Validate(bodyinputDatachangepriorityname, nameof(bodyinputDatachangepriorityname), required: false);
-            WorkflowExpression.Validate(bodyinputDatachangeurgencyname, nameof(bodyinputDatachangeurgencyname), required: false);
-            WorkflowExpression.Validate(bodyinputDatachangeimpactname, nameof(bodyinputDatachangeimpactname), required: false);
-            WorkflowExpression.Validate(bodyinputDatachangeriskname, nameof(bodyinputDatachangeriskname), required: false);
-            WorkflowExpression.Validate(bodyinputDatachangereasonForChangename, nameof(bodyinputDatachangereasonForChangename), required: false);
-            WorkflowExpression.Validate(bodyinputDatachangecategoryname, nameof(bodyinputDatachangecategoryname), required: false);
-            WorkflowExpression.Validate(bodyinputDatachangesubcategoryname, nameof(bodyinputDatachangesubcategoryname), required: false);
-            WorkflowExpression.Validate(bodyinputDatachangeitemname, nameof(bodyinputDatachangeitemname), required: false);
-            WorkflowExpression.Validate(bodyinputDatachangeassets, nameof(bodyinputDatachangeassets), required: false);
-            WorkflowExpression.Validate(bodyinputDatachangeudfFields, nameof(bodyinputDatachangeudfFields), required: false);
+            var __workflow_serviceDeskInstance = serviceDeskInstance == null ? null : WorkflowExpression.Compile(serviceDeskInstance);
+            WorkflowExpression.Validate(__workflow_serviceDeskInstance, nameof(serviceDeskInstance), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_bodyinputDatachangetitle = bodyinputDatachangetitle == null ? null : WorkflowExpression.Compile(bodyinputDatachangetitle);
+            WorkflowExpression.Validate(__workflow_bodyinputDatachangetitle, nameof(bodyinputDatachangetitle), required: false);
+            var __workflow_bodyinputDatachangecomment = bodyinputDatachangecomment == null ? null : WorkflowExpression.Compile(bodyinputDatachangecomment);
+            WorkflowExpression.Validate(__workflow_bodyinputDatachangecomment, nameof(bodyinputDatachangecomment), required: false);
+            var __workflow_bodyinputDatachangetemplatename = bodyinputDatachangetemplatename == null ? null : WorkflowExpression.Compile(bodyinputDatachangetemplatename);
+            WorkflowExpression.Validate(__workflow_bodyinputDatachangetemplatename, nameof(bodyinputDatachangetemplatename), required: false);
+            var __workflow_bodyinputDatachangechangeRequestername = bodyinputDatachangechangeRequestername == null ? null : WorkflowExpression.Compile(bodyinputDatachangechangeRequestername);
+            WorkflowExpression.Validate(__workflow_bodyinputDatachangechangeRequestername, nameof(bodyinputDatachangechangeRequestername), required: false);
+            var __workflow_bodyinputDatachangesitename = bodyinputDatachangesitename == null ? null : WorkflowExpression.Compile(bodyinputDatachangesitename);
+            WorkflowExpression.Validate(__workflow_bodyinputDatachangesitename, nameof(bodyinputDatachangesitename), required: false);
+            var __workflow_bodyinputDatachangegroupname = bodyinputDatachangegroupname == null ? null : WorkflowExpression.Compile(bodyinputDatachangegroupname);
+            WorkflowExpression.Validate(__workflow_bodyinputDatachangegroupname, nameof(bodyinputDatachangegroupname), required: false);
+            var __workflow_bodyinputDatachangedescription = bodyinputDatachangedescription == null ? null : WorkflowExpression.Compile(bodyinputDatachangedescription);
+            WorkflowExpression.Validate(__workflow_bodyinputDatachangedescription, nameof(bodyinputDatachangedescription), required: false);
+            var __workflow_bodyinputDatachangechangeOwneremailId = bodyinputDatachangechangeOwneremailId == null ? null : WorkflowExpression.Compile(bodyinputDatachangechangeOwneremailId);
+            WorkflowExpression.Validate(__workflow_bodyinputDatachangechangeOwneremailId, nameof(bodyinputDatachangechangeOwneremailId), required: false);
+            var __workflow_bodyinputDatachangechangeTypename = bodyinputDatachangechangeTypename == null ? null : WorkflowExpression.Compile(bodyinputDatachangechangeTypename);
+            WorkflowExpression.Validate(__workflow_bodyinputDatachangechangeTypename, nameof(bodyinputDatachangechangeTypename), required: false);
+            var __workflow_bodyinputDatachangepriorityname = bodyinputDatachangepriorityname == null ? null : WorkflowExpression.Compile(bodyinputDatachangepriorityname);
+            WorkflowExpression.Validate(__workflow_bodyinputDatachangepriorityname, nameof(bodyinputDatachangepriorityname), required: false);
+            var __workflow_bodyinputDatachangeurgencyname = bodyinputDatachangeurgencyname == null ? null : WorkflowExpression.Compile(bodyinputDatachangeurgencyname);
+            WorkflowExpression.Validate(__workflow_bodyinputDatachangeurgencyname, nameof(bodyinputDatachangeurgencyname), required: false);
+            var __workflow_bodyinputDatachangeimpactname = bodyinputDatachangeimpactname == null ? null : WorkflowExpression.Compile(bodyinputDatachangeimpactname);
+            WorkflowExpression.Validate(__workflow_bodyinputDatachangeimpactname, nameof(bodyinputDatachangeimpactname), required: false);
+            var __workflow_bodyinputDatachangeriskname = bodyinputDatachangeriskname == null ? null : WorkflowExpression.Compile(bodyinputDatachangeriskname);
+            WorkflowExpression.Validate(__workflow_bodyinputDatachangeriskname, nameof(bodyinputDatachangeriskname), required: false);
+            var __workflow_bodyinputDatachangereasonForChangename = bodyinputDatachangereasonForChangename == null ? null : WorkflowExpression.Compile(bodyinputDatachangereasonForChangename);
+            WorkflowExpression.Validate(__workflow_bodyinputDatachangereasonForChangename, nameof(bodyinputDatachangereasonForChangename), required: false);
+            var __workflow_bodyinputDatachangecategoryname = bodyinputDatachangecategoryname == null ? null : WorkflowExpression.Compile(bodyinputDatachangecategoryname);
+            WorkflowExpression.Validate(__workflow_bodyinputDatachangecategoryname, nameof(bodyinputDatachangecategoryname), required: false);
+            var __workflow_bodyinputDatachangesubcategoryname = bodyinputDatachangesubcategoryname == null ? null : WorkflowExpression.Compile(bodyinputDatachangesubcategoryname);
+            WorkflowExpression.Validate(__workflow_bodyinputDatachangesubcategoryname, nameof(bodyinputDatachangesubcategoryname), required: false);
+            var __workflow_bodyinputDatachangeitemname = bodyinputDatachangeitemname == null ? null : WorkflowExpression.Compile(bodyinputDatachangeitemname);
+            WorkflowExpression.Validate(__workflow_bodyinputDatachangeitemname, nameof(bodyinputDatachangeitemname), required: false);
+            var __workflow_bodyinputDatachangeassets = bodyinputDatachangeassets == null ? null : WorkflowExpression.Compile(bodyinputDatachangeassets);
+            WorkflowExpression.Validate(__workflow_bodyinputDatachangeassets, nameof(bodyinputDatachangeassets), required: false);
+            var __workflow_bodyinputDatachangeudfFields = bodyinputDatachangeudfFields == null ? null : WorkflowExpression.Compile(bodyinputDatachangeudfFields);
+            WorkflowExpression.Validate(__workflow_bodyinputDatachangeudfFields, nameof(bodyinputDatachangeudfFields), required: false);
             return new DeferredBodyAction<UpdateChangeResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/app/{0}/api/v3/changes/{1}", ExpressionConverter.ConvertWithUrlEncoding(serviceDeskInstance, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/app/{0}/api/v3/changes/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_serviceDeskInstance, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -896,23 +947,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
                 var inputDataObjectpropCount = 0;
                 var changeObject = new JObject();
                 var changeObjectpropCount = 0;
-                if (bodyinputDatachangetitle != null)
+                if (__workflow_bodyinputDatachangetitle != null)
                 {
-                    changeObject["title"] = ExpressionConverter.ConvertO(bodyinputDatachangetitle);
+                    changeObject["title"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangetitle);
                     changeObjectpropCount++;
                 }
 
-                if (bodyinputDatachangecomment != null)
+                if (__workflow_bodyinputDatachangecomment != null)
                 {
-                    changeObject["comment"] = ExpressionConverter.ConvertO(bodyinputDatachangecomment);
+                    changeObject["comment"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangecomment);
                     changeObjectpropCount++;
                 }
 
                 var templateObject = new JObject();
                 var templateObjectpropCount = 0;
-                if (bodyinputDatachangetemplatename != null)
+                if (__workflow_bodyinputDatachangetemplatename != null)
                 {
-                    templateObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangetemplatename);
+                    templateObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangetemplatename);
                     templateObjectpropCount++;
                 }
 
@@ -924,9 +975,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
                 var changeRequesterObject = new JObject();
                 var changeRequesterObjectpropCount = 0;
-                if (bodyinputDatachangechangeRequestername != null)
+                if (__workflow_bodyinputDatachangechangeRequestername != null)
                 {
-                    changeRequesterObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangechangeRequestername);
+                    changeRequesterObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangechangeRequestername);
                     changeRequesterObjectpropCount++;
                 }
 
@@ -938,9 +989,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
                 var siteObject = new JObject();
                 var siteObjectpropCount = 0;
-                if (bodyinputDatachangesitename != null)
+                if (__workflow_bodyinputDatachangesitename != null)
                 {
-                    siteObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangesitename);
+                    siteObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangesitename);
                     siteObjectpropCount++;
                 }
 
@@ -952,9 +1003,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
                 var groupObject = new JObject();
                 var groupObjectpropCount = 0;
-                if (bodyinputDatachangegroupname != null)
+                if (__workflow_bodyinputDatachangegroupname != null)
                 {
-                    groupObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangegroupname);
+                    groupObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangegroupname);
                     groupObjectpropCount++;
                 }
 
@@ -964,17 +1015,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
                     changeObjectpropCount++;
                 }
 
-                if (bodyinputDatachangedescription != null)
+                if (__workflow_bodyinputDatachangedescription != null)
                 {
-                    changeObject["description"] = ExpressionConverter.ConvertO(bodyinputDatachangedescription);
+                    changeObject["description"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangedescription);
                     changeObjectpropCount++;
                 }
 
                 var changeOwnerObject = new JObject();
                 var changeOwnerObjectpropCount = 0;
-                if (bodyinputDatachangechangeOwneremailId != null)
+                if (__workflow_bodyinputDatachangechangeOwneremailId != null)
                 {
-                    changeOwnerObject["email_id"] = ExpressionConverter.ConvertO(bodyinputDatachangechangeOwneremailId);
+                    changeOwnerObject["email_id"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangechangeOwneremailId);
                     changeOwnerObjectpropCount++;
                 }
 
@@ -986,9 +1037,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
                 var changeTypeObject = new JObject();
                 var changeTypeObjectpropCount = 0;
-                if (bodyinputDatachangechangeTypename != null)
+                if (__workflow_bodyinputDatachangechangeTypename != null)
                 {
-                    changeTypeObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangechangeTypename);
+                    changeTypeObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangechangeTypename);
                     changeTypeObjectpropCount++;
                 }
 
@@ -1000,9 +1051,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
                 var priorityObject = new JObject();
                 var priorityObjectpropCount = 0;
-                if (bodyinputDatachangepriorityname != null)
+                if (__workflow_bodyinputDatachangepriorityname != null)
                 {
-                    priorityObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangepriorityname);
+                    priorityObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangepriorityname);
                     priorityObjectpropCount++;
                 }
 
@@ -1014,9 +1065,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
                 var urgencyObject = new JObject();
                 var urgencyObjectpropCount = 0;
-                if (bodyinputDatachangeurgencyname != null)
+                if (__workflow_bodyinputDatachangeurgencyname != null)
                 {
-                    urgencyObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangeurgencyname);
+                    urgencyObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangeurgencyname);
                     urgencyObjectpropCount++;
                 }
 
@@ -1028,9 +1079,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
                 var impactObject = new JObject();
                 var impactObjectpropCount = 0;
-                if (bodyinputDatachangeimpactname != null)
+                if (__workflow_bodyinputDatachangeimpactname != null)
                 {
-                    impactObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangeimpactname);
+                    impactObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangeimpactname);
                     impactObjectpropCount++;
                 }
 
@@ -1042,9 +1093,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
                 var riskObject = new JObject();
                 var riskObjectpropCount = 0;
-                if (bodyinputDatachangeriskname != null)
+                if (__workflow_bodyinputDatachangeriskname != null)
                 {
-                    riskObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangeriskname);
+                    riskObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangeriskname);
                     riskObjectpropCount++;
                 }
 
@@ -1056,9 +1107,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
                 var reasonForChangeObject = new JObject();
                 var reasonForChangeObjectpropCount = 0;
-                if (bodyinputDatachangereasonForChangename != null)
+                if (__workflow_bodyinputDatachangereasonForChangename != null)
                 {
-                    reasonForChangeObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangereasonForChangename);
+                    reasonForChangeObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangereasonForChangename);
                     reasonForChangeObjectpropCount++;
                 }
 
@@ -1070,9 +1121,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
                 var categoryObject = new JObject();
                 var categoryObjectpropCount = 0;
-                if (bodyinputDatachangecategoryname != null)
+                if (__workflow_bodyinputDatachangecategoryname != null)
                 {
-                    categoryObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangecategoryname);
+                    categoryObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangecategoryname);
                     categoryObjectpropCount++;
                 }
 
@@ -1084,9 +1135,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
                 var subcategoryObject = new JObject();
                 var subcategoryObjectpropCount = 0;
-                if (bodyinputDatachangesubcategoryname != null)
+                if (__workflow_bodyinputDatachangesubcategoryname != null)
                 {
-                    subcategoryObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangesubcategoryname);
+                    subcategoryObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangesubcategoryname);
                     subcategoryObjectpropCount++;
                 }
 
@@ -1098,9 +1149,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
 
                 var itemObject = new JObject();
                 var itemObjectpropCount = 0;
-                if (bodyinputDatachangeitemname != null)
+                if (__workflow_bodyinputDatachangeitemname != null)
                 {
-                    itemObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangeitemname);
+                    itemObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangeitemname);
                     itemObjectpropCount++;
                 }
 
@@ -1110,15 +1161,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
                     changeObjectpropCount++;
                 }
 
-                if (bodyinputDatachangeassets != null)
+                if (__workflow_bodyinputDatachangeassets != null)
                 {
-                    changeObject["assets"] = ExpressionConverter.ConvertO(bodyinputDatachangeassets);
+                    changeObject["assets"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangeassets);
                     changeObjectpropCount++;
                 }
 
-                if (bodyinputDatachangeudfFields != null)
+                if (__workflow_bodyinputDatachangeudfFields != null)
                 {
-                    changeObject["udf_fields"] = ExpressionConverter.ConvertO(bodyinputDatachangeudfFields);
+                    changeObject["udf_fields"] = ExpressionConverter.ConvertO(__workflow_bodyinputDatachangeudfFields);
                     changeObjectpropCount++;
                 }
 

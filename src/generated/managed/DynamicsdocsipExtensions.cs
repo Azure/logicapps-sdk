@@ -1,57 +1,57 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsdocsip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class DynamicsdocsipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsdocsip")]
-        [WorkflowExpressionFactory(nameof(__BuildCompileTemplate))]
-        public IBodyWorkflowAction<CompileTemplateResponse> CompileTemplate([WorkflowExpression] Func<string> templateToken, [WorkflowExpression] Func<string> docDeliveryType = null, [WorkflowExpression] Func<int> docUrlExpiresIn = null, [WorkflowExpression] Func<string> latexCompiler = null, [WorkflowExpression] Func<int> latexRuns = null, [WorkflowExpression] Func<string> mainFileName = null, [WorkflowExpression] Func<string> docFileName = null, [WorkflowExpression] Func<string> encryptType = null)
+        public IBodyWorkflowAction<CompileTemplateResponse> CompileTemplate(Expression<Func<string>> templateToken, Expression<Func<string>> docDeliveryType = null, Expression<Func<int>> docUrlExpiresIn = null, Expression<Func<string>> latexCompiler = null, Expression<Func<int>> latexRuns = null, Expression<Func<string>> mainFileName = null, Expression<Func<string>> docFileName = null, Expression<Func<string>> encryptType = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CompileTemplateResponse> __BuildCompileTemplate(WorkflowExpression<string> templateToken, WorkflowExpression<string> docDeliveryType = null, WorkflowExpression<int> docUrlExpiresIn = null, WorkflowExpression<string> latexCompiler = null, WorkflowExpression<int> latexRuns = null, WorkflowExpression<string> mainFileName = null, WorkflowExpression<string> docFileName = null, WorkflowExpression<string> encryptType = null)
-        {
-            WorkflowExpression.Validate(templateToken, nameof(templateToken), required: true);
-            WorkflowExpression.Validate(docDeliveryType, nameof(docDeliveryType), required: false);
-            WorkflowExpression.Validate(docUrlExpiresIn, nameof(docUrlExpiresIn), required: false);
-            WorkflowExpression.Validate(latexCompiler, nameof(latexCompiler), required: false);
-            WorkflowExpression.Validate(latexRuns, nameof(latexRuns), required: false);
-            WorkflowExpression.Validate(mainFileName, nameof(mainFileName), required: false);
-            WorkflowExpression.Validate(docFileName, nameof(docFileName), required: false);
-            WorkflowExpression.Validate(encryptType, nameof(encryptType), required: false);
+            var __workflow_templateToken = templateToken == null ? null : WorkflowExpression.Compile(templateToken);
+            WorkflowExpression.Validate(__workflow_templateToken, nameof(templateToken), required: true);
+            var __workflow_docDeliveryType = docDeliveryType == null ? null : WorkflowExpression.Compile(docDeliveryType);
+            WorkflowExpression.Validate(__workflow_docDeliveryType, nameof(docDeliveryType), required: false);
+            var __workflow_docUrlExpiresIn = docUrlExpiresIn == null ? null : WorkflowExpression.Compile(docUrlExpiresIn);
+            WorkflowExpression.Validate(__workflow_docUrlExpiresIn, nameof(docUrlExpiresIn), required: false);
+            var __workflow_latexCompiler = latexCompiler == null ? null : WorkflowExpression.Compile(latexCompiler);
+            WorkflowExpression.Validate(__workflow_latexCompiler, nameof(latexCompiler), required: false);
+            var __workflow_latexRuns = latexRuns == null ? null : WorkflowExpression.Compile(latexRuns);
+            WorkflowExpression.Validate(__workflow_latexRuns, nameof(latexRuns), required: false);
+            var __workflow_mainFileName = mainFileName == null ? null : WorkflowExpression.Compile(mainFileName);
+            WorkflowExpression.Validate(__workflow_mainFileName, nameof(mainFileName), required: false);
+            var __workflow_docFileName = docFileName == null ? null : WorkflowExpression.Compile(docFileName);
+            WorkflowExpression.Validate(__workflow_docFileName, nameof(docFileName), required: false);
+            var __workflow_encryptType = encryptType == null ? null : WorkflowExpression.Compile(encryptType);
+            WorkflowExpression.Validate(__workflow_encryptType, nameof(encryptType), required: false);
             return new DeferredBodyAction<CompileTemplateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/templates/{0}/compile", ExpressionConverter.ConvertWithUrlEncoding(templateToken, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/templates/{0}/compile", ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateToken, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["doc-delivery-type"] = Convert.ToString("url");
-                if (docDeliveryType != null)
-                    callPayload.Queries["doc-delivery-type"] = ExpressionConverter.Convert(docDeliveryType);
-                if (docUrlExpiresIn != null)
-                    callPayload.Queries["doc-url-expires-in"] = ExpressionConverter.Convert(docUrlExpiresIn);
+                if (__workflow_docDeliveryType != null)
+                    callPayload.Queries["doc-delivery-type"] = ExpressionConverter.Convert(__workflow_docDeliveryType);
+                if (__workflow_docUrlExpiresIn != null)
+                    callPayload.Queries["doc-url-expires-in"] = ExpressionConverter.Convert(__workflow_docUrlExpiresIn);
                 callPayload.Queries["latex-compiler"] = Convert.ToString("pdflatex");
-                if (latexCompiler != null)
-                    callPayload.Queries["latex-compiler"] = ExpressionConverter.Convert(latexCompiler);
+                if (__workflow_latexCompiler != null)
+                    callPayload.Queries["latex-compiler"] = ExpressionConverter.Convert(__workflow_latexCompiler);
                 callPayload.Queries["latex-runs"] = Convert.ToString(1);
-                if (latexRuns != null)
-                    callPayload.Queries["latex-runs"] = ExpressionConverter.Convert(latexRuns);
-                if (mainFileName != null)
-                    callPayload.Queries["main-file-name"] = ExpressionConverter.Convert(mainFileName);
-                if (docFileName != null)
-                    callPayload.Queries["doc-file-name"] = ExpressionConverter.Convert(docFileName);
+                if (__workflow_latexRuns != null)
+                    callPayload.Queries["latex-runs"] = ExpressionConverter.Convert(__workflow_latexRuns);
+                if (__workflow_mainFileName != null)
+                    callPayload.Queries["main-file-name"] = ExpressionConverter.Convert(__workflow_mainFileName);
+                if (__workflow_docFileName != null)
+                    callPayload.Queries["doc-file-name"] = ExpressionConverter.Convert(__workflow_docFileName);
                 callPayload.Queries["encrypt-type"] = Convert.ToString("na");
-                if (encryptType != null)
-                    callPayload.Queries["encrypt-type"] = ExpressionConverter.Convert(encryptType);
+                if (__workflow_encryptType != null)
+                    callPayload.Queries["encrypt-type"] = ExpressionConverter.Convert(__workflow_encryptType);
                 var body = new JObject();
                 var bodypropCount = 0;
                 if (bodypropCount > 0)

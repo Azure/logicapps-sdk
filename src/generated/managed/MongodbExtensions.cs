@@ -1,29 +1,24 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class MongodbActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
-        [WorkflowExpressionFactory(nameof(__BuildInsertDocument))]
-        public IBodyWorkflowAction<InsertDocumentResponse> InsertDocument([WorkflowExpression] Func<string> bodydataSource, [WorkflowExpression] Func<string> bodydatabase, [WorkflowExpression] Func<string> bodycollection)
+        public IBodyWorkflowAction<InsertDocumentResponse> InsertDocument(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<InsertDocumentResponse> __BuildInsertDocument(WorkflowExpression<string> bodydataSource, WorkflowExpression<string> bodydatabase, WorkflowExpression<string> bodycollection)
-        {
-            WorkflowExpression.Validate(bodydataSource, nameof(bodydataSource), required: true);
-            WorkflowExpression.Validate(bodydatabase, nameof(bodydatabase), required: true);
-            WorkflowExpression.Validate(bodycollection, nameof(bodycollection), required: true);
+            var __workflow_bodydataSource = bodydataSource == null ? null : WorkflowExpression.Compile(bodydataSource);
+            WorkflowExpression.Validate(__workflow_bodydataSource, nameof(bodydataSource), required: true);
+            var __workflow_bodydatabase = bodydatabase == null ? null : WorkflowExpression.Compile(bodydatabase);
+            WorkflowExpression.Validate(__workflow_bodydatabase, nameof(bodydatabase), required: true);
+            var __workflow_bodycollection = bodycollection == null ? null : WorkflowExpression.Compile(bodycollection);
+            WorkflowExpression.Validate(__workflow_bodycollection, nameof(bodycollection), required: true);
             return new DeferredBodyAction<InsertDocumentResponse>(() =>
             {
                 var apiCallPath = "/action/insertOne";
@@ -34,11 +29,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["dataSource"] = ExpressionConverter.ConvertO(bodydataSource);
+                body["dataSource"] = ExpressionConverter.ConvertO(__workflow_bodydataSource);
                 bodypropCount++;
-                body["database"] = ExpressionConverter.ConvertO(bodydatabase);
+                body["database"] = ExpressionConverter.ConvertO(__workflow_bodydatabase);
                 bodypropCount++;
-                body["collection"] = ExpressionConverter.ConvertO(bodycollection);
+                body["collection"] = ExpressionConverter.ConvertO(__workflow_bodycollection);
                 var documentObject = new JObject();
                 var documentObjectpropCount = 0;
                 if (documentObjectpropCount > 0)
@@ -57,18 +52,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
-        [WorkflowExpressionFactory(nameof(__BuildFindDocument))]
-        public IBodyWorkflowAction<FindDocumentResponse> FindDocument([WorkflowExpression] Func<string> bodydataSource, [WorkflowExpression] Func<string> bodydatabase, [WorkflowExpression] Func<string> bodycollection)
+        public IBodyWorkflowAction<FindDocumentResponse> FindDocument(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FindDocumentResponse> __BuildFindDocument(WorkflowExpression<string> bodydataSource, WorkflowExpression<string> bodydatabase, WorkflowExpression<string> bodycollection)
-        {
-            WorkflowExpression.Validate(bodydataSource, nameof(bodydataSource), required: true);
-            WorkflowExpression.Validate(bodydatabase, nameof(bodydatabase), required: true);
-            WorkflowExpression.Validate(bodycollection, nameof(bodycollection), required: true);
+            var __workflow_bodydataSource = bodydataSource == null ? null : WorkflowExpression.Compile(bodydataSource);
+            WorkflowExpression.Validate(__workflow_bodydataSource, nameof(bodydataSource), required: true);
+            var __workflow_bodydatabase = bodydatabase == null ? null : WorkflowExpression.Compile(bodydatabase);
+            WorkflowExpression.Validate(__workflow_bodydatabase, nameof(bodydatabase), required: true);
+            var __workflow_bodycollection = bodycollection == null ? null : WorkflowExpression.Compile(bodycollection);
+            WorkflowExpression.Validate(__workflow_bodycollection, nameof(bodycollection), required: true);
             return new DeferredBodyAction<FindDocumentResponse>(() =>
             {
                 var apiCallPath = "/action/findOne";
@@ -80,11 +71,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["dataSource"] = ExpressionConverter.ConvertO(bodydataSource);
+                body["dataSource"] = ExpressionConverter.ConvertO(__workflow_bodydataSource);
                 bodypropCount++;
-                body["database"] = ExpressionConverter.ConvertO(bodydatabase);
+                body["database"] = ExpressionConverter.ConvertO(__workflow_bodydatabase);
                 bodypropCount++;
-                body["collection"] = ExpressionConverter.ConvertO(bodycollection);
+                body["collection"] = ExpressionConverter.ConvertO(__workflow_bodycollection);
                 var filterObject = new JObject();
                 var filterObjectpropCount = 0;
                 if (filterObjectpropCount > 0)
@@ -111,19 +102,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateDocument))]
-        public IBodyWorkflowAction<UpdateDocumentResponse> UpdateDocument([WorkflowExpression] Func<string> bodydataSource, [WorkflowExpression] Func<string> bodydatabase, [WorkflowExpression] Func<string> bodycollection, [WorkflowExpression] Func<bool> bodyupsert = null)
+        public IBodyWorkflowAction<UpdateDocumentResponse> UpdateDocument(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection, Expression<Func<bool>> bodyupsert = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UpdateDocumentResponse> __BuildUpdateDocument(WorkflowExpression<string> bodydataSource, WorkflowExpression<string> bodydatabase, WorkflowExpression<string> bodycollection, WorkflowExpression<bool> bodyupsert = null)
-        {
-            WorkflowExpression.Validate(bodydataSource, nameof(bodydataSource), required: true);
-            WorkflowExpression.Validate(bodydatabase, nameof(bodydatabase), required: true);
-            WorkflowExpression.Validate(bodycollection, nameof(bodycollection), required: true);
-            WorkflowExpression.Validate(bodyupsert, nameof(bodyupsert), required: false);
+            var __workflow_bodydataSource = bodydataSource == null ? null : WorkflowExpression.Compile(bodydataSource);
+            WorkflowExpression.Validate(__workflow_bodydataSource, nameof(bodydataSource), required: true);
+            var __workflow_bodydatabase = bodydatabase == null ? null : WorkflowExpression.Compile(bodydatabase);
+            WorkflowExpression.Validate(__workflow_bodydatabase, nameof(bodydatabase), required: true);
+            var __workflow_bodycollection = bodycollection == null ? null : WorkflowExpression.Compile(bodycollection);
+            WorkflowExpression.Validate(__workflow_bodycollection, nameof(bodycollection), required: true);
+            var __workflow_bodyupsert = bodyupsert == null ? null : WorkflowExpression.Compile(bodyupsert);
+            WorkflowExpression.Validate(__workflow_bodyupsert, nameof(bodyupsert), required: false);
             return new DeferredBodyAction<UpdateDocumentResponse>(() =>
             {
                 var apiCallPath = "/action/updateOne";
@@ -134,11 +122,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["dataSource"] = ExpressionConverter.ConvertO(bodydataSource);
+                body["dataSource"] = ExpressionConverter.ConvertO(__workflow_bodydataSource);
                 bodypropCount++;
-                body["database"] = ExpressionConverter.ConvertO(bodydatabase);
+                body["database"] = ExpressionConverter.ConvertO(__workflow_bodydatabase);
                 bodypropCount++;
-                body["collection"] = ExpressionConverter.ConvertO(bodycollection);
+                body["collection"] = ExpressionConverter.ConvertO(__workflow_bodycollection);
                 var filterObject = new JObject();
                 var filterObjectpropCount = 0;
                 if (filterObjectpropCount > 0)
@@ -155,9 +143,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
                     bodypropCount++;
                 }
 
-                if (bodyupsert != null)
+                if (__workflow_bodyupsert != null)
                 {
-                    body["upsert"] = ExpressionConverter.ConvertO(bodyupsert);
+                    body["upsert"] = ExpressionConverter.ConvertO(__workflow_bodyupsert);
                     bodypropCount++;
                 }
 
@@ -171,18 +159,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteDocument))]
-        public IBodyWorkflowAction<DeleteDocumentResponse> DeleteDocument([WorkflowExpression] Func<string> bodydataSource, [WorkflowExpression] Func<string> bodydatabase, [WorkflowExpression] Func<string> bodycollection)
+        public IBodyWorkflowAction<DeleteDocumentResponse> DeleteDocument(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DeleteDocumentResponse> __BuildDeleteDocument(WorkflowExpression<string> bodydataSource, WorkflowExpression<string> bodydatabase, WorkflowExpression<string> bodycollection)
-        {
-            WorkflowExpression.Validate(bodydataSource, nameof(bodydataSource), required: true);
-            WorkflowExpression.Validate(bodydatabase, nameof(bodydatabase), required: true);
-            WorkflowExpression.Validate(bodycollection, nameof(bodycollection), required: true);
+            var __workflow_bodydataSource = bodydataSource == null ? null : WorkflowExpression.Compile(bodydataSource);
+            WorkflowExpression.Validate(__workflow_bodydataSource, nameof(bodydataSource), required: true);
+            var __workflow_bodydatabase = bodydatabase == null ? null : WorkflowExpression.Compile(bodydatabase);
+            WorkflowExpression.Validate(__workflow_bodydatabase, nameof(bodydatabase), required: true);
+            var __workflow_bodycollection = bodycollection == null ? null : WorkflowExpression.Compile(bodycollection);
+            WorkflowExpression.Validate(__workflow_bodycollection, nameof(bodycollection), required: true);
             return new DeferredBodyAction<DeleteDocumentResponse>(() =>
             {
                 var apiCallPath = "/action/deleteOne";
@@ -193,11 +177,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["dataSource"] = ExpressionConverter.ConvertO(bodydataSource);
+                body["dataSource"] = ExpressionConverter.ConvertO(__workflow_bodydataSource);
                 bodypropCount++;
-                body["database"] = ExpressionConverter.ConvertO(bodydatabase);
+                body["database"] = ExpressionConverter.ConvertO(__workflow_bodydatabase);
                 bodypropCount++;
-                body["collection"] = ExpressionConverter.ConvertO(bodycollection);
+                body["collection"] = ExpressionConverter.ConvertO(__workflow_bodycollection);
                 var filterObject = new JObject();
                 var filterObjectpropCount = 0;
                 if (filterObjectpropCount > 0)
@@ -216,19 +200,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
-        [WorkflowExpressionFactory(nameof(__BuildInsertMultipleDocuments))]
-        public IBodyWorkflowAction<InsertMultipleDocumentsResponse> InsertMultipleDocuments([WorkflowExpression] Func<string> bodydataSource, [WorkflowExpression] Func<string> bodydatabase, [WorkflowExpression] Func<string> bodycollection, [WorkflowExpression] Func<JToken[]> bodydocuments)
+        public IBodyWorkflowAction<InsertMultipleDocumentsResponse> InsertMultipleDocuments(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection, Expression<Func<JToken[]>> bodydocuments)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<InsertMultipleDocumentsResponse> __BuildInsertMultipleDocuments(WorkflowExpression<string> bodydataSource, WorkflowExpression<string> bodydatabase, WorkflowExpression<string> bodycollection, WorkflowExpression<JToken[]> bodydocuments)
-        {
-            WorkflowExpression.Validate(bodydataSource, nameof(bodydataSource), required: true);
-            WorkflowExpression.Validate(bodydatabase, nameof(bodydatabase), required: true);
-            WorkflowExpression.Validate(bodycollection, nameof(bodycollection), required: true);
-            WorkflowExpression.Validate(bodydocuments, nameof(bodydocuments), required: true);
+            var __workflow_bodydataSource = bodydataSource == null ? null : WorkflowExpression.Compile(bodydataSource);
+            WorkflowExpression.Validate(__workflow_bodydataSource, nameof(bodydataSource), required: true);
+            var __workflow_bodydatabase = bodydatabase == null ? null : WorkflowExpression.Compile(bodydatabase);
+            WorkflowExpression.Validate(__workflow_bodydatabase, nameof(bodydatabase), required: true);
+            var __workflow_bodycollection = bodycollection == null ? null : WorkflowExpression.Compile(bodycollection);
+            WorkflowExpression.Validate(__workflow_bodycollection, nameof(bodycollection), required: true);
+            var __workflow_bodydocuments = bodydocuments == null ? null : WorkflowExpression.Compile(bodydocuments);
+            WorkflowExpression.Validate(__workflow_bodydocuments, nameof(bodydocuments), required: true);
             return new DeferredBodyAction<InsertMultipleDocumentsResponse>(() =>
             {
                 var apiCallPath = "/action/insertMany";
@@ -239,13 +220,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["dataSource"] = ExpressionConverter.ConvertO(bodydataSource);
+                body["dataSource"] = ExpressionConverter.ConvertO(__workflow_bodydataSource);
                 bodypropCount++;
-                body["database"] = ExpressionConverter.ConvertO(bodydatabase);
+                body["database"] = ExpressionConverter.ConvertO(__workflow_bodydatabase);
                 bodypropCount++;
-                body["collection"] = ExpressionConverter.ConvertO(bodycollection);
+                body["collection"] = ExpressionConverter.ConvertO(__workflow_bodycollection);
                 bodypropCount++;
-                body["documents"] = ExpressionConverter.ConvertO(bodydocuments);
+                body["documents"] = ExpressionConverter.ConvertO(__workflow_bodydocuments);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -256,20 +237,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
-        [WorkflowExpressionFactory(nameof(__BuildFindMultipleDocuments))]
-        public IBodyWorkflowAction<FindMultipleDocumentsResponse> FindMultipleDocuments([WorkflowExpression] Func<string> bodydataSource, [WorkflowExpression] Func<string> bodydatabase, [WorkflowExpression] Func<string> bodycollection, [WorkflowExpression] Func<int> bodylimit = null, [WorkflowExpression] Func<int> bodyskip = null)
+        public IBodyWorkflowAction<FindMultipleDocumentsResponse> FindMultipleDocuments(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection, Expression<Func<int>> bodylimit = null, Expression<Func<int>> bodyskip = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FindMultipleDocumentsResponse> __BuildFindMultipleDocuments(WorkflowExpression<string> bodydataSource, WorkflowExpression<string> bodydatabase, WorkflowExpression<string> bodycollection, WorkflowExpression<int> bodylimit = null, WorkflowExpression<int> bodyskip = null)
-        {
-            WorkflowExpression.Validate(bodydataSource, nameof(bodydataSource), required: true);
-            WorkflowExpression.Validate(bodydatabase, nameof(bodydatabase), required: true);
-            WorkflowExpression.Validate(bodycollection, nameof(bodycollection), required: true);
-            WorkflowExpression.Validate(bodylimit, nameof(bodylimit), required: false);
-            WorkflowExpression.Validate(bodyskip, nameof(bodyskip), required: false);
+            var __workflow_bodydataSource = bodydataSource == null ? null : WorkflowExpression.Compile(bodydataSource);
+            WorkflowExpression.Validate(__workflow_bodydataSource, nameof(bodydataSource), required: true);
+            var __workflow_bodydatabase = bodydatabase == null ? null : WorkflowExpression.Compile(bodydatabase);
+            WorkflowExpression.Validate(__workflow_bodydatabase, nameof(bodydatabase), required: true);
+            var __workflow_bodycollection = bodycollection == null ? null : WorkflowExpression.Compile(bodycollection);
+            WorkflowExpression.Validate(__workflow_bodycollection, nameof(bodycollection), required: true);
+            var __workflow_bodylimit = bodylimit == null ? null : WorkflowExpression.Compile(bodylimit);
+            WorkflowExpression.Validate(__workflow_bodylimit, nameof(bodylimit), required: false);
+            var __workflow_bodyskip = bodyskip == null ? null : WorkflowExpression.Compile(bodyskip);
+            WorkflowExpression.Validate(__workflow_bodyskip, nameof(bodyskip), required: false);
             return new DeferredBodyAction<FindMultipleDocumentsResponse>(() =>
             {
                 var apiCallPath = "/action/find";
@@ -281,11 +260,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["dataSource"] = ExpressionConverter.ConvertO(bodydataSource);
+                body["dataSource"] = ExpressionConverter.ConvertO(__workflow_bodydataSource);
                 bodypropCount++;
-                body["database"] = ExpressionConverter.ConvertO(bodydatabase);
+                body["database"] = ExpressionConverter.ConvertO(__workflow_bodydatabase);
                 bodypropCount++;
-                body["collection"] = ExpressionConverter.ConvertO(bodycollection);
+                body["collection"] = ExpressionConverter.ConvertO(__workflow_bodycollection);
                 var filterObject = new JObject();
                 var filterObjectpropCount = 0;
                 if (filterObjectpropCount > 0)
@@ -310,15 +289,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
                     bodypropCount++;
                 }
 
-                if (bodylimit != null)
+                if (__workflow_bodylimit != null)
                 {
-                    body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                    body["limit"] = ExpressionConverter.ConvertO(__workflow_bodylimit);
                     bodypropCount++;
                 }
 
-                if (bodyskip != null)
+                if (__workflow_bodyskip != null)
                 {
-                    body["skip"] = ExpressionConverter.ConvertO(bodyskip);
+                    body["skip"] = ExpressionConverter.ConvertO(__workflow_bodyskip);
                     bodypropCount++;
                 }
 
@@ -332,19 +311,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateMultipleDocuments))]
-        public IBodyWorkflowAction<UpdateMultipleDocumentsResponse> UpdateMultipleDocuments([WorkflowExpression] Func<string> bodydataSource, [WorkflowExpression] Func<string> bodydatabase, [WorkflowExpression] Func<string> bodycollection, [WorkflowExpression] Func<bool> bodyupsert = null)
+        public IBodyWorkflowAction<UpdateMultipleDocumentsResponse> UpdateMultipleDocuments(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection, Expression<Func<bool>> bodyupsert = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UpdateMultipleDocumentsResponse> __BuildUpdateMultipleDocuments(WorkflowExpression<string> bodydataSource, WorkflowExpression<string> bodydatabase, WorkflowExpression<string> bodycollection, WorkflowExpression<bool> bodyupsert = null)
-        {
-            WorkflowExpression.Validate(bodydataSource, nameof(bodydataSource), required: true);
-            WorkflowExpression.Validate(bodydatabase, nameof(bodydatabase), required: true);
-            WorkflowExpression.Validate(bodycollection, nameof(bodycollection), required: true);
-            WorkflowExpression.Validate(bodyupsert, nameof(bodyupsert), required: false);
+            var __workflow_bodydataSource = bodydataSource == null ? null : WorkflowExpression.Compile(bodydataSource);
+            WorkflowExpression.Validate(__workflow_bodydataSource, nameof(bodydataSource), required: true);
+            var __workflow_bodydatabase = bodydatabase == null ? null : WorkflowExpression.Compile(bodydatabase);
+            WorkflowExpression.Validate(__workflow_bodydatabase, nameof(bodydatabase), required: true);
+            var __workflow_bodycollection = bodycollection == null ? null : WorkflowExpression.Compile(bodycollection);
+            WorkflowExpression.Validate(__workflow_bodycollection, nameof(bodycollection), required: true);
+            var __workflow_bodyupsert = bodyupsert == null ? null : WorkflowExpression.Compile(bodyupsert);
+            WorkflowExpression.Validate(__workflow_bodyupsert, nameof(bodyupsert), required: false);
             return new DeferredBodyAction<UpdateMultipleDocumentsResponse>(() =>
             {
                 var apiCallPath = "/action/updateMany";
@@ -355,11 +331,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["dataSource"] = ExpressionConverter.ConvertO(bodydataSource);
+                body["dataSource"] = ExpressionConverter.ConvertO(__workflow_bodydataSource);
                 bodypropCount++;
-                body["database"] = ExpressionConverter.ConvertO(bodydatabase);
+                body["database"] = ExpressionConverter.ConvertO(__workflow_bodydatabase);
                 bodypropCount++;
-                body["collection"] = ExpressionConverter.ConvertO(bodycollection);
+                body["collection"] = ExpressionConverter.ConvertO(__workflow_bodycollection);
                 var filterObject = new JObject();
                 var filterObjectpropCount = 0;
                 if (filterObjectpropCount > 0)
@@ -376,9 +352,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
                     bodypropCount++;
                 }
 
-                if (bodyupsert != null)
+                if (__workflow_bodyupsert != null)
                 {
-                    body["upsert"] = ExpressionConverter.ConvertO(bodyupsert);
+                    body["upsert"] = ExpressionConverter.ConvertO(__workflow_bodyupsert);
                     bodypropCount++;
                 }
 
@@ -392,18 +368,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteManyDocuments))]
-        public IBodyWorkflowAction<DeleteManyDocumentsResponse> DeleteManyDocuments([WorkflowExpression] Func<string> bodydataSource, [WorkflowExpression] Func<string> bodydatabase, [WorkflowExpression] Func<string> bodycollection)
+        public IBodyWorkflowAction<DeleteManyDocumentsResponse> DeleteManyDocuments(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DeleteManyDocumentsResponse> __BuildDeleteManyDocuments(WorkflowExpression<string> bodydataSource, WorkflowExpression<string> bodydatabase, WorkflowExpression<string> bodycollection)
-        {
-            WorkflowExpression.Validate(bodydataSource, nameof(bodydataSource), required: true);
-            WorkflowExpression.Validate(bodydatabase, nameof(bodydatabase), required: true);
-            WorkflowExpression.Validate(bodycollection, nameof(bodycollection), required: true);
+            var __workflow_bodydataSource = bodydataSource == null ? null : WorkflowExpression.Compile(bodydataSource);
+            WorkflowExpression.Validate(__workflow_bodydataSource, nameof(bodydataSource), required: true);
+            var __workflow_bodydatabase = bodydatabase == null ? null : WorkflowExpression.Compile(bodydatabase);
+            WorkflowExpression.Validate(__workflow_bodydatabase, nameof(bodydatabase), required: true);
+            var __workflow_bodycollection = bodycollection == null ? null : WorkflowExpression.Compile(bodycollection);
+            WorkflowExpression.Validate(__workflow_bodycollection, nameof(bodycollection), required: true);
             return new DeferredBodyAction<DeleteManyDocumentsResponse>(() =>
             {
                 var apiCallPath = "/action/deleteMany";
@@ -414,11 +386,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["dataSource"] = ExpressionConverter.ConvertO(bodydataSource);
+                body["dataSource"] = ExpressionConverter.ConvertO(__workflow_bodydataSource);
                 bodypropCount++;
-                body["database"] = ExpressionConverter.ConvertO(bodydatabase);
+                body["database"] = ExpressionConverter.ConvertO(__workflow_bodydatabase);
                 bodypropCount++;
-                body["collection"] = ExpressionConverter.ConvertO(bodycollection);
+                body["collection"] = ExpressionConverter.ConvertO(__workflow_bodycollection);
                 var filterObject = new JObject();
                 var filterObjectpropCount = 0;
                 if (filterObjectpropCount > 0)
@@ -437,19 +409,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
-        [WorkflowExpressionFactory(nameof(__BuildRunAggregationPipeline))]
-        public IBodyWorkflowAction<RunAggregationPipelineResponse> RunAggregationPipeline([WorkflowExpression] Func<string> bodydataSource, [WorkflowExpression] Func<string> bodydatabase, [WorkflowExpression] Func<string> bodycollection, [WorkflowExpression] Func<JToken[]> bodypipeline)
+        public IBodyWorkflowAction<RunAggregationPipelineResponse> RunAggregationPipeline(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection, Expression<Func<JToken[]>> bodypipeline)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<RunAggregationPipelineResponse> __BuildRunAggregationPipeline(WorkflowExpression<string> bodydataSource, WorkflowExpression<string> bodydatabase, WorkflowExpression<string> bodycollection, WorkflowExpression<JToken[]> bodypipeline)
-        {
-            WorkflowExpression.Validate(bodydataSource, nameof(bodydataSource), required: true);
-            WorkflowExpression.Validate(bodydatabase, nameof(bodydatabase), required: true);
-            WorkflowExpression.Validate(bodycollection, nameof(bodycollection), required: true);
-            WorkflowExpression.Validate(bodypipeline, nameof(bodypipeline), required: true);
+            var __workflow_bodydataSource = bodydataSource == null ? null : WorkflowExpression.Compile(bodydataSource);
+            WorkflowExpression.Validate(__workflow_bodydataSource, nameof(bodydataSource), required: true);
+            var __workflow_bodydatabase = bodydatabase == null ? null : WorkflowExpression.Compile(bodydatabase);
+            WorkflowExpression.Validate(__workflow_bodydatabase, nameof(bodydatabase), required: true);
+            var __workflow_bodycollection = bodycollection == null ? null : WorkflowExpression.Compile(bodycollection);
+            WorkflowExpression.Validate(__workflow_bodycollection, nameof(bodycollection), required: true);
+            var __workflow_bodypipeline = bodypipeline == null ? null : WorkflowExpression.Compile(bodypipeline);
+            WorkflowExpression.Validate(__workflow_bodypipeline, nameof(bodypipeline), required: true);
             return new DeferredBodyAction<RunAggregationPipelineResponse>(() =>
             {
                 var apiCallPath = "/action/aggregate";
@@ -461,13 +430,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["dataSource"] = ExpressionConverter.ConvertO(bodydataSource);
+                body["dataSource"] = ExpressionConverter.ConvertO(__workflow_bodydataSource);
                 bodypropCount++;
-                body["database"] = ExpressionConverter.ConvertO(bodydatabase);
+                body["database"] = ExpressionConverter.ConvertO(__workflow_bodydatabase);
                 bodypropCount++;
-                body["collection"] = ExpressionConverter.ConvertO(bodycollection);
+                body["collection"] = ExpressionConverter.ConvertO(__workflow_bodycollection);
                 bodypropCount++;
-                body["pipeline"] = ExpressionConverter.ConvertO(bodypipeline);
+                body["pipeline"] = ExpressionConverter.ConvertO(__workflow_bodypipeline);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

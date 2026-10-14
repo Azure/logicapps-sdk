@@ -1,27 +1,20 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Youtubetranscript
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class YoutubetranscriptActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "youtubetranscript")]
-        [WorkflowExpressionFactory(nameof(__BuildGetTranscript))]
-        public IBodyWorkflowAction<TranscriptResponse> GetTranscript([WorkflowExpression] Func<string> bodyyouTubeVideoID)
+        public IBodyWorkflowAction<TranscriptResponse> GetTranscript(Expression<Func<string>> bodyyouTubeVideoID)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TranscriptResponse> __BuildGetTranscript(WorkflowExpression<string> bodyyouTubeVideoID)
-        {
-            WorkflowExpression.Validate(bodyyouTubeVideoID, nameof(bodyyouTubeVideoID), required: true);
+            var __workflow_bodyyouTubeVideoID = bodyyouTubeVideoID == null ? null : WorkflowExpression.Compile(bodyyouTubeVideoID);
+            WorkflowExpression.Validate(__workflow_bodyyouTubeVideoID, nameof(bodyyouTubeVideoID), required: true);
             return new DeferredBodyAction<TranscriptResponse>(() =>
             {
                 var apiCallPath = "/youtubei/v1/get_transcript";
@@ -50,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Youtubetranscript
                 }
 
                 bodypropCount++;
-                body["externalVideoId"] = ExpressionConverter.ConvertO(bodyyouTubeVideoID);
+                body["externalVideoId"] = ExpressionConverter.ConvertO(__workflow_bodyyouTubeVideoID);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

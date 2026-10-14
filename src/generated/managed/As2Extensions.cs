@@ -1,108 +1,88 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.As2
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class As2Actions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "as2")]
-        [WorkflowExpressionFactory(nameof(__BuildAddOrUpdateMicValues))]
-        public IBodyWorkflowAction<MicUpdateResponse[]> AddOrUpdateMicValues([WorkflowExpression] Func<As2ReplicableMicContent[]> micContent = null)
+        public IBodyWorkflowAction<MicUpdateResponse[]> AddOrUpdateMicValues(Expression<Func<As2ReplicableMicContent[]>> micContent = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MicUpdateResponse[]> __BuildAddOrUpdateMicValues(WorkflowExpression<As2ReplicableMicContent[]> micContent = null)
-        {
-            WorkflowExpression.Validate(micContent, nameof(micContent), required: false);
+            var __workflow_micContent = micContent == null ? null : WorkflowExpression.Compile(micContent);
+            WorkflowExpression.Validate(__workflow_micContent, nameof(micContent), required: false);
             return new DeferredBodyAction<MicUpdateResponse[]>(() =>
             {
                 var apiCallPath = "/createOrUpdateMicValues";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(micContent);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_micContent);
                 return new ApiConnectionAction<MicUpdateResponse[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "as2")]
-        [WorkflowExpressionFactory(nameof(__BuildResolveAgreement))]
-        public IBodyWorkflowAction<As2AgreementProperties> ResolveAgreement([WorkflowExpression] Func<string> as2From, [WorkflowExpression] Func<string> as2To)
+        public IBodyWorkflowAction<As2AgreementProperties> ResolveAgreement(Expression<Func<string>> as2From, Expression<Func<string>> as2To)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<As2AgreementProperties> __BuildResolveAgreement(WorkflowExpression<string> as2From, WorkflowExpression<string> as2To)
-        {
-            WorkflowExpression.Validate(as2From, nameof(as2From), required: true);
-            WorkflowExpression.Validate(as2To, nameof(as2To), required: true);
+            var __workflow_as2From = as2From == null ? null : WorkflowExpression.Compile(as2From);
+            WorkflowExpression.Validate(__workflow_as2From, nameof(as2From), required: true);
+            var __workflow_as2To = as2To == null ? null : WorkflowExpression.Compile(as2To);
+            WorkflowExpression.Validate(__workflow_as2To, nameof(as2To), required: true);
             return new DeferredBodyAction<As2AgreementProperties>(() =>
             {
                 var apiCallPath = "/resolveAgreement";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["as2From"] = ExpressionConverter.Convert(as2From);
-                callPayload.Queries["as2To"] = ExpressionConverter.Convert(as2To);
+                callPayload.Queries["as2From"] = ExpressionConverter.Convert(__workflow_as2From);
+                callPayload.Queries["as2To"] = ExpressionConverter.Convert(__workflow_as2To);
                 return new ApiConnectionAction<As2AgreementProperties>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "as2")]
-        [WorkflowExpressionFactory(nameof(__BuildDecode))]
-        public IBodyWorkflowAction<As2DecodeResponse> Decode([WorkflowExpression] Func<string> body = null)
+        public IBodyWorkflowAction<As2DecodeResponse> Decode(Expression<Func<string>> body = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<As2DecodeResponse> __BuildDecode(WorkflowExpression<string> body = null)
-        {
-            WorkflowExpression.Validate(body, nameof(body), required: false);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
             return new DeferredBodyAction<As2DecodeResponse>(() =>
             {
                 var apiCallPath = "/decode";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<As2DecodeResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "as2")]
-        [WorkflowExpressionFactory(nameof(__BuildEncode))]
-        public IBodyWorkflowAction<As2EncodeResponse> Encode([WorkflowExpression] Func<string> as2From, [WorkflowExpression] Func<string> as2To, [WorkflowExpression] Func<string> fileName = null, [WorkflowExpression] Func<string> body = null, [WorkflowExpression] Func<string> contentType = null)
+        public IBodyWorkflowAction<As2EncodeResponse> Encode(Expression<Func<string>> as2From, Expression<Func<string>> as2To, Expression<Func<string>> fileName = null, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<As2EncodeResponse> __BuildEncode(WorkflowExpression<string> as2From, WorkflowExpression<string> as2To, WorkflowExpression<string> fileName = null, WorkflowExpression<string> body = null, WorkflowExpression<string> contentType = null)
-        {
-            WorkflowExpression.Validate(as2From, nameof(as2From), required: true);
-            WorkflowExpression.Validate(as2To, nameof(as2To), required: true);
-            WorkflowExpression.Validate(fileName, nameof(fileName), required: false);
-            WorkflowExpression.Validate(body, nameof(body), required: false);
-            WorkflowExpression.Validate(contentType, nameof(contentType), required: false);
+            var __workflow_as2From = as2From == null ? null : WorkflowExpression.Compile(as2From);
+            WorkflowExpression.Validate(__workflow_as2From, nameof(as2From), required: true);
+            var __workflow_as2To = as2To == null ? null : WorkflowExpression.Compile(as2To);
+            WorkflowExpression.Validate(__workflow_as2To, nameof(as2To), required: true);
+            var __workflow_fileName = fileName == null ? null : WorkflowExpression.Compile(fileName);
+            WorkflowExpression.Validate(__workflow_fileName, nameof(fileName), required: false);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
+            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
             return new DeferredBodyAction<As2EncodeResponse>(() =>
             {
                 var apiCallPath = "/encode";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["as2From"] = ExpressionConverter.Convert(as2From);
-                callPayload.Queries["as2To"] = ExpressionConverter.Convert(as2To);
-                if (fileName != null)
-                    callPayload.Queries["fileName"] = ExpressionConverter.Convert(fileName);
-                if (contentType != null)
-                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Queries["as2From"] = ExpressionConverter.Convert(__workflow_as2From);
+                callPayload.Queries["as2To"] = ExpressionConverter.Convert(__workflow_as2To);
+                if (__workflow_fileName != null)
+                    callPayload.Queries["fileName"] = ExpressionConverter.Convert(__workflow_fileName);
+                if (__workflow_contentType != null)
+                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<As2EncodeResponse>(callPayload);
             });
         }
@@ -110,24 +90,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.As2
 
     public class As2Triggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildOnCreatedMicValues))]
-        public IBodyWorkflowTrigger<As2ReplicableMicContent[]> OnCreatedMicValues([WorkflowExpression] Func<string> startSyncTime = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<As2ReplicableMicContent[]> OnCreatedMicValues(Expression<Func<string>> startSyncTime = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<As2ReplicableMicContent[]> __BuildOnCreatedMicValues(WorkflowExpression<string> startSyncTime = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(startSyncTime, nameof(startSyncTime), required: false);
+            var __workflow_startSyncTime = startSyncTime == null ? null : WorkflowExpression.Compile(startSyncTime);
+            WorkflowExpression.Validate(__workflow_startSyncTime, nameof(startSyncTime), required: false);
             return new DeferredBodyTrigger<As2ReplicableMicContent[]>(() =>
             {
                 var apiCallPath = "/triggers/onCreatedMicValues";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (startSyncTime != null)
-                    callPayload.Queries["startSyncTime"] = ExpressionConverter.Convert(startSyncTime);
+                if (__workflow_startSyncTime != null)
+                    callPayload.Queries["startSyncTime"] = ExpressionConverter.Convert(__workflow_startSyncTime);
                 return new ApiConnectionTrigger<As2ReplicableMicContent[]>(callPayload, recurrence: recurrence);
             });
         }

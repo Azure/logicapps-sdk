@@ -1,50 +1,49 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendarificip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class CalendarificipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calendarificip")]
-        [WorkflowExpressionFactory(nameof(__BuildListHolidays))]
-        public IBodyWorkflowAction<ListHolidaysResponse> ListHolidays([WorkflowExpression] Func<string> country, [WorkflowExpression] Func<string> year, [WorkflowExpression] Func<string> day = null, [WorkflowExpression] Func<string> month = null, [WorkflowExpression] Func<string> location = null, [WorkflowExpression] Func<typeInput> type = null, [WorkflowExpression] Func<string> language = null)
+        public IBodyWorkflowAction<ListHolidaysResponse> ListHolidays(Expression<Func<string>> country, Expression<Func<string>> year, Expression<Func<string>> day = null, Expression<Func<string>> month = null, Expression<Func<string>> location = null, Expression<Func<typeInput>> type = null, Expression<Func<string>> language = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListHolidaysResponse> __BuildListHolidays(WorkflowExpression<string> country, WorkflowExpression<string> year, WorkflowExpression<string> day = null, WorkflowExpression<string> month = null, WorkflowExpression<string> location = null, WorkflowExpression<typeInput> type = null, WorkflowExpression<string> language = null)
-        {
-            WorkflowExpression.Validate(country, nameof(country), required: true);
-            WorkflowExpression.Validate(year, nameof(year), required: true);
-            WorkflowExpression.Validate(day, nameof(day), required: false);
-            WorkflowExpression.Validate(month, nameof(month), required: false);
-            WorkflowExpression.Validate(location, nameof(location), required: false);
-            WorkflowExpression.Validate(type, nameof(type), required: false);
-            WorkflowExpression.Validate(language, nameof(language), required: false);
+            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
+            WorkflowExpression.Validate(__workflow_country, nameof(country), required: true);
+            var __workflow_year = year == null ? null : WorkflowExpression.Compile(year);
+            WorkflowExpression.Validate(__workflow_year, nameof(year), required: true);
+            var __workflow_day = day == null ? null : WorkflowExpression.Compile(day);
+            WorkflowExpression.Validate(__workflow_day, nameof(day), required: false);
+            var __workflow_month = month == null ? null : WorkflowExpression.Compile(month);
+            WorkflowExpression.Validate(__workflow_month, nameof(month), required: false);
+            var __workflow_location = location == null ? null : WorkflowExpression.Compile(location);
+            WorkflowExpression.Validate(__workflow_location, nameof(location), required: false);
+            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
+            WorkflowExpression.Validate(__workflow_type, nameof(type), required: false);
+            var __workflow_language = language == null ? null : WorkflowExpression.Compile(language);
+            WorkflowExpression.Validate(__workflow_language, nameof(language), required: false);
             return new DeferredBodyAction<ListHolidaysResponse>(() =>
             {
                 var apiCallPath = "/api/v2/holidays";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-                callPayload.Queries["year"] = ExpressionConverter.Convert(year);
-                if (day != null)
-                    callPayload.Queries["day"] = ExpressionConverter.Convert(day);
-                if (month != null)
-                    callPayload.Queries["month"] = ExpressionConverter.Convert(month);
-                if (location != null)
-                    callPayload.Queries["location"] = ExpressionConverter.Convert(location);
-                if (type != null)
-                    callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-                if (language != null)
-                    callPayload.Queries["language"] = ExpressionConverter.Convert(language);
+                callPayload.Queries["country"] = ExpressionConverter.Convert(__workflow_country);
+                callPayload.Queries["year"] = ExpressionConverter.Convert(__workflow_year);
+                if (__workflow_day != null)
+                    callPayload.Queries["day"] = ExpressionConverter.Convert(__workflow_day);
+                if (__workflow_month != null)
+                    callPayload.Queries["month"] = ExpressionConverter.Convert(__workflow_month);
+                if (__workflow_location != null)
+                    callPayload.Queries["location"] = ExpressionConverter.Convert(__workflow_location);
+                if (__workflow_type != null)
+                    callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
+                if (__workflow_language != null)
+                    callPayload.Queries["language"] = ExpressionConverter.Convert(__workflow_language);
                 return new ApiConnectionAction<ListHolidaysResponse>(callPayload);
             });
         }

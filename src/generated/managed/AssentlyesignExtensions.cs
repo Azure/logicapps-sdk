@@ -1,33 +1,26 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class AssentlyesignActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        [WorkflowExpressionFactory(nameof(__BuildGetCase))]
-        public IBodyWorkflowAction<JToken> GetCase([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<JToken> GetCase(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildGetCase(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/v2/getCase";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["Id"] = ExpressionConverter.Convert(__workflow_id);
                 callPayload.Queries["includeAllStatuses"] = Convert.ToString(true);
                 callPayload.Queries["IncludePendingApprovalStatus"] = Convert.ToString(true);
                 return new ApiConnectionAction<JToken>(callPayload);
@@ -35,16 +28,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        [WorkflowExpressionFactory(nameof(__BuildFindCases))]
-        public IBodyWorkflowAction<JToken[]> FindCases([WorkflowExpression] Func<object> findCasesModel = null)
+        public IBodyWorkflowAction<JToken[]> FindCases(Expression<Func<object>> findCasesModel = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken[]> __BuildFindCases(WorkflowExpression<object> findCasesModel = null)
-        {
-            WorkflowExpression.Validate(findCasesModel, nameof(findCasesModel), required: false);
+            var __workflow_findCasesModel = findCasesModel == null ? null : WorkflowExpression.Compile(findCasesModel);
+            WorkflowExpression.Validate(__workflow_findCasesModel, nameof(findCasesModel), required: false);
             return new DeferredBodyAction<JToken[]>(() =>
             {
                 var apiCallPath = "/v2/findCases";
@@ -52,70 +39,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["includeAllStatuses"] = Convert.ToString(true);
                 callPayload.Queries["IncludePendingApprovalStatus"] = Convert.ToString(true);
-                callPayload.Body = ExpressionConverter.ConvertO(findCasesModel);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_findCasesModel);
                 return new ApiConnectionAction<JToken[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        [WorkflowExpressionFactory(nameof(__BuildFindTemplates))]
-        public IBodyWorkflowAction<JToken[]> FindTemplates([WorkflowExpression] Func<object> findTemplatesModel = null)
+        public IBodyWorkflowAction<JToken[]> FindTemplates(Expression<Func<object>> findTemplatesModel = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken[]> __BuildFindTemplates(WorkflowExpression<object> findTemplatesModel = null)
-        {
-            WorkflowExpression.Validate(findTemplatesModel, nameof(findTemplatesModel), required: false);
+            var __workflow_findTemplatesModel = findTemplatesModel == null ? null : WorkflowExpression.Compile(findTemplatesModel);
+            WorkflowExpression.Validate(__workflow_findTemplatesModel, nameof(findTemplatesModel), required: false);
             return new DeferredBodyAction<JToken[]>(() =>
             {
                 var apiCallPath = "/v2/findTemplates";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(findTemplatesModel);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_findTemplatesModel);
                 return new ApiConnectionAction<JToken[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateCase))]
-        public IWorkflowAction CreateCase([WorkflowExpression] Func<object> caseModel = null)
+        public IWorkflowAction CreateCase(Expression<Func<object>> caseModel = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildCreateCase(WorkflowExpression<object> caseModel = null)
-        {
-            WorkflowExpression.Validate(caseModel, nameof(caseModel), required: false);
+            var __workflow_caseModel = caseModel == null ? null : WorkflowExpression.Compile(caseModel);
+            WorkflowExpression.Validate(__workflow_caseModel, nameof(caseModel), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v2/createCase";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(caseModel);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_caseModel);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateCaseFromTemplate))]
-        public IWorkflowAction CreateCaseFromTemplate([WorkflowExpression] Func<object> createCaseFromTemplateModel = null)
+        public IWorkflowAction CreateCaseFromTemplate(Expression<Func<object>> createCaseFromTemplateModel = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildCreateCaseFromTemplate(WorkflowExpression<object> createCaseFromTemplateModel = null)
-        {
-            WorkflowExpression.Validate(createCaseFromTemplateModel, nameof(createCaseFromTemplateModel), required: false);
+            var __workflow_createCaseFromTemplateModel = createCaseFromTemplateModel == null ? null : WorkflowExpression.Compile(createCaseFromTemplateModel);
+            WorkflowExpression.Validate(__workflow_createCaseFromTemplateModel, nameof(createCaseFromTemplateModel), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v2/createCaseFromTemplate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(createCaseFromTemplateModel);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_createCaseFromTemplateModel);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -137,171 +106,124 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateCaseMetadata))]
-        public IWorkflowAction UpdateCaseMetadata([WorkflowExpression] Func<object> updateCaseMetadataModel = null)
+        public IWorkflowAction UpdateCaseMetadata(Expression<Func<object>> updateCaseMetadataModel = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildUpdateCaseMetadata(WorkflowExpression<object> updateCaseMetadataModel = null)
-        {
-            WorkflowExpression.Validate(updateCaseMetadataModel, nameof(updateCaseMetadataModel), required: false);
+            var __workflow_updateCaseMetadataModel = updateCaseMetadataModel == null ? null : WorkflowExpression.Compile(updateCaseMetadataModel);
+            WorkflowExpression.Validate(__workflow_updateCaseMetadataModel, nameof(updateCaseMetadataModel), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v2/updateCaseMetadata";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(updateCaseMetadataModel);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_updateCaseMetadataModel);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        [WorkflowExpressionFactory(nameof(__BuildSendCase))]
-        public IWorkflowAction SendCase([WorkflowExpression] Func<string> id)
+        public IWorkflowAction SendCase(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildSendCase(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v2/sendCase";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["Id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        [WorkflowExpressionFactory(nameof(__BuildRequestApproval))]
-        public IWorkflowAction RequestApproval([WorkflowExpression] Func<string> id)
+        public IWorkflowAction RequestApproval(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildRequestApproval(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v2/requestApproval";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["Id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        [WorkflowExpressionFactory(nameof(__BuildRemindCase))]
-        public IWorkflowAction RemindCase([WorkflowExpression] Func<string> id)
+        public IWorkflowAction RemindCase(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildRemindCase(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v2/remindCase";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["Id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteCase))]
-        public IWorkflowAction DeleteCase([WorkflowExpression] Func<string> id)
+        public IWorkflowAction DeleteCase(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDeleteCase(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v2/deleteCase";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["Id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        [WorkflowExpressionFactory(nameof(__BuildRecallCase))]
-        public IWorkflowAction RecallCase([WorkflowExpression] Func<string> id)
+        public IWorkflowAction RecallCase(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildRecallCase(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v2/recallCase";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["Id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        [WorkflowExpressionFactory(nameof(__BuildGetCaseByTemporaryId))]
-        public IWorkflowAction GetCaseByTemporaryId([WorkflowExpression] Func<int> id)
+        public IWorkflowAction GetCaseByTemporaryId(Expression<Func<int>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildGetCaseByTemporaryId(WorkflowExpression<int> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v2/getCaseByTemporaryId";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["Id"] = ExpressionConverter.Convert(__workflow_id);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        [WorkflowExpressionFactory(nameof(__BuildGetFileOfCase))]
-        public IBodyWorkflowAction<string> GetFileOfCase([WorkflowExpression] Func<string> caseid, [WorkflowExpression] Func<string> documentid)
+        public IBodyWorkflowAction<string> GetFileOfCase(Expression<Func<string>> caseid, Expression<Func<string>> documentid)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildGetFileOfCase(WorkflowExpression<string> caseid, WorkflowExpression<string> documentid)
-        {
-            WorkflowExpression.Validate(caseid, nameof(caseid), required: true);
-            WorkflowExpression.Validate(documentid, nameof(documentid), required: true);
+            var __workflow_caseid = caseid == null ? null : WorkflowExpression.Compile(caseid);
+            WorkflowExpression.Validate(__workflow_caseid, nameof(caseid), required: true);
+            var __workflow_documentid = documentid == null ? null : WorkflowExpression.Compile(documentid);
+            WorkflowExpression.Validate(__workflow_documentid, nameof(documentid), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/v2/getdocumentdata";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["caseid"] = ExpressionConverter.Convert(caseid);
-                callPayload.Queries["documentid"] = ExpressionConverter.Convert(documentid);
+                callPayload.Queries["caseid"] = ExpressionConverter.Convert(__workflow_caseid);
+                callPayload.Queries["documentid"] = ExpressionConverter.Convert(__workflow_documentid);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -309,23 +231,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
 
     public class AssentlyesignTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildCaseEventTrigger))]
-        public IWorkflowTrigger CaseEventTrigger([WorkflowExpression] Func<string> eventPath,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CaseEventTrigger(Expression<Func<string>> eventPath, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildCaseEventTrigger(WorkflowExpression<string> eventPath,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(eventPath, nameof(eventPath), required: true);
+            var __workflow_eventPath = eventPath == null ? null : WorkflowExpression.Compile(eventPath);
+            WorkflowExpression.Validate(__workflow_eventPath, nameof(eventPath), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/hook/v1/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["EventPath"] = ExpressionConverter.Convert(eventPath);
+                callPayload.Queries["EventPath"] = ExpressionConverter.Convert(__workflow_eventPath);
                 var body = new JObject();
                 var bodypropCount = 0;
                 body["callbackUrl"] = "#{listCallbackUrl()}";

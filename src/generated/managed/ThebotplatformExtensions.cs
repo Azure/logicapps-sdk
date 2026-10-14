@@ -1,28 +1,22 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebotplatform
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class ThebotplatformActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebotplatform")]
-        [WorkflowExpressionFactory(nameof(__BuildSimpleTextMessage))]
-        public IBodyWorkflowAction<SimpleTextMessageResponse> SimpleTextMessage([WorkflowExpression] Func<bodydataattributesmessagesInputItem[]> bodydataattributesmessages = null, [WorkflowExpression] Func<string> bodydataattributesrecipient = null)
+        public IBodyWorkflowAction<SimpleTextMessageResponse> SimpleTextMessage(Expression<Func<bodydataattributesmessagesInputItem[]>> bodydataattributesmessages = null, Expression<Func<string>> bodydataattributesrecipient = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SimpleTextMessageResponse> __BuildSimpleTextMessage(WorkflowExpression<bodydataattributesmessagesInputItem[]> bodydataattributesmessages = null, WorkflowExpression<string> bodydataattributesrecipient = null)
-        {
-            WorkflowExpression.Validate(bodydataattributesmessages, nameof(bodydataattributesmessages), required: false);
-            WorkflowExpression.Validate(bodydataattributesrecipient, nameof(bodydataattributesrecipient), required: false);
+            var __workflow_bodydataattributesmessages = bodydataattributesmessages == null ? null : WorkflowExpression.Compile(bodydataattributesmessages);
+            WorkflowExpression.Validate(__workflow_bodydataattributesmessages, nameof(bodydataattributesmessages), required: false);
+            var __workflow_bodydataattributesrecipient = bodydataattributesrecipient == null ? null : WorkflowExpression.Compile(bodydataattributesrecipient);
+            WorkflowExpression.Validate(__workflow_bodydataattributesrecipient, nameof(bodydataattributesrecipient), required: false);
             return new DeferredBodyAction<SimpleTextMessageResponse>(() =>
             {
                 var apiCallPath = "/v1.0/activity/external";
@@ -34,15 +28,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebotplatform
                 var dataObjectpropCount = 0;
                 var attributesObject = new JObject();
                 var attributesObjectpropCount = 0;
-                if (bodydataattributesmessages != null)
+                if (__workflow_bodydataattributesmessages != null)
                 {
-                    attributesObject["messages"] = ExpressionConverter.ConvertO(bodydataattributesmessages);
+                    attributesObject["messages"] = ExpressionConverter.ConvertO(__workflow_bodydataattributesmessages);
                     attributesObjectpropCount++;
                 }
 
-                if (bodydataattributesrecipient != null)
+                if (__workflow_bodydataattributesrecipient != null)
                 {
-                    attributesObject["recipient"] = ExpressionConverter.ConvertO(bodydataattributesrecipient);
+                    attributesObject["recipient"] = ExpressionConverter.ConvertO(__workflow_bodydataattributesrecipient);
                     attributesObjectpropCount++;
                 }
 
@@ -70,17 +64,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebotplatform
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebotplatform")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateUserAttribute))]
-        public IBodyWorkflowAction<CreateUserAttributeResponse> CreateUserAttribute([WorkflowExpression] Func<string> bodydataattributesname = null, [WorkflowExpression] Func<bodydataattributesisPiiInput> bodydataattributesisPii = null)
+        public IBodyWorkflowAction<CreateUserAttributeResponse> CreateUserAttribute(Expression<Func<string>> bodydataattributesname = null, Expression<Func<bodydataattributesisPiiInput>> bodydataattributesisPii = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateUserAttributeResponse> __BuildCreateUserAttribute(WorkflowExpression<string> bodydataattributesname = null, WorkflowExpression<bodydataattributesisPiiInput> bodydataattributesisPii = null)
-        {
-            WorkflowExpression.Validate(bodydataattributesname, nameof(bodydataattributesname), required: false);
-            WorkflowExpression.Validate(bodydataattributesisPii, nameof(bodydataattributesisPii), required: false);
+            var __workflow_bodydataattributesname = bodydataattributesname == null ? null : WorkflowExpression.Compile(bodydataattributesname);
+            WorkflowExpression.Validate(__workflow_bodydataattributesname, nameof(bodydataattributesname), required: false);
+            var __workflow_bodydataattributesisPii = bodydataattributesisPii == null ? null : WorkflowExpression.Compile(bodydataattributesisPii);
+            WorkflowExpression.Validate(__workflow_bodydataattributesisPii, nameof(bodydataattributesisPii), required: false);
             return new DeferredBodyAction<CreateUserAttributeResponse>(() =>
             {
                 var apiCallPath = "/v1.0/userattributes";
@@ -94,15 +83,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebotplatform
                 dataObjectpropCount++;
                 var attributesObject = new JObject();
                 var attributesObjectpropCount = 0;
-                if (bodydataattributesname != null)
+                if (__workflow_bodydataattributesname != null)
                 {
-                    attributesObject["name"] = ExpressionConverter.ConvertO(bodydataattributesname);
+                    attributesObject["name"] = ExpressionConverter.ConvertO(__workflow_bodydataattributesname);
                     attributesObjectpropCount++;
                 }
 
-                if (bodydataattributesisPii != null)
+                if (__workflow_bodydataattributesisPii != null)
                 {
-                    attributesObject["is_pii"] = ExpressionConverter.ConvertO(bodydataattributesisPii);
+                    attributesObject["is_pii"] = ExpressionConverter.ConvertO(__workflow_bodydataattributesisPii);
                     attributesObjectpropCount++;
                 }
 
@@ -128,20 +117,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebotplatform
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebotplatform")]
-        [WorkflowExpressionFactory(nameof(__BuildSetUserAttribute))]
-        public IWorkflowAction SetUserAttribute([WorkflowExpression] Func<string> emailaddress, [WorkflowExpression] Func<bodydataattributesstateInputItem[]> bodydataattributesstate)
+        public IWorkflowAction SetUserAttribute(Expression<Func<string>> emailaddress, Expression<Func<bodydataattributesstateInputItem[]>> bodydataattributesstate)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildSetUserAttribute(WorkflowExpression<string> emailaddress, WorkflowExpression<bodydataattributesstateInputItem[]> bodydataattributesstate)
-        {
-            WorkflowExpression.Validate(emailaddress, nameof(emailaddress), required: true);
-            WorkflowExpression.Validate(bodydataattributesstate, nameof(bodydataattributesstate), required: true);
+            var __workflow_emailaddress = emailaddress == null ? null : WorkflowExpression.Compile(emailaddress);
+            WorkflowExpression.Validate(__workflow_emailaddress, nameof(emailaddress), required: true);
+            var __workflow_bodydataattributesstate = bodydataattributesstate == null ? null : WorkflowExpression.Compile(bodydataattributesstate);
+            WorkflowExpression.Validate(__workflow_bodydataattributesstate, nameof(bodydataattributesstate), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(emailaddress, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_emailaddress, 1));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -153,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebotplatform
                 var attributesObject = new JObject();
                 var attributesObjectpropCount = 0;
                 attributesObjectpropCount++;
-                attributesObject["state"] = ExpressionConverter.ConvertO(bodydataattributesstate);
+                attributesObject["state"] = ExpressionConverter.ConvertO(__workflow_bodydataattributesstate);
                 if (attributesObjectpropCount > 0)
                 {
                     dataObject["attributes"] = attributesObject;

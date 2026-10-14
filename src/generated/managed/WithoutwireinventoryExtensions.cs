@@ -1,99 +1,91 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class WithoutwireinventoryActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        [WorkflowExpressionFactory(nameof(__BuildGetWorkOrders))]
-        public IBodyWorkflowAction<GetWorkOrdersResponseItem[]> GetWorkOrders([WorkflowExpression] Func<string> orderNumber = null, [WorkflowExpression] Func<string> beginDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<orderStatusCodeInput> orderStatusCode = null, [WorkflowExpression] Func<string> itemNumber = null, [WorkflowExpression] Func<string> parentOrderNumber = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> warehouse = null)
+        public IBodyWorkflowAction<GetWorkOrdersResponseItem[]> GetWorkOrders(Expression<Func<string>> orderNumber = null, Expression<Func<string>> beginDate = null, Expression<Func<string>> endDate = null, Expression<Func<orderStatusCodeInput>> orderStatusCode = null, Expression<Func<string>> itemNumber = null, Expression<Func<string>> parentOrderNumber = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetWorkOrdersResponseItem[]> __BuildGetWorkOrders(WorkflowExpression<string> orderNumber = null, WorkflowExpression<string> beginDate = null, WorkflowExpression<string> endDate = null, WorkflowExpression<orderStatusCodeInput> orderStatusCode = null, WorkflowExpression<string> itemNumber = null, WorkflowExpression<string> parentOrderNumber = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> warehouse = null)
-        {
-            WorkflowExpression.Validate(orderNumber, nameof(orderNumber), required: false);
-            WorkflowExpression.Validate(beginDate, nameof(beginDate), required: false);
-            WorkflowExpression.Validate(endDate, nameof(endDate), required: false);
-            WorkflowExpression.Validate(orderStatusCode, nameof(orderStatusCode), required: false);
-            WorkflowExpression.Validate(itemNumber, nameof(itemNumber), required: false);
-            WorkflowExpression.Validate(parentOrderNumber, nameof(parentOrderNumber), required: false);
-            WorkflowExpression.Validate(userName, nameof(userName), required: false);
-            WorkflowExpression.Validate(warehouse, nameof(warehouse), required: false);
+            var __workflow_orderNumber = orderNumber == null ? null : WorkflowExpression.Compile(orderNumber);
+            WorkflowExpression.Validate(__workflow_orderNumber, nameof(orderNumber), required: false);
+            var __workflow_beginDate = beginDate == null ? null : WorkflowExpression.Compile(beginDate);
+            WorkflowExpression.Validate(__workflow_beginDate, nameof(beginDate), required: false);
+            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
+            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: false);
+            var __workflow_orderStatusCode = orderStatusCode == null ? null : WorkflowExpression.Compile(orderStatusCode);
+            WorkflowExpression.Validate(__workflow_orderStatusCode, nameof(orderStatusCode), required: false);
+            var __workflow_itemNumber = itemNumber == null ? null : WorkflowExpression.Compile(itemNumber);
+            WorkflowExpression.Validate(__workflow_itemNumber, nameof(itemNumber), required: false);
+            var __workflow_parentOrderNumber = parentOrderNumber == null ? null : WorkflowExpression.Compile(parentOrderNumber);
+            WorkflowExpression.Validate(__workflow_parentOrderNumber, nameof(parentOrderNumber), required: false);
+            var __workflow_userName = userName == null ? null : WorkflowExpression.Compile(userName);
+            WorkflowExpression.Validate(__workflow_userName, nameof(userName), required: false);
+            var __workflow_warehouse = warehouse == null ? null : WorkflowExpression.Compile(warehouse);
+            WorkflowExpression.Validate(__workflow_warehouse, nameof(warehouse), required: false);
             return new DeferredBodyAction<GetWorkOrdersResponseItem[]>(() =>
             {
                 var apiCallPath = "/integration/workorder";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (orderNumber != null)
-                    callPayload.Queries["OrderNumber"] = ExpressionConverter.Convert(orderNumber);
-                if (beginDate != null)
-                    callPayload.Queries["beginDate"] = ExpressionConverter.Convert(beginDate);
-                if (endDate != null)
-                    callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
-                if (orderStatusCode != null)
-                    callPayload.Queries["OrderStatusCode"] = ExpressionConverter.Convert(orderStatusCode);
-                if (itemNumber != null)
-                    callPayload.Queries["itemNumber"] = ExpressionConverter.Convert(itemNumber);
-                if (parentOrderNumber != null)
-                    callPayload.Queries["parentOrderNumber"] = ExpressionConverter.Convert(parentOrderNumber);
-                if (userName != null)
-                    callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
-                if (warehouse != null)
-                    callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
+                if (__workflow_orderNumber != null)
+                    callPayload.Queries["OrderNumber"] = ExpressionConverter.Convert(__workflow_orderNumber);
+                if (__workflow_beginDate != null)
+                    callPayload.Queries["beginDate"] = ExpressionConverter.Convert(__workflow_beginDate);
+                if (__workflow_endDate != null)
+                    callPayload.Queries["endDate"] = ExpressionConverter.Convert(__workflow_endDate);
+                if (__workflow_orderStatusCode != null)
+                    callPayload.Queries["OrderStatusCode"] = ExpressionConverter.Convert(__workflow_orderStatusCode);
+                if (__workflow_itemNumber != null)
+                    callPayload.Queries["itemNumber"] = ExpressionConverter.Convert(__workflow_itemNumber);
+                if (__workflow_parentOrderNumber != null)
+                    callPayload.Queries["parentOrderNumber"] = ExpressionConverter.Convert(__workflow_parentOrderNumber);
+                if (__workflow_userName != null)
+                    callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
+                if (__workflow_warehouse != null)
+                    callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
                 return new ApiConnectionAction<GetWorkOrdersResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateUpdateWorkOrder))]
-        public IBodyWorkflowAction<CreateUpdateWorkOrderResponse> CreateUpdateWorkOrder([WorkflowExpression] Func<bodyInputItem[]> body = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> warehouse = null)
+        public IBodyWorkflowAction<CreateUpdateWorkOrderResponse> CreateUpdateWorkOrder(Expression<Func<bodyInputItem[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateUpdateWorkOrderResponse> __BuildCreateUpdateWorkOrder(WorkflowExpression<bodyInputItem[]> body = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> warehouse = null)
-        {
-            WorkflowExpression.Validate(body, nameof(body), required: false);
-            WorkflowExpression.Validate(userName, nameof(userName), required: false);
-            WorkflowExpression.Validate(warehouse, nameof(warehouse), required: false);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_userName = userName == null ? null : WorkflowExpression.Compile(userName);
+            WorkflowExpression.Validate(__workflow_userName, nameof(userName), required: false);
+            var __workflow_warehouse = warehouse == null ? null : WorkflowExpression.Compile(warehouse);
+            WorkflowExpression.Validate(__workflow_warehouse, nameof(warehouse), required: false);
             return new DeferredBodyAction<CreateUpdateWorkOrderResponse>(() =>
             {
                 var apiCallPath = "/integration/workorder";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (userName != null)
-                    callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
-                if (warehouse != null)
-                    callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                if (__workflow_userName != null)
+                    callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
+                if (__workflow_warehouse != null)
+                    callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateUpdateWorkOrderResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteOrder))]
-        public IBodyWorkflowAction<DeleteOrderResponse> DeleteOrder([WorkflowExpression] Func<bodyInputItem2[]> body = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> warehouse = null)
+        public IBodyWorkflowAction<DeleteOrderResponse> DeleteOrder(Expression<Func<bodyInputItem2[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DeleteOrderResponse> __BuildDeleteOrder(WorkflowExpression<bodyInputItem2[]> body = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> warehouse = null)
-        {
-            WorkflowExpression.Validate(body, nameof(body), required: false);
-            WorkflowExpression.Validate(userName, nameof(userName), required: false);
-            WorkflowExpression.Validate(warehouse, nameof(warehouse), required: false);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_userName = userName == null ? null : WorkflowExpression.Compile(userName);
+            WorkflowExpression.Validate(__workflow_userName, nameof(userName), required: false);
+            var __workflow_warehouse = warehouse == null ? null : WorkflowExpression.Compile(warehouse);
+            WorkflowExpression.Validate(__workflow_warehouse, nameof(warehouse), required: false);
             return new DeferredBodyAction<DeleteOrderResponse>(() =>
             {
                 var apiCallPath = "/integration/order";
@@ -101,203 +93,179 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                if (userName != null)
-                    callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
-                if (warehouse != null)
-                    callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                if (__workflow_userName != null)
+                    callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
+                if (__workflow_warehouse != null)
+                    callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DeleteOrderResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        [WorkflowExpressionFactory(nameof(__BuildSetOrderComplete))]
-        public IBodyWorkflowAction<SetOrderCompleteResponse> SetOrderComplete([WorkflowExpression] Func<bodyInputItem22[]> body = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> warehouse = null)
+        public IBodyWorkflowAction<SetOrderCompleteResponse> SetOrderComplete(Expression<Func<bodyInputItem22[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SetOrderCompleteResponse> __BuildSetOrderComplete(WorkflowExpression<bodyInputItem22[]> body = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> warehouse = null)
-        {
-            WorkflowExpression.Validate(body, nameof(body), required: false);
-            WorkflowExpression.Validate(userName, nameof(userName), required: false);
-            WorkflowExpression.Validate(warehouse, nameof(warehouse), required: false);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_userName = userName == null ? null : WorkflowExpression.Compile(userName);
+            WorkflowExpression.Validate(__workflow_userName, nameof(userName), required: false);
+            var __workflow_warehouse = warehouse == null ? null : WorkflowExpression.Compile(warehouse);
+            WorkflowExpression.Validate(__workflow_warehouse, nameof(warehouse), required: false);
             return new DeferredBodyAction<SetOrderCompleteResponse>(() =>
             {
                 var apiCallPath = "/integration/order/complete";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (userName != null)
-                    callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
-                if (warehouse != null)
-                    callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                if (__workflow_userName != null)
+                    callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
+                if (__workflow_warehouse != null)
+                    callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SetOrderCompleteResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        [WorkflowExpressionFactory(nameof(__BuildSetOrderStatus))]
-        public IBodyWorkflowAction<SetOrderStatusResponse> SetOrderStatus([WorkflowExpression] Func<bodyInputItem222[]> body = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> warehouse = null)
+        public IBodyWorkflowAction<SetOrderStatusResponse> SetOrderStatus(Expression<Func<bodyInputItem222[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SetOrderStatusResponse> __BuildSetOrderStatus(WorkflowExpression<bodyInputItem222[]> body = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> warehouse = null)
-        {
-            WorkflowExpression.Validate(body, nameof(body), required: false);
-            WorkflowExpression.Validate(userName, nameof(userName), required: false);
-            WorkflowExpression.Validate(warehouse, nameof(warehouse), required: false);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_userName = userName == null ? null : WorkflowExpression.Compile(userName);
+            WorkflowExpression.Validate(__workflow_userName, nameof(userName), required: false);
+            var __workflow_warehouse = warehouse == null ? null : WorkflowExpression.Compile(warehouse);
+            WorkflowExpression.Validate(__workflow_warehouse, nameof(warehouse), required: false);
             return new DeferredBodyAction<SetOrderStatusResponse>(() =>
             {
                 var apiCallPath = "/integration/order/status";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (userName != null)
-                    callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
-                if (warehouse != null)
-                    callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                if (__workflow_userName != null)
+                    callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
+                if (__workflow_warehouse != null)
+                    callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SetOrderStatusResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        [WorkflowExpressionFactory(nameof(__BuildAssignOrder))]
-        public IBodyWorkflowAction<string> AssignOrder([WorkflowExpression] Func<bodyInputItem2222[]> body = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> warehouse = null)
+        public IBodyWorkflowAction<string> AssignOrder(Expression<Func<bodyInputItem2222[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildAssignOrder(WorkflowExpression<bodyInputItem2222[]> body = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> warehouse = null)
-        {
-            WorkflowExpression.Validate(body, nameof(body), required: false);
-            WorkflowExpression.Validate(userName, nameof(userName), required: false);
-            WorkflowExpression.Validate(warehouse, nameof(warehouse), required: false);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_userName = userName == null ? null : WorkflowExpression.Compile(userName);
+            WorkflowExpression.Validate(__workflow_userName, nameof(userName), required: false);
+            var __workflow_warehouse = warehouse == null ? null : WorkflowExpression.Compile(warehouse);
+            WorkflowExpression.Validate(__workflow_warehouse, nameof(warehouse), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/integration/order/assignment";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (userName != null)
-                    callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
-                if (warehouse != null)
-                    callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                if (__workflow_userName != null)
+                    callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
+                if (__workflow_warehouse != null)
+                    callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        [WorkflowExpressionFactory(nameof(__BuildGetInventory))]
-        public IBodyWorkflowAction<GetInventoryResponseItem[]> GetInventory([WorkflowExpression] Func<string> itemNumber = null, [WorkflowExpression] Func<string> binNumber = null, [WorkflowExpression] Func<string> allocationSetName = null, [WorkflowExpression] Func<string> warehouseName = null, [WorkflowExpression] Func<string> coreValue = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> warehouse = null)
+        public IBodyWorkflowAction<GetInventoryResponseItem[]> GetInventory(Expression<Func<string>> itemNumber = null, Expression<Func<string>> binNumber = null, Expression<Func<string>> allocationSetName = null, Expression<Func<string>> warehouseName = null, Expression<Func<string>> coreValue = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetInventoryResponseItem[]> __BuildGetInventory(WorkflowExpression<string> itemNumber = null, WorkflowExpression<string> binNumber = null, WorkflowExpression<string> allocationSetName = null, WorkflowExpression<string> warehouseName = null, WorkflowExpression<string> coreValue = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> warehouse = null)
-        {
-            WorkflowExpression.Validate(itemNumber, nameof(itemNumber), required: false);
-            WorkflowExpression.Validate(binNumber, nameof(binNumber), required: false);
-            WorkflowExpression.Validate(allocationSetName, nameof(allocationSetName), required: false);
-            WorkflowExpression.Validate(warehouseName, nameof(warehouseName), required: false);
-            WorkflowExpression.Validate(coreValue, nameof(coreValue), required: false);
-            WorkflowExpression.Validate(userName, nameof(userName), required: false);
-            WorkflowExpression.Validate(warehouse, nameof(warehouse), required: false);
+            var __workflow_itemNumber = itemNumber == null ? null : WorkflowExpression.Compile(itemNumber);
+            WorkflowExpression.Validate(__workflow_itemNumber, nameof(itemNumber), required: false);
+            var __workflow_binNumber = binNumber == null ? null : WorkflowExpression.Compile(binNumber);
+            WorkflowExpression.Validate(__workflow_binNumber, nameof(binNumber), required: false);
+            var __workflow_allocationSetName = allocationSetName == null ? null : WorkflowExpression.Compile(allocationSetName);
+            WorkflowExpression.Validate(__workflow_allocationSetName, nameof(allocationSetName), required: false);
+            var __workflow_warehouseName = warehouseName == null ? null : WorkflowExpression.Compile(warehouseName);
+            WorkflowExpression.Validate(__workflow_warehouseName, nameof(warehouseName), required: false);
+            var __workflow_coreValue = coreValue == null ? null : WorkflowExpression.Compile(coreValue);
+            WorkflowExpression.Validate(__workflow_coreValue, nameof(coreValue), required: false);
+            var __workflow_userName = userName == null ? null : WorkflowExpression.Compile(userName);
+            WorkflowExpression.Validate(__workflow_userName, nameof(userName), required: false);
+            var __workflow_warehouse = warehouse == null ? null : WorkflowExpression.Compile(warehouse);
+            WorkflowExpression.Validate(__workflow_warehouse, nameof(warehouse), required: false);
             return new DeferredBodyAction<GetInventoryResponseItem[]>(() =>
             {
                 var apiCallPath = "/integration/inventory";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (itemNumber != null)
-                    callPayload.Queries["ItemNumber"] = ExpressionConverter.Convert(itemNumber);
-                if (binNumber != null)
-                    callPayload.Queries["BinNumber"] = ExpressionConverter.Convert(binNumber);
-                if (allocationSetName != null)
-                    callPayload.Queries["AllocationSetName"] = ExpressionConverter.Convert(allocationSetName);
-                if (warehouseName != null)
-                    callPayload.Queries["WarehouseName"] = ExpressionConverter.Convert(warehouseName);
-                if (coreValue != null)
-                    callPayload.Queries["CoreValue"] = ExpressionConverter.Convert(coreValue);
-                if (userName != null)
-                    callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
-                if (warehouse != null)
-                    callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
+                if (__workflow_itemNumber != null)
+                    callPayload.Queries["ItemNumber"] = ExpressionConverter.Convert(__workflow_itemNumber);
+                if (__workflow_binNumber != null)
+                    callPayload.Queries["BinNumber"] = ExpressionConverter.Convert(__workflow_binNumber);
+                if (__workflow_allocationSetName != null)
+                    callPayload.Queries["AllocationSetName"] = ExpressionConverter.Convert(__workflow_allocationSetName);
+                if (__workflow_warehouseName != null)
+                    callPayload.Queries["WarehouseName"] = ExpressionConverter.Convert(__workflow_warehouseName);
+                if (__workflow_coreValue != null)
+                    callPayload.Queries["CoreValue"] = ExpressionConverter.Convert(__workflow_coreValue);
+                if (__workflow_userName != null)
+                    callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
+                if (__workflow_warehouse != null)
+                    callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
                 return new ApiConnectionAction<GetInventoryResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateInventoryRequest))]
-        public IBodyWorkflowAction<CreateInventoryRequestResponse> CreateInventoryRequest([WorkflowExpression] Func<bodyInputItem22222[]> body = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> warehouse = null)
+        public IBodyWorkflowAction<CreateInventoryRequestResponse> CreateInventoryRequest(Expression<Func<bodyInputItem22222[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateInventoryRequestResponse> __BuildCreateInventoryRequest(WorkflowExpression<bodyInputItem22222[]> body = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> warehouse = null)
-        {
-            WorkflowExpression.Validate(body, nameof(body), required: false);
-            WorkflowExpression.Validate(userName, nameof(userName), required: false);
-            WorkflowExpression.Validate(warehouse, nameof(warehouse), required: false);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_userName = userName == null ? null : WorkflowExpression.Compile(userName);
+            WorkflowExpression.Validate(__workflow_userName, nameof(userName), required: false);
+            var __workflow_warehouse = warehouse == null ? null : WorkflowExpression.Compile(warehouse);
+            WorkflowExpression.Validate(__workflow_warehouse, nameof(warehouse), required: false);
             return new DeferredBodyAction<CreateInventoryRequestResponse>(() =>
             {
                 var apiCallPath = "/integration/inventory/request";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (userName != null)
-                    callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
-                if (warehouse != null)
-                    callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                if (__workflow_userName != null)
+                    callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
+                if (__workflow_warehouse != null)
+                    callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateInventoryRequestResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateInventoryAdjustment))]
-        public IBodyWorkflowAction<CreateInventoryAdjustmentResponse> CreateInventoryAdjustment([WorkflowExpression] Func<bodyInputItem222222[]> body = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> warehouse = null)
+        public IBodyWorkflowAction<CreateInventoryAdjustmentResponse> CreateInventoryAdjustment(Expression<Func<bodyInputItem222222[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateInventoryAdjustmentResponse> __BuildCreateInventoryAdjustment(WorkflowExpression<bodyInputItem222222[]> body = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> warehouse = null)
-        {
-            WorkflowExpression.Validate(body, nameof(body), required: false);
-            WorkflowExpression.Validate(userName, nameof(userName), required: false);
-            WorkflowExpression.Validate(warehouse, nameof(warehouse), required: false);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_userName = userName == null ? null : WorkflowExpression.Compile(userName);
+            WorkflowExpression.Validate(__workflow_userName, nameof(userName), required: false);
+            var __workflow_warehouse = warehouse == null ? null : WorkflowExpression.Compile(warehouse);
+            WorkflowExpression.Validate(__workflow_warehouse, nameof(warehouse), required: false);
             return new DeferredBodyAction<CreateInventoryAdjustmentResponse>(() =>
             {
                 var apiCallPath = "/integration/inventory/adjustment";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (userName != null)
-                    callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
-                if (warehouse != null)
-                    callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                if (__workflow_userName != null)
+                    callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
+                if (__workflow_warehouse != null)
+                    callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateInventoryAdjustmentResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteInboundRequest))]
-        public IBodyWorkflowAction<DeleteInboundRequestResponse> DeleteInboundRequest([WorkflowExpression] Func<bodyInputItem2222222[]> body = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> warehouse = null)
+        public IBodyWorkflowAction<DeleteInboundRequestResponse> DeleteInboundRequest(Expression<Func<bodyInputItem2222222[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DeleteInboundRequestResponse> __BuildDeleteInboundRequest(WorkflowExpression<bodyInputItem2222222[]> body = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> warehouse = null)
-        {
-            WorkflowExpression.Validate(body, nameof(body), required: false);
-            WorkflowExpression.Validate(userName, nameof(userName), required: false);
-            WorkflowExpression.Validate(warehouse, nameof(warehouse), required: false);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_userName = userName == null ? null : WorkflowExpression.Compile(userName);
+            WorkflowExpression.Validate(__workflow_userName, nameof(userName), required: false);
+            var __workflow_warehouse = warehouse == null ? null : WorkflowExpression.Compile(warehouse);
+            WorkflowExpression.Validate(__workflow_warehouse, nameof(warehouse), required: false);
             return new DeferredBodyAction<DeleteInboundRequestResponse>(() =>
             {
                 var apiCallPath = "/integration/purchaseorder";
@@ -305,602 +273,554 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                if (userName != null)
-                    callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
-                if (warehouse != null)
-                    callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                if (__workflow_userName != null)
+                    callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
+                if (__workflow_warehouse != null)
+                    callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DeleteInboundRequestResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateInboundRequest))]
-        public IBodyWorkflowAction<CreateInboundRequestResponse> CreateInboundRequest([WorkflowExpression] Func<bodyInputItem22222222[]> body = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> warehouse = null)
+        public IBodyWorkflowAction<CreateInboundRequestResponse> CreateInboundRequest(Expression<Func<bodyInputItem22222222[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateInboundRequestResponse> __BuildCreateInboundRequest(WorkflowExpression<bodyInputItem22222222[]> body = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> warehouse = null)
-        {
-            WorkflowExpression.Validate(body, nameof(body), required: false);
-            WorkflowExpression.Validate(userName, nameof(userName), required: false);
-            WorkflowExpression.Validate(warehouse, nameof(warehouse), required: false);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_userName = userName == null ? null : WorkflowExpression.Compile(userName);
+            WorkflowExpression.Validate(__workflow_userName, nameof(userName), required: false);
+            var __workflow_warehouse = warehouse == null ? null : WorkflowExpression.Compile(warehouse);
+            WorkflowExpression.Validate(__workflow_warehouse, nameof(warehouse), required: false);
             return new DeferredBodyAction<CreateInboundRequestResponse>(() =>
             {
                 var apiCallPath = "/integration/purchaseorder";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (userName != null)
-                    callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
-                if (warehouse != null)
-                    callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                if (__workflow_userName != null)
+                    callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
+                if (__workflow_warehouse != null)
+                    callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateInboundRequestResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateSite))]
-        public IBodyWorkflowAction<string> CreateSite([WorkflowExpression] Func<string> userName, [WorkflowExpression] Func<string> warehouse, [WorkflowExpression] Func<bodyInputItem222222222[]> body = null)
+        public IBodyWorkflowAction<string> CreateSite(Expression<Func<string>> userName, Expression<Func<string>> warehouse, Expression<Func<bodyInputItem222222222[]>> body = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildCreateSite(WorkflowExpression<string> userName, WorkflowExpression<string> warehouse, WorkflowExpression<bodyInputItem222222222[]> body = null)
-        {
-            WorkflowExpression.Validate(userName, nameof(userName), required: true);
-            WorkflowExpression.Validate(warehouse, nameof(warehouse), required: true);
-            WorkflowExpression.Validate(body, nameof(body), required: false);
+            var __workflow_userName = userName == null ? null : WorkflowExpression.Compile(userName);
+            WorkflowExpression.Validate(__workflow_userName, nameof(userName), required: true);
+            var __workflow_warehouse = warehouse == null ? null : WorkflowExpression.Compile(warehouse);
+            WorkflowExpression.Validate(__workflow_warehouse, nameof(warehouse), required: true);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/integration/warehouse";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
-                callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
+                callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateItem))]
-        public IBodyWorkflowAction<CreateItemResponse> CreateItem([WorkflowExpression] Func<bodyInputItem2222222222[]> body = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> warehouse = null)
+        public IBodyWorkflowAction<CreateItemResponse> CreateItem(Expression<Func<bodyInputItem2222222222[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateItemResponse> __BuildCreateItem(WorkflowExpression<bodyInputItem2222222222[]> body = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> warehouse = null)
-        {
-            WorkflowExpression.Validate(body, nameof(body), required: false);
-            WorkflowExpression.Validate(userName, nameof(userName), required: false);
-            WorkflowExpression.Validate(warehouse, nameof(warehouse), required: false);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_userName = userName == null ? null : WorkflowExpression.Compile(userName);
+            WorkflowExpression.Validate(__workflow_userName, nameof(userName), required: false);
+            var __workflow_warehouse = warehouse == null ? null : WorkflowExpression.Compile(warehouse);
+            WorkflowExpression.Validate(__workflow_warehouse, nameof(warehouse), required: false);
             return new DeferredBodyAction<CreateItemResponse>(() =>
             {
                 var apiCallPath = "/integration/item";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (userName != null)
-                    callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
-                if (warehouse != null)
-                    callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                if (__workflow_userName != null)
+                    callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
+                if (__workflow_warehouse != null)
+                    callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateItemResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        [WorkflowExpressionFactory(nameof(__BuildGetInboundRequest))]
-        public IBodyWorkflowAction<GetInboundRequestResponseItem[]> GetInboundRequest([WorkflowExpression] Func<string> beginDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<pOStatusInput> pOStatus = null, [WorkflowExpression] Func<lineReceiptStatusInput> lineReceiptStatus = null, [WorkflowExpression] Func<string> itemNumber = null, [WorkflowExpression] Func<string> pONumber = null, [WorkflowExpression] Func<string> pOType = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> warehouse = null)
+        public IBodyWorkflowAction<GetInboundRequestResponseItem[]> GetInboundRequest(Expression<Func<string>> beginDate = null, Expression<Func<string>> endDate = null, Expression<Func<pOStatusInput>> pOStatus = null, Expression<Func<lineReceiptStatusInput>> lineReceiptStatus = null, Expression<Func<string>> itemNumber = null, Expression<Func<string>> pONumber = null, Expression<Func<string>> pOType = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetInboundRequestResponseItem[]> __BuildGetInboundRequest(WorkflowExpression<string> beginDate = null, WorkflowExpression<string> endDate = null, WorkflowExpression<pOStatusInput> pOStatus = null, WorkflowExpression<lineReceiptStatusInput> lineReceiptStatus = null, WorkflowExpression<string> itemNumber = null, WorkflowExpression<string> pONumber = null, WorkflowExpression<string> pOType = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> warehouse = null)
-        {
-            WorkflowExpression.Validate(beginDate, nameof(beginDate), required: false);
-            WorkflowExpression.Validate(endDate, nameof(endDate), required: false);
-            WorkflowExpression.Validate(pOStatus, nameof(pOStatus), required: false);
-            WorkflowExpression.Validate(lineReceiptStatus, nameof(lineReceiptStatus), required: false);
-            WorkflowExpression.Validate(itemNumber, nameof(itemNumber), required: false);
-            WorkflowExpression.Validate(pONumber, nameof(pONumber), required: false);
-            WorkflowExpression.Validate(pOType, nameof(pOType), required: false);
-            WorkflowExpression.Validate(userName, nameof(userName), required: false);
-            WorkflowExpression.Validate(warehouse, nameof(warehouse), required: false);
+            var __workflow_beginDate = beginDate == null ? null : WorkflowExpression.Compile(beginDate);
+            WorkflowExpression.Validate(__workflow_beginDate, nameof(beginDate), required: false);
+            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
+            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: false);
+            var __workflow_pOStatus = pOStatus == null ? null : WorkflowExpression.Compile(pOStatus);
+            WorkflowExpression.Validate(__workflow_pOStatus, nameof(pOStatus), required: false);
+            var __workflow_lineReceiptStatus = lineReceiptStatus == null ? null : WorkflowExpression.Compile(lineReceiptStatus);
+            WorkflowExpression.Validate(__workflow_lineReceiptStatus, nameof(lineReceiptStatus), required: false);
+            var __workflow_itemNumber = itemNumber == null ? null : WorkflowExpression.Compile(itemNumber);
+            WorkflowExpression.Validate(__workflow_itemNumber, nameof(itemNumber), required: false);
+            var __workflow_pONumber = pONumber == null ? null : WorkflowExpression.Compile(pONumber);
+            WorkflowExpression.Validate(__workflow_pONumber, nameof(pONumber), required: false);
+            var __workflow_pOType = pOType == null ? null : WorkflowExpression.Compile(pOType);
+            WorkflowExpression.Validate(__workflow_pOType, nameof(pOType), required: false);
+            var __workflow_userName = userName == null ? null : WorkflowExpression.Compile(userName);
+            WorkflowExpression.Validate(__workflow_userName, nameof(userName), required: false);
+            var __workflow_warehouse = warehouse == null ? null : WorkflowExpression.Compile(warehouse);
+            WorkflowExpression.Validate(__workflow_warehouse, nameof(warehouse), required: false);
             return new DeferredBodyAction<GetInboundRequestResponseItem[]>(() =>
             {
                 var apiCallPath = "/integration/purchaseorder/filter";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (beginDate != null)
-                    callPayload.Queries["BeginDate"] = ExpressionConverter.Convert(beginDate);
-                if (endDate != null)
-                    callPayload.Queries["EndDate"] = ExpressionConverter.Convert(endDate);
-                if (pOStatus != null)
-                    callPayload.Queries["POStatus"] = ExpressionConverter.Convert(pOStatus);
-                if (lineReceiptStatus != null)
-                    callPayload.Queries["LineReceiptStatus"] = ExpressionConverter.Convert(lineReceiptStatus);
-                if (itemNumber != null)
-                    callPayload.Queries["ItemNumber"] = ExpressionConverter.Convert(itemNumber);
-                if (pONumber != null)
-                    callPayload.Queries["PONumber"] = ExpressionConverter.Convert(pONumber);
-                if (pOType != null)
-                    callPayload.Queries["POType"] = ExpressionConverter.Convert(pOType);
-                if (userName != null)
-                    callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
-                if (warehouse != null)
-                    callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
+                if (__workflow_beginDate != null)
+                    callPayload.Queries["BeginDate"] = ExpressionConverter.Convert(__workflow_beginDate);
+                if (__workflow_endDate != null)
+                    callPayload.Queries["EndDate"] = ExpressionConverter.Convert(__workflow_endDate);
+                if (__workflow_pOStatus != null)
+                    callPayload.Queries["POStatus"] = ExpressionConverter.Convert(__workflow_pOStatus);
+                if (__workflow_lineReceiptStatus != null)
+                    callPayload.Queries["LineReceiptStatus"] = ExpressionConverter.Convert(__workflow_lineReceiptStatus);
+                if (__workflow_itemNumber != null)
+                    callPayload.Queries["ItemNumber"] = ExpressionConverter.Convert(__workflow_itemNumber);
+                if (__workflow_pONumber != null)
+                    callPayload.Queries["PONumber"] = ExpressionConverter.Convert(__workflow_pONumber);
+                if (__workflow_pOType != null)
+                    callPayload.Queries["POType"] = ExpressionConverter.Convert(__workflow_pOType);
+                if (__workflow_userName != null)
+                    callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
+                if (__workflow_warehouse != null)
+                    callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
                 return new ApiConnectionAction<GetInboundRequestResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        [WorkflowExpressionFactory(nameof(__BuildInboundComplete))]
-        public IBodyWorkflowAction<InboundCompleteResponse> InboundComplete([WorkflowExpression] Func<bodyInputItem22[]> body = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> warehouse = null)
+        public IBodyWorkflowAction<InboundCompleteResponse> InboundComplete(Expression<Func<bodyInputItem22[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<InboundCompleteResponse> __BuildInboundComplete(WorkflowExpression<bodyInputItem22[]> body = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> warehouse = null)
-        {
-            WorkflowExpression.Validate(body, nameof(body), required: false);
-            WorkflowExpression.Validate(userName, nameof(userName), required: false);
-            WorkflowExpression.Validate(warehouse, nameof(warehouse), required: false);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_userName = userName == null ? null : WorkflowExpression.Compile(userName);
+            WorkflowExpression.Validate(__workflow_userName, nameof(userName), required: false);
+            var __workflow_warehouse = warehouse == null ? null : WorkflowExpression.Compile(warehouse);
+            WorkflowExpression.Validate(__workflow_warehouse, nameof(warehouse), required: false);
             return new DeferredBodyAction<InboundCompleteResponse>(() =>
             {
                 var apiCallPath = "/integration/purchaseorder/complete";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (userName != null)
-                    callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
-                if (warehouse != null)
-                    callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                if (__workflow_userName != null)
+                    callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
+                if (__workflow_warehouse != null)
+                    callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<InboundCompleteResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateLocation))]
-        public IBodyWorkflowAction<CreateLocationResponse> CreateLocation([WorkflowExpression] Func<bodyInputItem22222222222[]> body = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> warehouse = null)
+        public IBodyWorkflowAction<CreateLocationResponse> CreateLocation(Expression<Func<bodyInputItem22222222222[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateLocationResponse> __BuildCreateLocation(WorkflowExpression<bodyInputItem22222222222[]> body = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> warehouse = null)
-        {
-            WorkflowExpression.Validate(body, nameof(body), required: false);
-            WorkflowExpression.Validate(userName, nameof(userName), required: false);
-            WorkflowExpression.Validate(warehouse, nameof(warehouse), required: false);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_userName = userName == null ? null : WorkflowExpression.Compile(userName);
+            WorkflowExpression.Validate(__workflow_userName, nameof(userName), required: false);
+            var __workflow_warehouse = warehouse == null ? null : WorkflowExpression.Compile(warehouse);
+            WorkflowExpression.Validate(__workflow_warehouse, nameof(warehouse), required: false);
             return new DeferredBodyAction<CreateLocationResponse>(() =>
             {
                 var apiCallPath = "/integration/bins";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (userName != null)
-                    callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
-                if (warehouse != null)
-                    callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                if (__workflow_userName != null)
+                    callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
+                if (__workflow_warehouse != null)
+                    callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateLocationResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        [WorkflowExpressionFactory(nameof(__BuildReceiptComplete))]
-        public IBodyWorkflowAction<ReceiptCompleteResponse> ReceiptComplete([WorkflowExpression] Func<bodyInputItem222222222222[]> body = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> warehouse = null)
+        public IBodyWorkflowAction<ReceiptCompleteResponse> ReceiptComplete(Expression<Func<bodyInputItem222222222222[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ReceiptCompleteResponse> __BuildReceiptComplete(WorkflowExpression<bodyInputItem222222222222[]> body = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> warehouse = null)
-        {
-            WorkflowExpression.Validate(body, nameof(body), required: false);
-            WorkflowExpression.Validate(userName, nameof(userName), required: false);
-            WorkflowExpression.Validate(warehouse, nameof(warehouse), required: false);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_userName = userName == null ? null : WorkflowExpression.Compile(userName);
+            WorkflowExpression.Validate(__workflow_userName, nameof(userName), required: false);
+            var __workflow_warehouse = warehouse == null ? null : WorkflowExpression.Compile(warehouse);
+            WorkflowExpression.Validate(__workflow_warehouse, nameof(warehouse), required: false);
             return new DeferredBodyAction<ReceiptCompleteResponse>(() =>
             {
                 var apiCallPath = "/integration/purchaseorder/receipt/complete";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (userName != null)
-                    callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
-                if (warehouse != null)
-                    callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                if (__workflow_userName != null)
+                    callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
+                if (__workflow_warehouse != null)
+                    callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ReceiptCompleteResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        [WorkflowExpressionFactory(nameof(__BuildGetSalesOrders))]
-        public IBodyWorkflowAction<GetSalesOrdersResponseItem[]> GetSalesOrders([WorkflowExpression] Func<string> orderNumber = null, [WorkflowExpression] Func<string> beginDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<orderStatusCodeInput> orderStatusCode = null, [WorkflowExpression] Func<string> itemNumber = null, [WorkflowExpression] Func<string> parentOrderNumber = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> warehouse = null)
+        public IBodyWorkflowAction<GetSalesOrdersResponseItem[]> GetSalesOrders(Expression<Func<string>> orderNumber = null, Expression<Func<string>> beginDate = null, Expression<Func<string>> endDate = null, Expression<Func<orderStatusCodeInput>> orderStatusCode = null, Expression<Func<string>> itemNumber = null, Expression<Func<string>> parentOrderNumber = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetSalesOrdersResponseItem[]> __BuildGetSalesOrders(WorkflowExpression<string> orderNumber = null, WorkflowExpression<string> beginDate = null, WorkflowExpression<string> endDate = null, WorkflowExpression<orderStatusCodeInput> orderStatusCode = null, WorkflowExpression<string> itemNumber = null, WorkflowExpression<string> parentOrderNumber = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> warehouse = null)
-        {
-            WorkflowExpression.Validate(orderNumber, nameof(orderNumber), required: false);
-            WorkflowExpression.Validate(beginDate, nameof(beginDate), required: false);
-            WorkflowExpression.Validate(endDate, nameof(endDate), required: false);
-            WorkflowExpression.Validate(orderStatusCode, nameof(orderStatusCode), required: false);
-            WorkflowExpression.Validate(itemNumber, nameof(itemNumber), required: false);
-            WorkflowExpression.Validate(parentOrderNumber, nameof(parentOrderNumber), required: false);
-            WorkflowExpression.Validate(userName, nameof(userName), required: false);
-            WorkflowExpression.Validate(warehouse, nameof(warehouse), required: false);
+            var __workflow_orderNumber = orderNumber == null ? null : WorkflowExpression.Compile(orderNumber);
+            WorkflowExpression.Validate(__workflow_orderNumber, nameof(orderNumber), required: false);
+            var __workflow_beginDate = beginDate == null ? null : WorkflowExpression.Compile(beginDate);
+            WorkflowExpression.Validate(__workflow_beginDate, nameof(beginDate), required: false);
+            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
+            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: false);
+            var __workflow_orderStatusCode = orderStatusCode == null ? null : WorkflowExpression.Compile(orderStatusCode);
+            WorkflowExpression.Validate(__workflow_orderStatusCode, nameof(orderStatusCode), required: false);
+            var __workflow_itemNumber = itemNumber == null ? null : WorkflowExpression.Compile(itemNumber);
+            WorkflowExpression.Validate(__workflow_itemNumber, nameof(itemNumber), required: false);
+            var __workflow_parentOrderNumber = parentOrderNumber == null ? null : WorkflowExpression.Compile(parentOrderNumber);
+            WorkflowExpression.Validate(__workflow_parentOrderNumber, nameof(parentOrderNumber), required: false);
+            var __workflow_userName = userName == null ? null : WorkflowExpression.Compile(userName);
+            WorkflowExpression.Validate(__workflow_userName, nameof(userName), required: false);
+            var __workflow_warehouse = warehouse == null ? null : WorkflowExpression.Compile(warehouse);
+            WorkflowExpression.Validate(__workflow_warehouse, nameof(warehouse), required: false);
             return new DeferredBodyAction<GetSalesOrdersResponseItem[]>(() =>
             {
                 var apiCallPath = "/integration/salesorder";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (orderNumber != null)
-                    callPayload.Queries["OrderNumber"] = ExpressionConverter.Convert(orderNumber);
-                if (beginDate != null)
-                    callPayload.Queries["beginDate"] = ExpressionConverter.Convert(beginDate);
-                if (endDate != null)
-                    callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
-                if (orderStatusCode != null)
-                    callPayload.Queries["OrderStatusCode"] = ExpressionConverter.Convert(orderStatusCode);
-                if (itemNumber != null)
-                    callPayload.Queries["itemNumber"] = ExpressionConverter.Convert(itemNumber);
-                if (parentOrderNumber != null)
-                    callPayload.Queries["parentOrderNumber"] = ExpressionConverter.Convert(parentOrderNumber);
-                if (userName != null)
-                    callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
-                if (warehouse != null)
-                    callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
+                if (__workflow_orderNumber != null)
+                    callPayload.Queries["OrderNumber"] = ExpressionConverter.Convert(__workflow_orderNumber);
+                if (__workflow_beginDate != null)
+                    callPayload.Queries["beginDate"] = ExpressionConverter.Convert(__workflow_beginDate);
+                if (__workflow_endDate != null)
+                    callPayload.Queries["endDate"] = ExpressionConverter.Convert(__workflow_endDate);
+                if (__workflow_orderStatusCode != null)
+                    callPayload.Queries["OrderStatusCode"] = ExpressionConverter.Convert(__workflow_orderStatusCode);
+                if (__workflow_itemNumber != null)
+                    callPayload.Queries["itemNumber"] = ExpressionConverter.Convert(__workflow_itemNumber);
+                if (__workflow_parentOrderNumber != null)
+                    callPayload.Queries["parentOrderNumber"] = ExpressionConverter.Convert(__workflow_parentOrderNumber);
+                if (__workflow_userName != null)
+                    callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
+                if (__workflow_warehouse != null)
+                    callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
                 return new ApiConnectionAction<GetSalesOrdersResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateUpdateSalesOrder))]
-        public IBodyWorkflowAction<CreateUpdateSalesOrderResponse> CreateUpdateSalesOrder([WorkflowExpression] Func<bodyInputItem2222222222222[]> body = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> warehouse = null)
+        public IBodyWorkflowAction<CreateUpdateSalesOrderResponse> CreateUpdateSalesOrder(Expression<Func<bodyInputItem2222222222222[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateUpdateSalesOrderResponse> __BuildCreateUpdateSalesOrder(WorkflowExpression<bodyInputItem2222222222222[]> body = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> warehouse = null)
-        {
-            WorkflowExpression.Validate(body, nameof(body), required: false);
-            WorkflowExpression.Validate(userName, nameof(userName), required: false);
-            WorkflowExpression.Validate(warehouse, nameof(warehouse), required: false);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_userName = userName == null ? null : WorkflowExpression.Compile(userName);
+            WorkflowExpression.Validate(__workflow_userName, nameof(userName), required: false);
+            var __workflow_warehouse = warehouse == null ? null : WorkflowExpression.Compile(warehouse);
+            WorkflowExpression.Validate(__workflow_warehouse, nameof(warehouse), required: false);
             return new DeferredBodyAction<CreateUpdateSalesOrderResponse>(() =>
             {
                 var apiCallPath = "/integration/salesorder";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (userName != null)
-                    callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
-                if (warehouse != null)
-                    callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                if (__workflow_userName != null)
+                    callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
+                if (__workflow_warehouse != null)
+                    callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateUpdateSalesOrderResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        [WorkflowExpressionFactory(nameof(__BuildConsumeInventory))]
-        public IBodyWorkflowAction<string> ConsumeInventory([WorkflowExpression] Func<string> userName, [WorkflowExpression] Func<string> warehouse, [WorkflowExpression] Func<bodyInputItem22222222222222[]> body = null)
+        public IBodyWorkflowAction<string> ConsumeInventory(Expression<Func<string>> userName, Expression<Func<string>> warehouse, Expression<Func<bodyInputItem22222222222222[]>> body = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildConsumeInventory(WorkflowExpression<string> userName, WorkflowExpression<string> warehouse, WorkflowExpression<bodyInputItem22222222222222[]> body = null)
-        {
-            WorkflowExpression.Validate(userName, nameof(userName), required: true);
-            WorkflowExpression.Validate(warehouse, nameof(warehouse), required: true);
-            WorkflowExpression.Validate(body, nameof(body), required: false);
+            var __workflow_userName = userName == null ? null : WorkflowExpression.Compile(userName);
+            WorkflowExpression.Validate(__workflow_userName, nameof(userName), required: true);
+            var __workflow_warehouse = warehouse == null ? null : WorkflowExpression.Compile(warehouse);
+            WorkflowExpression.Validate(__workflow_warehouse, nameof(warehouse), required: true);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/api/workorder/consumption";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
-                callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
+                callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        [WorkflowExpressionFactory(nameof(__BuildGetBarcodeInfo))]
-        public IBodyWorkflowAction<GetBarcodeInfoResponse> GetBarcodeInfo([WorkflowExpression] Func<string> barcode, [WorkflowExpression] Func<string> userName, [WorkflowExpression] Func<string> warehouse)
+        public IBodyWorkflowAction<GetBarcodeInfoResponse> GetBarcodeInfo(Expression<Func<string>> barcode, Expression<Func<string>> userName, Expression<Func<string>> warehouse)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetBarcodeInfoResponse> __BuildGetBarcodeInfo(WorkflowExpression<string> barcode, WorkflowExpression<string> userName, WorkflowExpression<string> warehouse)
-        {
-            WorkflowExpression.Validate(barcode, nameof(barcode), required: true);
-            WorkflowExpression.Validate(userName, nameof(userName), required: true);
-            WorkflowExpression.Validate(warehouse, nameof(warehouse), required: true);
+            var __workflow_barcode = barcode == null ? null : WorkflowExpression.Compile(barcode);
+            WorkflowExpression.Validate(__workflow_barcode, nameof(barcode), required: true);
+            var __workflow_userName = userName == null ? null : WorkflowExpression.Compile(userName);
+            WorkflowExpression.Validate(__workflow_userName, nameof(userName), required: true);
+            var __workflow_warehouse = warehouse == null ? null : WorkflowExpression.Compile(warehouse);
+            WorkflowExpression.Validate(__workflow_warehouse, nameof(warehouse), required: true);
             return new DeferredBodyAction<GetBarcodeInfoResponse>(() =>
             {
                 var apiCallPath = "/api/barcode";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["Barcode"] = ExpressionConverter.Convert(barcode);
-                callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
-                callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
+                callPayload.Queries["Barcode"] = ExpressionConverter.Convert(__workflow_barcode);
+                callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
+                callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
                 return new ApiConnectionAction<GetBarcodeInfoResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        [WorkflowExpressionFactory(nameof(__BuildSingleScanInventoryLookup))]
-        public IBodyWorkflowAction<SingleScanInventoryLookupResponseItem[]> SingleScanInventoryLookup([WorkflowExpression] Func<string> barcode, [WorkflowExpression] Func<string> userName, [WorkflowExpression] Func<string> warehouse)
+        public IBodyWorkflowAction<SingleScanInventoryLookupResponseItem[]> SingleScanInventoryLookup(Expression<Func<string>> barcode, Expression<Func<string>> userName, Expression<Func<string>> warehouse)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SingleScanInventoryLookupResponseItem[]> __BuildSingleScanInventoryLookup(WorkflowExpression<string> barcode, WorkflowExpression<string> userName, WorkflowExpression<string> warehouse)
-        {
-            WorkflowExpression.Validate(barcode, nameof(barcode), required: true);
-            WorkflowExpression.Validate(userName, nameof(userName), required: true);
-            WorkflowExpression.Validate(warehouse, nameof(warehouse), required: true);
+            var __workflow_barcode = barcode == null ? null : WorkflowExpression.Compile(barcode);
+            WorkflowExpression.Validate(__workflow_barcode, nameof(barcode), required: true);
+            var __workflow_userName = userName == null ? null : WorkflowExpression.Compile(userName);
+            WorkflowExpression.Validate(__workflow_userName, nameof(userName), required: true);
+            var __workflow_warehouse = warehouse == null ? null : WorkflowExpression.Compile(warehouse);
+            WorkflowExpression.Validate(__workflow_warehouse, nameof(warehouse), required: true);
             return new DeferredBodyAction<SingleScanInventoryLookupResponseItem[]>(() =>
             {
                 var apiCallPath = "/api/po/container";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["Barcode"] = ExpressionConverter.Convert(barcode);
-                callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
-                callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
+                callPayload.Queries["Barcode"] = ExpressionConverter.Convert(__workflow_barcode);
+                callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
+                callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
                 return new ApiConnectionAction<SingleScanInventoryLookupResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        [WorkflowExpressionFactory(nameof(__BuildGetTransferOrders))]
-        public IBodyWorkflowAction<GetTransferOrdersResponseItem[]> GetTransferOrders([WorkflowExpression] Func<string> orderNumber = null, [WorkflowExpression] Func<string> beginDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<orderStatusCodeInput> orderStatusCode = null, [WorkflowExpression] Func<string> itemNumber = null, [WorkflowExpression] Func<string> parentOrderNumber = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> warehouse = null)
+        public IBodyWorkflowAction<GetTransferOrdersResponseItem[]> GetTransferOrders(Expression<Func<string>> orderNumber = null, Expression<Func<string>> beginDate = null, Expression<Func<string>> endDate = null, Expression<Func<orderStatusCodeInput>> orderStatusCode = null, Expression<Func<string>> itemNumber = null, Expression<Func<string>> parentOrderNumber = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetTransferOrdersResponseItem[]> __BuildGetTransferOrders(WorkflowExpression<string> orderNumber = null, WorkflowExpression<string> beginDate = null, WorkflowExpression<string> endDate = null, WorkflowExpression<orderStatusCodeInput> orderStatusCode = null, WorkflowExpression<string> itemNumber = null, WorkflowExpression<string> parentOrderNumber = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> warehouse = null)
-        {
-            WorkflowExpression.Validate(orderNumber, nameof(orderNumber), required: false);
-            WorkflowExpression.Validate(beginDate, nameof(beginDate), required: false);
-            WorkflowExpression.Validate(endDate, nameof(endDate), required: false);
-            WorkflowExpression.Validate(orderStatusCode, nameof(orderStatusCode), required: false);
-            WorkflowExpression.Validate(itemNumber, nameof(itemNumber), required: false);
-            WorkflowExpression.Validate(parentOrderNumber, nameof(parentOrderNumber), required: false);
-            WorkflowExpression.Validate(userName, nameof(userName), required: false);
-            WorkflowExpression.Validate(warehouse, nameof(warehouse), required: false);
+            var __workflow_orderNumber = orderNumber == null ? null : WorkflowExpression.Compile(orderNumber);
+            WorkflowExpression.Validate(__workflow_orderNumber, nameof(orderNumber), required: false);
+            var __workflow_beginDate = beginDate == null ? null : WorkflowExpression.Compile(beginDate);
+            WorkflowExpression.Validate(__workflow_beginDate, nameof(beginDate), required: false);
+            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
+            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: false);
+            var __workflow_orderStatusCode = orderStatusCode == null ? null : WorkflowExpression.Compile(orderStatusCode);
+            WorkflowExpression.Validate(__workflow_orderStatusCode, nameof(orderStatusCode), required: false);
+            var __workflow_itemNumber = itemNumber == null ? null : WorkflowExpression.Compile(itemNumber);
+            WorkflowExpression.Validate(__workflow_itemNumber, nameof(itemNumber), required: false);
+            var __workflow_parentOrderNumber = parentOrderNumber == null ? null : WorkflowExpression.Compile(parentOrderNumber);
+            WorkflowExpression.Validate(__workflow_parentOrderNumber, nameof(parentOrderNumber), required: false);
+            var __workflow_userName = userName == null ? null : WorkflowExpression.Compile(userName);
+            WorkflowExpression.Validate(__workflow_userName, nameof(userName), required: false);
+            var __workflow_warehouse = warehouse == null ? null : WorkflowExpression.Compile(warehouse);
+            WorkflowExpression.Validate(__workflow_warehouse, nameof(warehouse), required: false);
             return new DeferredBodyAction<GetTransferOrdersResponseItem[]>(() =>
             {
                 var apiCallPath = "/integration/transferorder";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (orderNumber != null)
-                    callPayload.Queries["OrderNumber"] = ExpressionConverter.Convert(orderNumber);
-                if (beginDate != null)
-                    callPayload.Queries["beginDate"] = ExpressionConverter.Convert(beginDate);
-                if (endDate != null)
-                    callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
-                if (orderStatusCode != null)
-                    callPayload.Queries["OrderStatusCode"] = ExpressionConverter.Convert(orderStatusCode);
-                if (itemNumber != null)
-                    callPayload.Queries["itemNumber"] = ExpressionConverter.Convert(itemNumber);
-                if (parentOrderNumber != null)
-                    callPayload.Queries["parentOrderNumber"] = ExpressionConverter.Convert(parentOrderNumber);
-                if (userName != null)
-                    callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
-                if (warehouse != null)
-                    callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
+                if (__workflow_orderNumber != null)
+                    callPayload.Queries["OrderNumber"] = ExpressionConverter.Convert(__workflow_orderNumber);
+                if (__workflow_beginDate != null)
+                    callPayload.Queries["beginDate"] = ExpressionConverter.Convert(__workflow_beginDate);
+                if (__workflow_endDate != null)
+                    callPayload.Queries["endDate"] = ExpressionConverter.Convert(__workflow_endDate);
+                if (__workflow_orderStatusCode != null)
+                    callPayload.Queries["OrderStatusCode"] = ExpressionConverter.Convert(__workflow_orderStatusCode);
+                if (__workflow_itemNumber != null)
+                    callPayload.Queries["itemNumber"] = ExpressionConverter.Convert(__workflow_itemNumber);
+                if (__workflow_parentOrderNumber != null)
+                    callPayload.Queries["parentOrderNumber"] = ExpressionConverter.Convert(__workflow_parentOrderNumber);
+                if (__workflow_userName != null)
+                    callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
+                if (__workflow_warehouse != null)
+                    callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
                 return new ApiConnectionAction<GetTransferOrdersResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateUpdateTransferOrder))]
-        public IBodyWorkflowAction<CreateUpdateTransferOrderResponse> CreateUpdateTransferOrder([WorkflowExpression] Func<string> userName, [WorkflowExpression] Func<string> warehouse, [WorkflowExpression] Func<bodyInputItem222222222222222[]> body = null)
+        public IBodyWorkflowAction<CreateUpdateTransferOrderResponse> CreateUpdateTransferOrder(Expression<Func<string>> userName, Expression<Func<string>> warehouse, Expression<Func<bodyInputItem222222222222222[]>> body = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateUpdateTransferOrderResponse> __BuildCreateUpdateTransferOrder(WorkflowExpression<string> userName, WorkflowExpression<string> warehouse, WorkflowExpression<bodyInputItem222222222222222[]> body = null)
-        {
-            WorkflowExpression.Validate(userName, nameof(userName), required: true);
-            WorkflowExpression.Validate(warehouse, nameof(warehouse), required: true);
-            WorkflowExpression.Validate(body, nameof(body), required: false);
+            var __workflow_userName = userName == null ? null : WorkflowExpression.Compile(userName);
+            WorkflowExpression.Validate(__workflow_userName, nameof(userName), required: true);
+            var __workflow_warehouse = warehouse == null ? null : WorkflowExpression.Compile(warehouse);
+            WorkflowExpression.Validate(__workflow_warehouse, nameof(warehouse), required: true);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
             return new DeferredBodyAction<CreateUpdateTransferOrderResponse>(() =>
             {
                 var apiCallPath = "/integration/transferorder";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
-                callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
+                callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateUpdateTransferOrderResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        [WorkflowExpressionFactory(nameof(__BuildGetPurchaseOrder))]
-        public IBodyWorkflowAction<GetPurchaseOrderResponseItem[]> GetPurchaseOrder([WorkflowExpression] Func<string> beginDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<pOStatusInput> pOStatus = null, [WorkflowExpression] Func<lineReceiptStatusInput> lineReceiptStatus = null, [WorkflowExpression] Func<string> itemNumber = null, [WorkflowExpression] Func<string> pONumber = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> warehouse = null)
+        public IBodyWorkflowAction<GetPurchaseOrderResponseItem[]> GetPurchaseOrder(Expression<Func<string>> beginDate = null, Expression<Func<string>> endDate = null, Expression<Func<pOStatusInput>> pOStatus = null, Expression<Func<lineReceiptStatusInput>> lineReceiptStatus = null, Expression<Func<string>> itemNumber = null, Expression<Func<string>> pONumber = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetPurchaseOrderResponseItem[]> __BuildGetPurchaseOrder(WorkflowExpression<string> beginDate = null, WorkflowExpression<string> endDate = null, WorkflowExpression<pOStatusInput> pOStatus = null, WorkflowExpression<lineReceiptStatusInput> lineReceiptStatus = null, WorkflowExpression<string> itemNumber = null, WorkflowExpression<string> pONumber = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> warehouse = null)
-        {
-            WorkflowExpression.Validate(beginDate, nameof(beginDate), required: false);
-            WorkflowExpression.Validate(endDate, nameof(endDate), required: false);
-            WorkflowExpression.Validate(pOStatus, nameof(pOStatus), required: false);
-            WorkflowExpression.Validate(lineReceiptStatus, nameof(lineReceiptStatus), required: false);
-            WorkflowExpression.Validate(itemNumber, nameof(itemNumber), required: false);
-            WorkflowExpression.Validate(pONumber, nameof(pONumber), required: false);
-            WorkflowExpression.Validate(userName, nameof(userName), required: false);
-            WorkflowExpression.Validate(warehouse, nameof(warehouse), required: false);
+            var __workflow_beginDate = beginDate == null ? null : WorkflowExpression.Compile(beginDate);
+            WorkflowExpression.Validate(__workflow_beginDate, nameof(beginDate), required: false);
+            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
+            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: false);
+            var __workflow_pOStatus = pOStatus == null ? null : WorkflowExpression.Compile(pOStatus);
+            WorkflowExpression.Validate(__workflow_pOStatus, nameof(pOStatus), required: false);
+            var __workflow_lineReceiptStatus = lineReceiptStatus == null ? null : WorkflowExpression.Compile(lineReceiptStatus);
+            WorkflowExpression.Validate(__workflow_lineReceiptStatus, nameof(lineReceiptStatus), required: false);
+            var __workflow_itemNumber = itemNumber == null ? null : WorkflowExpression.Compile(itemNumber);
+            WorkflowExpression.Validate(__workflow_itemNumber, nameof(itemNumber), required: false);
+            var __workflow_pONumber = pONumber == null ? null : WorkflowExpression.Compile(pONumber);
+            WorkflowExpression.Validate(__workflow_pONumber, nameof(pONumber), required: false);
+            var __workflow_userName = userName == null ? null : WorkflowExpression.Compile(userName);
+            WorkflowExpression.Validate(__workflow_userName, nameof(userName), required: false);
+            var __workflow_warehouse = warehouse == null ? null : WorkflowExpression.Compile(warehouse);
+            WorkflowExpression.Validate(__workflow_warehouse, nameof(warehouse), required: false);
             return new DeferredBodyAction<GetPurchaseOrderResponseItem[]>(() =>
             {
                 var apiCallPath = "/integration/purchaseorder/po";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (beginDate != null)
-                    callPayload.Queries["BeginDate"] = ExpressionConverter.Convert(beginDate);
-                if (endDate != null)
-                    callPayload.Queries["EndDate"] = ExpressionConverter.Convert(endDate);
-                if (pOStatus != null)
-                    callPayload.Queries["POStatus"] = ExpressionConverter.Convert(pOStatus);
-                if (lineReceiptStatus != null)
-                    callPayload.Queries["LineReceiptStatus"] = ExpressionConverter.Convert(lineReceiptStatus);
-                if (itemNumber != null)
-                    callPayload.Queries["ItemNumber"] = ExpressionConverter.Convert(itemNumber);
-                if (pONumber != null)
-                    callPayload.Queries["PONumber"] = ExpressionConverter.Convert(pONumber);
-                if (userName != null)
-                    callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
-                if (warehouse != null)
-                    callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
+                if (__workflow_beginDate != null)
+                    callPayload.Queries["BeginDate"] = ExpressionConverter.Convert(__workflow_beginDate);
+                if (__workflow_endDate != null)
+                    callPayload.Queries["EndDate"] = ExpressionConverter.Convert(__workflow_endDate);
+                if (__workflow_pOStatus != null)
+                    callPayload.Queries["POStatus"] = ExpressionConverter.Convert(__workflow_pOStatus);
+                if (__workflow_lineReceiptStatus != null)
+                    callPayload.Queries["LineReceiptStatus"] = ExpressionConverter.Convert(__workflow_lineReceiptStatus);
+                if (__workflow_itemNumber != null)
+                    callPayload.Queries["ItemNumber"] = ExpressionConverter.Convert(__workflow_itemNumber);
+                if (__workflow_pONumber != null)
+                    callPayload.Queries["PONumber"] = ExpressionConverter.Convert(__workflow_pONumber);
+                if (__workflow_userName != null)
+                    callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
+                if (__workflow_warehouse != null)
+                    callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
                 return new ApiConnectionAction<GetPurchaseOrderResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        [WorkflowExpressionFactory(nameof(__BuildCreatePurchaseOrder))]
-        public IBodyWorkflowAction<CreatePurchaseOrderResponse> CreatePurchaseOrder([WorkflowExpression] Func<string> userName, [WorkflowExpression] Func<string> warehouse, [WorkflowExpression] Func<bodyInputItem2222222222222222[]> body = null)
+        public IBodyWorkflowAction<CreatePurchaseOrderResponse> CreatePurchaseOrder(Expression<Func<string>> userName, Expression<Func<string>> warehouse, Expression<Func<bodyInputItem2222222222222222[]>> body = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreatePurchaseOrderResponse> __BuildCreatePurchaseOrder(WorkflowExpression<string> userName, WorkflowExpression<string> warehouse, WorkflowExpression<bodyInputItem2222222222222222[]> body = null)
-        {
-            WorkflowExpression.Validate(userName, nameof(userName), required: true);
-            WorkflowExpression.Validate(warehouse, nameof(warehouse), required: true);
-            WorkflowExpression.Validate(body, nameof(body), required: false);
+            var __workflow_userName = userName == null ? null : WorkflowExpression.Compile(userName);
+            WorkflowExpression.Validate(__workflow_userName, nameof(userName), required: true);
+            var __workflow_warehouse = warehouse == null ? null : WorkflowExpression.Compile(warehouse);
+            WorkflowExpression.Validate(__workflow_warehouse, nameof(warehouse), required: true);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
             return new DeferredBodyAction<CreatePurchaseOrderResponse>(() =>
             {
                 var apiCallPath = "/integration/purchaseorder/po";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
-                callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
+                callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreatePurchaseOrderResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        [WorkflowExpressionFactory(nameof(__BuildGetManufacturingOrder))]
-        public IBodyWorkflowAction<GetManufacturingOrderResponseItem[]> GetManufacturingOrder([WorkflowExpression] Func<string> orderNumber = null, [WorkflowExpression] Func<string> beginDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<orderStatusCodeInput> orderStatusCode = null, [WorkflowExpression] Func<string> itemNumber = null, [WorkflowExpression] Func<string> parentOrderNumber = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> warehouse = null)
+        public IBodyWorkflowAction<GetManufacturingOrderResponseItem[]> GetManufacturingOrder(Expression<Func<string>> orderNumber = null, Expression<Func<string>> beginDate = null, Expression<Func<string>> endDate = null, Expression<Func<orderStatusCodeInput>> orderStatusCode = null, Expression<Func<string>> itemNumber = null, Expression<Func<string>> parentOrderNumber = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetManufacturingOrderResponseItem[]> __BuildGetManufacturingOrder(WorkflowExpression<string> orderNumber = null, WorkflowExpression<string> beginDate = null, WorkflowExpression<string> endDate = null, WorkflowExpression<orderStatusCodeInput> orderStatusCode = null, WorkflowExpression<string> itemNumber = null, WorkflowExpression<string> parentOrderNumber = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> warehouse = null)
-        {
-            WorkflowExpression.Validate(orderNumber, nameof(orderNumber), required: false);
-            WorkflowExpression.Validate(beginDate, nameof(beginDate), required: false);
-            WorkflowExpression.Validate(endDate, nameof(endDate), required: false);
-            WorkflowExpression.Validate(orderStatusCode, nameof(orderStatusCode), required: false);
-            WorkflowExpression.Validate(itemNumber, nameof(itemNumber), required: false);
-            WorkflowExpression.Validate(parentOrderNumber, nameof(parentOrderNumber), required: false);
-            WorkflowExpression.Validate(userName, nameof(userName), required: false);
-            WorkflowExpression.Validate(warehouse, nameof(warehouse), required: false);
+            var __workflow_orderNumber = orderNumber == null ? null : WorkflowExpression.Compile(orderNumber);
+            WorkflowExpression.Validate(__workflow_orderNumber, nameof(orderNumber), required: false);
+            var __workflow_beginDate = beginDate == null ? null : WorkflowExpression.Compile(beginDate);
+            WorkflowExpression.Validate(__workflow_beginDate, nameof(beginDate), required: false);
+            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
+            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: false);
+            var __workflow_orderStatusCode = orderStatusCode == null ? null : WorkflowExpression.Compile(orderStatusCode);
+            WorkflowExpression.Validate(__workflow_orderStatusCode, nameof(orderStatusCode), required: false);
+            var __workflow_itemNumber = itemNumber == null ? null : WorkflowExpression.Compile(itemNumber);
+            WorkflowExpression.Validate(__workflow_itemNumber, nameof(itemNumber), required: false);
+            var __workflow_parentOrderNumber = parentOrderNumber == null ? null : WorkflowExpression.Compile(parentOrderNumber);
+            WorkflowExpression.Validate(__workflow_parentOrderNumber, nameof(parentOrderNumber), required: false);
+            var __workflow_userName = userName == null ? null : WorkflowExpression.Compile(userName);
+            WorkflowExpression.Validate(__workflow_userName, nameof(userName), required: false);
+            var __workflow_warehouse = warehouse == null ? null : WorkflowExpression.Compile(warehouse);
+            WorkflowExpression.Validate(__workflow_warehouse, nameof(warehouse), required: false);
             return new DeferredBodyAction<GetManufacturingOrderResponseItem[]>(() =>
             {
                 var apiCallPath = "/integration/manufacturingorder";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (orderNumber != null)
-                    callPayload.Queries["OrderNumber"] = ExpressionConverter.Convert(orderNumber);
-                if (beginDate != null)
-                    callPayload.Queries["BeginDate"] = ExpressionConverter.Convert(beginDate);
-                if (endDate != null)
-                    callPayload.Queries["EndDate"] = ExpressionConverter.Convert(endDate);
-                if (orderStatusCode != null)
-                    callPayload.Queries["OrderStatusCode"] = ExpressionConverter.Convert(orderStatusCode);
-                if (itemNumber != null)
-                    callPayload.Queries["ItemNumber"] = ExpressionConverter.Convert(itemNumber);
-                if (parentOrderNumber != null)
-                    callPayload.Queries["ParentOrderNumber"] = ExpressionConverter.Convert(parentOrderNumber);
-                if (userName != null)
-                    callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
-                if (warehouse != null)
-                    callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
+                if (__workflow_orderNumber != null)
+                    callPayload.Queries["OrderNumber"] = ExpressionConverter.Convert(__workflow_orderNumber);
+                if (__workflow_beginDate != null)
+                    callPayload.Queries["BeginDate"] = ExpressionConverter.Convert(__workflow_beginDate);
+                if (__workflow_endDate != null)
+                    callPayload.Queries["EndDate"] = ExpressionConverter.Convert(__workflow_endDate);
+                if (__workflow_orderStatusCode != null)
+                    callPayload.Queries["OrderStatusCode"] = ExpressionConverter.Convert(__workflow_orderStatusCode);
+                if (__workflow_itemNumber != null)
+                    callPayload.Queries["ItemNumber"] = ExpressionConverter.Convert(__workflow_itemNumber);
+                if (__workflow_parentOrderNumber != null)
+                    callPayload.Queries["ParentOrderNumber"] = ExpressionConverter.Convert(__workflow_parentOrderNumber);
+                if (__workflow_userName != null)
+                    callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
+                if (__workflow_warehouse != null)
+                    callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
                 return new ApiConnectionAction<GetManufacturingOrderResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateUpdateManufacturingOrder))]
-        public IBodyWorkflowAction<CreateUpdateManufacturingOrderResponse> CreateUpdateManufacturingOrder([WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> warehouse = null, [WorkflowExpression] Func<bodyInputItem22222222222222222[]> body = null)
+        public IBodyWorkflowAction<CreateUpdateManufacturingOrderResponse> CreateUpdateManufacturingOrder(Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null, Expression<Func<bodyInputItem22222222222222222[]>> body = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateUpdateManufacturingOrderResponse> __BuildCreateUpdateManufacturingOrder(WorkflowExpression<string> userName = null, WorkflowExpression<string> warehouse = null, WorkflowExpression<bodyInputItem22222222222222222[]> body = null)
-        {
-            WorkflowExpression.Validate(userName, nameof(userName), required: false);
-            WorkflowExpression.Validate(warehouse, nameof(warehouse), required: false);
-            WorkflowExpression.Validate(body, nameof(body), required: false);
+            var __workflow_userName = userName == null ? null : WorkflowExpression.Compile(userName);
+            WorkflowExpression.Validate(__workflow_userName, nameof(userName), required: false);
+            var __workflow_warehouse = warehouse == null ? null : WorkflowExpression.Compile(warehouse);
+            WorkflowExpression.Validate(__workflow_warehouse, nameof(warehouse), required: false);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
             return new DeferredBodyAction<CreateUpdateManufacturingOrderResponse>(() =>
             {
                 var apiCallPath = "/integration/manufacturingorder";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (userName != null)
-                    callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
-                if (warehouse != null)
-                    callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                if (__workflow_userName != null)
+                    callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
+                if (__workflow_warehouse != null)
+                    callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateUpdateManufacturingOrderResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        [WorkflowExpressionFactory(nameof(__BuildGetInventoryAggregate))]
-        public IBodyWorkflowAction<GetInventoryAggregateResponseItem[]> GetInventoryAggregate([WorkflowExpression] Func<string> itemNumber = null, [WorkflowExpression] Func<string> warehouseName = null, [WorkflowExpression] Func<string> allocationSetName = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> warehouse = null)
+        public IBodyWorkflowAction<GetInventoryAggregateResponseItem[]> GetInventoryAggregate(Expression<Func<string>> itemNumber = null, Expression<Func<string>> warehouseName = null, Expression<Func<string>> allocationSetName = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetInventoryAggregateResponseItem[]> __BuildGetInventoryAggregate(WorkflowExpression<string> itemNumber = null, WorkflowExpression<string> warehouseName = null, WorkflowExpression<string> allocationSetName = null, WorkflowExpression<string> userName = null, WorkflowExpression<string> warehouse = null)
-        {
-            WorkflowExpression.Validate(itemNumber, nameof(itemNumber), required: false);
-            WorkflowExpression.Validate(warehouseName, nameof(warehouseName), required: false);
-            WorkflowExpression.Validate(allocationSetName, nameof(allocationSetName), required: false);
-            WorkflowExpression.Validate(userName, nameof(userName), required: false);
-            WorkflowExpression.Validate(warehouse, nameof(warehouse), required: false);
+            var __workflow_itemNumber = itemNumber == null ? null : WorkflowExpression.Compile(itemNumber);
+            WorkflowExpression.Validate(__workflow_itemNumber, nameof(itemNumber), required: false);
+            var __workflow_warehouseName = warehouseName == null ? null : WorkflowExpression.Compile(warehouseName);
+            WorkflowExpression.Validate(__workflow_warehouseName, nameof(warehouseName), required: false);
+            var __workflow_allocationSetName = allocationSetName == null ? null : WorkflowExpression.Compile(allocationSetName);
+            WorkflowExpression.Validate(__workflow_allocationSetName, nameof(allocationSetName), required: false);
+            var __workflow_userName = userName == null ? null : WorkflowExpression.Compile(userName);
+            WorkflowExpression.Validate(__workflow_userName, nameof(userName), required: false);
+            var __workflow_warehouse = warehouse == null ? null : WorkflowExpression.Compile(warehouse);
+            WorkflowExpression.Validate(__workflow_warehouse, nameof(warehouse), required: false);
             return new DeferredBodyAction<GetInventoryAggregateResponseItem[]>(() =>
             {
                 var apiCallPath = "/integration/inventory/quantity";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (itemNumber != null)
-                    callPayload.Queries["ItemNumber"] = ExpressionConverter.Convert(itemNumber);
-                if (warehouseName != null)
-                    callPayload.Queries["WarehouseName"] = ExpressionConverter.Convert(warehouseName);
-                if (allocationSetName != null)
-                    callPayload.Queries["AllocationSetName"] = ExpressionConverter.Convert(allocationSetName);
-                if (userName != null)
-                    callPayload.Headers["UserName"] = ExpressionConverter.Convert(userName);
-                if (warehouse != null)
-                    callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(warehouse);
+                if (__workflow_itemNumber != null)
+                    callPayload.Queries["ItemNumber"] = ExpressionConverter.Convert(__workflow_itemNumber);
+                if (__workflow_warehouseName != null)
+                    callPayload.Queries["WarehouseName"] = ExpressionConverter.Convert(__workflow_warehouseName);
+                if (__workflow_allocationSetName != null)
+                    callPayload.Queries["AllocationSetName"] = ExpressionConverter.Convert(__workflow_allocationSetName);
+                if (__workflow_userName != null)
+                    callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
+                if (__workflow_warehouse != null)
+                    callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
                 return new ApiConnectionAction<GetInventoryAggregateResponseItem[]>(callPayload);
             });
         }

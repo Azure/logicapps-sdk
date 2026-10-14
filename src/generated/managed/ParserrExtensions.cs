@@ -1,12 +1,12 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parserr
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class ParserrActions([ConnectionName] string connectionId)
     {
@@ -22,17 +22,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parserr
 
     public class ParserrTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildWebhookEmailReceived))]
-        public IWorkflowTrigger WebhookEmailReceived([WorkflowExpression] Func<string> bodyemail,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WebhookEmailReceived(Expression<Func<string>> bodyemail, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildWebhookEmailReceived(WorkflowExpression<string> bodyemail,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: true);
+            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
+            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/microsoft/subscription/create";
@@ -43,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parserr
                 body["TriggerUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 bodypropCount++;
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

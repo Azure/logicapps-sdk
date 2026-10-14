@@ -1,44 +1,40 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class KaizalaActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        [WorkflowExpressionFactory(nameof(__BuildSendMessage))]
-        public IBodyWorkflowAction<SendMessageResponse> SendMessage([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> requestmessage, [WorkflowExpression] Func<string> requestsubscribers = null, [WorkflowExpression] Func<sendToAllInput> sendToAll = null)
+        public IBodyWorkflowAction<SendMessageResponse> SendMessage(Expression<Func<string>> groupId, Expression<Func<string>> requestmessage, Expression<Func<string>> requestsubscribers = null, Expression<Func<sendToAllInput>> sendToAll = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SendMessageResponse> __BuildSendMessage(WorkflowExpression<string> groupId, WorkflowExpression<string> requestmessage, WorkflowExpression<string> requestsubscribers = null, WorkflowExpression<sendToAllInput> sendToAll = null)
-        {
-            WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
-            WorkflowExpression.Validate(requestmessage, nameof(requestmessage), required: true);
-            WorkflowExpression.Validate(requestsubscribers, nameof(requestsubscribers), required: false);
-            WorkflowExpression.Validate(sendToAll, nameof(sendToAll), required: false);
+            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
+            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
+            var __workflow_requestmessage = requestmessage == null ? null : WorkflowExpression.Compile(requestmessage);
+            WorkflowExpression.Validate(__workflow_requestmessage, nameof(requestmessage), required: true);
+            var __workflow_requestsubscribers = requestsubscribers == null ? null : WorkflowExpression.Compile(requestsubscribers);
+            WorkflowExpression.Validate(__workflow_requestsubscribers, nameof(requestsubscribers), required: false);
+            var __workflow_sendToAll = sendToAll == null ? null : WorkflowExpression.Compile(sendToAll);
+            WorkflowExpression.Validate(__workflow_sendToAll, nameof(sendToAll), required: false);
             return new DeferredBodyAction<SendMessageResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (sendToAll != null)
-                    callPayload.Queries["sendToAll"] = ExpressionConverter.Convert(sendToAll);
+                if (__workflow_sendToAll != null)
+                    callPayload.Queries["sendToAll"] = ExpressionConverter.Convert(__workflow_sendToAll);
                 var request = new JObject();
                 var requestpropCount = 0;
                 requestpropCount++;
-                request["Message"] = ExpressionConverter.ConvertO(requestmessage);
-                if (requestsubscribers != null)
+                request["Message"] = ExpressionConverter.ConvertO(__workflow_requestmessage);
+                if (__workflow_requestsubscribers != null)
                 {
-                    request["subscribers"] = ExpressionConverter.ConvertO(requestsubscribers);
+                    request["subscribers"] = ExpressionConverter.ConvertO(__workflow_requestsubscribers);
                     requestpropCount++;
                 }
 
@@ -52,43 +48,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        [WorkflowExpressionFactory(nameof(__BuildSendActions))]
-        public IBodyWorkflowAction<SendActionResponse> SendActions([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<actionTypeInput> actionType = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<object> requestactionBody = null, [WorkflowExpression] Func<string> requestsubscribers = null, [WorkflowExpression] Func<sendToAllInput> sendToAll = null)
+        public IBodyWorkflowAction<SendActionResponse> SendActions(Expression<Func<string>> groupId, Expression<Func<actionTypeInput>> actionType = null, Expression<Func<string>> id = null, Expression<Func<object>> requestactionBody = null, Expression<Func<string>> requestsubscribers = null, Expression<Func<sendToAllInput>> sendToAll = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SendActionResponse> __BuildSendActions(WorkflowExpression<string> groupId, WorkflowExpression<actionTypeInput> actionType = null, WorkflowExpression<string> id = null, WorkflowExpression<object> requestactionBody = null, WorkflowExpression<string> requestsubscribers = null, WorkflowExpression<sendToAllInput> sendToAll = null)
-        {
-            WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
-            WorkflowExpression.Validate(actionType, nameof(actionType), required: false);
-            WorkflowExpression.Validate(id, nameof(id), required: false);
-            WorkflowExpression.Validate(requestactionBody, nameof(requestactionBody), required: false);
-            WorkflowExpression.Validate(requestsubscribers, nameof(requestsubscribers), required: false);
-            WorkflowExpression.Validate(sendToAll, nameof(sendToAll), required: false);
+            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
+            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
+            var __workflow_actionType = actionType == null ? null : WorkflowExpression.Compile(actionType);
+            WorkflowExpression.Validate(__workflow_actionType, nameof(actionType), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: false);
+            var __workflow_requestactionBody = requestactionBody == null ? null : WorkflowExpression.Compile(requestactionBody);
+            WorkflowExpression.Validate(__workflow_requestactionBody, nameof(requestactionBody), required: false);
+            var __workflow_requestsubscribers = requestsubscribers == null ? null : WorkflowExpression.Compile(requestsubscribers);
+            WorkflowExpression.Validate(__workflow_requestsubscribers, nameof(requestsubscribers), required: false);
+            var __workflow_sendToAll = sendToAll == null ? null : WorkflowExpression.Compile(sendToAll);
+            WorkflowExpression.Validate(__workflow_sendToAll, nameof(sendToAll), required: false);
             return new DeferredBodyAction<SendActionResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/actions", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/actions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (actionType != null)
-                    callPayload.Queries["actionType"] = ExpressionConverter.Convert(actionType);
-                if (id != null)
-                    callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-                if (sendToAll != null)
-                    callPayload.Queries["sendToAll"] = ExpressionConverter.Convert(sendToAll);
+                if (__workflow_actionType != null)
+                    callPayload.Queries["actionType"] = ExpressionConverter.Convert(__workflow_actionType);
+                if (__workflow_id != null)
+                    callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
+                if (__workflow_sendToAll != null)
+                    callPayload.Queries["sendToAll"] = ExpressionConverter.Convert(__workflow_sendToAll);
                 var request = new JObject();
                 var requestpropCount = 0;
-                if (requestactionBody != null)
+                if (__workflow_requestactionBody != null)
                 {
-                    request["actionBody"] = ExpressionConverter.ConvertO(requestactionBody);
+                    request["actionBody"] = ExpressionConverter.ConvertO(__workflow_requestactionBody);
                     requestpropCount++;
                 }
 
-                if (requestsubscribers != null)
+                if (__workflow_requestsubscribers != null)
                 {
-                    request["subscribers"] = ExpressionConverter.ConvertO(requestsubscribers);
+                    request["subscribers"] = ExpressionConverter.ConvertO(__workflow_requestsubscribers);
                     requestpropCount++;
                 }
 
@@ -102,39 +97,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        [WorkflowExpressionFactory(nameof(__BuildSendActionReminder))]
-        public IBodyWorkflowAction<SendActionResponse> SendActionReminder([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<actionTypeInput> actionType, [WorkflowExpression] Func<string> requestsubscribers = null, [WorkflowExpression] Func<object> requestactionId = null, [WorkflowExpression] Func<sendToAllInput> sendToAll = null)
+        public IBodyWorkflowAction<SendActionResponse> SendActionReminder(Expression<Func<string>> groupId, Expression<Func<actionTypeInput>> actionType, Expression<Func<string>> requestsubscribers = null, Expression<Func<object>> requestactionId = null, Expression<Func<sendToAllInput>> sendToAll = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SendActionResponse> __BuildSendActionReminder(WorkflowExpression<string> groupId, WorkflowExpression<actionTypeInput> actionType, WorkflowExpression<string> requestsubscribers = null, WorkflowExpression<object> requestactionId = null, WorkflowExpression<sendToAllInput> sendToAll = null)
-        {
-            WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
-            WorkflowExpression.Validate(actionType, nameof(actionType), required: true);
-            WorkflowExpression.Validate(requestsubscribers, nameof(requestsubscribers), required: false);
-            WorkflowExpression.Validate(requestactionId, nameof(requestactionId), required: false);
-            WorkflowExpression.Validate(sendToAll, nameof(sendToAll), required: false);
+            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
+            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
+            var __workflow_actionType = actionType == null ? null : WorkflowExpression.Compile(actionType);
+            WorkflowExpression.Validate(__workflow_actionType, nameof(actionType), required: true);
+            var __workflow_requestsubscribers = requestsubscribers == null ? null : WorkflowExpression.Compile(requestsubscribers);
+            WorkflowExpression.Validate(__workflow_requestsubscribers, nameof(requestsubscribers), required: false);
+            var __workflow_requestactionId = requestactionId == null ? null : WorkflowExpression.Compile(requestactionId);
+            WorkflowExpression.Validate(__workflow_requestactionId, nameof(requestactionId), required: false);
+            var __workflow_sendToAll = sendToAll == null ? null : WorkflowExpression.Compile(sendToAll);
+            WorkflowExpression.Validate(__workflow_sendToAll, nameof(sendToAll), required: false);
             return new DeferredBodyAction<SendActionResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/actions/$actionId$/reminder", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/actions/$actionId$/reminder", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["actionType"] = ExpressionConverter.Convert(actionType);
-                if (sendToAll != null)
-                    callPayload.Queries["sendToAll"] = ExpressionConverter.Convert(sendToAll);
+                callPayload.Queries["actionType"] = ExpressionConverter.Convert(__workflow_actionType);
+                if (__workflow_sendToAll != null)
+                    callPayload.Queries["sendToAll"] = ExpressionConverter.Convert(__workflow_sendToAll);
                 var request = new JObject();
                 var requestpropCount = 0;
-                if (requestsubscribers != null)
+                if (__workflow_requestsubscribers != null)
                 {
-                    request["subscribers"] = ExpressionConverter.ConvertO(requestsubscribers);
+                    request["subscribers"] = ExpressionConverter.ConvertO(__workflow_requestsubscribers);
                     requestpropCount++;
                 }
 
-                if (requestactionId != null)
+                if (__workflow_requestactionId != null)
                 {
-                    request["actionWrapper"] = ExpressionConverter.ConvertO(requestactionId);
+                    request["actionWrapper"] = ExpressionConverter.ConvertO(__workflow_requestactionId);
                     requestpropCount++;
                 }
 
@@ -148,48 +141,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        [WorkflowExpressionFactory(nameof(__BuildPostReaction))]
-        public IBodyWorkflowAction<PostReactionResponse> PostReaction([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> requestsourceGroupId = null, [WorkflowExpression] Func<string> requestmessageId = null, [WorkflowExpression] Func<requestreactionTypeInput> requestreactionType = null, [WorkflowExpression] Func<string> requestcomment = null)
+        public IBodyWorkflowAction<PostReactionResponse> PostReaction(Expression<Func<string>> groupId, Expression<Func<string>> requestsourceGroupId = null, Expression<Func<string>> requestmessageId = null, Expression<Func<requestreactionTypeInput>> requestreactionType = null, Expression<Func<string>> requestcomment = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PostReactionResponse> __BuildPostReaction(WorkflowExpression<string> groupId, WorkflowExpression<string> requestsourceGroupId = null, WorkflowExpression<string> requestmessageId = null, WorkflowExpression<requestreactionTypeInput> requestreactionType = null, WorkflowExpression<string> requestcomment = null)
-        {
-            WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
-            WorkflowExpression.Validate(requestsourceGroupId, nameof(requestsourceGroupId), required: false);
-            WorkflowExpression.Validate(requestmessageId, nameof(requestmessageId), required: false);
-            WorkflowExpression.Validate(requestreactionType, nameof(requestreactionType), required: false);
-            WorkflowExpression.Validate(requestcomment, nameof(requestcomment), required: false);
+            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
+            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
+            var __workflow_requestsourceGroupId = requestsourceGroupId == null ? null : WorkflowExpression.Compile(requestsourceGroupId);
+            WorkflowExpression.Validate(__workflow_requestsourceGroupId, nameof(requestsourceGroupId), required: false);
+            var __workflow_requestmessageId = requestmessageId == null ? null : WorkflowExpression.Compile(requestmessageId);
+            WorkflowExpression.Validate(__workflow_requestmessageId, nameof(requestmessageId), required: false);
+            var __workflow_requestreactionType = requestreactionType == null ? null : WorkflowExpression.Compile(requestreactionType);
+            WorkflowExpression.Validate(__workflow_requestreactionType, nameof(requestreactionType), required: false);
+            var __workflow_requestcomment = requestcomment == null ? null : WorkflowExpression.Compile(requestcomment);
+            WorkflowExpression.Validate(__workflow_requestcomment, nameof(requestcomment), required: false);
             return new DeferredBodyAction<PostReactionResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/reaction", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/reaction", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var request = new JObject();
                 var requestpropCount = 0;
-                if (requestsourceGroupId != null)
+                if (__workflow_requestsourceGroupId != null)
                 {
-                    request["SourceGroupId"] = ExpressionConverter.ConvertO(requestsourceGroupId);
+                    request["SourceGroupId"] = ExpressionConverter.ConvertO(__workflow_requestsourceGroupId);
                     requestpropCount++;
                 }
 
-                if (requestmessageId != null)
+                if (__workflow_requestmessageId != null)
                 {
-                    request["ReferenceId"] = ExpressionConverter.ConvertO(requestmessageId);
+                    request["ReferenceId"] = ExpressionConverter.ConvertO(__workflow_requestmessageId);
                     requestpropCount++;
                 }
 
-                if (requestreactionType != null)
+                if (__workflow_requestreactionType != null)
                 {
-                    request["ReactionType"] = ExpressionConverter.ConvertO(requestreactionType);
+                    request["ReactionType"] = ExpressionConverter.ConvertO(__workflow_requestreactionType);
                     requestpropCount++;
                 }
 
-                if (requestcomment != null)
+                if (__workflow_requestcomment != null)
                 {
-                    request["Comment"] = ExpressionConverter.ConvertO(requestcomment);
+                    request["Comment"] = ExpressionConverter.ConvertO(__workflow_requestcomment);
                     requestpropCount++;
                 }
 
@@ -203,29 +194,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        [WorkflowExpressionFactory(nameof(__BuildSendReply))]
-        public IBodyWorkflowAction<SendMessageResponse> SendReply([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> requestmessageId, [WorkflowExpression] Func<string> requestmessage)
+        public IBodyWorkflowAction<SendMessageResponse> SendReply(Expression<Func<string>> groupId, Expression<Func<string>> requestmessageId, Expression<Func<string>> requestmessage)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SendMessageResponse> __BuildSendReply(WorkflowExpression<string> groupId, WorkflowExpression<string> requestmessageId, WorkflowExpression<string> requestmessage)
-        {
-            WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
-            WorkflowExpression.Validate(requestmessageId, nameof(requestmessageId), required: true);
-            WorkflowExpression.Validate(requestmessage, nameof(requestmessage), required: true);
+            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
+            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
+            var __workflow_requestmessageId = requestmessageId == null ? null : WorkflowExpression.Compile(requestmessageId);
+            WorkflowExpression.Validate(__workflow_requestmessageId, nameof(requestmessageId), required: true);
+            var __workflow_requestmessage = requestmessage == null ? null : WorkflowExpression.Compile(requestmessage);
+            WorkflowExpression.Validate(__workflow_requestmessage, nameof(requestmessage), required: true);
             return new DeferredBodyAction<SendMessageResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groups/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groups/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var request = new JObject();
                 var requestpropCount = 0;
                 requestpropCount++;
-                request["replyToReferenceId"] = ExpressionConverter.ConvertO(requestmessageId);
+                request["replyToReferenceId"] = ExpressionConverter.ConvertO(__workflow_requestmessageId);
                 requestpropCount++;
-                request["message"] = ExpressionConverter.ConvertO(requestmessage);
+                request["message"] = ExpressionConverter.ConvertO(__workflow_requestmessage);
                 if (requestpropCount > 0)
                 {
                     callPayload.Body = request;
@@ -236,21 +223,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateGroup))]
-        public IBodyWorkflowAction<CreateGroupResponse> CreateGroup([WorkflowExpression] Func<string> requestgroupName, [WorkflowExpression] Func<string> requestwelcomeMessage, [WorkflowExpression] Func<string> requestmembers = null, [WorkflowExpression] Func<requestgroupTypeInput> requestgroupType = null, [WorkflowExpression] Func<string> requestshortDescription = null, [WorkflowExpression] Func<string> requestlongDescription = null)
+        public IBodyWorkflowAction<CreateGroupResponse> CreateGroup(Expression<Func<string>> requestgroupName, Expression<Func<string>> requestwelcomeMessage, Expression<Func<string>> requestmembers = null, Expression<Func<requestgroupTypeInput>> requestgroupType = null, Expression<Func<string>> requestshortDescription = null, Expression<Func<string>> requestlongDescription = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateGroupResponse> __BuildCreateGroup(WorkflowExpression<string> requestgroupName, WorkflowExpression<string> requestwelcomeMessage, WorkflowExpression<string> requestmembers = null, WorkflowExpression<requestgroupTypeInput> requestgroupType = null, WorkflowExpression<string> requestshortDescription = null, WorkflowExpression<string> requestlongDescription = null)
-        {
-            WorkflowExpression.Validate(requestgroupName, nameof(requestgroupName), required: true);
-            WorkflowExpression.Validate(requestwelcomeMessage, nameof(requestwelcomeMessage), required: true);
-            WorkflowExpression.Validate(requestmembers, nameof(requestmembers), required: false);
-            WorkflowExpression.Validate(requestgroupType, nameof(requestgroupType), required: false);
-            WorkflowExpression.Validate(requestshortDescription, nameof(requestshortDescription), required: false);
-            WorkflowExpression.Validate(requestlongDescription, nameof(requestlongDescription), required: false);
+            var __workflow_requestgroupName = requestgroupName == null ? null : WorkflowExpression.Compile(requestgroupName);
+            WorkflowExpression.Validate(__workflow_requestgroupName, nameof(requestgroupName), required: true);
+            var __workflow_requestwelcomeMessage = requestwelcomeMessage == null ? null : WorkflowExpression.Compile(requestwelcomeMessage);
+            WorkflowExpression.Validate(__workflow_requestwelcomeMessage, nameof(requestwelcomeMessage), required: true);
+            var __workflow_requestmembers = requestmembers == null ? null : WorkflowExpression.Compile(requestmembers);
+            WorkflowExpression.Validate(__workflow_requestmembers, nameof(requestmembers), required: false);
+            var __workflow_requestgroupType = requestgroupType == null ? null : WorkflowExpression.Compile(requestgroupType);
+            WorkflowExpression.Validate(__workflow_requestgroupType, nameof(requestgroupType), required: false);
+            var __workflow_requestshortDescription = requestshortDescription == null ? null : WorkflowExpression.Compile(requestshortDescription);
+            WorkflowExpression.Validate(__workflow_requestshortDescription, nameof(requestshortDescription), required: false);
+            var __workflow_requestlongDescription = requestlongDescription == null ? null : WorkflowExpression.Compile(requestlongDescription);
+            WorkflowExpression.Validate(__workflow_requestlongDescription, nameof(requestlongDescription), required: false);
             return new DeferredBodyAction<CreateGroupResponse>(() =>
             {
                 var apiCallPath = "/v1/groups";
@@ -259,30 +245,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
                 var request = new JObject();
                 var requestpropCount = 0;
                 requestpropCount++;
-                request["Name"] = ExpressionConverter.ConvertO(requestgroupName);
+                request["Name"] = ExpressionConverter.ConvertO(__workflow_requestgroupName);
                 requestpropCount++;
-                request["WelcomeMessage"] = ExpressionConverter.ConvertO(requestwelcomeMessage);
-                if (requestmembers != null)
+                request["WelcomeMessage"] = ExpressionConverter.ConvertO(__workflow_requestwelcomeMessage);
+                if (__workflow_requestmembers != null)
                 {
-                    request["Members"] = ExpressionConverter.ConvertO(requestmembers);
+                    request["Members"] = ExpressionConverter.ConvertO(__workflow_requestmembers);
                     requestpropCount++;
                 }
 
-                if (requestgroupType != null)
+                if (__workflow_requestgroupType != null)
                 {
-                    request["GroupType"] = ExpressionConverter.ConvertO(requestgroupType);
+                    request["GroupType"] = ExpressionConverter.ConvertO(__workflow_requestgroupType);
                     requestpropCount++;
                 }
 
-                if (requestshortDescription != null)
+                if (__workflow_requestshortDescription != null)
                 {
-                    request["ShortDescriptionString"] = ExpressionConverter.ConvertO(requestshortDescription);
+                    request["ShortDescriptionString"] = ExpressionConverter.ConvertO(__workflow_requestshortDescription);
                     requestpropCount++;
                 }
 
-                if (requestlongDescription != null)
+                if (__workflow_requestlongDescription != null)
                 {
-                    request["LongDescriptionString"] = ExpressionConverter.ConvertO(requestlongDescription);
+                    request["LongDescriptionString"] = ExpressionConverter.ConvertO(__workflow_requestlongDescription);
                     requestpropCount++;
                 }
 
@@ -296,26 +282,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        [WorkflowExpressionFactory(nameof(__BuildAddGroupToGroup))]
-        public IWorkflowAction AddGroupToGroup([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string[]> requestsubGroups)
+        public IWorkflowAction AddGroupToGroup(Expression<Func<string>> groupId, Expression<Func<string[]>> requestsubGroups)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildAddGroupToGroup(WorkflowExpression<string> groupId, WorkflowExpression<string[]> requestsubGroups)
-        {
-            WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
-            WorkflowExpression.Validate(requestsubGroups, nameof(requestsubGroups), required: true);
+            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
+            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
+            var __workflow_requestsubGroups = requestsubGroups == null ? null : WorkflowExpression.Compile(requestsubGroups);
+            WorkflowExpression.Validate(__workflow_requestsubGroups, nameof(requestsubGroups), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/subgroups", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/subgroups", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var request = new JObject();
                 var requestpropCount = 0;
                 requestpropCount++;
-                request["SubGroups"] = ExpressionConverter.ConvertO(requestsubGroups);
+                request["SubGroups"] = ExpressionConverter.ConvertO(__workflow_requestsubGroups);
                 if (requestpropCount > 0)
                 {
                     callPayload.Body = request;
@@ -326,54 +307,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateSubgroup))]
-        public IWorkflowAction CreateSubgroup([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> requestgroupName, [WorkflowExpression] Func<string> requestwelcomeMessage, [WorkflowExpression] Func<string> requestmembers = null, [WorkflowExpression] Func<requestgroupTypeInput> requestgroupType = null, [WorkflowExpression] Func<string> requestshortDescription = null, [WorkflowExpression] Func<string> requestlongDescription = null)
+        public IWorkflowAction CreateSubgroup(Expression<Func<string>> groupId, Expression<Func<string>> requestgroupName, Expression<Func<string>> requestwelcomeMessage, Expression<Func<string>> requestmembers = null, Expression<Func<requestgroupTypeInput>> requestgroupType = null, Expression<Func<string>> requestshortDescription = null, Expression<Func<string>> requestlongDescription = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildCreateSubgroup(WorkflowExpression<string> groupId, WorkflowExpression<string> requestgroupName, WorkflowExpression<string> requestwelcomeMessage, WorkflowExpression<string> requestmembers = null, WorkflowExpression<requestgroupTypeInput> requestgroupType = null, WorkflowExpression<string> requestshortDescription = null, WorkflowExpression<string> requestlongDescription = null)
-        {
-            WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
-            WorkflowExpression.Validate(requestgroupName, nameof(requestgroupName), required: true);
-            WorkflowExpression.Validate(requestwelcomeMessage, nameof(requestwelcomeMessage), required: true);
-            WorkflowExpression.Validate(requestmembers, nameof(requestmembers), required: false);
-            WorkflowExpression.Validate(requestgroupType, nameof(requestgroupType), required: false);
-            WorkflowExpression.Validate(requestshortDescription, nameof(requestshortDescription), required: false);
-            WorkflowExpression.Validate(requestlongDescription, nameof(requestlongDescription), required: false);
+            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
+            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
+            var __workflow_requestgroupName = requestgroupName == null ? null : WorkflowExpression.Compile(requestgroupName);
+            WorkflowExpression.Validate(__workflow_requestgroupName, nameof(requestgroupName), required: true);
+            var __workflow_requestwelcomeMessage = requestwelcomeMessage == null ? null : WorkflowExpression.Compile(requestwelcomeMessage);
+            WorkflowExpression.Validate(__workflow_requestwelcomeMessage, nameof(requestwelcomeMessage), required: true);
+            var __workflow_requestmembers = requestmembers == null ? null : WorkflowExpression.Compile(requestmembers);
+            WorkflowExpression.Validate(__workflow_requestmembers, nameof(requestmembers), required: false);
+            var __workflow_requestgroupType = requestgroupType == null ? null : WorkflowExpression.Compile(requestgroupType);
+            WorkflowExpression.Validate(__workflow_requestgroupType, nameof(requestgroupType), required: false);
+            var __workflow_requestshortDescription = requestshortDescription == null ? null : WorkflowExpression.Compile(requestshortDescription);
+            WorkflowExpression.Validate(__workflow_requestshortDescription, nameof(requestshortDescription), required: false);
+            var __workflow_requestlongDescription = requestlongDescription == null ? null : WorkflowExpression.Compile(requestlongDescription);
+            WorkflowExpression.Validate(__workflow_requestlongDescription, nameof(requestlongDescription), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/subgroups", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/subgroups", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var request = new JObject();
                 var requestpropCount = 0;
                 requestpropCount++;
-                request["Name"] = ExpressionConverter.ConvertO(requestgroupName);
+                request["Name"] = ExpressionConverter.ConvertO(__workflow_requestgroupName);
                 requestpropCount++;
-                request["WelcomeMessage"] = ExpressionConverter.ConvertO(requestwelcomeMessage);
-                if (requestmembers != null)
+                request["WelcomeMessage"] = ExpressionConverter.ConvertO(__workflow_requestwelcomeMessage);
+                if (__workflow_requestmembers != null)
                 {
-                    request["Members"] = ExpressionConverter.ConvertO(requestmembers);
+                    request["Members"] = ExpressionConverter.ConvertO(__workflow_requestmembers);
                     requestpropCount++;
                 }
 
-                if (requestgroupType != null)
+                if (__workflow_requestgroupType != null)
                 {
-                    request["GroupType"] = ExpressionConverter.ConvertO(requestgroupType);
+                    request["GroupType"] = ExpressionConverter.ConvertO(__workflow_requestgroupType);
                     requestpropCount++;
                 }
 
-                if (requestshortDescription != null)
+                if (__workflow_requestshortDescription != null)
                 {
-                    request["ShortDescriptionString"] = ExpressionConverter.ConvertO(requestshortDescription);
+                    request["ShortDescriptionString"] = ExpressionConverter.ConvertO(__workflow_requestshortDescription);
                     requestpropCount++;
                 }
 
-                if (requestlongDescription != null)
+                if (__workflow_requestlongDescription != null)
                 {
-                    request["LongDescriptionString"] = ExpressionConverter.ConvertO(requestlongDescription);
+                    request["LongDescriptionString"] = ExpressionConverter.ConvertO(__workflow_requestlongDescription);
                     requestpropCount++;
                 }
 
@@ -387,20 +368,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        [WorkflowExpressionFactory(nameof(__BuildRemoveGroupFromGroup))]
-        public IWorkflowAction RemoveGroupFromGroup([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> subGroupId)
+        public IWorkflowAction RemoveGroupFromGroup(Expression<Func<string>> groupId, Expression<Func<string>> subGroupId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildRemoveGroupFromGroup(WorkflowExpression<string> groupId, WorkflowExpression<string> subGroupId)
-        {
-            WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
-            WorkflowExpression.Validate(subGroupId, nameof(subGroupId), required: true);
+            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
+            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
+            var __workflow_subGroupId = subGroupId == null ? null : WorkflowExpression.Compile(subGroupId);
+            WorkflowExpression.Validate(__workflow_subGroupId, nameof(subGroupId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/subgroups/{1}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(subGroupId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/subgroups/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_subGroupId, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -408,26 +384,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        [WorkflowExpressionFactory(nameof(__BuildAddUserToGroup))]
-        public IWorkflowAction AddUserToGroup([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> requestmembers)
+        public IWorkflowAction AddUserToGroup(Expression<Func<string>> groupId, Expression<Func<string>> requestmembers)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildAddUserToGroup(WorkflowExpression<string> groupId, WorkflowExpression<string> requestmembers)
-        {
-            WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
-            WorkflowExpression.Validate(requestmembers, nameof(requestmembers), required: true);
+            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
+            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
+            var __workflow_requestmembers = requestmembers == null ? null : WorkflowExpression.Compile(requestmembers);
+            WorkflowExpression.Validate(__workflow_requestmembers, nameof(requestmembers), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var request = new JObject();
                 var requestpropCount = 0;
                 requestpropCount++;
-                request["Members"] = ExpressionConverter.ConvertO(requestmembers);
+                request["Members"] = ExpressionConverter.ConvertO(__workflow_requestmembers);
                 if (requestpropCount > 0)
                 {
                     callPayload.Body = request;
@@ -438,26 +409,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        [WorkflowExpressionFactory(nameof(__BuildAddSubscriberToGroup))]
-        public IWorkflowAction AddSubscriberToGroup([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> requestsubscribers)
+        public IWorkflowAction AddSubscriberToGroup(Expression<Func<string>> groupId, Expression<Func<string>> requestsubscribers)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildAddSubscriberToGroup(WorkflowExpression<string> groupId, WorkflowExpression<string> requestsubscribers)
-        {
-            WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
-            WorkflowExpression.Validate(requestsubscribers, nameof(requestsubscribers), required: true);
+            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
+            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
+            var __workflow_requestsubscribers = requestsubscribers == null ? null : WorkflowExpression.Compile(requestsubscribers);
+            WorkflowExpression.Validate(__workflow_requestsubscribers, nameof(requestsubscribers), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/subscribers/add", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/subscribers/add", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var request = new JObject();
                 var requestpropCount = 0;
                 requestpropCount++;
-                request["subscribers"] = ExpressionConverter.ConvertO(requestsubscribers);
+                request["subscribers"] = ExpressionConverter.ConvertO(__workflow_requestsubscribers);
                 if (requestpropCount > 0)
                 {
                     callPayload.Body = request;
@@ -468,20 +434,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        [WorkflowExpressionFactory(nameof(__BuildRemoveUserFromGroup))]
-        public IWorkflowAction RemoveUserFromGroup([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> memberId)
+        public IWorkflowAction RemoveUserFromGroup(Expression<Func<string>> groupId, Expression<Func<string>> memberId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildRemoveUserFromGroup(WorkflowExpression<string> groupId, WorkflowExpression<string> memberId)
-        {
-            WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
-            WorkflowExpression.Validate(memberId, nameof(memberId), required: true);
+            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
+            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
+            var __workflow_memberId = memberId == null ? null : WorkflowExpression.Compile(memberId);
+            WorkflowExpression.Validate(__workflow_memberId, nameof(memberId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/members/{1}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(memberId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/members/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_memberId, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -489,16 +450,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        [WorkflowExpressionFactory(nameof(__BuildUploadMediaFileContent))]
-        public IBodyWorkflowAction<UploadMediaResponse> UploadMediaFileContent([WorkflowExpression] Func<object> fileContent)
+        public IBodyWorkflowAction<UploadMediaResponse> UploadMediaFileContent(Expression<Func<object>> fileContent)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UploadMediaResponse> __BuildUploadMediaFileContent(WorkflowExpression<object> fileContent)
-        {
-            WorkflowExpression.Validate(fileContent, nameof(fileContent), required: true);
+            var __workflow_fileContent = fileContent == null ? null : WorkflowExpression.Compile(fileContent);
+            WorkflowExpression.Validate(__workflow_fileContent, nameof(fileContent), required: true);
             return new DeferredBodyAction<UploadMediaResponse>(() =>
             {
                 var apiCallPath = "/v1/media";
@@ -509,16 +464,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        [WorkflowExpressionFactory(nameof(__BuildUploadMediaFromURL))]
-        public IBodyWorkflowAction<UploadMediaResponse> UploadMediaFromURL([WorkflowExpression] Func<string> mediaUrlmediaUrl)
+        public IBodyWorkflowAction<UploadMediaResponse> UploadMediaFromURL(Expression<Func<string>> mediaUrlmediaUrl)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UploadMediaResponse> __BuildUploadMediaFromURL(WorkflowExpression<string> mediaUrlmediaUrl)
-        {
-            WorkflowExpression.Validate(mediaUrlmediaUrl, nameof(mediaUrlmediaUrl), required: true);
+            var __workflow_mediaUrlmediaUrl = mediaUrlmediaUrl == null ? null : WorkflowExpression.Compile(mediaUrlmediaUrl);
+            WorkflowExpression.Validate(__workflow_mediaUrlmediaUrl, nameof(mediaUrlmediaUrl), required: true);
             return new DeferredBodyAction<UploadMediaResponse>(() =>
             {
                 var apiCallPath = "/v1/media/url";
@@ -527,7 +476,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
                 var mediaUrl = new JObject();
                 var mediaUrlpropCount = 0;
                 mediaUrlpropCount++;
-                mediaUrl["mediaUrl"] = ExpressionConverter.ConvertO(mediaUrlmediaUrl);
+                mediaUrl["mediaUrl"] = ExpressionConverter.ConvertO(__workflow_mediaUrlmediaUrl);
                 if (mediaUrlpropCount > 0)
                 {
                     callPayload.Body = mediaUrl;
@@ -562,19 +511,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteTrigger))]
-        public IWorkflowAction DeleteTrigger([WorkflowExpression] Func<string> webhookId)
+        public IWorkflowAction DeleteTrigger(Expression<Func<string>> webhookId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDeleteTrigger(WorkflowExpression<string> webhookId)
-        {
-            WorkflowExpression.Validate(webhookId, nameof(webhookId), required: true);
+            var __workflow_webhookId = webhookId == null ? null : WorkflowExpression.Compile(webhookId);
+            WorkflowExpression.Validate(__workflow_webhookId, nameof(webhookId), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/webhook/{0}", ExpressionConverter.ConvertWithUrlEncoding(webhookId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/webhook/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_webhookId, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -584,26 +527,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
 
     public class KaizalaTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildActionCreatedOnGroup))]
-        public IWorkflowTrigger ActionCreatedOnGroup([WorkflowExpression] Func<string> objectId,[WorkflowExpression] Func<string> actionPackageId = null,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ActionCreatedOnGroup(Expression<Func<string>> objectId, Expression<Func<string>> actionPackageId = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildActionCreatedOnGroup(WorkflowExpression<string> objectId,WorkflowExpression<string> actionPackageId = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(objectId, nameof(objectId), required: true);
-            WorkflowExpression.Validate(actionPackageId, nameof(actionPackageId), required: false);
+            var __workflow_objectId = objectId == null ? null : WorkflowExpression.Compile(objectId);
+            WorkflowExpression.Validate(__workflow_objectId, nameof(objectId), required: true);
+            var __workflow_actionPackageId = actionPackageId == null ? null : WorkflowExpression.Compile(actionPackageId);
+            WorkflowExpression.Validate(__workflow_actionPackageId, nameof(actionPackageId), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/v1/webhook/Group/ActionCreated";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
-                if (actionPackageId != null)
-                    callPayload.Queries["actionPackageId"] = ExpressionConverter.Convert(actionPackageId);
+                callPayload.Queries["objectId"] = ExpressionConverter.Convert(__workflow_objectId);
+                if (__workflow_actionPackageId != null)
+                    callPayload.Queries["actionPackageId"] = ExpressionConverter.Convert(__workflow_actionPackageId);
                 var request = new JObject();
                 var requestpropCount = 0;
                 request["CallbackUrl"] = "#{listCallbackUrl()}";
@@ -617,22 +554,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildAnnouncementOnGroup))]
-        public IWorkflowTrigger AnnouncementOnGroup([WorkflowExpression] Func<string> objectId,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger AnnouncementOnGroup(Expression<Func<string>> objectId, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildAnnouncementOnGroup(WorkflowExpression<string> objectId,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(objectId, nameof(objectId), required: true);
+            var __workflow_objectId = objectId == null ? null : WorkflowExpression.Compile(objectId);
+            WorkflowExpression.Validate(__workflow_objectId, nameof(objectId), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/v1/webhook/Group/Announcement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
+                callPayload.Queries["objectId"] = ExpressionConverter.Convert(__workflow_objectId);
                 var request = new JObject();
                 var requestpropCount = 0;
                 request["CallbackUrl"] = "#{listCallbackUrl()}";
@@ -646,22 +577,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildGroupAddedToGroup))]
-        public IWorkflowTrigger GroupAddedToGroup([WorkflowExpression] Func<string> objectId,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger GroupAddedToGroup(Expression<Func<string>> objectId, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildGroupAddedToGroup(WorkflowExpression<string> objectId,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(objectId, nameof(objectId), required: true);
+            var __workflow_objectId = objectId == null ? null : WorkflowExpression.Compile(objectId);
+            WorkflowExpression.Validate(__workflow_objectId, nameof(objectId), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/v1/webhook/Group/GroupAdded";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
+                callPayload.Queries["objectId"] = ExpressionConverter.Convert(__workflow_objectId);
                 var request = new JObject();
                 var requestpropCount = 0;
                 request["CallbackUrl"] = "#{listCallbackUrl()}";
@@ -675,22 +600,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildGroupRemovedFromGroup))]
-        public IWorkflowTrigger GroupRemovedFromGroup([WorkflowExpression] Func<string> objectId,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger GroupRemovedFromGroup(Expression<Func<string>> objectId, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildGroupRemovedFromGroup(WorkflowExpression<string> objectId,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(objectId, nameof(objectId), required: true);
+            var __workflow_objectId = objectId == null ? null : WorkflowExpression.Compile(objectId);
+            WorkflowExpression.Validate(__workflow_objectId, nameof(objectId), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/v1/webhook/Group/GroupRemoved";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
+                callPayload.Queries["objectId"] = ExpressionConverter.Convert(__workflow_objectId);
                 var request = new JObject();
                 var requestpropCount = 0;
                 request["CallbackUrl"] = "#{listCallbackUrl()}";
@@ -704,22 +623,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildMemberAddedToGroup))]
-        public IWorkflowTrigger MemberAddedToGroup([WorkflowExpression] Func<string> objectId,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger MemberAddedToGroup(Expression<Func<string>> objectId, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildMemberAddedToGroup(WorkflowExpression<string> objectId,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(objectId, nameof(objectId), required: true);
+            var __workflow_objectId = objectId == null ? null : WorkflowExpression.Compile(objectId);
+            WorkflowExpression.Validate(__workflow_objectId, nameof(objectId), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/v1/webhook/Group/MemberAdded";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
+                callPayload.Queries["objectId"] = ExpressionConverter.Convert(__workflow_objectId);
                 var request = new JObject();
                 var requestpropCount = 0;
                 request["CallbackUrl"] = "#{listCallbackUrl()}";
@@ -733,22 +646,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildMemberRemovedFromGroup))]
-        public IWorkflowTrigger MemberRemovedFromGroup([WorkflowExpression] Func<string> objectId,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger MemberRemovedFromGroup(Expression<Func<string>> objectId, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildMemberRemovedFromGroup(WorkflowExpression<string> objectId,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(objectId, nameof(objectId), required: true);
+            var __workflow_objectId = objectId == null ? null : WorkflowExpression.Compile(objectId);
+            WorkflowExpression.Validate(__workflow_objectId, nameof(objectId), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/v1/webhook/Group/MemberRemoved";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
+                callPayload.Queries["objectId"] = ExpressionConverter.Convert(__workflow_objectId);
                 var request = new JObject();
                 var requestpropCount = 0;
                 request["CallbackUrl"] = "#{listCallbackUrl()}";
@@ -762,22 +669,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildSurveyCreatedOnGroup))]
-        public IWorkflowTrigger SurveyCreatedOnGroup([WorkflowExpression] Func<string> objectId,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger SurveyCreatedOnGroup(Expression<Func<string>> objectId, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildSurveyCreatedOnGroup(WorkflowExpression<string> objectId,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(objectId, nameof(objectId), required: true);
+            var __workflow_objectId = objectId == null ? null : WorkflowExpression.Compile(objectId);
+            WorkflowExpression.Validate(__workflow_objectId, nameof(objectId), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/v1/webhook/Group/SurveyCreated";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
+                callPayload.Queries["objectId"] = ExpressionConverter.Convert(__workflow_objectId);
                 var request = new JObject();
                 var requestpropCount = 0;
                 request["CallbackUrl"] = "#{listCallbackUrl()}";
@@ -791,22 +692,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildTextMessageCreatedOnGroup))]
-        public IWorkflowTrigger TextMessageCreatedOnGroup([WorkflowExpression] Func<string> objectId,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TextMessageCreatedOnGroup(Expression<Func<string>> objectId, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildTextMessageCreatedOnGroup(WorkflowExpression<string> objectId,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(objectId, nameof(objectId), required: true);
+            var __workflow_objectId = objectId == null ? null : WorkflowExpression.Compile(objectId);
+            WorkflowExpression.Validate(__workflow_objectId, nameof(objectId), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/v1/webhook/Group/TextMessageCreated";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
+                callPayload.Queries["objectId"] = ExpressionConverter.Convert(__workflow_objectId);
                 var request = new JObject();
                 var requestpropCount = 0;
                 request["CallbackUrl"] = "#{listCallbackUrl()}";
@@ -820,24 +715,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildSurveyResponseOnGroup))]
-        public IWorkflowTrigger SurveyResponseOnGroup([WorkflowExpression] Func<string> groupId,[WorkflowExpression] Func<string> objectId,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger SurveyResponseOnGroup(Expression<Func<string>> groupId, Expression<Func<string>> objectId, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildSurveyResponseOnGroup(WorkflowExpression<string> groupId,WorkflowExpression<string> objectId,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
-            WorkflowExpression.Validate(objectId, nameof(objectId), required: true);
+            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
+            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
+            var __workflow_objectId = objectId == null ? null : WorkflowExpression.Compile(objectId);
+            WorkflowExpression.Validate(__workflow_objectId, nameof(objectId), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/v1/webhook/Action/SurveyResponse";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
-                callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
+                callPayload.Queries["groupId"] = ExpressionConverter.Convert(__workflow_groupId);
+                callPayload.Queries["objectId"] = ExpressionConverter.Convert(__workflow_objectId);
                 var request = new JObject();
                 var requestpropCount = 0;
                 request["CallbackUrl"] = "#{listCallbackUrl()}";
@@ -851,22 +741,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildAttachmentOnGroup))]
-        public IWorkflowTrigger AttachmentOnGroup([WorkflowExpression] Func<string> objectId,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger AttachmentOnGroup(Expression<Func<string>> objectId, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildAttachmentOnGroup(WorkflowExpression<string> objectId,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(objectId, nameof(objectId), required: true);
+            var __workflow_objectId = objectId == null ? null : WorkflowExpression.Compile(objectId);
+            WorkflowExpression.Validate(__workflow_objectId, nameof(objectId), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/v1/webhook/Group/AttachmentCreated";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
+                callPayload.Queries["objectId"] = ExpressionConverter.Convert(__workflow_objectId);
                 var request = new JObject();
                 var requestpropCount = 0;
                 request["CallbackUrl"] = "#{listCallbackUrl()}";
@@ -880,26 +764,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildActionResponseOnGroup))]
-        public IWorkflowTrigger ActionResponseOnGroup([WorkflowExpression] Func<string> groupId,[WorkflowExpression] Func<string> actionPackageId,[WorkflowExpression] Func<string> objectId,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ActionResponseOnGroup(Expression<Func<string>> groupId, Expression<Func<string>> actionPackageId, Expression<Func<string>> objectId, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildActionResponseOnGroup(WorkflowExpression<string> groupId,WorkflowExpression<string> actionPackageId,WorkflowExpression<string> objectId,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
-            WorkflowExpression.Validate(actionPackageId, nameof(actionPackageId), required: true);
-            WorkflowExpression.Validate(objectId, nameof(objectId), required: true);
+            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
+            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
+            var __workflow_actionPackageId = actionPackageId == null ? null : WorkflowExpression.Compile(actionPackageId);
+            WorkflowExpression.Validate(__workflow_actionPackageId, nameof(actionPackageId), required: true);
+            var __workflow_objectId = objectId == null ? null : WorkflowExpression.Compile(objectId);
+            WorkflowExpression.Validate(__workflow_objectId, nameof(objectId), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/v1/webhook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
-                callPayload.Queries["actionPackageId"] = ExpressionConverter.Convert(actionPackageId);
-                callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
+                callPayload.Queries["groupId"] = ExpressionConverter.Convert(__workflow_groupId);
+                callPayload.Queries["actionPackageId"] = ExpressionConverter.Convert(__workflow_actionPackageId);
+                callPayload.Queries["objectId"] = ExpressionConverter.Convert(__workflow_objectId);
                 var request = new JObject();
                 var requestpropCount = 0;
                 request["CallbackUrl"] = "#{listCallbackUrl()}";
@@ -913,22 +793,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildUserJoinedOnGroup))]
-        public IWorkflowTrigger UserJoinedOnGroup([WorkflowExpression] Func<string> objectId,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger UserJoinedOnGroup(Expression<Func<string>> objectId, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildUserJoinedOnGroup(WorkflowExpression<string> objectId,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(objectId, nameof(objectId), required: true);
+            var __workflow_objectId = objectId == null ? null : WorkflowExpression.Compile(objectId);
+            WorkflowExpression.Validate(__workflow_objectId, nameof(objectId), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/v1/webhook/Group/UserJoined";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
+                callPayload.Queries["objectId"] = ExpressionConverter.Convert(__workflow_objectId);
                 var request = new JObject();
                 var requestpropCount = 0;
                 request["CallbackUrl"] = "#{listCallbackUrl()}";

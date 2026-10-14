@@ -1,39 +1,44 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class TesseroninvoiceActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseroninvoice")]
-        [WorkflowExpressionFactory(nameof(__BuildGetServiceAssignmentsDispatcher))]
-        public IBodyWorkflowAction<GetServiceAssignmentsDispatcherResponse> GetServiceAssignmentsDispatcher([WorkflowExpression] Func<int> bodyskip, [WorkflowExpression] Func<string> bodysearch = null, [WorkflowExpression] Func<int> bodyorderColumns = null, [WorkflowExpression] Func<bool> bodyorderByAsc = null, [WorkflowExpression] Func<bool> bodytakeAll = null, [WorkflowExpression] Func<string> bodyadditionalSearchDatadateTimeFrom = null, [WorkflowExpression] Func<string> bodyadditionalSearchDatadateTimeTo = null, [WorkflowExpression] Func<double> bodyadditionalSearchDataquantityFrom = null, [WorkflowExpression] Func<double> bodyadditionalSearchDataquantityTo = null, [WorkflowExpression] Func<int[]> bodyadditionalSearchDatauserIds = null, [WorkflowExpression] Func<string[]> bodyadditionalSearchDataserviceArticles = null, [WorkflowExpression] Func<int> bodyadditionalSearchDataassignmentStatusId = null, [WorkflowExpression] Func<bool> bodyadditionalSearchDataisInvoice = null)
+        public IBodyWorkflowAction<GetServiceAssignmentsDispatcherResponse> GetServiceAssignmentsDispatcher(Expression<Func<int>> bodyskip, Expression<Func<string>> bodysearch = null, Expression<Func<int>> bodyorderColumns = null, Expression<Func<bool>> bodyorderByAsc = null, Expression<Func<bool>> bodytakeAll = null, Expression<Func<string>> bodyadditionalSearchDatadateTimeFrom = null, Expression<Func<string>> bodyadditionalSearchDatadateTimeTo = null, Expression<Func<double>> bodyadditionalSearchDataquantityFrom = null, Expression<Func<double>> bodyadditionalSearchDataquantityTo = null, Expression<Func<int[]>> bodyadditionalSearchDatauserIds = null, Expression<Func<string[]>> bodyadditionalSearchDataserviceArticles = null, Expression<Func<int>> bodyadditionalSearchDataassignmentStatusId = null, Expression<Func<bool>> bodyadditionalSearchDataisInvoice = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetServiceAssignmentsDispatcherResponse> __BuildGetServiceAssignmentsDispatcher(WorkflowExpression<int> bodyskip, WorkflowExpression<string> bodysearch = null, WorkflowExpression<int> bodyorderColumns = null, WorkflowExpression<bool> bodyorderByAsc = null, WorkflowExpression<bool> bodytakeAll = null, WorkflowExpression<string> bodyadditionalSearchDatadateTimeFrom = null, WorkflowExpression<string> bodyadditionalSearchDatadateTimeTo = null, WorkflowExpression<double> bodyadditionalSearchDataquantityFrom = null, WorkflowExpression<double> bodyadditionalSearchDataquantityTo = null, WorkflowExpression<int[]> bodyadditionalSearchDatauserIds = null, WorkflowExpression<string[]> bodyadditionalSearchDataserviceArticles = null, WorkflowExpression<int> bodyadditionalSearchDataassignmentStatusId = null, WorkflowExpression<bool> bodyadditionalSearchDataisInvoice = null)
-        {
-            WorkflowExpression.Validate(bodyskip, nameof(bodyskip), required: true);
-            WorkflowExpression.Validate(bodysearch, nameof(bodysearch), required: false);
-            WorkflowExpression.Validate(bodyorderColumns, nameof(bodyorderColumns), required: false);
-            WorkflowExpression.Validate(bodyorderByAsc, nameof(bodyorderByAsc), required: false);
-            WorkflowExpression.Validate(bodytakeAll, nameof(bodytakeAll), required: false);
-            WorkflowExpression.Validate(bodyadditionalSearchDatadateTimeFrom, nameof(bodyadditionalSearchDatadateTimeFrom), required: false);
-            WorkflowExpression.Validate(bodyadditionalSearchDatadateTimeTo, nameof(bodyadditionalSearchDatadateTimeTo), required: false);
-            WorkflowExpression.Validate(bodyadditionalSearchDataquantityFrom, nameof(bodyadditionalSearchDataquantityFrom), required: false);
-            WorkflowExpression.Validate(bodyadditionalSearchDataquantityTo, nameof(bodyadditionalSearchDataquantityTo), required: false);
-            WorkflowExpression.Validate(bodyadditionalSearchDatauserIds, nameof(bodyadditionalSearchDatauserIds), required: false);
-            WorkflowExpression.Validate(bodyadditionalSearchDataserviceArticles, nameof(bodyadditionalSearchDataserviceArticles), required: false);
-            WorkflowExpression.Validate(bodyadditionalSearchDataassignmentStatusId, nameof(bodyadditionalSearchDataassignmentStatusId), required: false);
-            WorkflowExpression.Validate(bodyadditionalSearchDataisInvoice, nameof(bodyadditionalSearchDataisInvoice), required: false);
+            var __workflow_bodyskip = bodyskip == null ? null : WorkflowExpression.Compile(bodyskip);
+            WorkflowExpression.Validate(__workflow_bodyskip, nameof(bodyskip), required: true);
+            var __workflow_bodysearch = bodysearch == null ? null : WorkflowExpression.Compile(bodysearch);
+            WorkflowExpression.Validate(__workflow_bodysearch, nameof(bodysearch), required: false);
+            var __workflow_bodyorderColumns = bodyorderColumns == null ? null : WorkflowExpression.Compile(bodyorderColumns);
+            WorkflowExpression.Validate(__workflow_bodyorderColumns, nameof(bodyorderColumns), required: false);
+            var __workflow_bodyorderByAsc = bodyorderByAsc == null ? null : WorkflowExpression.Compile(bodyorderByAsc);
+            WorkflowExpression.Validate(__workflow_bodyorderByAsc, nameof(bodyorderByAsc), required: false);
+            var __workflow_bodytakeAll = bodytakeAll == null ? null : WorkflowExpression.Compile(bodytakeAll);
+            WorkflowExpression.Validate(__workflow_bodytakeAll, nameof(bodytakeAll), required: false);
+            var __workflow_bodyadditionalSearchDatadateTimeFrom = bodyadditionalSearchDatadateTimeFrom == null ? null : WorkflowExpression.Compile(bodyadditionalSearchDatadateTimeFrom);
+            WorkflowExpression.Validate(__workflow_bodyadditionalSearchDatadateTimeFrom, nameof(bodyadditionalSearchDatadateTimeFrom), required: false);
+            var __workflow_bodyadditionalSearchDatadateTimeTo = bodyadditionalSearchDatadateTimeTo == null ? null : WorkflowExpression.Compile(bodyadditionalSearchDatadateTimeTo);
+            WorkflowExpression.Validate(__workflow_bodyadditionalSearchDatadateTimeTo, nameof(bodyadditionalSearchDatadateTimeTo), required: false);
+            var __workflow_bodyadditionalSearchDataquantityFrom = bodyadditionalSearchDataquantityFrom == null ? null : WorkflowExpression.Compile(bodyadditionalSearchDataquantityFrom);
+            WorkflowExpression.Validate(__workflow_bodyadditionalSearchDataquantityFrom, nameof(bodyadditionalSearchDataquantityFrom), required: false);
+            var __workflow_bodyadditionalSearchDataquantityTo = bodyadditionalSearchDataquantityTo == null ? null : WorkflowExpression.Compile(bodyadditionalSearchDataquantityTo);
+            WorkflowExpression.Validate(__workflow_bodyadditionalSearchDataquantityTo, nameof(bodyadditionalSearchDataquantityTo), required: false);
+            var __workflow_bodyadditionalSearchDatauserIds = bodyadditionalSearchDatauserIds == null ? null : WorkflowExpression.Compile(bodyadditionalSearchDatauserIds);
+            WorkflowExpression.Validate(__workflow_bodyadditionalSearchDatauserIds, nameof(bodyadditionalSearchDatauserIds), required: false);
+            var __workflow_bodyadditionalSearchDataserviceArticles = bodyadditionalSearchDataserviceArticles == null ? null : WorkflowExpression.Compile(bodyadditionalSearchDataserviceArticles);
+            WorkflowExpression.Validate(__workflow_bodyadditionalSearchDataserviceArticles, nameof(bodyadditionalSearchDataserviceArticles), required: false);
+            var __workflow_bodyadditionalSearchDataassignmentStatusId = bodyadditionalSearchDataassignmentStatusId == null ? null : WorkflowExpression.Compile(bodyadditionalSearchDataassignmentStatusId);
+            WorkflowExpression.Validate(__workflow_bodyadditionalSearchDataassignmentStatusId, nameof(bodyadditionalSearchDataassignmentStatusId), required: false);
+            var __workflow_bodyadditionalSearchDataisInvoice = bodyadditionalSearchDataisInvoice == null ? null : WorkflowExpression.Compile(bodyadditionalSearchDataisInvoice);
+            WorkflowExpression.Validate(__workflow_bodyadditionalSearchDataisInvoice, nameof(bodyadditionalSearchDataisInvoice), required: false);
             return new DeferredBodyAction<GetServiceAssignmentsDispatcherResponse>(() =>
             {
                 var apiCallPath = "/GetServiceAssignmentsDispatcher";
@@ -42,26 +47,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["Skip"] = ExpressionConverter.ConvertO(bodyskip);
+                body["Skip"] = ExpressionConverter.ConvertO(__workflow_bodyskip);
                 body["PageSize"] = 25;
                 bodypropCount++;
-                if (bodysearch != null)
+                if (__workflow_bodysearch != null)
                 {
-                    body["Search"] = ExpressionConverter.ConvertO(bodysearch);
+                    body["Search"] = ExpressionConverter.ConvertO(__workflow_bodysearch);
                     bodypropCount++;
                 }
 
-                if (bodyorderColumns != null)
+                if (__workflow_bodyorderColumns != null)
                 {
-                    body["OrderColumns"] = ExpressionConverter.ConvertO(bodyorderColumns);
+                    body["OrderColumns"] = ExpressionConverter.ConvertO(__workflow_bodyorderColumns);
                     bodypropCount++;
                 }
 
-                if (bodyorderByAsc != null)
+                if (__workflow_bodyorderByAsc != null)
                 {
-                    if (bodyorderByAsc != null)
+                    if (__workflow_bodyorderByAsc != null)
                     {
-                        body["OrderByAsc"] = ExpressionConverter.ConvertO(bodyorderByAsc);
+                        body["OrderByAsc"] = ExpressionConverter.ConvertO(__workflow_bodyorderByAsc);
                         bodypropCount++;
                     }
 
@@ -73,11 +78,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
                     bodypropCount++;
                 }
 
-                if (bodytakeAll != null)
+                if (__workflow_bodytakeAll != null)
                 {
-                    if (bodytakeAll != null)
+                    if (__workflow_bodytakeAll != null)
                     {
-                        body["TakeAll"] = ExpressionConverter.ConvertO(bodytakeAll);
+                        body["TakeAll"] = ExpressionConverter.ConvertO(__workflow_bodytakeAll);
                         bodypropCount++;
                     }
 
@@ -91,51 +96,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
 
                 var additionalSearchDataObject = new JObject();
                 var additionalSearchDataObjectpropCount = 0;
-                if (bodyadditionalSearchDatadateTimeFrom != null)
+                if (__workflow_bodyadditionalSearchDatadateTimeFrom != null)
                 {
-                    additionalSearchDataObject["DateTimeFrom"] = ExpressionConverter.ConvertO(bodyadditionalSearchDatadateTimeFrom);
+                    additionalSearchDataObject["DateTimeFrom"] = ExpressionConverter.ConvertO(__workflow_bodyadditionalSearchDatadateTimeFrom);
                     additionalSearchDataObjectpropCount++;
                 }
 
-                if (bodyadditionalSearchDatadateTimeTo != null)
+                if (__workflow_bodyadditionalSearchDatadateTimeTo != null)
                 {
-                    additionalSearchDataObject["DateTimeTo"] = ExpressionConverter.ConvertO(bodyadditionalSearchDatadateTimeTo);
+                    additionalSearchDataObject["DateTimeTo"] = ExpressionConverter.ConvertO(__workflow_bodyadditionalSearchDatadateTimeTo);
                     additionalSearchDataObjectpropCount++;
                 }
 
-                if (bodyadditionalSearchDataquantityFrom != null)
+                if (__workflow_bodyadditionalSearchDataquantityFrom != null)
                 {
-                    additionalSearchDataObject["QuantityFrom"] = ExpressionConverter.ConvertO(bodyadditionalSearchDataquantityFrom);
+                    additionalSearchDataObject["QuantityFrom"] = ExpressionConverter.ConvertO(__workflow_bodyadditionalSearchDataquantityFrom);
                     additionalSearchDataObjectpropCount++;
                 }
 
-                if (bodyadditionalSearchDataquantityTo != null)
+                if (__workflow_bodyadditionalSearchDataquantityTo != null)
                 {
-                    additionalSearchDataObject["QuantityTo"] = ExpressionConverter.ConvertO(bodyadditionalSearchDataquantityTo);
+                    additionalSearchDataObject["QuantityTo"] = ExpressionConverter.ConvertO(__workflow_bodyadditionalSearchDataquantityTo);
                     additionalSearchDataObjectpropCount++;
                 }
 
-                if (bodyadditionalSearchDatauserIds != null)
+                if (__workflow_bodyadditionalSearchDatauserIds != null)
                 {
-                    additionalSearchDataObject["UserIds"] = ExpressionConverter.ConvertO(bodyadditionalSearchDatauserIds);
+                    additionalSearchDataObject["UserIds"] = ExpressionConverter.ConvertO(__workflow_bodyadditionalSearchDatauserIds);
                     additionalSearchDataObjectpropCount++;
                 }
 
-                if (bodyadditionalSearchDataserviceArticles != null)
+                if (__workflow_bodyadditionalSearchDataserviceArticles != null)
                 {
-                    additionalSearchDataObject["ServiceArticles"] = ExpressionConverter.ConvertO(bodyadditionalSearchDataserviceArticles);
+                    additionalSearchDataObject["ServiceArticles"] = ExpressionConverter.ConvertO(__workflow_bodyadditionalSearchDataserviceArticles);
                     additionalSearchDataObjectpropCount++;
                 }
 
-                if (bodyadditionalSearchDataassignmentStatusId != null)
+                if (__workflow_bodyadditionalSearchDataassignmentStatusId != null)
                 {
-                    additionalSearchDataObject["AssignmentStatusId"] = ExpressionConverter.ConvertO(bodyadditionalSearchDataassignmentStatusId);
+                    additionalSearchDataObject["AssignmentStatusId"] = ExpressionConverter.ConvertO(__workflow_bodyadditionalSearchDataassignmentStatusId);
                     additionalSearchDataObjectpropCount++;
                 }
 
-                if (bodyadditionalSearchDataisInvoice != null)
+                if (__workflow_bodyadditionalSearchDataisInvoice != null)
                 {
-                    additionalSearchDataObject["IsInvoice"] = ExpressionConverter.ConvertO(bodyadditionalSearchDataisInvoice);
+                    additionalSearchDataObject["IsInvoice"] = ExpressionConverter.ConvertO(__workflow_bodyadditionalSearchDataisInvoice);
                     additionalSearchDataObjectpropCount++;
                 }
 
@@ -155,23 +160,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseroninvoice")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateActivityRecording))]
-        public IBodyWorkflowAction<CreateActivityRecordingResponse> CreateActivityRecording([WorkflowExpression] Func<string> bodydateFrom, [WorkflowExpression] Func<string> bodyquantity = null, [WorkflowExpression] Func<string> bodydateTo = null, [WorkflowExpression] Func<string> bodybookText = null, [WorkflowExpression] Func<string> bodynoteText = null, [WorkflowExpression] Func<int> bodyprojectId = null, [WorkflowExpression] Func<int> bodyprojectPhaseId = null, [WorkflowExpression] Func<int> bodyticketid = null)
+        public IBodyWorkflowAction<CreateActivityRecordingResponse> CreateActivityRecording(Expression<Func<string>> bodydateFrom, Expression<Func<string>> bodyquantity = null, Expression<Func<string>> bodydateTo = null, Expression<Func<string>> bodybookText = null, Expression<Func<string>> bodynoteText = null, Expression<Func<int>> bodyprojectId = null, Expression<Func<int>> bodyprojectPhaseId = null, Expression<Func<int>> bodyticketid = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateActivityRecordingResponse> __BuildCreateActivityRecording(WorkflowExpression<string> bodydateFrom, WorkflowExpression<string> bodyquantity = null, WorkflowExpression<string> bodydateTo = null, WorkflowExpression<string> bodybookText = null, WorkflowExpression<string> bodynoteText = null, WorkflowExpression<int> bodyprojectId = null, WorkflowExpression<int> bodyprojectPhaseId = null, WorkflowExpression<int> bodyticketid = null)
-        {
-            WorkflowExpression.Validate(bodydateFrom, nameof(bodydateFrom), required: true);
-            WorkflowExpression.Validate(bodyquantity, nameof(bodyquantity), required: false);
-            WorkflowExpression.Validate(bodydateTo, nameof(bodydateTo), required: false);
-            WorkflowExpression.Validate(bodybookText, nameof(bodybookText), required: false);
-            WorkflowExpression.Validate(bodynoteText, nameof(bodynoteText), required: false);
-            WorkflowExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: false);
-            WorkflowExpression.Validate(bodyprojectPhaseId, nameof(bodyprojectPhaseId), required: false);
-            WorkflowExpression.Validate(bodyticketid, nameof(bodyticketid), required: false);
+            var __workflow_bodydateFrom = bodydateFrom == null ? null : WorkflowExpression.Compile(bodydateFrom);
+            WorkflowExpression.Validate(__workflow_bodydateFrom, nameof(bodydateFrom), required: true);
+            var __workflow_bodyquantity = bodyquantity == null ? null : WorkflowExpression.Compile(bodyquantity);
+            WorkflowExpression.Validate(__workflow_bodyquantity, nameof(bodyquantity), required: false);
+            var __workflow_bodydateTo = bodydateTo == null ? null : WorkflowExpression.Compile(bodydateTo);
+            WorkflowExpression.Validate(__workflow_bodydateTo, nameof(bodydateTo), required: false);
+            var __workflow_bodybookText = bodybookText == null ? null : WorkflowExpression.Compile(bodybookText);
+            WorkflowExpression.Validate(__workflow_bodybookText, nameof(bodybookText), required: false);
+            var __workflow_bodynoteText = bodynoteText == null ? null : WorkflowExpression.Compile(bodynoteText);
+            WorkflowExpression.Validate(__workflow_bodynoteText, nameof(bodynoteText), required: false);
+            var __workflow_bodyprojectId = bodyprojectId == null ? null : WorkflowExpression.Compile(bodyprojectId);
+            WorkflowExpression.Validate(__workflow_bodyprojectId, nameof(bodyprojectId), required: false);
+            var __workflow_bodyprojectPhaseId = bodyprojectPhaseId == null ? null : WorkflowExpression.Compile(bodyprojectPhaseId);
+            WorkflowExpression.Validate(__workflow_bodyprojectPhaseId, nameof(bodyprojectPhaseId), required: false);
+            var __workflow_bodyticketid = bodyticketid == null ? null : WorkflowExpression.Compile(bodyticketid);
+            WorkflowExpression.Validate(__workflow_bodyticketid, nameof(bodyticketid), required: false);
             return new DeferredBodyAction<CreateActivityRecordingResponse>(() =>
             {
                 var apiCallPath = "/CreateActivityRecording";
@@ -180,46 +186,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["dateFrom"] = ExpressionConverter.ConvertO(bodydateFrom);
-                if (bodyquantity != null)
+                body["dateFrom"] = ExpressionConverter.ConvertO(__workflow_bodydateFrom);
+                if (__workflow_bodyquantity != null)
                 {
-                    body["quantity"] = ExpressionConverter.ConvertO(bodyquantity);
+                    body["quantity"] = ExpressionConverter.ConvertO(__workflow_bodyquantity);
                     bodypropCount++;
                 }
 
-                if (bodydateTo != null)
+                if (__workflow_bodydateTo != null)
                 {
-                    body["dateTo"] = ExpressionConverter.ConvertO(bodydateTo);
+                    body["dateTo"] = ExpressionConverter.ConvertO(__workflow_bodydateTo);
                     bodypropCount++;
                 }
 
-                if (bodybookText != null)
+                if (__workflow_bodybookText != null)
                 {
-                    body["bookText"] = ExpressionConverter.ConvertO(bodybookText);
+                    body["bookText"] = ExpressionConverter.ConvertO(__workflow_bodybookText);
                     bodypropCount++;
                 }
 
-                if (bodynoteText != null)
+                if (__workflow_bodynoteText != null)
                 {
-                    body["noteText"] = ExpressionConverter.ConvertO(bodynoteText);
+                    body["noteText"] = ExpressionConverter.ConvertO(__workflow_bodynoteText);
                     bodypropCount++;
                 }
 
-                if (bodyprojectId != null)
+                if (__workflow_bodyprojectId != null)
                 {
-                    body["projectId"] = ExpressionConverter.ConvertO(bodyprojectId);
+                    body["projectId"] = ExpressionConverter.ConvertO(__workflow_bodyprojectId);
                     bodypropCount++;
                 }
 
-                if (bodyprojectPhaseId != null)
+                if (__workflow_bodyprojectPhaseId != null)
                 {
-                    body["projectPhaseId"] = ExpressionConverter.ConvertO(bodyprojectPhaseId);
+                    body["projectPhaseId"] = ExpressionConverter.ConvertO(__workflow_bodyprojectPhaseId);
                     bodypropCount++;
                 }
 
-                if (bodyticketid != null)
+                if (__workflow_bodyticketid != null)
                 {
-                    body["ticketid"] = ExpressionConverter.ConvertO(bodyticketid);
+                    body["ticketid"] = ExpressionConverter.ConvertO(__workflow_bodyticketid);
                     bodypropCount++;
                 }
 
@@ -233,23 +239,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseroninvoice")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateInvoicePositionNote))]
-        public IBodyWorkflowAction<CreateInvoicePositionNoteResponse> CreateInvoicePositionNote([WorkflowExpression] Func<string> bodydateFrom, [WorkflowExpression] Func<string> bodydateTo, [WorkflowExpression] Func<int> bodypause = null, [WorkflowExpression] Func<bool> bodynoInvoice = null, [WorkflowExpression] Func<bool> bodyextraCharge = null, [WorkflowExpression] Func<string> bodyhint = null, [WorkflowExpression] Func<string> bodyserviceContractId = null, [WorkflowExpression] Func<string> bodyuserName = null)
+        public IBodyWorkflowAction<CreateInvoicePositionNoteResponse> CreateInvoicePositionNote(Expression<Func<string>> bodydateFrom, Expression<Func<string>> bodydateTo, Expression<Func<int>> bodypause = null, Expression<Func<bool>> bodynoInvoice = null, Expression<Func<bool>> bodyextraCharge = null, Expression<Func<string>> bodyhint = null, Expression<Func<string>> bodyserviceContractId = null, Expression<Func<string>> bodyuserName = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateInvoicePositionNoteResponse> __BuildCreateInvoicePositionNote(WorkflowExpression<string> bodydateFrom, WorkflowExpression<string> bodydateTo, WorkflowExpression<int> bodypause = null, WorkflowExpression<bool> bodynoInvoice = null, WorkflowExpression<bool> bodyextraCharge = null, WorkflowExpression<string> bodyhint = null, WorkflowExpression<string> bodyserviceContractId = null, WorkflowExpression<string> bodyuserName = null)
-        {
-            WorkflowExpression.Validate(bodydateFrom, nameof(bodydateFrom), required: true);
-            WorkflowExpression.Validate(bodydateTo, nameof(bodydateTo), required: true);
-            WorkflowExpression.Validate(bodypause, nameof(bodypause), required: false);
-            WorkflowExpression.Validate(bodynoInvoice, nameof(bodynoInvoice), required: false);
-            WorkflowExpression.Validate(bodyextraCharge, nameof(bodyextraCharge), required: false);
-            WorkflowExpression.Validate(bodyhint, nameof(bodyhint), required: false);
-            WorkflowExpression.Validate(bodyserviceContractId, nameof(bodyserviceContractId), required: false);
-            WorkflowExpression.Validate(bodyuserName, nameof(bodyuserName), required: false);
+            var __workflow_bodydateFrom = bodydateFrom == null ? null : WorkflowExpression.Compile(bodydateFrom);
+            WorkflowExpression.Validate(__workflow_bodydateFrom, nameof(bodydateFrom), required: true);
+            var __workflow_bodydateTo = bodydateTo == null ? null : WorkflowExpression.Compile(bodydateTo);
+            WorkflowExpression.Validate(__workflow_bodydateTo, nameof(bodydateTo), required: true);
+            var __workflow_bodypause = bodypause == null ? null : WorkflowExpression.Compile(bodypause);
+            WorkflowExpression.Validate(__workflow_bodypause, nameof(bodypause), required: false);
+            var __workflow_bodynoInvoice = bodynoInvoice == null ? null : WorkflowExpression.Compile(bodynoInvoice);
+            WorkflowExpression.Validate(__workflow_bodynoInvoice, nameof(bodynoInvoice), required: false);
+            var __workflow_bodyextraCharge = bodyextraCharge == null ? null : WorkflowExpression.Compile(bodyextraCharge);
+            WorkflowExpression.Validate(__workflow_bodyextraCharge, nameof(bodyextraCharge), required: false);
+            var __workflow_bodyhint = bodyhint == null ? null : WorkflowExpression.Compile(bodyhint);
+            WorkflowExpression.Validate(__workflow_bodyhint, nameof(bodyhint), required: false);
+            var __workflow_bodyserviceContractId = bodyserviceContractId == null ? null : WorkflowExpression.Compile(bodyserviceContractId);
+            WorkflowExpression.Validate(__workflow_bodyserviceContractId, nameof(bodyserviceContractId), required: false);
+            var __workflow_bodyuserName = bodyuserName == null ? null : WorkflowExpression.Compile(bodyuserName);
+            WorkflowExpression.Validate(__workflow_bodyuserName, nameof(bodyuserName), required: false);
             return new DeferredBodyAction<CreateInvoicePositionNoteResponse>(() =>
             {
                 var apiCallPath = "/CreateInvoicePositionNote";
@@ -258,20 +265,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["dateFrom"] = ExpressionConverter.ConvertO(bodydateFrom);
+                body["dateFrom"] = ExpressionConverter.ConvertO(__workflow_bodydateFrom);
                 bodypropCount++;
-                body["dateTo"] = ExpressionConverter.ConvertO(bodydateTo);
-                if (bodypause != null)
+                body["dateTo"] = ExpressionConverter.ConvertO(__workflow_bodydateTo);
+                if (__workflow_bodypause != null)
                 {
-                    body["pause"] = ExpressionConverter.ConvertO(bodypause);
+                    body["pause"] = ExpressionConverter.ConvertO(__workflow_bodypause);
                     bodypropCount++;
                 }
 
-                if (bodynoInvoice != null)
+                if (__workflow_bodynoInvoice != null)
                 {
-                    if (bodynoInvoice != null)
+                    if (__workflow_bodynoInvoice != null)
                     {
-                        body["noInvoice"] = ExpressionConverter.ConvertO(bodynoInvoice);
+                        body["noInvoice"] = ExpressionConverter.ConvertO(__workflow_bodynoInvoice);
                         bodypropCount++;
                     }
 
@@ -283,11 +290,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
                     bodypropCount++;
                 }
 
-                if (bodyextraCharge != null)
+                if (__workflow_bodyextraCharge != null)
                 {
-                    if (bodyextraCharge != null)
+                    if (__workflow_bodyextraCharge != null)
                     {
-                        body["extraCharge"] = ExpressionConverter.ConvertO(bodyextraCharge);
+                        body["extraCharge"] = ExpressionConverter.ConvertO(__workflow_bodyextraCharge);
                         bodypropCount++;
                     }
 
@@ -299,21 +306,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
                     bodypropCount++;
                 }
 
-                if (bodyhint != null)
+                if (__workflow_bodyhint != null)
                 {
-                    body["hint"] = ExpressionConverter.ConvertO(bodyhint);
+                    body["hint"] = ExpressionConverter.ConvertO(__workflow_bodyhint);
                     bodypropCount++;
                 }
 
-                if (bodyserviceContractId != null)
+                if (__workflow_bodyserviceContractId != null)
                 {
-                    body["serviceContractId"] = ExpressionConverter.ConvertO(bodyserviceContractId);
+                    body["serviceContractId"] = ExpressionConverter.ConvertO(__workflow_bodyserviceContractId);
                     bodypropCount++;
                 }
 
-                if (bodyuserName != null)
+                if (__workflow_bodyuserName != null)
                 {
-                    body["userName"] = ExpressionConverter.ConvertO(bodyuserName);
+                    body["userName"] = ExpressionConverter.ConvertO(__workflow_bodyuserName);
                     bodypropCount++;
                 }
 

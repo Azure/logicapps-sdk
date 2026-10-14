@@ -1,127 +1,103 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deckofcards
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class DeckofcardsActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deckofcards")]
-        [WorkflowExpressionFactory(nameof(__BuildCardGet))]
-        public IBodyWorkflowAction<CardGetResponse> CardGet([WorkflowExpression] Func<string> deckId, [WorkflowExpression] Func<string> cards, [WorkflowExpression] Func<int> count = null)
+        public IBodyWorkflowAction<CardGetResponse> CardGet(Expression<Func<string>> deckId, Expression<Func<string>> cards, Expression<Func<int>> count = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CardGetResponse> __BuildCardGet(WorkflowExpression<string> deckId, WorkflowExpression<string> cards, WorkflowExpression<int> count = null)
-        {
-            WorkflowExpression.Validate(deckId, nameof(deckId), required: true);
-            WorkflowExpression.Validate(cards, nameof(cards), required: true);
-            WorkflowExpression.Validate(count, nameof(count), required: false);
+            var __workflow_deckId = deckId == null ? null : WorkflowExpression.Compile(deckId);
+            WorkflowExpression.Validate(__workflow_deckId, nameof(deckId), required: true);
+            var __workflow_cards = cards == null ? null : WorkflowExpression.Compile(cards);
+            WorkflowExpression.Validate(__workflow_cards, nameof(cards), required: true);
+            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
+            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
             return new DeferredBodyAction<CardGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/deck/{0}/draw/", ExpressionConverter.ConvertWithUrlEncoding(deckId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/deck/{0}/draw/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_deckId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (count != null)
-                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-                callPayload.Queries["cards"] = ExpressionConverter.Convert(cards);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
+                callPayload.Queries["cards"] = ExpressionConverter.Convert(__workflow_cards);
                 return new ApiConnectionAction<CardGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deckofcards")]
-        [WorkflowExpressionFactory(nameof(__BuildShuffleGet))]
-        public IBodyWorkflowAction<ShuffleGetResponse> ShuffleGet([WorkflowExpression] Func<int> deckCount = null, [WorkflowExpression] Func<string> cards = null)
+        public IBodyWorkflowAction<ShuffleGetResponse> ShuffleGet(Expression<Func<int>> deckCount = null, Expression<Func<string>> cards = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ShuffleGetResponse> __BuildShuffleGet(WorkflowExpression<int> deckCount = null, WorkflowExpression<string> cards = null)
-        {
-            WorkflowExpression.Validate(deckCount, nameof(deckCount), required: false);
-            WorkflowExpression.Validate(cards, nameof(cards), required: false);
+            var __workflow_deckCount = deckCount == null ? null : WorkflowExpression.Compile(deckCount);
+            WorkflowExpression.Validate(__workflow_deckCount, nameof(deckCount), required: false);
+            var __workflow_cards = cards == null ? null : WorkflowExpression.Compile(cards);
+            WorkflowExpression.Validate(__workflow_cards, nameof(cards), required: false);
             return new DeferredBodyAction<ShuffleGetResponse>(() =>
             {
                 var apiCallPath = "/deck/new/shuffle/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (deckCount != null)
-                    callPayload.Queries["deck_count"] = ExpressionConverter.Convert(deckCount);
-                if (cards != null)
-                    callPayload.Queries["cards"] = ExpressionConverter.Convert(cards);
+                if (__workflow_deckCount != null)
+                    callPayload.Queries["deck_count"] = ExpressionConverter.Convert(__workflow_deckCount);
+                if (__workflow_cards != null)
+                    callPayload.Queries["cards"] = ExpressionConverter.Convert(__workflow_cards);
                 return new ApiConnectionAction<ShuffleGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deckofcards")]
-        [WorkflowExpressionFactory(nameof(__BuildReshuffleGet))]
-        public IBodyWorkflowAction<ReshuffleGetResponse> ReshuffleGet([WorkflowExpression] Func<string> deckId, [WorkflowExpression] Func<bool> remaining = null)
+        public IBodyWorkflowAction<ReshuffleGetResponse> ReshuffleGet(Expression<Func<string>> deckId, Expression<Func<bool>> remaining = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ReshuffleGetResponse> __BuildReshuffleGet(WorkflowExpression<string> deckId, WorkflowExpression<bool> remaining = null)
-        {
-            WorkflowExpression.Validate(deckId, nameof(deckId), required: true);
-            WorkflowExpression.Validate(remaining, nameof(remaining), required: false);
+            var __workflow_deckId = deckId == null ? null : WorkflowExpression.Compile(deckId);
+            WorkflowExpression.Validate(__workflow_deckId, nameof(deckId), required: true);
+            var __workflow_remaining = remaining == null ? null : WorkflowExpression.Compile(remaining);
+            WorkflowExpression.Validate(__workflow_remaining, nameof(remaining), required: false);
             return new DeferredBodyAction<ReshuffleGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/deck/{0}/shuffle/", ExpressionConverter.ConvertWithUrlEncoding(deckId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/deck/{0}/shuffle/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_deckId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (remaining != null)
-                    callPayload.Queries["remaining"] = ExpressionConverter.Convert(remaining);
+                if (__workflow_remaining != null)
+                    callPayload.Queries["remaining"] = ExpressionConverter.Convert(__workflow_remaining);
                 return new ApiConnectionAction<ReshuffleGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deckofcards")]
-        [WorkflowExpressionFactory(nameof(__BuildPileGet))]
-        public IBodyWorkflowAction<PileGetResponse> PileGet([WorkflowExpression] Func<string> deckId, [WorkflowExpression] Func<string> pileName, [WorkflowExpression] Func<string> cards)
+        public IBodyWorkflowAction<PileGetResponse> PileGet(Expression<Func<string>> deckId, Expression<Func<string>> pileName, Expression<Func<string>> cards)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PileGetResponse> __BuildPileGet(WorkflowExpression<string> deckId, WorkflowExpression<string> pileName, WorkflowExpression<string> cards)
-        {
-            WorkflowExpression.Validate(deckId, nameof(deckId), required: true);
-            WorkflowExpression.Validate(pileName, nameof(pileName), required: true);
-            WorkflowExpression.Validate(cards, nameof(cards), required: true);
+            var __workflow_deckId = deckId == null ? null : WorkflowExpression.Compile(deckId);
+            WorkflowExpression.Validate(__workflow_deckId, nameof(deckId), required: true);
+            var __workflow_pileName = pileName == null ? null : WorkflowExpression.Compile(pileName);
+            WorkflowExpression.Validate(__workflow_pileName, nameof(pileName), required: true);
+            var __workflow_cards = cards == null ? null : WorkflowExpression.Compile(cards);
+            WorkflowExpression.Validate(__workflow_cards, nameof(cards), required: true);
             return new DeferredBodyAction<PileGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/deck/{0}/pile/{1}/add/", ExpressionConverter.ConvertWithUrlEncoding(deckId, 1), ExpressionConverter.ConvertWithUrlEncoding(pileName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/deck/{0}/pile/{1}/add/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_deckId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_pileName, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["cards"] = ExpressionConverter.Convert(cards);
+                callPayload.Queries["cards"] = ExpressionConverter.Convert(__workflow_cards);
                 return new ApiConnectionAction<PileGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deckofcards")]
-        [WorkflowExpressionFactory(nameof(__BuildShufflePileGet))]
-        public IBodyWorkflowAction<ShufflePileGetResponse> ShufflePileGet([WorkflowExpression] Func<string> deckId, [WorkflowExpression] Func<string> pileName)
+        public IBodyWorkflowAction<ShufflePileGetResponse> ShufflePileGet(Expression<Func<string>> deckId, Expression<Func<string>> pileName)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ShufflePileGetResponse> __BuildShufflePileGet(WorkflowExpression<string> deckId, WorkflowExpression<string> pileName)
-        {
-            WorkflowExpression.Validate(deckId, nameof(deckId), required: true);
-            WorkflowExpression.Validate(pileName, nameof(pileName), required: true);
+            var __workflow_deckId = deckId == null ? null : WorkflowExpression.Compile(deckId);
+            WorkflowExpression.Validate(__workflow_deckId, nameof(deckId), required: true);
+            var __workflow_pileName = pileName == null ? null : WorkflowExpression.Compile(pileName);
+            WorkflowExpression.Validate(__workflow_pileName, nameof(pileName), required: true);
             return new DeferredBodyAction<ShufflePileGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/deck/{0}/pile/{1}/shuffle/", ExpressionConverter.ConvertWithUrlEncoding(deckId, 1), ExpressionConverter.ConvertWithUrlEncoding(pileName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/deck/{0}/pile/{1}/shuffle/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_deckId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_pileName, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ShufflePileGetResponse>(callPayload);
@@ -129,47 +105,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deckofcards
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deckofcards")]
-        [WorkflowExpressionFactory(nameof(__BuildDrawPileGet))]
-        public IBodyWorkflowAction<DrawPileGetResponse> DrawPileGet([WorkflowExpression] Func<string> deckId, [WorkflowExpression] Func<string> pileName, [WorkflowExpression] Func<int> count = null)
+        public IBodyWorkflowAction<DrawPileGetResponse> DrawPileGet(Expression<Func<string>> deckId, Expression<Func<string>> pileName, Expression<Func<int>> count = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DrawPileGetResponse> __BuildDrawPileGet(WorkflowExpression<string> deckId, WorkflowExpression<string> pileName, WorkflowExpression<int> count = null)
-        {
-            WorkflowExpression.Validate(deckId, nameof(deckId), required: true);
-            WorkflowExpression.Validate(pileName, nameof(pileName), required: true);
-            WorkflowExpression.Validate(count, nameof(count), required: false);
+            var __workflow_deckId = deckId == null ? null : WorkflowExpression.Compile(deckId);
+            WorkflowExpression.Validate(__workflow_deckId, nameof(deckId), required: true);
+            var __workflow_pileName = pileName == null ? null : WorkflowExpression.Compile(pileName);
+            WorkflowExpression.Validate(__workflow_pileName, nameof(pileName), required: true);
+            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
+            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
             return new DeferredBodyAction<DrawPileGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/deck/{0}/pile/{1}/draw/", ExpressionConverter.ConvertWithUrlEncoding(deckId, 1), ExpressionConverter.ConvertWithUrlEncoding(pileName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/deck/{0}/pile/{1}/draw/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_deckId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_pileName, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (count != null)
-                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                if (__workflow_count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
                 return new ApiConnectionAction<DrawPileGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deckofcards")]
-        [WorkflowExpressionFactory(nameof(__BuildReturnGet))]
-        public IBodyWorkflowAction<ReturnGetResponse> ReturnGet([WorkflowExpression] Func<string> deckId, [WorkflowExpression] Func<string> cards)
+        public IBodyWorkflowAction<ReturnGetResponse> ReturnGet(Expression<Func<string>> deckId, Expression<Func<string>> cards)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ReturnGetResponse> __BuildReturnGet(WorkflowExpression<string> deckId, WorkflowExpression<string> cards)
-        {
-            WorkflowExpression.Validate(deckId, nameof(deckId), required: true);
-            WorkflowExpression.Validate(cards, nameof(cards), required: true);
+            var __workflow_deckId = deckId == null ? null : WorkflowExpression.Compile(deckId);
+            WorkflowExpression.Validate(__workflow_deckId, nameof(deckId), required: true);
+            var __workflow_cards = cards == null ? null : WorkflowExpression.Compile(cards);
+            WorkflowExpression.Validate(__workflow_cards, nameof(cards), required: true);
             return new DeferredBodyAction<ReturnGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/deck/{0}/return/", ExpressionConverter.ConvertWithUrlEncoding(deckId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/deck/{0}/return/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_deckId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["cards"] = ExpressionConverter.Convert(cards);
+                callPayload.Queries["cards"] = ExpressionConverter.Convert(__workflow_cards);
                 return new ApiConnectionAction<ReturnGetResponse>(callPayload);
             });
         }

@@ -1,12 +1,12 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bttnone
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class BttnoneActions([ConnectionName] string connectionId)
     {
@@ -14,17 +14,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bttnone
 
     public class BttnoneTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildBttnWebhook))]
-        public IBodyWorkflowTrigger<BttnWebhookResponse> BttnWebhook([WorkflowExpression] Func<string> bodyactionConfigId,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BttnWebhookResponse> BttnWebhook(Expression<Func<string>> bodyactionConfigId, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<BttnWebhookResponse> __BuildBttnWebhook(WorkflowExpression<string> bodyactionConfigId,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodyactionConfigId, nameof(bodyactionConfigId), required: true);
+            var __workflow_bodyactionConfigId = bodyactionConfigId == null ? null : WorkflowExpression.Compile(bodyactionConfigId);
+            WorkflowExpression.Validate(__workflow_bodyactionConfigId, nameof(bodyactionConfigId), required: true);
             return new DeferredBodyTrigger<BttnWebhookResponse>(() =>
             {
                 var apiCallPath = "/api/action/1/powerAutomate/addWebhook";
@@ -33,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bttnone
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["actionConfigId"] = ExpressionConverter.ConvertO(bodyactionConfigId);
+                body["actionConfigId"] = ExpressionConverter.ConvertO(__workflow_bodyactionConfigId);
                 body["hookUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)

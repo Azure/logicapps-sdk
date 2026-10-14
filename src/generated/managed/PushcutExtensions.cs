@@ -1,59 +1,56 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushcut
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class PushcutActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pushcut")]
-        [WorkflowExpressionFactory(nameof(__BuildSendNotification))]
-        public IWorkflowAction SendNotification([WorkflowExpression] Func<string> notificationName, [WorkflowExpression] Func<string> bodydynamicText = null, [WorkflowExpression] Func<string> bodydynamicTitle = null, [WorkflowExpression] Func<string> bodyinputParameter = null, [WorkflowExpression] Func<string[]> bodydevices = null)
+        public IWorkflowAction SendNotification(Expression<Func<string>> notificationName, Expression<Func<string>> bodydynamicText = null, Expression<Func<string>> bodydynamicTitle = null, Expression<Func<string>> bodyinputParameter = null, Expression<Func<string[]>> bodydevices = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildSendNotification(WorkflowExpression<string> notificationName, WorkflowExpression<string> bodydynamicText = null, WorkflowExpression<string> bodydynamicTitle = null, WorkflowExpression<string> bodyinputParameter = null, WorkflowExpression<string[]> bodydevices = null)
-        {
-            WorkflowExpression.Validate(notificationName, nameof(notificationName), required: true);
-            WorkflowExpression.Validate(bodydynamicText, nameof(bodydynamicText), required: false);
-            WorkflowExpression.Validate(bodydynamicTitle, nameof(bodydynamicTitle), required: false);
-            WorkflowExpression.Validate(bodyinputParameter, nameof(bodyinputParameter), required: false);
-            WorkflowExpression.Validate(bodydevices, nameof(bodydevices), required: false);
+            var __workflow_notificationName = notificationName == null ? null : WorkflowExpression.Compile(notificationName);
+            WorkflowExpression.Validate(__workflow_notificationName, nameof(notificationName), required: true);
+            var __workflow_bodydynamicText = bodydynamicText == null ? null : WorkflowExpression.Compile(bodydynamicText);
+            WorkflowExpression.Validate(__workflow_bodydynamicText, nameof(bodydynamicText), required: false);
+            var __workflow_bodydynamicTitle = bodydynamicTitle == null ? null : WorkflowExpression.Compile(bodydynamicTitle);
+            WorkflowExpression.Validate(__workflow_bodydynamicTitle, nameof(bodydynamicTitle), required: false);
+            var __workflow_bodyinputParameter = bodyinputParameter == null ? null : WorkflowExpression.Compile(bodyinputParameter);
+            WorkflowExpression.Validate(__workflow_bodyinputParameter, nameof(bodyinputParameter), required: false);
+            var __workflow_bodydevices = bodydevices == null ? null : WorkflowExpression.Compile(bodydevices);
+            WorkflowExpression.Validate(__workflow_bodydevices, nameof(bodydevices), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/notifications/{0}", ExpressionConverter.ConvertWithUrlEncoding(notificationName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/notifications/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_notificationName, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodydynamicText != null)
+                if (__workflow_bodydynamicText != null)
                 {
-                    body["text"] = ExpressionConverter.ConvertO(bodydynamicText);
+                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodydynamicText);
                     bodypropCount++;
                 }
 
-                if (bodydynamicTitle != null)
+                if (__workflow_bodydynamicTitle != null)
                 {
-                    body["title"] = ExpressionConverter.ConvertO(bodydynamicTitle);
+                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodydynamicTitle);
                     bodypropCount++;
                 }
 
-                if (bodyinputParameter != null)
+                if (__workflow_bodyinputParameter != null)
                 {
-                    body["input"] = ExpressionConverter.ConvertO(bodyinputParameter);
+                    body["input"] = ExpressionConverter.ConvertO(__workflow_bodyinputParameter);
                     bodypropCount++;
                 }
 
-                if (bodydevices != null)
+                if (__workflow_bodydevices != null)
                 {
-                    body["devices"] = ExpressionConverter.ConvertO(bodydevices);
+                    body["devices"] = ExpressionConverter.ConvertO(__workflow_bodydevices);
                     bodypropCount++;
                 }
 
@@ -69,17 +66,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushcut
 
     public class PushcutTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildActionExecuted))]
-        public IWorkflowTrigger ActionExecuted([WorkflowExpression] Func<string> bodyactionName,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ActionExecuted(Expression<Func<string>> bodyactionName, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildActionExecuted(WorkflowExpression<string> bodyactionName,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodyactionName, nameof(bodyactionName), required: true);
+            var __workflow_bodyactionName = bodyactionName == null ? null : WorkflowExpression.Compile(bodyactionName);
+            WorkflowExpression.Validate(__workflow_bodyactionName, nameof(bodyactionName), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/subscriptions";
@@ -88,7 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushcut
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["actionName"] = ExpressionConverter.ConvertO(bodyactionName);
+                body["actionName"] = ExpressionConverter.ConvertO(__workflow_bodyactionName);
                 body["url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)

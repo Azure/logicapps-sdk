@@ -1,48 +1,46 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aspsms
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class AspsmsActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aspsms")]
-        [WorkflowExpressionFactory(nameof(__BuildSendSimpleSMS))]
-        public IBodyWorkflowAction<SendSimpleSMSResponse> SendSimpleSMS([WorkflowExpression] Func<string> mSISDN, [WorkflowExpression] Func<string> messageData, [WorkflowExpression] Func<string> originator = null, [WorkflowExpression] Func<int> lifeTime = null, [WorkflowExpression] Func<string> deferredDeliveryTime = null, [WorkflowExpression] Func<string> transactionReferenceNumber = null)
+        public IBodyWorkflowAction<SendSimpleSMSResponse> SendSimpleSMS(Expression<Func<string>> mSISDN, Expression<Func<string>> messageData, Expression<Func<string>> originator = null, Expression<Func<int>> lifeTime = null, Expression<Func<string>> deferredDeliveryTime = null, Expression<Func<string>> transactionReferenceNumber = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SendSimpleSMSResponse> __BuildSendSimpleSMS(WorkflowExpression<string> mSISDN, WorkflowExpression<string> messageData, WorkflowExpression<string> originator = null, WorkflowExpression<int> lifeTime = null, WorkflowExpression<string> deferredDeliveryTime = null, WorkflowExpression<string> transactionReferenceNumber = null)
-        {
-            WorkflowExpression.Validate(mSISDN, nameof(mSISDN), required: true);
-            WorkflowExpression.Validate(messageData, nameof(messageData), required: true);
-            WorkflowExpression.Validate(originator, nameof(originator), required: false);
-            WorkflowExpression.Validate(lifeTime, nameof(lifeTime), required: false);
-            WorkflowExpression.Validate(deferredDeliveryTime, nameof(deferredDeliveryTime), required: false);
-            WorkflowExpression.Validate(transactionReferenceNumber, nameof(transactionReferenceNumber), required: false);
+            var __workflow_mSISDN = mSISDN == null ? null : WorkflowExpression.Compile(mSISDN);
+            WorkflowExpression.Validate(__workflow_mSISDN, nameof(mSISDN), required: true);
+            var __workflow_messageData = messageData == null ? null : WorkflowExpression.Compile(messageData);
+            WorkflowExpression.Validate(__workflow_messageData, nameof(messageData), required: true);
+            var __workflow_originator = originator == null ? null : WorkflowExpression.Compile(originator);
+            WorkflowExpression.Validate(__workflow_originator, nameof(originator), required: false);
+            var __workflow_lifeTime = lifeTime == null ? null : WorkflowExpression.Compile(lifeTime);
+            WorkflowExpression.Validate(__workflow_lifeTime, nameof(lifeTime), required: false);
+            var __workflow_deferredDeliveryTime = deferredDeliveryTime == null ? null : WorkflowExpression.Compile(deferredDeliveryTime);
+            WorkflowExpression.Validate(__workflow_deferredDeliveryTime, nameof(deferredDeliveryTime), required: false);
+            var __workflow_transactionReferenceNumber = transactionReferenceNumber == null ? null : WorkflowExpression.Compile(transactionReferenceNumber);
+            WorkflowExpression.Validate(__workflow_transactionReferenceNumber, nameof(transactionReferenceNumber), required: false);
             return new DeferredBodyAction<SendSimpleSMSResponse>(() =>
             {
                 var apiCallPath = "/SendSimpleSMS";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["MSISDN"] = ExpressionConverter.Convert(mSISDN);
+                callPayload.Queries["MSISDN"] = ExpressionConverter.Convert(__workflow_mSISDN);
                 callPayload.Queries["Operation"] = Convert.ToString("SendTextSMS");
-                callPayload.Queries["MessageData"] = ExpressionConverter.Convert(messageData);
-                if (originator != null)
-                    callPayload.Queries["Originator"] = ExpressionConverter.Convert(originator);
-                if (lifeTime != null)
-                    callPayload.Queries["LifeTime"] = ExpressionConverter.Convert(lifeTime);
-                if (deferredDeliveryTime != null)
-                    callPayload.Queries["DeferredDeliveryTime"] = ExpressionConverter.Convert(deferredDeliveryTime);
-                if (transactionReferenceNumber != null)
-                    callPayload.Queries["TransactionReferenceNumber"] = ExpressionConverter.Convert(transactionReferenceNumber);
+                callPayload.Queries["MessageData"] = ExpressionConverter.Convert(__workflow_messageData);
+                if (__workflow_originator != null)
+                    callPayload.Queries["Originator"] = ExpressionConverter.Convert(__workflow_originator);
+                if (__workflow_lifeTime != null)
+                    callPayload.Queries["LifeTime"] = ExpressionConverter.Convert(__workflow_lifeTime);
+                if (__workflow_deferredDeliveryTime != null)
+                    callPayload.Queries["DeferredDeliveryTime"] = ExpressionConverter.Convert(__workflow_deferredDeliveryTime);
+                if (__workflow_transactionReferenceNumber != null)
+                    callPayload.Queries["TransactionReferenceNumber"] = ExpressionConverter.Convert(__workflow_transactionReferenceNumber);
                 return new ApiConnectionAction<SendSimpleSMSResponse>(callPayload);
             });
         }

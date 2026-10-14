@@ -2,6 +2,7 @@
 namespace Microsoft.Azure.Workflows.Sdk.Tests
 {
     using System.Reflection;
+    using System.Linq.Expressions;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
     using Xunit;
@@ -9,21 +10,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
     public class GeneratedSdkContractTests
     {
         [Fact]
-        public void AllFactoriesHaveDescriptorEntriesAndNoDelegateTransport()
+        public void AllGeneratedFactoriesUseExpressionTreesWithoutHiddenEntries()
         {
             var methods = typeof(WorkflowActions).Assembly.GetTypes().SelectMany(type => type.GetMethods())
-                .Where(method => method.GetCustomAttribute<WorkflowExpressionFactoryAttribute>() != null).ToArray();
+                .Where(method => method.GetParameters().Any(parameter =>
+                    parameter.ParameterType.IsGenericType &&
+                    parameter.ParameterType.GetGenericTypeDefinition() == typeof(Expression<>)))
+                .ToArray();
             Assert.True(methods.Length > 10000);
-            foreach (var method in methods)
-            {
-                var entry = method.GetCustomAttribute<WorkflowExpressionFactoryAttribute>().EntryPoint;
-                var descriptors = method.DeclaringType.GetMethods()
-                    .Where(candidate => candidate.Name == entry &&
-                        candidate.GetParameters().Length == method.GetParameters().Length)
-                    .ToArray();
-                Assert.NotEmpty(descriptors);
-                Assert.All(descriptors, descriptor => Assert.Null(descriptor.GetCustomAttribute<ConnectorOperationAttribute>()));
-            }
+            Assert.DoesNotContain(
+                typeof(WorkflowActions).Assembly.GetTypes().SelectMany(type => type.GetMethods()),
+                method => method.Name.StartsWith("__Build", StringComparison.Ordinal));
+            Assert.All(methods, method => Assert.DoesNotContain(
+                method.GetParameters(),
+                parameter => parameter.ParameterType.IsGenericType &&
+                    parameter.ParameterType.GetGenericTypeDefinition() == typeof(WorkflowExpression<>)));
         }
 
         [Fact]

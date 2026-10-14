@@ -1,33 +1,26 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Benchmarkemail
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class BenchmarkemailActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "benchmarkemail")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateContactList))]
-        public IBodyWorkflowAction<string> CreateContactList([WorkflowExpression] Func<string> listName)
+        public IBodyWorkflowAction<string> CreateContactList(Expression<Func<string>> listName)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildCreateContactList(WorkflowExpression<string> listName)
-        {
-            WorkflowExpression.Validate(listName, nameof(listName), required: true);
+            var __workflow_listName = listName == null ? null : WorkflowExpression.Compile(listName);
+            WorkflowExpression.Validate(__workflow_listName, nameof(listName), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/listCreate/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["listName"] = ExpressionConverter.Convert(listName);
+                callPayload.Queries["listName"] = ExpressionConverter.Convert(__workflow_listName);
                 callPayload.Queries["output"] = Convert.ToString("json");
                 callPayload.Queries["method"] = Convert.ToString("listCreate");
                 return new ApiConnectionAction<string>(callPayload);
@@ -35,23 +28,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Benchmarkemail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "benchmarkemail")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateContact))]
-        public IBodyWorkflowAction<int> CreateContact([WorkflowExpression] Func<string> listID, [WorkflowExpression] Func<string> email, [WorkflowExpression] Func<string> firstName = null, [WorkflowExpression] Func<string> middleName = null, [WorkflowExpression] Func<string> lastName = null, [WorkflowExpression] Func<string> jobTitle = null, [WorkflowExpression] Func<string> phone = null, [WorkflowExpression] Func<string> notes = null)
+        public IBodyWorkflowAction<int> CreateContact(Expression<Func<string>> listID, Expression<Func<string>> email, Expression<Func<string>> firstName = null, Expression<Func<string>> middleName = null, Expression<Func<string>> lastName = null, Expression<Func<string>> jobTitle = null, Expression<Func<string>> phone = null, Expression<Func<string>> notes = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<int> __BuildCreateContact(WorkflowExpression<string> listID, WorkflowExpression<string> email, WorkflowExpression<string> firstName = null, WorkflowExpression<string> middleName = null, WorkflowExpression<string> lastName = null, WorkflowExpression<string> jobTitle = null, WorkflowExpression<string> phone = null, WorkflowExpression<string> notes = null)
-        {
-            WorkflowExpression.Validate(listID, nameof(listID), required: true);
-            WorkflowExpression.Validate(email, nameof(email), required: true);
-            WorkflowExpression.Validate(firstName, nameof(firstName), required: false);
-            WorkflowExpression.Validate(middleName, nameof(middleName), required: false);
-            WorkflowExpression.Validate(lastName, nameof(lastName), required: false);
-            WorkflowExpression.Validate(jobTitle, nameof(jobTitle), required: false);
-            WorkflowExpression.Validate(phone, nameof(phone), required: false);
-            WorkflowExpression.Validate(notes, nameof(notes), required: false);
+            var __workflow_listID = listID == null ? null : WorkflowExpression.Compile(listID);
+            WorkflowExpression.Validate(__workflow_listID, nameof(listID), required: true);
+            var __workflow_email = email == null ? null : WorkflowExpression.Compile(email);
+            WorkflowExpression.Validate(__workflow_email, nameof(email), required: true);
+            var __workflow_firstName = firstName == null ? null : WorkflowExpression.Compile(firstName);
+            WorkflowExpression.Validate(__workflow_firstName, nameof(firstName), required: false);
+            var __workflow_middleName = middleName == null ? null : WorkflowExpression.Compile(middleName);
+            WorkflowExpression.Validate(__workflow_middleName, nameof(middleName), required: false);
+            var __workflow_lastName = lastName == null ? null : WorkflowExpression.Compile(lastName);
+            WorkflowExpression.Validate(__workflow_lastName, nameof(lastName), required: false);
+            var __workflow_jobTitle = jobTitle == null ? null : WorkflowExpression.Compile(jobTitle);
+            WorkflowExpression.Validate(__workflow_jobTitle, nameof(jobTitle), required: false);
+            var __workflow_phone = phone == null ? null : WorkflowExpression.Compile(phone);
+            WorkflowExpression.Validate(__workflow_phone, nameof(phone), required: false);
+            var __workflow_notes = notes == null ? null : WorkflowExpression.Compile(notes);
+            WorkflowExpression.Validate(__workflow_notes, nameof(notes), required: false);
             return new DeferredBodyAction<int>(() =>
             {
                 var apiCallPath = "/listAddContacts/";
@@ -59,20 +53,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Benchmarkemail
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["output"] = Convert.ToString("json");
                 callPayload.Queries["method"] = Convert.ToString("listAddContacts");
-                callPayload.Queries["listID"] = ExpressionConverter.Convert(listID);
-                callPayload.Queries["Email"] = ExpressionConverter.Convert(email);
-                if (firstName != null)
-                    callPayload.Queries["FirstName"] = ExpressionConverter.Convert(firstName);
-                if (middleName != null)
-                    callPayload.Queries["MiddleName"] = ExpressionConverter.Convert(middleName);
-                if (lastName != null)
-                    callPayload.Queries["LastName"] = ExpressionConverter.Convert(lastName);
-                if (jobTitle != null)
-                    callPayload.Queries["JobTitle"] = ExpressionConverter.Convert(jobTitle);
-                if (phone != null)
-                    callPayload.Queries["Phone"] = ExpressionConverter.Convert(phone);
-                if (notes != null)
-                    callPayload.Queries["Notes"] = ExpressionConverter.Convert(notes);
+                callPayload.Queries["listID"] = ExpressionConverter.Convert(__workflow_listID);
+                callPayload.Queries["Email"] = ExpressionConverter.Convert(__workflow_email);
+                if (__workflow_firstName != null)
+                    callPayload.Queries["FirstName"] = ExpressionConverter.Convert(__workflow_firstName);
+                if (__workflow_middleName != null)
+                    callPayload.Queries["MiddleName"] = ExpressionConverter.Convert(__workflow_middleName);
+                if (__workflow_lastName != null)
+                    callPayload.Queries["LastName"] = ExpressionConverter.Convert(__workflow_lastName);
+                if (__workflow_jobTitle != null)
+                    callPayload.Queries["JobTitle"] = ExpressionConverter.Convert(__workflow_jobTitle);
+                if (__workflow_phone != null)
+                    callPayload.Queries["Phone"] = ExpressionConverter.Convert(__workflow_phone);
+                if (__workflow_notes != null)
+                    callPayload.Queries["Notes"] = ExpressionConverter.Convert(__workflow_notes);
                 return new ApiConnectionAction<int>(callPayload);
             });
         }

@@ -1,27 +1,20 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class EwaycrmActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteCompany))]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesResponseBase> DeleteCompany([WorkflowExpression] Func<string> deleteCompanyWrapperitemGuid = null)
+        public IBodyWorkflowAction<EWayWcfServiceResponsesResponseBase> DeleteCompany(Expression<Func<string>> deleteCompanyWrapperitemGuid = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesResponseBase> __BuildDeleteCompany(WorkflowExpression<string> deleteCompanyWrapperitemGuid = null)
-        {
-            WorkflowExpression.Validate(deleteCompanyWrapperitemGuid, nameof(deleteCompanyWrapperitemGuid), required: false);
+            var __workflow_deleteCompanyWrapperitemGuid = deleteCompanyWrapperitemGuid == null ? null : WorkflowExpression.Compile(deleteCompanyWrapperitemGuid);
+            WorkflowExpression.Validate(__workflow_deleteCompanyWrapperitemGuid, nameof(deleteCompanyWrapperitemGuid), required: false);
             return new DeferredBodyAction<EWayWcfServiceResponsesResponseBase>(() =>
             {
                 var apiCallPath = "/DeleteCompany";
@@ -29,9 +22,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var deleteCompanyWrapper = new JObject();
                 var deleteCompanyWrapperpropCount = 0;
-                if (deleteCompanyWrapperitemGuid != null)
+                if (__workflow_deleteCompanyWrapperitemGuid != null)
                 {
-                    deleteCompanyWrapper["itemGuid"] = ExpressionConverter.ConvertO(deleteCompanyWrapperitemGuid);
+                    deleteCompanyWrapper["itemGuid"] = ExpressionConverter.ConvertO(__workflow_deleteCompanyWrapperitemGuid);
                     deleteCompanyWrapperpropCount++;
                 }
 
@@ -45,16 +38,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteContact))]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesResponseBase> DeleteContact([WorkflowExpression] Func<string> deleteContactWrapperitemGuid = null)
+        public IBodyWorkflowAction<EWayWcfServiceResponsesResponseBase> DeleteContact(Expression<Func<string>> deleteContactWrapperitemGuid = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesResponseBase> __BuildDeleteContact(WorkflowExpression<string> deleteContactWrapperitemGuid = null)
-        {
-            WorkflowExpression.Validate(deleteContactWrapperitemGuid, nameof(deleteContactWrapperitemGuid), required: false);
+            var __workflow_deleteContactWrapperitemGuid = deleteContactWrapperitemGuid == null ? null : WorkflowExpression.Compile(deleteContactWrapperitemGuid);
+            WorkflowExpression.Validate(__workflow_deleteContactWrapperitemGuid, nameof(deleteContactWrapperitemGuid), required: false);
             return new DeferredBodyAction<EWayWcfServiceResponsesResponseBase>(() =>
             {
                 var apiCallPath = "/DeleteContact";
@@ -62,9 +49,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var deleteContactWrapper = new JObject();
                 var deleteContactWrapperpropCount = 0;
-                if (deleteContactWrapperitemGuid != null)
+                if (__workflow_deleteContactWrapperitemGuid != null)
                 {
-                    deleteContactWrapper["itemGuid"] = ExpressionConverter.ConvertO(deleteContactWrapperitemGuid);
+                    deleteContactWrapper["itemGuid"] = ExpressionConverter.ConvertO(__workflow_deleteContactWrapperitemGuid);
                     deleteContactWrapperpropCount++;
                 }
 
@@ -78,16 +65,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteJournal))]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesResponseBase> DeleteJournal([WorkflowExpression] Func<string> deleteJournalWrapperitemGuid = null)
+        public IBodyWorkflowAction<EWayWcfServiceResponsesResponseBase> DeleteJournal(Expression<Func<string>> deleteJournalWrapperitemGuid = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesResponseBase> __BuildDeleteJournal(WorkflowExpression<string> deleteJournalWrapperitemGuid = null)
-        {
-            WorkflowExpression.Validate(deleteJournalWrapperitemGuid, nameof(deleteJournalWrapperitemGuid), required: false);
+            var __workflow_deleteJournalWrapperitemGuid = deleteJournalWrapperitemGuid == null ? null : WorkflowExpression.Compile(deleteJournalWrapperitemGuid);
+            WorkflowExpression.Validate(__workflow_deleteJournalWrapperitemGuid, nameof(deleteJournalWrapperitemGuid), required: false);
             return new DeferredBodyAction<EWayWcfServiceResponsesResponseBase>(() =>
             {
                 var apiCallPath = "/DeleteJournal";
@@ -95,9 +76,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var deleteJournalWrapper = new JObject();
                 var deleteJournalWrapperpropCount = 0;
-                if (deleteJournalWrapperitemGuid != null)
+                if (__workflow_deleteJournalWrapperitemGuid != null)
                 {
-                    deleteJournalWrapper["itemGuid"] = ExpressionConverter.ConvertO(deleteJournalWrapperitemGuid);
+                    deleteJournalWrapper["itemGuid"] = ExpressionConverter.ConvertO(__workflow_deleteJournalWrapperitemGuid);
                     deleteJournalWrapperpropCount++;
                 }
 
@@ -111,16 +92,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteLead))]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesResponseBase> DeleteLead([WorkflowExpression] Func<string> deleteLeadWrapperitemGuid = null)
+        public IBodyWorkflowAction<EWayWcfServiceResponsesResponseBase> DeleteLead(Expression<Func<string>> deleteLeadWrapperitemGuid = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesResponseBase> __BuildDeleteLead(WorkflowExpression<string> deleteLeadWrapperitemGuid = null)
-        {
-            WorkflowExpression.Validate(deleteLeadWrapperitemGuid, nameof(deleteLeadWrapperitemGuid), required: false);
+            var __workflow_deleteLeadWrapperitemGuid = deleteLeadWrapperitemGuid == null ? null : WorkflowExpression.Compile(deleteLeadWrapperitemGuid);
+            WorkflowExpression.Validate(__workflow_deleteLeadWrapperitemGuid, nameof(deleteLeadWrapperitemGuid), required: false);
             return new DeferredBodyAction<EWayWcfServiceResponsesResponseBase>(() =>
             {
                 var apiCallPath = "/DeleteLead";
@@ -128,9 +103,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var deleteLeadWrapper = new JObject();
                 var deleteLeadWrapperpropCount = 0;
-                if (deleteLeadWrapperitemGuid != null)
+                if (__workflow_deleteLeadWrapperitemGuid != null)
                 {
-                    deleteLeadWrapper["itemGuid"] = ExpressionConverter.ConvertO(deleteLeadWrapperitemGuid);
+                    deleteLeadWrapper["itemGuid"] = ExpressionConverter.ConvertO(__workflow_deleteLeadWrapperitemGuid);
                     deleteLeadWrapperpropCount++;
                 }
 
@@ -144,16 +119,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteProject))]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesResponseBase> DeleteProject([WorkflowExpression] Func<string> deleteProjectWrapperitemGuid = null)
+        public IBodyWorkflowAction<EWayWcfServiceResponsesResponseBase> DeleteProject(Expression<Func<string>> deleteProjectWrapperitemGuid = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesResponseBase> __BuildDeleteProject(WorkflowExpression<string> deleteProjectWrapperitemGuid = null)
-        {
-            WorkflowExpression.Validate(deleteProjectWrapperitemGuid, nameof(deleteProjectWrapperitemGuid), required: false);
+            var __workflow_deleteProjectWrapperitemGuid = deleteProjectWrapperitemGuid == null ? null : WorkflowExpression.Compile(deleteProjectWrapperitemGuid);
+            WorkflowExpression.Validate(__workflow_deleteProjectWrapperitemGuid, nameof(deleteProjectWrapperitemGuid), required: false);
             return new DeferredBodyAction<EWayWcfServiceResponsesResponseBase>(() =>
             {
                 var apiCallPath = "/DeleteProject";
@@ -161,9 +130,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var deleteProjectWrapper = new JObject();
                 var deleteProjectWrapperpropCount = 0;
-                if (deleteProjectWrapperitemGuid != null)
+                if (__workflow_deleteProjectWrapperitemGuid != null)
                 {
-                    deleteProjectWrapper["itemGuid"] = ExpressionConverter.ConvertO(deleteProjectWrapperitemGuid);
+                    deleteProjectWrapper["itemGuid"] = ExpressionConverter.ConvertO(__workflow_deleteProjectWrapperitemGuid);
                     deleteProjectWrapperpropCount++;
                 }
 
@@ -177,16 +146,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteTask))]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesResponseBase> DeleteTask([WorkflowExpression] Func<string> deleteTaskWrapperitemGuid = null)
+        public IBodyWorkflowAction<EWayWcfServiceResponsesResponseBase> DeleteTask(Expression<Func<string>> deleteTaskWrapperitemGuid = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesResponseBase> __BuildDeleteTask(WorkflowExpression<string> deleteTaskWrapperitemGuid = null)
-        {
-            WorkflowExpression.Validate(deleteTaskWrapperitemGuid, nameof(deleteTaskWrapperitemGuid), required: false);
+            var __workflow_deleteTaskWrapperitemGuid = deleteTaskWrapperitemGuid == null ? null : WorkflowExpression.Compile(deleteTaskWrapperitemGuid);
+            WorkflowExpression.Validate(__workflow_deleteTaskWrapperitemGuid, nameof(deleteTaskWrapperitemGuid), required: false);
             return new DeferredBodyAction<EWayWcfServiceResponsesResponseBase>(() =>
             {
                 var apiCallPath = "/DeleteTask";
@@ -194,9 +157,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var deleteTaskWrapper = new JObject();
                 var deleteTaskWrapperpropCount = 0;
-                if (deleteTaskWrapperitemGuid != null)
+                if (__workflow_deleteTaskWrapperitemGuid != null)
                 {
-                    deleteTaskWrapper["itemGuid"] = ExpressionConverter.ConvertO(deleteTaskWrapperitemGuid);
+                    deleteTaskWrapper["itemGuid"] = ExpressionConverter.ConvertO(__workflow_deleteTaskWrapperitemGuid);
                     deleteTaskWrapperpropCount++;
                 }
 
@@ -210,84 +173,146 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
-        [WorkflowExpressionFactory(nameof(__BuildSaveCompany))]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesSaveResponse> SaveCompany([WorkflowExpression] Func<string> saveCompanyWrappertransmitObjectaccountNumber = null, [WorkflowExpression] Func<string> saveCompanyWrappertransmitObjectaddress1POBox = null, [WorkflowExpression] Func<string> saveCompanyWrappertransmitObjectaddress1Street = null, [WorkflowExpression] Func<string> saveCompanyWrappertransmitObjectaddress1City = null, [WorkflowExpression] Func<string> saveCompanyWrappertransmitObjectaddress1State = null, [WorkflowExpression] Func<string> saveCompanyWrappertransmitObjectaddress1CountryEn = null, [WorkflowExpression] Func<string> saveCompanyWrappertransmitObjectaddress1PostalCode = null, [WorkflowExpression] Func<string> saveCompanyWrappertransmitObjectaddress2POBox = null, [WorkflowExpression] Func<string> saveCompanyWrappertransmitObjectaddress2Street = null, [WorkflowExpression] Func<string> saveCompanyWrappertransmitObjectaddress2City = null, [WorkflowExpression] Func<string> saveCompanyWrappertransmitObjectaddress2State = null, [WorkflowExpression] Func<string> saveCompanyWrappertransmitObjectaddress2CountryEn = null, [WorkflowExpression] Func<string> saveCompanyWrappertransmitObjectaddress2PostalCode = null, [WorkflowExpression] Func<string> saveCompanyWrappertransmitObjectaddress3POBox = null, [WorkflowExpression] Func<string> saveCompanyWrappertransmitObjectaddress3Street = null, [WorkflowExpression] Func<string> saveCompanyWrappertransmitObjectaddress3City = null, [WorkflowExpression] Func<string> saveCompanyWrappertransmitObjectaddress3State = null, [WorkflowExpression] Func<string> saveCompanyWrappertransmitObjectaddress3CountryEn = null, [WorkflowExpression] Func<string> saveCompanyWrappertransmitObjectaddress3PostalCode = null, [WorkflowExpression] Func<string> saveCompanyWrappertransmitObjectcompanyName = null, [WorkflowExpression] Func<string> saveCompanyWrappertransmitObjectdepartment = null, [WorkflowExpression] Func<string> saveCompanyWrappertransmitObjectemail = null, [WorkflowExpression] Func<int> saveCompanyWrappertransmitObjectemployeesCount = null, [WorkflowExpression] Func<string> saveCompanyWrappertransmitObjectfax = null, [WorkflowExpression] Func<string> saveCompanyWrappertransmitObjectfirstContactEn = null, [WorkflowExpression] Func<string> saveCompanyWrappertransmitObjectiCQ = null, [WorkflowExpression] Func<string> saveCompanyWrappertransmitObjectidentificationNumber = null, [WorkflowExpression] Func<string> saveCompanyWrappertransmitObjectimportanceEn = null, [WorkflowExpression] Func<string> saveCompanyWrappertransmitObjectlineOfBusiness = null, [WorkflowExpression] Func<bool> saveCompanyWrappertransmitObjectmailingListOther = null, [WorkflowExpression] Func<string> saveCompanyWrappertransmitObjectmobile = null, [WorkflowExpression] Func<string> saveCompanyWrappertransmitObjectmobileNormalized = null, [WorkflowExpression] Func<string> saveCompanyWrappertransmitObjectmSN = null, [WorkflowExpression] Func<string> saveCompanyWrappertransmitObjectnote = null, [WorkflowExpression] Func<string> saveCompanyWrappertransmitObjectphone = null, [WorkflowExpression] Func<string> saveCompanyWrappertransmitObjectphoneNormalized = null, [WorkflowExpression] Func<bool> saveCompanyWrappertransmitObjectpurchaser = null, [WorkflowExpression] Func<double> saveCompanyWrappertransmitObjectreversal = null, [WorkflowExpression] Func<string> saveCompanyWrappertransmitObjectskype = null, [WorkflowExpression] Func<bool> saveCompanyWrappertransmitObjectsuppliers = null, [WorkflowExpression] Func<string> saveCompanyWrappertransmitObjectvATNumber = null, [WorkflowExpression] Func<string> saveCompanyWrappertransmitObjectwebPage = null, [WorkflowExpression] Func<double> saveCompanyWrappertransmitObjectadditionalDiscount = null, [WorkflowExpression] Func<int> saveCompanyWrappertransmitObjectiD = null, [WorkflowExpression] Func<bool> saveCompanyWrappertransmitObjectcompetitor = null, [WorkflowExpression] Func<string> saveCompanyWrappertransmitObjectsalePriceGuid = null, [WorkflowExpression] Func<bool> saveCompanyWrappertransmitObjectnotificationByEmail = null, [WorkflowExpression] Func<string> saveCompanyWrappertransmitObjectnotificationBy = null, [WorkflowExpression] Func<string> saveCompanyWrappertransmitObjectlastActivity = null, [WorkflowExpression] Func<string> saveCompanyWrappertransmitObjectnextStep = null, [WorkflowExpression] Func<bool> saveCompanyWrappertransmitObjectemailOptOut = null, [WorkflowExpression] Func<string> saveCompanyWrappertransmitObjecttypeEn = null, [WorkflowExpression] Func<string> saveCompanyWrappertransmitObjectstateEn = null, [WorkflowExpression] Func<string> saveCompanyWrappertransmitObjectprevStateEn = null, [WorkflowExpression] Func<string> saveCompanyWrappertransmitObjectpicture = null, [WorkflowExpression] Func<int> saveCompanyWrappertransmitObjectpictureWidth = null, [WorkflowExpression] Func<int> saveCompanyWrappertransmitObjectpictureHeight = null, [WorkflowExpression] Func<bool> saveCompanyWrappertransmitObjectisPrivate = null, [WorkflowExpression] Func<string> saveCompanyWrappertransmitObjectitemCreated = null, [WorkflowExpression] Func<string> saveCompanyWrappertransmitObjectitemChanged = null, [WorkflowExpression] Func<string> saveCompanyWrappertransmitObjectfileAs = null, [WorkflowExpression] Func<string> saveCompanyWrappertransmitObjectownerGUID = null, [WorkflowExpression] Func<string> saveCompanyWrappertransmitObjectcreatedByGUID = null, [WorkflowExpression] Func<string> saveCompanyWrappertransmitObjectmodifiedByGUID = null, [WorkflowExpression] Func<object> saveCompanyWrappertransmitObjectadditionalFields = null, [WorkflowExpression] Func<string> saveCompanyWrappertransmitObjectitemGUID = null, [WorkflowExpression] Func<int> saveCompanyWrappertransmitObjectitemVersion = null, [WorkflowExpression] Func<bool> saveCompanyWrapperdieOnItemConflict = null, [WorkflowExpression] Func<string[]> saveCompanyWrapperignoredUserErrorMessages = null)
+        public IBodyWorkflowAction<EWayWcfServiceResponsesSaveResponse> SaveCompany(Expression<Func<string>> saveCompanyWrappertransmitObjectaccountNumber = null, Expression<Func<string>> saveCompanyWrappertransmitObjectaddress1POBox = null, Expression<Func<string>> saveCompanyWrappertransmitObjectaddress1Street = null, Expression<Func<string>> saveCompanyWrappertransmitObjectaddress1City = null, Expression<Func<string>> saveCompanyWrappertransmitObjectaddress1State = null, Expression<Func<string>> saveCompanyWrappertransmitObjectaddress1CountryEn = null, Expression<Func<string>> saveCompanyWrappertransmitObjectaddress1PostalCode = null, Expression<Func<string>> saveCompanyWrappertransmitObjectaddress2POBox = null, Expression<Func<string>> saveCompanyWrappertransmitObjectaddress2Street = null, Expression<Func<string>> saveCompanyWrappertransmitObjectaddress2City = null, Expression<Func<string>> saveCompanyWrappertransmitObjectaddress2State = null, Expression<Func<string>> saveCompanyWrappertransmitObjectaddress2CountryEn = null, Expression<Func<string>> saveCompanyWrappertransmitObjectaddress2PostalCode = null, Expression<Func<string>> saveCompanyWrappertransmitObjectaddress3POBox = null, Expression<Func<string>> saveCompanyWrappertransmitObjectaddress3Street = null, Expression<Func<string>> saveCompanyWrappertransmitObjectaddress3City = null, Expression<Func<string>> saveCompanyWrappertransmitObjectaddress3State = null, Expression<Func<string>> saveCompanyWrappertransmitObjectaddress3CountryEn = null, Expression<Func<string>> saveCompanyWrappertransmitObjectaddress3PostalCode = null, Expression<Func<string>> saveCompanyWrappertransmitObjectcompanyName = null, Expression<Func<string>> saveCompanyWrappertransmitObjectdepartment = null, Expression<Func<string>> saveCompanyWrappertransmitObjectemail = null, Expression<Func<int>> saveCompanyWrappertransmitObjectemployeesCount = null, Expression<Func<string>> saveCompanyWrappertransmitObjectfax = null, Expression<Func<string>> saveCompanyWrappertransmitObjectfirstContactEn = null, Expression<Func<string>> saveCompanyWrappertransmitObjectiCQ = null, Expression<Func<string>> saveCompanyWrappertransmitObjectidentificationNumber = null, Expression<Func<string>> saveCompanyWrappertransmitObjectimportanceEn = null, Expression<Func<string>> saveCompanyWrappertransmitObjectlineOfBusiness = null, Expression<Func<bool>> saveCompanyWrappertransmitObjectmailingListOther = null, Expression<Func<string>> saveCompanyWrappertransmitObjectmobile = null, Expression<Func<string>> saveCompanyWrappertransmitObjectmobileNormalized = null, Expression<Func<string>> saveCompanyWrappertransmitObjectmSN = null, Expression<Func<string>> saveCompanyWrappertransmitObjectnote = null, Expression<Func<string>> saveCompanyWrappertransmitObjectphone = null, Expression<Func<string>> saveCompanyWrappertransmitObjectphoneNormalized = null, Expression<Func<bool>> saveCompanyWrappertransmitObjectpurchaser = null, Expression<Func<double>> saveCompanyWrappertransmitObjectreversal = null, Expression<Func<string>> saveCompanyWrappertransmitObjectskype = null, Expression<Func<bool>> saveCompanyWrappertransmitObjectsuppliers = null, Expression<Func<string>> saveCompanyWrappertransmitObjectvATNumber = null, Expression<Func<string>> saveCompanyWrappertransmitObjectwebPage = null, Expression<Func<double>> saveCompanyWrappertransmitObjectadditionalDiscount = null, Expression<Func<int>> saveCompanyWrappertransmitObjectiD = null, Expression<Func<bool>> saveCompanyWrappertransmitObjectcompetitor = null, Expression<Func<string>> saveCompanyWrappertransmitObjectsalePriceGuid = null, Expression<Func<bool>> saveCompanyWrappertransmitObjectnotificationByEmail = null, Expression<Func<string>> saveCompanyWrappertransmitObjectnotificationBy = null, Expression<Func<string>> saveCompanyWrappertransmitObjectlastActivity = null, Expression<Func<string>> saveCompanyWrappertransmitObjectnextStep = null, Expression<Func<bool>> saveCompanyWrappertransmitObjectemailOptOut = null, Expression<Func<string>> saveCompanyWrappertransmitObjecttypeEn = null, Expression<Func<string>> saveCompanyWrappertransmitObjectstateEn = null, Expression<Func<string>> saveCompanyWrappertransmitObjectprevStateEn = null, Expression<Func<string>> saveCompanyWrappertransmitObjectpicture = null, Expression<Func<int>> saveCompanyWrappertransmitObjectpictureWidth = null, Expression<Func<int>> saveCompanyWrappertransmitObjectpictureHeight = null, Expression<Func<bool>> saveCompanyWrappertransmitObjectisPrivate = null, Expression<Func<string>> saveCompanyWrappertransmitObjectitemCreated = null, Expression<Func<string>> saveCompanyWrappertransmitObjectitemChanged = null, Expression<Func<string>> saveCompanyWrappertransmitObjectfileAs = null, Expression<Func<string>> saveCompanyWrappertransmitObjectownerGUID = null, Expression<Func<string>> saveCompanyWrappertransmitObjectcreatedByGUID = null, Expression<Func<string>> saveCompanyWrappertransmitObjectmodifiedByGUID = null, Expression<Func<object>> saveCompanyWrappertransmitObjectadditionalFields = null, Expression<Func<string>> saveCompanyWrappertransmitObjectitemGUID = null, Expression<Func<int>> saveCompanyWrappertransmitObjectitemVersion = null, Expression<Func<bool>> saveCompanyWrapperdieOnItemConflict = null, Expression<Func<string[]>> saveCompanyWrapperignoredUserErrorMessages = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesSaveResponse> __BuildSaveCompany(WorkflowExpression<string> saveCompanyWrappertransmitObjectaccountNumber = null, WorkflowExpression<string> saveCompanyWrappertransmitObjectaddress1POBox = null, WorkflowExpression<string> saveCompanyWrappertransmitObjectaddress1Street = null, WorkflowExpression<string> saveCompanyWrappertransmitObjectaddress1City = null, WorkflowExpression<string> saveCompanyWrappertransmitObjectaddress1State = null, WorkflowExpression<string> saveCompanyWrappertransmitObjectaddress1CountryEn = null, WorkflowExpression<string> saveCompanyWrappertransmitObjectaddress1PostalCode = null, WorkflowExpression<string> saveCompanyWrappertransmitObjectaddress2POBox = null, WorkflowExpression<string> saveCompanyWrappertransmitObjectaddress2Street = null, WorkflowExpression<string> saveCompanyWrappertransmitObjectaddress2City = null, WorkflowExpression<string> saveCompanyWrappertransmitObjectaddress2State = null, WorkflowExpression<string> saveCompanyWrappertransmitObjectaddress2CountryEn = null, WorkflowExpression<string> saveCompanyWrappertransmitObjectaddress2PostalCode = null, WorkflowExpression<string> saveCompanyWrappertransmitObjectaddress3POBox = null, WorkflowExpression<string> saveCompanyWrappertransmitObjectaddress3Street = null, WorkflowExpression<string> saveCompanyWrappertransmitObjectaddress3City = null, WorkflowExpression<string> saveCompanyWrappertransmitObjectaddress3State = null, WorkflowExpression<string> saveCompanyWrappertransmitObjectaddress3CountryEn = null, WorkflowExpression<string> saveCompanyWrappertransmitObjectaddress3PostalCode = null, WorkflowExpression<string> saveCompanyWrappertransmitObjectcompanyName = null, WorkflowExpression<string> saveCompanyWrappertransmitObjectdepartment = null, WorkflowExpression<string> saveCompanyWrappertransmitObjectemail = null, WorkflowExpression<int> saveCompanyWrappertransmitObjectemployeesCount = null, WorkflowExpression<string> saveCompanyWrappertransmitObjectfax = null, WorkflowExpression<string> saveCompanyWrappertransmitObjectfirstContactEn = null, WorkflowExpression<string> saveCompanyWrappertransmitObjectiCQ = null, WorkflowExpression<string> saveCompanyWrappertransmitObjectidentificationNumber = null, WorkflowExpression<string> saveCompanyWrappertransmitObjectimportanceEn = null, WorkflowExpression<string> saveCompanyWrappertransmitObjectlineOfBusiness = null, WorkflowExpression<bool> saveCompanyWrappertransmitObjectmailingListOther = null, WorkflowExpression<string> saveCompanyWrappertransmitObjectmobile = null, WorkflowExpression<string> saveCompanyWrappertransmitObjectmobileNormalized = null, WorkflowExpression<string> saveCompanyWrappertransmitObjectmSN = null, WorkflowExpression<string> saveCompanyWrappertransmitObjectnote = null, WorkflowExpression<string> saveCompanyWrappertransmitObjectphone = null, WorkflowExpression<string> saveCompanyWrappertransmitObjectphoneNormalized = null, WorkflowExpression<bool> saveCompanyWrappertransmitObjectpurchaser = null, WorkflowExpression<double> saveCompanyWrappertransmitObjectreversal = null, WorkflowExpression<string> saveCompanyWrappertransmitObjectskype = null, WorkflowExpression<bool> saveCompanyWrappertransmitObjectsuppliers = null, WorkflowExpression<string> saveCompanyWrappertransmitObjectvATNumber = null, WorkflowExpression<string> saveCompanyWrappertransmitObjectwebPage = null, WorkflowExpression<double> saveCompanyWrappertransmitObjectadditionalDiscount = null, WorkflowExpression<int> saveCompanyWrappertransmitObjectiD = null, WorkflowExpression<bool> saveCompanyWrappertransmitObjectcompetitor = null, WorkflowExpression<string> saveCompanyWrappertransmitObjectsalePriceGuid = null, WorkflowExpression<bool> saveCompanyWrappertransmitObjectnotificationByEmail = null, WorkflowExpression<string> saveCompanyWrappertransmitObjectnotificationBy = null, WorkflowExpression<string> saveCompanyWrappertransmitObjectlastActivity = null, WorkflowExpression<string> saveCompanyWrappertransmitObjectnextStep = null, WorkflowExpression<bool> saveCompanyWrappertransmitObjectemailOptOut = null, WorkflowExpression<string> saveCompanyWrappertransmitObjecttypeEn = null, WorkflowExpression<string> saveCompanyWrappertransmitObjectstateEn = null, WorkflowExpression<string> saveCompanyWrappertransmitObjectprevStateEn = null, WorkflowExpression<string> saveCompanyWrappertransmitObjectpicture = null, WorkflowExpression<int> saveCompanyWrappertransmitObjectpictureWidth = null, WorkflowExpression<int> saveCompanyWrappertransmitObjectpictureHeight = null, WorkflowExpression<bool> saveCompanyWrappertransmitObjectisPrivate = null, WorkflowExpression<string> saveCompanyWrappertransmitObjectitemCreated = null, WorkflowExpression<string> saveCompanyWrappertransmitObjectitemChanged = null, WorkflowExpression<string> saveCompanyWrappertransmitObjectfileAs = null, WorkflowExpression<string> saveCompanyWrappertransmitObjectownerGUID = null, WorkflowExpression<string> saveCompanyWrappertransmitObjectcreatedByGUID = null, WorkflowExpression<string> saveCompanyWrappertransmitObjectmodifiedByGUID = null, WorkflowExpression<object> saveCompanyWrappertransmitObjectadditionalFields = null, WorkflowExpression<string> saveCompanyWrappertransmitObjectitemGUID = null, WorkflowExpression<int> saveCompanyWrappertransmitObjectitemVersion = null, WorkflowExpression<bool> saveCompanyWrapperdieOnItemConflict = null, WorkflowExpression<string[]> saveCompanyWrapperignoredUserErrorMessages = null)
-        {
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectaccountNumber, nameof(saveCompanyWrappertransmitObjectaccountNumber), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectaddress1POBox, nameof(saveCompanyWrappertransmitObjectaddress1POBox), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectaddress1Street, nameof(saveCompanyWrappertransmitObjectaddress1Street), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectaddress1City, nameof(saveCompanyWrappertransmitObjectaddress1City), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectaddress1State, nameof(saveCompanyWrappertransmitObjectaddress1State), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectaddress1CountryEn, nameof(saveCompanyWrappertransmitObjectaddress1CountryEn), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectaddress1PostalCode, nameof(saveCompanyWrappertransmitObjectaddress1PostalCode), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectaddress2POBox, nameof(saveCompanyWrappertransmitObjectaddress2POBox), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectaddress2Street, nameof(saveCompanyWrappertransmitObjectaddress2Street), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectaddress2City, nameof(saveCompanyWrappertransmitObjectaddress2City), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectaddress2State, nameof(saveCompanyWrappertransmitObjectaddress2State), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectaddress2CountryEn, nameof(saveCompanyWrappertransmitObjectaddress2CountryEn), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectaddress2PostalCode, nameof(saveCompanyWrappertransmitObjectaddress2PostalCode), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectaddress3POBox, nameof(saveCompanyWrappertransmitObjectaddress3POBox), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectaddress3Street, nameof(saveCompanyWrappertransmitObjectaddress3Street), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectaddress3City, nameof(saveCompanyWrappertransmitObjectaddress3City), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectaddress3State, nameof(saveCompanyWrappertransmitObjectaddress3State), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectaddress3CountryEn, nameof(saveCompanyWrappertransmitObjectaddress3CountryEn), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectaddress3PostalCode, nameof(saveCompanyWrappertransmitObjectaddress3PostalCode), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectcompanyName, nameof(saveCompanyWrappertransmitObjectcompanyName), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectdepartment, nameof(saveCompanyWrappertransmitObjectdepartment), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectemail, nameof(saveCompanyWrappertransmitObjectemail), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectemployeesCount, nameof(saveCompanyWrappertransmitObjectemployeesCount), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectfax, nameof(saveCompanyWrappertransmitObjectfax), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectfirstContactEn, nameof(saveCompanyWrappertransmitObjectfirstContactEn), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectiCQ, nameof(saveCompanyWrappertransmitObjectiCQ), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectidentificationNumber, nameof(saveCompanyWrappertransmitObjectidentificationNumber), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectimportanceEn, nameof(saveCompanyWrappertransmitObjectimportanceEn), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectlineOfBusiness, nameof(saveCompanyWrappertransmitObjectlineOfBusiness), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectmailingListOther, nameof(saveCompanyWrappertransmitObjectmailingListOther), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectmobile, nameof(saveCompanyWrappertransmitObjectmobile), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectmobileNormalized, nameof(saveCompanyWrappertransmitObjectmobileNormalized), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectmSN, nameof(saveCompanyWrappertransmitObjectmSN), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectnote, nameof(saveCompanyWrappertransmitObjectnote), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectphone, nameof(saveCompanyWrappertransmitObjectphone), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectphoneNormalized, nameof(saveCompanyWrappertransmitObjectphoneNormalized), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectpurchaser, nameof(saveCompanyWrappertransmitObjectpurchaser), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectreversal, nameof(saveCompanyWrappertransmitObjectreversal), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectskype, nameof(saveCompanyWrappertransmitObjectskype), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectsuppliers, nameof(saveCompanyWrappertransmitObjectsuppliers), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectvATNumber, nameof(saveCompanyWrappertransmitObjectvATNumber), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectwebPage, nameof(saveCompanyWrappertransmitObjectwebPage), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectadditionalDiscount, nameof(saveCompanyWrappertransmitObjectadditionalDiscount), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectiD, nameof(saveCompanyWrappertransmitObjectiD), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectcompetitor, nameof(saveCompanyWrappertransmitObjectcompetitor), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectsalePriceGuid, nameof(saveCompanyWrappertransmitObjectsalePriceGuid), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectnotificationByEmail, nameof(saveCompanyWrappertransmitObjectnotificationByEmail), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectnotificationBy, nameof(saveCompanyWrappertransmitObjectnotificationBy), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectlastActivity, nameof(saveCompanyWrappertransmitObjectlastActivity), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectnextStep, nameof(saveCompanyWrappertransmitObjectnextStep), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectemailOptOut, nameof(saveCompanyWrappertransmitObjectemailOptOut), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjecttypeEn, nameof(saveCompanyWrappertransmitObjecttypeEn), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectstateEn, nameof(saveCompanyWrappertransmitObjectstateEn), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectprevStateEn, nameof(saveCompanyWrappertransmitObjectprevStateEn), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectpicture, nameof(saveCompanyWrappertransmitObjectpicture), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectpictureWidth, nameof(saveCompanyWrappertransmitObjectpictureWidth), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectpictureHeight, nameof(saveCompanyWrappertransmitObjectpictureHeight), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectisPrivate, nameof(saveCompanyWrappertransmitObjectisPrivate), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectitemCreated, nameof(saveCompanyWrappertransmitObjectitemCreated), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectitemChanged, nameof(saveCompanyWrappertransmitObjectitemChanged), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectfileAs, nameof(saveCompanyWrappertransmitObjectfileAs), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectownerGUID, nameof(saveCompanyWrappertransmitObjectownerGUID), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectcreatedByGUID, nameof(saveCompanyWrappertransmitObjectcreatedByGUID), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectmodifiedByGUID, nameof(saveCompanyWrappertransmitObjectmodifiedByGUID), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectadditionalFields, nameof(saveCompanyWrappertransmitObjectadditionalFields), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectitemGUID, nameof(saveCompanyWrappertransmitObjectitemGUID), required: false);
-            WorkflowExpression.Validate(saveCompanyWrappertransmitObjectitemVersion, nameof(saveCompanyWrappertransmitObjectitemVersion), required: false);
-            WorkflowExpression.Validate(saveCompanyWrapperdieOnItemConflict, nameof(saveCompanyWrapperdieOnItemConflict), required: false);
-            WorkflowExpression.Validate(saveCompanyWrapperignoredUserErrorMessages, nameof(saveCompanyWrapperignoredUserErrorMessages), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectaccountNumber = saveCompanyWrappertransmitObjectaccountNumber == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectaccountNumber);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectaccountNumber, nameof(saveCompanyWrappertransmitObjectaccountNumber), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectaddress1POBox = saveCompanyWrappertransmitObjectaddress1POBox == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectaddress1POBox);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectaddress1POBox, nameof(saveCompanyWrappertransmitObjectaddress1POBox), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectaddress1Street = saveCompanyWrappertransmitObjectaddress1Street == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectaddress1Street);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectaddress1Street, nameof(saveCompanyWrappertransmitObjectaddress1Street), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectaddress1City = saveCompanyWrappertransmitObjectaddress1City == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectaddress1City);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectaddress1City, nameof(saveCompanyWrappertransmitObjectaddress1City), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectaddress1State = saveCompanyWrappertransmitObjectaddress1State == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectaddress1State);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectaddress1State, nameof(saveCompanyWrappertransmitObjectaddress1State), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectaddress1CountryEn = saveCompanyWrappertransmitObjectaddress1CountryEn == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectaddress1CountryEn);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectaddress1CountryEn, nameof(saveCompanyWrappertransmitObjectaddress1CountryEn), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectaddress1PostalCode = saveCompanyWrappertransmitObjectaddress1PostalCode == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectaddress1PostalCode);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectaddress1PostalCode, nameof(saveCompanyWrappertransmitObjectaddress1PostalCode), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectaddress2POBox = saveCompanyWrappertransmitObjectaddress2POBox == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectaddress2POBox);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectaddress2POBox, nameof(saveCompanyWrappertransmitObjectaddress2POBox), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectaddress2Street = saveCompanyWrappertransmitObjectaddress2Street == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectaddress2Street);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectaddress2Street, nameof(saveCompanyWrappertransmitObjectaddress2Street), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectaddress2City = saveCompanyWrappertransmitObjectaddress2City == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectaddress2City);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectaddress2City, nameof(saveCompanyWrappertransmitObjectaddress2City), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectaddress2State = saveCompanyWrappertransmitObjectaddress2State == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectaddress2State);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectaddress2State, nameof(saveCompanyWrappertransmitObjectaddress2State), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectaddress2CountryEn = saveCompanyWrappertransmitObjectaddress2CountryEn == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectaddress2CountryEn);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectaddress2CountryEn, nameof(saveCompanyWrappertransmitObjectaddress2CountryEn), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectaddress2PostalCode = saveCompanyWrappertransmitObjectaddress2PostalCode == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectaddress2PostalCode);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectaddress2PostalCode, nameof(saveCompanyWrappertransmitObjectaddress2PostalCode), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectaddress3POBox = saveCompanyWrappertransmitObjectaddress3POBox == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectaddress3POBox);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectaddress3POBox, nameof(saveCompanyWrappertransmitObjectaddress3POBox), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectaddress3Street = saveCompanyWrappertransmitObjectaddress3Street == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectaddress3Street);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectaddress3Street, nameof(saveCompanyWrappertransmitObjectaddress3Street), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectaddress3City = saveCompanyWrappertransmitObjectaddress3City == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectaddress3City);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectaddress3City, nameof(saveCompanyWrappertransmitObjectaddress3City), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectaddress3State = saveCompanyWrappertransmitObjectaddress3State == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectaddress3State);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectaddress3State, nameof(saveCompanyWrappertransmitObjectaddress3State), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectaddress3CountryEn = saveCompanyWrappertransmitObjectaddress3CountryEn == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectaddress3CountryEn);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectaddress3CountryEn, nameof(saveCompanyWrappertransmitObjectaddress3CountryEn), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectaddress3PostalCode = saveCompanyWrappertransmitObjectaddress3PostalCode == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectaddress3PostalCode);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectaddress3PostalCode, nameof(saveCompanyWrappertransmitObjectaddress3PostalCode), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectcompanyName = saveCompanyWrappertransmitObjectcompanyName == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectcompanyName);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectcompanyName, nameof(saveCompanyWrappertransmitObjectcompanyName), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectdepartment = saveCompanyWrappertransmitObjectdepartment == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectdepartment);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectdepartment, nameof(saveCompanyWrappertransmitObjectdepartment), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectemail = saveCompanyWrappertransmitObjectemail == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectemail);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectemail, nameof(saveCompanyWrappertransmitObjectemail), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectemployeesCount = saveCompanyWrappertransmitObjectemployeesCount == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectemployeesCount);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectemployeesCount, nameof(saveCompanyWrappertransmitObjectemployeesCount), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectfax = saveCompanyWrappertransmitObjectfax == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectfax);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectfax, nameof(saveCompanyWrappertransmitObjectfax), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectfirstContactEn = saveCompanyWrappertransmitObjectfirstContactEn == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectfirstContactEn);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectfirstContactEn, nameof(saveCompanyWrappertransmitObjectfirstContactEn), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectiCQ = saveCompanyWrappertransmitObjectiCQ == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectiCQ);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectiCQ, nameof(saveCompanyWrappertransmitObjectiCQ), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectidentificationNumber = saveCompanyWrappertransmitObjectidentificationNumber == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectidentificationNumber);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectidentificationNumber, nameof(saveCompanyWrappertransmitObjectidentificationNumber), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectimportanceEn = saveCompanyWrappertransmitObjectimportanceEn == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectimportanceEn);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectimportanceEn, nameof(saveCompanyWrappertransmitObjectimportanceEn), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectlineOfBusiness = saveCompanyWrappertransmitObjectlineOfBusiness == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectlineOfBusiness);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectlineOfBusiness, nameof(saveCompanyWrappertransmitObjectlineOfBusiness), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectmailingListOther = saveCompanyWrappertransmitObjectmailingListOther == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectmailingListOther);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectmailingListOther, nameof(saveCompanyWrappertransmitObjectmailingListOther), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectmobile = saveCompanyWrappertransmitObjectmobile == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectmobile);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectmobile, nameof(saveCompanyWrappertransmitObjectmobile), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectmobileNormalized = saveCompanyWrappertransmitObjectmobileNormalized == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectmobileNormalized);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectmobileNormalized, nameof(saveCompanyWrappertransmitObjectmobileNormalized), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectmSN = saveCompanyWrappertransmitObjectmSN == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectmSN);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectmSN, nameof(saveCompanyWrappertransmitObjectmSN), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectnote = saveCompanyWrappertransmitObjectnote == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectnote);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectnote, nameof(saveCompanyWrappertransmitObjectnote), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectphone = saveCompanyWrappertransmitObjectphone == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectphone);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectphone, nameof(saveCompanyWrappertransmitObjectphone), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectphoneNormalized = saveCompanyWrappertransmitObjectphoneNormalized == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectphoneNormalized);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectphoneNormalized, nameof(saveCompanyWrappertransmitObjectphoneNormalized), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectpurchaser = saveCompanyWrappertransmitObjectpurchaser == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectpurchaser);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectpurchaser, nameof(saveCompanyWrappertransmitObjectpurchaser), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectreversal = saveCompanyWrappertransmitObjectreversal == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectreversal);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectreversal, nameof(saveCompanyWrappertransmitObjectreversal), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectskype = saveCompanyWrappertransmitObjectskype == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectskype);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectskype, nameof(saveCompanyWrappertransmitObjectskype), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectsuppliers = saveCompanyWrappertransmitObjectsuppliers == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectsuppliers);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectsuppliers, nameof(saveCompanyWrappertransmitObjectsuppliers), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectvATNumber = saveCompanyWrappertransmitObjectvATNumber == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectvATNumber);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectvATNumber, nameof(saveCompanyWrappertransmitObjectvATNumber), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectwebPage = saveCompanyWrappertransmitObjectwebPage == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectwebPage);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectwebPage, nameof(saveCompanyWrappertransmitObjectwebPage), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectadditionalDiscount = saveCompanyWrappertransmitObjectadditionalDiscount == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectadditionalDiscount);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectadditionalDiscount, nameof(saveCompanyWrappertransmitObjectadditionalDiscount), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectiD = saveCompanyWrappertransmitObjectiD == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectiD);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectiD, nameof(saveCompanyWrappertransmitObjectiD), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectcompetitor = saveCompanyWrappertransmitObjectcompetitor == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectcompetitor);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectcompetitor, nameof(saveCompanyWrappertransmitObjectcompetitor), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectsalePriceGuid = saveCompanyWrappertransmitObjectsalePriceGuid == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectsalePriceGuid);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectsalePriceGuid, nameof(saveCompanyWrappertransmitObjectsalePriceGuid), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectnotificationByEmail = saveCompanyWrappertransmitObjectnotificationByEmail == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectnotificationByEmail);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectnotificationByEmail, nameof(saveCompanyWrappertransmitObjectnotificationByEmail), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectnotificationBy = saveCompanyWrappertransmitObjectnotificationBy == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectnotificationBy);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectnotificationBy, nameof(saveCompanyWrappertransmitObjectnotificationBy), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectlastActivity = saveCompanyWrappertransmitObjectlastActivity == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectlastActivity);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectlastActivity, nameof(saveCompanyWrappertransmitObjectlastActivity), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectnextStep = saveCompanyWrappertransmitObjectnextStep == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectnextStep);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectnextStep, nameof(saveCompanyWrappertransmitObjectnextStep), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectemailOptOut = saveCompanyWrappertransmitObjectemailOptOut == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectemailOptOut);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectemailOptOut, nameof(saveCompanyWrappertransmitObjectemailOptOut), required: false);
+            var __workflow_saveCompanyWrappertransmitObjecttypeEn = saveCompanyWrappertransmitObjecttypeEn == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjecttypeEn);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjecttypeEn, nameof(saveCompanyWrappertransmitObjecttypeEn), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectstateEn = saveCompanyWrappertransmitObjectstateEn == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectstateEn);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectstateEn, nameof(saveCompanyWrappertransmitObjectstateEn), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectprevStateEn = saveCompanyWrappertransmitObjectprevStateEn == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectprevStateEn);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectprevStateEn, nameof(saveCompanyWrappertransmitObjectprevStateEn), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectpicture = saveCompanyWrappertransmitObjectpicture == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectpicture);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectpicture, nameof(saveCompanyWrappertransmitObjectpicture), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectpictureWidth = saveCompanyWrappertransmitObjectpictureWidth == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectpictureWidth);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectpictureWidth, nameof(saveCompanyWrappertransmitObjectpictureWidth), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectpictureHeight = saveCompanyWrappertransmitObjectpictureHeight == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectpictureHeight);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectpictureHeight, nameof(saveCompanyWrappertransmitObjectpictureHeight), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectisPrivate = saveCompanyWrappertransmitObjectisPrivate == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectisPrivate);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectisPrivate, nameof(saveCompanyWrappertransmitObjectisPrivate), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectitemCreated = saveCompanyWrappertransmitObjectitemCreated == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectitemCreated);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectitemCreated, nameof(saveCompanyWrappertransmitObjectitemCreated), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectitemChanged = saveCompanyWrappertransmitObjectitemChanged == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectitemChanged);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectitemChanged, nameof(saveCompanyWrappertransmitObjectitemChanged), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectfileAs = saveCompanyWrappertransmitObjectfileAs == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectfileAs);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectfileAs, nameof(saveCompanyWrappertransmitObjectfileAs), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectownerGUID = saveCompanyWrappertransmitObjectownerGUID == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectownerGUID);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectownerGUID, nameof(saveCompanyWrappertransmitObjectownerGUID), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectcreatedByGUID = saveCompanyWrappertransmitObjectcreatedByGUID == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectcreatedByGUID);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectcreatedByGUID, nameof(saveCompanyWrappertransmitObjectcreatedByGUID), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectmodifiedByGUID = saveCompanyWrappertransmitObjectmodifiedByGUID == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectmodifiedByGUID);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectmodifiedByGUID, nameof(saveCompanyWrappertransmitObjectmodifiedByGUID), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectadditionalFields = saveCompanyWrappertransmitObjectadditionalFields == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectadditionalFields);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectadditionalFields, nameof(saveCompanyWrappertransmitObjectadditionalFields), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectitemGUID = saveCompanyWrappertransmitObjectitemGUID == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectitemGUID);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectitemGUID, nameof(saveCompanyWrappertransmitObjectitemGUID), required: false);
+            var __workflow_saveCompanyWrappertransmitObjectitemVersion = saveCompanyWrappertransmitObjectitemVersion == null ? null : WorkflowExpression.Compile(saveCompanyWrappertransmitObjectitemVersion);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrappertransmitObjectitemVersion, nameof(saveCompanyWrappertransmitObjectitemVersion), required: false);
+            var __workflow_saveCompanyWrapperdieOnItemConflict = saveCompanyWrapperdieOnItemConflict == null ? null : WorkflowExpression.Compile(saveCompanyWrapperdieOnItemConflict);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrapperdieOnItemConflict, nameof(saveCompanyWrapperdieOnItemConflict), required: false);
+            var __workflow_saveCompanyWrapperignoredUserErrorMessages = saveCompanyWrapperignoredUserErrorMessages == null ? null : WorkflowExpression.Compile(saveCompanyWrapperignoredUserErrorMessages);
+            WorkflowExpression.Validate(__workflow_saveCompanyWrapperignoredUserErrorMessages, nameof(saveCompanyWrapperignoredUserErrorMessages), required: false);
             return new DeferredBodyAction<EWayWcfServiceResponsesSaveResponse>(() =>
             {
                 var apiCallPath = "/SaveCompany";
@@ -297,405 +322,405 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                 var saveCompanyWrapperpropCount = 0;
                 var transmitObjectObject = new JObject();
                 var transmitObjectObjectpropCount = 0;
-                if (saveCompanyWrappertransmitObjectaccountNumber != null)
+                if (__workflow_saveCompanyWrappertransmitObjectaccountNumber != null)
                 {
-                    transmitObjectObject["AccountNumber"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectaccountNumber);
+                    transmitObjectObject["AccountNumber"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectaccountNumber);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectaddress1POBox != null)
+                if (__workflow_saveCompanyWrappertransmitObjectaddress1POBox != null)
                 {
-                    transmitObjectObject["Address1POBox"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectaddress1POBox);
+                    transmitObjectObject["Address1POBox"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectaddress1POBox);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectaddress1Street != null)
+                if (__workflow_saveCompanyWrappertransmitObjectaddress1Street != null)
                 {
-                    transmitObjectObject["Address1Street"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectaddress1Street);
+                    transmitObjectObject["Address1Street"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectaddress1Street);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectaddress1City != null)
+                if (__workflow_saveCompanyWrappertransmitObjectaddress1City != null)
                 {
-                    transmitObjectObject["Address1City"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectaddress1City);
+                    transmitObjectObject["Address1City"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectaddress1City);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectaddress1State != null)
+                if (__workflow_saveCompanyWrappertransmitObjectaddress1State != null)
                 {
-                    transmitObjectObject["Address1State"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectaddress1State);
+                    transmitObjectObject["Address1State"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectaddress1State);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectaddress1CountryEn != null)
+                if (__workflow_saveCompanyWrappertransmitObjectaddress1CountryEn != null)
                 {
-                    transmitObjectObject["Address1CountryEn"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectaddress1CountryEn);
+                    transmitObjectObject["Address1CountryEn"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectaddress1CountryEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectaddress1PostalCode != null)
+                if (__workflow_saveCompanyWrappertransmitObjectaddress1PostalCode != null)
                 {
-                    transmitObjectObject["Address1PostalCode"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectaddress1PostalCode);
+                    transmitObjectObject["Address1PostalCode"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectaddress1PostalCode);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectaddress2POBox != null)
+                if (__workflow_saveCompanyWrappertransmitObjectaddress2POBox != null)
                 {
-                    transmitObjectObject["Address2POBox"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectaddress2POBox);
+                    transmitObjectObject["Address2POBox"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectaddress2POBox);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectaddress2Street != null)
+                if (__workflow_saveCompanyWrappertransmitObjectaddress2Street != null)
                 {
-                    transmitObjectObject["Address2Street"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectaddress2Street);
+                    transmitObjectObject["Address2Street"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectaddress2Street);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectaddress2City != null)
+                if (__workflow_saveCompanyWrappertransmitObjectaddress2City != null)
                 {
-                    transmitObjectObject["Address2City"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectaddress2City);
+                    transmitObjectObject["Address2City"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectaddress2City);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectaddress2State != null)
+                if (__workflow_saveCompanyWrappertransmitObjectaddress2State != null)
                 {
-                    transmitObjectObject["Address2State"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectaddress2State);
+                    transmitObjectObject["Address2State"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectaddress2State);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectaddress2CountryEn != null)
+                if (__workflow_saveCompanyWrappertransmitObjectaddress2CountryEn != null)
                 {
-                    transmitObjectObject["Address2CountryEn"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectaddress2CountryEn);
+                    transmitObjectObject["Address2CountryEn"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectaddress2CountryEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectaddress2PostalCode != null)
+                if (__workflow_saveCompanyWrappertransmitObjectaddress2PostalCode != null)
                 {
-                    transmitObjectObject["Address2PostalCode"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectaddress2PostalCode);
+                    transmitObjectObject["Address2PostalCode"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectaddress2PostalCode);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectaddress3POBox != null)
+                if (__workflow_saveCompanyWrappertransmitObjectaddress3POBox != null)
                 {
-                    transmitObjectObject["Address3POBox"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectaddress3POBox);
+                    transmitObjectObject["Address3POBox"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectaddress3POBox);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectaddress3Street != null)
+                if (__workflow_saveCompanyWrappertransmitObjectaddress3Street != null)
                 {
-                    transmitObjectObject["Address3Street"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectaddress3Street);
+                    transmitObjectObject["Address3Street"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectaddress3Street);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectaddress3City != null)
+                if (__workflow_saveCompanyWrappertransmitObjectaddress3City != null)
                 {
-                    transmitObjectObject["Address3City"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectaddress3City);
+                    transmitObjectObject["Address3City"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectaddress3City);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectaddress3State != null)
+                if (__workflow_saveCompanyWrappertransmitObjectaddress3State != null)
                 {
-                    transmitObjectObject["Address3State"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectaddress3State);
+                    transmitObjectObject["Address3State"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectaddress3State);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectaddress3CountryEn != null)
+                if (__workflow_saveCompanyWrappertransmitObjectaddress3CountryEn != null)
                 {
-                    transmitObjectObject["Address3CountryEn"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectaddress3CountryEn);
+                    transmitObjectObject["Address3CountryEn"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectaddress3CountryEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectaddress3PostalCode != null)
+                if (__workflow_saveCompanyWrappertransmitObjectaddress3PostalCode != null)
                 {
-                    transmitObjectObject["Address3PostalCode"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectaddress3PostalCode);
+                    transmitObjectObject["Address3PostalCode"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectaddress3PostalCode);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectcompanyName != null)
+                if (__workflow_saveCompanyWrappertransmitObjectcompanyName != null)
                 {
-                    transmitObjectObject["CompanyName"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectcompanyName);
+                    transmitObjectObject["CompanyName"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectcompanyName);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectdepartment != null)
+                if (__workflow_saveCompanyWrappertransmitObjectdepartment != null)
                 {
-                    transmitObjectObject["Department"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectdepartment);
+                    transmitObjectObject["Department"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectdepartment);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectemail != null)
+                if (__workflow_saveCompanyWrappertransmitObjectemail != null)
                 {
-                    transmitObjectObject["Email"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectemail);
+                    transmitObjectObject["Email"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectemail);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectemployeesCount != null)
+                if (__workflow_saveCompanyWrappertransmitObjectemployeesCount != null)
                 {
-                    transmitObjectObject["EmployeesCount"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectemployeesCount);
+                    transmitObjectObject["EmployeesCount"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectemployeesCount);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectfax != null)
+                if (__workflow_saveCompanyWrappertransmitObjectfax != null)
                 {
-                    transmitObjectObject["Fax"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectfax);
+                    transmitObjectObject["Fax"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectfax);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectfirstContactEn != null)
+                if (__workflow_saveCompanyWrappertransmitObjectfirstContactEn != null)
                 {
-                    transmitObjectObject["FirstContactEn"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectfirstContactEn);
+                    transmitObjectObject["FirstContactEn"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectfirstContactEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectiCQ != null)
+                if (__workflow_saveCompanyWrappertransmitObjectiCQ != null)
                 {
-                    transmitObjectObject["ICQ"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectiCQ);
+                    transmitObjectObject["ICQ"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectiCQ);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectidentificationNumber != null)
+                if (__workflow_saveCompanyWrappertransmitObjectidentificationNumber != null)
                 {
-                    transmitObjectObject["IdentificationNumber"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectidentificationNumber);
+                    transmitObjectObject["IdentificationNumber"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectidentificationNumber);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectimportanceEn != null)
+                if (__workflow_saveCompanyWrappertransmitObjectimportanceEn != null)
                 {
-                    transmitObjectObject["ImportanceEn"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectimportanceEn);
+                    transmitObjectObject["ImportanceEn"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectimportanceEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectlineOfBusiness != null)
+                if (__workflow_saveCompanyWrappertransmitObjectlineOfBusiness != null)
                 {
-                    transmitObjectObject["LineOfBusiness"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectlineOfBusiness);
+                    transmitObjectObject["LineOfBusiness"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectlineOfBusiness);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectmailingListOther != null)
+                if (__workflow_saveCompanyWrappertransmitObjectmailingListOther != null)
                 {
-                    transmitObjectObject["MailingListOther"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectmailingListOther);
+                    transmitObjectObject["MailingListOther"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectmailingListOther);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectmobile != null)
+                if (__workflow_saveCompanyWrappertransmitObjectmobile != null)
                 {
-                    transmitObjectObject["Mobile"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectmobile);
+                    transmitObjectObject["Mobile"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectmobile);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectmobileNormalized != null)
+                if (__workflow_saveCompanyWrappertransmitObjectmobileNormalized != null)
                 {
-                    transmitObjectObject["MobileNormalized"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectmobileNormalized);
+                    transmitObjectObject["MobileNormalized"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectmobileNormalized);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectmSN != null)
+                if (__workflow_saveCompanyWrappertransmitObjectmSN != null)
                 {
-                    transmitObjectObject["MSN"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectmSN);
+                    transmitObjectObject["MSN"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectmSN);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectnote != null)
+                if (__workflow_saveCompanyWrappertransmitObjectnote != null)
                 {
-                    transmitObjectObject["Note"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectnote);
+                    transmitObjectObject["Note"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectnote);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectphone != null)
+                if (__workflow_saveCompanyWrappertransmitObjectphone != null)
                 {
-                    transmitObjectObject["Phone"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectphone);
+                    transmitObjectObject["Phone"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectphone);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectphoneNormalized != null)
+                if (__workflow_saveCompanyWrappertransmitObjectphoneNormalized != null)
                 {
-                    transmitObjectObject["PhoneNormalized"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectphoneNormalized);
+                    transmitObjectObject["PhoneNormalized"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectphoneNormalized);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectpurchaser != null)
+                if (__workflow_saveCompanyWrappertransmitObjectpurchaser != null)
                 {
-                    transmitObjectObject["Purchaser"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectpurchaser);
+                    transmitObjectObject["Purchaser"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectpurchaser);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectreversal != null)
+                if (__workflow_saveCompanyWrappertransmitObjectreversal != null)
                 {
-                    transmitObjectObject["Reversal"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectreversal);
+                    transmitObjectObject["Reversal"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectreversal);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectskype != null)
+                if (__workflow_saveCompanyWrappertransmitObjectskype != null)
                 {
-                    transmitObjectObject["Skype"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectskype);
+                    transmitObjectObject["Skype"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectskype);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectsuppliers != null)
+                if (__workflow_saveCompanyWrappertransmitObjectsuppliers != null)
                 {
-                    transmitObjectObject["Suppliers"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectsuppliers);
+                    transmitObjectObject["Suppliers"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectsuppliers);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectvATNumber != null)
+                if (__workflow_saveCompanyWrappertransmitObjectvATNumber != null)
                 {
-                    transmitObjectObject["VATNumber"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectvATNumber);
+                    transmitObjectObject["VATNumber"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectvATNumber);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectwebPage != null)
+                if (__workflow_saveCompanyWrappertransmitObjectwebPage != null)
                 {
-                    transmitObjectObject["WebPage"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectwebPage);
+                    transmitObjectObject["WebPage"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectwebPage);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectadditionalDiscount != null)
+                if (__workflow_saveCompanyWrappertransmitObjectadditionalDiscount != null)
                 {
-                    transmitObjectObject["AdditionalDiscount"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectadditionalDiscount);
+                    transmitObjectObject["AdditionalDiscount"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectadditionalDiscount);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectiD != null)
+                if (__workflow_saveCompanyWrappertransmitObjectiD != null)
                 {
-                    transmitObjectObject["ID"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectiD);
+                    transmitObjectObject["ID"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectiD);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectcompetitor != null)
+                if (__workflow_saveCompanyWrappertransmitObjectcompetitor != null)
                 {
-                    transmitObjectObject["Competitor"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectcompetitor);
+                    transmitObjectObject["Competitor"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectcompetitor);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectsalePriceGuid != null)
+                if (__workflow_saveCompanyWrappertransmitObjectsalePriceGuid != null)
                 {
-                    transmitObjectObject["SalePriceGuid"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectsalePriceGuid);
+                    transmitObjectObject["SalePriceGuid"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectsalePriceGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectnotificationByEmail != null)
+                if (__workflow_saveCompanyWrappertransmitObjectnotificationByEmail != null)
                 {
-                    transmitObjectObject["NotificationByEmail"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectnotificationByEmail);
+                    transmitObjectObject["NotificationByEmail"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectnotificationByEmail);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectnotificationBy != null)
+                if (__workflow_saveCompanyWrappertransmitObjectnotificationBy != null)
                 {
-                    transmitObjectObject["NotificationBy"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectnotificationBy);
+                    transmitObjectObject["NotificationBy"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectnotificationBy);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectlastActivity != null)
+                if (__workflow_saveCompanyWrappertransmitObjectlastActivity != null)
                 {
-                    transmitObjectObject["LastActivity"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectlastActivity);
+                    transmitObjectObject["LastActivity"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectlastActivity);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectnextStep != null)
+                if (__workflow_saveCompanyWrappertransmitObjectnextStep != null)
                 {
-                    transmitObjectObject["NextStep"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectnextStep);
+                    transmitObjectObject["NextStep"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectnextStep);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectemailOptOut != null)
+                if (__workflow_saveCompanyWrappertransmitObjectemailOptOut != null)
                 {
-                    transmitObjectObject["EmailOptOut"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectemailOptOut);
+                    transmitObjectObject["EmailOptOut"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectemailOptOut);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjecttypeEn != null)
+                if (__workflow_saveCompanyWrappertransmitObjecttypeEn != null)
                 {
-                    transmitObjectObject["TypeEn"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjecttypeEn);
+                    transmitObjectObject["TypeEn"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjecttypeEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectstateEn != null)
+                if (__workflow_saveCompanyWrappertransmitObjectstateEn != null)
                 {
-                    transmitObjectObject["StateEn"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectstateEn);
+                    transmitObjectObject["StateEn"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectstateEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectprevStateEn != null)
+                if (__workflow_saveCompanyWrappertransmitObjectprevStateEn != null)
                 {
-                    transmitObjectObject["PrevStateEn"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectprevStateEn);
+                    transmitObjectObject["PrevStateEn"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectprevStateEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectpicture != null)
+                if (__workflow_saveCompanyWrappertransmitObjectpicture != null)
                 {
-                    transmitObjectObject["Picture"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectpicture);
+                    transmitObjectObject["Picture"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectpicture);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectpictureWidth != null)
+                if (__workflow_saveCompanyWrappertransmitObjectpictureWidth != null)
                 {
-                    transmitObjectObject["PictureWidth"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectpictureWidth);
+                    transmitObjectObject["PictureWidth"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectpictureWidth);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectpictureHeight != null)
+                if (__workflow_saveCompanyWrappertransmitObjectpictureHeight != null)
                 {
-                    transmitObjectObject["PictureHeight"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectpictureHeight);
+                    transmitObjectObject["PictureHeight"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectpictureHeight);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectisPrivate != null)
+                if (__workflow_saveCompanyWrappertransmitObjectisPrivate != null)
                 {
-                    transmitObjectObject["IsPrivate"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectisPrivate);
+                    transmitObjectObject["IsPrivate"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectisPrivate);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectitemCreated != null)
+                if (__workflow_saveCompanyWrappertransmitObjectitemCreated != null)
                 {
-                    transmitObjectObject["ItemCreated"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectitemCreated);
+                    transmitObjectObject["ItemCreated"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectitemCreated);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectitemChanged != null)
+                if (__workflow_saveCompanyWrappertransmitObjectitemChanged != null)
                 {
-                    transmitObjectObject["ItemChanged"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectitemChanged);
+                    transmitObjectObject["ItemChanged"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectitemChanged);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectfileAs != null)
+                if (__workflow_saveCompanyWrappertransmitObjectfileAs != null)
                 {
-                    transmitObjectObject["FileAs"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectfileAs);
+                    transmitObjectObject["FileAs"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectfileAs);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectownerGUID != null)
+                if (__workflow_saveCompanyWrappertransmitObjectownerGUID != null)
                 {
-                    transmitObjectObject["OwnerGUID"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectownerGUID);
+                    transmitObjectObject["OwnerGUID"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectownerGUID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectcreatedByGUID != null)
+                if (__workflow_saveCompanyWrappertransmitObjectcreatedByGUID != null)
                 {
-                    transmitObjectObject["CreatedByGUID"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectcreatedByGUID);
+                    transmitObjectObject["CreatedByGUID"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectcreatedByGUID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectmodifiedByGUID != null)
+                if (__workflow_saveCompanyWrappertransmitObjectmodifiedByGUID != null)
                 {
-                    transmitObjectObject["ModifiedByGUID"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectmodifiedByGUID);
+                    transmitObjectObject["ModifiedByGUID"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectmodifiedByGUID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectadditionalFields != null)
+                if (__workflow_saveCompanyWrappertransmitObjectadditionalFields != null)
                 {
-                    transmitObjectObject["AdditionalFields"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectadditionalFields);
+                    transmitObjectObject["AdditionalFields"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectadditionalFields);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectitemGUID != null)
+                if (__workflow_saveCompanyWrappertransmitObjectitemGUID != null)
                 {
-                    transmitObjectObject["ItemGUID"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectitemGUID);
+                    transmitObjectObject["ItemGUID"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectitemGUID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveCompanyWrappertransmitObjectitemVersion != null)
+                if (__workflow_saveCompanyWrappertransmitObjectitemVersion != null)
                 {
-                    transmitObjectObject["ItemVersion"] = ExpressionConverter.ConvertO(saveCompanyWrappertransmitObjectitemVersion);
+                    transmitObjectObject["ItemVersion"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrappertransmitObjectitemVersion);
                     transmitObjectObjectpropCount++;
                 }
 
@@ -705,15 +730,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                     saveCompanyWrapperpropCount++;
                 }
 
-                if (saveCompanyWrapperdieOnItemConflict != null)
+                if (__workflow_saveCompanyWrapperdieOnItemConflict != null)
                 {
-                    saveCompanyWrapper["dieOnItemConflict"] = ExpressionConverter.ConvertO(saveCompanyWrapperdieOnItemConflict);
+                    saveCompanyWrapper["dieOnItemConflict"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrapperdieOnItemConflict);
                     saveCompanyWrapperpropCount++;
                 }
 
-                if (saveCompanyWrapperignoredUserErrorMessages != null)
+                if (__workflow_saveCompanyWrapperignoredUserErrorMessages != null)
                 {
-                    saveCompanyWrapper["ignoredUserErrorMessages"] = ExpressionConverter.ConvertO(saveCompanyWrapperignoredUserErrorMessages);
+                    saveCompanyWrapper["ignoredUserErrorMessages"] = ExpressionConverter.ConvertO(__workflow_saveCompanyWrapperignoredUserErrorMessages);
                     saveCompanyWrapperpropCount++;
                 }
 
@@ -727,84 +752,146 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
-        [WorkflowExpressionFactory(nameof(__BuildSaveContact))]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesSaveResponse> SaveContact([WorkflowExpression] Func<string> saveContactWrappertransmitObjectbusinessAddressStreet = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjectbusinessAddressCity = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjectbusinessAddressState = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjectbusinessAddressCountryEn = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjectbusinessAddressPOBox = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjectbusinessAddressPostalCode = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjecthomeAddressStreet = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjecthomeAddressCity = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjecthomeAddressState = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjecthomeAddressCountryEn = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjecthomeAddressPOBox = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjecthomeAddressPostalCode = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjectotherAddressStreet = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjectotherAddressCity = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjectotherAddressState = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjectotherAddressCountryEn = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjectotherAddressPOBox = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjectotherAddressPostalCode = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjectcompany = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjectemail1Address = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjectemail2Address = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjectemail3Address = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjectfirstName = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjectiCQ = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjectimportanceEn = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjectlastName = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjectmiddleName = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjectmSN = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjectnote = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjectprefixEn = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjectsuffixEn = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjectskype = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjecttelephoneNumber1 = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjecttelephoneNumber2 = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjecttelephoneNumber3 = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjecttelephoneNumber4 = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjecttelephoneNumber5 = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjecttelephoneNumber6 = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjecttelephoneNumber1Normalized = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjecttelephoneNumber2Normalized = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjecttelephoneNumber3Normalized = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjecttelephoneNumber4Normalized = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjecttelephoneNumber5Normalized = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjecttelephoneNumber6Normalized = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjectdepartment = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjecttitle = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjectwebPage = null, [WorkflowExpression] Func<bool> saveContactWrappertransmitObjectdoNotSendNewsletter = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjectprofilePicture = null, [WorkflowExpression] Func<int> saveContactWrappertransmitObjectprofilePictureWidth = null, [WorkflowExpression] Func<int> saveContactWrappertransmitObjectprofilePictureHeight = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjectlastActivity = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjectnextStep = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjecttypeEn = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjectstateEn = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjectprevStateEn = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjectcompaniesCompanyGuid = null, [WorkflowExpression] Func<bool> saveContactWrappertransmitObjectisPrivate = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjectitemCreated = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjectitemChanged = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjectfileAs = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjectownerGUID = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjectcreatedByGUID = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjectmodifiedByGUID = null, [WorkflowExpression] Func<object> saveContactWrappertransmitObjectadditionalFields = null, [WorkflowExpression] Func<string> saveContactWrappertransmitObjectitemGUID = null, [WorkflowExpression] Func<int> saveContactWrappertransmitObjectitemVersion = null, [WorkflowExpression] Func<bool> saveContactWrapperdieOnItemConflict = null, [WorkflowExpression] Func<string[]> saveContactWrapperignoredUserErrorMessages = null)
+        public IBodyWorkflowAction<EWayWcfServiceResponsesSaveResponse> SaveContact(Expression<Func<string>> saveContactWrappertransmitObjectbusinessAddressStreet = null, Expression<Func<string>> saveContactWrappertransmitObjectbusinessAddressCity = null, Expression<Func<string>> saveContactWrappertransmitObjectbusinessAddressState = null, Expression<Func<string>> saveContactWrappertransmitObjectbusinessAddressCountryEn = null, Expression<Func<string>> saveContactWrappertransmitObjectbusinessAddressPOBox = null, Expression<Func<string>> saveContactWrappertransmitObjectbusinessAddressPostalCode = null, Expression<Func<string>> saveContactWrappertransmitObjecthomeAddressStreet = null, Expression<Func<string>> saveContactWrappertransmitObjecthomeAddressCity = null, Expression<Func<string>> saveContactWrappertransmitObjecthomeAddressState = null, Expression<Func<string>> saveContactWrappertransmitObjecthomeAddressCountryEn = null, Expression<Func<string>> saveContactWrappertransmitObjecthomeAddressPOBox = null, Expression<Func<string>> saveContactWrappertransmitObjecthomeAddressPostalCode = null, Expression<Func<string>> saveContactWrappertransmitObjectotherAddressStreet = null, Expression<Func<string>> saveContactWrappertransmitObjectotherAddressCity = null, Expression<Func<string>> saveContactWrappertransmitObjectotherAddressState = null, Expression<Func<string>> saveContactWrappertransmitObjectotherAddressCountryEn = null, Expression<Func<string>> saveContactWrappertransmitObjectotherAddressPOBox = null, Expression<Func<string>> saveContactWrappertransmitObjectotherAddressPostalCode = null, Expression<Func<string>> saveContactWrappertransmitObjectcompany = null, Expression<Func<string>> saveContactWrappertransmitObjectemail1Address = null, Expression<Func<string>> saveContactWrappertransmitObjectemail2Address = null, Expression<Func<string>> saveContactWrappertransmitObjectemail3Address = null, Expression<Func<string>> saveContactWrappertransmitObjectfirstName = null, Expression<Func<string>> saveContactWrappertransmitObjectiCQ = null, Expression<Func<string>> saveContactWrappertransmitObjectimportanceEn = null, Expression<Func<string>> saveContactWrappertransmitObjectlastName = null, Expression<Func<string>> saveContactWrappertransmitObjectmiddleName = null, Expression<Func<string>> saveContactWrappertransmitObjectmSN = null, Expression<Func<string>> saveContactWrappertransmitObjectnote = null, Expression<Func<string>> saveContactWrappertransmitObjectprefixEn = null, Expression<Func<string>> saveContactWrappertransmitObjectsuffixEn = null, Expression<Func<string>> saveContactWrappertransmitObjectskype = null, Expression<Func<string>> saveContactWrappertransmitObjecttelephoneNumber1 = null, Expression<Func<string>> saveContactWrappertransmitObjecttelephoneNumber2 = null, Expression<Func<string>> saveContactWrappertransmitObjecttelephoneNumber3 = null, Expression<Func<string>> saveContactWrappertransmitObjecttelephoneNumber4 = null, Expression<Func<string>> saveContactWrappertransmitObjecttelephoneNumber5 = null, Expression<Func<string>> saveContactWrappertransmitObjecttelephoneNumber6 = null, Expression<Func<string>> saveContactWrappertransmitObjecttelephoneNumber1Normalized = null, Expression<Func<string>> saveContactWrappertransmitObjecttelephoneNumber2Normalized = null, Expression<Func<string>> saveContactWrappertransmitObjecttelephoneNumber3Normalized = null, Expression<Func<string>> saveContactWrappertransmitObjecttelephoneNumber4Normalized = null, Expression<Func<string>> saveContactWrappertransmitObjecttelephoneNumber5Normalized = null, Expression<Func<string>> saveContactWrappertransmitObjecttelephoneNumber6Normalized = null, Expression<Func<string>> saveContactWrappertransmitObjectdepartment = null, Expression<Func<string>> saveContactWrappertransmitObjecttitle = null, Expression<Func<string>> saveContactWrappertransmitObjectwebPage = null, Expression<Func<bool>> saveContactWrappertransmitObjectdoNotSendNewsletter = null, Expression<Func<string>> saveContactWrappertransmitObjectprofilePicture = null, Expression<Func<int>> saveContactWrappertransmitObjectprofilePictureWidth = null, Expression<Func<int>> saveContactWrappertransmitObjectprofilePictureHeight = null, Expression<Func<string>> saveContactWrappertransmitObjectlastActivity = null, Expression<Func<string>> saveContactWrappertransmitObjectnextStep = null, Expression<Func<string>> saveContactWrappertransmitObjecttypeEn = null, Expression<Func<string>> saveContactWrappertransmitObjectstateEn = null, Expression<Func<string>> saveContactWrappertransmitObjectprevStateEn = null, Expression<Func<string>> saveContactWrappertransmitObjectcompaniesCompanyGuid = null, Expression<Func<bool>> saveContactWrappertransmitObjectisPrivate = null, Expression<Func<string>> saveContactWrappertransmitObjectitemCreated = null, Expression<Func<string>> saveContactWrappertransmitObjectitemChanged = null, Expression<Func<string>> saveContactWrappertransmitObjectfileAs = null, Expression<Func<string>> saveContactWrappertransmitObjectownerGUID = null, Expression<Func<string>> saveContactWrappertransmitObjectcreatedByGUID = null, Expression<Func<string>> saveContactWrappertransmitObjectmodifiedByGUID = null, Expression<Func<object>> saveContactWrappertransmitObjectadditionalFields = null, Expression<Func<string>> saveContactWrappertransmitObjectitemGUID = null, Expression<Func<int>> saveContactWrappertransmitObjectitemVersion = null, Expression<Func<bool>> saveContactWrapperdieOnItemConflict = null, Expression<Func<string[]>> saveContactWrapperignoredUserErrorMessages = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesSaveResponse> __BuildSaveContact(WorkflowExpression<string> saveContactWrappertransmitObjectbusinessAddressStreet = null, WorkflowExpression<string> saveContactWrappertransmitObjectbusinessAddressCity = null, WorkflowExpression<string> saveContactWrappertransmitObjectbusinessAddressState = null, WorkflowExpression<string> saveContactWrappertransmitObjectbusinessAddressCountryEn = null, WorkflowExpression<string> saveContactWrappertransmitObjectbusinessAddressPOBox = null, WorkflowExpression<string> saveContactWrappertransmitObjectbusinessAddressPostalCode = null, WorkflowExpression<string> saveContactWrappertransmitObjecthomeAddressStreet = null, WorkflowExpression<string> saveContactWrappertransmitObjecthomeAddressCity = null, WorkflowExpression<string> saveContactWrappertransmitObjecthomeAddressState = null, WorkflowExpression<string> saveContactWrappertransmitObjecthomeAddressCountryEn = null, WorkflowExpression<string> saveContactWrappertransmitObjecthomeAddressPOBox = null, WorkflowExpression<string> saveContactWrappertransmitObjecthomeAddressPostalCode = null, WorkflowExpression<string> saveContactWrappertransmitObjectotherAddressStreet = null, WorkflowExpression<string> saveContactWrappertransmitObjectotherAddressCity = null, WorkflowExpression<string> saveContactWrappertransmitObjectotherAddressState = null, WorkflowExpression<string> saveContactWrappertransmitObjectotherAddressCountryEn = null, WorkflowExpression<string> saveContactWrappertransmitObjectotherAddressPOBox = null, WorkflowExpression<string> saveContactWrappertransmitObjectotherAddressPostalCode = null, WorkflowExpression<string> saveContactWrappertransmitObjectcompany = null, WorkflowExpression<string> saveContactWrappertransmitObjectemail1Address = null, WorkflowExpression<string> saveContactWrappertransmitObjectemail2Address = null, WorkflowExpression<string> saveContactWrappertransmitObjectemail3Address = null, WorkflowExpression<string> saveContactWrappertransmitObjectfirstName = null, WorkflowExpression<string> saveContactWrappertransmitObjectiCQ = null, WorkflowExpression<string> saveContactWrappertransmitObjectimportanceEn = null, WorkflowExpression<string> saveContactWrappertransmitObjectlastName = null, WorkflowExpression<string> saveContactWrappertransmitObjectmiddleName = null, WorkflowExpression<string> saveContactWrappertransmitObjectmSN = null, WorkflowExpression<string> saveContactWrappertransmitObjectnote = null, WorkflowExpression<string> saveContactWrappertransmitObjectprefixEn = null, WorkflowExpression<string> saveContactWrappertransmitObjectsuffixEn = null, WorkflowExpression<string> saveContactWrappertransmitObjectskype = null, WorkflowExpression<string> saveContactWrappertransmitObjecttelephoneNumber1 = null, WorkflowExpression<string> saveContactWrappertransmitObjecttelephoneNumber2 = null, WorkflowExpression<string> saveContactWrappertransmitObjecttelephoneNumber3 = null, WorkflowExpression<string> saveContactWrappertransmitObjecttelephoneNumber4 = null, WorkflowExpression<string> saveContactWrappertransmitObjecttelephoneNumber5 = null, WorkflowExpression<string> saveContactWrappertransmitObjecttelephoneNumber6 = null, WorkflowExpression<string> saveContactWrappertransmitObjecttelephoneNumber1Normalized = null, WorkflowExpression<string> saveContactWrappertransmitObjecttelephoneNumber2Normalized = null, WorkflowExpression<string> saveContactWrappertransmitObjecttelephoneNumber3Normalized = null, WorkflowExpression<string> saveContactWrappertransmitObjecttelephoneNumber4Normalized = null, WorkflowExpression<string> saveContactWrappertransmitObjecttelephoneNumber5Normalized = null, WorkflowExpression<string> saveContactWrappertransmitObjecttelephoneNumber6Normalized = null, WorkflowExpression<string> saveContactWrappertransmitObjectdepartment = null, WorkflowExpression<string> saveContactWrappertransmitObjecttitle = null, WorkflowExpression<string> saveContactWrappertransmitObjectwebPage = null, WorkflowExpression<bool> saveContactWrappertransmitObjectdoNotSendNewsletter = null, WorkflowExpression<string> saveContactWrappertransmitObjectprofilePicture = null, WorkflowExpression<int> saveContactWrappertransmitObjectprofilePictureWidth = null, WorkflowExpression<int> saveContactWrappertransmitObjectprofilePictureHeight = null, WorkflowExpression<string> saveContactWrappertransmitObjectlastActivity = null, WorkflowExpression<string> saveContactWrappertransmitObjectnextStep = null, WorkflowExpression<string> saveContactWrappertransmitObjecttypeEn = null, WorkflowExpression<string> saveContactWrappertransmitObjectstateEn = null, WorkflowExpression<string> saveContactWrappertransmitObjectprevStateEn = null, WorkflowExpression<string> saveContactWrappertransmitObjectcompaniesCompanyGuid = null, WorkflowExpression<bool> saveContactWrappertransmitObjectisPrivate = null, WorkflowExpression<string> saveContactWrappertransmitObjectitemCreated = null, WorkflowExpression<string> saveContactWrappertransmitObjectitemChanged = null, WorkflowExpression<string> saveContactWrappertransmitObjectfileAs = null, WorkflowExpression<string> saveContactWrappertransmitObjectownerGUID = null, WorkflowExpression<string> saveContactWrappertransmitObjectcreatedByGUID = null, WorkflowExpression<string> saveContactWrappertransmitObjectmodifiedByGUID = null, WorkflowExpression<object> saveContactWrappertransmitObjectadditionalFields = null, WorkflowExpression<string> saveContactWrappertransmitObjectitemGUID = null, WorkflowExpression<int> saveContactWrappertransmitObjectitemVersion = null, WorkflowExpression<bool> saveContactWrapperdieOnItemConflict = null, WorkflowExpression<string[]> saveContactWrapperignoredUserErrorMessages = null)
-        {
-            WorkflowExpression.Validate(saveContactWrappertransmitObjectbusinessAddressStreet, nameof(saveContactWrappertransmitObjectbusinessAddressStreet), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjectbusinessAddressCity, nameof(saveContactWrappertransmitObjectbusinessAddressCity), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjectbusinessAddressState, nameof(saveContactWrappertransmitObjectbusinessAddressState), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjectbusinessAddressCountryEn, nameof(saveContactWrappertransmitObjectbusinessAddressCountryEn), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjectbusinessAddressPOBox, nameof(saveContactWrappertransmitObjectbusinessAddressPOBox), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjectbusinessAddressPostalCode, nameof(saveContactWrappertransmitObjectbusinessAddressPostalCode), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjecthomeAddressStreet, nameof(saveContactWrappertransmitObjecthomeAddressStreet), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjecthomeAddressCity, nameof(saveContactWrappertransmitObjecthomeAddressCity), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjecthomeAddressState, nameof(saveContactWrappertransmitObjecthomeAddressState), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjecthomeAddressCountryEn, nameof(saveContactWrappertransmitObjecthomeAddressCountryEn), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjecthomeAddressPOBox, nameof(saveContactWrappertransmitObjecthomeAddressPOBox), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjecthomeAddressPostalCode, nameof(saveContactWrappertransmitObjecthomeAddressPostalCode), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjectotherAddressStreet, nameof(saveContactWrappertransmitObjectotherAddressStreet), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjectotherAddressCity, nameof(saveContactWrappertransmitObjectotherAddressCity), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjectotherAddressState, nameof(saveContactWrappertransmitObjectotherAddressState), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjectotherAddressCountryEn, nameof(saveContactWrappertransmitObjectotherAddressCountryEn), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjectotherAddressPOBox, nameof(saveContactWrappertransmitObjectotherAddressPOBox), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjectotherAddressPostalCode, nameof(saveContactWrappertransmitObjectotherAddressPostalCode), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjectcompany, nameof(saveContactWrappertransmitObjectcompany), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjectemail1Address, nameof(saveContactWrappertransmitObjectemail1Address), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjectemail2Address, nameof(saveContactWrappertransmitObjectemail2Address), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjectemail3Address, nameof(saveContactWrappertransmitObjectemail3Address), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjectfirstName, nameof(saveContactWrappertransmitObjectfirstName), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjectiCQ, nameof(saveContactWrappertransmitObjectiCQ), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjectimportanceEn, nameof(saveContactWrappertransmitObjectimportanceEn), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjectlastName, nameof(saveContactWrappertransmitObjectlastName), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjectmiddleName, nameof(saveContactWrappertransmitObjectmiddleName), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjectmSN, nameof(saveContactWrappertransmitObjectmSN), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjectnote, nameof(saveContactWrappertransmitObjectnote), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjectprefixEn, nameof(saveContactWrappertransmitObjectprefixEn), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjectsuffixEn, nameof(saveContactWrappertransmitObjectsuffixEn), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjectskype, nameof(saveContactWrappertransmitObjectskype), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjecttelephoneNumber1, nameof(saveContactWrappertransmitObjecttelephoneNumber1), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjecttelephoneNumber2, nameof(saveContactWrappertransmitObjecttelephoneNumber2), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjecttelephoneNumber3, nameof(saveContactWrappertransmitObjecttelephoneNumber3), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjecttelephoneNumber4, nameof(saveContactWrappertransmitObjecttelephoneNumber4), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjecttelephoneNumber5, nameof(saveContactWrappertransmitObjecttelephoneNumber5), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjecttelephoneNumber6, nameof(saveContactWrappertransmitObjecttelephoneNumber6), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjecttelephoneNumber1Normalized, nameof(saveContactWrappertransmitObjecttelephoneNumber1Normalized), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjecttelephoneNumber2Normalized, nameof(saveContactWrappertransmitObjecttelephoneNumber2Normalized), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjecttelephoneNumber3Normalized, nameof(saveContactWrappertransmitObjecttelephoneNumber3Normalized), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjecttelephoneNumber4Normalized, nameof(saveContactWrappertransmitObjecttelephoneNumber4Normalized), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjecttelephoneNumber5Normalized, nameof(saveContactWrappertransmitObjecttelephoneNumber5Normalized), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjecttelephoneNumber6Normalized, nameof(saveContactWrappertransmitObjecttelephoneNumber6Normalized), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjectdepartment, nameof(saveContactWrappertransmitObjectdepartment), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjecttitle, nameof(saveContactWrappertransmitObjecttitle), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjectwebPage, nameof(saveContactWrappertransmitObjectwebPage), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjectdoNotSendNewsletter, nameof(saveContactWrappertransmitObjectdoNotSendNewsletter), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjectprofilePicture, nameof(saveContactWrappertransmitObjectprofilePicture), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjectprofilePictureWidth, nameof(saveContactWrappertransmitObjectprofilePictureWidth), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjectprofilePictureHeight, nameof(saveContactWrappertransmitObjectprofilePictureHeight), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjectlastActivity, nameof(saveContactWrappertransmitObjectlastActivity), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjectnextStep, nameof(saveContactWrappertransmitObjectnextStep), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjecttypeEn, nameof(saveContactWrappertransmitObjecttypeEn), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjectstateEn, nameof(saveContactWrappertransmitObjectstateEn), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjectprevStateEn, nameof(saveContactWrappertransmitObjectprevStateEn), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjectcompaniesCompanyGuid, nameof(saveContactWrappertransmitObjectcompaniesCompanyGuid), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjectisPrivate, nameof(saveContactWrappertransmitObjectisPrivate), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjectitemCreated, nameof(saveContactWrappertransmitObjectitemCreated), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjectitemChanged, nameof(saveContactWrappertransmitObjectitemChanged), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjectfileAs, nameof(saveContactWrappertransmitObjectfileAs), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjectownerGUID, nameof(saveContactWrappertransmitObjectownerGUID), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjectcreatedByGUID, nameof(saveContactWrappertransmitObjectcreatedByGUID), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjectmodifiedByGUID, nameof(saveContactWrappertransmitObjectmodifiedByGUID), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjectadditionalFields, nameof(saveContactWrappertransmitObjectadditionalFields), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjectitemGUID, nameof(saveContactWrappertransmitObjectitemGUID), required: false);
-            WorkflowExpression.Validate(saveContactWrappertransmitObjectitemVersion, nameof(saveContactWrappertransmitObjectitemVersion), required: false);
-            WorkflowExpression.Validate(saveContactWrapperdieOnItemConflict, nameof(saveContactWrapperdieOnItemConflict), required: false);
-            WorkflowExpression.Validate(saveContactWrapperignoredUserErrorMessages, nameof(saveContactWrapperignoredUserErrorMessages), required: false);
+            var __workflow_saveContactWrappertransmitObjectbusinessAddressStreet = saveContactWrappertransmitObjectbusinessAddressStreet == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjectbusinessAddressStreet);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjectbusinessAddressStreet, nameof(saveContactWrappertransmitObjectbusinessAddressStreet), required: false);
+            var __workflow_saveContactWrappertransmitObjectbusinessAddressCity = saveContactWrappertransmitObjectbusinessAddressCity == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjectbusinessAddressCity);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjectbusinessAddressCity, nameof(saveContactWrappertransmitObjectbusinessAddressCity), required: false);
+            var __workflow_saveContactWrappertransmitObjectbusinessAddressState = saveContactWrappertransmitObjectbusinessAddressState == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjectbusinessAddressState);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjectbusinessAddressState, nameof(saveContactWrappertransmitObjectbusinessAddressState), required: false);
+            var __workflow_saveContactWrappertransmitObjectbusinessAddressCountryEn = saveContactWrappertransmitObjectbusinessAddressCountryEn == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjectbusinessAddressCountryEn);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjectbusinessAddressCountryEn, nameof(saveContactWrappertransmitObjectbusinessAddressCountryEn), required: false);
+            var __workflow_saveContactWrappertransmitObjectbusinessAddressPOBox = saveContactWrappertransmitObjectbusinessAddressPOBox == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjectbusinessAddressPOBox);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjectbusinessAddressPOBox, nameof(saveContactWrappertransmitObjectbusinessAddressPOBox), required: false);
+            var __workflow_saveContactWrappertransmitObjectbusinessAddressPostalCode = saveContactWrappertransmitObjectbusinessAddressPostalCode == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjectbusinessAddressPostalCode);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjectbusinessAddressPostalCode, nameof(saveContactWrappertransmitObjectbusinessAddressPostalCode), required: false);
+            var __workflow_saveContactWrappertransmitObjecthomeAddressStreet = saveContactWrappertransmitObjecthomeAddressStreet == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjecthomeAddressStreet);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjecthomeAddressStreet, nameof(saveContactWrappertransmitObjecthomeAddressStreet), required: false);
+            var __workflow_saveContactWrappertransmitObjecthomeAddressCity = saveContactWrappertransmitObjecthomeAddressCity == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjecthomeAddressCity);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjecthomeAddressCity, nameof(saveContactWrappertransmitObjecthomeAddressCity), required: false);
+            var __workflow_saveContactWrappertransmitObjecthomeAddressState = saveContactWrappertransmitObjecthomeAddressState == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjecthomeAddressState);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjecthomeAddressState, nameof(saveContactWrappertransmitObjecthomeAddressState), required: false);
+            var __workflow_saveContactWrappertransmitObjecthomeAddressCountryEn = saveContactWrappertransmitObjecthomeAddressCountryEn == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjecthomeAddressCountryEn);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjecthomeAddressCountryEn, nameof(saveContactWrappertransmitObjecthomeAddressCountryEn), required: false);
+            var __workflow_saveContactWrappertransmitObjecthomeAddressPOBox = saveContactWrappertransmitObjecthomeAddressPOBox == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjecthomeAddressPOBox);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjecthomeAddressPOBox, nameof(saveContactWrappertransmitObjecthomeAddressPOBox), required: false);
+            var __workflow_saveContactWrappertransmitObjecthomeAddressPostalCode = saveContactWrappertransmitObjecthomeAddressPostalCode == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjecthomeAddressPostalCode);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjecthomeAddressPostalCode, nameof(saveContactWrappertransmitObjecthomeAddressPostalCode), required: false);
+            var __workflow_saveContactWrappertransmitObjectotherAddressStreet = saveContactWrappertransmitObjectotherAddressStreet == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjectotherAddressStreet);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjectotherAddressStreet, nameof(saveContactWrappertransmitObjectotherAddressStreet), required: false);
+            var __workflow_saveContactWrappertransmitObjectotherAddressCity = saveContactWrappertransmitObjectotherAddressCity == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjectotherAddressCity);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjectotherAddressCity, nameof(saveContactWrappertransmitObjectotherAddressCity), required: false);
+            var __workflow_saveContactWrappertransmitObjectotherAddressState = saveContactWrappertransmitObjectotherAddressState == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjectotherAddressState);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjectotherAddressState, nameof(saveContactWrappertransmitObjectotherAddressState), required: false);
+            var __workflow_saveContactWrappertransmitObjectotherAddressCountryEn = saveContactWrappertransmitObjectotherAddressCountryEn == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjectotherAddressCountryEn);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjectotherAddressCountryEn, nameof(saveContactWrappertransmitObjectotherAddressCountryEn), required: false);
+            var __workflow_saveContactWrappertransmitObjectotherAddressPOBox = saveContactWrappertransmitObjectotherAddressPOBox == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjectotherAddressPOBox);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjectotherAddressPOBox, nameof(saveContactWrappertransmitObjectotherAddressPOBox), required: false);
+            var __workflow_saveContactWrappertransmitObjectotherAddressPostalCode = saveContactWrappertransmitObjectotherAddressPostalCode == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjectotherAddressPostalCode);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjectotherAddressPostalCode, nameof(saveContactWrappertransmitObjectotherAddressPostalCode), required: false);
+            var __workflow_saveContactWrappertransmitObjectcompany = saveContactWrappertransmitObjectcompany == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjectcompany);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjectcompany, nameof(saveContactWrappertransmitObjectcompany), required: false);
+            var __workflow_saveContactWrappertransmitObjectemail1Address = saveContactWrappertransmitObjectemail1Address == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjectemail1Address);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjectemail1Address, nameof(saveContactWrappertransmitObjectemail1Address), required: false);
+            var __workflow_saveContactWrappertransmitObjectemail2Address = saveContactWrappertransmitObjectemail2Address == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjectemail2Address);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjectemail2Address, nameof(saveContactWrappertransmitObjectemail2Address), required: false);
+            var __workflow_saveContactWrappertransmitObjectemail3Address = saveContactWrappertransmitObjectemail3Address == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjectemail3Address);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjectemail3Address, nameof(saveContactWrappertransmitObjectemail3Address), required: false);
+            var __workflow_saveContactWrappertransmitObjectfirstName = saveContactWrappertransmitObjectfirstName == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjectfirstName);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjectfirstName, nameof(saveContactWrappertransmitObjectfirstName), required: false);
+            var __workflow_saveContactWrappertransmitObjectiCQ = saveContactWrappertransmitObjectiCQ == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjectiCQ);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjectiCQ, nameof(saveContactWrappertransmitObjectiCQ), required: false);
+            var __workflow_saveContactWrappertransmitObjectimportanceEn = saveContactWrappertransmitObjectimportanceEn == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjectimportanceEn);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjectimportanceEn, nameof(saveContactWrappertransmitObjectimportanceEn), required: false);
+            var __workflow_saveContactWrappertransmitObjectlastName = saveContactWrappertransmitObjectlastName == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjectlastName);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjectlastName, nameof(saveContactWrappertransmitObjectlastName), required: false);
+            var __workflow_saveContactWrappertransmitObjectmiddleName = saveContactWrappertransmitObjectmiddleName == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjectmiddleName);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjectmiddleName, nameof(saveContactWrappertransmitObjectmiddleName), required: false);
+            var __workflow_saveContactWrappertransmitObjectmSN = saveContactWrappertransmitObjectmSN == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjectmSN);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjectmSN, nameof(saveContactWrappertransmitObjectmSN), required: false);
+            var __workflow_saveContactWrappertransmitObjectnote = saveContactWrappertransmitObjectnote == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjectnote);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjectnote, nameof(saveContactWrappertransmitObjectnote), required: false);
+            var __workflow_saveContactWrappertransmitObjectprefixEn = saveContactWrappertransmitObjectprefixEn == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjectprefixEn);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjectprefixEn, nameof(saveContactWrappertransmitObjectprefixEn), required: false);
+            var __workflow_saveContactWrappertransmitObjectsuffixEn = saveContactWrappertransmitObjectsuffixEn == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjectsuffixEn);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjectsuffixEn, nameof(saveContactWrappertransmitObjectsuffixEn), required: false);
+            var __workflow_saveContactWrappertransmitObjectskype = saveContactWrappertransmitObjectskype == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjectskype);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjectskype, nameof(saveContactWrappertransmitObjectskype), required: false);
+            var __workflow_saveContactWrappertransmitObjecttelephoneNumber1 = saveContactWrappertransmitObjecttelephoneNumber1 == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjecttelephoneNumber1);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjecttelephoneNumber1, nameof(saveContactWrappertransmitObjecttelephoneNumber1), required: false);
+            var __workflow_saveContactWrappertransmitObjecttelephoneNumber2 = saveContactWrappertransmitObjecttelephoneNumber2 == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjecttelephoneNumber2);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjecttelephoneNumber2, nameof(saveContactWrappertransmitObjecttelephoneNumber2), required: false);
+            var __workflow_saveContactWrappertransmitObjecttelephoneNumber3 = saveContactWrappertransmitObjecttelephoneNumber3 == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjecttelephoneNumber3);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjecttelephoneNumber3, nameof(saveContactWrappertransmitObjecttelephoneNumber3), required: false);
+            var __workflow_saveContactWrappertransmitObjecttelephoneNumber4 = saveContactWrappertransmitObjecttelephoneNumber4 == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjecttelephoneNumber4);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjecttelephoneNumber4, nameof(saveContactWrappertransmitObjecttelephoneNumber4), required: false);
+            var __workflow_saveContactWrappertransmitObjecttelephoneNumber5 = saveContactWrappertransmitObjecttelephoneNumber5 == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjecttelephoneNumber5);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjecttelephoneNumber5, nameof(saveContactWrappertransmitObjecttelephoneNumber5), required: false);
+            var __workflow_saveContactWrappertransmitObjecttelephoneNumber6 = saveContactWrappertransmitObjecttelephoneNumber6 == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjecttelephoneNumber6);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjecttelephoneNumber6, nameof(saveContactWrappertransmitObjecttelephoneNumber6), required: false);
+            var __workflow_saveContactWrappertransmitObjecttelephoneNumber1Normalized = saveContactWrappertransmitObjecttelephoneNumber1Normalized == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjecttelephoneNumber1Normalized);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjecttelephoneNumber1Normalized, nameof(saveContactWrappertransmitObjecttelephoneNumber1Normalized), required: false);
+            var __workflow_saveContactWrappertransmitObjecttelephoneNumber2Normalized = saveContactWrappertransmitObjecttelephoneNumber2Normalized == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjecttelephoneNumber2Normalized);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjecttelephoneNumber2Normalized, nameof(saveContactWrappertransmitObjecttelephoneNumber2Normalized), required: false);
+            var __workflow_saveContactWrappertransmitObjecttelephoneNumber3Normalized = saveContactWrappertransmitObjecttelephoneNumber3Normalized == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjecttelephoneNumber3Normalized);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjecttelephoneNumber3Normalized, nameof(saveContactWrappertransmitObjecttelephoneNumber3Normalized), required: false);
+            var __workflow_saveContactWrappertransmitObjecttelephoneNumber4Normalized = saveContactWrappertransmitObjecttelephoneNumber4Normalized == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjecttelephoneNumber4Normalized);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjecttelephoneNumber4Normalized, nameof(saveContactWrappertransmitObjecttelephoneNumber4Normalized), required: false);
+            var __workflow_saveContactWrappertransmitObjecttelephoneNumber5Normalized = saveContactWrappertransmitObjecttelephoneNumber5Normalized == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjecttelephoneNumber5Normalized);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjecttelephoneNumber5Normalized, nameof(saveContactWrappertransmitObjecttelephoneNumber5Normalized), required: false);
+            var __workflow_saveContactWrappertransmitObjecttelephoneNumber6Normalized = saveContactWrappertransmitObjecttelephoneNumber6Normalized == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjecttelephoneNumber6Normalized);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjecttelephoneNumber6Normalized, nameof(saveContactWrappertransmitObjecttelephoneNumber6Normalized), required: false);
+            var __workflow_saveContactWrappertransmitObjectdepartment = saveContactWrappertransmitObjectdepartment == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjectdepartment);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjectdepartment, nameof(saveContactWrappertransmitObjectdepartment), required: false);
+            var __workflow_saveContactWrappertransmitObjecttitle = saveContactWrappertransmitObjecttitle == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjecttitle);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjecttitle, nameof(saveContactWrappertransmitObjecttitle), required: false);
+            var __workflow_saveContactWrappertransmitObjectwebPage = saveContactWrappertransmitObjectwebPage == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjectwebPage);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjectwebPage, nameof(saveContactWrappertransmitObjectwebPage), required: false);
+            var __workflow_saveContactWrappertransmitObjectdoNotSendNewsletter = saveContactWrappertransmitObjectdoNotSendNewsletter == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjectdoNotSendNewsletter);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjectdoNotSendNewsletter, nameof(saveContactWrappertransmitObjectdoNotSendNewsletter), required: false);
+            var __workflow_saveContactWrappertransmitObjectprofilePicture = saveContactWrappertransmitObjectprofilePicture == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjectprofilePicture);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjectprofilePicture, nameof(saveContactWrappertransmitObjectprofilePicture), required: false);
+            var __workflow_saveContactWrappertransmitObjectprofilePictureWidth = saveContactWrappertransmitObjectprofilePictureWidth == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjectprofilePictureWidth);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjectprofilePictureWidth, nameof(saveContactWrappertransmitObjectprofilePictureWidth), required: false);
+            var __workflow_saveContactWrappertransmitObjectprofilePictureHeight = saveContactWrappertransmitObjectprofilePictureHeight == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjectprofilePictureHeight);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjectprofilePictureHeight, nameof(saveContactWrappertransmitObjectprofilePictureHeight), required: false);
+            var __workflow_saveContactWrappertransmitObjectlastActivity = saveContactWrappertransmitObjectlastActivity == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjectlastActivity);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjectlastActivity, nameof(saveContactWrappertransmitObjectlastActivity), required: false);
+            var __workflow_saveContactWrappertransmitObjectnextStep = saveContactWrappertransmitObjectnextStep == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjectnextStep);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjectnextStep, nameof(saveContactWrappertransmitObjectnextStep), required: false);
+            var __workflow_saveContactWrappertransmitObjecttypeEn = saveContactWrappertransmitObjecttypeEn == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjecttypeEn);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjecttypeEn, nameof(saveContactWrappertransmitObjecttypeEn), required: false);
+            var __workflow_saveContactWrappertransmitObjectstateEn = saveContactWrappertransmitObjectstateEn == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjectstateEn);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjectstateEn, nameof(saveContactWrappertransmitObjectstateEn), required: false);
+            var __workflow_saveContactWrappertransmitObjectprevStateEn = saveContactWrappertransmitObjectprevStateEn == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjectprevStateEn);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjectprevStateEn, nameof(saveContactWrappertransmitObjectprevStateEn), required: false);
+            var __workflow_saveContactWrappertransmitObjectcompaniesCompanyGuid = saveContactWrappertransmitObjectcompaniesCompanyGuid == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjectcompaniesCompanyGuid);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjectcompaniesCompanyGuid, nameof(saveContactWrappertransmitObjectcompaniesCompanyGuid), required: false);
+            var __workflow_saveContactWrappertransmitObjectisPrivate = saveContactWrappertransmitObjectisPrivate == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjectisPrivate);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjectisPrivate, nameof(saveContactWrappertransmitObjectisPrivate), required: false);
+            var __workflow_saveContactWrappertransmitObjectitemCreated = saveContactWrappertransmitObjectitemCreated == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjectitemCreated);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjectitemCreated, nameof(saveContactWrappertransmitObjectitemCreated), required: false);
+            var __workflow_saveContactWrappertransmitObjectitemChanged = saveContactWrappertransmitObjectitemChanged == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjectitemChanged);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjectitemChanged, nameof(saveContactWrappertransmitObjectitemChanged), required: false);
+            var __workflow_saveContactWrappertransmitObjectfileAs = saveContactWrappertransmitObjectfileAs == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjectfileAs);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjectfileAs, nameof(saveContactWrappertransmitObjectfileAs), required: false);
+            var __workflow_saveContactWrappertransmitObjectownerGUID = saveContactWrappertransmitObjectownerGUID == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjectownerGUID);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjectownerGUID, nameof(saveContactWrappertransmitObjectownerGUID), required: false);
+            var __workflow_saveContactWrappertransmitObjectcreatedByGUID = saveContactWrappertransmitObjectcreatedByGUID == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjectcreatedByGUID);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjectcreatedByGUID, nameof(saveContactWrappertransmitObjectcreatedByGUID), required: false);
+            var __workflow_saveContactWrappertransmitObjectmodifiedByGUID = saveContactWrappertransmitObjectmodifiedByGUID == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjectmodifiedByGUID);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjectmodifiedByGUID, nameof(saveContactWrappertransmitObjectmodifiedByGUID), required: false);
+            var __workflow_saveContactWrappertransmitObjectadditionalFields = saveContactWrappertransmitObjectadditionalFields == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjectadditionalFields);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjectadditionalFields, nameof(saveContactWrappertransmitObjectadditionalFields), required: false);
+            var __workflow_saveContactWrappertransmitObjectitemGUID = saveContactWrappertransmitObjectitemGUID == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjectitemGUID);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjectitemGUID, nameof(saveContactWrappertransmitObjectitemGUID), required: false);
+            var __workflow_saveContactWrappertransmitObjectitemVersion = saveContactWrappertransmitObjectitemVersion == null ? null : WorkflowExpression.Compile(saveContactWrappertransmitObjectitemVersion);
+            WorkflowExpression.Validate(__workflow_saveContactWrappertransmitObjectitemVersion, nameof(saveContactWrappertransmitObjectitemVersion), required: false);
+            var __workflow_saveContactWrapperdieOnItemConflict = saveContactWrapperdieOnItemConflict == null ? null : WorkflowExpression.Compile(saveContactWrapperdieOnItemConflict);
+            WorkflowExpression.Validate(__workflow_saveContactWrapperdieOnItemConflict, nameof(saveContactWrapperdieOnItemConflict), required: false);
+            var __workflow_saveContactWrapperignoredUserErrorMessages = saveContactWrapperignoredUserErrorMessages == null ? null : WorkflowExpression.Compile(saveContactWrapperignoredUserErrorMessages);
+            WorkflowExpression.Validate(__workflow_saveContactWrapperignoredUserErrorMessages, nameof(saveContactWrapperignoredUserErrorMessages), required: false);
             return new DeferredBodyAction<EWayWcfServiceResponsesSaveResponse>(() =>
             {
                 var apiCallPath = "/SaveContact";
@@ -814,405 +901,405 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                 var saveContactWrapperpropCount = 0;
                 var transmitObjectObject = new JObject();
                 var transmitObjectObjectpropCount = 0;
-                if (saveContactWrappertransmitObjectbusinessAddressStreet != null)
+                if (__workflow_saveContactWrappertransmitObjectbusinessAddressStreet != null)
                 {
-                    transmitObjectObject["BusinessAddressStreet"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectbusinessAddressStreet);
+                    transmitObjectObject["BusinessAddressStreet"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjectbusinessAddressStreet);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjectbusinessAddressCity != null)
+                if (__workflow_saveContactWrappertransmitObjectbusinessAddressCity != null)
                 {
-                    transmitObjectObject["BusinessAddressCity"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectbusinessAddressCity);
+                    transmitObjectObject["BusinessAddressCity"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjectbusinessAddressCity);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjectbusinessAddressState != null)
+                if (__workflow_saveContactWrappertransmitObjectbusinessAddressState != null)
                 {
-                    transmitObjectObject["BusinessAddressState"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectbusinessAddressState);
+                    transmitObjectObject["BusinessAddressState"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjectbusinessAddressState);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjectbusinessAddressCountryEn != null)
+                if (__workflow_saveContactWrappertransmitObjectbusinessAddressCountryEn != null)
                 {
-                    transmitObjectObject["BusinessAddressCountryEn"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectbusinessAddressCountryEn);
+                    transmitObjectObject["BusinessAddressCountryEn"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjectbusinessAddressCountryEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjectbusinessAddressPOBox != null)
+                if (__workflow_saveContactWrappertransmitObjectbusinessAddressPOBox != null)
                 {
-                    transmitObjectObject["BusinessAddressPOBox"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectbusinessAddressPOBox);
+                    transmitObjectObject["BusinessAddressPOBox"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjectbusinessAddressPOBox);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjectbusinessAddressPostalCode != null)
+                if (__workflow_saveContactWrappertransmitObjectbusinessAddressPostalCode != null)
                 {
-                    transmitObjectObject["BusinessAddressPostalCode"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectbusinessAddressPostalCode);
+                    transmitObjectObject["BusinessAddressPostalCode"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjectbusinessAddressPostalCode);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjecthomeAddressStreet != null)
+                if (__workflow_saveContactWrappertransmitObjecthomeAddressStreet != null)
                 {
-                    transmitObjectObject["HomeAddressStreet"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjecthomeAddressStreet);
+                    transmitObjectObject["HomeAddressStreet"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjecthomeAddressStreet);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjecthomeAddressCity != null)
+                if (__workflow_saveContactWrappertransmitObjecthomeAddressCity != null)
                 {
-                    transmitObjectObject["HomeAddressCity"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjecthomeAddressCity);
+                    transmitObjectObject["HomeAddressCity"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjecthomeAddressCity);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjecthomeAddressState != null)
+                if (__workflow_saveContactWrappertransmitObjecthomeAddressState != null)
                 {
-                    transmitObjectObject["HomeAddressState"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjecthomeAddressState);
+                    transmitObjectObject["HomeAddressState"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjecthomeAddressState);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjecthomeAddressCountryEn != null)
+                if (__workflow_saveContactWrappertransmitObjecthomeAddressCountryEn != null)
                 {
-                    transmitObjectObject["HomeAddressCountryEn"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjecthomeAddressCountryEn);
+                    transmitObjectObject["HomeAddressCountryEn"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjecthomeAddressCountryEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjecthomeAddressPOBox != null)
+                if (__workflow_saveContactWrappertransmitObjecthomeAddressPOBox != null)
                 {
-                    transmitObjectObject["HomeAddressPOBox"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjecthomeAddressPOBox);
+                    transmitObjectObject["HomeAddressPOBox"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjecthomeAddressPOBox);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjecthomeAddressPostalCode != null)
+                if (__workflow_saveContactWrappertransmitObjecthomeAddressPostalCode != null)
                 {
-                    transmitObjectObject["HomeAddressPostalCode"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjecthomeAddressPostalCode);
+                    transmitObjectObject["HomeAddressPostalCode"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjecthomeAddressPostalCode);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjectotherAddressStreet != null)
+                if (__workflow_saveContactWrappertransmitObjectotherAddressStreet != null)
                 {
-                    transmitObjectObject["OtherAddressStreet"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectotherAddressStreet);
+                    transmitObjectObject["OtherAddressStreet"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjectotherAddressStreet);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjectotherAddressCity != null)
+                if (__workflow_saveContactWrappertransmitObjectotherAddressCity != null)
                 {
-                    transmitObjectObject["OtherAddressCity"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectotherAddressCity);
+                    transmitObjectObject["OtherAddressCity"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjectotherAddressCity);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjectotherAddressState != null)
+                if (__workflow_saveContactWrappertransmitObjectotherAddressState != null)
                 {
-                    transmitObjectObject["OtherAddressState"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectotherAddressState);
+                    transmitObjectObject["OtherAddressState"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjectotherAddressState);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjectotherAddressCountryEn != null)
+                if (__workflow_saveContactWrappertransmitObjectotherAddressCountryEn != null)
                 {
-                    transmitObjectObject["OtherAddressCountryEn"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectotherAddressCountryEn);
+                    transmitObjectObject["OtherAddressCountryEn"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjectotherAddressCountryEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjectotherAddressPOBox != null)
+                if (__workflow_saveContactWrappertransmitObjectotherAddressPOBox != null)
                 {
-                    transmitObjectObject["OtherAddressPOBox"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectotherAddressPOBox);
+                    transmitObjectObject["OtherAddressPOBox"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjectotherAddressPOBox);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjectotherAddressPostalCode != null)
+                if (__workflow_saveContactWrappertransmitObjectotherAddressPostalCode != null)
                 {
-                    transmitObjectObject["OtherAddressPostalCode"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectotherAddressPostalCode);
+                    transmitObjectObject["OtherAddressPostalCode"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjectotherAddressPostalCode);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjectcompany != null)
+                if (__workflow_saveContactWrappertransmitObjectcompany != null)
                 {
-                    transmitObjectObject["Company"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectcompany);
+                    transmitObjectObject["Company"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjectcompany);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjectemail1Address != null)
+                if (__workflow_saveContactWrappertransmitObjectemail1Address != null)
                 {
-                    transmitObjectObject["Email1Address"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectemail1Address);
+                    transmitObjectObject["Email1Address"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjectemail1Address);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjectemail2Address != null)
+                if (__workflow_saveContactWrappertransmitObjectemail2Address != null)
                 {
-                    transmitObjectObject["Email2Address"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectemail2Address);
+                    transmitObjectObject["Email2Address"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjectemail2Address);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjectemail3Address != null)
+                if (__workflow_saveContactWrappertransmitObjectemail3Address != null)
                 {
-                    transmitObjectObject["Email3Address"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectemail3Address);
+                    transmitObjectObject["Email3Address"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjectemail3Address);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjectfirstName != null)
+                if (__workflow_saveContactWrappertransmitObjectfirstName != null)
                 {
-                    transmitObjectObject["FirstName"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectfirstName);
+                    transmitObjectObject["FirstName"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjectfirstName);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjectiCQ != null)
+                if (__workflow_saveContactWrappertransmitObjectiCQ != null)
                 {
-                    transmitObjectObject["ICQ"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectiCQ);
+                    transmitObjectObject["ICQ"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjectiCQ);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjectimportanceEn != null)
+                if (__workflow_saveContactWrappertransmitObjectimportanceEn != null)
                 {
-                    transmitObjectObject["ImportanceEn"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectimportanceEn);
+                    transmitObjectObject["ImportanceEn"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjectimportanceEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjectlastName != null)
+                if (__workflow_saveContactWrappertransmitObjectlastName != null)
                 {
-                    transmitObjectObject["LastName"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectlastName);
+                    transmitObjectObject["LastName"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjectlastName);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjectmiddleName != null)
+                if (__workflow_saveContactWrappertransmitObjectmiddleName != null)
                 {
-                    transmitObjectObject["MiddleName"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectmiddleName);
+                    transmitObjectObject["MiddleName"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjectmiddleName);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjectmSN != null)
+                if (__workflow_saveContactWrappertransmitObjectmSN != null)
                 {
-                    transmitObjectObject["MSN"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectmSN);
+                    transmitObjectObject["MSN"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjectmSN);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjectnote != null)
+                if (__workflow_saveContactWrappertransmitObjectnote != null)
                 {
-                    transmitObjectObject["Note"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectnote);
+                    transmitObjectObject["Note"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjectnote);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjectprefixEn != null)
+                if (__workflow_saveContactWrappertransmitObjectprefixEn != null)
                 {
-                    transmitObjectObject["PrefixEn"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectprefixEn);
+                    transmitObjectObject["PrefixEn"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjectprefixEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjectsuffixEn != null)
+                if (__workflow_saveContactWrappertransmitObjectsuffixEn != null)
                 {
-                    transmitObjectObject["SuffixEn"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectsuffixEn);
+                    transmitObjectObject["SuffixEn"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjectsuffixEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjectskype != null)
+                if (__workflow_saveContactWrappertransmitObjectskype != null)
                 {
-                    transmitObjectObject["Skype"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectskype);
+                    transmitObjectObject["Skype"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjectskype);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjecttelephoneNumber1 != null)
+                if (__workflow_saveContactWrappertransmitObjecttelephoneNumber1 != null)
                 {
-                    transmitObjectObject["TelephoneNumber1"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjecttelephoneNumber1);
+                    transmitObjectObject["TelephoneNumber1"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjecttelephoneNumber1);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjecttelephoneNumber2 != null)
+                if (__workflow_saveContactWrappertransmitObjecttelephoneNumber2 != null)
                 {
-                    transmitObjectObject["TelephoneNumber2"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjecttelephoneNumber2);
+                    transmitObjectObject["TelephoneNumber2"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjecttelephoneNumber2);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjecttelephoneNumber3 != null)
+                if (__workflow_saveContactWrappertransmitObjecttelephoneNumber3 != null)
                 {
-                    transmitObjectObject["TelephoneNumber3"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjecttelephoneNumber3);
+                    transmitObjectObject["TelephoneNumber3"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjecttelephoneNumber3);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjecttelephoneNumber4 != null)
+                if (__workflow_saveContactWrappertransmitObjecttelephoneNumber4 != null)
                 {
-                    transmitObjectObject["TelephoneNumber4"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjecttelephoneNumber4);
+                    transmitObjectObject["TelephoneNumber4"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjecttelephoneNumber4);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjecttelephoneNumber5 != null)
+                if (__workflow_saveContactWrappertransmitObjecttelephoneNumber5 != null)
                 {
-                    transmitObjectObject["TelephoneNumber5"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjecttelephoneNumber5);
+                    transmitObjectObject["TelephoneNumber5"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjecttelephoneNumber5);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjecttelephoneNumber6 != null)
+                if (__workflow_saveContactWrappertransmitObjecttelephoneNumber6 != null)
                 {
-                    transmitObjectObject["TelephoneNumber6"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjecttelephoneNumber6);
+                    transmitObjectObject["TelephoneNumber6"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjecttelephoneNumber6);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjecttelephoneNumber1Normalized != null)
+                if (__workflow_saveContactWrappertransmitObjecttelephoneNumber1Normalized != null)
                 {
-                    transmitObjectObject["TelephoneNumber1Normalized"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjecttelephoneNumber1Normalized);
+                    transmitObjectObject["TelephoneNumber1Normalized"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjecttelephoneNumber1Normalized);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjecttelephoneNumber2Normalized != null)
+                if (__workflow_saveContactWrappertransmitObjecttelephoneNumber2Normalized != null)
                 {
-                    transmitObjectObject["TelephoneNumber2Normalized"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjecttelephoneNumber2Normalized);
+                    transmitObjectObject["TelephoneNumber2Normalized"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjecttelephoneNumber2Normalized);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjecttelephoneNumber3Normalized != null)
+                if (__workflow_saveContactWrappertransmitObjecttelephoneNumber3Normalized != null)
                 {
-                    transmitObjectObject["TelephoneNumber3Normalized"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjecttelephoneNumber3Normalized);
+                    transmitObjectObject["TelephoneNumber3Normalized"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjecttelephoneNumber3Normalized);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjecttelephoneNumber4Normalized != null)
+                if (__workflow_saveContactWrappertransmitObjecttelephoneNumber4Normalized != null)
                 {
-                    transmitObjectObject["TelephoneNumber4Normalized"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjecttelephoneNumber4Normalized);
+                    transmitObjectObject["TelephoneNumber4Normalized"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjecttelephoneNumber4Normalized);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjecttelephoneNumber5Normalized != null)
+                if (__workflow_saveContactWrappertransmitObjecttelephoneNumber5Normalized != null)
                 {
-                    transmitObjectObject["TelephoneNumber5Normalized"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjecttelephoneNumber5Normalized);
+                    transmitObjectObject["TelephoneNumber5Normalized"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjecttelephoneNumber5Normalized);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjecttelephoneNumber6Normalized != null)
+                if (__workflow_saveContactWrappertransmitObjecttelephoneNumber6Normalized != null)
                 {
-                    transmitObjectObject["TelephoneNumber6Normalized"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjecttelephoneNumber6Normalized);
+                    transmitObjectObject["TelephoneNumber6Normalized"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjecttelephoneNumber6Normalized);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjectdepartment != null)
+                if (__workflow_saveContactWrappertransmitObjectdepartment != null)
                 {
-                    transmitObjectObject["Department"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectdepartment);
+                    transmitObjectObject["Department"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjectdepartment);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjecttitle != null)
+                if (__workflow_saveContactWrappertransmitObjecttitle != null)
                 {
-                    transmitObjectObject["Title"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjecttitle);
+                    transmitObjectObject["Title"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjecttitle);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjectwebPage != null)
+                if (__workflow_saveContactWrappertransmitObjectwebPage != null)
                 {
-                    transmitObjectObject["WebPage"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectwebPage);
+                    transmitObjectObject["WebPage"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjectwebPage);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjectdoNotSendNewsletter != null)
+                if (__workflow_saveContactWrappertransmitObjectdoNotSendNewsletter != null)
                 {
-                    transmitObjectObject["DoNotSendNewsletter"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectdoNotSendNewsletter);
+                    transmitObjectObject["DoNotSendNewsletter"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjectdoNotSendNewsletter);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjectprofilePicture != null)
+                if (__workflow_saveContactWrappertransmitObjectprofilePicture != null)
                 {
-                    transmitObjectObject["ProfilePicture"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectprofilePicture);
+                    transmitObjectObject["ProfilePicture"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjectprofilePicture);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjectprofilePictureWidth != null)
+                if (__workflow_saveContactWrappertransmitObjectprofilePictureWidth != null)
                 {
-                    transmitObjectObject["ProfilePictureWidth"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectprofilePictureWidth);
+                    transmitObjectObject["ProfilePictureWidth"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjectprofilePictureWidth);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjectprofilePictureHeight != null)
+                if (__workflow_saveContactWrappertransmitObjectprofilePictureHeight != null)
                 {
-                    transmitObjectObject["ProfilePictureHeight"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectprofilePictureHeight);
+                    transmitObjectObject["ProfilePictureHeight"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjectprofilePictureHeight);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjectlastActivity != null)
+                if (__workflow_saveContactWrappertransmitObjectlastActivity != null)
                 {
-                    transmitObjectObject["LastActivity"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectlastActivity);
+                    transmitObjectObject["LastActivity"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjectlastActivity);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjectnextStep != null)
+                if (__workflow_saveContactWrappertransmitObjectnextStep != null)
                 {
-                    transmitObjectObject["NextStep"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectnextStep);
+                    transmitObjectObject["NextStep"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjectnextStep);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjecttypeEn != null)
+                if (__workflow_saveContactWrappertransmitObjecttypeEn != null)
                 {
-                    transmitObjectObject["TypeEn"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjecttypeEn);
+                    transmitObjectObject["TypeEn"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjecttypeEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjectstateEn != null)
+                if (__workflow_saveContactWrappertransmitObjectstateEn != null)
                 {
-                    transmitObjectObject["StateEn"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectstateEn);
+                    transmitObjectObject["StateEn"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjectstateEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjectprevStateEn != null)
+                if (__workflow_saveContactWrappertransmitObjectprevStateEn != null)
                 {
-                    transmitObjectObject["PrevStateEn"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectprevStateEn);
+                    transmitObjectObject["PrevStateEn"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjectprevStateEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjectcompaniesCompanyGuid != null)
+                if (__workflow_saveContactWrappertransmitObjectcompaniesCompanyGuid != null)
                 {
-                    transmitObjectObject["Companies_CompanyGuid"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectcompaniesCompanyGuid);
+                    transmitObjectObject["Companies_CompanyGuid"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjectcompaniesCompanyGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjectisPrivate != null)
+                if (__workflow_saveContactWrappertransmitObjectisPrivate != null)
                 {
-                    transmitObjectObject["IsPrivate"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectisPrivate);
+                    transmitObjectObject["IsPrivate"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjectisPrivate);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjectitemCreated != null)
+                if (__workflow_saveContactWrappertransmitObjectitemCreated != null)
                 {
-                    transmitObjectObject["ItemCreated"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectitemCreated);
+                    transmitObjectObject["ItemCreated"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjectitemCreated);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjectitemChanged != null)
+                if (__workflow_saveContactWrappertransmitObjectitemChanged != null)
                 {
-                    transmitObjectObject["ItemChanged"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectitemChanged);
+                    transmitObjectObject["ItemChanged"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjectitemChanged);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjectfileAs != null)
+                if (__workflow_saveContactWrappertransmitObjectfileAs != null)
                 {
-                    transmitObjectObject["FileAs"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectfileAs);
+                    transmitObjectObject["FileAs"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjectfileAs);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjectownerGUID != null)
+                if (__workflow_saveContactWrappertransmitObjectownerGUID != null)
                 {
-                    transmitObjectObject["OwnerGUID"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectownerGUID);
+                    transmitObjectObject["OwnerGUID"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjectownerGUID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjectcreatedByGUID != null)
+                if (__workflow_saveContactWrappertransmitObjectcreatedByGUID != null)
                 {
-                    transmitObjectObject["CreatedByGUID"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectcreatedByGUID);
+                    transmitObjectObject["CreatedByGUID"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjectcreatedByGUID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjectmodifiedByGUID != null)
+                if (__workflow_saveContactWrappertransmitObjectmodifiedByGUID != null)
                 {
-                    transmitObjectObject["ModifiedByGUID"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectmodifiedByGUID);
+                    transmitObjectObject["ModifiedByGUID"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjectmodifiedByGUID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjectadditionalFields != null)
+                if (__workflow_saveContactWrappertransmitObjectadditionalFields != null)
                 {
-                    transmitObjectObject["AdditionalFields"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectadditionalFields);
+                    transmitObjectObject["AdditionalFields"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjectadditionalFields);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjectitemGUID != null)
+                if (__workflow_saveContactWrappertransmitObjectitemGUID != null)
                 {
-                    transmitObjectObject["ItemGUID"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectitemGUID);
+                    transmitObjectObject["ItemGUID"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjectitemGUID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveContactWrappertransmitObjectitemVersion != null)
+                if (__workflow_saveContactWrappertransmitObjectitemVersion != null)
                 {
-                    transmitObjectObject["ItemVersion"] = ExpressionConverter.ConvertO(saveContactWrappertransmitObjectitemVersion);
+                    transmitObjectObject["ItemVersion"] = ExpressionConverter.ConvertO(__workflow_saveContactWrappertransmitObjectitemVersion);
                     transmitObjectObjectpropCount++;
                 }
 
@@ -1222,15 +1309,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                     saveContactWrapperpropCount++;
                 }
 
-                if (saveContactWrapperdieOnItemConflict != null)
+                if (__workflow_saveContactWrapperdieOnItemConflict != null)
                 {
-                    saveContactWrapper["dieOnItemConflict"] = ExpressionConverter.ConvertO(saveContactWrapperdieOnItemConflict);
+                    saveContactWrapper["dieOnItemConflict"] = ExpressionConverter.ConvertO(__workflow_saveContactWrapperdieOnItemConflict);
                     saveContactWrapperpropCount++;
                 }
 
-                if (saveContactWrapperignoredUserErrorMessages != null)
+                if (__workflow_saveContactWrapperignoredUserErrorMessages != null)
                 {
-                    saveContactWrapper["ignoredUserErrorMessages"] = ExpressionConverter.ConvertO(saveContactWrapperignoredUserErrorMessages);
+                    saveContactWrapper["ignoredUserErrorMessages"] = ExpressionConverter.ConvertO(__workflow_saveContactWrapperignoredUserErrorMessages);
                     saveContactWrapperpropCount++;
                 }
 
@@ -1244,51 +1331,80 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
-        [WorkflowExpressionFactory(nameof(__BuildSaveJournal))]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesSaveResponse> SaveJournal([WorkflowExpression] Func<string> saveJournalWrappertransmitObjectcalendarEntryID = null, [WorkflowExpression] Func<string> saveJournalWrappertransmitObjectcalendarORIGIN = null, [WorkflowExpression] Func<string> saveJournalWrappertransmitObjectchangedField = null, [WorkflowExpression] Func<string> saveJournalWrappertransmitObjecteventEnd = null, [WorkflowExpression] Func<string> saveJournalWrappertransmitObjecteventStart = null, [WorkflowExpression] Func<string> saveJournalWrappertransmitObjectfieldValue = null, [WorkflowExpression] Func<string> saveJournalWrappertransmitObjectimportanceEn = null, [WorkflowExpression] Func<string> saveJournalWrappertransmitObjectnote = null, [WorkflowExpression] Func<string> saveJournalWrappertransmitObjectprevFieldValue = null, [WorkflowExpression] Func<string> saveJournalWrappertransmitObjecttypeEn = null, [WorkflowExpression] Func<bool> saveJournalWrappertransmitObjectisSystem = null, [WorkflowExpression] Func<string> saveJournalWrappertransmitObjectphone = null, [WorkflowExpression] Func<string> saveJournalWrappertransmitObjectphoneNormalized = null, [WorkflowExpression] Func<bool> saveJournalWrappertransmitObjectisGdprRelevant = null, [WorkflowExpression] Func<string> saveJournalWrappertransmitObjectpicture = null, [WorkflowExpression] Func<int> saveJournalWrappertransmitObjectpictureWidth = null, [WorkflowExpression] Func<int> saveJournalWrappertransmitObjectpictureHeight = null, [WorkflowExpression] Func<string> saveJournalWrappertransmitObjectstateEn = null, [WorkflowExpression] Func<string> saveJournalWrappertransmitObjectprevStateEn = null, [WorkflowExpression] Func<string> saveJournalWrappertransmitObjectcompaniesCompanyGuid = null, [WorkflowExpression] Func<string> saveJournalWrappertransmitObjectcontactsContactGuid = null, [WorkflowExpression] Func<string> saveJournalWrappertransmitObjectleadsSuperiorItemGuid = null, [WorkflowExpression] Func<string> saveJournalWrappertransmitObjectprojectsSuperiorItemGuid = null, [WorkflowExpression] Func<string> saveJournalWrappertransmitObjectmarketingMarketingGuid = null, [WorkflowExpression] Func<bool> saveJournalWrappertransmitObjectisPrivate = null, [WorkflowExpression] Func<string> saveJournalWrappertransmitObjectitemCreated = null, [WorkflowExpression] Func<string> saveJournalWrappertransmitObjectitemChanged = null, [WorkflowExpression] Func<string> saveJournalWrappertransmitObjectfileAs = null, [WorkflowExpression] Func<string> saveJournalWrappertransmitObjectownerGUID = null, [WorkflowExpression] Func<string> saveJournalWrappertransmitObjectcreatedByGUID = null, [WorkflowExpression] Func<string> saveJournalWrappertransmitObjectmodifiedByGUID = null, [WorkflowExpression] Func<object> saveJournalWrappertransmitObjectadditionalFields = null, [WorkflowExpression] Func<string> saveJournalWrappertransmitObjectitemGUID = null, [WorkflowExpression] Func<int> saveJournalWrappertransmitObjectitemVersion = null, [WorkflowExpression] Func<bool> saveJournalWrapperdieOnItemConflict = null, [WorkflowExpression] Func<string[]> saveJournalWrapperignoredUserErrorMessages = null)
+        public IBodyWorkflowAction<EWayWcfServiceResponsesSaveResponse> SaveJournal(Expression<Func<string>> saveJournalWrappertransmitObjectcalendarEntryID = null, Expression<Func<string>> saveJournalWrappertransmitObjectcalendarORIGIN = null, Expression<Func<string>> saveJournalWrappertransmitObjectchangedField = null, Expression<Func<string>> saveJournalWrappertransmitObjecteventEnd = null, Expression<Func<string>> saveJournalWrappertransmitObjecteventStart = null, Expression<Func<string>> saveJournalWrappertransmitObjectfieldValue = null, Expression<Func<string>> saveJournalWrappertransmitObjectimportanceEn = null, Expression<Func<string>> saveJournalWrappertransmitObjectnote = null, Expression<Func<string>> saveJournalWrappertransmitObjectprevFieldValue = null, Expression<Func<string>> saveJournalWrappertransmitObjecttypeEn = null, Expression<Func<bool>> saveJournalWrappertransmitObjectisSystem = null, Expression<Func<string>> saveJournalWrappertransmitObjectphone = null, Expression<Func<string>> saveJournalWrappertransmitObjectphoneNormalized = null, Expression<Func<bool>> saveJournalWrappertransmitObjectisGdprRelevant = null, Expression<Func<string>> saveJournalWrappertransmitObjectpicture = null, Expression<Func<int>> saveJournalWrappertransmitObjectpictureWidth = null, Expression<Func<int>> saveJournalWrappertransmitObjectpictureHeight = null, Expression<Func<string>> saveJournalWrappertransmitObjectstateEn = null, Expression<Func<string>> saveJournalWrappertransmitObjectprevStateEn = null, Expression<Func<string>> saveJournalWrappertransmitObjectcompaniesCompanyGuid = null, Expression<Func<string>> saveJournalWrappertransmitObjectcontactsContactGuid = null, Expression<Func<string>> saveJournalWrappertransmitObjectleadsSuperiorItemGuid = null, Expression<Func<string>> saveJournalWrappertransmitObjectprojectsSuperiorItemGuid = null, Expression<Func<string>> saveJournalWrappertransmitObjectmarketingMarketingGuid = null, Expression<Func<bool>> saveJournalWrappertransmitObjectisPrivate = null, Expression<Func<string>> saveJournalWrappertransmitObjectitemCreated = null, Expression<Func<string>> saveJournalWrappertransmitObjectitemChanged = null, Expression<Func<string>> saveJournalWrappertransmitObjectfileAs = null, Expression<Func<string>> saveJournalWrappertransmitObjectownerGUID = null, Expression<Func<string>> saveJournalWrappertransmitObjectcreatedByGUID = null, Expression<Func<string>> saveJournalWrappertransmitObjectmodifiedByGUID = null, Expression<Func<object>> saveJournalWrappertransmitObjectadditionalFields = null, Expression<Func<string>> saveJournalWrappertransmitObjectitemGUID = null, Expression<Func<int>> saveJournalWrappertransmitObjectitemVersion = null, Expression<Func<bool>> saveJournalWrapperdieOnItemConflict = null, Expression<Func<string[]>> saveJournalWrapperignoredUserErrorMessages = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesSaveResponse> __BuildSaveJournal(WorkflowExpression<string> saveJournalWrappertransmitObjectcalendarEntryID = null, WorkflowExpression<string> saveJournalWrappertransmitObjectcalendarORIGIN = null, WorkflowExpression<string> saveJournalWrappertransmitObjectchangedField = null, WorkflowExpression<string> saveJournalWrappertransmitObjecteventEnd = null, WorkflowExpression<string> saveJournalWrappertransmitObjecteventStart = null, WorkflowExpression<string> saveJournalWrappertransmitObjectfieldValue = null, WorkflowExpression<string> saveJournalWrappertransmitObjectimportanceEn = null, WorkflowExpression<string> saveJournalWrappertransmitObjectnote = null, WorkflowExpression<string> saveJournalWrappertransmitObjectprevFieldValue = null, WorkflowExpression<string> saveJournalWrappertransmitObjecttypeEn = null, WorkflowExpression<bool> saveJournalWrappertransmitObjectisSystem = null, WorkflowExpression<string> saveJournalWrappertransmitObjectphone = null, WorkflowExpression<string> saveJournalWrappertransmitObjectphoneNormalized = null, WorkflowExpression<bool> saveJournalWrappertransmitObjectisGdprRelevant = null, WorkflowExpression<string> saveJournalWrappertransmitObjectpicture = null, WorkflowExpression<int> saveJournalWrappertransmitObjectpictureWidth = null, WorkflowExpression<int> saveJournalWrappertransmitObjectpictureHeight = null, WorkflowExpression<string> saveJournalWrappertransmitObjectstateEn = null, WorkflowExpression<string> saveJournalWrappertransmitObjectprevStateEn = null, WorkflowExpression<string> saveJournalWrappertransmitObjectcompaniesCompanyGuid = null, WorkflowExpression<string> saveJournalWrappertransmitObjectcontactsContactGuid = null, WorkflowExpression<string> saveJournalWrappertransmitObjectleadsSuperiorItemGuid = null, WorkflowExpression<string> saveJournalWrappertransmitObjectprojectsSuperiorItemGuid = null, WorkflowExpression<string> saveJournalWrappertransmitObjectmarketingMarketingGuid = null, WorkflowExpression<bool> saveJournalWrappertransmitObjectisPrivate = null, WorkflowExpression<string> saveJournalWrappertransmitObjectitemCreated = null, WorkflowExpression<string> saveJournalWrappertransmitObjectitemChanged = null, WorkflowExpression<string> saveJournalWrappertransmitObjectfileAs = null, WorkflowExpression<string> saveJournalWrappertransmitObjectownerGUID = null, WorkflowExpression<string> saveJournalWrappertransmitObjectcreatedByGUID = null, WorkflowExpression<string> saveJournalWrappertransmitObjectmodifiedByGUID = null, WorkflowExpression<object> saveJournalWrappertransmitObjectadditionalFields = null, WorkflowExpression<string> saveJournalWrappertransmitObjectitemGUID = null, WorkflowExpression<int> saveJournalWrappertransmitObjectitemVersion = null, WorkflowExpression<bool> saveJournalWrapperdieOnItemConflict = null, WorkflowExpression<string[]> saveJournalWrapperignoredUserErrorMessages = null)
-        {
-            WorkflowExpression.Validate(saveJournalWrappertransmitObjectcalendarEntryID, nameof(saveJournalWrappertransmitObjectcalendarEntryID), required: false);
-            WorkflowExpression.Validate(saveJournalWrappertransmitObjectcalendarORIGIN, nameof(saveJournalWrappertransmitObjectcalendarORIGIN), required: false);
-            WorkflowExpression.Validate(saveJournalWrappertransmitObjectchangedField, nameof(saveJournalWrappertransmitObjectchangedField), required: false);
-            WorkflowExpression.Validate(saveJournalWrappertransmitObjecteventEnd, nameof(saveJournalWrappertransmitObjecteventEnd), required: false);
-            WorkflowExpression.Validate(saveJournalWrappertransmitObjecteventStart, nameof(saveJournalWrappertransmitObjecteventStart), required: false);
-            WorkflowExpression.Validate(saveJournalWrappertransmitObjectfieldValue, nameof(saveJournalWrappertransmitObjectfieldValue), required: false);
-            WorkflowExpression.Validate(saveJournalWrappertransmitObjectimportanceEn, nameof(saveJournalWrappertransmitObjectimportanceEn), required: false);
-            WorkflowExpression.Validate(saveJournalWrappertransmitObjectnote, nameof(saveJournalWrappertransmitObjectnote), required: false);
-            WorkflowExpression.Validate(saveJournalWrappertransmitObjectprevFieldValue, nameof(saveJournalWrappertransmitObjectprevFieldValue), required: false);
-            WorkflowExpression.Validate(saveJournalWrappertransmitObjecttypeEn, nameof(saveJournalWrappertransmitObjecttypeEn), required: false);
-            WorkflowExpression.Validate(saveJournalWrappertransmitObjectisSystem, nameof(saveJournalWrappertransmitObjectisSystem), required: false);
-            WorkflowExpression.Validate(saveJournalWrappertransmitObjectphone, nameof(saveJournalWrappertransmitObjectphone), required: false);
-            WorkflowExpression.Validate(saveJournalWrappertransmitObjectphoneNormalized, nameof(saveJournalWrappertransmitObjectphoneNormalized), required: false);
-            WorkflowExpression.Validate(saveJournalWrappertransmitObjectisGdprRelevant, nameof(saveJournalWrappertransmitObjectisGdprRelevant), required: false);
-            WorkflowExpression.Validate(saveJournalWrappertransmitObjectpicture, nameof(saveJournalWrappertransmitObjectpicture), required: false);
-            WorkflowExpression.Validate(saveJournalWrappertransmitObjectpictureWidth, nameof(saveJournalWrappertransmitObjectpictureWidth), required: false);
-            WorkflowExpression.Validate(saveJournalWrappertransmitObjectpictureHeight, nameof(saveJournalWrappertransmitObjectpictureHeight), required: false);
-            WorkflowExpression.Validate(saveJournalWrappertransmitObjectstateEn, nameof(saveJournalWrappertransmitObjectstateEn), required: false);
-            WorkflowExpression.Validate(saveJournalWrappertransmitObjectprevStateEn, nameof(saveJournalWrappertransmitObjectprevStateEn), required: false);
-            WorkflowExpression.Validate(saveJournalWrappertransmitObjectcompaniesCompanyGuid, nameof(saveJournalWrappertransmitObjectcompaniesCompanyGuid), required: false);
-            WorkflowExpression.Validate(saveJournalWrappertransmitObjectcontactsContactGuid, nameof(saveJournalWrappertransmitObjectcontactsContactGuid), required: false);
-            WorkflowExpression.Validate(saveJournalWrappertransmitObjectleadsSuperiorItemGuid, nameof(saveJournalWrappertransmitObjectleadsSuperiorItemGuid), required: false);
-            WorkflowExpression.Validate(saveJournalWrappertransmitObjectprojectsSuperiorItemGuid, nameof(saveJournalWrappertransmitObjectprojectsSuperiorItemGuid), required: false);
-            WorkflowExpression.Validate(saveJournalWrappertransmitObjectmarketingMarketingGuid, nameof(saveJournalWrappertransmitObjectmarketingMarketingGuid), required: false);
-            WorkflowExpression.Validate(saveJournalWrappertransmitObjectisPrivate, nameof(saveJournalWrappertransmitObjectisPrivate), required: false);
-            WorkflowExpression.Validate(saveJournalWrappertransmitObjectitemCreated, nameof(saveJournalWrappertransmitObjectitemCreated), required: false);
-            WorkflowExpression.Validate(saveJournalWrappertransmitObjectitemChanged, nameof(saveJournalWrappertransmitObjectitemChanged), required: false);
-            WorkflowExpression.Validate(saveJournalWrappertransmitObjectfileAs, nameof(saveJournalWrappertransmitObjectfileAs), required: false);
-            WorkflowExpression.Validate(saveJournalWrappertransmitObjectownerGUID, nameof(saveJournalWrappertransmitObjectownerGUID), required: false);
-            WorkflowExpression.Validate(saveJournalWrappertransmitObjectcreatedByGUID, nameof(saveJournalWrappertransmitObjectcreatedByGUID), required: false);
-            WorkflowExpression.Validate(saveJournalWrappertransmitObjectmodifiedByGUID, nameof(saveJournalWrappertransmitObjectmodifiedByGUID), required: false);
-            WorkflowExpression.Validate(saveJournalWrappertransmitObjectadditionalFields, nameof(saveJournalWrappertransmitObjectadditionalFields), required: false);
-            WorkflowExpression.Validate(saveJournalWrappertransmitObjectitemGUID, nameof(saveJournalWrappertransmitObjectitemGUID), required: false);
-            WorkflowExpression.Validate(saveJournalWrappertransmitObjectitemVersion, nameof(saveJournalWrappertransmitObjectitemVersion), required: false);
-            WorkflowExpression.Validate(saveJournalWrapperdieOnItemConflict, nameof(saveJournalWrapperdieOnItemConflict), required: false);
-            WorkflowExpression.Validate(saveJournalWrapperignoredUserErrorMessages, nameof(saveJournalWrapperignoredUserErrorMessages), required: false);
+            var __workflow_saveJournalWrappertransmitObjectcalendarEntryID = saveJournalWrappertransmitObjectcalendarEntryID == null ? null : WorkflowExpression.Compile(saveJournalWrappertransmitObjectcalendarEntryID);
+            WorkflowExpression.Validate(__workflow_saveJournalWrappertransmitObjectcalendarEntryID, nameof(saveJournalWrappertransmitObjectcalendarEntryID), required: false);
+            var __workflow_saveJournalWrappertransmitObjectcalendarORIGIN = saveJournalWrappertransmitObjectcalendarORIGIN == null ? null : WorkflowExpression.Compile(saveJournalWrappertransmitObjectcalendarORIGIN);
+            WorkflowExpression.Validate(__workflow_saveJournalWrappertransmitObjectcalendarORIGIN, nameof(saveJournalWrappertransmitObjectcalendarORIGIN), required: false);
+            var __workflow_saveJournalWrappertransmitObjectchangedField = saveJournalWrappertransmitObjectchangedField == null ? null : WorkflowExpression.Compile(saveJournalWrappertransmitObjectchangedField);
+            WorkflowExpression.Validate(__workflow_saveJournalWrappertransmitObjectchangedField, nameof(saveJournalWrappertransmitObjectchangedField), required: false);
+            var __workflow_saveJournalWrappertransmitObjecteventEnd = saveJournalWrappertransmitObjecteventEnd == null ? null : WorkflowExpression.Compile(saveJournalWrappertransmitObjecteventEnd);
+            WorkflowExpression.Validate(__workflow_saveJournalWrappertransmitObjecteventEnd, nameof(saveJournalWrappertransmitObjecteventEnd), required: false);
+            var __workflow_saveJournalWrappertransmitObjecteventStart = saveJournalWrappertransmitObjecteventStart == null ? null : WorkflowExpression.Compile(saveJournalWrappertransmitObjecteventStart);
+            WorkflowExpression.Validate(__workflow_saveJournalWrappertransmitObjecteventStart, nameof(saveJournalWrappertransmitObjecteventStart), required: false);
+            var __workflow_saveJournalWrappertransmitObjectfieldValue = saveJournalWrappertransmitObjectfieldValue == null ? null : WorkflowExpression.Compile(saveJournalWrappertransmitObjectfieldValue);
+            WorkflowExpression.Validate(__workflow_saveJournalWrappertransmitObjectfieldValue, nameof(saveJournalWrappertransmitObjectfieldValue), required: false);
+            var __workflow_saveJournalWrappertransmitObjectimportanceEn = saveJournalWrappertransmitObjectimportanceEn == null ? null : WorkflowExpression.Compile(saveJournalWrappertransmitObjectimportanceEn);
+            WorkflowExpression.Validate(__workflow_saveJournalWrappertransmitObjectimportanceEn, nameof(saveJournalWrappertransmitObjectimportanceEn), required: false);
+            var __workflow_saveJournalWrappertransmitObjectnote = saveJournalWrappertransmitObjectnote == null ? null : WorkflowExpression.Compile(saveJournalWrappertransmitObjectnote);
+            WorkflowExpression.Validate(__workflow_saveJournalWrappertransmitObjectnote, nameof(saveJournalWrappertransmitObjectnote), required: false);
+            var __workflow_saveJournalWrappertransmitObjectprevFieldValue = saveJournalWrappertransmitObjectprevFieldValue == null ? null : WorkflowExpression.Compile(saveJournalWrappertransmitObjectprevFieldValue);
+            WorkflowExpression.Validate(__workflow_saveJournalWrappertransmitObjectprevFieldValue, nameof(saveJournalWrappertransmitObjectprevFieldValue), required: false);
+            var __workflow_saveJournalWrappertransmitObjecttypeEn = saveJournalWrappertransmitObjecttypeEn == null ? null : WorkflowExpression.Compile(saveJournalWrappertransmitObjecttypeEn);
+            WorkflowExpression.Validate(__workflow_saveJournalWrappertransmitObjecttypeEn, nameof(saveJournalWrappertransmitObjecttypeEn), required: false);
+            var __workflow_saveJournalWrappertransmitObjectisSystem = saveJournalWrappertransmitObjectisSystem == null ? null : WorkflowExpression.Compile(saveJournalWrappertransmitObjectisSystem);
+            WorkflowExpression.Validate(__workflow_saveJournalWrappertransmitObjectisSystem, nameof(saveJournalWrappertransmitObjectisSystem), required: false);
+            var __workflow_saveJournalWrappertransmitObjectphone = saveJournalWrappertransmitObjectphone == null ? null : WorkflowExpression.Compile(saveJournalWrappertransmitObjectphone);
+            WorkflowExpression.Validate(__workflow_saveJournalWrappertransmitObjectphone, nameof(saveJournalWrappertransmitObjectphone), required: false);
+            var __workflow_saveJournalWrappertransmitObjectphoneNormalized = saveJournalWrappertransmitObjectphoneNormalized == null ? null : WorkflowExpression.Compile(saveJournalWrappertransmitObjectphoneNormalized);
+            WorkflowExpression.Validate(__workflow_saveJournalWrappertransmitObjectphoneNormalized, nameof(saveJournalWrappertransmitObjectphoneNormalized), required: false);
+            var __workflow_saveJournalWrappertransmitObjectisGdprRelevant = saveJournalWrappertransmitObjectisGdprRelevant == null ? null : WorkflowExpression.Compile(saveJournalWrappertransmitObjectisGdprRelevant);
+            WorkflowExpression.Validate(__workflow_saveJournalWrappertransmitObjectisGdprRelevant, nameof(saveJournalWrappertransmitObjectisGdprRelevant), required: false);
+            var __workflow_saveJournalWrappertransmitObjectpicture = saveJournalWrappertransmitObjectpicture == null ? null : WorkflowExpression.Compile(saveJournalWrappertransmitObjectpicture);
+            WorkflowExpression.Validate(__workflow_saveJournalWrappertransmitObjectpicture, nameof(saveJournalWrappertransmitObjectpicture), required: false);
+            var __workflow_saveJournalWrappertransmitObjectpictureWidth = saveJournalWrappertransmitObjectpictureWidth == null ? null : WorkflowExpression.Compile(saveJournalWrappertransmitObjectpictureWidth);
+            WorkflowExpression.Validate(__workflow_saveJournalWrappertransmitObjectpictureWidth, nameof(saveJournalWrappertransmitObjectpictureWidth), required: false);
+            var __workflow_saveJournalWrappertransmitObjectpictureHeight = saveJournalWrappertransmitObjectpictureHeight == null ? null : WorkflowExpression.Compile(saveJournalWrappertransmitObjectpictureHeight);
+            WorkflowExpression.Validate(__workflow_saveJournalWrappertransmitObjectpictureHeight, nameof(saveJournalWrappertransmitObjectpictureHeight), required: false);
+            var __workflow_saveJournalWrappertransmitObjectstateEn = saveJournalWrappertransmitObjectstateEn == null ? null : WorkflowExpression.Compile(saveJournalWrappertransmitObjectstateEn);
+            WorkflowExpression.Validate(__workflow_saveJournalWrappertransmitObjectstateEn, nameof(saveJournalWrappertransmitObjectstateEn), required: false);
+            var __workflow_saveJournalWrappertransmitObjectprevStateEn = saveJournalWrappertransmitObjectprevStateEn == null ? null : WorkflowExpression.Compile(saveJournalWrappertransmitObjectprevStateEn);
+            WorkflowExpression.Validate(__workflow_saveJournalWrappertransmitObjectprevStateEn, nameof(saveJournalWrappertransmitObjectprevStateEn), required: false);
+            var __workflow_saveJournalWrappertransmitObjectcompaniesCompanyGuid = saveJournalWrappertransmitObjectcompaniesCompanyGuid == null ? null : WorkflowExpression.Compile(saveJournalWrappertransmitObjectcompaniesCompanyGuid);
+            WorkflowExpression.Validate(__workflow_saveJournalWrappertransmitObjectcompaniesCompanyGuid, nameof(saveJournalWrappertransmitObjectcompaniesCompanyGuid), required: false);
+            var __workflow_saveJournalWrappertransmitObjectcontactsContactGuid = saveJournalWrappertransmitObjectcontactsContactGuid == null ? null : WorkflowExpression.Compile(saveJournalWrappertransmitObjectcontactsContactGuid);
+            WorkflowExpression.Validate(__workflow_saveJournalWrappertransmitObjectcontactsContactGuid, nameof(saveJournalWrappertransmitObjectcontactsContactGuid), required: false);
+            var __workflow_saveJournalWrappertransmitObjectleadsSuperiorItemGuid = saveJournalWrappertransmitObjectleadsSuperiorItemGuid == null ? null : WorkflowExpression.Compile(saveJournalWrappertransmitObjectleadsSuperiorItemGuid);
+            WorkflowExpression.Validate(__workflow_saveJournalWrappertransmitObjectleadsSuperiorItemGuid, nameof(saveJournalWrappertransmitObjectleadsSuperiorItemGuid), required: false);
+            var __workflow_saveJournalWrappertransmitObjectprojectsSuperiorItemGuid = saveJournalWrappertransmitObjectprojectsSuperiorItemGuid == null ? null : WorkflowExpression.Compile(saveJournalWrappertransmitObjectprojectsSuperiorItemGuid);
+            WorkflowExpression.Validate(__workflow_saveJournalWrappertransmitObjectprojectsSuperiorItemGuid, nameof(saveJournalWrappertransmitObjectprojectsSuperiorItemGuid), required: false);
+            var __workflow_saveJournalWrappertransmitObjectmarketingMarketingGuid = saveJournalWrappertransmitObjectmarketingMarketingGuid == null ? null : WorkflowExpression.Compile(saveJournalWrappertransmitObjectmarketingMarketingGuid);
+            WorkflowExpression.Validate(__workflow_saveJournalWrappertransmitObjectmarketingMarketingGuid, nameof(saveJournalWrappertransmitObjectmarketingMarketingGuid), required: false);
+            var __workflow_saveJournalWrappertransmitObjectisPrivate = saveJournalWrappertransmitObjectisPrivate == null ? null : WorkflowExpression.Compile(saveJournalWrappertransmitObjectisPrivate);
+            WorkflowExpression.Validate(__workflow_saveJournalWrappertransmitObjectisPrivate, nameof(saveJournalWrappertransmitObjectisPrivate), required: false);
+            var __workflow_saveJournalWrappertransmitObjectitemCreated = saveJournalWrappertransmitObjectitemCreated == null ? null : WorkflowExpression.Compile(saveJournalWrappertransmitObjectitemCreated);
+            WorkflowExpression.Validate(__workflow_saveJournalWrappertransmitObjectitemCreated, nameof(saveJournalWrappertransmitObjectitemCreated), required: false);
+            var __workflow_saveJournalWrappertransmitObjectitemChanged = saveJournalWrappertransmitObjectitemChanged == null ? null : WorkflowExpression.Compile(saveJournalWrappertransmitObjectitemChanged);
+            WorkflowExpression.Validate(__workflow_saveJournalWrappertransmitObjectitemChanged, nameof(saveJournalWrappertransmitObjectitemChanged), required: false);
+            var __workflow_saveJournalWrappertransmitObjectfileAs = saveJournalWrappertransmitObjectfileAs == null ? null : WorkflowExpression.Compile(saveJournalWrappertransmitObjectfileAs);
+            WorkflowExpression.Validate(__workflow_saveJournalWrappertransmitObjectfileAs, nameof(saveJournalWrappertransmitObjectfileAs), required: false);
+            var __workflow_saveJournalWrappertransmitObjectownerGUID = saveJournalWrappertransmitObjectownerGUID == null ? null : WorkflowExpression.Compile(saveJournalWrappertransmitObjectownerGUID);
+            WorkflowExpression.Validate(__workflow_saveJournalWrappertransmitObjectownerGUID, nameof(saveJournalWrappertransmitObjectownerGUID), required: false);
+            var __workflow_saveJournalWrappertransmitObjectcreatedByGUID = saveJournalWrappertransmitObjectcreatedByGUID == null ? null : WorkflowExpression.Compile(saveJournalWrappertransmitObjectcreatedByGUID);
+            WorkflowExpression.Validate(__workflow_saveJournalWrappertransmitObjectcreatedByGUID, nameof(saveJournalWrappertransmitObjectcreatedByGUID), required: false);
+            var __workflow_saveJournalWrappertransmitObjectmodifiedByGUID = saveJournalWrappertransmitObjectmodifiedByGUID == null ? null : WorkflowExpression.Compile(saveJournalWrappertransmitObjectmodifiedByGUID);
+            WorkflowExpression.Validate(__workflow_saveJournalWrappertransmitObjectmodifiedByGUID, nameof(saveJournalWrappertransmitObjectmodifiedByGUID), required: false);
+            var __workflow_saveJournalWrappertransmitObjectadditionalFields = saveJournalWrappertransmitObjectadditionalFields == null ? null : WorkflowExpression.Compile(saveJournalWrappertransmitObjectadditionalFields);
+            WorkflowExpression.Validate(__workflow_saveJournalWrappertransmitObjectadditionalFields, nameof(saveJournalWrappertransmitObjectadditionalFields), required: false);
+            var __workflow_saveJournalWrappertransmitObjectitemGUID = saveJournalWrappertransmitObjectitemGUID == null ? null : WorkflowExpression.Compile(saveJournalWrappertransmitObjectitemGUID);
+            WorkflowExpression.Validate(__workflow_saveJournalWrappertransmitObjectitemGUID, nameof(saveJournalWrappertransmitObjectitemGUID), required: false);
+            var __workflow_saveJournalWrappertransmitObjectitemVersion = saveJournalWrappertransmitObjectitemVersion == null ? null : WorkflowExpression.Compile(saveJournalWrappertransmitObjectitemVersion);
+            WorkflowExpression.Validate(__workflow_saveJournalWrappertransmitObjectitemVersion, nameof(saveJournalWrappertransmitObjectitemVersion), required: false);
+            var __workflow_saveJournalWrapperdieOnItemConflict = saveJournalWrapperdieOnItemConflict == null ? null : WorkflowExpression.Compile(saveJournalWrapperdieOnItemConflict);
+            WorkflowExpression.Validate(__workflow_saveJournalWrapperdieOnItemConflict, nameof(saveJournalWrapperdieOnItemConflict), required: false);
+            var __workflow_saveJournalWrapperignoredUserErrorMessages = saveJournalWrapperignoredUserErrorMessages == null ? null : WorkflowExpression.Compile(saveJournalWrapperignoredUserErrorMessages);
+            WorkflowExpression.Validate(__workflow_saveJournalWrapperignoredUserErrorMessages, nameof(saveJournalWrapperignoredUserErrorMessages), required: false);
             return new DeferredBodyAction<EWayWcfServiceResponsesSaveResponse>(() =>
             {
                 var apiCallPath = "/SaveJournal";
@@ -1298,207 +1414,207 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                 var saveJournalWrapperpropCount = 0;
                 var transmitObjectObject = new JObject();
                 var transmitObjectObjectpropCount = 0;
-                if (saveJournalWrappertransmitObjectcalendarEntryID != null)
+                if (__workflow_saveJournalWrappertransmitObjectcalendarEntryID != null)
                 {
-                    transmitObjectObject["CalendarEntryID"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectcalendarEntryID);
+                    transmitObjectObject["CalendarEntryID"] = ExpressionConverter.ConvertO(__workflow_saveJournalWrappertransmitObjectcalendarEntryID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveJournalWrappertransmitObjectcalendarORIGIN != null)
+                if (__workflow_saveJournalWrappertransmitObjectcalendarORIGIN != null)
                 {
-                    transmitObjectObject["Calendar_ORIGIN"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectcalendarORIGIN);
+                    transmitObjectObject["Calendar_ORIGIN"] = ExpressionConverter.ConvertO(__workflow_saveJournalWrappertransmitObjectcalendarORIGIN);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveJournalWrappertransmitObjectchangedField != null)
+                if (__workflow_saveJournalWrappertransmitObjectchangedField != null)
                 {
-                    transmitObjectObject["ChangedField"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectchangedField);
+                    transmitObjectObject["ChangedField"] = ExpressionConverter.ConvertO(__workflow_saveJournalWrappertransmitObjectchangedField);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveJournalWrappertransmitObjecteventEnd != null)
+                if (__workflow_saveJournalWrappertransmitObjecteventEnd != null)
                 {
-                    transmitObjectObject["EventEnd"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjecteventEnd);
+                    transmitObjectObject["EventEnd"] = ExpressionConverter.ConvertO(__workflow_saveJournalWrappertransmitObjecteventEnd);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveJournalWrappertransmitObjecteventStart != null)
+                if (__workflow_saveJournalWrappertransmitObjecteventStart != null)
                 {
-                    transmitObjectObject["EventStart"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjecteventStart);
+                    transmitObjectObject["EventStart"] = ExpressionConverter.ConvertO(__workflow_saveJournalWrappertransmitObjecteventStart);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveJournalWrappertransmitObjectfieldValue != null)
+                if (__workflow_saveJournalWrappertransmitObjectfieldValue != null)
                 {
-                    transmitObjectObject["FieldValue"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectfieldValue);
+                    transmitObjectObject["FieldValue"] = ExpressionConverter.ConvertO(__workflow_saveJournalWrappertransmitObjectfieldValue);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveJournalWrappertransmitObjectimportanceEn != null)
+                if (__workflow_saveJournalWrappertransmitObjectimportanceEn != null)
                 {
-                    transmitObjectObject["ImportanceEn"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectimportanceEn);
+                    transmitObjectObject["ImportanceEn"] = ExpressionConverter.ConvertO(__workflow_saveJournalWrappertransmitObjectimportanceEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveJournalWrappertransmitObjectnote != null)
+                if (__workflow_saveJournalWrappertransmitObjectnote != null)
                 {
-                    transmitObjectObject["Note"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectnote);
+                    transmitObjectObject["Note"] = ExpressionConverter.ConvertO(__workflow_saveJournalWrappertransmitObjectnote);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveJournalWrappertransmitObjectprevFieldValue != null)
+                if (__workflow_saveJournalWrappertransmitObjectprevFieldValue != null)
                 {
-                    transmitObjectObject["PrevFieldValue"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectprevFieldValue);
+                    transmitObjectObject["PrevFieldValue"] = ExpressionConverter.ConvertO(__workflow_saveJournalWrappertransmitObjectprevFieldValue);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveJournalWrappertransmitObjecttypeEn != null)
+                if (__workflow_saveJournalWrappertransmitObjecttypeEn != null)
                 {
-                    transmitObjectObject["TypeEn"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjecttypeEn);
+                    transmitObjectObject["TypeEn"] = ExpressionConverter.ConvertO(__workflow_saveJournalWrappertransmitObjecttypeEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveJournalWrappertransmitObjectisSystem != null)
+                if (__workflow_saveJournalWrappertransmitObjectisSystem != null)
                 {
-                    transmitObjectObject["IsSystem"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectisSystem);
+                    transmitObjectObject["IsSystem"] = ExpressionConverter.ConvertO(__workflow_saveJournalWrappertransmitObjectisSystem);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveJournalWrappertransmitObjectphone != null)
+                if (__workflow_saveJournalWrappertransmitObjectphone != null)
                 {
-                    transmitObjectObject["Phone"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectphone);
+                    transmitObjectObject["Phone"] = ExpressionConverter.ConvertO(__workflow_saveJournalWrappertransmitObjectphone);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveJournalWrappertransmitObjectphoneNormalized != null)
+                if (__workflow_saveJournalWrappertransmitObjectphoneNormalized != null)
                 {
-                    transmitObjectObject["PhoneNormalized"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectphoneNormalized);
+                    transmitObjectObject["PhoneNormalized"] = ExpressionConverter.ConvertO(__workflow_saveJournalWrappertransmitObjectphoneNormalized);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveJournalWrappertransmitObjectisGdprRelevant != null)
+                if (__workflow_saveJournalWrappertransmitObjectisGdprRelevant != null)
                 {
-                    transmitObjectObject["IsGdprRelevant"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectisGdprRelevant);
+                    transmitObjectObject["IsGdprRelevant"] = ExpressionConverter.ConvertO(__workflow_saveJournalWrappertransmitObjectisGdprRelevant);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveJournalWrappertransmitObjectpicture != null)
+                if (__workflow_saveJournalWrappertransmitObjectpicture != null)
                 {
-                    transmitObjectObject["Picture"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectpicture);
+                    transmitObjectObject["Picture"] = ExpressionConverter.ConvertO(__workflow_saveJournalWrappertransmitObjectpicture);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveJournalWrappertransmitObjectpictureWidth != null)
+                if (__workflow_saveJournalWrappertransmitObjectpictureWidth != null)
                 {
-                    transmitObjectObject["PictureWidth"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectpictureWidth);
+                    transmitObjectObject["PictureWidth"] = ExpressionConverter.ConvertO(__workflow_saveJournalWrappertransmitObjectpictureWidth);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveJournalWrappertransmitObjectpictureHeight != null)
+                if (__workflow_saveJournalWrappertransmitObjectpictureHeight != null)
                 {
-                    transmitObjectObject["PictureHeight"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectpictureHeight);
+                    transmitObjectObject["PictureHeight"] = ExpressionConverter.ConvertO(__workflow_saveJournalWrappertransmitObjectpictureHeight);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveJournalWrappertransmitObjectstateEn != null)
+                if (__workflow_saveJournalWrappertransmitObjectstateEn != null)
                 {
-                    transmitObjectObject["StateEn"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectstateEn);
+                    transmitObjectObject["StateEn"] = ExpressionConverter.ConvertO(__workflow_saveJournalWrappertransmitObjectstateEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveJournalWrappertransmitObjectprevStateEn != null)
+                if (__workflow_saveJournalWrappertransmitObjectprevStateEn != null)
                 {
-                    transmitObjectObject["PrevStateEn"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectprevStateEn);
+                    transmitObjectObject["PrevStateEn"] = ExpressionConverter.ConvertO(__workflow_saveJournalWrappertransmitObjectprevStateEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveJournalWrappertransmitObjectcompaniesCompanyGuid != null)
+                if (__workflow_saveJournalWrappertransmitObjectcompaniesCompanyGuid != null)
                 {
-                    transmitObjectObject["Companies_CompanyGuid"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectcompaniesCompanyGuid);
+                    transmitObjectObject["Companies_CompanyGuid"] = ExpressionConverter.ConvertO(__workflow_saveJournalWrappertransmitObjectcompaniesCompanyGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveJournalWrappertransmitObjectcontactsContactGuid != null)
+                if (__workflow_saveJournalWrappertransmitObjectcontactsContactGuid != null)
                 {
-                    transmitObjectObject["Contacts_ContactGuid"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectcontactsContactGuid);
+                    transmitObjectObject["Contacts_ContactGuid"] = ExpressionConverter.ConvertO(__workflow_saveJournalWrappertransmitObjectcontactsContactGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveJournalWrappertransmitObjectleadsSuperiorItemGuid != null)
+                if (__workflow_saveJournalWrappertransmitObjectleadsSuperiorItemGuid != null)
                 {
-                    transmitObjectObject["Leads_SuperiorItemGuid"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectleadsSuperiorItemGuid);
+                    transmitObjectObject["Leads_SuperiorItemGuid"] = ExpressionConverter.ConvertO(__workflow_saveJournalWrappertransmitObjectleadsSuperiorItemGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveJournalWrappertransmitObjectprojectsSuperiorItemGuid != null)
+                if (__workflow_saveJournalWrappertransmitObjectprojectsSuperiorItemGuid != null)
                 {
-                    transmitObjectObject["Projects_SuperiorItemGuid"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectprojectsSuperiorItemGuid);
+                    transmitObjectObject["Projects_SuperiorItemGuid"] = ExpressionConverter.ConvertO(__workflow_saveJournalWrappertransmitObjectprojectsSuperiorItemGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveJournalWrappertransmitObjectmarketingMarketingGuid != null)
+                if (__workflow_saveJournalWrappertransmitObjectmarketingMarketingGuid != null)
                 {
-                    transmitObjectObject["Marketing_MarketingGuid"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectmarketingMarketingGuid);
+                    transmitObjectObject["Marketing_MarketingGuid"] = ExpressionConverter.ConvertO(__workflow_saveJournalWrappertransmitObjectmarketingMarketingGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveJournalWrappertransmitObjectisPrivate != null)
+                if (__workflow_saveJournalWrappertransmitObjectisPrivate != null)
                 {
-                    transmitObjectObject["IsPrivate"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectisPrivate);
+                    transmitObjectObject["IsPrivate"] = ExpressionConverter.ConvertO(__workflow_saveJournalWrappertransmitObjectisPrivate);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveJournalWrappertransmitObjectitemCreated != null)
+                if (__workflow_saveJournalWrappertransmitObjectitemCreated != null)
                 {
-                    transmitObjectObject["ItemCreated"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectitemCreated);
+                    transmitObjectObject["ItemCreated"] = ExpressionConverter.ConvertO(__workflow_saveJournalWrappertransmitObjectitemCreated);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveJournalWrappertransmitObjectitemChanged != null)
+                if (__workflow_saveJournalWrappertransmitObjectitemChanged != null)
                 {
-                    transmitObjectObject["ItemChanged"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectitemChanged);
+                    transmitObjectObject["ItemChanged"] = ExpressionConverter.ConvertO(__workflow_saveJournalWrappertransmitObjectitemChanged);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveJournalWrappertransmitObjectfileAs != null)
+                if (__workflow_saveJournalWrappertransmitObjectfileAs != null)
                 {
-                    transmitObjectObject["FileAs"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectfileAs);
+                    transmitObjectObject["FileAs"] = ExpressionConverter.ConvertO(__workflow_saveJournalWrappertransmitObjectfileAs);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveJournalWrappertransmitObjectownerGUID != null)
+                if (__workflow_saveJournalWrappertransmitObjectownerGUID != null)
                 {
-                    transmitObjectObject["OwnerGUID"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectownerGUID);
+                    transmitObjectObject["OwnerGUID"] = ExpressionConverter.ConvertO(__workflow_saveJournalWrappertransmitObjectownerGUID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveJournalWrappertransmitObjectcreatedByGUID != null)
+                if (__workflow_saveJournalWrappertransmitObjectcreatedByGUID != null)
                 {
-                    transmitObjectObject["CreatedByGUID"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectcreatedByGUID);
+                    transmitObjectObject["CreatedByGUID"] = ExpressionConverter.ConvertO(__workflow_saveJournalWrappertransmitObjectcreatedByGUID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveJournalWrappertransmitObjectmodifiedByGUID != null)
+                if (__workflow_saveJournalWrappertransmitObjectmodifiedByGUID != null)
                 {
-                    transmitObjectObject["ModifiedByGUID"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectmodifiedByGUID);
+                    transmitObjectObject["ModifiedByGUID"] = ExpressionConverter.ConvertO(__workflow_saveJournalWrappertransmitObjectmodifiedByGUID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveJournalWrappertransmitObjectadditionalFields != null)
+                if (__workflow_saveJournalWrappertransmitObjectadditionalFields != null)
                 {
-                    transmitObjectObject["AdditionalFields"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectadditionalFields);
+                    transmitObjectObject["AdditionalFields"] = ExpressionConverter.ConvertO(__workflow_saveJournalWrappertransmitObjectadditionalFields);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveJournalWrappertransmitObjectitemGUID != null)
+                if (__workflow_saveJournalWrappertransmitObjectitemGUID != null)
                 {
-                    transmitObjectObject["ItemGUID"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectitemGUID);
+                    transmitObjectObject["ItemGUID"] = ExpressionConverter.ConvertO(__workflow_saveJournalWrappertransmitObjectitemGUID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveJournalWrappertransmitObjectitemVersion != null)
+                if (__workflow_saveJournalWrappertransmitObjectitemVersion != null)
                 {
-                    transmitObjectObject["ItemVersion"] = ExpressionConverter.ConvertO(saveJournalWrappertransmitObjectitemVersion);
+                    transmitObjectObject["ItemVersion"] = ExpressionConverter.ConvertO(__workflow_saveJournalWrappertransmitObjectitemVersion);
                     transmitObjectObjectpropCount++;
                 }
 
@@ -1508,15 +1624,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                     saveJournalWrapperpropCount++;
                 }
 
-                if (saveJournalWrapperdieOnItemConflict != null)
+                if (__workflow_saveJournalWrapperdieOnItemConflict != null)
                 {
-                    saveJournalWrapper["dieOnItemConflict"] = ExpressionConverter.ConvertO(saveJournalWrapperdieOnItemConflict);
+                    saveJournalWrapper["dieOnItemConflict"] = ExpressionConverter.ConvertO(__workflow_saveJournalWrapperdieOnItemConflict);
                     saveJournalWrapperpropCount++;
                 }
 
-                if (saveJournalWrapperignoredUserErrorMessages != null)
+                if (__workflow_saveJournalWrapperignoredUserErrorMessages != null)
                 {
-                    saveJournalWrapper["ignoredUserErrorMessages"] = ExpressionConverter.ConvertO(saveJournalWrapperignoredUserErrorMessages);
+                    saveJournalWrapper["ignoredUserErrorMessages"] = ExpressionConverter.ConvertO(__workflow_saveJournalWrapperignoredUserErrorMessages);
                     saveJournalWrapperpropCount++;
                 }
 
@@ -1530,61 +1646,100 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
-        [WorkflowExpressionFactory(nameof(__BuildSaveLead))]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesSaveResponse> SaveLead([WorkflowExpression] Func<string> saveLeadWrappertransmitObjectcity = null, [WorkflowExpression] Func<string> saveLeadWrappertransmitObjectcontactPerson = null, [WorkflowExpression] Func<string> saveLeadWrappertransmitObjectcurrencyEn = null, [WorkflowExpression] Func<string> saveLeadWrappertransmitObjectcustomer = null, [WorkflowExpression] Func<string> saveLeadWrappertransmitObjectemail = null, [WorkflowExpression] Func<string> saveLeadWrappertransmitObjectestimatedEnd = null, [WorkflowExpression] Func<int> saveLeadWrappertransmitObjecthID = null, [WorkflowExpression] Func<string> saveLeadWrappertransmitObjectleadOriginEn = null, [WorkflowExpression] Func<string> saveLeadWrappertransmitObjectnote = null, [WorkflowExpression] Func<string> saveLeadWrappertransmitObjectphone = null, [WorkflowExpression] Func<string> saveLeadWrappertransmitObjectphoneNormalized = null, [WorkflowExpression] Func<string> saveLeadWrappertransmitObjectprevStateEn = null, [WorkflowExpression] Func<double> saveLeadWrappertransmitObjectprice = null, [WorkflowExpression] Func<string> saveLeadWrappertransmitObjectpriceChanged = null, [WorkflowExpression] Func<double> saveLeadWrappertransmitObjectpriceDefaultCurrency = null, [WorkflowExpression] Func<double> saveLeadWrappertransmitObjectprobability = null, [WorkflowExpression] Func<string> saveLeadWrappertransmitObjectreceiveDate = null, [WorkflowExpression] Func<string> saveLeadWrappertransmitObjectstateEn = null, [WorkflowExpression] Func<string> saveLeadWrappertransmitObjectstreet = null, [WorkflowExpression] Func<string> saveLeadWrappertransmitObjecttypeEn = null, [WorkflowExpression] Func<string> saveLeadWrappertransmitObjectzip = null, [WorkflowExpression] Func<string> saveLeadWrappertransmitObjectlastActivity = null, [WorkflowExpression] Func<string> saveLeadWrappertransmitObjectnextStep = null, [WorkflowExpression] Func<double> saveLeadWrappertransmitObjectestimatedValue = null, [WorkflowExpression] Func<string> saveLeadWrappertransmitObjectcountryEn = null, [WorkflowExpression] Func<string> saveLeadWrappertransmitObjectstate = null, [WorkflowExpression] Func<string> saveLeadWrappertransmitObjectpOBox = null, [WorkflowExpression] Func<bool> saveLeadWrappertransmitObjectemailOptOut = null, [WorkflowExpression] Func<string> saveLeadWrappertransmitObjectpicture = null, [WorkflowExpression] Func<int> saveLeadWrappertransmitObjectpictureWidth = null, [WorkflowExpression] Func<int> saveLeadWrappertransmitObjectpictureHeight = null, [WorkflowExpression] Func<string> saveLeadWrappertransmitObjectcompaniesCustomerGuid = null, [WorkflowExpression] Func<string> saveLeadWrappertransmitObjectcontactsContactPersonGuid = null, [WorkflowExpression] Func<string> saveLeadWrappertransmitObjectmarketingMarketingGuid = null, [WorkflowExpression] Func<bool> saveLeadWrappertransmitObjectisPrivate = null, [WorkflowExpression] Func<string> saveLeadWrappertransmitObjectitemCreated = null, [WorkflowExpression] Func<string> saveLeadWrappertransmitObjectitemChanged = null, [WorkflowExpression] Func<string> saveLeadWrappertransmitObjectfileAs = null, [WorkflowExpression] Func<string> saveLeadWrappertransmitObjectownerGUID = null, [WorkflowExpression] Func<string> saveLeadWrappertransmitObjectcreatedByGUID = null, [WorkflowExpression] Func<string> saveLeadWrappertransmitObjectmodifiedByGUID = null, [WorkflowExpression] Func<object> saveLeadWrappertransmitObjectadditionalFields = null, [WorkflowExpression] Func<string> saveLeadWrappertransmitObjectitemGUID = null, [WorkflowExpression] Func<int> saveLeadWrappertransmitObjectitemVersion = null, [WorkflowExpression] Func<bool> saveLeadWrapperdieOnItemConflict = null, [WorkflowExpression] Func<string[]> saveLeadWrapperignoredUserErrorMessages = null)
+        public IBodyWorkflowAction<EWayWcfServiceResponsesSaveResponse> SaveLead(Expression<Func<string>> saveLeadWrappertransmitObjectcity = null, Expression<Func<string>> saveLeadWrappertransmitObjectcontactPerson = null, Expression<Func<string>> saveLeadWrappertransmitObjectcurrencyEn = null, Expression<Func<string>> saveLeadWrappertransmitObjectcustomer = null, Expression<Func<string>> saveLeadWrappertransmitObjectemail = null, Expression<Func<string>> saveLeadWrappertransmitObjectestimatedEnd = null, Expression<Func<int>> saveLeadWrappertransmitObjecthID = null, Expression<Func<string>> saveLeadWrappertransmitObjectleadOriginEn = null, Expression<Func<string>> saveLeadWrappertransmitObjectnote = null, Expression<Func<string>> saveLeadWrappertransmitObjectphone = null, Expression<Func<string>> saveLeadWrappertransmitObjectphoneNormalized = null, Expression<Func<string>> saveLeadWrappertransmitObjectprevStateEn = null, Expression<Func<double>> saveLeadWrappertransmitObjectprice = null, Expression<Func<string>> saveLeadWrappertransmitObjectpriceChanged = null, Expression<Func<double>> saveLeadWrappertransmitObjectpriceDefaultCurrency = null, Expression<Func<double>> saveLeadWrappertransmitObjectprobability = null, Expression<Func<string>> saveLeadWrappertransmitObjectreceiveDate = null, Expression<Func<string>> saveLeadWrappertransmitObjectstateEn = null, Expression<Func<string>> saveLeadWrappertransmitObjectstreet = null, Expression<Func<string>> saveLeadWrappertransmitObjecttypeEn = null, Expression<Func<string>> saveLeadWrappertransmitObjectzip = null, Expression<Func<string>> saveLeadWrappertransmitObjectlastActivity = null, Expression<Func<string>> saveLeadWrappertransmitObjectnextStep = null, Expression<Func<double>> saveLeadWrappertransmitObjectestimatedValue = null, Expression<Func<string>> saveLeadWrappertransmitObjectcountryEn = null, Expression<Func<string>> saveLeadWrappertransmitObjectstate = null, Expression<Func<string>> saveLeadWrappertransmitObjectpOBox = null, Expression<Func<bool>> saveLeadWrappertransmitObjectemailOptOut = null, Expression<Func<string>> saveLeadWrappertransmitObjectpicture = null, Expression<Func<int>> saveLeadWrappertransmitObjectpictureWidth = null, Expression<Func<int>> saveLeadWrappertransmitObjectpictureHeight = null, Expression<Func<string>> saveLeadWrappertransmitObjectcompaniesCustomerGuid = null, Expression<Func<string>> saveLeadWrappertransmitObjectcontactsContactPersonGuid = null, Expression<Func<string>> saveLeadWrappertransmitObjectmarketingMarketingGuid = null, Expression<Func<bool>> saveLeadWrappertransmitObjectisPrivate = null, Expression<Func<string>> saveLeadWrappertransmitObjectitemCreated = null, Expression<Func<string>> saveLeadWrappertransmitObjectitemChanged = null, Expression<Func<string>> saveLeadWrappertransmitObjectfileAs = null, Expression<Func<string>> saveLeadWrappertransmitObjectownerGUID = null, Expression<Func<string>> saveLeadWrappertransmitObjectcreatedByGUID = null, Expression<Func<string>> saveLeadWrappertransmitObjectmodifiedByGUID = null, Expression<Func<object>> saveLeadWrappertransmitObjectadditionalFields = null, Expression<Func<string>> saveLeadWrappertransmitObjectitemGUID = null, Expression<Func<int>> saveLeadWrappertransmitObjectitemVersion = null, Expression<Func<bool>> saveLeadWrapperdieOnItemConflict = null, Expression<Func<string[]>> saveLeadWrapperignoredUserErrorMessages = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesSaveResponse> __BuildSaveLead(WorkflowExpression<string> saveLeadWrappertransmitObjectcity = null, WorkflowExpression<string> saveLeadWrappertransmitObjectcontactPerson = null, WorkflowExpression<string> saveLeadWrappertransmitObjectcurrencyEn = null, WorkflowExpression<string> saveLeadWrappertransmitObjectcustomer = null, WorkflowExpression<string> saveLeadWrappertransmitObjectemail = null, WorkflowExpression<string> saveLeadWrappertransmitObjectestimatedEnd = null, WorkflowExpression<int> saveLeadWrappertransmitObjecthID = null, WorkflowExpression<string> saveLeadWrappertransmitObjectleadOriginEn = null, WorkflowExpression<string> saveLeadWrappertransmitObjectnote = null, WorkflowExpression<string> saveLeadWrappertransmitObjectphone = null, WorkflowExpression<string> saveLeadWrappertransmitObjectphoneNormalized = null, WorkflowExpression<string> saveLeadWrappertransmitObjectprevStateEn = null, WorkflowExpression<double> saveLeadWrappertransmitObjectprice = null, WorkflowExpression<string> saveLeadWrappertransmitObjectpriceChanged = null, WorkflowExpression<double> saveLeadWrappertransmitObjectpriceDefaultCurrency = null, WorkflowExpression<double> saveLeadWrappertransmitObjectprobability = null, WorkflowExpression<string> saveLeadWrappertransmitObjectreceiveDate = null, WorkflowExpression<string> saveLeadWrappertransmitObjectstateEn = null, WorkflowExpression<string> saveLeadWrappertransmitObjectstreet = null, WorkflowExpression<string> saveLeadWrappertransmitObjecttypeEn = null, WorkflowExpression<string> saveLeadWrappertransmitObjectzip = null, WorkflowExpression<string> saveLeadWrappertransmitObjectlastActivity = null, WorkflowExpression<string> saveLeadWrappertransmitObjectnextStep = null, WorkflowExpression<double> saveLeadWrappertransmitObjectestimatedValue = null, WorkflowExpression<string> saveLeadWrappertransmitObjectcountryEn = null, WorkflowExpression<string> saveLeadWrappertransmitObjectstate = null, WorkflowExpression<string> saveLeadWrappertransmitObjectpOBox = null, WorkflowExpression<bool> saveLeadWrappertransmitObjectemailOptOut = null, WorkflowExpression<string> saveLeadWrappertransmitObjectpicture = null, WorkflowExpression<int> saveLeadWrappertransmitObjectpictureWidth = null, WorkflowExpression<int> saveLeadWrappertransmitObjectpictureHeight = null, WorkflowExpression<string> saveLeadWrappertransmitObjectcompaniesCustomerGuid = null, WorkflowExpression<string> saveLeadWrappertransmitObjectcontactsContactPersonGuid = null, WorkflowExpression<string> saveLeadWrappertransmitObjectmarketingMarketingGuid = null, WorkflowExpression<bool> saveLeadWrappertransmitObjectisPrivate = null, WorkflowExpression<string> saveLeadWrappertransmitObjectitemCreated = null, WorkflowExpression<string> saveLeadWrappertransmitObjectitemChanged = null, WorkflowExpression<string> saveLeadWrappertransmitObjectfileAs = null, WorkflowExpression<string> saveLeadWrappertransmitObjectownerGUID = null, WorkflowExpression<string> saveLeadWrappertransmitObjectcreatedByGUID = null, WorkflowExpression<string> saveLeadWrappertransmitObjectmodifiedByGUID = null, WorkflowExpression<object> saveLeadWrappertransmitObjectadditionalFields = null, WorkflowExpression<string> saveLeadWrappertransmitObjectitemGUID = null, WorkflowExpression<int> saveLeadWrappertransmitObjectitemVersion = null, WorkflowExpression<bool> saveLeadWrapperdieOnItemConflict = null, WorkflowExpression<string[]> saveLeadWrapperignoredUserErrorMessages = null)
-        {
-            WorkflowExpression.Validate(saveLeadWrappertransmitObjectcity, nameof(saveLeadWrappertransmitObjectcity), required: false);
-            WorkflowExpression.Validate(saveLeadWrappertransmitObjectcontactPerson, nameof(saveLeadWrappertransmitObjectcontactPerson), required: false);
-            WorkflowExpression.Validate(saveLeadWrappertransmitObjectcurrencyEn, nameof(saveLeadWrappertransmitObjectcurrencyEn), required: false);
-            WorkflowExpression.Validate(saveLeadWrappertransmitObjectcustomer, nameof(saveLeadWrappertransmitObjectcustomer), required: false);
-            WorkflowExpression.Validate(saveLeadWrappertransmitObjectemail, nameof(saveLeadWrappertransmitObjectemail), required: false);
-            WorkflowExpression.Validate(saveLeadWrappertransmitObjectestimatedEnd, nameof(saveLeadWrappertransmitObjectestimatedEnd), required: false);
-            WorkflowExpression.Validate(saveLeadWrappertransmitObjecthID, nameof(saveLeadWrappertransmitObjecthID), required: false);
-            WorkflowExpression.Validate(saveLeadWrappertransmitObjectleadOriginEn, nameof(saveLeadWrappertransmitObjectleadOriginEn), required: false);
-            WorkflowExpression.Validate(saveLeadWrappertransmitObjectnote, nameof(saveLeadWrappertransmitObjectnote), required: false);
-            WorkflowExpression.Validate(saveLeadWrappertransmitObjectphone, nameof(saveLeadWrappertransmitObjectphone), required: false);
-            WorkflowExpression.Validate(saveLeadWrappertransmitObjectphoneNormalized, nameof(saveLeadWrappertransmitObjectphoneNormalized), required: false);
-            WorkflowExpression.Validate(saveLeadWrappertransmitObjectprevStateEn, nameof(saveLeadWrappertransmitObjectprevStateEn), required: false);
-            WorkflowExpression.Validate(saveLeadWrappertransmitObjectprice, nameof(saveLeadWrappertransmitObjectprice), required: false);
-            WorkflowExpression.Validate(saveLeadWrappertransmitObjectpriceChanged, nameof(saveLeadWrappertransmitObjectpriceChanged), required: false);
-            WorkflowExpression.Validate(saveLeadWrappertransmitObjectpriceDefaultCurrency, nameof(saveLeadWrappertransmitObjectpriceDefaultCurrency), required: false);
-            WorkflowExpression.Validate(saveLeadWrappertransmitObjectprobability, nameof(saveLeadWrappertransmitObjectprobability), required: false);
-            WorkflowExpression.Validate(saveLeadWrappertransmitObjectreceiveDate, nameof(saveLeadWrappertransmitObjectreceiveDate), required: false);
-            WorkflowExpression.Validate(saveLeadWrappertransmitObjectstateEn, nameof(saveLeadWrappertransmitObjectstateEn), required: false);
-            WorkflowExpression.Validate(saveLeadWrappertransmitObjectstreet, nameof(saveLeadWrappertransmitObjectstreet), required: false);
-            WorkflowExpression.Validate(saveLeadWrappertransmitObjecttypeEn, nameof(saveLeadWrappertransmitObjecttypeEn), required: false);
-            WorkflowExpression.Validate(saveLeadWrappertransmitObjectzip, nameof(saveLeadWrappertransmitObjectzip), required: false);
-            WorkflowExpression.Validate(saveLeadWrappertransmitObjectlastActivity, nameof(saveLeadWrappertransmitObjectlastActivity), required: false);
-            WorkflowExpression.Validate(saveLeadWrappertransmitObjectnextStep, nameof(saveLeadWrappertransmitObjectnextStep), required: false);
-            WorkflowExpression.Validate(saveLeadWrappertransmitObjectestimatedValue, nameof(saveLeadWrappertransmitObjectestimatedValue), required: false);
-            WorkflowExpression.Validate(saveLeadWrappertransmitObjectcountryEn, nameof(saveLeadWrappertransmitObjectcountryEn), required: false);
-            WorkflowExpression.Validate(saveLeadWrappertransmitObjectstate, nameof(saveLeadWrappertransmitObjectstate), required: false);
-            WorkflowExpression.Validate(saveLeadWrappertransmitObjectpOBox, nameof(saveLeadWrappertransmitObjectpOBox), required: false);
-            WorkflowExpression.Validate(saveLeadWrappertransmitObjectemailOptOut, nameof(saveLeadWrappertransmitObjectemailOptOut), required: false);
-            WorkflowExpression.Validate(saveLeadWrappertransmitObjectpicture, nameof(saveLeadWrappertransmitObjectpicture), required: false);
-            WorkflowExpression.Validate(saveLeadWrappertransmitObjectpictureWidth, nameof(saveLeadWrappertransmitObjectpictureWidth), required: false);
-            WorkflowExpression.Validate(saveLeadWrappertransmitObjectpictureHeight, nameof(saveLeadWrappertransmitObjectpictureHeight), required: false);
-            WorkflowExpression.Validate(saveLeadWrappertransmitObjectcompaniesCustomerGuid, nameof(saveLeadWrappertransmitObjectcompaniesCustomerGuid), required: false);
-            WorkflowExpression.Validate(saveLeadWrappertransmitObjectcontactsContactPersonGuid, nameof(saveLeadWrappertransmitObjectcontactsContactPersonGuid), required: false);
-            WorkflowExpression.Validate(saveLeadWrappertransmitObjectmarketingMarketingGuid, nameof(saveLeadWrappertransmitObjectmarketingMarketingGuid), required: false);
-            WorkflowExpression.Validate(saveLeadWrappertransmitObjectisPrivate, nameof(saveLeadWrappertransmitObjectisPrivate), required: false);
-            WorkflowExpression.Validate(saveLeadWrappertransmitObjectitemCreated, nameof(saveLeadWrappertransmitObjectitemCreated), required: false);
-            WorkflowExpression.Validate(saveLeadWrappertransmitObjectitemChanged, nameof(saveLeadWrappertransmitObjectitemChanged), required: false);
-            WorkflowExpression.Validate(saveLeadWrappertransmitObjectfileAs, nameof(saveLeadWrappertransmitObjectfileAs), required: false);
-            WorkflowExpression.Validate(saveLeadWrappertransmitObjectownerGUID, nameof(saveLeadWrappertransmitObjectownerGUID), required: false);
-            WorkflowExpression.Validate(saveLeadWrappertransmitObjectcreatedByGUID, nameof(saveLeadWrappertransmitObjectcreatedByGUID), required: false);
-            WorkflowExpression.Validate(saveLeadWrappertransmitObjectmodifiedByGUID, nameof(saveLeadWrappertransmitObjectmodifiedByGUID), required: false);
-            WorkflowExpression.Validate(saveLeadWrappertransmitObjectadditionalFields, nameof(saveLeadWrappertransmitObjectadditionalFields), required: false);
-            WorkflowExpression.Validate(saveLeadWrappertransmitObjectitemGUID, nameof(saveLeadWrappertransmitObjectitemGUID), required: false);
-            WorkflowExpression.Validate(saveLeadWrappertransmitObjectitemVersion, nameof(saveLeadWrappertransmitObjectitemVersion), required: false);
-            WorkflowExpression.Validate(saveLeadWrapperdieOnItemConflict, nameof(saveLeadWrapperdieOnItemConflict), required: false);
-            WorkflowExpression.Validate(saveLeadWrapperignoredUserErrorMessages, nameof(saveLeadWrapperignoredUserErrorMessages), required: false);
+            var __workflow_saveLeadWrappertransmitObjectcity = saveLeadWrappertransmitObjectcity == null ? null : WorkflowExpression.Compile(saveLeadWrappertransmitObjectcity);
+            WorkflowExpression.Validate(__workflow_saveLeadWrappertransmitObjectcity, nameof(saveLeadWrappertransmitObjectcity), required: false);
+            var __workflow_saveLeadWrappertransmitObjectcontactPerson = saveLeadWrappertransmitObjectcontactPerson == null ? null : WorkflowExpression.Compile(saveLeadWrappertransmitObjectcontactPerson);
+            WorkflowExpression.Validate(__workflow_saveLeadWrappertransmitObjectcontactPerson, nameof(saveLeadWrappertransmitObjectcontactPerson), required: false);
+            var __workflow_saveLeadWrappertransmitObjectcurrencyEn = saveLeadWrappertransmitObjectcurrencyEn == null ? null : WorkflowExpression.Compile(saveLeadWrappertransmitObjectcurrencyEn);
+            WorkflowExpression.Validate(__workflow_saveLeadWrappertransmitObjectcurrencyEn, nameof(saveLeadWrappertransmitObjectcurrencyEn), required: false);
+            var __workflow_saveLeadWrappertransmitObjectcustomer = saveLeadWrappertransmitObjectcustomer == null ? null : WorkflowExpression.Compile(saveLeadWrappertransmitObjectcustomer);
+            WorkflowExpression.Validate(__workflow_saveLeadWrappertransmitObjectcustomer, nameof(saveLeadWrappertransmitObjectcustomer), required: false);
+            var __workflow_saveLeadWrappertransmitObjectemail = saveLeadWrappertransmitObjectemail == null ? null : WorkflowExpression.Compile(saveLeadWrappertransmitObjectemail);
+            WorkflowExpression.Validate(__workflow_saveLeadWrappertransmitObjectemail, nameof(saveLeadWrappertransmitObjectemail), required: false);
+            var __workflow_saveLeadWrappertransmitObjectestimatedEnd = saveLeadWrappertransmitObjectestimatedEnd == null ? null : WorkflowExpression.Compile(saveLeadWrappertransmitObjectestimatedEnd);
+            WorkflowExpression.Validate(__workflow_saveLeadWrappertransmitObjectestimatedEnd, nameof(saveLeadWrappertransmitObjectestimatedEnd), required: false);
+            var __workflow_saveLeadWrappertransmitObjecthID = saveLeadWrappertransmitObjecthID == null ? null : WorkflowExpression.Compile(saveLeadWrappertransmitObjecthID);
+            WorkflowExpression.Validate(__workflow_saveLeadWrappertransmitObjecthID, nameof(saveLeadWrappertransmitObjecthID), required: false);
+            var __workflow_saveLeadWrappertransmitObjectleadOriginEn = saveLeadWrappertransmitObjectleadOriginEn == null ? null : WorkflowExpression.Compile(saveLeadWrappertransmitObjectleadOriginEn);
+            WorkflowExpression.Validate(__workflow_saveLeadWrappertransmitObjectleadOriginEn, nameof(saveLeadWrappertransmitObjectleadOriginEn), required: false);
+            var __workflow_saveLeadWrappertransmitObjectnote = saveLeadWrappertransmitObjectnote == null ? null : WorkflowExpression.Compile(saveLeadWrappertransmitObjectnote);
+            WorkflowExpression.Validate(__workflow_saveLeadWrappertransmitObjectnote, nameof(saveLeadWrappertransmitObjectnote), required: false);
+            var __workflow_saveLeadWrappertransmitObjectphone = saveLeadWrappertransmitObjectphone == null ? null : WorkflowExpression.Compile(saveLeadWrappertransmitObjectphone);
+            WorkflowExpression.Validate(__workflow_saveLeadWrappertransmitObjectphone, nameof(saveLeadWrappertransmitObjectphone), required: false);
+            var __workflow_saveLeadWrappertransmitObjectphoneNormalized = saveLeadWrappertransmitObjectphoneNormalized == null ? null : WorkflowExpression.Compile(saveLeadWrappertransmitObjectphoneNormalized);
+            WorkflowExpression.Validate(__workflow_saveLeadWrappertransmitObjectphoneNormalized, nameof(saveLeadWrappertransmitObjectphoneNormalized), required: false);
+            var __workflow_saveLeadWrappertransmitObjectprevStateEn = saveLeadWrappertransmitObjectprevStateEn == null ? null : WorkflowExpression.Compile(saveLeadWrappertransmitObjectprevStateEn);
+            WorkflowExpression.Validate(__workflow_saveLeadWrappertransmitObjectprevStateEn, nameof(saveLeadWrappertransmitObjectprevStateEn), required: false);
+            var __workflow_saveLeadWrappertransmitObjectprice = saveLeadWrappertransmitObjectprice == null ? null : WorkflowExpression.Compile(saveLeadWrappertransmitObjectprice);
+            WorkflowExpression.Validate(__workflow_saveLeadWrappertransmitObjectprice, nameof(saveLeadWrappertransmitObjectprice), required: false);
+            var __workflow_saveLeadWrappertransmitObjectpriceChanged = saveLeadWrappertransmitObjectpriceChanged == null ? null : WorkflowExpression.Compile(saveLeadWrappertransmitObjectpriceChanged);
+            WorkflowExpression.Validate(__workflow_saveLeadWrappertransmitObjectpriceChanged, nameof(saveLeadWrappertransmitObjectpriceChanged), required: false);
+            var __workflow_saveLeadWrappertransmitObjectpriceDefaultCurrency = saveLeadWrappertransmitObjectpriceDefaultCurrency == null ? null : WorkflowExpression.Compile(saveLeadWrappertransmitObjectpriceDefaultCurrency);
+            WorkflowExpression.Validate(__workflow_saveLeadWrappertransmitObjectpriceDefaultCurrency, nameof(saveLeadWrappertransmitObjectpriceDefaultCurrency), required: false);
+            var __workflow_saveLeadWrappertransmitObjectprobability = saveLeadWrappertransmitObjectprobability == null ? null : WorkflowExpression.Compile(saveLeadWrappertransmitObjectprobability);
+            WorkflowExpression.Validate(__workflow_saveLeadWrappertransmitObjectprobability, nameof(saveLeadWrappertransmitObjectprobability), required: false);
+            var __workflow_saveLeadWrappertransmitObjectreceiveDate = saveLeadWrappertransmitObjectreceiveDate == null ? null : WorkflowExpression.Compile(saveLeadWrappertransmitObjectreceiveDate);
+            WorkflowExpression.Validate(__workflow_saveLeadWrappertransmitObjectreceiveDate, nameof(saveLeadWrappertransmitObjectreceiveDate), required: false);
+            var __workflow_saveLeadWrappertransmitObjectstateEn = saveLeadWrappertransmitObjectstateEn == null ? null : WorkflowExpression.Compile(saveLeadWrappertransmitObjectstateEn);
+            WorkflowExpression.Validate(__workflow_saveLeadWrappertransmitObjectstateEn, nameof(saveLeadWrappertransmitObjectstateEn), required: false);
+            var __workflow_saveLeadWrappertransmitObjectstreet = saveLeadWrappertransmitObjectstreet == null ? null : WorkflowExpression.Compile(saveLeadWrappertransmitObjectstreet);
+            WorkflowExpression.Validate(__workflow_saveLeadWrappertransmitObjectstreet, nameof(saveLeadWrappertransmitObjectstreet), required: false);
+            var __workflow_saveLeadWrappertransmitObjecttypeEn = saveLeadWrappertransmitObjecttypeEn == null ? null : WorkflowExpression.Compile(saveLeadWrappertransmitObjecttypeEn);
+            WorkflowExpression.Validate(__workflow_saveLeadWrappertransmitObjecttypeEn, nameof(saveLeadWrappertransmitObjecttypeEn), required: false);
+            var __workflow_saveLeadWrappertransmitObjectzip = saveLeadWrappertransmitObjectzip == null ? null : WorkflowExpression.Compile(saveLeadWrappertransmitObjectzip);
+            WorkflowExpression.Validate(__workflow_saveLeadWrappertransmitObjectzip, nameof(saveLeadWrappertransmitObjectzip), required: false);
+            var __workflow_saveLeadWrappertransmitObjectlastActivity = saveLeadWrappertransmitObjectlastActivity == null ? null : WorkflowExpression.Compile(saveLeadWrappertransmitObjectlastActivity);
+            WorkflowExpression.Validate(__workflow_saveLeadWrappertransmitObjectlastActivity, nameof(saveLeadWrappertransmitObjectlastActivity), required: false);
+            var __workflow_saveLeadWrappertransmitObjectnextStep = saveLeadWrappertransmitObjectnextStep == null ? null : WorkflowExpression.Compile(saveLeadWrappertransmitObjectnextStep);
+            WorkflowExpression.Validate(__workflow_saveLeadWrappertransmitObjectnextStep, nameof(saveLeadWrappertransmitObjectnextStep), required: false);
+            var __workflow_saveLeadWrappertransmitObjectestimatedValue = saveLeadWrappertransmitObjectestimatedValue == null ? null : WorkflowExpression.Compile(saveLeadWrappertransmitObjectestimatedValue);
+            WorkflowExpression.Validate(__workflow_saveLeadWrappertransmitObjectestimatedValue, nameof(saveLeadWrappertransmitObjectestimatedValue), required: false);
+            var __workflow_saveLeadWrappertransmitObjectcountryEn = saveLeadWrappertransmitObjectcountryEn == null ? null : WorkflowExpression.Compile(saveLeadWrappertransmitObjectcountryEn);
+            WorkflowExpression.Validate(__workflow_saveLeadWrappertransmitObjectcountryEn, nameof(saveLeadWrappertransmitObjectcountryEn), required: false);
+            var __workflow_saveLeadWrappertransmitObjectstate = saveLeadWrappertransmitObjectstate == null ? null : WorkflowExpression.Compile(saveLeadWrappertransmitObjectstate);
+            WorkflowExpression.Validate(__workflow_saveLeadWrappertransmitObjectstate, nameof(saveLeadWrappertransmitObjectstate), required: false);
+            var __workflow_saveLeadWrappertransmitObjectpOBox = saveLeadWrappertransmitObjectpOBox == null ? null : WorkflowExpression.Compile(saveLeadWrappertransmitObjectpOBox);
+            WorkflowExpression.Validate(__workflow_saveLeadWrappertransmitObjectpOBox, nameof(saveLeadWrappertransmitObjectpOBox), required: false);
+            var __workflow_saveLeadWrappertransmitObjectemailOptOut = saveLeadWrappertransmitObjectemailOptOut == null ? null : WorkflowExpression.Compile(saveLeadWrappertransmitObjectemailOptOut);
+            WorkflowExpression.Validate(__workflow_saveLeadWrappertransmitObjectemailOptOut, nameof(saveLeadWrappertransmitObjectemailOptOut), required: false);
+            var __workflow_saveLeadWrappertransmitObjectpicture = saveLeadWrappertransmitObjectpicture == null ? null : WorkflowExpression.Compile(saveLeadWrappertransmitObjectpicture);
+            WorkflowExpression.Validate(__workflow_saveLeadWrappertransmitObjectpicture, nameof(saveLeadWrappertransmitObjectpicture), required: false);
+            var __workflow_saveLeadWrappertransmitObjectpictureWidth = saveLeadWrappertransmitObjectpictureWidth == null ? null : WorkflowExpression.Compile(saveLeadWrappertransmitObjectpictureWidth);
+            WorkflowExpression.Validate(__workflow_saveLeadWrappertransmitObjectpictureWidth, nameof(saveLeadWrappertransmitObjectpictureWidth), required: false);
+            var __workflow_saveLeadWrappertransmitObjectpictureHeight = saveLeadWrappertransmitObjectpictureHeight == null ? null : WorkflowExpression.Compile(saveLeadWrappertransmitObjectpictureHeight);
+            WorkflowExpression.Validate(__workflow_saveLeadWrappertransmitObjectpictureHeight, nameof(saveLeadWrappertransmitObjectpictureHeight), required: false);
+            var __workflow_saveLeadWrappertransmitObjectcompaniesCustomerGuid = saveLeadWrappertransmitObjectcompaniesCustomerGuid == null ? null : WorkflowExpression.Compile(saveLeadWrappertransmitObjectcompaniesCustomerGuid);
+            WorkflowExpression.Validate(__workflow_saveLeadWrappertransmitObjectcompaniesCustomerGuid, nameof(saveLeadWrappertransmitObjectcompaniesCustomerGuid), required: false);
+            var __workflow_saveLeadWrappertransmitObjectcontactsContactPersonGuid = saveLeadWrappertransmitObjectcontactsContactPersonGuid == null ? null : WorkflowExpression.Compile(saveLeadWrappertransmitObjectcontactsContactPersonGuid);
+            WorkflowExpression.Validate(__workflow_saveLeadWrappertransmitObjectcontactsContactPersonGuid, nameof(saveLeadWrappertransmitObjectcontactsContactPersonGuid), required: false);
+            var __workflow_saveLeadWrappertransmitObjectmarketingMarketingGuid = saveLeadWrappertransmitObjectmarketingMarketingGuid == null ? null : WorkflowExpression.Compile(saveLeadWrappertransmitObjectmarketingMarketingGuid);
+            WorkflowExpression.Validate(__workflow_saveLeadWrappertransmitObjectmarketingMarketingGuid, nameof(saveLeadWrappertransmitObjectmarketingMarketingGuid), required: false);
+            var __workflow_saveLeadWrappertransmitObjectisPrivate = saveLeadWrappertransmitObjectisPrivate == null ? null : WorkflowExpression.Compile(saveLeadWrappertransmitObjectisPrivate);
+            WorkflowExpression.Validate(__workflow_saveLeadWrappertransmitObjectisPrivate, nameof(saveLeadWrappertransmitObjectisPrivate), required: false);
+            var __workflow_saveLeadWrappertransmitObjectitemCreated = saveLeadWrappertransmitObjectitemCreated == null ? null : WorkflowExpression.Compile(saveLeadWrappertransmitObjectitemCreated);
+            WorkflowExpression.Validate(__workflow_saveLeadWrappertransmitObjectitemCreated, nameof(saveLeadWrappertransmitObjectitemCreated), required: false);
+            var __workflow_saveLeadWrappertransmitObjectitemChanged = saveLeadWrappertransmitObjectitemChanged == null ? null : WorkflowExpression.Compile(saveLeadWrappertransmitObjectitemChanged);
+            WorkflowExpression.Validate(__workflow_saveLeadWrappertransmitObjectitemChanged, nameof(saveLeadWrappertransmitObjectitemChanged), required: false);
+            var __workflow_saveLeadWrappertransmitObjectfileAs = saveLeadWrappertransmitObjectfileAs == null ? null : WorkflowExpression.Compile(saveLeadWrappertransmitObjectfileAs);
+            WorkflowExpression.Validate(__workflow_saveLeadWrappertransmitObjectfileAs, nameof(saveLeadWrappertransmitObjectfileAs), required: false);
+            var __workflow_saveLeadWrappertransmitObjectownerGUID = saveLeadWrappertransmitObjectownerGUID == null ? null : WorkflowExpression.Compile(saveLeadWrappertransmitObjectownerGUID);
+            WorkflowExpression.Validate(__workflow_saveLeadWrappertransmitObjectownerGUID, nameof(saveLeadWrappertransmitObjectownerGUID), required: false);
+            var __workflow_saveLeadWrappertransmitObjectcreatedByGUID = saveLeadWrappertransmitObjectcreatedByGUID == null ? null : WorkflowExpression.Compile(saveLeadWrappertransmitObjectcreatedByGUID);
+            WorkflowExpression.Validate(__workflow_saveLeadWrappertransmitObjectcreatedByGUID, nameof(saveLeadWrappertransmitObjectcreatedByGUID), required: false);
+            var __workflow_saveLeadWrappertransmitObjectmodifiedByGUID = saveLeadWrappertransmitObjectmodifiedByGUID == null ? null : WorkflowExpression.Compile(saveLeadWrappertransmitObjectmodifiedByGUID);
+            WorkflowExpression.Validate(__workflow_saveLeadWrappertransmitObjectmodifiedByGUID, nameof(saveLeadWrappertransmitObjectmodifiedByGUID), required: false);
+            var __workflow_saveLeadWrappertransmitObjectadditionalFields = saveLeadWrappertransmitObjectadditionalFields == null ? null : WorkflowExpression.Compile(saveLeadWrappertransmitObjectadditionalFields);
+            WorkflowExpression.Validate(__workflow_saveLeadWrappertransmitObjectadditionalFields, nameof(saveLeadWrappertransmitObjectadditionalFields), required: false);
+            var __workflow_saveLeadWrappertransmitObjectitemGUID = saveLeadWrappertransmitObjectitemGUID == null ? null : WorkflowExpression.Compile(saveLeadWrappertransmitObjectitemGUID);
+            WorkflowExpression.Validate(__workflow_saveLeadWrappertransmitObjectitemGUID, nameof(saveLeadWrappertransmitObjectitemGUID), required: false);
+            var __workflow_saveLeadWrappertransmitObjectitemVersion = saveLeadWrappertransmitObjectitemVersion == null ? null : WorkflowExpression.Compile(saveLeadWrappertransmitObjectitemVersion);
+            WorkflowExpression.Validate(__workflow_saveLeadWrappertransmitObjectitemVersion, nameof(saveLeadWrappertransmitObjectitemVersion), required: false);
+            var __workflow_saveLeadWrapperdieOnItemConflict = saveLeadWrapperdieOnItemConflict == null ? null : WorkflowExpression.Compile(saveLeadWrapperdieOnItemConflict);
+            WorkflowExpression.Validate(__workflow_saveLeadWrapperdieOnItemConflict, nameof(saveLeadWrapperdieOnItemConflict), required: false);
+            var __workflow_saveLeadWrapperignoredUserErrorMessages = saveLeadWrapperignoredUserErrorMessages == null ? null : WorkflowExpression.Compile(saveLeadWrapperignoredUserErrorMessages);
+            WorkflowExpression.Validate(__workflow_saveLeadWrapperignoredUserErrorMessages, nameof(saveLeadWrapperignoredUserErrorMessages), required: false);
             return new DeferredBodyAction<EWayWcfServiceResponsesSaveResponse>(() =>
             {
                 var apiCallPath = "/SaveLead";
@@ -1594,267 +1749,267 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                 var saveLeadWrapperpropCount = 0;
                 var transmitObjectObject = new JObject();
                 var transmitObjectObjectpropCount = 0;
-                if (saveLeadWrappertransmitObjectcity != null)
+                if (__workflow_saveLeadWrappertransmitObjectcity != null)
                 {
-                    transmitObjectObject["City"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectcity);
+                    transmitObjectObject["City"] = ExpressionConverter.ConvertO(__workflow_saveLeadWrappertransmitObjectcity);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveLeadWrappertransmitObjectcontactPerson != null)
+                if (__workflow_saveLeadWrappertransmitObjectcontactPerson != null)
                 {
-                    transmitObjectObject["ContactPerson"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectcontactPerson);
+                    transmitObjectObject["ContactPerson"] = ExpressionConverter.ConvertO(__workflow_saveLeadWrappertransmitObjectcontactPerson);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveLeadWrappertransmitObjectcurrencyEn != null)
+                if (__workflow_saveLeadWrappertransmitObjectcurrencyEn != null)
                 {
-                    transmitObjectObject["CurrencyEn"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectcurrencyEn);
+                    transmitObjectObject["CurrencyEn"] = ExpressionConverter.ConvertO(__workflow_saveLeadWrappertransmitObjectcurrencyEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveLeadWrappertransmitObjectcustomer != null)
+                if (__workflow_saveLeadWrappertransmitObjectcustomer != null)
                 {
-                    transmitObjectObject["Customer"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectcustomer);
+                    transmitObjectObject["Customer"] = ExpressionConverter.ConvertO(__workflow_saveLeadWrappertransmitObjectcustomer);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveLeadWrappertransmitObjectemail != null)
+                if (__workflow_saveLeadWrappertransmitObjectemail != null)
                 {
-                    transmitObjectObject["Email"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectemail);
+                    transmitObjectObject["Email"] = ExpressionConverter.ConvertO(__workflow_saveLeadWrappertransmitObjectemail);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveLeadWrappertransmitObjectestimatedEnd != null)
+                if (__workflow_saveLeadWrappertransmitObjectestimatedEnd != null)
                 {
-                    transmitObjectObject["EstimatedEnd"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectestimatedEnd);
+                    transmitObjectObject["EstimatedEnd"] = ExpressionConverter.ConvertO(__workflow_saveLeadWrappertransmitObjectestimatedEnd);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveLeadWrappertransmitObjecthID != null)
+                if (__workflow_saveLeadWrappertransmitObjecthID != null)
                 {
-                    transmitObjectObject["HID"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjecthID);
+                    transmitObjectObject["HID"] = ExpressionConverter.ConvertO(__workflow_saveLeadWrappertransmitObjecthID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveLeadWrappertransmitObjectleadOriginEn != null)
+                if (__workflow_saveLeadWrappertransmitObjectleadOriginEn != null)
                 {
-                    transmitObjectObject["LeadOriginEn"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectleadOriginEn);
+                    transmitObjectObject["LeadOriginEn"] = ExpressionConverter.ConvertO(__workflow_saveLeadWrappertransmitObjectleadOriginEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveLeadWrappertransmitObjectnote != null)
+                if (__workflow_saveLeadWrappertransmitObjectnote != null)
                 {
-                    transmitObjectObject["Note"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectnote);
+                    transmitObjectObject["Note"] = ExpressionConverter.ConvertO(__workflow_saveLeadWrappertransmitObjectnote);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveLeadWrappertransmitObjectphone != null)
+                if (__workflow_saveLeadWrappertransmitObjectphone != null)
                 {
-                    transmitObjectObject["Phone"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectphone);
+                    transmitObjectObject["Phone"] = ExpressionConverter.ConvertO(__workflow_saveLeadWrappertransmitObjectphone);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveLeadWrappertransmitObjectphoneNormalized != null)
+                if (__workflow_saveLeadWrappertransmitObjectphoneNormalized != null)
                 {
-                    transmitObjectObject["PhoneNormalized"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectphoneNormalized);
+                    transmitObjectObject["PhoneNormalized"] = ExpressionConverter.ConvertO(__workflow_saveLeadWrappertransmitObjectphoneNormalized);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveLeadWrappertransmitObjectprevStateEn != null)
+                if (__workflow_saveLeadWrappertransmitObjectprevStateEn != null)
                 {
-                    transmitObjectObject["PrevStateEn"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectprevStateEn);
+                    transmitObjectObject["PrevStateEn"] = ExpressionConverter.ConvertO(__workflow_saveLeadWrappertransmitObjectprevStateEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveLeadWrappertransmitObjectprice != null)
+                if (__workflow_saveLeadWrappertransmitObjectprice != null)
                 {
-                    transmitObjectObject["Price"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectprice);
+                    transmitObjectObject["Price"] = ExpressionConverter.ConvertO(__workflow_saveLeadWrappertransmitObjectprice);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveLeadWrappertransmitObjectpriceChanged != null)
+                if (__workflow_saveLeadWrappertransmitObjectpriceChanged != null)
                 {
-                    transmitObjectObject["PriceChanged"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectpriceChanged);
+                    transmitObjectObject["PriceChanged"] = ExpressionConverter.ConvertO(__workflow_saveLeadWrappertransmitObjectpriceChanged);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveLeadWrappertransmitObjectpriceDefaultCurrency != null)
+                if (__workflow_saveLeadWrappertransmitObjectpriceDefaultCurrency != null)
                 {
-                    transmitObjectObject["PriceDefaultCurrency"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectpriceDefaultCurrency);
+                    transmitObjectObject["PriceDefaultCurrency"] = ExpressionConverter.ConvertO(__workflow_saveLeadWrappertransmitObjectpriceDefaultCurrency);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveLeadWrappertransmitObjectprobability != null)
+                if (__workflow_saveLeadWrappertransmitObjectprobability != null)
                 {
-                    transmitObjectObject["Probability"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectprobability);
+                    transmitObjectObject["Probability"] = ExpressionConverter.ConvertO(__workflow_saveLeadWrappertransmitObjectprobability);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveLeadWrappertransmitObjectreceiveDate != null)
+                if (__workflow_saveLeadWrappertransmitObjectreceiveDate != null)
                 {
-                    transmitObjectObject["ReceiveDate"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectreceiveDate);
+                    transmitObjectObject["ReceiveDate"] = ExpressionConverter.ConvertO(__workflow_saveLeadWrappertransmitObjectreceiveDate);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveLeadWrappertransmitObjectstateEn != null)
+                if (__workflow_saveLeadWrappertransmitObjectstateEn != null)
                 {
-                    transmitObjectObject["StateEn"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectstateEn);
+                    transmitObjectObject["StateEn"] = ExpressionConverter.ConvertO(__workflow_saveLeadWrappertransmitObjectstateEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveLeadWrappertransmitObjectstreet != null)
+                if (__workflow_saveLeadWrappertransmitObjectstreet != null)
                 {
-                    transmitObjectObject["Street"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectstreet);
+                    transmitObjectObject["Street"] = ExpressionConverter.ConvertO(__workflow_saveLeadWrappertransmitObjectstreet);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveLeadWrappertransmitObjecttypeEn != null)
+                if (__workflow_saveLeadWrappertransmitObjecttypeEn != null)
                 {
-                    transmitObjectObject["TypeEn"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjecttypeEn);
+                    transmitObjectObject["TypeEn"] = ExpressionConverter.ConvertO(__workflow_saveLeadWrappertransmitObjecttypeEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveLeadWrappertransmitObjectzip != null)
+                if (__workflow_saveLeadWrappertransmitObjectzip != null)
                 {
-                    transmitObjectObject["Zip"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectzip);
+                    transmitObjectObject["Zip"] = ExpressionConverter.ConvertO(__workflow_saveLeadWrappertransmitObjectzip);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveLeadWrappertransmitObjectlastActivity != null)
+                if (__workflow_saveLeadWrappertransmitObjectlastActivity != null)
                 {
-                    transmitObjectObject["LastActivity"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectlastActivity);
+                    transmitObjectObject["LastActivity"] = ExpressionConverter.ConvertO(__workflow_saveLeadWrappertransmitObjectlastActivity);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveLeadWrappertransmitObjectnextStep != null)
+                if (__workflow_saveLeadWrappertransmitObjectnextStep != null)
                 {
-                    transmitObjectObject["NextStep"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectnextStep);
+                    transmitObjectObject["NextStep"] = ExpressionConverter.ConvertO(__workflow_saveLeadWrappertransmitObjectnextStep);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveLeadWrappertransmitObjectestimatedValue != null)
+                if (__workflow_saveLeadWrappertransmitObjectestimatedValue != null)
                 {
-                    transmitObjectObject["EstimatedValue"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectestimatedValue);
+                    transmitObjectObject["EstimatedValue"] = ExpressionConverter.ConvertO(__workflow_saveLeadWrappertransmitObjectestimatedValue);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveLeadWrappertransmitObjectcountryEn != null)
+                if (__workflow_saveLeadWrappertransmitObjectcountryEn != null)
                 {
-                    transmitObjectObject["CountryEn"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectcountryEn);
+                    transmitObjectObject["CountryEn"] = ExpressionConverter.ConvertO(__workflow_saveLeadWrappertransmitObjectcountryEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveLeadWrappertransmitObjectstate != null)
+                if (__workflow_saveLeadWrappertransmitObjectstate != null)
                 {
-                    transmitObjectObject["State"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectstate);
+                    transmitObjectObject["State"] = ExpressionConverter.ConvertO(__workflow_saveLeadWrappertransmitObjectstate);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveLeadWrappertransmitObjectpOBox != null)
+                if (__workflow_saveLeadWrappertransmitObjectpOBox != null)
                 {
-                    transmitObjectObject["POBox"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectpOBox);
+                    transmitObjectObject["POBox"] = ExpressionConverter.ConvertO(__workflow_saveLeadWrappertransmitObjectpOBox);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveLeadWrappertransmitObjectemailOptOut != null)
+                if (__workflow_saveLeadWrappertransmitObjectemailOptOut != null)
                 {
-                    transmitObjectObject["EmailOptOut"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectemailOptOut);
+                    transmitObjectObject["EmailOptOut"] = ExpressionConverter.ConvertO(__workflow_saveLeadWrappertransmitObjectemailOptOut);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveLeadWrappertransmitObjectpicture != null)
+                if (__workflow_saveLeadWrappertransmitObjectpicture != null)
                 {
-                    transmitObjectObject["Picture"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectpicture);
+                    transmitObjectObject["Picture"] = ExpressionConverter.ConvertO(__workflow_saveLeadWrappertransmitObjectpicture);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveLeadWrappertransmitObjectpictureWidth != null)
+                if (__workflow_saveLeadWrappertransmitObjectpictureWidth != null)
                 {
-                    transmitObjectObject["PictureWidth"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectpictureWidth);
+                    transmitObjectObject["PictureWidth"] = ExpressionConverter.ConvertO(__workflow_saveLeadWrappertransmitObjectpictureWidth);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveLeadWrappertransmitObjectpictureHeight != null)
+                if (__workflow_saveLeadWrappertransmitObjectpictureHeight != null)
                 {
-                    transmitObjectObject["PictureHeight"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectpictureHeight);
+                    transmitObjectObject["PictureHeight"] = ExpressionConverter.ConvertO(__workflow_saveLeadWrappertransmitObjectpictureHeight);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveLeadWrappertransmitObjectcompaniesCustomerGuid != null)
+                if (__workflow_saveLeadWrappertransmitObjectcompaniesCustomerGuid != null)
                 {
-                    transmitObjectObject["Companies_CustomerGuid"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectcompaniesCustomerGuid);
+                    transmitObjectObject["Companies_CustomerGuid"] = ExpressionConverter.ConvertO(__workflow_saveLeadWrappertransmitObjectcompaniesCustomerGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveLeadWrappertransmitObjectcontactsContactPersonGuid != null)
+                if (__workflow_saveLeadWrappertransmitObjectcontactsContactPersonGuid != null)
                 {
-                    transmitObjectObject["Contacts_ContactPersonGuid"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectcontactsContactPersonGuid);
+                    transmitObjectObject["Contacts_ContactPersonGuid"] = ExpressionConverter.ConvertO(__workflow_saveLeadWrappertransmitObjectcontactsContactPersonGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveLeadWrappertransmitObjectmarketingMarketingGuid != null)
+                if (__workflow_saveLeadWrappertransmitObjectmarketingMarketingGuid != null)
                 {
-                    transmitObjectObject["Marketing_MarketingGuid"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectmarketingMarketingGuid);
+                    transmitObjectObject["Marketing_MarketingGuid"] = ExpressionConverter.ConvertO(__workflow_saveLeadWrappertransmitObjectmarketingMarketingGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveLeadWrappertransmitObjectisPrivate != null)
+                if (__workflow_saveLeadWrappertransmitObjectisPrivate != null)
                 {
-                    transmitObjectObject["IsPrivate"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectisPrivate);
+                    transmitObjectObject["IsPrivate"] = ExpressionConverter.ConvertO(__workflow_saveLeadWrappertransmitObjectisPrivate);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveLeadWrappertransmitObjectitemCreated != null)
+                if (__workflow_saveLeadWrappertransmitObjectitemCreated != null)
                 {
-                    transmitObjectObject["ItemCreated"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectitemCreated);
+                    transmitObjectObject["ItemCreated"] = ExpressionConverter.ConvertO(__workflow_saveLeadWrappertransmitObjectitemCreated);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveLeadWrappertransmitObjectitemChanged != null)
+                if (__workflow_saveLeadWrappertransmitObjectitemChanged != null)
                 {
-                    transmitObjectObject["ItemChanged"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectitemChanged);
+                    transmitObjectObject["ItemChanged"] = ExpressionConverter.ConvertO(__workflow_saveLeadWrappertransmitObjectitemChanged);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveLeadWrappertransmitObjectfileAs != null)
+                if (__workflow_saveLeadWrappertransmitObjectfileAs != null)
                 {
-                    transmitObjectObject["FileAs"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectfileAs);
+                    transmitObjectObject["FileAs"] = ExpressionConverter.ConvertO(__workflow_saveLeadWrappertransmitObjectfileAs);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveLeadWrappertransmitObjectownerGUID != null)
+                if (__workflow_saveLeadWrappertransmitObjectownerGUID != null)
                 {
-                    transmitObjectObject["OwnerGUID"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectownerGUID);
+                    transmitObjectObject["OwnerGUID"] = ExpressionConverter.ConvertO(__workflow_saveLeadWrappertransmitObjectownerGUID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveLeadWrappertransmitObjectcreatedByGUID != null)
+                if (__workflow_saveLeadWrappertransmitObjectcreatedByGUID != null)
                 {
-                    transmitObjectObject["CreatedByGUID"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectcreatedByGUID);
+                    transmitObjectObject["CreatedByGUID"] = ExpressionConverter.ConvertO(__workflow_saveLeadWrappertransmitObjectcreatedByGUID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveLeadWrappertransmitObjectmodifiedByGUID != null)
+                if (__workflow_saveLeadWrappertransmitObjectmodifiedByGUID != null)
                 {
-                    transmitObjectObject["ModifiedByGUID"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectmodifiedByGUID);
+                    transmitObjectObject["ModifiedByGUID"] = ExpressionConverter.ConvertO(__workflow_saveLeadWrappertransmitObjectmodifiedByGUID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveLeadWrappertransmitObjectadditionalFields != null)
+                if (__workflow_saveLeadWrappertransmitObjectadditionalFields != null)
                 {
-                    transmitObjectObject["AdditionalFields"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectadditionalFields);
+                    transmitObjectObject["AdditionalFields"] = ExpressionConverter.ConvertO(__workflow_saveLeadWrappertransmitObjectadditionalFields);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveLeadWrappertransmitObjectitemGUID != null)
+                if (__workflow_saveLeadWrappertransmitObjectitemGUID != null)
                 {
-                    transmitObjectObject["ItemGUID"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectitemGUID);
+                    transmitObjectObject["ItemGUID"] = ExpressionConverter.ConvertO(__workflow_saveLeadWrappertransmitObjectitemGUID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveLeadWrappertransmitObjectitemVersion != null)
+                if (__workflow_saveLeadWrappertransmitObjectitemVersion != null)
                 {
-                    transmitObjectObject["ItemVersion"] = ExpressionConverter.ConvertO(saveLeadWrappertransmitObjectitemVersion);
+                    transmitObjectObject["ItemVersion"] = ExpressionConverter.ConvertO(__workflow_saveLeadWrappertransmitObjectitemVersion);
                     transmitObjectObjectpropCount++;
                 }
 
@@ -1864,15 +2019,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                     saveLeadWrapperpropCount++;
                 }
 
-                if (saveLeadWrapperdieOnItemConflict != null)
+                if (__workflow_saveLeadWrapperdieOnItemConflict != null)
                 {
-                    saveLeadWrapper["dieOnItemConflict"] = ExpressionConverter.ConvertO(saveLeadWrapperdieOnItemConflict);
+                    saveLeadWrapper["dieOnItemConflict"] = ExpressionConverter.ConvertO(__workflow_saveLeadWrapperdieOnItemConflict);
                     saveLeadWrapperpropCount++;
                 }
 
-                if (saveLeadWrapperignoredUserErrorMessages != null)
+                if (__workflow_saveLeadWrapperignoredUserErrorMessages != null)
                 {
-                    saveLeadWrapper["ignoredUserErrorMessages"] = ExpressionConverter.ConvertO(saveLeadWrapperignoredUserErrorMessages);
+                    saveLeadWrapper["ignoredUserErrorMessages"] = ExpressionConverter.ConvertO(__workflow_saveLeadWrapperignoredUserErrorMessages);
                     saveLeadWrapperpropCount++;
                 }
 
@@ -1886,83 +2041,144 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
-        [WorkflowExpressionFactory(nameof(__BuildSaveProject))]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesSaveResponse> SaveProject([WorkflowExpression] Func<string> saveProjectWrappertransmitObjectnote = null, [WorkflowExpression] Func<double> saveProjectWrappertransmitObjectprice = null, [WorkflowExpression] Func<string> saveProjectWrappertransmitObjectprojectEnd = null, [WorkflowExpression] Func<string> saveProjectWrappertransmitObjectprojectName = null, [WorkflowExpression] Func<string> saveProjectWrappertransmitObjecttypeEn = null, [WorkflowExpression] Func<string> saveProjectWrappertransmitObjectstateEn = null, [WorkflowExpression] Func<double> saveProjectWrappertransmitObjectpeopleExpenses = null, [WorkflowExpression] Func<string> saveProjectWrappertransmitObjectprojectRealEnd = null, [WorkflowExpression] Func<double> saveProjectWrappertransmitObjectestimatedPrice = null, [WorkflowExpression] Func<int> saveProjectWrappertransmitObjecthID = null, [WorkflowExpression] Func<string> saveProjectWrappertransmitObjectprojectOriginEn = null, [WorkflowExpression] Func<string> saveProjectWrappertransmitObjectpaymentTypeEn = null, [WorkflowExpression] Func<double> saveProjectWrappertransmitObjectotherExpenses = null, [WorkflowExpression] Func<double> saveProjectWrappertransmitObjectmargin = null, [WorkflowExpression] Func<double> saveProjectWrappertransmitObjectprofit = null, [WorkflowExpression] Func<int> saveProjectWrappertransmitObjectpaymentMaturity = null, [WorkflowExpression] Func<string> saveProjectWrappertransmitObjectinvoicePaymentDate = null, [WorkflowExpression] Func<string> saveProjectWrappertransmitObjectinvoiceIssueDate = null, [WorkflowExpression] Func<double> saveProjectWrappertransmitObjectestimatedMargin = null, [WorkflowExpression] Func<double> saveProjectWrappertransmitObjectestimatedProfit = null, [WorkflowExpression] Func<double> saveProjectWrappertransmitObjectestimatedPeopleExpenses = null, [WorkflowExpression] Func<double> saveProjectWrappertransmitObjectestimatedOtherExpenses = null, [WorkflowExpression] Func<int> saveProjectWrappertransmitObjectlicensesCount = null, [WorkflowExpression] Func<double> saveProjectWrappertransmitObjectlicensePrice = null, [WorkflowExpression] Func<string> saveProjectWrappertransmitObjectprevStateEn = null, [WorkflowExpression] Func<bool> saveProjectWrappertransmitObjectshowInCaplan = null, [WorkflowExpression] Func<string> saveProjectWrappertransmitObjectprojectStart = null, [WorkflowExpression] Func<int> saveProjectWrappertransmitObjectestimatedWorkHours = null, [WorkflowExpression] Func<double> saveProjectWrappertransmitObjecttotalWorkHours = null, [WorkflowExpression] Func<double> saveProjectWrappertransmitObjectestimatedPeopleExpensesDefaultCurrency = null, [WorkflowExpression] Func<double> saveProjectWrappertransmitObjectestimatedOtherExpensesDefaultCurrency = null, [WorkflowExpression] Func<double> saveProjectWrappertransmitObjectestimatedPriceDefaultCurrency = null, [WorkflowExpression] Func<double> saveProjectWrappertransmitObjectpeopleExpensesDefaultCurrency = null, [WorkflowExpression] Func<double> saveProjectWrappertransmitObjectotherExpensesDefaultCurrency = null, [WorkflowExpression] Func<double> saveProjectWrappertransmitObjectpriceDefaultCurrency = null, [WorkflowExpression] Func<double> saveProjectWrappertransmitObjectprofitDefaultCurrency = null, [WorkflowExpression] Func<double> saveProjectWrappertransmitObjectestimatedProfitDefaultCurrency = null, [WorkflowExpression] Func<string> saveProjectWrappertransmitObjectcurrencyEn = null, [WorkflowExpression] Func<string> saveProjectWrappertransmitObjectestimatedPeopleExpensesChanged = null, [WorkflowExpression] Func<string> saveProjectWrappertransmitObjectestimatedOtherExpensesChanged = null, [WorkflowExpression] Func<string> saveProjectWrappertransmitObjectotherExpensesChanged = null, [WorkflowExpression] Func<string> saveProjectWrappertransmitObjectestimatedPriceChanged = null, [WorkflowExpression] Func<string> saveProjectWrappertransmitObjectpriceChanged = null, [WorkflowExpression] Func<string> saveProjectWrappertransmitObjectlicensePriceChanged = null, [WorkflowExpression] Func<double> saveProjectWrappertransmitObjectlicensePriceDefaultCurrency = null, [WorkflowExpression] Func<string> saveProjectWrappertransmitObjectlastActivity = null, [WorkflowExpression] Func<string> saveProjectWrappertransmitObjectnextStep = null, [WorkflowExpression] Func<string> saveProjectWrappertransmitObjectpeopleExpensesChanged = null, [WorkflowExpression] Func<string> saveProjectWrappertransmitObjectpicture = null, [WorkflowExpression] Func<int> saveProjectWrappertransmitObjectpictureWidth = null, [WorkflowExpression] Func<int> saveProjectWrappertransmitObjectpictureHeight = null, [WorkflowExpression] Func<string> saveProjectWrappertransmitObjectcompaniesCustomerGuid = null, [WorkflowExpression] Func<string> saveProjectWrappertransmitObjectcontactsContactPersonGuid = null, [WorkflowExpression] Func<string> saveProjectWrappertransmitObjectleadsProjectOriginGuid = null, [WorkflowExpression] Func<string> saveProjectWrappertransmitObjectprojectsSuperiorProjectGuid = null, [WorkflowExpression] Func<string> saveProjectWrappertransmitObjectusersSupervisorGuid = null, [WorkflowExpression] Func<bool> saveProjectWrappertransmitObjectisPrivate = null, [WorkflowExpression] Func<string> saveProjectWrappertransmitObjectitemCreated = null, [WorkflowExpression] Func<string> saveProjectWrappertransmitObjectitemChanged = null, [WorkflowExpression] Func<string> saveProjectWrappertransmitObjectfileAs = null, [WorkflowExpression] Func<string> saveProjectWrappertransmitObjectownerGUID = null, [WorkflowExpression] Func<string> saveProjectWrappertransmitObjectcreatedByGUID = null, [WorkflowExpression] Func<string> saveProjectWrappertransmitObjectmodifiedByGUID = null, [WorkflowExpression] Func<object> saveProjectWrappertransmitObjectadditionalFields = null, [WorkflowExpression] Func<string> saveProjectWrappertransmitObjectitemGUID = null, [WorkflowExpression] Func<int> saveProjectWrappertransmitObjectitemVersion = null, [WorkflowExpression] Func<bool> saveProjectWrapperdieOnItemConflict = null, [WorkflowExpression] Func<string[]> saveProjectWrapperignoredUserErrorMessages = null)
+        public IBodyWorkflowAction<EWayWcfServiceResponsesSaveResponse> SaveProject(Expression<Func<string>> saveProjectWrappertransmitObjectnote = null, Expression<Func<double>> saveProjectWrappertransmitObjectprice = null, Expression<Func<string>> saveProjectWrappertransmitObjectprojectEnd = null, Expression<Func<string>> saveProjectWrappertransmitObjectprojectName = null, Expression<Func<string>> saveProjectWrappertransmitObjecttypeEn = null, Expression<Func<string>> saveProjectWrappertransmitObjectstateEn = null, Expression<Func<double>> saveProjectWrappertransmitObjectpeopleExpenses = null, Expression<Func<string>> saveProjectWrappertransmitObjectprojectRealEnd = null, Expression<Func<double>> saveProjectWrappertransmitObjectestimatedPrice = null, Expression<Func<int>> saveProjectWrappertransmitObjecthID = null, Expression<Func<string>> saveProjectWrappertransmitObjectprojectOriginEn = null, Expression<Func<string>> saveProjectWrappertransmitObjectpaymentTypeEn = null, Expression<Func<double>> saveProjectWrappertransmitObjectotherExpenses = null, Expression<Func<double>> saveProjectWrappertransmitObjectmargin = null, Expression<Func<double>> saveProjectWrappertransmitObjectprofit = null, Expression<Func<int>> saveProjectWrappertransmitObjectpaymentMaturity = null, Expression<Func<string>> saveProjectWrappertransmitObjectinvoicePaymentDate = null, Expression<Func<string>> saveProjectWrappertransmitObjectinvoiceIssueDate = null, Expression<Func<double>> saveProjectWrappertransmitObjectestimatedMargin = null, Expression<Func<double>> saveProjectWrappertransmitObjectestimatedProfit = null, Expression<Func<double>> saveProjectWrappertransmitObjectestimatedPeopleExpenses = null, Expression<Func<double>> saveProjectWrappertransmitObjectestimatedOtherExpenses = null, Expression<Func<int>> saveProjectWrappertransmitObjectlicensesCount = null, Expression<Func<double>> saveProjectWrappertransmitObjectlicensePrice = null, Expression<Func<string>> saveProjectWrappertransmitObjectprevStateEn = null, Expression<Func<bool>> saveProjectWrappertransmitObjectshowInCaplan = null, Expression<Func<string>> saveProjectWrappertransmitObjectprojectStart = null, Expression<Func<int>> saveProjectWrappertransmitObjectestimatedWorkHours = null, Expression<Func<double>> saveProjectWrappertransmitObjecttotalWorkHours = null, Expression<Func<double>> saveProjectWrappertransmitObjectestimatedPeopleExpensesDefaultCurrency = null, Expression<Func<double>> saveProjectWrappertransmitObjectestimatedOtherExpensesDefaultCurrency = null, Expression<Func<double>> saveProjectWrappertransmitObjectestimatedPriceDefaultCurrency = null, Expression<Func<double>> saveProjectWrappertransmitObjectpeopleExpensesDefaultCurrency = null, Expression<Func<double>> saveProjectWrappertransmitObjectotherExpensesDefaultCurrency = null, Expression<Func<double>> saveProjectWrappertransmitObjectpriceDefaultCurrency = null, Expression<Func<double>> saveProjectWrappertransmitObjectprofitDefaultCurrency = null, Expression<Func<double>> saveProjectWrappertransmitObjectestimatedProfitDefaultCurrency = null, Expression<Func<string>> saveProjectWrappertransmitObjectcurrencyEn = null, Expression<Func<string>> saveProjectWrappertransmitObjectestimatedPeopleExpensesChanged = null, Expression<Func<string>> saveProjectWrappertransmitObjectestimatedOtherExpensesChanged = null, Expression<Func<string>> saveProjectWrappertransmitObjectotherExpensesChanged = null, Expression<Func<string>> saveProjectWrappertransmitObjectestimatedPriceChanged = null, Expression<Func<string>> saveProjectWrappertransmitObjectpriceChanged = null, Expression<Func<string>> saveProjectWrappertransmitObjectlicensePriceChanged = null, Expression<Func<double>> saveProjectWrappertransmitObjectlicensePriceDefaultCurrency = null, Expression<Func<string>> saveProjectWrappertransmitObjectlastActivity = null, Expression<Func<string>> saveProjectWrappertransmitObjectnextStep = null, Expression<Func<string>> saveProjectWrappertransmitObjectpeopleExpensesChanged = null, Expression<Func<string>> saveProjectWrappertransmitObjectpicture = null, Expression<Func<int>> saveProjectWrappertransmitObjectpictureWidth = null, Expression<Func<int>> saveProjectWrappertransmitObjectpictureHeight = null, Expression<Func<string>> saveProjectWrappertransmitObjectcompaniesCustomerGuid = null, Expression<Func<string>> saveProjectWrappertransmitObjectcontactsContactPersonGuid = null, Expression<Func<string>> saveProjectWrappertransmitObjectleadsProjectOriginGuid = null, Expression<Func<string>> saveProjectWrappertransmitObjectprojectsSuperiorProjectGuid = null, Expression<Func<string>> saveProjectWrappertransmitObjectusersSupervisorGuid = null, Expression<Func<bool>> saveProjectWrappertransmitObjectisPrivate = null, Expression<Func<string>> saveProjectWrappertransmitObjectitemCreated = null, Expression<Func<string>> saveProjectWrappertransmitObjectitemChanged = null, Expression<Func<string>> saveProjectWrappertransmitObjectfileAs = null, Expression<Func<string>> saveProjectWrappertransmitObjectownerGUID = null, Expression<Func<string>> saveProjectWrappertransmitObjectcreatedByGUID = null, Expression<Func<string>> saveProjectWrappertransmitObjectmodifiedByGUID = null, Expression<Func<object>> saveProjectWrappertransmitObjectadditionalFields = null, Expression<Func<string>> saveProjectWrappertransmitObjectitemGUID = null, Expression<Func<int>> saveProjectWrappertransmitObjectitemVersion = null, Expression<Func<bool>> saveProjectWrapperdieOnItemConflict = null, Expression<Func<string[]>> saveProjectWrapperignoredUserErrorMessages = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesSaveResponse> __BuildSaveProject(WorkflowExpression<string> saveProjectWrappertransmitObjectnote = null, WorkflowExpression<double> saveProjectWrappertransmitObjectprice = null, WorkflowExpression<string> saveProjectWrappertransmitObjectprojectEnd = null, WorkflowExpression<string> saveProjectWrappertransmitObjectprojectName = null, WorkflowExpression<string> saveProjectWrappertransmitObjecttypeEn = null, WorkflowExpression<string> saveProjectWrappertransmitObjectstateEn = null, WorkflowExpression<double> saveProjectWrappertransmitObjectpeopleExpenses = null, WorkflowExpression<string> saveProjectWrappertransmitObjectprojectRealEnd = null, WorkflowExpression<double> saveProjectWrappertransmitObjectestimatedPrice = null, WorkflowExpression<int> saveProjectWrappertransmitObjecthID = null, WorkflowExpression<string> saveProjectWrappertransmitObjectprojectOriginEn = null, WorkflowExpression<string> saveProjectWrappertransmitObjectpaymentTypeEn = null, WorkflowExpression<double> saveProjectWrappertransmitObjectotherExpenses = null, WorkflowExpression<double> saveProjectWrappertransmitObjectmargin = null, WorkflowExpression<double> saveProjectWrappertransmitObjectprofit = null, WorkflowExpression<int> saveProjectWrappertransmitObjectpaymentMaturity = null, WorkflowExpression<string> saveProjectWrappertransmitObjectinvoicePaymentDate = null, WorkflowExpression<string> saveProjectWrappertransmitObjectinvoiceIssueDate = null, WorkflowExpression<double> saveProjectWrappertransmitObjectestimatedMargin = null, WorkflowExpression<double> saveProjectWrappertransmitObjectestimatedProfit = null, WorkflowExpression<double> saveProjectWrappertransmitObjectestimatedPeopleExpenses = null, WorkflowExpression<double> saveProjectWrappertransmitObjectestimatedOtherExpenses = null, WorkflowExpression<int> saveProjectWrappertransmitObjectlicensesCount = null, WorkflowExpression<double> saveProjectWrappertransmitObjectlicensePrice = null, WorkflowExpression<string> saveProjectWrappertransmitObjectprevStateEn = null, WorkflowExpression<bool> saveProjectWrappertransmitObjectshowInCaplan = null, WorkflowExpression<string> saveProjectWrappertransmitObjectprojectStart = null, WorkflowExpression<int> saveProjectWrappertransmitObjectestimatedWorkHours = null, WorkflowExpression<double> saveProjectWrappertransmitObjecttotalWorkHours = null, WorkflowExpression<double> saveProjectWrappertransmitObjectestimatedPeopleExpensesDefaultCurrency = null, WorkflowExpression<double> saveProjectWrappertransmitObjectestimatedOtherExpensesDefaultCurrency = null, WorkflowExpression<double> saveProjectWrappertransmitObjectestimatedPriceDefaultCurrency = null, WorkflowExpression<double> saveProjectWrappertransmitObjectpeopleExpensesDefaultCurrency = null, WorkflowExpression<double> saveProjectWrappertransmitObjectotherExpensesDefaultCurrency = null, WorkflowExpression<double> saveProjectWrappertransmitObjectpriceDefaultCurrency = null, WorkflowExpression<double> saveProjectWrappertransmitObjectprofitDefaultCurrency = null, WorkflowExpression<double> saveProjectWrappertransmitObjectestimatedProfitDefaultCurrency = null, WorkflowExpression<string> saveProjectWrappertransmitObjectcurrencyEn = null, WorkflowExpression<string> saveProjectWrappertransmitObjectestimatedPeopleExpensesChanged = null, WorkflowExpression<string> saveProjectWrappertransmitObjectestimatedOtherExpensesChanged = null, WorkflowExpression<string> saveProjectWrappertransmitObjectotherExpensesChanged = null, WorkflowExpression<string> saveProjectWrappertransmitObjectestimatedPriceChanged = null, WorkflowExpression<string> saveProjectWrappertransmitObjectpriceChanged = null, WorkflowExpression<string> saveProjectWrappertransmitObjectlicensePriceChanged = null, WorkflowExpression<double> saveProjectWrappertransmitObjectlicensePriceDefaultCurrency = null, WorkflowExpression<string> saveProjectWrappertransmitObjectlastActivity = null, WorkflowExpression<string> saveProjectWrappertransmitObjectnextStep = null, WorkflowExpression<string> saveProjectWrappertransmitObjectpeopleExpensesChanged = null, WorkflowExpression<string> saveProjectWrappertransmitObjectpicture = null, WorkflowExpression<int> saveProjectWrappertransmitObjectpictureWidth = null, WorkflowExpression<int> saveProjectWrappertransmitObjectpictureHeight = null, WorkflowExpression<string> saveProjectWrappertransmitObjectcompaniesCustomerGuid = null, WorkflowExpression<string> saveProjectWrappertransmitObjectcontactsContactPersonGuid = null, WorkflowExpression<string> saveProjectWrappertransmitObjectleadsProjectOriginGuid = null, WorkflowExpression<string> saveProjectWrappertransmitObjectprojectsSuperiorProjectGuid = null, WorkflowExpression<string> saveProjectWrappertransmitObjectusersSupervisorGuid = null, WorkflowExpression<bool> saveProjectWrappertransmitObjectisPrivate = null, WorkflowExpression<string> saveProjectWrappertransmitObjectitemCreated = null, WorkflowExpression<string> saveProjectWrappertransmitObjectitemChanged = null, WorkflowExpression<string> saveProjectWrappertransmitObjectfileAs = null, WorkflowExpression<string> saveProjectWrappertransmitObjectownerGUID = null, WorkflowExpression<string> saveProjectWrappertransmitObjectcreatedByGUID = null, WorkflowExpression<string> saveProjectWrappertransmitObjectmodifiedByGUID = null, WorkflowExpression<object> saveProjectWrappertransmitObjectadditionalFields = null, WorkflowExpression<string> saveProjectWrappertransmitObjectitemGUID = null, WorkflowExpression<int> saveProjectWrappertransmitObjectitemVersion = null, WorkflowExpression<bool> saveProjectWrapperdieOnItemConflict = null, WorkflowExpression<string[]> saveProjectWrapperignoredUserErrorMessages = null)
-        {
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectnote, nameof(saveProjectWrappertransmitObjectnote), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectprice, nameof(saveProjectWrappertransmitObjectprice), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectprojectEnd, nameof(saveProjectWrappertransmitObjectprojectEnd), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectprojectName, nameof(saveProjectWrappertransmitObjectprojectName), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjecttypeEn, nameof(saveProjectWrappertransmitObjecttypeEn), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectstateEn, nameof(saveProjectWrappertransmitObjectstateEn), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectpeopleExpenses, nameof(saveProjectWrappertransmitObjectpeopleExpenses), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectprojectRealEnd, nameof(saveProjectWrappertransmitObjectprojectRealEnd), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectestimatedPrice, nameof(saveProjectWrappertransmitObjectestimatedPrice), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjecthID, nameof(saveProjectWrappertransmitObjecthID), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectprojectOriginEn, nameof(saveProjectWrappertransmitObjectprojectOriginEn), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectpaymentTypeEn, nameof(saveProjectWrappertransmitObjectpaymentTypeEn), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectotherExpenses, nameof(saveProjectWrappertransmitObjectotherExpenses), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectmargin, nameof(saveProjectWrappertransmitObjectmargin), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectprofit, nameof(saveProjectWrappertransmitObjectprofit), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectpaymentMaturity, nameof(saveProjectWrappertransmitObjectpaymentMaturity), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectinvoicePaymentDate, nameof(saveProjectWrappertransmitObjectinvoicePaymentDate), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectinvoiceIssueDate, nameof(saveProjectWrappertransmitObjectinvoiceIssueDate), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectestimatedMargin, nameof(saveProjectWrappertransmitObjectestimatedMargin), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectestimatedProfit, nameof(saveProjectWrappertransmitObjectestimatedProfit), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectestimatedPeopleExpenses, nameof(saveProjectWrappertransmitObjectestimatedPeopleExpenses), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectestimatedOtherExpenses, nameof(saveProjectWrappertransmitObjectestimatedOtherExpenses), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectlicensesCount, nameof(saveProjectWrappertransmitObjectlicensesCount), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectlicensePrice, nameof(saveProjectWrappertransmitObjectlicensePrice), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectprevStateEn, nameof(saveProjectWrappertransmitObjectprevStateEn), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectshowInCaplan, nameof(saveProjectWrappertransmitObjectshowInCaplan), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectprojectStart, nameof(saveProjectWrappertransmitObjectprojectStart), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectestimatedWorkHours, nameof(saveProjectWrappertransmitObjectestimatedWorkHours), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjecttotalWorkHours, nameof(saveProjectWrappertransmitObjecttotalWorkHours), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectestimatedPeopleExpensesDefaultCurrency, nameof(saveProjectWrappertransmitObjectestimatedPeopleExpensesDefaultCurrency), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectestimatedOtherExpensesDefaultCurrency, nameof(saveProjectWrappertransmitObjectestimatedOtherExpensesDefaultCurrency), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectestimatedPriceDefaultCurrency, nameof(saveProjectWrappertransmitObjectestimatedPriceDefaultCurrency), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectpeopleExpensesDefaultCurrency, nameof(saveProjectWrappertransmitObjectpeopleExpensesDefaultCurrency), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectotherExpensesDefaultCurrency, nameof(saveProjectWrappertransmitObjectotherExpensesDefaultCurrency), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectpriceDefaultCurrency, nameof(saveProjectWrappertransmitObjectpriceDefaultCurrency), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectprofitDefaultCurrency, nameof(saveProjectWrappertransmitObjectprofitDefaultCurrency), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectestimatedProfitDefaultCurrency, nameof(saveProjectWrappertransmitObjectestimatedProfitDefaultCurrency), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectcurrencyEn, nameof(saveProjectWrappertransmitObjectcurrencyEn), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectestimatedPeopleExpensesChanged, nameof(saveProjectWrappertransmitObjectestimatedPeopleExpensesChanged), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectestimatedOtherExpensesChanged, nameof(saveProjectWrappertransmitObjectestimatedOtherExpensesChanged), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectotherExpensesChanged, nameof(saveProjectWrappertransmitObjectotherExpensesChanged), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectestimatedPriceChanged, nameof(saveProjectWrappertransmitObjectestimatedPriceChanged), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectpriceChanged, nameof(saveProjectWrappertransmitObjectpriceChanged), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectlicensePriceChanged, nameof(saveProjectWrappertransmitObjectlicensePriceChanged), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectlicensePriceDefaultCurrency, nameof(saveProjectWrappertransmitObjectlicensePriceDefaultCurrency), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectlastActivity, nameof(saveProjectWrappertransmitObjectlastActivity), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectnextStep, nameof(saveProjectWrappertransmitObjectnextStep), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectpeopleExpensesChanged, nameof(saveProjectWrappertransmitObjectpeopleExpensesChanged), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectpicture, nameof(saveProjectWrappertransmitObjectpicture), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectpictureWidth, nameof(saveProjectWrappertransmitObjectpictureWidth), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectpictureHeight, nameof(saveProjectWrappertransmitObjectpictureHeight), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectcompaniesCustomerGuid, nameof(saveProjectWrappertransmitObjectcompaniesCustomerGuid), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectcontactsContactPersonGuid, nameof(saveProjectWrappertransmitObjectcontactsContactPersonGuid), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectleadsProjectOriginGuid, nameof(saveProjectWrappertransmitObjectleadsProjectOriginGuid), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectprojectsSuperiorProjectGuid, nameof(saveProjectWrappertransmitObjectprojectsSuperiorProjectGuid), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectusersSupervisorGuid, nameof(saveProjectWrappertransmitObjectusersSupervisorGuid), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectisPrivate, nameof(saveProjectWrappertransmitObjectisPrivate), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectitemCreated, nameof(saveProjectWrappertransmitObjectitemCreated), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectitemChanged, nameof(saveProjectWrappertransmitObjectitemChanged), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectfileAs, nameof(saveProjectWrappertransmitObjectfileAs), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectownerGUID, nameof(saveProjectWrappertransmitObjectownerGUID), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectcreatedByGUID, nameof(saveProjectWrappertransmitObjectcreatedByGUID), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectmodifiedByGUID, nameof(saveProjectWrappertransmitObjectmodifiedByGUID), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectadditionalFields, nameof(saveProjectWrappertransmitObjectadditionalFields), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectitemGUID, nameof(saveProjectWrappertransmitObjectitemGUID), required: false);
-            WorkflowExpression.Validate(saveProjectWrappertransmitObjectitemVersion, nameof(saveProjectWrappertransmitObjectitemVersion), required: false);
-            WorkflowExpression.Validate(saveProjectWrapperdieOnItemConflict, nameof(saveProjectWrapperdieOnItemConflict), required: false);
-            WorkflowExpression.Validate(saveProjectWrapperignoredUserErrorMessages, nameof(saveProjectWrapperignoredUserErrorMessages), required: false);
+            var __workflow_saveProjectWrappertransmitObjectnote = saveProjectWrappertransmitObjectnote == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectnote);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectnote, nameof(saveProjectWrappertransmitObjectnote), required: false);
+            var __workflow_saveProjectWrappertransmitObjectprice = saveProjectWrappertransmitObjectprice == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectprice);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectprice, nameof(saveProjectWrappertransmitObjectprice), required: false);
+            var __workflow_saveProjectWrappertransmitObjectprojectEnd = saveProjectWrappertransmitObjectprojectEnd == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectprojectEnd);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectprojectEnd, nameof(saveProjectWrappertransmitObjectprojectEnd), required: false);
+            var __workflow_saveProjectWrappertransmitObjectprojectName = saveProjectWrappertransmitObjectprojectName == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectprojectName);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectprojectName, nameof(saveProjectWrappertransmitObjectprojectName), required: false);
+            var __workflow_saveProjectWrappertransmitObjecttypeEn = saveProjectWrappertransmitObjecttypeEn == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjecttypeEn);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjecttypeEn, nameof(saveProjectWrappertransmitObjecttypeEn), required: false);
+            var __workflow_saveProjectWrappertransmitObjectstateEn = saveProjectWrappertransmitObjectstateEn == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectstateEn);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectstateEn, nameof(saveProjectWrappertransmitObjectstateEn), required: false);
+            var __workflow_saveProjectWrappertransmitObjectpeopleExpenses = saveProjectWrappertransmitObjectpeopleExpenses == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectpeopleExpenses);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectpeopleExpenses, nameof(saveProjectWrappertransmitObjectpeopleExpenses), required: false);
+            var __workflow_saveProjectWrappertransmitObjectprojectRealEnd = saveProjectWrappertransmitObjectprojectRealEnd == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectprojectRealEnd);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectprojectRealEnd, nameof(saveProjectWrappertransmitObjectprojectRealEnd), required: false);
+            var __workflow_saveProjectWrappertransmitObjectestimatedPrice = saveProjectWrappertransmitObjectestimatedPrice == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectestimatedPrice);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectestimatedPrice, nameof(saveProjectWrappertransmitObjectestimatedPrice), required: false);
+            var __workflow_saveProjectWrappertransmitObjecthID = saveProjectWrappertransmitObjecthID == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjecthID);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjecthID, nameof(saveProjectWrappertransmitObjecthID), required: false);
+            var __workflow_saveProjectWrappertransmitObjectprojectOriginEn = saveProjectWrappertransmitObjectprojectOriginEn == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectprojectOriginEn);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectprojectOriginEn, nameof(saveProjectWrappertransmitObjectprojectOriginEn), required: false);
+            var __workflow_saveProjectWrappertransmitObjectpaymentTypeEn = saveProjectWrappertransmitObjectpaymentTypeEn == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectpaymentTypeEn);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectpaymentTypeEn, nameof(saveProjectWrappertransmitObjectpaymentTypeEn), required: false);
+            var __workflow_saveProjectWrappertransmitObjectotherExpenses = saveProjectWrappertransmitObjectotherExpenses == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectotherExpenses);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectotherExpenses, nameof(saveProjectWrappertransmitObjectotherExpenses), required: false);
+            var __workflow_saveProjectWrappertransmitObjectmargin = saveProjectWrappertransmitObjectmargin == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectmargin);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectmargin, nameof(saveProjectWrappertransmitObjectmargin), required: false);
+            var __workflow_saveProjectWrappertransmitObjectprofit = saveProjectWrappertransmitObjectprofit == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectprofit);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectprofit, nameof(saveProjectWrappertransmitObjectprofit), required: false);
+            var __workflow_saveProjectWrappertransmitObjectpaymentMaturity = saveProjectWrappertransmitObjectpaymentMaturity == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectpaymentMaturity);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectpaymentMaturity, nameof(saveProjectWrappertransmitObjectpaymentMaturity), required: false);
+            var __workflow_saveProjectWrappertransmitObjectinvoicePaymentDate = saveProjectWrappertransmitObjectinvoicePaymentDate == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectinvoicePaymentDate);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectinvoicePaymentDate, nameof(saveProjectWrappertransmitObjectinvoicePaymentDate), required: false);
+            var __workflow_saveProjectWrappertransmitObjectinvoiceIssueDate = saveProjectWrappertransmitObjectinvoiceIssueDate == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectinvoiceIssueDate);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectinvoiceIssueDate, nameof(saveProjectWrappertransmitObjectinvoiceIssueDate), required: false);
+            var __workflow_saveProjectWrappertransmitObjectestimatedMargin = saveProjectWrappertransmitObjectestimatedMargin == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectestimatedMargin);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectestimatedMargin, nameof(saveProjectWrappertransmitObjectestimatedMargin), required: false);
+            var __workflow_saveProjectWrappertransmitObjectestimatedProfit = saveProjectWrappertransmitObjectestimatedProfit == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectestimatedProfit);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectestimatedProfit, nameof(saveProjectWrappertransmitObjectestimatedProfit), required: false);
+            var __workflow_saveProjectWrappertransmitObjectestimatedPeopleExpenses = saveProjectWrappertransmitObjectestimatedPeopleExpenses == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectestimatedPeopleExpenses);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectestimatedPeopleExpenses, nameof(saveProjectWrappertransmitObjectestimatedPeopleExpenses), required: false);
+            var __workflow_saveProjectWrappertransmitObjectestimatedOtherExpenses = saveProjectWrappertransmitObjectestimatedOtherExpenses == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectestimatedOtherExpenses);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectestimatedOtherExpenses, nameof(saveProjectWrappertransmitObjectestimatedOtherExpenses), required: false);
+            var __workflow_saveProjectWrappertransmitObjectlicensesCount = saveProjectWrappertransmitObjectlicensesCount == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectlicensesCount);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectlicensesCount, nameof(saveProjectWrappertransmitObjectlicensesCount), required: false);
+            var __workflow_saveProjectWrappertransmitObjectlicensePrice = saveProjectWrappertransmitObjectlicensePrice == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectlicensePrice);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectlicensePrice, nameof(saveProjectWrappertransmitObjectlicensePrice), required: false);
+            var __workflow_saveProjectWrappertransmitObjectprevStateEn = saveProjectWrappertransmitObjectprevStateEn == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectprevStateEn);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectprevStateEn, nameof(saveProjectWrappertransmitObjectprevStateEn), required: false);
+            var __workflow_saveProjectWrappertransmitObjectshowInCaplan = saveProjectWrappertransmitObjectshowInCaplan == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectshowInCaplan);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectshowInCaplan, nameof(saveProjectWrappertransmitObjectshowInCaplan), required: false);
+            var __workflow_saveProjectWrappertransmitObjectprojectStart = saveProjectWrappertransmitObjectprojectStart == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectprojectStart);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectprojectStart, nameof(saveProjectWrappertransmitObjectprojectStart), required: false);
+            var __workflow_saveProjectWrappertransmitObjectestimatedWorkHours = saveProjectWrappertransmitObjectestimatedWorkHours == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectestimatedWorkHours);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectestimatedWorkHours, nameof(saveProjectWrappertransmitObjectestimatedWorkHours), required: false);
+            var __workflow_saveProjectWrappertransmitObjecttotalWorkHours = saveProjectWrappertransmitObjecttotalWorkHours == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjecttotalWorkHours);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjecttotalWorkHours, nameof(saveProjectWrappertransmitObjecttotalWorkHours), required: false);
+            var __workflow_saveProjectWrappertransmitObjectestimatedPeopleExpensesDefaultCurrency = saveProjectWrappertransmitObjectestimatedPeopleExpensesDefaultCurrency == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectestimatedPeopleExpensesDefaultCurrency);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectestimatedPeopleExpensesDefaultCurrency, nameof(saveProjectWrappertransmitObjectestimatedPeopleExpensesDefaultCurrency), required: false);
+            var __workflow_saveProjectWrappertransmitObjectestimatedOtherExpensesDefaultCurrency = saveProjectWrappertransmitObjectestimatedOtherExpensesDefaultCurrency == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectestimatedOtherExpensesDefaultCurrency);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectestimatedOtherExpensesDefaultCurrency, nameof(saveProjectWrappertransmitObjectestimatedOtherExpensesDefaultCurrency), required: false);
+            var __workflow_saveProjectWrappertransmitObjectestimatedPriceDefaultCurrency = saveProjectWrappertransmitObjectestimatedPriceDefaultCurrency == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectestimatedPriceDefaultCurrency);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectestimatedPriceDefaultCurrency, nameof(saveProjectWrappertransmitObjectestimatedPriceDefaultCurrency), required: false);
+            var __workflow_saveProjectWrappertransmitObjectpeopleExpensesDefaultCurrency = saveProjectWrappertransmitObjectpeopleExpensesDefaultCurrency == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectpeopleExpensesDefaultCurrency);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectpeopleExpensesDefaultCurrency, nameof(saveProjectWrappertransmitObjectpeopleExpensesDefaultCurrency), required: false);
+            var __workflow_saveProjectWrappertransmitObjectotherExpensesDefaultCurrency = saveProjectWrappertransmitObjectotherExpensesDefaultCurrency == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectotherExpensesDefaultCurrency);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectotherExpensesDefaultCurrency, nameof(saveProjectWrappertransmitObjectotherExpensesDefaultCurrency), required: false);
+            var __workflow_saveProjectWrappertransmitObjectpriceDefaultCurrency = saveProjectWrappertransmitObjectpriceDefaultCurrency == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectpriceDefaultCurrency);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectpriceDefaultCurrency, nameof(saveProjectWrappertransmitObjectpriceDefaultCurrency), required: false);
+            var __workflow_saveProjectWrappertransmitObjectprofitDefaultCurrency = saveProjectWrappertransmitObjectprofitDefaultCurrency == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectprofitDefaultCurrency);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectprofitDefaultCurrency, nameof(saveProjectWrappertransmitObjectprofitDefaultCurrency), required: false);
+            var __workflow_saveProjectWrappertransmitObjectestimatedProfitDefaultCurrency = saveProjectWrappertransmitObjectestimatedProfitDefaultCurrency == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectestimatedProfitDefaultCurrency);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectestimatedProfitDefaultCurrency, nameof(saveProjectWrappertransmitObjectestimatedProfitDefaultCurrency), required: false);
+            var __workflow_saveProjectWrappertransmitObjectcurrencyEn = saveProjectWrappertransmitObjectcurrencyEn == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectcurrencyEn);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectcurrencyEn, nameof(saveProjectWrappertransmitObjectcurrencyEn), required: false);
+            var __workflow_saveProjectWrappertransmitObjectestimatedPeopleExpensesChanged = saveProjectWrappertransmitObjectestimatedPeopleExpensesChanged == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectestimatedPeopleExpensesChanged);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectestimatedPeopleExpensesChanged, nameof(saveProjectWrappertransmitObjectestimatedPeopleExpensesChanged), required: false);
+            var __workflow_saveProjectWrappertransmitObjectestimatedOtherExpensesChanged = saveProjectWrappertransmitObjectestimatedOtherExpensesChanged == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectestimatedOtherExpensesChanged);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectestimatedOtherExpensesChanged, nameof(saveProjectWrappertransmitObjectestimatedOtherExpensesChanged), required: false);
+            var __workflow_saveProjectWrappertransmitObjectotherExpensesChanged = saveProjectWrappertransmitObjectotherExpensesChanged == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectotherExpensesChanged);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectotherExpensesChanged, nameof(saveProjectWrappertransmitObjectotherExpensesChanged), required: false);
+            var __workflow_saveProjectWrappertransmitObjectestimatedPriceChanged = saveProjectWrappertransmitObjectestimatedPriceChanged == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectestimatedPriceChanged);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectestimatedPriceChanged, nameof(saveProjectWrappertransmitObjectestimatedPriceChanged), required: false);
+            var __workflow_saveProjectWrappertransmitObjectpriceChanged = saveProjectWrappertransmitObjectpriceChanged == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectpriceChanged);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectpriceChanged, nameof(saveProjectWrappertransmitObjectpriceChanged), required: false);
+            var __workflow_saveProjectWrappertransmitObjectlicensePriceChanged = saveProjectWrappertransmitObjectlicensePriceChanged == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectlicensePriceChanged);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectlicensePriceChanged, nameof(saveProjectWrappertransmitObjectlicensePriceChanged), required: false);
+            var __workflow_saveProjectWrappertransmitObjectlicensePriceDefaultCurrency = saveProjectWrappertransmitObjectlicensePriceDefaultCurrency == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectlicensePriceDefaultCurrency);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectlicensePriceDefaultCurrency, nameof(saveProjectWrappertransmitObjectlicensePriceDefaultCurrency), required: false);
+            var __workflow_saveProjectWrappertransmitObjectlastActivity = saveProjectWrappertransmitObjectlastActivity == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectlastActivity);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectlastActivity, nameof(saveProjectWrappertransmitObjectlastActivity), required: false);
+            var __workflow_saveProjectWrappertransmitObjectnextStep = saveProjectWrappertransmitObjectnextStep == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectnextStep);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectnextStep, nameof(saveProjectWrappertransmitObjectnextStep), required: false);
+            var __workflow_saveProjectWrappertransmitObjectpeopleExpensesChanged = saveProjectWrappertransmitObjectpeopleExpensesChanged == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectpeopleExpensesChanged);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectpeopleExpensesChanged, nameof(saveProjectWrappertransmitObjectpeopleExpensesChanged), required: false);
+            var __workflow_saveProjectWrappertransmitObjectpicture = saveProjectWrappertransmitObjectpicture == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectpicture);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectpicture, nameof(saveProjectWrappertransmitObjectpicture), required: false);
+            var __workflow_saveProjectWrappertransmitObjectpictureWidth = saveProjectWrappertransmitObjectpictureWidth == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectpictureWidth);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectpictureWidth, nameof(saveProjectWrappertransmitObjectpictureWidth), required: false);
+            var __workflow_saveProjectWrappertransmitObjectpictureHeight = saveProjectWrappertransmitObjectpictureHeight == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectpictureHeight);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectpictureHeight, nameof(saveProjectWrappertransmitObjectpictureHeight), required: false);
+            var __workflow_saveProjectWrappertransmitObjectcompaniesCustomerGuid = saveProjectWrappertransmitObjectcompaniesCustomerGuid == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectcompaniesCustomerGuid);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectcompaniesCustomerGuid, nameof(saveProjectWrappertransmitObjectcompaniesCustomerGuid), required: false);
+            var __workflow_saveProjectWrappertransmitObjectcontactsContactPersonGuid = saveProjectWrappertransmitObjectcontactsContactPersonGuid == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectcontactsContactPersonGuid);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectcontactsContactPersonGuid, nameof(saveProjectWrappertransmitObjectcontactsContactPersonGuid), required: false);
+            var __workflow_saveProjectWrappertransmitObjectleadsProjectOriginGuid = saveProjectWrappertransmitObjectleadsProjectOriginGuid == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectleadsProjectOriginGuid);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectleadsProjectOriginGuid, nameof(saveProjectWrappertransmitObjectleadsProjectOriginGuid), required: false);
+            var __workflow_saveProjectWrappertransmitObjectprojectsSuperiorProjectGuid = saveProjectWrappertransmitObjectprojectsSuperiorProjectGuid == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectprojectsSuperiorProjectGuid);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectprojectsSuperiorProjectGuid, nameof(saveProjectWrappertransmitObjectprojectsSuperiorProjectGuid), required: false);
+            var __workflow_saveProjectWrappertransmitObjectusersSupervisorGuid = saveProjectWrappertransmitObjectusersSupervisorGuid == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectusersSupervisorGuid);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectusersSupervisorGuid, nameof(saveProjectWrappertransmitObjectusersSupervisorGuid), required: false);
+            var __workflow_saveProjectWrappertransmitObjectisPrivate = saveProjectWrappertransmitObjectisPrivate == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectisPrivate);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectisPrivate, nameof(saveProjectWrappertransmitObjectisPrivate), required: false);
+            var __workflow_saveProjectWrappertransmitObjectitemCreated = saveProjectWrappertransmitObjectitemCreated == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectitemCreated);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectitemCreated, nameof(saveProjectWrappertransmitObjectitemCreated), required: false);
+            var __workflow_saveProjectWrappertransmitObjectitemChanged = saveProjectWrappertransmitObjectitemChanged == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectitemChanged);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectitemChanged, nameof(saveProjectWrappertransmitObjectitemChanged), required: false);
+            var __workflow_saveProjectWrappertransmitObjectfileAs = saveProjectWrappertransmitObjectfileAs == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectfileAs);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectfileAs, nameof(saveProjectWrappertransmitObjectfileAs), required: false);
+            var __workflow_saveProjectWrappertransmitObjectownerGUID = saveProjectWrappertransmitObjectownerGUID == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectownerGUID);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectownerGUID, nameof(saveProjectWrappertransmitObjectownerGUID), required: false);
+            var __workflow_saveProjectWrappertransmitObjectcreatedByGUID = saveProjectWrappertransmitObjectcreatedByGUID == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectcreatedByGUID);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectcreatedByGUID, nameof(saveProjectWrappertransmitObjectcreatedByGUID), required: false);
+            var __workflow_saveProjectWrappertransmitObjectmodifiedByGUID = saveProjectWrappertransmitObjectmodifiedByGUID == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectmodifiedByGUID);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectmodifiedByGUID, nameof(saveProjectWrappertransmitObjectmodifiedByGUID), required: false);
+            var __workflow_saveProjectWrappertransmitObjectadditionalFields = saveProjectWrappertransmitObjectadditionalFields == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectadditionalFields);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectadditionalFields, nameof(saveProjectWrappertransmitObjectadditionalFields), required: false);
+            var __workflow_saveProjectWrappertransmitObjectitemGUID = saveProjectWrappertransmitObjectitemGUID == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectitemGUID);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectitemGUID, nameof(saveProjectWrappertransmitObjectitemGUID), required: false);
+            var __workflow_saveProjectWrappertransmitObjectitemVersion = saveProjectWrappertransmitObjectitemVersion == null ? null : WorkflowExpression.Compile(saveProjectWrappertransmitObjectitemVersion);
+            WorkflowExpression.Validate(__workflow_saveProjectWrappertransmitObjectitemVersion, nameof(saveProjectWrappertransmitObjectitemVersion), required: false);
+            var __workflow_saveProjectWrapperdieOnItemConflict = saveProjectWrapperdieOnItemConflict == null ? null : WorkflowExpression.Compile(saveProjectWrapperdieOnItemConflict);
+            WorkflowExpression.Validate(__workflow_saveProjectWrapperdieOnItemConflict, nameof(saveProjectWrapperdieOnItemConflict), required: false);
+            var __workflow_saveProjectWrapperignoredUserErrorMessages = saveProjectWrapperignoredUserErrorMessages == null ? null : WorkflowExpression.Compile(saveProjectWrapperignoredUserErrorMessages);
+            WorkflowExpression.Validate(__workflow_saveProjectWrapperignoredUserErrorMessages, nameof(saveProjectWrapperignoredUserErrorMessages), required: false);
             return new DeferredBodyAction<EWayWcfServiceResponsesSaveResponse>(() =>
             {
                 var apiCallPath = "/SaveProject";
@@ -1972,399 +2188,399 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                 var saveProjectWrapperpropCount = 0;
                 var transmitObjectObject = new JObject();
                 var transmitObjectObjectpropCount = 0;
-                if (saveProjectWrappertransmitObjectnote != null)
+                if (__workflow_saveProjectWrappertransmitObjectnote != null)
                 {
-                    transmitObjectObject["Note"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectnote);
+                    transmitObjectObject["Note"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectnote);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectprice != null)
+                if (__workflow_saveProjectWrappertransmitObjectprice != null)
                 {
-                    transmitObjectObject["Price"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectprice);
+                    transmitObjectObject["Price"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectprice);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectprojectEnd != null)
+                if (__workflow_saveProjectWrappertransmitObjectprojectEnd != null)
                 {
-                    transmitObjectObject["ProjectEnd"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectprojectEnd);
+                    transmitObjectObject["ProjectEnd"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectprojectEnd);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectprojectName != null)
+                if (__workflow_saveProjectWrappertransmitObjectprojectName != null)
                 {
-                    transmitObjectObject["ProjectName"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectprojectName);
+                    transmitObjectObject["ProjectName"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectprojectName);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjecttypeEn != null)
+                if (__workflow_saveProjectWrappertransmitObjecttypeEn != null)
                 {
-                    transmitObjectObject["TypeEn"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjecttypeEn);
+                    transmitObjectObject["TypeEn"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjecttypeEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectstateEn != null)
+                if (__workflow_saveProjectWrappertransmitObjectstateEn != null)
                 {
-                    transmitObjectObject["StateEn"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectstateEn);
+                    transmitObjectObject["StateEn"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectstateEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectpeopleExpenses != null)
+                if (__workflow_saveProjectWrappertransmitObjectpeopleExpenses != null)
                 {
-                    transmitObjectObject["PeopleExpenses"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectpeopleExpenses);
+                    transmitObjectObject["PeopleExpenses"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectpeopleExpenses);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectprojectRealEnd != null)
+                if (__workflow_saveProjectWrappertransmitObjectprojectRealEnd != null)
                 {
-                    transmitObjectObject["ProjectRealEnd"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectprojectRealEnd);
+                    transmitObjectObject["ProjectRealEnd"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectprojectRealEnd);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectestimatedPrice != null)
+                if (__workflow_saveProjectWrappertransmitObjectestimatedPrice != null)
                 {
-                    transmitObjectObject["EstimatedPrice"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectestimatedPrice);
+                    transmitObjectObject["EstimatedPrice"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectestimatedPrice);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjecthID != null)
+                if (__workflow_saveProjectWrappertransmitObjecthID != null)
                 {
-                    transmitObjectObject["HID"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjecthID);
+                    transmitObjectObject["HID"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjecthID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectprojectOriginEn != null)
+                if (__workflow_saveProjectWrappertransmitObjectprojectOriginEn != null)
                 {
-                    transmitObjectObject["ProjectOriginEn"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectprojectOriginEn);
+                    transmitObjectObject["ProjectOriginEn"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectprojectOriginEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectpaymentTypeEn != null)
+                if (__workflow_saveProjectWrappertransmitObjectpaymentTypeEn != null)
                 {
-                    transmitObjectObject["PaymentTypeEn"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectpaymentTypeEn);
+                    transmitObjectObject["PaymentTypeEn"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectpaymentTypeEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectotherExpenses != null)
+                if (__workflow_saveProjectWrappertransmitObjectotherExpenses != null)
                 {
-                    transmitObjectObject["OtherExpenses"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectotherExpenses);
+                    transmitObjectObject["OtherExpenses"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectotherExpenses);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectmargin != null)
+                if (__workflow_saveProjectWrappertransmitObjectmargin != null)
                 {
-                    transmitObjectObject["Margin"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectmargin);
+                    transmitObjectObject["Margin"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectmargin);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectprofit != null)
+                if (__workflow_saveProjectWrappertransmitObjectprofit != null)
                 {
-                    transmitObjectObject["Profit"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectprofit);
+                    transmitObjectObject["Profit"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectprofit);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectpaymentMaturity != null)
+                if (__workflow_saveProjectWrappertransmitObjectpaymentMaturity != null)
                 {
-                    transmitObjectObject["PaymentMaturity"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectpaymentMaturity);
+                    transmitObjectObject["PaymentMaturity"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectpaymentMaturity);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectinvoicePaymentDate != null)
+                if (__workflow_saveProjectWrappertransmitObjectinvoicePaymentDate != null)
                 {
-                    transmitObjectObject["InvoicePaymentDate"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectinvoicePaymentDate);
+                    transmitObjectObject["InvoicePaymentDate"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectinvoicePaymentDate);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectinvoiceIssueDate != null)
+                if (__workflow_saveProjectWrappertransmitObjectinvoiceIssueDate != null)
                 {
-                    transmitObjectObject["InvoiceIssueDate"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectinvoiceIssueDate);
+                    transmitObjectObject["InvoiceIssueDate"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectinvoiceIssueDate);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectestimatedMargin != null)
+                if (__workflow_saveProjectWrappertransmitObjectestimatedMargin != null)
                 {
-                    transmitObjectObject["EstimatedMargin"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectestimatedMargin);
+                    transmitObjectObject["EstimatedMargin"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectestimatedMargin);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectestimatedProfit != null)
+                if (__workflow_saveProjectWrappertransmitObjectestimatedProfit != null)
                 {
-                    transmitObjectObject["EstimatedProfit"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectestimatedProfit);
+                    transmitObjectObject["EstimatedProfit"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectestimatedProfit);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectestimatedPeopleExpenses != null)
+                if (__workflow_saveProjectWrappertransmitObjectestimatedPeopleExpenses != null)
                 {
-                    transmitObjectObject["EstimatedPeopleExpenses"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectestimatedPeopleExpenses);
+                    transmitObjectObject["EstimatedPeopleExpenses"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectestimatedPeopleExpenses);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectestimatedOtherExpenses != null)
+                if (__workflow_saveProjectWrappertransmitObjectestimatedOtherExpenses != null)
                 {
-                    transmitObjectObject["EstimatedOtherExpenses"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectestimatedOtherExpenses);
+                    transmitObjectObject["EstimatedOtherExpenses"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectestimatedOtherExpenses);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectlicensesCount != null)
+                if (__workflow_saveProjectWrappertransmitObjectlicensesCount != null)
                 {
-                    transmitObjectObject["LicensesCount"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectlicensesCount);
+                    transmitObjectObject["LicensesCount"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectlicensesCount);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectlicensePrice != null)
+                if (__workflow_saveProjectWrappertransmitObjectlicensePrice != null)
                 {
-                    transmitObjectObject["LicensePrice"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectlicensePrice);
+                    transmitObjectObject["LicensePrice"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectlicensePrice);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectprevStateEn != null)
+                if (__workflow_saveProjectWrappertransmitObjectprevStateEn != null)
                 {
-                    transmitObjectObject["PrevStateEn"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectprevStateEn);
+                    transmitObjectObject["PrevStateEn"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectprevStateEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectshowInCaplan != null)
+                if (__workflow_saveProjectWrappertransmitObjectshowInCaplan != null)
                 {
-                    transmitObjectObject["ShowInCaplan"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectshowInCaplan);
+                    transmitObjectObject["ShowInCaplan"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectshowInCaplan);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectprojectStart != null)
+                if (__workflow_saveProjectWrappertransmitObjectprojectStart != null)
                 {
-                    transmitObjectObject["ProjectStart"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectprojectStart);
+                    transmitObjectObject["ProjectStart"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectprojectStart);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectestimatedWorkHours != null)
+                if (__workflow_saveProjectWrappertransmitObjectestimatedWorkHours != null)
                 {
-                    transmitObjectObject["EstimatedWorkHours"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectestimatedWorkHours);
+                    transmitObjectObject["EstimatedWorkHours"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectestimatedWorkHours);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjecttotalWorkHours != null)
+                if (__workflow_saveProjectWrappertransmitObjecttotalWorkHours != null)
                 {
-                    transmitObjectObject["TotalWorkHours"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjecttotalWorkHours);
+                    transmitObjectObject["TotalWorkHours"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjecttotalWorkHours);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectestimatedPeopleExpensesDefaultCurrency != null)
+                if (__workflow_saveProjectWrappertransmitObjectestimatedPeopleExpensesDefaultCurrency != null)
                 {
-                    transmitObjectObject["EstimatedPeopleExpensesDefaultCurrency"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectestimatedPeopleExpensesDefaultCurrency);
+                    transmitObjectObject["EstimatedPeopleExpensesDefaultCurrency"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectestimatedPeopleExpensesDefaultCurrency);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectestimatedOtherExpensesDefaultCurrency != null)
+                if (__workflow_saveProjectWrappertransmitObjectestimatedOtherExpensesDefaultCurrency != null)
                 {
-                    transmitObjectObject["EstimatedOtherExpensesDefaultCurrency"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectestimatedOtherExpensesDefaultCurrency);
+                    transmitObjectObject["EstimatedOtherExpensesDefaultCurrency"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectestimatedOtherExpensesDefaultCurrency);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectestimatedPriceDefaultCurrency != null)
+                if (__workflow_saveProjectWrappertransmitObjectestimatedPriceDefaultCurrency != null)
                 {
-                    transmitObjectObject["EstimatedPriceDefaultCurrency"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectestimatedPriceDefaultCurrency);
+                    transmitObjectObject["EstimatedPriceDefaultCurrency"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectestimatedPriceDefaultCurrency);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectpeopleExpensesDefaultCurrency != null)
+                if (__workflow_saveProjectWrappertransmitObjectpeopleExpensesDefaultCurrency != null)
                 {
-                    transmitObjectObject["PeopleExpensesDefaultCurrency"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectpeopleExpensesDefaultCurrency);
+                    transmitObjectObject["PeopleExpensesDefaultCurrency"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectpeopleExpensesDefaultCurrency);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectotherExpensesDefaultCurrency != null)
+                if (__workflow_saveProjectWrappertransmitObjectotherExpensesDefaultCurrency != null)
                 {
-                    transmitObjectObject["OtherExpensesDefaultCurrency"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectotherExpensesDefaultCurrency);
+                    transmitObjectObject["OtherExpensesDefaultCurrency"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectotherExpensesDefaultCurrency);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectpriceDefaultCurrency != null)
+                if (__workflow_saveProjectWrappertransmitObjectpriceDefaultCurrency != null)
                 {
-                    transmitObjectObject["PriceDefaultCurrency"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectpriceDefaultCurrency);
+                    transmitObjectObject["PriceDefaultCurrency"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectpriceDefaultCurrency);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectprofitDefaultCurrency != null)
+                if (__workflow_saveProjectWrappertransmitObjectprofitDefaultCurrency != null)
                 {
-                    transmitObjectObject["ProfitDefaultCurrency"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectprofitDefaultCurrency);
+                    transmitObjectObject["ProfitDefaultCurrency"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectprofitDefaultCurrency);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectestimatedProfitDefaultCurrency != null)
+                if (__workflow_saveProjectWrappertransmitObjectestimatedProfitDefaultCurrency != null)
                 {
-                    transmitObjectObject["EstimatedProfitDefaultCurrency"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectestimatedProfitDefaultCurrency);
+                    transmitObjectObject["EstimatedProfitDefaultCurrency"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectestimatedProfitDefaultCurrency);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectcurrencyEn != null)
+                if (__workflow_saveProjectWrappertransmitObjectcurrencyEn != null)
                 {
-                    transmitObjectObject["CurrencyEn"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectcurrencyEn);
+                    transmitObjectObject["CurrencyEn"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectcurrencyEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectestimatedPeopleExpensesChanged != null)
+                if (__workflow_saveProjectWrappertransmitObjectestimatedPeopleExpensesChanged != null)
                 {
-                    transmitObjectObject["EstimatedPeopleExpensesChanged"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectestimatedPeopleExpensesChanged);
+                    transmitObjectObject["EstimatedPeopleExpensesChanged"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectestimatedPeopleExpensesChanged);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectestimatedOtherExpensesChanged != null)
+                if (__workflow_saveProjectWrappertransmitObjectestimatedOtherExpensesChanged != null)
                 {
-                    transmitObjectObject["EstimatedOtherExpensesChanged"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectestimatedOtherExpensesChanged);
+                    transmitObjectObject["EstimatedOtherExpensesChanged"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectestimatedOtherExpensesChanged);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectotherExpensesChanged != null)
+                if (__workflow_saveProjectWrappertransmitObjectotherExpensesChanged != null)
                 {
-                    transmitObjectObject["OtherExpensesChanged"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectotherExpensesChanged);
+                    transmitObjectObject["OtherExpensesChanged"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectotherExpensesChanged);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectestimatedPriceChanged != null)
+                if (__workflow_saveProjectWrappertransmitObjectestimatedPriceChanged != null)
                 {
-                    transmitObjectObject["EstimatedPriceChanged"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectestimatedPriceChanged);
+                    transmitObjectObject["EstimatedPriceChanged"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectestimatedPriceChanged);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectpriceChanged != null)
+                if (__workflow_saveProjectWrappertransmitObjectpriceChanged != null)
                 {
-                    transmitObjectObject["PriceChanged"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectpriceChanged);
+                    transmitObjectObject["PriceChanged"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectpriceChanged);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectlicensePriceChanged != null)
+                if (__workflow_saveProjectWrappertransmitObjectlicensePriceChanged != null)
                 {
-                    transmitObjectObject["LicensePriceChanged"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectlicensePriceChanged);
+                    transmitObjectObject["LicensePriceChanged"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectlicensePriceChanged);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectlicensePriceDefaultCurrency != null)
+                if (__workflow_saveProjectWrappertransmitObjectlicensePriceDefaultCurrency != null)
                 {
-                    transmitObjectObject["LicensePriceDefaultCurrency"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectlicensePriceDefaultCurrency);
+                    transmitObjectObject["LicensePriceDefaultCurrency"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectlicensePriceDefaultCurrency);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectlastActivity != null)
+                if (__workflow_saveProjectWrappertransmitObjectlastActivity != null)
                 {
-                    transmitObjectObject["LastActivity"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectlastActivity);
+                    transmitObjectObject["LastActivity"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectlastActivity);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectnextStep != null)
+                if (__workflow_saveProjectWrappertransmitObjectnextStep != null)
                 {
-                    transmitObjectObject["NextStep"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectnextStep);
+                    transmitObjectObject["NextStep"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectnextStep);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectpeopleExpensesChanged != null)
+                if (__workflow_saveProjectWrappertransmitObjectpeopleExpensesChanged != null)
                 {
-                    transmitObjectObject["PeopleExpensesChanged"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectpeopleExpensesChanged);
+                    transmitObjectObject["PeopleExpensesChanged"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectpeopleExpensesChanged);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectpicture != null)
+                if (__workflow_saveProjectWrappertransmitObjectpicture != null)
                 {
-                    transmitObjectObject["Picture"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectpicture);
+                    transmitObjectObject["Picture"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectpicture);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectpictureWidth != null)
+                if (__workflow_saveProjectWrappertransmitObjectpictureWidth != null)
                 {
-                    transmitObjectObject["PictureWidth"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectpictureWidth);
+                    transmitObjectObject["PictureWidth"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectpictureWidth);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectpictureHeight != null)
+                if (__workflow_saveProjectWrappertransmitObjectpictureHeight != null)
                 {
-                    transmitObjectObject["PictureHeight"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectpictureHeight);
+                    transmitObjectObject["PictureHeight"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectpictureHeight);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectcompaniesCustomerGuid != null)
+                if (__workflow_saveProjectWrappertransmitObjectcompaniesCustomerGuid != null)
                 {
-                    transmitObjectObject["Companies_CustomerGuid"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectcompaniesCustomerGuid);
+                    transmitObjectObject["Companies_CustomerGuid"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectcompaniesCustomerGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectcontactsContactPersonGuid != null)
+                if (__workflow_saveProjectWrappertransmitObjectcontactsContactPersonGuid != null)
                 {
-                    transmitObjectObject["Contacts_ContactPersonGuid"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectcontactsContactPersonGuid);
+                    transmitObjectObject["Contacts_ContactPersonGuid"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectcontactsContactPersonGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectleadsProjectOriginGuid != null)
+                if (__workflow_saveProjectWrappertransmitObjectleadsProjectOriginGuid != null)
                 {
-                    transmitObjectObject["Leads_Project_OriginGuid"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectleadsProjectOriginGuid);
+                    transmitObjectObject["Leads_Project_OriginGuid"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectleadsProjectOriginGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectprojectsSuperiorProjectGuid != null)
+                if (__workflow_saveProjectWrappertransmitObjectprojectsSuperiorProjectGuid != null)
                 {
-                    transmitObjectObject["Projects_SuperiorProjectGuid"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectprojectsSuperiorProjectGuid);
+                    transmitObjectObject["Projects_SuperiorProjectGuid"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectprojectsSuperiorProjectGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectusersSupervisorGuid != null)
+                if (__workflow_saveProjectWrappertransmitObjectusersSupervisorGuid != null)
                 {
-                    transmitObjectObject["Users_SupervisorGuid"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectusersSupervisorGuid);
+                    transmitObjectObject["Users_SupervisorGuid"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectusersSupervisorGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectisPrivate != null)
+                if (__workflow_saveProjectWrappertransmitObjectisPrivate != null)
                 {
-                    transmitObjectObject["IsPrivate"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectisPrivate);
+                    transmitObjectObject["IsPrivate"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectisPrivate);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectitemCreated != null)
+                if (__workflow_saveProjectWrappertransmitObjectitemCreated != null)
                 {
-                    transmitObjectObject["ItemCreated"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectitemCreated);
+                    transmitObjectObject["ItemCreated"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectitemCreated);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectitemChanged != null)
+                if (__workflow_saveProjectWrappertransmitObjectitemChanged != null)
                 {
-                    transmitObjectObject["ItemChanged"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectitemChanged);
+                    transmitObjectObject["ItemChanged"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectitemChanged);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectfileAs != null)
+                if (__workflow_saveProjectWrappertransmitObjectfileAs != null)
                 {
-                    transmitObjectObject["FileAs"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectfileAs);
+                    transmitObjectObject["FileAs"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectfileAs);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectownerGUID != null)
+                if (__workflow_saveProjectWrappertransmitObjectownerGUID != null)
                 {
-                    transmitObjectObject["OwnerGUID"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectownerGUID);
+                    transmitObjectObject["OwnerGUID"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectownerGUID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectcreatedByGUID != null)
+                if (__workflow_saveProjectWrappertransmitObjectcreatedByGUID != null)
                 {
-                    transmitObjectObject["CreatedByGUID"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectcreatedByGUID);
+                    transmitObjectObject["CreatedByGUID"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectcreatedByGUID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectmodifiedByGUID != null)
+                if (__workflow_saveProjectWrappertransmitObjectmodifiedByGUID != null)
                 {
-                    transmitObjectObject["ModifiedByGUID"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectmodifiedByGUID);
+                    transmitObjectObject["ModifiedByGUID"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectmodifiedByGUID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectadditionalFields != null)
+                if (__workflow_saveProjectWrappertransmitObjectadditionalFields != null)
                 {
-                    transmitObjectObject["AdditionalFields"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectadditionalFields);
+                    transmitObjectObject["AdditionalFields"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectadditionalFields);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectitemGUID != null)
+                if (__workflow_saveProjectWrappertransmitObjectitemGUID != null)
                 {
-                    transmitObjectObject["ItemGUID"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectitemGUID);
+                    transmitObjectObject["ItemGUID"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectitemGUID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveProjectWrappertransmitObjectitemVersion != null)
+                if (__workflow_saveProjectWrappertransmitObjectitemVersion != null)
                 {
-                    transmitObjectObject["ItemVersion"] = ExpressionConverter.ConvertO(saveProjectWrappertransmitObjectitemVersion);
+                    transmitObjectObject["ItemVersion"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrappertransmitObjectitemVersion);
                     transmitObjectObjectpropCount++;
                 }
 
@@ -2374,15 +2590,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                     saveProjectWrapperpropCount++;
                 }
 
-                if (saveProjectWrapperdieOnItemConflict != null)
+                if (__workflow_saveProjectWrapperdieOnItemConflict != null)
                 {
-                    saveProjectWrapper["dieOnItemConflict"] = ExpressionConverter.ConvertO(saveProjectWrapperdieOnItemConflict);
+                    saveProjectWrapper["dieOnItemConflict"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrapperdieOnItemConflict);
                     saveProjectWrapperpropCount++;
                 }
 
-                if (saveProjectWrapperignoredUserErrorMessages != null)
+                if (__workflow_saveProjectWrapperignoredUserErrorMessages != null)
                 {
-                    saveProjectWrapper["ignoredUserErrorMessages"] = ExpressionConverter.ConvertO(saveProjectWrapperignoredUserErrorMessages);
+                    saveProjectWrapper["ignoredUserErrorMessages"] = ExpressionConverter.ConvertO(__workflow_saveProjectWrapperignoredUserErrorMessages);
                     saveProjectWrapperpropCount++;
                 }
 
@@ -2396,19 +2612,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
-        [WorkflowExpressionFactory(nameof(__BuildSaveRelation))]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesBooleanResponse> SaveRelation([WorkflowExpression] Func<string> saveRelationWrappertransmitObjectitemGUID1 = null, [WorkflowExpression] Func<string> saveRelationWrappertransmitObjectitemGUID2 = null, [WorkflowExpression] Func<saveRelationWrappertransmitObjectfolderName1Input> saveRelationWrappertransmitObjectfolderName1 = null, [WorkflowExpression] Func<saveRelationWrappertransmitObjectfolderName2Input> saveRelationWrappertransmitObjectfolderName2 = null)
+        public IBodyWorkflowAction<EWayWcfServiceResponsesBooleanResponse> SaveRelation(Expression<Func<string>> saveRelationWrappertransmitObjectitemGUID1 = null, Expression<Func<string>> saveRelationWrappertransmitObjectitemGUID2 = null, Expression<Func<saveRelationWrappertransmitObjectfolderName1Input>> saveRelationWrappertransmitObjectfolderName1 = null, Expression<Func<saveRelationWrappertransmitObjectfolderName2Input>> saveRelationWrappertransmitObjectfolderName2 = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesBooleanResponse> __BuildSaveRelation(WorkflowExpression<string> saveRelationWrappertransmitObjectitemGUID1 = null, WorkflowExpression<string> saveRelationWrappertransmitObjectitemGUID2 = null, WorkflowExpression<saveRelationWrappertransmitObjectfolderName1Input> saveRelationWrappertransmitObjectfolderName1 = null, WorkflowExpression<saveRelationWrappertransmitObjectfolderName2Input> saveRelationWrappertransmitObjectfolderName2 = null)
-        {
-            WorkflowExpression.Validate(saveRelationWrappertransmitObjectitemGUID1, nameof(saveRelationWrappertransmitObjectitemGUID1), required: false);
-            WorkflowExpression.Validate(saveRelationWrappertransmitObjectitemGUID2, nameof(saveRelationWrappertransmitObjectitemGUID2), required: false);
-            WorkflowExpression.Validate(saveRelationWrappertransmitObjectfolderName1, nameof(saveRelationWrappertransmitObjectfolderName1), required: false);
-            WorkflowExpression.Validate(saveRelationWrappertransmitObjectfolderName2, nameof(saveRelationWrappertransmitObjectfolderName2), required: false);
+            var __workflow_saveRelationWrappertransmitObjectitemGUID1 = saveRelationWrappertransmitObjectitemGUID1 == null ? null : WorkflowExpression.Compile(saveRelationWrappertransmitObjectitemGUID1);
+            WorkflowExpression.Validate(__workflow_saveRelationWrappertransmitObjectitemGUID1, nameof(saveRelationWrappertransmitObjectitemGUID1), required: false);
+            var __workflow_saveRelationWrappertransmitObjectitemGUID2 = saveRelationWrappertransmitObjectitemGUID2 == null ? null : WorkflowExpression.Compile(saveRelationWrappertransmitObjectitemGUID2);
+            WorkflowExpression.Validate(__workflow_saveRelationWrappertransmitObjectitemGUID2, nameof(saveRelationWrappertransmitObjectitemGUID2), required: false);
+            var __workflow_saveRelationWrappertransmitObjectfolderName1 = saveRelationWrappertransmitObjectfolderName1 == null ? null : WorkflowExpression.Compile(saveRelationWrappertransmitObjectfolderName1);
+            WorkflowExpression.Validate(__workflow_saveRelationWrappertransmitObjectfolderName1, nameof(saveRelationWrappertransmitObjectfolderName1), required: false);
+            var __workflow_saveRelationWrappertransmitObjectfolderName2 = saveRelationWrappertransmitObjectfolderName2 == null ? null : WorkflowExpression.Compile(saveRelationWrappertransmitObjectfolderName2);
+            WorkflowExpression.Validate(__workflow_saveRelationWrappertransmitObjectfolderName2, nameof(saveRelationWrappertransmitObjectfolderName2), required: false);
             return new DeferredBodyAction<EWayWcfServiceResponsesBooleanResponse>(() =>
             {
                 var apiCallPath = "/SaveRelation";
@@ -2418,27 +2631,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                 var saveRelationWrapperpropCount = 0;
                 var transmitObjectObject = new JObject();
                 var transmitObjectObjectpropCount = 0;
-                if (saveRelationWrappertransmitObjectitemGUID1 != null)
+                if (__workflow_saveRelationWrappertransmitObjectitemGUID1 != null)
                 {
-                    transmitObjectObject["ItemGUID1"] = ExpressionConverter.ConvertO(saveRelationWrappertransmitObjectitemGUID1);
+                    transmitObjectObject["ItemGUID1"] = ExpressionConverter.ConvertO(__workflow_saveRelationWrappertransmitObjectitemGUID1);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveRelationWrappertransmitObjectitemGUID2 != null)
+                if (__workflow_saveRelationWrappertransmitObjectitemGUID2 != null)
                 {
-                    transmitObjectObject["ItemGUID2"] = ExpressionConverter.ConvertO(saveRelationWrappertransmitObjectitemGUID2);
+                    transmitObjectObject["ItemGUID2"] = ExpressionConverter.ConvertO(__workflow_saveRelationWrappertransmitObjectitemGUID2);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveRelationWrappertransmitObjectfolderName1 != null)
+                if (__workflow_saveRelationWrappertransmitObjectfolderName1 != null)
                 {
-                    transmitObjectObject["FolderName1"] = ExpressionConverter.ConvertO(saveRelationWrappertransmitObjectfolderName1);
+                    transmitObjectObject["FolderName1"] = ExpressionConverter.ConvertO(__workflow_saveRelationWrappertransmitObjectfolderName1);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveRelationWrappertransmitObjectfolderName2 != null)
+                if (__workflow_saveRelationWrappertransmitObjectfolderName2 != null)
                 {
-                    transmitObjectObject["FolderName2"] = ExpressionConverter.ConvertO(saveRelationWrappertransmitObjectfolderName2);
+                    transmitObjectObject["FolderName2"] = ExpressionConverter.ConvertO(__workflow_saveRelationWrappertransmitObjectfolderName2);
                     transmitObjectObjectpropCount++;
                 }
 
@@ -2460,55 +2673,88 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
-        [WorkflowExpressionFactory(nameof(__BuildSaveTask))]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesSaveResponse> SaveTask([WorkflowExpression] Func<string> saveTaskWrappertransmitObjectbody = null, [WorkflowExpression] Func<bool> saveTaskWrappertransmitObjectisCompleted = null, [WorkflowExpression] Func<string> saveTaskWrappertransmitObjectdueDate = null, [WorkflowExpression] Func<double> saveTaskWrappertransmitObjectpercentCompleteDecimal = null, [WorkflowExpression] Func<string> saveTaskWrappertransmitObjectprevStateEn = null, [WorkflowExpression] Func<string> saveTaskWrappertransmitObjectstartDate = null, [WorkflowExpression] Func<string> saveTaskWrappertransmitObjectstateEn = null, [WorkflowExpression] Func<string> saveTaskWrappertransmitObjectsubject = null, [WorkflowExpression] Func<string> saveTaskWrappertransmitObjecttypeEn = null, [WorkflowExpression] Func<int> saveTaskWrappertransmitObjectlevel = null, [WorkflowExpression] Func<string> saveTaskWrappertransmitObjectimportanceEn = null, [WorkflowExpression] Func<double> saveTaskWrappertransmitObjectactualWorkHours = null, [WorkflowExpression] Func<double> saveTaskWrappertransmitObjectestimatedWorkHours = null, [WorkflowExpression] Func<bool> saveTaskWrappertransmitObjectisReminderSet = null, [WorkflowExpression] Func<string> saveTaskWrappertransmitObjectreminderDate = null, [WorkflowExpression] Func<string> saveTaskWrappertransmitObjectcompletedDate = null, [WorkflowExpression] Func<string> saveTaskWrappertransmitObjectpicture = null, [WorkflowExpression] Func<int> saveTaskWrappertransmitObjectpictureWidth = null, [WorkflowExpression] Func<int> saveTaskWrappertransmitObjectpictureHeight = null, [WorkflowExpression] Func<string> saveTaskWrappertransmitObjectleadsTaskParentGuid = null, [WorkflowExpression] Func<string> saveTaskWrappertransmitObjectprojectsTaskParentGuid = null, [WorkflowExpression] Func<string> saveTaskWrappertransmitObjecttasksTaskParentGuid = null, [WorkflowExpression] Func<string> saveTaskWrappertransmitObjectmarketingTaskParentGuid = null, [WorkflowExpression] Func<string> saveTaskWrappertransmitObjectcompaniesCompanyGuid = null, [WorkflowExpression] Func<string> saveTaskWrappertransmitObjectcontactsContactGuid = null, [WorkflowExpression] Func<string> saveTaskWrappertransmitObjectusersTaskDelegatorGuid = null, [WorkflowExpression] Func<string> saveTaskWrappertransmitObjectusersTaskSolverGuid = null, [WorkflowExpression] Func<string> saveTaskWrappertransmitObjecttasksTaskOriginGuid = null, [WorkflowExpression] Func<bool> saveTaskWrappertransmitObjectisPrivate = null, [WorkflowExpression] Func<string> saveTaskWrappertransmitObjectitemCreated = null, [WorkflowExpression] Func<string> saveTaskWrappertransmitObjectitemChanged = null, [WorkflowExpression] Func<string> saveTaskWrappertransmitObjectfileAs = null, [WorkflowExpression] Func<string> saveTaskWrappertransmitObjectownerGUID = null, [WorkflowExpression] Func<string> saveTaskWrappertransmitObjectcreatedByGUID = null, [WorkflowExpression] Func<string> saveTaskWrappertransmitObjectmodifiedByGUID = null, [WorkflowExpression] Func<object> saveTaskWrappertransmitObjectadditionalFields = null, [WorkflowExpression] Func<string> saveTaskWrappertransmitObjectitemGUID = null, [WorkflowExpression] Func<int> saveTaskWrappertransmitObjectitemVersion = null, [WorkflowExpression] Func<bool> saveTaskWrapperdieOnItemConflict = null, [WorkflowExpression] Func<string[]> saveTaskWrapperignoredUserErrorMessages = null)
+        public IBodyWorkflowAction<EWayWcfServiceResponsesSaveResponse> SaveTask(Expression<Func<string>> saveTaskWrappertransmitObjectbody = null, Expression<Func<bool>> saveTaskWrappertransmitObjectisCompleted = null, Expression<Func<string>> saveTaskWrappertransmitObjectdueDate = null, Expression<Func<double>> saveTaskWrappertransmitObjectpercentCompleteDecimal = null, Expression<Func<string>> saveTaskWrappertransmitObjectprevStateEn = null, Expression<Func<string>> saveTaskWrappertransmitObjectstartDate = null, Expression<Func<string>> saveTaskWrappertransmitObjectstateEn = null, Expression<Func<string>> saveTaskWrappertransmitObjectsubject = null, Expression<Func<string>> saveTaskWrappertransmitObjecttypeEn = null, Expression<Func<int>> saveTaskWrappertransmitObjectlevel = null, Expression<Func<string>> saveTaskWrappertransmitObjectimportanceEn = null, Expression<Func<double>> saveTaskWrappertransmitObjectactualWorkHours = null, Expression<Func<double>> saveTaskWrappertransmitObjectestimatedWorkHours = null, Expression<Func<bool>> saveTaskWrappertransmitObjectisReminderSet = null, Expression<Func<string>> saveTaskWrappertransmitObjectreminderDate = null, Expression<Func<string>> saveTaskWrappertransmitObjectcompletedDate = null, Expression<Func<string>> saveTaskWrappertransmitObjectpicture = null, Expression<Func<int>> saveTaskWrappertransmitObjectpictureWidth = null, Expression<Func<int>> saveTaskWrappertransmitObjectpictureHeight = null, Expression<Func<string>> saveTaskWrappertransmitObjectleadsTaskParentGuid = null, Expression<Func<string>> saveTaskWrappertransmitObjectprojectsTaskParentGuid = null, Expression<Func<string>> saveTaskWrappertransmitObjecttasksTaskParentGuid = null, Expression<Func<string>> saveTaskWrappertransmitObjectmarketingTaskParentGuid = null, Expression<Func<string>> saveTaskWrappertransmitObjectcompaniesCompanyGuid = null, Expression<Func<string>> saveTaskWrappertransmitObjectcontactsContactGuid = null, Expression<Func<string>> saveTaskWrappertransmitObjectusersTaskDelegatorGuid = null, Expression<Func<string>> saveTaskWrappertransmitObjectusersTaskSolverGuid = null, Expression<Func<string>> saveTaskWrappertransmitObjecttasksTaskOriginGuid = null, Expression<Func<bool>> saveTaskWrappertransmitObjectisPrivate = null, Expression<Func<string>> saveTaskWrappertransmitObjectitemCreated = null, Expression<Func<string>> saveTaskWrappertransmitObjectitemChanged = null, Expression<Func<string>> saveTaskWrappertransmitObjectfileAs = null, Expression<Func<string>> saveTaskWrappertransmitObjectownerGUID = null, Expression<Func<string>> saveTaskWrappertransmitObjectcreatedByGUID = null, Expression<Func<string>> saveTaskWrappertransmitObjectmodifiedByGUID = null, Expression<Func<object>> saveTaskWrappertransmitObjectadditionalFields = null, Expression<Func<string>> saveTaskWrappertransmitObjectitemGUID = null, Expression<Func<int>> saveTaskWrappertransmitObjectitemVersion = null, Expression<Func<bool>> saveTaskWrapperdieOnItemConflict = null, Expression<Func<string[]>> saveTaskWrapperignoredUserErrorMessages = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesSaveResponse> __BuildSaveTask(WorkflowExpression<string> saveTaskWrappertransmitObjectbody = null, WorkflowExpression<bool> saveTaskWrappertransmitObjectisCompleted = null, WorkflowExpression<string> saveTaskWrappertransmitObjectdueDate = null, WorkflowExpression<double> saveTaskWrappertransmitObjectpercentCompleteDecimal = null, WorkflowExpression<string> saveTaskWrappertransmitObjectprevStateEn = null, WorkflowExpression<string> saveTaskWrappertransmitObjectstartDate = null, WorkflowExpression<string> saveTaskWrappertransmitObjectstateEn = null, WorkflowExpression<string> saveTaskWrappertransmitObjectsubject = null, WorkflowExpression<string> saveTaskWrappertransmitObjecttypeEn = null, WorkflowExpression<int> saveTaskWrappertransmitObjectlevel = null, WorkflowExpression<string> saveTaskWrappertransmitObjectimportanceEn = null, WorkflowExpression<double> saveTaskWrappertransmitObjectactualWorkHours = null, WorkflowExpression<double> saveTaskWrappertransmitObjectestimatedWorkHours = null, WorkflowExpression<bool> saveTaskWrappertransmitObjectisReminderSet = null, WorkflowExpression<string> saveTaskWrappertransmitObjectreminderDate = null, WorkflowExpression<string> saveTaskWrappertransmitObjectcompletedDate = null, WorkflowExpression<string> saveTaskWrappertransmitObjectpicture = null, WorkflowExpression<int> saveTaskWrappertransmitObjectpictureWidth = null, WorkflowExpression<int> saveTaskWrappertransmitObjectpictureHeight = null, WorkflowExpression<string> saveTaskWrappertransmitObjectleadsTaskParentGuid = null, WorkflowExpression<string> saveTaskWrappertransmitObjectprojectsTaskParentGuid = null, WorkflowExpression<string> saveTaskWrappertransmitObjecttasksTaskParentGuid = null, WorkflowExpression<string> saveTaskWrappertransmitObjectmarketingTaskParentGuid = null, WorkflowExpression<string> saveTaskWrappertransmitObjectcompaniesCompanyGuid = null, WorkflowExpression<string> saveTaskWrappertransmitObjectcontactsContactGuid = null, WorkflowExpression<string> saveTaskWrappertransmitObjectusersTaskDelegatorGuid = null, WorkflowExpression<string> saveTaskWrappertransmitObjectusersTaskSolverGuid = null, WorkflowExpression<string> saveTaskWrappertransmitObjecttasksTaskOriginGuid = null, WorkflowExpression<bool> saveTaskWrappertransmitObjectisPrivate = null, WorkflowExpression<string> saveTaskWrappertransmitObjectitemCreated = null, WorkflowExpression<string> saveTaskWrappertransmitObjectitemChanged = null, WorkflowExpression<string> saveTaskWrappertransmitObjectfileAs = null, WorkflowExpression<string> saveTaskWrappertransmitObjectownerGUID = null, WorkflowExpression<string> saveTaskWrappertransmitObjectcreatedByGUID = null, WorkflowExpression<string> saveTaskWrappertransmitObjectmodifiedByGUID = null, WorkflowExpression<object> saveTaskWrappertransmitObjectadditionalFields = null, WorkflowExpression<string> saveTaskWrappertransmitObjectitemGUID = null, WorkflowExpression<int> saveTaskWrappertransmitObjectitemVersion = null, WorkflowExpression<bool> saveTaskWrapperdieOnItemConflict = null, WorkflowExpression<string[]> saveTaskWrapperignoredUserErrorMessages = null)
-        {
-            WorkflowExpression.Validate(saveTaskWrappertransmitObjectbody, nameof(saveTaskWrappertransmitObjectbody), required: false);
-            WorkflowExpression.Validate(saveTaskWrappertransmitObjectisCompleted, nameof(saveTaskWrappertransmitObjectisCompleted), required: false);
-            WorkflowExpression.Validate(saveTaskWrappertransmitObjectdueDate, nameof(saveTaskWrappertransmitObjectdueDate), required: false);
-            WorkflowExpression.Validate(saveTaskWrappertransmitObjectpercentCompleteDecimal, nameof(saveTaskWrappertransmitObjectpercentCompleteDecimal), required: false);
-            WorkflowExpression.Validate(saveTaskWrappertransmitObjectprevStateEn, nameof(saveTaskWrappertransmitObjectprevStateEn), required: false);
-            WorkflowExpression.Validate(saveTaskWrappertransmitObjectstartDate, nameof(saveTaskWrappertransmitObjectstartDate), required: false);
-            WorkflowExpression.Validate(saveTaskWrappertransmitObjectstateEn, nameof(saveTaskWrappertransmitObjectstateEn), required: false);
-            WorkflowExpression.Validate(saveTaskWrappertransmitObjectsubject, nameof(saveTaskWrappertransmitObjectsubject), required: false);
-            WorkflowExpression.Validate(saveTaskWrappertransmitObjecttypeEn, nameof(saveTaskWrappertransmitObjecttypeEn), required: false);
-            WorkflowExpression.Validate(saveTaskWrappertransmitObjectlevel, nameof(saveTaskWrappertransmitObjectlevel), required: false);
-            WorkflowExpression.Validate(saveTaskWrappertransmitObjectimportanceEn, nameof(saveTaskWrappertransmitObjectimportanceEn), required: false);
-            WorkflowExpression.Validate(saveTaskWrappertransmitObjectactualWorkHours, nameof(saveTaskWrappertransmitObjectactualWorkHours), required: false);
-            WorkflowExpression.Validate(saveTaskWrappertransmitObjectestimatedWorkHours, nameof(saveTaskWrappertransmitObjectestimatedWorkHours), required: false);
-            WorkflowExpression.Validate(saveTaskWrappertransmitObjectisReminderSet, nameof(saveTaskWrappertransmitObjectisReminderSet), required: false);
-            WorkflowExpression.Validate(saveTaskWrappertransmitObjectreminderDate, nameof(saveTaskWrappertransmitObjectreminderDate), required: false);
-            WorkflowExpression.Validate(saveTaskWrappertransmitObjectcompletedDate, nameof(saveTaskWrappertransmitObjectcompletedDate), required: false);
-            WorkflowExpression.Validate(saveTaskWrappertransmitObjectpicture, nameof(saveTaskWrappertransmitObjectpicture), required: false);
-            WorkflowExpression.Validate(saveTaskWrappertransmitObjectpictureWidth, nameof(saveTaskWrappertransmitObjectpictureWidth), required: false);
-            WorkflowExpression.Validate(saveTaskWrappertransmitObjectpictureHeight, nameof(saveTaskWrappertransmitObjectpictureHeight), required: false);
-            WorkflowExpression.Validate(saveTaskWrappertransmitObjectleadsTaskParentGuid, nameof(saveTaskWrappertransmitObjectleadsTaskParentGuid), required: false);
-            WorkflowExpression.Validate(saveTaskWrappertransmitObjectprojectsTaskParentGuid, nameof(saveTaskWrappertransmitObjectprojectsTaskParentGuid), required: false);
-            WorkflowExpression.Validate(saveTaskWrappertransmitObjecttasksTaskParentGuid, nameof(saveTaskWrappertransmitObjecttasksTaskParentGuid), required: false);
-            WorkflowExpression.Validate(saveTaskWrappertransmitObjectmarketingTaskParentGuid, nameof(saveTaskWrappertransmitObjectmarketingTaskParentGuid), required: false);
-            WorkflowExpression.Validate(saveTaskWrappertransmitObjectcompaniesCompanyGuid, nameof(saveTaskWrappertransmitObjectcompaniesCompanyGuid), required: false);
-            WorkflowExpression.Validate(saveTaskWrappertransmitObjectcontactsContactGuid, nameof(saveTaskWrappertransmitObjectcontactsContactGuid), required: false);
-            WorkflowExpression.Validate(saveTaskWrappertransmitObjectusersTaskDelegatorGuid, nameof(saveTaskWrappertransmitObjectusersTaskDelegatorGuid), required: false);
-            WorkflowExpression.Validate(saveTaskWrappertransmitObjectusersTaskSolverGuid, nameof(saveTaskWrappertransmitObjectusersTaskSolverGuid), required: false);
-            WorkflowExpression.Validate(saveTaskWrappertransmitObjecttasksTaskOriginGuid, nameof(saveTaskWrappertransmitObjecttasksTaskOriginGuid), required: false);
-            WorkflowExpression.Validate(saveTaskWrappertransmitObjectisPrivate, nameof(saveTaskWrappertransmitObjectisPrivate), required: false);
-            WorkflowExpression.Validate(saveTaskWrappertransmitObjectitemCreated, nameof(saveTaskWrappertransmitObjectitemCreated), required: false);
-            WorkflowExpression.Validate(saveTaskWrappertransmitObjectitemChanged, nameof(saveTaskWrappertransmitObjectitemChanged), required: false);
-            WorkflowExpression.Validate(saveTaskWrappertransmitObjectfileAs, nameof(saveTaskWrappertransmitObjectfileAs), required: false);
-            WorkflowExpression.Validate(saveTaskWrappertransmitObjectownerGUID, nameof(saveTaskWrappertransmitObjectownerGUID), required: false);
-            WorkflowExpression.Validate(saveTaskWrappertransmitObjectcreatedByGUID, nameof(saveTaskWrappertransmitObjectcreatedByGUID), required: false);
-            WorkflowExpression.Validate(saveTaskWrappertransmitObjectmodifiedByGUID, nameof(saveTaskWrappertransmitObjectmodifiedByGUID), required: false);
-            WorkflowExpression.Validate(saveTaskWrappertransmitObjectadditionalFields, nameof(saveTaskWrappertransmitObjectadditionalFields), required: false);
-            WorkflowExpression.Validate(saveTaskWrappertransmitObjectitemGUID, nameof(saveTaskWrappertransmitObjectitemGUID), required: false);
-            WorkflowExpression.Validate(saveTaskWrappertransmitObjectitemVersion, nameof(saveTaskWrappertransmitObjectitemVersion), required: false);
-            WorkflowExpression.Validate(saveTaskWrapperdieOnItemConflict, nameof(saveTaskWrapperdieOnItemConflict), required: false);
-            WorkflowExpression.Validate(saveTaskWrapperignoredUserErrorMessages, nameof(saveTaskWrapperignoredUserErrorMessages), required: false);
+            var __workflow_saveTaskWrappertransmitObjectbody = saveTaskWrappertransmitObjectbody == null ? null : WorkflowExpression.Compile(saveTaskWrappertransmitObjectbody);
+            WorkflowExpression.Validate(__workflow_saveTaskWrappertransmitObjectbody, nameof(saveTaskWrappertransmitObjectbody), required: false);
+            var __workflow_saveTaskWrappertransmitObjectisCompleted = saveTaskWrappertransmitObjectisCompleted == null ? null : WorkflowExpression.Compile(saveTaskWrappertransmitObjectisCompleted);
+            WorkflowExpression.Validate(__workflow_saveTaskWrappertransmitObjectisCompleted, nameof(saveTaskWrappertransmitObjectisCompleted), required: false);
+            var __workflow_saveTaskWrappertransmitObjectdueDate = saveTaskWrappertransmitObjectdueDate == null ? null : WorkflowExpression.Compile(saveTaskWrappertransmitObjectdueDate);
+            WorkflowExpression.Validate(__workflow_saveTaskWrappertransmitObjectdueDate, nameof(saveTaskWrappertransmitObjectdueDate), required: false);
+            var __workflow_saveTaskWrappertransmitObjectpercentCompleteDecimal = saveTaskWrappertransmitObjectpercentCompleteDecimal == null ? null : WorkflowExpression.Compile(saveTaskWrappertransmitObjectpercentCompleteDecimal);
+            WorkflowExpression.Validate(__workflow_saveTaskWrappertransmitObjectpercentCompleteDecimal, nameof(saveTaskWrappertransmitObjectpercentCompleteDecimal), required: false);
+            var __workflow_saveTaskWrappertransmitObjectprevStateEn = saveTaskWrappertransmitObjectprevStateEn == null ? null : WorkflowExpression.Compile(saveTaskWrappertransmitObjectprevStateEn);
+            WorkflowExpression.Validate(__workflow_saveTaskWrappertransmitObjectprevStateEn, nameof(saveTaskWrappertransmitObjectprevStateEn), required: false);
+            var __workflow_saveTaskWrappertransmitObjectstartDate = saveTaskWrappertransmitObjectstartDate == null ? null : WorkflowExpression.Compile(saveTaskWrappertransmitObjectstartDate);
+            WorkflowExpression.Validate(__workflow_saveTaskWrappertransmitObjectstartDate, nameof(saveTaskWrappertransmitObjectstartDate), required: false);
+            var __workflow_saveTaskWrappertransmitObjectstateEn = saveTaskWrappertransmitObjectstateEn == null ? null : WorkflowExpression.Compile(saveTaskWrappertransmitObjectstateEn);
+            WorkflowExpression.Validate(__workflow_saveTaskWrappertransmitObjectstateEn, nameof(saveTaskWrappertransmitObjectstateEn), required: false);
+            var __workflow_saveTaskWrappertransmitObjectsubject = saveTaskWrappertransmitObjectsubject == null ? null : WorkflowExpression.Compile(saveTaskWrappertransmitObjectsubject);
+            WorkflowExpression.Validate(__workflow_saveTaskWrappertransmitObjectsubject, nameof(saveTaskWrappertransmitObjectsubject), required: false);
+            var __workflow_saveTaskWrappertransmitObjecttypeEn = saveTaskWrappertransmitObjecttypeEn == null ? null : WorkflowExpression.Compile(saveTaskWrappertransmitObjecttypeEn);
+            WorkflowExpression.Validate(__workflow_saveTaskWrappertransmitObjecttypeEn, nameof(saveTaskWrappertransmitObjecttypeEn), required: false);
+            var __workflow_saveTaskWrappertransmitObjectlevel = saveTaskWrappertransmitObjectlevel == null ? null : WorkflowExpression.Compile(saveTaskWrappertransmitObjectlevel);
+            WorkflowExpression.Validate(__workflow_saveTaskWrappertransmitObjectlevel, nameof(saveTaskWrappertransmitObjectlevel), required: false);
+            var __workflow_saveTaskWrappertransmitObjectimportanceEn = saveTaskWrappertransmitObjectimportanceEn == null ? null : WorkflowExpression.Compile(saveTaskWrappertransmitObjectimportanceEn);
+            WorkflowExpression.Validate(__workflow_saveTaskWrappertransmitObjectimportanceEn, nameof(saveTaskWrappertransmitObjectimportanceEn), required: false);
+            var __workflow_saveTaskWrappertransmitObjectactualWorkHours = saveTaskWrappertransmitObjectactualWorkHours == null ? null : WorkflowExpression.Compile(saveTaskWrappertransmitObjectactualWorkHours);
+            WorkflowExpression.Validate(__workflow_saveTaskWrappertransmitObjectactualWorkHours, nameof(saveTaskWrappertransmitObjectactualWorkHours), required: false);
+            var __workflow_saveTaskWrappertransmitObjectestimatedWorkHours = saveTaskWrappertransmitObjectestimatedWorkHours == null ? null : WorkflowExpression.Compile(saveTaskWrappertransmitObjectestimatedWorkHours);
+            WorkflowExpression.Validate(__workflow_saveTaskWrappertransmitObjectestimatedWorkHours, nameof(saveTaskWrappertransmitObjectestimatedWorkHours), required: false);
+            var __workflow_saveTaskWrappertransmitObjectisReminderSet = saveTaskWrappertransmitObjectisReminderSet == null ? null : WorkflowExpression.Compile(saveTaskWrappertransmitObjectisReminderSet);
+            WorkflowExpression.Validate(__workflow_saveTaskWrappertransmitObjectisReminderSet, nameof(saveTaskWrappertransmitObjectisReminderSet), required: false);
+            var __workflow_saveTaskWrappertransmitObjectreminderDate = saveTaskWrappertransmitObjectreminderDate == null ? null : WorkflowExpression.Compile(saveTaskWrappertransmitObjectreminderDate);
+            WorkflowExpression.Validate(__workflow_saveTaskWrappertransmitObjectreminderDate, nameof(saveTaskWrappertransmitObjectreminderDate), required: false);
+            var __workflow_saveTaskWrappertransmitObjectcompletedDate = saveTaskWrappertransmitObjectcompletedDate == null ? null : WorkflowExpression.Compile(saveTaskWrappertransmitObjectcompletedDate);
+            WorkflowExpression.Validate(__workflow_saveTaskWrappertransmitObjectcompletedDate, nameof(saveTaskWrappertransmitObjectcompletedDate), required: false);
+            var __workflow_saveTaskWrappertransmitObjectpicture = saveTaskWrappertransmitObjectpicture == null ? null : WorkflowExpression.Compile(saveTaskWrappertransmitObjectpicture);
+            WorkflowExpression.Validate(__workflow_saveTaskWrappertransmitObjectpicture, nameof(saveTaskWrappertransmitObjectpicture), required: false);
+            var __workflow_saveTaskWrappertransmitObjectpictureWidth = saveTaskWrappertransmitObjectpictureWidth == null ? null : WorkflowExpression.Compile(saveTaskWrappertransmitObjectpictureWidth);
+            WorkflowExpression.Validate(__workflow_saveTaskWrappertransmitObjectpictureWidth, nameof(saveTaskWrappertransmitObjectpictureWidth), required: false);
+            var __workflow_saveTaskWrappertransmitObjectpictureHeight = saveTaskWrappertransmitObjectpictureHeight == null ? null : WorkflowExpression.Compile(saveTaskWrappertransmitObjectpictureHeight);
+            WorkflowExpression.Validate(__workflow_saveTaskWrappertransmitObjectpictureHeight, nameof(saveTaskWrappertransmitObjectpictureHeight), required: false);
+            var __workflow_saveTaskWrappertransmitObjectleadsTaskParentGuid = saveTaskWrappertransmitObjectleadsTaskParentGuid == null ? null : WorkflowExpression.Compile(saveTaskWrappertransmitObjectleadsTaskParentGuid);
+            WorkflowExpression.Validate(__workflow_saveTaskWrappertransmitObjectleadsTaskParentGuid, nameof(saveTaskWrappertransmitObjectleadsTaskParentGuid), required: false);
+            var __workflow_saveTaskWrappertransmitObjectprojectsTaskParentGuid = saveTaskWrappertransmitObjectprojectsTaskParentGuid == null ? null : WorkflowExpression.Compile(saveTaskWrappertransmitObjectprojectsTaskParentGuid);
+            WorkflowExpression.Validate(__workflow_saveTaskWrappertransmitObjectprojectsTaskParentGuid, nameof(saveTaskWrappertransmitObjectprojectsTaskParentGuid), required: false);
+            var __workflow_saveTaskWrappertransmitObjecttasksTaskParentGuid = saveTaskWrappertransmitObjecttasksTaskParentGuid == null ? null : WorkflowExpression.Compile(saveTaskWrappertransmitObjecttasksTaskParentGuid);
+            WorkflowExpression.Validate(__workflow_saveTaskWrappertransmitObjecttasksTaskParentGuid, nameof(saveTaskWrappertransmitObjecttasksTaskParentGuid), required: false);
+            var __workflow_saveTaskWrappertransmitObjectmarketingTaskParentGuid = saveTaskWrappertransmitObjectmarketingTaskParentGuid == null ? null : WorkflowExpression.Compile(saveTaskWrappertransmitObjectmarketingTaskParentGuid);
+            WorkflowExpression.Validate(__workflow_saveTaskWrappertransmitObjectmarketingTaskParentGuid, nameof(saveTaskWrappertransmitObjectmarketingTaskParentGuid), required: false);
+            var __workflow_saveTaskWrappertransmitObjectcompaniesCompanyGuid = saveTaskWrappertransmitObjectcompaniesCompanyGuid == null ? null : WorkflowExpression.Compile(saveTaskWrappertransmitObjectcompaniesCompanyGuid);
+            WorkflowExpression.Validate(__workflow_saveTaskWrappertransmitObjectcompaniesCompanyGuid, nameof(saveTaskWrappertransmitObjectcompaniesCompanyGuid), required: false);
+            var __workflow_saveTaskWrappertransmitObjectcontactsContactGuid = saveTaskWrappertransmitObjectcontactsContactGuid == null ? null : WorkflowExpression.Compile(saveTaskWrappertransmitObjectcontactsContactGuid);
+            WorkflowExpression.Validate(__workflow_saveTaskWrappertransmitObjectcontactsContactGuid, nameof(saveTaskWrappertransmitObjectcontactsContactGuid), required: false);
+            var __workflow_saveTaskWrappertransmitObjectusersTaskDelegatorGuid = saveTaskWrappertransmitObjectusersTaskDelegatorGuid == null ? null : WorkflowExpression.Compile(saveTaskWrappertransmitObjectusersTaskDelegatorGuid);
+            WorkflowExpression.Validate(__workflow_saveTaskWrappertransmitObjectusersTaskDelegatorGuid, nameof(saveTaskWrappertransmitObjectusersTaskDelegatorGuid), required: false);
+            var __workflow_saveTaskWrappertransmitObjectusersTaskSolverGuid = saveTaskWrappertransmitObjectusersTaskSolverGuid == null ? null : WorkflowExpression.Compile(saveTaskWrappertransmitObjectusersTaskSolverGuid);
+            WorkflowExpression.Validate(__workflow_saveTaskWrappertransmitObjectusersTaskSolverGuid, nameof(saveTaskWrappertransmitObjectusersTaskSolverGuid), required: false);
+            var __workflow_saveTaskWrappertransmitObjecttasksTaskOriginGuid = saveTaskWrappertransmitObjecttasksTaskOriginGuid == null ? null : WorkflowExpression.Compile(saveTaskWrappertransmitObjecttasksTaskOriginGuid);
+            WorkflowExpression.Validate(__workflow_saveTaskWrappertransmitObjecttasksTaskOriginGuid, nameof(saveTaskWrappertransmitObjecttasksTaskOriginGuid), required: false);
+            var __workflow_saveTaskWrappertransmitObjectisPrivate = saveTaskWrappertransmitObjectisPrivate == null ? null : WorkflowExpression.Compile(saveTaskWrappertransmitObjectisPrivate);
+            WorkflowExpression.Validate(__workflow_saveTaskWrappertransmitObjectisPrivate, nameof(saveTaskWrappertransmitObjectisPrivate), required: false);
+            var __workflow_saveTaskWrappertransmitObjectitemCreated = saveTaskWrappertransmitObjectitemCreated == null ? null : WorkflowExpression.Compile(saveTaskWrappertransmitObjectitemCreated);
+            WorkflowExpression.Validate(__workflow_saveTaskWrappertransmitObjectitemCreated, nameof(saveTaskWrappertransmitObjectitemCreated), required: false);
+            var __workflow_saveTaskWrappertransmitObjectitemChanged = saveTaskWrappertransmitObjectitemChanged == null ? null : WorkflowExpression.Compile(saveTaskWrappertransmitObjectitemChanged);
+            WorkflowExpression.Validate(__workflow_saveTaskWrappertransmitObjectitemChanged, nameof(saveTaskWrappertransmitObjectitemChanged), required: false);
+            var __workflow_saveTaskWrappertransmitObjectfileAs = saveTaskWrappertransmitObjectfileAs == null ? null : WorkflowExpression.Compile(saveTaskWrappertransmitObjectfileAs);
+            WorkflowExpression.Validate(__workflow_saveTaskWrappertransmitObjectfileAs, nameof(saveTaskWrappertransmitObjectfileAs), required: false);
+            var __workflow_saveTaskWrappertransmitObjectownerGUID = saveTaskWrappertransmitObjectownerGUID == null ? null : WorkflowExpression.Compile(saveTaskWrappertransmitObjectownerGUID);
+            WorkflowExpression.Validate(__workflow_saveTaskWrappertransmitObjectownerGUID, nameof(saveTaskWrappertransmitObjectownerGUID), required: false);
+            var __workflow_saveTaskWrappertransmitObjectcreatedByGUID = saveTaskWrappertransmitObjectcreatedByGUID == null ? null : WorkflowExpression.Compile(saveTaskWrappertransmitObjectcreatedByGUID);
+            WorkflowExpression.Validate(__workflow_saveTaskWrappertransmitObjectcreatedByGUID, nameof(saveTaskWrappertransmitObjectcreatedByGUID), required: false);
+            var __workflow_saveTaskWrappertransmitObjectmodifiedByGUID = saveTaskWrappertransmitObjectmodifiedByGUID == null ? null : WorkflowExpression.Compile(saveTaskWrappertransmitObjectmodifiedByGUID);
+            WorkflowExpression.Validate(__workflow_saveTaskWrappertransmitObjectmodifiedByGUID, nameof(saveTaskWrappertransmitObjectmodifiedByGUID), required: false);
+            var __workflow_saveTaskWrappertransmitObjectadditionalFields = saveTaskWrappertransmitObjectadditionalFields == null ? null : WorkflowExpression.Compile(saveTaskWrappertransmitObjectadditionalFields);
+            WorkflowExpression.Validate(__workflow_saveTaskWrappertransmitObjectadditionalFields, nameof(saveTaskWrappertransmitObjectadditionalFields), required: false);
+            var __workflow_saveTaskWrappertransmitObjectitemGUID = saveTaskWrappertransmitObjectitemGUID == null ? null : WorkflowExpression.Compile(saveTaskWrappertransmitObjectitemGUID);
+            WorkflowExpression.Validate(__workflow_saveTaskWrappertransmitObjectitemGUID, nameof(saveTaskWrappertransmitObjectitemGUID), required: false);
+            var __workflow_saveTaskWrappertransmitObjectitemVersion = saveTaskWrappertransmitObjectitemVersion == null ? null : WorkflowExpression.Compile(saveTaskWrappertransmitObjectitemVersion);
+            WorkflowExpression.Validate(__workflow_saveTaskWrappertransmitObjectitemVersion, nameof(saveTaskWrappertransmitObjectitemVersion), required: false);
+            var __workflow_saveTaskWrapperdieOnItemConflict = saveTaskWrapperdieOnItemConflict == null ? null : WorkflowExpression.Compile(saveTaskWrapperdieOnItemConflict);
+            WorkflowExpression.Validate(__workflow_saveTaskWrapperdieOnItemConflict, nameof(saveTaskWrapperdieOnItemConflict), required: false);
+            var __workflow_saveTaskWrapperignoredUserErrorMessages = saveTaskWrapperignoredUserErrorMessages == null ? null : WorkflowExpression.Compile(saveTaskWrapperignoredUserErrorMessages);
+            WorkflowExpression.Validate(__workflow_saveTaskWrapperignoredUserErrorMessages, nameof(saveTaskWrapperignoredUserErrorMessages), required: false);
             return new DeferredBodyAction<EWayWcfServiceResponsesSaveResponse>(() =>
             {
                 var apiCallPath = "/SaveTask";
@@ -2518,231 +2764,231 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                 var saveTaskWrapperpropCount = 0;
                 var transmitObjectObject = new JObject();
                 var transmitObjectObjectpropCount = 0;
-                if (saveTaskWrappertransmitObjectbody != null)
+                if (__workflow_saveTaskWrappertransmitObjectbody != null)
                 {
-                    transmitObjectObject["Body"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectbody);
+                    transmitObjectObject["Body"] = ExpressionConverter.ConvertO(__workflow_saveTaskWrappertransmitObjectbody);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveTaskWrappertransmitObjectisCompleted != null)
+                if (__workflow_saveTaskWrappertransmitObjectisCompleted != null)
                 {
-                    transmitObjectObject["IsCompleted"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectisCompleted);
+                    transmitObjectObject["IsCompleted"] = ExpressionConverter.ConvertO(__workflow_saveTaskWrappertransmitObjectisCompleted);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveTaskWrappertransmitObjectdueDate != null)
+                if (__workflow_saveTaskWrappertransmitObjectdueDate != null)
                 {
-                    transmitObjectObject["DueDate"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectdueDate);
+                    transmitObjectObject["DueDate"] = ExpressionConverter.ConvertO(__workflow_saveTaskWrappertransmitObjectdueDate);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveTaskWrappertransmitObjectpercentCompleteDecimal != null)
+                if (__workflow_saveTaskWrappertransmitObjectpercentCompleteDecimal != null)
                 {
-                    transmitObjectObject["PercentCompleteDecimal"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectpercentCompleteDecimal);
+                    transmitObjectObject["PercentCompleteDecimal"] = ExpressionConverter.ConvertO(__workflow_saveTaskWrappertransmitObjectpercentCompleteDecimal);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveTaskWrappertransmitObjectprevStateEn != null)
+                if (__workflow_saveTaskWrappertransmitObjectprevStateEn != null)
                 {
-                    transmitObjectObject["PrevStateEn"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectprevStateEn);
+                    transmitObjectObject["PrevStateEn"] = ExpressionConverter.ConvertO(__workflow_saveTaskWrappertransmitObjectprevStateEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveTaskWrappertransmitObjectstartDate != null)
+                if (__workflow_saveTaskWrappertransmitObjectstartDate != null)
                 {
-                    transmitObjectObject["StartDate"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectstartDate);
+                    transmitObjectObject["StartDate"] = ExpressionConverter.ConvertO(__workflow_saveTaskWrappertransmitObjectstartDate);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveTaskWrappertransmitObjectstateEn != null)
+                if (__workflow_saveTaskWrappertransmitObjectstateEn != null)
                 {
-                    transmitObjectObject["StateEn"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectstateEn);
+                    transmitObjectObject["StateEn"] = ExpressionConverter.ConvertO(__workflow_saveTaskWrappertransmitObjectstateEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveTaskWrappertransmitObjectsubject != null)
+                if (__workflow_saveTaskWrappertransmitObjectsubject != null)
                 {
-                    transmitObjectObject["Subject"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectsubject);
+                    transmitObjectObject["Subject"] = ExpressionConverter.ConvertO(__workflow_saveTaskWrappertransmitObjectsubject);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveTaskWrappertransmitObjecttypeEn != null)
+                if (__workflow_saveTaskWrappertransmitObjecttypeEn != null)
                 {
-                    transmitObjectObject["TypeEn"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjecttypeEn);
+                    transmitObjectObject["TypeEn"] = ExpressionConverter.ConvertO(__workflow_saveTaskWrappertransmitObjecttypeEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveTaskWrappertransmitObjectlevel != null)
+                if (__workflow_saveTaskWrappertransmitObjectlevel != null)
                 {
-                    transmitObjectObject["Level"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectlevel);
+                    transmitObjectObject["Level"] = ExpressionConverter.ConvertO(__workflow_saveTaskWrappertransmitObjectlevel);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveTaskWrappertransmitObjectimportanceEn != null)
+                if (__workflow_saveTaskWrappertransmitObjectimportanceEn != null)
                 {
-                    transmitObjectObject["ImportanceEn"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectimportanceEn);
+                    transmitObjectObject["ImportanceEn"] = ExpressionConverter.ConvertO(__workflow_saveTaskWrappertransmitObjectimportanceEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveTaskWrappertransmitObjectactualWorkHours != null)
+                if (__workflow_saveTaskWrappertransmitObjectactualWorkHours != null)
                 {
-                    transmitObjectObject["ActualWorkHours"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectactualWorkHours);
+                    transmitObjectObject["ActualWorkHours"] = ExpressionConverter.ConvertO(__workflow_saveTaskWrappertransmitObjectactualWorkHours);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveTaskWrappertransmitObjectestimatedWorkHours != null)
+                if (__workflow_saveTaskWrappertransmitObjectestimatedWorkHours != null)
                 {
-                    transmitObjectObject["EstimatedWorkHours"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectestimatedWorkHours);
+                    transmitObjectObject["EstimatedWorkHours"] = ExpressionConverter.ConvertO(__workflow_saveTaskWrappertransmitObjectestimatedWorkHours);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveTaskWrappertransmitObjectisReminderSet != null)
+                if (__workflow_saveTaskWrappertransmitObjectisReminderSet != null)
                 {
-                    transmitObjectObject["IsReminderSet"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectisReminderSet);
+                    transmitObjectObject["IsReminderSet"] = ExpressionConverter.ConvertO(__workflow_saveTaskWrappertransmitObjectisReminderSet);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveTaskWrappertransmitObjectreminderDate != null)
+                if (__workflow_saveTaskWrappertransmitObjectreminderDate != null)
                 {
-                    transmitObjectObject["ReminderDate"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectreminderDate);
+                    transmitObjectObject["ReminderDate"] = ExpressionConverter.ConvertO(__workflow_saveTaskWrappertransmitObjectreminderDate);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveTaskWrappertransmitObjectcompletedDate != null)
+                if (__workflow_saveTaskWrappertransmitObjectcompletedDate != null)
                 {
-                    transmitObjectObject["CompletedDate"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectcompletedDate);
+                    transmitObjectObject["CompletedDate"] = ExpressionConverter.ConvertO(__workflow_saveTaskWrappertransmitObjectcompletedDate);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveTaskWrappertransmitObjectpicture != null)
+                if (__workflow_saveTaskWrappertransmitObjectpicture != null)
                 {
-                    transmitObjectObject["Picture"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectpicture);
+                    transmitObjectObject["Picture"] = ExpressionConverter.ConvertO(__workflow_saveTaskWrappertransmitObjectpicture);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveTaskWrappertransmitObjectpictureWidth != null)
+                if (__workflow_saveTaskWrappertransmitObjectpictureWidth != null)
                 {
-                    transmitObjectObject["PictureWidth"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectpictureWidth);
+                    transmitObjectObject["PictureWidth"] = ExpressionConverter.ConvertO(__workflow_saveTaskWrappertransmitObjectpictureWidth);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveTaskWrappertransmitObjectpictureHeight != null)
+                if (__workflow_saveTaskWrappertransmitObjectpictureHeight != null)
                 {
-                    transmitObjectObject["PictureHeight"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectpictureHeight);
+                    transmitObjectObject["PictureHeight"] = ExpressionConverter.ConvertO(__workflow_saveTaskWrappertransmitObjectpictureHeight);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveTaskWrappertransmitObjectleadsTaskParentGuid != null)
+                if (__workflow_saveTaskWrappertransmitObjectleadsTaskParentGuid != null)
                 {
-                    transmitObjectObject["Leads_TaskParentGuid"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectleadsTaskParentGuid);
+                    transmitObjectObject["Leads_TaskParentGuid"] = ExpressionConverter.ConvertO(__workflow_saveTaskWrappertransmitObjectleadsTaskParentGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveTaskWrappertransmitObjectprojectsTaskParentGuid != null)
+                if (__workflow_saveTaskWrappertransmitObjectprojectsTaskParentGuid != null)
                 {
-                    transmitObjectObject["Projects_TaskParentGuid"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectprojectsTaskParentGuid);
+                    transmitObjectObject["Projects_TaskParentGuid"] = ExpressionConverter.ConvertO(__workflow_saveTaskWrappertransmitObjectprojectsTaskParentGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveTaskWrappertransmitObjecttasksTaskParentGuid != null)
+                if (__workflow_saveTaskWrappertransmitObjecttasksTaskParentGuid != null)
                 {
-                    transmitObjectObject["Tasks_TaskParentGuid"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjecttasksTaskParentGuid);
+                    transmitObjectObject["Tasks_TaskParentGuid"] = ExpressionConverter.ConvertO(__workflow_saveTaskWrappertransmitObjecttasksTaskParentGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveTaskWrappertransmitObjectmarketingTaskParentGuid != null)
+                if (__workflow_saveTaskWrappertransmitObjectmarketingTaskParentGuid != null)
                 {
-                    transmitObjectObject["Marketing_TaskParentGuid"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectmarketingTaskParentGuid);
+                    transmitObjectObject["Marketing_TaskParentGuid"] = ExpressionConverter.ConvertO(__workflow_saveTaskWrappertransmitObjectmarketingTaskParentGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveTaskWrappertransmitObjectcompaniesCompanyGuid != null)
+                if (__workflow_saveTaskWrappertransmitObjectcompaniesCompanyGuid != null)
                 {
-                    transmitObjectObject["Companies_CompanyGuid"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectcompaniesCompanyGuid);
+                    transmitObjectObject["Companies_CompanyGuid"] = ExpressionConverter.ConvertO(__workflow_saveTaskWrappertransmitObjectcompaniesCompanyGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveTaskWrappertransmitObjectcontactsContactGuid != null)
+                if (__workflow_saveTaskWrappertransmitObjectcontactsContactGuid != null)
                 {
-                    transmitObjectObject["Contacts_ContactGuid"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectcontactsContactGuid);
+                    transmitObjectObject["Contacts_ContactGuid"] = ExpressionConverter.ConvertO(__workflow_saveTaskWrappertransmitObjectcontactsContactGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveTaskWrappertransmitObjectusersTaskDelegatorGuid != null)
+                if (__workflow_saveTaskWrappertransmitObjectusersTaskDelegatorGuid != null)
                 {
-                    transmitObjectObject["Users_TaskDelegatorGuid"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectusersTaskDelegatorGuid);
+                    transmitObjectObject["Users_TaskDelegatorGuid"] = ExpressionConverter.ConvertO(__workflow_saveTaskWrappertransmitObjectusersTaskDelegatorGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveTaskWrappertransmitObjectusersTaskSolverGuid != null)
+                if (__workflow_saveTaskWrappertransmitObjectusersTaskSolverGuid != null)
                 {
-                    transmitObjectObject["Users_TaskSolverGuid"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectusersTaskSolverGuid);
+                    transmitObjectObject["Users_TaskSolverGuid"] = ExpressionConverter.ConvertO(__workflow_saveTaskWrappertransmitObjectusersTaskSolverGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveTaskWrappertransmitObjecttasksTaskOriginGuid != null)
+                if (__workflow_saveTaskWrappertransmitObjecttasksTaskOriginGuid != null)
                 {
-                    transmitObjectObject["Tasks_TaskOriginGuid"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjecttasksTaskOriginGuid);
+                    transmitObjectObject["Tasks_TaskOriginGuid"] = ExpressionConverter.ConvertO(__workflow_saveTaskWrappertransmitObjecttasksTaskOriginGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveTaskWrappertransmitObjectisPrivate != null)
+                if (__workflow_saveTaskWrappertransmitObjectisPrivate != null)
                 {
-                    transmitObjectObject["IsPrivate"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectisPrivate);
+                    transmitObjectObject["IsPrivate"] = ExpressionConverter.ConvertO(__workflow_saveTaskWrappertransmitObjectisPrivate);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveTaskWrappertransmitObjectitemCreated != null)
+                if (__workflow_saveTaskWrappertransmitObjectitemCreated != null)
                 {
-                    transmitObjectObject["ItemCreated"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectitemCreated);
+                    transmitObjectObject["ItemCreated"] = ExpressionConverter.ConvertO(__workflow_saveTaskWrappertransmitObjectitemCreated);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveTaskWrappertransmitObjectitemChanged != null)
+                if (__workflow_saveTaskWrappertransmitObjectitemChanged != null)
                 {
-                    transmitObjectObject["ItemChanged"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectitemChanged);
+                    transmitObjectObject["ItemChanged"] = ExpressionConverter.ConvertO(__workflow_saveTaskWrappertransmitObjectitemChanged);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveTaskWrappertransmitObjectfileAs != null)
+                if (__workflow_saveTaskWrappertransmitObjectfileAs != null)
                 {
-                    transmitObjectObject["FileAs"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectfileAs);
+                    transmitObjectObject["FileAs"] = ExpressionConverter.ConvertO(__workflow_saveTaskWrappertransmitObjectfileAs);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveTaskWrappertransmitObjectownerGUID != null)
+                if (__workflow_saveTaskWrappertransmitObjectownerGUID != null)
                 {
-                    transmitObjectObject["OwnerGUID"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectownerGUID);
+                    transmitObjectObject["OwnerGUID"] = ExpressionConverter.ConvertO(__workflow_saveTaskWrappertransmitObjectownerGUID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveTaskWrappertransmitObjectcreatedByGUID != null)
+                if (__workflow_saveTaskWrappertransmitObjectcreatedByGUID != null)
                 {
-                    transmitObjectObject["CreatedByGUID"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectcreatedByGUID);
+                    transmitObjectObject["CreatedByGUID"] = ExpressionConverter.ConvertO(__workflow_saveTaskWrappertransmitObjectcreatedByGUID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveTaskWrappertransmitObjectmodifiedByGUID != null)
+                if (__workflow_saveTaskWrappertransmitObjectmodifiedByGUID != null)
                 {
-                    transmitObjectObject["ModifiedByGUID"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectmodifiedByGUID);
+                    transmitObjectObject["ModifiedByGUID"] = ExpressionConverter.ConvertO(__workflow_saveTaskWrappertransmitObjectmodifiedByGUID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveTaskWrappertransmitObjectadditionalFields != null)
+                if (__workflow_saveTaskWrappertransmitObjectadditionalFields != null)
                 {
-                    transmitObjectObject["AdditionalFields"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectadditionalFields);
+                    transmitObjectObject["AdditionalFields"] = ExpressionConverter.ConvertO(__workflow_saveTaskWrappertransmitObjectadditionalFields);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveTaskWrappertransmitObjectitemGUID != null)
+                if (__workflow_saveTaskWrappertransmitObjectitemGUID != null)
                 {
-                    transmitObjectObject["ItemGUID"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectitemGUID);
+                    transmitObjectObject["ItemGUID"] = ExpressionConverter.ConvertO(__workflow_saveTaskWrappertransmitObjectitemGUID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (saveTaskWrappertransmitObjectitemVersion != null)
+                if (__workflow_saveTaskWrappertransmitObjectitemVersion != null)
                 {
-                    transmitObjectObject["ItemVersion"] = ExpressionConverter.ConvertO(saveTaskWrappertransmitObjectitemVersion);
+                    transmitObjectObject["ItemVersion"] = ExpressionConverter.ConvertO(__workflow_saveTaskWrappertransmitObjectitemVersion);
                     transmitObjectObjectpropCount++;
                 }
 
@@ -2752,15 +2998,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                     saveTaskWrapperpropCount++;
                 }
 
-                if (saveTaskWrapperdieOnItemConflict != null)
+                if (__workflow_saveTaskWrapperdieOnItemConflict != null)
                 {
-                    saveTaskWrapper["dieOnItemConflict"] = ExpressionConverter.ConvertO(saveTaskWrapperdieOnItemConflict);
+                    saveTaskWrapper["dieOnItemConflict"] = ExpressionConverter.ConvertO(__workflow_saveTaskWrapperdieOnItemConflict);
                     saveTaskWrapperpropCount++;
                 }
 
-                if (saveTaskWrapperignoredUserErrorMessages != null)
+                if (__workflow_saveTaskWrapperignoredUserErrorMessages != null)
                 {
-                    saveTaskWrapper["ignoredUserErrorMessages"] = ExpressionConverter.ConvertO(saveTaskWrapperignoredUserErrorMessages);
+                    saveTaskWrapper["ignoredUserErrorMessages"] = ExpressionConverter.ConvertO(__workflow_saveTaskWrapperignoredUserErrorMessages);
                     saveTaskWrapperpropCount++;
                 }
 
@@ -2774,89 +3020,156 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
-        [WorkflowExpressionFactory(nameof(__BuildSearchCompanies))]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedCompany> SearchCompanies([WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectaccountNumber = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectaddress1POBox = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectaddress1Street = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectaddress1City = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectaddress1State = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectaddress1CountryEn = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectaddress1PostalCode = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectaddress2POBox = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectaddress2Street = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectaddress2City = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectaddress2State = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectaddress2CountryEn = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectaddress2PostalCode = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectaddress3POBox = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectaddress3Street = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectaddress3City = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectaddress3State = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectaddress3CountryEn = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectaddress3PostalCode = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectcompanyName = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectdepartment = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectemail = null, [WorkflowExpression] Func<int> searchCompaniesWrappertransmitObjectemployeesCount = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectfax = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectfirstContactEn = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectiCQ = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectidentificationNumber = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectimportanceEn = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectlineOfBusiness = null, [WorkflowExpression] Func<bool> searchCompaniesWrappertransmitObjectmailingListOther = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectmobile = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectmobileNormalized = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectmSN = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectnote = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectphone = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectphoneNormalized = null, [WorkflowExpression] Func<bool> searchCompaniesWrappertransmitObjectpurchaser = null, [WorkflowExpression] Func<double> searchCompaniesWrappertransmitObjectreversal = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectskype = null, [WorkflowExpression] Func<bool> searchCompaniesWrappertransmitObjectsuppliers = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectvATNumber = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectwebPage = null, [WorkflowExpression] Func<double> searchCompaniesWrappertransmitObjectadditionalDiscount = null, [WorkflowExpression] Func<int> searchCompaniesWrappertransmitObjectiD = null, [WorkflowExpression] Func<bool> searchCompaniesWrappertransmitObjectcompetitor = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectsalePriceGuid = null, [WorkflowExpression] Func<bool> searchCompaniesWrappertransmitObjectnotificationByEmail = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectnotificationBy = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectlastActivity = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectnextStep = null, [WorkflowExpression] Func<bool> searchCompaniesWrappertransmitObjectemailOptOut = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjecttypeEn = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectstateEn = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectprevStateEn = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectpicture = null, [WorkflowExpression] Func<int> searchCompaniesWrappertransmitObjectpictureWidth = null, [WorkflowExpression] Func<int> searchCompaniesWrappertransmitObjectpictureHeight = null, [WorkflowExpression] Func<bool> searchCompaniesWrappertransmitObjectisPrivate = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectserverItemCreated = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectserverItemChanged = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectitemCreated = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectitemChanged = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectfileAs = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectownerGUID = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectcreatedByGUID = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectmodifiedByGUID = null, [WorkflowExpression] Func<object> searchCompaniesWrappertransmitObjectadditionalFields = null, [WorkflowExpression] Func<EWayWcfServiceItemTypesInnerTypesBoundRelation[]> searchCompaniesWrappertransmitObjectrelations = null, [WorkflowExpression] Func<string> searchCompaniesWrappertransmitObjectitemGUID = null, [WorkflowExpression] Func<int> searchCompaniesWrappertransmitObjectitemVersion = null, [WorkflowExpression] Func<bool> searchCompaniesWrapperincludeRelations = null, [WorkflowExpression] Func<string> searchCompaniesWrapperrelationsFilterrelationType = null, [WorkflowExpression] Func<string> searchCompaniesWrapperrelationsFilterforeignFolderName = null, [WorkflowExpression] Func<string> searchCompaniesWrapperbinaryLogicalOperator = null)
+        public IBodyWorkflowAction<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedCompany> SearchCompanies(Expression<Func<string>> searchCompaniesWrappertransmitObjectaccountNumber = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectaddress1POBox = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectaddress1Street = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectaddress1City = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectaddress1State = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectaddress1CountryEn = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectaddress1PostalCode = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectaddress2POBox = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectaddress2Street = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectaddress2City = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectaddress2State = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectaddress2CountryEn = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectaddress2PostalCode = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectaddress3POBox = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectaddress3Street = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectaddress3City = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectaddress3State = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectaddress3CountryEn = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectaddress3PostalCode = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectcompanyName = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectdepartment = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectemail = null, Expression<Func<int>> searchCompaniesWrappertransmitObjectemployeesCount = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectfax = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectfirstContactEn = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectiCQ = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectidentificationNumber = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectimportanceEn = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectlineOfBusiness = null, Expression<Func<bool>> searchCompaniesWrappertransmitObjectmailingListOther = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectmobile = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectmobileNormalized = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectmSN = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectnote = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectphone = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectphoneNormalized = null, Expression<Func<bool>> searchCompaniesWrappertransmitObjectpurchaser = null, Expression<Func<double>> searchCompaniesWrappertransmitObjectreversal = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectskype = null, Expression<Func<bool>> searchCompaniesWrappertransmitObjectsuppliers = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectvATNumber = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectwebPage = null, Expression<Func<double>> searchCompaniesWrappertransmitObjectadditionalDiscount = null, Expression<Func<int>> searchCompaniesWrappertransmitObjectiD = null, Expression<Func<bool>> searchCompaniesWrappertransmitObjectcompetitor = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectsalePriceGuid = null, Expression<Func<bool>> searchCompaniesWrappertransmitObjectnotificationByEmail = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectnotificationBy = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectlastActivity = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectnextStep = null, Expression<Func<bool>> searchCompaniesWrappertransmitObjectemailOptOut = null, Expression<Func<string>> searchCompaniesWrappertransmitObjecttypeEn = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectstateEn = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectprevStateEn = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectpicture = null, Expression<Func<int>> searchCompaniesWrappertransmitObjectpictureWidth = null, Expression<Func<int>> searchCompaniesWrappertransmitObjectpictureHeight = null, Expression<Func<bool>> searchCompaniesWrappertransmitObjectisPrivate = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectserverItemCreated = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectserverItemChanged = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectitemCreated = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectitemChanged = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectfileAs = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectownerGUID = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectcreatedByGUID = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectmodifiedByGUID = null, Expression<Func<object>> searchCompaniesWrappertransmitObjectadditionalFields = null, Expression<Func<EWayWcfServiceItemTypesInnerTypesBoundRelation[]>> searchCompaniesWrappertransmitObjectrelations = null, Expression<Func<string>> searchCompaniesWrappertransmitObjectitemGUID = null, Expression<Func<int>> searchCompaniesWrappertransmitObjectitemVersion = null, Expression<Func<bool>> searchCompaniesWrapperincludeRelations = null, Expression<Func<string>> searchCompaniesWrapperrelationsFilterrelationType = null, Expression<Func<string>> searchCompaniesWrapperrelationsFilterforeignFolderName = null, Expression<Func<string>> searchCompaniesWrapperbinaryLogicalOperator = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedCompany> __BuildSearchCompanies(WorkflowExpression<string> searchCompaniesWrappertransmitObjectaccountNumber = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectaddress1POBox = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectaddress1Street = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectaddress1City = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectaddress1State = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectaddress1CountryEn = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectaddress1PostalCode = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectaddress2POBox = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectaddress2Street = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectaddress2City = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectaddress2State = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectaddress2CountryEn = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectaddress2PostalCode = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectaddress3POBox = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectaddress3Street = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectaddress3City = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectaddress3State = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectaddress3CountryEn = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectaddress3PostalCode = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectcompanyName = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectdepartment = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectemail = null, WorkflowExpression<int> searchCompaniesWrappertransmitObjectemployeesCount = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectfax = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectfirstContactEn = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectiCQ = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectidentificationNumber = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectimportanceEn = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectlineOfBusiness = null, WorkflowExpression<bool> searchCompaniesWrappertransmitObjectmailingListOther = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectmobile = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectmobileNormalized = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectmSN = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectnote = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectphone = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectphoneNormalized = null, WorkflowExpression<bool> searchCompaniesWrappertransmitObjectpurchaser = null, WorkflowExpression<double> searchCompaniesWrappertransmitObjectreversal = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectskype = null, WorkflowExpression<bool> searchCompaniesWrappertransmitObjectsuppliers = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectvATNumber = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectwebPage = null, WorkflowExpression<double> searchCompaniesWrappertransmitObjectadditionalDiscount = null, WorkflowExpression<int> searchCompaniesWrappertransmitObjectiD = null, WorkflowExpression<bool> searchCompaniesWrappertransmitObjectcompetitor = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectsalePriceGuid = null, WorkflowExpression<bool> searchCompaniesWrappertransmitObjectnotificationByEmail = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectnotificationBy = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectlastActivity = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectnextStep = null, WorkflowExpression<bool> searchCompaniesWrappertransmitObjectemailOptOut = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjecttypeEn = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectstateEn = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectprevStateEn = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectpicture = null, WorkflowExpression<int> searchCompaniesWrappertransmitObjectpictureWidth = null, WorkflowExpression<int> searchCompaniesWrappertransmitObjectpictureHeight = null, WorkflowExpression<bool> searchCompaniesWrappertransmitObjectisPrivate = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectserverItemCreated = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectserverItemChanged = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectitemCreated = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectitemChanged = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectfileAs = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectownerGUID = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectcreatedByGUID = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectmodifiedByGUID = null, WorkflowExpression<object> searchCompaniesWrappertransmitObjectadditionalFields = null, WorkflowExpression<EWayWcfServiceItemTypesInnerTypesBoundRelation[]> searchCompaniesWrappertransmitObjectrelations = null, WorkflowExpression<string> searchCompaniesWrappertransmitObjectitemGUID = null, WorkflowExpression<int> searchCompaniesWrappertransmitObjectitemVersion = null, WorkflowExpression<bool> searchCompaniesWrapperincludeRelations = null, WorkflowExpression<string> searchCompaniesWrapperrelationsFilterrelationType = null, WorkflowExpression<string> searchCompaniesWrapperrelationsFilterforeignFolderName = null, WorkflowExpression<string> searchCompaniesWrapperbinaryLogicalOperator = null)
-        {
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectaccountNumber, nameof(searchCompaniesWrappertransmitObjectaccountNumber), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectaddress1POBox, nameof(searchCompaniesWrappertransmitObjectaddress1POBox), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectaddress1Street, nameof(searchCompaniesWrappertransmitObjectaddress1Street), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectaddress1City, nameof(searchCompaniesWrappertransmitObjectaddress1City), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectaddress1State, nameof(searchCompaniesWrappertransmitObjectaddress1State), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectaddress1CountryEn, nameof(searchCompaniesWrappertransmitObjectaddress1CountryEn), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectaddress1PostalCode, nameof(searchCompaniesWrappertransmitObjectaddress1PostalCode), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectaddress2POBox, nameof(searchCompaniesWrappertransmitObjectaddress2POBox), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectaddress2Street, nameof(searchCompaniesWrappertransmitObjectaddress2Street), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectaddress2City, nameof(searchCompaniesWrappertransmitObjectaddress2City), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectaddress2State, nameof(searchCompaniesWrappertransmitObjectaddress2State), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectaddress2CountryEn, nameof(searchCompaniesWrappertransmitObjectaddress2CountryEn), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectaddress2PostalCode, nameof(searchCompaniesWrappertransmitObjectaddress2PostalCode), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectaddress3POBox, nameof(searchCompaniesWrappertransmitObjectaddress3POBox), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectaddress3Street, nameof(searchCompaniesWrappertransmitObjectaddress3Street), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectaddress3City, nameof(searchCompaniesWrappertransmitObjectaddress3City), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectaddress3State, nameof(searchCompaniesWrappertransmitObjectaddress3State), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectaddress3CountryEn, nameof(searchCompaniesWrappertransmitObjectaddress3CountryEn), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectaddress3PostalCode, nameof(searchCompaniesWrappertransmitObjectaddress3PostalCode), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectcompanyName, nameof(searchCompaniesWrappertransmitObjectcompanyName), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectdepartment, nameof(searchCompaniesWrappertransmitObjectdepartment), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectemail, nameof(searchCompaniesWrappertransmitObjectemail), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectemployeesCount, nameof(searchCompaniesWrappertransmitObjectemployeesCount), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectfax, nameof(searchCompaniesWrappertransmitObjectfax), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectfirstContactEn, nameof(searchCompaniesWrappertransmitObjectfirstContactEn), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectiCQ, nameof(searchCompaniesWrappertransmitObjectiCQ), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectidentificationNumber, nameof(searchCompaniesWrappertransmitObjectidentificationNumber), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectimportanceEn, nameof(searchCompaniesWrappertransmitObjectimportanceEn), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectlineOfBusiness, nameof(searchCompaniesWrappertransmitObjectlineOfBusiness), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectmailingListOther, nameof(searchCompaniesWrappertransmitObjectmailingListOther), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectmobile, nameof(searchCompaniesWrappertransmitObjectmobile), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectmobileNormalized, nameof(searchCompaniesWrappertransmitObjectmobileNormalized), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectmSN, nameof(searchCompaniesWrappertransmitObjectmSN), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectnote, nameof(searchCompaniesWrappertransmitObjectnote), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectphone, nameof(searchCompaniesWrappertransmitObjectphone), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectphoneNormalized, nameof(searchCompaniesWrappertransmitObjectphoneNormalized), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectpurchaser, nameof(searchCompaniesWrappertransmitObjectpurchaser), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectreversal, nameof(searchCompaniesWrappertransmitObjectreversal), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectskype, nameof(searchCompaniesWrappertransmitObjectskype), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectsuppliers, nameof(searchCompaniesWrappertransmitObjectsuppliers), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectvATNumber, nameof(searchCompaniesWrappertransmitObjectvATNumber), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectwebPage, nameof(searchCompaniesWrappertransmitObjectwebPage), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectadditionalDiscount, nameof(searchCompaniesWrappertransmitObjectadditionalDiscount), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectiD, nameof(searchCompaniesWrappertransmitObjectiD), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectcompetitor, nameof(searchCompaniesWrappertransmitObjectcompetitor), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectsalePriceGuid, nameof(searchCompaniesWrappertransmitObjectsalePriceGuid), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectnotificationByEmail, nameof(searchCompaniesWrappertransmitObjectnotificationByEmail), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectnotificationBy, nameof(searchCompaniesWrappertransmitObjectnotificationBy), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectlastActivity, nameof(searchCompaniesWrappertransmitObjectlastActivity), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectnextStep, nameof(searchCompaniesWrappertransmitObjectnextStep), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectemailOptOut, nameof(searchCompaniesWrappertransmitObjectemailOptOut), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjecttypeEn, nameof(searchCompaniesWrappertransmitObjecttypeEn), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectstateEn, nameof(searchCompaniesWrappertransmitObjectstateEn), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectprevStateEn, nameof(searchCompaniesWrappertransmitObjectprevStateEn), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectpicture, nameof(searchCompaniesWrappertransmitObjectpicture), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectpictureWidth, nameof(searchCompaniesWrappertransmitObjectpictureWidth), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectpictureHeight, nameof(searchCompaniesWrappertransmitObjectpictureHeight), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectisPrivate, nameof(searchCompaniesWrappertransmitObjectisPrivate), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectserverItemCreated, nameof(searchCompaniesWrappertransmitObjectserverItemCreated), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectserverItemChanged, nameof(searchCompaniesWrappertransmitObjectserverItemChanged), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectitemCreated, nameof(searchCompaniesWrappertransmitObjectitemCreated), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectitemChanged, nameof(searchCompaniesWrappertransmitObjectitemChanged), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectfileAs, nameof(searchCompaniesWrappertransmitObjectfileAs), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectownerGUID, nameof(searchCompaniesWrappertransmitObjectownerGUID), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectcreatedByGUID, nameof(searchCompaniesWrappertransmitObjectcreatedByGUID), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectmodifiedByGUID, nameof(searchCompaniesWrappertransmitObjectmodifiedByGUID), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectadditionalFields, nameof(searchCompaniesWrappertransmitObjectadditionalFields), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectrelations, nameof(searchCompaniesWrappertransmitObjectrelations), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectitemGUID, nameof(searchCompaniesWrappertransmitObjectitemGUID), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrappertransmitObjectitemVersion, nameof(searchCompaniesWrappertransmitObjectitemVersion), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrapperincludeRelations, nameof(searchCompaniesWrapperincludeRelations), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrapperrelationsFilterrelationType, nameof(searchCompaniesWrapperrelationsFilterrelationType), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrapperrelationsFilterforeignFolderName, nameof(searchCompaniesWrapperrelationsFilterforeignFolderName), required: false);
-            WorkflowExpression.Validate(searchCompaniesWrapperbinaryLogicalOperator, nameof(searchCompaniesWrapperbinaryLogicalOperator), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectaccountNumber = searchCompaniesWrappertransmitObjectaccountNumber == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectaccountNumber);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectaccountNumber, nameof(searchCompaniesWrappertransmitObjectaccountNumber), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectaddress1POBox = searchCompaniesWrappertransmitObjectaddress1POBox == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectaddress1POBox);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectaddress1POBox, nameof(searchCompaniesWrappertransmitObjectaddress1POBox), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectaddress1Street = searchCompaniesWrappertransmitObjectaddress1Street == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectaddress1Street);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectaddress1Street, nameof(searchCompaniesWrappertransmitObjectaddress1Street), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectaddress1City = searchCompaniesWrappertransmitObjectaddress1City == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectaddress1City);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectaddress1City, nameof(searchCompaniesWrappertransmitObjectaddress1City), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectaddress1State = searchCompaniesWrappertransmitObjectaddress1State == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectaddress1State);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectaddress1State, nameof(searchCompaniesWrappertransmitObjectaddress1State), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectaddress1CountryEn = searchCompaniesWrappertransmitObjectaddress1CountryEn == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectaddress1CountryEn);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectaddress1CountryEn, nameof(searchCompaniesWrappertransmitObjectaddress1CountryEn), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectaddress1PostalCode = searchCompaniesWrappertransmitObjectaddress1PostalCode == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectaddress1PostalCode);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectaddress1PostalCode, nameof(searchCompaniesWrappertransmitObjectaddress1PostalCode), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectaddress2POBox = searchCompaniesWrappertransmitObjectaddress2POBox == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectaddress2POBox);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectaddress2POBox, nameof(searchCompaniesWrappertransmitObjectaddress2POBox), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectaddress2Street = searchCompaniesWrappertransmitObjectaddress2Street == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectaddress2Street);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectaddress2Street, nameof(searchCompaniesWrappertransmitObjectaddress2Street), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectaddress2City = searchCompaniesWrappertransmitObjectaddress2City == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectaddress2City);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectaddress2City, nameof(searchCompaniesWrappertransmitObjectaddress2City), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectaddress2State = searchCompaniesWrappertransmitObjectaddress2State == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectaddress2State);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectaddress2State, nameof(searchCompaniesWrappertransmitObjectaddress2State), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectaddress2CountryEn = searchCompaniesWrappertransmitObjectaddress2CountryEn == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectaddress2CountryEn);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectaddress2CountryEn, nameof(searchCompaniesWrappertransmitObjectaddress2CountryEn), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectaddress2PostalCode = searchCompaniesWrappertransmitObjectaddress2PostalCode == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectaddress2PostalCode);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectaddress2PostalCode, nameof(searchCompaniesWrappertransmitObjectaddress2PostalCode), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectaddress3POBox = searchCompaniesWrappertransmitObjectaddress3POBox == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectaddress3POBox);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectaddress3POBox, nameof(searchCompaniesWrappertransmitObjectaddress3POBox), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectaddress3Street = searchCompaniesWrappertransmitObjectaddress3Street == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectaddress3Street);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectaddress3Street, nameof(searchCompaniesWrappertransmitObjectaddress3Street), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectaddress3City = searchCompaniesWrappertransmitObjectaddress3City == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectaddress3City);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectaddress3City, nameof(searchCompaniesWrappertransmitObjectaddress3City), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectaddress3State = searchCompaniesWrappertransmitObjectaddress3State == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectaddress3State);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectaddress3State, nameof(searchCompaniesWrappertransmitObjectaddress3State), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectaddress3CountryEn = searchCompaniesWrappertransmitObjectaddress3CountryEn == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectaddress3CountryEn);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectaddress3CountryEn, nameof(searchCompaniesWrappertransmitObjectaddress3CountryEn), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectaddress3PostalCode = searchCompaniesWrappertransmitObjectaddress3PostalCode == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectaddress3PostalCode);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectaddress3PostalCode, nameof(searchCompaniesWrappertransmitObjectaddress3PostalCode), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectcompanyName = searchCompaniesWrappertransmitObjectcompanyName == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectcompanyName);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectcompanyName, nameof(searchCompaniesWrappertransmitObjectcompanyName), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectdepartment = searchCompaniesWrappertransmitObjectdepartment == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectdepartment);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectdepartment, nameof(searchCompaniesWrappertransmitObjectdepartment), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectemail = searchCompaniesWrappertransmitObjectemail == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectemail);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectemail, nameof(searchCompaniesWrappertransmitObjectemail), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectemployeesCount = searchCompaniesWrappertransmitObjectemployeesCount == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectemployeesCount);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectemployeesCount, nameof(searchCompaniesWrappertransmitObjectemployeesCount), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectfax = searchCompaniesWrappertransmitObjectfax == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectfax);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectfax, nameof(searchCompaniesWrappertransmitObjectfax), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectfirstContactEn = searchCompaniesWrappertransmitObjectfirstContactEn == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectfirstContactEn);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectfirstContactEn, nameof(searchCompaniesWrappertransmitObjectfirstContactEn), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectiCQ = searchCompaniesWrappertransmitObjectiCQ == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectiCQ);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectiCQ, nameof(searchCompaniesWrappertransmitObjectiCQ), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectidentificationNumber = searchCompaniesWrappertransmitObjectidentificationNumber == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectidentificationNumber);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectidentificationNumber, nameof(searchCompaniesWrappertransmitObjectidentificationNumber), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectimportanceEn = searchCompaniesWrappertransmitObjectimportanceEn == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectimportanceEn);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectimportanceEn, nameof(searchCompaniesWrappertransmitObjectimportanceEn), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectlineOfBusiness = searchCompaniesWrappertransmitObjectlineOfBusiness == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectlineOfBusiness);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectlineOfBusiness, nameof(searchCompaniesWrappertransmitObjectlineOfBusiness), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectmailingListOther = searchCompaniesWrappertransmitObjectmailingListOther == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectmailingListOther);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectmailingListOther, nameof(searchCompaniesWrappertransmitObjectmailingListOther), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectmobile = searchCompaniesWrappertransmitObjectmobile == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectmobile);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectmobile, nameof(searchCompaniesWrappertransmitObjectmobile), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectmobileNormalized = searchCompaniesWrappertransmitObjectmobileNormalized == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectmobileNormalized);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectmobileNormalized, nameof(searchCompaniesWrappertransmitObjectmobileNormalized), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectmSN = searchCompaniesWrappertransmitObjectmSN == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectmSN);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectmSN, nameof(searchCompaniesWrappertransmitObjectmSN), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectnote = searchCompaniesWrappertransmitObjectnote == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectnote);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectnote, nameof(searchCompaniesWrappertransmitObjectnote), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectphone = searchCompaniesWrappertransmitObjectphone == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectphone);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectphone, nameof(searchCompaniesWrappertransmitObjectphone), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectphoneNormalized = searchCompaniesWrappertransmitObjectphoneNormalized == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectphoneNormalized);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectphoneNormalized, nameof(searchCompaniesWrappertransmitObjectphoneNormalized), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectpurchaser = searchCompaniesWrappertransmitObjectpurchaser == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectpurchaser);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectpurchaser, nameof(searchCompaniesWrappertransmitObjectpurchaser), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectreversal = searchCompaniesWrappertransmitObjectreversal == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectreversal);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectreversal, nameof(searchCompaniesWrappertransmitObjectreversal), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectskype = searchCompaniesWrappertransmitObjectskype == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectskype);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectskype, nameof(searchCompaniesWrappertransmitObjectskype), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectsuppliers = searchCompaniesWrappertransmitObjectsuppliers == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectsuppliers);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectsuppliers, nameof(searchCompaniesWrappertransmitObjectsuppliers), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectvATNumber = searchCompaniesWrappertransmitObjectvATNumber == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectvATNumber);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectvATNumber, nameof(searchCompaniesWrappertransmitObjectvATNumber), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectwebPage = searchCompaniesWrappertransmitObjectwebPage == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectwebPage);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectwebPage, nameof(searchCompaniesWrappertransmitObjectwebPage), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectadditionalDiscount = searchCompaniesWrappertransmitObjectadditionalDiscount == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectadditionalDiscount);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectadditionalDiscount, nameof(searchCompaniesWrappertransmitObjectadditionalDiscount), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectiD = searchCompaniesWrappertransmitObjectiD == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectiD);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectiD, nameof(searchCompaniesWrappertransmitObjectiD), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectcompetitor = searchCompaniesWrappertransmitObjectcompetitor == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectcompetitor);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectcompetitor, nameof(searchCompaniesWrappertransmitObjectcompetitor), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectsalePriceGuid = searchCompaniesWrappertransmitObjectsalePriceGuid == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectsalePriceGuid);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectsalePriceGuid, nameof(searchCompaniesWrappertransmitObjectsalePriceGuid), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectnotificationByEmail = searchCompaniesWrappertransmitObjectnotificationByEmail == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectnotificationByEmail);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectnotificationByEmail, nameof(searchCompaniesWrappertransmitObjectnotificationByEmail), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectnotificationBy = searchCompaniesWrappertransmitObjectnotificationBy == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectnotificationBy);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectnotificationBy, nameof(searchCompaniesWrappertransmitObjectnotificationBy), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectlastActivity = searchCompaniesWrappertransmitObjectlastActivity == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectlastActivity);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectlastActivity, nameof(searchCompaniesWrappertransmitObjectlastActivity), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectnextStep = searchCompaniesWrappertransmitObjectnextStep == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectnextStep);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectnextStep, nameof(searchCompaniesWrappertransmitObjectnextStep), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectemailOptOut = searchCompaniesWrappertransmitObjectemailOptOut == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectemailOptOut);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectemailOptOut, nameof(searchCompaniesWrappertransmitObjectemailOptOut), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjecttypeEn = searchCompaniesWrappertransmitObjecttypeEn == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjecttypeEn);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjecttypeEn, nameof(searchCompaniesWrappertransmitObjecttypeEn), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectstateEn = searchCompaniesWrappertransmitObjectstateEn == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectstateEn);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectstateEn, nameof(searchCompaniesWrappertransmitObjectstateEn), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectprevStateEn = searchCompaniesWrappertransmitObjectprevStateEn == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectprevStateEn);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectprevStateEn, nameof(searchCompaniesWrappertransmitObjectprevStateEn), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectpicture = searchCompaniesWrappertransmitObjectpicture == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectpicture);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectpicture, nameof(searchCompaniesWrappertransmitObjectpicture), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectpictureWidth = searchCompaniesWrappertransmitObjectpictureWidth == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectpictureWidth);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectpictureWidth, nameof(searchCompaniesWrappertransmitObjectpictureWidth), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectpictureHeight = searchCompaniesWrappertransmitObjectpictureHeight == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectpictureHeight);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectpictureHeight, nameof(searchCompaniesWrappertransmitObjectpictureHeight), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectisPrivate = searchCompaniesWrappertransmitObjectisPrivate == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectisPrivate);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectisPrivate, nameof(searchCompaniesWrappertransmitObjectisPrivate), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectserverItemCreated = searchCompaniesWrappertransmitObjectserverItemCreated == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectserverItemCreated);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectserverItemCreated, nameof(searchCompaniesWrappertransmitObjectserverItemCreated), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectserverItemChanged = searchCompaniesWrappertransmitObjectserverItemChanged == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectserverItemChanged);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectserverItemChanged, nameof(searchCompaniesWrappertransmitObjectserverItemChanged), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectitemCreated = searchCompaniesWrappertransmitObjectitemCreated == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectitemCreated);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectitemCreated, nameof(searchCompaniesWrappertransmitObjectitemCreated), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectitemChanged = searchCompaniesWrappertransmitObjectitemChanged == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectitemChanged);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectitemChanged, nameof(searchCompaniesWrappertransmitObjectitemChanged), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectfileAs = searchCompaniesWrappertransmitObjectfileAs == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectfileAs);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectfileAs, nameof(searchCompaniesWrappertransmitObjectfileAs), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectownerGUID = searchCompaniesWrappertransmitObjectownerGUID == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectownerGUID);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectownerGUID, nameof(searchCompaniesWrappertransmitObjectownerGUID), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectcreatedByGUID = searchCompaniesWrappertransmitObjectcreatedByGUID == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectcreatedByGUID);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectcreatedByGUID, nameof(searchCompaniesWrappertransmitObjectcreatedByGUID), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectmodifiedByGUID = searchCompaniesWrappertransmitObjectmodifiedByGUID == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectmodifiedByGUID);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectmodifiedByGUID, nameof(searchCompaniesWrappertransmitObjectmodifiedByGUID), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectadditionalFields = searchCompaniesWrappertransmitObjectadditionalFields == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectadditionalFields);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectadditionalFields, nameof(searchCompaniesWrappertransmitObjectadditionalFields), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectrelations = searchCompaniesWrappertransmitObjectrelations == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectrelations);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectrelations, nameof(searchCompaniesWrappertransmitObjectrelations), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectitemGUID = searchCompaniesWrappertransmitObjectitemGUID == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectitemGUID);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectitemGUID, nameof(searchCompaniesWrappertransmitObjectitemGUID), required: false);
+            var __workflow_searchCompaniesWrappertransmitObjectitemVersion = searchCompaniesWrappertransmitObjectitemVersion == null ? null : WorkflowExpression.Compile(searchCompaniesWrappertransmitObjectitemVersion);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrappertransmitObjectitemVersion, nameof(searchCompaniesWrappertransmitObjectitemVersion), required: false);
+            var __workflow_searchCompaniesWrapperincludeRelations = searchCompaniesWrapperincludeRelations == null ? null : WorkflowExpression.Compile(searchCompaniesWrapperincludeRelations);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrapperincludeRelations, nameof(searchCompaniesWrapperincludeRelations), required: false);
+            var __workflow_searchCompaniesWrapperrelationsFilterrelationType = searchCompaniesWrapperrelationsFilterrelationType == null ? null : WorkflowExpression.Compile(searchCompaniesWrapperrelationsFilterrelationType);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrapperrelationsFilterrelationType, nameof(searchCompaniesWrapperrelationsFilterrelationType), required: false);
+            var __workflow_searchCompaniesWrapperrelationsFilterforeignFolderName = searchCompaniesWrapperrelationsFilterforeignFolderName == null ? null : WorkflowExpression.Compile(searchCompaniesWrapperrelationsFilterforeignFolderName);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrapperrelationsFilterforeignFolderName, nameof(searchCompaniesWrapperrelationsFilterforeignFolderName), required: false);
+            var __workflow_searchCompaniesWrapperbinaryLogicalOperator = searchCompaniesWrapperbinaryLogicalOperator == null ? null : WorkflowExpression.Compile(searchCompaniesWrapperbinaryLogicalOperator);
+            WorkflowExpression.Validate(__workflow_searchCompaniesWrapperbinaryLogicalOperator, nameof(searchCompaniesWrapperbinaryLogicalOperator), required: false);
             return new DeferredBodyAction<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedCompany>(() =>
             {
                 var apiCallPath = "/SearchCompanies";
@@ -2866,423 +3179,423 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                 var searchCompaniesWrapperpropCount = 0;
                 var transmitObjectObject = new JObject();
                 var transmitObjectObjectpropCount = 0;
-                if (searchCompaniesWrappertransmitObjectaccountNumber != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectaccountNumber != null)
                 {
-                    transmitObjectObject["AccountNumber"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectaccountNumber);
+                    transmitObjectObject["AccountNumber"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectaccountNumber);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectaddress1POBox != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectaddress1POBox != null)
                 {
-                    transmitObjectObject["Address1POBox"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectaddress1POBox);
+                    transmitObjectObject["Address1POBox"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectaddress1POBox);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectaddress1Street != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectaddress1Street != null)
                 {
-                    transmitObjectObject["Address1Street"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectaddress1Street);
+                    transmitObjectObject["Address1Street"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectaddress1Street);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectaddress1City != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectaddress1City != null)
                 {
-                    transmitObjectObject["Address1City"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectaddress1City);
+                    transmitObjectObject["Address1City"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectaddress1City);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectaddress1State != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectaddress1State != null)
                 {
-                    transmitObjectObject["Address1State"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectaddress1State);
+                    transmitObjectObject["Address1State"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectaddress1State);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectaddress1CountryEn != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectaddress1CountryEn != null)
                 {
-                    transmitObjectObject["Address1CountryEn"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectaddress1CountryEn);
+                    transmitObjectObject["Address1CountryEn"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectaddress1CountryEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectaddress1PostalCode != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectaddress1PostalCode != null)
                 {
-                    transmitObjectObject["Address1PostalCode"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectaddress1PostalCode);
+                    transmitObjectObject["Address1PostalCode"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectaddress1PostalCode);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectaddress2POBox != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectaddress2POBox != null)
                 {
-                    transmitObjectObject["Address2POBox"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectaddress2POBox);
+                    transmitObjectObject["Address2POBox"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectaddress2POBox);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectaddress2Street != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectaddress2Street != null)
                 {
-                    transmitObjectObject["Address2Street"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectaddress2Street);
+                    transmitObjectObject["Address2Street"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectaddress2Street);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectaddress2City != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectaddress2City != null)
                 {
-                    transmitObjectObject["Address2City"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectaddress2City);
+                    transmitObjectObject["Address2City"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectaddress2City);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectaddress2State != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectaddress2State != null)
                 {
-                    transmitObjectObject["Address2State"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectaddress2State);
+                    transmitObjectObject["Address2State"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectaddress2State);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectaddress2CountryEn != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectaddress2CountryEn != null)
                 {
-                    transmitObjectObject["Address2CountryEn"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectaddress2CountryEn);
+                    transmitObjectObject["Address2CountryEn"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectaddress2CountryEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectaddress2PostalCode != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectaddress2PostalCode != null)
                 {
-                    transmitObjectObject["Address2PostalCode"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectaddress2PostalCode);
+                    transmitObjectObject["Address2PostalCode"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectaddress2PostalCode);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectaddress3POBox != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectaddress3POBox != null)
                 {
-                    transmitObjectObject["Address3POBox"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectaddress3POBox);
+                    transmitObjectObject["Address3POBox"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectaddress3POBox);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectaddress3Street != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectaddress3Street != null)
                 {
-                    transmitObjectObject["Address3Street"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectaddress3Street);
+                    transmitObjectObject["Address3Street"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectaddress3Street);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectaddress3City != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectaddress3City != null)
                 {
-                    transmitObjectObject["Address3City"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectaddress3City);
+                    transmitObjectObject["Address3City"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectaddress3City);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectaddress3State != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectaddress3State != null)
                 {
-                    transmitObjectObject["Address3State"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectaddress3State);
+                    transmitObjectObject["Address3State"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectaddress3State);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectaddress3CountryEn != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectaddress3CountryEn != null)
                 {
-                    transmitObjectObject["Address3CountryEn"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectaddress3CountryEn);
+                    transmitObjectObject["Address3CountryEn"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectaddress3CountryEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectaddress3PostalCode != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectaddress3PostalCode != null)
                 {
-                    transmitObjectObject["Address3PostalCode"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectaddress3PostalCode);
+                    transmitObjectObject["Address3PostalCode"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectaddress3PostalCode);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectcompanyName != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectcompanyName != null)
                 {
-                    transmitObjectObject["CompanyName"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectcompanyName);
+                    transmitObjectObject["CompanyName"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectcompanyName);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectdepartment != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectdepartment != null)
                 {
-                    transmitObjectObject["Department"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectdepartment);
+                    transmitObjectObject["Department"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectdepartment);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectemail != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectemail != null)
                 {
-                    transmitObjectObject["Email"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectemail);
+                    transmitObjectObject["Email"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectemail);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectemployeesCount != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectemployeesCount != null)
                 {
-                    transmitObjectObject["EmployeesCount"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectemployeesCount);
+                    transmitObjectObject["EmployeesCount"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectemployeesCount);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectfax != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectfax != null)
                 {
-                    transmitObjectObject["Fax"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectfax);
+                    transmitObjectObject["Fax"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectfax);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectfirstContactEn != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectfirstContactEn != null)
                 {
-                    transmitObjectObject["FirstContactEn"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectfirstContactEn);
+                    transmitObjectObject["FirstContactEn"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectfirstContactEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectiCQ != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectiCQ != null)
                 {
-                    transmitObjectObject["ICQ"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectiCQ);
+                    transmitObjectObject["ICQ"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectiCQ);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectidentificationNumber != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectidentificationNumber != null)
                 {
-                    transmitObjectObject["IdentificationNumber"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectidentificationNumber);
+                    transmitObjectObject["IdentificationNumber"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectidentificationNumber);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectimportanceEn != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectimportanceEn != null)
                 {
-                    transmitObjectObject["ImportanceEn"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectimportanceEn);
+                    transmitObjectObject["ImportanceEn"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectimportanceEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectlineOfBusiness != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectlineOfBusiness != null)
                 {
-                    transmitObjectObject["LineOfBusiness"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectlineOfBusiness);
+                    transmitObjectObject["LineOfBusiness"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectlineOfBusiness);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectmailingListOther != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectmailingListOther != null)
                 {
-                    transmitObjectObject["MailingListOther"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectmailingListOther);
+                    transmitObjectObject["MailingListOther"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectmailingListOther);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectmobile != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectmobile != null)
                 {
-                    transmitObjectObject["Mobile"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectmobile);
+                    transmitObjectObject["Mobile"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectmobile);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectmobileNormalized != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectmobileNormalized != null)
                 {
-                    transmitObjectObject["MobileNormalized"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectmobileNormalized);
+                    transmitObjectObject["MobileNormalized"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectmobileNormalized);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectmSN != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectmSN != null)
                 {
-                    transmitObjectObject["MSN"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectmSN);
+                    transmitObjectObject["MSN"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectmSN);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectnote != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectnote != null)
                 {
-                    transmitObjectObject["Note"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectnote);
+                    transmitObjectObject["Note"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectnote);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectphone != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectphone != null)
                 {
-                    transmitObjectObject["Phone"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectphone);
+                    transmitObjectObject["Phone"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectphone);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectphoneNormalized != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectphoneNormalized != null)
                 {
-                    transmitObjectObject["PhoneNormalized"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectphoneNormalized);
+                    transmitObjectObject["PhoneNormalized"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectphoneNormalized);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectpurchaser != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectpurchaser != null)
                 {
-                    transmitObjectObject["Purchaser"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectpurchaser);
+                    transmitObjectObject["Purchaser"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectpurchaser);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectreversal != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectreversal != null)
                 {
-                    transmitObjectObject["Reversal"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectreversal);
+                    transmitObjectObject["Reversal"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectreversal);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectskype != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectskype != null)
                 {
-                    transmitObjectObject["Skype"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectskype);
+                    transmitObjectObject["Skype"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectskype);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectsuppliers != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectsuppliers != null)
                 {
-                    transmitObjectObject["Suppliers"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectsuppliers);
+                    transmitObjectObject["Suppliers"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectsuppliers);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectvATNumber != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectvATNumber != null)
                 {
-                    transmitObjectObject["VATNumber"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectvATNumber);
+                    transmitObjectObject["VATNumber"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectvATNumber);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectwebPage != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectwebPage != null)
                 {
-                    transmitObjectObject["WebPage"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectwebPage);
+                    transmitObjectObject["WebPage"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectwebPage);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectadditionalDiscount != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectadditionalDiscount != null)
                 {
-                    transmitObjectObject["AdditionalDiscount"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectadditionalDiscount);
+                    transmitObjectObject["AdditionalDiscount"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectadditionalDiscount);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectiD != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectiD != null)
                 {
-                    transmitObjectObject["ID"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectiD);
+                    transmitObjectObject["ID"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectiD);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectcompetitor != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectcompetitor != null)
                 {
-                    transmitObjectObject["Competitor"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectcompetitor);
+                    transmitObjectObject["Competitor"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectcompetitor);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectsalePriceGuid != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectsalePriceGuid != null)
                 {
-                    transmitObjectObject["SalePriceGuid"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectsalePriceGuid);
+                    transmitObjectObject["SalePriceGuid"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectsalePriceGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectnotificationByEmail != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectnotificationByEmail != null)
                 {
-                    transmitObjectObject["NotificationByEmail"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectnotificationByEmail);
+                    transmitObjectObject["NotificationByEmail"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectnotificationByEmail);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectnotificationBy != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectnotificationBy != null)
                 {
-                    transmitObjectObject["NotificationBy"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectnotificationBy);
+                    transmitObjectObject["NotificationBy"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectnotificationBy);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectlastActivity != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectlastActivity != null)
                 {
-                    transmitObjectObject["LastActivity"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectlastActivity);
+                    transmitObjectObject["LastActivity"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectlastActivity);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectnextStep != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectnextStep != null)
                 {
-                    transmitObjectObject["NextStep"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectnextStep);
+                    transmitObjectObject["NextStep"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectnextStep);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectemailOptOut != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectemailOptOut != null)
                 {
-                    transmitObjectObject["EmailOptOut"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectemailOptOut);
+                    transmitObjectObject["EmailOptOut"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectemailOptOut);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjecttypeEn != null)
+                if (__workflow_searchCompaniesWrappertransmitObjecttypeEn != null)
                 {
-                    transmitObjectObject["TypeEn"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjecttypeEn);
+                    transmitObjectObject["TypeEn"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjecttypeEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectstateEn != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectstateEn != null)
                 {
-                    transmitObjectObject["StateEn"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectstateEn);
+                    transmitObjectObject["StateEn"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectstateEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectprevStateEn != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectprevStateEn != null)
                 {
-                    transmitObjectObject["PrevStateEn"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectprevStateEn);
+                    transmitObjectObject["PrevStateEn"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectprevStateEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectpicture != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectpicture != null)
                 {
-                    transmitObjectObject["Picture"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectpicture);
+                    transmitObjectObject["Picture"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectpicture);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectpictureWidth != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectpictureWidth != null)
                 {
-                    transmitObjectObject["PictureWidth"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectpictureWidth);
+                    transmitObjectObject["PictureWidth"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectpictureWidth);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectpictureHeight != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectpictureHeight != null)
                 {
-                    transmitObjectObject["PictureHeight"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectpictureHeight);
+                    transmitObjectObject["PictureHeight"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectpictureHeight);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectisPrivate != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectisPrivate != null)
                 {
-                    transmitObjectObject["IsPrivate"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectisPrivate);
+                    transmitObjectObject["IsPrivate"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectisPrivate);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectserverItemCreated != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectserverItemCreated != null)
                 {
-                    transmitObjectObject["Server_ItemCreated"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectserverItemCreated);
+                    transmitObjectObject["Server_ItemCreated"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectserverItemCreated);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectserverItemChanged != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectserverItemChanged != null)
                 {
-                    transmitObjectObject["Server_ItemChanged"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectserverItemChanged);
+                    transmitObjectObject["Server_ItemChanged"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectserverItemChanged);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectitemCreated != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectitemCreated != null)
                 {
-                    transmitObjectObject["ItemCreated"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectitemCreated);
+                    transmitObjectObject["ItemCreated"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectitemCreated);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectitemChanged != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectitemChanged != null)
                 {
-                    transmitObjectObject["ItemChanged"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectitemChanged);
+                    transmitObjectObject["ItemChanged"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectitemChanged);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectfileAs != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectfileAs != null)
                 {
-                    transmitObjectObject["FileAs"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectfileAs);
+                    transmitObjectObject["FileAs"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectfileAs);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectownerGUID != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectownerGUID != null)
                 {
-                    transmitObjectObject["OwnerGUID"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectownerGUID);
+                    transmitObjectObject["OwnerGUID"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectownerGUID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectcreatedByGUID != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectcreatedByGUID != null)
                 {
-                    transmitObjectObject["CreatedByGUID"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectcreatedByGUID);
+                    transmitObjectObject["CreatedByGUID"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectcreatedByGUID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectmodifiedByGUID != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectmodifiedByGUID != null)
                 {
-                    transmitObjectObject["ModifiedByGUID"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectmodifiedByGUID);
+                    transmitObjectObject["ModifiedByGUID"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectmodifiedByGUID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectadditionalFields != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectadditionalFields != null)
                 {
-                    transmitObjectObject["AdditionalFields"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectadditionalFields);
+                    transmitObjectObject["AdditionalFields"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectadditionalFields);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectrelations != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectrelations != null)
                 {
-                    transmitObjectObject["Relations"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectrelations);
+                    transmitObjectObject["Relations"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectrelations);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectitemGUID != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectitemGUID != null)
                 {
-                    transmitObjectObject["ItemGUID"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectitemGUID);
+                    transmitObjectObject["ItemGUID"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectitemGUID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchCompaniesWrappertransmitObjectitemVersion != null)
+                if (__workflow_searchCompaniesWrappertransmitObjectitemVersion != null)
                 {
-                    transmitObjectObject["ItemVersion"] = ExpressionConverter.ConvertO(searchCompaniesWrappertransmitObjectitemVersion);
+                    transmitObjectObject["ItemVersion"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrappertransmitObjectitemVersion);
                     transmitObjectObjectpropCount++;
                 }
 
@@ -3292,23 +3605,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                     searchCompaniesWrapperpropCount++;
                 }
 
-                if (searchCompaniesWrapperincludeRelations != null)
+                if (__workflow_searchCompaniesWrapperincludeRelations != null)
                 {
-                    searchCompaniesWrapper["includeRelations"] = ExpressionConverter.ConvertO(searchCompaniesWrapperincludeRelations);
+                    searchCompaniesWrapper["includeRelations"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrapperincludeRelations);
                     searchCompaniesWrapperpropCount++;
                 }
 
                 var relationsFilterObject = new JObject();
                 var relationsFilterObjectpropCount = 0;
-                if (searchCompaniesWrapperrelationsFilterrelationType != null)
+                if (__workflow_searchCompaniesWrapperrelationsFilterrelationType != null)
                 {
-                    relationsFilterObject["RelationType"] = ExpressionConverter.ConvertO(searchCompaniesWrapperrelationsFilterrelationType);
+                    relationsFilterObject["RelationType"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrapperrelationsFilterrelationType);
                     relationsFilterObjectpropCount++;
                 }
 
-                if (searchCompaniesWrapperrelationsFilterforeignFolderName != null)
+                if (__workflow_searchCompaniesWrapperrelationsFilterforeignFolderName != null)
                 {
-                    relationsFilterObject["ForeignFolderName"] = ExpressionConverter.ConvertO(searchCompaniesWrapperrelationsFilterforeignFolderName);
+                    relationsFilterObject["ForeignFolderName"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrapperrelationsFilterforeignFolderName);
                     relationsFilterObjectpropCount++;
                 }
 
@@ -3318,9 +3631,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                     searchCompaniesWrapperpropCount++;
                 }
 
-                if (searchCompaniesWrapperbinaryLogicalOperator != null)
+                if (__workflow_searchCompaniesWrapperbinaryLogicalOperator != null)
                 {
-                    searchCompaniesWrapper["binaryLogicalOperator"] = ExpressionConverter.ConvertO(searchCompaniesWrapperbinaryLogicalOperator);
+                    searchCompaniesWrapper["binaryLogicalOperator"] = ExpressionConverter.ConvertO(__workflow_searchCompaniesWrapperbinaryLogicalOperator);
                     searchCompaniesWrapperpropCount++;
                 }
 
@@ -3334,90 +3647,158 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
-        [WorkflowExpressionFactory(nameof(__BuildSearchContacts))]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedContact> SearchContacts([WorkflowExpression] Func<string> searchContactsWrappertransmitObjectcompaniesCompanyGuid = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjectbusinessAddressStreet = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjectbusinessAddressCity = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjectbusinessAddressState = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjectbusinessAddressCountryEn = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjectbusinessAddressPOBox = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjectbusinessAddressPostalCode = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjecthomeAddressStreet = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjecthomeAddressCity = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjecthomeAddressState = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjecthomeAddressCountryEn = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjecthomeAddressPOBox = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjecthomeAddressPostalCode = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjectotherAddressStreet = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjectotherAddressCity = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjectotherAddressState = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjectotherAddressCountryEn = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjectotherAddressPOBox = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjectotherAddressPostalCode = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjectcompany = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjectemail1Address = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjectemail2Address = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjectemail3Address = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjectfirstName = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjectiCQ = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjectimportanceEn = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjectlastName = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjectmiddleName = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjectmSN = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjectnote = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjectprefixEn = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjectsuffixEn = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjectskype = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjecttelephoneNumber1 = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjecttelephoneNumber2 = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjecttelephoneNumber3 = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjecttelephoneNumber4 = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjecttelephoneNumber5 = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjecttelephoneNumber6 = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjecttelephoneNumber1Normalized = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjecttelephoneNumber2Normalized = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjecttelephoneNumber3Normalized = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjecttelephoneNumber4Normalized = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjecttelephoneNumber5Normalized = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjecttelephoneNumber6Normalized = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjectdepartment = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjecttitle = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjectwebPage = null, [WorkflowExpression] Func<bool> searchContactsWrappertransmitObjectdoNotSendNewsletter = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjectprofilePicture = null, [WorkflowExpression] Func<int> searchContactsWrappertransmitObjectprofilePictureWidth = null, [WorkflowExpression] Func<int> searchContactsWrappertransmitObjectprofilePictureHeight = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjectlastActivity = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjectnextStep = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjecttypeEn = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjectstateEn = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjectprevStateEn = null, [WorkflowExpression] Func<bool> searchContactsWrappertransmitObjectisPrivate = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjectserverItemCreated = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjectserverItemChanged = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjectitemCreated = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjectitemChanged = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjectfileAs = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjectownerGUID = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjectcreatedByGUID = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjectmodifiedByGUID = null, [WorkflowExpression] Func<object> searchContactsWrappertransmitObjectadditionalFields = null, [WorkflowExpression] Func<EWayWcfServiceItemTypesInnerTypesBoundRelation[]> searchContactsWrappertransmitObjectrelations = null, [WorkflowExpression] Func<string> searchContactsWrappertransmitObjectitemGUID = null, [WorkflowExpression] Func<int> searchContactsWrappertransmitObjectitemVersion = null, [WorkflowExpression] Func<bool> searchContactsWrapperincludeRelations = null, [WorkflowExpression] Func<string> searchContactsWrapperrelationsFilterrelationType = null, [WorkflowExpression] Func<string> searchContactsWrapperrelationsFilterforeignFolderName = null, [WorkflowExpression] Func<bool> searchContactsWrapperincludeProfilePictures = null, [WorkflowExpression] Func<string> searchContactsWrapperbinaryLogicalOperator = null)
+        public IBodyWorkflowAction<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedContact> SearchContacts(Expression<Func<string>> searchContactsWrappertransmitObjectcompaniesCompanyGuid = null, Expression<Func<string>> searchContactsWrappertransmitObjectbusinessAddressStreet = null, Expression<Func<string>> searchContactsWrappertransmitObjectbusinessAddressCity = null, Expression<Func<string>> searchContactsWrappertransmitObjectbusinessAddressState = null, Expression<Func<string>> searchContactsWrappertransmitObjectbusinessAddressCountryEn = null, Expression<Func<string>> searchContactsWrappertransmitObjectbusinessAddressPOBox = null, Expression<Func<string>> searchContactsWrappertransmitObjectbusinessAddressPostalCode = null, Expression<Func<string>> searchContactsWrappertransmitObjecthomeAddressStreet = null, Expression<Func<string>> searchContactsWrappertransmitObjecthomeAddressCity = null, Expression<Func<string>> searchContactsWrappertransmitObjecthomeAddressState = null, Expression<Func<string>> searchContactsWrappertransmitObjecthomeAddressCountryEn = null, Expression<Func<string>> searchContactsWrappertransmitObjecthomeAddressPOBox = null, Expression<Func<string>> searchContactsWrappertransmitObjecthomeAddressPostalCode = null, Expression<Func<string>> searchContactsWrappertransmitObjectotherAddressStreet = null, Expression<Func<string>> searchContactsWrappertransmitObjectotherAddressCity = null, Expression<Func<string>> searchContactsWrappertransmitObjectotherAddressState = null, Expression<Func<string>> searchContactsWrappertransmitObjectotherAddressCountryEn = null, Expression<Func<string>> searchContactsWrappertransmitObjectotherAddressPOBox = null, Expression<Func<string>> searchContactsWrappertransmitObjectotherAddressPostalCode = null, Expression<Func<string>> searchContactsWrappertransmitObjectcompany = null, Expression<Func<string>> searchContactsWrappertransmitObjectemail1Address = null, Expression<Func<string>> searchContactsWrappertransmitObjectemail2Address = null, Expression<Func<string>> searchContactsWrappertransmitObjectemail3Address = null, Expression<Func<string>> searchContactsWrappertransmitObjectfirstName = null, Expression<Func<string>> searchContactsWrappertransmitObjectiCQ = null, Expression<Func<string>> searchContactsWrappertransmitObjectimportanceEn = null, Expression<Func<string>> searchContactsWrappertransmitObjectlastName = null, Expression<Func<string>> searchContactsWrappertransmitObjectmiddleName = null, Expression<Func<string>> searchContactsWrappertransmitObjectmSN = null, Expression<Func<string>> searchContactsWrappertransmitObjectnote = null, Expression<Func<string>> searchContactsWrappertransmitObjectprefixEn = null, Expression<Func<string>> searchContactsWrappertransmitObjectsuffixEn = null, Expression<Func<string>> searchContactsWrappertransmitObjectskype = null, Expression<Func<string>> searchContactsWrappertransmitObjecttelephoneNumber1 = null, Expression<Func<string>> searchContactsWrappertransmitObjecttelephoneNumber2 = null, Expression<Func<string>> searchContactsWrappertransmitObjecttelephoneNumber3 = null, Expression<Func<string>> searchContactsWrappertransmitObjecttelephoneNumber4 = null, Expression<Func<string>> searchContactsWrappertransmitObjecttelephoneNumber5 = null, Expression<Func<string>> searchContactsWrappertransmitObjecttelephoneNumber6 = null, Expression<Func<string>> searchContactsWrappertransmitObjecttelephoneNumber1Normalized = null, Expression<Func<string>> searchContactsWrappertransmitObjecttelephoneNumber2Normalized = null, Expression<Func<string>> searchContactsWrappertransmitObjecttelephoneNumber3Normalized = null, Expression<Func<string>> searchContactsWrappertransmitObjecttelephoneNumber4Normalized = null, Expression<Func<string>> searchContactsWrappertransmitObjecttelephoneNumber5Normalized = null, Expression<Func<string>> searchContactsWrappertransmitObjecttelephoneNumber6Normalized = null, Expression<Func<string>> searchContactsWrappertransmitObjectdepartment = null, Expression<Func<string>> searchContactsWrappertransmitObjecttitle = null, Expression<Func<string>> searchContactsWrappertransmitObjectwebPage = null, Expression<Func<bool>> searchContactsWrappertransmitObjectdoNotSendNewsletter = null, Expression<Func<string>> searchContactsWrappertransmitObjectprofilePicture = null, Expression<Func<int>> searchContactsWrappertransmitObjectprofilePictureWidth = null, Expression<Func<int>> searchContactsWrappertransmitObjectprofilePictureHeight = null, Expression<Func<string>> searchContactsWrappertransmitObjectlastActivity = null, Expression<Func<string>> searchContactsWrappertransmitObjectnextStep = null, Expression<Func<string>> searchContactsWrappertransmitObjecttypeEn = null, Expression<Func<string>> searchContactsWrappertransmitObjectstateEn = null, Expression<Func<string>> searchContactsWrappertransmitObjectprevStateEn = null, Expression<Func<bool>> searchContactsWrappertransmitObjectisPrivate = null, Expression<Func<string>> searchContactsWrappertransmitObjectserverItemCreated = null, Expression<Func<string>> searchContactsWrappertransmitObjectserverItemChanged = null, Expression<Func<string>> searchContactsWrappertransmitObjectitemCreated = null, Expression<Func<string>> searchContactsWrappertransmitObjectitemChanged = null, Expression<Func<string>> searchContactsWrappertransmitObjectfileAs = null, Expression<Func<string>> searchContactsWrappertransmitObjectownerGUID = null, Expression<Func<string>> searchContactsWrappertransmitObjectcreatedByGUID = null, Expression<Func<string>> searchContactsWrappertransmitObjectmodifiedByGUID = null, Expression<Func<object>> searchContactsWrappertransmitObjectadditionalFields = null, Expression<Func<EWayWcfServiceItemTypesInnerTypesBoundRelation[]>> searchContactsWrappertransmitObjectrelations = null, Expression<Func<string>> searchContactsWrappertransmitObjectitemGUID = null, Expression<Func<int>> searchContactsWrappertransmitObjectitemVersion = null, Expression<Func<bool>> searchContactsWrapperincludeRelations = null, Expression<Func<string>> searchContactsWrapperrelationsFilterrelationType = null, Expression<Func<string>> searchContactsWrapperrelationsFilterforeignFolderName = null, Expression<Func<bool>> searchContactsWrapperincludeProfilePictures = null, Expression<Func<string>> searchContactsWrapperbinaryLogicalOperator = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedContact> __BuildSearchContacts(WorkflowExpression<string> searchContactsWrappertransmitObjectcompaniesCompanyGuid = null, WorkflowExpression<string> searchContactsWrappertransmitObjectbusinessAddressStreet = null, WorkflowExpression<string> searchContactsWrappertransmitObjectbusinessAddressCity = null, WorkflowExpression<string> searchContactsWrappertransmitObjectbusinessAddressState = null, WorkflowExpression<string> searchContactsWrappertransmitObjectbusinessAddressCountryEn = null, WorkflowExpression<string> searchContactsWrappertransmitObjectbusinessAddressPOBox = null, WorkflowExpression<string> searchContactsWrappertransmitObjectbusinessAddressPostalCode = null, WorkflowExpression<string> searchContactsWrappertransmitObjecthomeAddressStreet = null, WorkflowExpression<string> searchContactsWrappertransmitObjecthomeAddressCity = null, WorkflowExpression<string> searchContactsWrappertransmitObjecthomeAddressState = null, WorkflowExpression<string> searchContactsWrappertransmitObjecthomeAddressCountryEn = null, WorkflowExpression<string> searchContactsWrappertransmitObjecthomeAddressPOBox = null, WorkflowExpression<string> searchContactsWrappertransmitObjecthomeAddressPostalCode = null, WorkflowExpression<string> searchContactsWrappertransmitObjectotherAddressStreet = null, WorkflowExpression<string> searchContactsWrappertransmitObjectotherAddressCity = null, WorkflowExpression<string> searchContactsWrappertransmitObjectotherAddressState = null, WorkflowExpression<string> searchContactsWrappertransmitObjectotherAddressCountryEn = null, WorkflowExpression<string> searchContactsWrappertransmitObjectotherAddressPOBox = null, WorkflowExpression<string> searchContactsWrappertransmitObjectotherAddressPostalCode = null, WorkflowExpression<string> searchContactsWrappertransmitObjectcompany = null, WorkflowExpression<string> searchContactsWrappertransmitObjectemail1Address = null, WorkflowExpression<string> searchContactsWrappertransmitObjectemail2Address = null, WorkflowExpression<string> searchContactsWrappertransmitObjectemail3Address = null, WorkflowExpression<string> searchContactsWrappertransmitObjectfirstName = null, WorkflowExpression<string> searchContactsWrappertransmitObjectiCQ = null, WorkflowExpression<string> searchContactsWrappertransmitObjectimportanceEn = null, WorkflowExpression<string> searchContactsWrappertransmitObjectlastName = null, WorkflowExpression<string> searchContactsWrappertransmitObjectmiddleName = null, WorkflowExpression<string> searchContactsWrappertransmitObjectmSN = null, WorkflowExpression<string> searchContactsWrappertransmitObjectnote = null, WorkflowExpression<string> searchContactsWrappertransmitObjectprefixEn = null, WorkflowExpression<string> searchContactsWrappertransmitObjectsuffixEn = null, WorkflowExpression<string> searchContactsWrappertransmitObjectskype = null, WorkflowExpression<string> searchContactsWrappertransmitObjecttelephoneNumber1 = null, WorkflowExpression<string> searchContactsWrappertransmitObjecttelephoneNumber2 = null, WorkflowExpression<string> searchContactsWrappertransmitObjecttelephoneNumber3 = null, WorkflowExpression<string> searchContactsWrappertransmitObjecttelephoneNumber4 = null, WorkflowExpression<string> searchContactsWrappertransmitObjecttelephoneNumber5 = null, WorkflowExpression<string> searchContactsWrappertransmitObjecttelephoneNumber6 = null, WorkflowExpression<string> searchContactsWrappertransmitObjecttelephoneNumber1Normalized = null, WorkflowExpression<string> searchContactsWrappertransmitObjecttelephoneNumber2Normalized = null, WorkflowExpression<string> searchContactsWrappertransmitObjecttelephoneNumber3Normalized = null, WorkflowExpression<string> searchContactsWrappertransmitObjecttelephoneNumber4Normalized = null, WorkflowExpression<string> searchContactsWrappertransmitObjecttelephoneNumber5Normalized = null, WorkflowExpression<string> searchContactsWrappertransmitObjecttelephoneNumber6Normalized = null, WorkflowExpression<string> searchContactsWrappertransmitObjectdepartment = null, WorkflowExpression<string> searchContactsWrappertransmitObjecttitle = null, WorkflowExpression<string> searchContactsWrappertransmitObjectwebPage = null, WorkflowExpression<bool> searchContactsWrappertransmitObjectdoNotSendNewsletter = null, WorkflowExpression<string> searchContactsWrappertransmitObjectprofilePicture = null, WorkflowExpression<int> searchContactsWrappertransmitObjectprofilePictureWidth = null, WorkflowExpression<int> searchContactsWrappertransmitObjectprofilePictureHeight = null, WorkflowExpression<string> searchContactsWrappertransmitObjectlastActivity = null, WorkflowExpression<string> searchContactsWrappertransmitObjectnextStep = null, WorkflowExpression<string> searchContactsWrappertransmitObjecttypeEn = null, WorkflowExpression<string> searchContactsWrappertransmitObjectstateEn = null, WorkflowExpression<string> searchContactsWrappertransmitObjectprevStateEn = null, WorkflowExpression<bool> searchContactsWrappertransmitObjectisPrivate = null, WorkflowExpression<string> searchContactsWrappertransmitObjectserverItemCreated = null, WorkflowExpression<string> searchContactsWrappertransmitObjectserverItemChanged = null, WorkflowExpression<string> searchContactsWrappertransmitObjectitemCreated = null, WorkflowExpression<string> searchContactsWrappertransmitObjectitemChanged = null, WorkflowExpression<string> searchContactsWrappertransmitObjectfileAs = null, WorkflowExpression<string> searchContactsWrappertransmitObjectownerGUID = null, WorkflowExpression<string> searchContactsWrappertransmitObjectcreatedByGUID = null, WorkflowExpression<string> searchContactsWrappertransmitObjectmodifiedByGUID = null, WorkflowExpression<object> searchContactsWrappertransmitObjectadditionalFields = null, WorkflowExpression<EWayWcfServiceItemTypesInnerTypesBoundRelation[]> searchContactsWrappertransmitObjectrelations = null, WorkflowExpression<string> searchContactsWrappertransmitObjectitemGUID = null, WorkflowExpression<int> searchContactsWrappertransmitObjectitemVersion = null, WorkflowExpression<bool> searchContactsWrapperincludeRelations = null, WorkflowExpression<string> searchContactsWrapperrelationsFilterrelationType = null, WorkflowExpression<string> searchContactsWrapperrelationsFilterforeignFolderName = null, WorkflowExpression<bool> searchContactsWrapperincludeProfilePictures = null, WorkflowExpression<string> searchContactsWrapperbinaryLogicalOperator = null)
-        {
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjectcompaniesCompanyGuid, nameof(searchContactsWrappertransmitObjectcompaniesCompanyGuid), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjectbusinessAddressStreet, nameof(searchContactsWrappertransmitObjectbusinessAddressStreet), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjectbusinessAddressCity, nameof(searchContactsWrappertransmitObjectbusinessAddressCity), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjectbusinessAddressState, nameof(searchContactsWrappertransmitObjectbusinessAddressState), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjectbusinessAddressCountryEn, nameof(searchContactsWrappertransmitObjectbusinessAddressCountryEn), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjectbusinessAddressPOBox, nameof(searchContactsWrappertransmitObjectbusinessAddressPOBox), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjectbusinessAddressPostalCode, nameof(searchContactsWrappertransmitObjectbusinessAddressPostalCode), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjecthomeAddressStreet, nameof(searchContactsWrappertransmitObjecthomeAddressStreet), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjecthomeAddressCity, nameof(searchContactsWrappertransmitObjecthomeAddressCity), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjecthomeAddressState, nameof(searchContactsWrappertransmitObjecthomeAddressState), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjecthomeAddressCountryEn, nameof(searchContactsWrappertransmitObjecthomeAddressCountryEn), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjecthomeAddressPOBox, nameof(searchContactsWrappertransmitObjecthomeAddressPOBox), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjecthomeAddressPostalCode, nameof(searchContactsWrappertransmitObjecthomeAddressPostalCode), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjectotherAddressStreet, nameof(searchContactsWrappertransmitObjectotherAddressStreet), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjectotherAddressCity, nameof(searchContactsWrappertransmitObjectotherAddressCity), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjectotherAddressState, nameof(searchContactsWrappertransmitObjectotherAddressState), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjectotherAddressCountryEn, nameof(searchContactsWrappertransmitObjectotherAddressCountryEn), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjectotherAddressPOBox, nameof(searchContactsWrappertransmitObjectotherAddressPOBox), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjectotherAddressPostalCode, nameof(searchContactsWrappertransmitObjectotherAddressPostalCode), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjectcompany, nameof(searchContactsWrappertransmitObjectcompany), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjectemail1Address, nameof(searchContactsWrappertransmitObjectemail1Address), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjectemail2Address, nameof(searchContactsWrappertransmitObjectemail2Address), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjectemail3Address, nameof(searchContactsWrappertransmitObjectemail3Address), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjectfirstName, nameof(searchContactsWrappertransmitObjectfirstName), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjectiCQ, nameof(searchContactsWrappertransmitObjectiCQ), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjectimportanceEn, nameof(searchContactsWrappertransmitObjectimportanceEn), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjectlastName, nameof(searchContactsWrappertransmitObjectlastName), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjectmiddleName, nameof(searchContactsWrappertransmitObjectmiddleName), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjectmSN, nameof(searchContactsWrappertransmitObjectmSN), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjectnote, nameof(searchContactsWrappertransmitObjectnote), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjectprefixEn, nameof(searchContactsWrappertransmitObjectprefixEn), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjectsuffixEn, nameof(searchContactsWrappertransmitObjectsuffixEn), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjectskype, nameof(searchContactsWrappertransmitObjectskype), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjecttelephoneNumber1, nameof(searchContactsWrappertransmitObjecttelephoneNumber1), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjecttelephoneNumber2, nameof(searchContactsWrappertransmitObjecttelephoneNumber2), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjecttelephoneNumber3, nameof(searchContactsWrappertransmitObjecttelephoneNumber3), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjecttelephoneNumber4, nameof(searchContactsWrappertransmitObjecttelephoneNumber4), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjecttelephoneNumber5, nameof(searchContactsWrappertransmitObjecttelephoneNumber5), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjecttelephoneNumber6, nameof(searchContactsWrappertransmitObjecttelephoneNumber6), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjecttelephoneNumber1Normalized, nameof(searchContactsWrappertransmitObjecttelephoneNumber1Normalized), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjecttelephoneNumber2Normalized, nameof(searchContactsWrappertransmitObjecttelephoneNumber2Normalized), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjecttelephoneNumber3Normalized, nameof(searchContactsWrappertransmitObjecttelephoneNumber3Normalized), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjecttelephoneNumber4Normalized, nameof(searchContactsWrappertransmitObjecttelephoneNumber4Normalized), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjecttelephoneNumber5Normalized, nameof(searchContactsWrappertransmitObjecttelephoneNumber5Normalized), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjecttelephoneNumber6Normalized, nameof(searchContactsWrappertransmitObjecttelephoneNumber6Normalized), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjectdepartment, nameof(searchContactsWrappertransmitObjectdepartment), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjecttitle, nameof(searchContactsWrappertransmitObjecttitle), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjectwebPage, nameof(searchContactsWrappertransmitObjectwebPage), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjectdoNotSendNewsletter, nameof(searchContactsWrappertransmitObjectdoNotSendNewsletter), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjectprofilePicture, nameof(searchContactsWrappertransmitObjectprofilePicture), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjectprofilePictureWidth, nameof(searchContactsWrappertransmitObjectprofilePictureWidth), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjectprofilePictureHeight, nameof(searchContactsWrappertransmitObjectprofilePictureHeight), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjectlastActivity, nameof(searchContactsWrappertransmitObjectlastActivity), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjectnextStep, nameof(searchContactsWrappertransmitObjectnextStep), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjecttypeEn, nameof(searchContactsWrappertransmitObjecttypeEn), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjectstateEn, nameof(searchContactsWrappertransmitObjectstateEn), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjectprevStateEn, nameof(searchContactsWrappertransmitObjectprevStateEn), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjectisPrivate, nameof(searchContactsWrappertransmitObjectisPrivate), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjectserverItemCreated, nameof(searchContactsWrappertransmitObjectserverItemCreated), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjectserverItemChanged, nameof(searchContactsWrappertransmitObjectserverItemChanged), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjectitemCreated, nameof(searchContactsWrappertransmitObjectitemCreated), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjectitemChanged, nameof(searchContactsWrappertransmitObjectitemChanged), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjectfileAs, nameof(searchContactsWrappertransmitObjectfileAs), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjectownerGUID, nameof(searchContactsWrappertransmitObjectownerGUID), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjectcreatedByGUID, nameof(searchContactsWrappertransmitObjectcreatedByGUID), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjectmodifiedByGUID, nameof(searchContactsWrappertransmitObjectmodifiedByGUID), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjectadditionalFields, nameof(searchContactsWrappertransmitObjectadditionalFields), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjectrelations, nameof(searchContactsWrappertransmitObjectrelations), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjectitemGUID, nameof(searchContactsWrappertransmitObjectitemGUID), required: false);
-            WorkflowExpression.Validate(searchContactsWrappertransmitObjectitemVersion, nameof(searchContactsWrappertransmitObjectitemVersion), required: false);
-            WorkflowExpression.Validate(searchContactsWrapperincludeRelations, nameof(searchContactsWrapperincludeRelations), required: false);
-            WorkflowExpression.Validate(searchContactsWrapperrelationsFilterrelationType, nameof(searchContactsWrapperrelationsFilterrelationType), required: false);
-            WorkflowExpression.Validate(searchContactsWrapperrelationsFilterforeignFolderName, nameof(searchContactsWrapperrelationsFilterforeignFolderName), required: false);
-            WorkflowExpression.Validate(searchContactsWrapperincludeProfilePictures, nameof(searchContactsWrapperincludeProfilePictures), required: false);
-            WorkflowExpression.Validate(searchContactsWrapperbinaryLogicalOperator, nameof(searchContactsWrapperbinaryLogicalOperator), required: false);
+            var __workflow_searchContactsWrappertransmitObjectcompaniesCompanyGuid = searchContactsWrappertransmitObjectcompaniesCompanyGuid == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjectcompaniesCompanyGuid);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjectcompaniesCompanyGuid, nameof(searchContactsWrappertransmitObjectcompaniesCompanyGuid), required: false);
+            var __workflow_searchContactsWrappertransmitObjectbusinessAddressStreet = searchContactsWrappertransmitObjectbusinessAddressStreet == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjectbusinessAddressStreet);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjectbusinessAddressStreet, nameof(searchContactsWrappertransmitObjectbusinessAddressStreet), required: false);
+            var __workflow_searchContactsWrappertransmitObjectbusinessAddressCity = searchContactsWrappertransmitObjectbusinessAddressCity == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjectbusinessAddressCity);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjectbusinessAddressCity, nameof(searchContactsWrappertransmitObjectbusinessAddressCity), required: false);
+            var __workflow_searchContactsWrappertransmitObjectbusinessAddressState = searchContactsWrappertransmitObjectbusinessAddressState == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjectbusinessAddressState);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjectbusinessAddressState, nameof(searchContactsWrappertransmitObjectbusinessAddressState), required: false);
+            var __workflow_searchContactsWrappertransmitObjectbusinessAddressCountryEn = searchContactsWrappertransmitObjectbusinessAddressCountryEn == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjectbusinessAddressCountryEn);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjectbusinessAddressCountryEn, nameof(searchContactsWrappertransmitObjectbusinessAddressCountryEn), required: false);
+            var __workflow_searchContactsWrappertransmitObjectbusinessAddressPOBox = searchContactsWrappertransmitObjectbusinessAddressPOBox == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjectbusinessAddressPOBox);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjectbusinessAddressPOBox, nameof(searchContactsWrappertransmitObjectbusinessAddressPOBox), required: false);
+            var __workflow_searchContactsWrappertransmitObjectbusinessAddressPostalCode = searchContactsWrappertransmitObjectbusinessAddressPostalCode == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjectbusinessAddressPostalCode);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjectbusinessAddressPostalCode, nameof(searchContactsWrappertransmitObjectbusinessAddressPostalCode), required: false);
+            var __workflow_searchContactsWrappertransmitObjecthomeAddressStreet = searchContactsWrappertransmitObjecthomeAddressStreet == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjecthomeAddressStreet);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjecthomeAddressStreet, nameof(searchContactsWrappertransmitObjecthomeAddressStreet), required: false);
+            var __workflow_searchContactsWrappertransmitObjecthomeAddressCity = searchContactsWrappertransmitObjecthomeAddressCity == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjecthomeAddressCity);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjecthomeAddressCity, nameof(searchContactsWrappertransmitObjecthomeAddressCity), required: false);
+            var __workflow_searchContactsWrappertransmitObjecthomeAddressState = searchContactsWrappertransmitObjecthomeAddressState == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjecthomeAddressState);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjecthomeAddressState, nameof(searchContactsWrappertransmitObjecthomeAddressState), required: false);
+            var __workflow_searchContactsWrappertransmitObjecthomeAddressCountryEn = searchContactsWrappertransmitObjecthomeAddressCountryEn == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjecthomeAddressCountryEn);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjecthomeAddressCountryEn, nameof(searchContactsWrappertransmitObjecthomeAddressCountryEn), required: false);
+            var __workflow_searchContactsWrappertransmitObjecthomeAddressPOBox = searchContactsWrappertransmitObjecthomeAddressPOBox == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjecthomeAddressPOBox);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjecthomeAddressPOBox, nameof(searchContactsWrappertransmitObjecthomeAddressPOBox), required: false);
+            var __workflow_searchContactsWrappertransmitObjecthomeAddressPostalCode = searchContactsWrappertransmitObjecthomeAddressPostalCode == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjecthomeAddressPostalCode);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjecthomeAddressPostalCode, nameof(searchContactsWrappertransmitObjecthomeAddressPostalCode), required: false);
+            var __workflow_searchContactsWrappertransmitObjectotherAddressStreet = searchContactsWrappertransmitObjectotherAddressStreet == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjectotherAddressStreet);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjectotherAddressStreet, nameof(searchContactsWrappertransmitObjectotherAddressStreet), required: false);
+            var __workflow_searchContactsWrappertransmitObjectotherAddressCity = searchContactsWrappertransmitObjectotherAddressCity == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjectotherAddressCity);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjectotherAddressCity, nameof(searchContactsWrappertransmitObjectotherAddressCity), required: false);
+            var __workflow_searchContactsWrappertransmitObjectotherAddressState = searchContactsWrappertransmitObjectotherAddressState == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjectotherAddressState);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjectotherAddressState, nameof(searchContactsWrappertransmitObjectotherAddressState), required: false);
+            var __workflow_searchContactsWrappertransmitObjectotherAddressCountryEn = searchContactsWrappertransmitObjectotherAddressCountryEn == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjectotherAddressCountryEn);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjectotherAddressCountryEn, nameof(searchContactsWrappertransmitObjectotherAddressCountryEn), required: false);
+            var __workflow_searchContactsWrappertransmitObjectotherAddressPOBox = searchContactsWrappertransmitObjectotherAddressPOBox == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjectotherAddressPOBox);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjectotherAddressPOBox, nameof(searchContactsWrappertransmitObjectotherAddressPOBox), required: false);
+            var __workflow_searchContactsWrappertransmitObjectotherAddressPostalCode = searchContactsWrappertransmitObjectotherAddressPostalCode == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjectotherAddressPostalCode);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjectotherAddressPostalCode, nameof(searchContactsWrappertransmitObjectotherAddressPostalCode), required: false);
+            var __workflow_searchContactsWrappertransmitObjectcompany = searchContactsWrappertransmitObjectcompany == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjectcompany);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjectcompany, nameof(searchContactsWrappertransmitObjectcompany), required: false);
+            var __workflow_searchContactsWrappertransmitObjectemail1Address = searchContactsWrappertransmitObjectemail1Address == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjectemail1Address);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjectemail1Address, nameof(searchContactsWrappertransmitObjectemail1Address), required: false);
+            var __workflow_searchContactsWrappertransmitObjectemail2Address = searchContactsWrappertransmitObjectemail2Address == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjectemail2Address);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjectemail2Address, nameof(searchContactsWrappertransmitObjectemail2Address), required: false);
+            var __workflow_searchContactsWrappertransmitObjectemail3Address = searchContactsWrappertransmitObjectemail3Address == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjectemail3Address);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjectemail3Address, nameof(searchContactsWrappertransmitObjectemail3Address), required: false);
+            var __workflow_searchContactsWrappertransmitObjectfirstName = searchContactsWrappertransmitObjectfirstName == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjectfirstName);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjectfirstName, nameof(searchContactsWrappertransmitObjectfirstName), required: false);
+            var __workflow_searchContactsWrappertransmitObjectiCQ = searchContactsWrappertransmitObjectiCQ == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjectiCQ);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjectiCQ, nameof(searchContactsWrappertransmitObjectiCQ), required: false);
+            var __workflow_searchContactsWrappertransmitObjectimportanceEn = searchContactsWrappertransmitObjectimportanceEn == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjectimportanceEn);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjectimportanceEn, nameof(searchContactsWrappertransmitObjectimportanceEn), required: false);
+            var __workflow_searchContactsWrappertransmitObjectlastName = searchContactsWrappertransmitObjectlastName == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjectlastName);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjectlastName, nameof(searchContactsWrappertransmitObjectlastName), required: false);
+            var __workflow_searchContactsWrappertransmitObjectmiddleName = searchContactsWrappertransmitObjectmiddleName == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjectmiddleName);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjectmiddleName, nameof(searchContactsWrappertransmitObjectmiddleName), required: false);
+            var __workflow_searchContactsWrappertransmitObjectmSN = searchContactsWrappertransmitObjectmSN == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjectmSN);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjectmSN, nameof(searchContactsWrappertransmitObjectmSN), required: false);
+            var __workflow_searchContactsWrappertransmitObjectnote = searchContactsWrappertransmitObjectnote == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjectnote);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjectnote, nameof(searchContactsWrappertransmitObjectnote), required: false);
+            var __workflow_searchContactsWrappertransmitObjectprefixEn = searchContactsWrappertransmitObjectprefixEn == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjectprefixEn);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjectprefixEn, nameof(searchContactsWrappertransmitObjectprefixEn), required: false);
+            var __workflow_searchContactsWrappertransmitObjectsuffixEn = searchContactsWrappertransmitObjectsuffixEn == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjectsuffixEn);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjectsuffixEn, nameof(searchContactsWrappertransmitObjectsuffixEn), required: false);
+            var __workflow_searchContactsWrappertransmitObjectskype = searchContactsWrappertransmitObjectskype == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjectskype);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjectskype, nameof(searchContactsWrappertransmitObjectskype), required: false);
+            var __workflow_searchContactsWrappertransmitObjecttelephoneNumber1 = searchContactsWrappertransmitObjecttelephoneNumber1 == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjecttelephoneNumber1);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjecttelephoneNumber1, nameof(searchContactsWrappertransmitObjecttelephoneNumber1), required: false);
+            var __workflow_searchContactsWrappertransmitObjecttelephoneNumber2 = searchContactsWrappertransmitObjecttelephoneNumber2 == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjecttelephoneNumber2);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjecttelephoneNumber2, nameof(searchContactsWrappertransmitObjecttelephoneNumber2), required: false);
+            var __workflow_searchContactsWrappertransmitObjecttelephoneNumber3 = searchContactsWrappertransmitObjecttelephoneNumber3 == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjecttelephoneNumber3);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjecttelephoneNumber3, nameof(searchContactsWrappertransmitObjecttelephoneNumber3), required: false);
+            var __workflow_searchContactsWrappertransmitObjecttelephoneNumber4 = searchContactsWrappertransmitObjecttelephoneNumber4 == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjecttelephoneNumber4);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjecttelephoneNumber4, nameof(searchContactsWrappertransmitObjecttelephoneNumber4), required: false);
+            var __workflow_searchContactsWrappertransmitObjecttelephoneNumber5 = searchContactsWrappertransmitObjecttelephoneNumber5 == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjecttelephoneNumber5);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjecttelephoneNumber5, nameof(searchContactsWrappertransmitObjecttelephoneNumber5), required: false);
+            var __workflow_searchContactsWrappertransmitObjecttelephoneNumber6 = searchContactsWrappertransmitObjecttelephoneNumber6 == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjecttelephoneNumber6);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjecttelephoneNumber6, nameof(searchContactsWrappertransmitObjecttelephoneNumber6), required: false);
+            var __workflow_searchContactsWrappertransmitObjecttelephoneNumber1Normalized = searchContactsWrappertransmitObjecttelephoneNumber1Normalized == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjecttelephoneNumber1Normalized);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjecttelephoneNumber1Normalized, nameof(searchContactsWrappertransmitObjecttelephoneNumber1Normalized), required: false);
+            var __workflow_searchContactsWrappertransmitObjecttelephoneNumber2Normalized = searchContactsWrappertransmitObjecttelephoneNumber2Normalized == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjecttelephoneNumber2Normalized);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjecttelephoneNumber2Normalized, nameof(searchContactsWrappertransmitObjecttelephoneNumber2Normalized), required: false);
+            var __workflow_searchContactsWrappertransmitObjecttelephoneNumber3Normalized = searchContactsWrappertransmitObjecttelephoneNumber3Normalized == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjecttelephoneNumber3Normalized);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjecttelephoneNumber3Normalized, nameof(searchContactsWrappertransmitObjecttelephoneNumber3Normalized), required: false);
+            var __workflow_searchContactsWrappertransmitObjecttelephoneNumber4Normalized = searchContactsWrappertransmitObjecttelephoneNumber4Normalized == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjecttelephoneNumber4Normalized);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjecttelephoneNumber4Normalized, nameof(searchContactsWrappertransmitObjecttelephoneNumber4Normalized), required: false);
+            var __workflow_searchContactsWrappertransmitObjecttelephoneNumber5Normalized = searchContactsWrappertransmitObjecttelephoneNumber5Normalized == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjecttelephoneNumber5Normalized);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjecttelephoneNumber5Normalized, nameof(searchContactsWrappertransmitObjecttelephoneNumber5Normalized), required: false);
+            var __workflow_searchContactsWrappertransmitObjecttelephoneNumber6Normalized = searchContactsWrappertransmitObjecttelephoneNumber6Normalized == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjecttelephoneNumber6Normalized);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjecttelephoneNumber6Normalized, nameof(searchContactsWrappertransmitObjecttelephoneNumber6Normalized), required: false);
+            var __workflow_searchContactsWrappertransmitObjectdepartment = searchContactsWrappertransmitObjectdepartment == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjectdepartment);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjectdepartment, nameof(searchContactsWrappertransmitObjectdepartment), required: false);
+            var __workflow_searchContactsWrappertransmitObjecttitle = searchContactsWrappertransmitObjecttitle == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjecttitle);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjecttitle, nameof(searchContactsWrappertransmitObjecttitle), required: false);
+            var __workflow_searchContactsWrappertransmitObjectwebPage = searchContactsWrappertransmitObjectwebPage == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjectwebPage);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjectwebPage, nameof(searchContactsWrappertransmitObjectwebPage), required: false);
+            var __workflow_searchContactsWrappertransmitObjectdoNotSendNewsletter = searchContactsWrappertransmitObjectdoNotSendNewsletter == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjectdoNotSendNewsletter);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjectdoNotSendNewsletter, nameof(searchContactsWrappertransmitObjectdoNotSendNewsletter), required: false);
+            var __workflow_searchContactsWrappertransmitObjectprofilePicture = searchContactsWrappertransmitObjectprofilePicture == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjectprofilePicture);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjectprofilePicture, nameof(searchContactsWrappertransmitObjectprofilePicture), required: false);
+            var __workflow_searchContactsWrappertransmitObjectprofilePictureWidth = searchContactsWrappertransmitObjectprofilePictureWidth == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjectprofilePictureWidth);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjectprofilePictureWidth, nameof(searchContactsWrappertransmitObjectprofilePictureWidth), required: false);
+            var __workflow_searchContactsWrappertransmitObjectprofilePictureHeight = searchContactsWrappertransmitObjectprofilePictureHeight == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjectprofilePictureHeight);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjectprofilePictureHeight, nameof(searchContactsWrappertransmitObjectprofilePictureHeight), required: false);
+            var __workflow_searchContactsWrappertransmitObjectlastActivity = searchContactsWrappertransmitObjectlastActivity == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjectlastActivity);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjectlastActivity, nameof(searchContactsWrappertransmitObjectlastActivity), required: false);
+            var __workflow_searchContactsWrappertransmitObjectnextStep = searchContactsWrappertransmitObjectnextStep == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjectnextStep);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjectnextStep, nameof(searchContactsWrappertransmitObjectnextStep), required: false);
+            var __workflow_searchContactsWrappertransmitObjecttypeEn = searchContactsWrappertransmitObjecttypeEn == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjecttypeEn);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjecttypeEn, nameof(searchContactsWrappertransmitObjecttypeEn), required: false);
+            var __workflow_searchContactsWrappertransmitObjectstateEn = searchContactsWrappertransmitObjectstateEn == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjectstateEn);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjectstateEn, nameof(searchContactsWrappertransmitObjectstateEn), required: false);
+            var __workflow_searchContactsWrappertransmitObjectprevStateEn = searchContactsWrappertransmitObjectprevStateEn == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjectprevStateEn);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjectprevStateEn, nameof(searchContactsWrappertransmitObjectprevStateEn), required: false);
+            var __workflow_searchContactsWrappertransmitObjectisPrivate = searchContactsWrappertransmitObjectisPrivate == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjectisPrivate);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjectisPrivate, nameof(searchContactsWrappertransmitObjectisPrivate), required: false);
+            var __workflow_searchContactsWrappertransmitObjectserverItemCreated = searchContactsWrappertransmitObjectserverItemCreated == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjectserverItemCreated);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjectserverItemCreated, nameof(searchContactsWrappertransmitObjectserverItemCreated), required: false);
+            var __workflow_searchContactsWrappertransmitObjectserverItemChanged = searchContactsWrappertransmitObjectserverItemChanged == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjectserverItemChanged);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjectserverItemChanged, nameof(searchContactsWrappertransmitObjectserverItemChanged), required: false);
+            var __workflow_searchContactsWrappertransmitObjectitemCreated = searchContactsWrappertransmitObjectitemCreated == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjectitemCreated);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjectitemCreated, nameof(searchContactsWrappertransmitObjectitemCreated), required: false);
+            var __workflow_searchContactsWrappertransmitObjectitemChanged = searchContactsWrappertransmitObjectitemChanged == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjectitemChanged);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjectitemChanged, nameof(searchContactsWrappertransmitObjectitemChanged), required: false);
+            var __workflow_searchContactsWrappertransmitObjectfileAs = searchContactsWrappertransmitObjectfileAs == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjectfileAs);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjectfileAs, nameof(searchContactsWrappertransmitObjectfileAs), required: false);
+            var __workflow_searchContactsWrappertransmitObjectownerGUID = searchContactsWrappertransmitObjectownerGUID == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjectownerGUID);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjectownerGUID, nameof(searchContactsWrappertransmitObjectownerGUID), required: false);
+            var __workflow_searchContactsWrappertransmitObjectcreatedByGUID = searchContactsWrappertransmitObjectcreatedByGUID == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjectcreatedByGUID);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjectcreatedByGUID, nameof(searchContactsWrappertransmitObjectcreatedByGUID), required: false);
+            var __workflow_searchContactsWrappertransmitObjectmodifiedByGUID = searchContactsWrappertransmitObjectmodifiedByGUID == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjectmodifiedByGUID);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjectmodifiedByGUID, nameof(searchContactsWrappertransmitObjectmodifiedByGUID), required: false);
+            var __workflow_searchContactsWrappertransmitObjectadditionalFields = searchContactsWrappertransmitObjectadditionalFields == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjectadditionalFields);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjectadditionalFields, nameof(searchContactsWrappertransmitObjectadditionalFields), required: false);
+            var __workflow_searchContactsWrappertransmitObjectrelations = searchContactsWrappertransmitObjectrelations == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjectrelations);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjectrelations, nameof(searchContactsWrappertransmitObjectrelations), required: false);
+            var __workflow_searchContactsWrappertransmitObjectitemGUID = searchContactsWrappertransmitObjectitemGUID == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjectitemGUID);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjectitemGUID, nameof(searchContactsWrappertransmitObjectitemGUID), required: false);
+            var __workflow_searchContactsWrappertransmitObjectitemVersion = searchContactsWrappertransmitObjectitemVersion == null ? null : WorkflowExpression.Compile(searchContactsWrappertransmitObjectitemVersion);
+            WorkflowExpression.Validate(__workflow_searchContactsWrappertransmitObjectitemVersion, nameof(searchContactsWrappertransmitObjectitemVersion), required: false);
+            var __workflow_searchContactsWrapperincludeRelations = searchContactsWrapperincludeRelations == null ? null : WorkflowExpression.Compile(searchContactsWrapperincludeRelations);
+            WorkflowExpression.Validate(__workflow_searchContactsWrapperincludeRelations, nameof(searchContactsWrapperincludeRelations), required: false);
+            var __workflow_searchContactsWrapperrelationsFilterrelationType = searchContactsWrapperrelationsFilterrelationType == null ? null : WorkflowExpression.Compile(searchContactsWrapperrelationsFilterrelationType);
+            WorkflowExpression.Validate(__workflow_searchContactsWrapperrelationsFilterrelationType, nameof(searchContactsWrapperrelationsFilterrelationType), required: false);
+            var __workflow_searchContactsWrapperrelationsFilterforeignFolderName = searchContactsWrapperrelationsFilterforeignFolderName == null ? null : WorkflowExpression.Compile(searchContactsWrapperrelationsFilterforeignFolderName);
+            WorkflowExpression.Validate(__workflow_searchContactsWrapperrelationsFilterforeignFolderName, nameof(searchContactsWrapperrelationsFilterforeignFolderName), required: false);
+            var __workflow_searchContactsWrapperincludeProfilePictures = searchContactsWrapperincludeProfilePictures == null ? null : WorkflowExpression.Compile(searchContactsWrapperincludeProfilePictures);
+            WorkflowExpression.Validate(__workflow_searchContactsWrapperincludeProfilePictures, nameof(searchContactsWrapperincludeProfilePictures), required: false);
+            var __workflow_searchContactsWrapperbinaryLogicalOperator = searchContactsWrapperbinaryLogicalOperator == null ? null : WorkflowExpression.Compile(searchContactsWrapperbinaryLogicalOperator);
+            WorkflowExpression.Validate(__workflow_searchContactsWrapperbinaryLogicalOperator, nameof(searchContactsWrapperbinaryLogicalOperator), required: false);
             return new DeferredBodyAction<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedContact>(() =>
             {
                 var apiCallPath = "/SearchContacts";
@@ -3427,423 +3808,423 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                 var searchContactsWrapperpropCount = 0;
                 var transmitObjectObject = new JObject();
                 var transmitObjectObjectpropCount = 0;
-                if (searchContactsWrappertransmitObjectcompaniesCompanyGuid != null)
+                if (__workflow_searchContactsWrappertransmitObjectcompaniesCompanyGuid != null)
                 {
-                    transmitObjectObject["Companies_CompanyGuid"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectcompaniesCompanyGuid);
+                    transmitObjectObject["Companies_CompanyGuid"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjectcompaniesCompanyGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjectbusinessAddressStreet != null)
+                if (__workflow_searchContactsWrappertransmitObjectbusinessAddressStreet != null)
                 {
-                    transmitObjectObject["BusinessAddressStreet"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectbusinessAddressStreet);
+                    transmitObjectObject["BusinessAddressStreet"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjectbusinessAddressStreet);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjectbusinessAddressCity != null)
+                if (__workflow_searchContactsWrappertransmitObjectbusinessAddressCity != null)
                 {
-                    transmitObjectObject["BusinessAddressCity"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectbusinessAddressCity);
+                    transmitObjectObject["BusinessAddressCity"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjectbusinessAddressCity);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjectbusinessAddressState != null)
+                if (__workflow_searchContactsWrappertransmitObjectbusinessAddressState != null)
                 {
-                    transmitObjectObject["BusinessAddressState"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectbusinessAddressState);
+                    transmitObjectObject["BusinessAddressState"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjectbusinessAddressState);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjectbusinessAddressCountryEn != null)
+                if (__workflow_searchContactsWrappertransmitObjectbusinessAddressCountryEn != null)
                 {
-                    transmitObjectObject["BusinessAddressCountryEn"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectbusinessAddressCountryEn);
+                    transmitObjectObject["BusinessAddressCountryEn"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjectbusinessAddressCountryEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjectbusinessAddressPOBox != null)
+                if (__workflow_searchContactsWrappertransmitObjectbusinessAddressPOBox != null)
                 {
-                    transmitObjectObject["BusinessAddressPOBox"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectbusinessAddressPOBox);
+                    transmitObjectObject["BusinessAddressPOBox"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjectbusinessAddressPOBox);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjectbusinessAddressPostalCode != null)
+                if (__workflow_searchContactsWrappertransmitObjectbusinessAddressPostalCode != null)
                 {
-                    transmitObjectObject["BusinessAddressPostalCode"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectbusinessAddressPostalCode);
+                    transmitObjectObject["BusinessAddressPostalCode"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjectbusinessAddressPostalCode);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjecthomeAddressStreet != null)
+                if (__workflow_searchContactsWrappertransmitObjecthomeAddressStreet != null)
                 {
-                    transmitObjectObject["HomeAddressStreet"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjecthomeAddressStreet);
+                    transmitObjectObject["HomeAddressStreet"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjecthomeAddressStreet);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjecthomeAddressCity != null)
+                if (__workflow_searchContactsWrappertransmitObjecthomeAddressCity != null)
                 {
-                    transmitObjectObject["HomeAddressCity"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjecthomeAddressCity);
+                    transmitObjectObject["HomeAddressCity"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjecthomeAddressCity);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjecthomeAddressState != null)
+                if (__workflow_searchContactsWrappertransmitObjecthomeAddressState != null)
                 {
-                    transmitObjectObject["HomeAddressState"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjecthomeAddressState);
+                    transmitObjectObject["HomeAddressState"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjecthomeAddressState);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjecthomeAddressCountryEn != null)
+                if (__workflow_searchContactsWrappertransmitObjecthomeAddressCountryEn != null)
                 {
-                    transmitObjectObject["HomeAddressCountryEn"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjecthomeAddressCountryEn);
+                    transmitObjectObject["HomeAddressCountryEn"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjecthomeAddressCountryEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjecthomeAddressPOBox != null)
+                if (__workflow_searchContactsWrappertransmitObjecthomeAddressPOBox != null)
                 {
-                    transmitObjectObject["HomeAddressPOBox"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjecthomeAddressPOBox);
+                    transmitObjectObject["HomeAddressPOBox"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjecthomeAddressPOBox);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjecthomeAddressPostalCode != null)
+                if (__workflow_searchContactsWrappertransmitObjecthomeAddressPostalCode != null)
                 {
-                    transmitObjectObject["HomeAddressPostalCode"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjecthomeAddressPostalCode);
+                    transmitObjectObject["HomeAddressPostalCode"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjecthomeAddressPostalCode);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjectotherAddressStreet != null)
+                if (__workflow_searchContactsWrappertransmitObjectotherAddressStreet != null)
                 {
-                    transmitObjectObject["OtherAddressStreet"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectotherAddressStreet);
+                    transmitObjectObject["OtherAddressStreet"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjectotherAddressStreet);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjectotherAddressCity != null)
+                if (__workflow_searchContactsWrappertransmitObjectotherAddressCity != null)
                 {
-                    transmitObjectObject["OtherAddressCity"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectotherAddressCity);
+                    transmitObjectObject["OtherAddressCity"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjectotherAddressCity);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjectotherAddressState != null)
+                if (__workflow_searchContactsWrappertransmitObjectotherAddressState != null)
                 {
-                    transmitObjectObject["OtherAddressState"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectotherAddressState);
+                    transmitObjectObject["OtherAddressState"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjectotherAddressState);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjectotherAddressCountryEn != null)
+                if (__workflow_searchContactsWrappertransmitObjectotherAddressCountryEn != null)
                 {
-                    transmitObjectObject["OtherAddressCountryEn"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectotherAddressCountryEn);
+                    transmitObjectObject["OtherAddressCountryEn"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjectotherAddressCountryEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjectotherAddressPOBox != null)
+                if (__workflow_searchContactsWrappertransmitObjectotherAddressPOBox != null)
                 {
-                    transmitObjectObject["OtherAddressPOBox"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectotherAddressPOBox);
+                    transmitObjectObject["OtherAddressPOBox"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjectotherAddressPOBox);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjectotherAddressPostalCode != null)
+                if (__workflow_searchContactsWrappertransmitObjectotherAddressPostalCode != null)
                 {
-                    transmitObjectObject["OtherAddressPostalCode"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectotherAddressPostalCode);
+                    transmitObjectObject["OtherAddressPostalCode"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjectotherAddressPostalCode);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjectcompany != null)
+                if (__workflow_searchContactsWrappertransmitObjectcompany != null)
                 {
-                    transmitObjectObject["Company"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectcompany);
+                    transmitObjectObject["Company"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjectcompany);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjectemail1Address != null)
+                if (__workflow_searchContactsWrappertransmitObjectemail1Address != null)
                 {
-                    transmitObjectObject["Email1Address"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectemail1Address);
+                    transmitObjectObject["Email1Address"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjectemail1Address);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjectemail2Address != null)
+                if (__workflow_searchContactsWrappertransmitObjectemail2Address != null)
                 {
-                    transmitObjectObject["Email2Address"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectemail2Address);
+                    transmitObjectObject["Email2Address"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjectemail2Address);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjectemail3Address != null)
+                if (__workflow_searchContactsWrappertransmitObjectemail3Address != null)
                 {
-                    transmitObjectObject["Email3Address"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectemail3Address);
+                    transmitObjectObject["Email3Address"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjectemail3Address);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjectfirstName != null)
+                if (__workflow_searchContactsWrappertransmitObjectfirstName != null)
                 {
-                    transmitObjectObject["FirstName"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectfirstName);
+                    transmitObjectObject["FirstName"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjectfirstName);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjectiCQ != null)
+                if (__workflow_searchContactsWrappertransmitObjectiCQ != null)
                 {
-                    transmitObjectObject["ICQ"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectiCQ);
+                    transmitObjectObject["ICQ"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjectiCQ);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjectimportanceEn != null)
+                if (__workflow_searchContactsWrappertransmitObjectimportanceEn != null)
                 {
-                    transmitObjectObject["ImportanceEn"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectimportanceEn);
+                    transmitObjectObject["ImportanceEn"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjectimportanceEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjectlastName != null)
+                if (__workflow_searchContactsWrappertransmitObjectlastName != null)
                 {
-                    transmitObjectObject["LastName"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectlastName);
+                    transmitObjectObject["LastName"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjectlastName);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjectmiddleName != null)
+                if (__workflow_searchContactsWrappertransmitObjectmiddleName != null)
                 {
-                    transmitObjectObject["MiddleName"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectmiddleName);
+                    transmitObjectObject["MiddleName"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjectmiddleName);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjectmSN != null)
+                if (__workflow_searchContactsWrappertransmitObjectmSN != null)
                 {
-                    transmitObjectObject["MSN"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectmSN);
+                    transmitObjectObject["MSN"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjectmSN);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjectnote != null)
+                if (__workflow_searchContactsWrappertransmitObjectnote != null)
                 {
-                    transmitObjectObject["Note"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectnote);
+                    transmitObjectObject["Note"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjectnote);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjectprefixEn != null)
+                if (__workflow_searchContactsWrappertransmitObjectprefixEn != null)
                 {
-                    transmitObjectObject["PrefixEn"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectprefixEn);
+                    transmitObjectObject["PrefixEn"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjectprefixEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjectsuffixEn != null)
+                if (__workflow_searchContactsWrappertransmitObjectsuffixEn != null)
                 {
-                    transmitObjectObject["SuffixEn"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectsuffixEn);
+                    transmitObjectObject["SuffixEn"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjectsuffixEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjectskype != null)
+                if (__workflow_searchContactsWrappertransmitObjectskype != null)
                 {
-                    transmitObjectObject["Skype"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectskype);
+                    transmitObjectObject["Skype"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjectskype);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjecttelephoneNumber1 != null)
+                if (__workflow_searchContactsWrappertransmitObjecttelephoneNumber1 != null)
                 {
-                    transmitObjectObject["TelephoneNumber1"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjecttelephoneNumber1);
+                    transmitObjectObject["TelephoneNumber1"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjecttelephoneNumber1);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjecttelephoneNumber2 != null)
+                if (__workflow_searchContactsWrappertransmitObjecttelephoneNumber2 != null)
                 {
-                    transmitObjectObject["TelephoneNumber2"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjecttelephoneNumber2);
+                    transmitObjectObject["TelephoneNumber2"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjecttelephoneNumber2);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjecttelephoneNumber3 != null)
+                if (__workflow_searchContactsWrappertransmitObjecttelephoneNumber3 != null)
                 {
-                    transmitObjectObject["TelephoneNumber3"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjecttelephoneNumber3);
+                    transmitObjectObject["TelephoneNumber3"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjecttelephoneNumber3);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjecttelephoneNumber4 != null)
+                if (__workflow_searchContactsWrappertransmitObjecttelephoneNumber4 != null)
                 {
-                    transmitObjectObject["TelephoneNumber4"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjecttelephoneNumber4);
+                    transmitObjectObject["TelephoneNumber4"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjecttelephoneNumber4);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjecttelephoneNumber5 != null)
+                if (__workflow_searchContactsWrappertransmitObjecttelephoneNumber5 != null)
                 {
-                    transmitObjectObject["TelephoneNumber5"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjecttelephoneNumber5);
+                    transmitObjectObject["TelephoneNumber5"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjecttelephoneNumber5);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjecttelephoneNumber6 != null)
+                if (__workflow_searchContactsWrappertransmitObjecttelephoneNumber6 != null)
                 {
-                    transmitObjectObject["TelephoneNumber6"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjecttelephoneNumber6);
+                    transmitObjectObject["TelephoneNumber6"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjecttelephoneNumber6);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjecttelephoneNumber1Normalized != null)
+                if (__workflow_searchContactsWrappertransmitObjecttelephoneNumber1Normalized != null)
                 {
-                    transmitObjectObject["TelephoneNumber1Normalized"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjecttelephoneNumber1Normalized);
+                    transmitObjectObject["TelephoneNumber1Normalized"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjecttelephoneNumber1Normalized);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjecttelephoneNumber2Normalized != null)
+                if (__workflow_searchContactsWrappertransmitObjecttelephoneNumber2Normalized != null)
                 {
-                    transmitObjectObject["TelephoneNumber2Normalized"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjecttelephoneNumber2Normalized);
+                    transmitObjectObject["TelephoneNumber2Normalized"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjecttelephoneNumber2Normalized);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjecttelephoneNumber3Normalized != null)
+                if (__workflow_searchContactsWrappertransmitObjecttelephoneNumber3Normalized != null)
                 {
-                    transmitObjectObject["TelephoneNumber3Normalized"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjecttelephoneNumber3Normalized);
+                    transmitObjectObject["TelephoneNumber3Normalized"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjecttelephoneNumber3Normalized);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjecttelephoneNumber4Normalized != null)
+                if (__workflow_searchContactsWrappertransmitObjecttelephoneNumber4Normalized != null)
                 {
-                    transmitObjectObject["TelephoneNumber4Normalized"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjecttelephoneNumber4Normalized);
+                    transmitObjectObject["TelephoneNumber4Normalized"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjecttelephoneNumber4Normalized);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjecttelephoneNumber5Normalized != null)
+                if (__workflow_searchContactsWrappertransmitObjecttelephoneNumber5Normalized != null)
                 {
-                    transmitObjectObject["TelephoneNumber5Normalized"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjecttelephoneNumber5Normalized);
+                    transmitObjectObject["TelephoneNumber5Normalized"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjecttelephoneNumber5Normalized);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjecttelephoneNumber6Normalized != null)
+                if (__workflow_searchContactsWrappertransmitObjecttelephoneNumber6Normalized != null)
                 {
-                    transmitObjectObject["TelephoneNumber6Normalized"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjecttelephoneNumber6Normalized);
+                    transmitObjectObject["TelephoneNumber6Normalized"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjecttelephoneNumber6Normalized);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjectdepartment != null)
+                if (__workflow_searchContactsWrappertransmitObjectdepartment != null)
                 {
-                    transmitObjectObject["Department"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectdepartment);
+                    transmitObjectObject["Department"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjectdepartment);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjecttitle != null)
+                if (__workflow_searchContactsWrappertransmitObjecttitle != null)
                 {
-                    transmitObjectObject["Title"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjecttitle);
+                    transmitObjectObject["Title"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjecttitle);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjectwebPage != null)
+                if (__workflow_searchContactsWrappertransmitObjectwebPage != null)
                 {
-                    transmitObjectObject["WebPage"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectwebPage);
+                    transmitObjectObject["WebPage"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjectwebPage);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjectdoNotSendNewsletter != null)
+                if (__workflow_searchContactsWrappertransmitObjectdoNotSendNewsletter != null)
                 {
-                    transmitObjectObject["DoNotSendNewsletter"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectdoNotSendNewsletter);
+                    transmitObjectObject["DoNotSendNewsletter"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjectdoNotSendNewsletter);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjectprofilePicture != null)
+                if (__workflow_searchContactsWrappertransmitObjectprofilePicture != null)
                 {
-                    transmitObjectObject["ProfilePicture"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectprofilePicture);
+                    transmitObjectObject["ProfilePicture"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjectprofilePicture);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjectprofilePictureWidth != null)
+                if (__workflow_searchContactsWrappertransmitObjectprofilePictureWidth != null)
                 {
-                    transmitObjectObject["ProfilePictureWidth"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectprofilePictureWidth);
+                    transmitObjectObject["ProfilePictureWidth"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjectprofilePictureWidth);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjectprofilePictureHeight != null)
+                if (__workflow_searchContactsWrappertransmitObjectprofilePictureHeight != null)
                 {
-                    transmitObjectObject["ProfilePictureHeight"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectprofilePictureHeight);
+                    transmitObjectObject["ProfilePictureHeight"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjectprofilePictureHeight);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjectlastActivity != null)
+                if (__workflow_searchContactsWrappertransmitObjectlastActivity != null)
                 {
-                    transmitObjectObject["LastActivity"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectlastActivity);
+                    transmitObjectObject["LastActivity"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjectlastActivity);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjectnextStep != null)
+                if (__workflow_searchContactsWrappertransmitObjectnextStep != null)
                 {
-                    transmitObjectObject["NextStep"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectnextStep);
+                    transmitObjectObject["NextStep"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjectnextStep);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjecttypeEn != null)
+                if (__workflow_searchContactsWrappertransmitObjecttypeEn != null)
                 {
-                    transmitObjectObject["TypeEn"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjecttypeEn);
+                    transmitObjectObject["TypeEn"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjecttypeEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjectstateEn != null)
+                if (__workflow_searchContactsWrappertransmitObjectstateEn != null)
                 {
-                    transmitObjectObject["StateEn"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectstateEn);
+                    transmitObjectObject["StateEn"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjectstateEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjectprevStateEn != null)
+                if (__workflow_searchContactsWrappertransmitObjectprevStateEn != null)
                 {
-                    transmitObjectObject["PrevStateEn"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectprevStateEn);
+                    transmitObjectObject["PrevStateEn"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjectprevStateEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjectisPrivate != null)
+                if (__workflow_searchContactsWrappertransmitObjectisPrivate != null)
                 {
-                    transmitObjectObject["IsPrivate"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectisPrivate);
+                    transmitObjectObject["IsPrivate"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjectisPrivate);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjectserverItemCreated != null)
+                if (__workflow_searchContactsWrappertransmitObjectserverItemCreated != null)
                 {
-                    transmitObjectObject["Server_ItemCreated"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectserverItemCreated);
+                    transmitObjectObject["Server_ItemCreated"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjectserverItemCreated);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjectserverItemChanged != null)
+                if (__workflow_searchContactsWrappertransmitObjectserverItemChanged != null)
                 {
-                    transmitObjectObject["Server_ItemChanged"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectserverItemChanged);
+                    transmitObjectObject["Server_ItemChanged"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjectserverItemChanged);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjectitemCreated != null)
+                if (__workflow_searchContactsWrappertransmitObjectitemCreated != null)
                 {
-                    transmitObjectObject["ItemCreated"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectitemCreated);
+                    transmitObjectObject["ItemCreated"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjectitemCreated);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjectitemChanged != null)
+                if (__workflow_searchContactsWrappertransmitObjectitemChanged != null)
                 {
-                    transmitObjectObject["ItemChanged"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectitemChanged);
+                    transmitObjectObject["ItemChanged"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjectitemChanged);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjectfileAs != null)
+                if (__workflow_searchContactsWrappertransmitObjectfileAs != null)
                 {
-                    transmitObjectObject["FileAs"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectfileAs);
+                    transmitObjectObject["FileAs"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjectfileAs);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjectownerGUID != null)
+                if (__workflow_searchContactsWrappertransmitObjectownerGUID != null)
                 {
-                    transmitObjectObject["OwnerGUID"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectownerGUID);
+                    transmitObjectObject["OwnerGUID"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjectownerGUID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjectcreatedByGUID != null)
+                if (__workflow_searchContactsWrappertransmitObjectcreatedByGUID != null)
                 {
-                    transmitObjectObject["CreatedByGUID"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectcreatedByGUID);
+                    transmitObjectObject["CreatedByGUID"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjectcreatedByGUID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjectmodifiedByGUID != null)
+                if (__workflow_searchContactsWrappertransmitObjectmodifiedByGUID != null)
                 {
-                    transmitObjectObject["ModifiedByGUID"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectmodifiedByGUID);
+                    transmitObjectObject["ModifiedByGUID"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjectmodifiedByGUID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjectadditionalFields != null)
+                if (__workflow_searchContactsWrappertransmitObjectadditionalFields != null)
                 {
-                    transmitObjectObject["AdditionalFields"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectadditionalFields);
+                    transmitObjectObject["AdditionalFields"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjectadditionalFields);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjectrelations != null)
+                if (__workflow_searchContactsWrappertransmitObjectrelations != null)
                 {
-                    transmitObjectObject["Relations"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectrelations);
+                    transmitObjectObject["Relations"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjectrelations);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjectitemGUID != null)
+                if (__workflow_searchContactsWrappertransmitObjectitemGUID != null)
                 {
-                    transmitObjectObject["ItemGUID"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectitemGUID);
+                    transmitObjectObject["ItemGUID"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjectitemGUID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchContactsWrappertransmitObjectitemVersion != null)
+                if (__workflow_searchContactsWrappertransmitObjectitemVersion != null)
                 {
-                    transmitObjectObject["ItemVersion"] = ExpressionConverter.ConvertO(searchContactsWrappertransmitObjectitemVersion);
+                    transmitObjectObject["ItemVersion"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrappertransmitObjectitemVersion);
                     transmitObjectObjectpropCount++;
                 }
 
@@ -3853,23 +4234,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                     searchContactsWrapperpropCount++;
                 }
 
-                if (searchContactsWrapperincludeRelations != null)
+                if (__workflow_searchContactsWrapperincludeRelations != null)
                 {
-                    searchContactsWrapper["includeRelations"] = ExpressionConverter.ConvertO(searchContactsWrapperincludeRelations);
+                    searchContactsWrapper["includeRelations"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrapperincludeRelations);
                     searchContactsWrapperpropCount++;
                 }
 
                 var relationsFilterObject = new JObject();
                 var relationsFilterObjectpropCount = 0;
-                if (searchContactsWrapperrelationsFilterrelationType != null)
+                if (__workflow_searchContactsWrapperrelationsFilterrelationType != null)
                 {
-                    relationsFilterObject["RelationType"] = ExpressionConverter.ConvertO(searchContactsWrapperrelationsFilterrelationType);
+                    relationsFilterObject["RelationType"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrapperrelationsFilterrelationType);
                     relationsFilterObjectpropCount++;
                 }
 
-                if (searchContactsWrapperrelationsFilterforeignFolderName != null)
+                if (__workflow_searchContactsWrapperrelationsFilterforeignFolderName != null)
                 {
-                    relationsFilterObject["ForeignFolderName"] = ExpressionConverter.ConvertO(searchContactsWrapperrelationsFilterforeignFolderName);
+                    relationsFilterObject["ForeignFolderName"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrapperrelationsFilterforeignFolderName);
                     relationsFilterObjectpropCount++;
                 }
 
@@ -3879,15 +4260,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                     searchContactsWrapperpropCount++;
                 }
 
-                if (searchContactsWrapperincludeProfilePictures != null)
+                if (__workflow_searchContactsWrapperincludeProfilePictures != null)
                 {
-                    searchContactsWrapper["includeProfilePictures"] = ExpressionConverter.ConvertO(searchContactsWrapperincludeProfilePictures);
+                    searchContactsWrapper["includeProfilePictures"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrapperincludeProfilePictures);
                     searchContactsWrapperpropCount++;
                 }
 
-                if (searchContactsWrapperbinaryLogicalOperator != null)
+                if (__workflow_searchContactsWrapperbinaryLogicalOperator != null)
                 {
-                    searchContactsWrapper["binaryLogicalOperator"] = ExpressionConverter.ConvertO(searchContactsWrapperbinaryLogicalOperator);
+                    searchContactsWrapper["binaryLogicalOperator"] = ExpressionConverter.ConvertO(__workflow_searchContactsWrapperbinaryLogicalOperator);
                     searchContactsWrapperpropCount++;
                 }
 
@@ -3901,57 +4282,92 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
-        [WorkflowExpressionFactory(nameof(__BuildSearchJournals))]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedJournal> SearchJournals([WorkflowExpression] Func<string> searchJournalsWrappertransmitObjectmarketingSuperiorItemGuid = null, [WorkflowExpression] Func<string> searchJournalsWrappertransmitObjectcompaniesCompanyGuid = null, [WorkflowExpression] Func<string> searchJournalsWrappertransmitObjectcontactsContactGuid = null, [WorkflowExpression] Func<string> searchJournalsWrappertransmitObjectleadsSuperiorItemGuid = null, [WorkflowExpression] Func<string> searchJournalsWrappertransmitObjectprojectsSuperiorItemGuid = null, [WorkflowExpression] Func<string> searchJournalsWrappertransmitObjectmarketingMarketingGuid = null, [WorkflowExpression] Func<string> searchJournalsWrappertransmitObjectcalendarEntryID = null, [WorkflowExpression] Func<string> searchJournalsWrappertransmitObjectcalendarORIGIN = null, [WorkflowExpression] Func<string> searchJournalsWrappertransmitObjectchangedField = null, [WorkflowExpression] Func<string> searchJournalsWrappertransmitObjecteventEnd = null, [WorkflowExpression] Func<string> searchJournalsWrappertransmitObjecteventStart = null, [WorkflowExpression] Func<string> searchJournalsWrappertransmitObjectfieldValue = null, [WorkflowExpression] Func<string> searchJournalsWrappertransmitObjectimportanceEn = null, [WorkflowExpression] Func<string> searchJournalsWrappertransmitObjectnote = null, [WorkflowExpression] Func<string> searchJournalsWrappertransmitObjectprevFieldValue = null, [WorkflowExpression] Func<string> searchJournalsWrappertransmitObjecttypeEn = null, [WorkflowExpression] Func<bool> searchJournalsWrappertransmitObjectisSystem = null, [WorkflowExpression] Func<string> searchJournalsWrappertransmitObjectphone = null, [WorkflowExpression] Func<string> searchJournalsWrappertransmitObjectphoneNormalized = null, [WorkflowExpression] Func<bool> searchJournalsWrappertransmitObjectisGdprRelevant = null, [WorkflowExpression] Func<string> searchJournalsWrappertransmitObjectpicture = null, [WorkflowExpression] Func<int> searchJournalsWrappertransmitObjectpictureWidth = null, [WorkflowExpression] Func<int> searchJournalsWrappertransmitObjectpictureHeight = null, [WorkflowExpression] Func<string> searchJournalsWrappertransmitObjectstateEn = null, [WorkflowExpression] Func<string> searchJournalsWrappertransmitObjectprevStateEn = null, [WorkflowExpression] Func<bool> searchJournalsWrappertransmitObjectisPrivate = null, [WorkflowExpression] Func<string> searchJournalsWrappertransmitObjectserverItemCreated = null, [WorkflowExpression] Func<string> searchJournalsWrappertransmitObjectserverItemChanged = null, [WorkflowExpression] Func<string> searchJournalsWrappertransmitObjectitemCreated = null, [WorkflowExpression] Func<string> searchJournalsWrappertransmitObjectitemChanged = null, [WorkflowExpression] Func<string> searchJournalsWrappertransmitObjectfileAs = null, [WorkflowExpression] Func<string> searchJournalsWrappertransmitObjectownerGUID = null, [WorkflowExpression] Func<string> searchJournalsWrappertransmitObjectcreatedByGUID = null, [WorkflowExpression] Func<string> searchJournalsWrappertransmitObjectmodifiedByGUID = null, [WorkflowExpression] Func<object> searchJournalsWrappertransmitObjectadditionalFields = null, [WorkflowExpression] Func<EWayWcfServiceItemTypesInnerTypesBoundRelation[]> searchJournalsWrappertransmitObjectrelations = null, [WorkflowExpression] Func<string> searchJournalsWrappertransmitObjectitemGUID = null, [WorkflowExpression] Func<int> searchJournalsWrappertransmitObjectitemVersion = null, [WorkflowExpression] Func<bool> searchJournalsWrapperincludeRelations = null, [WorkflowExpression] Func<string> searchJournalsWrapperrelationsFilterrelationType = null, [WorkflowExpression] Func<string> searchJournalsWrapperrelationsFilterforeignFolderName = null, [WorkflowExpression] Func<string> searchJournalsWrapperbinaryLogicalOperator = null)
+        public IBodyWorkflowAction<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedJournal> SearchJournals(Expression<Func<string>> searchJournalsWrappertransmitObjectmarketingSuperiorItemGuid = null, Expression<Func<string>> searchJournalsWrappertransmitObjectcompaniesCompanyGuid = null, Expression<Func<string>> searchJournalsWrappertransmitObjectcontactsContactGuid = null, Expression<Func<string>> searchJournalsWrappertransmitObjectleadsSuperiorItemGuid = null, Expression<Func<string>> searchJournalsWrappertransmitObjectprojectsSuperiorItemGuid = null, Expression<Func<string>> searchJournalsWrappertransmitObjectmarketingMarketingGuid = null, Expression<Func<string>> searchJournalsWrappertransmitObjectcalendarEntryID = null, Expression<Func<string>> searchJournalsWrappertransmitObjectcalendarORIGIN = null, Expression<Func<string>> searchJournalsWrappertransmitObjectchangedField = null, Expression<Func<string>> searchJournalsWrappertransmitObjecteventEnd = null, Expression<Func<string>> searchJournalsWrappertransmitObjecteventStart = null, Expression<Func<string>> searchJournalsWrappertransmitObjectfieldValue = null, Expression<Func<string>> searchJournalsWrappertransmitObjectimportanceEn = null, Expression<Func<string>> searchJournalsWrappertransmitObjectnote = null, Expression<Func<string>> searchJournalsWrappertransmitObjectprevFieldValue = null, Expression<Func<string>> searchJournalsWrappertransmitObjecttypeEn = null, Expression<Func<bool>> searchJournalsWrappertransmitObjectisSystem = null, Expression<Func<string>> searchJournalsWrappertransmitObjectphone = null, Expression<Func<string>> searchJournalsWrappertransmitObjectphoneNormalized = null, Expression<Func<bool>> searchJournalsWrappertransmitObjectisGdprRelevant = null, Expression<Func<string>> searchJournalsWrappertransmitObjectpicture = null, Expression<Func<int>> searchJournalsWrappertransmitObjectpictureWidth = null, Expression<Func<int>> searchJournalsWrappertransmitObjectpictureHeight = null, Expression<Func<string>> searchJournalsWrappertransmitObjectstateEn = null, Expression<Func<string>> searchJournalsWrappertransmitObjectprevStateEn = null, Expression<Func<bool>> searchJournalsWrappertransmitObjectisPrivate = null, Expression<Func<string>> searchJournalsWrappertransmitObjectserverItemCreated = null, Expression<Func<string>> searchJournalsWrappertransmitObjectserverItemChanged = null, Expression<Func<string>> searchJournalsWrappertransmitObjectitemCreated = null, Expression<Func<string>> searchJournalsWrappertransmitObjectitemChanged = null, Expression<Func<string>> searchJournalsWrappertransmitObjectfileAs = null, Expression<Func<string>> searchJournalsWrappertransmitObjectownerGUID = null, Expression<Func<string>> searchJournalsWrappertransmitObjectcreatedByGUID = null, Expression<Func<string>> searchJournalsWrappertransmitObjectmodifiedByGUID = null, Expression<Func<object>> searchJournalsWrappertransmitObjectadditionalFields = null, Expression<Func<EWayWcfServiceItemTypesInnerTypesBoundRelation[]>> searchJournalsWrappertransmitObjectrelations = null, Expression<Func<string>> searchJournalsWrappertransmitObjectitemGUID = null, Expression<Func<int>> searchJournalsWrappertransmitObjectitemVersion = null, Expression<Func<bool>> searchJournalsWrapperincludeRelations = null, Expression<Func<string>> searchJournalsWrapperrelationsFilterrelationType = null, Expression<Func<string>> searchJournalsWrapperrelationsFilterforeignFolderName = null, Expression<Func<string>> searchJournalsWrapperbinaryLogicalOperator = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedJournal> __BuildSearchJournals(WorkflowExpression<string> searchJournalsWrappertransmitObjectmarketingSuperiorItemGuid = null, WorkflowExpression<string> searchJournalsWrappertransmitObjectcompaniesCompanyGuid = null, WorkflowExpression<string> searchJournalsWrappertransmitObjectcontactsContactGuid = null, WorkflowExpression<string> searchJournalsWrappertransmitObjectleadsSuperiorItemGuid = null, WorkflowExpression<string> searchJournalsWrappertransmitObjectprojectsSuperiorItemGuid = null, WorkflowExpression<string> searchJournalsWrappertransmitObjectmarketingMarketingGuid = null, WorkflowExpression<string> searchJournalsWrappertransmitObjectcalendarEntryID = null, WorkflowExpression<string> searchJournalsWrappertransmitObjectcalendarORIGIN = null, WorkflowExpression<string> searchJournalsWrappertransmitObjectchangedField = null, WorkflowExpression<string> searchJournalsWrappertransmitObjecteventEnd = null, WorkflowExpression<string> searchJournalsWrappertransmitObjecteventStart = null, WorkflowExpression<string> searchJournalsWrappertransmitObjectfieldValue = null, WorkflowExpression<string> searchJournalsWrappertransmitObjectimportanceEn = null, WorkflowExpression<string> searchJournalsWrappertransmitObjectnote = null, WorkflowExpression<string> searchJournalsWrappertransmitObjectprevFieldValue = null, WorkflowExpression<string> searchJournalsWrappertransmitObjecttypeEn = null, WorkflowExpression<bool> searchJournalsWrappertransmitObjectisSystem = null, WorkflowExpression<string> searchJournalsWrappertransmitObjectphone = null, WorkflowExpression<string> searchJournalsWrappertransmitObjectphoneNormalized = null, WorkflowExpression<bool> searchJournalsWrappertransmitObjectisGdprRelevant = null, WorkflowExpression<string> searchJournalsWrappertransmitObjectpicture = null, WorkflowExpression<int> searchJournalsWrappertransmitObjectpictureWidth = null, WorkflowExpression<int> searchJournalsWrappertransmitObjectpictureHeight = null, WorkflowExpression<string> searchJournalsWrappertransmitObjectstateEn = null, WorkflowExpression<string> searchJournalsWrappertransmitObjectprevStateEn = null, WorkflowExpression<bool> searchJournalsWrappertransmitObjectisPrivate = null, WorkflowExpression<string> searchJournalsWrappertransmitObjectserverItemCreated = null, WorkflowExpression<string> searchJournalsWrappertransmitObjectserverItemChanged = null, WorkflowExpression<string> searchJournalsWrappertransmitObjectitemCreated = null, WorkflowExpression<string> searchJournalsWrappertransmitObjectitemChanged = null, WorkflowExpression<string> searchJournalsWrappertransmitObjectfileAs = null, WorkflowExpression<string> searchJournalsWrappertransmitObjectownerGUID = null, WorkflowExpression<string> searchJournalsWrappertransmitObjectcreatedByGUID = null, WorkflowExpression<string> searchJournalsWrappertransmitObjectmodifiedByGUID = null, WorkflowExpression<object> searchJournalsWrappertransmitObjectadditionalFields = null, WorkflowExpression<EWayWcfServiceItemTypesInnerTypesBoundRelation[]> searchJournalsWrappertransmitObjectrelations = null, WorkflowExpression<string> searchJournalsWrappertransmitObjectitemGUID = null, WorkflowExpression<int> searchJournalsWrappertransmitObjectitemVersion = null, WorkflowExpression<bool> searchJournalsWrapperincludeRelations = null, WorkflowExpression<string> searchJournalsWrapperrelationsFilterrelationType = null, WorkflowExpression<string> searchJournalsWrapperrelationsFilterforeignFolderName = null, WorkflowExpression<string> searchJournalsWrapperbinaryLogicalOperator = null)
-        {
-            WorkflowExpression.Validate(searchJournalsWrappertransmitObjectmarketingSuperiorItemGuid, nameof(searchJournalsWrappertransmitObjectmarketingSuperiorItemGuid), required: false);
-            WorkflowExpression.Validate(searchJournalsWrappertransmitObjectcompaniesCompanyGuid, nameof(searchJournalsWrappertransmitObjectcompaniesCompanyGuid), required: false);
-            WorkflowExpression.Validate(searchJournalsWrappertransmitObjectcontactsContactGuid, nameof(searchJournalsWrappertransmitObjectcontactsContactGuid), required: false);
-            WorkflowExpression.Validate(searchJournalsWrappertransmitObjectleadsSuperiorItemGuid, nameof(searchJournalsWrappertransmitObjectleadsSuperiorItemGuid), required: false);
-            WorkflowExpression.Validate(searchJournalsWrappertransmitObjectprojectsSuperiorItemGuid, nameof(searchJournalsWrappertransmitObjectprojectsSuperiorItemGuid), required: false);
-            WorkflowExpression.Validate(searchJournalsWrappertransmitObjectmarketingMarketingGuid, nameof(searchJournalsWrappertransmitObjectmarketingMarketingGuid), required: false);
-            WorkflowExpression.Validate(searchJournalsWrappertransmitObjectcalendarEntryID, nameof(searchJournalsWrappertransmitObjectcalendarEntryID), required: false);
-            WorkflowExpression.Validate(searchJournalsWrappertransmitObjectcalendarORIGIN, nameof(searchJournalsWrappertransmitObjectcalendarORIGIN), required: false);
-            WorkflowExpression.Validate(searchJournalsWrappertransmitObjectchangedField, nameof(searchJournalsWrappertransmitObjectchangedField), required: false);
-            WorkflowExpression.Validate(searchJournalsWrappertransmitObjecteventEnd, nameof(searchJournalsWrappertransmitObjecteventEnd), required: false);
-            WorkflowExpression.Validate(searchJournalsWrappertransmitObjecteventStart, nameof(searchJournalsWrappertransmitObjecteventStart), required: false);
-            WorkflowExpression.Validate(searchJournalsWrappertransmitObjectfieldValue, nameof(searchJournalsWrappertransmitObjectfieldValue), required: false);
-            WorkflowExpression.Validate(searchJournalsWrappertransmitObjectimportanceEn, nameof(searchJournalsWrappertransmitObjectimportanceEn), required: false);
-            WorkflowExpression.Validate(searchJournalsWrappertransmitObjectnote, nameof(searchJournalsWrappertransmitObjectnote), required: false);
-            WorkflowExpression.Validate(searchJournalsWrappertransmitObjectprevFieldValue, nameof(searchJournalsWrappertransmitObjectprevFieldValue), required: false);
-            WorkflowExpression.Validate(searchJournalsWrappertransmitObjecttypeEn, nameof(searchJournalsWrappertransmitObjecttypeEn), required: false);
-            WorkflowExpression.Validate(searchJournalsWrappertransmitObjectisSystem, nameof(searchJournalsWrappertransmitObjectisSystem), required: false);
-            WorkflowExpression.Validate(searchJournalsWrappertransmitObjectphone, nameof(searchJournalsWrappertransmitObjectphone), required: false);
-            WorkflowExpression.Validate(searchJournalsWrappertransmitObjectphoneNormalized, nameof(searchJournalsWrappertransmitObjectphoneNormalized), required: false);
-            WorkflowExpression.Validate(searchJournalsWrappertransmitObjectisGdprRelevant, nameof(searchJournalsWrappertransmitObjectisGdprRelevant), required: false);
-            WorkflowExpression.Validate(searchJournalsWrappertransmitObjectpicture, nameof(searchJournalsWrappertransmitObjectpicture), required: false);
-            WorkflowExpression.Validate(searchJournalsWrappertransmitObjectpictureWidth, nameof(searchJournalsWrappertransmitObjectpictureWidth), required: false);
-            WorkflowExpression.Validate(searchJournalsWrappertransmitObjectpictureHeight, nameof(searchJournalsWrappertransmitObjectpictureHeight), required: false);
-            WorkflowExpression.Validate(searchJournalsWrappertransmitObjectstateEn, nameof(searchJournalsWrappertransmitObjectstateEn), required: false);
-            WorkflowExpression.Validate(searchJournalsWrappertransmitObjectprevStateEn, nameof(searchJournalsWrappertransmitObjectprevStateEn), required: false);
-            WorkflowExpression.Validate(searchJournalsWrappertransmitObjectisPrivate, nameof(searchJournalsWrappertransmitObjectisPrivate), required: false);
-            WorkflowExpression.Validate(searchJournalsWrappertransmitObjectserverItemCreated, nameof(searchJournalsWrappertransmitObjectserverItemCreated), required: false);
-            WorkflowExpression.Validate(searchJournalsWrappertransmitObjectserverItemChanged, nameof(searchJournalsWrappertransmitObjectserverItemChanged), required: false);
-            WorkflowExpression.Validate(searchJournalsWrappertransmitObjectitemCreated, nameof(searchJournalsWrappertransmitObjectitemCreated), required: false);
-            WorkflowExpression.Validate(searchJournalsWrappertransmitObjectitemChanged, nameof(searchJournalsWrappertransmitObjectitemChanged), required: false);
-            WorkflowExpression.Validate(searchJournalsWrappertransmitObjectfileAs, nameof(searchJournalsWrappertransmitObjectfileAs), required: false);
-            WorkflowExpression.Validate(searchJournalsWrappertransmitObjectownerGUID, nameof(searchJournalsWrappertransmitObjectownerGUID), required: false);
-            WorkflowExpression.Validate(searchJournalsWrappertransmitObjectcreatedByGUID, nameof(searchJournalsWrappertransmitObjectcreatedByGUID), required: false);
-            WorkflowExpression.Validate(searchJournalsWrappertransmitObjectmodifiedByGUID, nameof(searchJournalsWrappertransmitObjectmodifiedByGUID), required: false);
-            WorkflowExpression.Validate(searchJournalsWrappertransmitObjectadditionalFields, nameof(searchJournalsWrappertransmitObjectadditionalFields), required: false);
-            WorkflowExpression.Validate(searchJournalsWrappertransmitObjectrelations, nameof(searchJournalsWrappertransmitObjectrelations), required: false);
-            WorkflowExpression.Validate(searchJournalsWrappertransmitObjectitemGUID, nameof(searchJournalsWrappertransmitObjectitemGUID), required: false);
-            WorkflowExpression.Validate(searchJournalsWrappertransmitObjectitemVersion, nameof(searchJournalsWrappertransmitObjectitemVersion), required: false);
-            WorkflowExpression.Validate(searchJournalsWrapperincludeRelations, nameof(searchJournalsWrapperincludeRelations), required: false);
-            WorkflowExpression.Validate(searchJournalsWrapperrelationsFilterrelationType, nameof(searchJournalsWrapperrelationsFilterrelationType), required: false);
-            WorkflowExpression.Validate(searchJournalsWrapperrelationsFilterforeignFolderName, nameof(searchJournalsWrapperrelationsFilterforeignFolderName), required: false);
-            WorkflowExpression.Validate(searchJournalsWrapperbinaryLogicalOperator, nameof(searchJournalsWrapperbinaryLogicalOperator), required: false);
+            var __workflow_searchJournalsWrappertransmitObjectmarketingSuperiorItemGuid = searchJournalsWrappertransmitObjectmarketingSuperiorItemGuid == null ? null : WorkflowExpression.Compile(searchJournalsWrappertransmitObjectmarketingSuperiorItemGuid);
+            WorkflowExpression.Validate(__workflow_searchJournalsWrappertransmitObjectmarketingSuperiorItemGuid, nameof(searchJournalsWrappertransmitObjectmarketingSuperiorItemGuid), required: false);
+            var __workflow_searchJournalsWrappertransmitObjectcompaniesCompanyGuid = searchJournalsWrappertransmitObjectcompaniesCompanyGuid == null ? null : WorkflowExpression.Compile(searchJournalsWrappertransmitObjectcompaniesCompanyGuid);
+            WorkflowExpression.Validate(__workflow_searchJournalsWrappertransmitObjectcompaniesCompanyGuid, nameof(searchJournalsWrappertransmitObjectcompaniesCompanyGuid), required: false);
+            var __workflow_searchJournalsWrappertransmitObjectcontactsContactGuid = searchJournalsWrappertransmitObjectcontactsContactGuid == null ? null : WorkflowExpression.Compile(searchJournalsWrappertransmitObjectcontactsContactGuid);
+            WorkflowExpression.Validate(__workflow_searchJournalsWrappertransmitObjectcontactsContactGuid, nameof(searchJournalsWrappertransmitObjectcontactsContactGuid), required: false);
+            var __workflow_searchJournalsWrappertransmitObjectleadsSuperiorItemGuid = searchJournalsWrappertransmitObjectleadsSuperiorItemGuid == null ? null : WorkflowExpression.Compile(searchJournalsWrappertransmitObjectleadsSuperiorItemGuid);
+            WorkflowExpression.Validate(__workflow_searchJournalsWrappertransmitObjectleadsSuperiorItemGuid, nameof(searchJournalsWrappertransmitObjectleadsSuperiorItemGuid), required: false);
+            var __workflow_searchJournalsWrappertransmitObjectprojectsSuperiorItemGuid = searchJournalsWrappertransmitObjectprojectsSuperiorItemGuid == null ? null : WorkflowExpression.Compile(searchJournalsWrappertransmitObjectprojectsSuperiorItemGuid);
+            WorkflowExpression.Validate(__workflow_searchJournalsWrappertransmitObjectprojectsSuperiorItemGuid, nameof(searchJournalsWrappertransmitObjectprojectsSuperiorItemGuid), required: false);
+            var __workflow_searchJournalsWrappertransmitObjectmarketingMarketingGuid = searchJournalsWrappertransmitObjectmarketingMarketingGuid == null ? null : WorkflowExpression.Compile(searchJournalsWrappertransmitObjectmarketingMarketingGuid);
+            WorkflowExpression.Validate(__workflow_searchJournalsWrappertransmitObjectmarketingMarketingGuid, nameof(searchJournalsWrappertransmitObjectmarketingMarketingGuid), required: false);
+            var __workflow_searchJournalsWrappertransmitObjectcalendarEntryID = searchJournalsWrappertransmitObjectcalendarEntryID == null ? null : WorkflowExpression.Compile(searchJournalsWrappertransmitObjectcalendarEntryID);
+            WorkflowExpression.Validate(__workflow_searchJournalsWrappertransmitObjectcalendarEntryID, nameof(searchJournalsWrappertransmitObjectcalendarEntryID), required: false);
+            var __workflow_searchJournalsWrappertransmitObjectcalendarORIGIN = searchJournalsWrappertransmitObjectcalendarORIGIN == null ? null : WorkflowExpression.Compile(searchJournalsWrappertransmitObjectcalendarORIGIN);
+            WorkflowExpression.Validate(__workflow_searchJournalsWrappertransmitObjectcalendarORIGIN, nameof(searchJournalsWrappertransmitObjectcalendarORIGIN), required: false);
+            var __workflow_searchJournalsWrappertransmitObjectchangedField = searchJournalsWrappertransmitObjectchangedField == null ? null : WorkflowExpression.Compile(searchJournalsWrappertransmitObjectchangedField);
+            WorkflowExpression.Validate(__workflow_searchJournalsWrappertransmitObjectchangedField, nameof(searchJournalsWrappertransmitObjectchangedField), required: false);
+            var __workflow_searchJournalsWrappertransmitObjecteventEnd = searchJournalsWrappertransmitObjecteventEnd == null ? null : WorkflowExpression.Compile(searchJournalsWrappertransmitObjecteventEnd);
+            WorkflowExpression.Validate(__workflow_searchJournalsWrappertransmitObjecteventEnd, nameof(searchJournalsWrappertransmitObjecteventEnd), required: false);
+            var __workflow_searchJournalsWrappertransmitObjecteventStart = searchJournalsWrappertransmitObjecteventStart == null ? null : WorkflowExpression.Compile(searchJournalsWrappertransmitObjecteventStart);
+            WorkflowExpression.Validate(__workflow_searchJournalsWrappertransmitObjecteventStart, nameof(searchJournalsWrappertransmitObjecteventStart), required: false);
+            var __workflow_searchJournalsWrappertransmitObjectfieldValue = searchJournalsWrappertransmitObjectfieldValue == null ? null : WorkflowExpression.Compile(searchJournalsWrappertransmitObjectfieldValue);
+            WorkflowExpression.Validate(__workflow_searchJournalsWrappertransmitObjectfieldValue, nameof(searchJournalsWrappertransmitObjectfieldValue), required: false);
+            var __workflow_searchJournalsWrappertransmitObjectimportanceEn = searchJournalsWrappertransmitObjectimportanceEn == null ? null : WorkflowExpression.Compile(searchJournalsWrappertransmitObjectimportanceEn);
+            WorkflowExpression.Validate(__workflow_searchJournalsWrappertransmitObjectimportanceEn, nameof(searchJournalsWrappertransmitObjectimportanceEn), required: false);
+            var __workflow_searchJournalsWrappertransmitObjectnote = searchJournalsWrappertransmitObjectnote == null ? null : WorkflowExpression.Compile(searchJournalsWrappertransmitObjectnote);
+            WorkflowExpression.Validate(__workflow_searchJournalsWrappertransmitObjectnote, nameof(searchJournalsWrappertransmitObjectnote), required: false);
+            var __workflow_searchJournalsWrappertransmitObjectprevFieldValue = searchJournalsWrappertransmitObjectprevFieldValue == null ? null : WorkflowExpression.Compile(searchJournalsWrappertransmitObjectprevFieldValue);
+            WorkflowExpression.Validate(__workflow_searchJournalsWrappertransmitObjectprevFieldValue, nameof(searchJournalsWrappertransmitObjectprevFieldValue), required: false);
+            var __workflow_searchJournalsWrappertransmitObjecttypeEn = searchJournalsWrappertransmitObjecttypeEn == null ? null : WorkflowExpression.Compile(searchJournalsWrappertransmitObjecttypeEn);
+            WorkflowExpression.Validate(__workflow_searchJournalsWrappertransmitObjecttypeEn, nameof(searchJournalsWrappertransmitObjecttypeEn), required: false);
+            var __workflow_searchJournalsWrappertransmitObjectisSystem = searchJournalsWrappertransmitObjectisSystem == null ? null : WorkflowExpression.Compile(searchJournalsWrappertransmitObjectisSystem);
+            WorkflowExpression.Validate(__workflow_searchJournalsWrappertransmitObjectisSystem, nameof(searchJournalsWrappertransmitObjectisSystem), required: false);
+            var __workflow_searchJournalsWrappertransmitObjectphone = searchJournalsWrappertransmitObjectphone == null ? null : WorkflowExpression.Compile(searchJournalsWrappertransmitObjectphone);
+            WorkflowExpression.Validate(__workflow_searchJournalsWrappertransmitObjectphone, nameof(searchJournalsWrappertransmitObjectphone), required: false);
+            var __workflow_searchJournalsWrappertransmitObjectphoneNormalized = searchJournalsWrappertransmitObjectphoneNormalized == null ? null : WorkflowExpression.Compile(searchJournalsWrappertransmitObjectphoneNormalized);
+            WorkflowExpression.Validate(__workflow_searchJournalsWrappertransmitObjectphoneNormalized, nameof(searchJournalsWrappertransmitObjectphoneNormalized), required: false);
+            var __workflow_searchJournalsWrappertransmitObjectisGdprRelevant = searchJournalsWrappertransmitObjectisGdprRelevant == null ? null : WorkflowExpression.Compile(searchJournalsWrappertransmitObjectisGdprRelevant);
+            WorkflowExpression.Validate(__workflow_searchJournalsWrappertransmitObjectisGdprRelevant, nameof(searchJournalsWrappertransmitObjectisGdprRelevant), required: false);
+            var __workflow_searchJournalsWrappertransmitObjectpicture = searchJournalsWrappertransmitObjectpicture == null ? null : WorkflowExpression.Compile(searchJournalsWrappertransmitObjectpicture);
+            WorkflowExpression.Validate(__workflow_searchJournalsWrappertransmitObjectpicture, nameof(searchJournalsWrappertransmitObjectpicture), required: false);
+            var __workflow_searchJournalsWrappertransmitObjectpictureWidth = searchJournalsWrappertransmitObjectpictureWidth == null ? null : WorkflowExpression.Compile(searchJournalsWrappertransmitObjectpictureWidth);
+            WorkflowExpression.Validate(__workflow_searchJournalsWrappertransmitObjectpictureWidth, nameof(searchJournalsWrappertransmitObjectpictureWidth), required: false);
+            var __workflow_searchJournalsWrappertransmitObjectpictureHeight = searchJournalsWrappertransmitObjectpictureHeight == null ? null : WorkflowExpression.Compile(searchJournalsWrappertransmitObjectpictureHeight);
+            WorkflowExpression.Validate(__workflow_searchJournalsWrappertransmitObjectpictureHeight, nameof(searchJournalsWrappertransmitObjectpictureHeight), required: false);
+            var __workflow_searchJournalsWrappertransmitObjectstateEn = searchJournalsWrappertransmitObjectstateEn == null ? null : WorkflowExpression.Compile(searchJournalsWrappertransmitObjectstateEn);
+            WorkflowExpression.Validate(__workflow_searchJournalsWrappertransmitObjectstateEn, nameof(searchJournalsWrappertransmitObjectstateEn), required: false);
+            var __workflow_searchJournalsWrappertransmitObjectprevStateEn = searchJournalsWrappertransmitObjectprevStateEn == null ? null : WorkflowExpression.Compile(searchJournalsWrappertransmitObjectprevStateEn);
+            WorkflowExpression.Validate(__workflow_searchJournalsWrappertransmitObjectprevStateEn, nameof(searchJournalsWrappertransmitObjectprevStateEn), required: false);
+            var __workflow_searchJournalsWrappertransmitObjectisPrivate = searchJournalsWrappertransmitObjectisPrivate == null ? null : WorkflowExpression.Compile(searchJournalsWrappertransmitObjectisPrivate);
+            WorkflowExpression.Validate(__workflow_searchJournalsWrappertransmitObjectisPrivate, nameof(searchJournalsWrappertransmitObjectisPrivate), required: false);
+            var __workflow_searchJournalsWrappertransmitObjectserverItemCreated = searchJournalsWrappertransmitObjectserverItemCreated == null ? null : WorkflowExpression.Compile(searchJournalsWrappertransmitObjectserverItemCreated);
+            WorkflowExpression.Validate(__workflow_searchJournalsWrappertransmitObjectserverItemCreated, nameof(searchJournalsWrappertransmitObjectserverItemCreated), required: false);
+            var __workflow_searchJournalsWrappertransmitObjectserverItemChanged = searchJournalsWrappertransmitObjectserverItemChanged == null ? null : WorkflowExpression.Compile(searchJournalsWrappertransmitObjectserverItemChanged);
+            WorkflowExpression.Validate(__workflow_searchJournalsWrappertransmitObjectserverItemChanged, nameof(searchJournalsWrappertransmitObjectserverItemChanged), required: false);
+            var __workflow_searchJournalsWrappertransmitObjectitemCreated = searchJournalsWrappertransmitObjectitemCreated == null ? null : WorkflowExpression.Compile(searchJournalsWrappertransmitObjectitemCreated);
+            WorkflowExpression.Validate(__workflow_searchJournalsWrappertransmitObjectitemCreated, nameof(searchJournalsWrappertransmitObjectitemCreated), required: false);
+            var __workflow_searchJournalsWrappertransmitObjectitemChanged = searchJournalsWrappertransmitObjectitemChanged == null ? null : WorkflowExpression.Compile(searchJournalsWrappertransmitObjectitemChanged);
+            WorkflowExpression.Validate(__workflow_searchJournalsWrappertransmitObjectitemChanged, nameof(searchJournalsWrappertransmitObjectitemChanged), required: false);
+            var __workflow_searchJournalsWrappertransmitObjectfileAs = searchJournalsWrappertransmitObjectfileAs == null ? null : WorkflowExpression.Compile(searchJournalsWrappertransmitObjectfileAs);
+            WorkflowExpression.Validate(__workflow_searchJournalsWrappertransmitObjectfileAs, nameof(searchJournalsWrappertransmitObjectfileAs), required: false);
+            var __workflow_searchJournalsWrappertransmitObjectownerGUID = searchJournalsWrappertransmitObjectownerGUID == null ? null : WorkflowExpression.Compile(searchJournalsWrappertransmitObjectownerGUID);
+            WorkflowExpression.Validate(__workflow_searchJournalsWrappertransmitObjectownerGUID, nameof(searchJournalsWrappertransmitObjectownerGUID), required: false);
+            var __workflow_searchJournalsWrappertransmitObjectcreatedByGUID = searchJournalsWrappertransmitObjectcreatedByGUID == null ? null : WorkflowExpression.Compile(searchJournalsWrappertransmitObjectcreatedByGUID);
+            WorkflowExpression.Validate(__workflow_searchJournalsWrappertransmitObjectcreatedByGUID, nameof(searchJournalsWrappertransmitObjectcreatedByGUID), required: false);
+            var __workflow_searchJournalsWrappertransmitObjectmodifiedByGUID = searchJournalsWrappertransmitObjectmodifiedByGUID == null ? null : WorkflowExpression.Compile(searchJournalsWrappertransmitObjectmodifiedByGUID);
+            WorkflowExpression.Validate(__workflow_searchJournalsWrappertransmitObjectmodifiedByGUID, nameof(searchJournalsWrappertransmitObjectmodifiedByGUID), required: false);
+            var __workflow_searchJournalsWrappertransmitObjectadditionalFields = searchJournalsWrappertransmitObjectadditionalFields == null ? null : WorkflowExpression.Compile(searchJournalsWrappertransmitObjectadditionalFields);
+            WorkflowExpression.Validate(__workflow_searchJournalsWrappertransmitObjectadditionalFields, nameof(searchJournalsWrappertransmitObjectadditionalFields), required: false);
+            var __workflow_searchJournalsWrappertransmitObjectrelations = searchJournalsWrappertransmitObjectrelations == null ? null : WorkflowExpression.Compile(searchJournalsWrappertransmitObjectrelations);
+            WorkflowExpression.Validate(__workflow_searchJournalsWrappertransmitObjectrelations, nameof(searchJournalsWrappertransmitObjectrelations), required: false);
+            var __workflow_searchJournalsWrappertransmitObjectitemGUID = searchJournalsWrappertransmitObjectitemGUID == null ? null : WorkflowExpression.Compile(searchJournalsWrappertransmitObjectitemGUID);
+            WorkflowExpression.Validate(__workflow_searchJournalsWrappertransmitObjectitemGUID, nameof(searchJournalsWrappertransmitObjectitemGUID), required: false);
+            var __workflow_searchJournalsWrappertransmitObjectitemVersion = searchJournalsWrappertransmitObjectitemVersion == null ? null : WorkflowExpression.Compile(searchJournalsWrappertransmitObjectitemVersion);
+            WorkflowExpression.Validate(__workflow_searchJournalsWrappertransmitObjectitemVersion, nameof(searchJournalsWrappertransmitObjectitemVersion), required: false);
+            var __workflow_searchJournalsWrapperincludeRelations = searchJournalsWrapperincludeRelations == null ? null : WorkflowExpression.Compile(searchJournalsWrapperincludeRelations);
+            WorkflowExpression.Validate(__workflow_searchJournalsWrapperincludeRelations, nameof(searchJournalsWrapperincludeRelations), required: false);
+            var __workflow_searchJournalsWrapperrelationsFilterrelationType = searchJournalsWrapperrelationsFilterrelationType == null ? null : WorkflowExpression.Compile(searchJournalsWrapperrelationsFilterrelationType);
+            WorkflowExpression.Validate(__workflow_searchJournalsWrapperrelationsFilterrelationType, nameof(searchJournalsWrapperrelationsFilterrelationType), required: false);
+            var __workflow_searchJournalsWrapperrelationsFilterforeignFolderName = searchJournalsWrapperrelationsFilterforeignFolderName == null ? null : WorkflowExpression.Compile(searchJournalsWrapperrelationsFilterforeignFolderName);
+            WorkflowExpression.Validate(__workflow_searchJournalsWrapperrelationsFilterforeignFolderName, nameof(searchJournalsWrapperrelationsFilterforeignFolderName), required: false);
+            var __workflow_searchJournalsWrapperbinaryLogicalOperator = searchJournalsWrapperbinaryLogicalOperator == null ? null : WorkflowExpression.Compile(searchJournalsWrapperbinaryLogicalOperator);
+            WorkflowExpression.Validate(__workflow_searchJournalsWrapperbinaryLogicalOperator, nameof(searchJournalsWrapperbinaryLogicalOperator), required: false);
             return new DeferredBodyAction<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedJournal>(() =>
             {
                 var apiCallPath = "/SearchJournals";
@@ -3961,231 +4377,231 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                 var searchJournalsWrapperpropCount = 0;
                 var transmitObjectObject = new JObject();
                 var transmitObjectObjectpropCount = 0;
-                if (searchJournalsWrappertransmitObjectmarketingSuperiorItemGuid != null)
+                if (__workflow_searchJournalsWrappertransmitObjectmarketingSuperiorItemGuid != null)
                 {
-                    transmitObjectObject["Marketing_SuperiorItemGuid"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectmarketingSuperiorItemGuid);
+                    transmitObjectObject["Marketing_SuperiorItemGuid"] = ExpressionConverter.ConvertO(__workflow_searchJournalsWrappertransmitObjectmarketingSuperiorItemGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchJournalsWrappertransmitObjectcompaniesCompanyGuid != null)
+                if (__workflow_searchJournalsWrappertransmitObjectcompaniesCompanyGuid != null)
                 {
-                    transmitObjectObject["Companies_CompanyGuid"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectcompaniesCompanyGuid);
+                    transmitObjectObject["Companies_CompanyGuid"] = ExpressionConverter.ConvertO(__workflow_searchJournalsWrappertransmitObjectcompaniesCompanyGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchJournalsWrappertransmitObjectcontactsContactGuid != null)
+                if (__workflow_searchJournalsWrappertransmitObjectcontactsContactGuid != null)
                 {
-                    transmitObjectObject["Contacts_ContactGuid"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectcontactsContactGuid);
+                    transmitObjectObject["Contacts_ContactGuid"] = ExpressionConverter.ConvertO(__workflow_searchJournalsWrappertransmitObjectcontactsContactGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchJournalsWrappertransmitObjectleadsSuperiorItemGuid != null)
+                if (__workflow_searchJournalsWrappertransmitObjectleadsSuperiorItemGuid != null)
                 {
-                    transmitObjectObject["Leads_SuperiorItemGuid"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectleadsSuperiorItemGuid);
+                    transmitObjectObject["Leads_SuperiorItemGuid"] = ExpressionConverter.ConvertO(__workflow_searchJournalsWrappertransmitObjectleadsSuperiorItemGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchJournalsWrappertransmitObjectprojectsSuperiorItemGuid != null)
+                if (__workflow_searchJournalsWrappertransmitObjectprojectsSuperiorItemGuid != null)
                 {
-                    transmitObjectObject["Projects_SuperiorItemGuid"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectprojectsSuperiorItemGuid);
+                    transmitObjectObject["Projects_SuperiorItemGuid"] = ExpressionConverter.ConvertO(__workflow_searchJournalsWrappertransmitObjectprojectsSuperiorItemGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchJournalsWrappertransmitObjectmarketingMarketingGuid != null)
+                if (__workflow_searchJournalsWrappertransmitObjectmarketingMarketingGuid != null)
                 {
-                    transmitObjectObject["Marketing_MarketingGuid"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectmarketingMarketingGuid);
+                    transmitObjectObject["Marketing_MarketingGuid"] = ExpressionConverter.ConvertO(__workflow_searchJournalsWrappertransmitObjectmarketingMarketingGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchJournalsWrappertransmitObjectcalendarEntryID != null)
+                if (__workflow_searchJournalsWrappertransmitObjectcalendarEntryID != null)
                 {
-                    transmitObjectObject["CalendarEntryID"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectcalendarEntryID);
+                    transmitObjectObject["CalendarEntryID"] = ExpressionConverter.ConvertO(__workflow_searchJournalsWrappertransmitObjectcalendarEntryID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchJournalsWrappertransmitObjectcalendarORIGIN != null)
+                if (__workflow_searchJournalsWrappertransmitObjectcalendarORIGIN != null)
                 {
-                    transmitObjectObject["Calendar_ORIGIN"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectcalendarORIGIN);
+                    transmitObjectObject["Calendar_ORIGIN"] = ExpressionConverter.ConvertO(__workflow_searchJournalsWrappertransmitObjectcalendarORIGIN);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchJournalsWrappertransmitObjectchangedField != null)
+                if (__workflow_searchJournalsWrappertransmitObjectchangedField != null)
                 {
-                    transmitObjectObject["ChangedField"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectchangedField);
+                    transmitObjectObject["ChangedField"] = ExpressionConverter.ConvertO(__workflow_searchJournalsWrappertransmitObjectchangedField);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchJournalsWrappertransmitObjecteventEnd != null)
+                if (__workflow_searchJournalsWrappertransmitObjecteventEnd != null)
                 {
-                    transmitObjectObject["EventEnd"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjecteventEnd);
+                    transmitObjectObject["EventEnd"] = ExpressionConverter.ConvertO(__workflow_searchJournalsWrappertransmitObjecteventEnd);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchJournalsWrappertransmitObjecteventStart != null)
+                if (__workflow_searchJournalsWrappertransmitObjecteventStart != null)
                 {
-                    transmitObjectObject["EventStart"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjecteventStart);
+                    transmitObjectObject["EventStart"] = ExpressionConverter.ConvertO(__workflow_searchJournalsWrappertransmitObjecteventStart);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchJournalsWrappertransmitObjectfieldValue != null)
+                if (__workflow_searchJournalsWrappertransmitObjectfieldValue != null)
                 {
-                    transmitObjectObject["FieldValue"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectfieldValue);
+                    transmitObjectObject["FieldValue"] = ExpressionConverter.ConvertO(__workflow_searchJournalsWrappertransmitObjectfieldValue);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchJournalsWrappertransmitObjectimportanceEn != null)
+                if (__workflow_searchJournalsWrappertransmitObjectimportanceEn != null)
                 {
-                    transmitObjectObject["ImportanceEn"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectimportanceEn);
+                    transmitObjectObject["ImportanceEn"] = ExpressionConverter.ConvertO(__workflow_searchJournalsWrappertransmitObjectimportanceEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchJournalsWrappertransmitObjectnote != null)
+                if (__workflow_searchJournalsWrappertransmitObjectnote != null)
                 {
-                    transmitObjectObject["Note"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectnote);
+                    transmitObjectObject["Note"] = ExpressionConverter.ConvertO(__workflow_searchJournalsWrappertransmitObjectnote);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchJournalsWrappertransmitObjectprevFieldValue != null)
+                if (__workflow_searchJournalsWrappertransmitObjectprevFieldValue != null)
                 {
-                    transmitObjectObject["PrevFieldValue"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectprevFieldValue);
+                    transmitObjectObject["PrevFieldValue"] = ExpressionConverter.ConvertO(__workflow_searchJournalsWrappertransmitObjectprevFieldValue);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchJournalsWrappertransmitObjecttypeEn != null)
+                if (__workflow_searchJournalsWrappertransmitObjecttypeEn != null)
                 {
-                    transmitObjectObject["TypeEn"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjecttypeEn);
+                    transmitObjectObject["TypeEn"] = ExpressionConverter.ConvertO(__workflow_searchJournalsWrappertransmitObjecttypeEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchJournalsWrappertransmitObjectisSystem != null)
+                if (__workflow_searchJournalsWrappertransmitObjectisSystem != null)
                 {
-                    transmitObjectObject["IsSystem"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectisSystem);
+                    transmitObjectObject["IsSystem"] = ExpressionConverter.ConvertO(__workflow_searchJournalsWrappertransmitObjectisSystem);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchJournalsWrappertransmitObjectphone != null)
+                if (__workflow_searchJournalsWrappertransmitObjectphone != null)
                 {
-                    transmitObjectObject["Phone"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectphone);
+                    transmitObjectObject["Phone"] = ExpressionConverter.ConvertO(__workflow_searchJournalsWrappertransmitObjectphone);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchJournalsWrappertransmitObjectphoneNormalized != null)
+                if (__workflow_searchJournalsWrappertransmitObjectphoneNormalized != null)
                 {
-                    transmitObjectObject["PhoneNormalized"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectphoneNormalized);
+                    transmitObjectObject["PhoneNormalized"] = ExpressionConverter.ConvertO(__workflow_searchJournalsWrappertransmitObjectphoneNormalized);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchJournalsWrappertransmitObjectisGdprRelevant != null)
+                if (__workflow_searchJournalsWrappertransmitObjectisGdprRelevant != null)
                 {
-                    transmitObjectObject["IsGdprRelevant"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectisGdprRelevant);
+                    transmitObjectObject["IsGdprRelevant"] = ExpressionConverter.ConvertO(__workflow_searchJournalsWrappertransmitObjectisGdprRelevant);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchJournalsWrappertransmitObjectpicture != null)
+                if (__workflow_searchJournalsWrappertransmitObjectpicture != null)
                 {
-                    transmitObjectObject["Picture"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectpicture);
+                    transmitObjectObject["Picture"] = ExpressionConverter.ConvertO(__workflow_searchJournalsWrappertransmitObjectpicture);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchJournalsWrappertransmitObjectpictureWidth != null)
+                if (__workflow_searchJournalsWrappertransmitObjectpictureWidth != null)
                 {
-                    transmitObjectObject["PictureWidth"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectpictureWidth);
+                    transmitObjectObject["PictureWidth"] = ExpressionConverter.ConvertO(__workflow_searchJournalsWrappertransmitObjectpictureWidth);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchJournalsWrappertransmitObjectpictureHeight != null)
+                if (__workflow_searchJournalsWrappertransmitObjectpictureHeight != null)
                 {
-                    transmitObjectObject["PictureHeight"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectpictureHeight);
+                    transmitObjectObject["PictureHeight"] = ExpressionConverter.ConvertO(__workflow_searchJournalsWrappertransmitObjectpictureHeight);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchJournalsWrappertransmitObjectstateEn != null)
+                if (__workflow_searchJournalsWrappertransmitObjectstateEn != null)
                 {
-                    transmitObjectObject["StateEn"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectstateEn);
+                    transmitObjectObject["StateEn"] = ExpressionConverter.ConvertO(__workflow_searchJournalsWrappertransmitObjectstateEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchJournalsWrappertransmitObjectprevStateEn != null)
+                if (__workflow_searchJournalsWrappertransmitObjectprevStateEn != null)
                 {
-                    transmitObjectObject["PrevStateEn"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectprevStateEn);
+                    transmitObjectObject["PrevStateEn"] = ExpressionConverter.ConvertO(__workflow_searchJournalsWrappertransmitObjectprevStateEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchJournalsWrappertransmitObjectisPrivate != null)
+                if (__workflow_searchJournalsWrappertransmitObjectisPrivate != null)
                 {
-                    transmitObjectObject["IsPrivate"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectisPrivate);
+                    transmitObjectObject["IsPrivate"] = ExpressionConverter.ConvertO(__workflow_searchJournalsWrappertransmitObjectisPrivate);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchJournalsWrappertransmitObjectserverItemCreated != null)
+                if (__workflow_searchJournalsWrappertransmitObjectserverItemCreated != null)
                 {
-                    transmitObjectObject["Server_ItemCreated"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectserverItemCreated);
+                    transmitObjectObject["Server_ItemCreated"] = ExpressionConverter.ConvertO(__workflow_searchJournalsWrappertransmitObjectserverItemCreated);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchJournalsWrappertransmitObjectserverItemChanged != null)
+                if (__workflow_searchJournalsWrappertransmitObjectserverItemChanged != null)
                 {
-                    transmitObjectObject["Server_ItemChanged"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectserverItemChanged);
+                    transmitObjectObject["Server_ItemChanged"] = ExpressionConverter.ConvertO(__workflow_searchJournalsWrappertransmitObjectserverItemChanged);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchJournalsWrappertransmitObjectitemCreated != null)
+                if (__workflow_searchJournalsWrappertransmitObjectitemCreated != null)
                 {
-                    transmitObjectObject["ItemCreated"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectitemCreated);
+                    transmitObjectObject["ItemCreated"] = ExpressionConverter.ConvertO(__workflow_searchJournalsWrappertransmitObjectitemCreated);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchJournalsWrappertransmitObjectitemChanged != null)
+                if (__workflow_searchJournalsWrappertransmitObjectitemChanged != null)
                 {
-                    transmitObjectObject["ItemChanged"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectitemChanged);
+                    transmitObjectObject["ItemChanged"] = ExpressionConverter.ConvertO(__workflow_searchJournalsWrappertransmitObjectitemChanged);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchJournalsWrappertransmitObjectfileAs != null)
+                if (__workflow_searchJournalsWrappertransmitObjectfileAs != null)
                 {
-                    transmitObjectObject["FileAs"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectfileAs);
+                    transmitObjectObject["FileAs"] = ExpressionConverter.ConvertO(__workflow_searchJournalsWrappertransmitObjectfileAs);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchJournalsWrappertransmitObjectownerGUID != null)
+                if (__workflow_searchJournalsWrappertransmitObjectownerGUID != null)
                 {
-                    transmitObjectObject["OwnerGUID"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectownerGUID);
+                    transmitObjectObject["OwnerGUID"] = ExpressionConverter.ConvertO(__workflow_searchJournalsWrappertransmitObjectownerGUID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchJournalsWrappertransmitObjectcreatedByGUID != null)
+                if (__workflow_searchJournalsWrappertransmitObjectcreatedByGUID != null)
                 {
-                    transmitObjectObject["CreatedByGUID"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectcreatedByGUID);
+                    transmitObjectObject["CreatedByGUID"] = ExpressionConverter.ConvertO(__workflow_searchJournalsWrappertransmitObjectcreatedByGUID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchJournalsWrappertransmitObjectmodifiedByGUID != null)
+                if (__workflow_searchJournalsWrappertransmitObjectmodifiedByGUID != null)
                 {
-                    transmitObjectObject["ModifiedByGUID"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectmodifiedByGUID);
+                    transmitObjectObject["ModifiedByGUID"] = ExpressionConverter.ConvertO(__workflow_searchJournalsWrappertransmitObjectmodifiedByGUID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchJournalsWrappertransmitObjectadditionalFields != null)
+                if (__workflow_searchJournalsWrappertransmitObjectadditionalFields != null)
                 {
-                    transmitObjectObject["AdditionalFields"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectadditionalFields);
+                    transmitObjectObject["AdditionalFields"] = ExpressionConverter.ConvertO(__workflow_searchJournalsWrappertransmitObjectadditionalFields);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchJournalsWrappertransmitObjectrelations != null)
+                if (__workflow_searchJournalsWrappertransmitObjectrelations != null)
                 {
-                    transmitObjectObject["Relations"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectrelations);
+                    transmitObjectObject["Relations"] = ExpressionConverter.ConvertO(__workflow_searchJournalsWrappertransmitObjectrelations);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchJournalsWrappertransmitObjectitemGUID != null)
+                if (__workflow_searchJournalsWrappertransmitObjectitemGUID != null)
                 {
-                    transmitObjectObject["ItemGUID"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectitemGUID);
+                    transmitObjectObject["ItemGUID"] = ExpressionConverter.ConvertO(__workflow_searchJournalsWrappertransmitObjectitemGUID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchJournalsWrappertransmitObjectitemVersion != null)
+                if (__workflow_searchJournalsWrappertransmitObjectitemVersion != null)
                 {
-                    transmitObjectObject["ItemVersion"] = ExpressionConverter.ConvertO(searchJournalsWrappertransmitObjectitemVersion);
+                    transmitObjectObject["ItemVersion"] = ExpressionConverter.ConvertO(__workflow_searchJournalsWrappertransmitObjectitemVersion);
                     transmitObjectObjectpropCount++;
                 }
 
@@ -4195,23 +4611,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                     searchJournalsWrapperpropCount++;
                 }
 
-                if (searchJournalsWrapperincludeRelations != null)
+                if (__workflow_searchJournalsWrapperincludeRelations != null)
                 {
-                    searchJournalsWrapper["includeRelations"] = ExpressionConverter.ConvertO(searchJournalsWrapperincludeRelations);
+                    searchJournalsWrapper["includeRelations"] = ExpressionConverter.ConvertO(__workflow_searchJournalsWrapperincludeRelations);
                     searchJournalsWrapperpropCount++;
                 }
 
                 var relationsFilterObject = new JObject();
                 var relationsFilterObjectpropCount = 0;
-                if (searchJournalsWrapperrelationsFilterrelationType != null)
+                if (__workflow_searchJournalsWrapperrelationsFilterrelationType != null)
                 {
-                    relationsFilterObject["RelationType"] = ExpressionConverter.ConvertO(searchJournalsWrapperrelationsFilterrelationType);
+                    relationsFilterObject["RelationType"] = ExpressionConverter.ConvertO(__workflow_searchJournalsWrapperrelationsFilterrelationType);
                     relationsFilterObjectpropCount++;
                 }
 
-                if (searchJournalsWrapperrelationsFilterforeignFolderName != null)
+                if (__workflow_searchJournalsWrapperrelationsFilterforeignFolderName != null)
                 {
-                    relationsFilterObject["ForeignFolderName"] = ExpressionConverter.ConvertO(searchJournalsWrapperrelationsFilterforeignFolderName);
+                    relationsFilterObject["ForeignFolderName"] = ExpressionConverter.ConvertO(__workflow_searchJournalsWrapperrelationsFilterforeignFolderName);
                     relationsFilterObjectpropCount++;
                 }
 
@@ -4221,9 +4637,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                     searchJournalsWrapperpropCount++;
                 }
 
-                if (searchJournalsWrapperbinaryLogicalOperator != null)
+                if (__workflow_searchJournalsWrapperbinaryLogicalOperator != null)
                 {
-                    searchJournalsWrapper["binaryLogicalOperator"] = ExpressionConverter.ConvertO(searchJournalsWrapperbinaryLogicalOperator);
+                    searchJournalsWrapper["binaryLogicalOperator"] = ExpressionConverter.ConvertO(__workflow_searchJournalsWrapperbinaryLogicalOperator);
                     searchJournalsWrapperpropCount++;
                 }
 
@@ -4237,70 +4653,118 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
-        [WorkflowExpressionFactory(nameof(__BuildSearchLeads))]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedLead> SearchLeads([WorkflowExpression] Func<string> searchLeadsWrappertransmitObjectcompaniesCustomerGuid = null, [WorkflowExpression] Func<string> searchLeadsWrappertransmitObjectcontactsContactPersonGuid = null, [WorkflowExpression] Func<string> searchLeadsWrappertransmitObjectmarketingMarketingGuid = null, [WorkflowExpression] Func<string> searchLeadsWrappertransmitObjectcity = null, [WorkflowExpression] Func<string> searchLeadsWrappertransmitObjectcontactPerson = null, [WorkflowExpression] Func<string> searchLeadsWrappertransmitObjectcurrencyEn = null, [WorkflowExpression] Func<string> searchLeadsWrappertransmitObjectcustomer = null, [WorkflowExpression] Func<string> searchLeadsWrappertransmitObjectemail = null, [WorkflowExpression] Func<string> searchLeadsWrappertransmitObjectestimatedEnd = null, [WorkflowExpression] Func<int> searchLeadsWrappertransmitObjecthID = null, [WorkflowExpression] Func<string> searchLeadsWrappertransmitObjectleadOriginEn = null, [WorkflowExpression] Func<string> searchLeadsWrappertransmitObjectnote = null, [WorkflowExpression] Func<string> searchLeadsWrappertransmitObjectphone = null, [WorkflowExpression] Func<string> searchLeadsWrappertransmitObjectphoneNormalized = null, [WorkflowExpression] Func<string> searchLeadsWrappertransmitObjectprevStateEn = null, [WorkflowExpression] Func<double> searchLeadsWrappertransmitObjectprice = null, [WorkflowExpression] Func<string> searchLeadsWrappertransmitObjectpriceChanged = null, [WorkflowExpression] Func<double> searchLeadsWrappertransmitObjectpriceDefaultCurrency = null, [WorkflowExpression] Func<double> searchLeadsWrappertransmitObjectprobability = null, [WorkflowExpression] Func<string> searchLeadsWrappertransmitObjectreceiveDate = null, [WorkflowExpression] Func<string> searchLeadsWrappertransmitObjectstateEn = null, [WorkflowExpression] Func<string> searchLeadsWrappertransmitObjectstreet = null, [WorkflowExpression] Func<string> searchLeadsWrappertransmitObjecttypeEn = null, [WorkflowExpression] Func<string> searchLeadsWrappertransmitObjectzip = null, [WorkflowExpression] Func<string> searchLeadsWrappertransmitObjectlastActivity = null, [WorkflowExpression] Func<string> searchLeadsWrappertransmitObjectnextStep = null, [WorkflowExpression] Func<double> searchLeadsWrappertransmitObjectestimatedValue = null, [WorkflowExpression] Func<bool> searchLeadsWrappertransmitObjectisCompleted = null, [WorkflowExpression] Func<bool> searchLeadsWrappertransmitObjectisLost = null, [WorkflowExpression] Func<string> searchLeadsWrappertransmitObjectcountryEn = null, [WorkflowExpression] Func<string> searchLeadsWrappertransmitObjectstate = null, [WorkflowExpression] Func<string> searchLeadsWrappertransmitObjectpOBox = null, [WorkflowExpression] Func<bool> searchLeadsWrappertransmitObjectemailOptOut = null, [WorkflowExpression] Func<string> searchLeadsWrappertransmitObjectpicture = null, [WorkflowExpression] Func<int> searchLeadsWrappertransmitObjectpictureWidth = null, [WorkflowExpression] Func<int> searchLeadsWrappertransmitObjectpictureHeight = null, [WorkflowExpression] Func<string> searchLeadsWrappertransmitObjectcompletedDate = null, [WorkflowExpression] Func<string> searchLeadsWrappertransmitObjectlostDate = null, [WorkflowExpression] Func<bool> searchLeadsWrappertransmitObjectisPrivate = null, [WorkflowExpression] Func<string> searchLeadsWrappertransmitObjectserverItemCreated = null, [WorkflowExpression] Func<string> searchLeadsWrappertransmitObjectserverItemChanged = null, [WorkflowExpression] Func<string> searchLeadsWrappertransmitObjectitemCreated = null, [WorkflowExpression] Func<string> searchLeadsWrappertransmitObjectitemChanged = null, [WorkflowExpression] Func<string> searchLeadsWrappertransmitObjectfileAs = null, [WorkflowExpression] Func<string> searchLeadsWrappertransmitObjectownerGUID = null, [WorkflowExpression] Func<string> searchLeadsWrappertransmitObjectcreatedByGUID = null, [WorkflowExpression] Func<string> searchLeadsWrappertransmitObjectmodifiedByGUID = null, [WorkflowExpression] Func<object> searchLeadsWrappertransmitObjectadditionalFields = null, [WorkflowExpression] Func<EWayWcfServiceItemTypesInnerTypesBoundRelation[]> searchLeadsWrappertransmitObjectrelations = null, [WorkflowExpression] Func<string> searchLeadsWrappertransmitObjectitemGUID = null, [WorkflowExpression] Func<int> searchLeadsWrappertransmitObjectitemVersion = null, [WorkflowExpression] Func<bool> searchLeadsWrapperincludeRelations = null, [WorkflowExpression] Func<string> searchLeadsWrapperrelationsFilterrelationType = null, [WorkflowExpression] Func<string> searchLeadsWrapperrelationsFilterforeignFolderName = null, [WorkflowExpression] Func<string> searchLeadsWrapperbinaryLogicalOperator = null)
+        public IBodyWorkflowAction<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedLead> SearchLeads(Expression<Func<string>> searchLeadsWrappertransmitObjectcompaniesCustomerGuid = null, Expression<Func<string>> searchLeadsWrappertransmitObjectcontactsContactPersonGuid = null, Expression<Func<string>> searchLeadsWrappertransmitObjectmarketingMarketingGuid = null, Expression<Func<string>> searchLeadsWrappertransmitObjectcity = null, Expression<Func<string>> searchLeadsWrappertransmitObjectcontactPerson = null, Expression<Func<string>> searchLeadsWrappertransmitObjectcurrencyEn = null, Expression<Func<string>> searchLeadsWrappertransmitObjectcustomer = null, Expression<Func<string>> searchLeadsWrappertransmitObjectemail = null, Expression<Func<string>> searchLeadsWrappertransmitObjectestimatedEnd = null, Expression<Func<int>> searchLeadsWrappertransmitObjecthID = null, Expression<Func<string>> searchLeadsWrappertransmitObjectleadOriginEn = null, Expression<Func<string>> searchLeadsWrappertransmitObjectnote = null, Expression<Func<string>> searchLeadsWrappertransmitObjectphone = null, Expression<Func<string>> searchLeadsWrappertransmitObjectphoneNormalized = null, Expression<Func<string>> searchLeadsWrappertransmitObjectprevStateEn = null, Expression<Func<double>> searchLeadsWrappertransmitObjectprice = null, Expression<Func<string>> searchLeadsWrappertransmitObjectpriceChanged = null, Expression<Func<double>> searchLeadsWrappertransmitObjectpriceDefaultCurrency = null, Expression<Func<double>> searchLeadsWrappertransmitObjectprobability = null, Expression<Func<string>> searchLeadsWrappertransmitObjectreceiveDate = null, Expression<Func<string>> searchLeadsWrappertransmitObjectstateEn = null, Expression<Func<string>> searchLeadsWrappertransmitObjectstreet = null, Expression<Func<string>> searchLeadsWrappertransmitObjecttypeEn = null, Expression<Func<string>> searchLeadsWrappertransmitObjectzip = null, Expression<Func<string>> searchLeadsWrappertransmitObjectlastActivity = null, Expression<Func<string>> searchLeadsWrappertransmitObjectnextStep = null, Expression<Func<double>> searchLeadsWrappertransmitObjectestimatedValue = null, Expression<Func<bool>> searchLeadsWrappertransmitObjectisCompleted = null, Expression<Func<bool>> searchLeadsWrappertransmitObjectisLost = null, Expression<Func<string>> searchLeadsWrappertransmitObjectcountryEn = null, Expression<Func<string>> searchLeadsWrappertransmitObjectstate = null, Expression<Func<string>> searchLeadsWrappertransmitObjectpOBox = null, Expression<Func<bool>> searchLeadsWrappertransmitObjectemailOptOut = null, Expression<Func<string>> searchLeadsWrappertransmitObjectpicture = null, Expression<Func<int>> searchLeadsWrappertransmitObjectpictureWidth = null, Expression<Func<int>> searchLeadsWrappertransmitObjectpictureHeight = null, Expression<Func<string>> searchLeadsWrappertransmitObjectcompletedDate = null, Expression<Func<string>> searchLeadsWrappertransmitObjectlostDate = null, Expression<Func<bool>> searchLeadsWrappertransmitObjectisPrivate = null, Expression<Func<string>> searchLeadsWrappertransmitObjectserverItemCreated = null, Expression<Func<string>> searchLeadsWrappertransmitObjectserverItemChanged = null, Expression<Func<string>> searchLeadsWrappertransmitObjectitemCreated = null, Expression<Func<string>> searchLeadsWrappertransmitObjectitemChanged = null, Expression<Func<string>> searchLeadsWrappertransmitObjectfileAs = null, Expression<Func<string>> searchLeadsWrappertransmitObjectownerGUID = null, Expression<Func<string>> searchLeadsWrappertransmitObjectcreatedByGUID = null, Expression<Func<string>> searchLeadsWrappertransmitObjectmodifiedByGUID = null, Expression<Func<object>> searchLeadsWrappertransmitObjectadditionalFields = null, Expression<Func<EWayWcfServiceItemTypesInnerTypesBoundRelation[]>> searchLeadsWrappertransmitObjectrelations = null, Expression<Func<string>> searchLeadsWrappertransmitObjectitemGUID = null, Expression<Func<int>> searchLeadsWrappertransmitObjectitemVersion = null, Expression<Func<bool>> searchLeadsWrapperincludeRelations = null, Expression<Func<string>> searchLeadsWrapperrelationsFilterrelationType = null, Expression<Func<string>> searchLeadsWrapperrelationsFilterforeignFolderName = null, Expression<Func<string>> searchLeadsWrapperbinaryLogicalOperator = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedLead> __BuildSearchLeads(WorkflowExpression<string> searchLeadsWrappertransmitObjectcompaniesCustomerGuid = null, WorkflowExpression<string> searchLeadsWrappertransmitObjectcontactsContactPersonGuid = null, WorkflowExpression<string> searchLeadsWrappertransmitObjectmarketingMarketingGuid = null, WorkflowExpression<string> searchLeadsWrappertransmitObjectcity = null, WorkflowExpression<string> searchLeadsWrappertransmitObjectcontactPerson = null, WorkflowExpression<string> searchLeadsWrappertransmitObjectcurrencyEn = null, WorkflowExpression<string> searchLeadsWrappertransmitObjectcustomer = null, WorkflowExpression<string> searchLeadsWrappertransmitObjectemail = null, WorkflowExpression<string> searchLeadsWrappertransmitObjectestimatedEnd = null, WorkflowExpression<int> searchLeadsWrappertransmitObjecthID = null, WorkflowExpression<string> searchLeadsWrappertransmitObjectleadOriginEn = null, WorkflowExpression<string> searchLeadsWrappertransmitObjectnote = null, WorkflowExpression<string> searchLeadsWrappertransmitObjectphone = null, WorkflowExpression<string> searchLeadsWrappertransmitObjectphoneNormalized = null, WorkflowExpression<string> searchLeadsWrappertransmitObjectprevStateEn = null, WorkflowExpression<double> searchLeadsWrappertransmitObjectprice = null, WorkflowExpression<string> searchLeadsWrappertransmitObjectpriceChanged = null, WorkflowExpression<double> searchLeadsWrappertransmitObjectpriceDefaultCurrency = null, WorkflowExpression<double> searchLeadsWrappertransmitObjectprobability = null, WorkflowExpression<string> searchLeadsWrappertransmitObjectreceiveDate = null, WorkflowExpression<string> searchLeadsWrappertransmitObjectstateEn = null, WorkflowExpression<string> searchLeadsWrappertransmitObjectstreet = null, WorkflowExpression<string> searchLeadsWrappertransmitObjecttypeEn = null, WorkflowExpression<string> searchLeadsWrappertransmitObjectzip = null, WorkflowExpression<string> searchLeadsWrappertransmitObjectlastActivity = null, WorkflowExpression<string> searchLeadsWrappertransmitObjectnextStep = null, WorkflowExpression<double> searchLeadsWrappertransmitObjectestimatedValue = null, WorkflowExpression<bool> searchLeadsWrappertransmitObjectisCompleted = null, WorkflowExpression<bool> searchLeadsWrappertransmitObjectisLost = null, WorkflowExpression<string> searchLeadsWrappertransmitObjectcountryEn = null, WorkflowExpression<string> searchLeadsWrappertransmitObjectstate = null, WorkflowExpression<string> searchLeadsWrappertransmitObjectpOBox = null, WorkflowExpression<bool> searchLeadsWrappertransmitObjectemailOptOut = null, WorkflowExpression<string> searchLeadsWrappertransmitObjectpicture = null, WorkflowExpression<int> searchLeadsWrappertransmitObjectpictureWidth = null, WorkflowExpression<int> searchLeadsWrappertransmitObjectpictureHeight = null, WorkflowExpression<string> searchLeadsWrappertransmitObjectcompletedDate = null, WorkflowExpression<string> searchLeadsWrappertransmitObjectlostDate = null, WorkflowExpression<bool> searchLeadsWrappertransmitObjectisPrivate = null, WorkflowExpression<string> searchLeadsWrappertransmitObjectserverItemCreated = null, WorkflowExpression<string> searchLeadsWrappertransmitObjectserverItemChanged = null, WorkflowExpression<string> searchLeadsWrappertransmitObjectitemCreated = null, WorkflowExpression<string> searchLeadsWrappertransmitObjectitemChanged = null, WorkflowExpression<string> searchLeadsWrappertransmitObjectfileAs = null, WorkflowExpression<string> searchLeadsWrappertransmitObjectownerGUID = null, WorkflowExpression<string> searchLeadsWrappertransmitObjectcreatedByGUID = null, WorkflowExpression<string> searchLeadsWrappertransmitObjectmodifiedByGUID = null, WorkflowExpression<object> searchLeadsWrappertransmitObjectadditionalFields = null, WorkflowExpression<EWayWcfServiceItemTypesInnerTypesBoundRelation[]> searchLeadsWrappertransmitObjectrelations = null, WorkflowExpression<string> searchLeadsWrappertransmitObjectitemGUID = null, WorkflowExpression<int> searchLeadsWrappertransmitObjectitemVersion = null, WorkflowExpression<bool> searchLeadsWrapperincludeRelations = null, WorkflowExpression<string> searchLeadsWrapperrelationsFilterrelationType = null, WorkflowExpression<string> searchLeadsWrapperrelationsFilterforeignFolderName = null, WorkflowExpression<string> searchLeadsWrapperbinaryLogicalOperator = null)
-        {
-            WorkflowExpression.Validate(searchLeadsWrappertransmitObjectcompaniesCustomerGuid, nameof(searchLeadsWrappertransmitObjectcompaniesCustomerGuid), required: false);
-            WorkflowExpression.Validate(searchLeadsWrappertransmitObjectcontactsContactPersonGuid, nameof(searchLeadsWrappertransmitObjectcontactsContactPersonGuid), required: false);
-            WorkflowExpression.Validate(searchLeadsWrappertransmitObjectmarketingMarketingGuid, nameof(searchLeadsWrappertransmitObjectmarketingMarketingGuid), required: false);
-            WorkflowExpression.Validate(searchLeadsWrappertransmitObjectcity, nameof(searchLeadsWrappertransmitObjectcity), required: false);
-            WorkflowExpression.Validate(searchLeadsWrappertransmitObjectcontactPerson, nameof(searchLeadsWrappertransmitObjectcontactPerson), required: false);
-            WorkflowExpression.Validate(searchLeadsWrappertransmitObjectcurrencyEn, nameof(searchLeadsWrappertransmitObjectcurrencyEn), required: false);
-            WorkflowExpression.Validate(searchLeadsWrappertransmitObjectcustomer, nameof(searchLeadsWrappertransmitObjectcustomer), required: false);
-            WorkflowExpression.Validate(searchLeadsWrappertransmitObjectemail, nameof(searchLeadsWrappertransmitObjectemail), required: false);
-            WorkflowExpression.Validate(searchLeadsWrappertransmitObjectestimatedEnd, nameof(searchLeadsWrappertransmitObjectestimatedEnd), required: false);
-            WorkflowExpression.Validate(searchLeadsWrappertransmitObjecthID, nameof(searchLeadsWrappertransmitObjecthID), required: false);
-            WorkflowExpression.Validate(searchLeadsWrappertransmitObjectleadOriginEn, nameof(searchLeadsWrappertransmitObjectleadOriginEn), required: false);
-            WorkflowExpression.Validate(searchLeadsWrappertransmitObjectnote, nameof(searchLeadsWrappertransmitObjectnote), required: false);
-            WorkflowExpression.Validate(searchLeadsWrappertransmitObjectphone, nameof(searchLeadsWrappertransmitObjectphone), required: false);
-            WorkflowExpression.Validate(searchLeadsWrappertransmitObjectphoneNormalized, nameof(searchLeadsWrappertransmitObjectphoneNormalized), required: false);
-            WorkflowExpression.Validate(searchLeadsWrappertransmitObjectprevStateEn, nameof(searchLeadsWrappertransmitObjectprevStateEn), required: false);
-            WorkflowExpression.Validate(searchLeadsWrappertransmitObjectprice, nameof(searchLeadsWrappertransmitObjectprice), required: false);
-            WorkflowExpression.Validate(searchLeadsWrappertransmitObjectpriceChanged, nameof(searchLeadsWrappertransmitObjectpriceChanged), required: false);
-            WorkflowExpression.Validate(searchLeadsWrappertransmitObjectpriceDefaultCurrency, nameof(searchLeadsWrappertransmitObjectpriceDefaultCurrency), required: false);
-            WorkflowExpression.Validate(searchLeadsWrappertransmitObjectprobability, nameof(searchLeadsWrappertransmitObjectprobability), required: false);
-            WorkflowExpression.Validate(searchLeadsWrappertransmitObjectreceiveDate, nameof(searchLeadsWrappertransmitObjectreceiveDate), required: false);
-            WorkflowExpression.Validate(searchLeadsWrappertransmitObjectstateEn, nameof(searchLeadsWrappertransmitObjectstateEn), required: false);
-            WorkflowExpression.Validate(searchLeadsWrappertransmitObjectstreet, nameof(searchLeadsWrappertransmitObjectstreet), required: false);
-            WorkflowExpression.Validate(searchLeadsWrappertransmitObjecttypeEn, nameof(searchLeadsWrappertransmitObjecttypeEn), required: false);
-            WorkflowExpression.Validate(searchLeadsWrappertransmitObjectzip, nameof(searchLeadsWrappertransmitObjectzip), required: false);
-            WorkflowExpression.Validate(searchLeadsWrappertransmitObjectlastActivity, nameof(searchLeadsWrappertransmitObjectlastActivity), required: false);
-            WorkflowExpression.Validate(searchLeadsWrappertransmitObjectnextStep, nameof(searchLeadsWrappertransmitObjectnextStep), required: false);
-            WorkflowExpression.Validate(searchLeadsWrappertransmitObjectestimatedValue, nameof(searchLeadsWrappertransmitObjectestimatedValue), required: false);
-            WorkflowExpression.Validate(searchLeadsWrappertransmitObjectisCompleted, nameof(searchLeadsWrappertransmitObjectisCompleted), required: false);
-            WorkflowExpression.Validate(searchLeadsWrappertransmitObjectisLost, nameof(searchLeadsWrappertransmitObjectisLost), required: false);
-            WorkflowExpression.Validate(searchLeadsWrappertransmitObjectcountryEn, nameof(searchLeadsWrappertransmitObjectcountryEn), required: false);
-            WorkflowExpression.Validate(searchLeadsWrappertransmitObjectstate, nameof(searchLeadsWrappertransmitObjectstate), required: false);
-            WorkflowExpression.Validate(searchLeadsWrappertransmitObjectpOBox, nameof(searchLeadsWrappertransmitObjectpOBox), required: false);
-            WorkflowExpression.Validate(searchLeadsWrappertransmitObjectemailOptOut, nameof(searchLeadsWrappertransmitObjectemailOptOut), required: false);
-            WorkflowExpression.Validate(searchLeadsWrappertransmitObjectpicture, nameof(searchLeadsWrappertransmitObjectpicture), required: false);
-            WorkflowExpression.Validate(searchLeadsWrappertransmitObjectpictureWidth, nameof(searchLeadsWrappertransmitObjectpictureWidth), required: false);
-            WorkflowExpression.Validate(searchLeadsWrappertransmitObjectpictureHeight, nameof(searchLeadsWrappertransmitObjectpictureHeight), required: false);
-            WorkflowExpression.Validate(searchLeadsWrappertransmitObjectcompletedDate, nameof(searchLeadsWrappertransmitObjectcompletedDate), required: false);
-            WorkflowExpression.Validate(searchLeadsWrappertransmitObjectlostDate, nameof(searchLeadsWrappertransmitObjectlostDate), required: false);
-            WorkflowExpression.Validate(searchLeadsWrappertransmitObjectisPrivate, nameof(searchLeadsWrappertransmitObjectisPrivate), required: false);
-            WorkflowExpression.Validate(searchLeadsWrappertransmitObjectserverItemCreated, nameof(searchLeadsWrappertransmitObjectserverItemCreated), required: false);
-            WorkflowExpression.Validate(searchLeadsWrappertransmitObjectserverItemChanged, nameof(searchLeadsWrappertransmitObjectserverItemChanged), required: false);
-            WorkflowExpression.Validate(searchLeadsWrappertransmitObjectitemCreated, nameof(searchLeadsWrappertransmitObjectitemCreated), required: false);
-            WorkflowExpression.Validate(searchLeadsWrappertransmitObjectitemChanged, nameof(searchLeadsWrappertransmitObjectitemChanged), required: false);
-            WorkflowExpression.Validate(searchLeadsWrappertransmitObjectfileAs, nameof(searchLeadsWrappertransmitObjectfileAs), required: false);
-            WorkflowExpression.Validate(searchLeadsWrappertransmitObjectownerGUID, nameof(searchLeadsWrappertransmitObjectownerGUID), required: false);
-            WorkflowExpression.Validate(searchLeadsWrappertransmitObjectcreatedByGUID, nameof(searchLeadsWrappertransmitObjectcreatedByGUID), required: false);
-            WorkflowExpression.Validate(searchLeadsWrappertransmitObjectmodifiedByGUID, nameof(searchLeadsWrappertransmitObjectmodifiedByGUID), required: false);
-            WorkflowExpression.Validate(searchLeadsWrappertransmitObjectadditionalFields, nameof(searchLeadsWrappertransmitObjectadditionalFields), required: false);
-            WorkflowExpression.Validate(searchLeadsWrappertransmitObjectrelations, nameof(searchLeadsWrappertransmitObjectrelations), required: false);
-            WorkflowExpression.Validate(searchLeadsWrappertransmitObjectitemGUID, nameof(searchLeadsWrappertransmitObjectitemGUID), required: false);
-            WorkflowExpression.Validate(searchLeadsWrappertransmitObjectitemVersion, nameof(searchLeadsWrappertransmitObjectitemVersion), required: false);
-            WorkflowExpression.Validate(searchLeadsWrapperincludeRelations, nameof(searchLeadsWrapperincludeRelations), required: false);
-            WorkflowExpression.Validate(searchLeadsWrapperrelationsFilterrelationType, nameof(searchLeadsWrapperrelationsFilterrelationType), required: false);
-            WorkflowExpression.Validate(searchLeadsWrapperrelationsFilterforeignFolderName, nameof(searchLeadsWrapperrelationsFilterforeignFolderName), required: false);
-            WorkflowExpression.Validate(searchLeadsWrapperbinaryLogicalOperator, nameof(searchLeadsWrapperbinaryLogicalOperator), required: false);
+            var __workflow_searchLeadsWrappertransmitObjectcompaniesCustomerGuid = searchLeadsWrappertransmitObjectcompaniesCustomerGuid == null ? null : WorkflowExpression.Compile(searchLeadsWrappertransmitObjectcompaniesCustomerGuid);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrappertransmitObjectcompaniesCustomerGuid, nameof(searchLeadsWrappertransmitObjectcompaniesCustomerGuid), required: false);
+            var __workflow_searchLeadsWrappertransmitObjectcontactsContactPersonGuid = searchLeadsWrappertransmitObjectcontactsContactPersonGuid == null ? null : WorkflowExpression.Compile(searchLeadsWrappertransmitObjectcontactsContactPersonGuid);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrappertransmitObjectcontactsContactPersonGuid, nameof(searchLeadsWrappertransmitObjectcontactsContactPersonGuid), required: false);
+            var __workflow_searchLeadsWrappertransmitObjectmarketingMarketingGuid = searchLeadsWrappertransmitObjectmarketingMarketingGuid == null ? null : WorkflowExpression.Compile(searchLeadsWrappertransmitObjectmarketingMarketingGuid);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrappertransmitObjectmarketingMarketingGuid, nameof(searchLeadsWrappertransmitObjectmarketingMarketingGuid), required: false);
+            var __workflow_searchLeadsWrappertransmitObjectcity = searchLeadsWrappertransmitObjectcity == null ? null : WorkflowExpression.Compile(searchLeadsWrappertransmitObjectcity);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrappertransmitObjectcity, nameof(searchLeadsWrappertransmitObjectcity), required: false);
+            var __workflow_searchLeadsWrappertransmitObjectcontactPerson = searchLeadsWrappertransmitObjectcontactPerson == null ? null : WorkflowExpression.Compile(searchLeadsWrappertransmitObjectcontactPerson);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrappertransmitObjectcontactPerson, nameof(searchLeadsWrappertransmitObjectcontactPerson), required: false);
+            var __workflow_searchLeadsWrappertransmitObjectcurrencyEn = searchLeadsWrappertransmitObjectcurrencyEn == null ? null : WorkflowExpression.Compile(searchLeadsWrappertransmitObjectcurrencyEn);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrappertransmitObjectcurrencyEn, nameof(searchLeadsWrappertransmitObjectcurrencyEn), required: false);
+            var __workflow_searchLeadsWrappertransmitObjectcustomer = searchLeadsWrappertransmitObjectcustomer == null ? null : WorkflowExpression.Compile(searchLeadsWrappertransmitObjectcustomer);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrappertransmitObjectcustomer, nameof(searchLeadsWrappertransmitObjectcustomer), required: false);
+            var __workflow_searchLeadsWrappertransmitObjectemail = searchLeadsWrappertransmitObjectemail == null ? null : WorkflowExpression.Compile(searchLeadsWrappertransmitObjectemail);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrappertransmitObjectemail, nameof(searchLeadsWrappertransmitObjectemail), required: false);
+            var __workflow_searchLeadsWrappertransmitObjectestimatedEnd = searchLeadsWrappertransmitObjectestimatedEnd == null ? null : WorkflowExpression.Compile(searchLeadsWrappertransmitObjectestimatedEnd);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrappertransmitObjectestimatedEnd, nameof(searchLeadsWrappertransmitObjectestimatedEnd), required: false);
+            var __workflow_searchLeadsWrappertransmitObjecthID = searchLeadsWrappertransmitObjecthID == null ? null : WorkflowExpression.Compile(searchLeadsWrappertransmitObjecthID);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrappertransmitObjecthID, nameof(searchLeadsWrappertransmitObjecthID), required: false);
+            var __workflow_searchLeadsWrappertransmitObjectleadOriginEn = searchLeadsWrappertransmitObjectleadOriginEn == null ? null : WorkflowExpression.Compile(searchLeadsWrappertransmitObjectleadOriginEn);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrappertransmitObjectleadOriginEn, nameof(searchLeadsWrappertransmitObjectleadOriginEn), required: false);
+            var __workflow_searchLeadsWrappertransmitObjectnote = searchLeadsWrappertransmitObjectnote == null ? null : WorkflowExpression.Compile(searchLeadsWrappertransmitObjectnote);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrappertransmitObjectnote, nameof(searchLeadsWrappertransmitObjectnote), required: false);
+            var __workflow_searchLeadsWrappertransmitObjectphone = searchLeadsWrappertransmitObjectphone == null ? null : WorkflowExpression.Compile(searchLeadsWrappertransmitObjectphone);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrappertransmitObjectphone, nameof(searchLeadsWrappertransmitObjectphone), required: false);
+            var __workflow_searchLeadsWrappertransmitObjectphoneNormalized = searchLeadsWrappertransmitObjectphoneNormalized == null ? null : WorkflowExpression.Compile(searchLeadsWrappertransmitObjectphoneNormalized);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrappertransmitObjectphoneNormalized, nameof(searchLeadsWrappertransmitObjectphoneNormalized), required: false);
+            var __workflow_searchLeadsWrappertransmitObjectprevStateEn = searchLeadsWrappertransmitObjectprevStateEn == null ? null : WorkflowExpression.Compile(searchLeadsWrappertransmitObjectprevStateEn);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrappertransmitObjectprevStateEn, nameof(searchLeadsWrappertransmitObjectprevStateEn), required: false);
+            var __workflow_searchLeadsWrappertransmitObjectprice = searchLeadsWrappertransmitObjectprice == null ? null : WorkflowExpression.Compile(searchLeadsWrappertransmitObjectprice);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrappertransmitObjectprice, nameof(searchLeadsWrappertransmitObjectprice), required: false);
+            var __workflow_searchLeadsWrappertransmitObjectpriceChanged = searchLeadsWrappertransmitObjectpriceChanged == null ? null : WorkflowExpression.Compile(searchLeadsWrappertransmitObjectpriceChanged);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrappertransmitObjectpriceChanged, nameof(searchLeadsWrappertransmitObjectpriceChanged), required: false);
+            var __workflow_searchLeadsWrappertransmitObjectpriceDefaultCurrency = searchLeadsWrappertransmitObjectpriceDefaultCurrency == null ? null : WorkflowExpression.Compile(searchLeadsWrappertransmitObjectpriceDefaultCurrency);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrappertransmitObjectpriceDefaultCurrency, nameof(searchLeadsWrappertransmitObjectpriceDefaultCurrency), required: false);
+            var __workflow_searchLeadsWrappertransmitObjectprobability = searchLeadsWrappertransmitObjectprobability == null ? null : WorkflowExpression.Compile(searchLeadsWrappertransmitObjectprobability);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrappertransmitObjectprobability, nameof(searchLeadsWrappertransmitObjectprobability), required: false);
+            var __workflow_searchLeadsWrappertransmitObjectreceiveDate = searchLeadsWrappertransmitObjectreceiveDate == null ? null : WorkflowExpression.Compile(searchLeadsWrappertransmitObjectreceiveDate);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrappertransmitObjectreceiveDate, nameof(searchLeadsWrappertransmitObjectreceiveDate), required: false);
+            var __workflow_searchLeadsWrappertransmitObjectstateEn = searchLeadsWrappertransmitObjectstateEn == null ? null : WorkflowExpression.Compile(searchLeadsWrappertransmitObjectstateEn);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrappertransmitObjectstateEn, nameof(searchLeadsWrappertransmitObjectstateEn), required: false);
+            var __workflow_searchLeadsWrappertransmitObjectstreet = searchLeadsWrappertransmitObjectstreet == null ? null : WorkflowExpression.Compile(searchLeadsWrappertransmitObjectstreet);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrappertransmitObjectstreet, nameof(searchLeadsWrappertransmitObjectstreet), required: false);
+            var __workflow_searchLeadsWrappertransmitObjecttypeEn = searchLeadsWrappertransmitObjecttypeEn == null ? null : WorkflowExpression.Compile(searchLeadsWrappertransmitObjecttypeEn);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrappertransmitObjecttypeEn, nameof(searchLeadsWrappertransmitObjecttypeEn), required: false);
+            var __workflow_searchLeadsWrappertransmitObjectzip = searchLeadsWrappertransmitObjectzip == null ? null : WorkflowExpression.Compile(searchLeadsWrappertransmitObjectzip);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrappertransmitObjectzip, nameof(searchLeadsWrappertransmitObjectzip), required: false);
+            var __workflow_searchLeadsWrappertransmitObjectlastActivity = searchLeadsWrappertransmitObjectlastActivity == null ? null : WorkflowExpression.Compile(searchLeadsWrappertransmitObjectlastActivity);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrappertransmitObjectlastActivity, nameof(searchLeadsWrappertransmitObjectlastActivity), required: false);
+            var __workflow_searchLeadsWrappertransmitObjectnextStep = searchLeadsWrappertransmitObjectnextStep == null ? null : WorkflowExpression.Compile(searchLeadsWrappertransmitObjectnextStep);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrappertransmitObjectnextStep, nameof(searchLeadsWrappertransmitObjectnextStep), required: false);
+            var __workflow_searchLeadsWrappertransmitObjectestimatedValue = searchLeadsWrappertransmitObjectestimatedValue == null ? null : WorkflowExpression.Compile(searchLeadsWrappertransmitObjectestimatedValue);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrappertransmitObjectestimatedValue, nameof(searchLeadsWrappertransmitObjectestimatedValue), required: false);
+            var __workflow_searchLeadsWrappertransmitObjectisCompleted = searchLeadsWrappertransmitObjectisCompleted == null ? null : WorkflowExpression.Compile(searchLeadsWrappertransmitObjectisCompleted);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrappertransmitObjectisCompleted, nameof(searchLeadsWrappertransmitObjectisCompleted), required: false);
+            var __workflow_searchLeadsWrappertransmitObjectisLost = searchLeadsWrappertransmitObjectisLost == null ? null : WorkflowExpression.Compile(searchLeadsWrappertransmitObjectisLost);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrappertransmitObjectisLost, nameof(searchLeadsWrappertransmitObjectisLost), required: false);
+            var __workflow_searchLeadsWrappertransmitObjectcountryEn = searchLeadsWrappertransmitObjectcountryEn == null ? null : WorkflowExpression.Compile(searchLeadsWrappertransmitObjectcountryEn);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrappertransmitObjectcountryEn, nameof(searchLeadsWrappertransmitObjectcountryEn), required: false);
+            var __workflow_searchLeadsWrappertransmitObjectstate = searchLeadsWrappertransmitObjectstate == null ? null : WorkflowExpression.Compile(searchLeadsWrappertransmitObjectstate);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrappertransmitObjectstate, nameof(searchLeadsWrappertransmitObjectstate), required: false);
+            var __workflow_searchLeadsWrappertransmitObjectpOBox = searchLeadsWrappertransmitObjectpOBox == null ? null : WorkflowExpression.Compile(searchLeadsWrappertransmitObjectpOBox);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrappertransmitObjectpOBox, nameof(searchLeadsWrappertransmitObjectpOBox), required: false);
+            var __workflow_searchLeadsWrappertransmitObjectemailOptOut = searchLeadsWrappertransmitObjectemailOptOut == null ? null : WorkflowExpression.Compile(searchLeadsWrappertransmitObjectemailOptOut);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrappertransmitObjectemailOptOut, nameof(searchLeadsWrappertransmitObjectemailOptOut), required: false);
+            var __workflow_searchLeadsWrappertransmitObjectpicture = searchLeadsWrappertransmitObjectpicture == null ? null : WorkflowExpression.Compile(searchLeadsWrappertransmitObjectpicture);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrappertransmitObjectpicture, nameof(searchLeadsWrappertransmitObjectpicture), required: false);
+            var __workflow_searchLeadsWrappertransmitObjectpictureWidth = searchLeadsWrappertransmitObjectpictureWidth == null ? null : WorkflowExpression.Compile(searchLeadsWrappertransmitObjectpictureWidth);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrappertransmitObjectpictureWidth, nameof(searchLeadsWrappertransmitObjectpictureWidth), required: false);
+            var __workflow_searchLeadsWrappertransmitObjectpictureHeight = searchLeadsWrappertransmitObjectpictureHeight == null ? null : WorkflowExpression.Compile(searchLeadsWrappertransmitObjectpictureHeight);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrappertransmitObjectpictureHeight, nameof(searchLeadsWrappertransmitObjectpictureHeight), required: false);
+            var __workflow_searchLeadsWrappertransmitObjectcompletedDate = searchLeadsWrappertransmitObjectcompletedDate == null ? null : WorkflowExpression.Compile(searchLeadsWrappertransmitObjectcompletedDate);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrappertransmitObjectcompletedDate, nameof(searchLeadsWrappertransmitObjectcompletedDate), required: false);
+            var __workflow_searchLeadsWrappertransmitObjectlostDate = searchLeadsWrappertransmitObjectlostDate == null ? null : WorkflowExpression.Compile(searchLeadsWrappertransmitObjectlostDate);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrappertransmitObjectlostDate, nameof(searchLeadsWrappertransmitObjectlostDate), required: false);
+            var __workflow_searchLeadsWrappertransmitObjectisPrivate = searchLeadsWrappertransmitObjectisPrivate == null ? null : WorkflowExpression.Compile(searchLeadsWrappertransmitObjectisPrivate);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrappertransmitObjectisPrivate, nameof(searchLeadsWrappertransmitObjectisPrivate), required: false);
+            var __workflow_searchLeadsWrappertransmitObjectserverItemCreated = searchLeadsWrappertransmitObjectserverItemCreated == null ? null : WorkflowExpression.Compile(searchLeadsWrappertransmitObjectserverItemCreated);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrappertransmitObjectserverItemCreated, nameof(searchLeadsWrappertransmitObjectserverItemCreated), required: false);
+            var __workflow_searchLeadsWrappertransmitObjectserverItemChanged = searchLeadsWrappertransmitObjectserverItemChanged == null ? null : WorkflowExpression.Compile(searchLeadsWrappertransmitObjectserverItemChanged);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrappertransmitObjectserverItemChanged, nameof(searchLeadsWrappertransmitObjectserverItemChanged), required: false);
+            var __workflow_searchLeadsWrappertransmitObjectitemCreated = searchLeadsWrappertransmitObjectitemCreated == null ? null : WorkflowExpression.Compile(searchLeadsWrappertransmitObjectitemCreated);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrappertransmitObjectitemCreated, nameof(searchLeadsWrappertransmitObjectitemCreated), required: false);
+            var __workflow_searchLeadsWrappertransmitObjectitemChanged = searchLeadsWrappertransmitObjectitemChanged == null ? null : WorkflowExpression.Compile(searchLeadsWrappertransmitObjectitemChanged);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrappertransmitObjectitemChanged, nameof(searchLeadsWrappertransmitObjectitemChanged), required: false);
+            var __workflow_searchLeadsWrappertransmitObjectfileAs = searchLeadsWrappertransmitObjectfileAs == null ? null : WorkflowExpression.Compile(searchLeadsWrappertransmitObjectfileAs);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrappertransmitObjectfileAs, nameof(searchLeadsWrappertransmitObjectfileAs), required: false);
+            var __workflow_searchLeadsWrappertransmitObjectownerGUID = searchLeadsWrappertransmitObjectownerGUID == null ? null : WorkflowExpression.Compile(searchLeadsWrappertransmitObjectownerGUID);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrappertransmitObjectownerGUID, nameof(searchLeadsWrappertransmitObjectownerGUID), required: false);
+            var __workflow_searchLeadsWrappertransmitObjectcreatedByGUID = searchLeadsWrappertransmitObjectcreatedByGUID == null ? null : WorkflowExpression.Compile(searchLeadsWrappertransmitObjectcreatedByGUID);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrappertransmitObjectcreatedByGUID, nameof(searchLeadsWrappertransmitObjectcreatedByGUID), required: false);
+            var __workflow_searchLeadsWrappertransmitObjectmodifiedByGUID = searchLeadsWrappertransmitObjectmodifiedByGUID == null ? null : WorkflowExpression.Compile(searchLeadsWrappertransmitObjectmodifiedByGUID);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrappertransmitObjectmodifiedByGUID, nameof(searchLeadsWrappertransmitObjectmodifiedByGUID), required: false);
+            var __workflow_searchLeadsWrappertransmitObjectadditionalFields = searchLeadsWrappertransmitObjectadditionalFields == null ? null : WorkflowExpression.Compile(searchLeadsWrappertransmitObjectadditionalFields);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrappertransmitObjectadditionalFields, nameof(searchLeadsWrappertransmitObjectadditionalFields), required: false);
+            var __workflow_searchLeadsWrappertransmitObjectrelations = searchLeadsWrappertransmitObjectrelations == null ? null : WorkflowExpression.Compile(searchLeadsWrappertransmitObjectrelations);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrappertransmitObjectrelations, nameof(searchLeadsWrappertransmitObjectrelations), required: false);
+            var __workflow_searchLeadsWrappertransmitObjectitemGUID = searchLeadsWrappertransmitObjectitemGUID == null ? null : WorkflowExpression.Compile(searchLeadsWrappertransmitObjectitemGUID);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrappertransmitObjectitemGUID, nameof(searchLeadsWrappertransmitObjectitemGUID), required: false);
+            var __workflow_searchLeadsWrappertransmitObjectitemVersion = searchLeadsWrappertransmitObjectitemVersion == null ? null : WorkflowExpression.Compile(searchLeadsWrappertransmitObjectitemVersion);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrappertransmitObjectitemVersion, nameof(searchLeadsWrappertransmitObjectitemVersion), required: false);
+            var __workflow_searchLeadsWrapperincludeRelations = searchLeadsWrapperincludeRelations == null ? null : WorkflowExpression.Compile(searchLeadsWrapperincludeRelations);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrapperincludeRelations, nameof(searchLeadsWrapperincludeRelations), required: false);
+            var __workflow_searchLeadsWrapperrelationsFilterrelationType = searchLeadsWrapperrelationsFilterrelationType == null ? null : WorkflowExpression.Compile(searchLeadsWrapperrelationsFilterrelationType);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrapperrelationsFilterrelationType, nameof(searchLeadsWrapperrelationsFilterrelationType), required: false);
+            var __workflow_searchLeadsWrapperrelationsFilterforeignFolderName = searchLeadsWrapperrelationsFilterforeignFolderName == null ? null : WorkflowExpression.Compile(searchLeadsWrapperrelationsFilterforeignFolderName);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrapperrelationsFilterforeignFolderName, nameof(searchLeadsWrapperrelationsFilterforeignFolderName), required: false);
+            var __workflow_searchLeadsWrapperbinaryLogicalOperator = searchLeadsWrapperbinaryLogicalOperator == null ? null : WorkflowExpression.Compile(searchLeadsWrapperbinaryLogicalOperator);
+            WorkflowExpression.Validate(__workflow_searchLeadsWrapperbinaryLogicalOperator, nameof(searchLeadsWrapperbinaryLogicalOperator), required: false);
             return new DeferredBodyAction<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedLead>(() =>
             {
                 var apiCallPath = "/SearchLeads";
@@ -4310,309 +4774,309 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                 var searchLeadsWrapperpropCount = 0;
                 var transmitObjectObject = new JObject();
                 var transmitObjectObjectpropCount = 0;
-                if (searchLeadsWrappertransmitObjectcompaniesCustomerGuid != null)
+                if (__workflow_searchLeadsWrappertransmitObjectcompaniesCustomerGuid != null)
                 {
-                    transmitObjectObject["Companies_CustomerGuid"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectcompaniesCustomerGuid);
+                    transmitObjectObject["Companies_CustomerGuid"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrappertransmitObjectcompaniesCustomerGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchLeadsWrappertransmitObjectcontactsContactPersonGuid != null)
+                if (__workflow_searchLeadsWrappertransmitObjectcontactsContactPersonGuid != null)
                 {
-                    transmitObjectObject["Contacts_ContactPersonGuid"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectcontactsContactPersonGuid);
+                    transmitObjectObject["Contacts_ContactPersonGuid"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrappertransmitObjectcontactsContactPersonGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchLeadsWrappertransmitObjectmarketingMarketingGuid != null)
+                if (__workflow_searchLeadsWrappertransmitObjectmarketingMarketingGuid != null)
                 {
-                    transmitObjectObject["Marketing_MarketingGuid"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectmarketingMarketingGuid);
+                    transmitObjectObject["Marketing_MarketingGuid"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrappertransmitObjectmarketingMarketingGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchLeadsWrappertransmitObjectcity != null)
+                if (__workflow_searchLeadsWrappertransmitObjectcity != null)
                 {
-                    transmitObjectObject["City"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectcity);
+                    transmitObjectObject["City"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrappertransmitObjectcity);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchLeadsWrappertransmitObjectcontactPerson != null)
+                if (__workflow_searchLeadsWrappertransmitObjectcontactPerson != null)
                 {
-                    transmitObjectObject["ContactPerson"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectcontactPerson);
+                    transmitObjectObject["ContactPerson"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrappertransmitObjectcontactPerson);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchLeadsWrappertransmitObjectcurrencyEn != null)
+                if (__workflow_searchLeadsWrappertransmitObjectcurrencyEn != null)
                 {
-                    transmitObjectObject["CurrencyEn"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectcurrencyEn);
+                    transmitObjectObject["CurrencyEn"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrappertransmitObjectcurrencyEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchLeadsWrappertransmitObjectcustomer != null)
+                if (__workflow_searchLeadsWrappertransmitObjectcustomer != null)
                 {
-                    transmitObjectObject["Customer"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectcustomer);
+                    transmitObjectObject["Customer"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrappertransmitObjectcustomer);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchLeadsWrappertransmitObjectemail != null)
+                if (__workflow_searchLeadsWrappertransmitObjectemail != null)
                 {
-                    transmitObjectObject["Email"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectemail);
+                    transmitObjectObject["Email"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrappertransmitObjectemail);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchLeadsWrappertransmitObjectestimatedEnd != null)
+                if (__workflow_searchLeadsWrappertransmitObjectestimatedEnd != null)
                 {
-                    transmitObjectObject["EstimatedEnd"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectestimatedEnd);
+                    transmitObjectObject["EstimatedEnd"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrappertransmitObjectestimatedEnd);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchLeadsWrappertransmitObjecthID != null)
+                if (__workflow_searchLeadsWrappertransmitObjecthID != null)
                 {
-                    transmitObjectObject["HID"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjecthID);
+                    transmitObjectObject["HID"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrappertransmitObjecthID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchLeadsWrappertransmitObjectleadOriginEn != null)
+                if (__workflow_searchLeadsWrappertransmitObjectleadOriginEn != null)
                 {
-                    transmitObjectObject["LeadOriginEn"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectleadOriginEn);
+                    transmitObjectObject["LeadOriginEn"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrappertransmitObjectleadOriginEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchLeadsWrappertransmitObjectnote != null)
+                if (__workflow_searchLeadsWrappertransmitObjectnote != null)
                 {
-                    transmitObjectObject["Note"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectnote);
+                    transmitObjectObject["Note"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrappertransmitObjectnote);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchLeadsWrappertransmitObjectphone != null)
+                if (__workflow_searchLeadsWrappertransmitObjectphone != null)
                 {
-                    transmitObjectObject["Phone"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectphone);
+                    transmitObjectObject["Phone"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrappertransmitObjectphone);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchLeadsWrappertransmitObjectphoneNormalized != null)
+                if (__workflow_searchLeadsWrappertransmitObjectphoneNormalized != null)
                 {
-                    transmitObjectObject["PhoneNormalized"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectphoneNormalized);
+                    transmitObjectObject["PhoneNormalized"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrappertransmitObjectphoneNormalized);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchLeadsWrappertransmitObjectprevStateEn != null)
+                if (__workflow_searchLeadsWrappertransmitObjectprevStateEn != null)
                 {
-                    transmitObjectObject["PrevStateEn"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectprevStateEn);
+                    transmitObjectObject["PrevStateEn"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrappertransmitObjectprevStateEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchLeadsWrappertransmitObjectprice != null)
+                if (__workflow_searchLeadsWrappertransmitObjectprice != null)
                 {
-                    transmitObjectObject["Price"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectprice);
+                    transmitObjectObject["Price"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrappertransmitObjectprice);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchLeadsWrappertransmitObjectpriceChanged != null)
+                if (__workflow_searchLeadsWrappertransmitObjectpriceChanged != null)
                 {
-                    transmitObjectObject["PriceChanged"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectpriceChanged);
+                    transmitObjectObject["PriceChanged"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrappertransmitObjectpriceChanged);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchLeadsWrappertransmitObjectpriceDefaultCurrency != null)
+                if (__workflow_searchLeadsWrappertransmitObjectpriceDefaultCurrency != null)
                 {
-                    transmitObjectObject["PriceDefaultCurrency"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectpriceDefaultCurrency);
+                    transmitObjectObject["PriceDefaultCurrency"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrappertransmitObjectpriceDefaultCurrency);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchLeadsWrappertransmitObjectprobability != null)
+                if (__workflow_searchLeadsWrappertransmitObjectprobability != null)
                 {
-                    transmitObjectObject["Probability"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectprobability);
+                    transmitObjectObject["Probability"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrappertransmitObjectprobability);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchLeadsWrappertransmitObjectreceiveDate != null)
+                if (__workflow_searchLeadsWrappertransmitObjectreceiveDate != null)
                 {
-                    transmitObjectObject["ReceiveDate"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectreceiveDate);
+                    transmitObjectObject["ReceiveDate"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrappertransmitObjectreceiveDate);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchLeadsWrappertransmitObjectstateEn != null)
+                if (__workflow_searchLeadsWrappertransmitObjectstateEn != null)
                 {
-                    transmitObjectObject["StateEn"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectstateEn);
+                    transmitObjectObject["StateEn"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrappertransmitObjectstateEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchLeadsWrappertransmitObjectstreet != null)
+                if (__workflow_searchLeadsWrappertransmitObjectstreet != null)
                 {
-                    transmitObjectObject["Street"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectstreet);
+                    transmitObjectObject["Street"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrappertransmitObjectstreet);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchLeadsWrappertransmitObjecttypeEn != null)
+                if (__workflow_searchLeadsWrappertransmitObjecttypeEn != null)
                 {
-                    transmitObjectObject["TypeEn"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjecttypeEn);
+                    transmitObjectObject["TypeEn"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrappertransmitObjecttypeEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchLeadsWrappertransmitObjectzip != null)
+                if (__workflow_searchLeadsWrappertransmitObjectzip != null)
                 {
-                    transmitObjectObject["Zip"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectzip);
+                    transmitObjectObject["Zip"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrappertransmitObjectzip);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchLeadsWrappertransmitObjectlastActivity != null)
+                if (__workflow_searchLeadsWrappertransmitObjectlastActivity != null)
                 {
-                    transmitObjectObject["LastActivity"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectlastActivity);
+                    transmitObjectObject["LastActivity"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrappertransmitObjectlastActivity);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchLeadsWrappertransmitObjectnextStep != null)
+                if (__workflow_searchLeadsWrappertransmitObjectnextStep != null)
                 {
-                    transmitObjectObject["NextStep"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectnextStep);
+                    transmitObjectObject["NextStep"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrappertransmitObjectnextStep);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchLeadsWrappertransmitObjectestimatedValue != null)
+                if (__workflow_searchLeadsWrappertransmitObjectestimatedValue != null)
                 {
-                    transmitObjectObject["EstimatedValue"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectestimatedValue);
+                    transmitObjectObject["EstimatedValue"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrappertransmitObjectestimatedValue);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchLeadsWrappertransmitObjectisCompleted != null)
+                if (__workflow_searchLeadsWrappertransmitObjectisCompleted != null)
                 {
-                    transmitObjectObject["IsCompleted"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectisCompleted);
+                    transmitObjectObject["IsCompleted"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrappertransmitObjectisCompleted);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchLeadsWrappertransmitObjectisLost != null)
+                if (__workflow_searchLeadsWrappertransmitObjectisLost != null)
                 {
-                    transmitObjectObject["IsLost"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectisLost);
+                    transmitObjectObject["IsLost"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrappertransmitObjectisLost);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchLeadsWrappertransmitObjectcountryEn != null)
+                if (__workflow_searchLeadsWrappertransmitObjectcountryEn != null)
                 {
-                    transmitObjectObject["CountryEn"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectcountryEn);
+                    transmitObjectObject["CountryEn"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrappertransmitObjectcountryEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchLeadsWrappertransmitObjectstate != null)
+                if (__workflow_searchLeadsWrappertransmitObjectstate != null)
                 {
-                    transmitObjectObject["State"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectstate);
+                    transmitObjectObject["State"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrappertransmitObjectstate);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchLeadsWrappertransmitObjectpOBox != null)
+                if (__workflow_searchLeadsWrappertransmitObjectpOBox != null)
                 {
-                    transmitObjectObject["POBox"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectpOBox);
+                    transmitObjectObject["POBox"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrappertransmitObjectpOBox);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchLeadsWrappertransmitObjectemailOptOut != null)
+                if (__workflow_searchLeadsWrappertransmitObjectemailOptOut != null)
                 {
-                    transmitObjectObject["EmailOptOut"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectemailOptOut);
+                    transmitObjectObject["EmailOptOut"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrappertransmitObjectemailOptOut);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchLeadsWrappertransmitObjectpicture != null)
+                if (__workflow_searchLeadsWrappertransmitObjectpicture != null)
                 {
-                    transmitObjectObject["Picture"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectpicture);
+                    transmitObjectObject["Picture"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrappertransmitObjectpicture);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchLeadsWrappertransmitObjectpictureWidth != null)
+                if (__workflow_searchLeadsWrappertransmitObjectpictureWidth != null)
                 {
-                    transmitObjectObject["PictureWidth"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectpictureWidth);
+                    transmitObjectObject["PictureWidth"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrappertransmitObjectpictureWidth);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchLeadsWrappertransmitObjectpictureHeight != null)
+                if (__workflow_searchLeadsWrappertransmitObjectpictureHeight != null)
                 {
-                    transmitObjectObject["PictureHeight"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectpictureHeight);
+                    transmitObjectObject["PictureHeight"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrappertransmitObjectpictureHeight);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchLeadsWrappertransmitObjectcompletedDate != null)
+                if (__workflow_searchLeadsWrappertransmitObjectcompletedDate != null)
                 {
-                    transmitObjectObject["CompletedDate"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectcompletedDate);
+                    transmitObjectObject["CompletedDate"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrappertransmitObjectcompletedDate);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchLeadsWrappertransmitObjectlostDate != null)
+                if (__workflow_searchLeadsWrappertransmitObjectlostDate != null)
                 {
-                    transmitObjectObject["LostDate"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectlostDate);
+                    transmitObjectObject["LostDate"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrappertransmitObjectlostDate);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchLeadsWrappertransmitObjectisPrivate != null)
+                if (__workflow_searchLeadsWrappertransmitObjectisPrivate != null)
                 {
-                    transmitObjectObject["IsPrivate"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectisPrivate);
+                    transmitObjectObject["IsPrivate"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrappertransmitObjectisPrivate);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchLeadsWrappertransmitObjectserverItemCreated != null)
+                if (__workflow_searchLeadsWrappertransmitObjectserverItemCreated != null)
                 {
-                    transmitObjectObject["Server_ItemCreated"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectserverItemCreated);
+                    transmitObjectObject["Server_ItemCreated"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrappertransmitObjectserverItemCreated);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchLeadsWrappertransmitObjectserverItemChanged != null)
+                if (__workflow_searchLeadsWrappertransmitObjectserverItemChanged != null)
                 {
-                    transmitObjectObject["Server_ItemChanged"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectserverItemChanged);
+                    transmitObjectObject["Server_ItemChanged"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrappertransmitObjectserverItemChanged);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchLeadsWrappertransmitObjectitemCreated != null)
+                if (__workflow_searchLeadsWrappertransmitObjectitemCreated != null)
                 {
-                    transmitObjectObject["ItemCreated"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectitemCreated);
+                    transmitObjectObject["ItemCreated"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrappertransmitObjectitemCreated);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchLeadsWrappertransmitObjectitemChanged != null)
+                if (__workflow_searchLeadsWrappertransmitObjectitemChanged != null)
                 {
-                    transmitObjectObject["ItemChanged"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectitemChanged);
+                    transmitObjectObject["ItemChanged"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrappertransmitObjectitemChanged);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchLeadsWrappertransmitObjectfileAs != null)
+                if (__workflow_searchLeadsWrappertransmitObjectfileAs != null)
                 {
-                    transmitObjectObject["FileAs"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectfileAs);
+                    transmitObjectObject["FileAs"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrappertransmitObjectfileAs);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchLeadsWrappertransmitObjectownerGUID != null)
+                if (__workflow_searchLeadsWrappertransmitObjectownerGUID != null)
                 {
-                    transmitObjectObject["OwnerGUID"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectownerGUID);
+                    transmitObjectObject["OwnerGUID"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrappertransmitObjectownerGUID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchLeadsWrappertransmitObjectcreatedByGUID != null)
+                if (__workflow_searchLeadsWrappertransmitObjectcreatedByGUID != null)
                 {
-                    transmitObjectObject["CreatedByGUID"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectcreatedByGUID);
+                    transmitObjectObject["CreatedByGUID"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrappertransmitObjectcreatedByGUID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchLeadsWrappertransmitObjectmodifiedByGUID != null)
+                if (__workflow_searchLeadsWrappertransmitObjectmodifiedByGUID != null)
                 {
-                    transmitObjectObject["ModifiedByGUID"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectmodifiedByGUID);
+                    transmitObjectObject["ModifiedByGUID"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrappertransmitObjectmodifiedByGUID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchLeadsWrappertransmitObjectadditionalFields != null)
+                if (__workflow_searchLeadsWrappertransmitObjectadditionalFields != null)
                 {
-                    transmitObjectObject["AdditionalFields"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectadditionalFields);
+                    transmitObjectObject["AdditionalFields"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrappertransmitObjectadditionalFields);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchLeadsWrappertransmitObjectrelations != null)
+                if (__workflow_searchLeadsWrappertransmitObjectrelations != null)
                 {
-                    transmitObjectObject["Relations"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectrelations);
+                    transmitObjectObject["Relations"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrappertransmitObjectrelations);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchLeadsWrappertransmitObjectitemGUID != null)
+                if (__workflow_searchLeadsWrappertransmitObjectitemGUID != null)
                 {
-                    transmitObjectObject["ItemGUID"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectitemGUID);
+                    transmitObjectObject["ItemGUID"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrappertransmitObjectitemGUID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchLeadsWrappertransmitObjectitemVersion != null)
+                if (__workflow_searchLeadsWrappertransmitObjectitemVersion != null)
                 {
-                    transmitObjectObject["ItemVersion"] = ExpressionConverter.ConvertO(searchLeadsWrappertransmitObjectitemVersion);
+                    transmitObjectObject["ItemVersion"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrappertransmitObjectitemVersion);
                     transmitObjectObjectpropCount++;
                 }
 
@@ -4622,23 +5086,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                     searchLeadsWrapperpropCount++;
                 }
 
-                if (searchLeadsWrapperincludeRelations != null)
+                if (__workflow_searchLeadsWrapperincludeRelations != null)
                 {
-                    searchLeadsWrapper["includeRelations"] = ExpressionConverter.ConvertO(searchLeadsWrapperincludeRelations);
+                    searchLeadsWrapper["includeRelations"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrapperincludeRelations);
                     searchLeadsWrapperpropCount++;
                 }
 
                 var relationsFilterObject = new JObject();
                 var relationsFilterObjectpropCount = 0;
-                if (searchLeadsWrapperrelationsFilterrelationType != null)
+                if (__workflow_searchLeadsWrapperrelationsFilterrelationType != null)
                 {
-                    relationsFilterObject["RelationType"] = ExpressionConverter.ConvertO(searchLeadsWrapperrelationsFilterrelationType);
+                    relationsFilterObject["RelationType"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrapperrelationsFilterrelationType);
                     relationsFilterObjectpropCount++;
                 }
 
-                if (searchLeadsWrapperrelationsFilterforeignFolderName != null)
+                if (__workflow_searchLeadsWrapperrelationsFilterforeignFolderName != null)
                 {
-                    relationsFilterObject["ForeignFolderName"] = ExpressionConverter.ConvertO(searchLeadsWrapperrelationsFilterforeignFolderName);
+                    relationsFilterObject["ForeignFolderName"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrapperrelationsFilterforeignFolderName);
                     relationsFilterObjectpropCount++;
                 }
 
@@ -4648,9 +5112,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                     searchLeadsWrapperpropCount++;
                 }
 
-                if (searchLeadsWrapperbinaryLogicalOperator != null)
+                if (__workflow_searchLeadsWrapperbinaryLogicalOperator != null)
                 {
-                    searchLeadsWrapper["binaryLogicalOperator"] = ExpressionConverter.ConvertO(searchLeadsWrapperbinaryLogicalOperator);
+                    searchLeadsWrapper["binaryLogicalOperator"] = ExpressionConverter.ConvertO(__workflow_searchLeadsWrapperbinaryLogicalOperator);
                     searchLeadsWrapperpropCount++;
                 }
 
@@ -4664,92 +5128,162 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
-        [WorkflowExpressionFactory(nameof(__BuildSearchProjects))]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedProject> SearchProjects([WorkflowExpression] Func<string> searchProjectsWrappertransmitObjectcompaniesCustomerGuid = null, [WorkflowExpression] Func<string> searchProjectsWrappertransmitObjectcontactsContactPersonGuid = null, [WorkflowExpression] Func<string> searchProjectsWrappertransmitObjectleadsProjectOriginGuid = null, [WorkflowExpression] Func<string> searchProjectsWrappertransmitObjectprojectsSuperiorProjectGuid = null, [WorkflowExpression] Func<string> searchProjectsWrappertransmitObjectusersSupervisorGuid = null, [WorkflowExpression] Func<string> searchProjectsWrappertransmitObjectnote = null, [WorkflowExpression] Func<double> searchProjectsWrappertransmitObjectprice = null, [WorkflowExpression] Func<string> searchProjectsWrappertransmitObjectprojectEnd = null, [WorkflowExpression] Func<string> searchProjectsWrappertransmitObjectprojectName = null, [WorkflowExpression] Func<string> searchProjectsWrappertransmitObjecttypeEn = null, [WorkflowExpression] Func<string> searchProjectsWrappertransmitObjectstateEn = null, [WorkflowExpression] Func<double> searchProjectsWrappertransmitObjectpeopleExpenses = null, [WorkflowExpression] Func<string> searchProjectsWrappertransmitObjectprojectRealEnd = null, [WorkflowExpression] Func<double> searchProjectsWrappertransmitObjectestimatedPrice = null, [WorkflowExpression] Func<int> searchProjectsWrappertransmitObjecthID = null, [WorkflowExpression] Func<string> searchProjectsWrappertransmitObjectprojectOriginEn = null, [WorkflowExpression] Func<string> searchProjectsWrappertransmitObjectpaymentTypeEn = null, [WorkflowExpression] Func<double> searchProjectsWrappertransmitObjectotherExpenses = null, [WorkflowExpression] Func<double> searchProjectsWrappertransmitObjectmargin = null, [WorkflowExpression] Func<double> searchProjectsWrappertransmitObjectprofit = null, [WorkflowExpression] Func<int> searchProjectsWrappertransmitObjectpaymentMaturity = null, [WorkflowExpression] Func<string> searchProjectsWrappertransmitObjectinvoicePaymentDate = null, [WorkflowExpression] Func<string> searchProjectsWrappertransmitObjectinvoiceIssueDate = null, [WorkflowExpression] Func<double> searchProjectsWrappertransmitObjectestimatedMargin = null, [WorkflowExpression] Func<double> searchProjectsWrappertransmitObjectestimatedProfit = null, [WorkflowExpression] Func<double> searchProjectsWrappertransmitObjectestimatedPeopleExpenses = null, [WorkflowExpression] Func<double> searchProjectsWrappertransmitObjectestimatedOtherExpenses = null, [WorkflowExpression] Func<int> searchProjectsWrappertransmitObjectlicensesCount = null, [WorkflowExpression] Func<double> searchProjectsWrappertransmitObjectlicensePrice = null, [WorkflowExpression] Func<string> searchProjectsWrappertransmitObjectprevStateEn = null, [WorkflowExpression] Func<bool> searchProjectsWrappertransmitObjectshowInCaplan = null, [WorkflowExpression] Func<string> searchProjectsWrappertransmitObjectprojectStart = null, [WorkflowExpression] Func<int> searchProjectsWrappertransmitObjectestimatedWorkHours = null, [WorkflowExpression] Func<double> searchProjectsWrappertransmitObjecttotalWorkHours = null, [WorkflowExpression] Func<double> searchProjectsWrappertransmitObjectestimatedPeopleExpensesDefaultCurrency = null, [WorkflowExpression] Func<double> searchProjectsWrappertransmitObjectestimatedOtherExpensesDefaultCurrency = null, [WorkflowExpression] Func<double> searchProjectsWrappertransmitObjectestimatedPriceDefaultCurrency = null, [WorkflowExpression] Func<double> searchProjectsWrappertransmitObjectpeopleExpensesDefaultCurrency = null, [WorkflowExpression] Func<double> searchProjectsWrappertransmitObjectotherExpensesDefaultCurrency = null, [WorkflowExpression] Func<double> searchProjectsWrappertransmitObjectpriceDefaultCurrency = null, [WorkflowExpression] Func<double> searchProjectsWrappertransmitObjectprofitDefaultCurrency = null, [WorkflowExpression] Func<double> searchProjectsWrappertransmitObjectestimatedProfitDefaultCurrency = null, [WorkflowExpression] Func<string> searchProjectsWrappertransmitObjectcurrencyEn = null, [WorkflowExpression] Func<string> searchProjectsWrappertransmitObjectestimatedPeopleExpensesChanged = null, [WorkflowExpression] Func<string> searchProjectsWrappertransmitObjectestimatedOtherExpensesChanged = null, [WorkflowExpression] Func<string> searchProjectsWrappertransmitObjectotherExpensesChanged = null, [WorkflowExpression] Func<string> searchProjectsWrappertransmitObjectestimatedPriceChanged = null, [WorkflowExpression] Func<string> searchProjectsWrappertransmitObjectpriceChanged = null, [WorkflowExpression] Func<string> searchProjectsWrappertransmitObjectlicensePriceChanged = null, [WorkflowExpression] Func<double> searchProjectsWrappertransmitObjectlicensePriceDefaultCurrency = null, [WorkflowExpression] Func<string> searchProjectsWrappertransmitObjectlastActivity = null, [WorkflowExpression] Func<string> searchProjectsWrappertransmitObjectnextStep = null, [WorkflowExpression] Func<string> searchProjectsWrappertransmitObjectcompletedDate = null, [WorkflowExpression] Func<bool> searchProjectsWrappertransmitObjectisCompleted = null, [WorkflowExpression] Func<string> searchProjectsWrappertransmitObjectlostDate = null, [WorkflowExpression] Func<bool> searchProjectsWrappertransmitObjectisLost = null, [WorkflowExpression] Func<string> searchProjectsWrappertransmitObjectpeopleExpensesChanged = null, [WorkflowExpression] Func<string> searchProjectsWrappertransmitObjectpicture = null, [WorkflowExpression] Func<int> searchProjectsWrappertransmitObjectpictureWidth = null, [WorkflowExpression] Func<int> searchProjectsWrappertransmitObjectpictureHeight = null, [WorkflowExpression] Func<bool> searchProjectsWrappertransmitObjectisPrivate = null, [WorkflowExpression] Func<string> searchProjectsWrappertransmitObjectserverItemCreated = null, [WorkflowExpression] Func<string> searchProjectsWrappertransmitObjectserverItemChanged = null, [WorkflowExpression] Func<string> searchProjectsWrappertransmitObjectitemCreated = null, [WorkflowExpression] Func<string> searchProjectsWrappertransmitObjectitemChanged = null, [WorkflowExpression] Func<string> searchProjectsWrappertransmitObjectfileAs = null, [WorkflowExpression] Func<string> searchProjectsWrappertransmitObjectownerGUID = null, [WorkflowExpression] Func<string> searchProjectsWrappertransmitObjectcreatedByGUID = null, [WorkflowExpression] Func<string> searchProjectsWrappertransmitObjectmodifiedByGUID = null, [WorkflowExpression] Func<object> searchProjectsWrappertransmitObjectadditionalFields = null, [WorkflowExpression] Func<EWayWcfServiceItemTypesInnerTypesBoundRelation[]> searchProjectsWrappertransmitObjectrelations = null, [WorkflowExpression] Func<string> searchProjectsWrappertransmitObjectitemGUID = null, [WorkflowExpression] Func<int> searchProjectsWrappertransmitObjectitemVersion = null, [WorkflowExpression] Func<bool> searchProjectsWrapperincludeRelations = null, [WorkflowExpression] Func<string> searchProjectsWrapperrelationsFilterrelationType = null, [WorkflowExpression] Func<string> searchProjectsWrapperrelationsFilterforeignFolderName = null, [WorkflowExpression] Func<string> searchProjectsWrapperbinaryLogicalOperator = null)
+        public IBodyWorkflowAction<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedProject> SearchProjects(Expression<Func<string>> searchProjectsWrappertransmitObjectcompaniesCustomerGuid = null, Expression<Func<string>> searchProjectsWrappertransmitObjectcontactsContactPersonGuid = null, Expression<Func<string>> searchProjectsWrappertransmitObjectleadsProjectOriginGuid = null, Expression<Func<string>> searchProjectsWrappertransmitObjectprojectsSuperiorProjectGuid = null, Expression<Func<string>> searchProjectsWrappertransmitObjectusersSupervisorGuid = null, Expression<Func<string>> searchProjectsWrappertransmitObjectnote = null, Expression<Func<double>> searchProjectsWrappertransmitObjectprice = null, Expression<Func<string>> searchProjectsWrappertransmitObjectprojectEnd = null, Expression<Func<string>> searchProjectsWrappertransmitObjectprojectName = null, Expression<Func<string>> searchProjectsWrappertransmitObjecttypeEn = null, Expression<Func<string>> searchProjectsWrappertransmitObjectstateEn = null, Expression<Func<double>> searchProjectsWrappertransmitObjectpeopleExpenses = null, Expression<Func<string>> searchProjectsWrappertransmitObjectprojectRealEnd = null, Expression<Func<double>> searchProjectsWrappertransmitObjectestimatedPrice = null, Expression<Func<int>> searchProjectsWrappertransmitObjecthID = null, Expression<Func<string>> searchProjectsWrappertransmitObjectprojectOriginEn = null, Expression<Func<string>> searchProjectsWrappertransmitObjectpaymentTypeEn = null, Expression<Func<double>> searchProjectsWrappertransmitObjectotherExpenses = null, Expression<Func<double>> searchProjectsWrappertransmitObjectmargin = null, Expression<Func<double>> searchProjectsWrappertransmitObjectprofit = null, Expression<Func<int>> searchProjectsWrappertransmitObjectpaymentMaturity = null, Expression<Func<string>> searchProjectsWrappertransmitObjectinvoicePaymentDate = null, Expression<Func<string>> searchProjectsWrappertransmitObjectinvoiceIssueDate = null, Expression<Func<double>> searchProjectsWrappertransmitObjectestimatedMargin = null, Expression<Func<double>> searchProjectsWrappertransmitObjectestimatedProfit = null, Expression<Func<double>> searchProjectsWrappertransmitObjectestimatedPeopleExpenses = null, Expression<Func<double>> searchProjectsWrappertransmitObjectestimatedOtherExpenses = null, Expression<Func<int>> searchProjectsWrappertransmitObjectlicensesCount = null, Expression<Func<double>> searchProjectsWrappertransmitObjectlicensePrice = null, Expression<Func<string>> searchProjectsWrappertransmitObjectprevStateEn = null, Expression<Func<bool>> searchProjectsWrappertransmitObjectshowInCaplan = null, Expression<Func<string>> searchProjectsWrappertransmitObjectprojectStart = null, Expression<Func<int>> searchProjectsWrappertransmitObjectestimatedWorkHours = null, Expression<Func<double>> searchProjectsWrappertransmitObjecttotalWorkHours = null, Expression<Func<double>> searchProjectsWrappertransmitObjectestimatedPeopleExpensesDefaultCurrency = null, Expression<Func<double>> searchProjectsWrappertransmitObjectestimatedOtherExpensesDefaultCurrency = null, Expression<Func<double>> searchProjectsWrappertransmitObjectestimatedPriceDefaultCurrency = null, Expression<Func<double>> searchProjectsWrappertransmitObjectpeopleExpensesDefaultCurrency = null, Expression<Func<double>> searchProjectsWrappertransmitObjectotherExpensesDefaultCurrency = null, Expression<Func<double>> searchProjectsWrappertransmitObjectpriceDefaultCurrency = null, Expression<Func<double>> searchProjectsWrappertransmitObjectprofitDefaultCurrency = null, Expression<Func<double>> searchProjectsWrappertransmitObjectestimatedProfitDefaultCurrency = null, Expression<Func<string>> searchProjectsWrappertransmitObjectcurrencyEn = null, Expression<Func<string>> searchProjectsWrappertransmitObjectestimatedPeopleExpensesChanged = null, Expression<Func<string>> searchProjectsWrappertransmitObjectestimatedOtherExpensesChanged = null, Expression<Func<string>> searchProjectsWrappertransmitObjectotherExpensesChanged = null, Expression<Func<string>> searchProjectsWrappertransmitObjectestimatedPriceChanged = null, Expression<Func<string>> searchProjectsWrappertransmitObjectpriceChanged = null, Expression<Func<string>> searchProjectsWrappertransmitObjectlicensePriceChanged = null, Expression<Func<double>> searchProjectsWrappertransmitObjectlicensePriceDefaultCurrency = null, Expression<Func<string>> searchProjectsWrappertransmitObjectlastActivity = null, Expression<Func<string>> searchProjectsWrappertransmitObjectnextStep = null, Expression<Func<string>> searchProjectsWrappertransmitObjectcompletedDate = null, Expression<Func<bool>> searchProjectsWrappertransmitObjectisCompleted = null, Expression<Func<string>> searchProjectsWrappertransmitObjectlostDate = null, Expression<Func<bool>> searchProjectsWrappertransmitObjectisLost = null, Expression<Func<string>> searchProjectsWrappertransmitObjectpeopleExpensesChanged = null, Expression<Func<string>> searchProjectsWrappertransmitObjectpicture = null, Expression<Func<int>> searchProjectsWrappertransmitObjectpictureWidth = null, Expression<Func<int>> searchProjectsWrappertransmitObjectpictureHeight = null, Expression<Func<bool>> searchProjectsWrappertransmitObjectisPrivate = null, Expression<Func<string>> searchProjectsWrappertransmitObjectserverItemCreated = null, Expression<Func<string>> searchProjectsWrappertransmitObjectserverItemChanged = null, Expression<Func<string>> searchProjectsWrappertransmitObjectitemCreated = null, Expression<Func<string>> searchProjectsWrappertransmitObjectitemChanged = null, Expression<Func<string>> searchProjectsWrappertransmitObjectfileAs = null, Expression<Func<string>> searchProjectsWrappertransmitObjectownerGUID = null, Expression<Func<string>> searchProjectsWrappertransmitObjectcreatedByGUID = null, Expression<Func<string>> searchProjectsWrappertransmitObjectmodifiedByGUID = null, Expression<Func<object>> searchProjectsWrappertransmitObjectadditionalFields = null, Expression<Func<EWayWcfServiceItemTypesInnerTypesBoundRelation[]>> searchProjectsWrappertransmitObjectrelations = null, Expression<Func<string>> searchProjectsWrappertransmitObjectitemGUID = null, Expression<Func<int>> searchProjectsWrappertransmitObjectitemVersion = null, Expression<Func<bool>> searchProjectsWrapperincludeRelations = null, Expression<Func<string>> searchProjectsWrapperrelationsFilterrelationType = null, Expression<Func<string>> searchProjectsWrapperrelationsFilterforeignFolderName = null, Expression<Func<string>> searchProjectsWrapperbinaryLogicalOperator = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedProject> __BuildSearchProjects(WorkflowExpression<string> searchProjectsWrappertransmitObjectcompaniesCustomerGuid = null, WorkflowExpression<string> searchProjectsWrappertransmitObjectcontactsContactPersonGuid = null, WorkflowExpression<string> searchProjectsWrappertransmitObjectleadsProjectOriginGuid = null, WorkflowExpression<string> searchProjectsWrappertransmitObjectprojectsSuperiorProjectGuid = null, WorkflowExpression<string> searchProjectsWrappertransmitObjectusersSupervisorGuid = null, WorkflowExpression<string> searchProjectsWrappertransmitObjectnote = null, WorkflowExpression<double> searchProjectsWrappertransmitObjectprice = null, WorkflowExpression<string> searchProjectsWrappertransmitObjectprojectEnd = null, WorkflowExpression<string> searchProjectsWrappertransmitObjectprojectName = null, WorkflowExpression<string> searchProjectsWrappertransmitObjecttypeEn = null, WorkflowExpression<string> searchProjectsWrappertransmitObjectstateEn = null, WorkflowExpression<double> searchProjectsWrappertransmitObjectpeopleExpenses = null, WorkflowExpression<string> searchProjectsWrappertransmitObjectprojectRealEnd = null, WorkflowExpression<double> searchProjectsWrappertransmitObjectestimatedPrice = null, WorkflowExpression<int> searchProjectsWrappertransmitObjecthID = null, WorkflowExpression<string> searchProjectsWrappertransmitObjectprojectOriginEn = null, WorkflowExpression<string> searchProjectsWrappertransmitObjectpaymentTypeEn = null, WorkflowExpression<double> searchProjectsWrappertransmitObjectotherExpenses = null, WorkflowExpression<double> searchProjectsWrappertransmitObjectmargin = null, WorkflowExpression<double> searchProjectsWrappertransmitObjectprofit = null, WorkflowExpression<int> searchProjectsWrappertransmitObjectpaymentMaturity = null, WorkflowExpression<string> searchProjectsWrappertransmitObjectinvoicePaymentDate = null, WorkflowExpression<string> searchProjectsWrappertransmitObjectinvoiceIssueDate = null, WorkflowExpression<double> searchProjectsWrappertransmitObjectestimatedMargin = null, WorkflowExpression<double> searchProjectsWrappertransmitObjectestimatedProfit = null, WorkflowExpression<double> searchProjectsWrappertransmitObjectestimatedPeopleExpenses = null, WorkflowExpression<double> searchProjectsWrappertransmitObjectestimatedOtherExpenses = null, WorkflowExpression<int> searchProjectsWrappertransmitObjectlicensesCount = null, WorkflowExpression<double> searchProjectsWrappertransmitObjectlicensePrice = null, WorkflowExpression<string> searchProjectsWrappertransmitObjectprevStateEn = null, WorkflowExpression<bool> searchProjectsWrappertransmitObjectshowInCaplan = null, WorkflowExpression<string> searchProjectsWrappertransmitObjectprojectStart = null, WorkflowExpression<int> searchProjectsWrappertransmitObjectestimatedWorkHours = null, WorkflowExpression<double> searchProjectsWrappertransmitObjecttotalWorkHours = null, WorkflowExpression<double> searchProjectsWrappertransmitObjectestimatedPeopleExpensesDefaultCurrency = null, WorkflowExpression<double> searchProjectsWrappertransmitObjectestimatedOtherExpensesDefaultCurrency = null, WorkflowExpression<double> searchProjectsWrappertransmitObjectestimatedPriceDefaultCurrency = null, WorkflowExpression<double> searchProjectsWrappertransmitObjectpeopleExpensesDefaultCurrency = null, WorkflowExpression<double> searchProjectsWrappertransmitObjectotherExpensesDefaultCurrency = null, WorkflowExpression<double> searchProjectsWrappertransmitObjectpriceDefaultCurrency = null, WorkflowExpression<double> searchProjectsWrappertransmitObjectprofitDefaultCurrency = null, WorkflowExpression<double> searchProjectsWrappertransmitObjectestimatedProfitDefaultCurrency = null, WorkflowExpression<string> searchProjectsWrappertransmitObjectcurrencyEn = null, WorkflowExpression<string> searchProjectsWrappertransmitObjectestimatedPeopleExpensesChanged = null, WorkflowExpression<string> searchProjectsWrappertransmitObjectestimatedOtherExpensesChanged = null, WorkflowExpression<string> searchProjectsWrappertransmitObjectotherExpensesChanged = null, WorkflowExpression<string> searchProjectsWrappertransmitObjectestimatedPriceChanged = null, WorkflowExpression<string> searchProjectsWrappertransmitObjectpriceChanged = null, WorkflowExpression<string> searchProjectsWrappertransmitObjectlicensePriceChanged = null, WorkflowExpression<double> searchProjectsWrappertransmitObjectlicensePriceDefaultCurrency = null, WorkflowExpression<string> searchProjectsWrappertransmitObjectlastActivity = null, WorkflowExpression<string> searchProjectsWrappertransmitObjectnextStep = null, WorkflowExpression<string> searchProjectsWrappertransmitObjectcompletedDate = null, WorkflowExpression<bool> searchProjectsWrappertransmitObjectisCompleted = null, WorkflowExpression<string> searchProjectsWrappertransmitObjectlostDate = null, WorkflowExpression<bool> searchProjectsWrappertransmitObjectisLost = null, WorkflowExpression<string> searchProjectsWrappertransmitObjectpeopleExpensesChanged = null, WorkflowExpression<string> searchProjectsWrappertransmitObjectpicture = null, WorkflowExpression<int> searchProjectsWrappertransmitObjectpictureWidth = null, WorkflowExpression<int> searchProjectsWrappertransmitObjectpictureHeight = null, WorkflowExpression<bool> searchProjectsWrappertransmitObjectisPrivate = null, WorkflowExpression<string> searchProjectsWrappertransmitObjectserverItemCreated = null, WorkflowExpression<string> searchProjectsWrappertransmitObjectserverItemChanged = null, WorkflowExpression<string> searchProjectsWrappertransmitObjectitemCreated = null, WorkflowExpression<string> searchProjectsWrappertransmitObjectitemChanged = null, WorkflowExpression<string> searchProjectsWrappertransmitObjectfileAs = null, WorkflowExpression<string> searchProjectsWrappertransmitObjectownerGUID = null, WorkflowExpression<string> searchProjectsWrappertransmitObjectcreatedByGUID = null, WorkflowExpression<string> searchProjectsWrappertransmitObjectmodifiedByGUID = null, WorkflowExpression<object> searchProjectsWrappertransmitObjectadditionalFields = null, WorkflowExpression<EWayWcfServiceItemTypesInnerTypesBoundRelation[]> searchProjectsWrappertransmitObjectrelations = null, WorkflowExpression<string> searchProjectsWrappertransmitObjectitemGUID = null, WorkflowExpression<int> searchProjectsWrappertransmitObjectitemVersion = null, WorkflowExpression<bool> searchProjectsWrapperincludeRelations = null, WorkflowExpression<string> searchProjectsWrapperrelationsFilterrelationType = null, WorkflowExpression<string> searchProjectsWrapperrelationsFilterforeignFolderName = null, WorkflowExpression<string> searchProjectsWrapperbinaryLogicalOperator = null)
-        {
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectcompaniesCustomerGuid, nameof(searchProjectsWrappertransmitObjectcompaniesCustomerGuid), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectcontactsContactPersonGuid, nameof(searchProjectsWrappertransmitObjectcontactsContactPersonGuid), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectleadsProjectOriginGuid, nameof(searchProjectsWrappertransmitObjectleadsProjectOriginGuid), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectprojectsSuperiorProjectGuid, nameof(searchProjectsWrappertransmitObjectprojectsSuperiorProjectGuid), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectusersSupervisorGuid, nameof(searchProjectsWrappertransmitObjectusersSupervisorGuid), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectnote, nameof(searchProjectsWrappertransmitObjectnote), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectprice, nameof(searchProjectsWrappertransmitObjectprice), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectprojectEnd, nameof(searchProjectsWrappertransmitObjectprojectEnd), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectprojectName, nameof(searchProjectsWrappertransmitObjectprojectName), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjecttypeEn, nameof(searchProjectsWrappertransmitObjecttypeEn), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectstateEn, nameof(searchProjectsWrappertransmitObjectstateEn), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectpeopleExpenses, nameof(searchProjectsWrappertransmitObjectpeopleExpenses), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectprojectRealEnd, nameof(searchProjectsWrappertransmitObjectprojectRealEnd), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectestimatedPrice, nameof(searchProjectsWrappertransmitObjectestimatedPrice), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjecthID, nameof(searchProjectsWrappertransmitObjecthID), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectprojectOriginEn, nameof(searchProjectsWrappertransmitObjectprojectOriginEn), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectpaymentTypeEn, nameof(searchProjectsWrappertransmitObjectpaymentTypeEn), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectotherExpenses, nameof(searchProjectsWrappertransmitObjectotherExpenses), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectmargin, nameof(searchProjectsWrappertransmitObjectmargin), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectprofit, nameof(searchProjectsWrappertransmitObjectprofit), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectpaymentMaturity, nameof(searchProjectsWrappertransmitObjectpaymentMaturity), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectinvoicePaymentDate, nameof(searchProjectsWrappertransmitObjectinvoicePaymentDate), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectinvoiceIssueDate, nameof(searchProjectsWrappertransmitObjectinvoiceIssueDate), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectestimatedMargin, nameof(searchProjectsWrappertransmitObjectestimatedMargin), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectestimatedProfit, nameof(searchProjectsWrappertransmitObjectestimatedProfit), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectestimatedPeopleExpenses, nameof(searchProjectsWrappertransmitObjectestimatedPeopleExpenses), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectestimatedOtherExpenses, nameof(searchProjectsWrappertransmitObjectestimatedOtherExpenses), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectlicensesCount, nameof(searchProjectsWrappertransmitObjectlicensesCount), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectlicensePrice, nameof(searchProjectsWrappertransmitObjectlicensePrice), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectprevStateEn, nameof(searchProjectsWrappertransmitObjectprevStateEn), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectshowInCaplan, nameof(searchProjectsWrappertransmitObjectshowInCaplan), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectprojectStart, nameof(searchProjectsWrappertransmitObjectprojectStart), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectestimatedWorkHours, nameof(searchProjectsWrappertransmitObjectestimatedWorkHours), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjecttotalWorkHours, nameof(searchProjectsWrappertransmitObjecttotalWorkHours), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectestimatedPeopleExpensesDefaultCurrency, nameof(searchProjectsWrappertransmitObjectestimatedPeopleExpensesDefaultCurrency), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectestimatedOtherExpensesDefaultCurrency, nameof(searchProjectsWrappertransmitObjectestimatedOtherExpensesDefaultCurrency), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectestimatedPriceDefaultCurrency, nameof(searchProjectsWrappertransmitObjectestimatedPriceDefaultCurrency), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectpeopleExpensesDefaultCurrency, nameof(searchProjectsWrappertransmitObjectpeopleExpensesDefaultCurrency), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectotherExpensesDefaultCurrency, nameof(searchProjectsWrappertransmitObjectotherExpensesDefaultCurrency), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectpriceDefaultCurrency, nameof(searchProjectsWrappertransmitObjectpriceDefaultCurrency), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectprofitDefaultCurrency, nameof(searchProjectsWrappertransmitObjectprofitDefaultCurrency), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectestimatedProfitDefaultCurrency, nameof(searchProjectsWrappertransmitObjectestimatedProfitDefaultCurrency), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectcurrencyEn, nameof(searchProjectsWrappertransmitObjectcurrencyEn), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectestimatedPeopleExpensesChanged, nameof(searchProjectsWrappertransmitObjectestimatedPeopleExpensesChanged), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectestimatedOtherExpensesChanged, nameof(searchProjectsWrappertransmitObjectestimatedOtherExpensesChanged), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectotherExpensesChanged, nameof(searchProjectsWrappertransmitObjectotherExpensesChanged), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectestimatedPriceChanged, nameof(searchProjectsWrappertransmitObjectestimatedPriceChanged), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectpriceChanged, nameof(searchProjectsWrappertransmitObjectpriceChanged), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectlicensePriceChanged, nameof(searchProjectsWrappertransmitObjectlicensePriceChanged), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectlicensePriceDefaultCurrency, nameof(searchProjectsWrappertransmitObjectlicensePriceDefaultCurrency), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectlastActivity, nameof(searchProjectsWrappertransmitObjectlastActivity), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectnextStep, nameof(searchProjectsWrappertransmitObjectnextStep), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectcompletedDate, nameof(searchProjectsWrappertransmitObjectcompletedDate), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectisCompleted, nameof(searchProjectsWrappertransmitObjectisCompleted), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectlostDate, nameof(searchProjectsWrappertransmitObjectlostDate), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectisLost, nameof(searchProjectsWrappertransmitObjectisLost), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectpeopleExpensesChanged, nameof(searchProjectsWrappertransmitObjectpeopleExpensesChanged), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectpicture, nameof(searchProjectsWrappertransmitObjectpicture), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectpictureWidth, nameof(searchProjectsWrappertransmitObjectpictureWidth), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectpictureHeight, nameof(searchProjectsWrappertransmitObjectpictureHeight), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectisPrivate, nameof(searchProjectsWrappertransmitObjectisPrivate), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectserverItemCreated, nameof(searchProjectsWrappertransmitObjectserverItemCreated), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectserverItemChanged, nameof(searchProjectsWrappertransmitObjectserverItemChanged), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectitemCreated, nameof(searchProjectsWrappertransmitObjectitemCreated), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectitemChanged, nameof(searchProjectsWrappertransmitObjectitemChanged), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectfileAs, nameof(searchProjectsWrappertransmitObjectfileAs), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectownerGUID, nameof(searchProjectsWrappertransmitObjectownerGUID), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectcreatedByGUID, nameof(searchProjectsWrappertransmitObjectcreatedByGUID), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectmodifiedByGUID, nameof(searchProjectsWrappertransmitObjectmodifiedByGUID), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectadditionalFields, nameof(searchProjectsWrappertransmitObjectadditionalFields), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectrelations, nameof(searchProjectsWrappertransmitObjectrelations), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectitemGUID, nameof(searchProjectsWrappertransmitObjectitemGUID), required: false);
-            WorkflowExpression.Validate(searchProjectsWrappertransmitObjectitemVersion, nameof(searchProjectsWrappertransmitObjectitemVersion), required: false);
-            WorkflowExpression.Validate(searchProjectsWrapperincludeRelations, nameof(searchProjectsWrapperincludeRelations), required: false);
-            WorkflowExpression.Validate(searchProjectsWrapperrelationsFilterrelationType, nameof(searchProjectsWrapperrelationsFilterrelationType), required: false);
-            WorkflowExpression.Validate(searchProjectsWrapperrelationsFilterforeignFolderName, nameof(searchProjectsWrapperrelationsFilterforeignFolderName), required: false);
-            WorkflowExpression.Validate(searchProjectsWrapperbinaryLogicalOperator, nameof(searchProjectsWrapperbinaryLogicalOperator), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectcompaniesCustomerGuid = searchProjectsWrappertransmitObjectcompaniesCustomerGuid == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectcompaniesCustomerGuid);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectcompaniesCustomerGuid, nameof(searchProjectsWrappertransmitObjectcompaniesCustomerGuid), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectcontactsContactPersonGuid = searchProjectsWrappertransmitObjectcontactsContactPersonGuid == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectcontactsContactPersonGuid);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectcontactsContactPersonGuid, nameof(searchProjectsWrappertransmitObjectcontactsContactPersonGuid), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectleadsProjectOriginGuid = searchProjectsWrappertransmitObjectleadsProjectOriginGuid == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectleadsProjectOriginGuid);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectleadsProjectOriginGuid, nameof(searchProjectsWrappertransmitObjectleadsProjectOriginGuid), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectprojectsSuperiorProjectGuid = searchProjectsWrappertransmitObjectprojectsSuperiorProjectGuid == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectprojectsSuperiorProjectGuid);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectprojectsSuperiorProjectGuid, nameof(searchProjectsWrappertransmitObjectprojectsSuperiorProjectGuid), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectusersSupervisorGuid = searchProjectsWrappertransmitObjectusersSupervisorGuid == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectusersSupervisorGuid);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectusersSupervisorGuid, nameof(searchProjectsWrappertransmitObjectusersSupervisorGuid), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectnote = searchProjectsWrappertransmitObjectnote == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectnote);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectnote, nameof(searchProjectsWrappertransmitObjectnote), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectprice = searchProjectsWrappertransmitObjectprice == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectprice);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectprice, nameof(searchProjectsWrappertransmitObjectprice), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectprojectEnd = searchProjectsWrappertransmitObjectprojectEnd == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectprojectEnd);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectprojectEnd, nameof(searchProjectsWrappertransmitObjectprojectEnd), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectprojectName = searchProjectsWrappertransmitObjectprojectName == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectprojectName);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectprojectName, nameof(searchProjectsWrappertransmitObjectprojectName), required: false);
+            var __workflow_searchProjectsWrappertransmitObjecttypeEn = searchProjectsWrappertransmitObjecttypeEn == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjecttypeEn);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjecttypeEn, nameof(searchProjectsWrappertransmitObjecttypeEn), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectstateEn = searchProjectsWrappertransmitObjectstateEn == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectstateEn);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectstateEn, nameof(searchProjectsWrappertransmitObjectstateEn), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectpeopleExpenses = searchProjectsWrappertransmitObjectpeopleExpenses == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectpeopleExpenses);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectpeopleExpenses, nameof(searchProjectsWrappertransmitObjectpeopleExpenses), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectprojectRealEnd = searchProjectsWrappertransmitObjectprojectRealEnd == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectprojectRealEnd);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectprojectRealEnd, nameof(searchProjectsWrappertransmitObjectprojectRealEnd), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectestimatedPrice = searchProjectsWrappertransmitObjectestimatedPrice == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectestimatedPrice);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectestimatedPrice, nameof(searchProjectsWrappertransmitObjectestimatedPrice), required: false);
+            var __workflow_searchProjectsWrappertransmitObjecthID = searchProjectsWrappertransmitObjecthID == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjecthID);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjecthID, nameof(searchProjectsWrappertransmitObjecthID), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectprojectOriginEn = searchProjectsWrappertransmitObjectprojectOriginEn == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectprojectOriginEn);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectprojectOriginEn, nameof(searchProjectsWrappertransmitObjectprojectOriginEn), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectpaymentTypeEn = searchProjectsWrappertransmitObjectpaymentTypeEn == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectpaymentTypeEn);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectpaymentTypeEn, nameof(searchProjectsWrappertransmitObjectpaymentTypeEn), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectotherExpenses = searchProjectsWrappertransmitObjectotherExpenses == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectotherExpenses);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectotherExpenses, nameof(searchProjectsWrappertransmitObjectotherExpenses), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectmargin = searchProjectsWrappertransmitObjectmargin == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectmargin);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectmargin, nameof(searchProjectsWrappertransmitObjectmargin), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectprofit = searchProjectsWrappertransmitObjectprofit == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectprofit);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectprofit, nameof(searchProjectsWrappertransmitObjectprofit), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectpaymentMaturity = searchProjectsWrappertransmitObjectpaymentMaturity == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectpaymentMaturity);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectpaymentMaturity, nameof(searchProjectsWrappertransmitObjectpaymentMaturity), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectinvoicePaymentDate = searchProjectsWrappertransmitObjectinvoicePaymentDate == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectinvoicePaymentDate);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectinvoicePaymentDate, nameof(searchProjectsWrappertransmitObjectinvoicePaymentDate), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectinvoiceIssueDate = searchProjectsWrappertransmitObjectinvoiceIssueDate == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectinvoiceIssueDate);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectinvoiceIssueDate, nameof(searchProjectsWrappertransmitObjectinvoiceIssueDate), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectestimatedMargin = searchProjectsWrappertransmitObjectestimatedMargin == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectestimatedMargin);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectestimatedMargin, nameof(searchProjectsWrappertransmitObjectestimatedMargin), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectestimatedProfit = searchProjectsWrappertransmitObjectestimatedProfit == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectestimatedProfit);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectestimatedProfit, nameof(searchProjectsWrappertransmitObjectestimatedProfit), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectestimatedPeopleExpenses = searchProjectsWrappertransmitObjectestimatedPeopleExpenses == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectestimatedPeopleExpenses);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectestimatedPeopleExpenses, nameof(searchProjectsWrappertransmitObjectestimatedPeopleExpenses), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectestimatedOtherExpenses = searchProjectsWrappertransmitObjectestimatedOtherExpenses == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectestimatedOtherExpenses);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectestimatedOtherExpenses, nameof(searchProjectsWrappertransmitObjectestimatedOtherExpenses), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectlicensesCount = searchProjectsWrappertransmitObjectlicensesCount == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectlicensesCount);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectlicensesCount, nameof(searchProjectsWrappertransmitObjectlicensesCount), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectlicensePrice = searchProjectsWrappertransmitObjectlicensePrice == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectlicensePrice);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectlicensePrice, nameof(searchProjectsWrappertransmitObjectlicensePrice), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectprevStateEn = searchProjectsWrappertransmitObjectprevStateEn == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectprevStateEn);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectprevStateEn, nameof(searchProjectsWrappertransmitObjectprevStateEn), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectshowInCaplan = searchProjectsWrappertransmitObjectshowInCaplan == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectshowInCaplan);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectshowInCaplan, nameof(searchProjectsWrappertransmitObjectshowInCaplan), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectprojectStart = searchProjectsWrappertransmitObjectprojectStart == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectprojectStart);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectprojectStart, nameof(searchProjectsWrappertransmitObjectprojectStart), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectestimatedWorkHours = searchProjectsWrappertransmitObjectestimatedWorkHours == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectestimatedWorkHours);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectestimatedWorkHours, nameof(searchProjectsWrappertransmitObjectestimatedWorkHours), required: false);
+            var __workflow_searchProjectsWrappertransmitObjecttotalWorkHours = searchProjectsWrappertransmitObjecttotalWorkHours == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjecttotalWorkHours);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjecttotalWorkHours, nameof(searchProjectsWrappertransmitObjecttotalWorkHours), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectestimatedPeopleExpensesDefaultCurrency = searchProjectsWrappertransmitObjectestimatedPeopleExpensesDefaultCurrency == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectestimatedPeopleExpensesDefaultCurrency);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectestimatedPeopleExpensesDefaultCurrency, nameof(searchProjectsWrappertransmitObjectestimatedPeopleExpensesDefaultCurrency), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectestimatedOtherExpensesDefaultCurrency = searchProjectsWrappertransmitObjectestimatedOtherExpensesDefaultCurrency == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectestimatedOtherExpensesDefaultCurrency);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectestimatedOtherExpensesDefaultCurrency, nameof(searchProjectsWrappertransmitObjectestimatedOtherExpensesDefaultCurrency), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectestimatedPriceDefaultCurrency = searchProjectsWrappertransmitObjectestimatedPriceDefaultCurrency == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectestimatedPriceDefaultCurrency);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectestimatedPriceDefaultCurrency, nameof(searchProjectsWrappertransmitObjectestimatedPriceDefaultCurrency), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectpeopleExpensesDefaultCurrency = searchProjectsWrappertransmitObjectpeopleExpensesDefaultCurrency == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectpeopleExpensesDefaultCurrency);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectpeopleExpensesDefaultCurrency, nameof(searchProjectsWrappertransmitObjectpeopleExpensesDefaultCurrency), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectotherExpensesDefaultCurrency = searchProjectsWrappertransmitObjectotherExpensesDefaultCurrency == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectotherExpensesDefaultCurrency);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectotherExpensesDefaultCurrency, nameof(searchProjectsWrappertransmitObjectotherExpensesDefaultCurrency), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectpriceDefaultCurrency = searchProjectsWrappertransmitObjectpriceDefaultCurrency == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectpriceDefaultCurrency);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectpriceDefaultCurrency, nameof(searchProjectsWrappertransmitObjectpriceDefaultCurrency), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectprofitDefaultCurrency = searchProjectsWrappertransmitObjectprofitDefaultCurrency == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectprofitDefaultCurrency);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectprofitDefaultCurrency, nameof(searchProjectsWrappertransmitObjectprofitDefaultCurrency), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectestimatedProfitDefaultCurrency = searchProjectsWrappertransmitObjectestimatedProfitDefaultCurrency == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectestimatedProfitDefaultCurrency);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectestimatedProfitDefaultCurrency, nameof(searchProjectsWrappertransmitObjectestimatedProfitDefaultCurrency), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectcurrencyEn = searchProjectsWrappertransmitObjectcurrencyEn == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectcurrencyEn);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectcurrencyEn, nameof(searchProjectsWrappertransmitObjectcurrencyEn), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectestimatedPeopleExpensesChanged = searchProjectsWrappertransmitObjectestimatedPeopleExpensesChanged == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectestimatedPeopleExpensesChanged);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectestimatedPeopleExpensesChanged, nameof(searchProjectsWrappertransmitObjectestimatedPeopleExpensesChanged), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectestimatedOtherExpensesChanged = searchProjectsWrappertransmitObjectestimatedOtherExpensesChanged == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectestimatedOtherExpensesChanged);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectestimatedOtherExpensesChanged, nameof(searchProjectsWrappertransmitObjectestimatedOtherExpensesChanged), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectotherExpensesChanged = searchProjectsWrappertransmitObjectotherExpensesChanged == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectotherExpensesChanged);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectotherExpensesChanged, nameof(searchProjectsWrappertransmitObjectotherExpensesChanged), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectestimatedPriceChanged = searchProjectsWrappertransmitObjectestimatedPriceChanged == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectestimatedPriceChanged);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectestimatedPriceChanged, nameof(searchProjectsWrappertransmitObjectestimatedPriceChanged), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectpriceChanged = searchProjectsWrappertransmitObjectpriceChanged == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectpriceChanged);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectpriceChanged, nameof(searchProjectsWrappertransmitObjectpriceChanged), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectlicensePriceChanged = searchProjectsWrappertransmitObjectlicensePriceChanged == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectlicensePriceChanged);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectlicensePriceChanged, nameof(searchProjectsWrappertransmitObjectlicensePriceChanged), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectlicensePriceDefaultCurrency = searchProjectsWrappertransmitObjectlicensePriceDefaultCurrency == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectlicensePriceDefaultCurrency);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectlicensePriceDefaultCurrency, nameof(searchProjectsWrappertransmitObjectlicensePriceDefaultCurrency), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectlastActivity = searchProjectsWrappertransmitObjectlastActivity == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectlastActivity);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectlastActivity, nameof(searchProjectsWrappertransmitObjectlastActivity), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectnextStep = searchProjectsWrappertransmitObjectnextStep == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectnextStep);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectnextStep, nameof(searchProjectsWrappertransmitObjectnextStep), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectcompletedDate = searchProjectsWrappertransmitObjectcompletedDate == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectcompletedDate);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectcompletedDate, nameof(searchProjectsWrappertransmitObjectcompletedDate), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectisCompleted = searchProjectsWrappertransmitObjectisCompleted == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectisCompleted);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectisCompleted, nameof(searchProjectsWrappertransmitObjectisCompleted), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectlostDate = searchProjectsWrappertransmitObjectlostDate == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectlostDate);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectlostDate, nameof(searchProjectsWrappertransmitObjectlostDate), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectisLost = searchProjectsWrappertransmitObjectisLost == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectisLost);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectisLost, nameof(searchProjectsWrappertransmitObjectisLost), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectpeopleExpensesChanged = searchProjectsWrappertransmitObjectpeopleExpensesChanged == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectpeopleExpensesChanged);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectpeopleExpensesChanged, nameof(searchProjectsWrappertransmitObjectpeopleExpensesChanged), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectpicture = searchProjectsWrappertransmitObjectpicture == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectpicture);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectpicture, nameof(searchProjectsWrappertransmitObjectpicture), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectpictureWidth = searchProjectsWrappertransmitObjectpictureWidth == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectpictureWidth);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectpictureWidth, nameof(searchProjectsWrappertransmitObjectpictureWidth), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectpictureHeight = searchProjectsWrappertransmitObjectpictureHeight == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectpictureHeight);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectpictureHeight, nameof(searchProjectsWrappertransmitObjectpictureHeight), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectisPrivate = searchProjectsWrappertransmitObjectisPrivate == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectisPrivate);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectisPrivate, nameof(searchProjectsWrappertransmitObjectisPrivate), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectserverItemCreated = searchProjectsWrappertransmitObjectserverItemCreated == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectserverItemCreated);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectserverItemCreated, nameof(searchProjectsWrappertransmitObjectserverItemCreated), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectserverItemChanged = searchProjectsWrappertransmitObjectserverItemChanged == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectserverItemChanged);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectserverItemChanged, nameof(searchProjectsWrappertransmitObjectserverItemChanged), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectitemCreated = searchProjectsWrappertransmitObjectitemCreated == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectitemCreated);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectitemCreated, nameof(searchProjectsWrappertransmitObjectitemCreated), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectitemChanged = searchProjectsWrappertransmitObjectitemChanged == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectitemChanged);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectitemChanged, nameof(searchProjectsWrappertransmitObjectitemChanged), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectfileAs = searchProjectsWrappertransmitObjectfileAs == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectfileAs);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectfileAs, nameof(searchProjectsWrappertransmitObjectfileAs), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectownerGUID = searchProjectsWrappertransmitObjectownerGUID == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectownerGUID);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectownerGUID, nameof(searchProjectsWrappertransmitObjectownerGUID), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectcreatedByGUID = searchProjectsWrappertransmitObjectcreatedByGUID == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectcreatedByGUID);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectcreatedByGUID, nameof(searchProjectsWrappertransmitObjectcreatedByGUID), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectmodifiedByGUID = searchProjectsWrappertransmitObjectmodifiedByGUID == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectmodifiedByGUID);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectmodifiedByGUID, nameof(searchProjectsWrappertransmitObjectmodifiedByGUID), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectadditionalFields = searchProjectsWrappertransmitObjectadditionalFields == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectadditionalFields);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectadditionalFields, nameof(searchProjectsWrappertransmitObjectadditionalFields), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectrelations = searchProjectsWrappertransmitObjectrelations == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectrelations);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectrelations, nameof(searchProjectsWrappertransmitObjectrelations), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectitemGUID = searchProjectsWrappertransmitObjectitemGUID == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectitemGUID);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectitemGUID, nameof(searchProjectsWrappertransmitObjectitemGUID), required: false);
+            var __workflow_searchProjectsWrappertransmitObjectitemVersion = searchProjectsWrappertransmitObjectitemVersion == null ? null : WorkflowExpression.Compile(searchProjectsWrappertransmitObjectitemVersion);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrappertransmitObjectitemVersion, nameof(searchProjectsWrappertransmitObjectitemVersion), required: false);
+            var __workflow_searchProjectsWrapperincludeRelations = searchProjectsWrapperincludeRelations == null ? null : WorkflowExpression.Compile(searchProjectsWrapperincludeRelations);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrapperincludeRelations, nameof(searchProjectsWrapperincludeRelations), required: false);
+            var __workflow_searchProjectsWrapperrelationsFilterrelationType = searchProjectsWrapperrelationsFilterrelationType == null ? null : WorkflowExpression.Compile(searchProjectsWrapperrelationsFilterrelationType);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrapperrelationsFilterrelationType, nameof(searchProjectsWrapperrelationsFilterrelationType), required: false);
+            var __workflow_searchProjectsWrapperrelationsFilterforeignFolderName = searchProjectsWrapperrelationsFilterforeignFolderName == null ? null : WorkflowExpression.Compile(searchProjectsWrapperrelationsFilterforeignFolderName);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrapperrelationsFilterforeignFolderName, nameof(searchProjectsWrapperrelationsFilterforeignFolderName), required: false);
+            var __workflow_searchProjectsWrapperbinaryLogicalOperator = searchProjectsWrapperbinaryLogicalOperator == null ? null : WorkflowExpression.Compile(searchProjectsWrapperbinaryLogicalOperator);
+            WorkflowExpression.Validate(__workflow_searchProjectsWrapperbinaryLogicalOperator, nameof(searchProjectsWrapperbinaryLogicalOperator), required: false);
             return new DeferredBodyAction<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedProject>(() =>
             {
                 var apiCallPath = "/SearchProjects";
@@ -4759,441 +5293,441 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                 var searchProjectsWrapperpropCount = 0;
                 var transmitObjectObject = new JObject();
                 var transmitObjectObjectpropCount = 0;
-                if (searchProjectsWrappertransmitObjectcompaniesCustomerGuid != null)
+                if (__workflow_searchProjectsWrappertransmitObjectcompaniesCustomerGuid != null)
                 {
-                    transmitObjectObject["Companies_CustomerGuid"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectcompaniesCustomerGuid);
+                    transmitObjectObject["Companies_CustomerGuid"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectcompaniesCustomerGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectcontactsContactPersonGuid != null)
+                if (__workflow_searchProjectsWrappertransmitObjectcontactsContactPersonGuid != null)
                 {
-                    transmitObjectObject["Contacts_ContactPersonGuid"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectcontactsContactPersonGuid);
+                    transmitObjectObject["Contacts_ContactPersonGuid"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectcontactsContactPersonGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectleadsProjectOriginGuid != null)
+                if (__workflow_searchProjectsWrappertransmitObjectleadsProjectOriginGuid != null)
                 {
-                    transmitObjectObject["Leads_Project_OriginGuid"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectleadsProjectOriginGuid);
+                    transmitObjectObject["Leads_Project_OriginGuid"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectleadsProjectOriginGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectprojectsSuperiorProjectGuid != null)
+                if (__workflow_searchProjectsWrappertransmitObjectprojectsSuperiorProjectGuid != null)
                 {
-                    transmitObjectObject["Projects_SuperiorProjectGuid"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectprojectsSuperiorProjectGuid);
+                    transmitObjectObject["Projects_SuperiorProjectGuid"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectprojectsSuperiorProjectGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectusersSupervisorGuid != null)
+                if (__workflow_searchProjectsWrappertransmitObjectusersSupervisorGuid != null)
                 {
-                    transmitObjectObject["Users_SupervisorGuid"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectusersSupervisorGuid);
+                    transmitObjectObject["Users_SupervisorGuid"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectusersSupervisorGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectnote != null)
+                if (__workflow_searchProjectsWrappertransmitObjectnote != null)
                 {
-                    transmitObjectObject["Note"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectnote);
+                    transmitObjectObject["Note"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectnote);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectprice != null)
+                if (__workflow_searchProjectsWrappertransmitObjectprice != null)
                 {
-                    transmitObjectObject["Price"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectprice);
+                    transmitObjectObject["Price"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectprice);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectprojectEnd != null)
+                if (__workflow_searchProjectsWrappertransmitObjectprojectEnd != null)
                 {
-                    transmitObjectObject["ProjectEnd"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectprojectEnd);
+                    transmitObjectObject["ProjectEnd"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectprojectEnd);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectprojectName != null)
+                if (__workflow_searchProjectsWrappertransmitObjectprojectName != null)
                 {
-                    transmitObjectObject["ProjectName"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectprojectName);
+                    transmitObjectObject["ProjectName"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectprojectName);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjecttypeEn != null)
+                if (__workflow_searchProjectsWrappertransmitObjecttypeEn != null)
                 {
-                    transmitObjectObject["TypeEn"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjecttypeEn);
+                    transmitObjectObject["TypeEn"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjecttypeEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectstateEn != null)
+                if (__workflow_searchProjectsWrappertransmitObjectstateEn != null)
                 {
-                    transmitObjectObject["StateEn"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectstateEn);
+                    transmitObjectObject["StateEn"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectstateEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectpeopleExpenses != null)
+                if (__workflow_searchProjectsWrappertransmitObjectpeopleExpenses != null)
                 {
-                    transmitObjectObject["PeopleExpenses"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectpeopleExpenses);
+                    transmitObjectObject["PeopleExpenses"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectpeopleExpenses);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectprojectRealEnd != null)
+                if (__workflow_searchProjectsWrappertransmitObjectprojectRealEnd != null)
                 {
-                    transmitObjectObject["ProjectRealEnd"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectprojectRealEnd);
+                    transmitObjectObject["ProjectRealEnd"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectprojectRealEnd);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectestimatedPrice != null)
+                if (__workflow_searchProjectsWrappertransmitObjectestimatedPrice != null)
                 {
-                    transmitObjectObject["EstimatedPrice"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectestimatedPrice);
+                    transmitObjectObject["EstimatedPrice"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectestimatedPrice);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjecthID != null)
+                if (__workflow_searchProjectsWrappertransmitObjecthID != null)
                 {
-                    transmitObjectObject["HID"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjecthID);
+                    transmitObjectObject["HID"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjecthID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectprojectOriginEn != null)
+                if (__workflow_searchProjectsWrappertransmitObjectprojectOriginEn != null)
                 {
-                    transmitObjectObject["ProjectOriginEn"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectprojectOriginEn);
+                    transmitObjectObject["ProjectOriginEn"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectprojectOriginEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectpaymentTypeEn != null)
+                if (__workflow_searchProjectsWrappertransmitObjectpaymentTypeEn != null)
                 {
-                    transmitObjectObject["PaymentTypeEn"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectpaymentTypeEn);
+                    transmitObjectObject["PaymentTypeEn"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectpaymentTypeEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectotherExpenses != null)
+                if (__workflow_searchProjectsWrappertransmitObjectotherExpenses != null)
                 {
-                    transmitObjectObject["OtherExpenses"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectotherExpenses);
+                    transmitObjectObject["OtherExpenses"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectotherExpenses);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectmargin != null)
+                if (__workflow_searchProjectsWrappertransmitObjectmargin != null)
                 {
-                    transmitObjectObject["Margin"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectmargin);
+                    transmitObjectObject["Margin"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectmargin);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectprofit != null)
+                if (__workflow_searchProjectsWrappertransmitObjectprofit != null)
                 {
-                    transmitObjectObject["Profit"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectprofit);
+                    transmitObjectObject["Profit"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectprofit);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectpaymentMaturity != null)
+                if (__workflow_searchProjectsWrappertransmitObjectpaymentMaturity != null)
                 {
-                    transmitObjectObject["PaymentMaturity"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectpaymentMaturity);
+                    transmitObjectObject["PaymentMaturity"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectpaymentMaturity);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectinvoicePaymentDate != null)
+                if (__workflow_searchProjectsWrappertransmitObjectinvoicePaymentDate != null)
                 {
-                    transmitObjectObject["InvoicePaymentDate"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectinvoicePaymentDate);
+                    transmitObjectObject["InvoicePaymentDate"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectinvoicePaymentDate);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectinvoiceIssueDate != null)
+                if (__workflow_searchProjectsWrappertransmitObjectinvoiceIssueDate != null)
                 {
-                    transmitObjectObject["InvoiceIssueDate"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectinvoiceIssueDate);
+                    transmitObjectObject["InvoiceIssueDate"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectinvoiceIssueDate);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectestimatedMargin != null)
+                if (__workflow_searchProjectsWrappertransmitObjectestimatedMargin != null)
                 {
-                    transmitObjectObject["EstimatedMargin"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectestimatedMargin);
+                    transmitObjectObject["EstimatedMargin"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectestimatedMargin);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectestimatedProfit != null)
+                if (__workflow_searchProjectsWrappertransmitObjectestimatedProfit != null)
                 {
-                    transmitObjectObject["EstimatedProfit"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectestimatedProfit);
+                    transmitObjectObject["EstimatedProfit"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectestimatedProfit);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectestimatedPeopleExpenses != null)
+                if (__workflow_searchProjectsWrappertransmitObjectestimatedPeopleExpenses != null)
                 {
-                    transmitObjectObject["EstimatedPeopleExpenses"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectestimatedPeopleExpenses);
+                    transmitObjectObject["EstimatedPeopleExpenses"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectestimatedPeopleExpenses);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectestimatedOtherExpenses != null)
+                if (__workflow_searchProjectsWrappertransmitObjectestimatedOtherExpenses != null)
                 {
-                    transmitObjectObject["EstimatedOtherExpenses"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectestimatedOtherExpenses);
+                    transmitObjectObject["EstimatedOtherExpenses"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectestimatedOtherExpenses);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectlicensesCount != null)
+                if (__workflow_searchProjectsWrappertransmitObjectlicensesCount != null)
                 {
-                    transmitObjectObject["LicensesCount"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectlicensesCount);
+                    transmitObjectObject["LicensesCount"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectlicensesCount);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectlicensePrice != null)
+                if (__workflow_searchProjectsWrappertransmitObjectlicensePrice != null)
                 {
-                    transmitObjectObject["LicensePrice"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectlicensePrice);
+                    transmitObjectObject["LicensePrice"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectlicensePrice);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectprevStateEn != null)
+                if (__workflow_searchProjectsWrappertransmitObjectprevStateEn != null)
                 {
-                    transmitObjectObject["PrevStateEn"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectprevStateEn);
+                    transmitObjectObject["PrevStateEn"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectprevStateEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectshowInCaplan != null)
+                if (__workflow_searchProjectsWrappertransmitObjectshowInCaplan != null)
                 {
-                    transmitObjectObject["ShowInCaplan"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectshowInCaplan);
+                    transmitObjectObject["ShowInCaplan"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectshowInCaplan);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectprojectStart != null)
+                if (__workflow_searchProjectsWrappertransmitObjectprojectStart != null)
                 {
-                    transmitObjectObject["ProjectStart"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectprojectStart);
+                    transmitObjectObject["ProjectStart"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectprojectStart);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectestimatedWorkHours != null)
+                if (__workflow_searchProjectsWrappertransmitObjectestimatedWorkHours != null)
                 {
-                    transmitObjectObject["EstimatedWorkHours"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectestimatedWorkHours);
+                    transmitObjectObject["EstimatedWorkHours"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectestimatedWorkHours);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjecttotalWorkHours != null)
+                if (__workflow_searchProjectsWrappertransmitObjecttotalWorkHours != null)
                 {
-                    transmitObjectObject["TotalWorkHours"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjecttotalWorkHours);
+                    transmitObjectObject["TotalWorkHours"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjecttotalWorkHours);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectestimatedPeopleExpensesDefaultCurrency != null)
+                if (__workflow_searchProjectsWrappertransmitObjectestimatedPeopleExpensesDefaultCurrency != null)
                 {
-                    transmitObjectObject["EstimatedPeopleExpensesDefaultCurrency"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectestimatedPeopleExpensesDefaultCurrency);
+                    transmitObjectObject["EstimatedPeopleExpensesDefaultCurrency"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectestimatedPeopleExpensesDefaultCurrency);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectestimatedOtherExpensesDefaultCurrency != null)
+                if (__workflow_searchProjectsWrappertransmitObjectestimatedOtherExpensesDefaultCurrency != null)
                 {
-                    transmitObjectObject["EstimatedOtherExpensesDefaultCurrency"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectestimatedOtherExpensesDefaultCurrency);
+                    transmitObjectObject["EstimatedOtherExpensesDefaultCurrency"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectestimatedOtherExpensesDefaultCurrency);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectestimatedPriceDefaultCurrency != null)
+                if (__workflow_searchProjectsWrappertransmitObjectestimatedPriceDefaultCurrency != null)
                 {
-                    transmitObjectObject["EstimatedPriceDefaultCurrency"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectestimatedPriceDefaultCurrency);
+                    transmitObjectObject["EstimatedPriceDefaultCurrency"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectestimatedPriceDefaultCurrency);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectpeopleExpensesDefaultCurrency != null)
+                if (__workflow_searchProjectsWrappertransmitObjectpeopleExpensesDefaultCurrency != null)
                 {
-                    transmitObjectObject["PeopleExpensesDefaultCurrency"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectpeopleExpensesDefaultCurrency);
+                    transmitObjectObject["PeopleExpensesDefaultCurrency"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectpeopleExpensesDefaultCurrency);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectotherExpensesDefaultCurrency != null)
+                if (__workflow_searchProjectsWrappertransmitObjectotherExpensesDefaultCurrency != null)
                 {
-                    transmitObjectObject["OtherExpensesDefaultCurrency"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectotherExpensesDefaultCurrency);
+                    transmitObjectObject["OtherExpensesDefaultCurrency"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectotherExpensesDefaultCurrency);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectpriceDefaultCurrency != null)
+                if (__workflow_searchProjectsWrappertransmitObjectpriceDefaultCurrency != null)
                 {
-                    transmitObjectObject["PriceDefaultCurrency"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectpriceDefaultCurrency);
+                    transmitObjectObject["PriceDefaultCurrency"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectpriceDefaultCurrency);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectprofitDefaultCurrency != null)
+                if (__workflow_searchProjectsWrappertransmitObjectprofitDefaultCurrency != null)
                 {
-                    transmitObjectObject["ProfitDefaultCurrency"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectprofitDefaultCurrency);
+                    transmitObjectObject["ProfitDefaultCurrency"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectprofitDefaultCurrency);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectestimatedProfitDefaultCurrency != null)
+                if (__workflow_searchProjectsWrappertransmitObjectestimatedProfitDefaultCurrency != null)
                 {
-                    transmitObjectObject["EstimatedProfitDefaultCurrency"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectestimatedProfitDefaultCurrency);
+                    transmitObjectObject["EstimatedProfitDefaultCurrency"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectestimatedProfitDefaultCurrency);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectcurrencyEn != null)
+                if (__workflow_searchProjectsWrappertransmitObjectcurrencyEn != null)
                 {
-                    transmitObjectObject["CurrencyEn"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectcurrencyEn);
+                    transmitObjectObject["CurrencyEn"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectcurrencyEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectestimatedPeopleExpensesChanged != null)
+                if (__workflow_searchProjectsWrappertransmitObjectestimatedPeopleExpensesChanged != null)
                 {
-                    transmitObjectObject["EstimatedPeopleExpensesChanged"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectestimatedPeopleExpensesChanged);
+                    transmitObjectObject["EstimatedPeopleExpensesChanged"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectestimatedPeopleExpensesChanged);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectestimatedOtherExpensesChanged != null)
+                if (__workflow_searchProjectsWrappertransmitObjectestimatedOtherExpensesChanged != null)
                 {
-                    transmitObjectObject["EstimatedOtherExpensesChanged"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectestimatedOtherExpensesChanged);
+                    transmitObjectObject["EstimatedOtherExpensesChanged"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectestimatedOtherExpensesChanged);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectotherExpensesChanged != null)
+                if (__workflow_searchProjectsWrappertransmitObjectotherExpensesChanged != null)
                 {
-                    transmitObjectObject["OtherExpensesChanged"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectotherExpensesChanged);
+                    transmitObjectObject["OtherExpensesChanged"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectotherExpensesChanged);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectestimatedPriceChanged != null)
+                if (__workflow_searchProjectsWrappertransmitObjectestimatedPriceChanged != null)
                 {
-                    transmitObjectObject["EstimatedPriceChanged"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectestimatedPriceChanged);
+                    transmitObjectObject["EstimatedPriceChanged"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectestimatedPriceChanged);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectpriceChanged != null)
+                if (__workflow_searchProjectsWrappertransmitObjectpriceChanged != null)
                 {
-                    transmitObjectObject["PriceChanged"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectpriceChanged);
+                    transmitObjectObject["PriceChanged"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectpriceChanged);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectlicensePriceChanged != null)
+                if (__workflow_searchProjectsWrappertransmitObjectlicensePriceChanged != null)
                 {
-                    transmitObjectObject["LicensePriceChanged"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectlicensePriceChanged);
+                    transmitObjectObject["LicensePriceChanged"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectlicensePriceChanged);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectlicensePriceDefaultCurrency != null)
+                if (__workflow_searchProjectsWrappertransmitObjectlicensePriceDefaultCurrency != null)
                 {
-                    transmitObjectObject["LicensePriceDefaultCurrency"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectlicensePriceDefaultCurrency);
+                    transmitObjectObject["LicensePriceDefaultCurrency"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectlicensePriceDefaultCurrency);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectlastActivity != null)
+                if (__workflow_searchProjectsWrappertransmitObjectlastActivity != null)
                 {
-                    transmitObjectObject["LastActivity"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectlastActivity);
+                    transmitObjectObject["LastActivity"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectlastActivity);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectnextStep != null)
+                if (__workflow_searchProjectsWrappertransmitObjectnextStep != null)
                 {
-                    transmitObjectObject["NextStep"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectnextStep);
+                    transmitObjectObject["NextStep"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectnextStep);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectcompletedDate != null)
+                if (__workflow_searchProjectsWrappertransmitObjectcompletedDate != null)
                 {
-                    transmitObjectObject["CompletedDate"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectcompletedDate);
+                    transmitObjectObject["CompletedDate"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectcompletedDate);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectisCompleted != null)
+                if (__workflow_searchProjectsWrappertransmitObjectisCompleted != null)
                 {
-                    transmitObjectObject["IsCompleted"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectisCompleted);
+                    transmitObjectObject["IsCompleted"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectisCompleted);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectlostDate != null)
+                if (__workflow_searchProjectsWrappertransmitObjectlostDate != null)
                 {
-                    transmitObjectObject["LostDate"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectlostDate);
+                    transmitObjectObject["LostDate"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectlostDate);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectisLost != null)
+                if (__workflow_searchProjectsWrappertransmitObjectisLost != null)
                 {
-                    transmitObjectObject["IsLost"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectisLost);
+                    transmitObjectObject["IsLost"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectisLost);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectpeopleExpensesChanged != null)
+                if (__workflow_searchProjectsWrappertransmitObjectpeopleExpensesChanged != null)
                 {
-                    transmitObjectObject["PeopleExpensesChanged"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectpeopleExpensesChanged);
+                    transmitObjectObject["PeopleExpensesChanged"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectpeopleExpensesChanged);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectpicture != null)
+                if (__workflow_searchProjectsWrappertransmitObjectpicture != null)
                 {
-                    transmitObjectObject["Picture"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectpicture);
+                    transmitObjectObject["Picture"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectpicture);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectpictureWidth != null)
+                if (__workflow_searchProjectsWrappertransmitObjectpictureWidth != null)
                 {
-                    transmitObjectObject["PictureWidth"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectpictureWidth);
+                    transmitObjectObject["PictureWidth"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectpictureWidth);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectpictureHeight != null)
+                if (__workflow_searchProjectsWrappertransmitObjectpictureHeight != null)
                 {
-                    transmitObjectObject["PictureHeight"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectpictureHeight);
+                    transmitObjectObject["PictureHeight"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectpictureHeight);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectisPrivate != null)
+                if (__workflow_searchProjectsWrappertransmitObjectisPrivate != null)
                 {
-                    transmitObjectObject["IsPrivate"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectisPrivate);
+                    transmitObjectObject["IsPrivate"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectisPrivate);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectserverItemCreated != null)
+                if (__workflow_searchProjectsWrappertransmitObjectserverItemCreated != null)
                 {
-                    transmitObjectObject["Server_ItemCreated"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectserverItemCreated);
+                    transmitObjectObject["Server_ItemCreated"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectserverItemCreated);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectserverItemChanged != null)
+                if (__workflow_searchProjectsWrappertransmitObjectserverItemChanged != null)
                 {
-                    transmitObjectObject["Server_ItemChanged"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectserverItemChanged);
+                    transmitObjectObject["Server_ItemChanged"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectserverItemChanged);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectitemCreated != null)
+                if (__workflow_searchProjectsWrappertransmitObjectitemCreated != null)
                 {
-                    transmitObjectObject["ItemCreated"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectitemCreated);
+                    transmitObjectObject["ItemCreated"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectitemCreated);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectitemChanged != null)
+                if (__workflow_searchProjectsWrappertransmitObjectitemChanged != null)
                 {
-                    transmitObjectObject["ItemChanged"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectitemChanged);
+                    transmitObjectObject["ItemChanged"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectitemChanged);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectfileAs != null)
+                if (__workflow_searchProjectsWrappertransmitObjectfileAs != null)
                 {
-                    transmitObjectObject["FileAs"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectfileAs);
+                    transmitObjectObject["FileAs"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectfileAs);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectownerGUID != null)
+                if (__workflow_searchProjectsWrappertransmitObjectownerGUID != null)
                 {
-                    transmitObjectObject["OwnerGUID"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectownerGUID);
+                    transmitObjectObject["OwnerGUID"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectownerGUID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectcreatedByGUID != null)
+                if (__workflow_searchProjectsWrappertransmitObjectcreatedByGUID != null)
                 {
-                    transmitObjectObject["CreatedByGUID"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectcreatedByGUID);
+                    transmitObjectObject["CreatedByGUID"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectcreatedByGUID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectmodifiedByGUID != null)
+                if (__workflow_searchProjectsWrappertransmitObjectmodifiedByGUID != null)
                 {
-                    transmitObjectObject["ModifiedByGUID"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectmodifiedByGUID);
+                    transmitObjectObject["ModifiedByGUID"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectmodifiedByGUID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectadditionalFields != null)
+                if (__workflow_searchProjectsWrappertransmitObjectadditionalFields != null)
                 {
-                    transmitObjectObject["AdditionalFields"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectadditionalFields);
+                    transmitObjectObject["AdditionalFields"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectadditionalFields);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectrelations != null)
+                if (__workflow_searchProjectsWrappertransmitObjectrelations != null)
                 {
-                    transmitObjectObject["Relations"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectrelations);
+                    transmitObjectObject["Relations"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectrelations);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectitemGUID != null)
+                if (__workflow_searchProjectsWrappertransmitObjectitemGUID != null)
                 {
-                    transmitObjectObject["ItemGUID"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectitemGUID);
+                    transmitObjectObject["ItemGUID"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectitemGUID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchProjectsWrappertransmitObjectitemVersion != null)
+                if (__workflow_searchProjectsWrappertransmitObjectitemVersion != null)
                 {
-                    transmitObjectObject["ItemVersion"] = ExpressionConverter.ConvertO(searchProjectsWrappertransmitObjectitemVersion);
+                    transmitObjectObject["ItemVersion"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrappertransmitObjectitemVersion);
                     transmitObjectObjectpropCount++;
                 }
 
@@ -5203,23 +5737,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                     searchProjectsWrapperpropCount++;
                 }
 
-                if (searchProjectsWrapperincludeRelations != null)
+                if (__workflow_searchProjectsWrapperincludeRelations != null)
                 {
-                    searchProjectsWrapper["includeRelations"] = ExpressionConverter.ConvertO(searchProjectsWrapperincludeRelations);
+                    searchProjectsWrapper["includeRelations"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrapperincludeRelations);
                     searchProjectsWrapperpropCount++;
                 }
 
                 var relationsFilterObject = new JObject();
                 var relationsFilterObjectpropCount = 0;
-                if (searchProjectsWrapperrelationsFilterrelationType != null)
+                if (__workflow_searchProjectsWrapperrelationsFilterrelationType != null)
                 {
-                    relationsFilterObject["RelationType"] = ExpressionConverter.ConvertO(searchProjectsWrapperrelationsFilterrelationType);
+                    relationsFilterObject["RelationType"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrapperrelationsFilterrelationType);
                     relationsFilterObjectpropCount++;
                 }
 
-                if (searchProjectsWrapperrelationsFilterforeignFolderName != null)
+                if (__workflow_searchProjectsWrapperrelationsFilterforeignFolderName != null)
                 {
-                    relationsFilterObject["ForeignFolderName"] = ExpressionConverter.ConvertO(searchProjectsWrapperrelationsFilterforeignFolderName);
+                    relationsFilterObject["ForeignFolderName"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrapperrelationsFilterforeignFolderName);
                     relationsFilterObjectpropCount++;
                 }
 
@@ -5229,9 +5763,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                     searchProjectsWrapperpropCount++;
                 }
 
-                if (searchProjectsWrapperbinaryLogicalOperator != null)
+                if (__workflow_searchProjectsWrapperbinaryLogicalOperator != null)
                 {
-                    searchProjectsWrapper["binaryLogicalOperator"] = ExpressionConverter.ConvertO(searchProjectsWrapperbinaryLogicalOperator);
+                    searchProjectsWrapper["binaryLogicalOperator"] = ExpressionConverter.ConvertO(__workflow_searchProjectsWrapperbinaryLogicalOperator);
                     searchProjectsWrapperpropCount++;
                 }
 
@@ -5245,63 +5779,104 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
-        [WorkflowExpressionFactory(nameof(__BuildSearchTasks))]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedTask> SearchTasks([WorkflowExpression] Func<string> searchTasksWrappertransmitObjectleadsTopLevelProjectGuid = null, [WorkflowExpression] Func<string> searchTasksWrappertransmitObjectleadsTaskParentGuid = null, [WorkflowExpression] Func<string> searchTasksWrappertransmitObjectprojectsTopLevelProjectGuid = null, [WorkflowExpression] Func<string> searchTasksWrappertransmitObjectprojectsTaskParentGuid = null, [WorkflowExpression] Func<string> searchTasksWrappertransmitObjecttasksTaskParentGuid = null, [WorkflowExpression] Func<string> searchTasksWrappertransmitObjectmarketingTopLevelProjectGuid = null, [WorkflowExpression] Func<string> searchTasksWrappertransmitObjectmarketingTaskParentGuid = null, [WorkflowExpression] Func<string> searchTasksWrappertransmitObjectcompaniesCompanyGuid = null, [WorkflowExpression] Func<string> searchTasksWrappertransmitObjectcontactsContactGuid = null, [WorkflowExpression] Func<string> searchTasksWrappertransmitObjectusersTaskDelegatorGuid = null, [WorkflowExpression] Func<string> searchTasksWrappertransmitObjectusersTaskSolverGuid = null, [WorkflowExpression] Func<string> searchTasksWrappertransmitObjecttasksTaskOriginGuid = null, [WorkflowExpression] Func<string> searchTasksWrappertransmitObjectbody = null, [WorkflowExpression] Func<bool> searchTasksWrappertransmitObjectisCompleted = null, [WorkflowExpression] Func<string> searchTasksWrappertransmitObjectdueDate = null, [WorkflowExpression] Func<double> searchTasksWrappertransmitObjectpercentCompleteDecimal = null, [WorkflowExpression] Func<string> searchTasksWrappertransmitObjectprevStateEn = null, [WorkflowExpression] Func<string> searchTasksWrappertransmitObjectstartDate = null, [WorkflowExpression] Func<string> searchTasksWrappertransmitObjectstateEn = null, [WorkflowExpression] Func<string> searchTasksWrappertransmitObjectsubject = null, [WorkflowExpression] Func<string> searchTasksWrappertransmitObjecttypeEn = null, [WorkflowExpression] Func<int> searchTasksWrappertransmitObjectlevel = null, [WorkflowExpression] Func<string> searchTasksWrappertransmitObjectimportanceEn = null, [WorkflowExpression] Func<double> searchTasksWrappertransmitObjectactualWorkHours = null, [WorkflowExpression] Func<double> searchTasksWrappertransmitObjectestimatedWorkHours = null, [WorkflowExpression] Func<bool> searchTasksWrappertransmitObjectisReminderSet = null, [WorkflowExpression] Func<string> searchTasksWrappertransmitObjectreminderDate = null, [WorkflowExpression] Func<string> searchTasksWrappertransmitObjectcompletedDate = null, [WorkflowExpression] Func<string> searchTasksWrappertransmitObjectpicture = null, [WorkflowExpression] Func<int> searchTasksWrappertransmitObjectpictureWidth = null, [WorkflowExpression] Func<int> searchTasksWrappertransmitObjectpictureHeight = null, [WorkflowExpression] Func<bool> searchTasksWrappertransmitObjectisPrivate = null, [WorkflowExpression] Func<string> searchTasksWrappertransmitObjectserverItemCreated = null, [WorkflowExpression] Func<string> searchTasksWrappertransmitObjectserverItemChanged = null, [WorkflowExpression] Func<string> searchTasksWrappertransmitObjectitemCreated = null, [WorkflowExpression] Func<string> searchTasksWrappertransmitObjectitemChanged = null, [WorkflowExpression] Func<string> searchTasksWrappertransmitObjectfileAs = null, [WorkflowExpression] Func<string> searchTasksWrappertransmitObjectownerGUID = null, [WorkflowExpression] Func<string> searchTasksWrappertransmitObjectcreatedByGUID = null, [WorkflowExpression] Func<string> searchTasksWrappertransmitObjectmodifiedByGUID = null, [WorkflowExpression] Func<object> searchTasksWrappertransmitObjectadditionalFields = null, [WorkflowExpression] Func<EWayWcfServiceItemTypesInnerTypesBoundRelation[]> searchTasksWrappertransmitObjectrelations = null, [WorkflowExpression] Func<string> searchTasksWrappertransmitObjectitemGUID = null, [WorkflowExpression] Func<int> searchTasksWrappertransmitObjectitemVersion = null, [WorkflowExpression] Func<bool> searchTasksWrapperincludeRelations = null, [WorkflowExpression] Func<string> searchTasksWrapperrelationsFilterrelationType = null, [WorkflowExpression] Func<string> searchTasksWrapperrelationsFilterforeignFolderName = null, [WorkflowExpression] Func<string> searchTasksWrapperbinaryLogicalOperator = null)
+        public IBodyWorkflowAction<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedTask> SearchTasks(Expression<Func<string>> searchTasksWrappertransmitObjectleadsTopLevelProjectGuid = null, Expression<Func<string>> searchTasksWrappertransmitObjectleadsTaskParentGuid = null, Expression<Func<string>> searchTasksWrappertransmitObjectprojectsTopLevelProjectGuid = null, Expression<Func<string>> searchTasksWrappertransmitObjectprojectsTaskParentGuid = null, Expression<Func<string>> searchTasksWrappertransmitObjecttasksTaskParentGuid = null, Expression<Func<string>> searchTasksWrappertransmitObjectmarketingTopLevelProjectGuid = null, Expression<Func<string>> searchTasksWrappertransmitObjectmarketingTaskParentGuid = null, Expression<Func<string>> searchTasksWrappertransmitObjectcompaniesCompanyGuid = null, Expression<Func<string>> searchTasksWrappertransmitObjectcontactsContactGuid = null, Expression<Func<string>> searchTasksWrappertransmitObjectusersTaskDelegatorGuid = null, Expression<Func<string>> searchTasksWrappertransmitObjectusersTaskSolverGuid = null, Expression<Func<string>> searchTasksWrappertransmitObjecttasksTaskOriginGuid = null, Expression<Func<string>> searchTasksWrappertransmitObjectbody = null, Expression<Func<bool>> searchTasksWrappertransmitObjectisCompleted = null, Expression<Func<string>> searchTasksWrappertransmitObjectdueDate = null, Expression<Func<double>> searchTasksWrappertransmitObjectpercentCompleteDecimal = null, Expression<Func<string>> searchTasksWrappertransmitObjectprevStateEn = null, Expression<Func<string>> searchTasksWrappertransmitObjectstartDate = null, Expression<Func<string>> searchTasksWrappertransmitObjectstateEn = null, Expression<Func<string>> searchTasksWrappertransmitObjectsubject = null, Expression<Func<string>> searchTasksWrappertransmitObjecttypeEn = null, Expression<Func<int>> searchTasksWrappertransmitObjectlevel = null, Expression<Func<string>> searchTasksWrappertransmitObjectimportanceEn = null, Expression<Func<double>> searchTasksWrappertransmitObjectactualWorkHours = null, Expression<Func<double>> searchTasksWrappertransmitObjectestimatedWorkHours = null, Expression<Func<bool>> searchTasksWrappertransmitObjectisReminderSet = null, Expression<Func<string>> searchTasksWrappertransmitObjectreminderDate = null, Expression<Func<string>> searchTasksWrappertransmitObjectcompletedDate = null, Expression<Func<string>> searchTasksWrappertransmitObjectpicture = null, Expression<Func<int>> searchTasksWrappertransmitObjectpictureWidth = null, Expression<Func<int>> searchTasksWrappertransmitObjectpictureHeight = null, Expression<Func<bool>> searchTasksWrappertransmitObjectisPrivate = null, Expression<Func<string>> searchTasksWrappertransmitObjectserverItemCreated = null, Expression<Func<string>> searchTasksWrappertransmitObjectserverItemChanged = null, Expression<Func<string>> searchTasksWrappertransmitObjectitemCreated = null, Expression<Func<string>> searchTasksWrappertransmitObjectitemChanged = null, Expression<Func<string>> searchTasksWrappertransmitObjectfileAs = null, Expression<Func<string>> searchTasksWrappertransmitObjectownerGUID = null, Expression<Func<string>> searchTasksWrappertransmitObjectcreatedByGUID = null, Expression<Func<string>> searchTasksWrappertransmitObjectmodifiedByGUID = null, Expression<Func<object>> searchTasksWrappertransmitObjectadditionalFields = null, Expression<Func<EWayWcfServiceItemTypesInnerTypesBoundRelation[]>> searchTasksWrappertransmitObjectrelations = null, Expression<Func<string>> searchTasksWrappertransmitObjectitemGUID = null, Expression<Func<int>> searchTasksWrappertransmitObjectitemVersion = null, Expression<Func<bool>> searchTasksWrapperincludeRelations = null, Expression<Func<string>> searchTasksWrapperrelationsFilterrelationType = null, Expression<Func<string>> searchTasksWrapperrelationsFilterforeignFolderName = null, Expression<Func<string>> searchTasksWrapperbinaryLogicalOperator = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedTask> __BuildSearchTasks(WorkflowExpression<string> searchTasksWrappertransmitObjectleadsTopLevelProjectGuid = null, WorkflowExpression<string> searchTasksWrappertransmitObjectleadsTaskParentGuid = null, WorkflowExpression<string> searchTasksWrappertransmitObjectprojectsTopLevelProjectGuid = null, WorkflowExpression<string> searchTasksWrappertransmitObjectprojectsTaskParentGuid = null, WorkflowExpression<string> searchTasksWrappertransmitObjecttasksTaskParentGuid = null, WorkflowExpression<string> searchTasksWrappertransmitObjectmarketingTopLevelProjectGuid = null, WorkflowExpression<string> searchTasksWrappertransmitObjectmarketingTaskParentGuid = null, WorkflowExpression<string> searchTasksWrappertransmitObjectcompaniesCompanyGuid = null, WorkflowExpression<string> searchTasksWrappertransmitObjectcontactsContactGuid = null, WorkflowExpression<string> searchTasksWrappertransmitObjectusersTaskDelegatorGuid = null, WorkflowExpression<string> searchTasksWrappertransmitObjectusersTaskSolverGuid = null, WorkflowExpression<string> searchTasksWrappertransmitObjecttasksTaskOriginGuid = null, WorkflowExpression<string> searchTasksWrappertransmitObjectbody = null, WorkflowExpression<bool> searchTasksWrappertransmitObjectisCompleted = null, WorkflowExpression<string> searchTasksWrappertransmitObjectdueDate = null, WorkflowExpression<double> searchTasksWrappertransmitObjectpercentCompleteDecimal = null, WorkflowExpression<string> searchTasksWrappertransmitObjectprevStateEn = null, WorkflowExpression<string> searchTasksWrappertransmitObjectstartDate = null, WorkflowExpression<string> searchTasksWrappertransmitObjectstateEn = null, WorkflowExpression<string> searchTasksWrappertransmitObjectsubject = null, WorkflowExpression<string> searchTasksWrappertransmitObjecttypeEn = null, WorkflowExpression<int> searchTasksWrappertransmitObjectlevel = null, WorkflowExpression<string> searchTasksWrappertransmitObjectimportanceEn = null, WorkflowExpression<double> searchTasksWrappertransmitObjectactualWorkHours = null, WorkflowExpression<double> searchTasksWrappertransmitObjectestimatedWorkHours = null, WorkflowExpression<bool> searchTasksWrappertransmitObjectisReminderSet = null, WorkflowExpression<string> searchTasksWrappertransmitObjectreminderDate = null, WorkflowExpression<string> searchTasksWrappertransmitObjectcompletedDate = null, WorkflowExpression<string> searchTasksWrappertransmitObjectpicture = null, WorkflowExpression<int> searchTasksWrappertransmitObjectpictureWidth = null, WorkflowExpression<int> searchTasksWrappertransmitObjectpictureHeight = null, WorkflowExpression<bool> searchTasksWrappertransmitObjectisPrivate = null, WorkflowExpression<string> searchTasksWrappertransmitObjectserverItemCreated = null, WorkflowExpression<string> searchTasksWrappertransmitObjectserverItemChanged = null, WorkflowExpression<string> searchTasksWrappertransmitObjectitemCreated = null, WorkflowExpression<string> searchTasksWrappertransmitObjectitemChanged = null, WorkflowExpression<string> searchTasksWrappertransmitObjectfileAs = null, WorkflowExpression<string> searchTasksWrappertransmitObjectownerGUID = null, WorkflowExpression<string> searchTasksWrappertransmitObjectcreatedByGUID = null, WorkflowExpression<string> searchTasksWrappertransmitObjectmodifiedByGUID = null, WorkflowExpression<object> searchTasksWrappertransmitObjectadditionalFields = null, WorkflowExpression<EWayWcfServiceItemTypesInnerTypesBoundRelation[]> searchTasksWrappertransmitObjectrelations = null, WorkflowExpression<string> searchTasksWrappertransmitObjectitemGUID = null, WorkflowExpression<int> searchTasksWrappertransmitObjectitemVersion = null, WorkflowExpression<bool> searchTasksWrapperincludeRelations = null, WorkflowExpression<string> searchTasksWrapperrelationsFilterrelationType = null, WorkflowExpression<string> searchTasksWrapperrelationsFilterforeignFolderName = null, WorkflowExpression<string> searchTasksWrapperbinaryLogicalOperator = null)
-        {
-            WorkflowExpression.Validate(searchTasksWrappertransmitObjectleadsTopLevelProjectGuid, nameof(searchTasksWrappertransmitObjectleadsTopLevelProjectGuid), required: false);
-            WorkflowExpression.Validate(searchTasksWrappertransmitObjectleadsTaskParentGuid, nameof(searchTasksWrappertransmitObjectleadsTaskParentGuid), required: false);
-            WorkflowExpression.Validate(searchTasksWrappertransmitObjectprojectsTopLevelProjectGuid, nameof(searchTasksWrappertransmitObjectprojectsTopLevelProjectGuid), required: false);
-            WorkflowExpression.Validate(searchTasksWrappertransmitObjectprojectsTaskParentGuid, nameof(searchTasksWrappertransmitObjectprojectsTaskParentGuid), required: false);
-            WorkflowExpression.Validate(searchTasksWrappertransmitObjecttasksTaskParentGuid, nameof(searchTasksWrappertransmitObjecttasksTaskParentGuid), required: false);
-            WorkflowExpression.Validate(searchTasksWrappertransmitObjectmarketingTopLevelProjectGuid, nameof(searchTasksWrappertransmitObjectmarketingTopLevelProjectGuid), required: false);
-            WorkflowExpression.Validate(searchTasksWrappertransmitObjectmarketingTaskParentGuid, nameof(searchTasksWrappertransmitObjectmarketingTaskParentGuid), required: false);
-            WorkflowExpression.Validate(searchTasksWrappertransmitObjectcompaniesCompanyGuid, nameof(searchTasksWrappertransmitObjectcompaniesCompanyGuid), required: false);
-            WorkflowExpression.Validate(searchTasksWrappertransmitObjectcontactsContactGuid, nameof(searchTasksWrappertransmitObjectcontactsContactGuid), required: false);
-            WorkflowExpression.Validate(searchTasksWrappertransmitObjectusersTaskDelegatorGuid, nameof(searchTasksWrappertransmitObjectusersTaskDelegatorGuid), required: false);
-            WorkflowExpression.Validate(searchTasksWrappertransmitObjectusersTaskSolverGuid, nameof(searchTasksWrappertransmitObjectusersTaskSolverGuid), required: false);
-            WorkflowExpression.Validate(searchTasksWrappertransmitObjecttasksTaskOriginGuid, nameof(searchTasksWrappertransmitObjecttasksTaskOriginGuid), required: false);
-            WorkflowExpression.Validate(searchTasksWrappertransmitObjectbody, nameof(searchTasksWrappertransmitObjectbody), required: false);
-            WorkflowExpression.Validate(searchTasksWrappertransmitObjectisCompleted, nameof(searchTasksWrappertransmitObjectisCompleted), required: false);
-            WorkflowExpression.Validate(searchTasksWrappertransmitObjectdueDate, nameof(searchTasksWrappertransmitObjectdueDate), required: false);
-            WorkflowExpression.Validate(searchTasksWrappertransmitObjectpercentCompleteDecimal, nameof(searchTasksWrappertransmitObjectpercentCompleteDecimal), required: false);
-            WorkflowExpression.Validate(searchTasksWrappertransmitObjectprevStateEn, nameof(searchTasksWrappertransmitObjectprevStateEn), required: false);
-            WorkflowExpression.Validate(searchTasksWrappertransmitObjectstartDate, nameof(searchTasksWrappertransmitObjectstartDate), required: false);
-            WorkflowExpression.Validate(searchTasksWrappertransmitObjectstateEn, nameof(searchTasksWrappertransmitObjectstateEn), required: false);
-            WorkflowExpression.Validate(searchTasksWrappertransmitObjectsubject, nameof(searchTasksWrappertransmitObjectsubject), required: false);
-            WorkflowExpression.Validate(searchTasksWrappertransmitObjecttypeEn, nameof(searchTasksWrappertransmitObjecttypeEn), required: false);
-            WorkflowExpression.Validate(searchTasksWrappertransmitObjectlevel, nameof(searchTasksWrappertransmitObjectlevel), required: false);
-            WorkflowExpression.Validate(searchTasksWrappertransmitObjectimportanceEn, nameof(searchTasksWrappertransmitObjectimportanceEn), required: false);
-            WorkflowExpression.Validate(searchTasksWrappertransmitObjectactualWorkHours, nameof(searchTasksWrappertransmitObjectactualWorkHours), required: false);
-            WorkflowExpression.Validate(searchTasksWrappertransmitObjectestimatedWorkHours, nameof(searchTasksWrappertransmitObjectestimatedWorkHours), required: false);
-            WorkflowExpression.Validate(searchTasksWrappertransmitObjectisReminderSet, nameof(searchTasksWrappertransmitObjectisReminderSet), required: false);
-            WorkflowExpression.Validate(searchTasksWrappertransmitObjectreminderDate, nameof(searchTasksWrappertransmitObjectreminderDate), required: false);
-            WorkflowExpression.Validate(searchTasksWrappertransmitObjectcompletedDate, nameof(searchTasksWrappertransmitObjectcompletedDate), required: false);
-            WorkflowExpression.Validate(searchTasksWrappertransmitObjectpicture, nameof(searchTasksWrappertransmitObjectpicture), required: false);
-            WorkflowExpression.Validate(searchTasksWrappertransmitObjectpictureWidth, nameof(searchTasksWrappertransmitObjectpictureWidth), required: false);
-            WorkflowExpression.Validate(searchTasksWrappertransmitObjectpictureHeight, nameof(searchTasksWrappertransmitObjectpictureHeight), required: false);
-            WorkflowExpression.Validate(searchTasksWrappertransmitObjectisPrivate, nameof(searchTasksWrappertransmitObjectisPrivate), required: false);
-            WorkflowExpression.Validate(searchTasksWrappertransmitObjectserverItemCreated, nameof(searchTasksWrappertransmitObjectserverItemCreated), required: false);
-            WorkflowExpression.Validate(searchTasksWrappertransmitObjectserverItemChanged, nameof(searchTasksWrappertransmitObjectserverItemChanged), required: false);
-            WorkflowExpression.Validate(searchTasksWrappertransmitObjectitemCreated, nameof(searchTasksWrappertransmitObjectitemCreated), required: false);
-            WorkflowExpression.Validate(searchTasksWrappertransmitObjectitemChanged, nameof(searchTasksWrappertransmitObjectitemChanged), required: false);
-            WorkflowExpression.Validate(searchTasksWrappertransmitObjectfileAs, nameof(searchTasksWrappertransmitObjectfileAs), required: false);
-            WorkflowExpression.Validate(searchTasksWrappertransmitObjectownerGUID, nameof(searchTasksWrappertransmitObjectownerGUID), required: false);
-            WorkflowExpression.Validate(searchTasksWrappertransmitObjectcreatedByGUID, nameof(searchTasksWrappertransmitObjectcreatedByGUID), required: false);
-            WorkflowExpression.Validate(searchTasksWrappertransmitObjectmodifiedByGUID, nameof(searchTasksWrappertransmitObjectmodifiedByGUID), required: false);
-            WorkflowExpression.Validate(searchTasksWrappertransmitObjectadditionalFields, nameof(searchTasksWrappertransmitObjectadditionalFields), required: false);
-            WorkflowExpression.Validate(searchTasksWrappertransmitObjectrelations, nameof(searchTasksWrappertransmitObjectrelations), required: false);
-            WorkflowExpression.Validate(searchTasksWrappertransmitObjectitemGUID, nameof(searchTasksWrappertransmitObjectitemGUID), required: false);
-            WorkflowExpression.Validate(searchTasksWrappertransmitObjectitemVersion, nameof(searchTasksWrappertransmitObjectitemVersion), required: false);
-            WorkflowExpression.Validate(searchTasksWrapperincludeRelations, nameof(searchTasksWrapperincludeRelations), required: false);
-            WorkflowExpression.Validate(searchTasksWrapperrelationsFilterrelationType, nameof(searchTasksWrapperrelationsFilterrelationType), required: false);
-            WorkflowExpression.Validate(searchTasksWrapperrelationsFilterforeignFolderName, nameof(searchTasksWrapperrelationsFilterforeignFolderName), required: false);
-            WorkflowExpression.Validate(searchTasksWrapperbinaryLogicalOperator, nameof(searchTasksWrapperbinaryLogicalOperator), required: false);
+            var __workflow_searchTasksWrappertransmitObjectleadsTopLevelProjectGuid = searchTasksWrappertransmitObjectleadsTopLevelProjectGuid == null ? null : WorkflowExpression.Compile(searchTasksWrappertransmitObjectleadsTopLevelProjectGuid);
+            WorkflowExpression.Validate(__workflow_searchTasksWrappertransmitObjectleadsTopLevelProjectGuid, nameof(searchTasksWrappertransmitObjectleadsTopLevelProjectGuid), required: false);
+            var __workflow_searchTasksWrappertransmitObjectleadsTaskParentGuid = searchTasksWrappertransmitObjectleadsTaskParentGuid == null ? null : WorkflowExpression.Compile(searchTasksWrappertransmitObjectleadsTaskParentGuid);
+            WorkflowExpression.Validate(__workflow_searchTasksWrappertransmitObjectleadsTaskParentGuid, nameof(searchTasksWrappertransmitObjectleadsTaskParentGuid), required: false);
+            var __workflow_searchTasksWrappertransmitObjectprojectsTopLevelProjectGuid = searchTasksWrappertransmitObjectprojectsTopLevelProjectGuid == null ? null : WorkflowExpression.Compile(searchTasksWrappertransmitObjectprojectsTopLevelProjectGuid);
+            WorkflowExpression.Validate(__workflow_searchTasksWrappertransmitObjectprojectsTopLevelProjectGuid, nameof(searchTasksWrappertransmitObjectprojectsTopLevelProjectGuid), required: false);
+            var __workflow_searchTasksWrappertransmitObjectprojectsTaskParentGuid = searchTasksWrappertransmitObjectprojectsTaskParentGuid == null ? null : WorkflowExpression.Compile(searchTasksWrappertransmitObjectprojectsTaskParentGuid);
+            WorkflowExpression.Validate(__workflow_searchTasksWrappertransmitObjectprojectsTaskParentGuid, nameof(searchTasksWrappertransmitObjectprojectsTaskParentGuid), required: false);
+            var __workflow_searchTasksWrappertransmitObjecttasksTaskParentGuid = searchTasksWrappertransmitObjecttasksTaskParentGuid == null ? null : WorkflowExpression.Compile(searchTasksWrappertransmitObjecttasksTaskParentGuid);
+            WorkflowExpression.Validate(__workflow_searchTasksWrappertransmitObjecttasksTaskParentGuid, nameof(searchTasksWrappertransmitObjecttasksTaskParentGuid), required: false);
+            var __workflow_searchTasksWrappertransmitObjectmarketingTopLevelProjectGuid = searchTasksWrappertransmitObjectmarketingTopLevelProjectGuid == null ? null : WorkflowExpression.Compile(searchTasksWrappertransmitObjectmarketingTopLevelProjectGuid);
+            WorkflowExpression.Validate(__workflow_searchTasksWrappertransmitObjectmarketingTopLevelProjectGuid, nameof(searchTasksWrappertransmitObjectmarketingTopLevelProjectGuid), required: false);
+            var __workflow_searchTasksWrappertransmitObjectmarketingTaskParentGuid = searchTasksWrappertransmitObjectmarketingTaskParentGuid == null ? null : WorkflowExpression.Compile(searchTasksWrappertransmitObjectmarketingTaskParentGuid);
+            WorkflowExpression.Validate(__workflow_searchTasksWrappertransmitObjectmarketingTaskParentGuid, nameof(searchTasksWrappertransmitObjectmarketingTaskParentGuid), required: false);
+            var __workflow_searchTasksWrappertransmitObjectcompaniesCompanyGuid = searchTasksWrappertransmitObjectcompaniesCompanyGuid == null ? null : WorkflowExpression.Compile(searchTasksWrappertransmitObjectcompaniesCompanyGuid);
+            WorkflowExpression.Validate(__workflow_searchTasksWrappertransmitObjectcompaniesCompanyGuid, nameof(searchTasksWrappertransmitObjectcompaniesCompanyGuid), required: false);
+            var __workflow_searchTasksWrappertransmitObjectcontactsContactGuid = searchTasksWrappertransmitObjectcontactsContactGuid == null ? null : WorkflowExpression.Compile(searchTasksWrappertransmitObjectcontactsContactGuid);
+            WorkflowExpression.Validate(__workflow_searchTasksWrappertransmitObjectcontactsContactGuid, nameof(searchTasksWrappertransmitObjectcontactsContactGuid), required: false);
+            var __workflow_searchTasksWrappertransmitObjectusersTaskDelegatorGuid = searchTasksWrappertransmitObjectusersTaskDelegatorGuid == null ? null : WorkflowExpression.Compile(searchTasksWrappertransmitObjectusersTaskDelegatorGuid);
+            WorkflowExpression.Validate(__workflow_searchTasksWrappertransmitObjectusersTaskDelegatorGuid, nameof(searchTasksWrappertransmitObjectusersTaskDelegatorGuid), required: false);
+            var __workflow_searchTasksWrappertransmitObjectusersTaskSolverGuid = searchTasksWrappertransmitObjectusersTaskSolverGuid == null ? null : WorkflowExpression.Compile(searchTasksWrappertransmitObjectusersTaskSolverGuid);
+            WorkflowExpression.Validate(__workflow_searchTasksWrappertransmitObjectusersTaskSolverGuid, nameof(searchTasksWrappertransmitObjectusersTaskSolverGuid), required: false);
+            var __workflow_searchTasksWrappertransmitObjecttasksTaskOriginGuid = searchTasksWrappertransmitObjecttasksTaskOriginGuid == null ? null : WorkflowExpression.Compile(searchTasksWrappertransmitObjecttasksTaskOriginGuid);
+            WorkflowExpression.Validate(__workflow_searchTasksWrappertransmitObjecttasksTaskOriginGuid, nameof(searchTasksWrappertransmitObjecttasksTaskOriginGuid), required: false);
+            var __workflow_searchTasksWrappertransmitObjectbody = searchTasksWrappertransmitObjectbody == null ? null : WorkflowExpression.Compile(searchTasksWrappertransmitObjectbody);
+            WorkflowExpression.Validate(__workflow_searchTasksWrappertransmitObjectbody, nameof(searchTasksWrappertransmitObjectbody), required: false);
+            var __workflow_searchTasksWrappertransmitObjectisCompleted = searchTasksWrappertransmitObjectisCompleted == null ? null : WorkflowExpression.Compile(searchTasksWrappertransmitObjectisCompleted);
+            WorkflowExpression.Validate(__workflow_searchTasksWrappertransmitObjectisCompleted, nameof(searchTasksWrappertransmitObjectisCompleted), required: false);
+            var __workflow_searchTasksWrappertransmitObjectdueDate = searchTasksWrappertransmitObjectdueDate == null ? null : WorkflowExpression.Compile(searchTasksWrappertransmitObjectdueDate);
+            WorkflowExpression.Validate(__workflow_searchTasksWrappertransmitObjectdueDate, nameof(searchTasksWrappertransmitObjectdueDate), required: false);
+            var __workflow_searchTasksWrappertransmitObjectpercentCompleteDecimal = searchTasksWrappertransmitObjectpercentCompleteDecimal == null ? null : WorkflowExpression.Compile(searchTasksWrappertransmitObjectpercentCompleteDecimal);
+            WorkflowExpression.Validate(__workflow_searchTasksWrappertransmitObjectpercentCompleteDecimal, nameof(searchTasksWrappertransmitObjectpercentCompleteDecimal), required: false);
+            var __workflow_searchTasksWrappertransmitObjectprevStateEn = searchTasksWrappertransmitObjectprevStateEn == null ? null : WorkflowExpression.Compile(searchTasksWrappertransmitObjectprevStateEn);
+            WorkflowExpression.Validate(__workflow_searchTasksWrappertransmitObjectprevStateEn, nameof(searchTasksWrappertransmitObjectprevStateEn), required: false);
+            var __workflow_searchTasksWrappertransmitObjectstartDate = searchTasksWrappertransmitObjectstartDate == null ? null : WorkflowExpression.Compile(searchTasksWrappertransmitObjectstartDate);
+            WorkflowExpression.Validate(__workflow_searchTasksWrappertransmitObjectstartDate, nameof(searchTasksWrappertransmitObjectstartDate), required: false);
+            var __workflow_searchTasksWrappertransmitObjectstateEn = searchTasksWrappertransmitObjectstateEn == null ? null : WorkflowExpression.Compile(searchTasksWrappertransmitObjectstateEn);
+            WorkflowExpression.Validate(__workflow_searchTasksWrappertransmitObjectstateEn, nameof(searchTasksWrappertransmitObjectstateEn), required: false);
+            var __workflow_searchTasksWrappertransmitObjectsubject = searchTasksWrappertransmitObjectsubject == null ? null : WorkflowExpression.Compile(searchTasksWrappertransmitObjectsubject);
+            WorkflowExpression.Validate(__workflow_searchTasksWrappertransmitObjectsubject, nameof(searchTasksWrappertransmitObjectsubject), required: false);
+            var __workflow_searchTasksWrappertransmitObjecttypeEn = searchTasksWrappertransmitObjecttypeEn == null ? null : WorkflowExpression.Compile(searchTasksWrappertransmitObjecttypeEn);
+            WorkflowExpression.Validate(__workflow_searchTasksWrappertransmitObjecttypeEn, nameof(searchTasksWrappertransmitObjecttypeEn), required: false);
+            var __workflow_searchTasksWrappertransmitObjectlevel = searchTasksWrappertransmitObjectlevel == null ? null : WorkflowExpression.Compile(searchTasksWrappertransmitObjectlevel);
+            WorkflowExpression.Validate(__workflow_searchTasksWrappertransmitObjectlevel, nameof(searchTasksWrappertransmitObjectlevel), required: false);
+            var __workflow_searchTasksWrappertransmitObjectimportanceEn = searchTasksWrappertransmitObjectimportanceEn == null ? null : WorkflowExpression.Compile(searchTasksWrappertransmitObjectimportanceEn);
+            WorkflowExpression.Validate(__workflow_searchTasksWrappertransmitObjectimportanceEn, nameof(searchTasksWrappertransmitObjectimportanceEn), required: false);
+            var __workflow_searchTasksWrappertransmitObjectactualWorkHours = searchTasksWrappertransmitObjectactualWorkHours == null ? null : WorkflowExpression.Compile(searchTasksWrappertransmitObjectactualWorkHours);
+            WorkflowExpression.Validate(__workflow_searchTasksWrappertransmitObjectactualWorkHours, nameof(searchTasksWrappertransmitObjectactualWorkHours), required: false);
+            var __workflow_searchTasksWrappertransmitObjectestimatedWorkHours = searchTasksWrappertransmitObjectestimatedWorkHours == null ? null : WorkflowExpression.Compile(searchTasksWrappertransmitObjectestimatedWorkHours);
+            WorkflowExpression.Validate(__workflow_searchTasksWrappertransmitObjectestimatedWorkHours, nameof(searchTasksWrappertransmitObjectestimatedWorkHours), required: false);
+            var __workflow_searchTasksWrappertransmitObjectisReminderSet = searchTasksWrappertransmitObjectisReminderSet == null ? null : WorkflowExpression.Compile(searchTasksWrappertransmitObjectisReminderSet);
+            WorkflowExpression.Validate(__workflow_searchTasksWrappertransmitObjectisReminderSet, nameof(searchTasksWrappertransmitObjectisReminderSet), required: false);
+            var __workflow_searchTasksWrappertransmitObjectreminderDate = searchTasksWrappertransmitObjectreminderDate == null ? null : WorkflowExpression.Compile(searchTasksWrappertransmitObjectreminderDate);
+            WorkflowExpression.Validate(__workflow_searchTasksWrappertransmitObjectreminderDate, nameof(searchTasksWrappertransmitObjectreminderDate), required: false);
+            var __workflow_searchTasksWrappertransmitObjectcompletedDate = searchTasksWrappertransmitObjectcompletedDate == null ? null : WorkflowExpression.Compile(searchTasksWrappertransmitObjectcompletedDate);
+            WorkflowExpression.Validate(__workflow_searchTasksWrappertransmitObjectcompletedDate, nameof(searchTasksWrappertransmitObjectcompletedDate), required: false);
+            var __workflow_searchTasksWrappertransmitObjectpicture = searchTasksWrappertransmitObjectpicture == null ? null : WorkflowExpression.Compile(searchTasksWrappertransmitObjectpicture);
+            WorkflowExpression.Validate(__workflow_searchTasksWrappertransmitObjectpicture, nameof(searchTasksWrappertransmitObjectpicture), required: false);
+            var __workflow_searchTasksWrappertransmitObjectpictureWidth = searchTasksWrappertransmitObjectpictureWidth == null ? null : WorkflowExpression.Compile(searchTasksWrappertransmitObjectpictureWidth);
+            WorkflowExpression.Validate(__workflow_searchTasksWrappertransmitObjectpictureWidth, nameof(searchTasksWrappertransmitObjectpictureWidth), required: false);
+            var __workflow_searchTasksWrappertransmitObjectpictureHeight = searchTasksWrappertransmitObjectpictureHeight == null ? null : WorkflowExpression.Compile(searchTasksWrappertransmitObjectpictureHeight);
+            WorkflowExpression.Validate(__workflow_searchTasksWrappertransmitObjectpictureHeight, nameof(searchTasksWrappertransmitObjectpictureHeight), required: false);
+            var __workflow_searchTasksWrappertransmitObjectisPrivate = searchTasksWrappertransmitObjectisPrivate == null ? null : WorkflowExpression.Compile(searchTasksWrappertransmitObjectisPrivate);
+            WorkflowExpression.Validate(__workflow_searchTasksWrappertransmitObjectisPrivate, nameof(searchTasksWrappertransmitObjectisPrivate), required: false);
+            var __workflow_searchTasksWrappertransmitObjectserverItemCreated = searchTasksWrappertransmitObjectserverItemCreated == null ? null : WorkflowExpression.Compile(searchTasksWrappertransmitObjectserverItemCreated);
+            WorkflowExpression.Validate(__workflow_searchTasksWrappertransmitObjectserverItemCreated, nameof(searchTasksWrappertransmitObjectserverItemCreated), required: false);
+            var __workflow_searchTasksWrappertransmitObjectserverItemChanged = searchTasksWrappertransmitObjectserverItemChanged == null ? null : WorkflowExpression.Compile(searchTasksWrappertransmitObjectserverItemChanged);
+            WorkflowExpression.Validate(__workflow_searchTasksWrappertransmitObjectserverItemChanged, nameof(searchTasksWrappertransmitObjectserverItemChanged), required: false);
+            var __workflow_searchTasksWrappertransmitObjectitemCreated = searchTasksWrappertransmitObjectitemCreated == null ? null : WorkflowExpression.Compile(searchTasksWrappertransmitObjectitemCreated);
+            WorkflowExpression.Validate(__workflow_searchTasksWrappertransmitObjectitemCreated, nameof(searchTasksWrappertransmitObjectitemCreated), required: false);
+            var __workflow_searchTasksWrappertransmitObjectitemChanged = searchTasksWrappertransmitObjectitemChanged == null ? null : WorkflowExpression.Compile(searchTasksWrappertransmitObjectitemChanged);
+            WorkflowExpression.Validate(__workflow_searchTasksWrappertransmitObjectitemChanged, nameof(searchTasksWrappertransmitObjectitemChanged), required: false);
+            var __workflow_searchTasksWrappertransmitObjectfileAs = searchTasksWrappertransmitObjectfileAs == null ? null : WorkflowExpression.Compile(searchTasksWrappertransmitObjectfileAs);
+            WorkflowExpression.Validate(__workflow_searchTasksWrappertransmitObjectfileAs, nameof(searchTasksWrappertransmitObjectfileAs), required: false);
+            var __workflow_searchTasksWrappertransmitObjectownerGUID = searchTasksWrappertransmitObjectownerGUID == null ? null : WorkflowExpression.Compile(searchTasksWrappertransmitObjectownerGUID);
+            WorkflowExpression.Validate(__workflow_searchTasksWrappertransmitObjectownerGUID, nameof(searchTasksWrappertransmitObjectownerGUID), required: false);
+            var __workflow_searchTasksWrappertransmitObjectcreatedByGUID = searchTasksWrappertransmitObjectcreatedByGUID == null ? null : WorkflowExpression.Compile(searchTasksWrappertransmitObjectcreatedByGUID);
+            WorkflowExpression.Validate(__workflow_searchTasksWrappertransmitObjectcreatedByGUID, nameof(searchTasksWrappertransmitObjectcreatedByGUID), required: false);
+            var __workflow_searchTasksWrappertransmitObjectmodifiedByGUID = searchTasksWrappertransmitObjectmodifiedByGUID == null ? null : WorkflowExpression.Compile(searchTasksWrappertransmitObjectmodifiedByGUID);
+            WorkflowExpression.Validate(__workflow_searchTasksWrappertransmitObjectmodifiedByGUID, nameof(searchTasksWrappertransmitObjectmodifiedByGUID), required: false);
+            var __workflow_searchTasksWrappertransmitObjectadditionalFields = searchTasksWrappertransmitObjectadditionalFields == null ? null : WorkflowExpression.Compile(searchTasksWrappertransmitObjectadditionalFields);
+            WorkflowExpression.Validate(__workflow_searchTasksWrappertransmitObjectadditionalFields, nameof(searchTasksWrappertransmitObjectadditionalFields), required: false);
+            var __workflow_searchTasksWrappertransmitObjectrelations = searchTasksWrappertransmitObjectrelations == null ? null : WorkflowExpression.Compile(searchTasksWrappertransmitObjectrelations);
+            WorkflowExpression.Validate(__workflow_searchTasksWrappertransmitObjectrelations, nameof(searchTasksWrappertransmitObjectrelations), required: false);
+            var __workflow_searchTasksWrappertransmitObjectitemGUID = searchTasksWrappertransmitObjectitemGUID == null ? null : WorkflowExpression.Compile(searchTasksWrappertransmitObjectitemGUID);
+            WorkflowExpression.Validate(__workflow_searchTasksWrappertransmitObjectitemGUID, nameof(searchTasksWrappertransmitObjectitemGUID), required: false);
+            var __workflow_searchTasksWrappertransmitObjectitemVersion = searchTasksWrappertransmitObjectitemVersion == null ? null : WorkflowExpression.Compile(searchTasksWrappertransmitObjectitemVersion);
+            WorkflowExpression.Validate(__workflow_searchTasksWrappertransmitObjectitemVersion, nameof(searchTasksWrappertransmitObjectitemVersion), required: false);
+            var __workflow_searchTasksWrapperincludeRelations = searchTasksWrapperincludeRelations == null ? null : WorkflowExpression.Compile(searchTasksWrapperincludeRelations);
+            WorkflowExpression.Validate(__workflow_searchTasksWrapperincludeRelations, nameof(searchTasksWrapperincludeRelations), required: false);
+            var __workflow_searchTasksWrapperrelationsFilterrelationType = searchTasksWrapperrelationsFilterrelationType == null ? null : WorkflowExpression.Compile(searchTasksWrapperrelationsFilterrelationType);
+            WorkflowExpression.Validate(__workflow_searchTasksWrapperrelationsFilterrelationType, nameof(searchTasksWrapperrelationsFilterrelationType), required: false);
+            var __workflow_searchTasksWrapperrelationsFilterforeignFolderName = searchTasksWrapperrelationsFilterforeignFolderName == null ? null : WorkflowExpression.Compile(searchTasksWrapperrelationsFilterforeignFolderName);
+            WorkflowExpression.Validate(__workflow_searchTasksWrapperrelationsFilterforeignFolderName, nameof(searchTasksWrapperrelationsFilterforeignFolderName), required: false);
+            var __workflow_searchTasksWrapperbinaryLogicalOperator = searchTasksWrapperbinaryLogicalOperator == null ? null : WorkflowExpression.Compile(searchTasksWrapperbinaryLogicalOperator);
+            WorkflowExpression.Validate(__workflow_searchTasksWrapperbinaryLogicalOperator, nameof(searchTasksWrapperbinaryLogicalOperator), required: false);
             return new DeferredBodyAction<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedTask>(() =>
             {
                 var apiCallPath = "/SearchTasks";
@@ -5311,267 +5886,267 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                 var searchTasksWrapperpropCount = 0;
                 var transmitObjectObject = new JObject();
                 var transmitObjectObjectpropCount = 0;
-                if (searchTasksWrappertransmitObjectleadsTopLevelProjectGuid != null)
+                if (__workflow_searchTasksWrappertransmitObjectleadsTopLevelProjectGuid != null)
                 {
-                    transmitObjectObject["Leads_TopLevelProjectGuid"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectleadsTopLevelProjectGuid);
+                    transmitObjectObject["Leads_TopLevelProjectGuid"] = ExpressionConverter.ConvertO(__workflow_searchTasksWrappertransmitObjectleadsTopLevelProjectGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchTasksWrappertransmitObjectleadsTaskParentGuid != null)
+                if (__workflow_searchTasksWrappertransmitObjectleadsTaskParentGuid != null)
                 {
-                    transmitObjectObject["Leads_TaskParentGuid"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectleadsTaskParentGuid);
+                    transmitObjectObject["Leads_TaskParentGuid"] = ExpressionConverter.ConvertO(__workflow_searchTasksWrappertransmitObjectleadsTaskParentGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchTasksWrappertransmitObjectprojectsTopLevelProjectGuid != null)
+                if (__workflow_searchTasksWrappertransmitObjectprojectsTopLevelProjectGuid != null)
                 {
-                    transmitObjectObject["Projects_TopLevelProjectGuid"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectprojectsTopLevelProjectGuid);
+                    transmitObjectObject["Projects_TopLevelProjectGuid"] = ExpressionConverter.ConvertO(__workflow_searchTasksWrappertransmitObjectprojectsTopLevelProjectGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchTasksWrappertransmitObjectprojectsTaskParentGuid != null)
+                if (__workflow_searchTasksWrappertransmitObjectprojectsTaskParentGuid != null)
                 {
-                    transmitObjectObject["Projects_TaskParentGuid"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectprojectsTaskParentGuid);
+                    transmitObjectObject["Projects_TaskParentGuid"] = ExpressionConverter.ConvertO(__workflow_searchTasksWrappertransmitObjectprojectsTaskParentGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchTasksWrappertransmitObjecttasksTaskParentGuid != null)
+                if (__workflow_searchTasksWrappertransmitObjecttasksTaskParentGuid != null)
                 {
-                    transmitObjectObject["Tasks_TaskParentGuid"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjecttasksTaskParentGuid);
+                    transmitObjectObject["Tasks_TaskParentGuid"] = ExpressionConverter.ConvertO(__workflow_searchTasksWrappertransmitObjecttasksTaskParentGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchTasksWrappertransmitObjectmarketingTopLevelProjectGuid != null)
+                if (__workflow_searchTasksWrappertransmitObjectmarketingTopLevelProjectGuid != null)
                 {
-                    transmitObjectObject["Marketing_TopLevelProjectGuid"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectmarketingTopLevelProjectGuid);
+                    transmitObjectObject["Marketing_TopLevelProjectGuid"] = ExpressionConverter.ConvertO(__workflow_searchTasksWrappertransmitObjectmarketingTopLevelProjectGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchTasksWrappertransmitObjectmarketingTaskParentGuid != null)
+                if (__workflow_searchTasksWrappertransmitObjectmarketingTaskParentGuid != null)
                 {
-                    transmitObjectObject["Marketing_TaskParentGuid"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectmarketingTaskParentGuid);
+                    transmitObjectObject["Marketing_TaskParentGuid"] = ExpressionConverter.ConvertO(__workflow_searchTasksWrappertransmitObjectmarketingTaskParentGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchTasksWrappertransmitObjectcompaniesCompanyGuid != null)
+                if (__workflow_searchTasksWrappertransmitObjectcompaniesCompanyGuid != null)
                 {
-                    transmitObjectObject["Companies_CompanyGuid"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectcompaniesCompanyGuid);
+                    transmitObjectObject["Companies_CompanyGuid"] = ExpressionConverter.ConvertO(__workflow_searchTasksWrappertransmitObjectcompaniesCompanyGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchTasksWrappertransmitObjectcontactsContactGuid != null)
+                if (__workflow_searchTasksWrappertransmitObjectcontactsContactGuid != null)
                 {
-                    transmitObjectObject["Contacts_ContactGuid"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectcontactsContactGuid);
+                    transmitObjectObject["Contacts_ContactGuid"] = ExpressionConverter.ConvertO(__workflow_searchTasksWrappertransmitObjectcontactsContactGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchTasksWrappertransmitObjectusersTaskDelegatorGuid != null)
+                if (__workflow_searchTasksWrappertransmitObjectusersTaskDelegatorGuid != null)
                 {
-                    transmitObjectObject["Users_TaskDelegatorGuid"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectusersTaskDelegatorGuid);
+                    transmitObjectObject["Users_TaskDelegatorGuid"] = ExpressionConverter.ConvertO(__workflow_searchTasksWrappertransmitObjectusersTaskDelegatorGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchTasksWrappertransmitObjectusersTaskSolverGuid != null)
+                if (__workflow_searchTasksWrappertransmitObjectusersTaskSolverGuid != null)
                 {
-                    transmitObjectObject["Users_TaskSolverGuid"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectusersTaskSolverGuid);
+                    transmitObjectObject["Users_TaskSolverGuid"] = ExpressionConverter.ConvertO(__workflow_searchTasksWrappertransmitObjectusersTaskSolverGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchTasksWrappertransmitObjecttasksTaskOriginGuid != null)
+                if (__workflow_searchTasksWrappertransmitObjecttasksTaskOriginGuid != null)
                 {
-                    transmitObjectObject["Tasks_TaskOriginGuid"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjecttasksTaskOriginGuid);
+                    transmitObjectObject["Tasks_TaskOriginGuid"] = ExpressionConverter.ConvertO(__workflow_searchTasksWrappertransmitObjecttasksTaskOriginGuid);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchTasksWrappertransmitObjectbody != null)
+                if (__workflow_searchTasksWrappertransmitObjectbody != null)
                 {
-                    transmitObjectObject["Body"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectbody);
+                    transmitObjectObject["Body"] = ExpressionConverter.ConvertO(__workflow_searchTasksWrappertransmitObjectbody);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchTasksWrappertransmitObjectisCompleted != null)
+                if (__workflow_searchTasksWrappertransmitObjectisCompleted != null)
                 {
-                    transmitObjectObject["IsCompleted"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectisCompleted);
+                    transmitObjectObject["IsCompleted"] = ExpressionConverter.ConvertO(__workflow_searchTasksWrappertransmitObjectisCompleted);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchTasksWrappertransmitObjectdueDate != null)
+                if (__workflow_searchTasksWrappertransmitObjectdueDate != null)
                 {
-                    transmitObjectObject["DueDate"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectdueDate);
+                    transmitObjectObject["DueDate"] = ExpressionConverter.ConvertO(__workflow_searchTasksWrappertransmitObjectdueDate);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchTasksWrappertransmitObjectpercentCompleteDecimal != null)
+                if (__workflow_searchTasksWrappertransmitObjectpercentCompleteDecimal != null)
                 {
-                    transmitObjectObject["PercentCompleteDecimal"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectpercentCompleteDecimal);
+                    transmitObjectObject["PercentCompleteDecimal"] = ExpressionConverter.ConvertO(__workflow_searchTasksWrappertransmitObjectpercentCompleteDecimal);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchTasksWrappertransmitObjectprevStateEn != null)
+                if (__workflow_searchTasksWrappertransmitObjectprevStateEn != null)
                 {
-                    transmitObjectObject["PrevStateEn"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectprevStateEn);
+                    transmitObjectObject["PrevStateEn"] = ExpressionConverter.ConvertO(__workflow_searchTasksWrappertransmitObjectprevStateEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchTasksWrappertransmitObjectstartDate != null)
+                if (__workflow_searchTasksWrappertransmitObjectstartDate != null)
                 {
-                    transmitObjectObject["StartDate"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectstartDate);
+                    transmitObjectObject["StartDate"] = ExpressionConverter.ConvertO(__workflow_searchTasksWrappertransmitObjectstartDate);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchTasksWrappertransmitObjectstateEn != null)
+                if (__workflow_searchTasksWrappertransmitObjectstateEn != null)
                 {
-                    transmitObjectObject["StateEn"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectstateEn);
+                    transmitObjectObject["StateEn"] = ExpressionConverter.ConvertO(__workflow_searchTasksWrappertransmitObjectstateEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchTasksWrappertransmitObjectsubject != null)
+                if (__workflow_searchTasksWrappertransmitObjectsubject != null)
                 {
-                    transmitObjectObject["Subject"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectsubject);
+                    transmitObjectObject["Subject"] = ExpressionConverter.ConvertO(__workflow_searchTasksWrappertransmitObjectsubject);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchTasksWrappertransmitObjecttypeEn != null)
+                if (__workflow_searchTasksWrappertransmitObjecttypeEn != null)
                 {
-                    transmitObjectObject["TypeEn"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjecttypeEn);
+                    transmitObjectObject["TypeEn"] = ExpressionConverter.ConvertO(__workflow_searchTasksWrappertransmitObjecttypeEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchTasksWrappertransmitObjectlevel != null)
+                if (__workflow_searchTasksWrappertransmitObjectlevel != null)
                 {
-                    transmitObjectObject["Level"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectlevel);
+                    transmitObjectObject["Level"] = ExpressionConverter.ConvertO(__workflow_searchTasksWrappertransmitObjectlevel);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchTasksWrappertransmitObjectimportanceEn != null)
+                if (__workflow_searchTasksWrappertransmitObjectimportanceEn != null)
                 {
-                    transmitObjectObject["ImportanceEn"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectimportanceEn);
+                    transmitObjectObject["ImportanceEn"] = ExpressionConverter.ConvertO(__workflow_searchTasksWrappertransmitObjectimportanceEn);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchTasksWrappertransmitObjectactualWorkHours != null)
+                if (__workflow_searchTasksWrappertransmitObjectactualWorkHours != null)
                 {
-                    transmitObjectObject["ActualWorkHours"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectactualWorkHours);
+                    transmitObjectObject["ActualWorkHours"] = ExpressionConverter.ConvertO(__workflow_searchTasksWrappertransmitObjectactualWorkHours);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchTasksWrappertransmitObjectestimatedWorkHours != null)
+                if (__workflow_searchTasksWrappertransmitObjectestimatedWorkHours != null)
                 {
-                    transmitObjectObject["EstimatedWorkHours"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectestimatedWorkHours);
+                    transmitObjectObject["EstimatedWorkHours"] = ExpressionConverter.ConvertO(__workflow_searchTasksWrappertransmitObjectestimatedWorkHours);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchTasksWrappertransmitObjectisReminderSet != null)
+                if (__workflow_searchTasksWrappertransmitObjectisReminderSet != null)
                 {
-                    transmitObjectObject["IsReminderSet"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectisReminderSet);
+                    transmitObjectObject["IsReminderSet"] = ExpressionConverter.ConvertO(__workflow_searchTasksWrappertransmitObjectisReminderSet);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchTasksWrappertransmitObjectreminderDate != null)
+                if (__workflow_searchTasksWrappertransmitObjectreminderDate != null)
                 {
-                    transmitObjectObject["ReminderDate"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectreminderDate);
+                    transmitObjectObject["ReminderDate"] = ExpressionConverter.ConvertO(__workflow_searchTasksWrappertransmitObjectreminderDate);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchTasksWrappertransmitObjectcompletedDate != null)
+                if (__workflow_searchTasksWrappertransmitObjectcompletedDate != null)
                 {
-                    transmitObjectObject["CompletedDate"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectcompletedDate);
+                    transmitObjectObject["CompletedDate"] = ExpressionConverter.ConvertO(__workflow_searchTasksWrappertransmitObjectcompletedDate);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchTasksWrappertransmitObjectpicture != null)
+                if (__workflow_searchTasksWrappertransmitObjectpicture != null)
                 {
-                    transmitObjectObject["Picture"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectpicture);
+                    transmitObjectObject["Picture"] = ExpressionConverter.ConvertO(__workflow_searchTasksWrappertransmitObjectpicture);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchTasksWrappertransmitObjectpictureWidth != null)
+                if (__workflow_searchTasksWrappertransmitObjectpictureWidth != null)
                 {
-                    transmitObjectObject["PictureWidth"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectpictureWidth);
+                    transmitObjectObject["PictureWidth"] = ExpressionConverter.ConvertO(__workflow_searchTasksWrappertransmitObjectpictureWidth);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchTasksWrappertransmitObjectpictureHeight != null)
+                if (__workflow_searchTasksWrappertransmitObjectpictureHeight != null)
                 {
-                    transmitObjectObject["PictureHeight"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectpictureHeight);
+                    transmitObjectObject["PictureHeight"] = ExpressionConverter.ConvertO(__workflow_searchTasksWrappertransmitObjectpictureHeight);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchTasksWrappertransmitObjectisPrivate != null)
+                if (__workflow_searchTasksWrappertransmitObjectisPrivate != null)
                 {
-                    transmitObjectObject["IsPrivate"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectisPrivate);
+                    transmitObjectObject["IsPrivate"] = ExpressionConverter.ConvertO(__workflow_searchTasksWrappertransmitObjectisPrivate);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchTasksWrappertransmitObjectserverItemCreated != null)
+                if (__workflow_searchTasksWrappertransmitObjectserverItemCreated != null)
                 {
-                    transmitObjectObject["Server_ItemCreated"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectserverItemCreated);
+                    transmitObjectObject["Server_ItemCreated"] = ExpressionConverter.ConvertO(__workflow_searchTasksWrappertransmitObjectserverItemCreated);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchTasksWrappertransmitObjectserverItemChanged != null)
+                if (__workflow_searchTasksWrappertransmitObjectserverItemChanged != null)
                 {
-                    transmitObjectObject["Server_ItemChanged"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectserverItemChanged);
+                    transmitObjectObject["Server_ItemChanged"] = ExpressionConverter.ConvertO(__workflow_searchTasksWrappertransmitObjectserverItemChanged);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchTasksWrappertransmitObjectitemCreated != null)
+                if (__workflow_searchTasksWrappertransmitObjectitemCreated != null)
                 {
-                    transmitObjectObject["ItemCreated"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectitemCreated);
+                    transmitObjectObject["ItemCreated"] = ExpressionConverter.ConvertO(__workflow_searchTasksWrappertransmitObjectitemCreated);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchTasksWrappertransmitObjectitemChanged != null)
+                if (__workflow_searchTasksWrappertransmitObjectitemChanged != null)
                 {
-                    transmitObjectObject["ItemChanged"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectitemChanged);
+                    transmitObjectObject["ItemChanged"] = ExpressionConverter.ConvertO(__workflow_searchTasksWrappertransmitObjectitemChanged);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchTasksWrappertransmitObjectfileAs != null)
+                if (__workflow_searchTasksWrappertransmitObjectfileAs != null)
                 {
-                    transmitObjectObject["FileAs"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectfileAs);
+                    transmitObjectObject["FileAs"] = ExpressionConverter.ConvertO(__workflow_searchTasksWrappertransmitObjectfileAs);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchTasksWrappertransmitObjectownerGUID != null)
+                if (__workflow_searchTasksWrappertransmitObjectownerGUID != null)
                 {
-                    transmitObjectObject["OwnerGUID"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectownerGUID);
+                    transmitObjectObject["OwnerGUID"] = ExpressionConverter.ConvertO(__workflow_searchTasksWrappertransmitObjectownerGUID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchTasksWrappertransmitObjectcreatedByGUID != null)
+                if (__workflow_searchTasksWrappertransmitObjectcreatedByGUID != null)
                 {
-                    transmitObjectObject["CreatedByGUID"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectcreatedByGUID);
+                    transmitObjectObject["CreatedByGUID"] = ExpressionConverter.ConvertO(__workflow_searchTasksWrappertransmitObjectcreatedByGUID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchTasksWrappertransmitObjectmodifiedByGUID != null)
+                if (__workflow_searchTasksWrappertransmitObjectmodifiedByGUID != null)
                 {
-                    transmitObjectObject["ModifiedByGUID"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectmodifiedByGUID);
+                    transmitObjectObject["ModifiedByGUID"] = ExpressionConverter.ConvertO(__workflow_searchTasksWrappertransmitObjectmodifiedByGUID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchTasksWrappertransmitObjectadditionalFields != null)
+                if (__workflow_searchTasksWrappertransmitObjectadditionalFields != null)
                 {
-                    transmitObjectObject["AdditionalFields"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectadditionalFields);
+                    transmitObjectObject["AdditionalFields"] = ExpressionConverter.ConvertO(__workflow_searchTasksWrappertransmitObjectadditionalFields);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchTasksWrappertransmitObjectrelations != null)
+                if (__workflow_searchTasksWrappertransmitObjectrelations != null)
                 {
-                    transmitObjectObject["Relations"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectrelations);
+                    transmitObjectObject["Relations"] = ExpressionConverter.ConvertO(__workflow_searchTasksWrappertransmitObjectrelations);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchTasksWrappertransmitObjectitemGUID != null)
+                if (__workflow_searchTasksWrappertransmitObjectitemGUID != null)
                 {
-                    transmitObjectObject["ItemGUID"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectitemGUID);
+                    transmitObjectObject["ItemGUID"] = ExpressionConverter.ConvertO(__workflow_searchTasksWrappertransmitObjectitemGUID);
                     transmitObjectObjectpropCount++;
                 }
 
-                if (searchTasksWrappertransmitObjectitemVersion != null)
+                if (__workflow_searchTasksWrappertransmitObjectitemVersion != null)
                 {
-                    transmitObjectObject["ItemVersion"] = ExpressionConverter.ConvertO(searchTasksWrappertransmitObjectitemVersion);
+                    transmitObjectObject["ItemVersion"] = ExpressionConverter.ConvertO(__workflow_searchTasksWrappertransmitObjectitemVersion);
                     transmitObjectObjectpropCount++;
                 }
 
@@ -5581,23 +6156,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                     searchTasksWrapperpropCount++;
                 }
 
-                if (searchTasksWrapperincludeRelations != null)
+                if (__workflow_searchTasksWrapperincludeRelations != null)
                 {
-                    searchTasksWrapper["includeRelations"] = ExpressionConverter.ConvertO(searchTasksWrapperincludeRelations);
+                    searchTasksWrapper["includeRelations"] = ExpressionConverter.ConvertO(__workflow_searchTasksWrapperincludeRelations);
                     searchTasksWrapperpropCount++;
                 }
 
                 var relationsFilterObject = new JObject();
                 var relationsFilterObjectpropCount = 0;
-                if (searchTasksWrapperrelationsFilterrelationType != null)
+                if (__workflow_searchTasksWrapperrelationsFilterrelationType != null)
                 {
-                    relationsFilterObject["RelationType"] = ExpressionConverter.ConvertO(searchTasksWrapperrelationsFilterrelationType);
+                    relationsFilterObject["RelationType"] = ExpressionConverter.ConvertO(__workflow_searchTasksWrapperrelationsFilterrelationType);
                     relationsFilterObjectpropCount++;
                 }
 
-                if (searchTasksWrapperrelationsFilterforeignFolderName != null)
+                if (__workflow_searchTasksWrapperrelationsFilterforeignFolderName != null)
                 {
-                    relationsFilterObject["ForeignFolderName"] = ExpressionConverter.ConvertO(searchTasksWrapperrelationsFilterforeignFolderName);
+                    relationsFilterObject["ForeignFolderName"] = ExpressionConverter.ConvertO(__workflow_searchTasksWrapperrelationsFilterforeignFolderName);
                     relationsFilterObjectpropCount++;
                 }
 
@@ -5607,9 +6182,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                     searchTasksWrapperpropCount++;
                 }
 
-                if (searchTasksWrapperbinaryLogicalOperator != null)
+                if (__workflow_searchTasksWrapperbinaryLogicalOperator != null)
                 {
-                    searchTasksWrapper["binaryLogicalOperator"] = ExpressionConverter.ConvertO(searchTasksWrapperbinaryLogicalOperator);
+                    searchTasksWrapper["binaryLogicalOperator"] = ExpressionConverter.ConvertO(__workflow_searchTasksWrapperbinaryLogicalOperator);
                     searchTasksWrapperpropCount++;
                 }
 
@@ -5623,20 +6198,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
-        [WorkflowExpressionFactory(nameof(__BuildUnlinkItems))]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesDataResponse1SystemGuid> UnlinkItems([WorkflowExpression] Func<string> unlinkItemsWrapperitemGuid = null, [WorkflowExpression] Func<unlinkItemsWrapperfolderNameInput> unlinkItemsWrapperfolderName = null, [WorkflowExpression] Func<string[]> unlinkItemsWrapperrelatedItemGuids = null, [WorkflowExpression] Func<unlinkItemsWrapperrelatedFolderNameInput> unlinkItemsWrapperrelatedFolderName = null, [WorkflowExpression] Func<bool> unlinkItemsWrapperskipUnlinkAvailabilityCheck = null)
+        public IBodyWorkflowAction<EWayWcfServiceResponsesDataResponse1SystemGuid> UnlinkItems(Expression<Func<string>> unlinkItemsWrapperitemGuid = null, Expression<Func<unlinkItemsWrapperfolderNameInput>> unlinkItemsWrapperfolderName = null, Expression<Func<string[]>> unlinkItemsWrapperrelatedItemGuids = null, Expression<Func<unlinkItemsWrapperrelatedFolderNameInput>> unlinkItemsWrapperrelatedFolderName = null, Expression<Func<bool>> unlinkItemsWrapperskipUnlinkAvailabilityCheck = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesDataResponse1SystemGuid> __BuildUnlinkItems(WorkflowExpression<string> unlinkItemsWrapperitemGuid = null, WorkflowExpression<unlinkItemsWrapperfolderNameInput> unlinkItemsWrapperfolderName = null, WorkflowExpression<string[]> unlinkItemsWrapperrelatedItemGuids = null, WorkflowExpression<unlinkItemsWrapperrelatedFolderNameInput> unlinkItemsWrapperrelatedFolderName = null, WorkflowExpression<bool> unlinkItemsWrapperskipUnlinkAvailabilityCheck = null)
-        {
-            WorkflowExpression.Validate(unlinkItemsWrapperitemGuid, nameof(unlinkItemsWrapperitemGuid), required: false);
-            WorkflowExpression.Validate(unlinkItemsWrapperfolderName, nameof(unlinkItemsWrapperfolderName), required: false);
-            WorkflowExpression.Validate(unlinkItemsWrapperrelatedItemGuids, nameof(unlinkItemsWrapperrelatedItemGuids), required: false);
-            WorkflowExpression.Validate(unlinkItemsWrapperrelatedFolderName, nameof(unlinkItemsWrapperrelatedFolderName), required: false);
-            WorkflowExpression.Validate(unlinkItemsWrapperskipUnlinkAvailabilityCheck, nameof(unlinkItemsWrapperskipUnlinkAvailabilityCheck), required: false);
+            var __workflow_unlinkItemsWrapperitemGuid = unlinkItemsWrapperitemGuid == null ? null : WorkflowExpression.Compile(unlinkItemsWrapperitemGuid);
+            WorkflowExpression.Validate(__workflow_unlinkItemsWrapperitemGuid, nameof(unlinkItemsWrapperitemGuid), required: false);
+            var __workflow_unlinkItemsWrapperfolderName = unlinkItemsWrapperfolderName == null ? null : WorkflowExpression.Compile(unlinkItemsWrapperfolderName);
+            WorkflowExpression.Validate(__workflow_unlinkItemsWrapperfolderName, nameof(unlinkItemsWrapperfolderName), required: false);
+            var __workflow_unlinkItemsWrapperrelatedItemGuids = unlinkItemsWrapperrelatedItemGuids == null ? null : WorkflowExpression.Compile(unlinkItemsWrapperrelatedItemGuids);
+            WorkflowExpression.Validate(__workflow_unlinkItemsWrapperrelatedItemGuids, nameof(unlinkItemsWrapperrelatedItemGuids), required: false);
+            var __workflow_unlinkItemsWrapperrelatedFolderName = unlinkItemsWrapperrelatedFolderName == null ? null : WorkflowExpression.Compile(unlinkItemsWrapperrelatedFolderName);
+            WorkflowExpression.Validate(__workflow_unlinkItemsWrapperrelatedFolderName, nameof(unlinkItemsWrapperrelatedFolderName), required: false);
+            var __workflow_unlinkItemsWrapperskipUnlinkAvailabilityCheck = unlinkItemsWrapperskipUnlinkAvailabilityCheck == null ? null : WorkflowExpression.Compile(unlinkItemsWrapperskipUnlinkAvailabilityCheck);
+            WorkflowExpression.Validate(__workflow_unlinkItemsWrapperskipUnlinkAvailabilityCheck, nameof(unlinkItemsWrapperskipUnlinkAvailabilityCheck), required: false);
             return new DeferredBodyAction<EWayWcfServiceResponsesDataResponse1SystemGuid>(() =>
             {
                 var apiCallPath = "/UnlinkItems";
@@ -5644,33 +6217,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var unlinkItemsWrapper = new JObject();
                 var unlinkItemsWrapperpropCount = 0;
-                if (unlinkItemsWrapperitemGuid != null)
+                if (__workflow_unlinkItemsWrapperitemGuid != null)
                 {
-                    unlinkItemsWrapper["itemGuid"] = ExpressionConverter.ConvertO(unlinkItemsWrapperitemGuid);
+                    unlinkItemsWrapper["itemGuid"] = ExpressionConverter.ConvertO(__workflow_unlinkItemsWrapperitemGuid);
                     unlinkItemsWrapperpropCount++;
                 }
 
-                if (unlinkItemsWrapperfolderName != null)
+                if (__workflow_unlinkItemsWrapperfolderName != null)
                 {
-                    unlinkItemsWrapper["folderName"] = ExpressionConverter.ConvertO(unlinkItemsWrapperfolderName);
+                    unlinkItemsWrapper["folderName"] = ExpressionConverter.ConvertO(__workflow_unlinkItemsWrapperfolderName);
                     unlinkItemsWrapperpropCount++;
                 }
 
-                if (unlinkItemsWrapperrelatedItemGuids != null)
+                if (__workflow_unlinkItemsWrapperrelatedItemGuids != null)
                 {
-                    unlinkItemsWrapper["relatedItemGuids"] = ExpressionConverter.ConvertO(unlinkItemsWrapperrelatedItemGuids);
+                    unlinkItemsWrapper["relatedItemGuids"] = ExpressionConverter.ConvertO(__workflow_unlinkItemsWrapperrelatedItemGuids);
                     unlinkItemsWrapperpropCount++;
                 }
 
-                if (unlinkItemsWrapperrelatedFolderName != null)
+                if (__workflow_unlinkItemsWrapperrelatedFolderName != null)
                 {
-                    unlinkItemsWrapper["relatedFolderName"] = ExpressionConverter.ConvertO(unlinkItemsWrapperrelatedFolderName);
+                    unlinkItemsWrapper["relatedFolderName"] = ExpressionConverter.ConvertO(__workflow_unlinkItemsWrapperrelatedFolderName);
                     unlinkItemsWrapperpropCount++;
                 }
 
-                if (unlinkItemsWrapperskipUnlinkAvailabilityCheck != null)
+                if (__workflow_unlinkItemsWrapperskipUnlinkAvailabilityCheck != null)
                 {
-                    unlinkItemsWrapper["skipUnlinkAvailabilityCheck"] = ExpressionConverter.ConvertO(unlinkItemsWrapperskipUnlinkAvailabilityCheck);
+                    unlinkItemsWrapper["skipUnlinkAvailabilityCheck"] = ExpressionConverter.ConvertO(__workflow_unlinkItemsWrapperskipUnlinkAvailabilityCheck);
                     unlinkItemsWrapperpropCount++;
                 }
 

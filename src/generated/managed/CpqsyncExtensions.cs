@@ -1,12 +1,12 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cpqsync
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class CpqsyncActions([ConnectionName] string connectionId)
     {
@@ -14,20 +14,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cpqsync
 
     public class CpqsyncTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildProductUpdated))]
-        public IWorkflowTrigger ProductUpdated([WorkflowExpression] Func<string> tenantId,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ProductUpdated(Expression<Func<string>> tenantId, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildProductUpdated(WorkflowExpression<string> tenantId,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(tenantId, nameof(tenantId), required: true);
+            var __workflow_tenantId = tenantId == null ? null : WorkflowExpression.Compile(tenantId);
+            WorkflowExpression.Validate(__workflow_tenantId, nameof(tenantId), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/master-data/tenants/{0}/web-hooks/PricedItemUpdated", ExpressionConverter.ConvertWithUrlEncoding(tenantId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/master-data/tenants/{0}/web-hooks/PricedItemUpdated", ExpressionConverter.ConvertWithUrlEncoding(__workflow_tenantId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["content-type"] = Convert.ToString("application/json");
@@ -45,19 +38,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cpqsync
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildProductCreated))]
-        public IWorkflowTrigger ProductCreated([WorkflowExpression] Func<string> tenantId,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ProductCreated(Expression<Func<string>> tenantId, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildProductCreated(WorkflowExpression<string> tenantId,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(tenantId, nameof(tenantId), required: true);
+            var __workflow_tenantId = tenantId == null ? null : WorkflowExpression.Compile(tenantId);
+            WorkflowExpression.Validate(__workflow_tenantId, nameof(tenantId), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/master-data/tenants/{0}/web-hooks/PricedItemCreated", ExpressionConverter.ConvertWithUrlEncoding(tenantId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/master-data/tenants/{0}/web-hooks/PricedItemCreated", ExpressionConverter.ConvertWithUrlEncoding(__workflow_tenantId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["content-type"] = Convert.ToString("application/json");

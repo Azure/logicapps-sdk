@@ -1,7 +1,6 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
 {
     using System;
@@ -9,29 +8,24 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class AzureTablesActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureTables")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateTable))]
-        public IBodyWorkflowAction<CreateTableOutput> CreateTable([WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<bool> failIfTableExists = null)
+        public IBodyWorkflowAction<CreateTableOutput> CreateTable(Expression<Func<string>> tableName, Expression<Func<bool>> failIfTableExists = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateTableOutput> __BuildCreateTable(WorkflowExpression<string> tableName, WorkflowExpression<bool> failIfTableExists = null)
-        {
-            WorkflowExpression.Validate(tableName, nameof(tableName), required: true);
-            WorkflowExpression.Validate(failIfTableExists, nameof(failIfTableExists), required: false);
+            var __workflow_tableName = tableName == null ? null : WorkflowExpression.Compile(tableName);
+            WorkflowExpression.Validate(__workflow_tableName, nameof(tableName), required: true);
+            var __workflow_failIfTableExists = failIfTableExists == null ? null : WorkflowExpression.Compile(failIfTableExists);
+            WorkflowExpression.Validate(__workflow_failIfTableExists, nameof(failIfTableExists), required: false);
             return new DeferredBodyAction<CreateTableOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
-                if (failIfTableExists != null)
+                serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(__workflow_tableName);
+                if (__workflow_failIfTableExists != null)
                 {
-                    serviceProviderParameters["failIfTableExists"] = ExpressionConverter.ConvertO(failIfTableExists);
+                    serviceProviderParameters["failIfTableExists"] = ExpressionConverter.ConvertO(__workflow_failIfTableExists);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -44,34 +38,30 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureTables")]
-        [WorkflowExpressionFactory(nameof(__BuildListTables))]
-        public IBodyWorkflowAction<ListTablesOutput> ListTables([WorkflowExpression] Func<string> continuationToken = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<int> top = null)
+        public IBodyWorkflowAction<ListTablesOutput> ListTables(Expression<Func<string>> continuationToken = null, Expression<Func<string>> filter = null, Expression<Func<int>> top = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListTablesOutput> __BuildListTables(WorkflowExpression<string> continuationToken = null, WorkflowExpression<string> filter = null, WorkflowExpression<int> top = null)
-        {
-            WorkflowExpression.Validate(continuationToken, nameof(continuationToken), required: false);
-            WorkflowExpression.Validate(filter, nameof(filter), required: false);
-            WorkflowExpression.Validate(top, nameof(top), required: false);
+            var __workflow_continuationToken = continuationToken == null ? null : WorkflowExpression.Compile(continuationToken);
+            WorkflowExpression.Validate(__workflow_continuationToken, nameof(continuationToken), required: false);
+            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
+            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
+            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
+            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
             return new DeferredBodyAction<ListTablesOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                if (continuationToken != null)
+                if (__workflow_continuationToken != null)
                 {
-                    serviceProviderParameters["continuationToken"] = ExpressionConverter.ConvertO(continuationToken);
+                    serviceProviderParameters["continuationToken"] = ExpressionConverter.ConvertO(__workflow_continuationToken);
                 }
 
-                if (filter != null)
+                if (__workflow_filter != null)
                 {
-                    serviceProviderParameters["filter"] = ExpressionConverter.ConvertO(filter);
+                    serviceProviderParameters["filter"] = ExpressionConverter.ConvertO(__workflow_filter);
                 }
 
-                if (top != null)
+                if (__workflow_top != null)
                 {
-                    serviceProviderParameters["top"] = ExpressionConverter.ConvertO(top);
+                    serviceProviderParameters["top"] = ExpressionConverter.ConvertO(__workflow_top);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -84,20 +74,14 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureTables")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteTable))]
-        public IWorkflowAction DeleteTable([WorkflowExpression] Func<string> tableName)
+        public IWorkflowAction DeleteTable(Expression<Func<string>> tableName)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDeleteTable(WorkflowExpression<string> tableName)
-        {
-            WorkflowExpression.Validate(tableName, nameof(tableName), required: true);
+            var __workflow_tableName = tableName == null ? null : WorkflowExpression.Compile(tableName);
+            WorkflowExpression.Validate(__workflow_tableName, nameof(tableName), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
+                serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(__workflow_tableName);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureTables", operationId: "deleteTable", connectionName: connectionId),
@@ -108,32 +92,29 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureTables")]
-        [WorkflowExpressionFactory(nameof(__BuildUpsertEntity))]
-        public IWorkflowAction UpsertEntity([WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<object> entity, [WorkflowExpression] Func<bool> failIfEntityExists = null, [WorkflowExpression] Func<UpsertEntityInputUpdateModeType> updateMode = null)
+        public IWorkflowAction UpsertEntity(Expression<Func<string>> tableName, Expression<Func<object>> entity, Expression<Func<bool>> failIfEntityExists = null, Expression<Func<UpsertEntityInputUpdateModeType>> updateMode = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildUpsertEntity(WorkflowExpression<string> tableName, WorkflowExpression<object> entity, WorkflowExpression<bool> failIfEntityExists = null, WorkflowExpression<UpsertEntityInputUpdateModeType> updateMode = null)
-        {
-            WorkflowExpression.Validate(tableName, nameof(tableName), required: true);
-            WorkflowExpression.Validate(entity, nameof(entity), required: true);
-            WorkflowExpression.Validate(failIfEntityExists, nameof(failIfEntityExists), required: false);
-            WorkflowExpression.Validate(updateMode, nameof(updateMode), required: false);
+            var __workflow_tableName = tableName == null ? null : WorkflowExpression.Compile(tableName);
+            WorkflowExpression.Validate(__workflow_tableName, nameof(tableName), required: true);
+            var __workflow_entity = entity == null ? null : WorkflowExpression.Compile(entity);
+            WorkflowExpression.Validate(__workflow_entity, nameof(entity), required: true);
+            var __workflow_failIfEntityExists = failIfEntityExists == null ? null : WorkflowExpression.Compile(failIfEntityExists);
+            WorkflowExpression.Validate(__workflow_failIfEntityExists, nameof(failIfEntityExists), required: false);
+            var __workflow_updateMode = updateMode == null ? null : WorkflowExpression.Compile(updateMode);
+            WorkflowExpression.Validate(__workflow_updateMode, nameof(updateMode), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
-                serviceProviderParameters["entity"] = ExpressionConverter.ConvertO(entity);
-                if (failIfEntityExists != null)
+                serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(__workflow_tableName);
+                serviceProviderParameters["entity"] = ExpressionConverter.ConvertO(__workflow_entity);
+                if (__workflow_failIfEntityExists != null)
                 {
-                    serviceProviderParameters["failIfEntityExists"] = ExpressionConverter.ConvertO(failIfEntityExists);
+                    serviceProviderParameters["failIfEntityExists"] = ExpressionConverter.ConvertO(__workflow_failIfEntityExists);
                 }
 
-                if (updateMode != null)
+                if (__workflow_updateMode != null)
                 {
-                    serviceProviderParameters["updateMode"] = ExpressionConverter.ConvertO(updateMode);
+                    serviceProviderParameters["updateMode"] = ExpressionConverter.ConvertO(__workflow_updateMode);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -146,32 +127,29 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureTables")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateEntity))]
-        public IWorkflowAction UpdateEntity([WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<object> entity, [WorkflowExpression] Func<UpdateEntityInputUpdateModeType> updateMode = null, [WorkflowExpression] Func<string> ifMatch = null)
+        public IWorkflowAction UpdateEntity(Expression<Func<string>> tableName, Expression<Func<object>> entity, Expression<Func<UpdateEntityInputUpdateModeType>> updateMode = null, Expression<Func<string>> ifMatch = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildUpdateEntity(WorkflowExpression<string> tableName, WorkflowExpression<object> entity, WorkflowExpression<UpdateEntityInputUpdateModeType> updateMode = null, WorkflowExpression<string> ifMatch = null)
-        {
-            WorkflowExpression.Validate(tableName, nameof(tableName), required: true);
-            WorkflowExpression.Validate(entity, nameof(entity), required: true);
-            WorkflowExpression.Validate(updateMode, nameof(updateMode), required: false);
-            WorkflowExpression.Validate(ifMatch, nameof(ifMatch), required: false);
+            var __workflow_tableName = tableName == null ? null : WorkflowExpression.Compile(tableName);
+            WorkflowExpression.Validate(__workflow_tableName, nameof(tableName), required: true);
+            var __workflow_entity = entity == null ? null : WorkflowExpression.Compile(entity);
+            WorkflowExpression.Validate(__workflow_entity, nameof(entity), required: true);
+            var __workflow_updateMode = updateMode == null ? null : WorkflowExpression.Compile(updateMode);
+            WorkflowExpression.Validate(__workflow_updateMode, nameof(updateMode), required: false);
+            var __workflow_ifMatch = ifMatch == null ? null : WorkflowExpression.Compile(ifMatch);
+            WorkflowExpression.Validate(__workflow_ifMatch, nameof(ifMatch), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
-                serviceProviderParameters["entity"] = ExpressionConverter.ConvertO(entity);
-                if (updateMode != null)
+                serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(__workflow_tableName);
+                serviceProviderParameters["entity"] = ExpressionConverter.ConvertO(__workflow_entity);
+                if (__workflow_updateMode != null)
                 {
-                    serviceProviderParameters["updateMode"] = ExpressionConverter.ConvertO(updateMode);
+                    serviceProviderParameters["updateMode"] = ExpressionConverter.ConvertO(__workflow_updateMode);
                 }
 
-                if (ifMatch != null)
+                if (__workflow_ifMatch != null)
                 {
-                    serviceProviderParameters["ifMatch"] = ExpressionConverter.ConvertO(ifMatch);
+                    serviceProviderParameters["ifMatch"] = ExpressionConverter.ConvertO(__workflow_ifMatch);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -184,28 +162,25 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureTables")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteEntity))]
-        public IWorkflowAction DeleteEntity([WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<string> partitionKey, [WorkflowExpression] Func<string> rowKey, [WorkflowExpression] Func<string> ifMatch = null)
+        public IWorkflowAction DeleteEntity(Expression<Func<string>> tableName, Expression<Func<string>> partitionKey, Expression<Func<string>> rowKey, Expression<Func<string>> ifMatch = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDeleteEntity(WorkflowExpression<string> tableName, WorkflowExpression<string> partitionKey, WorkflowExpression<string> rowKey, WorkflowExpression<string> ifMatch = null)
-        {
-            WorkflowExpression.Validate(tableName, nameof(tableName), required: true);
-            WorkflowExpression.Validate(partitionKey, nameof(partitionKey), required: true);
-            WorkflowExpression.Validate(rowKey, nameof(rowKey), required: true);
-            WorkflowExpression.Validate(ifMatch, nameof(ifMatch), required: false);
+            var __workflow_tableName = tableName == null ? null : WorkflowExpression.Compile(tableName);
+            WorkflowExpression.Validate(__workflow_tableName, nameof(tableName), required: true);
+            var __workflow_partitionKey = partitionKey == null ? null : WorkflowExpression.Compile(partitionKey);
+            WorkflowExpression.Validate(__workflow_partitionKey, nameof(partitionKey), required: true);
+            var __workflow_rowKey = rowKey == null ? null : WorkflowExpression.Compile(rowKey);
+            WorkflowExpression.Validate(__workflow_rowKey, nameof(rowKey), required: true);
+            var __workflow_ifMatch = ifMatch == null ? null : WorkflowExpression.Compile(ifMatch);
+            WorkflowExpression.Validate(__workflow_ifMatch, nameof(ifMatch), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
-                serviceProviderParameters["partitionKey"] = ExpressionConverter.ConvertO(partitionKey);
-                serviceProviderParameters["rowKey"] = ExpressionConverter.ConvertO(rowKey);
-                if (ifMatch != null)
+                serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(__workflow_tableName);
+                serviceProviderParameters["partitionKey"] = ExpressionConverter.ConvertO(__workflow_partitionKey);
+                serviceProviderParameters["rowKey"] = ExpressionConverter.ConvertO(__workflow_rowKey);
+                if (__workflow_ifMatch != null)
                 {
-                    serviceProviderParameters["ifMatch"] = ExpressionConverter.ConvertO(ifMatch);
+                    serviceProviderParameters["ifMatch"] = ExpressionConverter.ConvertO(__workflow_ifMatch);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -218,28 +193,25 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureTables")]
-        [WorkflowExpressionFactory(nameof(__BuildGetEntity))]
-        public IBodyWorkflowAction<GetEntityOutput> GetEntity([WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<string> partitionKey, [WorkflowExpression] Func<string> rowKey, [WorkflowExpression] Func<string[]> select = null)
+        public IBodyWorkflowAction<GetEntityOutput> GetEntity(Expression<Func<string>> tableName, Expression<Func<string>> partitionKey, Expression<Func<string>> rowKey, Expression<Func<string[]>> select = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetEntityOutput> __BuildGetEntity(WorkflowExpression<string> tableName, WorkflowExpression<string> partitionKey, WorkflowExpression<string> rowKey, WorkflowExpression<string[]> select = null)
-        {
-            WorkflowExpression.Validate(tableName, nameof(tableName), required: true);
-            WorkflowExpression.Validate(partitionKey, nameof(partitionKey), required: true);
-            WorkflowExpression.Validate(rowKey, nameof(rowKey), required: true);
-            WorkflowExpression.Validate(select, nameof(select), required: false);
+            var __workflow_tableName = tableName == null ? null : WorkflowExpression.Compile(tableName);
+            WorkflowExpression.Validate(__workflow_tableName, nameof(tableName), required: true);
+            var __workflow_partitionKey = partitionKey == null ? null : WorkflowExpression.Compile(partitionKey);
+            WorkflowExpression.Validate(__workflow_partitionKey, nameof(partitionKey), required: true);
+            var __workflow_rowKey = rowKey == null ? null : WorkflowExpression.Compile(rowKey);
+            WorkflowExpression.Validate(__workflow_rowKey, nameof(rowKey), required: true);
+            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
+            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
             return new DeferredBodyAction<GetEntityOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
-                serviceProviderParameters["partitionKey"] = ExpressionConverter.ConvertO(partitionKey);
-                serviceProviderParameters["rowKey"] = ExpressionConverter.ConvertO(rowKey);
-                if (select != null)
+                serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(__workflow_tableName);
+                serviceProviderParameters["partitionKey"] = ExpressionConverter.ConvertO(__workflow_partitionKey);
+                serviceProviderParameters["rowKey"] = ExpressionConverter.ConvertO(__workflow_rowKey);
+                if (__workflow_select != null)
                 {
-                    serviceProviderParameters["select"] = ExpressionConverter.ConvertO(select);
+                    serviceProviderParameters["select"] = ExpressionConverter.ConvertO(__workflow_select);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -252,42 +224,40 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureTables")]
-        [WorkflowExpressionFactory(nameof(__BuildQueryEntities))]
-        public IBodyWorkflowAction<QueryEntitiesOutput> QueryEntities([WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<string> continuationToken = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string[]> select = null, [WorkflowExpression] Func<int> top = null)
+        public IBodyWorkflowAction<QueryEntitiesOutput> QueryEntities(Expression<Func<string>> tableName, Expression<Func<string>> continuationToken = null, Expression<Func<string>> filter = null, Expression<Func<string[]>> select = null, Expression<Func<int>> top = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<QueryEntitiesOutput> __BuildQueryEntities(WorkflowExpression<string> tableName, WorkflowExpression<string> continuationToken = null, WorkflowExpression<string> filter = null, WorkflowExpression<string[]> select = null, WorkflowExpression<int> top = null)
-        {
-            WorkflowExpression.Validate(tableName, nameof(tableName), required: true);
-            WorkflowExpression.Validate(continuationToken, nameof(continuationToken), required: false);
-            WorkflowExpression.Validate(filter, nameof(filter), required: false);
-            WorkflowExpression.Validate(select, nameof(select), required: false);
-            WorkflowExpression.Validate(top, nameof(top), required: false);
+            var __workflow_tableName = tableName == null ? null : WorkflowExpression.Compile(tableName);
+            WorkflowExpression.Validate(__workflow_tableName, nameof(tableName), required: true);
+            var __workflow_continuationToken = continuationToken == null ? null : WorkflowExpression.Compile(continuationToken);
+            WorkflowExpression.Validate(__workflow_continuationToken, nameof(continuationToken), required: false);
+            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
+            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
+            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
+            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
+            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
             return new DeferredBodyAction<QueryEntitiesOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
-                if (continuationToken != null)
+                serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(__workflow_tableName);
+                if (__workflow_continuationToken != null)
                 {
-                    serviceProviderParameters["continuationToken"] = ExpressionConverter.ConvertO(continuationToken);
+                    serviceProviderParameters["continuationToken"] = ExpressionConverter.ConvertO(__workflow_continuationToken);
                 }
 
-                if (filter != null)
+                if (__workflow_filter != null)
                 {
-                    serviceProviderParameters["filter"] = ExpressionConverter.ConvertO(filter);
+                    serviceProviderParameters["filter"] = ExpressionConverter.ConvertO(__workflow_filter);
                 }
 
-                if (select != null)
+                if (__workflow_select != null)
                 {
-                    serviceProviderParameters["select"] = ExpressionConverter.ConvertO(select);
+                    serviceProviderParameters["select"] = ExpressionConverter.ConvertO(__workflow_select);
                 }
 
-                if (top != null)
+                if (__workflow_top != null)
                 {
-                    serviceProviderParameters["top"] = ExpressionConverter.ConvertO(top);
+                    serviceProviderParameters["top"] = ExpressionConverter.ConvertO(__workflow_top);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput

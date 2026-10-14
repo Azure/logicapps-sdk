@@ -1,12 +1,12 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edgility
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class EdgilityActions([ConnectionName] string connectionId)
     {
@@ -20,21 +20,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edgility
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edgility")]
-        [WorkflowExpressionFactory(nameof(__BuildSendMessage))]
-        public IBodyWorkflowAction<SendMessageResponse> SendMessage([WorkflowExpression] Func<string> messageto = null, [WorkflowExpression] Func<string> messagefrom = null, [WorkflowExpression] Func<string> messagebody = null, [WorkflowExpression] Func<string> messagecampaign = null, [WorkflowExpression] Func<string> messagereference = null, [WorkflowExpression] Func<string> messagedate = null)
+        public IBodyWorkflowAction<SendMessageResponse> SendMessage(Expression<Func<string>> messageto = null, Expression<Func<string>> messagefrom = null, Expression<Func<string>> messagebody = null, Expression<Func<string>> messagecampaign = null, Expression<Func<string>> messagereference = null, Expression<Func<string>> messagedate = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SendMessageResponse> __BuildSendMessage(WorkflowExpression<string> messageto = null, WorkflowExpression<string> messagefrom = null, WorkflowExpression<string> messagebody = null, WorkflowExpression<string> messagecampaign = null, WorkflowExpression<string> messagereference = null, WorkflowExpression<string> messagedate = null)
-        {
-            WorkflowExpression.Validate(messageto, nameof(messageto), required: false);
-            WorkflowExpression.Validate(messagefrom, nameof(messagefrom), required: false);
-            WorkflowExpression.Validate(messagebody, nameof(messagebody), required: false);
-            WorkflowExpression.Validate(messagecampaign, nameof(messagecampaign), required: false);
-            WorkflowExpression.Validate(messagereference, nameof(messagereference), required: false);
-            WorkflowExpression.Validate(messagedate, nameof(messagedate), required: false);
+            var __workflow_messageto = messageto == null ? null : WorkflowExpression.Compile(messageto);
+            WorkflowExpression.Validate(__workflow_messageto, nameof(messageto), required: false);
+            var __workflow_messagefrom = messagefrom == null ? null : WorkflowExpression.Compile(messagefrom);
+            WorkflowExpression.Validate(__workflow_messagefrom, nameof(messagefrom), required: false);
+            var __workflow_messagebody = messagebody == null ? null : WorkflowExpression.Compile(messagebody);
+            WorkflowExpression.Validate(__workflow_messagebody, nameof(messagebody), required: false);
+            var __workflow_messagecampaign = messagecampaign == null ? null : WorkflowExpression.Compile(messagecampaign);
+            WorkflowExpression.Validate(__workflow_messagecampaign, nameof(messagecampaign), required: false);
+            var __workflow_messagereference = messagereference == null ? null : WorkflowExpression.Compile(messagereference);
+            WorkflowExpression.Validate(__workflow_messagereference, nameof(messagereference), required: false);
+            var __workflow_messagedate = messagedate == null ? null : WorkflowExpression.Compile(messagedate);
+            WorkflowExpression.Validate(__workflow_messagedate, nameof(messagedate), required: false);
             return new DeferredBodyAction<SendMessageResponse>(() =>
             {
                 var apiCallPath = "/v2/integrations/power-automate/send";
@@ -42,39 +41,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edgility
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var message = new JObject();
                 var messagepropCount = 0;
-                if (messageto != null)
+                if (__workflow_messageto != null)
                 {
-                    message["to"] = ExpressionConverter.ConvertO(messageto);
+                    message["to"] = ExpressionConverter.ConvertO(__workflow_messageto);
                     messagepropCount++;
                 }
 
-                if (messagefrom != null)
+                if (__workflow_messagefrom != null)
                 {
-                    message["from"] = ExpressionConverter.ConvertO(messagefrom);
+                    message["from"] = ExpressionConverter.ConvertO(__workflow_messagefrom);
                     messagepropCount++;
                 }
 
-                if (messagebody != null)
+                if (__workflow_messagebody != null)
                 {
-                    message["body"] = ExpressionConverter.ConvertO(messagebody);
+                    message["body"] = ExpressionConverter.ConvertO(__workflow_messagebody);
                     messagepropCount++;
                 }
 
-                if (messagecampaign != null)
+                if (__workflow_messagecampaign != null)
                 {
-                    message["campaign"] = ExpressionConverter.ConvertO(messagecampaign);
+                    message["campaign"] = ExpressionConverter.ConvertO(__workflow_messagecampaign);
                     messagepropCount++;
                 }
 
-                if (messagereference != null)
+                if (__workflow_messagereference != null)
                 {
-                    message["reference"] = ExpressionConverter.ConvertO(messagereference);
+                    message["reference"] = ExpressionConverter.ConvertO(__workflow_messagereference);
                     messagepropCount++;
                 }
 
-                if (messagedate != null)
+                if (__workflow_messagedate != null)
                 {
-                    message["date"] = ExpressionConverter.ConvertO(messagedate);
+                    message["date"] = ExpressionConverter.ConvertO(__workflow_messagedate);
                     messagepropCount++;
                 }
 
@@ -90,17 +89,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edgility
 
     public class EdgilityTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildInboundMessage))]
-        public IWorkflowTrigger InboundMessage([WorkflowExpression] Func<string> configdedicatedNumber = null,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger InboundMessage(Expression<Func<string>> configdedicatedNumber = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildInboundMessage(WorkflowExpression<string> configdedicatedNumber = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(configdedicatedNumber, nameof(configdedicatedNumber), required: false);
+            var __workflow_configdedicatedNumber = configdedicatedNumber == null ? null : WorkflowExpression.Compile(configdedicatedNumber);
+            WorkflowExpression.Validate(__workflow_configdedicatedNumber, nameof(configdedicatedNumber), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/v2/integrations/power-automate/subscribe";
@@ -112,9 +104,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edgility
                 var configpropCount = 0;
                 config["event"] = "message_received";
                 configpropCount++;
-                if (configdedicatedNumber != null)
+                if (__workflow_configdedicatedNumber != null)
                 {
-                    config["dedicated_number"] = ExpressionConverter.ConvertO(configdedicatedNumber);
+                    config["dedicated_number"] = ExpressionConverter.ConvertO(__workflow_configdedicatedNumber);
                     configpropCount++;
                 }
 

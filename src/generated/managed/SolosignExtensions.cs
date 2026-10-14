@@ -1,31 +1,28 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Solosign
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class SolosignActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "solosign")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateHMAC))]
-        public IWorkflowAction CreateHMAC([WorkflowExpression] Func<string> bodyrequestString, [WorkflowExpression] Func<string> bodysecretKey, [WorkflowExpression] Func<bodyoutputFormatInput> bodyoutputFormat = null, [WorkflowExpression] Func<bodyencodeTypeInput> bodyencodeType = null, [WorkflowExpression] Func<bodyhashAlgorithmInput> bodyhashAlgorithm = null)
+        public IWorkflowAction CreateHMAC(Expression<Func<string>> bodyrequestString, Expression<Func<string>> bodysecretKey, Expression<Func<bodyoutputFormatInput>> bodyoutputFormat = null, Expression<Func<bodyencodeTypeInput>> bodyencodeType = null, Expression<Func<bodyhashAlgorithmInput>> bodyhashAlgorithm = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildCreateHMAC(WorkflowExpression<string> bodyrequestString, WorkflowExpression<string> bodysecretKey, WorkflowExpression<bodyoutputFormatInput> bodyoutputFormat = null, WorkflowExpression<bodyencodeTypeInput> bodyencodeType = null, WorkflowExpression<bodyhashAlgorithmInput> bodyhashAlgorithm = null)
-        {
-            WorkflowExpression.Validate(bodyrequestString, nameof(bodyrequestString), required: true);
-            WorkflowExpression.Validate(bodysecretKey, nameof(bodysecretKey), required: true);
-            WorkflowExpression.Validate(bodyoutputFormat, nameof(bodyoutputFormat), required: false);
-            WorkflowExpression.Validate(bodyencodeType, nameof(bodyencodeType), required: false);
-            WorkflowExpression.Validate(bodyhashAlgorithm, nameof(bodyhashAlgorithm), required: false);
+            var __workflow_bodyrequestString = bodyrequestString == null ? null : WorkflowExpression.Compile(bodyrequestString);
+            WorkflowExpression.Validate(__workflow_bodyrequestString, nameof(bodyrequestString), required: true);
+            var __workflow_bodysecretKey = bodysecretKey == null ? null : WorkflowExpression.Compile(bodysecretKey);
+            WorkflowExpression.Validate(__workflow_bodysecretKey, nameof(bodysecretKey), required: true);
+            var __workflow_bodyoutputFormat = bodyoutputFormat == null ? null : WorkflowExpression.Compile(bodyoutputFormat);
+            WorkflowExpression.Validate(__workflow_bodyoutputFormat, nameof(bodyoutputFormat), required: false);
+            var __workflow_bodyencodeType = bodyencodeType == null ? null : WorkflowExpression.Compile(bodyencodeType);
+            WorkflowExpression.Validate(__workflow_bodyencodeType, nameof(bodyencodeType), required: false);
+            var __workflow_bodyhashAlgorithm = bodyhashAlgorithm == null ? null : WorkflowExpression.Compile(bodyhashAlgorithm);
+            WorkflowExpression.Validate(__workflow_bodyhashAlgorithm, nameof(bodyhashAlgorithm), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/generate-hmac";
@@ -35,24 +32,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Solosign
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["request_string"] = ExpressionConverter.ConvertO(bodyrequestString);
+                body["request_string"] = ExpressionConverter.ConvertO(__workflow_bodyrequestString);
                 bodypropCount++;
-                body["secret_key"] = ExpressionConverter.ConvertO(bodysecretKey);
-                if (bodyoutputFormat != null)
+                body["secret_key"] = ExpressionConverter.ConvertO(__workflow_bodysecretKey);
+                if (__workflow_bodyoutputFormat != null)
                 {
-                    body["output_format"] = ExpressionConverter.ConvertO(bodyoutputFormat);
+                    body["output_format"] = ExpressionConverter.ConvertO(__workflow_bodyoutputFormat);
                     bodypropCount++;
                 }
 
-                if (bodyencodeType != null)
+                if (__workflow_bodyencodeType != null)
                 {
-                    body["encode_type"] = ExpressionConverter.ConvertO(bodyencodeType);
+                    body["encode_type"] = ExpressionConverter.ConvertO(__workflow_bodyencodeType);
                     bodypropCount++;
                 }
 
-                if (bodyhashAlgorithm != null)
+                if (__workflow_bodyhashAlgorithm != null)
                 {
-                    body["hash_algorithm"] = ExpressionConverter.ConvertO(bodyhashAlgorithm);
+                    body["hash_algorithm"] = ExpressionConverter.ConvertO(__workflow_bodyhashAlgorithm);
                     bodypropCount++;
                 }
 

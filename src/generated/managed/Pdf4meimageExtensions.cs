@@ -1,30 +1,26 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class Pdf4meimageActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
-        [WorkflowExpressionFactory(nameof(__BuildCompressImage))]
-        public IBodyWorkflowAction<string> CompressImage([WorkflowExpression] Func<string> bodydocContent, [WorkflowExpression] Func<bodyimageTypeInput> bodyimageType, [WorkflowExpression] Func<string> bodydocumentname = null, [WorkflowExpression] Func<bodycompressionLevelInput> bodycompressionLevel = null)
+        public IBodyWorkflowAction<string> CompressImage(Expression<Func<string>> bodydocContent, Expression<Func<bodyimageTypeInput>> bodyimageType, Expression<Func<string>> bodydocumentname = null, Expression<Func<bodycompressionLevelInput>> bodycompressionLevel = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildCompressImage(WorkflowExpression<string> bodydocContent, WorkflowExpression<bodyimageTypeInput> bodyimageType, WorkflowExpression<string> bodydocumentname = null, WorkflowExpression<bodycompressionLevelInput> bodycompressionLevel = null)
-        {
-            WorkflowExpression.Validate(bodydocContent, nameof(bodydocContent), required: true);
-            WorkflowExpression.Validate(bodyimageType, nameof(bodyimageType), required: true);
-            WorkflowExpression.Validate(bodydocumentname, nameof(bodydocumentname), required: false);
-            WorkflowExpression.Validate(bodycompressionLevel, nameof(bodycompressionLevel), required: false);
+            var __workflow_bodydocContent = bodydocContent == null ? null : WorkflowExpression.Compile(bodydocContent);
+            WorkflowExpression.Validate(__workflow_bodydocContent, nameof(bodydocContent), required: true);
+            var __workflow_bodyimageType = bodyimageType == null ? null : WorkflowExpression.Compile(bodyimageType);
+            WorkflowExpression.Validate(__workflow_bodyimageType, nameof(bodyimageType), required: true);
+            var __workflow_bodydocumentname = bodydocumentname == null ? null : WorkflowExpression.Compile(bodydocumentname);
+            WorkflowExpression.Validate(__workflow_bodydocumentname, nameof(bodydocumentname), required: false);
+            var __workflow_bodycompressionLevel = bodycompressionLevel == null ? null : WorkflowExpression.Compile(bodycompressionLevel);
+            WorkflowExpression.Validate(__workflow_bodycompressionLevel, nameof(bodycompressionLevel), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/CompressImage";
@@ -33,12 +29,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["docContent"] = ExpressionConverter.ConvertO(bodydocContent);
+                body["docContent"] = ExpressionConverter.ConvertO(__workflow_bodydocContent);
                 var documentObject = new JObject();
                 var documentObjectpropCount = 0;
-                if (bodydocumentname != null)
+                if (__workflow_bodydocumentname != null)
                 {
-                    documentObject["Name"] = ExpressionConverter.ConvertO(bodydocumentname);
+                    documentObject["Name"] = ExpressionConverter.ConvertO(__workflow_bodydocumentname);
                     documentObjectpropCount++;
                 }
 
@@ -49,10 +45,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
                 }
 
                 bodypropCount++;
-                body["imageType"] = ExpressionConverter.ConvertO(bodyimageType);
-                if (bodycompressionLevel != null)
+                body["imageType"] = ExpressionConverter.ConvertO(__workflow_bodyimageType);
+                if (__workflow_bodycompressionLevel != null)
                 {
-                    body["compressionLevel"] = ExpressionConverter.ConvertO(bodycompressionLevel);
+                    body["compressionLevel"] = ExpressionConverter.ConvertO(__workflow_bodycompressionLevel);
                     bodypropCount++;
                 }
 
@@ -66,19 +62,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
-        [WorkflowExpressionFactory(nameof(__BuildConvertImageFormat))]
-        public IBodyWorkflowAction<string> ConvertImageFormat([WorkflowExpression] Func<string> bodydocContent, [WorkflowExpression] Func<bodycurrentImageFormatInput> bodycurrentImageFormat, [WorkflowExpression] Func<bodynewImageFormatInput> bodynewImageFormat, [WorkflowExpression] Func<string> bodydocumentname = null)
+        public IBodyWorkflowAction<string> ConvertImageFormat(Expression<Func<string>> bodydocContent, Expression<Func<bodycurrentImageFormatInput>> bodycurrentImageFormat, Expression<Func<bodynewImageFormatInput>> bodynewImageFormat, Expression<Func<string>> bodydocumentname = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildConvertImageFormat(WorkflowExpression<string> bodydocContent, WorkflowExpression<bodycurrentImageFormatInput> bodycurrentImageFormat, WorkflowExpression<bodynewImageFormatInput> bodynewImageFormat, WorkflowExpression<string> bodydocumentname = null)
-        {
-            WorkflowExpression.Validate(bodydocContent, nameof(bodydocContent), required: true);
-            WorkflowExpression.Validate(bodycurrentImageFormat, nameof(bodycurrentImageFormat), required: true);
-            WorkflowExpression.Validate(bodynewImageFormat, nameof(bodynewImageFormat), required: true);
-            WorkflowExpression.Validate(bodydocumentname, nameof(bodydocumentname), required: false);
+            var __workflow_bodydocContent = bodydocContent == null ? null : WorkflowExpression.Compile(bodydocContent);
+            WorkflowExpression.Validate(__workflow_bodydocContent, nameof(bodydocContent), required: true);
+            var __workflow_bodycurrentImageFormat = bodycurrentImageFormat == null ? null : WorkflowExpression.Compile(bodycurrentImageFormat);
+            WorkflowExpression.Validate(__workflow_bodycurrentImageFormat, nameof(bodycurrentImageFormat), required: true);
+            var __workflow_bodynewImageFormat = bodynewImageFormat == null ? null : WorkflowExpression.Compile(bodynewImageFormat);
+            WorkflowExpression.Validate(__workflow_bodynewImageFormat, nameof(bodynewImageFormat), required: true);
+            var __workflow_bodydocumentname = bodydocumentname == null ? null : WorkflowExpression.Compile(bodydocumentname);
+            WorkflowExpression.Validate(__workflow_bodydocumentname, nameof(bodydocumentname), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ConvertImageFormat";
@@ -87,12 +80,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["docContent"] = ExpressionConverter.ConvertO(bodydocContent);
+                body["docContent"] = ExpressionConverter.ConvertO(__workflow_bodydocContent);
                 var documentObject = new JObject();
                 var documentObjectpropCount = 0;
-                if (bodydocumentname != null)
+                if (__workflow_bodydocumentname != null)
                 {
-                    documentObject["Name"] = ExpressionConverter.ConvertO(bodydocumentname);
+                    documentObject["Name"] = ExpressionConverter.ConvertO(__workflow_bodydocumentname);
                     documentObjectpropCount++;
                 }
 
@@ -103,9 +96,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
                 }
 
                 bodypropCount++;
-                body["currentImageFormat"] = ExpressionConverter.ConvertO(bodycurrentImageFormat);
+                body["currentImageFormat"] = ExpressionConverter.ConvertO(__workflow_bodycurrentImageFormat);
                 bodypropCount++;
-                body["newImageFormat"] = ExpressionConverter.ConvertO(bodynewImageFormat);
+                body["newImageFormat"] = ExpressionConverter.ConvertO(__workflow_bodynewImageFormat);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -116,66 +109,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
-        [WorkflowExpressionFactory(nameof(__BuildCropImage))]
-        public IBodyWorkflowAction<string> CropImage([WorkflowExpression] Func<schemaValInput> schemaVal = null, [WorkflowExpression] Func<object> operation = null)
+        public IBodyWorkflowAction<string> CropImage(Expression<Func<schemaValInput>> schemaVal = null, Expression<Func<object>> operation = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildCropImage(WorkflowExpression<schemaValInput> schemaVal = null, WorkflowExpression<object> operation = null)
-        {
-            WorkflowExpression.Validate(schemaVal, nameof(schemaVal), required: false);
-            WorkflowExpression.Validate(operation, nameof(operation), required: false);
+            var __workflow_schemaVal = schemaVal == null ? null : WorkflowExpression.Compile(schemaVal);
+            WorkflowExpression.Validate(__workflow_schemaVal, nameof(schemaVal), required: false);
+            var __workflow_operation = operation == null ? null : WorkflowExpression.Compile(operation);
+            WorkflowExpression.Validate(__workflow_operation, nameof(operation), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/CropImage";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["schemaVal"] = Convert.ToString("Border");
-                if (schemaVal != null)
-                    callPayload.Queries["schemaVal"] = ExpressionConverter.Convert(schemaVal);
-                callPayload.Body = ExpressionConverter.ConvertO(operation);
+                if (__workflow_schemaVal != null)
+                    callPayload.Queries["schemaVal"] = ExpressionConverter.Convert(__workflow_schemaVal);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_operation);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
-        [WorkflowExpressionFactory(nameof(__BuildCustomAPI))]
-        public IWorkflowAction CustomAPI([WorkflowExpression] Func<string> featurePath, [WorkflowExpression] Func<string> body = null)
+        public IWorkflowAction CustomAPI(Expression<Func<string>> featurePath, Expression<Func<string>> body = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildCustomAPI(WorkflowExpression<string> featurePath, WorkflowExpression<string> body = null)
-        {
-            WorkflowExpression.Validate(featurePath, nameof(featurePath), required: true);
-            WorkflowExpression.Validate(body, nameof(body), required: false);
+            var __workflow_featurePath = featurePath == null ? null : WorkflowExpression.Compile(featurePath);
+            WorkflowExpression.Validate(__workflow_featurePath, nameof(featurePath), required: true);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/FlowV2/{0}", ExpressionConverter.ConvertWithUrlEncoding(featurePath, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/FlowV2/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_featurePath, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-type"] = Convert.ToString("application/json");
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
-        [WorkflowExpressionFactory(nameof(__BuildFlipImage))]
-        public IBodyWorkflowAction<string> FlipImage([WorkflowExpression] Func<string> bodydocContent, [WorkflowExpression] Func<bodyorientationTypeInput> bodyorientationType, [WorkflowExpression] Func<string> bodydocumentname = null)
+        public IBodyWorkflowAction<string> FlipImage(Expression<Func<string>> bodydocContent, Expression<Func<bodyorientationTypeInput>> bodyorientationType, Expression<Func<string>> bodydocumentname = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildFlipImage(WorkflowExpression<string> bodydocContent, WorkflowExpression<bodyorientationTypeInput> bodyorientationType, WorkflowExpression<string> bodydocumentname = null)
-        {
-            WorkflowExpression.Validate(bodydocContent, nameof(bodydocContent), required: true);
-            WorkflowExpression.Validate(bodyorientationType, nameof(bodyorientationType), required: true);
-            WorkflowExpression.Validate(bodydocumentname, nameof(bodydocumentname), required: false);
+            var __workflow_bodydocContent = bodydocContent == null ? null : WorkflowExpression.Compile(bodydocContent);
+            WorkflowExpression.Validate(__workflow_bodydocContent, nameof(bodydocContent), required: true);
+            var __workflow_bodyorientationType = bodyorientationType == null ? null : WorkflowExpression.Compile(bodyorientationType);
+            WorkflowExpression.Validate(__workflow_bodyorientationType, nameof(bodyorientationType), required: true);
+            var __workflow_bodydocumentname = bodydocumentname == null ? null : WorkflowExpression.Compile(bodydocumentname);
+            WorkflowExpression.Validate(__workflow_bodydocumentname, nameof(bodydocumentname), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/FlipImage";
@@ -184,12 +163,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["docContent"] = ExpressionConverter.ConvertO(bodydocContent);
+                body["docContent"] = ExpressionConverter.ConvertO(__workflow_bodydocContent);
                 var documentObject = new JObject();
                 var documentObjectpropCount = 0;
-                if (bodydocumentname != null)
+                if (__workflow_bodydocumentname != null)
                 {
-                    documentObject["Name"] = ExpressionConverter.ConvertO(bodydocumentname);
+                    documentObject["Name"] = ExpressionConverter.ConvertO(__workflow_bodydocumentname);
                     documentObjectpropCount++;
                 }
 
@@ -200,7 +179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
                 }
 
                 bodypropCount++;
-                body["orientationType"] = ExpressionConverter.ConvertO(bodyorientationType);
+                body["orientationType"] = ExpressionConverter.ConvertO(__workflow_bodyorientationType);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -211,18 +190,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
-        [WorkflowExpressionFactory(nameof(__BuildImageExtractText))]
-        public IBodyWorkflowAction<ImageExtractTextV1Response> ImageExtractText([WorkflowExpression] Func<string> bodydocContent, [WorkflowExpression] Func<bodyimageTypeExtractInput> bodyimageTypeExtract, [WorkflowExpression] Func<string> bodydocumentname = null)
+        public IBodyWorkflowAction<ImageExtractTextV1Response> ImageExtractText(Expression<Func<string>> bodydocContent, Expression<Func<bodyimageTypeExtractInput>> bodyimageTypeExtract, Expression<Func<string>> bodydocumentname = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ImageExtractTextV1Response> __BuildImageExtractText(WorkflowExpression<string> bodydocContent, WorkflowExpression<bodyimageTypeExtractInput> bodyimageTypeExtract, WorkflowExpression<string> bodydocumentname = null)
-        {
-            WorkflowExpression.Validate(bodydocContent, nameof(bodydocContent), required: true);
-            WorkflowExpression.Validate(bodyimageTypeExtract, nameof(bodyimageTypeExtract), required: true);
-            WorkflowExpression.Validate(bodydocumentname, nameof(bodydocumentname), required: false);
+            var __workflow_bodydocContent = bodydocContent == null ? null : WorkflowExpression.Compile(bodydocContent);
+            WorkflowExpression.Validate(__workflow_bodydocContent, nameof(bodydocContent), required: true);
+            var __workflow_bodyimageTypeExtract = bodyimageTypeExtract == null ? null : WorkflowExpression.Compile(bodyimageTypeExtract);
+            WorkflowExpression.Validate(__workflow_bodyimageTypeExtract, nameof(bodyimageTypeExtract), required: true);
+            var __workflow_bodydocumentname = bodydocumentname == null ? null : WorkflowExpression.Compile(bodydocumentname);
+            WorkflowExpression.Validate(__workflow_bodydocumentname, nameof(bodydocumentname), required: false);
             return new DeferredBodyAction<ImageExtractTextV1Response>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ImageExtractText";
@@ -231,12 +206,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["docContent"] = ExpressionConverter.ConvertO(bodydocContent);
+                body["docContent"] = ExpressionConverter.ConvertO(__workflow_bodydocContent);
                 var documentObject = new JObject();
                 var documentObjectpropCount = 0;
-                if (bodydocumentname != null)
+                if (__workflow_bodydocumentname != null)
                 {
-                    documentObject["Name"] = ExpressionConverter.ConvertO(bodydocumentname);
+                    documentObject["Name"] = ExpressionConverter.ConvertO(__workflow_bodydocumentname);
                     documentObjectpropCount++;
                 }
 
@@ -247,7 +222,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
                 }
 
                 bodypropCount++;
-                body["imageTypeExtract"] = ExpressionConverter.ConvertO(bodyimageTypeExtract);
+                body["imageTypeExtract"] = ExpressionConverter.ConvertO(__workflow_bodyimageTypeExtract);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -258,18 +233,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
-        [WorkflowExpressionFactory(nameof(__BuildRemoveExifTagsFromImage))]
-        public IBodyWorkflowAction<string> RemoveExifTagsFromImage([WorkflowExpression] Func<string> bodydocContent, [WorkflowExpression] Func<bodyimageTypeInput> bodyimageType, [WorkflowExpression] Func<string> bodydocumentname = null)
+        public IBodyWorkflowAction<string> RemoveExifTagsFromImage(Expression<Func<string>> bodydocContent, Expression<Func<bodyimageTypeInput>> bodyimageType, Expression<Func<string>> bodydocumentname = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildRemoveExifTagsFromImage(WorkflowExpression<string> bodydocContent, WorkflowExpression<bodyimageTypeInput> bodyimageType, WorkflowExpression<string> bodydocumentname = null)
-        {
-            WorkflowExpression.Validate(bodydocContent, nameof(bodydocContent), required: true);
-            WorkflowExpression.Validate(bodyimageType, nameof(bodyimageType), required: true);
-            WorkflowExpression.Validate(bodydocumentname, nameof(bodydocumentname), required: false);
+            var __workflow_bodydocContent = bodydocContent == null ? null : WorkflowExpression.Compile(bodydocContent);
+            WorkflowExpression.Validate(__workflow_bodydocContent, nameof(bodydocContent), required: true);
+            var __workflow_bodyimageType = bodyimageType == null ? null : WorkflowExpression.Compile(bodyimageType);
+            WorkflowExpression.Validate(__workflow_bodyimageType, nameof(bodyimageType), required: true);
+            var __workflow_bodydocumentname = bodydocumentname == null ? null : WorkflowExpression.Compile(bodydocumentname);
+            WorkflowExpression.Validate(__workflow_bodydocumentname, nameof(bodydocumentname), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/RemoveEXIFTagsFromImage";
@@ -278,12 +249,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["docContent"] = ExpressionConverter.ConvertO(bodydocContent);
+                body["docContent"] = ExpressionConverter.ConvertO(__workflow_bodydocContent);
                 var documentObject = new JObject();
                 var documentObjectpropCount = 0;
-                if (bodydocumentname != null)
+                if (__workflow_bodydocumentname != null)
                 {
-                    documentObject["Name"] = ExpressionConverter.ConvertO(bodydocumentname);
+                    documentObject["Name"] = ExpressionConverter.ConvertO(__workflow_bodydocumentname);
                     documentObjectpropCount++;
                 }
 
@@ -294,7 +265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
                 }
 
                 bodypropCount++;
-                body["imageType"] = ExpressionConverter.ConvertO(bodyimageType);
+                body["imageType"] = ExpressionConverter.ConvertO(__workflow_bodyimageType);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -305,26 +276,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
-        [WorkflowExpressionFactory(nameof(__BuildResizeImage))]
-        public IBodyWorkflowAction<string> ResizeImage([WorkflowExpression] Func<schemaValInput> schemaVal = null, [WorkflowExpression] Func<object> operation = null)
+        public IBodyWorkflowAction<string> ResizeImage(Expression<Func<schemaValInput>> schemaVal = null, Expression<Func<object>> operation = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildResizeImage(WorkflowExpression<schemaValInput> schemaVal = null, WorkflowExpression<object> operation = null)
-        {
-            WorkflowExpression.Validate(schemaVal, nameof(schemaVal), required: false);
-            WorkflowExpression.Validate(operation, nameof(operation), required: false);
+            var __workflow_schemaVal = schemaVal == null ? null : WorkflowExpression.Compile(schemaVal);
+            WorkflowExpression.Validate(__workflow_schemaVal, nameof(schemaVal), required: false);
+            var __workflow_operation = operation == null ? null : WorkflowExpression.Compile(operation);
+            WorkflowExpression.Validate(__workflow_operation, nameof(operation), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ResizeImage";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["schemaVal"] = Convert.ToString("Percentage");
-                if (schemaVal != null)
-                    callPayload.Queries["schemaVal"] = ExpressionConverter.Convert(schemaVal);
-                callPayload.Body = ExpressionConverter.ConvertO(operation);
+                if (__workflow_schemaVal != null)
+                    callPayload.Queries["schemaVal"] = ExpressionConverter.Convert(__workflow_schemaVal);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_operation);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }

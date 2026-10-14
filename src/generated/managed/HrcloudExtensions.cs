@@ -1,65 +1,67 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class HrcloudActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hrcloud")]
-        [WorkflowExpressionFactory(nameof(__BuildGetEmployee))]
-        public IBodyWorkflowAction<GetEmployeeResponseItem[]> GetEmployee([WorkflowExpression] Func<string> filter = null)
+        public IBodyWorkflowAction<GetEmployeeResponseItem[]> GetEmployee(Expression<Func<string>> filter = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetEmployeeResponseItem[]> __BuildGetEmployee(WorkflowExpression<string> filter = null)
-        {
-            WorkflowExpression.Validate(filter, nameof(filter), required: false);
+            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
+            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
             return new DeferredBodyAction<GetEmployeeResponseItem[]>(() =>
             {
                 var apiCallPath = "/v1/cloud/xEmployee";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["filter"] = Convert.ToString("xEmployeeNumber eq 'ENTER EMPLOYEE NUMBER HERE'");
-                if (filter != null)
-                    callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
+                if (__workflow_filter != null)
+                    callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
                 return new ApiConnectionAction<GetEmployeeResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hrcloud")]
-        [WorkflowExpressionFactory(nameof(__BuildAddEmployee))]
-        public IWorkflowAction AddEmployee([WorkflowExpression] Func<string> bodyxEmail, [WorkflowExpression] Func<string> bodyxFirstName, [WorkflowExpression] Func<string> bodyxLastName, [WorkflowExpression] Func<string> bodyxAddress1 = null, [WorkflowExpression] Func<string> bodyxCity = null, [WorkflowExpression] Func<string> bodyxPersonalEmail = null, [WorkflowExpression] Func<string> bodyxRecordStatus = null, [WorkflowExpression] Func<string> bodyxStartDate = null, [WorkflowExpression] Func<string> bodyxState = null, [WorkflowExpression] Func<string> bodyxZipCode = null, [WorkflowExpression] Func<string> bodyxEmployeeNumber = null, [WorkflowExpression] Func<string> bodyxEmploymentStatusLookup = null, [WorkflowExpression] Func<string> bodyxLocationLookup = null, [WorkflowExpression] Func<string> bodyxPositionLookup = null, [WorkflowExpression] Func<string> bodyxDivisionLookup = null, [WorkflowExpression] Func<string> bodyxDepartmentLookup = null)
+        public IWorkflowAction AddEmployee(Expression<Func<string>> bodyxEmail, Expression<Func<string>> bodyxFirstName, Expression<Func<string>> bodyxLastName, Expression<Func<string>> bodyxAddress1 = null, Expression<Func<string>> bodyxCity = null, Expression<Func<string>> bodyxPersonalEmail = null, Expression<Func<string>> bodyxRecordStatus = null, Expression<Func<string>> bodyxStartDate = null, Expression<Func<string>> bodyxState = null, Expression<Func<string>> bodyxZipCode = null, Expression<Func<string>> bodyxEmployeeNumber = null, Expression<Func<string>> bodyxEmploymentStatusLookup = null, Expression<Func<string>> bodyxLocationLookup = null, Expression<Func<string>> bodyxPositionLookup = null, Expression<Func<string>> bodyxDivisionLookup = null, Expression<Func<string>> bodyxDepartmentLookup = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildAddEmployee(WorkflowExpression<string> bodyxEmail, WorkflowExpression<string> bodyxFirstName, WorkflowExpression<string> bodyxLastName, WorkflowExpression<string> bodyxAddress1 = null, WorkflowExpression<string> bodyxCity = null, WorkflowExpression<string> bodyxPersonalEmail = null, WorkflowExpression<string> bodyxRecordStatus = null, WorkflowExpression<string> bodyxStartDate = null, WorkflowExpression<string> bodyxState = null, WorkflowExpression<string> bodyxZipCode = null, WorkflowExpression<string> bodyxEmployeeNumber = null, WorkflowExpression<string> bodyxEmploymentStatusLookup = null, WorkflowExpression<string> bodyxLocationLookup = null, WorkflowExpression<string> bodyxPositionLookup = null, WorkflowExpression<string> bodyxDivisionLookup = null, WorkflowExpression<string> bodyxDepartmentLookup = null)
-        {
-            WorkflowExpression.Validate(bodyxEmail, nameof(bodyxEmail), required: true);
-            WorkflowExpression.Validate(bodyxFirstName, nameof(bodyxFirstName), required: true);
-            WorkflowExpression.Validate(bodyxLastName, nameof(bodyxLastName), required: true);
-            WorkflowExpression.Validate(bodyxAddress1, nameof(bodyxAddress1), required: false);
-            WorkflowExpression.Validate(bodyxCity, nameof(bodyxCity), required: false);
-            WorkflowExpression.Validate(bodyxPersonalEmail, nameof(bodyxPersonalEmail), required: false);
-            WorkflowExpression.Validate(bodyxRecordStatus, nameof(bodyxRecordStatus), required: false);
-            WorkflowExpression.Validate(bodyxStartDate, nameof(bodyxStartDate), required: false);
-            WorkflowExpression.Validate(bodyxState, nameof(bodyxState), required: false);
-            WorkflowExpression.Validate(bodyxZipCode, nameof(bodyxZipCode), required: false);
-            WorkflowExpression.Validate(bodyxEmployeeNumber, nameof(bodyxEmployeeNumber), required: false);
-            WorkflowExpression.Validate(bodyxEmploymentStatusLookup, nameof(bodyxEmploymentStatusLookup), required: false);
-            WorkflowExpression.Validate(bodyxLocationLookup, nameof(bodyxLocationLookup), required: false);
-            WorkflowExpression.Validate(bodyxPositionLookup, nameof(bodyxPositionLookup), required: false);
-            WorkflowExpression.Validate(bodyxDivisionLookup, nameof(bodyxDivisionLookup), required: false);
-            WorkflowExpression.Validate(bodyxDepartmentLookup, nameof(bodyxDepartmentLookup), required: false);
+            var __workflow_bodyxEmail = bodyxEmail == null ? null : WorkflowExpression.Compile(bodyxEmail);
+            WorkflowExpression.Validate(__workflow_bodyxEmail, nameof(bodyxEmail), required: true);
+            var __workflow_bodyxFirstName = bodyxFirstName == null ? null : WorkflowExpression.Compile(bodyxFirstName);
+            WorkflowExpression.Validate(__workflow_bodyxFirstName, nameof(bodyxFirstName), required: true);
+            var __workflow_bodyxLastName = bodyxLastName == null ? null : WorkflowExpression.Compile(bodyxLastName);
+            WorkflowExpression.Validate(__workflow_bodyxLastName, nameof(bodyxLastName), required: true);
+            var __workflow_bodyxAddress1 = bodyxAddress1 == null ? null : WorkflowExpression.Compile(bodyxAddress1);
+            WorkflowExpression.Validate(__workflow_bodyxAddress1, nameof(bodyxAddress1), required: false);
+            var __workflow_bodyxCity = bodyxCity == null ? null : WorkflowExpression.Compile(bodyxCity);
+            WorkflowExpression.Validate(__workflow_bodyxCity, nameof(bodyxCity), required: false);
+            var __workflow_bodyxPersonalEmail = bodyxPersonalEmail == null ? null : WorkflowExpression.Compile(bodyxPersonalEmail);
+            WorkflowExpression.Validate(__workflow_bodyxPersonalEmail, nameof(bodyxPersonalEmail), required: false);
+            var __workflow_bodyxRecordStatus = bodyxRecordStatus == null ? null : WorkflowExpression.Compile(bodyxRecordStatus);
+            WorkflowExpression.Validate(__workflow_bodyxRecordStatus, nameof(bodyxRecordStatus), required: false);
+            var __workflow_bodyxStartDate = bodyxStartDate == null ? null : WorkflowExpression.Compile(bodyxStartDate);
+            WorkflowExpression.Validate(__workflow_bodyxStartDate, nameof(bodyxStartDate), required: false);
+            var __workflow_bodyxState = bodyxState == null ? null : WorkflowExpression.Compile(bodyxState);
+            WorkflowExpression.Validate(__workflow_bodyxState, nameof(bodyxState), required: false);
+            var __workflow_bodyxZipCode = bodyxZipCode == null ? null : WorkflowExpression.Compile(bodyxZipCode);
+            WorkflowExpression.Validate(__workflow_bodyxZipCode, nameof(bodyxZipCode), required: false);
+            var __workflow_bodyxEmployeeNumber = bodyxEmployeeNumber == null ? null : WorkflowExpression.Compile(bodyxEmployeeNumber);
+            WorkflowExpression.Validate(__workflow_bodyxEmployeeNumber, nameof(bodyxEmployeeNumber), required: false);
+            var __workflow_bodyxEmploymentStatusLookup = bodyxEmploymentStatusLookup == null ? null : WorkflowExpression.Compile(bodyxEmploymentStatusLookup);
+            WorkflowExpression.Validate(__workflow_bodyxEmploymentStatusLookup, nameof(bodyxEmploymentStatusLookup), required: false);
+            var __workflow_bodyxLocationLookup = bodyxLocationLookup == null ? null : WorkflowExpression.Compile(bodyxLocationLookup);
+            WorkflowExpression.Validate(__workflow_bodyxLocationLookup, nameof(bodyxLocationLookup), required: false);
+            var __workflow_bodyxPositionLookup = bodyxPositionLookup == null ? null : WorkflowExpression.Compile(bodyxPositionLookup);
+            WorkflowExpression.Validate(__workflow_bodyxPositionLookup, nameof(bodyxPositionLookup), required: false);
+            var __workflow_bodyxDivisionLookup = bodyxDivisionLookup == null ? null : WorkflowExpression.Compile(bodyxDivisionLookup);
+            WorkflowExpression.Validate(__workflow_bodyxDivisionLookup, nameof(bodyxDivisionLookup), required: false);
+            var __workflow_bodyxDepartmentLookup = bodyxDepartmentLookup == null ? null : WorkflowExpression.Compile(bodyxDepartmentLookup);
+            WorkflowExpression.Validate(__workflow_bodyxDepartmentLookup, nameof(bodyxDepartmentLookup), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v1/cloud/xEmployee";
@@ -67,35 +69,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyxAddress1 != null)
+                if (__workflow_bodyxAddress1 != null)
                 {
-                    body["xAddress1"] = ExpressionConverter.ConvertO(bodyxAddress1);
+                    body["xAddress1"] = ExpressionConverter.ConvertO(__workflow_bodyxAddress1);
                     bodypropCount++;
                 }
 
-                if (bodyxCity != null)
+                if (__workflow_bodyxCity != null)
                 {
-                    body["xCity"] = ExpressionConverter.ConvertO(bodyxCity);
+                    body["xCity"] = ExpressionConverter.ConvertO(__workflow_bodyxCity);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["xEmail"] = ExpressionConverter.ConvertO(bodyxEmail);
+                body["xEmail"] = ExpressionConverter.ConvertO(__workflow_bodyxEmail);
                 bodypropCount++;
-                body["xFirstName"] = ExpressionConverter.ConvertO(bodyxFirstName);
+                body["xFirstName"] = ExpressionConverter.ConvertO(__workflow_bodyxFirstName);
                 bodypropCount++;
-                body["xLastName"] = ExpressionConverter.ConvertO(bodyxLastName);
-                if (bodyxPersonalEmail != null)
+                body["xLastName"] = ExpressionConverter.ConvertO(__workflow_bodyxLastName);
+                if (__workflow_bodyxPersonalEmail != null)
                 {
-                    body["xPersonalEmail"] = ExpressionConverter.ConvertO(bodyxPersonalEmail);
+                    body["xPersonalEmail"] = ExpressionConverter.ConvertO(__workflow_bodyxPersonalEmail);
                     bodypropCount++;
                 }
 
-                if (bodyxRecordStatus != null)
+                if (__workflow_bodyxRecordStatus != null)
                 {
-                    if (bodyxRecordStatus != null)
+                    if (__workflow_bodyxRecordStatus != null)
                     {
-                        body["xRecordStatus"] = ExpressionConverter.ConvertO(bodyxRecordStatus);
+                        body["xRecordStatus"] = ExpressionConverter.ConvertO(__workflow_bodyxRecordStatus);
                         bodypropCount++;
                     }
 
@@ -107,57 +109,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
                     bodypropCount++;
                 }
 
-                if (bodyxStartDate != null)
+                if (__workflow_bodyxStartDate != null)
                 {
-                    body["xStartDate"] = ExpressionConverter.ConvertO(bodyxStartDate);
+                    body["xStartDate"] = ExpressionConverter.ConvertO(__workflow_bodyxStartDate);
                     bodypropCount++;
                 }
 
-                if (bodyxState != null)
+                if (__workflow_bodyxState != null)
                 {
-                    body["xState"] = ExpressionConverter.ConvertO(bodyxState);
+                    body["xState"] = ExpressionConverter.ConvertO(__workflow_bodyxState);
                     bodypropCount++;
                 }
 
-                if (bodyxZipCode != null)
+                if (__workflow_bodyxZipCode != null)
                 {
-                    body["xZipCode"] = ExpressionConverter.ConvertO(bodyxZipCode);
+                    body["xZipCode"] = ExpressionConverter.ConvertO(__workflow_bodyxZipCode);
                     bodypropCount++;
                 }
 
-                if (bodyxEmployeeNumber != null)
+                if (__workflow_bodyxEmployeeNumber != null)
                 {
-                    body["xEmployeeNumber"] = ExpressionConverter.ConvertO(bodyxEmployeeNumber);
+                    body["xEmployeeNumber"] = ExpressionConverter.ConvertO(__workflow_bodyxEmployeeNumber);
                     bodypropCount++;
                 }
 
-                if (bodyxEmploymentStatusLookup != null)
+                if (__workflow_bodyxEmploymentStatusLookup != null)
                 {
-                    body["xEmploymentStatusLookup"] = ExpressionConverter.ConvertO(bodyxEmploymentStatusLookup);
+                    body["xEmploymentStatusLookup"] = ExpressionConverter.ConvertO(__workflow_bodyxEmploymentStatusLookup);
                     bodypropCount++;
                 }
 
-                if (bodyxLocationLookup != null)
+                if (__workflow_bodyxLocationLookup != null)
                 {
-                    body["xLocationLookup"] = ExpressionConverter.ConvertO(bodyxLocationLookup);
+                    body["xLocationLookup"] = ExpressionConverter.ConvertO(__workflow_bodyxLocationLookup);
                     bodypropCount++;
                 }
 
-                if (bodyxPositionLookup != null)
+                if (__workflow_bodyxPositionLookup != null)
                 {
-                    body["xPositionLookup"] = ExpressionConverter.ConvertO(bodyxPositionLookup);
+                    body["xPositionLookup"] = ExpressionConverter.ConvertO(__workflow_bodyxPositionLookup);
                     bodypropCount++;
                 }
 
-                if (bodyxDivisionLookup != null)
+                if (__workflow_bodyxDivisionLookup != null)
                 {
-                    body["xDivisionLookup"] = ExpressionConverter.ConvertO(bodyxDivisionLookup);
+                    body["xDivisionLookup"] = ExpressionConverter.ConvertO(__workflow_bodyxDivisionLookup);
                     bodypropCount++;
                 }
 
-                if (bodyxDepartmentLookup != null)
+                if (__workflow_bodyxDepartmentLookup != null)
                 {
-                    body["xDepartmentLookup"] = ExpressionConverter.ConvertO(bodyxDepartmentLookup);
+                    body["xDepartmentLookup"] = ExpressionConverter.ConvertO(__workflow_bodyxDepartmentLookup);
                     bodypropCount++;
                 }
 
@@ -171,32 +173,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hrcloud")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateEmployee))]
-        public IWorkflowAction UpdateEmployee([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyxAddress1 = null, [WorkflowExpression] Func<string> bodyxCity = null, [WorkflowExpression] Func<string> bodyxEmail = null, [WorkflowExpression] Func<string> bodyxFirstName = null, [WorkflowExpression] Func<string> bodyxLastName = null, [WorkflowExpression] Func<string> bodyxPersonalEmail = null, [WorkflowExpression] Func<string> bodyxRecordStatus = null, [WorkflowExpression] Func<string> bodyxStartDate = null, [WorkflowExpression] Func<string> bodyxState = null, [WorkflowExpression] Func<string> bodyxZipCode = null, [WorkflowExpression] Func<string> bodyxEmployeeNumber = null, [WorkflowExpression] Func<string> bodyxEmploymentStatusLookup = null, [WorkflowExpression] Func<string> bodyxLocationLookup = null, [WorkflowExpression] Func<string> bodyxPositionLookup = null, [WorkflowExpression] Func<string> bodyxDivisionLookup = null, [WorkflowExpression] Func<string> bodyxDepartmentLookup = null)
+        public IWorkflowAction UpdateEmployee(Expression<Func<string>> bodyid, Expression<Func<string>> bodyxAddress1 = null, Expression<Func<string>> bodyxCity = null, Expression<Func<string>> bodyxEmail = null, Expression<Func<string>> bodyxFirstName = null, Expression<Func<string>> bodyxLastName = null, Expression<Func<string>> bodyxPersonalEmail = null, Expression<Func<string>> bodyxRecordStatus = null, Expression<Func<string>> bodyxStartDate = null, Expression<Func<string>> bodyxState = null, Expression<Func<string>> bodyxZipCode = null, Expression<Func<string>> bodyxEmployeeNumber = null, Expression<Func<string>> bodyxEmploymentStatusLookup = null, Expression<Func<string>> bodyxLocationLookup = null, Expression<Func<string>> bodyxPositionLookup = null, Expression<Func<string>> bodyxDivisionLookup = null, Expression<Func<string>> bodyxDepartmentLookup = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildUpdateEmployee(WorkflowExpression<string> bodyid, WorkflowExpression<string> bodyxAddress1 = null, WorkflowExpression<string> bodyxCity = null, WorkflowExpression<string> bodyxEmail = null, WorkflowExpression<string> bodyxFirstName = null, WorkflowExpression<string> bodyxLastName = null, WorkflowExpression<string> bodyxPersonalEmail = null, WorkflowExpression<string> bodyxRecordStatus = null, WorkflowExpression<string> bodyxStartDate = null, WorkflowExpression<string> bodyxState = null, WorkflowExpression<string> bodyxZipCode = null, WorkflowExpression<string> bodyxEmployeeNumber = null, WorkflowExpression<string> bodyxEmploymentStatusLookup = null, WorkflowExpression<string> bodyxLocationLookup = null, WorkflowExpression<string> bodyxPositionLookup = null, WorkflowExpression<string> bodyxDivisionLookup = null, WorkflowExpression<string> bodyxDepartmentLookup = null)
-        {
-            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: true);
-            WorkflowExpression.Validate(bodyxAddress1, nameof(bodyxAddress1), required: false);
-            WorkflowExpression.Validate(bodyxCity, nameof(bodyxCity), required: false);
-            WorkflowExpression.Validate(bodyxEmail, nameof(bodyxEmail), required: false);
-            WorkflowExpression.Validate(bodyxFirstName, nameof(bodyxFirstName), required: false);
-            WorkflowExpression.Validate(bodyxLastName, nameof(bodyxLastName), required: false);
-            WorkflowExpression.Validate(bodyxPersonalEmail, nameof(bodyxPersonalEmail), required: false);
-            WorkflowExpression.Validate(bodyxRecordStatus, nameof(bodyxRecordStatus), required: false);
-            WorkflowExpression.Validate(bodyxStartDate, nameof(bodyxStartDate), required: false);
-            WorkflowExpression.Validate(bodyxState, nameof(bodyxState), required: false);
-            WorkflowExpression.Validate(bodyxZipCode, nameof(bodyxZipCode), required: false);
-            WorkflowExpression.Validate(bodyxEmployeeNumber, nameof(bodyxEmployeeNumber), required: false);
-            WorkflowExpression.Validate(bodyxEmploymentStatusLookup, nameof(bodyxEmploymentStatusLookup), required: false);
-            WorkflowExpression.Validate(bodyxLocationLookup, nameof(bodyxLocationLookup), required: false);
-            WorkflowExpression.Validate(bodyxPositionLookup, nameof(bodyxPositionLookup), required: false);
-            WorkflowExpression.Validate(bodyxDivisionLookup, nameof(bodyxDivisionLookup), required: false);
-            WorkflowExpression.Validate(bodyxDepartmentLookup, nameof(bodyxDepartmentLookup), required: false);
+            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
+            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: true);
+            var __workflow_bodyxAddress1 = bodyxAddress1 == null ? null : WorkflowExpression.Compile(bodyxAddress1);
+            WorkflowExpression.Validate(__workflow_bodyxAddress1, nameof(bodyxAddress1), required: false);
+            var __workflow_bodyxCity = bodyxCity == null ? null : WorkflowExpression.Compile(bodyxCity);
+            WorkflowExpression.Validate(__workflow_bodyxCity, nameof(bodyxCity), required: false);
+            var __workflow_bodyxEmail = bodyxEmail == null ? null : WorkflowExpression.Compile(bodyxEmail);
+            WorkflowExpression.Validate(__workflow_bodyxEmail, nameof(bodyxEmail), required: false);
+            var __workflow_bodyxFirstName = bodyxFirstName == null ? null : WorkflowExpression.Compile(bodyxFirstName);
+            WorkflowExpression.Validate(__workflow_bodyxFirstName, nameof(bodyxFirstName), required: false);
+            var __workflow_bodyxLastName = bodyxLastName == null ? null : WorkflowExpression.Compile(bodyxLastName);
+            WorkflowExpression.Validate(__workflow_bodyxLastName, nameof(bodyxLastName), required: false);
+            var __workflow_bodyxPersonalEmail = bodyxPersonalEmail == null ? null : WorkflowExpression.Compile(bodyxPersonalEmail);
+            WorkflowExpression.Validate(__workflow_bodyxPersonalEmail, nameof(bodyxPersonalEmail), required: false);
+            var __workflow_bodyxRecordStatus = bodyxRecordStatus == null ? null : WorkflowExpression.Compile(bodyxRecordStatus);
+            WorkflowExpression.Validate(__workflow_bodyxRecordStatus, nameof(bodyxRecordStatus), required: false);
+            var __workflow_bodyxStartDate = bodyxStartDate == null ? null : WorkflowExpression.Compile(bodyxStartDate);
+            WorkflowExpression.Validate(__workflow_bodyxStartDate, nameof(bodyxStartDate), required: false);
+            var __workflow_bodyxState = bodyxState == null ? null : WorkflowExpression.Compile(bodyxState);
+            WorkflowExpression.Validate(__workflow_bodyxState, nameof(bodyxState), required: false);
+            var __workflow_bodyxZipCode = bodyxZipCode == null ? null : WorkflowExpression.Compile(bodyxZipCode);
+            WorkflowExpression.Validate(__workflow_bodyxZipCode, nameof(bodyxZipCode), required: false);
+            var __workflow_bodyxEmployeeNumber = bodyxEmployeeNumber == null ? null : WorkflowExpression.Compile(bodyxEmployeeNumber);
+            WorkflowExpression.Validate(__workflow_bodyxEmployeeNumber, nameof(bodyxEmployeeNumber), required: false);
+            var __workflow_bodyxEmploymentStatusLookup = bodyxEmploymentStatusLookup == null ? null : WorkflowExpression.Compile(bodyxEmploymentStatusLookup);
+            WorkflowExpression.Validate(__workflow_bodyxEmploymentStatusLookup, nameof(bodyxEmploymentStatusLookup), required: false);
+            var __workflow_bodyxLocationLookup = bodyxLocationLookup == null ? null : WorkflowExpression.Compile(bodyxLocationLookup);
+            WorkflowExpression.Validate(__workflow_bodyxLocationLookup, nameof(bodyxLocationLookup), required: false);
+            var __workflow_bodyxPositionLookup = bodyxPositionLookup == null ? null : WorkflowExpression.Compile(bodyxPositionLookup);
+            WorkflowExpression.Validate(__workflow_bodyxPositionLookup, nameof(bodyxPositionLookup), required: false);
+            var __workflow_bodyxDivisionLookup = bodyxDivisionLookup == null ? null : WorkflowExpression.Compile(bodyxDivisionLookup);
+            WorkflowExpression.Validate(__workflow_bodyxDivisionLookup, nameof(bodyxDivisionLookup), required: false);
+            var __workflow_bodyxDepartmentLookup = bodyxDepartmentLookup == null ? null : WorkflowExpression.Compile(bodyxDepartmentLookup);
+            WorkflowExpression.Validate(__workflow_bodyxDepartmentLookup, nameof(bodyxDepartmentLookup), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v1/cloud/xEmployee";
@@ -205,100 +217,100 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["Id"] = ExpressionConverter.ConvertO(bodyid);
-                if (bodyxAddress1 != null)
+                body["Id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
+                if (__workflow_bodyxAddress1 != null)
                 {
-                    body["xAddress1"] = ExpressionConverter.ConvertO(bodyxAddress1);
+                    body["xAddress1"] = ExpressionConverter.ConvertO(__workflow_bodyxAddress1);
                     bodypropCount++;
                 }
 
-                if (bodyxCity != null)
+                if (__workflow_bodyxCity != null)
                 {
-                    body["xCity"] = ExpressionConverter.ConvertO(bodyxCity);
+                    body["xCity"] = ExpressionConverter.ConvertO(__workflow_bodyxCity);
                     bodypropCount++;
                 }
 
-                if (bodyxEmail != null)
+                if (__workflow_bodyxEmail != null)
                 {
-                    body["xEmail"] = ExpressionConverter.ConvertO(bodyxEmail);
+                    body["xEmail"] = ExpressionConverter.ConvertO(__workflow_bodyxEmail);
                     bodypropCount++;
                 }
 
-                if (bodyxFirstName != null)
+                if (__workflow_bodyxFirstName != null)
                 {
-                    body["xFirstName"] = ExpressionConverter.ConvertO(bodyxFirstName);
+                    body["xFirstName"] = ExpressionConverter.ConvertO(__workflow_bodyxFirstName);
                     bodypropCount++;
                 }
 
-                if (bodyxLastName != null)
+                if (__workflow_bodyxLastName != null)
                 {
-                    body["xLastName"] = ExpressionConverter.ConvertO(bodyxLastName);
+                    body["xLastName"] = ExpressionConverter.ConvertO(__workflow_bodyxLastName);
                     bodypropCount++;
                 }
 
-                if (bodyxPersonalEmail != null)
+                if (__workflow_bodyxPersonalEmail != null)
                 {
-                    body["xPersonalEmail"] = ExpressionConverter.ConvertO(bodyxPersonalEmail);
+                    body["xPersonalEmail"] = ExpressionConverter.ConvertO(__workflow_bodyxPersonalEmail);
                     bodypropCount++;
                 }
 
-                if (bodyxRecordStatus != null)
+                if (__workflow_bodyxRecordStatus != null)
                 {
-                    body["xRecordStatus"] = ExpressionConverter.ConvertO(bodyxRecordStatus);
+                    body["xRecordStatus"] = ExpressionConverter.ConvertO(__workflow_bodyxRecordStatus);
                     bodypropCount++;
                 }
 
-                if (bodyxStartDate != null)
+                if (__workflow_bodyxStartDate != null)
                 {
-                    body["xStartDate"] = ExpressionConverter.ConvertO(bodyxStartDate);
+                    body["xStartDate"] = ExpressionConverter.ConvertO(__workflow_bodyxStartDate);
                     bodypropCount++;
                 }
 
-                if (bodyxState != null)
+                if (__workflow_bodyxState != null)
                 {
-                    body["xState"] = ExpressionConverter.ConvertO(bodyxState);
+                    body["xState"] = ExpressionConverter.ConvertO(__workflow_bodyxState);
                     bodypropCount++;
                 }
 
-                if (bodyxZipCode != null)
+                if (__workflow_bodyxZipCode != null)
                 {
-                    body["xZipCode"] = ExpressionConverter.ConvertO(bodyxZipCode);
+                    body["xZipCode"] = ExpressionConverter.ConvertO(__workflow_bodyxZipCode);
                     bodypropCount++;
                 }
 
-                if (bodyxEmployeeNumber != null)
+                if (__workflow_bodyxEmployeeNumber != null)
                 {
-                    body["xEmployeeNumber"] = ExpressionConverter.ConvertO(bodyxEmployeeNumber);
+                    body["xEmployeeNumber"] = ExpressionConverter.ConvertO(__workflow_bodyxEmployeeNumber);
                     bodypropCount++;
                 }
 
-                if (bodyxEmploymentStatusLookup != null)
+                if (__workflow_bodyxEmploymentStatusLookup != null)
                 {
-                    body["xEmploymentStatusLookup"] = ExpressionConverter.ConvertO(bodyxEmploymentStatusLookup);
+                    body["xEmploymentStatusLookup"] = ExpressionConverter.ConvertO(__workflow_bodyxEmploymentStatusLookup);
                     bodypropCount++;
                 }
 
-                if (bodyxLocationLookup != null)
+                if (__workflow_bodyxLocationLookup != null)
                 {
-                    body["xLocationLookup"] = ExpressionConverter.ConvertO(bodyxLocationLookup);
+                    body["xLocationLookup"] = ExpressionConverter.ConvertO(__workflow_bodyxLocationLookup);
                     bodypropCount++;
                 }
 
-                if (bodyxPositionLookup != null)
+                if (__workflow_bodyxPositionLookup != null)
                 {
-                    body["xPositionLookup"] = ExpressionConverter.ConvertO(bodyxPositionLookup);
+                    body["xPositionLookup"] = ExpressionConverter.ConvertO(__workflow_bodyxPositionLookup);
                     bodypropCount++;
                 }
 
-                if (bodyxDivisionLookup != null)
+                if (__workflow_bodyxDivisionLookup != null)
                 {
-                    body["xDivisionLookup"] = ExpressionConverter.ConvertO(bodyxDivisionLookup);
+                    body["xDivisionLookup"] = ExpressionConverter.ConvertO(__workflow_bodyxDivisionLookup);
                     bodypropCount++;
                 }
 
-                if (bodyxDepartmentLookup != null)
+                if (__workflow_bodyxDepartmentLookup != null)
                 {
-                    body["xDepartmentLookup"] = ExpressionConverter.ConvertO(bodyxDepartmentLookup);
+                    body["xDepartmentLookup"] = ExpressionConverter.ConvertO(__workflow_bodyxDepartmentLookup);
                     bodypropCount++;
                 }
 
@@ -312,116 +324,86 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hrcloud")]
-        [WorkflowExpressionFactory(nameof(__BuildGetDepartment))]
-        public IBodyWorkflowAction<GetDepartmentResponseItem[]> GetDepartment([WorkflowExpression] Func<string> filter = null)
+        public IBodyWorkflowAction<GetDepartmentResponseItem[]> GetDepartment(Expression<Func<string>> filter = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetDepartmentResponseItem[]> __BuildGetDepartment(WorkflowExpression<string> filter = null)
-        {
-            WorkflowExpression.Validate(filter, nameof(filter), required: false);
+            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
+            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
             return new DeferredBodyAction<GetDepartmentResponseItem[]>(() =>
             {
                 var apiCallPath = "/v1/cloud/xDepartment";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["filter"] = Convert.ToString("xDepartmentName eq 'ENTER DEPARTMENT NAME HERE'");
-                if (filter != null)
-                    callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
+                if (__workflow_filter != null)
+                    callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
                 return new ApiConnectionAction<GetDepartmentResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hrcloud")]
-        [WorkflowExpressionFactory(nameof(__BuildGetLocation))]
-        public IBodyWorkflowAction<GetLocationResponseItem[]> GetLocation([WorkflowExpression] Func<string> filter = null)
+        public IBodyWorkflowAction<GetLocationResponseItem[]> GetLocation(Expression<Func<string>> filter = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetLocationResponseItem[]> __BuildGetLocation(WorkflowExpression<string> filter = null)
-        {
-            WorkflowExpression.Validate(filter, nameof(filter), required: false);
+            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
+            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
             return new DeferredBodyAction<GetLocationResponseItem[]>(() =>
             {
                 var apiCallPath = "/v1/cloud/xLocation";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["filter"] = Convert.ToString("xLocationName eq 'ENTER LOCATION NAME HERE'");
-                if (filter != null)
-                    callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
+                if (__workflow_filter != null)
+                    callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
                 return new ApiConnectionAction<GetLocationResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hrcloud")]
-        [WorkflowExpressionFactory(nameof(__BuildGetPosition))]
-        public IBodyWorkflowAction<GetPositionResponseItem[]> GetPosition([WorkflowExpression] Func<string> filter = null)
+        public IBodyWorkflowAction<GetPositionResponseItem[]> GetPosition(Expression<Func<string>> filter = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetPositionResponseItem[]> __BuildGetPosition(WorkflowExpression<string> filter = null)
-        {
-            WorkflowExpression.Validate(filter, nameof(filter), required: false);
+            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
+            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
             return new DeferredBodyAction<GetPositionResponseItem[]>(() =>
             {
                 var apiCallPath = "/v1/cloud/xPosition";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["filter"] = Convert.ToString("xPositionTitle eq 'ENTER POSITION TITLE HERE'");
-                if (filter != null)
-                    callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
+                if (__workflow_filter != null)
+                    callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
                 return new ApiConnectionAction<GetPositionResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hrcloud")]
-        [WorkflowExpressionFactory(nameof(__BuildGetDivision))]
-        public IBodyWorkflowAction<GetDivisionResponseItem[]> GetDivision([WorkflowExpression] Func<string> filter = null)
+        public IBodyWorkflowAction<GetDivisionResponseItem[]> GetDivision(Expression<Func<string>> filter = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetDivisionResponseItem[]> __BuildGetDivision(WorkflowExpression<string> filter = null)
-        {
-            WorkflowExpression.Validate(filter, nameof(filter), required: false);
+            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
+            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
             return new DeferredBodyAction<GetDivisionResponseItem[]>(() =>
             {
                 var apiCallPath = "/v1/cloud/xDivision";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["filter"] = Convert.ToString("xDivisionName eq 'ENTER DIVISION NAME HERE'");
-                if (filter != null)
-                    callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
+                if (__workflow_filter != null)
+                    callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
                 return new ApiConnectionAction<GetDivisionResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hrcloud")]
-        [WorkflowExpressionFactory(nameof(__BuildGetEmploymentStatus))]
-        public IBodyWorkflowAction<GetEmploymentStatusResponseItem[]> GetEmploymentStatus([WorkflowExpression] Func<string> filter = null)
+        public IBodyWorkflowAction<GetEmploymentStatusResponseItem[]> GetEmploymentStatus(Expression<Func<string>> filter = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetEmploymentStatusResponseItem[]> __BuildGetEmploymentStatus(WorkflowExpression<string> filter = null)
-        {
-            WorkflowExpression.Validate(filter, nameof(filter), required: false);
+            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
+            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
             return new DeferredBodyAction<GetEmploymentStatusResponseItem[]>(() =>
             {
                 var apiCallPath = "/v1/cloud/xEmploymentStatus";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["filter"] = Convert.ToString("xType eq 'ENTER EMPLOYMENT STATUS TYPE HERE'");
-                if (filter != null)
-                    callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
+                if (__workflow_filter != null)
+                    callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
                 return new ApiConnectionAction<GetEmploymentStatusResponseItem[]>(callPayload);
             });
         }

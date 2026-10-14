@@ -1,49 +1,46 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class CloverlyipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
-        [WorkflowExpressionFactory(nameof(__BuildDirectCarbon))]
-        public IBodyWorkflowAction<DirectCarbonResponse> DirectCarbon([WorkflowExpression] Func<transactionInput> transaction, [WorkflowExpression] Func<double> bodyweightvalue = null, [WorkflowExpression] Func<bodyweightunitsInput> bodyweightunits = null, [WorkflowExpression] Func<string[]> bodyprojectMatchlocationlatlng = null, [WorkflowExpression] Func<string> bodynote = null)
+        public IBodyWorkflowAction<DirectCarbonResponse> DirectCarbon(Expression<Func<transactionInput>> transaction, Expression<Func<double>> bodyweightvalue = null, Expression<Func<bodyweightunitsInput>> bodyweightunits = null, Expression<Func<string[]>> bodyprojectMatchlocationlatlng = null, Expression<Func<string>> bodynote = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DirectCarbonResponse> __BuildDirectCarbon(WorkflowExpression<transactionInput> transaction, WorkflowExpression<double> bodyweightvalue = null, WorkflowExpression<bodyweightunitsInput> bodyweightunits = null, WorkflowExpression<string[]> bodyprojectMatchlocationlatlng = null, WorkflowExpression<string> bodynote = null)
-        {
-            WorkflowExpression.Validate(transaction, nameof(transaction), required: true);
-            WorkflowExpression.Validate(bodyweightvalue, nameof(bodyweightvalue), required: false);
-            WorkflowExpression.Validate(bodyweightunits, nameof(bodyweightunits), required: false);
-            WorkflowExpression.Validate(bodyprojectMatchlocationlatlng, nameof(bodyprojectMatchlocationlatlng), required: false);
-            WorkflowExpression.Validate(bodynote, nameof(bodynote), required: false);
+            var __workflow_transaction = transaction == null ? null : WorkflowExpression.Compile(transaction);
+            WorkflowExpression.Validate(__workflow_transaction, nameof(transaction), required: true);
+            var __workflow_bodyweightvalue = bodyweightvalue == null ? null : WorkflowExpression.Compile(bodyweightvalue);
+            WorkflowExpression.Validate(__workflow_bodyweightvalue, nameof(bodyweightvalue), required: false);
+            var __workflow_bodyweightunits = bodyweightunits == null ? null : WorkflowExpression.Compile(bodyweightunits);
+            WorkflowExpression.Validate(__workflow_bodyweightunits, nameof(bodyweightunits), required: false);
+            var __workflow_bodyprojectMatchlocationlatlng = bodyprojectMatchlocationlatlng == null ? null : WorkflowExpression.Compile(bodyprojectMatchlocationlatlng);
+            WorkflowExpression.Validate(__workflow_bodyprojectMatchlocationlatlng, nameof(bodyprojectMatchlocationlatlng), required: false);
+            var __workflow_bodynote = bodynote == null ? null : WorkflowExpression.Compile(bodynote);
+            WorkflowExpression.Validate(__workflow_bodynote, nameof(bodynote), required: false);
             return new DeferredBodyAction<DirectCarbonResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/carbon", ExpressionConverter.ConvertWithUrlEncoding(transaction, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/carbon", ExpressionConverter.ConvertWithUrlEncoding(__workflow_transaction, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 var weightObject = new JObject();
                 var weightObjectpropCount = 0;
-                if (bodyweightvalue != null)
+                if (__workflow_bodyweightvalue != null)
                 {
-                    weightObject["value"] = ExpressionConverter.ConvertO(bodyweightvalue);
+                    weightObject["value"] = ExpressionConverter.ConvertO(__workflow_bodyweightvalue);
                     weightObjectpropCount++;
                 }
 
-                if (bodyweightunits != null)
+                if (__workflow_bodyweightunits != null)
                 {
-                    weightObject["units"] = ExpressionConverter.ConvertO(bodyweightunits);
+                    weightObject["units"] = ExpressionConverter.ConvertO(__workflow_bodyweightunits);
                     weightObjectpropCount++;
                 }
 
@@ -57,9 +54,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
                 var projectMatchObjectpropCount = 0;
                 var locationObject = new JObject();
                 var locationObjectpropCount = 0;
-                if (bodyprojectMatchlocationlatlng != null)
+                if (__workflow_bodyprojectMatchlocationlatlng != null)
                 {
-                    locationObject["latlng"] = ExpressionConverter.ConvertO(bodyprojectMatchlocationlatlng);
+                    locationObject["latlng"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchlocationlatlng);
                     locationObjectpropCount++;
                 }
 
@@ -75,9 +72,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
                     bodypropCount++;
                 }
 
-                if (bodynote != null)
+                if (__workflow_bodynote != null)
                 {
-                    body["note"] = ExpressionConverter.ConvertO(bodynote);
+                    body["note"] = ExpressionConverter.ConvertO(__workflow_bodynote);
                     bodypropCount++;
                 }
 
@@ -91,39 +88,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
-        [WorkflowExpressionFactory(nameof(__BuildDirectTransaction))]
-        public IBodyWorkflowAction<DirectTransactionResponse> DirectTransaction([WorkflowExpression] Func<transactionInput> transaction, [WorkflowExpression] Func<double> bodycurrencyvalue = null, [WorkflowExpression] Func<string> bodycurrencyunits = null, [WorkflowExpression] Func<string> bodyprojectMatchtype = null, [WorkflowExpression] Func<string> bodynote = null, [WorkflowExpression] Func<int> bodyunitCostUsdCents = null)
+        public IBodyWorkflowAction<DirectTransactionResponse> DirectTransaction(Expression<Func<transactionInput>> transaction, Expression<Func<double>> bodycurrencyvalue = null, Expression<Func<string>> bodycurrencyunits = null, Expression<Func<string>> bodyprojectMatchtype = null, Expression<Func<string>> bodynote = null, Expression<Func<int>> bodyunitCostUsdCents = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DirectTransactionResponse> __BuildDirectTransaction(WorkflowExpression<transactionInput> transaction, WorkflowExpression<double> bodycurrencyvalue = null, WorkflowExpression<string> bodycurrencyunits = null, WorkflowExpression<string> bodyprojectMatchtype = null, WorkflowExpression<string> bodynote = null, WorkflowExpression<int> bodyunitCostUsdCents = null)
-        {
-            WorkflowExpression.Validate(transaction, nameof(transaction), required: true);
-            WorkflowExpression.Validate(bodycurrencyvalue, nameof(bodycurrencyvalue), required: false);
-            WorkflowExpression.Validate(bodycurrencyunits, nameof(bodycurrencyunits), required: false);
-            WorkflowExpression.Validate(bodyprojectMatchtype, nameof(bodyprojectMatchtype), required: false);
-            WorkflowExpression.Validate(bodynote, nameof(bodynote), required: false);
-            WorkflowExpression.Validate(bodyunitCostUsdCents, nameof(bodyunitCostUsdCents), required: false);
+            var __workflow_transaction = transaction == null ? null : WorkflowExpression.Compile(transaction);
+            WorkflowExpression.Validate(__workflow_transaction, nameof(transaction), required: true);
+            var __workflow_bodycurrencyvalue = bodycurrencyvalue == null ? null : WorkflowExpression.Compile(bodycurrencyvalue);
+            WorkflowExpression.Validate(__workflow_bodycurrencyvalue, nameof(bodycurrencyvalue), required: false);
+            var __workflow_bodycurrencyunits = bodycurrencyunits == null ? null : WorkflowExpression.Compile(bodycurrencyunits);
+            WorkflowExpression.Validate(__workflow_bodycurrencyunits, nameof(bodycurrencyunits), required: false);
+            var __workflow_bodyprojectMatchtype = bodyprojectMatchtype == null ? null : WorkflowExpression.Compile(bodyprojectMatchtype);
+            WorkflowExpression.Validate(__workflow_bodyprojectMatchtype, nameof(bodyprojectMatchtype), required: false);
+            var __workflow_bodynote = bodynote == null ? null : WorkflowExpression.Compile(bodynote);
+            WorkflowExpression.Validate(__workflow_bodynote, nameof(bodynote), required: false);
+            var __workflow_bodyunitCostUsdCents = bodyunitCostUsdCents == null ? null : WorkflowExpression.Compile(bodyunitCostUsdCents);
+            WorkflowExpression.Validate(__workflow_bodyunitCostUsdCents, nameof(bodyunitCostUsdCents), required: false);
             return new DeferredBodyAction<DirectTransactionResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/currency", ExpressionConverter.ConvertWithUrlEncoding(transaction, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/currency", ExpressionConverter.ConvertWithUrlEncoding(__workflow_transaction, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 var currencyObject = new JObject();
                 var currencyObjectpropCount = 0;
-                if (bodycurrencyvalue != null)
+                if (__workflow_bodycurrencyvalue != null)
                 {
-                    currencyObject["value"] = ExpressionConverter.ConvertO(bodycurrencyvalue);
+                    currencyObject["value"] = ExpressionConverter.ConvertO(__workflow_bodycurrencyvalue);
                     currencyObjectpropCount++;
                 }
 
-                if (bodycurrencyunits != null)
+                if (__workflow_bodycurrencyunits != null)
                 {
-                    currencyObject["units"] = ExpressionConverter.ConvertO(bodycurrencyunits);
+                    currencyObject["units"] = ExpressionConverter.ConvertO(__workflow_bodycurrencyunits);
                     currencyObjectpropCount++;
                 }
 
@@ -135,9 +131,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
 
                 var projectMatchObject = new JObject();
                 var projectMatchObjectpropCount = 0;
-                if (bodyprojectMatchtype != null)
+                if (__workflow_bodyprojectMatchtype != null)
                 {
-                    projectMatchObject["type"] = ExpressionConverter.ConvertO(bodyprojectMatchtype);
+                    projectMatchObject["type"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchtype);
                     projectMatchObjectpropCount++;
                 }
 
@@ -147,15 +143,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
                     bodypropCount++;
                 }
 
-                if (bodynote != null)
+                if (__workflow_bodynote != null)
                 {
-                    body["note"] = ExpressionConverter.ConvertO(bodynote);
+                    body["note"] = ExpressionConverter.ConvertO(__workflow_bodynote);
                     bodypropCount++;
                 }
 
-                if (bodyunitCostUsdCents != null)
+                if (__workflow_bodyunitCostUsdCents != null)
                 {
-                    body["unit_cost_usd_cents"] = ExpressionConverter.ConvertO(bodyunitCostUsdCents);
+                    body["unit_cost_usd_cents"] = ExpressionConverter.ConvertO(__workflow_bodyunitCostUsdCents);
                     bodypropCount++;
                 }
 
@@ -169,48 +165,56 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
-        [WorkflowExpressionFactory(nameof(__BuildCalculatePackage))]
-        public IBodyWorkflowAction<CalculatePackageResponse> CalculatePackage([WorkflowExpression] Func<string> transaction, [WorkflowExpression] Func<double> bodyweightvalue = null, [WorkflowExpression] Func<string> bodyweightunits = null, [WorkflowExpression] Func<string> bodymode = null, [WorkflowExpression] Func<double> bodydistancevalue = null, [WorkflowExpression] Func<string> bodydistanceunits = null, [WorkflowExpression] Func<string> bodyfrompostalCode = null, [WorkflowExpression] Func<string> bodyfromcountry = null, [WorkflowExpression] Func<string> bodytopostalCode = null, [WorkflowExpression] Func<string> bodytocountry = null, [WorkflowExpression] Func<string> bodyprojectMatchtype = null, [WorkflowExpression] Func<string> bodyprojectMatchlocationpostalCode = null, [WorkflowExpression] Func<string> bodyprojectMatchlocationcountry = null, [WorkflowExpression] Func<string> bodyprojectMatchnote = null, [WorkflowExpression] Func<string> bodynote = null)
+        public IBodyWorkflowAction<CalculatePackageResponse> CalculatePackage(Expression<Func<string>> transaction, Expression<Func<double>> bodyweightvalue = null, Expression<Func<string>> bodyweightunits = null, Expression<Func<string>> bodymode = null, Expression<Func<double>> bodydistancevalue = null, Expression<Func<string>> bodydistanceunits = null, Expression<Func<string>> bodyfrompostalCode = null, Expression<Func<string>> bodyfromcountry = null, Expression<Func<string>> bodytopostalCode = null, Expression<Func<string>> bodytocountry = null, Expression<Func<string>> bodyprojectMatchtype = null, Expression<Func<string>> bodyprojectMatchlocationpostalCode = null, Expression<Func<string>> bodyprojectMatchlocationcountry = null, Expression<Func<string>> bodyprojectMatchnote = null, Expression<Func<string>> bodynote = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CalculatePackageResponse> __BuildCalculatePackage(WorkflowExpression<string> transaction, WorkflowExpression<double> bodyweightvalue = null, WorkflowExpression<string> bodyweightunits = null, WorkflowExpression<string> bodymode = null, WorkflowExpression<double> bodydistancevalue = null, WorkflowExpression<string> bodydistanceunits = null, WorkflowExpression<string> bodyfrompostalCode = null, WorkflowExpression<string> bodyfromcountry = null, WorkflowExpression<string> bodytopostalCode = null, WorkflowExpression<string> bodytocountry = null, WorkflowExpression<string> bodyprojectMatchtype = null, WorkflowExpression<string> bodyprojectMatchlocationpostalCode = null, WorkflowExpression<string> bodyprojectMatchlocationcountry = null, WorkflowExpression<string> bodyprojectMatchnote = null, WorkflowExpression<string> bodynote = null)
-        {
-            WorkflowExpression.Validate(transaction, nameof(transaction), required: true);
-            WorkflowExpression.Validate(bodyweightvalue, nameof(bodyweightvalue), required: false);
-            WorkflowExpression.Validate(bodyweightunits, nameof(bodyweightunits), required: false);
-            WorkflowExpression.Validate(bodymode, nameof(bodymode), required: false);
-            WorkflowExpression.Validate(bodydistancevalue, nameof(bodydistancevalue), required: false);
-            WorkflowExpression.Validate(bodydistanceunits, nameof(bodydistanceunits), required: false);
-            WorkflowExpression.Validate(bodyfrompostalCode, nameof(bodyfrompostalCode), required: false);
-            WorkflowExpression.Validate(bodyfromcountry, nameof(bodyfromcountry), required: false);
-            WorkflowExpression.Validate(bodytopostalCode, nameof(bodytopostalCode), required: false);
-            WorkflowExpression.Validate(bodytocountry, nameof(bodytocountry), required: false);
-            WorkflowExpression.Validate(bodyprojectMatchtype, nameof(bodyprojectMatchtype), required: false);
-            WorkflowExpression.Validate(bodyprojectMatchlocationpostalCode, nameof(bodyprojectMatchlocationpostalCode), required: false);
-            WorkflowExpression.Validate(bodyprojectMatchlocationcountry, nameof(bodyprojectMatchlocationcountry), required: false);
-            WorkflowExpression.Validate(bodyprojectMatchnote, nameof(bodyprojectMatchnote), required: false);
-            WorkflowExpression.Validate(bodynote, nameof(bodynote), required: false);
+            var __workflow_transaction = transaction == null ? null : WorkflowExpression.Compile(transaction);
+            WorkflowExpression.Validate(__workflow_transaction, nameof(transaction), required: true);
+            var __workflow_bodyweightvalue = bodyweightvalue == null ? null : WorkflowExpression.Compile(bodyweightvalue);
+            WorkflowExpression.Validate(__workflow_bodyweightvalue, nameof(bodyweightvalue), required: false);
+            var __workflow_bodyweightunits = bodyweightunits == null ? null : WorkflowExpression.Compile(bodyweightunits);
+            WorkflowExpression.Validate(__workflow_bodyweightunits, nameof(bodyweightunits), required: false);
+            var __workflow_bodymode = bodymode == null ? null : WorkflowExpression.Compile(bodymode);
+            WorkflowExpression.Validate(__workflow_bodymode, nameof(bodymode), required: false);
+            var __workflow_bodydistancevalue = bodydistancevalue == null ? null : WorkflowExpression.Compile(bodydistancevalue);
+            WorkflowExpression.Validate(__workflow_bodydistancevalue, nameof(bodydistancevalue), required: false);
+            var __workflow_bodydistanceunits = bodydistanceunits == null ? null : WorkflowExpression.Compile(bodydistanceunits);
+            WorkflowExpression.Validate(__workflow_bodydistanceunits, nameof(bodydistanceunits), required: false);
+            var __workflow_bodyfrompostalCode = bodyfrompostalCode == null ? null : WorkflowExpression.Compile(bodyfrompostalCode);
+            WorkflowExpression.Validate(__workflow_bodyfrompostalCode, nameof(bodyfrompostalCode), required: false);
+            var __workflow_bodyfromcountry = bodyfromcountry == null ? null : WorkflowExpression.Compile(bodyfromcountry);
+            WorkflowExpression.Validate(__workflow_bodyfromcountry, nameof(bodyfromcountry), required: false);
+            var __workflow_bodytopostalCode = bodytopostalCode == null ? null : WorkflowExpression.Compile(bodytopostalCode);
+            WorkflowExpression.Validate(__workflow_bodytopostalCode, nameof(bodytopostalCode), required: false);
+            var __workflow_bodytocountry = bodytocountry == null ? null : WorkflowExpression.Compile(bodytocountry);
+            WorkflowExpression.Validate(__workflow_bodytocountry, nameof(bodytocountry), required: false);
+            var __workflow_bodyprojectMatchtype = bodyprojectMatchtype == null ? null : WorkflowExpression.Compile(bodyprojectMatchtype);
+            WorkflowExpression.Validate(__workflow_bodyprojectMatchtype, nameof(bodyprojectMatchtype), required: false);
+            var __workflow_bodyprojectMatchlocationpostalCode = bodyprojectMatchlocationpostalCode == null ? null : WorkflowExpression.Compile(bodyprojectMatchlocationpostalCode);
+            WorkflowExpression.Validate(__workflow_bodyprojectMatchlocationpostalCode, nameof(bodyprojectMatchlocationpostalCode), required: false);
+            var __workflow_bodyprojectMatchlocationcountry = bodyprojectMatchlocationcountry == null ? null : WorkflowExpression.Compile(bodyprojectMatchlocationcountry);
+            WorkflowExpression.Validate(__workflow_bodyprojectMatchlocationcountry, nameof(bodyprojectMatchlocationcountry), required: false);
+            var __workflow_bodyprojectMatchnote = bodyprojectMatchnote == null ? null : WorkflowExpression.Compile(bodyprojectMatchnote);
+            WorkflowExpression.Validate(__workflow_bodyprojectMatchnote, nameof(bodyprojectMatchnote), required: false);
+            var __workflow_bodynote = bodynote == null ? null : WorkflowExpression.Compile(bodynote);
+            WorkflowExpression.Validate(__workflow_bodynote, nameof(bodynote), required: false);
             return new DeferredBodyAction<CalculatePackageResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/shipping", ExpressionConverter.ConvertWithUrlEncoding(transaction, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/shipping", ExpressionConverter.ConvertWithUrlEncoding(__workflow_transaction, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 var weightObject = new JObject();
                 var weightObjectpropCount = 0;
-                if (bodyweightvalue != null)
+                if (__workflow_bodyweightvalue != null)
                 {
-                    weightObject["value"] = ExpressionConverter.ConvertO(bodyweightvalue);
+                    weightObject["value"] = ExpressionConverter.ConvertO(__workflow_bodyweightvalue);
                     weightObjectpropCount++;
                 }
 
-                if (bodyweightunits != null)
+                if (__workflow_bodyweightunits != null)
                 {
-                    weightObject["units"] = ExpressionConverter.ConvertO(bodyweightunits);
+                    weightObject["units"] = ExpressionConverter.ConvertO(__workflow_bodyweightunits);
                     weightObjectpropCount++;
                 }
 
@@ -220,23 +224,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
                     bodypropCount++;
                 }
 
-                if (bodymode != null)
+                if (__workflow_bodymode != null)
                 {
-                    body["mode"] = ExpressionConverter.ConvertO(bodymode);
+                    body["mode"] = ExpressionConverter.ConvertO(__workflow_bodymode);
                     bodypropCount++;
                 }
 
                 var distanceObject = new JObject();
                 var distanceObjectpropCount = 0;
-                if (bodydistancevalue != null)
+                if (__workflow_bodydistancevalue != null)
                 {
-                    distanceObject["value"] = ExpressionConverter.ConvertO(bodydistancevalue);
+                    distanceObject["value"] = ExpressionConverter.ConvertO(__workflow_bodydistancevalue);
                     distanceObjectpropCount++;
                 }
 
-                if (bodydistanceunits != null)
+                if (__workflow_bodydistanceunits != null)
                 {
-                    distanceObject["units"] = ExpressionConverter.ConvertO(bodydistanceunits);
+                    distanceObject["units"] = ExpressionConverter.ConvertO(__workflow_bodydistanceunits);
                     distanceObjectpropCount++;
                 }
 
@@ -248,15 +252,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
 
                 var fromObject = new JObject();
                 var fromObjectpropCount = 0;
-                if (bodyfrompostalCode != null)
+                if (__workflow_bodyfrompostalCode != null)
                 {
-                    fromObject["postal_code"] = ExpressionConverter.ConvertO(bodyfrompostalCode);
+                    fromObject["postal_code"] = ExpressionConverter.ConvertO(__workflow_bodyfrompostalCode);
                     fromObjectpropCount++;
                 }
 
-                if (bodyfromcountry != null)
+                if (__workflow_bodyfromcountry != null)
                 {
-                    fromObject["country"] = ExpressionConverter.ConvertO(bodyfromcountry);
+                    fromObject["country"] = ExpressionConverter.ConvertO(__workflow_bodyfromcountry);
                     fromObjectpropCount++;
                 }
 
@@ -268,15 +272,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
 
                 var toObject = new JObject();
                 var toObjectpropCount = 0;
-                if (bodytopostalCode != null)
+                if (__workflow_bodytopostalCode != null)
                 {
-                    toObject["postal_code"] = ExpressionConverter.ConvertO(bodytopostalCode);
+                    toObject["postal_code"] = ExpressionConverter.ConvertO(__workflow_bodytopostalCode);
                     toObjectpropCount++;
                 }
 
-                if (bodytocountry != null)
+                if (__workflow_bodytocountry != null)
                 {
-                    toObject["country"] = ExpressionConverter.ConvertO(bodytocountry);
+                    toObject["country"] = ExpressionConverter.ConvertO(__workflow_bodytocountry);
                     toObjectpropCount++;
                 }
 
@@ -288,23 +292,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
 
                 var projectMatchObject = new JObject();
                 var projectMatchObjectpropCount = 0;
-                if (bodyprojectMatchtype != null)
+                if (__workflow_bodyprojectMatchtype != null)
                 {
-                    projectMatchObject["type"] = ExpressionConverter.ConvertO(bodyprojectMatchtype);
+                    projectMatchObject["type"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchtype);
                     projectMatchObjectpropCount++;
                 }
 
                 var locationObject = new JObject();
                 var locationObjectpropCount = 0;
-                if (bodyprojectMatchlocationpostalCode != null)
+                if (__workflow_bodyprojectMatchlocationpostalCode != null)
                 {
-                    locationObject["postal_code"] = ExpressionConverter.ConvertO(bodyprojectMatchlocationpostalCode);
+                    locationObject["postal_code"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchlocationpostalCode);
                     locationObjectpropCount++;
                 }
 
-                if (bodyprojectMatchlocationcountry != null)
+                if (__workflow_bodyprojectMatchlocationcountry != null)
                 {
-                    locationObject["country"] = ExpressionConverter.ConvertO(bodyprojectMatchlocationcountry);
+                    locationObject["country"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchlocationcountry);
                     locationObjectpropCount++;
                 }
 
@@ -314,9 +318,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
                     projectMatchObjectpropCount++;
                 }
 
-                if (bodyprojectMatchnote != null)
+                if (__workflow_bodyprojectMatchnote != null)
                 {
-                    projectMatchObject["note"] = ExpressionConverter.ConvertO(bodyprojectMatchnote);
+                    projectMatchObject["note"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchnote);
                     projectMatchObjectpropCount++;
                 }
 
@@ -326,9 +330,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
                     bodypropCount++;
                 }
 
-                if (bodynote != null)
+                if (__workflow_bodynote != null)
                 {
-                    body["note"] = ExpressionConverter.ConvertO(bodynote);
+                    body["note"] = ExpressionConverter.ConvertO(__workflow_bodynote);
                     bodypropCount++;
                 }
 
@@ -342,48 +346,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
-        [WorkflowExpressionFactory(nameof(__BuildCalculateMCC))]
-        public IBodyWorkflowAction<CalculateMCCResponse> CalculateMCC([WorkflowExpression] Func<string> transaction, [WorkflowExpression] Func<int> bodymccCode = null, [WorkflowExpression] Func<double> bodycurrencyvalue = null, [WorkflowExpression] Func<string> bodycurrencyunits = null, [WorkflowExpression] Func<string> bodyprojectMatchtype = null, [WorkflowExpression] Func<string> bodyprojectMatchlocationpostalCode = null, [WorkflowExpression] Func<string> bodyprojectMatchlocationcountry = null, [WorkflowExpression] Func<string> bodyprojectMatchnote = null, [WorkflowExpression] Func<string> bodynote = null)
+        public IBodyWorkflowAction<CalculateMCCResponse> CalculateMCC(Expression<Func<string>> transaction, Expression<Func<int>> bodymccCode = null, Expression<Func<double>> bodycurrencyvalue = null, Expression<Func<string>> bodycurrencyunits = null, Expression<Func<string>> bodyprojectMatchtype = null, Expression<Func<string>> bodyprojectMatchlocationpostalCode = null, Expression<Func<string>> bodyprojectMatchlocationcountry = null, Expression<Func<string>> bodyprojectMatchnote = null, Expression<Func<string>> bodynote = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CalculateMCCResponse> __BuildCalculateMCC(WorkflowExpression<string> transaction, WorkflowExpression<int> bodymccCode = null, WorkflowExpression<double> bodycurrencyvalue = null, WorkflowExpression<string> bodycurrencyunits = null, WorkflowExpression<string> bodyprojectMatchtype = null, WorkflowExpression<string> bodyprojectMatchlocationpostalCode = null, WorkflowExpression<string> bodyprojectMatchlocationcountry = null, WorkflowExpression<string> bodyprojectMatchnote = null, WorkflowExpression<string> bodynote = null)
-        {
-            WorkflowExpression.Validate(transaction, nameof(transaction), required: true);
-            WorkflowExpression.Validate(bodymccCode, nameof(bodymccCode), required: false);
-            WorkflowExpression.Validate(bodycurrencyvalue, nameof(bodycurrencyvalue), required: false);
-            WorkflowExpression.Validate(bodycurrencyunits, nameof(bodycurrencyunits), required: false);
-            WorkflowExpression.Validate(bodyprojectMatchtype, nameof(bodyprojectMatchtype), required: false);
-            WorkflowExpression.Validate(bodyprojectMatchlocationpostalCode, nameof(bodyprojectMatchlocationpostalCode), required: false);
-            WorkflowExpression.Validate(bodyprojectMatchlocationcountry, nameof(bodyprojectMatchlocationcountry), required: false);
-            WorkflowExpression.Validate(bodyprojectMatchnote, nameof(bodyprojectMatchnote), required: false);
-            WorkflowExpression.Validate(bodynote, nameof(bodynote), required: false);
+            var __workflow_transaction = transaction == null ? null : WorkflowExpression.Compile(transaction);
+            WorkflowExpression.Validate(__workflow_transaction, nameof(transaction), required: true);
+            var __workflow_bodymccCode = bodymccCode == null ? null : WorkflowExpression.Compile(bodymccCode);
+            WorkflowExpression.Validate(__workflow_bodymccCode, nameof(bodymccCode), required: false);
+            var __workflow_bodycurrencyvalue = bodycurrencyvalue == null ? null : WorkflowExpression.Compile(bodycurrencyvalue);
+            WorkflowExpression.Validate(__workflow_bodycurrencyvalue, nameof(bodycurrencyvalue), required: false);
+            var __workflow_bodycurrencyunits = bodycurrencyunits == null ? null : WorkflowExpression.Compile(bodycurrencyunits);
+            WorkflowExpression.Validate(__workflow_bodycurrencyunits, nameof(bodycurrencyunits), required: false);
+            var __workflow_bodyprojectMatchtype = bodyprojectMatchtype == null ? null : WorkflowExpression.Compile(bodyprojectMatchtype);
+            WorkflowExpression.Validate(__workflow_bodyprojectMatchtype, nameof(bodyprojectMatchtype), required: false);
+            var __workflow_bodyprojectMatchlocationpostalCode = bodyprojectMatchlocationpostalCode == null ? null : WorkflowExpression.Compile(bodyprojectMatchlocationpostalCode);
+            WorkflowExpression.Validate(__workflow_bodyprojectMatchlocationpostalCode, nameof(bodyprojectMatchlocationpostalCode), required: false);
+            var __workflow_bodyprojectMatchlocationcountry = bodyprojectMatchlocationcountry == null ? null : WorkflowExpression.Compile(bodyprojectMatchlocationcountry);
+            WorkflowExpression.Validate(__workflow_bodyprojectMatchlocationcountry, nameof(bodyprojectMatchlocationcountry), required: false);
+            var __workflow_bodyprojectMatchnote = bodyprojectMatchnote == null ? null : WorkflowExpression.Compile(bodyprojectMatchnote);
+            WorkflowExpression.Validate(__workflow_bodyprojectMatchnote, nameof(bodyprojectMatchnote), required: false);
+            var __workflow_bodynote = bodynote == null ? null : WorkflowExpression.Compile(bodynote);
+            WorkflowExpression.Validate(__workflow_bodynote, nameof(bodynote), required: false);
             return new DeferredBodyAction<CalculateMCCResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/mcc", ExpressionConverter.ConvertWithUrlEncoding(transaction, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/mcc", ExpressionConverter.ConvertWithUrlEncoding(__workflow_transaction, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodymccCode != null)
+                if (__workflow_bodymccCode != null)
                 {
-                    body["mcc_code"] = ExpressionConverter.ConvertO(bodymccCode);
+                    body["mcc_code"] = ExpressionConverter.ConvertO(__workflow_bodymccCode);
                     bodypropCount++;
                 }
 
                 var currencyObject = new JObject();
                 var currencyObjectpropCount = 0;
-                if (bodycurrencyvalue != null)
+                if (__workflow_bodycurrencyvalue != null)
                 {
-                    currencyObject["value"] = ExpressionConverter.ConvertO(bodycurrencyvalue);
+                    currencyObject["value"] = ExpressionConverter.ConvertO(__workflow_bodycurrencyvalue);
                     currencyObjectpropCount++;
                 }
 
-                if (bodycurrencyunits != null)
+                if (__workflow_bodycurrencyunits != null)
                 {
-                    currencyObject["units"] = ExpressionConverter.ConvertO(bodycurrencyunits);
+                    currencyObject["units"] = ExpressionConverter.ConvertO(__workflow_bodycurrencyunits);
                     currencyObjectpropCount++;
                 }
 
@@ -395,23 +401,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
 
                 var projectMatchObject = new JObject();
                 var projectMatchObjectpropCount = 0;
-                if (bodyprojectMatchtype != null)
+                if (__workflow_bodyprojectMatchtype != null)
                 {
-                    projectMatchObject["type"] = ExpressionConverter.ConvertO(bodyprojectMatchtype);
+                    projectMatchObject["type"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchtype);
                     projectMatchObjectpropCount++;
                 }
 
                 var locationObject = new JObject();
                 var locationObjectpropCount = 0;
-                if (bodyprojectMatchlocationpostalCode != null)
+                if (__workflow_bodyprojectMatchlocationpostalCode != null)
                 {
-                    locationObject["postal_code"] = ExpressionConverter.ConvertO(bodyprojectMatchlocationpostalCode);
+                    locationObject["postal_code"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchlocationpostalCode);
                     locationObjectpropCount++;
                 }
 
-                if (bodyprojectMatchlocationcountry != null)
+                if (__workflow_bodyprojectMatchlocationcountry != null)
                 {
-                    locationObject["country"] = ExpressionConverter.ConvertO(bodyprojectMatchlocationcountry);
+                    locationObject["country"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchlocationcountry);
                     locationObjectpropCount++;
                 }
 
@@ -421,9 +427,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
                     projectMatchObjectpropCount++;
                 }
 
-                if (bodyprojectMatchnote != null)
+                if (__workflow_bodyprojectMatchnote != null)
                 {
-                    projectMatchObject["note"] = ExpressionConverter.ConvertO(bodyprojectMatchnote);
+                    projectMatchObject["note"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchnote);
                     projectMatchObjectpropCount++;
                 }
 
@@ -433,9 +439,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
                     bodypropCount++;
                 }
 
-                if (bodynote != null)
+                if (__workflow_bodynote != null)
                 {
-                    body["note"] = ExpressionConverter.ConvertO(bodynote);
+                    body["note"] = ExpressionConverter.ConvertO(__workflow_bodynote);
                     bodypropCount++;
                 }
 
@@ -449,30 +455,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
-        [WorkflowExpressionFactory(nameof(__BuildCalculateFreight))]
-        public IBodyWorkflowAction<CalculateFreightResponse> CalculateFreight([WorkflowExpression] Func<string> transaction, [WorkflowExpression] Func<double> bodyweightvalue, [WorkflowExpression] Func<string> bodyweightunits, [WorkflowExpression] Func<string> bodymode = null, [WorkflowExpression] Func<string> bodytype = null, [WorkflowExpression] Func<string> bodydistancevalue = null, [WorkflowExpression] Func<string> bodydistanceunits = null, [WorkflowExpression] Func<string> bodyprojectMatchtype = null, [WorkflowExpression] Func<string> bodyprojectMatchlocationpostalCode = null, [WorkflowExpression] Func<string> bodyprojectMatchlocationcountry = null, [WorkflowExpression] Func<string> bodyprojectMatchnote = null, [WorkflowExpression] Func<string> bodynote = null)
+        public IBodyWorkflowAction<CalculateFreightResponse> CalculateFreight(Expression<Func<string>> transaction, Expression<Func<double>> bodyweightvalue, Expression<Func<string>> bodyweightunits, Expression<Func<string>> bodymode = null, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodydistancevalue = null, Expression<Func<string>> bodydistanceunits = null, Expression<Func<string>> bodyprojectMatchtype = null, Expression<Func<string>> bodyprojectMatchlocationpostalCode = null, Expression<Func<string>> bodyprojectMatchlocationcountry = null, Expression<Func<string>> bodyprojectMatchnote = null, Expression<Func<string>> bodynote = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CalculateFreightResponse> __BuildCalculateFreight(WorkflowExpression<string> transaction, WorkflowExpression<double> bodyweightvalue, WorkflowExpression<string> bodyweightunits, WorkflowExpression<string> bodymode = null, WorkflowExpression<string> bodytype = null, WorkflowExpression<string> bodydistancevalue = null, WorkflowExpression<string> bodydistanceunits = null, WorkflowExpression<string> bodyprojectMatchtype = null, WorkflowExpression<string> bodyprojectMatchlocationpostalCode = null, WorkflowExpression<string> bodyprojectMatchlocationcountry = null, WorkflowExpression<string> bodyprojectMatchnote = null, WorkflowExpression<string> bodynote = null)
-        {
-            WorkflowExpression.Validate(transaction, nameof(transaction), required: true);
-            WorkflowExpression.Validate(bodyweightvalue, nameof(bodyweightvalue), required: true);
-            WorkflowExpression.Validate(bodyweightunits, nameof(bodyweightunits), required: true);
-            WorkflowExpression.Validate(bodymode, nameof(bodymode), required: false);
-            WorkflowExpression.Validate(bodytype, nameof(bodytype), required: false);
-            WorkflowExpression.Validate(bodydistancevalue, nameof(bodydistancevalue), required: false);
-            WorkflowExpression.Validate(bodydistanceunits, nameof(bodydistanceunits), required: false);
-            WorkflowExpression.Validate(bodyprojectMatchtype, nameof(bodyprojectMatchtype), required: false);
-            WorkflowExpression.Validate(bodyprojectMatchlocationpostalCode, nameof(bodyprojectMatchlocationpostalCode), required: false);
-            WorkflowExpression.Validate(bodyprojectMatchlocationcountry, nameof(bodyprojectMatchlocationcountry), required: false);
-            WorkflowExpression.Validate(bodyprojectMatchnote, nameof(bodyprojectMatchnote), required: false);
-            WorkflowExpression.Validate(bodynote, nameof(bodynote), required: false);
+            var __workflow_transaction = transaction == null ? null : WorkflowExpression.Compile(transaction);
+            WorkflowExpression.Validate(__workflow_transaction, nameof(transaction), required: true);
+            var __workflow_bodyweightvalue = bodyweightvalue == null ? null : WorkflowExpression.Compile(bodyweightvalue);
+            WorkflowExpression.Validate(__workflow_bodyweightvalue, nameof(bodyweightvalue), required: true);
+            var __workflow_bodyweightunits = bodyweightunits == null ? null : WorkflowExpression.Compile(bodyweightunits);
+            WorkflowExpression.Validate(__workflow_bodyweightunits, nameof(bodyweightunits), required: true);
+            var __workflow_bodymode = bodymode == null ? null : WorkflowExpression.Compile(bodymode);
+            WorkflowExpression.Validate(__workflow_bodymode, nameof(bodymode), required: false);
+            var __workflow_bodytype = bodytype == null ? null : WorkflowExpression.Compile(bodytype);
+            WorkflowExpression.Validate(__workflow_bodytype, nameof(bodytype), required: false);
+            var __workflow_bodydistancevalue = bodydistancevalue == null ? null : WorkflowExpression.Compile(bodydistancevalue);
+            WorkflowExpression.Validate(__workflow_bodydistancevalue, nameof(bodydistancevalue), required: false);
+            var __workflow_bodydistanceunits = bodydistanceunits == null ? null : WorkflowExpression.Compile(bodydistanceunits);
+            WorkflowExpression.Validate(__workflow_bodydistanceunits, nameof(bodydistanceunits), required: false);
+            var __workflow_bodyprojectMatchtype = bodyprojectMatchtype == null ? null : WorkflowExpression.Compile(bodyprojectMatchtype);
+            WorkflowExpression.Validate(__workflow_bodyprojectMatchtype, nameof(bodyprojectMatchtype), required: false);
+            var __workflow_bodyprojectMatchlocationpostalCode = bodyprojectMatchlocationpostalCode == null ? null : WorkflowExpression.Compile(bodyprojectMatchlocationpostalCode);
+            WorkflowExpression.Validate(__workflow_bodyprojectMatchlocationpostalCode, nameof(bodyprojectMatchlocationpostalCode), required: false);
+            var __workflow_bodyprojectMatchlocationcountry = bodyprojectMatchlocationcountry == null ? null : WorkflowExpression.Compile(bodyprojectMatchlocationcountry);
+            WorkflowExpression.Validate(__workflow_bodyprojectMatchlocationcountry, nameof(bodyprojectMatchlocationcountry), required: false);
+            var __workflow_bodyprojectMatchnote = bodyprojectMatchnote == null ? null : WorkflowExpression.Compile(bodyprojectMatchnote);
+            WorkflowExpression.Validate(__workflow_bodyprojectMatchnote, nameof(bodyprojectMatchnote), required: false);
+            var __workflow_bodynote = bodynote == null ? null : WorkflowExpression.Compile(bodynote);
+            WorkflowExpression.Validate(__workflow_bodynote, nameof(bodynote), required: false);
             return new DeferredBodyAction<CalculateFreightResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/freight", ExpressionConverter.ConvertWithUrlEncoding(transaction, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/freight", ExpressionConverter.ConvertWithUrlEncoding(__workflow_transaction, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -480,38 +491,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
                 var weightObject = new JObject();
                 var weightObjectpropCount = 0;
                 weightObjectpropCount++;
-                weightObject["value"] = ExpressionConverter.ConvertO(bodyweightvalue);
+                weightObject["value"] = ExpressionConverter.ConvertO(__workflow_bodyweightvalue);
                 weightObjectpropCount++;
-                weightObject["units"] = ExpressionConverter.ConvertO(bodyweightunits);
+                weightObject["units"] = ExpressionConverter.ConvertO(__workflow_bodyweightunits);
                 if (weightObjectpropCount > 0)
                 {
                     body["weight"] = weightObject;
                     bodypropCount++;
                 }
 
-                if (bodymode != null)
+                if (__workflow_bodymode != null)
                 {
-                    body["mode"] = ExpressionConverter.ConvertO(bodymode);
+                    body["mode"] = ExpressionConverter.ConvertO(__workflow_bodymode);
                     bodypropCount++;
                 }
 
-                if (bodytype != null)
+                if (__workflow_bodytype != null)
                 {
-                    body["type"] = ExpressionConverter.ConvertO(bodytype);
+                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
                     bodypropCount++;
                 }
 
                 var distanceObject = new JObject();
                 var distanceObjectpropCount = 0;
-                if (bodydistancevalue != null)
+                if (__workflow_bodydistancevalue != null)
                 {
-                    distanceObject["value"] = ExpressionConverter.ConvertO(bodydistancevalue);
+                    distanceObject["value"] = ExpressionConverter.ConvertO(__workflow_bodydistancevalue);
                     distanceObjectpropCount++;
                 }
 
-                if (bodydistanceunits != null)
+                if (__workflow_bodydistanceunits != null)
                 {
-                    distanceObject["units"] = ExpressionConverter.ConvertO(bodydistanceunits);
+                    distanceObject["units"] = ExpressionConverter.ConvertO(__workflow_bodydistanceunits);
                     distanceObjectpropCount++;
                 }
 
@@ -523,23 +534,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
 
                 var projectMatchObject = new JObject();
                 var projectMatchObjectpropCount = 0;
-                if (bodyprojectMatchtype != null)
+                if (__workflow_bodyprojectMatchtype != null)
                 {
-                    projectMatchObject["type"] = ExpressionConverter.ConvertO(bodyprojectMatchtype);
+                    projectMatchObject["type"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchtype);
                     projectMatchObjectpropCount++;
                 }
 
                 var locationObject = new JObject();
                 var locationObjectpropCount = 0;
-                if (bodyprojectMatchlocationpostalCode != null)
+                if (__workflow_bodyprojectMatchlocationpostalCode != null)
                 {
-                    locationObject["postal_code"] = ExpressionConverter.ConvertO(bodyprojectMatchlocationpostalCode);
+                    locationObject["postal_code"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchlocationpostalCode);
                     locationObjectpropCount++;
                 }
 
-                if (bodyprojectMatchlocationcountry != null)
+                if (__workflow_bodyprojectMatchlocationcountry != null)
                 {
-                    locationObject["country"] = ExpressionConverter.ConvertO(bodyprojectMatchlocationcountry);
+                    locationObject["country"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchlocationcountry);
                     locationObjectpropCount++;
                 }
 
@@ -549,9 +560,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
                     projectMatchObjectpropCount++;
                 }
 
-                if (bodyprojectMatchnote != null)
+                if (__workflow_bodyprojectMatchnote != null)
                 {
-                    projectMatchObject["note"] = ExpressionConverter.ConvertO(bodyprojectMatchnote);
+                    projectMatchObject["note"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchnote);
                     projectMatchObjectpropCount++;
                 }
 
@@ -561,9 +572,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
                     bodypropCount++;
                 }
 
-                if (bodynote != null)
+                if (__workflow_bodynote != null)
                 {
-                    body["note"] = ExpressionConverter.ConvertO(bodynote);
+                    body["note"] = ExpressionConverter.ConvertO(__workflow_bodynote);
                     bodypropCount++;
                 }
 
@@ -577,50 +588,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
-        [WorkflowExpressionFactory(nameof(__BuildCalculateFlight))]
-        public IBodyWorkflowAction<CalculateFlightResponse> CalculateFlight([WorkflowExpression] Func<transactionInput> transaction, [WorkflowExpression] Func<string[]> bodyairports, [WorkflowExpression] Func<string> bodyprojectMatchtype = null, [WorkflowExpression] Func<string> bodyprojectMatchlocationpostalCode = null, [WorkflowExpression] Func<string> bodyprojectMatchlocationcountry = null, [WorkflowExpression] Func<string> bodyprojectMatchnote = null, [WorkflowExpression] Func<string> bodynote = null)
+        public IBodyWorkflowAction<CalculateFlightResponse> CalculateFlight(Expression<Func<transactionInput>> transaction, Expression<Func<string[]>> bodyairports, Expression<Func<string>> bodyprojectMatchtype = null, Expression<Func<string>> bodyprojectMatchlocationpostalCode = null, Expression<Func<string>> bodyprojectMatchlocationcountry = null, Expression<Func<string>> bodyprojectMatchnote = null, Expression<Func<string>> bodynote = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CalculateFlightResponse> __BuildCalculateFlight(WorkflowExpression<transactionInput> transaction, WorkflowExpression<string[]> bodyairports, WorkflowExpression<string> bodyprojectMatchtype = null, WorkflowExpression<string> bodyprojectMatchlocationpostalCode = null, WorkflowExpression<string> bodyprojectMatchlocationcountry = null, WorkflowExpression<string> bodyprojectMatchnote = null, WorkflowExpression<string> bodynote = null)
-        {
-            WorkflowExpression.Validate(transaction, nameof(transaction), required: true);
-            WorkflowExpression.Validate(bodyairports, nameof(bodyairports), required: true);
-            WorkflowExpression.Validate(bodyprojectMatchtype, nameof(bodyprojectMatchtype), required: false);
-            WorkflowExpression.Validate(bodyprojectMatchlocationpostalCode, nameof(bodyprojectMatchlocationpostalCode), required: false);
-            WorkflowExpression.Validate(bodyprojectMatchlocationcountry, nameof(bodyprojectMatchlocationcountry), required: false);
-            WorkflowExpression.Validate(bodyprojectMatchnote, nameof(bodyprojectMatchnote), required: false);
-            WorkflowExpression.Validate(bodynote, nameof(bodynote), required: false);
+            var __workflow_transaction = transaction == null ? null : WorkflowExpression.Compile(transaction);
+            WorkflowExpression.Validate(__workflow_transaction, nameof(transaction), required: true);
+            var __workflow_bodyairports = bodyairports == null ? null : WorkflowExpression.Compile(bodyairports);
+            WorkflowExpression.Validate(__workflow_bodyairports, nameof(bodyairports), required: true);
+            var __workflow_bodyprojectMatchtype = bodyprojectMatchtype == null ? null : WorkflowExpression.Compile(bodyprojectMatchtype);
+            WorkflowExpression.Validate(__workflow_bodyprojectMatchtype, nameof(bodyprojectMatchtype), required: false);
+            var __workflow_bodyprojectMatchlocationpostalCode = bodyprojectMatchlocationpostalCode == null ? null : WorkflowExpression.Compile(bodyprojectMatchlocationpostalCode);
+            WorkflowExpression.Validate(__workflow_bodyprojectMatchlocationpostalCode, nameof(bodyprojectMatchlocationpostalCode), required: false);
+            var __workflow_bodyprojectMatchlocationcountry = bodyprojectMatchlocationcountry == null ? null : WorkflowExpression.Compile(bodyprojectMatchlocationcountry);
+            WorkflowExpression.Validate(__workflow_bodyprojectMatchlocationcountry, nameof(bodyprojectMatchlocationcountry), required: false);
+            var __workflow_bodyprojectMatchnote = bodyprojectMatchnote == null ? null : WorkflowExpression.Compile(bodyprojectMatchnote);
+            WorkflowExpression.Validate(__workflow_bodyprojectMatchnote, nameof(bodyprojectMatchnote), required: false);
+            var __workflow_bodynote = bodynote == null ? null : WorkflowExpression.Compile(bodynote);
+            WorkflowExpression.Validate(__workflow_bodynote, nameof(bodynote), required: false);
             return new DeferredBodyAction<CalculateFlightResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/flight", ExpressionConverter.ConvertWithUrlEncoding(transaction, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/flight", ExpressionConverter.ConvertWithUrlEncoding(__workflow_transaction, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["airports"] = ExpressionConverter.ConvertO(bodyairports);
+                body["airports"] = ExpressionConverter.ConvertO(__workflow_bodyairports);
                 var projectMatchObject = new JObject();
                 var projectMatchObjectpropCount = 0;
-                if (bodyprojectMatchtype != null)
+                if (__workflow_bodyprojectMatchtype != null)
                 {
-                    projectMatchObject["type"] = ExpressionConverter.ConvertO(bodyprojectMatchtype);
+                    projectMatchObject["type"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchtype);
                     projectMatchObjectpropCount++;
                 }
 
                 var locationObject = new JObject();
                 var locationObjectpropCount = 0;
-                if (bodyprojectMatchlocationpostalCode != null)
+                if (__workflow_bodyprojectMatchlocationpostalCode != null)
                 {
-                    locationObject["postal_code"] = ExpressionConverter.ConvertO(bodyprojectMatchlocationpostalCode);
+                    locationObject["postal_code"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchlocationpostalCode);
                     locationObjectpropCount++;
                 }
 
-                if (bodyprojectMatchlocationcountry != null)
+                if (__workflow_bodyprojectMatchlocationcountry != null)
                 {
-                    locationObject["country"] = ExpressionConverter.ConvertO(bodyprojectMatchlocationcountry);
+                    locationObject["country"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchlocationcountry);
                     locationObjectpropCount++;
                 }
 
@@ -630,9 +641,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
                     projectMatchObjectpropCount++;
                 }
 
-                if (bodyprojectMatchnote != null)
+                if (__workflow_bodyprojectMatchnote != null)
                 {
-                    projectMatchObject["note"] = ExpressionConverter.ConvertO(bodyprojectMatchnote);
+                    projectMatchObject["note"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchnote);
                     projectMatchObjectpropCount++;
                 }
 
@@ -642,9 +653,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
                     bodypropCount++;
                 }
 
-                if (bodynote != null)
+                if (__workflow_bodynote != null)
                 {
-                    body["note"] = ExpressionConverter.ConvertO(bodynote);
+                    body["note"] = ExpressionConverter.ConvertO(__workflow_bodynote);
                     bodypropCount++;
                 }
 
@@ -658,44 +669,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
-        [WorkflowExpressionFactory(nameof(__BuildCalculateVehicle))]
-        public IBodyWorkflowAction<CalculateVehicleResponse> CalculateVehicle([WorkflowExpression] Func<transactionInput> transaction, [WorkflowExpression] Func<double> bodydistancevalue = null, [WorkflowExpression] Func<string> bodydistanceunits = null, [WorkflowExpression] Func<double> bodyfuelEfficiencyvalue = null, [WorkflowExpression] Func<string> bodyfuelEfficiencyunits = null, [WorkflowExpression] Func<string> bodyfuelEfficiencyof = null, [WorkflowExpression] Func<string> bodyprojectMatchtype = null, [WorkflowExpression] Func<string> bodyprojectMatchlocationpostalCode = null, [WorkflowExpression] Func<string> bodyprojectMatchlocationcountry = null, [WorkflowExpression] Func<string> bodyprojectMatchnote = null, [WorkflowExpression] Func<string> bodynote = null)
+        public IBodyWorkflowAction<CalculateVehicleResponse> CalculateVehicle(Expression<Func<transactionInput>> transaction, Expression<Func<double>> bodydistancevalue = null, Expression<Func<string>> bodydistanceunits = null, Expression<Func<double>> bodyfuelEfficiencyvalue = null, Expression<Func<string>> bodyfuelEfficiencyunits = null, Expression<Func<string>> bodyfuelEfficiencyof = null, Expression<Func<string>> bodyprojectMatchtype = null, Expression<Func<string>> bodyprojectMatchlocationpostalCode = null, Expression<Func<string>> bodyprojectMatchlocationcountry = null, Expression<Func<string>> bodyprojectMatchnote = null, Expression<Func<string>> bodynote = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CalculateVehicleResponse> __BuildCalculateVehicle(WorkflowExpression<transactionInput> transaction, WorkflowExpression<double> bodydistancevalue = null, WorkflowExpression<string> bodydistanceunits = null, WorkflowExpression<double> bodyfuelEfficiencyvalue = null, WorkflowExpression<string> bodyfuelEfficiencyunits = null, WorkflowExpression<string> bodyfuelEfficiencyof = null, WorkflowExpression<string> bodyprojectMatchtype = null, WorkflowExpression<string> bodyprojectMatchlocationpostalCode = null, WorkflowExpression<string> bodyprojectMatchlocationcountry = null, WorkflowExpression<string> bodyprojectMatchnote = null, WorkflowExpression<string> bodynote = null)
-        {
-            WorkflowExpression.Validate(transaction, nameof(transaction), required: true);
-            WorkflowExpression.Validate(bodydistancevalue, nameof(bodydistancevalue), required: false);
-            WorkflowExpression.Validate(bodydistanceunits, nameof(bodydistanceunits), required: false);
-            WorkflowExpression.Validate(bodyfuelEfficiencyvalue, nameof(bodyfuelEfficiencyvalue), required: false);
-            WorkflowExpression.Validate(bodyfuelEfficiencyunits, nameof(bodyfuelEfficiencyunits), required: false);
-            WorkflowExpression.Validate(bodyfuelEfficiencyof, nameof(bodyfuelEfficiencyof), required: false);
-            WorkflowExpression.Validate(bodyprojectMatchtype, nameof(bodyprojectMatchtype), required: false);
-            WorkflowExpression.Validate(bodyprojectMatchlocationpostalCode, nameof(bodyprojectMatchlocationpostalCode), required: false);
-            WorkflowExpression.Validate(bodyprojectMatchlocationcountry, nameof(bodyprojectMatchlocationcountry), required: false);
-            WorkflowExpression.Validate(bodyprojectMatchnote, nameof(bodyprojectMatchnote), required: false);
-            WorkflowExpression.Validate(bodynote, nameof(bodynote), required: false);
+            var __workflow_transaction = transaction == null ? null : WorkflowExpression.Compile(transaction);
+            WorkflowExpression.Validate(__workflow_transaction, nameof(transaction), required: true);
+            var __workflow_bodydistancevalue = bodydistancevalue == null ? null : WorkflowExpression.Compile(bodydistancevalue);
+            WorkflowExpression.Validate(__workflow_bodydistancevalue, nameof(bodydistancevalue), required: false);
+            var __workflow_bodydistanceunits = bodydistanceunits == null ? null : WorkflowExpression.Compile(bodydistanceunits);
+            WorkflowExpression.Validate(__workflow_bodydistanceunits, nameof(bodydistanceunits), required: false);
+            var __workflow_bodyfuelEfficiencyvalue = bodyfuelEfficiencyvalue == null ? null : WorkflowExpression.Compile(bodyfuelEfficiencyvalue);
+            WorkflowExpression.Validate(__workflow_bodyfuelEfficiencyvalue, nameof(bodyfuelEfficiencyvalue), required: false);
+            var __workflow_bodyfuelEfficiencyunits = bodyfuelEfficiencyunits == null ? null : WorkflowExpression.Compile(bodyfuelEfficiencyunits);
+            WorkflowExpression.Validate(__workflow_bodyfuelEfficiencyunits, nameof(bodyfuelEfficiencyunits), required: false);
+            var __workflow_bodyfuelEfficiencyof = bodyfuelEfficiencyof == null ? null : WorkflowExpression.Compile(bodyfuelEfficiencyof);
+            WorkflowExpression.Validate(__workflow_bodyfuelEfficiencyof, nameof(bodyfuelEfficiencyof), required: false);
+            var __workflow_bodyprojectMatchtype = bodyprojectMatchtype == null ? null : WorkflowExpression.Compile(bodyprojectMatchtype);
+            WorkflowExpression.Validate(__workflow_bodyprojectMatchtype, nameof(bodyprojectMatchtype), required: false);
+            var __workflow_bodyprojectMatchlocationpostalCode = bodyprojectMatchlocationpostalCode == null ? null : WorkflowExpression.Compile(bodyprojectMatchlocationpostalCode);
+            WorkflowExpression.Validate(__workflow_bodyprojectMatchlocationpostalCode, nameof(bodyprojectMatchlocationpostalCode), required: false);
+            var __workflow_bodyprojectMatchlocationcountry = bodyprojectMatchlocationcountry == null ? null : WorkflowExpression.Compile(bodyprojectMatchlocationcountry);
+            WorkflowExpression.Validate(__workflow_bodyprojectMatchlocationcountry, nameof(bodyprojectMatchlocationcountry), required: false);
+            var __workflow_bodyprojectMatchnote = bodyprojectMatchnote == null ? null : WorkflowExpression.Compile(bodyprojectMatchnote);
+            WorkflowExpression.Validate(__workflow_bodyprojectMatchnote, nameof(bodyprojectMatchnote), required: false);
+            var __workflow_bodynote = bodynote == null ? null : WorkflowExpression.Compile(bodynote);
+            WorkflowExpression.Validate(__workflow_bodynote, nameof(bodynote), required: false);
             return new DeferredBodyAction<CalculateVehicleResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/vehicle", ExpressionConverter.ConvertWithUrlEncoding(transaction, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/vehicle", ExpressionConverter.ConvertWithUrlEncoding(__workflow_transaction, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 var distanceObject = new JObject();
                 var distanceObjectpropCount = 0;
-                if (bodydistancevalue != null)
+                if (__workflow_bodydistancevalue != null)
                 {
-                    distanceObject["value"] = ExpressionConverter.ConvertO(bodydistancevalue);
+                    distanceObject["value"] = ExpressionConverter.ConvertO(__workflow_bodydistancevalue);
                     distanceObjectpropCount++;
                 }
 
-                if (bodydistanceunits != null)
+                if (__workflow_bodydistanceunits != null)
                 {
-                    distanceObject["units"] = ExpressionConverter.ConvertO(bodydistanceunits);
+                    distanceObject["units"] = ExpressionConverter.ConvertO(__workflow_bodydistanceunits);
                     distanceObjectpropCount++;
                 }
 
@@ -707,21 +722,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
 
                 var fuelEfficiencyObject = new JObject();
                 var fuelEfficiencyObjectpropCount = 0;
-                if (bodyfuelEfficiencyvalue != null)
+                if (__workflow_bodyfuelEfficiencyvalue != null)
                 {
-                    fuelEfficiencyObject["value"] = ExpressionConverter.ConvertO(bodyfuelEfficiencyvalue);
+                    fuelEfficiencyObject["value"] = ExpressionConverter.ConvertO(__workflow_bodyfuelEfficiencyvalue);
                     fuelEfficiencyObjectpropCount++;
                 }
 
-                if (bodyfuelEfficiencyunits != null)
+                if (__workflow_bodyfuelEfficiencyunits != null)
                 {
-                    fuelEfficiencyObject["units"] = ExpressionConverter.ConvertO(bodyfuelEfficiencyunits);
+                    fuelEfficiencyObject["units"] = ExpressionConverter.ConvertO(__workflow_bodyfuelEfficiencyunits);
                     fuelEfficiencyObjectpropCount++;
                 }
 
-                if (bodyfuelEfficiencyof != null)
+                if (__workflow_bodyfuelEfficiencyof != null)
                 {
-                    fuelEfficiencyObject["of"] = ExpressionConverter.ConvertO(bodyfuelEfficiencyof);
+                    fuelEfficiencyObject["of"] = ExpressionConverter.ConvertO(__workflow_bodyfuelEfficiencyof);
                     fuelEfficiencyObjectpropCount++;
                 }
 
@@ -733,23 +748,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
 
                 var projectMatchObject = new JObject();
                 var projectMatchObjectpropCount = 0;
-                if (bodyprojectMatchtype != null)
+                if (__workflow_bodyprojectMatchtype != null)
                 {
-                    projectMatchObject["type"] = ExpressionConverter.ConvertO(bodyprojectMatchtype);
+                    projectMatchObject["type"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchtype);
                     projectMatchObjectpropCount++;
                 }
 
                 var locationObject = new JObject();
                 var locationObjectpropCount = 0;
-                if (bodyprojectMatchlocationpostalCode != null)
+                if (__workflow_bodyprojectMatchlocationpostalCode != null)
                 {
-                    locationObject["postal_code"] = ExpressionConverter.ConvertO(bodyprojectMatchlocationpostalCode);
+                    locationObject["postal_code"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchlocationpostalCode);
                     locationObjectpropCount++;
                 }
 
-                if (bodyprojectMatchlocationcountry != null)
+                if (__workflow_bodyprojectMatchlocationcountry != null)
                 {
-                    locationObject["country"] = ExpressionConverter.ConvertO(bodyprojectMatchlocationcountry);
+                    locationObject["country"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchlocationcountry);
                     locationObjectpropCount++;
                 }
 
@@ -759,9 +774,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
                     projectMatchObjectpropCount++;
                 }
 
-                if (bodyprojectMatchnote != null)
+                if (__workflow_bodyprojectMatchnote != null)
                 {
-                    projectMatchObject["note"] = ExpressionConverter.ConvertO(bodyprojectMatchnote);
+                    projectMatchObject["note"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchnote);
                     projectMatchObjectpropCount++;
                 }
 
@@ -771,9 +786,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
                     bodypropCount++;
                 }
 
-                if (bodynote != null)
+                if (__workflow_bodynote != null)
                 {
-                    body["note"] = ExpressionConverter.ConvertO(bodynote);
+                    body["note"] = ExpressionConverter.ConvertO(__workflow_bodynote);
                     bodypropCount++;
                 }
 
@@ -787,41 +802,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
-        [WorkflowExpressionFactory(nameof(__BuildCalculateElectricity))]
-        public IBodyWorkflowAction<CalculateElectricityResponse> CalculateElectricity([WorkflowExpression] Func<transactionInput> transaction, [WorkflowExpression] Func<double> bodyenergyvalue = null, [WorkflowExpression] Func<bodyenergyunitsInput> bodyenergyunits = null, [WorkflowExpression] Func<string> bodyprojectMatchtype = null, [WorkflowExpression] Func<string> bodyprojectMatchlocationpostalCode = null, [WorkflowExpression] Func<string> bodyprojectMatchlocationcountry = null, [WorkflowExpression] Func<string> bodyprojectMatchnote = null, [WorkflowExpression] Func<string> bodynote = null)
+        public IBodyWorkflowAction<CalculateElectricityResponse> CalculateElectricity(Expression<Func<transactionInput>> transaction, Expression<Func<double>> bodyenergyvalue = null, Expression<Func<bodyenergyunitsInput>> bodyenergyunits = null, Expression<Func<string>> bodyprojectMatchtype = null, Expression<Func<string>> bodyprojectMatchlocationpostalCode = null, Expression<Func<string>> bodyprojectMatchlocationcountry = null, Expression<Func<string>> bodyprojectMatchnote = null, Expression<Func<string>> bodynote = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CalculateElectricityResponse> __BuildCalculateElectricity(WorkflowExpression<transactionInput> transaction, WorkflowExpression<double> bodyenergyvalue = null, WorkflowExpression<bodyenergyunitsInput> bodyenergyunits = null, WorkflowExpression<string> bodyprojectMatchtype = null, WorkflowExpression<string> bodyprojectMatchlocationpostalCode = null, WorkflowExpression<string> bodyprojectMatchlocationcountry = null, WorkflowExpression<string> bodyprojectMatchnote = null, WorkflowExpression<string> bodynote = null)
-        {
-            WorkflowExpression.Validate(transaction, nameof(transaction), required: true);
-            WorkflowExpression.Validate(bodyenergyvalue, nameof(bodyenergyvalue), required: false);
-            WorkflowExpression.Validate(bodyenergyunits, nameof(bodyenergyunits), required: false);
-            WorkflowExpression.Validate(bodyprojectMatchtype, nameof(bodyprojectMatchtype), required: false);
-            WorkflowExpression.Validate(bodyprojectMatchlocationpostalCode, nameof(bodyprojectMatchlocationpostalCode), required: false);
-            WorkflowExpression.Validate(bodyprojectMatchlocationcountry, nameof(bodyprojectMatchlocationcountry), required: false);
-            WorkflowExpression.Validate(bodyprojectMatchnote, nameof(bodyprojectMatchnote), required: false);
-            WorkflowExpression.Validate(bodynote, nameof(bodynote), required: false);
+            var __workflow_transaction = transaction == null ? null : WorkflowExpression.Compile(transaction);
+            WorkflowExpression.Validate(__workflow_transaction, nameof(transaction), required: true);
+            var __workflow_bodyenergyvalue = bodyenergyvalue == null ? null : WorkflowExpression.Compile(bodyenergyvalue);
+            WorkflowExpression.Validate(__workflow_bodyenergyvalue, nameof(bodyenergyvalue), required: false);
+            var __workflow_bodyenergyunits = bodyenergyunits == null ? null : WorkflowExpression.Compile(bodyenergyunits);
+            WorkflowExpression.Validate(__workflow_bodyenergyunits, nameof(bodyenergyunits), required: false);
+            var __workflow_bodyprojectMatchtype = bodyprojectMatchtype == null ? null : WorkflowExpression.Compile(bodyprojectMatchtype);
+            WorkflowExpression.Validate(__workflow_bodyprojectMatchtype, nameof(bodyprojectMatchtype), required: false);
+            var __workflow_bodyprojectMatchlocationpostalCode = bodyprojectMatchlocationpostalCode == null ? null : WorkflowExpression.Compile(bodyprojectMatchlocationpostalCode);
+            WorkflowExpression.Validate(__workflow_bodyprojectMatchlocationpostalCode, nameof(bodyprojectMatchlocationpostalCode), required: false);
+            var __workflow_bodyprojectMatchlocationcountry = bodyprojectMatchlocationcountry == null ? null : WorkflowExpression.Compile(bodyprojectMatchlocationcountry);
+            WorkflowExpression.Validate(__workflow_bodyprojectMatchlocationcountry, nameof(bodyprojectMatchlocationcountry), required: false);
+            var __workflow_bodyprojectMatchnote = bodyprojectMatchnote == null ? null : WorkflowExpression.Compile(bodyprojectMatchnote);
+            WorkflowExpression.Validate(__workflow_bodyprojectMatchnote, nameof(bodyprojectMatchnote), required: false);
+            var __workflow_bodynote = bodynote == null ? null : WorkflowExpression.Compile(bodynote);
+            WorkflowExpression.Validate(__workflow_bodynote, nameof(bodynote), required: false);
             return new DeferredBodyAction<CalculateElectricityResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/electricity", ExpressionConverter.ConvertWithUrlEncoding(transaction, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/electricity", ExpressionConverter.ConvertWithUrlEncoding(__workflow_transaction, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 var energyObject = new JObject();
                 var energyObjectpropCount = 0;
-                if (bodyenergyvalue != null)
+                if (__workflow_bodyenergyvalue != null)
                 {
-                    energyObject["value"] = ExpressionConverter.ConvertO(bodyenergyvalue);
+                    energyObject["value"] = ExpressionConverter.ConvertO(__workflow_bodyenergyvalue);
                     energyObjectpropCount++;
                 }
 
-                if (bodyenergyunits != null)
+                if (__workflow_bodyenergyunits != null)
                 {
-                    energyObject["units"] = ExpressionConverter.ConvertO(bodyenergyunits);
+                    energyObject["units"] = ExpressionConverter.ConvertO(__workflow_bodyenergyunits);
                     energyObjectpropCount++;
                 }
 
@@ -833,23 +849,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
 
                 var projectMatchObject = new JObject();
                 var projectMatchObjectpropCount = 0;
-                if (bodyprojectMatchtype != null)
+                if (__workflow_bodyprojectMatchtype != null)
                 {
-                    projectMatchObject["type"] = ExpressionConverter.ConvertO(bodyprojectMatchtype);
+                    projectMatchObject["type"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchtype);
                     projectMatchObjectpropCount++;
                 }
 
                 var locationObject = new JObject();
                 var locationObjectpropCount = 0;
-                if (bodyprojectMatchlocationpostalCode != null)
+                if (__workflow_bodyprojectMatchlocationpostalCode != null)
                 {
-                    locationObject["postal_code"] = ExpressionConverter.ConvertO(bodyprojectMatchlocationpostalCode);
+                    locationObject["postal_code"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchlocationpostalCode);
                     locationObjectpropCount++;
                 }
 
-                if (bodyprojectMatchlocationcountry != null)
+                if (__workflow_bodyprojectMatchlocationcountry != null)
                 {
-                    locationObject["country"] = ExpressionConverter.ConvertO(bodyprojectMatchlocationcountry);
+                    locationObject["country"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchlocationcountry);
                     locationObjectpropCount++;
                 }
 
@@ -859,9 +875,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
                     projectMatchObjectpropCount++;
                 }
 
-                if (bodyprojectMatchnote != null)
+                if (__workflow_bodyprojectMatchnote != null)
                 {
-                    projectMatchObject["note"] = ExpressionConverter.ConvertO(bodyprojectMatchnote);
+                    projectMatchObject["note"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchnote);
                     projectMatchObjectpropCount++;
                 }
 
@@ -871,9 +887,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
                     bodypropCount++;
                 }
 
-                if (bodynote != null)
+                if (__workflow_bodynote != null)
                 {
-                    body["note"] = ExpressionConverter.ConvertO(bodynote);
+                    body["note"] = ExpressionConverter.ConvertO(__workflow_bodynote);
                     bodypropCount++;
                 }
 
@@ -887,19 +903,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
-        [WorkflowExpressionFactory(nameof(__BuildProjectDetails))]
-        public IBodyWorkflowAction<ProjectDetailsResponse> ProjectDetails([WorkflowExpression] Func<string> projectId)
+        public IBodyWorkflowAction<ProjectDetailsResponse> ProjectDetails(Expression<Func<string>> projectId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ProjectDetailsResponse> __BuildProjectDetails(WorkflowExpression<string> projectId)
-        {
-            WorkflowExpression.Validate(projectId, nameof(projectId), required: true);
+            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
+            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
             return new DeferredBodyAction<ProjectDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/project/{0}", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/project/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ProjectDetailsResponse>(callPayload);
@@ -907,19 +917,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
-        [WorkflowExpressionFactory(nameof(__BuildPortfolioDetails))]
-        public IBodyWorkflowAction<PortfolioDetailsResponse> PortfolioDetails([WorkflowExpression] Func<string> portfolioId)
+        public IBodyWorkflowAction<PortfolioDetailsResponse> PortfolioDetails(Expression<Func<string>> portfolioId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PortfolioDetailsResponse> __BuildPortfolioDetails(WorkflowExpression<string> portfolioId)
-        {
-            WorkflowExpression.Validate(portfolioId, nameof(portfolioId), required: true);
+            var __workflow_portfolioId = portfolioId == null ? null : WorkflowExpression.Compile(portfolioId);
+            WorkflowExpression.Validate(__workflow_portfolioId, nameof(portfolioId), required: true);
             return new DeferredBodyAction<PortfolioDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/portfolio/{0}", ExpressionConverter.ConvertWithUrlEncoding(portfolioId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/portfolio/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_portfolioId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<PortfolioDetailsResponse>(callPayload);
@@ -945,16 +949,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
-        [WorkflowExpressionFactory(nameof(__BuildConvertEstimate))]
-        public IBodyWorkflowAction<ConvertEstimateResponse> ConvertEstimate([WorkflowExpression] Func<string> bodytransactionID)
+        public IBodyWorkflowAction<ConvertEstimateResponse> ConvertEstimate(Expression<Func<string>> bodytransactionID)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ConvertEstimateResponse> __BuildConvertEstimate(WorkflowExpression<string> bodytransactionID)
-        {
-            WorkflowExpression.Validate(bodytransactionID, nameof(bodytransactionID), required: true);
+            var __workflow_bodytransactionID = bodytransactionID == null ? null : WorkflowExpression.Compile(bodytransactionID);
+            WorkflowExpression.Validate(__workflow_bodytransactionID, nameof(bodytransactionID), required: true);
             return new DeferredBodyAction<ConvertEstimateResponse>(() =>
             {
                 var apiCallPath = "/purchases";
@@ -963,7 +961,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["transaction_ID"] = ExpressionConverter.ConvertO(bodytransactionID);
+                body["transaction_ID"] = ExpressionConverter.ConvertO(__workflow_bodytransactionID);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

@@ -1,30 +1,26 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgelake
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class KnowledgelakeActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "knowledgelake")]
-        [WorkflowExpressionFactory(nameof(__BuildImportJobs))]
-        public IBodyWorkflowAction<ImportJobsPostResponse> ImportJobs([WorkflowExpression] Func<string> batchimportData, [WorkflowExpression] Func<string> batchnameForImport, [WorkflowExpression] Func<string> batchsecurityToken, [WorkflowExpression] Func<batchrPAEnvironmentInput> batchrPAEnvironment)
+        public IBodyWorkflowAction<ImportJobsPostResponse> ImportJobs(Expression<Func<string>> batchimportData, Expression<Func<string>> batchnameForImport, Expression<Func<string>> batchsecurityToken, Expression<Func<batchrPAEnvironmentInput>> batchrPAEnvironment)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ImportJobsPostResponse> __BuildImportJobs(WorkflowExpression<string> batchimportData, WorkflowExpression<string> batchnameForImport, WorkflowExpression<string> batchsecurityToken, WorkflowExpression<batchrPAEnvironmentInput> batchrPAEnvironment)
-        {
-            WorkflowExpression.Validate(batchimportData, nameof(batchimportData), required: true);
-            WorkflowExpression.Validate(batchnameForImport, nameof(batchnameForImport), required: true);
-            WorkflowExpression.Validate(batchsecurityToken, nameof(batchsecurityToken), required: true);
-            WorkflowExpression.Validate(batchrPAEnvironment, nameof(batchrPAEnvironment), required: true);
+            var __workflow_batchimportData = batchimportData == null ? null : WorkflowExpression.Compile(batchimportData);
+            WorkflowExpression.Validate(__workflow_batchimportData, nameof(batchimportData), required: true);
+            var __workflow_batchnameForImport = batchnameForImport == null ? null : WorkflowExpression.Compile(batchnameForImport);
+            WorkflowExpression.Validate(__workflow_batchnameForImport, nameof(batchnameForImport), required: true);
+            var __workflow_batchsecurityToken = batchsecurityToken == null ? null : WorkflowExpression.Compile(batchsecurityToken);
+            WorkflowExpression.Validate(__workflow_batchsecurityToken, nameof(batchsecurityToken), required: true);
+            var __workflow_batchrPAEnvironment = batchrPAEnvironment == null ? null : WorkflowExpression.Compile(batchrPAEnvironment);
+            WorkflowExpression.Validate(__workflow_batchrPAEnvironment, nameof(batchrPAEnvironment), required: true);
             return new DeferredBodyAction<ImportJobsPostResponse>(() =>
             {
                 var apiCallPath = "/ImportJobs";
@@ -33,13 +29,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgelake
                 var batch = new JObject();
                 var batchpropCount = 0;
                 batchpropCount++;
-                batch["Data"] = ExpressionConverter.ConvertO(batchimportData);
+                batch["Data"] = ExpressionConverter.ConvertO(__workflow_batchimportData);
                 batchpropCount++;
-                batch["FileName"] = ExpressionConverter.ConvertO(batchnameForImport);
+                batch["FileName"] = ExpressionConverter.ConvertO(__workflow_batchnameForImport);
                 batchpropCount++;
-                batch["SecurityKey"] = ExpressionConverter.ConvertO(batchsecurityToken);
+                batch["SecurityKey"] = ExpressionConverter.ConvertO(__workflow_batchsecurityToken);
                 batchpropCount++;
-                batch["Version"] = ExpressionConverter.ConvertO(batchrPAEnvironment);
+                batch["Version"] = ExpressionConverter.ConvertO(__workflow_batchrPAEnvironment);
                 if (batchpropCount > 0)
                 {
                     callPayload.Body = batch;

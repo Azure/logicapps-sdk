@@ -1,27 +1,20 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mimeautomationip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class MimeautomationipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mimeautomationip")]
-        [WorkflowExpressionFactory(nameof(__BuildExtractFiles))]
-        public IBodyWorkflowAction<Attachment[]> ExtractFiles([WorkflowExpression] Func<string> bodycontent)
+        public IBodyWorkflowAction<Attachment[]> ExtractFiles(Expression<Func<string>> bodycontent)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Attachment[]> __BuildExtractFiles(WorkflowExpression<string> bodycontent)
-        {
-            WorkflowExpression.Validate(bodycontent, nameof(bodycontent), required: true);
+            var __workflow_bodycontent = bodycontent == null ? null : WorkflowExpression.Compile(bodycontent);
+            WorkflowExpression.Validate(__workflow_bodycontent, nameof(bodycontent), required: true);
             return new DeferredBodyAction<Attachment[]>(() =>
             {
                 var apiCallPath = "/MimeAutomation/ExtractFiles";
@@ -30,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mimeautomationip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["content"] = ExpressionConverter.ConvertO(bodycontent);
+                body["content"] = ExpressionConverter.ConvertO(__workflow_bodycontent);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -41,16 +34,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mimeautomationip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mimeautomationip")]
-        [WorkflowExpressionFactory(nameof(__BuildExtractFilesFromEml))]
-        public IBodyWorkflowAction<MimeAttachment[]> ExtractFilesFromEml([WorkflowExpression] Func<string> bodycontent)
+        public IBodyWorkflowAction<MimeAttachment[]> ExtractFilesFromEml(Expression<Func<string>> bodycontent)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MimeAttachment[]> __BuildExtractFilesFromEml(WorkflowExpression<string> bodycontent)
-        {
-            WorkflowExpression.Validate(bodycontent, nameof(bodycontent), required: true);
+            var __workflow_bodycontent = bodycontent == null ? null : WorkflowExpression.Compile(bodycontent);
+            WorkflowExpression.Validate(__workflow_bodycontent, nameof(bodycontent), required: true);
             return new DeferredBodyAction<MimeAttachment[]>(() =>
             {
                 var apiCallPath = "/MimeAutomation/ExtractFilesFromEml";
@@ -59,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mimeautomationip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["content"] = ExpressionConverter.ConvertO(bodycontent);
+                body["content"] = ExpressionConverter.ConvertO(__workflow_bodycontent);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

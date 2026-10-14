@@ -1,30 +1,26 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class IntercomActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intercom")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateUser))]
-        public IBodyWorkflowAction<UserResponse> CreateUser([WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyphone = null, [WorkflowExpression] Func<string> bodycompanyId = null)
+        public IBodyWorkflowAction<UserResponse> CreateUser(Expression<Func<string>> bodyemail, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyphone = null, Expression<Func<string>> bodycompanyId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UserResponse> __BuildCreateUser(WorkflowExpression<string> bodyemail, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyphone = null, WorkflowExpression<string> bodycompanyId = null)
-        {
-            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: true);
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
-            WorkflowExpression.Validate(bodyphone, nameof(bodyphone), required: false);
-            WorkflowExpression.Validate(bodycompanyId, nameof(bodycompanyId), required: false);
+            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
+            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
+            var __workflow_bodyphone = bodyphone == null ? null : WorkflowExpression.Compile(bodyphone);
+            WorkflowExpression.Validate(__workflow_bodyphone, nameof(bodyphone), required: false);
+            var __workflow_bodycompanyId = bodycompanyId == null ? null : WorkflowExpression.Compile(bodycompanyId);
+            WorkflowExpression.Validate(__workflow_bodycompanyId, nameof(bodycompanyId), required: false);
             return new DeferredBodyAction<UserResponse>(() =>
             {
                 var apiCallPath = "/users";
@@ -33,22 +29,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
-                if (bodyname != null)
+                body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
+                if (__workflow_bodyname != null)
                 {
-                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
                     bodypropCount++;
                 }
 
-                if (bodyphone != null)
+                if (__workflow_bodyphone != null)
                 {
-                    body["phone"] = ExpressionConverter.ConvertO(bodyphone);
+                    body["phone"] = ExpressionConverter.ConvertO(__workflow_bodyphone);
                     bodypropCount++;
                 }
 
-                if (bodycompanyId != null)
+                if (__workflow_bodycompanyId != null)
                 {
-                    body["companies"] = ExpressionConverter.ConvertO(bodycompanyId);
+                    body["companies"] = ExpressionConverter.ConvertO(__workflow_bodycompanyId);
                     bodypropCount++;
                 }
 
@@ -71,20 +67,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intercom")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateLead))]
-        public IBodyWorkflowAction<LeadResponse> CreateLead([WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyphone = null, [WorkflowExpression] Func<string> bodyavatarimageURL = null, [WorkflowExpression] Func<string> bodycompanyId = null)
+        public IBodyWorkflowAction<LeadResponse> CreateLead(Expression<Func<string>> bodyemail, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyphone = null, Expression<Func<string>> bodyavatarimageURL = null, Expression<Func<string>> bodycompanyId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<LeadResponse> __BuildCreateLead(WorkflowExpression<string> bodyemail, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyphone = null, WorkflowExpression<string> bodyavatarimageURL = null, WorkflowExpression<string> bodycompanyId = null)
-        {
-            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: true);
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
-            WorkflowExpression.Validate(bodyphone, nameof(bodyphone), required: false);
-            WorkflowExpression.Validate(bodyavatarimageURL, nameof(bodyavatarimageURL), required: false);
-            WorkflowExpression.Validate(bodycompanyId, nameof(bodycompanyId), required: false);
+            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
+            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
+            var __workflow_bodyphone = bodyphone == null ? null : WorkflowExpression.Compile(bodyphone);
+            WorkflowExpression.Validate(__workflow_bodyphone, nameof(bodyphone), required: false);
+            var __workflow_bodyavatarimageURL = bodyavatarimageURL == null ? null : WorkflowExpression.Compile(bodyavatarimageURL);
+            WorkflowExpression.Validate(__workflow_bodyavatarimageURL, nameof(bodyavatarimageURL), required: false);
+            var __workflow_bodycompanyId = bodycompanyId == null ? null : WorkflowExpression.Compile(bodycompanyId);
+            WorkflowExpression.Validate(__workflow_bodycompanyId, nameof(bodycompanyId), required: false);
             return new DeferredBodyAction<LeadResponse>(() =>
             {
                 var apiCallPath = "/contacts";
@@ -93,24 +87,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
-                if (bodyname != null)
+                body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
+                if (__workflow_bodyname != null)
                 {
-                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
                     bodypropCount++;
                 }
 
-                if (bodyphone != null)
+                if (__workflow_bodyphone != null)
                 {
-                    body["phone"] = ExpressionConverter.ConvertO(bodyphone);
+                    body["phone"] = ExpressionConverter.ConvertO(__workflow_bodyphone);
                     bodypropCount++;
                 }
 
                 var avatarObject = new JObject();
                 var avatarObjectpropCount = 0;
-                if (bodyavatarimageURL != null)
+                if (__workflow_bodyavatarimageURL != null)
                 {
-                    avatarObject["image_url"] = ExpressionConverter.ConvertO(bodyavatarimageURL);
+                    avatarObject["image_url"] = ExpressionConverter.ConvertO(__workflow_bodyavatarimageURL);
                     avatarObjectpropCount++;
                 }
 
@@ -120,9 +114,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
                     bodypropCount++;
                 }
 
-                if (bodycompanyId != null)
+                if (__workflow_bodycompanyId != null)
                 {
-                    body["companies"] = ExpressionConverter.ConvertO(bodycompanyId);
+                    body["companies"] = ExpressionConverter.ConvertO(__workflow_bodycompanyId);
                     bodypropCount++;
                 }
 
@@ -136,19 +130,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intercom")]
-        [WorkflowExpressionFactory(nameof(__BuildGetUser))]
-        public IBodyWorkflowAction<UserResponse> GetUser([WorkflowExpression] Func<string> userId)
+        public IBodyWorkflowAction<UserResponse> GetUser(Expression<Func<string>> userId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UserResponse> __BuildGetUser(WorkflowExpression<string> userId)
-        {
-            WorkflowExpression.Validate(userId, nameof(userId), required: true);
+            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
+            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
             return new DeferredBodyAction<UserResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<UserResponse>(callPayload);
@@ -156,19 +144,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intercom")]
-        [WorkflowExpressionFactory(nameof(__BuildGetLead))]
-        public IBodyWorkflowAction<LeadResponse> GetLead([WorkflowExpression] Func<string> contactId)
+        public IBodyWorkflowAction<LeadResponse> GetLead(Expression<Func<string>> contactId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<LeadResponse> __BuildGetLead(WorkflowExpression<string> contactId)
-        {
-            WorkflowExpression.Validate(contactId, nameof(contactId), required: true);
+            var __workflow_contactId = contactId == null ? null : WorkflowExpression.Compile(contactId);
+            WorkflowExpression.Validate(__workflow_contactId, nameof(contactId), required: true);
             return new DeferredBodyAction<LeadResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(contactId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_contactId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<LeadResponse>(callPayload);

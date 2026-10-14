@@ -1,37 +1,40 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class Pdf4meconvertActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
-        [WorkflowExpressionFactory(nameof(__BuildConvertHtmlToPdf))]
-        public IBodyWorkflowAction<string> ConvertHtmlToPdf([WorkflowExpression] Func<string> bodydocContent, [WorkflowExpression] Func<string> bodydocName, [WorkflowExpression] Func<string> bodyindexFilePath = null, [WorkflowExpression] Func<bodylayoutInput> bodylayout = null, [WorkflowExpression] Func<bodyformatInput> bodyformat = null, [WorkflowExpression] Func<double> bodyscale = null, [WorkflowExpression] Func<string> bodytopMargin = null, [WorkflowExpression] Func<string> bodybottomMargin = null, [WorkflowExpression] Func<string> bodyleftMargin = null, [WorkflowExpression] Func<string> bodyrightMargin = null, [WorkflowExpression] Func<bool> bodyprintBackground = null)
+        public IBodyWorkflowAction<string> ConvertHtmlToPdf(Expression<Func<string>> bodydocContent, Expression<Func<string>> bodydocName, Expression<Func<string>> bodyindexFilePath = null, Expression<Func<bodylayoutInput>> bodylayout = null, Expression<Func<bodyformatInput>> bodyformat = null, Expression<Func<double>> bodyscale = null, Expression<Func<string>> bodytopMargin = null, Expression<Func<string>> bodybottomMargin = null, Expression<Func<string>> bodyleftMargin = null, Expression<Func<string>> bodyrightMargin = null, Expression<Func<bool>> bodyprintBackground = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildConvertHtmlToPdf(WorkflowExpression<string> bodydocContent, WorkflowExpression<string> bodydocName, WorkflowExpression<string> bodyindexFilePath = null, WorkflowExpression<bodylayoutInput> bodylayout = null, WorkflowExpression<bodyformatInput> bodyformat = null, WorkflowExpression<double> bodyscale = null, WorkflowExpression<string> bodytopMargin = null, WorkflowExpression<string> bodybottomMargin = null, WorkflowExpression<string> bodyleftMargin = null, WorkflowExpression<string> bodyrightMargin = null, WorkflowExpression<bool> bodyprintBackground = null)
-        {
-            WorkflowExpression.Validate(bodydocContent, nameof(bodydocContent), required: true);
-            WorkflowExpression.Validate(bodydocName, nameof(bodydocName), required: true);
-            WorkflowExpression.Validate(bodyindexFilePath, nameof(bodyindexFilePath), required: false);
-            WorkflowExpression.Validate(bodylayout, nameof(bodylayout), required: false);
-            WorkflowExpression.Validate(bodyformat, nameof(bodyformat), required: false);
-            WorkflowExpression.Validate(bodyscale, nameof(bodyscale), required: false);
-            WorkflowExpression.Validate(bodytopMargin, nameof(bodytopMargin), required: false);
-            WorkflowExpression.Validate(bodybottomMargin, nameof(bodybottomMargin), required: false);
-            WorkflowExpression.Validate(bodyleftMargin, nameof(bodyleftMargin), required: false);
-            WorkflowExpression.Validate(bodyrightMargin, nameof(bodyrightMargin), required: false);
-            WorkflowExpression.Validate(bodyprintBackground, nameof(bodyprintBackground), required: false);
+            var __workflow_bodydocContent = bodydocContent == null ? null : WorkflowExpression.Compile(bodydocContent);
+            WorkflowExpression.Validate(__workflow_bodydocContent, nameof(bodydocContent), required: true);
+            var __workflow_bodydocName = bodydocName == null ? null : WorkflowExpression.Compile(bodydocName);
+            WorkflowExpression.Validate(__workflow_bodydocName, nameof(bodydocName), required: true);
+            var __workflow_bodyindexFilePath = bodyindexFilePath == null ? null : WorkflowExpression.Compile(bodyindexFilePath);
+            WorkflowExpression.Validate(__workflow_bodyindexFilePath, nameof(bodyindexFilePath), required: false);
+            var __workflow_bodylayout = bodylayout == null ? null : WorkflowExpression.Compile(bodylayout);
+            WorkflowExpression.Validate(__workflow_bodylayout, nameof(bodylayout), required: false);
+            var __workflow_bodyformat = bodyformat == null ? null : WorkflowExpression.Compile(bodyformat);
+            WorkflowExpression.Validate(__workflow_bodyformat, nameof(bodyformat), required: false);
+            var __workflow_bodyscale = bodyscale == null ? null : WorkflowExpression.Compile(bodyscale);
+            WorkflowExpression.Validate(__workflow_bodyscale, nameof(bodyscale), required: false);
+            var __workflow_bodytopMargin = bodytopMargin == null ? null : WorkflowExpression.Compile(bodytopMargin);
+            WorkflowExpression.Validate(__workflow_bodytopMargin, nameof(bodytopMargin), required: false);
+            var __workflow_bodybottomMargin = bodybottomMargin == null ? null : WorkflowExpression.Compile(bodybottomMargin);
+            WorkflowExpression.Validate(__workflow_bodybottomMargin, nameof(bodybottomMargin), required: false);
+            var __workflow_bodyleftMargin = bodyleftMargin == null ? null : WorkflowExpression.Compile(bodyleftMargin);
+            WorkflowExpression.Validate(__workflow_bodyleftMargin, nameof(bodyleftMargin), required: false);
+            var __workflow_bodyrightMargin = bodyrightMargin == null ? null : WorkflowExpression.Compile(bodyrightMargin);
+            WorkflowExpression.Validate(__workflow_bodyrightMargin, nameof(bodyrightMargin), required: false);
+            var __workflow_bodyprintBackground = bodyprintBackground == null ? null : WorkflowExpression.Compile(bodyprintBackground);
+            WorkflowExpression.Validate(__workflow_bodyprintBackground, nameof(bodyprintBackground), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ConvertHtmlToPdf";
@@ -40,20 +43,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["docContent"] = ExpressionConverter.ConvertO(bodydocContent);
+                body["docContent"] = ExpressionConverter.ConvertO(__workflow_bodydocContent);
                 bodypropCount++;
-                body["docName"] = ExpressionConverter.ConvertO(bodydocName);
-                if (bodyindexFilePath != null)
+                body["docName"] = ExpressionConverter.ConvertO(__workflow_bodydocName);
+                if (__workflow_bodyindexFilePath != null)
                 {
-                    body["indexFilePath"] = ExpressionConverter.ConvertO(bodyindexFilePath);
+                    body["indexFilePath"] = ExpressionConverter.ConvertO(__workflow_bodyindexFilePath);
                     bodypropCount++;
                 }
 
-                if (bodylayout != null)
+                if (__workflow_bodylayout != null)
                 {
-                    if (bodylayout != null)
+                    if (__workflow_bodylayout != null)
                     {
-                        body["layout"] = ExpressionConverter.ConvertO(bodylayout);
+                        body["layout"] = ExpressionConverter.ConvertO(__workflow_bodylayout);
                         bodypropCount++;
                     }
 
@@ -65,11 +68,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
                     bodypropCount++;
                 }
 
-                if (bodyformat != null)
+                if (__workflow_bodyformat != null)
                 {
-                    if (bodyformat != null)
+                    if (__workflow_bodyformat != null)
                     {
-                        body["format"] = ExpressionConverter.ConvertO(bodyformat);
+                        body["format"] = ExpressionConverter.ConvertO(__workflow_bodyformat);
                         bodypropCount++;
                     }
 
@@ -81,11 +84,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
                     bodypropCount++;
                 }
 
-                if (bodyscale != null)
+                if (__workflow_bodyscale != null)
                 {
-                    if (bodyscale != null)
+                    if (__workflow_bodyscale != null)
                     {
-                        body["scale"] = ExpressionConverter.ConvertO(bodyscale);
+                        body["scale"] = ExpressionConverter.ConvertO(__workflow_bodyscale);
                         bodypropCount++;
                     }
 
@@ -97,11 +100,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
                     bodypropCount++;
                 }
 
-                if (bodytopMargin != null)
+                if (__workflow_bodytopMargin != null)
                 {
-                    if (bodytopMargin != null)
+                    if (__workflow_bodytopMargin != null)
                     {
-                        body["topMargin"] = ExpressionConverter.ConvertO(bodytopMargin);
+                        body["topMargin"] = ExpressionConverter.ConvertO(__workflow_bodytopMargin);
                         bodypropCount++;
                     }
 
@@ -113,11 +116,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
                     bodypropCount++;
                 }
 
-                if (bodybottomMargin != null)
+                if (__workflow_bodybottomMargin != null)
                 {
-                    if (bodybottomMargin != null)
+                    if (__workflow_bodybottomMargin != null)
                     {
-                        body["bottomMargin"] = ExpressionConverter.ConvertO(bodybottomMargin);
+                        body["bottomMargin"] = ExpressionConverter.ConvertO(__workflow_bodybottomMargin);
                         bodypropCount++;
                     }
 
@@ -129,11 +132,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
                     bodypropCount++;
                 }
 
-                if (bodyleftMargin != null)
+                if (__workflow_bodyleftMargin != null)
                 {
-                    if (bodyleftMargin != null)
+                    if (__workflow_bodyleftMargin != null)
                     {
-                        body["leftMargin"] = ExpressionConverter.ConvertO(bodyleftMargin);
+                        body["leftMargin"] = ExpressionConverter.ConvertO(__workflow_bodyleftMargin);
                         bodypropCount++;
                     }
 
@@ -145,11 +148,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
                     bodypropCount++;
                 }
 
-                if (bodyrightMargin != null)
+                if (__workflow_bodyrightMargin != null)
                 {
-                    if (bodyrightMargin != null)
+                    if (__workflow_bodyrightMargin != null)
                     {
-                        body["rightMargin"] = ExpressionConverter.ConvertO(bodyrightMargin);
+                        body["rightMargin"] = ExpressionConverter.ConvertO(__workflow_bodyrightMargin);
                         bodypropCount++;
                     }
 
@@ -161,11 +164,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
                     bodypropCount++;
                 }
 
-                if (bodyprintBackground != null)
+                if (__workflow_bodyprintBackground != null)
                 {
-                    if (bodyprintBackground != null)
+                    if (__workflow_bodyprintBackground != null)
                     {
-                        body["printBackground"] = ExpressionConverter.ConvertO(bodyprintBackground);
+                        body["printBackground"] = ExpressionConverter.ConvertO(__workflow_bodyprintBackground);
                         bodypropCount++;
                     }
 
@@ -187,26 +190,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
-        [WorkflowExpressionFactory(nameof(__BuildConvertJsonToExcel))]
-        public IBodyWorkflowAction<string> ConvertJsonToExcel([WorkflowExpression] Func<string> bodydocContent, [WorkflowExpression] Func<string> bodydocumentname = null, [WorkflowExpression] Func<int> bodyfirstRow = null, [WorkflowExpression] Func<int> bodyfirstColumn = null, [WorkflowExpression] Func<string> bodyworksheetName = null, [WorkflowExpression] Func<bool> bodyconvertNumberAndDate = null, [WorkflowExpression] Func<string> bodydateFormat = null, [WorkflowExpression] Func<string> bodynumberFormat = null, [WorkflowExpression] Func<bool> bodyignoreNullValues = null, [WorkflowExpression] Func<bool> bodyisTitleBold = null, [WorkflowExpression] Func<bool> bodyisTitleWrapText = null)
+        public IBodyWorkflowAction<string> ConvertJsonToExcel(Expression<Func<string>> bodydocContent, Expression<Func<string>> bodydocumentname = null, Expression<Func<int>> bodyfirstRow = null, Expression<Func<int>> bodyfirstColumn = null, Expression<Func<string>> bodyworksheetName = null, Expression<Func<bool>> bodyconvertNumberAndDate = null, Expression<Func<string>> bodydateFormat = null, Expression<Func<string>> bodynumberFormat = null, Expression<Func<bool>> bodyignoreNullValues = null, Expression<Func<bool>> bodyisTitleBold = null, Expression<Func<bool>> bodyisTitleWrapText = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildConvertJsonToExcel(WorkflowExpression<string> bodydocContent, WorkflowExpression<string> bodydocumentname = null, WorkflowExpression<int> bodyfirstRow = null, WorkflowExpression<int> bodyfirstColumn = null, WorkflowExpression<string> bodyworksheetName = null, WorkflowExpression<bool> bodyconvertNumberAndDate = null, WorkflowExpression<string> bodydateFormat = null, WorkflowExpression<string> bodynumberFormat = null, WorkflowExpression<bool> bodyignoreNullValues = null, WorkflowExpression<bool> bodyisTitleBold = null, WorkflowExpression<bool> bodyisTitleWrapText = null)
-        {
-            WorkflowExpression.Validate(bodydocContent, nameof(bodydocContent), required: true);
-            WorkflowExpression.Validate(bodydocumentname, nameof(bodydocumentname), required: false);
-            WorkflowExpression.Validate(bodyfirstRow, nameof(bodyfirstRow), required: false);
-            WorkflowExpression.Validate(bodyfirstColumn, nameof(bodyfirstColumn), required: false);
-            WorkflowExpression.Validate(bodyworksheetName, nameof(bodyworksheetName), required: false);
-            WorkflowExpression.Validate(bodyconvertNumberAndDate, nameof(bodyconvertNumberAndDate), required: false);
-            WorkflowExpression.Validate(bodydateFormat, nameof(bodydateFormat), required: false);
-            WorkflowExpression.Validate(bodynumberFormat, nameof(bodynumberFormat), required: false);
-            WorkflowExpression.Validate(bodyignoreNullValues, nameof(bodyignoreNullValues), required: false);
-            WorkflowExpression.Validate(bodyisTitleBold, nameof(bodyisTitleBold), required: false);
-            WorkflowExpression.Validate(bodyisTitleWrapText, nameof(bodyisTitleWrapText), required: false);
+            var __workflow_bodydocContent = bodydocContent == null ? null : WorkflowExpression.Compile(bodydocContent);
+            WorkflowExpression.Validate(__workflow_bodydocContent, nameof(bodydocContent), required: true);
+            var __workflow_bodydocumentname = bodydocumentname == null ? null : WorkflowExpression.Compile(bodydocumentname);
+            WorkflowExpression.Validate(__workflow_bodydocumentname, nameof(bodydocumentname), required: false);
+            var __workflow_bodyfirstRow = bodyfirstRow == null ? null : WorkflowExpression.Compile(bodyfirstRow);
+            WorkflowExpression.Validate(__workflow_bodyfirstRow, nameof(bodyfirstRow), required: false);
+            var __workflow_bodyfirstColumn = bodyfirstColumn == null ? null : WorkflowExpression.Compile(bodyfirstColumn);
+            WorkflowExpression.Validate(__workflow_bodyfirstColumn, nameof(bodyfirstColumn), required: false);
+            var __workflow_bodyworksheetName = bodyworksheetName == null ? null : WorkflowExpression.Compile(bodyworksheetName);
+            WorkflowExpression.Validate(__workflow_bodyworksheetName, nameof(bodyworksheetName), required: false);
+            var __workflow_bodyconvertNumberAndDate = bodyconvertNumberAndDate == null ? null : WorkflowExpression.Compile(bodyconvertNumberAndDate);
+            WorkflowExpression.Validate(__workflow_bodyconvertNumberAndDate, nameof(bodyconvertNumberAndDate), required: false);
+            var __workflow_bodydateFormat = bodydateFormat == null ? null : WorkflowExpression.Compile(bodydateFormat);
+            WorkflowExpression.Validate(__workflow_bodydateFormat, nameof(bodydateFormat), required: false);
+            var __workflow_bodynumberFormat = bodynumberFormat == null ? null : WorkflowExpression.Compile(bodynumberFormat);
+            WorkflowExpression.Validate(__workflow_bodynumberFormat, nameof(bodynumberFormat), required: false);
+            var __workflow_bodyignoreNullValues = bodyignoreNullValues == null ? null : WorkflowExpression.Compile(bodyignoreNullValues);
+            WorkflowExpression.Validate(__workflow_bodyignoreNullValues, nameof(bodyignoreNullValues), required: false);
+            var __workflow_bodyisTitleBold = bodyisTitleBold == null ? null : WorkflowExpression.Compile(bodyisTitleBold);
+            WorkflowExpression.Validate(__workflow_bodyisTitleBold, nameof(bodyisTitleBold), required: false);
+            var __workflow_bodyisTitleWrapText = bodyisTitleWrapText == null ? null : WorkflowExpression.Compile(bodyisTitleWrapText);
+            WorkflowExpression.Validate(__workflow_bodyisTitleWrapText, nameof(bodyisTitleWrapText), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ConvertJsonToExcel";
@@ -215,12 +222,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["docContent"] = ExpressionConverter.ConvertO(bodydocContent);
+                body["docContent"] = ExpressionConverter.ConvertO(__workflow_bodydocContent);
                 var documentObject = new JObject();
                 var documentObjectpropCount = 0;
-                if (bodydocumentname != null)
+                if (__workflow_bodydocumentname != null)
                 {
-                    documentObject["Name"] = ExpressionConverter.ConvertO(bodydocumentname);
+                    documentObject["Name"] = ExpressionConverter.ConvertO(__workflow_bodydocumentname);
                     documentObjectpropCount++;
                 }
 
@@ -230,11 +237,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
                     bodypropCount++;
                 }
 
-                if (bodyfirstRow != null)
+                if (__workflow_bodyfirstRow != null)
                 {
-                    if (bodyfirstRow != null)
+                    if (__workflow_bodyfirstRow != null)
                     {
-                        body["firstRow"] = ExpressionConverter.ConvertO(bodyfirstRow);
+                        body["firstRow"] = ExpressionConverter.ConvertO(__workflow_bodyfirstRow);
                         bodypropCount++;
                     }
 
@@ -246,11 +253,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
                     bodypropCount++;
                 }
 
-                if (bodyfirstColumn != null)
+                if (__workflow_bodyfirstColumn != null)
                 {
-                    if (bodyfirstColumn != null)
+                    if (__workflow_bodyfirstColumn != null)
                     {
-                        body["firstColumn"] = ExpressionConverter.ConvertO(bodyfirstColumn);
+                        body["firstColumn"] = ExpressionConverter.ConvertO(__workflow_bodyfirstColumn);
                         bodypropCount++;
                     }
 
@@ -262,11 +269,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
                     bodypropCount++;
                 }
 
-                if (bodyworksheetName != null)
+                if (__workflow_bodyworksheetName != null)
                 {
-                    if (bodyworksheetName != null)
+                    if (__workflow_bodyworksheetName != null)
                     {
-                        body["worksheetName"] = ExpressionConverter.ConvertO(bodyworksheetName);
+                        body["worksheetName"] = ExpressionConverter.ConvertO(__workflow_bodyworksheetName);
                         bodypropCount++;
                     }
 
@@ -278,11 +285,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
                     bodypropCount++;
                 }
 
-                if (bodyconvertNumberAndDate != null)
+                if (__workflow_bodyconvertNumberAndDate != null)
                 {
-                    if (bodyconvertNumberAndDate != null)
+                    if (__workflow_bodyconvertNumberAndDate != null)
                     {
-                        body["convertNumberAndDate"] = ExpressionConverter.ConvertO(bodyconvertNumberAndDate);
+                        body["convertNumberAndDate"] = ExpressionConverter.ConvertO(__workflow_bodyconvertNumberAndDate);
                         bodypropCount++;
                     }
 
@@ -294,23 +301,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
                     bodypropCount++;
                 }
 
-                if (bodydateFormat != null)
+                if (__workflow_bodydateFormat != null)
                 {
-                    body["dateFormat"] = ExpressionConverter.ConvertO(bodydateFormat);
+                    body["dateFormat"] = ExpressionConverter.ConvertO(__workflow_bodydateFormat);
                     bodypropCount++;
                 }
 
-                if (bodynumberFormat != null)
+                if (__workflow_bodynumberFormat != null)
                 {
-                    body["numberFormat"] = ExpressionConverter.ConvertO(bodynumberFormat);
+                    body["numberFormat"] = ExpressionConverter.ConvertO(__workflow_bodynumberFormat);
                     bodypropCount++;
                 }
 
-                if (bodyignoreNullValues != null)
+                if (__workflow_bodyignoreNullValues != null)
                 {
-                    if (bodyignoreNullValues != null)
+                    if (__workflow_bodyignoreNullValues != null)
                     {
-                        body["ignoreNullValues"] = ExpressionConverter.ConvertO(bodyignoreNullValues);
+                        body["ignoreNullValues"] = ExpressionConverter.ConvertO(__workflow_bodyignoreNullValues);
                         bodypropCount++;
                     }
 
@@ -322,11 +329,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
                     bodypropCount++;
                 }
 
-                if (bodyisTitleBold != null)
+                if (__workflow_bodyisTitleBold != null)
                 {
-                    if (bodyisTitleBold != null)
+                    if (__workflow_bodyisTitleBold != null)
                     {
-                        body["isTitleBold"] = ExpressionConverter.ConvertO(bodyisTitleBold);
+                        body["isTitleBold"] = ExpressionConverter.ConvertO(__workflow_bodyisTitleBold);
                         bodypropCount++;
                     }
 
@@ -338,11 +345,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
                     bodypropCount++;
                 }
 
-                if (bodyisTitleWrapText != null)
+                if (__workflow_bodyisTitleWrapText != null)
                 {
-                    if (bodyisTitleWrapText != null)
+                    if (__workflow_bodyisTitleWrapText != null)
                     {
-                        body["isTitleWrapText"] = ExpressionConverter.ConvertO(bodyisTitleWrapText);
+                        body["isTitleWrapText"] = ExpressionConverter.ConvertO(__workflow_bodyisTitleWrapText);
                         bodypropCount++;
                     }
 
@@ -364,18 +371,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
-        [WorkflowExpressionFactory(nameof(__BuildConvertMdToPdf))]
-        public IBodyWorkflowAction<string> ConvertMdToPdf([WorkflowExpression] Func<string> bodydocContent, [WorkflowExpression] Func<string> bodydocName, [WorkflowExpression] Func<string> bodymdFilePath = null)
+        public IBodyWorkflowAction<string> ConvertMdToPdf(Expression<Func<string>> bodydocContent, Expression<Func<string>> bodydocName, Expression<Func<string>> bodymdFilePath = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildConvertMdToPdf(WorkflowExpression<string> bodydocContent, WorkflowExpression<string> bodydocName, WorkflowExpression<string> bodymdFilePath = null)
-        {
-            WorkflowExpression.Validate(bodydocContent, nameof(bodydocContent), required: true);
-            WorkflowExpression.Validate(bodydocName, nameof(bodydocName), required: true);
-            WorkflowExpression.Validate(bodymdFilePath, nameof(bodymdFilePath), required: false);
+            var __workflow_bodydocContent = bodydocContent == null ? null : WorkflowExpression.Compile(bodydocContent);
+            WorkflowExpression.Validate(__workflow_bodydocContent, nameof(bodydocContent), required: true);
+            var __workflow_bodydocName = bodydocName == null ? null : WorkflowExpression.Compile(bodydocName);
+            WorkflowExpression.Validate(__workflow_bodydocName, nameof(bodydocName), required: true);
+            var __workflow_bodymdFilePath = bodymdFilePath == null ? null : WorkflowExpression.Compile(bodymdFilePath);
+            WorkflowExpression.Validate(__workflow_bodymdFilePath, nameof(bodymdFilePath), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ConvertMdToPdf";
@@ -384,12 +387,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["docContent"] = ExpressionConverter.ConvertO(bodydocContent);
+                body["docContent"] = ExpressionConverter.ConvertO(__workflow_bodydocContent);
                 bodypropCount++;
-                body["docName"] = ExpressionConverter.ConvertO(bodydocName);
-                if (bodymdFilePath != null)
+                body["docName"] = ExpressionConverter.ConvertO(__workflow_bodydocName);
+                if (__workflow_bodymdFilePath != null)
                 {
-                    body["mdFilePath"] = ExpressionConverter.ConvertO(bodymdFilePath);
+                    body["mdFilePath"] = ExpressionConverter.ConvertO(__workflow_bodymdFilePath);
                     bodypropCount++;
                 }
 
@@ -403,17 +406,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
-        [WorkflowExpressionFactory(nameof(__BuildConvertToPdf))]
-        public IBodyWorkflowAction<string> ConvertToPdf([WorkflowExpression] Func<string> bodydocContent, [WorkflowExpression] Func<string> bodydocumentname = null)
+        public IBodyWorkflowAction<string> ConvertToPdf(Expression<Func<string>> bodydocContent, Expression<Func<string>> bodydocumentname = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildConvertToPdf(WorkflowExpression<string> bodydocContent, WorkflowExpression<string> bodydocumentname = null)
-        {
-            WorkflowExpression.Validate(bodydocContent, nameof(bodydocContent), required: true);
-            WorkflowExpression.Validate(bodydocumentname, nameof(bodydocumentname), required: false);
+            var __workflow_bodydocContent = bodydocContent == null ? null : WorkflowExpression.Compile(bodydocContent);
+            WorkflowExpression.Validate(__workflow_bodydocContent, nameof(bodydocContent), required: true);
+            var __workflow_bodydocumentname = bodydocumentname == null ? null : WorkflowExpression.Compile(bodydocumentname);
+            WorkflowExpression.Validate(__workflow_bodydocumentname, nameof(bodydocumentname), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ConvertToPdf";
@@ -422,12 +420,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["docContent"] = ExpressionConverter.ConvertO(bodydocContent);
+                body["docContent"] = ExpressionConverter.ConvertO(__workflow_bodydocContent);
                 var documentObject = new JObject();
                 var documentObjectpropCount = 0;
-                if (bodydocumentname != null)
+                if (__workflow_bodydocumentname != null)
                 {
-                    documentObject["Name"] = ExpressionConverter.ConvertO(bodydocumentname);
+                    documentObject["Name"] = ExpressionConverter.ConvertO(__workflow_bodydocumentname);
                     documentObjectpropCount++;
                 }
 
@@ -447,19 +445,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
-        [WorkflowExpressionFactory(nameof(__BuildConvertUrlToPdf))]
-        public IBodyWorkflowAction<string> ConvertUrlToPdf([WorkflowExpression] Func<string> bodywebUrl, [WorkflowExpression] Func<bodyauthTypeInput> bodyauthType = null, [WorkflowExpression] Func<string> bodyusername = null, [WorkflowExpression] Func<string> bodypassword = null)
+        public IBodyWorkflowAction<string> ConvertUrlToPdf(Expression<Func<string>> bodywebUrl, Expression<Func<bodyauthTypeInput>> bodyauthType = null, Expression<Func<string>> bodyusername = null, Expression<Func<string>> bodypassword = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildConvertUrlToPdf(WorkflowExpression<string> bodywebUrl, WorkflowExpression<bodyauthTypeInput> bodyauthType = null, WorkflowExpression<string> bodyusername = null, WorkflowExpression<string> bodypassword = null)
-        {
-            WorkflowExpression.Validate(bodywebUrl, nameof(bodywebUrl), required: true);
-            WorkflowExpression.Validate(bodyauthType, nameof(bodyauthType), required: false);
-            WorkflowExpression.Validate(bodyusername, nameof(bodyusername), required: false);
-            WorkflowExpression.Validate(bodypassword, nameof(bodypassword), required: false);
+            var __workflow_bodywebUrl = bodywebUrl == null ? null : WorkflowExpression.Compile(bodywebUrl);
+            WorkflowExpression.Validate(__workflow_bodywebUrl, nameof(bodywebUrl), required: true);
+            var __workflow_bodyauthType = bodyauthType == null ? null : WorkflowExpression.Compile(bodyauthType);
+            WorkflowExpression.Validate(__workflow_bodyauthType, nameof(bodyauthType), required: false);
+            var __workflow_bodyusername = bodyusername == null ? null : WorkflowExpression.Compile(bodyusername);
+            WorkflowExpression.Validate(__workflow_bodyusername, nameof(bodyusername), required: false);
+            var __workflow_bodypassword = bodypassword == null ? null : WorkflowExpression.Compile(bodypassword);
+            WorkflowExpression.Validate(__workflow_bodypassword, nameof(bodypassword), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ConvertUrlToPdf";
@@ -468,12 +463,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["webUrl"] = ExpressionConverter.ConvertO(bodywebUrl);
-                if (bodyauthType != null)
+                body["webUrl"] = ExpressionConverter.ConvertO(__workflow_bodywebUrl);
+                if (__workflow_bodyauthType != null)
                 {
-                    if (bodyauthType != null)
+                    if (__workflow_bodyauthType != null)
                     {
-                        body["authType"] = ExpressionConverter.ConvertO(bodyauthType);
+                        body["authType"] = ExpressionConverter.ConvertO(__workflow_bodyauthType);
                         bodypropCount++;
                     }
 
@@ -485,15 +480,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
                     bodypropCount++;
                 }
 
-                if (bodyusername != null)
+                if (__workflow_bodyusername != null)
                 {
-                    body["username"] = ExpressionConverter.ConvertO(bodyusername);
+                    body["username"] = ExpressionConverter.ConvertO(__workflow_bodyusername);
                     bodypropCount++;
                 }
 
-                if (bodypassword != null)
+                if (__workflow_bodypassword != null)
                 {
-                    body["password"] = ExpressionConverter.ConvertO(bodypassword);
+                    body["password"] = ExpressionConverter.ConvertO(__workflow_bodypassword);
                     bodypropCount++;
                 }
 
@@ -507,42 +502,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
-        [WorkflowExpressionFactory(nameof(__BuildConvertVisio))]
-        public IBodyWorkflowAction<string> ConvertVisio([WorkflowExpression] Func<schemaValInput> schemaVal = null, [WorkflowExpression] Func<object> operation = null)
+        public IBodyWorkflowAction<string> ConvertVisio(Expression<Func<schemaValInput>> schemaVal = null, Expression<Func<object>> operation = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildConvertVisio(WorkflowExpression<schemaValInput> schemaVal = null, WorkflowExpression<object> operation = null)
-        {
-            WorkflowExpression.Validate(schemaVal, nameof(schemaVal), required: false);
-            WorkflowExpression.Validate(operation, nameof(operation), required: false);
+            var __workflow_schemaVal = schemaVal == null ? null : WorkflowExpression.Compile(schemaVal);
+            WorkflowExpression.Validate(__workflow_schemaVal, nameof(schemaVal), required: false);
+            var __workflow_operation = operation == null ? null : WorkflowExpression.Compile(operation);
+            WorkflowExpression.Validate(__workflow_operation, nameof(operation), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ConvertVisio";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["schemaVal"] = Convert.ToString("PDF");
-                if (schemaVal != null)
-                    callPayload.Queries["schemaVal"] = ExpressionConverter.Convert(schemaVal);
-                callPayload.Body = ExpressionConverter.ConvertO(operation);
+                if (__workflow_schemaVal != null)
+                    callPayload.Queries["schemaVal"] = ExpressionConverter.Convert(__workflow_schemaVal);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_operation);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
-        [WorkflowExpressionFactory(nameof(__BuildConvertWordToPdfForm))]
-        public IBodyWorkflowAction<string> ConvertWordToPdfForm([WorkflowExpression] Func<string> bodydocContent, [WorkflowExpression] Func<string> bodydocumentname = null)
+        public IBodyWorkflowAction<string> ConvertWordToPdfForm(Expression<Func<string>> bodydocContent, Expression<Func<string>> bodydocumentname = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildConvertWordToPdfForm(WorkflowExpression<string> bodydocContent, WorkflowExpression<string> bodydocumentname = null)
-        {
-            WorkflowExpression.Validate(bodydocContent, nameof(bodydocContent), required: true);
-            WorkflowExpression.Validate(bodydocumentname, nameof(bodydocumentname), required: false);
+            var __workflow_bodydocContent = bodydocContent == null ? null : WorkflowExpression.Compile(bodydocContent);
+            WorkflowExpression.Validate(__workflow_bodydocContent, nameof(bodydocContent), required: true);
+            var __workflow_bodydocumentname = bodydocumentname == null ? null : WorkflowExpression.Compile(bodydocumentname);
+            WorkflowExpression.Validate(__workflow_bodydocumentname, nameof(bodydocumentname), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ConvertWordToPdfForm";
@@ -551,12 +536,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["docContent"] = ExpressionConverter.ConvertO(bodydocContent);
+                body["docContent"] = ExpressionConverter.ConvertO(__workflow_bodydocContent);
                 var documentObject = new JObject();
                 var documentObjectpropCount = 0;
-                if (bodydocumentname != null)
+                if (__workflow_bodydocumentname != null)
                 {
-                    documentObject["Name"] = ExpressionConverter.ConvertO(bodydocumentname);
+                    documentObject["Name"] = ExpressionConverter.ConvertO(__workflow_bodydocumentname);
                     documentObjectpropCount++;
                 }
 
@@ -576,20 +561,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
-        [WorkflowExpressionFactory(nameof(__BuildCreatePdfA))]
-        public IBodyWorkflowAction<string> CreatePdfA([WorkflowExpression] Func<bodycomplianceInput> bodycompliance, [WorkflowExpression] Func<string> bodydocContent, [WorkflowExpression] Func<string> bodydocumentname = null, [WorkflowExpression] Func<bool> bodyallowUpgrade = null, [WorkflowExpression] Func<bool> bodyallowDowngrade = null)
+        public IBodyWorkflowAction<string> CreatePdfA(Expression<Func<bodycomplianceInput>> bodycompliance, Expression<Func<string>> bodydocContent, Expression<Func<string>> bodydocumentname = null, Expression<Func<bool>> bodyallowUpgrade = null, Expression<Func<bool>> bodyallowDowngrade = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildCreatePdfA(WorkflowExpression<bodycomplianceInput> bodycompliance, WorkflowExpression<string> bodydocContent, WorkflowExpression<string> bodydocumentname = null, WorkflowExpression<bool> bodyallowUpgrade = null, WorkflowExpression<bool> bodyallowDowngrade = null)
-        {
-            WorkflowExpression.Validate(bodycompliance, nameof(bodycompliance), required: true);
-            WorkflowExpression.Validate(bodydocContent, nameof(bodydocContent), required: true);
-            WorkflowExpression.Validate(bodydocumentname, nameof(bodydocumentname), required: false);
-            WorkflowExpression.Validate(bodyallowUpgrade, nameof(bodyallowUpgrade), required: false);
-            WorkflowExpression.Validate(bodyallowDowngrade, nameof(bodyallowDowngrade), required: false);
+            var __workflow_bodycompliance = bodycompliance == null ? null : WorkflowExpression.Compile(bodycompliance);
+            WorkflowExpression.Validate(__workflow_bodycompliance, nameof(bodycompliance), required: true);
+            var __workflow_bodydocContent = bodydocContent == null ? null : WorkflowExpression.Compile(bodydocContent);
+            WorkflowExpression.Validate(__workflow_bodydocContent, nameof(bodydocContent), required: true);
+            var __workflow_bodydocumentname = bodydocumentname == null ? null : WorkflowExpression.Compile(bodydocumentname);
+            WorkflowExpression.Validate(__workflow_bodydocumentname, nameof(bodydocumentname), required: false);
+            var __workflow_bodyallowUpgrade = bodyallowUpgrade == null ? null : WorkflowExpression.Compile(bodyallowUpgrade);
+            WorkflowExpression.Validate(__workflow_bodyallowUpgrade, nameof(bodyallowUpgrade), required: false);
+            var __workflow_bodyallowDowngrade = bodyallowDowngrade == null ? null : WorkflowExpression.Compile(bodyallowDowngrade);
+            WorkflowExpression.Validate(__workflow_bodyallowDowngrade, nameof(bodyallowDowngrade), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/PdfA";
@@ -598,14 +581,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["compliance"] = ExpressionConverter.ConvertO(bodycompliance);
+                body["compliance"] = ExpressionConverter.ConvertO(__workflow_bodycompliance);
                 bodypropCount++;
-                body["docContent"] = ExpressionConverter.ConvertO(bodydocContent);
+                body["docContent"] = ExpressionConverter.ConvertO(__workflow_bodydocContent);
                 var documentObject = new JObject();
                 var documentObjectpropCount = 0;
-                if (bodydocumentname != null)
+                if (__workflow_bodydocumentname != null)
                 {
-                    documentObject["Name"] = ExpressionConverter.ConvertO(bodydocumentname);
+                    documentObject["Name"] = ExpressionConverter.ConvertO(__workflow_bodydocumentname);
                     documentObjectpropCount++;
                 }
 
@@ -615,11 +598,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
                     bodypropCount++;
                 }
 
-                if (bodyallowUpgrade != null)
+                if (__workflow_bodyallowUpgrade != null)
                 {
-                    if (bodyallowUpgrade != null)
+                    if (__workflow_bodyallowUpgrade != null)
                     {
-                        body["allowUpgrade"] = ExpressionConverter.ConvertO(bodyallowUpgrade);
+                        body["allowUpgrade"] = ExpressionConverter.ConvertO(__workflow_bodyallowUpgrade);
                         bodypropCount++;
                     }
 
@@ -631,11 +614,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
                     bodypropCount++;
                 }
 
-                if (bodyallowDowngrade != null)
+                if (__workflow_bodyallowDowngrade != null)
                 {
-                    if (bodyallowDowngrade != null)
+                    if (__workflow_bodyallowDowngrade != null)
                     {
-                        body["allowDowngrade"] = ExpressionConverter.ConvertO(bodyallowDowngrade);
+                        body["allowDowngrade"] = ExpressionConverter.ConvertO(__workflow_bodyallowDowngrade);
                         bodypropCount++;
                     }
 
@@ -657,45 +640,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
-        [WorkflowExpressionFactory(nameof(__BuildCustomAPI))]
-        public IWorkflowAction CustomAPI([WorkflowExpression] Func<string> featurePath, [WorkflowExpression] Func<string> body = null)
+        public IWorkflowAction CustomAPI(Expression<Func<string>> featurePath, Expression<Func<string>> body = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildCustomAPI(WorkflowExpression<string> featurePath, WorkflowExpression<string> body = null)
-        {
-            WorkflowExpression.Validate(featurePath, nameof(featurePath), required: true);
-            WorkflowExpression.Validate(body, nameof(body), required: false);
+            var __workflow_featurePath = featurePath == null ? null : WorkflowExpression.Compile(featurePath);
+            WorkflowExpression.Validate(__workflow_featurePath, nameof(featurePath), required: true);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/FlowV2/{0}", ExpressionConverter.ConvertWithUrlEncoding(featurePath, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/FlowV2/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_featurePath, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-type"] = Convert.ToString("application/json");
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
-        [WorkflowExpressionFactory(nameof(__BuildPdfToExcel))]
-        public IBodyWorkflowAction<string> PdfToExcel([WorkflowExpression] Func<string> bodydocContent, [WorkflowExpression] Func<bodyqualityTypeInput> bodyqualityType, [WorkflowExpression] Func<string> bodydocumentname = null, [WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<bool> bodymergeAllSheets = null, [WorkflowExpression] Func<bodyoutputFormatInput> bodyoutputFormat = null, [WorkflowExpression] Func<bool> bodyisAsync = null)
+        public IBodyWorkflowAction<string> PdfToExcel(Expression<Func<string>> bodydocContent, Expression<Func<bodyqualityTypeInput>> bodyqualityType, Expression<Func<string>> bodydocumentname = null, Expression<Func<string>> bodylanguage = null, Expression<Func<bool>> bodymergeAllSheets = null, Expression<Func<bodyoutputFormatInput>> bodyoutputFormat = null, Expression<Func<bool>> bodyisAsync = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildPdfToExcel(WorkflowExpression<string> bodydocContent, WorkflowExpression<bodyqualityTypeInput> bodyqualityType, WorkflowExpression<string> bodydocumentname = null, WorkflowExpression<string> bodylanguage = null, WorkflowExpression<bool> bodymergeAllSheets = null, WorkflowExpression<bodyoutputFormatInput> bodyoutputFormat = null, WorkflowExpression<bool> bodyisAsync = null)
-        {
-            WorkflowExpression.Validate(bodydocContent, nameof(bodydocContent), required: true);
-            WorkflowExpression.Validate(bodyqualityType, nameof(bodyqualityType), required: true);
-            WorkflowExpression.Validate(bodydocumentname, nameof(bodydocumentname), required: false);
-            WorkflowExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
-            WorkflowExpression.Validate(bodymergeAllSheets, nameof(bodymergeAllSheets), required: false);
-            WorkflowExpression.Validate(bodyoutputFormat, nameof(bodyoutputFormat), required: false);
-            WorkflowExpression.Validate(bodyisAsync, nameof(bodyisAsync), required: false);
+            var __workflow_bodydocContent = bodydocContent == null ? null : WorkflowExpression.Compile(bodydocContent);
+            WorkflowExpression.Validate(__workflow_bodydocContent, nameof(bodydocContent), required: true);
+            var __workflow_bodyqualityType = bodyqualityType == null ? null : WorkflowExpression.Compile(bodyqualityType);
+            WorkflowExpression.Validate(__workflow_bodyqualityType, nameof(bodyqualityType), required: true);
+            var __workflow_bodydocumentname = bodydocumentname == null ? null : WorkflowExpression.Compile(bodydocumentname);
+            WorkflowExpression.Validate(__workflow_bodydocumentname, nameof(bodydocumentname), required: false);
+            var __workflow_bodylanguage = bodylanguage == null ? null : WorkflowExpression.Compile(bodylanguage);
+            WorkflowExpression.Validate(__workflow_bodylanguage, nameof(bodylanguage), required: false);
+            var __workflow_bodymergeAllSheets = bodymergeAllSheets == null ? null : WorkflowExpression.Compile(bodymergeAllSheets);
+            WorkflowExpression.Validate(__workflow_bodymergeAllSheets, nameof(bodymergeAllSheets), required: false);
+            var __workflow_bodyoutputFormat = bodyoutputFormat == null ? null : WorkflowExpression.Compile(bodyoutputFormat);
+            WorkflowExpression.Validate(__workflow_bodyoutputFormat, nameof(bodyoutputFormat), required: false);
+            var __workflow_bodyisAsync = bodyisAsync == null ? null : WorkflowExpression.Compile(bodyisAsync);
+            WorkflowExpression.Validate(__workflow_bodyisAsync, nameof(bodyisAsync), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ConvertPdfToExcel";
@@ -704,12 +682,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["docContent"] = ExpressionConverter.ConvertO(bodydocContent);
+                body["docContent"] = ExpressionConverter.ConvertO(__workflow_bodydocContent);
                 var documentObject = new JObject();
                 var documentObjectpropCount = 0;
-                if (bodydocumentname != null)
+                if (__workflow_bodydocumentname != null)
                 {
-                    documentObject["Name"] = ExpressionConverter.ConvertO(bodydocumentname);
+                    documentObject["Name"] = ExpressionConverter.ConvertO(__workflow_bodydocumentname);
                     documentObjectpropCount++;
                 }
 
@@ -720,18 +698,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
                 }
 
                 bodypropCount++;
-                body["qualityType"] = ExpressionConverter.ConvertO(bodyqualityType);
-                if (bodylanguage != null)
+                body["qualityType"] = ExpressionConverter.ConvertO(__workflow_bodyqualityType);
+                if (__workflow_bodylanguage != null)
                 {
-                    body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                    body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
                     bodypropCount++;
                 }
 
-                if (bodymergeAllSheets != null)
+                if (__workflow_bodymergeAllSheets != null)
                 {
-                    if (bodymergeAllSheets != null)
+                    if (__workflow_bodymergeAllSheets != null)
                     {
-                        body["mergeAllSheets"] = ExpressionConverter.ConvertO(bodymergeAllSheets);
+                        body["mergeAllSheets"] = ExpressionConverter.ConvertO(__workflow_bodymergeAllSheets);
                         bodypropCount++;
                     }
 
@@ -743,11 +721,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
                     bodypropCount++;
                 }
 
-                if (bodyoutputFormat != null)
+                if (__workflow_bodyoutputFormat != null)
                 {
-                    if (bodyoutputFormat != null)
+                    if (__workflow_bodyoutputFormat != null)
                     {
-                        body["outputFormat"] = ExpressionConverter.ConvertO(bodyoutputFormat);
+                        body["outputFormat"] = ExpressionConverter.ConvertO(__workflow_bodyoutputFormat);
                         bodypropCount++;
                     }
 
@@ -759,11 +737,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
                     bodypropCount++;
                 }
 
-                if (bodyisAsync != null)
+                if (__workflow_bodyisAsync != null)
                 {
-                    if (bodyisAsync != null)
+                    if (__workflow_bodyisAsync != null)
                     {
-                        body["isAsync"] = ExpressionConverter.ConvertO(bodyisAsync);
+                        body["isAsync"] = ExpressionConverter.ConvertO(__workflow_bodyisAsync);
                         bodypropCount++;
                     }
 
@@ -785,20 +763,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
-        [WorkflowExpressionFactory(nameof(__BuildPdfToPowerPoint))]
-        public IBodyWorkflowAction<string> PdfToPowerPoint([WorkflowExpression] Func<string> bodydocContent, [WorkflowExpression] Func<string> bodydocumentname = null, [WorkflowExpression] Func<bodyqualityTypeInput> bodyqualityType = null, [WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<bool> bodyisAsync = null)
+        public IBodyWorkflowAction<string> PdfToPowerPoint(Expression<Func<string>> bodydocContent, Expression<Func<string>> bodydocumentname = null, Expression<Func<bodyqualityTypeInput>> bodyqualityType = null, Expression<Func<string>> bodylanguage = null, Expression<Func<bool>> bodyisAsync = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildPdfToPowerPoint(WorkflowExpression<string> bodydocContent, WorkflowExpression<string> bodydocumentname = null, WorkflowExpression<bodyqualityTypeInput> bodyqualityType = null, WorkflowExpression<string> bodylanguage = null, WorkflowExpression<bool> bodyisAsync = null)
-        {
-            WorkflowExpression.Validate(bodydocContent, nameof(bodydocContent), required: true);
-            WorkflowExpression.Validate(bodydocumentname, nameof(bodydocumentname), required: false);
-            WorkflowExpression.Validate(bodyqualityType, nameof(bodyqualityType), required: false);
-            WorkflowExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
-            WorkflowExpression.Validate(bodyisAsync, nameof(bodyisAsync), required: false);
+            var __workflow_bodydocContent = bodydocContent == null ? null : WorkflowExpression.Compile(bodydocContent);
+            WorkflowExpression.Validate(__workflow_bodydocContent, nameof(bodydocContent), required: true);
+            var __workflow_bodydocumentname = bodydocumentname == null ? null : WorkflowExpression.Compile(bodydocumentname);
+            WorkflowExpression.Validate(__workflow_bodydocumentname, nameof(bodydocumentname), required: false);
+            var __workflow_bodyqualityType = bodyqualityType == null ? null : WorkflowExpression.Compile(bodyqualityType);
+            WorkflowExpression.Validate(__workflow_bodyqualityType, nameof(bodyqualityType), required: false);
+            var __workflow_bodylanguage = bodylanguage == null ? null : WorkflowExpression.Compile(bodylanguage);
+            WorkflowExpression.Validate(__workflow_bodylanguage, nameof(bodylanguage), required: false);
+            var __workflow_bodyisAsync = bodyisAsync == null ? null : WorkflowExpression.Compile(bodyisAsync);
+            WorkflowExpression.Validate(__workflow_bodyisAsync, nameof(bodyisAsync), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ConvertPdfToPowerPoint";
@@ -807,12 +783,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["docContent"] = ExpressionConverter.ConvertO(bodydocContent);
+                body["docContent"] = ExpressionConverter.ConvertO(__workflow_bodydocContent);
                 var documentObject = new JObject();
                 var documentObjectpropCount = 0;
-                if (bodydocumentname != null)
+                if (__workflow_bodydocumentname != null)
                 {
-                    documentObject["Name"] = ExpressionConverter.ConvertO(bodydocumentname);
+                    documentObject["Name"] = ExpressionConverter.ConvertO(__workflow_bodydocumentname);
                     documentObjectpropCount++;
                 }
 
@@ -822,11 +798,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
                     bodypropCount++;
                 }
 
-                if (bodyqualityType != null)
+                if (__workflow_bodyqualityType != null)
                 {
-                    if (bodyqualityType != null)
+                    if (__workflow_bodyqualityType != null)
                     {
-                        body["qualityType"] = ExpressionConverter.ConvertO(bodyqualityType);
+                        body["qualityType"] = ExpressionConverter.ConvertO(__workflow_bodyqualityType);
                         bodypropCount++;
                     }
 
@@ -838,17 +814,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
                     bodypropCount++;
                 }
 
-                if (bodylanguage != null)
+                if (__workflow_bodylanguage != null)
                 {
-                    body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                    body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
                     bodypropCount++;
                 }
 
-                if (bodyisAsync != null)
+                if (__workflow_bodyisAsync != null)
                 {
-                    if (bodyisAsync != null)
+                    if (__workflow_bodyisAsync != null)
                     {
-                        body["isAsync"] = ExpressionConverter.ConvertO(bodyisAsync);
+                        body["isAsync"] = ExpressionConverter.ConvertO(__workflow_bodyisAsync);
                         bodypropCount++;
                     }
 
@@ -870,20 +846,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
-        [WorkflowExpressionFactory(nameof(__BuildPdfToWord))]
-        public IBodyWorkflowAction<string> PdfToWord([WorkflowExpression] Func<string> bodydocContent, [WorkflowExpression] Func<bodyqualityTypeInput> bodyqualityType, [WorkflowExpression] Func<string> bodydocumentname = null, [WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<bool> bodyisAsync = null)
+        public IBodyWorkflowAction<string> PdfToWord(Expression<Func<string>> bodydocContent, Expression<Func<bodyqualityTypeInput>> bodyqualityType, Expression<Func<string>> bodydocumentname = null, Expression<Func<string>> bodylanguage = null, Expression<Func<bool>> bodyisAsync = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildPdfToWord(WorkflowExpression<string> bodydocContent, WorkflowExpression<bodyqualityTypeInput> bodyqualityType, WorkflowExpression<string> bodydocumentname = null, WorkflowExpression<string> bodylanguage = null, WorkflowExpression<bool> bodyisAsync = null)
-        {
-            WorkflowExpression.Validate(bodydocContent, nameof(bodydocContent), required: true);
-            WorkflowExpression.Validate(bodyqualityType, nameof(bodyqualityType), required: true);
-            WorkflowExpression.Validate(bodydocumentname, nameof(bodydocumentname), required: false);
-            WorkflowExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
-            WorkflowExpression.Validate(bodyisAsync, nameof(bodyisAsync), required: false);
+            var __workflow_bodydocContent = bodydocContent == null ? null : WorkflowExpression.Compile(bodydocContent);
+            WorkflowExpression.Validate(__workflow_bodydocContent, nameof(bodydocContent), required: true);
+            var __workflow_bodyqualityType = bodyqualityType == null ? null : WorkflowExpression.Compile(bodyqualityType);
+            WorkflowExpression.Validate(__workflow_bodyqualityType, nameof(bodyqualityType), required: true);
+            var __workflow_bodydocumentname = bodydocumentname == null ? null : WorkflowExpression.Compile(bodydocumentname);
+            WorkflowExpression.Validate(__workflow_bodydocumentname, nameof(bodydocumentname), required: false);
+            var __workflow_bodylanguage = bodylanguage == null ? null : WorkflowExpression.Compile(bodylanguage);
+            WorkflowExpression.Validate(__workflow_bodylanguage, nameof(bodylanguage), required: false);
+            var __workflow_bodyisAsync = bodyisAsync == null ? null : WorkflowExpression.Compile(bodyisAsync);
+            WorkflowExpression.Validate(__workflow_bodyisAsync, nameof(bodyisAsync), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ConvertPdfToWord";
@@ -892,12 +866,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["docContent"] = ExpressionConverter.ConvertO(bodydocContent);
+                body["docContent"] = ExpressionConverter.ConvertO(__workflow_bodydocContent);
                 var documentObject = new JObject();
                 var documentObjectpropCount = 0;
-                if (bodydocumentname != null)
+                if (__workflow_bodydocumentname != null)
                 {
-                    documentObject["Name"] = ExpressionConverter.ConvertO(bodydocumentname);
+                    documentObject["Name"] = ExpressionConverter.ConvertO(__workflow_bodydocumentname);
                     documentObjectpropCount++;
                 }
 
@@ -908,18 +882,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
                 }
 
                 bodypropCount++;
-                body["qualityType"] = ExpressionConverter.ConvertO(bodyqualityType);
-                if (bodylanguage != null)
+                body["qualityType"] = ExpressionConverter.ConvertO(__workflow_bodyqualityType);
+                if (__workflow_bodylanguage != null)
                 {
-                    body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                    body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
                     bodypropCount++;
                 }
 
-                if (bodyisAsync != null)
+                if (__workflow_bodyisAsync != null)
                 {
-                    if (bodyisAsync != null)
+                    if (__workflow_bodyisAsync != null)
                     {
-                        body["isAsync"] = ExpressionConverter.ConvertO(bodyisAsync);
+                        body["isAsync"] = ExpressionConverter.ConvertO(__workflow_bodyisAsync);
                         bodypropCount++;
                     }
 

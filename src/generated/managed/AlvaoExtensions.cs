@@ -1,75 +1,68 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alvao
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class AlvaoActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "alvao")]
-        [WorkflowExpressionFactory(nameof(__BuildGetObjects))]
-        public IBodyWorkflowAction<AMObjectsExpandedApiResponse> GetObjects([WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderBy = null)
+        public IBodyWorkflowAction<AMObjectsExpandedApiResponse> GetObjects(Expression<Func<int>> top = null, Expression<Func<string>> search = null, Expression<Func<string>> filter = null, Expression<Func<string>> orderBy = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AMObjectsExpandedApiResponse> __BuildGetObjects(WorkflowExpression<int> top = null, WorkflowExpression<string> search = null, WorkflowExpression<string> filter = null, WorkflowExpression<string> orderBy = null)
-        {
-            WorkflowExpression.Validate(top, nameof(top), required: false);
-            WorkflowExpression.Validate(search, nameof(search), required: false);
-            WorkflowExpression.Validate(filter, nameof(filter), required: false);
-            WorkflowExpression.Validate(orderBy, nameof(orderBy), required: false);
+            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
+            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
+            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
+            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
+            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
+            var __workflow_orderBy = orderBy == null ? null : WorkflowExpression.Compile(orderBy);
+            WorkflowExpression.Validate(__workflow_orderBy, nameof(orderBy), required: false);
             return new DeferredBodyAction<AMObjectsExpandedApiResponse>(() =>
             {
                 var apiCallPath = "/v1/objects";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (top != null)
-                    callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-                if (search != null)
-                    callPayload.Queries["$search"] = ExpressionConverter.Convert(search);
-                if (filter != null)
-                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-                if (orderBy != null)
-                    callPayload.Queries["$orderBy"] = ExpressionConverter.Convert(orderBy);
+                if (__workflow_top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
+                if (__workflow_search != null)
+                    callPayload.Queries["$search"] = ExpressionConverter.Convert(__workflow_search);
+                if (__workflow_filter != null)
+                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(__workflow_filter);
+                if (__workflow_orderBy != null)
+                    callPayload.Queries["$orderBy"] = ExpressionConverter.Convert(__workflow_orderBy);
                 callPayload.Queries["$expand"] = Convert.ToString("properties");
                 return new ApiConnectionAction<AMObjectsExpandedApiResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "alvao")]
-        [WorkflowExpressionFactory(nameof(__BuildGetUsers))]
-        public IBodyWorkflowAction<CommonUsersApiResponse> GetUsers([WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderBy = null)
+        public IBodyWorkflowAction<CommonUsersApiResponse> GetUsers(Expression<Func<int>> top = null, Expression<Func<string>> search = null, Expression<Func<string>> filter = null, Expression<Func<string>> orderBy = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CommonUsersApiResponse> __BuildGetUsers(WorkflowExpression<int> top = null, WorkflowExpression<string> search = null, WorkflowExpression<string> filter = null, WorkflowExpression<string> orderBy = null)
-        {
-            WorkflowExpression.Validate(top, nameof(top), required: false);
-            WorkflowExpression.Validate(search, nameof(search), required: false);
-            WorkflowExpression.Validate(filter, nameof(filter), required: false);
-            WorkflowExpression.Validate(orderBy, nameof(orderBy), required: false);
+            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
+            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
+            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
+            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
+            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
+            var __workflow_orderBy = orderBy == null ? null : WorkflowExpression.Compile(orderBy);
+            WorkflowExpression.Validate(__workflow_orderBy, nameof(orderBy), required: false);
             return new DeferredBodyAction<CommonUsersApiResponse>(() =>
             {
                 var apiCallPath = "/v1/users";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (top != null)
-                    callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-                if (search != null)
-                    callPayload.Queries["$search"] = ExpressionConverter.Convert(search);
-                if (filter != null)
-                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-                if (orderBy != null)
-                    callPayload.Queries["$orderBy"] = ExpressionConverter.Convert(orderBy);
+                if (__workflow_top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
+                if (__workflow_search != null)
+                    callPayload.Queries["$search"] = ExpressionConverter.Convert(__workflow_search);
+                if (__workflow_filter != null)
+                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(__workflow_filter);
+                if (__workflow_orderBy != null)
+                    callPayload.Queries["$orderBy"] = ExpressionConverter.Convert(__workflow_orderBy);
                 return new ApiConnectionAction<CommonUsersApiResponse>(callPayload);
             });
         }
@@ -77,19 +70,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alvao
 
     public class AlvaoTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildTicketTransitionsToStatus))]
-        public IBodyWorkflowTrigger<WebhookCreatedResponse> TicketTransitionsToStatus([WorkflowExpression] Func<string> bodyprocessName,[WorkflowExpression] Func<string> bodyticketStatusName,[WorkflowExpression] Func<string> bodyserviceName = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreatedResponse> TicketTransitionsToStatus(Expression<Func<string>> bodyprocessName, Expression<Func<string>> bodyticketStatusName, Expression<Func<string>> bodyserviceName = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<WebhookCreatedResponse> __BuildTicketTransitionsToStatus(WorkflowExpression<string> bodyprocessName,WorkflowExpression<string> bodyticketStatusName,WorkflowExpression<string> bodyserviceName = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodyprocessName, nameof(bodyprocessName), required: true);
-            WorkflowExpression.Validate(bodyticketStatusName, nameof(bodyticketStatusName), required: true);
-            WorkflowExpression.Validate(bodyserviceName, nameof(bodyserviceName), required: false);
+            var __workflow_bodyprocessName = bodyprocessName == null ? null : WorkflowExpression.Compile(bodyprocessName);
+            WorkflowExpression.Validate(__workflow_bodyprocessName, nameof(bodyprocessName), required: true);
+            var __workflow_bodyticketStatusName = bodyticketStatusName == null ? null : WorkflowExpression.Compile(bodyticketStatusName);
+            WorkflowExpression.Validate(__workflow_bodyticketStatusName, nameof(bodyticketStatusName), required: true);
+            var __workflow_bodyserviceName = bodyserviceName == null ? null : WorkflowExpression.Compile(bodyserviceName);
+            WorkflowExpression.Validate(__workflow_bodyserviceName, nameof(bodyserviceName), required: false);
             return new DeferredBodyTrigger<WebhookCreatedResponse>(() =>
             {
                 var apiCallPath = "/webhooks/tickettransitionstostatus";
@@ -100,12 +88,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alvao
                 body["webhookUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 bodypropCount++;
-                body["process"] = ExpressionConverter.ConvertO(bodyprocessName);
+                body["process"] = ExpressionConverter.ConvertO(__workflow_bodyprocessName);
                 bodypropCount++;
-                body["status"] = ExpressionConverter.ConvertO(bodyticketStatusName);
-                if (bodyserviceName != null)
+                body["status"] = ExpressionConverter.ConvertO(__workflow_bodyticketStatusName);
+                if (__workflow_bodyserviceName != null)
                 {
-                    body["service"] = ExpressionConverter.ConvertO(bodyserviceName);
+                    body["service"] = ExpressionConverter.ConvertO(__workflow_bodyserviceName);
                     bodypropCount++;
                 }
 

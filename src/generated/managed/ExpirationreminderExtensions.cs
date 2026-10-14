@@ -1,57 +1,47 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expirationreminder
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class ExpirationreminderActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expirationreminder")]
-        [WorkflowExpressionFactory(nameof(__BuildFindExpiration))]
-        public IBodyWorkflowAction<FindExpirationResponse> FindExpiration([WorkflowExpression] Func<string> category = null, [WorkflowExpression] Func<string> email = null, [WorkflowExpression] Func<string> name = null)
+        public IBodyWorkflowAction<FindExpirationResponse> FindExpiration(Expression<Func<string>> category = null, Expression<Func<string>> email = null, Expression<Func<string>> name = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FindExpirationResponse> __BuildFindExpiration(WorkflowExpression<string> category = null, WorkflowExpression<string> email = null, WorkflowExpression<string> name = null)
-        {
-            WorkflowExpression.Validate(category, nameof(category), required: false);
-            WorkflowExpression.Validate(email, nameof(email), required: false);
-            WorkflowExpression.Validate(name, nameof(name), required: false);
+            var __workflow_category = category == null ? null : WorkflowExpression.Compile(category);
+            WorkflowExpression.Validate(__workflow_category, nameof(category), required: false);
+            var __workflow_email = email == null ? null : WorkflowExpression.Compile(email);
+            WorkflowExpression.Validate(__workflow_email, nameof(email), required: false);
+            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
+            WorkflowExpression.Validate(__workflow_name, nameof(name), required: false);
             return new DeferredBodyAction<FindExpirationResponse>(() =>
             {
                 var apiCallPath = "/v1/expirationitems/find";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (category != null)
-                    callPayload.Queries["category"] = ExpressionConverter.Convert(category);
-                if (email != null)
-                    callPayload.Queries["email"] = ExpressionConverter.Convert(email);
-                if (name != null)
-                    callPayload.Queries["name"] = ExpressionConverter.Convert(name);
+                if (__workflow_category != null)
+                    callPayload.Queries["category"] = ExpressionConverter.Convert(__workflow_category);
+                if (__workflow_email != null)
+                    callPayload.Queries["email"] = ExpressionConverter.Convert(__workflow_email);
+                if (__workflow_name != null)
+                    callPayload.Queries["name"] = ExpressionConverter.Convert(__workflow_name);
                 callPayload.Headers["Content-Type"] = Convert.ToString(" application/json");
                 return new ApiConnectionAction<FindExpirationResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expirationreminder")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateContact))]
-        public IWorkflowAction CreateContact([WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyemail = null)
+        public IWorkflowAction CreateContact(Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyemail = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildCreateContact(WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyemail = null)
-        {
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
-            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: false);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
+            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
+            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v1/contacts";
@@ -60,15 +50,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expirationreminder
                 callPayload.Headers["Content-Type"] = Convert.ToString(" application/json");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyname != null)
+                if (__workflow_bodyname != null)
                 {
-                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
                     bodypropCount++;
                 }
 
-                if (bodyemail != null)
+                if (__workflow_bodyemail != null)
                 {
-                    body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                    body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
                     bodypropCount++;
                 }
 
@@ -82,35 +72,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expirationreminder
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expirationreminder")]
-        [WorkflowExpressionFactory(nameof(__BuildRenewExpiration))]
-        public IBodyWorkflowAction<RenewExpirationResponse> RenewExpiration([WorkflowExpression] Func<string> expirationItemId, [WorkflowExpression] Func<string> bodyexpirationDate = null, [WorkflowExpression] Func<string> bodydetails = null)
+        public IBodyWorkflowAction<RenewExpirationResponse> RenewExpiration(Expression<Func<string>> expirationItemId, Expression<Func<string>> bodyexpirationDate = null, Expression<Func<string>> bodydetails = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<RenewExpirationResponse> __BuildRenewExpiration(WorkflowExpression<string> expirationItemId, WorkflowExpression<string> bodyexpirationDate = null, WorkflowExpression<string> bodydetails = null)
-        {
-            WorkflowExpression.Validate(expirationItemId, nameof(expirationItemId), required: true);
-            WorkflowExpression.Validate(bodyexpirationDate, nameof(bodyexpirationDate), required: false);
-            WorkflowExpression.Validate(bodydetails, nameof(bodydetails), required: false);
+            var __workflow_expirationItemId = expirationItemId == null ? null : WorkflowExpression.Compile(expirationItemId);
+            WorkflowExpression.Validate(__workflow_expirationItemId, nameof(expirationItemId), required: true);
+            var __workflow_bodyexpirationDate = bodyexpirationDate == null ? null : WorkflowExpression.Compile(bodyexpirationDate);
+            WorkflowExpression.Validate(__workflow_bodyexpirationDate, nameof(bodyexpirationDate), required: false);
+            var __workflow_bodydetails = bodydetails == null ? null : WorkflowExpression.Compile(bodydetails);
+            WorkflowExpression.Validate(__workflow_bodydetails, nameof(bodydetails), required: false);
             return new DeferredBodyAction<RenewExpirationResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/expirationitems/{0}/renew", ExpressionConverter.ConvertWithUrlEncoding(expirationItemId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/expirationitems/{0}/renew", ExpressionConverter.ConvertWithUrlEncoding(__workflow_expirationItemId, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString(" application/json");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyexpirationDate != null)
+                if (__workflow_bodyexpirationDate != null)
                 {
-                    body["expiration_date"] = ExpressionConverter.ConvertO(bodyexpirationDate);
+                    body["expiration_date"] = ExpressionConverter.ConvertO(__workflow_bodyexpirationDate);
                     bodypropCount++;
                 }
 
-                if (bodydetails != null)
+                if (__workflow_bodydetails != null)
                 {
-                    body["details"] = ExpressionConverter.ConvertO(bodydetails);
+                    body["details"] = ExpressionConverter.ConvertO(__workflow_bodydetails);
                     bodypropCount++;
                 }
 
@@ -124,18 +110,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expirationreminder
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expirationreminder")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateExpirationItem))]
-        public IBodyWorkflowAction<CreateExpirationItemResponse> CreateExpirationItem([WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodycategoryName = null, [WorkflowExpression] Func<string> bodyexpirationDate = null)
+        public IBodyWorkflowAction<CreateExpirationItemResponse> CreateExpirationItem(Expression<Func<string>> bodyname = null, Expression<Func<string>> bodycategoryName = null, Expression<Func<string>> bodyexpirationDate = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateExpirationItemResponse> __BuildCreateExpirationItem(WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodycategoryName = null, WorkflowExpression<string> bodyexpirationDate = null)
-        {
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
-            WorkflowExpression.Validate(bodycategoryName, nameof(bodycategoryName), required: false);
-            WorkflowExpression.Validate(bodyexpirationDate, nameof(bodyexpirationDate), required: false);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
+            var __workflow_bodycategoryName = bodycategoryName == null ? null : WorkflowExpression.Compile(bodycategoryName);
+            WorkflowExpression.Validate(__workflow_bodycategoryName, nameof(bodycategoryName), required: false);
+            var __workflow_bodyexpirationDate = bodyexpirationDate == null ? null : WorkflowExpression.Compile(bodyexpirationDate);
+            WorkflowExpression.Validate(__workflow_bodyexpirationDate, nameof(bodyexpirationDate), required: false);
             return new DeferredBodyAction<CreateExpirationItemResponse>(() =>
             {
                 var apiCallPath = "/v1/expirationitems";
@@ -144,21 +126,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expirationreminder
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyname != null)
+                if (__workflow_bodyname != null)
                 {
-                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
                     bodypropCount++;
                 }
 
-                if (bodycategoryName != null)
+                if (__workflow_bodycategoryName != null)
                 {
-                    body["category_name"] = ExpressionConverter.ConvertO(bodycategoryName);
+                    body["category_name"] = ExpressionConverter.ConvertO(__workflow_bodycategoryName);
                     bodypropCount++;
                 }
 
-                if (bodyexpirationDate != null)
+                if (__workflow_bodyexpirationDate != null)
                 {
-                    body["expiration_date"] = ExpressionConverter.ConvertO(bodyexpirationDate);
+                    body["expiration_date"] = ExpressionConverter.ConvertO(__workflow_bodyexpirationDate);
                     bodypropCount++;
                 }
 

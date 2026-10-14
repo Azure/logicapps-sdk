@@ -1,67 +1,71 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assistantstudiov2
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class Assistantstudiov2Actions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assistantstudiov2")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateActionCard))]
-        public IWorkflowAction CreateActionCard([WorkflowExpression] Func<string> organization, [WorkflowExpression] Func<string> bodycardname, [WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodydescription, [WorkflowExpression] Func<object> bodydynamicproperties, [WorkflowExpression] Func<string> actiontype, [WorkflowExpression] Func<string> secondaryactiontype = null, [WorkflowExpression] Func<string> regardingobjecttype = null, [WorkflowExpression] Func<string> regardingobjectid = null, [WorkflowExpression] Func<string> ownerid = null, [WorkflowExpression] Func<string> startdate = null, [WorkflowExpression] Func<string> expirydate = null)
+        public IWorkflowAction CreateActionCard(Expression<Func<string>> organization, Expression<Func<string>> bodycardname, Expression<Func<string>> bodytitle, Expression<Func<string>> bodydescription, Expression<Func<object>> bodydynamicproperties, Expression<Func<string>> actiontype, Expression<Func<string>> secondaryactiontype = null, Expression<Func<string>> regardingobjecttype = null, Expression<Func<string>> regardingobjectid = null, Expression<Func<string>> ownerid = null, Expression<Func<string>> startdate = null, Expression<Func<string>> expirydate = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildCreateActionCard(WorkflowExpression<string> organization, WorkflowExpression<string> bodycardname, WorkflowExpression<string> bodytitle, WorkflowExpression<string> bodydescription, WorkflowExpression<object> bodydynamicproperties, WorkflowExpression<string> actiontype, WorkflowExpression<string> secondaryactiontype = null, WorkflowExpression<string> regardingobjecttype = null, WorkflowExpression<string> regardingobjectid = null, WorkflowExpression<string> ownerid = null, WorkflowExpression<string> startdate = null, WorkflowExpression<string> expirydate = null)
-        {
-            WorkflowExpression.Validate(organization, nameof(organization), required: true);
-            WorkflowExpression.Validate(bodycardname, nameof(bodycardname), required: true);
-            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            WorkflowExpression.Validate(bodydescription, nameof(bodydescription), required: true);
-            WorkflowExpression.Validate(bodydynamicproperties, nameof(bodydynamicproperties), required: true);
-            WorkflowExpression.Validate(actiontype, nameof(actiontype), required: true);
-            WorkflowExpression.Validate(secondaryactiontype, nameof(secondaryactiontype), required: false);
-            WorkflowExpression.Validate(regardingobjecttype, nameof(regardingobjecttype), required: false);
-            WorkflowExpression.Validate(regardingobjectid, nameof(regardingobjectid), required: false);
-            WorkflowExpression.Validate(ownerid, nameof(ownerid), required: false);
-            WorkflowExpression.Validate(startdate, nameof(startdate), required: false);
-            WorkflowExpression.Validate(expirydate, nameof(expirydate), required: false);
+            var __workflow_organization = organization == null ? null : WorkflowExpression.Compile(organization);
+            WorkflowExpression.Validate(__workflow_organization, nameof(organization), required: true);
+            var __workflow_bodycardname = bodycardname == null ? null : WorkflowExpression.Compile(bodycardname);
+            WorkflowExpression.Validate(__workflow_bodycardname, nameof(bodycardname), required: true);
+            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
+            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
+            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: true);
+            var __workflow_bodydynamicproperties = bodydynamicproperties == null ? null : WorkflowExpression.Compile(bodydynamicproperties);
+            WorkflowExpression.Validate(__workflow_bodydynamicproperties, nameof(bodydynamicproperties), required: true);
+            var __workflow_actiontype = actiontype == null ? null : WorkflowExpression.Compile(actiontype);
+            WorkflowExpression.Validate(__workflow_actiontype, nameof(actiontype), required: true);
+            var __workflow_secondaryactiontype = secondaryactiontype == null ? null : WorkflowExpression.Compile(secondaryactiontype);
+            WorkflowExpression.Validate(__workflow_secondaryactiontype, nameof(secondaryactiontype), required: false);
+            var __workflow_regardingobjecttype = regardingobjecttype == null ? null : WorkflowExpression.Compile(regardingobjecttype);
+            WorkflowExpression.Validate(__workflow_regardingobjecttype, nameof(regardingobjecttype), required: false);
+            var __workflow_regardingobjectid = regardingobjectid == null ? null : WorkflowExpression.Compile(regardingobjectid);
+            WorkflowExpression.Validate(__workflow_regardingobjectid, nameof(regardingobjectid), required: false);
+            var __workflow_ownerid = ownerid == null ? null : WorkflowExpression.Compile(ownerid);
+            WorkflowExpression.Validate(__workflow_ownerid, nameof(ownerid), required: false);
+            var __workflow_startdate = startdate == null ? null : WorkflowExpression.Compile(startdate);
+            WorkflowExpression.Validate(__workflow_startdate, nameof(startdate), required: false);
+            var __workflow_expirydate = expirydate == null ? null : WorkflowExpression.Compile(expirydate);
+            WorkflowExpression.Validate(__workflow_expirydate, nameof(expirydate), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/data/v9.0/msdyn_ActionCardCreate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["organization"] = ExpressionConverter.Convert(organization);
-                callPayload.Headers["actiontype"] = ExpressionConverter.Convert(actiontype);
-                if (secondaryactiontype != null)
-                    callPayload.Headers["secondaryactiontype"] = ExpressionConverter.Convert(secondaryactiontype);
-                if (regardingobjecttype != null)
-                    callPayload.Headers["regardingobjecttype"] = ExpressionConverter.Convert(regardingobjecttype);
-                if (regardingobjectid != null)
-                    callPayload.Headers["regardingobjectid"] = ExpressionConverter.Convert(regardingobjectid);
-                if (ownerid != null)
-                    callPayload.Headers["ownerid"] = ExpressionConverter.Convert(ownerid);
-                if (startdate != null)
-                    callPayload.Headers["startdate"] = ExpressionConverter.Convert(startdate);
-                if (expirydate != null)
-                    callPayload.Headers["expirydate"] = ExpressionConverter.Convert(expirydate);
+                callPayload.Headers["organization"] = ExpressionConverter.Convert(__workflow_organization);
+                callPayload.Headers["actiontype"] = ExpressionConverter.Convert(__workflow_actiontype);
+                if (__workflow_secondaryactiontype != null)
+                    callPayload.Headers["secondaryactiontype"] = ExpressionConverter.Convert(__workflow_secondaryactiontype);
+                if (__workflow_regardingobjecttype != null)
+                    callPayload.Headers["regardingobjecttype"] = ExpressionConverter.Convert(__workflow_regardingobjecttype);
+                if (__workflow_regardingobjectid != null)
+                    callPayload.Headers["regardingobjectid"] = ExpressionConverter.Convert(__workflow_regardingobjectid);
+                if (__workflow_ownerid != null)
+                    callPayload.Headers["ownerid"] = ExpressionConverter.Convert(__workflow_ownerid);
+                if (__workflow_startdate != null)
+                    callPayload.Headers["startdate"] = ExpressionConverter.Convert(__workflow_startdate);
+                if (__workflow_expirydate != null)
+                    callPayload.Headers["expirydate"] = ExpressionConverter.Convert(__workflow_expirydate);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["cardname"] = ExpressionConverter.ConvertO(bodycardname);
+                body["cardname"] = ExpressionConverter.ConvertO(__workflow_bodycardname);
                 bodypropCount++;
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
                 bodypropCount++;
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
                 bodypropCount++;
-                body["dynamicproperties"] = ExpressionConverter.ConvertO(bodydynamicproperties);
+                body["dynamicproperties"] = ExpressionConverter.ConvertO(__workflow_bodydynamicproperties);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -72,28 +76,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assistantstudiov2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assistantstudiov2")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateCustomActionDefinition))]
-        public IBodyWorkflowAction<string> CreateCustomActionDefinition([WorkflowExpression] Func<string> organization, [WorkflowExpression] Func<string> entityname, [WorkflowExpression] Func<string> customaction, [WorkflowExpression] Func<object> body = null)
+        public IBodyWorkflowAction<string> CreateCustomActionDefinition(Expression<Func<string>> organization, Expression<Func<string>> entityname, Expression<Func<string>> customaction, Expression<Func<object>> body = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildCreateCustomActionDefinition(WorkflowExpression<string> organization, WorkflowExpression<string> entityname, WorkflowExpression<string> customaction, WorkflowExpression<object> body = null)
-        {
-            WorkflowExpression.Validate(organization, nameof(organization), required: true);
-            WorkflowExpression.Validate(entityname, nameof(entityname), required: true);
-            WorkflowExpression.Validate(customaction, nameof(customaction), required: true);
-            WorkflowExpression.Validate(body, nameof(body), required: false);
+            var __workflow_organization = organization == null ? null : WorkflowExpression.Compile(organization);
+            WorkflowExpression.Validate(__workflow_organization, nameof(organization), required: true);
+            var __workflow_entityname = entityname == null ? null : WorkflowExpression.Compile(entityname);
+            WorkflowExpression.Validate(__workflow_entityname, nameof(entityname), required: true);
+            var __workflow_customaction = customaction == null ? null : WorkflowExpression.Compile(customaction);
+            WorkflowExpression.Validate(__workflow_customaction, nameof(customaction), required: true);
+            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
+            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/api/data/v9.0/msdyn_CreateCustomActionDefinition";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["organization"] = ExpressionConverter.Convert(organization);
-                callPayload.Headers["entityname"] = ExpressionConverter.Convert(entityname);
-                callPayload.Headers["customaction"] = ExpressionConverter.Convert(customaction);
-                callPayload.Body = ExpressionConverter.ConvertO(body);
+                callPayload.Headers["organization"] = ExpressionConverter.Convert(__workflow_organization);
+                callPayload.Headers["entityname"] = ExpressionConverter.Convert(__workflow_entityname);
+                callPayload.Headers["customaction"] = ExpressionConverter.Convert(__workflow_customaction);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }

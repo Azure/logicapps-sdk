@@ -1,29 +1,24 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class TendocsdocumentsActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
-        [WorkflowExpressionFactory(nameof(__BuildAiCompare))]
-        public IBodyWorkflowAction<AiCompareResponse> AiCompare([WorkflowExpression] Func<string> requestsourceDocumentfirstFile = null, [WorkflowExpression] Func<string> requestcomparisonDocumentsecondFile = null, [WorkflowExpression] Func<requestconfigurationprofessionInput> requestconfigurationprofession = null)
+        public IBodyWorkflowAction<AiCompareResponse> AiCompare(Expression<Func<string>> requestsourceDocumentfirstFile = null, Expression<Func<string>> requestcomparisonDocumentsecondFile = null, Expression<Func<requestconfigurationprofessionInput>> requestconfigurationprofession = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AiCompareResponse> __BuildAiCompare(WorkflowExpression<string> requestsourceDocumentfirstFile = null, WorkflowExpression<string> requestcomparisonDocumentsecondFile = null, WorkflowExpression<requestconfigurationprofessionInput> requestconfigurationprofession = null)
-        {
-            WorkflowExpression.Validate(requestsourceDocumentfirstFile, nameof(requestsourceDocumentfirstFile), required: false);
-            WorkflowExpression.Validate(requestcomparisonDocumentsecondFile, nameof(requestcomparisonDocumentsecondFile), required: false);
-            WorkflowExpression.Validate(requestconfigurationprofession, nameof(requestconfigurationprofession), required: false);
+            var __workflow_requestsourceDocumentfirstFile = requestsourceDocumentfirstFile == null ? null : WorkflowExpression.Compile(requestsourceDocumentfirstFile);
+            WorkflowExpression.Validate(__workflow_requestsourceDocumentfirstFile, nameof(requestsourceDocumentfirstFile), required: false);
+            var __workflow_requestcomparisonDocumentsecondFile = requestcomparisonDocumentsecondFile == null ? null : WorkflowExpression.Compile(requestcomparisonDocumentsecondFile);
+            WorkflowExpression.Validate(__workflow_requestcomparisonDocumentsecondFile, nameof(requestcomparisonDocumentsecondFile), required: false);
+            var __workflow_requestconfigurationprofession = requestconfigurationprofession == null ? null : WorkflowExpression.Compile(requestconfigurationprofession);
+            WorkflowExpression.Validate(__workflow_requestconfigurationprofession, nameof(requestconfigurationprofession), required: false);
             return new DeferredBodyAction<AiCompareResponse>(() =>
             {
                 var apiCallPath = "/ai/v1/tasks/compare";
@@ -33,9 +28,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
                 var requestpropCount = 0;
                 var sourceDocumentObject = new JObject();
                 var sourceDocumentObjectpropCount = 0;
-                if (requestsourceDocumentfirstFile != null)
+                if (__workflow_requestsourceDocumentfirstFile != null)
                 {
-                    sourceDocumentObject["file"] = ExpressionConverter.ConvertO(requestsourceDocumentfirstFile);
+                    sourceDocumentObject["file"] = ExpressionConverter.ConvertO(__workflow_requestsourceDocumentfirstFile);
                     sourceDocumentObjectpropCount++;
                 }
 
@@ -47,9 +42,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
 
                 var comparisonDocumentObject = new JObject();
                 var comparisonDocumentObjectpropCount = 0;
-                if (requestcomparisonDocumentsecondFile != null)
+                if (__workflow_requestcomparisonDocumentsecondFile != null)
                 {
-                    comparisonDocumentObject["file"] = ExpressionConverter.ConvertO(requestcomparisonDocumentsecondFile);
+                    comparisonDocumentObject["file"] = ExpressionConverter.ConvertO(__workflow_requestcomparisonDocumentsecondFile);
                     comparisonDocumentObjectpropCount++;
                 }
 
@@ -61,9 +56,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
 
                 var configurationObject = new JObject();
                 var configurationObjectpropCount = 0;
-                if (requestconfigurationprofession != null)
+                if (__workflow_requestconfigurationprofession != null)
                 {
-                    configurationObject["profession"] = ExpressionConverter.ConvertO(requestconfigurationprofession);
+                    configurationObject["profession"] = ExpressionConverter.ConvertO(__workflow_requestconfigurationprofession);
                     configurationObjectpropCount++;
                 }
 
@@ -91,17 +86,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
-        [WorkflowExpressionFactory(nameof(__BuildAiSummary))]
-        public IBodyWorkflowAction<AiSummaryResponse> AiSummary([WorkflowExpression] Func<string> requestdocumentfile = null, [WorkflowExpression] Func<int> requestconfigurationtargetWordCount = null)
+        public IBodyWorkflowAction<AiSummaryResponse> AiSummary(Expression<Func<string>> requestdocumentfile = null, Expression<Func<int>> requestconfigurationtargetWordCount = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AiSummaryResponse> __BuildAiSummary(WorkflowExpression<string> requestdocumentfile = null, WorkflowExpression<int> requestconfigurationtargetWordCount = null)
-        {
-            WorkflowExpression.Validate(requestdocumentfile, nameof(requestdocumentfile), required: false);
-            WorkflowExpression.Validate(requestconfigurationtargetWordCount, nameof(requestconfigurationtargetWordCount), required: false);
+            var __workflow_requestdocumentfile = requestdocumentfile == null ? null : WorkflowExpression.Compile(requestdocumentfile);
+            WorkflowExpression.Validate(__workflow_requestdocumentfile, nameof(requestdocumentfile), required: false);
+            var __workflow_requestconfigurationtargetWordCount = requestconfigurationtargetWordCount == null ? null : WorkflowExpression.Compile(requestconfigurationtargetWordCount);
+            WorkflowExpression.Validate(__workflow_requestconfigurationtargetWordCount, nameof(requestconfigurationtargetWordCount), required: false);
             return new DeferredBodyAction<AiSummaryResponse>(() =>
             {
                 var apiCallPath = "/ai/v1/tasks/summary";
@@ -111,9 +101,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
                 var requestpropCount = 0;
                 var documentObject = new JObject();
                 var documentObjectpropCount = 0;
-                if (requestdocumentfile != null)
+                if (__workflow_requestdocumentfile != null)
                 {
-                    documentObject["file"] = ExpressionConverter.ConvertO(requestdocumentfile);
+                    documentObject["file"] = ExpressionConverter.ConvertO(__workflow_requestdocumentfile);
                     documentObjectpropCount++;
                 }
 
@@ -125,9 +115,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
 
                 var configurationObject = new JObject();
                 var configurationObjectpropCount = 0;
-                if (requestconfigurationtargetWordCount != null)
+                if (__workflow_requestconfigurationtargetWordCount != null)
                 {
-                    configurationObject["targetWords"] = ExpressionConverter.ConvertO(requestconfigurationtargetWordCount);
+                    configurationObject["targetWords"] = ExpressionConverter.ConvertO(__workflow_requestconfigurationtargetWordCount);
                     configurationObjectpropCount++;
                 }
 
@@ -155,16 +145,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
-        [WorkflowExpressionFactory(nameof(__BuildAiTemplateBuilder))]
-        public IBodyWorkflowAction<AiTemplateBuilderResponse> AiTemplateBuilder([WorkflowExpression] Func<string> requestdescribeTheDocument1000Chars)
+        public IBodyWorkflowAction<AiTemplateBuilderResponse> AiTemplateBuilder(Expression<Func<string>> requestdescribeTheDocument1000Chars)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AiTemplateBuilderResponse> __BuildAiTemplateBuilder(WorkflowExpression<string> requestdescribeTheDocument1000Chars)
-        {
-            WorkflowExpression.Validate(requestdescribeTheDocument1000Chars, nameof(requestdescribeTheDocument1000Chars), required: true);
+            var __workflow_requestdescribeTheDocument1000Chars = requestdescribeTheDocument1000Chars == null ? null : WorkflowExpression.Compile(requestdescribeTheDocument1000Chars);
+            WorkflowExpression.Validate(__workflow_requestdescribeTheDocument1000Chars, nameof(requestdescribeTheDocument1000Chars), required: true);
             return new DeferredBodyAction<AiTemplateBuilderResponse>(() =>
             {
                 var apiCallPath = "/ai/v1/tasks/templateBuilder";
@@ -173,7 +157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
                 var request = new JObject();
                 var requestpropCount = 0;
                 requestpropCount++;
-                request["description"] = ExpressionConverter.ConvertO(requestdescribeTheDocument1000Chars);
+                request["description"] = ExpressionConverter.ConvertO(__workflow_requestdescribeTheDocument1000Chars);
                 var configurationObject = new JObject();
                 var configurationObjectpropCount = 0;
                 var keysObject = new JObject();
@@ -200,17 +184,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
-        [WorkflowExpressionFactory(nameof(__BuildConversionConvert))]
-        public IBodyWorkflowAction<string> ConversionConvert([WorkflowExpression] Func<string> requestdocumentfile = null, [WorkflowExpression] Func<requestconfigurationdocumentFormatInput> requestconfigurationdocumentFormat = null)
+        public IBodyWorkflowAction<string> ConversionConvert(Expression<Func<string>> requestdocumentfile = null, Expression<Func<requestconfigurationdocumentFormatInput>> requestconfigurationdocumentFormat = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildConversionConvert(WorkflowExpression<string> requestdocumentfile = null, WorkflowExpression<requestconfigurationdocumentFormatInput> requestconfigurationdocumentFormat = null)
-        {
-            WorkflowExpression.Validate(requestdocumentfile, nameof(requestdocumentfile), required: false);
-            WorkflowExpression.Validate(requestconfigurationdocumentFormat, nameof(requestconfigurationdocumentFormat), required: false);
+            var __workflow_requestdocumentfile = requestdocumentfile == null ? null : WorkflowExpression.Compile(requestdocumentfile);
+            WorkflowExpression.Validate(__workflow_requestdocumentfile, nameof(requestdocumentfile), required: false);
+            var __workflow_requestconfigurationdocumentFormat = requestconfigurationdocumentFormat == null ? null : WorkflowExpression.Compile(requestconfigurationdocumentFormat);
+            WorkflowExpression.Validate(__workflow_requestconfigurationdocumentFormat, nameof(requestconfigurationdocumentFormat), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/conversion/v1/convert";
@@ -220,9 +199,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
                 var requestpropCount = 0;
                 var documentObject = new JObject();
                 var documentObjectpropCount = 0;
-                if (requestdocumentfile != null)
+                if (__workflow_requestdocumentfile != null)
                 {
-                    documentObject["file"] = ExpressionConverter.ConvertO(requestdocumentfile);
+                    documentObject["file"] = ExpressionConverter.ConvertO(__workflow_requestdocumentfile);
                     documentObjectpropCount++;
                 }
 
@@ -234,9 +213,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
 
                 var configurationObject = new JObject();
                 var configurationObjectpropCount = 0;
-                if (requestconfigurationdocumentFormat != null)
+                if (__workflow_requestconfigurationdocumentFormat != null)
                 {
-                    configurationObject["documentResponseFormat"] = ExpressionConverter.ConvertO(requestconfigurationdocumentFormat);
+                    configurationObject["documentResponseFormat"] = ExpressionConverter.ConvertO(__workflow_requestconfigurationdocumentFormat);
                     configurationObjectpropCount++;
                 }
 
@@ -264,17 +243,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
-        [WorkflowExpressionFactory(nameof(__BuildDocumentJsonTemplate))]
-        public IBodyWorkflowAction<string> DocumentJsonTemplate([WorkflowExpression] Func<string> requesttemplatetemplateFile = null, [WorkflowExpression] Func<requestconfigurationdocumentFormatInput> requestconfigurationdocumentFormat = null)
+        public IBodyWorkflowAction<string> DocumentJsonTemplate(Expression<Func<string>> requesttemplatetemplateFile = null, Expression<Func<requestconfigurationdocumentFormatInput>> requestconfigurationdocumentFormat = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildDocumentJsonTemplate(WorkflowExpression<string> requesttemplatetemplateFile = null, WorkflowExpression<requestconfigurationdocumentFormatInput> requestconfigurationdocumentFormat = null)
-        {
-            WorkflowExpression.Validate(requesttemplatetemplateFile, nameof(requesttemplatetemplateFile), required: false);
-            WorkflowExpression.Validate(requestconfigurationdocumentFormat, nameof(requestconfigurationdocumentFormat), required: false);
+            var __workflow_requesttemplatetemplateFile = requesttemplatetemplateFile == null ? null : WorkflowExpression.Compile(requesttemplatetemplateFile);
+            WorkflowExpression.Validate(__workflow_requesttemplatetemplateFile, nameof(requesttemplatetemplateFile), required: false);
+            var __workflow_requestconfigurationdocumentFormat = requestconfigurationdocumentFormat == null ? null : WorkflowExpression.Compile(requestconfigurationdocumentFormat);
+            WorkflowExpression.Validate(__workflow_requestconfigurationdocumentFormat, nameof(requestconfigurationdocumentFormat), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/documents/v1/jsonTemplate";
@@ -284,9 +258,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
                 var requestpropCount = 0;
                 var templateObject = new JObject();
                 var templateObjectpropCount = 0;
-                if (requesttemplatetemplateFile != null)
+                if (__workflow_requesttemplatetemplateFile != null)
                 {
-                    templateObject["file"] = ExpressionConverter.ConvertO(requesttemplatetemplateFile);
+                    templateObject["file"] = ExpressionConverter.ConvertO(__workflow_requesttemplatetemplateFile);
                     templateObjectpropCount++;
                 }
 
@@ -306,9 +280,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
 
                 var configurationObject = new JObject();
                 var configurationObjectpropCount = 0;
-                if (requestconfigurationdocumentFormat != null)
+                if (__workflow_requestconfigurationdocumentFormat != null)
                 {
-                    configurationObject["documentResponseFormat"] = ExpressionConverter.ConvertO(requestconfigurationdocumentFormat);
+                    configurationObject["documentResponseFormat"] = ExpressionConverter.ConvertO(__workflow_requestconfigurationdocumentFormat);
                     configurationObjectpropCount++;
                 }
 
@@ -336,20 +310,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
-        [WorkflowExpressionFactory(nameof(__BuildDocumentTemplate))]
-        public IBodyWorkflowAction<string> DocumentTemplate([WorkflowExpression] Func<string> requesttemplatetemplateFile = null, [WorkflowExpression] Func<requestimageInputItem[]> requestimage = null, [WorkflowExpression] Func<requestdocumentInputItem[]> requestdocument = null, [WorkflowExpression] Func<requesttableInputItem[]> requesttable = null, [WorkflowExpression] Func<requestconfigurationdocumentFormatInput> requestconfigurationdocumentFormat = null)
+        public IBodyWorkflowAction<string> DocumentTemplate(Expression<Func<string>> requesttemplatetemplateFile = null, Expression<Func<requestimageInputItem[]>> requestimage = null, Expression<Func<requestdocumentInputItem[]>> requestdocument = null, Expression<Func<requesttableInputItem[]>> requesttable = null, Expression<Func<requestconfigurationdocumentFormatInput>> requestconfigurationdocumentFormat = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildDocumentTemplate(WorkflowExpression<string> requesttemplatetemplateFile = null, WorkflowExpression<requestimageInputItem[]> requestimage = null, WorkflowExpression<requestdocumentInputItem[]> requestdocument = null, WorkflowExpression<requesttableInputItem[]> requesttable = null, WorkflowExpression<requestconfigurationdocumentFormatInput> requestconfigurationdocumentFormat = null)
-        {
-            WorkflowExpression.Validate(requesttemplatetemplateFile, nameof(requesttemplatetemplateFile), required: false);
-            WorkflowExpression.Validate(requestimage, nameof(requestimage), required: false);
-            WorkflowExpression.Validate(requestdocument, nameof(requestdocument), required: false);
-            WorkflowExpression.Validate(requesttable, nameof(requesttable), required: false);
-            WorkflowExpression.Validate(requestconfigurationdocumentFormat, nameof(requestconfigurationdocumentFormat), required: false);
+            var __workflow_requesttemplatetemplateFile = requesttemplatetemplateFile == null ? null : WorkflowExpression.Compile(requesttemplatetemplateFile);
+            WorkflowExpression.Validate(__workflow_requesttemplatetemplateFile, nameof(requesttemplatetemplateFile), required: false);
+            var __workflow_requestimage = requestimage == null ? null : WorkflowExpression.Compile(requestimage);
+            WorkflowExpression.Validate(__workflow_requestimage, nameof(requestimage), required: false);
+            var __workflow_requestdocument = requestdocument == null ? null : WorkflowExpression.Compile(requestdocument);
+            WorkflowExpression.Validate(__workflow_requestdocument, nameof(requestdocument), required: false);
+            var __workflow_requesttable = requesttable == null ? null : WorkflowExpression.Compile(requesttable);
+            WorkflowExpression.Validate(__workflow_requesttable, nameof(requesttable), required: false);
+            var __workflow_requestconfigurationdocumentFormat = requestconfigurationdocumentFormat == null ? null : WorkflowExpression.Compile(requestconfigurationdocumentFormat);
+            WorkflowExpression.Validate(__workflow_requestconfigurationdocumentFormat, nameof(requestconfigurationdocumentFormat), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/documents/v1/template";
@@ -359,9 +331,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
                 var requestpropCount = 0;
                 var templateObject = new JObject();
                 var templateObjectpropCount = 0;
-                if (requesttemplatetemplateFile != null)
+                if (__workflow_requesttemplatetemplateFile != null)
                 {
-                    templateObject["file"] = ExpressionConverter.ConvertO(requesttemplatetemplateFile);
+                    templateObject["file"] = ExpressionConverter.ConvertO(__workflow_requesttemplatetemplateFile);
                     templateObjectpropCount++;
                 }
 
@@ -371,9 +343,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
                     requestpropCount++;
                 }
 
-                if (requestimage != null)
+                if (__workflow_requestimage != null)
                 {
-                    request["images"] = ExpressionConverter.ConvertO(requestimage);
+                    request["images"] = ExpressionConverter.ConvertO(__workflow_requestimage);
                     requestpropCount++;
                 }
 
@@ -385,23 +357,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
                     requestpropCount++;
                 }
 
-                if (requestdocument != null)
+                if (__workflow_requestdocument != null)
                 {
-                    request["substituteDocuments"] = ExpressionConverter.ConvertO(requestdocument);
+                    request["substituteDocuments"] = ExpressionConverter.ConvertO(__workflow_requestdocument);
                     requestpropCount++;
                 }
 
-                if (requesttable != null)
+                if (__workflow_requesttable != null)
                 {
-                    request["tables"] = ExpressionConverter.ConvertO(requesttable);
+                    request["tables"] = ExpressionConverter.ConvertO(__workflow_requesttable);
                     requestpropCount++;
                 }
 
                 var configurationObject = new JObject();
                 var configurationObjectpropCount = 0;
-                if (requestconfigurationdocumentFormat != null)
+                if (__workflow_requestconfigurationdocumentFormat != null)
                 {
-                    configurationObject["documentresponseformat"] = ExpressionConverter.ConvertO(requestconfigurationdocumentFormat);
+                    configurationObject["documentresponseformat"] = ExpressionConverter.ConvertO(__workflow_requestconfigurationdocumentFormat);
                     configurationObjectpropCount++;
                 }
 
@@ -429,36 +401,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
-        [WorkflowExpressionFactory(nameof(__BuildEnvelopesInstances))]
-        public IBodyWorkflowAction<InstancesResponse> EnvelopesInstances([WorkflowExpression] Func<string> requestdocumentTitle, [WorkflowExpression] Func<string> requestdocumentIntroduction, [WorkflowExpression] Func<string> requestrecipientEmail, [WorkflowExpression] Func<string> requestrecipientFirstName, [WorkflowExpression] Func<string> requestrecipientLastName, [WorkflowExpression] Func<string> requestexpiryDate, [WorkflowExpression] Func<bool> requestsignatureRequired, [WorkflowExpression] Func<string> requestorgansiationTitle, [WorkflowExpression] Func<string> requestorganisationEmail, [WorkflowExpression] Func<string> requestorganisationOwner, [WorkflowExpression] Func<string> requestdocumentpDFDocument = null, [WorkflowExpression] Func<string> requestdocumentLogo = null, [WorkflowExpression] Func<string> requestcheckbox = null, [WorkflowExpression] Func<string> requestorganisationWebsite = null, [WorkflowExpression] Func<string> requestorganisationPhone = null, [WorkflowExpression] Func<string> requestoragnisationOwnerTitle = null, [WorkflowExpression] Func<bool> requestcomments = null, [WorkflowExpression] Func<string> requestprojectID = null, [WorkflowExpression] Func<string> requestcompleteButtonLabel = null, [WorkflowExpression] Func<string> requestcompleteDocumentLabel = null, [WorkflowExpression] Func<string> requestincompleteDocumentLabel = null)
+        public IBodyWorkflowAction<InstancesResponse> EnvelopesInstances(Expression<Func<string>> requestdocumentTitle, Expression<Func<string>> requestdocumentIntroduction, Expression<Func<string>> requestrecipientEmail, Expression<Func<string>> requestrecipientFirstName, Expression<Func<string>> requestrecipientLastName, Expression<Func<string>> requestexpiryDate, Expression<Func<bool>> requestsignatureRequired, Expression<Func<string>> requestorgansiationTitle, Expression<Func<string>> requestorganisationEmail, Expression<Func<string>> requestorganisationOwner, Expression<Func<string>> requestdocumentpDFDocument = null, Expression<Func<string>> requestdocumentLogo = null, Expression<Func<string>> requestcheckbox = null, Expression<Func<string>> requestorganisationWebsite = null, Expression<Func<string>> requestorganisationPhone = null, Expression<Func<string>> requestoragnisationOwnerTitle = null, Expression<Func<bool>> requestcomments = null, Expression<Func<string>> requestprojectID = null, Expression<Func<string>> requestcompleteButtonLabel = null, Expression<Func<string>> requestcompleteDocumentLabel = null, Expression<Func<string>> requestincompleteDocumentLabel = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<InstancesResponse> __BuildEnvelopesInstances(WorkflowExpression<string> requestdocumentTitle, WorkflowExpression<string> requestdocumentIntroduction, WorkflowExpression<string> requestrecipientEmail, WorkflowExpression<string> requestrecipientFirstName, WorkflowExpression<string> requestrecipientLastName, WorkflowExpression<string> requestexpiryDate, WorkflowExpression<bool> requestsignatureRequired, WorkflowExpression<string> requestorgansiationTitle, WorkflowExpression<string> requestorganisationEmail, WorkflowExpression<string> requestorganisationOwner, WorkflowExpression<string> requestdocumentpDFDocument = null, WorkflowExpression<string> requestdocumentLogo = null, WorkflowExpression<string> requestcheckbox = null, WorkflowExpression<string> requestorganisationWebsite = null, WorkflowExpression<string> requestorganisationPhone = null, WorkflowExpression<string> requestoragnisationOwnerTitle = null, WorkflowExpression<bool> requestcomments = null, WorkflowExpression<string> requestprojectID = null, WorkflowExpression<string> requestcompleteButtonLabel = null, WorkflowExpression<string> requestcompleteDocumentLabel = null, WorkflowExpression<string> requestincompleteDocumentLabel = null)
-        {
-            WorkflowExpression.Validate(requestdocumentTitle, nameof(requestdocumentTitle), required: true);
-            WorkflowExpression.Validate(requestdocumentIntroduction, nameof(requestdocumentIntroduction), required: true);
-            WorkflowExpression.Validate(requestrecipientEmail, nameof(requestrecipientEmail), required: true);
-            WorkflowExpression.Validate(requestrecipientFirstName, nameof(requestrecipientFirstName), required: true);
-            WorkflowExpression.Validate(requestrecipientLastName, nameof(requestrecipientLastName), required: true);
-            WorkflowExpression.Validate(requestexpiryDate, nameof(requestexpiryDate), required: true);
-            WorkflowExpression.Validate(requestsignatureRequired, nameof(requestsignatureRequired), required: true);
-            WorkflowExpression.Validate(requestorgansiationTitle, nameof(requestorgansiationTitle), required: true);
-            WorkflowExpression.Validate(requestorganisationEmail, nameof(requestorganisationEmail), required: true);
-            WorkflowExpression.Validate(requestorganisationOwner, nameof(requestorganisationOwner), required: true);
-            WorkflowExpression.Validate(requestdocumentpDFDocument, nameof(requestdocumentpDFDocument), required: false);
-            WorkflowExpression.Validate(requestdocumentLogo, nameof(requestdocumentLogo), required: false);
-            WorkflowExpression.Validate(requestcheckbox, nameof(requestcheckbox), required: false);
-            WorkflowExpression.Validate(requestorganisationWebsite, nameof(requestorganisationWebsite), required: false);
-            WorkflowExpression.Validate(requestorganisationPhone, nameof(requestorganisationPhone), required: false);
-            WorkflowExpression.Validate(requestoragnisationOwnerTitle, nameof(requestoragnisationOwnerTitle), required: false);
-            WorkflowExpression.Validate(requestcomments, nameof(requestcomments), required: false);
-            WorkflowExpression.Validate(requestprojectID, nameof(requestprojectID), required: false);
-            WorkflowExpression.Validate(requestcompleteButtonLabel, nameof(requestcompleteButtonLabel), required: false);
-            WorkflowExpression.Validate(requestcompleteDocumentLabel, nameof(requestcompleteDocumentLabel), required: false);
-            WorkflowExpression.Validate(requestincompleteDocumentLabel, nameof(requestincompleteDocumentLabel), required: false);
+            var __workflow_requestdocumentTitle = requestdocumentTitle == null ? null : WorkflowExpression.Compile(requestdocumentTitle);
+            WorkflowExpression.Validate(__workflow_requestdocumentTitle, nameof(requestdocumentTitle), required: true);
+            var __workflow_requestdocumentIntroduction = requestdocumentIntroduction == null ? null : WorkflowExpression.Compile(requestdocumentIntroduction);
+            WorkflowExpression.Validate(__workflow_requestdocumentIntroduction, nameof(requestdocumentIntroduction), required: true);
+            var __workflow_requestrecipientEmail = requestrecipientEmail == null ? null : WorkflowExpression.Compile(requestrecipientEmail);
+            WorkflowExpression.Validate(__workflow_requestrecipientEmail, nameof(requestrecipientEmail), required: true);
+            var __workflow_requestrecipientFirstName = requestrecipientFirstName == null ? null : WorkflowExpression.Compile(requestrecipientFirstName);
+            WorkflowExpression.Validate(__workflow_requestrecipientFirstName, nameof(requestrecipientFirstName), required: true);
+            var __workflow_requestrecipientLastName = requestrecipientLastName == null ? null : WorkflowExpression.Compile(requestrecipientLastName);
+            WorkflowExpression.Validate(__workflow_requestrecipientLastName, nameof(requestrecipientLastName), required: true);
+            var __workflow_requestexpiryDate = requestexpiryDate == null ? null : WorkflowExpression.Compile(requestexpiryDate);
+            WorkflowExpression.Validate(__workflow_requestexpiryDate, nameof(requestexpiryDate), required: true);
+            var __workflow_requestsignatureRequired = requestsignatureRequired == null ? null : WorkflowExpression.Compile(requestsignatureRequired);
+            WorkflowExpression.Validate(__workflow_requestsignatureRequired, nameof(requestsignatureRequired), required: true);
+            var __workflow_requestorgansiationTitle = requestorgansiationTitle == null ? null : WorkflowExpression.Compile(requestorgansiationTitle);
+            WorkflowExpression.Validate(__workflow_requestorgansiationTitle, nameof(requestorgansiationTitle), required: true);
+            var __workflow_requestorganisationEmail = requestorganisationEmail == null ? null : WorkflowExpression.Compile(requestorganisationEmail);
+            WorkflowExpression.Validate(__workflow_requestorganisationEmail, nameof(requestorganisationEmail), required: true);
+            var __workflow_requestorganisationOwner = requestorganisationOwner == null ? null : WorkflowExpression.Compile(requestorganisationOwner);
+            WorkflowExpression.Validate(__workflow_requestorganisationOwner, nameof(requestorganisationOwner), required: true);
+            var __workflow_requestdocumentpDFDocument = requestdocumentpDFDocument == null ? null : WorkflowExpression.Compile(requestdocumentpDFDocument);
+            WorkflowExpression.Validate(__workflow_requestdocumentpDFDocument, nameof(requestdocumentpDFDocument), required: false);
+            var __workflow_requestdocumentLogo = requestdocumentLogo == null ? null : WorkflowExpression.Compile(requestdocumentLogo);
+            WorkflowExpression.Validate(__workflow_requestdocumentLogo, nameof(requestdocumentLogo), required: false);
+            var __workflow_requestcheckbox = requestcheckbox == null ? null : WorkflowExpression.Compile(requestcheckbox);
+            WorkflowExpression.Validate(__workflow_requestcheckbox, nameof(requestcheckbox), required: false);
+            var __workflow_requestorganisationWebsite = requestorganisationWebsite == null ? null : WorkflowExpression.Compile(requestorganisationWebsite);
+            WorkflowExpression.Validate(__workflow_requestorganisationWebsite, nameof(requestorganisationWebsite), required: false);
+            var __workflow_requestorganisationPhone = requestorganisationPhone == null ? null : WorkflowExpression.Compile(requestorganisationPhone);
+            WorkflowExpression.Validate(__workflow_requestorganisationPhone, nameof(requestorganisationPhone), required: false);
+            var __workflow_requestoragnisationOwnerTitle = requestoragnisationOwnerTitle == null ? null : WorkflowExpression.Compile(requestoragnisationOwnerTitle);
+            WorkflowExpression.Validate(__workflow_requestoragnisationOwnerTitle, nameof(requestoragnisationOwnerTitle), required: false);
+            var __workflow_requestcomments = requestcomments == null ? null : WorkflowExpression.Compile(requestcomments);
+            WorkflowExpression.Validate(__workflow_requestcomments, nameof(requestcomments), required: false);
+            var __workflow_requestprojectID = requestprojectID == null ? null : WorkflowExpression.Compile(requestprojectID);
+            WorkflowExpression.Validate(__workflow_requestprojectID, nameof(requestprojectID), required: false);
+            var __workflow_requestcompleteButtonLabel = requestcompleteButtonLabel == null ? null : WorkflowExpression.Compile(requestcompleteButtonLabel);
+            WorkflowExpression.Validate(__workflow_requestcompleteButtonLabel, nameof(requestcompleteButtonLabel), required: false);
+            var __workflow_requestcompleteDocumentLabel = requestcompleteDocumentLabel == null ? null : WorkflowExpression.Compile(requestcompleteDocumentLabel);
+            WorkflowExpression.Validate(__workflow_requestcompleteDocumentLabel, nameof(requestcompleteDocumentLabel), required: false);
+            var __workflow_requestincompleteDocumentLabel = requestincompleteDocumentLabel == null ? null : WorkflowExpression.Compile(requestincompleteDocumentLabel);
+            WorkflowExpression.Validate(__workflow_requestincompleteDocumentLabel, nameof(requestincompleteDocumentLabel), required: false);
             return new DeferredBodyAction<InstancesResponse>(() =>
             {
                 var apiCallPath = "/envelopes/v1/instances";
@@ -468,9 +454,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
                 var requestpropCount = 0;
                 var documentObject = new JObject();
                 var documentObjectpropCount = 0;
-                if (requestdocumentpDFDocument != null)
+                if (__workflow_requestdocumentpDFDocument != null)
                 {
-                    documentObject["file"] = ExpressionConverter.ConvertO(requestdocumentpDFDocument);
+                    documentObject["file"] = ExpressionConverter.ConvertO(__workflow_requestdocumentpDFDocument);
                     documentObjectpropCount++;
                 }
 
@@ -497,82 +483,82 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
                 }
 
                 requestpropCount++;
-                request["title"] = ExpressionConverter.ConvertO(requestdocumentTitle);
+                request["title"] = ExpressionConverter.ConvertO(__workflow_requestdocumentTitle);
                 requestpropCount++;
-                request["introduction"] = ExpressionConverter.ConvertO(requestdocumentIntroduction);
-                if (requestdocumentLogo != null)
+                request["introduction"] = ExpressionConverter.ConvertO(__workflow_requestdocumentIntroduction);
+                if (__workflow_requestdocumentLogo != null)
                 {
-                    request["logoUrl"] = ExpressionConverter.ConvertO(requestdocumentLogo);
+                    request["logoUrl"] = ExpressionConverter.ConvertO(__workflow_requestdocumentLogo);
                     requestpropCount++;
                 }
 
                 requestpropCount++;
-                request["email"] = ExpressionConverter.ConvertO(requestrecipientEmail);
+                request["email"] = ExpressionConverter.ConvertO(__workflow_requestrecipientEmail);
                 requestpropCount++;
-                request["firstName"] = ExpressionConverter.ConvertO(requestrecipientFirstName);
+                request["firstName"] = ExpressionConverter.ConvertO(__workflow_requestrecipientFirstName);
                 requestpropCount++;
-                request["lastName"] = ExpressionConverter.ConvertO(requestrecipientLastName);
-                if (requestcheckbox != null)
+                request["lastName"] = ExpressionConverter.ConvertO(__workflow_requestrecipientLastName);
+                if (__workflow_requestcheckbox != null)
                 {
-                    request["checkboxText"] = ExpressionConverter.ConvertO(requestcheckbox);
-                    requestpropCount++;
-                }
-
-                requestpropCount++;
-                request["expiry"] = ExpressionConverter.ConvertO(requestexpiryDate);
-                requestpropCount++;
-                request["isSignatureRequired"] = ExpressionConverter.ConvertO(requestsignatureRequired);
-                requestpropCount++;
-                request["organisationTitle"] = ExpressionConverter.ConvertO(requestorgansiationTitle);
-                if (requestorganisationWebsite != null)
-                {
-                    request["organisationWebsite"] = ExpressionConverter.ConvertO(requestorganisationWebsite);
+                    request["checkboxText"] = ExpressionConverter.ConvertO(__workflow_requestcheckbox);
                     requestpropCount++;
                 }
 
                 requestpropCount++;
-                request["organisationContactEmail"] = ExpressionConverter.ConvertO(requestorganisationEmail);
-                if (requestorganisationPhone != null)
+                request["expiry"] = ExpressionConverter.ConvertO(__workflow_requestexpiryDate);
+                requestpropCount++;
+                request["isSignatureRequired"] = ExpressionConverter.ConvertO(__workflow_requestsignatureRequired);
+                requestpropCount++;
+                request["organisationTitle"] = ExpressionConverter.ConvertO(__workflow_requestorgansiationTitle);
+                if (__workflow_requestorganisationWebsite != null)
                 {
-                    request["organisationContactPhone"] = ExpressionConverter.ConvertO(requestorganisationPhone);
+                    request["organisationWebsite"] = ExpressionConverter.ConvertO(__workflow_requestorganisationWebsite);
                     requestpropCount++;
                 }
 
                 requestpropCount++;
-                request["organisationContactName"] = ExpressionConverter.ConvertO(requestorganisationOwner);
-                if (requestoragnisationOwnerTitle != null)
+                request["organisationContactEmail"] = ExpressionConverter.ConvertO(__workflow_requestorganisationEmail);
+                if (__workflow_requestorganisationPhone != null)
                 {
-                    request["organisationContactTitle"] = ExpressionConverter.ConvertO(requestoragnisationOwnerTitle);
+                    request["organisationContactPhone"] = ExpressionConverter.ConvertO(__workflow_requestorganisationPhone);
                     requestpropCount++;
                 }
 
-                if (requestcomments != null)
+                requestpropCount++;
+                request["organisationContactName"] = ExpressionConverter.ConvertO(__workflow_requestorganisationOwner);
+                if (__workflow_requestoragnisationOwnerTitle != null)
                 {
-                    request["commentsEnabled"] = ExpressionConverter.ConvertO(requestcomments);
+                    request["organisationContactTitle"] = ExpressionConverter.ConvertO(__workflow_requestoragnisationOwnerTitle);
                     requestpropCount++;
                 }
 
-                if (requestprojectID != null)
+                if (__workflow_requestcomments != null)
                 {
-                    request["projectIdentifier"] = ExpressionConverter.ConvertO(requestprojectID);
+                    request["commentsEnabled"] = ExpressionConverter.ConvertO(__workflow_requestcomments);
                     requestpropCount++;
                 }
 
-                if (requestcompleteButtonLabel != null)
+                if (__workflow_requestprojectID != null)
                 {
-                    request["completeButtonLabel"] = ExpressionConverter.ConvertO(requestcompleteButtonLabel);
+                    request["projectIdentifier"] = ExpressionConverter.ConvertO(__workflow_requestprojectID);
                     requestpropCount++;
                 }
 
-                if (requestcompleteDocumentLabel != null)
+                if (__workflow_requestcompleteButtonLabel != null)
                 {
-                    request["completeStatusLabel"] = ExpressionConverter.ConvertO(requestcompleteDocumentLabel);
+                    request["completeButtonLabel"] = ExpressionConverter.ConvertO(__workflow_requestcompleteButtonLabel);
                     requestpropCount++;
                 }
 
-                if (requestincompleteDocumentLabel != null)
+                if (__workflow_requestcompleteDocumentLabel != null)
                 {
-                    request["incompleteStatusLabel"] = ExpressionConverter.ConvertO(requestincompleteDocumentLabel);
+                    request["completeStatusLabel"] = ExpressionConverter.ConvertO(__workflow_requestcompleteDocumentLabel);
+                    requestpropCount++;
+                }
+
+                if (__workflow_requestincompleteDocumentLabel != null)
+                {
+                    request["incompleteStatusLabel"] = ExpressionConverter.ConvertO(__workflow_requestincompleteDocumentLabel);
                     requestpropCount++;
                 }
 

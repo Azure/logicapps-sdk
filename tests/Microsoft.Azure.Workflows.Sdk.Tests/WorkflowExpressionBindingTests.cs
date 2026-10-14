@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             this.instanceSource.WithName("InstanceSource");
 
             var source = Input(action);
-            AssertReturnExpression("""(outputs("InstanceSource")).ToObject<string>().ToUpperInvariant()""", source);
+            AssertReturnExpression("""outputs("InstanceSource").ToObject<string>().ToUpperInvariant()""", source);
         }
 
         [Fact]
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 .Single(invocation => invocation.Expression.ToString() == "triggerOutputs").ToString());
             Assert.Single(triggerReturn.DescendantNodesAndSelf().OfType<GenericNameSyntax>(),
                 name => name.Identifier.ValueText == "ToObject");
-            Assert.Equal("\"X\"", triggerReturn.DescendantNodesAndSelf().OfType<BracketedArgumentListSyntax>().Single()
+            Assert.Equal("\"X\"", triggerReturn.DescendantNodesAndSelf().OfType<BracketedArgumentListSyntax>().Last()
                 .Arguments.Single().Expression.ToString());
         }
 
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             var action = WorkflowActions.BuiltIn.Compose(() => trigger.TriggerBody[0].MessageId);
 
             AssertReturnExpression(
-                """(triggerBody()).ToObject<global::Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus.ReceiveQueueMessagesOutputItem[]>()[0].MessageId""",
+                """triggerBody().ToObject<global::Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus.ReceiveQueueMessagesOutputItem[]>()[0].MessageId""",
                 Input(action));
         }
 
@@ -72,12 +72,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 () => context.Parameters.Name.ToUpperInvariant());
 
             AssertReturnExpression(
-                """(agentparameters("Name")).ToObject<string>().ToUpperInvariant()""",
+                """agentparameters("Name").ToObject<string>().ToUpperInvariant()""",
                 Input(action));
         }
 
         [Fact]
-        public void RepeatedReferencesReuseCapturesButRetainWorkflowReads()
+        public void RepeatedReferencesRetainWorkflowReadsAndSnapshotCaptures()
         {
             var suffix = "!";
             var source = WorkflowActions.BuiltIn.Compose<string>(() => "value").WithName("Source");
@@ -86,8 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
 
             var expression = Input(action);
             Assert.Equal(2, expression.Split("""outputs("Source")""").Length - 1);
-            Assert.Single(CaptureInitializers(expression));
-            Assert.Equal(3, expression.Split("__capture0").Length - 1);
+            Assert.Equal(2, expression.Split("\"!\"").Length - 1);
         }
 
         [Fact]
@@ -101,7 +100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 falseBranch: () => null);
             previous.WithName("Flag");
             var source = condition.GetActionDefinition("flow").Expression.Value<string>();
-            AssertReturnExpression("""(outputs("Flag")).ToObject<bool>()""", source);
+            AssertReturnExpression("""outputs("Flag").ToObject<bool>()""", source);
             condition.GetActionDefinition("flow");
             Assert.Equal(1, count);
         }

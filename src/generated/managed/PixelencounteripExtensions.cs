@@ -1,12 +1,12 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelencounterip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class PixelencounteripActions([ConnectionName] string connectionId)
     {
@@ -20,19 +20,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelencounterip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelencounterip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetMonsterJson))]
-        public IBodyWorkflowAction<MonsterResponse> GetMonsterJson([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<MonsterResponse> GetMonsterJson(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MonsterResponse> __BuildGetMonsterJson(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<MonsterResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/basic/monsters/{0}/json", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/basic/monsters/{0}/json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<MonsterResponse>(callPayload);
@@ -40,60 +34,53 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelencounterip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelencounterip")]
-        [WorkflowExpressionFactory(nameof(__BuildListMonsters))]
-        public IBodyWorkflowAction<ListMonstersResponse> ListMonsters([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> startRange = null, [WorkflowExpression] Func<int> endRange = null)
+        public IBodyWorkflowAction<ListMonstersResponse> ListMonsters(Expression<Func<int>> page = null, Expression<Func<int>> startRange = null, Expression<Func<int>> endRange = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListMonstersResponse> __BuildListMonsters(WorkflowExpression<int> page = null, WorkflowExpression<int> startRange = null, WorkflowExpression<int> endRange = null)
-        {
-            WorkflowExpression.Validate(page, nameof(page), required: false);
-            WorkflowExpression.Validate(startRange, nameof(startRange), required: false);
-            WorkflowExpression.Validate(endRange, nameof(endRange), required: false);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_startRange = startRange == null ? null : WorkflowExpression.Compile(startRange);
+            WorkflowExpression.Validate(__workflow_startRange, nameof(startRange), required: false);
+            var __workflow_endRange = endRange == null ? null : WorkflowExpression.Compile(endRange);
+            WorkflowExpression.Validate(__workflow_endRange, nameof(endRange), required: false);
             return new DeferredBodyAction<ListMonstersResponse>(() =>
             {
                 var apiCallPath = "/basic/monsters";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-                if (startRange != null)
-                    callPayload.Queries["startRange"] = ExpressionConverter.Convert(startRange);
-                if (endRange != null)
-                    callPayload.Queries["endRange"] = ExpressionConverter.Convert(endRange);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_startRange != null)
+                    callPayload.Queries["startRange"] = ExpressionConverter.Convert(__workflow_startRange);
+                if (__workflow_endRange != null)
+                    callPayload.Queries["endRange"] = ExpressionConverter.Convert(__workflow_endRange);
                 return new ApiConnectionAction<ListMonstersResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelencounterip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetRandomSvgMonster))]
-        public IBodyWorkflowAction<MonsterResponse> GetRandomSvgMonster([WorkflowExpression] Func<string> primaryColor = null, [WorkflowExpression] Func<fillTypeInput> fillType = null, [WorkflowExpression] Func<string> backgroundColor = null, [WorkflowExpression] Func<string> secondaryColor = null)
+        public IBodyWorkflowAction<MonsterResponse> GetRandomSvgMonster(Expression<Func<string>> primaryColor = null, Expression<Func<fillTypeInput>> fillType = null, Expression<Func<string>> backgroundColor = null, Expression<Func<string>> secondaryColor = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MonsterResponse> __BuildGetRandomSvgMonster(WorkflowExpression<string> primaryColor = null, WorkflowExpression<fillTypeInput> fillType = null, WorkflowExpression<string> backgroundColor = null, WorkflowExpression<string> secondaryColor = null)
-        {
-            WorkflowExpression.Validate(primaryColor, nameof(primaryColor), required: false);
-            WorkflowExpression.Validate(fillType, nameof(fillType), required: false);
-            WorkflowExpression.Validate(backgroundColor, nameof(backgroundColor), required: false);
-            WorkflowExpression.Validate(secondaryColor, nameof(secondaryColor), required: false);
+            var __workflow_primaryColor = primaryColor == null ? null : WorkflowExpression.Compile(primaryColor);
+            WorkflowExpression.Validate(__workflow_primaryColor, nameof(primaryColor), required: false);
+            var __workflow_fillType = fillType == null ? null : WorkflowExpression.Compile(fillType);
+            WorkflowExpression.Validate(__workflow_fillType, nameof(fillType), required: false);
+            var __workflow_backgroundColor = backgroundColor == null ? null : WorkflowExpression.Compile(backgroundColor);
+            WorkflowExpression.Validate(__workflow_backgroundColor, nameof(backgroundColor), required: false);
+            var __workflow_secondaryColor = secondaryColor == null ? null : WorkflowExpression.Compile(secondaryColor);
+            WorkflowExpression.Validate(__workflow_secondaryColor, nameof(secondaryColor), required: false);
             return new DeferredBodyAction<MonsterResponse>(() =>
             {
                 var apiCallPath = "/basic/svgmonsters/json";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (primaryColor != null)
-                    callPayload.Queries["primaryColor"] = ExpressionConverter.Convert(primaryColor);
-                if (fillType != null)
-                    callPayload.Queries["fillType"] = ExpressionConverter.Convert(fillType);
-                if (backgroundColor != null)
-                    callPayload.Queries["backgroundColor"] = ExpressionConverter.Convert(backgroundColor);
-                if (secondaryColor != null)
-                    callPayload.Queries["secondaryColor"] = ExpressionConverter.Convert(secondaryColor);
+                if (__workflow_primaryColor != null)
+                    callPayload.Queries["primaryColor"] = ExpressionConverter.Convert(__workflow_primaryColor);
+                if (__workflow_fillType != null)
+                    callPayload.Queries["fillType"] = ExpressionConverter.Convert(__workflow_fillType);
+                if (__workflow_backgroundColor != null)
+                    callPayload.Queries["backgroundColor"] = ExpressionConverter.Convert(__workflow_backgroundColor);
+                if (__workflow_secondaryColor != null)
+                    callPayload.Queries["secondaryColor"] = ExpressionConverter.Convert(__workflow_secondaryColor);
                 return new ApiConnectionAction<MonsterResponse>(callPayload);
             });
         }

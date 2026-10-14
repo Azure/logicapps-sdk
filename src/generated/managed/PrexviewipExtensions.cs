@@ -1,32 +1,30 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prexviewip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class PrexviewipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "prexviewip")]
-        [WorkflowExpressionFactory(nameof(__BuildTransform))]
-        public IBodyWorkflowAction<TransformPostResponse> Transform([WorkflowExpression] Func<bodyoutputInput> bodyoutput, [WorkflowExpression] Func<string> bodytemplate, [WorkflowExpression] Func<string> bodyxml = null, [WorkflowExpression] Func<string> bodyjson = null, [WorkflowExpression] Func<string> bodytemplateBackup = null, [WorkflowExpression] Func<string> bodynote = null)
+        public IBodyWorkflowAction<TransformPostResponse> Transform(Expression<Func<bodyoutputInput>> bodyoutput, Expression<Func<string>> bodytemplate, Expression<Func<string>> bodyxml = null, Expression<Func<string>> bodyjson = null, Expression<Func<string>> bodytemplateBackup = null, Expression<Func<string>> bodynote = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TransformPostResponse> __BuildTransform(WorkflowExpression<bodyoutputInput> bodyoutput, WorkflowExpression<string> bodytemplate, WorkflowExpression<string> bodyxml = null, WorkflowExpression<string> bodyjson = null, WorkflowExpression<string> bodytemplateBackup = null, WorkflowExpression<string> bodynote = null)
-        {
-            WorkflowExpression.Validate(bodyoutput, nameof(bodyoutput), required: true);
-            WorkflowExpression.Validate(bodytemplate, nameof(bodytemplate), required: true);
-            WorkflowExpression.Validate(bodyxml, nameof(bodyxml), required: false);
-            WorkflowExpression.Validate(bodyjson, nameof(bodyjson), required: false);
-            WorkflowExpression.Validate(bodytemplateBackup, nameof(bodytemplateBackup), required: false);
-            WorkflowExpression.Validate(bodynote, nameof(bodynote), required: false);
+            var __workflow_bodyoutput = bodyoutput == null ? null : WorkflowExpression.Compile(bodyoutput);
+            WorkflowExpression.Validate(__workflow_bodyoutput, nameof(bodyoutput), required: true);
+            var __workflow_bodytemplate = bodytemplate == null ? null : WorkflowExpression.Compile(bodytemplate);
+            WorkflowExpression.Validate(__workflow_bodytemplate, nameof(bodytemplate), required: true);
+            var __workflow_bodyxml = bodyxml == null ? null : WorkflowExpression.Compile(bodyxml);
+            WorkflowExpression.Validate(__workflow_bodyxml, nameof(bodyxml), required: false);
+            var __workflow_bodyjson = bodyjson == null ? null : WorkflowExpression.Compile(bodyjson);
+            WorkflowExpression.Validate(__workflow_bodyjson, nameof(bodyjson), required: false);
+            var __workflow_bodytemplateBackup = bodytemplateBackup == null ? null : WorkflowExpression.Compile(bodytemplateBackup);
+            WorkflowExpression.Validate(__workflow_bodytemplateBackup, nameof(bodytemplateBackup), required: false);
+            var __workflow_bodynote = bodynote == null ? null : WorkflowExpression.Compile(bodynote);
+            WorkflowExpression.Validate(__workflow_bodynote, nameof(bodynote), required: false);
             return new DeferredBodyAction<TransformPostResponse>(() =>
             {
                 var apiCallPath = "/transform";
@@ -34,31 +32,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prexviewip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyxml != null)
+                if (__workflow_bodyxml != null)
                 {
-                    body["xml"] = ExpressionConverter.ConvertO(bodyxml);
+                    body["xml"] = ExpressionConverter.ConvertO(__workflow_bodyxml);
                     bodypropCount++;
                 }
 
-                if (bodyjson != null)
+                if (__workflow_bodyjson != null)
                 {
-                    body["json"] = ExpressionConverter.ConvertO(bodyjson);
+                    body["json"] = ExpressionConverter.ConvertO(__workflow_bodyjson);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["output"] = ExpressionConverter.ConvertO(bodyoutput);
+                body["output"] = ExpressionConverter.ConvertO(__workflow_bodyoutput);
                 bodypropCount++;
-                body["template"] = ExpressionConverter.ConvertO(bodytemplate);
-                if (bodytemplateBackup != null)
+                body["template"] = ExpressionConverter.ConvertO(__workflow_bodytemplate);
+                if (__workflow_bodytemplateBackup != null)
                 {
-                    body["templateBackup"] = ExpressionConverter.ConvertO(bodytemplateBackup);
+                    body["templateBackup"] = ExpressionConverter.ConvertO(__workflow_bodytemplateBackup);
                     bodypropCount++;
                 }
 
-                if (bodynote != null)
+                if (__workflow_bodynote != null)
                 {
-                    body["note"] = ExpressionConverter.ConvertO(bodynote);
+                    body["note"] = ExpressionConverter.ConvertO(__workflow_bodynote);
                     bodypropCount++;
                 }
 

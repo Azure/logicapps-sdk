@@ -1,48 +1,62 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theeventscalendar
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class TheeventscalendarActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theeventscalendar")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateEvents))]
-        public IBodyWorkflowAction<CreateEventsResponse> CreateEvents([WorkflowExpression] Func<int> bodyauthor = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyslug = null, [WorkflowExpression] Func<string> bodyexcerpt = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodytimezone = null, [WorkflowExpression] Func<bool> bodyallDay = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<string> bodyimage = null, [WorkflowExpression] Func<string> bodycost = null, [WorkflowExpression] Func<string> bodywebsite = null, [WorkflowExpression] Func<bool> bodyshowMap = null, [WorkflowExpression] Func<bool> bodyshowMapLink = null, [WorkflowExpression] Func<bool> bodyhideFromListings = null, [WorkflowExpression] Func<bool> bodysticky = null, [WorkflowExpression] Func<bool> bodyfeatured = null, [WorkflowExpression] Func<string> bodycategories = null, [WorkflowExpression] Func<string> bodytags = null, [WorkflowExpression] Func<string> bodyvenue = null, [WorkflowExpression] Func<string> bodyorganizer = null)
+        public IBodyWorkflowAction<CreateEventsResponse> CreateEvents(Expression<Func<int>> bodyauthor = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyslug = null, Expression<Func<string>> bodyexcerpt = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodytimezone = null, Expression<Func<bool>> bodyallDay = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodyimage = null, Expression<Func<string>> bodycost = null, Expression<Func<string>> bodywebsite = null, Expression<Func<bool>> bodyshowMap = null, Expression<Func<bool>> bodyshowMapLink = null, Expression<Func<bool>> bodyhideFromListings = null, Expression<Func<bool>> bodysticky = null, Expression<Func<bool>> bodyfeatured = null, Expression<Func<string>> bodycategories = null, Expression<Func<string>> bodytags = null, Expression<Func<string>> bodyvenue = null, Expression<Func<string>> bodyorganizer = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateEventsResponse> __BuildCreateEvents(WorkflowExpression<int> bodyauthor = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodyslug = null, WorkflowExpression<string> bodyexcerpt = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<string> bodytimezone = null, WorkflowExpression<bool> bodyallDay = null, WorkflowExpression<string> bodystartDate = null, WorkflowExpression<string> bodyendDate = null, WorkflowExpression<string> bodyimage = null, WorkflowExpression<string> bodycost = null, WorkflowExpression<string> bodywebsite = null, WorkflowExpression<bool> bodyshowMap = null, WorkflowExpression<bool> bodyshowMapLink = null, WorkflowExpression<bool> bodyhideFromListings = null, WorkflowExpression<bool> bodysticky = null, WorkflowExpression<bool> bodyfeatured = null, WorkflowExpression<string> bodycategories = null, WorkflowExpression<string> bodytags = null, WorkflowExpression<string> bodyvenue = null, WorkflowExpression<string> bodyorganizer = null)
-        {
-            WorkflowExpression.Validate(bodyauthor, nameof(bodyauthor), required: false);
-            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            WorkflowExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            WorkflowExpression.Validate(bodyslug, nameof(bodyslug), required: false);
-            WorkflowExpression.Validate(bodyexcerpt, nameof(bodyexcerpt), required: false);
-            WorkflowExpression.Validate(bodystatus, nameof(bodystatus), required: false);
-            WorkflowExpression.Validate(bodytimezone, nameof(bodytimezone), required: false);
-            WorkflowExpression.Validate(bodyallDay, nameof(bodyallDay), required: false);
-            WorkflowExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            WorkflowExpression.Validate(bodyendDate, nameof(bodyendDate), required: false);
-            WorkflowExpression.Validate(bodyimage, nameof(bodyimage), required: false);
-            WorkflowExpression.Validate(bodycost, nameof(bodycost), required: false);
-            WorkflowExpression.Validate(bodywebsite, nameof(bodywebsite), required: false);
-            WorkflowExpression.Validate(bodyshowMap, nameof(bodyshowMap), required: false);
-            WorkflowExpression.Validate(bodyshowMapLink, nameof(bodyshowMapLink), required: false);
-            WorkflowExpression.Validate(bodyhideFromListings, nameof(bodyhideFromListings), required: false);
-            WorkflowExpression.Validate(bodysticky, nameof(bodysticky), required: false);
-            WorkflowExpression.Validate(bodyfeatured, nameof(bodyfeatured), required: false);
-            WorkflowExpression.Validate(bodycategories, nameof(bodycategories), required: false);
-            WorkflowExpression.Validate(bodytags, nameof(bodytags), required: false);
-            WorkflowExpression.Validate(bodyvenue, nameof(bodyvenue), required: false);
-            WorkflowExpression.Validate(bodyorganizer, nameof(bodyorganizer), required: false);
+            var __workflow_bodyauthor = bodyauthor == null ? null : WorkflowExpression.Compile(bodyauthor);
+            WorkflowExpression.Validate(__workflow_bodyauthor, nameof(bodyauthor), required: false);
+            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
+            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
+            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyslug = bodyslug == null ? null : WorkflowExpression.Compile(bodyslug);
+            WorkflowExpression.Validate(__workflow_bodyslug, nameof(bodyslug), required: false);
+            var __workflow_bodyexcerpt = bodyexcerpt == null ? null : WorkflowExpression.Compile(bodyexcerpt);
+            WorkflowExpression.Validate(__workflow_bodyexcerpt, nameof(bodyexcerpt), required: false);
+            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
+            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodytimezone = bodytimezone == null ? null : WorkflowExpression.Compile(bodytimezone);
+            WorkflowExpression.Validate(__workflow_bodytimezone, nameof(bodytimezone), required: false);
+            var __workflow_bodyallDay = bodyallDay == null ? null : WorkflowExpression.Compile(bodyallDay);
+            WorkflowExpression.Validate(__workflow_bodyallDay, nameof(bodyallDay), required: false);
+            var __workflow_bodystartDate = bodystartDate == null ? null : WorkflowExpression.Compile(bodystartDate);
+            WorkflowExpression.Validate(__workflow_bodystartDate, nameof(bodystartDate), required: false);
+            var __workflow_bodyendDate = bodyendDate == null ? null : WorkflowExpression.Compile(bodyendDate);
+            WorkflowExpression.Validate(__workflow_bodyendDate, nameof(bodyendDate), required: false);
+            var __workflow_bodyimage = bodyimage == null ? null : WorkflowExpression.Compile(bodyimage);
+            WorkflowExpression.Validate(__workflow_bodyimage, nameof(bodyimage), required: false);
+            var __workflow_bodycost = bodycost == null ? null : WorkflowExpression.Compile(bodycost);
+            WorkflowExpression.Validate(__workflow_bodycost, nameof(bodycost), required: false);
+            var __workflow_bodywebsite = bodywebsite == null ? null : WorkflowExpression.Compile(bodywebsite);
+            WorkflowExpression.Validate(__workflow_bodywebsite, nameof(bodywebsite), required: false);
+            var __workflow_bodyshowMap = bodyshowMap == null ? null : WorkflowExpression.Compile(bodyshowMap);
+            WorkflowExpression.Validate(__workflow_bodyshowMap, nameof(bodyshowMap), required: false);
+            var __workflow_bodyshowMapLink = bodyshowMapLink == null ? null : WorkflowExpression.Compile(bodyshowMapLink);
+            WorkflowExpression.Validate(__workflow_bodyshowMapLink, nameof(bodyshowMapLink), required: false);
+            var __workflow_bodyhideFromListings = bodyhideFromListings == null ? null : WorkflowExpression.Compile(bodyhideFromListings);
+            WorkflowExpression.Validate(__workflow_bodyhideFromListings, nameof(bodyhideFromListings), required: false);
+            var __workflow_bodysticky = bodysticky == null ? null : WorkflowExpression.Compile(bodysticky);
+            WorkflowExpression.Validate(__workflow_bodysticky, nameof(bodysticky), required: false);
+            var __workflow_bodyfeatured = bodyfeatured == null ? null : WorkflowExpression.Compile(bodyfeatured);
+            WorkflowExpression.Validate(__workflow_bodyfeatured, nameof(bodyfeatured), required: false);
+            var __workflow_bodycategories = bodycategories == null ? null : WorkflowExpression.Compile(bodycategories);
+            WorkflowExpression.Validate(__workflow_bodycategories, nameof(bodycategories), required: false);
+            var __workflow_bodytags = bodytags == null ? null : WorkflowExpression.Compile(bodytags);
+            WorkflowExpression.Validate(__workflow_bodytags, nameof(bodytags), required: false);
+            var __workflow_bodyvenue = bodyvenue == null ? null : WorkflowExpression.Compile(bodyvenue);
+            WorkflowExpression.Validate(__workflow_bodyvenue, nameof(bodyvenue), required: false);
+            var __workflow_bodyorganizer = bodyorganizer == null ? null : WorkflowExpression.Compile(bodyorganizer);
+            WorkflowExpression.Validate(__workflow_bodyorganizer, nameof(bodyorganizer), required: false);
             return new DeferredBodyAction<CreateEventsResponse>(() =>
             {
                 var apiCallPath = "/wp-json/tribe/power-automate/v1/create-events/";
@@ -50,135 +64,135 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theeventscalendar
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyauthor != null)
+                if (__workflow_bodyauthor != null)
                 {
-                    body["author"] = ExpressionConverter.ConvertO(bodyauthor);
+                    body["author"] = ExpressionConverter.ConvertO(__workflow_bodyauthor);
                     bodypropCount++;
                 }
 
-                if (bodytitle != null)
+                if (__workflow_bodytitle != null)
                 {
-                    body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
                     bodypropCount++;
                 }
 
-                if (bodydescription != null)
+                if (__workflow_bodydescription != null)
                 {
-                    body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
                     bodypropCount++;
                 }
 
-                if (bodyslug != null)
+                if (__workflow_bodyslug != null)
                 {
-                    body["slug"] = ExpressionConverter.ConvertO(bodyslug);
+                    body["slug"] = ExpressionConverter.ConvertO(__workflow_bodyslug);
                     bodypropCount++;
                 }
 
-                if (bodyexcerpt != null)
+                if (__workflow_bodyexcerpt != null)
                 {
-                    body["excerpt"] = ExpressionConverter.ConvertO(bodyexcerpt);
+                    body["excerpt"] = ExpressionConverter.ConvertO(__workflow_bodyexcerpt);
                     bodypropCount++;
                 }
 
-                if (bodystatus != null)
+                if (__workflow_bodystatus != null)
                 {
-                    body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                    body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
                     bodypropCount++;
                 }
 
-                if (bodytimezone != null)
+                if (__workflow_bodytimezone != null)
                 {
-                    body["timezone"] = ExpressionConverter.ConvertO(bodytimezone);
+                    body["timezone"] = ExpressionConverter.ConvertO(__workflow_bodytimezone);
                     bodypropCount++;
                 }
 
-                if (bodyallDay != null)
+                if (__workflow_bodyallDay != null)
                 {
-                    body["all_day"] = ExpressionConverter.ConvertO(bodyallDay);
+                    body["all_day"] = ExpressionConverter.ConvertO(__workflow_bodyallDay);
                     bodypropCount++;
                 }
 
-                if (bodystartDate != null)
+                if (__workflow_bodystartDate != null)
                 {
-                    body["start_date"] = ExpressionConverter.ConvertO(bodystartDate);
+                    body["start_date"] = ExpressionConverter.ConvertO(__workflow_bodystartDate);
                     bodypropCount++;
                 }
 
-                if (bodyendDate != null)
+                if (__workflow_bodyendDate != null)
                 {
-                    body["end_date"] = ExpressionConverter.ConvertO(bodyendDate);
+                    body["end_date"] = ExpressionConverter.ConvertO(__workflow_bodyendDate);
                     bodypropCount++;
                 }
 
-                if (bodyimage != null)
+                if (__workflow_bodyimage != null)
                 {
-                    body["image"] = ExpressionConverter.ConvertO(bodyimage);
+                    body["image"] = ExpressionConverter.ConvertO(__workflow_bodyimage);
                     bodypropCount++;
                 }
 
-                if (bodycost != null)
+                if (__workflow_bodycost != null)
                 {
-                    body["cost"] = ExpressionConverter.ConvertO(bodycost);
+                    body["cost"] = ExpressionConverter.ConvertO(__workflow_bodycost);
                     bodypropCount++;
                 }
 
-                if (bodywebsite != null)
+                if (__workflow_bodywebsite != null)
                 {
-                    body["website"] = ExpressionConverter.ConvertO(bodywebsite);
+                    body["website"] = ExpressionConverter.ConvertO(__workflow_bodywebsite);
                     bodypropCount++;
                 }
 
-                if (bodyshowMap != null)
+                if (__workflow_bodyshowMap != null)
                 {
-                    body["show_map"] = ExpressionConverter.ConvertO(bodyshowMap);
+                    body["show_map"] = ExpressionConverter.ConvertO(__workflow_bodyshowMap);
                     bodypropCount++;
                 }
 
-                if (bodyshowMapLink != null)
+                if (__workflow_bodyshowMapLink != null)
                 {
-                    body["show_map_link"] = ExpressionConverter.ConvertO(bodyshowMapLink);
+                    body["show_map_link"] = ExpressionConverter.ConvertO(__workflow_bodyshowMapLink);
                     bodypropCount++;
                 }
 
-                if (bodyhideFromListings != null)
+                if (__workflow_bodyhideFromListings != null)
                 {
-                    body["hide_from_listings"] = ExpressionConverter.ConvertO(bodyhideFromListings);
+                    body["hide_from_listings"] = ExpressionConverter.ConvertO(__workflow_bodyhideFromListings);
                     bodypropCount++;
                 }
 
-                if (bodysticky != null)
+                if (__workflow_bodysticky != null)
                 {
-                    body["sticky"] = ExpressionConverter.ConvertO(bodysticky);
+                    body["sticky"] = ExpressionConverter.ConvertO(__workflow_bodysticky);
                     bodypropCount++;
                 }
 
-                if (bodyfeatured != null)
+                if (__workflow_bodyfeatured != null)
                 {
-                    body["featured"] = ExpressionConverter.ConvertO(bodyfeatured);
+                    body["featured"] = ExpressionConverter.ConvertO(__workflow_bodyfeatured);
                     bodypropCount++;
                 }
 
-                if (bodycategories != null)
+                if (__workflow_bodycategories != null)
                 {
-                    body["categories"] = ExpressionConverter.ConvertO(bodycategories);
+                    body["categories"] = ExpressionConverter.ConvertO(__workflow_bodycategories);
                     bodypropCount++;
                 }
 
-                if (bodytags != null)
+                if (__workflow_bodytags != null)
                 {
-                    body["tags"] = ExpressionConverter.ConvertO(bodytags);
+                    body["tags"] = ExpressionConverter.ConvertO(__workflow_bodytags);
                     bodypropCount++;
                 }
 
-                if (bodyvenue != null)
+                if (__workflow_bodyvenue != null)
                 {
-                    body["venue"] = ExpressionConverter.ConvertO(bodyvenue);
+                    body["venue"] = ExpressionConverter.ConvertO(__workflow_bodyvenue);
                     bodypropCount++;
                 }
 
-                if (bodyorganizer != null)
+                if (__workflow_bodyorganizer != null)
                 {
-                    body["organizer"] = ExpressionConverter.ConvertO(bodyorganizer);
+                    body["organizer"] = ExpressionConverter.ConvertO(__workflow_bodyorganizer);
                     bodypropCount++;
                 }
 

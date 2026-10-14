@@ -1,12 +1,12 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class WorkableipActions([ConnectionName] string connectionId)
     {
@@ -20,19 +20,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
-        [WorkflowExpressionFactory(nameof(__BuildCandidatesId))]
-        public IBodyWorkflowAction<CandidatesIdResponse> CandidatesId([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<CandidatesIdResponse> CandidatesId(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CandidatesIdResponse> __BuildCandidatesId(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<CandidatesIdResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/spi/v3/candidates/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/spi/v3/candidates/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CandidatesIdResponse>(callPayload);
@@ -58,19 +52,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
-        [WorkflowExpressionFactory(nameof(__BuildJobShortCode))]
-        public IBodyWorkflowAction<JobShortCodeResponse> JobShortCode([WorkflowExpression] Func<string> shortcode)
+        public IBodyWorkflowAction<JobShortCodeResponse> JobShortCode(Expression<Func<string>> shortcode)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JobShortCodeResponse> __BuildJobShortCode(WorkflowExpression<string> shortcode)
-        {
-            WorkflowExpression.Validate(shortcode, nameof(shortcode), required: true);
+            var __workflow_shortcode = shortcode == null ? null : WorkflowExpression.Compile(shortcode);
+            WorkflowExpression.Validate(__workflow_shortcode, nameof(shortcode), required: true);
             return new DeferredBodyAction<JobShortCodeResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/spi/v3/jobs/{0}", ExpressionConverter.ConvertWithUrlEncoding(shortcode, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/spi/v3/jobs/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_shortcode, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<JobShortCodeResponse>(callPayload);
@@ -96,19 +84,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
-        [WorkflowExpressionFactory(nameof(__BuildJobActivities))]
-        public IBodyWorkflowAction<JobActivitiesResponse> JobActivities([WorkflowExpression] Func<string> shortcode)
+        public IBodyWorkflowAction<JobActivitiesResponse> JobActivities(Expression<Func<string>> shortcode)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JobActivitiesResponse> __BuildJobActivities(WorkflowExpression<string> shortcode)
-        {
-            WorkflowExpression.Validate(shortcode, nameof(shortcode), required: true);
+            var __workflow_shortcode = shortcode == null ? null : WorkflowExpression.Compile(shortcode);
+            WorkflowExpression.Validate(__workflow_shortcode, nameof(shortcode), required: true);
             return new DeferredBodyAction<JobActivitiesResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/spi/v3/jobs/{0}/activities", ExpressionConverter.ConvertWithUrlEncoding(shortcode, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/spi/v3/jobs/{0}/activities", ExpressionConverter.ConvertWithUrlEncoding(__workflow_shortcode, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<JobActivitiesResponse>(callPayload);
@@ -125,19 +107,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
-        [WorkflowExpressionFactory(nameof(__BuildEventsId))]
-        public IBodyWorkflowAction<EventsIdResponse> EventsId([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<EventsIdResponse> EventsId(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EventsIdResponse> __BuildEventsId(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<EventsIdResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/spi/v3/events/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/spi/v3/events/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<EventsIdResponse>(callPayload);
@@ -154,19 +130,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
-        [WorkflowExpressionFactory(nameof(__BuildPostSubscription))]
-        public IBodyWorkflowAction<PostSubscriptionResponse> PostSubscription([WorkflowExpression] Func<string> bodytarget = null, [WorkflowExpression] Func<string> bodyEvent = null, [WorkflowExpression] Func<string> bodyargsaccountId = null, [WorkflowExpression] Func<string> bodyargsstageSlug = null)
+        public IBodyWorkflowAction<PostSubscriptionResponse> PostSubscription(Expression<Func<string>> bodytarget = null, Expression<Func<string>> bodyEvent = null, Expression<Func<string>> bodyargsaccountId = null, Expression<Func<string>> bodyargsstageSlug = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PostSubscriptionResponse> __BuildPostSubscription(WorkflowExpression<string> bodytarget = null, WorkflowExpression<string> bodyEvent = null, WorkflowExpression<string> bodyargsaccountId = null, WorkflowExpression<string> bodyargsstageSlug = null)
-        {
-            WorkflowExpression.Validate(bodytarget, nameof(bodytarget), required: false);
-            WorkflowExpression.Validate(bodyEvent, nameof(bodyEvent), required: false);
-            WorkflowExpression.Validate(bodyargsaccountId, nameof(bodyargsaccountId), required: false);
-            WorkflowExpression.Validate(bodyargsstageSlug, nameof(bodyargsstageSlug), required: false);
+            var __workflow_bodytarget = bodytarget == null ? null : WorkflowExpression.Compile(bodytarget);
+            WorkflowExpression.Validate(__workflow_bodytarget, nameof(bodytarget), required: false);
+            var __workflow_bodyEvent = bodyEvent == null ? null : WorkflowExpression.Compile(bodyEvent);
+            WorkflowExpression.Validate(__workflow_bodyEvent, nameof(bodyEvent), required: false);
+            var __workflow_bodyargsaccountId = bodyargsaccountId == null ? null : WorkflowExpression.Compile(bodyargsaccountId);
+            WorkflowExpression.Validate(__workflow_bodyargsaccountId, nameof(bodyargsaccountId), required: false);
+            var __workflow_bodyargsstageSlug = bodyargsstageSlug == null ? null : WorkflowExpression.Compile(bodyargsstageSlug);
+            WorkflowExpression.Validate(__workflow_bodyargsstageSlug, nameof(bodyargsstageSlug), required: false);
             return new DeferredBodyAction<PostSubscriptionResponse>(() =>
             {
                 var apiCallPath = "/spi/v3/subscriptions";
@@ -174,25 +147,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodytarget != null)
+                if (__workflow_bodytarget != null)
                 {
-                    body["target"] = ExpressionConverter.ConvertO(bodytarget);
+                    body["target"] = ExpressionConverter.ConvertO(__workflow_bodytarget);
                     bodypropCount++;
                 }
 
-                if (bodyEvent != null)
+                if (__workflow_bodyEvent != null)
                 {
-                    body["event"] = ExpressionConverter.ConvertO(bodyEvent);
+                    body["event"] = ExpressionConverter.ConvertO(__workflow_bodyEvent);
                     bodypropCount++;
                 }
 
                 var argsObject = new JObject();
                 var argsObjectpropCount = 0;
-                if (bodyargsaccountId != null)
+                if (__workflow_bodyargsaccountId != null)
                 {
-                    if (bodyargsaccountId != null)
+                    if (__workflow_bodyargsaccountId != null)
                     {
-                        argsObject["account_id"] = ExpressionConverter.ConvertO(bodyargsaccountId);
+                        argsObject["account_id"] = ExpressionConverter.ConvertO(__workflow_bodyargsaccountId);
                         argsObjectpropCount++;
                     }
 
@@ -204,9 +177,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
                     argsObjectpropCount++;
                 }
 
-                if (bodyargsstageSlug != null)
+                if (__workflow_bodyargsstageSlug != null)
                 {
-                    argsObject["stage_slug"] = ExpressionConverter.ConvertO(bodyargsstageSlug);
+                    argsObject["stage_slug"] = ExpressionConverter.ConvertO(__workflow_bodyargsstageSlug);
                     argsObjectpropCount++;
                 }
 
@@ -235,19 +208,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
-        [WorkflowExpressionFactory(nameof(__BuildOffer))]
-        public IBodyWorkflowAction<OfferResponse> Offer([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<OfferResponse> Offer(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<OfferResponse> __BuildOffer(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<OfferResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/spi/v3/candidates/{0}/offer", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/spi/v3/candidates/{0}/offer", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<OfferResponse>(callPayload);

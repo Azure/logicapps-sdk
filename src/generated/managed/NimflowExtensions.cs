@@ -1,30 +1,26 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class NimflowActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nimflow")]
-        [WorkflowExpressionFactory(nameof(__BuildContextsDispatchAction))]
-        public IBodyWorkflowAction<DispatchContextActionResult> ContextsDispatchAction([WorkflowExpression] Func<string> commandcontextTypeName, [WorkflowExpression] Func<string> commandreference, [WorkflowExpression] Func<string> commandaction, [WorkflowExpression] Func<string> commandsubject = null)
+        public IBodyWorkflowAction<DispatchContextActionResult> ContextsDispatchAction(Expression<Func<string>> commandcontextTypeName, Expression<Func<string>> commandreference, Expression<Func<string>> commandaction, Expression<Func<string>> commandsubject = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<DispatchContextActionResult> __BuildContextsDispatchAction(WorkflowExpression<string> commandcontextTypeName, WorkflowExpression<string> commandreference, WorkflowExpression<string> commandaction, WorkflowExpression<string> commandsubject = null)
-        {
-            WorkflowExpression.Validate(commandcontextTypeName, nameof(commandcontextTypeName), required: true);
-            WorkflowExpression.Validate(commandreference, nameof(commandreference), required: true);
-            WorkflowExpression.Validate(commandaction, nameof(commandaction), required: true);
-            WorkflowExpression.Validate(commandsubject, nameof(commandsubject), required: false);
+            var __workflow_commandcontextTypeName = commandcontextTypeName == null ? null : WorkflowExpression.Compile(commandcontextTypeName);
+            WorkflowExpression.Validate(__workflow_commandcontextTypeName, nameof(commandcontextTypeName), required: true);
+            var __workflow_commandreference = commandreference == null ? null : WorkflowExpression.Compile(commandreference);
+            WorkflowExpression.Validate(__workflow_commandreference, nameof(commandreference), required: true);
+            var __workflow_commandaction = commandaction == null ? null : WorkflowExpression.Compile(commandaction);
+            WorkflowExpression.Validate(__workflow_commandaction, nameof(commandaction), required: true);
+            var __workflow_commandsubject = commandsubject == null ? null : WorkflowExpression.Compile(commandsubject);
+            WorkflowExpression.Validate(__workflow_commandsubject, nameof(commandsubject), required: false);
             return new DeferredBodyAction<DispatchContextActionResult>(() =>
             {
                 var apiCallPath = "/Contexts/DispatchAction";
@@ -33,11 +29,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
                 var command = new JObject();
                 var commandpropCount = 0;
                 commandpropCount++;
-                command["contextTypeName"] = ExpressionConverter.ConvertO(commandcontextTypeName);
+                command["contextTypeName"] = ExpressionConverter.ConvertO(__workflow_commandcontextTypeName);
                 commandpropCount++;
-                command["reference"] = ExpressionConverter.ConvertO(commandreference);
+                command["reference"] = ExpressionConverter.ConvertO(__workflow_commandreference);
                 commandpropCount++;
-                command["action"] = ExpressionConverter.ConvertO(commandaction);
+                command["action"] = ExpressionConverter.ConvertO(__workflow_commandaction);
                 var payloadObject = new JObject();
                 var payloadObjectpropCount = 0;
                 if (payloadObjectpropCount > 0)
@@ -46,9 +42,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
                     commandpropCount++;
                 }
 
-                if (commandsubject != null)
+                if (__workflow_commandsubject != null)
                 {
-                    command["subject"] = ExpressionConverter.ConvertO(commandsubject);
+                    command["subject"] = ExpressionConverter.ConvertO(__workflow_commandsubject);
                     commandpropCount++;
                 }
 
@@ -62,24 +58,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nimflow")]
-        [WorkflowExpressionFactory(nameof(__BuildTasksAddResponse))]
-        public IBodyWorkflowAction<AddTaskResponseResult> TasksAddResponse([WorkflowExpression] Func<string> commandcontextReference, [WorkflowExpression] Func<string> commandcontextTypeName, [WorkflowExpression] Func<string> commandtaskTypeName, [WorkflowExpression] Func<string> commandresponseTypeName, [WorkflowExpression] Func<string> commandsentBy = null, [WorkflowExpression] Func<string> commandstartedOn = null, [WorkflowExpression] Func<string> commandsentOn = null, [WorkflowExpression] Func<string> commandsubject = null, [WorkflowExpression] Func<string> commanditemKey = null)
+        public IBodyWorkflowAction<AddTaskResponseResult> TasksAddResponse(Expression<Func<string>> commandcontextReference, Expression<Func<string>> commandcontextTypeName, Expression<Func<string>> commandtaskTypeName, Expression<Func<string>> commandresponseTypeName, Expression<Func<string>> commandsentBy = null, Expression<Func<string>> commandstartedOn = null, Expression<Func<string>> commandsentOn = null, Expression<Func<string>> commandsubject = null, Expression<Func<string>> commanditemKey = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AddTaskResponseResult> __BuildTasksAddResponse(WorkflowExpression<string> commandcontextReference, WorkflowExpression<string> commandcontextTypeName, WorkflowExpression<string> commandtaskTypeName, WorkflowExpression<string> commandresponseTypeName, WorkflowExpression<string> commandsentBy = null, WorkflowExpression<string> commandstartedOn = null, WorkflowExpression<string> commandsentOn = null, WorkflowExpression<string> commandsubject = null, WorkflowExpression<string> commanditemKey = null)
-        {
-            WorkflowExpression.Validate(commandcontextReference, nameof(commandcontextReference), required: true);
-            WorkflowExpression.Validate(commandcontextTypeName, nameof(commandcontextTypeName), required: true);
-            WorkflowExpression.Validate(commandtaskTypeName, nameof(commandtaskTypeName), required: true);
-            WorkflowExpression.Validate(commandresponseTypeName, nameof(commandresponseTypeName), required: true);
-            WorkflowExpression.Validate(commandsentBy, nameof(commandsentBy), required: false);
-            WorkflowExpression.Validate(commandstartedOn, nameof(commandstartedOn), required: false);
-            WorkflowExpression.Validate(commandsentOn, nameof(commandsentOn), required: false);
-            WorkflowExpression.Validate(commandsubject, nameof(commandsubject), required: false);
-            WorkflowExpression.Validate(commanditemKey, nameof(commanditemKey), required: false);
+            var __workflow_commandcontextReference = commandcontextReference == null ? null : WorkflowExpression.Compile(commandcontextReference);
+            WorkflowExpression.Validate(__workflow_commandcontextReference, nameof(commandcontextReference), required: true);
+            var __workflow_commandcontextTypeName = commandcontextTypeName == null ? null : WorkflowExpression.Compile(commandcontextTypeName);
+            WorkflowExpression.Validate(__workflow_commandcontextTypeName, nameof(commandcontextTypeName), required: true);
+            var __workflow_commandtaskTypeName = commandtaskTypeName == null ? null : WorkflowExpression.Compile(commandtaskTypeName);
+            WorkflowExpression.Validate(__workflow_commandtaskTypeName, nameof(commandtaskTypeName), required: true);
+            var __workflow_commandresponseTypeName = commandresponseTypeName == null ? null : WorkflowExpression.Compile(commandresponseTypeName);
+            WorkflowExpression.Validate(__workflow_commandresponseTypeName, nameof(commandresponseTypeName), required: true);
+            var __workflow_commandsentBy = commandsentBy == null ? null : WorkflowExpression.Compile(commandsentBy);
+            WorkflowExpression.Validate(__workflow_commandsentBy, nameof(commandsentBy), required: false);
+            var __workflow_commandstartedOn = commandstartedOn == null ? null : WorkflowExpression.Compile(commandstartedOn);
+            WorkflowExpression.Validate(__workflow_commandstartedOn, nameof(commandstartedOn), required: false);
+            var __workflow_commandsentOn = commandsentOn == null ? null : WorkflowExpression.Compile(commandsentOn);
+            WorkflowExpression.Validate(__workflow_commandsentOn, nameof(commandsentOn), required: false);
+            var __workflow_commandsubject = commandsubject == null ? null : WorkflowExpression.Compile(commandsubject);
+            WorkflowExpression.Validate(__workflow_commandsubject, nameof(commandsubject), required: false);
+            var __workflow_commanditemKey = commanditemKey == null ? null : WorkflowExpression.Compile(commanditemKey);
+            WorkflowExpression.Validate(__workflow_commanditemKey, nameof(commanditemKey), required: false);
             return new DeferredBodyAction<AddTaskResponseResult>(() =>
             {
                 var apiCallPath = "/Tasks/AddResponse";
@@ -88,10 +86,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
                 var command = new JObject();
                 var commandpropCount = 0;
                 commandpropCount++;
-                command["contextReference"] = ExpressionConverter.ConvertO(commandcontextReference);
-                if (commandsentBy != null)
+                command["contextReference"] = ExpressionConverter.ConvertO(__workflow_commandcontextReference);
+                if (__workflow_commandsentBy != null)
                 {
-                    command["sentBy"] = ExpressionConverter.ConvertO(commandsentBy);
+                    command["sentBy"] = ExpressionConverter.ConvertO(__workflow_commandsentBy);
                     commandpropCount++;
                 }
 
@@ -103,33 +101,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
                     commandpropCount++;
                 }
 
-                if (commandstartedOn != null)
+                if (__workflow_commandstartedOn != null)
                 {
-                    command["startedOn"] = ExpressionConverter.ConvertO(commandstartedOn);
+                    command["startedOn"] = ExpressionConverter.ConvertO(__workflow_commandstartedOn);
                     commandpropCount++;
                 }
 
-                if (commandsentOn != null)
+                if (__workflow_commandsentOn != null)
                 {
-                    command["sentOn"] = ExpressionConverter.ConvertO(commandsentOn);
+                    command["sentOn"] = ExpressionConverter.ConvertO(__workflow_commandsentOn);
                     commandpropCount++;
                 }
 
-                if (commandsubject != null)
+                if (__workflow_commandsubject != null)
                 {
-                    command["subject"] = ExpressionConverter.ConvertO(commandsubject);
+                    command["subject"] = ExpressionConverter.ConvertO(__workflow_commandsubject);
                     commandpropCount++;
                 }
 
                 commandpropCount++;
-                command["contextTypeName"] = ExpressionConverter.ConvertO(commandcontextTypeName);
+                command["contextTypeName"] = ExpressionConverter.ConvertO(__workflow_commandcontextTypeName);
                 commandpropCount++;
-                command["taskTypeName"] = ExpressionConverter.ConvertO(commandtaskTypeName);
+                command["taskTypeName"] = ExpressionConverter.ConvertO(__workflow_commandtaskTypeName);
                 commandpropCount++;
-                command["responseTypeName"] = ExpressionConverter.ConvertO(commandresponseTypeName);
-                if (commanditemKey != null)
+                command["responseTypeName"] = ExpressionConverter.ConvertO(__workflow_commandresponseTypeName);
+                if (__workflow_commanditemKey != null)
                 {
-                    command["itemKey"] = ExpressionConverter.ConvertO(commanditemKey);
+                    command["itemKey"] = ExpressionConverter.ConvertO(__workflow_commanditemKey);
                     commandpropCount++;
                 }
 
@@ -145,18 +143,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
 
     public class NimflowTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildWhenTaskCreatedPost))]
-        public IWorkflowTrigger WhenTaskCreatedPost([WorkflowExpression] Func<string> requestcontextTypeName = null,[WorkflowExpression] Func<string> requesttaskTypeName = null,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WhenTaskCreatedPost(Expression<Func<string>> requestcontextTypeName = null, Expression<Func<string>> requesttaskTypeName = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildWhenTaskCreatedPost(WorkflowExpression<string> requestcontextTypeName = null,WorkflowExpression<string> requesttaskTypeName = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(requestcontextTypeName, nameof(requestcontextTypeName), required: false);
-            WorkflowExpression.Validate(requesttaskTypeName, nameof(requesttaskTypeName), required: false);
+            var __workflow_requestcontextTypeName = requestcontextTypeName == null ? null : WorkflowExpression.Compile(requestcontextTypeName);
+            WorkflowExpression.Validate(__workflow_requestcontextTypeName, nameof(requestcontextTypeName), required: false);
+            var __workflow_requesttaskTypeName = requesttaskTypeName == null ? null : WorkflowExpression.Compile(requesttaskTypeName);
+            WorkflowExpression.Validate(__workflow_requesttaskTypeName, nameof(requesttaskTypeName), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/WhenTaskCreated";
@@ -166,15 +158,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
                 var requestpropCount = 0;
                 request["callbackUrl"] = "#{listCallbackUrl()}";
                 requestpropCount++;
-                if (requestcontextTypeName != null)
+                if (__workflow_requestcontextTypeName != null)
                 {
-                    request["contextTypeName"] = ExpressionConverter.ConvertO(requestcontextTypeName);
+                    request["contextTypeName"] = ExpressionConverter.ConvertO(__workflow_requestcontextTypeName);
                     requestpropCount++;
                 }
 
-                if (requesttaskTypeName != null)
+                if (__workflow_requesttaskTypeName != null)
                 {
-                    request["taskTypeName"] = ExpressionConverter.ConvertO(requesttaskTypeName);
+                    request["taskTypeName"] = ExpressionConverter.ConvertO(__workflow_requesttaskTypeName);
                     requestpropCount++;
                 }
 
@@ -187,17 +179,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildWhenTaskUpdatedPost))]
-        public IWorkflowTrigger WhenTaskUpdatedPost([WorkflowExpression] Func<string> requestcontextTypeName = null,[WorkflowExpression] Func<string> requesttaskTypeName = null,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WhenTaskUpdatedPost(Expression<Func<string>> requestcontextTypeName = null, Expression<Func<string>> requesttaskTypeName = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildWhenTaskUpdatedPost(WorkflowExpression<string> requestcontextTypeName = null,WorkflowExpression<string> requesttaskTypeName = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(requestcontextTypeName, nameof(requestcontextTypeName), required: false);
-            WorkflowExpression.Validate(requesttaskTypeName, nameof(requesttaskTypeName), required: false);
+            var __workflow_requestcontextTypeName = requestcontextTypeName == null ? null : WorkflowExpression.Compile(requestcontextTypeName);
+            WorkflowExpression.Validate(__workflow_requestcontextTypeName, nameof(requestcontextTypeName), required: false);
+            var __workflow_requesttaskTypeName = requesttaskTypeName == null ? null : WorkflowExpression.Compile(requesttaskTypeName);
+            WorkflowExpression.Validate(__workflow_requesttaskTypeName, nameof(requesttaskTypeName), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/WhenTaskUpdated";
@@ -207,15 +194,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
                 var requestpropCount = 0;
                 request["callbackUrl"] = "#{listCallbackUrl()}";
                 requestpropCount++;
-                if (requestcontextTypeName != null)
+                if (__workflow_requestcontextTypeName != null)
                 {
-                    request["contextTypeName"] = ExpressionConverter.ConvertO(requestcontextTypeName);
+                    request["contextTypeName"] = ExpressionConverter.ConvertO(__workflow_requestcontextTypeName);
                     requestpropCount++;
                 }
 
-                if (requesttaskTypeName != null)
+                if (__workflow_requesttaskTypeName != null)
                 {
-                    request["taskTypeName"] = ExpressionConverter.ConvertO(requesttaskTypeName);
+                    request["taskTypeName"] = ExpressionConverter.ConvertO(__workflow_requesttaskTypeName);
                     requestpropCount++;
                 }
 
@@ -228,17 +215,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildWhenTaskArchivedPost))]
-        public IWorkflowTrigger WhenTaskArchivedPost([WorkflowExpression] Func<string> requestcontextTypeName = null,[WorkflowExpression] Func<string> requesttaskTypeName = null,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WhenTaskArchivedPost(Expression<Func<string>> requestcontextTypeName = null, Expression<Func<string>> requesttaskTypeName = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildWhenTaskArchivedPost(WorkflowExpression<string> requestcontextTypeName = null,WorkflowExpression<string> requesttaskTypeName = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(requestcontextTypeName, nameof(requestcontextTypeName), required: false);
-            WorkflowExpression.Validate(requesttaskTypeName, nameof(requesttaskTypeName), required: false);
+            var __workflow_requestcontextTypeName = requestcontextTypeName == null ? null : WorkflowExpression.Compile(requestcontextTypeName);
+            WorkflowExpression.Validate(__workflow_requestcontextTypeName, nameof(requestcontextTypeName), required: false);
+            var __workflow_requesttaskTypeName = requesttaskTypeName == null ? null : WorkflowExpression.Compile(requesttaskTypeName);
+            WorkflowExpression.Validate(__workflow_requesttaskTypeName, nameof(requesttaskTypeName), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/WhenTaskArchived";
@@ -248,15 +230,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
                 var requestpropCount = 0;
                 request["callbackUrl"] = "#{listCallbackUrl()}";
                 requestpropCount++;
-                if (requestcontextTypeName != null)
+                if (__workflow_requestcontextTypeName != null)
                 {
-                    request["contextTypeName"] = ExpressionConverter.ConvertO(requestcontextTypeName);
+                    request["contextTypeName"] = ExpressionConverter.ConvertO(__workflow_requestcontextTypeName);
                     requestpropCount++;
                 }
 
-                if (requesttaskTypeName != null)
+                if (__workflow_requesttaskTypeName != null)
                 {
-                    request["taskTypeName"] = ExpressionConverter.ConvertO(requesttaskTypeName);
+                    request["taskTypeName"] = ExpressionConverter.ConvertO(__workflow_requesttaskTypeName);
                     requestpropCount++;
                 }
 
@@ -269,17 +251,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildWhenMilestoneReachedPost))]
-        public IWorkflowTrigger WhenMilestoneReachedPost([WorkflowExpression] Func<string> requestcontextTypeName = null,[WorkflowExpression] Func<string> requestmilestoneName = null,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WhenMilestoneReachedPost(Expression<Func<string>> requestcontextTypeName = null, Expression<Func<string>> requestmilestoneName = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildWhenMilestoneReachedPost(WorkflowExpression<string> requestcontextTypeName = null,WorkflowExpression<string> requestmilestoneName = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(requestcontextTypeName, nameof(requestcontextTypeName), required: false);
-            WorkflowExpression.Validate(requestmilestoneName, nameof(requestmilestoneName), required: false);
+            var __workflow_requestcontextTypeName = requestcontextTypeName == null ? null : WorkflowExpression.Compile(requestcontextTypeName);
+            WorkflowExpression.Validate(__workflow_requestcontextTypeName, nameof(requestcontextTypeName), required: false);
+            var __workflow_requestmilestoneName = requestmilestoneName == null ? null : WorkflowExpression.Compile(requestmilestoneName);
+            WorkflowExpression.Validate(__workflow_requestmilestoneName, nameof(requestmilestoneName), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/WhenMilestoneReached";
@@ -289,15 +266,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
                 var requestpropCount = 0;
                 request["callbackUrl"] = "#{listCallbackUrl()}";
                 requestpropCount++;
-                if (requestcontextTypeName != null)
+                if (__workflow_requestcontextTypeName != null)
                 {
-                    request["contextTypeName"] = ExpressionConverter.ConvertO(requestcontextTypeName);
+                    request["contextTypeName"] = ExpressionConverter.ConvertO(__workflow_requestcontextTypeName);
                     requestpropCount++;
                 }
 
-                if (requestmilestoneName != null)
+                if (__workflow_requestmilestoneName != null)
                 {
-                    request["milestoneName"] = ExpressionConverter.ConvertO(requestmilestoneName);
+                    request["milestoneName"] = ExpressionConverter.ConvertO(__workflow_requestmilestoneName);
                     requestpropCount++;
                 }
 
@@ -310,17 +287,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildWhenMilestoneClearedPost))]
-        public IWorkflowTrigger WhenMilestoneClearedPost([WorkflowExpression] Func<string> requestcontextTypeName = null,[WorkflowExpression] Func<string> requestmilestoneName = null,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WhenMilestoneClearedPost(Expression<Func<string>> requestcontextTypeName = null, Expression<Func<string>> requestmilestoneName = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildWhenMilestoneClearedPost(WorkflowExpression<string> requestcontextTypeName = null,WorkflowExpression<string> requestmilestoneName = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(requestcontextTypeName, nameof(requestcontextTypeName), required: false);
-            WorkflowExpression.Validate(requestmilestoneName, nameof(requestmilestoneName), required: false);
+            var __workflow_requestcontextTypeName = requestcontextTypeName == null ? null : WorkflowExpression.Compile(requestcontextTypeName);
+            WorkflowExpression.Validate(__workflow_requestcontextTypeName, nameof(requestcontextTypeName), required: false);
+            var __workflow_requestmilestoneName = requestmilestoneName == null ? null : WorkflowExpression.Compile(requestmilestoneName);
+            WorkflowExpression.Validate(__workflow_requestmilestoneName, nameof(requestmilestoneName), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/WhenMilestoneCleared";
@@ -330,15 +302,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
                 var requestpropCount = 0;
                 request["callbackUrl"] = "#{listCallbackUrl()}";
                 requestpropCount++;
-                if (requestcontextTypeName != null)
+                if (__workflow_requestcontextTypeName != null)
                 {
-                    request["contextTypeName"] = ExpressionConverter.ConvertO(requestcontextTypeName);
+                    request["contextTypeName"] = ExpressionConverter.ConvertO(__workflow_requestcontextTypeName);
                     requestpropCount++;
                 }
 
-                if (requestmilestoneName != null)
+                if (__workflow_requestmilestoneName != null)
                 {
-                    request["milestoneName"] = ExpressionConverter.ConvertO(requestmilestoneName);
+                    request["milestoneName"] = ExpressionConverter.ConvertO(__workflow_requestmilestoneName);
                     requestpropCount++;
                 }
 

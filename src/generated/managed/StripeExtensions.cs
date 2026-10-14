@@ -1,76 +1,76 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class StripeActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stripe")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateProduct))]
-        public IBodyWorkflowAction<ProductResponse> UpdateProduct([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<bool> bodyactive = null, [WorkflowExpression] Func<string> bodycaption = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyimages = null, [WorkflowExpression] Func<bool> bodyshippable = null, [WorkflowExpression] Func<string> bodyuRL = null)
+        public IBodyWorkflowAction<ProductResponse> UpdateProduct(Expression<Func<string>> id, Expression<Func<string>> bodyname, Expression<Func<bool>> bodyactive = null, Expression<Func<string>> bodycaption = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyimages = null, Expression<Func<bool>> bodyshippable = null, Expression<Func<string>> bodyuRL = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ProductResponse> __BuildUpdateProduct(WorkflowExpression<string> id, WorkflowExpression<string> bodyname, WorkflowExpression<bool> bodyactive = null, WorkflowExpression<string> bodycaption = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodyimages = null, WorkflowExpression<bool> bodyshippable = null, WorkflowExpression<string> bodyuRL = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
-            WorkflowExpression.Validate(bodyactive, nameof(bodyactive), required: false);
-            WorkflowExpression.Validate(bodycaption, nameof(bodycaption), required: false);
-            WorkflowExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            WorkflowExpression.Validate(bodyimages, nameof(bodyimages), required: false);
-            WorkflowExpression.Validate(bodyshippable, nameof(bodyshippable), required: false);
-            WorkflowExpression.Validate(bodyuRL, nameof(bodyuRL), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
+            var __workflow_bodyactive = bodyactive == null ? null : WorkflowExpression.Compile(bodyactive);
+            WorkflowExpression.Validate(__workflow_bodyactive, nameof(bodyactive), required: false);
+            var __workflow_bodycaption = bodycaption == null ? null : WorkflowExpression.Compile(bodycaption);
+            WorkflowExpression.Validate(__workflow_bodycaption, nameof(bodycaption), required: false);
+            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
+            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyimages = bodyimages == null ? null : WorkflowExpression.Compile(bodyimages);
+            WorkflowExpression.Validate(__workflow_bodyimages, nameof(bodyimages), required: false);
+            var __workflow_bodyshippable = bodyshippable == null ? null : WorkflowExpression.Compile(bodyshippable);
+            WorkflowExpression.Validate(__workflow_bodyshippable, nameof(bodyshippable), required: false);
+            var __workflow_bodyuRL = bodyuRL == null ? null : WorkflowExpression.Compile(bodyuRL);
+            WorkflowExpression.Validate(__workflow_bodyuRL, nameof(bodyuRL), required: false);
             return new DeferredBodyAction<ProductResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/products/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/products/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                if (bodyactive != null)
+                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
+                if (__workflow_bodyactive != null)
                 {
-                    body["active"] = ExpressionConverter.ConvertO(bodyactive);
+                    body["active"] = ExpressionConverter.ConvertO(__workflow_bodyactive);
                     bodypropCount++;
                 }
 
-                if (bodycaption != null)
+                if (__workflow_bodycaption != null)
                 {
-                    body["caption"] = ExpressionConverter.ConvertO(bodycaption);
+                    body["caption"] = ExpressionConverter.ConvertO(__workflow_bodycaption);
                     bodypropCount++;
                 }
 
-                if (bodydescription != null)
+                if (__workflow_bodydescription != null)
                 {
-                    body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
                     bodypropCount++;
                 }
 
-                if (bodyimages != null)
+                if (__workflow_bodyimages != null)
                 {
-                    body["images"] = ExpressionConverter.ConvertO(bodyimages);
+                    body["images"] = ExpressionConverter.ConvertO(__workflow_bodyimages);
                     bodypropCount++;
                 }
 
-                if (bodyshippable != null)
+                if (__workflow_bodyshippable != null)
                 {
-                    body["shippable"] = ExpressionConverter.ConvertO(bodyshippable);
+                    body["shippable"] = ExpressionConverter.ConvertO(__workflow_bodyshippable);
                     bodypropCount++;
                 }
 
-                if (bodyuRL != null)
+                if (__workflow_bodyuRL != null)
                 {
-                    body["url"] = ExpressionConverter.ConvertO(bodyuRL);
+                    body["url"] = ExpressionConverter.ConvertO(__workflow_bodyuRL);
                     bodypropCount++;
                 }
 
@@ -84,23 +84,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stripe")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateProduct))]
-        public IBodyWorkflowAction<ProductResponse> CreateProduct([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<bool> bodyactive = null, [WorkflowExpression] Func<string> bodycaption = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyimages = null, [WorkflowExpression] Func<bool> bodyshippable = null, [WorkflowExpression] Func<string> bodyuRL = null)
+        public IBodyWorkflowAction<ProductResponse> CreateProduct(Expression<Func<string>> bodyname, Expression<Func<string>> bodyid = null, Expression<Func<bool>> bodyactive = null, Expression<Func<string>> bodycaption = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyimages = null, Expression<Func<bool>> bodyshippable = null, Expression<Func<string>> bodyuRL = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ProductResponse> __BuildCreateProduct(WorkflowExpression<string> bodyname, WorkflowExpression<string> bodyid = null, WorkflowExpression<bool> bodyactive = null, WorkflowExpression<string> bodycaption = null, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodyimages = null, WorkflowExpression<bool> bodyshippable = null, WorkflowExpression<string> bodyuRL = null)
-        {
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
-            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: false);
-            WorkflowExpression.Validate(bodyactive, nameof(bodyactive), required: false);
-            WorkflowExpression.Validate(bodycaption, nameof(bodycaption), required: false);
-            WorkflowExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            WorkflowExpression.Validate(bodyimages, nameof(bodyimages), required: false);
-            WorkflowExpression.Validate(bodyshippable, nameof(bodyshippable), required: false);
-            WorkflowExpression.Validate(bodyuRL, nameof(bodyuRL), required: false);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
+            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
+            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: false);
+            var __workflow_bodyactive = bodyactive == null ? null : WorkflowExpression.Compile(bodyactive);
+            WorkflowExpression.Validate(__workflow_bodyactive, nameof(bodyactive), required: false);
+            var __workflow_bodycaption = bodycaption == null ? null : WorkflowExpression.Compile(bodycaption);
+            WorkflowExpression.Validate(__workflow_bodycaption, nameof(bodycaption), required: false);
+            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
+            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyimages = bodyimages == null ? null : WorkflowExpression.Compile(bodyimages);
+            WorkflowExpression.Validate(__workflow_bodyimages, nameof(bodyimages), required: false);
+            var __workflow_bodyshippable = bodyshippable == null ? null : WorkflowExpression.Compile(bodyshippable);
+            WorkflowExpression.Validate(__workflow_bodyshippable, nameof(bodyshippable), required: false);
+            var __workflow_bodyuRL = bodyuRL == null ? null : WorkflowExpression.Compile(bodyuRL);
+            WorkflowExpression.Validate(__workflow_bodyuRL, nameof(bodyuRL), required: false);
             return new DeferredBodyAction<ProductResponse>(() =>
             {
                 var apiCallPath = "/v1/products";
@@ -109,46 +110,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                if (bodyid != null)
+                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
+                if (__workflow_bodyid != null)
                 {
-                    body["id"] = ExpressionConverter.ConvertO(bodyid);
+                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
                     bodypropCount++;
                 }
 
-                if (bodyactive != null)
+                if (__workflow_bodyactive != null)
                 {
-                    body["active"] = ExpressionConverter.ConvertO(bodyactive);
+                    body["active"] = ExpressionConverter.ConvertO(__workflow_bodyactive);
                     bodypropCount++;
                 }
 
-                if (bodycaption != null)
+                if (__workflow_bodycaption != null)
                 {
-                    body["caption"] = ExpressionConverter.ConvertO(bodycaption);
+                    body["caption"] = ExpressionConverter.ConvertO(__workflow_bodycaption);
                     bodypropCount++;
                 }
 
-                if (bodydescription != null)
+                if (__workflow_bodydescription != null)
                 {
-                    body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
                     bodypropCount++;
                 }
 
-                if (bodyimages != null)
+                if (__workflow_bodyimages != null)
                 {
-                    body["images"] = ExpressionConverter.ConvertO(bodyimages);
+                    body["images"] = ExpressionConverter.ConvertO(__workflow_bodyimages);
                     bodypropCount++;
                 }
 
-                if (bodyshippable != null)
+                if (__workflow_bodyshippable != null)
                 {
-                    body["shippable"] = ExpressionConverter.ConvertO(bodyshippable);
+                    body["shippable"] = ExpressionConverter.ConvertO(__workflow_bodyshippable);
                     bodypropCount++;
                 }
 
-                if (bodyuRL != null)
+                if (__workflow_bodyuRL != null)
                 {
-                    body["url"] = ExpressionConverter.ConvertO(bodyuRL);
+                    body["url"] = ExpressionConverter.ConvertO(__workflow_bodyuRL);
                     bodypropCount++;
                 }
 
@@ -162,19 +163,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stripe")]
-        [WorkflowExpressionFactory(nameof(__BuildGetCustomer))]
-        public IBodyWorkflowAction<CustomerResponse> GetCustomer([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<CustomerResponse> GetCustomer(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CustomerResponse> __BuildGetCustomer(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<CustomerResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/customers/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/customers/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CustomerResponse>(callPayload);
@@ -182,34 +177,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stripe")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateCustomer))]
-        public IBodyWorkflowAction<CustomerResponse> UpdateCustomer([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyemail = null)
+        public IBodyWorkflowAction<CustomerResponse> UpdateCustomer(Expression<Func<string>> id, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyemail = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CustomerResponse> __BuildUpdateCustomer(WorkflowExpression<string> id, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodyemail = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
+            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
+            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: false);
             return new DeferredBodyAction<CustomerResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/customers/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/customers/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodydescription != null)
+                if (__workflow_bodydescription != null)
                 {
-                    body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
                     bodypropCount++;
                 }
 
-                if (bodyemail != null)
+                if (__workflow_bodyemail != null)
                 {
-                    body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                    body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
                     bodypropCount++;
                 }
 
@@ -223,17 +214,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stripe")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateCustomer))]
-        public IBodyWorkflowAction<CustomerResponse> CreateCustomer([WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyemail = null)
+        public IBodyWorkflowAction<CustomerResponse> CreateCustomer(Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyemail = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CustomerResponse> __BuildCreateCustomer(WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodyemail = null)
-        {
-            WorkflowExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: false);
+            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
+            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
+            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: false);
             return new DeferredBodyAction<CustomerResponse>(() =>
             {
                 var apiCallPath = "/v1/customers";
@@ -241,15 +227,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodydescription != null)
+                if (__workflow_bodydescription != null)
                 {
-                    body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
                     bodypropCount++;
                 }
 
-                if (bodyemail != null)
+                if (__workflow_bodyemail != null)
                 {
-                    body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                    body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
                     bodypropCount++;
                 }
 

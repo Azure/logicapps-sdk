@@ -1,55 +1,48 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class GivebutteripActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        [WorkflowExpressionFactory(nameof(__BuildCampaignGet))]
-        public IBodyWorkflowAction<CampaignGetResponse> CampaignGet([WorkflowExpression] Func<string> scope = null)
+        public IBodyWorkflowAction<CampaignGetResponse> CampaignGet(Expression<Func<string>> scope = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CampaignGetResponse> __BuildCampaignGet(WorkflowExpression<string> scope = null)
-        {
-            WorkflowExpression.Validate(scope, nameof(scope), required: false);
+            var __workflow_scope = scope == null ? null : WorkflowExpression.Compile(scope);
+            WorkflowExpression.Validate(__workflow_scope, nameof(scope), required: false);
             return new DeferredBodyAction<CampaignGetResponse>(() =>
             {
                 var apiCallPath = "/campaigns";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (scope != null)
-                    callPayload.Queries["scope"] = ExpressionConverter.Convert(scope);
+                if (__workflow_scope != null)
+                    callPayload.Queries["scope"] = ExpressionConverter.Convert(__workflow_scope);
                 return new ApiConnectionAction<CampaignGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        [WorkflowExpressionFactory(nameof(__BuildCampaign))]
-        public IBodyWorkflowAction<CampaignPostResponse> Campaign([WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyendAt = null, [WorkflowExpression] Func<int> bodygoal = null, [WorkflowExpression] Func<string> bodysubtitle = null, [WorkflowExpression] Func<string> bodyslug = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodytype = null)
+        public IBodyWorkflowAction<CampaignPostResponse> Campaign(Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyendAt = null, Expression<Func<int>> bodygoal = null, Expression<Func<string>> bodysubtitle = null, Expression<Func<string>> bodyslug = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodytype = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CampaignPostResponse> __BuildCampaign(WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodyendAt = null, WorkflowExpression<int> bodygoal = null, WorkflowExpression<string> bodysubtitle = null, WorkflowExpression<string> bodyslug = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodytype = null)
-        {
-            WorkflowExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            WorkflowExpression.Validate(bodyendAt, nameof(bodyendAt), required: false);
-            WorkflowExpression.Validate(bodygoal, nameof(bodygoal), required: false);
-            WorkflowExpression.Validate(bodysubtitle, nameof(bodysubtitle), required: false);
-            WorkflowExpression.Validate(bodyslug, nameof(bodyslug), required: false);
-            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            WorkflowExpression.Validate(bodytype, nameof(bodytype), required: false);
+            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
+            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyendAt = bodyendAt == null ? null : WorkflowExpression.Compile(bodyendAt);
+            WorkflowExpression.Validate(__workflow_bodyendAt, nameof(bodyendAt), required: false);
+            var __workflow_bodygoal = bodygoal == null ? null : WorkflowExpression.Compile(bodygoal);
+            WorkflowExpression.Validate(__workflow_bodygoal, nameof(bodygoal), required: false);
+            var __workflow_bodysubtitle = bodysubtitle == null ? null : WorkflowExpression.Compile(bodysubtitle);
+            WorkflowExpression.Validate(__workflow_bodysubtitle, nameof(bodysubtitle), required: false);
+            var __workflow_bodyslug = bodyslug == null ? null : WorkflowExpression.Compile(bodyslug);
+            WorkflowExpression.Validate(__workflow_bodyslug, nameof(bodyslug), required: false);
+            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
+            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodytype = bodytype == null ? null : WorkflowExpression.Compile(bodytype);
+            WorkflowExpression.Validate(__workflow_bodytype, nameof(bodytype), required: false);
             return new DeferredBodyAction<CampaignPostResponse>(() =>
             {
                 var apiCallPath = "/campaigns";
@@ -57,45 +50,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodydescription != null)
+                if (__workflow_bodydescription != null)
                 {
-                    body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
                     bodypropCount++;
                 }
 
-                if (bodyendAt != null)
+                if (__workflow_bodyendAt != null)
                 {
-                    body["end_at"] = ExpressionConverter.ConvertO(bodyendAt);
+                    body["end_at"] = ExpressionConverter.ConvertO(__workflow_bodyendAt);
                     bodypropCount++;
                 }
 
-                if (bodygoal != null)
+                if (__workflow_bodygoal != null)
                 {
-                    body["goal"] = ExpressionConverter.ConvertO(bodygoal);
+                    body["goal"] = ExpressionConverter.ConvertO(__workflow_bodygoal);
                     bodypropCount++;
                 }
 
-                if (bodysubtitle != null)
+                if (__workflow_bodysubtitle != null)
                 {
-                    body["subtitle"] = ExpressionConverter.ConvertO(bodysubtitle);
+                    body["subtitle"] = ExpressionConverter.ConvertO(__workflow_bodysubtitle);
                     bodypropCount++;
                 }
 
-                if (bodyslug != null)
+                if (__workflow_bodyslug != null)
                 {
-                    body["slug"] = ExpressionConverter.ConvertO(bodyslug);
+                    body["slug"] = ExpressionConverter.ConvertO(__workflow_bodyslug);
                     bodypropCount++;
                 }
 
-                if (bodytitle != null)
+                if (__workflow_bodytitle != null)
                 {
-                    body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
                     bodypropCount++;
                 }
 
-                if (bodytype != null)
+                if (__workflow_bodytype != null)
                 {
-                    body["type"] = ExpressionConverter.ConvertO(bodytype);
+                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
                     bodypropCount++;
                 }
 
@@ -109,19 +102,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        [WorkflowExpressionFactory(nameof(__BuildCampaignGetA))]
-        public IBodyWorkflowAction<CampaignGetAResponse> CampaignGetA([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<CampaignGetAResponse> CampaignGetA(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CampaignGetAResponse> __BuildCampaignGetA(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<CampaignGetAResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/campaigns/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/campaigns/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CampaignGetAResponse>(callPayload);
@@ -129,19 +116,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        [WorkflowExpressionFactory(nameof(__BuildCampaignDelete))]
-        public IBodyWorkflowAction<string> CampaignDelete([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<string> CampaignDelete(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildCampaignDelete(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/campaigns/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/campaigns/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -149,69 +130,70 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        [WorkflowExpressionFactory(nameof(__BuildCampaignPatch))]
-        public IBodyWorkflowAction<CampaignPatchResponse> CampaignPatch([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyendAt = null, [WorkflowExpression] Func<string> bodygoal = null, [WorkflowExpression] Func<string> bodysubtitle = null, [WorkflowExpression] Func<string> bodyslug = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodytype = null)
+        public IBodyWorkflowAction<CampaignPatchResponse> CampaignPatch(Expression<Func<string>> id, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyendAt = null, Expression<Func<string>> bodygoal = null, Expression<Func<string>> bodysubtitle = null, Expression<Func<string>> bodyslug = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodytype = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CampaignPatchResponse> __BuildCampaignPatch(WorkflowExpression<string> id, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodyendAt = null, WorkflowExpression<string> bodygoal = null, WorkflowExpression<string> bodysubtitle = null, WorkflowExpression<string> bodyslug = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodytype = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            WorkflowExpression.Validate(bodyendAt, nameof(bodyendAt), required: false);
-            WorkflowExpression.Validate(bodygoal, nameof(bodygoal), required: false);
-            WorkflowExpression.Validate(bodysubtitle, nameof(bodysubtitle), required: false);
-            WorkflowExpression.Validate(bodyslug, nameof(bodyslug), required: false);
-            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            WorkflowExpression.Validate(bodytype, nameof(bodytype), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
+            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyendAt = bodyendAt == null ? null : WorkflowExpression.Compile(bodyendAt);
+            WorkflowExpression.Validate(__workflow_bodyendAt, nameof(bodyendAt), required: false);
+            var __workflow_bodygoal = bodygoal == null ? null : WorkflowExpression.Compile(bodygoal);
+            WorkflowExpression.Validate(__workflow_bodygoal, nameof(bodygoal), required: false);
+            var __workflow_bodysubtitle = bodysubtitle == null ? null : WorkflowExpression.Compile(bodysubtitle);
+            WorkflowExpression.Validate(__workflow_bodysubtitle, nameof(bodysubtitle), required: false);
+            var __workflow_bodyslug = bodyslug == null ? null : WorkflowExpression.Compile(bodyslug);
+            WorkflowExpression.Validate(__workflow_bodyslug, nameof(bodyslug), required: false);
+            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
+            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodytype = bodytype == null ? null : WorkflowExpression.Compile(bodytype);
+            WorkflowExpression.Validate(__workflow_bodytype, nameof(bodytype), required: false);
             return new DeferredBodyAction<CampaignPatchResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/campaigns/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/campaigns/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodydescription != null)
+                if (__workflow_bodydescription != null)
                 {
-                    body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
                     bodypropCount++;
                 }
 
-                if (bodyendAt != null)
+                if (__workflow_bodyendAt != null)
                 {
-                    body["end_at"] = ExpressionConverter.ConvertO(bodyendAt);
+                    body["end_at"] = ExpressionConverter.ConvertO(__workflow_bodyendAt);
                     bodypropCount++;
                 }
 
-                if (bodygoal != null)
+                if (__workflow_bodygoal != null)
                 {
-                    body["goal"] = ExpressionConverter.ConvertO(bodygoal);
+                    body["goal"] = ExpressionConverter.ConvertO(__workflow_bodygoal);
                     bodypropCount++;
                 }
 
-                if (bodysubtitle != null)
+                if (__workflow_bodysubtitle != null)
                 {
-                    body["subtitle"] = ExpressionConverter.ConvertO(bodysubtitle);
+                    body["subtitle"] = ExpressionConverter.ConvertO(__workflow_bodysubtitle);
                     bodypropCount++;
                 }
 
-                if (bodyslug != null)
+                if (__workflow_bodyslug != null)
                 {
-                    body["slug"] = ExpressionConverter.ConvertO(bodyslug);
+                    body["slug"] = ExpressionConverter.ConvertO(__workflow_bodyslug);
                     bodypropCount++;
                 }
 
-                if (bodytitle != null)
+                if (__workflow_bodytitle != null)
                 {
-                    body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
                     bodypropCount++;
                 }
 
-                if (bodytype != null)
+                if (__workflow_bodytype != null)
                 {
-                    body["type"] = ExpressionConverter.ConvertO(bodytype);
+                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
                     bodypropCount++;
                 }
 
@@ -225,19 +207,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        [WorkflowExpressionFactory(nameof(__BuildMemberGet))]
-        public IBodyWorkflowAction<MemberGetResponse> MemberGet([WorkflowExpression] Func<string> campaignId)
+        public IBodyWorkflowAction<MemberGetResponse> MemberGet(Expression<Func<string>> campaignId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MemberGetResponse> __BuildMemberGet(WorkflowExpression<string> campaignId)
-        {
-            WorkflowExpression.Validate(campaignId, nameof(campaignId), required: true);
+            var __workflow_campaignId = campaignId == null ? null : WorkflowExpression.Compile(campaignId);
+            WorkflowExpression.Validate(__workflow_campaignId, nameof(campaignId), required: true);
             return new DeferredBodyAction<MemberGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(campaignId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(__workflow_campaignId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<MemberGetResponse>(callPayload);
@@ -245,20 +221,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        [WorkflowExpressionFactory(nameof(__BuildMemberGetA))]
-        public IBodyWorkflowAction<MemberGetAResponse> MemberGetA([WorkflowExpression] Func<string> campaignId, [WorkflowExpression] Func<string> memberId)
+        public IBodyWorkflowAction<MemberGetAResponse> MemberGetA(Expression<Func<string>> campaignId, Expression<Func<string>> memberId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MemberGetAResponse> __BuildMemberGetA(WorkflowExpression<string> campaignId, WorkflowExpression<string> memberId)
-        {
-            WorkflowExpression.Validate(campaignId, nameof(campaignId), required: true);
-            WorkflowExpression.Validate(memberId, nameof(memberId), required: true);
+            var __workflow_campaignId = campaignId == null ? null : WorkflowExpression.Compile(campaignId);
+            WorkflowExpression.Validate(__workflow_campaignId, nameof(campaignId), required: true);
+            var __workflow_memberId = memberId == null ? null : WorkflowExpression.Compile(memberId);
+            WorkflowExpression.Validate(__workflow_memberId, nameof(memberId), required: true);
             return new DeferredBodyAction<MemberGetAResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/members/{1}", ExpressionConverter.ConvertWithUrlEncoding(campaignId, 1), ExpressionConverter.ConvertWithUrlEncoding(memberId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/members/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_campaignId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_memberId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<MemberGetAResponse>(callPayload);
@@ -266,20 +237,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        [WorkflowExpressionFactory(nameof(__BuildMemberDelete))]
-        public IBodyWorkflowAction<string> MemberDelete([WorkflowExpression] Func<string> campaignId, [WorkflowExpression] Func<string> memberId)
+        public IBodyWorkflowAction<string> MemberDelete(Expression<Func<string>> campaignId, Expression<Func<string>> memberId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildMemberDelete(WorkflowExpression<string> campaignId, WorkflowExpression<string> memberId)
-        {
-            WorkflowExpression.Validate(campaignId, nameof(campaignId), required: true);
-            WorkflowExpression.Validate(memberId, nameof(memberId), required: true);
+            var __workflow_campaignId = campaignId == null ? null : WorkflowExpression.Compile(campaignId);
+            WorkflowExpression.Validate(__workflow_campaignId, nameof(campaignId), required: true);
+            var __workflow_memberId = memberId == null ? null : WorkflowExpression.Compile(memberId);
+            WorkflowExpression.Validate(__workflow_memberId, nameof(memberId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/members/{1}", ExpressionConverter.ConvertWithUrlEncoding(campaignId, 1), ExpressionConverter.ConvertWithUrlEncoding(memberId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/members/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_campaignId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_memberId, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -287,19 +253,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        [WorkflowExpressionFactory(nameof(__BuildTeamGet))]
-        public IBodyWorkflowAction<TeamGetResponse> TeamGet([WorkflowExpression] Func<string> campaignId)
+        public IBodyWorkflowAction<TeamGetResponse> TeamGet(Expression<Func<string>> campaignId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TeamGetResponse> __BuildTeamGet(WorkflowExpression<string> campaignId)
-        {
-            WorkflowExpression.Validate(campaignId, nameof(campaignId), required: true);
+            var __workflow_campaignId = campaignId == null ? null : WorkflowExpression.Compile(campaignId);
+            WorkflowExpression.Validate(__workflow_campaignId, nameof(campaignId), required: true);
             return new DeferredBodyAction<TeamGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/teams", ExpressionConverter.ConvertWithUrlEncoding(campaignId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/teams", ExpressionConverter.ConvertWithUrlEncoding(__workflow_campaignId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TeamGetResponse>(callPayload);
@@ -307,20 +267,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        [WorkflowExpressionFactory(nameof(__BuildTeamGetA))]
-        public IBodyWorkflowAction<TeamGetAResponse> TeamGetA([WorkflowExpression] Func<string> campaignId, [WorkflowExpression] Func<string> teamId)
+        public IBodyWorkflowAction<TeamGetAResponse> TeamGetA(Expression<Func<string>> campaignId, Expression<Func<string>> teamId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TeamGetAResponse> __BuildTeamGetA(WorkflowExpression<string> campaignId, WorkflowExpression<string> teamId)
-        {
-            WorkflowExpression.Validate(campaignId, nameof(campaignId), required: true);
-            WorkflowExpression.Validate(teamId, nameof(teamId), required: true);
+            var __workflow_campaignId = campaignId == null ? null : WorkflowExpression.Compile(campaignId);
+            WorkflowExpression.Validate(__workflow_campaignId, nameof(campaignId), required: true);
+            var __workflow_teamId = teamId == null ? null : WorkflowExpression.Compile(teamId);
+            WorkflowExpression.Validate(__workflow_teamId, nameof(teamId), required: true);
             return new DeferredBodyAction<TeamGetAResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/teams/{1}", ExpressionConverter.ConvertWithUrlEncoding(campaignId, 1), ExpressionConverter.ConvertWithUrlEncoding(teamId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/teams/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_campaignId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TeamGetAResponse>(callPayload);
@@ -328,50 +283,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        [WorkflowExpressionFactory(nameof(__BuildContactGet))]
-        public IBodyWorkflowAction<ContactGetResponse> ContactGet([WorkflowExpression] Func<string> scope = null)
+        public IBodyWorkflowAction<ContactGetResponse> ContactGet(Expression<Func<string>> scope = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ContactGetResponse> __BuildContactGet(WorkflowExpression<string> scope = null)
-        {
-            WorkflowExpression.Validate(scope, nameof(scope), required: false);
+            var __workflow_scope = scope == null ? null : WorkflowExpression.Compile(scope);
+            WorkflowExpression.Validate(__workflow_scope, nameof(scope), required: false);
             return new DeferredBodyAction<ContactGetResponse>(() =>
             {
                 var apiCallPath = "/contacts";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (scope != null)
-                    callPayload.Queries["scope"] = ExpressionConverter.Convert(scope);
+                if (__workflow_scope != null)
+                    callPayload.Queries["scope"] = ExpressionConverter.Convert(__workflow_scope);
                 return new ApiConnectionAction<ContactGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        [WorkflowExpressionFactory(nameof(__BuildContact))]
-        public IBodyWorkflowAction<ContactPostResponse> Contact([WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodymiddleName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<bodyemailsInputItem[]> bodyemails = null, [WorkflowExpression] Func<bodyphonesInputItem[]> bodyphones = null, [WorkflowExpression] Func<bodyaddressesInputItem[]> bodyaddresses = null, [WorkflowExpression] Func<string[]> bodytags = null, [WorkflowExpression] Func<string> bodydob = null, [WorkflowExpression] Func<string> bodycompany = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodytwitterUrl = null, [WorkflowExpression] Func<string> bodylinkedinUrl = null, [WorkflowExpression] Func<string> bodyfacebookUrl = null)
+        public IBodyWorkflowAction<ContactPostResponse> Contact(Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodymiddleName = null, Expression<Func<string>> bodylastName = null, Expression<Func<bodyemailsInputItem[]>> bodyemails = null, Expression<Func<bodyphonesInputItem[]>> bodyphones = null, Expression<Func<bodyaddressesInputItem[]>> bodyaddresses = null, Expression<Func<string[]>> bodytags = null, Expression<Func<string>> bodydob = null, Expression<Func<string>> bodycompany = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodytwitterUrl = null, Expression<Func<string>> bodylinkedinUrl = null, Expression<Func<string>> bodyfacebookUrl = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ContactPostResponse> __BuildContact(WorkflowExpression<string> bodyfirstName = null, WorkflowExpression<string> bodymiddleName = null, WorkflowExpression<string> bodylastName = null, WorkflowExpression<bodyemailsInputItem[]> bodyemails = null, WorkflowExpression<bodyphonesInputItem[]> bodyphones = null, WorkflowExpression<bodyaddressesInputItem[]> bodyaddresses = null, WorkflowExpression<string[]> bodytags = null, WorkflowExpression<string> bodydob = null, WorkflowExpression<string> bodycompany = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodytwitterUrl = null, WorkflowExpression<string> bodylinkedinUrl = null, WorkflowExpression<string> bodyfacebookUrl = null)
-        {
-            WorkflowExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
-            WorkflowExpression.Validate(bodymiddleName, nameof(bodymiddleName), required: false);
-            WorkflowExpression.Validate(bodylastName, nameof(bodylastName), required: false);
-            WorkflowExpression.Validate(bodyemails, nameof(bodyemails), required: false);
-            WorkflowExpression.Validate(bodyphones, nameof(bodyphones), required: false);
-            WorkflowExpression.Validate(bodyaddresses, nameof(bodyaddresses), required: false);
-            WorkflowExpression.Validate(bodytags, nameof(bodytags), required: false);
-            WorkflowExpression.Validate(bodydob, nameof(bodydob), required: false);
-            WorkflowExpression.Validate(bodycompany, nameof(bodycompany), required: false);
-            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            WorkflowExpression.Validate(bodytwitterUrl, nameof(bodytwitterUrl), required: false);
-            WorkflowExpression.Validate(bodylinkedinUrl, nameof(bodylinkedinUrl), required: false);
-            WorkflowExpression.Validate(bodyfacebookUrl, nameof(bodyfacebookUrl), required: false);
+            var __workflow_bodyfirstName = bodyfirstName == null ? null : WorkflowExpression.Compile(bodyfirstName);
+            WorkflowExpression.Validate(__workflow_bodyfirstName, nameof(bodyfirstName), required: false);
+            var __workflow_bodymiddleName = bodymiddleName == null ? null : WorkflowExpression.Compile(bodymiddleName);
+            WorkflowExpression.Validate(__workflow_bodymiddleName, nameof(bodymiddleName), required: false);
+            var __workflow_bodylastName = bodylastName == null ? null : WorkflowExpression.Compile(bodylastName);
+            WorkflowExpression.Validate(__workflow_bodylastName, nameof(bodylastName), required: false);
+            var __workflow_bodyemails = bodyemails == null ? null : WorkflowExpression.Compile(bodyemails);
+            WorkflowExpression.Validate(__workflow_bodyemails, nameof(bodyemails), required: false);
+            var __workflow_bodyphones = bodyphones == null ? null : WorkflowExpression.Compile(bodyphones);
+            WorkflowExpression.Validate(__workflow_bodyphones, nameof(bodyphones), required: false);
+            var __workflow_bodyaddresses = bodyaddresses == null ? null : WorkflowExpression.Compile(bodyaddresses);
+            WorkflowExpression.Validate(__workflow_bodyaddresses, nameof(bodyaddresses), required: false);
+            var __workflow_bodytags = bodytags == null ? null : WorkflowExpression.Compile(bodytags);
+            WorkflowExpression.Validate(__workflow_bodytags, nameof(bodytags), required: false);
+            var __workflow_bodydob = bodydob == null ? null : WorkflowExpression.Compile(bodydob);
+            WorkflowExpression.Validate(__workflow_bodydob, nameof(bodydob), required: false);
+            var __workflow_bodycompany = bodycompany == null ? null : WorkflowExpression.Compile(bodycompany);
+            WorkflowExpression.Validate(__workflow_bodycompany, nameof(bodycompany), required: false);
+            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
+            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodytwitterUrl = bodytwitterUrl == null ? null : WorkflowExpression.Compile(bodytwitterUrl);
+            WorkflowExpression.Validate(__workflow_bodytwitterUrl, nameof(bodytwitterUrl), required: false);
+            var __workflow_bodylinkedinUrl = bodylinkedinUrl == null ? null : WorkflowExpression.Compile(bodylinkedinUrl);
+            WorkflowExpression.Validate(__workflow_bodylinkedinUrl, nameof(bodylinkedinUrl), required: false);
+            var __workflow_bodyfacebookUrl = bodyfacebookUrl == null ? null : WorkflowExpression.Compile(bodyfacebookUrl);
+            WorkflowExpression.Validate(__workflow_bodyfacebookUrl, nameof(bodyfacebookUrl), required: false);
             return new DeferredBodyAction<ContactPostResponse>(() =>
             {
                 var apiCallPath = "/contacts";
@@ -379,81 +334,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfirstName != null)
+                if (__workflow_bodyfirstName != null)
                 {
-                    body["first_name"] = ExpressionConverter.ConvertO(bodyfirstName);
+                    body["first_name"] = ExpressionConverter.ConvertO(__workflow_bodyfirstName);
                     bodypropCount++;
                 }
 
-                if (bodymiddleName != null)
+                if (__workflow_bodymiddleName != null)
                 {
-                    body["middle_name"] = ExpressionConverter.ConvertO(bodymiddleName);
+                    body["middle_name"] = ExpressionConverter.ConvertO(__workflow_bodymiddleName);
                     bodypropCount++;
                 }
 
-                if (bodylastName != null)
+                if (__workflow_bodylastName != null)
                 {
-                    body["last_name"] = ExpressionConverter.ConvertO(bodylastName);
+                    body["last_name"] = ExpressionConverter.ConvertO(__workflow_bodylastName);
                     bodypropCount++;
                 }
 
-                if (bodyemails != null)
+                if (__workflow_bodyemails != null)
                 {
-                    body["emails"] = ExpressionConverter.ConvertO(bodyemails);
+                    body["emails"] = ExpressionConverter.ConvertO(__workflow_bodyemails);
                     bodypropCount++;
                 }
 
-                if (bodyphones != null)
+                if (__workflow_bodyphones != null)
                 {
-                    body["phones"] = ExpressionConverter.ConvertO(bodyphones);
+                    body["phones"] = ExpressionConverter.ConvertO(__workflow_bodyphones);
                     bodypropCount++;
                 }
 
-                if (bodyaddresses != null)
+                if (__workflow_bodyaddresses != null)
                 {
-                    body["addresses"] = ExpressionConverter.ConvertO(bodyaddresses);
+                    body["addresses"] = ExpressionConverter.ConvertO(__workflow_bodyaddresses);
                     bodypropCount++;
                 }
 
-                if (bodytags != null)
+                if (__workflow_bodytags != null)
                 {
-                    body["tags"] = ExpressionConverter.ConvertO(bodytags);
+                    body["tags"] = ExpressionConverter.ConvertO(__workflow_bodytags);
                     bodypropCount++;
                 }
 
-                if (bodydob != null)
+                if (__workflow_bodydob != null)
                 {
-                    body["dob"] = ExpressionConverter.ConvertO(bodydob);
+                    body["dob"] = ExpressionConverter.ConvertO(__workflow_bodydob);
                     bodypropCount++;
                 }
 
-                if (bodycompany != null)
+                if (__workflow_bodycompany != null)
                 {
-                    body["company"] = ExpressionConverter.ConvertO(bodycompany);
+                    body["company"] = ExpressionConverter.ConvertO(__workflow_bodycompany);
                     bodypropCount++;
                 }
 
-                if (bodytitle != null)
+                if (__workflow_bodytitle != null)
                 {
-                    body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
                     bodypropCount++;
                 }
 
-                if (bodytwitterUrl != null)
+                if (__workflow_bodytwitterUrl != null)
                 {
-                    body["twitter_url"] = ExpressionConverter.ConvertO(bodytwitterUrl);
+                    body["twitter_url"] = ExpressionConverter.ConvertO(__workflow_bodytwitterUrl);
                     bodypropCount++;
                 }
 
-                if (bodylinkedinUrl != null)
+                if (__workflow_bodylinkedinUrl != null)
                 {
-                    body["linkedin_url"] = ExpressionConverter.ConvertO(bodylinkedinUrl);
+                    body["linkedin_url"] = ExpressionConverter.ConvertO(__workflow_bodylinkedinUrl);
                     bodypropCount++;
                 }
 
-                if (bodyfacebookUrl != null)
+                if (__workflow_bodyfacebookUrl != null)
                 {
-                    body["facebook_url"] = ExpressionConverter.ConvertO(bodyfacebookUrl);
+                    body["facebook_url"] = ExpressionConverter.ConvertO(__workflow_bodyfacebookUrl);
                     bodypropCount++;
                 }
 
@@ -467,19 +422,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        [WorkflowExpressionFactory(nameof(__BuildContactGetA))]
-        public IBodyWorkflowAction<ContactGetAResponse> ContactGetA([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<ContactGetAResponse> ContactGetA(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ContactGetAResponse> __BuildContactGetA(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<ContactGetAResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ContactGetAResponse>(callPayload);
@@ -487,83 +436,86 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        [WorkflowExpressionFactory(nameof(__BuildContactPatch))]
-        public IBodyWorkflowAction<ContactPatchResponse> ContactPatch([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodymiddleName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string> bodydob = null, [WorkflowExpression] Func<string> bodycompany = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodytwitterUrl = null, [WorkflowExpression] Func<string> bodylinkedinUrl = null, [WorkflowExpression] Func<string> bodyfacebookUrl = null)
+        public IBodyWorkflowAction<ContactPatchResponse> ContactPatch(Expression<Func<string>> id, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodymiddleName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodydob = null, Expression<Func<string>> bodycompany = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodytwitterUrl = null, Expression<Func<string>> bodylinkedinUrl = null, Expression<Func<string>> bodyfacebookUrl = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ContactPatchResponse> __BuildContactPatch(WorkflowExpression<string> id, WorkflowExpression<string> bodyfirstName = null, WorkflowExpression<string> bodymiddleName = null, WorkflowExpression<string> bodylastName = null, WorkflowExpression<string> bodydob = null, WorkflowExpression<string> bodycompany = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodytwitterUrl = null, WorkflowExpression<string> bodylinkedinUrl = null, WorkflowExpression<string> bodyfacebookUrl = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
-            WorkflowExpression.Validate(bodymiddleName, nameof(bodymiddleName), required: false);
-            WorkflowExpression.Validate(bodylastName, nameof(bodylastName), required: false);
-            WorkflowExpression.Validate(bodydob, nameof(bodydob), required: false);
-            WorkflowExpression.Validate(bodycompany, nameof(bodycompany), required: false);
-            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: false);
-            WorkflowExpression.Validate(bodytwitterUrl, nameof(bodytwitterUrl), required: false);
-            WorkflowExpression.Validate(bodylinkedinUrl, nameof(bodylinkedinUrl), required: false);
-            WorkflowExpression.Validate(bodyfacebookUrl, nameof(bodyfacebookUrl), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_bodyfirstName = bodyfirstName == null ? null : WorkflowExpression.Compile(bodyfirstName);
+            WorkflowExpression.Validate(__workflow_bodyfirstName, nameof(bodyfirstName), required: false);
+            var __workflow_bodymiddleName = bodymiddleName == null ? null : WorkflowExpression.Compile(bodymiddleName);
+            WorkflowExpression.Validate(__workflow_bodymiddleName, nameof(bodymiddleName), required: false);
+            var __workflow_bodylastName = bodylastName == null ? null : WorkflowExpression.Compile(bodylastName);
+            WorkflowExpression.Validate(__workflow_bodylastName, nameof(bodylastName), required: false);
+            var __workflow_bodydob = bodydob == null ? null : WorkflowExpression.Compile(bodydob);
+            WorkflowExpression.Validate(__workflow_bodydob, nameof(bodydob), required: false);
+            var __workflow_bodycompany = bodycompany == null ? null : WorkflowExpression.Compile(bodycompany);
+            WorkflowExpression.Validate(__workflow_bodycompany, nameof(bodycompany), required: false);
+            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
+            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodytwitterUrl = bodytwitterUrl == null ? null : WorkflowExpression.Compile(bodytwitterUrl);
+            WorkflowExpression.Validate(__workflow_bodytwitterUrl, nameof(bodytwitterUrl), required: false);
+            var __workflow_bodylinkedinUrl = bodylinkedinUrl == null ? null : WorkflowExpression.Compile(bodylinkedinUrl);
+            WorkflowExpression.Validate(__workflow_bodylinkedinUrl, nameof(bodylinkedinUrl), required: false);
+            var __workflow_bodyfacebookUrl = bodyfacebookUrl == null ? null : WorkflowExpression.Compile(bodyfacebookUrl);
+            WorkflowExpression.Validate(__workflow_bodyfacebookUrl, nameof(bodyfacebookUrl), required: false);
             return new DeferredBodyAction<ContactPatchResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfirstName != null)
+                if (__workflow_bodyfirstName != null)
                 {
-                    body["first_name"] = ExpressionConverter.ConvertO(bodyfirstName);
+                    body["first_name"] = ExpressionConverter.ConvertO(__workflow_bodyfirstName);
                     bodypropCount++;
                 }
 
-                if (bodymiddleName != null)
+                if (__workflow_bodymiddleName != null)
                 {
-                    body["middle_name"] = ExpressionConverter.ConvertO(bodymiddleName);
+                    body["middle_name"] = ExpressionConverter.ConvertO(__workflow_bodymiddleName);
                     bodypropCount++;
                 }
 
-                if (bodylastName != null)
+                if (__workflow_bodylastName != null)
                 {
-                    body["last_name"] = ExpressionConverter.ConvertO(bodylastName);
+                    body["last_name"] = ExpressionConverter.ConvertO(__workflow_bodylastName);
                     bodypropCount++;
                 }
 
-                if (bodydob != null)
+                if (__workflow_bodydob != null)
                 {
-                    body["dob"] = ExpressionConverter.ConvertO(bodydob);
+                    body["dob"] = ExpressionConverter.ConvertO(__workflow_bodydob);
                     bodypropCount++;
                 }
 
-                if (bodycompany != null)
+                if (__workflow_bodycompany != null)
                 {
-                    body["company"] = ExpressionConverter.ConvertO(bodycompany);
+                    body["company"] = ExpressionConverter.ConvertO(__workflow_bodycompany);
                     bodypropCount++;
                 }
 
-                if (bodytitle != null)
+                if (__workflow_bodytitle != null)
                 {
-                    body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
                     bodypropCount++;
                 }
 
-                if (bodytwitterUrl != null)
+                if (__workflow_bodytwitterUrl != null)
                 {
-                    body["twitter_url"] = ExpressionConverter.ConvertO(bodytwitterUrl);
+                    body["twitter_url"] = ExpressionConverter.ConvertO(__workflow_bodytwitterUrl);
                     bodypropCount++;
                 }
 
-                if (bodylinkedinUrl != null)
+                if (__workflow_bodylinkedinUrl != null)
                 {
-                    body["linkedin_url"] = ExpressionConverter.ConvertO(bodylinkedinUrl);
+                    body["linkedin_url"] = ExpressionConverter.ConvertO(__workflow_bodylinkedinUrl);
                     bodypropCount++;
                 }
 
-                if (bodyfacebookUrl != null)
+                if (__workflow_bodyfacebookUrl != null)
                 {
-                    body["facebook_url"] = ExpressionConverter.ConvertO(bodyfacebookUrl);
+                    body["facebook_url"] = ExpressionConverter.ConvertO(__workflow_bodyfacebookUrl);
                     bodypropCount++;
                 }
 
@@ -577,19 +529,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        [WorkflowExpressionFactory(nameof(__BuildContactDelete))]
-        public IBodyWorkflowAction<string> ContactDelete([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<string> ContactDelete(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildContactDelete(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -597,19 +543,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        [WorkflowExpressionFactory(nameof(__BuildContactRestore))]
-        public IBodyWorkflowAction<ContactRestoreResponse> ContactRestore([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<ContactRestoreResponse> ContactRestore(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ContactRestoreResponse> __BuildContactRestore(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<ContactRestoreResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/contacts/{0}/restore", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/contacts/{0}/restore", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ContactRestoreResponse>(callPayload);
@@ -626,19 +566,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        [WorkflowExpressionFactory(nameof(__BuildTicketGetA))]
-        public IBodyWorkflowAction<TicketGetAResponse> TicketGetA([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<TicketGetAResponse> TicketGetA(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TicketGetAResponse> __BuildTicketGetA(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<TicketGetAResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/tickets/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/tickets/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TicketGetAResponse>(callPayload);
@@ -655,19 +589,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        [WorkflowExpressionFactory(nameof(__BuildTransactionGetA))]
-        public IBodyWorkflowAction<TransactionGetAResponse> TransactionGetA([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<TransactionGetAResponse> TransactionGetA(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TransactionGetAResponse> __BuildTransactionGetA(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<TransactionGetAResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/transactions/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/transactions/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TransactionGetAResponse>(callPayload);
@@ -684,19 +612,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        [WorkflowExpressionFactory(nameof(__BuildPayoutGetA))]
-        public IBodyWorkflowAction<PayoutGetAResponse> PayoutGetA([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<PayoutGetAResponse> PayoutGetA(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PayoutGetAResponse> __BuildPayoutGetA(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<PayoutGetAResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/payouts/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/payouts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<PayoutGetAResponse>(callPayload);
@@ -713,19 +635,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        [WorkflowExpressionFactory(nameof(__BuildPlanGetA))]
-        public IBodyWorkflowAction<PlanGetAResponse> PlanGetA([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<PlanGetAResponse> PlanGetA(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PlanGetAResponse> __BuildPlanGetA(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<PlanGetAResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/plans/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/plans/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<PlanGetAResponse>(callPayload);
@@ -742,17 +658,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        [WorkflowExpressionFactory(nameof(__BuildFund))]
-        public IBodyWorkflowAction<FundPostResponse> Fund([WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodycode = null)
+        public IBodyWorkflowAction<FundPostResponse> Fund(Expression<Func<string>> bodyname = null, Expression<Func<string>> bodycode = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FundPostResponse> __BuildFund(WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodycode = null)
-        {
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
-            WorkflowExpression.Validate(bodycode, nameof(bodycode), required: false);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
+            var __workflow_bodycode = bodycode == null ? null : WorkflowExpression.Compile(bodycode);
+            WorkflowExpression.Validate(__workflow_bodycode, nameof(bodycode), required: false);
             return new DeferredBodyAction<FundPostResponse>(() =>
             {
                 var apiCallPath = "/funds";
@@ -760,15 +671,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyname != null)
+                if (__workflow_bodyname != null)
                 {
-                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
                     bodypropCount++;
                 }
 
-                if (bodycode != null)
+                if (__workflow_bodycode != null)
                 {
-                    body["code"] = ExpressionConverter.ConvertO(bodycode);
+                    body["code"] = ExpressionConverter.ConvertO(__workflow_bodycode);
                     bodypropCount++;
                 }
 
@@ -782,19 +693,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        [WorkflowExpressionFactory(nameof(__BuildFundGetA))]
-        public IBodyWorkflowAction<FundGetAResponse> FundGetA([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<FundGetAResponse> FundGetA(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FundGetAResponse> __BuildFundGetA(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<FundGetAResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/funds/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/funds/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FundGetAResponse>(callPayload);
@@ -802,34 +707,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        [WorkflowExpressionFactory(nameof(__BuildFundPatch))]
-        public IBodyWorkflowAction<FundPatchResponse> FundPatch([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodycode = null)
+        public IBodyWorkflowAction<FundPatchResponse> FundPatch(Expression<Func<string>> id, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodycode = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FundPatchResponse> __BuildFundPatch(WorkflowExpression<string> id, WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodycode = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
-            WorkflowExpression.Validate(bodycode, nameof(bodycode), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
+            var __workflow_bodycode = bodycode == null ? null : WorkflowExpression.Compile(bodycode);
+            WorkflowExpression.Validate(__workflow_bodycode, nameof(bodycode), required: false);
             return new DeferredBodyAction<FundPatchResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/funds/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/funds/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyname != null)
+                if (__workflow_bodyname != null)
                 {
-                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
                     bodypropCount++;
                 }
 
-                if (bodycode != null)
+                if (__workflow_bodycode != null)
                 {
-                    body["code"] = ExpressionConverter.ConvertO(bodycode);
+                    body["code"] = ExpressionConverter.ConvertO(__workflow_bodycode);
                     bodypropCount++;
                 }
 
@@ -843,19 +744,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        [WorkflowExpressionFactory(nameof(__BuildFundDelete))]
-        public IBodyWorkflowAction<string> FundDelete([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<string> FundDelete(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildFundDelete(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/funds/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/funds/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);

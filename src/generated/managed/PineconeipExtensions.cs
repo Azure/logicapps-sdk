@@ -1,12 +1,12 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class PineconeipActions([ConnectionName] string connectionId)
     {
@@ -20,23 +20,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        [WorkflowExpressionFactory(nameof(__BuildVectorQuery))]
-        public IBodyWorkflowAction<VectorQueryPostResponse> VectorQuery([WorkflowExpression] Func<bool> bodyincludeValues = null, [WorkflowExpression] Func<bool> bodyincludeMetadata = null, [WorkflowExpression] Func<int[]> bodysparseVectorindices = null, [WorkflowExpression] Func<int[]> bodysparseVectorvalues = null, [WorkflowExpression] Func<string> bodyNamespace = null, [WorkflowExpression] Func<int> bodytopK = null, [WorkflowExpression] Func<int[]> bodyvector = null, [WorkflowExpression] Func<string> bodyid = null)
+        public IBodyWorkflowAction<VectorQueryPostResponse> VectorQuery(Expression<Func<bool>> bodyincludeValues = null, Expression<Func<bool>> bodyincludeMetadata = null, Expression<Func<int[]>> bodysparseVectorindices = null, Expression<Func<int[]>> bodysparseVectorvalues = null, Expression<Func<string>> bodyNamespace = null, Expression<Func<int>> bodytopK = null, Expression<Func<int[]>> bodyvector = null, Expression<Func<string>> bodyid = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<VectorQueryPostResponse> __BuildVectorQuery(WorkflowExpression<bool> bodyincludeValues = null, WorkflowExpression<bool> bodyincludeMetadata = null, WorkflowExpression<int[]> bodysparseVectorindices = null, WorkflowExpression<int[]> bodysparseVectorvalues = null, WorkflowExpression<string> bodyNamespace = null, WorkflowExpression<int> bodytopK = null, WorkflowExpression<int[]> bodyvector = null, WorkflowExpression<string> bodyid = null)
-        {
-            WorkflowExpression.Validate(bodyincludeValues, nameof(bodyincludeValues), required: false);
-            WorkflowExpression.Validate(bodyincludeMetadata, nameof(bodyincludeMetadata), required: false);
-            WorkflowExpression.Validate(bodysparseVectorindices, nameof(bodysparseVectorindices), required: false);
-            WorkflowExpression.Validate(bodysparseVectorvalues, nameof(bodysparseVectorvalues), required: false);
-            WorkflowExpression.Validate(bodyNamespace, nameof(bodyNamespace), required: false);
-            WorkflowExpression.Validate(bodytopK, nameof(bodytopK), required: false);
-            WorkflowExpression.Validate(bodyvector, nameof(bodyvector), required: false);
-            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: false);
+            var __workflow_bodyincludeValues = bodyincludeValues == null ? null : WorkflowExpression.Compile(bodyincludeValues);
+            WorkflowExpression.Validate(__workflow_bodyincludeValues, nameof(bodyincludeValues), required: false);
+            var __workflow_bodyincludeMetadata = bodyincludeMetadata == null ? null : WorkflowExpression.Compile(bodyincludeMetadata);
+            WorkflowExpression.Validate(__workflow_bodyincludeMetadata, nameof(bodyincludeMetadata), required: false);
+            var __workflow_bodysparseVectorindices = bodysparseVectorindices == null ? null : WorkflowExpression.Compile(bodysparseVectorindices);
+            WorkflowExpression.Validate(__workflow_bodysparseVectorindices, nameof(bodysparseVectorindices), required: false);
+            var __workflow_bodysparseVectorvalues = bodysparseVectorvalues == null ? null : WorkflowExpression.Compile(bodysparseVectorvalues);
+            WorkflowExpression.Validate(__workflow_bodysparseVectorvalues, nameof(bodysparseVectorvalues), required: false);
+            var __workflow_bodyNamespace = bodyNamespace == null ? null : WorkflowExpression.Compile(bodyNamespace);
+            WorkflowExpression.Validate(__workflow_bodyNamespace, nameof(bodyNamespace), required: false);
+            var __workflow_bodytopK = bodytopK == null ? null : WorkflowExpression.Compile(bodytopK);
+            WorkflowExpression.Validate(__workflow_bodytopK, nameof(bodytopK), required: false);
+            var __workflow_bodyvector = bodyvector == null ? null : WorkflowExpression.Compile(bodyvector);
+            WorkflowExpression.Validate(__workflow_bodyvector, nameof(bodyvector), required: false);
+            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
+            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: false);
             return new DeferredBodyAction<VectorQueryPostResponse>(() =>
             {
                 var apiCallPath = "/query";
@@ -44,29 +45,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyincludeValues != null)
+                if (__workflow_bodyincludeValues != null)
                 {
-                    body["includeValues"] = ExpressionConverter.ConvertO(bodyincludeValues);
+                    body["includeValues"] = ExpressionConverter.ConvertO(__workflow_bodyincludeValues);
                     bodypropCount++;
                 }
 
-                if (bodyincludeMetadata != null)
+                if (__workflow_bodyincludeMetadata != null)
                 {
-                    body["includeMetadata"] = ExpressionConverter.ConvertO(bodyincludeMetadata);
+                    body["includeMetadata"] = ExpressionConverter.ConvertO(__workflow_bodyincludeMetadata);
                     bodypropCount++;
                 }
 
                 var sparseVectorObject = new JObject();
                 var sparseVectorObjectpropCount = 0;
-                if (bodysparseVectorindices != null)
+                if (__workflow_bodysparseVectorindices != null)
                 {
-                    sparseVectorObject["indices"] = ExpressionConverter.ConvertO(bodysparseVectorindices);
+                    sparseVectorObject["indices"] = ExpressionConverter.ConvertO(__workflow_bodysparseVectorindices);
                     sparseVectorObjectpropCount++;
                 }
 
-                if (bodysparseVectorvalues != null)
+                if (__workflow_bodysparseVectorvalues != null)
                 {
-                    sparseVectorObject["values"] = ExpressionConverter.ConvertO(bodysparseVectorvalues);
+                    sparseVectorObject["values"] = ExpressionConverter.ConvertO(__workflow_bodysparseVectorvalues);
                     sparseVectorObjectpropCount++;
                 }
 
@@ -76,27 +77,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
                     bodypropCount++;
                 }
 
-                if (bodyNamespace != null)
+                if (__workflow_bodyNamespace != null)
                 {
-                    body["namespace"] = ExpressionConverter.ConvertO(bodyNamespace);
+                    body["namespace"] = ExpressionConverter.ConvertO(__workflow_bodyNamespace);
                     bodypropCount++;
                 }
 
-                if (bodytopK != null)
+                if (__workflow_bodytopK != null)
                 {
-                    body["topK"] = ExpressionConverter.ConvertO(bodytopK);
+                    body["topK"] = ExpressionConverter.ConvertO(__workflow_bodytopK);
                     bodypropCount++;
                 }
 
-                if (bodyvector != null)
+                if (__workflow_bodyvector != null)
                 {
-                    body["vector"] = ExpressionConverter.ConvertO(bodyvector);
+                    body["vector"] = ExpressionConverter.ConvertO(__workflow_bodyvector);
                     bodypropCount++;
                 }
 
-                if (bodyid != null)
+                if (__workflow_bodyid != null)
                 {
-                    body["id"] = ExpressionConverter.ConvertO(bodyid);
+                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
                     bodypropCount++;
                 }
 
@@ -110,18 +111,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        [WorkflowExpressionFactory(nameof(__BuildVectorDelete))]
-        public IBodyWorkflowAction<string> VectorDelete([WorkflowExpression] Func<bool> bodydeleteAll = null, [WorkflowExpression] Func<string[]> bodyids = null, [WorkflowExpression] Func<string> bodyNamespace = null)
+        public IBodyWorkflowAction<string> VectorDelete(Expression<Func<bool>> bodydeleteAll = null, Expression<Func<string[]>> bodyids = null, Expression<Func<string>> bodyNamespace = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildVectorDelete(WorkflowExpression<bool> bodydeleteAll = null, WorkflowExpression<string[]> bodyids = null, WorkflowExpression<string> bodyNamespace = null)
-        {
-            WorkflowExpression.Validate(bodydeleteAll, nameof(bodydeleteAll), required: false);
-            WorkflowExpression.Validate(bodyids, nameof(bodyids), required: false);
-            WorkflowExpression.Validate(bodyNamespace, nameof(bodyNamespace), required: false);
+            var __workflow_bodydeleteAll = bodydeleteAll == null ? null : WorkflowExpression.Compile(bodydeleteAll);
+            WorkflowExpression.Validate(__workflow_bodydeleteAll, nameof(bodydeleteAll), required: false);
+            var __workflow_bodyids = bodyids == null ? null : WorkflowExpression.Compile(bodyids);
+            WorkflowExpression.Validate(__workflow_bodyids, nameof(bodyids), required: false);
+            var __workflow_bodyNamespace = bodyNamespace == null ? null : WorkflowExpression.Compile(bodyNamespace);
+            WorkflowExpression.Validate(__workflow_bodyNamespace, nameof(bodyNamespace), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/vectors/delete";
@@ -129,21 +126,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodydeleteAll != null)
+                if (__workflow_bodydeleteAll != null)
                 {
-                    body["deleteAll"] = ExpressionConverter.ConvertO(bodydeleteAll);
+                    body["deleteAll"] = ExpressionConverter.ConvertO(__workflow_bodydeleteAll);
                     bodypropCount++;
                 }
 
-                if (bodyids != null)
+                if (__workflow_bodyids != null)
                 {
-                    body["ids"] = ExpressionConverter.ConvertO(bodyids);
+                    body["ids"] = ExpressionConverter.ConvertO(__workflow_bodyids);
                     bodypropCount++;
                 }
 
-                if (bodyNamespace != null)
+                if (__workflow_bodyNamespace != null)
                 {
-                    body["namespace"] = ExpressionConverter.ConvertO(bodyNamespace);
+                    body["namespace"] = ExpressionConverter.ConvertO(__workflow_bodyNamespace);
                     bodypropCount++;
                 }
 
@@ -157,44 +154,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        [WorkflowExpressionFactory(nameof(__BuildVectorsGet))]
-        public IBodyWorkflowAction<VectorsGetResponse> VectorsGet([WorkflowExpression] Func<string> ids, [WorkflowExpression] Func<string> @namespace = null)
+        public IBodyWorkflowAction<VectorsGetResponse> VectorsGet(Expression<Func<string>> ids, Expression<Func<string>> @namespace = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<VectorsGetResponse> __BuildVectorsGet(WorkflowExpression<string> ids, WorkflowExpression<string> @namespace = null)
-        {
-            WorkflowExpression.Validate(ids, nameof(ids), required: true);
-            WorkflowExpression.Validate(@namespace, nameof(@namespace), required: false);
+            var __workflow_ids = ids == null ? null : WorkflowExpression.Compile(ids);
+            WorkflowExpression.Validate(__workflow_ids, nameof(ids), required: true);
+            var __workflow_namespace = @namespace == null ? null : WorkflowExpression.Compile(@namespace);
+            WorkflowExpression.Validate(__workflow_namespace, nameof(@namespace), required: false);
             return new DeferredBodyAction<VectorsGetResponse>(() =>
             {
                 var apiCallPath = "/fetch";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["ids"] = ExpressionConverter.Convert(ids);
-                if (@namespace != null)
-                    callPayload.Queries["namespace"] = ExpressionConverter.Convert(@namespace);
+                callPayload.Queries["ids"] = ExpressionConverter.Convert(__workflow_ids);
+                if (__workflow_namespace != null)
+                    callPayload.Queries["namespace"] = ExpressionConverter.Convert(__workflow_namespace);
                 return new ApiConnectionAction<VectorsGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        [WorkflowExpressionFactory(nameof(__BuildVectorUpdate))]
-        public IBodyWorkflowAction<string> VectorUpdate([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<double[]> bodyvalues = null, [WorkflowExpression] Func<int[]> bodysparseValuesindices = null, [WorkflowExpression] Func<double[]> bodysparseValuesvalues = null, [WorkflowExpression] Func<string> bodyNamespace = null)
+        public IBodyWorkflowAction<string> VectorUpdate(Expression<Func<string>> bodyid, Expression<Func<double[]>> bodyvalues = null, Expression<Func<int[]>> bodysparseValuesindices = null, Expression<Func<double[]>> bodysparseValuesvalues = null, Expression<Func<string>> bodyNamespace = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildVectorUpdate(WorkflowExpression<string> bodyid, WorkflowExpression<double[]> bodyvalues = null, WorkflowExpression<int[]> bodysparseValuesindices = null, WorkflowExpression<double[]> bodysparseValuesvalues = null, WorkflowExpression<string> bodyNamespace = null)
-        {
-            WorkflowExpression.Validate(bodyid, nameof(bodyid), required: true);
-            WorkflowExpression.Validate(bodyvalues, nameof(bodyvalues), required: false);
-            WorkflowExpression.Validate(bodysparseValuesindices, nameof(bodysparseValuesindices), required: false);
-            WorkflowExpression.Validate(bodysparseValuesvalues, nameof(bodysparseValuesvalues), required: false);
-            WorkflowExpression.Validate(bodyNamespace, nameof(bodyNamespace), required: false);
+            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
+            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: true);
+            var __workflow_bodyvalues = bodyvalues == null ? null : WorkflowExpression.Compile(bodyvalues);
+            WorkflowExpression.Validate(__workflow_bodyvalues, nameof(bodyvalues), required: false);
+            var __workflow_bodysparseValuesindices = bodysparseValuesindices == null ? null : WorkflowExpression.Compile(bodysparseValuesindices);
+            WorkflowExpression.Validate(__workflow_bodysparseValuesindices, nameof(bodysparseValuesindices), required: false);
+            var __workflow_bodysparseValuesvalues = bodysparseValuesvalues == null ? null : WorkflowExpression.Compile(bodysparseValuesvalues);
+            WorkflowExpression.Validate(__workflow_bodysparseValuesvalues, nameof(bodysparseValuesvalues), required: false);
+            var __workflow_bodyNamespace = bodyNamespace == null ? null : WorkflowExpression.Compile(bodyNamespace);
+            WorkflowExpression.Validate(__workflow_bodyNamespace, nameof(bodyNamespace), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/vectors/update";
@@ -203,24 +193,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
-                if (bodyvalues != null)
+                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
+                if (__workflow_bodyvalues != null)
                 {
-                    body["values"] = ExpressionConverter.ConvertO(bodyvalues);
+                    body["values"] = ExpressionConverter.ConvertO(__workflow_bodyvalues);
                     bodypropCount++;
                 }
 
                 var sparseValuesObject = new JObject();
                 var sparseValuesObjectpropCount = 0;
-                if (bodysparseValuesindices != null)
+                if (__workflow_bodysparseValuesindices != null)
                 {
-                    sparseValuesObject["indices"] = ExpressionConverter.ConvertO(bodysparseValuesindices);
+                    sparseValuesObject["indices"] = ExpressionConverter.ConvertO(__workflow_bodysparseValuesindices);
                     sparseValuesObjectpropCount++;
                 }
 
-                if (bodysparseValuesvalues != null)
+                if (__workflow_bodysparseValuesvalues != null)
                 {
-                    sparseValuesObject["values"] = ExpressionConverter.ConvertO(bodysparseValuesvalues);
+                    sparseValuesObject["values"] = ExpressionConverter.ConvertO(__workflow_bodysparseValuesvalues);
                     sparseValuesObjectpropCount++;
                 }
 
@@ -230,9 +220,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
                     bodypropCount++;
                 }
 
-                if (bodyNamespace != null)
+                if (__workflow_bodyNamespace != null)
                 {
-                    body["namespace"] = ExpressionConverter.ConvertO(bodyNamespace);
+                    body["namespace"] = ExpressionConverter.ConvertO(__workflow_bodyNamespace);
                     bodypropCount++;
                 }
 
@@ -246,17 +236,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        [WorkflowExpressionFactory(nameof(__BuildVectorUpsert))]
-        public IBodyWorkflowAction<VectorUpsertPostResponse> VectorUpsert([WorkflowExpression] Func<bodyvectorsInputItem[]> bodyvectors = null, [WorkflowExpression] Func<string> bodyNamespace = null)
+        public IBodyWorkflowAction<VectorUpsertPostResponse> VectorUpsert(Expression<Func<bodyvectorsInputItem[]>> bodyvectors = null, Expression<Func<string>> bodyNamespace = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<VectorUpsertPostResponse> __BuildVectorUpsert(WorkflowExpression<bodyvectorsInputItem[]> bodyvectors = null, WorkflowExpression<string> bodyNamespace = null)
-        {
-            WorkflowExpression.Validate(bodyvectors, nameof(bodyvectors), required: false);
-            WorkflowExpression.Validate(bodyNamespace, nameof(bodyNamespace), required: false);
+            var __workflow_bodyvectors = bodyvectors == null ? null : WorkflowExpression.Compile(bodyvectors);
+            WorkflowExpression.Validate(__workflow_bodyvectors, nameof(bodyvectors), required: false);
+            var __workflow_bodyNamespace = bodyNamespace == null ? null : WorkflowExpression.Compile(bodyNamespace);
+            WorkflowExpression.Validate(__workflow_bodyNamespace, nameof(bodyNamespace), required: false);
             return new DeferredBodyAction<VectorUpsertPostResponse>(() =>
             {
                 var apiCallPath = "/vectors/upsert";
@@ -264,15 +249,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyvectors != null)
+                if (__workflow_bodyvectors != null)
                 {
-                    body["vectors"] = ExpressionConverter.ConvertO(bodyvectors);
+                    body["vectors"] = ExpressionConverter.ConvertO(__workflow_bodyvectors);
                     bodypropCount++;
                 }
 
-                if (bodyNamespace != null)
+                if (__workflow_bodyNamespace != null)
                 {
-                    body["namespace"] = ExpressionConverter.ConvertO(bodyNamespace);
+                    body["namespace"] = ExpressionConverter.ConvertO(__workflow_bodyNamespace);
                     bodypropCount++;
                 }
 
@@ -295,17 +280,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        [WorkflowExpressionFactory(nameof(__BuildCollectionCreate))]
-        public IBodyWorkflowAction<string> CollectionCreate([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodysource)
+        public IBodyWorkflowAction<string> CollectionCreate(Expression<Func<string>> bodyname, Expression<Func<string>> bodysource)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildCollectionCreate(WorkflowExpression<string> bodyname, WorkflowExpression<string> bodysource)
-        {
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
-            WorkflowExpression.Validate(bodysource, nameof(bodysource), required: true);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
+            var __workflow_bodysource = bodysource == null ? null : WorkflowExpression.Compile(bodysource);
+            WorkflowExpression.Validate(__workflow_bodysource, nameof(bodysource), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/collections";
@@ -314,9 +294,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
                 bodypropCount++;
-                body["source"] = ExpressionConverter.ConvertO(bodysource);
+                body["source"] = ExpressionConverter.ConvertO(__workflow_bodysource);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -327,19 +307,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        [WorkflowExpressionFactory(nameof(__BuildCollectionGet))]
-        public IBodyWorkflowAction<CollectionGetResponse> CollectionGet([WorkflowExpression] Func<string> collectionName)
+        public IBodyWorkflowAction<CollectionGetResponse> CollectionGet(Expression<Func<string>> collectionName)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CollectionGetResponse> __BuildCollectionGet(WorkflowExpression<string> collectionName)
-        {
-            WorkflowExpression.Validate(collectionName, nameof(collectionName), required: true);
+            var __workflow_collectionName = collectionName == null ? null : WorkflowExpression.Compile(collectionName);
+            WorkflowExpression.Validate(__workflow_collectionName, nameof(collectionName), required: true);
             return new DeferredBodyAction<CollectionGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/collections/{0}", ExpressionConverter.ConvertWithUrlEncoding(collectionName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/collections/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_collectionName, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<CollectionGetResponse>(callPayload);
@@ -347,19 +321,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        [WorkflowExpressionFactory(nameof(__BuildCollectionDelete))]
-        public IBodyWorkflowAction<string> CollectionDelete([WorkflowExpression] Func<string> collectionName)
+        public IBodyWorkflowAction<string> CollectionDelete(Expression<Func<string>> collectionName)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildCollectionDelete(WorkflowExpression<string> collectionName)
-        {
-            WorkflowExpression.Validate(collectionName, nameof(collectionName), required: true);
+            var __workflow_collectionName = collectionName == null ? null : WorkflowExpression.Compile(collectionName);
+            WorkflowExpression.Validate(__workflow_collectionName, nameof(collectionName), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/collections/{0}", ExpressionConverter.ConvertWithUrlEncoding(collectionName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/collections/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_collectionName, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -376,22 +344,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        [WorkflowExpressionFactory(nameof(__BuildIndex))]
-        public IBodyWorkflowAction<string> Index([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<int> bodydimension, [WorkflowExpression] Func<string> bodymetric = null, [WorkflowExpression] Func<int> bodypods = null, [WorkflowExpression] Func<int> bodyreplicas = null, [WorkflowExpression] Func<string> bodypodType = null, [WorkflowExpression] Func<string> bodysourceCollection = null)
+        public IBodyWorkflowAction<string> Index(Expression<Func<string>> bodyname, Expression<Func<int>> bodydimension, Expression<Func<string>> bodymetric = null, Expression<Func<int>> bodypods = null, Expression<Func<int>> bodyreplicas = null, Expression<Func<string>> bodypodType = null, Expression<Func<string>> bodysourceCollection = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildIndex(WorkflowExpression<string> bodyname, WorkflowExpression<int> bodydimension, WorkflowExpression<string> bodymetric = null, WorkflowExpression<int> bodypods = null, WorkflowExpression<int> bodyreplicas = null, WorkflowExpression<string> bodypodType = null, WorkflowExpression<string> bodysourceCollection = null)
-        {
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
-            WorkflowExpression.Validate(bodydimension, nameof(bodydimension), required: true);
-            WorkflowExpression.Validate(bodymetric, nameof(bodymetric), required: false);
-            WorkflowExpression.Validate(bodypods, nameof(bodypods), required: false);
-            WorkflowExpression.Validate(bodyreplicas, nameof(bodyreplicas), required: false);
-            WorkflowExpression.Validate(bodypodType, nameof(bodypodType), required: false);
-            WorkflowExpression.Validate(bodysourceCollection, nameof(bodysourceCollection), required: false);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
+            var __workflow_bodydimension = bodydimension == null ? null : WorkflowExpression.Compile(bodydimension);
+            WorkflowExpression.Validate(__workflow_bodydimension, nameof(bodydimension), required: true);
+            var __workflow_bodymetric = bodymetric == null ? null : WorkflowExpression.Compile(bodymetric);
+            WorkflowExpression.Validate(__workflow_bodymetric, nameof(bodymetric), required: false);
+            var __workflow_bodypods = bodypods == null ? null : WorkflowExpression.Compile(bodypods);
+            WorkflowExpression.Validate(__workflow_bodypods, nameof(bodypods), required: false);
+            var __workflow_bodyreplicas = bodyreplicas == null ? null : WorkflowExpression.Compile(bodyreplicas);
+            WorkflowExpression.Validate(__workflow_bodyreplicas, nameof(bodyreplicas), required: false);
+            var __workflow_bodypodType = bodypodType == null ? null : WorkflowExpression.Compile(bodypodType);
+            WorkflowExpression.Validate(__workflow_bodypodType, nameof(bodypodType), required: false);
+            var __workflow_bodysourceCollection = bodysourceCollection == null ? null : WorkflowExpression.Compile(bodysourceCollection);
+            WorkflowExpression.Validate(__workflow_bodysourceCollection, nameof(bodysourceCollection), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/databases";
@@ -400,36 +368,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
                 bodypropCount++;
-                body["dimension"] = ExpressionConverter.ConvertO(bodydimension);
-                if (bodymetric != null)
+                body["dimension"] = ExpressionConverter.ConvertO(__workflow_bodydimension);
+                if (__workflow_bodymetric != null)
                 {
-                    body["metric"] = ExpressionConverter.ConvertO(bodymetric);
+                    body["metric"] = ExpressionConverter.ConvertO(__workflow_bodymetric);
                     bodypropCount++;
                 }
 
-                if (bodypods != null)
+                if (__workflow_bodypods != null)
                 {
-                    body["pods"] = ExpressionConverter.ConvertO(bodypods);
+                    body["pods"] = ExpressionConverter.ConvertO(__workflow_bodypods);
                     bodypropCount++;
                 }
 
-                if (bodyreplicas != null)
+                if (__workflow_bodyreplicas != null)
                 {
-                    body["replicas"] = ExpressionConverter.ConvertO(bodyreplicas);
+                    body["replicas"] = ExpressionConverter.ConvertO(__workflow_bodyreplicas);
                     bodypropCount++;
                 }
 
-                if (bodypodType != null)
+                if (__workflow_bodypodType != null)
                 {
-                    body["pod_type"] = ExpressionConverter.ConvertO(bodypodType);
+                    body["pod_type"] = ExpressionConverter.ConvertO(__workflow_bodypodType);
                     bodypropCount++;
                 }
 
-                if (bodysourceCollection != null)
+                if (__workflow_bodysourceCollection != null)
                 {
-                    body["source_collection"] = ExpressionConverter.ConvertO(bodysourceCollection);
+                    body["source_collection"] = ExpressionConverter.ConvertO(__workflow_bodysourceCollection);
                     bodypropCount++;
                 }
 
@@ -443,19 +411,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        [WorkflowExpressionFactory(nameof(__BuildIndexGet))]
-        public IBodyWorkflowAction<IndexGetResponse> IndexGet([WorkflowExpression] Func<string> indexName)
+        public IBodyWorkflowAction<IndexGetResponse> IndexGet(Expression<Func<string>> indexName)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<IndexGetResponse> __BuildIndexGet(WorkflowExpression<string> indexName)
-        {
-            WorkflowExpression.Validate(indexName, nameof(indexName), required: true);
+            var __workflow_indexName = indexName == null ? null : WorkflowExpression.Compile(indexName);
+            WorkflowExpression.Validate(__workflow_indexName, nameof(indexName), required: true);
             return new DeferredBodyAction<IndexGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/databases/{0}", ExpressionConverter.ConvertWithUrlEncoding(indexName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/databases/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_indexName, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<IndexGetResponse>(callPayload);
@@ -463,19 +425,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        [WorkflowExpressionFactory(nameof(__BuildIndexDelete))]
-        public IBodyWorkflowAction<string> IndexDelete([WorkflowExpression] Func<string> indexName)
+        public IBodyWorkflowAction<string> IndexDelete(Expression<Func<string>> indexName)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildIndexDelete(WorkflowExpression<string> indexName)
-        {
-            WorkflowExpression.Validate(indexName, nameof(indexName), required: true);
+            var __workflow_indexName = indexName == null ? null : WorkflowExpression.Compile(indexName);
+            WorkflowExpression.Validate(__workflow_indexName, nameof(indexName), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/databases/{0}", ExpressionConverter.ConvertWithUrlEncoding(indexName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/databases/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_indexName, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -483,34 +439,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        [WorkflowExpressionFactory(nameof(__BuildIndexPatch))]
-        public IBodyWorkflowAction<string> IndexPatch([WorkflowExpression] Func<string> indexName, [WorkflowExpression] Func<int> bodyreplicas = null, [WorkflowExpression] Func<string> bodypodType = null)
+        public IBodyWorkflowAction<string> IndexPatch(Expression<Func<string>> indexName, Expression<Func<int>> bodyreplicas = null, Expression<Func<string>> bodypodType = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildIndexPatch(WorkflowExpression<string> indexName, WorkflowExpression<int> bodyreplicas = null, WorkflowExpression<string> bodypodType = null)
-        {
-            WorkflowExpression.Validate(indexName, nameof(indexName), required: true);
-            WorkflowExpression.Validate(bodyreplicas, nameof(bodyreplicas), required: false);
-            WorkflowExpression.Validate(bodypodType, nameof(bodypodType), required: false);
+            var __workflow_indexName = indexName == null ? null : WorkflowExpression.Compile(indexName);
+            WorkflowExpression.Validate(__workflow_indexName, nameof(indexName), required: true);
+            var __workflow_bodyreplicas = bodyreplicas == null ? null : WorkflowExpression.Compile(bodyreplicas);
+            WorkflowExpression.Validate(__workflow_bodyreplicas, nameof(bodyreplicas), required: false);
+            var __workflow_bodypodType = bodypodType == null ? null : WorkflowExpression.Compile(bodypodType);
+            WorkflowExpression.Validate(__workflow_bodypodType, nameof(bodypodType), required: false);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/databases/{0}", ExpressionConverter.ConvertWithUrlEncoding(indexName, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/databases/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_indexName, 1));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyreplicas != null)
+                if (__workflow_bodyreplicas != null)
                 {
-                    body["replicas"] = ExpressionConverter.ConvertO(bodyreplicas);
+                    body["replicas"] = ExpressionConverter.ConvertO(__workflow_bodyreplicas);
                     bodypropCount++;
                 }
 
-                if (bodypodType != null)
+                if (__workflow_bodypodType != null)
                 {
-                    body["pod_type"] = ExpressionConverter.ConvertO(bodypodType);
+                    body["pod_type"] = ExpressionConverter.ConvertO(__workflow_bodypodType);
                     bodypropCount++;
                 }
 

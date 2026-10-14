@@ -1,7 +1,6 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
 {
     using System;
@@ -9,37 +8,34 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class AzurequeuesActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azurequeues")]
-        [WorkflowExpressionFactory(nameof(__BuildPutMessage))]
-        public IOutputWorkflowAction<PutMessageOutput> PutMessage([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> message, [WorkflowExpression] Func<string> timeToLive = null, [WorkflowExpression] Func<string> visibilityTimeout = null)
+        public IOutputWorkflowAction<PutMessageOutput> PutMessage(Expression<Func<string>> queueName, Expression<Func<string>> message, Expression<Func<string>> timeToLive = null, Expression<Func<string>> visibilityTimeout = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IOutputWorkflowAction<PutMessageOutput> __BuildPutMessage(WorkflowExpression<string> queueName, WorkflowExpression<string> message, WorkflowExpression<string> timeToLive = null, WorkflowExpression<string> visibilityTimeout = null)
-        {
-            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
-            WorkflowExpression.Validate(message, nameof(message), required: true);
-            WorkflowExpression.Validate(timeToLive, nameof(timeToLive), required: false);
-            WorkflowExpression.Validate(visibilityTimeout, nameof(visibilityTimeout), required: false);
+            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
+            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
+            var __workflow_message = message == null ? null : WorkflowExpression.Compile(message);
+            WorkflowExpression.Validate(__workflow_message, nameof(message), required: true);
+            var __workflow_timeToLive = timeToLive == null ? null : WorkflowExpression.Compile(timeToLive);
+            WorkflowExpression.Validate(__workflow_timeToLive, nameof(timeToLive), required: false);
+            var __workflow_visibilityTimeout = visibilityTimeout == null ? null : WorkflowExpression.Compile(visibilityTimeout);
+            WorkflowExpression.Validate(__workflow_visibilityTimeout, nameof(visibilityTimeout), required: false);
             return new DeferredOutputAction<PutMessageOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-                serviceProviderParameters["message"] = ExpressionConverter.ConvertO(message);
-                if (timeToLive != null)
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
+                serviceProviderParameters["message"] = ExpressionConverter.ConvertO(__workflow_message);
+                if (__workflow_timeToLive != null)
                 {
-                    serviceProviderParameters["timeToLive"] = ExpressionConverter.ConvertO(timeToLive);
+                    serviceProviderParameters["timeToLive"] = ExpressionConverter.ConvertO(__workflow_timeToLive);
                 }
 
-                if (visibilityTimeout != null)
+                if (__workflow_visibilityTimeout != null)
                 {
-                    serviceProviderParameters["visibilityTimeout"] = ExpressionConverter.ConvertO(visibilityTimeout);
+                    serviceProviderParameters["visibilityTimeout"] = ExpressionConverter.ConvertO(__workflow_visibilityTimeout);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -52,34 +48,30 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azurequeues")]
-        [WorkflowExpressionFactory(nameof(__BuildGetMessages))]
-        public IBodyWorkflowAction<GetMessagesOutputItem[]> GetMessages([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<int> messageCount = null, [WorkflowExpression] Func<string> visibilityTimeout = null)
+        public IBodyWorkflowAction<GetMessagesOutputItem[]> GetMessages(Expression<Func<string>> queueName, Expression<Func<int>> messageCount = null, Expression<Func<string>> visibilityTimeout = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetMessagesOutputItem[]> __BuildGetMessages(WorkflowExpression<string> queueName, WorkflowExpression<int> messageCount = null, WorkflowExpression<string> visibilityTimeout = null)
-        {
-            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
-            WorkflowExpression.Validate(messageCount, nameof(messageCount), required: false);
-            WorkflowExpression.Validate(visibilityTimeout, nameof(visibilityTimeout), required: false);
+            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
+            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
+            var __workflow_messageCount = messageCount == null ? null : WorkflowExpression.Compile(messageCount);
+            WorkflowExpression.Validate(__workflow_messageCount, nameof(messageCount), required: false);
+            var __workflow_visibilityTimeout = visibilityTimeout == null ? null : WorkflowExpression.Compile(visibilityTimeout);
+            WorkflowExpression.Validate(__workflow_visibilityTimeout, nameof(visibilityTimeout), required: false);
             return new DeferredBodyAction<GetMessagesOutputItem[]>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-                if (messageCount != null)
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
+                if (__workflow_messageCount != null)
                 {
-                    serviceProviderParameters["messageCount"] = ExpressionConverter.ConvertO(messageCount);
+                    serviceProviderParameters["messageCount"] = ExpressionConverter.ConvertO(__workflow_messageCount);
                 }
                 else
                 {
                     serviceProviderParameters["messageCount"] = 1;
                 }
 
-                if (visibilityTimeout != null)
+                if (__workflow_visibilityTimeout != null)
                 {
-                    serviceProviderParameters["visibilityTimeout"] = ExpressionConverter.ConvertO(visibilityTimeout);
+                    serviceProviderParameters["visibilityTimeout"] = ExpressionConverter.ConvertO(__workflow_visibilityTimeout);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -92,24 +84,20 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azurequeues")]
-        [WorkflowExpressionFactory(nameof(__BuildDeleteMessage))]
-        public IOutputWorkflowAction<JToken> DeleteMessage([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> messageId, [WorkflowExpression] Func<string> popReceipt)
+        public IOutputWorkflowAction<JToken> DeleteMessage(Expression<Func<string>> queueName, Expression<Func<string>> messageId, Expression<Func<string>> popReceipt)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IOutputWorkflowAction<JToken> __BuildDeleteMessage(WorkflowExpression<string> queueName, WorkflowExpression<string> messageId, WorkflowExpression<string> popReceipt)
-        {
-            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
-            WorkflowExpression.Validate(messageId, nameof(messageId), required: true);
-            WorkflowExpression.Validate(popReceipt, nameof(popReceipt), required: true);
+            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
+            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
+            var __workflow_messageId = messageId == null ? null : WorkflowExpression.Compile(messageId);
+            WorkflowExpression.Validate(__workflow_messageId, nameof(messageId), required: true);
+            var __workflow_popReceipt = popReceipt == null ? null : WorkflowExpression.Compile(popReceipt);
+            WorkflowExpression.Validate(__workflow_popReceipt, nameof(popReceipt), required: true);
             return new DeferredOutputAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-                serviceProviderParameters["messageId"] = ExpressionConverter.ConvertO(messageId);
-                serviceProviderParameters["popReceipt"] = ExpressionConverter.ConvertO(popReceipt);
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
+                serviceProviderParameters["messageId"] = ExpressionConverter.ConvertO(__workflow_messageId);
+                serviceProviderParameters["popReceipt"] = ExpressionConverter.ConvertO(__workflow_popReceipt);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azurequeues", operationId: "deleteMessage", connectionName: connectionId),
@@ -120,20 +108,14 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azurequeues")]
-        [WorkflowExpressionFactory(nameof(__BuildPutQueue))]
-        public IOutputWorkflowAction<JToken> PutQueue([WorkflowExpression] Func<string> queueName)
+        public IOutputWorkflowAction<JToken> PutQueue(Expression<Func<string>> queueName)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IOutputWorkflowAction<JToken> __BuildPutQueue(WorkflowExpression<string> queueName)
-        {
-            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
+            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
+            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
             return new DeferredOutputAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azurequeues", operationId: "putQueue", connectionName: connectionId),
@@ -144,34 +126,30 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azurequeues")]
-        [WorkflowExpressionFactory(nameof(__BuildListQueues))]
-        public IBodyWorkflowAction<ListQueuesOutput> ListQueues([WorkflowExpression] Func<string> prefix = null, [WorkflowExpression] Func<int> maxCount = null, [WorkflowExpression] Func<string> continuationToken = null)
+        public IBodyWorkflowAction<ListQueuesOutput> ListQueues(Expression<Func<string>> prefix = null, Expression<Func<int>> maxCount = null, Expression<Func<string>> continuationToken = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListQueuesOutput> __BuildListQueues(WorkflowExpression<string> prefix = null, WorkflowExpression<int> maxCount = null, WorkflowExpression<string> continuationToken = null)
-        {
-            WorkflowExpression.Validate(prefix, nameof(prefix), required: false);
-            WorkflowExpression.Validate(maxCount, nameof(maxCount), required: false);
-            WorkflowExpression.Validate(continuationToken, nameof(continuationToken), required: false);
+            var __workflow_prefix = prefix == null ? null : WorkflowExpression.Compile(prefix);
+            WorkflowExpression.Validate(__workflow_prefix, nameof(prefix), required: false);
+            var __workflow_maxCount = maxCount == null ? null : WorkflowExpression.Compile(maxCount);
+            WorkflowExpression.Validate(__workflow_maxCount, nameof(maxCount), required: false);
+            var __workflow_continuationToken = continuationToken == null ? null : WorkflowExpression.Compile(continuationToken);
+            WorkflowExpression.Validate(__workflow_continuationToken, nameof(continuationToken), required: false);
             return new DeferredBodyAction<ListQueuesOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                if (prefix != null)
+                if (__workflow_prefix != null)
                 {
-                    serviceProviderParameters["prefix"] = ExpressionConverter.ConvertO(prefix);
+                    serviceProviderParameters["prefix"] = ExpressionConverter.ConvertO(__workflow_prefix);
                 }
 
-                if (maxCount != null)
+                if (__workflow_maxCount != null)
                 {
-                    serviceProviderParameters["maxCount"] = ExpressionConverter.ConvertO(maxCount);
+                    serviceProviderParameters["maxCount"] = ExpressionConverter.ConvertO(__workflow_maxCount);
                 }
 
-                if (continuationToken != null)
+                if (__workflow_continuationToken != null)
                 {
-                    serviceProviderParameters["continuationToken"] = ExpressionConverter.ConvertO(continuationToken);
+                    serviceProviderParameters["continuationToken"] = ExpressionConverter.ConvertO(__workflow_continuationToken);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -186,21 +164,14 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
 
     public class AzurequeuesTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildReceiveQueueMessages))]
-        public IBodyWorkflowTrigger<ReceiveQueueMessagesOutput> ReceiveQueueMessages([WorkflowExpression] Func<object> queueName)
+        public IBodyWorkflowTrigger<ReceiveQueueMessagesOutput> ReceiveQueueMessages(Expression<Func<object>> queueName)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ReceiveQueueMessagesOutput> __BuildReceiveQueueMessages(WorkflowExpression<object> queueName)
-        {
-            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
+            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
+            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
             return new DeferredBodyTrigger<ReceiveQueueMessagesOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azurequeues", operationId: "receiveQueueMessages", connectionName: connectionId),
@@ -210,22 +181,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildSpecifiedNumberOfMessagesAvailable))]
-        public IBodyWorkflowTrigger<int> SpecifiedNumberOfMessagesAvailable([WorkflowExpression] Func<object> queueName, [WorkflowExpression] Func<int> threshold, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<int> SpecifiedNumberOfMessagesAvailable(Expression<Func<object>> queueName, Expression<Func<int>> threshold, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<int> __BuildSpecifiedNumberOfMessagesAvailable(WorkflowExpression<object> queueName, WorkflowExpression<int> threshold, FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
-            WorkflowExpression.Validate(threshold, nameof(threshold), required: true);
+            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
+            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
+            var __workflow_threshold = threshold == null ? null : WorkflowExpression.Compile(threshold);
+            WorkflowExpression.Validate(__workflow_threshold, nameof(threshold), required: true);
             return new DeferredBodyTrigger<int>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-                serviceProviderParameters["threshold"] = ExpressionConverter.ConvertO(threshold);
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
+                serviceProviderParameters["threshold"] = ExpressionConverter.ConvertO(__workflow_threshold);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azurequeues", operationId: "specifiedNumberOfMessagesAvailable", connectionName: connectionId),

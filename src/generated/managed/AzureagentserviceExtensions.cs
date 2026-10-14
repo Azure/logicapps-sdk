@@ -1,60 +1,48 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class AzureagentserviceActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
-        [WorkflowExpressionFactory(nameof(__BuildListAgents))]
-        public IBodyWorkflowAction<ListAgentsResponse> ListAgents([WorkflowExpression] Func<apiVersionInput> apiVersion)
+        public IBodyWorkflowAction<ListAgentsResponse> ListAgents(Expression<Func<apiVersionInput>> apiVersion)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListAgentsResponse> __BuildListAgents(WorkflowExpression<apiVersionInput> apiVersion)
-        {
-            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
+            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<ListAgentsResponse>(() =>
             {
                 var apiCallPath = "/assistants";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction<ListAgentsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateThread))]
-        public IBodyWorkflowAction<CreateThreadResponse> CreateThread([WorkflowExpression] Func<apiVersionInput> apiVersion, [WorkflowExpression] Func<Messages[]> requestBodymessages = null)
+        public IBodyWorkflowAction<CreateThreadResponse> CreateThread(Expression<Func<apiVersionInput>> apiVersion, Expression<Func<Messages[]>> requestBodymessages = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateThreadResponse> __BuildCreateThread(WorkflowExpression<apiVersionInput> apiVersion, WorkflowExpression<Messages[]> requestBodymessages = null)
-        {
-            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            WorkflowExpression.Validate(requestBodymessages, nameof(requestBodymessages), required: false);
+            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
+            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
+            var __workflow_requestBodymessages = requestBodymessages == null ? null : WorkflowExpression.Compile(requestBodymessages);
+            WorkflowExpression.Validate(__workflow_requestBodymessages, nameof(requestBodymessages), required: false);
             return new DeferredBodyAction<CreateThreadResponse>(() =>
             {
                 var apiCallPath = "/threads";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 var requestBody = new JObject();
                 var requestBodypropCount = 0;
-                if (requestBodymessages != null)
+                if (__workflow_requestBodymessages != null)
                 {
-                    requestBody["messages"] = ExpressionConverter.ConvertO(requestBodymessages);
+                    requestBody["messages"] = ExpressionConverter.ConvertO(__workflow_requestBodymessages);
                     requestBodypropCount++;
                 }
 
@@ -84,65 +72,71 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateRun))]
-        public IBodyWorkflowAction<CreateRunResponse> CreateRun([WorkflowExpression] Func<apiVersionInput> apiVersion, [WorkflowExpression] Func<string> threadId, [WorkflowExpression] Func<string> requestBodyassistantId, [WorkflowExpression] Func<string> requestBodymodel = null, [WorkflowExpression] Func<string> requestBodyinstructions = null, [WorkflowExpression] Func<string> requestBodyadditionalInstructions = null, [WorkflowExpression] Func<Messages[]> requestBodyadditionalMessages = null, [WorkflowExpression] Func<Tools[]> requestBodytools = null, [WorkflowExpression] Func<double> requestBodytemperature = null, [WorkflowExpression] Func<double> requestBodytopP = null, [WorkflowExpression] Func<bool> requestBodystream = null, [WorkflowExpression] Func<int> requestBodymaxPromptTokens = null, [WorkflowExpression] Func<int> requestBodymaxCompletionTokens = null)
+        public IBodyWorkflowAction<CreateRunResponse> CreateRun(Expression<Func<apiVersionInput>> apiVersion, Expression<Func<string>> threadId, Expression<Func<string>> requestBodyassistantId, Expression<Func<string>> requestBodymodel = null, Expression<Func<string>> requestBodyinstructions = null, Expression<Func<string>> requestBodyadditionalInstructions = null, Expression<Func<Messages[]>> requestBodyadditionalMessages = null, Expression<Func<Tools[]>> requestBodytools = null, Expression<Func<double>> requestBodytemperature = null, Expression<Func<double>> requestBodytopP = null, Expression<Func<bool>> requestBodystream = null, Expression<Func<int>> requestBodymaxPromptTokens = null, Expression<Func<int>> requestBodymaxCompletionTokens = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateRunResponse> __BuildCreateRun(WorkflowExpression<apiVersionInput> apiVersion, WorkflowExpression<string> threadId, WorkflowExpression<string> requestBodyassistantId, WorkflowExpression<string> requestBodymodel = null, WorkflowExpression<string> requestBodyinstructions = null, WorkflowExpression<string> requestBodyadditionalInstructions = null, WorkflowExpression<Messages[]> requestBodyadditionalMessages = null, WorkflowExpression<Tools[]> requestBodytools = null, WorkflowExpression<double> requestBodytemperature = null, WorkflowExpression<double> requestBodytopP = null, WorkflowExpression<bool> requestBodystream = null, WorkflowExpression<int> requestBodymaxPromptTokens = null, WorkflowExpression<int> requestBodymaxCompletionTokens = null)
-        {
-            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            WorkflowExpression.Validate(threadId, nameof(threadId), required: true);
-            WorkflowExpression.Validate(requestBodyassistantId, nameof(requestBodyassistantId), required: true);
-            WorkflowExpression.Validate(requestBodymodel, nameof(requestBodymodel), required: false);
-            WorkflowExpression.Validate(requestBodyinstructions, nameof(requestBodyinstructions), required: false);
-            WorkflowExpression.Validate(requestBodyadditionalInstructions, nameof(requestBodyadditionalInstructions), required: false);
-            WorkflowExpression.Validate(requestBodyadditionalMessages, nameof(requestBodyadditionalMessages), required: false);
-            WorkflowExpression.Validate(requestBodytools, nameof(requestBodytools), required: false);
-            WorkflowExpression.Validate(requestBodytemperature, nameof(requestBodytemperature), required: false);
-            WorkflowExpression.Validate(requestBodytopP, nameof(requestBodytopP), required: false);
-            WorkflowExpression.Validate(requestBodystream, nameof(requestBodystream), required: false);
-            WorkflowExpression.Validate(requestBodymaxPromptTokens, nameof(requestBodymaxPromptTokens), required: false);
-            WorkflowExpression.Validate(requestBodymaxCompletionTokens, nameof(requestBodymaxCompletionTokens), required: false);
+            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
+            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
+            var __workflow_threadId = threadId == null ? null : WorkflowExpression.Compile(threadId);
+            WorkflowExpression.Validate(__workflow_threadId, nameof(threadId), required: true);
+            var __workflow_requestBodyassistantId = requestBodyassistantId == null ? null : WorkflowExpression.Compile(requestBodyassistantId);
+            WorkflowExpression.Validate(__workflow_requestBodyassistantId, nameof(requestBodyassistantId), required: true);
+            var __workflow_requestBodymodel = requestBodymodel == null ? null : WorkflowExpression.Compile(requestBodymodel);
+            WorkflowExpression.Validate(__workflow_requestBodymodel, nameof(requestBodymodel), required: false);
+            var __workflow_requestBodyinstructions = requestBodyinstructions == null ? null : WorkflowExpression.Compile(requestBodyinstructions);
+            WorkflowExpression.Validate(__workflow_requestBodyinstructions, nameof(requestBodyinstructions), required: false);
+            var __workflow_requestBodyadditionalInstructions = requestBodyadditionalInstructions == null ? null : WorkflowExpression.Compile(requestBodyadditionalInstructions);
+            WorkflowExpression.Validate(__workflow_requestBodyadditionalInstructions, nameof(requestBodyadditionalInstructions), required: false);
+            var __workflow_requestBodyadditionalMessages = requestBodyadditionalMessages == null ? null : WorkflowExpression.Compile(requestBodyadditionalMessages);
+            WorkflowExpression.Validate(__workflow_requestBodyadditionalMessages, nameof(requestBodyadditionalMessages), required: false);
+            var __workflow_requestBodytools = requestBodytools == null ? null : WorkflowExpression.Compile(requestBodytools);
+            WorkflowExpression.Validate(__workflow_requestBodytools, nameof(requestBodytools), required: false);
+            var __workflow_requestBodytemperature = requestBodytemperature == null ? null : WorkflowExpression.Compile(requestBodytemperature);
+            WorkflowExpression.Validate(__workflow_requestBodytemperature, nameof(requestBodytemperature), required: false);
+            var __workflow_requestBodytopP = requestBodytopP == null ? null : WorkflowExpression.Compile(requestBodytopP);
+            WorkflowExpression.Validate(__workflow_requestBodytopP, nameof(requestBodytopP), required: false);
+            var __workflow_requestBodystream = requestBodystream == null ? null : WorkflowExpression.Compile(requestBodystream);
+            WorkflowExpression.Validate(__workflow_requestBodystream, nameof(requestBodystream), required: false);
+            var __workflow_requestBodymaxPromptTokens = requestBodymaxPromptTokens == null ? null : WorkflowExpression.Compile(requestBodymaxPromptTokens);
+            WorkflowExpression.Validate(__workflow_requestBodymaxPromptTokens, nameof(requestBodymaxPromptTokens), required: false);
+            var __workflow_requestBodymaxCompletionTokens = requestBodymaxCompletionTokens == null ? null : WorkflowExpression.Compile(requestBodymaxCompletionTokens);
+            WorkflowExpression.Validate(__workflow_requestBodymaxCompletionTokens, nameof(requestBodymaxCompletionTokens), required: false);
             return new DeferredBodyAction<CreateRunResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/threads/{0}/runs", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/threads/{0}/runs", ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 var requestBody = new JObject();
                 var requestBodypropCount = 0;
                 requestBodypropCount++;
-                requestBody["assistant_id"] = ExpressionConverter.ConvertO(requestBodyassistantId);
-                if (requestBodymodel != null)
+                requestBody["assistant_id"] = ExpressionConverter.ConvertO(__workflow_requestBodyassistantId);
+                if (__workflow_requestBodymodel != null)
                 {
-                    requestBody["model"] = ExpressionConverter.ConvertO(requestBodymodel);
+                    requestBody["model"] = ExpressionConverter.ConvertO(__workflow_requestBodymodel);
                     requestBodypropCount++;
                 }
 
-                if (requestBodyinstructions != null)
+                if (__workflow_requestBodyinstructions != null)
                 {
-                    requestBody["instructions"] = ExpressionConverter.ConvertO(requestBodyinstructions);
+                    requestBody["instructions"] = ExpressionConverter.ConvertO(__workflow_requestBodyinstructions);
                     requestBodypropCount++;
                 }
 
-                if (requestBodyadditionalInstructions != null)
+                if (__workflow_requestBodyadditionalInstructions != null)
                 {
-                    requestBody["additional_instructions"] = ExpressionConverter.ConvertO(requestBodyadditionalInstructions);
+                    requestBody["additional_instructions"] = ExpressionConverter.ConvertO(__workflow_requestBodyadditionalInstructions);
                     requestBodypropCount++;
                 }
 
-                if (requestBodyadditionalMessages != null)
+                if (__workflow_requestBodyadditionalMessages != null)
                 {
-                    requestBody["additional_messages"] = ExpressionConverter.ConvertO(requestBodyadditionalMessages);
+                    requestBody["additional_messages"] = ExpressionConverter.ConvertO(__workflow_requestBodyadditionalMessages);
                     requestBodypropCount++;
                 }
 
-                if (requestBodytools != null)
+                if (__workflow_requestBodytools != null)
                 {
-                    requestBody["tools"] = ExpressionConverter.ConvertO(requestBodytools);
+                    requestBody["tools"] = ExpressionConverter.ConvertO(__workflow_requestBodytools);
                     requestBodypropCount++;
                 }
 
@@ -154,11 +148,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
                     requestBodypropCount++;
                 }
 
-                if (requestBodytemperature != null)
+                if (__workflow_requestBodytemperature != null)
                 {
-                    if (requestBodytemperature != null)
+                    if (__workflow_requestBodytemperature != null)
                     {
-                        requestBody["temperature"] = ExpressionConverter.ConvertO(requestBodytemperature);
+                        requestBody["temperature"] = ExpressionConverter.ConvertO(__workflow_requestBodytemperature);
                         requestBodypropCount++;
                     }
 
@@ -170,11 +164,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
                     requestBodypropCount++;
                 }
 
-                if (requestBodytopP != null)
+                if (__workflow_requestBodytopP != null)
                 {
-                    if (requestBodytopP != null)
+                    if (__workflow_requestBodytopP != null)
                     {
-                        requestBody["top_p"] = ExpressionConverter.ConvertO(requestBodytopP);
+                        requestBody["top_p"] = ExpressionConverter.ConvertO(__workflow_requestBodytopP);
                         requestBodypropCount++;
                     }
 
@@ -186,21 +180,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
                     requestBodypropCount++;
                 }
 
-                if (requestBodystream != null)
+                if (__workflow_requestBodystream != null)
                 {
-                    requestBody["stream"] = ExpressionConverter.ConvertO(requestBodystream);
+                    requestBody["stream"] = ExpressionConverter.ConvertO(__workflow_requestBodystream);
                     requestBodypropCount++;
                 }
 
-                if (requestBodymaxPromptTokens != null)
+                if (__workflow_requestBodymaxPromptTokens != null)
                 {
-                    requestBody["max_prompt_tokens"] = ExpressionConverter.ConvertO(requestBodymaxPromptTokens);
+                    requestBody["max_prompt_tokens"] = ExpressionConverter.ConvertO(__workflow_requestBodymaxPromptTokens);
                     requestBodypropCount++;
                 }
 
-                if (requestBodymaxCompletionTokens != null)
+                if (__workflow_requestBodymaxCompletionTokens != null)
                 {
-                    requestBody["max_completion_tokens"] = ExpressionConverter.ConvertO(requestBodymaxCompletionTokens);
+                    requestBody["max_completion_tokens"] = ExpressionConverter.ConvertO(__workflow_requestBodymaxCompletionTokens);
                     requestBodypropCount++;
                 }
 
@@ -238,87 +232,92 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
-        [WorkflowExpressionFactory(nameof(__BuildGetRun))]
-        public IBodyWorkflowAction<GetRunResponse> GetRun([WorkflowExpression] Func<apiVersionInput> apiVersion, [WorkflowExpression] Func<string> threadId, [WorkflowExpression] Func<string> runId)
+        public IBodyWorkflowAction<GetRunResponse> GetRun(Expression<Func<apiVersionInput>> apiVersion, Expression<Func<string>> threadId, Expression<Func<string>> runId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetRunResponse> __BuildGetRun(WorkflowExpression<apiVersionInput> apiVersion, WorkflowExpression<string> threadId, WorkflowExpression<string> runId)
-        {
-            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            WorkflowExpression.Validate(threadId, nameof(threadId), required: true);
-            WorkflowExpression.Validate(runId, nameof(runId), required: true);
+            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
+            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
+            var __workflow_threadId = threadId == null ? null : WorkflowExpression.Compile(threadId);
+            WorkflowExpression.Validate(__workflow_threadId, nameof(threadId), required: true);
+            var __workflow_runId = runId == null ? null : WorkflowExpression.Compile(runId);
+            WorkflowExpression.Validate(__workflow_runId, nameof(runId), required: true);
             return new DeferredBodyAction<GetRunResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/threads/{0}/runs/{1}", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(runId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/threads/{0}/runs/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_runId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction<GetRunResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
-        [WorkflowExpressionFactory(nameof(__BuildListMessages))]
-        public IBodyWorkflowAction<ListMessageResponse> ListMessages([WorkflowExpression] Func<apiVersionInput> apiVersion, [WorkflowExpression] Func<string> threadId)
+        public IBodyWorkflowAction<ListMessageResponse> ListMessages(Expression<Func<apiVersionInput>> apiVersion, Expression<Func<string>> threadId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListMessageResponse> __BuildListMessages(WorkflowExpression<apiVersionInput> apiVersion, WorkflowExpression<string> threadId)
-        {
-            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            WorkflowExpression.Validate(threadId, nameof(threadId), required: true);
+            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
+            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
+            var __workflow_threadId = threadId == null ? null : WorkflowExpression.Compile(threadId);
+            WorkflowExpression.Validate(__workflow_threadId, nameof(threadId), required: true);
             return new DeferredBodyAction<ListMessageResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/threads/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/threads/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 return new ApiConnectionAction<ListMessageResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
-        [WorkflowExpressionFactory(nameof(__BuildInvokeAgent))]
-        public IBodyWorkflowAction<OpenAIResponse> InvokeAgent([WorkflowExpression] Func<apiVersionInput> apiVersion, [WorkflowExpression] Func<string> bodypromptid, [WorkflowExpression] Func<bodyagenttypeInput> bodyagenttype, [WorkflowExpression] Func<string> bodyagentname, [WorkflowExpression] Func<string> bodyagentversion, [WorkflowExpression] Func<string> bodyuser = null, [WorkflowExpression] Func<int> bodytopLogprobs = null, [WorkflowExpression] Func<string> bodypreviousResponseId = null, [WorkflowExpression] Func<bool> bodybackground = null, [WorkflowExpression] Func<int> bodymaxOutputTokens = null, [WorkflowExpression] Func<int> bodymaxToolCalls = null, [WorkflowExpression] Func<bodytextformattypeInput> bodytextformattype = null, [WorkflowExpression] Func<OpenAITool[]> bodytools = null, [WorkflowExpression] Func<object> bodytoolChoice = null, [WorkflowExpression] Func<string> bodypromptversion = null, [WorkflowExpression] Func<bodytruncationInput> bodytruncation = null, [WorkflowExpression] Func<object> bodyinput = null, [WorkflowExpression] Func<OpenAIIncludable[]> bodyinclude = null, [WorkflowExpression] Func<bool> bodyparallelToolCalls = null, [WorkflowExpression] Func<bool> bodystore = null, [WorkflowExpression] Func<string> bodyinstructions = null)
+        public IBodyWorkflowAction<OpenAIResponse> InvokeAgent(Expression<Func<apiVersionInput>> apiVersion, Expression<Func<string>> bodypromptid, Expression<Func<bodyagenttypeInput>> bodyagenttype, Expression<Func<string>> bodyagentname, Expression<Func<string>> bodyagentversion, Expression<Func<string>> bodyuser = null, Expression<Func<int>> bodytopLogprobs = null, Expression<Func<string>> bodypreviousResponseId = null, Expression<Func<bool>> bodybackground = null, Expression<Func<int>> bodymaxOutputTokens = null, Expression<Func<int>> bodymaxToolCalls = null, Expression<Func<bodytextformattypeInput>> bodytextformattype = null, Expression<Func<OpenAITool[]>> bodytools = null, Expression<Func<object>> bodytoolChoice = null, Expression<Func<string>> bodypromptversion = null, Expression<Func<bodytruncationInput>> bodytruncation = null, Expression<Func<object>> bodyinput = null, Expression<Func<OpenAIIncludable[]>> bodyinclude = null, Expression<Func<bool>> bodyparallelToolCalls = null, Expression<Func<bool>> bodystore = null, Expression<Func<string>> bodyinstructions = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<OpenAIResponse> __BuildInvokeAgent(WorkflowExpression<apiVersionInput> apiVersion, WorkflowExpression<string> bodypromptid, WorkflowExpression<bodyagenttypeInput> bodyagenttype, WorkflowExpression<string> bodyagentname, WorkflowExpression<string> bodyagentversion, WorkflowExpression<string> bodyuser = null, WorkflowExpression<int> bodytopLogprobs = null, WorkflowExpression<string> bodypreviousResponseId = null, WorkflowExpression<bool> bodybackground = null, WorkflowExpression<int> bodymaxOutputTokens = null, WorkflowExpression<int> bodymaxToolCalls = null, WorkflowExpression<bodytextformattypeInput> bodytextformattype = null, WorkflowExpression<OpenAITool[]> bodytools = null, WorkflowExpression<object> bodytoolChoice = null, WorkflowExpression<string> bodypromptversion = null, WorkflowExpression<bodytruncationInput> bodytruncation = null, WorkflowExpression<object> bodyinput = null, WorkflowExpression<OpenAIIncludable[]> bodyinclude = null, WorkflowExpression<bool> bodyparallelToolCalls = null, WorkflowExpression<bool> bodystore = null, WorkflowExpression<string> bodyinstructions = null)
-        {
-            WorkflowExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            WorkflowExpression.Validate(bodypromptid, nameof(bodypromptid), required: true);
-            WorkflowExpression.Validate(bodyagenttype, nameof(bodyagenttype), required: true);
-            WorkflowExpression.Validate(bodyagentname, nameof(bodyagentname), required: true);
-            WorkflowExpression.Validate(bodyagentversion, nameof(bodyagentversion), required: true);
-            WorkflowExpression.Validate(bodyuser, nameof(bodyuser), required: false);
-            WorkflowExpression.Validate(bodytopLogprobs, nameof(bodytopLogprobs), required: false);
-            WorkflowExpression.Validate(bodypreviousResponseId, nameof(bodypreviousResponseId), required: false);
-            WorkflowExpression.Validate(bodybackground, nameof(bodybackground), required: false);
-            WorkflowExpression.Validate(bodymaxOutputTokens, nameof(bodymaxOutputTokens), required: false);
-            WorkflowExpression.Validate(bodymaxToolCalls, nameof(bodymaxToolCalls), required: false);
-            WorkflowExpression.Validate(bodytextformattype, nameof(bodytextformattype), required: false);
-            WorkflowExpression.Validate(bodytools, nameof(bodytools), required: false);
-            WorkflowExpression.Validate(bodytoolChoice, nameof(bodytoolChoice), required: false);
-            WorkflowExpression.Validate(bodypromptversion, nameof(bodypromptversion), required: false);
-            WorkflowExpression.Validate(bodytruncation, nameof(bodytruncation), required: false);
-            WorkflowExpression.Validate(bodyinput, nameof(bodyinput), required: false);
-            WorkflowExpression.Validate(bodyinclude, nameof(bodyinclude), required: false);
-            WorkflowExpression.Validate(bodyparallelToolCalls, nameof(bodyparallelToolCalls), required: false);
-            WorkflowExpression.Validate(bodystore, nameof(bodystore), required: false);
-            WorkflowExpression.Validate(bodyinstructions, nameof(bodyinstructions), required: false);
+            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
+            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
+            var __workflow_bodypromptid = bodypromptid == null ? null : WorkflowExpression.Compile(bodypromptid);
+            WorkflowExpression.Validate(__workflow_bodypromptid, nameof(bodypromptid), required: true);
+            var __workflow_bodyagenttype = bodyagenttype == null ? null : WorkflowExpression.Compile(bodyagenttype);
+            WorkflowExpression.Validate(__workflow_bodyagenttype, nameof(bodyagenttype), required: true);
+            var __workflow_bodyagentname = bodyagentname == null ? null : WorkflowExpression.Compile(bodyagentname);
+            WorkflowExpression.Validate(__workflow_bodyagentname, nameof(bodyagentname), required: true);
+            var __workflow_bodyagentversion = bodyagentversion == null ? null : WorkflowExpression.Compile(bodyagentversion);
+            WorkflowExpression.Validate(__workflow_bodyagentversion, nameof(bodyagentversion), required: true);
+            var __workflow_bodyuser = bodyuser == null ? null : WorkflowExpression.Compile(bodyuser);
+            WorkflowExpression.Validate(__workflow_bodyuser, nameof(bodyuser), required: false);
+            var __workflow_bodytopLogprobs = bodytopLogprobs == null ? null : WorkflowExpression.Compile(bodytopLogprobs);
+            WorkflowExpression.Validate(__workflow_bodytopLogprobs, nameof(bodytopLogprobs), required: false);
+            var __workflow_bodypreviousResponseId = bodypreviousResponseId == null ? null : WorkflowExpression.Compile(bodypreviousResponseId);
+            WorkflowExpression.Validate(__workflow_bodypreviousResponseId, nameof(bodypreviousResponseId), required: false);
+            var __workflow_bodybackground = bodybackground == null ? null : WorkflowExpression.Compile(bodybackground);
+            WorkflowExpression.Validate(__workflow_bodybackground, nameof(bodybackground), required: false);
+            var __workflow_bodymaxOutputTokens = bodymaxOutputTokens == null ? null : WorkflowExpression.Compile(bodymaxOutputTokens);
+            WorkflowExpression.Validate(__workflow_bodymaxOutputTokens, nameof(bodymaxOutputTokens), required: false);
+            var __workflow_bodymaxToolCalls = bodymaxToolCalls == null ? null : WorkflowExpression.Compile(bodymaxToolCalls);
+            WorkflowExpression.Validate(__workflow_bodymaxToolCalls, nameof(bodymaxToolCalls), required: false);
+            var __workflow_bodytextformattype = bodytextformattype == null ? null : WorkflowExpression.Compile(bodytextformattype);
+            WorkflowExpression.Validate(__workflow_bodytextformattype, nameof(bodytextformattype), required: false);
+            var __workflow_bodytools = bodytools == null ? null : WorkflowExpression.Compile(bodytools);
+            WorkflowExpression.Validate(__workflow_bodytools, nameof(bodytools), required: false);
+            var __workflow_bodytoolChoice = bodytoolChoice == null ? null : WorkflowExpression.Compile(bodytoolChoice);
+            WorkflowExpression.Validate(__workflow_bodytoolChoice, nameof(bodytoolChoice), required: false);
+            var __workflow_bodypromptversion = bodypromptversion == null ? null : WorkflowExpression.Compile(bodypromptversion);
+            WorkflowExpression.Validate(__workflow_bodypromptversion, nameof(bodypromptversion), required: false);
+            var __workflow_bodytruncation = bodytruncation == null ? null : WorkflowExpression.Compile(bodytruncation);
+            WorkflowExpression.Validate(__workflow_bodytruncation, nameof(bodytruncation), required: false);
+            var __workflow_bodyinput = bodyinput == null ? null : WorkflowExpression.Compile(bodyinput);
+            WorkflowExpression.Validate(__workflow_bodyinput, nameof(bodyinput), required: false);
+            var __workflow_bodyinclude = bodyinclude == null ? null : WorkflowExpression.Compile(bodyinclude);
+            WorkflowExpression.Validate(__workflow_bodyinclude, nameof(bodyinclude), required: false);
+            var __workflow_bodyparallelToolCalls = bodyparallelToolCalls == null ? null : WorkflowExpression.Compile(bodyparallelToolCalls);
+            WorkflowExpression.Validate(__workflow_bodyparallelToolCalls, nameof(bodyparallelToolCalls), required: false);
+            var __workflow_bodystore = bodystore == null ? null : WorkflowExpression.Compile(bodystore);
+            WorkflowExpression.Validate(__workflow_bodystore, nameof(bodystore), required: false);
+            var __workflow_bodyinstructions = bodyinstructions == null ? null : WorkflowExpression.Compile(bodyinstructions);
+            WorkflowExpression.Validate(__workflow_bodyinstructions, nameof(bodyinstructions), required: false);
             return new DeferredBodyAction<OpenAIResponse>(() =>
             {
                 var apiCallPath = "/openai/responses";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 var body = new JObject();
                 var bodypropCount = 0;
                 var metadataObject = new JObject();
@@ -329,29 +328,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
                     bodypropCount++;
                 }
 
-                if (bodyuser != null)
+                if (__workflow_bodyuser != null)
                 {
-                    body["user"] = ExpressionConverter.ConvertO(bodyuser);
+                    body["user"] = ExpressionConverter.ConvertO(__workflow_bodyuser);
                     bodypropCount++;
                 }
 
-                if (bodytopLogprobs != null)
+                if (__workflow_bodytopLogprobs != null)
                 {
-                    body["top_logprobs"] = ExpressionConverter.ConvertO(bodytopLogprobs);
+                    body["top_logprobs"] = ExpressionConverter.ConvertO(__workflow_bodytopLogprobs);
                     bodypropCount++;
                 }
 
-                if (bodypreviousResponseId != null)
+                if (__workflow_bodypreviousResponseId != null)
                 {
-                    body["previous_response_id"] = ExpressionConverter.ConvertO(bodypreviousResponseId);
+                    body["previous_response_id"] = ExpressionConverter.ConvertO(__workflow_bodypreviousResponseId);
                     bodypropCount++;
                 }
 
-                if (bodybackground != null)
+                if (__workflow_bodybackground != null)
                 {
-                    if (bodybackground != null)
+                    if (__workflow_bodybackground != null)
                     {
-                        body["background"] = ExpressionConverter.ConvertO(bodybackground);
+                        body["background"] = ExpressionConverter.ConvertO(__workflow_bodybackground);
                         bodypropCount++;
                     }
 
@@ -363,15 +362,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
                     bodypropCount++;
                 }
 
-                if (bodymaxOutputTokens != null)
+                if (__workflow_bodymaxOutputTokens != null)
                 {
-                    body["max_output_tokens"] = ExpressionConverter.ConvertO(bodymaxOutputTokens);
+                    body["max_output_tokens"] = ExpressionConverter.ConvertO(__workflow_bodymaxOutputTokens);
                     bodypropCount++;
                 }
 
-                if (bodymaxToolCalls != null)
+                if (__workflow_bodymaxToolCalls != null)
                 {
-                    body["max_tool_calls"] = ExpressionConverter.ConvertO(bodymaxToolCalls);
+                    body["max_tool_calls"] = ExpressionConverter.ConvertO(__workflow_bodymaxToolCalls);
                     bodypropCount++;
                 }
 
@@ -379,9 +378,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
                 var textObjectpropCount = 0;
                 var formatObject = new JObject();
                 var formatObjectpropCount = 0;
-                if (bodytextformattype != null)
+                if (__workflow_bodytextformattype != null)
                 {
-                    formatObject["type"] = ExpressionConverter.ConvertO(bodytextformattype);
+                    formatObject["type"] = ExpressionConverter.ConvertO(__workflow_bodytextformattype);
                     formatObjectpropCount++;
                 }
 
@@ -397,25 +396,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
                     bodypropCount++;
                 }
 
-                if (bodytools != null)
+                if (__workflow_bodytools != null)
                 {
-                    body["tools"] = ExpressionConverter.ConvertO(bodytools);
+                    body["tools"] = ExpressionConverter.ConvertO(__workflow_bodytools);
                     bodypropCount++;
                 }
 
-                if (bodytoolChoice != null)
+                if (__workflow_bodytoolChoice != null)
                 {
-                    body["tool_choice"] = ExpressionConverter.ConvertO(bodytoolChoice);
+                    body["tool_choice"] = ExpressionConverter.ConvertO(__workflow_bodytoolChoice);
                     bodypropCount++;
                 }
 
                 var promptObject = new JObject();
                 var promptObjectpropCount = 0;
                 promptObjectpropCount++;
-                promptObject["id"] = ExpressionConverter.ConvertO(bodypromptid);
-                if (bodypromptversion != null)
+                promptObject["id"] = ExpressionConverter.ConvertO(__workflow_bodypromptid);
+                if (__workflow_bodypromptversion != null)
                 {
-                    promptObject["version"] = ExpressionConverter.ConvertO(bodypromptversion);
+                    promptObject["version"] = ExpressionConverter.ConvertO(__workflow_bodypromptversion);
                     promptObjectpropCount++;
                 }
 
@@ -433,11 +432,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
                     bodypropCount++;
                 }
 
-                if (bodytruncation != null)
+                if (__workflow_bodytruncation != null)
                 {
-                    if (bodytruncation != null)
+                    if (__workflow_bodytruncation != null)
                     {
-                        body["truncation"] = ExpressionConverter.ConvertO(bodytruncation);
+                        body["truncation"] = ExpressionConverter.ConvertO(__workflow_bodytruncation);
                         bodypropCount++;
                     }
 
@@ -449,23 +448,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
                     bodypropCount++;
                 }
 
-                if (bodyinput != null)
+                if (__workflow_bodyinput != null)
                 {
-                    body["input"] = ExpressionConverter.ConvertO(bodyinput);
+                    body["input"] = ExpressionConverter.ConvertO(__workflow_bodyinput);
                     bodypropCount++;
                 }
 
-                if (bodyinclude != null)
+                if (__workflow_bodyinclude != null)
                 {
-                    body["include"] = ExpressionConverter.ConvertO(bodyinclude);
+                    body["include"] = ExpressionConverter.ConvertO(__workflow_bodyinclude);
                     bodypropCount++;
                 }
 
-                if (bodyparallelToolCalls != null)
+                if (__workflow_bodyparallelToolCalls != null)
                 {
-                    if (bodyparallelToolCalls != null)
+                    if (__workflow_bodyparallelToolCalls != null)
                     {
-                        body["parallel_tool_calls"] = ExpressionConverter.ConvertO(bodyparallelToolCalls);
+                        body["parallel_tool_calls"] = ExpressionConverter.ConvertO(__workflow_bodyparallelToolCalls);
                         bodypropCount++;
                     }
 
@@ -477,11 +476,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
                     bodypropCount++;
                 }
 
-                if (bodystore != null)
+                if (__workflow_bodystore != null)
                 {
-                    if (bodystore != null)
+                    if (__workflow_bodystore != null)
                     {
-                        body["store"] = ExpressionConverter.ConvertO(bodystore);
+                        body["store"] = ExpressionConverter.ConvertO(__workflow_bodystore);
                         bodypropCount++;
                     }
 
@@ -493,20 +492,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
                     bodypropCount++;
                 }
 
-                if (bodyinstructions != null)
+                if (__workflow_bodyinstructions != null)
                 {
-                    body["instructions"] = ExpressionConverter.ConvertO(bodyinstructions);
+                    body["instructions"] = ExpressionConverter.ConvertO(__workflow_bodyinstructions);
                     bodypropCount++;
                 }
 
                 var agentObject = new JObject();
                 var agentObjectpropCount = 0;
                 agentObjectpropCount++;
-                agentObject["type"] = ExpressionConverter.ConvertO(bodyagenttype);
+                agentObject["type"] = ExpressionConverter.ConvertO(__workflow_bodyagenttype);
                 agentObjectpropCount++;
-                agentObject["name"] = ExpressionConverter.ConvertO(bodyagentname);
+                agentObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyagentname);
                 agentObjectpropCount++;
-                agentObject["version"] = ExpressionConverter.ConvertO(bodyagentversion);
+                agentObject["version"] = ExpressionConverter.ConvertO(__workflow_bodyagentversion);
                 if (agentObjectpropCount > 0)
                 {
                     body["agent"] = agentObject;
@@ -523,19 +522,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
-        [WorkflowExpressionFactory(nameof(__BuildSendActivity))]
-        public IBodyWorkflowAction<JToken> SendActivity([WorkflowExpression] Func<string> agentId)
+        public IBodyWorkflowAction<JToken> SendActivity(Expression<Func<string>> agentId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildSendActivity(WorkflowExpression<string> agentId)
-        {
-            WorkflowExpression.Validate(agentId, nameof(agentId), required: true);
+            var __workflow_agentId = agentId == null ? null : WorkflowExpression.Compile(agentId);
+            WorkflowExpression.Validate(__workflow_agentId, nameof(agentId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/agents/{0}/protocols/activityprotocol", ExpressionConverter.ConvertWithUrlEncoding(agentId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/agents/{0}/protocols/activityprotocol", ExpressionConverter.ConvertWithUrlEncoding(__workflow_agentId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2025-11-15-preview");
@@ -551,19 +544,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
-        [WorkflowExpressionFactory(nameof(__BuildSendActivityApplication))]
-        public IBodyWorkflowAction<JToken> SendActivityApplication([WorkflowExpression] Func<string> myApplication)
+        public IBodyWorkflowAction<JToken> SendActivityApplication(Expression<Func<string>> myApplication)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildSendActivityApplication(WorkflowExpression<string> myApplication)
-        {
-            WorkflowExpression.Validate(myApplication, nameof(myApplication), required: true);
+            var __workflow_myApplication = myApplication == null ? null : WorkflowExpression.Compile(myApplication);
+            WorkflowExpression.Validate(__workflow_myApplication, nameof(myApplication), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/applications/{0}/protocols/activityprotocol", ExpressionConverter.ConvertWithUrlEncoding(myApplication, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/applications/{0}/protocols/activityprotocol", ExpressionConverter.ConvertWithUrlEncoding(__workflow_myApplication, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2025-11-15-preview");

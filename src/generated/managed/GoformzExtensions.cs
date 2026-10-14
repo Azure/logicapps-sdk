@@ -1,45 +1,40 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Goformz
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class GoformzActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "goformz")]
-        [WorkflowExpressionFactory(nameof(__BuildExportForm))]
-        public IBodyWorkflowAction<string> ExportForm([WorkflowExpression] Func<string> formId, [WorkflowExpression] Func<string> bodytype = null, [WorkflowExpression] Func<string> bodypages = null)
+        public IBodyWorkflowAction<string> ExportForm(Expression<Func<string>> formId, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodypages = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildExportForm(WorkflowExpression<string> formId, WorkflowExpression<string> bodytype = null, WorkflowExpression<string> bodypages = null)
-        {
-            WorkflowExpression.Validate(formId, nameof(formId), required: true);
-            WorkflowExpression.Validate(bodytype, nameof(bodytype), required: false);
-            WorkflowExpression.Validate(bodypages, nameof(bodypages), required: false);
+            var __workflow_formId = formId == null ? null : WorkflowExpression.Compile(formId);
+            WorkflowExpression.Validate(__workflow_formId, nameof(formId), required: true);
+            var __workflow_bodytype = bodytype == null ? null : WorkflowExpression.Compile(bodytype);
+            WorkflowExpression.Validate(__workflow_bodytype, nameof(bodytype), required: false);
+            var __workflow_bodypages = bodypages == null ? null : WorkflowExpression.Compile(bodypages);
+            WorkflowExpression.Validate(__workflow_bodypages, nameof(bodypages), required: false);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/formz/{0}/exports", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/formz/{0}/exports", ExpressionConverter.ConvertWithUrlEncoding(__workflow_formId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodytype != null)
+                if (__workflow_bodytype != null)
                 {
-                    body["type"] = ExpressionConverter.ConvertO(bodytype);
+                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
                     bodypropCount++;
                 }
 
-                if (bodypages != null)
+                if (__workflow_bodypages != null)
                 {
-                    body["pages"] = ExpressionConverter.ConvertO(bodypages);
+                    body["pages"] = ExpressionConverter.ConvertO(__workflow_bodypages);
                     bodypropCount++;
                 }
 
@@ -53,67 +48,67 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Goformz
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "goformz")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateForm))]
-        public IWorkflowAction CreateForm([WorkflowExpression] Func<bool> runCalculations = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<bool> bodyoverrideDefaultFormName = null, [WorkflowExpression] Func<string> bodytemplateId = null, [WorkflowExpression] Func<string> bodyassignmentid = null, [WorkflowExpression] Func<string> bodyassignmenttype = null, [WorkflowExpression] Func<string> bodyassignmenturl = null)
+        public IWorkflowAction CreateForm(Expression<Func<bool>> runCalculations = null, Expression<Func<string>> bodyname = null, Expression<Func<bool>> bodyoverrideDefaultFormName = null, Expression<Func<string>> bodytemplateId = null, Expression<Func<string>> bodyassignmentid = null, Expression<Func<string>> bodyassignmenttype = null, Expression<Func<string>> bodyassignmenturl = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildCreateForm(WorkflowExpression<bool> runCalculations = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<bool> bodyoverrideDefaultFormName = null, WorkflowExpression<string> bodytemplateId = null, WorkflowExpression<string> bodyassignmentid = null, WorkflowExpression<string> bodyassignmenttype = null, WorkflowExpression<string> bodyassignmenturl = null)
-        {
-            WorkflowExpression.Validate(runCalculations, nameof(runCalculations), required: false);
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
-            WorkflowExpression.Validate(bodyoverrideDefaultFormName, nameof(bodyoverrideDefaultFormName), required: false);
-            WorkflowExpression.Validate(bodytemplateId, nameof(bodytemplateId), required: false);
-            WorkflowExpression.Validate(bodyassignmentid, nameof(bodyassignmentid), required: false);
-            WorkflowExpression.Validate(bodyassignmenttype, nameof(bodyassignmenttype), required: false);
-            WorkflowExpression.Validate(bodyassignmenturl, nameof(bodyassignmenturl), required: false);
+            var __workflow_runCalculations = runCalculations == null ? null : WorkflowExpression.Compile(runCalculations);
+            WorkflowExpression.Validate(__workflow_runCalculations, nameof(runCalculations), required: false);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
+            var __workflow_bodyoverrideDefaultFormName = bodyoverrideDefaultFormName == null ? null : WorkflowExpression.Compile(bodyoverrideDefaultFormName);
+            WorkflowExpression.Validate(__workflow_bodyoverrideDefaultFormName, nameof(bodyoverrideDefaultFormName), required: false);
+            var __workflow_bodytemplateId = bodytemplateId == null ? null : WorkflowExpression.Compile(bodytemplateId);
+            WorkflowExpression.Validate(__workflow_bodytemplateId, nameof(bodytemplateId), required: false);
+            var __workflow_bodyassignmentid = bodyassignmentid == null ? null : WorkflowExpression.Compile(bodyassignmentid);
+            WorkflowExpression.Validate(__workflow_bodyassignmentid, nameof(bodyassignmentid), required: false);
+            var __workflow_bodyassignmenttype = bodyassignmenttype == null ? null : WorkflowExpression.Compile(bodyassignmenttype);
+            WorkflowExpression.Validate(__workflow_bodyassignmenttype, nameof(bodyassignmenttype), required: false);
+            var __workflow_bodyassignmenturl = bodyassignmenturl == null ? null : WorkflowExpression.Compile(bodyassignmenturl);
+            WorkflowExpression.Validate(__workflow_bodyassignmenturl, nameof(bodyassignmenturl), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v2/formz";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["runCalculations"] = Convert.ToString(false);
-                if (runCalculations != null)
-                    callPayload.Queries["runCalculations"] = ExpressionConverter.Convert(runCalculations);
+                if (__workflow_runCalculations != null)
+                    callPayload.Queries["runCalculations"] = ExpressionConverter.Convert(__workflow_runCalculations);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyname != null)
+                if (__workflow_bodyname != null)
                 {
-                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
                     bodypropCount++;
                 }
 
-                if (bodyoverrideDefaultFormName != null)
+                if (__workflow_bodyoverrideDefaultFormName != null)
                 {
-                    body["overrideDefaultFormName"] = ExpressionConverter.ConvertO(bodyoverrideDefaultFormName);
+                    body["overrideDefaultFormName"] = ExpressionConverter.ConvertO(__workflow_bodyoverrideDefaultFormName);
                     bodypropCount++;
                 }
 
-                if (bodytemplateId != null)
+                if (__workflow_bodytemplateId != null)
                 {
-                    body["templateId"] = ExpressionConverter.ConvertO(bodytemplateId);
+                    body["templateId"] = ExpressionConverter.ConvertO(__workflow_bodytemplateId);
                     bodypropCount++;
                 }
 
                 var assignmentObject = new JObject();
                 var assignmentObjectpropCount = 0;
-                if (bodyassignmentid != null)
+                if (__workflow_bodyassignmentid != null)
                 {
-                    assignmentObject["id"] = ExpressionConverter.ConvertO(bodyassignmentid);
+                    assignmentObject["id"] = ExpressionConverter.ConvertO(__workflow_bodyassignmentid);
                     assignmentObjectpropCount++;
                 }
 
-                if (bodyassignmenttype != null)
+                if (__workflow_bodyassignmenttype != null)
                 {
-                    assignmentObject["type"] = ExpressionConverter.ConvertO(bodyassignmenttype);
+                    assignmentObject["type"] = ExpressionConverter.ConvertO(__workflow_bodyassignmenttype);
                     assignmentObjectpropCount++;
                 }
 
-                if (bodyassignmenturl != null)
+                if (__workflow_bodyassignmenturl != null)
                 {
-                    assignmentObject["url"] = ExpressionConverter.ConvertO(bodyassignmenturl);
+                    assignmentObject["url"] = ExpressionConverter.ConvertO(__workflow_bodyassignmenturl);
                     assignmentObjectpropCount++;
                 }
 
@@ -141,19 +136,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Goformz
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "goformz")]
-        [WorkflowExpressionFactory(nameof(__BuildGetForm))]
-        public IBodyWorkflowAction<FormDto> GetForm([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<FormDto> GetForm(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FormDto> __BuildGetForm(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredBodyAction<FormDto>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/formz/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/formz/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FormDto>(callPayload);
@@ -163,19 +152,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Goformz
 
     public class GoformzTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildFormCompleted))]
-        public IWorkflowTrigger FormCompleted([WorkflowExpression] Func<string> bodyentityId,[WorkflowExpression] Func<string> bodyeventType = null,[WorkflowExpression] Func<bool> bodyenabled = null,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger FormCompleted(Expression<Func<string>> bodyentityId, Expression<Func<string>> bodyeventType = null, Expression<Func<bool>> bodyenabled = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildFormCompleted(WorkflowExpression<string> bodyentityId,WorkflowExpression<string> bodyeventType = null,WorkflowExpression<bool> bodyenabled = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodyentityId, nameof(bodyentityId), required: true);
-            WorkflowExpression.Validate(bodyeventType, nameof(bodyeventType), required: false);
-            WorkflowExpression.Validate(bodyenabled, nameof(bodyenabled), required: false);
+            var __workflow_bodyentityId = bodyentityId == null ? null : WorkflowExpression.Compile(bodyentityId);
+            WorkflowExpression.Validate(__workflow_bodyentityId, nameof(bodyentityId), required: true);
+            var __workflow_bodyeventType = bodyeventType == null ? null : WorkflowExpression.Compile(bodyeventType);
+            WorkflowExpression.Validate(__workflow_bodyeventType, nameof(bodyeventType), required: false);
+            var __workflow_bodyenabled = bodyenabled == null ? null : WorkflowExpression.Compile(bodyenabled);
+            WorkflowExpression.Validate(__workflow_bodyenabled, nameof(bodyenabled), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/v2/webhooks";
@@ -183,19 +167,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Goformz
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyeventType != null)
+                if (__workflow_bodyeventType != null)
                 {
-                    body["eventType"] = ExpressionConverter.ConvertO(bodyeventType);
+                    body["eventType"] = ExpressionConverter.ConvertO(__workflow_bodyeventType);
                     bodypropCount++;
                 }
 
                 body["targetUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 bodypropCount++;
-                body["entityId"] = ExpressionConverter.ConvertO(bodyentityId);
-                if (bodyenabled != null)
+                body["entityId"] = ExpressionConverter.ConvertO(__workflow_bodyentityId);
+                if (__workflow_bodyenabled != null)
                 {
-                    body["enabled"] = ExpressionConverter.ConvertO(bodyenabled);
+                    body["enabled"] = ExpressionConverter.ConvertO(__workflow_bodyenabled);
                     bodypropCount++;
                 }
 

@@ -1,30 +1,23 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkeycanada
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class SurveymonkeycanadaActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surveymonkeycanada")]
-        [WorkflowExpressionFactory(nameof(__BuildGetSurvey))]
-        public IBodyWorkflowAction<Survey> GetSurvey([WorkflowExpression] Func<string> surveyId)
+        public IBodyWorkflowAction<Survey> GetSurvey(Expression<Func<string>> surveyId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Survey> __BuildGetSurvey(WorkflowExpression<string> surveyId)
-        {
-            WorkflowExpression.Validate(surveyId, nameof(surveyId), required: true);
+            var __workflow_surveyId = surveyId == null ? null : WorkflowExpression.Compile(surveyId);
+            WorkflowExpression.Validate(__workflow_surveyId, nameof(surveyId), required: true);
             return new DeferredBodyAction<Survey>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/surveys/{0}", ExpressionConverter.ConvertWithUrlEncoding(surveyId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/surveys/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_surveyId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<Survey>(callPayload);
@@ -32,30 +25,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkeycanada
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surveymonkeycanada")]
-        [WorkflowExpressionFactory(nameof(__BuildSendMessage))]
-        public IBodyWorkflowAction<SurveyMessageResponse> SendMessage([WorkflowExpression] Func<string> surveyId, [WorkflowExpression] Func<string> collectorId, [WorkflowExpression] Func<string> messageId, [WorkflowExpression] Func<string> bodyscheduledDate = null)
+        public IBodyWorkflowAction<SurveyMessageResponse> SendMessage(Expression<Func<string>> surveyId, Expression<Func<string>> collectorId, Expression<Func<string>> messageId, Expression<Func<string>> bodyscheduledDate = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SurveyMessageResponse> __BuildSendMessage(WorkflowExpression<string> surveyId, WorkflowExpression<string> collectorId, WorkflowExpression<string> messageId, WorkflowExpression<string> bodyscheduledDate = null)
-        {
-            WorkflowExpression.Validate(surveyId, nameof(surveyId), required: true);
-            WorkflowExpression.Validate(collectorId, nameof(collectorId), required: true);
-            WorkflowExpression.Validate(messageId, nameof(messageId), required: true);
-            WorkflowExpression.Validate(bodyscheduledDate, nameof(bodyscheduledDate), required: false);
+            var __workflow_surveyId = surveyId == null ? null : WorkflowExpression.Compile(surveyId);
+            WorkflowExpression.Validate(__workflow_surveyId, nameof(surveyId), required: true);
+            var __workflow_collectorId = collectorId == null ? null : WorkflowExpression.Compile(collectorId);
+            WorkflowExpression.Validate(__workflow_collectorId, nameof(collectorId), required: true);
+            var __workflow_messageId = messageId == null ? null : WorkflowExpression.Compile(messageId);
+            WorkflowExpression.Validate(__workflow_messageId, nameof(messageId), required: true);
+            var __workflow_bodyscheduledDate = bodyscheduledDate == null ? null : WorkflowExpression.Compile(bodyscheduledDate);
+            WorkflowExpression.Validate(__workflow_bodyscheduledDate, nameof(bodyscheduledDate), required: false);
             return new DeferredBodyAction<SurveyMessageResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/collectors/{0}/messages/{1}/send", ExpressionConverter.ConvertWithUrlEncoding(collectorId, 1), ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/collectors/{0}/messages/{1}/send", ExpressionConverter.ConvertWithUrlEncoding(__workflow_collectorId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_messageId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["surveyId"] = ExpressionConverter.Convert(surveyId);
+                callPayload.Queries["surveyId"] = ExpressionConverter.Convert(__workflow_surveyId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyscheduledDate != null)
+                if (__workflow_bodyscheduledDate != null)
                 {
-                    body["scheduled_date"] = ExpressionConverter.ConvertO(bodyscheduledDate);
+                    body["scheduled_date"] = ExpressionConverter.ConvertO(__workflow_bodyscheduledDate);
                     bodypropCount++;
                 }
 
@@ -69,51 +59,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkeycanada
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surveymonkeycanada")]
-        [WorkflowExpressionFactory(nameof(__BuildGetResponseDetails))]
-        public IBodyWorkflowAction<GetResponseDetailsResponse> GetResponseDetails([WorkflowExpression] Func<string> surveyId, [WorkflowExpression] Func<string> responseId, [WorkflowExpression] Func<string> questionIds = null)
+        public IBodyWorkflowAction<GetResponseDetailsResponse> GetResponseDetails(Expression<Func<string>> surveyId, Expression<Func<string>> responseId, Expression<Func<string>> questionIds = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetResponseDetailsResponse> __BuildGetResponseDetails(WorkflowExpression<string> surveyId, WorkflowExpression<string> responseId, WorkflowExpression<string> questionIds = null)
-        {
-            WorkflowExpression.Validate(surveyId, nameof(surveyId), required: true);
-            WorkflowExpression.Validate(responseId, nameof(responseId), required: true);
-            WorkflowExpression.Validate(questionIds, nameof(questionIds), required: false);
+            var __workflow_surveyId = surveyId == null ? null : WorkflowExpression.Compile(surveyId);
+            WorkflowExpression.Validate(__workflow_surveyId, nameof(surveyId), required: true);
+            var __workflow_responseId = responseId == null ? null : WorkflowExpression.Compile(responseId);
+            WorkflowExpression.Validate(__workflow_responseId, nameof(responseId), required: true);
+            var __workflow_questionIds = questionIds == null ? null : WorkflowExpression.Compile(questionIds);
+            WorkflowExpression.Validate(__workflow_questionIds, nameof(questionIds), required: false);
             return new DeferredBodyAction<GetResponseDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/actions1/surveys/{0}/responses/{1}/details", ExpressionConverter.ConvertWithUrlEncoding(surveyId, 1), ExpressionConverter.ConvertWithUrlEncoding(responseId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/actions1/surveys/{0}/responses/{1}/details", ExpressionConverter.ConvertWithUrlEncoding(__workflow_surveyId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_responseId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["simple"] = Convert.ToString(true);
-                if (questionIds != null)
-                    callPayload.Queries["question_ids"] = ExpressionConverter.Convert(questionIds);
+                if (__workflow_questionIds != null)
+                    callPayload.Queries["question_ids"] = ExpressionConverter.Convert(__workflow_questionIds);
                 return new ApiConnectionAction<GetResponseDetailsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surveymonkeycanada")]
-        [WorkflowExpressionFactory(nameof(__BuildGetResponseDetailsNoPages))]
-        public IBodyWorkflowAction<GetResponseDetailsNoPagesResponse> GetResponseDetailsNoPages([WorkflowExpression] Func<string> surveyId, [WorkflowExpression] Func<string> responseId, [WorkflowExpression] Func<string> questionIds = null)
+        public IBodyWorkflowAction<GetResponseDetailsNoPagesResponse> GetResponseDetailsNoPages(Expression<Func<string>> surveyId, Expression<Func<string>> responseId, Expression<Func<string>> questionIds = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetResponseDetailsNoPagesResponse> __BuildGetResponseDetailsNoPages(WorkflowExpression<string> surveyId, WorkflowExpression<string> responseId, WorkflowExpression<string> questionIds = null)
-        {
-            WorkflowExpression.Validate(surveyId, nameof(surveyId), required: true);
-            WorkflowExpression.Validate(responseId, nameof(responseId), required: true);
-            WorkflowExpression.Validate(questionIds, nameof(questionIds), required: false);
+            var __workflow_surveyId = surveyId == null ? null : WorkflowExpression.Compile(surveyId);
+            WorkflowExpression.Validate(__workflow_surveyId, nameof(surveyId), required: true);
+            var __workflow_responseId = responseId == null ? null : WorkflowExpression.Compile(responseId);
+            WorkflowExpression.Validate(__workflow_responseId, nameof(responseId), required: true);
+            var __workflow_questionIds = questionIds == null ? null : WorkflowExpression.Compile(questionIds);
+            WorkflowExpression.Validate(__workflow_questionIds, nameof(questionIds), required: false);
             return new DeferredBodyAction<GetResponseDetailsNoPagesResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/actions2/surveys/{0}/responses/{1}/details", ExpressionConverter.ConvertWithUrlEncoding(surveyId, 1), ExpressionConverter.ConvertWithUrlEncoding(responseId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/actions2/surveys/{0}/responses/{1}/details", ExpressionConverter.ConvertWithUrlEncoding(__workflow_surveyId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_responseId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["simple"] = Convert.ToString(true);
-                if (questionIds != null)
-                    callPayload.Queries["question_ids"] = ExpressionConverter.Convert(questionIds);
+                if (__workflow_questionIds != null)
+                    callPayload.Queries["question_ids"] = ExpressionConverter.Convert(__workflow_questionIds);
                 return new ApiConnectionAction<GetResponseDetailsNoPagesResponse>(callPayload);
             });
         }
@@ -129,86 +111,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkeycanada
             return new ApiConnectionTrigger<NewSurveysItem[]>(callPayload, recurrence: recurrence);
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildOnSurveyCollectorCreated))]
-        public IBodyWorkflowTrigger<NewCollectorsItem[]> OnSurveyCollectorCreated([WorkflowExpression] Func<string> surveyId,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewCollectorsItem[]> OnSurveyCollectorCreated(Expression<Func<string>> surveyId, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<NewCollectorsItem[]> __BuildOnSurveyCollectorCreated(WorkflowExpression<string> surveyId,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(surveyId, nameof(surveyId), required: true);
+            var __workflow_surveyId = surveyId == null ? null : WorkflowExpression.Compile(surveyId);
+            WorkflowExpression.Validate(__workflow_surveyId, nameof(surveyId), required: true);
             return new DeferredBodyTrigger<NewCollectorsItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger2/surveys/{0}/collectors", ExpressionConverter.ConvertWithUrlEncoding(surveyId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger2/surveys/{0}/collectors", ExpressionConverter.ConvertWithUrlEncoding(__workflow_surveyId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionTrigger<NewCollectorsItem[]>(callPayload, recurrence: recurrence);
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildOnNewResponseAddedCollector))]
-        public IBodyWorkflowTrigger<SurveyResponsesItem[]> OnNewResponseAddedCollector([WorkflowExpression] Func<string> surveyId,[WorkflowExpression] Func<string> collectorId,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SurveyResponsesItem[]> OnNewResponseAddedCollector(Expression<Func<string>> surveyId, Expression<Func<string>> collectorId, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<SurveyResponsesItem[]> __BuildOnNewResponseAddedCollector(WorkflowExpression<string> surveyId,WorkflowExpression<string> collectorId,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(surveyId, nameof(surveyId), required: true);
-            WorkflowExpression.Validate(collectorId, nameof(collectorId), required: true);
+            var __workflow_surveyId = surveyId == null ? null : WorkflowExpression.Compile(surveyId);
+            WorkflowExpression.Validate(__workflow_surveyId, nameof(surveyId), required: true);
+            var __workflow_collectorId = collectorId == null ? null : WorkflowExpression.Compile(collectorId);
+            WorkflowExpression.Validate(__workflow_collectorId, nameof(collectorId), required: true);
             return new DeferredBodyTrigger<SurveyResponsesItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger3/collectors/{0}/responses/bulk", ExpressionConverter.ConvertWithUrlEncoding(collectorId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger3/collectors/{0}/responses/bulk", ExpressionConverter.ConvertWithUrlEncoding(__workflow_collectorId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["surveyId"] = ExpressionConverter.Convert(surveyId);
+                callPayload.Queries["surveyId"] = ExpressionConverter.Convert(__workflow_surveyId);
                 return new ApiConnectionTrigger<SurveyResponsesItem[]>(callPayload, recurrence: recurrence);
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildOnNewResponseAddedSurvey))]
-        public IBodyWorkflowTrigger<SurveyResponsesItem[]> OnNewResponseAddedSurvey([WorkflowExpression] Func<string> surveyId,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SurveyResponsesItem[]> OnNewResponseAddedSurvey(Expression<Func<string>> surveyId, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<SurveyResponsesItem[]> __BuildOnNewResponseAddedSurvey(WorkflowExpression<string> surveyId,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(surveyId, nameof(surveyId), required: true);
+            var __workflow_surveyId = surveyId == null ? null : WorkflowExpression.Compile(surveyId);
+            WorkflowExpression.Validate(__workflow_surveyId, nameof(surveyId), required: true);
             return new DeferredBodyTrigger<SurveyResponsesItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger4/surveys/{0}/responses/bulk", ExpressionConverter.ConvertWithUrlEncoding(surveyId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger4/surveys/{0}/responses/bulk", ExpressionConverter.ConvertWithUrlEncoding(__workflow_surveyId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionTrigger<SurveyResponsesItem[]>(callPayload, recurrence: recurrence);
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildOnNewResponseToQuestionAdded))]
-        public IBodyWorkflowTrigger<SurveyResponsesItem[]> OnNewResponseToQuestionAdded([WorkflowExpression] Func<string> surveyId,[WorkflowExpression] Func<string> pageIds = null,[WorkflowExpression] Func<string> questionIds = null,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SurveyResponsesItem[]> OnNewResponseToQuestionAdded(Expression<Func<string>> surveyId, Expression<Func<string>> pageIds = null, Expression<Func<string>> questionIds = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<SurveyResponsesItem[]> __BuildOnNewResponseToQuestionAdded(WorkflowExpression<string> surveyId,WorkflowExpression<string> pageIds = null,WorkflowExpression<string> questionIds = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(surveyId, nameof(surveyId), required: true);
-            WorkflowExpression.Validate(pageIds, nameof(pageIds), required: false);
-            WorkflowExpression.Validate(questionIds, nameof(questionIds), required: false);
+            var __workflow_surveyId = surveyId == null ? null : WorkflowExpression.Compile(surveyId);
+            WorkflowExpression.Validate(__workflow_surveyId, nameof(surveyId), required: true);
+            var __workflow_pageIds = pageIds == null ? null : WorkflowExpression.Compile(pageIds);
+            WorkflowExpression.Validate(__workflow_pageIds, nameof(pageIds), required: false);
+            var __workflow_questionIds = questionIds == null ? null : WorkflowExpression.Compile(questionIds);
+            WorkflowExpression.Validate(__workflow_questionIds, nameof(questionIds), required: false);
             return new DeferredBodyTrigger<SurveyResponsesItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger5/surveys/{0}/responses/bulk", ExpressionConverter.ConvertWithUrlEncoding(surveyId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger5/surveys/{0}/responses/bulk", ExpressionConverter.ConvertWithUrlEncoding(__workflow_surveyId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (pageIds != null)
-                    callPayload.Queries["page_ids"] = ExpressionConverter.Convert(pageIds);
-                if (questionIds != null)
-                    callPayload.Queries["question_ids"] = ExpressionConverter.Convert(questionIds);
+                if (__workflow_pageIds != null)
+                    callPayload.Queries["page_ids"] = ExpressionConverter.Convert(__workflow_pageIds);
+                if (__workflow_questionIds != null)
+                    callPayload.Queries["question_ids"] = ExpressionConverter.Convert(__workflow_questionIds);
                 return new ApiConnectionTrigger<SurveyResponsesItem[]>(callPayload, recurrence: recurrence);
             });
         }

@@ -1,33 +1,32 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maintenancerequestox
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class MaintenancerequestoxActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maintenancerequestox")]
-        [WorkflowExpressionFactory(nameof(__BuildMaintenanceRequestOxmaint))]
-        public IWorkflowAction MaintenanceRequestOxmaint([WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodydescription, [WorkflowExpression] Func<string> bodypriority, [WorkflowExpression] Func<string> bodyrequestedBy, [WorkflowExpression] Func<string> bodydate, [WorkflowExpression] Func<string> bodymasterEmail, [WorkflowExpression] Func<string> bodyapiKey)
+        public IWorkflowAction MaintenanceRequestOxmaint(Expression<Func<string>> bodytitle, Expression<Func<string>> bodydescription, Expression<Func<string>> bodypriority, Expression<Func<string>> bodyrequestedBy, Expression<Func<string>> bodydate, Expression<Func<string>> bodymasterEmail, Expression<Func<string>> bodyapiKey)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildMaintenanceRequestOxmaint(WorkflowExpression<string> bodytitle, WorkflowExpression<string> bodydescription, WorkflowExpression<string> bodypriority, WorkflowExpression<string> bodyrequestedBy, WorkflowExpression<string> bodydate, WorkflowExpression<string> bodymasterEmail, WorkflowExpression<string> bodyapiKey)
-        {
-            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            WorkflowExpression.Validate(bodydescription, nameof(bodydescription), required: true);
-            WorkflowExpression.Validate(bodypriority, nameof(bodypriority), required: true);
-            WorkflowExpression.Validate(bodyrequestedBy, nameof(bodyrequestedBy), required: true);
-            WorkflowExpression.Validate(bodydate, nameof(bodydate), required: true);
-            WorkflowExpression.Validate(bodymasterEmail, nameof(bodymasterEmail), required: true);
-            WorkflowExpression.Validate(bodyapiKey, nameof(bodyapiKey), required: true);
+            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
+            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
+            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: true);
+            var __workflow_bodypriority = bodypriority == null ? null : WorkflowExpression.Compile(bodypriority);
+            WorkflowExpression.Validate(__workflow_bodypriority, nameof(bodypriority), required: true);
+            var __workflow_bodyrequestedBy = bodyrequestedBy == null ? null : WorkflowExpression.Compile(bodyrequestedBy);
+            WorkflowExpression.Validate(__workflow_bodyrequestedBy, nameof(bodyrequestedBy), required: true);
+            var __workflow_bodydate = bodydate == null ? null : WorkflowExpression.Compile(bodydate);
+            WorkflowExpression.Validate(__workflow_bodydate, nameof(bodydate), required: true);
+            var __workflow_bodymasterEmail = bodymasterEmail == null ? null : WorkflowExpression.Compile(bodymasterEmail);
+            WorkflowExpression.Validate(__workflow_bodymasterEmail, nameof(bodymasterEmail), required: true);
+            var __workflow_bodyapiKey = bodyapiKey == null ? null : WorkflowExpression.Compile(bodyapiKey);
+            WorkflowExpression.Validate(__workflow_bodyapiKey, nameof(bodyapiKey), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/workflows/81fb7bc062f3419a8c0ba8ac0132d631/triggers/manual/paths/invoke";
@@ -40,19 +39,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maintenancerequestox
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
                 bodypropCount++;
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
                 bodypropCount++;
-                body["priority"] = ExpressionConverter.ConvertO(bodypriority);
+                body["priority"] = ExpressionConverter.ConvertO(__workflow_bodypriority);
                 bodypropCount++;
-                body["requested_by"] = ExpressionConverter.ConvertO(bodyrequestedBy);
+                body["requested_by"] = ExpressionConverter.ConvertO(__workflow_bodyrequestedBy);
                 bodypropCount++;
-                body["date"] = ExpressionConverter.ConvertO(bodydate);
+                body["date"] = ExpressionConverter.ConvertO(__workflow_bodydate);
                 bodypropCount++;
-                body["master_email"] = ExpressionConverter.ConvertO(bodymasterEmail);
+                body["master_email"] = ExpressionConverter.ConvertO(__workflow_bodymasterEmail);
                 bodypropCount++;
-                body["api_key"] = ExpressionConverter.ConvertO(bodyapiKey);
+                body["api_key"] = ExpressionConverter.ConvertO(__workflow_bodyapiKey);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

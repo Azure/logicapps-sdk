@@ -1,33 +1,32 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class MonsterapiipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
-        [WorkflowExpressionFactory(nameof(__BuildTextImageAdd))]
-        public IBodyWorkflowAction<TextImageAddPostResponse> TextImageAdd([WorkflowExpression] Func<string> bodydataprompt = null, [WorkflowExpression] Func<string> bodydatanegprompt = null, [WorkflowExpression] Func<int> bodydatasamples = null, [WorkflowExpression] Func<int> bodydatasteps = null, [WorkflowExpression] Func<string> bodydataaspectRatio = null, [WorkflowExpression] Func<double> bodydataguidanceScale = null, [WorkflowExpression] Func<int> bodydataseed = null)
+        public IBodyWorkflowAction<TextImageAddPostResponse> TextImageAdd(Expression<Func<string>> bodydataprompt = null, Expression<Func<string>> bodydatanegprompt = null, Expression<Func<int>> bodydatasamples = null, Expression<Func<int>> bodydatasteps = null, Expression<Func<string>> bodydataaspectRatio = null, Expression<Func<double>> bodydataguidanceScale = null, Expression<Func<int>> bodydataseed = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TextImageAddPostResponse> __BuildTextImageAdd(WorkflowExpression<string> bodydataprompt = null, WorkflowExpression<string> bodydatanegprompt = null, WorkflowExpression<int> bodydatasamples = null, WorkflowExpression<int> bodydatasteps = null, WorkflowExpression<string> bodydataaspectRatio = null, WorkflowExpression<double> bodydataguidanceScale = null, WorkflowExpression<int> bodydataseed = null)
-        {
-            WorkflowExpression.Validate(bodydataprompt, nameof(bodydataprompt), required: false);
-            WorkflowExpression.Validate(bodydatanegprompt, nameof(bodydatanegprompt), required: false);
-            WorkflowExpression.Validate(bodydatasamples, nameof(bodydatasamples), required: false);
-            WorkflowExpression.Validate(bodydatasteps, nameof(bodydatasteps), required: false);
-            WorkflowExpression.Validate(bodydataaspectRatio, nameof(bodydataaspectRatio), required: false);
-            WorkflowExpression.Validate(bodydataguidanceScale, nameof(bodydataguidanceScale), required: false);
-            WorkflowExpression.Validate(bodydataseed, nameof(bodydataseed), required: false);
+            var __workflow_bodydataprompt = bodydataprompt == null ? null : WorkflowExpression.Compile(bodydataprompt);
+            WorkflowExpression.Validate(__workflow_bodydataprompt, nameof(bodydataprompt), required: false);
+            var __workflow_bodydatanegprompt = bodydatanegprompt == null ? null : WorkflowExpression.Compile(bodydatanegprompt);
+            WorkflowExpression.Validate(__workflow_bodydatanegprompt, nameof(bodydatanegprompt), required: false);
+            var __workflow_bodydatasamples = bodydatasamples == null ? null : WorkflowExpression.Compile(bodydatasamples);
+            WorkflowExpression.Validate(__workflow_bodydatasamples, nameof(bodydatasamples), required: false);
+            var __workflow_bodydatasteps = bodydatasteps == null ? null : WorkflowExpression.Compile(bodydatasteps);
+            WorkflowExpression.Validate(__workflow_bodydatasteps, nameof(bodydatasteps), required: false);
+            var __workflow_bodydataaspectRatio = bodydataaspectRatio == null ? null : WorkflowExpression.Compile(bodydataaspectRatio);
+            WorkflowExpression.Validate(__workflow_bodydataaspectRatio, nameof(bodydataaspectRatio), required: false);
+            var __workflow_bodydataguidanceScale = bodydataguidanceScale == null ? null : WorkflowExpression.Compile(bodydataguidanceScale);
+            WorkflowExpression.Validate(__workflow_bodydataguidanceScale, nameof(bodydataguidanceScale), required: false);
+            var __workflow_bodydataseed = bodydataseed == null ? null : WorkflowExpression.Compile(bodydataseed);
+            WorkflowExpression.Validate(__workflow_bodydataseed, nameof(bodydataseed), required: false);
             return new DeferredBodyAction<TextImageAddPostResponse>(() =>
             {
                 var apiCallPath = "/add-text-task";
@@ -39,45 +38,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
                 bodypropCount++;
                 var dataObject = new JObject();
                 var dataObjectpropCount = 0;
-                if (bodydataprompt != null)
+                if (__workflow_bodydataprompt != null)
                 {
-                    dataObject["prompt"] = ExpressionConverter.ConvertO(bodydataprompt);
+                    dataObject["prompt"] = ExpressionConverter.ConvertO(__workflow_bodydataprompt);
                     dataObjectpropCount++;
                 }
 
-                if (bodydatanegprompt != null)
+                if (__workflow_bodydatanegprompt != null)
                 {
-                    dataObject["negprompt"] = ExpressionConverter.ConvertO(bodydatanegprompt);
+                    dataObject["negprompt"] = ExpressionConverter.ConvertO(__workflow_bodydatanegprompt);
                     dataObjectpropCount++;
                 }
 
-                if (bodydatasamples != null)
+                if (__workflow_bodydatasamples != null)
                 {
-                    dataObject["samples"] = ExpressionConverter.ConvertO(bodydatasamples);
+                    dataObject["samples"] = ExpressionConverter.ConvertO(__workflow_bodydatasamples);
                     dataObjectpropCount++;
                 }
 
-                if (bodydatasteps != null)
+                if (__workflow_bodydatasteps != null)
                 {
-                    dataObject["steps"] = ExpressionConverter.ConvertO(bodydatasteps);
+                    dataObject["steps"] = ExpressionConverter.ConvertO(__workflow_bodydatasteps);
                     dataObjectpropCount++;
                 }
 
-                if (bodydataaspectRatio != null)
+                if (__workflow_bodydataaspectRatio != null)
                 {
-                    dataObject["aspect_ratio"] = ExpressionConverter.ConvertO(bodydataaspectRatio);
+                    dataObject["aspect_ratio"] = ExpressionConverter.ConvertO(__workflow_bodydataaspectRatio);
                     dataObjectpropCount++;
                 }
 
-                if (bodydataguidanceScale != null)
+                if (__workflow_bodydataguidanceScale != null)
                 {
-                    dataObject["guidance_scale"] = ExpressionConverter.ConvertO(bodydataguidanceScale);
+                    dataObject["guidance_scale"] = ExpressionConverter.ConvertO(__workflow_bodydataguidanceScale);
                     dataObjectpropCount++;
                 }
 
-                if (bodydataseed != null)
+                if (__workflow_bodydataseed != null)
                 {
-                    dataObject["seed"] = ExpressionConverter.ConvertO(bodydataseed);
+                    dataObject["seed"] = ExpressionConverter.ConvertO(__workflow_bodydataseed);
                     dataObjectpropCount++;
                 }
 
@@ -97,16 +96,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
-        [WorkflowExpressionFactory(nameof(__BuildTextImageStatus))]
-        public IBodyWorkflowAction<TextImageStatusPostResponse> TextImageStatus([WorkflowExpression] Func<string> bodyprocessId)
+        public IBodyWorkflowAction<TextImageStatusPostResponse> TextImageStatus(Expression<Func<string>> bodyprocessId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TextImageStatusPostResponse> __BuildTextImageStatus(WorkflowExpression<string> bodyprocessId)
-        {
-            WorkflowExpression.Validate(bodyprocessId, nameof(bodyprocessId), required: true);
+            var __workflow_bodyprocessId = bodyprocessId == null ? null : WorkflowExpression.Compile(bodyprocessId);
+            WorkflowExpression.Validate(__workflow_bodyprocessId, nameof(bodyprocessId), required: true);
             return new DeferredBodyAction<TextImageStatusPostResponse>(() =>
             {
                 var apiCallPath = "/task-text-status";
@@ -115,7 +108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["process_id"] = ExpressionConverter.ConvertO(bodyprocessId);
+                body["process_id"] = ExpressionConverter.ConvertO(__workflow_bodyprocessId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -126,22 +119,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
-        [WorkflowExpressionFactory(nameof(__BuildImageImageAdd))]
-        public IBodyWorkflowAction<ImageImageAddPostResponse> ImageImageAdd([WorkflowExpression] Func<string> bodydataprompt = null, [WorkflowExpression] Func<string> bodydatanegprompt = null, [WorkflowExpression] Func<int> bodydatasteps = null, [WorkflowExpression] Func<double> bodydataguidanceScale = null, [WorkflowExpression] Func<string> bodydatainitImageUrl = null, [WorkflowExpression] Func<double> bodydatastrength = null, [WorkflowExpression] Func<int> bodydataseed = null)
+        public IBodyWorkflowAction<ImageImageAddPostResponse> ImageImageAdd(Expression<Func<string>> bodydataprompt = null, Expression<Func<string>> bodydatanegprompt = null, Expression<Func<int>> bodydatasteps = null, Expression<Func<double>> bodydataguidanceScale = null, Expression<Func<string>> bodydatainitImageUrl = null, Expression<Func<double>> bodydatastrength = null, Expression<Func<int>> bodydataseed = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ImageImageAddPostResponse> __BuildImageImageAdd(WorkflowExpression<string> bodydataprompt = null, WorkflowExpression<string> bodydatanegprompt = null, WorkflowExpression<int> bodydatasteps = null, WorkflowExpression<double> bodydataguidanceScale = null, WorkflowExpression<string> bodydatainitImageUrl = null, WorkflowExpression<double> bodydatastrength = null, WorkflowExpression<int> bodydataseed = null)
-        {
-            WorkflowExpression.Validate(bodydataprompt, nameof(bodydataprompt), required: false);
-            WorkflowExpression.Validate(bodydatanegprompt, nameof(bodydatanegprompt), required: false);
-            WorkflowExpression.Validate(bodydatasteps, nameof(bodydatasteps), required: false);
-            WorkflowExpression.Validate(bodydataguidanceScale, nameof(bodydataguidanceScale), required: false);
-            WorkflowExpression.Validate(bodydatainitImageUrl, nameof(bodydatainitImageUrl), required: false);
-            WorkflowExpression.Validate(bodydatastrength, nameof(bodydatastrength), required: false);
-            WorkflowExpression.Validate(bodydataseed, nameof(bodydataseed), required: false);
+            var __workflow_bodydataprompt = bodydataprompt == null ? null : WorkflowExpression.Compile(bodydataprompt);
+            WorkflowExpression.Validate(__workflow_bodydataprompt, nameof(bodydataprompt), required: false);
+            var __workflow_bodydatanegprompt = bodydatanegprompt == null ? null : WorkflowExpression.Compile(bodydatanegprompt);
+            WorkflowExpression.Validate(__workflow_bodydatanegprompt, nameof(bodydatanegprompt), required: false);
+            var __workflow_bodydatasteps = bodydatasteps == null ? null : WorkflowExpression.Compile(bodydatasteps);
+            WorkflowExpression.Validate(__workflow_bodydatasteps, nameof(bodydatasteps), required: false);
+            var __workflow_bodydataguidanceScale = bodydataguidanceScale == null ? null : WorkflowExpression.Compile(bodydataguidanceScale);
+            WorkflowExpression.Validate(__workflow_bodydataguidanceScale, nameof(bodydataguidanceScale), required: false);
+            var __workflow_bodydatainitImageUrl = bodydatainitImageUrl == null ? null : WorkflowExpression.Compile(bodydatainitImageUrl);
+            WorkflowExpression.Validate(__workflow_bodydatainitImageUrl, nameof(bodydatainitImageUrl), required: false);
+            var __workflow_bodydatastrength = bodydatastrength == null ? null : WorkflowExpression.Compile(bodydatastrength);
+            WorkflowExpression.Validate(__workflow_bodydatastrength, nameof(bodydatastrength), required: false);
+            var __workflow_bodydataseed = bodydataseed == null ? null : WorkflowExpression.Compile(bodydataseed);
+            WorkflowExpression.Validate(__workflow_bodydataseed, nameof(bodydataseed), required: false);
             return new DeferredBodyAction<ImageImageAddPostResponse>(() =>
             {
                 var apiCallPath = "/add-image-task";
@@ -153,45 +146,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
                 bodypropCount++;
                 var dataObject = new JObject();
                 var dataObjectpropCount = 0;
-                if (bodydataprompt != null)
+                if (__workflow_bodydataprompt != null)
                 {
-                    dataObject["prompt"] = ExpressionConverter.ConvertO(bodydataprompt);
+                    dataObject["prompt"] = ExpressionConverter.ConvertO(__workflow_bodydataprompt);
                     dataObjectpropCount++;
                 }
 
-                if (bodydatanegprompt != null)
+                if (__workflow_bodydatanegprompt != null)
                 {
-                    dataObject["negprompt"] = ExpressionConverter.ConvertO(bodydatanegprompt);
+                    dataObject["negprompt"] = ExpressionConverter.ConvertO(__workflow_bodydatanegprompt);
                     dataObjectpropCount++;
                 }
 
-                if (bodydatasteps != null)
+                if (__workflow_bodydatasteps != null)
                 {
-                    dataObject["steps"] = ExpressionConverter.ConvertO(bodydatasteps);
+                    dataObject["steps"] = ExpressionConverter.ConvertO(__workflow_bodydatasteps);
                     dataObjectpropCount++;
                 }
 
-                if (bodydataguidanceScale != null)
+                if (__workflow_bodydataguidanceScale != null)
                 {
-                    dataObject["guidance_scale"] = ExpressionConverter.ConvertO(bodydataguidanceScale);
+                    dataObject["guidance_scale"] = ExpressionConverter.ConvertO(__workflow_bodydataguidanceScale);
                     dataObjectpropCount++;
                 }
 
-                if (bodydatainitImageUrl != null)
+                if (__workflow_bodydatainitImageUrl != null)
                 {
-                    dataObject["init_image_url"] = ExpressionConverter.ConvertO(bodydatainitImageUrl);
+                    dataObject["init_image_url"] = ExpressionConverter.ConvertO(__workflow_bodydatainitImageUrl);
                     dataObjectpropCount++;
                 }
 
-                if (bodydatastrength != null)
+                if (__workflow_bodydatastrength != null)
                 {
-                    dataObject["strength"] = ExpressionConverter.ConvertO(bodydatastrength);
+                    dataObject["strength"] = ExpressionConverter.ConvertO(__workflow_bodydatastrength);
                     dataObjectpropCount++;
                 }
 
-                if (bodydataseed != null)
+                if (__workflow_bodydataseed != null)
                 {
-                    dataObject["seed"] = ExpressionConverter.ConvertO(bodydataseed);
+                    dataObject["seed"] = ExpressionConverter.ConvertO(__workflow_bodydataseed);
                     dataObjectpropCount++;
                 }
 
@@ -211,16 +204,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
-        [WorkflowExpressionFactory(nameof(__BuildImageImageStatus))]
-        public IBodyWorkflowAction<ImageImageStatusPostResponse> ImageImageStatus([WorkflowExpression] Func<string> bodyprocessId)
+        public IBodyWorkflowAction<ImageImageStatusPostResponse> ImageImageStatus(Expression<Func<string>> bodyprocessId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ImageImageStatusPostResponse> __BuildImageImageStatus(WorkflowExpression<string> bodyprocessId)
-        {
-            WorkflowExpression.Validate(bodyprocessId, nameof(bodyprocessId), required: true);
+            var __workflow_bodyprocessId = bodyprocessId == null ? null : WorkflowExpression.Compile(bodyprocessId);
+            WorkflowExpression.Validate(__workflow_bodyprocessId, nameof(bodyprocessId), required: true);
             return new DeferredBodyAction<ImageImageStatusPostResponse>(() =>
             {
                 var apiCallPath = "/task-image-status";
@@ -229,7 +216,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["process_id"] = ExpressionConverter.ConvertO(bodyprocessId);
+                body["process_id"] = ExpressionConverter.ConvertO(__workflow_bodyprocessId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -240,22 +227,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
-        [WorkflowExpressionFactory(nameof(__BuildImageEdit))]
-        public IBodyWorkflowAction<ImageEditPostResponse> ImageEdit([WorkflowExpression] Func<string> bodydataprompt = null, [WorkflowExpression] Func<string> bodydatanegprompt = null, [WorkflowExpression] Func<int> bodydatasteps = null, [WorkflowExpression] Func<double> bodydataguidanceScale = null, [WorkflowExpression] Func<string> bodydatainitImageUrl = null, [WorkflowExpression] Func<double> bodydataimageGuidanceScale = null, [WorkflowExpression] Func<int> bodydataseed = null)
+        public IBodyWorkflowAction<ImageEditPostResponse> ImageEdit(Expression<Func<string>> bodydataprompt = null, Expression<Func<string>> bodydatanegprompt = null, Expression<Func<int>> bodydatasteps = null, Expression<Func<double>> bodydataguidanceScale = null, Expression<Func<string>> bodydatainitImageUrl = null, Expression<Func<double>> bodydataimageGuidanceScale = null, Expression<Func<int>> bodydataseed = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ImageEditPostResponse> __BuildImageEdit(WorkflowExpression<string> bodydataprompt = null, WorkflowExpression<string> bodydatanegprompt = null, WorkflowExpression<int> bodydatasteps = null, WorkflowExpression<double> bodydataguidanceScale = null, WorkflowExpression<string> bodydatainitImageUrl = null, WorkflowExpression<double> bodydataimageGuidanceScale = null, WorkflowExpression<int> bodydataseed = null)
-        {
-            WorkflowExpression.Validate(bodydataprompt, nameof(bodydataprompt), required: false);
-            WorkflowExpression.Validate(bodydatanegprompt, nameof(bodydatanegprompt), required: false);
-            WorkflowExpression.Validate(bodydatasteps, nameof(bodydatasteps), required: false);
-            WorkflowExpression.Validate(bodydataguidanceScale, nameof(bodydataguidanceScale), required: false);
-            WorkflowExpression.Validate(bodydatainitImageUrl, nameof(bodydatainitImageUrl), required: false);
-            WorkflowExpression.Validate(bodydataimageGuidanceScale, nameof(bodydataimageGuidanceScale), required: false);
-            WorkflowExpression.Validate(bodydataseed, nameof(bodydataseed), required: false);
+            var __workflow_bodydataprompt = bodydataprompt == null ? null : WorkflowExpression.Compile(bodydataprompt);
+            WorkflowExpression.Validate(__workflow_bodydataprompt, nameof(bodydataprompt), required: false);
+            var __workflow_bodydatanegprompt = bodydatanegprompt == null ? null : WorkflowExpression.Compile(bodydatanegprompt);
+            WorkflowExpression.Validate(__workflow_bodydatanegprompt, nameof(bodydatanegprompt), required: false);
+            var __workflow_bodydatasteps = bodydatasteps == null ? null : WorkflowExpression.Compile(bodydatasteps);
+            WorkflowExpression.Validate(__workflow_bodydatasteps, nameof(bodydatasteps), required: false);
+            var __workflow_bodydataguidanceScale = bodydataguidanceScale == null ? null : WorkflowExpression.Compile(bodydataguidanceScale);
+            WorkflowExpression.Validate(__workflow_bodydataguidanceScale, nameof(bodydataguidanceScale), required: false);
+            var __workflow_bodydatainitImageUrl = bodydatainitImageUrl == null ? null : WorkflowExpression.Compile(bodydatainitImageUrl);
+            WorkflowExpression.Validate(__workflow_bodydatainitImageUrl, nameof(bodydatainitImageUrl), required: false);
+            var __workflow_bodydataimageGuidanceScale = bodydataimageGuidanceScale == null ? null : WorkflowExpression.Compile(bodydataimageGuidanceScale);
+            WorkflowExpression.Validate(__workflow_bodydataimageGuidanceScale, nameof(bodydataimageGuidanceScale), required: false);
+            var __workflow_bodydataseed = bodydataseed == null ? null : WorkflowExpression.Compile(bodydataseed);
+            WorkflowExpression.Validate(__workflow_bodydataseed, nameof(bodydataseed), required: false);
             return new DeferredBodyAction<ImageEditPostResponse>(() =>
             {
                 var apiCallPath = "/add-edit-task";
@@ -267,45 +254,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
                 bodypropCount++;
                 var dataObject = new JObject();
                 var dataObjectpropCount = 0;
-                if (bodydataprompt != null)
+                if (__workflow_bodydataprompt != null)
                 {
-                    dataObject["prompt"] = ExpressionConverter.ConvertO(bodydataprompt);
+                    dataObject["prompt"] = ExpressionConverter.ConvertO(__workflow_bodydataprompt);
                     dataObjectpropCount++;
                 }
 
-                if (bodydatanegprompt != null)
+                if (__workflow_bodydatanegprompt != null)
                 {
-                    dataObject["negprompt"] = ExpressionConverter.ConvertO(bodydatanegprompt);
+                    dataObject["negprompt"] = ExpressionConverter.ConvertO(__workflow_bodydatanegprompt);
                     dataObjectpropCount++;
                 }
 
-                if (bodydatasteps != null)
+                if (__workflow_bodydatasteps != null)
                 {
-                    dataObject["steps"] = ExpressionConverter.ConvertO(bodydatasteps);
+                    dataObject["steps"] = ExpressionConverter.ConvertO(__workflow_bodydatasteps);
                     dataObjectpropCount++;
                 }
 
-                if (bodydataguidanceScale != null)
+                if (__workflow_bodydataguidanceScale != null)
                 {
-                    dataObject["guidance_scale"] = ExpressionConverter.ConvertO(bodydataguidanceScale);
+                    dataObject["guidance_scale"] = ExpressionConverter.ConvertO(__workflow_bodydataguidanceScale);
                     dataObjectpropCount++;
                 }
 
-                if (bodydatainitImageUrl != null)
+                if (__workflow_bodydatainitImageUrl != null)
                 {
-                    dataObject["init_image_url"] = ExpressionConverter.ConvertO(bodydatainitImageUrl);
+                    dataObject["init_image_url"] = ExpressionConverter.ConvertO(__workflow_bodydatainitImageUrl);
                     dataObjectpropCount++;
                 }
 
-                if (bodydataimageGuidanceScale != null)
+                if (__workflow_bodydataimageGuidanceScale != null)
                 {
-                    dataObject["image_guidance_scale"] = ExpressionConverter.ConvertO(bodydataimageGuidanceScale);
+                    dataObject["image_guidance_scale"] = ExpressionConverter.ConvertO(__workflow_bodydataimageGuidanceScale);
                     dataObjectpropCount++;
                 }
 
-                if (bodydataseed != null)
+                if (__workflow_bodydataseed != null)
                 {
-                    dataObject["seed"] = ExpressionConverter.ConvertO(bodydataseed);
+                    dataObject["seed"] = ExpressionConverter.ConvertO(__workflow_bodydataseed);
                     dataObjectpropCount++;
                 }
 
@@ -325,16 +312,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
-        [WorkflowExpressionFactory(nameof(__BuildImageEditStatus))]
-        public IBodyWorkflowAction<ImageEditStatusPostResponse> ImageEditStatus([WorkflowExpression] Func<string> bodyprocessId)
+        public IBodyWorkflowAction<ImageEditStatusPostResponse> ImageEditStatus(Expression<Func<string>> bodyprocessId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ImageEditStatusPostResponse> __BuildImageEditStatus(WorkflowExpression<string> bodyprocessId)
-        {
-            WorkflowExpression.Validate(bodyprocessId, nameof(bodyprocessId), required: true);
+            var __workflow_bodyprocessId = bodyprocessId == null ? null : WorkflowExpression.Compile(bodyprocessId);
+            WorkflowExpression.Validate(__workflow_bodyprocessId, nameof(bodyprocessId), required: true);
             return new DeferredBodyAction<ImageEditStatusPostResponse>(() =>
             {
                 var apiCallPath = "/task-edit-status";
@@ -343,7 +324,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["process_id"] = ExpressionConverter.ConvertO(bodyprocessId);
+                body["process_id"] = ExpressionConverter.ConvertO(__workflow_bodyprocessId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -354,17 +335,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
-        [WorkflowExpressionFactory(nameof(__BuildAudio))]
-        public IBodyWorkflowAction<AudioPostResponse> Audio([WorkflowExpression] Func<string> bodydatafile = null, [WorkflowExpression] Func<bodydatatranscriptionFormatInput> bodydatatranscriptionFormat = null)
+        public IBodyWorkflowAction<AudioPostResponse> Audio(Expression<Func<string>> bodydatafile = null, Expression<Func<bodydatatranscriptionFormatInput>> bodydatatranscriptionFormat = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AudioPostResponse> __BuildAudio(WorkflowExpression<string> bodydatafile = null, WorkflowExpression<bodydatatranscriptionFormatInput> bodydatatranscriptionFormat = null)
-        {
-            WorkflowExpression.Validate(bodydatafile, nameof(bodydatafile), required: false);
-            WorkflowExpression.Validate(bodydatatranscriptionFormat, nameof(bodydatatranscriptionFormat), required: false);
+            var __workflow_bodydatafile = bodydatafile == null ? null : WorkflowExpression.Compile(bodydatafile);
+            WorkflowExpression.Validate(__workflow_bodydatafile, nameof(bodydatafile), required: false);
+            var __workflow_bodydatatranscriptionFormat = bodydatatranscriptionFormat == null ? null : WorkflowExpression.Compile(bodydatatranscriptionFormat);
+            WorkflowExpression.Validate(__workflow_bodydatatranscriptionFormat, nameof(bodydatatranscriptionFormat), required: false);
             return new DeferredBodyAction<AudioPostResponse>(() =>
             {
                 var apiCallPath = "/add-audio-task";
@@ -376,17 +352,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
                 bodypropCount++;
                 var dataObject = new JObject();
                 var dataObjectpropCount = 0;
-                if (bodydatafile != null)
+                if (__workflow_bodydatafile != null)
                 {
-                    dataObject["file"] = ExpressionConverter.ConvertO(bodydatafile);
+                    dataObject["file"] = ExpressionConverter.ConvertO(__workflow_bodydatafile);
                     dataObjectpropCount++;
                 }
 
-                if (bodydatatranscriptionFormat != null)
+                if (__workflow_bodydatatranscriptionFormat != null)
                 {
-                    if (bodydatatranscriptionFormat != null)
+                    if (__workflow_bodydatatranscriptionFormat != null)
                     {
-                        dataObject["transcription_format"] = ExpressionConverter.ConvertO(bodydatatranscriptionFormat);
+                        dataObject["transcription_format"] = ExpressionConverter.ConvertO(__workflow_bodydatatranscriptionFormat);
                         dataObjectpropCount++;
                     }
 
@@ -414,16 +390,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
-        [WorkflowExpressionFactory(nameof(__BuildAudioStatus))]
-        public IBodyWorkflowAction<AudioStatusPostResponse> AudioStatus([WorkflowExpression] Func<string> bodyprocessId)
+        public IBodyWorkflowAction<AudioStatusPostResponse> AudioStatus(Expression<Func<string>> bodyprocessId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AudioStatusPostResponse> __BuildAudioStatus(WorkflowExpression<string> bodyprocessId)
-        {
-            WorkflowExpression.Validate(bodyprocessId, nameof(bodyprocessId), required: true);
+            var __workflow_bodyprocessId = bodyprocessId == null ? null : WorkflowExpression.Compile(bodyprocessId);
+            WorkflowExpression.Validate(__workflow_bodyprocessId, nameof(bodyprocessId), required: true);
             return new DeferredBodyAction<AudioStatusPostResponse>(() =>
             {
                 var apiCallPath = "/task-audio-status";
@@ -432,7 +402,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["process_id"] = ExpressionConverter.ConvertO(bodyprocessId);
+                body["process_id"] = ExpressionConverter.ConvertO(__workflow_bodyprocessId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

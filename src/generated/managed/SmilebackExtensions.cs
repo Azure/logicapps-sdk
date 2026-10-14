@@ -1,30 +1,23 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class SmilebackActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smileback")]
-        [WorkflowExpressionFactory(nameof(__BuildDeletePower))]
-        public IWorkflowAction DeletePower([WorkflowExpression] Func<string> id)
+        public IWorkflowAction DeletePower(Expression<Func<string>> id)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildDeletePower(WorkflowExpression<string> id)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v3/power/{0}/", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v3/power/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -70,23 +63,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
 
     public class SmilebackTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildCSATReceived))]
-        public IWorkflowTrigger CSATReceived([WorkflowExpression] Func<fieldcsatFilterRaitingInputItem[]> fieldcsatFilterRaiting = null,[WorkflowExpression] Func<string[]> fieldcsatFilterAgents = null,[WorkflowExpression] Func<string[]> fieldcsatFilterSegments = null,[WorkflowExpression] Func<string[]> fieldcsatFilterCompanies = null,[WorkflowExpression] Func<string[]> fieldcsatFilterContacts = null,[WorkflowExpression] Func<fieldcsatFilterCommentsInput> fieldcsatFilterComments = null,[WorkflowExpression] Func<fieldcsatFilterMpInput> fieldcsatFilterMp = null,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CSATReceived(Expression<Func<fieldcsatFilterRaitingInputItem[]>> fieldcsatFilterRaiting = null, Expression<Func<string[]>> fieldcsatFilterAgents = null, Expression<Func<string[]>> fieldcsatFilterSegments = null, Expression<Func<string[]>> fieldcsatFilterCompanies = null, Expression<Func<string[]>> fieldcsatFilterContacts = null, Expression<Func<fieldcsatFilterCommentsInput>> fieldcsatFilterComments = null, Expression<Func<fieldcsatFilterMpInput>> fieldcsatFilterMp = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildCSATReceived(WorkflowExpression<fieldcsatFilterRaitingInputItem[]> fieldcsatFilterRaiting = null,WorkflowExpression<string[]> fieldcsatFilterAgents = null,WorkflowExpression<string[]> fieldcsatFilterSegments = null,WorkflowExpression<string[]> fieldcsatFilterCompanies = null,WorkflowExpression<string[]> fieldcsatFilterContacts = null,WorkflowExpression<fieldcsatFilterCommentsInput> fieldcsatFilterComments = null,WorkflowExpression<fieldcsatFilterMpInput> fieldcsatFilterMp = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(fieldcsatFilterRaiting, nameof(fieldcsatFilterRaiting), required: false);
-            WorkflowExpression.Validate(fieldcsatFilterAgents, nameof(fieldcsatFilterAgents), required: false);
-            WorkflowExpression.Validate(fieldcsatFilterSegments, nameof(fieldcsatFilterSegments), required: false);
-            WorkflowExpression.Validate(fieldcsatFilterCompanies, nameof(fieldcsatFilterCompanies), required: false);
-            WorkflowExpression.Validate(fieldcsatFilterContacts, nameof(fieldcsatFilterContacts), required: false);
-            WorkflowExpression.Validate(fieldcsatFilterComments, nameof(fieldcsatFilterComments), required: false);
-            WorkflowExpression.Validate(fieldcsatFilterMp, nameof(fieldcsatFilterMp), required: false);
+            var __workflow_fieldcsatFilterRaiting = fieldcsatFilterRaiting == null ? null : WorkflowExpression.Compile(fieldcsatFilterRaiting);
+            WorkflowExpression.Validate(__workflow_fieldcsatFilterRaiting, nameof(fieldcsatFilterRaiting), required: false);
+            var __workflow_fieldcsatFilterAgents = fieldcsatFilterAgents == null ? null : WorkflowExpression.Compile(fieldcsatFilterAgents);
+            WorkflowExpression.Validate(__workflow_fieldcsatFilterAgents, nameof(fieldcsatFilterAgents), required: false);
+            var __workflow_fieldcsatFilterSegments = fieldcsatFilterSegments == null ? null : WorkflowExpression.Compile(fieldcsatFilterSegments);
+            WorkflowExpression.Validate(__workflow_fieldcsatFilterSegments, nameof(fieldcsatFilterSegments), required: false);
+            var __workflow_fieldcsatFilterCompanies = fieldcsatFilterCompanies == null ? null : WorkflowExpression.Compile(fieldcsatFilterCompanies);
+            WorkflowExpression.Validate(__workflow_fieldcsatFilterCompanies, nameof(fieldcsatFilterCompanies), required: false);
+            var __workflow_fieldcsatFilterContacts = fieldcsatFilterContacts == null ? null : WorkflowExpression.Compile(fieldcsatFilterContacts);
+            WorkflowExpression.Validate(__workflow_fieldcsatFilterContacts, nameof(fieldcsatFilterContacts), required: false);
+            var __workflow_fieldcsatFilterComments = fieldcsatFilterComments == null ? null : WorkflowExpression.Compile(fieldcsatFilterComments);
+            WorkflowExpression.Validate(__workflow_fieldcsatFilterComments, nameof(fieldcsatFilterComments), required: false);
+            var __workflow_fieldcsatFilterMp = fieldcsatFilterMp == null ? null : WorkflowExpression.Compile(fieldcsatFilterMp);
+            WorkflowExpression.Validate(__workflow_fieldcsatFilterMp, nameof(fieldcsatFilterMp), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/v3/power/CSAT/";
@@ -95,45 +87,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
                 callPayload.Headers["x-ms-notification-url"] = Convert.ToString("#{listCallbackUrl()}");
                 var field = new JObject();
                 var fieldpropCount = 0;
-                if (fieldcsatFilterRaiting != null)
+                if (__workflow_fieldcsatFilterRaiting != null)
                 {
-                    field["csat_filter_raiting"] = ExpressionConverter.ConvertO(fieldcsatFilterRaiting);
+                    field["csat_filter_raiting"] = ExpressionConverter.ConvertO(__workflow_fieldcsatFilterRaiting);
                     fieldpropCount++;
                 }
 
-                if (fieldcsatFilterAgents != null)
+                if (__workflow_fieldcsatFilterAgents != null)
                 {
-                    field["csat_filter_agents"] = ExpressionConverter.ConvertO(fieldcsatFilterAgents);
+                    field["csat_filter_agents"] = ExpressionConverter.ConvertO(__workflow_fieldcsatFilterAgents);
                     fieldpropCount++;
                 }
 
-                if (fieldcsatFilterSegments != null)
+                if (__workflow_fieldcsatFilterSegments != null)
                 {
-                    field["csat_filter_segments"] = ExpressionConverter.ConvertO(fieldcsatFilterSegments);
+                    field["csat_filter_segments"] = ExpressionConverter.ConvertO(__workflow_fieldcsatFilterSegments);
                     fieldpropCount++;
                 }
 
-                if (fieldcsatFilterCompanies != null)
+                if (__workflow_fieldcsatFilterCompanies != null)
                 {
-                    field["csat_filter_companies"] = ExpressionConverter.ConvertO(fieldcsatFilterCompanies);
+                    field["csat_filter_companies"] = ExpressionConverter.ConvertO(__workflow_fieldcsatFilterCompanies);
                     fieldpropCount++;
                 }
 
-                if (fieldcsatFilterContacts != null)
+                if (__workflow_fieldcsatFilterContacts != null)
                 {
-                    field["csat_filter_contacts"] = ExpressionConverter.ConvertO(fieldcsatFilterContacts);
+                    field["csat_filter_contacts"] = ExpressionConverter.ConvertO(__workflow_fieldcsatFilterContacts);
                     fieldpropCount++;
                 }
 
-                if (fieldcsatFilterComments != null)
+                if (__workflow_fieldcsatFilterComments != null)
                 {
-                    field["csat_filter_comments"] = ExpressionConverter.ConvertO(fieldcsatFilterComments);
+                    field["csat_filter_comments"] = ExpressionConverter.ConvertO(__workflow_fieldcsatFilterComments);
                     fieldpropCount++;
                 }
 
-                if (fieldcsatFilterMp != null)
+                if (__workflow_fieldcsatFilterMp != null)
                 {
-                    field["csat_filter_mp"] = ExpressionConverter.ConvertO(fieldcsatFilterMp);
+                    field["csat_filter_mp"] = ExpressionConverter.ConvertO(__workflow_fieldcsatFilterMp);
                     fieldpropCount++;
                 }
 
@@ -146,19 +138,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildNPSReceived))]
-        public IWorkflowTrigger NPSReceived([WorkflowExpression] Func<fieldnpsFilterScoreInputItem[]> fieldnpsFilterScore = null,[WorkflowExpression] Func<string[]> fieldnpsFilterCampaigns = null,[WorkflowExpression] Func<fieldnpsFilterCommentsInput> fieldnpsFilterComments = null,[WorkflowExpression] Func<fieldnpsFilterMpInput> fieldnpsFilterMp = null,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger NPSReceived(Expression<Func<fieldnpsFilterScoreInputItem[]>> fieldnpsFilterScore = null, Expression<Func<string[]>> fieldnpsFilterCampaigns = null, Expression<Func<fieldnpsFilterCommentsInput>> fieldnpsFilterComments = null, Expression<Func<fieldnpsFilterMpInput>> fieldnpsFilterMp = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildNPSReceived(WorkflowExpression<fieldnpsFilterScoreInputItem[]> fieldnpsFilterScore = null,WorkflowExpression<string[]> fieldnpsFilterCampaigns = null,WorkflowExpression<fieldnpsFilterCommentsInput> fieldnpsFilterComments = null,WorkflowExpression<fieldnpsFilterMpInput> fieldnpsFilterMp = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(fieldnpsFilterScore, nameof(fieldnpsFilterScore), required: false);
-            WorkflowExpression.Validate(fieldnpsFilterCampaigns, nameof(fieldnpsFilterCampaigns), required: false);
-            WorkflowExpression.Validate(fieldnpsFilterComments, nameof(fieldnpsFilterComments), required: false);
-            WorkflowExpression.Validate(fieldnpsFilterMp, nameof(fieldnpsFilterMp), required: false);
+            var __workflow_fieldnpsFilterScore = fieldnpsFilterScore == null ? null : WorkflowExpression.Compile(fieldnpsFilterScore);
+            WorkflowExpression.Validate(__workflow_fieldnpsFilterScore, nameof(fieldnpsFilterScore), required: false);
+            var __workflow_fieldnpsFilterCampaigns = fieldnpsFilterCampaigns == null ? null : WorkflowExpression.Compile(fieldnpsFilterCampaigns);
+            WorkflowExpression.Validate(__workflow_fieldnpsFilterCampaigns, nameof(fieldnpsFilterCampaigns), required: false);
+            var __workflow_fieldnpsFilterComments = fieldnpsFilterComments == null ? null : WorkflowExpression.Compile(fieldnpsFilterComments);
+            WorkflowExpression.Validate(__workflow_fieldnpsFilterComments, nameof(fieldnpsFilterComments), required: false);
+            var __workflow_fieldnpsFilterMp = fieldnpsFilterMp == null ? null : WorkflowExpression.Compile(fieldnpsFilterMp);
+            WorkflowExpression.Validate(__workflow_fieldnpsFilterMp, nameof(fieldnpsFilterMp), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/v3/power/NPS/";
@@ -167,27 +156,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
                 callPayload.Headers["x-ms-notification-url"] = Convert.ToString("#{listCallbackUrl()}");
                 var field = new JObject();
                 var fieldpropCount = 0;
-                if (fieldnpsFilterScore != null)
+                if (__workflow_fieldnpsFilterScore != null)
                 {
-                    field["nps_filter_score"] = ExpressionConverter.ConvertO(fieldnpsFilterScore);
+                    field["nps_filter_score"] = ExpressionConverter.ConvertO(__workflow_fieldnpsFilterScore);
                     fieldpropCount++;
                 }
 
-                if (fieldnpsFilterCampaigns != null)
+                if (__workflow_fieldnpsFilterCampaigns != null)
                 {
-                    field["nps_filter_campaigns"] = ExpressionConverter.ConvertO(fieldnpsFilterCampaigns);
+                    field["nps_filter_campaigns"] = ExpressionConverter.ConvertO(__workflow_fieldnpsFilterCampaigns);
                     fieldpropCount++;
                 }
 
-                if (fieldnpsFilterComments != null)
+                if (__workflow_fieldnpsFilterComments != null)
                 {
-                    field["nps_filter_comments"] = ExpressionConverter.ConvertO(fieldnpsFilterComments);
+                    field["nps_filter_comments"] = ExpressionConverter.ConvertO(__workflow_fieldnpsFilterComments);
                     fieldpropCount++;
                 }
 
-                if (fieldnpsFilterMp != null)
+                if (__workflow_fieldnpsFilterMp != null)
                 {
-                    field["nps_filter_mp"] = ExpressionConverter.ConvertO(fieldnpsFilterMp);
+                    field["nps_filter_mp"] = ExpressionConverter.ConvertO(__workflow_fieldnpsFilterMp);
                     fieldpropCount++;
                 }
 
@@ -200,19 +189,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildPRJReceived))]
-        public IWorkflowTrigger PRJReceived([WorkflowExpression] Func<fieldprojectsFilterScoreInputItem[]> fieldprojectsFilterScore = null,[WorkflowExpression] Func<string[]> fieldprojectsFilterSurveys = null,[WorkflowExpression] Func<fieldprojectsFilterCommentsInput> fieldprojectsFilterComments = null,[WorkflowExpression] Func<fieldprojectsFilterMpInput> fieldprojectsFilterMp = null,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger PRJReceived(Expression<Func<fieldprojectsFilterScoreInputItem[]>> fieldprojectsFilterScore = null, Expression<Func<string[]>> fieldprojectsFilterSurveys = null, Expression<Func<fieldprojectsFilterCommentsInput>> fieldprojectsFilterComments = null, Expression<Func<fieldprojectsFilterMpInput>> fieldprojectsFilterMp = null, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildPRJReceived(WorkflowExpression<fieldprojectsFilterScoreInputItem[]> fieldprojectsFilterScore = null,WorkflowExpression<string[]> fieldprojectsFilterSurveys = null,WorkflowExpression<fieldprojectsFilterCommentsInput> fieldprojectsFilterComments = null,WorkflowExpression<fieldprojectsFilterMpInput> fieldprojectsFilterMp = null,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(fieldprojectsFilterScore, nameof(fieldprojectsFilterScore), required: false);
-            WorkflowExpression.Validate(fieldprojectsFilterSurveys, nameof(fieldprojectsFilterSurveys), required: false);
-            WorkflowExpression.Validate(fieldprojectsFilterComments, nameof(fieldprojectsFilterComments), required: false);
-            WorkflowExpression.Validate(fieldprojectsFilterMp, nameof(fieldprojectsFilterMp), required: false);
+            var __workflow_fieldprojectsFilterScore = fieldprojectsFilterScore == null ? null : WorkflowExpression.Compile(fieldprojectsFilterScore);
+            WorkflowExpression.Validate(__workflow_fieldprojectsFilterScore, nameof(fieldprojectsFilterScore), required: false);
+            var __workflow_fieldprojectsFilterSurveys = fieldprojectsFilterSurveys == null ? null : WorkflowExpression.Compile(fieldprojectsFilterSurveys);
+            WorkflowExpression.Validate(__workflow_fieldprojectsFilterSurveys, nameof(fieldprojectsFilterSurveys), required: false);
+            var __workflow_fieldprojectsFilterComments = fieldprojectsFilterComments == null ? null : WorkflowExpression.Compile(fieldprojectsFilterComments);
+            WorkflowExpression.Validate(__workflow_fieldprojectsFilterComments, nameof(fieldprojectsFilterComments), required: false);
+            var __workflow_fieldprojectsFilterMp = fieldprojectsFilterMp == null ? null : WorkflowExpression.Compile(fieldprojectsFilterMp);
+            WorkflowExpression.Validate(__workflow_fieldprojectsFilterMp, nameof(fieldprojectsFilterMp), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/v3/power/PRJ/";
@@ -221,27 +207,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
                 callPayload.Headers["x-ms-notification-url"] = Convert.ToString("#{listCallbackUrl()}");
                 var field = new JObject();
                 var fieldpropCount = 0;
-                if (fieldprojectsFilterScore != null)
+                if (__workflow_fieldprojectsFilterScore != null)
                 {
-                    field["projects_filter_score"] = ExpressionConverter.ConvertO(fieldprojectsFilterScore);
+                    field["projects_filter_score"] = ExpressionConverter.ConvertO(__workflow_fieldprojectsFilterScore);
                     fieldpropCount++;
                 }
 
-                if (fieldprojectsFilterSurveys != null)
+                if (__workflow_fieldprojectsFilterSurveys != null)
                 {
-                    field["projects_filter_surveys"] = ExpressionConverter.ConvertO(fieldprojectsFilterSurveys);
+                    field["projects_filter_surveys"] = ExpressionConverter.ConvertO(__workflow_fieldprojectsFilterSurveys);
                     fieldpropCount++;
                 }
 
-                if (fieldprojectsFilterComments != null)
+                if (__workflow_fieldprojectsFilterComments != null)
                 {
-                    field["projects_filter_comments"] = ExpressionConverter.ConvertO(fieldprojectsFilterComments);
+                    field["projects_filter_comments"] = ExpressionConverter.ConvertO(__workflow_fieldprojectsFilterComments);
                     fieldpropCount++;
                 }
 
-                if (fieldprojectsFilterMp != null)
+                if (__workflow_fieldprojectsFilterMp != null)
                 {
-                    field["projects_filter_mp"] = ExpressionConverter.ConvertO(fieldprojectsFilterMp);
+                    field["projects_filter_mp"] = ExpressionConverter.ConvertO(__workflow_fieldprojectsFilterMp);
                     fieldpropCount++;
                 }
 

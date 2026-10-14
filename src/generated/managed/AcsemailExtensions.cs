@@ -1,37 +1,40 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsemail
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class AcsemailActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acsemail")]
-        [WorkflowExpressionFactory(nameof(__BuildSendEmailGAVersion))]
-        public IBodyWorkflowAction<EmailSendResult> SendEmailGAVersion([WorkflowExpression] Func<string> emailMessagesenderAddress, [WorkflowExpression] Func<string> emailMessagecontentsubject, [WorkflowExpression] Func<emailMessageimportanceInput> emailMessageimportance = null, [WorkflowExpression] Func<emailMessagerecipientstoInputItem[]> emailMessagerecipientsto = null, [WorkflowExpression] Func<emailMessagerecipientscCInputItem[]> emailMessagerecipientscC = null, [WorkflowExpression] Func<emailMessagerecipientsbCCInputItem[]> emailMessagerecipientsbCC = null, [WorkflowExpression] Func<string> emailMessagecontenthtml = null, [WorkflowExpression] Func<emailMessagereplyToInputItem[]> emailMessagereplyTo = null, [WorkflowExpression] Func<emailMessageattachmentsInputItem[]> emailMessageattachments = null, [WorkflowExpression] Func<EmailCustomHeader[]> emailMessageheaders = null, [WorkflowExpression] Func<bool> emailMessageuserEngagementTrackingDisabled = null)
+        public IBodyWorkflowAction<EmailSendResult> SendEmailGAVersion(Expression<Func<string>> emailMessagesenderAddress, Expression<Func<string>> emailMessagecontentsubject, Expression<Func<emailMessageimportanceInput>> emailMessageimportance = null, Expression<Func<emailMessagerecipientstoInputItem[]>> emailMessagerecipientsto = null, Expression<Func<emailMessagerecipientscCInputItem[]>> emailMessagerecipientscC = null, Expression<Func<emailMessagerecipientsbCCInputItem[]>> emailMessagerecipientsbCC = null, Expression<Func<string>> emailMessagecontenthtml = null, Expression<Func<emailMessagereplyToInputItem[]>> emailMessagereplyTo = null, Expression<Func<emailMessageattachmentsInputItem[]>> emailMessageattachments = null, Expression<Func<EmailCustomHeader[]>> emailMessageheaders = null, Expression<Func<bool>> emailMessageuserEngagementTrackingDisabled = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EmailSendResult> __BuildSendEmailGAVersion(WorkflowExpression<string> emailMessagesenderAddress, WorkflowExpression<string> emailMessagecontentsubject, WorkflowExpression<emailMessageimportanceInput> emailMessageimportance = null, WorkflowExpression<emailMessagerecipientstoInputItem[]> emailMessagerecipientsto = null, WorkflowExpression<emailMessagerecipientscCInputItem[]> emailMessagerecipientscC = null, WorkflowExpression<emailMessagerecipientsbCCInputItem[]> emailMessagerecipientsbCC = null, WorkflowExpression<string> emailMessagecontenthtml = null, WorkflowExpression<emailMessagereplyToInputItem[]> emailMessagereplyTo = null, WorkflowExpression<emailMessageattachmentsInputItem[]> emailMessageattachments = null, WorkflowExpression<EmailCustomHeader[]> emailMessageheaders = null, WorkflowExpression<bool> emailMessageuserEngagementTrackingDisabled = null)
-        {
-            WorkflowExpression.Validate(emailMessagesenderAddress, nameof(emailMessagesenderAddress), required: true);
-            WorkflowExpression.Validate(emailMessagecontentsubject, nameof(emailMessagecontentsubject), required: true);
-            WorkflowExpression.Validate(emailMessageimportance, nameof(emailMessageimportance), required: false);
-            WorkflowExpression.Validate(emailMessagerecipientsto, nameof(emailMessagerecipientsto), required: false);
-            WorkflowExpression.Validate(emailMessagerecipientscC, nameof(emailMessagerecipientscC), required: false);
-            WorkflowExpression.Validate(emailMessagerecipientsbCC, nameof(emailMessagerecipientsbCC), required: false);
-            WorkflowExpression.Validate(emailMessagecontenthtml, nameof(emailMessagecontenthtml), required: false);
-            WorkflowExpression.Validate(emailMessagereplyTo, nameof(emailMessagereplyTo), required: false);
-            WorkflowExpression.Validate(emailMessageattachments, nameof(emailMessageattachments), required: false);
-            WorkflowExpression.Validate(emailMessageheaders, nameof(emailMessageheaders), required: false);
-            WorkflowExpression.Validate(emailMessageuserEngagementTrackingDisabled, nameof(emailMessageuserEngagementTrackingDisabled), required: false);
+            var __workflow_emailMessagesenderAddress = emailMessagesenderAddress == null ? null : WorkflowExpression.Compile(emailMessagesenderAddress);
+            WorkflowExpression.Validate(__workflow_emailMessagesenderAddress, nameof(emailMessagesenderAddress), required: true);
+            var __workflow_emailMessagecontentsubject = emailMessagecontentsubject == null ? null : WorkflowExpression.Compile(emailMessagecontentsubject);
+            WorkflowExpression.Validate(__workflow_emailMessagecontentsubject, nameof(emailMessagecontentsubject), required: true);
+            var __workflow_emailMessageimportance = emailMessageimportance == null ? null : WorkflowExpression.Compile(emailMessageimportance);
+            WorkflowExpression.Validate(__workflow_emailMessageimportance, nameof(emailMessageimportance), required: false);
+            var __workflow_emailMessagerecipientsto = emailMessagerecipientsto == null ? null : WorkflowExpression.Compile(emailMessagerecipientsto);
+            WorkflowExpression.Validate(__workflow_emailMessagerecipientsto, nameof(emailMessagerecipientsto), required: false);
+            var __workflow_emailMessagerecipientscC = emailMessagerecipientscC == null ? null : WorkflowExpression.Compile(emailMessagerecipientscC);
+            WorkflowExpression.Validate(__workflow_emailMessagerecipientscC, nameof(emailMessagerecipientscC), required: false);
+            var __workflow_emailMessagerecipientsbCC = emailMessagerecipientsbCC == null ? null : WorkflowExpression.Compile(emailMessagerecipientsbCC);
+            WorkflowExpression.Validate(__workflow_emailMessagerecipientsbCC, nameof(emailMessagerecipientsbCC), required: false);
+            var __workflow_emailMessagecontenthtml = emailMessagecontenthtml == null ? null : WorkflowExpression.Compile(emailMessagecontenthtml);
+            WorkflowExpression.Validate(__workflow_emailMessagecontenthtml, nameof(emailMessagecontenthtml), required: false);
+            var __workflow_emailMessagereplyTo = emailMessagereplyTo == null ? null : WorkflowExpression.Compile(emailMessagereplyTo);
+            WorkflowExpression.Validate(__workflow_emailMessagereplyTo, nameof(emailMessagereplyTo), required: false);
+            var __workflow_emailMessageattachments = emailMessageattachments == null ? null : WorkflowExpression.Compile(emailMessageattachments);
+            WorkflowExpression.Validate(__workflow_emailMessageattachments, nameof(emailMessageattachments), required: false);
+            var __workflow_emailMessageheaders = emailMessageheaders == null ? null : WorkflowExpression.Compile(emailMessageheaders);
+            WorkflowExpression.Validate(__workflow_emailMessageheaders, nameof(emailMessageheaders), required: false);
+            var __workflow_emailMessageuserEngagementTrackingDisabled = emailMessageuserEngagementTrackingDisabled == null ? null : WorkflowExpression.Compile(emailMessageuserEngagementTrackingDisabled);
+            WorkflowExpression.Validate(__workflow_emailMessageuserEngagementTrackingDisabled, nameof(emailMessageuserEngagementTrackingDisabled), required: false);
             return new DeferredBodyAction<EmailSendResult>(() =>
             {
                 var apiCallPath = "/emails:sendGAVersion";
@@ -41,12 +44,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsemail
                 var emailMessage = new JObject();
                 var emailMessagepropCount = 0;
                 emailMessagepropCount++;
-                emailMessage["senderAddress"] = ExpressionConverter.ConvertO(emailMessagesenderAddress);
-                if (emailMessageimportance != null)
+                emailMessage["senderAddress"] = ExpressionConverter.ConvertO(__workflow_emailMessagesenderAddress);
+                if (__workflow_emailMessageimportance != null)
                 {
-                    if (emailMessageimportance != null)
+                    if (__workflow_emailMessageimportance != null)
                     {
-                        emailMessage["importance"] = ExpressionConverter.ConvertO(emailMessageimportance);
+                        emailMessage["importance"] = ExpressionConverter.ConvertO(__workflow_emailMessageimportance);
                         emailMessagepropCount++;
                     }
 
@@ -60,21 +63,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsemail
 
                 var recipientsObject = new JObject();
                 var recipientsObjectpropCount = 0;
-                if (emailMessagerecipientsto != null)
+                if (__workflow_emailMessagerecipientsto != null)
                 {
-                    recipientsObject["to"] = ExpressionConverter.ConvertO(emailMessagerecipientsto);
+                    recipientsObject["to"] = ExpressionConverter.ConvertO(__workflow_emailMessagerecipientsto);
                     recipientsObjectpropCount++;
                 }
 
-                if (emailMessagerecipientscC != null)
+                if (__workflow_emailMessagerecipientscC != null)
                 {
-                    recipientsObject["CC"] = ExpressionConverter.ConvertO(emailMessagerecipientscC);
+                    recipientsObject["CC"] = ExpressionConverter.ConvertO(__workflow_emailMessagerecipientscC);
                     recipientsObjectpropCount++;
                 }
 
-                if (emailMessagerecipientsbCC != null)
+                if (__workflow_emailMessagerecipientsbCC != null)
                 {
-                    recipientsObject["bCC"] = ExpressionConverter.ConvertO(emailMessagerecipientsbCC);
+                    recipientsObject["bCC"] = ExpressionConverter.ConvertO(__workflow_emailMessagerecipientsbCC);
                     recipientsObjectpropCount++;
                 }
 
@@ -87,10 +90,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsemail
                 var contentObject = new JObject();
                 var contentObjectpropCount = 0;
                 contentObjectpropCount++;
-                contentObject["subject"] = ExpressionConverter.ConvertO(emailMessagecontentsubject);
-                if (emailMessagecontenthtml != null)
+                contentObject["subject"] = ExpressionConverter.ConvertO(__workflow_emailMessagecontentsubject);
+                if (__workflow_emailMessagecontenthtml != null)
                 {
-                    contentObject["html"] = ExpressionConverter.ConvertO(emailMessagecontenthtml);
+                    contentObject["html"] = ExpressionConverter.ConvertO(__workflow_emailMessagecontenthtml);
                     contentObjectpropCount++;
                 }
 
@@ -100,27 +103,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsemail
                     emailMessagepropCount++;
                 }
 
-                if (emailMessagereplyTo != null)
+                if (__workflow_emailMessagereplyTo != null)
                 {
-                    emailMessage["replyTo"] = ExpressionConverter.ConvertO(emailMessagereplyTo);
+                    emailMessage["replyTo"] = ExpressionConverter.ConvertO(__workflow_emailMessagereplyTo);
                     emailMessagepropCount++;
                 }
 
-                if (emailMessageattachments != null)
+                if (__workflow_emailMessageattachments != null)
                 {
-                    emailMessage["attachments"] = ExpressionConverter.ConvertO(emailMessageattachments);
+                    emailMessage["attachments"] = ExpressionConverter.ConvertO(__workflow_emailMessageattachments);
                     emailMessagepropCount++;
                 }
 
-                if (emailMessageheaders != null)
+                if (__workflow_emailMessageheaders != null)
                 {
-                    emailMessage["headers"] = ExpressionConverter.ConvertO(emailMessageheaders);
+                    emailMessage["headers"] = ExpressionConverter.ConvertO(__workflow_emailMessageheaders);
                     emailMessagepropCount++;
                 }
 
-                if (emailMessageuserEngagementTrackingDisabled != null)
+                if (__workflow_emailMessageuserEngagementTrackingDisabled != null)
                 {
-                    emailMessage["userEngagementTrackingDisabled"] = ExpressionConverter.ConvertO(emailMessageuserEngagementTrackingDisabled);
+                    emailMessage["userEngagementTrackingDisabled"] = ExpressionConverter.ConvertO(__workflow_emailMessageuserEngagementTrackingDisabled);
                     emailMessagepropCount++;
                 }
 
@@ -134,19 +137,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsemail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acsemail")]
-        [WorkflowExpressionFactory(nameof(__BuildGetMessageStatusGAVersion))]
-        public IBodyWorkflowAction<EmailSendResult> GetMessageStatusGAVersion([WorkflowExpression] Func<string> operationId)
+        public IBodyWorkflowAction<EmailSendResult> GetMessageStatusGAVersion(Expression<Func<string>> operationId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EmailSendResult> __BuildGetMessageStatusGAVersion(WorkflowExpression<string> operationId)
-        {
-            WorkflowExpression.Validate(operationId, nameof(operationId), required: true);
+            var __workflow_operationId = operationId == null ? null : WorkflowExpression.Compile(operationId);
+            WorkflowExpression.Validate(__workflow_operationId, nameof(operationId), required: true);
             return new DeferredBodyAction<EmailSendResult>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/emails/operations/{0}", ExpressionConverter.ConvertWithUrlEncoding(operationId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/emails/operations/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_operationId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2023-03-31");

@@ -1,36 +1,38 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class Openaigpt4ipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
-        [WorkflowExpressionFactory(nameof(__BuildChat))]
-        public IBodyWorkflowAction<ChatPostResponse> Chat([WorkflowExpression] Func<string> bodymodel, [WorkflowExpression] Func<bodymessagesInputItem[]> bodymessages, [WorkflowExpression] Func<int> bodymaxTokens = null, [WorkflowExpression] Func<double> bodytemperature = null, [WorkflowExpression] Func<double> bodytopP = null, [WorkflowExpression] Func<int> bodyn = null, [WorkflowExpression] Func<string> bodystop = null, [WorkflowExpression] Func<double> bodypresencePenalty = null, [WorkflowExpression] Func<double> bodyfrequencyPenalty = null, [WorkflowExpression] Func<string> bodyuser = null)
+        public IBodyWorkflowAction<ChatPostResponse> Chat(Expression<Func<string>> bodymodel, Expression<Func<bodymessagesInputItem[]>> bodymessages, Expression<Func<int>> bodymaxTokens = null, Expression<Func<double>> bodytemperature = null, Expression<Func<double>> bodytopP = null, Expression<Func<int>> bodyn = null, Expression<Func<string>> bodystop = null, Expression<Func<double>> bodypresencePenalty = null, Expression<Func<double>> bodyfrequencyPenalty = null, Expression<Func<string>> bodyuser = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ChatPostResponse> __BuildChat(WorkflowExpression<string> bodymodel, WorkflowExpression<bodymessagesInputItem[]> bodymessages, WorkflowExpression<int> bodymaxTokens = null, WorkflowExpression<double> bodytemperature = null, WorkflowExpression<double> bodytopP = null, WorkflowExpression<int> bodyn = null, WorkflowExpression<string> bodystop = null, WorkflowExpression<double> bodypresencePenalty = null, WorkflowExpression<double> bodyfrequencyPenalty = null, WorkflowExpression<string> bodyuser = null)
-        {
-            WorkflowExpression.Validate(bodymodel, nameof(bodymodel), required: true);
-            WorkflowExpression.Validate(bodymessages, nameof(bodymessages), required: true);
-            WorkflowExpression.Validate(bodymaxTokens, nameof(bodymaxTokens), required: false);
-            WorkflowExpression.Validate(bodytemperature, nameof(bodytemperature), required: false);
-            WorkflowExpression.Validate(bodytopP, nameof(bodytopP), required: false);
-            WorkflowExpression.Validate(bodyn, nameof(bodyn), required: false);
-            WorkflowExpression.Validate(bodystop, nameof(bodystop), required: false);
-            WorkflowExpression.Validate(bodypresencePenalty, nameof(bodypresencePenalty), required: false);
-            WorkflowExpression.Validate(bodyfrequencyPenalty, nameof(bodyfrequencyPenalty), required: false);
-            WorkflowExpression.Validate(bodyuser, nameof(bodyuser), required: false);
+            var __workflow_bodymodel = bodymodel == null ? null : WorkflowExpression.Compile(bodymodel);
+            WorkflowExpression.Validate(__workflow_bodymodel, nameof(bodymodel), required: true);
+            var __workflow_bodymessages = bodymessages == null ? null : WorkflowExpression.Compile(bodymessages);
+            WorkflowExpression.Validate(__workflow_bodymessages, nameof(bodymessages), required: true);
+            var __workflow_bodymaxTokens = bodymaxTokens == null ? null : WorkflowExpression.Compile(bodymaxTokens);
+            WorkflowExpression.Validate(__workflow_bodymaxTokens, nameof(bodymaxTokens), required: false);
+            var __workflow_bodytemperature = bodytemperature == null ? null : WorkflowExpression.Compile(bodytemperature);
+            WorkflowExpression.Validate(__workflow_bodytemperature, nameof(bodytemperature), required: false);
+            var __workflow_bodytopP = bodytopP == null ? null : WorkflowExpression.Compile(bodytopP);
+            WorkflowExpression.Validate(__workflow_bodytopP, nameof(bodytopP), required: false);
+            var __workflow_bodyn = bodyn == null ? null : WorkflowExpression.Compile(bodyn);
+            WorkflowExpression.Validate(__workflow_bodyn, nameof(bodyn), required: false);
+            var __workflow_bodystop = bodystop == null ? null : WorkflowExpression.Compile(bodystop);
+            WorkflowExpression.Validate(__workflow_bodystop, nameof(bodystop), required: false);
+            var __workflow_bodypresencePenalty = bodypresencePenalty == null ? null : WorkflowExpression.Compile(bodypresencePenalty);
+            WorkflowExpression.Validate(__workflow_bodypresencePenalty, nameof(bodypresencePenalty), required: false);
+            var __workflow_bodyfrequencyPenalty = bodyfrequencyPenalty == null ? null : WorkflowExpression.Compile(bodyfrequencyPenalty);
+            WorkflowExpression.Validate(__workflow_bodyfrequencyPenalty, nameof(bodyfrequencyPenalty), required: false);
+            var __workflow_bodyuser = bodyuser == null ? null : WorkflowExpression.Compile(bodyuser);
+            WorkflowExpression.Validate(__workflow_bodyuser, nameof(bodyuser), required: false);
             return new DeferredBodyAction<ChatPostResponse>(() =>
             {
                 var apiCallPath = "/v1/chat/completions";
@@ -39,54 +41,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["model"] = ExpressionConverter.ConvertO(bodymodel);
+                body["model"] = ExpressionConverter.ConvertO(__workflow_bodymodel);
                 bodypropCount++;
-                body["messages"] = ExpressionConverter.ConvertO(bodymessages);
-                if (bodymaxTokens != null)
+                body["messages"] = ExpressionConverter.ConvertO(__workflow_bodymessages);
+                if (__workflow_bodymaxTokens != null)
                 {
-                    body["max_tokens"] = ExpressionConverter.ConvertO(bodymaxTokens);
+                    body["max_tokens"] = ExpressionConverter.ConvertO(__workflow_bodymaxTokens);
                     bodypropCount++;
                 }
 
-                if (bodytemperature != null)
+                if (__workflow_bodytemperature != null)
                 {
-                    body["temperature"] = ExpressionConverter.ConvertO(bodytemperature);
+                    body["temperature"] = ExpressionConverter.ConvertO(__workflow_bodytemperature);
                     bodypropCount++;
                 }
 
-                if (bodytopP != null)
+                if (__workflow_bodytopP != null)
                 {
-                    body["top_p"] = ExpressionConverter.ConvertO(bodytopP);
+                    body["top_p"] = ExpressionConverter.ConvertO(__workflow_bodytopP);
                     bodypropCount++;
                 }
 
-                if (bodyn != null)
+                if (__workflow_bodyn != null)
                 {
-                    body["n"] = ExpressionConverter.ConvertO(bodyn);
+                    body["n"] = ExpressionConverter.ConvertO(__workflow_bodyn);
                     bodypropCount++;
                 }
 
-                if (bodystop != null)
+                if (__workflow_bodystop != null)
                 {
-                    body["stop"] = ExpressionConverter.ConvertO(bodystop);
+                    body["stop"] = ExpressionConverter.ConvertO(__workflow_bodystop);
                     bodypropCount++;
                 }
 
-                if (bodypresencePenalty != null)
+                if (__workflow_bodypresencePenalty != null)
                 {
-                    body["presence_penalty"] = ExpressionConverter.ConvertO(bodypresencePenalty);
+                    body["presence_penalty"] = ExpressionConverter.ConvertO(__workflow_bodypresencePenalty);
                     bodypropCount++;
                 }
 
-                if (bodyfrequencyPenalty != null)
+                if (__workflow_bodyfrequencyPenalty != null)
                 {
-                    body["frequency_penalty"] = ExpressionConverter.ConvertO(bodyfrequencyPenalty);
+                    body["frequency_penalty"] = ExpressionConverter.ConvertO(__workflow_bodyfrequencyPenalty);
                     bodypropCount++;
                 }
 
-                if (bodyuser != null)
+                if (__workflow_bodyuser != null)
                 {
-                    body["user"] = ExpressionConverter.ConvertO(bodyuser);
+                    body["user"] = ExpressionConverter.ConvertO(__workflow_bodyuser);
                     bodypropCount++;
                 }
 
@@ -109,20 +111,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
-        [WorkflowExpressionFactory(nameof(__BuildFineTuning))]
-        public IBodyWorkflowAction<FineTuningPostResponse> FineTuning([WorkflowExpression] Func<string> bodytrainingFile, [WorkflowExpression] Func<string> bodymodel, [WorkflowExpression] Func<string> bodyvalidationFile = null, [WorkflowExpression] Func<int> bodyhyperparametersnEpochs = null, [WorkflowExpression] Func<string> bodysuffix = null)
+        public IBodyWorkflowAction<FineTuningPostResponse> FineTuning(Expression<Func<string>> bodytrainingFile, Expression<Func<string>> bodymodel, Expression<Func<string>> bodyvalidationFile = null, Expression<Func<int>> bodyhyperparametersnEpochs = null, Expression<Func<string>> bodysuffix = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FineTuningPostResponse> __BuildFineTuning(WorkflowExpression<string> bodytrainingFile, WorkflowExpression<string> bodymodel, WorkflowExpression<string> bodyvalidationFile = null, WorkflowExpression<int> bodyhyperparametersnEpochs = null, WorkflowExpression<string> bodysuffix = null)
-        {
-            WorkflowExpression.Validate(bodytrainingFile, nameof(bodytrainingFile), required: true);
-            WorkflowExpression.Validate(bodymodel, nameof(bodymodel), required: true);
-            WorkflowExpression.Validate(bodyvalidationFile, nameof(bodyvalidationFile), required: false);
-            WorkflowExpression.Validate(bodyhyperparametersnEpochs, nameof(bodyhyperparametersnEpochs), required: false);
-            WorkflowExpression.Validate(bodysuffix, nameof(bodysuffix), required: false);
+            var __workflow_bodytrainingFile = bodytrainingFile == null ? null : WorkflowExpression.Compile(bodytrainingFile);
+            WorkflowExpression.Validate(__workflow_bodytrainingFile, nameof(bodytrainingFile), required: true);
+            var __workflow_bodymodel = bodymodel == null ? null : WorkflowExpression.Compile(bodymodel);
+            WorkflowExpression.Validate(__workflow_bodymodel, nameof(bodymodel), required: true);
+            var __workflow_bodyvalidationFile = bodyvalidationFile == null ? null : WorkflowExpression.Compile(bodyvalidationFile);
+            WorkflowExpression.Validate(__workflow_bodyvalidationFile, nameof(bodyvalidationFile), required: false);
+            var __workflow_bodyhyperparametersnEpochs = bodyhyperparametersnEpochs == null ? null : WorkflowExpression.Compile(bodyhyperparametersnEpochs);
+            WorkflowExpression.Validate(__workflow_bodyhyperparametersnEpochs, nameof(bodyhyperparametersnEpochs), required: false);
+            var __workflow_bodysuffix = bodysuffix == null ? null : WorkflowExpression.Compile(bodysuffix);
+            WorkflowExpression.Validate(__workflow_bodysuffix, nameof(bodysuffix), required: false);
             return new DeferredBodyAction<FineTuningPostResponse>(() =>
             {
                 var apiCallPath = "/v1/fine_tuning/jobs";
@@ -131,20 +131,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["training_file"] = ExpressionConverter.ConvertO(bodytrainingFile);
-                if (bodyvalidationFile != null)
+                body["training_file"] = ExpressionConverter.ConvertO(__workflow_bodytrainingFile);
+                if (__workflow_bodyvalidationFile != null)
                 {
-                    body["validation_file"] = ExpressionConverter.ConvertO(bodyvalidationFile);
+                    body["validation_file"] = ExpressionConverter.ConvertO(__workflow_bodyvalidationFile);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["model"] = ExpressionConverter.ConvertO(bodymodel);
+                body["model"] = ExpressionConverter.ConvertO(__workflow_bodymodel);
                 var hyperparametersObject = new JObject();
                 var hyperparametersObjectpropCount = 0;
-                if (bodyhyperparametersnEpochs != null)
+                if (__workflow_bodyhyperparametersnEpochs != null)
                 {
-                    hyperparametersObject["n_epochs"] = ExpressionConverter.ConvertO(bodyhyperparametersnEpochs);
+                    hyperparametersObject["n_epochs"] = ExpressionConverter.ConvertO(__workflow_bodyhyperparametersnEpochs);
                     hyperparametersObjectpropCount++;
                 }
 
@@ -154,9 +154,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
                     bodypropCount++;
                 }
 
-                if (bodysuffix != null)
+                if (__workflow_bodysuffix != null)
                 {
-                    body["suffix"] = ExpressionConverter.ConvertO(bodysuffix);
+                    body["suffix"] = ExpressionConverter.ConvertO(__workflow_bodysuffix);
                     bodypropCount++;
                 }
 
@@ -170,19 +170,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
-        [WorkflowExpressionFactory(nameof(__BuildFineTuningGet))]
-        public IBodyWorkflowAction<FineTuningGetResponse> FineTuningGet([WorkflowExpression] Func<string> fineTuningJobId)
+        public IBodyWorkflowAction<FineTuningGetResponse> FineTuningGet(Expression<Func<string>> fineTuningJobId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FineTuningGetResponse> __BuildFineTuningGet(WorkflowExpression<string> fineTuningJobId)
-        {
-            WorkflowExpression.Validate(fineTuningJobId, nameof(fineTuningJobId), required: true);
+            var __workflow_fineTuningJobId = fineTuningJobId == null ? null : WorkflowExpression.Compile(fineTuningJobId);
+            WorkflowExpression.Validate(__workflow_fineTuningJobId, nameof(fineTuningJobId), required: true);
             return new DeferredBodyAction<FineTuningGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/fine_tuning/jobs/{0}", ExpressionConverter.ConvertWithUrlEncoding(fineTuningJobId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/fine_tuning/jobs/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fineTuningJobId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FineTuningGetResponse>(callPayload);
@@ -190,19 +184,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
-        [WorkflowExpressionFactory(nameof(__BuildFineTuningCancel))]
-        public IBodyWorkflowAction<FineTuningCancelPostResponse> FineTuningCancel([WorkflowExpression] Func<string> fineTuningJobId)
+        public IBodyWorkflowAction<FineTuningCancelPostResponse> FineTuningCancel(Expression<Func<string>> fineTuningJobId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FineTuningCancelPostResponse> __BuildFineTuningCancel(WorkflowExpression<string> fineTuningJobId)
-        {
-            WorkflowExpression.Validate(fineTuningJobId, nameof(fineTuningJobId), required: true);
+            var __workflow_fineTuningJobId = fineTuningJobId == null ? null : WorkflowExpression.Compile(fineTuningJobId);
+            WorkflowExpression.Validate(__workflow_fineTuningJobId, nameof(fineTuningJobId), required: true);
             return new DeferredBodyAction<FineTuningCancelPostResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/fine_tuning/jobs/{0}/cancel", ExpressionConverter.ConvertWithUrlEncoding(fineTuningJobId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/fine_tuning/jobs/{0}/cancel", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fineTuningJobId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FineTuningCancelPostResponse>(callPayload);
@@ -210,43 +198,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
-        [WorkflowExpressionFactory(nameof(__BuildFineTuningEventsGet))]
-        public IBodyWorkflowAction<FineTuningEventsGetResponse> FineTuningEventsGet([WorkflowExpression] Func<string> fineTuningJobId, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<int> limit = null)
+        public IBodyWorkflowAction<FineTuningEventsGetResponse> FineTuningEventsGet(Expression<Func<string>> fineTuningJobId, Expression<Func<string>> after = null, Expression<Func<int>> limit = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FineTuningEventsGetResponse> __BuildFineTuningEventsGet(WorkflowExpression<string> fineTuningJobId, WorkflowExpression<string> after = null, WorkflowExpression<int> limit = null)
-        {
-            WorkflowExpression.Validate(fineTuningJobId, nameof(fineTuningJobId), required: true);
-            WorkflowExpression.Validate(after, nameof(after), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
+            var __workflow_fineTuningJobId = fineTuningJobId == null ? null : WorkflowExpression.Compile(fineTuningJobId);
+            WorkflowExpression.Validate(__workflow_fineTuningJobId, nameof(fineTuningJobId), required: true);
+            var __workflow_after = after == null ? null : WorkflowExpression.Compile(after);
+            WorkflowExpression.Validate(__workflow_after, nameof(after), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
             return new DeferredBodyAction<FineTuningEventsGetResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/fine_tuning/jobs/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(fineTuningJobId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/fine_tuning/jobs/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fineTuningJobId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (after != null)
-                    callPayload.Queries["after"] = ExpressionConverter.Convert(after);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (__workflow_after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(__workflow_after);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 return new ApiConnectionAction<FineTuningEventsGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
-        [WorkflowExpressionFactory(nameof(__BuildModeration))]
-        public IBodyWorkflowAction<ModerationPostResponse> Moderation([WorkflowExpression] Func<string> bodyinput, [WorkflowExpression] Func<bodymodelInput> bodymodel = null)
+        public IBodyWorkflowAction<ModerationPostResponse> Moderation(Expression<Func<string>> bodyinput, Expression<Func<bodymodelInput>> bodymodel = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ModerationPostResponse> __BuildModeration(WorkflowExpression<string> bodyinput, WorkflowExpression<bodymodelInput> bodymodel = null)
-        {
-            WorkflowExpression.Validate(bodyinput, nameof(bodyinput), required: true);
-            WorkflowExpression.Validate(bodymodel, nameof(bodymodel), required: false);
+            var __workflow_bodyinput = bodyinput == null ? null : WorkflowExpression.Compile(bodyinput);
+            WorkflowExpression.Validate(__workflow_bodyinput, nameof(bodyinput), required: true);
+            var __workflow_bodymodel = bodymodel == null ? null : WorkflowExpression.Compile(bodymodel);
+            WorkflowExpression.Validate(__workflow_bodymodel, nameof(bodymodel), required: false);
             return new DeferredBodyAction<ModerationPostResponse>(() =>
             {
                 var apiCallPath = "/v1/moderations";
@@ -255,12 +234,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["input"] = ExpressionConverter.ConvertO(bodyinput);
-                if (bodymodel != null)
+                body["input"] = ExpressionConverter.ConvertO(__workflow_bodyinput);
+                if (__workflow_bodymodel != null)
                 {
-                    if (bodymodel != null)
+                    if (__workflow_bodymodel != null)
                     {
-                        body["model"] = ExpressionConverter.ConvertO(bodymodel);
+                        body["model"] = ExpressionConverter.ConvertO(__workflow_bodymodel);
                         bodypropCount++;
                     }
 
@@ -282,19 +261,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
-        [WorkflowExpressionFactory(nameof(__BuildEmbed))]
-        public IBodyWorkflowAction<EmbedPostResponse> Embed([WorkflowExpression] Func<string> bodyinput, [WorkflowExpression] Func<string> bodymodel = null, [WorkflowExpression] Func<bodyencodingFormatInput> bodyencodingFormat = null, [WorkflowExpression] Func<string> bodyuser = null)
+        public IBodyWorkflowAction<EmbedPostResponse> Embed(Expression<Func<string>> bodyinput, Expression<Func<string>> bodymodel = null, Expression<Func<bodyencodingFormatInput>> bodyencodingFormat = null, Expression<Func<string>> bodyuser = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<EmbedPostResponse> __BuildEmbed(WorkflowExpression<string> bodyinput, WorkflowExpression<string> bodymodel = null, WorkflowExpression<bodyencodingFormatInput> bodyencodingFormat = null, WorkflowExpression<string> bodyuser = null)
-        {
-            WorkflowExpression.Validate(bodyinput, nameof(bodyinput), required: true);
-            WorkflowExpression.Validate(bodymodel, nameof(bodymodel), required: false);
-            WorkflowExpression.Validate(bodyencodingFormat, nameof(bodyencodingFormat), required: false);
-            WorkflowExpression.Validate(bodyuser, nameof(bodyuser), required: false);
+            var __workflow_bodyinput = bodyinput == null ? null : WorkflowExpression.Compile(bodyinput);
+            WorkflowExpression.Validate(__workflow_bodyinput, nameof(bodyinput), required: true);
+            var __workflow_bodymodel = bodymodel == null ? null : WorkflowExpression.Compile(bodymodel);
+            WorkflowExpression.Validate(__workflow_bodymodel, nameof(bodymodel), required: false);
+            var __workflow_bodyencodingFormat = bodyencodingFormat == null ? null : WorkflowExpression.Compile(bodyencodingFormat);
+            WorkflowExpression.Validate(__workflow_bodyencodingFormat, nameof(bodyencodingFormat), required: false);
+            var __workflow_bodyuser = bodyuser == null ? null : WorkflowExpression.Compile(bodyuser);
+            WorkflowExpression.Validate(__workflow_bodyuser, nameof(bodyuser), required: false);
             return new DeferredBodyAction<EmbedPostResponse>(() =>
             {
                 var apiCallPath = "/v1/embeddings";
@@ -303,12 +279,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["input"] = ExpressionConverter.ConvertO(bodyinput);
-                if (bodymodel != null)
+                body["input"] = ExpressionConverter.ConvertO(__workflow_bodyinput);
+                if (__workflow_bodymodel != null)
                 {
-                    if (bodymodel != null)
+                    if (__workflow_bodymodel != null)
                     {
-                        body["model"] = ExpressionConverter.ConvertO(bodymodel);
+                        body["model"] = ExpressionConverter.ConvertO(__workflow_bodymodel);
                         bodypropCount++;
                     }
 
@@ -320,11 +296,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
                     bodypropCount++;
                 }
 
-                if (bodyencodingFormat != null)
+                if (__workflow_bodyencodingFormat != null)
                 {
-                    if (bodyencodingFormat != null)
+                    if (__workflow_bodyencodingFormat != null)
                     {
-                        body["encoding_format"] = ExpressionConverter.ConvertO(bodyencodingFormat);
+                        body["encoding_format"] = ExpressionConverter.ConvertO(__workflow_bodyencodingFormat);
                         bodypropCount++;
                     }
 
@@ -336,9 +312,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
                     bodypropCount++;
                 }
 
-                if (bodyuser != null)
+                if (__workflow_bodyuser != null)
                 {
-                    body["user"] = ExpressionConverter.ConvertO(bodyuser);
+                    body["user"] = ExpressionConverter.ConvertO(__workflow_bodyuser);
                     bodypropCount++;
                 }
 
@@ -352,20 +328,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
-        [WorkflowExpressionFactory(nameof(__BuildAudioSpeech))]
-        public IBodyWorkflowAction<AudioSpeechPostResponse> AudioSpeech([WorkflowExpression] Func<bodymodelInput> bodymodel, [WorkflowExpression] Func<string> bodyinput, [WorkflowExpression] Func<bodyvoiceInput> bodyvoice, [WorkflowExpression] Func<bodyresponseFormatInput> bodyresponseFormat = null, [WorkflowExpression] Func<double> bodyspeed = null)
+        public IBodyWorkflowAction<AudioSpeechPostResponse> AudioSpeech(Expression<Func<bodymodelInput>> bodymodel, Expression<Func<string>> bodyinput, Expression<Func<bodyvoiceInput>> bodyvoice, Expression<Func<bodyresponseFormatInput>> bodyresponseFormat = null, Expression<Func<double>> bodyspeed = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AudioSpeechPostResponse> __BuildAudioSpeech(WorkflowExpression<bodymodelInput> bodymodel, WorkflowExpression<string> bodyinput, WorkflowExpression<bodyvoiceInput> bodyvoice, WorkflowExpression<bodyresponseFormatInput> bodyresponseFormat = null, WorkflowExpression<double> bodyspeed = null)
-        {
-            WorkflowExpression.Validate(bodymodel, nameof(bodymodel), required: true);
-            WorkflowExpression.Validate(bodyinput, nameof(bodyinput), required: true);
-            WorkflowExpression.Validate(bodyvoice, nameof(bodyvoice), required: true);
-            WorkflowExpression.Validate(bodyresponseFormat, nameof(bodyresponseFormat), required: false);
-            WorkflowExpression.Validate(bodyspeed, nameof(bodyspeed), required: false);
+            var __workflow_bodymodel = bodymodel == null ? null : WorkflowExpression.Compile(bodymodel);
+            WorkflowExpression.Validate(__workflow_bodymodel, nameof(bodymodel), required: true);
+            var __workflow_bodyinput = bodyinput == null ? null : WorkflowExpression.Compile(bodyinput);
+            WorkflowExpression.Validate(__workflow_bodyinput, nameof(bodyinput), required: true);
+            var __workflow_bodyvoice = bodyvoice == null ? null : WorkflowExpression.Compile(bodyvoice);
+            WorkflowExpression.Validate(__workflow_bodyvoice, nameof(bodyvoice), required: true);
+            var __workflow_bodyresponseFormat = bodyresponseFormat == null ? null : WorkflowExpression.Compile(bodyresponseFormat);
+            WorkflowExpression.Validate(__workflow_bodyresponseFormat, nameof(bodyresponseFormat), required: false);
+            var __workflow_bodyspeed = bodyspeed == null ? null : WorkflowExpression.Compile(bodyspeed);
+            WorkflowExpression.Validate(__workflow_bodyspeed, nameof(bodyspeed), required: false);
             return new DeferredBodyAction<AudioSpeechPostResponse>(() =>
             {
                 var apiCallPath = "/v1/audio/speech";
@@ -374,16 +348,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["model"] = ExpressionConverter.ConvertO(bodymodel);
+                body["model"] = ExpressionConverter.ConvertO(__workflow_bodymodel);
                 bodypropCount++;
-                body["input"] = ExpressionConverter.ConvertO(bodyinput);
+                body["input"] = ExpressionConverter.ConvertO(__workflow_bodyinput);
                 bodypropCount++;
-                body["voice"] = ExpressionConverter.ConvertO(bodyvoice);
-                if (bodyresponseFormat != null)
+                body["voice"] = ExpressionConverter.ConvertO(__workflow_bodyvoice);
+                if (__workflow_bodyresponseFormat != null)
                 {
-                    if (bodyresponseFormat != null)
+                    if (__workflow_bodyresponseFormat != null)
                     {
-                        body["response_format"] = ExpressionConverter.ConvertO(bodyresponseFormat);
+                        body["response_format"] = ExpressionConverter.ConvertO(__workflow_bodyresponseFormat);
                         bodypropCount++;
                     }
 
@@ -395,11 +369,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
                     bodypropCount++;
                 }
 
-                if (bodyspeed != null)
+                if (__workflow_bodyspeed != null)
                 {
-                    if (bodyspeed != null)
+                    if (__workflow_bodyspeed != null)
                     {
-                        body["speed"] = ExpressionConverter.ConvertO(bodyspeed);
+                        body["speed"] = ExpressionConverter.ConvertO(__workflow_bodyspeed);
                         bodypropCount++;
                     }
 
@@ -421,20 +395,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
-        [WorkflowExpressionFactory(nameof(__BuildAudioTranscription))]
-        public IBodyWorkflowAction<AudioTranscriptionPostResponse> AudioTranscription([WorkflowExpression] Func<object> file, [WorkflowExpression] Func<string> model, [WorkflowExpression] Func<string> language = null, [WorkflowExpression] Func<string> prompt = null, [WorkflowExpression] Func<double> temperature = null)
+        public IBodyWorkflowAction<AudioTranscriptionPostResponse> AudioTranscription(Expression<Func<object>> file, Expression<Func<string>> model, Expression<Func<string>> language = null, Expression<Func<string>> prompt = null, Expression<Func<double>> temperature = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AudioTranscriptionPostResponse> __BuildAudioTranscription(WorkflowExpression<object> file, WorkflowExpression<string> model, WorkflowExpression<string> language = null, WorkflowExpression<string> prompt = null, WorkflowExpression<double> temperature = null)
-        {
-            WorkflowExpression.Validate(file, nameof(file), required: true);
-            WorkflowExpression.Validate(model, nameof(model), required: true);
-            WorkflowExpression.Validate(language, nameof(language), required: false);
-            WorkflowExpression.Validate(prompt, nameof(prompt), required: false);
-            WorkflowExpression.Validate(temperature, nameof(temperature), required: false);
+            var __workflow_file = file == null ? null : WorkflowExpression.Compile(file);
+            WorkflowExpression.Validate(__workflow_file, nameof(file), required: true);
+            var __workflow_model = model == null ? null : WorkflowExpression.Compile(model);
+            WorkflowExpression.Validate(__workflow_model, nameof(model), required: true);
+            var __workflow_language = language == null ? null : WorkflowExpression.Compile(language);
+            WorkflowExpression.Validate(__workflow_language, nameof(language), required: false);
+            var __workflow_prompt = prompt == null ? null : WorkflowExpression.Compile(prompt);
+            WorkflowExpression.Validate(__workflow_prompt, nameof(prompt), required: false);
+            var __workflow_temperature = temperature == null ? null : WorkflowExpression.Compile(temperature);
+            WorkflowExpression.Validate(__workflow_temperature, nameof(temperature), required: false);
             return new DeferredBodyAction<AudioTranscriptionPostResponse>(() =>
             {
                 var apiCallPath = "/v1/audio/transcriptions";
@@ -445,19 +417,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
-        [WorkflowExpressionFactory(nameof(__BuildAudioTranslation))]
-        public IBodyWorkflowAction<AudioTranslationPostResponse> AudioTranslation([WorkflowExpression] Func<object> file, [WorkflowExpression] Func<string> model, [WorkflowExpression] Func<string> prompt = null, [WorkflowExpression] Func<double> temperature = null)
+        public IBodyWorkflowAction<AudioTranslationPostResponse> AudioTranslation(Expression<Func<object>> file, Expression<Func<string>> model, Expression<Func<string>> prompt = null, Expression<Func<double>> temperature = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AudioTranslationPostResponse> __BuildAudioTranslation(WorkflowExpression<object> file, WorkflowExpression<string> model, WorkflowExpression<string> prompt = null, WorkflowExpression<double> temperature = null)
-        {
-            WorkflowExpression.Validate(file, nameof(file), required: true);
-            WorkflowExpression.Validate(model, nameof(model), required: true);
-            WorkflowExpression.Validate(prompt, nameof(prompt), required: false);
-            WorkflowExpression.Validate(temperature, nameof(temperature), required: false);
+            var __workflow_file = file == null ? null : WorkflowExpression.Compile(file);
+            WorkflowExpression.Validate(__workflow_file, nameof(file), required: true);
+            var __workflow_model = model == null ? null : WorkflowExpression.Compile(model);
+            WorkflowExpression.Validate(__workflow_model, nameof(model), required: true);
+            var __workflow_prompt = prompt == null ? null : WorkflowExpression.Compile(prompt);
+            WorkflowExpression.Validate(__workflow_prompt, nameof(prompt), required: false);
+            var __workflow_temperature = temperature == null ? null : WorkflowExpression.Compile(temperature);
+            WorkflowExpression.Validate(__workflow_temperature, nameof(temperature), required: false);
             return new DeferredBodyAction<AudioTranslationPostResponse>(() =>
             {
                 var apiCallPath = "/v1/audio/translations";
@@ -468,22 +437,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
-        [WorkflowExpressionFactory(nameof(__BuildImage))]
-        public IBodyWorkflowAction<ImagePostResponse> Image([WorkflowExpression] Func<string> bodyprompt, [WorkflowExpression] Func<bodymodelInput> bodymodel = null, [WorkflowExpression] Func<int> bodyn = null, [WorkflowExpression] Func<bodyqualityInput> bodyquality = null, [WorkflowExpression] Func<bodysizeInput> bodysize = null, [WorkflowExpression] Func<bodystyleInput> bodystyle = null, [WorkflowExpression] Func<string> bodyuser = null)
+        public IBodyWorkflowAction<ImagePostResponse> Image(Expression<Func<string>> bodyprompt, Expression<Func<bodymodelInput>> bodymodel = null, Expression<Func<int>> bodyn = null, Expression<Func<bodyqualityInput>> bodyquality = null, Expression<Func<bodysizeInput>> bodysize = null, Expression<Func<bodystyleInput>> bodystyle = null, Expression<Func<string>> bodyuser = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ImagePostResponse> __BuildImage(WorkflowExpression<string> bodyprompt, WorkflowExpression<bodymodelInput> bodymodel = null, WorkflowExpression<int> bodyn = null, WorkflowExpression<bodyqualityInput> bodyquality = null, WorkflowExpression<bodysizeInput> bodysize = null, WorkflowExpression<bodystyleInput> bodystyle = null, WorkflowExpression<string> bodyuser = null)
-        {
-            WorkflowExpression.Validate(bodyprompt, nameof(bodyprompt), required: true);
-            WorkflowExpression.Validate(bodymodel, nameof(bodymodel), required: false);
-            WorkflowExpression.Validate(bodyn, nameof(bodyn), required: false);
-            WorkflowExpression.Validate(bodyquality, nameof(bodyquality), required: false);
-            WorkflowExpression.Validate(bodysize, nameof(bodysize), required: false);
-            WorkflowExpression.Validate(bodystyle, nameof(bodystyle), required: false);
-            WorkflowExpression.Validate(bodyuser, nameof(bodyuser), required: false);
+            var __workflow_bodyprompt = bodyprompt == null ? null : WorkflowExpression.Compile(bodyprompt);
+            WorkflowExpression.Validate(__workflow_bodyprompt, nameof(bodyprompt), required: true);
+            var __workflow_bodymodel = bodymodel == null ? null : WorkflowExpression.Compile(bodymodel);
+            WorkflowExpression.Validate(__workflow_bodymodel, nameof(bodymodel), required: false);
+            var __workflow_bodyn = bodyn == null ? null : WorkflowExpression.Compile(bodyn);
+            WorkflowExpression.Validate(__workflow_bodyn, nameof(bodyn), required: false);
+            var __workflow_bodyquality = bodyquality == null ? null : WorkflowExpression.Compile(bodyquality);
+            WorkflowExpression.Validate(__workflow_bodyquality, nameof(bodyquality), required: false);
+            var __workflow_bodysize = bodysize == null ? null : WorkflowExpression.Compile(bodysize);
+            WorkflowExpression.Validate(__workflow_bodysize, nameof(bodysize), required: false);
+            var __workflow_bodystyle = bodystyle == null ? null : WorkflowExpression.Compile(bodystyle);
+            WorkflowExpression.Validate(__workflow_bodystyle, nameof(bodystyle), required: false);
+            var __workflow_bodyuser = bodyuser == null ? null : WorkflowExpression.Compile(bodyuser);
+            WorkflowExpression.Validate(__workflow_bodyuser, nameof(bodyuser), required: false);
             return new DeferredBodyAction<ImagePostResponse>(() =>
             {
                 var apiCallPath = "/v1/images/generations";
@@ -491,11 +460,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodymodel != null)
+                if (__workflow_bodymodel != null)
                 {
-                    if (bodymodel != null)
+                    if (__workflow_bodymodel != null)
                     {
-                        body["model"] = ExpressionConverter.ConvertO(bodymodel);
+                        body["model"] = ExpressionConverter.ConvertO(__workflow_bodymodel);
                         bodypropCount++;
                     }
 
@@ -508,18 +477,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
                 }
 
                 bodypropCount++;
-                body["prompt"] = ExpressionConverter.ConvertO(bodyprompt);
-                if (bodyn != null)
+                body["prompt"] = ExpressionConverter.ConvertO(__workflow_bodyprompt);
+                if (__workflow_bodyn != null)
                 {
-                    body["n"] = ExpressionConverter.ConvertO(bodyn);
+                    body["n"] = ExpressionConverter.ConvertO(__workflow_bodyn);
                     bodypropCount++;
                 }
 
-                if (bodyquality != null)
+                if (__workflow_bodyquality != null)
                 {
-                    if (bodyquality != null)
+                    if (__workflow_bodyquality != null)
                     {
-                        body["quality"] = ExpressionConverter.ConvertO(bodyquality);
+                        body["quality"] = ExpressionConverter.ConvertO(__workflow_bodyquality);
                         bodypropCount++;
                     }
 
@@ -533,11 +502,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
 
                 body["response_format"] = "url";
                 bodypropCount++;
-                if (bodysize != null)
+                if (__workflow_bodysize != null)
                 {
-                    if (bodysize != null)
+                    if (__workflow_bodysize != null)
                     {
-                        body["size"] = ExpressionConverter.ConvertO(bodysize);
+                        body["size"] = ExpressionConverter.ConvertO(__workflow_bodysize);
                         bodypropCount++;
                     }
 
@@ -549,15 +518,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
                     bodypropCount++;
                 }
 
-                if (bodystyle != null)
+                if (__workflow_bodystyle != null)
                 {
-                    body["style"] = ExpressionConverter.ConvertO(bodystyle);
+                    body["style"] = ExpressionConverter.ConvertO(__workflow_bodystyle);
                     bodypropCount++;
                 }
 
-                if (bodyuser != null)
+                if (__workflow_bodyuser != null)
                 {
-                    body["user"] = ExpressionConverter.ConvertO(bodyuser);
+                    body["user"] = ExpressionConverter.ConvertO(__workflow_bodyuser);
                     bodypropCount++;
                 }
 
@@ -571,22 +540,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
-        [WorkflowExpressionFactory(nameof(__BuildImageEdit))]
-        public IBodyWorkflowAction<ImageEditPostResponse> ImageEdit([WorkflowExpression] Func<object> image, [WorkflowExpression] Func<string> prompt = null, [WorkflowExpression] Func<object> mask = null, [WorkflowExpression] Func<string> model = null, [WorkflowExpression] Func<int> n = null, [WorkflowExpression] Func<sizeInput> size = null, [WorkflowExpression] Func<string> user = null)
+        public IBodyWorkflowAction<ImageEditPostResponse> ImageEdit(Expression<Func<object>> image, Expression<Func<string>> prompt = null, Expression<Func<object>> mask = null, Expression<Func<string>> model = null, Expression<Func<int>> n = null, Expression<Func<sizeInput>> size = null, Expression<Func<string>> user = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ImageEditPostResponse> __BuildImageEdit(WorkflowExpression<object> image, WorkflowExpression<string> prompt = null, WorkflowExpression<object> mask = null, WorkflowExpression<string> model = null, WorkflowExpression<int> n = null, WorkflowExpression<sizeInput> size = null, WorkflowExpression<string> user = null)
-        {
-            WorkflowExpression.Validate(image, nameof(image), required: true);
-            WorkflowExpression.Validate(prompt, nameof(prompt), required: false);
-            WorkflowExpression.Validate(mask, nameof(mask), required: false);
-            WorkflowExpression.Validate(model, nameof(model), required: false);
-            WorkflowExpression.Validate(n, nameof(n), required: false);
-            WorkflowExpression.Validate(size, nameof(size), required: false);
-            WorkflowExpression.Validate(user, nameof(user), required: false);
+            var __workflow_image = image == null ? null : WorkflowExpression.Compile(image);
+            WorkflowExpression.Validate(__workflow_image, nameof(image), required: true);
+            var __workflow_prompt = prompt == null ? null : WorkflowExpression.Compile(prompt);
+            WorkflowExpression.Validate(__workflow_prompt, nameof(prompt), required: false);
+            var __workflow_mask = mask == null ? null : WorkflowExpression.Compile(mask);
+            WorkflowExpression.Validate(__workflow_mask, nameof(mask), required: false);
+            var __workflow_model = model == null ? null : WorkflowExpression.Compile(model);
+            WorkflowExpression.Validate(__workflow_model, nameof(model), required: false);
+            var __workflow_n = n == null ? null : WorkflowExpression.Compile(n);
+            WorkflowExpression.Validate(__workflow_n, nameof(n), required: false);
+            var __workflow_size = size == null ? null : WorkflowExpression.Compile(size);
+            WorkflowExpression.Validate(__workflow_size, nameof(size), required: false);
+            var __workflow_user = user == null ? null : WorkflowExpression.Compile(user);
+            WorkflowExpression.Validate(__workflow_user, nameof(user), required: false);
             return new DeferredBodyAction<ImageEditPostResponse>(() =>
             {
                 var apiCallPath = "/v1/images/edits";
@@ -597,20 +566,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
-        [WorkflowExpressionFactory(nameof(__BuildImageVariation))]
-        public IBodyWorkflowAction<ImageVariationPostResponse> ImageVariation([WorkflowExpression] Func<object> image, [WorkflowExpression] Func<string> model = null, [WorkflowExpression] Func<int> n = null, [WorkflowExpression] Func<sizeInput> size = null, [WorkflowExpression] Func<string> user = null)
+        public IBodyWorkflowAction<ImageVariationPostResponse> ImageVariation(Expression<Func<object>> image, Expression<Func<string>> model = null, Expression<Func<int>> n = null, Expression<Func<sizeInput>> size = null, Expression<Func<string>> user = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ImageVariationPostResponse> __BuildImageVariation(WorkflowExpression<object> image, WorkflowExpression<string> model = null, WorkflowExpression<int> n = null, WorkflowExpression<sizeInput> size = null, WorkflowExpression<string> user = null)
-        {
-            WorkflowExpression.Validate(image, nameof(image), required: true);
-            WorkflowExpression.Validate(model, nameof(model), required: false);
-            WorkflowExpression.Validate(n, nameof(n), required: false);
-            WorkflowExpression.Validate(size, nameof(size), required: false);
-            WorkflowExpression.Validate(user, nameof(user), required: false);
+            var __workflow_image = image == null ? null : WorkflowExpression.Compile(image);
+            WorkflowExpression.Validate(__workflow_image, nameof(image), required: true);
+            var __workflow_model = model == null ? null : WorkflowExpression.Compile(model);
+            WorkflowExpression.Validate(__workflow_model, nameof(model), required: false);
+            var __workflow_n = n == null ? null : WorkflowExpression.Compile(n);
+            WorkflowExpression.Validate(__workflow_n, nameof(n), required: false);
+            var __workflow_size = size == null ? null : WorkflowExpression.Compile(size);
+            WorkflowExpression.Validate(__workflow_size, nameof(size), required: false);
+            var __workflow_user = user == null ? null : WorkflowExpression.Compile(user);
+            WorkflowExpression.Validate(__workflow_user, nameof(user), required: false);
             return new DeferredBodyAction<ImageVariationPostResponse>(() =>
             {
                 var apiCallPath = "/v1/images/variations";

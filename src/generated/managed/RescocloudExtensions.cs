@@ -1,36 +1,31 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescocloud
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class RescocloudActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescocloud")]
-        [WorkflowExpressionFactory(nameof(__BuildRecordDelete))]
-        public IBodyWorkflowAction<OdataError> RecordDelete([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<string> ifMatch = null)
+        public IBodyWorkflowAction<OdataError> RecordDelete(Expression<Func<string>> id, Expression<Func<string>> entity, Expression<Func<string>> ifMatch = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<OdataError> __BuildRecordDelete(WorkflowExpression<string> id, WorkflowExpression<string> entity, WorkflowExpression<string> ifMatch = null)
-        {
-            WorkflowExpression.Validate(id, nameof(id), required: true);
-            WorkflowExpression.Validate(entity, nameof(entity), required: true);
-            WorkflowExpression.Validate(ifMatch, nameof(ifMatch), required: false);
+            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
+            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_entity = entity == null ? null : WorkflowExpression.Compile(entity);
+            WorkflowExpression.Validate(__workflow_entity, nameof(entity), required: true);
+            var __workflow_ifMatch = ifMatch == null ? null : WorkflowExpression.Compile(ifMatch);
+            WorkflowExpression.Validate(__workflow_ifMatch, nameof(ifMatch), required: false);
             return new DeferredBodyAction<OdataError>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}('{1}')", ExpressionConverter.ConvertWithUrlEncoding(entity, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}('{1}')", ExpressionConverter.ConvertWithUrlEncoding(__workflow_entity, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (ifMatch != null)
-                    callPayload.Headers["If-Match"] = ExpressionConverter.Convert(ifMatch);
+                if (__workflow_ifMatch != null)
+                    callPayload.Headers["If-Match"] = ExpressionConverter.Convert(__workflow_ifMatch);
                 return new ApiConnectionAction<OdataError>(callPayload);
             });
         }
@@ -38,25 +33,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescocloud
 
     public class RescocloudTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildTriggerCreate))]
-        public IWorkflowTrigger TriggerCreate([WorkflowExpression] Func<string> entity,[WorkflowExpression] Func<actionInput> action,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TriggerCreate(Expression<Func<string>> entity, Expression<Func<actionInput>> action, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildTriggerCreate(WorkflowExpression<string> entity,WorkflowExpression<actionInput> action,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(entity, nameof(entity), required: true);
-            WorkflowExpression.Validate(action, nameof(action), required: true);
+            var __workflow_entity = entity == null ? null : WorkflowExpression.Compile(entity);
+            WorkflowExpression.Validate(__workflow_entity, nameof(entity), required: true);
+            var __workflow_action = action == null ? null : WorkflowExpression.Compile(action);
+            WorkflowExpression.Validate(__workflow_action, nameof(action), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/$hook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["$entity"] = ExpressionConverter.Convert(entity);
-                callPayload.Queries["$action"] = ExpressionConverter.Convert(action);
+                callPayload.Queries["$entity"] = ExpressionConverter.Convert(__workflow_entity);
+                callPayload.Queries["$action"] = ExpressionConverter.Convert(__workflow_action);
                 var body = new JObject();
                 var bodypropCount = 0;
                 body["callbackUrl"] = "#{listCallbackUrl()}";

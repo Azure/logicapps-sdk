@@ -1,30 +1,26 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Socialinsider
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class SocialinsiderActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "socialinsider")]
-        [WorkflowExpressionFactory(nameof(__BuildProfileTimeBasedMetrics))]
-        public IWorkflowAction ProfileTimeBasedMetrics([WorkflowExpression] Func<string> bodykey = null, [WorkflowExpression] Func<string> bodyprojectname = null, [WorkflowExpression] Func<string> bodyplatform = null, [WorkflowExpression] Func<string[]> bodyprofile = null)
+        public IWorkflowAction ProfileTimeBasedMetrics(Expression<Func<string>> bodykey = null, Expression<Func<string>> bodyprojectname = null, Expression<Func<string>> bodyplatform = null, Expression<Func<string[]>> bodyprofile = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildProfileTimeBasedMetrics(WorkflowExpression<string> bodykey = null, WorkflowExpression<string> bodyprojectname = null, WorkflowExpression<string> bodyplatform = null, WorkflowExpression<string[]> bodyprofile = null)
-        {
-            WorkflowExpression.Validate(bodykey, nameof(bodykey), required: false);
-            WorkflowExpression.Validate(bodyprojectname, nameof(bodyprojectname), required: false);
-            WorkflowExpression.Validate(bodyplatform, nameof(bodyplatform), required: false);
-            WorkflowExpression.Validate(bodyprofile, nameof(bodyprofile), required: false);
+            var __workflow_bodykey = bodykey == null ? null : WorkflowExpression.Compile(bodykey);
+            WorkflowExpression.Validate(__workflow_bodykey, nameof(bodykey), required: false);
+            var __workflow_bodyprojectname = bodyprojectname == null ? null : WorkflowExpression.Compile(bodyprojectname);
+            WorkflowExpression.Validate(__workflow_bodyprojectname, nameof(bodyprojectname), required: false);
+            var __workflow_bodyplatform = bodyplatform == null ? null : WorkflowExpression.Compile(bodyplatform);
+            WorkflowExpression.Validate(__workflow_bodyplatform, nameof(bodyplatform), required: false);
+            var __workflow_bodyprofile = bodyprofile == null ? null : WorkflowExpression.Compile(bodyprofile);
+            WorkflowExpression.Validate(__workflow_bodyprofile, nameof(bodyprofile), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/profile_time_based_metrics";
@@ -32,27 +28,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Socialinsider
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodykey != null)
+                if (__workflow_bodykey != null)
                 {
-                    body["key"] = ExpressionConverter.ConvertO(bodykey);
+                    body["key"] = ExpressionConverter.ConvertO(__workflow_bodykey);
                     bodypropCount++;
                 }
 
-                if (bodyprojectname != null)
+                if (__workflow_bodyprojectname != null)
                 {
-                    body["projectname"] = ExpressionConverter.ConvertO(bodyprojectname);
+                    body["projectname"] = ExpressionConverter.ConvertO(__workflow_bodyprojectname);
                     bodypropCount++;
                 }
 
-                if (bodyplatform != null)
+                if (__workflow_bodyplatform != null)
                 {
-                    body["platform"] = ExpressionConverter.ConvertO(bodyplatform);
+                    body["platform"] = ExpressionConverter.ConvertO(__workflow_bodyplatform);
                     bodypropCount++;
                 }
 
-                if (bodyprofile != null)
+                if (__workflow_bodyprofile != null)
                 {
-                    body["profile"] = ExpressionConverter.ConvertO(bodyprofile);
+                    body["profile"] = ExpressionConverter.ConvertO(__workflow_bodyprofile);
                     bodypropCount++;
                 }
 
@@ -66,19 +62,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Socialinsider
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "socialinsider")]
-        [WorkflowExpressionFactory(nameof(__BuildProfileAggregatedMetrics))]
-        public IWorkflowAction ProfileAggregatedMetrics([WorkflowExpression] Func<string> bodykey = null, [WorkflowExpression] Func<string> bodyprojectname = null, [WorkflowExpression] Func<string> bodyplatform = null, [WorkflowExpression] Func<string[]> bodyprofiles = null)
+        public IWorkflowAction ProfileAggregatedMetrics(Expression<Func<string>> bodykey = null, Expression<Func<string>> bodyprojectname = null, Expression<Func<string>> bodyplatform = null, Expression<Func<string[]>> bodyprofiles = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildProfileAggregatedMetrics(WorkflowExpression<string> bodykey = null, WorkflowExpression<string> bodyprojectname = null, WorkflowExpression<string> bodyplatform = null, WorkflowExpression<string[]> bodyprofiles = null)
-        {
-            WorkflowExpression.Validate(bodykey, nameof(bodykey), required: false);
-            WorkflowExpression.Validate(bodyprojectname, nameof(bodyprojectname), required: false);
-            WorkflowExpression.Validate(bodyplatform, nameof(bodyplatform), required: false);
-            WorkflowExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
+            var __workflow_bodykey = bodykey == null ? null : WorkflowExpression.Compile(bodykey);
+            WorkflowExpression.Validate(__workflow_bodykey, nameof(bodykey), required: false);
+            var __workflow_bodyprojectname = bodyprojectname == null ? null : WorkflowExpression.Compile(bodyprojectname);
+            WorkflowExpression.Validate(__workflow_bodyprojectname, nameof(bodyprojectname), required: false);
+            var __workflow_bodyplatform = bodyplatform == null ? null : WorkflowExpression.Compile(bodyplatform);
+            WorkflowExpression.Validate(__workflow_bodyplatform, nameof(bodyplatform), required: false);
+            var __workflow_bodyprofiles = bodyprofiles == null ? null : WorkflowExpression.Compile(bodyprofiles);
+            WorkflowExpression.Validate(__workflow_bodyprofiles, nameof(bodyprofiles), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/profiles_aggregated_metrics";
@@ -86,27 +79,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Socialinsider
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodykey != null)
+                if (__workflow_bodykey != null)
                 {
-                    body["key"] = ExpressionConverter.ConvertO(bodykey);
+                    body["key"] = ExpressionConverter.ConvertO(__workflow_bodykey);
                     bodypropCount++;
                 }
 
-                if (bodyprojectname != null)
+                if (__workflow_bodyprojectname != null)
                 {
-                    body["projectname"] = ExpressionConverter.ConvertO(bodyprojectname);
+                    body["projectname"] = ExpressionConverter.ConvertO(__workflow_bodyprojectname);
                     bodypropCount++;
                 }
 
-                if (bodyplatform != null)
+                if (__workflow_bodyplatform != null)
                 {
-                    body["platform"] = ExpressionConverter.ConvertO(bodyplatform);
+                    body["platform"] = ExpressionConverter.ConvertO(__workflow_bodyplatform);
                     bodypropCount++;
                 }
 
-                if (bodyprofiles != null)
+                if (__workflow_bodyprofiles != null)
                 {
-                    body["profiles"] = ExpressionConverter.ConvertO(bodyprofiles);
+                    body["profiles"] = ExpressionConverter.ConvertO(__workflow_bodyprofiles);
                     bodypropCount++;
                 }
 
@@ -120,19 +113,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Socialinsider
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "socialinsider")]
-        [WorkflowExpressionFactory(nameof(__BuildPosts))]
-        public IWorkflowAction Posts([WorkflowExpression] Func<string> bodykey = null, [WorkflowExpression] Func<string> bodyprojectname = null, [WorkflowExpression] Func<string> bodyplatform = null, [WorkflowExpression] Func<string[]> bodyprofiles = null)
+        public IWorkflowAction Posts(Expression<Func<string>> bodykey = null, Expression<Func<string>> bodyprojectname = null, Expression<Func<string>> bodyplatform = null, Expression<Func<string[]>> bodyprofiles = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildPosts(WorkflowExpression<string> bodykey = null, WorkflowExpression<string> bodyprojectname = null, WorkflowExpression<string> bodyplatform = null, WorkflowExpression<string[]> bodyprofiles = null)
-        {
-            WorkflowExpression.Validate(bodykey, nameof(bodykey), required: false);
-            WorkflowExpression.Validate(bodyprojectname, nameof(bodyprojectname), required: false);
-            WorkflowExpression.Validate(bodyplatform, nameof(bodyplatform), required: false);
-            WorkflowExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
+            var __workflow_bodykey = bodykey == null ? null : WorkflowExpression.Compile(bodykey);
+            WorkflowExpression.Validate(__workflow_bodykey, nameof(bodykey), required: false);
+            var __workflow_bodyprojectname = bodyprojectname == null ? null : WorkflowExpression.Compile(bodyprojectname);
+            WorkflowExpression.Validate(__workflow_bodyprojectname, nameof(bodyprojectname), required: false);
+            var __workflow_bodyplatform = bodyplatform == null ? null : WorkflowExpression.Compile(bodyplatform);
+            WorkflowExpression.Validate(__workflow_bodyplatform, nameof(bodyplatform), required: false);
+            var __workflow_bodyprofiles = bodyprofiles == null ? null : WorkflowExpression.Compile(bodyprofiles);
+            WorkflowExpression.Validate(__workflow_bodyprofiles, nameof(bodyprofiles), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/posts";
@@ -140,27 +130,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Socialinsider
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodykey != null)
+                if (__workflow_bodykey != null)
                 {
-                    body["key"] = ExpressionConverter.ConvertO(bodykey);
+                    body["key"] = ExpressionConverter.ConvertO(__workflow_bodykey);
                     bodypropCount++;
                 }
 
-                if (bodyprojectname != null)
+                if (__workflow_bodyprojectname != null)
                 {
-                    body["projectname"] = ExpressionConverter.ConvertO(bodyprojectname);
+                    body["projectname"] = ExpressionConverter.ConvertO(__workflow_bodyprojectname);
                     bodypropCount++;
                 }
 
-                if (bodyplatform != null)
+                if (__workflow_bodyplatform != null)
                 {
-                    body["platform"] = ExpressionConverter.ConvertO(bodyplatform);
+                    body["platform"] = ExpressionConverter.ConvertO(__workflow_bodyplatform);
                     bodypropCount++;
                 }
 
-                if (bodyprofiles != null)
+                if (__workflow_bodyprofiles != null)
                 {
-                    body["profiles"] = ExpressionConverter.ConvertO(bodyprofiles);
+                    body["profiles"] = ExpressionConverter.ConvertO(__workflow_bodyprofiles);
                     bodypropCount++;
                 }
 
@@ -174,18 +164,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Socialinsider
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "socialinsider")]
-        [WorkflowExpressionFactory(nameof(__BuildStories))]
-        public IWorkflowAction Stories([WorkflowExpression] Func<string> bodykey = null, [WorkflowExpression] Func<string> bodyprojectname = null, [WorkflowExpression] Func<string[]> bodyprofiles = null)
+        public IWorkflowAction Stories(Expression<Func<string>> bodykey = null, Expression<Func<string>> bodyprojectname = null, Expression<Func<string[]>> bodyprofiles = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildStories(WorkflowExpression<string> bodykey = null, WorkflowExpression<string> bodyprojectname = null, WorkflowExpression<string[]> bodyprofiles = null)
-        {
-            WorkflowExpression.Validate(bodykey, nameof(bodykey), required: false);
-            WorkflowExpression.Validate(bodyprojectname, nameof(bodyprojectname), required: false);
-            WorkflowExpression.Validate(bodyprofiles, nameof(bodyprofiles), required: false);
+            var __workflow_bodykey = bodykey == null ? null : WorkflowExpression.Compile(bodykey);
+            WorkflowExpression.Validate(__workflow_bodykey, nameof(bodykey), required: false);
+            var __workflow_bodyprojectname = bodyprojectname == null ? null : WorkflowExpression.Compile(bodyprojectname);
+            WorkflowExpression.Validate(__workflow_bodyprojectname, nameof(bodyprojectname), required: false);
+            var __workflow_bodyprofiles = bodyprofiles == null ? null : WorkflowExpression.Compile(bodyprofiles);
+            WorkflowExpression.Validate(__workflow_bodyprofiles, nameof(bodyprofiles), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/stories";
@@ -193,21 +179,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Socialinsider
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodykey != null)
+                if (__workflow_bodykey != null)
                 {
-                    body["key"] = ExpressionConverter.ConvertO(bodykey);
+                    body["key"] = ExpressionConverter.ConvertO(__workflow_bodykey);
                     bodypropCount++;
                 }
 
-                if (bodyprojectname != null)
+                if (__workflow_bodyprojectname != null)
                 {
-                    body["projectname"] = ExpressionConverter.ConvertO(bodyprojectname);
+                    body["projectname"] = ExpressionConverter.ConvertO(__workflow_bodyprojectname);
                     bodypropCount++;
                 }
 
-                if (bodyprofiles != null)
+                if (__workflow_bodyprofiles != null)
                 {
-                    body["profiles"] = ExpressionConverter.ConvertO(bodyprofiles);
+                    body["profiles"] = ExpressionConverter.ConvertO(__workflow_bodyprofiles);
                     bodypropCount++;
                 }
 

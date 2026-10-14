@@ -1,374 +1,382 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workingdaysip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class WorkingdaysipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
-        [WorkflowExpressionFactory(nameof(__BuildAddWorkingDays))]
-        public IBodyWorkflowAction<AddWorkingDaysResponse> AddWorkingDays([WorkflowExpression] Func<countryCodeInput> countryCode, [WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> increment, [WorkflowExpression] Func<bool> includeStart, [WorkflowExpression] Func<string> configuration = null, [WorkflowExpression] Func<string> weekend = null, [WorkflowExpression] Func<string> weekTimes = null, [WorkflowExpression] Func<string> startTemplate = null, [WorkflowExpression] Func<bool> useCustomConfiguration = null, [WorkflowExpression] Func<string> profileId = null)
+        public IBodyWorkflowAction<AddWorkingDaysResponse> AddWorkingDays(Expression<Func<countryCodeInput>> countryCode, Expression<Func<string>> startDate, Expression<Func<string>> increment, Expression<Func<bool>> includeStart, Expression<Func<string>> configuration = null, Expression<Func<string>> weekend = null, Expression<Func<string>> weekTimes = null, Expression<Func<string>> startTemplate = null, Expression<Func<bool>> useCustomConfiguration = null, Expression<Func<string>> profileId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AddWorkingDaysResponse> __BuildAddWorkingDays(WorkflowExpression<countryCodeInput> countryCode, WorkflowExpression<string> startDate, WorkflowExpression<string> increment, WorkflowExpression<bool> includeStart, WorkflowExpression<string> configuration = null, WorkflowExpression<string> weekend = null, WorkflowExpression<string> weekTimes = null, WorkflowExpression<string> startTemplate = null, WorkflowExpression<bool> useCustomConfiguration = null, WorkflowExpression<string> profileId = null)
-        {
-            WorkflowExpression.Validate(countryCode, nameof(countryCode), required: true);
-            WorkflowExpression.Validate(startDate, nameof(startDate), required: true);
-            WorkflowExpression.Validate(increment, nameof(increment), required: true);
-            WorkflowExpression.Validate(includeStart, nameof(includeStart), required: true);
-            WorkflowExpression.Validate(configuration, nameof(configuration), required: false);
-            WorkflowExpression.Validate(weekend, nameof(weekend), required: false);
-            WorkflowExpression.Validate(weekTimes, nameof(weekTimes), required: false);
-            WorkflowExpression.Validate(startTemplate, nameof(startTemplate), required: false);
-            WorkflowExpression.Validate(useCustomConfiguration, nameof(useCustomConfiguration), required: false);
-            WorkflowExpression.Validate(profileId, nameof(profileId), required: false);
+            var __workflow_countryCode = countryCode == null ? null : WorkflowExpression.Compile(countryCode);
+            WorkflowExpression.Validate(__workflow_countryCode, nameof(countryCode), required: true);
+            var __workflow_startDate = startDate == null ? null : WorkflowExpression.Compile(startDate);
+            WorkflowExpression.Validate(__workflow_startDate, nameof(startDate), required: true);
+            var __workflow_increment = increment == null ? null : WorkflowExpression.Compile(increment);
+            WorkflowExpression.Validate(__workflow_increment, nameof(increment), required: true);
+            var __workflow_includeStart = includeStart == null ? null : WorkflowExpression.Compile(includeStart);
+            WorkflowExpression.Validate(__workflow_includeStart, nameof(includeStart), required: true);
+            var __workflow_configuration = configuration == null ? null : WorkflowExpression.Compile(configuration);
+            WorkflowExpression.Validate(__workflow_configuration, nameof(configuration), required: false);
+            var __workflow_weekend = weekend == null ? null : WorkflowExpression.Compile(weekend);
+            WorkflowExpression.Validate(__workflow_weekend, nameof(weekend), required: false);
+            var __workflow_weekTimes = weekTimes == null ? null : WorkflowExpression.Compile(weekTimes);
+            WorkflowExpression.Validate(__workflow_weekTimes, nameof(weekTimes), required: false);
+            var __workflow_startTemplate = startTemplate == null ? null : WorkflowExpression.Compile(startTemplate);
+            WorkflowExpression.Validate(__workflow_startTemplate, nameof(startTemplate), required: false);
+            var __workflow_useCustomConfiguration = useCustomConfiguration == null ? null : WorkflowExpression.Compile(useCustomConfiguration);
+            WorkflowExpression.Validate(__workflow_useCustomConfiguration, nameof(useCustomConfiguration), required: false);
+            var __workflow_profileId = profileId == null ? null : WorkflowExpression.Compile(profileId);
+            WorkflowExpression.Validate(__workflow_profileId, nameof(profileId), required: false);
             return new DeferredBodyAction<AddWorkingDaysResponse>(() =>
             {
                 var apiCallPath = "/1.2/add_working_days";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["country_code"] = ExpressionConverter.Convert(countryCode);
-                callPayload.Queries["start_date"] = ExpressionConverter.Convert(startDate);
-                callPayload.Queries["increment"] = ExpressionConverter.Convert(increment);
-                callPayload.Queries["include_start"] = ExpressionConverter.Convert(includeStart);
+                callPayload.Queries["country_code"] = ExpressionConverter.Convert(__workflow_countryCode);
+                callPayload.Queries["start_date"] = ExpressionConverter.Convert(__workflow_startDate);
+                callPayload.Queries["increment"] = ExpressionConverter.Convert(__workflow_increment);
+                callPayload.Queries["include_start"] = ExpressionConverter.Convert(__workflow_includeStart);
                 callPayload.Queries["configuration"] = Convert.ToString("Federal holidays");
-                if (configuration != null)
-                    callPayload.Queries["configuration"] = ExpressionConverter.Convert(configuration);
+                if (__workflow_configuration != null)
+                    callPayload.Queries["configuration"] = ExpressionConverter.Convert(__workflow_configuration);
                 callPayload.Queries["weekend"] = Convert.ToString("1000001");
-                if (weekend != null)
-                    callPayload.Queries["weekend"] = ExpressionConverter.Convert(weekend);
+                if (__workflow_weekend != null)
+                    callPayload.Queries["weekend"] = ExpressionConverter.Convert(__workflow_weekend);
                 callPayload.Queries["week_times"] = Convert.ToString("08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*");
-                if (weekTimes != null)
-                    callPayload.Queries["week_times"] = ExpressionConverter.Convert(weekTimes);
-                if (startTemplate != null)
-                    callPayload.Queries["start_template"] = ExpressionConverter.Convert(startTemplate);
+                if (__workflow_weekTimes != null)
+                    callPayload.Queries["week_times"] = ExpressionConverter.Convert(__workflow_weekTimes);
+                if (__workflow_startTemplate != null)
+                    callPayload.Queries["start_template"] = ExpressionConverter.Convert(__workflow_startTemplate);
                 callPayload.Queries["use_custom_configuration"] = Convert.ToString(false);
-                if (useCustomConfiguration != null)
-                    callPayload.Queries["use_custom_configuration"] = ExpressionConverter.Convert(useCustomConfiguration);
+                if (__workflow_useCustomConfiguration != null)
+                    callPayload.Queries["use_custom_configuration"] = ExpressionConverter.Convert(__workflow_useCustomConfiguration);
                 callPayload.Queries["profile_id"] = Convert.ToString("ut");
-                if (profileId != null)
-                    callPayload.Queries["profile_id"] = ExpressionConverter.Convert(profileId);
+                if (__workflow_profileId != null)
+                    callPayload.Queries["profile_id"] = ExpressionConverter.Convert(__workflow_profileId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json; charset=utf-8");
                 return new ApiConnectionAction<AddWorkingDaysResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
-        [WorkflowExpressionFactory(nameof(__BuildAnalyze))]
-        public IBodyWorkflowAction<AnalyzeResponse> Analyze([WorkflowExpression] Func<countryCodeInput> countryCode, [WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate, [WorkflowExpression] Func<string> startTime = null, [WorkflowExpression] Func<string> endTime = null, [WorkflowExpression] Func<string> configuration = null, [WorkflowExpression] Func<string> weekend = null, [WorkflowExpression] Func<string> weekTimes = null, [WorkflowExpression] Func<string> startTemplate = null, [WorkflowExpression] Func<bool> useCustomConfiguration = null, [WorkflowExpression] Func<string> profileId = null)
+        public IBodyWorkflowAction<AnalyzeResponse> Analyze(Expression<Func<countryCodeInput>> countryCode, Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> startTime = null, Expression<Func<string>> endTime = null, Expression<Func<string>> configuration = null, Expression<Func<string>> weekend = null, Expression<Func<string>> weekTimes = null, Expression<Func<string>> startTemplate = null, Expression<Func<bool>> useCustomConfiguration = null, Expression<Func<string>> profileId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AnalyzeResponse> __BuildAnalyze(WorkflowExpression<countryCodeInput> countryCode, WorkflowExpression<string> startDate, WorkflowExpression<string> endDate, WorkflowExpression<string> startTime = null, WorkflowExpression<string> endTime = null, WorkflowExpression<string> configuration = null, WorkflowExpression<string> weekend = null, WorkflowExpression<string> weekTimes = null, WorkflowExpression<string> startTemplate = null, WorkflowExpression<bool> useCustomConfiguration = null, WorkflowExpression<string> profileId = null)
-        {
-            WorkflowExpression.Validate(countryCode, nameof(countryCode), required: true);
-            WorkflowExpression.Validate(startDate, nameof(startDate), required: true);
-            WorkflowExpression.Validate(endDate, nameof(endDate), required: true);
-            WorkflowExpression.Validate(startTime, nameof(startTime), required: false);
-            WorkflowExpression.Validate(endTime, nameof(endTime), required: false);
-            WorkflowExpression.Validate(configuration, nameof(configuration), required: false);
-            WorkflowExpression.Validate(weekend, nameof(weekend), required: false);
-            WorkflowExpression.Validate(weekTimes, nameof(weekTimes), required: false);
-            WorkflowExpression.Validate(startTemplate, nameof(startTemplate), required: false);
-            WorkflowExpression.Validate(useCustomConfiguration, nameof(useCustomConfiguration), required: false);
-            WorkflowExpression.Validate(profileId, nameof(profileId), required: false);
+            var __workflow_countryCode = countryCode == null ? null : WorkflowExpression.Compile(countryCode);
+            WorkflowExpression.Validate(__workflow_countryCode, nameof(countryCode), required: true);
+            var __workflow_startDate = startDate == null ? null : WorkflowExpression.Compile(startDate);
+            WorkflowExpression.Validate(__workflow_startDate, nameof(startDate), required: true);
+            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
+            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: true);
+            var __workflow_startTime = startTime == null ? null : WorkflowExpression.Compile(startTime);
+            WorkflowExpression.Validate(__workflow_startTime, nameof(startTime), required: false);
+            var __workflow_endTime = endTime == null ? null : WorkflowExpression.Compile(endTime);
+            WorkflowExpression.Validate(__workflow_endTime, nameof(endTime), required: false);
+            var __workflow_configuration = configuration == null ? null : WorkflowExpression.Compile(configuration);
+            WorkflowExpression.Validate(__workflow_configuration, nameof(configuration), required: false);
+            var __workflow_weekend = weekend == null ? null : WorkflowExpression.Compile(weekend);
+            WorkflowExpression.Validate(__workflow_weekend, nameof(weekend), required: false);
+            var __workflow_weekTimes = weekTimes == null ? null : WorkflowExpression.Compile(weekTimes);
+            WorkflowExpression.Validate(__workflow_weekTimes, nameof(weekTimes), required: false);
+            var __workflow_startTemplate = startTemplate == null ? null : WorkflowExpression.Compile(startTemplate);
+            WorkflowExpression.Validate(__workflow_startTemplate, nameof(startTemplate), required: false);
+            var __workflow_useCustomConfiguration = useCustomConfiguration == null ? null : WorkflowExpression.Compile(useCustomConfiguration);
+            WorkflowExpression.Validate(__workflow_useCustomConfiguration, nameof(useCustomConfiguration), required: false);
+            var __workflow_profileId = profileId == null ? null : WorkflowExpression.Compile(profileId);
+            WorkflowExpression.Validate(__workflow_profileId, nameof(profileId), required: false);
             return new DeferredBodyAction<AnalyzeResponse>(() =>
             {
                 var apiCallPath = "/1.2/analyse";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["country_code"] = ExpressionConverter.Convert(countryCode);
-                callPayload.Queries["start_date"] = ExpressionConverter.Convert(startDate);
-                callPayload.Queries["end_date"] = ExpressionConverter.Convert(endDate);
-                if (startTime != null)
-                    callPayload.Queries["start_time"] = ExpressionConverter.Convert(startTime);
-                if (endTime != null)
-                    callPayload.Queries["end_time"] = ExpressionConverter.Convert(endTime);
+                callPayload.Queries["country_code"] = ExpressionConverter.Convert(__workflow_countryCode);
+                callPayload.Queries["start_date"] = ExpressionConverter.Convert(__workflow_startDate);
+                callPayload.Queries["end_date"] = ExpressionConverter.Convert(__workflow_endDate);
+                if (__workflow_startTime != null)
+                    callPayload.Queries["start_time"] = ExpressionConverter.Convert(__workflow_startTime);
+                if (__workflow_endTime != null)
+                    callPayload.Queries["end_time"] = ExpressionConverter.Convert(__workflow_endTime);
                 callPayload.Queries["configuration"] = Convert.ToString("Federal holidays");
-                if (configuration != null)
-                    callPayload.Queries["configuration"] = ExpressionConverter.Convert(configuration);
+                if (__workflow_configuration != null)
+                    callPayload.Queries["configuration"] = ExpressionConverter.Convert(__workflow_configuration);
                 callPayload.Queries["weekend"] = Convert.ToString("1000001");
-                if (weekend != null)
-                    callPayload.Queries["weekend"] = ExpressionConverter.Convert(weekend);
+                if (__workflow_weekend != null)
+                    callPayload.Queries["weekend"] = ExpressionConverter.Convert(__workflow_weekend);
                 callPayload.Queries["week_times"] = Convert.ToString("08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*");
-                if (weekTimes != null)
-                    callPayload.Queries["week_times"] = ExpressionConverter.Convert(weekTimes);
-                if (startTemplate != null)
-                    callPayload.Queries["start_template"] = ExpressionConverter.Convert(startTemplate);
+                if (__workflow_weekTimes != null)
+                    callPayload.Queries["week_times"] = ExpressionConverter.Convert(__workflow_weekTimes);
+                if (__workflow_startTemplate != null)
+                    callPayload.Queries["start_template"] = ExpressionConverter.Convert(__workflow_startTemplate);
                 callPayload.Queries["use_custom_configuration"] = Convert.ToString(false);
-                if (useCustomConfiguration != null)
-                    callPayload.Queries["use_custom_configuration"] = ExpressionConverter.Convert(useCustomConfiguration);
+                if (__workflow_useCustomConfiguration != null)
+                    callPayload.Queries["use_custom_configuration"] = ExpressionConverter.Convert(__workflow_useCustomConfiguration);
                 callPayload.Queries["profile_id"] = Convert.ToString("ut");
-                if (profileId != null)
-                    callPayload.Queries["profile_id"] = ExpressionConverter.Convert(profileId);
+                if (__workflow_profileId != null)
+                    callPayload.Queries["profile_id"] = ExpressionConverter.Convert(__workflow_profileId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json; charset=utf-8");
                 return new ApiConnectionAction<AnalyzeResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
-        [WorkflowExpressionFactory(nameof(__BuildGetInfoDay))]
-        public IBodyWorkflowAction<GetInfoDayResponse> GetInfoDay([WorkflowExpression] Func<countryCodeInput> countryCode, [WorkflowExpression] Func<string> date, [WorkflowExpression] Func<string> configuration = null, [WorkflowExpression] Func<string> weekend = null, [WorkflowExpression] Func<bool> useCustomConfiguration = null, [WorkflowExpression] Func<string> profileId = null)
+        public IBodyWorkflowAction<GetInfoDayResponse> GetInfoDay(Expression<Func<countryCodeInput>> countryCode, Expression<Func<string>> date, Expression<Func<string>> configuration = null, Expression<Func<string>> weekend = null, Expression<Func<bool>> useCustomConfiguration = null, Expression<Func<string>> profileId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetInfoDayResponse> __BuildGetInfoDay(WorkflowExpression<countryCodeInput> countryCode, WorkflowExpression<string> date, WorkflowExpression<string> configuration = null, WorkflowExpression<string> weekend = null, WorkflowExpression<bool> useCustomConfiguration = null, WorkflowExpression<string> profileId = null)
-        {
-            WorkflowExpression.Validate(countryCode, nameof(countryCode), required: true);
-            WorkflowExpression.Validate(date, nameof(date), required: true);
-            WorkflowExpression.Validate(configuration, nameof(configuration), required: false);
-            WorkflowExpression.Validate(weekend, nameof(weekend), required: false);
-            WorkflowExpression.Validate(useCustomConfiguration, nameof(useCustomConfiguration), required: false);
-            WorkflowExpression.Validate(profileId, nameof(profileId), required: false);
+            var __workflow_countryCode = countryCode == null ? null : WorkflowExpression.Compile(countryCode);
+            WorkflowExpression.Validate(__workflow_countryCode, nameof(countryCode), required: true);
+            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
+            WorkflowExpression.Validate(__workflow_date, nameof(date), required: true);
+            var __workflow_configuration = configuration == null ? null : WorkflowExpression.Compile(configuration);
+            WorkflowExpression.Validate(__workflow_configuration, nameof(configuration), required: false);
+            var __workflow_weekend = weekend == null ? null : WorkflowExpression.Compile(weekend);
+            WorkflowExpression.Validate(__workflow_weekend, nameof(weekend), required: false);
+            var __workflow_useCustomConfiguration = useCustomConfiguration == null ? null : WorkflowExpression.Compile(useCustomConfiguration);
+            WorkflowExpression.Validate(__workflow_useCustomConfiguration, nameof(useCustomConfiguration), required: false);
+            var __workflow_profileId = profileId == null ? null : WorkflowExpression.Compile(profileId);
+            WorkflowExpression.Validate(__workflow_profileId, nameof(profileId), required: false);
             return new DeferredBodyAction<GetInfoDayResponse>(() =>
             {
                 var apiCallPath = "/1.2/get_info_day";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["country_code"] = ExpressionConverter.Convert(countryCode);
-                callPayload.Queries["date"] = ExpressionConverter.Convert(date);
+                callPayload.Queries["country_code"] = ExpressionConverter.Convert(__workflow_countryCode);
+                callPayload.Queries["date"] = ExpressionConverter.Convert(__workflow_date);
                 callPayload.Queries["configuration"] = Convert.ToString("Federal holidays");
-                if (configuration != null)
-                    callPayload.Queries["configuration"] = ExpressionConverter.Convert(configuration);
+                if (__workflow_configuration != null)
+                    callPayload.Queries["configuration"] = ExpressionConverter.Convert(__workflow_configuration);
                 callPayload.Queries["weekend"] = Convert.ToString("1000001");
-                if (weekend != null)
-                    callPayload.Queries["weekend"] = ExpressionConverter.Convert(weekend);
+                if (__workflow_weekend != null)
+                    callPayload.Queries["weekend"] = ExpressionConverter.Convert(__workflow_weekend);
                 callPayload.Queries["use_custom_configuration"] = Convert.ToString(false);
-                if (useCustomConfiguration != null)
-                    callPayload.Queries["use_custom_configuration"] = ExpressionConverter.Convert(useCustomConfiguration);
+                if (__workflow_useCustomConfiguration != null)
+                    callPayload.Queries["use_custom_configuration"] = ExpressionConverter.Convert(__workflow_useCustomConfiguration);
                 callPayload.Queries["profile_id"] = Convert.ToString("ut");
-                if (profileId != null)
-                    callPayload.Queries["profile_id"] = ExpressionConverter.Convert(profileId);
+                if (__workflow_profileId != null)
+                    callPayload.Queries["profile_id"] = ExpressionConverter.Convert(__workflow_profileId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json; charset=utf-8");
                 return new ApiConnectionAction<GetInfoDayResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
-        [WorkflowExpressionFactory(nameof(__BuildListNonWorkingDays))]
-        public IBodyWorkflowAction<ListNonWorkingDaysResponse> ListNonWorkingDays([WorkflowExpression] Func<countryCodeInput> countryCode, [WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate, [WorkflowExpression] Func<string> configuration = null, [WorkflowExpression] Func<string> weekend = null, [WorkflowExpression] Func<bool> useCustomConfiguration = null, [WorkflowExpression] Func<string> profileId = null)
+        public IBodyWorkflowAction<ListNonWorkingDaysResponse> ListNonWorkingDays(Expression<Func<countryCodeInput>> countryCode, Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> configuration = null, Expression<Func<string>> weekend = null, Expression<Func<bool>> useCustomConfiguration = null, Expression<Func<string>> profileId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ListNonWorkingDaysResponse> __BuildListNonWorkingDays(WorkflowExpression<countryCodeInput> countryCode, WorkflowExpression<string> startDate, WorkflowExpression<string> endDate, WorkflowExpression<string> configuration = null, WorkflowExpression<string> weekend = null, WorkflowExpression<bool> useCustomConfiguration = null, WorkflowExpression<string> profileId = null)
-        {
-            WorkflowExpression.Validate(countryCode, nameof(countryCode), required: true);
-            WorkflowExpression.Validate(startDate, nameof(startDate), required: true);
-            WorkflowExpression.Validate(endDate, nameof(endDate), required: true);
-            WorkflowExpression.Validate(configuration, nameof(configuration), required: false);
-            WorkflowExpression.Validate(weekend, nameof(weekend), required: false);
-            WorkflowExpression.Validate(useCustomConfiguration, nameof(useCustomConfiguration), required: false);
-            WorkflowExpression.Validate(profileId, nameof(profileId), required: false);
+            var __workflow_countryCode = countryCode == null ? null : WorkflowExpression.Compile(countryCode);
+            WorkflowExpression.Validate(__workflow_countryCode, nameof(countryCode), required: true);
+            var __workflow_startDate = startDate == null ? null : WorkflowExpression.Compile(startDate);
+            WorkflowExpression.Validate(__workflow_startDate, nameof(startDate), required: true);
+            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
+            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: true);
+            var __workflow_configuration = configuration == null ? null : WorkflowExpression.Compile(configuration);
+            WorkflowExpression.Validate(__workflow_configuration, nameof(configuration), required: false);
+            var __workflow_weekend = weekend == null ? null : WorkflowExpression.Compile(weekend);
+            WorkflowExpression.Validate(__workflow_weekend, nameof(weekend), required: false);
+            var __workflow_useCustomConfiguration = useCustomConfiguration == null ? null : WorkflowExpression.Compile(useCustomConfiguration);
+            WorkflowExpression.Validate(__workflow_useCustomConfiguration, nameof(useCustomConfiguration), required: false);
+            var __workflow_profileId = profileId == null ? null : WorkflowExpression.Compile(profileId);
+            WorkflowExpression.Validate(__workflow_profileId, nameof(profileId), required: false);
             return new DeferredBodyAction<ListNonWorkingDaysResponse>(() =>
             {
                 var apiCallPath = "/1.2/list_non_working_days";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["country_code"] = ExpressionConverter.Convert(countryCode);
-                callPayload.Queries["start_date"] = ExpressionConverter.Convert(startDate);
-                callPayload.Queries["end_date"] = ExpressionConverter.Convert(endDate);
+                callPayload.Queries["country_code"] = ExpressionConverter.Convert(__workflow_countryCode);
+                callPayload.Queries["start_date"] = ExpressionConverter.Convert(__workflow_startDate);
+                callPayload.Queries["end_date"] = ExpressionConverter.Convert(__workflow_endDate);
                 callPayload.Queries["configuration"] = Convert.ToString("Federal holidays");
-                if (configuration != null)
-                    callPayload.Queries["configuration"] = ExpressionConverter.Convert(configuration);
+                if (__workflow_configuration != null)
+                    callPayload.Queries["configuration"] = ExpressionConverter.Convert(__workflow_configuration);
                 callPayload.Queries["weekend"] = Convert.ToString("1000001");
-                if (weekend != null)
-                    callPayload.Queries["weekend"] = ExpressionConverter.Convert(weekend);
+                if (__workflow_weekend != null)
+                    callPayload.Queries["weekend"] = ExpressionConverter.Convert(__workflow_weekend);
                 callPayload.Queries["use_custom_configuration"] = Convert.ToString(false);
-                if (useCustomConfiguration != null)
-                    callPayload.Queries["use_custom_configuration"] = ExpressionConverter.Convert(useCustomConfiguration);
+                if (__workflow_useCustomConfiguration != null)
+                    callPayload.Queries["use_custom_configuration"] = ExpressionConverter.Convert(__workflow_useCustomConfiguration);
                 callPayload.Queries["profile_id"] = Convert.ToString("ut");
-                if (profileId != null)
-                    callPayload.Queries["profile_id"] = ExpressionConverter.Convert(profileId);
+                if (__workflow_profileId != null)
+                    callPayload.Queries["profile_id"] = ExpressionConverter.Convert(__workflow_profileId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json; charset=utf-8");
                 return new ApiConnectionAction<ListNonWorkingDaysResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
-        [WorkflowExpressionFactory(nameof(__BuildAddWorkingHours))]
-        public IBodyWorkflowAction<AddWorkingHoursResponse> AddWorkingHours([WorkflowExpression] Func<countryCodeInput> countryCode, [WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> startTime, [WorkflowExpression] Func<string> incrementTime, [WorkflowExpression] Func<string> configuration = null, [WorkflowExpression] Func<string> weekend = null, [WorkflowExpression] Func<string> weekTimes = null, [WorkflowExpression] Func<string> startTemplate = null, [WorkflowExpression] Func<bool> useCustomConfiguration = null, [WorkflowExpression] Func<string> profileId = null)
+        public IBodyWorkflowAction<AddWorkingHoursResponse> AddWorkingHours(Expression<Func<countryCodeInput>> countryCode, Expression<Func<string>> startDate, Expression<Func<string>> startTime, Expression<Func<string>> incrementTime, Expression<Func<string>> configuration = null, Expression<Func<string>> weekend = null, Expression<Func<string>> weekTimes = null, Expression<Func<string>> startTemplate = null, Expression<Func<bool>> useCustomConfiguration = null, Expression<Func<string>> profileId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AddWorkingHoursResponse> __BuildAddWorkingHours(WorkflowExpression<countryCodeInput> countryCode, WorkflowExpression<string> startDate, WorkflowExpression<string> startTime, WorkflowExpression<string> incrementTime, WorkflowExpression<string> configuration = null, WorkflowExpression<string> weekend = null, WorkflowExpression<string> weekTimes = null, WorkflowExpression<string> startTemplate = null, WorkflowExpression<bool> useCustomConfiguration = null, WorkflowExpression<string> profileId = null)
-        {
-            WorkflowExpression.Validate(countryCode, nameof(countryCode), required: true);
-            WorkflowExpression.Validate(startDate, nameof(startDate), required: true);
-            WorkflowExpression.Validate(startTime, nameof(startTime), required: true);
-            WorkflowExpression.Validate(incrementTime, nameof(incrementTime), required: true);
-            WorkflowExpression.Validate(configuration, nameof(configuration), required: false);
-            WorkflowExpression.Validate(weekend, nameof(weekend), required: false);
-            WorkflowExpression.Validate(weekTimes, nameof(weekTimes), required: false);
-            WorkflowExpression.Validate(startTemplate, nameof(startTemplate), required: false);
-            WorkflowExpression.Validate(useCustomConfiguration, nameof(useCustomConfiguration), required: false);
-            WorkflowExpression.Validate(profileId, nameof(profileId), required: false);
+            var __workflow_countryCode = countryCode == null ? null : WorkflowExpression.Compile(countryCode);
+            WorkflowExpression.Validate(__workflow_countryCode, nameof(countryCode), required: true);
+            var __workflow_startDate = startDate == null ? null : WorkflowExpression.Compile(startDate);
+            WorkflowExpression.Validate(__workflow_startDate, nameof(startDate), required: true);
+            var __workflow_startTime = startTime == null ? null : WorkflowExpression.Compile(startTime);
+            WorkflowExpression.Validate(__workflow_startTime, nameof(startTime), required: true);
+            var __workflow_incrementTime = incrementTime == null ? null : WorkflowExpression.Compile(incrementTime);
+            WorkflowExpression.Validate(__workflow_incrementTime, nameof(incrementTime), required: true);
+            var __workflow_configuration = configuration == null ? null : WorkflowExpression.Compile(configuration);
+            WorkflowExpression.Validate(__workflow_configuration, nameof(configuration), required: false);
+            var __workflow_weekend = weekend == null ? null : WorkflowExpression.Compile(weekend);
+            WorkflowExpression.Validate(__workflow_weekend, nameof(weekend), required: false);
+            var __workflow_weekTimes = weekTimes == null ? null : WorkflowExpression.Compile(weekTimes);
+            WorkflowExpression.Validate(__workflow_weekTimes, nameof(weekTimes), required: false);
+            var __workflow_startTemplate = startTemplate == null ? null : WorkflowExpression.Compile(startTemplate);
+            WorkflowExpression.Validate(__workflow_startTemplate, nameof(startTemplate), required: false);
+            var __workflow_useCustomConfiguration = useCustomConfiguration == null ? null : WorkflowExpression.Compile(useCustomConfiguration);
+            WorkflowExpression.Validate(__workflow_useCustomConfiguration, nameof(useCustomConfiguration), required: false);
+            var __workflow_profileId = profileId == null ? null : WorkflowExpression.Compile(profileId);
+            WorkflowExpression.Validate(__workflow_profileId, nameof(profileId), required: false);
             return new DeferredBodyAction<AddWorkingHoursResponse>(() =>
             {
                 var apiCallPath = "/1.2/add_working_hours";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["country_code"] = ExpressionConverter.Convert(countryCode);
-                callPayload.Queries["start_date"] = ExpressionConverter.Convert(startDate);
-                callPayload.Queries["start_time"] = ExpressionConverter.Convert(startTime);
-                callPayload.Queries["increment_time"] = ExpressionConverter.Convert(incrementTime);
+                callPayload.Queries["country_code"] = ExpressionConverter.Convert(__workflow_countryCode);
+                callPayload.Queries["start_date"] = ExpressionConverter.Convert(__workflow_startDate);
+                callPayload.Queries["start_time"] = ExpressionConverter.Convert(__workflow_startTime);
+                callPayload.Queries["increment_time"] = ExpressionConverter.Convert(__workflow_incrementTime);
                 callPayload.Queries["configuration"] = Convert.ToString("Federal holidays");
-                if (configuration != null)
-                    callPayload.Queries["configuration"] = ExpressionConverter.Convert(configuration);
+                if (__workflow_configuration != null)
+                    callPayload.Queries["configuration"] = ExpressionConverter.Convert(__workflow_configuration);
                 callPayload.Queries["weekend"] = Convert.ToString("1000001");
-                if (weekend != null)
-                    callPayload.Queries["weekend"] = ExpressionConverter.Convert(weekend);
+                if (__workflow_weekend != null)
+                    callPayload.Queries["weekend"] = ExpressionConverter.Convert(__workflow_weekend);
                 callPayload.Queries["week_times"] = Convert.ToString("08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*");
-                if (weekTimes != null)
-                    callPayload.Queries["week_times"] = ExpressionConverter.Convert(weekTimes);
-                if (startTemplate != null)
-                    callPayload.Queries["start_template"] = ExpressionConverter.Convert(startTemplate);
+                if (__workflow_weekTimes != null)
+                    callPayload.Queries["week_times"] = ExpressionConverter.Convert(__workflow_weekTimes);
+                if (__workflow_startTemplate != null)
+                    callPayload.Queries["start_template"] = ExpressionConverter.Convert(__workflow_startTemplate);
                 callPayload.Queries["use_custom_configuration"] = Convert.ToString(false);
-                if (useCustomConfiguration != null)
-                    callPayload.Queries["use_custom_configuration"] = ExpressionConverter.Convert(useCustomConfiguration);
+                if (__workflow_useCustomConfiguration != null)
+                    callPayload.Queries["use_custom_configuration"] = ExpressionConverter.Convert(__workflow_useCustomConfiguration);
                 callPayload.Queries["profile_id"] = Convert.ToString("ut");
-                if (profileId != null)
-                    callPayload.Queries["profile_id"] = ExpressionConverter.Convert(profileId);
+                if (__workflow_profileId != null)
+                    callPayload.Queries["profile_id"] = ExpressionConverter.Convert(__workflow_profileId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json; charset=utf-8");
                 return new ApiConnectionAction<AddWorkingHoursResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
-        [WorkflowExpressionFactory(nameof(__BuildAddPublicHolidays))]
-        public IBodyWorkflowAction<AddPublicHolidaysResponse> AddPublicHolidays([WorkflowExpression] Func<countryCodeInput> countryCode, [WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> increment, [WorkflowExpression] Func<bool> includeStart, [WorkflowExpression] Func<string> configuration = null, [WorkflowExpression] Func<string> weekend = null, [WorkflowExpression] Func<string> weekTimes = null, [WorkflowExpression] Func<string> startTemplate = null, [WorkflowExpression] Func<bool> useCustomConfiguration = null, [WorkflowExpression] Func<string> profileId = null)
+        public IBodyWorkflowAction<AddPublicHolidaysResponse> AddPublicHolidays(Expression<Func<countryCodeInput>> countryCode, Expression<Func<string>> startDate, Expression<Func<string>> increment, Expression<Func<bool>> includeStart, Expression<Func<string>> configuration = null, Expression<Func<string>> weekend = null, Expression<Func<string>> weekTimes = null, Expression<Func<string>> startTemplate = null, Expression<Func<bool>> useCustomConfiguration = null, Expression<Func<string>> profileId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AddPublicHolidaysResponse> __BuildAddPublicHolidays(WorkflowExpression<countryCodeInput> countryCode, WorkflowExpression<string> startDate, WorkflowExpression<string> increment, WorkflowExpression<bool> includeStart, WorkflowExpression<string> configuration = null, WorkflowExpression<string> weekend = null, WorkflowExpression<string> weekTimes = null, WorkflowExpression<string> startTemplate = null, WorkflowExpression<bool> useCustomConfiguration = null, WorkflowExpression<string> profileId = null)
-        {
-            WorkflowExpression.Validate(countryCode, nameof(countryCode), required: true);
-            WorkflowExpression.Validate(startDate, nameof(startDate), required: true);
-            WorkflowExpression.Validate(increment, nameof(increment), required: true);
-            WorkflowExpression.Validate(includeStart, nameof(includeStart), required: true);
-            WorkflowExpression.Validate(configuration, nameof(configuration), required: false);
-            WorkflowExpression.Validate(weekend, nameof(weekend), required: false);
-            WorkflowExpression.Validate(weekTimes, nameof(weekTimes), required: false);
-            WorkflowExpression.Validate(startTemplate, nameof(startTemplate), required: false);
-            WorkflowExpression.Validate(useCustomConfiguration, nameof(useCustomConfiguration), required: false);
-            WorkflowExpression.Validate(profileId, nameof(profileId), required: false);
+            var __workflow_countryCode = countryCode == null ? null : WorkflowExpression.Compile(countryCode);
+            WorkflowExpression.Validate(__workflow_countryCode, nameof(countryCode), required: true);
+            var __workflow_startDate = startDate == null ? null : WorkflowExpression.Compile(startDate);
+            WorkflowExpression.Validate(__workflow_startDate, nameof(startDate), required: true);
+            var __workflow_increment = increment == null ? null : WorkflowExpression.Compile(increment);
+            WorkflowExpression.Validate(__workflow_increment, nameof(increment), required: true);
+            var __workflow_includeStart = includeStart == null ? null : WorkflowExpression.Compile(includeStart);
+            WorkflowExpression.Validate(__workflow_includeStart, nameof(includeStart), required: true);
+            var __workflow_configuration = configuration == null ? null : WorkflowExpression.Compile(configuration);
+            WorkflowExpression.Validate(__workflow_configuration, nameof(configuration), required: false);
+            var __workflow_weekend = weekend == null ? null : WorkflowExpression.Compile(weekend);
+            WorkflowExpression.Validate(__workflow_weekend, nameof(weekend), required: false);
+            var __workflow_weekTimes = weekTimes == null ? null : WorkflowExpression.Compile(weekTimes);
+            WorkflowExpression.Validate(__workflow_weekTimes, nameof(weekTimes), required: false);
+            var __workflow_startTemplate = startTemplate == null ? null : WorkflowExpression.Compile(startTemplate);
+            WorkflowExpression.Validate(__workflow_startTemplate, nameof(startTemplate), required: false);
+            var __workflow_useCustomConfiguration = useCustomConfiguration == null ? null : WorkflowExpression.Compile(useCustomConfiguration);
+            WorkflowExpression.Validate(__workflow_useCustomConfiguration, nameof(useCustomConfiguration), required: false);
+            var __workflow_profileId = profileId == null ? null : WorkflowExpression.Compile(profileId);
+            WorkflowExpression.Validate(__workflow_profileId, nameof(profileId), required: false);
             return new DeferredBodyAction<AddPublicHolidaysResponse>(() =>
             {
                 var apiCallPath = "/1.2/add_public_holidays";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["country_code"] = ExpressionConverter.Convert(countryCode);
-                callPayload.Queries["start_date"] = ExpressionConverter.Convert(startDate);
-                callPayload.Queries["increment"] = ExpressionConverter.Convert(increment);
-                callPayload.Queries["include_start"] = ExpressionConverter.Convert(includeStart);
+                callPayload.Queries["country_code"] = ExpressionConverter.Convert(__workflow_countryCode);
+                callPayload.Queries["start_date"] = ExpressionConverter.Convert(__workflow_startDate);
+                callPayload.Queries["increment"] = ExpressionConverter.Convert(__workflow_increment);
+                callPayload.Queries["include_start"] = ExpressionConverter.Convert(__workflow_includeStart);
                 callPayload.Queries["configuration"] = Convert.ToString("Federal holidays");
-                if (configuration != null)
-                    callPayload.Queries["configuration"] = ExpressionConverter.Convert(configuration);
+                if (__workflow_configuration != null)
+                    callPayload.Queries["configuration"] = ExpressionConverter.Convert(__workflow_configuration);
                 callPayload.Queries["weekend"] = Convert.ToString("1000001");
-                if (weekend != null)
-                    callPayload.Queries["weekend"] = ExpressionConverter.Convert(weekend);
+                if (__workflow_weekend != null)
+                    callPayload.Queries["weekend"] = ExpressionConverter.Convert(__workflow_weekend);
                 callPayload.Queries["week_times"] = Convert.ToString("08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*");
-                if (weekTimes != null)
-                    callPayload.Queries["week_times"] = ExpressionConverter.Convert(weekTimes);
-                if (startTemplate != null)
-                    callPayload.Queries["start_template"] = ExpressionConverter.Convert(startTemplate);
+                if (__workflow_weekTimes != null)
+                    callPayload.Queries["week_times"] = ExpressionConverter.Convert(__workflow_weekTimes);
+                if (__workflow_startTemplate != null)
+                    callPayload.Queries["start_template"] = ExpressionConverter.Convert(__workflow_startTemplate);
                 callPayload.Queries["use_custom_configuration"] = Convert.ToString(false);
-                if (useCustomConfiguration != null)
-                    callPayload.Queries["use_custom_configuration"] = ExpressionConverter.Convert(useCustomConfiguration);
+                if (__workflow_useCustomConfiguration != null)
+                    callPayload.Queries["use_custom_configuration"] = ExpressionConverter.Convert(__workflow_useCustomConfiguration);
                 callPayload.Queries["profile_id"] = Convert.ToString("ut");
-                if (profileId != null)
-                    callPayload.Queries["profile_id"] = ExpressionConverter.Convert(profileId);
+                if (__workflow_profileId != null)
+                    callPayload.Queries["profile_id"] = ExpressionConverter.Convert(__workflow_profileId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json; charset=utf-8");
                 return new ApiConnectionAction<AddPublicHolidaysResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
-        [WorkflowExpressionFactory(nameof(__BuildAddWeekendDays))]
-        public IBodyWorkflowAction<AddWeekendDaysResponse> AddWeekendDays([WorkflowExpression] Func<countryCodeInput> countryCode, [WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> increment, [WorkflowExpression] Func<bool> includeStart, [WorkflowExpression] Func<string> configuration = null, [WorkflowExpression] Func<string> weekend = null, [WorkflowExpression] Func<string> weekTimes = null, [WorkflowExpression] Func<string> startTemplate = null, [WorkflowExpression] Func<bool> useCustomConfiguration = null, [WorkflowExpression] Func<string> profileId = null)
+        public IBodyWorkflowAction<AddWeekendDaysResponse> AddWeekendDays(Expression<Func<countryCodeInput>> countryCode, Expression<Func<string>> startDate, Expression<Func<string>> increment, Expression<Func<bool>> includeStart, Expression<Func<string>> configuration = null, Expression<Func<string>> weekend = null, Expression<Func<string>> weekTimes = null, Expression<Func<string>> startTemplate = null, Expression<Func<bool>> useCustomConfiguration = null, Expression<Func<string>> profileId = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AddWeekendDaysResponse> __BuildAddWeekendDays(WorkflowExpression<countryCodeInput> countryCode, WorkflowExpression<string> startDate, WorkflowExpression<string> increment, WorkflowExpression<bool> includeStart, WorkflowExpression<string> configuration = null, WorkflowExpression<string> weekend = null, WorkflowExpression<string> weekTimes = null, WorkflowExpression<string> startTemplate = null, WorkflowExpression<bool> useCustomConfiguration = null, WorkflowExpression<string> profileId = null)
-        {
-            WorkflowExpression.Validate(countryCode, nameof(countryCode), required: true);
-            WorkflowExpression.Validate(startDate, nameof(startDate), required: true);
-            WorkflowExpression.Validate(increment, nameof(increment), required: true);
-            WorkflowExpression.Validate(includeStart, nameof(includeStart), required: true);
-            WorkflowExpression.Validate(configuration, nameof(configuration), required: false);
-            WorkflowExpression.Validate(weekend, nameof(weekend), required: false);
-            WorkflowExpression.Validate(weekTimes, nameof(weekTimes), required: false);
-            WorkflowExpression.Validate(startTemplate, nameof(startTemplate), required: false);
-            WorkflowExpression.Validate(useCustomConfiguration, nameof(useCustomConfiguration), required: false);
-            WorkflowExpression.Validate(profileId, nameof(profileId), required: false);
+            var __workflow_countryCode = countryCode == null ? null : WorkflowExpression.Compile(countryCode);
+            WorkflowExpression.Validate(__workflow_countryCode, nameof(countryCode), required: true);
+            var __workflow_startDate = startDate == null ? null : WorkflowExpression.Compile(startDate);
+            WorkflowExpression.Validate(__workflow_startDate, nameof(startDate), required: true);
+            var __workflow_increment = increment == null ? null : WorkflowExpression.Compile(increment);
+            WorkflowExpression.Validate(__workflow_increment, nameof(increment), required: true);
+            var __workflow_includeStart = includeStart == null ? null : WorkflowExpression.Compile(includeStart);
+            WorkflowExpression.Validate(__workflow_includeStart, nameof(includeStart), required: true);
+            var __workflow_configuration = configuration == null ? null : WorkflowExpression.Compile(configuration);
+            WorkflowExpression.Validate(__workflow_configuration, nameof(configuration), required: false);
+            var __workflow_weekend = weekend == null ? null : WorkflowExpression.Compile(weekend);
+            WorkflowExpression.Validate(__workflow_weekend, nameof(weekend), required: false);
+            var __workflow_weekTimes = weekTimes == null ? null : WorkflowExpression.Compile(weekTimes);
+            WorkflowExpression.Validate(__workflow_weekTimes, nameof(weekTimes), required: false);
+            var __workflow_startTemplate = startTemplate == null ? null : WorkflowExpression.Compile(startTemplate);
+            WorkflowExpression.Validate(__workflow_startTemplate, nameof(startTemplate), required: false);
+            var __workflow_useCustomConfiguration = useCustomConfiguration == null ? null : WorkflowExpression.Compile(useCustomConfiguration);
+            WorkflowExpression.Validate(__workflow_useCustomConfiguration, nameof(useCustomConfiguration), required: false);
+            var __workflow_profileId = profileId == null ? null : WorkflowExpression.Compile(profileId);
+            WorkflowExpression.Validate(__workflow_profileId, nameof(profileId), required: false);
             return new DeferredBodyAction<AddWeekendDaysResponse>(() =>
             {
                 var apiCallPath = "/1.2/add_weekend_days";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["country_code"] = ExpressionConverter.Convert(countryCode);
-                callPayload.Queries["start_date"] = ExpressionConverter.Convert(startDate);
-                callPayload.Queries["increment"] = ExpressionConverter.Convert(increment);
-                callPayload.Queries["include_start"] = ExpressionConverter.Convert(includeStart);
+                callPayload.Queries["country_code"] = ExpressionConverter.Convert(__workflow_countryCode);
+                callPayload.Queries["start_date"] = ExpressionConverter.Convert(__workflow_startDate);
+                callPayload.Queries["increment"] = ExpressionConverter.Convert(__workflow_increment);
+                callPayload.Queries["include_start"] = ExpressionConverter.Convert(__workflow_includeStart);
                 callPayload.Queries["configuration"] = Convert.ToString("Federal holidays");
-                if (configuration != null)
-                    callPayload.Queries["configuration"] = ExpressionConverter.Convert(configuration);
+                if (__workflow_configuration != null)
+                    callPayload.Queries["configuration"] = ExpressionConverter.Convert(__workflow_configuration);
                 callPayload.Queries["weekend"] = Convert.ToString("1000001");
-                if (weekend != null)
-                    callPayload.Queries["weekend"] = ExpressionConverter.Convert(weekend);
+                if (__workflow_weekend != null)
+                    callPayload.Queries["weekend"] = ExpressionConverter.Convert(__workflow_weekend);
                 callPayload.Queries["week_times"] = Convert.ToString("08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*");
-                if (weekTimes != null)
-                    callPayload.Queries["week_times"] = ExpressionConverter.Convert(weekTimes);
-                if (startTemplate != null)
-                    callPayload.Queries["start_template"] = ExpressionConverter.Convert(startTemplate);
+                if (__workflow_weekTimes != null)
+                    callPayload.Queries["week_times"] = ExpressionConverter.Convert(__workflow_weekTimes);
+                if (__workflow_startTemplate != null)
+                    callPayload.Queries["start_template"] = ExpressionConverter.Convert(__workflow_startTemplate);
                 callPayload.Queries["use_custom_configuration"] = Convert.ToString(false);
-                if (useCustomConfiguration != null)
-                    callPayload.Queries["use_custom_configuration"] = ExpressionConverter.Convert(useCustomConfiguration);
+                if (__workflow_useCustomConfiguration != null)
+                    callPayload.Queries["use_custom_configuration"] = ExpressionConverter.Convert(__workflow_useCustomConfiguration);
                 callPayload.Queries["profile_id"] = Convert.ToString("ut");
-                if (profileId != null)
-                    callPayload.Queries["profile_id"] = ExpressionConverter.Convert(profileId);
+                if (__workflow_profileId != null)
+                    callPayload.Queries["profile_id"] = ExpressionConverter.Convert(__workflow_profileId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json; charset=utf-8");
                 return new ApiConnectionAction<AddWeekendDaysResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
-        [WorkflowExpressionFactory(nameof(__BuildAddressToConfiguration))]
-        public IBodyWorkflowAction<AddressToConfigurationResponse> AddressToConfiguration([WorkflowExpression] Func<string> address)
+        public IBodyWorkflowAction<AddressToConfigurationResponse> AddressToConfiguration(Expression<Func<string>> address)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AddressToConfigurationResponse> __BuildAddressToConfiguration(WorkflowExpression<string> address)
-        {
-            WorkflowExpression.Validate(address, nameof(address), required: true);
+            var __workflow_address = address == null ? null : WorkflowExpression.Compile(address);
+            WorkflowExpression.Validate(__workflow_address, nameof(address), required: true);
             return new DeferredBodyAction<AddressToConfigurationResponse>(() =>
             {
                 var apiCallPath = "/1.2/address_to_configuration";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["address"] = ExpressionConverter.Convert(address);
+                callPayload.Queries["address"] = ExpressionConverter.Convert(__workflow_address);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json; charset=utf-8");
                 return new ApiConnectionAction<AddressToConfigurationResponse>(callPayload);
             });

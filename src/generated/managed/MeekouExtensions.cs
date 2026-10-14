@@ -1,122 +1,102 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meekou
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class MeekouActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meekou")]
-        [WorkflowExpressionFactory(nameof(__BuildHtmlToPdf))]
-        public IBodyWorkflowAction<Response> HtmlToPdf([WorkflowExpression] Func<string> htmlContent = null, [WorkflowExpression] Func<string> xCustomHost = null)
+        public IBodyWorkflowAction<Response> HtmlToPdf(Expression<Func<string>> htmlContent = null, Expression<Func<string>> xCustomHost = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Response> __BuildHtmlToPdf(WorkflowExpression<string> htmlContent = null, WorkflowExpression<string> xCustomHost = null)
-        {
-            WorkflowExpression.Validate(htmlContent, nameof(htmlContent), required: false);
-            WorkflowExpression.Validate(xCustomHost, nameof(xCustomHost), required: false);
+            var __workflow_htmlContent = htmlContent == null ? null : WorkflowExpression.Compile(htmlContent);
+            WorkflowExpression.Validate(__workflow_htmlContent, nameof(htmlContent), required: false);
+            var __workflow_xCustomHost = xCustomHost == null ? null : WorkflowExpression.Compile(xCustomHost);
+            WorkflowExpression.Validate(__workflow_xCustomHost, nameof(xCustomHost), required: false);
             return new DeferredBodyAction<Response>(() =>
             {
                 var apiCallPath = "/api/File/HtmlToPdf";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (htmlContent != null)
-                    callPayload.Queries["htmlContent"] = ExpressionConverter.Convert(htmlContent);
-                if (xCustomHost != null)
-                    callPayload.Headers["x-custom-host"] = ExpressionConverter.Convert(xCustomHost);
+                if (__workflow_htmlContent != null)
+                    callPayload.Queries["htmlContent"] = ExpressionConverter.Convert(__workflow_htmlContent);
+                if (__workflow_xCustomHost != null)
+                    callPayload.Headers["x-custom-host"] = ExpressionConverter.Convert(__workflow_xCustomHost);
                 return new ApiConnectionAction<Response>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meekou")]
-        [WorkflowExpressionFactory(nameof(__BuildSwaggerThreeToTwo))]
-        public IWorkflowAction SwaggerThreeToTwo([WorkflowExpression] Func<string> swaggerUrl = null, [WorkflowExpression] Func<string> xCustomHost = null)
+        public IWorkflowAction SwaggerThreeToTwo(Expression<Func<string>> swaggerUrl = null, Expression<Func<string>> xCustomHost = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildSwaggerThreeToTwo(WorkflowExpression<string> swaggerUrl = null, WorkflowExpression<string> xCustomHost = null)
-        {
-            WorkflowExpression.Validate(swaggerUrl, nameof(swaggerUrl), required: false);
-            WorkflowExpression.Validate(xCustomHost, nameof(xCustomHost), required: false);
+            var __workflow_swaggerUrl = swaggerUrl == null ? null : WorkflowExpression.Compile(swaggerUrl);
+            WorkflowExpression.Validate(__workflow_swaggerUrl, nameof(swaggerUrl), required: false);
+            var __workflow_xCustomHost = xCustomHost == null ? null : WorkflowExpression.Compile(xCustomHost);
+            WorkflowExpression.Validate(__workflow_xCustomHost, nameof(xCustomHost), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/File/SwaggerThreeToTwo";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (swaggerUrl != null)
-                    callPayload.Queries["swaggerUrl"] = ExpressionConverter.Convert(swaggerUrl);
-                if (xCustomHost != null)
-                    callPayload.Headers["x-custom-host"] = ExpressionConverter.Convert(xCustomHost);
+                if (__workflow_swaggerUrl != null)
+                    callPayload.Queries["swaggerUrl"] = ExpressionConverter.Convert(__workflow_swaggerUrl);
+                if (__workflow_xCustomHost != null)
+                    callPayload.Headers["x-custom-host"] = ExpressionConverter.Convert(__workflow_xCustomHost);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meekou")]
-        [WorkflowExpressionFactory(nameof(__BuildEvaluate))]
-        public IBodyWorkflowAction<Response> Evaluate([WorkflowExpression] Func<string> formula = null, [WorkflowExpression] Func<string> xCustomHost = null)
+        public IBodyWorkflowAction<Response> Evaluate(Expression<Func<string>> formula = null, Expression<Func<string>> xCustomHost = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Response> __BuildEvaluate(WorkflowExpression<string> formula = null, WorkflowExpression<string> xCustomHost = null)
-        {
-            WorkflowExpression.Validate(formula, nameof(formula), required: false);
-            WorkflowExpression.Validate(xCustomHost, nameof(xCustomHost), required: false);
+            var __workflow_formula = formula == null ? null : WorkflowExpression.Compile(formula);
+            WorkflowExpression.Validate(__workflow_formula, nameof(formula), required: false);
+            var __workflow_xCustomHost = xCustomHost == null ? null : WorkflowExpression.Compile(xCustomHost);
+            WorkflowExpression.Validate(__workflow_xCustomHost, nameof(xCustomHost), required: false);
             return new DeferredBodyAction<Response>(() =>
             {
                 var apiCallPath = "/api/Math/Evaluate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (formula != null)
-                    callPayload.Queries["formula"] = ExpressionConverter.Convert(formula);
-                if (xCustomHost != null)
-                    callPayload.Headers["x-custom-host"] = ExpressionConverter.Convert(xCustomHost);
+                if (__workflow_formula != null)
+                    callPayload.Queries["formula"] = ExpressionConverter.Convert(__workflow_formula);
+                if (__workflow_xCustomHost != null)
+                    callPayload.Headers["x-custom-host"] = ExpressionConverter.Convert(__workflow_xCustomHost);
                 return new ApiConnectionAction<Response>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meekou")]
-        [WorkflowExpressionFactory(nameof(__BuildSum))]
-        public IBodyWorkflowAction<Response> Sum([WorkflowExpression] Func<string> xCustomHost = null, [WorkflowExpression] Func<string> bodydata = null, [WorkflowExpression] Func<string> bodypath = null)
+        public IBodyWorkflowAction<Response> Sum(Expression<Func<string>> xCustomHost = null, Expression<Func<string>> bodydata = null, Expression<Func<string>> bodypath = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Response> __BuildSum(WorkflowExpression<string> xCustomHost = null, WorkflowExpression<string> bodydata = null, WorkflowExpression<string> bodypath = null)
-        {
-            WorkflowExpression.Validate(xCustomHost, nameof(xCustomHost), required: false);
-            WorkflowExpression.Validate(bodydata, nameof(bodydata), required: false);
-            WorkflowExpression.Validate(bodypath, nameof(bodypath), required: false);
+            var __workflow_xCustomHost = xCustomHost == null ? null : WorkflowExpression.Compile(xCustomHost);
+            WorkflowExpression.Validate(__workflow_xCustomHost, nameof(xCustomHost), required: false);
+            var __workflow_bodydata = bodydata == null ? null : WorkflowExpression.Compile(bodydata);
+            WorkflowExpression.Validate(__workflow_bodydata, nameof(bodydata), required: false);
+            var __workflow_bodypath = bodypath == null ? null : WorkflowExpression.Compile(bodypath);
+            WorkflowExpression.Validate(__workflow_bodypath, nameof(bodypath), required: false);
             return new DeferredBodyAction<Response>(() =>
             {
                 var apiCallPath = "/api/Math/Sum";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (xCustomHost != null)
-                    callPayload.Headers["x-custom-host"] = ExpressionConverter.Convert(xCustomHost);
+                if (__workflow_xCustomHost != null)
+                    callPayload.Headers["x-custom-host"] = ExpressionConverter.Convert(__workflow_xCustomHost);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodydata != null)
+                if (__workflow_bodydata != null)
                 {
-                    body["data"] = ExpressionConverter.ConvertO(bodydata);
+                    body["data"] = ExpressionConverter.ConvertO(__workflow_bodydata);
                     bodypropCount++;
                 }
 
-                if (bodypath != null)
+                if (__workflow_bodypath != null)
                 {
-                    body["path"] = ExpressionConverter.ConvertO(bodypath);
+                    body["path"] = ExpressionConverter.ConvertO(__workflow_bodypath);
                     bodypropCount++;
                 }
 
@@ -130,61 +110,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meekou
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meekou")]
-        [WorkflowExpressionFactory(nameof(__BuildRoundUp))]
-        public IBodyWorkflowAction<Response> RoundUp([WorkflowExpression] Func<double> input = null, [WorkflowExpression] Func<string> xCustomHost = null)
+        public IBodyWorkflowAction<Response> RoundUp(Expression<Func<double>> input = null, Expression<Func<string>> xCustomHost = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Response> __BuildRoundUp(WorkflowExpression<double> input = null, WorkflowExpression<string> xCustomHost = null)
-        {
-            WorkflowExpression.Validate(input, nameof(input), required: false);
-            WorkflowExpression.Validate(xCustomHost, nameof(xCustomHost), required: false);
+            var __workflow_input = input == null ? null : WorkflowExpression.Compile(input);
+            WorkflowExpression.Validate(__workflow_input, nameof(input), required: false);
+            var __workflow_xCustomHost = xCustomHost == null ? null : WorkflowExpression.Compile(xCustomHost);
+            WorkflowExpression.Validate(__workflow_xCustomHost, nameof(xCustomHost), required: false);
             return new DeferredBodyAction<Response>(() =>
             {
                 var apiCallPath = "/api/Math/RoundUp";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (input != null)
-                    callPayload.Queries["input"] = ExpressionConverter.Convert(input);
-                if (xCustomHost != null)
-                    callPayload.Headers["x-custom-host"] = ExpressionConverter.Convert(xCustomHost);
+                if (__workflow_input != null)
+                    callPayload.Queries["input"] = ExpressionConverter.Convert(__workflow_input);
+                if (__workflow_xCustomHost != null)
+                    callPayload.Headers["x-custom-host"] = ExpressionConverter.Convert(__workflow_xCustomHost);
                 return new ApiConnectionAction<Response>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meekou")]
-        [WorkflowExpressionFactory(nameof(__BuildRegex))]
-        public IBodyWorkflowAction<Response> Regex([WorkflowExpression] Func<string> xCustomHost = null, [WorkflowExpression] Func<string> bodycontent = null, [WorkflowExpression] Func<string> bodypattern = null)
+        public IBodyWorkflowAction<Response> Regex(Expression<Func<string>> xCustomHost = null, Expression<Func<string>> bodycontent = null, Expression<Func<string>> bodypattern = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Response> __BuildRegex(WorkflowExpression<string> xCustomHost = null, WorkflowExpression<string> bodycontent = null, WorkflowExpression<string> bodypattern = null)
-        {
-            WorkflowExpression.Validate(xCustomHost, nameof(xCustomHost), required: false);
-            WorkflowExpression.Validate(bodycontent, nameof(bodycontent), required: false);
-            WorkflowExpression.Validate(bodypattern, nameof(bodypattern), required: false);
+            var __workflow_xCustomHost = xCustomHost == null ? null : WorkflowExpression.Compile(xCustomHost);
+            WorkflowExpression.Validate(__workflow_xCustomHost, nameof(xCustomHost), required: false);
+            var __workflow_bodycontent = bodycontent == null ? null : WorkflowExpression.Compile(bodycontent);
+            WorkflowExpression.Validate(__workflow_bodycontent, nameof(bodycontent), required: false);
+            var __workflow_bodypattern = bodypattern == null ? null : WorkflowExpression.Compile(bodypattern);
+            WorkflowExpression.Validate(__workflow_bodypattern, nameof(bodypattern), required: false);
             return new DeferredBodyAction<Response>(() =>
             {
                 var apiCallPath = "/api/Text/Regex";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (xCustomHost != null)
-                    callPayload.Headers["x-custom-host"] = ExpressionConverter.Convert(xCustomHost);
+                if (__workflow_xCustomHost != null)
+                    callPayload.Headers["x-custom-host"] = ExpressionConverter.Convert(__workflow_xCustomHost);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodycontent != null)
+                if (__workflow_bodycontent != null)
                 {
-                    body["content"] = ExpressionConverter.ConvertO(bodycontent);
+                    body["content"] = ExpressionConverter.ConvertO(__workflow_bodycontent);
                     bodypropCount++;
                 }
 
-                if (bodypattern != null)
+                if (__workflow_bodypattern != null)
                 {
-                    body["pattern"] = ExpressionConverter.ConvertO(bodypattern);
+                    body["pattern"] = ExpressionConverter.ConvertO(__workflow_bodypattern);
                     bodypropCount++;
                 }
 

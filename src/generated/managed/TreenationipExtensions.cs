@@ -1,51 +1,38 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class TreenationipActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
-        [WorkflowExpressionFactory(nameof(__BuildProjectList))]
-        public IBodyWorkflowAction<ProjectListResponseItem[]> ProjectList([WorkflowExpression] Func<string> status)
+        public IBodyWorkflowAction<ProjectListResponseItem[]> ProjectList(Expression<Func<string>> status)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ProjectListResponseItem[]> __BuildProjectList(WorkflowExpression<string> status)
-        {
-            WorkflowExpression.Validate(status, nameof(status), required: true);
+            var __workflow_status = status == null ? null : WorkflowExpression.Compile(status);
+            WorkflowExpression.Validate(__workflow_status, nameof(status), required: true);
             return new DeferredBodyAction<ProjectListResponseItem[]>(() =>
             {
                 var apiCallPath = "/api/projects";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
+                callPayload.Queries["status"] = ExpressionConverter.Convert(__workflow_status);
                 return new ApiConnectionAction<ProjectListResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
-        [WorkflowExpressionFactory(nameof(__BuildProjectDetails))]
-        public IBodyWorkflowAction<ProjectDetailsResponse> ProjectDetails([WorkflowExpression] Func<string> projectId)
+        public IBodyWorkflowAction<ProjectDetailsResponse> ProjectDetails(Expression<Func<string>> projectId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ProjectDetailsResponse> __BuildProjectDetails(WorkflowExpression<string> projectId)
-        {
-            WorkflowExpression.Validate(projectId, nameof(projectId), required: true);
+            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
+            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
             return new DeferredBodyAction<ProjectDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/projects/{0}", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/projects/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ProjectDetailsResponse>(callPayload);
@@ -53,19 +40,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
-        [WorkflowExpressionFactory(nameof(__BuildSitesList))]
-        public IBodyWorkflowAction<SitesListResponseItem[]> SitesList([WorkflowExpression] Func<string> projectId)
+        public IBodyWorkflowAction<SitesListResponseItem[]> SitesList(Expression<Func<string>> projectId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SitesListResponseItem[]> __BuildSitesList(WorkflowExpression<string> projectId)
-        {
-            WorkflowExpression.Validate(projectId, nameof(projectId), required: true);
+            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
+            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
             return new DeferredBodyAction<SitesListResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/projects/{0}/planting-sites", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/projects/{0}/planting-sites", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SitesListResponseItem[]>(callPayload);
@@ -73,19 +54,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
-        [WorkflowExpressionFactory(nameof(__BuildSpeciesList))]
-        public IBodyWorkflowAction<SpeciesListResponseItem[]> SpeciesList([WorkflowExpression] Func<string> projectId)
+        public IBodyWorkflowAction<SpeciesListResponseItem[]> SpeciesList(Expression<Func<string>> projectId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SpeciesListResponseItem[]> __BuildSpeciesList(WorkflowExpression<string> projectId)
-        {
-            WorkflowExpression.Validate(projectId, nameof(projectId), required: true);
+            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
+            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
             return new DeferredBodyAction<SpeciesListResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/projects/{0}/species", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/projects/{0}/species", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SpeciesListResponseItem[]>(callPayload);
@@ -93,19 +68,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
-        [WorkflowExpressionFactory(nameof(__BuildSpeciesDetails))]
-        public IBodyWorkflowAction<SpeciesDetailsResponse> SpeciesDetails([WorkflowExpression] Func<string> speciesId)
+        public IBodyWorkflowAction<SpeciesDetailsResponse> SpeciesDetails(Expression<Func<string>> speciesId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<SpeciesDetailsResponse> __BuildSpeciesDetails(WorkflowExpression<string> speciesId)
-        {
-            WorkflowExpression.Validate(speciesId, nameof(speciesId), required: true);
+            var __workflow_speciesId = speciesId == null ? null : WorkflowExpression.Compile(speciesId);
+            WorkflowExpression.Validate(__workflow_speciesId, nameof(speciesId), required: true);
             return new DeferredBodyAction<SpeciesDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/species/{0}", ExpressionConverter.ConvertWithUrlEncoding(speciesId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/species/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_speciesId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SpeciesDetailsResponse>(callPayload);
@@ -113,19 +82,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
-        [WorkflowExpressionFactory(nameof(__BuildForestDetails))]
-        public IBodyWorkflowAction<ForestDetailsResponse> ForestDetails([WorkflowExpression] Func<string> userId)
+        public IBodyWorkflowAction<ForestDetailsResponse> ForestDetails(Expression<Func<string>> userId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ForestDetailsResponse> __BuildForestDetails(WorkflowExpression<string> userId)
-        {
-            WorkflowExpression.Validate(userId, nameof(userId), required: true);
+            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
+            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
             return new DeferredBodyAction<ForestDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/forests/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/forests/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ForestDetailsResponse>(callPayload);
@@ -133,20 +96,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
-        [WorkflowExpressionFactory(nameof(__BuildForestTreeCount))]
-        public IBodyWorkflowAction<ForestTreeCountResponse> ForestTreeCount([WorkflowExpression] Func<string> userSlug, [WorkflowExpression] Func<string> period)
+        public IBodyWorkflowAction<ForestTreeCountResponse> ForestTreeCount(Expression<Func<string>> userSlug, Expression<Func<string>> period)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<ForestTreeCountResponse> __BuildForestTreeCount(WorkflowExpression<string> userSlug, WorkflowExpression<string> period)
-        {
-            WorkflowExpression.Validate(userSlug, nameof(userSlug), required: true);
-            WorkflowExpression.Validate(period, nameof(period), required: true);
+            var __workflow_userSlug = userSlug == null ? null : WorkflowExpression.Compile(userSlug);
+            WorkflowExpression.Validate(__workflow_userSlug, nameof(userSlug), required: true);
+            var __workflow_period = period == null ? null : WorkflowExpression.Compile(period);
+            WorkflowExpression.Validate(__workflow_period, nameof(period), required: true);
             return new DeferredBodyAction<ForestTreeCountResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/forests/{0}/tree_counter/{1}", ExpressionConverter.ConvertWithUrlEncoding(userSlug, 1), ExpressionConverter.ConvertWithUrlEncoding(period, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/forests/{0}/tree_counter/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userSlug, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_period, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ForestTreeCountResponse>(callPayload);
@@ -154,20 +112,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
-        [WorkflowExpressionFactory(nameof(__BuildPlant))]
-        public IBodyWorkflowAction<PlantResponse> Plant([WorkflowExpression] Func<bodyrecipientsInputItem[]> bodyrecipients = null, [WorkflowExpression] Func<int> bodyplanterId = null, [WorkflowExpression] Func<int> bodyspeciesId = null, [WorkflowExpression] Func<int> bodyquantity = null, [WorkflowExpression] Func<string> bodymessage = null)
+        public IBodyWorkflowAction<PlantResponse> Plant(Expression<Func<bodyrecipientsInputItem[]>> bodyrecipients = null, Expression<Func<int>> bodyplanterId = null, Expression<Func<int>> bodyspeciesId = null, Expression<Func<int>> bodyquantity = null, Expression<Func<string>> bodymessage = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<PlantResponse> __BuildPlant(WorkflowExpression<bodyrecipientsInputItem[]> bodyrecipients = null, WorkflowExpression<int> bodyplanterId = null, WorkflowExpression<int> bodyspeciesId = null, WorkflowExpression<int> bodyquantity = null, WorkflowExpression<string> bodymessage = null)
-        {
-            WorkflowExpression.Validate(bodyrecipients, nameof(bodyrecipients), required: false);
-            WorkflowExpression.Validate(bodyplanterId, nameof(bodyplanterId), required: false);
-            WorkflowExpression.Validate(bodyspeciesId, nameof(bodyspeciesId), required: false);
-            WorkflowExpression.Validate(bodyquantity, nameof(bodyquantity), required: false);
-            WorkflowExpression.Validate(bodymessage, nameof(bodymessage), required: false);
+            var __workflow_bodyrecipients = bodyrecipients == null ? null : WorkflowExpression.Compile(bodyrecipients);
+            WorkflowExpression.Validate(__workflow_bodyrecipients, nameof(bodyrecipients), required: false);
+            var __workflow_bodyplanterId = bodyplanterId == null ? null : WorkflowExpression.Compile(bodyplanterId);
+            WorkflowExpression.Validate(__workflow_bodyplanterId, nameof(bodyplanterId), required: false);
+            var __workflow_bodyspeciesId = bodyspeciesId == null ? null : WorkflowExpression.Compile(bodyspeciesId);
+            WorkflowExpression.Validate(__workflow_bodyspeciesId, nameof(bodyspeciesId), required: false);
+            var __workflow_bodyquantity = bodyquantity == null ? null : WorkflowExpression.Compile(bodyquantity);
+            WorkflowExpression.Validate(__workflow_bodyquantity, nameof(bodyquantity), required: false);
+            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
+            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: false);
             return new DeferredBodyAction<PlantResponse>(() =>
             {
                 var apiCallPath = "/api/plant";
@@ -175,33 +131,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyrecipients != null)
+                if (__workflow_bodyrecipients != null)
                 {
-                    body["recipients"] = ExpressionConverter.ConvertO(bodyrecipients);
+                    body["recipients"] = ExpressionConverter.ConvertO(__workflow_bodyrecipients);
                     bodypropCount++;
                 }
 
-                if (bodyplanterId != null)
+                if (__workflow_bodyplanterId != null)
                 {
-                    body["planter_id"] = ExpressionConverter.ConvertO(bodyplanterId);
+                    body["planter_id"] = ExpressionConverter.ConvertO(__workflow_bodyplanterId);
                     bodypropCount++;
                 }
 
-                if (bodyspeciesId != null)
+                if (__workflow_bodyspeciesId != null)
                 {
-                    body["species_id"] = ExpressionConverter.ConvertO(bodyspeciesId);
+                    body["species_id"] = ExpressionConverter.ConvertO(__workflow_bodyspeciesId);
                     bodypropCount++;
                 }
 
-                if (bodyquantity != null)
+                if (__workflow_bodyquantity != null)
                 {
-                    body["quantity"] = ExpressionConverter.ConvertO(bodyquantity);
+                    body["quantity"] = ExpressionConverter.ConvertO(__workflow_bodyquantity);
                     bodypropCount++;
                 }
 
-                if (bodymessage != null)
+                if (__workflow_bodymessage != null)
                 {
-                    body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                    body["message"] = ExpressionConverter.ConvertO(__workflow_bodymessage);
                     bodypropCount++;
                 }
 
@@ -215,21 +171,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateUser))]
-        public IBodyWorkflowAction<CreateUserResponse> CreateUser([WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<string> bodypassword = null, [WorkflowExpression] Func<string> bodyresponsibleName = null, [WorkflowExpression] Func<string> bodyorganizationWebsite = null)
+        public IBodyWorkflowAction<CreateUserResponse> CreateUser(Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodypassword = null, Expression<Func<string>> bodyresponsibleName = null, Expression<Func<string>> bodyorganizationWebsite = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<CreateUserResponse> __BuildCreateUser(WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyemail = null, WorkflowExpression<string> bodylanguage = null, WorkflowExpression<string> bodypassword = null, WorkflowExpression<string> bodyresponsibleName = null, WorkflowExpression<string> bodyorganizationWebsite = null)
-        {
-            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
-            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            WorkflowExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
-            WorkflowExpression.Validate(bodypassword, nameof(bodypassword), required: false);
-            WorkflowExpression.Validate(bodyresponsibleName, nameof(bodyresponsibleName), required: false);
-            WorkflowExpression.Validate(bodyorganizationWebsite, nameof(bodyorganizationWebsite), required: false);
+            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
+            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
+            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
+            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: false);
+            var __workflow_bodylanguage = bodylanguage == null ? null : WorkflowExpression.Compile(bodylanguage);
+            WorkflowExpression.Validate(__workflow_bodylanguage, nameof(bodylanguage), required: false);
+            var __workflow_bodypassword = bodypassword == null ? null : WorkflowExpression.Compile(bodypassword);
+            WorkflowExpression.Validate(__workflow_bodypassword, nameof(bodypassword), required: false);
+            var __workflow_bodyresponsibleName = bodyresponsibleName == null ? null : WorkflowExpression.Compile(bodyresponsibleName);
+            WorkflowExpression.Validate(__workflow_bodyresponsibleName, nameof(bodyresponsibleName), required: false);
+            var __workflow_bodyorganizationWebsite = bodyorganizationWebsite == null ? null : WorkflowExpression.Compile(bodyorganizationWebsite);
+            WorkflowExpression.Validate(__workflow_bodyorganizationWebsite, nameof(bodyorganizationWebsite), required: false);
             return new DeferredBodyAction<CreateUserResponse>(() =>
             {
                 var apiCallPath = "/api/user/b2b";
@@ -237,39 +192,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyname != null)
+                if (__workflow_bodyname != null)
                 {
-                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
                     bodypropCount++;
                 }
 
-                if (bodyemail != null)
+                if (__workflow_bodyemail != null)
                 {
-                    body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                    body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
                     bodypropCount++;
                 }
 
-                if (bodylanguage != null)
+                if (__workflow_bodylanguage != null)
                 {
-                    body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                    body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
                     bodypropCount++;
                 }
 
-                if (bodypassword != null)
+                if (__workflow_bodypassword != null)
                 {
-                    body["password"] = ExpressionConverter.ConvertO(bodypassword);
+                    body["password"] = ExpressionConverter.ConvertO(__workflow_bodypassword);
                     bodypropCount++;
                 }
 
-                if (bodyresponsibleName != null)
+                if (__workflow_bodyresponsibleName != null)
                 {
-                    body["responsible_name"] = ExpressionConverter.ConvertO(bodyresponsibleName);
+                    body["responsible_name"] = ExpressionConverter.ConvertO(__workflow_bodyresponsibleName);
                     bodypropCount++;
                 }
 
-                if (bodyorganizationWebsite != null)
+                if (__workflow_bodyorganizationWebsite != null)
                 {
-                    body["organization_website"] = ExpressionConverter.ConvertO(bodyorganizationWebsite);
+                    body["organization_website"] = ExpressionConverter.ConvertO(__workflow_bodyorganizationWebsite);
                     bodypropCount++;
                 }
 
@@ -283,19 +238,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
-        [WorkflowExpressionFactory(nameof(__BuildTreeTemplateDetails))]
-        public IBodyWorkflowAction<TreeTemplateDetailsResponse> TreeTemplateDetails([WorkflowExpression] Func<string> planterId)
+        public IBodyWorkflowAction<TreeTemplateDetailsResponse> TreeTemplateDetails(Expression<Func<string>> planterId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TreeTemplateDetailsResponse> __BuildTreeTemplateDetails(WorkflowExpression<string> planterId)
-        {
-            WorkflowExpression.Validate(planterId, nameof(planterId), required: true);
+            var __workflow_planterId = planterId == null ? null : WorkflowExpression.Compile(planterId);
+            WorkflowExpression.Validate(__workflow_planterId, nameof(planterId), required: true);
             return new DeferredBodyAction<TreeTemplateDetailsResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/tree_templates/{0}", ExpressionConverter.ConvertWithUrlEncoding(planterId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/tree_templates/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_planterId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TreeTemplateDetailsResponse>(callPayload);
@@ -303,27 +252,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateTreeTemplate))]
-        public IBodyWorkflowAction<UpdateTreeTemplateResponse> UpdateTreeTemplate([WorkflowExpression] Func<string> planterId, [WorkflowExpression] Func<string> bodymessage = null)
+        public IBodyWorkflowAction<UpdateTreeTemplateResponse> UpdateTreeTemplate(Expression<Func<string>> planterId, Expression<Func<string>> bodymessage = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<UpdateTreeTemplateResponse> __BuildUpdateTreeTemplate(WorkflowExpression<string> planterId, WorkflowExpression<string> bodymessage = null)
-        {
-            WorkflowExpression.Validate(planterId, nameof(planterId), required: true);
-            WorkflowExpression.Validate(bodymessage, nameof(bodymessage), required: false);
+            var __workflow_planterId = planterId == null ? null : WorkflowExpression.Compile(planterId);
+            WorkflowExpression.Validate(__workflow_planterId, nameof(planterId), required: true);
+            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
+            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: false);
             return new DeferredBodyAction<UpdateTreeTemplateResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/tree_templates/{0}", ExpressionConverter.ConvertWithUrlEncoding(planterId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/tree_templates/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_planterId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodymessage != null)
+                if (__workflow_bodymessage != null)
                 {
-                    body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                    body["message"] = ExpressionConverter.ConvertO(__workflow_bodymessage);
                     bodypropCount++;
                 }
 
@@ -337,17 +281,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
-        [WorkflowExpressionFactory(nameof(__BuildBuyCredit))]
-        public IBodyWorkflowAction<BuyCreditResponse> BuyCredit([WorkflowExpression] Func<int> bodyplanterId = null, [WorkflowExpression] Func<int> bodyamount = null)
+        public IBodyWorkflowAction<BuyCreditResponse> BuyCredit(Expression<Func<int>> bodyplanterId = null, Expression<Func<int>> bodyamount = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<BuyCreditResponse> __BuildBuyCredit(WorkflowExpression<int> bodyplanterId = null, WorkflowExpression<int> bodyamount = null)
-        {
-            WorkflowExpression.Validate(bodyplanterId, nameof(bodyplanterId), required: false);
-            WorkflowExpression.Validate(bodyamount, nameof(bodyamount), required: false);
+            var __workflow_bodyplanterId = bodyplanterId == null ? null : WorkflowExpression.Compile(bodyplanterId);
+            WorkflowExpression.Validate(__workflow_bodyplanterId, nameof(bodyplanterId), required: false);
+            var __workflow_bodyamount = bodyamount == null ? null : WorkflowExpression.Compile(bodyamount);
+            WorkflowExpression.Validate(__workflow_bodyamount, nameof(bodyamount), required: false);
             return new DeferredBodyAction<BuyCreditResponse>(() =>
             {
                 var apiCallPath = "/api/credit";
@@ -355,15 +294,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyplanterId != null)
+                if (__workflow_bodyplanterId != null)
                 {
-                    body["planter_id"] = ExpressionConverter.ConvertO(bodyplanterId);
+                    body["planter_id"] = ExpressionConverter.ConvertO(__workflow_bodyplanterId);
                     bodypropCount++;
                 }
 
-                if (bodyamount != null)
+                if (__workflow_bodyamount != null)
                 {
-                    body["amount"] = ExpressionConverter.ConvertO(bodyamount);
+                    body["amount"] = ExpressionConverter.ConvertO(__workflow_bodyamount);
                     bodypropCount++;
                 }
 

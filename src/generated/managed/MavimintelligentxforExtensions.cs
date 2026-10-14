@@ -1,45 +1,42 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimintelligentxfor
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class MavimintelligentxforActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimintelligentxfor")]
-        [WorkflowExpressionFactory(nameof(__BuildGetTopicAuditTrailLogs))]
-        public IBodyWorkflowAction<AuditLog[]> GetTopicAuditTrailLogs([WorkflowExpression] Func<string> repositoryId, [WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<int> logId = null, [WorkflowExpression] Func<int> range = null, [WorkflowExpression] Func<dataLanguageInput> dataLanguage = null)
+        public IBodyWorkflowAction<AuditLog[]> GetTopicAuditTrailLogs(Expression<Func<string>> repositoryId, Expression<Func<string>> topicId, Expression<Func<int>> logId = null, Expression<Func<int>> range = null, Expression<Func<dataLanguageInput>> dataLanguage = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<AuditLog[]> __BuildGetTopicAuditTrailLogs(WorkflowExpression<string> repositoryId, WorkflowExpression<string> topicId, WorkflowExpression<int> logId = null, WorkflowExpression<int> range = null, WorkflowExpression<dataLanguageInput> dataLanguage = null)
-        {
-            WorkflowExpression.Validate(repositoryId, nameof(repositoryId), required: true);
-            WorkflowExpression.Validate(topicId, nameof(topicId), required: true);
-            WorkflowExpression.Validate(logId, nameof(logId), required: false);
-            WorkflowExpression.Validate(range, nameof(range), required: false);
-            WorkflowExpression.Validate(dataLanguage, nameof(dataLanguage), required: false);
+            var __workflow_repositoryId = repositoryId == null ? null : WorkflowExpression.Compile(repositoryId);
+            WorkflowExpression.Validate(__workflow_repositoryId, nameof(repositoryId), required: true);
+            var __workflow_topicId = topicId == null ? null : WorkflowExpression.Compile(topicId);
+            WorkflowExpression.Validate(__workflow_topicId, nameof(topicId), required: true);
+            var __workflow_logId = logId == null ? null : WorkflowExpression.Compile(logId);
+            WorkflowExpression.Validate(__workflow_logId, nameof(logId), required: false);
+            var __workflow_range = range == null ? null : WorkflowExpression.Compile(range);
+            WorkflowExpression.Validate(__workflow_range, nameof(range), required: false);
+            var __workflow_dataLanguage = dataLanguage == null ? null : WorkflowExpression.Compile(dataLanguage);
+            WorkflowExpression.Validate(__workflow_dataLanguage, nameof(dataLanguage), required: false);
             return new DeferredBodyAction<AuditLog[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/insights/v2/activities/repositories/{0}/system-logs/topics/{1}", ExpressionConverter.ConvertWithUrlEncoding(repositoryId, 1), ExpressionConverter.ConvertWithUrlEncoding(topicId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/insights/v2/activities/repositories/{0}/system-logs/topics/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_repositoryId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["logId"] = Convert.ToString(0);
-                if (logId != null)
-                    callPayload.Queries["logId"] = ExpressionConverter.Convert(logId);
+                if (__workflow_logId != null)
+                    callPayload.Queries["logId"] = ExpressionConverter.Convert(__workflow_logId);
                 callPayload.Queries["range"] = Convert.ToString(0);
-                if (range != null)
-                    callPayload.Queries["range"] = ExpressionConverter.Convert(range);
+                if (__workflow_range != null)
+                    callPayload.Queries["range"] = ExpressionConverter.Convert(__workflow_range);
                 callPayload.Queries["dataLanguage"] = Convert.ToString("en");
-                if (dataLanguage != null)
-                    callPayload.Queries["dataLanguage"] = ExpressionConverter.Convert(dataLanguage);
+                if (__workflow_dataLanguage != null)
+                    callPayload.Queries["dataLanguage"] = ExpressionConverter.Convert(__workflow_dataLanguage);
                 return new ApiConnectionAction<AuditLog[]>(callPayload);
             });
         }

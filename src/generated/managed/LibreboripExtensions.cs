@@ -1,39 +1,34 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Libreborip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class LibreboripActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "libreborip")]
-        [WorkflowExpressionFactory(nameof(__BuildLibrebormeSearchCompany))]
-        public IBodyWorkflowAction<LibrebormeSearchCompanyResponse> LibrebormeSearchCompany([WorkflowExpression] Func<string> query, [WorkflowExpression] Func<string> page = null, [WorkflowExpression] Func<string> province = null)
+        public IBodyWorkflowAction<LibrebormeSearchCompanyResponse> LibrebormeSearchCompany(Expression<Func<string>> query, Expression<Func<string>> page = null, Expression<Func<string>> province = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<LibrebormeSearchCompanyResponse> __BuildLibrebormeSearchCompany(WorkflowExpression<string> query, WorkflowExpression<string> page = null, WorkflowExpression<string> province = null)
-        {
-            WorkflowExpression.Validate(query, nameof(query), required: true);
-            WorkflowExpression.Validate(page, nameof(page), required: false);
-            WorkflowExpression.Validate(province, nameof(province), required: false);
+            var __workflow_query = query == null ? null : WorkflowExpression.Compile(query);
+            WorkflowExpression.Validate(__workflow_query, nameof(query), required: true);
+            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
+            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_province = province == null ? null : WorkflowExpression.Compile(province);
+            WorkflowExpression.Validate(__workflow_province, nameof(province), required: false);
             return new DeferredBodyAction<LibrebormeSearchCompanyResponse>(() =>
             {
                 var apiCallPath = "/company/search/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["query"] = ExpressionConverter.Convert(query);
-                if (page != null)
-                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-                if (province != null)
-                    callPayload.Queries["province"] = ExpressionConverter.Convert(province);
+                callPayload.Queries["query"] = ExpressionConverter.Convert(__workflow_query);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_province != null)
+                    callPayload.Queries["province"] = ExpressionConverter.Convert(__workflow_province);
                 return new ApiConnectionAction<LibrebormeSearchCompanyResponse>(callPayload);
             });
         }

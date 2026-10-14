@@ -1,46 +1,43 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pling
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class PlingActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pling")]
-        [WorkflowExpressionFactory(nameof(__BuildSendNotification))]
-        public IWorkflowAction SendNotification([WorkflowExpression] Func<string> profileId, [WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodytemplateId, [WorkflowExpression] Func<string> bodycontent, [WorkflowExpression] Func<string[]> bodyaudienceUsers)
+        public IWorkflowAction SendNotification(Expression<Func<string>> profileId, Expression<Func<string>> bodytitle, Expression<Func<string>> bodytemplateId, Expression<Func<string>> bodycontent, Expression<Func<string[]>> bodyaudienceUsers)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildSendNotification(WorkflowExpression<string> profileId, WorkflowExpression<string> bodytitle, WorkflowExpression<string> bodytemplateId, WorkflowExpression<string> bodycontent, WorkflowExpression<string[]> bodyaudienceUsers)
-        {
-            WorkflowExpression.Validate(profileId, nameof(profileId), required: true);
-            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
-            WorkflowExpression.Validate(bodytemplateId, nameof(bodytemplateId), required: true);
-            WorkflowExpression.Validate(bodycontent, nameof(bodycontent), required: true);
-            WorkflowExpression.Validate(bodyaudienceUsers, nameof(bodyaudienceUsers), required: true);
+            var __workflow_profileId = profileId == null ? null : WorkflowExpression.Compile(profileId);
+            WorkflowExpression.Validate(__workflow_profileId, nameof(profileId), required: true);
+            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
+            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodytemplateId = bodytemplateId == null ? null : WorkflowExpression.Compile(bodytemplateId);
+            WorkflowExpression.Validate(__workflow_bodytemplateId, nameof(bodytemplateId), required: true);
+            var __workflow_bodycontent = bodycontent == null ? null : WorkflowExpression.Compile(bodycontent);
+            WorkflowExpression.Validate(__workflow_bodycontent, nameof(bodycontent), required: true);
+            var __workflow_bodyaudienceUsers = bodyaudienceUsers == null ? null : WorkflowExpression.Compile(bodyaudienceUsers);
+            WorkflowExpression.Validate(__workflow_bodyaudienceUsers, nameof(bodyaudienceUsers), required: true);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/profiles/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(profileId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/profiles/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_profileId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
                 bodypropCount++;
-                body["templateId"] = ExpressionConverter.ConvertO(bodytemplateId);
+                body["templateId"] = ExpressionConverter.ConvertO(__workflow_bodytemplateId);
                 bodypropCount++;
-                body["content"] = ExpressionConverter.ConvertO(bodycontent);
+                body["content"] = ExpressionConverter.ConvertO(__workflow_bodycontent);
                 bodypropCount++;
-                body["audienceUsers"] = ExpressionConverter.ConvertO(bodyaudienceUsers);
+                body["audienceUsers"] = ExpressionConverter.ConvertO(__workflow_bodyaudienceUsers);
                 var additionalTemplateDataObject = new JObject();
                 var additionalTemplateDataObjectpropCount = 0;
                 if (additionalTemplateDataObjectpropCount > 0)
@@ -68,19 +65,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pling
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pling")]
-        [WorkflowExpressionFactory(nameof(__BuildGetTemplates))]
-        public IBodyWorkflowAction<GetTemplatesResponseItem[]> GetTemplates([WorkflowExpression] Func<string> profileId)
+        public IBodyWorkflowAction<GetTemplatesResponseItem[]> GetTemplates(Expression<Func<string>> profileId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetTemplatesResponseItem[]> __BuildGetTemplates(WorkflowExpression<string> profileId)
-        {
-            WorkflowExpression.Validate(profileId, nameof(profileId), required: true);
+            var __workflow_profileId = profileId == null ? null : WorkflowExpression.Compile(profileId);
+            WorkflowExpression.Validate(__workflow_profileId, nameof(profileId), required: true);
             return new DeferredBodyAction<GetTemplatesResponseItem[]>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/profiles/{0}/templates", ExpressionConverter.ConvertWithUrlEncoding(profileId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/profiles/{0}/templates", ExpressionConverter.ConvertWithUrlEncoding(__workflow_profileId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetTemplatesResponseItem[]>(callPayload);

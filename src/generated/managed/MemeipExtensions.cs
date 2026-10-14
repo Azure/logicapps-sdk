@@ -1,12 +1,12 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Memeip
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class MemeipActions([ConnectionName] string connectionId)
     {
@@ -20,19 +20,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Memeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "memeip")]
-        [WorkflowExpressionFactory(nameof(__BuildMemeSubreddit))]
-        public IBodyWorkflowAction<MemeSubredditResponse> MemeSubreddit([WorkflowExpression] Func<string> subreddit)
+        public IBodyWorkflowAction<MemeSubredditResponse> MemeSubreddit(Expression<Func<string>> subreddit)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<MemeSubredditResponse> __BuildMemeSubreddit(WorkflowExpression<string> subreddit)
-        {
-            WorkflowExpression.Validate(subreddit, nameof(subreddit), required: true);
+            var __workflow_subreddit = subreddit == null ? null : WorkflowExpression.Compile(subreddit);
+            WorkflowExpression.Validate(__workflow_subreddit, nameof(subreddit), required: true);
             return new DeferredBodyAction<MemeSubredditResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/gimme/{0}", ExpressionConverter.ConvertWithUrlEncoding(subreddit, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/gimme/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subreddit, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<MemeSubredditResponse>(callPayload);

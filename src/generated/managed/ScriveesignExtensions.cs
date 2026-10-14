@@ -1,27 +1,20 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class ScriveesignActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        [WorkflowExpressionFactory(nameof(__BuildGetDocJson))]
-        public IBodyWorkflowAction<JToken> GetDocJson([WorkflowExpression] Func<string> bodydocumentId)
+        public IBodyWorkflowAction<JToken> GetDocJson(Expression<Func<string>> bodydocumentId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildGetDocJson(WorkflowExpression<string> bodydocumentId)
-        {
-            WorkflowExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
+            var __workflow_bodydocumentId = bodydocumentId == null ? null : WorkflowExpression.Compile(bodydocumentId);
+            WorkflowExpression.Validate(__workflow_bodydocumentId, nameof(bodydocumentId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/getdocumentjson";
@@ -31,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+                body["documentId"] = ExpressionConverter.ConvertO(__workflow_bodydocumentId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -42,16 +35,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        [WorkflowExpressionFactory(nameof(__BuildGetDocStatus))]
-        public IBodyWorkflowAction<string> GetDocStatus([WorkflowExpression] Func<string> bodydocumentId)
+        public IBodyWorkflowAction<string> GetDocStatus(Expression<Func<string>> bodydocumentId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildGetDocStatus(WorkflowExpression<string> bodydocumentId)
-        {
-            WorkflowExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
+            var __workflow_bodydocumentId = bodydocumentId == null ? null : WorkflowExpression.Compile(bodydocumentId);
+            WorkflowExpression.Validate(__workflow_bodydocumentId, nameof(bodydocumentId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/getdocumentstatus";
@@ -61,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+                body["documentId"] = ExpressionConverter.ConvertO(__workflow_bodydocumentId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -72,17 +59,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        [WorkflowExpressionFactory(nameof(__BuildGetPartyStatus))]
-        public IBodyWorkflowAction<string> GetPartyStatus([WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<string> bodypartyId)
+        public IBodyWorkflowAction<string> GetPartyStatus(Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodypartyId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildGetPartyStatus(WorkflowExpression<string> bodydocumentId, WorkflowExpression<string> bodypartyId)
-        {
-            WorkflowExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
-            WorkflowExpression.Validate(bodypartyId, nameof(bodypartyId), required: true);
+            var __workflow_bodydocumentId = bodydocumentId == null ? null : WorkflowExpression.Compile(bodydocumentId);
+            WorkflowExpression.Validate(__workflow_bodydocumentId, nameof(bodydocumentId), required: true);
+            var __workflow_bodypartyId = bodypartyId == null ? null : WorkflowExpression.Compile(bodypartyId);
+            WorkflowExpression.Validate(__workflow_bodypartyId, nameof(bodypartyId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/getpartystatus";
@@ -92,9 +74,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+                body["documentId"] = ExpressionConverter.ConvertO(__workflow_bodydocumentId);
                 bodypropCount++;
-                body["partyId"] = ExpressionConverter.ConvertO(bodypartyId);
+                body["partyId"] = ExpressionConverter.ConvertO(__workflow_bodypartyId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -105,18 +87,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdatePartyEmail))]
-        public IBodyWorkflowAction<JToken> UpdatePartyEmail([WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<string> bodypartyId, [WorkflowExpression] Func<string> bodypartyEmail)
+        public IBodyWorkflowAction<JToken> UpdatePartyEmail(Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodypartyId, Expression<Func<string>> bodypartyEmail)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildUpdatePartyEmail(WorkflowExpression<string> bodydocumentId, WorkflowExpression<string> bodypartyId, WorkflowExpression<string> bodypartyEmail)
-        {
-            WorkflowExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
-            WorkflowExpression.Validate(bodypartyId, nameof(bodypartyId), required: true);
-            WorkflowExpression.Validate(bodypartyEmail, nameof(bodypartyEmail), required: true);
+            var __workflow_bodydocumentId = bodydocumentId == null ? null : WorkflowExpression.Compile(bodydocumentId);
+            WorkflowExpression.Validate(__workflow_bodydocumentId, nameof(bodydocumentId), required: true);
+            var __workflow_bodypartyId = bodypartyId == null ? null : WorkflowExpression.Compile(bodypartyId);
+            WorkflowExpression.Validate(__workflow_bodypartyId, nameof(bodypartyId), required: true);
+            var __workflow_bodypartyEmail = bodypartyEmail == null ? null : WorkflowExpression.Compile(bodypartyEmail);
+            WorkflowExpression.Validate(__workflow_bodypartyEmail, nameof(bodypartyEmail), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/updatepartyemail";
@@ -126,11 +104,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+                body["documentId"] = ExpressionConverter.ConvertO(__workflow_bodydocumentId);
                 bodypropCount++;
-                body["partyId"] = ExpressionConverter.ConvertO(bodypartyId);
+                body["partyId"] = ExpressionConverter.ConvertO(__workflow_bodypartyId);
                 bodypropCount++;
-                body["partyEmail"] = ExpressionConverter.ConvertO(bodypartyEmail);
+                body["partyEmail"] = ExpressionConverter.ConvertO(__workflow_bodypartyEmail);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -141,16 +119,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        [WorkflowExpressionFactory(nameof(__BuildSendReminder))]
-        public IBodyWorkflowAction<JToken> SendReminder([WorkflowExpression] Func<string> bodydocumentId)
+        public IBodyWorkflowAction<JToken> SendReminder(Expression<Func<string>> bodydocumentId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildSendReminder(WorkflowExpression<string> bodydocumentId)
-        {
-            WorkflowExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
+            var __workflow_bodydocumentId = bodydocumentId == null ? null : WorkflowExpression.Compile(bodydocumentId);
+            WorkflowExpression.Validate(__workflow_bodydocumentId, nameof(bodydocumentId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/sendreminder";
@@ -160,7 +132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+                body["documentId"] = ExpressionConverter.ConvertO(__workflow_bodydocumentId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -171,16 +143,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        [WorkflowExpressionFactory(nameof(__BuildGetDocumentPdfContent))]
-        public IBodyWorkflowAction<string> GetDocumentPdfContent([WorkflowExpression] Func<string> bodydocumentId)
+        public IBodyWorkflowAction<string> GetDocumentPdfContent(Expression<Func<string>> bodydocumentId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildGetDocumentPdfContent(WorkflowExpression<string> bodydocumentId)
-        {
-            WorkflowExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
+            var __workflow_bodydocumentId = bodydocumentId == null ? null : WorkflowExpression.Compile(bodydocumentId);
+            WorkflowExpression.Validate(__workflow_bodydocumentId, nameof(bodydocumentId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/getdocumentpdfcontent";
@@ -190,7 +156,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+                body["documentId"] = ExpressionConverter.ConvertO(__workflow_bodydocumentId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -201,19 +167,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        [WorkflowExpressionFactory(nameof(__BuildNewDocumentFromTemplate))]
-        public IBodyWorkflowAction<string> NewDocumentFromTemplate([WorkflowExpression] Func<string> templateIdDynamic)
+        public IBodyWorkflowAction<string> NewDocumentFromTemplate(Expression<Func<string>> templateIdDynamic)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildNewDocumentFromTemplate(WorkflowExpression<string> templateIdDynamic)
-        {
-            WorkflowExpression.Validate(templateIdDynamic, nameof(templateIdDynamic), required: true);
+            var __workflow_templateIdDynamic = templateIdDynamic == null ? null : WorkflowExpression.Compile(templateIdDynamic);
+            WorkflowExpression.Validate(__workflow_templateIdDynamic, nameof(templateIdDynamic), required: true);
             return new DeferredBodyAction<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/newfromtemplate/{0}", ExpressionConverter.ConvertWithUrlEncoding(templateIdDynamic, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/newfromtemplate/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateIdDynamic, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -221,16 +181,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        [WorkflowExpressionFactory(nameof(__BuildStartSigning))]
-        public IBodyWorkflowAction<string> StartSigning([WorkflowExpression] Func<string> bodydocumentId)
+        public IBodyWorkflowAction<string> StartSigning(Expression<Func<string>> bodydocumentId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildStartSigning(WorkflowExpression<string> bodydocumentId)
-        {
-            WorkflowExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
+            var __workflow_bodydocumentId = bodydocumentId == null ? null : WorkflowExpression.Compile(bodydocumentId);
+            WorkflowExpression.Validate(__workflow_bodydocumentId, nameof(bodydocumentId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/startsigning";
@@ -240,7 +194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+                body["documentId"] = ExpressionConverter.ConvertO(__workflow_bodydocumentId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -251,17 +205,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateDocJson))]
-        public IWorkflowAction UpdateDocJson([WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<string> bodydocumentJson)
+        public IWorkflowAction UpdateDocJson(Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodydocumentJson)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildUpdateDocJson(WorkflowExpression<string> bodydocumentId, WorkflowExpression<string> bodydocumentJson)
-        {
-            WorkflowExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
-            WorkflowExpression.Validate(bodydocumentJson, nameof(bodydocumentJson), required: true);
+            var __workflow_bodydocumentId = bodydocumentId == null ? null : WorkflowExpression.Compile(bodydocumentId);
+            WorkflowExpression.Validate(__workflow_bodydocumentId, nameof(bodydocumentId), required: true);
+            var __workflow_bodydocumentJson = bodydocumentJson == null ? null : WorkflowExpression.Compile(bodydocumentJson);
+            WorkflowExpression.Validate(__workflow_bodydocumentJson, nameof(bodydocumentJson), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/updatedocumentjson";
@@ -271,9 +220,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+                body["documentId"] = ExpressionConverter.ConvertO(__workflow_bodydocumentId);
                 bodypropCount++;
-                body["documentJson"] = ExpressionConverter.ConvertO(bodydocumentJson);
+                body["documentJson"] = ExpressionConverter.ConvertO(__workflow_bodydocumentJson);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -284,61 +233,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdatePartiesFields))]
-        public IWorkflowAction UpdatePartiesFields([WorkflowExpression] Func<string> templateIDDynamic, [WorkflowExpression] Func<object> dynamicTemplateSchema = null)
+        public IWorkflowAction UpdatePartiesFields(Expression<Func<string>> templateIDDynamic, Expression<Func<object>> dynamicTemplateSchema = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildUpdatePartiesFields(WorkflowExpression<string> templateIDDynamic, WorkflowExpression<object> dynamicTemplateSchema = null)
-        {
-            WorkflowExpression.Validate(templateIDDynamic, nameof(templateIDDynamic), required: true);
-            WorkflowExpression.Validate(dynamicTemplateSchema, nameof(dynamicTemplateSchema), required: false);
+            var __workflow_templateIDDynamic = templateIDDynamic == null ? null : WorkflowExpression.Compile(templateIDDynamic);
+            WorkflowExpression.Validate(__workflow_templateIDDynamic, nameof(templateIDDynamic), required: true);
+            var __workflow_dynamicTemplateSchema = dynamicTemplateSchema == null ? null : WorkflowExpression.Compile(dynamicTemplateSchema);
+            WorkflowExpression.Validate(__workflow_dynamicTemplateSchema, nameof(dynamicTemplateSchema), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/updatepartiesfields/{0}", ExpressionConverter.ConvertWithUrlEncoding(templateIDDynamic, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/updatepartiesfields/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateIDDynamic, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(dynamicTemplateSchema);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_dynamicTemplateSchema);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdatePartiesProperties))]
-        public IWorkflowAction UpdatePartiesProperties([WorkflowExpression] Func<string> templateIDDynamic, [WorkflowExpression] Func<object> dynamicTemplateMetaSchema = null)
+        public IWorkflowAction UpdatePartiesProperties(Expression<Func<string>> templateIDDynamic, Expression<Func<object>> dynamicTemplateMetaSchema = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildUpdatePartiesProperties(WorkflowExpression<string> templateIDDynamic, WorkflowExpression<object> dynamicTemplateMetaSchema = null)
-        {
-            WorkflowExpression.Validate(templateIDDynamic, nameof(templateIDDynamic), required: true);
-            WorkflowExpression.Validate(dynamicTemplateMetaSchema, nameof(dynamicTemplateMetaSchema), required: false);
+            var __workflow_templateIDDynamic = templateIDDynamic == null ? null : WorkflowExpression.Compile(templateIDDynamic);
+            WorkflowExpression.Validate(__workflow_templateIDDynamic, nameof(templateIDDynamic), required: true);
+            var __workflow_dynamicTemplateMetaSchema = dynamicTemplateMetaSchema == null ? null : WorkflowExpression.Compile(dynamicTemplateMetaSchema);
+            WorkflowExpression.Validate(__workflow_dynamicTemplateMetaSchema, nameof(dynamicTemplateMetaSchema), required: false);
             return new DeferredWorkflowAction(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/updatepartiesproperties/{0}", ExpressionConverter.ConvertWithUrlEncoding(templateIDDynamic, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/updatepartiesproperties/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateIDDynamic, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(dynamicTemplateMetaSchema);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_dynamicTemplateMetaSchema);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        [WorkflowExpressionFactory(nameof(__BuildSetFile))]
-        public IBodyWorkflowAction<JToken> SetFile([WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<string> bodypdfContent)
+        public IBodyWorkflowAction<JToken> SetFile(Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodypdfContent)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildSetFile(WorkflowExpression<string> bodydocumentId, WorkflowExpression<string> bodypdfContent)
-        {
-            WorkflowExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
-            WorkflowExpression.Validate(bodypdfContent, nameof(bodypdfContent), required: true);
+            var __workflow_bodydocumentId = bodydocumentId == null ? null : WorkflowExpression.Compile(bodydocumentId);
+            WorkflowExpression.Validate(__workflow_bodydocumentId, nameof(bodydocumentId), required: true);
+            var __workflow_bodypdfContent = bodypdfContent == null ? null : WorkflowExpression.Compile(bodypdfContent);
+            WorkflowExpression.Validate(__workflow_bodypdfContent, nameof(bodypdfContent), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/setfile";
@@ -348,9 +282,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+                body["documentId"] = ExpressionConverter.ConvertO(__workflow_bodydocumentId);
                 bodypropCount++;
-                body["pdfContent"] = ExpressionConverter.ConvertO(bodypdfContent);
+                body["pdfContent"] = ExpressionConverter.ConvertO(__workflow_bodypdfContent);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -361,17 +295,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        [WorkflowExpressionFactory(nameof(__BuildNewFromPdf))]
-        public IBodyWorkflowAction<string> NewFromPdf([WorkflowExpression] Func<string> bodypdfContent, [WorkflowExpression] Func<bodyauthorRoleInput> bodyauthorRole)
+        public IBodyWorkflowAction<string> NewFromPdf(Expression<Func<string>> bodypdfContent, Expression<Func<bodyauthorRoleInput>> bodyauthorRole)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildNewFromPdf(WorkflowExpression<string> bodypdfContent, WorkflowExpression<bodyauthorRoleInput> bodyauthorRole)
-        {
-            WorkflowExpression.Validate(bodypdfContent, nameof(bodypdfContent), required: true);
-            WorkflowExpression.Validate(bodyauthorRole, nameof(bodyauthorRole), required: true);
+            var __workflow_bodypdfContent = bodypdfContent == null ? null : WorkflowExpression.Compile(bodypdfContent);
+            WorkflowExpression.Validate(__workflow_bodypdfContent, nameof(bodypdfContent), required: true);
+            var __workflow_bodyauthorRole = bodyauthorRole == null ? null : WorkflowExpression.Compile(bodyauthorRole);
+            WorkflowExpression.Validate(__workflow_bodyauthorRole, nameof(bodyauthorRole), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/newfrompdf";
@@ -381,9 +310,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["pdfContent"] = ExpressionConverter.ConvertO(bodypdfContent);
+                body["pdfContent"] = ExpressionConverter.ConvertO(__workflow_bodypdfContent);
                 bodypropCount++;
-                body["authorRole"] = ExpressionConverter.ConvertO(bodyauthorRole);
+                body["authorRole"] = ExpressionConverter.ConvertO(__workflow_bodyauthorRole);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -394,17 +323,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        [WorkflowExpressionFactory(nameof(__BuildAppendFile))]
-        public IWorkflowAction AppendFile([WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<string> bodypdfContent)
+        public IWorkflowAction AppendFile(Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodypdfContent)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildAppendFile(WorkflowExpression<string> bodydocumentId, WorkflowExpression<string> bodypdfContent)
-        {
-            WorkflowExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
-            WorkflowExpression.Validate(bodypdfContent, nameof(bodypdfContent), required: true);
+            var __workflow_bodydocumentId = bodydocumentId == null ? null : WorkflowExpression.Compile(bodydocumentId);
+            WorkflowExpression.Validate(__workflow_bodydocumentId, nameof(bodydocumentId), required: true);
+            var __workflow_bodypdfContent = bodypdfContent == null ? null : WorkflowExpression.Compile(bodypdfContent);
+            WorkflowExpression.Validate(__workflow_bodypdfContent, nameof(bodypdfContent), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/appendfile";
@@ -414,9 +338,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+                body["documentId"] = ExpressionConverter.ConvertO(__workflow_bodydocumentId);
                 bodypropCount++;
-                body["pdfContent"] = ExpressionConverter.ConvertO(bodypdfContent);
+                body["pdfContent"] = ExpressionConverter.ConvertO(__workflow_bodypdfContent);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -427,16 +351,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        [WorkflowExpressionFactory(nameof(__BuildCancel))]
-        public IWorkflowAction Cancel([WorkflowExpression] Func<string> bodydocumentId)
+        public IWorkflowAction Cancel(Expression<Func<string>> bodydocumentId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildCancel(WorkflowExpression<string> bodydocumentId)
-        {
-            WorkflowExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
+            var __workflow_bodydocumentId = bodydocumentId == null ? null : WorkflowExpression.Compile(bodydocumentId);
+            WorkflowExpression.Validate(__workflow_bodydocumentId, nameof(bodydocumentId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/cancel";
@@ -446,7 +364,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+                body["documentId"] = ExpressionConverter.ConvertO(__workflow_bodydocumentId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -457,29 +375,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        [WorkflowExpressionFactory(nameof(__BuildAddParty))]
-        public IWorkflowAction AddParty([WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<string> bodypartyEmail, [WorkflowExpression] Func<bodypartyRoleInput> bodypartyRole, [WorkflowExpression] Func<string> bodyfirstname = null, [WorkflowExpression] Func<string> bodylastname = null, [WorkflowExpression] Func<string> bodycompany = null, [WorkflowExpression] Func<string> bodymobile = null, [WorkflowExpression] Func<string> bodypersonalNumber = null, [WorkflowExpression] Func<double> bodysignOrder = null, [WorkflowExpression] Func<bodydeliveryMethodInput> bodydeliveryMethod = null, [WorkflowExpression] Func<bodyauthenticationToViewInput> bodyauthenticationToView = null, [WorkflowExpression] Func<bodyauthenticationToViewArchivedInput> bodyauthenticationToViewArchived = null, [WorkflowExpression] Func<bodyauthenticationToSignInput> bodyauthenticationToSign = null, [WorkflowExpression] Func<bodyconfirmationInput> bodyconfirmation = null)
+        public IWorkflowAction AddParty(Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodypartyEmail, Expression<Func<bodypartyRoleInput>> bodypartyRole, Expression<Func<string>> bodyfirstname = null, Expression<Func<string>> bodylastname = null, Expression<Func<string>> bodycompany = null, Expression<Func<string>> bodymobile = null, Expression<Func<string>> bodypersonalNumber = null, Expression<Func<double>> bodysignOrder = null, Expression<Func<bodydeliveryMethodInput>> bodydeliveryMethod = null, Expression<Func<bodyauthenticationToViewInput>> bodyauthenticationToView = null, Expression<Func<bodyauthenticationToViewArchivedInput>> bodyauthenticationToViewArchived = null, Expression<Func<bodyauthenticationToSignInput>> bodyauthenticationToSign = null, Expression<Func<bodyconfirmationInput>> bodyconfirmation = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildAddParty(WorkflowExpression<string> bodydocumentId, WorkflowExpression<string> bodypartyEmail, WorkflowExpression<bodypartyRoleInput> bodypartyRole, WorkflowExpression<string> bodyfirstname = null, WorkflowExpression<string> bodylastname = null, WorkflowExpression<string> bodycompany = null, WorkflowExpression<string> bodymobile = null, WorkflowExpression<string> bodypersonalNumber = null, WorkflowExpression<double> bodysignOrder = null, WorkflowExpression<bodydeliveryMethodInput> bodydeliveryMethod = null, WorkflowExpression<bodyauthenticationToViewInput> bodyauthenticationToView = null, WorkflowExpression<bodyauthenticationToViewArchivedInput> bodyauthenticationToViewArchived = null, WorkflowExpression<bodyauthenticationToSignInput> bodyauthenticationToSign = null, WorkflowExpression<bodyconfirmationInput> bodyconfirmation = null)
-        {
-            WorkflowExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
-            WorkflowExpression.Validate(bodypartyEmail, nameof(bodypartyEmail), required: true);
-            WorkflowExpression.Validate(bodypartyRole, nameof(bodypartyRole), required: true);
-            WorkflowExpression.Validate(bodyfirstname, nameof(bodyfirstname), required: false);
-            WorkflowExpression.Validate(bodylastname, nameof(bodylastname), required: false);
-            WorkflowExpression.Validate(bodycompany, nameof(bodycompany), required: false);
-            WorkflowExpression.Validate(bodymobile, nameof(bodymobile), required: false);
-            WorkflowExpression.Validate(bodypersonalNumber, nameof(bodypersonalNumber), required: false);
-            WorkflowExpression.Validate(bodysignOrder, nameof(bodysignOrder), required: false);
-            WorkflowExpression.Validate(bodydeliveryMethod, nameof(bodydeliveryMethod), required: false);
-            WorkflowExpression.Validate(bodyauthenticationToView, nameof(bodyauthenticationToView), required: false);
-            WorkflowExpression.Validate(bodyauthenticationToViewArchived, nameof(bodyauthenticationToViewArchived), required: false);
-            WorkflowExpression.Validate(bodyauthenticationToSign, nameof(bodyauthenticationToSign), required: false);
-            WorkflowExpression.Validate(bodyconfirmation, nameof(bodyconfirmation), required: false);
+            var __workflow_bodydocumentId = bodydocumentId == null ? null : WorkflowExpression.Compile(bodydocumentId);
+            WorkflowExpression.Validate(__workflow_bodydocumentId, nameof(bodydocumentId), required: true);
+            var __workflow_bodypartyEmail = bodypartyEmail == null ? null : WorkflowExpression.Compile(bodypartyEmail);
+            WorkflowExpression.Validate(__workflow_bodypartyEmail, nameof(bodypartyEmail), required: true);
+            var __workflow_bodypartyRole = bodypartyRole == null ? null : WorkflowExpression.Compile(bodypartyRole);
+            WorkflowExpression.Validate(__workflow_bodypartyRole, nameof(bodypartyRole), required: true);
+            var __workflow_bodyfirstname = bodyfirstname == null ? null : WorkflowExpression.Compile(bodyfirstname);
+            WorkflowExpression.Validate(__workflow_bodyfirstname, nameof(bodyfirstname), required: false);
+            var __workflow_bodylastname = bodylastname == null ? null : WorkflowExpression.Compile(bodylastname);
+            WorkflowExpression.Validate(__workflow_bodylastname, nameof(bodylastname), required: false);
+            var __workflow_bodycompany = bodycompany == null ? null : WorkflowExpression.Compile(bodycompany);
+            WorkflowExpression.Validate(__workflow_bodycompany, nameof(bodycompany), required: false);
+            var __workflow_bodymobile = bodymobile == null ? null : WorkflowExpression.Compile(bodymobile);
+            WorkflowExpression.Validate(__workflow_bodymobile, nameof(bodymobile), required: false);
+            var __workflow_bodypersonalNumber = bodypersonalNumber == null ? null : WorkflowExpression.Compile(bodypersonalNumber);
+            WorkflowExpression.Validate(__workflow_bodypersonalNumber, nameof(bodypersonalNumber), required: false);
+            var __workflow_bodysignOrder = bodysignOrder == null ? null : WorkflowExpression.Compile(bodysignOrder);
+            WorkflowExpression.Validate(__workflow_bodysignOrder, nameof(bodysignOrder), required: false);
+            var __workflow_bodydeliveryMethod = bodydeliveryMethod == null ? null : WorkflowExpression.Compile(bodydeliveryMethod);
+            WorkflowExpression.Validate(__workflow_bodydeliveryMethod, nameof(bodydeliveryMethod), required: false);
+            var __workflow_bodyauthenticationToView = bodyauthenticationToView == null ? null : WorkflowExpression.Compile(bodyauthenticationToView);
+            WorkflowExpression.Validate(__workflow_bodyauthenticationToView, nameof(bodyauthenticationToView), required: false);
+            var __workflow_bodyauthenticationToViewArchived = bodyauthenticationToViewArchived == null ? null : WorkflowExpression.Compile(bodyauthenticationToViewArchived);
+            WorkflowExpression.Validate(__workflow_bodyauthenticationToViewArchived, nameof(bodyauthenticationToViewArchived), required: false);
+            var __workflow_bodyauthenticationToSign = bodyauthenticationToSign == null ? null : WorkflowExpression.Compile(bodyauthenticationToSign);
+            WorkflowExpression.Validate(__workflow_bodyauthenticationToSign, nameof(bodyauthenticationToSign), required: false);
+            var __workflow_bodyconfirmation = bodyconfirmation == null ? null : WorkflowExpression.Compile(bodyconfirmation);
+            WorkflowExpression.Validate(__workflow_bodyconfirmation, nameof(bodyconfirmation), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/addparty";
@@ -489,52 +414,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+                body["documentId"] = ExpressionConverter.ConvertO(__workflow_bodydocumentId);
                 bodypropCount++;
-                body["partyEmail"] = ExpressionConverter.ConvertO(bodypartyEmail);
+                body["partyEmail"] = ExpressionConverter.ConvertO(__workflow_bodypartyEmail);
                 bodypropCount++;
-                body["partyRole"] = ExpressionConverter.ConvertO(bodypartyRole);
-                if (bodyfirstname != null)
+                body["partyRole"] = ExpressionConverter.ConvertO(__workflow_bodypartyRole);
+                if (__workflow_bodyfirstname != null)
                 {
-                    body["firstname"] = ExpressionConverter.ConvertO(bodyfirstname);
+                    body["firstname"] = ExpressionConverter.ConvertO(__workflow_bodyfirstname);
                     bodypropCount++;
                 }
 
-                if (bodylastname != null)
+                if (__workflow_bodylastname != null)
                 {
-                    body["lastname"] = ExpressionConverter.ConvertO(bodylastname);
+                    body["lastname"] = ExpressionConverter.ConvertO(__workflow_bodylastname);
                     bodypropCount++;
                 }
 
-                if (bodycompany != null)
+                if (__workflow_bodycompany != null)
                 {
-                    body["company"] = ExpressionConverter.ConvertO(bodycompany);
+                    body["company"] = ExpressionConverter.ConvertO(__workflow_bodycompany);
                     bodypropCount++;
                 }
 
-                if (bodymobile != null)
+                if (__workflow_bodymobile != null)
                 {
-                    body["mobile"] = ExpressionConverter.ConvertO(bodymobile);
+                    body["mobile"] = ExpressionConverter.ConvertO(__workflow_bodymobile);
                     bodypropCount++;
                 }
 
-                if (bodypersonalNumber != null)
+                if (__workflow_bodypersonalNumber != null)
                 {
-                    body["personalNumber"] = ExpressionConverter.ConvertO(bodypersonalNumber);
+                    body["personalNumber"] = ExpressionConverter.ConvertO(__workflow_bodypersonalNumber);
                     bodypropCount++;
                 }
 
-                if (bodysignOrder != null)
+                if (__workflow_bodysignOrder != null)
                 {
-                    body["signOrder"] = ExpressionConverter.ConvertO(bodysignOrder);
+                    body["signOrder"] = ExpressionConverter.ConvertO(__workflow_bodysignOrder);
                     bodypropCount++;
                 }
 
-                if (bodydeliveryMethod != null)
+                if (__workflow_bodydeliveryMethod != null)
                 {
-                    if (bodydeliveryMethod != null)
+                    if (__workflow_bodydeliveryMethod != null)
                     {
-                        body["deliveryMethod"] = ExpressionConverter.ConvertO(bodydeliveryMethod);
+                        body["deliveryMethod"] = ExpressionConverter.ConvertO(__workflow_bodydeliveryMethod);
                         bodypropCount++;
                     }
 
@@ -546,11 +471,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
                     bodypropCount++;
                 }
 
-                if (bodyauthenticationToView != null)
+                if (__workflow_bodyauthenticationToView != null)
                 {
-                    if (bodyauthenticationToView != null)
+                    if (__workflow_bodyauthenticationToView != null)
                     {
-                        body["authenticationToView"] = ExpressionConverter.ConvertO(bodyauthenticationToView);
+                        body["authenticationToView"] = ExpressionConverter.ConvertO(__workflow_bodyauthenticationToView);
                         bodypropCount++;
                     }
 
@@ -562,11 +487,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
                     bodypropCount++;
                 }
 
-                if (bodyauthenticationToViewArchived != null)
+                if (__workflow_bodyauthenticationToViewArchived != null)
                 {
-                    if (bodyauthenticationToViewArchived != null)
+                    if (__workflow_bodyauthenticationToViewArchived != null)
                     {
-                        body["authenticationToViewArchived"] = ExpressionConverter.ConvertO(bodyauthenticationToViewArchived);
+                        body["authenticationToViewArchived"] = ExpressionConverter.ConvertO(__workflow_bodyauthenticationToViewArchived);
                         bodypropCount++;
                     }
 
@@ -578,11 +503,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
                     bodypropCount++;
                 }
 
-                if (bodyauthenticationToSign != null)
+                if (__workflow_bodyauthenticationToSign != null)
                 {
-                    if (bodyauthenticationToSign != null)
+                    if (__workflow_bodyauthenticationToSign != null)
                     {
-                        body["authenticationToSign"] = ExpressionConverter.ConvertO(bodyauthenticationToSign);
+                        body["authenticationToSign"] = ExpressionConverter.ConvertO(__workflow_bodyauthenticationToSign);
                         bodypropCount++;
                     }
 
@@ -594,11 +519,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
                     bodypropCount++;
                 }
 
-                if (bodyconfirmation != null)
+                if (__workflow_bodyconfirmation != null)
                 {
-                    if (bodyconfirmation != null)
+                    if (__workflow_bodyconfirmation != null)
                     {
-                        body["confirmation"] = ExpressionConverter.ConvertO(bodyconfirmation);
+                        body["confirmation"] = ExpressionConverter.ConvertO(__workflow_bodyconfirmation);
                         bodypropCount++;
                     }
 
@@ -620,21 +545,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        [WorkflowExpressionFactory(nameof(__BuildSetAuthorAttachment))]
-        public IWorkflowAction SetAuthorAttachment([WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<string> bodyattachmentName, [WorkflowExpression] Func<bodyrequiredInput> bodyrequired, [WorkflowExpression] Func<bodyaddToSealedFileInput> bodyaddToSealedFile, [WorkflowExpression] Func<string> bodyfileId = null, [WorkflowExpression] Func<string> bodypdfContent = null)
+        public IWorkflowAction SetAuthorAttachment(Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodyattachmentName, Expression<Func<bodyrequiredInput>> bodyrequired, Expression<Func<bodyaddToSealedFileInput>> bodyaddToSealedFile, Expression<Func<string>> bodyfileId = null, Expression<Func<string>> bodypdfContent = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildSetAuthorAttachment(WorkflowExpression<string> bodydocumentId, WorkflowExpression<string> bodyattachmentName, WorkflowExpression<bodyrequiredInput> bodyrequired, WorkflowExpression<bodyaddToSealedFileInput> bodyaddToSealedFile, WorkflowExpression<string> bodyfileId = null, WorkflowExpression<string> bodypdfContent = null)
-        {
-            WorkflowExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
-            WorkflowExpression.Validate(bodyattachmentName, nameof(bodyattachmentName), required: true);
-            WorkflowExpression.Validate(bodyrequired, nameof(bodyrequired), required: true);
-            WorkflowExpression.Validate(bodyaddToSealedFile, nameof(bodyaddToSealedFile), required: true);
-            WorkflowExpression.Validate(bodyfileId, nameof(bodyfileId), required: false);
-            WorkflowExpression.Validate(bodypdfContent, nameof(bodypdfContent), required: false);
+            var __workflow_bodydocumentId = bodydocumentId == null ? null : WorkflowExpression.Compile(bodydocumentId);
+            WorkflowExpression.Validate(__workflow_bodydocumentId, nameof(bodydocumentId), required: true);
+            var __workflow_bodyattachmentName = bodyattachmentName == null ? null : WorkflowExpression.Compile(bodyattachmentName);
+            WorkflowExpression.Validate(__workflow_bodyattachmentName, nameof(bodyattachmentName), required: true);
+            var __workflow_bodyrequired = bodyrequired == null ? null : WorkflowExpression.Compile(bodyrequired);
+            WorkflowExpression.Validate(__workflow_bodyrequired, nameof(bodyrequired), required: true);
+            var __workflow_bodyaddToSealedFile = bodyaddToSealedFile == null ? null : WorkflowExpression.Compile(bodyaddToSealedFile);
+            WorkflowExpression.Validate(__workflow_bodyaddToSealedFile, nameof(bodyaddToSealedFile), required: true);
+            var __workflow_bodyfileId = bodyfileId == null ? null : WorkflowExpression.Compile(bodyfileId);
+            WorkflowExpression.Validate(__workflow_bodyfileId, nameof(bodyfileId), required: false);
+            var __workflow_bodypdfContent = bodypdfContent == null ? null : WorkflowExpression.Compile(bodypdfContent);
+            WorkflowExpression.Validate(__workflow_bodypdfContent, nameof(bodypdfContent), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/setattachment";
@@ -642,23 +566,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfileId != null)
+                if (__workflow_bodyfileId != null)
                 {
-                    body["fileId"] = ExpressionConverter.ConvertO(bodyfileId);
+                    body["fileId"] = ExpressionConverter.ConvertO(__workflow_bodyfileId);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+                body["documentId"] = ExpressionConverter.ConvertO(__workflow_bodydocumentId);
                 bodypropCount++;
-                body["attachmentName"] = ExpressionConverter.ConvertO(bodyattachmentName);
+                body["attachmentName"] = ExpressionConverter.ConvertO(__workflow_bodyattachmentName);
                 bodypropCount++;
-                body["required"] = ExpressionConverter.ConvertO(bodyrequired);
+                body["required"] = ExpressionConverter.ConvertO(__workflow_bodyrequired);
                 bodypropCount++;
-                body["addToSealedFile"] = ExpressionConverter.ConvertO(bodyaddToSealedFile);
-                if (bodypdfContent != null)
+                body["addToSealedFile"] = ExpressionConverter.ConvertO(__workflow_bodyaddToSealedFile);
+                if (__workflow_bodypdfContent != null)
                 {
-                    body["pdfContent"] = ExpressionConverter.ConvertO(bodypdfContent);
+                    body["pdfContent"] = ExpressionConverter.ConvertO(__workflow_bodypdfContent);
                     bodypropCount++;
                 }
 
@@ -674,17 +598,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
 
     public class ScriveesignTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildStartAndOnDocumentSign))]
-        public IBodyWorkflowTrigger<string> StartAndOnDocumentSign([WorkflowExpression] Func<string> bodydocumentId,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string> StartAndOnDocumentSign(Expression<Func<string>> bodydocumentId, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<string> __BuildStartAndOnDocumentSign(WorkflowExpression<string> bodydocumentId,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
+            var __workflow_bodydocumentId = bodydocumentId == null ? null : WorkflowExpression.Compile(bodydocumentId);
+            WorkflowExpression.Validate(__workflow_bodydocumentId, nameof(bodydocumentId), required: true);
             return new DeferredBodyTrigger<string>(() =>
             {
                 var apiCallPath = "/webhooks/signed/createandstart";
@@ -693,7 +610,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+                body["documentId"] = ExpressionConverter.ConvertO(__workflow_bodydocumentId);
                 body["webhookUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
@@ -705,19 +622,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildWebhookFromTemplateSign))]
-        public IBodyWorkflowTrigger<string> WebhookFromTemplateSign([WorkflowExpression] Func<string> templateIdDynamic,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string> WebhookFromTemplateSign(Expression<Func<string>> templateIdDynamic, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<string> __BuildWebhookFromTemplateSign(WorkflowExpression<string> templateIdDynamic,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(templateIdDynamic, nameof(templateIdDynamic), required: true);
+            var __workflow_templateIdDynamic = templateIdDynamic == null ? null : WorkflowExpression.Compile(templateIdDynamic);
+            WorkflowExpression.Validate(__workflow_templateIdDynamic, nameof(templateIdDynamic), required: true);
             return new DeferredBodyTrigger<string>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/webhooks/signedfromtemplate/create/{0}", ExpressionConverter.ConvertWithUrlEncoding(templateIdDynamic, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/webhooks/signedfromtemplate/create/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateIdDynamic, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

@@ -1,87 +1,74 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asiteksa
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class AsiteksaActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asiteksa")]
-        [WorkflowExpressionFactory(nameof(__BuildFILEDOWNLOADBYURL))]
-        public IBodyWorkflowAction<string> FILEDOWNLOADBYURL([WorkflowExpression] Func<string> downloadUrl)
+        public IBodyWorkflowAction<string> FILEDOWNLOADBYURL(Expression<Func<string>> downloadUrl)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildFILEDOWNLOADBYURL(WorkflowExpression<string> downloadUrl)
-        {
-            WorkflowExpression.Validate(downloadUrl, nameof(downloadUrl), required: true);
+            var __workflow_downloadUrl = downloadUrl == null ? null : WorkflowExpression.Compile(downloadUrl);
+            WorkflowExpression.Validate(__workflow_downloadUrl, nameof(downloadUrl), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/downloadFileByUrl";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["downloadUrl"] = ExpressionConverter.Convert(downloadUrl);
+                callPayload.Queries["downloadUrl"] = ExpressionConverter.Convert(__workflow_downloadUrl);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asiteksa")]
-        [WorkflowExpressionFactory(nameof(__BuildSETFILEMETADATA))]
-        public IBodyWorkflowAction<string> SETFILEMETADATA([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<object> items = null)
+        public IBodyWorkflowAction<string> SETFILEMETADATA(Expression<Func<string>> projectId, Expression<Func<string>> folderId, Expression<Func<object>> items = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<string> __BuildSETFILEMETADATA(WorkflowExpression<string> projectId, WorkflowExpression<string> folderId, WorkflowExpression<object> items = null)
-        {
-            WorkflowExpression.Validate(projectId, nameof(projectId), required: true);
-            WorkflowExpression.Validate(folderId, nameof(folderId), required: true);
-            WorkflowExpression.Validate(items, nameof(items), required: false);
+            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
+            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
+            var __workflow_folderId = folderId == null ? null : WorkflowExpression.Compile(folderId);
+            WorkflowExpression.Validate(__workflow_folderId, nameof(folderId), required: true);
+            var __workflow_items = items == null ? null : WorkflowExpression.Compile(items);
+            WorkflowExpression.Validate(__workflow_items, nameof(items), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/saveMetadataForUpload";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
-                callPayload.Queries["folderId"] = ExpressionConverter.Convert(folderId);
-                callPayload.Body = ExpressionConverter.ConvertO(items);
+                callPayload.Queries["projectId"] = ExpressionConverter.Convert(__workflow_projectId);
+                callPayload.Queries["folderId"] = ExpressionConverter.Convert(__workflow_folderId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_items);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asiteksa")]
-        [WorkflowExpressionFactory(nameof(__BuildUPLOADBINARYFILE))]
-        public IBodyWorkflowAction<JToken> UPLOADBINARYFILE([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<string> fileName, [WorkflowExpression] Func<string> metadataId, [WorkflowExpression] Func<string> fileBinary = null)
+        public IBodyWorkflowAction<JToken> UPLOADBINARYFILE(Expression<Func<string>> projectId, Expression<Func<string>> folderId, Expression<Func<string>> fileName, Expression<Func<string>> metadataId, Expression<Func<string>> fileBinary = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildUPLOADBINARYFILE(WorkflowExpression<string> projectId, WorkflowExpression<string> folderId, WorkflowExpression<string> fileName, WorkflowExpression<string> metadataId, WorkflowExpression<string> fileBinary = null)
-        {
-            WorkflowExpression.Validate(projectId, nameof(projectId), required: true);
-            WorkflowExpression.Validate(folderId, nameof(folderId), required: true);
-            WorkflowExpression.Validate(fileName, nameof(fileName), required: true);
-            WorkflowExpression.Validate(metadataId, nameof(metadataId), required: true);
-            WorkflowExpression.Validate(fileBinary, nameof(fileBinary), required: false);
+            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
+            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
+            var __workflow_folderId = folderId == null ? null : WorkflowExpression.Compile(folderId);
+            WorkflowExpression.Validate(__workflow_folderId, nameof(folderId), required: true);
+            var __workflow_fileName = fileName == null ? null : WorkflowExpression.Compile(fileName);
+            WorkflowExpression.Validate(__workflow_fileName, nameof(fileName), required: true);
+            var __workflow_metadataId = metadataId == null ? null : WorkflowExpression.Compile(metadataId);
+            WorkflowExpression.Validate(__workflow_metadataId, nameof(metadataId), required: true);
+            var __workflow_fileBinary = fileBinary == null ? null : WorkflowExpression.Compile(fileBinary);
+            WorkflowExpression.Validate(__workflow_fileBinary, nameof(fileBinary), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/uploadFileFromExternalSystem";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
-                callPayload.Queries["folderId"] = ExpressionConverter.Convert(folderId);
-                callPayload.Queries["fileName"] = ExpressionConverter.Convert(fileName);
-                callPayload.Queries["metadataId"] = ExpressionConverter.Convert(metadataId);
-                callPayload.Body = ExpressionConverter.ConvertO(fileBinary);
+                callPayload.Queries["projectId"] = ExpressionConverter.Convert(__workflow_projectId);
+                callPayload.Queries["folderId"] = ExpressionConverter.Convert(__workflow_folderId);
+                callPayload.Queries["fileName"] = ExpressionConverter.Convert(__workflow_fileName);
+                callPayload.Queries["metadataId"] = ExpressionConverter.Convert(__workflow_metadataId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_fileBinary);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
@@ -89,31 +76,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asiteksa
 
     public class AsiteksaTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildASITETRIGGEREVENT))]
-        public IWorkflowTrigger ASITETRIGGEREVENT([WorkflowExpression] Func<string> projectId,[WorkflowExpression] Func<string> bodytriggerName,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ASITETRIGGEREVENT(Expression<Func<string>> projectId, Expression<Func<string>> bodytriggerName, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildASITETRIGGEREVENT(WorkflowExpression<string> projectId,WorkflowExpression<string> bodytriggerName,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(projectId, nameof(projectId), required: true);
-            WorkflowExpression.Validate(bodytriggerName, nameof(bodytriggerName), required: true);
+            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
+            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
+            var __workflow_bodytriggerName = bodytriggerName == null ? null : WorkflowExpression.Compile(bodytriggerName);
+            WorkflowExpression.Validate(__workflow_bodytriggerName, nameof(bodytriggerName), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/asitePullDataWebhook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
+                callPayload.Queries["projectId"] = ExpressionConverter.Convert(__workflow_projectId);
                 callPayload.Headers["Accept"] = Convert.ToString("*/*");
                 var body = new JObject();
                 var bodypropCount = 0;
                 body["webhookUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 bodypropCount++;
-                body["resourceId"] = ExpressionConverter.ConvertO(bodytriggerName);
+                body["resourceId"] = ExpressionConverter.ConvertO(__workflow_bodytriggerName);
                 body["resourceType"] = 1;
                 bodypropCount++;
                 if (bodypropCount > 0)
@@ -125,30 +106,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asiteksa
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildASITETRIGGEREVENTAPPFORM))]
-        public IWorkflowTrigger ASITETRIGGEREVENTAPPFORM([WorkflowExpression] Func<string> projectId,[WorkflowExpression] Func<string> bodytriggerName,FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ASITETRIGGEREVENTAPPFORM(Expression<Func<string>> projectId, Expression<Func<string>> bodytriggerName, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildASITETRIGGEREVENTAPPFORM(WorkflowExpression<string> projectId,WorkflowExpression<string> bodytriggerName,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(projectId, nameof(projectId), required: true);
-            WorkflowExpression.Validate(bodytriggerName, nameof(bodytriggerName), required: true);
+            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
+            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
+            var __workflow_bodytriggerName = bodytriggerName == null ? null : WorkflowExpression.Compile(bodytriggerName);
+            WorkflowExpression.Validate(__workflow_bodytriggerName, nameof(bodytriggerName), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/asitePullAppFormDataWebhook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
+                callPayload.Queries["projectId"] = ExpressionConverter.Convert(__workflow_projectId);
                 callPayload.Headers["Accept"] = Convert.ToString("*/*");
                 var body = new JObject();
                 var bodypropCount = 0;
                 body["webhookUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 bodypropCount++;
-                body["resourceId"] = ExpressionConverter.ConvertO(bodytriggerName);
+                body["resourceId"] = ExpressionConverter.ConvertO(__workflow_bodytriggerName);
                 body["resourceType"] = 1;
                 bodypropCount++;
                 if (bodypropCount > 0)

@@ -1,7 +1,6 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
 {
     using System;
@@ -9,31 +8,27 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class EventHubActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "eventHub")]
-        [WorkflowExpressionFactory(nameof(__BuildSendEvent))]
-        public IOutputWorkflowAction<JToken> SendEvent([WorkflowExpression] Func<string> eventHubName, [WorkflowExpression] Func<SendEventInputEventDataType> eventData, [WorkflowExpression] Func<string> partitionKey = null)
+        public IOutputWorkflowAction<JToken> SendEvent(Expression<Func<string>> eventHubName, Expression<Func<SendEventInputEventDataType>> eventData, Expression<Func<string>> partitionKey = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IOutputWorkflowAction<JToken> __BuildSendEvent(WorkflowExpression<string> eventHubName, WorkflowExpression<SendEventInputEventDataType> eventData, WorkflowExpression<string> partitionKey = null)
-        {
-            WorkflowExpression.Validate(eventHubName, nameof(eventHubName), required: true);
-            WorkflowExpression.Validate(eventData, nameof(eventData), required: true);
-            WorkflowExpression.Validate(partitionKey, nameof(partitionKey), required: false);
+            var __workflow_eventHubName = eventHubName == null ? null : WorkflowExpression.Compile(eventHubName);
+            WorkflowExpression.Validate(__workflow_eventHubName, nameof(eventHubName), required: true);
+            var __workflow_eventData = eventData == null ? null : WorkflowExpression.Compile(eventData);
+            WorkflowExpression.Validate(__workflow_eventData, nameof(eventData), required: true);
+            var __workflow_partitionKey = partitionKey == null ? null : WorkflowExpression.Compile(partitionKey);
+            WorkflowExpression.Validate(__workflow_partitionKey, nameof(partitionKey), required: false);
             return new DeferredOutputAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["eventHubName"] = ExpressionConverter.ConvertO(eventHubName);
-                serviceProviderParameters["eventData"] = ExpressionConverter.ConvertO(eventData);
-                if (partitionKey != null)
+                serviceProviderParameters["eventHubName"] = ExpressionConverter.ConvertO(__workflow_eventHubName);
+                serviceProviderParameters["eventData"] = ExpressionConverter.ConvertO(__workflow_eventData);
+                if (__workflow_partitionKey != null)
                 {
-                    serviceProviderParameters["partitionKey"] = ExpressionConverter.ConvertO(partitionKey);
+                    serviceProviderParameters["partitionKey"] = ExpressionConverter.ConvertO(__workflow_partitionKey);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -46,26 +41,22 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "eventHub")]
-        [WorkflowExpressionFactory(nameof(__BuildSendEvents))]
-        public IOutputWorkflowAction<JToken> SendEvents([WorkflowExpression] Func<string> eventHubName, [WorkflowExpression] Func<SendEventsInputEventDatasTypeItem[]> eventDatas, [WorkflowExpression] Func<string> partitionKey = null)
+        public IOutputWorkflowAction<JToken> SendEvents(Expression<Func<string>> eventHubName, Expression<Func<SendEventsInputEventDatasTypeItem[]>> eventDatas, Expression<Func<string>> partitionKey = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IOutputWorkflowAction<JToken> __BuildSendEvents(WorkflowExpression<string> eventHubName, WorkflowExpression<SendEventsInputEventDatasTypeItem[]> eventDatas, WorkflowExpression<string> partitionKey = null)
-        {
-            WorkflowExpression.Validate(eventHubName, nameof(eventHubName), required: true);
-            WorkflowExpression.Validate(eventDatas, nameof(eventDatas), required: true);
-            WorkflowExpression.Validate(partitionKey, nameof(partitionKey), required: false);
+            var __workflow_eventHubName = eventHubName == null ? null : WorkflowExpression.Compile(eventHubName);
+            WorkflowExpression.Validate(__workflow_eventHubName, nameof(eventHubName), required: true);
+            var __workflow_eventDatas = eventDatas == null ? null : WorkflowExpression.Compile(eventDatas);
+            WorkflowExpression.Validate(__workflow_eventDatas, nameof(eventDatas), required: true);
+            var __workflow_partitionKey = partitionKey == null ? null : WorkflowExpression.Compile(partitionKey);
+            WorkflowExpression.Validate(__workflow_partitionKey, nameof(partitionKey), required: false);
             return new DeferredOutputAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["eventHubName"] = ExpressionConverter.ConvertO(eventHubName);
-                serviceProviderParameters["eventDatas"] = ExpressionConverter.ConvertO(eventDatas);
-                if (partitionKey != null)
+                serviceProviderParameters["eventHubName"] = ExpressionConverter.ConvertO(__workflow_eventHubName);
+                serviceProviderParameters["eventDatas"] = ExpressionConverter.ConvertO(__workflow_eventDatas);
+                if (__workflow_partitionKey != null)
                 {
-                    serviceProviderParameters["partitionKey"] = ExpressionConverter.ConvertO(partitionKey);
+                    serviceProviderParameters["partitionKey"] = ExpressionConverter.ConvertO(__workflow_partitionKey);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -78,22 +69,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "eventHub")]
-        [WorkflowExpressionFactory(nameof(__BuildReplicateEvents))]
-        public IOutputWorkflowAction<JToken> ReplicateEvents([WorkflowExpression] Func<string> eventHubName, [WorkflowExpression] Func<bool> skipAlreadyReplicated)
+        public IOutputWorkflowAction<JToken> ReplicateEvents(Expression<Func<string>> eventHubName, Expression<Func<bool>> skipAlreadyReplicated)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IOutputWorkflowAction<JToken> __BuildReplicateEvents(WorkflowExpression<string> eventHubName, WorkflowExpression<bool> skipAlreadyReplicated)
-        {
-            WorkflowExpression.Validate(eventHubName, nameof(eventHubName), required: true);
-            WorkflowExpression.Validate(skipAlreadyReplicated, nameof(skipAlreadyReplicated), required: true);
+            var __workflow_eventHubName = eventHubName == null ? null : WorkflowExpression.Compile(eventHubName);
+            WorkflowExpression.Validate(__workflow_eventHubName, nameof(eventHubName), required: true);
+            var __workflow_skipAlreadyReplicated = skipAlreadyReplicated == null ? null : WorkflowExpression.Compile(skipAlreadyReplicated);
+            WorkflowExpression.Validate(__workflow_skipAlreadyReplicated, nameof(skipAlreadyReplicated), required: true);
             return new DeferredOutputAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["eventHubName"] = ExpressionConverter.ConvertO(eventHubName);
-                serviceProviderParameters["skipAlreadyReplicated"] = ExpressionConverter.ConvertO(skipAlreadyReplicated);
+                serviceProviderParameters["eventHubName"] = ExpressionConverter.ConvertO(__workflow_eventHubName);
+                serviceProviderParameters["skipAlreadyReplicated"] = ExpressionConverter.ConvertO(__workflow_skipAlreadyReplicated);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/eventHub", operationId: "replicateEvents", connectionName: connectionId),
@@ -106,25 +92,19 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
 
     public class EventHubTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildReceiveEvents))]
-        public IBodyWorkflowTrigger<ReceiveEventsOutputItem[]> ReceiveEvents([WorkflowExpression] Func<string> eventHubName, [WorkflowExpression] Func<string> consumerGroup = null)
+        public IBodyWorkflowTrigger<ReceiveEventsOutputItem[]> ReceiveEvents(Expression<Func<string>> eventHubName, Expression<Func<string>> consumerGroup = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ReceiveEventsOutputItem[]> __BuildReceiveEvents(WorkflowExpression<string> eventHubName, WorkflowExpression<string> consumerGroup = null)
-        {
-            WorkflowExpression.Validate(eventHubName, nameof(eventHubName), required: true);
-            WorkflowExpression.Validate(consumerGroup, nameof(consumerGroup), required: false);
+            var __workflow_eventHubName = eventHubName == null ? null : WorkflowExpression.Compile(eventHubName);
+            WorkflowExpression.Validate(__workflow_eventHubName, nameof(eventHubName), required: true);
+            var __workflow_consumerGroup = consumerGroup == null ? null : WorkflowExpression.Compile(consumerGroup);
+            WorkflowExpression.Validate(__workflow_consumerGroup, nameof(consumerGroup), required: false);
             return new DeferredBodyTrigger<ReceiveEventsOutputItem[]>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["eventHubName"] = ExpressionConverter.ConvertO(eventHubName);
-                if (consumerGroup != null)
+                serviceProviderParameters["eventHubName"] = ExpressionConverter.ConvertO(__workflow_eventHubName);
+                if (__workflow_consumerGroup != null)
                 {
-                    serviceProviderParameters["consumerGroup"] = ExpressionConverter.ConvertO(consumerGroup);
+                    serviceProviderParameters["consumerGroup"] = ExpressionConverter.ConvertO(__workflow_consumerGroup);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -136,24 +116,19 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildReceiveEventsForReplication))]
-        public IOutputWorkflowTrigger<JToken> ReceiveEventsForReplication([WorkflowExpression] Func<string> eventHubName, [WorkflowExpression] Func<string> consumerGroup = null)
+        public IOutputWorkflowTrigger<JToken> ReceiveEventsForReplication(Expression<Func<string>> eventHubName, Expression<Func<string>> consumerGroup = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IOutputWorkflowTrigger<JToken> __BuildReceiveEventsForReplication(WorkflowExpression<string> eventHubName, WorkflowExpression<string> consumerGroup = null)
-        {
-            WorkflowExpression.Validate(eventHubName, nameof(eventHubName), required: true);
-            WorkflowExpression.Validate(consumerGroup, nameof(consumerGroup), required: false);
+            var __workflow_eventHubName = eventHubName == null ? null : WorkflowExpression.Compile(eventHubName);
+            WorkflowExpression.Validate(__workflow_eventHubName, nameof(eventHubName), required: true);
+            var __workflow_consumerGroup = consumerGroup == null ? null : WorkflowExpression.Compile(consumerGroup);
+            WorkflowExpression.Validate(__workflow_consumerGroup, nameof(consumerGroup), required: false);
             return new DeferredOutputTrigger<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["eventHubName"] = ExpressionConverter.ConvertO(eventHubName);
-                if (consumerGroup != null)
+                serviceProviderParameters["eventHubName"] = ExpressionConverter.ConvertO(__workflow_eventHubName);
+                if (__workflow_consumerGroup != null)
                 {
-                    serviceProviderParameters["consumerGroup"] = ExpressionConverter.ConvertO(consumerGroup);
+                    serviceProviderParameters["consumerGroup"] = ExpressionConverter.ConvertO(__workflow_consumerGroup);
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput

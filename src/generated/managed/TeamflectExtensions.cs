@@ -1,32 +1,30 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class TeamflectActions([ConnectionName] string connectionId)
     {
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        [WorkflowExpressionFactory(nameof(__BuildSendFeedbackRequest))]
-        public IBodyWorkflowAction<Feedback> SendFeedbackRequest([WorkflowExpression] Func<string> bodyfeedbackSubject, [WorkflowExpression] Func<string> bodyfeedbackProvider, [WorkflowExpression] Func<string> bodyrequestNote, [WorkflowExpression] Func<string> bodytemplateTitle, [WorkflowExpression] Func<double> bodydueDays, [WorkflowExpression] Func<bool> bodyisPrivate)
+        public IBodyWorkflowAction<Feedback> SendFeedbackRequest(Expression<Func<string>> bodyfeedbackSubject, Expression<Func<string>> bodyfeedbackProvider, Expression<Func<string>> bodyrequestNote, Expression<Func<string>> bodytemplateTitle, Expression<Func<double>> bodydueDays, Expression<Func<bool>> bodyisPrivate)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Feedback> __BuildSendFeedbackRequest(WorkflowExpression<string> bodyfeedbackSubject, WorkflowExpression<string> bodyfeedbackProvider, WorkflowExpression<string> bodyrequestNote, WorkflowExpression<string> bodytemplateTitle, WorkflowExpression<double> bodydueDays, WorkflowExpression<bool> bodyisPrivate)
-        {
-            WorkflowExpression.Validate(bodyfeedbackSubject, nameof(bodyfeedbackSubject), required: true);
-            WorkflowExpression.Validate(bodyfeedbackProvider, nameof(bodyfeedbackProvider), required: true);
-            WorkflowExpression.Validate(bodyrequestNote, nameof(bodyrequestNote), required: true);
-            WorkflowExpression.Validate(bodytemplateTitle, nameof(bodytemplateTitle), required: true);
-            WorkflowExpression.Validate(bodydueDays, nameof(bodydueDays), required: true);
-            WorkflowExpression.Validate(bodyisPrivate, nameof(bodyisPrivate), required: true);
+            var __workflow_bodyfeedbackSubject = bodyfeedbackSubject == null ? null : WorkflowExpression.Compile(bodyfeedbackSubject);
+            WorkflowExpression.Validate(__workflow_bodyfeedbackSubject, nameof(bodyfeedbackSubject), required: true);
+            var __workflow_bodyfeedbackProvider = bodyfeedbackProvider == null ? null : WorkflowExpression.Compile(bodyfeedbackProvider);
+            WorkflowExpression.Validate(__workflow_bodyfeedbackProvider, nameof(bodyfeedbackProvider), required: true);
+            var __workflow_bodyrequestNote = bodyrequestNote == null ? null : WorkflowExpression.Compile(bodyrequestNote);
+            WorkflowExpression.Validate(__workflow_bodyrequestNote, nameof(bodyrequestNote), required: true);
+            var __workflow_bodytemplateTitle = bodytemplateTitle == null ? null : WorkflowExpression.Compile(bodytemplateTitle);
+            WorkflowExpression.Validate(__workflow_bodytemplateTitle, nameof(bodytemplateTitle), required: true);
+            var __workflow_bodydueDays = bodydueDays == null ? null : WorkflowExpression.Compile(bodydueDays);
+            WorkflowExpression.Validate(__workflow_bodydueDays, nameof(bodydueDays), required: true);
+            var __workflow_bodyisPrivate = bodyisPrivate == null ? null : WorkflowExpression.Compile(bodyisPrivate);
+            WorkflowExpression.Validate(__workflow_bodyisPrivate, nameof(bodyisPrivate), required: true);
             return new DeferredBodyAction<Feedback>(() =>
             {
                 var apiCallPath = "/feedback/sendFeedbackRequest";
@@ -35,17 +33,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["feedbackAboutUPNorId"] = ExpressionConverter.ConvertO(bodyfeedbackSubject);
+                body["feedbackAboutUPNorId"] = ExpressionConverter.ConvertO(__workflow_bodyfeedbackSubject);
                 bodypropCount++;
-                body["feedbackRequestReceiverUPNorId"] = ExpressionConverter.ConvertO(bodyfeedbackProvider);
+                body["feedbackRequestReceiverUPNorId"] = ExpressionConverter.ConvertO(__workflow_bodyfeedbackProvider);
                 bodypropCount++;
-                body["feedbackNote"] = ExpressionConverter.ConvertO(bodyrequestNote);
+                body["feedbackNote"] = ExpressionConverter.ConvertO(__workflow_bodyrequestNote);
                 bodypropCount++;
-                body["templateTitle"] = ExpressionConverter.ConvertO(bodytemplateTitle);
+                body["templateTitle"] = ExpressionConverter.ConvertO(__workflow_bodytemplateTitle);
                 bodypropCount++;
-                body["dueDateInDays"] = ExpressionConverter.ConvertO(bodydueDays);
+                body["dueDateInDays"] = ExpressionConverter.ConvertO(__workflow_bodydueDays);
                 bodypropCount++;
-                body["isPrivate"] = ExpressionConverter.ConvertO(bodyisPrivate);
+                body["isPrivate"] = ExpressionConverter.ConvertO(__workflow_bodyisPrivate);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -56,23 +54,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        [WorkflowExpressionFactory(nameof(__BuildSendExternalFeedbackRequest))]
-        public IBodyWorkflowAction<Feedback> SendExternalFeedbackRequest([WorkflowExpression] Func<string> bodyfeedbackSubject, [WorkflowExpression] Func<string> bodyexternalEmail, [WorkflowExpression] Func<string> bodyproviderName, [WorkflowExpression] Func<string> bodyrequestNote, [WorkflowExpression] Func<string> bodytemplateTitle, [WorkflowExpression] Func<double> bodydueDays, [WorkflowExpression] Func<bool> bodyisPrivate, [WorkflowExpression] Func<bool> bodyisAnonymous)
+        public IBodyWorkflowAction<Feedback> SendExternalFeedbackRequest(Expression<Func<string>> bodyfeedbackSubject, Expression<Func<string>> bodyexternalEmail, Expression<Func<string>> bodyproviderName, Expression<Func<string>> bodyrequestNote, Expression<Func<string>> bodytemplateTitle, Expression<Func<double>> bodydueDays, Expression<Func<bool>> bodyisPrivate, Expression<Func<bool>> bodyisAnonymous)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Feedback> __BuildSendExternalFeedbackRequest(WorkflowExpression<string> bodyfeedbackSubject, WorkflowExpression<string> bodyexternalEmail, WorkflowExpression<string> bodyproviderName, WorkflowExpression<string> bodyrequestNote, WorkflowExpression<string> bodytemplateTitle, WorkflowExpression<double> bodydueDays, WorkflowExpression<bool> bodyisPrivate, WorkflowExpression<bool> bodyisAnonymous)
-        {
-            WorkflowExpression.Validate(bodyfeedbackSubject, nameof(bodyfeedbackSubject), required: true);
-            WorkflowExpression.Validate(bodyexternalEmail, nameof(bodyexternalEmail), required: true);
-            WorkflowExpression.Validate(bodyproviderName, nameof(bodyproviderName), required: true);
-            WorkflowExpression.Validate(bodyrequestNote, nameof(bodyrequestNote), required: true);
-            WorkflowExpression.Validate(bodytemplateTitle, nameof(bodytemplateTitle), required: true);
-            WorkflowExpression.Validate(bodydueDays, nameof(bodydueDays), required: true);
-            WorkflowExpression.Validate(bodyisPrivate, nameof(bodyisPrivate), required: true);
-            WorkflowExpression.Validate(bodyisAnonymous, nameof(bodyisAnonymous), required: true);
+            var __workflow_bodyfeedbackSubject = bodyfeedbackSubject == null ? null : WorkflowExpression.Compile(bodyfeedbackSubject);
+            WorkflowExpression.Validate(__workflow_bodyfeedbackSubject, nameof(bodyfeedbackSubject), required: true);
+            var __workflow_bodyexternalEmail = bodyexternalEmail == null ? null : WorkflowExpression.Compile(bodyexternalEmail);
+            WorkflowExpression.Validate(__workflow_bodyexternalEmail, nameof(bodyexternalEmail), required: true);
+            var __workflow_bodyproviderName = bodyproviderName == null ? null : WorkflowExpression.Compile(bodyproviderName);
+            WorkflowExpression.Validate(__workflow_bodyproviderName, nameof(bodyproviderName), required: true);
+            var __workflow_bodyrequestNote = bodyrequestNote == null ? null : WorkflowExpression.Compile(bodyrequestNote);
+            WorkflowExpression.Validate(__workflow_bodyrequestNote, nameof(bodyrequestNote), required: true);
+            var __workflow_bodytemplateTitle = bodytemplateTitle == null ? null : WorkflowExpression.Compile(bodytemplateTitle);
+            WorkflowExpression.Validate(__workflow_bodytemplateTitle, nameof(bodytemplateTitle), required: true);
+            var __workflow_bodydueDays = bodydueDays == null ? null : WorkflowExpression.Compile(bodydueDays);
+            WorkflowExpression.Validate(__workflow_bodydueDays, nameof(bodydueDays), required: true);
+            var __workflow_bodyisPrivate = bodyisPrivate == null ? null : WorkflowExpression.Compile(bodyisPrivate);
+            WorkflowExpression.Validate(__workflow_bodyisPrivate, nameof(bodyisPrivate), required: true);
+            var __workflow_bodyisAnonymous = bodyisAnonymous == null ? null : WorkflowExpression.Compile(bodyisAnonymous);
+            WorkflowExpression.Validate(__workflow_bodyisAnonymous, nameof(bodyisAnonymous), required: true);
             return new DeferredBodyAction<Feedback>(() =>
             {
                 var apiCallPath = "/feedback/sendExternalFeedbackRequest";
@@ -81,21 +80,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["feedbackAboutUPNorId"] = ExpressionConverter.ConvertO(bodyfeedbackSubject);
+                body["feedbackAboutUPNorId"] = ExpressionConverter.ConvertO(__workflow_bodyfeedbackSubject);
                 bodypropCount++;
-                body["externalEmail"] = ExpressionConverter.ConvertO(bodyexternalEmail);
+                body["externalEmail"] = ExpressionConverter.ConvertO(__workflow_bodyexternalEmail);
                 bodypropCount++;
-                body["onBehalfName"] = ExpressionConverter.ConvertO(bodyproviderName);
+                body["onBehalfName"] = ExpressionConverter.ConvertO(__workflow_bodyproviderName);
                 bodypropCount++;
-                body["feedbackNote"] = ExpressionConverter.ConvertO(bodyrequestNote);
+                body["feedbackNote"] = ExpressionConverter.ConvertO(__workflow_bodyrequestNote);
                 bodypropCount++;
-                body["templateTitle"] = ExpressionConverter.ConvertO(bodytemplateTitle);
+                body["templateTitle"] = ExpressionConverter.ConvertO(__workflow_bodytemplateTitle);
                 bodypropCount++;
-                body["dueDateInDays"] = ExpressionConverter.ConvertO(bodydueDays);
+                body["dueDateInDays"] = ExpressionConverter.ConvertO(__workflow_bodydueDays);
                 bodypropCount++;
-                body["isPrivate"] = ExpressionConverter.ConvertO(bodyisPrivate);
+                body["isPrivate"] = ExpressionConverter.ConvertO(__workflow_bodyisPrivate);
                 bodypropCount++;
-                body["isAnonymous"] = ExpressionConverter.ConvertO(bodyisAnonymous);
+                body["isAnonymous"] = ExpressionConverter.ConvertO(__workflow_bodyisAnonymous);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -106,85 +105,79 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        [WorkflowExpressionFactory(nameof(__BuildGetGoal))]
-        public IBodyWorkflowAction<Goal> GetGoal([WorkflowExpression] Func<string> goalId)
+        public IBodyWorkflowAction<Goal> GetGoal(Expression<Func<string>> goalId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Goal> __BuildGetGoal(WorkflowExpression<string> goalId)
-        {
-            WorkflowExpression.Validate(goalId, nameof(goalId), required: true);
+            var __workflow_goalId = goalId == null ? null : WorkflowExpression.Compile(goalId);
+            WorkflowExpression.Validate(__workflow_goalId, nameof(goalId), required: true);
             return new DeferredBodyAction<Goal>(() =>
             {
                 var apiCallPath = "/goal/getGoal";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["goalId"] = ExpressionConverter.Convert(goalId);
+                callPayload.Queries["goalId"] = ExpressionConverter.Convert(__workflow_goalId);
                 return new ApiConnectionAction<Goal>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        [WorkflowExpressionFactory(nameof(__BuildGetGoals))]
-        public IBodyWorkflowAction<Goal[]> GetGoals([WorkflowExpression] Func<string> userOID = null, [WorkflowExpression] Func<string> userUPN = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> selectedLabels = null, [WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<string> skip = null, [WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null)
+        public IBodyWorkflowAction<Goal[]> GetGoals(Expression<Func<string>> userOID = null, Expression<Func<string>> userUPN = null, Expression<Func<string>> search = null, Expression<Func<string>> selectedLabels = null, Expression<Func<string>> limit = null, Expression<Func<string>> skip = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Goal[]> __BuildGetGoals(WorkflowExpression<string> userOID = null, WorkflowExpression<string> userUPN = null, WorkflowExpression<string> search = null, WorkflowExpression<string> selectedLabels = null, WorkflowExpression<string> limit = null, WorkflowExpression<string> skip = null, WorkflowExpression<string> startDate = null, WorkflowExpression<string> endDate = null)
-        {
-            WorkflowExpression.Validate(userOID, nameof(userOID), required: false);
-            WorkflowExpression.Validate(userUPN, nameof(userUPN), required: false);
-            WorkflowExpression.Validate(search, nameof(search), required: false);
-            WorkflowExpression.Validate(selectedLabels, nameof(selectedLabels), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(skip, nameof(skip), required: false);
-            WorkflowExpression.Validate(startDate, nameof(startDate), required: false);
-            WorkflowExpression.Validate(endDate, nameof(endDate), required: false);
+            var __workflow_userOID = userOID == null ? null : WorkflowExpression.Compile(userOID);
+            WorkflowExpression.Validate(__workflow_userOID, nameof(userOID), required: false);
+            var __workflow_userUPN = userUPN == null ? null : WorkflowExpression.Compile(userUPN);
+            WorkflowExpression.Validate(__workflow_userUPN, nameof(userUPN), required: false);
+            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
+            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
+            var __workflow_selectedLabels = selectedLabels == null ? null : WorkflowExpression.Compile(selectedLabels);
+            WorkflowExpression.Validate(__workflow_selectedLabels, nameof(selectedLabels), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_skip = skip == null ? null : WorkflowExpression.Compile(skip);
+            WorkflowExpression.Validate(__workflow_skip, nameof(skip), required: false);
+            var __workflow_startDate = startDate == null ? null : WorkflowExpression.Compile(startDate);
+            WorkflowExpression.Validate(__workflow_startDate, nameof(startDate), required: false);
+            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
+            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: false);
             return new DeferredBodyAction<Goal[]>(() =>
             {
                 var apiCallPath = "/goal/getGoals";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (userOID != null)
-                    callPayload.Queries["userOID"] = ExpressionConverter.Convert(userOID);
-                if (userUPN != null)
-                    callPayload.Queries["userUPN"] = ExpressionConverter.Convert(userUPN);
-                if (search != null)
-                    callPayload.Queries["search"] = ExpressionConverter.Convert(search);
-                if (selectedLabels != null)
-                    callPayload.Queries["selectedLabels"] = ExpressionConverter.Convert(selectedLabels);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (skip != null)
-                    callPayload.Queries["skip"] = ExpressionConverter.Convert(skip);
-                if (startDate != null)
-                    callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
-                if (endDate != null)
-                    callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
+                if (__workflow_userOID != null)
+                    callPayload.Queries["userOID"] = ExpressionConverter.Convert(__workflow_userOID);
+                if (__workflow_userUPN != null)
+                    callPayload.Queries["userUPN"] = ExpressionConverter.Convert(__workflow_userUPN);
+                if (__workflow_search != null)
+                    callPayload.Queries["search"] = ExpressionConverter.Convert(__workflow_search);
+                if (__workflow_selectedLabels != null)
+                    callPayload.Queries["selectedLabels"] = ExpressionConverter.Convert(__workflow_selectedLabels);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_skip != null)
+                    callPayload.Queries["skip"] = ExpressionConverter.Convert(__workflow_skip);
+                if (__workflow_startDate != null)
+                    callPayload.Queries["startDate"] = ExpressionConverter.Convert(__workflow_startDate);
+                if (__workflow_endDate != null)
+                    callPayload.Queries["endDate"] = ExpressionConverter.Convert(__workflow_endDate);
                 return new ApiConnectionAction<Goal[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateGoal))]
-        public IBodyWorkflowAction<Goal> UpdateGoal([WorkflowExpression] Func<string> bodygoalID, [WorkflowExpression] Func<string> bodynewProgressValue, [WorkflowExpression] Func<bodyupdaterTypeInput> bodyupdaterType, [WorkflowExpression] Func<string> bodysystemName, [WorkflowExpression] Func<string> bodyupdateComment = null, [WorkflowExpression] Func<string> bodynewStatus = null)
+        public IBodyWorkflowAction<Goal> UpdateGoal(Expression<Func<string>> bodygoalID, Expression<Func<string>> bodynewProgressValue, Expression<Func<bodyupdaterTypeInput>> bodyupdaterType, Expression<Func<string>> bodysystemName, Expression<Func<string>> bodyupdateComment = null, Expression<Func<string>> bodynewStatus = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Goal> __BuildUpdateGoal(WorkflowExpression<string> bodygoalID, WorkflowExpression<string> bodynewProgressValue, WorkflowExpression<bodyupdaterTypeInput> bodyupdaterType, WorkflowExpression<string> bodysystemName, WorkflowExpression<string> bodyupdateComment = null, WorkflowExpression<string> bodynewStatus = null)
-        {
-            WorkflowExpression.Validate(bodygoalID, nameof(bodygoalID), required: true);
-            WorkflowExpression.Validate(bodynewProgressValue, nameof(bodynewProgressValue), required: true);
-            WorkflowExpression.Validate(bodyupdaterType, nameof(bodyupdaterType), required: true);
-            WorkflowExpression.Validate(bodysystemName, nameof(bodysystemName), required: true);
-            WorkflowExpression.Validate(bodyupdateComment, nameof(bodyupdateComment), required: false);
-            WorkflowExpression.Validate(bodynewStatus, nameof(bodynewStatus), required: false);
+            var __workflow_bodygoalID = bodygoalID == null ? null : WorkflowExpression.Compile(bodygoalID);
+            WorkflowExpression.Validate(__workflow_bodygoalID, nameof(bodygoalID), required: true);
+            var __workflow_bodynewProgressValue = bodynewProgressValue == null ? null : WorkflowExpression.Compile(bodynewProgressValue);
+            WorkflowExpression.Validate(__workflow_bodynewProgressValue, nameof(bodynewProgressValue), required: true);
+            var __workflow_bodyupdaterType = bodyupdaterType == null ? null : WorkflowExpression.Compile(bodyupdaterType);
+            WorkflowExpression.Validate(__workflow_bodyupdaterType, nameof(bodyupdaterType), required: true);
+            var __workflow_bodysystemName = bodysystemName == null ? null : WorkflowExpression.Compile(bodysystemName);
+            WorkflowExpression.Validate(__workflow_bodysystemName, nameof(bodysystemName), required: true);
+            var __workflow_bodyupdateComment = bodyupdateComment == null ? null : WorkflowExpression.Compile(bodyupdateComment);
+            WorkflowExpression.Validate(__workflow_bodyupdateComment, nameof(bodyupdateComment), required: false);
+            var __workflow_bodynewStatus = bodynewStatus == null ? null : WorkflowExpression.Compile(bodynewStatus);
+            WorkflowExpression.Validate(__workflow_bodynewStatus, nameof(bodynewStatus), required: false);
             return new DeferredBodyAction<Goal>(() =>
             {
                 var apiCallPath = "/goal/updateProgress";
@@ -193,25 +186,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["goalId"] = ExpressionConverter.ConvertO(bodygoalID);
+                body["goalId"] = ExpressionConverter.ConvertO(__workflow_bodygoalID);
                 bodypropCount++;
-                body["newValue"] = ExpressionConverter.ConvertO(bodynewProgressValue);
-                if (bodyupdateComment != null)
+                body["newValue"] = ExpressionConverter.ConvertO(__workflow_bodynewProgressValue);
+                if (__workflow_bodyupdateComment != null)
                 {
-                    body["comment"] = ExpressionConverter.ConvertO(bodyupdateComment);
+                    body["comment"] = ExpressionConverter.ConvertO(__workflow_bodyupdateComment);
                     bodypropCount++;
                 }
 
-                if (bodynewStatus != null)
+                if (__workflow_bodynewStatus != null)
                 {
-                    body["status"] = ExpressionConverter.ConvertO(bodynewStatus);
+                    body["status"] = ExpressionConverter.ConvertO(__workflow_bodynewStatus);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["goalUpdater"] = ExpressionConverter.ConvertO(bodyupdaterType);
+                body["goalUpdater"] = ExpressionConverter.ConvertO(__workflow_bodyupdaterType);
                 bodypropCount++;
-                body["goalUpdaterSystemName"] = ExpressionConverter.ConvertO(bodysystemName);
+                body["goalUpdaterSystemName"] = ExpressionConverter.ConvertO(__workflow_bodysystemName);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -222,29 +215,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateGoal))]
-        public IBodyWorkflowAction<Goal> CreateGoal([WorkflowExpression] Func<string> bodygoalTitle, [WorkflowExpression] Func<string> bodydescription, [WorkflowExpression] Func<string> bodystartDate, [WorkflowExpression] Func<string> bodydueDate, [WorkflowExpression] Func<string> bodygoalType, [WorkflowExpression] Func<object> bodygoalOwner, [WorkflowExpression] Func<string> bodygoalCreator, [WorkflowExpression] Func<bool> bodyisPrivate, [WorkflowExpression] Func<string> bodyprogressFormat, [WorkflowExpression] Func<string> bodycurrencyCode, [WorkflowExpression] Func<double> bodyinitialValue, [WorkflowExpression] Func<double> bodytargetValue, [WorkflowExpression] Func<string> bodyparentGoalID, [WorkflowExpression] Func<bool> bodynotifyOwner)
+        public IBodyWorkflowAction<Goal> CreateGoal(Expression<Func<string>> bodygoalTitle, Expression<Func<string>> bodydescription, Expression<Func<string>> bodystartDate, Expression<Func<string>> bodydueDate, Expression<Func<string>> bodygoalType, Expression<Func<object>> bodygoalOwner, Expression<Func<string>> bodygoalCreator, Expression<Func<bool>> bodyisPrivate, Expression<Func<string>> bodyprogressFormat, Expression<Func<string>> bodycurrencyCode, Expression<Func<double>> bodyinitialValue, Expression<Func<double>> bodytargetValue, Expression<Func<string>> bodyparentGoalID, Expression<Func<bool>> bodynotifyOwner)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Goal> __BuildCreateGoal(WorkflowExpression<string> bodygoalTitle, WorkflowExpression<string> bodydescription, WorkflowExpression<string> bodystartDate, WorkflowExpression<string> bodydueDate, WorkflowExpression<string> bodygoalType, WorkflowExpression<object> bodygoalOwner, WorkflowExpression<string> bodygoalCreator, WorkflowExpression<bool> bodyisPrivate, WorkflowExpression<string> bodyprogressFormat, WorkflowExpression<string> bodycurrencyCode, WorkflowExpression<double> bodyinitialValue, WorkflowExpression<double> bodytargetValue, WorkflowExpression<string> bodyparentGoalID, WorkflowExpression<bool> bodynotifyOwner)
-        {
-            WorkflowExpression.Validate(bodygoalTitle, nameof(bodygoalTitle), required: true);
-            WorkflowExpression.Validate(bodydescription, nameof(bodydescription), required: true);
-            WorkflowExpression.Validate(bodystartDate, nameof(bodystartDate), required: true);
-            WorkflowExpression.Validate(bodydueDate, nameof(bodydueDate), required: true);
-            WorkflowExpression.Validate(bodygoalType, nameof(bodygoalType), required: true);
-            WorkflowExpression.Validate(bodygoalOwner, nameof(bodygoalOwner), required: true);
-            WorkflowExpression.Validate(bodygoalCreator, nameof(bodygoalCreator), required: true);
-            WorkflowExpression.Validate(bodyisPrivate, nameof(bodyisPrivate), required: true);
-            WorkflowExpression.Validate(bodyprogressFormat, nameof(bodyprogressFormat), required: true);
-            WorkflowExpression.Validate(bodycurrencyCode, nameof(bodycurrencyCode), required: true);
-            WorkflowExpression.Validate(bodyinitialValue, nameof(bodyinitialValue), required: true);
-            WorkflowExpression.Validate(bodytargetValue, nameof(bodytargetValue), required: true);
-            WorkflowExpression.Validate(bodyparentGoalID, nameof(bodyparentGoalID), required: true);
-            WorkflowExpression.Validate(bodynotifyOwner, nameof(bodynotifyOwner), required: true);
+            var __workflow_bodygoalTitle = bodygoalTitle == null ? null : WorkflowExpression.Compile(bodygoalTitle);
+            WorkflowExpression.Validate(__workflow_bodygoalTitle, nameof(bodygoalTitle), required: true);
+            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
+            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: true);
+            var __workflow_bodystartDate = bodystartDate == null ? null : WorkflowExpression.Compile(bodystartDate);
+            WorkflowExpression.Validate(__workflow_bodystartDate, nameof(bodystartDate), required: true);
+            var __workflow_bodydueDate = bodydueDate == null ? null : WorkflowExpression.Compile(bodydueDate);
+            WorkflowExpression.Validate(__workflow_bodydueDate, nameof(bodydueDate), required: true);
+            var __workflow_bodygoalType = bodygoalType == null ? null : WorkflowExpression.Compile(bodygoalType);
+            WorkflowExpression.Validate(__workflow_bodygoalType, nameof(bodygoalType), required: true);
+            var __workflow_bodygoalOwner = bodygoalOwner == null ? null : WorkflowExpression.Compile(bodygoalOwner);
+            WorkflowExpression.Validate(__workflow_bodygoalOwner, nameof(bodygoalOwner), required: true);
+            var __workflow_bodygoalCreator = bodygoalCreator == null ? null : WorkflowExpression.Compile(bodygoalCreator);
+            WorkflowExpression.Validate(__workflow_bodygoalCreator, nameof(bodygoalCreator), required: true);
+            var __workflow_bodyisPrivate = bodyisPrivate == null ? null : WorkflowExpression.Compile(bodyisPrivate);
+            WorkflowExpression.Validate(__workflow_bodyisPrivate, nameof(bodyisPrivate), required: true);
+            var __workflow_bodyprogressFormat = bodyprogressFormat == null ? null : WorkflowExpression.Compile(bodyprogressFormat);
+            WorkflowExpression.Validate(__workflow_bodyprogressFormat, nameof(bodyprogressFormat), required: true);
+            var __workflow_bodycurrencyCode = bodycurrencyCode == null ? null : WorkflowExpression.Compile(bodycurrencyCode);
+            WorkflowExpression.Validate(__workflow_bodycurrencyCode, nameof(bodycurrencyCode), required: true);
+            var __workflow_bodyinitialValue = bodyinitialValue == null ? null : WorkflowExpression.Compile(bodyinitialValue);
+            WorkflowExpression.Validate(__workflow_bodyinitialValue, nameof(bodyinitialValue), required: true);
+            var __workflow_bodytargetValue = bodytargetValue == null ? null : WorkflowExpression.Compile(bodytargetValue);
+            WorkflowExpression.Validate(__workflow_bodytargetValue, nameof(bodytargetValue), required: true);
+            var __workflow_bodyparentGoalID = bodyparentGoalID == null ? null : WorkflowExpression.Compile(bodyparentGoalID);
+            WorkflowExpression.Validate(__workflow_bodyparentGoalID, nameof(bodyparentGoalID), required: true);
+            var __workflow_bodynotifyOwner = bodynotifyOwner == null ? null : WorkflowExpression.Compile(bodynotifyOwner);
+            WorkflowExpression.Validate(__workflow_bodynotifyOwner, nameof(bodynotifyOwner), required: true);
             return new DeferredBodyAction<Goal>(() =>
             {
                 var apiCallPath = "/goal/createNewGoal";
@@ -253,33 +253,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["title"] = ExpressionConverter.ConvertO(bodygoalTitle);
+                body["title"] = ExpressionConverter.ConvertO(__workflow_bodygoalTitle);
                 bodypropCount++;
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
                 bodypropCount++;
-                body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
+                body["startDate"] = ExpressionConverter.ConvertO(__workflow_bodystartDate);
                 bodypropCount++;
-                body["dueDate"] = ExpressionConverter.ConvertO(bodydueDate);
+                body["dueDate"] = ExpressionConverter.ConvertO(__workflow_bodydueDate);
                 bodypropCount++;
-                body["goalType"] = ExpressionConverter.ConvertO(bodygoalType);
+                body["goalType"] = ExpressionConverter.ConvertO(__workflow_bodygoalType);
                 bodypropCount++;
-                body["goalOwnerUPNorId"] = ExpressionConverter.ConvertO(bodygoalOwner);
+                body["goalOwnerUPNorId"] = ExpressionConverter.ConvertO(__workflow_bodygoalOwner);
                 bodypropCount++;
-                body["goalCreatorUPNorId"] = ExpressionConverter.ConvertO(bodygoalCreator);
+                body["goalCreatorUPNorId"] = ExpressionConverter.ConvertO(__workflow_bodygoalCreator);
                 bodypropCount++;
-                body["isPrivate"] = ExpressionConverter.ConvertO(bodyisPrivate);
+                body["isPrivate"] = ExpressionConverter.ConvertO(__workflow_bodyisPrivate);
                 bodypropCount++;
-                body["progressFormatType"] = ExpressionConverter.ConvertO(bodyprogressFormat);
+                body["progressFormatType"] = ExpressionConverter.ConvertO(__workflow_bodyprogressFormat);
                 bodypropCount++;
-                body["currencyCode"] = ExpressionConverter.ConvertO(bodycurrencyCode);
+                body["currencyCode"] = ExpressionConverter.ConvertO(__workflow_bodycurrencyCode);
                 bodypropCount++;
-                body["initialValue"] = ExpressionConverter.ConvertO(bodyinitialValue);
+                body["initialValue"] = ExpressionConverter.ConvertO(__workflow_bodyinitialValue);
                 bodypropCount++;
-                body["targetValue"] = ExpressionConverter.ConvertO(bodytargetValue);
+                body["targetValue"] = ExpressionConverter.ConvertO(__workflow_bodytargetValue);
                 bodypropCount++;
-                body["parentGoalId"] = ExpressionConverter.ConvertO(bodyparentGoalID);
+                body["parentGoalId"] = ExpressionConverter.ConvertO(__workflow_bodyparentGoalID);
                 bodypropCount++;
-                body["sendNotificationToOwner"] = ExpressionConverter.ConvertO(bodynotifyOwner);
+                body["sendNotificationToOwner"] = ExpressionConverter.ConvertO(__workflow_bodynotifyOwner);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -290,18 +290,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        [WorkflowExpressionFactory(nameof(__BuildAddCommentGoal))]
-        public IBodyWorkflowAction<Goal> AddCommentGoal([WorkflowExpression] Func<string> commentidOfTheGoal, [WorkflowExpression] Func<string> commentobjectIdOrUserPrincipalNameOfTheCommenter, [WorkflowExpression] Func<string> commentcommentItself)
+        public IBodyWorkflowAction<Goal> AddCommentGoal(Expression<Func<string>> commentidOfTheGoal, Expression<Func<string>> commentobjectIdOrUserPrincipalNameOfTheCommenter, Expression<Func<string>> commentcommentItself)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<Goal> __BuildAddCommentGoal(WorkflowExpression<string> commentidOfTheGoal, WorkflowExpression<string> commentobjectIdOrUserPrincipalNameOfTheCommenter, WorkflowExpression<string> commentcommentItself)
-        {
-            WorkflowExpression.Validate(commentidOfTheGoal, nameof(commentidOfTheGoal), required: true);
-            WorkflowExpression.Validate(commentobjectIdOrUserPrincipalNameOfTheCommenter, nameof(commentobjectIdOrUserPrincipalNameOfTheCommenter), required: true);
-            WorkflowExpression.Validate(commentcommentItself, nameof(commentcommentItself), required: true);
+            var __workflow_commentidOfTheGoal = commentidOfTheGoal == null ? null : WorkflowExpression.Compile(commentidOfTheGoal);
+            WorkflowExpression.Validate(__workflow_commentidOfTheGoal, nameof(commentidOfTheGoal), required: true);
+            var __workflow_commentobjectIdOrUserPrincipalNameOfTheCommenter = commentobjectIdOrUserPrincipalNameOfTheCommenter == null ? null : WorkflowExpression.Compile(commentobjectIdOrUserPrincipalNameOfTheCommenter);
+            WorkflowExpression.Validate(__workflow_commentobjectIdOrUserPrincipalNameOfTheCommenter, nameof(commentobjectIdOrUserPrincipalNameOfTheCommenter), required: true);
+            var __workflow_commentcommentItself = commentcommentItself == null ? null : WorkflowExpression.Compile(commentcommentItself);
+            WorkflowExpression.Validate(__workflow_commentcommentItself, nameof(commentcommentItself), required: true);
             return new DeferredBodyAction<Goal>(() =>
             {
                 var apiCallPath = "/goal/commentGoal";
@@ -310,11 +306,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
                 var comment = new JObject();
                 var commentpropCount = 0;
                 commentpropCount++;
-                comment["goalId"] = ExpressionConverter.ConvertO(commentidOfTheGoal);
+                comment["goalId"] = ExpressionConverter.ConvertO(__workflow_commentidOfTheGoal);
                 commentpropCount++;
-                comment["commenterIdOrUPN"] = ExpressionConverter.ConvertO(commentobjectIdOrUserPrincipalNameOfTheCommenter);
+                comment["commenterIdOrUPN"] = ExpressionConverter.ConvertO(__workflow_commentobjectIdOrUserPrincipalNameOfTheCommenter);
                 commentpropCount++;
-                comment["commentText"] = ExpressionConverter.ConvertO(commentcommentItself);
+                comment["commentText"] = ExpressionConverter.ConvertO(__workflow_commentcommentItself);
                 if (commentpropCount > 0)
                 {
                     callPayload.Body = comment;
@@ -325,19 +321,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        [WorkflowExpressionFactory(nameof(__BuildGetRecognition))]
-        public IBodyWorkflowAction<RecognitionResponse> GetRecognition([WorkflowExpression] Func<string> recognitionId)
+        public IBodyWorkflowAction<RecognitionResponse> GetRecognition(Expression<Func<string>> recognitionId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<RecognitionResponse> __BuildGetRecognition(WorkflowExpression<string> recognitionId)
-        {
-            WorkflowExpression.Validate(recognitionId, nameof(recognitionId), required: true);
+            var __workflow_recognitionId = recognitionId == null ? null : WorkflowExpression.Compile(recognitionId);
+            WorkflowExpression.Validate(__workflow_recognitionId, nameof(recognitionId), required: true);
             return new DeferredBodyAction<RecognitionResponse>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/recognition/{0}", ExpressionConverter.ConvertWithUrlEncoding(recognitionId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/recognition/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_recognitionId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<RecognitionResponse>(callPayload);
@@ -345,19 +335,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        [WorkflowExpressionFactory(nameof(__BuildGetRecognitions))]
-        public IBodyWorkflowAction<RecognitionResponse[]> GetRecognitions([WorkflowExpression] Func<string[]> bodyrecipientsToSearch, [WorkflowExpression] Func<string> bodyrecognitionTitle, [WorkflowExpression] Func<string> bodyupdateDate, [WorkflowExpression] Func<string> bodycreationDate)
+        public IBodyWorkflowAction<RecognitionResponse[]> GetRecognitions(Expression<Func<string[]>> bodyrecipientsToSearch, Expression<Func<string>> bodyrecognitionTitle, Expression<Func<string>> bodyupdateDate, Expression<Func<string>> bodycreationDate)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<RecognitionResponse[]> __BuildGetRecognitions(WorkflowExpression<string[]> bodyrecipientsToSearch, WorkflowExpression<string> bodyrecognitionTitle, WorkflowExpression<string> bodyupdateDate, WorkflowExpression<string> bodycreationDate)
-        {
-            WorkflowExpression.Validate(bodyrecipientsToSearch, nameof(bodyrecipientsToSearch), required: true);
-            WorkflowExpression.Validate(bodyrecognitionTitle, nameof(bodyrecognitionTitle), required: true);
-            WorkflowExpression.Validate(bodyupdateDate, nameof(bodyupdateDate), required: true);
-            WorkflowExpression.Validate(bodycreationDate, nameof(bodycreationDate), required: true);
+            var __workflow_bodyrecipientsToSearch = bodyrecipientsToSearch == null ? null : WorkflowExpression.Compile(bodyrecipientsToSearch);
+            WorkflowExpression.Validate(__workflow_bodyrecipientsToSearch, nameof(bodyrecipientsToSearch), required: true);
+            var __workflow_bodyrecognitionTitle = bodyrecognitionTitle == null ? null : WorkflowExpression.Compile(bodyrecognitionTitle);
+            WorkflowExpression.Validate(__workflow_bodyrecognitionTitle, nameof(bodyrecognitionTitle), required: true);
+            var __workflow_bodyupdateDate = bodyupdateDate == null ? null : WorkflowExpression.Compile(bodyupdateDate);
+            WorkflowExpression.Validate(__workflow_bodyupdateDate, nameof(bodyupdateDate), required: true);
+            var __workflow_bodycreationDate = bodycreationDate == null ? null : WorkflowExpression.Compile(bodycreationDate);
+            WorkflowExpression.Validate(__workflow_bodycreationDate, nameof(bodycreationDate), required: true);
             return new DeferredBodyAction<RecognitionResponse[]>(() =>
             {
                 var apiCallPath = "/recognition";
@@ -366,13 +353,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["recipientsIdsOrUPNS"] = ExpressionConverter.ConvertO(bodyrecipientsToSearch);
+                body["recipientsIdsOrUPNS"] = ExpressionConverter.ConvertO(__workflow_bodyrecipientsToSearch);
                 bodypropCount++;
-                body["title"] = ExpressionConverter.ConvertO(bodyrecognitionTitle);
+                body["title"] = ExpressionConverter.ConvertO(__workflow_bodyrecognitionTitle);
                 bodypropCount++;
-                body["updated"] = ExpressionConverter.ConvertO(bodyupdateDate);
+                body["updated"] = ExpressionConverter.ConvertO(__workflow_bodyupdateDate);
                 bodypropCount++;
-                body["created"] = ExpressionConverter.ConvertO(bodycreationDate);
+                body["created"] = ExpressionConverter.ConvertO(__workflow_bodycreationDate);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -383,20 +370,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        [WorkflowExpressionFactory(nameof(__BuildCreateRecognition))]
-        public IBodyWorkflowAction<RecognitionCreateResponse> CreateRecognition([WorkflowExpression] Func<string> bodyrecognitionSender, [WorkflowExpression] Func<string[]> bodyrecognitionRecipients, [WorkflowExpression] Func<string> bodybadgeTitle, [WorkflowExpression] Func<bool> bodyisPrivate, [WorkflowExpression] Func<string> bodyrecognitionMessage)
+        public IBodyWorkflowAction<RecognitionCreateResponse> CreateRecognition(Expression<Func<string>> bodyrecognitionSender, Expression<Func<string[]>> bodyrecognitionRecipients, Expression<Func<string>> bodybadgeTitle, Expression<Func<bool>> bodyisPrivate, Expression<Func<string>> bodyrecognitionMessage)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<RecognitionCreateResponse> __BuildCreateRecognition(WorkflowExpression<string> bodyrecognitionSender, WorkflowExpression<string[]> bodyrecognitionRecipients, WorkflowExpression<string> bodybadgeTitle, WorkflowExpression<bool> bodyisPrivate, WorkflowExpression<string> bodyrecognitionMessage)
-        {
-            WorkflowExpression.Validate(bodyrecognitionSender, nameof(bodyrecognitionSender), required: true);
-            WorkflowExpression.Validate(bodyrecognitionRecipients, nameof(bodyrecognitionRecipients), required: true);
-            WorkflowExpression.Validate(bodybadgeTitle, nameof(bodybadgeTitle), required: true);
-            WorkflowExpression.Validate(bodyisPrivate, nameof(bodyisPrivate), required: true);
-            WorkflowExpression.Validate(bodyrecognitionMessage, nameof(bodyrecognitionMessage), required: true);
+            var __workflow_bodyrecognitionSender = bodyrecognitionSender == null ? null : WorkflowExpression.Compile(bodyrecognitionSender);
+            WorkflowExpression.Validate(__workflow_bodyrecognitionSender, nameof(bodyrecognitionSender), required: true);
+            var __workflow_bodyrecognitionRecipients = bodyrecognitionRecipients == null ? null : WorkflowExpression.Compile(bodyrecognitionRecipients);
+            WorkflowExpression.Validate(__workflow_bodyrecognitionRecipients, nameof(bodyrecognitionRecipients), required: true);
+            var __workflow_bodybadgeTitle = bodybadgeTitle == null ? null : WorkflowExpression.Compile(bodybadgeTitle);
+            WorkflowExpression.Validate(__workflow_bodybadgeTitle, nameof(bodybadgeTitle), required: true);
+            var __workflow_bodyisPrivate = bodyisPrivate == null ? null : WorkflowExpression.Compile(bodyisPrivate);
+            WorkflowExpression.Validate(__workflow_bodyisPrivate, nameof(bodyisPrivate), required: true);
+            var __workflow_bodyrecognitionMessage = bodyrecognitionMessage == null ? null : WorkflowExpression.Compile(bodyrecognitionMessage);
+            WorkflowExpression.Validate(__workflow_bodyrecognitionMessage, nameof(bodyrecognitionMessage), required: true);
             return new DeferredBodyAction<RecognitionCreateResponse>(() =>
             {
                 var apiCallPath = "/recognition/createNewRecognitions";
@@ -405,15 +390,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["senderIdOrUPN"] = ExpressionConverter.ConvertO(bodyrecognitionSender);
+                body["senderIdOrUPN"] = ExpressionConverter.ConvertO(__workflow_bodyrecognitionSender);
                 bodypropCount++;
-                body["recipientsIdsOrUPNS"] = ExpressionConverter.ConvertO(bodyrecognitionRecipients);
+                body["recipientsIdsOrUPNS"] = ExpressionConverter.ConvertO(__workflow_bodyrecognitionRecipients);
                 bodypropCount++;
-                body["badgeTitle"] = ExpressionConverter.ConvertO(bodybadgeTitle);
+                body["badgeTitle"] = ExpressionConverter.ConvertO(__workflow_bodybadgeTitle);
                 bodypropCount++;
-                body["isPrivate"] = ExpressionConverter.ConvertO(bodyisPrivate);
+                body["isPrivate"] = ExpressionConverter.ConvertO(__workflow_bodyisPrivate);
                 bodypropCount++;
-                body["description"] = ExpressionConverter.ConvertO(bodyrecognitionMessage);
+                body["description"] = ExpressionConverter.ConvertO(__workflow_bodyrecognitionMessage);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -424,19 +409,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        [WorkflowExpressionFactory(nameof(__BuildGetTask))]
-        public IBodyWorkflowAction<TaskObject> GetTask([WorkflowExpression] Func<string> taskId)
+        public IBodyWorkflowAction<TaskObject> GetTask(Expression<Func<string>> taskId)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TaskObject> __BuildGetTask(WorkflowExpression<string> taskId)
-        {
-            WorkflowExpression.Validate(taskId, nameof(taskId), required: true);
+            var __workflow_taskId = taskId == null ? null : WorkflowExpression.Compile(taskId);
+            WorkflowExpression.Validate(__workflow_taskId, nameof(taskId), required: true);
             return new DeferredBodyAction<TaskObject>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/task/{0}", ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/task/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TaskObject>(callPayload);
@@ -444,78 +423,67 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        [WorkflowExpressionFactory(nameof(__BuildGetTasks))]
-        public IBodyWorkflowAction<TaskObject[]> GetTasks([WorkflowExpression] Func<string> userOID = null, [WorkflowExpression] Func<string> userUPN = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<double> limit = null, [WorkflowExpression] Func<double> skip = null, [WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null)
+        public IBodyWorkflowAction<TaskObject[]> GetTasks(Expression<Func<string>> userOID = null, Expression<Func<string>> userUPN = null, Expression<Func<string>> search = null, Expression<Func<double>> limit = null, Expression<Func<double>> skip = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<TaskObject[]> __BuildGetTasks(WorkflowExpression<string> userOID = null, WorkflowExpression<string> userUPN = null, WorkflowExpression<string> search = null, WorkflowExpression<double> limit = null, WorkflowExpression<double> skip = null, WorkflowExpression<string> startDate = null, WorkflowExpression<string> endDate = null)
-        {
-            WorkflowExpression.Validate(userOID, nameof(userOID), required: false);
-            WorkflowExpression.Validate(userUPN, nameof(userUPN), required: false);
-            WorkflowExpression.Validate(search, nameof(search), required: false);
-            WorkflowExpression.Validate(limit, nameof(limit), required: false);
-            WorkflowExpression.Validate(skip, nameof(skip), required: false);
-            WorkflowExpression.Validate(startDate, nameof(startDate), required: false);
-            WorkflowExpression.Validate(endDate, nameof(endDate), required: false);
+            var __workflow_userOID = userOID == null ? null : WorkflowExpression.Compile(userOID);
+            WorkflowExpression.Validate(__workflow_userOID, nameof(userOID), required: false);
+            var __workflow_userUPN = userUPN == null ? null : WorkflowExpression.Compile(userUPN);
+            WorkflowExpression.Validate(__workflow_userUPN, nameof(userUPN), required: false);
+            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
+            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
+            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
+            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_skip = skip == null ? null : WorkflowExpression.Compile(skip);
+            WorkflowExpression.Validate(__workflow_skip, nameof(skip), required: false);
+            var __workflow_startDate = startDate == null ? null : WorkflowExpression.Compile(startDate);
+            WorkflowExpression.Validate(__workflow_startDate, nameof(startDate), required: false);
+            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
+            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: false);
             return new DeferredBodyAction<TaskObject[]>(() =>
             {
                 var apiCallPath = "/task";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (userOID != null)
-                    callPayload.Queries["userOID"] = ExpressionConverter.Convert(userOID);
-                if (userUPN != null)
-                    callPayload.Queries["userUPN"] = ExpressionConverter.Convert(userUPN);
-                if (search != null)
-                    callPayload.Queries["search"] = ExpressionConverter.Convert(search);
-                if (limit != null)
-                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-                if (skip != null)
-                    callPayload.Queries["skip"] = ExpressionConverter.Convert(skip);
-                if (startDate != null)
-                    callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
-                if (endDate != null)
-                    callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
+                if (__workflow_userOID != null)
+                    callPayload.Queries["userOID"] = ExpressionConverter.Convert(__workflow_userOID);
+                if (__workflow_userUPN != null)
+                    callPayload.Queries["userUPN"] = ExpressionConverter.Convert(__workflow_userUPN);
+                if (__workflow_search != null)
+                    callPayload.Queries["search"] = ExpressionConverter.Convert(__workflow_search);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_skip != null)
+                    callPayload.Queries["skip"] = ExpressionConverter.Convert(__workflow_skip);
+                if (__workflow_startDate != null)
+                    callPayload.Queries["startDate"] = ExpressionConverter.Convert(__workflow_startDate);
+                if (__workflow_endDate != null)
+                    callPayload.Queries["endDate"] = ExpressionConverter.Convert(__workflow_endDate);
                 return new ApiConnectionAction<TaskObject[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        [WorkflowExpressionFactory(nameof(__BuildGetUser))]
-        public IBodyWorkflowAction<User> GetUser([WorkflowExpression] Func<string> userMail)
+        public IBodyWorkflowAction<User> GetUser(Expression<Func<string>> userMail)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<User> __BuildGetUser(WorkflowExpression<string> userMail)
-        {
-            WorkflowExpression.Validate(userMail, nameof(userMail), required: true);
+            var __workflow_userMail = userMail == null ? null : WorkflowExpression.Compile(userMail);
+            WorkflowExpression.Validate(__workflow_userMail, nameof(userMail), required: true);
             return new DeferredBodyAction<User>(() =>
             {
                 var apiCallPath = "/user/getUser";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["userMail"] = ExpressionConverter.Convert(userMail);
+                callPayload.Queries["userMail"] = ExpressionConverter.Convert(__workflow_userMail);
                 return new ApiConnectionAction<User>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        [WorkflowExpressionFactory(nameof(__BuildUpdateUser))]
-        public IWorkflowAction UpdateUser([WorkflowExpression] Func<string> bodyuserEmail = null, [WorkflowExpression] Func<bodyuserAttributesInputItem[]> bodyuserAttributes = null)
+        public IWorkflowAction UpdateUser(Expression<Func<string>> bodyuserEmail = null, Expression<Func<bodyuserAttributesInputItem[]>> bodyuserAttributes = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowAction __BuildUpdateUser(WorkflowExpression<string> bodyuserEmail = null, WorkflowExpression<bodyuserAttributesInputItem[]> bodyuserAttributes = null)
-        {
-            WorkflowExpression.Validate(bodyuserEmail, nameof(bodyuserEmail), required: false);
-            WorkflowExpression.Validate(bodyuserAttributes, nameof(bodyuserAttributes), required: false);
+            var __workflow_bodyuserEmail = bodyuserEmail == null ? null : WorkflowExpression.Compile(bodyuserEmail);
+            WorkflowExpression.Validate(__workflow_bodyuserEmail, nameof(bodyuserEmail), required: false);
+            var __workflow_bodyuserAttributes = bodyuserAttributes == null ? null : WorkflowExpression.Compile(bodyuserAttributes);
+            WorkflowExpression.Validate(__workflow_bodyuserAttributes, nameof(bodyuserAttributes), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/user/updateUser";
@@ -523,15 +491,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyuserEmail != null)
+                if (__workflow_bodyuserEmail != null)
                 {
-                    body["userMail"] = ExpressionConverter.ConvertO(bodyuserEmail);
+                    body["userMail"] = ExpressionConverter.ConvertO(__workflow_bodyuserEmail);
                     bodypropCount++;
                 }
 
-                if (bodyuserAttributes != null)
+                if (__workflow_bodyuserAttributes != null)
                 {
-                    body["userAttributes"] = ExpressionConverter.ConvertO(bodyuserAttributes);
+                    body["userAttributes"] = ExpressionConverter.ConvertO(__workflow_bodyuserAttributes);
                     bodypropCount++;
                 }
 

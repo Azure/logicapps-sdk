@@ -1,12 +1,12 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planful
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class PlanfulActions([ConnectionName] string connectionId)
     {
@@ -20,52 +20,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planful
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planful")]
-        [WorkflowExpressionFactory(nameof(__BuildFileLoad))]
-        public IBodyWorkflowAction<FileLoadResponse> FileLoad([WorkflowExpression] Func<string> columnDelimiter, [WorkflowExpression] Func<string> dataLoadRuleName = null, [WorkflowExpression] Func<object> file = null)
+        public IBodyWorkflowAction<FileLoadResponse> FileLoad(Expression<Func<string>> columnDelimiter, Expression<Func<string>> dataLoadRuleName = null, Expression<Func<object>> file = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<FileLoadResponse> __BuildFileLoad(WorkflowExpression<string> columnDelimiter, WorkflowExpression<string> dataLoadRuleName = null, WorkflowExpression<object> file = null)
-        {
-            WorkflowExpression.Validate(columnDelimiter, nameof(columnDelimiter), required: true);
-            WorkflowExpression.Validate(dataLoadRuleName, nameof(dataLoadRuleName), required: false);
-            WorkflowExpression.Validate(file, nameof(file), required: false);
+            var __workflow_columnDelimiter = columnDelimiter == null ? null : WorkflowExpression.Compile(columnDelimiter);
+            WorkflowExpression.Validate(__workflow_columnDelimiter, nameof(columnDelimiter), required: true);
+            var __workflow_dataLoadRuleName = dataLoadRuleName == null ? null : WorkflowExpression.Compile(dataLoadRuleName);
+            WorkflowExpression.Validate(__workflow_dataLoadRuleName, nameof(dataLoadRuleName), required: false);
+            var __workflow_file = file == null ? null : WorkflowExpression.Compile(file);
+            WorkflowExpression.Validate(__workflow_file, nameof(file), required: false);
             return new DeferredBodyAction<FileLoadResponse>(() =>
             {
                 var apiCallPath = "/financemodel/data/transferfile";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (dataLoadRuleName != null)
-                    callPayload.Queries["DataLoadRuleName"] = ExpressionConverter.Convert(dataLoadRuleName);
-                callPayload.Queries["ColumnDelimiter"] = ExpressionConverter.Convert(columnDelimiter);
+                if (__workflow_dataLoadRuleName != null)
+                    callPayload.Queries["DataLoadRuleName"] = ExpressionConverter.Convert(__workflow_dataLoadRuleName);
+                callPayload.Queries["ColumnDelimiter"] = ExpressionConverter.Convert(__workflow_columnDelimiter);
                 return new ApiConnectionAction<FileLoadResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planful")]
-        [WorkflowExpressionFactory(nameof(__BuildGetGLdata))]
-        public IBodyWorkflowAction<GetGLdataResponseItem[]> GetGLdata([WorkflowExpression] Func<string> scenario, [WorkflowExpression] Func<int> fiscalYear, [WorkflowExpression] Func<string> filter = null)
+        public IBodyWorkflowAction<GetGLdataResponseItem[]> GetGLdata(Expression<Func<string>> scenario, Expression<Func<int>> fiscalYear, Expression<Func<string>> filter = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<GetGLdataResponseItem[]> __BuildGetGLdata(WorkflowExpression<string> scenario, WorkflowExpression<int> fiscalYear, WorkflowExpression<string> filter = null)
-        {
-            WorkflowExpression.Validate(scenario, nameof(scenario), required: true);
-            WorkflowExpression.Validate(fiscalYear, nameof(fiscalYear), required: true);
-            WorkflowExpression.Validate(filter, nameof(filter), required: false);
+            var __workflow_scenario = scenario == null ? null : WorkflowExpression.Compile(scenario);
+            WorkflowExpression.Validate(__workflow_scenario, nameof(scenario), required: true);
+            var __workflow_fiscalYear = fiscalYear == null ? null : WorkflowExpression.Compile(fiscalYear);
+            WorkflowExpression.Validate(__workflow_fiscalYear, nameof(fiscalYear), required: true);
+            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
+            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
             return new DeferredBodyAction<GetGLdataResponseItem[]>(() =>
             {
                 var apiCallPath = "/financemodel/data/extract/gldata";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["Scenario"] = ExpressionConverter.Convert(scenario);
-                callPayload.Queries["FiscalYear"] = ExpressionConverter.Convert(fiscalYear);
-                if (filter != null)
-                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["Scenario"] = ExpressionConverter.Convert(__workflow_scenario);
+                callPayload.Queries["FiscalYear"] = ExpressionConverter.Convert(__workflow_fiscalYear);
+                if (__workflow_filter != null)
+                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(__workflow_filter);
                 return new ApiConnectionAction<GetGLdataResponseItem[]>(callPayload);
             });
         }

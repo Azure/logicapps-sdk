@@ -1,12 +1,12 @@
 ﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parseur
 {
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Linq.Expressions;
 
     public class ParseurActions([ConnectionName] string connectionId)
     {
@@ -29,19 +29,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parseur
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "parseur")]
-        [WorkflowExpressionFactory(nameof(__BuildGetMailboxSchema))]
-        public IBodyWorkflowAction<JToken> GetMailboxSchema([WorkflowExpression] Func<string> mailboxID)
+        public IBodyWorkflowAction<JToken> GetMailboxSchema(Expression<Func<string>> mailboxID)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildGetMailboxSchema(WorkflowExpression<string> mailboxID)
-        {
-            WorkflowExpression.Validate(mailboxID, nameof(mailboxID), required: true);
+            var __workflow_mailboxID = mailboxID == null ? null : WorkflowExpression.Compile(mailboxID);
+            WorkflowExpression.Validate(__workflow_mailboxID, nameof(mailboxID), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/parser/{0}/schema", ExpressionConverter.ConvertWithUrlEncoding(mailboxID, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/parser/{0}/schema", ExpressionConverter.ConvertWithUrlEncoding(__workflow_mailboxID, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<JToken>(callPayload);
@@ -49,19 +43,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parseur
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "parseur")]
-        [WorkflowExpressionFactory(nameof(__BuildGetTableSchema))]
-        public IBodyWorkflowAction<JToken> GetTableSchema([WorkflowExpression] Func<string> tableID)
+        public IBodyWorkflowAction<JToken> GetTableSchema(Expression<Func<string>> tableID)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowAction<JToken> __BuildGetTableSchema(WorkflowExpression<string> tableID)
-        {
-            WorkflowExpression.Validate(tableID, nameof(tableID), required: true);
+            var __workflow_tableID = tableID == null ? null : WorkflowExpression.Compile(tableID);
+            WorkflowExpression.Validate(__workflow_tableID, nameof(tableID), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/table/{0}/schema", ExpressionConverter.ConvertWithUrlEncoding(tableID, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/table/{0}/schema", ExpressionConverter.ConvertWithUrlEncoding(__workflow_tableID, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<JToken>(callPayload);
@@ -71,20 +59,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parseur
 
     public class ParseurTriggers([ConnectionName] string connectionId)
     {
-
-        [WorkflowExpressionFactory(nameof(__BuildNewDocumentExpanded))]
-        public IBodyWorkflowTrigger<JToken> NewDocumentExpanded([WorkflowExpression] Func<string> mailboxID,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> NewDocumentExpanded(Expression<Func<string>> mailboxID, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildNewDocumentExpanded(WorkflowExpression<string> mailboxID,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(mailboxID, nameof(mailboxID), required: true);
+            var __workflow_mailboxID = mailboxID == null ? null : WorkflowExpression.Compile(mailboxID);
+            WorkflowExpression.Validate(__workflow_mailboxID, nameof(mailboxID), required: true);
             return new DeferredBodyTrigger<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/parser/{0}/flow_webhook/document.processed", ExpressionConverter.ConvertWithUrlEncoding(mailboxID, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/parser/{0}/flow_webhook/document.processed", ExpressionConverter.ConvertWithUrlEncoding(__workflow_mailboxID, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -100,19 +81,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parseur
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildTemplateNeeded))]
-        public IBodyWorkflowTrigger<JToken> TemplateNeeded([WorkflowExpression] Func<string> mailboxID,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> TemplateNeeded(Expression<Func<string>> mailboxID, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildTemplateNeeded(WorkflowExpression<string> mailboxID,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(mailboxID, nameof(mailboxID), required: true);
+            var __workflow_mailboxID = mailboxID == null ? null : WorkflowExpression.Compile(mailboxID);
+            WorkflowExpression.Validate(__workflow_mailboxID, nameof(mailboxID), required: true);
             return new DeferredBodyTrigger<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/parser/{0}/flow_webhook/document.template_needed", ExpressionConverter.ConvertWithUrlEncoding(mailboxID, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/parser/{0}/flow_webhook/document.template_needed", ExpressionConverter.ConvertWithUrlEncoding(__workflow_mailboxID, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -128,19 +103,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parseur
             });
         }
 
-        [WorkflowExpressionFactory(nameof(__BuildTableProcessed))]
-        public IBodyWorkflowTrigger<JToken> TableProcessed([WorkflowExpression] Func<string> tableID,FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> TableProcessed(Expression<Func<string>> tableID, FlowRecurrence recurrence = null)
         {
-            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
-        }
-
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildTableProcessed(WorkflowExpression<string> tableID,FlowRecurrence recurrence = null)
-        {
-            WorkflowExpression.Validate(tableID, nameof(tableID), required: true);
+            var __workflow_tableID = tableID == null ? null : WorkflowExpression.Compile(tableID);
+            WorkflowExpression.Validate(__workflow_tableID, nameof(tableID), required: true);
             return new DeferredBodyTrigger<JToken>(() =>
             {
-                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/table/{0}/flow_webhook/table.processed", ExpressionConverter.ConvertWithUrlEncoding(tableID, 1));
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/table/{0}/flow_webhook/table.processed", ExpressionConverter.ConvertWithUrlEncoding(__workflow_tableID, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
